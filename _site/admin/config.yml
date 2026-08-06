@@ -1,22 +1,33 @@
 backend:
   name: github
-  repo: m7mdibrahimo/arab-wrestling
+  repo: m7mdibrahimo/arw-site
   branch: main
   base_url: https://arab-wrestling-auth.m7mdibrahimpc.workers.dev
   auth_endpoint: auth
+
+site_url: https://arab-wrestling.pages.dev
+display_url: https://arab-wrestling.pages.dev
+
 media_folder: "content/images"
 public_folder: "/content/images"
+
 locale: "ar"
+
 collections:
   - name: "shows"
     label: "عروض المصارعة (الكاملة)"
     label_singular: "عرض"
     folder: "content/shows"
+    extension: "md"
+    format: "frontmatter"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم العرض / الحلقة", name: "title", widget: "string" }
+      - { label: "عنوان العرض الرئيسية (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو مترجم" }
+      - { label: "وصف قصير", name: "description", widget: "text", required: false }
       - { label: "تاريخ العرض (يدوي)", name: "event_date", widget: "string", required: false, hint: "مثال: 03.08.2026 أو 3 أغسطس 2026 (اتركه فارغاً للتاريخ الافتراضي)" }
       - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false }
       - { label: "مدة العرض", name: "duration", widget: "string", hint: "مثال: 2:14:00" }
@@ -44,8 +55,11 @@ collections:
     label: "ملخصات العروض"
     label_singular: "ملخص"
     folder: "content/recaps"
+    extension: "md"
+    format: "frontmatter"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم الحلقة", name: "title", widget: "string" }
@@ -68,8 +82,11 @@ collections:
     label: "آخر الأخبار"
     label_singular: "خبر"
     folder: "content/news"
+    extension: "md"
+    format: "frontmatter"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "عنوان الخبر", name: "title", widget: "string" }

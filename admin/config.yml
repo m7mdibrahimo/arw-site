@@ -26,6 +26,8 @@ collections:
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم العرض / الحلقة", name: "title", widget: "string" }
+      - { label: "عنوان العرض الرئيسية (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو مترجم" }
+      - { label: "وصف قصير", name: "description", widget: "text", required: false }
       - { label: "تاريخ العرض (يدوي)", name: "event_date", widget: "string", required: false, hint: "مثال: 03.08.2026 أو 3 أغسطس 2026 (اتركه فارغاً للتاريخ الافتراضي)" }
       - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false }
       - { label: "مدة العرض", name: "duration", widget: "string", hint: "مثال: 2:14:00" }
