@@ -21,17 +21,9 @@
     --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; }
-  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; animation: arwPageEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards; will-change: opacity, transform; }
-  body.arw-page-exit{ opacity:0; transform:scale(0.995) translateY(-2px); transition: opacity 0.15s cubic-bezier(0.4,0,1,1), transform 0.15s cubic-bezier(0.4,0,1,1); pointer-events:none; }
-  @keyframes arwPageEnter { 0%{ opacity:0; transform:translateY(4px); } 100%{ opacity:1; transform:translateY(0); } }
+  html{ scroll-behavior:smooth; background-color:var(--bg); }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
 
-  /* 120Hz Tactile Active Feedback & Hardware Acceleration */
-  .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
   .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.08s ease !important;
@@ -174,9 +166,9 @@
   .btn.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; }
   html.arw-dark .btn.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; }
   /* Scroll Reveal Smooth Motion */
-  .reveal{ opacity:1; transform:none; transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
-  .reveal.reveal-hidden{ opacity:0; transform:translateY(28px); }
-  .reveal.is-visible{ opacity:1; transform:translateY(0); }ortant; }
+  .reveal{ opacity:1; transform:none; }
+  .reveal.reveal-hidden{ opacity:0; transform:translateY(16px); transition:none !important; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); }
 </style>
 </head>
 <body>
@@ -227,20 +219,18 @@
 </div>
 
 
+{% set isNews = (page.inputPath and "content/news" in page.inputPath) or (page.url and "/news/" in page.url) %}
+
 <main>
   <div class="post-wrap reveal">
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
     <div class="post-meta-bar">
       {% if federation %}<span class="post-fed cat-{{ federation | lower }}">{{ federation }}</span>{% endif %}
-      {% if title and headline and title != headline %}<span class="post-ep-name">📺 {{ title }}</span>{% endif %}
-      {% if event_date %}<span class="post-meta-tag">📅 {{ event_date }}</span>{% endif %}
+      {% if title and headline and title != headline %}<span class="post-ep-name">{{ title }}</span>{% endif %}
       {% if duration %}<span class="post-meta-tag">⏱ {{ duration }}</span>{% endif %}
     </div>
+    {% if not isNews %}
     <h1>{{ headline or title }}</h1>
-    {% if headline and title and title != headline %}<div class="post-sub-title">اسم الحلقة: {{ title }}</div>{% endif %}
-
-    {% if description %}
-    <p class="post-desc"><strong>وصف قصير:</strong> {{ description }}</p>
     {% endif %}
 
     {% if servers and servers.length %}
@@ -254,7 +244,7 @@
       <div class="video-embed reveal">
         <iframe id="videoFrame" src="{{ servers[0].url }}" allowfullscreen></iframe>
       </div>
-    {% elif image %}
+    {% elif image and isNews %}
     <img class="post-cover reveal" src="{% optImg image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{{ title }}">
     {% endif %}
 
@@ -329,10 +319,6 @@
     });
   }
 
-  window.addEventListener('pageshow', function(e) {
-    document.body.classList.remove('arw-page-exit');
-  });
-
   (function(){
     var prefetched = new Set();
     function prefetch(url) {
@@ -351,18 +337,6 @@
       var a = e.target.closest && e.target.closest('a');
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
-    document.addEventListener('click', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(a && a.href && a.origin === location.origin && !a.target && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
-        var href = a.getAttribute('href');
-        if(href && !href.startsWith('#') && href !== location.pathname) {
-          document.body.classList.add('arw-page-exit');
-          setTimeout(function(){
-            document.body.classList.remove('arw-page-exit');
-          }, 1200);
-        }
-      }
-    });
   })();
 </script>
 

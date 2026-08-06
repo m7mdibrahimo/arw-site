@@ -61,10 +61,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("jsonify", jsonify);
   eleventyConfig.addNunjucksFilter("jsonify", jsonify);
 
-  // ضغط الصور تلقائيًا: يقلل الحجم لأقل من 100 كيلوبايت مع الحفاظ على الجودة العالية
+  // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
   eleventyConfig.addNunjucksAsyncShortcode("optImg", async function(src, fallback) {
-    let input = (src && typeof src === "string" && src.trim()) ? src.trim() : (fallback || "");
-    if (!input) return "";
+    const defaultFallback = "https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=800&auto=format&fit=crop";
+    let input = (src && typeof src === "string" && src.trim()) ? src.trim() : (fallback || defaultFallback);
+    if (!input) return defaultFallback;
 
     let cleanInput = input;
     if (!cleanInput.startsWith("http://") && !cleanInput.startsWith("https://")) {
@@ -75,25 +76,47 @@ module.exports = function(eleventyConfig) {
 
     const isLocal = cleanInput.startsWith("/content/");
     const source = isLocal ? "." + cleanInput : cleanInput;
-    const fs = require("fs");
 
-    if (isLocal && !fs.existsSync(source)) {
+    if (isLocal) {
+      const fs = require("fs");
+      if (!fs.existsSync(source)) {
+        return cleanInput;
+      }
+      try {
+        const metadata = await Image(source, {
+          widths: [800],
+          formats: ["jpeg"],
+          outputDir: "_site/img/",
+          urlPath: "/img/",
+          sharpJpegOptions: { quality: 75, progressive: true }
+        });
+        const jpeg = metadata && metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
+        if (jpeg && jpeg.url) {
+          return jpeg.url;
+        }
+      } catch (e) {
+        console.error("optImg local processing error:", source, e);
+      }
       return cleanInput;
     }
 
     try {
-      const metadata = await Image(source, {
-        widths: [720],
+      const metadata = await Image(cleanInput, {
+        widths: [800],
         formats: ["jpeg"],
         outputDir: "_site/img/",
         urlPath: "/img/",
-        sharpJpegOptions: { quality: 72, progressive: true }
+        sharpJpegOptions: { quality: 75, progressive: true }
       });
-      const jpeg = metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
-      return jpeg ? jpeg.url : cleanInput;
+      const jpeg = metadata && metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
+      if (jpeg && jpeg.url) {
+        return jpeg.url;
+      }
     } catch (e) {
       return cleanInput;
     }
+
+    return cleanInput;
   });
 
   eleventyConfig.addCollection("shows", function(collectionApi) {

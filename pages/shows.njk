@@ -24,17 +24,9 @@ permalink: "/shows/index.html"
     --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; }
-  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; animation: arwPageEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards; will-change: opacity, transform; }
-  body.arw-page-exit{ opacity:0; transform:scale(0.995) translateY(-2px); transition: opacity 0.15s cubic-bezier(0.4,0,1,1), transform 0.15s cubic-bezier(0.4,0,1,1); pointer-events:none; }
-  @keyframes arwPageEnter { 0%{ opacity:0; transform:translateY(4px); } 100%{ opacity:1; transform:translateY(0); } }
+  html{ scroll-behavior:smooth; background-color:var(--bg); }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
 
-  /* 120Hz Tactile Active Feedback & Hardware Acceleration */
-  .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
   .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.08s ease !important;
@@ -262,15 +254,6 @@ permalink: "/shows/index.html"
       var a = e.target.closest && e.target.closest('a');
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
-    document.addEventListener('click', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(a && a.href && a.origin === location.origin && !a.target && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
-        var href = a.getAttribute('href');
-        if(href && !href.startsWith('#') && href !== location.pathname) {
-          document.body.classList.add('arw-page-exit');
-        }
-      }
-    });
   })();
 </script>
 </body>

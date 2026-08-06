@@ -59,10 +59,8 @@
     --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; }
-  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; animation: arwPageEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards; will-change: opacity, transform; }
-  body.arw-page-exit{ opacity:0; transform:scale(0.995) translateY(-2px); transition: opacity 0.15s cubic-bezier(0.4,0,1,1), transform 0.15s cubic-bezier(0.4,0,1,1); pointer-events:none; }
-  @keyframes arwPageEnter { 0%{ opacity:0; transform:translateY(4px); } 100%{ opacity:1; transform:translateY(0); } }
+  html{ scroll-behavior:smooth; background-color:var(--bg); }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
 
   /* 120Hz Tactile Active Feedback & Hardware Acceleration */
   .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn {
@@ -152,9 +150,14 @@
   .post-wrap{ max-width:820px; margin:0 auto; padding:48px 24px 80px; }
   .back-link{ display:inline-flex; align-items:center; gap:6px; color:var(--muted); text-decoration:none; font-weight:700; font-size:14px; margin-bottom:24px; transition:all 0.25s ease; }
   .back-link:hover{ color:var(--teal); transform:translateX(4px); }
-  .post-fed{ display:inline-block; background:var(--gold-soft); color:var(--gold); font-weight:800; font-size:12.5px; padding:5px 14px; border-radius:999px; margin-bottom:14px; transition:transform 0.2s ease; }
+  .post-fed{ display:inline-block; background:var(--gold-soft); color:var(--gold); font-weight:800; font-size:12.5px; padding:5px 14px; border-radius:999px; transition:transform 0.2s ease; }
   .post-fed:hover{ transform:scale(1.05); }
-  .post-wrap h1{ font-size:clamp(26px,4vw,38px); margin-bottom:24px; line-height:1.3; }
+  .post-meta-bar{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .post-meta-tag{ display:inline-flex; align-items:center; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; background:var(--card); border:1px solid var(--line); color:var(--muted); }
+  .post-ep-name{ display:inline-flex; align-items:center; font-size:12px; font-weight:800; padding:4px 12px; border-radius:999px; background:var(--teal-soft); color:var(--teal); }
+  .post-wrap h1{ font-size:clamp(26px,4vw,38px); margin-bottom:12px; line-height:1.3; font-family:'Cairo',sans-serif; font-weight:900; }
+  .post-sub-title{ font-size:15px; font-weight:800; color:var(--gold); margin-bottom:16px; display:inline-block; }
+  .post-desc{ font-size:15.5px; line-height:1.75; color:var(--ink); margin-bottom:24px; padding:16px 20px; background:var(--card); border-radius:12px; border:1px solid var(--line); border-inline-start:4px solid var(--teal); box-shadow:0 4px 12px -8px rgba(0,0,0,0.06); }
   .server-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
   .server-tab{ background:var(--card); border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:13px; padding:8px 16px; border-radius:999px; cursor:pointer; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); }
   .server-tab:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); box-shadow:0 4px 12px rgba(14,149,148,0.15); }
@@ -176,6 +179,10 @@
   .tag-pill:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-3px) scale(1.05); box-shadow:0 6px 16px rgba(14,149,148,0.3); }
   .tag-pill .count{ font-size:11px; background:var(--teal-soft); color:var(--teal); padding:2px 7px; border-radius:999px; transition:all 0.2s ease; }
   .tag-pill:hover .count{ background:rgba(255,255,255,0.25); color:#fff; }
+  /* Scroll Reveal Smooth Motion */
+  .reveal{ opacity:1; transform:none; }
+  .reveal.reveal-hidden{ opacity:0; transform:translateY(16px); transition:none !important; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); }
 </style>
 </head>
 <body>
@@ -215,7 +222,7 @@
 
 
 
-<div class="hero" id="top" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('/img/FGy5Z2nhXY-800.jpeg') center 30%/cover no-repeat;">
+<div class="hero" id="top" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('/img/SGEJVafIda-800.jpeg') center 30%/cover no-repeat;">
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title news-hero-title">
@@ -232,18 +239,24 @@
 </div>
 
 <main>
-  <div class="post-wrap">
+  <div class="post-wrap reveal">
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
-    <div><span class="post-fed">AEW</span></div>
+    <div class="post-meta-bar">
+      <span class="post-fed cat-aew">AEW</span>
+      
+      
+    </div>
     
 
     
-    <img class="post-cover" src="/img/FGy5Z2nhXY-800.jpeg" alt="أدم كوبلاند يعود للمصارعة في المكسيك بعد غياب 16 عامًا">
+    <img class="post-cover reveal" src="/img/SGEJVafIda-800.jpeg" alt="أدم كوبلاند يعود للمصارعة في المكسيك بعد غياب 16 عامًا">
     
 
     
 
-    <div class="post-body">
+    
+
+    <div class="post-body reveal">
       <p>يستعد النجم أدم كوبلاند لخوض أول مواجهة له في حلبة &quot;أرينا مكسيكو&quot; الشهيرة ضمن عرض AEW Grand Slam: Mexico، حيث يشارك في مباراة فرق ثمانية إلى جانب كريستيان كيج.</p>
 <p>وعبر كوبلاند عن حماسه الشديد عبر حسابه الشخصي، مشيرًا إلى أن هذه هي أول مباراة له في المكسيك منذ عام 2008، حيث كتب:</p>
 <blockquote>
@@ -253,7 +266,7 @@
     </div>
 
     
-    <div class="post-tags">
+    <div class="post-tags reveal">
       <span class="tags-label">الوسوم:</span>
       
         
@@ -282,7 +295,22 @@
   © 2026 عرب راسلنج — موقع عربي مستقل غير تابع لأي اتحاد رسمي.
 </footer>
 
-
+<script>
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} });
+    }, { threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const rect = el.getBoundingClientRect();
+      if(rect.top < (window.innerHeight || document.documentElement.clientHeight)){
+        el.classList.add('is-visible');
+      } else {
+        el.classList.add('reveal-hidden');
+        io.observe(el);
+      }
+    });
+  }
+</script>
 <script>
   document.querySelectorAll('.server-tab').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -304,16 +332,16 @@
     }
     if(saved === 'dark'){ document.documentElement.classList.add('arw-dark'); }
   })();
-  document.getElementById('arwThemeToggle').addEventListener('click', function(){
-    var isDark = document.documentElement.classList.toggle('arw-dark');
-    var val = isDark ? 'dark' : 'light';
-    try{ localStorage.setItem('arw-theme', val); }catch(e){}
-    document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
-  });
-</script>
+  var themeBtn = document.getElementById('arwThemeToggle');
+  if(themeBtn){
+    themeBtn.addEventListener('click', function(){
+      var isDark = document.documentElement.classList.toggle('arw-dark');
+      var val = isDark ? 'dark' : 'light';
+      try{ localStorage.setItem('arw-theme', val); }catch(e){}
+      document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
+    });
+  }
 
-
-<script>
   (function(){
     var prefetched = new Set();
     function prefetch(url) {
@@ -332,15 +360,6 @@
       var a = e.target.closest && e.target.closest('a');
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
-    document.addEventListener('click', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(a && a.href && a.origin === location.origin && !a.target && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
-        var href = a.getAttribute('href');
-        if(href && !href.startsWith('#') && href !== location.pathname) {
-          document.body.classList.add('arw-page-exit');
-        }
-      }
-    });
   })();
 </script>
 </body>

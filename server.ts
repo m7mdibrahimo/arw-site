@@ -22,6 +22,10 @@ if (!fs.existsSync(path.join(process.cwd(), "_site", "index.html"))) {
 
 const sitePath = path.join(process.cwd(), "_site");
 
+// Serve content/images and uploaded assets directly from project root if requested
+app.use("/content", express.static(path.join(process.cwd(), "content")));
+app.use("/admin", express.static(path.join(process.cwd(), "admin")));
+
 // Serve all static files from _site
 app.use(express.static(sitePath, { index: ["index.html"] }));
 

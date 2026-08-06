@@ -21,17 +21,9 @@
     --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; }
-  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; animation: arwPageEnter 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards; will-change: opacity, transform; }
-  body.arw-page-exit{ opacity:0; transform:scale(0.995) translateY(-2px); transition: opacity 0.15s cubic-bezier(0.4,0,1,1), transform 0.15s cubic-bezier(0.4,0,1,1); pointer-events:none; }
-  @keyframes arwPageEnter { 0%{ opacity:0; transform:translateY(4px); } 100%{ opacity:1; transform:translateY(0); } }
+  html{ scroll-behavior:smooth; background-color:var(--bg); }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
 
-  /* 120Hz Tactile Active Feedback & Hardware Acceleration */
-  .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
   .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.08s ease !important;
@@ -100,13 +92,29 @@
   .news-thumb{ height:160px; background-size:cover; background-position:center; position:relative; }
   .news-thumb::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.3)); }
   .news-body{ padding:18px 20px; }
-  .news-body .cat{ color:var(--coral); font-size:12px; font-weight:800; }
-  .news-body h3{ font-size:17px; font-weight:700; margin:8px 0 8px; }
-  .news-body .date{ color:var(--muted); font-size:12px; }
-  .kind-badge{ display:block; width:fit-content; font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:999px; margin-bottom:6px; }
+  .news-body .date{ display:block; color:var(--muted); font-size:12px; border-top:1px solid var(--line); padding-top:10px; margin-top:10px; }
+  .kind-badge{ display:inline-flex; align-items:center; font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:999px; margin-inline-end:6px; margin-bottom:8px; vertical-align:middle; transition:transform 0.2s ease; }
+  .cat, .fed-badge{ display:inline-flex; align-items:center; font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:999px; background:var(--teal-soft); color:var(--teal); margin-bottom:8px; vertical-align:middle; transition:transform 0.2s ease, background-color 0.2s ease, color 0.2s ease; }
+  
+  .cat-wwe { background: rgba(199, 59, 44, 0.12) !important; color: #c73b2c !important; }
+  .cat-aew { background: rgba(212, 160, 23, 0.14) !important; color: #9e7506 !important; }
+  .cat-tna { background: rgba(138, 95, 224, 0.14) !important; color: #7c42d6 !important; }
+  .cat-roh { background: rgba(44, 102, 199, 0.14) !important; color: #2358b5 !important; }
+  .cat-mma { background: rgba(224, 122, 44, 0.14) !important; color: #c45b10 !important; }
+  .cat-indie { background: rgba(31, 138, 114, 0.14) !important; color: #0f705b !important; }
+
+  html.arw-dark .cat-wwe { background: rgba(225, 75, 60, 0.2) !important; color: #ff6b5b !important; }
+  html.arw-dark .cat-aew { background: rgba(240, 195, 60, 0.2) !important; color: #f4b352 !important; }
+  html.arw-dark .cat-tna { background: rgba(155, 109, 240, 0.2) !important; color: #b18cff !important; }
+  html.arw-dark .cat-roh { background: rgba(70, 130, 240, 0.2) !important; color: #60a5fa !important; }
+  html.arw-dark .cat-mma { background: rgba(240, 140, 60, 0.2) !important; color: #ff9d5c !important; }
+  html.arw-dark .cat-indie { background: rgba(40, 180, 150, 0.2) !important; color: #34d399 !important; }
+
+  .show-card:hover .kind-badge, .news-card:hover .kind-badge, .show-card:hover .cat, .news-card:hover .cat, .show-card:hover .fed-badge, .news-card:hover .fed-badge{ transform:scale(1.06); }
   .kind-show{ background:var(--gold-soft); color:var(--gold); }
   .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
+  .news-body h3, .show-body h3{ font-size:17px; font-weight:700; margin:4px 0 8px; }
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
@@ -167,7 +175,7 @@
   
 
 
-<div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('/img/dOAtdDxgh2-800.jpeg') center 30%/cover no-repeat;">
+<div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('/img/6n2BKGkkjJ-800.jpeg') center 30%/cover no-repeat;">
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">عروض المصارعة<span class="u" style="display:block; margin-top:8px;">مترجمة بالكامل</span></h1>
@@ -187,22 +195,22 @@
 <section class="content"><div class="wrap"><div class="grid-12">
 
 <a class="show-card" href="/content/shows/2026-08-05-nxt-04-08-2026/">
-  <div class="show-thumb" style="background-image:url('/img/dOAtdDxgh2-800.jpeg')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+  <div class="show-thumb" style="background-image:url('/img/6n2BKGkkjJ-800.jpeg')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
   <div class="show-body">
-    <span class="kind-badge kind-show">عرض</span>
-    <span class="ep">WWE — NXT 04.08.2026</span>
-    <h3>العرض كامل مترجم</h3>
-    <div class="foot"><span>5 أغسطس 2026</span></div>
+    <span class="kind-badge kind-show">عرض</span><span class="cat cat-wwe">WWE</span>
+    <h3>عرض ان اكس تي مترجم</h3>
+    <p class="desc">شاهد عرض ان اكس تي NXT مترجم كاملاً بجودة عالية، مع مواجهات النجوم الواعدين والصراعات الحاسمة.</p>
+    <div class="foot"><span>5 أغسطس 2026</span><span style="margin-inline-start:auto;">⏱ 02:00:29</span></div>
   </div>
 </a>
 
 <a class="show-card" href="/content/shows/2026-08-05-raw-03-08-2026/">
-  <div class="show-thumb" style="background-image:url('/img/as2m8uX79R-800.jpeg')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+  <div class="show-thumb" style="background-image:url('/img/A7ZbE88aH2-800.jpeg')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
   <div class="show-body">
-    <span class="kind-badge kind-show">عرض</span>
-    <span class="ep">WWE — RAW 03.08.2026</span>
-    <h3>العرض كامل مترجم</h3>
-    <div class="foot"><span>5 أغسطس 2026</span></div>
+    <span class="kind-badge kind-show">عرض</span><span class="cat cat-wwe">WWE</span>
+    <h3>عرض الرو مترجم</h3>
+    <p class="desc">شاهد عرض الرو RAW مترجم كاملاً بجودة عالية HD، مع جميع المواجهات النارية والأحداث الحماسية.</p>
+    <div class="foot"><span>5 أغسطس 2026</span><span style="margin-inline-start:auto;">⏱ 02:37:11</span></div>
   </div>
 </a>
 
@@ -255,15 +263,6 @@
       var a = e.target.closest && e.target.closest('a');
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
-    document.addEventListener('click', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(a && a.href && a.origin === location.origin && !a.target && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
-        var href = a.getAttribute('href');
-        if(href && !href.startsWith('#') && href !== location.pathname) {
-          document.body.classList.add('arw-page-exit');
-        }
-      }
-    });
   })();
 </script>
 </body>
