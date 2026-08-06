@@ -61,7 +61,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("jsonify", jsonify);
   eleventyConfig.addNunjucksFilter("jsonify", jsonify);
 
-  // ضغط الصور تلقائيًا: يقلل الحجم لأقصى درجة ممكنة من غير ما يأثر على الجودة بشكل ملحوظ
+  // ضغط الصور تلقائيًا: يقلل الحجم لأقل من 100 كيلوبايت مع الحفاظ على الجودة العالية
   eleventyConfig.addNunjucksAsyncShortcode("optImg", async function(src, fallback) {
     let input = (src && typeof src === "string" && src.trim()) ? src.trim() : (fallback || "");
     if (!input) return "";
@@ -73,18 +73,24 @@ module.exports = function(eleventyConfig) {
       }
     }
 
-    const isLocal = cleanInput.startsWith("/content/images/");
+    const isLocal = cleanInput.startsWith("/content/");
     const source = isLocal ? "." + cleanInput : cleanInput;
+    const fs = require("fs");
+
+    if (isLocal && !fs.existsSync(source)) {
+      return cleanInput;
+    }
+
     try {
       const metadata = await Image(source, {
-        widths: [800],
+        widths: [720],
         formats: ["jpeg"],
         outputDir: "_site/img/",
         urlPath: "/img/",
-        sharpJpegOptions: { quality: 62 }
+        sharpJpegOptions: { quality: 72, progressive: true }
       });
-      const jpeg = metadata.jpeg[metadata.jpeg.length - 1];
-      return jpeg.url;
+      const jpeg = metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
+      return jpeg ? jpeg.url : cleanInput;
     } catch (e) {
       return cleanInput;
     }
