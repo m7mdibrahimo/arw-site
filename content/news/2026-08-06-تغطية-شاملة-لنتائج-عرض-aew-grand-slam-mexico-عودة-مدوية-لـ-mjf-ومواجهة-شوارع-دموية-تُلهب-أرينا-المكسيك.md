@@ -7,7 +7,7 @@ tags:
   - AEW
   - نتائج
   - ديناميت
-image: /content/images/mjf-aew-grand-slam-mexico.jpg
+image: /content/images/تغطية-شاملة-لنتائج-عرض-aew-grand-slam-mexico-عودة-مدوية-لـ-mjf-ومواجهة-شوارع-دموية-تُلهب-أرينا-المكسيك.jpg
 layout: post-layout.njk
 ---
 شهدت قاعة "أرينا المكسيك" التاريخية ليلة حافلة بالإثارة والنزاعات الشرسة في عرض AEW Grand Slam Mexico، حيث امتلأت الحلبة بالصراعات الملحمية، وتتويج أبطال جُدد، بالإضافة إلى عودة مفاجئة للنجم MJF وانتقام دامي في الحدث الرئيسي.
