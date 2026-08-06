@@ -100,6 +100,14 @@ permalink: /tag/{{ tagObj.slug }}/
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
   .news-body h3, .show-body h3{ font-size:17px; font-weight:700; margin:4px 0 8px; }
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+
+  .pagination-nav { margin-top: 48px; display: flex; justify-content: center; align-items: center; width: 100%; }
+  .pagination-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .page-numbers { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .page-link { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 42px; padding: 0 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--ink); font-weight: 700; font-size: 14.5px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
+  .page-link:hover:not(.disabled):not(.active) { border-color: var(--teal); color: var(--teal); background: var(--teal-soft); transform: translateY(-2px); }
+  .page-link.active { background: var(--teal); border-color: var(--teal); color: #ffffff; cursor: default; }
+  .page-link.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); }
@@ -144,7 +152,7 @@ permalink: /tag/{{ tagObj.slug }}/
   <p>عروض وأخبار وملخصات المصارعة المتعلقة بـ #{{ tagObj.name }} ({{ tagObj.count }} نتائج)</p>
 </div>
 
-<section class="content"><div class="wrap"><div class="grid-12">
+<section class="content"><div class="wrap"><div class="grid-12" id="tagGrid">
 {% for item in collections.allContent %}
   {% set hasTag = false %}
   {% if item.data.tags %}
@@ -172,7 +180,58 @@ permalink: /tag/{{ tagObj.slug }}/
   </a>
   {% endif %}
 {% endfor %}
-</div></div></section>
+</div>
+<div id="tagPagination"></div>
+</div></section>
+
+<script>
+  (function(){
+    var grid = document.getElementById('tagGrid');
+    if(!grid) return;
+    var items = Array.from(grid.children);
+    var pageSize = 20;
+    if(items.length <= pageSize) return;
+
+    var totalPages = Math.ceil(items.length / pageSize);
+    var currentPage = 1;
+
+    function renderPage(page){
+      currentPage = page;
+      var start = (page - 1) * pageSize;
+      var end = start + pageSize;
+      items.forEach(function(item, idx){
+        item.style.display = (idx >= start && idx < end) ? '' : 'none';
+      });
+
+      var container = document.getElementById('tagPagination');
+      if(!container) return;
+
+      var navHtml = '<nav class="pagination-nav"><div class="pagination-wrap">';
+      navHtml += currentPage > 1 ? '<button class="page-link prev" data-page="' + (currentPage - 1) + '">السابق</button>' : '<span class="page-link prev disabled">السابق</span>';
+      navHtml += '<div class="page-numbers">';
+      for(var i = 1; i <= totalPages; i++){
+        if(i === currentPage){
+          navHtml += '<span class="page-link active">' + i + '</span>';
+        } else {
+          navHtml += '<button class="page-link" data-page="' + i + '">' + i + '</button>';
+        }
+      }
+      navHtml += '</div>';
+      navHtml += currentPage < totalPages ? '<button class="page-link next" data-page="' + (currentPage + 1) + '">التالي</button>' : '<span class="page-link next disabled">التالي</span>';
+      navHtml += '</div></nav>';
+      container.innerHTML = navHtml;
+
+      container.querySelectorAll('button[data-page]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          renderPage(parseInt(this.getAttribute('data-page'), 10));
+          window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
+        });
+      });
+    }
+
+    renderPage(1);
+  })();
+</script>
 
 <footer>
   <div class="social-row">
