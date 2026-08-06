@@ -4,8 +4,362 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>لوحة تحكم عرب راسلنج</title>
+  <style>
+    .custom-copy-btn {
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      padding: 7px 14px !important;
+      border-radius: 6px !important;
+      border: none !important;
+      cursor: pointer !important;
+      margin: 0 8px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+      transition: all 0.2s ease !important;
+      font-family: inherit !important;
+      z-index: 99999 !important;
+    }
+    .custom-copy-btn:hover {
+      background-color: #1d4ed8 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15) !important;
+    }
+    .custom-list-copy-btn {
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      font-size: 12px !important;
+      padding: 5px 10px !important;
+      border-radius: 6px !important;
+      border: none !important;
+      cursor: pointer !important;
+      margin-inline-start: auto !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
+      transition: all 0.2s ease !important;
+      font-family: inherit !important;
+      z-index: 100 !important;
+      flex-shrink: 0 !important;
+    }
+    .custom-list-copy-btn:hover {
+      background-color: #1d4ed8 !important;
+      transform: scale(1.03) !important;
+    }
+    .custom-copy-banner {
+      background: #dcfce7 !important;
+      color: #15803d !important;
+      border: 1px solid #86efac !important;
+      padding: 10px 16px !important;
+      margin: 12px 20px !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      animation: copyFadeIn 0.3s ease !important;
+    }
+    @keyframes copyFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
+  <script>
+    (function() {
+      function setReactInputValue(inputEl, value) {
+        if (!inputEl) return;
+        try {
+          const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
+          const nativeTextAreaValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value")?.set;
+          
+          if (inputEl.tagName === 'TEXTAREA' && nativeTextAreaValueSetter) {
+            nativeTextAreaValueSetter.call(inputEl, value);
+          } else if (nativeInputValueSetter) {
+            nativeInputValueSetter.call(inputEl, value);
+          } else {
+            inputEl.value = value;
+          }
+          
+          inputEl.dispatchEvent(new Event('input', { bubbles: true }));
+          inputEl.dispatchEvent(new Event('change', { bubbles: true }));
+          inputEl.dispatchEvent(new Event('blur', { bubbles: true }));
+        } catch(err) {
+          console.error('Copy script error setting input value:', err);
+        }
+      }
+
+      function getCollectionFromHash() {
+        const hash = window.location.hash;
+        const match = hash.match(/#\/collections\/([^\/]+)/);
+        return match ? match[1] : null;
+      }
+
+      function isEditingEntry() {
+        return /#\/collections\/[^\/]+\/entries\//.test(window.location.hash);
+      }
+
+      function isNewEntry() {
+        return /#\/collections\/[^\/]+\/new/.test(window.location.hash);
+      }
+
+      function isCollectionView() {
+        return /#\/collections\/[^\/]+/.test(window.location.hash) && !isEditingEntry() && !isNewEntry();
+      }
+
+      function captureFormFields() {
+        const fieldData = [];
+        const labels = Array.from(document.querySelectorAll('label'));
+        
+        labels.forEach(label => {
+          const labelText = label.innerText ? label.innerText.trim() : '';
+          if (!labelText) return;
+
+          const lowerLabel = labelText.toLowerCase();
+          // Skip image and date fields specifically
+          if (lowerLabel.includes('صورة') || lowerLabel.includes('تاريخ') || lowerLabel.includes('image') || lowerLabel.includes('date') || lowerLabel.includes('cover') || lowerLabel.includes('event_date')) {
+            return;
+          }
+
+          const parent = label.closest('div') || label.parentElement;
+          if (!parent) return;
+
+          const inputs = parent.querySelectorAll('input, textarea, select');
+          inputs.forEach(input => {
+            if (input.type === 'file' || input.type === 'hidden') return;
+            fieldData.push({
+              label: labelText,
+              value: input.value,
+              tagName: input.tagName,
+              type: input.type,
+              placeholder: input.placeholder || ''
+            });
+          });
+        });
+
+        const allTextareas = Array.from(document.querySelectorAll('textarea'));
+        const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
+
+        return {
+          collection: getCollectionFromHash(),
+          fields: fieldData,
+          body: bodyTextarea ? bodyTextarea.value : '',
+          timestamp: Date.now()
+        };
+      }
+
+      // Inject copy button inside entry editor top bar
+      function injectCopyButtonInEditor() {
+        if (!isEditingEntry()) {
+          const existingBtn = document.getElementById('custom-copy-btn');
+          if (existingBtn) existingBtn.remove();
+          return;
+        }
+
+        if (document.getElementById('custom-copy-btn')) return;
+
+        const publishBtn = Array.from(document.querySelectorAll('button')).find(btn => 
+          btn.innerText && (btn.innerText.includes('Publish') || btn.innerText.includes('نشر') || btn.innerText.includes('حفظ') || btn.innerText.includes('Save'))
+        );
+
+        const header = document.querySelector('header, [class*="AppHeader"], [class*="Toolbar"], [class*="TopBar"]') || (publishBtn ? publishBtn.parentElement : null);
+
+        if (header || publishBtn) {
+          const btn = document.createElement('button');
+          btn.id = 'custom-copy-btn';
+          btn.className = 'custom-copy-btn';
+          btn.innerHTML = '📋 نسخ هذا المقال (تكرار)';
+          btn.title = 'إنشاء مقال جديد بنفس البيانات بدون صورة وتاريخ';
+
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const captured = captureFormFields();
+            const collection = getCollectionFromHash() || 'shows';
+
+            sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
+            window.location.hash = `#/collections/${collection}/new`;
+          });
+
+          if (publishBtn && publishBtn.parentNode) {
+            publishBtn.parentNode.insertBefore(btn, publishBtn);
+          } else if (header) {
+            header.appendChild(btn);
+          }
+        }
+      }
+
+      // Inject copy button next to each entry item in the Collection List view
+      function injectListCopyButtons() {
+        if (!isCollectionView()) return;
+
+        const collection = getCollectionFromHash();
+        if (!collection) return;
+
+        // Find all entry links in the list
+        const entryLinks = Array.from(document.querySelectorAll('a[href*="#/collections/"]')).filter(a => a.href.includes('/entries/'));
+
+        entryLinks.forEach(link => {
+          // Get card/container element
+          const card = link.closest('li, div[class*="Card"], div[class*="ListItem"], div[class*="Container"]') || link.parentElement;
+          if (!card || card.querySelector('.custom-list-copy-btn')) return;
+
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'custom-list-copy-btn';
+          copyBtn.innerHTML = '📋 نسخ المقال';
+          copyBtn.title = 'نسخ بيانات هذا المقال بضغطة واحدة وتوليد مقال جديد';
+
+          copyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Set state to auto-copy when entry opens
+            sessionStorage.setItem('decap_pending_copy_target', JSON.stringify({
+              targetHref: link.getAttribute('href'),
+              collection: collection,
+              timestamp: Date.now()
+            }));
+
+            // Navigate to entry
+            window.location.hash = link.getAttribute('href').replace(/^.*#/, '#');
+          });
+
+          // Style container if needed
+          if (card.style.position !== 'relative' && card.style.position !== 'absolute') {
+            card.style.display = card.style.display || 'flex';
+            card.style.alignItems = 'center';
+            card.style.justifyContent = 'space-between';
+          }
+
+          card.appendChild(copyBtn);
+        });
+      }
+
+      // Handle intermediate step when opened via List Copy button
+      function processPendingCopyTarget() {
+        if (!isEditingEntry()) return;
+
+        const pendingRaw = sessionStorage.getItem('decap_pending_copy_target');
+        if (!pendingRaw) return;
+
+        let pending;
+        try { pending = JSON.parse(pendingRaw); } catch(e) { pending = null; }
+        if (!pending || Date.now() - pending.timestamp > 30000) {
+          sessionStorage.removeItem('decap_pending_copy_target');
+          return;
+        }
+
+        // Wait brief moment for fields to populate in DOM
+        setTimeout(() => {
+          const captured = captureFormFields();
+          sessionStorage.removeItem('decap_pending_copy_target');
+
+          sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
+          window.location.hash = `#/collections/${pending.collection || getCollectionFromHash() || 'shows'}/new`;
+        }, 400);
+      }
+
+      function restoreCopiedEntry() {
+        if (!isNewEntry()) return;
+
+        const rawData = sessionStorage.getItem('decap_copied_entry');
+        if (!rawData) return;
+
+        let data;
+        try {
+          data = JSON.parse(rawData);
+        } catch(e) {
+          sessionStorage.removeItem('decap_copied_entry');
+          return;
+        }
+
+        if (Date.now() - data.timestamp > 300000) {
+          sessionStorage.removeItem('decap_copied_entry');
+          return;
+        }
+
+        setTimeout(() => {
+          const labels = Array.from(document.querySelectorAll('label'));
+          
+          if (data.fields && data.fields.length) {
+            data.fields.forEach(item => {
+              const matchingLabel = labels.find(l => l.innerText && l.innerText.trim() === item.label);
+              if (matchingLabel) {
+                const parent = matchingLabel.closest('div') || matchingLabel.parentElement;
+                if (parent) {
+                  const input = parent.querySelector('input, textarea, select');
+                  if (input && item.value) {
+                    setReactInputValue(input, item.value);
+                  }
+                }
+              }
+            });
+          }
+
+          if (data.body) {
+            const allTextareas = Array.from(document.querySelectorAll('textarea'));
+            const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
+            if (bodyTextarea) {
+              setReactInputValue(bodyTextarea, data.body);
+            }
+          }
+
+          if (!document.getElementById('custom-copy-banner')) {
+            const banner = document.createElement('div');
+            banner.id = 'custom-copy-banner';
+            banner.className = 'custom-copy-banner';
+            banner.innerHTML = `
+              <span>✨ <strong>تم نسخ بيانات المقال بنجاح!</strong> يمكنك الآن تعديل التاريخ أو الصورة أو السيرفرات ونشره.</span>
+              <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-size:16px;color:#15803d;">✕</button>
+            `;
+            const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
+            if (mainContent) {
+              mainContent.insertBefore(banner, mainContent.firstChild);
+            }
+          }
+
+          sessionStorage.removeItem('decap_copied_entry');
+        }, 500);
+      }
+
+      let checkTimer;
+      const observer = new MutationObserver(() => {
+        clearTimeout(checkTimer);
+        checkTimer = setTimeout(() => {
+          injectListCopyButtons();
+          injectCopyButtonInEditor();
+          processPendingCopyTarget();
+          restoreCopiedEntry();
+        }, 150);
+      });
+
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      window.addEventListener('hashchange', () => {
+        setTimeout(() => {
+          injectListCopyButtons();
+          injectCopyButtonInEditor();
+          processPendingCopyTarget();
+          restoreCopiedEntry();
+        }, 200);
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        injectListCopyButtons();
+        injectCopyButtonInEditor();
+        processPendingCopyTarget();
+        restoreCopiedEntry();
+      });
+    })();
+  </script>
 </body>
 </html>

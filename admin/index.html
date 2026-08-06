@@ -28,6 +28,29 @@
       transform: translateY(-1px) !important;
       box-shadow: 0 4px 6px rgba(0,0,0,0.15) !important;
     }
+    .custom-list-copy-btn {
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      font-size: 12px !important;
+      padding: 5px 10px !important;
+      border-radius: 6px !important;
+      border: none !important;
+      cursor: pointer !important;
+      margin-inline-start: auto !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
+      transition: all 0.2s ease !important;
+      font-family: inherit !important;
+      z-index: 100 !important;
+      flex-shrink: 0 !important;
+    }
+    .custom-list-copy-btn:hover {
+      background-color: #1d4ed8 !important;
+      transform: scale(1.03) !important;
+    }
     .custom-copy-banner {
       background: #dcfce7 !important;
       color: #15803d !important;
@@ -88,6 +111,10 @@
         return /#\/collections\/[^\/]+\/new/.test(window.location.hash);
       }
 
+      function isCollectionView() {
+        return /#\/collections\/[^\/]+/.test(window.location.hash) && !isEditingEntry() && !isNewEntry();
+      }
+
       function captureFormFields() {
         const fieldData = [];
         const labels = Array.from(document.querySelectorAll('label'));
@@ -97,8 +124,8 @@
           if (!labelText) return;
 
           const lowerLabel = labelText.toLowerCase();
-          // Skip image and date fields
-          if (lowerLabel.includes('صورة') || lowerLabel.includes('تاريخ') || lowerLabel.includes('image') || lowerLabel.includes('date') || lowerLabel.includes('cover')) {
+          // Skip image and date fields specifically
+          if (lowerLabel.includes('صورة') || lowerLabel.includes('تاريخ') || lowerLabel.includes('image') || lowerLabel.includes('date') || lowerLabel.includes('cover') || lowerLabel.includes('event_date')) {
             return;
           }
 
@@ -106,17 +133,35 @@
           if (!parent) return;
 
           const inputs = parent.querySelectorAll('input, textarea, select');
-          inputs.forEach(input => {
+          inputs.forEach((input, index) => {
             if (input.type === 'file' || input.type === 'hidden') return;
             fieldData.push({
               label: labelText,
-              value: input.value,
+              value: input.value || '',
               tagName: input.tagName,
               type: input.type,
-              placeholder: input.placeholder || ''
+              placeholder: input.placeholder || '',
+              indexInLabel: index
             });
           });
         });
+
+        // Also capture list items like servers if present
+        const allInputs = Array.from(document.querySelectorAll('input, textarea, select'));
+        const unassignedInputs = allInputs.filter(input => {
+          if (input.type === 'file' || input.type === 'hidden') return false;
+          const parentLabel = input.closest('label') || (input.parentElement ? input.parentElement.querySelector('label') : null);
+          const labelText = parentLabel ? parentLabel.innerText.trim().toLowerCase() : '';
+          return !labelText.includes('صورة') && !labelText.includes('تاريخ') && !labelText.includes('date') && !labelText.includes('image');
+        });
+
+        const extraInputs = unassignedInputs.map(input => ({
+          value: input.value || '',
+          placeholder: input.placeholder || '',
+          tagName: input.tagName,
+          type: input.type,
+          name: input.name || ''
+        }));
 
         const allTextareas = Array.from(document.querySelectorAll('textarea'));
         const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
@@ -124,12 +169,14 @@
         return {
           collection: getCollectionFromHash(),
           fields: fieldData,
+          extraInputs: extraInputs,
           body: bodyTextarea ? bodyTextarea.value : '',
           timestamp: Date.now()
         };
       }
 
-      function injectCopyButton() {
+      // Inject copy button inside entry editor top bar
+      function injectCopyButtonInEditor() {
         if (!isEditingEntry()) {
           const existingBtn = document.getElementById('custom-copy-btn');
           if (existingBtn) existingBtn.remove();
@@ -159,7 +206,6 @@
             const collection = getCollectionFromHash() || 'shows';
 
             sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
-
             window.location.hash = `#/collections/${collection}/new`;
           });
 
@@ -169,6 +215,82 @@
             header.appendChild(btn);
           }
         }
+      }
+
+      // Inject copy button next to each entry item in the Collection List view
+      function injectListCopyButtons() {
+        if (!isCollectionView()) return;
+
+        const collection = getCollectionFromHash();
+        if (!collection) return;
+
+        // Find all entry links in the list
+        const entryLinks = Array.from(document.querySelectorAll('a[href*="#/collections/"]')).filter(a => a.href.includes('/entries/'));
+
+        entryLinks.forEach(link => {
+          // Get card/container element
+          const card = link.closest('li, div[class*="Card"], div[class*="ListItem"], div[class*="Container"]') || link.parentElement;
+          if (!card || card.querySelector('.custom-list-copy-btn')) return;
+
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'custom-list-copy-btn';
+          copyBtn.innerHTML = '📋 نسخ المقال';
+          copyBtn.title = 'نسخ بيانات هذا المقال بضغطة واحدة وتوليد مقال جديد';
+
+          copyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Set state to auto-copy when entry opens
+            sessionStorage.setItem('decap_pending_copy_target', JSON.stringify({
+              targetHref: link.getAttribute('href'),
+              collection: collection,
+              timestamp: Date.now()
+            }));
+
+            // Navigate to entry
+            window.location.hash = link.getAttribute('href').replace(/^.*#/, '#');
+          });
+
+          // Style container if needed
+          if (card.style.position !== 'relative' && card.style.position !== 'absolute') {
+            card.style.display = card.style.display || 'flex';
+            card.style.alignItems = 'center';
+            card.style.justifyContent = 'space-between';
+          }
+
+          card.appendChild(copyBtn);
+        });
+      }
+
+      // Handle intermediate step when opened via List Copy button
+      function processPendingCopyTarget() {
+        if (!isEditingEntry()) return;
+
+        const pendingRaw = sessionStorage.getItem('decap_pending_copy_target');
+        if (!pendingRaw) return;
+
+        let pending;
+        try { pending = JSON.parse(pendingRaw); } catch(e) { pending = null; }
+        if (!pending || Date.now() - pending.timestamp > 30000) {
+          sessionStorage.removeItem('decap_pending_copy_target');
+          return;
+        }
+
+        // Poll until inputs have loaded values or max 1200ms
+        let attempts = 0;
+        const interval = setInterval(() => {
+          attempts++;
+          const captured = captureFormFields();
+          const hasTitleOrData = captured.fields && captured.fields.some(f => f.value && f.value.trim().length > 0);
+
+          if (hasTitleOrData || attempts >= 8) {
+            clearInterval(interval);
+            sessionStorage.removeItem('decap_pending_copy_target');
+            sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
+            window.location.hash = `#/collections/${pending.collection || getCollectionFromHash() || 'shows'}/new`;
+          }
+        }, 150);
       }
 
       function restoreCopiedEntry() {
@@ -199,11 +321,27 @@
               if (matchingLabel) {
                 const parent = matchingLabel.closest('div') || matchingLabel.parentElement;
                 if (parent) {
-                  const input = parent.querySelector('input, textarea, select');
-                  if (input && item.value) {
-                    setReactInputValue(input, item.value);
+                  const inputs = parent.querySelectorAll('input, textarea, select');
+                  const targetInput = inputs[item.indexInLabel || 0] || inputs[0];
+                  if (targetInput && item.value) {
+                    setReactInputValue(targetInput, item.value);
                   }
                 }
+              }
+            });
+          }
+
+          if (data.extraInputs && data.extraInputs.length) {
+            const currentInputs = Array.from(document.querySelectorAll('input, textarea, select')).filter(input => {
+              if (input.type === 'file' || input.type === 'hidden') return false;
+              const parentLabel = input.closest('label') || (input.parentElement ? input.parentElement.querySelector('label') : null);
+              const labelText = parentLabel ? parentLabel.innerText.trim().toLowerCase() : '';
+              return !labelText.includes('صورة') && !labelText.includes('تاريخ') && !labelText.includes('date') && !labelText.includes('image');
+            });
+
+            data.extraInputs.forEach((item, idx) => {
+              if (currentInputs[idx] && item.value && !currentInputs[idx].value) {
+                setReactInputValue(currentInputs[idx], item.value);
               }
             });
           }
@@ -221,7 +359,7 @@
             banner.id = 'custom-copy-banner';
             banner.className = 'custom-copy-banner';
             banner.innerHTML = `
-              <span>✨ <strong>تم نسخ جميع البيانات بنجاح!</strong> (تم تفريغ الصورة والتاريخ لتبدأ بعرض جديد).</span>
+              <span>✨ <strong>تم نسخ بيانات المقال بنجاح!</strong> (تم تفريغ الصورة والتاريخ لتبدأ بعرض جديد).</span>
               <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-size:16px;color:#15803d;">✕</button>
             `;
             const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
@@ -238,7 +376,9 @@
       const observer = new MutationObserver(() => {
         clearTimeout(checkTimer);
         checkTimer = setTimeout(() => {
-          injectCopyButton();
+          injectListCopyButtons();
+          injectCopyButtonInEditor();
+          processPendingCopyTarget();
           restoreCopiedEntry();
         }, 150);
       });
@@ -247,13 +387,17 @@
 
       window.addEventListener('hashchange', () => {
         setTimeout(() => {
-          injectCopyButton();
+          injectListCopyButtons();
+          injectCopyButtonInEditor();
+          processPendingCopyTarget();
           restoreCopiedEntry();
         }, 200);
       });
 
       document.addEventListener('DOMContentLoaded', () => {
-        injectCopyButton();
+        injectListCopyButtons();
+        injectCopyButtonInEditor();
+        processPendingCopyTarget();
         restoreCopiedEntry();
       });
     })();
