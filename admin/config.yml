@@ -1,0 +1,95 @@
+backend:
+  name: github
+  repo: m7mdibrahimo/arab-wrestling
+  branch: main
+  base_url: https://arab-wrestling-auth.m7mdibrahimpc.workers.dev
+  auth_endpoint: auth
+
+site_url: https://18268a26.arab-wrestling.pages.dev
+display_url: https://18268a26.arab-wrestling.pages.dev
+
+media_folder: "content/images"
+public_folder: "/content/images"
+
+locale: "ar"
+
+collections:
+  - name: "shows"
+    label: "عروض المصارعة (الكاملة)"
+    label_singular: "عرض"
+    folder: "content/shows"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
+      - { label: "اسم العرض / الحلقة", name: "title", widget: "string" }
+      - { label: "تاريخ العرض (يدوي)", name: "event_date", widget: "string", required: false, hint: "مثال: 03.08.2026 أو 3 أغسطس 2026 (اتركه فارغاً للتاريخ الافتراضي)" }
+      - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false }
+      - { label: "مدة العرض", name: "duration", widget: "string", hint: "مثال: 2:14:00" }
+      - { label: "الوسوم / التاجز", name: "tags", widget: "list", required: false, hint: "أضف التاجز مثل: WWE, رومان راينز, RAW" }
+      - { label: "صورة الغلاف", name: "image", widget: "image", required: false }
+      - label: "سيرفرات المشاهدة"
+        name: "servers"
+        widget: "list"
+        required: false
+        hint: "أضف أكتر من سيرفر، الأول هيكون الافتراضي"
+        fields:
+          - { label: "اسم السيرفر", name: "label", widget: "string", hint: "مثال: سيرفر 1" }
+          - { label: "رابط الـ embed", name: "url", widget: "string" }
+      - label: "روابط التحميل"
+        name: "downloads"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "اسم الرابط", name: "label", widget: "string" }
+          - { label: "الرابط", name: "url", widget: "string" }
+      - { label: "التفاصيل / الوصف", name: "body", widget: "markdown", required: false }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
+
+  - name: "recaps"
+    label: "ملخصات العروض"
+    label_singular: "ملخص"
+    folder: "content/recaps"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
+      - { label: "اسم الحلقة", name: "title", widget: "string" }
+      - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false }
+      - { label: "عنوان الملخص", name: "headline", widget: "string" }
+      - { label: "وصف قصير", name: "description", widget: "text" }
+      - { label: "الوسوم / التاجز", name: "tags", widget: "list", required: false, hint: "أضف التاجز مثل: WWE, رومان راينز, RAW" }
+      - { label: "صورة الغلاف", name: "image", widget: "image", required: false }
+      - label: "سيرفرات المشاهدة"
+        name: "servers"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "اسم السيرفر", name: "label", widget: "string" }
+          - { label: "رابط الـ embed", name: "url", widget: "string" }
+      - { label: "التفاصيل الكاملة", name: "body", widget: "markdown", required: false }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
+
+  - name: "news"
+    label: "آخر الأخبار"
+    label_singular: "خبر"
+    folder: "content/news"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
+      - { label: "عنوان الخبر", name: "title", widget: "string" }
+      - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false }
+      - { label: "الوسوم / التاجز", name: "tags", widget: "list", required: false, hint: "أضف التاجز مثل: WWE, رومان راينز, RAW" }
+      - { label: "صورة", name: "image", widget: "image", required: false }
+      - { label: "تفاصيل الخبر", name: "body", widget: "markdown", required: false }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
