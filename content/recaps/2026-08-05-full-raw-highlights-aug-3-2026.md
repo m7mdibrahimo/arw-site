@@ -1,11 +1,16 @@
 ---
 readTime: "Full Raw highlights: Aug. 3, 2026"
 federation: WWE
-tags: ["WWE", "RAW", "ملخصات العروض", "ملخص الرو"]
 title: RAW Highlights 03.08.2026
+event_date: 2026-08-03
+date: 2026-08-05T17:55:00.000+03:00
 headline: ملخص عرض الرو 03.08.2026
 description: أهم الأحداث واللحظات المثيرة من عرض الرو.
-duration: 00:15:30
+tags:
+  - WWE
+  - RAW
+  - ملخصات العروض
+  - ملخص الرو
 image: /content/images/maxresdefault-1-.jpg
 servers:
   - label: "#1"
@@ -15,5 +20,5 @@ servers:
   - label: "#3"
     url: https://sg1.stackvid.com/watch/vf3GTJyPbaU
 layout: post-layout.njk
-date: 2026-08-05T17:55:00.000+03:00
+duration: 00:15:30
 ---
