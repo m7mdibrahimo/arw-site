@@ -11,7 +11,7 @@ tags:
   - ديناميت
   - Mexico
   - AEW
-image: /content/images/ohud92wgz6hh1.jpeg
+image: /content/images/dynamite-grand-slam-mexico-05.08.2026.jpg
 servers:
   - label: "#1"
     url: https://www.ok.ru/videoembed/16744922810976
