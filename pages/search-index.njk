@@ -5,6 +5,6 @@ eleventyExcludeFromCollections: true
 [
 {% for item in collections.allContent %}
 {% set kindLabel = "عرض" if item.kind == "show" else ("ملخص" if item.kind == "recap" else "خبر") %}
-{ "title": {{ item.data.title | jsonify | safe }}, "headline": {{ (item.data.headline or "") | jsonify | safe }}, "description": {{ (item.data.description or "") | jsonify | safe }}, "federation": {{ item.data.federation | jsonify | safe }}, "kind": {{ item.kind | jsonify | safe }}, "kindLabel": {{ kindLabel | jsonify | safe }}, "url": {{ item.url | jsonify | safe }}, "image": {{ (item.data.image or "") | jsonify | safe }} }{% if not loop.last %},{% endif %}
+{ "title": {{ item.data.title | jsonify | safe }}, "headline": {{ (item.data.headline or "") | jsonify | safe }}, "description": {{ (item.data.description or "") | jsonify | safe }}, "federation": {{ item.data.federation | jsonify | safe }}, "kind": {{ item.kind | jsonify | safe }}, "kindLabel": {{ kindLabel | jsonify | safe }}, "url": {{ item.url | jsonify | safe }}, "image": "{% optImg item.data.image, '' %}" }{% if not loop.last %},{% endif %}
 {% endfor %}
 ]

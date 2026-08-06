@@ -69,6 +69,12 @@
   
   
   <url>
+    <loc>https://arabwrestling.com/content/news/2026-08-06-أوميجا،-موكسلي-وبكس-في-المقدمة-أسماء-ثقيلة-تقترب-عقودها-من-النهاية-في-aew/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>https://arabwrestling.com/content/news/2026-08-06-تغطية-شاملة-لنتائج-عرض-aew-grand-slam-mexico-عودة-مدوية-لـ-mjf-ومواجهة-شوارع-دموية-تُلهب-أرينا-المكسيك/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -215,6 +221,12 @@
   
   <url>
     <loc>https://arabwrestling.com/tag/نتائج/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://arabwrestling.com/tag/AEW-،-عقود-AEW-،-اخبار-المصارعة-،-Kenny-Omega/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

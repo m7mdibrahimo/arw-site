@@ -107,30 +107,73 @@ module.exports = function(eleventyConfig) {
       }
     }
 
-    const isLocal = cleanInput.startsWith("/content/");
-    const source = isLocal ? "." + cleanInput : cleanInput;
-
+    const isLocal = cleanInput.startsWith("/content/") || cleanInput.startsWith("/images/");
+    
     if (isLocal) {
       const fs = require("fs");
-      if (!fs.existsSync(source)) {
+      const path = require("path");
+
+      let decoded = cleanInput;
+      try {
+        decoded = decodeURIComponent(cleanInput);
+      } catch (e) {}
+
+      let resolvedSource = null;
+      const candidates = [
+        "." + cleanInput,
+        "." + decoded,
+        "." + decoded.normalize("NFD"),
+        "." + decoded.normalize("NFC")
+      ];
+
+      for (const cand of candidates) {
+        if (fs.existsSync(cand)) {
+          resolvedSource = cand;
+          break;
+        }
+      }
+
+      if (!resolvedSource) {
+        try {
+          const filename = path.basename(decoded);
+          const imagesDir = "./content/images";
+          if (fs.existsSync(imagesDir)) {
+            const files = fs.readdirSync(imagesDir);
+            const targetNFC = filename.normalize("NFC");
+            const targetNFD = filename.normalize("NFD");
+            for (const f of files) {
+              if (f === filename || f.normalize("NFC") === targetNFC || f.normalize("NFD") === targetNFD) {
+                resolvedSource = path.join(imagesDir, f);
+                break;
+              }
+            }
+          }
+        } catch (err) {}
+      }
+
+      if (resolvedSource) {
+        try {
+          const metadata = await Image(resolvedSource, {
+            widths: [800],
+            formats: ["jpeg"],
+            outputDir: "_site/img/",
+            urlPath: "/img/",
+            sharpJpegOptions: { quality: 80, progressive: true }
+          });
+          const jpeg = metadata && metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
+          if (jpeg && jpeg.url) {
+            return jpeg.url;
+          }
+        } catch (e) {
+          console.error("optImg local processing error:", resolvedSource, e);
+        }
+      }
+
+      try {
+        return encodeURI(decodeURIComponent(cleanInput));
+      } catch (e) {
         return cleanInput;
       }
-      try {
-        const metadata = await Image(source, {
-          widths: [800],
-          formats: ["jpeg"],
-          outputDir: "_site/img/",
-          urlPath: "/img/",
-          sharpJpegOptions: { quality: 75, progressive: true }
-        });
-        const jpeg = metadata && metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
-        if (jpeg && jpeg.url) {
-          return jpeg.url;
-        }
-      } catch (e) {
-        console.error("optImg local processing error:", source, e);
-      }
-      return cleanInput;
     }
 
     try {
@@ -139,14 +182,18 @@ module.exports = function(eleventyConfig) {
         formats: ["jpeg"],
         outputDir: "_site/img/",
         urlPath: "/img/",
-        sharpJpegOptions: { quality: 75, progressive: true }
+        sharpJpegOptions: { quality: 80, progressive: true }
       });
       const jpeg = metadata && metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
       if (jpeg && jpeg.url) {
         return jpeg.url;
       }
     } catch (e) {
-      return cleanInput;
+      try {
+        return encodeURI(decodeURIComponent(cleanInput));
+      } catch (err) {
+        return cleanInput;
+      }
     }
 
     return cleanInput;
