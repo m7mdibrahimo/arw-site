@@ -47,10 +47,56 @@ module.exports = function(eleventyConfig) {
 
   const formatDate = function(dateObj, format) {
     if (!dateObj) return "";
-    const d = new Date(dateObj);
-    if (isNaN(d.getTime())) return dateObj;
+    let day, month, year;
     const months = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
-    return d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
+
+    if (typeof dateObj === "string") {
+      const str = dateObj.trim();
+      const dmMatch = str.match(/^(\d{1,2})[\.\/](\d{1,2})[\.\/](\d{4})/);
+      if (dmMatch) {
+        const p1 = parseInt(dmMatch[1], 10);
+        const p2 = parseInt(dmMatch[2], 10);
+        year = parseInt(dmMatch[3], 10);
+        if (str.includes(".")) {
+          day = p1;
+          month = p2 - 1;
+        } else if (p1 <= 12 && p2 <= 31 && str.includes("/")) {
+          if (p2 > 12) {
+            month = p1 - 1;
+            day = p2;
+          } else if (p1 > 12) {
+            day = p1;
+            month = p2 - 1;
+          } else {
+            month = p1 - 1;
+            day = p2;
+          }
+        } else {
+          day = p1;
+          month = p2 - 1;
+        }
+      } else {
+        const ymdMatch = str.match(/^(\d{4})[\.\/\-](\d{1,2})[\.\/\-](\d{1,2})/);
+        if (ymdMatch) {
+          year = parseInt(ymdMatch[1], 10);
+          month = parseInt(ymdMatch[2], 10) - 1;
+          day = parseInt(ymdMatch[3], 10);
+        }
+      }
+    }
+
+    if (day === undefined || isNaN(day) || month === undefined || isNaN(month) || year === undefined || isNaN(year)) {
+      const d = new Date(dateObj);
+      if (isNaN(d.getTime())) return dateObj;
+      day = d.getDate();
+      month = d.getMonth();
+      year = d.getFullYear();
+    }
+
+    if (month >= 0 && month < 12) {
+      return day + " " + months[month] + " " + year;
+    }
+    return dateObj;
   };
   eleventyConfig.addFilter("date", formatDate);
   eleventyConfig.addNunjucksFilter("date", formatDate);

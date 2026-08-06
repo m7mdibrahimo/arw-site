@@ -290,7 +290,7 @@ permalink: "/index.html"
           <span class="kind-badge kind-show">عرض</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
           <h3>{{ item.data.headline or item.data.title }}</h3>
           {% if item.data.description %}<p class="desc">{{ item.data.description }}</p>{% endif %}
-          <div class="foot"><span>{{ item.date | date("dd MMM") }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto;">⏱ {{ item.data.duration }}</span>{% endif %}</div>
+          <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto;">⏱ {{ item.data.duration }}</span>{% endif %}</div>
         </div>
       </a>
       {% endif %}
@@ -313,7 +313,7 @@ permalink: "/index.html"
           <span class="kind-badge kind-recap">ملخص</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
           <h3>{{ item.data.headline or item.data.title }}</h3>
           <p class="desc">{{ item.data.description }}</p>
-          <div class="foot"><span>{{ item.date | date("dd MMM") }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto;">⏱ {{ item.data.duration }}</span>{% endif %}</div>
+          <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto;">⏱ {{ item.data.duration }}</span>{% endif %}</div>
         </div>
       </a>
       {% endif %}

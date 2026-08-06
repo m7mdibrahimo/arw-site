@@ -227,6 +227,7 @@
     <div class="post-meta-bar">
       {% if federation %}<span class="post-fed cat-{{ federation | lower }}">{{ federation }}</span>{% endif %}
       {% if title and headline and title != headline %}<span class="post-ep-name">{{ title }}</span>{% endif %}
+      {% if event_date or date %}<span class="post-meta-tag">📅 بتاريخ {{ (event_date or date) | date }}</span>{% endif %}
       {% if duration %}<span class="post-meta-tag">⏱ {{ duration }}</span>{% endif %}
     </div>
     {% if not isNews %}
