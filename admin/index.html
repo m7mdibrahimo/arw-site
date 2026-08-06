@@ -75,16 +75,15 @@
   <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
   <script>
     (function() {
+      // Helper to trigger React change events properly on standard inputs
       function setReactInputValue(inputEl, value) {
         if (!inputEl) return;
         try {
-          const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
-          const nativeTextAreaValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value")?.set;
+          const prototype = inputEl.tagName === 'TEXTAREA' ? window.HTMLTextAreaElement.prototype : window.HTMLInputElement.prototype;
+          const nativeSetter = Object.getOwnPropertyDescriptor(prototype, "value")?.set;
           
-          if (inputEl.tagName === 'TEXTAREA' && nativeTextAreaValueSetter) {
-            nativeTextAreaValueSetter.call(inputEl, value);
-          } else if (nativeInputValueSetter) {
-            nativeInputValueSetter.call(inputEl, value);
+          if (nativeSetter) {
+            nativeSetter.call(inputEl, value);
           } else {
             inputEl.value = value;
           }
@@ -93,7 +92,7 @@
           inputEl.dispatchEvent(new Event('change', { bubbles: true }));
           inputEl.dispatchEvent(new Event('blur', { bubbles: true }));
         } catch(err) {
-          console.error('Copy script error setting input value:', err);
+          console.error('Error setting input value:', err);
         }
       }
 
@@ -115,67 +114,140 @@
         return /#\/collections\/[^\/]+/.test(window.location.hash) && !isEditingEntry() && !isNewEntry();
       }
 
-      function captureFormFields() {
-        const fieldData = [];
-        const labels = Array.from(document.querySelectorAll('label'));
-        
-        labels.forEach(label => {
-          const labelText = label.innerText ? label.innerText.trim() : '';
-          if (!labelText) return;
-
-          const lowerLabel = labelText.toLowerCase();
-          // Skip image and date fields specifically
-          if (lowerLabel.includes('صورة') || lowerLabel.includes('تاريخ') || lowerLabel.includes('image') || lowerLabel.includes('date') || lowerLabel.includes('cover') || lowerLabel.includes('event_date')) {
-            return;
-          }
-
-          const parent = label.closest('div') || label.parentElement;
-          if (!parent) return;
-
-          const inputs = parent.querySelectorAll('input, textarea, select');
-          inputs.forEach((input, index) => {
-            if (input.type === 'file' || input.type === 'hidden') return;
-            fieldData.push({
-              label: labelText,
-              value: input.value || '',
-              tagName: input.tagName,
-              type: input.type,
-              placeholder: input.placeholder || '',
-              indexInLabel: index
-            });
-          });
-        });
-
-        // Also capture list items like servers if present
-        const allInputs = Array.from(document.querySelectorAll('input, textarea, select'));
-        const unassignedInputs = allInputs.filter(input => {
-          if (input.type === 'file' || input.type === 'hidden') return false;
-          const parentLabel = input.closest('label') || (input.parentElement ? input.parentElement.querySelector('label') : null);
-          const labelText = parentLabel ? parentLabel.innerText.trim().toLowerCase() : '';
-          return !labelText.includes('صورة') && !labelText.includes('تاريخ') && !labelText.includes('date') && !labelText.includes('image');
-        });
-
-        const extraInputs = unassignedInputs.map(input => ({
-          value: input.value || '',
-          placeholder: input.placeholder || '',
-          tagName: input.tagName,
-          type: input.type,
-          name: input.name || ''
-        }));
-
-        const allTextareas = Array.from(document.querySelectorAll('textarea'));
-        const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
-
-        return {
-          collection: getCollectionFromHash(),
-          fields: fieldData,
-          extraInputs: extraInputs,
-          body: bodyTextarea ? bodyTextarea.value : '',
-          timestamp: Date.now()
-        };
+      function getSlugFromHash() {
+        const hash = window.location.hash;
+        const match = hash.match(/#\/collections\/[^\/]+\/entries\/([^\/]+)/);
+        return match ? match[1] : null;
       }
 
-      // Inject copy button inside entry editor top bar
+      // Robust Markdown & YAML Frontmatter Parser
+      function parseFrontmatter(mdContent) {
+        const result = { data: {}, body: '' };
+        if (!mdContent) return result;
+
+        const parts = mdContent.split(/^---$/m);
+        if (parts.length >= 3) {
+          const yamlText = parts[1];
+          result.body = parts.slice(2).join('---').trim();
+
+          const lines = yamlText.split('\n');
+          let currentKey = null;
+          let currentArray = null;
+          let currentObj = null;
+
+          lines.forEach(line => {
+            const trimmed = line.trim();
+            if (!trimmed || trimmed.startsWith('#')) return;
+
+            // Key: Value
+            const kvMatch = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
+            if (kvMatch && !line.startsWith(' ') && !line.startsWith('\t')) {
+              const key = kvMatch[1];
+              let val = kvMatch[2].trim();
+
+              if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+                val = val.slice(1, -1);
+              }
+
+              currentKey = key;
+
+              if (val.startsWith('[') && val.endsWith(']')) {
+                try {
+                  result.data[key] = JSON.parse(val);
+                } catch(e) {
+                  result.data[key] = val;
+                }
+                currentArray = null;
+                currentObj = null;
+              } else if (val !== '') {
+                result.data[key] = val;
+                currentArray = null;
+                currentObj = null;
+              } else {
+                result.data[key] = [];
+                currentArray = result.data[key];
+                currentObj = null;
+              }
+              return;
+            }
+
+            // Array item with dash
+            if (line.match(/^\s*-\s+/) && currentArray) {
+              const itemContent = line.replace(/^\s*-\s+/, '').trim();
+              if (itemContent.includes(':')) {
+                const [k, ...vParts] = itemContent.split(':');
+                let v = vParts.join(':').trim();
+                if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+                  v = v.slice(1, -1);
+                }
+                currentObj = {};
+                currentObj[k.trim()] = v;
+                currentArray.push(currentObj);
+              } else {
+                let cleanVal = itemContent;
+                if ((cleanVal.startsWith('"') && cleanVal.endsWith('"')) || (cleanVal.startsWith("'") && cleanVal.endsWith("'"))) {
+                  cleanVal = cleanVal.slice(1, -1);
+                }
+                currentArray.push(cleanVal);
+              }
+              return;
+            }
+
+            // Indented key inside object
+            if (line.match(/^\s+[a-zA-Z0-9_]+:/) && currentObj) {
+              const [k, ...vParts] = line.trim().split(':');
+              let v = vParts.join(':').trim();
+              if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) {
+                v = v.slice(1, -1);
+              }
+              currentObj[k.trim()] = v;
+            }
+          });
+        } else {
+          result.body = mdContent.trim();
+        }
+        return result;
+      }
+
+      // Execute copy action for a given collection and slug
+      async function doCopyArticle(collection, slug) {
+        try {
+          const filePath = `/content/${collection}/${slug}.md`;
+          const resp = await fetch(filePath);
+          if (!resp.ok) {
+            throw new Error('Could not fetch markdown file directly');
+          }
+          const text = await resp.text();
+          const parsed = parseFrontmatter(text);
+
+          // Clean out image and date fields as requested
+          delete parsed.data.image;
+          delete parsed.data.date;
+          delete parsed.data.event_date;
+
+          const copyData = {
+            collection: collection,
+            data: parsed.data,
+            body: parsed.body,
+            timestamp: Date.now()
+          };
+
+          sessionStorage.setItem('decap_copied_data', JSON.stringify(copyData));
+
+          // Try copying body to system clipboard as additional convenience
+          if (parsed.body && navigator.clipboard) {
+            try { navigator.clipboard.writeText(parsed.body); } catch(e){}
+          }
+
+          window.location.hash = `#/collections/${collection}/new`;
+        } catch(err) {
+          console.warn('Direct file fetch copy failed, fallbacking to DOM capture:', err);
+          // Fallback if fetch fails
+          window.location.hash = `#/collections/${collection}/entries/${slug}`;
+        }
+      }
+
+      // Inject Copy button on top toolbar when viewing an entry
       function injectCopyButtonInEditor() {
         if (!isEditingEntry()) {
           const existingBtn = document.getElementById('custom-copy-btn');
@@ -201,12 +273,11 @@
           btn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-
-            const captured = captureFormFields();
-            const collection = getCollectionFromHash() || 'shows';
-
-            sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
-            window.location.hash = `#/collections/${collection}/new`;
+            const col = getCollectionFromHash() || 'shows';
+            const slug = getSlugFromHash();
+            if (slug) {
+              doCopyArticle(col, slug);
+            }
           });
 
           if (publishBtn && publishBtn.parentNode) {
@@ -217,42 +288,34 @@
         }
       }
 
-      // Inject copy button next to each entry item in the Collection List view
+      // Inject Copy button next to each article in list view
       function injectListCopyButtons() {
         if (!isCollectionView()) return;
 
         const collection = getCollectionFromHash();
         if (!collection) return;
 
-        // Find all entry links in the list
         const entryLinks = Array.from(document.querySelectorAll('a[href*="#/collections/"]')).filter(a => a.href.includes('/entries/'));
 
         entryLinks.forEach(link => {
-          // Get card/container element
           const card = link.closest('li, div[class*="Card"], div[class*="ListItem"], div[class*="Container"]') || link.parentElement;
           if (!card || card.querySelector('.custom-list-copy-btn')) return;
+
+          const match = link.href.match(/#\/collections\/[^\/]+\/entries\/([^\/]+)/);
+          const slug = match ? match[1] : null;
+          if (!slug) return;
 
           const copyBtn = document.createElement('button');
           copyBtn.className = 'custom-list-copy-btn';
           copyBtn.innerHTML = '📋 نسخ المقال';
-          copyBtn.title = 'نسخ بيانات هذا المقال بضغطة واحدة وتوليد مقال جديد';
+          copyBtn.title = 'نسخ جميع بيانات هذا العرض بضغطة واحدة مع تفريغ الصورة والتاريخ';
 
           copyBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-
-            // Set state to auto-copy when entry opens
-            sessionStorage.setItem('decap_pending_copy_target', JSON.stringify({
-              targetHref: link.getAttribute('href'),
-              collection: collection,
-              timestamp: Date.now()
-            }));
-
-            // Navigate to entry
-            window.location.hash = link.getAttribute('href').replace(/^.*#/, '#');
+            doCopyArticle(collection, slug);
           });
 
-          // Style container if needed
           if (card.style.position !== 'relative' && card.style.position !== 'absolute') {
             card.style.display = card.style.display || 'flex';
             card.style.alignItems = 'center';
@@ -263,159 +326,190 @@
         });
       }
 
-      // Handle intermediate step when opened via List Copy button
-      function processPendingCopyTarget() {
-        if (!isEditingEntry()) return;
-
-        const pendingRaw = sessionStorage.getItem('decap_pending_copy_target');
-        if (!pendingRaw) return;
-
-        let pending;
-        try { pending = JSON.parse(pendingRaw); } catch(e) { pending = null; }
-        if (!pending || Date.now() - pending.timestamp > 60000) {
-          sessionStorage.removeItem('decap_pending_copy_target');
-          return;
-        }
-
-        // Show a brief loading indicator while reading entry data
-        if (!document.getElementById('custom-copy-loading')) {
-          const loader = document.createElement('div');
-          loader.id = 'custom-copy-loading';
-          loader.className = 'custom-copy-banner';
-          loader.style.background = '#eff6ff';
-          loader.style.color = '#1d4ed8';
-          loader.style.borderColor = '#bfdbfe';
-          loader.innerHTML = `<span>⏳ <strong>جاري نسخ بيانات المقال...</strong> برجاء الانتظار لحظة.</span>`;
-          const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
-          if (mainContent) mainContent.insertBefore(loader, mainContent.firstChild);
-        }
-
-        // Poll until inputs are fully populated with data (up to 6 seconds)
-        let attempts = 0;
-        const interval = setInterval(() => {
-          attempts++;
-          const captured = captureFormFields();
-          
-          // Check if key fields like Title, Headline, or Body are filled
-          const hasLoadedData = captured.fields && captured.fields.some(f => f.value && f.value.trim().length > 1);
-          const hasBody = captured.body && captured.body.trim().length > 5;
-
-          if (hasLoadedData || hasBody || attempts >= 40) {
-            clearInterval(interval);
-            const loadingEl = document.getElementById('custom-copy-loading');
-            if (loadingEl) loadingEl.remove();
-
-            sessionStorage.removeItem('decap_pending_copy_target');
-            sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
-            window.location.hash = `#/collections/${pending.collection || getCollectionFromHash() || 'shows'}/new`;
-          }
-        }, 150);
-      }
-
-      function restoreCopiedEntry() {
+      // Form filler for the new entry page
+      function populateNewEntryForm() {
         if (!isNewEntry()) return;
 
-        const rawData = sessionStorage.getItem('decap_copied_entry');
+        const rawData = sessionStorage.getItem('decap_copied_data');
         if (!rawData) return;
 
-        let data;
-        try {
-          data = JSON.parse(rawData);
-        } catch(e) {
-          sessionStorage.removeItem('decap_copied_entry');
-          return;
+        let copyObj;
+        try { copyObj = JSON.parse(rawData); } catch(e) { return; }
+
+        if (!copyObj || !copyObj.data) return;
+
+        // Render persistent banner
+        let banner = document.getElementById('custom-copy-banner');
+        if (!banner) {
+          banner = document.createElement('div');
+          banner.id = 'custom-copy-banner';
+          banner.className = 'custom-copy-banner';
+          banner.innerHTML = `
+            <div>
+              <span>✨ <strong>تم نسخ جميع بيانات المقال بنجاح!</strong></span>
+              <div style="font-size:12px;margin-top:2px;color:#166534;">تم ملء العرض والسيرفرات والتفاصيل وتفريغ الصورة والتاريخ لتبدأ بعرض جديد.</div>
+            </div>
+            <button id="custom-repopulate-btn" style="background:#15803d;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px;margin-inline-start:12px;">⚡ إعادة ملء الحقول تلقائياً</button>
+          `;
+          const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
+          if (mainContent) mainContent.insertBefore(banner, mainContent.firstChild);
+
+          document.getElementById('custom-repopulate-btn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            applyDataToDOM(copyObj);
+          });
         }
 
-        if (Date.now() - data.timestamp > 300000) {
-          sessionStorage.removeItem('decap_copied_entry');
-          return;
-        }
-
-        // Keep attempting to populate fields as the new entry form renders
-        let attempts = 0;
-        const fillInterval = setInterval(() => {
-          attempts++;
-          const labels = Array.from(document.querySelectorAll('label'));
-          let filledCount = 0;
-
-          if (data.fields && data.fields.length) {
-            data.fields.forEach(item => {
-              const matchingLabel = labels.find(l => l.innerText && l.innerText.trim() === item.label);
-              if (matchingLabel) {
-                const parent = matchingLabel.closest('div') || matchingLabel.parentElement;
-                if (parent) {
-                  const inputs = parent.querySelectorAll('input, textarea, select');
-                  const targetInput = inputs[item.indexInLabel || 0] || inputs[0];
-                  if (targetInput && item.value) {
-                    if (targetInput.tagName === 'SELECT') {
-                      targetInput.value = item.value;
-                      targetInput.dispatchEvent(new Event('change', { bubbles: true }));
-                    } else if (!targetInput.value || targetInput.value !== item.value) {
-                      setReactInputValue(targetInput, item.value);
-                    }
-                    filledCount++;
-                  }
-                }
-              }
-            });
-          }
-
-          if (data.extraInputs && data.extraInputs.length) {
-            const currentInputs = Array.from(document.querySelectorAll('input, textarea, select')).filter(input => {
-              if (input.type === 'file' || input.type === 'hidden') return false;
-              const parentLabel = input.closest('label') || (input.parentElement ? input.parentElement.querySelector('label') : null);
-              const labelText = parentLabel ? parentLabel.innerText.trim().toLowerCase() : '';
-              return !labelText.includes('صورة') && !labelText.includes('تاريخ') && !labelText.includes('date') && !labelText.includes('image');
-            });
-
-            data.extraInputs.forEach((item, idx) => {
-              if (currentInputs[idx] && item.value && (!currentInputs[idx].value || currentInputs[idx].value !== item.value)) {
-                setReactInputValue(currentInputs[idx], item.value);
-                filledCount++;
-              }
-            });
-          }
-
-          if (data.body) {
-            const allTextareas = Array.from(document.querySelectorAll('textarea'));
-            const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
-            if (bodyTextarea && (!bodyTextarea.value || bodyTextarea.value !== data.body)) {
-              setReactInputValue(bodyTextarea, data.body);
-              filledCount++;
-            }
-          }
-
-          // If inputs were populated or max attempts (15 * 200ms = 3s) reached
-          if (filledCount > 0 || attempts >= 20) {
-            clearInterval(fillInterval);
-
-            if (!document.getElementById('custom-copy-banner')) {
-              const banner = document.createElement('div');
-              banner.id = 'custom-copy-banner';
-              banner.className = 'custom-copy-banner';
-              banner.innerHTML = `
-                <span>✨ <strong>تم نسخ جميع بيانات المقال بنجاح!</strong> (يمكنك الآن تعديل التاريخ أو الصورة أو السيرفرات ثم نشر العرض الجديد).</span>
-                <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-size:16px;color:#15803d;">✕</button>
-              `;
-              const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
-              if (mainContent) {
-                mainContent.insertBefore(banner, mainContent.firstChild);
-              }
-            }
-
-            sessionStorage.removeItem('decap_copied_entry');
-          }
-        }, 200);
+        applyDataToDOM(copyObj);
       }
 
+      // Apply copied data to Decap CMS form controls
+      function applyDataToDOM(copyObj) {
+        const data = copyObj.data || {};
+        const bodyText = copyObj.body || '';
+
+        const labels = Array.from(document.querySelectorAll('label'));
+
+        // Helper to find input by label text
+        function getControlByLabelText(text) {
+          const lbl = labels.find(l => l.innerText && l.innerText.trim().includes(text));
+          if (!lbl) return null;
+          const parent = lbl.closest('div') || lbl.parentElement;
+          return parent ? parent.querySelector('input, textarea, select') : null;
+        }
+
+        // 1. Fill Title
+        if (data.title) {
+          const input = getControlByLabelText('اسم العرض') || getControlByLabelText('اسم الحلقة') || getControlByLabelText('عنوان الخبر') || getControlByLabelText('title');
+          if (input && (!input.value || input.value !== data.title)) setReactInputValue(input, data.title);
+        }
+
+        // 2. Fill Headline
+        if (data.headline) {
+          const input = getControlByLabelText('عنوان العرض الرئيسية') || getControlByLabelText('عنوان الملخص') || getControlByLabelText('headline');
+          if (input && (!input.value || input.value !== data.headline)) setReactInputValue(input, data.headline);
+        }
+
+        // 3. Fill Description
+        if (data.description) {
+          const input = getControlByLabelText('وصف قصير') || getControlByLabelText('description');
+          if (input && (!input.value || input.value !== data.description)) setReactInputValue(input, data.description);
+        }
+
+        // 4. Fill Duration
+        if (data.duration) {
+          const input = getControlByLabelText('مدة العرض') || getControlByLabelText('duration');
+          if (input && (!input.value || input.value !== data.duration)) setReactInputValue(input, data.duration);
+        }
+
+        // 5. Fill Federation (Select)
+        if (data.federation) {
+          const select = getControlByLabelText('الاتحاد') || getControlByLabelText('federation');
+          if (select && select.tagName === 'SELECT') {
+            select.value = data.federation;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+        }
+
+        // 6. Fill Servers (List)
+        if (Array.isArray(data.servers) && data.servers.length) {
+          const serverSection = labels.find(l => l.innerText && l.innerText.trim().includes('سيرفرات المشاهدة'));
+          if (serverSection) {
+            const container = serverSection.closest('div') || serverSection.parentElement;
+            if (container) {
+              const addBtn = Array.from(container.querySelectorAll('button')).find(b => b.innerText && (b.innerText.includes('Add') || b.innerText.includes('إضافة') || b.innerText.includes('سيرفر')));
+              
+              data.servers.forEach((srv, i) => {
+                const inputs = Array.from(container.querySelectorAll('input'));
+                const urlInputs = inputs.filter(inp => inp.placeholder && (inp.placeholder.includes('http') || inp.placeholder.includes('embed') || inp.placeholder.includes('رابط')));
+                
+                if (urlInputs.length <= i && addBtn) {
+                  addBtn.click();
+                }
+              });
+
+              setTimeout(() => {
+                const inputs = Array.from(container.querySelectorAll('input'));
+                data.servers.forEach((srv, i) => {
+                  const labelInp = container.querySelectorAll(`input[placeholder*="مثال"], input[placeholder*="اسم"]`)[i];
+                  const urlInp = container.querySelectorAll(`input[placeholder*="http"], input[placeholder*="embed"], input[placeholder*="رابط"]`)[i];
+                  
+                  if (labelInp && srv.label && !labelInp.value) setReactInputValue(labelInp, srv.label);
+                  if (urlInp && srv.url && !urlInp.value) setReactInputValue(urlInp, srv.url);
+                });
+              }, 100);
+            }
+          }
+        }
+
+        // 7. Fill Downloads (List)
+        if (Array.isArray(data.downloads) && data.downloads.length) {
+          const dlSection = labels.find(l => l.innerText && l.innerText.trim().includes('روابط التحميل'));
+          if (dlSection) {
+            const container = dlSection.closest('div') || dlSection.parentElement;
+            if (container) {
+              const addBtn = Array.from(container.querySelectorAll('button')).find(b => b.innerText && (b.innerText.includes('Add') || b.innerText.includes('إضافة')));
+              
+              data.downloads.forEach((dl, i) => {
+                const inputs = Array.from(container.querySelectorAll('input'));
+                if (inputs.length < (i + 1) * 2 && addBtn) addBtn.click();
+              });
+
+              setTimeout(() => {
+                data.downloads.forEach((dl, i) => {
+                  const inputs = Array.from(container.querySelectorAll('input'));
+                  const labelInp = inputs[i * 2];
+                  const urlInp = inputs[i * 2 + 1];
+                  if (labelInp && dl.label && !labelInp.value) setReactInputValue(labelInp, dl.label);
+                  if (urlInp && dl.url && !urlInp.value) setReactInputValue(urlInp, dl.url);
+                });
+              }, 100);
+            }
+          }
+        }
+
+        // 8. Fill Tags (List)
+        if (Array.isArray(data.tags) && data.tags.length) {
+          const tagSection = labels.find(l => l.innerText && l.innerText.trim().includes('الوسوم'));
+          if (tagSection) {
+            const container = tagSection.closest('div') || tagSection.parentElement;
+            if (container) {
+              const addBtn = Array.from(container.querySelectorAll('button')).find(b => b.innerText && (b.innerText.includes('Add') || b.innerText.includes('إضافة')));
+              data.tags.forEach((tag, i) => {
+                const inputs = Array.from(container.querySelectorAll('input'));
+                if (inputs.length <= i && addBtn) addBtn.click();
+              });
+
+              setTimeout(() => {
+                const inputs = Array.from(container.querySelectorAll('input'));
+                data.tags.forEach((tag, i) => {
+                  if (inputs[i] && typeof tag === 'string' && !inputs[i].value) {
+                    setReactInputValue(inputs[i], tag);
+                  }
+                });
+              }, 100);
+            }
+          }
+        }
+
+        // 9. Fill Body (Markdown)
+        if (bodyText) {
+          const allTextareas = Array.from(document.querySelectorAll('textarea'));
+          const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
+          if (bodyTextarea && (!bodyTextarea.value || bodyTextarea.value !== bodyText)) {
+            setReactInputValue(bodyTextarea, bodyText);
+          }
+        }
+      }
+
+      // Observer loop to ensure buttons and fillers run smoothly
       let checkTimer;
       const observer = new MutationObserver(() => {
         clearTimeout(checkTimer);
         checkTimer = setTimeout(() => {
           injectListCopyButtons();
           injectCopyButtonInEditor();
-          processPendingCopyTarget();
-          restoreCopiedEntry();
+          populateNewEntryForm();
         }, 150);
       });
 
@@ -425,16 +519,14 @@
         setTimeout(() => {
           injectListCopyButtons();
           injectCopyButtonInEditor();
-          processPendingCopyTarget();
-          restoreCopiedEntry();
+          populateNewEntryForm();
         }, 200);
       });
 
       document.addEventListener('DOMContentLoaded', () => {
         injectListCopyButtons();
         injectCopyButtonInEditor();
-        processPendingCopyTarget();
-        restoreCopiedEntry();
+        populateNewEntryForm();
       });
     })();
   </script>
