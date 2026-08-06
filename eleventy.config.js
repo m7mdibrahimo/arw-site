@@ -50,53 +50,40 @@ module.exports = function(eleventyConfig) {
     let day, month, year;
     const months = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
 
-    if (typeof dateObj === "string") {
+    if (dateObj instanceof Date) {
+      if (isNaN(dateObj.getTime())) return "";
+      day = dateObj.getUTCDate();
+      month = dateObj.getUTCMonth();
+      year = dateObj.getUTCFullYear();
+    } else if (typeof dateObj === "string") {
       const str = dateObj.trim();
-      const dmMatch = str.match(/^(\d{1,2})[\.\/](\d{1,2})[\.\/](\d{4})/);
-      if (dmMatch) {
-        const p1 = parseInt(dmMatch[1], 10);
-        const p2 = parseInt(dmMatch[2], 10);
-        year = parseInt(dmMatch[3], 10);
-        if (str.includes(".")) {
-          day = p1;
-          month = p2 - 1;
-        } else if (p1 <= 12 && p2 <= 31 && str.includes("/")) {
-          if (p2 > 12) {
-            month = p1 - 1;
-            day = p2;
-          } else if (p1 > 12) {
-            day = p1;
-            month = p2 - 1;
-          } else {
-            month = p1 - 1;
-            day = p2;
-          }
-        } else {
-          day = p1;
-          month = p2 - 1;
-        }
+      const ymdMatch = str.match(/^(\d{4})[\.\/\-](\d{1,2})[\.\/\-](\d{1,2})/);
+      if (ymdMatch) {
+        year = parseInt(ymdMatch[1], 10);
+        month = parseInt(ymdMatch[2], 10) - 1;
+        day = parseInt(ymdMatch[3], 10);
       } else {
-        const ymdMatch = str.match(/^(\d{4})[\.\/\-](\d{1,2})[\.\/\-](\d{1,2})/);
-        if (ymdMatch) {
-          year = parseInt(ymdMatch[1], 10);
-          month = parseInt(ymdMatch[2], 10) - 1;
-          day = parseInt(ymdMatch[3], 10);
+        const dmyMatch = str.match(/^(\d{1,2})[\.\/\-](\d{1,2})[\.\/\-](\d{4})/);
+        if (dmyMatch) {
+          day = parseInt(dmyMatch[1], 10);
+          month = parseInt(dmyMatch[2], 10) - 1;
+          year = parseInt(dmyMatch[3], 10);
         }
       }
     }
 
     if (day === undefined || isNaN(day) || month === undefined || isNaN(month) || year === undefined || isNaN(year)) {
       const d = new Date(dateObj);
-      if (isNaN(d.getTime())) return dateObj;
-      day = d.getDate();
-      month = d.getMonth();
-      year = d.getFullYear();
+      if (isNaN(d.getTime())) return String(dateObj);
+      day = d.getUTCDate();
+      month = d.getUTCMonth();
+      year = d.getUTCFullYear();
     }
 
-    if (month >= 0 && month < 12) {
+    if (month >= 0 && month < 12 && day > 0 && year > 0) {
       return day + " " + months[month] + " " + year;
     }
-    return dateObj;
+    return String(dateObj);
   };
   eleventyConfig.addFilter("date", formatDate);
   eleventyConfig.addNunjucksFilter("date", formatDate);
