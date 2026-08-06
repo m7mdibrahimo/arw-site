@@ -11,7 +11,7 @@ tags:
   - RAW
   - ملخصات العروض
   - ملخص الرو
-image: /content/images/e1.jpg
+image: /content/images/raw-highlights-03.08.2026.jpg
 servers:
   - label: "#1"
     url: https://www.ok.ru/videoembed/16732200438368
