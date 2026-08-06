@@ -1,12 +1,12 @@
 backend:
   name: github
-  repo: m7mdibrahimo/arab-wrestling
+  repo: m7mdibrahimo/arw-site
   branch: main
   base_url: https://arab-wrestling-auth.m7mdibrahimpc.workers.dev
   auth_endpoint: auth
 
-site_url: https://18268a26.arab-wrestling.pages.dev
-display_url: https://18268a26.arab-wrestling.pages.dev
+site_url: https://arab-wrestling.pages.dev
+display_url: https://arab-wrestling.pages.dev
 
 media_folder: "content/images"
 public_folder: "/content/images"
