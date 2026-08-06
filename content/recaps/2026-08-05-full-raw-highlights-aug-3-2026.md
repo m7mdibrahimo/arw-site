@@ -5,6 +5,7 @@ tags: ["WWE", "RAW", "ملخصات العروض", "ملخص الرو"]
 title: RAW Highlights 03.08.2026
 headline: ملخص عرض الرو 03.08.2026
 description: أهم الأحداث واللحظات المثيرة من عرض الرو.
+duration: 00:15:30
 image: /content/images/maxresdefault-1-.jpg
 servers:
   - label: "#1"

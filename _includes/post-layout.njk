@@ -176,6 +176,10 @@
   .tag-pill:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-3px) scale(1.05); box-shadow:0 6px 16px rgba(14,149,148,0.3); }
   .tag-pill .count{ font-size:11px; background:var(--teal-soft); color:var(--teal); padding:2px 7px; border-radius:999px; transition:all 0.2s ease; }
   .tag-pill:hover .count{ background:rgba(255,255,255,0.25); color:#fff; }
+  /* Scroll Reveal Smooth Motion */
+  .reveal{ opacity:1; transform:none; transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .reveal.reveal-hidden{ opacity:0; transform:translateY(28px); }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
 </style>
 </head>
 <body>
@@ -251,7 +255,7 @@
 </div>
 
 <main>
-  <div class="post-wrap">
+  <div class="post-wrap reveal">
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
     <div><span class="post-fed">{{ federation }}</span></div>
     {% if not isNews %}
@@ -266,15 +270,15 @@
         {% endfor %}
       </div>
       {% endif %}
-      <div class="video-embed">
+      <div class="video-embed reveal">
         <iframe id="videoFrame" src="{{ servers[0].url }}" allowfullscreen></iframe>
       </div>
     {% elif image %}
-    <img class="post-cover" src="{% optImg image, '' %}" alt="{{ title }}">
+    <img class="post-cover reveal" src="{% optImg image, '' %}" alt="{{ title }}">
     {% endif %}
 
     {% if downloads and downloads.length %}
-    <div class="download-links">
+    <div class="download-links reveal">
       <h3>روابط التحميل</h3>
       {% for d in downloads %}
       <a class="dl-btn" href="{{ d.url }}" target="_blank" rel="noopener">⬇ {{ d.label }}</a>
@@ -282,12 +286,12 @@
     </div>
     {% endif %}
 
-    <div class="post-body">
+    <div class="post-body reveal">
       {{ content | safe }}
     </div>
 
     {% if tags and tags.length %}
-    <div class="post-tags">
+    <div class="post-tags reveal">
       <span class="tags-label">الوسوم:</span>
       {% for tag in tags %}
         {% if tag %}
@@ -308,7 +312,22 @@
   © 2026 عرب راسلنج — موقع عربي مستقل غير تابع لأي اتحاد رسمي.
 </footer>
 
-
+<script>
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} });
+    }, { threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const rect = el.getBoundingClientRect();
+      if(rect.top < (window.innerHeight || document.documentElement.clientHeight)){
+        el.classList.add('is-visible');
+      } else {
+        el.classList.add('reveal-hidden');
+        io.observe(el);
+      }
+    });
+  }
+</script>
 <script>
   document.querySelectorAll('.server-tab').forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -330,16 +349,20 @@
     }
     if(saved === 'dark'){ document.documentElement.classList.add('arw-dark'); }
   })();
-  document.getElementById('arwThemeToggle').addEventListener('click', function(){
-    var isDark = document.documentElement.classList.toggle('arw-dark');
-    var val = isDark ? 'dark' : 'light';
-    try{ localStorage.setItem('arw-theme', val); }catch(e){}
-    document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
+  var themeBtn = document.getElementById('arwThemeToggle');
+  if(themeBtn){
+    themeBtn.addEventListener('click', function(){
+      var isDark = document.documentElement.classList.toggle('arw-dark');
+      var val = isDark ? 'dark' : 'light';
+      try{ localStorage.setItem('arw-theme', val); }catch(e){}
+      document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
+    });
+  }
+
+  window.addEventListener('pageshow', function(e) {
+    document.body.classList.remove('arw-page-exit');
   });
-</script>
 
-
-<script>
   (function(){
     var prefetched = new Set();
     function prefetch(url) {
@@ -364,6 +387,9 @@
         var href = a.getAttribute('href');
         if(href && !href.startsWith('#') && href !== location.pathname) {
           document.body.classList.add('arw-page-exit');
+          setTimeout(function(){
+            document.body.classList.remove('arw-page-exit');
+          }, 1200);
         }
       }
     });
