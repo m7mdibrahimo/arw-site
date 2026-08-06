@@ -201,7 +201,7 @@ permalink: "/shows/index.html"
     <span class="kind-badge kind-show">عرض</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
     <h3>{{ item.data.headline or item.data.title }}</h3>
     {% if item.data.description %}<p class="desc">{{ item.data.description }}</p>{% endif %}
-    <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto;">⏱ {{ item.data.duration }}</span>{% endif %}</div>
+    <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.data.duration }}</span>{% endif %}</div>
   </div>
 </a>
 {% endfor %}
