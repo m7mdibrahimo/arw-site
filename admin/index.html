@@ -272,20 +272,39 @@
 
         let pending;
         try { pending = JSON.parse(pendingRaw); } catch(e) { pending = null; }
-        if (!pending || Date.now() - pending.timestamp > 30000) {
+        if (!pending || Date.now() - pending.timestamp > 60000) {
           sessionStorage.removeItem('decap_pending_copy_target');
           return;
         }
 
-        // Poll until inputs have loaded values or max 1200ms
+        // Show a brief loading indicator while reading entry data
+        if (!document.getElementById('custom-copy-loading')) {
+          const loader = document.createElement('div');
+          loader.id = 'custom-copy-loading';
+          loader.className = 'custom-copy-banner';
+          loader.style.background = '#eff6ff';
+          loader.style.color = '#1d4ed8';
+          loader.style.borderColor = '#bfdbfe';
+          loader.innerHTML = `<span>⏳ <strong>جاري نسخ بيانات المقال...</strong> برجاء الانتظار لحظة.</span>`;
+          const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
+          if (mainContent) mainContent.insertBefore(loader, mainContent.firstChild);
+        }
+
+        // Poll until inputs are fully populated with data (up to 6 seconds)
         let attempts = 0;
         const interval = setInterval(() => {
           attempts++;
           const captured = captureFormFields();
-          const hasTitleOrData = captured.fields && captured.fields.some(f => f.value && f.value.trim().length > 0);
+          
+          // Check if key fields like Title, Headline, or Body are filled
+          const hasLoadedData = captured.fields && captured.fields.some(f => f.value && f.value.trim().length > 1);
+          const hasBody = captured.body && captured.body.trim().length > 5;
 
-          if (hasTitleOrData || attempts >= 8) {
+          if (hasLoadedData || hasBody || attempts >= 40) {
             clearInterval(interval);
+            const loadingEl = document.getElementById('custom-copy-loading');
+            if (loadingEl) loadingEl.remove();
+
             sessionStorage.removeItem('decap_pending_copy_target');
             sessionStorage.setItem('decap_copied_entry', JSON.stringify(captured));
             window.location.hash = `#/collections/${pending.collection || getCollectionFromHash() || 'shows'}/new`;
@@ -312,9 +331,13 @@
           return;
         }
 
-        setTimeout(() => {
+        // Keep attempting to populate fields as the new entry form renders
+        let attempts = 0;
+        const fillInterval = setInterval(() => {
+          attempts++;
           const labels = Array.from(document.querySelectorAll('label'));
-          
+          let filledCount = 0;
+
           if (data.fields && data.fields.length) {
             data.fields.forEach(item => {
               const matchingLabel = labels.find(l => l.innerText && l.innerText.trim() === item.label);
@@ -324,7 +347,13 @@
                   const inputs = parent.querySelectorAll('input, textarea, select');
                   const targetInput = inputs[item.indexInLabel || 0] || inputs[0];
                   if (targetInput && item.value) {
-                    setReactInputValue(targetInput, item.value);
+                    if (targetInput.tagName === 'SELECT') {
+                      targetInput.value = item.value;
+                      targetInput.dispatchEvent(new Event('change', { bubbles: true }));
+                    } else if (!targetInput.value || targetInput.value !== item.value) {
+                      setReactInputValue(targetInput, item.value);
+                    }
+                    filledCount++;
                   }
                 }
               }
@@ -340,8 +369,9 @@
             });
 
             data.extraInputs.forEach((item, idx) => {
-              if (currentInputs[idx] && item.value && !currentInputs[idx].value) {
+              if (currentInputs[idx] && item.value && (!currentInputs[idx].value || currentInputs[idx].value !== item.value)) {
                 setReactInputValue(currentInputs[idx], item.value);
+                filledCount++;
               }
             });
           }
@@ -349,27 +379,33 @@
           if (data.body) {
             const allTextareas = Array.from(document.querySelectorAll('textarea'));
             const bodyTextarea = allTextareas.find(ta => ta.placeholder && (ta.placeholder.includes('Body') || ta.placeholder.includes('محتوى') || ta.rows > 5)) || allTextareas[allTextareas.length - 1];
-            if (bodyTextarea) {
+            if (bodyTextarea && (!bodyTextarea.value || bodyTextarea.value !== data.body)) {
               setReactInputValue(bodyTextarea, data.body);
+              filledCount++;
             }
           }
 
-          if (!document.getElementById('custom-copy-banner')) {
-            const banner = document.createElement('div');
-            banner.id = 'custom-copy-banner';
-            banner.className = 'custom-copy-banner';
-            banner.innerHTML = `
-              <span>✨ <strong>تم نسخ بيانات المقال بنجاح!</strong> (تم تفريغ الصورة والتاريخ لتبدأ بعرض جديد).</span>
-              <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-size:16px;color:#15803d;">✕</button>
-            `;
-            const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
-            if (mainContent) {
-              mainContent.insertBefore(banner, mainContent.firstChild);
-            }
-          }
+          // If inputs were populated or max attempts (15 * 200ms = 3s) reached
+          if (filledCount > 0 || attempts >= 20) {
+            clearInterval(fillInterval);
 
-          sessionStorage.removeItem('decap_copied_entry');
-        }, 500);
+            if (!document.getElementById('custom-copy-banner')) {
+              const banner = document.createElement('div');
+              banner.id = 'custom-copy-banner';
+              banner.className = 'custom-copy-banner';
+              banner.innerHTML = `
+                <span>✨ <strong>تم نسخ جميع بيانات المقال بنجاح!</strong> (يمكنك الآن تعديل التاريخ أو الصورة أو السيرفرات ثم نشر العرض الجديد).</span>
+                <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-size:16px;color:#15803d;">✕</button>
+              `;
+              const mainContent = document.querySelector('main, form, [class*="ControlPane"], body');
+              if (mainContent) {
+                mainContent.insertBefore(banner, mainContent.firstChild);
+              }
+            }
+
+            sessionStorage.removeItem('decap_copied_entry');
+          }
+        }, 200);
       }
 
       let checkTimer;
