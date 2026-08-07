@@ -392,23 +392,6 @@
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
   })();
-
-  (function(){
-    try {
-      var vId = localStorage.getItem('arw_vid');
-      if(!vId){
-        vId = 'v_' + Math.random().toString(36).substr(2,9);
-        localStorage.setItem('arw_vid', vId);
-      }
-      var p = window.location.pathname;
-      var t = document.title;
-      var dev = (window.innerWidth <= 600) ? 'mobile' : (window.innerWidth <= 1024) ? 'tablet' : 'desktop';
-      var isH = (!navigator.webdriver && window.outerWidth > 0 && window.outerHeight > 0) ? '1' : '0';
-      var ref = encodeURIComponent(document.referrer || 'مباشر');
-      var pingUrl = '/api/analytics/ping?path=' + encodeURIComponent(p) + '&title=' + encodeURIComponent(t) + '&vid=' + vId + '&device=' + dev + '&is_human=' + isH + '&ref=' + ref;
-      fetch(pingUrl, { keepalive: true }).catch(function(){});
-    } catch(e) {}
-  })();
 </script>
 </body>
 </html>
