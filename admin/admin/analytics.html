@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>لوحة تحليلات الزوار الحقيقيين - عرب راسلنج</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1218;
+    --panel: #171c26;
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --accent: #0e9594;
+    --accent-light: rgba(14, 149, 148, 0.15);
+    --green: #22c55e;
+    --green-soft: rgba(34, 197, 94, 0.15);
+    --red: #ef4444;
+    --red-soft: rgba(239, 68, 68, 0.15);
+    --gold: #f59e0b;
+    --gold-soft: rgba(245, 158, 11, 0.15);
+    --ink: #f3f4f6;
+    --muted: #9ca3af;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Tajawal', sans-serif;
+    padding: 24px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Cairo', sans-serif; font-weight: 800; }
+
+  .header-bar {
+    max-width: 1280px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    padding: 20px 24px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .brand-area { display: flex; align-items: center; gap: 14px; }
+  .brand-area .logo {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--accent), #0b7c7b);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 900;
+    font-size: 20px;
+    font-family: 'Cairo', sans-serif;
+    box-shadow: 0 4px 14px rgba(14, 149, 148, 0.4);
+  }
+  .brand-title h1 { font-size: 20px; color: #fff; }
+  .brand-title p { font-size: 13px; color: var(--muted); }
+
+  .actions-area { display: flex; align-items: center; gap: 12px; }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-soft);
+    color: var(--green);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  }
+
+  .btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border: 1px solid var(--panel-border);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.2); }
+  .btn-accent { background: var(--accent); border-color: var(--accent); }
+  .btn-accent:hover { background: #0b7c7b; }
+
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  /* Metrics Grid */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .metric-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    padding: 22px;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .metric-card:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.18); }
+
+  .metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .metric-title { font-size: 14px; color: var(--muted); font-weight: 700; }
+  .metric-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .metric-val { font-size: 32px; font-weight: 900; font-family: 'Cairo', sans-serif; color: #fff; margin-bottom: 6px; }
+  .metric-foot { font-size: 12.5px; display: flex; align-items: center; gap: 6px; }
+  .tag-green { color: var(--green); }
+  .tag-red { color: var(--red); }
+  .tag-gold { color: var(--gold); }
+
+  /* Dashboard Section Layout */
+  .layout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 960px) {
+    .layout-grid { grid-template-columns: 1fr; }
+  }
+
+  .panel-box {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 24px;
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+  .panel-head h2 { font-size: 17px; color: #fff; display: flex; align-items: center; gap: 8px; }
+
+  /* Bar Chart Simulation */
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 200px;
+    padding-top: 20px;
+    gap: 12px;
+  }
+  .bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  .bar-stack {
+    width: 100%;
+    max-width: 36px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .bar-fill-real { background: linear-gradient(180deg, #0e9594, #12b0af); transition: height 0.6s ease; }
+  .bar-fill-bot { background: rgba(239, 68, 68, 0.4); transition: height 0.6s ease; }
+  .bar-label { font-size: 12px; color: var(--muted); margin-top: 8px; font-weight: 700; }
+  .bar-val { font-size: 11px; color: #fff; margin-bottom: 4px; font-weight: 800; }
+
+  /* Traffic Quality Gauge & Progress Bars */
+  .quality-container { margin-bottom: 20px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 700; margin-bottom: 6px; }
+  .progress-track {
+    height: 12px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+  }
+  .progress-bar-real { background: var(--green); height: 100%; transition: width 0.5s ease; }
+  .progress-bar-bot { background: var(--red); height: 100%; transition: width 0.5s ease; }
+
+  /* Device List */
+  .device-list { display: flex; flex-direction: column; gap: 12px; }
+  .device-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.03);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+  }
+
+  /* Live Activity Stream Table */
+  .activity-list { display: flex; flex-direction: column; gap: 10px; max-height: 380px; overflow-y: auto; }
+  .activity-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    gap: 12px;
+  }
+  .activity-title { font-weight: 700; color: #fff; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .activity-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 800;
+  }
+  .tag-human { background: var(--green-soft); color: var(--green); }
+  .tag-device { background: rgba(255,255,255,0.08); color: var(--muted); }
+
+  /* Top Articles Table */
+  .table-responsive { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; text-align: right; font-size: 13.5px; }
+  th { padding: 12px 16px; color: var(--muted); font-size: 12.5px; font-weight: 800; border-bottom: 1px solid var(--panel-border); }
+  td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: #fff; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge-cat {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .badge-shows { background: var(--gold-soft); color: var(--gold); }
+  .badge-recaps { background: rgba(124,110,232,0.2); color: #9a8ff0; }
+  .badge-news { background: var(--accent-light); color: var(--accent); }
+
+  .rank-pill {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="header-bar">
+    <div class="brand-area">
+      <div class="logo">ع</div>
+      <div class="brand-title">
+        <h1>لوحة تحليلات الزوار الحقيقيين</h1>
+        <p>نظام ذكي لفلترة البوتات وحساب الترافيك البشري الفعلي لموقع عرب راسلنج</p>
+      </div>
+    </div>
+    <div class="actions-area">
+      <div class="live-badge">
+        <span class="pulse-dot"></span>
+        <span>مباشر: <span id="liveActiveCount">0</span> زوار نشطون الآن</span>
+      </div>
+      <a href="/admin/" class="btn">📝 إدارة المحتوى (CMS)</a>
+      <button class="btn btn-accent" id="btnRefresh">🔄 تحديث الآن</button>
+    </div>
+  </div>
+
+  <!-- Key Stat Cards -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">الزوار الحقيقيون اليوم</span>
+        <div class="metric-icon" style="background: var(--green-soft); color: var(--green);">👤</div>
+      </div>
+      <div class="metric-val" id="valRealVisitorsToday">0</div>
+      <div class="metric-foot">
+        <span class="tag-green">✅ زوار بشريون مؤكدون</span>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">مشاهدات الصفحات الحقيقية اليوم</span>
+        <div class="metric-icon" style="background: var(--accent-light); color: var(--accent);">👁️</div>
+      </div>
+      <div class="metric-val" id="valRealPageViewsToday">0</div>
+      <div class="metric-foot">
+        <span class="tag-green">📈 تفاعل حقيقي داخل الصفحات</span>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">البوتات والترافيك الوهمي المفلتر</span>
+        <div class="metric-icon" style="background: var(--red-soft); color: var(--red);">🛡️</div>
+      </div>
+      <div class="metric-val" id="valBotHitsToday">0</div>
+      <div class="metric-foot">
+        <span class="tag-red">🚫 تم حظر وإبعاد الزيارات الآلية</span>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-header">
+        <span class="metric-title">جودة الترافيك الإجمالية</span>
+        <div class="metric-icon" style="background: var(--gold-soft); color: var(--gold);">⭐</div>
+      </div>
+      <div class="metric-val" id="valHumanPercentage">0%</div>
+      <div class="metric-foot">
+        <span class="tag-gold">نسبة الزوار البشريين الحقيقيين</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout-grid">
+    <!-- Left Column: Chart & Top Articles -->
+    <div>
+      <div class="panel-box">
+        <div class="panel-head">
+          <h2>📊 حركة الزوار الحقيقيين (آخر 7 أيام)</h2>
+          <span style="font-size:12px; color:var(--muted);">أخضر: زوار حقيقيون | أحمر: بوتات فلترت</span>
+        </div>
+        <div class="chart-bars" id="chartContainer">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <div class="panel-head">
+          <h2>🔥 الأكثر مشاهدة من الزوار الحقيقيين</h2>
+          <span style="font-size:12px; color:var(--muted);">مرتبة بحسب المشاهدات البشرية الفعلية</span>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:50px;">#</th>
+                <th>عنوان الموضوع / العرض</th>
+                <th>القسم</th>
+                <th>المشاهدات الحقيقية</th>
+                <th>الزوار الفريدون</th>
+                <th style="width:60px;">رابط</th>
+              </tr>
+            </thead>
+            <tbody id="topArticlesBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Quality Gauge & Live Feed -->
+    <div>
+      <div class="panel-box">
+        <div class="panel-head">
+          <h2>🛡️ نظام فلترة الزوار الحقيقيين</h2>
+        </div>
+        <div class="quality-container">
+          <div class="progress-label">
+            <span>بشريون حقيقيون (<span id="txtRealPercent">85%</span>)</span>
+            <span>بوتات مفلترة (<span id="txtBotPercent">15%</span>)</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar-real" id="barReal" style="width: 85%;"></div>
+            <div class="progress-bar-bot" id="barBot" style="width: 15%;"></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <h3 style="font-size: 14px; color: var(--muted); margin-bottom: 12px;">📱 توزيع الأجهزة الحقيقية</h3>
+          <div class="device-list" id="deviceList">
+            <div class="device-item">
+              <span>📱 هاتف جوال</span>
+              <strong id="devMobile">0%</strong>
+            </div>
+            <div class="device-item">
+              <span>💻 كمبيوتر محمول/مكتبي</span>
+              <strong id="devDesktop">0%</strong>
+            </div>
+            <div class="device-item">
+              <span>📱 أجهزة تابلت</span>
+              <strong id="devTablet">0%</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <div class="panel-head">
+          <h2>⚡ سجل الزيارات الحقيقية المباشرة</h2>
+        </div>
+        <div class="activity-list" id="activityFeed">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+async function fetchAnalytics() {
+  try {
+    const res = await fetch('/api/analytics/stats');
+    if (!res.ok) return;
+    const data = await res.json();
+    renderDashboard(data);
+  } catch (e) {
+    console.error('Failed to load stats:', e);
+  }
+}
+
+function renderDashboard(data) {
+  const sum = data.summary || {};
+  
+  document.getElementById('liveActiveCount').textContent = sum.liveActiveCount || 1;
+  document.getElementById('valRealVisitorsToday').textContent = Number(sum.realVisitorsToday || 0).toLocaleString('ar-EG');
+  document.getElementById('valRealPageViewsToday').textContent = Number(sum.realPageViewsToday || 0).toLocaleString('ar-EG');
+  document.getElementById('valBotHitsToday').textContent = Number(sum.botHitsToday || 0).toLocaleString('ar-EG');
+  
+  const hPercent = sum.humanPercentage || 85;
+  document.getElementById('valHumanPercentage').textContent = hPercent + '%';
+  document.getElementById('txtRealPercent').textContent = hPercent + '%';
+  document.getElementById('txtBotPercent').textContent = (100 - hPercent) + '%';
+  
+  document.getElementById('barReal').style.width = hPercent + '%';
+  document.getElementById('barBot').style.width = (100 - hPercent) + '%';
+
+  // Devices
+  if (sum.devices) {
+    const totDev = (sum.devices.mobile || 1) + (sum.devices.desktop || 0) + (sum.devices.tablet || 0);
+    document.getElementById('devMobile').textContent = Math.round((sum.devices.mobile / totDev) * 100) + '%';
+    document.getElementById('devDesktop').textContent = Math.round((sum.devices.desktop / totDev) * 100) + '%';
+    document.getElementById('devTablet').textContent = Math.round((sum.devices.tablet / totDev) * 100) + '%';
+  }
+
+  // Render 7 days chart
+  const chartEl = document.getElementById('chartContainer');
+  chartEl.innerHTML = '';
+  const days = data.last7Days || [];
+  
+  let maxViews = 1;
+  days.forEach(d => { if (d.realViews > maxViews) maxViews = d.realViews; });
+
+  days.forEach(d => {
+    const col = document.createElement('div');
+    col.className = 'bar-col';
+    
+    const realH = Math.max(15, Math.round((d.realViews / maxViews) * 150));
+    const botH = Math.max(4, Math.round((d.botHits / maxViews) * 150));
+
+    col.innerHTML = `
+      <div class="bar-val">${d.realViews}</div>
+      <div class="bar-stack" style="height:${realH + botH}px;">
+        <div class="bar-fill-real" style="height:${realH}px;" title="حقيقيون: ${d.realViews}"></div>
+        <div class="bar-fill-bot" style="height:${botH}px;" title="بوتات: ${d.botHits}"></div>
+      </div>
+      <div class="bar-label">${d.dayName}</div>
+    `;
+    chartEl.appendChild(col);
+  });
+
+  // Render Top 20 Table
+  const tableBody = document.getElementById('topArticlesBody');
+  tableBody.innerHTML = '';
+  const topList = data.top20 || [];
+
+  topList.forEach(art => {
+    const tr = document.createElement('tr');
+    let catBadgeClass = 'badge-news';
+    if (art.category.includes('عروض')) catBadgeClass = 'badge-shows';
+    else if (art.category.includes('ملخصات')) catBadgeClass = 'badge-recaps';
+
+    tr.innerHTML = `
+      <td><span class="rank-pill">${art.rank}</span></td>
+      <td style="font-weight:700;">${art.title}</td>
+      <td><span class="badge-cat ${catBadgeClass}">${art.category}</span></td>
+      <td style="font-weight:900; color:var(--green);">${Number(art.realViews).toLocaleString('ar-EG')}</td>
+      <td style="color:var(--muted);">${Number(art.uniqueHumans).toLocaleString('ar-EG')}</td>
+      <td><a href="${art.path}" target="_blank" style="color:var(--accent); text-decoration:none;">عرض 🔗</a></td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // Render Activity Log
+  const actEl = document.getElementById('activityFeed');
+  actEl.innerHTML = '';
+  const logs = data.recentLogs || [];
+
+  if (logs.length === 0) {
+    actEl.innerHTML = '<p style="color:var(--muted); font-size:13px; text-align:center; padding:12px;">جاري استقبال الزيارات المباشرة...</p>';
+  } else {
+    logs.forEach(log => {
+      const item = document.createElement('div');
+      item.className = 'activity-item';
+      item.innerHTML = `
+        <span class="activity-tag tag-human">إنسان حقيقي ✅</span>
+        <span class="activity-title">${log.title}</span>
+        <span class="activity-tag tag-device">${log.device}</span>
+        <span style="color:var(--muted); font-size:11.5px;">${log.timestamp}</span>
+      `;
+      actEl.appendChild(item);
+    });
+  }
+}
+
+document.getElementById('btnRefresh').addEventListener('click', fetchAnalytics);
+
+// Auto-refresh every 8 seconds
+fetchAnalytics();
+setInterval(fetchAnalytics, 8000);
+</script>
+
+</body>
+</html>
