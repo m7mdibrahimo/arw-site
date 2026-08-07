@@ -211,6 +211,7 @@
       <li><a class="navlink " href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink " href="/recaps/">ملخصات العروض</a></li>
       <li><a class="navlink " href="/news/">الأخبار</a></li>
+      <li><a class="navlink " href="/admin/">📊 لوحة التحكم</a></li>
       <li>
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
           <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
@@ -391,6 +392,19 @@
       var a = e.target.closest && e.target.closest('a');
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
+  })();
+
+  (function(){
+    try {
+      var vId = localStorage.getItem('arw_vid');
+      if(!vId){
+        vId = 'v_' + Math.random().toString(36).substr(2,9);
+        localStorage.setItem('arw_vid', vId);
+      }
+      var p = window.location.pathname;
+      var t = document.title;
+      fetch('/api/analytics/ping?path=' + encodeURIComponent(p) + '&title=' + encodeURIComponent(t) + '&vid=' + vId, { keepalive: true }).catch(function(){});
+    } catch(e) {}
   })();
 </script>
 </body>
