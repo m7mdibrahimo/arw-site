@@ -247,17 +247,23 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("content/images");
-  eleventyConfig.addPassthroughCopy("google*.html");
+  eleventyConfig.addPassthroughCopy("googlee6fae402f63eee54.html");
 
   eleventyConfig.on("eleventy.after", () => {
     const fs = require("fs");
+    if (!fs.existsSync("_site")) fs.mkdirSync("_site", { recursive: true });
     if (fs.existsSync("favicon.svg")) {
-      if (!fs.existsSync("_site")) fs.mkdirSync("_site", { recursive: true });
       fs.copyFileSync("favicon.svg", "_site/favicon.svg");
       fs.copyFileSync("favicon.svg", "_site/favicon.ico");
       fs.copyFileSync("favicon.svg", "_site/favicon.png");
       fs.copyFileSync("favicon.svg", "_site/apple-touch-icon.png");
     }
+    const files = fs.readdirSync(".");
+    files.forEach(file => {
+      if (file.startsWith("google") && file.endsWith(".html")) {
+        fs.copyFileSync(file, `_site/${file}`);
+      }
+    });
   });
 
   return {
