@@ -402,7 +402,11 @@
       }
       var p = window.location.pathname;
       var t = document.title;
-      fetch('/api/analytics/ping?path=' + encodeURIComponent(p) + '&title=' + encodeURIComponent(t) + '&vid=' + vId, { keepalive: true }).catch(function(){});
+      var dev = (window.innerWidth <= 600) ? 'mobile' : (window.innerWidth <= 1024) ? 'tablet' : 'desktop';
+      var isH = (!navigator.webdriver && window.outerWidth > 0 && window.outerHeight > 0) ? '1' : '0';
+      var ref = encodeURIComponent(document.referrer || 'مباشر');
+      var pingUrl = '/api/analytics/ping?path=' + encodeURIComponent(p) + '&title=' + encodeURIComponent(t) + '&vid=' + vId + '&device=' + dev + '&is_human=' + isH + '&ref=' + ref;
+      fetch(pingUrl, { keepalive: true }).catch(function(){});
     } catch(e) {}
   })();
 </script>
