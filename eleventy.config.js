@@ -247,6 +247,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("content/images");
+  eleventyConfig.addPassthroughCopy("google*.html");
 
   eleventyConfig.on("eleventy.after", () => {
     const fs = require("fs");
