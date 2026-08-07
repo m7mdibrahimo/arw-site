@@ -1,119 +1,12 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة تحكم عرب راسلنج</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
-  <style>
-    #arwAdminNav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 48px;
-      background: #0f1218;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      font-family: 'Tajawal', sans-serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    #arwAdminNav .brand {
-      color: #fff;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 900;
-      font-size: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    #arwAdminNav .brand span { color: #0e9594; }
-    #arwAdminNav .tabs {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    #arwAdminNav .tab-btn {
-      color: #9ca3af;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      text-decoration: none;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      background: rgba(255,255,255,0.08);
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Tajawal', sans-serif;
-    }
-    #arwAdminNav .tab-btn:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.18);
-    }
-    #arwAdminNav .tab-btn.active {
-      color: #fff;
-      background: #0e9594;
-    }
-    body {
-      padding-top: 48px !important;
-      margin: 0;
-      background: #111827;
-    }
-    iframe#analyticsFrame {
-      width: 100%;
-      height: calc(100vh - 48px);
-      border: none;
-      display: none;
-      background: #0f1218;
-    }
-  </style>
+  <title>Content Manager</title>
 </head>
 <body>
-  <div id="arwAdminNav">
-    <div class="brand">
-      لوحة تحكم <span>عرب راسلنج</span>
-    </div>
-    <div class="tabs">
-      <button id="btnTabCms" class="tab-btn active" type="button">📝 إدارة المحتوى</button>
-      <button id="btnTabAnalytics" class="tab-btn" type="button">📊 تحليلات الزوار الحقيقيين</button>
-      <a href="/" target="_blank" class="tab-btn" style="background: rgba(255,255,255,0.12);">🌐 زيارة الموقع</a>
-    </div>
-  </div>
-
-  <iframe id="analyticsFrame" src="/admin/analytics.html"></iframe>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var btnCms = document.getElementById('btnTabCms');
-      var btnAnalytics = document.getElementById('btnTabAnalytics');
-      var frame = document.getElementById('analyticsFrame');
-
-      btnCms.addEventListener('click', function() {
-        btnCms.classList.add('active');
-        btnAnalytics.classList.remove('active');
-        frame.style.display = 'none';
-        var cmsRoot = document.getElementById('nc-root');
-        if (cmsRoot) cmsRoot.style.display = 'block';
-      });
-
-      btnAnalytics.addEventListener('click', function() {
-        btnAnalytics.classList.add('active');
-        btnCms.classList.remove('active');
-        frame.style.display = 'block';
-        var cmsRoot = document.getElementById('nc-root');
-        if (cmsRoot) cmsRoot.style.display = 'none';
-      });
-    });
-  </script>
-  <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
+  <!-- Include the script that builds the page and powers Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
