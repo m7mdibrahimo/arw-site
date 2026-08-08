@@ -4,7 +4,7 @@ federation: WWE
 title: RAW Highlights 03.08.2026
 event_date: 2026-08-03
 date: 2026-08-05T17:55:00.000+03:00
-headline: ملخص عرض الرو 03.08.2026
+headline: ملخص عرض الرو 03.08.2026 مترجم
 description: أهم الأحداث واللحظات المثيرة من عرض الرو.
 tags:
   - WWE
