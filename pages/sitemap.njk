@@ -5,52 +5,52 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://arabwrestling.com/</loc>
+    <loc>https://arab-wrestling.com/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://arabwrestling.com/shows/</loc>
+    <loc>https://arab-wrestling.com/shows/</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://arabwrestling.com/recaps/</loc>
+    <loc>https://arab-wrestling.com/recaps/</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://arabwrestling.com/news/</loc>
+    <loc>https://arab-wrestling.com/news/</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://arabwrestling.com/federations/</loc>
+    <loc>https://arab-wrestling.com/federations/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://arabwrestling.com/tags/</loc>
+    <loc>https://arab-wrestling.com/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   {% for fed in ["wwe", "aew", "tna", "roh", "mma", "indie"] %}
   <url>
-    <loc>https://arabwrestling.com/federation/{{ fed }}/</loc>
+    <loc>https://arab-wrestling.com/federation/{{ fed }}/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   {% endfor %}
   {% for item in collections.allContent %}
   <url>
-    <loc>https://arabwrestling.com{{ item.url }}</loc>
+    <loc>https://arab-wrestling.com{{ item.url }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   {% endfor %}
   {% for tagObj in collections.tagList %}
   <url>
-    <loc>https://arabwrestling.com/tag/{{ tagObj.slug }}/</loc>
+    <loc>https://arab-wrestling.com/tag/{{ tagObj.slug }}/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
