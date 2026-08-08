@@ -123,7 +123,7 @@
 
   /* Hero Section Animations & Background Banner */
   .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
-  .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
+  .hero-inner{ position:relative; max-width:1100px; width:100%; margin:0 auto; }
   
   @keyframes shimmer {
     0% { background-position: -200% 0; }
@@ -134,9 +134,9 @@
     50% { transform: translateY(-5px); }
   }
   .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.28), rgba(255,255,255,.12)); background-size:200% 100%; animation:shimmer 4s infinite linear, floatSlow 3s ease-in-out infinite; color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
-  .hero h1.hero-title, .hero h1{ font-size:clamp(38px,6.4vw,68px); font-weight:900; line-height:1.18; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
-  .hero h1.news-hero-title { font-size:clamp(20px,3.8vw,34px) !important; font-weight:800 !important; line-height:1.38 !important; color:#ffffff !important; max-width:850px; margin:0 auto 22px !important; text-shadow:0 3px 18px rgba(0,0,0,.5); }
-  .hero h1 .u, .hero h1.hero-title .u{ color:var(--gold); }
+  .hero h1.hero-title, .hero h1{ font-size:clamp(22px, 4.5vw, 48px); font-weight:900; line-height:1.4; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
+  .hero h1.news-hero-title { font-size:clamp(20px,3.8vw,36px) !important; font-weight:800 !important; line-height:1.4 !important; color:#ffffff !important; max-width:1000px; margin:0 auto 22px !important; text-shadow:0 3px 18px rgba(0,0,0,.5); }
+  .hero h1 .u, .hero h1.hero-title .u{ color:var(--gold); display:block; margin-top:16px; }
   .hero p{ color:rgba(255,255,255,.88); font-size:17.5px; max-width:540px; margin:0 auto 32px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
   .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
   .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
@@ -245,7 +245,7 @@
         {% else %}
           عروض المصارعة المترجمة
         {% endif %}
-        <span class="u" style="display:block; margin-top:8px;">
+        <span class="u" style="display:block; margin-top:16px;">
           {% if event_date %}
             بتاريخ {{ event_date | date }}
           {% elif date %}
