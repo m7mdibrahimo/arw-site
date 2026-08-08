@@ -1,4 +1,6 @@
-const Image = require("@11ty/eleventy-img");
+import Image from "@11ty/eleventy-img";
+import fs from "fs";
+import path from "path";
 
 function arabicSlug(str) {
   if (!str) return "";
@@ -11,7 +13,7 @@ function arabicSlug(str) {
     .replace(/\-\-+/g, '-');
 }
 
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   eleventyConfig.addFilter("arabicSlug", arabicSlug);
   eleventyConfig.addNunjucksFilter("arabicSlug", arabicSlug);
   eleventyConfig.addFilter("slug", arabicSlug);
@@ -110,9 +112,6 @@ module.exports = function(eleventyConfig) {
     const isLocal = cleanInput.startsWith("/content/") || cleanInput.startsWith("/images/");
     
     if (isLocal) {
-      const fs = require("fs");
-      const path = require("path");
-
       let decoded = cleanInput;
       try {
         decoded = decodeURIComponent(cleanInput);
@@ -248,10 +247,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("content/images");
   eleventyConfig.addPassthroughCopy("googlee6fae402f63eee54.html");
+  if (fs.existsSync("_redirects")) {
+    eleventyConfig.addPassthroughCopy("_redirects");
+  }
 
   eleventyConfig.on("eleventy.after", () => {
-    const fs = require("fs");
     if (!fs.existsSync("_site")) fs.mkdirSync("_site", { recursive: true });
+    if (fs.existsSync("_redirects")) {
+      fs.copyFileSync("_redirects", "_site/_redirects");
+    }
     if (fs.existsSync("favicon.svg")) {
       fs.copyFileSync("favicon.svg", "_site/favicon.svg");
       fs.copyFileSync("favicon.svg", "_site/favicon.ico");
