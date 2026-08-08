@@ -1,0 +1,3 @@
+# Redirect Cloudflare Pages domain to primary custom domain
+https://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
+http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
