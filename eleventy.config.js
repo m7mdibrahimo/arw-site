@@ -246,6 +246,7 @@ export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("content/images");
+  eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("googlee6fae402f63eee54.html");
   if (fs.existsSync("_redirects")) {
     eleventyConfig.addPassthroughCopy("_redirects");
@@ -253,10 +254,23 @@ export default function(eleventyConfig) {
 
   eleventyConfig.on("eleventy.after", () => {
     if (!fs.existsSync("_site")) fs.mkdirSync("_site", { recursive: true });
+    if (fs.existsSync("assets")) {
+      if (!fs.existsSync("_site/assets")) fs.mkdirSync("_site/assets", { recursive: true });
+      fs.cpSync("assets", "_site/assets", { recursive: true });
+    }
     if (fs.existsSync("_redirects")) {
       fs.copyFileSync("_redirects", "_site/_redirects");
     }
-    if (fs.existsSync("favicon.svg")) {
+    if (fs.existsSync("assets/logo.png")) {
+      fs.copyFileSync("assets/logo.png", "_site/favicon.png");
+      fs.copyFileSync("assets/logo.png", "_site/apple-touch-icon.png");
+      fs.copyFileSync("assets/logo.png", "_site/favicon.ico");
+    } else if (fs.existsSync("assets/logo.svg")) {
+      fs.copyFileSync("assets/logo.svg", "_site/favicon.svg");
+      fs.copyFileSync("assets/logo.svg", "_site/favicon.ico");
+      fs.copyFileSync("assets/logo.svg", "_site/favicon.png");
+      fs.copyFileSync("assets/logo.svg", "_site/apple-touch-icon.png");
+    } else if (fs.existsSync("favicon.svg")) {
       fs.copyFileSync("favicon.svg", "_site/favicon.svg");
       fs.copyFileSync("favicon.svg", "_site/favicon.ico");
       fs.copyFileSync("favicon.svg", "_site/favicon.png");
