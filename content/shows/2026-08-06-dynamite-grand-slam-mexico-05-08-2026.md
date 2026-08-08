@@ -1,7 +1,7 @@
 ---
 federation: AEW
 title: Dynamite Grand Slam Mexico 05.08.2026
-headline: عرض ديناميت 05.08.2026
+headline: عرض ديناميت 05.08.2026 مترجم
 description: عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-05
 date: 2026-08-06T18:27:00.000+03:00
