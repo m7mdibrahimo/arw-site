@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arabwrestling.com/sitemap.xml
+Sitemap: https://arab-wrestling.com/sitemap.xml
