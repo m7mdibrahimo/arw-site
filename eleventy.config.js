@@ -1,6 +1,6 @@
-import Image from "@11ty/eleventy-img";
-import fs from "fs";
-import path from "path";
+const Image = require("@11ty/eleventy-img");
+const fs = require("fs");
+const path = require("path");
 
 function arabicSlug(str) {
   if (!str) return "";
@@ -13,7 +13,8 @@ function arabicSlug(str) {
     .replace(/\-\-+/g, '-');
 }
 
-export default function(eleventyConfig) {
+module.exports = function(eleventyConfig) {
+  console.log("=== ELEVENTY CONFIG EXECUTING ===");
   eleventyConfig.addFilter("arabicSlug", arabicSlug);
   eleventyConfig.addNunjucksFilter("arabicSlug", arabicSlug);
   eleventyConfig.addFilter("slug", arabicSlug);
@@ -97,7 +98,7 @@ export default function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("jsonify", jsonify);
 
   // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
-  eleventyConfig.addNunjucksAsyncShortcode("optImg", async function(src, fallback) {
+  const optImgShortcode = async function(src, fallback) {
     const defaultFallback = "https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=800&auto=format&fit=crop";
     let input = (src && typeof src === "string" && src.trim()) ? src.trim() : (fallback || defaultFallback);
     if (!input) return defaultFallback;
@@ -196,7 +197,9 @@ export default function(eleventyConfig) {
     }
 
     return cleanInput;
-  });
+  };
+
+  eleventyConfig.addNunjucksAsyncShortcode("optImg", optImgShortcode);
 
   eleventyConfig.addCollection("shows", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/shows/*.md").sort((a,b) => b.date - a.date);
