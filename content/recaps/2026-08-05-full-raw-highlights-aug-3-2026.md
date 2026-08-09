@@ -11,6 +11,8 @@ tags:
   - RAW
   - ملخصات العروض
   - ملخص الرو
+  - ملخص
+  - Highlights
 image: /content/images/raw-highlights-03.08.2026.jpg
 servers:
   - label: "#1"
