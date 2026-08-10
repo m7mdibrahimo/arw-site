@@ -8,7 +8,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8557696064:AAF_OwtfWAfI1820xx4fj96zj_fY5GcxX5s";
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "@arab_wrestling";
 
 // Telegram API endpoints
