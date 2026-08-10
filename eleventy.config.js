@@ -266,18 +266,18 @@ module.exports = function(eleventyConfig) {
     }
     if (fs.existsSync("assets/logo.svg")) {
       fs.copyFileSync("assets/logo.svg", "_site/favicon.svg");
-      fs.copyFileSync("assets/logo.svg", "_site/favicon.ico");
-      fs.copyFileSync("assets/logo.svg", "_site/favicon.png");
-      fs.copyFileSync("assets/logo.svg", "_site/apple-touch-icon.png");
     } else if (fs.existsSync("favicon.svg")) {
       fs.copyFileSync("favicon.svg", "_site/favicon.svg");
-      fs.copyFileSync("favicon.svg", "_site/favicon.ico");
-      fs.copyFileSync("favicon.svg", "_site/favicon.png");
-      fs.copyFileSync("favicon.svg", "_site/apple-touch-icon.png");
-    } else if (fs.existsSync("assets/logo.png")) {
+    }
+
+    if (fs.existsSync("assets/logo.png")) {
       fs.copyFileSync("assets/logo.png", "_site/favicon.png");
       fs.copyFileSync("assets/logo.png", "_site/apple-touch-icon.png");
       fs.copyFileSync("assets/logo.png", "_site/favicon.ico");
+    } else if (fs.existsSync("favicon.png")) {
+      fs.copyFileSync("favicon.png", "_site/favicon.png");
+      fs.copyFileSync("favicon.png", "_site/apple-touch-icon.png");
+      fs.copyFileSync("favicon.png", "_site/favicon.ico");
     }
     const files = fs.readdirSync(".");
     files.forEach(file => {
