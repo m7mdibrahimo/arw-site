@@ -15,8 +15,8 @@
     if (window.CMS) {
       const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
       const CHAT_ID = "@arab_wrestling";
-      const SENT_KEY = "tg_sent_posts_v2";
-      const PENDING_KEY = "tg_pending_posts_v2";
+      const SENT_KEY = "tg_sent_posts_v3";
+      const PENDING_KEY = "tg_pending_posts_v3";
 
       const showToast = (msg, isError = false) => {
         try {
@@ -28,14 +28,14 @@
           toast.style.zIndex = '999999';
           toast.style.backgroundColor = isError ? '#e53e3e' : '#38a169';
           toast.style.color = '#ffffff';
-          toast.style.padding = '12px 24px';
-          toast.style.borderRadius = '8px';
+          toast.style.padding = '14px 24px';
+          toast.style.borderRadius = '10px';
           toast.style.fontSize = '15px';
           toast.style.fontWeight = 'bold';
-          toast.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
+          toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
           toast.style.direction = 'rtl';
           document.body.appendChild(toast);
-          setTimeout(() => toast.remove(), 7000);
+          setTimeout(() => toast.remove(), 8000);
         } catch (e) {}
       };
 
@@ -68,43 +68,38 @@
             const photoData = await photoRes.json();
             if (photoData.ok) {
               sentOk = true;
-              showToast("🚀 تم نشر الخبر مع الصورة على قناة التليجرام بنجاح!");
+            } else {
+              console.warn("فشل إرسال الصورة بتليجرام:", photoData);
             }
           } catch (e) {
-            console.warn("فشل إرسال الصورة، جاري المحاولة بنص فقط...", e);
+            console.warn("خطأ إرسال الصورة بتليجرام، جاري المحاولة بنص فقط...", e);
           }
         }
 
         if (!sentOk) {
-          const msgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: CHAT_ID,
-              text: messageText,
-              parse_mode: 'HTML'
-            })
-          });
-          const msgData = await msgRes.json();
-          if (msgData.ok) {
-            sentOk = true;
-            showToast("🚀 تم نشر الخبر على قناة التليجرام بنجاح!");
-          } else {
-            showToast("❌ خطأ في إرسال التليجرام: " + (msgData.description || "خطأ غير معروف"), true);
+          try {
+            const msgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: messageText,
+                parse_mode: 'HTML'
+              })
+            });
+            const msgData = await msgRes.json();
+            if (msgData.ok) {
+              sentOk = true;
+            } else {
+              console.error("فشل إرسال النص لتليجرام:", msgData);
+              showToast("❌ خطأ في نشر الخبر بتليجرام: " + (msgData.description || "خطأ غير معروف"), true);
+            }
+          } catch(e) {
+            showToast("❌ خطأ في الاتصال بتليجرام: " + e.message, true);
           }
         }
 
         return sentOk;
-      };
-
-      const checkImageReady = async (imageUrl) => {
-        if (!imageUrl) return false;
-        try {
-          const res = await fetch(imageUrl, { method: 'HEAD', cache: 'no-store' });
-          return res.ok;
-        } catch(e) {
-          return false;
-        }
       };
 
       let activeTimers = {};
@@ -118,20 +113,92 @@
           const item = pending[id];
           const remaining = item.scheduledTime - now;
 
-          // التحقق مما إذا كانت الصورة أصبحت متاحة بالفعل على جيت هاب والموقع
-          const isImageReady = item.image ? await checkImageReady(item.image) : true;
+          if (remaining <= 0) {
+            // جلب الفهرس المباشر من الموقع لمطابقة المقال بالرابط والصورة الرسمية
+            let liveMatch = null;
+            try {
+              const res = await fetch(`https://arab-wrestling.com/search-index.json?t=${Date.now()}`);
+              if (res.ok) {
+                const searchIndex = await res.json();
+                const titleKey = (item.title || "").trim();
+                const slugKey = (item.slug || "").trim();
 
-          if (remaining <= 0 || isImageReady) {
-            delete pending[id];
-            setStore(PENDING_KEY, pending);
+                liveMatch = searchIndex.find(p => {
+                  if (slugKey && p.url && (p.url.includes(slugKey) || p.url.includes(encodeURIComponent(slugKey)))) {
+                    return true;
+                  }
+                  if (titleKey && p.title && (p.title === titleKey || p.title.includes(titleKey.substring(0, 20)))) {
+                    return true;
+                  }
+                  return false;
+                });
+              }
+            } catch(e) {
+              console.warn("تعذر جلب search-index.json من الموقع:", e);
+            }
 
-            const success = await doTelegramSend(item);
-            if (success) {
-              sent[id] = Date.now();
-              setStore(SENT_KEY, sent);
+            if (liveMatch) {
+              // تم العثور على المقال مبنياً بنجاح على الموقع!
+              delete pending[id];
+              setStore(PENDING_KEY, pending);
+
+              const fullUrl = `https://arab-wrestling.com${liveMatch.url}`;
+              let fullImg = liveMatch.image || item.image || null;
+              if (fullImg && !fullImg.startsWith('http')) {
+                fullImg = `https://arab-wrestling.com${fullImg.startsWith('/') ? '' : '/'}${fullImg}`;
+              }
+
+              const success = await doTelegramSend({
+                title: liveMatch.title || item.title,
+                text: liveMatch.headline || liveMatch.description || item.text,
+                url: fullUrl,
+                image: fullImg
+              });
+
+              if (success) {
+                sent[id] = Date.now();
+                setStore(SENT_KEY, sent);
+                showToast("🚀 تم نشر الخبر على التليجرام بالرابط وصورة الموقع الرسمية!");
+              }
+            } else {
+              // إذا لم يظهر المقال بعد في الموقع (بسبب وقت البناء)، نعيد المحاولة حتى 10 مرات (كل 30 ثانية)
+              item.retries = (item.retries || 0) + 1;
+              if (item.retries <= 10) {
+                item.scheduledTime = Date.now() + 30000; // إعادة الفحص بعد 30 ثانية
+                pending[id] = item;
+                setStore(PENDING_KEY, pending);
+
+                if (!activeTimers[id]) {
+                  activeTimers[id] = setTimeout(() => {
+                    delete activeTimers[id];
+                    processPendingPosts();
+                  }, 30000);
+                }
+              } else {
+                // استنفذ المحاولات (مرت أكثر من 8 دقائق ولم يظهر على الموقع)، نرسل بالرابط الافتراضي
+                delete pending[id];
+                setStore(PENDING_KEY, pending);
+
+                const fallbackUrl = item.slug
+                  ? `https://arab-wrestling.com/content/${item.collection}/${item.slug}/`
+                  : `https://arab-wrestling.com/`;
+
+                const success = await doTelegramSend({
+                  title: item.title,
+                  text: item.text,
+                  url: fallbackUrl,
+                  image: item.image
+                });
+
+                if (success) {
+                  sent[id] = Date.now();
+                  setStore(SENT_KEY, sent);
+                  showToast("🚀 تم نشر الخبر على التليجرام بنجاح!");
+                }
+              }
             }
           } else {
-            // إعادة الفحص كل 15 ثانية أو عند انقضاء الوقت
+            // إعادة الجدولة بانتظار انقضاء الـ 3 دقائق
             if (!activeTimers[id]) {
               activeTimers[id] = setTimeout(() => {
                 delete activeTimers[id];
@@ -157,7 +224,7 @@
           const data = rawData ? (typeof rawData.toJS === 'function' ? rawData.toJS() : rawData) : {};
           const collection = (opts && opts.collection) ? opts.collection : (entryObj.get ? entryObj.get('collection') : 'news');
           
-          const title = data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج';
+          const title = (data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج').trim();
           let text = data.description || '';
           if (!text && data.body) {
             text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
@@ -169,33 +236,34 @@
           }
 
           const slug = (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || '';
-          const url = slug ? `https://arab-wrestling.com/${collection}/${slug}/` : `https://arab-wrestling.com/`;
-          const postId = slug || title;
+          const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
 
           const sent = getStore(SENT_KEY);
           const pending = getStore(PENDING_KEY);
 
-          // التحقق لمنع النشر المكرر
-          if (sent[postId] && (Date.now() - sent[postId] < 24 * 60 * 60 * 1000)) {
-            console.log("الخبر تم نشره مسبقاً على التليجرام:", postId);
+          // فحص صارم لمنع أي نشر مكرر للخبر نفسه
+          if (sent[postId]) {
+            console.log("تم نشر هذا الخبر مسبقاً على التليجرام:", postId);
             return;
           }
           if (pending[postId]) {
-            console.log("الخبر موجود بالفعل في قائمة الانتظار:", postId);
+            console.log("هذا الخبر موجود بالفعل في قائمة الانتظار:", postId);
             return;
           }
 
-          // إضافة الخبر إلى قائمة الانتظار مع تأخير 3 دقائق (180000ms)
+          // إضافة الخبر لقائمة الانتظار مع وقت تنفيذ بعد 3 دقائق (180000ms)
           pending[postId] = {
             title,
             text,
             image,
-            url,
-            scheduledTime: Date.now() + 3 * 60 * 1000
+            slug,
+            collection,
+            scheduledTime: Date.now() + 3 * 60 * 1000,
+            retries: 0
           };
           setStore(PENDING_KEY, pending);
 
-          showToast("⏳ تم جدولة نشر الخبر في التليجرام بعد 3 دقائق لضمان اكتمال رفع الصورة على جيت هاب والموقع!");
+          showToast("⏳ تم جدولة نشر الخبر! سيتم التحقق من ظهوره على الموقع بالرابط والصورة الرسمية بعد 3 دقائق، ثم نشره على التليجرام تلقائياً!");
 
           processPendingPosts();
         } catch(err) {
@@ -203,10 +271,10 @@
         }
       };
 
-      // الاستماع لحدث النشر فقط (postPublish) لمنع النشر المكرر
+      // الاستماع حصرياً لحدث النشر (postPublish) لمنع النشر المكرر
       window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
 
-      // فحص الأخبار المعلقة عند فتح لوحة التحكم
+      // فحص الأخبار المعلقة عند فتح اللوحة
       window.addEventListener('DOMContentLoaded', () => {
         processPendingPosts();
       });
