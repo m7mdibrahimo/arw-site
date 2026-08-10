@@ -1,9 +1,5 @@
 ---
-pagination:
-  data: collections.recaps
-  size: 20
-  alias: recapItems
-permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/index.html{% else %}index.html{% endif %}"
+permalink: "/search/index.html"
 ---
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -14,7 +10,7 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<title>ملخصات العروض | عرب راسلنج</title>
+<title>نتائج البحث | عرب راسلنج</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/notif.css">
@@ -30,13 +26,8 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
     --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; background-color:var(--bg); }
+  html{ scroll-behavior:smooth; }
   body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
-
-  .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active {
-    transform: scale(0.97) translateY(0) !important;
-    transition: transform 0.08s ease !important;
-  }
   h1,h2,h3,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
   header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
   .nav{ max-width:1180px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
@@ -129,19 +120,11 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
   .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
   .news-body h3, .show-body h3{ font-size:17px; font-weight:700; margin:4px 0 8px; }
-
-  .pagination-nav { margin-top: 48px; display: flex; justify-content: center; align-items: center; width: 100%; }
-  .pagination-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .page-numbers { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  .page-link { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 42px; padding: 0 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--ink); font-weight: 700; font-size: 14.5px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
-  .page-link:hover:not(.disabled):not(.active) { border-color: var(--teal); color: var(--teal); background: var(--teal-soft); transform: translateY(-2px); }
-  .page-link.active { background: var(--teal); border-color: var(--teal); color: #ffffff; cursor: default; }
-  .page-link.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
-
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); }
+.no-results{ text-align:center; color:var(--muted); padding:40px 24px; grid-column:1/-1; }
   .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
   .hero-inner{ position:relative; max-width:1100px; width:100%; margin:0 auto; }
   .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; }
@@ -200,74 +183,24 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
   </div>
 </header>
 
-{% set latestImg = "" %}
-{% for item in collections.recaps %}
-  {% if not latestImg and item.data.image %}
-    {% set latestImg = item.data.image %}
-  {% endif %}
-{% endfor %}
-
-<div class="hero"{% if latestImg %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg latestImg, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop' %}') center 30%/cover no-repeat;"{% endif %}>
+<div class="hero">
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
-    <h1 class="hero-title">ملخصات العروض<span class="u">أبرز الأحداث</span></h1>
-    <p>تابع أهم نتائج ومجريات العروض الأسبوعية والكبرى.</p>
+    <h1 class="hero-title">جميع الاتحادات، جميع العروض، <span class="u">في مكان واحد</span></h1>
+    <p>عروض مصارعة مترجمة، ملخصات العروض، وآخر الأخبار.</p>
     <div class="cta-row">
-      <a href="/federations/" class="btn">تصفح الاتحادات</a>
-      <a href="/recaps/" class="btn active">ملخصات العروض</a>
+      <a href="/all/" class="btn ">تصفح الاتحادات</a>
+      <a href="/shows/" class="btn ">جميع العروض</a>
     </div>
   </div>
 </div>
 
 
 <div class="page-head">
-  <h1 style="color:var(--violet);">ملخصات العروض</h1>
-  <p>أبرز اللقطات والنتائج</p>
+  <h1>نتائج البحث</h1>
+  <p id="searchSummary"></p>
 </div>
-<section class="content"><div class="wrap"><div class="grid-12">
-{% for item in recapItems %}
-<a class="show-card" href="{{ item.url }}">
-  <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1715149721511-8e48fc0cb2f4?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
-  <div class="show-body">
-    <span class="kind-badge kind-recap">ملخص</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
-    <h3>{{ item.data.headline or item.data.title }}</h3>
-    <p class="desc">{{ item.data.description }}</p>
-    <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.data.duration }}</span>{% endif %}</div>
-  </div>
-</a>
-{% endfor %}
-</div>
-
-{% if pagination.pages.length > 1 %}
-<nav class="pagination-nav">
-  <div class="pagination-wrap">
-    {% if pagination.href.previous %}
-      <a href="{{ pagination.href.previous }}" class="page-link prev">السابق</a>
-    {% else %}
-      <span class="page-link prev disabled">السابق</span>
-    {% endif %}
-
-    <div class="page-numbers">
-      {% for pageHref in pagination.hrefs %}
-        {% set pageNum = loop.index %}
-        {% if pageHref == page.url %}
-          <span class="page-link active">{{ pageNum }}</span>
-        {% else %}
-          <a href="{{ pageHref }}" class="page-link">{{ pageNum }}</a>
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    {% if pagination.href.next %}
-      <a href="{{ pagination.href.next }}" class="page-link next">التالي</a>
-    {% else %}
-      <span class="page-link next disabled">التالي</span>
-    {% endif %}
-  </div>
-</nav>
-{% endif %}
-
-</div></section>
+<section class="content"><div class="wrap"><div class="grid-12" id="resultsGrid"></div></div></section>
 <footer>
   <div class="social-row">
     <a aria-label="فيسبوك" href="#" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>
@@ -299,23 +232,34 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
 
 <script>
   (function(){
-    var prefetched = new Set();
-    function prefetch(url) {
-      if(!url || prefetched.has(url) || url.startsWith('#') || (url.startsWith('http') && !url.includes(location.hostname))) return;
-      prefetched.add(url);
-      var link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = url;
-      document.head.appendChild(link);
-    }
-    document.addEventListener('mouseover', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(a && a.href && a.origin === location.origin) prefetch(a.href);
-    }, { passive: true });
-    document.addEventListener('touchstart', function(e){
-      var a = e.target.closest && e.target.closest('a');
-      if(a && a.href && a.origin === location.origin) prefetch(a.href);
-    }, { passive: true });
+    const params = new URLSearchParams(window.location.search);
+    const q = (params.get('q') || '').trim();
+    document.getElementById('searchSummary').textContent = q ? 'نتائج البحث عن: "' + q + '"' : 'اكتب كلمة في مربع البحث فوق';
+    if(!q) return;
+    fetch('/search-index.json').then(r => r.json()).then(function(data){
+      const qLower = q.toLowerCase();
+      const results = data.filter(function(item){
+        const title = (item.title || '').toLowerCase();
+        const headline = (item.headline || '').toLowerCase();
+        const desc = (item.description || '').toLowerCase();
+        const fed = (item.federation || '').toLowerCase();
+        const kindLabel = (item.kindLabel || '').toLowerCase();
+        return title.includes(qLower) || headline.includes(qLower) || desc.includes(qLower) || fed.includes(qLower) || kindLabel.includes(qLower);
+      });
+      const grid = document.getElementById('resultsGrid');
+      if(results.length === 0){
+        grid.innerHTML = '<div class="no-results">مفيش نتائج مطابقة.</div>';
+        return;
+      }
+      grid.innerHTML = results.map(function(item){
+        const badge = item.kind === 'news' ? 'خبر' : (item.kind === 'recap' ? 'ملخص' : 'عرض');
+        const img = item.image || 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop';
+        return '<a class="show-card" href="' + item.url + '">' +
+          '<div class="show-thumb" style="background-image:url(\'' + img + '\')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>' +
+          '<div class="show-body"><span class="kind-badge kind-' + item.kind + '">' + badge + '</span>' + (item.federation ? '<span class="cat cat-' + item.federation.toLowerCase() + '">' + item.federation + '</span>' : '') +
+          '<h3>' + (item.headline || item.title) + '</h3></div></a>';
+      }).join('');
+    });
   })();
 </script>
 <script src="/assets/notif.js" defer></script>
