@@ -214,6 +214,94 @@
     }, 2800);
   }
 
+  var SEEN_URLS_KEY = 'arw_notified_content_urls_v1';
+
+  function registerSW() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function (e) {
+        console.log('SW registration error:', e);
+      });
+    }
+  }
+
+  function sendBrowserNotification(title, options) {
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+      navigator.serviceWorker.ready.then(function (reg) {
+        reg.showNotification(title, options);
+      }).catch(function () {
+        try {
+          var n = new Notification(title, options);
+          if (options && options.data && options.data.url) {
+            n.onclick = function () {
+              window.focus();
+              window.location.href = options.data.url;
+            };
+          }
+        } catch (e) {}
+      });
+    } else {
+      try {
+        var n = new Notification(title, options);
+        if (options && options.data && options.data.url) {
+          n.onclick = function () {
+            window.focus();
+            window.location.href = options.data.url;
+          };
+        }
+      } catch (e) {}
+    }
+  }
+
+  function checkForNewContent() {
+    if (!isNotifEnabled()) return;
+
+    fetch('/search-index.json?_t=' + Date.now())
+      .then(function (res) { return res.json(); })
+      .then(function (items) {
+        if (!Array.isArray(items)) return;
+
+        var seenMap = {};
+        try {
+          seenMap = JSON.parse(localStorage.getItem(SEEN_URLS_KEY) || '{}');
+        } catch (e) {}
+
+        var isFirstRun = (Object.keys(seenMap).length === 0);
+        var newItemsToNotify = [];
+
+        items.forEach(function (item) {
+          if (!item || !item.url) return;
+          if (!seenMap[item.url]) {
+            if (!isFirstRun) {
+              newItemsToNotify.push(item);
+            }
+            seenMap[item.url] = Date.now();
+          }
+        });
+
+        try {
+          localStorage.setItem(SEEN_URLS_KEY, JSON.stringify(seenMap));
+        } catch (e) {}
+
+        if (newItemsToNotify.length > 0) {
+          newItemsToNotify.slice(0, 3).forEach(function (item) {
+            var label = item.kindLabel || (item.kind === 'show' ? 'عرض' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
+            var title = 'عرب راسلنج 🔔 | ' + label + ': ' + (item.title || '');
+            var body = item.headline || item.description || 'تم إضافته حديثاً على الموقع. اضغط للمشاهدة الآن.';
+            sendBrowserNotification(title, {
+              body: body,
+              icon: item.image || '/favicon.png',
+              dir: 'rtl',
+              lang: 'ar',
+              data: { url: item.url }
+            });
+          });
+        }
+      })
+      .catch(function (err) {
+        console.warn('Error checking for new content:', err);
+      });
+  }
+
   function handleActionBtnClick() {
     if (!('Notification' in window)) {
       var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -253,15 +341,16 @@
       setNotifState(true);
       updateUI();
       hideFloatBar();
+      registerSW();
 
-      try {
-        new Notification('عرب راسلنج 🔔', {
-          body: 'تم تفعيل إشعارات العروض والملخصات المترجمة بنجاح! ستتوصل بجديد العروض والملخصات فور نشرها.',
-          icon: '/favicon.png',
-          dir: 'rtl',
-          lang: 'ar'
-        });
-      } catch (e) {}
+      sendBrowserNotification('عرب راسلنج 🔔', {
+        body: 'تم تفعيل إشعارات العروض والملخصات المترجمة بنجاح! ستتوصل بجديد العروض والملخصات فور نشرها.',
+        icon: '/favicon.png',
+        dir: 'rtl',
+        lang: 'ar'
+      });
+
+      setTimeout(checkForNewContent, 1000);
     };
 
     if (Notification.permission === 'granted') {
@@ -279,6 +368,8 @@
   }
 
   function init() {
+    registerSW();
+
     var toggleBtn = document.getElementById('arwNotifToggle');
     if (toggleBtn) {
       toggleBtn.addEventListener('click', function () {
@@ -289,6 +380,20 @@
     createModalDOM();
     updateUI();
     checkFloatBar();
+
+    if (isNotifEnabled()) {
+      checkForNewContent();
+      setInterval(checkForNewContent, 20000);
+    }
+
+    if ('BroadcastChannel' in window) {
+      var bc = new BroadcastChannel('arw_notifications');
+      bc.onmessage = function (e) {
+        if (e && e.data && e.data.type === 'new_post') {
+          checkForNewContent();
+        }
+      };
+    }
   }
 
   if (document.readyState === 'loading') {
