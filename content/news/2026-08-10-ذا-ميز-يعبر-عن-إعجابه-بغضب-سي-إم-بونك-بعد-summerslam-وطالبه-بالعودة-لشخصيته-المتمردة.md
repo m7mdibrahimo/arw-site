@@ -3,6 +3,12 @@ federation: WWE
 title: ذا ميز يعبر عن إعجابه بغضب سي إم بونك بعد SummerSlam وطالبه بالعودة
   لشخصيته المتمردة
 date: 2026-08-10T16:06:00.000+03:00
+tags:
+  - CM Punk
+  - The Miz
+  - WWE
+  - SummerSlam
+  - اخبار المصارعة
 image: /content/images/mhifznrdrdzwbeeu.jpg
 layout: post-layout.njk
 ---
