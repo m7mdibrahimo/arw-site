@@ -1,3 +1,4 @@
 {
-  "layout": "post-layout.njk"
+  "layout": "post-layout.njk",
+  "permalink": "/shows/{{ id or page.fileSlug }}/"
 }
