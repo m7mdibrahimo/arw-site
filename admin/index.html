@@ -17,22 +17,44 @@
       const IdControl = class extends React.Component {
         componentDidMount() {
           if (!this.props.value) {
-            const now = Math.floor(Date.now() / 1000);
-            this.props.onChange(String(now));
+            const now = String(Math.floor(Date.now() / 1000));
+            this.props.onChange(now);
           }
         }
         render() {
+          const val = this.props.value || String(Math.floor(Date.now() / 1000));
+          if (!this.props.value) {
+            setTimeout(() => {
+              if (!this.props.value && this.props.onChange) {
+                this.props.onChange(val);
+              }
+            }, 50);
+          }
           return React.createElement('input', {
-            type: 'hidden',
-            value: this.props.value || ''
+            type: 'text',
+            value: val,
+            readOnly: true,
+            className: this.props.classNameWrapper || '',
+            style: {
+              width: '100%',
+              padding: '10px',
+              border: '1px solid #d1d5db',
+              borderRadius: '6px',
+              fontSize: '14px',
+              fontFamily: 'monospace',
+              backgroundColor: '#f3f4f6',
+              color: '#1f2937',
+              direction: 'ltr',
+              textAlign: 'left'
+            }
           });
         }
       };
 
       const IdPreview = function(props) {
         return React.createElement('div', {
-          style: { color: '#888', fontSize: '12px', padding: '4px 0', direction: 'rtl' }
-        }, 'معرف المقال: ' + (props.value || 'جاري التوليد...'));
+          style: { color: '#6b7280', fontSize: '13px', padding: '6px 0', direction: 'rtl', fontFamily: 'monospace' }
+        }, 'معرف المقال (Unix Timestamp): ' + (props.value || 'جاري التوليد...'));
       };
 
       window.CMS.registerWidget('post_id', IdControl, IdPreview);
@@ -41,11 +63,19 @@
         name: 'preSave',
         handler: ({ entry }) => {
           let data = entry.get('data');
-          if (!data.get('id')) {
-            const now = Math.floor(Date.now() / 1000);
-            data = data.set('id', String(now));
-            return data;
+          let id = data.get('id');
+
+          if (!id || String(id).trim() === '' || id === 'undefined') {
+            id = String(Math.floor(Date.now() / 1000));
+            data = data.set('id', id);
           }
+
+          let slug = entry.get('slug');
+          if (!slug || String(slug).trim() === '' || slug === 'undefined' || slug === '{{fields.id}}') {
+            entry = entry.set('slug', id);
+          }
+
+          return entry.set('data', data);
         }
       });
 
@@ -282,8 +312,8 @@
             image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
           }
 
-          const slug = (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || '';
-          const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
+          const slug = (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || data.id || '';
+          const postId = `${collection}_${slug || data.id || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
 
           const sent = getStore(SENT_KEY);
           const pending = getStore(PENDING_KEY);
