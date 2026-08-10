@@ -141,6 +141,7 @@
       }
       if (testBtn) testBtn.style.display = 'none';
     } else if (enabled) {
+      hideFloatBar();
       if (statusText) statusText.textContent = 'إشعارات العروض والملخصات مُفعلة بنجاح!';
       if (statusDot) statusDot.textContent = '🟢';
       if (actionBtn) {
@@ -181,7 +182,15 @@
     var bar = document.getElementById('arwNotifFloatBar');
     if (bar) {
       bar.classList.remove('show');
+      setTimeout(function () {
+        if (bar && !bar.classList.contains('show')) {
+          bar.style.display = 'none';
+        }
+      }, 400);
     }
+    try {
+      localStorage.setItem(FLOAT_DISMISSED_KEY, 'true');
+    } catch (e) {}
   }
 
   function checkFloatBar() {
