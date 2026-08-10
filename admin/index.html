@@ -11,5 +11,49 @@
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    if (window.CMS) {
+      window.CMS.registerEventListener({
+        name: 'postSave',
+        handler: async ({ entry }) => {
+          try {
+            const data = entry.get('data') ? entry.get('data').toJS() : {};
+            const collection = entry.get('collection') || 'news';
+            const title = data.title || data.headline || 'خبر جديد على عرب راسلنج';
+            const text = data.description || (data.body ? data.body.substring(0, 180) + '...' : '');
+            
+            let image = data.image || null;
+            if (image && !image.startsWith('http')) {
+              image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
+            }
+
+            const slug = entry.get('slug') || '';
+            const url = `https://arab-wrestling.com/${collection}/${slug}/`;
+
+            console.log("Sending to Telegram...", { title, text, url, image });
+
+            const response = await fetch('/api/telegram/post', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                title: title,
+                text: text,
+                url: url,
+                image: image
+              })
+            });
+            const resData = await response.json();
+            if (resData.success) {
+              console.log("Post published to Telegram successfully!");
+            } else {
+              console.warn("Telegram post failed:", resData.error);
+            }
+          } catch (err) {
+            console.error("Error sending post to Telegram:", err);
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>
