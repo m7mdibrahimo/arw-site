@@ -240,7 +240,7 @@
       try {
         new Notification('عرب راسلنج 🔔', {
           body: 'تم تفعيل إشعارات العروض والملخصات المترجمة بنجاح! ستتوصل بجديد العروض والملخصات فور نشرها.',
-          icon: '/favicon.svg',
+          icon: '/favicon.png',
           dir: 'rtl',
           lang: 'ar'
         });
