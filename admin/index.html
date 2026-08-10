@@ -276,6 +276,25 @@
 
           showToast("⏳ تم جدولة نشر الخبر! سيتم التحقق من ظهوره على الموقع بالرابط والصورة الرسمية بعد 3 دقائق، ثم نشره على التليجرام تلقائياً!");
 
+          if ('BroadcastChannel' in window) {
+            try {
+              const bc = new BroadcastChannel('arw_notifications');
+              bc.postMessage({ type: 'new_post', collection, title });
+            } catch(e) {}
+          }
+
+          if ('Notification' in window && Notification.permission === 'granted') {
+            try {
+              const kindName = collection === 'shows' ? 'عرض' : (collection === 'recaps' ? 'ملخص' : 'خبر');
+              new Notification(`عرب راسلنج 🔔 | تم نشر ${kindName} جديد`, {
+                body: title,
+                icon: image || '/favicon.png',
+                dir: 'rtl',
+                lang: 'ar'
+              });
+            } catch(e) {}
+          }
+
           processPendingPosts();
         } catch(err) {
           console.error("خطأ أثناء جدولة الخبر للتليجرام:", err);
