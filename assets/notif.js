@@ -103,12 +103,23 @@
     var statusDot = document.getElementById('arwNotifStatusDot');
     var actionBtn = document.getElementById('arwNotifActionBtn');
 
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
     if (!('Notification' in window)) {
-      if (statusText) statusText.textContent = 'متصفحك الحالي لا يدعم ميزة الإشعارات.';
-      if (statusDot) statusDot.textContent = '⚠️';
-      if (actionBtn) {
-        actionBtn.disabled = true;
-        actionBtn.textContent = 'الإشعارات غير مدعومة';
+      if (isIOS) {
+        if (statusText) statusText.textContent = 'يتطلب تفعيل الإشعارات على آيفون إضافة الموقع للشاشة الرئيسية أولاً.';
+        if (statusDot) statusDot.textContent = '📱';
+        if (actionBtn) {
+          actionBtn.disabled = false;
+          actionBtn.textContent = 'طريقة التفعيل على الآيفون';
+        }
+      } else {
+        if (statusText) statusText.textContent = 'متصفحك الحالي لا يدعم ميزة الإشعارات.';
+        if (statusDot) statusDot.textContent = '⚠️';
+        if (actionBtn) {
+          actionBtn.disabled = true;
+          actionBtn.textContent = 'الإشعارات غير مدعومة';
+        }
       }
       return;
     }
@@ -204,7 +215,13 @@
   }
 
   function handleActionBtnClick() {
-    if (!('Notification' in window)) return;
+    if (!('Notification' in window)) {
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      if (isIOS) {
+        alert('لتفعيل الإشعارات على آيفون (iOS):\n\n1. اضغط على زر المشاركة (Share ⎋) في أسفل متصفح سفاري.\n2. اختر "إضافة إلى الشاشة الرئيسية" (Add to Home Screen).\n3. افتح الموقع من أيقونته الجديدة على الشاشة الرئيسية وفعّل الإشعارات من هناك.');
+      }
+      return;
+    }
 
     if (Notification.permission === 'denied') {
       alert('الإشعارات محظورة في متصفحك. لإعادة السماح بها، انقر على أيقونة القفل (🔒) بجوار رابط الموقع ثم اختر السماح بالإشعارات.');
