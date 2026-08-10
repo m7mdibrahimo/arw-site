@@ -202,35 +202,54 @@
     if (!('Notification' in window)) return;
 
     if (Notification.permission === 'denied') {
-      alert('الإشعارات محظورة في متصفحك. يرجى الضغط على أيقونة القفل بجانب عنوان الموقع في المتصفح والسماح بالإشعارات (Notifications: Allow).');
+      alert('الإشعارات محظورة في متصفحك. لإعادة السماح بها، انقر على أيقونة القفل (🔒) بجوار رابط الموقع ثم اختر السماح بالإشعارات.');
       return;
     }
 
     if (isNotifEnabled()) {
       setNotifState(false);
+
+      if ('serviceWorker' in navigator && navigator.serviceWorker.ready) {
+        navigator.serviceWorker.ready.then(function (reg) {
+          if (reg.pushManager) {
+            reg.pushManager.getSubscription().then(function (sub) {
+              if (sub) sub.unsubscribe();
+            });
+          }
+        }).catch(function () {});
+      }
+
       updateUI();
       return;
     }
 
-    Notification.requestPermission().then(function (perm) {
-      if (perm === 'granted') {
-        setNotifState(true);
-        updateUI();
-        hideFloatBar();
+    var enableAndNotify = function () {
+      setNotifState(true);
+      updateUI();
+      hideFloatBar();
 
-        try {
-          new Notification('عرب راسلنج 🔔', {
-            body: 'تم تفعيل إشعارات العروض والملخصات المترجمة بنجاح! ستتوصل بجديد العروض والملخصات فور نشرها.',
-            icon: '/favicon.png',
-            dir: 'rtl',
-            lang: 'ar'
-          });
-        } catch (e) {}
-      } else {
-        setNotifState(false);
-        updateUI();
-      }
-    });
+      try {
+        new Notification('عرب راسلنج 🔔', {
+          body: 'تم تفعيل إشعارات العروض والملخصات المترجمة بنجاح! ستتوصل بجديد العروض والملخصات فور نشرها.',
+          icon: '/favicon.png',
+          dir: 'rtl',
+          lang: 'ar'
+        });
+      } catch (e) {}
+    };
+
+    if (Notification.permission === 'granted') {
+      enableAndNotify();
+    } else {
+      Notification.requestPermission().then(function (perm) {
+        if (perm === 'granted') {
+          enableAndNotify();
+        } else {
+          setNotifState(false);
+          updateUI();
+        }
+      });
+    }
   }
 
   function init() {
