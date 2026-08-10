@@ -334,7 +334,7 @@ permalink: "/index.html"
     </div>
     <div class="grid-12">
     {% for item in collections.news %}
-      {% if loop.index <= 8 %}
+      {% if loop.index <= 12 %}
       <a class="news-card reveal" href="{{ item.url }}" style="display:block; text-decoration:none; color:inherit;">
         <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
         <div class="news-body">
