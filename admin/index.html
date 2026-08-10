@@ -13,86 +13,181 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     if (window.CMS) {
-      const sendToTelegram = async (entry) => {
+      let lastSentKey = '';
+      let lastSentTime = 0;
+
+      const showToast = (msg, isError = false) => {
         try {
-          const data = entry.get('data') ? entry.get('data').toJS() : {};
-          const collection = entry.get('collection') || 'news';
-          const title = data.title || data.headline || 'موضوع جديد على عرب راسلنج';
+          const toast = document.createElement('div');
+          toast.innerText = msg;
+          toast.style.position = 'fixed';
+          toast.style.top = '20px';
+          toast.style.right = '20px';
+          toast.style.zIndex = '999999';
+          toast.style.backgroundColor = isError ? '#e53e3e' : '#38a169';
+          toast.style.color = '#ffffff';
+          toast.style.padding = '12px 24px';
+          toast.style.borderRadius = '8px';
+          toast.style.fontSize = '15px';
+          toast.style.fontWeight = 'bold';
+          toast.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
+          toast.style.direction = 'rtl';
+          document.body.appendChild(toast);
+          setTimeout(() => toast.remove(), 5000);
+        } catch (e) {}
+      };
+
+      const sendToTelegram = async (opts) => {
+        try {
+          // استخراج الكائن الأساسي سواء passed كـ entry مباشرة أو داخل opts
+          const entryObj = (opts && opts.entry) ? opts.entry : opts;
+          if (!entryObj) return;
+
+          let rawData = null;
+          if (typeof entryObj.get === 'function') {
+            rawData = entryObj.get('data');
+          } else if (entryObj.data) {
+            rawData = entryObj.data;
+          }
+
+          const data = rawData ? (typeof rawData.toJS === 'function' ? rawData.toJS() : rawData) : {};
+          const collection = (opts && opts.collection) ? opts.collection : (entryObj.get ? entryObj.get('collection') : 'news');
+          
+          const title = data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج';
           let text = data.description || '';
           if (!text && data.body) {
-            text = data.body.replace(/[#*`_~]/g, '').substring(0, 180) + '...';
+            text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
           }
           
           let image = data.image || null;
-          if (image && !image.startsWith('http')) {
+          if (image && typeof image === 'string' && !image.startsWith('http')) {
             image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
           }
 
-          const slug = entry.get('slug') || '';
-          const url = `https://arab-wrestling.com/${collection}/${slug}/`;
+          const slug = (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || '';
+          const url = slug ? `https://arab-wrestling.com/${collection}/${slug}/` : `https://arab-wrestling.com/`;
 
-          console.log("إرسال الخبر إلى التليجرام...", { title, text, url, image });
+          // منع التكرار إذا تم استدعاء حدثين متتاليين في أقل من 5 ثوان لنفس العنوان
+          const dedupKey = title + url;
+          const now = Date.now();
+          if (dedupKey === lastSentKey && (now - lastSentTime < 5000)) {
+            console.log("تم تجاهل الإرسال المكرر لـ Telegram");
+            return;
+          }
+          lastSentKey = dedupKey;
+          lastSentTime = now;
 
-          // 1. تجربة الإرسال عبر خادم الـ API أولاً
-          let success = false;
-          try {
-            const apiRes = await fetch('/api/telegram/post', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ title, text, url, image })
-            });
-            if (apiRes.ok) {
-              const resData = await apiRes.json();
-              if (resData.success) success = true;
+          console.log("جاري الإرسال إلى التليجرام...", { title, text, url, image });
+
+          const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
+          const CHAT_ID = "@arab_wrestling";
+          const messageText = `<b>${title}</b>\n\n${text}\n\n🔗 <a href="${url}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
+
+          let sentSuccessfully = false;
+
+          // إذا كانت هناك صورة، نجرب إرسالها بالصورة أولاً
+          if (image) {
+            try {
+              const photoRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: CHAT_ID,
+                  photo: image,
+                  caption: messageText,
+                  parse_mode: 'HTML'
+                })
+              });
+              const photoData = await photoRes.json();
+              if (photoData.ok) {
+                sentSuccessfully = true;
+                showToast("🚀 تم نشر الخبر مع الصورة على قناة التليجرام!");
+              }
+            } catch (e) {
+              console.warn("فشل الإرسال بالصورة، جاري المحاولة بنص فقط...", e);
             }
-          } catch (e) {
-            console.log("لم يتم العثور على خادم API محلي، جاري الإرسال المباشر...");
           }
 
-          // 2. إذا فشل السيرفر أو لم يكن موجوداً (موقع استاتيكي)، يتم الإرسال مباشرة من المتصفح لتليجرام
-          if (!success) {
-            const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
-            const CHAT_ID = "@arab_wrestling";
-            const messageText = `<b>${title}</b>\n\n${text}\n\n🔗 <a href="${url}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
-
-            let tgUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            let payload = {
-              chat_id: CHAT_ID,
-              text: messageText,
-              parse_mode: 'HTML'
-            };
-
-            if (image) {
-              tgUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
-              payload = {
-                chat_id: CHAT_ID,
-                photo: image,
-                caption: messageText,
-                parse_mode: 'HTML'
-              };
-            }
-
-            const tgRes = await fetch(tgUrl, {
+          // إذا لم تكن هناك صورة أو فشل الإرسال بالصورة، نرسل نصاً فقط
+          if (!sentSuccessfully) {
+            const msgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
+              body: JSON.stringify({
+                chat_id: CHAT_ID,
+                text: messageText,
+                parse_mode: 'HTML'
+              })
             });
-
-            const tgData = await tgRes.json();
-            if (tgData.ok) {
-              console.log("تم نشر الموضوع على قناة التليجرام بنجاح!");
+            const msgData = await msgRes.json();
+            if (msgData.ok) {
+              showToast("🚀 تم نشر الخبر على قناة التليجرام بنجاح!");
             } else {
-              console.warn("خطأ في النشر على تليجرام:", tgData);
+              console.error("فشل إرسال التليجرام:", msgData);
+              showToast("❌ خطأ في إرسال التليجرام: " + (msgData.description || "خطأ غير معروف"), true);
             }
           }
         } catch (err) {
           console.error("خطأ أثناء النشر إلى التليجرام:", err);
+          showToast("❌ خطأ أثناء إرسال التليجرام: " + err.message, true);
         }
       };
 
-      window.CMS.registerEventListener({ name: 'postSave', handler: ({ entry }) => sendToTelegram(entry) });
-      window.CMS.registerEventListener({ name: 'postPublish', handler: ({ entry }) => sendToTelegram(entry) });
+      // تسجيل جميع الأحداث الممكنة لضمان النشر عند الحفظ أو النشر
+      window.CMS.registerEventListener({ name: 'postSave', handler: sendToTelegram });
+      window.CMS.registerEventListener({ name: 'postPublish', handler: sendToTelegram });
+      window.CMS.registerEventListener({ name: 'prePublish', handler: sendToTelegram });
     }
+
+    // إضافة زر تجربة الربط في شاشة لوحة التحكم
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.createElement('button');
+      btn.innerHTML = '🚀 تجربة ربط التليجرام';
+      btn.style.position = 'fixed';
+      btn.style.bottom = '20px';
+      btn.style.left = '20px';
+      btn.style.zIndex = '99999';
+      btn.style.backgroundColor = '#0088cc';
+      btn.style.color = '#ffffff';
+      btn.style.border = 'none';
+      btn.style.padding = '10px 18px';
+      btn.style.borderRadius = '25px';
+      btn.style.fontSize = '14px';
+      btn.style.fontWeight = 'bold';
+      btn.style.cursor = 'pointer';
+      btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)';
+      
+      btn.onclick = async () => {
+        btn.innerText = '⏳ جاري الاختبار...';
+        btn.disabled = true;
+        try {
+          const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
+          const CHAT_ID = "@arab_wrestling";
+          const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: '<b>اختبار ربط الموقع بالقناة</b>\n\nهذه الرسالة لتأكيد أن البوت متصل بنجاح بالقناة وبالموقع! 🚀',
+              parse_mode: 'HTML'
+            })
+          });
+          const data = await res.json();
+          if (data.ok) {
+            alert('✅ نجح الاختبار! تم إرسال رسالة تجريبية الآن إلى قناة التليجرام @arab_wrestling');
+          } else {
+            alert('❌ فشل الإرسال: ' + JSON.stringify(data));
+          }
+        } catch (e) {
+          alert('❌ حدث خطأ: ' + e.message);
+        } finally {
+          btn.innerHTML = '🚀 تجربة ربط التليجرام';
+          btn.disabled = false;
+        }
+      };
+
+      document.body.appendChild(btn);
+    });
   </script>
 </body>
 </html>
