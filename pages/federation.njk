@@ -218,7 +218,7 @@ permalink: "/federation/{{ fed.slug }}/index.html"
     <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
     <div class="show-body">
       {% if item.kind == 'show' %}<span class="kind-badge kind-show">عرض</span>{% else %}<span class="kind-badge kind-recap">ملخص</span>{% endif %}{% if fed.code %}<span class="cat cat-{{ fed.code | lower }}">{{ fed.code }}</span>{% endif %}
-      <h3>{{ item.data.title }}</h3>
+      <h3>{{ item.data.headline or item.data.title }}</h3>
       <div class="foot"><span>{{ item.date | date("dd MMM") }}</span></div>
     </div>
     {% endif %}
