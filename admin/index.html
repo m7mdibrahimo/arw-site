@@ -113,6 +113,11 @@
         const now = Date.now();
 
         for (const id in pending) {
+          if (sent[id]) {
+            delete pending[id];
+            setStore(PENDING_KEY, pending);
+            continue;
+          }
           const item = pending[id];
           const remaining = item.scheduledTime - now;
 
