@@ -48,8 +48,21 @@
       };
 
       const doTelegramSend = async (item) => {
-        const { title, text, url, image } = item;
-        const messageText = `<b>${title}</b>\n\n${text}\n\n🔗 <a href="${url}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
+        const { title, text, url, image, collection, kind, kindLabel } = item;
+        
+        let linkLabel = "🔗 اضغط هنا لقراءة الخبر كاملاً على موقع عرب راسلنج";
+        const c = (collection || kind || "").toLowerCase();
+        const kl = (kindLabel || "").toLowerCase();
+
+        if (c.includes('recap') || kl.includes('ملخص') || kl.includes('تغطية')) {
+          linkLabel = "🔗 اضغط هنا لمشاهدة ملخص العرض مترجم على موقع عرب راسلنج";
+        } else if (c.includes('show') || kl.includes('عرض')) {
+          linkLabel = "🔗 اضغط هنا لمشاهد العرض بالكامل مترجم على موقع عرب راسلنج";
+        } else if (c.includes('news') || kl.includes('خبر')) {
+          linkLabel = "🔗 اضغط هنا لقراءة الخبر كاملاً على موقع عرب راسلنج";
+        }
+
+        const messageText = `<b>${title}</b>\n\n${text}\n\n<a href="${url}">${linkLabel}</a>`;
 
         let sentOk = false;
 
@@ -152,7 +165,10 @@
                 title: liveMatch.title || item.title,
                 text: liveMatch.headline || liveMatch.description || item.text,
                 url: fullUrl,
-                image: fullImg
+                image: fullImg,
+                collection: item.collection,
+                kind: liveMatch.kind,
+                kindLabel: liveMatch.kindLabel
               });
 
               if (success) {
