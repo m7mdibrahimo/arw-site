@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: https://gemini.google.com/app/4cdd0f3b2597186a
+title: ماسون روك يوجه إهانة شخصية قاسـية لكام هيندريكس وينشر صورة مستفزة
 date: 2026-08-10T05:34:00.000+03:00
 tags:
   - Mason Rook
