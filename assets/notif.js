@@ -41,7 +41,6 @@
         '</div>' +
         '<div class="notif-modal-actions">' +
           '<button class="notif-btn-primary" id="arwNotifActionBtn" type="button">تفعيل إشعارات العروض والملخصات</button>' +
-          '<button class="notif-btn-secondary" id="arwNotifTestBtn" type="button">إرسال إشعار تجريبي 🔔</button>' +
         '</div>' +
       '</div>';
 
@@ -59,11 +58,6 @@
     var actionBtn = document.getElementById('arwNotifActionBtn');
     if (actionBtn) {
       actionBtn.addEventListener('click', handleActionBtnClick);
-    }
-
-    var testBtn = document.getElementById('arwNotifTestBtn');
-    if (testBtn) {
-      testBtn.addEventListener('click', sendTestNotif);
     }
   }
 
@@ -108,7 +102,6 @@
     var statusText = document.getElementById('arwNotifStatusText');
     var statusDot = document.getElementById('arwNotifStatusDot');
     var actionBtn = document.getElementById('arwNotifActionBtn');
-    var testBtn = document.getElementById('arwNotifTestBtn');
 
     if (!('Notification' in window)) {
       if (statusText) statusText.textContent = 'متصفحك الحالي لا يدعم ميزة الإشعارات.';
@@ -117,7 +110,6 @@
         actionBtn.disabled = true;
         actionBtn.textContent = 'الإشعارات غير مدعومة';
       }
-      if (testBtn) testBtn.style.display = 'none';
       return;
     }
 
@@ -139,7 +131,6 @@
         actionBtn.disabled = false;
         actionBtn.textContent = 'محظور من المتصفح (تغيير الإعدادات)';
       }
-      if (testBtn) testBtn.style.display = 'none';
     } else if (enabled) {
       hideFloatBar();
       if (statusText) statusText.textContent = 'إشعارات العروض والملخصات مُفعلة بنجاح!';
@@ -149,7 +140,6 @@
         actionBtn.textContent = 'إلغاء تفعيل الإشعارات';
         actionBtn.style.background = 'var(--coral)';
       }
-      if (testBtn) testBtn.style.display = 'block';
     } else {
       if (statusText) statusText.textContent = 'الإشعارات متوقفة حالياً. اضغط لتفعيلها.';
       if (statusDot) statusDot.textContent = '⚪';
@@ -158,7 +148,6 @@
         actionBtn.textContent = 'تفعيل إشعارات العروض والملخصات';
         actionBtn.style.background = 'var(--teal)';
       }
-      if (testBtn) testBtn.style.display = 'none';
     }
   }
 
@@ -242,21 +231,6 @@
         updateUI();
       }
     });
-  }
-
-  function sendTestNotif() {
-    if (!isNotifEnabled()) return;
-
-    try {
-      new Notification('عرض جديد متوفر الآن! 🎬', {
-        body: 'عرض سماك داون مترجم بالكامل متوفر الآن للمشاهدة والتحميل بأعلى جودة!',
-        icon: '/favicon.png',
-        dir: 'rtl',
-        lang: 'ar'
-      });
-    } catch (e) {
-      alert('لم نتمكن من إرسال الإشعار التجريبي. تأكد من السماح بالإشعارات من المتصفح.');
-    }
   }
 
   function init() {
