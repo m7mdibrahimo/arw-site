@@ -13,6 +13,42 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     if (window.CMS) {
+      // تسجيل ودجت توليد الرقم الفريد للمقال تلقائياً (Unix Timestamp)
+      const IdControl = class extends React.Component {
+        componentDidMount() {
+          if (!this.props.value) {
+            const now = Math.floor(Date.now() / 1000);
+            this.props.onChange(String(now));
+          }
+        }
+        render() {
+          return React.createElement('input', {
+            type: 'hidden',
+            value: this.props.value || ''
+          });
+        }
+      };
+
+      const IdPreview = function(props) {
+        return React.createElement('div', {
+          style: { color: '#888', fontSize: '12px', padding: '4px 0', direction: 'rtl' }
+        }, 'معرف المقال: ' + (props.value || 'جاري التوليد...'));
+      };
+
+      window.CMS.registerWidget('post_id', IdControl, IdPreview);
+
+      window.CMS.registerEventListener({
+        name: 'preSave',
+        handler: ({ entry }) => {
+          let data = entry.get('data');
+          if (!data.get('id')) {
+            const now = Math.floor(Date.now() / 1000);
+            data = data.set('id', String(now));
+            return data;
+          }
+        }
+      });
+
       const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
       const CHAT_ID = "@arab_wrestling";
       const SENT_KEY = "tg_sent_posts_v3";
