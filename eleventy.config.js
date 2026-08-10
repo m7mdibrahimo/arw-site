@@ -250,6 +250,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("content/images");
   eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("googlee6fae402f63eee54.html");
   if (fs.existsSync("_redirects")) {
     eleventyConfig.addPassthroughCopy("_redirects");
