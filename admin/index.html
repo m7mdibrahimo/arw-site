@@ -28,32 +28,15 @@
 
       class IdControl extends React.Component {
         componentDidMount() {
-          this.checkAndSet();
-        }
-
-        componentDidUpdate(prevProps) {
-          // If value was empty and is now filled, do nothing to prevent re-render loops
-          if (!prevProps.value && this.props.value) {
-            return;
-          }
-          if (prevProps.value !== this.props.value && !this.props.value) {
-            this.checkAndSet();
-          }
-        }
-
-        checkAndSet() {
           const { entry, value, onChange } = this.props;
           const isPersisted = entry && typeof entry.get === 'function' ? Boolean(entry.get('isPersisted')) : Boolean(entry && entry.isPersisted);
 
-          // إذا كان المقال محفوظاً وموجوداً مسبقاً (تعديل خبر قديم): لا نغير معرّفه الأصلي أبداً للحفاظ على أرشفة جوجل
-          if (isPersisted) {
-            return;
-          }
-
-          // للمقالات الجديدة فقط عند غياب المعرف: نولد معرّف فريد جديد
-          if (!value && onChange) {
-            const newId = makeUniqueId();
-            onChange(newId);
+          if (!isPersisted && !value && onChange) {
+            setTimeout(() => {
+              if (this.props.onChange && !this.props.value) {
+                this.props.onChange(makeUniqueId());
+              }
+            }, 0);
           }
         }
 
