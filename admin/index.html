@@ -19,112 +19,6 @@
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     if (window.CMS) {
-      const React = window.React;
-      const h = window.h || (React && React.createElement);
-
-      function makeUniqueId() {
-        const ts = Math.floor(Date.now() / 1000);
-        const rand = Math.floor(Math.random() * 89999 + 10000);
-        return String(ts) + String(rand);
-      }
-
-      class IdControl extends (React ? React.Component : Object) {
-        componentDidMount() {
-          const entry = this.props.entry;
-          const value = this.props.value;
-          const onChange = this.props.onChange;
-
-          const isPersisted = entry && typeof entry.get === 'function' ? Boolean(entry.get('isPersisted')) : Boolean(entry && entry.isPersisted);
-
-          if (!isPersisted && onChange) {
-            onChange(makeUniqueId());
-          } else if (!value && onChange) {
-            onChange(makeUniqueId());
-          }
-        }
-
-        render() {
-          const value = this.props.value || '';
-          const onChange = this.props.onChange;
-
-          return h('div', {
-            style: {
-              display: 'flex',
-              gap: '10px',
-              alignItems: 'center',
-              width: '100%'
-            }
-          }, [
-            h('input', {
-              key: 'id-input',
-              type: 'text',
-              id: this.props.forID || 'id',
-              value: value,
-              onChange: function(e) { if (onChange) onChange(e.target.value); },
-              className: this.props.classNameWrapper || '',
-              style: {
-                flex: '1',
-                padding: '10px 14px',
-                border: '1px solid #d1d5db',
-                borderRadius: '6px',
-                fontSize: '15px',
-                fontFamily: 'monospace',
-                backgroundColor: '#ffffff',
-                color: '#111827',
-                direction: 'ltr',
-                textAlign: 'left'
-              }
-            }),
-            h('button', {
-              key: 'id-btn',
-              type: 'button',
-              onClick: function() {
-                const newId = makeUniqueId();
-                if (onChange) onChange(newId);
-                if (typeof showToast === 'function') showToast("✅ تم توليد معرف فريد جديد: " + newId);
-              },
-              style: {
-                padding: '10px 16px',
-                backgroundColor: '#2563eb',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-              }
-            }, '🔄 توليد معرف جديد')
-          ]);
-        }
-      }
-
-      class IdPreview extends (React ? React.Component : Object) {
-        render() {
-          return h('div', {
-            style: { color: '#4b5563', fontSize: '14px', padding: '6px 0', direction: 'rtl', fontFamily: 'monospace' }
-          }, 'معرف المقال الفريد: ' + (this.props.value || 'جاري التوليد...'));
-        }
-      }
-
-      window.CMS.registerWidget('post_id', IdControl, IdPreview);
-
-      window.CMS.registerEventListener({
-        name: 'preSave',
-        handler: ({ entry }) => {
-          let data = entry.get('data');
-          let id = data.get('id');
-
-          if (!id || String(id).trim() === '' || id === 'undefined' || id === 'null') {
-            id = makeUniqueId();
-            data = data.set('id', id);
-          }
-
-          return data;
-        }
-      });
-
       const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
       const CHAT_ID = "@arab_wrestling";
       const SENT_KEY = "tg_sent_posts_v3";
@@ -170,7 +64,7 @@
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                postId: item.postId || item.id || item.slug || item.url,
+                postId: item.postId || item.slug || item.url,
                 title: item.title,
                 text: item.text,
                 url: item.url,
@@ -295,12 +189,12 @@
             image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
           }
 
-          const slug = data.slug || (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || data.id || '';
-          const url = (slug || data.id)
-            ? `https://arab-wrestling.com/${collection}/${slug || data.id}/`
+          const slug = data.slug || (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || '';
+          const url = slug
+            ? `https://arab-wrestling.com/${collection}/${slug}/`
             : `https://arab-wrestling.com/`;
 
-          const postId = `${collection}_${slug || data.id || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
+          const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
 
           const sent = getStore(SENT_KEY);
 
