@@ -189,6 +189,38 @@ function escapeTelegramHtml(str: string): string {
     .replace(/>/g, "&gt;");
 }
 
+function isValidImageFile(p: string): boolean {
+  if (!fs.existsSync(p) || !fs.statSync(p).isFile()) return false;
+  const stat = fs.statSync(p);
+  if (stat.size < 100) return false;
+
+  try {
+    const buf = Buffer.alloc(12);
+    const fd = fs.openSync(p, "r");
+    fs.readSync(fd, buf, 0, 12, 0);
+    fs.closeSync(fd);
+
+    const hex = buf.subarray(0, 8).toString("hex");
+    if (hex.startsWith("ffd8")) return true; // JPG
+    if (hex.startsWith("89504e47")) return true; // PNG
+    if (buf.subarray(0, 4).toString() === "RIFF" && buf.subarray(8, 12).toString() === "WEBP") return true; // WEBP
+    if (hex.startsWith("47494638")) return true; // GIF
+  } catch (e) {}
+
+  return false;
+}
+
+function isValidImageBuffer(buffer: ArrayBuffer | Buffer): boolean {
+  if (!buffer || buffer.byteLength < 100) return false;
+  const buf = Buffer.from(buffer as any);
+  const hex = buf.subarray(0, 8).toString("hex");
+  if (hex.startsWith("ffd8")) return true; // JPG
+  if (hex.startsWith("89504e47")) return true; // PNG
+  if (buf.subarray(0, 4).toString() === "RIFF" && buf.subarray(8, 12).toString() === "WEBP") return true; // WEBP
+  if (hex.startsWith("47494638")) return true; // GIF
+  return false;
+}
+
 function resolveLocalImagePath(imgStr: string | undefined): string | null {
   if (!imgStr || typeof imgStr !== 'string') return null;
   let clean = imgStr.replace(/^https?:\/\/[^\/]+/, "");
@@ -205,7 +237,7 @@ function resolveLocalImagePath(imgStr: string | undefined): string | null {
   ];
 
   for (const p of candidates) {
-    if (fs.existsSync(p) && fs.statSync(p).isFile()) {
+    if (isValidImageFile(p)) {
       return p;
     }
   }
@@ -300,7 +332,7 @@ async function executeTelegramPost(data: {
         const imgRes = await fetch(fullImageUrl);
         if (imgRes.ok) {
           const arrayBuffer = await imgRes.arrayBuffer();
-          if (arrayBuffer.byteLength > 0) {
+          if (isValidImageBuffer(arrayBuffer)) {
             const contentType = imgRes.headers.get("content-type") || "image/jpeg";
             const blob = new Blob([new Uint8Array(arrayBuffer)], { type: contentType });
 
@@ -323,6 +355,8 @@ async function executeTelegramPost(data: {
               console.warn("[Telegram] Rate limit (429) hit during fetched image upload.");
               return result;
             }
+          } else {
+            console.warn("[Telegram] Fetched image buffer is invalid image data, skipping photo upload.");
           }
         }
       } catch (fetchErr) {
@@ -360,7 +394,7 @@ async function executeTelegramPost(data: {
 
     // Strategy 4: Fallback to sendMessage HTML (Text only)
     if (!result.ok && !isRateLimited(result)) {
-      console.warn("[Telegram] Photo upload unavailable or failed, falling back to sendMessage HTML...");
+      console.log("[Telegram] Posting article message to channel via formatted HTML...");
       const payload = {
         chat_id: CHAT_ID,
         text: messageHtml,
@@ -474,27 +508,31 @@ async function autoScanContentFolders() {
         const articleUrl = normalizeArticleUrl(rawUrl);
         const key = sanitizeKey(articleUrl);
 
-        // If already sent or already in queue, skip
+        if (!key) continue;
+
+        // If already sent or already in pending queue, skip
         if (sentMap[key] || queue[key]) {
           continue;
         }
 
         const ageMs = Date.now() - stat.mtimeMs;
-        // If file is older than 2 days, mark as sent so we don't re-scan
-        if (ageMs > 48 * 60 * 60 * 1000) {
+        // STRICT RULE: Ignore old files (>15 minutes old). Mark them as sent so they NEVER post!
+        if (ageMs > 15 * 60 * 1000) {
           sentMap[key] = stat.mtimeMs;
           updatedSentMap = true;
           continue;
         }
 
-        // New/recent post detected!
+        // BRAND NEW post detected! Schedule to publish 3 MINUTES (180,000 ms) after file creation
         let text = (fm.description || fm.headline || "").trim();
         let image = fm.image || null;
         if (image && typeof image === 'string' && !image.startsWith('http')) {
           image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
         }
 
-        const delay = ageMs < 180000 ? (180000 - ageMs) : 5000;
+        const targetPublishTime = stat.mtimeMs + 180000; // 3 minutes from creation
+        const publishAt = Math.max(targetPublishTime, Date.now() + 5000);
+
         queue[key] = {
           postId: key,
           title,
@@ -503,11 +541,12 @@ async function autoScanContentFolders() {
           image,
           collection: item.folder,
           kind: item.kind,
-          publishAt: Date.now() + delay,
+          publishAt,
           retries: 0
         };
         updatedQueue = true;
-        console.log(`[Auto Scanner] Found new/recent post: "${title}" (${item.folder}), queued to publish in ${Math.round(delay/1000)}s`);
+        const waitSec = Math.round((publishAt - Date.now()) / 1000);
+        console.log(`[Auto Scanner] Found brand new post: "${title}" (${item.folder}), scheduled to publish in Telegram in ${waitSec}s`);
       }
     } catch (err) {
       console.error(`[Auto Scanner] Error scanning ${item.folder}:`, err);
@@ -534,15 +573,15 @@ async function processTelegramPendingQueue() {
   for (const key in queue) {
     const item = queue[key];
     if (now >= item.publishAt) {
-      // Only skip if sent very recently (less than 2 minutes ago, e.g. sent via immediate trigger)
-      if (sentMap[key] && (now - sentMap[key] < 120000)) {
-        console.log(`[Telegram Queue] Skipping ${key} as it was already sent very recently.`);
+      // If already sent, skip immediately
+      if (sentMap[key]) {
+        console.log(`[Telegram Queue] Skipping ${key} as it is already in sent map.`);
         delete queue[key];
         updated = true;
         continue;
       }
 
-      console.log(`[Telegram Queue] Executing delayed post to Telegram for: ${item.title}`);
+      console.log(`[Telegram Queue] Executing 3-minute scheduled post to Telegram for: ${item.title}`);
       try {
         const result = await executeTelegramPost(item);
         if (result.ok) {
@@ -550,6 +589,11 @@ async function processTelegramPendingQueue() {
           saveTelegramSentMap(sentMap);
           delete queue[key];
           updated = true;
+
+          // Trigger push notifications for shows/recaps if applicable
+          if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
+            sendPushToAllSubscribers(item).catch(() => {});
+          }
         } else if (result.error_code === 429) {
           const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
           console.warn(`[Telegram Queue] Rate limit 429 encountered for ${key}. Delaying post by ${retrySec}s and pausing batch.`);
@@ -558,8 +602,10 @@ async function processTelegramPendingQueue() {
           break; // Pause queue iteration on rate limit
         } else {
           item.retries = (item.retries || 0) + 1;
-          if (item.retries >= 10) {
-            console.error(`[Telegram Queue] Dropping post after 10 failures: ${key}`, result);
+          if (item.retries >= 5) {
+            console.error(`[Telegram Queue] Dropping post after 5 failures: ${key}`, result);
+            sentMap[key] = Date.now(); // Mark as sent so it doesn't loop
+            saveTelegramSentMap(sentMap);
             delete queue[key];
           } else {
             item.publishAt = Date.now() + 30000; // Retry in 30 seconds
@@ -569,7 +615,9 @@ async function processTelegramPendingQueue() {
       } catch (err) {
         console.error(`[Telegram Queue] Error processing ${key}:`, err);
         item.retries = (item.retries || 0) + 1;
-        if (item.retries >= 10) {
+        if (item.retries >= 5) {
+          sentMap[key] = Date.now();
+          saveTelegramSentMap(sentMap);
           delete queue[key];
         } else {
           item.publishAt = Date.now() + 30000;
@@ -577,7 +625,6 @@ async function processTelegramPendingQueue() {
         updated = true;
       }
       
-      // Delay 3.5s between consecutive posts to respect Telegram API rate limit (20 msgs/min)
       await new Promise(r => setTimeout(r, 3500));
     }
   }
