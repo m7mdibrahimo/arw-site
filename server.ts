@@ -377,8 +377,131 @@ async function executeTelegramPost(data: {
   }
 }
 
+function arabicSlug(str: string): string {
+  if (!str) return "";
+  return str
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .normalize("NFC")
+    .trim()
+    .toLowerCase()
+    .replace(/[\.\_\/\\]+/g, "-")
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\u0600-\u06FF\-]/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function sanitizeKey(str: string): string {
+  if (!str) return "";
+  return str.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
+}
+
+function parseFrontmatter(fileContent: string): Record<string, string> {
+  const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return {};
+  const yamlStr = match[1];
+  const result: Record<string, string> = {};
+  for (const line of yamlStr.split("\n")) {
+    const colonIdx = line.indexOf(":");
+    if (colonIdx > 0) {
+      const key = line.slice(0, colonIdx).trim();
+      let val = line.slice(colonIdx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      result[key] = val;
+    }
+  }
+  return result;
+}
+
+// Auto Scanner for content folders: scans content/shows, content/news, content/recaps
+async function autoScanContentFolders() {
+  const folders = [
+    { folder: "shows", kind: "show" },
+    { folder: "news", kind: "news" },
+    { folder: "recaps", kind: "recap" }
+  ];
+
+  const queue = getTelegramPendingQueue();
+  const sentMap = getTelegramSentMap();
+  let updatedQueue = false;
+  let updatedSentMap = false;
+
+  for (const item of folders) {
+    const dir = path.join(process.cwd(), "content", item.folder);
+    if (!fs.existsSync(dir)) continue;
+
+    try {
+      const files = fs.readdirSync(dir).filter(f => f.endsWith(".md"));
+      for (const file of files) {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
+        const fileContent = fs.readFileSync(filePath, "utf8");
+        const fm = parseFrontmatter(fileContent);
+
+        const title = (fm.headline || fm.title || "").trim();
+        if (!title) continue;
+
+        const slug = arabicSlug(fm.title || file.replace(/\.md$/, ""));
+        const rawUrl = slug ? `https://arab-wrestling.com/${item.folder}/${slug}` : `https://arab-wrestling.com/`;
+        const articleUrl = normalizeArticleUrl(rawUrl);
+        const key = sanitizeKey(articleUrl);
+
+        // If already sent or already in queue, skip
+        if (sentMap[key] || queue[key]) {
+          continue;
+        }
+
+        const ageMs = Date.now() - stat.mtimeMs;
+        // If file is older than 2 days, mark as sent so we don't re-scan
+        if (ageMs > 48 * 60 * 60 * 1000) {
+          sentMap[key] = stat.mtimeMs;
+          updatedSentMap = true;
+          continue;
+        }
+
+        // New/recent post detected!
+        let text = (fm.description || fm.headline || "").trim();
+        let image = fm.image || null;
+        if (image && typeof image === 'string' && !image.startsWith('http')) {
+          image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
+        }
+
+        const delay = ageMs < 180000 ? (180000 - ageMs) : 5000;
+        queue[key] = {
+          postId: key,
+          title,
+          text,
+          url: articleUrl,
+          image,
+          collection: item.folder,
+          kind: item.kind,
+          publishAt: Date.now() + delay,
+          retries: 0
+        };
+        updatedQueue = true;
+        console.log(`[Auto Scanner] Found new/recent post: "${title}" (${item.folder}), queued to publish in ${Math.round(delay/1000)}s`);
+      }
+    } catch (err) {
+      console.error(`[Auto Scanner] Error scanning ${item.folder}:`, err);
+    }
+  }
+
+  if (updatedSentMap) {
+    saveTelegramSentMap(sentMap);
+  }
+  if (updatedQueue) {
+    saveTelegramPendingQueue(queue);
+  }
+}
+
 // Background Worker: Checks pending queue every 10 seconds and sends delayed posts
 async function processTelegramPendingQueue() {
+  await autoScanContentFolders();
+
   const queue = getTelegramPendingQueue();
   const sentMap = getTelegramSentMap();
   const now = Date.now();
