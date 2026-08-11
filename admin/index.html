@@ -201,8 +201,7 @@
             image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
           }
 
-          const rawSlug = data.slug || (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || title;
-          const slug = toArabicSlug(rawSlug);
+          const slug = toArabicSlug(title);
           const url = slug
             ? `https://arab-wrestling.com/${collection}/${slug}.html`
             : `https://arab-wrestling.com/`;
