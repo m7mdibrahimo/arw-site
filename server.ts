@@ -181,6 +181,14 @@ function saveTelegramPendingQueue(queue: Record<string, any>) {
   } catch (e) {}
 }
 
+function escapeTelegramHtml(str: string): string {
+  if (!str) return "";
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 async function executeTelegramPost(data: {
   title: string;
   text?: string;
@@ -192,22 +200,30 @@ async function executeTelegramPost(data: {
   try {
     const { title, text, url, image } = data;
     const articleUrl = url || 'https://arab-wrestling.com';
-    const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+
+    let fullImageUrl = image;
+    if (image && typeof image === 'string' && !image.startsWith('http')) {
+      fullImageUrl = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
+    }
+
+    const safeTitle = escapeTelegramHtml(title || "");
+    const safeText = escapeTelegramHtml(text || "");
+    const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
     let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     let payload: any = {
       chat_id: CHAT_ID,
-      text: messageText,
+      text: messageHtml,
       parse_mode: "HTML",
       disable_web_page_preview: false
     };
 
-    if (image) {
+    if (fullImageUrl) {
       telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
       payload = {
         chat_id: CHAT_ID,
-        photo: image,
-        caption: messageText,
+        photo: fullImageUrl,
+        caption: messageHtml,
         parse_mode: "HTML"
       };
     }
@@ -220,14 +236,32 @@ async function executeTelegramPost(data: {
 
     let result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
 
-    // Fallback to text sendMessage if sendPhoto failed
-    if (!result.ok && image) {
-      console.warn("[Telegram] sendPhoto failed, retrying with sendMessage...", result);
+    // Fallback 1: Retrying with sendMessage HTML if sendPhoto failed
+    if (!result.ok && fullImageUrl) {
+      console.warn("[Telegram] sendPhoto failed, retrying with sendMessage HTML...", result);
       telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
       payload = {
         chat_id: CHAT_ID,
-        text: messageText,
+        text: messageHtml,
         parse_mode: "HTML",
+        disable_web_page_preview: false
+      };
+      tgRes = await fetch(telegramUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
+    }
+
+    // Fallback 2: Plain text sendMessage without HTML parsing (Guaranteed delivery)
+    if (!result.ok) {
+      console.warn("[Telegram] HTML parse failed, retrying plain text sendMessage...", result);
+      const plainText = `${title || ""}\n\n${text || ""}\n\n🔗 تابع المحتوى على موقع عرب راسلنج:\n${articleUrl}`;
+      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+      payload = {
+        chat_id: CHAT_ID,
+        text: plainText,
         disable_web_page_preview: false
       };
       tgRes = await fetch(telegramUrl, {
