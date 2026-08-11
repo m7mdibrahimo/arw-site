@@ -99,9 +99,7 @@
             data = data.set('id', id);
           }
 
-          entry = entry.set('data', data);
-          entry = entry.set('slug', String(id));
-          return entry;
+          return entry.set('data', data);
         }
       });
 
