@@ -191,7 +191,8 @@ async function executeTelegramPost(data: {
 }) {
   try {
     const { title, text, url, image } = data;
-    const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
+    const articleUrl = url || 'https://arab-wrestling.com';
+    const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
     let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     let payload: any = {
