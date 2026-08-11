@@ -401,6 +401,34 @@ if (!fs.existsSync(indexPath)) {
   }
 }
 
+// Smart URL resolution middleware to handle date-prefixed requests seamlessly
+app.use((req, res, next) => {
+  if (req.method !== "GET") return next();
+
+  try {
+    const decodedPath = decodeURIComponent(req.path);
+    // Handle URLs with date prefix e.g. /news/2026-08-05-post-name.html -> /news/post-name.html
+    const dateMatch = decodedPath.match(/^\/(news|shows|recaps)\/\d{4}-\d{2}-\d{2}-(.*)$/);
+    if (dateMatch) {
+      const section = dateMatch[1];
+      const cleanSlug = dateMatch[2];
+      const targetFile = path.join(sitePath, section, cleanSlug);
+
+      if (fs.existsSync(targetFile)) {
+        return res.sendFile(targetFile);
+      }
+      if (!cleanSlug.endsWith(".html")) {
+        const targetHtml = path.join(sitePath, section, `${cleanSlug}.html`);
+        if (fs.existsSync(targetHtml)) {
+          return res.sendFile(targetHtml);
+        }
+      }
+    }
+  } catch (e) {}
+
+  next();
+});
+
 // Serve static assets from _site
 app.use(express.static(sitePath, {
   extensions: ["html", "htm"],
