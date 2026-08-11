@@ -26,7 +26,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    identifier_field: "id"
+    identifier_field: "title"
     slug: "{{fields.id}}"
     summary: "{{title}}"
     fields:
@@ -65,7 +65,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    identifier_field: "id"
+    identifier_field: "title"
     slug: "{{fields.id}}"
     summary: "{{title}}"
     fields:
@@ -95,7 +95,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    identifier_field: "id"
+    identifier_field: "title"
     slug: "{{fields.id}}"
     summary: "{{title}}"
     fields:
