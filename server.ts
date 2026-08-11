@@ -212,6 +212,17 @@ function resolveLocalImagePath(imgStr: string | undefined): string | null {
   return null;
 }
 
+function normalizeArticleUrl(urlStr: string | undefined): string {
+  if (!urlStr || typeof urlStr !== 'string') return 'https://arab-wrestling.com';
+  try {
+    const parsed = new URL(urlStr);
+    parsed.pathname = parsed.pathname.replace(/[A-Z]+/g, (m) => m.toLowerCase());
+    return decodeURIComponent(parsed.toString());
+  } catch (e) {
+    return urlStr;
+  }
+}
+
 async function executeTelegramPost(data: {
   title: string;
   text?: string;
@@ -222,7 +233,7 @@ async function executeTelegramPost(data: {
 }) {
   try {
     const { title, text, url, image } = data;
-    const articleUrl = url || 'https://arab-wrestling.com';
+    const articleUrl = normalizeArticleUrl(url || 'https://arab-wrestling.com');
 
     let fullImageUrl = image;
     if (image && typeof image === 'string' && !image.startsWith('http')) {
