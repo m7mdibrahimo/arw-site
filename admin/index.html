@@ -281,7 +281,7 @@
                 setStore(PENDING_KEY, pending);
 
                 const fallbackUrl = (item.slug || item.id)
-                  ? `https://arab-wrestling.com/${item.collection}/${item.slug || item.id}/`
+                  ? `https://arab-wrestling.com/${item.collection}/${item.slug || item.id}`
                   : `https://arab-wrestling.com/`;
 
                 const success = await doTelegramSend({
