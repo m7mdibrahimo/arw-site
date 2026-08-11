@@ -27,7 +27,7 @@ collections:
     format: "frontmatter"
     create: true
     identifier_field: "title"
-    slug: "{{fields.id}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     preview_path: "shows/{{slug}}.html"
     summary: "{{title}}"
     fields:
@@ -67,7 +67,7 @@ collections:
     format: "frontmatter"
     create: true
     identifier_field: "title"
-    slug: "{{fields.id}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     preview_path: "recaps/{{slug}}.html"
     summary: "{{title}}"
     fields:
@@ -98,7 +98,7 @@ collections:
     format: "frontmatter"
     create: true
     identifier_field: "title"
-    slug: "{{fields.id}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     preview_path: "news/{{slug}}.html"
     summary: "{{title}}"
     fields:
