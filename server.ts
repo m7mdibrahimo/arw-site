@@ -387,7 +387,9 @@ async function processTelegramPendingQueue() {
   for (const key in queue) {
     const item = queue[key];
     if (now >= item.publishAt) {
-      if (sentMap[key]) {
+      // Only skip if sent very recently (less than 2 minutes ago, e.g. sent via immediate trigger)
+      if (sentMap[key] && (now - sentMap[key] < 120000)) {
+        console.log(`[Telegram Queue] Skipping ${key} as it was already sent very recently.`);
         delete queue[key];
         updated = true;
         continue;
