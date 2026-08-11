@@ -86,21 +86,21 @@
                 image: item.image,
                 collection: item.collection,
                 kind: item.kind,
-                delayMs: 3 * 60 * 1000
+                delayMs: 5000
               })
             });
             if (apiRes.ok) {
               const apiData = await apiRes.json();
               if (apiData && apiData.success) {
-                showToast("⏱️ تم تسجيل الموضوع! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات بعد 3 دقائق لضمان اكتمال رفع الصور والموقع.");
+                showToast("⚡ تم تسجيل الموضوع! سيتم نشره فوراً على التليجرام وشبكة الإشعارات خلال 5 ثوانٍ...");
                 return true;
               }
             }
           } catch (apiErr) {
-            console.log("السيرفر غير متاح، جدولة الإرسال محلياً بعد 3 دقائق...");
+            console.log("السيرفر غير متاح، جدولة الإرسال محلياً خلال 5 ثوانٍ...");
           }
 
-          showToast("⏱️ تم جدولة النشر بتليجرام محلياً بعد 3 دقائق لضمان ظهور الصفحة والصورة بالموقع...");
+          showToast("⚡ تم جدولة النشر بتليجرام محلياً خلال 5 ثوانٍ...");
           
           setTimeout(async () => {
             let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
@@ -146,12 +146,12 @@
             }
 
             if (data && data.ok) {
-              showToast("✅ تم نشر الخبر بنجاح على التليجرام بعد 3 دقائق!");
+              showToast("✅ تم نشر الخبر بنجاح على التليجرام!");
             } else {
               console.error("فشل إرسال البوست للتليجرام:", data);
               showToast("❌ خطأ في نشر الخبر بتليجرام: " + ((data && data.description) || "خطأ غير معروف"), true);
             }
-          }, 3 * 60 * 1000);
+          }, 5000);
 
           return true;
         } catch(e) {
