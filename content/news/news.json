@@ -1,4 +1,4 @@
 {
   "layout": "post-layout.njk",
-  "permalink": "/news/{{ id or page.fileSlug }}.html"
+  "permalink": "/news/{{ page.fileSlug }}.html"
 }
