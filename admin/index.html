@@ -36,49 +36,54 @@
         return String(ts) + String(rand);
       }
 
+      function isEntryPersisted(entry) {
+        if (!entry) return false;
+        if (typeof entry.get === 'function') {
+          return Boolean(entry.get('isPersisted'));
+        }
+        return Boolean(entry.isPersisted);
+      }
+
       const IdControl = createClass({
         componentDidMount: function() {
-          this.initId();
+          this.ensureId();
         },
-        componentDidUpdate: function() {
-          this.initId();
+        componentDidUpdate: function(prevProps) {
+          if (prevProps && prevProps.entry !== this.props.entry) {
+            this._assignedId = null;
+            this._hasGeneratedForDuplicate = false;
+          }
+          this.ensureId();
         },
-        initId: function() {
+        ensureId: function() {
           const entry = this.props.entry;
-          const isPersisted = entry && (typeof entry.get === 'function' ? entry.get('isPersisted') : entry.isPersisted);
-
-          // إذا كان المقال محفوظاً أصلاً (تعديل خبر قديم)، نلتزم بالقيمة الأصلية المخزنة ولا نغيرها أبداً
-          if (isPersisted) {
+          if (isEntryPersisted(entry)) {
+            // المقالات القديمة المحفوظة: نلتزم بنفس المعرف الأصلي ولا نغيره أبداً لعدم الإضرار بأرشفة جوجل
+            this._assignedId = null;
             return;
           }
 
-          // إذا كان المقال جديداً كلياً أو تم عمل نسق/نسخة منه (Duplicate):
-          // نولّد ID جديد فريد فقط إذا لم نكن قد ولّدنا له في هذه الجلسة بعد
-          const cid = (entry && typeof entry.get === 'function') ? entry.get('cid') : null;
-          if (!this._generatedCid || this._generatedCid !== cid) {
+          const currentVal = this.props.value;
+
+          // المقالات الجديدة أو المنسوخة (Duplicate): نولّد معرف فريد جديد مرة واحدة فقط
+          if (!this._assignedId || (currentVal && currentVal !== this._assignedId && !this._hasGeneratedForDuplicate)) {
             const newId = makeUniqueId();
-            this._generatedCid = cid;
-            this._generatedVal = newId;
-            if (this.props.onChange) {
+            this._assignedId = newId;
+            this._hasGeneratedForDuplicate = true;
+            if (this.props.onChange && currentVal !== newId) {
               this.props.onChange(newId);
             }
           }
         },
         render: function() {
           const entry = this.props.entry;
-          const isPersisted = entry && (typeof entry.get === 'function' ? entry.get('isPersisted') : entry.isPersisted);
-
-          let displayVal = this.props.value;
-
-          // إذا كان المقال غير محفوظ (جديد أو Duplicate) ولدين قيمة جديدة تم توليدها
-          if (!isPersisted && this._generatedVal) {
-            displayVal = this._generatedVal;
-          }
+          const isPersisted = isEntryPersisted(entry);
+          const val = this.props.value || (isPersisted ? '' : this._assignedId);
 
           return h('input', {
             type: 'text',
             id: this.props.forID || 'id',
-            value: displayVal || '',
+            value: val || '',
             readOnly: true,
             className: this.props.classNameWrapper || '',
             style: {
