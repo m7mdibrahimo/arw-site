@@ -43,7 +43,7 @@ eleventyExcludeFromCollections: true
   {% endfor %}
   {% for item in collections.allContent %}
   <url>
-    <loc>https://arab-wrestling.com{{ item.url }}</loc>
+    <loc>https://arab-wrestling.com{{ item.url | cleanUrl }}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
