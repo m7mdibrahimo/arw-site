@@ -26,9 +26,9 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    identifier_field: "title"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "shows/{{slug}}.html"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
+    preview_path: "shows/{{fields.id}}.html"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -66,9 +66,9 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    identifier_field: "title"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "recaps/{{slug}}.html"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
+    preview_path: "recaps/{{fields.id}}.html"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -97,9 +97,9 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    identifier_field: "title"
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "news/{{slug}}.html"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
+    preview_path: "news/{{fields.id}}.html"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
