@@ -51,47 +51,44 @@
               alignItems: 'center',
               width: '100%'
             }
-          }, [
-            h('input', {
-              type: 'text',
-              id: this.props.forID || 'id',
-              value: value,
-              onChange: function(e) { if (onChange) onChange(e.target.value); },
-              className: this.props.classNameWrapper || '',
-              style: {
-                flex: '1',
-                padding: '10px 14px',
-                border: '1px solid #d1d5db',
-                borderRadius: '6px',
-                fontSize: '15px',
-                fontFamily: 'monospace',
-                backgroundColor: '#f9fafb',
-                color: '#111827',
-                direction: 'ltr',
-                textAlign: 'left'
-              }
-            }),
-            h('button', {
-              type: 'button',
-              onClick: function() {
-                const newId = makeUniqueId();
-                if (onChange) onChange(newId);
-                showToast("✅ تم توليد معرف فريد جديد: " + newId);
-              },
-              style: {
-                padding: '10px 16px',
-                backgroundColor: '#2563eb',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-              }
-            }, '🔄 توليد معرف جديد')
-          ]);
+          }, h('input', {
+            type: 'text',
+            id: this.props.forID || 'id',
+            value: value,
+            onChange: function(e) { if (onChange) onChange(e.target.value); },
+            className: this.props.classNameWrapper || '',
+            style: {
+              flex: '1',
+              padding: '10px 14px',
+              border: '1px solid #d1d5db',
+              borderRadius: '6px',
+              fontSize: '15px',
+              fontFamily: 'monospace',
+              backgroundColor: '#f9fafb',
+              color: '#111827',
+              direction: 'ltr',
+              textAlign: 'left'
+            }
+          }), h('button', {
+            type: 'button',
+            onClick: function() {
+              const newId = makeUniqueId();
+              if (onChange) onChange(newId);
+              if (typeof showToast === 'function') showToast("✅ تم توليد معرف فريد جديد: " + newId);
+            },
+            style: {
+              padding: '10px 16px',
+              backgroundColor: '#2563eb',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '6px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }
+          }, '🔄 توليد معرف جديد'));
         }
       });
 
