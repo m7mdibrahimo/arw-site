@@ -242,7 +242,7 @@
 </header>
 
 
-{% set isNews = (page.inputPath and "content/news" in page.inputPath) or (page.url and "/news/" in page.url) %}
+{% set isNews = (page.inputPath and "content/news" in page.inputPath) %}
 
 <div class="hero" id="top"{% if image %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg image, '' %}') center 30%/cover no-repeat;"{% endif %}>
   <div class="hero-inner">
