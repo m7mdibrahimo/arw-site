@@ -22,7 +22,7 @@
 
       function makeUniqueId() {
         const ts = Math.floor(Date.now() / 1000);
-        const rand = Math.floor(Math.random() * 8999 + 1000);
+        const rand = Math.floor(Math.random() * 89999 + 10000);
         return String(ts) + String(rand);
       }
 
@@ -34,31 +34,64 @@
 
           const isPersisted = entry && typeof entry.get === 'function' ? Boolean(entry.get('isPersisted')) : Boolean(entry && entry.isPersisted);
 
-          if (!isPersisted && !value && onChange) {
+          // إذا كان موضوعاً جديداً أو تم عمل Duplicate لموضوع قديم غير محفوظ
+          if (!isPersisted && onChange) {
+            onChange(makeUniqueId());
+          } else if (!value && onChange) {
             onChange(makeUniqueId());
           }
         },
         render: function() {
           const value = this.props.value || '';
-          return h('input', {
-            type: 'text',
-            id: this.props.forID || 'id',
-            value: value,
-            readOnly: true,
-            className: this.props.classNameWrapper || '',
+          const onChange = this.props.onChange;
+          return h('div', {
             style: {
-              width: '100%',
-              padding: '10px 14px',
-              border: '1px solid #d1d5db',
-              borderRadius: '6px',
-              fontSize: '15px',
-              fontFamily: 'monospace',
-              backgroundColor: '#f3f4f6',
-              color: '#111827',
-              direction: 'ltr',
-              textAlign: 'left'
+              display: 'flex',
+              gap: '10px',
+              alignItems: 'center',
+              width: '100%'
             }
-          });
+          }, [
+            h('input', {
+              type: 'text',
+              id: this.props.forID || 'id',
+              value: value,
+              onChange: function(e) { if (onChange) onChange(e.target.value); },
+              className: this.props.classNameWrapper || '',
+              style: {
+                flex: '1',
+                padding: '10px 14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                fontSize: '15px',
+                fontFamily: 'monospace',
+                backgroundColor: '#f9fafb',
+                color: '#111827',
+                direction: 'ltr',
+                textAlign: 'left'
+              }
+            }),
+            h('button', {
+              type: 'button',
+              onClick: function() {
+                const newId = makeUniqueId();
+                if (onChange) onChange(newId);
+                showToast("✅ تم توليد معرف فريد جديد: " + newId);
+              },
+              style: {
+                padding: '10px 16px',
+                backgroundColor: '#2563eb',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }
+            }, '🔄 توليد معرف جديد')
+          ]);
         }
       });
 
@@ -128,7 +161,7 @@
         const messageText = `<b>${item.title || ""}</b>\n\n${item.text || ""}\n\n🔗 <a href="${item.url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
 
         try {
-          // 1. المحاولة عبر السيرفر أولاً (إذا كان السيرفر المحلي متوفراً)
+          // 1. إرسال الطلب للسيرفر للجدولة مع انتظار 3 دقائق لتحديث الموقع والصورة
           try {
             const apiRes = await fetch('/api/telegram/post', {
               method: 'POST',
@@ -141,70 +174,76 @@
                 image: item.image,
                 collection: item.collection,
                 kind: item.kind,
-                immediate: true
+                delayMs: 3 * 60 * 1000 // الانتظار 3 دقائق (180 ثانية)
               })
             });
             if (apiRes.ok) {
               const apiData = await apiRes.json();
               if (apiData && apiData.success) {
+                showToast("⏱️ تم تسجيل الموضوع! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات بعد 3 دقائق لضمان اكتمال رفع الصور والموقع.");
                 return true;
               }
             }
           } catch (apiErr) {
-            console.log("السيرفر المحلي غير متاح، جارٍ الإرسال المباشر لبوت التليجرام...");
+            console.log("السيرفر غير متاح، جدولة الإرسال محلياً بعد 3 دقائق...");
           }
 
-          // 2. الإرسال المباشر لبوت التليجرام (يعمل على استضافة Netlify وجميع البيئات)
-          let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-          let payload = {
-            chat_id: CHAT_ID,
-            text: messageText,
-            parse_mode: "HTML",
-            disable_web_page_preview: false
-          };
-
-          if (item.image) {
-            telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
-            payload = {
-              chat_id: CHAT_ID,
-              photo: item.image,
-              caption: messageText,
-              parse_mode: "HTML"
-            };
-          }
-
-          let res = await fetch(telegramUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-
-          let data = await res.json().catch(() => ({ ok: false }));
-
-          // إذا فشل إرسال الصورة، نعيد المحاولة كرسالة نصية فقط ضماناً لوصول الخبر
-          if (!data.ok && item.image) {
-            telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            payload = {
+          // 2. إذا كان السيرفر غير متاح (العمل من المتصفح مباشرة)، ننتظر 3 دقائق محلياً قبل الإرسال
+          showToast("⏱️ تم جدولة النشر بتليجرام محلياً بعد 3 دقائق لضمان ظهور الصفحة والصورة بالموقع...");
+          
+          setTimeout(async () => {
+            let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            let payload = {
               chat_id: CHAT_ID,
               text: messageText,
               parse_mode: "HTML",
               disable_web_page_preview: false
             };
-            res = await fetch(telegramUrl, {
+
+            if (item.image) {
+              telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+              payload = {
+                chat_id: CHAT_ID,
+                photo: item.image,
+                caption: messageText,
+                parse_mode: "HTML"
+              };
+            }
+
+            let res = await fetch(telegramUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
             });
-            data = await res.json().catch(() => ({ ok: false }));
-          }
 
-          if (data && data.ok) {
-            return true;
-          } else {
-            console.error("فشل إرسال البوست للتليجرام:", data);
-            showToast("❌ خطأ في نشر الخبر بتليجرام: " + ((data && data.description) || "خطأ غير معروف"), true);
-            return false;
-          }
+            let data = await res.json().catch(() => ({ ok: false }));
+
+            // إذا فشل إرسال الصورة، نعيد المحاولة كرسالة نصية فقط ضماناً لوصول الخبر
+            if (!data.ok && item.image) {
+              telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+              payload = {
+                chat_id: CHAT_ID,
+                text: messageText,
+                parse_mode: "HTML",
+                disable_web_page_preview: false
+              };
+              res = await fetch(telegramUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+              data = await res.json().catch(() => ({ ok: false }));
+            }
+
+            if (data && data.ok) {
+              showToast("✅ تم نشر الخبر بنجاح على التليجرام بعد 3 دقائق!");
+            } else {
+              console.error("فشل إرسال البوست للتليجرام:", data);
+              showToast("❌ خطأ في نشر الخبر بتليجرام: " + ((data && data.description) || "خطأ غير معروف"), true);
+            }
+          }, 3 * 60 * 1000); // 3 Minutes delay
+
+          return true;
         } catch(e) {
           console.error("خطأ أثناء الاتصال بتليجرام:", e);
           showToast("❌ خطأ في الاتصال بتليجرام: " + e.message, true);
