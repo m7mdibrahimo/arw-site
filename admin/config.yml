@@ -26,7 +26,8 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -64,7 +65,8 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -93,7 +95,8 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    identifier_field: "id"
+    slug: "{{fields.id}}"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
