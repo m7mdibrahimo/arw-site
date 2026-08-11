@@ -160,7 +160,7 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
 
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in recapItems %}
-<a class="show-card" href="{{ item.url }}">
+<a class="show-card" href="{{ item.url | cleanUrl }}">
   <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"></div>
   <div class="show-body">
     <span class="kind-badge">ملخص</span>{% if item.data.federation %}<span class="cat">{{ item.data.federation }}</span>{% endif %}
