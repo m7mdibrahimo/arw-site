@@ -192,6 +192,24 @@
           }
         }
 
+        // Send Push Notifications to browser subscribers (Shows & Recaps ONLY)
+        try {
+          await fetch('/api/push/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              title: item.title,
+              text: item.text,
+              url: item.url,
+              image: item.image,
+              collection: item.collection,
+              kind: item.kind
+            })
+          });
+        } catch(e) {
+          console.warn("فشل إرسال الإشعار للمتصفحات:", e);
+        }
+
         return sentOk;
       };
 
