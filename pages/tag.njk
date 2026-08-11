@@ -181,7 +181,7 @@ permalink: /tag/{{ tagObj.slug }}/
   {% endif %}
 
   {% if hasTag %}
-  <a class="show-card" href="{{ item.url }}">
+  <a class="show-card" href="{{ item.url | cleanUrl }}">
     {% if item.kind == 'news' %}
     <div class="news-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"></div>
     <div class="news-body">
