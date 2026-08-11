@@ -401,26 +401,46 @@ if (!fs.existsSync(indexPath)) {
   }
 }
 
-// Smart URL resolution middleware to handle date-prefixed requests seamlessly
+// Smart URL resolution middleware to handle date-prefixed, spaces, and clean URLs seamlessly
 app.use((req, res, next) => {
   if (req.method !== "GET") return next();
 
   try {
-    const decodedPath = decodeURIComponent(req.path);
-    // Handle URLs with date prefix e.g. /news/2026-08-05-post-name.html -> /news/post-name.html
-    const dateMatch = decodedPath.match(/^\/(news|shows|recaps)\/\d{4}-\d{2}-\d{2}-(.*)$/);
-    if (dateMatch) {
-      const section = dateMatch[1];
-      const cleanSlug = dateMatch[2];
-      const targetFile = path.join(sitePath, section, cleanSlug);
+    const rawPath = req.path;
+    const decodedPath = decodeURIComponent(rawPath);
+    const match = decodedPath.match(/^\/(news|shows|recaps)\/(.+)$/);
 
-      if (fs.existsSync(targetFile)) {
-        return res.sendFile(targetFile);
+    if (match) {
+      const section = match[1];
+      let requestedSlug = match[2];
+
+      if (requestedSlug.endsWith(".html")) {
+        requestedSlug = requestedSlug.slice(0, -5);
       }
-      if (!cleanSlug.endsWith(".html")) {
-        const targetHtml = path.join(sitePath, section, `${cleanSlug}.html`);
-        if (fs.existsSync(targetHtml)) {
-          return res.sendFile(targetHtml);
+
+      const sectionDir = path.join(sitePath, section);
+      if (fs.existsSync(sectionDir)) {
+        // Direct file check first
+        const directFile = path.join(sectionDir, `${requestedSlug}.html`);
+        if (fs.existsSync(directFile)) {
+          return res.sendFile(directFile);
+        }
+
+        const files = fs.readdirSync(sectionDir);
+        const norm = (s: string) => s
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/\.html$/, '')
+          .replace(/^\d{4}-\d{2}-\d{2}-/, '')
+          .replace(/[\s\-_]+/g, '');
+
+        const targetNorm = norm(requestedSlug);
+        if (targetNorm) {
+          const foundFile = files.find(f => norm(f) === targetNorm);
+          if (foundFile) {
+            return res.sendFile(path.join(sectionDir, foundFile));
+          }
         }
       }
     }
