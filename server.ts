@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { execSync } from "child_process";
+import { execSync, exec } from "child_process";
 import webpush from "web-push";
 
 const app = express();
@@ -355,10 +355,16 @@ app.get("/api/telegram/status", async (req, res) => {
 app.post("/api/telegram/post", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   try {
-    const { title, text, url, image, collection, kind, id, slug, postId, immediate } = req.body || {};
+    const { title, text, url, image, collection, kind, id, slug, postId, immediate, force } = req.body || {};
     if (!title && !text) {
       return res.status(400).json({ success: false, error: "العنوان أو النص مطلوب" });
     }
+
+    // Trigger Eleventy build in background so static page is generated immediately
+    exec("npx @11ty/eleventy", (err) => {
+      if (err) console.error("[Eleventy AutoBuild Error]:", err);
+      else console.log("[Eleventy AutoBuild] Site rebuilt successfully for new post!");
+    });
 
     // Generate strict unique deduplication key
     const rawKey = postId || url || slug || id || title || "";
@@ -367,16 +373,18 @@ app.post("/api/telegram/post", async (req, res) => {
     const sentMap = getTelegramSentMap();
     const pendingQueue = getTelegramPendingQueue();
 
-    if (dedupKey && (sentMap[dedupKey] || pendingQueue[dedupKey])) {
-      console.log(`[Telegram] Duplicate or already queued post for key: ${dedupKey}`);
+    // Check if sent recently (less than 10 minutes) unless force/immediate is passed
+    const lastSentTime = sentMap[dedupKey];
+    if (dedupKey && lastSentTime && (Date.now() - lastSentTime < 600000) && !force && !immediate) {
+      console.log(`[Telegram] Already sent recently for key: ${dedupKey}`);
       return res.json({
         success: true,
-        message: "تم تسجيل هذا الموضوع مسبقاً وسيرسل في موعده المحدد",
+        message: "تم نشر هذا الموضوع مسبقاً على التليجرام",
         alreadySent: true
       });
     }
 
-    // If immediate send is explicitly requested (e.g., manual test)
+    // If immediate send is explicitly requested
     if (immediate) {
       const result = await executeTelegramPost({ title, text, url, image, collection, kind });
       if (result.ok) {
@@ -393,9 +401,8 @@ app.post("/api/telegram/post", async (req, res) => {
       }
     }
 
-    // Default behavior: Schedule post after 3 MINUTES (180,000 ms) delay
-    // This allows static site generator to complete building page & uploading images!
-    const delayMs = req.body?.delayMs || (3 * 60 * 1000); // 3 Minutes
+    // Default delay: 5 SECONDS (5,000 ms) instead of 3 minutes
+    const delayMs = req.body?.delayMs !== undefined ? Number(req.body.delayMs) : 5000;
     const publishAt = Date.now() + delayMs;
 
     pendingQueue[dedupKey] = {
@@ -415,7 +422,7 @@ app.post("/api/telegram/post", async (req, res) => {
     return res.json({
       success: true,
       queued: true,
-      message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات بعد 3 دقائق لضمان اكتمال بناء الصفحة والميديا على الموقع."
+      message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات خلال ثوانٍ معدودة."
     });
   } catch (error: any) {
     console.error("[Telegram API Error]:", error);
