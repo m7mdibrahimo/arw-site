@@ -189,6 +189,29 @@ function escapeTelegramHtml(str: string): string {
     .replace(/>/g, "&gt;");
 }
 
+function resolveLocalImagePath(imgStr: string | undefined): string | null {
+  if (!imgStr || typeof imgStr !== 'string') return null;
+  let clean = imgStr.replace(/^https?:\/\/[^\/]+/, "");
+  if (!clean.startsWith("/")) clean = "/" + clean;
+
+  const candidates = [
+    path.join(process.cwd(), clean),
+    path.join(process.cwd(), "_site", clean),
+    path.join(process.cwd(), "content/images", path.basename(clean)),
+    path.join(process.cwd(), "_site/img", path.basename(clean)),
+    path.join(process.cwd(), "_site/content/images", path.basename(clean)),
+    path.join(process.cwd(), "public", clean),
+    path.join(process.cwd(), "assets", clean)
+  ];
+
+  for (const p of candidates) {
+    if (fs.existsSync(p) && fs.statSync(p).isFile()) {
+      return p;
+    }
+  }
+  return null;
+}
+
 async function executeTelegramPost(data: {
   title: string;
   text?: string;
@@ -210,66 +233,130 @@ async function executeTelegramPost(data: {
     const safeText = escapeTelegramHtml(text || "");
     const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
-    let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    let payload: any = {
-      chat_id: CHAT_ID,
-      text: messageHtml,
-      parse_mode: "HTML",
-      disable_web_page_preview: false
-    };
+    let result: any = { ok: false };
+    const localImgPath = resolveLocalImagePath(image);
 
-    if (fullImageUrl) {
-      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
-      payload = {
-        chat_id: CHAT_ID,
-        photo: fullImageUrl,
-        caption: messageHtml,
-        parse_mode: "HTML"
-      };
+    // Strategy 1: Direct File Binary Upload via FormData (100% Guaranteed for local image files)
+    if (localImgPath) {
+      try {
+        console.log(`[Telegram] Found local image file at ${localImgPath}, uploading binary directly...`);
+        const fileBuffer = fs.readFileSync(localImgPath);
+        const ext = path.extname(localImgPath).toLowerCase();
+        let mimeType = 'image/jpeg';
+        if (ext === '.png') mimeType = 'image/png';
+        else if (ext === '.webp') mimeType = 'image/webp';
+        else if (ext === '.gif') mimeType = 'image/gif';
+
+        const blob = new Blob([new Uint8Array(fileBuffer)], { type: mimeType });
+        const formData = new FormData();
+        formData.append("chat_id", CHAT_ID);
+        formData.append("photo", blob, path.basename(localImgPath));
+        formData.append("caption", messageHtml);
+        formData.append("parse_mode", "HTML");
+
+        const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+          method: "POST",
+          body: formData
+        });
+        result = await tgRes.json().catch(() => ({ ok: false }));
+        if (result.ok) {
+          console.log("[Telegram] sendPhoto via direct file upload succeeded!");
+          return result;
+        } else {
+          console.warn("[Telegram] Direct file upload sendPhoto returned error:", result);
+        }
+      } catch (fileErr) {
+        console.error("[Telegram] Error uploading local image file:", fileErr);
+      }
     }
 
-    let tgRes = await fetch(telegramUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    let result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
-
-    // Fallback 1: Retrying with sendMessage HTML if sendPhoto failed
+    // Strategy 2: Fetch remote image buffer and upload via FormData
     if (!result.ok && fullImageUrl) {
-      console.warn("[Telegram] sendPhoto failed, retrying with sendMessage HTML...", result);
-      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-      payload = {
+      try {
+        console.log(`[Telegram] Trying to fetch remote image from ${fullImageUrl}...`);
+        const imgRes = await fetch(fullImageUrl);
+        if (imgRes.ok) {
+          const arrayBuffer = await imgRes.arrayBuffer();
+          const contentType = imgRes.headers.get("content-type") || "image/jpeg";
+          const blob = new Blob([new Uint8Array(arrayBuffer)], { type: contentType });
+
+          const formData = new FormData();
+          formData.append("chat_id", CHAT_ID);
+          formData.append("photo", blob, "photo.jpg");
+          formData.append("caption", messageHtml);
+          formData.append("parse_mode", "HTML");
+
+          const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+            method: "POST",
+            body: formData
+          });
+          result = await tgRes.json().catch(() => ({ ok: false }));
+          if (result.ok) {
+            console.log("[Telegram] sendPhoto via fetched image buffer succeeded!");
+            return result;
+          }
+        }
+      } catch (fetchErr) {
+        console.warn("[Telegram] Failed to fetch remote image buffer:", fetchErr);
+      }
+    }
+
+    // Strategy 3: sendPhoto using URL string
+    if (!result.ok && fullImageUrl) {
+      try {
+        const payload = {
+          chat_id: CHAT_ID,
+          photo: fullImageUrl,
+          caption: messageHtml,
+          parse_mode: "HTML"
+        };
+        const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        result = await tgRes.json().catch(() => ({ ok: false }));
+        if (result.ok) {
+          console.log("[Telegram] sendPhoto via URL string succeeded!");
+          return result;
+        }
+      } catch (urlErr) {
+        console.warn("[Telegram] sendPhoto via URL string failed:", urlErr);
+      }
+    }
+
+    // Strategy 4: Fallback to sendMessage HTML (Text only)
+    if (!result.ok) {
+      console.warn("[Telegram] Photo upload failed all attempts, falling back to sendMessage HTML...", result);
+      const payload = {
         chat_id: CHAT_ID,
         text: messageHtml,
         parse_mode: "HTML",
         disable_web_page_preview: false
       };
-      tgRes = await fetch(telegramUrl, {
+      const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
-      result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
+      result = await tgRes.json().catch(() => ({ ok: false }));
     }
 
-    // Fallback 2: Plain text sendMessage without HTML parsing (Guaranteed delivery)
+    // Strategy 5: Plain text sendMessage without HTML formatting
     if (!result.ok) {
       console.warn("[Telegram] HTML parse failed, retrying plain text sendMessage...", result);
       const plainText = `${title || ""}\n\n${text || ""}\n\n🔗 تابع المحتوى على موقع عرب راسلنج:\n${articleUrl}`;
-      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-      payload = {
+      const payload = {
         chat_id: CHAT_ID,
         text: plainText,
         disable_web_page_preview: false
       };
-      tgRes = await fetch(telegramUrl, {
+      const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
-      result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
+      result = await tgRes.json().catch(() => ({ ok: false }));
     }
 
     return result;
