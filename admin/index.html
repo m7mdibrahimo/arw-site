@@ -52,11 +52,23 @@
         try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
       };
 
+      function toArabicSlug(str) {
+        if (!str) return "";
+        return str
+          .toString()
+          .normalize('NFC')
+          .trim()
+          .replace(/\s+/g, '-')
+          .replace(/[^\w\u0600-\u06FF\-]/g, '')
+          .replace(/\-\-+/g, '-');
+      }
+
       const doTelegramSend = async (item) => {
         const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
         const CHAT_ID = "@arab_wrestling";
 
-        const messageText = `<b>${item.title || ""}</b>\n\n${item.text || ""}\n\n<b>تابع المحتوى على موقع عرب راسلنج</b>\n🔗 <a href="${item.url || 'https://arab-wrestling.com'}">${item.url || 'https://arab-wrestling.com'}</a>`;
+        const articleUrl = item.url || 'https://arab-wrestling.com';
+        const messageText = `<b>${item.title || ""}</b>\n\n${item.text || ""}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
         try {
           try {
@@ -189,7 +201,8 @@
             image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
           }
 
-          const slug = data.slug || (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || '';
+          const rawSlug = data.slug || (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || title;
+          const slug = toArabicSlug(rawSlug);
           const url = slug
             ? `https://arab-wrestling.com/${collection}/${slug}.html`
             : `https://arab-wrestling.com/`;
