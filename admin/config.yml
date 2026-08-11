@@ -13,6 +13,11 @@ public_folder: "/content/images"
 
 locale: "ar"
 
+slug:
+  encoding: "unicode"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: "shows"
     label: "عروض المصارعة (الكاملة)"
@@ -21,7 +26,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    slug: "{{fields.id}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -59,7 +64,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    slug: "{{fields.id}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -88,7 +93,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
-    slug: "{{fields.id}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
