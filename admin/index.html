@@ -30,21 +30,31 @@
         };
       };
 
+      function makeUniqueId() {
+        const ts = Math.floor(Date.now() / 1000);
+        const rand = Math.floor(Math.random() * 8999 + 1000);
+        return String(ts) + String(rand);
+      }
+
       const IdControl = createClass({
         componentDidMount: function() {
           if (!this.props.value && this.props.onChange) {
-            this.props.onChange(String(Math.floor(Date.now() / 1000)));
+            const newId = makeUniqueId();
+            this.props.onChange(newId);
           }
         },
         render: function() {
-          const val = this.props.value || String(Math.floor(Date.now() / 1000));
-          const self = this;
-          if (!this.props.value && this.props.onChange) {
-            setTimeout(function() {
-              if (!self.props.value && self.props.onChange) {
-                self.props.onChange(val);
-              }
-            }, 50);
+          let val = this.props.value;
+          if (!val) {
+            val = makeUniqueId();
+            const self = this;
+            if (this.props.onChange) {
+              setTimeout(function() {
+                if (!self.props.value && self.props.onChange) {
+                  self.props.onChange(val);
+                }
+              }, 10);
+            }
           }
           return h('input', {
             type: 'text',
@@ -72,7 +82,7 @@
         render: function() {
           return h('div', {
             style: { color: '#4b5563', fontSize: '14px', padding: '6px 0', direction: 'rtl', fontFamily: 'monospace' }
-          }, 'معرف المقال (Unix Timestamp): ' + (this.props.value || 'جاري التوليد...'));
+          }, 'معرف المقال الفريد: ' + (this.props.value || 'جاري التوليد...'));
         }
       });
 
@@ -84,18 +94,13 @@
           let data = entry.get('data');
           let id = data.get('id');
 
-          if (!id || String(id).trim() === '' || id === 'undefined') {
-            id = String(Math.floor(Date.now() / 1000));
+          if (!id || String(id).trim() === '' || id === 'undefined' || id === 'null') {
+            id = makeUniqueId();
             data = data.set('id', id);
           }
 
-          let slug = entry.get('slug');
-          if (!slug || String(slug).trim() === '' || slug === 'undefined' || slug === '{{fields.id}}' || slug.includes('gemini') || slug.includes('http')) {
-            slug = id;
-          }
-
           entry = entry.set('data', data);
-          entry = entry.set('slug', slug);
+          entry = entry.set('slug', String(id));
           return entry;
         }
       });
