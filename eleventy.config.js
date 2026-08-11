@@ -10,9 +10,11 @@ function arabicSlug(str) {
     .replace(/[\u0300-\u036f]/g, '')
     .normalize('NFC')
     .trim()
+    .replace(/[\.\_\/\\]+/g, '-')
     .replace(/\s+/g, '-')
     .replace(/[^\w\u0600-\u06FF\-]/g, '')
-    .replace(/\-\-+/g, '-');
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 module.exports = function(eleventyConfig) {
