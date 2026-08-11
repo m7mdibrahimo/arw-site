@@ -405,24 +405,27 @@ async function processTelegramPendingQueue() {
           updated = true;
         } else {
           item.retries = (item.retries || 0) + 1;
-          if (item.retries >= 5) {
-            console.error(`[Telegram Queue] Dropping post after 5 failures: ${key}`, result);
+          if (item.retries >= 10) {
+            console.error(`[Telegram Queue] Dropping post after 10 failures: ${key}`, result);
             delete queue[key];
           } else {
-            item.publishAt = now + 30000; // Retry in 30 seconds
+            item.publishAt = Date.now() + 30000; // Retry in 30 seconds
           }
           updated = true;
         }
       } catch (err) {
         console.error(`[Telegram Queue] Error processing ${key}:`, err);
         item.retries = (item.retries || 0) + 1;
-        if (item.retries >= 5) {
+        if (item.retries >= 10) {
           delete queue[key];
         } else {
-          item.publishAt = now + 30000;
+          item.publishAt = Date.now() + 30000;
         }
         updated = true;
       }
+      
+      // Delay 1.5s between consecutive posts to respect Telegram API rate limits during heavy batches (50+ posts)
+      await new Promise(r => setTimeout(r, 1500));
     }
   }
 
