@@ -137,67 +137,15 @@
         try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
       };
 
+      const inFlightPosts = new Set();
+
       const doTelegramSend = async (item) => {
-        const { title, text, url, image } = item;
-        
-        const linkLabel = "🔗 اضغط هنا لمتابعة التفاصيل كاملة على موقع عرب راسلنج";
-
-        const messageText = `<b>${title}</b>\n\n${text}\n\n<a href="${url}">${linkLabel}</a>`;
-
-        let sentOk = false;
-
-        if (image) {
-          try {
-            const photoRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                chat_id: CHAT_ID,
-                photo: image,
-                caption: messageText,
-                parse_mode: 'HTML'
-              })
-            });
-            const photoData = await photoRes.json();
-            if (photoData.ok) {
-              sentOk = true;
-            } else {
-              console.warn("فشل إرسال الصورة بتليجرام:", photoData);
-            }
-          } catch (e) {
-            console.warn("خطأ إرسال الصورة بتليجرام، جاري المحاولة بنص فقط...", e);
-          }
-        }
-
-        if (!sentOk) {
-          try {
-            const msgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: messageText,
-                parse_mode: 'HTML'
-              })
-            });
-            const msgData = await msgRes.json();
-            if (msgData.ok) {
-              sentOk = true;
-            } else {
-              console.error("فشل إرسال النص لتليجرام:", msgData);
-              showToast("❌ خطأ في نشر الخبر بتليجرام: " + (msgData.description || "خطأ غير معروف"), true);
-            }
-          } catch(e) {
-            showToast("❌ خطأ في الاتصال بتليجرام: " + e.message, true);
-          }
-        }
-
-        // Send Push Notifications to browser subscribers (Shows & Recaps ONLY)
         try {
-          await fetch('/api/push/send', {
+          const res = await fetch('/api/telegram/post', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+              postId: item.id || item.slug || item.url,
               title: item.title,
               text: item.text,
               url: item.url,
@@ -206,11 +154,19 @@
               kind: item.kind
             })
           });
+          const data = await res.json();
+          if (data.success) {
+            return true;
+          } else {
+            console.error("فشل إرسال البوست للتليجرام:", data);
+            showToast("❌ خطأ في نشر الخبر بتليجرام: " + (data.error || "خطأ غير معروف"), true);
+            return false;
+          }
         } catch(e) {
-          console.warn("فشل إرسال الإشعار للمتصفحات:", e);
+          console.error("خطأ أثناء الاتصال بسيرفر التليجرام:", e);
+          showToast("❌ خطأ في الاتصال بتليجرام: " + e.message, true);
+          return false;
         }
-
-        return sentOk;
       };
 
       let activeTimers = {};
@@ -221,7 +177,7 @@
         const now = Date.now();
 
         for (const id in pending) {
-          if (sent[id]) {
+          if (sent[id] || inFlightPosts.has(id)) {
             delete pending[id];
             setStore(PENDING_KEY, pending);
             continue;
@@ -230,6 +186,7 @@
           const remaining = item.scheduledTime - now;
 
           if (remaining <= 0) {
+            inFlightPosts.add(id);
             // جلب الفهرس المباشر من الموقع لمطابقة المقال بالرابط والصورة الرسمية
             let liveMatch = null;
             try {
