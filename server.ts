@@ -147,8 +147,9 @@ app.post("/api/push/send", async (req, res) => {
   }
 });
 
-// Manage Telegram Sent Posts Deduplication
+// Manage Telegram Sent Posts Deduplication and Pending Queue
 const TG_SENT_FILE = path.join(process.cwd(), "telegram_sent.json");
+const TG_PENDING_FILE = path.join(process.cwd(), "telegram_pending.json");
 
 function getTelegramSentMap(): Record<string, number> {
   if (!fs.existsSync(TG_SENT_FILE)) return {};
@@ -165,7 +166,140 @@ function saveTelegramSentMap(map: Record<string, number>) {
   } catch (e) {}
 }
 
-const activePostingLocks = new Set<string>();
+function getTelegramPendingQueue(): Record<string, any> {
+  if (!fs.existsSync(TG_PENDING_FILE)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(TG_PENDING_FILE, "utf-8")) || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveTelegramPendingQueue(queue: Record<string, any>) {
+  try {
+    fs.writeFileSync(TG_PENDING_FILE, JSON.stringify(queue, null, 2));
+  } catch (e) {}
+}
+
+async function executeTelegramPost(data: {
+  title: string;
+  text?: string;
+  url?: string;
+  image?: string;
+  collection?: string;
+  kind?: string;
+}) {
+  const { title, text, url, image } = data;
+  const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
+
+  let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+  let payload: any = {
+    chat_id: CHAT_ID,
+    text: messageText,
+    parse_mode: "HTML",
+    disable_web_page_preview: false
+  };
+
+  if (image) {
+    telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+    payload = {
+      chat_id: CHAT_ID,
+      photo: image,
+      caption: messageText,
+      parse_mode: "HTML"
+    };
+  }
+
+  let tgRes = await fetch(telegramUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+
+  let result = await tgRes.json();
+
+  // Fallback to text sendMessage if sendPhoto failed
+  if (!result.ok && image) {
+    console.warn("[Telegram] sendPhoto failed, retrying with sendMessage...", result);
+    telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    payload = {
+      chat_id: CHAT_ID,
+      text: messageText,
+      parse_mode: "HTML",
+      disable_web_page_preview: false
+    };
+    tgRes = await fetch(telegramUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    result = await tgRes.json();
+  }
+
+  return result;
+}
+
+// Background Worker: Checks pending queue every 10 seconds and sends delayed posts
+async function processTelegramPendingQueue() {
+  const queue = getTelegramPendingQueue();
+  const sentMap = getTelegramSentMap();
+  const now = Date.now();
+  let updated = false;
+
+  for (const key in queue) {
+    const item = queue[key];
+    if (now >= item.publishAt) {
+      if (sentMap[key]) {
+        delete queue[key];
+        updated = true;
+        continue;
+      }
+
+      console.log(`[Telegram Queue] Executing delayed post to Telegram for: ${item.title}`);
+      try {
+        const result = await executeTelegramPost(item);
+        if (result.ok) {
+          sentMap[key] = Date.now();
+          saveTelegramSentMap(sentMap);
+          delete queue[key];
+          updated = true;
+
+          // Trigger Web Push Notification for Shows & Recaps after 3-minute delay!
+          if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
+            sendPushToAllSubscribers(item).catch((e) =>
+              console.error("Error sending push notification:", e)
+            );
+          }
+        } else {
+          item.retries = (item.retries || 0) + 1;
+          if (item.retries >= 5) {
+            console.error(`[Telegram Queue] Dropping post after 5 failures: ${key}`, result);
+            delete queue[key];
+          } else {
+            item.publishAt = now + 30000; // Retry in 30 seconds
+          }
+          updated = true;
+        }
+      } catch (err) {
+        console.error(`[Telegram Queue] Error processing ${key}:`, err);
+        item.retries = (item.retries || 0) + 1;
+        if (item.retries >= 5) {
+          delete queue[key];
+        } else {
+          item.publishAt = now + 30000;
+        }
+        updated = true;
+      }
+    }
+  }
+
+  if (updated) {
+    saveTelegramPendingQueue(queue);
+  }
+}
+
+// Start queue background processor
+setInterval(processTelegramPendingQueue, 10000);
 
 // Telegram API endpoints
 app.get("/api/telegram/status", async (req, res) => {
@@ -180,7 +314,7 @@ app.get("/api/telegram/status", async (req, res) => {
 
 app.post("/api/telegram/post", async (req, res) => {
   try {
-    const { title, text, url, image, collection, kind, id, slug, postId } = req.body;
+    const { title, text, url, image, collection, kind, id, slug, postId, immediate } = req.body;
     if (!title && !text) {
       return res.status(400).json({ success: false, error: "العنوان أو النص مطلوب" });
     }
@@ -190,93 +324,60 @@ app.post("/api/telegram/post", async (req, res) => {
     const dedupKey = rawKey.toString().toLowerCase().trim().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
 
     const sentMap = getTelegramSentMap();
+    const pendingQueue = getTelegramPendingQueue();
 
-    if (dedupKey && (sentMap[dedupKey] || activePostingLocks.has(dedupKey))) {
-      console.log(`[Telegram] Duplicate post blocked on server for key: ${dedupKey}`);
+    if (dedupKey && (sentMap[dedupKey] || pendingQueue[dedupKey])) {
+      console.log(`[Telegram] Duplicate or already queued post for key: ${dedupKey}`);
       return res.json({
         success: true,
-        message: "تم نشر هذا الموضوع مسبقاً على التليجرام",
+        message: "تم تسجيل هذا الموضوع مسبقاً وسيرسل في موعده المحدد",
         alreadySent: true
       });
     }
 
-    if (dedupKey) {
-      activePostingLocks.add(dedupKey);
+    // If immediate send is explicitly requested (e.g., manual test)
+    if (immediate) {
+      const result = await executeTelegramPost({ title, text, url, image, collection, kind });
+      if (result.ok) {
+        if (dedupKey) {
+          sentMap[dedupKey] = Date.now();
+          saveTelegramSentMap(sentMap);
+        }
+        if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
+          sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
+        }
+        return res.json({ success: true, message: "تم النشر فوراً على التليجرام!", result });
+      } else {
+        return res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
+      }
     }
 
-    const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
+    // Default behavior: Schedule post after 3 MINUTES (180,000 ms) delay
+    // This allows static site generator to complete building page & uploading images!
+    const delayMs = req.body.delayMs || (3 * 60 * 1000); // 3 Minutes
+    const publishAt = Date.now() + delayMs;
 
-    let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    let payload: any = {
-      chat_id: CHAT_ID,
-      text: messageText,
-      parse_mode: "HTML",
-      disable_web_page_preview: false
+    pendingQueue[dedupKey] = {
+      postId: dedupKey,
+      title,
+      text,
+      url,
+      image,
+      collection,
+      kind,
+      publishAt,
+      retries: 0
     };
 
-    if (image) {
-      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
-      payload = {
-        chat_id: CHAT_ID,
-        photo: image,
-        caption: messageText,
-        parse_mode: "HTML"
-      };
-    }
+    saveTelegramPendingQueue(pendingQueue);
 
-    let tgRes = await fetch(telegramUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+    res.json({
+      success: true,
+      queued: true,
+      message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات بعد 3 دقائق لضمان اكتمال بناء الصفحة والميديا على الموقع."
     });
-
-    let result = await tgRes.json();
-
-    // Fallback to text sendMessage if sendPhoto failed
-    if (!result.ok && image) {
-      console.warn("[Telegram] sendPhoto failed, retrying with sendMessage...", result);
-      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-      payload = {
-        chat_id: CHAT_ID,
-        text: messageText,
-        parse_mode: "HTML",
-        disable_web_page_preview: false
-      };
-      tgRes = await fetch(telegramUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      result = await tgRes.json();
-    }
-
-    if (result.ok) {
-      if (dedupKey) {
-        sentMap[dedupKey] = Date.now();
-        saveTelegramSentMap(sentMap);
-      }
-
-      // Trigger Web Push notification if it's a Show or Recap!
-      if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
-        sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) =>
-          console.error("Error triggering push on Telegram post:", e)
-        );
-      }
-
-      res.json({ success: true, message: "تم نشر الخبر بنجاح على قناة التليجرام!", result });
-    } else {
-      res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
-    }
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
-  } finally {
-    if (req.body) {
-      const rawKey = req.body.postId || req.body.url || req.body.slug || req.body.id || req.body.title || "";
-      const dedupKey = rawKey.toString().toLowerCase().trim().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
-      if (dedupKey) {
-        activePostingLocks.delete(dedupKey);
-      }
-    }
   }
 });
 
