@@ -58,6 +58,7 @@
           .toString()
           .normalize('NFC')
           .trim()
+          .toLowerCase()
           .replace(/[\.\_\/\\]+/g, '-')
           .replace(/\s+/g, '-')
           .replace(/[^\w\u0600-\u06FF\-]/g, '')
