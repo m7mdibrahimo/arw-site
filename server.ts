@@ -242,18 +242,23 @@ async function executeTelegramPost(data: {
 
     const safeTitle = escapeTelegramHtml(title || "");
     const safeText = escapeTelegramHtml(text || "");
-    const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+    const safeUrl = escapeTelegramHtml(articleUrl || "");
+    const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
     let result: any = { ok: false };
     const localImgPath = resolveLocalImagePath(image);
 
-    // Strategy 1: Direct File Binary Upload via FormData (100% Guaranteed for local image files)
-    if (localImgPath) {
+    const isRateLimited = (res: any) => res && res.error_code === 429;
+    const isImageProcessFailed = (res: any) => res && res.error_code === 400 && typeof res.description === 'string' && res.description.includes('IMAGE_PROCESS_FAILED');
+
+    // Strategy 1: Direct File Binary Upload via FormData (for local image files)
+    if (localImgPath && fs.existsSync(localImgPath) && fs.statSync(localImgPath).size > 0) {
       try {
-        console.log(`[Telegram] Found local image file at ${localImgPath}, uploading binary directly...`);
+        console.log(`[Telegram] Uploading local image binary (${localImgPath})...`);
         const fileBuffer = fs.readFileSync(localImgPath);
         const ext = path.extname(localImgPath).toLowerCase();
         let mimeType = 'image/jpeg';
+        let fileName = path.basename(localImgPath);
         if (ext === '.png') mimeType = 'image/png';
         else if (ext === '.webp') mimeType = 'image/webp';
         else if (ext === '.gif') mimeType = 'image/gif';
@@ -261,7 +266,7 @@ async function executeTelegramPost(data: {
         const blob = new Blob([new Uint8Array(fileBuffer)], { type: mimeType });
         const formData = new FormData();
         formData.append("chat_id", CHAT_ID);
-        formData.append("photo", blob, path.basename(localImgPath));
+        formData.append("photo", blob, fileName);
         formData.append("caption", messageHtml);
         formData.append("parse_mode", "HTML");
 
@@ -273,6 +278,13 @@ async function executeTelegramPost(data: {
         if (result.ok) {
           console.log("[Telegram] sendPhoto via direct file upload succeeded!");
           return result;
+        }
+        if (isRateLimited(result)) {
+          console.warn("[Telegram] Rate limit (429) hit during sendPhoto file upload.");
+          return result;
+        }
+        if (isImageProcessFailed(result)) {
+          console.warn("[Telegram] Local image process failed (400), skipping remaining photo strategies...");
         } else {
           console.warn("[Telegram] Direct file upload sendPhoto returned error:", result);
         }
@@ -282,29 +294,35 @@ async function executeTelegramPost(data: {
     }
 
     // Strategy 2: Fetch remote image buffer and upload via FormData
-    if (!result.ok && fullImageUrl) {
+    if (!result.ok && fullImageUrl && !isImageProcessFailed(result) && !isRateLimited(result)) {
       try {
         console.log(`[Telegram] Trying to fetch remote image from ${fullImageUrl}...`);
         const imgRes = await fetch(fullImageUrl);
         if (imgRes.ok) {
           const arrayBuffer = await imgRes.arrayBuffer();
-          const contentType = imgRes.headers.get("content-type") || "image/jpeg";
-          const blob = new Blob([new Uint8Array(arrayBuffer)], { type: contentType });
+          if (arrayBuffer.byteLength > 0) {
+            const contentType = imgRes.headers.get("content-type") || "image/jpeg";
+            const blob = new Blob([new Uint8Array(arrayBuffer)], { type: contentType });
 
-          const formData = new FormData();
-          formData.append("chat_id", CHAT_ID);
-          formData.append("photo", blob, "photo.jpg");
-          formData.append("caption", messageHtml);
-          formData.append("parse_mode", "HTML");
+            const formData = new FormData();
+            formData.append("chat_id", CHAT_ID);
+            formData.append("photo", blob, "photo.jpg");
+            formData.append("caption", messageHtml);
+            formData.append("parse_mode", "HTML");
 
-          const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-            method: "POST",
-            body: formData
-          });
-          result = await tgRes.json().catch(() => ({ ok: false }));
-          if (result.ok) {
-            console.log("[Telegram] sendPhoto via fetched image buffer succeeded!");
-            return result;
+            const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+              method: "POST",
+              body: formData
+            });
+            result = await tgRes.json().catch(() => ({ ok: false }));
+            if (result.ok) {
+              console.log("[Telegram] sendPhoto via fetched image buffer succeeded!");
+              return result;
+            }
+            if (isRateLimited(result)) {
+              console.warn("[Telegram] Rate limit (429) hit during fetched image upload.");
+              return result;
+            }
           }
         }
       } catch (fetchErr) {
@@ -313,7 +331,7 @@ async function executeTelegramPost(data: {
     }
 
     // Strategy 3: sendPhoto using URL string
-    if (!result.ok && fullImageUrl) {
+    if (!result.ok && fullImageUrl && !isImageProcessFailed(result) && !isRateLimited(result)) {
       try {
         const payload = {
           chat_id: CHAT_ID,
@@ -331,14 +349,18 @@ async function executeTelegramPost(data: {
           console.log("[Telegram] sendPhoto via URL string succeeded!");
           return result;
         }
+        if (isRateLimited(result)) {
+          console.warn("[Telegram] Rate limit (429) hit during URL sendPhoto.");
+          return result;
+        }
       } catch (urlErr) {
         console.warn("[Telegram] sendPhoto via URL string failed:", urlErr);
       }
     }
 
     // Strategy 4: Fallback to sendMessage HTML (Text only)
-    if (!result.ok) {
-      console.warn("[Telegram] Photo upload failed all attempts, falling back to sendMessage HTML...", result);
+    if (!result.ok && !isRateLimited(result)) {
+      console.warn("[Telegram] Photo upload unavailable or failed, falling back to sendMessage HTML...");
       const payload = {
         chat_id: CHAT_ID,
         text: messageHtml,
@@ -351,11 +373,13 @@ async function executeTelegramPost(data: {
         body: JSON.stringify(payload)
       });
       result = await tgRes.json().catch(() => ({ ok: false }));
+      if (result.ok) return result;
+      if (isRateLimited(result)) return result;
     }
 
     // Strategy 5: Plain text sendMessage without HTML formatting
-    if (!result.ok) {
-      console.warn("[Telegram] HTML parse failed, retrying plain text sendMessage...", result);
+    if (!result.ok && !isRateLimited(result)) {
+      console.warn("[Telegram] HTML parse failed, retrying plain text sendMessage...");
       const plainText = `${title || ""}\n\n${text || ""}\n\n🔗 تابع المحتوى على موقع عرب راسلنج:\n${articleUrl}`;
       const payload = {
         chat_id: CHAT_ID,
@@ -526,6 +550,12 @@ async function processTelegramPendingQueue() {
           saveTelegramSentMap(sentMap);
           delete queue[key];
           updated = true;
+        } else if (result.error_code === 429) {
+          const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
+          console.warn(`[Telegram Queue] Rate limit 429 encountered for ${key}. Delaying post by ${retrySec}s and pausing batch.`);
+          item.publishAt = Date.now() + (retrySec * 1000);
+          updated = true;
+          break; // Pause queue iteration on rate limit
         } else {
           item.retries = (item.retries || 0) + 1;
           if (item.retries >= 10) {
@@ -547,8 +577,8 @@ async function processTelegramPendingQueue() {
         updated = true;
       }
       
-      // Delay 1.5s between consecutive posts to respect Telegram API rate limits during heavy batches (50+ posts)
-      await new Promise(r => setTimeout(r, 1500));
+      // Delay 3.5s between consecutive posts to respect Telegram API rate limit (20 msgs/min)
+      await new Promise(r => setTimeout(r, 3500));
     }
   }
 
