@@ -1,8 +1,17 @@
 node_modules/
 build/
 dist/
+_site/
+.cache/
 coverage/
 .DS_Store
 *.log
 .env*
 !.env.example
+vapid.json
+telegram-sent-map.json
+telegram-pending-queue.json
+bun.lock
+index.html
+src/
+vite.config.ts
