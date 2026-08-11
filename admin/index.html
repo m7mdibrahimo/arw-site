@@ -17,8 +17,8 @@
   <script>
     if (window.CMS) {
       // تسجيل ودجت توليد الرقم الفريد للمقال تلقائياً (Unix Timestamp)
-      const React = window.React;
-      const h = window.h || (React ? React.createElement : null);
+      const createClass = window.createClass;
+      const h = window.h;
 
       function makeUniqueId() {
         const ts = Math.floor(Date.now() / 1000);
@@ -26,28 +26,26 @@
         return String(ts) + String(rand);
       }
 
-      class IdControl extends React.Component {
-        componentDidMount() {
-          const { entry, value, onChange } = this.props;
+      const IdControl = createClass({
+        componentDidMount: function() {
+          const entry = this.props.entry;
+          const value = this.props.value;
+          const onChange = this.props.onChange;
+
           const isPersisted = entry && typeof entry.get === 'function' ? Boolean(entry.get('isPersisted')) : Boolean(entry && entry.isPersisted);
 
           if (!isPersisted && !value && onChange) {
-            setTimeout(() => {
-              if (this.props.onChange && !this.props.value) {
-                this.props.onChange(makeUniqueId());
-              }
-            }, 0);
+            onChange(makeUniqueId());
           }
-        }
-
-        render() {
-          const { value, forID, classNameWrapper } = this.props;
+        },
+        render: function() {
+          const value = this.props.value || '';
           return h('input', {
             type: 'text',
-            id: forID || 'id',
-            value: value || '',
+            id: this.props.forID || 'id',
+            value: value,
             readOnly: true,
-            className: classNameWrapper || '',
+            className: this.props.classNameWrapper || '',
             style: {
               width: '100%',
               padding: '10px 14px',
@@ -62,15 +60,15 @@
             }
           });
         }
-      }
+      });
 
-      class IdPreview extends React.Component {
-        render() {
+      const IdPreview = createClass({
+        render: function() {
           return h('div', {
             style: { color: '#4b5563', fontSize: '14px', padding: '6px 0', direction: 'rtl', fontFamily: 'monospace' }
           }, 'معرف المقال الفريد: ' + (this.props.value || 'جاري التوليد...'));
         }
-      }
+      });
 
       window.CMS.registerWidget('post_id', IdControl, IdPreview);
 
