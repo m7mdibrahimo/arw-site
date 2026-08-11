@@ -1,249 +1,430 @@
-<!doctype html>
-<html>
+---
+permalink: "/index.html"
+---
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لوحة تحكم عرب راسلنج</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+<script>if(window.location.hostname.includes('pages.dev')){window.location.replace('https://arab-wrestling.com'+window.location.pathname+window.location.search+window.location.hash);}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<title>Arab Wrestling - عرب راسلنج</title>
+<meta name="description" content="عرب راسلنج - البوابة العربية الأكبر لمتابعة كافة عروض المصارعة الحرة WWE, AEW, TNA, ROH مترجمة وبأعلى جودة، بالإضافة إلى آخر الأخبار والملخصات.">
+<meta name="google-site-verification" content="M9LZQbhAbCQSSF7vwQAfX6boVos3NMOBRFikS02iFBo" />
+<meta name="google-site-verification" content="googlee6fae402f63eee54" />
+<link rel="canonical" href="https://arab-wrestling.com/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arab-wrestling.com/">
+<meta property="og:title" content="Arab Wrestling - عرب راسلنج | مشاهدة وتحميل عروض المصارعة مترجمة">
+<meta property="og:description" content="البوابة العربية الأكبر لمتابعة كافة عروض المصارعة الحرة WWE, AEW, TNA, ROH مترجمة وبأعلى جودة.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop">
+<meta property="og:site_name" content="عرب راسلنج">
+<meta property="og:locale" content="ar_AR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arab Wrestling - عرب راسلنج | مشاهدة وتحميل عروض المصارعة مترجمة">
+<meta name="twitter:description" content="البوابة العربية الأكبر لمتابعة كافة عروض المصارعة الحرة WWE, AEW, TNA, ROH مترجمة وبأعلى جودة.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/notif.css">
+<style>
+  :root{
+    --bg: #faf7f0; --card: #ffffff; --ink: #1e2530; --muted: #6c7383; --line: #ece6d8;
+    --teal: #0e9594; --teal-soft: #e3f5f3; --coral: #ff6f59; --coral-soft: #ffece8;
+    --gold: #f2a53c; --gold-soft: #fdf1de; --violet: #7c6ee8;
+  }
+  html.arw-dark{
+    --bg:#0d0f13; --card:#171a20; --ink:#eef1f6; --muted:#9aa2b0; --line:rgba(255,255,255,.1);
+    --teal:#1cb5b3; --teal-soft:rgba(28,181,179,.15); --coral:#ff8570; --coral-soft:rgba(255,133,112,.15);
+    --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; background-color:var(--bg); }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
+
+  .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active {
+    transform: scale(0.97) translateY(0) !important;
+    transition: transform 0.08s ease !important;
+  }
+  h1,h2,h3,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
+  header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease; }
+  .nav{ max-width:1180px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+  .brand{ font-weight:900; font-size:21px; text-decoration:none; color:var(--ink); white-space:nowrap; transition:transform 0.25s ease; display:inline-flex; align-items:center; gap:10px; }
+  .brand img.brand-logo{ width:36px; height:36px; object-fit:contain; border-radius:8px; filter:drop-shadow(0 2px 6px rgba(0,0,0,0.25)); transition:transform 0.3s ease; }
+  .brand:hover img.brand-logo{ transform:rotate(6deg) scale(1.08); }
+  .brand:hover{ transform:scale(1.04); }
+  .brand span{ color:var(--teal); transition:color 0.25s ease; }
+  .nav ul{ list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; white-space:nowrap; }
+  .nav ul li{ display:inline-flex; align-items:center; }
+  .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); position:relative; }
+  .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); transform:translateY(-2px); }
+  .nav a.navlink.active{ background:#1e2530; color:#fff; box-shadow:0 4px 12px rgba(30,37,48,0.25); }
+  html.arw-dark .nav a.navlink.active{ background:#fff; color:#1e2530; box-shadow:0 4px 12px rgba(255,255,255,0.2); }
+  .nav-dropdown{ position:relative; }
+  .dropdown-menu{ display:flex !important; flex-direction:column; gap:2px !important; position:absolute; top:calc(100% + 10px); right:0; min-width:160px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 32px -16px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transform:translateY(-10px) scale(0.96); transition:all 0.25s cubic-bezier(0.16,1,0.3,1); z-index:60; transform-origin:top right; }
+  .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{ opacity:1; visibility:visible; transform:translateY(0) scale(1); }
+  .dropdown-menu li{ list-style:none; width:100%; }
+  .dropdown-menu a{ display:block; padding:9px 12px; border-radius:9px; color:var(--ink); text-decoration:none; font-weight:700; font-size:13.5px; transition:all 0.2s ease; }
+  .dropdown-menu a:hover{ background:var(--teal-soft); color:var(--teal); transform:translateX(-4px); }
+  .site-search{ flex:1; min-width:140px; max-width:420px; display:flex; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 8px 6px 16px; transition:all 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .site-search:focus-within{ border-color:var(--teal); box-shadow:0 0 0 4px var(--teal-soft), 0 8px 24px -8px rgba(14,149,148,0.25); transform:translateY(-1px); }
+  .site-search input{ flex:1; border:none; outline:none; background:transparent; font-family:'Tajawal',sans-serif; font-size:14px; color:var(--ink); padding:6px 4px; }
+  .site-search input::placeholder{ color:var(--muted); }
+  .site-search button{ border:none; background:var(--teal); color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), background-color 0.2s ease; }
+  .site-search button:hover{ transform:scale(1.12) rotate(8deg); background:#0b7c7b; }
+  .site-search button:active{ transform:scale(0.95); }
+  .theme-toggle{ width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+  .theme-toggle:hover{ transform:rotate(45deg) scale(1.1); border-color:var(--teal); color:var(--teal); }
+  .theme-toggle:active{ transform:rotate(180deg) scale(0.9); }
+  .theme-toggle svg{ display:block; transition:transform 0.3s ease; }
+  .theme-toggle .icon-sun{ display:none; }
+  html.arw-dark .theme-toggle .icon-moon{ display:none; }
+  html.arw-dark .theme-toggle .icon-sun{ display:block; }
+  .telegram-btn{ width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; text-decoration:none; flex-shrink:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+  .telegram-btn:hover{ transform:scale(1.1); border-color:var(--teal); color:var(--teal); }
+  .telegram-btn:active{ transform:scale(0.92); }
+  .page-head{ padding:56px 24px 36px; text-align:center; border-bottom:1px solid var(--line); }
+  .page-head h1{ font-size:clamp(26px,4vw,36px); margin-bottom:8px; }
+  .page-head p{ color:var(--muted); font-size:14.5px; }
+  section.content{ padding:40px 24px 70px; }
+  .wrap{ max-width:1180px; margin:0 auto; }
+  .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
+  .grid-12 > *{ grid-column:span 3; }
+  @media (max-width:900px){ .grid-12 > *{ grid-column:span 6; } }
+  @media (max-width:560px){ .grid-12 > *{ grid-column:span 12; } }
+  .feds-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:700px){ .feds-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:420px){ .feds-grid{ grid-template-columns:1fr; } }
+  
+  /* Federation Cards & Animations */
+  .fed-card{ display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; box-shadow:0 6px 16px -12px rgba(30,37,48,.15); position:relative; }
+  .fed-card:hover{ transform:translateY(-8px) scale(1.02); box-shadow:0 20px 36px -16px rgba(14,149,148,.3); border-color:var(--teal); }
+  .fed-mark{ height:110px; display:flex; align-items:center; justify-content:center; font-family:'Cairo',sans-serif; font-weight:900; font-size:28px; color:#fff; transition:transform 0.4s ease; }
+  .fed-card:hover .fed-mark{ transform:scale(1.06); }
+  .fed-wwe .fed-mark{ background:linear-gradient(135deg,#c73b2c,#8f2015); }
+  .fed-aew .fed-mark{ background:linear-gradient(135deg,#e0b93c,#a87c14); }
+  .fed-tna .fed-mark{ background:linear-gradient(135deg,#8a5fe0,#5a35a6); }
+  .fed-roh .fed-mark{ background:linear-gradient(135deg,#3866c7,#1d3a80); }
+  .fed-mma .fed-mark{ background:linear-gradient(135deg,#e07a2c,#a34d10); }
+  .fed-indie .fed-mark{ background:linear-gradient(135deg,#1f8a72,#0f5245); }
+  .fed-card .info{ padding:16px 18px; text-align:center; }
+  .fed-card p{ color:var(--muted); font-size:13px; }
+
+  /* Show Cards Animations */
+  .show-card{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; display:block; text-decoration:none; color:var(--ink); }
+  .show-card:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 20px 36px -16px rgba(14,149,148,.28); border-color:var(--teal); }
+  .show-thumb{ height:160px; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; transition:transform 0.6s cubic-bezier(0.25,1,0.5,1); }
+  .show-card:hover .show-thumb{ transform:scale(1.07); }
+  .show-thumb::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.45)); transition:opacity 0.3s ease; }
+  .play-btn{ z-index:1; width:48px; height:48px; border-radius:50%; background:rgba(30,37,48,0.85); color:#fff; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); box-shadow:0 4px 14px rgba(0,0,0,0.3); transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+  
+  @keyframes playPulse {
+    0% { box-shadow: 0 0 0 0 rgba(14, 149, 148, 0.7); }
+    70% { box-shadow: 0 0 0 16px rgba(14, 149, 148, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(14, 149, 148, 0); }
+  }
+  .show-card:hover .play-btn{ transform:scale(1.18); background:var(--teal); animation: playPulse 1.5s infinite; }
+  .show-body{ padding:18px 20px; }
+  .show-body .ep{ font-size:11.5px; color:var(--gold); font-weight:800; letter-spacing:.5px; }
+  .show-body h3{ font-size:16.5px; font-weight:700; margin:8px 0 8px; transition:color 0.2s ease; }
+  .show-card:hover .show-body h3{ color:var(--teal); }
+  .show-body .desc{ color:var(--muted); font-size:13px; margin-bottom:12px; }
+  .show-body .foot{ display:flex; justify-content:flex-start; font-size:12px; color:var(--muted); border-top:1px solid var(--line); padding-top:10px; }
+
+  /* News Cards Animations */
+  .news-card{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; display:block; text-decoration:none; color:var(--ink); }
+  .news-card:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 20px 36px -16px rgba(255,111,89,.28); border-color:var(--coral); }
+  .news-thumb{ height:160px; background-size:cover; background-position:center; position:relative; overflow:hidden; transition:transform 0.6s cubic-bezier(0.25,1,0.5,1); }
+  .news-card:hover .news-thumb{ transform:scale(1.07); }
+  .news-thumb::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.35)); }
+  .news-body{ padding:18px 20px; }
+  .news-body .date{ display:block; color:var(--muted); font-size:12px; border-top:1px solid var(--line); padding-top:10px; margin-top:10px; }
+  
+  .kind-badge{ display:inline-flex; align-items:center; font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:999px; margin-inline-end:6px; margin-bottom:8px; vertical-align:middle; transition:transform 0.2s ease; }
+  .cat, .fed-badge{ display:inline-flex; align-items:center; font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:999px; background:var(--teal-soft); color:var(--teal); margin-bottom:8px; vertical-align:middle; transition:transform 0.2s ease, background-color 0.2s ease, color 0.2s ease; }
+  
+  .cat-wwe { background: rgba(199, 59, 44, 0.12) !important; color: #c73b2c !important; }
+  .cat-aew { background: rgba(212, 160, 23, 0.14) !important; color: #9e7506 !important; }
+  .cat-tna { background: rgba(138, 95, 224, 0.14) !important; color: #7c42d6 !important; }
+  .cat-roh { background: rgba(44, 102, 199, 0.14) !important; color: #2358b5 !important; }
+  .cat-mma { background: rgba(224, 122, 44, 0.14) !important; color: #c45b10 !important; }
+  .cat-indie { background: rgba(31, 138, 114, 0.14) !important; color: #0f705b !important; }
+
+  html.arw-dark .cat-wwe { background: rgba(225, 75, 60, 0.2) !important; color: #ff6b5b !important; }
+  html.arw-dark .cat-aew { background: rgba(240, 195, 60, 0.2) !important; color: #f4b352 !important; }
+  html.arw-dark .cat-tna { background: rgba(155, 109, 240, 0.2) !important; color: #b18cff !important; }
+  html.arw-dark .cat-roh { background: rgba(70, 130, 240, 0.2) !important; color: #60a5fa !important; }
+  html.arw-dark .cat-mma { background: rgba(240, 140, 60, 0.2) !important; color: #ff9d5c !important; }
+  html.arw-dark .cat-indie { background: rgba(40, 180, 150, 0.2) !important; color: #34d399 !important; }
+
+  .show-card:hover .kind-badge, .news-card:hover .kind-badge, .show-card:hover .cat, .news-card:hover .cat, .show-card:hover .fed-badge, .news-card:hover .fed-badge{ transform:scale(1.06); }
+  .kind-show{ background:var(--gold-soft); color:var(--gold); }
+  .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
+  .kind-news{ background:var(--coral-soft); color:var(--coral); }
+  .news-body h3{ font-size:17px; font-weight:700; margin:4px 0 8px; transition:color 0.2s ease; }
+  .news-card:hover .news-body h3{ color:var(--coral); }
+
+  footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+  .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
+  .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+  .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-4px) scale(1.12); box-shadow:0 8px 16px rgba(14,149,148,0.3); }
+
+  /* Scroll Reveal Smooth Motion */
+  .reveal{ opacity:1; transform:none; }
+  .reveal.reveal-hidden{ opacity:0; transform:translateY(16px); transition:none !important; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); }
+
+  /* Hero Section Animations */
+  .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
+  .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.28), rgba(255,255,255,.12)); background-size:200% 100%; animation:shimmer 4s infinite linear, floatSlow 3s ease-in-out infinite; color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+  .hero h1{ font-size:clamp(38px,6.4vw,68px); font-weight:900; line-height:1.18; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
+  .hero h1 .u{ color:var(--gold); }
+  .hero p{ color:rgba(255,255,255,.88); font-size:17.5px; max-width:540px; margin:0 auto 32px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
+  .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+  .btn-ghost{ background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  .btn-ghost:hover{ transform:translateY(-4px) scale(1.03); border-color:var(--teal); color:var(--teal); box-shadow:0 12px 24px rgba(14,149,148,0.25); }
+  .btn-ghost:active{ transform:translateY(-1px) scale(0.98); }
+  
+  .quicknav{ position:relative; max-width:900px; margin:44px auto 0; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .qn{ display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line); padding:12px 20px; border-radius:14px; text-decoration:none; color:var(--ink); font-weight:700; font-size:14px; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+  .qn:hover{ transform:translateY(-4px) scale(1.03); box-shadow:0 14px 28px -10px rgba(0,0,0,.18); border-color:var(--teal); }
+  .qn .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; transition:transform 0.3s ease; }
+  .qn:hover .dot{ transform:scale(1.4); }
+  
+  .section-head{ margin-bottom:30px; display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .section-head .head-text{ max-width:640px; }
+  .section-head h2{ font-size:clamp(24px,3.4vw,32px); font-weight:900; letter-spacing:-.5px; display:flex; align-items:center; gap:12px; }
+  .section-head h2 .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .section-head p{ color:var(--muted); font-size:14.5px; margin-top:8px; }
+  .view-all{ display:inline-flex; align-items:center; gap:6px; background:var(--card); border:1px solid var(--line); color:var(--ink); text-decoration:none; font-weight:700; font-size:13.5px; padding:10px 18px; border-radius:999px; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space:nowrap; }
+  .view-all:hover{ border-color:var(--teal); color:var(--teal); transform:translateX(-4px); box-shadow:0 6px 16px rgba(14,149,148,0.2); }
+  #feds{ background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .news-thumb.breaking::after{ content:"عاجل"; position:absolute; top:12px; right:12px; background:var(--coral); color:#fff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; animation: floatSlow 2s ease-in-out infinite; box-shadow:0 4px 10px rgba(255,111,89,0.4); }
+</style>
 </head>
 <body>
-  <!-- Include React and Decap CMS scripts -->
-  <script>
-    window.CMS_MANUAL_INIT = true;
-  </script>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/create-react-class@15.7.0/create-react-class.min.js"></script>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    if (window.CMS) {
-      const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
-      const CHAT_ID = "@arab_wrestling";
-      const SENT_KEY = "tg_sent_posts_v3";
+<header>
+  <div class="nav">
+    <a class="brand" href="/">عرب <span>راسلنج</span></a>
+    <form class="site-search" action="/search/" method="get">
+      <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه...">
+      <button aria-label="بحث" type="submit"><svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></button>
+    </form>
+    <ul>
+      <li><a class="navlink" href="/">الرئيسية</a></li>
+      <li class="nav-dropdown">
+        <a class="navlink" href="/federations/">الاتحادات</a>
+        <ul class="dropdown-menu">
+          <li><a href="/federation/wwe/">WWE</a></li>
+          <li><a href="/federation/aew/">AEW</a></li>
+          <li><a href="/federation/tna/">TNA</a></li>
+          <li><a href="/federation/roh/">ROH</a></li>
+          <li><a href="/federation/mma/">MMA</a></li>
+          <li><a href="/federation/indie/">INDIE</a></li>
+        </ul>
+      </li>
+      <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
+      <li><a class="navlink" href="/recaps/">ملخصات العروض</a></li>
+      <li><a class="navlink" href="/news/">الأخبار</a></li>
+      <li>
+        <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
+          <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
+          <svg class="icon-sun" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="currentColor" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+        </button>
+      </li>
+      <li>
+        <a aria-label="قناة التليجرام" class="telegram-btn" href="https://t.me/arab_wrestling" target="_blank" rel="noopener" title="قناة التليجرام الرسمية">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
 
-      const showToast = (msg, isError = false) => {
-        try {
-          const toast = document.createElement('div');
-          toast.innerText = msg;
-          toast.style.position = 'fixed';
-          toast.style.top = '20px';
-          toast.style.right = '20px';
-          toast.style.zIndex = '999999';
-          toast.style.backgroundColor = isError ? '#e53e3e' : '#38a169';
-          toast.style.color = '#ffffff';
-          toast.style.padding = '14px 24px';
-          toast.style.borderRadius = '10px';
-          toast.style.fontSize = '15px';
-          toast.style.fontWeight = 'bold';
-          toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
-          toast.style.direction = 'rtl';
-          document.body.appendChild(toast);
-          setTimeout(() => toast.remove(), 8000);
-        } catch (e) {}
-      };
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
+    <h1>جميع الاتحادات، جميع العروض، <span class="u">في مكان واحد</span></h1>
+    <p>عروض مصارعة مترجمة، ملخصات العروض، وآخر الأخبار.</p>
+    <div class="cta-row">
+      <a href="/all/" class="btn btn-ghost">تصفح الاتحادات</a>
+      <a href="/shows/" class="btn btn-ghost">جميع العروض</a>
+    </div>
+  </div>
+  <div class="quicknav">
+    <a href="#feds" class="qn"><span class="dot" style="background:var(--teal)"></span>الاتحادات</a>
+    <a href="#full-shows" class="qn"><span class="dot" style="background:var(--gold)"></span>عروض المصارعة</a>
+    <a href="#recaps" class="qn"><span class="dot" style="background:var(--violet)"></span>ملخصات العروض</a>
+    <a href="#news" class="qn"><span class="dot" style="background:var(--coral)"></span>آخر الأخبار</a>
+  </div>
+</div>
+<section class="content" id="feds">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="head-text"><h2 style="color:var(--teal);"><span class="dot" style="background:var(--teal)"></span>الاتحادات</h2></div>
+    </div>
+    <div class="feds-grid">
+      <a href="/federation/wwe/" class="fed-card fed-wwe"><div class="fed-mark">WWE</div><div class="info"><p>World Wrestling Entertainment</p></div></a>
+      <a href="/federation/aew/" class="fed-card fed-aew"><div class="fed-mark">AEW</div><div class="info"><p>All Elite Wrestling</p></div></a>
+      <a href="/federation/tna/" class="fed-card fed-tna"><div class="fed-mark">TNA</div><div class="info"><p>Total Nonstop Action Wrestling</p></div></a>
+      <a href="/federation/roh/" class="fed-card fed-roh"><div class="fed-mark">ROH</div><div class="info"><p>Ring of Honor</p></div></a>
+      <a href="/federation/mma/" class="fed-card fed-mma"><div class="fed-mark">MMA</div><div class="info"><p>رياضات القتال المختلطة</p></div></a>
+      <a href="/federation/indie/" class="fed-card fed-indie"><div class="fed-mark">INDIE</div><div class="info"><p>الاتحادات المستقلة</p></div></a>
+    </div>
+  </div>
+</section>
+<section class="content" id="full-shows" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="head-text"><h2 style="color:var(--gold);"><span class="dot" style="background:var(--gold)"></span>عروض المصارعة</h2><p>العروض الكاملة مترجمة بالعربية</p></div>
+      <a href="/shows/" class="view-all">جميع العروض ←</a>
+    </div>
+    <div class="grid-12">
+    {% for item in collections.shows %}
+      {% if loop.index <= 8 %}
+      <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
+        <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+        <div class="show-body">
+          <span class="kind-badge kind-show">عرض</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
+          <h3>{{ item.data.headline or item.data.title }}</h3>
+          {% if item.data.description %}<p class="desc">{{ item.data.description }}</p>{% endif %}
+          <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.data.duration }}</span>{% endif %}</div>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="content" id="recaps">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="head-text"><h2 style="color:var(--violet);"><span class="dot" style="background:var(--violet)"></span>ملخصات العروض</h2><p>أبرز اللقطات والنتائج، لمن لا يستطيع مشاهدة الحلقة كاملة.</p></div>
+      <a href="/recaps/" class="view-all">جميع الملخصات ←</a>
+    </div>
+    <div class="grid-12">
+    {% for item in collections.recaps %}
+      {% if loop.index <= 8 %}
+      <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
+        <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1715149721511-8e48fc0cb2f4?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+        <div class="show-body">
+          <span class="kind-badge kind-recap">ملخص</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
+          <h3>{{ item.data.headline or item.data.title }}</h3>
+          <p class="desc">{{ item.data.description }}</p>
+          <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.data.duration }}</span>{% endif %}</div>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="content" id="news" style="background:var(--coral-soft);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="head-text"><h2 style="color:var(--coral);"><span class="dot" style="background:var(--coral)"></span>آخر الأخبار</h2><p>أبرز الانتقالات والإصابات والقرارات الإدارية.</p></div>
+      <a href="/news/" class="view-all">جميع الأخبار ←</a>
+    </div>
+    <div class="grid-12">
+    {% for item in collections.news %}
+      {% if loop.index <= 12 %}
+      <a class="news-card reveal" href="{{ item.url | cleanUrl }}" style="display:block; text-decoration:none; color:inherit;">
+        <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
+        <div class="news-body">
+          <span class="kind-badge kind-news">خبر</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
+          <h3>{{ item.data.title }}</h3>
+          <span class="date">{{ item.date | date("dd MMM") }}</span>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="social-row">
+    <a aria-label="فيسبوك" href="#" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>
+    <a aria-label="إنستجرام" href="#" target="_blank"><svg fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="5" stroke="currentColor" stroke-width="2" width="18" x="3" y="3"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" fill="currentColor" r="1.2"/></svg></a>
+    <a aria-label="تيليجرام" href="https://t.me/arab_wrestling" target="_blank" rel="noopener"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg></a>
+  </div>
+  © 2026 عرب راسلنج — موقع عربي مستقل غير تابع لأي اتحاد رسمي.
+</footer>
 
-      const getStore = (key) => {
-        try { return JSON.parse(localStorage.getItem(key) || '{}'); } catch(e) { return {}; }
-      };
-
-      const setStore = (key, val) => {
-        try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
-      };
-
-      function toArabicSlug(str) {
-        if (!str) return "";
-        return str
-          .toString()
-          .normalize('NFC')
-          .trim()
-          .toLowerCase()
-          .replace(/[\.\_\/\\]+/g, '-')
-          .replace(/\s+/g, '-')
-          .replace(/[^\w\u0600-\u06FF\-]/g, '')
-          .replace(/\-\-+/g, '-')
-          .replace(/^-+|-+$/g, '');
+<script>
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} });
+    }, { threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const rect = el.getBoundingClientRect();
+      if(rect.top < (window.innerHeight || document.documentElement.clientHeight)){
+        el.classList.add('is-visible');
+      } else {
+        el.classList.add('reveal-hidden');
+        io.observe(el);
       }
-
-      const doTelegramSend = async (item) => {
-        const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
-        const CHAT_ID = "@arab_wrestling";
-
-        const articleUrl = item.url || 'https://arab-wrestling.com';
-        const messageText = `<b>${item.title || ""}</b>\n\n${item.text || ""}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
-
-        try {
-          try {
-            const apiRes = await fetch('/api/telegram/post', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                postId: item.postId || item.slug || item.url,
-                title: item.title,
-                text: item.text,
-                url: item.url,
-                image: item.image,
-                collection: item.collection,
-                kind: item.kind,
-                delayMs: 5000
-              })
-            });
-            if (apiRes.ok) {
-              const apiData = await apiRes.json();
-              if (apiData && apiData.success) {
-                showToast("⚡ تم تسجيل الموضوع! سيتم نشره فوراً على التليجرام وشبكة الإشعارات خلال 5 ثوانٍ...");
-                return true;
-              }
-            }
-          } catch (apiErr) {
-            console.log("السيرفر غير متاح، جدولة الإرسال محلياً خلال 5 ثوانٍ...");
-          }
-
-          showToast("⚡ تم جدولة النشر بتليجرام محلياً خلال 5 ثوانٍ...");
-          
-          setTimeout(async () => {
-            let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            let payload = {
-              chat_id: CHAT_ID,
-              text: messageText,
-              parse_mode: "HTML",
-              disable_web_page_preview: false
-            };
-
-            if (item.image) {
-              telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
-              payload = {
-                chat_id: CHAT_ID,
-                photo: item.image,
-                caption: messageText,
-                parse_mode: "HTML"
-              };
-            }
-
-            let res = await fetch(telegramUrl, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-
-            let data = await res.json().catch(() => ({ ok: false }));
-
-            if (!data.ok && item.image) {
-              telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-              payload = {
-                chat_id: CHAT_ID,
-                text: messageText,
-                parse_mode: "HTML",
-                disable_web_page_preview: false
-              };
-              res = await fetch(telegramUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-              });
-              data = await res.json().catch(() => ({ ok: false }));
-            }
-
-            if (data && data.ok) {
-              showToast("✅ تم نشر الخبر بنجاح على التليجرام!");
-            } else {
-              console.error("فشل إرسال البوست للتليجرام:", data);
-              showToast("❌ خطأ في نشر الخبر بتليجرام: " + ((data && data.description) || "خطأ غير معروف"), true);
-            }
-          }, 5000);
-
-          return true;
-        } catch(e) {
-          console.error("خطأ أثناء الاتصال بتليجرام:", e);
-          showToast("❌ خطأ في الاتصال بتليجرام: " + e.message, true);
-          return false;
-        }
-      };
-
-      const handlePublishEvent = async (opts) => {
-        try {
-          const entryObj = (opts && opts.entry) ? opts.entry : opts;
-          if (!entryObj) return;
-
-          let rawData = null;
-          if (typeof entryObj.get === 'function') {
-            rawData = entryObj.get('data');
-          } else if (entryObj.data) {
-            rawData = entryObj.data;
-          }
-
-          const data = rawData ? (typeof rawData.toJS === 'function' ? rawData.toJS() : rawData) : {};
-          
-          let collection = 'news';
-          if (opts && opts.collection) {
-            if (typeof opts.collection === 'string') {
-              collection = opts.collection;
-            } else if (typeof opts.collection.get === 'function') {
-              collection = opts.collection.get('name') || 'news';
-            } else if (opts.collection.name) {
-              collection = opts.collection.name;
-            }
-          } else if (entryObj && typeof entryObj.get === 'function') {
-            const colVal = entryObj.get('collection');
-            if (typeof colVal === 'string') {
-              collection = colVal;
-            } else if (colVal && typeof colVal.get === 'function') {
-              collection = colVal.get('name') || 'news';
-            }
-          }
-
-          const title = (data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج').trim();
-          let text = data.description || '';
-          if (!text && data.body) {
-            text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
-          }
-          
-          let image = data.image || null;
-          if (image && typeof image === 'string' && !image.startsWith('http')) {
-            image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
-          }
-
-          const slug = toArabicSlug(title);
-          const url = slug
-            ? `https://arab-wrestling.com/${collection}/${slug}`
-            : `https://arab-wrestling.com/`;
-
-          const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
-
-          const sent = getStore(SENT_KEY);
-
-          if (sent[postId]) {
-            console.log("تم نشر هذا الخبر مسبقاً على التليجرام:", postId);
-            return;
-          }
-
-          showToast("⏳ جاري تسجيل الخبر للتليجرام (سيُنشر بعد 3 دقائق)...");
-
-          const kind = collection === 'shows' ? 'show' : (collection === 'recaps' ? 'recap' : 'news');
-
-          const success = await doTelegramSend({
-            postId,
-            title,
-            text,
-            url,
-            image,
-            collection,
-            kind
-          });
-
-          if (success) {
-            sent[postId] = Date.now();
-            setStore(SENT_KEY, sent);
-          }
-        } catch(err) {
-          console.error("خطأ أثناء إرسال الخبر للتليجرام:", err);
-        }
-      };
-
-      window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
-      window.CMS.init();
+    });
+  }
+</script>
+<script>
+  (function(){
+    var saved = null;
+    try{ saved = localStorage.getItem('arw-theme'); }catch(e){}
+    if(saved !== 'dark' && saved !== 'light'){
+      try{
+        var m = document.cookie.match(/(?:^|; )arw-theme=([^;]*)/);
+        if(m) saved = decodeURIComponent(m[1]);
+      }catch(e){}
     }
-  </script>
+    if(saved === 'dark'){ document.documentElement.classList.add('arw-dark'); }
+  })();
+  var themeBtn = document.getElementById('arwThemeToggle');
+  if(themeBtn){
+    themeBtn.addEventListener('click', function(){
+      var isDark = document.documentElement.classList.toggle('arw-dark');
+      var val = isDark ? 'dark' : 'light';
+      try{ localStorage.setItem('arw-theme', val); }catch(e){}
+      document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
+    });
+  }
+
+  (function(){
+    var prefetched = new Set();
+    function prefetch(url) {
+      if(!url || prefetched.has(url) || url.startsWith('#') || (url.startsWith('http') && !url.includes(location.hostname))) return;
+      prefetched.add(url);
+      var link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = url;
+      document.head.appendChild(link);
+    }
+    document.addEventListener('mouseover', function(e){
+      var a = e.target.closest && e.target.closest('a');
+      if(a && a.href && a.origin === location.origin) prefetch(a.href);
+    }, { passive: true });
+    document.addEventListener('touchstart', function(e){
+      var a = e.target.closest && e.target.closest('a');
+      if(a && a.href && a.origin === location.origin) prefetch(a.href);
+    }, { passive: true });
+  })();
+</script>
+<script src="/assets/notif.js" defer></script>
 </body>
 </html>
