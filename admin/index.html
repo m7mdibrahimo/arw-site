@@ -227,8 +227,8 @@
 
           const sent = getStore(SENT_KEY);
 
-          if (sent[postId]) {
-            console.log("تم نشر هذا الخبر مسبقاً على التليجرام:", postId);
+          if (sent[postId] && (Date.now() - sent[postId] < 600000)) {
+            console.log("تم نشر هذا الخبر مسبقاً على التليجرام مؤخراً:", postId);
             return;
           }
 
