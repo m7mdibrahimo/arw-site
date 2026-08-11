@@ -51,44 +51,49 @@
               alignItems: 'center',
               width: '100%'
             }
-          }, h('input', {
-            type: 'text',
-            id: this.props.forID || 'id',
-            value: value,
-            onChange: function(e) { if (onChange) onChange(e.target.value); },
-            className: this.props.classNameWrapper || '',
-            style: {
-              flex: '1',
-              padding: '10px 14px',
-              border: '1px solid #d1d5db',
-              borderRadius: '6px',
-              fontSize: '15px',
-              fontFamily: 'monospace',
-              backgroundColor: '#f9fafb',
-              color: '#111827',
-              direction: 'ltr',
-              textAlign: 'left'
-            }
-          }), h('button', {
-            type: 'button',
-            onClick: function() {
-              const newId = makeUniqueId();
-              if (onChange) onChange(newId);
-              if (typeof showToast === 'function') showToast("✅ تم توليد معرف فريد جديد: " + newId);
-            },
-            style: {
-              padding: '10px 16px',
-              backgroundColor: '#2563eb',
-              color: '#ffffff',
-              border: 'none',
-              borderRadius: '6px',
-              fontSize: '14px',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }
-          }, '🔄 توليد معرف جديد'));
+          }, [
+            h('input', {
+              key: 'id-input',
+              type: 'text',
+              id: this.props.forID || 'id',
+              value: value,
+              onChange: function(e) { if (onChange) onChange(e.target.value); },
+              className: this.props.classNameWrapper || '',
+              style: {
+                flex: '1',
+                padding: '10px 14px',
+                border: '1px solid #d1d5db',
+                borderRadius: '6px',
+                fontSize: '15px',
+                fontFamily: 'monospace',
+                backgroundColor: '#ffffff',
+                color: '#111827',
+                direction: 'ltr',
+                textAlign: 'left'
+              }
+            }),
+            h('button', {
+              key: 'id-btn',
+              type: 'button',
+              onClick: function() {
+                const newId = makeUniqueId();
+                if (onChange) onChange(newId);
+                if (typeof showToast === 'function') showToast("✅ تم توليد معرف فريد جديد: " + newId);
+              },
+              style: {
+                padding: '10px 16px',
+                backgroundColor: '#2563eb',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '14px',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              }
+            }, '🔄 توليد معرف جديد')
+          ]);
         }
       });
 
@@ -119,6 +124,8 @@
 
       const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
       const CHAT_ID = "@arab_wrestling";
+      const SENT_KEY = "tg_sent_posts_v3";
+      const PENDING_KEY = "tg_pending_posts_v3";
 
       const showToast = (msg, isError = false) => {
         try {
@@ -131,42 +138,27 @@
           toast.style.backgroundColor = isError ? '#e53e3e' : '#38a169';
           toast.style.color = '#ffffff';
           toast.style.padding = '14px 24px';
-          toast.style.borderRadius = '8px';
+          toast.style.borderRadius = '10px';
+          toast.style.fontSize = '15px';
           toast.style.fontWeight = 'bold';
-          toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+          toast.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
           toast.style.direction = 'rtl';
           document.body.appendChild(toast);
-          setTimeout(() => toast.remove(), 4000);
-        } catch(e) {}
+          setTimeout(() => toast.remove(), 8000);
+        } catch (e) {}
       };
 
-      const handlePublishEvent = async ({ entry }) => {
-        const entryData = entry.get('data').toJS();
+      const getStore = (key) => {
+        try { return JSON.parse(localStorage.getItem(key) || '{}'); } catch(e) { return {}; }
+      };
 
-        let title = entryData.title || entryData.headline || "موضوع جديد على عرب راسلنج";
-        let text = entryData.description || entryData.headline || "";
-        let id = entryData.id || "";
-        
-        let url = 'https://arab-wrestling.com';
-        let collection = entry.get('collection');
+      const setStore = (key, val) => {
+        try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
+      };
 
-        if (collection === 'news') {
-          url = `https://arab-wrestling.com/news/${id}.html`;
-        } else if (collection === 'shows') {
-          url = `https://arab-wrestling.com/shows/${id}.html`;
-        } else if (collection === 'recaps') {
-          url = `https://arab-wrestling.com/recaps/${id}.html`;
-        }
-
-        const item = {
-          id: id,
-          title: title,
-          text: text,
-          image: entryData.image || "",
-          url: url,
-          collection: collection,
-          kind: collection === 'recaps' ? 'ملخص' : (collection === 'shows' ? 'عرض' : 'خبر')
-        };
+      const doTelegramSend = async (item) => {
+        const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
+        const CHAT_ID = "@arab_wrestling";
 
         const messageText = `<b>${item.title || ""}</b>\n\n${item.text || ""}\n\n🔗 <a href="${item.url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
 
@@ -177,6 +169,7 @@
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
+                postId: item.postId || item.id || item.slug || item.url,
                 title: item.title,
                 text: item.text,
                 url: item.url,
@@ -193,7 +186,7 @@
                 return true;
               }
             }
-          } catch (err) {
+          } catch (apiErr) {
             console.log("السيرفر غير متاح، جدولة الإرسال محلياً بعد 3 دقائق...");
           }
 
@@ -260,12 +253,163 @@
         }
       };
 
+      const handlePublishEvent = async (opts) => {
+        try {
+          const entryObj = (opts && opts.entry) ? opts.entry : opts;
+          if (!entryObj) return;
+
+          let rawData = null;
+          if (typeof entryObj.get === 'function') {
+            rawData = entryObj.get('data');
+          } else if (entryObj.data) {
+            rawData = entryObj.data;
+          }
+
+          const data = rawData ? (typeof rawData.toJS === 'function' ? rawData.toJS() : rawData) : {};
+          
+          let collection = 'news';
+          if (opts && opts.collection) {
+            if (typeof opts.collection === 'string') {
+              collection = opts.collection;
+            } else if (typeof opts.collection.get === 'function') {
+              collection = opts.collection.get('name') || 'news';
+            } else if (opts.collection.name) {
+              collection = opts.collection.name;
+            }
+          } else if (entryObj && typeof entryObj.get === 'function') {
+            const colVal = entryObj.get('collection');
+            if (typeof colVal === 'string') {
+              collection = colVal;
+            } else if (colVal && typeof colVal.get === 'function') {
+              collection = colVal.get('name') || 'news';
+            }
+          }
+
+          const title = (data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج').trim();
+          let text = data.description || '';
+          if (!text && data.body) {
+            text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
+          }
+          
+          let image = data.image || null;
+          if (image && typeof image === 'string' && !image.startsWith('http')) {
+            image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
+          }
+
+          const slug = data.slug || (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || data.id || '';
+          const url = (slug || data.id)
+            ? `https://arab-wrestling.com/${collection}/${slug || data.id}/`
+            : `https://arab-wrestling.com/`;
+
+          const postId = `${collection}_${slug || data.id || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
+
+          const sent = getStore(SENT_KEY);
+
+          // فحص لمنع أي إعادة إرسال مكررة
+          if (sent[postId]) {
+            console.log("تم نشر هذا الخبر مسبقاً على التليجرام:", postId);
+            return;
+          }
+
+          showToast("⏳ جاري نشر الخبر على التليجرام...");
+
+          const kind = collection === 'shows' ? 'show' : (collection === 'recaps' ? 'recap' : 'news');
+
+          const success = await doTelegramSend({
+            postId,
+            title,
+            text,
+            url,
+            image,
+            collection,
+            kind
+          });
+
+          if (success) {
+            sent[postId] = Date.now();
+            setStore(SENT_KEY, sent);
+            showToast("✅ تم نشر الخبر بنجاح على التليجرام!");
+          }
+
+          if ('BroadcastChannel' in window) {
+            try {
+              const bc = new BroadcastChannel('arw_notifications');
+              bc.postMessage({ type: 'new_post', collection, title });
+            } catch(e) {}
+          }
+
+          if ('Notification' in window && Notification.permission === 'granted') {
+            try {
+              const kindName = collection === 'shows' ? 'عرض' : (collection === 'recaps' ? 'ملخص' : 'خبر');
+              new Notification(`عرب راسلنج 🔔 | تم نشر ${kindName} جديد`, {
+                body: title,
+                icon: image || '/favicon.png',
+                dir: 'rtl',
+                lang: 'ar'
+              });
+            } catch(e) {}
+          }
+        } catch(err) {
+          console.error("خطأ أثناء إرسال الخبر للتليجرام:", err);
+        }
+      };
+
       // الاستماع حصرياً لحدث النشر (postPublish) لمنع النشر المكرر
       window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
 
       // تشغيل Decap CMS بعد تسجيل كافة الودجتس والأحداث
       window.CMS.init();
     }
+
+    // إضافة زر تجربة الربط في شاشة لوحة التحكم
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.createElement('button');
+      btn.innerHTML = '🚀 تجربة ربط التليجرام';
+      btn.style.position = 'fixed';
+      btn.style.bottom = '20px';
+      btn.style.left = '20px';
+      btn.style.zIndex = '99999';
+      btn.style.backgroundColor = '#0088cc';
+      btn.style.color = '#ffffff';
+      btn.style.border = 'none';
+      btn.style.padding = '10px 18px';
+      btn.style.borderRadius = '25px';
+      btn.style.fontSize = '14px';
+      btn.style.fontWeight = 'bold';
+      btn.style.cursor = 'pointer';
+      btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.25)';
+      
+      btn.onclick = async () => {
+        btn.innerText = '⏳ جاري الاختبار...';
+        btn.disabled = true;
+        try {
+          const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
+          const CHAT_ID = "@arab_wrestling";
+          const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: CHAT_ID,
+              text: '<b>اختبار ربط الموقع بالقناة</b>\n\nهذه الرسالة لتأكيد أن البوت متصل بنجاح بالقناة وبالموقع! 🚀',
+              parse_mode: 'HTML'
+            })
+          });
+          const data = await res.json();
+          if (data.ok) {
+            alert('✅ نجح الاختبار! تم إرسال رسالة تجريبية الآن إلى قناة التليجرام @arab_wrestling');
+          } else {
+            alert('❌ فشل الإرسال: ' + JSON.stringify(data));
+          }
+        } catch (e) {
+          alert('❌ حدث خطأ: ' + e.message);
+        } finally {
+          btn.innerHTML = '🚀 تجربة ربط التليجرام';
+          btn.disabled = false;
+        }
+      };
+
+      document.body.appendChild(btn);
+    });
   </script>
 </body>
 </html>
