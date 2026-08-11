@@ -208,14 +208,26 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addNunjucksAsyncShortcode("optImg", optImgShortcode);
 
+  const getItemTimestamp = function(item) {
+    if (!item) return 0;
+    if (item.date instanceof Date && !isNaN(item.date.getTime())) {
+      return item.date.getTime();
+    }
+    if (item.data && item.data.date) {
+      const d = new Date(item.data.date);
+      if (!isNaN(d.getTime())) return d.getTime();
+    }
+    return 0;
+  };
+
   eleventyConfig.addCollection("shows", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/shows/*.md").sort((a,b) => b.date - a.date);
+    return collectionApi.getFilteredByGlob("content/shows/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("recaps", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/recaps/*.md").sort((a,b) => b.date - a.date);
+    return collectionApi.getFilteredByGlob("content/recaps/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("news", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/news/*.md").sort((a,b) => b.date - a.date);
+    return collectionApi.getFilteredByGlob("content/news/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("allContent", function(collectionApi) {
     const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
@@ -224,7 +236,7 @@ module.exports = function(eleventyConfig) {
     recaps.forEach(function(i){ i.kind = "recap"; });
     const news = collectionApi.getFilteredByGlob("content/news/*.md");
     news.forEach(function(i){ i.kind = "news"; });
-    return shows.concat(recaps, news).sort((a,b) => b.date - a.date);
+    return shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
 
   eleventyConfig.addCollection("tagList", function(collectionApi) {
