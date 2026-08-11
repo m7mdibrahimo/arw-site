@@ -38,45 +38,47 @@
 
       const IdControl = createClass({
         componentDidMount: function() {
-          this.checkAndSetId();
+          this.initId();
         },
         componentDidUpdate: function() {
-          this.checkAndSetId();
+          this.initId();
         },
-        checkAndSetId: function() {
+        initId: function() {
           const entry = this.props.entry;
           const isPersisted = entry && (typeof entry.get === 'function' ? entry.get('isPersisted') : entry.isPersisted);
 
-          if (!isPersisted && !this._generatedForInstance) {
+          // إذا كان المقال محفوظاً أصلاً (تعديل خبر قديم)، نلتزم بالقيمة الأصلية المخزنة ولا نغيرها أبداً
+          if (isPersisted) {
+            return;
+          }
+
+          // إذا كان المقال جديداً كلياً أو تم عمل نسق/نسخة منه (Duplicate):
+          // نولّد ID جديد فريد فقط إذا لم نكن قد ولّدنا له في هذه الجلسة بعد
+          const cid = (entry && typeof entry.get === 'function') ? entry.get('cid') : null;
+          if (!this._generatedCid || this._generatedCid !== cid) {
             const newId = makeUniqueId();
-            this._generatedForInstance = newId;
-            if (this.props.onChange && this.props.value !== newId) {
+            this._generatedCid = cid;
+            this._generatedVal = newId;
+            if (this.props.onChange) {
               this.props.onChange(newId);
             }
           }
         },
         render: function() {
-          let val = this.props.value;
           const entry = this.props.entry;
           const isPersisted = entry && (typeof entry.get === 'function' ? entry.get('isPersisted') : entry.isPersisted);
 
-          if (!isPersisted && !this._generatedForInstance) {
-            val = makeUniqueId();
-            this._generatedForInstance = val;
-            const self = this;
-            if (this.props.onChange) {
-              setTimeout(function() {
-                if (self.props.onChange) {
-                  self.props.onChange(val);
-                }
-              }, 10);
-            }
+          let displayVal = this.props.value;
+
+          // إذا كان المقال غير محفوظ (جديد أو Duplicate) ولدين قيمة جديدة تم توليدها
+          if (!isPersisted && this._generatedVal) {
+            displayVal = this._generatedVal;
           }
 
           return h('input', {
             type: 'text',
             id: this.props.forID || 'id',
-            value: val || this._generatedForInstance || '',
+            value: displayVal || '',
             readOnly: true,
             className: this.props.classNameWrapper || '',
             style: {
