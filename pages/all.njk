@@ -215,7 +215,7 @@ permalink: "/all/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 
 </div>
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in allItems %}
-<a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %}" href="{{ item.url }}">
+<a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %}" href="{{ item.url | cleanUrl }}">
   {% if item.kind == 'news' %}
   <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
   <div class="news-body">
