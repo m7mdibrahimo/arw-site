@@ -20,6 +20,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("slug", arabicSlug);
   eleventyConfig.addNunjucksFilter("slug", arabicSlug);
 
+  const cleanUrl = function(url) {
+    if (!url) return "";
+    return url.toString().replace(/\.html$/, '');
+  };
+  eleventyConfig.addFilter("cleanUrl", cleanUrl);
+  eleventyConfig.addNunjucksFilter("cleanUrl", cleanUrl);
+
   const arabicShowName = function(str) {
     if (!str) return "";
     return str
