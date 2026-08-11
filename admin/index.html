@@ -9,17 +9,28 @@
   <link rel="apple-touch-icon" href="/favicon.png" />
 </head>
 <body>
-  <!-- Include React and Decap CMS scripts -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Include Decap CMS script with manual initialization to register custom widgets -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     if (window.CMS) {
       // تسجيل ودجت توليد الرقم الفريد للمقال تلقائياً (Unix Timestamp)
-      const ReactObj = window.React || { Component: class {} };
-      const createElement = ReactObj.createElement ? ReactObj.createElement.bind(ReactObj) : window.h;
+      const h = window.h || (window.React ? window.React.createElement : null);
+      const createClass = window.createClass || function(spec) {
+        return function(props) {
+          const React = window.React;
+          class Comp extends React.Component {
+            constructor(p) { super(p); }
+            componentDidMount() { if (spec.componentDidMount) spec.componentDidMount.call(this); }
+            render() { return spec.render.call(this); }
+          }
+          return React.createElement(Comp, props);
+        };
+      };
 
-      const IdControl = window.createClass ? window.createClass({
+      const IdControl = createClass({
         componentDidMount: function() {
           if (!this.props.value && this.props.onChange) {
             this.props.onChange(String(Math.floor(Date.now() / 1000)));
@@ -27,15 +38,17 @@
         },
         render: function() {
           const val = this.props.value || String(Math.floor(Date.now() / 1000));
+          const self = this;
           if (!this.props.value && this.props.onChange) {
-            setTimeout(() => {
-              if (!this.props.value && this.props.onChange) {
-                this.props.onChange(val);
+            setTimeout(function() {
+              if (!self.props.value && self.props.onChange) {
+                self.props.onChange(val);
               }
-            }, 10);
+            }, 50);
           }
-          return createElement('input', {
+          return h('input', {
             type: 'text',
+            id: this.props.forID || 'id',
             value: val,
             readOnly: true,
             className: this.props.classNameWrapper || '',
@@ -53,46 +66,15 @@
             }
           });
         }
-      }) : class extends ReactObj.Component {
-        componentDidMount() {
-          if (!this.props.value && this.props.onChange) {
-            this.props.onChange(String(Math.floor(Date.now() / 1000)));
-          }
-        }
-        render() {
-          const val = this.props.value || String(Math.floor(Date.now() / 1000));
-          return createElement('input', {
-            type: 'text',
-            value: val,
-            readOnly: true,
-            className: this.props.classNameWrapper || '',
-            style: {
-              width: '100%',
-              padding: '10px 14px',
-              border: '1px solid #d1d5db',
-              borderRadius: '6px',
-              fontSize: '15px',
-              fontFamily: 'monospace',
-              backgroundColor: '#f3f4f6',
-              color: '#111827',
-              direction: 'ltr',
-              textAlign: 'left'
-            }
-          });
-        }
-      };
+      });
 
-      const IdPreview = window.createClass ? window.createClass({
+      const IdPreview = createClass({
         render: function() {
-          return createElement('div', {
+          return h('div', {
             style: { color: '#4b5563', fontSize: '14px', padding: '6px 0', direction: 'rtl', fontFamily: 'monospace' }
           }, 'معرف المقال (Unix Timestamp): ' + (this.props.value || 'جاري التوليد...'));
         }
-      }) : function(props) {
-        return createElement('div', {
-          style: { color: '#4b5563', fontSize: '14px', padding: '6px 0', direction: 'rtl', fontFamily: 'monospace' }
-        }, 'معرف المقال (Unix Timestamp): ' + (props.value || 'جاري التوليد...'));
-      };
+      });
 
       window.CMS.registerWidget('post_id', IdControl, IdPreview);
 
@@ -108,11 +90,13 @@
           }
 
           let slug = entry.get('slug');
-          if (!slug || String(slug).trim() === '' || slug === 'undefined' || slug === '{{fields.id}}') {
-            entry = entry.set('slug', id);
+          if (!slug || String(slug).trim() === '' || slug === 'undefined' || slug === '{{fields.id}}' || slug.includes('gemini') || slug.includes('http')) {
+            slug = id;
           }
 
-          return entry.set('data', data);
+          entry = entry.set('data', data);
+          entry = entry.set('slug', slug);
+          return entry;
         }
       });
 
@@ -411,6 +395,9 @@
       window.addEventListener('DOMContentLoaded', () => {
         processPendingPosts();
       });
+
+      // تشغيل Decap CMS بعد تسجيل كافة الودجتس والأحداث
+      window.CMS.init();
     }
 
     // إضافة زر تجربة الربط في شاشة لوحة التحكم
