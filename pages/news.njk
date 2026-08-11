@@ -231,7 +231,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 </div>
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in newsItems %}
-<a class="news-card reveal" href="{{ item.url }}">
+<a class="news-card reveal" href="{{ item.url | cleanUrl }}">
   <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
   <div class="news-body">
     <span class="kind-badge kind-news">خبر</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
