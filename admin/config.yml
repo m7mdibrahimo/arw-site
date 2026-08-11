@@ -28,7 +28,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{title}}"
-    preview_path: "shows/{{fields.title}}"
+    preview_path: "shows/{{slug}}"
     summary: "{{title}}"
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
@@ -67,7 +67,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{title}}"
-    preview_path: "recaps/{{fields.title}}"
+    preview_path: "recaps/{{slug}}"
     summary: "{{title}}"
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
@@ -97,7 +97,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{title}}"
-    preview_path: "news/{{fields.title}}"
+    preview_path: "news/{{slug}}"
     summary: "{{title}}"
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
