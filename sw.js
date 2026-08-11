@@ -125,8 +125,32 @@ self.addEventListener('periodicsync', function(event) {
   }
 });
 
-// Push event (if background push triggered)
+// Push event (when background push payload is received from server)
 self.addEventListener('push', function(event) {
+  if (event.data) {
+    try {
+      var data = event.data.json();
+      // STRICT RULE: NO NEWS NOTIFICATIONS EVER!
+      var isNews = data.kind === 'news' || (data.url && data.url.indexOf('/news/') !== -1);
+      if (isNews) return;
+
+      var title = data.title || 'عرب راسلنج 🔔 | عرض/ملخص جديد';
+      var body = data.body || 'تم إضافة عرض/ملخص جديد على الموقع. اضغط للمشاهدة الآن.';
+      var options = {
+        body: body,
+        icon: data.image || '/favicon.png',
+        badge: '/favicon.png',
+        dir: 'rtl',
+        lang: 'ar',
+        data: { url: data.url || '/' }
+      };
+
+      event.waitUntil(self.registration.showNotification(title, options));
+      return;
+    } catch(e) {
+      console.warn('Error parsing push data, falling back to fetch:', e);
+    }
+  }
   event.waitUntil(checkNewContentSW());
 });
 
