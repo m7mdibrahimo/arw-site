@@ -137,15 +137,13 @@
         try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
       };
 
-      const inFlightPosts = new Set();
-
       const doTelegramSend = async (item) => {
         try {
           const res = await fetch('/api/telegram/post', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              postId: item.id || item.slug || item.url,
+              postId: item.postId || item.id || item.slug || item.url,
               title: item.title,
               text: item.text,
               url: item.url,
@@ -169,123 +167,7 @@
         }
       };
 
-      let activeTimers = {};
-
-      const processPendingPosts = async () => {
-        const pending = getStore(PENDING_KEY);
-        const sent = getStore(SENT_KEY);
-        const now = Date.now();
-
-        for (const id in pending) {
-          if (sent[id] || inFlightPosts.has(id)) {
-            delete pending[id];
-            setStore(PENDING_KEY, pending);
-            continue;
-          }
-          const item = pending[id];
-          const remaining = item.scheduledTime - now;
-
-          if (remaining <= 0) {
-            inFlightPosts.add(id);
-            // جلب الفهرس المباشر من الموقع لمطابقة المقال بالرابط والصورة الرسمية
-            let liveMatch = null;
-            try {
-              const res = await fetch(`https://arab-wrestling.com/search-index.json?t=${Date.now()}`);
-              if (res.ok) {
-                const searchIndex = await res.json();
-                const titleKey = (item.title || "").trim();
-                const slugKey = (item.slug || "").trim();
-
-                liveMatch = searchIndex.find(p => {
-                  if (slugKey && p.url && (p.url.includes(slugKey) || p.url.includes(encodeURIComponent(slugKey)))) {
-                    return true;
-                  }
-                  if (titleKey && p.title && (p.title === titleKey || p.title.includes(titleKey.substring(0, 20)))) {
-                    return true;
-                  }
-                  return false;
-                });
-              }
-            } catch(e) {
-              console.warn("تعذر جلب search-index.json من الموقع:", e);
-            }
-
-            if (liveMatch) {
-              // تم العثور على المقال مبنياً بنجاح على الموقع!
-              delete pending[id];
-              setStore(PENDING_KEY, pending);
-
-              const fullUrl = `https://arab-wrestling.com${liveMatch.url}`;
-              let fullImg = liveMatch.image || item.image || null;
-              if (fullImg && !fullImg.startsWith('http')) {
-                fullImg = `https://arab-wrestling.com${fullImg.startsWith('/') ? '' : '/'}${fullImg}`;
-              }
-
-              const success = await doTelegramSend({
-                title: liveMatch.title || item.title,
-                text: liveMatch.headline || liveMatch.description || item.text,
-                url: fullUrl,
-                image: fullImg,
-                collection: item.collection,
-                kind: liveMatch.kind,
-                kindLabel: liveMatch.kindLabel
-              });
-
-              if (success) {
-                sent[id] = Date.now();
-                setStore(SENT_KEY, sent);
-                showToast("🚀 تم نشر الخبر على التليجرام بالرابط وصورة الموقع الرسمية!");
-              }
-            } else {
-              // إذا لم يظهر المقال بعد في الموقع (بسبب وقت البناء)، نعيد المحاولة حتى 10 مرات (كل 30 ثانية)
-              item.retries = (item.retries || 0) + 1;
-              if (item.retries <= 10) {
-                item.scheduledTime = Date.now() + 30000; // إعادة الفحص بعد 30 ثانية
-                pending[id] = item;
-                setStore(PENDING_KEY, pending);
-
-                if (!activeTimers[id]) {
-                  activeTimers[id] = setTimeout(() => {
-                    delete activeTimers[id];
-                    processPendingPosts();
-                  }, 30000);
-                }
-              } else {
-                // استنفذ المحاولات (مرت أكثر من 8 دقائق ولم يظهر على الموقع)، نرسل بالرابط الافتراضي
-                delete pending[id];
-                setStore(PENDING_KEY, pending);
-
-                const fallbackUrl = (item.slug || item.id)
-                  ? `https://arab-wrestling.com/${item.collection}/${item.slug || item.id}`
-                  : `https://arab-wrestling.com/`;
-
-                const success = await doTelegramSend({
-                  title: item.title,
-                  text: item.text,
-                  url: fallbackUrl,
-                  image: item.image
-                });
-
-                if (success) {
-                  sent[id] = Date.now();
-                  setStore(SENT_KEY, sent);
-                  showToast("🚀 تم نشر الخبر على التليجرام بنجاح!");
-                }
-              }
-            }
-          } else {
-            // إعادة الجدولة بانتظار انقضاء الـ 3 دقائق
-            if (!activeTimers[id]) {
-              activeTimers[id] = setTimeout(() => {
-                delete activeTimers[id];
-                processPendingPosts();
-              }, Math.min(remaining, 15000));
-            }
-          }
-        }
-      };
-
-      const handlePublishEvent = (opts) => {
+      const handlePublishEvent = async (opts) => {
         try {
           const entryObj = (opts && opts.entry) ? opts.entry : opts;
           if (!entryObj) return;
@@ -312,34 +194,39 @@
           }
 
           const slug = (typeof entryObj.get === 'function' ? entryObj.get('slug') : entryObj.slug) || data.id || '';
+          const url = (slug || data.id)
+            ? `https://arab-wrestling.com/${collection}/${slug || data.id}/`
+            : `https://arab-wrestling.com/`;
+
           const postId = `${collection}_${slug || data.id || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
 
           const sent = getStore(SENT_KEY);
-          const pending = getStore(PENDING_KEY);
 
-          // فحص صارم لمنع أي نشر مكرر للخبر نفسه
+          // فحص لمنع أي إعادة إرسال مكررة
           if (sent[postId]) {
             console.log("تم نشر هذا الخبر مسبقاً على التليجرام:", postId);
             return;
           }
-          if (pending[postId]) {
-            console.log("هذا الخبر موجود بالفعل في قائمة الانتظار:", postId);
-            return;
-          }
 
-          // إضافة الخبر لقائمة الانتظار مع وقت تنفيذ بعد 3 دقائق (180000ms)
-          pending[postId] = {
+          showToast("⏳ جاري جدولة النشر على التليجرام وشبكة الإشعارات...");
+
+          const kind = collection === 'shows' ? 'show' : (collection === 'recaps' ? 'recap' : 'news');
+
+          const success = await doTelegramSend({
+            postId,
             title,
             text,
+            url,
             image,
-            slug,
             collection,
-            scheduledTime: Date.now() + 3 * 60 * 1000,
-            retries: 0
-          };
-          setStore(PENDING_KEY, pending);
+            kind
+          });
 
-          showToast("⏳ تم جدولة نشر الخبر! سيتم التحقق من ظهوره على الموقع بالرابط والصورة الرسمية بعد 3 دقائق، ثم نشره على التليجرام تلقائياً!");
+          if (success) {
+            sent[postId] = Date.now();
+            setStore(SENT_KEY, sent);
+            showToast("⏳ تم تسجيل الموضوع بنجاح! سيتم نشره على التليجرام والإشعارات تلقائياً بعد 3 دقائق لضمان اكتمال بناء الصفحة والرابط والصورة.");
+          }
 
           if ('BroadcastChannel' in window) {
             try {
@@ -359,20 +246,13 @@
               });
             } catch(e) {}
           }
-
-          processPendingPosts();
         } catch(err) {
-          console.error("خطأ أثناء جدولة الخبر للتليجرام:", err);
+          console.error("خطأ أثناء إرسال الخبر للتليجرام:", err);
         }
       };
 
       // الاستماع حصرياً لحدث النشر (postPublish) لمنع النشر المكرر
       window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
-
-      // فحص الأخبار المعلقة عند فتح اللوحة
-      window.addEventListener('DOMContentLoaded', () => {
-        processPendingPosts();
-      });
 
       // تشغيل Decap CMS بعد تسجيل كافة الودجتس والأحداث
       window.CMS.init();
