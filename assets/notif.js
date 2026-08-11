@@ -228,7 +228,7 @@
   }
 
   function subscribeToWebPush() {
-    if (!('serviceWorker' in navigator) || !isNotifEnabled()) return;
+    if (!('serviceWorker' in navigator) || !('Notification' in window) || Notification.permission !== 'granted') return;
     navigator.serviceWorker.ready.then(function (reg) {
       if (!reg || !reg.pushManager) return;
       fetch('/api/push/public-key')
@@ -265,7 +265,8 @@
             }).catch(function () {});
           } catch (e) {}
         }
-        if (isNotifEnabled()) {
+        if (('Notification' in window) && Notification.permission === 'granted') {
+          setNotifState(true);
           subscribeToWebPush();
         }
       }).catch(function (e) {
