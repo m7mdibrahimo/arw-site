@@ -303,13 +303,6 @@ async function processTelegramPendingQueue() {
           saveTelegramSentMap(sentMap);
           delete queue[key];
           updated = true;
-
-          // Trigger Web Push Notification for Shows & Recaps after 3-minute delay!
-          if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
-            sendPushToAllSubscribers(item).catch((e) =>
-              console.error("Error sending push notification:", e)
-            );
-          }
         } else {
           item.retries = (item.retries || 0) + 1;
           if (item.retries >= 5) {
@@ -401,8 +394,8 @@ app.post("/api/telegram/post", async (req, res) => {
       }
     }
 
-    // Default delay: 5 SECONDS (5,000 ms) instead of 3 minutes
-    const delayMs = req.body?.delayMs !== undefined ? Number(req.body.delayMs) : 5000;
+    // Default delay: 3 MINUTES (180,000 ms) as requested
+    const delayMs = req.body?.delayMs !== undefined ? Number(req.body.delayMs) : 180000;
     const publishAt = Date.now() + delayMs;
 
     pendingQueue[dedupKey] = {
@@ -422,7 +415,7 @@ app.post("/api/telegram/post", async (req, res) => {
     return res.json({
       success: true,
       queued: true,
-      message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات خلال ثوانٍ معدودة."
+      message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام بعد 3 دقائق لضمان اكتمال بناء الصفحة والميديا على الموقع."
     });
   } catch (error: any) {
     console.error("[Telegram API Error]:", error);
