@@ -28,6 +28,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{fields.id}}"
+    preview_path: "shows/{{slug}}.html"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -67,6 +68,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{fields.id}}"
+    preview_path: "recaps/{{slug}}.html"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
@@ -97,6 +99,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{fields.id}}"
+    preview_path: "news/{{slug}}.html"
     summary: "{{title}}"
     fields:
       - { label: "المعرف الفريد", name: "id", widget: "post_id" }
