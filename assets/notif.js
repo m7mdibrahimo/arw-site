@@ -231,27 +231,39 @@
     if (!('serviceWorker' in navigator) || !('Notification' in window) || Notification.permission !== 'granted') return;
     navigator.serviceWorker.ready.then(function (reg) {
       if (!reg || !reg.pushManager) return;
-      fetch('/api/push/public-key')
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          if (!data || !data.publicKey) return;
-          var convertedKey = urlBase64ToUint8Array(data.publicKey);
-          return reg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: convertedKey
-          });
-        })
-        .then(function (subscription) {
-          if (!subscription) return;
+
+      reg.pushManager.getSubscription().then(function (existingSub) {
+        if (existingSub) {
+          // إذا كان الاشتراك موجوداً بالفعل، نقوم بإرساله وتأكيده مع السيرفر مباشرة
           return fetch('/api/push/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ subscription: subscription })
+            body: JSON.stringify({ subscription: existingSub })
           });
-        })
-        .catch(function (err) {
-          console.log('Web push subscription warning:', err);
-        });
+        }
+
+        // إنشاء اشتراك جديد إذا لم يكن موجوداً
+        return fetch('/api/push/public-key')
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (!data || !data.publicKey) return;
+            var convertedKey = urlBase64ToUint8Array(data.publicKey);
+            return reg.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: convertedKey
+            });
+          })
+          .then(function (subscription) {
+            if (!subscription) return;
+            return fetch('/api/push/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ subscription: subscription })
+            });
+          });
+      }).catch(function (err) {
+        console.log('Web push subscription warning:', err);
+      });
     });
   }
 
