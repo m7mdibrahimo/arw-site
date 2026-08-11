@@ -10,6 +10,7 @@ function arabicSlug(str) {
     .replace(/[\u0300-\u036f]/g, '')
     .normalize('NFC')
     .trim()
+    .toLowerCase()
     .replace(/[\.\_\/\\]+/g, '-')
     .replace(/\s+/g, '-')
     .replace(/[^\w\u0600-\u06FF\-]/g, '')
@@ -244,7 +245,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("tagList", function(collectionApi) {
-    const tagSet = new Map();
+    const tagMap = new Map();
     const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/recaps/*.md", "content/news/*.md"]);
     items.forEach(item => {
       let tags = item.data.tags;
@@ -255,18 +256,16 @@ module.exports = function(eleventyConfig) {
         tags.forEach(tag => {
           if (!tag) return;
           const cleanTag = tag.trim();
-          if (!tagSet.has(cleanTag)) {
-            tagSet.set(cleanTag, 0);
+          const slug = arabicSlug(cleanTag);
+          if (!slug) return;
+          if (!tagMap.has(slug)) {
+            tagMap.set(slug, { name: cleanTag, slug: slug, count: 0 });
           }
-          tagSet.set(cleanTag, tagSet.get(cleanTag) + 1);
+          tagMap.get(slug).count += 1;
         });
       }
     });
-    return Array.from(tagSet.entries()).map(([name, count]) => ({
-      name,
-      slug: arabicSlug(name),
-      count
-    })).sort((a,b) => b.count - a.count);
+    return Array.from(tagMap.values()).sort((a,b) => b.count - a.count);
   });
 
   eleventyConfig.addPassthroughCopy("admin/index.html");
