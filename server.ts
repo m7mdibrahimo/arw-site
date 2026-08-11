@@ -189,54 +189,59 @@ async function executeTelegramPost(data: {
   collection?: string;
   kind?: string;
 }) {
-  const { title, text, url, image } = data;
-  const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
+  try {
+    const { title, text, url, image } = data;
+    const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
 
-  let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-  let payload: any = {
-    chat_id: CHAT_ID,
-    text: messageText,
-    parse_mode: "HTML",
-    disable_web_page_preview: false
-  };
-
-  if (image) {
-    telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
-    payload = {
-      chat_id: CHAT_ID,
-      photo: image,
-      caption: messageText,
-      parse_mode: "HTML"
-    };
-  }
-
-  let tgRes = await fetch(telegramUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-
-  let result = await tgRes.json();
-
-  // Fallback to text sendMessage if sendPhoto failed
-  if (!result.ok && image) {
-    console.warn("[Telegram] sendPhoto failed, retrying with sendMessage...", result);
-    telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    payload = {
+    let telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    let payload: any = {
       chat_id: CHAT_ID,
       text: messageText,
       parse_mode: "HTML",
       disable_web_page_preview: false
     };
-    tgRes = await fetch(telegramUrl, {
+
+    if (image) {
+      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+      payload = {
+        chat_id: CHAT_ID,
+        photo: image,
+        caption: messageText,
+        parse_mode: "HTML"
+      };
+    }
+
+    let tgRes = await fetch(telegramUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-    result = await tgRes.json();
-  }
 
-  return result;
+    let result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
+
+    // Fallback to text sendMessage if sendPhoto failed
+    if (!result.ok && image) {
+      console.warn("[Telegram] sendPhoto failed, retrying with sendMessage...", result);
+      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+      payload = {
+        chat_id: CHAT_ID,
+        text: messageText,
+        parse_mode: "HTML",
+        disable_web_page_preview: false
+      };
+      tgRes = await fetch(telegramUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      result = await tgRes.json().catch(() => ({ ok: false, description: "Invalid response from Telegram API" }));
+    }
+
+    return result;
+  } catch (err: any) {
+    console.error("[Telegram] Error executing Telegram post:", err);
+    return { ok: false, description: err.message || "Network error" };
+  }
 }
 
 // Background Worker: Checks pending queue every 10 seconds and sends delayed posts
@@ -313,8 +318,9 @@ app.get("/api/telegram/status", async (req, res) => {
 });
 
 app.post("/api/telegram/post", async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   try {
-    const { title, text, url, image, collection, kind, id, slug, postId, immediate } = req.body;
+    const { title, text, url, image, collection, kind, id, slug, postId, immediate } = req.body || {};
     if (!title && !text) {
       return res.status(400).json({ success: false, error: "العنوان أو النص مطلوب" });
     }
@@ -354,7 +360,7 @@ app.post("/api/telegram/post", async (req, res) => {
 
     // Default behavior: Schedule post after 3 MINUTES (180,000 ms) delay
     // This allows static site generator to complete building page & uploading images!
-    const delayMs = req.body.delayMs || (3 * 60 * 1000); // 3 Minutes
+    const delayMs = req.body?.delayMs || (3 * 60 * 1000); // 3 Minutes
     const publishAt = Date.now() + delayMs;
 
     pendingQueue[dedupKey] = {
@@ -371,13 +377,14 @@ app.post("/api/telegram/post", async (req, res) => {
 
     saveTelegramPendingQueue(pendingQueue);
 
-    res.json({
+    return res.json({
       success: true,
       queued: true,
       message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام وشبكة الإشعارات بعد 3 دقائق لضمان اكتمال بناء الصفحة والميديا على الموقع."
     });
   } catch (error: any) {
-    res.status(500).json({ success: false, error: error.message });
+    console.error("[Telegram API Error]:", error);
+    return res.status(500).json({ success: false, error: error.message || "خطأ في السيرفر" });
   }
 });
 
