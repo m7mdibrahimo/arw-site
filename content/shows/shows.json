@@ -1,6 +1,6 @@
 {
   "layout": "post-layout.njk",
   "eleventyComputed": {
-    "permalink": "/news/{{ (title or page.fileSlug) | arabicSlug }}.html"
+    "permalink": "/shows/{{ (title or page.fileSlug) | arabicSlug }}.html"
   }
 }
