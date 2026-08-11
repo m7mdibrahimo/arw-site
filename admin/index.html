@@ -56,18 +56,34 @@
         if (!str) return "";
         return str
           .toString()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
           .normalize('NFC')
           .trim()
+          .toLowerCase()
+          .replace(/[\.\_\/\\]+/g, '-')
           .replace(/\s+/g, '-')
           .replace(/[^\w\u0600-\u06FF\-]/g, '')
-          .replace(/\-\-+/g, '-');
+          .replace(/\-\-+/g, '-')
+          .replace(/^-+|-+$/g, '');
+      }
+
+      function normalizeArticleUrl(urlStr) {
+        if (!urlStr || typeof urlStr !== "string") return "https://arab-wrestling.com";
+        try {
+          const parsed = new URL(urlStr);
+          parsed.pathname = parsed.pathname.replace(/[A-Z]+/g, (m) => m.toLowerCase());
+          return decodeURIComponent(parsed.toString());
+        } catch (e) {
+          return urlStr;
+        }
       }
 
       const doTelegramSend = async (item) => {
         const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
         const CHAT_ID = "@arab_wrestling";
 
-        const articleUrl = item.url || 'https://arab-wrestling.com';
+        const articleUrl = normalizeArticleUrl(item.url || 'https://arab-wrestling.com');
         const messageText = `<b>${item.title || ""}</b>\n\n${item.text || ""}\n\n🔗 <a href="${articleUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
         try {
@@ -202,9 +218,10 @@
           }
 
           const slug = toArabicSlug(title);
-          const url = slug
+          const rawUrl = slug
             ? `https://arab-wrestling.com/${collection}/${slug}`
             : `https://arab-wrestling.com/`;
+          const url = normalizeArticleUrl(rawUrl);
 
           const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
 
