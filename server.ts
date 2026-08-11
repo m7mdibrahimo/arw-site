@@ -147,6 +147,26 @@ app.post("/api/push/send", async (req, res) => {
   }
 });
 
+// Manage Telegram Sent Posts Deduplication
+const TG_SENT_FILE = path.join(process.cwd(), "telegram_sent.json");
+
+function getTelegramSentMap(): Record<string, number> {
+  if (!fs.existsSync(TG_SENT_FILE)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(TG_SENT_FILE, "utf-8")) || {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveTelegramSentMap(map: Record<string, number>) {
+  try {
+    fs.writeFileSync(TG_SENT_FILE, JSON.stringify(map, null, 2));
+  } catch (e) {}
+}
+
+const activePostingLocks = new Set<string>();
+
 // Telegram API endpoints
 app.get("/api/telegram/status", async (req, res) => {
   try {
@@ -160,9 +180,28 @@ app.get("/api/telegram/status", async (req, res) => {
 
 app.post("/api/telegram/post", async (req, res) => {
   try {
-    const { title, text, url, image, collection, kind } = req.body;
+    const { title, text, url, image, collection, kind, id, slug, postId } = req.body;
     if (!title && !text) {
       return res.status(400).json({ success: false, error: "العنوان أو النص مطلوب" });
+    }
+
+    // Generate strict unique deduplication key
+    const rawKey = postId || url || slug || id || title || "";
+    const dedupKey = rawKey.toString().toLowerCase().trim().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
+
+    const sentMap = getTelegramSentMap();
+
+    if (dedupKey && (sentMap[dedupKey] || activePostingLocks.has(dedupKey))) {
+      console.log(`[Telegram] Duplicate post blocked on server for key: ${dedupKey}`);
+      return res.json({
+        success: true,
+        message: "تم نشر هذا الموضوع مسبقاً على التليجرام",
+        alreadySent: true
+      });
+    }
+
+    if (dedupKey) {
+      activePostingLocks.add(dedupKey);
     }
 
     const messageText = `<b>${title || ""}</b>\n\n${text || ""}\n\n🔗 <a href="${url || 'https://arab-wrestling.com'}">اقرأ الخبر كاملاً على موقع عرب راسلنج</a>`;
@@ -185,28 +224,59 @@ app.post("/api/telegram/post", async (req, res) => {
       };
     }
 
-    const tgRes = await fetch(telegramUrl, {
+    let tgRes = await fetch(telegramUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
 
-    const result = await tgRes.json();
+    let result = await tgRes.json();
 
-    // Trigger Web Push notification if it's a Show or Recap!
-    if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
-      sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) =>
-        console.error("Error triggering push on Telegram post:", e)
-      );
+    // Fallback to text sendMessage if sendPhoto failed
+    if (!result.ok && image) {
+      console.warn("[Telegram] sendPhoto failed, retrying with sendMessage...", result);
+      telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+      payload = {
+        chat_id: CHAT_ID,
+        text: messageText,
+        parse_mode: "HTML",
+        disable_web_page_preview: false
+      };
+      tgRes = await fetch(telegramUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      result = await tgRes.json();
     }
 
     if (result.ok) {
+      if (dedupKey) {
+        sentMap[dedupKey] = Date.now();
+        saveTelegramSentMap(sentMap);
+      }
+
+      // Trigger Web Push notification if it's a Show or Recap!
+      if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
+        sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) =>
+          console.error("Error triggering push on Telegram post:", e)
+        );
+      }
+
       res.json({ success: true, message: "تم نشر الخبر بنجاح على قناة التليجرام!", result });
     } else {
       res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
     }
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
+  } finally {
+    if (req.body) {
+      const rawKey = req.body.postId || req.body.url || req.body.slug || req.body.id || req.body.title || "";
+      const dedupKey = rawKey.toString().toLowerCase().trim().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
+      if (dedupKey) {
+        activePostingLocks.delete(dedupKey);
+      }
+    }
   }
 });
 
