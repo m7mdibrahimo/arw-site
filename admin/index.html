@@ -38,28 +38,45 @@
 
       const IdControl = createClass({
         componentDidMount: function() {
-          if (!this.props.value && this.props.onChange) {
+          this.checkAndSetId();
+        },
+        componentDidUpdate: function() {
+          this.checkAndSetId();
+        },
+        checkAndSetId: function() {
+          const entry = this.props.entry;
+          const isPersisted = entry && (typeof entry.get === 'function' ? entry.get('isPersisted') : entry.isPersisted);
+
+          if (!isPersisted && !this._generatedForInstance) {
             const newId = makeUniqueId();
-            this.props.onChange(newId);
+            this._generatedForInstance = newId;
+            if (this.props.onChange && this.props.value !== newId) {
+              this.props.onChange(newId);
+            }
           }
         },
         render: function() {
           let val = this.props.value;
-          if (!val) {
+          const entry = this.props.entry;
+          const isPersisted = entry && (typeof entry.get === 'function' ? entry.get('isPersisted') : entry.isPersisted);
+
+          if (!isPersisted && !this._generatedForInstance) {
             val = makeUniqueId();
+            this._generatedForInstance = val;
             const self = this;
             if (this.props.onChange) {
               setTimeout(function() {
-                if (!self.props.value && self.props.onChange) {
+                if (self.props.onChange) {
                   self.props.onChange(val);
                 }
               }, 10);
             }
           }
+
           return h('input', {
             type: 'text',
             id: this.props.forID || 'id',
-            value: val,
+            value: val || this._generatedForInstance || '',
             readOnly: true,
             className: this.props.classNameWrapper || '',
             style: {
