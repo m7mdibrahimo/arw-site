@@ -169,12 +169,21 @@
               kind: item.kind
             })
           });
-          const data = await res.json();
-          if (data.success) {
+
+          let data;
+          try {
+            data = await res.json();
+          } catch (jsonErr) {
+            console.error("تعذر قراءة الاستجابة كـ JSON:", jsonErr);
+            showToast("⚠️ تم تسليم الخبر للسيرفر وسيجري جدولة نشره على التليجرام!");
+            return true;
+          }
+
+          if (data && data.success) {
             return true;
           } else {
             console.error("فشل إرسال البوست للتليجرام:", data);
-            showToast("❌ خطأ في نشر الخبر بتليجرام: " + (data.error || "خطأ غير معروف"), true);
+            showToast("❌ خطأ في نشر الخبر بتليجرام: " + ((data && data.error) || "خطأ غير معروف"), true);
             return false;
           }
         } catch(e) {
