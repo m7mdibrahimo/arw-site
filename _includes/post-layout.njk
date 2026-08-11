@@ -13,11 +13,11 @@
 {% if tags and tags.length %}
 <meta name="keywords" content="{{ tags | join(', ') }}">
 {% endif %}
-<link rel="canonical" href="https://arab-wrestling.com{{ page.url }}">
+<link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://arab-wrestling.com{{ page.url }}">
+<meta property="og:url" content="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <meta property="og:title" content="{{ pageTitle }} | عرب راسلنج">
 <meta property="og:description" content="{{ description or headline or 'عرب راسلنج - بوابتك العربية للمصارعة الحرة.' }}">
 <meta property="og:image" content="{% if image %}{{ image }}{% else %}https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop{% endif %}">
@@ -44,7 +44,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://arab-wrestling.com{{ page.url }}"
+    "@id": "https://arab-wrestling.com{{ page.url | cleanUrl }}"
   }
 }
 </script>
