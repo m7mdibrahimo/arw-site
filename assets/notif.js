@@ -218,7 +218,15 @@
 
   function registerSW() {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(function (e) {
+      navigator.serviceWorker.register('/sw.js').then(function (reg) {
+        if ('periodicSync' in reg) {
+          try {
+            reg.periodicSync.register('check-shows-recaps', {
+              minInterval: 12 * 60 * 60 * 1000
+            }).catch(function () {});
+          } catch (e) {}
+        }
+      }).catch(function (e) {
         console.log('SW registration error:', e);
       });
     }
@@ -270,6 +278,17 @@
 
         items.forEach(function (item) {
           if (!item || !item.url) return;
+
+          var isShow = item.kind === 'show' || (item.url && item.url.indexOf('/shows/') === 0);
+          var isRecap = item.kind === 'recap' || (item.url && item.url.indexOf('/recaps/') === 0);
+          var isNews = item.kind === 'news' || (item.url && item.url.indexOf('/news/') === 0);
+
+          // STRICTLY IGNORE NEWS - NOTIFICATIONS ARE FOR SHOWS & RECAPS ONLY
+          if (isNews || (!isShow && !isRecap)) {
+            seenMap[item.url] = Date.now();
+            return;
+          }
+
           if (!seenMap[item.url]) {
             if (!isFirstRun) {
               newItemsToNotify.push(item);
@@ -282,14 +301,25 @@
           localStorage.setItem(SEEN_URLS_KEY, JSON.stringify(seenMap));
         } catch (e) {}
 
+        // Sync seen URLs with Service Worker IDB
+        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+          try {
+            navigator.serviceWorker.controller.postMessage({
+              type: 'SYNC_SEEN_URLS',
+              urls: Object.keys(seenMap)
+            });
+          } catch(e) {}
+        }
+
         if (newItemsToNotify.length > 0) {
           newItemsToNotify.slice(0, 3).forEach(function (item) {
-            var label = item.kindLabel || (item.kind === 'show' ? 'عرض' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
+            var label = item.kindLabel || (item.kind === 'show' ? 'عرض جديد' : 'ملخص جديد');
             var title = 'عرب راسلنج 🔔 | ' + label + ': ' + (item.title || '');
-            var body = item.headline || item.description || 'تم إضافته حديثاً على الموقع. اضغط للمشاهدة الآن.';
+            var body = item.headline || item.description || 'تم إضافة عرض/ملخص جديد على الموقع. اضغط للمشاهدة الآن.';
             sendBrowserNotification(title, {
               body: body,
               icon: item.image || '/favicon.png',
+              badge: '/favicon.png',
               dir: 'rtl',
               lang: 'ar',
               data: { url: item.url }
