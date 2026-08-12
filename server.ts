@@ -262,7 +262,7 @@ async function executeTelegramPost(data: {
   image?: string;
   collection?: string;
   kind?: string;
-}) {
+}, strictImage: boolean = false) {
   try {
     const { title, text, url, image } = data;
     const articleUrl = normalizeArticleUrl(url || 'https://arab-wrestling.com');
@@ -392,6 +392,14 @@ async function executeTelegramPost(data: {
       }
     }
 
+    // If an image was expected but every photo strategy above failed, and we're in
+    // strict mode (used by the pending-queue worker), don't fall back to text yet —
+    // signal the caller so it can retry later instead of permanently losing the image.
+    if (!result.ok && !isRateLimited(result) && strictImage && image) {
+      console.warn("[Telegram] Image expected but not ready yet, deferring post (strictImage).");
+      return { ok: false, error_code: "IMAGE_NOT_READY", description: "Image not yet available, will retry" };
+    }
+
     // Strategy 4: Fallback to sendMessage HTML (Text only)
     if (!result.ok && !isRateLimited(result)) {
       console.log("[Telegram] Posting article message to channel via formatted HTML...");
@@ -493,9 +501,11 @@ async function processTelegramPendingQueue() {
         continue;
       }
 
-      console.log(`[Telegram Queue] Executing 3-minute scheduled post to Telegram for: ${item.title}`);
+      console.log(`[Telegram Queue] Executing scheduled post to Telegram for: ${item.title}`);
       try {
-        const result = await executeTelegramPost(item);
+        // strictImage=true: if this item has an image, don't let executeTelegramPost
+        // silently fall back to text-only — we want to know it's not ready and retry.
+        const result = await executeTelegramPost(item, true);
         if (result.ok) {
           sentMap[key] = Date.now();
           saveTelegramSentMap(sentMap);
@@ -512,6 +522,29 @@ async function processTelegramPendingQueue() {
           item.publishAt = Date.now() + (retrySec * 1000);
           updated = true;
           break; // Pause queue iteration on rate limit
+        } else if (result.error_code === "IMAGE_NOT_READY") {
+          // Image (e.g. still propagating from GitHub) isn't live yet.
+          // Keep retrying every 30s for up to ~15 extra minutes (30 tries) before
+          // finally giving up and sending the post without the image.
+          item.imageRetries = (item.imageRetries || 0) + 1;
+          if (item.imageRetries >= 30) {
+            console.warn(`[Telegram Queue] Image still not ready after ${item.imageRetries} retries for ${key}. Sending without image.`);
+            const fallback = await executeTelegramPost(item, false); // allow text-only fallback now
+            if (fallback.ok) {
+              sentMap[key] = Date.now();
+              saveTelegramSentMap(sentMap);
+              delete queue[key];
+              if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
+                sendPushToAllSubscribers(item).catch(() => {});
+              }
+            } else {
+              item.publishAt = Date.now() + 30000;
+            }
+          } else {
+            console.log(`[Telegram Queue] Image not ready yet for ${key} (attempt ${item.imageRetries}/30), retrying in 30s...`);
+            item.publishAt = Date.now() + 30000;
+          }
+          updated = true;
         } else if (result.error_code === 403 || result.error_code === 400) {
           console.error(`[Telegram Queue] Non-retryable Telegram error (${result.error_code}): ${result.description}. Dropping post: ${key}`);
           sentMap[key] = Date.now();
@@ -570,6 +603,18 @@ app.post("/api/telegram/post", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   try {
     const { title, text, url, image, collection, kind, id, slug, postId, immediate, force } = req.body || {};
+
+    // TEMP DEBUG: log exactly what arrives, to compare news vs shows requests.
+    // Remove this once the image issue is confirmed fixed.
+    console.log("[Telegram DEBUG] Incoming post:", {
+      title,
+      collection,
+      kind,
+      image,
+      imageType: typeof image,
+      url
+    });
+
     if (!title && !text) {
       return res.status(400).json({ success: false, error: "العنوان أو النص مطلوب" });
     }
