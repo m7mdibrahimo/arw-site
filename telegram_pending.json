@@ -1,0 +1,13 @@
+{
+  "httpsarab-wrestlingcomnewstest-admin-publish": {
+    "postId": "httpsarab-wrestlingcomnewstest-admin-publish",
+    "title": "اختبار نشر خبر من لوحة التحكم - عرب راسلنج",
+    "text": "هذا اختبار للتحقق من أن النشر يتم فقط عند طلب البابلش من لوحة التحكم وموعده بعد الجدولة المحددة مع الصورة والرابط.",
+    "url": "https://arab-wrestling.com/news/test-admin-publish",
+    "image": "/content/images/f5b6pt3ze6p83qfq.jpg",
+    "collection": "news",
+    "kind": "news",
+    "publishAt": 1786510116037,
+    "retries": 1
+  }
+}
