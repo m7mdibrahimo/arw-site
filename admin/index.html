@@ -280,8 +280,118 @@
         }
       };
 
-      window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
+      // Sends RIGHT NOW, no 3-minute wait — used by the manual button below,
+      // for cases where the post/image is already live (e.g. resending an
+      // old post after editing it) and there's no need to wait for a build.
+      const doTelegramSendImmediate = async (item) => {
+        try {
+          const apiRes = await fetch(`${RENDER_API_BASE}/api/telegram/post`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              postId: item.postId || item.slug || item.url,
+              title: item.title,
+              text: item.text,
+              url: item.url,
+              image: item.image,
+              collection: item.collection,
+              kind: item.kind,
+              immediate: true,
+              force: true
+            })
+          });
+          const apiData = await apiRes.json().catch(() => ({ success: false }));
+          if (apiRes.ok && apiData && apiData.success) {
+            showToast("✅ اتبعت فورًا على تليجرام!");
+            return true;
+          }
+          showToast("❌ فشل النشر الفوري: " + ((apiData && apiData.error) || "خطأ غير معروف"), true);
+          return false;
+        } catch (e) {
+          console.error("خطأ أثناء النشر الفوري:", e);
+          showToast("❌ خطأ في الاتصال بالسيرفر: " + e.message, true);
+          return false;
+        }
+      };
+
+      // Keep a live snapshot of whatever entry is currently open in the
+      // editor — captured the moment you OPEN the entry, no edit or Save
+      // needed. Decap CMS renders a "preview template" for every collection
+      // as soon as an entry is opened (that's how the right-hand preview pane
+      // works), so we register a lightweight preview component per collection
+      // that captures the entry as a side effect on every render.
+      let latestEntrySnapshot = null;
+
+      function PreviewCapture(props) {
+        try {
+          latestEntrySnapshot = { entry: props.entry, collection: props.collection };
+        } catch (e) {}
+        return React.createElement(
+          'div',
+          { style: { padding: '20px', direction: 'rtl', fontFamily: 'sans-serif' } },
+          props.widgetFor ? props.widgetFor('body') : null
+        );
+      }
+
+      try {
+        ['news', 'shows', 'recaps'].forEach((collectionName) => {
+          window.CMS.registerPreviewTemplate(collectionName, PreviewCapture);
+        });
+      } catch (e) {
+        console.error("تعذر تسجيل قالب المعاينة:", e);
+      }
+
+      try {
+        window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
+      } catch (e) {
+        console.error("تعذر تسجيل مستمع postPublish:", e);
+      }
+
+      // CMS.init() must always run no matter what happened above.
       window.CMS.init();
+
+      // Floating manual "Publish to Telegram NOW" button. Always visible;
+      // uses whatever entry is currently open in the editor (including
+      // unsaved edits like a newly changed image), and sends immediately —
+      // no 3-minute wait, no "already sent" check.
+      const manualBtn = document.createElement('button');
+      manualBtn.textContent = '📤 انشر الموضوع الحالي فورًا على تليجرام';
+      manualBtn.style.position = 'fixed';
+      manualBtn.style.bottom = '20px';
+      manualBtn.style.left = '20px';
+      manualBtn.style.zIndex = '999998';
+      manualBtn.style.backgroundColor = '#0088cc';
+      manualBtn.style.color = '#ffffff';
+      manualBtn.style.border = 'none';
+      manualBtn.style.padding = '12px 20px';
+      manualBtn.style.borderRadius = '10px';
+      manualBtn.style.fontSize = '14px';
+      manualBtn.style.fontWeight = 'bold';
+      manualBtn.style.cursor = 'pointer';
+      manualBtn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.25)';
+      manualBtn.style.direction = 'rtl';
+      manualBtn.onclick = async () => {
+        if (!latestEntrySnapshot) {
+          showToast("⚠️ افتح موضوع في المحرر الأول قبل ما تضغط الزرار ده.", true);
+          return;
+        }
+        const payload = extractTelegramPayload(latestEntrySnapshot);
+        if (!payload || !payload.title) {
+          showToast("⚠️ مقدرتش أقرأ بيانات الموضوع، جرب تعمل تعديل بسيط في أي حقل وحاول تاني.", true);
+          return;
+        }
+        const confirmed = window.confirm(`هيتنشر فورًا على تليجرام دلوقتي:\n\n${payload.title}\n\nمتأكد؟`);
+        if (!confirmed) return;
+
+        showToast("⏳ جاري النشر الفوري على تليجرام...");
+        const success = await doTelegramSendImmediate(payload);
+        if (success) {
+          const sent = getStore(SENT_KEY);
+          sent[payload.postId] = Date.now();
+          setStore(SENT_KEY, sent);
+        }
+      };
+      document.body.appendChild(manualBtn);
     }
   </script>
 </body>
