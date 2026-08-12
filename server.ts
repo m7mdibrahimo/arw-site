@@ -181,6 +181,22 @@ function saveTelegramPendingQueue(queue: Record<string, any>) {
   } catch (e) {}
 }
 
+// Safely mutate a single entry in the pending queue without clobbering items
+// that other requests may have added/removed concurrently. Always re-reads the
+// latest on-disk state right before writing, and only touches the one key.
+// updater(currentItemOrUndefined) => return the new item object, or null/undefined to delete the key.
+function updateTelegramPendingQueueEntry(key: string, updater: (current: any) => any) {
+  const freshQueue = getTelegramPendingQueue();
+  const result = updater(freshQueue[key]);
+  if (result === null || result === undefined) {
+    delete freshQueue[key];
+  } else {
+    freshQueue[key] = result;
+  }
+  saveTelegramPendingQueue(freshQueue);
+  return freshQueue;
+}
+
 function escapeTelegramHtml(str: string): string {
   if (!str) return "";
   return str
@@ -494,19 +510,20 @@ async function processTelegramPendingQueue() {
   isProcessingTelegramQueue = true;
 
   try {
-  const queue = getTelegramPendingQueue();
+  // Snapshot only used to decide WHICH items look due right now — every actual
+  // mutation below re-reads the freshest file state via updateTelegramPendingQueueEntry,
+  // so a post published while this loop is running can never be wiped out.
+  const queueSnapshot = getTelegramPendingQueue();
   const sentMap = getTelegramSentMap();
   const now = Date.now();
-  let updated = false;
 
-  for (const key in queue) {
-    const item = queue[key];
+  for (const key in queueSnapshot) {
+    const item = queueSnapshot[key];
     if (now >= item.publishAt) {
       // If already sent, skip immediately
       if (sentMap[key]) {
         console.log(`[Telegram Queue] Skipping ${key} as it is already in sent map.`);
-        delete queue[key];
-        updated = true;
+        updateTelegramPendingQueueEntry(key, () => null);
         continue;
       }
 
@@ -518,8 +535,7 @@ async function processTelegramPendingQueue() {
         if (result.ok) {
           sentMap[key] = Date.now();
           saveTelegramSentMap(sentMap);
-          delete queue[key];
-          updated = true;
+          updateTelegramPendingQueueEntry(key, () => null);
 
           // Trigger push notifications for shows/recaps if applicable
           if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
@@ -528,74 +544,60 @@ async function processTelegramPendingQueue() {
         } else if (result.error_code === 429) {
           const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
           console.warn(`[Telegram Queue] Rate limit 429 encountered for ${key}. Delaying post by ${retrySec}s and pausing batch.`);
-          item.publishAt = Date.now() + (retrySec * 1000);
-          updated = true;
+          updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), publishAt: Date.now() + (retrySec * 1000) }));
           break; // Pause queue iteration on rate limit
         } else if (result.error_code === "IMAGE_NOT_READY") {
           // Image (e.g. still propagating from GitHub) isn't live yet.
           // Keep retrying every 30s for up to ~15 extra minutes (30 tries) before
           // finally giving up and sending the post without the image.
-          item.imageRetries = (item.imageRetries || 0) + 1;
-          if (item.imageRetries >= 30) {
-            console.warn(`[Telegram Queue] Image still not ready after ${item.imageRetries} retries for ${key}. Sending without image.`);
+          const imageRetries = (item.imageRetries || 0) + 1;
+          if (imageRetries >= 30) {
+            console.warn(`[Telegram Queue] Image still not ready after ${imageRetries} retries for ${key}. Sending without image.`);
             const fallback = await executeTelegramPost(item, false); // allow text-only fallback now
             if (fallback.ok) {
               sentMap[key] = Date.now();
               saveTelegramSentMap(sentMap);
-              delete queue[key];
+              updateTelegramPendingQueueEntry(key, () => null);
               if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
                 sendPushToAllSubscribers(item).catch(() => {});
               }
             } else {
-              item.publishAt = Date.now() + 30000;
+              updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), imageRetries, publishAt: Date.now() + 30000 }));
             }
           } else {
-            console.log(`[Telegram Queue] Image not ready yet for ${key} (attempt ${item.imageRetries}/30), retrying in 30s...`);
-            item.publishAt = Date.now() + 30000;
+            console.log(`[Telegram Queue] Image not ready yet for ${key} (attempt ${imageRetries}/30), retrying in 30s...`);
+            updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), imageRetries, publishAt: Date.now() + 30000 }));
           }
-          updated = true;
         } else if (result.error_code === 403 || result.error_code === 400) {
           console.error(`[Telegram Queue] Non-retryable Telegram error (${result.error_code}): ${result.description}. Dropping post: ${key}`);
           sentMap[key] = Date.now();
           saveTelegramSentMap(sentMap);
-          delete queue[key];
-          updated = true;
+          updateTelegramPendingQueueEntry(key, () => null);
         } else {
-          item.retries = (item.retries || 0) + 1;
-          if (item.retries >= 5) {
+          const retries = (item.retries || 0) + 1;
+          if (retries >= 5) {
             console.error(`[Telegram Queue] Dropping post after 5 failures: ${key}`, result);
             sentMap[key] = Date.now(); // Mark as sent so it doesn't loop
             saveTelegramSentMap(sentMap);
-            delete queue[key];
+            updateTelegramPendingQueueEntry(key, () => null);
           } else {
-            item.publishAt = Date.now() + 30000; // Retry in 30 seconds
+            updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), retries, publishAt: Date.now() + 30000 }));
           }
-          updated = true;
         }
       } catch (err) {
         console.error(`[Telegram Queue] Error processing ${key}:`, err);
-        item.retries = (item.retries || 0) + 1;
-        if (item.retries >= 5) {
+        const retries = (item.retries || 0) + 1;
+        if (retries >= 5) {
           sentMap[key] = Date.now();
           saveTelegramSentMap(sentMap);
-          delete queue[key];
+          updateTelegramPendingQueueEntry(key, () => null);
         } else {
-          item.publishAt = Date.now() + 30000;
+          updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), retries, publishAt: Date.now() + 30000 }));
         }
-        updated = true;
       }
-
-      // Save after EVERY item (not just once at the end of the loop). This keeps
-      // the on-disk file as up to date as possible in case a run takes a long time
-      // and overlaps with the next scheduled tick.
-      saveTelegramPendingQueue(queue);
 
       await new Promise(r => setTimeout(r, 3500));
     }
-  }
-
-  if (updated) {
-    saveTelegramPendingQueue(queue);
   }
   } finally {
     isProcessingTelegramQueue = false;
