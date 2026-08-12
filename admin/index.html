@@ -211,8 +211,30 @@
           if (!text && data.body) {
             text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
           }
-          
-          let image = data.image || null;
+
+          // TEMP DEBUG: log all fields for this entry so we can see the exact
+          // field name used for the image in "shows" vs "news" collections.
+          console.log("[TG DEBUG] collection:", collection, "| raw entry data:", data);
+
+          // The image field name can differ between collections (e.g. news uses
+          // "image" but shows might use "poster"/"cover"/"thumbnail"). Try the
+          // common candidates instead of only "image".
+          let image =
+            data.image ||
+            data.poster ||
+            data.cover ||
+            data.thumbnail ||
+            data.thumb ||
+            data.featuredImage ||
+            data.featured_image ||
+            data.coverImage ||
+            data.cover_image ||
+            null;
+
+          if (!image) {
+            console.warn("[TG DEBUG] No image field found for this entry. Available keys:", Object.keys(data));
+          }
+
           if (image && typeof image === 'string' && !image.startsWith('http')) {
             image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
           }
