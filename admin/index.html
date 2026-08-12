@@ -255,19 +255,26 @@
         return { postId, title, text, url, image, collection, kind };
       };
 
-      const handlePublishEvent = async (opts) => {
+      // Publishing a BRAND NEW entry (first time ever for this postId) still
+      // auto-sends to Telegram. Publishing an EDIT to an entry that was
+      // already sent before does NOT auto-send again — you'd use the manual
+      // button for that on purpose (e.g. after fixing a typo, you don't want
+      // to re-blast the channel). "Already sent before" has no time limit
+      // here (unlike the manual button's 10-min dedup window) — once a
+      // postId has ever been sent, it's treated as "existing", forever.
+      const handleAutoPublishEvent = async (opts) => {
         try {
           const payload = extractTelegramPayload(opts);
           if (!payload) return;
 
           const sent = getStore(SENT_KEY);
 
-          if (sent[payload.postId] && (Date.now() - sent[payload.postId] < 600000)) {
-            console.log("تم نشر هذا الخبر مسبقاً على التليجرام مؤخراً:", payload.postId);
+          if (sent[payload.postId]) {
+            console.log("موضوع قديم بيتعدل، مش هيتبعت تلقائيًا:", payload.postId);
             return;
           }
 
-          showToast("⏳ جاري تسجيل الخبر للتليجرام (سيُنشر بعد 3 دقائق)...");
+          showToast("⏳ موضوع جديد! جاري تسجيله تلقائيًا للتليجرام (سيُنشر بعد 3 دقائق)...");
 
           const success = await doTelegramSend(payload, false);
 
@@ -275,32 +282,40 @@
             sent[payload.postId] = Date.now();
             setStore(SENT_KEY, sent);
           }
-        } catch(err) {
+        } catch (err) {
           console.error("خطأ أثناء إرسال الخبر للتليجرام:", err);
         }
       };
 
-      // Keep a live snapshot of whatever entry was last saved in the editor,
-      // so the manual "Publish now" button has fresh data (including a newly
-      // changed image) without needing a real publish. 'preSave'/'postSave'
-      // are official Decap CMS events; an unrecognized event name like
-      // 'change' throws and silently blocks CMS.init() from ever running.
+      // Keep a live snapshot of whatever entry is currently open in the
+      // editor — captured the moment you OPEN the entry, no edit or Save
+      // needed. Decap CMS renders a "preview template" for every collection
+      // as soon as an entry is opened (that's how the right-hand preview pane
+      // works), so we register a lightweight preview component per collection
+      // that captures the entry as a side effect on every render.
       let latestEntrySnapshot = null;
-      try {
-        window.CMS.registerEventListener({
-          name: 'preSave',
-          handler: (opts) => { latestEntrySnapshot = opts; return opts.entry; }
-        });
-        window.CMS.registerEventListener({
-          name: 'postSave',
-          handler: (opts) => { latestEntrySnapshot = opts; }
-        });
-      } catch (e) {
-        console.error("تعذر تسجيل مستمع preSave/postSave:", e);
+
+      function PreviewCapture(props) {
+        try {
+          latestEntrySnapshot = { entry: props.entry, collection: props.collection };
+        } catch (e) {}
+        return React.createElement(
+          'div',
+          { style: { padding: '20px', direction: 'rtl', fontFamily: 'sans-serif' } },
+          props.widgetFor ? props.widgetFor('body') : null
+        );
       }
 
       try {
-        window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
+        ['news', 'shows', 'recaps'].forEach((collectionName) => {
+          window.CMS.registerPreviewTemplate(collectionName, PreviewCapture);
+        });
+      } catch (e) {
+        console.error("تعذر تسجيل قالب المعاينة:", e);
+      }
+
+      try {
+        window.CMS.registerEventListener({ name: 'postPublish', handler: handleAutoPublishEvent });
       } catch (e) {
         console.error("تعذر تسجيل مستمع postPublish:", e);
       }
@@ -310,7 +325,8 @@
 
       // Floating manual "Publish to Telegram now" button. Always visible;
       // uses whatever entry is currently open (including unsaved edits),
-      // and bypasses the "already sent recently" check with force:true.
+      // and bypasses the "already sent" check with force:true — this is how
+      // you resend an edited post (e.g. changed the image) on purpose.
       const manualBtn = document.createElement('button');
       manualBtn.textContent = '📤 انشر الموضوع الحالي على تليجرام الآن';
       manualBtn.style.position = 'fixed';
@@ -329,7 +345,7 @@
       manualBtn.style.direction = 'rtl';
       manualBtn.onclick = async () => {
         if (!latestEntrySnapshot) {
-          showToast("⚠️ افتح موضوع واضغط Save مرة واحدة الأول، بعدين دوس الزرار ده.", true);
+          showToast("⚠️ افتح موضوع في المحرر الأول (لازم يكون فيه تبويب معاينة مفتوح) قبل ما تضغط الزرار ده.", true);
           return;
         }
         const payload = extractTelegramPayload(latestEntrySnapshot);
