@@ -484,7 +484,16 @@ function parseFrontmatter(fileContent: string): Record<string, string> {
 }
 
 // Background Worker: Checks pending queue every 10 seconds and sends delayed posts (3-min post-publish timer)
+let isProcessingTelegramQueue = false; // prevents overlapping runs from racing on the same file
+
 async function processTelegramPendingQueue() {
+  if (isProcessingTelegramQueue) {
+    console.log("[Telegram Queue] Previous run still in progress, skipping this tick.");
+    return;
+  }
+  isProcessingTelegramQueue = true;
+
+  try {
   const queue = getTelegramPendingQueue();
   const sentMap = getTelegramSentMap();
   const now = Date.now();
@@ -575,13 +584,21 @@ async function processTelegramPendingQueue() {
         }
         updated = true;
       }
-      
+
+      // Save after EVERY item (not just once at the end of the loop). This keeps
+      // the on-disk file as up to date as possible in case a run takes a long time
+      // and overlaps with the next scheduled tick.
+      saveTelegramPendingQueue(queue);
+
       await new Promise(r => setTimeout(r, 3500));
     }
   }
 
   if (updated) {
     saveTelegramPendingQueue(queue);
+  }
+  } finally {
+    isProcessingTelegramQueue = false;
   }
 }
 
