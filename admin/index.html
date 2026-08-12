@@ -80,7 +80,7 @@
         }
       }
 
-      const doTelegramSend = async (item) => {
+      const doTelegramSend = async (item, force) => {
         const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
         const CHAT_ID = "@arab_wrestling";
 
@@ -100,7 +100,8 @@
                 image: item.image,
                 collection: item.collection,
                 kind: item.kind,
-                delayMs: 3 * 60 * 1000
+                delayMs: 3 * 60 * 1000,
+                force: !!force
               })
             });
             if (apiRes.ok) {
@@ -175,102 +176,103 @@
         }
       };
 
+      // Shared logic to turn a Decap CMS entry (from postPublish or a cached
+      // 'change' snapshot) into the payload we send to Telegram. Used both by
+      // the automatic publish handler and the manual "Publish now" button.
+      const extractTelegramPayload = (opts) => {
+        const entryObj = (opts && opts.entry) ? opts.entry : opts;
+        if (!entryObj) return null;
+
+        let rawData = null;
+        if (typeof entryObj.get === 'function') {
+          rawData = entryObj.get('data');
+        } else if (entryObj.data) {
+          rawData = entryObj.data;
+        }
+
+        const data = rawData ? (typeof rawData.toJS === 'function' ? rawData.toJS() : rawData) : {};
+
+        let collection = 'news';
+        if (opts && opts.collection) {
+          if (typeof opts.collection === 'string') {
+            collection = opts.collection;
+          } else if (typeof opts.collection.get === 'function') {
+            collection = opts.collection.get('name') || 'news';
+          } else if (opts.collection.name) {
+            collection = opts.collection.name;
+          }
+        } else if (entryObj && typeof entryObj.get === 'function') {
+          const colVal = entryObj.get('collection');
+          if (typeof colVal === 'string') {
+            collection = colVal;
+          } else if (colVal && typeof colVal.get === 'function') {
+            collection = colVal.get('name') || 'news';
+          }
+        }
+
+        const title = (data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج').trim();
+        let text = data.description || '';
+        if (!text && data.body) {
+          text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
+        }
+
+        // TEMP DEBUG: log all fields for this entry so we can see the exact
+        // field name used for the image in "shows" vs "news" collections.
+        console.log("[TG DEBUG] collection:", collection, "| raw entry data:", data);
+
+        // The image field name can differ between collections (e.g. news uses
+        // "image" but shows might use "poster"/"cover"/"thumbnail"). Try the
+        // common candidates instead of only "image".
+        let image =
+          data.image ||
+          data.poster ||
+          data.cover ||
+          data.thumbnail ||
+          data.thumb ||
+          data.featuredImage ||
+          data.featured_image ||
+          data.coverImage ||
+          data.cover_image ||
+          null;
+
+        if (!image) {
+          console.warn("[TG DEBUG] No image field found for this entry. Available keys:", Object.keys(data));
+        }
+
+        if (image && typeof image === 'string' && !image.startsWith('http')) {
+          image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
+        }
+
+        const slug = toArabicSlug(title);
+        const rawUrl = slug
+          ? `https://arab-wrestling.com/${collection}/${slug}`
+          : `https://arab-wrestling.com/`;
+        const url = normalizeArticleUrl(rawUrl);
+
+        const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
+        const kind = collection === 'shows' ? 'show' : (collection === 'recaps' ? 'recap' : 'news');
+
+        return { postId, title, text, url, image, collection, kind };
+      };
+
       const handlePublishEvent = async (opts) => {
         try {
-          const entryObj = (opts && opts.entry) ? opts.entry : opts;
-          if (!entryObj) return;
-
-          let rawData = null;
-          if (typeof entryObj.get === 'function') {
-            rawData = entryObj.get('data');
-          } else if (entryObj.data) {
-            rawData = entryObj.data;
-          }
-
-          const data = rawData ? (typeof rawData.toJS === 'function' ? rawData.toJS() : rawData) : {};
-          
-          let collection = 'news';
-          if (opts && opts.collection) {
-            if (typeof opts.collection === 'string') {
-              collection = opts.collection;
-            } else if (typeof opts.collection.get === 'function') {
-              collection = opts.collection.get('name') || 'news';
-            } else if (opts.collection.name) {
-              collection = opts.collection.name;
-            }
-          } else if (entryObj && typeof entryObj.get === 'function') {
-            const colVal = entryObj.get('collection');
-            if (typeof colVal === 'string') {
-              collection = colVal;
-            } else if (colVal && typeof colVal.get === 'function') {
-              collection = colVal.get('name') || 'news';
-            }
-          }
-
-          const title = (data.title || data.headline || data.name || 'موضوع جديد على عرب راسلنج').trim();
-          let text = data.description || '';
-          if (!text && data.body) {
-            text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
-          }
-
-          // TEMP DEBUG: log all fields for this entry so we can see the exact
-          // field name used for the image in "shows" vs "news" collections.
-          console.log("[TG DEBUG] collection:", collection, "| raw entry data:", data);
-
-          // The image field name can differ between collections (e.g. news uses
-          // "image" but shows might use "poster"/"cover"/"thumbnail"). Try the
-          // common candidates instead of only "image".
-          let image =
-            data.image ||
-            data.poster ||
-            data.cover ||
-            data.thumbnail ||
-            data.thumb ||
-            data.featuredImage ||
-            data.featured_image ||
-            data.coverImage ||
-            data.cover_image ||
-            null;
-
-          if (!image) {
-            console.warn("[TG DEBUG] No image field found for this entry. Available keys:", Object.keys(data));
-          }
-
-          if (image && typeof image === 'string' && !image.startsWith('http')) {
-            image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
-          }
-
-          const slug = toArabicSlug(title);
-          const rawUrl = slug
-            ? `https://arab-wrestling.com/${collection}/${slug}`
-            : `https://arab-wrestling.com/`;
-          const url = normalizeArticleUrl(rawUrl);
-
-          const postId = `${collection}_${slug || title}`.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF_-]/g, '');
+          const payload = extractTelegramPayload(opts);
+          if (!payload) return;
 
           const sent = getStore(SENT_KEY);
 
-          if (sent[postId] && (Date.now() - sent[postId] < 600000)) {
-            console.log("تم نشر هذا الخبر مسبقاً على التليجرام مؤخراً:", postId);
+          if (sent[payload.postId] && (Date.now() - sent[payload.postId] < 600000)) {
+            console.log("تم نشر هذا الخبر مسبقاً على التليجرام مؤخراً:", payload.postId);
             return;
           }
 
           showToast("⏳ جاري تسجيل الخبر للتليجرام (سيُنشر بعد 3 دقائق)...");
 
-          const kind = collection === 'shows' ? 'show' : (collection === 'recaps' ? 'recap' : 'news');
-
-          const success = await doTelegramSend({
-            postId,
-            title,
-            text,
-            url,
-            image,
-            collection,
-            kind
-          });
+          const success = await doTelegramSend(payload, false);
 
           if (success) {
-            sent[postId] = Date.now();
+            sent[payload.postId] = Date.now();
             setStore(SENT_KEY, sent);
           }
         } catch(err) {
@@ -278,8 +280,59 @@
         }
       };
 
+      // Keep a live snapshot of whatever entry is currently open in the editor,
+      // so the manual "Publish now" button always has fresh data (including
+      // unsaved edits like a newly changed image) without needing a real publish.
+      let latestEntrySnapshot = null;
+      window.CMS.registerEventListener({
+        name: 'change',
+        handler: (opts) => { latestEntrySnapshot = opts; }
+      });
+
       window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
       window.CMS.init();
+
+      // Floating manual "Publish to Telegram now" button. Always visible;
+      // uses whatever entry is currently open (including unsaved edits),
+      // and bypasses the "already sent recently" check with force:true.
+      const manualBtn = document.createElement('button');
+      manualBtn.textContent = '📤 انشر الموضوع الحالي على تليجرام الآن';
+      manualBtn.style.position = 'fixed';
+      manualBtn.style.bottom = '20px';
+      manualBtn.style.left = '20px';
+      manualBtn.style.zIndex = '999998';
+      manualBtn.style.backgroundColor = '#0088cc';
+      manualBtn.style.color = '#ffffff';
+      manualBtn.style.border = 'none';
+      manualBtn.style.padding = '12px 20px';
+      manualBtn.style.borderRadius = '10px';
+      manualBtn.style.fontSize = '14px';
+      manualBtn.style.fontWeight = 'bold';
+      manualBtn.style.cursor = 'pointer';
+      manualBtn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.25)';
+      manualBtn.style.direction = 'rtl';
+      manualBtn.onclick = async () => {
+        if (!latestEntrySnapshot) {
+          showToast("⚠️ افتح موضوع في المحرر الأول قبل ما تضغط الزرار ده.", true);
+          return;
+        }
+        const payload = extractTelegramPayload(latestEntrySnapshot);
+        if (!payload || !payload.title) {
+          showToast("⚠️ مقدرتش أقرأ بيانات الموضوع، جرب تعمل تعديل بسيط في أي حقل وحاول تاني.", true);
+          return;
+        }
+        const confirmed = window.confirm(`هيتنشر على تليجرام بعد 3 دقايق:\n\n${payload.title}\n\nمتأكد؟`);
+        if (!confirmed) return;
+
+        showToast("⏳ جاري تسجيل الموضوع يدويًا للتليجرام (سيُنشر بعد 3 دقائق)...");
+        const success = await doTelegramSend(payload, true); // force: true, bypasses "already sent" check
+        if (success) {
+          const sent = getStore(SENT_KEY);
+          sent[payload.postId] = Date.now();
+          setStore(SENT_KEY, sent);
+        }
+      };
+      document.body.appendChild(manualBtn);
     }
   </script>
 </body>
