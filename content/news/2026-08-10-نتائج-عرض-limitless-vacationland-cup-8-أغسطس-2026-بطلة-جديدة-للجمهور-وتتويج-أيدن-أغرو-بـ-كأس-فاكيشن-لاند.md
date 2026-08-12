@@ -2,6 +2,7 @@
 federation: INDIE
 title: 'نتائج عرض Limitless Vacationland Cup (8 أغسطس 2026): بطلة جديدة للجمهور
   وتتويج أيدن أغرو بـ "كأس فاكيشن لاند"'
+date: 2026-08-08T22:53:00.000+03:00
 tags:
   - Limitless Wrestling
   - Limitless Vacationland Cup
