@@ -280,16 +280,32 @@
         }
       };
 
-      // Keep a live snapshot of whatever entry is currently open in the editor,
-      // so the manual "Publish now" button always has fresh data (including
-      // unsaved edits like a newly changed image) without needing a real publish.
+      // Keep a live snapshot of whatever entry was last saved in the editor,
+      // so the manual "Publish now" button has fresh data (including a newly
+      // changed image) without needing a real publish. 'preSave'/'postSave'
+      // are official Decap CMS events; an unrecognized event name like
+      // 'change' throws and silently blocks CMS.init() from ever running.
       let latestEntrySnapshot = null;
-      window.CMS.registerEventListener({
-        name: 'change',
-        handler: (opts) => { latestEntrySnapshot = opts; }
-      });
+      try {
+        window.CMS.registerEventListener({
+          name: 'preSave',
+          handler: (opts) => { latestEntrySnapshot = opts; return opts.entry; }
+        });
+        window.CMS.registerEventListener({
+          name: 'postSave',
+          handler: (opts) => { latestEntrySnapshot = opts; }
+        });
+      } catch (e) {
+        console.error("تعذر تسجيل مستمع preSave/postSave:", e);
+      }
 
-      window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
+      try {
+        window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
+      } catch (e) {
+        console.error("تعذر تسجيل مستمع postPublish:", e);
+      }
+
+      // CMS.init() must always run no matter what happened above.
       window.CMS.init();
 
       // Floating manual "Publish to Telegram now" button. Always visible;
@@ -313,7 +329,7 @@
       manualBtn.style.direction = 'rtl';
       manualBtn.onclick = async () => {
         if (!latestEntrySnapshot) {
-          showToast("⚠️ افتح موضوع في المحرر الأول قبل ما تضغط الزرار ده.", true);
+          showToast("⚠️ افتح موضوع واضغط Save مرة واحدة الأول، بعدين دوس الزرار ده.", true);
           return;
         }
         const payload = extractTelegramPayload(latestEntrySnapshot);
