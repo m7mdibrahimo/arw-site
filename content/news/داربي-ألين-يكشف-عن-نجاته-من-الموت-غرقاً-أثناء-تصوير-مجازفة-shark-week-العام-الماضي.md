@@ -2,6 +2,7 @@
 federation: AEW
 title: داربي ألين يكشف عن نجاته من الموت غرقاً أثناء تصوير مجازفة "Shark Week"
   العام الماضي
+date: 2026-08-12T22:53:00.000+03:00
 tags:
   - Darby Allin
   - AEW
