@@ -22,6 +22,7 @@
       const BOT_TOKEN = "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
       const CHAT_ID = "@arab_wrestling";
       const SENT_KEY = "tg_sent_posts_v3";
+      const RENDER_API_BASE = "https://arab-wrestling-bot.onrender.com";
 
       const showToast = (msg, isError = false) => {
         try {
@@ -88,7 +89,7 @@
 
         try {
           try {
-            const apiRes = await fetch('/api/telegram/post', {
+            const apiRes = await fetch(`${RENDER_API_BASE}/api/telegram/post`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
