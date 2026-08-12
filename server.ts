@@ -5,9 +5,22 @@ import { execSync, exec } from "child_process";
 import webpush from "web-push";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 3000; // Render injects PORT automatically
 
 app.use(express.json());
+
+// CORS: the admin panel lives on arab-wrestling.com (a different origin than
+// this Render-hosted API), so browser fetch() calls need these headers or
+// they'll be blocked silently.
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "@arab_wrestling";
@@ -147,55 +160,10 @@ app.post("/api/push/send", async (req, res) => {
   }
 });
 
-// Manage Telegram Sent Posts Deduplication and Pending Queue
-const TG_SENT_FILE = path.join(process.cwd(), "telegram_sent.json");
-const TG_PENDING_FILE = path.join(process.cwd(), "telegram_pending.json");
-
-function getTelegramSentMap(): Record<string, number> {
-  if (!fs.existsSync(TG_SENT_FILE)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(TG_SENT_FILE, "utf-8")) || {};
-  } catch (e) {
-    return {};
-  }
-}
-
-function saveTelegramSentMap(map: Record<string, number>) {
-  try {
-    fs.writeFileSync(TG_SENT_FILE, JSON.stringify(map, null, 2));
-  } catch (e) {}
-}
-
-function getTelegramPendingQueue(): Record<string, any> {
-  if (!fs.existsSync(TG_PENDING_FILE)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(TG_PENDING_FILE, "utf-8")) || {};
-  } catch (e) {
-    return {};
-  }
-}
-
-function saveTelegramPendingQueue(queue: Record<string, any>) {
-  try {
-    fs.writeFileSync(TG_PENDING_FILE, JSON.stringify(queue, null, 2));
-  } catch (e) {}
-}
-
-// Safely mutate a single entry in the pending queue without clobbering items
-// that other requests may have added/removed concurrently. Always re-reads the
-// latest on-disk state right before writing, and only touches the one key.
-// updater(currentItemOrUndefined) => return the new item object, or null/undefined to delete the key.
-function updateTelegramPendingQueueEntry(key: string, updater: (current: any) => any) {
-  const freshQueue = getTelegramPendingQueue();
-  const result = updater(freshQueue[key]);
-  if (result === null || result === undefined) {
-    delete freshQueue[key];
-  } else {
-    freshQueue[key] = result;
-  }
-  saveTelegramPendingQueue(freshQueue);
-  return freshQueue;
-}
+// Telegram Sent Posts Deduplication — kept in memory only. No file persistence:
+// the goal now is simply "wait 3 minutes, then send", nothing more. If the
+// server restarts, dedup just resets, which is fine for this use case.
+const telegramSentMap: Record<string, number> = {};
 
 function escapeTelegramHtml(str: string): string {
   if (!str) return "";
@@ -499,113 +467,95 @@ function parseFrontmatter(fileContent: string): Record<string, string> {
   return result;
 }
 
-// Background Worker: Checks pending queue every 10 seconds and sends delayed posts (3-min post-publish timer)
-let isProcessingTelegramQueue = false; // prevents overlapping runs from racing on the same file
+// Simple in-memory scheduler: "wait, then send". No file storage, no polling
+// loop — just a plain timer per post. If the server restarts mid-wait, that
+// one post is lost, which is an accepted tradeoff for keeping this simple.
+//
+// If many posts happen to become due around the same moment (e.g. 50 posts
+// published back-to-back), we don't want to fire 50 Telegram API calls at
+// once — Telegram flood-blocks rapid concurrent sends. So the 3-minute timer
+// only ENQUEUES the post; a single worker sends them one at a time with a
+// small gap in between. Each post still fires ~3 minutes after its own
+// publish, this just prevents a pile-up from being sent all in one instant.
+type QueuedPost = { key: string; item: any; imageRetries: number };
+const telegramSendQueue: QueuedPost[] = [];
+let isSendingTelegramQueue = false;
 
-async function processTelegramPendingQueue() {
-  if (isProcessingTelegramQueue) {
-    console.log("[Telegram Queue] Previous run still in progress, skipping this tick.");
-    return;
-  }
-  isProcessingTelegramQueue = true;
+function scheduleTelegramPost(key: string, item: any, delayMs: number) {
+  setTimeout(() => enqueueTelegramSend(key, item, 0), delayMs);
+}
 
+function enqueueTelegramSend(key: string, item: any, imageRetries: number) {
+  telegramSendQueue.push({ key, item, imageRetries });
+  processTelegramSendQueue();
+}
+
+async function processTelegramSendQueue() {
+  if (isSendingTelegramQueue) return; // a worker loop is already running
+  isSendingTelegramQueue = true;
   try {
-  // Snapshot only used to decide WHICH items look due right now — every actual
-  // mutation below re-reads the freshest file state via updateTelegramPendingQueueEntry,
-  // so a post published while this loop is running can never be wiped out.
-  const queueSnapshot = getTelegramPendingQueue();
-  const sentMap = getTelegramSentMap();
-  const now = Date.now();
-
-  for (const key in queueSnapshot) {
-    const item = queueSnapshot[key];
-    if (now >= item.publishAt) {
-      // If already sent, skip immediately
-      if (sentMap[key]) {
-        console.log(`[Telegram Queue] Skipping ${key} as it is already in sent map.`);
-        updateTelegramPendingQueueEntry(key, () => null);
-        continue;
+    while (telegramSendQueue.length > 0) {
+      const job = telegramSendQueue.shift()!;
+      await sendTelegramPostWithImageRetry(job.key, job.item, job.imageRetries);
+      // small gap between actual sends so Telegram never sees a burst
+      if (telegramSendQueue.length > 0) {
+        await new Promise(r => setTimeout(r, 3500));
       }
-
-      console.log(`[Telegram Queue] Executing scheduled post to Telegram for: ${item.title}`);
-      try {
-        // strictImage=true: if this item has an image, don't let executeTelegramPost
-        // silently fall back to text-only — we want to know it's not ready and retry.
-        const result = await executeTelegramPost(item, true);
-        if (result.ok) {
-          sentMap[key] = Date.now();
-          saveTelegramSentMap(sentMap);
-          updateTelegramPendingQueueEntry(key, () => null);
-
-          // Trigger push notifications for shows/recaps if applicable
-          if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
-            sendPushToAllSubscribers(item).catch(() => {});
-          }
-        } else if (result.error_code === 429) {
-          const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
-          console.warn(`[Telegram Queue] Rate limit 429 encountered for ${key}. Delaying post by ${retrySec}s and pausing batch.`);
-          updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), publishAt: Date.now() + (retrySec * 1000) }));
-          break; // Pause queue iteration on rate limit
-        } else if (result.error_code === "IMAGE_NOT_READY") {
-          // Image (e.g. still propagating from GitHub) isn't live yet.
-          // Keep retrying every 30s for up to ~15 extra minutes (30 tries) before
-          // finally giving up and sending the post without the image.
-          const imageRetries = (item.imageRetries || 0) + 1;
-          if (imageRetries >= 30) {
-            console.warn(`[Telegram Queue] Image still not ready after ${imageRetries} retries for ${key}. Sending without image.`);
-            const fallback = await executeTelegramPost(item, false); // allow text-only fallback now
-            if (fallback.ok) {
-              sentMap[key] = Date.now();
-              saveTelegramSentMap(sentMap);
-              updateTelegramPendingQueueEntry(key, () => null);
-              if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
-                sendPushToAllSubscribers(item).catch(() => {});
-              }
-            } else {
-              updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), imageRetries, publishAt: Date.now() + 30000 }));
-            }
-          } else {
-            console.log(`[Telegram Queue] Image not ready yet for ${key} (attempt ${imageRetries}/30), retrying in 30s...`);
-            updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), imageRetries, publishAt: Date.now() + 30000 }));
-          }
-        } else if (result.error_code === 403 || result.error_code === 400) {
-          console.error(`[Telegram Queue] Non-retryable Telegram error (${result.error_code}): ${result.description}. Dropping post: ${key}`);
-          sentMap[key] = Date.now();
-          saveTelegramSentMap(sentMap);
-          updateTelegramPendingQueueEntry(key, () => null);
-        } else {
-          const retries = (item.retries || 0) + 1;
-          if (retries >= 5) {
-            console.error(`[Telegram Queue] Dropping post after 5 failures: ${key}`, result);
-            sentMap[key] = Date.now(); // Mark as sent so it doesn't loop
-            saveTelegramSentMap(sentMap);
-            updateTelegramPendingQueueEntry(key, () => null);
-          } else {
-            updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), retries, publishAt: Date.now() + 30000 }));
-          }
-        }
-      } catch (err) {
-        console.error(`[Telegram Queue] Error processing ${key}:`, err);
-        const retries = (item.retries || 0) + 1;
-        if (retries >= 5) {
-          sentMap[key] = Date.now();
-          saveTelegramSentMap(sentMap);
-          updateTelegramPendingQueueEntry(key, () => null);
-        } else {
-          updateTelegramPendingQueueEntry(key, (current) => ({ ...(current || item), retries, publishAt: Date.now() + 30000 }));
-        }
-      }
-
-      await new Promise(r => setTimeout(r, 3500));
     }
-  }
   } finally {
-    isProcessingTelegramQueue = false;
+    isSendingTelegramQueue = false;
   }
 }
 
-// Start queue background processor
-setInterval(processTelegramPendingQueue, 10000);
+async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetries: number) {
+  if (telegramSentMap[key]) {
+    console.log(`[Telegram] Skipping ${key}, already sent.`);
+    return;
+  }
+
+  console.log(`[Telegram] Sending scheduled post: ${item.title}`);
+  try {
+    // strictImage=true: don't silently fall back to text-only — we want to
+    // know if the image isn't ready yet so we can retry instead.
+    const result = await executeTelegramPost(item, true);
+
+    if (result.ok) {
+      telegramSentMap[key] = Date.now();
+      if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
+        sendPushToAllSubscribers(item).catch(() => {});
+      }
+      return;
+    }
+
+    if (result.error_code === 429) {
+      const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
+      console.warn(`[Telegram] Rate limited, retrying ${key} in ${retrySec}s.`);
+      setTimeout(() => enqueueTelegramSend(key, item, imageRetries), retrySec * 1000);
+      return;
+    }
+
+    if (result.error_code === "IMAGE_NOT_READY") {
+      if (imageRetries >= 30) {
+        console.warn(`[Telegram] Image still not ready after ${imageRetries} retries for ${key}. Sending without image.`);
+        const fallback = await executeTelegramPost(item, false); // allow text-only fallback now
+        if (fallback.ok) {
+          telegramSentMap[key] = Date.now();
+          if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
+            sendPushToAllSubscribers(item).catch(() => {});
+          }
+        }
+        return;
+      }
+      console.log(`[Telegram] Image not ready yet for ${key} (attempt ${imageRetries + 1}/30), retrying in 30s...`);
+      setTimeout(() => enqueueTelegramSend(key, item, imageRetries + 1), 30000);
+      return;
+    }
+
+    console.error(`[Telegram] Failed to send ${key}:`, result);
+  } catch (err) {
+    console.error(`[Telegram] Error sending ${key}:`, err);
+  }
+}
 
 // Telegram API endpoints
 app.get("/api/telegram/status", async (req, res) => {
@@ -648,11 +598,8 @@ app.post("/api/telegram/post", async (req, res) => {
     const rawKey = postId || url || slug || id || title || "";
     const dedupKey = rawKey.toString().toLowerCase().trim().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
 
-    const sentMap = getTelegramSentMap();
-    const pendingQueue = getTelegramPendingQueue();
-
     // Check if sent recently (less than 10 minutes) unless force/immediate is passed
-    const lastSentTime = sentMap[dedupKey];
+    const lastSentTime = telegramSentMap[dedupKey];
     if (dedupKey && lastSentTime && (Date.now() - lastSentTime < 600000) && !force && !immediate) {
       console.log(`[Telegram] Already sent recently for key: ${dedupKey}`);
       return res.json({
@@ -667,8 +614,7 @@ app.post("/api/telegram/post", async (req, res) => {
       const result = await executeTelegramPost({ title, text, url, image, collection, kind });
       if (result.ok) {
         if (dedupKey) {
-          sentMap[dedupKey] = Date.now();
-          saveTelegramSentMap(sentMap);
+          telegramSentMap[dedupKey] = Date.now();
         }
         if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
           sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
@@ -679,23 +625,10 @@ app.post("/api/telegram/post", async (req, res) => {
       }
     }
 
-    // Default delay: 3 MINUTES (180,000 ms) as requested
+    // Default delay: 3 MINUTES (180,000 ms) as requested.
+    // Just a plain in-memory timer — wait, then send. Nothing is written to disk.
     const delayMs = req.body?.delayMs !== undefined ? Number(req.body.delayMs) : 180000;
-    const publishAt = Date.now() + delayMs;
-
-    pendingQueue[dedupKey] = {
-      postId: dedupKey,
-      title,
-      text,
-      url,
-      image,
-      collection,
-      kind,
-      publishAt,
-      retries: 0
-    };
-
-    saveTelegramPendingQueue(pendingQueue);
+    scheduleTelegramPost(dedupKey, { title, text, url, image, collection, kind }, delayMs);
 
     return res.json({
       success: true,
