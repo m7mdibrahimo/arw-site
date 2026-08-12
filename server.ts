@@ -475,96 +475,8 @@ function parseFrontmatter(fileContent: string): Record<string, string> {
   return result;
 }
 
-// Auto Scanner for content folders: scans content/shows, content/news, content/recaps
-async function autoScanContentFolders() {
-  const folders = [
-    { folder: "shows", kind: "show" },
-    { folder: "news", kind: "news" },
-    { folder: "recaps", kind: "recap" }
-  ];
-
-  const queue = getTelegramPendingQueue();
-  const sentMap = getTelegramSentMap();
-  let updatedQueue = false;
-  let updatedSentMap = false;
-
-  for (const item of folders) {
-    const dir = path.join(process.cwd(), "content", item.folder);
-    if (!fs.existsSync(dir)) continue;
-
-    try {
-      const files = fs.readdirSync(dir).filter(f => f.endsWith(".md"));
-      for (const file of files) {
-        const filePath = path.join(dir, file);
-        const stat = fs.statSync(filePath);
-        const fileContent = fs.readFileSync(filePath, "utf8");
-        const fm = parseFrontmatter(fileContent);
-
-        const title = (fm.headline || fm.title || "").trim();
-        if (!title) continue;
-
-        const slug = arabicSlug(fm.title || file.replace(/\.md$/, ""));
-        const rawUrl = slug ? `https://arab-wrestling.com/${item.folder}/${slug}` : `https://arab-wrestling.com/`;
-        const articleUrl = normalizeArticleUrl(rawUrl);
-        const key = sanitizeKey(articleUrl);
-
-        if (!key) continue;
-
-        // If already sent or already in pending queue, skip
-        if (sentMap[key] || queue[key]) {
-          continue;
-        }
-
-        const ageMs = Date.now() - stat.mtimeMs;
-        // STRICT RULE: Ignore old files (>15 minutes old). Mark them as sent so they NEVER post!
-        if (ageMs > 15 * 60 * 1000) {
-          sentMap[key] = stat.mtimeMs;
-          updatedSentMap = true;
-          continue;
-        }
-
-        // BRAND NEW post detected! Schedule to publish 3 MINUTES (180,000 ms) after file creation
-        let text = (fm.description || fm.headline || "").trim();
-        let image = fm.image || null;
-        if (image && typeof image === 'string' && !image.startsWith('http')) {
-          image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
-        }
-
-        const targetPublishTime = stat.mtimeMs + 180000; // 3 minutes from creation
-        const publishAt = Math.max(targetPublishTime, Date.now() + 5000);
-
-        queue[key] = {
-          postId: key,
-          title,
-          text,
-          url: articleUrl,
-          image,
-          collection: item.folder,
-          kind: item.kind,
-          publishAt,
-          retries: 0
-        };
-        updatedQueue = true;
-        const waitSec = Math.round((publishAt - Date.now()) / 1000);
-        console.log(`[Auto Scanner] Found brand new post: "${title}" (${item.folder}), scheduled to publish in Telegram in ${waitSec}s`);
-      }
-    } catch (err) {
-      console.error(`[Auto Scanner] Error scanning ${item.folder}:`, err);
-    }
-  }
-
-  if (updatedSentMap) {
-    saveTelegramSentMap(sentMap);
-  }
-  if (updatedQueue) {
-    saveTelegramPendingQueue(queue);
-  }
-}
-
-// Background Worker: Checks pending queue every 10 seconds and sends delayed posts
+// Background Worker: Checks pending queue every 10 seconds and sends delayed posts (3-min post-publish timer)
 async function processTelegramPendingQueue() {
-  await autoScanContentFolders();
-
   const queue = getTelegramPendingQueue();
   const sentMap = getTelegramSentMap();
   const now = Date.now();
@@ -600,6 +512,12 @@ async function processTelegramPendingQueue() {
           item.publishAt = Date.now() + (retrySec * 1000);
           updated = true;
           break; // Pause queue iteration on rate limit
+        } else if (result.error_code === 403 || result.error_code === 400) {
+          console.error(`[Telegram Queue] Non-retryable Telegram error (${result.error_code}): ${result.description}. Dropping post: ${key}`);
+          sentMap[key] = Date.now();
+          saveTelegramSentMap(sentMap);
+          delete queue[key];
+          updated = true;
         } else {
           item.retries = (item.retries || 0) + 1;
           if (item.retries >= 5) {
