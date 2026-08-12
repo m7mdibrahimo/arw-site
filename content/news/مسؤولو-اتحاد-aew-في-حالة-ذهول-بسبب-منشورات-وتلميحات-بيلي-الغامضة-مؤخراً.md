@@ -1,6 +1,7 @@
 ---
 federation: AEW
 title: مسؤولو اتحاد AEW في حالة ذهول بسبب منشورات وتلميحات بيلي الغامضة مؤخراً
+date: 2026-08-12T09:36:00.000+03:00
 tags:
   - Bayley
   - Mercedes Mone
