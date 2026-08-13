@@ -1,5 +1,5 @@
 ---
-federation: WWE
+federation: AEW
 title: جون موكسلي وجي وايت يحسمان التأهل في بطولة كأس القارة (Continental
   Challenge Cup) خلال عرض Dynamite
 date: 2026-08-13T05:55:00.000+03:00
