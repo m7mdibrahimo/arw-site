@@ -2,7 +2,7 @@
 federation: WWE
 title: "تحالف ناري غير متوقع: كودي رودز وأوبا فيمي يتحدان على ألقاب الفرق في
   نزال غير مذاع لعرض SmackDown"
-date: 2026-08-13T02:58:00.000+03:00
+date: 2026-08-13T03:14:00.000+03:00
 tags:
   - Cody Rhodes
   - Oba Femi
@@ -12,7 +12,7 @@ tags:
   - WWE SmackDown
   - WWE
   - اخبار المصارعة
-image: /content/images/uocbxc3bh97o6uc7.jpg
+image: /content/images/itxd4q2obtgh00u4.jpg
 layout: post-layout.njk
 ---
 تجهز إدارة WWE مفاجأة كبرى للجماهير الحاضرة في القاعة لخوض تجربة استثنائية عقب انتهاء البث التلفزيوني لعرض SmackDown المقبل، والمقرر إقامته في صالة *TD Garden* بمدينة بوسطن يوم الجمعة 14 أغسطس.
