@@ -1,5 +1,5 @@
 ---
-federation: WWE
+federation: INDIE
 title: "نتائج عرض CMLL Viernes Espectacular (14 أغسطس 2026): ميستيكو يهزم أفيرنو
   واعتداء بنزع القناع.. وانتصارات مثيرة للفرق"
 date: 2026-08-15T11:35:00.000+03:00
