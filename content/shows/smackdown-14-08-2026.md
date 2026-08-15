@@ -16,6 +16,8 @@ servers:
     url: https://www.ok.ru/videoembed/16853052230240
   - label: "#2"
     url: https://turbovidhls.com/t/6a7fd9be9159b
+  - label: "#3"
+    url: https://sg1.stackvid.com/watch/NNR1ZH2w2pk
 downloads:
   - label: تحميل متعدد - بجودة منخفضة
     url: https://multiup.io/download/563fb35ef6147224a6fd764eca798e7d/WWE.SmackDown.14.08.2026_480p.mkv
