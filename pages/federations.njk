@@ -1,8 +1,8 @@
 ---
 pagination:
-  data: collections.news
+  data: collections.allContent
   size: 20
-  alias: newsItems
+  alias: allItems
 permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/index.html{% else %}index.html{% endif %}"
 ---
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<title>الأخبار | عرب راسلنج</title>
+<title>تصفح الاتحادات وجميع المحتوى | عرب راسلنج</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/notif.css">
@@ -46,16 +46,43 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   .brand span{ color:var(--teal); }
   .nav ul{ list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; white-space:nowrap; }
   .nav ul li{ display:inline-flex; align-items:center; }
-  .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:.2s; }
-  .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); }
-  .nav a.navlink.active{ background:#1e2530; color:#fff; }
-  html.arw-dark .nav a.navlink.active{ background:#fff; color:#1e2530; }
-  .nav-dropdown{ position:relative; }
-  .dropdown-menu{ display:flex !important; flex-direction:column; gap:2px !important; position:absolute; top:calc(100% + 10px); right:0; min-width:160px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 32px -16px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transform:translateY(-8px); transition:opacity .22s ease, transform .22s ease, visibility .22s; z-index:60; }
-  .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{ opacity:1; visibility:visible; transform:translateY(0); }
-  .dropdown-menu li{ list-style:none; width:100%; }
-  .dropdown-menu a{ display:block; padding:9px 12px; border-radius:9px; color:var(--ink); text-decoration:none; font-weight:700; font-size:13.5px; }
-  .dropdown-menu a:hover{ background:var(--line); }
+  .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); position:relative; border:1px solid transparent; }
+  .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); transform:translateY(-2px); }
+  .nav a.navlink.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; box-shadow:0 4px 12px rgba(30,37,48,0.25) !important; }
+  html.arw-dark .nav a.navlink.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 12px rgba(255,255,255,0.2) !important; }
+  .nav-dropdown{ position:relative; display:inline-flex; align-items:center; }
+  .dropdown-menu{ display:flex !important; flex-direction:column; gap:4px !important; position:absolute; top:calc(100% + 6px); left:50%; right:auto; transform:translateX(-50%) translateY(-6px) scale(0.97); min-width:175px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 36px -12px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transition:all 0.22s cubic-bezier(0.16,1,0.3,1); z-index:60; transform-origin:top center; pointer-events:none; }
+  .dropdown-menu::before{ content:''; position:absolute; top:-14px; left:0; right:0; height:14px; background:transparent; display:block; }
+  .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0) scale(1); pointer-events:auto; }
+  .dropdown-menu li{ list-style:none; width:100%; margin:0; padding:0; }
+  .dropdown-menu a.drop-item{ display:flex; align-items:center; gap:10px; width:100%; box-sizing:border-box; padding:9px 12px; border-radius:10px; color:var(--ink); text-decoration:none; font-weight:800; font-size:13.5px; border:1px solid transparent; transition:all 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .drop-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; transition:transform 0.2s ease; }
+  .drop-item:hover .drop-dot{ transform:scale(1.4); }
+
+  .drop-wwe .drop-dot{ background:#c73b2c; }
+  .drop-wwe:hover, .drop-wwe.active{ background:rgba(199,59,44,.12) !important; color:#c73b2c !important; border-color:rgba(199,59,44,.25) !important; transform:translateX(-3px); }
+
+  .drop-aew .drop-dot{ background:#d4a017; }
+  .drop-aew:hover, .drop-aew.active{ background:rgba(212,160,23,.15) !important; color:#b58509 !important; border-color:rgba(212,160,23,.3) !important; transform:translateX(-3px); }
+
+  .drop-tna .drop-dot{ background:#8a5fe0; }
+  .drop-tna:hover, .drop-tna.active{ background:rgba(138,95,224,.14) !important; color:#7c42d6 !important; border-color:rgba(138,95,224,.28) !important; transform:translateX(-3px); }
+
+  .drop-roh .drop-dot{ background:#3866c7; }
+  .drop-roh:hover, .drop-roh.active{ background:rgba(44,102,199,.14) !important; color:#2358b5 !important; border-color:rgba(44,102,199,.28) !important; transform:translateX(-3px); }
+
+  .drop-mma .drop-dot{ background:#e07a2c; }
+  .drop-mma:hover, .drop-mma.active{ background:rgba(224,122,44,.14) !important; color:#c45b10 !important; border-color:rgba(224,122,44,.28) !important; transform:translateX(-3px); }
+
+  .drop-indie .drop-dot{ background:#1f8a72; }
+  .drop-indie:hover, .drop-indie.active{ background:rgba(31,138,114,.14) !important; color:#0f705b !important; border-color:rgba(31,138,114,.28) !important; transform:translateX(-3px); }
+
+  html.arw-dark .drop-wwe:hover, html.arw-dark .drop-wwe.active{ background:rgba(225,75,60,.2) !important; color:#ff6b5b !important; border-color:rgba(225,75,60,.35) !important; }
+  html.arw-dark .drop-aew:hover, html.arw-dark .drop-aew.active{ background:rgba(240,195,60,.2) !important; color:#f4b352 !important; border-color:rgba(240,195,60,.35) !important; }
+  html.arw-dark .drop-tna:hover, html.arw-dark .drop-tna.active{ background:rgba(155,109,240,.2) !important; color:#b18cff !important; border-color:rgba(155,109,240,.35) !important; }
+  html.arw-dark .drop-roh:hover, html.arw-dark .drop-roh.active{ background:rgba(70,130,240,.2) !important; color:#60a5fa !important; border-color:rgba(70,130,240,.35) !important; }
+  html.arw-dark .drop-mma:hover, html.arw-dark .drop-mma.active{ background:rgba(240,140,60,.2) !important; color:#ff9d5c !important; border-color:rgba(240,140,60,.35) !important; }
+  html.arw-dark .drop-indie:hover, html.arw-dark .drop-indie.active{ background:rgba(40,180,150,.2) !important; color:#34d399 !important; border-color:rgba(40,180,150,.35) !important; }
   .site-search{ flex:1; min-width:140px; max-width:420px; display:flex; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 8px 6px 16px; }
   .site-search input{ flex:1; border:none; outline:none; background:transparent; font-family:'Tajawal',sans-serif; font-size:14px; color:var(--ink); padding:6px 4px; }
   .site-search input::placeholder{ color:var(--muted); }
@@ -81,7 +108,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   @media (max-width:700px){ .feds-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:420px){ .feds-grid{ grid-template-columns:1fr; } }
   .fed-card{ display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:.25s; box-shadow:0 6px 16px -12px rgba(30,37,48,.15); }
-  .fed-card:hover{ transform:translateY(-6px); box-shadow:0 18px 30px -18px rgba(30,37,48,.28); }
+  .fed-card:hover{ transform:translateY(-6px); box-shadow:0 18px 30px -18px rgba(30,37,48,.28); border-color:var(--teal); }
   .fed-mark{ height:110px; display:flex; align-items:center; justify-content:center; font-family:'Cairo',sans-serif; font-weight:900; font-size:28px; color:#fff; }
   .fed-wwe .fed-mark{ background:linear-gradient(135deg,#c73b2c,#8f2015); }
   .fed-aew .fed-mark{ background:linear-gradient(135deg,#e0b93c,#a87c14); }
@@ -129,7 +156,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   .kind-show{ background:var(--gold-soft); color:var(--gold); }
   .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
-  .news-body h3{ font-size:17px; font-weight:700; margin:4px 0 8px; }
+  .news-body h3, .show-body h3{ font-size:15.5px; font-weight:700; margin:4px 0 8px; line-height:1.45; }
 
   .pagination-nav { margin-top: 48px; display: flex; justify-content: center; align-items: center; width: 100%; }
   .pagination-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
@@ -143,17 +170,41 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); }
+  /* Hero Section Animations */
   .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
-  .hero-inner{ position:relative; max-width:1100px; width:100%; margin:0 auto; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; }
-  .hero h1.hero-title{ font-size:clamp(22px,4.5vw,48px); font-weight:900; line-height:1.3; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
-  .hero h1.hero-title .u{ color:var(--gold); display:block; margin-top:14px; }
+  .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.28), rgba(255,255,255,.12)); background-size:200% 100%; animation:shimmer 4s infinite linear, floatSlow 3s ease-in-out infinite; color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+  .hero h1.hero-title, .hero h1{ font-size:clamp(38px,6.4vw,68px); font-weight:900; line-height:1.18; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
+  .hero h1.hero-title .u, .hero h1 .u{ color:var(--gold); display:block; margin-top:10px; }
   .hero p{ color:rgba(255,255,255,.88); font-size:17.5px; max-width:540px; margin:0 auto 32px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
   .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-  .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:.2s; background:var(--card); color:var(--ink); border:1px solid var(--line); }
-  .btn:hover{ transform:translateY(-3px); border-color:var(--teal); color:var(--teal); }
+  .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  .btn:hover{ transform:translateY(-4px) scale(1.03); border-color:var(--teal); color:var(--teal); box-shadow:0 12px 24px rgba(14,149,148,0.25); }
+  .btn:active{ transform:translateY(-1px) scale(0.98); }
   .btn.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; }
   html.arw-dark .btn.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; }
+  
+  .quicknav{ position:relative; max-width:900px; margin:44px auto 0; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .qn{ display:flex; align-items:center; gap:10px; background:var(--card); border:1px solid var(--line); padding:12px 20px; border-radius:14px; text-decoration:none; color:var(--ink); font-weight:700; font-size:14px; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+  .qn:hover{ transform:translateY(-4px) scale(1.03); box-shadow:0 14px 28px -10px rgba(0,0,0,.18); border-color:var(--teal); }
+  .qn .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; transition:transform 0.3s ease; }
+  .qn:hover .dot{ transform:scale(1.4); }
+
+  .section-head{ margin-bottom:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; width:100%; }
+  .section-head .head-text{ max-width:640px; margin:0 auto; text-align:center; }
+  .section-head h2{ font-size:clamp(24px,3.4vw,32px); font-weight:900; letter-spacing:-.5px; display:flex; align-items:center; justify-content:center; gap:12px; }
+  .section-head h2 .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .section-head p{ color:var(--muted); font-size:14.5px; margin-top:8px; text-align:center; }
+
   /* Scroll Reveal Smooth Motion */
   .reveal{ opacity:1; transform:none; }
   .reveal.reveal-hidden{ opacity:0; transform:translateY(16px); transition:none !important; }
@@ -171,14 +222,14 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
     <ul>
       <li><a class="navlink" href="/">الرئيسية</a></li>
       <li class="nav-dropdown">
-        <a class="navlink" href="/federations/">الاتحادات</a>
+        <a class="navlink active" href="/federations/">الاتحادات</a>
         <ul class="dropdown-menu">
-          <li><a href="/federation/wwe/">WWE</a></li>
-          <li><a href="/federation/aew/">AEW</a></li>
-          <li><a href="/federation/tna/">TNA</a></li>
-          <li><a href="/federation/roh/">ROH</a></li>
-          <li><a href="/federation/mma/">MMA</a></li>
-          <li><a href="/federation/indie/">INDIE</a></li>
+          <li><a href="/federation/wwe/" class="drop-item drop-wwe"><span class="drop-dot"></span><span>WWE</span></a></li>
+          <li><a href="/federation/aew/" class="drop-item drop-aew"><span class="drop-dot"></span><span>AEW</span></a></li>
+          <li><a href="/federation/tna/" class="drop-item drop-tna"><span class="drop-dot"></span><span>TNA</span></a></li>
+          <li><a href="/federation/roh/" class="drop-item drop-roh"><span class="drop-dot"></span><span>ROH</span></a></li>
+          <li><a href="/federation/mma/" class="drop-item drop-mma"><span class="drop-dot"></span><span>MMA</span></a></li>
+          <li><a href="/federation/indie/" class="drop-item drop-indie"><span class="drop-dot"></span><span>INDIE</span></a></li>
         </ul>
       </li>
       <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
@@ -199,73 +250,80 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   </div>
 </header>
 
-{% set latestImg = "" %}
-{% for item in collections.news %}
-  {% if not latestImg and item.data.image %}
-    {% set latestImg = item.data.image %}
-  {% endif %}
-{% endfor %}
-
-<div class="hero"{% if latestImg %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg latestImg, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop' %}') center 30%/cover no-repeat;"{% endif %}>
+<div class="hero">
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
-    <h1 class="hero-title">آخر الأخبار<span class="u">تغطية مستمرة</span></h1>
-    <p>أخبار عاجلة، تصريحات المصارعين، وأبرز تطورات الأحداث.</p>
+    <h1 class="hero-title">المحتوى الشامل <span class="u">لجميع الاتحادات</span></h1>
+    <p>عروض مصارعة مترجمة، ملخصات العروض، وآخر الأخبار.</p>
     <div class="cta-row">
-      <a href="/federations/" class="btn">تصفح الاتحادات</a>
-      <a href="/news/" class="btn active">آخر الأخبار</a>
+      <a href="/federations/" class="btn active">تصفح الاتحادات</a>
+      <a href="/shows/" class="btn">جميع العروض</a>
     </div>
   </div>
 </div>
 
-
-<div class="page-head reveal">
-  <h1 style="color:var(--coral);">آخر الأخبار</h1>
-  <p>أبرز الانتقالات والإصابات والقرارات الإدارية</p>
-</div>
-<section class="content"><div class="wrap"><div class="grid-12">
-{% for item in newsItems %}
-<a class="news-card reveal" href="{{ item.url | cleanUrl }}">
-  <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
-  <div class="news-body">
-    <span class="kind-badge kind-news">خبر</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
-    <h3>{{ item.data.title }}</h3>
-    <span class="date">{{ item.date | date("dd MMM") }}</span>
-  </div>
-</a>
-{% endfor %}
-</div>
-
-{% if pagination.pages.length > 1 %}
-<nav class="pagination-nav">
-  <div class="pagination-wrap">
-    {% if pagination.href.previous %}
-      <a href="{{ pagination.href.previous }}" class="page-link prev">السابق</a>
-    {% else %}
-      <span class="page-link prev disabled">السابق</span>
-    {% endif %}
-
-    <div class="page-numbers">
-      {% for pageHref in pagination.hrefs %}
-        {% set pageNum = loop.index %}
-        {% if pageHref == page.url %}
-          <span class="page-link active">{{ pageNum }}</span>
+<section class="content" id="all-content-section" style="padding-top:40px;">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:32px;">
+      <div class="head-text">
+        <h2 style="color:var(--gold);">جميع المحتوى</h2>
+        <p style="color:var(--muted); font-size:14px; margin-top:6px;">جميع العروض والملخصات والأخبار من كافة الاتحادات (من الأحدث للأقدم)</p>
+      </div>
+    </div>
+    <div class="grid-12">
+      {% for item in allItems %}
+      <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %} reveal" href="{{ item.url | cleanUrl }}">
+        {% if item.kind == 'news' %}
+        <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
+        <div class="news-body">
+          <span class="kind-badge kind-news">خبر</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
+          <h3>{{ item.data.title }}</h3>
+          <span class="date">{{ item.date | date("dd MMM") }}</span>
+        </div>
         {% else %}
-          <a href="{{ pageHref }}" class="page-link">{{ pageNum }}</a>
+        <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+        <div class="show-body">
+          {% if item.kind == 'show' %}<span class="kind-badge kind-show">عرض</span>{% else %}<span class="kind-badge kind-recap">ملخص</span>{% endif %}{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
+          <h3>{{ item.data.headline or item.data.title }}</h3>
+          {% if item.data.description %}<p class="desc">{{ item.data.description }}</p>{% endif %}
+          <div class="foot"><span>{{ item.date | date("dd MMM") }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto;">⏱ {{ item.data.duration }}</span>{% endif %}</div>
+        </div>
         {% endif %}
+      </a>
       {% endfor %}
     </div>
 
-    {% if pagination.href.next %}
-      <a href="{{ pagination.href.next }}" class="page-link next">التالي</a>
-    {% else %}
-      <span class="page-link next disabled">التالي</span>
+    {% if pagination.pages.length > 1 %}
+    <nav class="pagination-nav">
+      <div class="pagination-wrap">
+        {% if pagination.href.previous %}
+          <a href="{{ pagination.href.previous }}" class="page-link prev">السابق</a>
+        {% else %}
+          <span class="page-link prev disabled">السابق</span>
+        {% endif %}
+
+        <div class="page-numbers">
+          {% for pageHref in pagination.hrefs %}
+            {% set pageNum = loop.index %}
+            {% if pageHref == page.url %}
+              <span class="page-link active">{{ pageNum }}</span>
+            {% else %}
+              <a href="{{ pageHref }}" class="page-link">{{ pageNum }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% if pagination.href.next %}
+          <a href="{{ pagination.href.next }}" class="page-link next">التالي</a>
+        {% else %}
+          <span class="page-link next disabled">التالي</span>
+        {% endif %}
+      </div>
+    </nav>
     {% endif %}
   </div>
-</nav>
-{% endif %}
+</section>
 
-</div></section>
 <footer>
   <div class="social-row">
     <a aria-label="فيسبوك" href="#" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>
@@ -336,3 +394,4 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
 <script src="/assets/notif.js" defer></script>
 </body>
 </html>
+

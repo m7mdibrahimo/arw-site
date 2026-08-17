@@ -38,15 +38,43 @@ permalink: "/search/index.html"
   .nav ul{ list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; white-space:nowrap; }
   .nav ul li{ display:inline-flex; align-items:center; }
   .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:.2s; }
-  .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); }
-  .nav a.navlink.active{ background:#1e2530; color:#fff; }
-  html.arw-dark .nav a.navlink.active{ background:#fff; color:#1e2530; }
-  .nav-dropdown{ position:relative; }
-  .dropdown-menu{ display:flex !important; flex-direction:column; gap:2px !important; position:absolute; top:calc(100% + 10px); right:0; min-width:160px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 32px -16px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transform:translateY(-8px); transition:opacity .22s ease, transform .22s ease, visibility .22s; z-index:60; }
-  .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{ opacity:1; visibility:visible; transform:translateY(0); }
-  .dropdown-menu li{ list-style:none; width:100%; }
-  .dropdown-menu a{ display:block; padding:9px 12px; border-radius:9px; color:var(--ink); text-decoration:none; font-weight:700; font-size:13.5px; }
-  .dropdown-menu a:hover{ background:var(--line); }
+  .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); position:relative; border:1px solid transparent; }
+  .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); transform:translateY(-2px); }
+  .nav a.navlink.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; box-shadow:0 4px 12px rgba(30,37,48,0.25) !important; }
+  html.arw-dark .nav a.navlink.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 12px rgba(255,255,255,0.2) !important; }
+  .nav-dropdown{ position:relative; display:inline-flex; align-items:center; }
+  .dropdown-menu{ display:flex !important; flex-direction:column; gap:4px !important; position:absolute; top:calc(100% + 6px); left:50%; right:auto; transform:translateX(-50%) translateY(-6px) scale(0.97); min-width:175px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 36px -12px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transition:all 0.22s cubic-bezier(0.16,1,0.3,1); z-index:60; transform-origin:top center; pointer-events:none; }
+  .dropdown-menu::before{ content:''; position:absolute; top:-14px; left:0; right:0; height:14px; background:transparent; display:block; }
+  .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0) scale(1); pointer-events:auto; }
+  .dropdown-menu li{ list-style:none; width:100%; margin:0; padding:0; }
+  .dropdown-menu a.drop-item{ display:flex; align-items:center; gap:10px; width:100%; box-sizing:border-box; padding:9px 12px; border-radius:10px; color:var(--ink); text-decoration:none; font-weight:800; font-size:13.5px; border:1px solid transparent; transition:all 0.2s cubic-bezier(0.16,1,0.3,1); }
+  .drop-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; transition:transform 0.2s ease; }
+  .drop-item:hover .drop-dot{ transform:scale(1.4); }
+
+  .drop-wwe .drop-dot{ background:#c73b2c; }
+  .drop-wwe:hover, .drop-wwe.active{ background:rgba(199,59,44,.12) !important; color:#c73b2c !important; border-color:rgba(199,59,44,.25) !important; transform:translateX(-3px); }
+
+  .drop-aew .drop-dot{ background:#d4a017; }
+  .drop-aew:hover, .drop-aew.active{ background:rgba(212,160,23,.15) !important; color:#b58509 !important; border-color:rgba(212,160,23,.3) !important; transform:translateX(-3px); }
+
+  .drop-tna .drop-dot{ background:#8a5fe0; }
+  .drop-tna:hover, .drop-tna.active{ background:rgba(138,95,224,.14) !important; color:#7c42d6 !important; border-color:rgba(138,95,224,.28) !important; transform:translateX(-3px); }
+
+  .drop-roh .drop-dot{ background:#3866c7; }
+  .drop-roh:hover, .drop-roh.active{ background:rgba(44,102,199,.14) !important; color:#2358b5 !important; border-color:rgba(44,102,199,.28) !important; transform:translateX(-3px); }
+
+  .drop-mma .drop-dot{ background:#e07a2c; }
+  .drop-mma:hover, .drop-mma.active{ background:rgba(224,122,44,.14) !important; color:#c45b10 !important; border-color:rgba(224,122,44,.28) !important; transform:translateX(-3px); }
+
+  .drop-indie .drop-dot{ background:#1f8a72; }
+  .drop-indie:hover, .drop-indie.active{ background:rgba(31,138,114,.14) !important; color:#0f705b !important; border-color:rgba(31,138,114,.28) !important; transform:translateX(-3px); }
+
+  html.arw-dark .drop-wwe:hover, html.arw-dark .drop-wwe.active{ background:rgba(225,75,60,.2) !important; color:#ff6b5b !important; border-color:rgba(225,75,60,.35) !important; }
+  html.arw-dark .drop-aew:hover, html.arw-dark .drop-aew.active{ background:rgba(240,195,60,.2) !important; color:#f4b352 !important; border-color:rgba(240,195,60,.35) !important; }
+  html.arw-dark .drop-tna:hover, html.arw-dark .drop-tna.active{ background:rgba(155,109,240,.2) !important; color:#b18cff !important; border-color:rgba(155,109,240,.35) !important; }
+  html.arw-dark .drop-roh:hover, html.arw-dark .drop-roh.active{ background:rgba(70,130,240,.2) !important; color:#60a5fa !important; border-color:rgba(70,130,240,.35) !important; }
+  html.arw-dark .drop-mma:hover, html.arw-dark .drop-mma.active{ background:rgba(240,140,60,.2) !important; color:#ff9d5c !important; border-color:rgba(240,140,60,.35) !important; }
+  html.arw-dark .drop-indie:hover, html.arw-dark .drop-indie.active{ background:rgba(40,180,150,.2) !important; color:#34d399 !important; border-color:rgba(40,180,150,.35) !important; }
   .site-search{ flex:1; min-width:140px; max-width:420px; display:flex; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 8px 6px 16px; }
   .site-search input{ flex:1; border:none; outline:none; background:transparent; font-family:'Tajawal',sans-serif; font-size:14px; color:var(--ink); padding:6px 4px; }
   .site-search input::placeholder{ color:var(--muted); }
@@ -120,21 +148,32 @@ permalink: "/search/index.html"
   .kind-show{ background:var(--gold-soft); color:var(--gold); }
   .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
-  .news-body h3, .show-body h3{ font-size:17px; font-weight:700; margin:4px 0 8px; }
+  .news-body h3, .show-body h3{ font-size:15.5px; font-weight:700; margin:4px 0 8px; line-height:1.45; }
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); }
 .no-results{ text-align:center; color:var(--muted); padding:40px 24px; grid-column:1/-1; }
+  /* Hero Section Animations */
   .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
-  .hero-inner{ position:relative; max-width:1100px; width:100%; margin:0 auto; }
-  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; }
-  .hero h1.hero-title{ font-size:clamp(22px,4.5vw,48px); font-weight:900; line-height:1.3; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
-  .hero h1.hero-title .u{ color:var(--gold); display:block; margin-top:14px; }
+  .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.28), rgba(255,255,255,.12)); background-size:200% 100%; animation:shimmer 4s infinite linear, floatSlow 3s ease-in-out infinite; color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+  .hero h1.hero-title, .hero h1{ font-size:clamp(38px,6.4vw,68px); font-weight:900; line-height:1.18; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
+  .hero h1.hero-title .u, .hero h1 .u{ color:var(--gold); }
   .hero p{ color:rgba(255,255,255,.88); font-size:17.5px; max-width:540px; margin:0 auto 32px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
   .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-  .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:.2s; background:var(--card); color:var(--ink); border:1px solid var(--line); }
-  .btn:hover{ transform:translateY(-3px); border-color:var(--teal); color:var(--teal); }
+  .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  .btn:hover{ transform:translateY(-4px) scale(1.03); border-color:var(--teal); color:var(--teal); box-shadow:0 12px 24px rgba(14,149,148,0.25); }
+  .btn:active{ transform:translateY(-1px) scale(0.98); }
   .btn.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; }
   html.arw-dark .btn.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; }
 </style>
@@ -152,12 +191,12 @@ permalink: "/search/index.html"
       <li class="nav-dropdown">
         <a class="navlink" href="/federations/">الاتحادات</a>
         <ul class="dropdown-menu">
-          <li><a href="/federation/wwe/">WWE</a></li>
-          <li><a href="/federation/aew/">AEW</a></li>
-          <li><a href="/federation/tna/">TNA</a></li>
-          <li><a href="/federation/roh/">ROH</a></li>
-          <li><a href="/federation/mma/">MMA</a></li>
-          <li><a href="/federation/indie/">INDIE</a></li>
+          <li><a href="/federation/wwe/" class="drop-item drop-wwe"><span class="drop-dot"></span><span>WWE</span></a></li>
+          <li><a href="/federation/aew/" class="drop-item drop-aew"><span class="drop-dot"></span><span>AEW</span></a></li>
+          <li><a href="/federation/tna/" class="drop-item drop-tna"><span class="drop-dot"></span><span>TNA</span></a></li>
+          <li><a href="/federation/roh/" class="drop-item drop-roh"><span class="drop-dot"></span><span>ROH</span></a></li>
+          <li><a href="/federation/mma/" class="drop-item drop-mma"><span class="drop-dot"></span><span>MMA</span></a></li>
+          <li><a href="/federation/indie/" class="drop-item drop-indie"><span class="drop-dot"></span><span>INDIE</span></a></li>
         </ul>
       </li>
       <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
@@ -184,8 +223,8 @@ permalink: "/search/index.html"
     <h1 class="hero-title">جميع الاتحادات، جميع العروض، <span class="u">في مكان واحد</span></h1>
     <p>عروض مصارعة مترجمة، ملخصات العروض، وآخر الأخبار.</p>
     <div class="cta-row">
-      <a href="/all/" class="btn ">تصفح الاتحادات</a>
-      <a href="/shows/" class="btn ">جميع العروض</a>
+      <a href="/federations/" class="btn">تصفح الاتحادات</a>
+      <a href="/shows/" class="btn">جميع العروض</a>
     </div>
   </div>
 </div>
