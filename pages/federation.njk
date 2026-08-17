@@ -91,9 +91,24 @@ permalink: "/federation/{{ fed.slug }}/index.html"
   .telegram-btn{ width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; text-decoration:none; flex-shrink:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
   .telegram-btn:hover{ transform:scale(1.1); border-color:var(--teal); color:var(--teal); }
   .telegram-btn:active{ transform:scale(0.92); }
-  .page-head{ padding:56px 24px 36px; text-align:center; border-bottom:1px solid var(--line); }
-  .page-head h1{ font-size:clamp(26px,4vw,36px); margin-bottom:8px; }
-  .page-head p{ color:var(--muted); font-size:14.5px; }
+  .page-head{ padding:48px 24px 32px; text-align:center; border-bottom:1px solid var(--line); }
+  .page-head h1{ font-size:clamp(30px,4.5vw,42px); font-weight:900; margin-bottom:8px; letter-spacing:0.5px; }
+  .page-head p{ color:var(--muted); font-size:15px; font-weight:600; }
+
+  /* Federation Specific Head Colors */
+  .fed-head.fed-wwe h1 { color: #c73b2c !important; }
+  .fed-head.fed-aew h1 { color: #d4a017 !important; }
+  .fed-head.fed-tna h1 { color: #8a5fe0 !important; }
+  .fed-head.fed-roh h1 { color: #3866c7 !important; }
+  .fed-head.fed-mma h1 { color: #e07a2c !important; }
+  .fed-head.fed-indie h1, .fed-head.fed-indies h1 { color: #1f8a72 !important; }
+
+  html.arw-dark .fed-head.fed-wwe h1 { color: #ff5240 !important; }
+  html.arw-dark .fed-head.fed-aew h1 { color: #f5b938 !important; }
+  html.arw-dark .fed-head.fed-tna h1 { color: #b18cff !important; }
+  html.arw-dark .fed-head.fed-roh h1 { color: #60a5fa !important; }
+  html.arw-dark .fed-head.fed-mma h1 { color: #ff9d5c !important; }
+  html.arw-dark .fed-head.fed-indie h1, html.arw-dark .fed-head.fed-indies h1 { color: #34d399 !important; }
   section.content{ padding:40px 24px 70px; }
   .wrap{ max-width:1180px; margin:0 auto; }
   .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
@@ -178,8 +193,8 @@ permalink: "/federation/{{ fed.slug }}/index.html"
     50% { transform: translateY(-5px); }
   }
   .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.28), rgba(255,255,255,.12)); background-size:200% 100%; animation:shimmer 4s infinite linear, floatSlow 3s ease-in-out infinite; color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
-  .hero h1.hero-title, .hero h1{ font-size:clamp(38px,6.4vw,68px); font-weight:900; line-height:1.18; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
-  .hero h1.hero-title .u, .hero h1 .u{ color:var(--gold); display:block; margin-top:10px; }
+  .hero h1.hero-title, .hero h1{ font-size:clamp(28px,4.8vw,48px); font-weight:900; line-height:1.25; margin-bottom:18px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
+  .hero h1.hero-title .u, .hero h1 .u{ color:var(--gold); display:block; margin-top:8px; font-size:clamp(22px,3.6vw,38px); font-weight:800; white-space:nowrap; letter-spacing:0; text-shadow:0 2px 14px rgba(0,0,0,.5); }
   .hero p{ color:rgba(255,255,255,.88); font-size:17.5px; max-width:540px; margin:0 auto 32px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
   .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
   .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
@@ -234,8 +249,15 @@ permalink: "/federation/{{ fed.slug }}/index.html"
     {% set latestImg = item.data.image %}
   {% endif %}
 {% endfor %}
+{% if not latestImg %}
+  {% for item in collections.allContent %}
+    {% if not latestImg and item.data.image %}
+      {% set latestImg = item.data.image %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
-<div class="hero"{% if latestImg %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg latestImg, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop' %}') center 30%/cover no-repeat;"{% endif %}>
+<div class="hero" id="top"{% if latestImg %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg latestImg, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop' %}') center 30%/cover no-repeat;"{% endif %}>
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">قسم {{ fed.code }}<span class="u">{{ fed.name }}</span></h1>
@@ -248,7 +270,7 @@ permalink: "/federation/{{ fed.slug }}/index.html"
 </div>
 
 
-<div class="page-head">
+<div class="page-head fed-head fed-{{ fed.slug }}">
   <h1>{{ fed.code }}</h1>
   <p>{{ fed.name }}</p>
 </div>
