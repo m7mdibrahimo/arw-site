@@ -49,6 +49,11 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://platform.twitter.com" crossorigin>
+<link rel="preconnect" href="https://syndication.twitter.com" crossorigin>
+<link rel="preconnect" href="https://www.instagram.com" crossorigin>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async src="https://www.instagram.com/embed.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -184,6 +189,145 @@
   .post-body{ font-size:16px; line-height:1.9; color:var(--ink); }
   .post-body p{ margin-bottom:16px; }
   .post-body img{ max-width:100%; border-radius:12px; margin:16px 0; box-shadow:0 8px 20px -8px rgba(0,0,0,0.2); }
+  
+  /* Social Media Auto-Embeds - Instant Visibility & Zero Layout Shift */
+  .post-body .social-embed-box {
+    margin: 28px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    clear: both;
+  }
+  
+  /* Initial Placeholder state for instant clarity */
+  .post-body .twitter-tweet:not(.twitter-tweet-rendered) {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    max-width: 550px !important;
+    min-height: 220px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .post-body .twitter-tweet:not(.twitter-tweet-rendered)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(14,149,148,0.06), transparent);
+    background-size: 200% 100%;
+    animation: arw-embed-shimmer 1.5s infinite linear;
+  }
+  .post-body .twitter-tweet:not(.twitter-tweet-rendered) a {
+    color: var(--teal);
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .post-body .instagram-media:not(.instagram-media-rendered) {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    max-width: 540px !important;
+    min-height: 460px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .post-body .instagram-media:not(.instagram-media-rendered)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(225,48,108,0.06), transparent);
+    background-size: 200% 100%;
+    animation: arw-embed-shimmer 1.5s infinite linear;
+  }
+  .post-body .instagram-media:not(.instagram-media-rendered) a {
+    color: var(--teal);
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes arw-embed-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .post-body .twitter-tweet, .post-body .twitter-tweet-rendered {
+    margin: 0 auto !important;
+    max-width: 550px !important;
+    width: 100% !important;
+  }
+  .post-body .instagram-media, .post-body .instagram-media-rendered {
+    margin: 0 auto !important;
+    max-width: 540px !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+  .post-body .reddit-embed-bq {
+    margin: 0 auto !important;
+    max-width: 580px !important;
+    width: 100% !important;
+    min-height: 180px;
+  }
+  .post-body .fb-post, .post-body .fb-video {
+    margin: 0 auto !important;
+    max-width: 550px !important;
+    width: 100% !important;
+  }
+  .post-body .tiktok-embed {
+    margin: 0 auto !important;
+    max-width: 480px !important;
+    width: 100% !important;
+    min-height: 340px;
+  }
+  .post-body .embed-yt-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    padding-top: 56.25%;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 24px auto;
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.25);
+  }
+  .post-body .embed-yt-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
   .post-tags{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:28px; padding-top:20px; border-top:1px solid var(--line); }
   .post-tags .tags-label{ font-weight:800; font-size:13.5px; color:var(--muted); }
   .tag-pill{ display:inline-flex; align-items:center; gap:6px; background:var(--card); border:1px solid var(--line); color:var(--teal); font-weight:700; font-size:13px; padding:6px 14px; border-radius:999px; text-decoration:none; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
@@ -315,7 +459,7 @@
     {% endif %}
 
     <div class="post-body reveal">
-      {{ content | safe }}
+      {{ content | autoEmbedSocials | safe }}
     </div>
 
     {% if tags and tags.length %}
@@ -384,6 +528,7 @@
       var val = isDark ? 'dark' : 'light';
       try{ localStorage.setItem('arw-theme', val); }catch(e){}
       document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
+      window.dispatchEvent(new CustomEvent('arw-theme-changed', { detail: { isDark: isDark } }));
     });
   }
 
@@ -406,6 +551,178 @@
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
   })();
+
+  /* Social Media Auto-Embed Processor (X/Twitter, Instagram, Reddit, Facebook, YouTube, TikTok) */
+  (function(){
+    function loadScript(src, id, onload) {
+      if (document.getElementById(id)) {
+        if (onload) onload();
+        return;
+      }
+      var s = document.createElement('script');
+      s.id = id;
+      s.src = src;
+      s.async = true;
+      s.defer = true;
+      s.crossOrigin = "anonymous";
+      if (onload) s.onload = onload;
+      document.body.appendChild(s);
+    }
+
+    var postBody = document.querySelector('.post-body');
+    if (!postBody) return;
+
+    var paragraphs = postBody.querySelectorAll('p');
+    var hasTwitter = false, hasInsta = false, hasReddit = false, hasFB = false, hasTikTok = false;
+
+    paragraphs.forEach(function(p) {
+      var txt = p.textContent.trim();
+      var link = p.querySelector('a');
+      var url = link ? link.href.trim() : (txt.match(/^https?:\/\/[^\s]+$/) ? txt : '');
+
+      if (!url) return;
+
+      // Ensure the paragraph is solely or primarily containing this URL/link
+      if (link && p.childNodes.length === 1) {
+        url = link.href.trim();
+      } else if (link && p.textContent.trim() === link.textContent.trim()) {
+        url = link.href.trim();
+      } else if (!link && !txt.match(/^https?:\/\/[^\s]+$/)) {
+        return;
+      }
+
+      // 1. Twitter / X
+      var twitterMatch = url.match(/^https?:\/\/(?:www\.)?(?:twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/([0-9]+)/i);
+      if (twitterMatch) {
+        var user = twitterMatch[1];
+        var tweetId = twitterMatch[2];
+        var isDark = document.documentElement.classList.contains('arw-dark');
+        var embedDiv = document.createElement('div');
+        embedDiv.className = 'social-embed-box';
+        embedDiv.dir = 'ltr';
+        embedDiv.innerHTML = '<blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" data-theme="' + (isDark ? 'dark' : 'light') + '" dir="ltr"><a href="https://twitter.com/' + user + '/status/' + tweetId + '">Loading Post on X (@' + user + ')...</a></blockquote>';
+        p.parentNode.replaceChild(embedDiv, p);
+        hasTwitter = true;
+        return;
+      }
+
+      // 2. Instagram (Post, Reel, TV)
+      var instaMatch = url.match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/([a-zA-Z0-9_-]+)/i);
+      if (instaMatch) {
+        var instaCode = instaMatch[1];
+        var cleanInstaUrl = 'https://www.instagram.com/p/' + instaCode + '/?hl=en_US';
+        var embedDiv = document.createElement('div');
+        embedDiv.className = 'social-embed-box';
+        embedDiv.dir = 'ltr';
+        embedDiv.lang = 'en-US';
+        embedDiv.innerHTML = '<blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="' + cleanInstaUrl + '" data-instgrm-version="14"><a href="' + cleanInstaUrl + '">Loading Post on Instagram...</a></blockquote>';
+        p.parentNode.replaceChild(embedDiv, p);
+        hasInsta = true;
+        return;
+      }
+
+      // 3. Reddit
+      var redditMatch = url.match(/^https?:\/\/(?:www\.)?(?:reddit\.com\/r\/[^\s\"\'<>]+|redd\.it\/[a-zA-Z0-9]+)/i);
+      if (redditMatch) {
+        var embedDiv = document.createElement('div');
+        embedDiv.className = 'social-embed-box';
+        embedDiv.dir = 'ltr';
+        embedDiv.lang = 'en';
+        embedDiv.innerHTML = '<blockquote class="reddit-embed-bq" lang="en" dir="ltr" data-embed-height="500"><a href="' + url + '"></a></blockquote>';
+        p.parentNode.replaceChild(embedDiv, p);
+        hasReddit = true;
+        return;
+      }
+
+      // 4. YouTube Video or Shorts
+      var ytMatch = url.match(/^https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+      if (ytMatch) {
+        var ytId = ytMatch[1];
+        var embedDiv = document.createElement('div');
+        embedDiv.className = 'embed-yt-wrap';
+        embedDiv.dir = 'ltr';
+        embedDiv.lang = 'en';
+        embedDiv.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + ytId + '?hl=en&cc_lang_pref=en" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>';
+        p.parentNode.replaceChild(embedDiv, p);
+        return;
+      }
+
+      // 5. TikTok
+      var tiktokMatch = url.match(/^https?:\/\/(?:www\.)?tiktok\.com\/@([a-zA-Z0-9_.-]+)\/video\/([0-9]+)/i);
+      if (tiktokMatch) {
+        var ttUser = tiktokMatch[1];
+        var ttId = tiktokMatch[2];
+        var ttUrl = 'https://www.tiktok.com/@' + ttUser + '/video/' + ttId + '?lang=en';
+        var embedDiv = document.createElement('div');
+        embedDiv.className = 'social-embed-box';
+        embedDiv.dir = 'ltr';
+        embedDiv.lang = 'en';
+        embedDiv.innerHTML = '<blockquote class="tiktok-embed" lang="en" dir="ltr" cite="' + ttUrl + '" data-video-id="' + ttId + '"><section><a target="_blank" href="' + ttUrl + '"></a></section></blockquote>';
+        p.parentNode.replaceChild(embedDiv, p);
+        hasTikTok = true;
+        return;
+      }
+
+      // 6. Facebook
+      var fbMatch = url.match(/^https?:\/\/(?:www\.|m\.)?(?:facebook\.com\/(?:[^\/\s]+\/(?:posts|videos)\/[0-9]+|watch\/\?v=[0-9]+|reel\/[0-9]+|story\.php\?[^\s]+)|fb\.watch\/[a-zA-Z0-9_-]+)/i);
+      if (fbMatch) {
+        var embedDiv = document.createElement('div');
+        embedDiv.className = 'social-embed-box';
+        embedDiv.dir = 'ltr';
+        embedDiv.lang = 'en';
+        embedDiv.innerHTML = '<div class="fb-post" lang="en" dir="ltr" data-href="' + url + '" data-width="100%"></div>';
+        p.parentNode.replaceChild(embedDiv, p);
+        hasFB = true;
+        return;
+      }
+    });
+
+    if (hasTwitter || document.querySelector('.twitter-tweet')) {
+      if (window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load();
+      } else {
+        loadScript('https://platform.twitter.com/widgets.js', 'twitter-wjs', function(){
+          if (window.twttr && window.twttr.widgets) {
+            window.twttr.widgets.load();
+          }
+        });
+      }
+    }
+
+    if (hasInsta || document.querySelector('.instagram-media')) {
+      if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+      } else {
+        loadScript('https://www.instagram.com/embed.js', 'instagram-wjs', function(){
+          if (window.instgrm && window.instgrm.Embeds) {
+            window.instgrm.Embeds.process();
+          }
+        });
+      }
+    }
+
+    if (hasReddit || document.querySelector('.reddit-embed-bq')) {
+      loadScript('https://embed.reddit.com/widgets.js', 'reddit-wjs');
+    }
+
+    if (hasTikTok || document.querySelector('.tiktok-embed')) {
+      loadScript('https://www.tiktok.com/embed.js', 'tiktok-wjs');
+    }
+
+    if (hasFB || document.querySelector('.fb-post, .fb-video')) {
+      if (!document.getElementById('fb-root')) {
+        var fbRoot = document.createElement('div');
+        fbRoot.id = 'fb-root';
+        document.body.appendChild(fbRoot);
+      }
+      loadScript('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0', 'facebook-jssdk', function(){
+        if (window.FB && window.FB.XFBML) {
+          window.FB.XFBML.parse();
+        }
+      });
+    }
+  })();
+
 </script>
 <script src="/assets/notif.js" defer></script>
 </body>
