@@ -190,90 +190,108 @@
   .post-body p{ margin-bottom:16px; }
   .post-body img{ max-width:100%; border-radius:12px; margin:16px 0; box-shadow:0 8px 20px -8px rgba(0,0,0,0.2); }
   
-  /* Social Media Auto-Embeds - Instant Visibility & Zero Layout Shift */
+  /* Social Media Auto-Embeds - Instant Reservation & Zero Layout Shift */
   .post-body .social-embed-box {
-    margin: 28px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     width: 100%;
+    max-width: 550px;
+    margin: 32px auto;
+    clear: both;
     position: relative;
     box-sizing: border-box;
-    clear: both;
   }
   
-  /* Initial Placeholder state for instant clarity */
-  .post-body .twitter-tweet:not(.twitter-tweet-rendered) {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100% !important;
-    max-width: 550px !important;
-    min-height: 220px;
+  .post-body .social-embed-box.embed-instagram {
+    min-height: 560px;
+  }
+  .post-body .social-embed-box.embed-twitter {
+    min-height: 280px;
+  }
+  .post-body .social-embed-box.embed-tiktok {
+    min-height: 480px;
+  }
+  .post-body .social-embed-box.embed-reddit {
+    min-height: 260px;
+  }
+  .post-body .social-embed-box.embed-facebook {
+    min-height: 380px;
+  }
+
+  /* Polished Skeleton Card - Keeps exact space reserved from 0ms */
+  .embed-skeleton-card {
+    width: 100%;
+    min-height: inherit;
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 14px;
-    padding: 24px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    color: var(--muted);
-    font-size: 14.5px;
-    font-weight: 600;
+    padding: 36px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-  }
-  .post-body .twitter-tweet:not(.twitter-tweet-rendered)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(14,149,148,0.06), transparent);
-    background-size: 200% 100%;
-    animation: arw-embed-shimmer 1.5s infinite linear;
-  }
-  .post-body .twitter-tweet:not(.twitter-tweet-rendered) a {
-    color: var(--teal);
-    text-decoration: none;
     position: relative;
-    z-index: 2;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px -6px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+
+  .embed-skeleton-card.instagram-skeleton {
+    min-height: 540px;
+  }
+
+  .embed-platform-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    background: rgba(14, 149, 148, 0.08);
+    color: var(--teal);
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .instagram-skeleton .embed-platform-badge {
+    background: rgba(225, 48, 108, 0.09);
+    color: #e1306c;
   }
 
-  .post-body .instagram-media:not(.instagram-media-rendered) {
-    display: flex !important;
-    flex-direction: column;
+  .embed-skeleton-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    z-index: 2;
+  }
+
+  .embed-skeleton-link a {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 100% !important;
-    max-width: 540px !important;
-    min-height: 460px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 24px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    color: var(--muted);
-    font-size: 14.5px;
+    gap: 6px;
+    font-size: 13px;
     font-weight: 600;
-    text-align: center;
-  }
-  .post-body .instagram-media:not(.instagram-media-rendered)::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(225,48,108,0.06), transparent);
-    background-size: 200% 100%;
-    animation: arw-embed-shimmer 1.5s infinite linear;
-  }
-  .post-body .instagram-media:not(.instagram-media-rendered) a {
     color: var(--teal);
     text-decoration: none;
-    position: relative;
     z-index: 2;
+    transition: opacity 0.2s ease;
+  }
+  .embed-skeleton-link a:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+  }
+
+  .embed-skeleton-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(14,149,148,0.05), transparent);
+    background-size: 200% 100%;
+    animation: arw-embed-shimmer 1.8s infinite linear;
+    pointer-events: none;
+  }
+  .instagram-skeleton .embed-skeleton-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(225,48,108,0.05), transparent);
+    background-size: 200% 100%;
   }
 
   @keyframes arw-embed-shimmer {
@@ -318,7 +336,7 @@
     border-radius: 14px;
     overflow: hidden;
     margin: 24px auto;
-    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.25);
+    box-shadow: 0 8px 24px -6px rgba(0,0,0,0.3);
   }
   .post-body .embed-yt-wrap iframe {
     position: absolute;
@@ -598,9 +616,10 @@
         var tweetId = twitterMatch[2];
         var isDark = document.documentElement.classList.contains('arw-dark');
         var embedDiv = document.createElement('div');
-        embedDiv.className = 'social-embed-box';
+        embedDiv.className = 'social-embed-box embed-twitter';
         embedDiv.dir = 'ltr';
-        embedDiv.innerHTML = '<blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" data-theme="' + (isDark ? 'dark' : 'light') + '" dir="ltr"><a href="https://twitter.com/' + user + '/status/' + tweetId + '">Loading Post on X (@' + user + ')...</a></blockquote>';
+        embedDiv.lang = 'en';
+        embedDiv.innerHTML = '<blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" data-theme="' + (isDark ? 'dark' : 'light') + '" dir="ltr"><div class="embed-skeleton-card"><div class="embed-platform-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X (Twitter)</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور X...</span><span class="embed-skeleton-link"><a href="https://twitter.com/' + user + '/status/' + tweetId + '" target="_blank" rel="noopener">فتح المنشور على X (@' + user + ') &rarr;</a></span></div></blockquote>';
         p.parentNode.replaceChild(embedDiv, p);
         hasTwitter = true;
         return;
@@ -612,10 +631,10 @@
         var instaCode = instaMatch[1];
         var cleanInstaUrl = 'https://www.instagram.com/p/' + instaCode + '/?hl=en_US';
         var embedDiv = document.createElement('div');
-        embedDiv.className = 'social-embed-box';
+        embedDiv.className = 'social-embed-box embed-instagram';
         embedDiv.dir = 'ltr';
         embedDiv.lang = 'en-US';
-        embedDiv.innerHTML = '<blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="' + cleanInstaUrl + '" data-instgrm-version="14"><a href="' + cleanInstaUrl + '">Loading Post on Instagram...</a></blockquote>';
+        embedDiv.innerHTML = '<blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="' + cleanInstaUrl + '" data-instgrm-version="14"><div class="embed-skeleton-card instagram-skeleton"><div class="embed-platform-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور إنستجرام...</span><span class="embed-skeleton-link"><a href="' + cleanInstaUrl + '" target="_blank" rel="noopener">فتح المنشور على Instagram &rarr;</a></span></div></blockquote>';
         p.parentNode.replaceChild(embedDiv, p);
         hasInsta = true;
         return;
@@ -625,10 +644,10 @@
       var redditMatch = url.match(/^https?:\/\/(?:www\.)?(?:reddit\.com\/r\/[^\s\"\'<>]+|redd\.it\/[a-zA-Z0-9]+)/i);
       if (redditMatch) {
         var embedDiv = document.createElement('div');
-        embedDiv.className = 'social-embed-box';
+        embedDiv.className = 'social-embed-box embed-reddit';
         embedDiv.dir = 'ltr';
         embedDiv.lang = 'en';
-        embedDiv.innerHTML = '<blockquote class="reddit-embed-bq" lang="en" dir="ltr" data-embed-height="500"><a href="' + url + '"></a></blockquote>';
+        embedDiv.innerHTML = '<blockquote class="reddit-embed-bq" lang="en" dir="ltr" data-embed-height="500"><div class="embed-skeleton-card"><div class="embed-platform-badge"><span>Reddit</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور Reddit...</span><span class="embed-skeleton-link"><a href="' + url + '" target="_blank" rel="noopener">فتح المنشور على Reddit &rarr;</a></span></div></blockquote>';
         p.parentNode.replaceChild(embedDiv, p);
         hasReddit = true;
         return;
@@ -654,10 +673,10 @@
         var ttId = tiktokMatch[2];
         var ttUrl = 'https://www.tiktok.com/@' + ttUser + '/video/' + ttId + '?lang=en';
         var embedDiv = document.createElement('div');
-        embedDiv.className = 'social-embed-box';
+        embedDiv.className = 'social-embed-box embed-tiktok';
         embedDiv.dir = 'ltr';
         embedDiv.lang = 'en';
-        embedDiv.innerHTML = '<blockquote class="tiktok-embed" lang="en" dir="ltr" cite="' + ttUrl + '" data-video-id="' + ttId + '"><section><a target="_blank" href="' + ttUrl + '"></a></section></blockquote>';
+        embedDiv.innerHTML = '<blockquote class="tiktok-embed" lang="en" dir="ltr" cite="' + ttUrl + '" data-video-id="' + ttId + '"><section><div class="embed-skeleton-card"><div class="embed-platform-badge"><span>TikTok</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل فيديو TikTok...</span><span class="embed-skeleton-link"><a target="_blank" href="' + ttUrl + '">فتح الفيديو على TikTok &rarr;</a></span></div></section></blockquote>';
         p.parentNode.replaceChild(embedDiv, p);
         hasTikTok = true;
         return;
@@ -667,7 +686,7 @@
       var fbMatch = url.match(/^https?:\/\/(?:www\.|m\.)?(?:facebook\.com\/(?:[^\/\s]+\/(?:posts|videos)\/[0-9]+|watch\/\?v=[0-9]+|reel\/[0-9]+|story\.php\?[^\s]+)|fb\.watch\/[a-zA-Z0-9_-]+)/i);
       if (fbMatch) {
         var embedDiv = document.createElement('div');
-        embedDiv.className = 'social-embed-box';
+        embedDiv.className = 'social-embed-box embed-facebook';
         embedDiv.dir = 'ltr';
         embedDiv.lang = 'en';
         embedDiv.innerHTML = '<div class="fb-post" lang="en" dir="ltr" data-href="' + url + '" data-width="100%"></div>';
