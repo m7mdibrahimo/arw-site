@@ -109,6 +109,65 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("jsonify", jsonify);
   eleventyConfig.addNunjucksFilter("jsonify", jsonify);
 
+  // تحويل روابط منصات التواصل إلى Embeds حية تلقائيًا وسريعًا
+  const autoEmbedSocials = function(contentHtml) {
+    if (!contentHtml || typeof contentHtml !== "string") return contentHtml;
+    
+    // Pattern to match paragraphs that contain standalone social URLs
+    return contentHtml.replace(/<p>(?:<a\s+[^>]*href=["']([^"']+)["'][^>]*>[\s\S]*?<\/a>|([^<]+))<\/p>/gi, (match, hrefUrl, textUrl) => {
+      let rawUrl = (hrefUrl || textUrl || "").trim();
+      if (!rawUrl || !rawUrl.startsWith("http")) return match;
+
+      // 1. Twitter / X
+      const twMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/([0-9]+)/i);
+      if (twMatch) {
+        const user = twMatch[1];
+        const tweetId = twMatch[2];
+        return `<div class="social-embed-box" dir="ltr" lang="en"><blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" dir="ltr"><a href="https://twitter.com/${user}/status/${tweetId}">Loading Post on X (@${user})...</a></blockquote></div>`;
+      }
+
+      // 2. Instagram
+      const igMatch = rawUrl.match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/([a-zA-Z0-9_-]+)/i);
+      if (igMatch) {
+        const igId = igMatch[1];
+        const igUrl = `https://www.instagram.com/p/${igId}/?hl=en_US`;
+        return `<div class="social-embed-box" dir="ltr" lang="en-US"><blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="${igUrl}" data-instgrm-version="14"><a href="${igUrl}">Loading Post on Instagram...</a></blockquote></div>`;
+      }
+
+      // 3. YouTube
+      const ytMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+      if (ytMatch) {
+        const ytId = ytMatch[1];
+        return `<div class="embed-yt-wrap" dir="ltr" lang="en"><iframe src="https://www.youtube-nocookie.com/embed/${ytId}?hl=en&cc_lang_pref=en" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>`;
+      }
+
+      // 4. TikTok
+      const ttMatch = rawUrl.match(/^https?:\/\/(?:www\.)?tiktok\.com\/@([a-zA-Z0-9_.-]+)\/video\/([0-9]+)/i);
+      if (ttMatch) {
+        const ttUser = ttMatch[1];
+        const ttId = ttMatch[2];
+        const ttUrl = `https://www.tiktok.com/@${ttUser}/video/${ttId}?lang=en`;
+        return `<div class="social-embed-box" dir="ltr" lang="en"><blockquote class="tiktok-embed" lang="en" dir="ltr" cite="${ttUrl}" data-video-id="${ttId}"><section><a target="_blank" href="${ttUrl}"></a></section></blockquote></div>`;
+      }
+
+      // 5. Reddit
+      const rdMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:reddit\.com\/r\/[^\s\"\'<>]+|redd\.it\/[a-zA-Z0-9]+)/i);
+      if (rdMatch) {
+        return `<div class="social-embed-box" dir="ltr" lang="en"><blockquote class="reddit-embed-bq" lang="en" dir="ltr" data-embed-height="500"><a href="${rawUrl}"></a></blockquote></div>`;
+      }
+
+      // 6. Facebook
+      const fbMatch = rawUrl.match(/^https?:\/\/(?:www\.|m\.)?(?:facebook\.com\/(?:[^\/\s]+\/(?:posts|videos)\/[0-9]+|watch\/\?v=[0-9]+|reel\/[0-9]+|story\.php\?[^\s]+)|fb\.watch\/[a-zA-Z0-9_-]+)/i);
+      if (fbMatch) {
+        return `<div class="social-embed-box" dir="ltr" lang="en"><div class="fb-post" lang="en" dir="ltr" data-href="${rawUrl}" data-width="100%"></div></div>`;
+      }
+
+      return match;
+    });
+  };
+  eleventyConfig.addFilter("autoEmbedSocials", autoEmbedSocials);
+  eleventyConfig.addNunjucksFilter("autoEmbedSocials", autoEmbedSocials);
+
   // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
   const optImgShortcode = async function(src, fallback) {
     const defaultFallback = "https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=800&auto=format&fit=crop";
