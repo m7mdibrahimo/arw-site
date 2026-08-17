@@ -123,7 +123,7 @@ module.exports = function(eleventyConfig) {
       if (twMatch) {
         const user = twMatch[1];
         const tweetId = twMatch[2];
-        return `<div class="social-embed-box" dir="ltr" lang="en"><blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" dir="ltr"><a href="https://twitter.com/${user}/status/${tweetId}">Loading Post on X (@${user})...</a></blockquote></div>`;
+        return `<div class="social-embed-box embed-twitter" dir="ltr" lang="en" style="min-height:280px;"><blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" dir="ltr"><div class="embed-skeleton-card"><div class="embed-platform-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X (Twitter)</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور X...</span><span class="embed-skeleton-link"><a href="https://twitter.com/${user}/status/${tweetId}" target="_blank" rel="noopener">فتح المنشور على X (@${user}) &rarr;</a></span></div></blockquote></div>`;
       }
 
       // 2. Instagram
@@ -131,7 +131,7 @@ module.exports = function(eleventyConfig) {
       if (igMatch) {
         const igId = igMatch[1];
         const igUrl = `https://www.instagram.com/p/${igId}/?hl=en_US`;
-        return `<div class="social-embed-box" dir="ltr" lang="en-US"><blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="${igUrl}" data-instgrm-version="14"><a href="${igUrl}">Loading Post on Instagram...</a></blockquote></div>`;
+        return `<div class="social-embed-box embed-instagram" dir="ltr" lang="en-US" style="min-height:560px;"><blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="${igUrl}" data-instgrm-version="14"><div class="embed-skeleton-card instagram-skeleton"><div class="embed-platform-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور إنستجرام...</span><span class="embed-skeleton-link"><a href="${igUrl}" target="_blank" rel="noopener">فتح المنشور على Instagram &rarr;</a></span></div></blockquote></div>`;
       }
 
       // 3. YouTube
@@ -147,19 +147,19 @@ module.exports = function(eleventyConfig) {
         const ttUser = ttMatch[1];
         const ttId = ttMatch[2];
         const ttUrl = `https://www.tiktok.com/@${ttUser}/video/${ttId}?lang=en`;
-        return `<div class="social-embed-box" dir="ltr" lang="en"><blockquote class="tiktok-embed" lang="en" dir="ltr" cite="${ttUrl}" data-video-id="${ttId}"><section><a target="_blank" href="${ttUrl}"></a></section></blockquote></div>`;
+        return `<div class="social-embed-box embed-tiktok" dir="ltr" lang="en" style="min-height:480px;"><blockquote class="tiktok-embed" lang="en" dir="ltr" cite="${ttUrl}" data-video-id="${ttId}"><section><div class="embed-skeleton-card"><div class="embed-platform-badge"><span>TikTok</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل فيديو TikTok...</span><span class="embed-skeleton-link"><a target="_blank" href="${ttUrl}">فتح الفيديو على TikTok &rarr;</a></span></div></section></blockquote></div>`;
       }
 
       // 5. Reddit
       const rdMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:reddit\.com\/r\/[^\s\"\'<>]+|redd\.it\/[a-zA-Z0-9]+)/i);
       if (rdMatch) {
-        return `<div class="social-embed-box" dir="ltr" lang="en"><blockquote class="reddit-embed-bq" lang="en" dir="ltr" data-embed-height="500"><a href="${rawUrl}"></a></blockquote></div>`;
+        return `<div class="social-embed-box embed-reddit" dir="ltr" lang="en" style="min-height:260px;"><blockquote class="reddit-embed-bq" lang="en" dir="ltr" data-embed-height="500"><div class="embed-skeleton-card"><div class="embed-platform-badge"><span>Reddit</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور Reddit...</span><span class="embed-skeleton-link"><a href="${rawUrl}" target="_blank" rel="noopener">فتح المنشور على Reddit &rarr;</a></span></div></blockquote></div>`;
       }
 
       // 6. Facebook
       const fbMatch = rawUrl.match(/^https?:\/\/(?:www\.|m\.)?(?:facebook\.com\/(?:[^\/\s]+\/(?:posts|videos)\/[0-9]+|watch\/\?v=[0-9]+|reel\/[0-9]+|story\.php\?[^\s]+)|fb\.watch\/[a-zA-Z0-9_-]+)/i);
       if (fbMatch) {
-        return `<div class="social-embed-box" dir="ltr" lang="en"><div class="fb-post" lang="en" dir="ltr" data-href="${rawUrl}" data-width="100%"></div></div>`;
+        return `<div class="social-embed-box embed-facebook" dir="ltr" lang="en"><div class="fb-post" lang="en" dir="ltr" data-href="${rawUrl}" data-width="100%"></div></div>`;
       }
 
       return match;
