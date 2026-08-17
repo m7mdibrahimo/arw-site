@@ -285,7 +285,14 @@ permalink: "/index.html"
   </div>
 </header>
 
-<div class="hero" id="top">
+{% set latestImg = "" %}
+{% for item in collections.allContent %}
+  {% if not latestImg and item.data.image %}
+    {% set latestImg = item.data.image %}
+  {% endif %}
+{% endfor %}
+
+<div class="hero" id="top"{% if latestImg %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg latestImg, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop' %}') center 30%/cover no-repeat;"{% endif %}>
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1>جميع الاتحادات، جميع العروض، <span class="u">في مكان واحد</span></h1>
