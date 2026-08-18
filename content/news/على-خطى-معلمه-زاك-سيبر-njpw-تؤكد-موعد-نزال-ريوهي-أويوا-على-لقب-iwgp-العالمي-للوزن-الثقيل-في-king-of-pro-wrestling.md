@@ -9,6 +9,7 @@ tags:
   - NJPW
   - G1 Climax
   - IWGP World Heavyweight
+image: /content/images/au3pj6nwn2kayihs.jpg
 layout: post-layout.njk
 ---
 أكد اتحاد New Japan Pro-Wrestling (NJPW) رسمياً أن النجم الصاعد وبطل بطولة G1 Climax 2026 ريوهي أويوا (Ryohei Oiwa) سيحصل على فرصته للمنافسة على لقب بطولة IWGP العالمية للوزن الثقيل في عرض King of Pro Wrestling، والمقرر إقامته يوم الإثنين 12 أكتوبر المقبل في قاعة سومو هول (Sumo Hall) بالعاصمة طوكيو.
