@@ -170,7 +170,7 @@ module.exports = function(eleventyConfig) {
 
   // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
   const optImgShortcode = async function(src, fallback) {
-    const defaultFallback = "https://i.ibb.co/LDDcBHss/z6jpx8z7p8cquts45.jpg";
+    const defaultFallback = "https://i.ibb.co/gFypXqm8/qmrc2dthhk71z0fr.jpg";
     let input = (src && typeof src === "string" && src.trim()) ? src.trim() : (fallback || defaultFallback);
     if (!input) return defaultFallback;
 
