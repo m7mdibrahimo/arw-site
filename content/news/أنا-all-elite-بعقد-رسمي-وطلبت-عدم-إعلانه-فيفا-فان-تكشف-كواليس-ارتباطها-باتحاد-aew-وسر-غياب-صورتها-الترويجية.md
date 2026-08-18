@@ -25,3 +25,5 @@ layout: post-layout.njk
 > *الكثير من الناس لا يعلمون ذلك لأنني لم أحصل على تصميم (All Elite) الترويجي حتى الآن، لكن الحقيقة هي أنني أخبرت توني خان برغبتي في استحقاق تلك اللحظة وكسبها بجهدي داخل الحلبة أولاً.*
 >
 > *إذا كانت هذه إرادة الله، فستحدث تلك اللحظة في وقتها المناسب.. وحتى يحين ذلك، سأواصل الظهور، وإثبات نفسي باستمرار، والحفاظ على عزيمتي وإصراري لأقصى حد"*.
+
+<https://x.com/HellBentVixen/status/2089111479459197135?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2089111479459197135%7Ctwgr%5Ea86d96a349be6931b864413ddd5513b369a9327d%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fviva-van-reiterates-shes-signed-to-aew-wants-to-earn-her-all-elite-graphic%2F>
