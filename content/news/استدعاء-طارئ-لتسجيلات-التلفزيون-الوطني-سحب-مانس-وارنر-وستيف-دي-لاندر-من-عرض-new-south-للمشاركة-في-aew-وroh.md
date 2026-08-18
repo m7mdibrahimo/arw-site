@@ -24,3 +24,5 @@ layout: post-layout.njk
 ### تعديلات طارئة على بطاقة العرض ونزال القفص الحديدي
 
 أوضح الاتحاد أنه يعمل حالياً على إيجاد بدائل سريعة لتعويض غياب الثنائي؛ حيث يتم البحث عن خصم جديد للمصارعة كيلسي ريغان (Kelsey Raegan) لتعويض غياب ستيف دي لاندر، بالإضافة إلى مساعدة فريق *Team New South* (المكون من دامب ساندرز، بيغ ديف، وشين كريستوفر) في العثور على عضو رابع بديل لمانس وارنر لخوض نزال القفص الحديدي العنيف المرتقب Atomic Warfare (4 ضد 4) في مواجهة فريق *The Program*.
+
+<https://x.com/NewSouth_PW/status/2089473614831566879?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2089473614831566879%7Ctwgr%5Ea7968fa8d504695e45b41fddbee1532c1e8747a5%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fmance-warner-and-steph-de-lander-pulled-from-new-south-event-due-to-aew-roh-taping%2F>
