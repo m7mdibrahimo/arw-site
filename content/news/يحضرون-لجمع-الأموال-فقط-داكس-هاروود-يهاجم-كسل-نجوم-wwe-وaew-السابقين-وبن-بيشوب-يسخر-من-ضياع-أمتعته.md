@@ -42,3 +42,7 @@ layout: post-layout.njk
 > *بدلاً من الجلوس والاستسلام، توجهت إلى المتجر وتصارعت بشورت بارت سيمبسون وحذاء إير ماكس.. الرجال الأقل عزيمة كانوا ليجعلوا الموقف يفسد ليلتهم، لكنني أجد الحلول دائماً"*.
 
 يُذكر أن بيشوب زامل كيري مورتون في العرض لتحدي بطلي الفرق سيزار بونوني ونواه كيكوا، قبل أن يخسرا المواجهة، في العرض الذي شهد أيضاً تتويج مات ريدل بلقب BRCW للوزن الثقيل وفوز ليسي لين بلقب السيدات.
+
+<https://youtu.be/pOStl9LCwfs>
+
+<https://x.com/bigtroubleBB/status/2089382582710382835?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2089382582710382835%7Ctwgr%5E5b4caa23edab94e35a3cf963539b2e3941f1461e%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.ewrestlingnews.com%2Fnews%2Faew%2Fdax-harwood-blasts-lazy-wwe-aew-veterans-ben-bishop-calls-out-jetblue-over-lost-gear>
