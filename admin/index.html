@@ -422,8 +422,8 @@
           const wrap = document.createElement('div');
           wrap.id = 'arw-admin-pagination-widget';
           wrap.style.cssText = `
-            margin: 8px 0 14px 0;
-            display: flex;
+            margin: 10px 0 16px 0 !important;
+            display: flex !important;
             align-items: center;
             justify-content: flex-start;
             flex-wrap: wrap;
@@ -432,9 +432,13 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 12.5px;
             z-index: 999;
-            width: 100%;
-            box-sizing: border-box;
+            width: 100% !important;
+            max-width: 100% !important;
+            flex-shrink: 0 !important;
+            box-sizing: border-box !important;
             position: relative;
+            visibility: visible !important;
+            opacity: 1 !important;
           `;
 
           wrap.innerHTML = `
@@ -442,7 +446,7 @@
             <div style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:8px; background:#ffffff; padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; box-shadow:0 1px 4px rgba(0,0,0,0.06); width:100%; box-sizing:border-box;">
               
               <!-- Section-Specific Instant Search Box -->
-              <div style="position:relative; display:inline-flex; align-items:center; min-width:200px; max-width:300px; flex:1 1 200px;">
+              <div style="position:relative; display:inline-flex; align-items:center; min-width:200px; max-width:320px; flex:1 1 200px;">
                 <svg style="position:absolute; right:9px; pointer-events:none; color:#64748b;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -486,7 +490,7 @@
                 <button id="arw-prev-page" class="arw-nav-btn" title="الصفحة السابقة">
                   السابق ◀
                 </button>
-                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:34px; text-align:center;">1</span>
+                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:38px; text-align:center;">1/1</span>
                 <button id="arw-next-page" class="arw-nav-btn" title="الصفحة التالية">
                   ▶ التالي
                 </button>
@@ -502,6 +506,11 @@
             const styleEl = document.createElement('style');
             styleEl.id = 'arw-pagination-style';
             styleEl.textContent = `
+              #arw-admin-pagination-widget {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+              }
               #arw-section-search:focus {
                 border-color: #0284c7 !important;
                 background: #ffffff !important;
@@ -722,84 +731,63 @@
         }
 
         function mountWidgetInDOM(widget, cards) {
-          // If already correctly mounted in DOM above sort bar, cards or below header
-          if (widget.parentElement && document.body.contains(widget)) {
-            const p = widget.parentElement;
-            // Ensure not misplaced in body, html, aside, or root flex container
-            if (!p.closest('aside') && !p.closest('nav') && p.tagName !== 'BODY' && !p.classList.contains('nc-app-root')) {
-              // If it has valid siblings like headings, sort bar or cards, it is good
-              if (widget.nextElementSibling || widget.previousElementSibling) {
-                return true;
-              }
-            }
-          }
-
-          // STRATEGY 1: Place directly before the "Sort by" / Toolbar row (Matches exact UI layout)
-          const sortElements = Array.from(document.querySelectorAll('*'))
-            .filter(el => {
-              if (el.closest('#arw-admin-pagination-widget') || el.closest('aside') || el.closest('nav')) return false;
-              const t = el.textContent?.trim() || '';
-              return t.startsWith('Sort by') || t.startsWith('ترتيب') || t === 'Sort by' || t === 'ترتيب';
-            });
-
-          if (sortElements.length > 0) {
-            // Find the top-level container row of this sort element
-            let targetRow = sortElements[0];
-            while (
-              targetRow.parentElement &&
-              targetRow.parentElement.tagName !== 'MAIN' &&
-              targetRow.parentElement.tagName !== 'BODY' &&
-              !targetRow.parentElement.id?.includes('nc-root') &&
-              !targetRow.parentElement.classList?.value?.includes('AppMain') &&
-              targetRow.parentElement.children.length <= 4
-            ) {
-              targetRow = targetRow.parentElement;
-            }
-
-            if (targetRow && targetRow.parentElement && targetRow !== widget) {
-              targetRow.parentElement.insertBefore(widget, targetRow);
-              return true;
-            }
-          }
-
-          // STRATEGY 2: Locate the Collection Header row (h1 with title like "آخر الأخبار" + "+ new" button)
-          const headings = Array.from(document.querySelectorAll('h1, h2'))
+          // 1. Locate the collection title / header (h1 inside the active view)
+          const headings = Array.from(document.querySelectorAll('h1, h2, h3'))
             .filter(el => !el.closest('aside') && !el.closest('nav') && !el.closest('#arw-admin-pagination-widget'));
           
           if (headings.length > 0) {
-            const h1 = headings[0];
-            let headerRow = h1;
+            const heading = headings[0];
+            let headerRow = heading;
             while (
               headerRow.parentElement &&
               headerRow.parentElement.tagName !== 'MAIN' &&
               headerRow.parentElement.tagName !== 'BODY' &&
-              !headerRow.parentElement.id?.includes('nc-root') &&
-              !headerRow.parentElement.classList?.value?.includes('AppMain') &&
-              headerRow.parentElement.children.length <= 4
+              headerRow.parentElement.id !== 'nc-root' &&
+              headerRow.parentElement.children.length <= 3
             ) {
               headerRow = headerRow.parentElement;
             }
 
             if (headerRow && headerRow.parentElement) {
+              if (widget.previousElementSibling === headerRow && widget.parentElement === headerRow.parentElement) {
+                return true;
+              }
               headerRow.parentElement.insertBefore(widget, headerRow.nextSibling);
               return true;
             }
           }
 
-          // STRATEGY 3: Before entry cards container
+          // 2. Locate cards / entries grid or list
           if (cards.length > 0 && cards[0].parentElement) {
-            const wrapper = cards[0].parentElement;
-            if (wrapper.parentElement) {
-              wrapper.parentElement.insertBefore(widget, wrapper);
+            let container = cards[0].parentElement;
+            if (container && container.parentElement) {
+              if (widget.nextElementSibling === container) {
+                return true;
+              }
+              container.parentElement.insertBefore(widget, container);
               return true;
             }
           }
 
-          // STRATEGY 4: Inside the main content view container (excluding sidebar)
-          const contentArea = document.querySelector('[class*="CollectionMain"], [class*="CollectionContainer"], [class*="CollectionPage"], [class*="collectionPage"], main, [role="main"]');
-          if (contentArea && !contentArea.closest('aside') && !contentArea.closest('nav')) {
-            contentArea.insertBefore(widget, contentArea.children[1] || contentArea.firstChild);
+          // 3. Fallback: Main content area (excluding sidebar)
+          const mainArea = document.querySelector('main, [role="main"], [class*="CollectionMain"], [class*="CollectionContainer"], [class*="AppMain"], [class*="collectionPage"]');
+          if (mainArea && !mainArea.closest('aside') && !mainArea.closest('nav')) {
+            if (widget.parentElement === mainArea) {
+              return true;
+            }
+            mainArea.insertBefore(widget, mainArea.firstChild);
             return true;
+          }
+
+          // 4. Ultimate Fallback: #nc-root main pane
+          const ncRoot = document.getElementById('nc-root');
+          if (ncRoot) {
+            const panes = Array.from(ncRoot.querySelectorAll('div')).filter(d => !d.closest('aside') && !d.closest('nav') && d.children.length > 0);
+            if (panes.length > 0) {
+              if (widget.parentElement === panes[0]) return true;
+              panes[0].insertBefore(widget, panes[0].firstChild);
+              return true;
+            }
           }
 
           return false;
@@ -836,8 +824,8 @@
             widget.querySelector('#arw-page-info').textContent = 'جاري التحميل...';
             widget.querySelector('#arw-first-page').disabled = (currentPage <= 1);
             widget.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
-            widget.querySelector('#arw-next-page').disabled = false;
-            widget.querySelector('#arw-last-page').disabled = false;
+            widget.querySelector('#arw-next-page').disabled = true;
+            widget.querySelector('#arw-last-page').disabled = true;
             widget.querySelector('#arw-page-num').textContent = `${currentPage}`;
             return;
           }
@@ -859,7 +847,7 @@
             widget.querySelector('#arw-prev-page').disabled = true;
             widget.querySelector('#arw-next-page').disabled = true;
             widget.querySelector('#arw-last-page').disabled = true;
-            widget.querySelector('#arw-page-num').textContent = '0';
+            widget.querySelector('#arw-page-num').textContent = '0/0';
             return;
           }
 
@@ -927,7 +915,7 @@
               if (clearBtn) clearBtn.style.display = 'none';
             }
             applyPagination();
-          }, 20);
+          }, 30);
         }
 
         window.addEventListener('hashchange', () => {
@@ -946,18 +934,18 @@
 
         observer.observe(document.body, { childList: true, subtree: true });
 
-        // Continuous sync check every 250ms
+        // Continuous sync check every 300ms
         setInterval(() => {
           if (isCollectionListView()) {
             applyPagination();
           }
-        }, 250);
+        }, 300);
 
         // Initial triggers
         scheduleUpdate();
-        setTimeout(scheduleUpdate, 100);
-        setTimeout(scheduleUpdate, 300);
-        setTimeout(scheduleUpdate, 700);
+        setTimeout(scheduleUpdate, 150);
+        setTimeout(scheduleUpdate, 400);
+        setTimeout(scheduleUpdate, 800);
         setTimeout(scheduleUpdate, 1500);
       })();
     }
