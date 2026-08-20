@@ -369,7 +369,7 @@
       document.body.appendChild(manualBtn);
 
       // ==========================================
-      // Professional Compact Dropdown & Collection Pagination
+      // Professional Compact Dropdown & Collection Pagination (Bulletproof)
       // ==========================================
       (function initAdminPagination() {
         let currentPage = 1;
@@ -386,11 +386,11 @@
 
         function isCollectionListView() {
           const hash = window.location.hash || '';
-          // If in entry editor or new entry, not a collection list view
-          if (hash.includes('/entries/') || hash.includes('/new') || hash.includes('/workflow') || hash.includes('/media')) {
+          // If in entry editor, new entry, workflow, or media modal -> not a list view
+          if (hash.includes('/entries/') || hash.includes('/new') || hash.includes('/workflow') || hash.includes('/media') || hash.includes('/settings')) {
             return false;
           }
-          // If hash is #/collections/... or root (#/ or empty when in collections)
+          // If hash is #/collections/... or root (#/ or empty)
           if (hash.startsWith('#/collections') || hash === '#/' || hash === '' || hash === '#') {
             return true;
           }
@@ -405,12 +405,12 @@
           const wrap = document.createElement('div');
           wrap.id = 'arw-admin-pagination-widget';
           wrap.style.cssText = `
-            margin: 10px 0 16px 0;
+            margin: 8px 0 14px 0;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
             direction: rtl;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 12.5px;
@@ -421,7 +421,7 @@
 
           wrap.innerHTML = `
             <!-- Unified Compact Control Bar -->
-            <div style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:8px; background:#ffffff; padding:4px 8px; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+            <div style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:8px; background:#ffffff; padding:5px 10px; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,0.05); max-width:100%;">
               
               <!-- Dropdown Menu for Page Size -->
               <div style="position:relative; display:inline-block;" id="arw-dropdown-wrapper">
@@ -431,7 +431,7 @@
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
 
-                <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:175px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.14), 0 4px 10px rgba(0,0,0,0.05); padding:5px 0; z-index:99999;">
+                <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:185px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.18), 0 4px 10px rgba(0,0,0,0.06); padding:5px 0; z-index:999999;">
                   <div class="arw-menu-item" data-size="10">10 مواضيع في الصفحة</div>
                   <div class="arw-menu-item" data-size="20">20 موضوع في الصفحة</div>
                   <div class="arw-menu-item" data-size="30">30 موضوع في الصفحة</div>
@@ -449,12 +449,18 @@
               <span id="arw-page-info" style="color:#64748b; font-weight:600; font-size:12px;">جاري الفحص...</span>
               
               <div style="display:inline-flex; align-items:center; gap:4px;">
+                <button id="arw-first-page" class="arw-nav-btn" title="الصفحة الأولى" style="padding:4px 6px;">
+                  ◀◀
+                </button>
                 <button id="arw-prev-page" class="arw-nav-btn" title="الصفحة السابقة">
                   السابق ◀
                 </button>
-                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:28px; text-align:center;">1</span>
+                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:32px; text-align:center;">1/1</span>
                 <button id="arw-next-page" class="arw-nav-btn" title="الصفحة التالية">
                   ▶ التالي
+                </button>
+                <button id="arw-last-page" class="arw-nav-btn" title="الصفحة الأخيرة" style="padding:4px 6px;">
+                  ▶▶
                 </button>
               </div>
 
@@ -468,7 +474,7 @@
             styleEl.textContent = `
               #arw-dropdown-btn:hover {
                 border-color: #0284c7 !important;
-                background: #f8fafc !important;
+                background: #f0f9ff !important;
               }
               .arw-menu-item {
                 padding: 7px 14px;
@@ -557,6 +563,12 @@
           });
 
           // Pagination buttons
+          wrap.querySelector('#arw-first-page').onclick = (e) => {
+            e.preventDefault();
+            currentPage = 1;
+            applyPagination(true);
+          };
+
           wrap.querySelector('#arw-prev-page').onclick = (e) => {
             e.preventDefault();
             if (currentPage > 1) {
@@ -571,51 +583,87 @@
             applyPagination(true);
           };
 
+          wrap.querySelector('#arw-last-page').onclick = (e) => {
+            e.preventDefault();
+            const cards = findEntryCards();
+            const limit = typeof pageSize === 'number' ? pageSize : 20;
+            const totalPages = Math.max(1, Math.ceil(cards.length / limit));
+            currentPage = totalPages;
+            applyPagination(true);
+          };
+
           paginationContainer = wrap;
           return wrap;
         }
 
         function findEntryCards() {
-          // 1. Find all links that represent entries (href contains /entries/)
-          const allLinks = Array.from(document.querySelectorAll('a[href*="/entries/"]'));
+          // Find all entry links (excluding inside our widget)
+          const allLinks = Array.from(document.querySelectorAll('a[href*="/entries/"], a[href*="#/collections/"][href*="/entries/"]'))
+            .filter(a => !a.closest('#arw-admin-pagination-widget'));
+
           if (!allLinks.length) return [];
 
-          // 2. Identify the parent container of the entries (grid or list)
           const cards = [];
           const seen = new Set();
 
-          // Strategy A: If links are inside an <ul> or <ol> list
-          const listContainer = document.querySelector('ul[class*="CardsGrid"], ul[class*="List"], div[class*="CardsGrid"], div[class*="CollectionMain"], main ul');
-          if (listContainer) {
-            const directItems = Array.from(listContainer.children).filter(child => child.querySelector('a[href*="/entries/"]'));
-            if (directItems.length > 0) {
-              return directItems;
-            }
-          }
-
-          // Strategy B: Trace up from each link to find its card root
           allLinks.forEach(link => {
-            let el = link.closest('li') || link.closest('tr');
-            if (!el) {
-              let parent = link.parentElement;
-              while (parent && 
-                     parent.tagName !== 'MAIN' && 
-                     parent.tagName !== 'SECTION' && 
-                     parent.tagName !== 'BODY' &&
-                     !parent.id?.includes('nc-root') &&
-                     parent.children.length <= 2) {
-                el = parent;
-                parent = el.parentElement;
+            // 1. Closest <li> or <tr>
+            let card = link.closest('li') || link.closest('tr');
+            
+            // 2. If not inside li/tr, climb up until direct child of multi-child container
+            if (!card) {
+              let el = link;
+              while (
+                el.parentElement &&
+                el.parentElement.tagName !== 'MAIN' &&
+                el.parentElement.tagName !== 'SECTION' &&
+                el.parentElement.tagName !== 'BODY' &&
+                !el.parentElement.className?.includes('CollectionMain') &&
+                !el.parentElement.className?.includes('CollectionContainer') &&
+                !el.parentElement.id?.includes('nc-root') &&
+                el.parentElement.children.length <= 1
+              ) {
+                el = el.parentElement;
               }
-              if (!el) el = link;
+              card = el;
             }
-            if (!seen.has(el)) {
-              seen.add(el);
-              cards.push(el);
+
+            if (card && !seen.has(card)) {
+              seen.add(card);
+              cards.push(card);
             }
           });
 
           return cards;
+        }
+
+        function mountWidgetInDOM(widget, cards) {
+          // Check if already in the right place
+          const controls = document.querySelector('[class*="CollectionControls"], [class*="ControlBar"], [class*="CollectionTop"]');
+          if (controls && controls.parentElement) {
+            if (controls.nextElementSibling !== widget) {
+              controls.parentElement.insertBefore(widget, controls.nextElementSibling);
+            }
+            return true;
+          }
+
+          // Before the cards container
+          if (cards.length > 0 && cards[0].parentElement) {
+            const wrapper = cards[0].parentElement;
+            if (wrapper.parentElement && wrapper.previousElementSibling !== widget) {
+              wrapper.parentElement.insertBefore(widget, wrapper);
+              return true;
+            }
+          }
+
+          // Inside CollectionMain or main
+          const main = document.querySelector('[class*="CollectionMain"], [class*="CollectionContainer"], main, #nc-root');
+          if (main && !main.contains(widget)) {
+            main.insertBefore(widget, main.firstChild);
+            return true;
+          }
+
+          return false;
         }
 
         function applyPagination(shouldScroll = false) {
@@ -629,31 +677,9 @@
           const cards = findEntryCards();
           const total = cards.length;
 
-          // Inject widget into collection page view
+          // Inject / Ensure widget is in collection page view
           const widget = createPaginationWidget();
-          
-          // Place widget above cards container or in main content container
-          const firstCard = cards[0];
-          let inserted = false;
-
-          if (firstCard && firstCard.parentElement) {
-            const cardsContainer = firstCard.parentElement;
-            if (cardsContainer.parentElement && widget.parentElement !== cardsContainer.parentElement) {
-              cardsContainer.parentElement.insertBefore(widget, cardsContainer);
-              inserted = true;
-            }
-          } 
-          
-          if (!inserted && !document.body.contains(widget)) {
-            const mainContainer = document.querySelector('main') || 
-                                  document.querySelector('[class*="CollectionTop"]') || 
-                                  document.querySelector('[class*="CollectionContainer"]') ||
-                                  document.querySelector('[class*="AppHeader"] ~ div') ||
-                                  document.querySelector('#nc-root');
-            if (mainContainer && !mainContainer.contains(widget)) {
-              mainContainer.prepend(widget);
-            }
-          }
+          mountWidgetInDOM(widget, cards);
 
           // Update Dropdown label and active states
           const labelText = pageSize === 'all' ? 'عرض: جميع المواضيع' : `عرض: ${pageSize} مواضيع`;
@@ -670,18 +696,22 @@
           });
 
           if (total === 0) {
-            widget.querySelector('#arw-page-info').textContent = 'لا توجد مواضيع';
+            widget.querySelector('#arw-page-info').textContent = 'جاري التحميل / لا توجد مواضيع';
+            widget.querySelector('#arw-first-page').disabled = true;
             widget.querySelector('#arw-prev-page').disabled = true;
             widget.querySelector('#arw-next-page').disabled = true;
-            widget.querySelector('#arw-page-num').textContent = '1';
+            widget.querySelector('#arw-last-page').disabled = true;
+            widget.querySelector('#arw-page-num').textContent = '1/1';
             return;
           }
 
           if (pageSize === 'all') {
             cards.forEach(c => { c.style.display = ''; });
             widget.querySelector('#arw-page-info').innerHTML = `عرض <b>الكل (${total})</b>`;
+            widget.querySelector('#arw-first-page').disabled = true;
             widget.querySelector('#arw-prev-page').disabled = true;
             widget.querySelector('#arw-next-page').disabled = true;
+            widget.querySelector('#arw-last-page').disabled = true;
             widget.querySelector('#arw-page-num').textContent = 'الكل';
             return;
           }
@@ -704,8 +734,10 @@
 
           widget.querySelector('#arw-page-info').innerHTML = `عرض <b>${start + 1}-${end}</b> من <b>${total}</b>`;
           widget.querySelector('#arw-page-num').textContent = `${currentPage}/${totalPages}`;
+          widget.querySelector('#arw-first-page').disabled = (currentPage <= 1);
           widget.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
           widget.querySelector('#arw-next-page').disabled = (currentPage >= totalPages);
+          widget.querySelector('#arw-last-page').disabled = (currentPage >= totalPages);
 
           if (shouldScroll && widget) {
             widget.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -723,7 +755,7 @@
               currentPage = 1;
             }
             applyPagination();
-          }, 80);
+          }, 50);
         }
 
         window.addEventListener('hashchange', () => {
@@ -737,6 +769,13 @@
         });
 
         observer.observe(document.body, { childList: true, subtree: true });
+
+        // Continuous sync check every 600ms to guarantee presence across all collections
+        setInterval(() => {
+          if (isCollectionListView()) {
+            applyPagination();
+          }
+        }, 600);
 
         // Initial triggers
         setTimeout(scheduleUpdate, 150);
