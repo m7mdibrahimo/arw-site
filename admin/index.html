@@ -417,14 +417,14 @@
         }
 
         function createPaginationWidget() {
-          if (paginationContainer && document.body.contains(paginationContainer)) {
+          if (paginationContainer) {
             return paginationContainer;
           }
 
           const wrap = document.createElement('div');
           wrap.id = 'arw-admin-pagination-widget';
           wrap.style.cssText = `
-            margin: 8px 0 14px 0;
+            margin: 10px 0 16px 0;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -433,7 +433,7 @@
             direction: rtl;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 12.5px;
-            z-index: 99;
+            z-index: 999;
             width: 100%;
             box-sizing: border-box;
             position: relative;
@@ -479,7 +479,7 @@
               <div style="width:1px; height:20px; background:#e2e8f0; margin:0 2px;"></div>
 
               <!-- Page Info & Navigation Controls -->
-              <span id="arw-page-info" style="color:#64748b; font-weight:600; font-size:12px; margin-right:auto; margin-left:8px;">جاري الفحص...</span>
+              <span id="arw-page-info" style="color:#64748b; font-weight:600; font-size:12px; margin-right:auto; margin-left:8px;">جاري التحميل...</span>
               
               <div style="display:inline-flex; align-items:center; gap:4px;">
                 <button id="arw-first-page" class="arw-nav-btn" title="الصفحة الأولى" style="padding:4px 6px;">
@@ -657,17 +657,17 @@
         }
 
         function findEntryCards() {
-          // Find all entry links (excluding inside our widget)
+          // Find all entry links (excluding inside our widget or sidebar navigation)
           const allLinks = Array.from(document.querySelectorAll('a[href*="/entries/"], a[href*="#/collections/"][href*="/entries/"]'))
-            .filter(a => !a.closest('#arw-admin-pagination-widget'));
+            .filter(a => !a.closest('#arw-admin-pagination-widget') && !a.closest('aside') && !a.closest('nav'));
 
           if (!allLinks.length) return [];
 
-          // Find the common container of entry cards (Grid or List)
+          // Find the common container of entry cards (Grid or List or Table)
           let entriesContainer = null;
           for (const link of allLinks) {
-            const candidate = link.closest('[class*="CardsGrid"], [class*="Grid"], [class*="List"], [class*="Entries"], ul, table, tbody');
-            if (candidate && !candidate.id?.includes('arw-admin-pagination-widget')) {
+            const candidate = link.closest('[class*="CardsGrid"], [class*="Grid"], [class*="List"], [class*="Entries"], [class*="entries"], ul, table, tbody, div');
+            if (candidate && !candidate.id?.includes('arw-admin-pagination-widget') && candidate.children.length > 1) {
               entriesContainer = candidate;
               break;
             }
@@ -690,9 +690,9 @@
               }
             }
 
-            // 2. Closest <li> or <tr>
+            // 2. Closest <li> or <tr> or card element
             if (!card) {
-              card = link.closest('li') || link.closest('tr') || link.closest('[class*="Card"], [class*="ListItem"]');
+              card = link.closest('li') || link.closest('tr') || link.closest('[class*="Card"], [class*="ListItem"], [class*="card"]');
             }
 
             // 3. Fallback climbing
@@ -703,8 +703,6 @@
                 el.parentElement.tagName !== 'MAIN' &&
                 el.parentElement.tagName !== 'SECTION' &&
                 el.parentElement.tagName !== 'BODY' &&
-                !el.parentElement.className?.includes('CollectionMain') &&
-                !el.parentElement.className?.includes('CollectionContainer') &&
                 !el.parentElement.id?.includes('nc-root') &&
                 el.parentElement.children.length <= 1
               ) {
@@ -732,16 +730,57 @@
         }
 
         function mountWidgetInDOM(widget, cards) {
-          // 1. Immediately after Collection controls or header
-          const controls = document.querySelector('[class*="CollectionControls"], [class*="ControlBar"], [class*="CollectionTop"], [class*="CollectionHeader"], [class*="ViewControls"]');
-          if (controls && controls.parentElement) {
-            if (controls.nextElementSibling !== widget) {
-              controls.parentElement.insertBefore(widget, controls.nextElementSibling);
+          // Check if already well-mounted inside the active view
+          if (widget.parentElement && document.body.contains(widget)) {
+            // If already located right before a sort control or cards grid, keep it
+            const nextEl = widget.nextElementSibling;
+            if (nextEl && (
+              nextEl.innerText?.includes('Sort by') ||
+              nextEl.innerText?.includes('ترتيب') ||
+              nextEl.querySelector?.('[class*="Card"], [class*="card"], a[href*="/entries/"]') ||
+              cards.some(c => nextEl.contains(c))
+            )) {
+              return true;
+            }
+          }
+
+          // STRATEGY 1: Find Collection Title / Header (e.g. <h1>آخر الأخبار</h1> or + خبر button)
+          const allHeadings = Array.from(document.querySelectorAll('h1, h2, [class*="Header"], [class*="header"], [class*="Title"]'))
+            .filter(el => !el.closest('aside') && !el.closest('nav') && !el.closest('#arw-admin-pagination-widget'));
+          
+          let headerContainer = null;
+          for (const heading of allHeadings) {
+            // Find container row that holds title and "+ new" button
+            const candidate = heading.closest('div');
+            if (candidate && candidate.parentElement && !candidate.closest('aside') && !candidate.closest('nav')) {
+              // Ensure this is in the main collection view
+              headerContainer = candidate;
+              break;
+            }
+          }
+
+          if (headerContainer && headerContainer.parentElement) {
+            if (headerContainer.nextElementSibling !== widget) {
+              headerContainer.parentElement.insertBefore(widget, headerContainer.nextElementSibling);
             }
             return true;
           }
 
-          // 2. Before the cards container / grid / list
+          // STRATEGY 2: Find Sort / ViewControls bar (containing Sort by or grid icons)
+          const sortElements = Array.from(document.querySelectorAll('div, section, span, button'))
+            .filter(el => (el.innerText?.includes('Sort by') || el.innerText?.includes('ترتيب')) && !el.closest('#arw-admin-pagination-widget') && !el.closest('aside'));
+          
+          if (sortElements.length > 0) {
+            const sortBar = sortElements[0].closest('div');
+            if (sortBar && sortBar.parentElement) {
+              if (sortBar.previousElementSibling !== widget) {
+                sortBar.parentElement.insertBefore(widget, sortBar);
+              }
+              return true;
+            }
+          }
+
+          // STRATEGY 3: Find the cards container
           if (cards.length > 0 && cards[0].parentElement) {
             const wrapper = cards[0].parentElement;
             if (wrapper.parentElement && wrapper.previousElementSibling !== widget) {
@@ -750,16 +789,22 @@
             }
           }
 
-          // 3. Inside CollectionMain or main or section
-          const main = document.querySelector('[class*="CollectionMain"], [class*="CollectionContainer"], [class*="CollectionPage"], main, section');
-          if (main && !main.contains(widget)) {
-            main.insertBefore(widget, main.firstChild);
+          // STRATEGY 4: Main Content Container (main, role="main", or right sibling to sidebar)
+          const mainArea = document.querySelector('main, [role="main"], [class*="CollectionMain"], [class*="CollectionContainer"], [class*="AppMain"], [class*="collectionPage"]');
+          if (mainArea && !mainArea.contains(widget)) {
+            mainArea.insertBefore(widget, mainArea.firstChild);
             return true;
           }
 
-          // 4. Fallback in nc-root
+          // STRATEGY 5: Primary child container inside #nc-root
           const ncRoot = document.querySelector('#nc-root');
-          if (ncRoot && !ncRoot.contains(widget)) {
+          if (ncRoot) {
+            // Find the main pane (excluding sidebar)
+            const panes = Array.from(ncRoot.querySelectorAll('div')).filter(d => !d.closest('aside') && !d.closest('nav') && d.children.length > 1);
+            if (panes.length > 0) {
+              panes[0].insertBefore(widget, panes[0].children[1] || panes[0].firstChild);
+              return true;
+            }
             ncRoot.appendChild(widget);
             return true;
           }
@@ -891,7 +936,7 @@
               if (clearBtn) clearBtn.style.display = 'none';
             }
             applyPagination();
-          }, 40);
+          }, 30);
         }
 
         window.addEventListener('hashchange', () => {
@@ -911,12 +956,12 @@
 
         observer.observe(document.body, { childList: true, subtree: true });
 
-        // Continuous sync check every 400ms to guarantee presence across all collections
+        // Continuous sync check every 300ms to guarantee presence across all collections
         setInterval(() => {
           if (isCollectionListView()) {
             applyPagination();
           }
-        }, 400);
+        }, 300);
 
         // Initial triggers
         setTimeout(scheduleUpdate, 100);
