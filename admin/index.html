@@ -424,7 +424,12 @@
 
         function isCollectionListView() {
           const hash = window.location.hash || '';
-          if (hash.includes('/entries/') || hash.includes('/new') || hash.includes('/workflow') || hash.includes('/media') || hash.includes('/settings')) {
+          // IMPORTANT: these must match whole path segments (bounded by "/" or end of
+          // string), NOT plain substrings. A plain .includes('/new') check would wrongly
+          // match the "news" collection itself (because "news" starts with "new"), which
+          // is exactly why the widget never appeared in "الأخبار" before.
+          const isSubRoute = (segment) => new RegExp('\\/' + segment + '(\\/|$)').test(hash);
+          if (hash.includes('/entries/') || isSubRoute('new') || isSubRoute('workflow') || isSubRoute('media') || isSubRoute('settings')) {
             return false;
           }
           if (hash.startsWith('#/collections') || hash === '#/' || hash === '' || hash === '#') {
