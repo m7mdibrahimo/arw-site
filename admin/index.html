@@ -392,6 +392,288 @@
         }
       };
       document.body.appendChild(manualBtn);
+
+      // ==========================================
+      // Smart Admin Collection Pagination & Speed Optimizer
+      // ==========================================
+      (function initAdminPagination() {
+        let currentPage = 1;
+        let pageSize = parseInt(localStorage.getItem('arw_admin_page_size') || '20', 10);
+        if (isNaN(pageSize) && localStorage.getItem('arw_admin_page_size') !== 'all') {
+          pageSize = 20;
+        } else if (localStorage.getItem('arw_admin_page_size') === 'all') {
+          pageSize = 'all';
+        }
+
+        let lastHash = '';
+        let paginationBar = null;
+
+        function getCollectionName() {
+          const hash = window.location.hash || '';
+          if (hash.startsWith('#/collections/') && !hash.includes('/entries/') && !hash.includes('/new')) {
+            const parts = hash.replace('#/collections/', '').split('?')[0].split('/');
+            return parts[0] || '';
+          }
+          return '';
+        }
+
+        function createPaginationBar() {
+          if (paginationBar && document.body.contains(paginationBar)) {
+            return paginationBar;
+          }
+
+          const bar = document.createElement('div');
+          bar.id = 'arw-admin-pagination-bar';
+          bar.style.cssText = `
+            margin: 16px 20px 20px;
+            padding: 14px 18px;
+            background: #1a202c;
+            color: #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+            border: 1px solid #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 13.5px;
+            direction: rtl;
+            z-index: 100;
+            transition: all 0.2s ease;
+          `;
+
+          bar.innerHTML = `
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+              <span style="font-weight:700; color:#cbd5e0; display:flex; align-items:center; gap:6px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                عدد المواضيع المعروضة:
+              </span>
+              <div id="arw-size-buttons" style="display:inline-flex; gap:4px; background:#2d3748; padding:3px; border-radius:8px;">
+                <button data-size="10" class="arw-p-btn">10</button>
+                <button data-size="20" class="arw-p-btn">20</button>
+                <button data-size="30" class="arw-p-btn">30</button>
+                <button data-size="50" class="arw-p-btn">50</button>
+                <button data-size="100" class="arw-p-btn">100</button>
+                <button data-size="all" class="arw-p-btn">الكل</button>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <span id="arw-page-info" style="color:#94a3b8; font-weight:600; font-size:13px;">جاري حساب المواضيع...</span>
+              <div style="display:inline-flex; align-items:center; gap:6px;">
+                <button id="arw-prev-page" class="arw-nav-btn" style="padding:6px 12px; border-radius:8px; border:1px solid #475569; background:#334155; color:#fff; cursor:pointer; font-weight:bold; font-size:12.5px; transition:0.15s;">
+                  السابق ◀
+                </button>
+                <span id="arw-page-num" style="padding:4px 10px; background:#0f172a; border-radius:6px; color:#38bdf8; font-weight:700; font-size:13px; border:1px solid #1e293b;">1</span>
+                <button id="arw-next-page" class="arw-nav-btn" style="padding:6px 12px; border-radius:8px; border:1px solid #475569; background:#334155; color:#fff; cursor:pointer; font-weight:bold; font-size:12.5px; transition:0.15s;">
+                  ▶ التالي
+                </button>
+              </div>
+            </div>
+          `;
+
+          // Add inline button styles
+          const styleEl = document.createElement('style');
+          styleEl.textContent = `
+            .arw-p-btn {
+              padding: 4px 10px;
+              border: none;
+              background: transparent;
+              color: #cbd5e0;
+              border-radius: 6px;
+              cursor: pointer;
+              font-weight: 600;
+              font-size: 12.5px;
+              transition: all 0.15s ease;
+            }
+            .arw-p-btn:hover {
+              background: rgba(255,255,255,0.1);
+              color: #ffffff;
+            }
+            .arw-p-btn.active {
+              background: #0284c7 !important;
+              color: #ffffff !important;
+              font-weight: 700;
+              box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+            }
+            .arw-nav-btn:hover:not(:disabled) {
+              background: #0284c7 !important;
+              border-color: #0284c7 !important;
+            }
+            .arw-nav-btn:disabled {
+              opacity: 0.35 !important;
+              cursor: not-allowed !important;
+            }
+          `;
+          document.head.appendChild(styleEl);
+
+          // Events
+          bar.querySelectorAll('.arw-p-btn').forEach(btn => {
+            btn.onclick = () => {
+              const val = btn.getAttribute('data-size');
+              pageSize = val === 'all' ? 'all' : parseInt(val, 10);
+              localStorage.setItem('arw_admin_page_size', String(pageSize));
+              currentPage = 1;
+              applyPagination();
+            };
+          });
+
+          bar.querySelector('#arw-prev-page').onclick = () => {
+            if (currentPage > 1) {
+              currentPage--;
+              applyPagination(true);
+            }
+          };
+
+          bar.querySelector('#arw-next-page').onclick = () => {
+            currentPage++;
+            applyPagination(true);
+          };
+
+          paginationBar = bar;
+          return bar;
+        }
+
+        function findEntryCards() {
+          const links = Array.from(document.querySelectorAll('a[href*="#/collections/"][href*="/entries/"]'));
+          if (!links.length) return [];
+
+          // Find top-level card container for each link in the collection view
+          const cards = [];
+          const seen = new Set();
+
+          links.forEach(link => {
+            let el = link;
+            // Traverse up to find the direct child of the cards grid/list container
+            while (el.parentElement && 
+                   el.parentElement.tagName !== 'MAIN' && 
+                   el.parentElement.tagName !== 'SECTION' &&
+                   !el.parentElement.id?.includes('nc-root') &&
+                   el.parentElement.children.length < 5) {
+              el = el.parentElement;
+            }
+            if (!seen.has(el)) {
+              seen.add(el);
+              cards.push(el);
+            }
+          });
+
+          return cards.length ? cards : links;
+        }
+
+        function applyPagination(shouldScroll = false) {
+          const collection = getCollectionName();
+          if (!collection) {
+            if (paginationBar && paginationBar.parentNode) {
+              paginationBar.parentNode.removeChild(paginationBar);
+            }
+            return;
+          }
+
+          const cards = findEntryCards();
+          const total = cards.length;
+
+          // Inject bar into collection page view
+          const bar = createPaginationBar();
+          
+          // Locate the best insertion point (above cards grid or inside main collection container)
+          if (!document.body.contains(bar)) {
+            const firstCard = cards[0];
+            const mainContainer = document.querySelector('main') || document.querySelector('[class*="CollectionTop"]') || document.querySelector('[class*="CollectionContainer"]');
+            if (firstCard && firstCard.parentElement) {
+              firstCard.parentElement.parentElement.insertBefore(bar, firstCard.parentElement);
+            } else if (mainContainer) {
+              mainContainer.prepend(bar);
+            } else {
+              document.body.prepend(bar);
+            }
+          }
+
+          // Update active buttons in toolbar
+          bar.querySelectorAll('.arw-p-btn').forEach(btn => {
+            const val = btn.getAttribute('data-size');
+            if ((pageSize === 'all' && val === 'all') || (pageSize !== 'all' && parseInt(val, 10) === pageSize)) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+
+          if (total === 0) {
+            bar.querySelector('#arw-page-info').textContent = 'لا توجد مواضيع حالياً';
+            bar.querySelector('#arw-prev-page').disabled = true;
+            bar.querySelector('#arw-next-page').disabled = true;
+            bar.querySelector('#arw-page-num').textContent = '1';
+            return;
+          }
+
+          if (pageSize === 'all') {
+            cards.forEach(c => { c.style.display = ''; });
+            bar.querySelector('#arw-page-info').innerHTML = `عرض <b>جميع المواضيع (${total})</b> دفعة واحدة`;
+            bar.querySelector('#arw-prev-page').disabled = true;
+            bar.querySelector('#arw-next-page').disabled = true;
+            bar.querySelector('#arw-page-num').textContent = 'الكل';
+            return;
+          }
+
+          const limit = typeof pageSize === 'number' ? pageSize : 20;
+          const totalPages = Math.max(1, Math.ceil(total / limit));
+          if (currentPage > totalPages) currentPage = totalPages;
+          if (currentPage < 1) currentPage = 1;
+
+          const start = (currentPage - 1) * limit;
+          const end = Math.min(start + limit, total);
+
+          cards.forEach((card, idx) => {
+            if (idx >= start && idx < end) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          bar.querySelector('#arw-page-info').innerHTML = `عرض المواضيع <b>${start + 1} - ${end}</b> من أصل <b>${total}</b> موضوع`;
+          bar.querySelector('#arw-page-num').textContent = `${currentPage} / ${totalPages}`;
+          bar.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
+          bar.querySelector('#arw-next-page').disabled = (currentPage >= totalPages);
+
+          if (shouldScroll && bar) {
+            bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+
+        // Listen to navigation and DOM changes
+        let debounceTimer = null;
+        function scheduleUpdate() {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => {
+            const currentHash = window.location.hash || '';
+            if (currentHash !== lastHash) {
+              lastHash = currentHash;
+              currentPage = 1;
+            }
+            applyPagination();
+          }, 150);
+        }
+
+        window.addEventListener('hashchange', () => {
+          currentPage = 1;
+          scheduleUpdate();
+        });
+
+        // Observe DOM for asynchronous card additions / collection switching
+        const observer = new MutationObserver(() => {
+          scheduleUpdate();
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Initial trigger
+        setTimeout(scheduleUpdate, 600);
+        setTimeout(scheduleUpdate, 1500);
+      })();
     }
   </script>
 </body>
