@@ -730,7 +730,21 @@
             }
           }
 
-          // 1. Locate the Sort by bar or Toolbar row
+          // STRATEGY 1: Place directly at the top of the main collection pane or container
+          const mainArea = document.querySelector('main, [role="main"], [class*="CollectionMain"], [class*="CollectionContainer"], [class*="AppMain"], [class*="collectionPage"]');
+          if (mainArea) {
+            // Find toolbar or first element
+            const sortElement = mainArea.querySelector('div, button, span, section');
+            const targetBefore = mainArea.querySelector('[class*="CardsGrid"], [class*="Grid"], [class*="List"], [class*="Entries"], ul, table') || mainArea.children[1] || mainArea.firstChild;
+            if (targetBefore && targetBefore !== widget) {
+              mainArea.insertBefore(widget, targetBefore);
+              return true;
+            }
+            mainArea.appendChild(widget);
+            return true;
+          }
+
+          // STRATEGY 2: Find the Sort by bar or Toolbar row
           const sortElement = Array.from(document.querySelectorAll('div, button, span, section'))
             .find(el => (el.textContent?.trim().startsWith('Sort by') || el.textContent?.trim().includes('ترتيب')) && !el.closest('#arw-admin-pagination-widget') && !el.closest('aside') && !el.closest('nav'));
           
@@ -746,7 +760,7 @@
             }
           }
 
-          // 2. Locate Collection Title Heading (h1 inside main view)
+          // STRATEGY 3: Locate Collection Title Heading (h1 inside main view)
           const headings = Array.from(document.querySelectorAll('h1, h2'))
             .filter(el => !el.closest('aside') && !el.closest('nav') && !el.closest('#arw-admin-pagination-widget'));
           
@@ -762,7 +776,7 @@
             }
           }
 
-          // 3. Before entry cards container
+          // STRATEGY 4: Before entry cards container
           if (cards.length > 0 && cards[0].parentElement) {
             const wrapper = cards[0].parentElement;
             if (wrapper.parentElement) {
@@ -771,11 +785,14 @@
             }
           }
 
-          // 4. Fallback in main content container
-          const mainArea = document.querySelector('main, [role="main"], [class*="CollectionMain"], [class*="CollectionContainer"], [class*="AppMain"], [class*="collectionPage"]');
-          if (mainArea) {
-            mainArea.insertBefore(widget, mainArea.firstChild);
-            return true;
+          // STRATEGY 5: #nc-root content area
+          const ncRoot = document.getElementById('nc-root');
+          if (ncRoot) {
+            const panes = Array.from(ncRoot.querySelectorAll('div')).filter(d => !d.closest('aside') && !d.closest('nav') && d.children.length > 0);
+            if (panes.length > 0) {
+              panes[0].insertBefore(widget, panes[0].firstChild);
+              return true;
+            }
           }
 
           return false;
