@@ -109,6 +109,53 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("jsonify", jsonify);
   eleventyConfig.addNunjucksFilter("jsonify", jsonify);
 
+  // Pagination Helper: Smart Compact Range with Ellipses
+  const smartPagination = function(pagination) {
+    if (!pagination || !pagination.hrefs || pagination.hrefs.length <= 1) return [];
+
+    const total = pagination.hrefs.length;
+    const current = (pagination.pageNumber !== undefined ? pagination.pageNumber : 0) + 1;
+    const delta = 2;
+
+    const range = [];
+    const rangeWithDots = [];
+    let l;
+
+    for (let i = 1; i <= total; i++) {
+      if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
+        range.push(i);
+      }
+    }
+
+    for (let i of range) {
+      if (l) {
+        if (i - l === 2) {
+          rangeWithDots.push({
+            pageNum: l + 1,
+            url: pagination.hrefs[l],
+            isCurrent: (l + 1) === current,
+            isEllipsis: false
+          });
+        } else if (i - l !== 1) {
+          rangeWithDots.push({
+            isEllipsis: true
+          });
+        }
+      }
+      rangeWithDots.push({
+        pageNum: i,
+        url: pagination.hrefs[i - 1],
+        isCurrent: i === current,
+        isEllipsis: false
+      });
+      l = i;
+    }
+
+    return rangeWithDots;
+  };
+  eleventyConfig.addFilter("smartPagination", smartPagination);
+  eleventyConfig.addNunjucksFilter("smartPagination", smartPagination);
+
   // تحويل روابط منصات التواصل إلى Embeds حية تلقائيًا وسريعًا
   const autoEmbedSocials = function(contentHtml) {
     if (!contentHtml || typeof contentHtml !== "string") return contentHtml;
@@ -134,11 +181,11 @@ module.exports = function(eleventyConfig) {
         return `<div class="social-embed-box embed-instagram" dir="ltr" lang="en-US" style="min-height:560px;"><blockquote class="instagram-media instagram-embed" lang="en-US" dir="ltr" data-instgrm-locale="en_US" data-instgrm-captioned data-instgrm-permalink="${igUrl}" data-instgrm-version="14"><div class="embed-skeleton-card instagram-skeleton"><div class="embed-platform-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور إنستجرام...</span><span class="embed-skeleton-link"><a href="${igUrl}" target="_blank" rel="noopener">فتح المنشور على Instagram &rarr;</a></span></div></blockquote></div>`;
       }
 
-      // 3. YouTube
-      const ytMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+      // 3. YouTube (Videos, Live Streams, Shorts, Embeds, youtu.be)
+      const ytMatch = rawUrl.match(/^https?:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?(?:[^&\s"']*(?:&|&amp;))*v=|shorts\/|live\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
       if (ytMatch) {
         const ytId = ytMatch[1];
-        return `<div class="embed-yt-wrap" dir="ltr" lang="en"><iframe src="https://www.youtube-nocookie.com/embed/${ytId}?hl=en&cc_lang_pref=en" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>`;
+        return `<div class="social-embed-box embed-yt-wrap" dir="ltr" lang="en"><div class="embed-skeleton-card youtube-skeleton"><div class="embed-platform-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>YouTube</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تشغيل فيديو يوتيوب...</span><span class="embed-skeleton-link"><a href="${rawUrl}" target="_blank" rel="noopener">فتح الفيديو على YouTube &rarr;</a></span></div><iframe src="https://www.youtube-nocookie.com/embed/${ytId}?hl=en&cc_lang_pref=en" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>`;
       }
 
       // 4. TikTok
