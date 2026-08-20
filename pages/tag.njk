@@ -1,10 +1,11 @@
 ---
 pagination:
-  data: collections.tagList
+  data: collections.tagPaginated
   size: 1
-  alias: tagObj
-permalink: /tag/{{ tagObj.slug }}/
+  alias: tagPage
+permalink: "{{ tagPage.permalink }}"
 ---
+{% set tagObj = tagPage.tagObj %}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -12,9 +13,9 @@ permalink: /tag/{{ tagObj.slug }}/
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<title>مواضيع الوسم #{{ tagObj.name }} | عرب راسلنج</title>
+<title>مواضيع الوسم #{{ tagObj.name }}{% if tagPage.pageNumber > 1 %} - صفحة {{ tagPage.pageNumber }}{% endif %} | عرب راسلنج</title>
 <meta name="description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
-<link rel="canonical" href="https://arab-wrestling.com/tag/{{ tagObj.slug }}/">
+<link rel="canonical" href="https://arab-wrestling.com{{ tagPage.url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/notif.css">
@@ -205,16 +206,8 @@ permalink: /tag/{{ tagObj.slug }}/
 </div>
 
 <section class="content"><div class="wrap"><div class="grid-12" id="tagGrid">
-{% for item in collections.allContent %}
-  {% set hasTag = false %}
-  {% if item.data.tags %}
-    {% if tagObj.name in item.data.tags %}
-      {% set hasTag = true %}
-    {% endif %}
-  {% endif %}
-
-  {% if hasTag %}
-  <a class="show-card" href="{{ item.url | cleanUrl }}">
+{% for item in tagPage.items %}
+  <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %}" href="{{ item.url | cleanUrl }}">
     {% if item.kind == 'news' %}
     <div class="news-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"></div>
     <div class="news-body">
@@ -230,96 +223,52 @@ permalink: /tag/{{ tagObj.slug }}/
     </div>
     {% endif %}
   </a>
-  {% endif %}
 {% endfor %}
 </div>
-<div id="tagPagination"></div>
+
+{% if tagPage.totalPages > 1 %}
+<nav class="pagination-nav" aria-label="تصفح الصفحات">
+  <div class="pagination-wrap">
+    {% if tagPage.previousHref %}
+      <a href="{{ tagPage.previousHref }}" class="page-link prev" aria-label="الصفحة السابقة">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span>السابق</span>
+      </a>
+    {% else %}
+      <span class="page-link prev disabled" aria-disabled="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span>السابق</span>
+      </span>
+    {% endif %}
+
+    <div class="page-numbers">
+      {% for pItem in tagPage.paginationItems %}
+        {% if pItem.isEllipsis %}
+          <span class="page-ellipsis" aria-hidden="true">…</span>
+        {% elseif pItem.isCurrent %}
+          <span class="page-link active" aria-current="page">{{ pItem.pageNum }}</span>
+        {% else %}
+          <a href="{{ pItem.url }}" class="page-link">{{ pItem.pageNum }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if tagPage.nextHref %}
+      <a href="{{ tagPage.nextHref }}" class="page-link next" aria-label="الصفحة التالية">
+        <span>التالي</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+    {% else %}
+      <span class="page-link next disabled" aria-disabled="true">
+        <span>التالي</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </span>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+
 </div></section>
-
-<script>
-  (function(){
-    var grid = document.getElementById('tagGrid');
-    if(!grid) return;
-    var items = Array.from(grid.children);
-    var pageSize = 20;
-    if(items.length <= pageSize) return;
-
-    var totalPages = Math.ceil(items.length / pageSize);
-    var currentPage = 1;
-
-    function renderPage(page){
-      currentPage = page;
-      var start = (page - 1) * pageSize;
-      var end = start + pageSize;
-      items.forEach(function(item, idx){
-        item.style.display = (idx >= start && idx < end) ? '' : 'none';
-      });
-
-      var container = document.getElementById('tagPagination');
-      if(!container) return;
-
-      var navHtml = '<nav class="pagination-nav" aria-label="تصفح الصفحات"><div class="pagination-wrap">';
-      navHtml += currentPage > 1 ? '<button class="page-link prev" data-page="' + (currentPage - 1) + '" aria-label="الصفحة السابقة"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></button>' : '<span class="page-link prev disabled" aria-disabled="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></span>';
-      navHtml += '<div class="page-numbers">';
-      
-      function getSmartPages(total, curr) {
-        if (total <= 7) {
-          var arr = [];
-          for (var i = 1; i <= total; i++) arr.push({ pageNum: i });
-          return arr;
-        }
-        var pages = [];
-        pages.push({ pageNum: 1 });
-        var start = Math.max(2, curr - 1);
-        var end = Math.min(total - 1, curr + 1);
-        if (curr <= 4) {
-          start = 2;
-          end = 4;
-        }
-        if (curr >= total - 3) {
-          start = total - 3;
-          end = total - 1;
-        }
-        if (start > 2) {
-          pages.push({ isEllipsis: true });
-        }
-        for (var i = start; i <= end; i++) {
-          pages.push({ pageNum: i });
-        }
-        if (end < total - 1) {
-          pages.push({ isEllipsis: true });
-        }
-        pages.push({ pageNum: total });
-        return pages;
-      }
-
-      var pageList = getSmartPages(totalPages, currentPage);
-      for(var i = 0; i < pageList.length; i++){
-        var p = pageList[i];
-        if(p.isEllipsis){
-          navHtml += '<span class="page-ellipsis" aria-hidden="true">…</span>';
-        } else if(p.pageNum === currentPage){
-          navHtml += '<span class="page-link active" aria-current="page">' + p.pageNum + '</span>';
-        } else {
-          navHtml += '<button class="page-link" data-page="' + p.pageNum + '">' + p.pageNum + '</button>';
-        }
-      }
-      navHtml += '</div>';
-      navHtml += currentPage < totalPages ? '<button class="page-link next" data-page="' + (currentPage + 1) + '" aria-label="الصفحة التالية"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' : '<span class="page-link next disabled" aria-disabled="true"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>';
-      navHtml += '</div></nav>';
-      container.innerHTML = navHtml;
-
-      container.querySelectorAll('button[data-page]').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          renderPage(parseInt(this.getAttribute('data-page'), 10));
-          window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
-        });
-      });
-    }
-
-    renderPage(1);
-  })();
-</script>
 
 <footer>
   <div class="social-row">
