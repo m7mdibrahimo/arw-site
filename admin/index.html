@@ -369,7 +369,7 @@
       document.body.appendChild(manualBtn);
 
       // ==========================================
-      // Professional Compact Dropdown, Search & Collection Pagination (Per Section)
+      // Professional Compact Dropdown, Search & Collection Pagination (All Sections & News)
       // ==========================================
       (function initAdminPagination() {
         let currentPage = 1;
@@ -433,14 +433,15 @@
             direction: rtl;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 12.5px;
-            z-index: 90;
+            z-index: 99;
             width: 100%;
             box-sizing: border-box;
+            position: relative;
           `;
 
           wrap.innerHTML = `
             <!-- Unified Compact Control Bar -->
-            <div style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:8px; background:#ffffff; padding:6px 10px; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,0.05); width:100%; box-sizing:border-box;">
+            <div style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:8px; background:#ffffff; padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; box-shadow:0 1px 4px rgba(0,0,0,0.06); width:100%; box-sizing:border-box;">
               
               <!-- Section-Specific Instant Search Box -->
               <div style="position:relative; display:inline-flex; align-items:center; min-width:210px; max-width:320px; flex:1 1 210px;">
@@ -455,15 +456,15 @@
               <!-- Subtle Divider -->
               <div style="width:1px; height:20px; background:#e2e8f0; margin:0 2px;"></div>
 
-              <!-- Dropdown Menu for Page Size -->
+              <!-- Dropdown Menu for Page Size (عدد المواضيع في الصفحة) -->
               <div style="position:relative; display:inline-block;" id="arw-dropdown-wrapper">
-                <button id="arw-dropdown-btn" type="button" style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; color:#1e293b; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s ease;">
+                <button id="arw-dropdown-btn" type="button" style="display:inline-flex; align-items:center; gap:6px; padding:5px 11px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; color:#1e293b; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s ease;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                   <span id="arw-selected-size-label">عرض: 20 موضوع</span>
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
 
-                <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:185px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.18), 0 4px 10px rgba(0,0,0,0.06); padding:5px 0; z-index:999999;">
+                <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:190px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.2), 0 4px 10px rgba(0,0,0,0.08); padding:5px 0; z-index:999999;">
                   <div class="arw-menu-item" data-size="10">10 مواضيع في الصفحة</div>
                   <div class="arw-menu-item" data-size="20">20 موضوع في الصفحة</div>
                   <div class="arw-menu-item" data-size="30">30 موضوع في الصفحة</div>
@@ -487,7 +488,7 @@
                 <button id="arw-prev-page" class="arw-nav-btn" title="الصفحة السابقة">
                   السابق ◀
                 </button>
-                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:32px; text-align:center;">1/1</span>
+                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:36px; text-align:center;">1/1</span>
                 <button id="arw-next-page" class="arw-nav-btn" title="الصفحة التالية">
                   ▶ التالي
                 </button>
@@ -662,14 +663,39 @@
 
           if (!allLinks.length) return [];
 
+          // Find the common container of entry cards (Grid or List)
+          let entriesContainer = null;
+          for (const link of allLinks) {
+            const candidate = link.closest('[class*="CardsGrid"], [class*="Grid"], [class*="List"], [class*="Entries"], ul, table, tbody');
+            if (candidate && !candidate.id?.includes('arw-admin-pagination-widget')) {
+              entriesContainer = candidate;
+              break;
+            }
+          }
+
           const cards = [];
           const seen = new Set();
 
           allLinks.forEach(link => {
-            // 1. Closest <li> or <tr>
-            let card = link.closest('li') || link.closest('tr');
-            
-            // 2. If not inside li/tr, climb up until direct child of multi-child container
+            let card = null;
+
+            // 1. If we know the entriesContainer, the card is the direct child of entriesContainer
+            if (entriesContainer && entriesContainer.contains(link)) {
+              let cur = link;
+              while (cur.parentElement && cur.parentElement !== entriesContainer) {
+                cur = cur.parentElement;
+              }
+              if (cur.parentElement === entriesContainer) {
+                card = cur;
+              }
+            }
+
+            // 2. Closest <li> or <tr>
+            if (!card) {
+              card = link.closest('li') || link.closest('tr') || link.closest('[class*="Card"], [class*="ListItem"]');
+            }
+
+            // 3. Fallback climbing
             if (!card) {
               let el = link;
               while (
@@ -706,8 +732,8 @@
         }
 
         function mountWidgetInDOM(widget, cards) {
-          // Check if already in the right place
-          const controls = document.querySelector('[class*="CollectionControls"], [class*="ControlBar"], [class*="CollectionTop"]');
+          // 1. Immediately after Collection controls or header
+          const controls = document.querySelector('[class*="CollectionControls"], [class*="ControlBar"], [class*="CollectionTop"], [class*="CollectionHeader"], [class*="ViewControls"]');
           if (controls && controls.parentElement) {
             if (controls.nextElementSibling !== widget) {
               controls.parentElement.insertBefore(widget, controls.nextElementSibling);
@@ -715,7 +741,7 @@
             return true;
           }
 
-          // Before the cards container
+          // 2. Before the cards container / grid / list
           if (cards.length > 0 && cards[0].parentElement) {
             const wrapper = cards[0].parentElement;
             if (wrapper.parentElement && wrapper.previousElementSibling !== widget) {
@@ -724,10 +750,17 @@
             }
           }
 
-          // Inside CollectionMain or main
-          const main = document.querySelector('[class*="CollectionMain"], [class*="CollectionContainer"], main, #nc-root');
+          // 3. Inside CollectionMain or main or section
+          const main = document.querySelector('[class*="CollectionMain"], [class*="CollectionContainer"], [class*="CollectionPage"], main, section');
           if (main && !main.contains(widget)) {
             main.insertBefore(widget, main.firstChild);
+            return true;
+          }
+
+          // 4. Fallback in nc-root
+          const ncRoot = document.querySelector('#nc-root');
+          if (ncRoot && !ncRoot.contains(widget)) {
+            ncRoot.appendChild(widget);
             return true;
           }
 
@@ -858,7 +891,7 @@
               if (clearBtn) clearBtn.style.display = 'none';
             }
             applyPagination();
-          }, 50);
+          }, 40);
         }
 
         window.addEventListener('hashchange', () => {
@@ -878,17 +911,18 @@
 
         observer.observe(document.body, { childList: true, subtree: true });
 
-        // Continuous sync check every 600ms to guarantee presence across all collections
+        // Continuous sync check every 400ms to guarantee presence across all collections
         setInterval(() => {
           if (isCollectionListView()) {
             applyPagination();
           }
-        }, 600);
+        }, 400);
 
         // Initial triggers
-        setTimeout(scheduleUpdate, 150);
-        setTimeout(scheduleUpdate, 500);
-        setTimeout(scheduleUpdate, 1200);
+        setTimeout(scheduleUpdate, 100);
+        setTimeout(scheduleUpdate, 350);
+        setTimeout(scheduleUpdate, 800);
+        setTimeout(scheduleUpdate, 1500);
         setTimeout(scheduleUpdate, 2500);
       })();
     }
