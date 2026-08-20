@@ -149,6 +149,33 @@ permalink: "/search/index.html"
   .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
   .news-body h3, .show-body h3{ font-size:15.5px; font-weight:700; margin:4px 0 8px; line-height:1.45; }
+
+  /* Smart Compact & Professional Pagination */
+  .pagination-nav { margin-top: 52px; margin-bottom: 24px; display: flex; justify-content: center; align-items: center; width: 100%; }
+  .pagination-wrap { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 4px 20px -4px rgba(0,0,0,0.06); flex-wrap: wrap; justify-content: center; }
+  .page-numbers { display: flex; align-items: center; gap: 4px; }
+  .page-link { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 38px; padding: 0 12px; border-radius: 10px; background: transparent; border: 1px solid transparent; color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; user-select: none; font-family: inherit; }
+  .page-link:hover:not(.disabled):not(.active) { border-color: var(--line); color: var(--teal); background: var(--teal-soft); transform: translateY(-1px); }
+  .page-link:active:not(.disabled):not(.active) { transform: scale(0.96); }
+  .page-link.active { background: var(--teal); border-color: var(--teal); color: #ffffff !important; font-weight: 800; cursor: default; box-shadow: 0 4px 12px rgba(14,149,148,0.35); }
+  .page-link.prev, .page-link.next { gap: 6px; padding: 0 14px; background: var(--bg); border-color: var(--line); font-size: 13.5px; }
+  .page-link.prev:hover:not(.disabled), .page-link.next:hover:not(.disabled) { background: var(--teal-soft); border-color: var(--teal); color: var(--teal); }
+  .page-link.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+  .page-ellipsis { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 38px; color: var(--muted); font-weight: 800; font-size: 15px; user-select: none; letter-spacing: 2px; }
+
+  /* Search Controls Bar */
+  .search-controls { display: flex; align-items: center; justify-content: center; margin-bottom: 28px; text-align: center; width: 100%; }
+  .search-stats { font-size: 15px; font-weight: 700; color: var(--muted); background: var(--card); border: 1px solid var(--line); padding: 8px 24px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+  .search-stats b { color: var(--teal); font-weight: 800; font-size: 16px; }
+
+  @media(max-width: 600px) {
+    .pagination-wrap { gap: 4px; padding: 4px 6px; }
+    .page-link { min-width: 34px; height: 34px; padding: 0 8px; font-size: 13px; }
+    .page-link.prev, .page-link.next { padding: 0 10px; font-size: 12.5px; }
+    .page-ellipsis { min-width: 20px; height: 34px; font-size: 13px; }
+    .search-stats { font-size: 14px; padding: 6px 18px; }
+  }
+
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
@@ -232,9 +259,17 @@ permalink: "/search/index.html"
 
 <div class="page-head">
   <h1>نتائج البحث</h1>
-  <p id="searchSummary"></p>
+  <p id="searchSummary">اكتب ما تبحث عنه أعلاه للبدء</p>
 </div>
-<section class="content"><div class="wrap"><div class="grid-12" id="resultsGrid"></div></div></section>
+<section class="content">
+  <div class="wrap">
+    <div class="search-controls" id="searchControls" style="display:none;">
+      <div class="search-stats" id="searchStats"></div>
+    </div>
+    <div class="grid-12" id="resultsGrid"></div>
+    <div id="searchPagination"></div>
+  </div>
+</section>
 <footer>
   <div class="social-row">
     <a aria-label="فيسبوك" href="#" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>
@@ -266,33 +301,189 @@ permalink: "/search/index.html"
 
 <script>
   (function(){
-    const params = new URLSearchParams(window.location.search);
-    const q = (params.get('q') || '').trim();
-    document.getElementById('searchSummary').textContent = q ? 'نتائج البحث عن: "' + q + '"' : 'اكتب كلمة في مربع البحث فوق';
-    if(!q) return;
-    fetch('/search-index.json').then(r => r.json()).then(function(data){
-      const qLower = q.toLowerCase();
-      const results = data.filter(function(item){
-        const title = (item.title || '').toLowerCase();
-        const headline = (item.headline || '').toLowerCase();
-        const desc = (item.description || '').toLowerCase();
-        const fed = (item.federation || '').toLowerCase();
-        const kindLabel = (item.kindLabel || '').toLowerCase();
-        return title.includes(qLower) || headline.includes(qLower) || desc.includes(qLower) || fed.includes(qLower) || kindLabel.includes(qLower);
-      });
-      const grid = document.getElementById('resultsGrid');
-      if(results.length === 0){
-        grid.innerHTML = '<div class="no-results">مفيش نتائج مطابقة.</div>';
+    var cachedResults = [];
+    var currentQuery = '';
+    var currentPage = 1;
+    var perPage = parseInt(localStorage.getItem('arw_search_per_page') || '24', 10);
+    if(isNaN(perPage) || perPage <= 0) perPage = 24;
+
+    function getSmartPages(total, curr) {
+      if (total <= 7) {
+        var arr = [];
+        for (var i = 1; i <= total; i++) arr.push({ pageNum: i });
+        return arr;
+      }
+      var pages = [];
+      pages.push({ pageNum: 1 });
+      var start = Math.max(2, curr - 1);
+      var end = Math.min(total - 1, curr + 1);
+      if (curr <= 4) {
+        start = 2;
+        end = 4;
+      }
+      if (curr >= total - 3) {
+        start = total - 3;
+        end = total - 1;
+      }
+      if (start > 2) {
+        pages.push({ isEllipsis: true });
+      }
+      for (var i = start; i <= end; i++) {
+        pages.push({ pageNum: i });
+      }
+      if (end < total - 1) {
+        pages.push({ isEllipsis: true });
+      }
+      pages.push({ pageNum: total });
+      return pages;
+    }
+
+    function renderResults(scrollOnPageChange) {
+      var grid = document.getElementById('resultsGrid');
+      var paginationEl = document.getElementById('searchPagination');
+      var controlsEl = document.getElementById('searchControls');
+      var statsEl = document.getElementById('searchStats');
+
+      if (!currentQuery) {
+        grid.innerHTML = '<div class="no-results">اكتب ما تبحث عنه في مربع البحث بالأعلى.</div>';
+        paginationEl.innerHTML = '';
+        controlsEl.style.display = 'none';
         return;
       }
-      grid.innerHTML = results.map(function(item){
-        const badge = item.kind === 'news' ? 'خبر' : (item.kind === 'recap' ? 'ملخص' : 'عرض');
-        const img = item.image || 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop';
+
+      if (cachedResults.length === 0) {
+        grid.innerHTML = '<div class="no-results">لم يتم العثور على أي نتائج مطابقة لـ "' + currentQuery + '".</div>';
+        paginationEl.innerHTML = '';
+        controlsEl.style.display = 'none';
+        return;
+      }
+
+      controlsEl.style.display = 'flex';
+      
+      var total = cachedResults.length;
+      var totalPages = Math.max(1, Math.ceil(total / perPage));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      var start = (currentPage - 1) * perPage;
+      var end = Math.min(start + perPage, total);
+      var pageItems = cachedResults.slice(start, end);
+
+      statsEl.innerHTML = 'تم العثور على <b>' + total + '</b> نتيجة';
+
+      grid.innerHTML = pageItems.map(function(item){
+        var badge = item.kind === 'news' ? 'خبر' : (item.kind === 'recap' ? 'ملخص' : 'عرض');
+        var img = item.image || 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop';
         return '<a class="show-card" href="' + item.url + '">' +
           '<div class="show-thumb" style="background-image:url(\'' + img + '\')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>' +
           '<div class="show-body"><span class="kind-badge kind-' + item.kind + '">' + badge + '</span>' + (item.federation ? '<span class="cat cat-' + item.federation.toLowerCase() + '">' + item.federation + '</span>' : '') +
           '<h3>' + (item.headline || item.title) + '</h3></div></a>';
       }).join('');
+
+      if (totalPages > 1) {
+        var navHtml = '<nav class="pagination-nav" aria-label="تصفح نتائج البحث"><div class="pagination-wrap">';
+        navHtml += currentPage > 1 
+          ? '<button class="page-link prev" data-page="' + (currentPage - 1) + '" aria-label="الصفحة السابقة"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></button>'
+          : '<span class="page-link prev disabled" aria-disabled="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></span>';
+        
+        navHtml += '<div class="page-numbers">';
+        var pageList = getSmartPages(totalPages, currentPage);
+        for (var i = 0; i < pageList.length; i++) {
+          var p = pageList[i];
+          if (p.isEllipsis) {
+            navHtml += '<span class="page-ellipsis" aria-hidden="true">…</span>';
+          } else if (p.pageNum === currentPage) {
+            navHtml += '<span class="page-link active" aria-current="page">' + p.pageNum + '</span>';
+          } else {
+            navHtml += '<button class="page-link" data-page="' + p.pageNum + '">' + p.pageNum + '</button>';
+          }
+        }
+        navHtml += '</div>';
+
+        navHtml += currentPage < totalPages
+          ? '<button class="page-link next" data-page="' + (currentPage + 1) + '" aria-label="الصفحة التالية"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>'
+          : '<span class="page-link next disabled" aria-disabled="true"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>';
+
+        navHtml += '</div></nav>';
+        paginationEl.innerHTML = navHtml;
+
+        paginationEl.querySelectorAll('button.page-link').forEach(function(btn){
+          btn.addEventListener('click', function(){
+            var targetPage = parseInt(this.getAttribute('data-page'), 10);
+            if (!isNaN(targetPage) && targetPage !== currentPage) {
+              currentPage = targetPage;
+              updateUrlParams();
+              renderResults(true);
+            }
+          });
+        });
+      } else {
+        paginationEl.innerHTML = '';
+      }
+
+      if (scrollOnPageChange) {
+        var topPos = controlsEl.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: Math.max(0, topPos), behavior: 'smooth' });
+      }
+    }
+
+    function updateUrlParams() {
+      var url = new URL(window.location);
+      if (currentQuery) url.searchParams.set('q', currentQuery);
+      if (currentPage > 1) {
+        url.searchParams.set('page', currentPage);
+      } else {
+        url.searchParams.delete('page');
+      }
+      window.history.replaceState({}, '', url);
+    }
+
+    // Bind per page buttons
+    document.querySelectorAll('.per-page-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var val = parseInt(this.getAttribute('data-per'), 10);
+        if(!isNaN(val) && val !== perPage){
+          perPage = val;
+          try { localStorage.setItem('arw_search_per_page', String(val)); } catch(e){}
+          currentPage = 1;
+          updateUrlParams();
+          renderResults(true);
+        }
+      });
+    });
+
+    // Initial load
+    var params = new URLSearchParams(window.location.search);
+    currentQuery = (params.get('q') || '').trim();
+    var pFromUrl = parseInt(params.get('page'), 10);
+    if (!isNaN(pFromUrl) && pFromUrl >= 1) {
+      currentPage = pFromUrl;
+    }
+
+    document.getElementById('searchSummary').textContent = currentQuery ? 'نتائج البحث عن: "' + currentQuery + '"' : 'اكتب كلمة في مربع البحث أعلاه';
+    
+    // Fill search input if empty
+    var searchInput = document.querySelector('form.site-search input[name="q"]');
+    if (searchInput && currentQuery && !searchInput.value) {
+      searchInput.value = currentQuery;
+    }
+
+    if (!currentQuery) return;
+
+    fetch('/search-index.json').then(function(r){ return r.json(); }).then(function(data){
+      var qLower = currentQuery.toLowerCase();
+      cachedResults = data.filter(function(item){
+        var title = (item.title || '').toLowerCase();
+        var headline = (item.headline || '').toLowerCase();
+        var desc = (item.description || '').toLowerCase();
+        var fed = (item.federation || '').toLowerCase();
+        var kindLabel = (item.kindLabel || '').toLowerCase();
+        return title.includes(qLower) || headline.includes(qLower) || desc.includes(qLower) || fed.includes(qLower) || kindLabel.includes(qLower);
+      });
+      renderResults(false);
+    }).catch(function(err){
+      console.error(err);
+      document.getElementById('resultsGrid').innerHTML = '<div class="no-results">حدث خطأ أثناء تحميل الفهرس. يرجى المحاولة مرة أخرى.</div>';
     });
   })();
 </script>
