@@ -176,9 +176,7 @@
         }
       };
 
-      // Shared logic to turn a Decap CMS entry (from postPublish or a cached
-      // 'change' snapshot) into the payload we send to Telegram. Used both by
-      // the automatic publish handler and the manual "Publish now" button.
+      // Shared logic to turn a Decap CMS entry into Telegram payload
       const extractTelegramPayload = (opts) => {
         const entryObj = (opts && opts.entry) ? opts.entry : opts;
         if (!entryObj) return null;
@@ -216,13 +214,6 @@
           text = data.body.replace(/[#*`_~]/g, '').substring(0, 180).trim() + '...';
         }
 
-        // TEMP DEBUG: log all fields for this entry so we can see the exact
-        // field name used for the image in "shows" vs "news" collections.
-        console.log("[TG DEBUG] collection:", collection, "| raw entry data:", data);
-
-        // The image field name can differ between collections (e.g. news uses
-        // "image" but shows might use "poster"/"cover"/"thumbnail"). Try the
-        // common candidates instead of only "image".
         let image =
           data.image ||
           data.poster ||
@@ -234,10 +225,6 @@
           data.coverImage ||
           data.cover_image ||
           null;
-
-        if (!image) {
-          console.warn("[TG DEBUG] No image field found for this entry. Available keys:", Object.keys(data));
-        }
 
         if (image && typeof image === 'string' && !image.startsWith('http')) {
           image = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
@@ -280,9 +267,6 @@
         }
       };
 
-      // Sends RIGHT NOW, no 3-minute wait — used by the manual button below,
-      // for cases where the post/image is already live (e.g. resending an
-      // old post after editing it) and there's no need to wait for a build.
       const doTelegramSendImmediate = async (item) => {
         try {
           const apiRes = await fetch(`${RENDER_API_BASE}/api/telegram/post`, {
@@ -314,12 +298,6 @@
         }
       };
 
-      // Keep a live snapshot of whatever entry is currently open in the
-      // editor — captured the moment you OPEN the entry, no edit or Save
-      // needed. Decap CMS renders a "preview template" for every collection
-      // as soon as an entry is opened (that's how the right-hand preview pane
-      // works), so we register a lightweight preview component per collection
-      // that captures the entry as a side effect on every render.
       let latestEntrySnapshot = null;
 
       function PreviewCapture(props) {
@@ -347,13 +325,10 @@
         console.error("تعذر تسجيل مستمع postPublish:", e);
       }
 
-      // CMS.init() must always run no matter what happened above.
+      // CMS.init() must always run
       window.CMS.init();
 
-      // Floating manual "Publish to Telegram NOW" button. Always visible;
-      // uses whatever entry is currently open in the editor (including
-      // unsaved edits like a newly changed image), and sends immediately —
-      // no 3-minute wait, no "already sent" check.
+      // Floating manual "Publish to Telegram NOW" button
       const manualBtn = document.createElement('button');
       manualBtn.textContent = '📤 انشر الموضوع الحالي فورًا على تليجرام';
       manualBtn.style.position = 'fixed';
@@ -411,10 +386,15 @@
 
         function isCollectionListView() {
           const hash = window.location.hash || '';
-          // Collection list view matches #/collections/<name> and NOT new or edit entry
-          return hash.startsWith('#/collections/') && 
-                 !hash.includes('/entries/') && 
-                 !hash.includes('/new');
+          // If in entry editor or new entry, not a collection list view
+          if (hash.includes('/entries/') || hash.includes('/new') || hash.includes('/workflow') || hash.includes('/media')) {
+            return false;
+          }
+          // If hash is #/collections/... or root (#/ or empty when in collections)
+          if (hash.startsWith('#/collections') || hash === '#/' || hash === '' || hash === '#') {
+            return true;
+          }
+          return false;
         }
 
         function createPaginationWidget() {
@@ -428,7 +408,7 @@
             margin: 10px 0 16px 0;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             flex-wrap: wrap;
             gap: 10px;
             direction: rtl;
@@ -440,28 +420,34 @@
           `;
 
           wrap.innerHTML = `
-            <!-- Dropdown Menu for Page Size -->
-            <div style="position:relative; display:inline-block;" id="arw-dropdown-wrapper">
-              <button id="arw-dropdown-btn" type="button" style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; color:#1e293b; font-size:12.5px; font-weight:700; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.06); transition:all 0.15s ease;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                <span id="arw-selected-size-label">عرض: 20 موضوع</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
+            <!-- Unified Compact Control Bar -->
+            <div style="display:inline-flex; align-items:center; flex-wrap:wrap; gap:8px; background:#ffffff; padding:4px 8px; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+              
+              <!-- Dropdown Menu for Page Size -->
+              <div style="position:relative; display:inline-block;" id="arw-dropdown-wrapper">
+                <button id="arw-dropdown-btn" type="button" style="display:inline-flex; align-items:center; gap:6px; padding:5px 10px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; color:#1e293b; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s ease;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                  <span id="arw-selected-size-label">عرض: 20 موضوع</span>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
 
-              <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:170px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.12), 0 4px 10px rgba(0,0,0,0.04); padding:4px 0; z-index:9999;">
-                <div class="arw-menu-item" data-size="10">10 مواضيع في الصفحة</div>
-                <div class="arw-menu-item" data-size="20">20 موضوع في الصفحة</div>
-                <div class="arw-menu-item" data-size="30">30 موضوع في الصفحة</div>
-                <div class="arw-menu-item" data-size="50">50 موضوع في الصفحة</div>
-                <div class="arw-menu-item" data-size="100">100 موضوع في الصفحة</div>
-                <div style="height:1px; background:#e2e8f0; margin:4px 0;"></div>
-                <div class="arw-menu-item" data-size="all">جميع المواضيع (الكل)</div>
+                <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:175px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.14), 0 4px 10px rgba(0,0,0,0.05); padding:5px 0; z-index:99999;">
+                  <div class="arw-menu-item" data-size="10">10 مواضيع في الصفحة</div>
+                  <div class="arw-menu-item" data-size="20">20 موضوع في الصفحة</div>
+                  <div class="arw-menu-item" data-size="30">30 موضوع في الصفحة</div>
+                  <div class="arw-menu-item" data-size="50">50 موضوع في الصفحة</div>
+                  <div class="arw-menu-item" data-size="100">100 موضوع في الصفحة</div>
+                  <div style="height:1px; background:#e2e8f0; margin:4px 0;"></div>
+                  <div class="arw-menu-item" data-size="all">جميع المواضيع (الكل)</div>
+                </div>
               </div>
-            </div>
 
-            <!-- Page Navigation Controls -->
-            <div id="arw-nav-group" style="display:inline-flex; align-items:center; gap:8px; background:#ffffff; padding:4px 8px; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+              <!-- Subtle Divider -->
+              <div style="width:1px; height:18px; background:#e2e8f0; margin:0 2px;"></div>
+
+              <!-- Page Info & Navigation Controls -->
               <span id="arw-page-info" style="color:#64748b; font-weight:600; font-size:12px;">جاري الفحص...</span>
+              
               <div style="display:inline-flex; align-items:center; gap:4px;">
                 <button id="arw-prev-page" class="arw-nav-btn" title="الصفحة السابقة">
                   السابق ◀
@@ -471,6 +457,7 @@
                   ▶ التالي
                 </button>
               </div>
+
             </div>
           `;
 
@@ -589,36 +576,38 @@
         }
 
         function findEntryCards() {
-          // Select links pointing to any entry in Decap CMS (covers news, shows, recaps)
-          const links = Array.from(document.querySelectorAll('a[href*="#/collections/"][href*="/entries/"]'));
-          if (!links.length) {
-            // fallback: any link containing /entries/
-            const altLinks = Array.from(document.querySelectorAll('a[href*="/entries/"]'));
-            if (!altLinks.length) return [];
-            links.push(...altLinks);
-          }
+          // 1. Find all links that represent entries (href contains /entries/)
+          const allLinks = Array.from(document.querySelectorAll('a[href*="/entries/"]'));
+          if (!allLinks.length) return [];
 
+          // 2. Identify the parent container of the entries (grid or list)
           const cards = [];
           const seen = new Set();
 
-          links.forEach(link => {
-            let el = link;
-            // If inside a list item <li> or table row <tr>
-            const li = link.closest('li') || link.closest('tr');
-            if (li) {
-              el = li;
-            } else {
-              // Traverse up to find the single item card block inside the grid/list container
-              let parent = el.parentElement;
+          // Strategy A: If links are inside an <ul> or <ol> list
+          const listContainer = document.querySelector('ul[class*="CardsGrid"], ul[class*="List"], div[class*="CardsGrid"], div[class*="CollectionMain"], main ul');
+          if (listContainer) {
+            const directItems = Array.from(listContainer.children).filter(child => child.querySelector('a[href*="/entries/"]'));
+            if (directItems.length > 0) {
+              return directItems;
+            }
+          }
+
+          // Strategy B: Trace up from each link to find its card root
+          allLinks.forEach(link => {
+            let el = link.closest('li') || link.closest('tr');
+            if (!el) {
+              let parent = link.parentElement;
               while (parent && 
                      parent.tagName !== 'MAIN' && 
-                     parent.tagName !== 'SECTION' &&
+                     parent.tagName !== 'SECTION' && 
                      parent.tagName !== 'BODY' &&
                      !parent.id?.includes('nc-root') &&
                      parent.children.length <= 2) {
                 el = parent;
                 parent = el.parentElement;
               }
+              if (!el) el = link;
             }
             if (!seen.has(el)) {
               seen.add(el);
@@ -643,15 +632,24 @@
           // Inject widget into collection page view
           const widget = createPaginationWidget();
           
-          // Place widget above cards container
+          // Place widget above cards container or in main content container
           const firstCard = cards[0];
+          let inserted = false;
+
           if (firstCard && firstCard.parentElement) {
             const cardsContainer = firstCard.parentElement;
             if (cardsContainer.parentElement && widget.parentElement !== cardsContainer.parentElement) {
               cardsContainer.parentElement.insertBefore(widget, cardsContainer);
+              inserted = true;
             }
-          } else {
-            const mainContainer = document.querySelector('main') || document.querySelector('[class*="CollectionTop"]') || document.querySelector('[class*="CollectionContainer"]');
+          } 
+          
+          if (!inserted && !document.body.contains(widget)) {
+            const mainContainer = document.querySelector('main') || 
+                                  document.querySelector('[class*="CollectionTop"]') || 
+                                  document.querySelector('[class*="CollectionContainer"]') ||
+                                  document.querySelector('[class*="AppHeader"] ~ div') ||
+                                  document.querySelector('#nc-root');
             if (mainContainer && !mainContainer.contains(widget)) {
               mainContainer.prepend(widget);
             }
@@ -725,7 +723,7 @@
               currentPage = 1;
             }
             applyPagination();
-          }, 100);
+          }, 80);
         }
 
         window.addEventListener('hashchange', () => {
@@ -741,9 +739,10 @@
         observer.observe(document.body, { childList: true, subtree: true });
 
         // Initial triggers
-        setTimeout(scheduleUpdate, 200);
-        setTimeout(scheduleUpdate, 600);
-        setTimeout(scheduleUpdate, 1500);
+        setTimeout(scheduleUpdate, 150);
+        setTimeout(scheduleUpdate, 500);
+        setTimeout(scheduleUpdate, 1200);
+        setTimeout(scheduleUpdate, 2500);
       })();
     }
   </script>
