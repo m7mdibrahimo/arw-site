@@ -374,6 +374,188 @@ module.exports = function(eleventyConfig) {
     return Array.from(tagMap.values()).sort((a,b) => b.count - a.count);
   });
 
+  eleventyConfig.addCollection("federationPaginated", function(collectionApi) {
+    const feds = [
+      { slug: "wwe", code: "WWE", name: "World Wrestling Entertainment", colorClass: "fed-wwe" },
+      { slug: "aew", code: "AEW", name: "All Elite Wrestling", colorClass: "fed-aew" },
+      { slug: "tna", code: "TNA", name: "Total Nonstop Action Wrestling", colorClass: "fed-tna" },
+      { slug: "roh", code: "ROH", name: "Ring of Honor", colorClass: "fed-roh" },
+      { slug: "mma", code: "MMA", name: "رياضات القتال المختلطة", colorClass: "fed-mma" },
+      { slug: "indie", code: "INDIE", name: "الاتحادات المستقلة", colorClass: "fed-indie" }
+    ];
+    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+    shows.forEach(function(i){ i.kind = "show"; });
+    const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md");
+    recaps.forEach(function(i){ i.kind = "recap"; });
+    const news = collectionApi.getFilteredByGlob("content/news/*.md");
+    news.forEach(function(i){ i.kind = "news"; });
+    const allContent = shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+
+    const pageSize = 20;
+    const pages = [];
+
+    feds.forEach(fed => {
+      const fedItems = allContent.filter(item => {
+        if (!item.data || !item.data.federation) return false;
+        const f = String(item.data.federation).trim().toUpperCase();
+        return f === fed.code.toUpperCase() || f === fed.slug.toUpperCase();
+      });
+      const totalPages = Math.max(1, Math.ceil(fedItems.length / pageSize));
+
+      const hrefs = [];
+      for (let p = 1; p <= totalPages; p++) {
+        hrefs.push(p === 1 ? `/federation/${fed.slug}/` : `/federation/${fed.slug}/${p}/`);
+      }
+
+      for (let p = 1; p <= totalPages; p++) {
+        const start = (p - 1) * pageSize;
+        const pageItems = fedItems.slice(start, start + pageSize);
+        const prevUrl = p > 1 ? hrefs[p - 2] : null;
+        const nextUrl = p < totalPages ? hrefs[p] : null;
+
+        const delta = 2;
+        const range = [];
+        const rangeWithDots = [];
+        let l;
+        for (let i = 1; i <= totalPages; i++) {
+          if (i === 1 || i === totalPages || (i >= p - delta && i <= p + delta)) {
+            range.push(i);
+          }
+        }
+        for (let i of range) {
+          if (l) {
+            if (i - l === 2) {
+              rangeWithDots.push({
+                pageNum: l + 1,
+                url: hrefs[l],
+                isCurrent: (l + 1) === p,
+                isEllipsis: false
+              });
+            } else if (i - l !== 1) {
+              rangeWithDots.push({ isEllipsis: true });
+            }
+          }
+          rangeWithDots.push({
+            pageNum: i,
+            url: hrefs[i - 1],
+            isCurrent: i === p,
+            isEllipsis: false
+          });
+          l = i;
+        }
+
+        pages.push({
+          fed: fed,
+          pageNumber: p,
+          totalPages: totalPages,
+          items: pageItems,
+          totalItems: fedItems.length,
+          permalink: hrefs[p - 1] + "index.html",
+          url: hrefs[p - 1],
+          previousHref: prevUrl,
+          nextHref: nextUrl,
+          paginationItems: rangeWithDots
+        });
+      }
+    });
+
+    return pages;
+  });
+
+  eleventyConfig.addCollection("tagPaginated", function(collectionApi) {
+    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+    shows.forEach(function(i){ i.kind = "show"; });
+    const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md");
+    recaps.forEach(function(i){ i.kind = "recap"; });
+    const news = collectionApi.getFilteredByGlob("content/news/*.md");
+    news.forEach(function(i){ i.kind = "news"; });
+    const allContent = shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+
+    const tagMap = new Map();
+    allContent.forEach(item => {
+      let tags = item.data.tags;
+      if (typeof tags === "string") tags = [tags];
+      if (Array.isArray(tags)) {
+        tags.forEach(tag => {
+          if (!tag) return;
+          const cleanTag = tag.trim();
+          const slug = arabicSlug(cleanTag);
+          if (!slug) return;
+          if (!tagMap.has(slug)) {
+            tagMap.set(slug, { name: cleanTag, slug: slug, items: [] });
+          }
+          tagMap.get(slug).items.push(item);
+        });
+      }
+    });
+
+    const pageSize = 20;
+    const pages = [];
+
+    tagMap.forEach((tagObj) => {
+      const tagItems = tagObj.items;
+      const totalPages = Math.max(1, Math.ceil(tagItems.length / pageSize));
+
+      const hrefs = [];
+      for (let p = 1; p <= totalPages; p++) {
+        hrefs.push(p === 1 ? `/tag/${tagObj.slug}/` : `/tag/${tagObj.slug}/${p}/`);
+      }
+
+      for (let p = 1; p <= totalPages; p++) {
+        const start = (p - 1) * pageSize;
+        const pageItems = tagItems.slice(start, start + pageSize);
+        const prevUrl = p > 1 ? hrefs[p - 2] : null;
+        const nextUrl = p < totalPages ? hrefs[p] : null;
+
+        const delta = 2;
+        const range = [];
+        const rangeWithDots = [];
+        let l;
+        for (let i = 1; i <= totalPages; i++) {
+          if (i === 1 || i === totalPages || (i >= p - delta && i <= p + delta)) {
+            range.push(i);
+          }
+        }
+        for (let i of range) {
+          if (l) {
+            if (i - l === 2) {
+              rangeWithDots.push({
+                pageNum: l + 1,
+                url: hrefs[l],
+                isCurrent: (l + 1) === p,
+                isEllipsis: false
+              });
+            } else if (i - l !== 1) {
+              rangeWithDots.push({ isEllipsis: true });
+            }
+          }
+          rangeWithDots.push({
+            pageNum: i,
+            url: hrefs[i - 1],
+            isCurrent: i === p,
+            isEllipsis: false
+          });
+          l = i;
+        }
+
+        pages.push({
+          tagObj: { name: tagObj.name, slug: tagObj.slug, count: tagItems.length },
+          pageNumber: p,
+          totalPages: totalPages,
+          items: pageItems,
+          totalItems: tagItems.length,
+          permalink: hrefs[p - 1] + "index.html",
+          url: hrefs[p - 1],
+          previousHref: prevUrl,
+          nextHref: nextUrl,
+          paginationItems: rangeWithDots
+        });
+      }
+    });
+
+    return pages;
+  });
+
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("content/images");
