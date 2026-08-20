@@ -372,23 +372,42 @@
       // Professional Compact Dropdown, Search & Collection Pagination (All Sections & News)
       // ==========================================
       (function initAdminPagination() {
-        let currentPage = 1;
-        let searchQuery = '';
-        let pageSize = 10; // Default to 10 items automatically
-        try {
-          const saved = localStorage.getItem('arw_admin_page_size');
-          if (saved) {
-            pageSize = saved === 'all' ? 'all' : parseInt(saved, 10);
-          }
-        } catch(e){}
-
-        if (!pageSize || (typeof pageSize === 'number' && isNaN(pageSize))) {
-          pageSize = 10;
-        }
-
+        // Per-collection state store: { collectionName: { pageSize, currentPage, searchQuery } }
+        // This ensures settings chosen in one section (e.g. "الأخبار") never leak into another
+        // section (e.g. "عروض المصارعة"), because each collection gets its own isolated state
+        // AND its own localStorage key.
+        let collectionStates = {};
         let lastHash = '';
         let paginationContainer = null;
         let isDropdownOpen = false;
+
+        function getCurrentCollectionName() {
+          const hash = window.location.hash || '';
+          const match = hash.match(/#\/collections\/([^\/]+)/);
+          return match ? decodeURIComponent(match[1]) : '__default__';
+        }
+
+        function storageKeyFor(collectionName) {
+          return 'arw_admin_page_size__' + collectionName;
+        }
+
+        function getState(collectionName) {
+          const name = collectionName || getCurrentCollectionName();
+          if (!collectionStates[name]) {
+            let pageSize = 10;
+            try {
+              const saved = localStorage.getItem(storageKeyFor(name));
+              if (saved) {
+                pageSize = saved === 'all' ? 'all' : parseInt(saved, 10);
+              }
+            } catch (e) {}
+            if (!pageSize || (typeof pageSize === 'number' && isNaN(pageSize))) {
+              pageSize = 10;
+            }
+            collectionStates[name] = { pageSize: pageSize, currentPage: 1, searchQuery: '' };
+          }
+          return collectionStates[name];
+        }
 
         function normalizeArabic(text) {
           if (!text) return '';
@@ -566,23 +585,25 @@
             document.head.appendChild(styleEl);
           }
 
-          // Search input logic
+          // Search input logic (scoped to whichever collection is currently open)
           const searchInput = wrap.querySelector('#arw-section-search');
           const clearBtn = wrap.querySelector('#arw-search-clear');
 
           searchInput.oninput = (e) => {
-            searchQuery = e.target.value.trim();
-            clearBtn.style.display = searchQuery ? 'block' : 'none';
-            currentPage = 1;
+            const state = getState();
+            state.searchQuery = e.target.value.trim();
+            clearBtn.style.display = state.searchQuery ? 'block' : 'none';
+            state.currentPage = 1;
             applyPagination();
           };
 
           clearBtn.onclick = (e) => {
             e.preventDefault();
+            const state = getState();
             searchInput.value = '';
-            searchQuery = '';
+            state.searchQuery = '';
             clearBtn.style.display = 'none';
-            currentPage = 1;
+            state.currentPage = 1;
             applyPagination();
             searchInput.focus();
           };
@@ -604,14 +625,16 @@
             }
           });
 
-          // Dropdown option clicks
+          // Dropdown option clicks - saved ONLY under the currently open collection's own key
           wrap.querySelectorAll('.arw-menu-item').forEach(item => {
             item.onclick = (e) => {
               e.stopPropagation();
               const val = item.getAttribute('data-size');
-              pageSize = val === 'all' ? 'all' : parseInt(val, 10);
-              try { localStorage.setItem('arw_admin_page_size', String(pageSize)); } catch(err){}
-              currentPage = 1;
+              const collectionName = getCurrentCollectionName();
+              const state = getState(collectionName);
+              state.pageSize = val === 'all' ? 'all' : parseInt(val, 10);
+              try { localStorage.setItem(storageKeyFor(collectionName), String(state.pageSize)); } catch(err){}
+              state.currentPage = 1;
               isDropdownOpen = false;
               dropMenu.style.display = 'none';
               applyPagination();
@@ -621,31 +644,33 @@
           // Pagination buttons
           wrap.querySelector('#arw-first-page').onclick = (e) => {
             e.preventDefault();
-            currentPage = 1;
+            getState().currentPage = 1;
             applyPagination(true);
           };
 
           wrap.querySelector('#arw-prev-page').onclick = (e) => {
             e.preventDefault();
-            if (currentPage > 1) {
-              currentPage--;
+            const state = getState();
+            if (state.currentPage > 1) {
+              state.currentPage--;
               applyPagination(true);
             }
           };
 
           wrap.querySelector('#arw-next-page').onclick = (e) => {
             e.preventDefault();
-            currentPage++;
+            getState().currentPage++;
             applyPagination(true);
           };
 
           wrap.querySelector('#arw-last-page').onclick = (e) => {
             e.preventDefault();
+            const state = getState();
             const cards = findEntryCards();
-            const matchingCards = filterCards(cards);
-            const limit = typeof pageSize === 'number' ? pageSize : 10;
+            const matchingCards = filterCards(cards, state);
+            const limit = typeof state.pageSize === 'number' ? state.pageSize : 10;
             const totalPages = Math.max(1, Math.ceil(matchingCards.length / limit));
-            currentPage = totalPages;
+            state.currentPage = totalPages;
             applyPagination(true);
           };
 
@@ -712,9 +737,10 @@
           return cards;
         }
 
-        function filterCards(cards) {
-          if (!searchQuery) return cards;
-          const normQuery = normalizeArabic(searchQuery);
+        function filterCards(cards, state) {
+          state = state || getState();
+          if (!state.searchQuery) return cards;
+          const normQuery = normalizeArabic(state.searchQuery);
           return cards.filter(card => {
             const text = normalizeArabic(card.innerText || card.textContent || '');
             return text.includes(normQuery);
@@ -806,18 +832,29 @@
             return;
           }
 
+          const state = getState();
           const widget = createPaginationWidget();
           const cards = findEntryCards();
           mountWidgetInDOM(widget, cards);
 
-          // Update Dropdown label and active states
-          const labelText = pageSize === 'all' ? 'عرض: جميع المواضيع' : `عرض: ${pageSize} مواضيع`;
+          // Sync the search box with THIS collection's own remembered query
+          const searchInputEl = widget.querySelector('#arw-section-search');
+          const clearBtnEl = widget.querySelector('#arw-search-clear');
+          if (searchInputEl && document.activeElement !== searchInputEl) {
+            searchInputEl.value = state.searchQuery || '';
+          }
+          if (clearBtnEl) {
+            clearBtnEl.style.display = state.searchQuery ? 'block' : 'none';
+          }
+
+          // Update Dropdown label and active states for THIS collection only
+          const labelText = state.pageSize === 'all' ? 'عرض: جميع المواضيع' : `عرض: ${state.pageSize} مواضيع`;
           const labelEl = widget.querySelector('#arw-selected-size-label');
           if (labelEl) labelEl.textContent = labelText;
 
           widget.querySelectorAll('.arw-menu-item').forEach(item => {
             const val = item.getAttribute('data-size');
-            if ((pageSize === 'all' && val === 'all') || (pageSize !== 'all' && parseInt(val, 10) === pageSize)) {
+            if ((state.pageSize === 'all' && val === 'all') || (state.pageSize !== 'all' && parseInt(val, 10) === state.pageSize)) {
               item.classList.add('active');
             } else {
               item.classList.remove('active');
@@ -827,15 +864,15 @@
           const total = cards.length;
           if (total === 0) {
             widget.querySelector('#arw-page-info').textContent = 'جاري التحميل...';
-            widget.querySelector('#arw-first-page').disabled = (currentPage <= 1);
-            widget.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
+            widget.querySelector('#arw-first-page').disabled = (state.currentPage <= 1);
+            widget.querySelector('#arw-prev-page').disabled = (state.currentPage <= 1);
             widget.querySelector('#arw-next-page').disabled = false;
             widget.querySelector('#arw-last-page').disabled = false;
-            widget.querySelector('#arw-page-num').textContent = `${currentPage}`;
+            widget.querySelector('#arw-page-num').textContent = `${state.currentPage}`;
             return;
           }
 
-          const matchingCards = filterCards(cards);
+          const matchingCards = filterCards(cards, state);
           const filteredTotal = matchingCards.length;
 
           // Hide unmatched cards
@@ -847,7 +884,7 @@
           });
 
           if (filteredTotal === 0) {
-            widget.querySelector('#arw-page-info').innerHTML = `<span style="color:#ef4444;">لا توجد نتائج لـ "${searchQuery}"</span>`;
+            widget.querySelector('#arw-page-info').innerHTML = `<span style="color:#ef4444;">لا توجد نتائج لـ "${state.searchQuery}"</span>`;
             widget.querySelector('#arw-first-page').disabled = true;
             widget.querySelector('#arw-prev-page').disabled = true;
             widget.querySelector('#arw-next-page').disabled = true;
@@ -856,9 +893,9 @@
             return;
           }
 
-          if (pageSize === 'all') {
+          if (state.pageSize === 'all') {
             matchingCards.forEach(c => { c.style.display = ''; });
-            if (searchQuery) {
+            if (state.searchQuery) {
               widget.querySelector('#arw-page-info').innerHTML = `نتائج البحث: <b>${filteredTotal}</b> من أصل <b>${total}</b>`;
             } else {
               widget.querySelector('#arw-page-info').innerHTML = `عرض <b>الكل (${total})</b>`;
@@ -871,12 +908,12 @@
             return;
           }
 
-          const limit = typeof pageSize === 'number' ? pageSize : 10;
+          const limit = typeof state.pageSize === 'number' ? state.pageSize : 10;
           const totalPages = Math.max(1, Math.ceil(filteredTotal / limit));
-          if (currentPage > totalPages) currentPage = totalPages;
-          if (currentPage < 1) currentPage = 1;
+          if (state.currentPage > totalPages) state.currentPage = totalPages;
+          if (state.currentPage < 1) state.currentPage = 1;
 
-          const start = (currentPage - 1) * limit;
+          const start = (state.currentPage - 1) * limit;
           const end = Math.min(start + limit, filteredTotal);
 
           matchingCards.forEach((card, idx) => {
@@ -887,17 +924,17 @@
             }
           });
 
-          if (searchQuery) {
+          if (state.searchQuery) {
             widget.querySelector('#arw-page-info').innerHTML = `نتائج: <b>${start + 1}-${end}</b> من <b>${filteredTotal}</b>`;
           } else {
             widget.querySelector('#arw-page-info').innerHTML = `عرض <b>${start + 1}-${end}</b> من <b>${total}</b>`;
           }
 
-          widget.querySelector('#arw-page-num').textContent = `${currentPage}/${totalPages}`;
-          widget.querySelector('#arw-first-page').disabled = (currentPage <= 1);
-          widget.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
-          widget.querySelector('#arw-next-page').disabled = (currentPage >= totalPages);
-          widget.querySelector('#arw-last-page').disabled = (currentPage >= totalPages);
+          widget.querySelector('#arw-page-num').textContent = `${state.currentPage}/${totalPages}`;
+          widget.querySelector('#arw-first-page').disabled = (state.currentPage <= 1);
+          widget.querySelector('#arw-prev-page').disabled = (state.currentPage <= 1);
+          widget.querySelector('#arw-next-page').disabled = (state.currentPage >= totalPages);
+          widget.querySelector('#arw-last-page').disabled = (state.currentPage >= totalPages);
 
           if (shouldScroll && widget) {
             widget.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -912,8 +949,11 @@
             const currentHash = window.location.hash || '';
             if (currentHash !== lastHash) {
               lastHash = currentHash;
-              currentPage = 1;
-              searchQuery = '';
+              // Switched section/collection (or entry): reset search + page for THAT
+              // collection's own state, but its pageSize stays exactly as saved for it.
+              const state = getState();
+              state.currentPage = 1;
+              state.searchQuery = '';
               const searchInput = document.querySelector('#arw-section-search');
               const clearBtn = document.querySelector('#arw-search-clear');
               if (searchInput) searchInput.value = '';
@@ -924,8 +964,9 @@
         }
 
         window.addEventListener('hashchange', () => {
-          currentPage = 1;
-          searchQuery = '';
+          const state = getState();
+          state.currentPage = 1;
+          state.searchQuery = '';
           const searchInput = document.querySelector('#arw-section-search');
           const clearBtn = document.querySelector('#arw-search-clear');
           if (searchInput) searchInput.value = '';
