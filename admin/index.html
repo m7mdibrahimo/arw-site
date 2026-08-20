@@ -408,10 +408,7 @@
           if (hash.includes('/entries/') || hash.includes('/new') || hash.includes('/workflow') || hash.includes('/media') || hash.includes('/settings')) {
             return false;
           }
-          if (hash.startsWith('#/collections') || hash === '#/' || hash === '' || hash === '#') {
-            return true;
-          }
-          return false;
+          return true;
         }
 
         function createPaginationWidget() {
@@ -422,7 +419,7 @@
           const wrap = document.createElement('div');
           wrap.id = 'arw-admin-pagination-widget';
           wrap.style.cssText = `
-            margin: 10px 0 16px 0 !important;
+            margin: 12px 0 16px 0 !important;
             display: flex !important;
             align-items: center;
             justify-content: flex-start;
@@ -663,56 +660,56 @@
         }
 
         function findEntryCards() {
-          const allLinks = Array.from(document.querySelectorAll('a[href*="/entries/"], a[href*="#/collections/"][href*="/entries/"]'))
-            .filter(a => !a.closest('#arw-admin-pagination-widget') && !a.closest('aside') && !a.closest('nav'));
+          // Broad link selector that catches all Decap entry items in collection view
+          const allLinks = Array.from(document.querySelectorAll('a[href*="/collections/"], a[href*="#/collections/"], a[href*="/entries/"]'))
+            .filter(a => {
+              if (a.closest('#arw-admin-pagination-widget') || a.closest('aside') || a.closest('nav')) return false;
+              const href = a.getAttribute('href') || '';
+              if (href.endsWith('/new') || href.includes('/new?') || href.includes('/workflow')) return false;
+              // Check if it's an item/entry link (not just the collection root link)
+              const parts = href.split('/collections/')[1];
+              if (parts && (parts.includes('/') || href.includes('/entries/'))) {
+                return true;
+              }
+              // If it has children elements like headings/spans, it is a card link
+              if (a.querySelector('h1, h2, h3, h4, h5, span, div, p, img')) {
+                return true;
+              }
+              return false;
+            });
 
-          if (!allLinks.length) return [];
-
-          let entriesContainer = null;
-          for (const link of allLinks) {
-            const candidate = link.closest('[class*="CardsGrid"], [class*="Grid"], [class*="List"], [class*="Entries"], [class*="entries"], ul, table, tbody, div');
-            if (candidate && !candidate.id?.includes('arw-admin-pagination-widget') && candidate.children.length > 1) {
-              entriesContainer = candidate;
-              break;
-            }
+          if (!allLinks.length) {
+            // Secondary fallback: find standard Decap CMS card/table rows directly
+            const directCards = Array.from(document.querySelectorAll('[class*="Card-card"], [class*="ListItem"], [class*="EntryCard"], [class*="gridCard"], tbody tr'))
+              .filter(el => !el.closest('#arw-admin-pagination-widget') && !el.closest('aside') && !el.closest('nav') && el.tagName !== 'MAIN' && el.id !== 'nc-root');
+            return directCards;
           }
 
-          const cards = [];
           const seen = new Set();
+          const cards = [];
 
           allLinks.forEach(link => {
             let card = null;
-
-            if (entriesContainer && entriesContainer.contains(link)) {
-              let cur = link;
-              while (cur.parentElement && cur.parentElement !== entriesContainer) {
-                cur = cur.parentElement;
-              }
-              if (cur.parentElement === entriesContainer) {
-                card = cur;
+            const li = link.closest('li');
+            if (li && !li.closest('aside') && !li.closest('nav')) {
+              card = li;
+            } else {
+              const tr = link.closest('tr');
+              if (tr) {
+                card = tr;
+              } else {
+                const cardEl = link.closest('[class*="Card"], [class*="card"], [class*="ListItem"], [class*="listItem"], [class*="EntryCard"], [class*="GridCard"]');
+                if (cardEl && !cardEl.closest('aside') && !cardEl.closest('nav') && cardEl.tagName !== 'MAIN' && cardEl.id !== 'nc-root') {
+                  card = cardEl;
+                } else if (link.parentElement && link.parentElement.children.length <= 2 && link.parentElement.parentElement && link.parentElement.parentElement.children.length > 1) {
+                  card = link.parentElement;
+                } else {
+                  card = link;
+                }
               }
             }
 
-            if (!card) {
-              card = link.closest('li') || link.closest('tr') || link.closest('[class*="Card"], [class*="ListItem"], [class*="card"]');
-            }
-
-            if (!card) {
-              let el = link;
-              while (
-                el.parentElement &&
-                el.parentElement.tagName !== 'MAIN' &&
-                el.parentElement.tagName !== 'SECTION' &&
-                el.parentElement.tagName !== 'BODY' &&
-                !el.parentElement.id?.includes('nc-root') &&
-                el.parentElement.children.length <= 1
-              ) {
-                el = el.parentElement;
-              }
-              card = el;
-            }
-
-            if (card && !seen.has(card)) {
+            if (card && !seen.has(card) && card.id !== 'nc-root' && card.tagName !== 'MAIN' && card.tagName !== 'BODY') {
               seen.add(card);
               cards.push(card);
             }
@@ -731,37 +728,27 @@
         }
 
         function mountWidgetInDOM(widget, cards) {
-          // 1. Locate the collection title / header (h1 inside the active view)
+          // STRATEGY 1: Place directly below the collection title row (h1 parent)
           const headings = Array.from(document.querySelectorAll('h1, h2, h3'))
             .filter(el => !el.closest('aside') && !el.closest('nav') && !el.closest('#arw-admin-pagination-widget'));
           
           if (headings.length > 0) {
-            const heading = headings[0];
-            let headerRow = heading;
-            while (
-              headerRow.parentElement &&
-              headerRow.parentElement.tagName !== 'MAIN' &&
-              headerRow.parentElement.tagName !== 'BODY' &&
-              headerRow.parentElement.id !== 'nc-root' &&
-              headerRow.parentElement.children.length <= 3
-            ) {
-              headerRow = headerRow.parentElement;
-            }
-
-            if (headerRow && headerRow.parentElement) {
-              if (widget.previousElementSibling === headerRow && widget.parentElement === headerRow.parentElement) {
+            const h1 = headings[0];
+            const headerBox = h1.closest('div') || h1;
+            if (headerBox && headerBox.parentElement && headerBox.id !== 'nc-root' && headerBox.tagName !== 'BODY') {
+              if (headerBox.nextElementSibling === widget) {
                 return true;
               }
-              headerRow.parentElement.insertBefore(widget, headerRow.nextSibling);
+              headerBox.insertAdjacentElement('afterend', widget);
               return true;
             }
           }
 
-          // 2. Locate cards / entries grid or list
-          if (cards.length > 0 && cards[0].parentElement) {
+          // STRATEGY 2: Place directly before the cards container or list
+          if (cards && cards.length > 0 && cards[0].parentElement) {
             let container = cards[0].parentElement;
-            if (container && container.parentElement) {
-              if (widget.nextElementSibling === container) {
+            if (container && container.parentElement && container.id !== 'nc-root' && container.tagName !== 'BODY') {
+              if (container.previousElementSibling === widget) {
                 return true;
               }
               container.parentElement.insertBefore(widget, container);
@@ -769,25 +756,38 @@
             }
           }
 
-          // 3. Fallback: Main content area (excluding sidebar)
-          const mainArea = document.querySelector('main, [role="main"], [class*="CollectionMain"], [class*="CollectionContainer"], [class*="AppMain"], [class*="collectionPage"]');
-          if (mainArea && !mainArea.closest('aside') && !mainArea.closest('nav')) {
-            if (widget.parentElement === mainArea) {
+          // STRATEGY 3: Place directly below the "+ New" button row
+          const newBtn = Array.from(document.querySelectorAll('a[href*="/new"], button'))
+            .find(el => (el.textContent?.includes('New') || el.textContent?.includes('جديد')) && !el.closest('aside') && !el.closest('nav') && !el.closest('#arw-admin-pagination-widget'));
+          if (newBtn) {
+            const newBox = newBtn.closest('div') || newBtn;
+            if (newBox && newBox.parentElement && newBox.id !== 'nc-root' && newBox.tagName !== 'BODY') {
+              if (newBox.nextElementSibling === widget) {
+                return true;
+              }
+              newBox.insertAdjacentElement('afterend', widget);
               return true;
             }
-            mainArea.insertBefore(widget, mainArea.firstChild);
+          }
+
+          // STRATEGY 4: Inside the collection view area (next sibling of the sidebar aside)
+          const aside = document.querySelector('aside, [class*="Sidebar"], [class*="sidebar"]');
+          if (aside && aside.nextElementSibling) {
+            if (aside.nextElementSibling.contains(widget)) {
+              return true;
+            }
+            aside.nextElementSibling.prepend(widget);
             return true;
           }
 
-          // 4. Ultimate Fallback: #nc-root main pane
-          const ncRoot = document.getElementById('nc-root');
-          if (ncRoot) {
-            const panes = Array.from(ncRoot.querySelectorAll('div')).filter(d => !d.closest('aside') && !d.closest('nav') && d.children.length > 0);
-            if (panes.length > 0) {
-              if (widget.parentElement === panes[0]) return true;
-              panes[0].insertBefore(widget, panes[0].firstChild);
+          // STRATEGY 5: Main view fallback
+          const mainArea = document.querySelector('main, [role="main"], [class*="CollectionMain"], [class*="CollectionContainer"], [class*="collectionPage"]');
+          if (mainArea && !mainArea.closest('aside') && !mainArea.closest('nav')) {
+            if (mainArea.contains(widget)) {
               return true;
             }
+            mainArea.prepend(widget);
+            return true;
           }
 
           return false;
