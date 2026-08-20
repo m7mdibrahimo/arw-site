@@ -30,3 +30,5 @@ layout: post-layout.njk
 
 * نزال العمالقة في SNME: أعلنت WWE رسمياً عن إضافة مواجهة فردية نارية تجمع بين بطل NXT السابق والوحش النيجيري أوبا فيمي (Oba Femi) ضد النجم الشاب الشرس برون بريكر (Bron Breakker) في حدث WWE Sunday/Saturday Night’s Main Event.
 * تمهيد بول هيمان: جاء تحديد هذه المواجهة بعد التمهيد المثير الذي قدمه "عراب المصارعة" بول هيمان في عرض *Monday Night RAW*، ليضع أقوى موهبتين صاعدتين في صدام مباشر يترقبه عشاق النزالات القوية والعنيفة.
+
+<https://www.youtube.com/live/t7NiGGcoUiU?si=JwerKAZ2CLCYcAMx>
