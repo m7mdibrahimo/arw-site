@@ -170,13 +170,25 @@ permalink: "/federation/{{ fed.slug }}/index.html"
   .news-body h3, .show-body h3{ font-size:15.5px; font-weight:700; margin:4px 0 8px; line-height:1.45; }
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
 
-  .pagination-nav { margin-top: 48px; display: flex; justify-content: center; align-items: center; width: 100%; }
-  .pagination-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .page-numbers { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  .page-link { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 42px; padding: 0 16px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); color: var(--ink); font-weight: 700; font-size: 14.5px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
-  .page-link:hover:not(.disabled):not(.active) { border-color: var(--teal); color: var(--teal); background: var(--teal-soft); transform: translateY(-2px); }
-  .page-link.active { background: var(--teal); border-color: var(--teal); color: #ffffff; cursor: default; }
+  /* Smart Compact & Professional Pagination */
+  .pagination-nav { margin-top: 52px; margin-bottom: 24px; display: flex; justify-content: center; align-items: center; width: 100%; }
+  .pagination-wrap { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 4px 20px -4px rgba(0,0,0,0.06); flex-wrap: wrap; justify-content: center; }
+  .page-numbers { display: flex; align-items: center; gap: 4px; }
+  .page-link { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 38px; padding: 0 12px; border-radius: 10px; background: transparent; border: 1px solid transparent; color: var(--ink); font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; user-select: none; font-family: inherit; }
+  .page-link:hover:not(.disabled):not(.active) { border-color: var(--line); color: var(--teal); background: var(--teal-soft); transform: translateY(-1px); }
+  .page-link:active:not(.disabled):not(.active) { transform: scale(0.96); }
+  .page-link.active { background: var(--teal); border-color: var(--teal); color: #ffffff !important; font-weight: 800; cursor: default; box-shadow: 0 4px 12px rgba(14,149,148,0.35); }
+  .page-link.prev, .page-link.next { gap: 6px; padding: 0 14px; background: var(--bg); border-color: var(--line); font-size: 13.5px; }
+  .page-link.prev:hover:not(.disabled), .page-link.next:hover:not(.disabled) { background: var(--teal-soft); border-color: var(--teal); color: var(--teal); }
   .page-link.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+  .page-ellipsis { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 38px; color: var(--muted); font-weight: 800; font-size: 15px; user-select: none; letter-spacing: 2px; }
+
+  @media(max-width: 600px) {
+    .pagination-wrap { gap: 4px; padding: 4px 6px; }
+    .page-link { min-width: 34px; height: 34px; padding: 0 8px; font-size: 13px; }
+    .page-link.prev, .page-link.next { padding: 0 10px; font-size: 12.5px; }
+    .page-ellipsis { min-width: 20px; height: 34px; font-size: 13px; }
+  }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s; }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); }
@@ -322,18 +334,54 @@ permalink: "/federation/{{ fed.slug }}/index.html"
       var container = document.getElementById('fedPagination');
       if(!container) return;
 
-      var navHtml = '<nav class="pagination-nav"><div class="pagination-wrap">';
-      navHtml += currentPage > 1 ? '<button class="page-link prev" data-page="' + (currentPage - 1) + '">السابق</button>' : '<span class="page-link prev disabled">السابق</span>';
+      var navHtml = '<nav class="pagination-nav" aria-label="تصفح الصفحات"><div class="pagination-wrap">';
+      navHtml += currentPage > 1 ? '<button class="page-link prev" data-page="' + (currentPage - 1) + '" aria-label="الصفحة السابقة"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></button>' : '<span class="page-link prev disabled" aria-disabled="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></span>';
       navHtml += '<div class="page-numbers">';
-      for(var i = 1; i <= totalPages; i++){
-        if(i === currentPage){
-          navHtml += '<span class="page-link active">' + i + '</span>';
+      
+      function getSmartPages(total, curr) {
+        if (total <= 7) {
+          var arr = [];
+          for (var i = 1; i <= total; i++) arr.push({ pageNum: i });
+          return arr;
+        }
+        var pages = [];
+        pages.push({ pageNum: 1 });
+        var start = Math.max(2, curr - 1);
+        var end = Math.min(total - 1, curr + 1);
+        if (curr <= 4) {
+          start = 2;
+          end = 4;
+        }
+        if (curr >= total - 3) {
+          start = total - 3;
+          end = total - 1;
+        }
+        if (start > 2) {
+          pages.push({ isEllipsis: true });
+        }
+        for (var i = start; i <= end; i++) {
+          pages.push({ pageNum: i });
+        }
+        if (end < total - 1) {
+          pages.push({ isEllipsis: true });
+        }
+        pages.push({ pageNum: total });
+        return pages;
+      }
+
+      var pageList = getSmartPages(totalPages, currentPage);
+      for(var i = 0; i < pageList.length; i++){
+        var p = pageList[i];
+        if(p.isEllipsis){
+          navHtml += '<span class="page-ellipsis" aria-hidden="true">…</span>';
+        } else if(p.pageNum === currentPage){
+          navHtml += '<span class="page-link active" aria-current="page">' + p.pageNum + '</span>';
         } else {
-          navHtml += '<button class="page-link" data-page="' + i + '">' + i + '</button>';
+          navHtml += '<button class="page-link" data-page="' + p.pageNum + '">' + p.pageNum + '</button>';
         }
       }
       navHtml += '</div>';
-      navHtml += currentPage < totalPages ? '<button class="page-link next" data-page="' + (currentPage + 1) + '">التالي</button>' : '<span class="page-link next disabled">التالي</span>';
+      navHtml += currentPage < totalPages ? '<button class="page-link next" data-page="' + (currentPage + 1) + '" aria-label="الصفحة التالية"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' : '<span class="page-link next disabled" aria-disabled="true"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>';
       navHtml += '</div></nav>';
       container.innerHTML = navHtml;
 
