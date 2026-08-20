@@ -1,10 +1,11 @@
 ---
 pagination:
-  data: federations
+  data: collections.federationPaginated
   size: 1
-  alias: fed
-permalink: "/federation/{{ fed.slug }}/index.html"
+  alias: fedPage
+permalink: "{{ fedPage.permalink }}"
 ---
+{% set fed = fedPage.fed %}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -14,7 +15,8 @@ permalink: "/federation/{{ fed.slug }}/index.html"
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<title>{{ fed.code }} | عرب راسلنج</title>
+<title>{{ fed.code }}{% if fedPage.pageNumber > 1 %} - صفحة {{ fedPage.pageNumber }}{% endif %} | عرب راسلنج</title>
+<link rel="canonical" href="https://arab-wrestling.com{{ fedPage.url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/notif.css">
@@ -287,8 +289,7 @@ permalink: "/federation/{{ fed.slug }}/index.html"
   <p>{{ fed.name }}</p>
 </div>
 <section class="content"><div class="wrap"><div class="grid-12" id="fedGrid">
-{% for item in collections.allContent %}
-  {% if item.data.federation == fed.code %}
+{% for item in fedPage.items %}
   <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %}" href="{{ item.url | cleanUrl }}">
     {% if item.kind == 'news' %}
     <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
@@ -306,96 +307,52 @@ permalink: "/federation/{{ fed.slug }}/index.html"
     </div>
     {% endif %}
   </a>
-  {% endif %}
 {% endfor %}
 </div>
-<div id="fedPagination"></div>
+
+{% if fedPage.totalPages > 1 %}
+<nav class="pagination-nav" aria-label="تصفح الصفحات">
+  <div class="pagination-wrap">
+    {% if fedPage.previousHref %}
+      <a href="{{ fedPage.previousHref }}" class="page-link prev" aria-label="الصفحة السابقة">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span>السابق</span>
+      </a>
+    {% else %}
+      <span class="page-link prev disabled" aria-disabled="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        <span>السابق</span>
+      </span>
+    {% endif %}
+
+    <div class="page-numbers">
+      {% for pItem in fedPage.paginationItems %}
+        {% if pItem.isEllipsis %}
+          <span class="page-ellipsis" aria-hidden="true">…</span>
+        {% elseif pItem.isCurrent %}
+          <span class="page-link active" aria-current="page">{{ pItem.pageNum }}</span>
+        {% else %}
+          <a href="{{ pItem.url }}" class="page-link">{{ pItem.pageNum }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if fedPage.nextHref %}
+      <a href="{{ fedPage.nextHref }}" class="page-link next" aria-label="الصفحة التالية">
+        <span>التالي</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+    {% else %}
+      <span class="page-link next disabled" aria-disabled="true">
+        <span>التالي</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </span>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+
 </div></section>
-
-<script>
-  (function(){
-    var grid = document.getElementById('fedGrid');
-    if(!grid) return;
-    var items = Array.from(grid.children);
-    var pageSize = 20;
-    if(items.length <= pageSize) return;
-
-    var totalPages = Math.ceil(items.length / pageSize);
-    var currentPage = 1;
-
-    function renderPage(page){
-      currentPage = page;
-      var start = (page - 1) * pageSize;
-      var end = start + pageSize;
-      items.forEach(function(item, idx){
-        item.style.display = (idx >= start && idx < end) ? '' : 'none';
-      });
-
-      var container = document.getElementById('fedPagination');
-      if(!container) return;
-
-      var navHtml = '<nav class="pagination-nav" aria-label="تصفح الصفحات"><div class="pagination-wrap">';
-      navHtml += currentPage > 1 ? '<button class="page-link prev" data-page="' + (currentPage - 1) + '" aria-label="الصفحة السابقة"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></button>' : '<span class="page-link prev disabled" aria-disabled="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg><span>السابق</span></span>';
-      navHtml += '<div class="page-numbers">';
-      
-      function getSmartPages(total, curr) {
-        if (total <= 7) {
-          var arr = [];
-          for (var i = 1; i <= total; i++) arr.push({ pageNum: i });
-          return arr;
-        }
-        var pages = [];
-        pages.push({ pageNum: 1 });
-        var start = Math.max(2, curr - 1);
-        var end = Math.min(total - 1, curr + 1);
-        if (curr <= 4) {
-          start = 2;
-          end = 4;
-        }
-        if (curr >= total - 3) {
-          start = total - 3;
-          end = total - 1;
-        }
-        if (start > 2) {
-          pages.push({ isEllipsis: true });
-        }
-        for (var i = start; i <= end; i++) {
-          pages.push({ pageNum: i });
-        }
-        if (end < total - 1) {
-          pages.push({ isEllipsis: true });
-        }
-        pages.push({ pageNum: total });
-        return pages;
-      }
-
-      var pageList = getSmartPages(totalPages, currentPage);
-      for(var i = 0; i < pageList.length; i++){
-        var p = pageList[i];
-        if(p.isEllipsis){
-          navHtml += '<span class="page-ellipsis" aria-hidden="true">…</span>';
-        } else if(p.pageNum === currentPage){
-          navHtml += '<span class="page-link active" aria-current="page">' + p.pageNum + '</span>';
-        } else {
-          navHtml += '<button class="page-link" data-page="' + p.pageNum + '">' + p.pageNum + '</button>';
-        }
-      }
-      navHtml += '</div>';
-      navHtml += currentPage < totalPages ? '<button class="page-link next" data-page="' + (currentPage + 1) + '" aria-label="الصفحة التالية"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' : '<span class="page-link next disabled" aria-disabled="true"><span>التالي</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>';
-      navHtml += '</div></nav>';
-      container.innerHTML = navHtml;
-
-      container.querySelectorAll('button[data-page]').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          renderPage(parseInt(this.getAttribute('data-page'), 10));
-          window.scrollTo({ top: grid.offsetTop - 100, behavior: 'smooth' });
-        });
-      });
-    }
-
-    renderPage(1);
-  })();
-</script>
 <footer>
   <div class="social-row">
     <a aria-label="فيسبوك" href="#" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>
