@@ -27,3 +27,5 @@ layout: post-layout.njk
 * معاينة عرض TNA iMPACT!:
 
   * استعراض النزالات والفقرات المنتظرة للعرض الأسبوعي لاتحاد TNA وتوقعات سيناريوهات المرحلة القادمة.
+
+<https://www.youtube.com/live/B9iotiBbBdw?si=k41gSFXv4eCMeY4n>
