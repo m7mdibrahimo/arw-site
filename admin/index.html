@@ -394,7 +394,7 @@
       document.body.appendChild(manualBtn);
 
       // ==========================================
-      // Ultra-Compact & Sleek Admin Pagination Bar
+      // Professional Compact Dropdown & Collection Pagination
       // ==========================================
       (function initAdminPagination() {
         let currentPage = 1;
@@ -406,67 +406,67 @@
         }
 
         let lastHash = '';
-        let paginationBar = null;
+        let paginationContainer = null;
+        let isDropdownOpen = false;
 
         function isCollectionListView() {
           const hash = window.location.hash || '';
-          // Matches #/collections/news, #/collections/shows, #/collections/recaps, with or without query params/filters
+          // Collection list view matches #/collections/<name> and NOT new or edit entry
           return hash.startsWith('#/collections/') && 
                  !hash.includes('/entries/') && 
                  !hash.includes('/new');
         }
 
-        function createPaginationBar() {
-          if (paginationBar && document.body.contains(paginationBar)) {
-            return paginationBar;
+        function createPaginationWidget() {
+          if (paginationContainer && document.body.contains(paginationContainer)) {
+            return paginationContainer;
           }
 
-          const bar = document.createElement('div');
-          bar.id = 'arw-admin-pagination-bar';
-          bar.style.cssText = `
-            margin: 8px 0 14px 0;
-            padding: 6px 12px;
-            background: #ffffff;
-            color: #334155;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-            border: 1px solid #e2e8f0;
+          const wrap = document.createElement('div');
+          wrap.id = 'arw-admin-pagination-widget';
+          wrap.style.cssText = `
+            margin: 10px 0 16px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
+            direction: rtl;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-size: 12.5px;
-            direction: rtl;
-            z-index: 50;
-            box-sizing: border-box;
+            z-index: 90;
             width: 100%;
+            box-sizing: border-box;
           `;
 
-          bar.innerHTML = `
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-              <span style="font-weight:700; color:#475569; font-size:12px; display:inline-flex; align-items:center; gap:4px;">
+          wrap.innerHTML = `
+            <!-- Dropdown Menu for Page Size -->
+            <div style="position:relative; display:inline-block;" id="arw-dropdown-wrapper">
+              <button id="arw-dropdown-btn" type="button" style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; color:#1e293b; font-size:12.5px; font-weight:700; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.06); transition:all 0.15s ease;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                عرض:
-              </span>
-              <div id="arw-size-buttons" style="display:inline-flex; gap:3px; background:#f1f5f9; padding:2px 3px; border-radius:6px; border:1px solid #e2e8f0;">
-                <button data-size="10" class="arw-p-btn">10</button>
-                <button data-size="20" class="arw-p-btn">20</button>
-                <button data-size="30" class="arw-p-btn">30</button>
-                <button data-size="50" class="arw-p-btn">50</button>
-                <button data-size="100" class="arw-p-btn">100</button>
-                <button data-size="all" class="arw-p-btn">الكل</button>
+                <span id="arw-selected-size-label">عرض: 20 موضوع</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+
+              <div id="arw-dropdown-menu" style="display:none; position:absolute; top:calc(100% + 4px); right:0; min-width:170px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.12), 0 4px 10px rgba(0,0,0,0.04); padding:4px 0; z-index:9999;">
+                <div class="arw-menu-item" data-size="10">10 مواضيع في الصفحة</div>
+                <div class="arw-menu-item" data-size="20">20 موضوع في الصفحة</div>
+                <div class="arw-menu-item" data-size="30">30 موضوع في الصفحة</div>
+                <div class="arw-menu-item" data-size="50">50 موضوع في الصفحة</div>
+                <div class="arw-menu-item" data-size="100">100 موضوع في الصفحة</div>
+                <div style="height:1px; background:#e2e8f0; margin:4px 0;"></div>
+                <div class="arw-menu-item" data-size="all">جميع المواضيع (الكل)</div>
               </div>
             </div>
 
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-              <span id="arw-page-info" style="color:#64748b; font-weight:600; font-size:11.5px;">حساب المواضيع...</span>
+            <!-- Page Navigation Controls -->
+            <div id="arw-nav-group" style="display:inline-flex; align-items:center; gap:8px; background:#ffffff; padding:4px 8px; border-radius:8px; border:1px solid #e2e8f0; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+              <span id="arw-page-info" style="color:#64748b; font-weight:600; font-size:12px;">جاري الفحص...</span>
               <div style="display:inline-flex; align-items:center; gap:4px;">
                 <button id="arw-prev-page" class="arw-nav-btn" title="الصفحة السابقة">
                   السابق ◀
                 </button>
-                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:5px; color:#0284c7; font-weight:700; font-size:11.5px; border:1px solid #bae6fd;">1</span>
+                <span id="arw-page-num" style="padding:2px 8px; background:#f0f9ff; border-radius:6px; color:#0284c7; font-weight:800; font-size:12px; border:1px solid #bae6fd; min-width:28px; text-align:center;">1</span>
                 <button id="arw-next-page" class="arw-nav-btn" title="الصفحة التالية">
                   ▶ التالي
                 </button>
@@ -474,39 +474,46 @@
             </div>
           `;
 
-          // Add inline compact button styles
+          // Inject custom styles once
           if (!document.getElementById('arw-pagination-style')) {
             const styleEl = document.createElement('style');
             styleEl.id = 'arw-pagination-style';
             styleEl.textContent = `
-              .arw-p-btn {
-                padding: 2px 7px;
-                border: 1px solid transparent;
-                background: transparent;
-                color: #475569;
-                border-radius: 4px;
-                cursor: pointer;
-                font-weight: 600;
-                font-size: 11.5px;
-                line-height: 1.3;
-                transition: all 0.15s ease;
-                font-family: inherit;
-              }
-              .arw-p-btn:hover {
-                background: #e2e8f0;
-                color: #0f172a;
-              }
-              .arw-p-btn.active {
-                background: #0284c7 !important;
-                color: #ffffff !important;
+              #arw-dropdown-btn:hover {
                 border-color: #0284c7 !important;
-                font-weight: 700;
+                background: #f8fafc !important;
+              }
+              .arw-menu-item {
+                padding: 7px 14px;
+                color: #334155;
+                font-size: 12.5px;
+                font-weight: 600;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: all 0.12s ease;
+                user-select: none;
+              }
+              .arw-menu-item:hover {
+                background: #f0f9ff;
+                color: #0284c7;
+              }
+              .arw-menu-item.active {
+                background: #e0f2fe;
+                color: #0369a1;
+                font-weight: 800;
+              }
+              .arw-menu-item.active::after {
+                content: "✓";
+                color: #0284c7;
+                font-weight: 900;
               }
               .arw-nav-btn {
-                padding: 3px 8px;
-                border-radius: 5px;
+                padding: 4px 9px;
+                border-radius: 6px;
                 border: 1px solid #cbd5e1;
-                background: #f8fafc;
+                background: #ffffff;
                 color: #334155;
                 cursor: pointer;
                 font-weight: 700;
@@ -523,7 +530,7 @@
               .arw-nav-btn:disabled {
                 opacity: 0.35;
                 cursor: not-allowed;
-                background: #f1f5f9;
+                background: #f8fafc;
                 color: #94a3b8;
                 border-color: #e2e8f0;
               }
@@ -531,19 +538,39 @@
             document.head.appendChild(styleEl);
           }
 
-          // Events
-          bar.querySelectorAll('.arw-p-btn').forEach(btn => {
-            btn.onclick = (e) => {
-              e.preventDefault();
-              const val = btn.getAttribute('data-size');
+          // Dropdown toggle logic
+          const dropBtn = wrap.querySelector('#arw-dropdown-btn');
+          const dropMenu = wrap.querySelector('#arw-dropdown-menu');
+
+          dropBtn.onclick = (e) => {
+            e.stopPropagation();
+            isDropdownOpen = !isDropdownOpen;
+            dropMenu.style.display = isDropdownOpen ? 'block' : 'none';
+          };
+
+          document.addEventListener('click', (e) => {
+            if (isDropdownOpen && !wrap.contains(e.target)) {
+              isDropdownOpen = false;
+              dropMenu.style.display = 'none';
+            }
+          });
+
+          // Dropdown option clicks
+          wrap.querySelectorAll('.arw-menu-item').forEach(item => {
+            item.onclick = (e) => {
+              e.stopPropagation();
+              const val = item.getAttribute('data-size');
               pageSize = val === 'all' ? 'all' : parseInt(val, 10);
               try { localStorage.setItem('arw_admin_page_size', String(pageSize)); } catch(err){}
               currentPage = 1;
+              isDropdownOpen = false;
+              dropMenu.style.display = 'none';
               applyPagination();
             };
           });
 
-          bar.querySelector('#arw-prev-page').onclick = (e) => {
+          // Pagination buttons
+          wrap.querySelector('#arw-prev-page').onclick = (e) => {
             e.preventDefault();
             if (currentPage > 1) {
               currentPage--;
@@ -551,38 +578,46 @@
             }
           };
 
-          bar.querySelector('#arw-next-page').onclick = (e) => {
+          wrap.querySelector('#arw-next-page').onclick = (e) => {
             e.preventDefault();
             currentPage++;
             applyPagination(true);
           };
 
-          paginationBar = bar;
-          return bar;
+          paginationContainer = wrap;
+          return wrap;
         }
 
         function findEntryCards() {
-          // Select links pointing to any entry in Decap CMS
+          // Select links pointing to any entry in Decap CMS (covers news, shows, recaps)
           const links = Array.from(document.querySelectorAll('a[href*="#/collections/"][href*="/entries/"]'));
-          if (!links.length) return [];
+          if (!links.length) {
+            // fallback: any link containing /entries/
+            const altLinks = Array.from(document.querySelectorAll('a[href*="/entries/"]'));
+            if (!altLinks.length) return [];
+            links.push(...altLinks);
+          }
 
           const cards = [];
           const seen = new Set();
 
           links.forEach(link => {
             let el = link;
-            // If inside <li> list item
-            const li = link.closest('li');
+            // If inside a list item <li> or table row <tr>
+            const li = link.closest('li') || link.closest('tr');
             if (li) {
               el = li;
             } else {
-              // Traverse up to find the immediate child of the grid/list container
-              while (el.parentElement && 
-                     el.parentElement.tagName !== 'MAIN' && 
-                     el.parentElement.tagName !== 'SECTION' &&
-                     !el.parentElement.id?.includes('nc-root') &&
-                     el.parentElement.children.length < 3) {
-                el = el.parentElement;
+              // Traverse up to find the single item card block inside the grid/list container
+              let parent = el.parentElement;
+              while (parent && 
+                     parent.tagName !== 'MAIN' && 
+                     parent.tagName !== 'SECTION' &&
+                     parent.tagName !== 'BODY' &&
+                     !parent.id?.includes('nc-root') &&
+                     parent.children.length <= 2) {
+                el = parent;
+                parent = el.parentElement;
               }
             }
             if (!seen.has(el)) {
@@ -591,13 +626,13 @@
             }
           });
 
-          return cards.length ? cards : links;
+          return cards;
         }
 
         function applyPagination(shouldScroll = false) {
           if (!isCollectionListView()) {
-            if (paginationBar && paginationBar.parentNode) {
-              paginationBar.parentNode.removeChild(paginationBar);
+            if (paginationContainer && paginationContainer.parentNode) {
+              paginationContainer.parentNode.removeChild(paginationContainer);
             }
             return;
           }
@@ -605,47 +640,51 @@
           const cards = findEntryCards();
           const total = cards.length;
 
-          // Inject bar into collection page view
-          const bar = createPaginationBar();
+          // Inject widget into collection page view
+          const widget = createPaginationWidget();
           
-          // Place bar cleanly right above the cards container
+          // Place widget above cards container
           const firstCard = cards[0];
           if (firstCard && firstCard.parentElement) {
             const cardsContainer = firstCard.parentElement;
-            if (cardsContainer.parentElement && bar.parentElement !== cardsContainer.parentElement) {
-              cardsContainer.parentElement.insertBefore(bar, cardsContainer);
+            if (cardsContainer.parentElement && widget.parentElement !== cardsContainer.parentElement) {
+              cardsContainer.parentElement.insertBefore(widget, cardsContainer);
             }
           } else {
             const mainContainer = document.querySelector('main') || document.querySelector('[class*="CollectionTop"]') || document.querySelector('[class*="CollectionContainer"]');
-            if (mainContainer && !mainContainer.contains(bar)) {
-              mainContainer.prepend(bar);
+            if (mainContainer && !mainContainer.contains(widget)) {
+              mainContainer.prepend(widget);
             }
           }
 
-          // Update active buttons in toolbar
-          bar.querySelectorAll('.arw-p-btn').forEach(btn => {
-            const val = btn.getAttribute('data-size');
+          // Update Dropdown label and active states
+          const labelText = pageSize === 'all' ? 'عرض: جميع المواضيع' : `عرض: ${pageSize} مواضيع`;
+          const labelEl = widget.querySelector('#arw-selected-size-label');
+          if (labelEl) labelEl.textContent = labelText;
+
+          widget.querySelectorAll('.arw-menu-item').forEach(item => {
+            const val = item.getAttribute('data-size');
             if ((pageSize === 'all' && val === 'all') || (pageSize !== 'all' && parseInt(val, 10) === pageSize)) {
-              btn.classList.add('active');
+              item.classList.add('active');
             } else {
-              btn.classList.remove('active');
+              item.classList.remove('active');
             }
           });
 
           if (total === 0) {
-            bar.querySelector('#arw-page-info').textContent = 'لا توجد مواضيع';
-            bar.querySelector('#arw-prev-page').disabled = true;
-            bar.querySelector('#arw-next-page').disabled = true;
-            bar.querySelector('#arw-page-num').textContent = '1';
+            widget.querySelector('#arw-page-info').textContent = 'لا توجد مواضيع';
+            widget.querySelector('#arw-prev-page').disabled = true;
+            widget.querySelector('#arw-next-page').disabled = true;
+            widget.querySelector('#arw-page-num').textContent = '1';
             return;
           }
 
           if (pageSize === 'all') {
             cards.forEach(c => { c.style.display = ''; });
-            bar.querySelector('#arw-page-info').innerHTML = `عرض <b>الكل (${total})</b>`;
-            bar.querySelector('#arw-prev-page').disabled = true;
-            bar.querySelector('#arw-next-page').disabled = true;
-            bar.querySelector('#arw-page-num').textContent = 'الكل';
+            widget.querySelector('#arw-page-info').innerHTML = `عرض <b>الكل (${total})</b>`;
+            widget.querySelector('#arw-prev-page').disabled = true;
+            widget.querySelector('#arw-next-page').disabled = true;
+            widget.querySelector('#arw-page-num').textContent = 'الكل';
             return;
           }
 
@@ -665,13 +704,13 @@
             }
           });
 
-          bar.querySelector('#arw-page-info').innerHTML = `عرض <b>${start + 1}-${end}</b> من <b>${total}</b>`;
-          bar.querySelector('#arw-page-num').textContent = `${currentPage}/${totalPages}`;
-          bar.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
-          bar.querySelector('#arw-next-page').disabled = (currentPage >= totalPages);
+          widget.querySelector('#arw-page-info').innerHTML = `عرض <b>${start + 1}-${end}</b> من <b>${total}</b>`;
+          widget.querySelector('#arw-page-num').textContent = `${currentPage}/${totalPages}`;
+          widget.querySelector('#arw-prev-page').disabled = (currentPage <= 1);
+          widget.querySelector('#arw-next-page').disabled = (currentPage >= totalPages);
 
-          if (shouldScroll && bar) {
-            bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (shouldScroll && widget) {
+            widget.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
 
@@ -686,7 +725,7 @@
               currentPage = 1;
             }
             applyPagination();
-          }, 120);
+          }, 100);
         }
 
         window.addEventListener('hashchange', () => {
@@ -694,7 +733,7 @@
           scheduleUpdate();
         });
 
-        // Observe DOM for asynchronous card additions / collection switching
+        // Observe DOM for collection navigation and view updates
         const observer = new MutationObserver(() => {
           scheduleUpdate();
         });
@@ -702,9 +741,9 @@
         observer.observe(document.body, { childList: true, subtree: true });
 
         // Initial triggers
-        setTimeout(scheduleUpdate, 300);
-        setTimeout(scheduleUpdate, 800);
-        setTimeout(scheduleUpdate, 1800);
+        setTimeout(scheduleUpdate, 200);
+        setTimeout(scheduleUpdate, 600);
+        setTimeout(scheduleUpdate, 1500);
       })();
     }
   </script>
