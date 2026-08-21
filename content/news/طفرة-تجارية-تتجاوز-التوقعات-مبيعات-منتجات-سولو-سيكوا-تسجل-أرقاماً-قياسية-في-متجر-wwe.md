@@ -26,3 +26,5 @@ layout: post-layout.njk
 انقلاب ناري على رومان رينز في عرض الرو
 
 يأتي هذا الزخم التجاري بالتزامن مع الأحداث المشتعلة؛ حيث شهد العرض الأخير من WWE Raw رفض سولو سيكوا الانضمام مجدداً لفريق بلودلاين (The Bloodline)، مفاجئاً الجماهير بشن هجوم عنيف على رومان رينز (Roman Reigns) ليؤكد استقلاله التام وصراعه المفتوح على القمة.
+
+<https://x.com/Fightful/status/2090496432771944555?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090496432771944555%7Ctwgr%5E051acb909e14b848c76bc45ef0806de9ba05f5a2%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fsolo-sikoa-merchandise-doing-better-than-expected-over-the-past-month%2F>
