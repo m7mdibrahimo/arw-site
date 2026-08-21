@@ -23,3 +23,5 @@ layout: post-layout.njk
 * طريق أمريكانو نحو اللقب: انتزع "إل غراندي أمريكانو" فرصته الذهبية للمنافسة على اللقب بعد فوزه ببطولة ملك الملوك (Rey de Reyes) في مارس الماضي، متفوقاً على أسماء بارزة شملت لا باركا، سانتوس إسكوبار، والنسخة الأصلية من أمريكانو.
 
 تعتبر هذه الفقرة تمهيداً رئيسياً لواحد من أضخم نزالات اتحاد AAA هذا العام، ومن المتوقع أن تشهد أحداثاً ساخنة واحتكاكات كلامية وبدنية بين الطرفين قبل الحدث الأكبر.
+
+<https://x.com/luchalibreaaa/status/2090567070513811927?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090567070513811927%7Ctwgr%5Eebeacf95ef5ac8e5b58ecdcaadd32fe62ee0808f%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fcontract-signing-added-to-aaa-ola-de-calor%2F>
