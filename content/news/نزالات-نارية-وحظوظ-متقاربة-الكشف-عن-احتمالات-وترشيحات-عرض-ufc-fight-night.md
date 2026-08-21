@@ -1,5 +1,5 @@
 ---
-federation: WWE
+federation: MMA
 title: '"نزالات نارية وحظوظ متقاربة!".. الكشف عن احتمالات وترشيحات عرض UFC Fight
   Night'
 date: 2026-08-21T03:45:00.000+03:00
