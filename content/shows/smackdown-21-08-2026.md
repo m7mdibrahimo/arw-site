@@ -13,17 +13,17 @@ tags:
 image: /content/images/ll4qloc1qeorxl01.jpg
 servers:
   - label: "#1"
-    url: https://www.ok.ru/videoembed/16942544521824
+    url: https://www.ok.ru/videoembed/16951311075936
   - label: "#2"
-    url: https://turbovidhls.com/t/6a891eadd4db1
+    url: https://turbovidhls.com/t/6a89cbe5a3e8f
   - label: "#3"
-    url: https://sg1.stackvid.com/watch/AmsfQJTc45s
+    url: https://sg1.stackvid.com/watch/3U16SQ3S2MU
 downloads:
   - label: تحميل متعدد - بجودة منخفضة
-    url: https://multiup.io/download/6441977bc6c86cf81d9414df82444676/WWE%20Smackdown%2021.08.2026_480p.mp4
+    url: https://multiup.io/download/c3f7bb67cd2daa166fece7be0035133e/WWE_Smackdown_August_21st_2026_FHD_480p.mp4
   - label: تحميل متعدد - بجودة متوسطة
-    url: https://multiup.io/download/028532377886c2bab96e20c3c55bdb20/WWE%20Smackdown%2021.08.2026_720p.mp4
+    url: https://multiup.io/download/43dd14c0a3afcc333b50c47392df11f4/WWE_Smackdown_August_21st_2026_FHD_720p.mp4
   - label: تحميل متعدد - بجودة عالية
-    url: https://multiup.io/download/32d9278e2cd5cd67c9b16406043d7bb5/WWE%20Smackdown%2021.08.2026_1080p.mp4
+    url: https://multiup.io/download/bec48d2026aadfa14382036f95431875/WWE_Smackdown_August_21st_2026_FHD_1080p.mp4
 layout: post-layout.njk
 ---
