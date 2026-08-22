@@ -30,3 +30,7 @@ layout: post-layout.njk
 > "لا أحد يعرف من أنت في أمريكا يا فتى. أنت مجرد صبي يتحدث إلى أفضل مصارع في العالم. لا تحدثني عن بطولاتكم الهامشية، سأقاتلك في أي مكان وسأهزمك بحركة الهيدلوك تيك أوفر."
 
 يُذكر أن ريوهي أويوا لم يسبق له الظهور في عروض AEW من قبل، ويستعد حالياً لخوض مواجهة مرتقبة على لقب بطولة العالم للوزن الثقيل IWGP Heavyweight Championship في حدث NJPW King Of Pro-Wrestling القادم.
+
+<https://x.com/njpw_ryoheioiwa/status/2090950256649543866?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090950256649543866%7Ctwgr%5E8a73c7aaa86c1cf7be620637194108b11f98c0a7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fryohei-oiwa-says-hell-come-storming-into-aew-to-face-mjf%2F>
+
+<https://x.com/The_MJF/status/2090955182121099310?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090955182121099310%7Ctwgr%5E8a73c7aaa86c1cf7be620637194108b11f98c0a7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fryohei-oiwa-says-hell-come-storming-into-aew-to-face-mjf%2F>
