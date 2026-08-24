@@ -20,3 +20,5 @@ layout: post-layout.njk
 
 * تأكيد العقد الرسمي: أكدت إدارة TNA عقب انتهاء المواجهة مباشرة أن هوغان وقعت رسمياً على عقد طويل الأمد، لتعود بصفة دائمة إلى الحلبات التي شهدت انطلاقتها وتألقها كبطلة سابقة لفرق السيدات.
 * صفقة مزدوجة في نفس الليلة: انضمت كيرا هوغان إلى بطل اتحاد AAW للوزن الثقيل جو ألونزو (Joe Alonzo)، والذي انتزع هو الآخر عقداً رسمياً مع الاتحاد بعد فوزه على هوم تاون مان قبيل انطلاق العرض الرئيسي لـ Lockdown.
+
+<https://x.com/ThisIsTNA/status/2091657856948826117?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2091657856948826117%7Ctwgr%5E8da8e4def681f8baad76047520135130d8d8c864%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Ftna-wrestling-announces-signing-of-kiera-hogan%2F>
