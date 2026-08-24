@@ -26,3 +26,5 @@ layout: post-layout.njk
 * سيناريو النزال: شهد النزال ندية وشراسة كبيرة بين الطرفين داخل القفص الحديدي، حتى جاءت اللحظة الحاسمة عندما حاول موس توجيه ضربة قوية لكازاريان دفعته للاصطدام بباب القفص المفتوح.  
 * نتيجة المواجهة: تسبب الاصطدام في سقوط كازاريان إلى خارج الحلبة أولاً، ليحتسب الحكم فوز كازاريان رسمياً وفقاً لقواعد الهروب من القفص.  
 * المحطة القادمة: يستعد اتحاد TNA للانتقال إلى مقاطعة أونتاريو في كندا لتسجيل الحلقات التلفزيونية القادمة لما بعد أحداث Lockdown وتداعياتها.
+
+<https://x.com/TheMooseNation/status/2091884704932761836?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2091884704932761836%7Ctwgr%5E254be8afa96ab7e52cac03c3638ea128ce0ebb13%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fmoose-says-his-entrance-at-tna-lockdown-was-homage-to-triple-h%2F>
