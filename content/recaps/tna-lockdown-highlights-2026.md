@@ -9,6 +9,8 @@ tags:
   - TNA
   - TNA Lockdown
   - تي ان ايه لوك داون
+  - ملخصات العروض
+  - ملخص
 image: /content/images/9zxh0xda0wnkddsj.jpg
 servers:
   - label: "#1"
