@@ -22,3 +22,5 @@ layout: post-layout.njk
 
 * تاريخ والده الأسطوري: يُعد إيه جيه ستايلز واجهة اتحاد TNA التاريخية خلال فترته الذهبية بين عامي 2002 و2014، حيث حقق لقب بطولة العالم للوزن الثقيل وبطولة الـ X-Division والعديد من الألقاب الكبرى ليصبح أيقونة المنظمة الأولى.
 * خطوة أولى في مسيرة إيفري: يأتي توقيع إيفري ستايلز ليمثل بداية جديدة وواعدة لحمل إرث عائلة ستايلز داخل نفس الحلبات التي شهدت انطلاقة والده نحو العالمية.
+
+<https://x.com/Fightful/status/2091674261001740644?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2091674261001740644%7Ctwgr%5E5e1d430eae0ec5673ad7fbc1396fd2db96be7e94%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Favery-styles-signs-with-tna-wrestling%2F>
