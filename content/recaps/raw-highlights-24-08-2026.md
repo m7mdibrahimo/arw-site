@@ -15,12 +15,12 @@ tags:
 image: /content/images/el3o9edrcbsuw2in.jpg
 servers:
   - label: "#1"
-    url: https://playmogo.com/e/om95zdxoy86f
+    url: https://playmogo.com/e/2kemhnyl9k7e
   - label: "#2"
-    url: https://cdn.loadvid.com/videos/play/RrXvpaBebgxEyiwUXiBi
+    url: https://cdn.loadvid.com/videos/play/myEgcetGqwEkvBfeEmEp
   - label: "#3"
-    url: https://turbovidhls.com/t/6a8d0077c8642
+    url: https://turbovidhls.com/t/6a8d0768162dd
   - label: "#4"
-    url: https://streamtape.com/e/jAL492oRKvIz0ww
+    url: https://streamtape.com/e/92MDW6dPY0ta2Ad
 layout: post-layout.njk
 ---
