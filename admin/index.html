@@ -319,11 +319,19 @@
         console.error("تعذر تسجيل قالب المعاينة:", e);
       }
 
-      try {
-        window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
-      } catch (e) {
-        console.error("تعذر تسجيل مستمع postPublish:", e);
-      }
+      // NOTE: automatic publishing on save/publish is now handled server-side by
+      // the "site watcher" in server.ts — it detects new content the moment it's
+      // actually live on the site (real URL + real image already generated) and
+      // posts it immediately, instead of this admin page guessing "wait 3 minutes"
+      // and having to stay open. So we intentionally do NOT register a postPublish
+      // listener here anymore. The floating button below is kept only as a manual
+      // override for cases where you want to force an immediate post.
+      //
+      // try {
+      //   window.CMS.registerEventListener({ name: 'postPublish', handler: handlePublishEvent });
+      // } catch (e) {
+      //   console.error("تعذر تسجيل مستمع postPublish:", e);
+      // }
 
       // CMS.init() must always run
       window.CMS.init();
