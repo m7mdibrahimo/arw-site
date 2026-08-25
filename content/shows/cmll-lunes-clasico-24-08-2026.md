@@ -19,7 +19,7 @@ servers:
   - label: "#3"
     url: https://turbovidhls.com/t/6a8e199662d31
   - label: "#4"
-    url: https://turbovidhls.com/t/6a8e199662d31
+    url: https://streamtape.com/e/xeQxkqZP8xskO2o
 downloads:
   - label: تحميل متعدد
     url: https://multiup.io/download/cc13397c554caeb8de270d010c3835ba/CMLL.Lunes.Clasico.2026.08.24_720p.mp4
