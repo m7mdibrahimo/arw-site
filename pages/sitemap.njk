@@ -44,6 +44,7 @@ eleventyExcludeFromCollections: true
   {% for item in collections.allContent %}
   <url>
     <loc>https://arab-wrestling.com{{ item.url | cleanUrl }}</loc>
+    <lastmod>{{ item.date.toISOString().slice(0, 10) }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
