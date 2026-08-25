@@ -40,6 +40,12 @@
   "@type": "Article",
   "headline": "{{ pageTitle | escape }}",
   "image": ["{% if image %}{{ image }}{% else %}https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop{% endif %}"],
+  "datePublished": {{ page.date | jsonify | safe }},
+  "dateModified": {{ page.date | jsonify | safe }},
+  "author": {
+    "@type": "Organization",
+    "name": "عرب راسلنج"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "عرب راسلنج"
@@ -525,7 +531,7 @@
       {% if duration %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ duration }}</span>{% endif %}
     </div>
     {% if not isNews %}
-    <h1>{{ headline or title }}</h1>
+    <h2>{{ headline or title }}</h2>
     {% endif %}
 
     {% if image and isNews %}
