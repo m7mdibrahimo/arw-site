@@ -285,7 +285,11 @@ async function executeTelegramPost(data: {
     const safeTitle = escapeTelegramHtml(title || "");
     const safeText = escapeTelegramHtml(text || "");
     const safeUrl = escapeTelegramHtml(articleUrl || "");
-    const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+    // The blockquote is "expandable" so inside the channel only the title
+    // stands out clearly at a glance; the summary is collapsed under a
+    // tap-to-expand quote instead of competing with the title for attention.
+    const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
+    const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
     let result: any = { ok: false };
     const localImgPath = resolveLocalImagePath(image);
@@ -712,7 +716,8 @@ async function sendVerifiedTelegramPost(
   const safeTitle = escapeTelegramHtml(data.title || "");
   const safeText = escapeTelegramHtml(data.text || "");
   const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || SITE_ORIGIN));
-  const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+  const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
+  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
   if (imageBuffer) {
     try {
