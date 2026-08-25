@@ -160,10 +160,36 @@ app.post("/api/push/send", async (req, res) => {
   }
 });
 
-// Telegram Sent Posts Deduplication — kept in memory only. No file persistence:
-// the goal now is simply "wait 3 minutes, then send", nothing more. If the
-// server restarts, dedup just resets, which is fine for this use case.
-const telegramSentMap: Record<string, number> = {};
+// Telegram Sent Posts Deduplication — persisted to disk. This is what lets the
+// site watcher (below) know which items it has already posted, both across
+// poll cycles and across server restarts/redeploys.
+const SENT_STATE_FILE = path.join(process.cwd(), "telegram-sent-map.json");
+const SENT_STATE_MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000; // prune entries older than 90 days
+
+function loadSentMap(): Record<string, number> {
+  if (!fs.existsSync(SENT_STATE_FILE)) return {};
+  try {
+    const parsed = JSON.parse(fs.readFileSync(SENT_STATE_FILE, "utf-8"));
+    const now = Date.now();
+    const pruned: Record<string, number> = {};
+    for (const k of Object.keys(parsed || {})) {
+      if (now - parsed[k] < SENT_STATE_MAX_AGE_MS) pruned[k] = parsed[k];
+    }
+    return pruned;
+  } catch (e) {
+    return {};
+  }
+}
+
+function persistSentMap() {
+  try {
+    fs.writeFileSync(SENT_STATE_FILE, JSON.stringify(telegramSentMap));
+  } catch (e) {
+    console.error("[Telegram] Failed to persist sent-state file:", e);
+  }
+}
+
+const telegramSentMap: Record<string, number> = loadSentMap();
 
 function escapeTelegramHtml(str: string): string {
   if (!str) return "";
@@ -521,6 +547,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
 
     if (result.ok) {
       telegramSentMap[key] = Date.now();
+      persistSentMap();
       if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
         sendPushToAllSubscribers(item).catch(() => {});
       }
@@ -540,6 +567,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
         const fallback = await executeTelegramPost(item, false); // allow text-only fallback now
         if (fallback.ok) {
           telegramSentMap[key] = Date.now();
+          persistSentMap();
           if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
             sendPushToAllSubscribers(item).catch(() => {});
           }
@@ -556,6 +584,205 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
     console.error(`[Telegram] Error sending ${key}:`, err);
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────
+// Site Watcher: watches the REAL public site (arab-wrestling.com — served
+// through Cloudflare/GitHub, a separate pipeline from this API server) and
+// only posts an item once it has personally verified, over the public
+// internet, that:
+//   1) the article page itself responds live (not 404), and
+//   2) the image itself responds live and is a real image (not 404, not a
+//      broken/placeholder response).
+// It never trusts a local file or a fixed delay — it checks the exact same
+// URLs a visitor or Telegram would see, with cache-busting so a stale
+// Cloudflare edge cache can't fool it into thinking something is missing
+// (or thinking something is ready when the edge is still serving old data).
+// If verification fails, the item is simply retried on the next poll cycle
+// — nothing is lost, and nothing goes out until it's genuinely confirmed.
+// ─────────────────────────────────────────────────────────────────────────
+
+const SITE_ORIGIN = "https://arab-wrestling.com";
+const REMOTE_INDEX_URL = `${SITE_ORIGIN}/search-index.json`;
+const WATCHER_POLL_MS = 15000; // re-check the live site every 15 seconds
+// Content published in the few minutes before this server booted is still
+// treated as "new" (covers the moment right after a redeploy). Anything
+// older than this at boot time is assumed to already be known/published.
+const WATCHER_BOOTSTRAP_GRACE_MS = 5 * 60 * 1000;
+// If an item still isn't fully verifiable after this long, stop waiting on
+// the image specifically and publish with text + link only, so a post is
+// never lost forever because of one stuck image.
+const WATCHER_MAX_WAIT_MS = 20 * 60 * 1000;
+
+function cacheBust(url: string): string {
+  return url + (url.includes("?") ? "&" : "?") + "_cb=" + Date.now();
+}
+
+async function fetchLiveSearchIndex(): Promise<any[]> {
+  try {
+    const res = await fetch(cacheBust(REMOTE_INDEX_URL), { headers: { "Cache-Control": "no-cache" } });
+    if (!res.ok) {
+      console.warn(`[Watcher] Live search-index.json returned ${res.status}`);
+      return [];
+    }
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch (e) {
+    console.error("[Watcher] Failed to fetch live search-index.json:", e);
+    return [];
+  }
+}
+
+function watcherKeyFor(item: any): string {
+  return sanitizeKey(normalizeArticleUrl(SITE_ORIGIN + (item.url || "")));
+}
+
+// Actually hits the public page URL and the public image URL — the exact
+// things a real visitor (or Telegram) would load — before anything is sent.
+async function verifyLiveOnSite(item: any): Promise<{ ok: boolean; imageBuffer?: ArrayBuffer; imageContentType?: string }> {
+  const pageUrl = SITE_ORIGIN + (item.url || "");
+
+  try {
+    const pageRes = await fetch(cacheBust(pageUrl), { headers: { "Cache-Control": "no-cache" } });
+    if (!pageRes.ok) return { ok: false };
+  } catch (e) {
+    return { ok: false };
+  }
+
+  if (!item.image) return { ok: true }; // nothing to verify for the image
+
+  const imageUrl = item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image;
+  try {
+    const imgRes = await fetch(cacheBust(imageUrl), { headers: { "Cache-Control": "no-cache" } });
+    if (!imgRes.ok) return { ok: false };
+    const contentType = imgRes.headers.get("content-type") || "";
+    if (!contentType.startsWith("image/")) return { ok: false };
+    const buf = await imgRes.arrayBuffer();
+    if (!isValidImageBuffer(buf)) return { ok: false };
+    return { ok: true, imageBuffer: buf, imageContentType: contentType };
+  } catch (e) {
+    return { ok: false };
+  }
+}
+
+// Sends to Telegram using the EXACT image bytes we just verified live on the
+// site — no separate re-fetch, no guessing, no risk of a mismatch.
+async function sendVerifiedTelegramPost(
+  data: { title: string; text?: string; url: string },
+  imageBuffer?: ArrayBuffer,
+  imageContentType?: string
+) {
+  const safeTitle = escapeTelegramHtml(data.title || "");
+  const safeText = escapeTelegramHtml(data.text || "");
+  const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || SITE_ORIGIN));
+  const messageHtml = `<b>${safeTitle}</b>\n\n${safeText}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+
+  if (imageBuffer) {
+    try {
+      const blob = new Blob([new Uint8Array(imageBuffer)], { type: imageContentType || "image/jpeg" });
+      const formData = new FormData();
+      formData.append("chat_id", CHAT_ID);
+      formData.append("photo", blob, "photo.jpg");
+      formData.append("caption", messageHtml);
+      formData.append("parse_mode", "HTML");
+      const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, { method: "POST", body: formData });
+      const result = await tgRes.json().catch(() => ({ ok: false }));
+      if (result.ok) return result;
+      console.warn("[Watcher] sendPhoto with verified image failed, falling back to text:", result);
+    } catch (e) {
+      console.warn("[Watcher] Error sending verified image, falling back to text:", e);
+    }
+  }
+
+  const payload = { chat_id: CHAT_ID, text: messageHtml, parse_mode: "HTML", disable_web_page_preview: false };
+  const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
+  return await tgRes.json().catch(() => ({ ok: false }));
+}
+
+const watcherPendingSince: Record<string, number> = {};
+
+async function tryPublishSiteItem(item: any, key: string) {
+  const verify = await verifyLiveOnSite(item);
+  if (!watcherPendingSince[key]) watcherPendingSince[key] = Date.now();
+  const waited = Date.now() - watcherPendingSince[key];
+
+  if (!verify.ok) {
+    if (waited < WATCHER_MAX_WAIT_MS) {
+      console.log(`[Watcher] "${item.title}" not fully live on arab-wrestling.com yet, will re-check.`);
+      return; // try again on the next poll — nothing is lost
+    }
+    console.warn(`[Watcher] "${item.title}" still not fully live after ${Math.round(waited / 60000)} min — publishing with text + link only.`);
+  }
+
+  const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
+  const payload = {
+    title: item.title,
+    text: item.headline || item.description || "",
+    url: SITE_ORIGIN + (item.url || "")
+  };
+
+  console.log(`[Watcher] Verified live on site, publishing: ${item.title}`);
+  const result = await sendVerifiedTelegramPost(payload, verify.ok ? verify.imageBuffer : undefined, verify.imageContentType);
+
+  if (result && result.ok) {
+    telegramSentMap[key] = Date.now();
+    persistSentMap();
+    delete watcherPendingSince[key];
+    if (collection === "shows" || collection === "recaps") {
+      sendPushToAllSubscribers({ ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
+    }
+  } else {
+    console.error(`[Watcher] Failed to publish "${item.title}":`, result);
+  }
+}
+
+async function watcherBootstrap() {
+  const items = await fetchLiveSearchIndex();
+  if (!items.length) {
+    console.log("[Watcher] Could not reach live search-index.json at boot, will try again on next poll.");
+    return;
+  }
+  const now = Date.now();
+  let pending = 0;
+  for (const item of items) {
+    const key = watcherKeyFor(item);
+    if (!key || telegramSentMap[key]) continue; // already known from persisted state
+    const ts = item.date ? new Date(item.date).getTime() : 0;
+    if (ts && now - ts <= WATCHER_BOOTSTRAP_GRACE_MS) {
+      pending++; // recent enough — leave unmarked so the first poll verifies + sends it
+      continue;
+    }
+    // Predates this boot by more than the grace window: treat as already-published history.
+    telegramSentMap[key] = now;
+  }
+  persistSentMap();
+  console.log(`[Watcher] Bootstrapped with ${items.length} live items (${pending} pending publish).`);
+}
+
+let watcherPolling = false;
+async function watcherPoll() {
+  if (watcherPolling) return; // don't overlap if a previous poll is still verifying/sending
+  watcherPolling = true;
+  try {
+    const items = await fetchLiveSearchIndex();
+    for (const item of items) {
+      const key = watcherKeyFor(item);
+      if (key && !telegramSentMap[key]) {
+        await tryPublishSiteItem(item, key);
+      }
+    }
+  } catch (e) {
+    console.error("[Watcher] Poll error:", e);
+  } finally {
+    watcherPolling = false;
+  }
+}
+
+watcherBootstrap();
+setInterval(watcherPoll, WATCHER_POLL_MS);
 
 // Telegram API endpoints
 app.get("/api/telegram/status", async (req, res) => {
@@ -594,9 +821,12 @@ app.post("/api/telegram/post", async (req, res) => {
       else console.log("[Eleventy AutoBuild] Site rebuilt successfully for new post!");
     });
 
-    // Generate strict unique deduplication key
-    const rawKey = postId || url || slug || id || title || "";
-    const dedupKey = rawKey.toString().toLowerCase().trim().replace(/[^a-z0-9\u0600-\u06FF_-]/g, "");
+    // Generate strict unique deduplication key. Prefer the URL (normalized the
+    // same way the site watcher does) so a manual publish here and an
+    // automatic publish from the watcher recognize each other as the same
+    // item and never double-post.
+    const rawKey = url ? normalizeArticleUrl(url) : (postId || slug || id || title || "");
+    const dedupKey = sanitizeKey(rawKey.toString());
 
     // Check if sent recently (less than 10 minutes) unless force/immediate is passed
     const lastSentTime = telegramSentMap[dedupKey];
@@ -615,6 +845,7 @@ app.post("/api/telegram/post", async (req, res) => {
       if (result.ok) {
         if (dedupKey) {
           telegramSentMap[dedupKey] = Date.now();
+          persistSentMap();
         }
         if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
           sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
