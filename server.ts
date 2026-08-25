@@ -636,31 +636,69 @@ function watcherKeyFor(item: any): string {
   return sanitizeKey(normalizeArticleUrl(SITE_ORIGIN + (item.url || "")));
 }
 
+// Pulls a short plain-text snippet out of the article's own rendered body
+// (the <div class="post-body ..."> block in post-layout.njk) so the Telegram
+// caption always has a real summary of the article, even for news items that
+// don't set a headline/description field.
+function extractSnippetFromHtml(html: string, maxLen: number = 220): string {
+  const startMarker = 'class="post-body';
+  const markerIdx = html.indexOf(startMarker);
+  if (markerIdx === -1) return "";
+  const startIdx = html.indexOf(">", markerIdx) + 1;
+  if (startIdx <= 0) return "";
+  const endIdx = html.indexOf('class="post-tags', startIdx);
+  const raw = endIdx !== -1 ? html.slice(startIdx, endIdx) : html.slice(startIdx, startIdx + 4000);
+
+  let text = raw
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (text.length > maxLen) {
+    text = text.slice(0, maxLen).trim() + "…";
+  }
+  // Sanity check: reject anything that isn't real prose (e.g. a stray
+  // leftover HTML fragment from unusual markup, or basically nothing).
+  if (text.length < 15 || text.startsWith("<")) return "";
+  return text;
+}
+
 // Actually hits the public page URL and the public image URL — the exact
 // things a real visitor (or Telegram) would load — before anything is sent.
-async function verifyLiveOnSite(item: any): Promise<{ ok: boolean; imageBuffer?: ArrayBuffer; imageContentType?: string }> {
+async function verifyLiveOnSite(item: any): Promise<{ ok: boolean; imageBuffer?: ArrayBuffer; imageContentType?: string; bodySnippet?: string }> {
   const pageUrl = SITE_ORIGIN + (item.url || "");
+  let bodySnippet = "";
 
   try {
     const pageRes = await fetch(cacheBust(pageUrl), { headers: { "Cache-Control": "no-cache" } });
     if (!pageRes.ok) return { ok: false };
+    const html = await pageRes.text();
+    bodySnippet = extractSnippetFromHtml(html);
   } catch (e) {
     return { ok: false };
   }
 
-  if (!item.image) return { ok: true }; // nothing to verify for the image
+  if (!item.image) return { ok: true, bodySnippet }; // nothing to verify for the image
 
   const imageUrl = item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image;
   try {
     const imgRes = await fetch(cacheBust(imageUrl), { headers: { "Cache-Control": "no-cache" } });
-    if (!imgRes.ok) return { ok: false };
+    if (!imgRes.ok) return { ok: false, bodySnippet };
     const contentType = imgRes.headers.get("content-type") || "";
-    if (!contentType.startsWith("image/")) return { ok: false };
+    if (!contentType.startsWith("image/")) return { ok: false, bodySnippet };
     const buf = await imgRes.arrayBuffer();
-    if (!isValidImageBuffer(buf)) return { ok: false };
-    return { ok: true, imageBuffer: buf, imageContentType: contentType };
+    if (!isValidImageBuffer(buf)) return { ok: false, bodySnippet };
+    return { ok: true, imageBuffer: buf, imageContentType: contentType, bodySnippet };
   } catch (e) {
-    return { ok: false };
+    return { ok: false, bodySnippet };
   }
 }
 
@@ -720,7 +758,7 @@ async function tryPublishSiteItem(item: any, key: string) {
   const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
   const payload = {
     title: item.title,
-    text: item.headline || item.description || "",
+    text: item.headline || item.description || verify.bodySnippet || "",
     url: SITE_ORIGIN + (item.url || "")
   };
 
