@@ -603,7 +603,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
 
 const SITE_ORIGIN = "https://arab-wrestling.com";
 const REMOTE_INDEX_URL = `${SITE_ORIGIN}/search-index.json`;
-const WATCHER_POLL_MS = 15000; // re-check the live site every 15 seconds
+const WATCHER_POLL_MS = 60000; // re-check the live site every 60 seconds
 // Content published in the few minutes before this server booted is still
 // treated as "new" (covers the moment right after a redeploy). Anything
 // older than this at boot time is assumed to already be known/published.
