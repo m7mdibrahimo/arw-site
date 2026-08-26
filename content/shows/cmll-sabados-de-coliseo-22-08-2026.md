@@ -17,7 +17,7 @@ servers:
   - label: سيرفر 2 - جودة متوسطة
     url: https://streamtape.com/e/7d8AozavlBsxK0
 downloads:
-  - label: سيرفر 1 - جودة منخفضة
+  - label: سيرفر 1 - جودة متوسطة
     url: https://playmogo.com/d/earvu9srx6kl
   - label: سيرفر 2 - جودة متوسطة
     url: https://streamtape.com/v/7d8AozavlBsxK0/CMLL.Sabados.De.Coliseo.2026.08.22_720p.mp4
