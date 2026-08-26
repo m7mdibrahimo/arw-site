@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: WWE
 title: Dark Side of the Ring S07E08 18.08.2026
 headline: مسلسل دارك سايد اوف ذا رينج الموسم 7 الحلقة 8 مترجمة
 description: مسلسل دارك سايد اوف ذا رينج مترجم بالكامل مع جميع الأحداث والفقرات.
