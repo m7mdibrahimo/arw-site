@@ -8,7 +8,7 @@ date: 2026-08-26T14:21:00.000+03:00
 duration: 02:07:05
 tags:
   - CMLL
-  - CMLL Viernes Espectacular
+  - CMLL Sabados De Coliseo
   - سي ام ال ال
 image: /content/images/2fcc9kqrxl5cyi96.jpg
 servers:
