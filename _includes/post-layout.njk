@@ -543,7 +543,7 @@
       {% if servers.length > 1 %}
       <div class="server-tabs" id="serverTabs">
         {% for s in servers %}
-        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url }}">{{ s.label or ("سيرفر " + (loop.index)) }}</button>
+        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url }}">سيرفر {{ loop.index }} - جودة متوسطة</button>
         {% endfor %}
       </div>
       {% endif %}
@@ -556,10 +556,24 @@
     <div class="download-links reveal">
       <h3>روابط التحميل</h3>
       {% for d in downloads %}
-      <a class="dl-btn" href="{{ d.url }}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span>{{ d.label }}</span>
-      </a>
+        {% if d.url_low %}
+        <a class="dl-btn" href="{{ d.url_low }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>سيرفر {{ loop.index }} - جودة منخفضة</span>
+        </a>
+        {% endif %}
+        {% if d.url_medium %}
+        <a class="dl-btn" href="{{ d.url_medium }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>سيرفر {{ loop.index }} - جودة متوسطة</span>
+        </a>
+        {% endif %}
+        {% if d.url_high %}
+        <a class="dl-btn" href="{{ d.url_high }}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>سيرفر {{ loop.index }} - جودة عالية</span>
+        </a>
+        {% endif %}
       {% endfor %}
     </div>
     {% endif %}
