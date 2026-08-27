@@ -53,9 +53,9 @@ collections:
         required: false
         hint: "أضف سيرفر تحميل وحط روابط الجودات المتاحة. الأسماء بتتحط تلقائي: سيرفر 1 - جودة منخفضة/متوسطة/عالية، ولو ضفت سيرفر تاني هيبقى سيرفر 2 وهكذا. سيب أي رابط فاضي لو مش متاح"
         fields:
-          - { label: "رابط جودة منخفضة", name: "url_low", widget: "string", required: false }
-          - { label: "رابط جودة متوسطة", name: "url_medium", widget: "string", required: false }
-          - { label: "رابط جودة عالية", name: "url_high", widget: "string", required: false }
+          - { label: "رابط جودة منخفضة", name: "url_low", widget: "string", required: false, hint: "الصق رابط الجودة المنخفضة هنا" }
+          - { label: "رابط جودة متوسطة", name: "url_medium", widget: "string", required: false, hint: "الصق رابط الجودة المتوسطة هنا" }
+          - { label: "رابط جودة عالية", name: "url_high", widget: "string", required: false, hint: "الصق رابط الجودة العالية هنا" }
       - { label: "التفاصيل / الوصف", name: "body", widget: "markdown", required: false }
       - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
 
