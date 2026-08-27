@@ -29,3 +29,5 @@ layout: post-layout.njk
 * ظهور أول: الظهور التنافسي الأول للمصارع الغامض El Carnicero.  
 * نزال سداسي ناري: فريق بينتا، راي فينيكس، ودراغون لي في مواجهة عصابة Perros del Mal (داغا، وبيرتو، وأنجيل برفقة كارمن بيتروفيتش).  
 * نزال ثلاثي لتحديد المنافس الأول على لقب الكروزرويت: ميني فيكينغو ضد جاك كارتويل ضد ناثان فريزر (الفائز يواجه راي فينيكس في Triplemanía 34).
+
+<https://x.com/luchalibreaaa/status/2092779190156476520?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2092779190156476520%7Ctwgr%5E5c95dffe775f7e025ba1ec92e48f566dd111a7b7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2F1-contenders-match-added-to-aaa-ola-de-calor%2F>
