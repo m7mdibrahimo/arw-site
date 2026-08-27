@@ -44,17 +44,18 @@ collections:
         name: "servers"
         widget: "list"
         required: false
-        hint: "أضف أكتر من سيرفر، الأول هيكون الافتراضي"
+        hint: "أضف رابط الإمبيد بس. الاسم بيتحط تلقائي على الموقع: سيرفر 1 - جودة متوسطة، ولو ضفت سيرفر تاني هيبقى سيرفر 2 - جودة متوسطة وهكذا"
         fields:
-          - { label: "اسم السيرفر", name: "label", widget: "string", hint: "مثال: سيرفر 1" }
           - { label: "رابط الـ embed", name: "url", widget: "string" }
-      - label: "روابط التحميل"
+      - label: "سيرفرات التحميل"
         name: "downloads"
         widget: "list"
         required: false
+        hint: "أضف سيرفر تحميل وحط روابط الجودات المتاحة. الأسماء بتتحط تلقائي: سيرفر 1 - جودة منخفضة/متوسطة/عالية، ولو ضفت سيرفر تاني هيبقى سيرفر 2 وهكذا. سيب أي رابط فاضي لو مش متاح"
         fields:
-          - { label: "اسم الرابط", name: "label", widget: "string" }
-          - { label: "الرابط", name: "url", widget: "string" }
+          - { label: "رابط جودة منخفضة", name: "url_low", widget: "string", required: false }
+          - { label: "رابط جودة متوسطة", name: "url_medium", widget: "string", required: false }
+          - { label: "رابط جودة عالية", name: "url_high", widget: "string", required: false }
       - { label: "التفاصيل / الوصف", name: "body", widget: "markdown", required: false }
       - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
 
@@ -82,8 +83,8 @@ collections:
         name: "servers"
         widget: "list"
         required: false
+        hint: "أضف رابط الإمبيد بس. الاسم بيتحط تلقائي على الموقع: سيرفر 1 - جودة متوسطة، ولو ضفت سيرفر تاني هيبقى سيرفر 2 - جودة متوسطة وهكذا"
         fields:
-          - { label: "اسم السيرفر", name: "label", widget: "string" }
           - { label: "رابط الـ embed", name: "url", widget: "string" }
       - { label: "التفاصيل الكاملة", name: "body", widget: "markdown", required: false }
       - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
