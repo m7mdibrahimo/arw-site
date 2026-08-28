@@ -326,10 +326,11 @@ async function postToFacebook(data: { title: string; text?: string; url: string;
 // 4:5 (portrait) and 1.91:1 (landscape). Article thumbnails are cropped for
 // the website's own layout and are very often outside that range, which is
 // exactly why every Instagram post has been failing with "Invalid aspect
-// ratio". This downloads the source image, pads it (letterbox, no cropping
-// of the actual photo) into a square 1:1 canvas — always inside Instagram's
-// allowed range — and writes it into _site so it's served at a public URL
-// the Instagram API can fetch, the same way any other site asset is served.
+// ratio". This downloads the source image and crops it to fill a 1080x1080
+// square (no black bars) — "attention" cropping keeps whatever part of the
+// image has the most visual detail/edges in frame — then writes it into
+// _site so it's served at a public URL the Instagram API can fetch, the
+// same way any other site asset is served.
 const IG_CACHE_DIR = path.join(process.cwd(), "_site", "ig-cache");
 async function prepareInstagramImage(imageUrl: string): Promise<string | null> {
   try {
@@ -344,7 +345,7 @@ async function prepareInstagramImage(imageUrl: string): Promise<string | null> {
     const outPath = path.join(IG_CACHE_DIR, filename);
 
     await sharp(buffer)
-      .resize(1080, 1080, { fit: "contain", background: { r: 0, g: 0, b: 0 } })
+      .resize(1080, 1080, { fit: "cover", position: "attention" })
       .jpeg({ quality: 90 })
       .toFile(outPath);
 
@@ -362,7 +363,7 @@ async function postToInstagram(data: { title: string; text?: string; url: string
   const safeImageUrl = await prepareInstagramImage(data.imageUrl);
   if (!safeImageUrl) return { ok: false, skipped: true };
 
-  const caption = `${data.title}\n\n${data.text || ""}\n\n🔗 ${data.url}`.trim();
+  const caption = `${data.title}\n\n${data.text || ""}\n\n${data.url}`.trim();
 
   try {
     const pageToken = await getPageAccessToken();
