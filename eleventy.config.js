@@ -44,15 +44,23 @@ function detectQuality(text) {
   return null;
 }
 
-// بياخد مصفوفة downloads (بأي صيغة من الصيغ القديمة) + الصناديق الجديدة الصريحة من اللوحة
-// (downloadsLow/downloadsMedium/downloadsHigh) ويرجعهم مقسمين لـ 3 مجموعات جاهزة للعرض
+// بياخد نص (ممكن يكون فيه أكتر من رابط، كل رابط في سطر) ويرجع مصفوفة روابط نضيفة (Regex بيلقط أي رابط حتى لو مكتوب مع نص زيادة)
+function extractUrls(text) {
+  if (!text) return [];
+  const matches = text.match(/https?:\/\/[^\s"'<>]+/g);
+  return matches || [];
+}
+
+// بياخد مصفوفة downloads (بأي صيغة من الصيغ القديمة) + نصوص الصناديق الجديدة الصريحة من اللوحة
+// (downloadsLow/downloadsMedium/downloadsHigh - كل واحد نص فيه رابط أو أكتر، كل رابط في سطر)
+// ويرجعهم مقسمين لـ 3 مجموعات جاهزة للعرض، مع تعرف تلقائي على اسم ولوجو كل موقع
 function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downloadsHigh) {
   const groups = { low: [], medium: [], high: [] };
 
-  function pushItem(quality, url, hintText, manualSite) {
+  function pushItem(quality, url, hintText) {
     if (!url) return;
     const host = hostFromUrl(url);
-    const site = (manualSite && manualSite.trim()) ? manualSite.trim() : siteNameFromHost(host);
+    const site = siteNameFromHost(host);
     const item = { url: url, site: site, host: host };
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
@@ -71,16 +79,10 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     }
   }
 
-  // الصناديق الجديدة الصريحة من اللوحة (كل صندوق معروف الجودة أصلاً)
-  (downloadsLow || []).forEach(function (d) {
-    if (d && d.url) pushItem("low", d.url, null, d.site);
-  });
-  (downloadsMedium || []).forEach(function (d) {
-    if (d && d.url) pushItem("medium", d.url, null, d.site);
-  });
-  (downloadsHigh || []).forEach(function (d) {
-    if (d && d.url) pushItem("high", d.url, null, d.site);
-  });
+  // الصناديق الجديدة الصريحة من اللوحة (نص فيه رابط أو أكتر، الموقع هيتعرف على كل رابط لوحده تلقائيًا)
+  extractUrls(downloadsLow).slice(0, 8).forEach(function (u) { pushItem("low", u); });
+  extractUrls(downloadsMedium).slice(0, 8).forEach(function (u) { pushItem("medium", u); });
+  extractUrls(downloadsHigh).slice(0, 8).forEach(function (u) { pushItem("high", u); });
 
   // الصيغ القديمة الموجودة في المقالات السابقة (عشان مقالاتك القديمة تفضل شغالة زي ما هي)
   (downloads || []).forEach(function (d) {

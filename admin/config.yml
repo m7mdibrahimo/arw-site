@@ -49,31 +49,19 @@ collections:
           - { label: "رابط الـ embed", name: "url", widget: "string" }
       - label: "سيرفرات التحميل - جودة منخفضة (480p)"
         name: "downloads_low"
-        widget: "list"
+        widget: "text"
         required: false
-        max: 8
-        hint: "أضف لحد 8 مواقع تحميل بجودة منخفضة. اكتب اسم الموقع (اختياري، لو سيبته فاضي هيتحدد تلقائي من الرابط) والصق الرابط"
-        fields:
-          - { label: "اسم الموقع (اختياري)", name: "site", widget: "string", required: false, hint: "مثال: MultiUp, MediaFire... لو سيبته فاضي هيظهر اسم الموقع تلقائي" }
-          - { label: "الرابط", name: "url", widget: "string" }
+        hint: "الصق روابط التحميل هنا، كل رابط في سطر منفصل (لحد 8 روابط). الموقع هيتعرف على اسم كل موقع ولوجوه تلقائيًا"
       - label: "سيرفرات التحميل - جودة متوسطة (720p)"
         name: "downloads_medium"
-        widget: "list"
+        widget: "text"
         required: false
-        max: 8
-        hint: "أضف لحد 8 مواقع تحميل بجودة متوسطة. اكتب اسم الموقع (اختياري) والصق الرابط"
-        fields:
-          - { label: "اسم الموقع (اختياري)", name: "site", widget: "string", required: false, hint: "مثال: MultiUp, MediaFire... لو سيبته فاضي هيظهر اسم الموقع تلقائي" }
-          - { label: "الرابط", name: "url", widget: "string" }
+        hint: "الصق روابط التحميل هنا، كل رابط في سطر منفصل (لحد 8 روابط). الموقع هيتعرف على اسم كل موقع ولوجوه تلقائيًا"
       - label: "سيرفرات التحميل - جودة عالية (1080p)"
         name: "downloads_high"
-        widget: "list"
+        widget: "text"
         required: false
-        max: 8
-        hint: "أضف لحد 8 مواقع تحميل بجودة عالية. اكتب اسم الموقع (اختياري) والصق الرابط"
-        fields:
-          - { label: "اسم الموقع (اختياري)", name: "site", widget: "string", required: false, hint: "مثال: MultiUp, MediaFire... لو سيبته فاضي هيظهر اسم الموقع تلقائي" }
-          - { label: "الرابط", name: "url", widget: "string" }
+        hint: "الصق روابط التحميل هنا، كل رابط في سطر منفصل (لحد 8 روابط). الموقع هيتعرف على اسم كل موقع ولوجوه تلقائيًا"
       - { label: "التفاصيل / الوصف", name: "body", widget: "markdown", required: false }
       - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
 
