@@ -591,8 +591,8 @@
       </div>
     {% endif %}
 
-    {% set dlGroups = downloads | groupDownloadsByQuality %}
-    {% if downloads and downloads.length and (dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length) %}
+    {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
+    {% if dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
     <div class="download-links reveal">
       <h3>روابط التحميل</h3>
       <div class="quality-grid">

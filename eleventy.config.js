@@ -44,15 +44,15 @@ function detectQuality(text) {
   return null;
 }
 
-// بياخد مصفوفة downloads (بأي صيغة من الصيغ الثلاث المستخدمة في الموقع) ويرجعها مقسمة لـ 3 مجموعات جاهزة للعرض الاحترافي الجديد
-function groupDownloadsByQuality(downloads) {
+// بياخد مصفوفة downloads (بأي صيغة من الصيغ القديمة) + الصناديق الجديدة الصريحة من اللوحة
+// (downloadsLow/downloadsMedium/downloadsHigh) ويرجعهم مقسمين لـ 3 مجموعات جاهزة للعرض
+function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downloadsHigh) {
   const groups = { low: [], medium: [], high: [] };
-  if (!downloads || !downloads.length) return groups;
 
-  function pushItem(quality, url, hintText) {
+  function pushItem(quality, url, hintText, manualSite) {
     if (!url) return;
     const host = hostFromUrl(url);
-    const site = siteNameFromHost(host);
+    const site = (manualSite && manualSite.trim()) ? manualSite.trim() : siteNameFromHost(host);
     const item = { url: url, site: site, host: host };
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
@@ -71,16 +71,25 @@ function groupDownloadsByQuality(downloads) {
     }
   }
 
-  downloads.forEach(function (d) {
+  // الصناديق الجديدة الصريحة من اللوحة (كل صندوق معروف الجودة أصلاً)
+  (downloadsLow || []).forEach(function (d) {
+    if (d && d.url) pushItem("low", d.url, null, d.site);
+  });
+  (downloadsMedium || []).forEach(function (d) {
+    if (d && d.url) pushItem("medium", d.url, null, d.site);
+  });
+  (downloadsHigh || []).forEach(function (d) {
+    if (d && d.url) pushItem("high", d.url, null, d.site);
+  });
+
+  // الصيغ القديمة الموجودة في المقالات السابقة (عشان مقالاتك القديمة تفضل شغالة زي ما هي)
+  (downloads || []).forEach(function (d) {
     if (!d) return;
-    // الصيغة الأولى: عنصر فيه url_low / url_medium / url_high منفصلين
     if (d.url_low || d.url_medium || d.url_high) {
       pushItem("low", d.url_low, d.label);
       pushItem("medium", d.url_medium, d.label);
       pushItem("high", d.url_high, d.label);
-    }
-    // الصيغة التانية/التالتة: عنصر فيه url واحد + label بيوصف الجودة (أو من غيره)
-    else if (d.url) {
+    } else if (d.url) {
       pushItem(null, d.url, d.label);
     }
   });

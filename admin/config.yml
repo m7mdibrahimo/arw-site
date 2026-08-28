@@ -47,15 +47,33 @@ collections:
         hint: "أضف رابط الإمبيد بس. الاسم بيتحط تلقائي على الموقع: سيرفر 1 - جودة متوسطة، ولو ضفت سيرفر تاني هيبقى سيرفر 2 - جودة متوسطة وهكذا"
         fields:
           - { label: "رابط الـ embed", name: "url", widget: "string" }
-      - label: "سيرفرات التحميل"
-        name: "downloads"
+      - label: "سيرفرات التحميل - جودة منخفضة (480p)"
+        name: "downloads_low"
         widget: "list"
         required: false
-        hint: "أضف سيرفر تحميل وحط روابط الجودات المتاحة. الأسماء بتتحط تلقائي: سيرفر 1 - جودة منخفضة/متوسطة/عالية، ولو ضفت سيرفر تاني هيبقى سيرفر 2 وهكذا. سيب أي رابط فاضي لو مش متاح"
+        max: 8
+        hint: "أضف لحد 8 مواقع تحميل بجودة منخفضة. اكتب اسم الموقع (اختياري، لو سيبته فاضي هيتحدد تلقائي من الرابط) والصق الرابط"
         fields:
-          - { label: "رابط جودة منخفضة", name: "url_low", widget: "string", required: false, hint: "الصق رابط الجودة المنخفضة هنا" }
-          - { label: "رابط جودة متوسطة", name: "url_medium", widget: "string", required: false, hint: "الصق رابط الجودة المتوسطة هنا" }
-          - { label: "رابط جودة عالية", name: "url_high", widget: "string", required: false, hint: "الصق رابط الجودة العالية هنا" }
+          - { label: "اسم الموقع (اختياري)", name: "site", widget: "string", required: false, hint: "مثال: MultiUp, MediaFire... لو سيبته فاضي هيظهر اسم الموقع تلقائي" }
+          - { label: "الرابط", name: "url", widget: "string" }
+      - label: "سيرفرات التحميل - جودة متوسطة (720p)"
+        name: "downloads_medium"
+        widget: "list"
+        required: false
+        max: 8
+        hint: "أضف لحد 8 مواقع تحميل بجودة متوسطة. اكتب اسم الموقع (اختياري) والصق الرابط"
+        fields:
+          - { label: "اسم الموقع (اختياري)", name: "site", widget: "string", required: false, hint: "مثال: MultiUp, MediaFire... لو سيبته فاضي هيظهر اسم الموقع تلقائي" }
+          - { label: "الرابط", name: "url", widget: "string" }
+      - label: "سيرفرات التحميل - جودة عالية (1080p)"
+        name: "downloads_high"
+        widget: "list"
+        required: false
+        max: 8
+        hint: "أضف لحد 8 مواقع تحميل بجودة عالية. اكتب اسم الموقع (اختياري) والصق الرابط"
+        fields:
+          - { label: "اسم الموقع (اختياري)", name: "site", widget: "string", required: false, hint: "مثال: MultiUp, MediaFire... لو سيبته فاضي هيظهر اسم الموقع تلقائي" }
+          - { label: "الرابط", name: "url", widget: "string" }
       - { label: "التفاصيل / الوصف", name: "body", widget: "markdown", required: false }
       - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
 
