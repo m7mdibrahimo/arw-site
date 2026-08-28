@@ -475,7 +475,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   var ticking = false;
   function onScroll(){
     var currentY = window.scrollY;
-    if(window.innerWidth > 600){
+    if(window.innerWidth <= 600){
       if(currentY > lastY && currentY > 80){
         header.classList.add('header-hidden');
       } else if(currentY < lastY){
