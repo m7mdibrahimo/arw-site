@@ -25,6 +25,15 @@ app.use((req, res, next) => {
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "@arab_wrestling";
 
+// Facebook Page + linked Instagram Business account — both use the same
+// long-lived Page Access Token via the Meta Graph API. If these are left
+// empty, cross-posting to Facebook/Instagram is silently skipped (Telegram
+// still works as before).
+const FACEBOOK_PAGE_ID = process.env.FACEBOOK_PAGE_ID || "";
+const FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "";
+const INSTAGRAM_BUSINESS_ACCOUNT_ID = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || "";
+const GRAPH_API_VERSION = "v21.0";
+
 // Initialize VAPID Keys for Web Push Notifications
 const VAPID_FILE = path.join(process.cwd(), "vapid.json");
 let vapidKeys: { publicKey: string; privateKey: string };
@@ -190,6 +199,144 @@ function persistSentMap() {
 }
 
 const telegramSentMap: Record<string, number> = loadSentMap();
+
+// Same dedup pattern as Telegram's sent-map, generalized so Facebook and
+// Instagram each get their own persisted "already posted" state — a post
+// failing on one platform never blocks or duplicates on another.
+function loadGenericSentMap(file: string): Record<string, number> {
+  if (!fs.existsSync(file)) return {};
+  try {
+    const parsed = JSON.parse(fs.readFileSync(file, "utf-8"));
+    const now = Date.now();
+    const pruned: Record<string, number> = {};
+    for (const k of Object.keys(parsed || {})) {
+      if (now - parsed[k] < SENT_STATE_MAX_AGE_MS) pruned[k] = parsed[k];
+    }
+    return pruned;
+  } catch (e) {
+    return {};
+  }
+}
+
+function persistGenericSentMap(file: string, map: Record<string, number>) {
+  try {
+    fs.writeFileSync(file, JSON.stringify(map));
+  } catch (e) {
+    console.error(`[SentMap] Failed to persist ${file}:`, e);
+  }
+}
+
+const FB_SENT_STATE_FILE = path.join(process.cwd(), "facebook-sent-map.json");
+const IG_SENT_STATE_FILE = path.join(process.cwd(), "instagram-sent-map.json");
+const facebookSentMap: Record<string, number> = loadGenericSentMap(FB_SENT_STATE_FILE);
+const instagramSentMap: Record<string, number> = loadGenericSentMap(IG_SENT_STATE_FILE);
+
+// Posts a photo + caption + link directly to the Facebook Page's timeline.
+// Falls back to a link-post (no photo) if the photo call fails or no image
+// is available — a post should still go out even without an image.
+async function postToFacebook(data: { title: string; text?: string; url: string; imageUrl?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+  if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
+  const caption = `${data.title}\n\n${data.text || ""}\n\n🔗 ${data.url}`.trim();
+
+  try {
+    if (data.imageUrl) {
+      const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/photos`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: data.imageUrl, caption, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+      });
+      const result = await res.json().catch(() => ({}));
+      if (result.id || result.post_id) {
+        console.log(`[Facebook] Photo post published: ${data.title}`);
+        return { ok: true, result };
+      }
+      console.warn("[Facebook] Photo post failed, falling back to link post:", result);
+    }
+
+    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/feed`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: caption, link: data.url, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+    });
+    const result = await res.json().catch(() => ({}));
+    if (result.id) {
+      console.log(`[Facebook] Link post published: ${data.title}`);
+      return { ok: true, result };
+    }
+    console.error("[Facebook] Post failed:", result);
+    return { ok: false, result };
+  } catch (e) {
+    console.error("[Facebook] Error posting:", e);
+    return { ok: false };
+  }
+}
+
+// Posts a photo + caption to the linked Instagram Business account via the
+// two-step Content Publishing API (create a media container, then publish
+// it). Instagram requires an image for feed posts and never renders links
+// in the caption as clickable — that's an Instagram platform limitation,
+// not a bug, so the URL is included as plain text like a manual post would.
+async function postToInstagram(data: { title: string; text?: string; url: string; imageUrl?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+  if (!INSTAGRAM_BUSINESS_ACCOUNT_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
+  if (!data.imageUrl) return { ok: false, skipped: true };
+
+  const caption = `${data.title}\n\n${data.text || ""}\n\n🔗 ${data.url}`.trim();
+
+  try {
+    const createRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ image_url: data.imageUrl, caption, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+    });
+    const createResult = await createRes.json().catch(() => ({}));
+    if (!createResult.id) {
+      console.error("[Instagram] Failed to create media container:", createResult);
+      return { ok: false, result: createResult };
+    }
+
+    const publishRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ creation_id: createResult.id, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+    });
+    const publishResult = await publishRes.json().catch(() => ({}));
+    if (publishResult.id) {
+      console.log(`[Instagram] Post published: ${data.title}`);
+      return { ok: true, result: publishResult };
+    }
+    console.error("[Instagram] Failed to publish media:", publishResult);
+    return { ok: false, result: publishResult };
+  } catch (e) {
+    console.error("[Instagram] Error posting:", e);
+    return { ok: false };
+  }
+}
+
+// Fires Facebook + Instagram cross-posts for an item already confirmed live
+// on the site (same verified image/url the Telegram post just used). Both
+// are best-effort and independent: either one failing never affects the
+// other, never blocks Telegram, and each is only attempted once per item.
+function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; url: string; image?: string }) {
+  const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image) : undefined;
+
+  if (!facebookSentMap[key]) {
+    postToFacebook({ title: item.title, text: item.text, url: item.url, imageUrl }).then((r) => {
+      if (r.ok) {
+        facebookSentMap[key] = Date.now();
+        persistGenericSentMap(FB_SENT_STATE_FILE, facebookSentMap);
+      }
+    }).catch((e) => console.error("[Facebook] Unexpected error:", e));
+  }
+
+  if (!instagramSentMap[key]) {
+    postToInstagram({ title: item.title, text: item.text, url: item.url, imageUrl }).then((r) => {
+      if (r.ok) {
+        instagramSentMap[key] = Date.now();
+        persistGenericSentMap(IG_SENT_STATE_FILE, instagramSentMap);
+      }
+    }).catch((e) => console.error("[Instagram] Unexpected error:", e));
+  }
+}
 
 function escapeTelegramHtml(str: string): string {
   if (!str) return "";
@@ -777,6 +924,7 @@ async function tryPublishSiteItem(item: any, key: string) {
     if (collection === "shows" || collection === "recaps") {
       sendPushToAllSubscribers({ ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
     }
+    crossPostToFacebookAndInstagram(key, { ...payload, image: item.image });
   } else {
     console.error(`[Watcher] Failed to publish "${item.title}":`, result);
   }
@@ -833,6 +981,35 @@ app.get("/api/telegram/status", async (req, res) => {
     const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getMe`);
     const data = await response.json();
     res.json({ success: true, bot: data, channel: CHAT_ID });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Quick sanity checks for the Facebook Page / Instagram Business account
+// credentials — hit these after setting the env vars to confirm they're
+// valid before relying on the automatic watcher to cross-post.
+app.get("/api/facebook/status", async (req, res) => {
+  if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) {
+    return res.json({ success: false, configured: false, message: "FACEBOOK_PAGE_ID / FACEBOOK_PAGE_ACCESS_TOKEN not set" });
+  }
+  try {
+    const response = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}?fields=id,name&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+    const data = await response.json();
+    res.json({ success: !data.error, configured: true, page: data });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get("/api/instagram/status", async (req, res) => {
+  if (!INSTAGRAM_BUSINESS_ACCOUNT_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) {
+    return res.json({ success: false, configured: false, message: "INSTAGRAM_BUSINESS_ACCOUNT_ID / FACEBOOK_PAGE_ACCESS_TOKEN not set" });
+  }
+  try {
+    const response = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}?fields=id,username&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
+    const data = await response.json();
+    res.json({ success: !data.error, configured: true, account: data });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }
