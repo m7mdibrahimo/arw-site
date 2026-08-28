@@ -231,27 +231,37 @@ const IG_SENT_STATE_FILE = path.join(process.cwd(), "instagram-sent-map.json");
 const facebookSentMap: Record<string, number> = loadGenericSentMap(FB_SENT_STATE_FILE);
 const instagramSentMap: Record<string, number> = loadGenericSentMap(IG_SENT_STATE_FILE);
 
-// Posts a photo + caption + link directly to the Facebook Page's timeline.
-// Falls back to a link-post (no photo) if the photo call fails or no image
-// is available — a post should still go out even without an image.
+// Posts a link (title + description) directly to the Facebook Page's
+// timeline. Facebook auto-generates the preview card (image/title/desc)
+// from the article's og: meta tags — no separate photo upload.
+//
+// Before posting, we force Facebook to (re)scrape the article's OG tags via
+// the official "scrape=true" endpoint. Without this, Facebook may show a
+// stale/cached preview (from a previous share of the same URL) or a blank
+// one (if this is the very first time Facebook has ever seen the URL) —
+// this step guarantees the image/title shown match what's live right now.
+async function refreshFacebookLinkPreview(url: string): Promise<void> {
+  try {
+    await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: url, scrape: true, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+    });
+  } catch (e) {
+    console.warn("[Facebook] Link preview refresh failed (continuing anyway):", e);
+  }
+}
+
 async function postToFacebook(data: { title: string; text?: string; url: string; imageUrl?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  const caption = `${data.title}\n\n${data.text || ""}\n\n🔗 ${data.url}`.trim();
+  // Always publish as a LINK post (never a standalone uploaded photo) so
+  // Facebook generates its own preview card from the article's og:image /
+  // og:title / og:description — this is what makes the thumbnail, title and
+  // link show together in the feed instead of a separate photo attachment.
+  const caption = `${data.title}\n\n${data.text || ""}`.trim();
 
   try {
-    if (data.imageUrl) {
-      const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/photos`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: data.imageUrl, caption, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
-      });
-      const result = await res.json().catch(() => ({}));
-      if (result.id || result.post_id) {
-        console.log(`[Facebook] Photo post published: ${data.title}`);
-        return { ok: true, result };
-      }
-      console.warn("[Facebook] Photo post failed, falling back to link post:", result);
-    }
+    await refreshFacebookLinkPreview(data.url);
 
     const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/feed`, {
       method: "POST",
@@ -702,6 +712,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
       if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
         sendPushToAllSubscribers(item).catch(() => {});
       }
+      crossPostToFacebookAndInstagram(key, item);
       return;
     }
 
@@ -722,6 +733,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
           if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
             sendPushToAllSubscribers(item).catch(() => {});
           }
+          crossPostToFacebookAndInstagram(key, item);
         }
         return;
       }
@@ -1070,6 +1082,7 @@ app.post("/api/telegram/post", async (req, res) => {
         if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
           sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
         }
+        crossPostToFacebookAndInstagram(dedupKey, { title, text, url, image });
         return res.json({ success: true, message: "تم النشر فوراً على التليجرام!", result });
       } else {
         return res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
