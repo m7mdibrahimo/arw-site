@@ -363,7 +363,7 @@ async function postToInstagram(data: { title: string; text?: string; url: string
   const safeImageUrl = await prepareInstagramImage(data.imageUrl);
   if (!safeImageUrl) return { ok: false, skipped: true };
 
-  const caption = `${data.title}\n\n${data.text || ""}\n\n${data.url}`.trim();
+  const caption = `${data.title}\n\n${data.text || ""}`.trim();
 
   try {
     const pageToken = await getPageAccessToken();
