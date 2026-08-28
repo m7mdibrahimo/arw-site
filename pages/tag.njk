@@ -35,7 +35,8 @@ permalink: "{{ tagPage.permalink }}"
   html{ scroll-behavior:smooth; }
   body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
   h1,h2,h3,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
-  header{ position:static; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease; }
+  header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease, transform .3s ease; }
+  header.header-hidden{ transform:translateY(-100%); }
   .nav{ max-width:1180px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
   .brand{ font-weight:900; font-size:21px; text-decoration:none; color:var(--ink); white-space:nowrap; transition:transform 0.25s ease; display:inline-flex; align-items:center; gap:10px; }
   .brand:hover{ transform:scale(1.04); }
@@ -358,5 +359,33 @@ permalink: "{{ tagPage.permalink }}"
   }
 </script>
 <script src="/assets/notif.js" defer></script>
+<script>
+(function(){
+  var header = document.querySelector('header');
+  if(!header) return;
+  var lastY = window.scrollY;
+  var ticking = false;
+  function onScroll(){
+    var currentY = window.scrollY;
+    if(window.innerWidth > 600){
+      if(currentY > lastY && currentY > 80){
+        header.classList.add('header-hidden');
+      } else if(currentY < lastY){
+        header.classList.remove('header-hidden');
+      }
+    } else {
+      header.classList.remove('header-hidden');
+    }
+    lastY = currentY;
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+</script>
 </body>
 </html>
