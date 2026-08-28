@@ -619,35 +619,6 @@
         {% endif %}
       </div>
     </div>
-
-    {% macro dlModal(id, title, qualityLabel, items) %}
-    <div class="dl-modal-backdrop" id="{{ id }}">
-      <div class="dl-modal" role="dialog" aria-modal="true" aria-label="{{ title }}">
-        <div class="dl-modal-head">
-          <h4>{{ title }}</h4>
-          <button type="button" class="dl-modal-close" aria-label="إغلاق">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
-        </div>
-        <div class="dl-modal-body">
-          {% for item in items %}
-          <a class="dl-site-card" href="{{ item.url }}" target="_blank" rel="noopener">
-            <img class="dl-site-logo" src="https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64" alt="{{ item.site }}" loading="lazy" onerror="this.style.display='none'">
-            <span class="dl-site-info">
-              <span class="dl-site-name">{{ item.site }}</span>
-              <span class="dl-site-quality">اضغط هنا للتحميل بجودة {{ qualityLabel }}</span>
-            </span>
-            <svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    {% endmacro %}
-
-    {% if dlGroups.low.length %}{{ dlModal("dlModalLow", "روابط التحميل - جودة منخفضة (480p)", "480p", dlGroups.low) }}{% endif %}
-    {% if dlGroups.medium.length %}{{ dlModal("dlModalMedium", "روابط التحميل - جودة متوسطة (720p)", "720p", dlGroups.medium) }}{% endif %}
-    {% if dlGroups.high.length %}{{ dlModal("dlModalHigh", "روابط التحميل - جودة عالية (1080p)", "1080p", dlGroups.high) }}{% endif %}
     {% endif %}
 
     <div class="post-body reveal">
@@ -666,6 +637,35 @@
     {% endif %}
   </div>
 </main>
+
+{% macro dlModal(id, title, qualityLabel, items) %}
+<div class="dl-modal-backdrop" id="{{ id }}">
+  <div class="dl-modal" role="dialog" aria-modal="true" aria-label="{{ title }}">
+    <div class="dl-modal-head">
+      <h4>{{ title }}</h4>
+      <button type="button" class="dl-modal-close" aria-label="إغلاق">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="dl-modal-body">
+      {% for item in items %}
+      <a class="dl-site-card" href="{{ item.url }}" target="_blank" rel="noopener">
+        <img class="dl-site-logo" src="https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64" alt="{{ item.site }}" loading="lazy" onerror="this.style.display='none'">
+        <span class="dl-site-info">
+          <span class="dl-site-name">{{ item.site }}</span>
+          <span class="dl-site-quality">اضغط هنا للتحميل بجودة {{ qualityLabel }}</span>
+        </span>
+        <svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+{% if dlGroups.low.length %}{{ dlModal("dlModalLow", "روابط التحميل - جودة منخفضة (480p)", "480p", dlGroups.low) }}{% endif %}
+{% if dlGroups.medium.length %}{{ dlModal("dlModalMedium", "روابط التحميل - جودة متوسطة (720p)", "720p", dlGroups.medium) }}{% endif %}
+{% if dlGroups.high.length %}{{ dlModal("dlModalHigh", "روابط التحميل - جودة عالية (1080p)", "1080p", dlGroups.high) }}{% endif %}
 
 <footer>
   <div class="social-row">
