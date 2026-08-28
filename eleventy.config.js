@@ -2,6 +2,78 @@ const Image = require("@11ty/eleventy-img");
 const fs = require("fs");
 const path = require("path");
 
+// خريطة أسماء بعض مواقع التحميل الشائعة عشان تظهر بشكل احترافي بدل اسم الدومين الخام
+const KNOWN_HOST_NAMES = {
+  "multiup.io": "MultiUp",
+  "playmogo.com": "PlayMogo",
+  "streamtape.com": "StreamTape",
+  "mediafire.com": "MediaFire",
+  "mega.nz": "MEGA",
+  "gofile.io": "GoFile",
+  "1fichier.com": "1Fichier",
+  "pixeldrain.com": "PixelDrain",
+  "dood.re": "DoodStream",
+  "dood.to": "DoodStream",
+  "dropgalaxy.in": "DropGalaxy",
+  "krakenfiles.com": "KrakenFiles",
+  "send.cm": "Send.cm",
+  "uptobox.com": "UptoBox",
+};
+
+function hostFromUrl(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch (e) {
+    return "";
+  }
+}
+
+function siteNameFromHost(host) {
+  if (!host) return "رابط تحميل";
+  if (KNOWN_HOST_NAMES[host]) return KNOWN_HOST_NAMES[host];
+  const base = host.split(".")[0];
+  return base.charAt(0).toUpperCase() + base.slice(1);
+}
+
+// بيحدد الجودة (منخفضة/متوسطة/عالية) بناءً على نص الـ label أو رقم الجودة الموجود جوه الرابط نفسه
+function detectQuality(text) {
+  const t = (text || "").toLowerCase();
+  if (t.includes("منخفضة") || t.includes("480")) return "low";
+  if (t.includes("متوسطة") || t.includes("720")) return "medium";
+  if (t.includes("عالية") || t.includes("1080") || t.includes("4k") || t.includes("2160")) return "high";
+  return null;
+}
+
+// بياخد مصفوفة downloads القديمة (label/url) ويرجعها مقسمة لـ 3 مجموعات جاهزة للعرض الاحترافي الجديد
+function groupDownloadsByQuality(downloads) {
+  const groups = { low: [], medium: [], high: [] };
+  if (!downloads || !downloads.length) return groups;
+
+  downloads.forEach(function (d) {
+    if (!d || !d.url) return;
+    const host = hostFromUrl(d.url);
+    const site = siteNameFromHost(host);
+    const item = { url: d.url, site: site, host: host };
+    const quality = detectQuality(d.label) || detectQuality(d.url);
+
+    if (quality === "low") {
+      groups.low.push(item);
+    } else if (quality === "medium") {
+      groups.medium.push(item);
+    } else if (quality === "high") {
+      groups.high.push(item);
+    } else {
+      // لو الرابط مش محدد له جودة (زي روابط "تحميل متعدد" اللي فيها كل الجودات)
+      // نعرضه في الثلاث خانات لأنه صالح لأي جودة يختارها الزائر
+      groups.low.push(item);
+      groups.medium.push(item);
+      groups.high.push(item);
+    }
+  });
+
+  return groups;
+}
+
 function arabicSlug(str) {
   if (!str) return "";
   return str
@@ -213,6 +285,7 @@ module.exports = function(eleventyConfig) {
     });
   };
   eleventyConfig.addFilter("autoEmbedSocials", autoEmbedSocials);
+  eleventyConfig.addFilter("groupDownloadsByQuality", groupDownloadsByQuality);
   eleventyConfig.addNunjucksFilter("autoEmbedSocials", autoEmbedSocials);
 
   // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
