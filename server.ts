@@ -29,9 +29,9 @@ const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "@arab_wrestling";
 // long-lived Page Access Token via the Meta Graph API. If these are left
 // empty, cross-posting to Facebook/Instagram is silently skipped (Telegram
 // still works as before).
-const FACEBOOK_PAGE_ID = process.env.FACEBOOK_PAGE_ID || "";
-const FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "";
-const INSTAGRAM_BUSINESS_ACCOUNT_ID = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || "";
+const FACEBOOK_PAGE_ID = process.env.FACEBOOK_PAGE_ID || "1229063470299837";
+const FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "EAANrLofxkY0BSXZBwAovo03COkqgfuOjY4MfebjizIRuwqLjvO9ZCLYSG7Ef4fuBlaCXMwjYdN7bs8wZC2KIGEUNdKW1ZAg4W60vOZByvB2b9ZC0Gx2p8KAThgvB9SuPvQaIdeF2IN4ZBH6xoRWPJrqK591aGtPZBkxq59tK3nZA5SrhRIYWLxu1divQATU8J3AjY0pBBGHB2FuPoozSvrM6lGZBBEZCa7LzEBKMOSj";
+const INSTAGRAM_BUSINESS_ACCOUNT_ID = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || "17841432943789959";
 const GRAPH_API_VERSION = "v21.0";
 
 // Initialize VAPID Keys for Web Push Notifications
