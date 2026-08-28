@@ -38,15 +38,15 @@ permalink: "/search/index.html"
   .brand span{ color:var(--teal); }
   .nav ul{ list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; white-space:nowrap; }
   .nav ul li{ display:inline-flex; align-items:center; }
-  .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:.2s; }
-  .nav a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); position:relative; border:1px solid transparent; }
+  .nav a.navlink, #navMenu a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:.2s; }
+  .nav a.navlink, #navMenu a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); position:relative; border:1px solid transparent; }
   .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); transform:translateY(-2px); }
-  .nav a.navlink.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; box-shadow:0 4px 12px rgba(30,37,48,0.25) !important; }
-  .nav a.navlink.support-btn{ display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg, var(--coral), var(--gold)); color:#fff !important; border:none; box-shadow:0 4px 14px rgba(255,111,89,0.35); animation:support-pulse 2.6s ease-in-out infinite; }
+  .nav a.navlink.active, #navMenu a.navlink.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; box-shadow:0 4px 12px rgba(30,37,48,0.25) !important; }
+  .nav a.navlink.support-btn, #navMenu a.navlink.support-btn{ display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg, var(--coral), var(--gold)); color:#fff !important; border:none; box-shadow:0 4px 14px rgba(255,111,89,0.35); animation:support-pulse 2.6s ease-in-out infinite; }
   .nav a.navlink.support-btn:hover{ background:linear-gradient(135deg, var(--gold), var(--coral)); color:#fff !important; transform:translateY(-2px) scale(1.04); box-shadow:0 8px 20px rgba(255,111,89,0.45); animation-play-state:paused; }
   .nav a.navlink.support-btn svg{ flex-shrink:0; }
   @keyframes support-pulse{ 0%,100%{ box-shadow:0 4px 14px rgba(255,111,89,0.35); } 50%{ box-shadow:0 4px 22px rgba(255,111,89,0.65); } }
-  html.arw-dark .nav a.navlink.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 12px rgba(255,255,255,0.2) !important; }
+  html.arw-dark .nav a.navlink.active, html.arw-dark #navMenu a.navlink.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 12px rgba(255,255,255,0.2) !important; }
   .nav-dropdown{ position:relative; display:inline-flex; align-items:center; }
   .dropdown-menu{ display:flex !important; flex-direction:column; gap:4px !important; position:absolute; top:calc(100% + 6px); left:50%; right:auto; transform:translateX(-50%) translateY(-6px) scale(0.97); min-width:175px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 36px -12px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transition:all 0.22s cubic-bezier(0.16,1,0.3,1); z-index:60; transform-origin:top center; pointer-events:none; }
   .dropdown-menu::before{ content:''; position:absolute; top:-14px; left:0; right:0; height:14px; background:transparent; display:block; }
@@ -208,6 +208,41 @@ permalink: "/search/index.html"
   .btn:active{ transform:translateY(-1px) scale(0.98); }
   .btn.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; }
   html.arw-dark .btn.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; }
+
+  /* ===== Mobile Navigation (hamburger menu) ===== */
+  .nav-toggle{ display:none; -webkit-appearance:none; appearance:none; width:44px; height:44px; border-radius:12px; border:1px solid var(--line); background:var(--card); align-items:center; justify-content:center; flex-direction:column; gap:5px; cursor:pointer; padding:0; flex-shrink:0; }
+  .nav-toggle-bar{ display:block; width:20px; height:2px; border-radius:2px; background:var(--ink); transition:transform .3s cubic-bezier(.34,1.56,.64,1), opacity .2s ease; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){ opacity:0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  body.nav-locked{ overflow:hidden; }
+  @media (max-width:860px){
+    .nav{ padding:12px 16px; gap:10px; }
+    .brand{ font-size:18px; }
+    .site-search{ order:3; flex-basis:100%; max-width:none; min-width:0; }
+    .nav-toggle{ display:flex; order:2; }
+    #navMenu{ display:none; }
+    #navMenu.nav-open{
+      display:flex !important; flex-direction:column; align-items:stretch; gap:2px;
+      position:fixed; left:0; right:0; bottom:0;
+      background:var(--bg); padding:10px 14px 24px; overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      z-index:55; border-top:1px solid var(--line);
+      box-shadow:0 20px 40px -10px rgba(0,0,0,.25);
+      animation:navSlide .25s cubic-bezier(.16,1,.3,1);
+    }
+    @keyframes navSlide{ from{ opacity:0; transform:translateY(-8px);} to{ opacity:1; transform:translateY(0);} }
+    #navMenu.nav-open > li{ display:block; width:100%; white-space:normal; }
+    #navMenu.nav-open a.navlink{ display:flex; width:100%; padding:14px 16px; font-size:15.5px; border-radius:12px; }
+    #navMenu.nav-open .nav-dropdown{ flex-direction:column; align-items:stretch; width:100%; }
+    #navMenu.nav-open .dropdown-menu{
+      position:static !important; display:flex !important; flex-direction:column; opacity:1 !important; visibility:visible !important; pointer-events:auto !important;
+      transform:none !important; box-shadow:none; border:none; background:transparent; padding:2px 0 6px 14px; margin:0; min-width:0; gap:2px;
+    }
+    #navMenu.nav-open .dropdown-menu::before{ display:none; }
+    #navMenu.nav-open li.utility-row:first-of-type{ margin-top:10px; padding-top:12px; border-top:1px solid var(--line); }
+    #navMenu.nav-open li.utility-row{ display:inline-flex !important; width:auto; }
+  }
 </style>
 </head>
 <body>
@@ -218,7 +253,12 @@ permalink: "/search/index.html"
       <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه...">
       <button aria-label="بحث" type="submit"><svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></button>
     </form>
-    <ul>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navMenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <ul id="navMenu">
       <li><a class="navlink" href="/">الرئيسية</a></li>
       <li class="nav-dropdown">
         <a class="navlink" href="/federations/">الاتحادات</a>
@@ -235,13 +275,13 @@ permalink: "/search/index.html"
       <li><a class="navlink" href="/recaps/">ملخصات العروض</a></li>
       <li><a class="navlink" href="/news/">الأخبار</a></li>
       <li><a class="navlink support-btn" href="/support/"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-6.716-4.35-9.428-8.06C.688 10.2 1.2 6.6 4.1 4.9c2.3-1.35 5.1-.7 6.6 1.2.5.6.9 1.3 1.3 2 .4-.7.8-1.4 1.3-2 1.5-1.9 4.3-2.55 6.6-1.2 2.9 1.7 3.412 5.3 1.528 8.04C18.716 16.65 12 21 12 21Z"/></svg><span>ادعم الموقع</span></a></li>
-      <li>
+      <li class="utility-row">
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
           <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
           <svg class="icon-sun" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="currentColor" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
         </button>
       </li>
-      <li>
+      <li class="utility-row">
         <a aria-label="قناة التليجرام" class="telegram-btn" href="https://t.me/arab_wrestling" target="_blank" rel="noopener" title="قناة التليجرام الرسمية">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>
         </a>
@@ -494,5 +534,6 @@ permalink: "/search/index.html"
   })();
 </script>
 <script src="/assets/notif.js" defer></script>
+<script src="/assets/nav.js" defer></script>
 </body>
 </html>
