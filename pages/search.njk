@@ -229,6 +229,9 @@ permalink: "/search/index.html"
   html.arw-dark .btn.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; }
 
   /* ===== Mobile Navigation: everything visible, wraps neatly, no scrolling ===== */
+  @media (max-width:600px){
+    header{ position:sticky; top:0; }
+  }
   @media (max-width:860px){
     .nav{ padding:14px 16px 16px; gap:10px; flex-wrap:wrap; justify-content:center; }
     .brand{ font-size:19px; flex-basis:auto; }
