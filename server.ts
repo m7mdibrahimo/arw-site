@@ -313,7 +313,7 @@ async function prepareInstagramImage(imageUrl: string): Promise<string | null> {
       .jpeg({ quality: 90 })
       .toFile(outPath);
 
-    return `${SITE_ORIGIN}/ig-cache/${filename}`;
+    return `${BOT_ORIGIN}/ig-cache/${filename}`;
   } catch (e) {
     console.error("[Instagram] Failed to prepare image:", e);
     return null;
@@ -802,6 +802,13 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
 // ─────────────────────────────────────────────────────────────────────────
 
 const SITE_ORIGIN = "https://arab-wrestling.com";
+// The public site (arab-wrestling.com) is served from a different host than
+// this bot server. Any file this server writes locally (like the Instagram
+// image cache) is only reachable at THIS server's own public URL, not at
+// arab-wrestling.com — using the wrong origin there produces a 404, which is
+// exactly why Instagram reported "URL returned an error page instead of an
+// image". Render exposes the service's own live URL via RENDER_EXTERNAL_URL.
+const BOT_ORIGIN = process.env.RENDER_EXTERNAL_URL || "https://arab-wrestling-bot.onrender.com";
 const REMOTE_INDEX_URL = `${SITE_ORIGIN}/search-index.json`;
 const WATCHER_POLL_MS = 60000; // re-check the live site every 60 seconds
 // Content published in the few minutes before this server booted is still
@@ -1225,4 +1232,9 @@ app.get("*", (req, res) => {
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server listening on http://0.0.0.0:${PORT}`);
+  const fbTokenPreview = FACEBOOK_PAGE_ACCESS_TOKEN
+    ? `${FACEBOOK_PAGE_ACCESS_TOKEN.slice(0, 10)}...${FACEBOOK_PAGE_ACCESS_TOKEN.slice(-6)} (length ${FACEBOOK_PAGE_ACCESS_TOKEN.length})`
+    : "MISSING / EMPTY";
+  console.log(`[Facebook] Token loaded: ${fbTokenPreview}`);
+  console.log(`[Facebook] Page ID: ${FACEBOOK_PAGE_ID}`);
 });
