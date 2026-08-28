@@ -44,23 +44,23 @@ function detectQuality(text) {
   return null;
 }
 
-// بياخد مصفوفة downloads القديمة (label/url) ويرجعها مقسمة لـ 3 مجموعات جاهزة للعرض الاحترافي الجديد
+// بياخد مصفوفة downloads (بأي صيغة من الصيغ الثلاث المستخدمة في الموقع) ويرجعها مقسمة لـ 3 مجموعات جاهزة للعرض الاحترافي الجديد
 function groupDownloadsByQuality(downloads) {
   const groups = { low: [], medium: [], high: [] };
   if (!downloads || !downloads.length) return groups;
 
-  downloads.forEach(function (d) {
-    if (!d || !d.url) return;
-    const host = hostFromUrl(d.url);
+  function pushItem(quality, url, hintText) {
+    if (!url) return;
+    const host = hostFromUrl(url);
     const site = siteNameFromHost(host);
-    const item = { url: d.url, site: site, host: host };
-    const quality = detectQuality(d.label) || detectQuality(d.url);
+    const item = { url: url, site: site, host: host };
+    const detected = quality || detectQuality(hintText) || detectQuality(url);
 
-    if (quality === "low") {
+    if (detected === "low") {
       groups.low.push(item);
-    } else if (quality === "medium") {
+    } else if (detected === "medium") {
       groups.medium.push(item);
-    } else if (quality === "high") {
+    } else if (detected === "high") {
       groups.high.push(item);
     } else {
       // لو الرابط مش محدد له جودة (زي روابط "تحميل متعدد" اللي فيها كل الجودات)
@@ -68,6 +68,20 @@ function groupDownloadsByQuality(downloads) {
       groups.low.push(item);
       groups.medium.push(item);
       groups.high.push(item);
+    }
+  }
+
+  downloads.forEach(function (d) {
+    if (!d) return;
+    // الصيغة الأولى: عنصر فيه url_low / url_medium / url_high منفصلين
+    if (d.url_low || d.url_medium || d.url_high) {
+      pushItem("low", d.url_low, d.label);
+      pushItem("medium", d.url_medium, d.label);
+      pushItem("high", d.url_high, d.label);
+    }
+    // الصيغة التانية/التالتة: عنصر فيه url واحد + label بيوصف الجودة (أو من غيره)
+    else if (d.url) {
+      pushItem(null, d.url, d.label);
     }
   });
 
