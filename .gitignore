@@ -11,6 +11,8 @@ coverage/
 vapid.json
 telegram-sent-map.json
 telegram-pending-queue.json
+facebook-sent-map.json
+instagram-sent-map.json
 bun.lock
 index.html
 src/
