@@ -222,39 +222,27 @@ permalink: "{{ fedPage.permalink }}"
   .btn.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; }
   html.arw-dark .btn.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; }
 
-  /* ===== Mobile Navigation (hamburger menu) ===== */
-  .nav-toggle{ display:none; -webkit-appearance:none; appearance:none; width:44px; height:44px; border-radius:12px; border:1px solid var(--line); background:var(--card); align-items:center; justify-content:center; flex-direction:column; gap:5px; cursor:pointer; padding:0; flex-shrink:0; }
-  .nav-toggle-bar{ display:block; width:20px; height:2px; border-radius:2px; background:var(--ink); transition:transform .3s cubic-bezier(.34,1.56,.64,1), opacity .2s ease; }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){ opacity:0; }
-  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-  body.nav-locked{ overflow:hidden; }
+  /* ===== Mobile Navigation: single scrollable row, nothing hidden ===== */
   @media (max-width:860px){
-    .nav{ padding:12px 16px; gap:10px; }
+    .nav{ padding:12px 16px; gap:8px; flex-wrap:wrap; }
     .brand{ font-size:18px; }
     .site-search{ order:3; flex-basis:100%; max-width:none; min-width:0; }
-    .nav-toggle{ display:flex; order:2; }
-    #navMenu{ display:none; }
-    #navMenu.nav-open{
-      display:flex !important; flex-direction:column; align-items:stretch; gap:2px;
-      position:fixed; left:0; right:0; bottom:0;
-      background:var(--bg); padding:10px 14px 24px; overflow-y:auto;
-      -webkit-overflow-scrolling:touch;
-      z-index:55; border-top:1px solid var(--line);
-      box-shadow:0 20px 40px -10px rgba(0,0,0,.25);
-      animation:navSlide .25s cubic-bezier(.16,1,.3,1);
+    #navMenu{
+      order:4; flex-basis:100%; width:100%;
+      display:flex; flex-wrap:nowrap; align-items:center; gap:8px;
+      overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; -ms-overflow-style:none;
+      padding:6px 4px 8px; margin-top:2px;
+      scroll-snap-type:x proximity;
+      -webkit-mask-image:linear-gradient(to left, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+      mask-image:linear-gradient(to left, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
     }
-    @keyframes navSlide{ from{ opacity:0; transform:translateY(-8px);} to{ opacity:1; transform:translateY(0);} }
-    #navMenu.nav-open > li{ display:block; width:100%; white-space:normal; }
-    #navMenu.nav-open a.navlink{ display:flex; width:100%; padding:14px 16px; font-size:15.5px; border-radius:12px; }
-    #navMenu.nav-open .nav-dropdown{ flex-direction:column; align-items:stretch; width:100%; }
-    #navMenu.nav-open .dropdown-menu{
-      position:static !important; display:flex !important; flex-direction:column; opacity:1 !important; visibility:visible !important; pointer-events:auto !important;
-      transform:none !important; box-shadow:none; border:none; background:transparent; padding:2px 0 6px 14px; margin:0; min-width:0; gap:2px;
-    }
-    #navMenu.nav-open .dropdown-menu::before{ display:none; }
-    #navMenu.nav-open li.utility-row:first-of-type{ margin-top:10px; padding-top:12px; border-top:1px solid var(--line); }
-    #navMenu.nav-open li.utility-row{ display:inline-flex !important; width:auto; }
+    #navMenu::-webkit-scrollbar{ display:none; height:0; }
+    #navMenu > li{ flex-shrink:0; scroll-snap-align:start; }
+    #navMenu a.navlink{ white-space:nowrap; font-size:13.5px; padding:9px 15px; }
+    #navMenu .nav-dropdown{ flex-shrink:0; }
+    #navMenu .dropdown-menu{ display:none !important; } /* hover menus don't work on touch; tapping "الاتحادات" opens /federations/ directly */
+    #navMenu .theme-toggle, #navMenu .telegram-btn{ width:38px; height:38px; }
   }
 </style>
 </head>
@@ -266,11 +254,6 @@ permalink: "{{ fedPage.permalink }}"
       <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه...">
       <button aria-label="بحث" type="submit"><svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></button>
     </form>
-    <button type="button" class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navMenu">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
     <ul id="navMenu">
       <li><a class="navlink" href="/">الرئيسية</a></li>
       <li class="nav-dropdown">
@@ -428,6 +411,5 @@ permalink: "{{ fedPage.permalink }}"
   });
 </script>
 <script src="/assets/notif.js" defer></script>
-<script src="/assets/nav.js" defer></script>
 </body>
 </html>
