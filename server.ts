@@ -232,6 +232,40 @@ const IG_SENT_STATE_FILE = path.join(process.cwd(), "instagram-sent-map.json");
 const facebookSentMap: Record<string, number> = loadGenericSentMap(FB_SENT_STATE_FILE);
 const instagramSentMap: Record<string, number> = loadGenericSentMap(IG_SENT_STATE_FILE);
 
+// The configured FACEBOOK_PAGE_ACCESS_TOKEN is a Business System User token
+// (it has the right scopes and is tied to the right Page as confirmed via
+// Meta's own debugger), but Facebook still rejects posts made directly with
+// it — that's because posting to a Page requires the actual derived PAGE
+// access token, not the System User token itself. This exchanges it once,
+// on demand, and caches the result in memory for the life of the process.
+let cachedPageToken: string | null = null;
+let cachedPageTokenAt = 0;
+const PAGE_TOKEN_CACHE_MS = 60 * 60 * 1000; // re-derive hourly, well within its lifetime
+
+async function getPageAccessToken(): Promise<string> {
+  if (!FACEBOOK_PAGE_ACCESS_TOKEN || !FACEBOOK_PAGE_ID) return FACEBOOK_PAGE_ACCESS_TOKEN;
+  const now = Date.now();
+  if (cachedPageToken && now - cachedPageTokenAt < PAGE_TOKEN_CACHE_MS) return cachedPageToken;
+
+  try {
+    const res = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}?fields=access_token&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`
+    );
+    const result = await res.json().catch(() => ({}));
+    if (result.access_token) {
+      cachedPageToken = result.access_token;
+      cachedPageTokenAt = now;
+      console.log("[Facebook] Derived Page access token successfully.");
+      return cachedPageToken;
+    }
+    console.error("[Facebook] Failed to derive Page access token, falling back to System User token:", result);
+    return FACEBOOK_PAGE_ACCESS_TOKEN;
+  } catch (e) {
+    console.error("[Facebook] Error deriving Page access token:", e);
+    return FACEBOOK_PAGE_ACCESS_TOKEN;
+  }
+}
+
 // Posts a link (title + description) directly to the Facebook Page's
 // timeline. Facebook auto-generates the preview card (image/title/desc)
 // from the article's og: meta tags — no separate photo upload.
@@ -241,12 +275,12 @@ const instagramSentMap: Record<string, number> = loadGenericSentMap(IG_SENT_STAT
 // stale/cached preview (from a previous share of the same URL) or a blank
 // one (if this is the very first time Facebook has ever seen the URL) —
 // this step guarantees the image/title shown match what's live right now.
-async function refreshFacebookLinkPreview(url: string): Promise<void> {
+async function refreshFacebookLinkPreview(url: string, pageToken: string): Promise<void> {
   try {
     await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: url, scrape: true, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+      body: JSON.stringify({ id: url, scrape: true, access_token: pageToken })
     });
   } catch (e) {
     console.warn("[Facebook] Link preview refresh failed (continuing anyway):", e);
@@ -262,12 +296,13 @@ async function postToFacebook(data: { title: string; text?: string; url: string;
   const caption = `${data.title}\n\n${data.text || ""}`.trim();
 
   try {
-    await refreshFacebookLinkPreview(data.url);
+    const pageToken = await getPageAccessToken();
+    await refreshFacebookLinkPreview(data.url, pageToken);
 
     const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/feed`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: caption, link: data.url, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+      body: JSON.stringify({ message: caption, link: data.url, access_token: pageToken })
     });
     const result = await res.json().catch(() => ({}));
     if (result.id) {
@@ -330,10 +365,11 @@ async function postToInstagram(data: { title: string; text?: string; url: string
   const caption = `${data.title}\n\n${data.text || ""}\n\n🔗 ${data.url}`.trim();
 
   try {
+    const pageToken = await getPageAccessToken();
     const createRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ image_url: safeImageUrl, caption, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+      body: JSON.stringify({ image_url: safeImageUrl, caption, access_token: pageToken })
     });
     const createResult = await createRes.json().catch(() => ({}));
     if (!createResult.id) {
@@ -341,10 +377,37 @@ async function postToInstagram(data: { title: string; text?: string; url: string
       return { ok: false, result: createResult };
     }
 
+    // Instagram processes the uploaded image asynchronously (compression,
+    // validation, etc). Publishing immediately after creation frequently
+    // fails with "Media ID is not available" simply because that processing
+    // hasn't finished yet. Poll the container's status_code and only
+    // publish once Instagram itself reports it's ready.
+    let ready = false;
+    for (let attempt = 0; attempt < 10; attempt++) {
+      await new Promise((r) => setTimeout(r, 3000));
+      const statusRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${createResult.id}?fields=status_code&access_token=${pageToken}`
+      );
+      const statusResult = await statusRes.json().catch(() => ({}));
+      if (statusResult.status_code === "FINISHED") {
+        ready = true;
+        break;
+      }
+      if (statusResult.status_code === "ERROR") {
+        console.error("[Instagram] Media container processing failed:", statusResult);
+        return { ok: false, result: statusResult };
+      }
+      // status_code === "IN_PROGRESS" (or missing) — keep waiting.
+    }
+    if (!ready) {
+      console.error("[Instagram] Media container never finished processing in time.");
+      return { ok: false };
+    }
+
     const publishRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ creation_id: createResult.id, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+      body: JSON.stringify({ creation_id: createResult.id, access_token: pageToken })
     });
     const publishResult = await publishRes.json().catch(() => ({}));
     if (publishResult.id) {
