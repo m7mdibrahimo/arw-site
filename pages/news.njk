@@ -39,7 +39,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
     transition: transform 0.08s ease !important;
   }
   h1,h2,h3,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
-  header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease; }
+  header{ position:static; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease; }
   .nav{ max-width:1180px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
   .brand{ font-weight:900; font-size:21px; text-decoration:none; color:var(--ink); white-space:nowrap; transition:transform 0.25s ease; display:inline-flex; align-items:center; gap:10px; }
   .brand:hover{ transform:scale(1.04); }
@@ -233,6 +233,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 
   /* ===== Mobile Navigation: everything visible, wraps neatly, no scrolling ===== */
   @media (max-width:860px){
+    header{ position:sticky; top:0; }
     .nav{ padding:14px 16px 16px; gap:10px; flex-wrap:wrap; justify-content:center; }
     .brand{ font-size:19px; flex-basis:auto; }
     .site-search{ order:2; flex-basis:100%; max-width:none; min-width:0; }
