@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 import { execSync, exec } from "child_process";
 import webpush from "web-push";
+import sharp from "sharp";
 
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000; // Render injects PORT automatically
@@ -286,9 +287,45 @@ async function postToFacebook(data: { title: string; text?: string; url: string;
 // it). Instagram requires an image for feed posts and never renders links
 // in the caption as clickable — that's an Instagram platform limitation,
 // not a bug, so the URL is included as plain text like a manual post would.
+// Instagram feed posts only accept images with an aspect ratio between
+// 4:5 (portrait) and 1.91:1 (landscape). Article thumbnails are cropped for
+// the website's own layout and are very often outside that range, which is
+// exactly why every Instagram post has been failing with "Invalid aspect
+// ratio". This downloads the source image, pads it (letterbox, no cropping
+// of the actual photo) into a square 1:1 canvas — always inside Instagram's
+// allowed range — and writes it into _site so it's served at a public URL
+// the Instagram API can fetch, the same way any other site asset is served.
+const IG_CACHE_DIR = path.join(process.cwd(), "_site", "ig-cache");
+async function prepareInstagramImage(imageUrl: string): Promise<string | null> {
+  try {
+    if (!fs.existsSync(IG_CACHE_DIR)) fs.mkdirSync(IG_CACHE_DIR, { recursive: true });
+
+    const res = await fetch(imageUrl);
+    if (!res.ok) return null;
+    const buffer = Buffer.from(await res.arrayBuffer());
+
+    const hash = require("crypto").createHash("md5").update(imageUrl).digest("hex").slice(0, 16);
+    const filename = `${hash}.jpg`;
+    const outPath = path.join(IG_CACHE_DIR, filename);
+
+    await sharp(buffer)
+      .resize(1080, 1080, { fit: "contain", background: { r: 0, g: 0, b: 0 } })
+      .jpeg({ quality: 90 })
+      .toFile(outPath);
+
+    return `${SITE_ORIGIN}/ig-cache/${filename}`;
+  } catch (e) {
+    console.error("[Instagram] Failed to prepare image:", e);
+    return null;
+  }
+}
+
 async function postToInstagram(data: { title: string; text?: string; url: string; imageUrl?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!INSTAGRAM_BUSINESS_ACCOUNT_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
   if (!data.imageUrl) return { ok: false, skipped: true };
+
+  const safeImageUrl = await prepareInstagramImage(data.imageUrl);
+  if (!safeImageUrl) return { ok: false, skipped: true };
 
   const caption = `${data.title}\n\n${data.text || ""}\n\n🔗 ${data.url}`.trim();
 
@@ -296,7 +333,7 @@ async function postToInstagram(data: { title: string; text?: string; url: string
     const createRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ image_url: data.imageUrl, caption, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
+      body: JSON.stringify({ image_url: safeImageUrl, caption, access_token: FACEBOOK_PAGE_ACCESS_TOKEN })
     });
     const createResult = await createRes.json().catch(() => ({}));
     if (!createResult.id) {
