@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: Main Event 27.08.2026
+title: WWE Main Event 27.08.2026
 headline: عرض مين ايفنت 27.08.2026 مترجم
 description: عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-27
