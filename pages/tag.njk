@@ -183,6 +183,9 @@ permalink: "{{ tagPage.permalink }}"
     #navMenu li.utility-row{ display:inline-flex; }
     #navMenu .theme-toggle, #navMenu .telegram-btn{ width:38px; height:38px; }
   }
+  .reveal{ opacity:1; transform:none; }
+  .reveal.reveal-hidden{ opacity:0; transform:translateY(16px); transition:none !important; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); }
 </style>
 </head>
 <body>
@@ -230,7 +233,7 @@ permalink: "{{ tagPage.permalink }}"
 
 <section class="content"><div class="wrap"><div class="grid-12" id="tagGrid">
 {% for item in tagPage.items %}
-  <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %}" href="{{ item.url | cleanUrl }}">
+  <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %} reveal" href="{{ item.url | cleanUrl }}">
     {% if item.kind == 'news' %}
     <div class="news-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"></div>
     <div class="news-body">
@@ -320,6 +323,22 @@ permalink: "{{ tagPage.permalink }}"
     try{ localStorage.setItem('arw-theme', val); }catch(e){}
     document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
   });
+</script>
+<script>
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} });
+    }, { threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const rect = el.getBoundingClientRect();
+      if(rect.top < (window.innerHeight || document.documentElement.clientHeight)){
+        el.classList.add('is-visible');
+      } else {
+        el.classList.add('reveal-hidden');
+        io.observe(el);
+      }
+    });
+  }
 </script>
 <script src="/assets/notif.js" defer></script>
 </body>

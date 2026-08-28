@@ -229,6 +229,9 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
     #navMenu li.utility-row{ display:inline-flex; }
     #navMenu .theme-toggle, #navMenu .telegram-btn{ width:38px; height:38px; }
   }
+  .reveal{ opacity:1; transform:none; }
+  .reveal.reveal-hidden{ opacity:0; transform:translateY(16px); transition:none !important; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); }
 </style>
 </head>
 <body>
@@ -295,7 +298,7 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
 </div>
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in showItems %}
-<a class="show-card" href="{{ item.url | cleanUrl }}">
+<a class="show-card reveal" href="{{ item.url | cleanUrl }}">
   <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
   <div class="show-body">
     <span class="kind-badge kind-show">عرض</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
@@ -400,6 +403,22 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
       if(a && a.href && a.origin === location.origin) prefetch(a.href);
     }, { passive: true });
   })();
+</script>
+<script>
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target);} });
+    }, { threshold:.08 });
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const rect = el.getBoundingClientRect();
+      if(rect.top < (window.innerHeight || document.documentElement.clientHeight)){
+        el.classList.add('is-visible');
+      } else {
+        el.classList.add('reveal-hidden');
+        io.observe(el);
+      }
+    });
+  }
 </script>
 <script src="/assets/notif.js" defer></script>
 </body>
