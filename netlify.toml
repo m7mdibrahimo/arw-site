@@ -1,3 +1,10 @@
 [build]
   command = "npm install && npx @11ty/eleventy"
   publish = "_site"
+  # The bot server commits its Telegram/Facebook/Instagram publish-dedup
+  # record to _data/publish-state.json on every successful post (see
+  # server.ts). That file isn't part of the site content, so a commit that
+  # ONLY touches it shouldn't trigger a full site rebuild here — this skips
+  # the build in that case (exit 0 = skip, per Netlify's ignore-command
+  # convention) while still building normally for real content changes.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':!_data/publish-state.json'"
