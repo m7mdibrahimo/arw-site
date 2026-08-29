@@ -35,6 +35,10 @@ const FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "";
 const INSTAGRAM_BUSINESS_ACCOUNT_ID = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || "17841432943789959";
 const GRAPH_API_VERSION = "v21.0";
 
+// Appended to the end of every Facebook/Instagram caption so followers know
+// where to find more content. Kept as one place to edit the wording/link.
+const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة كل جديد ابحثوا عن \"عرب راسلنج\" على جوجل أو تابعوا موقعنا arab-wrestling.com";
+
 // Initialize VAPID Keys for Web Push Notifications
 const VAPID_FILE = path.join(process.cwd(), "vapid.json");
 let vapidKeys: { publicKey: string; privateKey: string };
@@ -299,7 +303,7 @@ async function postToFacebook(data: { title: string; text?: string; fullText?: s
   // from the article's og: meta tags, showing a clickable thumbnail + link
   // together — the original, first working format, same idea as Telegram
   // (title + short blurb + link) rather than a plain uploaded photo.
-  const caption = `${data.title}\n\n${data.text || ""}`.trim();
+  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
 
   try {
     const pageToken = await getPageAccessToken();
@@ -369,7 +373,7 @@ async function postToInstagram(data: { title: string; text?: string; url: string
   const safeImageUrl = await prepareInstagramImage(data.imageUrl);
   if (!safeImageUrl) return { ok: false, skipped: true };
 
-  const caption = `${data.title}\n\n${data.text || ""}`.trim();
+  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
 
   try {
     const pageToken = await getPageAccessToken();
