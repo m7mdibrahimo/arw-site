@@ -26,6 +26,22 @@ app.use((req, res, next) => {
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "@arab_wrestling";
 
+// Where the push-notification files (VAPID keys, subscriber list) are
+// written. Render's default filesystem is ephemeral — everything under
+// process.cwd() is wiped on every deploy/restart — so on Render's free plan
+// this regenerates on each restart (subscribers would need to re-subscribe).
+// Set STATE_DIR to a Render persistent disk's mount path to keep these
+// across restarts too; defaults to process.cwd() so nothing breaks if unset.
+// (The Telegram/Facebook/Instagram publish-dedup state does NOT use this —
+// it's stored in GitHub instead, see below, specifically so it doesn't
+// depend on any local disk at all.)
+const STATE_DIR = process.env.STATE_DIR || process.cwd();
+try {
+  if (!fs.existsSync(STATE_DIR)) fs.mkdirSync(STATE_DIR, { recursive: true });
+} catch (e) {
+  console.error(`[Startup] Could not create STATE_DIR (${STATE_DIR}):`, e);
+}
+
 // Facebook Page + linked Instagram Business account — both use the same
 // long-lived Page Access Token via the Meta Graph API. If these are left
 // empty, cross-posting to Facebook/Instagram is silently skipped (Telegram
@@ -40,7 +56,7 @@ const GRAPH_API_VERSION = "v21.0";
 const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
 // Initialize VAPID Keys for Web Push Notifications
-const VAPID_FILE = path.join(process.cwd(), "vapid.json");
+const VAPID_FILE = path.join(STATE_DIR, "vapid.json");
 let vapidKeys: { publicKey: string; privateKey: string };
 
 if (fs.existsSync(VAPID_FILE)) {
@@ -62,7 +78,7 @@ webpush.setVapidDetails(
 );
 
 // Manage Web Push Subscriptions
-const SUBS_FILE = path.join(process.cwd(), "subscriptions.json");
+const SUBS_FILE = path.join(STATE_DIR, "subscriptions.json");
 
 function getSubscriptions(): any[] {
   if (!fs.existsSync(SUBS_FILE)) return [];
@@ -174,67 +190,186 @@ app.post("/api/push/send", async (req, res) => {
   }
 });
 
-// Telegram Sent Posts Deduplication — persisted to disk. This is what lets the
-// site watcher (below) know which items it has already posted, both across
-// poll cycles and across server restarts/redeploys.
-const SENT_STATE_FILE = path.join(process.cwd(), "telegram-sent-map.json");
-const SENT_STATE_MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000; // prune entries older than 90 days
+// ─────────────────────────────────────────────────────────────────────────
+// Publish-state storage: GitHub, not local disk.
+//
+// Render wipes this server's local filesystem on every restart/redeploy/
+// spin-down, so nothing written locally can be trusted to survive — that
+// was the actual cause of the duplicate Telegram/Facebook/Instagram posts.
+// This project's GitHub repo is already the durable source of truth for
+// everything else here, and it's free, so the "already published" record
+// is kept as one small JSON file committed to this repo instead.
+//
+// GitHub's Contents API also gives real cross-process safety: updating a
+// file requires the file's current `sha`. If two attempts race to update
+// it, only the first succeeds — the second gets a 409 (conflict) and knows
+// someone else got there first. That's used as the actual "claim" right
+// before ever calling the Telegram/Facebook/Instagram API, so a given post
+// can only be claimed once no matter how many processes, restarts, or
+// retries are involved.
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
+const GITHUB_OWNER = process.env.GITHUB_OWNER || "m7mdibrahimo";
+const GITHUB_REPO = process.env.GITHUB_REPO || "arw-site";
+const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
+const GITHUB_STATE_PATH = process.env.GITHUB_STATE_PATH || "_data/publish-state.json";
+const GITHUB_CONTENTS_URL = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_STATE_PATH}`;
 
-function loadSentMap(): Record<string, number> {
-  if (!fs.existsSync(SENT_STATE_FILE)) return {};
+type PublishState = {
+  telegram: Record<string, number>;
+  facebook: Record<string, number>;
+  instagram: Record<string, number>;
+};
+
+function emptyPublishState(): PublishState {
+  return { telegram: {}, facebook: {}, instagram: {} };
+}
+
+async function githubReadState(): Promise<{ sha: string | null; state: PublishState }> {
+  const res = await fetch(`${GITHUB_CONTENTS_URL}?ref=${GITHUB_BRANCH}`, {
+    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" }
+  });
+  if (res.status === 404) return { sha: null, state: emptyPublishState() }; // file doesn't exist yet
+  if (!res.ok) throw new Error(`GitHub read failed: ${res.status} ${await res.text().catch(() => "")}`);
+  const data = await res.json();
+  let state: PublishState;
   try {
-    const parsed = JSON.parse(fs.readFileSync(SENT_STATE_FILE, "utf-8"));
-    const now = Date.now();
-    const pruned: Record<string, number> = {};
-    for (const k of Object.keys(parsed || {})) {
-      if (now - parsed[k] < SENT_STATE_MAX_AGE_MS) pruned[k] = parsed[k];
+    state = JSON.parse(Buffer.from(data.content, "base64").toString("utf-8"));
+  } catch (e) {
+    state = emptyPublishState();
+  }
+  state.telegram = state.telegram || {};
+  state.facebook = state.facebook || {};
+  state.instagram = state.instagram || {};
+  return { sha: data.sha, state };
+}
+
+async function githubWriteState(state: PublishState, sha: string | null, message: string): Promise<{ ok: boolean; conflict?: boolean }> {
+  const body: any = {
+    message,
+    content: Buffer.from(JSON.stringify(state, null, 2)).toString("base64"),
+    branch: GITHUB_BRANCH
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(GITHUB_CONTENTS_URL, {
+    method: "PUT",
+    headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  if (res.status === 409 || res.status === 422) return { ok: false, conflict: true };
+  if (!res.ok) {
+    console.error(`[GitHub State] Write failed: ${res.status}`, await res.text().catch(() => ""));
+    return { ok: false };
+  }
+  return { ok: true };
+}
+
+// In-memory mirror of the GitHub state, hydrated once at boot and kept in
+// sync locally after every successful claim — this avoids an API round
+// trip to GitHub for every item on every watcher poll, while GitHub itself
+// remains the durable, restart-proof source of truth.
+const telegramSentMap: Record<string, number> = {};
+const facebookSentMap: Record<string, number> = {};
+const instagramSentMap: Record<string, number> = {};
+
+async function hydrateSentMapsFromGitHub() {
+  if (!GITHUB_TOKEN) {
+    console.error(
+      "[GitHub State] GITHUB_TOKEN is not set. Without it, this server has no durable memory of what it already " +
+      "posted, and Render wiping the local disk on restart will cause posts to repeat. Set GITHUB_TOKEN to a " +
+      "GitHub personal access token with 'Contents: Read and write' permission on this repo."
+    );
+    return;
+  }
+  try {
+    const { state } = await githubReadState();
+    Object.assign(telegramSentMap, state.telegram);
+    Object.assign(facebookSentMap, state.facebook);
+    Object.assign(instagramSentMap, state.instagram);
+    console.log(
+      `[GitHub State] Loaded publish history: ${Object.keys(telegramSentMap).length} telegram, ` +
+      `${Object.keys(facebookSentMap).length} facebook, ${Object.keys(instagramSentMap).length} instagram.`
+    );
+  } catch (e) {
+    console.error("[GitHub State] Failed to load publish history at boot:", e);
+  }
+}
+
+function localMapFor(platform: "telegram" | "facebook" | "instagram"): Record<string, number> {
+  return platform === "telegram" ? telegramSentMap : platform === "facebook" ? facebookSentMap : instagramSentMap;
+}
+
+// Atomically claims a key for a platform via GitHub's sha-based optimistic
+// concurrency. Only the caller that wins the race gets `true` back and may
+// go on to actually call the platform's API. A 409 just means some other
+// attempt (for this key or another) updated the file first, so this
+// re-reads the fresh sha and retries a few times before giving up.
+async function claimSend(platform: "telegram" | "facebook" | "instagram", key: string): Promise<boolean> {
+  if (!key) return true; // nothing to dedupe on — let it through
+  const localMap = localMapFor(platform);
+  if (localMap[key]) return false; // this process already knows it's handled
+
+  if (!GITHUB_TOKEN) {
+    console.error(`[Claim] Cannot claim ${platform}/${key}: GITHUB_TOKEN not set — refusing to send without a durable record.`);
+    return false; // fail safe: never send if we can't durably record it
+  }
+
+  for (let attempt = 0; attempt < 5; attempt++) {
+    let sha: string | null;
+    let state: PublishState;
+    try {
+      ({ sha, state } = await githubReadState());
+    } catch (e) {
+      console.error(`[Claim] Could not read GitHub state for ${platform}/${key}:`, e);
+      return false;
     }
-    return pruned;
-  } catch (e) {
-    return {};
-  }
-}
 
-function persistSentMap() {
-  try {
-    fs.writeFileSync(SENT_STATE_FILE, JSON.stringify(telegramSentMap));
-  } catch (e) {
-    console.error("[Telegram] Failed to persist sent-state file:", e);
-  }
-}
-
-const telegramSentMap: Record<string, number> = loadSentMap();
-
-// Same dedup pattern as Telegram's sent-map, generalized so Facebook and
-// Instagram each get their own persisted "already posted" state — a post
-// failing on one platform never blocks or duplicates on another.
-function loadGenericSentMap(file: string): Record<string, number> {
-  if (!fs.existsSync(file)) return {};
-  try {
-    const parsed = JSON.parse(fs.readFileSync(file, "utf-8"));
-    const now = Date.now();
-    const pruned: Record<string, number> = {};
-    for (const k of Object.keys(parsed || {})) {
-      if (now - parsed[k] < SENT_STATE_MAX_AGE_MS) pruned[k] = parsed[k];
+    if (state[platform][key]) {
+      localMap[key] = state[platform][key]; // someone else already claimed/sent it
+      return false;
     }
-    return pruned;
-  } catch (e) {
-    return {};
+
+    state[platform][key] = Date.now();
+    const write = await githubWriteState(state, sha, `chore(publish): mark ${platform} sent — ${key}`);
+    if (write.ok) {
+      localMap[key] = state[platform][key];
+      return true;
+    }
+    if (write.conflict) {
+      await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
+      continue; // someone else wrote in between — retry against the fresh sha
+    }
+    return false; // real failure — don't send without a confirmed claim
   }
+  console.error(`[Claim] Gave up claiming ${platform}/${key} after retries — skipping to avoid a possible duplicate.`);
+  return false;
 }
 
-function persistGenericSentMap(file: string, map: Record<string, number>) {
-  try {
-    fs.writeFileSync(file, JSON.stringify(map));
-  } catch (e) {
-    console.error(`[SentMap] Failed to persist ${file}:`, e);
+// Called only when a send attempt FAILS after a successful claim, so the
+// key becomes claimable again on a later retry instead of being stuck
+// "sent" forever with nothing actually posted.
+async function releaseSendClaim(platform: "telegram" | "facebook" | "instagram", key: string) {
+  if (!key || !GITHUB_TOKEN) return;
+  delete localMapFor(platform)[key];
+
+  for (let attempt = 0; attempt < 5; attempt++) {
+    let sha: string | null;
+    let state: PublishState;
+    try {
+      ({ sha, state } = await githubReadState());
+    } catch (e) {
+      return;
+    }
+    if (!state[platform][key]) return; // already released
+    delete state[platform][key];
+    const write = await githubWriteState(state, sha, `chore(publish): release ${platform} claim — ${key} (send failed)`);
+    if (write.ok) return;
+    if (write.conflict) {
+      await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
+      continue;
+    }
+    return;
   }
 }
-
-const FB_SENT_STATE_FILE = path.join(process.cwd(), "facebook-sent-map.json");
-const IG_SENT_STATE_FILE = path.join(process.cwd(), "instagram-sent-map.json");
-const facebookSentMap: Record<string, number> = loadGenericSentMap(FB_SENT_STATE_FILE);
-const instagramSentMap: Record<string, number> = loadGenericSentMap(IG_SENT_STATE_FILE);
 
 // The configured FACEBOOK_PAGE_ACCESS_TOKEN is a Business System User token
 // (it has the right scopes and is tied to the right Page as confirmed via
@@ -438,15 +573,10 @@ async function postToInstagram(data: { title: string; text?: string; url: string
 // are best-effort and independent: either one failing never affects the
 // other, never blocks Telegram, and each is only attempted once per item.
 //
-// IMPORTANT: facebookSentMap/instagramSentMap only get written AFTER a post
-// succeeds, and both API calls (especially Instagram's container-then-publish
-// flow) can take several seconds. If this function gets called twice for the
-// same key while the first call is still in flight (e.g. the automatic site
-// watcher and a manual admin publish both picking up the same item within a
-// few seconds of each other), the "!facebookSentMap[key]" check passes both
-// times and the item gets posted twice. fbInFlight/igInFlight close that gap
-// by reserving the key synchronously, the instant the attempt starts, not
-// after it finishes.
+// fbInFlight/igInFlight are an in-memory fast-path: they avoid hitting the
+// GitHub API again for a key this same process already knows is being
+// handled. The actual cross-process/cross-restart guarantee is claimSend()
+// itself (GitHub-backed), called below before any real API call.
 const fbInFlight = new Set<string>();
 const igInFlight = new Set<string>();
 
@@ -455,24 +585,34 @@ function crossPostToFacebookAndInstagram(key: string, item: { title: string; tex
 
   if (!facebookSentMap[key] && !fbInFlight.has(key)) {
     fbInFlight.add(key);
-    postToFacebook({ title: item.title, text: item.text, fullText: item.fullText, url: item.url, imageUrl, kind: item.kind }).then((r) => {
-      if (r.ok) {
-        facebookSentMap[key] = Date.now();
-        persistGenericSentMap(FB_SENT_STATE_FILE, facebookSentMap);
+    (async () => {
+      try {
+        if (!(await claimSend("facebook", key))) return;
+        const r = await postToFacebook({ title: item.title, text: item.text, fullText: item.fullText, url: item.url, imageUrl, kind: item.kind });
+        if (!r.ok) await releaseSendClaim("facebook", key); // failed — let a later attempt retry
+      } catch (e) {
+        console.error("[Facebook] Unexpected error:", e);
+        await releaseSendClaim("facebook", key);
+      } finally {
+        fbInFlight.delete(key);
       }
-    }).catch((e) => console.error("[Facebook] Unexpected error:", e))
-      .finally(() => fbInFlight.delete(key));
+    })();
   }
 
   if (!instagramSentMap[key] && !igInFlight.has(key)) {
     igInFlight.add(key);
-    postToInstagram({ title: item.title, text: item.text, url: item.url, imageUrl }).then((r) => {
-      if (r.ok) {
-        instagramSentMap[key] = Date.now();
-        persistGenericSentMap(IG_SENT_STATE_FILE, instagramSentMap);
+    (async () => {
+      try {
+        if (!(await claimSend("instagram", key))) return;
+        const r = await postToInstagram({ title: item.title, text: item.text, url: item.url, imageUrl });
+        if (!r.ok) await releaseSendClaim("instagram", key);
+      } catch (e) {
+        console.error("[Instagram] Unexpected error:", e);
+        await releaseSendClaim("instagram", key);
+      } finally {
+        igInFlight.delete(key);
       }
-    }).catch((e) => console.error("[Instagram] Unexpected error:", e))
-      .finally(() => igInFlight.delete(key));
+    })();
   }
 }
 
@@ -794,11 +934,16 @@ async function tryPublishSiteItem(item: any, key: string) {
     const fullText = verify.bodySnippet ? (verify as any).fullBody || payload.text : payload.text;
 
     console.log(`[Watcher] Verified live on site, publishing: ${item.title}`);
+
+    // Cross-process/cross-restart safety net, right before the real
+    // network call: if this key was already claimed (or already sent) —
+    // by this process, an earlier process, or before a Render restart —
+    // GitHub's state will show it and this returns false.
+    if (!(await claimSend("telegram", key))) return;
+
     const result = await sendVerifiedTelegramPost(payload, verify.ok ? verify.imageBuffer : undefined, verify.imageContentType);
 
     if (result && result.ok) {
-      telegramSentMap[key] = Date.now();
-      persistSentMap();
       delete watcherPendingSince[key];
       if (collection === "shows" || collection === "recaps") {
         sendPushToAllSubscribers({ ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
@@ -806,6 +951,7 @@ async function tryPublishSiteItem(item: any, key: string) {
       crossPostToFacebookAndInstagram(key, { ...payload, fullText, image: item.image, kind: item.kind });
     } else {
       console.error(`[Watcher] Failed to publish "${item.title}":`, result);
+      await releaseSendClaim("telegram", key); // failed — allow a later poll to retry
     }
   } finally {
     telegramInFlight.delete(key);
@@ -822,16 +968,18 @@ async function watcherBootstrap() {
   let pending = 0;
   for (const item of items) {
     const key = watcherKeyFor(item);
-    if (!key || telegramSentMap[key]) continue; // already known from persisted state
+    if (!key || telegramSentMap[key]) continue; // already known — either really sent (loaded from GitHub) or already marked as history on an earlier boot
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (ts && now - ts <= WATCHER_BOOTSTRAP_GRACE_MS) {
       pending++; // recent enough — leave unmarked so the first poll verifies + sends it
       continue;
     }
-    // Predates this boot by more than the grace window: treat as already-published history.
+    // Predates this boot by more than the grace window: treat as
+    // already-published history. This is a LOCAL-only marker (not written
+    // to GitHub) — it's just "don't bother trying to send this old thing",
+    // re-derived the same way on every boot, not an actual publish record.
     telegramSentMap[key] = now;
   }
-  persistSentMap();
   console.log(`[Watcher] Bootstrapped with ${items.length} live items (${pending} pending publish).`);
 }
 
@@ -854,8 +1002,14 @@ async function watcherPoll() {
   }
 }
 
-watcherBootstrap();
-setInterval(watcherPoll, WATCHER_POLL_MS);
+// Load real publish history from GitHub BEFORE deciding what's "old" vs
+// "new" at boot — otherwise everything would look unpublished on a fresh
+// process and get bootstrapped (or worse, re-sent) incorrectly.
+(async () => {
+  await hydrateSentMapsFromGitHub();
+  await watcherBootstrap();
+  setInterval(watcherPoll, WATCHER_POLL_MS);
+})();
 
 // Telegram API endpoints
 app.get("/api/telegram/status", async (req, res) => {
