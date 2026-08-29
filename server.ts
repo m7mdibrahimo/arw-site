@@ -550,197 +550,6 @@ function normalizeArticleUrl(urlStr: string | undefined): string {
   }
 }
 
-async function executeTelegramPost(data: {
-  title: string;
-  text?: string;
-  url?: string;
-  image?: string;
-  collection?: string;
-  kind?: string;
-}, strictImage: boolean = false) {
-  try {
-    const { title, text, url, image } = data;
-    const articleUrl = normalizeArticleUrl(url || 'https://arab-wrestling.com');
-
-    let fullImageUrl = image;
-    if (image && typeof image === 'string' && !image.startsWith('http')) {
-      fullImageUrl = 'https://arab-wrestling.com' + (image.startsWith('/') ? '' : '/') + image;
-    }
-
-    const safeTitle = escapeTelegramHtml(title || "");
-    const safeText = escapeTelegramHtml(text || "");
-    const safeUrl = escapeTelegramHtml(articleUrl || "");
-    // The blockquote is "expandable" so inside the channel only the title
-    // stands out clearly at a glance; the summary is collapsed under a
-    // tap-to-expand quote instead of competing with the title for attention.
-    const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
-    const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
-
-    let result: any = { ok: false };
-    const localImgPath = resolveLocalImagePath(image);
-
-    const isRateLimited = (res: any) => res && res.error_code === 429;
-    const isImageProcessFailed = (res: any) => res && res.error_code === 400 && typeof res.description === 'string' && res.description.includes('IMAGE_PROCESS_FAILED');
-
-    // Strategy 1: Direct File Binary Upload via FormData (for local image files)
-    if (localImgPath && fs.existsSync(localImgPath) && fs.statSync(localImgPath).size > 0) {
-      try {
-        console.log(`[Telegram] Uploading local image binary (${localImgPath})...`);
-        const fileBuffer = fs.readFileSync(localImgPath);
-        const ext = path.extname(localImgPath).toLowerCase();
-        let mimeType = 'image/jpeg';
-        let fileName = path.basename(localImgPath);
-        if (ext === '.png') mimeType = 'image/png';
-        else if (ext === '.webp') mimeType = 'image/webp';
-        else if (ext === '.gif') mimeType = 'image/gif';
-
-        const blob = new Blob([new Uint8Array(fileBuffer)], { type: mimeType });
-        const formData = new FormData();
-        formData.append("chat_id", CHAT_ID);
-        formData.append("photo", blob, fileName);
-        formData.append("caption", messageHtml);
-        formData.append("parse_mode", "HTML");
-
-        const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-          method: "POST",
-          body: formData
-        });
-        result = await tgRes.json().catch(() => ({ ok: false }));
-        if (result.ok) {
-          console.log("[Telegram] sendPhoto via direct file upload succeeded!");
-          return result;
-        }
-        if (isRateLimited(result)) {
-          console.warn("[Telegram] Rate limit (429) hit during sendPhoto file upload.");
-          return result;
-        }
-        if (isImageProcessFailed(result)) {
-          console.warn("[Telegram] Local image process failed (400), skipping remaining photo strategies...");
-        } else {
-          console.warn("[Telegram] Direct file upload sendPhoto returned error:", result);
-        }
-      } catch (fileErr) {
-        console.error("[Telegram] Error uploading local image file:", fileErr);
-      }
-    }
-
-    // Strategy 2: Fetch remote image buffer and upload via FormData
-    if (!result.ok && fullImageUrl && !isImageProcessFailed(result) && !isRateLimited(result)) {
-      try {
-        console.log(`[Telegram] Trying to fetch remote image from ${fullImageUrl}...`);
-        const imgRes = await fetch(fullImageUrl);
-        if (imgRes.ok) {
-          const arrayBuffer = await imgRes.arrayBuffer();
-          if (isValidImageBuffer(arrayBuffer)) {
-            const contentType = imgRes.headers.get("content-type") || "image/jpeg";
-            const blob = new Blob([new Uint8Array(arrayBuffer)], { type: contentType });
-
-            const formData = new FormData();
-            formData.append("chat_id", CHAT_ID);
-            formData.append("photo", blob, "photo.jpg");
-            formData.append("caption", messageHtml);
-            formData.append("parse_mode", "HTML");
-
-            const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-              method: "POST",
-              body: formData
-            });
-            result = await tgRes.json().catch(() => ({ ok: false }));
-            if (result.ok) {
-              console.log("[Telegram] sendPhoto via fetched image buffer succeeded!");
-              return result;
-            }
-            if (isRateLimited(result)) {
-              console.warn("[Telegram] Rate limit (429) hit during fetched image upload.");
-              return result;
-            }
-          } else {
-            console.warn("[Telegram] Fetched image buffer is invalid image data, skipping photo upload.");
-          }
-        }
-      } catch (fetchErr) {
-        console.warn("[Telegram] Failed to fetch remote image buffer:", fetchErr);
-      }
-    }
-
-    // Strategy 3: sendPhoto using URL string
-    if (!result.ok && fullImageUrl && !isImageProcessFailed(result) && !isRateLimited(result)) {
-      try {
-        const payload = {
-          chat_id: CHAT_ID,
-          photo: fullImageUrl,
-          caption: messageHtml,
-          parse_mode: "HTML"
-        };
-        const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        result = await tgRes.json().catch(() => ({ ok: false }));
-        if (result.ok) {
-          console.log("[Telegram] sendPhoto via URL string succeeded!");
-          return result;
-        }
-        if (isRateLimited(result)) {
-          console.warn("[Telegram] Rate limit (429) hit during URL sendPhoto.");
-          return result;
-        }
-      } catch (urlErr) {
-        console.warn("[Telegram] sendPhoto via URL string failed:", urlErr);
-      }
-    }
-
-    // If an image was expected but every photo strategy above failed, and we're in
-    // strict mode (used by the pending-queue worker), don't fall back to text yet —
-    // signal the caller so it can retry later instead of permanently losing the image.
-    if (!result.ok && !isRateLimited(result) && strictImage && image) {
-      console.warn("[Telegram] Image expected but not ready yet, deferring post (strictImage).");
-      return { ok: false, error_code: "IMAGE_NOT_READY", description: "Image not yet available, will retry" };
-    }
-
-    // Strategy 4: Fallback to sendMessage HTML (Text only)
-    if (!result.ok && !isRateLimited(result)) {
-      console.log("[Telegram] Posting article message to channel via formatted HTML...");
-      const payload = {
-        chat_id: CHAT_ID,
-        text: messageHtml,
-        parse_mode: "HTML",
-        disable_web_page_preview: false
-      };
-      const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      result = await tgRes.json().catch(() => ({ ok: false }));
-      if (result.ok) return result;
-      if (isRateLimited(result)) return result;
-    }
-
-    // Strategy 5: Plain text sendMessage without HTML formatting
-    if (!result.ok && !isRateLimited(result)) {
-      console.warn("[Telegram] HTML parse failed, retrying plain text sendMessage...");
-      const plainText = `${title || ""}\n\n${text || ""}\n\n🔗 تابع المحتوى على موقع عرب راسلنج:\n${articleUrl}`;
-      const payload = {
-        chat_id: CHAT_ID,
-        text: plainText,
-        disable_web_page_preview: false
-      };
-      const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      result = await tgRes.json().catch(() => ({ ok: false }));
-    }
-
-    return result;
-  } catch (err: any) {
-    console.error("[Telegram] Error executing Telegram post:", err);
-    return { ok: false, description: err.message || "Network error" };
-  }
-}
 
 function arabicSlug(str: string): string {
   if (!str) return "";
@@ -782,113 +591,6 @@ function parseFrontmatter(fileContent: string): Record<string, string> {
   return result;
 }
 
-// Simple in-memory scheduler: "wait, then send". No file storage, no polling
-// loop — just a plain timer per post. If the server restarts mid-wait, that
-// one post is lost, which is an accepted tradeoff for keeping this simple.
-//
-// If many posts happen to become due around the same moment (e.g. 50 posts
-// published back-to-back), we don't want to fire 50 Telegram API calls at
-// once — Telegram flood-blocks rapid concurrent sends. So the 3-minute timer
-// only ENQUEUES the post; a single worker sends them one at a time with a
-// small gap in between. Each post still fires ~3 minutes after its own
-// publish, this just prevents a pile-up from being sent all in one instant.
-type QueuedPost = { key: string; item: any; imageRetries: number };
-const telegramSendQueue: QueuedPost[] = [];
-let isSendingTelegramQueue = false;
-
-function scheduleTelegramPost(key: string, item: any, delayMs: number) {
-  // Reserve immediately, not just when the timer fires — otherwise the
-  // automatic watcher can see this key as "unsent" for the whole delay
-  // window and publish it first, causing a duplicate.
-  if (key) telegramInFlight.add(key);
-  setTimeout(() => enqueueTelegramSend(key, item, 0), delayMs);
-}
-
-function enqueueTelegramSend(key: string, item: any, imageRetries: number) {
-  telegramSendQueue.push({ key, item, imageRetries });
-  processTelegramSendQueue();
-}
-
-async function processTelegramSendQueue() {
-  if (isSendingTelegramQueue) return; // a worker loop is already running
-  isSendingTelegramQueue = true;
-  try {
-    while (telegramSendQueue.length > 0) {
-      const job = telegramSendQueue.shift()!;
-      await sendTelegramPostWithImageRetry(job.key, job.item, job.imageRetries);
-      // small gap between actual sends so Telegram never sees a burst
-      if (telegramSendQueue.length > 0) {
-        await new Promise(r => setTimeout(r, 3500));
-      }
-    }
-  } finally {
-    isSendingTelegramQueue = false;
-  }
-}
-
-async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetries: number) {
-  if (telegramSentMap[key]) {
-    console.log(`[Telegram] Skipping ${key}, already sent.`);
-    telegramInFlight.delete(key); // release in case this was a stale/duplicate enqueue
-    return;
-  }
-  // Reserve (idempotent — may already be held by scheduleTelegramPost). Kept
-  // held across the 429 / IMAGE_NOT_READY retry paths below since those are
-  // still the same in-progress attempt; only released at a truly terminal
-  // outcome (success or final failure).
-  telegramInFlight.add(key);
-
-  console.log(`[Telegram] Sending scheduled post: ${item.title}`);
-  try {
-    // strictImage=true: don't silently fall back to text-only — we want to
-    // know if the image isn't ready yet so we can retry instead.
-    const result = await executeTelegramPost(item, true);
-
-    if (result.ok) {
-      telegramSentMap[key] = Date.now();
-      persistSentMap();
-      if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
-        sendPushToAllSubscribers(item).catch(() => {});
-      }
-      crossPostToFacebookAndInstagram(key, item);
-      telegramInFlight.delete(key);
-      return;
-    }
-
-    if (result.error_code === 429) {
-      const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
-      console.warn(`[Telegram] Rate limited, retrying ${key} in ${retrySec}s.`);
-      setTimeout(() => enqueueTelegramSend(key, item, imageRetries), retrySec * 1000);
-      return; // stays locked — this key is still mid-attempt
-    }
-
-    if (result.error_code === "IMAGE_NOT_READY") {
-      if (imageRetries >= 30) {
-        console.warn(`[Telegram] Image still not ready after ${imageRetries} retries for ${key}. Sending without image.`);
-        const fallback = await executeTelegramPost(item, false); // allow text-only fallback now
-        if (fallback.ok) {
-          telegramSentMap[key] = Date.now();
-          persistSentMap();
-          if (item.url && (item.url.includes("/shows/") || item.url.includes("/recaps/") || item.collection === "shows" || item.collection === "recaps")) {
-            sendPushToAllSubscribers(item).catch(() => {});
-          }
-          crossPostToFacebookAndInstagram(key, item);
-        }
-        telegramInFlight.delete(key);
-        return;
-      }
-      console.log(`[Telegram] Image not ready yet for ${key} (attempt ${imageRetries + 1}/30), retrying in 30s...`);
-      setTimeout(() => enqueueTelegramSend(key, item, imageRetries + 1), 30000);
-      return; // stays locked
-    }
-
-    console.error(`[Telegram] Failed to send ${key}:`, result);
-    telegramInFlight.delete(key);
-  } catch (err) {
-    console.error(`[Telegram] Error sending ${key}:`, err);
-    telegramInFlight.delete(key);
-  }
-}
 
 // ─────────────────────────────────────────────────────────────────────────
 // Site Watcher: watches the REAL public site (arab-wrestling.com — served
@@ -1060,15 +762,11 @@ async function sendVerifiedTelegramPost(
 
 const watcherPendingSince: Record<string, number> = {};
 
-// Shared between the automatic site watcher and the manual/scheduled
-// "/api/telegram/post" path. telegramSentMap[key] is only written once a
-// send actually succeeds, and a single attempt can take real time (image
-// verification, retries, etc). Without this, the watcher can pick an item
-// up, start verifying/sending it, and — before it finishes and marks
-// telegramSentMap — the manually-scheduled 3-minute timer for the *same*
-// post fires and starts its own send too, since it still sees the key as
-// unsent. That's what was causing double posts. This set reserves the key
-// the instant an attempt starts, not after it finishes.
+// Reserves a dedup key the instant the watcher starts trying to publish an
+// item — not just after it succeeds. A single attempt can take real time
+// (page/image verification over the network), so without this a second
+// watcher poll picking up the same still-in-progress item could start a
+// duplicate send before the first one finishes and marks telegramSentMap.
 const telegramInFlight = new Set<string>();
 
 async function tryPublishSiteItem(item: any, key: string) {
@@ -1202,88 +900,42 @@ app.get("/api/instagram/status", async (req, res) => {
 app.post("/api/telegram/post", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   try {
-    const { title, text, url, image, collection, kind, id, slug, postId, immediate, force } = req.body || {};
+    const { title, text, url, image, collection, kind, id, slug, postId } = req.body || {};
 
-    // TEMP DEBUG: log exactly what arrives, to compare news vs shows requests.
-    // Remove this once the image issue is confirmed fixed.
-    console.log("[Telegram DEBUG] Incoming post:", {
-      title,
-      collection,
-      kind,
-      image,
-      imageType: typeof image,
-      url
-    });
+    console.log("[Publish] Incoming post:", { title, collection, kind, image, imageType: typeof image, url });
 
     if (!title && !text) {
       return res.status(400).json({ success: false, error: "العنوان أو النص مطلوب" });
     }
 
-    // Trigger Eleventy build in background so static page is generated immediately
+    // Trigger Eleventy build in background so the static page goes live.
+    // That's it — this endpoint's only job is publishing to the site.
+    //
+    // Telegram/Facebook/Instagram are no longer sent from here. There used
+    // to be a second path here (immediate send, or a 3-minute delayed
+    // timer) running in parallel with the automatic site watcher below —
+    // both trying to publish the same item, which is what caused posts to
+    // go out twice. Now there is exactly ONE publisher: the watcher. It
+    // polls the live site every minute, and the moment it sees this item
+    // (with its page and image actually reachable), it sends it to
+    // Telegram and then cross-posts to Facebook/Instagram. No manual
+    // trigger, no artificial delay — just "publish once it's really live."
     exec("npx @11ty/eleventy", (err) => {
       if (err) console.error("[Eleventy AutoBuild Error]:", err);
       else console.log("[Eleventy AutoBuild] Site rebuilt successfully for new post!");
     });
 
-    // Generate strict unique deduplication key. Prefer the URL (normalized the
-    // same way the site watcher does) so a manual publish here and an
-    // automatic publish from the watcher recognize each other as the same
-    // item and never double-post.
     const rawKey = url ? normalizeArticleUrl(url) : (postId || slug || id || title || "");
     const dedupKey = sanitizeKey(rawKey.toString());
-
-    // Check if sent recently (less than 10 minutes) unless force/immediate is passed
-    const lastSentTime = telegramSentMap[dedupKey];
-    if (dedupKey && lastSentTime && (Date.now() - lastSentTime < 600000) && !force && !immediate) {
-      console.log(`[Telegram] Already sent recently for key: ${dedupKey}`);
-      return res.json({
-        success: true,
-        message: "تم نشر هذا الموضوع مسبقاً على التليجرام",
-        alreadySent: true
-      });
-    }
-
-    // If immediate send is explicitly requested
-    if (immediate) {
-      // Reserve the key so the automatic watcher can't pick up the very
-      // same item mid-request and fire its own Telegram/Facebook/Instagram
-      // posts while this one is still in flight.
-      if (dedupKey && telegramInFlight.has(dedupKey)) {
-        return res.json({ success: true, message: "تم نشر هذا الموضوع بالفعل، جاري الإرسال", alreadySent: true });
-      }
-      if (dedupKey) telegramInFlight.add(dedupKey);
-      try {
-        const result = await executeTelegramPost({ title, text, url, image, collection, kind });
-        if (result.ok) {
-          if (dedupKey) {
-            telegramSentMap[dedupKey] = Date.now();
-            persistSentMap();
-          }
-          if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
-            sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
-          }
-          crossPostToFacebookAndInstagram(dedupKey, { title, text, url, image });
-          return res.json({ success: true, message: "تم النشر فوراً على التليجرام!", result });
-        } else {
-          return res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
-        }
-      } finally {
-        if (dedupKey) telegramInFlight.delete(dedupKey);
-      }
-    }
-
-    // Default delay: 3 MINUTES (180,000 ms) as requested.
-    // Just a plain in-memory timer — wait, then send. Nothing is written to disk.
-    const delayMs = req.body?.delayMs !== undefined ? Number(req.body.delayMs) : 180000;
-    scheduleTelegramPost(dedupKey, { title, text, url, image, collection, kind }, delayMs);
 
     return res.json({
       success: true,
       queued: true,
-      message: "تم تسجيل الموضوع بنجاح! سيتم نشره تلقائياً على التليجرام بعد 3 دقائق لضمان اكتمال بناء الصفحة والميديا على الموقع."
+      message: "تم نشر الموضوع على الموقع! سيتم اكتشافه تلقائياً ونشره على التليجرام وفيسبوك وانستجرام خلال دقيقة تقريباً بمجرد ما يبقى متاح بالكامل.",
+      dedupKey
     });
   } catch (error: any) {
-    console.error("[Telegram API Error]:", error);
+    console.error("[Publish API Error]:", error);
     return res.status(500).json({ success: false, error: error.message || "خطأ في السيرفر" });
   }
 });
