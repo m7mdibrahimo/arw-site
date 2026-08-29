@@ -37,7 +37,7 @@ const GRAPH_API_VERSION = "v21.0";
 
 // Appended to the end of every Facebook/Instagram caption so followers know
 // where to find more content. Kept as one place to edit the wording/link.
-const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة كل جديد ابحثوا عن \"عرب راسلنج\" على جوجل أو تابعوا موقعنا arab-wrestling.com";
+const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
 // Initialize VAPID Keys for Web Push Notifications
 const VAPID_FILE = path.join(process.cwd(), "vapid.json");
@@ -437,25 +437,42 @@ async function postToInstagram(data: { title: string; text?: string; url: string
 // on the site (same verified image/url the Telegram post just used). Both
 // are best-effort and independent: either one failing never affects the
 // other, never blocks Telegram, and each is only attempted once per item.
+//
+// IMPORTANT: facebookSentMap/instagramSentMap only get written AFTER a post
+// succeeds, and both API calls (especially Instagram's container-then-publish
+// flow) can take several seconds. If this function gets called twice for the
+// same key while the first call is still in flight (e.g. the automatic site
+// watcher and a manual admin publish both picking up the same item within a
+// few seconds of each other), the "!facebookSentMap[key]" check passes both
+// times and the item gets posted twice. fbInFlight/igInFlight close that gap
+// by reserving the key synchronously, the instant the attempt starts, not
+// after it finishes.
+const fbInFlight = new Set<string>();
+const igInFlight = new Set<string>();
+
 function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; fullText?: string; url: string; image?: string; kind?: string }) {
   const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image) : undefined;
 
-  if (!facebookSentMap[key]) {
+  if (!facebookSentMap[key] && !fbInFlight.has(key)) {
+    fbInFlight.add(key);
     postToFacebook({ title: item.title, text: item.text, fullText: item.fullText, url: item.url, imageUrl, kind: item.kind }).then((r) => {
       if (r.ok) {
         facebookSentMap[key] = Date.now();
         persistGenericSentMap(FB_SENT_STATE_FILE, facebookSentMap);
       }
-    }).catch((e) => console.error("[Facebook] Unexpected error:", e));
+    }).catch((e) => console.error("[Facebook] Unexpected error:", e))
+      .finally(() => fbInFlight.delete(key));
   }
 
-  if (!instagramSentMap[key]) {
+  if (!instagramSentMap[key] && !igInFlight.has(key)) {
+    igInFlight.add(key);
     postToInstagram({ title: item.title, text: item.text, url: item.url, imageUrl }).then((r) => {
       if (r.ok) {
         instagramSentMap[key] = Date.now();
         persistGenericSentMap(IG_SENT_STATE_FILE, instagramSentMap);
       }
-    }).catch((e) => console.error("[Instagram] Unexpected error:", e));
+    }).catch((e) => console.error("[Instagram] Unexpected error:", e))
+      .finally(() => igInFlight.delete(key));
   }
 }
 
@@ -780,6 +797,10 @@ const telegramSendQueue: QueuedPost[] = [];
 let isSendingTelegramQueue = false;
 
 function scheduleTelegramPost(key: string, item: any, delayMs: number) {
+  // Reserve immediately, not just when the timer fires — otherwise the
+  // automatic watcher can see this key as "unsent" for the whole delay
+  // window and publish it first, causing a duplicate.
+  if (key) telegramInFlight.add(key);
   setTimeout(() => enqueueTelegramSend(key, item, 0), delayMs);
 }
 
@@ -808,8 +829,14 @@ async function processTelegramSendQueue() {
 async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetries: number) {
   if (telegramSentMap[key]) {
     console.log(`[Telegram] Skipping ${key}, already sent.`);
+    telegramInFlight.delete(key); // release in case this was a stale/duplicate enqueue
     return;
   }
+  // Reserve (idempotent — may already be held by scheduleTelegramPost). Kept
+  // held across the 429 / IMAGE_NOT_READY retry paths below since those are
+  // still the same in-progress attempt; only released at a truly terminal
+  // outcome (success or final failure).
+  telegramInFlight.add(key);
 
   console.log(`[Telegram] Sending scheduled post: ${item.title}`);
   try {
@@ -824,6 +851,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
         sendPushToAllSubscribers(item).catch(() => {});
       }
       crossPostToFacebookAndInstagram(key, item);
+      telegramInFlight.delete(key);
       return;
     }
 
@@ -831,7 +859,7 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
       const retrySec = (result.parameters?.retry_after || result.retry_after || 35) + 5;
       console.warn(`[Telegram] Rate limited, retrying ${key} in ${retrySec}s.`);
       setTimeout(() => enqueueTelegramSend(key, item, imageRetries), retrySec * 1000);
-      return;
+      return; // stays locked — this key is still mid-attempt
     }
 
     if (result.error_code === "IMAGE_NOT_READY") {
@@ -846,16 +874,19 @@ async function sendTelegramPostWithImageRetry(key: string, item: any, imageRetri
           }
           crossPostToFacebookAndInstagram(key, item);
         }
+        telegramInFlight.delete(key);
         return;
       }
       console.log(`[Telegram] Image not ready yet for ${key} (attempt ${imageRetries + 1}/30), retrying in 30s...`);
       setTimeout(() => enqueueTelegramSend(key, item, imageRetries + 1), 30000);
-      return;
+      return; // stays locked
     }
 
     console.error(`[Telegram] Failed to send ${key}:`, result);
+    telegramInFlight.delete(key);
   } catch (err) {
     console.error(`[Telegram] Error sending ${key}:`, err);
+    telegramInFlight.delete(key);
   }
 }
 
@@ -1029,40 +1060,57 @@ async function sendVerifiedTelegramPost(
 
 const watcherPendingSince: Record<string, number> = {};
 
+// Shared between the automatic site watcher and the manual/scheduled
+// "/api/telegram/post" path. telegramSentMap[key] is only written once a
+// send actually succeeds, and a single attempt can take real time (image
+// verification, retries, etc). Without this, the watcher can pick an item
+// up, start verifying/sending it, and — before it finishes and marks
+// telegramSentMap — the manually-scheduled 3-minute timer for the *same*
+// post fires and starts its own send too, since it still sees the key as
+// unsent. That's what was causing double posts. This set reserves the key
+// the instant an attempt starts, not after it finishes.
+const telegramInFlight = new Set<string>();
+
 async function tryPublishSiteItem(item: any, key: string) {
-  const verify = await verifyLiveOnSite(item);
-  if (!watcherPendingSince[key]) watcherPendingSince[key] = Date.now();
-  const waited = Date.now() - watcherPendingSince[key];
+  if (telegramSentMap[key] || telegramInFlight.has(key)) return;
+  telegramInFlight.add(key);
+  try {
+    const verify = await verifyLiveOnSite(item);
+    if (!watcherPendingSince[key]) watcherPendingSince[key] = Date.now();
+    const waited = Date.now() - watcherPendingSince[key];
 
-  if (!verify.ok) {
-    if (waited < WATCHER_MAX_WAIT_MS) {
-      console.log(`[Watcher] "${item.title}" not fully live on arab-wrestling.com yet, will re-check.`);
-      return; // try again on the next poll — nothing is lost
+    if (!verify.ok) {
+      if (waited < WATCHER_MAX_WAIT_MS) {
+        console.log(`[Watcher] "${item.title}" not fully live on arab-wrestling.com yet, will re-check.`);
+        return; // try again on the next poll — nothing is lost (lock released in finally)
+      }
+      console.warn(`[Watcher] "${item.title}" still not fully live after ${Math.round(waited / 60000)} min — publishing with text + link only.`);
     }
-    console.warn(`[Watcher] "${item.title}" still not fully live after ${Math.round(waited / 60000)} min — publishing with text + link only.`);
-  }
 
-  const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
-  const payload = {
-    title: item.title,
-    text: item.headline || item.description || verify.bodySnippet || "",
-    url: SITE_ORIGIN + (item.url || "")
-  };
-  const fullText = verify.bodySnippet ? (verify as any).fullBody || payload.text : payload.text;
+    const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
+    const payload = {
+      title: item.title,
+      text: item.headline || item.description || verify.bodySnippet || "",
+      url: SITE_ORIGIN + (item.url || "")
+    };
+    const fullText = verify.bodySnippet ? (verify as any).fullBody || payload.text : payload.text;
 
-  console.log(`[Watcher] Verified live on site, publishing: ${item.title}`);
-  const result = await sendVerifiedTelegramPost(payload, verify.ok ? verify.imageBuffer : undefined, verify.imageContentType);
+    console.log(`[Watcher] Verified live on site, publishing: ${item.title}`);
+    const result = await sendVerifiedTelegramPost(payload, verify.ok ? verify.imageBuffer : undefined, verify.imageContentType);
 
-  if (result && result.ok) {
-    telegramSentMap[key] = Date.now();
-    persistSentMap();
-    delete watcherPendingSince[key];
-    if (collection === "shows" || collection === "recaps") {
-      sendPushToAllSubscribers({ ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
+    if (result && result.ok) {
+      telegramSentMap[key] = Date.now();
+      persistSentMap();
+      delete watcherPendingSince[key];
+      if (collection === "shows" || collection === "recaps") {
+        sendPushToAllSubscribers({ ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
+      }
+      crossPostToFacebookAndInstagram(key, { ...payload, fullText, image: item.image, kind: item.kind });
+    } else {
+      console.error(`[Watcher] Failed to publish "${item.title}":`, result);
     }
-    crossPostToFacebookAndInstagram(key, { ...payload, fullText, image: item.image, kind: item.kind });
-  } else {
-    console.error(`[Watcher] Failed to publish "${item.title}":`, result);
+  } finally {
+    telegramInFlight.delete(key);
   }
 }
 
@@ -1197,19 +1245,30 @@ app.post("/api/telegram/post", async (req, res) => {
 
     // If immediate send is explicitly requested
     if (immediate) {
-      const result = await executeTelegramPost({ title, text, url, image, collection, kind });
-      if (result.ok) {
-        if (dedupKey) {
-          telegramSentMap[dedupKey] = Date.now();
-          persistSentMap();
+      // Reserve the key so the automatic watcher can't pick up the very
+      // same item mid-request and fire its own Telegram/Facebook/Instagram
+      // posts while this one is still in flight.
+      if (dedupKey && telegramInFlight.has(dedupKey)) {
+        return res.json({ success: true, message: "تم نشر هذا الموضوع بالفعل، جاري الإرسال", alreadySent: true });
+      }
+      if (dedupKey) telegramInFlight.add(dedupKey);
+      try {
+        const result = await executeTelegramPost({ title, text, url, image, collection, kind });
+        if (result.ok) {
+          if (dedupKey) {
+            telegramSentMap[dedupKey] = Date.now();
+            persistSentMap();
+          }
+          if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
+            sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
+          }
+          crossPostToFacebookAndInstagram(dedupKey, { title, text, url, image });
+          return res.json({ success: true, message: "تم النشر فوراً على التليجرام!", result });
+        } else {
+          return res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
         }
-        if (url && (url.includes("/shows/") || url.includes("/recaps/") || collection === "shows" || collection === "recaps")) {
-          sendPushToAllSubscribers({ title, text, url, image, collection, kind }).catch((e) => {});
-        }
-        crossPostToFacebookAndInstagram(dedupKey, { title, text, url, image });
-        return res.json({ success: true, message: "تم النشر فوراً على التليجرام!", result });
-      } else {
-        return res.status(400).json({ success: false, error: result.description || "فشل النشر", result });
+      } finally {
+        if (dedupKey) telegramInFlight.delete(dedupKey);
       }
     }
 
