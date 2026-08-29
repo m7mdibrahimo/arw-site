@@ -3,6 +3,12 @@ federation: WWE
 title: "نتائج تسريبات عرض WWE SmackDown (4 سبتمبر 2026): سي إم بانك يحتفظ باللقب
   ويتحدى سامي زين."
 date: 2026-08-29T06:21:00.000+03:00
+tags:
+  - WWE
+  - SmackDown
+  - تسريبات المصارعة
+  - سي إم بانك
+  - سامي زين
 image: /content/images/9w6xxjf97kn32bav.jpg
 layout: post-layout.njk
 ---
