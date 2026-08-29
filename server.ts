@@ -297,11 +297,11 @@ async function postToFacebook(data: { title: string; text?: string; fullText?: s
   if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
   if (!data.imageUrl) return { ok: false, skipped: true };
 
-  const bodyText = (data.fullText || data.text || "").trim();
-  // Applied to every post (news, shows, recaps alike) so the format stays
-  // consistent and predictable — no per-type branching to keep track of.
-  const cta = "\n\n📺 للمشاهدة الكاملة، ابحثوا عن \"عرب راسلنج\" على جوجل أو تابعوا موقعنا arab-wrestling.com";
-  const caption = `${data.title}\n\n${bodyText}${cta}`.trim();
+  // Title only, no description/body, and no link or domain text anywhere —
+  // just a professional prompt to search the page name. Kept deliberately
+  // minimal on every post type.
+  const cta = "📺 للمشاهدة الكاملة، ابحثوا عن \"عرب راسلنج\" في نتائج البحث";
+  const caption = `${data.title}\n\n${cta}`.trim();
 
   try {
     const pageToken = await getPageAccessToken();
