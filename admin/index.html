@@ -336,45 +336,18 @@
       // CMS.init() must always run
       window.CMS.init();
 
-      // Floating manual "Publish to Telegram NOW" button
-      const manualBtn = document.createElement('button');
-      manualBtn.textContent = '📤 انشر الموضوع الحالي فورًا على تليجرام';
-      manualBtn.style.position = 'fixed';
-      manualBtn.style.bottom = '20px';
-      manualBtn.style.left = '20px';
-      manualBtn.style.zIndex = '999998';
-      manualBtn.style.backgroundColor = '#0088cc';
-      manualBtn.style.color = '#ffffff';
-      manualBtn.style.border = 'none';
-      manualBtn.style.padding = '12px 20px';
-      manualBtn.style.borderRadius = '10px';
-      manualBtn.style.fontSize = '14px';
-      manualBtn.style.fontWeight = 'bold';
-      manualBtn.style.cursor = 'pointer';
-      manualBtn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.25)';
-      manualBtn.style.direction = 'rtl';
-      manualBtn.onclick = async () => {
-        if (!latestEntrySnapshot) {
-          showToast("⚠️ افتح موضوع في المحرر الأول قبل ما تضغط الزرار ده.", true);
-          return;
-        }
-        const payload = extractTelegramPayload(latestEntrySnapshot);
-        if (!payload || !payload.title) {
-          showToast("⚠️ مقدرتش أقرأ بيانات الموضوع، جرب تعمل تعديل بسيط في أي حقل وحاول تاني.", true);
-          return;
-        }
-        const confirmed = window.confirm(`هيتنشر فورًا على تليجرام دلوقتي:\n\n${payload.title}\n\nمتأكد؟`);
-        if (!confirmed) return;
-
-        showToast("⏳ جاري النشر الفوري على تليجرام...");
-        const success = await doTelegramSendImmediate(payload);
-        if (success) {
-          const sent = getStore(SENT_KEY);
-          sent[payload.postId] = Date.now();
-          setStore(SENT_KEY, sent);
-        }
-      };
-      document.body.appendChild(manualBtn);
+      // NOTE: the floating manual "Publish to Telegram NOW" button was removed.
+      // The site watcher in server.ts already publishes every new article
+      // automatically (Telegram, then Facebook + Instagram) as soon as it's
+      // live on the site — no manual action needed. Keeping a manual
+      // "force immediate publish" button here alongside that automatic
+      // watcher caused real duplicate posts: the watcher would publish an
+      // article on its own, and if this button was also pressed for the
+      // same article (out of habit, or just to double-check), a second,
+      // separate post went out on every platform because "immediate" mode
+      // intentionally bypasses all duplicate checks. If a manual re-publish
+      // is ever genuinely needed again in the future, it should check the
+      // server's existing sent-state first rather than forcing unconditionally.
 
       // ==========================================
       // Professional Compact Dropdown, Search & Collection Pagination (All Sections & News)
