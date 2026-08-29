@@ -287,26 +287,33 @@ async function refreshFacebookLinkPreview(url: string, pageToken: string): Promi
   }
 }
 
-async function postToFacebook(data: { title: string; text?: string; url: string; imageUrl?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+// Posts a photo directly to the Facebook Page's timeline, with the full
+// article title + body text as the caption — no link included. This is an
+// experiment to see whether Facebook's reduced organic reach for posts
+// containing outbound links (a well-documented anti-spam behavior) was
+// part of why posts weren't showing up for logged-out visitors; a native
+// photo post keeps people on Facebook and typically gets normal reach.
+async function postToFacebook(data: { title: string; text?: string; fullText?: string; url: string; imageUrl?: string; kind?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  // Always publish as a LINK post (never a standalone uploaded photo) so
-  // Facebook generates its own preview card from the article's og:image /
-  // og:title / og:description — this is what makes the thumbnail, title and
-  // link show together in the feed instead of a separate photo attachment.
-  const caption = `${data.title}\n\n${data.text || ""}`.trim();
+  if (!data.imageUrl) return { ok: false, skipped: true };
+
+  const bodyText = (data.fullText || data.text || "").trim();
+  // Applied to every post (news, shows, recaps alike) so the format stays
+  // consistent and predictable — no per-type branching to keep track of.
+  const cta = "\n\n📺 للمشاهدة الكاملة، ابحثوا عن \"عرب راسلنج\" على جوجل أو تابعوا موقعنا arab-wrestling.com";
+  const caption = `${data.title}\n\n${bodyText}${cta}`.trim();
 
   try {
     const pageToken = await getPageAccessToken();
-    await refreshFacebookLinkPreview(data.url, pageToken);
 
-    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/feed`, {
+    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/photos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: caption, link: data.url, access_token: pageToken })
+      body: JSON.stringify({ url: data.imageUrl, caption, access_token: pageToken })
     });
     const result = await res.json().catch(() => ({}));
-    if (result.id) {
-      console.log(`[Facebook] Link post published: ${data.title}`);
+    if (result.id || result.post_id) {
+      console.log(`[Facebook] Photo post published: ${data.title}`);
       return { ok: true, result };
     }
     console.error("[Facebook] Post failed:", result);
@@ -427,11 +434,11 @@ async function postToInstagram(data: { title: string; text?: string; url: string
 // on the site (same verified image/url the Telegram post just used). Both
 // are best-effort and independent: either one failing never affects the
 // other, never blocks Telegram, and each is only attempted once per item.
-function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; url: string; image?: string }) {
+function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; fullText?: string; url: string; image?: string; kind?: string }) {
   const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image) : undefined;
 
   if (!facebookSentMap[key]) {
-    postToFacebook({ title: item.title, text: item.text, url: item.url, imageUrl }).then((r) => {
+    postToFacebook({ title: item.title, text: item.text, fullText: item.fullText, url: item.url, imageUrl, kind: item.kind }).then((r) => {
       if (r.ok) {
         facebookSentMap[key] = Date.now();
         persistGenericSentMap(FB_SENT_STATE_FILE, facebookSentMap);
@@ -944,32 +951,37 @@ function extractSnippetFromHtml(html: string, maxLen: number = 220): string {
 
 // Actually hits the public page URL and the public image URL — the exact
 // things a real visitor (or Telegram) would load — before anything is sent.
-async function verifyLiveOnSite(item: any): Promise<{ ok: boolean; imageBuffer?: ArrayBuffer; imageContentType?: string; bodySnippet?: string }> {
+async function verifyLiveOnSite(item: any): Promise<{ ok: boolean; imageBuffer?: ArrayBuffer; imageContentType?: string; bodySnippet?: string; fullBody?: string }> {
   const pageUrl = SITE_ORIGIN + (item.url || "");
   let bodySnippet = "";
+  let fullBody = "";
 
   try {
     const pageRes = await fetch(cacheBust(pageUrl), { headers: { "Cache-Control": "no-cache" } });
     if (!pageRes.ok) return { ok: false };
     const html = await pageRes.text();
     bodySnippet = extractSnippetFromHtml(html);
+    // A much longer version of the same extraction, used for Facebook's
+    // photo caption — Facebook has no meaningful caption length limit, so
+    // the full article text can go directly in the post instead of a link.
+    fullBody = extractSnippetFromHtml(html, 2000);
   } catch (e) {
     return { ok: false };
   }
 
-  if (!item.image) return { ok: true, bodySnippet }; // nothing to verify for the image
+  if (!item.image) return { ok: true, bodySnippet, fullBody }; // nothing to verify for the image
 
   const imageUrl = item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image;
   try {
     const imgRes = await fetch(cacheBust(imageUrl), { headers: { "Cache-Control": "no-cache" } });
-    if (!imgRes.ok) return { ok: false, bodySnippet };
+    if (!imgRes.ok) return { ok: false, bodySnippet, fullBody };
     const contentType = imgRes.headers.get("content-type") || "";
-    if (!contentType.startsWith("image/")) return { ok: false, bodySnippet };
+    if (!contentType.startsWith("image/")) return { ok: false, bodySnippet, fullBody };
     const buf = await imgRes.arrayBuffer();
-    if (!isValidImageBuffer(buf)) return { ok: false, bodySnippet };
-    return { ok: true, imageBuffer: buf, imageContentType: contentType, bodySnippet };
+    if (!isValidImageBuffer(buf)) return { ok: false, bodySnippet, fullBody };
+    return { ok: true, imageBuffer: buf, imageContentType: contentType, bodySnippet, fullBody };
   } catch (e) {
-    return { ok: false, bodySnippet };
+    return { ok: false, bodySnippet, fullBody };
   }
 }
 
@@ -1033,6 +1045,7 @@ async function tryPublishSiteItem(item: any, key: string) {
     text: item.headline || item.description || verify.bodySnippet || "",
     url: SITE_ORIGIN + (item.url || "")
   };
+  const fullText = verify.bodySnippet ? (verify as any).fullBody || payload.text : payload.text;
 
   console.log(`[Watcher] Verified live on site, publishing: ${item.title}`);
   const result = await sendVerifiedTelegramPost(payload, verify.ok ? verify.imageBuffer : undefined, verify.imageContentType);
@@ -1044,7 +1057,7 @@ async function tryPublishSiteItem(item: any, key: string) {
     if (collection === "shows" || collection === "recaps") {
       sendPushToAllSubscribers({ ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
     }
-    crossPostToFacebookAndInstagram(key, { ...payload, image: item.image });
+    crossPostToFacebookAndInstagram(key, { ...payload, fullText, image: item.image, kind: item.kind });
   } else {
     console.error(`[Watcher] Failed to publish "${item.title}":`, result);
   }
