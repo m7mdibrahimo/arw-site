@@ -18,3 +18,5 @@ layout: post-layout.njk
 إثارة متصاعدة في تمهيدي ويمبلي الكبير
 
 * نزالات تمهيدية قوية: ينضم هذا التحدي النسائي المرتقب إلى قائمة مواجهات العرض التمهيدي لـ All In، والتي تشهد دفاع مايا وورلد عن لقب بطولة TBS للسيدات أمام بيرسيفوني، بالإضافة إلى نزال فرق ثماني ناري يجمع فريق The Opps ضد ليو راش وفريق The Rascalz.
+
+<https://x.com/AEW/status/2093894475114250294?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2093894475114250294%7Ctwgr%5Efae41a20f9c4f4469649a20581e4038ee7dfd7d1%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fkris-statlander-and-harley-cameron-challenge-sisters-of-sin-at-aew-all-in-buy-in%2F>
