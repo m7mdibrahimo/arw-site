@@ -20,3 +20,5 @@ layout: post-layout.njk
 
 * هجوم داينمايت: شهدت حلقة *Dynamite* بتاريخ 26 أغسطس مشاركة بيرسيفوني برفقة فريق *Divine Dominion* في نزال سداسي ضد مايا وورلد وفريق *The Brawling Birds*؛ ونجحت بيرسيفوني في حسم النزال لصالح فريقها بتثبيت مايا وورلد مباشرة بعد ضربها بحزام بطولة TBS.
 * قبول التحدي وترسيم النزال: قادت تلك النهاية المشحونة إلى إعلان المواجهة رسمياً لتتصدر نزالات العرض التمهيدي لمهرجان ويمبلي الكبير قبل انطلاق البث الرئيسي.
+
+<https://x.com/AEW/status/2093874625818026134?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2093874625818026134%7Ctwgr%5E664010cfd5de0fbc9a8f5e45406570238e0b8cbe%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fmaya-world-vs-persephone-for-tbs-championship-set-for-aew-all-in-buy-in%2F>
