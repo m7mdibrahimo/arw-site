@@ -1,0 +1,44 @@
+name = "arw-site-bot"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+# يشتغل كل دقيقة — نفس معدل الفحص اللي كان بيحصل بالـ setInterval في Render،
+# لكن هنا Cloudflare نفسها اللي بتنده على الكود في الميعاد، مفيش "نوم" ومفيش
+# اعتماد على وجود زيارات.
+[triggers]
+crons = ["* * * * *"]
+
+# مخزن KV لحفظ اشتراكات الإشعارات (Web Push) بدل ملفات JSON محلية كانت
+# بتتمسح مع كل إعادة تشغيل على Render. مجاني ضمن حدود الخطة المجانية.
+# لازم تنشئه بالأمر: npx wrangler kv namespace create PUSH_KV
+# وتحط الـ id اللي هيطلعلك مكان <PUSH_KV_NAMESPACE_ID> تحت.
+[[kv_namespaces]]
+binding = "PUSH_KV"
+id = "<PUSH_KV_NAMESPACE_ID>"
+
+# ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
+[vars]
+TELEGRAM_CHAT_ID = "@arab_wrestling"
+FACEBOOK_PAGE_ID = "1229063470299837"
+INSTAGRAM_BUSINESS_ACCOUNT_ID = "17841432943789959"
+GITHUB_OWNER = "m7mdibrahimo"
+GITHUB_REPO = "arw-site"
+GITHUB_BRANCH = "main"
+GITHUB_STATE_PATH = "_data/publish-state.json"
+SITE_ORIGIN = "https://arab-wrestling.com"
+VAPID_SUBJECT = "mailto:admin@arab-wrestling.com"
+
+# أي عنصر تاريخه أقدم من التاريخ ده، الـ watcher مش هيحاول ينشره أبدًا —
+# ده بيمنع إنه لما الـ Worker يشتغل أول مرة يحاول ينشر كل المحتوى القديم
+# اللي أصلًا اتنشر زمان من غير سجل في publish-state.json.
+# غيّره ليوم رفعك للـ Worker فعليًا (صيغة: YYYY-MM-DD).
+WATCHER_MIN_DATE = "2026-08-31"
+
+# ─── الأسرار (توكنز) — متتحطش هنا خالص، بل عن طريق الأمر ده لكل واحد:
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN
+#   npx wrangler secret put FACEBOOK_PAGE_ACCESS_TOKEN
+#   npx wrangler secret put GITHUB_TOKEN
+#   npx wrangler secret put VAPID_PUBLIC_KEY
+#   npx wrangler secret put VAPID_PRIVATE_KEY
+# التفاصيل كاملة في README.md
