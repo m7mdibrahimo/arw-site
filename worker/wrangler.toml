@@ -15,7 +15,7 @@ crons = ["* * * * *"]
 # وتحط الـ id اللي هيطلعلك مكان <PUSH_KV_NAMESPACE_ID> تحت.
 [[kv_namespaces]]
 binding = "PUSH_KV"
-id = "<PUSH_KV_NAMESPACE_ID>"
+id = "f687ea6ee7b2461fb349405215cf8a32"
 
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
