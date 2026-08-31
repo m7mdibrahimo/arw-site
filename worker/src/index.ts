@@ -159,7 +159,10 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
     headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
   });
   if (res.status === 404) return { sha: null, state: emptyPublishState() };
-  if (!res.ok) throw new Error(`GitHub read failed: ${res.status}`);
+  if (!res.ok) {
+    const errBody = await res.text().catch(() => "");
+    throw new Error(`GitHub read failed: ${res.status} ${errBody}`);
+  }
   const data: any = await res.json();
   let state: PublishState;
   try {
