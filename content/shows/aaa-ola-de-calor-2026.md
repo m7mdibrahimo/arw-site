@@ -18,7 +18,7 @@ image: /content/images/dpq3bj5u75ay1wy1.jpg
 servers:
   - url: https://ok.ru/videoembed/17058909784672
   - url: https://fembed.co/embed/7a-8S_Kz0aBq4
-  - url: https://cdn.loadvid.com/videos/play/OoPkxqHzGWAWSXHnJvkf
+  - url: https://cdn.loadvid.com/videos/play/rmyYMKAdEcCcByWjHgnr
   - url: https://turbovidhls.com/t/6a95223a0f6cd
 downloads_low: >-
   https://1cloudfile.com/Q1c2
