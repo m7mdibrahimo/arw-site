@@ -656,6 +656,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
+  eleventyConfig.addPassthroughCopy("admin/publish.html");
   eleventyConfig.addPassthroughCopy("content/images");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("sw.js");
