@@ -156,7 +156,11 @@ function githubContentsUrl(env: Env): string {
 
 async function githubReadState(env: Env): Promise<{ sha: string | null; state: PublishState }> {
   const res = await fetch(`${githubContentsUrl(env)}?ref=${env.GITHUB_BRANCH}`, {
-    headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json" },
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "User-Agent": "arw-site-bot",
+    },
   });
   if (res.status === 404) return { sha: null, state: emptyPublishState() };
   if (!res.ok) {
@@ -201,6 +205,7 @@ async function githubWriteState(
       Authorization: `Bearer ${env.GITHUB_TOKEN}`,
       Accept: "application/vnd.github+json",
       "Content-Type": "application/json",
+      "User-Agent": "arw-site-bot",
     },
     body: JSON.stringify(body),
   });
