@@ -1,0 +1,10 @@
+# انسخ الملف ده باسم .dev.vars (من غير .example) للتجربة المحلية فقط.
+# .dev.vars متتضافش لجيت هاب أبدًا (لازم تضيفه في .gitignore).
+# على الإنتاج، الأسرار دي بتتحط بالأمر: npx wrangler secret put <NAME>
+# مش في أي ملف.
+
+TELEGRAM_BOT_TOKEN=ضع_توكن_البوت_الجديد_هنا_بعد_عمل_revoke_للقديم
+FACEBOOK_PAGE_ACCESS_TOKEN=ضع_توكن_صفحة_فيسبوك_هنا
+GITHUB_TOKEN=ضع_GitHub_Personal_Access_Token_هنا_صلاحية_Contents_Read_and_write
+VAPID_PUBLIC_KEY=ضع_المفتاح_العام_هنا
+VAPID_PRIVATE_KEY=ضع_المفتاح_الخاص_هنا
