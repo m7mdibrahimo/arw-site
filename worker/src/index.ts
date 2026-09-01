@@ -169,11 +169,15 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
   }
   const data: any = await res.json();
   let state: PublishState;
-  try {
-    state = JSON.parse(atob(data.content.replace(/\n/g, "")));
-  } catch (e) {
-    state = emptyPublishState();
-  }
+  // IMPORTANT: a parse failure here means the file EXISTS on GitHub (we got
+  // a 200) but couldn't be read correctly this attempt — a transient glitch,
+  // not evidence the site has never published anything. Silently falling
+  // back to an empty state here was the actual cause of the "everything
+  // reposts at once" bug: every already-published item (Arabic AND English)
+  // suddenly looked unpublished and got sent again. Only a genuine 404
+  // (handled above) legitimately means "nothing published yet". Any other
+  // read/parse failure must abort this poll instead of guessing "empty".
+  state = JSON.parse(base64DecodeUtf8(data.content.replace(/\n/g, "")));
   state.telegram = state.telegram || {};
   state.facebook = state.facebook || {};
   state.instagram = state.instagram || {};
@@ -185,6 +189,19 @@ function base64EncodeUtf8(str: string): string {
   let binary = "";
   bytes.forEach((b) => (binary += String.fromCharCode(b)));
   return btoa(binary);
+}
+
+// Counterpart to base64EncodeUtf8: atob() alone only gives back a raw
+// "binary string" (one JS char per byte), NOT decoded UTF-8 text. Passing
+// that straight into JSON.parse() is what corrupted every Arabic key in
+// publish-state.json into mojibake (e.g. "ÃÂÃÂ...") on every read — each
+// multi-byte Arabic character got split into 2-3 garbage Latin-1 chars.
+// This decodes the raw bytes as UTF-8 properly before parsing.
+function base64DecodeUtf8(b64: string): string {
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder("utf-8").decode(bytes);
 }
 
 async function githubWriteState(
