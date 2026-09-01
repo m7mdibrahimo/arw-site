@@ -34,6 +34,7 @@ VAPID_SUBJECT = "mailto:admin@arab-wrestling.com"
 # اللي أصلًا اتنشر زمان من غير سجل في publish-state.json.
 # غيّره ليوم رفعك للـ Worker فعليًا (صيغة: YYYY-MM-DD).
 WATCHER_MIN_DATE = "2026-08-31"
+BUFFER_X_CHANNEL_ID = "6a96c964065799be46682f4d"
 
 # ─── الأسرار (توكنز) — متتحطش هنا خالص، بل عن طريق الأمر ده لكل واحد:
 #   npx wrangler secret put TELEGRAM_BOT_TOKEN
