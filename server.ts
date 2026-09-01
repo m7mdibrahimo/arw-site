@@ -51,6 +51,15 @@ const FACEBOOK_PAGE_ACCESS_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "";
 const INSTAGRAM_BUSINESS_ACCOUNT_ID = process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || "17841432943789959";
 const GRAPH_API_VERSION = "v21.0";
 
+// X (Twitter) cross-posting goes through Buffer instead of X's own API —
+// X's official API no longer has a usable free tier (pay-per-use only,
+// $0.20/post if it contains a link), while Buffer already has its own paid
+// API relationship with X and lets a free Buffer account queue posts to a
+// connected X channel at no extra cost. If these are left empty, X
+// cross-posting is silently skipped (Telegram/Facebook/Instagram unaffected).
+const BUFFER_API_KEY = process.env.BUFFER_API_KEY || "";
+const BUFFER_X_CHANNEL_ID = process.env.BUFFER_X_CHANNEL_ID || "";
+
 // Appended to the end of every Facebook/Instagram caption so followers know
 // where to find more content. Kept as one place to edit the wording/link.
 const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
@@ -218,10 +227,11 @@ type PublishState = {
   telegram: Record<string, number>;
   facebook: Record<string, number>;
   instagram: Record<string, number>;
+  x: Record<string, number>;
 };
 
 function emptyPublishState(): PublishState {
-  return { telegram: {}, facebook: {}, instagram: {} };
+  return { telegram: {}, facebook: {}, instagram: {}, x: {} };
 }
 
 async function githubReadState(): Promise<{ sha: string | null; state: PublishState }> {
@@ -240,6 +250,7 @@ async function githubReadState(): Promise<{ sha: string | null; state: PublishSt
   state.telegram = state.telegram || {};
   state.facebook = state.facebook || {};
   state.instagram = state.instagram || {};
+  state.x = state.x || {};
   return { sha: data.sha, state };
 }
 
@@ -270,6 +281,7 @@ async function githubWriteState(state: PublishState, sha: string | null, message
 const telegramSentMap: Record<string, number> = {};
 const facebookSentMap: Record<string, number> = {};
 const instagramSentMap: Record<string, number> = {};
+const xSentMap: Record<string, number> = {};
 
 async function hydrateSentMapsFromGitHub() {
   if (!GITHUB_TOKEN) {
@@ -285,17 +297,22 @@ async function hydrateSentMapsFromGitHub() {
     Object.assign(telegramSentMap, state.telegram);
     Object.assign(facebookSentMap, state.facebook);
     Object.assign(instagramSentMap, state.instagram);
+    Object.assign(xSentMap, state.x);
     console.log(
       `[GitHub State] Loaded publish history: ${Object.keys(telegramSentMap).length} telegram, ` +
-      `${Object.keys(facebookSentMap).length} facebook, ${Object.keys(instagramSentMap).length} instagram.`
+      `${Object.keys(facebookSentMap).length} facebook, ${Object.keys(instagramSentMap).length} instagram, ` +
+      `${Object.keys(xSentMap).length} x.`
     );
   } catch (e) {
     console.error("[GitHub State] Failed to load publish history at boot:", e);
   }
 }
 
-function localMapFor(platform: "telegram" | "facebook" | "instagram"): Record<string, number> {
-  return platform === "telegram" ? telegramSentMap : platform === "facebook" ? facebookSentMap : instagramSentMap;
+function localMapFor(platform: "telegram" | "facebook" | "instagram" | "x"): Record<string, number> {
+  if (platform === "telegram") return telegramSentMap;
+  if (platform === "facebook") return facebookSentMap;
+  if (platform === "instagram") return instagramSentMap;
+  return xSentMap;
 }
 
 // Atomically claims a key for a platform via GitHub's sha-based optimistic
@@ -303,7 +320,7 @@ function localMapFor(platform: "telegram" | "facebook" | "instagram"): Record<st
 // go on to actually call the platform's API. A 409 just means some other
 // attempt (for this key or another) updated the file first, so this
 // re-reads the fresh sha and retries a few times before giving up.
-async function claimSend(platform: "telegram" | "facebook" | "instagram", key: string): Promise<boolean> {
+async function claimSend(platform: "telegram" | "facebook" | "instagram" | "x", key: string): Promise<boolean> {
   if (!key) return true; // nothing to dedupe on — let it through
   const localMap = localMapFor(platform);
   if (localMap[key]) return false; // this process already knows it's handled
@@ -347,7 +364,7 @@ async function claimSend(platform: "telegram" | "facebook" | "instagram", key: s
 // Called only when a send attempt FAILS after a successful claim, so the
 // key becomes claimable again on a later retry instead of being stuck
 // "sent" forever with nothing actually posted.
-async function releaseSendClaim(platform: "telegram" | "facebook" | "instagram", key: string) {
+async function releaseSendClaim(platform: "telegram" | "facebook" | "instagram" | "x", key: string) {
   if (!key || !GITHUB_TOKEN) return;
   delete localMapFor(platform)[key];
 
@@ -568,6 +585,53 @@ async function postToInstagram(data: { title: string; text?: string; url: string
   }
 }
 
+// Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
+// see the BUFFER_API_KEY comment above for why. Buffer queues the post on
+// the connected X channel and its own scheduler publishes it (almost
+// immediately, since schedulingType "automatic" + mode "addToQueue" drops
+// it into the next open queue slot rather than waiting for a fixed time).
+const BUFFER_API_URL = "https://api.buffer.com";
+
+async function postToXViaBuffer(data: { title: string; text?: string; url: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+  if (!BUFFER_API_KEY || !BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
+
+  // X posts are capped at 280 characters total, so the caption has to be
+  // trimmed to fit — title + link, dropping the longer body text that
+  // Facebook/Telegram can afford.
+  const maxLen = 280;
+  const linkPart = `\n\n${data.url}`;
+  const titlePart = (data.title || "").trim();
+  const budget = Math.max(0, maxLen - linkPart.length);
+  const tweetText = (titlePart.length > budget ? titlePart.slice(0, Math.max(0, budget - 1)).trim() + "…" : titlePart) + linkPart;
+
+  try {
+    const res = await fetch(BUFFER_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${BUFFER_API_KEY}` },
+      body: JSON.stringify({
+        query: `mutation PostToX($text: String!, $channelId: String!) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: addToQueue }) {
+            ... on PostActionSuccess { post { id } }
+            ... on MutationError { message }
+          }
+        }`,
+        variables: { text: tweetText, channelId: BUFFER_X_CHANNEL_ID }
+      })
+    });
+    const result = await res.json().catch(() => ({}));
+    const postId = result?.data?.createPost?.post?.id;
+    if (postId) {
+      console.log(`[X/Buffer] Post queued: ${data.title}`);
+      return { ok: true, result };
+    }
+    console.error("[X/Buffer] Post failed:", JSON.stringify(result));
+    return { ok: false, result };
+  } catch (e) {
+    console.error("[X/Buffer] Error posting:", e);
+    return { ok: false };
+  }
+}
+
 // Fires Facebook + Instagram cross-posts for an item already confirmed live
 // on the site (same verified image/url the Telegram post just used). Both
 // are best-effort and independent: either one failing never affects the
@@ -579,6 +643,7 @@ async function postToInstagram(data: { title: string; text?: string; url: string
 // itself (GitHub-backed), called below before any real API call.
 const fbInFlight = new Set<string>();
 const igInFlight = new Set<string>();
+const xInFlight = new Set<string>();
 
 function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; fullText?: string; url: string; image?: string; kind?: string }) {
   const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image) : undefined;
@@ -611,6 +676,22 @@ function crossPostToFacebookAndInstagram(key: string, item: { title: string; tex
         await releaseSendClaim("instagram", key);
       } finally {
         igInFlight.delete(key);
+      }
+    })();
+  }
+
+  if (!xSentMap[key] && !xInFlight.has(key)) {
+    xInFlight.add(key);
+    (async () => {
+      try {
+        if (!(await claimSend("x", key))) return;
+        const r = await postToXViaBuffer({ title: item.title, text: item.text, url: item.url });
+        if (!r.ok) await releaseSendClaim("x", key); // failed — let a later attempt retry
+      } catch (e) {
+        console.error("[X/Buffer] Unexpected error:", e);
+        await releaseSendClaim("x", key);
+      } finally {
+        xInFlight.delete(key);
       }
     })();
   }
@@ -1046,6 +1127,25 @@ app.get("/api/instagram/status", async (req, res) => {
     const response = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${INSTAGRAM_BUSINESS_ACCOUNT_ID}?fields=id,username&access_token=${FACEBOOK_PAGE_ACCESS_TOKEN}`);
     const data = await response.json();
     res.json({ success: !data.error, configured: true, account: data });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get("/api/x/status", async (req, res) => {
+  if (!BUFFER_API_KEY || !BUFFER_X_CHANNEL_ID) {
+    return res.json({ success: false, configured: false, message: "BUFFER_API_KEY / BUFFER_X_CHANNEL_ID not set" });
+  }
+  try {
+    const response = await fetch(BUFFER_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${BUFFER_API_KEY}` },
+      body: JSON.stringify({
+        query: `query { channel(input: { id: "${BUFFER_X_CHANNEL_ID}" }) { id name service } }`
+      })
+    });
+    const data = await response.json();
+    res.json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }
