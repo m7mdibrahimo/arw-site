@@ -250,10 +250,10 @@
   .quality-btn[data-tier="low"]:hover{ border-color:var(--gold); box-shadow:0 12px 28px -10px rgba(242,165,60,0.35); }
   .quality-btn[data-tier="medium"]:hover{ border-color:var(--violet); box-shadow:0 12px 28px -10px rgba(124,110,232,0.35); }
 
-  /* ==== ترتيب أزرار الجودة على الهاتف فقط: العنصر الثالث المفرد يتوسّط الصف ==== */
+  /* ==== ترتيب أزرار الجودة على الهاتف فقط: العنصر الثالث المفرد يتوسّط الصف بنفس حجم الباقي ==== */
   @media (max-width:640px){
-    .quality-grid{ grid-template-columns:repeat(2, 1fr); }
-    .quality-btn:last-child:nth-child(3){ grid-column:1 / -1; max-width:calc(50% - 7px); margin:0 auto; }
+    .quality-grid{ display:flex; flex-wrap:wrap; justify-content:center; }
+    .quality-grid .quality-btn{ flex:0 1 calc(50% - 7px); }
   }
 
   /* ==== الـ Modal الخاص بروابط التحميل ==== */
