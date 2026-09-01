@@ -418,13 +418,13 @@ async function postToFacebookViaBuffer(
   try {
     const query = imageUrl
       ? `mutation PostToFacebook($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }] }) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }], metadata: { facebook: { type: POST } } }) {
             ... on PostActionSuccess { post { id } }
             ... on MutationError { message }
           }
         }`
       : `mutation PostToFacebook($text: String!, $channelId: ChannelId!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow }) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, metadata: { facebook: { type: POST } } }) {
             ... on PostActionSuccess { post { id } }
             ... on MutationError { message }
           }
