@@ -547,34 +547,39 @@ async function publishToPlatform(
   item: { title: string; text?: string; url: string; image?: string; kind?: string },
   verified: { imageBuffer?: ArrayBuffer; imageContentType?: string },
   force: boolean
-): Promise<string> {
+): Promise<{ status: string; raw?: any }> {
   if (force) await releaseSendClaim(env, platform, key);
-  if (!(await claimSend(env, platform, key))) return "already_sent";
+  if (!(await claimSend(env, platform, key))) return { status: "already_sent" };
 
   let ok = false;
   let skipped = false;
+  let raw: any;
 
   if (platform === "telegram") {
     const r = await sendVerifiedTelegramPost(env, item, verified.imageBuffer, verified.imageContentType);
     ok = !!(r && r.ok);
+    raw = r;
   } else if (platform === "facebook") {
     const r = await postToFacebook(env, item);
     ok = r.ok;
     skipped = !!r.skipped;
+    raw = r.result;
   } else if (platform === "instagram") {
     const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : env.SITE_ORIGIN + item.image) : undefined;
     const r = await postToInstagram(env, { ...item, imageUrl });
     ok = r.ok;
     skipped = !!r.skipped;
+    raw = r.result;
   } else {
     const r = await postToXViaBuffer(env, item);
     ok = r.ok;
     skipped = !!r.skipped;
+    raw = r.result;
   }
 
-  if (ok) return "sent";
+  if (ok) return { status: "sent" };
   await releaseSendClaim(env, platform, key);
-  return skipped ? "not_configured" : "failed";
+  return { status: skipped ? "not_configured" : "failed", raw };
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -631,8 +636,8 @@ async function runWatcherPoll(env: Env): Promise<void> {
         url: env.SITE_ORIGIN + (item.url || ""),
       };
 
-      const tgStatus = await publishToPlatform(env, "telegram", key, payload, verify, false);
-      if (tgStatus !== "sent") continue; // failed or already handled — Facebook/Instagram wait for a confirmed Telegram post like before
+      const tgResult = await publishToPlatform(env, "telegram", key, payload, verify, false);
+      if (tgResult.status !== "sent") continue; // failed or already handled — Facebook/Instagram wait for a confirmed Telegram post like before
 
       if (collection === "shows" || collection === "recaps") {
         await sendPushToAllSubscribers(env, { ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
@@ -820,23 +825,32 @@ export default {
         }
 
         const results: Record<string, string> = {};
+        const debug: Record<string, any> = {};
         const payload = { title, text, url: itemUrl, image, kind };
 
         if (wanted.includes("telegram")) {
           const verify = await verifyLiveOnSite(env, { url: pagePath, image });
-          results.telegram = await publishToPlatform(env, "telegram", key, payload, verify, !!force);
+          const r = await publishToPlatform(env, "telegram", key, payload, verify, !!force);
+          results.telegram = r.status;
+          if (r.raw !== undefined) debug.telegram = r.raw;
         }
         if (wanted.includes("facebook")) {
-          results.facebook = await publishToPlatform(env, "facebook", key, payload, {}, !!force);
+          const r = await publishToPlatform(env, "facebook", key, payload, {}, !!force);
+          results.facebook = r.status;
+          if (r.raw !== undefined) debug.facebook = r.raw;
         }
         if (wanted.includes("instagram")) {
-          results.instagram = await publishToPlatform(env, "instagram", key, payload, {}, !!force);
+          const r = await publishToPlatform(env, "instagram", key, payload, {}, !!force);
+          results.instagram = r.status;
+          if (r.raw !== undefined) debug.instagram = r.raw;
         }
         if (wanted.includes("x")) {
-          results.x = await publishToPlatform(env, "x", key, payload, {}, !!force);
+          const r = await publishToPlatform(env, "x", key, payload, {}, !!force);
+          results.x = r.status;
+          if (r.raw !== undefined) debug.x = r.raw;
         }
 
-        return json({ success: true, key, results });
+        return json({ success: true, key, results, debug });
       }
 
       // ── Web Push ──
