@@ -66,6 +66,15 @@ export interface Env {
 const GRAPH_API_VERSION = "v21.0";
 const SOCIAL_FOLLOW_LINE =
   "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
+// Facebook now throttles reach hard for Page posts containing an outbound
+// link — non-verified Pages get roughly 2 "free" link posts a month before
+// further link posts are published but shown to almost no one but the Page
+// admin (exactly the "only I can see it" symptom). Links placed in the
+// FIRST COMMENT are explicitly exempt from this limit, so Facebook posts
+// go out as a native photo (or plain text) with no link in the body, and
+// the article URL is added as a comment right after — same click-through
+// path for readers, without the reach penalty.
+const FACEBOOK_CAPTION_SUFFIX = "\n\n🔗 الرابط الكامل في أول كومنت — تابعونا: عرب راسلنج";
 
 // ─────────────────────────────────────────────────────────────────────────
 // Small helpers (ported as-is from server.ts)
@@ -398,37 +407,52 @@ async function getPageAccessToken(env: Env): Promise<string> {
   }
 }
 
-async function refreshFacebookLinkPreview(url: string, pageToken: string): Promise<void> {
+async function postToFacebookComment(env: Env, postId: string, message: string, pageToken: string): Promise<void> {
   try {
-    await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/`, {
+    await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${postId}/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: url, scrape: true, access_token: pageToken }),
+      body: JSON.stringify({ message, access_token: pageToken }),
     });
   } catch (e) {
-    // best-effort only
+    // best-effort — the post itself already succeeded even if the comment fails
   }
 }
 
 async function postToFacebook(
   env: Env,
-  data: { title: string; text?: string; url: string; kind?: string }
+  data: { title: string; text?: string; url: string; image?: string; kind?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!env.FACEBOOK_PAGE_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const caption = `${data.title}\n\n${data.text || ""}`.trim() + FACEBOOK_CAPTION_SUFFIX;
+  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
   try {
     const pageToken = await getPageAccessToken(env);
-    await refreshFacebookLinkPreview(data.url, pageToken);
 
-    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`, {
+    // Native photo post (no "link" field) when an image is available — this
+    // is what gets normal reach. Falls back to a plain text status (still no
+    // link) if there's no image at all.
+    const endpoint = imageUrl
+      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
+      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
+    const body = imageUrl ? { url: imageUrl, caption, access_token: pageToken } : { message: caption, access_token: pageToken };
+
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: caption, link: data.url, access_token: pageToken }),
+      body: JSON.stringify(body),
     });
     const result: any = await res.json().catch(() => ({}));
-    if (result.id) return { ok: true, result };
-    return { ok: false, result };
+    if (!result.id) return { ok: false, result };
+
+    // The article link goes in a comment instead of the post body — comments
+    // are exempt from Facebook's link-post reach limit. Best-effort: the
+    // main post already succeeded even if this fails.
+    const postId = result.post_id || result.id;
+    await postToFacebookComment(env, postId, data.url, pageToken);
+
+    return { ok: true, result };
   } catch (e) {
     return { ok: false };
   }
