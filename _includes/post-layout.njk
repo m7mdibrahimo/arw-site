@@ -216,6 +216,8 @@
   .post-sub-title{ font-size:15px; font-weight:800; color:var(--gold); margin-bottom:16px; display:inline-block; }
   .post-desc{ font-size:15.5px; line-height:1.75; color:var(--ink); margin-bottom:24px; padding:16px 20px; background:var(--card); border-radius:12px; border:1px solid var(--line); border-inline-start:4px solid var(--teal); box-shadow:0 4px 12px -8px rgba(0,0,0,0.06); }
   .server-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .quality-notice{ background:#c0392b; color:#fff; font-size:13px; font-weight:700; text-align:center; padding:10px 16px; border-radius:8px; margin-bottom:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  @media (max-width:640px){ .quality-notice{ white-space:normal; font-size:12px; } }
   .server-tab{ background:var(--card); border:1px solid var(--line); color:var(--ink); font-family:inherit; font-weight:700; font-size:14px; padding:10px 18px; border-radius:999px; cursor:pointer; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); }
   .server-tab:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); box-shadow:0 4px 12px rgba(14,149,148,0.15); }
   .server-tab.active{ background:var(--teal); color:#fff; border-color:var(--teal); box-shadow:0 4px 14px rgba(14,149,148,0.3); }
@@ -605,6 +607,7 @@
     {% endif %}
 
     {% if servers and servers.length %}
+      <div class="quality-notice">تنبيه: سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية يُنصح بتحميل العرض مباشرة.</div>
       {% if servers.length > 1 %}
       <div class="server-tabs" id="serverTabs">
         {% for s in servers %}
