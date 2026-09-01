@@ -58,6 +58,7 @@ export interface Env {
   VAPID_SUBJECT: string;
   WATCHER_MIN_DATE: string;
   BUFFER_X_CHANNEL_ID: string;
+  BUFFER_FACEBOOK_CHANNEL_ID: string;
 
   // KV binding
   PUSH_KV: KVNamespace;
@@ -398,36 +399,47 @@ async function getPageAccessToken(env: Env): Promise<string> {
   }
 }
 
-async function refreshFacebookLinkPreview(url: string, pageToken: string): Promise<void> {
-  try {
-    await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: url, scrape: true, access_token: pageToken }),
-    });
-  } catch (e) {
-    // best-effort only
-  }
-}
-
-async function postToFacebook(
+// Posts to Facebook via Buffer instead of calling the Graph API directly —
+// same reasoning and same shape as postToXViaBuffer: native photo + caption
+// (title + snippet + follow line), no link in the body, published
+// immediately via "mode: shareNow". Facebook's Page access token is still
+// used separately for Instagram (Instagram's Graph API requires it), so
+// FACEBOOK_PAGE_ACCESS_TOKEN/FACEBOOK_PAGE_ID stay as-is — this function
+// just no longer calls graph.facebook.com itself for the Page post.
+async function postToFacebookViaBuffer(
   env: Env,
-  data: { title: string; text?: string; url: string; kind?: string }
+  data: { title: string; text?: string; image?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
-  if (!env.FACEBOOK_PAGE_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
+  if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
+
   const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
   try {
-    const pageToken = await getPageAccessToken(env);
-    await refreshFacebookLinkPreview(data.url, pageToken);
+    const query = imageUrl
+      ? `mutation PostToFacebook($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }] }) {
+            ... on PostActionSuccess { post { id } }
+            ... on MutationError { message }
+          }
+        }`
+      : `mutation PostToFacebook($text: String!, $channelId: ChannelId!) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow }) {
+            ... on PostActionSuccess { post { id } }
+            ... on MutationError { message }
+          }
+        }`;
+    const variables = imageUrl
+      ? { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID, imageUrl }
+      : { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID };
 
-    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`, {
+    const res = await fetch("https://api.buffer.com", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: caption, link: data.url, access_token: pageToken }),
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+      body: JSON.stringify({ query, variables }),
     });
     const result: any = await res.json().catch(() => ({}));
-    if (result.id) return { ok: true, result };
+    if (result?.data?.createPost?.post?.id) return { ok: true, result };
     return { ok: false, result };
   } catch (e) {
     return { ok: false };
@@ -572,7 +584,7 @@ async function publishToPlatform(
     ok = !!(r && r.ok);
     raw = r;
   } else if (platform === "facebook") {
-    const r = await postToFacebook(env, item);
+    const r = await postToFacebookViaBuffer(env, item);
     ok = r.ok;
     skipped = !!r.skipped;
     raw = r.result;
@@ -801,6 +813,19 @@ export default {
           method: "POST",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
           body: JSON.stringify({ query: `query { channel(input: { id: "${env.BUFFER_X_CHANNEL_ID}" }) { id name service } }` }),
+        });
+        const data: any = await res.json();
+        return json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
+      }
+
+      if (path === "/api/facebook-buffer/status" && request.method === "GET") {
+        if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) {
+          return json({ success: false, configured: false, message: "BUFFER_API_KEY / BUFFER_FACEBOOK_CHANNEL_ID not set" });
+        }
+        const res = await fetch("https://api.buffer.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+          body: JSON.stringify({ query: `query { channel(input: { id: "${env.BUFFER_FACEBOOK_CHANNEL_ID}" }) { id name service } }` }),
         });
         const data: any = await res.json();
         return json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
