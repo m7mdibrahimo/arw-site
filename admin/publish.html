@@ -177,8 +177,8 @@
 <script>
   // Same backend the automatic watcher already uses (Cloudflare Worker,
   // replaces the old Render server) — two endpoints on it built for this page:
-  //   GET  /api/social/status?url=...        -> { telegram, facebook, instagram }
-  //   POST /api/social/manual-publish         -> { results: { telegram, facebook, instagram } }
+  //   GET  /api/social/status?url=...        -> { telegram, facebook, instagram, x }
+  //   POST /api/social/manual-publish         -> { results: { telegram, facebook, instagram, x } }
   // غيّر السطر ده لرابط الـ Worker بتاعك بعد الـ deploy (هتلاقيه في
   // التيرمنال بعد "npx wrangler deploy"، أو من Cloudflare Dashboard):
   const API_BASE = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
@@ -192,7 +192,7 @@
   let currentFilter = 'all';
   let statusCache = {}; // key: url -> {telegram,facebook,instagram}
 
-  const platformLabel = { telegram: '✈️ تليجرام', facebook: '📘 فيسبوك', instagram: '📸 انستجرام' };
+  const platformLabel = { telegram: '✈️ تليجرام', facebook: '📘 فيسبوك', instagram: '📸 انستجرام', x: '✖️ اكس' };
 
   async function loadItems(){
     try{
@@ -238,7 +238,7 @@
     if (currentFilter === 'unpublished'){
       const st = statusCache[it.url];
       if (!st || st.error) return true;
-      return !(st.telegram && st.facebook && st.instagram);
+      return !(st.telegram && st.facebook && st.instagram && st.x);
     }
     return it.kind === currentFilter;
   }
@@ -264,6 +264,7 @@
             ${badgeHtml(it.url, 'telegram')}
             ${badgeHtml(it.url, 'facebook')}
             ${badgeHtml(it.url, 'instagram')}
+            ${badgeHtml(it.url, 'x')}
           </div>
           <button class="publish-btn" data-url="${it.url}">نشر</button>
         </div>`;
@@ -278,7 +279,7 @@
     const card = listEl.querySelector(`.card[data-url="${CSS.escape(url)}"]`);
     if (!card) return;
     const badges = card.querySelector('.badges');
-    badges.innerHTML = ['telegram','facebook','instagram'].map(p => badgeHtml(url, p)).join('');
+    badges.innerHTML = ['telegram','facebook','instagram','x'].map(p => badgeHtml(url, p)).join('');
   }
 
   document.querySelectorAll('.filters button').forEach(btn => {
@@ -303,7 +304,7 @@
     forceWarning.classList.remove('show');
 
     const st = statusCache[item.url] || {};
-    document.getElementById('modal-platforms').innerHTML = ['telegram','facebook','instagram'].map(p => {
+    document.getElementById('modal-platforms').innerHTML = ['telegram','facebook','instagram','x'].map(p => {
       const sent = !!st[p];
       return `
         <div class="plat-row">
