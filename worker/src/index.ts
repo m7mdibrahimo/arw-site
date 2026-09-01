@@ -467,7 +467,7 @@ async function postToInstagram(
   if (!data.imageUrl) return { ok: false, skipped: true };
 
   const safeImageUrl = instagramSafeImageUrl(data.imageUrl);
-  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const caption = buildDividedCaption(data.title, data.text);
 
   try {
     const pageToken = await getPageAccessToken(env);
