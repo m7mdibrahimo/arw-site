@@ -39,6 +39,12 @@ export interface Env {
   GITHUB_TOKEN: string;
   VAPID_PUBLIC_KEY: string;
   VAPID_PRIVATE_KEY: string;
+  // X (Twitter) cross-posting goes through Buffer instead of X's own API —
+  // X's official API no longer has a usable free tier (pay-per-use only,
+  // $0.20/post if it contains a link), while Buffer already has its own
+  // paid API relationship with X and a free Buffer account can queue posts
+  // to a connected X channel at no extra cost.
+  BUFFER_API_KEY: string;
 
   // Plain vars — set in wrangler.toml [vars]
   TELEGRAM_CHAT_ID: string;
@@ -51,6 +57,7 @@ export interface Env {
   SITE_ORIGIN: string;
   VAPID_SUBJECT: string;
   WATCHER_MIN_DATE: string;
+  BUFFER_X_CHANNEL_ID: string;
 
   // KV binding
   PUSH_KV: KVNamespace;
@@ -144,10 +151,11 @@ type PublishState = {
   telegram: Record<string, number>;
   facebook: Record<string, number>;
   instagram: Record<string, number>;
+  x: Record<string, number>;
 };
 
 function emptyPublishState(): PublishState {
-  return { telegram: {}, facebook: {}, instagram: {} };
+  return { telegram: {}, facebook: {}, instagram: {}, x: {} };
 }
 
 function githubContentsUrl(env: Env): string {
@@ -181,6 +189,7 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
   state.telegram = state.telegram || {};
   state.facebook = state.facebook || {};
   state.instagram = state.instagram || {};
+  state.x = state.x || {};
   return { sha: data.sha, state };
 }
 
@@ -231,7 +240,7 @@ async function githubWriteState(
   return { ok: true };
 }
 
-type Platform = "telegram" | "facebook" | "instagram";
+type Platform = "telegram" | "facebook" | "instagram" | "x";
 
 async function claimSend(env: Env, platform: Platform, key: string): Promise<boolean> {
   if (!key) return true;
@@ -484,6 +493,47 @@ async function postToInstagram(
   }
 }
 
+// Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
+// see the BUFFER_API_KEY comment on Env for why. Buffer queues the post on
+// the connected X channel; "schedulingType: automatic" + "mode: addToQueue"
+// drops it into the next open queue slot instead of waiting for a fixed time.
+async function postToXViaBuffer(
+  env: Env,
+  data: { title: string; url: string }
+): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+  if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
+
+  // X posts are capped at 280 characters total, so the caption is trimmed
+  // to title + link — no room for the longer body text Facebook/Telegram use.
+  const maxLen = 280;
+  const linkPart = `\n\n${data.url}`;
+  const titlePart = (data.title || "").trim();
+  const budget = Math.max(0, maxLen - linkPart.length);
+  const tweetText =
+    (titlePart.length > budget ? titlePart.slice(0, Math.max(0, budget - 1)).trim() + "…" : titlePart) + linkPart;
+
+  try {
+    const res = await fetch("https://api.buffer.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+      body: JSON.stringify({
+        query: `mutation PostToX($text: String!, $channelId: String!) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: addToQueue }) {
+            ... on PostActionSuccess { post { id } }
+            ... on MutationError { message }
+          }
+        }`,
+        variables: { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID },
+      }),
+    });
+    const result: any = await res.json().catch(() => ({}));
+    if (result?.data?.createPost?.post?.id) return { ok: true, result };
+    return { ok: false, result };
+  } catch (e) {
+    return { ok: false };
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // Publish-to-one-platform orchestration, shared by the watcher and the
 // manual-publish endpoint. `force=true` bypasses an existing claim (used
@@ -511,9 +561,13 @@ async function publishToPlatform(
     const r = await postToFacebook(env, item);
     ok = r.ok;
     skipped = !!r.skipped;
-  } else {
+  } else if (platform === "instagram") {
     const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : env.SITE_ORIGIN + item.image) : undefined;
     const r = await postToInstagram(env, { ...item, imageUrl });
+    ok = r.ok;
+    skipped = !!r.skipped;
+  } else {
+    const r = await postToXViaBuffer(env, item);
     ok = r.ok;
     skipped = !!r.skipped;
   }
@@ -560,7 +614,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
 
-    const fullyDone = state.telegram[key] && state.facebook[key] && state.instagram[key];
+    const fullyDone = state.telegram[key] && state.facebook[key] && state.instagram[key] && state.x[key];
     if (fullyDone) continue;
 
     // Only spend the verify+publish subrequests on items that actually
@@ -586,6 +640,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
       await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
+      await publishToPlatform(env, "x", key, payload, {}, false);
     } else {
       // Telegram already sent on an earlier tick — just catch up any
       // platform that's still missing (e.g. Instagram failed processing
@@ -593,6 +648,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
       const payload = { title: item.title, text: item.headline || item.description || "", url: env.SITE_ORIGIN + (item.url || "") };
       if (!state.facebook[key]) await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       if (!state.instagram[key]) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
+      if (!state.x[key]) await publishToPlatform(env, "x", key, payload, {}, false);
     }
 
     // Keep each cron tick bounded — handle at most one item needing real
@@ -720,6 +776,19 @@ export default {
         return json({ success: !data.error, configured: true, account: data });
       }
 
+      if (path === "/api/x/status" && request.method === "GET") {
+        if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) {
+          return json({ success: false, configured: false, message: "BUFFER_API_KEY / BUFFER_X_CHANNEL_ID not set" });
+        }
+        const res = await fetch("https://api.buffer.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+          body: JSON.stringify({ query: `query { channel(input: { id: "${env.BUFFER_X_CHANNEL_ID}" }) { id name service } }` }),
+        });
+        const data: any = await res.json();
+        return json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
+      }
+
       // ── Manual publish dashboard (used by admin/publish.html) ──
       if (path === "/api/social/status" && request.method === "GET") {
         const itemUrl = url.searchParams.get("url") || "";
@@ -732,6 +801,7 @@ export default {
           telegram: !!state.telegram[key],
           facebook: !!state.facebook[key],
           instagram: !!state.instagram[key],
+          x: !!state.x[key],
         });
       }
 
@@ -741,7 +811,7 @@ export default {
         if (!title || !itemUrl) return json({ success: false, error: "title و url مطلوبين" }, 400);
 
         const key = sanitizeKey(normalizeArticleUrl(itemUrl));
-        const wanted: Platform[] = Array.isArray(platforms) && platforms.length ? platforms : ["telegram", "facebook", "instagram"];
+        const wanted: Platform[] = Array.isArray(platforms) && platforms.length ? platforms : ["telegram", "facebook", "instagram", "x"];
         let pagePath = itemUrl;
         try {
           pagePath = new URL(itemUrl).pathname;
@@ -761,6 +831,9 @@ export default {
         }
         if (wanted.includes("instagram")) {
           results.instagram = await publishToPlatform(env, "instagram", key, payload, {}, !!force);
+        }
+        if (wanted.includes("x")) {
+          results.x = await publishToPlatform(env, "x", key, payload, {}, !!force);
         }
 
         return json({ success: true, key, results });
