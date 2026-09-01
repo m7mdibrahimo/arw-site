@@ -517,7 +517,7 @@ async function postToXViaBuffer(
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
       body: JSON.stringify({
-        query: `mutation PostToX($text: String!, $channelId: String!) {
+        query: `mutation PostToX($text: String!, $channelId: ChannelId!) {
           createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: addToQueue }) {
             ... on PostActionSuccess { post { id } }
             ... on MutationError { message }
