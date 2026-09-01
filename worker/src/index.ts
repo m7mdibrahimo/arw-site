@@ -66,15 +66,6 @@ export interface Env {
 const GRAPH_API_VERSION = "v21.0";
 const SOCIAL_FOLLOW_LINE =
   "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
-// Facebook now throttles reach hard for Page posts containing an outbound
-// link — non-verified Pages get roughly 2 "free" link posts a month before
-// further link posts are published but shown to almost no one but the Page
-// admin (exactly the "only I can see it" symptom). Links placed in the
-// FIRST COMMENT are explicitly exempt from this limit, so Facebook posts
-// go out as a native photo (or plain text) with no link in the body, and
-// the article URL is added as a comment right after — same click-through
-// path for readers, without the reach penalty.
-const FACEBOOK_CAPTION_SUFFIX = "\n\n🔗 الرابط الكامل في أول كومنت — تابعونا: عرب راسلنج";
 
 // ─────────────────────────────────────────────────────────────────────────
 // Small helpers (ported as-is from server.ts)
@@ -407,52 +398,37 @@ async function getPageAccessToken(env: Env): Promise<string> {
   }
 }
 
-async function postToFacebookComment(env: Env, postId: string, message: string, pageToken: string): Promise<void> {
+async function refreshFacebookLinkPreview(url: string, pageToken: string): Promise<void> {
   try {
-    await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${postId}/comments`, {
+    await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, access_token: pageToken }),
+      body: JSON.stringify({ id: url, scrape: true, access_token: pageToken }),
     });
   } catch (e) {
-    // best-effort — the post itself already succeeded even if the comment fails
+    // best-effort only
   }
 }
 
 async function postToFacebook(
   env: Env,
-  data: { title: string; text?: string; url: string; image?: string; kind?: string }
+  data: { title: string; text?: string; url: string; kind?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!env.FACEBOOK_PAGE_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  const caption = `${data.title}\n\n${data.text || ""}`.trim() + FACEBOOK_CAPTION_SUFFIX;
-  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
 
   try {
     const pageToken = await getPageAccessToken(env);
+    await refreshFacebookLinkPreview(data.url, pageToken);
 
-    // Native photo post (no "link" field) when an image is available — this
-    // is what gets normal reach. Falls back to a plain text status (still no
-    // link) if there's no image at all.
-    const endpoint = imageUrl
-      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
-      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
-    const body = imageUrl ? { url: imageUrl, caption, access_token: pageToken } : { message: caption, access_token: pageToken };
-
-    const res = await fetch(endpoint, {
+    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify({ message: caption, link: data.url, access_token: pageToken }),
     });
     const result: any = await res.json().catch(() => ({}));
-    if (!result.id) return { ok: false, result };
-
-    // The article link goes in a comment instead of the post body — comments
-    // are exempt from Facebook's link-post reach limit. Best-effort: the
-    // main post already succeeded even if this fails.
-    const postId = result.post_id || result.id;
-    await postToFacebookComment(env, postId, data.url, pageToken);
-
-    return { ok: true, result };
+    if (result.id) return { ok: true, result };
+    return { ok: false, result };
   } catch (e) {
     return { ok: false };
   }
@@ -525,32 +501,42 @@ async function postToInstagram(
 // X until the next queued time slot).
 async function postToXViaBuffer(
   env: Env,
-  data: { title: string; url: string }
+  data: { title: string; text?: string; image?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
 
-  // X posts are capped at 280 characters total, so the caption is trimmed
-  // to title + link — no room for the longer body text Facebook/Telegram use.
+  // Same caption shape as Instagram — title + snippet + the follow line —
+  // and deliberately no link in the body. X's own link-unfurl preview
+  // triggers the same kind of reach suppression Facebook does for outbound
+  // links, so the URL is dropped entirely rather than routed around it.
   const maxLen = 280;
-  const linkPart = `\n\n${data.url}`;
-  const titlePart = (data.title || "").trim();
-  const budget = Math.max(0, maxLen - linkPart.length);
-  const tweetText =
-    (titlePart.length > budget ? titlePart.slice(0, Math.max(0, budget - 1)).trim() + "…" : titlePart) + linkPart;
+  const fullCaption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const tweetText = fullCaption.length > maxLen ? fullCaption.slice(0, maxLen - 1).trim() + "…" : fullCaption;
+
+  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
   try {
-    const res = await fetch("https://api.buffer.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
-      body: JSON.stringify({
-        query: `mutation PostToX($text: String!, $channelId: ChannelId!) {
+    const query = imageUrl
+      ? `mutation PostToX($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }] }) {
+            ... on PostActionSuccess { post { id } }
+            ... on MutationError { message }
+          }
+        }`
+      : `mutation PostToX($text: String!, $channelId: ChannelId!) {
           createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow }) {
             ... on PostActionSuccess { post { id } }
             ... on MutationError { message }
           }
-        }`,
-        variables: { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID },
-      }),
+        }`;
+    const variables = imageUrl
+      ? { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID, imageUrl }
+      : { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID };
+
+    const res = await fetch("https://api.buffer.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+      body: JSON.stringify({ query, variables }),
     });
     const result: any = await res.json().catch(() => ({}));
     if (result?.data?.createPost?.post?.id) return { ok: true, result };
