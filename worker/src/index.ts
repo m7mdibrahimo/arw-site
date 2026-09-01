@@ -518,9 +518,11 @@ async function postToInstagram(
 }
 
 // Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
-// see the BUFFER_API_KEY comment on Env for why. Buffer queues the post on
-// the connected X channel; "schedulingType: automatic" + "mode: addToQueue"
-// drops it into the next open queue slot instead of waiting for a fixed time.
+// see the BUFFER_API_KEY comment on Env for why. "mode: shareNow" publishes
+// immediately instead of dropping into Buffer's queue for a scheduled slot
+// (which is what "addToQueue" does, and why an earlier version of this
+// looked like it "worked" — Buffer accepted it — but nothing appeared on
+// X until the next queued time slot).
 async function postToXViaBuffer(
   env: Env,
   data: { title: string; url: string }
@@ -542,7 +544,7 @@ async function postToXViaBuffer(
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
       body: JSON.stringify({
         query: `mutation PostToX($text: String!, $channelId: ChannelId!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: addToQueue }) {
+          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow }) {
             ... on PostActionSuccess { post { id } }
             ... on MutationError { message }
           }
