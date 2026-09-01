@@ -657,7 +657,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
       await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
-      await publishToPlatform(env, "x", key, payload, {}, false);
+      await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
     } else {
       // Telegram already sent on an earlier tick — just catch up any
       // platform that's still missing (e.g. Instagram failed processing
@@ -665,7 +665,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
       const payload = { title: item.title, text: item.headline || item.description || "", url: env.SITE_ORIGIN + (item.url || "") };
       if (!state.facebook[key]) await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       if (!state.instagram[key]) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
-      if (!state.x[key]) await publishToPlatform(env, "x", key, payload, {}, false);
+      if (!state.x[key]) await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
     }
 
     // Keep each cron tick bounded — handle at most one item needing real
