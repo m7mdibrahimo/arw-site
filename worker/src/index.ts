@@ -68,6 +68,19 @@ const GRAPH_API_VERSION = "v21.0";
 const SOCIAL_FOLLOW_LINE =
   "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
+// Facebook and X captions keep the title, the article snippet, and the
+// "visit the site" line as three visually distinct blocks (a divider line
+// between each) instead of running them together with just a blank line —
+// easier to scan on platforms that don't format text at all.
+function buildDividedCaption(title: string, text?: string): string {
+  const DIVIDER = "\n\n────────\n\n";
+  const followBody = SOCIAL_FOLLOW_LINE.replace(/^\n+/, "");
+  const parts = [title.trim()];
+  if (text && text.trim()) parts.push(text.trim());
+  parts.push(followBody);
+  return parts.join(DIVIDER);
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // Small helpers (ported as-is from server.ts)
 // ─────────────────────────────────────────────────────────────────────────
@@ -412,7 +425,7 @@ async function postToFacebookViaBuffer(
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
 
-  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const caption = buildDividedCaption(data.title, data.text);
   const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
   try {
@@ -517,12 +530,13 @@ async function postToXViaBuffer(
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
 
-  // Same caption shape as Instagram — title + snippet + the follow line —
-  // and deliberately no link in the body. X's own link-unfurl preview
-  // triggers the same kind of reach suppression Facebook does for outbound
-  // links, so the URL is dropped entirely rather than routed around it.
+  // Title, snippet, and follow line are visually separated by divider
+  // lines (see buildDividedCaption) rather than run together. X's own
+  // link-unfurl preview triggers the same kind of reach suppression
+  // Facebook does for outbound links, so the URL is dropped entirely
+  // rather than routed around it.
   const maxLen = 280;
-  const fullCaption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const fullCaption = buildDividedCaption(data.title, data.text);
   const tweetText = fullCaption.length > maxLen ? fullCaption.slice(0, maxLen - 1).trim() + "…" : fullCaption;
 
   const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
@@ -674,7 +688,12 @@ async function runWatcherPoll(env: Env): Promise<void> {
       // Telegram already sent on an earlier tick — just catch up any
       // platform that's still missing (e.g. Instagram failed processing
       // last time and its claim was released).
-      const payload = { title: item.title, text: item.headline || item.description || "", url: env.SITE_ORIGIN + (item.url || "") };
+      let catchUpText = item.headline || item.description || "";
+      if (!catchUpText) {
+        const v = await verifyLiveOnSite(env, { url: item.url, image: item.image });
+        catchUpText = v.bodySnippet || "";
+      }
+      const payload = { title: item.title, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
       if (!state.facebook[key]) await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       if (!state.instagram[key]) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
       if (!state.x[key]) await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
@@ -863,10 +882,22 @@ export default {
 
         const results: Record<string, string> = {};
         const debug: Record<string, any> = {};
-        const payload = { title, text, url: itemUrl, image, kind };
+
+        // If the dashboard didn't send a snippet (older items often have no
+        // headline/description saved), scrape the live page for one — same
+        // fallback the automatic watcher already uses via verifyLiveOnSite.
+        // Doing this once up front means Facebook/Instagram/X get a real
+        // snippet on manual publish too, not just Telegram.
+        let resolvedText = text || "";
+        let verify: { imageBuffer?: ArrayBuffer; imageContentType?: string } = {};
+        if (wanted.includes("telegram") || !resolvedText) {
+          const v = await verifyLiveOnSite(env, { url: pagePath, image });
+          verify = v;
+          if (!resolvedText) resolvedText = v.bodySnippet || "";
+        }
+        const payload = { title, text: resolvedText, url: itemUrl, image, kind };
 
         if (wanted.includes("telegram")) {
-          const verify = await verifyLiveOnSite(env, { url: pagePath, image });
           const r = await publishToPlatform(env, "telegram", key, payload, verify, !!force);
           results.telegram = r.status;
           if (r.raw !== undefined) debug.telegram = r.raw;
