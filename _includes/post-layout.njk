@@ -716,6 +716,7 @@
         {% set isSeries = (nav.program.mode == "series") %}
         {% set nounSingle = "حلقة" if isSeries else "عرض" %}
         {% set nounPlural = "حلقات" if isSeries else "عروض" %}
+        {% set isAnnual = (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "annual") %}
         <div class="episodes-nav reveal">
           <div class="episodes-nav-head">
             <h3>
@@ -728,7 +729,9 @@
 
           <div class="episodes-search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
-            {% if isSeries %}
+            {% if isAnnual %}
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث بسنة العرض... مثال: 2026" autocomplete="off">
+            {% elif isSeries %}
             <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث برقم {{ nounSingle }}... مثال: 20" autocomplete="off">
             {% else %}
             <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب اليوم أو الشهر... مثال: شهر 8 أو يوم 26" autocomplete="off">
@@ -738,8 +741,7 @@
             </button>
           </div>
 
-          {% set isSingleAnnual = (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "annual") %}
-          {% if not isSingleAnnual %}
+          {% if not isAnnual %}
           <div class="season-tabs" id="seasonTabs-{{ nav.program.slug }}">
             {% for season in nav.program.seasons %}
             <button type="button" class="season-tab{% if season.number == nav.activeSeason %} active{% endif %}" data-season="{{ season.number }}">
@@ -802,7 +804,10 @@
 
           function activeSeasonKey(){
             var activeTab = root.querySelector('.season-tab.active');
-            return activeTab ? activeTab.getAttribute('data-season') : null;
+            if (activeTab) return activeTab.getAttribute('data-season');
+            // مفيش تابات مواسم أصلاً (زي العروض السنوية) - نرجع الباناڤيل الوحيد الموجود
+            var firstPanel = root.querySelector('[data-season-panel]');
+            return firstPanel ? firstPanel.getAttribute('data-season-panel') : null;
           }
 
           function showSeasonOnly(seasonKey){
