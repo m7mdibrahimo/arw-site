@@ -537,6 +537,20 @@ module.exports = function(eleventyConfig) {
 
   // بيرجع كل بيانات التنقل بين الحلقات (البرنامج + الموسم الحالي + الحلقة السابقة/التالية) لصفحة عرض معينة.
   // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
+  const episodeShortLabel = function(ep) {
+    if (!ep) return "";
+    if (ep.episode !== null) return "الحلقة " + ep.episode;
+    if (ep.shortDate) return "بتاريخ " + ep.shortDate;
+    return ep.headline || ep.title || "";
+  };
+
+  const seasonBadgeLabel = function(seasonObj) {
+    if (!seasonObj) return "";
+    if (seasonObj.type === "season") return "الموسم " + seasonObj.number;
+    if (seasonObj.type === "year") return "سنة " + seasonObj.number;
+    return "";
+  };
+
   const getEpisodeNav = function(programName, currentUrl, programs) {
     if (!programName || !String(programName).trim()) return null;
     const slug = arabicSlug(programName);
@@ -556,12 +570,19 @@ module.exports = function(eleventyConfig) {
       ? prog.episodes[idx].groupKey
       : prog.seasons[0].number;
 
+    const activeSeasonObj = prog.seasons.find(function(s) { return s.number === activeSeason; }) || null;
+    const prevEp = idx > 0 ? prog.episodes[idx - 1] : null;
+    const nextEp = (idx >= 0 && idx < prog.episodes.length - 1) ? prog.episodes[idx + 1] : null;
+
     return {
       program: prog,
       currentIndex: idx,
       activeSeason: activeSeason,
-      prevEp: idx > 0 ? prog.episodes[idx - 1] : null,
-      nextEp: (idx >= 0 && idx < prog.episodes.length - 1) ? prog.episodes[idx + 1] : null
+      activeSeasonLabel: seasonBadgeLabel(activeSeasonObj),
+      prevEp: prevEp,
+      nextEp: nextEp,
+      prevEpLabel: episodeShortLabel(prevEp),
+      nextEpLabel: episodeShortLabel(nextEp)
     };
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
