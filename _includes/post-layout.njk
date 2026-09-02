@@ -730,7 +730,7 @@
           <div class="episodes-search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
             {% if isAnnual %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب سنة العرض... مثال: 2026" autocomplete="off">
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث بالاسم أو الرقم أو السنة... مثال: 2026 أو 285" autocomplete="off">
             {% elif isSeries %}
             <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب رقم {{ nounSingle }}... مثال: 20" autocomplete="off">
             {% else %}
