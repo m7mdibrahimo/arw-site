@@ -463,11 +463,12 @@ module.exports = function(eleventyConfig) {
   // - لو مفيش رقم موسم/حلقة (زي عروض أسبوعية متكررة زي الرو/سماكداون/ديناميت): الموقع بيستنتج تلقائيًا
   //   السنة من "تاريخ العرض" بدل الموسم، وتاريخ العرض المختصر (يوم/شهر) بدل رقم الحلقة، فتحصل على نفس شكل
   //   الترقيم الاحترافي من غير ما تكتب أي أرقام يدوي - بس اسم البرنامج واحد موحّد في كل نسخة (مثلاً "WWE Raw").
-  eleventyConfig.addCollection("programsGrouped", function(collectionApi) {
-    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+  // الدالة دي عامة وبتتنادى مرتين: مرة على مجلد "shows" ومرة على مجلد "recaps"، عشان نفس الميزة تشتغل في الاتنين.
+  const buildProgramsGrouped = function(collectionApi, glob) {
+    const items = collectionApi.getFilteredByGlob(glob);
     const map = new Map();
 
-    shows.forEach(function(item) {
+    items.forEach(function(item) {
       const rawName = item.data && item.data.program_name;
       if (!rawName || !String(rawName).trim()) return;
       const name = String(rawName).trim();
@@ -550,11 +551,16 @@ module.exports = function(eleventyConfig) {
       prog.mode = prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; })
         ? "series"
         : "recurring";
-
-      // لو كل حلقات البرنامج بترجع لمجموعة تاريخ/سنة واحدة بس (عرض أسبوعي مثلاً)، مفيش داعي لإظهار تابات مواسم.
     });
 
     return programs;
+  };
+
+  eleventyConfig.addCollection("programsGrouped", function(collectionApi) {
+    return buildProgramsGrouped(collectionApi, "content/shows/*.md");
+  });
+  eleventyConfig.addCollection("recapsProgramsGrouped", function(collectionApi) {
+    return buildProgramsGrouped(collectionApi, "content/recaps/*.md");
   });
 
   // بيرجع كل بيانات التنقل بين الحلقات (البرنامج + الموسم الحالي + الحلقة السابقة/التالية) لصفحة عرض معينة.
