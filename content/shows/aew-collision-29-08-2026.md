@@ -2,6 +2,7 @@
 federation: AEW
 title: AEW Collision 29.08.2026
 headline: عرض كوليجن 29.08.2026 مترجم
+program_name: AEW Collision
 description: عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-29
 date: 2026-08-31T00:48:00.000+03:00
