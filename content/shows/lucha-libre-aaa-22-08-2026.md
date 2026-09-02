@@ -2,7 +2,7 @@
 federation: INDIE
 title: Lucha Libre AAA 22.08.2026
 headline: عرض ايه ايه ايه 22.08.2026 مترجم
-program_name: AAA
+program_name: Lucha Libre AAA
 description: عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-22
 date: 2026-08-23T11:30:00.000+03:00
