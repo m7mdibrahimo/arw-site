@@ -813,10 +813,25 @@
           });
 
           // بحث بيوم/شهر/سنة/رقم حلقة عبر كل المواسم مرة واحدة
+          // بيحوّل الأرقام العربية/الهندية (٠١٢٣...) لأرقام إنجليزية عادية، وبيشيل حروف تحكم خفية
+          // ممكن بعض الكيبوردات العربية تحطها تلقائي، عشان البحث يشتغل صح مهما كانت طريقة الكتابة
+          function normalizeQuery(str){
+            var eastern = '٠١٢٣٤٥٦٧٨٩';
+            var extended = '۰۱۲۳۴۵۶۷۸۹';
+            var out = str.replace(/[٠-٩۰-۹]/g, function(ch){
+              var i = eastern.indexOf(ch);
+              if (i > -1) return String(i);
+              i = extended.indexOf(ch);
+              if (i > -1) return String(i);
+              return ch;
+            });
+            return out.replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069]/g, '').trim();
+          }
+
           function parseQuery(q){
-            var monthMatch = q.match(/شهر\s*(\d{1,2})/);
-            var dayMatch = q.match(/يوم\s*(\d{1,2})/);
-            var yearMatch = q.match(/سنة\s*(\d{4})/) || q.match(/^(20\d{2})$/);
+            var monthMatch = q.match(/شهر[^\d]*(\d{1,2})/);
+            var dayMatch = q.match(/يوم[^\d]*(\d{1,2})/);
+            var yearMatch = q.match(/سنة[^\d]*(\d{4})/) || q.match(/^(20\d{2})$/);
             return {
               month: monthMatch ? monthMatch[1] : null,
               day: dayMatch ? dayMatch[1] : null,
@@ -842,7 +857,8 @@
             return true;
           }
 
-          function runSearch(q){
+          function runSearch(rawQ){
+            var q = normalizeQuery(rawQ || '');
             if (!q) {
               if (clearBtn) clearBtn.classList.remove('show');
               if (noResults) noResults.style.display = 'none';
@@ -852,7 +868,7 @@
             }
             if (clearBtn) clearBtn.classList.add('show');
             panels.forEach(function(p){ p.style.display = 'flex'; });
-            var parsed = parseQuery(q.trim());
+            var parsed = parseQuery(q);
             var visibleCount = 0;
             pills.forEach(function(pill){
               var match = pillMatches(pill, parsed);
