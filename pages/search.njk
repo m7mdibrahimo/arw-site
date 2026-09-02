@@ -438,7 +438,7 @@ mark{ background:var(--teal-soft); color:var(--teal); padding:0 2px; border-radi
         var nKind = normalizeArabic(item.kindLabel);
         var allText = nTitle + ' ' + nHeadline + ' ' + nDesc + ' ' + nTags + ' ' + nFed + ' ' + nKind;
 
-        // لازم كل كلمات البحث تكون موجودة في مكان ما (بحث AND زي محركات البحث الاحترافية)
+        // يجب أن تكون كل كلمات البحث موجودة في مكان ما (بحث AND كما في محركات البحث الاحترافية)
         var matchesAll = normTerms.every(function(t){ return allText.indexOf(t) !== -1; });
         if (!matchesAll) return;
 
@@ -533,7 +533,7 @@ mark{ background:var(--teal-soft); color:var(--teal); padding:0 2px; border-radi
       if (cachedResults.length === 0) {
         grid.innerHTML = '<div class="no-results">' +
           '<p>لم يتم العثور على أي نتائج مطابقة لـ "' + currentQuery + '".</p>' +
-          '<p style="font-size:13px; margin-top:8px;">تأكد من كتابة الكلمة بشكل صحيح، أو جرّب كلمات أقل أو أكثر عمومية.</p>' +
+          '<p style="font-size:13px; margin-top:8px;">تأكد من صحة الكتابة، أو استخدم كلمات أقل أو أكثر عمومية.</p>' +
         '</div>';
         paginationEl.innerHTML = '';
         controlsEl.style.display = 'none';
