@@ -485,6 +485,7 @@ module.exports = function(eleventyConfig) {
       const monthNum = dateVal ? (dateVal.getUTCMonth() + 1) : null;
       const dayNum = dateVal ? dateVal.getUTCDate() : null;
       const shortDate = dateVal ? ("يوم " + dayNum + " شهر " + monthNum) : null;
+      const isAnnual = item.data.is_annual === true || item.data.is_annual === "true";
 
       // خانة "رقم الحلقة" بقت نص حر (تقدر تكتب رقم عادي، أو أي نص/تاريخ بالعربي زي "29/8")
       const episodeRaw = item.data.episode_number;
@@ -494,9 +495,10 @@ module.exports = function(eleventyConfig) {
       // لو النص المكتوب رقم صحيح بحت، بيتستخدم للترتيب الرقمي. غير كده الترتيب بيبقى بتاريخ النشر.
       const episodeSortNum = (episodeLabel !== null && /^\d+$/.test(episodeLabel)) ? parseInt(episodeLabel, 10) : null;
 
-      // مفتاح التجميع: رقم الموسم لو موجود، وإلا السنة المستنتجة من تاريخ العرض، وإلا مجموعة عامة واحدة.
-      const groupKey = season !== null ? season : (year !== null ? year : 0);
-      const groupType = season !== null ? "season" : (year !== null ? "year" : "misc");
+      // مفتاح التجميع: لو "عرض سنوي" فكل النسخ بترجع لمجموعة واحدة ثابتة (مفيش مواسم خالص).
+      // غير كده: رقم الموسم لو موجود، وإلا السنة المستنتجة من تاريخ العرض، وإلا مجموعة عامة واحدة.
+      const groupKey = isAnnual ? -1 : (season !== null ? season : (year !== null ? year : 0));
+      const groupType = isAnnual ? "annual" : (season !== null ? "season" : (year !== null ? "year" : "misc"));
 
       map.get(slug).episodes.push({
         url: item.url,
@@ -512,8 +514,10 @@ module.exports = function(eleventyConfig) {
         day: dayNum,
         groupKey: groupKey,
         groupType: groupType,
-        // الرقم/النص اللي هيتعرض جوه الدائرة: اللي كتبته في "رقم الحلقة" لو موجود، وإلا تاريخ العرض المختصر
-        pillLabel: episodeLabel !== null ? episodeLabel : (shortDate || null),
+        // الرقم/النص اللي هيتعرض جوه الدائرة: لو عرض سنوي بيتعرض اسم العرض كامل، وإلا رقم الحلقة لو موجود، وإلا تاريخ العرض المختصر
+        pillLabel: isAnnual
+          ? (item.data.title || item.data.headline || "").trim()
+          : (episodeLabel !== null ? episodeLabel : (shortDate || null)),
         timestamp: getItemTimestamp(item)
       });
     });
@@ -557,6 +561,7 @@ module.exports = function(eleventyConfig) {
   // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
   const episodeShortLabel = function(ep, mode) {
     if (!ep) return "";
+    if (ep.groupType === "annual") return ep.pillLabel || ep.headline || ep.title || "";
     const noun = mode === "series" ? "الحلقة " : "العرض ";
     if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return noun + ep.episodeLabel;
     if (ep.shortDate) return ep.shortDate;
