@@ -115,6 +115,14 @@ function arabicSlug(str) {
     .replace(/^-+|-+$/g, '');
 }
 
+// بيوحّد أشكال الألف المختلفة (أ إ آ) لألف عادية (ا) عشان "اخبار المصارعة" و"أخبار المصارعة"
+// يتحسبوا نفس الوسم بدل ما يتقسموا لصفحتين منفصلتين. بيتستخدم بس لحساب الـ slug (تجميع/تصنيف)،
+// مش للعنوان أو الرابط الأصلي بتاع المقالات، عشان مايغيرش أي رابط مقال موجود بالفعل.
+function normalizeArabicHamza(str) {
+  if (!str) return "";
+  return str.toString().replace(/[أإآ]/g, 'ا');
+}
+
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
   eleventyConfig.addFilter("arabicSlug", arabicSlug);
@@ -657,7 +665,7 @@ module.exports = function(eleventyConfig) {
         tags.forEach(tag => {
           if (!tag) return;
           const cleanTag = tag.trim();
-          const slug = arabicSlug(cleanTag);
+          const slug = arabicSlug(normalizeArabicHamza(cleanTag));
           if (!slug) return;
           if (!tagMap.has(slug)) {
             tagMap.set(slug, { name: cleanTag, slug: slug, count: 0 });
@@ -774,7 +782,7 @@ module.exports = function(eleventyConfig) {
         tags.forEach(tag => {
           if (!tag) return;
           const cleanTag = tag.trim();
-          const slug = arabicSlug(cleanTag);
+          const slug = arabicSlug(normalizeArabicHamza(cleanTag));
           if (!slug) return;
           if (!tagMap.has(slug)) {
             tagMap.set(slug, { name: cleanTag, slug: slug, items: [] });

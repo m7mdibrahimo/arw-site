@@ -50,10 +50,12 @@ eleventyExcludeFromCollections: true
   </url>
   {% endfor %}
   {% for tagObj in collections.tagList %}
+  {% if tagObj.count >= 3 %}
   <url>
     <loc>https://arab-wrestling.com/tag/{{ tagObj.slug }}/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+  {% endif %}
   {% endfor %}
 </urlset>
