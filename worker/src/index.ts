@@ -121,15 +121,13 @@ function truncateForX(str: string, maxWeighted = 280): string {
   return out.trim() + ellipsis;
 }
 
-// Builds the X caption with the title and the "follow us" line treated as
-// fixed — never shortened or dropped — and only the article snippet
-// getting trimmed (or, if there's no room left at all, omitted) to fit
-// the real 280-weighted limit. Previously the whole assembled caption was
-// truncated from the end as one block, which could just as easily eat
-// into the follow line as into the snippet.
+// Builds the X caption as just the title and an article snippet, divided
+// by a line — no "follow us" line. The title is treated as fixed — never
+// shortened or dropped — and only the article snippet gets trimmed (or,
+// if there's no room left at all, omitted) to fit the real 280-weighted
+// limit.
 function buildXCaption(title: string, text?: string): string {
   const DIVIDER = "\n\n────────\n\n";
-  const followBody = SOCIAL_FOLLOW_LINE.replace(/^\n+/, "");
   const titleTrimmed = title.trim();
   // X's documented limit is 280, but a caption landing exactly on that
   // boundary was still getting rejected in practice (confirmed against a
@@ -138,18 +136,19 @@ function buildXCaption(title: string, text?: string): string {
   // that boundary entirely instead of chasing the exact off-by-one.
   const maxWeighted = 270;
 
-  const base = titleTrimmed + DIVIDER + followBody;
   if (!text || !text.trim()) {
-    return xWeightedLength(base) <= maxWeighted ? base : truncateForX(titleTrimmed, maxWeighted);
+    return xWeightedLength(titleTrimmed) <= maxWeighted
+      ? titleTrimmed
+      : truncateForX(titleTrimmed, maxWeighted);
   }
 
-  const remaining = maxWeighted - xWeightedLength(base) - xWeightedLength(DIVIDER);
+  const remaining = maxWeighted - xWeightedLength(titleTrimmed) - xWeightedLength(DIVIDER);
   if (remaining <= 0) {
-    return xWeightedLength(base) <= maxWeighted ? base : truncateForX(titleTrimmed, maxWeighted);
+    return xWeightedLength(titleTrimmed) <= maxWeighted ? titleTrimmed : truncateForX(titleTrimmed, maxWeighted);
   }
 
   const snippet = truncateForX(text.trim(), remaining);
-  return titleTrimmed + DIVIDER + snippet + DIVIDER + followBody;
+  return titleTrimmed + DIVIDER + snippet;
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -670,11 +669,11 @@ async function postToXViaBuffer(
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
 
-  // The title and the "follow us" line are always kept in full; only the
-  // article snippet gets shortened (or dropped) to fit X's real 280
-  // character limit. X's own link-unfurl preview triggers the same kind
-  // of reach suppression Facebook does for outbound links, so the URL is
-  // dropped entirely rather than routed around it.
+  // The title is always kept in full; only the article snippet gets
+  // shortened (or dropped) to fit X's real 280 character limit. X's own
+  // link-unfurl preview triggers the same kind of reach suppression
+  // Facebook does for outbound links, so the URL is dropped entirely
+  // rather than routed around it.
   const tweetText = buildXCaption(data.title, data.text);
 
   const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
