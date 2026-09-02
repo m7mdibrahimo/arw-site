@@ -361,6 +361,7 @@
           if (status === 'sent') return `<div class="result-line ok">✅ ${label}: تم النشر</div>`;
           if (status === 'already_sent') return `<div class="result-line skip">↷ ${label}: منشور بالفعل (تم تخطيه لمنع التكرار)</div>`;
           if (status === 'not_configured') return `<div class="result-line skip">– ${label}: غير مفعّل على السيرفر</div>`;
+          if (status === 'uncertain') return `<div class="result-line skip">⚠️ ${label}: النتيجة غير مؤكدة (ربما نُشر بالفعل) — راجع الحساب يدويًا قبل إعادة المحاولة</div>`;
           const rawDetail = data.debug && data.debug[platform] ? `<pre style="white-space:pre-wrap; font-size:11px; opacity:0.75; margin:4px 0 0;">${JSON.stringify(data.debug[platform]).replace(/</g,'&lt;')}</pre>` : '';
           return `<div class="result-line fail">❌ ${label}: فشل النشر${rawDetail}</div>`;
         }).join('');
