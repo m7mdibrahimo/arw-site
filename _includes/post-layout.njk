@@ -68,12 +68,12 @@
   :root{
     --bg: #faf7f0; --card: #ffffff; --ink: #1e2530; --muted: #6c7383; --line: #ece6d8;
     --teal: #0e9594; --teal-soft: #e3f5f3; --coral: #ff6f59; --coral-soft: #ffece8;
-    --gold: #f2a53c; --gold-soft: #fdf1de; --violet: #7c6ee8;
+    --gold: #f2a53c; --gold-soft: #fdf1de; --violet: #7c6ee8; --violet-soft: #efecfd;
   }
   html.arw-dark{
     --bg:#0d0f13; --card:#171a20; --ink:#eef1f6; --muted:#9aa2b0; --line:rgba(255,255,255,.1);
     --teal:#1cb5b3; --teal-soft:rgba(28,181,179,.15); --coral:#ff8570; --coral-soft:rgba(255,133,112,.15);
-    --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
+    --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0; --violet-soft:rgba(154,143,240,.15);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{ scroll-behavior:smooth; background-color:var(--bg); }
@@ -508,25 +508,25 @@
   .episodes-nav{ margin-top:28px; padding:22px; background:var(--card); border:1px solid var(--line); border-radius:18px; }
   .episodes-nav-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
   .episodes-nav-head h3{ font-family:'Cairo',sans-serif; font-weight:900; font-size:16.5px; display:flex; align-items:center; gap:8px; color:var(--ink); }
-  .episodes-nav-head h3 svg{ color:var(--teal); flex-shrink:0; }
+  .episodes-nav-head h3 svg{ color:var(--gold); flex-shrink:0; }
   .episodes-count{ font-size:12px; font-weight:700; color:var(--teal); background:var(--teal-soft); padding:5px 13px; border-radius:999px; white-space:nowrap; }
 
   .season-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
   .season-tab{ font-family:'Tajawal',sans-serif; font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer; transition:all .25s cubic-bezier(.34,1.56,.64,1); }
-  .season-tab:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); }
-  .season-tab.active{ background:var(--teal); color:#fff; border-color:var(--teal); box-shadow:0 6px 16px rgba(14,149,148,.3); }
+  .season-tab:hover{ border-color:var(--coral); color:var(--coral); transform:translateY(-2px); }
+  .season-tab.active{ background:var(--coral); color:#fff; border-color:var(--coral); box-shadow:0 6px 16px rgba(255,111,89,.3); }
 
   .episode-strip{ display:flex; flex-wrap:wrap; gap:10px; }
   .ep-pill{ position:relative; display:inline-flex; align-items:center; justify-content:center; min-width:46px; height:46px; padding:0 10px; border-radius:13px; background:var(--bg); border:1px solid var(--line); color:var(--ink); font-family:'Cairo',sans-serif; font-weight:800; font-size:14.5px; text-decoration:none; transition:all .25s cubic-bezier(.34,1.56,.64,1); }
-  .ep-pill:hover{ background:var(--teal-soft); border-color:var(--teal); color:var(--teal); transform:translateY(-3px) scale(1.06); box-shadow:0 8px 18px -6px rgba(14,149,148,.35); }
+  .ep-pill:hover{ background:var(--violet-soft); border-color:var(--violet); color:var(--violet); transform:translateY(-3px) scale(1.06); box-shadow:0 8px 18px -6px rgba(124,110,232,.35); }
   .ep-pill.active{ background:var(--teal); border-color:var(--teal); color:#fff; box-shadow:0 8px 18px -4px rgba(14,149,148,.4); }
   .ep-pill .ep-pill-num{ line-height:1; }
   .ep-pill.ep-pill-date{ font-size:12.5px; font-weight:700; letter-spacing:-.1px; padding:0 14px; white-space:nowrap; border-radius:999px; }
 
   .ep-nav-arrows{ display:flex; gap:10px; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
   .ep-nav-btn{ flex:1; display:flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; background:var(--bg); border:1px solid var(--line); color:var(--ink); text-decoration:none; font-weight:700; font-size:13.5px; transition:all .25s ease; min-width:0; }
-  .ep-nav-btn svg{ flex-shrink:0; color:var(--teal); }
-  .ep-nav-btn:hover{ border-color:var(--teal); background:var(--teal-soft); color:var(--teal); }
+  .ep-nav-btn svg{ flex-shrink:0; color:var(--violet); }
+  .ep-nav-btn:hover{ border-color:var(--violet); background:var(--violet-soft); color:var(--violet); }
   .ep-nav-btn .ep-nav-text{ display:flex; flex-direction:column; gap:2px; min-width:0; overflow:hidden; }
   .ep-nav-btn .ep-nav-label{ font-size:10.5px; color:var(--muted); font-weight:600; }
   .ep-nav-btn .ep-nav-title{ font-size:13px; font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
