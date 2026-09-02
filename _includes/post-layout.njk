@@ -726,7 +726,9 @@
               {% if isRecap %}ملخصات {% endif %}{{ nounPlural }} {{ nav.program.name }}
             </h3>
             {% set epCount = nav.program.episodes.length %}
-            <span class="episodes-count">{% if epCount == 1 %}1 {{ nounSingle }}{% else %}{{ epCount }} {{ nounPlural }}{% endif %}</span>
+            {% set countSingle = "ملخص" if isRecap else nounSingle %}
+            {% set countPlural = "ملخصات" if isRecap else nounPlural %}
+            <span class="episodes-count">{% if epCount == 1 %}1 {{ countSingle }}{% else %}{{ epCount }} {{ countPlural }}{% endif %}</span>
           </div>
 
           <div class="episodes-search">
