@@ -551,7 +551,7 @@ module.exports = function(eleventyConfig) {
   // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
   const episodeShortLabel = function(ep) {
     if (!ep) return "";
-    if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return "الحلقة " + ep.episodeLabel;
+    if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return "العرض " + ep.episodeLabel;
     if (ep.shortDate) return ep.shortDate;
     return ep.headline || ep.title || "";
   };
