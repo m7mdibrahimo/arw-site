@@ -1,7 +1,7 @@
 ---
 federation: INDIE
-title: AAA Ola de Calor (2026)
-headline: عرض ايه ايه ايه اولا دي كالور 30.08.2026 مترجم
+title: "Lucha Libre AAA: Ola de Calor 30.08.2026"
+headline: عرض ايه ايه ايه 30.08.2026 مترجم
 program_name: Lucha Libre AAA
 description: عرض ايه ايه ايه اولا دي كالور مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-30
