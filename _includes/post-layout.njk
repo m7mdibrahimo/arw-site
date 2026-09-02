@@ -555,9 +555,9 @@
     .season-tabs{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; padding-bottom:2px; margin-bottom:14px; scrollbar-width:none; }
     .season-tabs::-webkit-scrollbar{ display:none; }
     .season-tab{ flex-shrink:0; scroll-snap-align:start; padding:7px 16px; font-size:12.5px; }
-    .episode-strip{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; padding-bottom:6px; margin:0 -16px; padding-inline:16px; scrollbar-width:none; }
-    .episode-strip::-webkit-scrollbar{ display:none; }
-    .ep-pill{ flex-shrink:0; scroll-snap-align:start; }
+    .episode-strip{ flex-wrap:wrap; justify-content:flex-end; gap:8px; }
+    .ep-pill{ min-width:42px; height:42px; font-size:13.5px; padding:0 8px; }
+    .ep-pill.ep-pill-date{ font-size:12px; padding:0 12px; }
     .ep-nav-arrows{ margin-top:14px; padding-top:14px; }
     .ep-nav-btn{ padding:11px 14px; }
   }
