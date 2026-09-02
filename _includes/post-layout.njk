@@ -827,7 +827,13 @@
 
           function pillMatches(pill, parsed){
             if (parsed.month === null && parsed.day === null && parsed.year === null) {
-              var hay = ((pill.getAttribute('data-search') || '') + ' ' + (pill.getAttribute('data-episode') || '')).trim();
+              var episodeVal = (pill.getAttribute('data-episode') || '').trim();
+              // لو اللي مكتوب في البحث رقم صريح والحلقة عندها رقم حلقة مكتوب، لازم يتطابقوا بالظبط
+              // (عشان البحث بـ "8" ميطلعش حلقة "18" أو "28" غلط)
+              if (/^\d+$/.test(parsed.raw) && episodeVal !== '') {
+                return episodeVal === parsed.raw;
+              }
+              var hay = ((pill.getAttribute('data-search') || '') + ' ' + episodeVal).trim();
               return hay.indexOf(parsed.raw) !== -1;
             }
             if (parsed.month !== null && pill.getAttribute('data-month') !== String(parseInt(parsed.month, 10))) return false;
