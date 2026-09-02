@@ -1,6 +1,7 @@
 ---
 federation: WWE
 title: Smackdown Highlights 14.08.2026
+program_name: WWE Smackdown
 event_date: 2026-08-14
 date: 2026-08-15T06:28:00.000+03:00
 headline: ملخص عرض سماك داون 14.08.2026 مترجم
