@@ -738,6 +738,8 @@
             </button>
           </div>
 
+          {% set isSingleAnnual = (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "annual") %}
+          {% if not isSingleAnnual %}
           <div class="season-tabs" id="seasonTabs-{{ nav.program.slug }}">
             {% for season in nav.program.seasons %}
             <button type="button" class="season-tab{% if season.number == nav.activeSeason %} active{% endif %}" data-season="{{ season.number }}">
@@ -745,6 +747,7 @@
             </button>
             {% endfor %}
           </div>
+          {% endif %}
 
           {% for season in nav.program.seasons %}
           <div class="episode-strip" data-season-panel="{{ season.number }}"{% if season.number != nav.activeSeason %} style="display:none;"{% endif %}>
