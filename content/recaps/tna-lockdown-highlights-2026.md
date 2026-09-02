@@ -1,6 +1,8 @@
 ---
 federation: TNA
 title: TNA Lockdown Highlights (2026)
+program_name: TNA Lockdown
+is_annual: true
 event_date: 2026-08-23
 date: 2026-08-24T06:09:00.000+03:00
 headline: ملخص عرض تي ان ايه لوك داون 2026 مترجم
