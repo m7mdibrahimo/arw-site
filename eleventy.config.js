@@ -482,7 +482,9 @@ module.exports = function(eleventyConfig) {
       const dateVal = getDateValue(item);
       const season = isNaN(seasonRaw) ? null : seasonRaw;
       const year = dateVal ? dateVal.getUTCFullYear() : null;
-      const shortDate = dateVal ? ("يوم " + dateVal.getUTCDate() + " شهر " + (dateVal.getUTCMonth() + 1)) : null;
+      const monthNum = dateVal ? (dateVal.getUTCMonth() + 1) : null;
+      const dayNum = dateVal ? dateVal.getUTCDate() : null;
+      const shortDate = dateVal ? ("يوم " + dayNum + " شهر " + monthNum) : null;
 
       // خانة "رقم الحلقة" بقت نص حر (تقدر تكتب رقم عادي، أو أي نص/تاريخ بالعربي زي "29/8")
       const episodeRaw = item.data.episode_number;
@@ -505,6 +507,9 @@ module.exports = function(eleventyConfig) {
         episodeLabel: episodeLabel,
         episodeSortNum: episodeSortNum,
         shortDate: shortDate,
+        year: year,
+        month: monthNum,
+        day: dayNum,
         groupKey: groupKey,
         groupType: groupType,
         // الرقم/النص اللي هيتعرض جوه الدائرة: اللي كتبته في "رقم الحلقة" لو موجود، وإلا تاريخ العرض المختصر
