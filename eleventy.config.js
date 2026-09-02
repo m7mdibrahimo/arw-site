@@ -125,6 +125,7 @@ function normalizeArabicHamza(str) {
 
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
+  eleventyConfig.addGlobalData("buildTime", () => new Date().toISOString());
   eleventyConfig.addFilter("arabicSlug", arabicSlug);
   eleventyConfig.addNunjucksFilter("arabicSlug", arabicSlug);
   eleventyConfig.addFilter("slug", arabicSlug);
@@ -163,6 +164,12 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addFilter("absUrl", absUrl);
   eleventyConfig.addNunjucksFilter("absUrl", absUrl);
+
+  const dateObj = function(str) {
+    return new Date(str);
+  };
+  eleventyConfig.addFilter("dateObj", dateObj);
+  eleventyConfig.addNunjucksFilter("dateObj", dateObj);
 
   const arabicShowName = function(str) {
     if (!str) return "";
