@@ -728,9 +728,9 @@
           <div class="episodes-search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
             {% if isSeries %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="دوّر برقم {{ nounSingle }}... مثال: 20" autocomplete="off">
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث برقم {{ nounSingle }}... مثال: 20" autocomplete="off">
             {% else %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="دوّر بيوم أو شهر... مثال: شهر 8 أو يوم 26" autocomplete="off">
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب اليوم أو الشهر... مثال: شهر 8 أو يوم 26" autocomplete="off">
             {% endif %}
             <button type="button" class="episodes-search-clear" id="epSearchClear-{{ nav.program.slug }}" aria-label="مسح البحث">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -755,7 +755,7 @@
           </div>
           {% endfor %}
 
-          <div class="episodes-no-results" id="epNoResults-{{ nav.program.slug }}" style="display:none;">مفيش {{ nounPlural }} مطابقة للبحث</div>
+          <div class="episodes-no-results" id="epNoResults-{{ nav.program.slug }}" style="display:none;">لا توجد {{ nounPlural }} مطابقة لبحثك</div>
 
           {% if nav.prevEp or nav.nextEp %}
           <div class="ep-nav-arrows">
