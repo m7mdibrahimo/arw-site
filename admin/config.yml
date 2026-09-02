@@ -34,6 +34,9 @@ collections:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم العرض / الحلقة", name: "title", widget: "string" }
       - { label: "عنوان العرض الرئيسية (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو مترجم" }
+      - { label: "اسم البرنامج (اختياري - لربط الحلقات ببعض)", name: "program_name", widget: "string", required: false, hint: "لو العرض ده جزء من برنامج بحلقات (زي WWE LFG)، اكتب اسم موحّد للبرنامج بنفس الطريقة في كل حلقاته (مثلاً: WWE LFG). الموقع هيستخدمه عشان يجمع كل الحلقات مع بعض ويعرض ترقيم للحلقات يقدر الزوار يتنقلوا بيه. سيب الخانة فاضية لو العرض مش جزء من برنامج بحلقات." }
+      - { label: "رقم الموسم (اختياري)", name: "season_number", widget: "number", required: false, value_type: "int", hint: "اختياري - يُستخدم بس لو ضفت اسم البرنامج فوق" }
+      - { label: "رقم الحلقة (اختياري)", name: "episode_number", widget: "number", required: false, value_type: "int", hint: "اختياري - يُستخدم بس لو ضفت اسم البرنامج فوق" }
       - { label: "وصف قصير", name: "description", widget: "text", required: false }
       - { label: "تاريخ العرض", name: "event_date", widget: "datetime", date_format: "DD/MM/YYYY", format: "YYYY-MM-DD", time_format: false, required: false, hint: "اختر تاريخ العرض من التقويم/الجدول (السنة والشهر واليوم)" }
       - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false, hint: "اختر تاريخ ووقت النشر من التقويم" }
