@@ -511,6 +511,16 @@
   .episodes-nav-head h3 svg{ color:var(--gold); flex-shrink:0; }
   .episodes-count{ font-size:12px; font-weight:700; color:var(--teal); background:var(--teal-soft); padding:5px 13px; border-radius:999px; white-space:nowrap; }
 
+  .episodes-search{ display:flex; align-items:center; gap:8px; background:var(--bg); border:1px solid var(--line); border-radius:999px; padding:9px 14px; margin-bottom:16px; transition:all .25s cubic-bezier(.16,1,.3,1); }
+  .episodes-search:focus-within{ border-color:var(--violet); box-shadow:0 0 0 4px var(--violet-soft); }
+  .episodes-search svg{ color:var(--muted); flex-shrink:0; }
+  .episodes-search-input{ flex:1; min-width:0; border:none; outline:none; background:transparent; font-family:'Tajawal',sans-serif; font-size:13.5px; color:var(--ink); }
+  .episodes-search-input::placeholder{ color:var(--muted); }
+  .episodes-search-clear{ display:none; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; border:none; background:var(--line); color:var(--muted); cursor:pointer; flex-shrink:0; transition:all .2s ease; }
+  .episodes-search-clear:hover{ background:var(--coral); color:#fff; }
+  .episodes-search-clear.show{ display:flex; }
+  .episodes-no-results{ display:none; text-align:center; padding:18px 12px; color:var(--muted); font-size:13.5px; font-weight:600; }
+
   .season-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
   .season-tab{ font-family:'Tajawal',sans-serif; font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer; transition:all .25s cubic-bezier(.34,1.56,.64,1); }
   .season-tab:hover{ border-color:var(--coral); color:var(--coral); transform:translateY(-2px); }
@@ -712,7 +722,15 @@
             <span class="episodes-count">{% if epCount == 1 %}1 حلقة{% else %}{{ epCount }} حلقات{% endif %}</span>
           </div>
 
-          <div class="season-tabs" id="seasonTabs">
+          <div class="episodes-search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="دوّر بيوم أو شهر أو رقم حلقة... مثال: شهر 8 أو يوم 26" autocomplete="off">
+            <button type="button" class="episodes-search-clear" id="epSearchClear-{{ nav.program.slug }}" aria-label="مسح البحث">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          <div class="season-tabs" id="seasonTabs-{{ nav.program.slug }}">
             {% for season in nav.program.seasons %}
             <button type="button" class="season-tab{% if season.number == nav.activeSeason %} active{% endif %}" data-season="{{ season.number }}">
               {% if season.type == "season" %}الموسم {{ season.number }}{% elif season.type == "year" %}{{ season.number }}{% else %}حلقات متفرقة{% endif %}
@@ -723,12 +741,14 @@
           {% for season in nav.program.seasons %}
           <div class="episode-strip" data-season-panel="{{ season.number }}"{% if season.number != nav.activeSeason %} style="display:none;"{% endif %}>
             {% for ep in season.episodes %}
-            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.pillLabel and ('/' in ep.pillLabel or ep.pillLabel.length > 3) %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}">
+            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.pillLabel and ('/' in ep.pillLabel or ep.pillLabel.length > 3) %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}" data-day="{{ ep.day }}" data-month="{{ ep.month }}" data-year="{{ ep.year }}" data-episode="{{ ep.episodeLabel }}" data-search="{{ ep.headline or ep.title }}">
               <span class="ep-pill-num">{% if ep.pillLabel %}{{ ep.pillLabel }}{% else %}{{ loop.index }}{% endif %}</span>
             </a>
             {% endfor %}
           </div>
           {% endfor %}
+
+          <div class="episodes-no-results" id="epNoResults-{{ nav.program.slug }}" style="display:none;">مفيش حلقات مطابقة للبحث</div>
 
           {% if nav.prevEp or nav.nextEp %}
           <div class="ep-nav-arrows">
@@ -759,18 +779,97 @@
         </div>
         <script>
         (function(){
-          var tabs = document.querySelectorAll('#seasonTabs .season-tab');
-          var panels = document.querySelectorAll('[data-season-panel]');
+          var root = document.currentScript.previousElementSibling;
+          if (!root) return;
+          var tabs = root.querySelectorAll('.season-tab');
+          var panels = root.querySelectorAll('[data-season-panel]');
+          var pills = root.querySelectorAll('.ep-pill');
+          var searchInput = root.querySelector('.episodes-search-input');
+          var clearBtn = root.querySelector('.episodes-search-clear');
+          var searchBox = root.querySelector('.episodes-search');
+          var noResults = root.querySelector('.episodes-no-results');
+
+          function activeSeasonKey(){
+            var activeTab = root.querySelector('.season-tab.active');
+            return activeTab ? activeTab.getAttribute('data-season') : null;
+          }
+
+          function showSeasonOnly(seasonKey){
+            panels.forEach(function(p){
+              p.style.display = (p.getAttribute('data-season-panel') === seasonKey) ? 'flex' : 'none';
+            });
+          }
+
           tabs.forEach(function(tab){
             tab.addEventListener('click', function(){
               tabs.forEach(function(t){ t.classList.remove('active'); });
               tab.classList.add('active');
-              var season = tab.getAttribute('data-season');
-              panels.forEach(function(p){
-                p.style.display = (p.getAttribute('data-season-panel') === season) ? 'flex' : 'none';
-              });
+              if (searchInput) { searchInput.value = ''; }
+              if (clearBtn) { clearBtn.classList.remove('show'); }
+              if (noResults) { noResults.style.display = 'none'; }
+              pills.forEach(function(pill){ pill.style.display = ''; });
+              showSeasonOnly(tab.getAttribute('data-season'));
             });
           });
+
+          // بحث بيوم/شهر/سنة/رقم حلقة عبر كل المواسم مرة واحدة
+          function parseQuery(q){
+            var monthMatch = q.match(/شهر\s*(\d{1,2})/);
+            var dayMatch = q.match(/يوم\s*(\d{1,2})/);
+            var yearMatch = q.match(/سنة\s*(\d{4})/) || q.match(/^(20\d{2})$/);
+            return {
+              month: monthMatch ? monthMatch[1] : null,
+              day: dayMatch ? dayMatch[1] : null,
+              year: yearMatch ? (yearMatch[1] || yearMatch[0]) : null,
+              raw: q
+            };
+          }
+
+          function pillMatches(pill, parsed){
+            if (parsed.month === null && parsed.day === null && parsed.year === null) {
+              var hay = ((pill.getAttribute('data-search') || '') + ' ' + (pill.getAttribute('data-episode') || '')).trim();
+              return hay.indexOf(parsed.raw) !== -1;
+            }
+            if (parsed.month !== null && pill.getAttribute('data-month') !== String(parseInt(parsed.month, 10))) return false;
+            if (parsed.day !== null && pill.getAttribute('data-day') !== String(parseInt(parsed.day, 10))) return false;
+            if (parsed.year !== null && pill.getAttribute('data-year') !== String(parseInt(parsed.year, 10))) return false;
+            return true;
+          }
+
+          function runSearch(q){
+            if (!q) {
+              if (clearBtn) clearBtn.classList.remove('show');
+              if (noResults) noResults.style.display = 'none';
+              pills.forEach(function(pill){ pill.style.display = ''; });
+              showSeasonOnly(activeSeasonKey());
+              return;
+            }
+            if (clearBtn) clearBtn.classList.add('show');
+            panels.forEach(function(p){ p.style.display = 'flex'; });
+            var parsed = parseQuery(q.trim());
+            var visibleCount = 0;
+            pills.forEach(function(pill){
+              var match = pillMatches(pill, parsed);
+              pill.style.display = match ? '' : 'none';
+              if (match) visibleCount++;
+            });
+            panels.forEach(function(p){
+              var anyVisible = Array.prototype.some.call(p.querySelectorAll('.ep-pill'), function(pl){ return pl.style.display !== 'none'; });
+              if (!anyVisible) p.style.display = 'none';
+            });
+            if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+          }
+
+          if (searchInput) {
+            searchInput.addEventListener('input', function(){ runSearch(searchInput.value); });
+          }
+          if (clearBtn) {
+            clearBtn.addEventListener('click', function(){
+              searchInput.value = '';
+              runSearch('');
+              searchInput.focus();
+            });
+          }
         })();
         </script>
       {% endif %}
@@ -778,6 +877,7 @@
 
     <div class="post-body reveal">
       {{ content | autoEmbedSocials | safe }}
+
     </div>
 
     {% if tags and tags.length %}
