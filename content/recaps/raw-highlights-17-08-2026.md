@@ -1,6 +1,7 @@
 ---
 federation: WWE
 title: RAW Highlights 17.08.2026
+program_name: WWE RAW
 event_date: 2026-08-17
 date: 2026-08-18T07:17:00.000+03:00
 headline: ملخص عرض الرو 17.08.2026 مترجم
