@@ -689,7 +689,7 @@
       {% if servers.length > 1 %}
       <div class="server-tabs" id="serverTabs">
         {% for s in servers %}
-        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url }}">سيرفر {{ loop.index }} - جودة متوسطة</button>
+        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url }}">سيرفر {{ loop.index }} - {% if isRecap %}جودة عالية{% else %}جودة متوسطة{% endif %}</button>
         {% endfor %}
       </div>
       {% endif %}
