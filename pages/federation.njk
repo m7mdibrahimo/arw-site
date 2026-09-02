@@ -108,7 +108,7 @@ permalink: "{{ fedPage.permalink }}"
   .utility-row{ display:inline-flex; align-items:center; gap:8px; }
   .telegram-btn:active{ transform:scale(0.92); }
   .page-head{ padding:48px 24px 32px; text-align:center; border-bottom:1px solid var(--line); }
-  .page-head h1{ font-size:clamp(30px,4.5vw,42px); font-weight:900; margin-bottom:8px; letter-spacing:0.5px; }
+  .page-head h2{ font-size:clamp(30px,4.5vw,42px); font-weight:900; margin-bottom:8px; letter-spacing:0.5px; }
   .page-head p{ color:var(--muted); font-size:15px; font-weight:600; }
 
   /* Federation Specific Head Colors */
@@ -337,7 +337,7 @@ permalink: "{{ fedPage.permalink }}"
 
 
 <div class="page-head fed-head fed-{{ fed.slug }}">
-  <h1>{{ fed.code }}</h1>
+  <h2>{{ fed.code }}</h2>
   <p>{{ fed.name }}</p>
 </div>
 <section class="content"><div class="wrap"><div class="grid-12" id="fedGrid">
