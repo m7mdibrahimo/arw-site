@@ -15,7 +15,28 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<title>الأخبار | عرب راسلنج</title>
+{% set pageNum = pagination.pageNumber + 1 %}
+<title>أخبار المصارعة الحرة اليوم{% if pageNum > 1 %} - صفحة {{ pageNum }}{% endif %} | عرب راسلنج</title>
+<meta name="description" content="آخر أخبار المصارعة الحرة بالعربية: انتقالات، إصابات، وقرارات WWE وAEW وTNA أولاً بأول.{% if pageNum > 1 %} صفحة {{ pageNum }} من أرشيف الأخبار.{% endif %}">
+<link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "أخبار المصارعة الحرة",
+  "url": "https://arab-wrestling.com{{ page.url | cleanUrl }}",
+  "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
+  "inLanguage": "ar",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {% for item in newsItems %}
+      { "@type": "ListItem", "position": {{ loop.index }}, "url": "https://arab-wrestling.com{{ item.url | cleanUrl }}" }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/notif.css">
@@ -254,6 +275,10 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
   }
   .show-card:hover .show-body h3{ color:var(--teal); }
   .news-card:hover .news-body h3{ color:var(--coral); }
+
+  /* صور حقيقية بدل background-image عشان تظهر في بحث الصور بجوجل */
+  .show-thumb img, .news-thumb img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 </head>
 <body>
@@ -321,7 +346,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in newsItems %}
 <a class="news-card reveal" href="{{ item.url | cleanUrl }}">
-  <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
+  <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}"><img class="thumb-img" src="{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}" alt="{{ item.data.title }}" loading="lazy" width="450" height="160"></div>
   <div class="news-body">
     <span class="kind-badge kind-news">خبر</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
     <h3>{{ item.data.title }}</h3>

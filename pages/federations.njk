@@ -15,7 +15,10 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<title>تصفح الاتحادات وجميع المحتوى | عرب راسلنج</title>
+{% set pageNum = pagination.pageNumber + 1 %}
+<title>الاتحادات: WWE, AEW, TNA, ROH, MMA{% if pageNum > 1 %} - صفحة {{ pageNum }}{% endif %} | عرب راسلنج</title>
+<meta name="description" content="تصفح جميع اتحادات المصارعة الحرة ورياضات القتال (WWE, AEW, TNA, ROH, MMA) وكل عروضها وأخبارها وملخصاتها في مكان واحد.{% if pageNum > 1 %} صفحة {{ pageNum }}.{% endif %}">
+<link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/notif.css">
@@ -266,6 +269,10 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   }
   .show-card:hover .show-body h3{ color:var(--teal); }
   .news-card:hover .news-body h3{ color:var(--coral); }
+
+  /* صور حقيقية بدل background-image عشان تظهر في بحث الصور بجوجل */
+  .show-thumb img, .news-thumb img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 </head>
 <body>
@@ -337,14 +344,14 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
       {% for item in allItems %}
       <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %} reveal" href="{{ item.url | cleanUrl }}">
         {% if item.kind == 'news' %}
-        <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
+        <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}"><img class="thumb-img" src="{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}" alt="{{ item.data.title }}" loading="lazy" width="450" height="160"></div>
         <div class="news-body">
           <span class="kind-badge kind-news">خبر</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
           <h3>{{ item.data.title }}</h3>
           <span class="date">{{ item.date | date("dd MMM") }}</span>
         </div>
         {% else %}
-        <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+        <div class="show-thumb"><img class="thumb-img" src="{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{{ item.data.headline or item.data.title }}" loading="lazy" width="400" height="160"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
         <div class="show-body">
           {% if item.kind == 'show' %}<span class="kind-badge kind-show">عرض</span>{% else %}<span class="kind-badge kind-recap">ملخص</span>{% endif %}{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
           <h3>{{ item.data.headline or item.data.title }}</h3>
