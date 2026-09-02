@@ -2,6 +2,7 @@
 federation: WWE
 title: WWE Smackdown 28.08.2026
 headline: عرض سماك داون 28.08.2026 مترجم
+program_name: WWE Smackdown
 description: عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-28
 date: 2026-08-29T08:08:00.000+03:00
