@@ -2,6 +2,7 @@
 federation: INDIE
 title: CMLL Arena Coliseo de Guadalajara 18.08.2026
 headline: عرض سي ام ال ال 18.08.2026 مترجم
+program_name: CMLL
 description: عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-18
 date: 2026-08-30T08:05:00.000+03:00
