@@ -482,7 +482,7 @@ module.exports = function(eleventyConfig) {
       const dateVal = getDateValue(item);
       const season = isNaN(seasonRaw) ? null : seasonRaw;
       const year = dateVal ? dateVal.getUTCFullYear() : null;
-      const shortDate = dateVal ? (dateVal.getUTCDate() + "/" + (dateVal.getUTCMonth() + 1)) : null;
+      const shortDate = dateVal ? ("يوم " + dateVal.getUTCDate() + " شهر " + (dateVal.getUTCMonth() + 1)) : null;
 
       // خانة "رقم الحلقة" بقت نص حر (تقدر تكتب رقم عادي، أو أي نص/تاريخ بالعربي زي "29/8")
       const episodeRaw = item.data.episode_number;
@@ -547,7 +547,7 @@ module.exports = function(eleventyConfig) {
   const episodeShortLabel = function(ep) {
     if (!ep) return "";
     if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return "الحلقة " + ep.episodeLabel;
-    if (ep.shortDate) return "بتاريخ " + ep.shortDate;
+    if (ep.shortDate) return ep.shortDate;
     return ep.headline || ep.title || "";
   };
 
