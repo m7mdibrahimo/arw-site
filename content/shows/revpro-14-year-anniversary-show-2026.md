@@ -3,6 +3,7 @@ federation: INDIE
 title: RevPro 14 Year Anniversary Show (2026)
 headline: عرض ريف برو 14 يير انفيرسري شو 29.08.2026 مترجم
 program_name: RevPro Anniversary Shows
+is_annual: true
 description: عرض ريف برو 14 يير انفيرسري شو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-29
 date: 2026-08-31T14:10:00.000+03:00
