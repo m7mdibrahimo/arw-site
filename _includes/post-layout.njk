@@ -80,12 +80,12 @@
   body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
 
   /* 120Hz Tactile Active Feedback & Hardware Acceleration */
-  .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn {
+  .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn, .ep-pill, .season-tab, .ep-nav-btn {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
   }
-  .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active {
+  .show-card:active, .news-card:active, .fed-card:active, .btn:active, .qn:active, .tag-pill:active, .tag-card:active, .social-row a:active, .ep-pill:active, .season-tab:active, .ep-nav-btn:active {
     transform: scale(0.97) translateY(0) !important;
     transition: transform 0.08s ease !important;
   }
