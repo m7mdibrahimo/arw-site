@@ -448,6 +448,96 @@ module.exports = function(eleventyConfig) {
     return shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
 
+  // بيجمع كل عروض "البرامج" اللي ليها حلقات (لما تتحط خانة "اسم البرنامج" في اللوحة)
+  // ويرجع لكل برنامج قائمة حلقاته مرتبة بالموسم/رقم الحلقة، مقسّمة على مواسم، عشان تتعرض كترقيم قابل للضغط تحت كل حلقة.
+  eleventyConfig.addCollection("programsGrouped", function(collectionApi) {
+    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+    const map = new Map();
+
+    shows.forEach(function(item) {
+      const rawName = item.data && item.data.program_name;
+      if (!rawName || !String(rawName).trim()) return;
+      const name = String(rawName).trim();
+      const slug = arabicSlug(name);
+      if (!slug) return;
+
+      if (!map.has(slug)) {
+        map.set(slug, { slug: slug, name: name, episodes: [] });
+      }
+
+      const seasonRaw = parseInt(item.data.season_number, 10);
+      const episodeRaw = parseInt(item.data.episode_number, 10);
+
+      map.get(slug).episodes.push({
+        url: item.url,
+        title: item.data.title || "",
+        headline: item.data.headline || "",
+        image: item.data.image || "",
+        season: isNaN(seasonRaw) ? null : seasonRaw,
+        episode: isNaN(episodeRaw) ? null : episodeRaw,
+        timestamp: getItemTimestamp(item)
+      });
+    });
+
+    const programs = Array.from(map.values());
+
+    programs.forEach(function(prog) {
+      prog.episodes.sort(function(a, b) {
+        const sa = a.season === null ? 0 : a.season;
+        const sb = b.season === null ? 0 : b.season;
+        if (sa !== sb) return sa - sb;
+        const ea = a.episode === null ? 0 : a.episode;
+        const eb = b.episode === null ? 0 : b.episode;
+        if (ea !== eb) return ea - eb;
+        return a.timestamp - b.timestamp;
+      });
+
+      const seasonsMap = new Map();
+      prog.episodes.forEach(function(ep) {
+        const key = ep.season === null ? 0 : ep.season;
+        if (!seasonsMap.has(key)) seasonsMap.set(key, []);
+        seasonsMap.get(key).push(ep);
+      });
+
+      prog.seasons = Array.from(seasonsMap.entries())
+        .map(function(entry) { return { number: entry[0], episodes: entry[1] }; })
+        .sort(function(a, b) { return a.number - b.number; });
+    });
+
+    return programs;
+  });
+
+  // بيرجع كل بيانات التنقل بين الحلقات (البرنامج + الموسم الحالي + الحلقة السابقة/التالية) لصفحة عرض معينة.
+  // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
+  const getEpisodeNav = function(programName, currentUrl, programs) {
+    if (!programName || !String(programName).trim()) return null;
+    const slug = arabicSlug(programName);
+    if (!slug) return null;
+    const prog = (programs || []).find(function(p) { return p.slug === slug; });
+    if (!prog || prog.episodes.length <= 1) return null;
+
+    const clean = function(u) { return (u || "").toString().replace(/\.html$/, ""); };
+    const cleanCurrent = clean(currentUrl);
+
+    let idx = -1;
+    prog.episodes.forEach(function(ep, i) {
+      if (clean(ep.url) === cleanCurrent) idx = i;
+    });
+
+    const activeSeason = idx >= 0
+      ? (prog.episodes[idx].season === null ? 0 : prog.episodes[idx].season)
+      : prog.seasons[0].number;
+
+    return {
+      program: prog,
+      currentIndex: idx,
+      activeSeason: activeSeason,
+      prevEp: idx > 0 ? prog.episodes[idx - 1] : null,
+      nextEp: (idx >= 0 && idx < prog.episodes.length - 1) ? prog.episodes[idx + 1] : null
+    };
+  };
+  eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
+
   eleventyConfig.addCollection("tagList", function(collectionApi) {
     const tagMap = new Map();
     const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/recaps/*.md", "content/news/*.md"]);
