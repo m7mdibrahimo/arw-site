@@ -2,9 +2,16 @@
 federation: INDIE
 title: CMLL Martes Populares 25.08.2026
 headline: عرض سي ام ال ال 25.08.2026 مترجم
+program_name: CMLL
 description: عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-25
 date: 2026-08-26T14:26:00.000+03:00
+layout: post-layout.njk
+downloads:
+  - label: سيرفر 1 - جودة متوسطة
+    url: https://playmogo.com/d/ulhwwbm4ai9v
+  - label: سيرفر 2 - جودة متوسطة
+    url: https://streamtape.com/v/8X3WdoLbB6Comqa/CMLL.Martes.Populares.2026.08.25_720p.mp4
 duration: 01:50:01
 tags:
   - CMLL
@@ -16,10 +23,4 @@ servers:
     url: https://playmogo.com/e/ulhwwbm4ai9v
   - label: سيرفر 2 - جودة متوسطة
     url: https://streamtape.com/e/8X3WdoLbB6Comqa
-downloads:
-  - label: سيرفر 1 - جودة متوسطة
-    url: https://playmogo.com/d/ulhwwbm4ai9v
-  - label: سيرفر 2 - جودة متوسطة
-    url: https://streamtape.com/v/8X3WdoLbB6Comqa/CMLL.Martes.Populares.2026.08.25_720p.mp4
-layout: post-layout.njk
 ---
