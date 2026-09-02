@@ -2,6 +2,7 @@
 federation: WWE
 title: NXT Heatwave (2026)
 headline: عرض ان اكس تي هيت ويف 30.08.2026 مترجم
+program_name: WWE NXT Heatwave
 description: عرض ان اكس تي هيت ويف مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-30
 date: 2026-08-31T19:38:00.000+03:00
