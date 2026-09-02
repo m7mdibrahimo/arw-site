@@ -3,6 +3,7 @@ federation: MMA
 title: "UFC Fight Night: Hernandez vs. Rodrigues"
 headline: عرض يو اف سي فايت نايت 22.08.2026 مترجم
 program_name: UFC Fight Night
+is_annual: true
 description: عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-22
 date: 2026-08-23T18:20:00.000+03:00
