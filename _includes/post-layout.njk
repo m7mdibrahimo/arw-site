@@ -825,13 +825,19 @@
           function normalizeQuery(str){
             var eastern = '٠١٢٣٤٥٦٧٨٩';
             var extended = '۰۱۲۳۴۵۶۷۸۹';
-            var out = str.replace(/[٠-٩۰-۹]/g, function(ch){
+            var out = str.normalize ? str.normalize('NFC') : str;
+            out = out.replace(/[٠-٩۰-۹]/g, function(ch){
               var i = eastern.indexOf(ch);
               if (i > -1) return String(i);
               i = extended.indexOf(ch);
               if (i > -1) return String(i);
               return ch;
             });
+            // بعض الكيبوردات (فارسي/أوردو) بتكتب حروف عربية شكلها زي بعض بس Unicode مختلف (زي الياء الفارسية)
+            out = out.replace(/[\u06CC\u0649]/g, '\u064A'); // ی / ى → ي
+            out = out.replace(/[\u06A9]/g, '\u0643'); // ک → ك
+            out = out.replace(/[\u0640]/g, ''); // تطويل ـ
+            out = out.replace(/[\u064B-\u0652]/g, ''); // شكل/تشكيل
             return out.replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069]/g, '').trim();
           }
 
@@ -839,10 +845,13 @@
             var monthMatch = q.match(/شهر[^\d]*(\d{1,2})/);
             var dayMatch = q.match(/يوم[^\d]*(\d{1,2})/);
             var yearMatch = q.match(/سنة[^\d]*(\d{4})/) || q.match(/^(20\d{2})$/);
+            // لسه بيكتب كلمة "يوم"/"شهر"/"سنة" وماوصلش لرقم بعدها لسه - منورّيش "مفيش نتائج"، نستنى يكمل الرقم
+            var pending = /^(يوم|شهر|سنة)\s*$/.test(q.trim()) && !monthMatch && !dayMatch && !yearMatch;
             return {
               month: monthMatch ? monthMatch[1] : null,
               day: dayMatch ? dayMatch[1] : null,
               year: yearMatch ? (yearMatch[1] || yearMatch[0]) : null,
+              pending: pending,
               raw: q
             };
           }
@@ -876,6 +885,12 @@
             if (clearBtn) clearBtn.classList.add('show');
             panels.forEach(function(p){ p.style.display = 'flex'; });
             var parsed = parseQuery(q);
+            if (parsed.pending) {
+              // لسه بيكمل يكتب الرقم بعد "يوم"/"شهر"/"سنة" - نوريله كل العروض لحد ما يخلص
+              pills.forEach(function(pill){ pill.style.display = ''; });
+              if (noResults) noResults.style.display = 'none';
+              return;
+            }
             var visibleCount = 0;
             pills.forEach(function(pill){
               var match = pillMatches(pill, parsed);
