@@ -726,7 +726,7 @@
           {% for season in nav.program.seasons %}
           <div class="episode-strip" data-season-panel="{{ season.number }}"{% if season.number != nav.activeSeason %} style="display:none;"{% endif %}>
             {% for ep in season.episodes %}
-            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.episode == null and ep.pillLabel %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}">
+            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.pillLabel and ('/' in ep.pillLabel or ep.pillLabel.length > 3) %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}">
               <span class="ep-pill-num">{% if ep.pillLabel %}{{ ep.pillLabel }}{% else %}{{ loop.index }}{% endif %}</span>
             </a>
             {% endfor %}
