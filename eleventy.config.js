@@ -448,8 +448,21 @@ module.exports = function(eleventyConfig) {
     return shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
 
-  // بيجمع كل عروض "البرامج" اللي ليها حلقات (لما تتحط خانة "اسم البرنامج" في اللوحة)
-  // ويرجع لكل برنامج قائمة حلقاته مرتبة بالموسم/رقم الحلقة، مقسّمة على مواسم، عشان تتعرض كترقيم قابل للضغط تحت كل حلقة.
+  const getDateValue = function(item) {
+    const raw = (item.data && (item.data.event_date || item.data.date)) || null;
+    if (raw instanceof Date && !isNaN(raw.getTime())) return raw;
+    if (raw) {
+      const d = new Date(raw);
+      if (!isNaN(d.getTime())) return d;
+    }
+    return null;
+  };
+
+  // بيجمع كل عروض "البرامج" اللي ليها حلقات أو نسخ متكررة (لما تتحط خانة "اسم البرنامج" في اللوحة).
+  // - لو البرنامج له رقم موسم/حلقة صريح (زي برنامج بحلقات مرقّمة): بيتجمع ويترقّم عادي.
+  // - لو مفيش رقم موسم/حلقة (زي عروض أسبوعية متكررة زي الرو/سماكداون/ديناميت): الموقع بيستنتج تلقائيًا
+  //   السنة من "تاريخ العرض" بدل الموسم، وتاريخ العرض المختصر (يوم/شهر) بدل رقم الحلقة، فتحصل على نفس شكل
+  //   الترقيم الاحترافي من غير ما تكتب أي أرقام يدوي - بس اسم البرنامج واحد موحّد في كل نسخة (مثلاً "WWE Raw").
   eleventyConfig.addCollection("programsGrouped", function(collectionApi) {
     const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
     const map = new Map();
@@ -467,14 +480,28 @@ module.exports = function(eleventyConfig) {
 
       const seasonRaw = parseInt(item.data.season_number, 10);
       const episodeRaw = parseInt(item.data.episode_number, 10);
+      const dateVal = getDateValue(item);
+      const season = isNaN(seasonRaw) ? null : seasonRaw;
+      const episode = isNaN(episodeRaw) ? null : episodeRaw;
+      const year = dateVal ? dateVal.getUTCFullYear() : null;
+      const shortDate = dateVal ? (dateVal.getUTCDate() + "/" + (dateVal.getUTCMonth() + 1)) : null;
+
+      // مفتاح التجميع: رقم الموسم لو موجود، وإلا السنة المستنتجة من تاريخ العرض، وإلا مجموعة عامة واحدة.
+      const groupKey = season !== null ? season : (year !== null ? year : 0);
+      const groupType = season !== null ? "season" : (year !== null ? "year" : "misc");
 
       map.get(slug).episodes.push({
         url: item.url,
         title: item.data.title || "",
         headline: item.data.headline || "",
         image: item.data.image || "",
-        season: isNaN(seasonRaw) ? null : seasonRaw,
-        episode: isNaN(episodeRaw) ? null : episodeRaw,
+        season: season,
+        episode: episode,
+        shortDate: shortDate,
+        groupKey: groupKey,
+        groupType: groupType,
+        // الرقم اللي هيتعرض جوه الدائرة: رقم الحلقة لو موجود، وإلا تاريخ العرض المختصر
+        pillLabel: episode !== null ? String(episode) : (shortDate || null),
         timestamp: getItemTimestamp(item)
       });
     });
@@ -483,9 +510,7 @@ module.exports = function(eleventyConfig) {
 
     programs.forEach(function(prog) {
       prog.episodes.sort(function(a, b) {
-        const sa = a.season === null ? 0 : a.season;
-        const sb = b.season === null ? 0 : b.season;
-        if (sa !== sb) return sa - sb;
+        if (a.groupKey !== b.groupKey) return a.groupKey - b.groupKey;
         const ea = a.episode === null ? 0 : a.episode;
         const eb = b.episode === null ? 0 : b.episode;
         if (ea !== eb) return ea - eb;
@@ -494,14 +519,17 @@ module.exports = function(eleventyConfig) {
 
       const seasonsMap = new Map();
       prog.episodes.forEach(function(ep) {
-        const key = ep.season === null ? 0 : ep.season;
-        if (!seasonsMap.has(key)) seasonsMap.set(key, []);
-        seasonsMap.get(key).push(ep);
+        if (!seasonsMap.has(ep.groupKey)) seasonsMap.set(ep.groupKey, { type: ep.groupType, episodes: [] });
+        seasonsMap.get(ep.groupKey).episodes.push(ep);
       });
 
       prog.seasons = Array.from(seasonsMap.entries())
-        .map(function(entry) { return { number: entry[0], episodes: entry[1] }; })
+        .map(function(entry) {
+          return { number: entry[0], type: entry[1].type, episodes: entry[1].episodes };
+        })
         .sort(function(a, b) { return a.number - b.number; });
+
+      // لو كل حلقات البرنامج بترجع لمجموعة تاريخ/سنة واحدة بس (عرض أسبوعي مثلاً)، مفيش داعي لإظهار تابات مواسم.
     });
 
     return programs;
@@ -525,7 +553,7 @@ module.exports = function(eleventyConfig) {
     });
 
     const activeSeason = idx >= 0
-      ? (prog.episodes[idx].season === null ? 0 : prog.episodes[idx].season)
+      ? prog.episodes[idx].groupKey
       : prog.seasons[0].number;
 
     return {
