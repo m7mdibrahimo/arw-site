@@ -2,6 +2,7 @@
 federation: MMA
 title: "UFC Fight Night 286: Nurmagomedov vs Song"
 headline: عرض يو اف سي فايت نايت 29.08.2026 مترجم
+program_name: UFC Fight Night
 description: عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-29
 date: 2026-08-31T02:29:00.000+03:00
