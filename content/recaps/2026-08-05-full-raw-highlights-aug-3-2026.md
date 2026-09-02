@@ -2,6 +2,7 @@
 readTime: "Full Raw highlights: Aug. 3, 2026"
 federation: WWE
 title: RAW Highlights 03.08.2026
+program_name: WWE RAW
 event_date: 2026-08-03
 date: 2026-08-05T17:55:00.000+03:00
 headline: ملخص عرض الرو 03.08.2026 مترجم
