@@ -140,7 +140,7 @@ permalink: "/search/index.html"
   .show-body{ padding:18px 20px; }
   .show-body .ep{ font-size:11.5px; color:var(--gold); font-weight:800; letter-spacing:.5px; }
   .show-body h3{ font-size:16.5px; font-weight:700; margin:8px 0 8px;; transition:color 0.2s ease; }
-  .show-body .desc{ color:var(--muted); font-size:13px; margin-bottom:12px; }
+  .show-body .desc{ color:var(--muted); font-size:13px; margin-bottom:12px; line-height:1.6; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   .show-body .foot{ display:flex; justify-content:flex-start; font-size:12px; color:var(--muted); border-top:1px solid var(--line); padding-top:10px; }
   .news-card{ background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; display:block; text-decoration:none; color:var(--ink); }
   .news-card:hover{ transform:translateY(-8px) scale(1.015); box-shadow:0 20px 36px -16px rgba(255,111,89,.28); border-color:var(--coral); }
@@ -206,6 +206,7 @@ permalink: "/search/index.html"
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-4px) scale(1.12); box-shadow:0 8px 16px rgba(14,149,148,0.3); }
 .no-results{ text-align:center; color:var(--muted); padding:40px 24px; grid-column:1/-1; }
+mark{ background:var(--teal-soft); color:var(--teal); padding:0 2px; border-radius:3px; font-weight:800; }
   /* Hero Section Animations */
   .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
   .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
@@ -355,6 +356,120 @@ permalink: "/search/index.html"
     var perPage = parseInt(localStorage.getItem('arw_search_per_page') || '24', 10);
     if(isNaN(perPage) || perPage <= 0) perPage = 24;
 
+    // ===== محرك بحث احترافي: تطبيع عربي + بحث بكل الكلمات (AND) + ترتيب بالصلة + تظليل + مقتطف =====
+    function normalizeArabic(str){
+      if (!str) return '';
+      var eastern = '٠١٢٣٤٥٦٧٨٩', extended = '۰۱۲۳۴۵۶۷۸۹';
+      var out = String(str);
+      out = out.normalize ? out.normalize('NFC') : out;
+      out = out.replace(/[٠-٩۰-۹]/g, function(ch){
+        var i = eastern.indexOf(ch); if (i > -1) return String(i);
+        i = extended.indexOf(ch); if (i > -1) return String(i);
+        return ch;
+      });
+      out = out.toLowerCase();
+      out = out.replace(/[إأآا]/g, 'ا');
+      out = out.replace(/[ىي]/g, 'ي');
+      out = out.replace(/ة/g, 'ه');
+      out = out.replace(/[\u064B-\u0652\u0640]/g, '');
+      out = out.replace(/[\u200B-\u200F\u202A-\u202E\u2066-\u2069]/g, '');
+      out = out.replace(/\s+/g, ' ').trim();
+      return out;
+    }
+
+    function toTagsString(tags){
+      if (!tags) return '';
+      if (Array.isArray(tags)) return tags.join(' ');
+      return String(tags);
+    }
+
+    function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+    function highlightText(text, rawTerms){
+      if (!text) return '';
+      var out = text;
+      rawTerms.forEach(function(t){
+        if (!t) return;
+        var re = new RegExp('(' + escapeRegex(t) + ')', 'gi');
+        out = out.replace(re, '<mark>$1</mark>');
+      });
+      return out;
+    }
+
+    function makeSnippet(desc, normTerms, rawTerms){
+      if (!desc) return '';
+      var normDesc = normalizeArabic(desc);
+      var idx = -1;
+      for (var i = 0; i < normTerms.length; i++){
+        var found = normDesc.indexOf(normTerms[i]);
+        if (found !== -1) { idx = found; break; }
+      }
+      var snippet;
+      if (idx === -1) {
+        snippet = desc.length > 150 ? desc.slice(0, 150) + '…' : desc;
+      } else {
+        var start = Math.max(0, idx - 40);
+        var end = Math.min(desc.length, idx + 90);
+        snippet = (start > 0 ? '…' : '') + desc.slice(start, end) + (end < desc.length ? '…' : '');
+      }
+      return highlightText(snippet, rawTerms);
+    }
+
+    function fieldScore(normText, terms, weight){
+      if (!normText) return 0;
+      var score = 0;
+      terms.forEach(function(t){ if (normText.indexOf(t) !== -1) score += weight; });
+      return score;
+    }
+
+    function searchIndex(data, query){
+      var qNorm = normalizeArabic(query);
+      var normTerms = qNorm.split(' ').filter(Boolean);
+      var rawTerms = query.trim().split(/\s+/).filter(Boolean);
+      if (!normTerms.length) return [];
+
+      var results = [];
+      data.forEach(function(item){
+        var nTitle = normalizeArabic(item.title);
+        var nHeadline = normalizeArabic(item.headline);
+        var nDesc = normalizeArabic(item.description);
+        var nTags = normalizeArabic(toTagsString(item.tags));
+        var nFed = normalizeArabic(item.federation);
+        var nKind = normalizeArabic(item.kindLabel);
+        var allText = nTitle + ' ' + nHeadline + ' ' + nDesc + ' ' + nTags + ' ' + nFed + ' ' + nKind;
+
+        // لازم كل كلمات البحث تكون موجودة في مكان ما (بحث AND زي محركات البحث الاحترافية)
+        var matchesAll = normTerms.every(function(t){ return allText.indexOf(t) !== -1; });
+        if (!matchesAll) return;
+
+        var score = 0;
+        if (nTitle === qNorm) score += 200;
+        else if (nTitle.indexOf(qNorm) === 0) score += 120;
+        score += fieldScore(nTitle, normTerms, 50);
+        score += fieldScore(nHeadline, normTerms, 30);
+        score += fieldScore(nTags, normTerms, 18);
+        score += fieldScore(nDesc, normTerms, 8);
+        score += fieldScore(nFed, normTerms, 4);
+        score += fieldScore(nKind, normTerms, 2);
+
+        var displayTitle = item.headline || item.title;
+        results.push({
+          item: item,
+          score: score,
+          highlightedTitle: highlightText(displayTitle, rawTerms),
+          snippet: makeSnippet(item.description, normTerms, rawTerms)
+        });
+      });
+
+      results.sort(function(a, b){
+        if (b.score !== a.score) return b.score - a.score;
+        return new Date(b.item.date) - new Date(a.item.date);
+      });
+
+      return results;
+    }
+    // ===== نهاية محرك البحث =====
+
     function setupReveals(root){
       if(!('IntersectionObserver' in window)) return;
       if(!window.__arwRevealIO){
@@ -416,7 +531,10 @@ permalink: "/search/index.html"
       }
 
       if (cachedResults.length === 0) {
-        grid.innerHTML = '<div class="no-results">لم يتم العثور على أي نتائج مطابقة لـ "' + currentQuery + '".</div>';
+        grid.innerHTML = '<div class="no-results">' +
+          '<p>لم يتم العثور على أي نتائج مطابقة لـ "' + currentQuery + '".</p>' +
+          '<p style="font-size:13px; margin-top:8px;">تأكد من كتابة الكلمة بشكل صحيح، أو جرّب كلمات أقل أو أكثر عمومية.</p>' +
+        '</div>';
         paginationEl.innerHTML = '';
         controlsEl.style.display = 'none';
         return;
@@ -433,15 +551,18 @@ permalink: "/search/index.html"
       var end = Math.min(start + perPage, total);
       var pageItems = cachedResults.slice(start, end);
 
-      statsEl.innerHTML = 'تم العثور على <b>' + total + '</b> نتيجة';
+      statsEl.innerHTML = 'تم العثور على <b>' + total + '</b> نتيجة، مرتبة حسب الصلة';
 
-      grid.innerHTML = pageItems.map(function(item){
+      grid.innerHTML = pageItems.map(function(result){
+        var item = result.item;
         var badge = item.kind === 'news' ? 'خبر' : (item.kind === 'recap' ? 'ملخص' : 'عرض');
         var img = item.image || 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop';
         return '<a class="show-card reveal" href="' + item.url + '">' +
           '<div class="show-thumb" style="background-image:url(\'' + img + '\')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>' +
           '<div class="show-body"><span class="kind-badge kind-' + item.kind + '">' + badge + '</span>' + (item.federation ? '<span class="cat cat-' + item.federation.toLowerCase() + '">' + item.federation + '</span>' : '') +
-          '<h3>' + (item.headline || item.title) + '</h3></div></a>';
+          '<h3>' + result.highlightedTitle + '</h3>' +
+          (result.snippet ? '<p class="desc">' + result.snippet + '</p>' : '') +
+          '</div></a>';
       }).join('');
       setupReveals(grid);
 
@@ -536,15 +657,7 @@ permalink: "/search/index.html"
     if (!currentQuery) return;
 
     fetch('/search-index.json').then(function(r){ return r.json(); }).then(function(data){
-      var qLower = currentQuery.toLowerCase();
-      cachedResults = data.filter(function(item){
-        var title = (item.title || '').toLowerCase();
-        var headline = (item.headline || '').toLowerCase();
-        var desc = (item.description || '').toLowerCase();
-        var fed = (item.federation || '').toLowerCase();
-        var kindLabel = (item.kindLabel || '').toLowerCase();
-        return title.includes(qLower) || headline.includes(qLower) || desc.includes(qLower) || fed.includes(qLower) || kindLabel.includes(qLower);
-      });
+      cachedResults = searchIndex(data, currentQuery);
       renderResults(false);
     }).catch(function(err){
       console.error(err);
