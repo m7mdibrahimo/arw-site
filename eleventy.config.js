@@ -129,6 +129,33 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("cleanUrl", cleanUrl);
   eleventyConfig.addNunjucksFilter("cleanUrl", cleanUrl);
 
+  // بيحول مدة زي "02:15:05" أو "45:12" لصيغة ISO 8601 (PT2H15M5S) المطلوبة في Schema.org VideoObject
+  const isoDuration = function(str) {
+    if (!str) return "";
+    const parts = str.toString().split(":").map(function(n){ return parseInt(n, 10) || 0; });
+    let h = 0, m = 0, s = 0;
+    if (parts.length === 3) { h = parts[0]; m = parts[1]; s = parts[2]; }
+    else if (parts.length === 2) { m = parts[0]; s = parts[1]; }
+    else if (parts.length === 1) { s = parts[0]; }
+    let out = "PT";
+    if (h) out += h + "H";
+    if (m) out += m + "M";
+    if (s || (!h && !m)) out += s + "S";
+    return out;
+  };
+  eleventyConfig.addFilter("isoDuration", isoDuration);
+  eleventyConfig.addNunjucksFilter("isoDuration", isoDuration);
+
+  // بيحول أي رابط صورة/ملف لرابط مطلق كامل (لو كان نسبي زي /content/images/x.jpg)
+  const absUrl = function(url) {
+    if (!url) return "";
+    const u = url.toString();
+    if (u.startsWith("http://") || u.startsWith("https://")) return u;
+    return "https://arab-wrestling.com" + (u.startsWith("/") ? u : "/" + u);
+  };
+  eleventyConfig.addFilter("absUrl", absUrl);
+  eleventyConfig.addNunjucksFilter("absUrl", absUrl);
+
   const arabicShowName = function(str) {
     if (!str) return "";
     return str

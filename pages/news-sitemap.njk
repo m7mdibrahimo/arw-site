@@ -1,0 +1,26 @@
+---
+permalink: /news-sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+{%- for item in collections.news %}
+{%- if loop.index <= 200 %}
+  <url>
+    <loc>https://arab-wrestling.com{{ item.url | cleanUrl }}</loc>
+    <news:news>
+      <news:publication>
+        <news:name>عرب راسلنج</news:name>
+        <news:language>ar</news:language>
+      </news:publication>
+      <news:publication_date>{{ item.date.toISOString() }}</news:publication_date>
+      <news:title>{{ (item.data.headline or item.data.title) | escape }}</news:title>
+      {%- if item.data.tags and item.data.tags.length %}
+      <news:keywords>{{ item.data.tags | join(', ') | escape }}</news:keywords>
+      {%- endif %}
+    </news:news>
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

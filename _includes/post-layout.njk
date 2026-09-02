@@ -18,12 +18,17 @@
 {% endif %}
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 
+{% set schemaImage = (image | absUrl) if image else 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop' %}
+{% set isVideoContent = duration and servers and servers.length %}
+{% set pageUrl = 'https://arab-wrestling.com' + (page.url | cleanUrl) %}
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://arab-wrestling.com{{ page.url | cleanUrl }}">
+<meta property="og:url" content="{{ pageUrl }}">
 <meta property="og:title" content="{{ pageTitle }} | عرب راسلنج">
 <meta property="og:description" content="{{ metaDesc }}">
-<meta property="og:image" content="{% if image %}{{ image }}{% else %}https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop{% endif %}">
+<meta property="og:image" content="{{ schemaImage }}">
+<meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
 
@@ -31,30 +36,78 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ pageTitle }} | عرب راسلنج">
 <meta name="twitter:description" content="{{ metaDesc }}">
-<meta name="twitter:image" content="{% if image %}{{ image }}{% else %}https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop{% endif %}">
+<meta name="twitter:image" content="{{ schemaImage }}">
 <link rel="stylesheet" href="/assets/notif.css">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "{{ pageTitle | escape }}",
-  "image": ["{% if image %}{{ image }}{% else %}https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop{% endif %}"],
-  "datePublished": {{ page.date | jsonify | safe }},
-  "dateModified": {{ page.date | jsonify | safe }},
-  "author": {
-    "@type": "Organization",
-    "name": "عرب راسلنج"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "عرب راسلنج"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://arab-wrestling.com{{ page.url | cleanUrl }}"
-  }
+  "@graph": [
+    {
+      "@type": "{{ 'VideoObject' if isVideoContent else 'NewsArticle' }}",
+      "headline": "{{ pageTitle | escape }}",
+      {% if isVideoContent %}
+      "name": "{{ pageTitle | escape }}",
+      "description": "{{ (description or baseDesc) | escape }}",
+      "thumbnailUrl": ["{{ schemaImage }}"],
+      "uploadDate": {{ page.date | jsonify | safe }},
+      {% if duration %}"duration": "{{ duration | isoDuration }}",{% endif %}
+      {% if servers and servers.length %}"embedUrl": "{{ servers[0].url }}",{% endif %}
+      {% endif %}
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{ schemaImage }}"
+      },
+      "datePublished": {{ page.date | jsonify | safe }},
+      "dateModified": {{ page.date | jsonify | safe }},
+      {% if federation %}"articleSection": "{{ federation }}",{% endif %}
+      {% if tags and tags.length %}"keywords": "{{ tags | join(', ') | escape }}",{% endif %}
+      "inLanguage": "ar",
+      "author": {
+        "@type": "Organization",
+        "name": "عرب راسلنج",
+        "url": "https://arab-wrestling.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "عرب راسلنج",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://arab-wrestling.com/assets/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ pageUrl }}"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://arab-wrestling.com/"
+        },
+        {% set sectionName = 'الأخبار' if page.url.startsWith('/news/') else ('عروض المصارعة' if page.url.startsWith('/shows/') else 'ملخصات العروض') %}
+        {% set sectionUrl = '/news/' if page.url.startsWith('/news/') else ('/shows/' if page.url.startsWith('/shows/') else '/recaps/') %}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ sectionName }}",
+          "item": "https://arab-wrestling.com{{ sectionUrl }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ pageTitle | escape }}",
+          "item": "{{ pageUrl }}"
+        }
+      ]
+    }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
