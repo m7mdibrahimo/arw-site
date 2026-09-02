@@ -479,12 +479,18 @@ module.exports = function(eleventyConfig) {
       }
 
       const seasonRaw = parseInt(item.data.season_number, 10);
-      const episodeRaw = parseInt(item.data.episode_number, 10);
       const dateVal = getDateValue(item);
       const season = isNaN(seasonRaw) ? null : seasonRaw;
-      const episode = isNaN(episodeRaw) ? null : episodeRaw;
       const year = dateVal ? dateVal.getUTCFullYear() : null;
       const shortDate = dateVal ? (dateVal.getUTCDate() + "/" + (dateVal.getUTCMonth() + 1)) : null;
+
+      // خانة "رقم الحلقة" بقت نص حر (تقدر تكتب رقم عادي، أو أي نص/تاريخ بالعربي زي "29/8")
+      const episodeRaw = item.data.episode_number;
+      const episodeLabel = (episodeRaw !== undefined && episodeRaw !== null && String(episodeRaw).trim() !== "")
+        ? String(episodeRaw).trim()
+        : null;
+      // لو النص المكتوب رقم صحيح بحت، بيتستخدم للترتيب الرقمي. غير كده الترتيب بيبقى بتاريخ النشر.
+      const episodeSortNum = (episodeLabel !== null && /^\d+$/.test(episodeLabel)) ? parseInt(episodeLabel, 10) : null;
 
       // مفتاح التجميع: رقم الموسم لو موجود، وإلا السنة المستنتجة من تاريخ العرض، وإلا مجموعة عامة واحدة.
       const groupKey = season !== null ? season : (year !== null ? year : 0);
@@ -496,12 +502,13 @@ module.exports = function(eleventyConfig) {
         headline: item.data.headline || "",
         image: item.data.image || "",
         season: season,
-        episode: episode,
+        episodeLabel: episodeLabel,
+        episodeSortNum: episodeSortNum,
         shortDate: shortDate,
         groupKey: groupKey,
         groupType: groupType,
-        // الرقم اللي هيتعرض جوه الدائرة: رقم الحلقة لو موجود، وإلا تاريخ العرض المختصر
-        pillLabel: episode !== null ? String(episode) : (shortDate || null),
+        // الرقم/النص اللي هيتعرض جوه الدائرة: اللي كتبته في "رقم الحلقة" لو موجود، وإلا تاريخ العرض المختصر
+        pillLabel: episodeLabel !== null ? episodeLabel : (shortDate || null),
         timestamp: getItemTimestamp(item)
       });
     });
@@ -511,8 +518,8 @@ module.exports = function(eleventyConfig) {
     programs.forEach(function(prog) {
       prog.episodes.sort(function(a, b) {
         if (a.groupKey !== b.groupKey) return a.groupKey - b.groupKey;
-        const ea = a.episode === null ? 0 : a.episode;
-        const eb = b.episode === null ? 0 : b.episode;
+        const ea = a.episodeSortNum === null ? Infinity : a.episodeSortNum;
+        const eb = b.episodeSortNum === null ? Infinity : b.episodeSortNum;
         if (ea !== eb) return ea - eb;
         return a.timestamp - b.timestamp;
       });
@@ -539,7 +546,7 @@ module.exports = function(eleventyConfig) {
   // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
   const episodeShortLabel = function(ep) {
     if (!ep) return "";
-    if (ep.episode !== null) return "الحلقة " + ep.episode;
+    if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return "الحلقة " + ep.episodeLabel;
     if (ep.shortDate) return "بتاريخ " + ep.shortDate;
     return ep.headline || ep.title || "";
   };
