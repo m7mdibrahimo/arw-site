@@ -615,6 +615,7 @@
 
 {% set isNews = (page.inputPath and "content/news" in page.inputPath) %}
 {% set isShow = (page.inputPath and "content/shows" in page.inputPath) %}
+{% set isRecap = (page.inputPath and "content/recaps" in page.inputPath) %}
 
 <div class="hero" id="top"{% if image %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg image, '' %}') center 30%/cover no-repeat;"{% endif %}>
   <div class="hero-inner">
@@ -711,7 +712,8 @@
     {% endif %}
 
     {% if program_name %}
-      {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
+      {% set navPrograms = collections.recapsProgramsGrouped if isRecap else collections.programsGrouped %}
+      {% set nav = getEpisodeNav(program_name, page.url, navPrograms) %}
       {% if nav %}
         {% set isSeries = (nav.program.mode == "series") %}
         {% set nounSingle = "حلقة" if isSeries else "عرض" %}
