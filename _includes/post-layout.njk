@@ -845,8 +845,12 @@
             var monthMatch = q.match(/شهر[^\d]*(\d{1,2})/);
             var dayMatch = q.match(/يوم[^\d]*(\d{1,2})/);
             var yearMatch = q.match(/سنة[^\d]*(\d{4})/) || q.match(/^(20\d{2})$/);
-            // لسه بيكتب كلمة "يوم"/"شهر"/"سنة" وماوصلش لرقم بعدها لسه - منورّيش "مفيش نتائج"، نستنى يكمل الرقم
-            var pending = /^(يوم|شهر|سنة)\s*$/.test(q.trim()) && !monthMatch && !dayMatch && !yearMatch;
+            var trimmed = q.trim();
+            var keywords = ['يوم', 'شهر', 'سنة'];
+            // لسه بيكتب بداية كلمة "يوم"/"شهر"/"سنة" (حتى لو حرف واحد بس) وماوصلش لرقم بعدها لسه -
+            // منورّيش "مفيش نتائج" وهو لسه مخلصش يكتب، نسيب النتائج زي ما هي لحد ما يكمل
+            var isKeywordPrefix = trimmed.length > 0 && keywords.some(function(kw){ return kw.indexOf(trimmed) === 0; });
+            var pending = isKeywordPrefix && !monthMatch && !dayMatch && !yearMatch;
             return {
               month: monthMatch ? monthMatch[1] : null,
               day: dayMatch ? dayMatch[1] : null,
