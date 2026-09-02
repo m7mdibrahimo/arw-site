@@ -81,6 +81,46 @@ function buildDividedCaption(title: string, text?: string): string {
   return parts.join(DIVIDER);
 }
 
+// X's real character-counting algorithm (twitter-text v3) weights most
+// Latin/Arabic-range characters (U+0000–U+10FF) and a few punctuation
+// ranges as 1, but weights everything else — including the "─" box-drawing
+// characters used in the divider above and the "…" ellipsis — as 2. A
+// naive `.length` check treats every character as weight 1, so a caption
+// that measured exactly 280 by `.length` (because it ended in a divider or
+// an ellipsis) could still be rejected by X as over the real 280-weighted
+// limit. That mismatch — not the title being too long — is what was
+// causing "X posts cannot exceed 280 characters" even on captions that
+// looked short enough.
+function isXLowWeightCodePoint(cp: number): boolean {
+  return (
+    (cp >= 0 && cp <= 4351) ||
+    (cp >= 8192 && cp <= 8205) ||
+    (cp >= 8208 && cp <= 8223) ||
+    (cp >= 8242 && cp <= 8247)
+  );
+}
+
+function xWeightedLength(str: string): number {
+  let weight = 0;
+  for (const ch of str) weight += isXLowWeightCodePoint(ch.codePointAt(0)!) ? 1 : 2;
+  return weight;
+}
+
+function truncateForX(str: string, maxWeighted = 280): string {
+  if (xWeightedLength(str) <= maxWeighted) return str;
+  const ellipsis = "…";
+  const ellipsisWeight = xWeightedLength(ellipsis);
+  let weight = 0;
+  let out = "";
+  for (const ch of str) {
+    const w = isXLowWeightCodePoint(ch.codePointAt(0)!) ? 1 : 2;
+    if (weight + w + ellipsisWeight > maxWeighted) break;
+    out += ch;
+    weight += w;
+  }
+  return out.trim() + ellipsis;
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // Small helpers (ported as-is from server.ts)
 // ─────────────────────────────────────────────────────────────────────────
@@ -462,7 +502,7 @@ async function postToFacebookViaBuffer(
 async function postToInstagram(
   env: Env,
   data: { title: string; text?: string; url: string; imageUrl?: string }
-): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
   if (!data.imageUrl) return { ok: false, skipped: true };
 
@@ -502,16 +542,40 @@ async function postToInstagram(
     }
     if (!ready) return { ok: false };
 
-    const publishRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ creation_id: createResult.id, access_token: pageToken }),
-      }
-    );
-    const publishResult: any = await publishRes.json().catch(() => ({}));
+    // This call is the actual point of no return — once Meta receives it,
+    // the post may already be live even if the response never makes it
+    // back to us (a Workers network hiccup, a timeout, etc). If that
+    // happens, the caller must NOT release the claim and retry, or the
+    // same image gets posted again next minute — which is exactly what
+    // was causing Instagram to publish the same photo repeatedly.
+    let publishRes: Response;
+    try {
+      publishRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ creation_id: createResult.id, access_token: pageToken }),
+        }
+      );
+    } catch (e) {
+      return { ok: false, ambiguous: true };
+    }
+    const publishResult: any = await publishRes.json().catch(() => ({ __unparsed: true }));
     if (publishResult.id) return { ok: true, result: publishResult };
+
+    // "Action is blocked" (error code 4 / subcode 2207051) is Meta's
+    // automated spam-prevention throttle, not a normal per-post rejection.
+    // Releasing the claim and letting the watcher hammer the endpoint
+    // again a minute later only adds to the activity Meta is already
+    // flagging, and risks a duplicate if the post actually went through
+    // before the restriction kicked in. Treat it as needing a human to
+    // check the account instead of an automatic retry.
+    const errCode = publishResult?.error?.code;
+    const errSubcode = publishResult?.error?.error_subcode;
+    const isBlocked = errCode === 4 || errSubcode === 2207051;
+    if (isBlocked || publishResult.__unparsed) return { ok: false, result: publishResult, ambiguous: true };
+
     return { ok: false, result: publishResult };
   } catch (e) {
     return { ok: false };
@@ -535,9 +599,8 @@ async function postToXViaBuffer(
   // link-unfurl preview triggers the same kind of reach suppression
   // Facebook does for outbound links, so the URL is dropped entirely
   // rather than routed around it.
-  const maxLen = 280;
   const fullCaption = buildDividedCaption(data.title, data.text);
-  const tweetText = fullCaption.length > maxLen ? fullCaption.slice(0, maxLen - 1).trim() + "…" : fullCaption;
+  const tweetText = truncateForX(fullCaption, 280);
 
   const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
@@ -591,6 +654,7 @@ async function publishToPlatform(
 
   let ok = false;
   let skipped = false;
+  let ambiguous = false;
   let raw: any;
 
   if (platform === "telegram") {
@@ -607,6 +671,7 @@ async function publishToPlatform(
     const r = await postToInstagram(env, { ...item, imageUrl });
     ok = r.ok;
     skipped = !!r.skipped;
+    ambiguous = !!(r as any).ambiguous;
     raw = r.result;
   } else {
     const r = await postToXViaBuffer(env, item);
@@ -616,6 +681,15 @@ async function publishToPlatform(
   }
 
   if (ok) return { status: "sent" };
+
+  // An ambiguous outcome means we genuinely don't know whether the post
+  // went live on the platform's side (network error right at the publish
+  // call, or an account-level throttle). Releasing the claim here would
+  // let the next watcher tick retry and risk posting the same content
+  // again — so this is left claimed and reported as "uncertain" instead,
+  // for a human to check and clear manually if it really did fail.
+  if (ambiguous) return { status: "uncertain", raw };
+
   await releaseSendClaim(env, platform, key);
   return { status: skipped ? "not_configured" : "failed", raw };
 }
