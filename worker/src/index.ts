@@ -131,7 +131,12 @@ function buildXCaption(title: string, text?: string): string {
   const DIVIDER = "\n\n────────\n\n";
   const followBody = SOCIAL_FOLLOW_LINE.replace(/^\n+/, "");
   const titleTrimmed = title.trim();
-  const maxWeighted = 280;
+  // X's documented limit is 280, but a caption landing exactly on that
+  // boundary was still getting rejected in practice (confirmed against a
+  // real failing post) — X's real enforcement appears stricter than the
+  // "≤ 280" the public algorithm implies. A small safety margin avoids
+  // that boundary entirely instead of chasing the exact off-by-one.
+  const maxWeighted = 270;
 
   const base = titleTrimmed + DIVIDER + followBody;
   if (!text || !text.trim()) {
