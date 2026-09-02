@@ -1,6 +1,7 @@
 ---
 federation: WWE
 title: NXT Highlights 18.08.2026
+program_name: WWE NXT
 event_date: 2026-08-18
 date: 2026-08-19T06:38:00.000+03:00
 headline: ملخص عرض ان اكس تي 18.08.2026 مترجم
