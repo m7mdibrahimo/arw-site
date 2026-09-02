@@ -83,9 +83,7 @@ collections:
     fields:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم الحلقة", name: "title", widget: "string" }
-      - { label: "اسم البرنامج (اختياري - لربط الملخصات المتكررة ببعض)", name: "program_name", widget: "string", required: false, hint: "اختياري: اكتب اسم موحّد بنفس الحروف في كل ملخص من نفس العرض المتكرر (مثلاً: ملخص الرو) عشان الموقع يجمعهم ويعرض ترقيم يقدر الزوار يتنقلوا بيه، بنفس الطريقة المستخدمة في قسم العروض. سيب الموسم ورقم/عنوان الملخص فاضيين، والموقع هيستخدم تاريخ العرض تلقائيًا (السنة بدل الموسم، والتاريخ بدل الرقم)." }
-      - { label: "رقم الموسم (اختياري - نادرًا ما يُستخدم في الملخصات)", name: "season_number", widget: "number", required: false, value_type: "int", hint: "سيبها فاضية في الغالب - قسم الملخصات مفيهوش برامج بمواسم عادةً." }
-      - { label: "رقم/عنوان الملخص (اختياري)", name: "episode_number", widget: "string", required: false, hint: "اختياري. سيبها فاضية عادةً، والموقع هيستخدم تاريخ العرض بدلها تلقائيًا." }
+      - { label: "اسم البرنامج (اختياري - لربط الملخصات المتكررة ببعض)", name: "program_name", widget: "string", required: false, hint: "اختياري: اكتب اسم موحّد بنفس الحروف في كل ملخص من نفس العرض المتكرر (مثلاً: ملخص الرو) عشان الموقع يجمعهم ويعرض ترقيم يقدر الزوار يتنقلوا بيه. الموقع هيستخدم تاريخ العرض تلقائيًا (السنة، والتاريخ) - مش محتاج تكتب أي رقم." }
       - { label: "عرض سنوي (بدون موسم)", name: "is_annual", widget: "boolean", required: false, default: false, hint: "فعّلها بس لو الملخص ده لفعالية سنوية بتتكرر كل سنة بنفس الاسم." }
       - { label: "تاريخ العرض", name: "event_date", widget: "datetime", date_format: "DD/MM/YYYY", format: "YYYY-MM-DD", time_format: false, required: false, hint: "اختر تاريخ العرض من التقويم/الجدول (السنة والشهر واليوم)" }
       - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false, hint: "اختر تاريخ ووقت النشر من التقويم" }
