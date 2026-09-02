@@ -1,6 +1,6 @@
 ---
 federation: MMA
-title: "UFC Fight Night: Hernandez vs. Rodrigues"
+title: "UFC Fight Night 285: Hernandez vs. Rodrigues"
 headline: عرض يو اف سي فايت نايت 22.08.2026 مترجم
 program_name: UFC Fight Night
 is_annual: true
