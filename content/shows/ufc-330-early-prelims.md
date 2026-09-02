@@ -3,6 +3,7 @@ federation: MMA
 title: "UFC 330: Makhachev vs. Machado Garry (Early Prelims)"
 headline: عرض يو اف سي 330 ايرلي بريلمز مترجم
 program_name: UFC
+is_annual: true
 description: عرض يو اف سي 330 ايرلي بريلمز مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-15
 date: 2026-08-16T19:48:00.000+03:00
