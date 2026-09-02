@@ -510,6 +510,7 @@
   .episodes-nav-head h3{ font-family:'Cairo',sans-serif; font-weight:900; font-size:16.5px; display:flex; align-items:center; gap:8px; color:var(--ink); }
   .episodes-nav-head h3 svg{ color:var(--teal); flex-shrink:0; }
   .episodes-count{ font-size:12px; font-weight:700; color:var(--teal); background:var(--teal-soft); padding:5px 13px; border-radius:999px; white-space:nowrap; }
+  .episodes-count.episodes-season-badge{ color:var(--gold); background:var(--gold-soft); }
 
   .season-tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
   .season-tab{ font-family:'Tajawal',sans-serif; font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer; transition:all .25s cubic-bezier(.34,1.56,.64,1); }
@@ -709,6 +710,7 @@
               حلقات {{ nav.program.name }}
             </h3>
             <span class="episodes-count">{{ nav.program.episodes.length }} حلقة</span>
+            {% if nav.activeSeasonLabel %}<span class="episodes-count episodes-season-badge">{{ nav.activeSeasonLabel }}</span>{% endif %}
           </div>
 
           {% if nav.program.seasons.length > 1 %}
@@ -734,22 +736,22 @@
           {% if nav.prevEp or nav.nextEp %}
           <div class="ep-nav-arrows">
             {% if nav.prevEp %}
-            <a href="{{ nav.prevEp.url | cleanUrl }}" class="ep-nav-btn ep-nav-prev">
+            <a href="{{ nav.prevEp.url | cleanUrl }}" class="ep-nav-btn ep-nav-prev" title="{{ nav.prevEp.headline or nav.prevEp.title }}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
               <span class="ep-nav-text">
                 <span class="ep-nav-label">الحلقة السابقة</span>
-                <span class="ep-nav-title">{{ nav.prevEp.headline or nav.prevEp.title }}</span>
+                <span class="ep-nav-title">{{ nav.prevEpLabel }}</span>
               </span>
             </a>
             {% else %}
             <span class="ep-nav-btn ep-nav-prev disabled"></span>
             {% endif %}
             {% if nav.nextEp %}
-            <a href="{{ nav.nextEp.url | cleanUrl }}" class="ep-nav-btn ep-nav-next">
+            <a href="{{ nav.nextEp.url | cleanUrl }}" class="ep-nav-btn ep-nav-next" title="{{ nav.nextEp.headline or nav.nextEp.title }}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
               <span class="ep-nav-text">
                 <span class="ep-nav-label">الحلقة التالية</span>
-                <span class="ep-nav-title">{{ nav.nextEp.headline or nav.nextEp.title }}</span>
+                <span class="ep-nav-title">{{ nav.nextEpLabel }}</span>
               </span>
             </a>
             {% else %}
