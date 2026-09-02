@@ -2,9 +2,14 @@
 federation: INDIE
 title: MLW Fusion 22.08.2026
 headline: عرض ام ال دبليو 22.08.2026 مترجم
+program_name: MLW Fusion
 description: عرض ام ال دبليو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-22
 date: 2026-08-23T14:33:00.000+03:00
+layout: post-layout.njk
+downloads:
+  - label: تحميل متعدد
+    url: https://multiup.io/download/f032e03741854faa605b233d8acf2301/MLW.Fusion.2026.08.22_720p.mp4
 duration: 00:50:46
 tags:
   - MLW
@@ -22,8 +27,4 @@ servers:
     url: https://turbovidhls.com/t/6a8ada60c077f
   - label: "#5"
     url: https://streamtape.com/e/bvjVqzZ3kACPrD9
-downloads:
-  - label: تحميل متعدد
-    url: https://multiup.io/download/f032e03741854faa605b233d8acf2301/MLW.Fusion.2026.08.22_720p.mp4
-layout: post-layout.njk
 ---
