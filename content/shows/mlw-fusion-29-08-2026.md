@@ -2,6 +2,7 @@
 federation: INDIE
 title: MLW Fusion 29.08.2026
 headline: عرض ام ال دبليو 29.08.2026 مترجم
+program_name: MLW Fusion
 description: عرض ام ال دبليو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-29
 date: 2026-08-30T08:18:00.000+03:00
