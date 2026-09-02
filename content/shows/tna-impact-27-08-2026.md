@@ -2,6 +2,7 @@
 federation: TNA
 title: TNA iMPACT 27.08.2026
 headline: عرض تي ان ايه امباكت 27.08.2026 مترجم
+program_name: TNA iMPACT
 description: عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-27
 date: 2026-08-28T15:34:00.000+03:00
