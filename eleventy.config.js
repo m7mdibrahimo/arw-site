@@ -580,7 +580,8 @@ module.exports = function(eleventyConfig) {
     const slug = arabicSlug(programName);
     if (!slug) return null;
     const prog = (programs || []).find(function(p) { return p.slug === slug; });
-    if (!prog || prog.episodes.length <= 1) return null;
+    if (!prog) return null;
+    // القسم بيظهر من أول عرض واحد يتضاف (مش لازم يستنى عرضين)، عشان يبان ومتجهز يكبر أول ما تضيف نسخ تانية.
 
     const clean = function(u) { return (u || "").toString().replace(/\.html$/, ""); };
     const cleanCurrent = clean(currentUrl);
