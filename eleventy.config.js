@@ -541,6 +541,12 @@ module.exports = function(eleventyConfig) {
         })
         .sort(function(a, b) { return a.number - b.number; });
 
+      // "series" = برنامج/مسلسل ليه رقم موسم أو رقم/عنوان حلقة مكتوب صريح (زي WWE LFG) → يستخدم كلمة "حلقة/حلقات".
+      // "recurring" = عرض متكرر مفيهوش أي ترقيم صريح وبيعتمد على تاريخ العرض بس (زي WWE Raw) → يستخدم كلمة "عرض/عروض".
+      prog.mode = prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; })
+        ? "series"
+        : "recurring";
+
       // لو كل حلقات البرنامج بترجع لمجموعة تاريخ/سنة واحدة بس (عرض أسبوعي مثلاً)، مفيش داعي لإظهار تابات مواسم.
     });
 
@@ -549,9 +555,10 @@ module.exports = function(eleventyConfig) {
 
   // بيرجع كل بيانات التنقل بين الحلقات (البرنامج + الموسم الحالي + الحلقة السابقة/التالية) لصفحة عرض معينة.
   // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
-  const episodeShortLabel = function(ep) {
+  const episodeShortLabel = function(ep, mode) {
     if (!ep) return "";
-    if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return "العرض " + ep.episodeLabel;
+    const noun = mode === "series" ? "الحلقة " : "العرض ";
+    if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return noun + ep.episodeLabel;
     if (ep.shortDate) return ep.shortDate;
     return ep.headline || ep.title || "";
   };
@@ -593,8 +600,8 @@ module.exports = function(eleventyConfig) {
       activeSeasonLabel: seasonBadgeLabel(activeSeasonObj),
       prevEp: prevEp,
       nextEp: nextEp,
-      prevEpLabel: episodeShortLabel(prevEp),
-      nextEpLabel: episodeShortLabel(nextEp)
+      prevEpLabel: episodeShortLabel(prevEp, prog.mode),
+      nextEpLabel: episodeShortLabel(nextEp, prog.mode)
     };
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
