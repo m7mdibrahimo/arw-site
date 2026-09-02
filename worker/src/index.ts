@@ -501,6 +501,7 @@ async function postToFacebookViaBuffer(
 
 async function postToInstagram(
   env: Env,
+  key: string,
   data: { title: string; text?: string; url: string; imageUrl?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
@@ -508,39 +509,76 @@ async function postToInstagram(
 
   const safeImageUrl = instagramSafeImageUrl(data.imageUrl);
   const caption = buildDividedCaption(data.title, data.text);
+  const kvKey = `ig-pending:${key}`;
 
   try {
     const pageToken = await getPageAccessToken(env);
-    const createRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image_url: safeImageUrl, caption, access_token: pageToken }),
-      }
-    );
-    const createResult: any = await createRes.json().catch(() => ({}));
-    if (!createResult.id) return { ok: false, result: createResult };
 
-    // Poll until Instagram finishes processing the image (fewer/shorter
-    // attempts than the original — waiting doesn't cost Workers CPU time,
-    // but this keeps a single invocation comfortably short; if it's still
-    // not ready, the claim is released below and the next minute's poll
-    // just tries again from scratch).
+    // Reuse an in-progress media container from an earlier attempt instead
+    // of creating a brand new one every retry. In practice Instagram's own
+    // processing was routinely taking longer than any short polling window
+    // this function used, so nearly every attempt gave up, discarded the
+    // container it had just started, and tried again a minute later from
+    // zero — which both wasted the processing time already spent AND
+    // uploaded the same image to Meta's API again and again, every single
+    // minute, for as long as 15+ minutes on some posts. That volume of
+    // repeated requests for identical content is very likely what tripped
+    // Meta's own automated abuse detection ("Action is blocked"). Caching
+    // the container id lets a retry pick up exactly where the last attempt
+    // left off.
+    let containerId: string | null = null;
+    try {
+      const cached = await env.PUSH_KV.get(kvKey);
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (parsed.imageUrl === safeImageUrl && Date.now() - parsed.createdAt < 20 * 60 * 1000) {
+          containerId = parsed.id;
+        }
+      }
+    } catch (e) {}
+
+    if (!containerId) {
+      const createRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image_url: safeImageUrl, caption, access_token: pageToken }),
+        }
+      );
+      const createResult: any = await createRes.json().catch(() => ({}));
+      if (!createResult.id) return { ok: false, result: createResult };
+      containerId = createResult.id;
+      try {
+        await env.PUSH_KV.put(
+          kvKey,
+          JSON.stringify({ id: containerId, imageUrl: safeImageUrl, createdAt: Date.now() }),
+          { expirationTtl: 3600 }
+        );
+      } catch (e) {}
+    }
+
+    // Poll for a while within this single invocation; if it's still not
+    // ready when this gives up, the cached container id above means next
+    // minute's retry resumes polling the SAME container instead of
+    // starting a new upload.
     let ready = false;
-    for (let attempt = 0; attempt < 6; attempt++) {
-      await new Promise((r) => setTimeout(r, 2500));
+    for (let attempt = 0; attempt < 10; attempt++) {
+      await new Promise((r) => setTimeout(r, 3000));
       const statusRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${createResult.id}?fields=status_code&access_token=${pageToken}`
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code&access_token=${pageToken}`
       );
       const statusResult: any = await statusRes.json().catch(() => ({}));
       if (statusResult.status_code === "FINISHED") {
         ready = true;
         break;
       }
-      if (statusResult.status_code === "ERROR") return { ok: false, result: statusResult };
+      if (statusResult.status_code === "ERROR") {
+        try { await env.PUSH_KV.delete(kvKey); } catch (e) {}
+        return { ok: false, result: statusResult };
+      }
     }
-    if (!ready) return { ok: false };
+    if (!ready) return { ok: false }; // container id stays cached — next tick resumes it, doesn't restart
 
     // This call is the actual point of no return — once Meta receives it,
     // the post may already be live even if the response never makes it
@@ -555,14 +593,17 @@ async function postToInstagram(
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ creation_id: createResult.id, access_token: pageToken }),
+          body: JSON.stringify({ creation_id: containerId, access_token: pageToken }),
         }
       );
     } catch (e) {
       return { ok: false, ambiguous: true };
     }
     const publishResult: any = await publishRes.json().catch(() => ({ __unparsed: true }));
-    if (publishResult.id) return { ok: true, result: publishResult };
+    if (publishResult.id) {
+      try { await env.PUSH_KV.delete(kvKey); } catch (e) {}
+      return { ok: true, result: publishResult };
+    }
 
     // "Action is blocked" (error code 4 / subcode 2207051) is Meta's
     // automated spam-prevention throttle, not a normal per-post rejection.
@@ -576,6 +617,10 @@ async function postToInstagram(
     const isBlocked = errCode === 4 || errSubcode === 2207051;
     if (isBlocked || publishResult.__unparsed) return { ok: false, result: publishResult, ambiguous: true };
 
+    // A clean rejection of the container itself (not a throttle) — it's
+    // genuinely invalid, so clear the cache rather than let a retry poll
+    // the same doomed container forever.
+    try { await env.PUSH_KV.delete(kvKey); } catch (e) {}
     return { ok: false, result: publishResult };
   } catch (e) {
     return { ok: false };
@@ -668,7 +713,7 @@ async function publishToPlatform(
     raw = r.result;
   } else if (platform === "instagram") {
     const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : env.SITE_ORIGIN + item.image) : undefined;
-    const r = await postToInstagram(env, { ...item, imageUrl });
+    const r = await postToInstagram(env, key, { ...item, imageUrl });
     ok = r.ok;
     skipped = !!r.skipped;
     ambiguous = !!(r as any).ambiguous;
