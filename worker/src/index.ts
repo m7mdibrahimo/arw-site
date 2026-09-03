@@ -236,10 +236,19 @@ type PublishState = {
   facebook: Record<string, number>;
   instagram: Record<string, number>;
   x: Record<string, number>;
+  // Per-platform "don't attempt again until" timestamp (ms), used when
+  // Buffer reports its own daily posting-limit-for-this-channel error.
+  // Deliberately stored here (GitHub-backed, strongly consistent via the
+  // existing sha-based read-modify-write) instead of Workers KV — KV is
+  // only *eventually* consistent (writes can take up to ~60s to reach
+  // every edge location), which is exactly as long as the watcher's cron
+  // interval, so a cooldown written in KV on one tick could still read as
+  // "not set" on the very next tick and get silently ignored.
+  cooldowns: Partial<Record<"facebook" | "x", number>>;
 };
 
 function emptyPublishState(): PublishState {
-  return { telegram: {}, facebook: {}, instagram: {}, x: {} };
+  return { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} };
 }
 
 function githubContentsUrl(env: Env): string {
@@ -274,6 +283,7 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
   state.facebook = state.facebook || {};
   state.instagram = state.instagram || {};
   state.x = state.x || {};
+  state.cooldowns = state.cooldowns || {};
   return { sha: data.sha, state };
 }
 
@@ -483,9 +493,8 @@ function isDailyLimitMessage(msg: unknown): boolean {
 
 async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): Promise<number> {
   try {
-    const raw = await env.PUSH_KV.get(`social-cooldown:${platform}`);
-    const n = raw ? Number(raw) : 0;
-    return Number.isFinite(n) ? n : 0;
+    const { state } = await githubReadState(env);
+    return state.cooldowns?.[platform] || 0;
   } catch (e) {
     return 0;
   }
@@ -497,12 +506,36 @@ async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x
   const nextUtcMidnight = Date.UTC(nowDate.getUTCFullYear(), nowDate.getUTCMonth(), nowDate.getUTCDate() + 1, 0, 0, 0);
   const jitterMs = Math.floor(Math.random() * 10 * 60 * 1000); // 0–10 min jitter
   const until = nextUtcMidnight + jitterMs;
-  try {
-    await env.PUSH_KV.put(`social-cooldown:${platform}`, String(until), {
-      expirationTtl: Math.max(60, Math.ceil((until - now) / 1000) + 300),
-    });
-    console.log(`[Buffer] ${platform} hit its daily posting limit — pausing retries until ${new Date(until).toISOString()}`);
-  } catch (e) {}
+
+  for (let attempt = 0; attempt < 5; attempt++) {
+    let sha: string | null;
+    let state: PublishState;
+    try {
+      ({ sha, state } = await githubReadState(env));
+    } catch (e) {
+      return;
+    }
+    const existing = state.cooldowns?.[platform] || 0;
+    // Already paused until roughly the same (or a later) time — another
+    // tick already recorded this, nothing new to write.
+    if (existing >= until - 60_000) return;
+    state.cooldowns = { ...state.cooldowns, [platform]: until };
+    const write = await githubWriteState(
+      env,
+      state,
+      sha,
+      `chore(publish): pause ${platform} until ${new Date(until).toISOString()} (Buffer daily posting limit reached)`
+    );
+    if (write.ok) {
+      console.log(`[Buffer] ${platform} hit its daily posting limit — pausing retries until ${new Date(until).toISOString()}`);
+      return;
+    }
+    if (write.conflict) {
+      await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
+      continue;
+    }
+    return;
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────
