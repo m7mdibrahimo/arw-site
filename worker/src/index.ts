@@ -456,6 +456,56 @@ async function sendVerifiedTelegramPost(
 }
 
 // ─────────────────────────────────────────────────────────────────────────
+// Buffer daily-posting-limit cooldown (Facebook / X only — Buffer enforces
+// this per-channel, not per-post).
+//
+// Without this, hitting Buffer's daily cap meant: the claim gets released,
+// so the very next watcher tick (a minute later) tries again — creating a
+// BRAND NEW Buffer post that fails the exact same way, every minute, for
+// the rest of the day. That's ~1,400 wasted Buffer API calls/day per
+// channel and a queue full of duplicate failed posts on Buffer's side, for
+// zero benefit (Buffer's own limit doesn't reset any faster for it).
+//
+// Once this specific error is seen, the affected channel is put in a
+// cooldown stored in KV until the next UTC day (+ a little random jitter
+// so multiple queued items don't all retry in the same instant). While in
+// cooldown, publishToPlatform skips the platform entirely — no GitHub
+// claim, no Buffer call — so the item is picked back up and *actually
+// posted* automatically once the cooldown ends, without spamming anything
+// in the meantime.
+// ─────────────────────────────────────────────────────────────────────────
+
+const DAILY_LIMIT_ERROR_RE = /daily posting limit/i;
+
+function isDailyLimitMessage(msg: unknown): boolean {
+  return typeof msg === "string" && DAILY_LIMIT_ERROR_RE.test(msg);
+}
+
+async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): Promise<number> {
+  try {
+    const raw = await env.PUSH_KV.get(`social-cooldown:${platform}`);
+    const n = raw ? Number(raw) : 0;
+    return Number.isFinite(n) ? n : 0;
+  } catch (e) {
+    return 0;
+  }
+}
+
+async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x"): Promise<void> {
+  const now = Date.now();
+  const nowDate = new Date(now);
+  const nextUtcMidnight = Date.UTC(nowDate.getUTCFullYear(), nowDate.getUTCMonth(), nowDate.getUTCDate() + 1, 0, 0, 0);
+  const jitterMs = Math.floor(Math.random() * 10 * 60 * 1000); // 0–10 min jitter
+  const until = nextUtcMidnight + jitterMs;
+  try {
+    await env.PUSH_KV.put(`social-cooldown:${platform}`, String(until), {
+      expirationTtl: Math.max(60, Math.ceil((until - now) / 1000) + 300),
+    });
+    console.log(`[Buffer] ${platform} hit its daily posting limit — pausing retries until ${new Date(until).toISOString()}`);
+  } catch (e) {}
+}
+
+// ─────────────────────────────────────────────────────────────────────────
 // Facebook + Instagram
 // ─────────────────────────────────────────────────────────────────────────
 
@@ -587,7 +637,16 @@ async function postToFacebookViaBuffer(
       });
       const result: any = await res.json().catch(() => ({}));
       postId = result?.data?.createPost?.post?.id;
-      if (!postId) return { ok: false, result };
+      if (!postId) {
+        // Buffer can reject at creation time too (MutationError), not only
+        // after polling — catch the daily-limit message here as well so a
+        // channel that's already maxed out doesn't get hammered again next
+        // tick.
+        if (isDailyLimitMessage(result?.data?.createPost?.message)) {
+          await setPlatformDailyLimitCooldown(env, "facebook");
+        }
+        return { ok: false, result };
+      }
       try {
         await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 3600 });
       } catch (e) {}
@@ -601,6 +660,9 @@ async function postToFacebookViaBuffer(
   try {
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
+  if (!outcome.ok && isDailyLimitMessage(outcome.raw?.error?.message)) {
+    await setPlatformDailyLimitCooldown(env, "facebook");
+  }
   return { ok: !!outcome.ok, result: outcome.raw };
 }
 
@@ -790,7 +852,12 @@ async function postToXViaBuffer(
       });
       const result: any = await res.json().catch(() => ({}));
       postId = result?.data?.createPost?.post?.id;
-      if (!postId) return { ok: false, result };
+      if (!postId) {
+        if (isDailyLimitMessage(result?.data?.createPost?.message)) {
+          await setPlatformDailyLimitCooldown(env, "x");
+        }
+        return { ok: false, result };
+      }
       try {
         await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 3600 });
       } catch (e) {}
@@ -804,6 +871,9 @@ async function postToXViaBuffer(
   try {
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
+  if (!outcome.ok && isDailyLimitMessage(outcome.raw?.error?.message)) {
+    await setPlatformDailyLimitCooldown(env, "x");
+  }
   return { ok: !!outcome.ok, result: outcome.raw };
 }
 
@@ -821,6 +891,17 @@ async function publishToPlatform(
   verified: { imageBuffer?: ArrayBuffer; imageContentType?: string },
   force: boolean
 ): Promise<{ status: string; raw?: any }> {
+  // Buffer's daily posting limit is per-channel, not per-item — if it was
+  // just hit, don't even attempt a claim (avoids a pointless GitHub write)
+  // or a Buffer call for this platform until the cooldown set in
+  // postToFacebookViaBuffer/postToXViaBuffer expires. `force` (the admin's
+  // manual "publish anyway" button) bypasses this, same as it bypasses the
+  // normal claim.
+  if (!force && (platform === "facebook" || platform === "x")) {
+    const cooldownUntil = await getPlatformCooldownUntil(env, platform);
+    if (Date.now() < cooldownUntil) return { status: "rate_limited" };
+  }
+
   if (force) await releaseSendClaim(env, platform, key);
   if (!(await claimSend(env, platform, key))) return { status: "already_sent" };
 
