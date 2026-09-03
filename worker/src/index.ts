@@ -482,6 +482,55 @@ async function getPageAccessToken(env: Env): Promise<string> {
   }
 }
 
+// Buffer's createPost mutation with mode: shareNow returns as soon as the
+// post is ACCEPTED AND QUEUED on Buffer's side — not once it's actually
+// been sent to the destination network. The real send happens
+// asynchronously afterwards, and can fail silently on Buffer's end (a
+// channel set to "Requires Approval", a rate limit, a disconnected/expired
+// connection to Facebook or X, etc). Trusting the createPost response alone
+// is what let this code mark posts "sent" in publish-state.json when
+// nothing had actually gone out.
+//
+// This polls the post's real status (Post.sentAt / Post.error) the same
+// way postToInstagram polls Meta's own container status before trusting a
+// publish. Three outcomes:
+//   - sentAt appears  -> genuinely published, ok: true
+//   - error appears   -> Buffer itself reports the send failed, ok: false
+//   - neither, after the polling window -> still unresolved. Rather than
+//     guess, this is reported ambiguous (matches postToInstagram's
+//     "Action is blocked" handling) so the caller leaves the claim in
+//     place instead of releasing it and risking a duplicate post on retry.
+async function pollBufferPostUntilResolved(
+  env: Env,
+  postId: string
+): Promise<{ resolved: boolean; ok?: boolean; raw?: any }> {
+  const query = `query GetPost($id: PostId!) {
+    post(input: { id: $id }) {
+      id
+      status
+      sentAt
+      error { message }
+    }
+  }`;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    await new Promise((r) => setTimeout(r, 3000));
+    try {
+      const res = await fetch("https://api.buffer.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+        body: JSON.stringify({ query, variables: { id: postId } }),
+      });
+      const result: any = await res.json().catch(() => ({}));
+      const post = result?.data?.post;
+      if (post?.sentAt) return { resolved: true, ok: true, raw: post };
+      if (post?.error) return { resolved: true, ok: false, raw: post };
+    } catch (e) {
+      // network hiccup on this attempt — try again next loop iteration
+    }
+  }
+  return { resolved: false };
+}
+
 // Posts to Facebook via Buffer instead of calling the Graph API directly —
 // same reasoning and same shape as postToXViaBuffer: native photo + caption
 // (title + snippet + follow line), no link in the body, published
@@ -491,42 +540,68 @@ async function getPageAccessToken(env: Env): Promise<string> {
 // just no longer calls graph.facebook.com itself for the Page post.
 async function postToFacebookViaBuffer(
   env: Env,
+  key: string,
   data: { title: string; text?: string; image?: string }
-): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
 
-  const caption = buildDividedCaption(data.title, data.text);
-  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+  const kvKey = `buffer-pending:facebook:${key}`;
 
+  // Resume polling a post created on an earlier tick instead of creating a
+  // duplicate — same reasoning as postToInstagram's containerId cache.
+  let postId: string | null = null;
   try {
-    const query = imageUrl
-      ? `mutation PostToFacebook($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }], metadata: { facebook: { type: post } } }) {
-            ... on PostActionSuccess { post { id } }
-            ... on MutationError { message }
-          }
-        }`
-      : `mutation PostToFacebook($text: String!, $channelId: ChannelId!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, metadata: { facebook: { type: post } } }) {
-            ... on PostActionSuccess { post { id } }
-            ... on MutationError { message }
-          }
-        }`;
-    const variables = imageUrl
-      ? { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID, imageUrl }
-      : { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID };
+    const cached = await env.PUSH_KV.get(kvKey);
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (Date.now() - parsed.createdAt < 30 * 60 * 1000) postId = parsed.id;
+    }
+  } catch (e) {}
 
-    const res = await fetch("https://api.buffer.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
-      body: JSON.stringify({ query, variables }),
-    });
-    const result: any = await res.json().catch(() => ({}));
-    if (result?.data?.createPost?.post?.id) return { ok: true, result };
-    return { ok: false, result };
-  } catch (e) {
-    return { ok: false };
+  if (!postId) {
+    const caption = buildDividedCaption(data.title, data.text);
+    const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+
+    try {
+      const query = imageUrl
+        ? `mutation PostToFacebook($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
+            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }], metadata: { facebook: { type: post } } }) {
+              ... on PostActionSuccess { post { id } }
+              ... on MutationError { message }
+            }
+          }`
+        : `mutation PostToFacebook($text: String!, $channelId: ChannelId!) {
+            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, metadata: { facebook: { type: post } } }) {
+              ... on PostActionSuccess { post { id } }
+              ... on MutationError { message }
+            }
+          }`;
+      const variables = imageUrl
+        ? { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID, imageUrl }
+        : { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID };
+
+      const res = await fetch("https://api.buffer.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+        body: JSON.stringify({ query, variables }),
+      });
+      const result: any = await res.json().catch(() => ({}));
+      postId = result?.data?.createPost?.post?.id;
+      if (!postId) return { ok: false, result };
+      try {
+        await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 3600 });
+      } catch (e) {}
+    } catch (e) {
+      return { ok: false };
+    }
   }
+
+  const outcome = await pollBufferPostUntilResolved(env, postId);
+  if (!outcome.resolved) return { ok: false, ambiguous: true }; // keep cached id, keep claim — resume next tick
+  try {
+    await env.PUSH_KV.delete(kvKey);
+  } catch (e) {}
+  return { ok: !!outcome.ok, result: outcome.raw };
 }
 
 async function postToInstagram(
@@ -665,48 +740,71 @@ async function postToInstagram(
 // X until the next queued time slot).
 async function postToXViaBuffer(
   env: Env,
+  key: string,
   data: { title: string; text?: string; image?: string }
-): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
+): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
 
-  // The title is always kept in full; only the article snippet gets
-  // shortened (or dropped) to fit X's real 280 character limit. X's own
-  // link-unfurl preview triggers the same kind of reach suppression
-  // Facebook does for outbound links, so the URL is dropped entirely
-  // rather than routed around it.
-  const tweetText = buildXCaption(data.title, data.text);
+  const kvKey = `buffer-pending:x:${key}`;
 
-  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
-
+  let postId: string | null = null;
   try {
-    const query = imageUrl
-      ? `mutation PostToX($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }] }) {
-            ... on PostActionSuccess { post { id } }
-            ... on MutationError { message }
-          }
-        }`
-      : `mutation PostToX($text: String!, $channelId: ChannelId!) {
-          createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow }) {
-            ... on PostActionSuccess { post { id } }
-            ... on MutationError { message }
-          }
-        }`;
-    const variables = imageUrl
-      ? { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID, imageUrl }
-      : { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID };
+    const cached = await env.PUSH_KV.get(kvKey);
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (Date.now() - parsed.createdAt < 30 * 60 * 1000) postId = parsed.id;
+    }
+  } catch (e) {}
 
-    const res = await fetch("https://api.buffer.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
-      body: JSON.stringify({ query, variables }),
-    });
-    const result: any = await res.json().catch(() => ({}));
-    if (result?.data?.createPost?.post?.id) return { ok: true, result };
-    return { ok: false, result };
-  } catch (e) {
-    return { ok: false };
+  if (!postId) {
+    // The title is always kept in full; only the article snippet gets
+    // shortened (or dropped) to fit X's real 280 character limit. X's own
+    // link-unfurl preview triggers the same kind of reach suppression
+    // Facebook does for outbound links, so the URL is dropped entirely
+    // rather than routed around it.
+    const tweetText = buildXCaption(data.title, data.text);
+    const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+
+    try {
+      const query = imageUrl
+        ? `mutation PostToX($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
+            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }] }) {
+              ... on PostActionSuccess { post { id } }
+              ... on MutationError { message }
+            }
+          }`
+        : `mutation PostToX($text: String!, $channelId: ChannelId!) {
+            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow }) {
+              ... on PostActionSuccess { post { id } }
+              ... on MutationError { message }
+            }
+          }`;
+      const variables = imageUrl
+        ? { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID, imageUrl }
+        : { text: tweetText, channelId: env.BUFFER_X_CHANNEL_ID };
+
+      const res = await fetch("https://api.buffer.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+        body: JSON.stringify({ query, variables }),
+      });
+      const result: any = await res.json().catch(() => ({}));
+      postId = result?.data?.createPost?.post?.id;
+      if (!postId) return { ok: false, result };
+      try {
+        await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 3600 });
+      } catch (e) {}
+    } catch (e) {
+      return { ok: false };
+    }
   }
+
+  const outcome = await pollBufferPostUntilResolved(env, postId);
+  if (!outcome.resolved) return { ok: false, ambiguous: true }; // keep cached id, keep claim — resume next tick
+  try {
+    await env.PUSH_KV.delete(kvKey);
+  } catch (e) {}
+  return { ok: !!outcome.ok, result: outcome.raw };
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -736,9 +834,10 @@ async function publishToPlatform(
     ok = !!(r && r.ok);
     raw = r;
   } else if (platform === "facebook") {
-    const r = await postToFacebookViaBuffer(env, item);
+    const r = await postToFacebookViaBuffer(env, key, item);
     ok = r.ok;
     skipped = !!r.skipped;
+    ambiguous = !!r.ambiguous;
     raw = r.result;
   } else if (platform === "instagram") {
     const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : env.SITE_ORIGIN + item.image) : undefined;
@@ -748,9 +847,10 @@ async function publishToPlatform(
     ambiguous = !!(r as any).ambiguous;
     raw = r.result;
   } else {
-    const r = await postToXViaBuffer(env, item);
+    const r = await postToXViaBuffer(env, key, item);
     ok = r.ok;
     skipped = !!r.skipped;
+    ambiguous = !!r.ambiguous;
     raw = r.result;
   }
 
