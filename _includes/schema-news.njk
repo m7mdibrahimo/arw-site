@@ -1,0 +1,40 @@
+<!--
+  استخدام هذا الملف:
+  ضعه داخل مجلد _includes/ باسم schema-news.njk (هو بالفعل بهذا الاسم).
+  ثم أضف السطر التالي داخل <head> في قالب (layout) صفحة الخبر فقط
+  (مش الصفحة الرئيسية):
+
+    {% include "schema-news.njk" %}
+
+  المتغيرات المستخدمة أدناه (title, image, date, description) هي
+  نفس أسماء الحقول التي رأيتها مستخدمة في index.njk ضمن item.data.
+  لو أسماء الحقول عندك في قالب الخبر نفسه مختلفة (مثلاً title بدل
+  item.data.title لأنك بالفعل جوه القالب)، اتركها كما هي بالأسفل.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": {{ title | dump | safe }},
+  "image": [{{ image | dump | safe }}],
+  "datePublished": "{{ date | date('YYYY-MM-DDTHH:mm:ssZ') }}",
+  "dateModified": "{{ (updated or date) | date('YYYY-MM-DDTHH:mm:ssZ') }}",
+  "author": {
+    "@type": "Organization",
+    "name": "عرب راسلنج"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "عرب راسلنج",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arab-wrestling.com/favicon.png"
+    }
+  },
+  "description": {{ description | dump | safe }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://arab-wrestling.com{{ page.url }}"
+  }
+}
+</script>
