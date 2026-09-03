@@ -21,7 +21,7 @@
         '</div>' +
         '<div>' +
           '<div class="tg-title">تابعنا على التليجرام 📢</div>' +
-          '<div class="tg-subtitle">عرب راسلنج | Arab Wrestling</div>' +
+          '<div class="tg-subtitle">عرب راسلنج</div>' +
         '</div>' +
       '</div>' +
       '<div class="notif-float-body tg-float-body">' +

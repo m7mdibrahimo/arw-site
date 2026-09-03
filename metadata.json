@@ -1,5 +1,5 @@
 {
-  "name": "عرب راسلنج - Arab Wrestling",
+  "name": "عرب راسلنج",
   "description": "منصة وأخبار المصارعة الحرة باللغة العربية، متوافق مع Eleventy و Decap CMS و Cloudflare Pages",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
