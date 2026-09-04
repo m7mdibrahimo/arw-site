@@ -767,7 +767,11 @@ async function postToInstagram(
     for (let attempt = 0; attempt < 10; attempt++) {
       await new Promise((r) => setTimeout(r, 3000));
       const statusRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code&access_token=${pageToken}`
+        // `status` (in addition to `status_code`) gives Meta's human-readable
+        // reason when processing fails — plain `status_code` alone only says
+        // "ERROR" with no way to tell why, which made every past failure a
+        // dead end to debug.
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
       );
       const statusResult: any = await statusRes.json().catch(() => ({}));
       if (statusResult.status_code === "FINISHED") {
