@@ -56,7 +56,7 @@
       }
 
       try {
-        ['news', 'shows', 'recaps'].forEach((collectionName) => {
+        ['news', 'shows', 'recaps', 'nostalgia'].forEach((collectionName) => {
           window.CMS.registerPreviewTemplate(collectionName, PreviewCapture);
         });
       } catch (e) {

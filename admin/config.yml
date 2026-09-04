@@ -120,3 +120,56 @@ collections:
       - { label: "صورة", name: "image", widget: "image", required: true }
       - { label: "تفاصيل الخبر", name: "body", widget: "markdown", required: false }
       - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
+
+  - name: "nostalgia"
+    label: "قسم النوستلجيا"
+    label_singular: "عرض نوستالجيا"
+    folder: "content/nostalgia"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    identifier_field: "title"
+    slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
+    preview_path: "shows/{{title}}"
+    summary: "{{title}} (سلسلة: {{nostalgia_title}} | ترتيب: {{nostalgia_order}})"
+    fields:
+      - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"], default: "WWE" }
+      - { label: "اسم العرض / الحلقة", name: "title", widget: "string", hint: "مثال: الرو 16.04.2012 (نوستالجيا)" }
+      - { label: "عنوان العرض الرئيسي (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو 16.04.2012 مترجم | طريق اكستريم رولز" }
+      - { label: "اسم سلسلة النوستالجيا (بالعربي)", name: "nostalgia_title", widget: "string", required: true, hint: "اسم السلسلة بالعربي مثل: اكستريم رولز 2012 أو راسلمينيا 28 (يُكتب موحّداً بنفس الحروف في كل عروض نفس السلسلة لربطها ببعض)" }
+      - { label: "معرّف السلسلة بالإنجليزية (Slug)", name: "nostalgia_series", widget: "string", required: true, hint: "حروف إنجليزية وشرطات فقط وبدون مسافات، مثال: extreme-rules-2012 (يُكتب موحّداً بنفس الحروف في كل عروض نفس السلسلة)" }
+      - { label: "ترتيب العرض في مسار السلسلة", name: "nostalgia_order", widget: "number", value_type: "int", default: 1, required: true, hint: "ترتيب العرض الزمني داخل مسار السلسلة: 1 للعرض التمهيدي الأول، 2 للثاني... والعرض الختامي الكبير يأخذ آخر رقم" }
+      - { label: "هل هذا هو العرض الرئيسي/الختامي للسلسلة؟", name: "nostalgia_main", widget: "boolean", default: false, required: false, hint: "فعّلها فقط للعرض الشهري الكبير (العرض الختامي للقصة) مثل عرض PPV النهائي" }
+      - { label: "سنة العرض / السلسلة (للفلترة)", name: "nostalgia_era", widget: "string", required: false, hint: "مثال: 2012 (لتظهر السلسلة تلقائياً في فلتر سنة 2012 بقسم النوستالجيا)" }
+      - { label: "اسم البرنامج (اختياري - لربط العروض ببعض)", name: "program_name", widget: "string", required: false, hint: "مثال: نوستالجيا: اكستريم رولز 2012" }
+      - { label: "رقم العرض في الدائرة (اختياري)", name: "episode_number", widget: "string", required: false, hint: "مثال: 1 أو 2 أو العرض الشهري" }
+      - { label: "تاريخ العرض الأصلي", name: "event_date", widget: "datetime", date_format: "DD/MM/YYYY", format: "YYYY-MM-DD", time_format: false, required: false, hint: "اختر تاريخ إقامة العرض الأصلي في وقته من التقويم" }
+      - { label: "تاريخ النشر", name: "date", widget: "datetime", required: false, hint: "اختر تاريخ ووقت النشر من التقويم" }
+      - { label: "مدة العرض", name: "duration", widget: "string", required: false, hint: "مثال: 01:45:00" }
+      - { label: "وصف قصير عن العرض", name: "description", widget: "text", required: false, hint: "وصف موجز لأحداث العرض وتطور العداوة" }
+      - { label: "الوسوم / التاجز", name: "tags", widget: "list", required: false, default: ["WWE", "نوستالجيا"], hint: "أضف التاجز مثل: WWE, نوستالجيا, اكستريم رولز 2012" }
+      - { label: "صورة الغلاف / البوستر", name: "image", widget: "image", required: true }
+      - label: "سيرفرات المشاهدة"
+        name: "servers"
+        widget: "list"
+        required: false
+        hint: "أضف رابط الإمبيد بس. الاسم بيتحط تلقائي على الموقع: سيرفر 1 - جودة متوسطة، ولو ضفت سيرفر تاني هيبقى سيرفر 2 - جودة متوسطة وهكذا"
+        fields:
+          - { label: "رابط الـ embed", name: "url", widget: "string" }
+      - label: "سيرفرات التحميل - جودة منخفضة (480p)"
+        name: "downloads_low"
+        widget: "text"
+        required: false
+        hint: "الصق روابط التحميل هنا، كل رابط في سطر منفصل (لحد 8 روابط). الموقع هيتعرف على اسم كل موقع ولوجوه تلقائيًا"
+      - label: "سيرفرات التحميل - جودة متوسطة (720p)"
+        name: "downloads_medium"
+        widget: "text"
+        required: false
+        hint: "الصق روابط التحميل هنا، كل رابط في سطر منفصل (لحد 8 روابط). الموقع هيتعرف على اسم كل موقع ولوجوه تلقائيًا"
+      - label: "سيرفرات التحميل - جودة عالية (1080p)"
+        name: "downloads_high"
+        widget: "text"
+        required: false
+        hint: "الصق روابط التحميل هنا، كل رابط في سطر منفصل (لحد 8 روابط). الموقع هيتعرف على اسم كل موقع ولوجوه تلقائيًا"
+      - { label: "التفاصيل / الوصف الكامل", name: "body", widget: "markdown", required: false }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post-layout.njk" }
