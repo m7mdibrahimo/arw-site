@@ -472,7 +472,7 @@ module.exports = function(eleventyConfig) {
   };
 
   eleventyConfig.addCollection("shows", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/shows/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    return collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("recaps", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/recaps/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
@@ -481,7 +481,7 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("content/news/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("allContent", function(collectionApi) {
-    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+    const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]);
     shows.forEach(function(i){ i.kind = "show"; });
     const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md");
     recaps.forEach(function(i){ i.kind = "recap"; });
@@ -599,7 +599,7 @@ module.exports = function(eleventyConfig) {
   };
 
   eleventyConfig.addCollection("programsGrouped", function(collectionApi) {
-    return buildProgramsGrouped(collectionApi, "content/shows/*.md");
+    return buildProgramsGrouped(collectionApi, ["content/shows/*.md", "content/nostalgia/*.md"]);
   });
   eleventyConfig.addCollection("recapsProgramsGrouped", function(collectionApi) {
     return buildProgramsGrouped(collectionApi, "content/recaps/*.md");
@@ -668,7 +668,7 @@ module.exports = function(eleventyConfig) {
   //   nostalgia_main: true                     -> بس على العرض الشهري (العرض الرئيسي/نهاية المسلسل)
   //   nostalgia_era: "2012"                    -> اختياري، تسمية العصر لو عايز تجمع أكتر من سنة سوا
   eleventyConfig.addCollection("nostalgiaSeries", function(collectionApi) {
-    const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/recaps/*.md"])
+    const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md", "content/recaps/*.md"])
       .filter(item => item.data && item.data.nostalgia_series);
 
     const map = new Map();
@@ -720,7 +720,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("tagList", function(collectionApi) {
     const tagMap = new Map();
-    const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/recaps/*.md", "content/news/*.md"]);
+    const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md", "content/recaps/*.md", "content/news/*.md"]);
     items.forEach(item => {
       let tags = item.data.tags;
       if (typeof tags === "string") {
@@ -751,7 +751,7 @@ module.exports = function(eleventyConfig) {
       { slug: "mma", code: "MMA", name: "رياضات القتال المختلطة", colorClass: "fed-mma" },
       { slug: "indie", code: "INDIE", name: "الاتحادات المستقلة", colorClass: "fed-indie" }
     ];
-    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+    const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]);
     shows.forEach(function(i){ i.kind = "show"; });
     const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md");
     recaps.forEach(function(i){ i.kind = "recap"; });
@@ -831,7 +831,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("tagPaginated", function(collectionApi) {
-    const shows = collectionApi.getFilteredByGlob("content/shows/*.md");
+    const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]);
     shows.forEach(function(i){ i.kind = "show"; });
     const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md");
     recaps.forEach(function(i){ i.kind = "recap"; });
