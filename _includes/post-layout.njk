@@ -684,7 +684,7 @@
 
 
 {% set isNews = (page.inputPath and "content/news" in page.inputPath) %}
-{% set isShow = (page.inputPath and "content/shows" in page.inputPath) %}
+{% set isShow = (page.inputPath and ("content/shows" in page.inputPath or "content/nostalgia" in page.inputPath)) %}
 {% set isRecap = (page.inputPath and "content/recaps" in page.inputPath) %}
 
 <div class="hero" id="top"{% if image %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg image, '' %}') center 30%/cover no-repeat;"{% endif %}>
