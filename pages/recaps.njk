@@ -129,6 +129,9 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
   .telegram-btn{ width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; text-decoration:none; flex-shrink:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
   .telegram-btn:hover{ transform:scale(1.1); border-color:var(--teal); color:var(--teal); }
   .utility-row{ display:inline-flex; align-items:center; gap:8px; flex-shrink:0; }
+  .utility-row .support-btn{ order:1; }
+  .utility-row .theme-toggle{ order:2; }
+  .utility-row .telegram-btn{ order:3; }
   .telegram-btn:active{ transform:scale(0.92); }
   .page-head{ padding:56px 24px 36px; text-align:center; border-bottom:1px solid var(--line); }
   .page-head h1, .page-head h2{ font-size:24px; font-weight:900; margin-bottom:8px; font-family:'Cairo',sans-serif; }
@@ -249,7 +252,10 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
     #navMenu a.navlink{ font-size:14.5px; padding:9px 15px; }
     #navMenu .nav-dropdown{ display:inline-flex; }
     #navMenu .dropdown-menu{ display:none !important; } /* hover menus don't work on touch; tapping "الاتحادات" opens /federations/ directly */
-    #navMenu li.utility-row{ display:inline-flex; }
+    #navMenu li.utility-row{ display:flex; justify-content:center; flex-basis:100%; width:100%; }
+    #navMenu li.utility-row .theme-toggle{ order:1; }
+    #navMenu li.utility-row .support-btn{ order:2; }
+    #navMenu li.utility-row .telegram-btn{ order:3; }
     #navMenu .theme-toggle, #navMenu .telegram-btn{ width:40px; height:40px; }
   }
   .show-card:hover .show-body h3{ color:var(--teal); }
