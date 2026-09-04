@@ -992,9 +992,20 @@ async function runWatcherPoll(env: Env): Promise<void> {
     return;
   }
 
+  // `items` comes from search-index.json, which eleventy.config.js builds
+  // sorted newest-first (allContent is sorted by timestamp descending). That
+  // means the moment we hit an item older than WATCHER_MIN_DATE, every item
+  // after it is guaranteed older too — so `break` here instead of `continue`
+  // stops the scan immediately instead of still paying the cost (Date parse
+  // + object lookups) of walking the entire historical archive on every
+  // single cron tick. On a site with a large back-catalog this was likely
+  // the main reason the scheduled handler was hitting the CPU-time limit
+  // ("exceededCpu") every minute — most of that 10ms budget was spent
+  // walking thousands of already-irrelevant old items before ever reaching
+  // the handful of recent ones that actually matter.
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
-    if (minDate && ts && ts < minDate) continue; // pre-cutover content — never auto-published
+    if (minDate && ts && ts < minDate) break; // pre-cutover content — never auto-published, and nothing after this point is newer
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
