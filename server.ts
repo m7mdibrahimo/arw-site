@@ -1266,10 +1266,23 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static assets from _site
+// Serve static assets from _site.
+// maxAge tells the visitor's browser to reuse cached images/CSS/JS instead
+// of re-downloading them on every page view. Images/CSS/JS get a long cache
+// (7 days) since Eleventy/eleventy-img regenerate them with new filenames
+// when content actually changes, so stale caching isn't a real risk. HTML
+// pages get a short cache (1 minute) since their content can change without
+// their filename changing (e.g. an edited article).
 app.use(express.static(sitePath, {
   extensions: ["html", "htm"],
-  index: "index.html"
+  index: "index.html",
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith(".html") || filePath.endsWith(".htm")) {
+      res.setHeader("Cache-Control", "public, max-age=60");
+    } else {
+      res.setHeader("Cache-Control", "public, max-age=604800, immutable");
+    }
+  }
 }));
 
 // Route for admin CMS
