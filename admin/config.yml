@@ -7,6 +7,7 @@ backend:
 
 site_url: https://arab-wrestling.com
 display_url: https://arab-wrestling.com
+logo_url: /favicon.png
 
 media_folder: "content/images"
 public_folder: "/content/images"

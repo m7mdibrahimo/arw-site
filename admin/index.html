@@ -4,9 +4,36 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>لوحة تحكم عرب راسلنج</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="icon" type="image/png" href="/favicon.png?v=3" />
+  <link rel="shortcut icon" href="/favicon.ico?v=3" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+  <style>
+    [class*="AppHeader"] img,
+    [class*="appHeader"] img,
+    header img,
+    [class*="Logo"] img {
+      max-height: 42px !important;
+      border-radius: 8px !important;
+      object-fit: contain !important;
+    }
+  </style>
+  <script>
+    (function enforceFavicon() {
+      const iconUrl = '/favicon.png?v=3';
+      const existingIcons = document.querySelectorAll("link[rel*='icon']");
+      existingIcons.forEach(el => el.remove());
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = iconUrl;
+      document.head.appendChild(link);
+      const appleLink = document.createElement('link');
+      appleLink.rel = 'apple-touch-icon';
+      appleLink.href = iconUrl;
+      document.head.appendChild(appleLink);
+    })();
+  </script>
 </head>
 <body>
   <!-- Include React and Decap CMS scripts -->
@@ -45,6 +72,33 @@
         btn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
         btn.style.direction = 'rtl';
         document.body.appendChild(btn);
+      })();
+
+      // ── Ensure site logo is rendered in the CMS header ────────────────
+      (function injectHeaderLogo() {
+        function checkAndSetLogo() {
+          const header = document.querySelector('header, [class*="AppHeader"], [class*="appHeader"]');
+          if (header) {
+            let logoImg = header.querySelector('img[src*="favicon"], img[src*="logo"]');
+            if (!logoImg) {
+              const homeLink = header.querySelector('a[href="#/"], a[href^="#/collections"]');
+              if (homeLink && !homeLink.querySelector('img')) {
+                const svg = homeLink.querySelector('svg');
+                if (svg) svg.style.display = 'none';
+                const img = document.createElement('img');
+                img.src = '/favicon.png?v=3';
+                img.alt = 'عرب راسلنج';
+                img.style.height = '34px';
+                img.style.width = '34px';
+                img.style.borderRadius = '8px';
+                img.style.marginRight = '8px';
+                img.style.verticalAlign = 'middle';
+                homeLink.prepend(img);
+              }
+            }
+          }
+        }
+        setInterval(checkAndSetLogo, 500);
       })();
 
       function PreviewCapture(props) {
