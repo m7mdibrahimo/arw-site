@@ -660,6 +660,64 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
 
+  // ===== نوستالجيا: بيجمع أي عرض/ملخص مكتوب فيه "nostalgia_series" في مجموعة (سلسلة) واحدة =====
+  // مفيش محتاج مجلد جديد أو Content type جديد: أي عرض عادي في content/shows أو content/recaps
+  // ضيف عليه الحقول التالية في الـ frontmatter بيتحول تلقائيًا لجزء من مسلسل نوستالجيا:
+  //   nostalgia_series: "extreme-rules-2012"   -> السلاج بتاع السلسلة (نفس السلاج لكل حلقات نفس السلسلة)
+  //   nostalgia_order: 1                       -> ترتيب الحلقة جوه السلسلة (العرض الشهري بياخد آخر رقم)
+  //   nostalgia_main: true                     -> بس على العرض الشهري (العرض الرئيسي/نهاية المسلسل)
+  //   nostalgia_era: "2012"                    -> اختياري، تسمية العصر لو عايز تجمع أكتر من سنة سوا
+  eleventyConfig.addCollection("nostalgiaSeries", function(collectionApi) {
+    const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/recaps/*.md"])
+      .filter(item => item.data && item.data.nostalgia_series);
+
+    const map = new Map();
+    items.forEach(function(item) {
+      const slug = String(item.data.nostalgia_series).trim();
+      if (!slug) return;
+      if (!map.has(slug)) {
+        map.set(slug, {
+          slug: slug,
+          title: item.data.nostalgia_title || item.data.program_name || slug,
+          era: item.data.nostalgia_era || null,
+          episodes: []
+        });
+      }
+      const dateVal = getDateValue(item);
+      map.get(slug).episodes.push({
+        url: item.url,
+        title: item.data.title || "",
+        headline: item.data.headline || "",
+        federation: item.data.federation || "",
+        image: item.data.image || "",
+        event_date: item.data.event_date || item.data.date || null,
+        year: dateVal ? dateVal.getUTCFullYear() : null,
+        order: (item.data.nostalgia_order !== undefined && item.data.nostalgia_order !== null)
+          ? parseInt(item.data.nostalgia_order, 10) : 999,
+        isMain: item.data.nostalgia_main === true || item.data.nostalgia_main === "true"
+      });
+    });
+
+    const series = Array.from(map.values());
+    series.forEach(function(s) {
+      s.episodes.sort((a, b) => a.order - b.order);
+      s.count = s.episodes.length;
+      s.mainEpisode = s.episodes.find(e => e.isMain) || s.episodes[s.episodes.length - 1];
+      s.poster = s.mainEpisode ? s.mainEpisode.image : (s.episodes[0] && s.episodes[0].image);
+      const years = s.episodes.map(e => e.year).filter(Boolean);
+      s.year = s.era || (years.length ? Math.min(...years) : null);
+    });
+
+    // أحدث سلسلة (بتاريخ العرض الرئيسي) أول واحدة، عشان لو ضفت سلاسل كتير الأحدث تظهر الأول
+    series.sort(function(a, b) {
+      const da = a.mainEpisode && a.mainEpisode.event_date ? new Date(a.mainEpisode.event_date).getTime() : 0;
+      const db = b.mainEpisode && b.mainEpisode.event_date ? new Date(b.mainEpisode.event_date).getTime() : 0;
+      return db - da;
+    });
+
+    return series;
+  });
+
   eleventyConfig.addCollection("tagList", function(collectionApi) {
     const tagMap = new Map();
     const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/recaps/*.md", "content/news/*.md"]);

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+{% include "adsense.njk" %}
+<script>if(window.location.hostname.includes('pages.dev')){window.location.replace('https://arab-wrestling.com'+window.location.pathname+window.location.search+window.location.hash);}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<title>نوستالجيا | أرشيف عروض المصارعة القديمة مترجمة | عرب راسلنج</title>
+<meta name="description" content="أرشيف نوستالجيا: عروض المصارعة القديمة مترجمة كاملة، كل عرض شهري مع العروض الأسبوعية اللي بنت له، مرتبة كمسلسل متكامل.">
+<link rel="canonical" href="https://arab-wrestling.com/nostalgia/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/notif.css">
+<style>
+:root{
+--bg: #faf7f0; --card: #ffffff; --ink: #1e2530; --muted: #6c7383; --line: #ece6d8;
+--teal: #0e9594; --teal-soft: #e3f5f3; --coral: #ff6f59; --coral-soft: #ffece8;
+--gold: #f2a53c; --gold-soft: #fdf1de; --violet: #7c6ee8;
+}
+html.arw-dark{
+--bg:#0d0f13; --card:#171a20; --ink:#eef1f6; --muted:#9aa2b0; --line:rgba(255,255,255,.1);
+--teal:#1cb5b3; --teal-soft:rgba(28,181,179,.15); --coral:#ff8570; --coral-soft:rgba(255,133,112,.15);
+--gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{ scroll-behavior:smooth; background-color:var(--bg); }
+body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
+.show-card:active, .btn:active, .qn:active, .era-pill:active, .social-row a:active { transform: scale(0.97) translateY(0) !important; transition: transform 0.08s ease !important; }
+h1,h2,h3,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
+header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease, transform .3s ease; }
+header.header-hidden{ transform:translateY(-100%); }
+.nav{ max-width:1180px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+.brand{ font-weight:900; font-size:21px; text-decoration:none; color:var(--ink); white-space:nowrap; transition:transform 0.25s ease; display:inline-flex; align-items:center; gap:10px; }
+.brand img.brand-logo{ width:36px; height:36px; object-fit:contain; border-radius:8px; filter:drop-shadow(0 2px 6px rgba(0,0,0,0.25)); transition:transform 0.3s ease; }
+.brand:hover img.brand-logo{ transform:rotate(6deg) scale(1.08); }
+.brand:hover{ transform:scale(1.04); }
+.brand span{ color:var(--teal); transition:color 0.25s ease; }
+.nav ul{ list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; white-space:nowrap; }
+.nav ul li{ display:inline-flex; align-items:center; }
+.nav a.navlink, #navMenu a.navlink{ color:var(--ink); text-decoration:none; font-weight:700; font-size:14px; padding:9px 16px; border-radius:999px; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); position:relative; border:1px solid transparent; }
+.nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); transform:translateY(-2px); }
+.nav a.navlink.active, #navMenu a.navlink.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; box-shadow:0 4px 12px rgba(30,37,48,0.25) !important; }
+html.arw-dark .nav a.navlink.active, html.arw-dark #navMenu a.navlink.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 12px rgba(255,255,255,0.2) !important; }
+.nav-dropdown{ position:relative; display:inline-flex; align-items:center; }
+.dropdown-menu{ display:flex !important; flex-direction:column; gap:4px !important; position:absolute; top:calc(100% + 6px); left:50%; right:auto; transform:translateX(-50%) translateY(-6px) scale(0.97); min-width:175px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 36px -12px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transition:all 0.22s cubic-bezier(0.16,1,0.3,1); z-index:60; transform-origin:top center; pointer-events:none; }
+.dropdown-menu::before{ content:''; position:absolute; top:-14px; left:0; right:0; height:14px; background:transparent; display:block; }
+.nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0) scale(1); pointer-events:auto; }
+.dropdown-menu li{ list-style:none; width:100%; margin:0; padding:0; }
+.dropdown-menu a.drop-item{ display:flex; align-items:center; gap:10px; width:100%; box-sizing:border-box; padding:9px 12px; border-radius:10px; color:var(--ink); text-decoration:none; font-weight:800; font-size:13.5px; border:1px solid transparent; transition:all 0.2s cubic-bezier(0.16,1,0.3,1); }
+.drop-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; transition:transform 0.2s ease; }
+.drop-item:hover .drop-dot{ transform:scale(1.4); }
+.drop-wwe .drop-dot{ background:#c73b2c; } .drop-wwe:hover, .drop-wwe.active{ background:rgba(199,59,44,.12) !important; color:#c73b2c !important; border-color:rgba(199,59,44,.25) !important; transform:translateX(-3px); }
+.drop-aew .drop-dot{ background:#d4a017; } .drop-aew:hover, .drop-aew.active{ background:rgba(212,160,23,.15) !important; color:#b58509 !important; border-color:rgba(212,160,23,.3) !important; transform:translateX(-3px); }
+.drop-tna .drop-dot{ background:#8a5fe0; } .drop-tna:hover, .drop-tna.active{ background:rgba(138,95,224,.14) !important; color:#7c42d6 !important; border-color:rgba(138,95,224,.28) !important; transform:translateX(-3px); }
+.drop-roh .drop-dot{ background:#3866c7; } .drop-roh:hover, .drop-roh.active{ background:rgba(44,102,199,.14) !important; color:#2358b5 !important; border-color:rgba(44,102,199,.28) !important; transform:translateX(-3px); }
+.drop-mma .drop-dot{ background:#e07a2c; } .drop-mma:hover, .drop-mma.active{ background:rgba(224,122,44,.14) !important; color:#c45b10 !important; border-color:rgba(224,122,44,.28) !important; transform:translateX(-3px); }
+.drop-indie .drop-dot{ background:#1f8a72; } .drop-indie:hover, .drop-indie.active{ background:rgba(31,138,114,.14) !important; color:#0f705b !important; border-color:rgba(31,138,114,.28) !important; transform:translateX(-3px); }
+.site-search{ flex:1; min-width:140px; max-width:420px; display:flex; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 8px 6px 16px; transition:all 0.3s cubic-bezier(0.16,1,0.3,1); }
+.site-search:focus-within{ border-color:var(--teal); box-shadow:0 0 0 4px var(--teal-soft), 0 8px 24px -8px rgba(14,149,148,0.25); transform:translateY(-1px); }
+.site-search input{ flex:1; border:none; outline:none; background:transparent; font-family:'Tajawal',sans-serif; font-size:14px; color:var(--ink); padding:6px 4px; }
+.site-search input::placeholder{ color:var(--muted); }
+.site-search button{ border:none; background:var(--teal); color:#fff; width:34px; height:34px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), background-color 0.2s ease; }
+.site-search button:hover{ transform:scale(1.12) rotate(8deg); background:#0b7c7b; }
+.theme-toggle{ width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+.theme-toggle:hover{ transform:rotate(45deg) scale(1.1); border-color:var(--teal); color:var(--teal); }
+.theme-toggle:active{ transform:rotate(180deg) scale(0.9); }
+.theme-toggle svg{ display:block; transition:transform 0.3s ease; }
+.theme-toggle .icon-sun{ display:none; }
+html.arw-dark .theme-toggle .icon-moon{ display:none; }
+html.arw-dark .theme-toggle .icon-sun{ display:block; }
+.telegram-btn{ width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; text-decoration:none; flex-shrink:0; transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+.telegram-btn:hover{ transform:scale(1.1); border-color:var(--teal); color:var(--teal); }
+.utility-row{ display:inline-flex; align-items:center; gap:8px; }
+.wrap{ max-width:1180px; margin:0 auto; }
+footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+.social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
+.social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-4px) scale(1.12); box-shadow:0 8px 16px rgba(14,149,148,0.3); }
+.reveal{ opacity:1; transform:none; }
+.reveal.reveal-hidden{ opacity:0; transform:translateY(48px); transition:none !important; }
+.reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+
+/* ===== نوستالجيا: صفحة الأرشيف الرئيسية ===== */
+.n-hero{ position:relative; padding:80px 24px 56px; text-align:center; overflow:hidden;
+  background: linear-gradient(180deg, rgba(10,12,16,.6) 0%, rgba(10,12,16,.8) 55%, var(--bg) 100%), linear-gradient(135deg,#3c2410,#1a1208); }
+.n-hero-inner{ position:relative; max-width:640px; margin:0 auto; }
+.n-hero .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); color:#fff; font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:22px; border:1px solid rgba(255,255,255,.25); }
+.n-hero h1{ font-size:clamp(32px,5.4vw,52px); line-height:1.18; color:#fff; margin-bottom:16px; letter-spacing:-.5px; }
+.n-hero h1 .u{ color:var(--gold); }
+.n-hero p{ color:rgba(255,255,255,.85); font-size:15.5px; max-width:520px; margin:0 auto; }
+
+section.content{ padding:44px 24px 70px; }
+.section-head{ margin-bottom:28px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px; }
+.section-head h2{ font-size:clamp(22px,3vw,28px); display:flex; align-items:center; justify-content:center; gap:12px; }
+.section-head h2 .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+.section-head p{ color:var(--muted); font-size:14px; }
+
+.era-rail{ display:flex; gap:10px; overflow-x:auto; padding:6px 0 26px; justify-content:center; flex-wrap:wrap; }
+.era-rail::-webkit-scrollbar{ display:none; }
+.era-pill{ flex-shrink:0; display:flex; align-items:center; gap:8px; background:var(--card); border:1px solid var(--line); padding:9px 20px; border-radius:14px; font-weight:700; font-size:13.5px; color:var(--muted); text-decoration:none; white-space:nowrap; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.era-pill:hover{ transform:translateY(-3px); border-color:var(--teal); color:var(--teal); }
+.era-pill.active{ background:#1e2530; color:#fff; border-color:#1e2530; }
+html.arw-dark .era-pill.active{ background:#fff; color:#1e2530; border-color:#fff; }
+
+.series-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+@media (max-width:860px){ .series-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .series-grid{ grid-template-columns:1fr; } }
+.series-card{ display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; }
+.series-card:hover{ transform:translateY(-8px) scale(1.02); box-shadow:0 20px 36px -16px rgba(242,165,60,.32); border-color:var(--gold); }
+.series-poster{ height:130px; display:flex; align-items:center; justify-content:center; font-family:'Cairo',sans-serif; font-weight:900; font-size:20px; color:#fff; text-align:center; line-height:1.3; padding:0 12px; background:linear-gradient(135deg,#c73b2c,#5c150c); }
+.series-card .info{ padding:16px 18px; }
+.series-card .info .cat{ display:inline-flex; align-items:center; font-size:10.5px; font-weight:800; padding:3px 10px; border-radius:999px; background:var(--gold-soft); color:var(--gold); margin-bottom:8px; }
+.series-card h3{ font-size:15px; font-weight:700; margin-bottom:6px; }
+.series-card p{ color:var(--muted); font-size:12.5px; }
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<a class="brand" href="/">عرب <span>راسلنج</span></a>
+<form class="site-search" action="/search/" method="get">
+<input type="text" name="q" placeholder="اكتب ما تريد البحث عنه...">
+<button aria-label="بحث" type="submit"><svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></button>
+</form>
+<ul id="navMenu">
+<li><a class="navlink active" href="/">الرئيسية</a></li>
+<li class="nav-dropdown">
+<a class="navlink" href="/federations/">الاتحادات</a>
+<ul class="dropdown-menu">
+<li><a href="/federation/wwe/" class="drop-item drop-wwe"><span class="drop-dot"></span><span>WWE</span></a></li>
+<li><a href="/federation/aew/" class="drop-item drop-aew"><span class="drop-dot"></span><span>AEW</span></a></li>
+<li><a href="/federation/tna/" class="drop-item drop-tna"><span class="drop-dot"></span><span>TNA</span></a></li>
+<li><a href="/federation/roh/" class="drop-item drop-roh"><span class="drop-dot"></span><span>ROH</span></a></li>
+<li><a href="/federation/mma/" class="drop-item drop-mma"><span class="drop-dot"></span><span>MMA</span></a></li>
+<li><a href="/federation/indie/" class="drop-item drop-indie"><span class="drop-dot"></span><span>INDIE</span></a></li>
+</ul>
+</li>
+<li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
+<li><a class="navlink" href="/recaps/">ملخصات العروض</a></li>
+<li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink active" href="/nostalgia/">نوستالجيا</a></li>
+<li><a class="navlink support-btn" href="/support/"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-6.716-4.35-9.428-8.06C.688 10.2 1.2 6.6 4.1 4.9c2.3-1.35 5.1-.7 6.6 1.2.5.6.9 1.3 1.3 2 .4-.7.8-1.4 1.3-2 1.5-1.9 4.3-2.55 6.6-1.2 2.9 1.7 3.412 5.3 1.528 8.04C18.716 16.65 12 21 12 21Z"/></svg><span>ادعم الموقع</span></a></li>
+<li class="utility-row">
+<button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
+<svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
+<svg class="icon-sun" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="currentColor" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
+</button>
+<a aria-label="قناة التليجرام" class="telegram-btn" href="https://t.me/arab_wrestling" target="_blank" rel="noopener" title="قناة التليجرام الرسمية">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>
+</a>
+</li>
+</ul>
+</div>
+</header>
+
+<div class="n-hero">
+<div class="n-hero-inner">
+<span class="eyebrow">🕰️ أرشيف الموقع</span>
+<h1>نوستالجيا: ارجع لأيام <span class="u">المصارعة الذهبية</span></h1>
+<p>العروض الشهرية القديمة مع كل الحلقات الأسبوعية اللي بنت لها، مترجمة بالكامل ومرتبة كمسلسل متكامل من أول حلقة لحد ليلة العرض.</p>
+</div>
+</div>
+
+<section class="content">
+<div class="wrap">
+
+<div class="section-head reveal">
+<h2 style="color:var(--gold);"><span class="dot" style="background:var(--gold)"></span>تصفح حسب السنة</h2>
+<p>كل سلسلة بتاخدك من أول حلقة بناء لحد العرض نفسه</p>
+</div>
+
+{% set years = [] %}
+{% for s in collections.nostalgiaSeries %}
+  {% if s.year and years.indexOf(s.year) == -1 %}{% set years = (years.push(s.year), years) %}{% endif %}
+{% endfor %}
+<div class="era-rail reveal">
+<a href="#all" class="era-pill active">الكل</a>
+{% for y in years %}
+<a href="#y-{{ y }}" class="era-pill">{{ y }}</a>
+{% endfor %}
+</div>
+
+<div id="all" class="series-grid">
+{% for s in collections.nostalgiaSeries %}
+<a class="series-card reveal" href="{{ ('/nostalgia/' + s.slug + '/') }}" id="y-{{ s.year }}">
+<div class="series-poster">{{ s.title }}</div>
+<div class="info">
+<span class="cat">{{ s.count }} حلقة</span>
+<h3>{{ s.title }}</h3>
+<p>{{ s.year }} · نوستالجيا</p>
+</div>
+</a>
+{% endfor %}
+</div>
+
+{% if collections.nostalgiaSeries.length == 0 %}
+<p style="text-align:center; color:var(--muted); padding:40px 0;">لسه معندناش سلاسل نوستالجيا مضافة — أضف حلقات في content/shows بحقل nostalgia_series وهتظهر هنا أوتوماتيك.</p>
+{% endif %}
+
+</div>
+</section>
+
+<footer>
+<div class="social-row">
+<a aria-label="فيسبوك" href="https://www.facebook.com/ArabWrestlingEG/" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>
+<a aria-label="إنستجرام" href="https://www.instagram.com/arabwrestling/" target="_blank"><svg fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="5" stroke="currentColor" stroke-width="2" width="18" x="3" y="3"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" fill="currentColor" r="1.2"/></svg></a>
+<a aria-label="اكس" href="https://x.com/ArabWrestlingEG" target="_blank" rel="noopener"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+<a aria-label="تيليجرام" href="https://t.me/arab_wrestling" target="_blank" rel="noopener"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg></a>
+</div>
+© 2026 عرب راسلنج — موقع عربي مستقل غير تابع لأي اتحاد رسمي.
+</footer>
+<script>
+if('IntersectionObserver' in window){
+const io = new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){ e.target.classList.remove('reveal-hidden'); e.target.classList.add('is-visible'); }
+else { e.target.classList.remove('is-visible'); e.target.classList.add('reveal-hidden'); }
+});
+}, { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el=>{
+el.classList.add('reveal-hidden');
+io.observe(el);
+});
+}
+</script>
+<script>
+(function(){
+var saved = null;
+try{ saved = localStorage.getItem('arw-theme'); }catch(e){}
+if(saved !== 'dark' && saved !== 'light'){
+try{
+var m = document.cookie.match(/(?:^|; )arw-theme=([^;]*)/);
+if(m) saved = decodeURIComponent(m[1]);
+}catch(e){}
+}
+if(saved === 'dark'){ document.documentElement.classList.add('arw-dark'); }
+})();
+var themeBtn = document.getElementById('arwThemeToggle');
+if(themeBtn){
+themeBtn.addEventListener('click', function(){
+var isDark = document.documentElement.classList.toggle('arw-dark');
+var val = isDark ? 'dark' : 'light';
+try{ localStorage.setItem('arw-theme', val); }catch(e){}
+document.cookie = 'arw-theme=' + val + ';path=/;max-age=31536000';
+});
+}
+(function(){
+var prefetched = new Set();
+function prefetch(url) {
+if(!url || prefetched.has(url) || url.startsWith('#') || (url.startsWith('http') && !url.includes(location.hostname))) return;
+prefetched.add(url);
+var link = document.createElement('link');
+link.rel = 'prefetch';
+link.href = url;
+document.head.appendChild(link);
+}
+document.addEventListener('mouseover', function(e){
+var a = e.target.closest && e.target.closest('a');
+if(a && a.href && a.origin === location.origin) prefetch(a.href);
+}, { passive: true });
+document.addEventListener('touchstart', function(e){
+var a = e.target.closest && e.target.closest('a');
+if(a && a.href && a.origin === location.origin) prefetch(a.href);
+}, { passive: true });
+})();
+</script>
+<script src="/assets/notif.js" defer></script>
+<script>
+(function(){
+var header = document.querySelector('header');
+if(!header) return;
+var lastY = window.scrollY;
+var ticking = false;
+function onScroll(){
+var currentY = window.scrollY;
+if(window.innerWidth <= 600){
+if(currentY > lastY && currentY > 80){
+header.classList.add('header-hidden');
+} else if(currentY < lastY){
+header.classList.remove('header-hidden');
+}
+} else {
+header.classList.remove('header-hidden');
+}
+lastY = currentY;
+ticking = false;
+}
+window.addEventListener('scroll', function(){
+if(!ticking){
+requestAnimationFrame(onScroll);
+ticking = true;
+}
+}, {passive:true});
+})();
+</script>
+</body>
+</html>
