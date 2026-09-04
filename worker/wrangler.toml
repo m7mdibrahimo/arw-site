@@ -33,7 +33,7 @@ VAPID_SUBJECT = "mailto:admin@arab-wrestling.com"
 # ده بيمنع إنه لما الـ Worker يشتغل أول مرة يحاول ينشر كل المحتوى القديم
 # اللي أصلًا اتنشر زمان من غير سجل في publish-state.json.
 # غيّره ليوم رفعك للـ Worker فعليًا (صيغة: YYYY-MM-DD).
-WATCHER_MIN_DATE = "2026-08-31"
+WATCHER_MIN_DATE = "2026-09-04"
 BUFFER_X_CHANNEL_ID = "6a96c964065799be46682f4d"
 BUFFER_FACEBOOK_CHANNEL_ID = "6a96e374065799be4668eb48"
 
