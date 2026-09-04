@@ -1,0 +1,479 @@
+/* ==========================================================================
+   عرب راسلنج — التنسيق الشامل للهواتف المحمولة (Mobile-First Experience)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. منع الاهتزاز الأفقي والوميض الأزرق وتسريع استجابة اللمس */
+  html, body {
+    overflow-x: hidden !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  a, button, input {
+    touch-action: manipulation;
+  }
+  .show-card:active,
+  .news-card:active,
+  .series-card:active,
+  .fed-card:active,
+  .qn:active,
+  .btn:active,
+  .navlink:active,
+  .quality-btn:active,
+  .server-tab:active,
+  .theme-toggle:active,
+  .telegram-btn:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s ease !important;
+  }
+
+  /* 2. الهيدر المتطور المخصص للهواتف المحمولة */
+  header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999 !important;
+    background: var(--bg) !important;
+    border-bottom: 1px solid var(--line) !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    box-shadow: 0 4px 18px -6px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .nav {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 14px 6px !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+  }
+
+  /* الصف الأول: الشعار في المنتصف بالضبط */
+  .brand {
+    order: 1 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+    gap: 8px !important;
+    height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  .brand img.brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+
+  /* الصف الرابع: أزرار الوضع الليلي والتليجرام تحت الخانات في المنتصف */
+  #navMenu li.utility-row {
+    position: static !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 6px 0 2px !important;
+    padding: 2px 0 0 !important;
+    height: auto !important;
+  }
+  #navMenu .theme-toggle,
+  #navMenu .telegram-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+  }
+
+  /* الصف الثاني: حقل البحث ممتد بعرض الشاشة ومريح للمس */
+  .site-search {
+    order: 2 !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    height: 40px !important;
+    padding: 3px 4px 3px 14px !important;
+    margin: 3px 0 5px !important;
+    background: var(--card) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+  }
+  .site-search input {
+    font-size: 14px !important;
+    padding: 4px 6px !important;
+  }
+  .site-search button {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .site-search button svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  /* الصف الثالث: جميع أقسام الموقع ظاهرة بالكامل أمام المستخدم بدون أي سكرول أفقي */
+  #navMenu {
+    order: 3 !important;
+    position: static !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px 5px !important;
+    padding: 2px 0 6px !important;
+    margin: 0 !important;
+  }
+  #navMenu::-webkit-scrollbar {
+    display: none !important;
+  }
+  #navMenu li {
+    display: inline-flex !important;
+    flex-shrink: 0 !important;
+  }
+  #navMenu a.navlink {
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+    background: var(--card) !important;
+    border: 1px solid var(--line) !important;
+    color: var(--ink) !important;
+    line-height: 1.2 !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03) !important;
+    text-decoration: none !important;
+  }
+  #navMenu a.navlink.active {
+    background: #1e2530 !important;
+    color: #fff !important;
+    border-color: #1e2530 !important;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.18) !important;
+  }
+  html.arw-dark #navMenu a.navlink.active {
+    background: #fff !important;
+    color: #1e2530 !important;
+    border-color: #fff !important;
+    box-shadow: 0 3px 10px rgba(255,255,255,0.18) !important;
+  }
+  #navMenu a.navlink.support-btn {
+    padding: 6px 11px !important;
+    font-size: 11.5px !important;
+    background: linear-gradient(135deg, var(--coral), var(--gold)) !important;
+    color: #fff !important;
+    border: none !important;
+    gap: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  #navMenu a.navlink.support-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  #navMenu .dropdown-menu {
+    display: none !important;
+  }
+
+  /* 3. قسم الهيرو الرئيسي المتناسق */
+  .hero {
+    padding: 48px 16px 32px !important;
+    border-radius: 0 0 20px 20px !important;
+  }
+  .eyebrow {
+    font-size: 11.5px !important;
+    padding: 5px 14px !important;
+    margin-bottom: 14px !important;
+  }
+  .hero h1 {
+    font-size: clamp(23px, 6.8vw, 30px) !important;
+    line-height: 1.28 !important;
+    margin-bottom: 12px !important;
+    letter-spacing: 0 !important;
+  }
+  .hero h1.hero-title .u, .hero h1 .u {
+    font-size: 0.92em !important;
+    margin-top: 6px !important;
+  }
+  .hero p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+  }
+  .cta-row {
+    gap: 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+  }
+  .cta-row .btn {
+    flex: 1 1 0 !important;
+    padding: 12px 10px !important;
+    font-size: 13.5px !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 4. شريط التنقل السريع: شبكة متناسقة (2x2) */
+  .quicknav {
+    margin-top: 22px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .qn {
+    padding: 11px 12px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .qn .dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  /* 5. هيدرات الأقسام والصفحات */
+  section.content {
+    padding: 24px 14px 44px !important;
+  }
+  .wrap {
+    padding: 0 !important;
+  }
+  .section-head {
+    margin-bottom: 18px !important;
+    gap: 6px !important;
+  }
+  .section-head h2 {
+    font-size: 20px !important;
+    letter-spacing: 0 !important;
+    gap: 8px !important;
+  }
+  .section-head p {
+    font-size: 13px !important;
+    margin-top: 4px !important;
+  }
+  .page-head {
+    padding: 24px 14px 18px !important;
+  }
+  .page-head h1, .page-head h2 {
+    font-size: 20px !important;
+    margin-bottom: 4px !important;
+  }
+  .page-head p {
+    font-size: 13px !important;
+  }
+  .view-all {
+    font-size: 12.5px !important;
+    padding: 8px 14px !important;
+  }
+
+  /* 6. شبكة الاتحادات: عمودين متجاورين في الهاتف بدل عمود فردي طويل */
+  .feds-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .fed-card {
+    border-radius: 14px !important;
+  }
+  .fed-mark {
+    height: 68px !important;
+    font-size: 20px !important;
+  }
+  .fed-card .info {
+    padding: 8px 10px !important;
+  }
+  .fed-card .info p {
+    font-size: 11px !important;
+  }
+
+  /* 7. كروت العروض والأخبار: نسبة أبعاد 16:9 سينمائية */
+  .grid-12 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .grid-12 > * {
+    grid-column: span 1 !important;
+  }
+  .show-card, .news-card, .series-card {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 14px -6px rgba(0,0,0,0.08) !important;
+  }
+  .show-thumb, .news-thumb, .series-thumb {
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    width: 100% !important;
+  }
+  .show-thumb img, .news-thumb img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .show-body, .news-body {
+    padding: 14px 16px !important;
+  }
+  .show-body h3, .news-body h3 {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    margin: 4px 0 8px !important;
+  }
+  .show-body .desc, .news-body p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 10px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .show-body .foot {
+    font-size: 11.5px !important;
+    padding-top: 10px !important;
+  }
+  .play-btn {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .play-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* 8. صفحة العرض المنفردة (مشغل الفيديو وروابط التحميل والسيرفرات) */
+  .post-wrap {
+    padding: 16px 14px 44px !important;
+    max-width: 100% !important;
+  }
+  .back-link {
+    font-size: 13px !important;
+    margin-bottom: 14px !important;
+  }
+  .post-wrap h1 {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+  }
+  .post-wrap h2 {
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 14px !important;
+  }
+  .post-desc {
+    font-size: 14px !important;
+    padding: 12px 14px !important;
+    margin-bottom: 16px !important;
+  }
+  .video-embed {
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.3) !important;
+  }
+  .server-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+  .server-tab {
+    padding: 10px 8px !important;
+    font-size: 12.5px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    border-radius: 10px !important;
+  }
+  .quality-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  .quality-btn {
+    padding: 14px 6px !important;
+    border-radius: 12px !important;
+    gap: 6px !important;
+  }
+  .quality-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .quality-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .quality-label {
+    font-size: 12px !important;
+  }
+  .quality-sub {
+    font-size: 10px !important;
+  }
+  .download-links {
+    padding: 14px 14px !important;
+    border-radius: 14px !important;
+  }
+  .dl-modal {
+    width: calc(100% - 20px) !important;
+    max-height: 80vh !important;
+    border-radius: 18px !important;
+    margin: 0 auto !important;
+  }
+  .dl-site-card {
+    padding: 10px 12px !important;
+  }
+  .dl-site-name {
+    font-size: 13px !important;
+  }
+
+  /* 9. شريط السنين في قسم النوستالجيا */
+  .era-rail {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    justify-content: flex-start !important;
+    padding: 8px 14px 18px !important;
+    gap: 8px !important;
+  }
+  .era-rail::-webkit-scrollbar {
+    display: none !important;
+  }
+  .era-pill {
+    padding: 8px 16px !important;
+    min-height: 38px !important;
+    font-size: 13px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 10. التذييل والأزرار والصفحات */
+  footer {
+    padding: 30px 16px calc(30px + env(safe-area-inset-bottom, 0px)) !important;
+    font-size: 12px !important;
+  }
+  .social-row a {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .pagination {
+    gap: 6px !important;
+    padding: 24px 0 16px !important;
+    flex-wrap: wrap !important;
+  }
+  .page-link, .page-num {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+  }
+}
