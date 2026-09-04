@@ -23,8 +23,20 @@ app.use((req, res, next) => {
   next();
 });
 
-const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "8557696064:AAF_OwtfWAfI1820xX4fj96zj_fY5GcxX5s";
+// NOTE: TELEGRAM_BOT_TOKEN must be set as an environment variable — it is
+// intentionally NOT hardcoded here. A previous version of this file shipped
+// the real bot token as a fallback value, which exposed it to anyone who
+// viewed this public repo. That token has been revoked; set a fresh one via
+// your hosting provider's environment variables (e.g. Render dashboard).
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "";
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "@arab_wrestling";
+
+if (!BOT_TOKEN) {
+  console.error(
+    "[Startup] TELEGRAM_BOT_TOKEN is not set. Telegram posting will fail until " +
+    "you set this environment variable on your hosting provider."
+  );
+}
 
 // Where the push-notification files (VAPID keys, subscriber list) are
 // written. Render's default filesystem is ephemeral — everything under
