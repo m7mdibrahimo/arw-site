@@ -710,7 +710,7 @@ if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
 }
 if (!data.imageUrl) return { ok: false, skipped: true };
 
-const safeImageUrl = data.imageUrl;
+const safeImageUrl = instagramSafeImageUrl(data.imageUrl);
 
 const caption = buildDividedCaption(data.title, data.text);
 const kvKey = `ig-pending:${key}`;
