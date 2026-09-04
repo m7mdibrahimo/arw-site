@@ -705,12 +705,15 @@ async function postToInstagram(
   key: string,
   data: { title: string; text?: string; url: string; imageUrl?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
-  if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  if (!data.imageUrl) return { ok: false, skipped: true };
+if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
+  return { ok: false, skipped: true };
+}
+if (!data.imageUrl) return { ok: false, skipped: true };
 
-  const safeImageUrl = instagramSafeImageUrl(data.imageUrl);
-  const caption = buildDividedCaption(data.title, data.text);
-  const kvKey = `ig-pending:${key}`;
+const safeImageUrl = data.imageUrl;
+
+const caption = buildDividedCaption(data.title, data.text);
+const kvKey = `ig-pending:${key}`;
 
   try {
     const pageToken = await getPageAccessToken(env);
