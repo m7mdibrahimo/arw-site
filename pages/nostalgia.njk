@@ -47,6 +47,10 @@ header.header-hidden{ transform:translateY(-100%); }
 .nav a.navlink:hover{ background:var(--teal-soft); color:var(--teal); transform:translateY(-2px); }
 .nav a.navlink.active, #navMenu a.navlink.active{ background:#1e2530 !important; color:#fff !important; border-color:#1e2530 !important; box-shadow:0 4px 12px rgba(30,37,48,0.25) !important; }
 html.arw-dark .nav a.navlink.active, html.arw-dark #navMenu a.navlink.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 12px rgba(255,255,255,0.2) !important; }
+.nav a.navlink.support-btn, #navMenu a.navlink.support-btn{ display:inline-flex; align-items:center; gap:6px; background:linear-gradient(135deg, var(--coral), var(--gold)); color:#fff !important; border:none; box-shadow:0 4px 14px rgba(255,111,89,0.35); animation:support-pulse 2.6s ease-in-out infinite; }
+.nav a.navlink.support-btn:hover{ background:linear-gradient(135deg, var(--gold), var(--coral)); color:#fff !important; transform:translateY(-2px) scale(1.04); box-shadow:0 8px 20px rgba(255,111,89,0.45); animation-play-state:paused; }
+.nav a.navlink.support-btn svg{ flex-shrink:0; }
+@keyframes support-pulse{ 0%,100%{ box-shadow:0 4px 14px rgba(255,111,89,0.35); } 50%{ box-shadow:0 4px 22px rgba(255,111,89,0.65); } }
 .nav-dropdown{ position:relative; display:inline-flex; align-items:center; }
 .dropdown-menu{ display:flex !important; flex-direction:column; gap:4px !important; position:absolute; top:calc(100% + 6px); left:50%; right:auto; transform:translateX(-50%) translateY(-6px) scale(0.97); min-width:175px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:0 16px 36px -12px rgba(0,0,0,.25); list-style:none; opacity:0; visibility:hidden; transition:all 0.22s cubic-bezier(0.16,1,0.3,1); z-index:60; transform-origin:top center; pointer-events:none; }
 .dropdown-menu::before{ content:''; position:absolute; top:-14px; left:0; right:0; height:14px; background:transparent; display:block; }
@@ -103,7 +107,7 @@ section.content{ padding:44px 24px 70px; }
 
 .era-rail{ display:flex; gap:10px; overflow-x:auto; padding:6px 0 26px; justify-content:center; flex-wrap:wrap; }
 .era-rail::-webkit-scrollbar{ display:none; }
-.era-pill{ flex-shrink:0; display:flex; align-items:center; gap:8px; background:var(--card); border:1px solid var(--line); padding:9px 20px; border-radius:14px; font-weight:700; font-size:13.5px; color:var(--muted); text-decoration:none; white-space:nowrap; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.era-pill{ flex-shrink:0; display:flex; align-items:center; gap:8px; background:var(--card); border:1px solid var(--line); padding:9px 20px; border-radius:14px; font-weight:700; font-size:13.5px; color:var(--muted); text-decoration:none; white-space:nowrap; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); font-family:'Tajawal',sans-serif; cursor:pointer; }
 .era-pill:hover{ transform:translateY(-3px); border-color:var(--teal); color:var(--teal); }
 .era-pill.active{ background:#1e2530; color:#fff; border-color:#1e2530; }
 html.arw-dark .era-pill.active{ background:#fff; color:#1e2530; border-color:#fff; }
@@ -129,7 +133,7 @@ html.arw-dark .era-pill.active{ background:#fff; color:#1e2530; border-color:#ff
 <button aria-label="بحث" type="submit"><svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></button>
 </form>
 <ul id="navMenu">
-<li><a class="navlink active" href="/">الرئيسية</a></li>
+<li><a class="navlink" href="/">الرئيسية</a></li>
 <li class="nav-dropdown">
 <a class="navlink" href="/federations/">الاتحادات</a>
 <ul class="dropdown-menu">
@@ -178,16 +182,16 @@ html.arw-dark .era-pill.active{ background:#fff; color:#1e2530; border-color:#ff
 {% for s in collections.nostalgiaSeries %}
   {% if s.year and years.indexOf(s.year) == -1 %}{% set years = (years.push(s.year), years) %}{% endif %}
 {% endfor %}
-<div class="era-rail reveal">
-<a href="#all" class="era-pill active">الكل</a>
+<div class="era-rail reveal" id="eraRail">
+<button type="button" class="era-pill active" data-year="all">الكل</button>
 {% for y in years %}
-<a href="#y-{{ y }}" class="era-pill">{{ y }}</a>
+<button type="button" class="era-pill" data-year="{{ y }}">{{ y }}</button>
 {% endfor %}
 </div>
 
-<div id="all" class="series-grid">
+<div class="series-grid" id="seriesGrid">
 {% for s in collections.nostalgiaSeries %}
-<a class="series-card reveal" href="{{ ('/nostalgia/' + s.slug + '/') }}" id="y-{{ s.year }}">
+<a class="series-card reveal" href="{{ ('/nostalgia/' + s.slug + '/') }}" data-year="{{ s.year }}">
 <div class="series-poster">{{ s.title }}</div>
 <div class="info">
 <span class="cat">{{ s.count }} حلقة</span>
@@ -197,6 +201,32 @@ html.arw-dark .era-pill.active{ background:#fff; color:#1e2530; border-color:#ff
 </a>
 {% endfor %}
 </div>
+
+<p id="noYearResults" style="display:none; text-align:center; color:var(--muted); padding:40px 0;">لا توجد سلاسل لهذه السنة بعد.</p>
+
+<script>
+(function(){
+var rail = document.getElementById('eraRail');
+if(!rail) return;
+var pills = rail.querySelectorAll('.era-pill');
+var cards = document.querySelectorAll('.series-card');
+var noResults = document.getElementById('noYearResults');
+rail.addEventListener('click', function(e){
+var btn = e.target.closest('.era-pill');
+if(!btn) return;
+pills.forEach(function(p){ p.classList.remove('active'); });
+btn.classList.add('active');
+var year = btn.getAttribute('data-year');
+var visibleCount = 0;
+cards.forEach(function(card){
+var match = (year === 'all') || (card.getAttribute('data-year') === year);
+card.style.display = match ? '' : 'none';
+if(match) visibleCount++;
+});
+noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+});
+})();
+</script>
 
 {% if collections.nostalgiaSeries.length == 0 %}
 <p style="text-align:center; color:var(--muted); padding:40px 0;">لم تُضَف أي سلاسل نوستالجيا بعد — أضِف حلقات في content/shows مع حقل nostalgia_series وستظهر هنا تلقائيًا.</p>
