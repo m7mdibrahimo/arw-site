@@ -614,69 +614,90 @@ async function pollBufferPostUntilResolved(
   return { resolved: false };
 }
 
-// Posts to Facebook directly via the Graph API using the Page access token
-// (FACEBOOK_PAGE_ACCESS_TOKEN / FACEBOOK_PAGE_ID) instead of routing through
-// Buffer. Same caption shape as before (title + snippet + follow line, no
-// link in the body). With an image: POST /{page-id}/photos with the image
-// URL as `url` — Meta downloads it itself, no need to re-upload the bytes.
-// Without one: POST /{page-id}/feed with just `message`. Both are a single
-// synchronous call — Graph API returns the real post id (or a real error)
-// immediately, so there's no Buffer-style async polling/KV-resume needed
-// here.
-async function postToFacebookDirect(
+// Posts to Facebook via Buffer — reverted from the brief direct-Graph-API
+// experiment. Direct posting worked technically (Graph API accepted the
+// posts, they appeared on the Page) but stayed invisible to the public
+// because the "ARW AutoPost" Meta app hasn't been through App Review for
+// pages_manage_posts yet — until that review is approved, anything posted
+// through that app's token is only visible to the app's own admins/testers,
+// not real visitors. Buffer already has the needed permissions live, so
+// routing through it is the only way posts are actually public right now.
+async function postToFacebookViaBuffer(
   env: Env,
   key: string,
   data: { title: string; text?: string; image?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
-  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
+  if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
 
-  const caption = buildDividedCaption(data.title, data.text);
-  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+  const kvKey = `buffer-pending:facebook:${key}`;
 
+  // Resume polling a post created on an earlier tick instead of creating a
+  // duplicate — same reasoning as postToInstagram's containerId cache.
+  let postId: string | null = null;
   try {
-    const pageToken = await getPageAccessToken(env);
-    const endpoint = imageUrl
-      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
-      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
-    const body = imageUrl
-      ? { url: imageUrl, caption, access_token: pageToken }
-      : { message: caption, access_token: pageToken };
-
-    let res: Response;
-    try {
-      res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-    } catch (e) {
-      // Network failure after the request left this Worker — Meta may have
-      // already received and processed it. Don't treat this as a clean
-      // failure (that would let the caller release the claim and retry,
-      // risking a duplicate post); flag it ambiguous instead so the claim
-      // stays in place.
-      return { ok: false, ambiguous: true };
+    const cached = await env.PUSH_KV.get(kvKey);
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (Date.now() - parsed.createdAt < 30 * 60 * 1000) postId = parsed.id;
     }
-    const result: any = await res.json().catch(() => ({ __unparsed: true }));
+  } catch (e) {}
 
-    // Success shape: /photos -> { id, post_id }; /feed -> { id }.
-    if (result.id || result.post_id) return { ok: true, result };
+  if (!postId) {
+    const caption = buildDividedCaption(data.title, data.text);
+    const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
-    // Meta's app-level/page-level throttling (rate limit or the automated
-    // abuse-prevention block also seen on Instagram): codes 4, 17, 32, 613
-    // and the "Action is blocked" subcode all mean "stop hitting this for a
-    // while", not "this specific post was invalid". Pause facebook retries
-    // the same way a Buffer daily-limit hit used to.
-    const errCode = result?.error?.code;
-    const errSubcode = result?.error?.error_subcode;
-    const isThrottled = [4, 17, 32, 613].includes(errCode) || errSubcode === 2207051;
-    if (isThrottled) await setPlatformDailyLimitCooldown(env, "facebook");
-    if (result.__unparsed) return { ok: false, result, ambiguous: true };
+    try {
+      const query = imageUrl
+        ? `mutation PostToFacebook($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
+            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }], metadata: { facebook: { type: post } } }) {
+              ... on PostActionSuccess { post { id } }
+              ... on MutationError { message }
+            }
+          }`
+        : `mutation PostToFacebook($text: String!, $channelId: ChannelId!) {
+            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, metadata: { facebook: { type: post } } }) {
+              ... on PostActionSuccess { post { id } }
+              ... on MutationError { message }
+            }
+          }`;
+      const variables = imageUrl
+        ? { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID, imageUrl }
+        : { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID };
 
-    return { ok: false, result };
-  } catch (e) {
-    return { ok: false };
+      const res = await fetch("https://api.buffer.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+        body: JSON.stringify({ query, variables }),
+      });
+      const result: any = await res.json().catch(() => ({}));
+      postId = result?.data?.createPost?.post?.id;
+      if (!postId) {
+        // Buffer can reject at creation time too (MutationError), not only
+        // after polling — catch the daily-limit message here as well so a
+        // channel that's already maxed out doesn't get hammered again next
+        // tick.
+        if (isDailyLimitMessage(result?.data?.createPost?.message)) {
+          await setPlatformDailyLimitCooldown(env, "facebook");
+        }
+        return { ok: false, result };
+      }
+      try {
+        await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 3600 });
+      } catch (e) {}
+    } catch (e) {
+      return { ok: false };
+    }
   }
+
+  const outcome = await pollBufferPostUntilResolved(env, postId);
+  if (!outcome.resolved) return { ok: false, ambiguous: true }; // keep cached id, keep claim — resume next tick
+  try {
+    await env.PUSH_KV.delete(kvKey);
+  } catch (e) {}
+  if (!outcome.ok && isDailyLimitMessage(outcome.raw?.error?.message)) {
+    await setPlatformDailyLimitCooldown(env, "facebook");
+  }
+  return { ok: !!outcome.ok, result: outcome.raw };
 }
 
 async function postToInstagram(
@@ -906,8 +927,8 @@ async function publishToPlatform(
 ): Promise<{ status: string; raw?: any }> {
   // Buffer's daily posting limit is per-channel, not per-item — if it was
   // just hit, don't even attempt a claim (avoids a pointless GitHub write)
-  // or a call for this platform until the cooldown set in
-  // postToFacebookDirect/postToXViaBuffer expires. `force` (the admin's
+  // or a Buffer call for this platform until the cooldown set in
+  // postToFacebookViaBuffer/postToXViaBuffer expires. `force` (the admin's
   // manual "publish anyway" button) bypasses this, same as it bypasses the
   // normal claim.
   if (!force && (platform === "facebook" || platform === "x")) {
@@ -928,7 +949,7 @@ async function publishToPlatform(
     ok = !!(r && r.ok);
     raw = r;
   } else if (platform === "facebook") {
-    const r = await postToFacebookDirect(env, key, item);
+    const r = await postToFacebookViaBuffer(env, key, item);
     ok = r.ok;
     skipped = !!r.skipped;
     ambiguous = !!r.ambiguous;
