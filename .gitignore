@@ -17,3 +17,4 @@ bun.lock
 index.html
 src/
 vite.config.ts
+_site/
