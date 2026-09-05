@@ -131,7 +131,7 @@ collections:
     create: true
     identifier_field: "title"
     slug: "{{year}}-{{slug}}"
-    summary: "{{title}} ({{year}}) - {{federation}}"
+    summary: "{{title}}"
     fields:
       - { label: "اسم السلسلة / الحدث (بالعربي)", name: "title", widget: "string", hint: "مثال: اكستريم رولز 2012 أو راسلمينيا 28" }
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"], default: "WWE" }
@@ -150,7 +150,7 @@ collections:
     identifier_field: "title"
     slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
     preview_path: "nostalgia/{{title}}"
-    summary: "{{title}} (ترتيب: {{nostalgia_order}})"
+    summary: "{{title}}"
     fields:
       - label: "اختر السلسلة التابع لها هذا العرض"
         name: "nostalgia_series"
