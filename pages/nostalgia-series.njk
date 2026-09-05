@@ -196,11 +196,30 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 .ep-row.main .ep-badge{ background:var(--gold-soft); color:var(--gold); }
 
 @media (max-width:640px){
-  .shero{ padding:44px 24px; border-radius:18px; }
-  .ep-thumb{ display:none; }
+  .shero{ padding:44px 20px; border-radius:18px; }
   .timeline::before{ right:21px; }
+  .ep-row{ gap:12px; }
   .ep-num{ width:44px; height:44px; font-size:13px; }
-  .ep-row.main .ep-num{ width:52px; height:52px; }
+  .ep-row.main .ep-num{ width:50px; height:50px; font-size:15px; }
+  .episode-card{ align-items:stretch; border-radius:14px; }
+  .ep-thumb{ display:flex; width:88px; min-height:80px; align-self:stretch; flex-shrink:0; }
+  .ep-row.main .ep-thumb{ width:96px; min-height:88px; }
+  .ep-body{ padding:10px 12px; display:flex; flex-direction:column; justify-content:center; }
+  .ep-body h3{ font-size:13px; line-height:1.4; margin-bottom:6px; }
+  .ep-row.main .ep-body h3{ font-size:14px; }
+  .ep-body .foot{ font-size:11px; gap:8px; flex-wrap:wrap; }
+  .ep-badge{ font-size:10px; padding:2px 8px; }
+}
+
+@media (max-width:420px){
+  .timeline::before{ right:18px; }
+  .ep-row{ gap:8px; }
+  .ep-num{ width:38px; height:38px; font-size:12px; }
+  .ep-row.main .ep-num{ width:44px; height:44px; font-size:13px; }
+  .ep-thumb{ width:76px; }
+  .ep-row.main .ep-thumb{ width:84px; }
+  .ep-body{ padding:8px 10px; }
+  .ep-body h3{ font-size:12.5px; }
 }
 </style>
 </head>
