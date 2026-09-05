@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageTitle = headline or title %}
+{% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
 <title>{{ pageTitle }} | عرب راسلنج</title>
 {% set baseDesc = description or (content | striptags | truncate(140)) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
 {% set metaDesc = (pageTitle + " - " + baseDesc) | truncate(165) %}
@@ -91,8 +92,8 @@
           "name": "الرئيسية",
           "item": "https://arab-wrestling.com/"
         },
-        {% set sectionName = 'الأخبار' if page.url.startsWith('/news/') else ('عروض المصارعة' if page.url.startsWith('/shows/') else 'ملخصات العروض') %}
-        {% set sectionUrl = '/news/' if page.url.startsWith('/news/') else ('/shows/' if page.url.startsWith('/shows/') else '/recaps/') %}
+        {% set sectionName = 'الأخبار' if page.url.startsWith('/news/') else ('نوستالجيا' if (page.url.startsWith('/nostalgia/') or isNostalgiaItem) else ('عروض المصارعة' if page.url.startsWith('/shows/') else 'ملخصات العروض')) %}
+        {% set sectionUrl = '/news/' if page.url.startsWith('/news/') else ('/nostalgia/' if (page.url.startsWith('/nostalgia/') or isNostalgiaItem) else ('/shows/' if page.url.startsWith('/shows/') else '/recaps/')) %}
         {
           "@type": "ListItem",
           "position": 2,
@@ -673,9 +674,9 @@
           <li><a href="/federation/indie/" class="drop-item drop-indie{% if fed == 'indie' %} active{% endif %}"><span class="drop-dot"></span><span>INDIE</span></a></li>
         </ul>
       </li>
-      <li><a class="navlink{% if kind == 'show' and not fed %} active{% endif %}" href="/shows/">عروض المصارعة</a></li>
+      <li><a class="navlink{% if kind == 'show' and not fed and not isNostalgiaItem and not (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink{% if kind == 'recap' %} active{% endif %}" href="/recaps/">ملخصات العروض</a></li>
-      <li><a class="navlink{% if kind == 'news' or isNews %} active{% endif %}" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li>
+      <li><a class="navlink{% if kind == 'news' or isNews %} active{% endif %}" href="/news/">الأخبار</a></li><li><a class="navlink{% if isNostalgiaItem or (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/nostalgia/">نوستالجيا</a></li>
       <li class="utility-row">
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
           <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
@@ -729,7 +730,11 @@
 
 <main>
   <div class="post-wrap reveal">
+    {% if isNostalgiaItem %}
+    <a class="back-link" href="/nostalgia/{% if nostalgia_series %}{{ nostalgia_series }}/{% endif %}">→ {% if nostalgia_series %}رجوع لمسار السلسلة{% else %}رجوع لقسم نوستالجيا{% endif %}</a>
+    {% else %}
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
+    {% endif %}
     <div class="post-meta-bar">
       {% if federation %}<span class="post-fed cat-{{ federation | lower }}">{{ federation }}</span>{% endif %}
       {% if title and headline and title != headline %}<span class="post-ep-name">{{ title }}</span>{% endif %}
@@ -793,25 +798,41 @@
       {% set navPrograms = collections.recapsProgramsGrouped if isRecap else collections.programsGrouped %}
       {% set nav = getEpisodeNav(program_name, page.url, navPrograms) %}
       {% if nav %}
-        {% set isSeries = (nav.program.mode == "series") %}
+        {% set isNostalgiaItem = (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series %}
+        {% set isSeries = (nav.program.mode == "series") and not isNostalgiaItem %}
         {% set nounSingle = "حلقة" if isSeries else "عرض" %}
         {% set nounPlural = "حلقات" if isSeries else "عروض" %}
-        {% set isAnnual = (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "annual") %}
+        {% set isNostalgiaItem = (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or nav.program.isNostalgia %}
+        {% set isAnnual = isNostalgiaItem or (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "annual") or (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "nostalgia") %}
         <div class="episodes-nav reveal">
           <div class="episodes-nav-head">
             <h3>
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              {% if isNostalgiaItem or nav.program.isNostalgia %}
+              {{ nav.program.name }}
+              {% else %}
               {% if isRecap %}ملخصات {% endif %}{{ nounPlural }} {{ nav.program.name }}
+              {% endif %}
             </h3>
             {% set epCount = nav.program.episodes.length %}
-            {% set countSingle = "ملخص" if isRecap else nounSingle %}
-            {% set countPlural = "ملخصات" if isRecap else nounPlural %}
-            <span class="episodes-count">{% if epCount == 1 %}1 {{ countSingle }}{% else %}{{ epCount }} {{ countPlural }}{% endif %}</span>
+            {% set countSingle = "عرض" if isNostalgiaItem else ("ملخص" if isRecap else nounSingle) %}
+            {% set countPlural = "عروض" if isNostalgiaItem else ("ملخصات" if isRecap else nounPlural) %}
+            <span class="episodes-count">
+              {% if isNostalgiaItem %}
+              مسار العروض ({{ epCount }})
+              {% elif epCount == 1 %}
+              1 {{ countSingle }}
+              {% else %}
+              {{ epCount }} {{ countPlural }}
+              {% endif %}
+            </span>
           </div>
 
           <div class="episodes-search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
-            {% if isAnnual %}
+            {% if isNostalgiaItem %}
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث في عروض السلسلة..." autocomplete="off">
+            {% elif isAnnual %}
             <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث بالاسم أو الرقم أو السنة... مثال: 2026 أو 285" autocomplete="off">
             {% elif isSeries %}
             <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب رقم {{ nounSingle }}... مثال: 20" autocomplete="off">
@@ -836,7 +857,7 @@
           {% for season in nav.program.seasons %}
           <div class="episode-strip" data-season-panel="{{ season.number }}"{% if season.number != nav.activeSeason %} style="display:none;"{% endif %}>
             {% for ep in season.episodes %}
-            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.pillLabel and ('/' in ep.pillLabel or ep.pillLabel.length > 3) %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}" data-day="{{ ep.day }}" data-month="{{ ep.month }}" data-year="{{ ep.year }}" data-episode="{{ ep.episodeLabel }}" data-search="{{ ep.title }} {{ ep.headline }}">
+            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.pillLabel and ('/' in ep.pillLabel or ep.pillLabel.length > 3 or ep.isNostalgia or isNostalgiaItem) %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}" data-day="{{ ep.day }}" data-month="{{ ep.month }}" data-year="{{ ep.year }}" data-episode="{{ ep.episodeLabel }}" data-search="{{ ep.title }} {{ ep.headline }}">
               <span class="ep-pill-num">{% if ep.pillLabel %}{{ ep.pillLabel }}{% else %}{{ loop.index }}{% endif %}</span>
             </a>
             {% endfor %}

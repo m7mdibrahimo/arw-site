@@ -515,15 +515,41 @@ module.exports = function(eleventyConfig) {
     const items = collectionApi.getFilteredByGlob(glob);
     const map = new Map();
 
+    const seriesDefs = collectionApi.getFilteredByGlob("content/nostalgia-series/*.md");
+    const nostalgiaSeriesMap = new Map();
+    seriesDefs.forEach(function(sItem) {
+      const sSlug = String(sItem.fileSlug || "").trim();
+      if (sSlug) nostalgiaSeriesMap.set(sSlug, sItem.data.title || sSlug);
+    });
+
     items.forEach(function(item) {
-      const rawName = item.data && item.data.program_name;
+      const inputPath = String(item.inputPath || "");
+      const isNostalgia = !!(item.data && (item.data.nostalgia_series || inputPath.includes("content/nostalgia")));
+      let rawName = item.data && item.data.program_name;
+
+      if (isNostalgia) {
+        const ref = String(item.data.nostalgia_series || "").trim();
+        let sTitle = nostalgiaSeriesMap.get(ref) || item.data.nostalgia_series_title || ref;
+        if (!sTitle) {
+          sTitle = (item.data.title || "").replace(/\s*\(نوستالجيا\)\s*/g, "");
+        }
+        const cleanEventName = String(sTitle).replace(/^عرض\s+/g, "").trim();
+        rawName = "رحلة الوصول إلى عرض " + cleanEventName;
+        item.data.program_name = rawName;
+      }
+
       if (!rawName || !String(rawName).trim()) return;
       const name = String(rawName).trim();
-      const slug = arabicSlug(name);
+      const slug = isNostalgia ? arabicSlug("nostalgia-" + (item.data.nostalgia_series || name)) : arabicSlug(name);
       if (!slug) return;
 
       if (!map.has(slug)) {
-        map.set(slug, { slug: slug, name: name, episodes: [] });
+        map.set(slug, { 
+          slug: slug, 
+          name: name, 
+          isNostalgia: isNostalgia,
+          episodes: [] 
+        });
       }
 
       const seasonRaw = parseInt(item.data.season_number, 10);
@@ -533,20 +559,28 @@ module.exports = function(eleventyConfig) {
       const monthNum = dateVal ? (dateVal.getUTCMonth() + 1) : null;
       const dayNum = dateVal ? dateVal.getUTCDate() : null;
       const shortDate = dateVal ? ("يوم " + dayNum + " شهر " + monthNum) : null;
-      const isAnnual = item.data.is_annual === true || item.data.is_annual === "true";
+      const isAnnual = isNostalgia || (item.data.is_annual === true || item.data.is_annual === "true");
 
-      // خانة "رقم الحلقة" بقت نص حر (تقدر تكتب رقم عادي، أو أي نص/تاريخ بالعربي زي "29/8")
-      const episodeRaw = item.data.episode_number;
+      const episodeRaw = isNostalgia ? (item.data.nostalgia_order || item.data.episode_number) : item.data.episode_number;
       const episodeLabel = (episodeRaw !== undefined && episodeRaw !== null && String(episodeRaw).trim() !== "")
         ? String(episodeRaw).trim()
         : null;
-      // لو النص المكتوب رقم صحيح بحت، بيتستخدم للترتيب الرقمي. غير كده الترتيب بيبقى بتاريخ النشر.
       const episodeSortNum = (episodeLabel !== null && /^\d+$/.test(episodeLabel)) ? parseInt(episodeLabel, 10) : null;
 
-      // مفتاح التجميع: لو "عرض سنوي" فكل النسخ بترجع لمجموعة واحدة ثابتة (مفيش مواسم خالص).
-      // غير كده: رقم الموسم لو موجود، وإلا السنة المستنتجة من تاريخ العرض، وإلا مجموعة عامة واحدة.
       const groupKey = isAnnual ? -1 : (season !== null ? season : (year !== null ? year : 0));
-      const groupType = isAnnual ? "annual" : (season !== null ? "season" : (year !== null ? "year" : "misc"));
+      const groupType = isNostalgia ? "nostalgia" : (isAnnual ? "annual" : (season !== null ? "season" : (year !== null ? "year" : "misc")));
+
+      let pillLabel = isAnnual
+        ? (item.data.title || item.data.headline || "").trim()
+        : (episodeLabel !== null ? episodeLabel : (shortDate || null));
+
+      if (isNostalgia) {
+        if (item.data.nostalgia_main === true || item.data.nostalgia_main === "true") {
+          pillLabel = "العرض الختامي";
+        } else {
+          pillLabel = "عرض " + (item.data.nostalgia_order || 1);
+        }
+      }
 
       map.get(slug).episodes.push({
         url: item.url,
@@ -562,10 +596,8 @@ module.exports = function(eleventyConfig) {
         day: dayNum,
         groupKey: groupKey,
         groupType: groupType,
-        // الرقم/النص اللي هيتعرض جوه الدائرة: لو عرض سنوي بيتعرض اسم العرض كامل، وإلا رقم الحلقة لو موجود، وإلا تاريخ العرض المختصر
-        pillLabel: isAnnual
-          ? (item.data.title || item.data.headline || "").trim()
-          : (episodeLabel !== null ? episodeLabel : (shortDate || null)),
+        pillLabel: pillLabel,
+        isNostalgia: isNostalgia,
         timestamp: getItemTimestamp(item)
       });
     });
@@ -595,9 +627,9 @@ module.exports = function(eleventyConfig) {
 
       // "series" = برنامج/مسلسل ليه رقم موسم أو رقم/عنوان حلقة مكتوب صريح (زي WWE LFG) → يستخدم كلمة "حلقة/حلقات".
       // "recurring" = عرض متكرر مفيهوش أي ترقيم صريح وبيعتمد على تاريخ العرض بس (زي WWE Raw) → يستخدم كلمة "عرض/عروض".
-      prog.mode = prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; })
-        ? "series"
-        : "recurring";
+      prog.mode = prog.isNostalgia
+        ? "recurring"
+        : (prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; }) ? "series" : "recurring");
     });
 
     return programs;
@@ -614,6 +646,9 @@ module.exports = function(eleventyConfig) {
   // بيتنادى من جوه القالب زي: {% set nav = getEpisodeNav(program_name, page.url, collections.programsGrouped) %}
   const episodeShortLabel = function(ep, mode) {
     if (!ep) return "";
+    if (ep.isNostalgia || ep.groupType === "nostalgia") {
+      return (ep.headline || ep.title || "").replace(/\s*\(نوستالجيا\)\s*/g, "");
+    }
     if (ep.groupType === "annual") return ep.pillLabel || ep.headline || ep.title || "";
     const noun = mode === "series" ? "الحلقة " : "العرض ";
     if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return noun + ep.episodeLabel;
@@ -632,7 +667,12 @@ module.exports = function(eleventyConfig) {
     if (!programName || !String(programName).trim()) return null;
     const slug = arabicSlug(programName);
     if (!slug) return null;
-    const prog = (programs || []).find(function(p) { return p.slug === slug; });
+    let prog = (programs || []).find(function(p) { return p.slug === slug; });
+    if (!prog) {
+      prog = (programs || []).find(function(p) {
+        return p.slug === ("nostalgia-" + slug) || p.name === programName;
+      });
+    }
     if (!prog) return null;
     // القسم بيظهر من أول عرض واحد يتضاف (مش لازم يستنى عرضين)، عشان يبان ومتجهز يكبر أول ما تضيف نسخ تانية.
 
