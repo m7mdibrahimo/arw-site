@@ -11,7 +11,7 @@ permalink: "/index.html"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
-<link rel="apple-touch-icon" href="/favicon.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <title>عرب راسلنج | أخبار وعروض المصارعة الحرة مترجمة</title>
 <meta name="description" content="عرب راسلنج - البوابة العربية الأكبر لمتابعة كافة عروض المصارعة الحرة WWE, AEW, TNA, ROH مترجمة وبأعلى جودة، بالإضافة إلى آخر الأخبار والملخصات.">
 <meta name="google-site-verification" content="M9LZQbhAbCQSSF7vwQAfX6boVos3NMOBRFikS02iFBo" />
@@ -363,8 +363,11 @@ gap:8px 8px; padding-top:4px;
 <div class="head-text"><h2 style="color:var(--gold);"><span class="dot" style="background:var(--gold)"></span>عروض المصارعة</h2><p>العروض الكاملة مترجمة بالعربية</p></div>
 </div>
 <div class="grid-12">
+{% set showCount = 0 %}
 {% for item in collections.shows %}
-{% if loop.index <= 8 %}
+{% set isNostalgia = (item.data.nostalgia_series or ('nostalgia' in (item.data.tags or [])) or ('نوستالجيا' in (item.data.tags or [])) or ('content/nostalgia' in (item.inputPath or ''))) %}
+{% if not isNostalgia and showCount < 8 %}
+{% set showCount = showCount + 1 %}
 <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
 <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
 <div class="show-body">
@@ -388,8 +391,11 @@ gap:8px 8px; padding-top:4px;
 <div class="head-text"><h2 style="color:var(--violet);"><span class="dot" style="background:var(--violet)"></span>ملخصات العروض</h2><p>أبرز اللقطات والنتائج، لمن لا يستطيع مشاهدة الحلقة كاملة.</p></div>
 </div>
 <div class="grid-12">
+{% set recapCount = 0 %}
 {% for item in collections.recaps %}
-{% if loop.index <= 8 %}
+{% set isNostalgia = (item.data.nostalgia_series or ('nostalgia' in (item.data.tags or [])) or ('نوستالجيا' in (item.data.tags or [])) or ('content/nostalgia' in (item.inputPath or ''))) %}
+{% if not isNostalgia and recapCount < 8 %}
+{% set recapCount = recapCount + 1 %}
 <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
 <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1715149721511-8e48fc0cb2f4?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
 <div class="show-body">
@@ -413,8 +419,11 @@ gap:8px 8px; padding-top:4px;
 <div class="head-text"><h2 style="color:var(--coral);"><span class="dot" style="background:var(--coral)"></span>آخر الأخبار</h2><p>أبرز الانتقالات والإصابات والقرارات الإدارية.</p></div>
 </div>
 <div class="grid-12">
+{% set newsCount = 0 %}
 {% for item in collections.news %}
-{% if loop.index <= 12 %}
+{% set isNostalgia = (item.data.nostalgia_series or ('nostalgia' in (item.data.tags or [])) or ('نوستالجيا' in (item.data.tags or [])) or ('content/nostalgia' in (item.inputPath or ''))) %}
+{% if not isNostalgia and newsCount < 12 %}
+{% set newsCount = newsCount + 1 %}
 <a class="news-card reveal" href="{{ item.url | cleanUrl }}" style="display:block; text-decoration:none; color:inherit;">
 <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}')"></div>
 <div class="news-body">

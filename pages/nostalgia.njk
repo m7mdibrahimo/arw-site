@@ -268,7 +268,21 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 </div>
 </header>
 
-<div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg') center 30%/cover no-repeat;">
+{% set latestImg = "" %}
+{% for item in collections.nostalgiaShows %}
+  {% if not latestImg and item.data.image %}
+    {% set latestImg = item.data.image %}
+  {% endif %}
+{% endfor %}
+{% if not latestImg %}
+  {% for s in collections.nostalgiaSeries %}
+    {% if not latestImg and s.poster %}
+      {% set latestImg = s.poster %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg latestImg, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
 <div class="hero-inner">
 <span class="eyebrow">أرشيف العصور الذهبية</span>
 <h1 class="hero-title">أرشيف نوستالجيا المصارعة<span class="u">رحلة في الزمن الجميل</span></h1>
@@ -315,7 +329,7 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 </div>
 </div>
 <div class="show-body">
-<span class="kind-badge kind-show">{{ s.badge or "طريق العرض الكبير" }}</span>{% if s.federation or (s.mainEpisode and s.mainEpisode.federation) %}{% set fedSlug = (s.federation or s.mainEpisode.federation) | lower %}<span class="cat cat-{{ fedSlug }}">{{ s.federation or s.mainEpisode.federation }}</span>{% else %}<span class="cat cat-wwe">WWE</span>{% endif %}
+{% if s.federation or (s.mainEpisode and s.mainEpisode.federation) %}{% set fedSlug = (s.federation or s.mainEpisode.federation) | lower %}<span class="cat cat-{{ fedSlug }}">{{ s.federation or s.mainEpisode.federation }}</span>{% else %}<span class="cat cat-wwe">WWE</span>{% endif %}
 <h3>{{ s.title }}</h3>
 <p class="desc">{% if s.description %}{{ s.description }}{% elif s.mainEpisode and s.mainEpisode.headline %}{{ s.mainEpisode.headline }}{% else %}سلسلة عروض توثق البناء الكامل والقصص التمهيدية المؤدية لليلة النزال الحاسم مترجمة بالكامل.{% endif %}</p>
 <div class="foot">

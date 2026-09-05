@@ -472,13 +472,18 @@ module.exports = function(eleventyConfig) {
   };
 
   eleventyConfig.addCollection("shows", function(collectionApi) {
-    return collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    return collectionApi.getFilteredByGlob("content/shows/*.md")
+      .filter(item => !(item.data && item.data.nostalgia_series) && !(item.data && item.data.tags && (Array.isArray(item.data.tags) ? (item.data.tags.includes("nostalgia") || item.data.tags.includes("نوستالجيا")) : (item.data.tags === "nostalgia" || item.data.tags === "نوستالجيا"))))
+      .sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("recaps", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/recaps/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("news", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/news/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+  });
+  eleventyConfig.addCollection("nostalgiaShows", function(collectionApi) {
+    return collectionApi.getFilteredByGlob(["content/nostalgia/*.md", "content/nostalgia-series/*.md"]).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("allContent", function(collectionApi) {
     const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]);
@@ -682,7 +687,6 @@ module.exports = function(eleventyConfig) {
         year: item.data.year || null,
         federation: item.data.federation || "WWE",
         poster: item.data.image || null,
-        badge: item.data.badge || "طريق العرض الكبير",
         description: item.data.description || null,
         episodes: []
       });
@@ -711,7 +715,6 @@ module.exports = function(eleventyConfig) {
           year: item.data.nostalgia_era || null,
           federation: item.data.federation || "WWE",
           poster: item.data.image || null,
-          badge: "طريق العرض الكبير",
           description: null,
           episodes: []
         };

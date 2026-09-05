@@ -137,7 +137,6 @@ collections:
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"], default: "WWE" }
       - { label: "سنة السلسلة (للفلترة في الموقع)", name: "year", widget: "string", hint: "مثال: 2012 (لتظهر السلسلة في فلتر سنة 2012 بقسم النوستالجيا)" }
       - { label: "صورة بوستر / غلاف السلسلة", name: "image", widget: "image", required: true, hint: "الصورة الرئيسية الكبيرة لكارت السلسلة في صفحة النوستالجيا" }
-      - { label: "نوع المسار / الشارة", name: "badge", widget: "select", options: ["طريق العرض الكبير", "عداوة تاريخية", "أرشيف العصر الذهبي", "ملحمة أسطورية"], default: "طريق العرض الكبير", required: false }
       - { label: "نبذة عن السلسلة / القصة (اختياري)", name: "description", widget: "text", required: false, hint: "وصف موجز عن قصة هذه السلسلة والبناء التمهيدي لها" }
 
   - name: "nostalgia"
