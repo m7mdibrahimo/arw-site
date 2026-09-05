@@ -668,30 +668,74 @@ module.exports = function(eleventyConfig) {
   //   nostalgia_main: true                     -> بس على العرض الشهري (العرض الرئيسي/نهاية المسلسل)
   //   nostalgia_era: "2012"                    -> اختياري، تسمية العصر لو عايز تجمع أكتر من سنة سوا
   eleventyConfig.addCollection("nostalgiaSeries", function(collectionApi) {
+    const map = new Map();
+
+    // 1. قراءة السلاسل الرئيسية المعرفة من content/nostalgia-series/*.md
+    const seriesDefs = collectionApi.getFilteredByGlob("content/nostalgia-series/*.md");
+    seriesDefs.forEach(function(item) {
+      const slug = String(item.fileSlug || "").trim();
+      if (!slug) return;
+      map.set(slug, {
+        slug: slug,
+        title: item.data.title || slug,
+        era: item.data.year || null,
+        year: item.data.year || null,
+        federation: item.data.federation || "WWE",
+        poster: item.data.image || null,
+        badge: item.data.badge || "طريق العرض الكبير",
+        description: item.data.description || null,
+        episodes: []
+      });
+    });
+
+    // 2. قراءة حلقات وعروض النوستالجيا وربطها بالسلسلة
     const items = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md", "content/recaps/*.md"])
       .filter(item => item.data && item.data.nostalgia_series);
 
-    const map = new Map();
     items.forEach(function(item) {
-      const slug = String(item.data.nostalgia_series).trim();
-      if (!slug) return;
-      if (!map.has(slug)) {
-        map.set(slug, {
-          slug: slug,
-          title: item.data.nostalgia_title || item.data.program_name || slug,
-          era: item.data.nostalgia_era || null,
-          episodes: []
-        });
+      const rawRef = String(item.data.nostalgia_series).trim();
+      if (!rawRef) return;
+
+      // البحث عن السلسلة بالسلاج أو بالاسم
+      let s = map.get(rawRef);
+      if (!s) {
+        s = Array.from(map.values()).find(x => x.title === rawRef || x.slug === rawRef);
       }
+      if (!s) {
+        // إنشاء السلسلة تلقائياً إذا أضاف المستخدم عرضاً ببيانات قديمة دون ملف سلسلة منفصل
+        const fallbackSlug = arabicSlug(rawRef) || rawRef;
+        s = {
+          slug: fallbackSlug,
+          title: item.data.nostalgia_title || item.data.program_name || rawRef,
+          era: item.data.nostalgia_era || null,
+          year: item.data.nostalgia_era || null,
+          federation: item.data.federation || "WWE",
+          poster: item.data.image || null,
+          badge: "طريق العرض الكبير",
+          description: null,
+          episodes: []
+        };
+        map.set(fallbackSlug, s);
+      }
+
+      // تعيين الاتحاد تلقائياً على العرض إذا لم يكن محدداً
+      if (!item.data.federation && s.federation) {
+        item.data.federation = s.federation;
+      }
+      // تعيين اسم البرنامج تلقائياً ليعمل شريط ترقيم الحلقات في صفحة العرض
+      if (!item.data.program_name) {
+        item.data.program_name = "سلسلة " + s.title;
+      }
+
       const dateVal = getDateValue(item);
-      map.get(slug).episodes.push({
+      s.episodes.push({
         url: item.url,
         title: item.data.title || "",
         headline: item.data.headline || "",
-        federation: item.data.federation || "",
+        federation: item.data.federation || s.federation || "WWE",
         image: item.data.image || "",
         event_date: item.data.event_date || item.data.date || null,
-        year: dateVal ? dateVal.getUTCFullYear() : null,
+        year: dateVal ? dateVal.getUTCFullYear() : (s.year || null),
         order: (item.data.nostalgia_order !== undefined && item.data.nostalgia_order !== null)
           ? parseInt(item.data.nostalgia_order, 10) : 999,
         isMain: item.data.nostalgia_main === true || item.data.nostalgia_main === "true"
@@ -702,13 +746,17 @@ module.exports = function(eleventyConfig) {
     series.forEach(function(s) {
       s.episodes.sort((a, b) => a.order - b.order);
       s.count = s.episodes.length;
-      s.mainEpisode = s.episodes.find(e => e.isMain) || s.episodes[s.episodes.length - 1];
-      s.poster = s.mainEpisode ? s.mainEpisode.image : (s.episodes[0] && s.episodes[0].image);
-      const years = s.episodes.map(e => e.year).filter(Boolean);
-      s.year = s.era || (years.length ? Math.min(...years) : null);
+      s.mainEpisode = s.episodes.find(e => e.isMain) || (s.episodes.length ? s.episodes[s.episodes.length - 1] : null);
+      if (!s.poster) {
+        s.poster = s.mainEpisode ? s.mainEpisode.image : (s.episodes[0] && s.episodes[0].image);
+      }
+      if (!s.year) {
+        const years = s.episodes.map(e => e.year).filter(Boolean);
+        s.year = s.era || (years.length ? Math.min(...years) : null);
+      }
     });
 
-    // أحدث سلسلة (بتاريخ العرض الرئيسي) أول واحدة، عشان لو ضفت سلاسل كتير الأحدث تظهر الأول
+    // ترتيب السلاسل بالأحدث
     series.sort(function(a, b) {
       const da = a.mainEpisode && a.mainEpisode.event_date ? new Date(a.mainEpisode.event_date).getTime() : 0;
       const db = b.mainEpisode && b.mainEpisode.event_date ? new Date(b.mainEpisode.event_date).getTime() : 0;
