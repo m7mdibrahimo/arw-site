@@ -16,7 +16,7 @@ eleventyComputed:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
-<link rel="apple-touch-icon" href="/favicon.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <title>{{ series.title }} | نوستالجيا | عرب راسلنج</title>
 <meta name="description" content="{{ series.title }} مترجم بالكامل: {{ series.count }} حلقة من العروض الأسبوعية التي أسّست للعرض الشهري، مرتبة بالترتيب الزمني.">
 <link rel="canonical" href="https://arab-wrestling.com/nostalgia/{{ series.slug }}/">
@@ -248,7 +248,7 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 <div class="shero-inner">
 <span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>موسم نوستالجيا {{ series.year }}</span>
 <h1>{{ series.title }}</h1>
-<p>المسار كاملًا من أول عرض أسبوعي وحتى ليلة العرض الشهري — جميع العروض مترجمة بالكامل.</p>
+<p>{{ series.description or "المسار كاملًا من أول عرض أسبوعي وحتى ليلة العرض الشهري — جميع العروض مترجمة بالكامل." }}</p>
 <div class="shero-stats">
 <div><p>{{ series.count }}</p><p>عروض</p></div>
 <div><p>{{ series.year }}</p><p>السنة</p></div>

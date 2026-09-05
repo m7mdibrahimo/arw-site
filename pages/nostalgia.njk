@@ -10,7 +10,7 @@ permalink: "/nostalgia/index.html"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
-<link rel="apple-touch-icon" href="/favicon.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <title>نوستالجيا | أرشيف عروض المصارعة القديمة مترجمة | عرب راسلنج</title>
 <meta name="description" content="أرشيف نوستالجيا: عروض المصارعة القديمة مترجمة كاملة، كل عرض شهري مع الحلقات الأسبوعية التي سبقته وأسّست له، مرتبة كمسلسل متكامل.">
 <link rel="canonical" href="https://arab-wrestling.com/nostalgia/">
@@ -315,9 +315,9 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 </div>
 </div>
 <div class="show-body">
-<span class="kind-badge kind-show">طريق العرض الكبير</span>{% if s.mainEpisode and s.mainEpisode.federation %}{% set fedSlug = s.mainEpisode.federation | lower %}<span class="cat cat-{{ fedSlug }}">{{ s.mainEpisode.federation }}</span>{% else %}<span class="cat cat-wwe">WWE</span>{% endif %}
+<span class="kind-badge kind-show">{{ s.badge or "طريق العرض الكبير" }}</span>{% if s.federation or (s.mainEpisode and s.mainEpisode.federation) %}{% set fedSlug = (s.federation or s.mainEpisode.federation) | lower %}<span class="cat cat-{{ fedSlug }}">{{ s.federation or s.mainEpisode.federation }}</span>{% else %}<span class="cat cat-wwe">WWE</span>{% endif %}
 <h3>{{ s.title }}</h3>
-<p class="desc">{% if s.mainEpisode and s.mainEpisode.headline %}{{ s.mainEpisode.headline }}{% else %}سلسلة عروض توثق البناء الكامل والقصص التمهيدية المؤدية لليلة النزال الحاسم مترجمة بالكامل.{% endif %}</p>
+<p class="desc">{% if s.description %}{{ s.description }}{% elif s.mainEpisode and s.mainEpisode.headline %}{{ s.mainEpisode.headline }}{% else %}سلسلة عروض توثق البناء الكامل والقصص التمهيدية المؤدية لليلة النزال الحاسم مترجمة بالكامل.{% endif %}</p>
 <div class="foot">
 <span class="foot-info">
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
