@@ -18,6 +18,22 @@ const KNOWN_HOST_NAMES = {
   "krakenfiles.com": "KrakenFiles",
   "send.cm": "Send.cm",
   "uptobox.com": "UptoBox",
+  "uqload.vc": "Uqload",
+  "uqload.to": "Uqload",
+  "uqload.com": "Uqload",
+  "uqload.co": "Uqload",
+  "uqload.io": "Uqload",
+  "uqload.net": "Uqload",
+};
+
+// لوجوهات مخصصة عالية الدقة لمواقع التحميل
+const KNOWN_HOST_LOGOS = {
+  "uqload.vc": "/assets/hosts/uqload.png",
+  "uqload.to": "/assets/hosts/uqload.png",
+  "uqload.com": "/assets/hosts/uqload.png",
+  "uqload.co": "/assets/hosts/uqload.png",
+  "uqload.io": "/assets/hosts/uqload.png",
+  "uqload.net": "/assets/hosts/uqload.png",
 };
 
 function hostFromUrl(url) {
@@ -61,7 +77,8 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     if (!url) return;
     const host = hostFromUrl(url);
     const site = siteNameFromHost(host);
-    const item = { url: url, site: site, host: host };
+    const logo = KNOWN_HOST_LOGOS[host] || `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
+    const item = { url: url, site: site, host: host, logo: logo };
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
     if (detected === "low") {
@@ -80,9 +97,9 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
   }
 
   // الصناديق الجديدة الصريحة من اللوحة (نص فيه رابط أو أكتر، الموقع هيتعرف على كل رابط لوحده تلقائيًا)
-  extractUrls(downloadsLow).slice(0, 8).forEach(function (u) { pushItem("low", u); });
-  extractUrls(downloadsMedium).slice(0, 8).forEach(function (u) { pushItem("medium", u); });
-  extractUrls(downloadsHigh).slice(0, 8).forEach(function (u) { pushItem("high", u); });
+  extractUrls(downloadsLow).slice(0, 15).forEach(function (u) { pushItem("low", u); });
+  extractUrls(downloadsMedium).slice(0, 15).forEach(function (u) { pushItem("medium", u); });
+  extractUrls(downloadsHigh).slice(0, 15).forEach(function (u) { pushItem("high", u); });
 
   // الصيغ القديمة الموجودة في المقالات السابقة (عشان مقالاتك القديمة تفضل شغالة زي ما هي)
   (downloads || []).forEach(function (d) {

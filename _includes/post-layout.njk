@@ -1061,7 +1061,7 @@
     <div class="dl-modal-body">
       {% for item in items %}
       <a class="dl-site-card" href="{{ item.url }}" target="_blank" rel="noopener">
-        <img class="dl-site-logo" src="https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64" alt="{{ item.site }}" loading="lazy" onerror="this.style.display='none'">
+        <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';">
         <span class="dl-site-info">
           <span class="dl-site-name">{{ item.site }}</span>
           <span class="dl-site-quality">اضغط هنا للتحميل بجودة {{ qualityLabel }}</span>
