@@ -4,7 +4,7 @@ title: WWE Sunday Night’s Main Event 06.09.2026
 headline: عرض صنداي نايت ماين ايفنت 06.09.2026 مترجم
 program_name: WWE Sunday Night’s Main Event
 is_annual: false
-description: عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض صنداي نايت ماين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-06
 date: 2026-09-07T09:32:00.000+03:00
 duration: 01:45:48
