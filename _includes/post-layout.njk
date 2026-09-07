@@ -743,7 +743,7 @@
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
     {% endif %}
     <div class="post-meta-bar">
-      {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% elif show_type == 'مسلسل' %}kind-series{% else %}kind-show{% endif %}">{{ show_type or "عرض" }}</span>{% endif %}
+      {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ show_type or "عرض" }}</span>{% endif %}
       {% if federation %}<span class="post-fed cat-{{ federation | lower }}">{{ federation }}</span>{% endif %}
       {% if title and headline and title != headline %}<span class="post-ep-name">{{ title }}</span>{% endif %}
       {% if duration %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ duration }}</span>{% endif %}

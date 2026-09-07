@@ -38,10 +38,9 @@ collections:
         options:
           - { label: "عرض", value: "عرض" }
           - { label: "برنامج", value: "برنامج" }
-          - { label: "مسلسل", value: "مسلسل" }
         default: "عرض"
         required: false
-        hint: "نوع المحتوى: افتراضي (عرض) - يمكنك تغييره إلى برنامج أو مسلسل"
+        hint: "نوع المحتوى: افتراضي (عرض) - يمكنك تغييره إلى برنامج"
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم العرض / الحلقة", name: "title", widget: "string" }
       - { label: "عنوان العرض الرئيسية (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو مترجم" }

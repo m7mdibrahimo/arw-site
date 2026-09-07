@@ -559,9 +559,7 @@ mark{ background:var(--teal-soft); color:var(--teal); padding:0 2px; border-radi
         var badge = item.kind === 'news' ? 'خبر' : (item.kind === 'recap' ? 'ملخص' : (item.show_type || item.kindLabel || 'عرض'));
         var badgeClass = 'kind-' + item.kind;
         if (item.kind === 'show') {
-          if (badge === 'برنامج') badgeClass = 'kind-program';
-          else if (badge === 'مسلسل') badgeClass = 'kind-series';
-          else badgeClass = 'kind-show';
+          badgeClass = (badge === 'برنامج') ? 'kind-program' : 'kind-show';
         }
         var img = item.image || 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop';
         return '<a class="show-card reveal" href="' + item.url + '">' +
