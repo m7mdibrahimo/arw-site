@@ -2,7 +2,7 @@
 show_type: عرض
 federation: INDIE
 title: "PROGRESS Wrestling: The Odyssey Tour - Manchester"
-headline: عرض بروجرس اوديسي تور مانشستر 06.09.2026 مترجم
+headline: عرض بروجرس ريسلينج ذا اوديسي تور مانشستر 06.09.2026 مترجم
 program_name: PROGRESS Wrestling
 is_annual: true
 description: عرض بروجرس اوديسي تور مانشستر مترجم بالكامل مع جميع النزالات والأحداث.
