@@ -32,7 +32,16 @@ collections:
     preview_path: "shows/{{title}}"
     summary: "{{title}}"
     fields:
-      - { label: "نوع المحتوى", name: "show_type", widget: "select", options: ["عرض", "برنامج", "مسلسل"], default: "عرض", hint: "اختر نوع المحتوى (عرض، برنامج، مسلسل) - افتراضي: عرض" }
+      - label: "نوع المحتوى"
+        name: "show_type"
+        widget: "select"
+        options:
+          - { label: "عرض", value: "عرض" }
+          - { label: "برنامج", value: "برنامج" }
+          - { label: "مسلسل", value: "مسلسل" }
+        default: "عرض"
+        required: false
+        hint: "نوع المحتوى: افتراضي (عرض) - يمكنك تغييره إلى برنامج أو مسلسل"
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"] }
       - { label: "اسم العرض / الحلقة", name: "title", widget: "string" }
       - { label: "عنوان العرض الرئيسية (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو مترجم" }

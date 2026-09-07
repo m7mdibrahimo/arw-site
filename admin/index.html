@@ -123,6 +123,77 @@
 
       window.CMS.init();
 
+      // ── Ensure show_type is always set to 'عرض' by default in shows ──
+      try {
+        window.CMS.registerEventListener({
+          name: 'preSave',
+          handler: ({ entry }) => {
+            if (entry && entry.get('collection') === 'shows') {
+              const current = entry.getIn(['data', 'show_type']);
+              if (!current || String(current).trim() === '') {
+                return entry.get('data').set('show_type', 'عرض');
+              }
+            }
+          }
+        });
+      } catch (e) {
+        console.warn('Decap preSave event listener error:', e);
+      }
+
+      // ── Auto-select 'عرض' in the Decap CMS form if show_type is empty ──
+      (function autoSelectDefaultShowType() {
+        let isSelecting = false;
+        function checkAndSetDefaultShowType() {
+          if (isSelecting) return;
+          const hash = window.location.hash || '';
+          if (!hash.includes('/collections/shows/')) return;
+
+          // Find the label for "نوع المحتوى"
+          const labels = Array.from(document.querySelectorAll('label'));
+          const typeLabel = labels.find(l => l.textContent.trim().includes('نوع المحتوى'));
+          if (!typeLabel) return;
+
+          const controlWrapper = typeLabel.closest('div[class*="ControlPane"]') || typeLabel.parentElement;
+          if (!controlWrapper) return;
+
+          // Check if a value is already displayed in react-select
+          const singleValue = controlWrapper.querySelector('[class*="singleValue"], [class*="SingleValue"]');
+          if (singleValue && singleValue.textContent.trim()) {
+            return; // Already has a value selected (e.g. عرض or برنامج or مسلسل), do not touch!
+          }
+
+          // Check if we already attempted autofilling this specific control element
+          const control = controlWrapper.querySelector('[class*="-control"], [class*="Control"]');
+          if (!control || control.dataset.arwAutoFilled) return;
+
+          control.dataset.arwAutoFilled = 'true';
+          isSelecting = true;
+
+          // Open react-select menu
+          control.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+
+          setTimeout(() => {
+            try {
+              // Find the option element with text 'عرض'
+              const options = Array.from(document.querySelectorAll('[class*="-option"], [class*="Option"], [id*="react-select"]'));
+              const showOption = options.find(o => o.textContent.trim() === 'عرض');
+              if (showOption) {
+                showOption.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+              } else {
+                // If not found, click outside to close dropdown
+                document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+              }
+            } catch (err) {
+              console.warn('Auto select show_type error:', err);
+            } finally {
+              isSelecting = false;
+            }
+          }, 80);
+        }
+
+        setInterval(checkAndSetDefaultShowType, 400);
+      })();
+
 
       // ==========================================
       // Professional Compact Dropdown, Search & Collection Pagination (All Sections & News)
