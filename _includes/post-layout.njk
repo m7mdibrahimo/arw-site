@@ -267,6 +267,13 @@
   .back-link:hover{ color:var(--teal); transform:translateX(4px); }
   .post-fed{ display:inline-block; background:var(--gold-soft); color:var(--gold); font-weight:800; font-size:12.5px; padding:5px 14px; border-radius:999px; transition:transform 0.2s ease; }
   .post-fed:hover{ transform:scale(1.05); }
+  .post-type-badge{ display:inline-block; font-weight:800; font-size:12.5px; padding:5px 14px; border-radius:999px; transition:transform 0.2s ease; }
+  .post-type-badge:hover{ transform:scale(1.05); }
+  .kind-show{ background:var(--gold-soft); color:#b45309; }
+  html.arw-dark .kind-show{ background:var(--gold-soft); color:var(--gold); }
+  .kind-program{ background:var(--teal-soft); color:var(--teal); }
+  .kind-series{ background:rgba(37,99,235,0.12); color:#1d4ed8; }
+  html.arw-dark .kind-series{ background:rgba(59,130,246,0.18); color:#60a5fa; }
   .post-meta-bar{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
   .post-meta-tag{ display:inline-flex; align-items:center; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; background:var(--card); border:1px solid var(--line); color:var(--muted); }
   .post-ep-name{ display:inline-flex; align-items:center; font-size:12px; font-weight:800; padding:4px 12px; border-radius:999px; background:var(--teal-soft); color:var(--teal); }
@@ -706,10 +713,10 @@
         {% if headline %}
           {{ headline | arabicShowName | stripDate }}
         {% elif title %}
-          {% if "عرض" in title or "تغطية" in title or "ملخص" in title %}
+          {% if "عرض" in title or "تغطية" in title or "ملخص" in title or "برنامج" in title or "مسلسل" in title %}
             {{ title | arabicShowName | stripDate }}
           {% else %}
-            عرض {{ title | arabicShowName | stripDate }} مترجم
+            {{ show_type or "عرض" }} {{ title | arabicShowName | stripDate }} مترجم
           {% endif %}
         {% else %}
           عروض المصارعة المترجمة
@@ -736,6 +743,7 @@
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
     {% endif %}
     <div class="post-meta-bar">
+      {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% elif show_type == 'مسلسل' %}kind-series{% else %}kind-show{% endif %}">{{ show_type or "عرض" }}</span>{% endif %}
       {% if federation %}<span class="post-fed cat-{{ federation | lower }}">{{ federation }}</span>{% endif %}
       {% if title and headline and title != headline %}<span class="post-ep-name">{{ title }}</span>{% endif %}
       {% if duration %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ duration }}</span>{% endif %}

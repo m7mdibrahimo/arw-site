@@ -216,7 +216,11 @@ html.arw-dark .cat-roh { background: rgba(70, 130, 240, 0.2) !important; color: 
 html.arw-dark .cat-mma { background: rgba(240, 140, 60, 0.2) !important; color: #ff9d5c !important; }
 html.arw-dark .cat-indie { background: rgba(40, 180, 150, 0.2) !important; color: #34d399 !important; }
 .show-card:hover .kind-badge, .news-card:hover .kind-badge, .show-card:hover .cat, .news-card:hover .cat, .show-card:hover .fed-badge, .news-card:hover .fed-badge{ transform:scale(1.06); }
-.kind-show{ background:var(--gold-soft); color:var(--gold); }
+.kind-show{ background:var(--gold-soft); color:#b45309; }
+html.arw-dark .kind-show{ background:var(--gold-soft); color:var(--gold); }
+.kind-program{ background:var(--teal-soft); color:var(--teal); }
+.kind-series{ background:rgba(37,99,235,0.12); color:#1d4ed8; }
+html.arw-dark .kind-series{ background:rgba(59,130,246,0.18); color:#60a5fa; }
 .kind-recap{ background:rgba(124,110,232,.15); color:var(--violet); }
 .kind-news{ background:var(--coral-soft); color:var(--coral); }
 .news-body h3{ font-size:15.5px; font-weight:700; margin:4px 0 8px; transition:color 0.2s ease; line-height:1.45; }
@@ -371,7 +375,7 @@ gap:8px 8px; padding-top:4px;
 <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
 <div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
 <div class="show-body">
-<span class="kind-badge kind-show">عرض</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
+<span class="kind-badge {% if item.data.show_type == 'برنامج' %}kind-program{% elif item.data.show_type == 'مسلسل' %}kind-series{% else %}kind-show{% endif %}">{{ item.data.show_type or "عرض" }}</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
 <h3>{{ item.data.headline or item.data.title }}</h3>
 {% if item.data.description %}<p class="desc">{{ item.data.description }}</p>{% endif %}
 <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.data.duration }}</span>{% endif %}</div>
