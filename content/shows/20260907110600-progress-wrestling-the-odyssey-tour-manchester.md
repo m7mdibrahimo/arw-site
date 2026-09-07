@@ -5,7 +5,7 @@ title: "PROGRESS Wrestling: The Odyssey Tour - Manchester"
 headline: عرض بروجرس اوديسي تور مانشستر 06.09.2026 مترجم
 program_name: PROGRESS Wrestling
 is_annual: true
-description: عرض صنداي نايت ماين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض بروجرس اوديسي تور مانشستر مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-07
 date: 2026-09-07T14:06:00.000+03:00
 duration: 03:18:10
