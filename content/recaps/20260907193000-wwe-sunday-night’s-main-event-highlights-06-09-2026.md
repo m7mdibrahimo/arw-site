@@ -2,7 +2,7 @@
 federation: WWE
 title: WWE Sunday Night’s Main Event Highlights 06.09.2026
 program_name: WWE Sunday Night’s Main Event
-is_annual: false
+is_annual: true
 event_date: 2026-09-06
 date: 2026-09-07T22:30:00.000+03:00
 headline: ملخص عرض صنداي نايت ماين ايفنت 06.09.2026 مترجم
