@@ -41,7 +41,8 @@ html{ scroll-behavior:smooth; background-color:var(--bg); }
 body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
 .episode-card:active, .btn:active, .social-row a:active { transform: scale(0.98) !important; transition: transform 0.08s ease !important; }
 h1,h2,h3,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
-header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease, transform .3s ease; }
+header.header-hidden{ transform:translateY(-100%); }
 .nav{ max-width:1440px; margin:0 auto; padding:15px 20px; display:flex; align-items:center; justify-content:center; flex-wrap:nowrap; gap:16px;}
 .brand{ font-weight:900; font-size:22px; text-decoration:none; color:var(--ink); white-space:nowrap; transition:transform 0.25s ease; display:inline-flex; align-items:center; gap:9px; flex-shrink:0; }
 .brand:hover{ transform:scale(1.04); }
