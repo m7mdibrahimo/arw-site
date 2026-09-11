@@ -29,3 +29,5 @@ layout: post-layout.njk
 * نزال فرق طائر: سوبيرانو جونيور وتيتان ضد بانديدو وكوماندر.
 * نزال فرق ثلاثي للسيدات: مايكا وستارلايت كيد ضد أولمبيا وبيرسيفوني ضد فريق Divine Dominion (لينا كروس وميجان باين).
 * نزال هانديكاب للسيدات: زيوكسيس وكيرا ومي سيرا ضد إيما مايشيما.
+
+<https://x.com/CMLL_OFICIAL/status/2097744469843902948?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2097744469843902948%7Ctwgr%5E82a556e757a5222252c38d16fedc302f4944b214%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fpac-vs-mascara-dorada-added-to-9-13-cmll-event%2F>
