@@ -584,6 +584,28 @@ function isDailyLimitMessage(msg: unknown): boolean {
   return typeof msg === "string" && DAILY_LIMIT_ERROR_RE.test(msg);
 }
 
+function detectBufferRateLimit(result: any): boolean {
+  if (!result) return false;
+  if (typeof result === "string") {
+    return /daily posting limit|rate limit|too many requests|rate_limit_exceeded/i.test(result);
+  }
+  if (Array.isArray(result.errors)) {
+    for (const err of result.errors) {
+      if (err?.extensions?.code === "RATE_LIMIT_EXCEEDED") return true;
+      if (typeof err?.message === "string" && /too many requests|rate limit|daily posting limit/i.test(err.message)) return true;
+    }
+  }
+  const createPostMsg = result?.data?.createPost?.message;
+  if (typeof createPostMsg === "string" && /daily posting limit|rate limit|too many requests/i.test(createPostMsg)) {
+    return true;
+  }
+  const errorMsg = result?.error?.message;
+  if (typeof errorMsg === "string" && /daily posting limit|rate limit|too many requests/i.test(errorMsg)) {
+    return true;
+  }
+  return false;
+}
+
 async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): Promise<number> {
   try {
     const { state } = await githubReadState(env);
@@ -594,11 +616,12 @@ async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): P
 }
 
 async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x"): Promise<void> {
+  await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
+}
+
+async function setBufferRateLimitCooldown(env: Env, durationMs: number = 30 * 60 * 1000): Promise<void> {
   const now = Date.now();
-  // Instead of freezing until next midnight UTC (which locks out the platform for up to 24 hours),
-  // set a retry cooldown of 1 hour so the queue can clear and resume publishing during the day!
-  const jitterMs = Math.floor(Math.random() * 5 * 60 * 1000); // 0–5 min jitter
-  const until = now + (60 * 60 * 1000) + jitterMs;
+  const until = now + durationMs;
 
   for (let attempt = 0; attempt < 5; attempt++) {
     let sha: string | null;
@@ -608,19 +631,23 @@ async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x
     } catch (e) {
       return;
     }
-    const existing = state.cooldowns?.[platform] || 0;
-    // Already paused until roughly the same (or a later) time — another
-    // tick already recorded this, nothing new to write.
-    if (existing >= until - 60_000) return;
-    state.cooldowns = { ...state.cooldowns, [platform]: until };
+    const fbExisting = state.cooldowns?.facebook || 0;
+    const xExisting = state.cooldowns?.x || 0;
+    if (fbExisting >= until - 60_000 && xExisting >= until - 60_000) return;
+
+    state.cooldowns = {
+      ...state.cooldowns,
+      facebook: Math.max(fbExisting, until),
+      x: Math.max(xExisting, until),
+    };
     const write = await githubWriteState(
       env,
       state,
       sha,
-      `chore(publish): pause ${platform} until ${new Date(until).toISOString()} (Buffer daily posting limit reached)`
+      `chore(publish): pause Buffer channels until ${new Date(until).toISOString()} (rate limit / quota cooldown)`
     );
     if (write.ok) {
-      console.log(`[Buffer] ${platform} hit its daily posting limit — pausing retries until ${new Date(until).toISOString()}`);
+      console.log(`[Buffer] paused facebook and x until ${new Date(until).toISOString()}`);
       return;
     }
     if (write.conflict) {
@@ -765,12 +792,8 @@ async function postToFacebookViaBuffer(
       const result: any = await res.json().catch(() => ({}));
       postId = result?.data?.createPost?.post?.id;
       if (!postId) {
-        // Buffer can reject at creation time too (MutationError), not only
-        // after polling — catch the daily-limit message here as well so a
-        // channel that's already maxed out doesn't get hammered again next
-        // tick.
-        if (isDailyLimitMessage(result?.data?.createPost?.message)) {
-          await setPlatformDailyLimitCooldown(env, "facebook");
+        if (detectBufferRateLimit(result)) {
+          await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
         }
         return { ok: false, result };
       }
@@ -787,8 +810,8 @@ async function postToFacebookViaBuffer(
   try {
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
-  if (!outcome.ok && isDailyLimitMessage(outcome.raw?.error?.message)) {
-    await setPlatformDailyLimitCooldown(env, "facebook");
+  if (!outcome.ok && detectBufferRateLimit(outcome.raw)) {
+    await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
   }
   return { ok: !!outcome.ok, result: outcome.raw };
 }
@@ -987,8 +1010,8 @@ async function postToXViaBuffer(
       const result: any = await res.json().catch(() => ({}));
       postId = result?.data?.createPost?.post?.id;
       if (!postId) {
-        if (isDailyLimitMessage(result?.data?.createPost?.message)) {
-          await setPlatformDailyLimitCooldown(env, "x");
+        if (detectBufferRateLimit(result)) {
+          await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
         }
         return { ok: false, result };
       }
@@ -1005,8 +1028,8 @@ async function postToXViaBuffer(
   try {
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
-  if (!outcome.ok && isDailyLimitMessage(outcome.raw?.error?.message)) {
-    await setPlatformDailyLimitCooldown(env, "x");
+  if (!outcome.ok && detectBufferRateLimit(outcome.raw)) {
+    await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
   }
   return { ok: !!outcome.ok, result: outcome.raw };
 }
@@ -1126,6 +1149,9 @@ async function runWatcherPoll(env: Env): Promise<void> {
   // the handful of recent ones that actually matter.
   let processedInThisTick = 0;
   const MAX_PER_TICK = 5; // Allow publishing up to 5 items simultaneously in the same tick
+  let bufferFbAttemptedInTick = 0;
+  let bufferXAttemptedInTick = 0;
+  const MAX_BUFFER_PER_TICK = 1; // Pace Buffer to 1 post per minute per channel to avoid rate limits
 
   for (const item of items) {
     if (processedInThisTick >= MAX_PER_TICK) break;
@@ -1152,8 +1178,8 @@ async function runWatcherPoll(env: Env): Promise<void> {
     // Determine what can actually be attempted right now
     const canDoTg = !tgDone;
     const canDoIg = !igDone;
-    const canDoFb = !fbDone && !fbCooldown;
-    const canDoX = !xDone && !xCooldown;
+    const canDoFb = !fbDone && !fbCooldown && bufferFbAttemptedInTick < MAX_BUFFER_PER_TICK;
+    const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
     // If nothing actionable can be done for this item (e.g. only Facebook is missing and it's in daily cooldown),
     // skip it so subsequent articles in the queue are never blocked!
@@ -1182,9 +1208,15 @@ async function runWatcherPoll(env: Env): Promise<void> {
         await sendPushToAllSubscribers(env, { ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
       }
 
-      if (canDoFb) await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+      if (canDoFb) {
+        bufferFbAttemptedInTick++;
+        await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+      }
       if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
-      if (canDoX) await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+      if (canDoX) {
+        bufferXAttemptedInTick++;
+        await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+      }
     } else {
       // Telegram already sent — catch up any missing platforms immediately
       let catchUpText = item.headline || item.description || "";
@@ -1194,6 +1226,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
       }
       const payload = { title: item.title, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
       if (canDoFb) {
+        bufferFbAttemptedInTick++;
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
       }
@@ -1202,6 +1235,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
         didWork = true;
       }
       if (canDoX) {
+        bufferXAttemptedInTick++;
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
         didWork = true;
       }
