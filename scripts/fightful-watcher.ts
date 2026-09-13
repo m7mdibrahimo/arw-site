@@ -1019,14 +1019,12 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
     } catch (e) {}
   }
 
-  // If a YouTube video is detected, extract the highest resolution thumbnail (matching get-youtube-thumbnail.com)
-  if (ytVideoId) {
+  // Only fallback to YouTube thumbnail if the article has NO featured image at all
+  if (ytVideoId && !imageUrl) {
     const ytThumb = await getYouTubeThumbnailUrl(ytVideoId);
     if (ytThumb) {
-      if (!imageUrl || /watch:/i.test(rawTitle) || imageUrl.includes("maxresdefault") || imageUrl.includes("default.jpg") || imageUrl.includes("hqdefault")) {
-        console.log(`[Watcher] 🎥 Detected YouTube video (${ytVideoId}), using max resolution thumbnail: ${ytThumb}`);
-        imageUrl = ytThumb;
-      }
+      console.log(`[Watcher] 🎥 No article image found, using YouTube thumbnail as fallback (${ytVideoId}): ${ytThumb}`);
+      imageUrl = ytThumb;
     }
   }
 
