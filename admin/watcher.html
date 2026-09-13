@@ -152,6 +152,12 @@
   }
   .add-btn:hover { background: var(--accent-hover); box-shadow: 0 4px 12px rgba(99,102,241,.3); }
   .add-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .add-btn.update-btn {
+    background: #0284c7; color: #fff;
+  }
+  .add-btn.update-btn:hover {
+    background: #0369a1; box-shadow: 0 4px 12px rgba(2,132,199,.35);
+  }
   .view-link {
     color: var(--muted); text-decoration: none; font-size: 12px; padding: 7px 12px;
     border-radius: 8px; border: 1px solid var(--border); transition: .15s;
@@ -871,24 +877,31 @@
     feedList.innerHTML = filtered.map(post => {
       const pid = Number(post.id);
       const isAdded = isPostAddedToSite(post);
-      const isPending = !isAdded && pendingDispatchedIds.has(pid);
+      const isPending = pendingDispatchedIds.has(pid);
       const isOld = isPostOld(post);
       const isFresh = isPostFresh(post);
       const isSelected = selectedPosts.has(post.id);
       const featured = post.featured_image || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
       const cleanTitle = (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
+      const isResults = /\b(?:results|coverage|recap|spoilers)\b/i.test(cleanTitle) || /(?:نتائج|تغطية)/.test(cleanTitle);
       const dateStr = formatEgyptDate(post);
       const postUrl = post.link || '';
 
       let badgeHtml = '';
       let actionHtml = '';
 
-      if (isAdded) {
-        badgeHtml = '<span class="badge-state added">✅ مضاف للموقع</span>';
-        actionHtml = '<span style="font-size:12px;color:var(--green);font-weight:600;">✓ تمت الإضافة</span>';
-      } else if (isPending) {
-        badgeHtml = '<span class="badge-state pending">⏳ جاري النشر...</span>';
+      if (isPending) {
+        badgeHtml = isAdded
+          ? '<span class="badge-state pending">🔄 جاري التحديث والاستبدال...</span>'
+          : '<span class="badge-state pending">⏳ جاري النشر...</span>';
         actionHtml = '<span style="font-size:12px;color:#38bdf8;font-weight:600;">⏳ قيد المعالجة...</span>';
+      } else if (isAdded) {
+        badgeHtml = `<span class="badge-state added">✅ مضاف للموقع ${isResults ? '• نتايج عرض' : ''}</span>`;
+        actionHtml = `
+          <button class="add-btn update-btn" onclick="triggerManualUpdate('${encodeURIComponent(postUrl)}', ${post.id}, this)" title="إعادة سحب التحديثات والنتائج واستبدال الخبر القديم بالنسخة المحدثة">
+            🔄 ${isResults ? 'تحديث نتائج العرض' : 'إعادة نشر وتحديث'}
+          </button>
+        `;
       } else if (isOld) {
         badgeHtml = '<span class="badge-state old">⏹️ خبر قديم</span>';
         actionHtml = `<button class="add-btn" style="background:#334155;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة يدوية</button>`;
@@ -898,10 +911,10 @@
       }
 
       return `
-        <div class="post-card ${isAdded ? 'is-added' : (isPending ? 'is-pending' : (isOld ? 'is-old' : ''))} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
+        <div class="post-card ${isAdded ? 'is-added' : ''} ${isPending ? 'is-pending' : ''} ${isOld ? 'is-old' : ''} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
           <div class="post-check-wrap" onclick="event.stopPropagation()">
             ${isAdded ? `
-              <input type="checkbox" class="post-checkbox" disabled title="مضاف بالفعل للموقع" />
+              <input type="checkbox" class="post-checkbox" disabled title="مضاف بالفعل للموقع (استخدم زر التحديث لإعادة نشره)" />
             ` : (isPending ? `
               <input type="checkbox" class="post-checkbox" disabled title="جاري النشر والمعالجة..." />
             ` : `
@@ -990,6 +1003,53 @@
       showToast("❌ خطأ في الاتصال: " + e.message, false);
       btnEl.disabled = false;
       btnEl.innerHTML = '➕ إضافة للموقع';
+    }
+  };
+
+  // Trigger manual update / re-publishing of an existing post (e.g. live show results updated over time)
+  window.triggerManualUpdate = async function(encodedUrl, postId, btnEl) {
+    const postUrl = decodeURIComponent(encodedUrl);
+    if (!confirm(`هل تريد إعادة سحب وتحديث نتائج/تفاصيل هذا الخبر الآن؟\n\nالمصدر: ${postUrl}\n\nسيقوم الساحب الآلي بجلب أحدث التعديلات والنزالات المضافة من فايت فول، وإعادة صياغة التقرير الشامل، وحذف النسخة القديمة واستبدالها بالنسخة المحدثة فوراً.`)) {
+      return;
+    }
+
+    btnEl.disabled = true;
+    btnEl.innerHTML = '<span class="spinner"></span> جاري الإرسال...';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/watcher/dispatch`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ post_url: postUrl })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast("✅ تم إرسال أمر تحديث الخبر وإعادة نشره إلى السيرفر!");
+        btnEl.innerHTML = '⏳ قيد التحديث...';
+        const numId = Number(postId);
+        pendingDispatchedIds.add(numId);
+        try {
+          const now = Date.now();
+          let dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          if (!dispatched.some(x => (typeof x === 'object' ? x.id : x) === numId)) {
+            dispatched.push({ id: numId, time: now });
+          }
+          localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
+        } catch (e) {}
+        renderFeed();
+      } else {
+        let errMsg = data.error || "فشل إرسال أمر التحديث";
+        if (typeof errMsg === "string" && (errMsg.includes("outage") || errMsg.includes("githubstatus"))) {
+          errMsg = "سيرفرات GitHub تواجه عطلاً مؤقتاً حالياً (githubstatus.com). يُرجى المحاولة بعد قليل.";
+        }
+        showToast("❌ " + errMsg, false);
+        btnEl.disabled = false;
+        btnEl.innerHTML = '🔄 إعادة نشر وتحديث';
+      }
+    } catch (e) {
+      showToast("❌ خطأ في الاتصال: " + e.message, false);
+      btnEl.disabled = false;
+      btnEl.innerHTML = '🔄 إعادة نشر وتحديث';
     }
   };
 

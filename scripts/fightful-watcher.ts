@@ -578,18 +578,19 @@ async function rewriteWithGemini(
   originalTitle: string,
   plainText: string,
   categories: string[],
-  postDate?: string
+  postDate?: string,
+  isUpdate: boolean = false
 ): Promise<RewrittenArticle | null> {
   // 100% Bulletproof detection: Differentiates Full Show Results from Single News articles
   const isResultsPost = isShowResultsArticle(originalTitle, plainText);
-  console.log(`[Watcher] Article classification: "${originalTitle}" -> [${isResultsPost ? "SHOW_RESULTS (نتائج عرض)" : "NEWS_ARTICLE (خبر صحفي)"}]`);
+  console.log(`[Watcher] Article classification: "${originalTitle}" -> [${isResultsPost ? "SHOW_RESULTS (نتائج عرض)" : "NEWS_ARTICLE (خبر صحفي)"}]${isUpdate ? " [REWRITE_UPDATE (تحديث)]" : ""}`);
 
   const arabicDate = getArabicDateFormatted(postDate);
 
   const prompt = isResultsPost
     ? `أنت كبير محرري موقع "عرب راسلنج" (arab-wrestling.com)، متخصص في الصحافة الرياضية وتغطية المصارعة الحرة العالمية وفنون القتال.
 
-المهمة: تحويل تقرير العرض الإنجليزي إلى **تقرير نتائج عرض كامل ومفصل** باللغة العربية بأعلى درجات الاحترافية الصحفية.
+المهمة: تحويل تقرير العرض الإنجليزي إلى **تقرير نتائج عرض كامل ومفصل** باللغة العربية بأعلى درجات الاحترافية الصحفية.${isUpdate ? `\n\nتنبيه هام جداً (تحديث نتائج وتغطية العرض): هذا المقال يمثل تحديثاً شاملاً ومباشراً لنتائج العرض بعد اكتمال المزيد من النزالات أو انتهاء العرض كاملاً. تأكد من أن التقرير النهائي المحدث يشمل كافة النزالات والأحداث المذكورة من البداية وحتى نهاية النص بشكل مرتب ومفصل دون إغفال أي مباراة أو نتيجة!` : ""}
 
 القواعد التحريرية والتنسيقية الإلزامية:
 1. **قاعدة أسماء الاتحادات والعروض بالإنجليزية حصراً**:
@@ -620,7 +621,7 @@ async function rewriteWithGemini(
 التصنيفات: ${categories.join(", ")}
 تاريخ الحدث: ${arabicDate}
 النص:
-${plainText.slice(0, 4000)}
+${plainText.slice(0, 16000)}
 
 أخرج النتيجة بتنسيق JSON حصراً:
 {
@@ -802,6 +803,41 @@ async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
   return posts.slice(0, limit);
 }
 
+// Search for an existing news file corresponding to a Fightful post ID or URL
+function findExistingNewsFile(postId: number, postUrl?: string): { filePath: string; fileName: string } | null {
+  try {
+    if (!fs.existsSync(NEWS_DIR)) return null;
+    const files = fs.readdirSync(NEWS_DIR);
+    for (const file of files) {
+      if (!file.endsWith(".md")) continue;
+      const fullPath = path.join(NEWS_DIR, file);
+      let header = "";
+      try {
+        const fd = fs.openSync(fullPath, "r");
+        const buffer = Buffer.alloc(1500);
+        const bytesRead = fs.readSync(fd, buffer, 0, 1500, 0);
+        fs.closeSync(fd);
+        header = buffer.toString("utf-8", 0, bytesRead);
+      } catch (e) {
+        continue;
+      }
+
+      if (postId && (header.includes(`source_id: ${postId}`) || header.includes(`source_id: "${postId}"`))) {
+        return { filePath: fullPath, fileName: file };
+      }
+      if (postUrl) {
+        const cleanUrl = postUrl.replace(/\/+$/, "");
+        if (header.includes(cleanUrl) || header.includes(postUrl)) {
+          return { filePath: fullPath, fileName: file };
+        }
+      }
+    }
+  } catch (e) {
+    console.error("[Watcher] Error scanning for existing news file:", e);
+  }
+  return null;
+}
+
 // Process a single Fightful post
 async function processPost(post: any, customDate?: Date | string): Promise<boolean> {
   const postId = post.id;
@@ -811,8 +847,12 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
   const effectiveDate = customDate ? (customDate instanceof Date ? customDate.toISOString() : customDate) : sourceDate;
   const contentHtml = post.content?.rendered || "";
 
+  // Check if this post was already published on the site (e.g. show results/coverage updated over the course of the event)
+  const existingFile = findExistingNewsFile(postId, postUrl);
+  const isUpdate = Boolean(existingFile);
+
   console.log(`\n--------------------------------------------------`);
-  console.log(`[Watcher] Processing post #${postId}: "${rawTitle}"`);
+  console.log(`[Watcher] Processing post #${postId}: "${rawTitle}"${isUpdate ? ` [UPDATE to ${existingFile?.fileName}]` : ""}`);
   console.log(`[Watcher] Effective publish date: ${effectiveDate} (Source: ${sourceDate})`);
 
   // Extract featured image with fallback to content images
@@ -874,6 +914,19 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
   if (imageUrl) {
     localImagePath = await downloadAndOptimizeImage(imageUrl);
   }
+
+  // If image download failed but this is an update, reuse existing article image
+  if ((!localImagePath || localImagePath === "/favicon.png") && existingFile) {
+    try {
+      const oldContent = fs.readFileSync(existingFile.filePath, "utf-8");
+      const imgMatch = oldContent.match(/^image:\s*["']?([^"'\r\n]+)["']?/m);
+      if (imgMatch && imgMatch[1] && !imgMatch[1].includes("favicon")) {
+        localImagePath = imgMatch[1];
+        console.log(`[Watcher] Reusing existing verified image: ${localImagePath}`);
+      }
+    } catch (e) {}
+  }
+
   if (!localImagePath) {
     console.warn(`[Watcher] Could not download image for post #${postId}, using reliable site fallback banner.`);
     // Look for any existing jpg image in content/images as a safe fallback
@@ -890,7 +943,7 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
 
   // 2. Rewrite with Gemini AI
   console.log(`[Watcher] Calling Gemini for Arabic rewriting & title crafting...`);
-  const rewritten = await rewriteWithGemini(rawTitle, plainText, terms, sourceDate);
+  const rewritten = await rewriteWithGemini(rawTitle, plainText, terms, sourceDate, isUpdate);
   if (!rewritten || !rewritten.title || !rewritten.body_markdown) {
     console.error(`[Watcher] Failed to rewrite post #${postId} with Gemini.`);
     return false;
@@ -934,10 +987,37 @@ ${finalBody}
 `;
 
   fs.writeFileSync(filePath, markdownContent, "utf-8");
-  console.log(`[Watcher] Successfully created news file: ${filePath}`);
+  console.log(`[Watcher] Successfully wrote news file: ${filePath}`);
+
+  // If this was an update to an existing article with a different file name/path, remove the older version
+  if (existingFile && existingFile.filePath !== filePath) {
+    try {
+      if (fs.existsSync(existingFile.filePath)) {
+        fs.unlinkSync(existingFile.filePath);
+        console.log(`[Watcher] 🗑️ Removed previous version of news file: ${existingFile.fileName}`);
+      }
+      // Update admin-file-order.json if present
+      const orderPath = path.join(process.cwd(), "admin-file-order.json");
+      if (fs.existsSync(orderPath)) {
+        try {
+          let order = JSON.parse(fs.readFileSync(orderPath, "utf-8"));
+          if (Array.isArray(order)) {
+            order = order.filter(f => f !== existingFile.fileName);
+            if (!order.includes(fileName)) {
+              order.unshift(fileName);
+            }
+            fs.writeFileSync(orderPath, JSON.stringify(order, null, 2), "utf-8");
+          }
+        } catch (e) {}
+      }
+    } catch (err: any) {
+      console.warn(`[Watcher] Could not remove old news file (${existingFile.fileName}):`, err.message);
+    }
+  }
 
   return true;
 }
+
 
 // Maximum allowed age (in hours) for auto-publishing articles from Fightful.
 // Anything older than 3 hours is strictly considered old news and will NEVER be published automatically.
