@@ -1252,8 +1252,8 @@
         return;
       }
 
-      // 2. Instagram (Post, Reel, TV)
-      var instaMatch = url.match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/([a-zA-Z0-9_-]+)/i);
+      // 2. Instagram (Post, Reel, Reels, TV)
+      var instaMatch = url.match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|reels|tv)\/([a-zA-Z0-9_-]+)/i);
       if (instaMatch) {
         var instaCode = instaMatch[1];
         var cleanInstaUrl = 'https://www.instagram.com/p/' + instaCode + '/?hl=en_US';

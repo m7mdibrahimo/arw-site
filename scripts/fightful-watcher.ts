@@ -178,11 +178,24 @@ function extractEmbeds(html: string): string[] {
   }
 
   // 3. Instagram links -> clean URL: https://www.instagram.com/p/ID/
-  const igRegex = /https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/([a-zA-Z0-9_-]+)/gi;
+  const igRegex = /https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|reels|tv)\/([a-zA-Z0-9_-]+)/gi;
   let igMatch: RegExpExecArray | null;
   while ((igMatch = igRegex.exec(html)) !== null) {
     const igId = igMatch[1];
     const cleanUrl = `https://www.instagram.com/p/${igId}/`;
+    if (!seenUrls.has(cleanUrl)) {
+      seenUrls.add(cleanUrl);
+      links.push(cleanUrl);
+    }
+  }
+
+  // 4. TikTok links -> clean URL: https://www.tiktok.com/@USER/video/ID
+  const ttRegex = /https?:\/\/(?:www\.)?tiktok\.com\/@([a-zA-Z0-9_.-]+)\/video\/([0-9]+)/gi;
+  let ttMatch: RegExpExecArray | null;
+  while ((ttMatch = ttRegex.exec(html)) !== null) {
+    const ttUser = ttMatch[1];
+    const ttId = ttMatch[2];
+    const cleanUrl = `https://www.tiktok.com/@${ttUser}/video/${ttId}`;
     if (!seenUrls.has(cleanUrl)) {
       seenUrls.add(cleanUrl);
       links.push(cleanUrl);
@@ -199,6 +212,8 @@ function htmlToPlainText(html: string): string {
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<figure[\s\S]*?<\/figure>/gi, "")
     .replace(/<blockquote class="twitter-tweet"[\s\S]*?<\/blockquote>/gi, "")
+    .replace(/<blockquote class="instagram-media"[\s\S]*?<\/blockquote>/gi, "")
+    .replace(/<blockquote class="tiktok-embed"[\s\S]*?<\/blockquote>/gi, "")
     .replace(/<div class="stream-item[\s\S]*?<\/div>/gi, "")
     .replace(/<[^>]+>/g, " ")
     .replace(/&amp;/g, "&")

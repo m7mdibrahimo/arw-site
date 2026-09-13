@@ -330,7 +330,7 @@ module.exports = function(eleventyConfig) {
       }
 
       // 2. Instagram
-      const igMatch = rawUrl.match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/([a-zA-Z0-9_-]+)/i);
+      const igMatch = rawUrl.match(/^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|reels|tv)\/([a-zA-Z0-9_-]+)/i);
       if (igMatch) {
         const igId = igMatch[1];
         const igUrl = `https://www.instagram.com/p/${igId}/?hl=en_US`;
