@@ -1,0 +1,57 @@
+name: Fightful News Auto Watcher
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # Runs every 15 minutes
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab or Admin page
+    inputs:
+      post_url:
+        description: 'Specific post URL to process manually (optional)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  watch-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run Fightful Watcher
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || 'AQ.Ab8RN6KL8UF_W02V7MgbfG4Ne2FHWvzzlEOHHIfhfaBThj_igg' }}
+        run: |
+          if [ -n "${{ github.event.inputs.post_url }}" ]; then
+            echo "Processing requested post URLs: ${{ github.event.inputs.post_url }}"
+            npx tsx scripts/fightful-watcher.ts --urls="${{ github.event.inputs.post_url }}" --stagger=15
+          else
+            npx tsx scripts/fightful-watcher.ts
+          fi
+
+      - name: Commit and push if new articles were generated
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "ARW News Bot"
+          if [[ -n $(git status -s content/news/ content/images/ watcher-state.json watcher-feed.json) ]]; then
+            git add content/news/ content/images/ watcher-state.json watcher-feed.json
+            git commit -m "feat(news): auto-publish latest wrestling news"
+            git pull --rebase origin main
+            git push
+          else
+            console_msg="No new news articles found."
+            echo "$console_msg"
+          fi
