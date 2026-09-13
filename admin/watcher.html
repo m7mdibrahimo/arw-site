@@ -311,9 +311,14 @@
           <span id="status-text">جاري التحقق من حالة الواتشر...</span>
         </div>
       </div>
-      <button class="toggle-btn pause-action" id="toggle-watcher-btn" disabled>
-        ⏸️ إيقاف الواتشر مؤقتاً
-      </button>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <button class="toggle-btn" id="run-now-btn" style="background:#4f46e5;color:#fff;">
+          ⚡ فحص الأخبار من المصدر الآن
+        </button>
+        <button class="toggle-btn pause-action" id="toggle-watcher-btn" disabled>
+          ⏸️ إيقاف الواتشر مؤقتاً
+        </button>
+      </div>
     </div>
 
     <div class="stats-grid">
@@ -557,6 +562,45 @@
       toggleBtn.disabled = false;
     }
   };
+
+  // Trigger immediate watcher cycle on GitHub Actions via Cloudflare Worker
+  const runNowBtn = document.getElementById('run-now-btn');
+  if (runNowBtn) {
+    runNowBtn.onclick = async () => {
+      runNowBtn.disabled = true;
+      runNowBtn.innerHTML = '<span class="spinner"></span> جاري بدء الفحص...';
+      try {
+        const res = await fetch(`${API_BASE}/api/watcher/dispatch`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({})
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast("✅ تم تشغيل فحص وسحب الأخبار على السيرفر! ستظهر التحديثات بعد قليل.");
+          runNowBtn.innerHTML = '⏳ قيد المعالجة بالسيرفر...';
+          let attempts = 0;
+          const pollTimer = setInterval(async () => {
+            attempts++;
+            await Promise.all([loadWatcherState(), loadSiteIndex()]).then(loadSourceFeed);
+            if (attempts >= 10) {
+              clearInterval(pollTimer);
+              runNowBtn.disabled = false;
+              runNowBtn.innerHTML = '⚡ فحص الأخبار من المصدر الآن';
+            }
+          }, 6000);
+        } else {
+          showToast("❌ " + (data.error || "فشل بدء الفحص"), false);
+          runNowBtn.disabled = false;
+          runNowBtn.innerHTML = '⚡ فحص الأخبار من المصدر الآن';
+        }
+      } catch (e) {
+        showToast("❌ خطأ في الاتصال: " + e.message, false);
+        runNowBtn.disabled = false;
+        runNowBtn.innerHTML = '⚡ فحص الأخبار من المصدر الآن';
+      }
+    };
+  }
 
   // 2. Fetch Latest 30 Source Posts
   async function loadSourceFeed() {

@@ -1550,6 +1550,48 @@ export default {
   },
 
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(runWatcherPoll(env));
+    ctx.waitUntil(Promise.all([
+      runWatcherPoll(env),
+      runNewsWatcherCron(env),
+    ]));
   },
 } satisfies ExportedHandler<Env>;
+
+// Reliable scheduled trigger for the Fightful news watcher workflow
+// Cloudflare crons fire every minute with 100% reliability and zero delay,
+// avoiding GitHub Actions' internal cron lag or dropped runs.
+async function runNewsWatcherCron(env: Env): Promise<void> {
+  try {
+    const KV_KEY = "last_news_watcher_trigger_ts";
+    let lastTrigger = 0;
+    if (env.PUSH_KV) {
+      const val = await env.PUSH_KV.get(KV_KEY);
+      if (val) lastTrigger = Number(val) || 0;
+    }
+
+    const now = Date.now();
+    const INTERVAL_MS = 14 * 60 * 1000; // ~14-15 minutes
+
+    if (now - lastTrigger >= INTERVAL_MS) {
+      let isEnabled = true;
+      try {
+        const { state } = await githubReadWatcherState(env);
+        if (state && state.enabled === false) {
+          isEnabled = false;
+        }
+      } catch (e) {}
+
+      if (isEnabled) {
+        console.log("[Worker] Triggering scheduled 15-minute Fightful news watcher workflow...");
+        const res = await githubTriggerWatcherWorkflow(env);
+        if (res.ok) {
+          if (env.PUSH_KV) {
+            await env.PUSH_KV.put(KV_KEY, String(now));
+          }
+        }
+      }
+    }
+  } catch (err: any) {
+    console.error("[Worker] Error in scheduled news watcher trigger:", err.message);
+  }
+}
