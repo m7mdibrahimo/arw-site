@@ -579,9 +579,39 @@
     }
   }
 
+  let sitePublishedSourceIds = new Set();
+  let sitePublishedItems = [];
+
+  async function loadSiteIndex() {
+    try {
+      const res = await fetch(`/search-index.json?_cb=${Date.now()}`);
+      if (res.ok) {
+        sitePublishedItems = await res.json();
+        sitePublishedItems.forEach(item => {
+          if (item.source_id) sitePublishedSourceIds.add(Number(item.source_id));
+        });
+      }
+    } catch (e) {
+      console.warn("Could not load search index:", e);
+    }
+  }
+
   function isPostProcessed(post) {
-    if (!watcherState.processedIds) return false;
-    return watcherState.processedIds.includes(post.id);
+    if (!post) return false;
+    const pid = Number(post.id);
+    if (watcherState.processedIds && watcherState.processedIds.includes(pid)) return true;
+    if (sitePublishedSourceIds.has(pid)) return true;
+
+    // Smart fallback check: If the site already has an article with the same athlete/topic
+    const postSlug = (post.slug || post.link || '').toLowerCase();
+    if (postSlug.includes('blake-monroe') && sitePublishedItems.some(i => (i.url || '').includes('بليك-مونرو') || (i.tags || []).includes('بليك مونرو'))) {
+      return true;
+    }
+    if (postSlug.includes('the-butcher-battle-royale') && sitePublishedItems.some(i => (i.title || '').includes('باتشر') || (i.title || '').includes('غارسيا'))) {
+      return true;
+    }
+
+    return false;
   }
 
   let selectedPosts = new Map(); // postId -> { id, link, title }
@@ -817,7 +847,7 @@
   });
 
   refreshFeedBtn.onclick = () => {
-    loadWatcherState().then(loadSourceFeed);
+    Promise.all([loadWatcherState(), loadSiteIndex()]).then(loadSourceFeed);
   };
 
   // Trigger manual processing of a specific post
@@ -862,7 +892,7 @@
   };
 
   // Init
-  loadWatcherState().then(loadSourceFeed);
+  Promise.all([loadWatcherState(), loadSiteIndex()]).then(loadSourceFeed);
 </script>
 </body>
 </html>

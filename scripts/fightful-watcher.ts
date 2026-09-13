@@ -721,6 +721,8 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}
 date: ${iso}
+source_id: ${postId}
+source_url: ${JSON.stringify(postUrl)}
 tags:
 ${tagsYaml}
 image: ${localImagePath}
