@@ -38,6 +38,68 @@
 <body>
   <!-- Include React and Decap CMS scripts -->
   <script>
+    // ── Turbocharge Decap CMS GitHub requests ─────────────────────────
+    (function turbochargeDecap() {
+      const originalFetch = window.fetch;
+      const blobCache = new Map();
+
+      window.fetch = async function(resource, init) {
+        const url = typeof resource === 'string' ? resource : (resource ? resource.url : '');
+        
+        // 1. Instantly mock /commits?path= requests (saving 10-20 seconds of server git blame computation)
+        if (url && url.includes('/commits?') && (url.includes('path=') || url.includes('path%3D'))) {
+          const mockCommit = [{
+            commit: {
+              author: { name: "محرر الموقع", date: new Date().toISOString() },
+              committer: { name: "محرر الموقع", date: new Date().toISOString() }
+            }
+          }];
+          return new Response(JSON.stringify(mockCommit), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+
+        // 2. Cache immutable git blobs in memory & sessionStorage
+        if (url && url.includes('/git/blobs/')) {
+          const sha = url.split('/git/blobs/')[1]?.split('?')[0];
+          if (sha) {
+            if (blobCache.has(sha)) {
+              return new Response(JSON.stringify(blobCache.get(sha)), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' }
+              });
+            }
+            try {
+              const cachedSession = sessionStorage.getItem('arw_blob_' + sha);
+              if (cachedSession) {
+                const parsed = JSON.parse(cachedSession);
+                blobCache.set(sha, parsed);
+                return new Response(cachedSession, {
+                  status: 200,
+                  headers: { 'Content-Type': 'application/json' }
+                });
+              }
+            } catch(e) {}
+          }
+
+          const res = await originalFetch(resource, init);
+          if (res.ok && sha) {
+            try {
+              const clone = res.clone();
+              clone.json().then(data => {
+                blobCache.set(sha, data);
+                try { sessionStorage.setItem('arw_blob_' + sha, JSON.stringify(data)); } catch(e) {}
+              }).catch(() => {});
+            } catch(e) {}
+          }
+          return res;
+        }
+
+        return originalFetch(resource, init);
+      };
+    })();
+
     window.CMS_MANUAL_INIT = true;
   </script>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
