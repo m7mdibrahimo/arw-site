@@ -2,6 +2,7 @@ backend:
   name: github
   repo: m7mdibrahimo/arw-site
   branch: main
+  use_graphql: true
   base_url: https://arab-wrestling-auth.m7mdibrahimpc.workers.dev
   auth_endpoint: auth
 
@@ -27,6 +28,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
+    sortable_fields: []
     identifier_field: "title"
     slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
     preview_path: "shows/{{title}}"
@@ -86,6 +88,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
+    sortable_fields: []
     identifier_field: "title"
     slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
     preview_path: "recaps/{{title}}"
@@ -118,6 +121,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
+    sortable_fields: []
     identifier_field: "title"
     slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
     preview_path: "news/{{title}}"
@@ -138,6 +142,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
+    sortable_fields: []
     identifier_field: "title"
     slug: "{{year}}-{{slug}}"
     summary: "{{title}}"
@@ -156,6 +161,7 @@ collections:
     extension: "md"
     format: "frontmatter"
     create: true
+    sortable_fields: []
     identifier_field: "title"
     slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{slug}}"
     preview_path: "nostalgia/{{title}}"
