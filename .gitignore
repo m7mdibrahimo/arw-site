@@ -15,6 +15,6 @@ facebook-sent-map.json
 instagram-sent-map.json
 bun.lock
 index.html
-src/
+/src/
 vite.config.ts
 _site/
