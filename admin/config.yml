@@ -2,7 +2,6 @@ backend:
   name: github
   repo: m7mdibrahimo/arw-site
   branch: main
-  use_graphql: true
   base_url: https://arab-wrestling-auth.m7mdibrahimpc.workers.dev
   auth_endpoint: auth
 
