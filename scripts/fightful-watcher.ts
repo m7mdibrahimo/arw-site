@@ -744,7 +744,7 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
 }
 
 // Command-line runner
-if (require.main === module || process.argv[1]?.endsWith("fightful-watcher.ts")) {
+async function cli() {
   const args = process.argv.slice(2);
   const isDaemon = args.includes("--daemon");
   const isForceOne = args.includes("--force-one");
@@ -755,63 +755,68 @@ if (require.main === module || process.argv[1]?.endsWith("fightful-watcher.ts"))
   if (urlsArg) {
     const rawList = urlsArg.split(/[,\s]+/).map(u => u.trim()).filter(Boolean);
     console.log(`[Watcher] Processing batch of ${rawList.length} articles with ${staggerArg}m safe interval...`);
-    (async () => {
-      const state = loadState();
-      let successCount = 0;
-      for (let i = 0; i < rawList.length; i++) {
-        const itemUrl = rawList[i];
-        const cleanUrl = itemUrl.replace(/\/+$/, "");
-        const slug = cleanUrl.split("/").pop();
-        if (!slug) {
-          console.warn(`[Watcher] Could not determine slug from URL: ${itemUrl}`);
-          continue;
-        }
-
-        console.log(`\n[Watcher] [${i + 1}/${rawList.length}] Fetching article with slug: "${slug}"...`);
-        try {
-          const apiUrl = `https://www.fightful.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed=1`;
-          const res = await fetch(apiUrl, {
-            headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" }
-          });
-          const posts: any = await res.json();
-          if (Array.isArray(posts) && posts[0]) {
-            // First post publishes now; subsequent posts get staggered by i * staggerArg minutes
-            const publishTime = (i === 0) ? new Date() : new Date(Date.now() + i * staggerArg * 60 * 1000);
-            console.log(`[Watcher] Scheduled release time: ${publishTime.toISOString()} (+${i * staggerArg}m)`);
-            const ok = await processPost(posts[0], publishTime);
-            if (ok) {
-              successCount++;
-              if (!state.processedIds.includes(posts[0].id)) {
-                state.processedIds.push(posts[0].id);
-                saveState(state);
-              }
-            }
-          } else {
-            console.error(`[Watcher] Post not found for slug: ${slug}`);
-          }
-        } catch (err: any) {
-          console.error(`[Watcher] Error processing "${slug}":`, err.message);
-        }
-
-        // 2-second rate limit pause between posts
-        await new Promise(r => setTimeout(r, 2000));
+    const state = loadState();
+    let successCount = 0;
+    for (let i = 0; i < rawList.length; i++) {
+      const itemUrl = rawList[i];
+      const cleanUrl = itemUrl.replace(/\/+$/, "");
+      const slug = cleanUrl.split("/").pop();
+      if (!slug) {
+        console.warn(`[Watcher] Could not determine slug from URL: ${itemUrl}`);
+        continue;
       }
 
-      state.lastChecked = new Date().toISOString();
-      saveState(state);
-      await fetchLatestFightfulPosts(30).catch(() => {});
-      console.log(`\n[Watcher] Batch complete! Successfully processed and scheduled ${successCount} articles.`);
-    })();
+      console.log(`\n[Watcher] [${i + 1}/${rawList.length}] Fetching article with slug: "${slug}"...`);
+      try {
+        const apiUrl = `https://www.fightful.com/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed=1`;
+        const res = await fetch(apiUrl, {
+          headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" }
+        });
+        const posts: any = await res.json();
+        if (Array.isArray(posts) && posts[0]) {
+          // First post publishes now; subsequent posts get staggered by i * staggerArg minutes
+          const publishTime = (i === 0) ? new Date() : new Date(Date.now() + i * staggerArg * 60 * 1000);
+          console.log(`[Watcher] Scheduled release time: ${publishTime.toISOString()} (+${i * staggerArg}m)`);
+          const ok = await processPost(posts[0], publishTime);
+          if (ok) {
+            successCount++;
+            if (!state.processedIds.includes(posts[0].id)) {
+              state.processedIds.push(posts[0].id);
+              saveState(state);
+            }
+          }
+        } else {
+          console.error(`[Watcher] Post not found for slug: ${slug}`);
+        }
+      } catch (err: any) {
+        console.error(`[Watcher] Error processing "${slug}":`, err.message);
+      }
+
+      // 2-second rate limit pause between posts
+      await new Promise(r => setTimeout(r, 2000));
+    }
+
+    state.lastChecked = new Date().toISOString();
+    saveState(state);
+    await fetchLatestFightfulPosts(30).catch(() => {});
+    console.log(`\n[Watcher] Batch complete! Successfully processed and scheduled ${successCount} articles.`);
   } else if (isDaemon) {
     console.log("[Watcher] Starting daemon mode. Checking every 5 minutes...");
-    runWatcher();
-    setInterval(() => {
-      runWatcher();
+    await runWatcher();
+    setInterval(async () => {
+      await runWatcher();
     }, 5 * 60 * 1000);
   } else if (isForceOne) {
     console.log("[Watcher] Running test with --force-one...");
-    runWatcher({ forceLatest: true, maxCount: 1 });
+    await runWatcher({ forceLatest: true, maxCount: 1 });
   } else {
-    runWatcher();
+    await runWatcher();
   }
+}
+
+if (require.main === module || process.argv[1]?.endsWith("fightful-watcher.ts")) {
+  cli().catch(err => {
+    console.error("[Watcher] Fatal error:", err);
+    process.exit(1);
+  });
 }
