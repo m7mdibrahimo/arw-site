@@ -81,17 +81,7 @@ function buildDividedCaption(title: string, text?: string): string {
   return parts.join(DIVIDER);
 }
 
-function buildFacebookCaption(title: string, text?: string, url?: string): string {
-  const DIVIDER = "\n\n────────\n\n";
-  const parts = [title.trim()];
-  if (text && text.trim()) parts.push(text.trim());
-  if (url) {
-    parts.push(`🔗 لقراءة التفاصيل كاملة:\n${url}`);
-  } else {
-    parts.push(SOCIAL_FOLLOW_LINE.replace(/^\n+/, ""));
-  }
-  return parts.join(DIVIDER);
-}
+
 
 // X's real character-counting algorithm (twitter-text v3) weights most
 // Latin/Arabic-range characters (U+0000–U+10FF) and a few punctuation
@@ -758,7 +748,7 @@ async function postToFacebookDirect(
   if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
 
   const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
-  const caption = buildFacebookCaption(data.title, data.text, rawUrl);
+  const caption = buildDividedCaption(data.title, data.text);
 
   try {
     const pageToken = await getPageAccessToken(env);
@@ -857,7 +847,7 @@ async function postToFacebookViaBuffer(
 
   if (!postId) {
     const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
-    const caption = buildFacebookCaption(data.title, data.text, rawUrl);
+    const caption = buildDividedCaption(data.title, data.text);
     // If URL is present, omit assets to allow Facebook/Buffer to generate the native link preview card
     const imageUrl = !rawUrl && data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
