@@ -264,11 +264,32 @@
         watcherBtn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
         watcherBtn.style.direction = 'rtl';
         document.body.appendChild(watcherBtn);
+
+        const pinnedBtn = document.createElement('a');
+        pinnedBtn.href = '/admin/pinned.html';
+        pinnedBtn.target = '_blank';
+        pinnedBtn.rel = 'noopener';
+        pinnedBtn.textContent = '📌 إدارة المواضيع المثبتة (السلايدر)';
+        pinnedBtn.style.position = 'fixed';
+        pinnedBtn.style.bottom = '130px';
+        pinnedBtn.style.left = '20px';
+        pinnedBtn.style.zIndex = '999999';
+        pinnedBtn.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+        pinnedBtn.style.color = '#fff';
+        pinnedBtn.style.padding = '12px 20px';
+        pinnedBtn.style.borderRadius = '12px';
+        pinnedBtn.style.fontFamily = 'sans-serif';
+        pinnedBtn.style.fontSize = '14px';
+        pinnedBtn.style.fontWeight = 'bold';
+        pinnedBtn.style.textDecoration = 'none';
+        pinnedBtn.style.boxShadow = '0 6px 20px rgba(245,158,11,0.4)';
+        pinnedBtn.style.direction = 'rtl';
+        document.body.appendChild(pinnedBtn);
       })();
 
-      // ── Ensure site logo is rendered in the CMS header ────────────────
-      (function injectHeaderLogo() {
-        function checkAndSetLogo() {
+      // ── Ensure site logo and pinned link are rendered in the CMS header ────────────────
+      (function injectHeaderLinks() {
+        function checkAndSetHeader() {
           const header = document.querySelector('header, [class*="AppHeader"], [class*="appHeader"]');
           if (header) {
             let logoImg = header.querySelector('img[src*="favicon"], img[src*="logo"]');
@@ -288,9 +309,26 @@
                 homeLink.prepend(img);
               }
             }
+            if (!header.querySelector('#cmsPinnedNavLink')) {
+              const pinnedLink = document.createElement('a');
+              pinnedLink.id = 'cmsPinnedNavLink';
+              pinnedLink.href = '/admin/pinned.html';
+              pinnedLink.target = '_blank';
+              pinnedLink.rel = 'noopener';
+              pinnedLink.textContent = '📌 إدارة المثبت';
+              pinnedLink.style.margin = '0 12px';
+              pinnedLink.style.padding = '6px 14px';
+              pinnedLink.style.background = '#f59e0b';
+              pinnedLink.style.color = '#000';
+              pinnedLink.style.borderRadius = '8px';
+              pinnedLink.style.fontWeight = '800';
+              pinnedLink.style.fontSize = '13px';
+              pinnedLink.style.textDecoration = 'none';
+              header.appendChild(pinnedLink);
+            }
           }
         }
-        setInterval(checkAndSetLogo, 500);
+        setInterval(checkAndSetHeader, 500);
       })();
 
       function PreviewCapture(props) {
