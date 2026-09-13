@@ -444,12 +444,23 @@
       if (data && data.success) {
         watcherState = data;
         try {
-          const dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
-          dispatched.forEach(id => {
-            if (!watcherState.processedIds.includes(id)) {
-              watcherState.processedIds.push(id);
+          let rawDispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          const now = Date.now();
+          const MAX_AGE = 3 * 60 * 1000;
+          const validDispatched = [];
+
+          rawDispatched.forEach(item => {
+            const id = typeof item === 'object' ? Number(item.id) : Number(item);
+            const time = typeof item === 'object' && item.time ? Number(item.time) : 0;
+            // Purge 328200 and any items older than 3 minutes
+            if (id && id !== 328200 && (now - time) < MAX_AGE) {
+              validDispatched.push({ id, time });
+              if (!watcherState.processedIds.includes(id)) {
+                watcherState.processedIds.push(id);
+              }
             }
           });
+          localStorage.setItem('arw_dispatched_ids', JSON.stringify(validDispatched));
         } catch (e) {}
         updateStatusUI();
       }
@@ -745,13 +756,19 @@
         showToast(`✅ ${data.message || `تم إرسال أمر نشر ${urls.length} أخبار فوراً في نفس الوقت بنجاح!`}`);
         batchModal.classList.remove('open');
         try {
-          const dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          const now = Date.now();
+          let dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          dispatched = dispatched.filter(item => {
+            const time = typeof item === 'object' && item.time ? item.time : 0;
+            return (now - time) < 3 * 60 * 1000;
+          });
           selectedPosts.forEach((val, pid) => {
-            if (!watcherState.processedIds.includes(pid)) {
-              watcherState.processedIds.push(pid);
+            const numId = Number(pid);
+            if (!watcherState.processedIds.includes(numId)) {
+              watcherState.processedIds.push(numId);
             }
-            if (!dispatched.includes(pid)) {
-              dispatched.push(pid);
+            if (!dispatched.some(x => (typeof x === 'object' ? x.id : x) === numId)) {
+              dispatched.push({ id: numId, time: now });
             }
           });
           localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
@@ -865,11 +882,19 @@
       if (data.success) {
         showToast("✅ " + data.message);
         btnEl.innerHTML = '⏳ قيد المعالجة...';
-        if (!watcherState.processedIds.includes(postId)) {
-          watcherState.processedIds.push(postId);
+        const numId = Number(postId);
+        if (!watcherState.processedIds.includes(numId)) {
+          watcherState.processedIds.push(numId);
           try {
-            const dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
-            if (!dispatched.includes(postId)) dispatched.push(postId);
+            const now = Date.now();
+            let dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+            dispatched = dispatched.filter(item => {
+              const time = typeof item === 'object' && item.time ? item.time : 0;
+              return (now - time) < 3 * 60 * 1000;
+            });
+            if (!dispatched.some(x => (typeof x === 'object' ? x.id : x) === numId)) {
+              dispatched.push({ id: numId, time: now });
+            }
             localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
           } catch (e) {}
           renderFeed();
