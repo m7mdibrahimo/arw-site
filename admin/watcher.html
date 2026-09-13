@@ -139,6 +139,10 @@
   .badge-state.added { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
   .badge-state.missing { background: var(--yellow-bg); color: #fbbf24; border: 1px solid rgba(245,158,11,.3); }
   .badge-state.pending { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); }
+  .badge-state.old { background: rgba(148, 163, 184, 0.12); color: #94a3b8; border: 1px solid rgba(148, 163, 184, 0.25); }
+
+  .post-card.is-old { opacity: 0.72; }
+  .post-card.is-old:hover { opacity: 1; }
 
   .post-card .actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
   .add-btn {
@@ -334,11 +338,13 @@
     </h2>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
       <div class="feed-filters">
-        <button class="filter-btn active" data-filter="all">الكل</button>
-        <button class="filter-btn" data-filter="missing">غير مضاف فقط</button>
-        <button class="filter-btn" data-filter="added">مضاف بالفعل</button>
-        <button class="select-all-btn" id="select-all-btn" title="تحديد جميع الأخبار غير المضافة حالياً">
-          <span>☑️</span> <span id="select-all-btn-text">تحديد غير المضاف</span>
+        <button class="filter-btn active" data-filter="new">🆕 جديد فقط</button>
+        <button class="filter-btn" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="added">✅ مضاف للموقع</button>
+        <button class="filter-btn" data-filter="missing">⏳ غير مضاف</button>
+        <button class="filter-btn" data-filter="old">⏹️ قديم</button>
+        <button class="select-all-btn" id="select-all-btn" title="تحديد جميع الأخبار الجديدة غير المضافة">
+          <span>☑️</span> <span id="select-all-btn-text">تحديد الأخبار الجديدة</span>
         </button>
       </div>
       <button class="refresh-btn" id="refresh-feed-btn">
@@ -398,7 +404,7 @@
 
   let watcherState = { enabled: true, processedIds: [], lastChecked: null };
   let sourcePosts = [];
-  let currentFilter = 'all';
+  let currentFilter = 'new';
 
   const statusPill = document.getElementById('status-pill');
   const statusText = document.getElementById('status-text');
@@ -616,22 +622,45 @@
     }
   }
 
-  function isPostProcessed(post) {
+  function isPostAddedToSite(post) {
     if (!post) return false;
     const pid = Number(post.id);
-    if (watcherState.processedIds && watcherState.processedIds.includes(pid)) return true;
-    if (sitePublishedSourceIds.has(pid)) return true;
+    return sitePublishedSourceIds.has(pid);
+  }
 
-    return false;
+  function getPostAgeHours(post) {
+    if (!post) return 999;
+    const dStr = post.date_gmt ? (post.date_gmt.endsWith('Z') ? post.date_gmt : post.date_gmt + 'Z') : (post.date ? post.date + 'Z' : '');
+    const t = dStr ? new Date(dStr).getTime() : NaN;
+    if (isNaN(t)) return 999;
+    return (Date.now() - t) / (1000 * 60 * 60);
+  }
+
+  function isPostOld(post) {
+    if (!post) return false;
+    if (isPostAddedToSite(post)) return false;
+    const pid = Number(post.id);
+    if (pendingDispatchedIds.has(pid)) return false;
+    // An unadded post older than 4 hours is considered old news
+    return getPostAgeHours(post) > 4;
+  }
+
+  function isPostFresh(post) {
+    if (!post) return false;
+    return !isPostAddedToSite(post) && !pendingDispatchedIds.has(Number(post.id)) && !isPostOld(post);
+  }
+
+  // Keep for backwards compatibility
+  function isPostProcessed(post) {
+    return isPostAddedToSite(post);
   }
 
   let selectedPosts = new Map(); // postId -> { id, link, title }
 
-  // Batch selection management
+  // Batch selection: ONLY allows selecting fresh new news!
   function isSelectable(post) {
     if (!post) return false;
-    const pid = Number(post.id);
-    return !isPostProcessed(post) && !pendingDispatchedIds.has(pid);
+    return isPostFresh(post);
   }
 
   window.toggleSelectPost = function(postId, checked) {
@@ -652,19 +681,19 @@
 
   window.handleCardClick = function(event, postId) {
     const pid = Number(postId);
-    if (isPostProcessed({ id: pid }) || pendingDispatchedIds.has(pid)) return;
+    if (isPostAddedToSite({ id: pid }) || pendingDispatchedIds.has(pid)) return;
     const isSel = selectedPosts.has(postId);
     toggleSelectPost(postId, !isSel);
   };
 
   function toggleSelectAll() {
-    const unadded = sourcePosts.filter(isSelectable);
-    const allSelected = unadded.length > 0 && unadded.every(p => selectedPosts.has(p.id));
+    const freshUnadded = sourcePosts.filter(isSelectable);
+    const allSelected = freshUnadded.length > 0 && freshUnadded.every(p => selectedPosts.has(p.id));
 
     if (allSelected) {
-      unadded.forEach(p => selectedPosts.delete(p.id));
+      freshUnadded.forEach(p => selectedPosts.delete(p.id));
     } else {
-      unadded.forEach(p => {
+      freshUnadded.forEach(p => {
         selectedPosts.set(p.id, {
           id: p.id,
           link: p.link,
@@ -684,16 +713,16 @@
     const selectAllBtn = document.getElementById('select-all-btn');
     const selectAllText = document.getElementById('select-all-btn-text');
 
-    const unadded = sourcePosts.filter(isSelectable);
-    const allSelected = unadded.length > 0 && unadded.every(p => selectedPosts.has(p.id));
+    const freshUnadded = sourcePosts.filter(isSelectable);
+    const allSelected = freshUnadded.length > 0 && freshUnadded.every(p => selectedPosts.has(p.id));
 
     if (selectAllBtn && selectAllText) {
-      if (allSelected && unadded.length > 0) {
+      if (allSelected && freshUnadded.length > 0) {
         selectAllBtn.classList.add('active-all');
-        selectAllText.textContent = `إلغاء تحديد الكل (${unadded.length})`;
+        selectAllText.textContent = `إلغاء تحديد الكل (${freshUnadded.length})`;
       } else {
         selectAllBtn.classList.remove('active-all');
-        selectAllText.textContent = `تحديد غير المضاف (${unadded.length})`;
+        selectAllText.textContent = freshUnadded.length > 0 ? `تحديد الأخبار الجديدة (${freshUnadded.length})` : `لا توجد أخبار جديدة`;
       }
     }
 
@@ -802,9 +831,15 @@
 
   function renderFeed() {
     let filtered = sourcePosts.filter(p => {
-      const added = isPostProcessed(p);
+      const added = isPostAddedToSite(p);
+      const isPending = !added && pendingDispatchedIds.has(Number(p.id));
+      const isOld = isPostOld(p);
+      const isFresh = isPostFresh(p);
+
+      if (currentFilter === 'new') return isFresh || isPending;
       if (currentFilter === 'added') return added;
-      if (currentFilter === 'missing') return !added;
+      if (currentFilter === 'missing') return isFresh;
+      if (currentFilter === 'old') return isOld;
       return true;
     });
 
@@ -815,46 +850,55 @@
 
     feedList.innerHTML = filtered.map(post => {
       const pid = Number(post.id);
-      const isAdded = isPostProcessed(post);
+      const isAdded = isPostAddedToSite(post);
       const isPending = !isAdded && pendingDispatchedIds.has(pid);
+      const isOld = isPostOld(post);
+      const isFresh = isPostFresh(post);
       const isSelected = selectedPosts.has(post.id);
       const featured = post.featured_image || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
       const cleanTitle = (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
       const dateStr = post.date ? new Date(post.date).toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
       const postUrl = post.link || '';
 
+      let badgeHtml = '';
+      let actionHtml = '';
+
+      if (isAdded) {
+        badgeHtml = '<span class="badge-state added">✅ مضاف للموقع</span>';
+        actionHtml = '<span style="font-size:12px;color:var(--green);font-weight:600;">✓ تمت الإضافة</span>';
+      } else if (isPending) {
+        badgeHtml = '<span class="badge-state pending">⏳ جاري النشر...</span>';
+        actionHtml = '<span style="font-size:12px;color:#38bdf8;font-weight:600;">⏳ قيد المعالجة...</span>';
+      } else if (isOld) {
+        badgeHtml = '<span class="badge-state old">⏹️ خبر قديم</span>';
+        actionHtml = `<button class="add-btn" style="background:#334155;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة يدوية</button>`;
+      } else {
+        badgeHtml = '<span class="badge-state missing">🆕 خبر جديد</span>';
+        actionHtml = `<button class="add-btn" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة للموقع</button>`;
+      }
+
       return `
-        <div class="post-card ${isAdded ? 'is-added' : (isPending ? 'is-pending' : '')} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
+        <div class="post-card ${isAdded ? 'is-added' : (isPending ? 'is-pending' : (isOld ? 'is-old' : ''))} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
           <div class="post-check-wrap" onclick="event.stopPropagation()">
             ${isAdded ? `
               <input type="checkbox" class="post-checkbox" disabled title="مضاف بالفعل للموقع" />
             ` : (isPending ? `
               <input type="checkbox" class="post-checkbox" disabled title="جاري النشر والمعالجة..." />
             ` : `
-              <input type="checkbox" class="post-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectPost(${post.id}, this.checked)" />
+              <input type="checkbox" class="post-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectPost(${post.id}, this.checked)" title="${isOld ? 'خبر قديم' : 'خبر جديد'}" />
             `)}
           </div>
           <img src="${featured}" onerror="this.src='/favicon.png'" alt="" />
           <div class="info">
             <div class="title-row">${cleanTitle}</div>
             <div class="meta-row">
-              <span class="badge-state ${isAdded ? 'added' : (isPending ? 'pending' : 'missing')}">
-                ${isAdded ? '✅ مضاف للموقع' : (isPending ? '⏳ جاري النشر...' : '⏳ لم يُضف بعد')}
-              </span>
+              ${badgeHtml}
               <span>🕒 ${dateStr}</span>
               <span>رقم الخبر: #${post.id}</span>
             </div>
           </div>
           <div class="actions" onclick="event.stopPropagation()">
-            ${isAdded ? `
-              <span style="font-size:12px;color:var(--green);font-weight:600;">✓ تمت الإضافة</span>
-            ` : (isPending ? `
-              <span style="font-size:12px;color:#38bdf8;font-weight:600;">⏳ قيد المعالجة...</span>
-            ` : `
-              <button class="add-btn" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">
-                ➕ إضافة للموقع
-              </button>
-            `)}
+            ${actionHtml}
             <a class="view-link" href="${postUrl}" target="_blank" rel="noopener">عرض المصدر ↗</a>
           </div>
         </div>

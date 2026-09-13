@@ -708,7 +708,7 @@ function formatDate(dateString?: string) {
 // Fetch posts from Fightful WordPress REST API
 async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
   const fetchCount = Math.max(limit, 30);
-  const url = `https://www.fightful.com/wp-json/wp/v2/posts?_embed=1&per_page=${fetchCount}`;
+  const url = `https://www.fightful.com/wp-json/wp/v2/posts?_embed=1&per_page=${fetchCount}&_cb=${Date.now()}`;
   console.log(`[Watcher] Fetching latest posts from: ${url}`);
   
   const res = await fetch(url, {
@@ -731,6 +731,7 @@ async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
       id: p.id,
       link: p.link,
       date: p.date,
+      date_gmt: p.date_gmt || p.date,
       title: { rendered: p.title?.rendered || "" },
       featured_image: p._embedded?.["wp:featuredmedia"]?.[0]?.source_url || ""
     }));
@@ -847,6 +848,10 @@ ${finalBody}
   return true;
 }
 
+// Maximum allowed age (in hours) for auto-publishing articles from Fightful.
+// Anything older than 3 hours is strictly considered old news and will NEVER be published automatically.
+const MAX_AUTO_PUBLISH_AGE_HOURS = 3;
+
 // Main check function
 export async function runWatcher(options: { forceLatest?: boolean; maxCount?: number; maxPerRun?: number } = {}) {
   const state = loadState();
@@ -857,7 +862,7 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
   }
 
   const batchLimit = options.maxCount || 20;
-  console.log(`[Watcher] Checking for new posts at ${new Date().toLocaleTimeString()} (Batch: ${batchLimit})...`);
+  console.log(`[Watcher] Checking for new posts at ${new Date().toLocaleTimeString()} (Batch: ${batchLimit}, Max Age: ${MAX_AUTO_PUBLISH_AGE_HOURS}h)...`);
 
   try {
     const posts = await fetchLatestFightfulPosts(batchLimit);
@@ -876,6 +881,23 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       const isAlreadyProcessed = state.processedIds.includes(postId);
 
       if (isAlreadyProcessed && !options.forceLatest) {
+        continue;
+      }
+
+      // Check age: strictly skip old news in automated watcher mode
+      const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || `Post #${postId}`;
+      const postDateGmt = post.date_gmt
+        ? (post.date_gmt.endsWith("Z") ? post.date_gmt : post.date_gmt + "Z")
+        : (post.date ? post.date + "Z" : "");
+      const postTime = postDateGmt ? new Date(postDateGmt).getTime() : NaN;
+      const ageHours = !isNaN(postTime) ? (Date.now() - postTime) / (1000 * 60 * 60) : 999;
+
+      // In automated mode, skip old news (older than MAX_AUTO_PUBLISH_AGE_HOURS)
+      if (!options.forceLatest && ageHours > MAX_AUTO_PUBLISH_AGE_HOURS) {
+        console.log(`[Watcher] ⏭️ Skipping OLD post #${postId} ("${rawTitle}"): published ${ageHours.toFixed(1)}h ago (older than ${MAX_AUTO_PUBLISH_AGE_HOURS}h threshold).`);
+        if (!state.processedIds.includes(postId)) {
+          state.processedIds.push(postId);
+        }
         continue;
       }
 
