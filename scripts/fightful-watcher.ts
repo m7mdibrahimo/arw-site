@@ -309,7 +309,55 @@ function sanitizeWrestlingTerms(text: string): string {
     .replace(/تقرير\s*\*?Fightful\*?/gi, "تقارير خاصة")
     .replace(/فايت\s*فول/gi, "مصادرنا")
     .replace(/فايتفول/gi, "مصادرنا")
-    .replace(/\*?Fightful\*?/gi, "مصادرنا");
+    .replace(/\*?Fightful\*?/gi, "مصادرنا")
+
+    // 5. Enforce Arabic names for Wrestlers (convert English wrestler names and acronyms to Arabic)
+    .replace(/\bR-Truth\b/gi, "ار تروث")
+    .replace(/\bCM Punk\b/gi, "سي ام بانك")
+    .replace(/\bLA Knight\b/gi, "ال ايه نايت")
+    .replace(/\bMJF\b/g, "ام جيه اف")
+    .replace(/\bFTR\b/g, "اف تي ار")
+    .replace(/\bMVP\b/g, "ام في بي")
+    .replace(/\bAJ Styles\b/gi, "اي جي ستايلز")
+    .replace(/\bRob Van Dam\b/gi, "روب فان دام")
+    .replace(/\bRVD\b/g, "ار في دي")
+    .replace(/\bRey Mysterio\b/gi, "ري ميستيريو")
+    .replace(/\bDominik Mysterio\b/gi, "دومينيك ميستيريو")
+    .replace(/\bLiv Morgan\b/gi, "ليف مورغان")
+    .replace(/\bBrian Cage\b/gi, "برايان كيج")
+    .replace(/\bTessa Blanchard\b/gi, "تيسا بلانشارد")
+    .replace(/\bStephanie Vaquer\b/gi, "ستيفاني فاكير")
+    .replace(/\bDaniel Garcia\b/gi, "دانيال غارسيا")
+    .replace(/\bWill Ospreay\b/gi, "ويل اوسبري")
+    .replace(/\bKenny Omega\b/gi, "كيني اوميغا")
+    .replace(/\bCody Rhodes\b/gi, "كودي رودز")
+    .replace(/\bRoman Reigns\b/gi, "رومان رينز")
+    .replace(/\bJohn Cena\b/gi, "جون سينا")
+    .replace(/\bSeth Rollins\b/gi, "سيث رولينز")
+    .replace(/\bDrew McIntyre\b/gi, "درو ماكنتاير")
+    .replace(/\bGunther\b/gi, "غونتر")
+    .replace(/\bRandy Orton\b/gi, "راندي اورتون")
+    .replace(/\bDamian Priest\b/gi, "داميان بريست")
+    .replace(/\bSami Zayn\b/gi, "سامي زين")
+    .replace(/\bKevin Owens\b/gi, "كيفن اوينز")
+    .replace(/\bBecky Lynch\b/gi, "بيكي لينش")
+    .replace(/\bRhea Ripley\b/gi, "ريا ريبلي")
+    .replace(/\bCharlotte Flair\b/gi, "شارلوت فلير")
+    .replace(/\bMercedes Mon[eé]\b/gi, "مرسيدس موني")
+    .replace(/\bKazuchika Okada\b/gi, "كازوتشيكا اوكادا")
+    .replace(/\bBryan Danielson\b/gi, "برايان دانيلسون")
+    .replace(/\bHangman Adam Page\b/gi, "هانغمان بيج")
+    .replace(/\bHangman Page\b/gi, "هانغمان بيج")
+    .replace(/\bSwerve Strickland\b/gi, "سويرف ستريكلاند")
+    .replace(/\bDarby Allin\b/gi, "داربي الين")
+    .replace(/\bMatt Riddle\b/gi, "مات ريدل")
+    .replace(/\bOmos\b/gi, "اوموس")
+    .replace(/\bDanhausen\b/gi, "دانهاوسن")
+    .replace(/\bBlake Monroe\b/gi, "بليك مونرو")
+    .replace(/\bGiulia\b/gi, "جوليا")
+    .replace(/\bTrick Williams\b/gi, "تريك ويليامز")
+    .replace(/\bGrayson Waller\b/gi, "غرايسون والر")
+    .replace(/\bBaron Corbin\b/gi, "بارون كوربين");
 
   // Always strip all tashkeel / diacritics completely across all articles, titles, and tags
   return removeTashkeel(cleaned);
@@ -457,7 +505,17 @@ async function optimizeTitleForSEOAndCTR(
       - أسلوب الحدث والتتويج: "ستيفاني فاكير تُسقط ليف مورغان وتتوج بلقب العالم للسيدات في تشيلي"
       - أسلوب الإصابة والكواليس: "بلايك مونرو تكشف تفاصيل إصابتها المروعة بعد ضربة ركبة جوليا"
       - أسلوب التكريم والوفاء: "نجوم AEW يقدمون تحية مؤثرة للراحل آندي ويليامز 'ذا بوتشر'"
-  - أسماء المصارعين بالعربية دائماً (كودي رودز، رومان رينز، جون سينا، ويل أوسبري، ستيفاني فاكير، دانيال غارسيا).
+  - **قاعدة أسماء المصارعين الصارمة (بالعربية دائماً وحصراً وممنوع نهائياً بالإنجليزية)**:
+    - **ممنوع منعاً باتاً كتابة اسم أي مصارع أو نجم باللغة الإنجليزية في العنوان مطلقاً!**
+    - الوحيد المسموح به بالإنجليزية فقط هو اسم الاتحاد (WWE, AEW, TNA) أو اسم العرض (WWE RAW, WWE SmackDown).
+    - جميع أسماء المصارعين والنجوم تُكتب بالعربية حصراً، بما في ذلك الأسماء المختصرة أو التي تبدأ بحرف مفرد:
+      - R-Truth يُكتب بالعربية دائماً: **ار تروث** (ممنوع نهائياً R-Truth)
+      - CM Punk يُكتب بالعربية: **سي ام بانك**
+      - LA Knight يُكتب بالعربية: **ال ايه نايت**
+      - MJF يُكتب بالعربية: **ام جيه اف**
+      - MVP يُكتب بالعربية: **ام في بي**
+      - AJ Styles يُكتب بالعربية: **اي جي ستايلز**
+      - كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج... إلخ.
   - الألقاب والأحزمة بالعربية (لقب العالم، بطولة السيدات، بطولة القارات).
   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة).`;
   }
@@ -695,11 +753,11 @@ ${plainText.slice(0, 16000)}
      (مثل: WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, AEW All In, WrestleMania, Royal Rumble, SummerSlam).
      - ممنوع نهائياً: "الرو", "راو", "سماكداون", "ديناميت", "كوليجن", "إمباكت".
      - اكتب دائماً: WWE RAW, WWE SmackDown, AEW Dynamite, AEW Collision, TNA iMPACT.
-   - **كل ما عدا ذلك يُترجم ويُصاغ باللغة العربية الصحفية الاحترافية السلسة**:
-     - أسماء المصارعين والمصارعات بالعربية دائماً (كودي رودز، رومان رينز، جون سينا، ويل أوسبري، كيني أوميغا، ستيفاني فاكير، دانيال غارسيا).
-     - الألقاب والبطولات بالعربية (لقب العالم، بطولة الزوجي، بطولة القارات، بطولة السيدات).
-     - التفاصيل، الكواليس، النزالات، الحوارات، التحليلات بالعربية.
-   - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**؛ اكتب كل النصوص خالية تماماً من التشكيل لتكون سهلة وسريعة القراءة.
+      - **أسماء المصارعين والمصارعات بالعربية دائماً وحصراً (ممنوع منعاً باتاً كتابة اسم أي مصارع بالإنجليزية سواء في العنوان أو المتن)**:
+        مثل: ار تروث (ممنوع بتاتاً R-Truth)، سي ام بانك (CM Punk)، ال ايه نايت (LA Knight)، ام جيه اف (MJF)، ام في بي (MVP)، اي جي ستايلز (AJ Styles)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج.
+      - الألقاب والبطولات بالعربية (لقب العالم، بطولة الزوجي، بطولة القارات، بطولة السيدات).
+      - التفاصيل، الكواليس، النزالات، الحوارات، التحليلات بالعربية.
+    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**؛ اكتب كل النصوص خالية تماماً من التشكيل لتكون سهلة وسريعة القراءة.
 5. **حظر تام لكلمتي "حلقة" و"مهرجان" نهائياً**: في عالم المصارعة لا يوجد مصطلح "حلقة" ولا "مهرجان"، الاسم المعتمد دائماً هو **"عرض"** (أو **"عروض"** للجمع). استبدل أي ورود لكلمة حلقة أو مهرجان بكلمة "عرض" دائماً (مثل: عرض WrestleMania، عرض AAA Triplemanía، عروض WWE الشهرية، عروض AEW).
 6. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
 7. **حظر ذكر أي مصادر خارجية نهائياً**: صِغْ كل معلومة كأنها خبر حصري لموقع عرب راسلنج (أو "أفادت مصادرنا الخاصة", "كشفت تقارير مطلعة"). ممنوع ذكر Fightful.
