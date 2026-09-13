@@ -152,10 +152,53 @@
   .tg-float-bar {
     right: 12px;
     left: 12px;
-    bottom: 16px;
+    bottom: 14px;
     width: auto;
     max-width: none;
-    padding: 16px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    gap: 9px;
+  }
+  .tg-close-btn {
+    top: 9px;
+    left: 9px;
+    padding: 2px;
+  }
+  .tg-float-header {
+    gap: 9px;
+  }
+  .tg-icon-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+  }
+  .tg-icon-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+  .tg-title {
+    font-size: 14px;
+  }
+  .tg-subtitle {
+    font-size: 11px;
+  }
+  .tg-float-body {
+    font-size: 11.5px;
+    line-height: 1.48;
+  }
+  .tg-float-actions {
+    gap: 8px;
+    margin-top: 2px;
+  }
+  .tg-float-btn {
+    padding: 8px 14px;
+    font-size: 12.5px;
+    border-radius: 10px;
+  }
+  .tg-float-dismiss {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 10px;
   }
 }
 
