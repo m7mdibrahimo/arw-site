@@ -1116,15 +1116,18 @@ async function publishToPlatform(
     raw = r;
   } else if (platform === "facebook") {
     // 1. Try Direct Meta Graph API first (free, unlimited, instant, 100% public)
-    let r = await postToFacebookDirect(env, key, item);
-    if (!r.ok && !r.ambiguous && !r.skipped) {
-      console.warn(`[Facebook] Direct Graph API error, falling back to Buffer:`, r.result);
-      r = await postToFacebookViaBuffer(env, key, item);
+    const directR = await postToFacebookDirect(env, key, item);
+    if (directR.ok) {
+      ok = true;
+      raw = directR.result;
+    } else {
+      console.warn(`[Facebook] Direct Graph API error, falling back to Buffer:`, directR.result);
+      const bufferR = await postToFacebookViaBuffer(env, key, item);
+      ok = bufferR.ok;
+      skipped = !!bufferR.skipped;
+      ambiguous = !!bufferR.ambiguous;
+      raw = { direct: directR.result, buffer: bufferR.result };
     }
-    ok = r.ok;
-    skipped = !!r.skipped;
-    ambiguous = !!r.ambiguous;
-    raw = r.result;
   } else if (platform === "instagram") {
     const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : env.SITE_ORIGIN + item.image) : undefined;
     const r = await postToInstagram(env, key, { ...item, imageUrl });
@@ -1433,6 +1436,8 @@ export default {
         const data: any = await res.json();
         return json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
       }
+
+
 
       // ── Manual publish dashboard (used by admin/publish.html) ──
       if (path === "/api/social/status" && request.method === "GET") {
