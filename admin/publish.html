@@ -22,6 +22,7 @@
     margin:0; background:var(--bg); color:var(--text);
     font-family:"Segoe UI", Tahoma, Arial, sans-serif;
     min-height:100vh;
+    padding-bottom:90px;
   }
   header{
     position:sticky; top:0; z-index:10;
@@ -45,7 +46,7 @@
     font-size:13.5px; line-height:1.9; margin-bottom:20px;
   }
 
-  .filters{ display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; }
+  .filters{ display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
   .filters button{
     background:var(--card); border:1px solid var(--border); color:var(--muted);
     padding:8px 16px; border-radius:20px; font-size:13px; cursor:pointer;
@@ -54,14 +55,49 @@
   .filters button.active{ background:var(--accent); color:#fff; border-color:var(--accent); }
   .filters button:hover:not(.active){ color:var(--text); border-color:#3a4150; }
 
+  /* Selection Controls */
+  .selection-controls{
+    display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; align-items:center;
+    padding:10px 14px; background:rgba(23,26,33,0.6); border:1px solid var(--border);
+    border-radius:12px;
+  }
+  .sel-btn{
+    background:var(--card); border:1px solid var(--border); color:#cbd5e1;
+    padding:7px 14px; border-radius:20px; font-size:12.5px; cursor:pointer;
+    transition:.15s; display:inline-flex; align-items:center; gap:6px; font-weight:500;
+  }
+  .sel-btn:hover{ background:var(--card-hover); border-color:#4b5563; }
+  .sel-btn.active-all{
+    background:rgba(99,102,241,0.2); border-color:var(--accent); color:#fff;
+  }
+  .sel-btn.clear-btn{
+    border-color:rgba(239,68,68,0.4); color:#fca5a5;
+  }
+  .sel-btn.clear-btn:hover{
+    background:rgba(239,68,68,0.15);
+  }
+
   #status-line{ color:var(--muted); font-size:13px; margin-bottom:14px; min-height:18px; }
 
   .card{
     background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
-    padding:16px 18px; margin-bottom:12px; display:flex; gap:14px; align-items:center;
-    transition:.15s;
+    padding:14px 18px; margin-bottom:12px; display:flex; gap:14px; align-items:center;
+    transition:.15s; cursor:pointer; position:relative;
   }
   .card:hover{ background:var(--card-hover); }
+  .card.selected{
+    border-color:var(--accent);
+    background:rgba(99,102,241,0.08);
+    box-shadow:0 0 16px rgba(99,102,241,0.18);
+  }
+  .card-check-wrap{
+    display:flex; align-items:center; justify-content:center;
+    padding:4px; cursor:pointer; flex-shrink:0;
+  }
+  .card-checkbox{
+    width:20px; height:20px; cursor:pointer; accent-color:var(--accent);
+    border-radius:5px; margin:0;
+  }
   .card img{
     width:64px; height:64px; border-radius:10px; object-fit:cover; flex-shrink:0;
     background:#222;
@@ -88,6 +124,51 @@
   .publish-btn:hover{ background:var(--accent-hover); }
   .publish-btn:disabled{ opacity:.5; cursor:not-allowed; }
 
+  /* Floating Batch Action Bar */
+  .batch-bar{
+    position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(140%);
+    background:rgba(23,26,33,0.96); backdrop-filter:blur(16px);
+    border:1px solid rgba(99,102,241,0.45); border-radius:20px;
+    box-shadow:0 14px 44px rgba(0,0,0,0.7), 0 0 24px rgba(99,102,241,0.25);
+    padding:14px 26px; display:flex; align-items:center; gap:20px;
+    z-index:100; transition:transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    opacity:0; pointer-events:none; max-width:92vw; flex-wrap:wrap; justify-content:space-between;
+  }
+  .batch-bar.visible{
+    transform:translateX(-50%) translateY(0);
+    opacity:1; pointer-events:auto;
+  }
+  .batch-bar .info-wrap{
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .batch-bar .count-badge{
+    background:var(--accent); color:#fff; padding:5px 14px; border-radius:20px;
+    font-size:13.5px; font-weight:700;
+  }
+  .batch-bar .pacing-note{
+    font-size:12.5px; color:var(--muted);
+  }
+  .batch-bar .btn-group{ display:flex; align-items:center; gap:10px; }
+
+  .batch-publish-btn{
+    background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color:#fff; border:none; padding:10px 22px; border-radius:12px;
+    font-size:13.5px; font-weight:700; cursor:pointer; display:inline-flex;
+    align-items:center; gap:8px; transition:.2s; box-shadow:0 4px 16px rgba(99,102,241,.4);
+  }
+  .batch-publish-btn:hover{
+    background:linear-gradient(135deg, #7476f5 0%, #5a52e8 100%);
+    box-shadow:0 6px 22px rgba(99,102,241,.6); transform:translateY(-1px);
+  }
+  .batch-publish-btn:disabled{ opacity:.5; cursor:not-allowed; }
+
+  .batch-cancel-btn{
+    background:#242938; color:var(--text); border:1px solid var(--border);
+    padding:10px 18px; border-radius:12px; font-size:13px; font-weight:600; cursor:pointer;
+    transition:.15s;
+  }
+  .batch-cancel-btn:hover{ background:#2e3547; }
+
   /* Modal */
   .overlay{
     position:fixed; inset:0; background:rgba(0,0,0,.6); display:none;
@@ -96,7 +177,7 @@
   .overlay.open{ display:flex; }
   .modal{
     background:var(--card); border:1px solid var(--border); border-radius:16px;
-    padding:24px; width:100%; max-width:420px;
+    padding:24px; width:100%; max-width:440px; max-height:90vh; overflow-y:auto;
   }
   .modal h2{ font-size:16px; margin:0 0 14px; }
   .modal .plat-row{
@@ -117,6 +198,43 @@
   .btn-cancel{ background:#242938; color:var(--text); }
   .btn-confirm{ background:var(--accent); color:#fff; }
   .btn-confirm:disabled{ opacity:.5; cursor:not-allowed; }
+
+  /* Modal item list */
+  .modal-item-list{
+    max-height:160px; overflow-y:auto; margin:12px 0; border:1px solid var(--border);
+    border-radius:10px; background:rgba(0,0,0,0.25); padding:8px 12px;
+  }
+  .modal-item-row{
+    font-size:12.5px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06);
+    display:flex; align-items:center; gap:8px;
+  }
+  .modal-item-row:last-child{ border-bottom:none; }
+  .modal-item-row .status-icon{ flex-shrink:0; font-size:13px; }
+  .modal-item-row .item-title{
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex:1;
+  }
+
+  .progress-wrap{
+    margin:14px 0 6px; display:none;
+  }
+  .progress-wrap.show{ display:block; }
+  .progress-bar-bg{
+    width:100%; height:8px; background:#242938; border-radius:6px; overflow:hidden; margin-top:6px;
+  }
+  .progress-bar-fill{
+    width:0%; height:100%; background:var(--accent); transition:width 0.3s;
+  }
+
+  /* Toast Notification */
+  .toast{
+    position:fixed; bottom:24px; right:24px; z-index:1000;
+    padding:14px 20px; border-radius:12px; font-size:13.5px; font-weight:600;
+    box-shadow:0 8px 24px rgba(0,0,0,0.4); display:none; align-items:center; gap:10px;
+    transition:all .3s ease;
+  }
+  .toast.show{ display:flex; }
+  .toast.ok{ background:#166534; color:#dcfce7; border:1px solid #22c55e; }
+  .toast.err{ background:#991b1b; color:#fee2e2; border:1px solid #ef4444; }
 
   .result-line{ font-size:12.5px; margin-top:4px; }
   .result-line.ok{ color:var(--green); }
@@ -144,8 +262,8 @@
 <main>
   <div class="notice">
     ⚠️ هذه الصفحة منفصلة تمامًا عن النشر التلقائي — لن تؤثر على الموقع ولا على البناء (build) ولا على العروض الأخرى.
-    استخدمها فقط لو عرض معيّن ظهر على الموقع لكنه <b>لم</b> يُنشر تلقائيًا على تليجرام/فيسبوك/انستجرام لأي سبب.
-    كل زر هنا يتحقق أولًا من سجل النشر الحقيقي على السيرفر، فلن يتكرر النشر إلا لو اخترت "فرض إعادة النشر" بنفسك.
+    استخدمها لو هناك مقال معيّن ظهر على الموقع لكنه <b>لم</b> يُنشر تلقائيًا على أي منصة.
+    يمكنك الآن <b>تحديد عدة عناصر دفعة واحدة</b> والنقر على "نشر المحدد" لإرسالها جميعاً بالترتيب بنقرة واحدة.
   </div>
 
   <div class="filters">
@@ -156,10 +274,38 @@
     <button data-f="unpublished">غير منشور على السوشيال فقط</button>
   </div>
 
+  <div class="selection-controls">
+    <button class="sel-btn" id="select-all-btn">
+      <span>☑️</span> <span id="select-all-text">تحديد كل المعروض</span>
+    </button>
+    <button class="sel-btn" id="select-unpub-btn">
+      <span>⚡</span> <span>تحديد غير المنشور في المعروض</span>
+    </button>
+    <button class="sel-btn clear-btn" id="clear-sel-btn" style="display:none;">
+      <span>✕</span> <span>إلغاء التحديد</span>
+    </button>
+    <span id="sel-summary" style="font-size:12.5px;color:var(--muted);margin-right:auto;"></span>
+  </div>
+
   <div id="status-line">جاري تحميل آخر المحتوى من الموقع...</div>
   <div id="list"></div>
 </main>
 
+<!-- Floating Batch Bar -->
+<div class="batch-bar" id="batch-bar">
+  <div class="info-wrap">
+    <span class="count-badge" id="count-badge">0 محدد</span>
+    <span class="pacing-note">سيتم نشر العناصر المحددة على المنصات المختارة دفعة واحدة</span>
+  </div>
+  <div class="btn-group">
+    <button class="batch-cancel-btn" id="batch-cancel-btn">إلغاء التحديد</button>
+    <button class="batch-publish-btn" id="batch-publish-trigger">
+      🚀 نشر المحدد (<span id="batch-btn-count">0</span>)
+    </button>
+  </div>
+</div>
+
+<!-- Single Item Publish Modal -->
 <div class="overlay" id="overlay">
   <div class="modal">
     <h2 id="modal-title">نشر عنصر</h2>
@@ -180,25 +326,106 @@
   </div>
 </div>
 
+<!-- Batch Publish Modal -->
+<div class="overlay" id="batch-overlay">
+  <div class="modal" style="max-width:520px;">
+    <h2>🚀 نشر جماعي على السوشيال ميديا (<span id="batch-modal-count">0</span> عنصر)</h2>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">
+      اختر المنصات التي ترغب بالنشر عليها للعناصر المحددة:
+    </div>
+
+    <div id="batch-modal-platforms">
+      <div class="plat-row">
+        <label class="switch">
+          <input type="checkbox" class="batch-plat-check" value="telegram" checked />
+          ✈️ تليجرام
+        </label>
+      </div>
+      <div class="plat-row">
+        <label class="switch">
+          <input type="checkbox" class="batch-plat-check" value="facebook" checked />
+          📘 فيسبوك (رابط مباشر مع بطاقة تفاعلية)
+        </label>
+      </div>
+      <div class="plat-row">
+        <label class="switch">
+          <input type="checkbox" class="batch-plat-check" value="instagram" />
+          📸 انستجرام
+        </label>
+      </div>
+      <div class="plat-row">
+        <label class="switch">
+          <input type="checkbox" class="batch-plat-check" value="x" checked />
+          ✖️ اكس (تويتر)
+        </label>
+      </div>
+    </div>
+
+    <label class="switch" style="margin-top:14px;">
+      <input type="checkbox" id="batch-force-check" />
+      فرض إعادة النشر حتى لو منشور بالفعل
+    </label>
+    <div class="force-warning" id="batch-force-warning">
+      تحذير: هذا سيعيد نشر المنشورات مرة أخرى على المنصات المختارة حتى لو كانت منشورة من قبل، مما قد يسبب تكرار البوستات للمتابعين.
+    </div>
+
+    <div style="font-size:12.5px;font-weight:700;color:var(--text);margin-top:14px;">
+      قائمة العناصر المحددة للنشر:
+    </div>
+    <div class="modal-item-list" id="batch-item-list"></div>
+
+    <div class="progress-wrap" id="batch-progress-wrap">
+      <div id="batch-progress-text" style="font-size:12.5px;color:#38bdf8;font-weight:600;"></div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="batch-progress-fill"></div>
+      </div>
+    </div>
+
+    <div id="batch-results" style="max-height:160px;overflow-y:auto;margin-top:10px;"></div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" id="btn-batch-cancel">إلغاء</button>
+      <button class="btn-confirm" id="btn-batch-confirm">🚀 تأكيد وبدء النشر الجماعي</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
 <script>
-  // Same backend the automatic watcher already uses (Cloudflare Worker,
-  // replaces the old Render server) — two endpoints on it built for this page:
-  //   GET  /api/social/status?url=...        -> { telegram, facebook, instagram, x }
-  //   POST /api/social/manual-publish         -> { results: { telegram, facebook, instagram, x } }
-  // غيّر السطر ده لرابط الـ Worker بتاعك بعد الـ deploy (هتلاقيه في
-  // التيرمنال بعد "npx wrangler deploy"، أو من Cloudflare Dashboard):
   const API_BASE = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
   const SITE_ORIGIN = "https://arab-wrestling.com";
 
   const listEl = document.getElementById('list');
   const statusLine = document.getElementById('status-line');
   const overlay = document.getElementById('overlay');
+  const batchOverlay = document.getElementById('batch-overlay');
+  const batchBar = document.getElementById('batch-bar');
+  const countBadge = document.getElementById('count-badge');
+  const batchBtnCount = document.getElementById('batch-btn-count');
+  const selectAllBtn = document.getElementById('select-all-btn');
+  const selectAllText = document.getElementById('select-all-text');
+  const selectUnpubBtn = document.getElementById('select-unpub-btn');
+  const clearSelBtn = document.getElementById('clear-sel-btn');
+  const selSummary = document.getElementById('sel-summary');
+  const toastEl = document.getElementById('toast');
 
   let items = [];
   let currentFilter = 'all';
-  let statusCache = {}; // key: url -> {telegram,facebook,instagram}
+  let statusCache = {};
+  let selectedUrls = new Set();
 
   const platformLabel = { telegram: '✈️ تليجرام', facebook: '📘 فيسبوك', instagram: '📸 انستجرام', x: '✖️ اكس' };
+
+  function showToast(msg, ok = true) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.className = `toast show ${ok ? 'ok' : 'err'}`;
+    setTimeout(() => {
+      toastEl.className = 'toast';
+    }, 4500);
+  }
 
   async function loadItems(){
     try{
@@ -207,7 +434,7 @@
       items = (Array.isArray(data) ? data : [])
         .filter(it => it.kind === 'show' || it.kind === 'recap' || it.kind === 'news' || it.url)
         .sort((a,b) => new Date(b.date || 0) - new Date(a.date || 0))
-        .slice(0, 40);
+        .slice(0, 60);
       statusLine.textContent = `تم تحميل ${items.length} عنصر — جاري التحقق من حالة النشر...`;
       render();
       await loadStatuses();
@@ -229,6 +456,7 @@
       renderCardStatus(it.url);
     }));
     statusLine.textContent = `${items.length} عنصر — الحالة محدّثة`;
+    updateBatchUI();
   }
 
   function badgeHtml(url, platform){
@@ -253,14 +481,19 @@
     const filtered = items.filter(matchesFilter);
     if (!filtered.length){
       listEl.innerHTML = '<div class="empty">لا يوجد محتوى مطابق</div>';
+      updateBatchUI();
       return;
     }
     listEl.innerHTML = filtered.map(it => {
+      const isSelected = selectedUrls.has(it.url);
       const kindLabel = it.kind === 'show' ? 'عرض' : it.kind === 'recap' ? 'ملخص' : 'خبر';
       const img = it.image ? (it.image.startsWith('http') ? it.image : SITE_ORIGIN + it.image) : '/favicon.png';
       const dateStr = it.date ? new Date(it.date).toLocaleDateString('ar-EG') : '';
       return `
-        <div class="card" data-url="${it.url}">
+        <div class="card ${isSelected ? 'selected' : ''}" data-url="${it.url}" onclick="handleCardClick(event, '${it.url}')">
+          <div class="card-check-wrap" onclick="event.stopPropagation()">
+            <input type="checkbox" class="card-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelect('${it.url}', this.checked)" title="تحديد هذا العنصر" />
+          </div>
           <img src="${img}" onerror="this.src='/favicon.png'" />
           <div class="info">
             <p class="title">${(it.title || '').replace(/</g,'&lt;')}</p>
@@ -272,21 +505,113 @@
             ${badgeHtml(it.url, 'instagram')}
             ${badgeHtml(it.url, 'x')}
           </div>
-          <button class="publish-btn" data-url="${it.url}">نشر</button>
+          <button class="publish-btn" data-url="${it.url}" onclick="event.stopPropagation(); openModal(items.find(i => i.url === '${it.url}'));">نشر</button>
         </div>`;
     }).join('');
 
-    listEl.querySelectorAll('.publish-btn').forEach(btn => {
-      btn.onclick = () => openModal(items.find(i => i.url === btn.dataset.url));
-    });
+    updateBatchUI();
   }
 
   function renderCardStatus(url){
     const card = listEl.querySelector(`.card[data-url="${CSS.escape(url)}"]`);
     if (!card) return;
     const badges = card.querySelector('.badges');
-    badges.innerHTML = ['telegram','facebook','instagram','x'].map(p => badgeHtml(url, p)).join('');
+    if (badges) {
+      badges.innerHTML = ['telegram','facebook','instagram','x'].map(p => badgeHtml(url, p)).join('');
+    }
   }
+
+  // ── Selection & Batch UI Logic ──
+  function handleCardClick(e, url){
+    if (e.target.closest('.publish-btn') || e.target.closest('.card-check-wrap')) return;
+    const isSel = !selectedUrls.has(url);
+    toggleSelect(url, isSel);
+  }
+
+  function toggleSelect(url, checked){
+    if (checked) {
+      selectedUrls.add(url);
+    } else {
+      selectedUrls.delete(url);
+    }
+    updateBatchUI();
+  }
+
+  function toggleSelectAll(){
+    const filtered = items.filter(matchesFilter);
+    const allSel = filtered.length > 0 && filtered.every(it => selectedUrls.has(it.url));
+    if (allSel) {
+      filtered.forEach(it => selectedUrls.delete(it.url));
+    } else {
+      filtered.forEach(it => selectedUrls.add(it.url));
+    }
+    updateBatchUI();
+  }
+
+  function selectUnpublished(){
+    const filtered = items.filter(matchesFilter);
+    let addedCount = 0;
+    filtered.forEach(it => {
+      const st = statusCache[it.url];
+      const isComplete = st && st.telegram && st.facebook && st.instagram && st.x;
+      if (!isComplete) {
+        selectedUrls.add(it.url);
+        addedCount++;
+      }
+    });
+    updateBatchUI();
+    showToast(`تم تحديد ${addedCount} عنصر غير مكتمل النشر`);
+  }
+
+  function clearSelection(){
+    selectedUrls.clear();
+    updateBatchUI();
+  }
+
+  function updateBatchUI(){
+    const count = selectedUrls.size;
+    const filtered = items.filter(matchesFilter);
+    const allSel = filtered.length > 0 && filtered.every(it => selectedUrls.has(it.url));
+
+    if (selectAllBtn && selectAllText) {
+      if (allSel && filtered.length > 0) {
+        selectAllBtn.classList.add('active-all');
+        selectAllText.textContent = `إلغاء تحديد المعروض (${filtered.length})`;
+      } else {
+        selectAllBtn.classList.remove('active-all');
+        selectAllText.textContent = filtered.length > 0 ? `تحديد كل المعروض (${filtered.length})` : 'تحديد كل المعروض';
+      }
+    }
+
+    if (clearSelBtn) {
+      clearSelBtn.style.display = count > 0 ? 'inline-flex' : 'none';
+    }
+
+    if (selSummary) {
+      selSummary.textContent = count > 0 ? `تم تحديد ${count} عنصر` : '';
+    }
+
+    if (count > 0) {
+      batchBar.classList.add('visible');
+      countBadge.textContent = `${count} محدد`;
+      batchBtnCount.textContent = count;
+    } else {
+      batchBar.classList.remove('visible');
+    }
+
+    listEl.querySelectorAll('.card').forEach(card => {
+      const url = card.dataset.url;
+      const isSel = selectedUrls.has(url);
+      card.classList.toggle('selected', isSel);
+      const chk = card.querySelector('.card-checkbox');
+      if (chk) chk.checked = isSel;
+    });
+  }
+
+  selectAllBtn.onclick = toggleSelectAll;
+  selectUnpubBtn.onclick = selectUnpublished;
+  clearSelBtn.onclick = clearSelection;
+  document.getElementById('batch-cancel-btn').onclick = clearSelection;
 
   document.querySelectorAll('.filters button').forEach(btn => {
     btn.onclick = () => {
@@ -297,12 +622,13 @@
     };
   });
 
-  // ---- Modal ----
+  // ── Single Item Modal ──
   let modalItem = null;
   const forceCheck = document.getElementById('force-check');
   const forceWarning = document.getElementById('force-warning');
 
   function openModal(item){
+    if (!item) return;
     modalItem = item;
     document.getElementById('modal-title').textContent = 'نشر: ' + (item.title || '');
     document.getElementById('modal-results').innerHTML = '';
@@ -329,7 +655,6 @@
 
   document.getElementById('btn-cancel').onclick = () => overlay.classList.remove('open');
   overlay.onclick = (e) => { if (e.target === overlay) overlay.classList.remove('open'); };
-
   forceCheck.onchange = () => forceWarning.classList.toggle('show', forceCheck.checked);
 
   document.getElementById('btn-confirm').onclick = async () => {
@@ -371,7 +696,7 @@
           const rawDetail = data.debug && data.debug[platform] ? `<pre style="white-space:pre-wrap; font-size:11px; opacity:0.75; margin:4px 0 0;">${JSON.stringify(data.debug[platform]).replace(/</g,'&lt;')}</pre>` : '';
           return `<div class="result-line fail">❌ ${label}: فشل النشر${rawDetail}</div>`;
         }).join('');
-        // refresh this item's status + badges
+
         try{
           const r = await fetch(`${API_BASE}/api/social/status?url=${encodeURIComponent(SITE_ORIGIN + modalItem.url)}`);
           statusCache[modalItem.url] = await r.json();
@@ -384,6 +709,136 @@
       btn.disabled = false;
       btn.textContent = 'تأكيد النشر';
     }
+  };
+
+  // ── Batch Modal Handling ──
+  const batchPublishTrigger = document.getElementById('batch-publish-trigger');
+  const batchForceCheck = document.getElementById('batch-force-check');
+  const batchForceWarning = document.getElementById('batch-force-warning');
+  const batchItemList = document.getElementById('batch-item-list');
+  const btnBatchCancel = document.getElementById('btn-batch-cancel');
+  const btnBatchConfirm = document.getElementById('btn-batch-confirm');
+  const batchProgressWrap = document.getElementById('batch-progress-wrap');
+  const batchProgressText = document.getElementById('batch-progress-text');
+  const batchProgressFill = document.getElementById('batch-progress-fill');
+  const batchResults = document.getElementById('batch-results');
+
+  batchForceCheck.onchange = () => batchForceWarning.classList.toggle('show', batchForceCheck.checked);
+
+  batchPublishTrigger.onclick = () => {
+    if (selectedUrls.size === 0) return;
+    const selectedList = items.filter(it => selectedUrls.has(it.url));
+    document.getElementById('batch-modal-count').textContent = selectedList.length;
+    batchForceCheck.checked = false;
+    batchForceWarning.classList.remove('show');
+    batchProgressWrap.classList.remove('show');
+    batchResults.innerHTML = '';
+    btnBatchConfirm.disabled = false;
+    btnBatchCancel.disabled = false;
+    btnBatchConfirm.textContent = `🚀 تأكيد وبدء النشر الجماعي (${selectedList.length})`;
+
+    batchItemList.innerHTML = selectedList.map((it, idx) => `
+      <div class="modal-item-row" id="batch-row-${idx}">
+        <span class="status-icon">⏹️</span>
+        <span class="item-title">${(it.title || '').replace(/</g,'&lt;')}</span>
+      </div>
+    `).join('');
+
+    batchOverlay.classList.add('open');
+  };
+
+  btnBatchCancel.onclick = () => batchOverlay.classList.remove('open');
+  batchOverlay.onclick = (e) => { if (e.target === batchOverlay && !btnBatchConfirm.disabled) batchOverlay.classList.remove('open'); };
+
+  btnBatchConfirm.onclick = async () => {
+    const selectedList = items.filter(it => selectedUrls.has(it.url));
+    if (!selectedList.length) return;
+
+    const platforms = Array.from(document.querySelectorAll('.batch-plat-check:checked')).map(c => c.value);
+    if (!platforms.length){
+      alert('اختر منصة واحدة على الأقل');
+      return;
+    }
+
+    const force = batchForceCheck.checked;
+    const total = selectedList.length;
+
+    btnBatchConfirm.disabled = true;
+    btnBatchCancel.disabled = true;
+    batchProgressWrap.classList.add('show');
+    batchResults.innerHTML = '';
+
+    let successCount = 0;
+    let failCount = 0;
+
+    for (let i = 0; i < total; i++) {
+      const item = selectedList[i];
+      const itemRow = document.getElementById(`batch-row-${i}`);
+      if (itemRow) {
+        itemRow.style.color = '#38bdf8';
+        itemRow.querySelector('.status-icon').textContent = '⏳';
+      }
+
+      batchProgressText.textContent = `جاري نشر (${i + 1} من ${total}): ${item.title}`;
+      batchProgressFill.style.width = `${Math.round(((i + 1) / total) * 100)}%`;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/social/manual-publish`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: item.title,
+            text: item.headline || item.description || '',
+            url: SITE_ORIGIN + (item.url || ''),
+            image: item.image,
+            kind: item.kind,
+            platforms,
+            force
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          successCount++;
+          if (itemRow) {
+            itemRow.style.color = 'var(--green)';
+            itemRow.querySelector('.status-icon').textContent = '✅';
+          }
+          try {
+            const r = await fetch(`${API_BASE}/api/social/status?url=${encodeURIComponent(SITE_ORIGIN + item.url)}`);
+            statusCache[item.url] = await r.json();
+            renderCardStatus(item.url);
+          } catch (e) {}
+        } else {
+          failCount++;
+          if (itemRow) {
+            itemRow.style.color = 'var(--red)';
+            itemRow.querySelector('.status-icon').textContent = '❌';
+          }
+        }
+      } catch (e) {
+        failCount++;
+        if (itemRow) {
+          itemRow.style.color = 'var(--red)';
+          itemRow.querySelector('.status-icon').textContent = '❌';
+        }
+      }
+
+      if (i < total - 1) {
+        await new Promise(r => setTimeout(r, 400));
+      }
+    }
+
+    batchProgressText.textContent = `اكتمل النشر الجماعي! تم بنجاح: ${successCount} • فشل: ${failCount}`;
+    btnBatchConfirm.disabled = false;
+    btnBatchCancel.disabled = false;
+    btnBatchConfirm.textContent = 'إغلاق النافذة';
+    btnBatchConfirm.onclick = () => {
+      batchOverlay.classList.remove('open');
+      clearSelection();
+      btnBatchConfirm.textContent = '🚀 تأكيد وبدء النشر الجماعي';
+    };
+
+    showToast(`✅ اكتمل النشر الجماعي (${successCount} بنجاح / ${failCount} فشل)`);
   };
 
   loadItems();
