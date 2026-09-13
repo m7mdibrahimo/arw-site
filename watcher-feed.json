@@ -1,5 +1,25 @@
 [
   {
+    "id": 328240,
+    "link": "https://www.fightful.com/wrestling/nattie-responds-to-people-claiming-her-current-character-is-trying-to-be-like-ronda-rousey/",
+    "date": "2026-09-13T11:29:07",
+    "date_gmt": "2026-09-13T15:29:07",
+    "title": {
+      "rendered": "Nattie Responds To People Claiming Her Current Character Is &#8216;Trying To Be Like Ronda Rousey&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/12080241/maxresdefault-95.jpg"
+  },
+  {
+    "id": 328259,
+    "link": "https://www.fightful.com/wrestling/ric-flair-clarifies-that-comments-about-him-returning-to-wwe-which-were-made-in-2023-are-not-true/",
+    "date": "2026-09-13T11:27:15",
+    "date_gmt": "2026-09-13T15:27:15",
+    "title": {
+      "rendered": "Ric Flair Clarifies That Comments About Him Returning To WWE, Which Were Made In 2023, Are Not True"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/11/27213240/ric_flair_aew_1.jpg"
+  },
+  {
     "id": 328244,
     "link": "https://www.fightful.com/wrestling/nattie-comments-on-andy-williams-passing-says-it-reminded-her-of-the-loss-of-owen-hart/",
     "date": "2026-09-13T11:05:20",
@@ -278,25 +298,5 @@
       "rendered": "Michael &#8216;Venom&#8217; Page Departs UFC"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12192528/Screenshot-452-e1789255548161.png"
-  },
-  {
-    "id": 328125,
-    "link": "https://www.fightful.com/wrestling/tony-khan-says-andy-williams-had-been-in-talks-with-aew-in-recent-weeks-about-doing-things-outside-the-ring/",
-    "date": "2026-09-12T19:27:48",
-    "date_gmt": "2026-09-12T23:27:48",
-    "title": {
-      "rendered": "Tony Khan Says Andy Williams Had Been In Talks With AEW In Recent Weeks About Doing Things Outside The Ring"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/06085037/05-orange-cassidy-vs-the-butcher_2023_03_29_aew_dynamite_0021-scaled-e1788699060466.jpg"
-  },
-  {
-    "id": 328064,
-    "link": "https://www.fightful.com/wrestling/aew-collision-results-9-12-2026-tribute-to-the-butcher-andy-williams/",
-    "date": "2026-09-12T19:15:00",
-    "date_gmt": "2026-09-12T23:15:00",
-    "title": {
-      "rendered": "AEW Collision Results (9/12/2026): Tribute to &#8220;The Butcher&#8221; Andy Williams, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12112455/HR-0QAiasAAYi_n.jpeg"
   }
 ]
