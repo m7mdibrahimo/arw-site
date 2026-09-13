@@ -2,7 +2,7 @@ name: Fightful News Auto Watcher
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Runs every 15 minutes
+    - cron: '7,22,37,52 * * * *' # Runs every 15 minutes at off-peak minutes (avoids global :00/:15/:30/:45 runner queue delays)
   workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab or Admin page
     inputs:
       post_url:
