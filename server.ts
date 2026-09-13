@@ -148,6 +148,48 @@ app.post("/api/push/unsubscribe", (req, res) => {
   res.json({ success: true });
 });
 
+// Pinned Spotlight Items API
+const PINNED_FILE = path.join(process.cwd(), "_data", "pinned.json");
+
+app.get("/api/pinned", (req, res) => {
+  try {
+    if (fs.existsSync(PINNED_FILE)) {
+      const data = JSON.parse(fs.readFileSync(PINNED_FILE, "utf-8"));
+      return res.json(data);
+    }
+    return res.json([]);
+  } catch (e) {
+    console.error("[Pinned API] Read error:", e);
+    return res.status(500).json({ error: "Failed to read pinned data" });
+  }
+});
+
+app.post("/api/pinned", (req, res) => {
+  try {
+    const items = req.body;
+    if (!Array.isArray(items)) {
+      return res.status(400).json({ error: "Expected array of pinned items" });
+    }
+    fs.writeFileSync(PINNED_FILE, JSON.stringify(items, null, 2), "utf-8");
+
+    // Copy to _site/data/pinned.json as well for static serving
+    const siteDataDir = path.join(process.cwd(), "_site", "data");
+    if (!fs.existsSync(siteDataDir)) fs.mkdirSync(siteDataDir, { recursive: true });
+    fs.writeFileSync(path.join(siteDataDir, "pinned.json"), JSON.stringify(items, null, 2), "utf-8");
+
+    // Asynchronously trigger eleventy build to update index.html
+    exec("npx @11ty/eleventy --quiet", (err) => {
+      if (err) console.error("[Pinned API] Eleventy rebuild error:", err);
+      else console.log("[Pinned API] Eleventy rebuild complete after pinned update.");
+    });
+
+    return res.json({ success: true, count: items.length });
+  } catch (e) {
+    console.error("[Pinned API] Save error:", e);
+    return res.status(500).json({ error: "Failed to save pinned data" });
+  }
+});
+
 // Helper to send push notification to all subscribers (SHOWS & RECAPS ONLY)
 async function sendPushToAllSubscribers(data: {
   title: string;

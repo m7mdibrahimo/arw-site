@@ -157,10 +157,10 @@ section.content{ padding:40px 24px 70px; }
 .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
 .grid-12 > *{ grid-column:span 3; }
 @media (max-width:900px){ .grid-12 > *{ grid-column:span 6; } }
-@media (max-width:560px){ .grid-12 > *{ grid-column:span 12; } }
+@media (max-width:560px){ .grid-12 > *{ grid-column:span 6; } }
 .feds-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 @media (max-width:700px){ .feds-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:420px){ .feds-grid{ grid-template-columns:1fr; } }
+@media (max-width:420px){ .feds-grid{ grid-template-columns:repeat(2,1fr); } }
 /* Federation Cards & Animations */
 .fed-card{ display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; box-shadow:0 6px 16px -12px rgba(30,37,48,.15); position:relative; }
 .fed-card:hover{ transform:translateY(-8px) scale(1.02); box-shadow:0 20px 36px -16px rgba(14,149,148,.3); border-color:var(--teal); }
@@ -290,6 +290,742 @@ gap:8px 8px; padding-top:4px;
 #navMenu li.utility-row .telegram-btn{ order:3; }
 #navMenu .theme-toggle, #navMenu .telegram-btn{ width:40px; height:40px; }
 }
+
+/* ===== Spotlight Cinematic Hero (النمط السينمائي الفاخر للمواضيع المثبتة) ===== */
+.spotlight-section {
+  padding: 28px 20px 20px;
+  position: relative;
+  z-index: 5;
+}
+.spotlight-container {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 420px;
+  background: #0d131f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+.spotlight-container.is-dragging {
+  cursor: grabbing;
+}
+.spotlight-container * {
+  -webkit-user-drag: none;
+}
+html.arw-dark .spotlight-container {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 26px 70px -15px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.spotlight-ambient-glow {
+  position: absolute;
+  inset: -25px;
+  border-radius: 36px;
+  filter: blur(70px);
+  opacity: 0.32;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
+
+.glow-wwe { background: radial-gradient(circle at 75% 50%, rgba(225, 45, 30, 0.85) 0%, transparent 65%); }
+.glow-aew { background: radial-gradient(circle at 75% 50%, rgba(235, 195, 55, 0.85) 0%, transparent 65%); }
+.glow-tna { background: radial-gradient(circle at 75% 50%, rgba(145, 95, 240, 0.85) 0%, transparent 65%); }
+.glow-roh { background: radial-gradient(circle at 75% 50%, rgba(50, 110, 220, 0.85) 0%, transparent 65%); }
+.glow-mma { background: radial-gradient(circle at 75% 50%, rgba(235, 125, 40, 0.85) 0%, transparent 65%); }
+.glow-indie { background: radial-gradient(circle at 75% 50%, rgba(30, 160, 130, 0.85) 0%, transparent 65%); }
+
+/* Slides Viewport */
+.spotlight-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.spotlight-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.7s ease;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+.spotlight-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Full Clickable Area Link */
+.spotlight-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  cursor: pointer;
+}
+
+/* Background Image positioned strictly to the LEFT */
+.spotlight-bg-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background: #0d131f;
+}
+.spotlight-bg-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 62%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transform: scale(1);
+  transition: transform 7s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+.spotlight-slide.active .spotlight-bg-img {
+  transform: scale(1.045);
+}
+
+/* Floating Play Icon for Shows */
+.spotlight-play-float {
+  position: absolute;
+  top: 50%;
+  left: 26%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(13, 19, 31, 0.65);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(14, 149, 148, 0.3);
+  z-index: 2;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.spotlight-slide:hover .spotlight-play-float {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--teal);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 16px 40px rgba(14, 149, 148, 0.65);
+}
+
+/* Gradient Overlay: Seamlessly blends the right empty space into the image so it feels like one natural photo */
+.spotlight-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to left, 
+      #0d131f 0%, 
+      #0d131f 36%, 
+      rgba(13, 19, 31, 0.88) 48%, 
+      rgba(13, 19, 31, 0.45) 58%, 
+      rgba(13, 19, 31, 0.08) 72%, 
+      transparent 85%),
+    linear-gradient(to top, 
+      rgba(13, 19, 31, 0.88) 0%, 
+      rgba(13, 19, 31, 0.2) 25%, 
+      transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Slide Content on the RIGHT (RTL) */
+.spotlight-content {
+  position: relative;
+  z-index: 2;
+  padding: 42px 52px 46px;
+  max-width: 640px;
+  text-align: right;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Fluid Staggered Entrance Motion */
+.spotlight-slide .spotlight-badges,
+.spotlight-slide .spotlight-title-group,
+.spotlight-slide .spotlight-actions {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.spotlight-slide.active .spotlight-badges {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+.spotlight-slide.active .spotlight-title-group {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.18s;
+}
+.spotlight-slide.active .spotlight-actions {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.26s;
+}
+
+/* Meta Badges */
+.spotlight-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+.spotlight-pill {
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+}
+
+.fed-pill-wwe { background: rgba(225, 45, 30, 0.22); color: #ff786b; border: 1px solid rgba(225, 45, 30, 0.45); }
+.fed-pill-aew { background: rgba(235, 195, 55, 0.22); color: #fbbf24; border: 1px solid rgba(235, 195, 55, 0.45); }
+.fed-pill-tna { background: rgba(145, 95, 240, 0.22); color: #c4b5fd; border: 1px solid rgba(145, 95, 240, 0.45); }
+.fed-pill-roh { background: rgba(50, 110, 220, 0.22); color: #93c5fd; border: 1px solid rgba(50, 110, 220, 0.45); }
+.fed-pill-mma { background: rgba(235, 125, 40, 0.22); color: #fdba74; border: 1px solid rgba(235, 125, 40, 0.45); }
+.fed-pill-indie { background: rgba(30, 160, 130, 0.22); color: #5eead4; border: 1px solid rgba(30, 160, 130, 0.45); }
+
+.type-pill {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+}
+.custom-badge {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(239, 68, 68, 0.3));
+  color: #fef08a;
+  border: 1px solid rgba(245, 158, 11, 0.55);
+  font-weight: 900;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.2);
+}
+
+/* Headline & Secondary Title */
+.spotlight-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spotlight-title {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 1.38;
+  letter-spacing: -0.4px;
+}
+.spotlight-title-text {
+  color: #ffffff;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.85);
+  transition: color 0.25s ease;
+}
+.spotlight-slide:hover .spotlight-title-text {
+  color: #38bdf8;
+}
+.spotlight-subtitle {
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+  display: block;
+  width: 100%;
+  text-align: right;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Actions CTA Button */
+.spotlight-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+.spotlight-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--teal), #0d9488);
+  color: #ffffff !important;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
+  font-size: 14.5px;
+  padding: 11px 24px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 24px rgba(14, 149, 148, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: 0.6s ease;
+}
+.spotlight-slide:hover .spotlight-cta-btn::after {
+  left: 140%;
+}
+.spotlight-slide:hover .spotlight-cta-btn {
+  background: linear-gradient(135deg, #0d9488, var(--teal));
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 30px rgba(14, 149, 148, 0.55);
+}
+.spotlight-cta-btn svg {
+  transition: transform 0.25s ease;
+}
+.spotlight-slide:hover .spotlight-cta-btn svg {
+  transform: translateX(-4px);
+}
+
+/* Minimalist Bottom Progress Lines, Navigation & Counter */
+.spotlight-bottom-bar {
+  position: absolute;
+  bottom: 18px;
+  left: 26px;
+  right: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  pointer-events: none;
+}
+.spotlight-bars-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+.spotlight-bar-seg {
+  width: 34px;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+.spotlight-bar-seg:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+.spotlight-bar-seg.active {
+  width: 56px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.spotlight-bar-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--teal);
+  border-radius: 4px;
+}
+.spotlight-bar-seg.active .spotlight-bar-fill {
+  background: linear-gradient(90deg, var(--teal), #38bdf8);
+}
+
+.spotlight-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+.spotlight-nav-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  background: rgba(15, 20, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.spotlight-nav-btn:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(14, 149, 148, 0.45);
+}
+.spotlight-nav-btn:active {
+  transform: scale(0.92);
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 860px) {
+  .spotlight-section {
+    padding: 20px 16px 16px;
+  }
+  .spotlight-container {
+    height: 400px;
+    border-radius: 20px;
+  }
+  .spotlight-slide {
+    align-items: flex-end;
+  }
+  .spotlight-bg-img {
+    width: 100%;
+    object-position: center 15%;
+  }
+  .spotlight-gradient-overlay {
+    background: 
+      linear-gradient(to top, 
+        rgba(13, 19, 31, 0.98) 0%, 
+        rgba(13, 19, 31, 0.92) 50%, 
+        rgba(13, 19, 31, 0.45) 75%, 
+        rgba(13, 19, 31, 0.1) 90%, 
+        transparent 100%),
+      linear-gradient(to left, rgba(13, 19, 31, 0.5) 0%, transparent 60%);
+  }
+  .spotlight-content {
+    padding: 24px 22px 60px;
+    max-width: 100%;
+    gap: 14px;
+  }
+  .spotlight-title {
+    font-size: 23px;
+    line-height: 1.35;
+  }
+  .spotlight-subtitle {
+    font-size: 14px;
+  }
+  .spotlight-play-float {
+    display: none;
+  }
+  .spotlight-bottom-bar {
+    bottom: 15px;
+    left: 18px;
+    right: 18px;
+  }
+}
+
+@media (max-width: 580px) {
+  .spotlight-section {
+    padding: 12px 10px 14px;
+  }
+  .spotlight-container {
+    height: 425px;
+    border-radius: 16px;
+  }
+  .spotlight-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: #0d131f;
+  }
+  .spotlight-ambient-glow {
+    display: none;
+  }
+  .spotlight-bg-wrap {
+    position: relative;
+    width: 100%;
+    height: 205px;
+    flex-shrink: 0;
+    background: #0d131f;
+    overflow: hidden;
+  }
+  .spotlight-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+  }
+  .spotlight-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #0d131f 0%, rgba(13, 19, 31, 0.4) 18%, transparent 40%);
+  }
+  .spotlight-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: right;
+    padding: 12px 16px 52px;
+    background: #0d131f;
+    box-sizing: border-box;
+    max-width: 100%;
+    gap: 10px;
+  }
+  .spotlight-badges {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 6px;
+  }
+  .spotlight-pill {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  .spotlight-title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    text-align: right;
+    gap: 4px;
+  }
+  .spotlight-title {
+    font-size: 18px;
+    line-height: 1.34;
+    text-align: right;
+    width: 100%;
+  }
+  .spotlight-subtitle {
+    font-size: 12.5px;
+    text-align: right;
+    width: 100%;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+  .spotlight-actions {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 2px;
+  }
+  .spotlight-cta-btn {
+    align-self: flex-start;
+    padding: 7px 16px;
+    font-size: 12.5px;
+    border-radius: 9px;
+  }
+  .spotlight-bottom-bar {
+    bottom: 12px;
+    left: 14px;
+    right: 14px;
+  }
+  .spotlight-bars-wrap {
+    gap: 5px;
+  }
+  .spotlight-bar-seg {
+    width: 20px;
+    height: 3.5px;
+  }
+  .spotlight-bar-seg.active {
+    width: 36px;
+  }
+  .spotlight-nav-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+  .spotlight-nav-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ===== Mobile 2-Column Cards & Proportional Tuning (عرض موضوعين متجاورين وتعديل الأحجام) ===== */
+@media (max-width: 680px) {
+  section.content {
+    padding: 24px 12px 38px !important;
+  }
+  .wrap {
+    padding: 0 !important;
+  }
+  .section-head {
+    margin-bottom: 14px !important;
+    gap: 6px !important;
+  }
+  .section-head h2 {
+    font-size: 19px !important;
+    letter-spacing: 0 !important;
+    gap: 8px !important;
+  }
+  .section-head p {
+    font-size: 12px !important;
+    margin-top: 3px !important;
+  }
+  .grid-12 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .grid-12 > * {
+    grid-column: span 1 !important;
+  }
+  .show-card, .news-card {
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 14px -6px rgba(0,0,0,0.08) !important;
+    display: block !important;
+  }
+  .show-thumb, .news-thumb {
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+  .play-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .play-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .show-body, .news-body {
+    padding: 9px 10px 11px !important;
+    display: block !important;
+  }
+  .kind-badge, .cat, .fed-badge {
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: fit-content !important;
+    font-size: 9.5px !important;
+    padding: 2px 7px !important;
+    margin-bottom: 5px !important;
+    margin-inline-end: 4px !important;
+    line-height: 1.3 !important;
+    border-radius: 999px !important;
+  }
+  .show-body h3, .news-body h3 {
+    font-size: 12.5px !important;
+    font-weight: 800 !important;
+    line-height: 1.36 !important;
+    margin: 2px 0 5px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .show-body .desc, .news-body p {
+    font-size: 10.5px !important;
+    line-height: 1.42 !important;
+    margin-bottom: 7px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .show-body .foot, .news-body .date {
+    font-size: 10px !important;
+    padding-top: 7px !important;
+    margin-top: auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    border-top: 1px solid var(--line) !important;
+  }
+  .feds-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 9px !important;
+  }
+  .fed-card {
+    border-radius: 13px !important;
+  }
+  .fed-mark {
+    height: 68px !important;
+    font-size: 20px !important;
+  }
+  .fed-card .info {
+    padding: 8px 10px !important;
+  }
+  .fed-card .info p {
+    font-size: 11px !important;
+  }
+  .view-all {
+    font-size: 12px !important;
+    padding: 8px 16px !important;
+  }
+  .hero {
+    padding: 44px 16px 36px !important;
+  }
+  .hero h1 {
+    font-size: clamp(23px, 6.8vw, 30px) !important;
+    line-height: 1.28 !important;
+    margin-bottom: 12px !important;
+  }
+  .hero p {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+  }
+  .eyebrow {
+    font-size: 11.5px !important;
+    padding: 5px 14px !important;
+    margin-bottom: 14px !important;
+  }
+  .cta-row {
+    gap: 8px !important;
+  }
+  .cta-row .btn {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
+  .quicknav {
+    margin-top: 24px !important;
+    gap: 8px !important;
+  }
+  .qn {
+    padding: 9px 14px !important;
+    font-size: 12.5px !important;
+    border-radius: 11px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  section.content {
+    padding: 20px 8px 32px !important;
+  }
+  .grid-12 {
+    gap: 8px !important;
+  }
+  .show-body, .news-body {
+    padding: 8px 8px 10px !important;
+  }
+  .show-body h3, .news-body h3 {
+    font-size: 12px !important;
+  }
+  .show-body .desc, .news-body p {
+    font-size: 10px !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -346,6 +1082,102 @@ gap:8px 8px; padding-top:4px;
 <a href="#news" class="qn"><span class="dot" style="background:var(--coral)"></span>آخر الأخبار</a>
 </div>
 </div>
+
+{% if pinned and pinned.length > 0 %}
+<section class="spotlight-section" id="spotlight-wrap">
+<div class="wrap">
+<div class="spotlight-container reveal is-visible" id="spotlightHero" data-slide-count="{{ pinned.length }}">
+<!-- Dynamic Ambient Background Glow -->
+<div class="spotlight-ambient-glow glow-{{ (pinned[0].federation or 'wwe') | lower }}" id="spotlightAmbientGlow"></div>
+
+<!-- Slides Viewport -->
+<div class="spotlight-viewport" id="spotlightViewport">
+  {% for item in pinned %}
+  {% set fedLower = (item.federation or "wwe") | lower %}
+  <div class="spotlight-slide {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" data-fed="{{ fedLower }}">
+    <!-- Full-Bleed Background Image (Anchored Left) -->
+    <div class="spotlight-bg-wrap">
+      <img src="{% optImg item.image, '/content/images/jtct9rkqmcshcyh6.jpg' %}" alt="{{ item.title }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}" class="spotlight-bg-img" />
+      <div class="spotlight-gradient-overlay"></div>
+    </div>
+    
+    {% if item.kind == 'show' or item.kind == 'recap' %}
+    <div class="spotlight-play-float" title="مشاهدة العرض">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+    </div>
+    {% endif %}
+
+    <!-- Entire Card Clickable Link -->
+    <a href="{{ item.url | cleanUrl }}" class="spotlight-card-link" aria-label="{{ item.title }}"></a>
+
+    <!-- Hero Text & Content (Right in RTL) -->
+    <div class="spotlight-content">
+      <div class="spotlight-badges">
+        <span class="spotlight-pill fed-pill-{{ fedLower }}">{{ item.federation or "WWE" }}</span>
+        <span class="spotlight-pill type-pill">{{ item.kindLabel or "خبر" }}</span>
+        {% if item.badge and ('مثبت' not in item.badge) %}
+        <span class="spotlight-pill custom-badge">{{ item.badge }}</span>
+        {% endif %}
+      </div>
+
+      {% set showSub = item.subtitle %}
+      {% if not showSub and (item.kind == 'show' or item.kindLabel == 'عرض كامل' or item.kindLabel == 'عرض') %}
+        {% for s in collections.shows %}
+          {% if (s.url | cleanUrl) == (item.url | cleanUrl) %}
+            {% if s.data.headline and s.data.title and s.data.headline != s.data.title %}
+              {% set showSub = s.data.title %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <div class="spotlight-title-group">
+        <h2 class="spotlight-title">
+          <span class="spotlight-title-text">{{ item.title }}</span>
+        </h2>
+        {% if (item.kind == 'show' or item.kindLabel == 'عرض كامل' or item.kindLabel == 'عرض') and showSub %}
+        <div class="spotlight-subtitle" dir="ltr">{{ showSub }}</div>
+        {% endif %}
+      </div>
+
+      <div class="spotlight-actions">
+        <span class="spotlight-cta-btn">
+          <span>{% if item.kind == 'show' or item.kind == 'recap' %}شاهد العرض الآن{% else %}اقرأ التفاصيل كاملة{% endif %}</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Minimalist Bottom Control Bar -->
+<div class="spotlight-bottom-bar">
+  <!-- Right side (in RTL): Progress Line Indicators -->
+  <div class="spotlight-bars-wrap">
+    {% for item in pinned %}
+    <button type="button" class="spotlight-bar-seg {% if loop.first %}active{% endif %}" data-target="{{ loop.index0 }}" aria-label="الشريحة {{ loop.index }}">
+      <span class="spotlight-bar-fill"></span>
+    </button>
+    {% endfor %}
+  </div>
+
+  <!-- Left side (in RTL): Compact Navigation Controls -->
+  <div class="spotlight-nav-group">
+    <button type="button" class="spotlight-nav-btn spotlight-prev" id="spotlightPrevBtn" aria-label="السابق" title="الشريحة السابقة">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <button type="button" class="spotlight-nav-btn spotlight-next" id="spotlightNextBtn" aria-label="التالي" title="الشريحة التالية">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+  </div>
+</div>
+
+</div>
+</div>
+</section>
+{% endif %}
+
 <section class="content" id="feds">
 <div class="wrap">
 <div class="section-head reveal">
@@ -535,6 +1367,184 @@ requestAnimationFrame(onScroll);
 ticking = true;
 }
 }, {passive:true});
+})();
+</script>
+<script>
+(function(){
+  const hero = document.getElementById('spotlightHero');
+  if(!hero) return;
+  const viewport = document.getElementById('spotlightViewport');
+  const slides = Array.from(hero.querySelectorAll('.spotlight-slide'));
+  const barSegs = Array.from(hero.querySelectorAll('.spotlight-bar-seg'));
+  const glow = document.getElementById('spotlightAmbientGlow');
+  const prevBtn = document.getElementById('spotlightPrevBtn');
+  const nextBtn = document.getElementById('spotlightNextBtn');
+
+  if(slides.length === 0) return;
+
+  let currentIndex = 0;
+  const total = slides.length;
+  const DURATION = 6500;
+  let startTime = Date.now();
+  let animFrame = null;
+  let isPaused = false;
+
+  function updateSlide(idx) {
+    currentIndex = (idx + total) % total;
+
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === currentIndex);
+    });
+
+    barSegs.forEach((bar, i) => {
+      const isActive = (i === currentIndex);
+      bar.classList.toggle('active', isActive);
+      const fill = bar.querySelector('.spotlight-bar-fill');
+      if (fill) fill.style.width = '0%';
+    });
+
+    const fed = slides[currentIndex].getAttribute('data-fed') || 'wwe';
+    if(glow) {
+      glow.className = `spotlight-ambient-glow glow-${fed}`;
+    }
+
+    startTime = Date.now();
+  }
+
+  function startAutoplay() {
+    cancelAnimationFrame(animFrame);
+    startTime = Date.now();
+
+    function tick() {
+      if (!isPaused) {
+        const elapsed = Date.now() - startTime;
+        const pct = Math.min((elapsed / DURATION) * 100, 100);
+        const activeBar = barSegs[currentIndex];
+        if (activeBar) {
+          const fill = activeBar.querySelector('.spotlight-bar-fill');
+          if (fill) fill.style.width = `${pct}%`;
+        }
+
+        if (elapsed >= DURATION) {
+          updateSlide(currentIndex + 1);
+        }
+      }
+      animFrame = requestAnimationFrame(tick);
+    }
+    animFrame = requestAnimationFrame(tick);
+  }
+
+  barSegs.forEach((bar, idx) => {
+    bar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateSlide(idx);
+    });
+  });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      updateSlide(currentIndex - 1);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      updateSlide(currentIndex + 1);
+    });
+  }
+
+  hero.addEventListener('mouseenter', () => { isPaused = true; });
+  hero.addEventListener('mouseleave', () => { isPaused = false; startTime = Date.now(); });
+
+  // Unified Drag & Swipe Support (الشد بالماوس وباللمس)
+  let isPointerDown = false;
+  let startX = 0;
+  let moveX = 0;
+  let isDraggingGesture = false;
+
+  hero.addEventListener('dragstart', (e) => {
+    e.preventDefault();
+    return false;
+  });
+
+  hero.addEventListener('pointerdown', (e) => {
+    if (e.button !== undefined && e.button !== 0) return;
+    if (e.target.closest('#spotlightPrevBtn') || e.target.closest('#spotlightNextBtn') || e.target.closest('.spotlight-bar-seg')) return;
+
+    isPointerDown = true;
+    isDraggingGesture = false;
+    isPaused = true;
+    startX = e.clientX;
+    moveX = 0;
+    hero.classList.add('is-dragging');
+
+    try {
+      hero.setPointerCapture(e.pointerId);
+    } catch (_) {}
+  });
+
+  hero.addEventListener('pointermove', (e) => {
+    if (!isPointerDown) return;
+    moveX = e.clientX - startX;
+
+    if (Math.abs(moveX) > 10) {
+      isDraggingGesture = true;
+    }
+  });
+
+  function handlePointerUp(e) {
+    if (!isPointerDown) return;
+    isPointerDown = false;
+    hero.classList.remove('is-dragging');
+    isPaused = false;
+    startTime = Date.now();
+
+    try {
+      if (e.pointerId !== undefined) {
+        hero.releasePointerCapture(e.pointerId);
+      }
+    } catch (_) {}
+
+    if (isDraggingGesture && Math.abs(moveX) > 25) {
+      if (moveX > 0) {
+        // Dragged to the right
+        updateSlide(currentIndex - 1);
+      } else {
+        // Dragged to the left
+        updateSlide(currentIndex + 1);
+      }
+    }
+
+    setTimeout(() => {
+      isDraggingGesture = false;
+      moveX = 0;
+    }, 120);
+  }
+
+  hero.addEventListener('pointerup', handlePointerUp);
+  hero.addEventListener('pointercancel', handlePointerUp);
+
+  // Prevent opening the link when user is dragging/swiping
+  hero.querySelectorAll('.spotlight-card-link, a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (isDraggingGesture || Math.abs(moveX) > 10) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) return;
+    if (e.key === 'ArrowRight') updateSlide(currentIndex - 1);
+    if (e.key === 'ArrowLeft') updateSlide(currentIndex + 1);
+  });
+
+  updateSlide(0);
+  startAutoplay();
 })();
 </script>
 </body>

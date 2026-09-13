@@ -1045,6 +1045,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("admin/publish.html");
   eleventyConfig.addPassthroughCopy("admin/watcher.html");
+  eleventyConfig.addPassthroughCopy("admin/pinned.html");
+  eleventyConfig.addPassthroughCopy({"_data/pinned.json": "data/pinned.json"});
   eleventyConfig.addPassthroughCopy("watcher-state.json");
   eleventyConfig.addPassthroughCopy("watcher-feed.json");
   eleventyConfig.addPassthroughCopy("content/images");
