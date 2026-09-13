@@ -1,14 +1,7 @@
 {
   "enabled": true,
-  "processedIds": [
-    328202,
-    328154,
-    328171,
-    328176,
-    328181,
-    328187,
-    328190,
-    328200
-  ],
-  "lastChecked": "2026-09-13T03:31:01.536Z"
+  "processedIds": [],
+  "lastChecked": "2026-09-13T04:30:00.000Z",
+  "apiCallsToday": 0,
+  "apiCallDate": "2026-09-13"
 }
