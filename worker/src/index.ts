@@ -81,6 +81,18 @@ function buildDividedCaption(title: string, text?: string): string {
   return parts.join(DIVIDER);
 }
 
+function buildFacebookCaption(title: string, text?: string, url?: string): string {
+  const DIVIDER = "\n\n────────\n\n";
+  const parts = [title.trim()];
+  if (text && text.trim()) parts.push(text.trim());
+  if (url) {
+    parts.push(`🔗 لقراءة التفاصيل كاملة:\n${url}`);
+  } else {
+    parts.push(SOCIAL_FOLLOW_LINE.replace(/^\n+/, ""));
+  }
+  return parts.join(DIVIDER);
+}
+
 // X's real character-counting algorithm (twitter-text v3) weights most
 // Latin/Arabic-range characters (U+0000–U+10FF) and a few punctuation
 // ranges as 1, but weights everything else — including the "─" box-drawing
@@ -741,15 +753,58 @@ async function pollBufferPostUntilResolved(
 async function postToFacebookDirect(
   env: Env,
   key: string,
-  data: { title: string; text?: string; image?: string }
+  data: { title: string; text?: string; image?: string; url?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
 
-  const caption = buildDividedCaption(data.title, data.text);
-  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+  const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
+  const caption = buildFacebookCaption(data.title, data.text, rawUrl);
 
   try {
     const pageToken = await getPageAccessToken(env);
+
+    // Link Post (Interactive Card): When an article URL is present, publish to /feed
+    // with `link`. Facebook automatically scrapes the page's Open Graph tags (og:image,
+    // og:title, og:description) and renders the interactive preview card with the full-width
+    // featured image. Clicking anywhere on the card/image takes users directly to the article.
+    if (rawUrl) {
+      let encodedUrl = rawUrl;
+      try {
+        encodedUrl = new URL(rawUrl).toString();
+      } catch (e) {}
+
+      const endpoint = `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
+      const body = {
+        message: caption,
+        link: encodedUrl,
+        access_token: pageToken,
+      };
+
+      let res: Response;
+      try {
+        res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+      } catch (e) {
+        return { ok: false, ambiguous: true };
+      }
+
+      const result: any = await res.json().catch(() => ({ __unparsed: true }));
+      if (result.id || result.post_id) return { ok: true, result };
+
+      const errCode = result?.error?.code;
+      const errSubcode = result?.error?.error_subcode;
+      const isThrottled = [4, 17, 32, 613].includes(errCode) || errSubcode === 2207051;
+      if (isThrottled) await setPlatformDailyLimitCooldown(env, "facebook");
+      if (result.__unparsed) return { ok: false, result, ambiguous: true };
+
+      console.warn("[Facebook] Direct Link Post error, falling back to photo:", result);
+    }
+
+    // Fallback: Photo post if no URL was provided or if link post returned an error
+    const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
     const endpoint = imageUrl
       ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
       : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
@@ -768,8 +823,6 @@ async function postToFacebookDirect(
       return { ok: false, ambiguous: true };
     }
     const result: any = await res.json().catch(() => ({ __unparsed: true }));
-
-    // Success shape: /photos -> { id, post_id }; /feed -> { id }.
     if (result.id || result.post_id) return { ok: true, result };
 
     const errCode = result?.error?.code;
@@ -787,14 +840,12 @@ async function postToFacebookDirect(
 async function postToFacebookViaBuffer(
   env: Env,
   key: string,
-  data: { title: string; text?: string; image?: string }
+  data: { title: string; text?: string; image?: string; url?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
 
   const kvKey = `buffer-pending:facebook:${key}`;
 
-  // Resume polling a post created on an earlier tick instead of creating a
-  // duplicate — same reasoning as postToInstagram's containerId cache.
   let postId: string | null = null;
   try {
     const cached = await env.PUSH_KV.get(kvKey);
@@ -805,8 +856,10 @@ async function postToFacebookViaBuffer(
   } catch (e) {}
 
   if (!postId) {
-    const caption = buildDividedCaption(data.title, data.text);
-    const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+    const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
+    const caption = buildFacebookCaption(data.title, data.text, rawUrl);
+    // If URL is present, omit assets to allow Facebook/Buffer to generate the native link preview card
+    const imageUrl = !rawUrl && data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
     try {
       const query = imageUrl
@@ -848,7 +901,7 @@ async function postToFacebookViaBuffer(
   }
 
   const outcome = await pollBufferPostUntilResolved(env, postId);
-  if (!outcome.resolved) return { ok: false, ambiguous: true }; // keep cached id, keep claim — resume next tick
+  if (!outcome.resolved) return { ok: false, ambiguous: true };
   try {
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
