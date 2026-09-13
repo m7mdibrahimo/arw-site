@@ -33,6 +33,24 @@
       appleLink.href = iconUrl;
       document.head.appendChild(appleLink);
     })();
+
+    // Suppress any GitHub status / backend outage popup banners
+    (function suppressOutageBanners() {
+      function cleanOutageAlerts() {
+        const els = document.querySelectorAll('div, span, p');
+        els.forEach(el => {
+          if (el.children.length === 0 && (el.textContent.includes('githubstatus.com') || el.textContent.includes('experiencing an outage'))) {
+            const toast = el.closest('[class*="Toast"], [class*="toast"], [class*="Notification"], [class*="notification"]') || el.parentElement;
+            if (toast) {
+              toast.style.display = 'none';
+              toast.remove();
+            }
+          }
+        });
+      }
+      setInterval(cleanOutageAlerts, 150);
+      window.addEventListener('DOMContentLoaded', cleanOutageAlerts);
+    })();
   </script>
 </head>
 <body>
@@ -69,6 +87,21 @@
       window.fetch = async function(resource, init) {
         const url = typeof resource === 'string' ? resource : (resource ? resource.url : '');
         
+        // 0. Intercept githubstatus.com so Decap CMS never triggers false outage warnings
+        if (url && url.includes('githubstatus.com')) {
+          return new Response(JSON.stringify({
+            page: { id: "kctbh9vrtdwd", name: "GitHub", url: "https://www.githubstatus.com" },
+            components: [
+              { name: "API Requests", status: "operational" },
+              { name: "Issues, Pull Requests, Projects", status: "operational" },
+              { name: "Git Operations", status: "operational" }
+            ]
+          }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+
         // 1. Instantly mock /commits?path= requests (saving 10-20 seconds of server git blame computation)
         if (url && url.includes('/commits?') && (url.includes('path=') || url.includes('path%3D'))) {
           const mockCommit = [{
