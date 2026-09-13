@@ -119,6 +119,31 @@ async function downloadAndOptimizeImage(imageUrl: string): Promise<string | null
   }
 }
 
+// Extract YouTube video ID from HTML or text
+function extractYouTubeVideoId(content: string): string | null {
+  if (!content) return null;
+  const match = content.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+  return match ? match[1] : null;
+}
+
+// Get the highest resolution available thumbnail for a YouTube video (like get-youtube-thumbnail.com)
+async function getYouTubeThumbnailUrl(videoId: string): Promise<string | null> {
+  const qualities = ["maxresdefault", "sddefault", "hqdefault", "0"];
+  for (const q of qualities) {
+    const url = `https://img.youtube.com/vi/${videoId}/${q}.jpg`;
+    try {
+      const res = await fetch(url, { method: "HEAD", signal: AbortSignal.timeout(5000) });
+      if (res.ok && res.status === 200) {
+        const len = Number(res.headers.get("content-length") || 0);
+        if (len === 0 || len > 2000) {
+          return url;
+        }
+      }
+    } catch (e) {}
+  }
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+}
+
 // Extract media embeds (YouTube, Twitter/X, Instagram) from raw HTML
 function extractEmbeds(html: string): string[] {
   const embeds: string[] = [];
@@ -765,6 +790,32 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
     }
   }
 
+  // Detect YouTube video (from post content, or fetch web page if Watch/video post)
+  let ytVideoId = extractYouTubeVideoId(contentHtml) || extractYouTubeVideoId(post.link || "");
+  if (!ytVideoId && (/watch:/i.test(rawTitle) || /fusion/i.test(rawTitle) || /highlights/i.test(rawTitle) || /video/i.test(rawTitle)) && post.link) {
+    try {
+      const pageRes = await fetch(post.link, {
+        headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" },
+        signal: AbortSignal.timeout(6000)
+      });
+      if (pageRes.ok) {
+        const pageHtml = await pageRes.text();
+        ytVideoId = extractYouTubeVideoId(pageHtml);
+      }
+    } catch (e) {}
+  }
+
+  // If a YouTube video is detected, extract the highest resolution thumbnail (matching get-youtube-thumbnail.com)
+  if (ytVideoId) {
+    const ytThumb = await getYouTubeThumbnailUrl(ytVideoId);
+    if (ytThumb) {
+      if (!imageUrl || /watch:/i.test(rawTitle) || imageUrl.includes("maxresdefault") || imageUrl.includes("default.jpg") || imageUrl.includes("hqdefault")) {
+        console.log(`[Watcher] 🎥 Detected YouTube video (${ytVideoId}), using max resolution thumbnail: ${ytThumb}`);
+        imageUrl = ytThumb;
+      }
+    }
+  }
+
   // Extract categories & tags
   const terms: string[] = [];
   if (Array.isArray(post._embedded?.["wp:term"])) {
@@ -816,6 +867,11 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
 
   // 3. Extract media embeds and append to body
   const embeds = extractEmbeds(contentHtml);
+  if (ytVideoId && !embeds.some(e => e.includes(ytVideoId!))) {
+    embeds.push(
+      `<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:24px 0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.15);"><iframe src="https://www.youtube-nocookie.com/embed/${ytVideoId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe></div>`
+    );
+  }
   let finalBody = rewritten.body_markdown.trim();
   if (embeds.length > 0) {
     finalBody += `\n\n${embeds.join("\n\n")}`;

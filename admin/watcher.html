@@ -338,8 +338,8 @@
     </h2>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
       <div class="feed-filters">
-        <button class="filter-btn active" data-filter="new">🆕 جديد فقط</button>
-        <button class="filter-btn" data-filter="all">الكل</button>
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="new">🆕 جديد فقط</button>
         <button class="filter-btn" data-filter="added">✅ مضاف للموقع</button>
         <button class="filter-btn" data-filter="missing">⏳ غير مضاف</button>
         <button class="filter-btn" data-filter="old">⏹️ قديم</button>
@@ -403,8 +403,9 @@
   const SITE_ORIGIN = window.location.origin;
 
   let watcherState = { enabled: true, processedIds: [], lastChecked: null };
+  let pendingDispatchedIds = new Set();
   let sourcePosts = [];
-  let currentFilter = 'new';
+  let currentFilter = 'all';
 
   const statusPill = document.getElementById('status-pill');
   const statusText = document.getElementById('status-text');
