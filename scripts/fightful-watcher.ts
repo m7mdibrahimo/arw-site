@@ -380,6 +380,38 @@ function formatResultsMarkdown(text: string): string {
     .trim();
 }
 
+// Bulletproof detection of Show Results vs Single News
+function isShowResultsArticle(originalTitle: string, plainText: string = ""): boolean {
+  const title = (originalTitle || "").trim();
+  const text = (plainText || "").trim();
+
+  // 1. Explicit negative check: Corporate / Financial / Medical / Survey results are NOT wrestling show results!
+  if (/\b(?:financial|quarterly|earnings|fiscal|q[1-4]|medical|drug test|wellness policy|investigation|poll|survey|election)\s+results\b/i.test(title)) {
+    return false;
+  }
+
+  // 2. Strong Title Signals for Full Show Results / Spoilers
+  // Matches "Results", "Spoilers", "Quick Results", "Full Results", "Live Coverage", "Live Recap"
+  const hasResultsInTitle = /\b(?:results|spoilers|quick results|full results|live coverage|live recap|post-show recap)\b/i.test(title);
+
+  // 3. Body Signals: Check if content actually describes a full show with multiple matches
+  const matchSignals = (text.match(/\b(?:def\.|defeated|defeats|vs\.?|championship|battle royal|eliminator match|main event|pinfall|submission)\b/gi) || []).length;
+  const hasMultipleMatches = matchSignals >= 3;
+  const hasFullResultsIntro = /\b(?:full results|live coverage|detailed results|results for the|live recap)\b/i.test(text);
+
+  // If title explicitly announces results/spoilers -> 100% SHOW RESULTS!
+  if (hasResultsInTitle) {
+    return true;
+  }
+
+  // If title doesn't have "Results", but the body explicitly contains a full show results intro AND multiple match results:
+  if (hasFullResultsIntro && hasMultipleMatches && !/\b(?:wins|defeated|injur|return|sign|update|report|rumor)\b/i.test(title)) {
+    return true;
+  }
+
+  return false;
+}
+
 // Rewrites raw English post using Gemini into high-quality Arabic journalism
 async function rewriteWithGemini(
   originalTitle: string,
@@ -387,10 +419,9 @@ async function rewriteWithGemini(
   categories: string[],
   postDate?: string
 ): Promise<RewrittenArticle | null> {
-  // Strict detection: ONLY mark as results post if the title explicitly indicates full show results / spoilers / recap.
-  // Single news, title changes, returns, injuries, and interviews MUST NOT be treated as results!
-  const isResultsPost = /\b(?:results|spoilers|quick results|full results|live coverage|live recap)\b/i.test(originalTitle) &&
-    !/\b(?:wins|win|defeated|defeats|injured|injury|returns|return|signed|signing|vacates|hospitalized|addresses|reacts|reaction|comments|backstage|rumor|update|set for|announced|report|speaks|says|clarifies|explains|stops|knockout|tribute)\b/i.test(originalTitle);
+  // 100% Bulletproof detection: Differentiates Full Show Results from Single News articles
+  const isResultsPost = isShowResultsArticle(originalTitle, plainText);
+  console.log(`[Watcher] Article classification: "${originalTitle}" -> [${isResultsPost ? "SHOW_RESULTS (نتائج عرض)" : "NEWS_ARTICLE (خبر صحفي)"}]`);
 
   const arabicDate = getArabicDateFormatted(postDate);
 
