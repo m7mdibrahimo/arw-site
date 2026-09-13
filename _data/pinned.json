@@ -1,24 +1,13 @@
 [
   {
-    "url": "/news/20260913215631-سامي-زين-ينتزع-لقب-wwe-من-سي-ام-بانك-في-مفاجأة-كبرى-بعرض-wwe-smackdown/",
-    "title": "سامي زين يحتفل مع جماهيره الوفية باستعادة لقب WWE: \"العدالة تحققت أخيراً!\"",
-    "image": "/content/images/jtct9rkqmcshcyh6.jpg",
+    "url": "/news/ستيفاني-فاكير-تسقط-ليف-مورغان-وتتوج-بلقب-العالم-للسيدات-في-عرض-wwe-live",
+    "title": "ستيفاني فاكير تسقط ليف مورغان وتتوج بلقب العالم للسيدات في عرض WWE Live",
+    "image": "/img/cPx3fj7Sda-800.jpeg",
     "federation": "WWE",
     "kind": "news",
     "kindLabel": "خبر",
-    "badge": "تغطية خاصة",
-    "description": "خرج النجم سامي زين برسالة حماسية مؤثرة احتفالاً باستعادته لقب بطولة WWE الموحد، موجهاً كلماته مباشرة إلى جماهيره المخلصة التي ساندته طوال مسيرته الصعبة."
-  },
-  {
-    "url": "/shows/wwe-smackdown-11-09-2026",
-    "title": "عرض سماك داون 11.09.2026 مترجم",
-    "subtitle": "WWE SmackDown 11.09.2026",
-    "image": "/img/TIvFsQCFkN-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "الحدث الأضخم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث النارية واستعادة سامي زين للقب العالمي."
+    "badge": "عاجل",
+    "description": ""
   },
   {
     "url": "/shows/aew-collision-12-09-2026",
@@ -32,13 +21,84 @@
     "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث المشتعلة وتحديات نجوم AEW الكبار."
   },
   {
-    "url": "/news/نتائج-عرض-wwe-live-13-سبتمبر-2026-ستيفاني-فاكير-تنتزع-بطولة-العالم-للسيدات-وسيث-رولينز-يقود-فريقه-لانتصار-مثير",
-    "title": "نتائج عرض WWE Live: ستيفاني فاكير تنتزع بطولة العالم للسيدات.. وسيث رولينز يقود فريقه لانتصار مثير",
-    "image": "/img/5zCBDUe_CT-800.jpeg",
+    "url": "/shows/wwe-smackdown-11-09-2026",
+    "title": "عرض سماك داون 11.09.2026 مترجم",
+    "subtitle": "WWE SmackDown 11.09.2026",
+    "image": "/img/TIvFsQCFkN-800.jpeg",
     "federation": "WWE",
-    "kind": "news",
-    "kindLabel": "خبر عاجل",
-    "badge": "نتائج خاصة",
-    "description": "مفاجأة مدوية في عرض WWE Live بعد تجريد ليف مورغان من لقب العالم للسيدات لصالح النجمة ستيفاني فاكير."
+    "kind": "show",
+    "kindLabel": "عرض كامل",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث النارية واستعادة سامي زين للقب العالمي."
+  },
+  {
+    "url": "/shows/aaa-triplemania-34-night-1-2026",
+    "title": "AAA TripleMania 34 Night 1 (2026)",
+    "image": "/img/qqgKt1XjG5-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/roh-10-09-2026",
+    "title": "ROH 10.09.2026",
+    "image": "/img/TLs3lDWczM-800.jpeg",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/tna-impact-10-09-2026",
+    "title": "TNA iMPACT 10.09.2026",
+    "image": "/img/Uv8KNl4laa-800.jpeg",
+    "federation": "TNA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aew-dynamite-09-09-2026",
+    "title": "AEW Dynamite 09.09.2026",
+    "image": "/img/8nHqh-ZExG-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/mlp-mayhem-09-09-2026",
+    "title": "MLP Mayhem 09.09.2026",
+    "image": "/img/EFQbH-Dqa1-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-lfg-s03e24-06-09-2026",
+    "title": "WWE LFG S03E24 06.09.2026",
+    "image": "/img/2xQbZdqAfu-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "برنامج",
+    "badge": "حصري ومترجم",
+    "description": "برنامج دبليو دبليو اي ال اف جي الموسم الثالث مترجم بالكامل مع جميع الأحداث والمواقف."
+  },
+  {
+    "url": "/shows/nxt-08-09-2026",
+    "title": "NXT 08.09.2026",
+    "image": "/img/-ynnzkwXXl-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض إن إكس تي مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
