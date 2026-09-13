@@ -358,9 +358,10 @@
           <img src="${img}" class="pinned-thumb" onerror="this.src='/content/images/jtct9rkqmcshcyh6.jpg'" />
           <div class="pinned-details">
             <h4 class="pinned-title" title="${item.title}">${item.title}</h4>
+            ${item.subtitle ? `<div class="pinned-subtitle" style="font-size:11.5px;color:var(--gold);direction:ltr;text-align:right;margin-top:2px;font-weight:600;">${item.subtitle}</div>` : ''}
             <div class="pinned-meta">
               <span class="pinned-fed fed-${fed}">${item.federation || 'WWE'}</span>
-              <span>${item.kindLabel || (item.kind === 'show' ? 'عرض' : item.kind === 'recap' ? 'ملخص' : 'خبر')}</span>
+              <span>${item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : item.kind === 'recap' ? 'ملخص' : 'خبر')}</span>
               <div class="badge-input-wrap">
                 <span style="color:var(--muted)">الشارة:</span>
                 <input type="text" class="badge-input" value="${badge}" onchange="updateItemBadge(${index}, this.value)" placeholder="نص الشارة..." />
@@ -383,7 +384,8 @@
 
     const filtered = allSiteItems.filter(it => {
       if (activeFilter !== 'all' && it.kind !== activeFilter) return false;
-      if (q && !it.title.toLowerCase().includes(q)) return false;
+      const hay = `${it.headline || ''} ${it.title || ''} ${it.description || ''}`.toLowerCase();
+      if (q && !hay.includes(q)) return false;
       return true;
     }).slice(0, 40);
 
@@ -396,15 +398,18 @@
       const isPinned = pinnedUrls.has(it.url);
       const img = it.image ? (it.image.startsWith('http') || it.image.startsWith('/') ? it.image : '/' + it.image) : '/content/images/jtct9rkqmcshcyh6.jpg';
       const fed = (it.federation || 'wwe').toLowerCase();
+      const mainTitle = it.headline || it.title;
+      const subTitle = (it.headline && it.title && it.headline !== it.title) ? it.title : '';
 
       return `
         <div class="avail-card">
           <img src="${img}" class="avail-thumb" onerror="this.src='/content/images/jtct9rkqmcshcyh6.jpg'" />
           <div class="avail-details">
-            <h5 class="avail-title" title="${it.title}">${it.title}</h5>
+            <h5 class="avail-title" title="${mainTitle}">${mainTitle}</h5>
+            ${subTitle ? `<div class="avail-subtitle" style="font-size:11px;color:var(--gold);direction:ltr;text-align:right;margin-top:1px;font-weight:600;">${subTitle}</div>` : ''}
             <div class="avail-meta">
               <span class="pinned-fed fed-${fed}">${it.federation || 'WWE'}</span>
-              <span>${it.kindLabel || (it.kind === 'show' ? 'عرض' : 'خبر')}</span>
+              <span>${it.kindLabel || (it.kind === 'show' ? 'عرض كامل' : 'خبر')}</span>
             </div>
           </div>
           <button class="pin-btn" ${isPinned ? 'disabled' : ''} onclick="pinItem('${encodeURIComponent(JSON.stringify(it))}')">
@@ -422,19 +427,25 @@
         showToast("هذا الموضوع مثبت بالفعل!", false);
         return;
       }
+      const mainTitle = item.headline || item.title;
+      const subTitle = (item.headline && item.title && item.headline !== item.title) ? item.title : (item.subtitle || '');
+      const defaultKindLabel = item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : item.kind === 'recap' ? 'ملخص' : 'خبر');
+      const defaultBadge = item.kind === 'news' ? 'عاجل' : 'حصري ومترجم';
+
       pinnedItems.push({
         url: item.url,
-        title: item.title,
+        title: mainTitle,
+        subtitle: subTitle,
         image: item.image,
         federation: item.federation || 'WWE',
         kind: item.kind || 'news',
-        kindLabel: item.kindLabel || (item.kind === 'show' ? 'عرض' : item.kind === 'recap' ? 'ملخص' : 'خبر'),
-        badge: 'تغطية خاصة',
+        kindLabel: defaultKindLabel,
+        badge: defaultBadge,
         description: item.description || ''
       });
       renderPinnedList();
       renderAvailableList();
-      showToast(`📌 تم إضافة "${item.title.slice(0, 30)}..." إلى المثبت بنجاح! لا تنس الضغط على حفظ.`);
+      showToast(`📌 تم إضافة "${mainTitle.slice(0, 30)}..." إلى المثبت بنجاح! لا تنس الضغط على حفظ.`);
     } catch (e) {
       console.error(e);
     }
