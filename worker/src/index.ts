@@ -345,6 +345,22 @@ async function githubReadWatcherState(env: Env): Promise<{ sha: string | null; s
   });
   if (res.status === 404) return { sha: null, state: { enabled: true, processedIds: [], lastChecked: new Date().toISOString(), apiCallsToday: 0, apiCallDate: new Date().toISOString().slice(0, 10) } };
   if (!res.ok) {
+    try {
+      const fallbackRes = await fetch(`${env.SITE_ORIGIN}/watcher-state.json?_cb=${Date.now()}`);
+      if (fallbackRes.ok) {
+        const fallbackData: any = await fallbackRes.json();
+        return {
+          sha: null,
+          state: {
+            enabled: fallbackData.enabled !== false,
+            processedIds: Array.isArray(fallbackData.processedIds) ? fallbackData.processedIds : [],
+            lastChecked: fallbackData.lastChecked || new Date().toISOString(),
+            apiCallsToday: typeof fallbackData.apiCallsToday === "number" ? fallbackData.apiCallsToday : 0,
+            apiCallDate: fallbackData.apiCallDate || "",
+          },
+        };
+      }
+    } catch (e) {}
     const errBody = await res.text().catch(() => "");
     throw new Error(`GitHub read watcher-state failed: ${res.status} ${errBody}`);
   }

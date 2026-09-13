@@ -602,15 +602,6 @@
     if (watcherState.processedIds && watcherState.processedIds.includes(pid)) return true;
     if (sitePublishedSourceIds.has(pid)) return true;
 
-    // Smart fallback check: If the site already has an article with the same athlete/topic
-    const postSlug = (post.slug || post.link || '').toLowerCase();
-    if (postSlug.includes('blake-monroe') && sitePublishedItems.some(i => (i.url || '').includes('بليك-مونرو') || (i.tags || []).includes('بليك مونرو'))) {
-      return true;
-    }
-    if (postSlug.includes('the-butcher-battle-royale') && sitePublishedItems.some(i => (i.title || '').includes('باتشر') || (i.title || '').includes('غارسيا'))) {
-      return true;
-    }
-
     return false;
   }
 
@@ -768,7 +759,11 @@
         clearSelection();
         renderFeed();
       } else {
-        showToast("❌ " + (data.error || "فشل إرسال أمر النشر"), false);
+        let errMsg = data.error || "فشل إرسال أمر النشر";
+        if (typeof errMsg === "string" && (errMsg.includes("outage") || errMsg.includes("githubstatus"))) {
+          errMsg = "سيرفرات GitHub تواجه عطلاً مؤقتاً حالياً (githubstatus.com). يُرجى المحاولة بعد قليل.";
+        }
+        showToast("❌ " + errMsg, false);
       }
     } catch (e) {
       showToast("❌ خطأ في الاتصال: " + e.message, false);
@@ -880,7 +875,11 @@
           renderFeed();
         }
       } else {
-        showToast("❌ " + (data.error || "فشل إرسال الأمر"), false);
+        let errMsg = data.error || "فشل إرسال الأمر";
+        if (typeof errMsg === "string" && (errMsg.includes("outage") || errMsg.includes("githubstatus"))) {
+          errMsg = "سيرفرات GitHub تواجه عطلاً مؤقتاً حالياً (githubstatus.com). يُرجى المحاولة بعد قليل.";
+        }
+        showToast("❌ " + errMsg, false);
         btnEl.disabled = false;
         btnEl.innerHTML = '➕ إضافة للموقع';
       }
