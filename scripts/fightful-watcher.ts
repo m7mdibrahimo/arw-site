@@ -13,7 +13,7 @@ if (fs.existsSync(".env")) {
   } catch (e) {}
 }
 
-const API_KEYS = (process.env.GEMINI_API_KEYS || process.env.GEMINI_API_KEY || "AQ.Ab8RN6KL8UF_W02V7MgbfG4Ne2FHWvzzlEOHHIfhfaBThj_igg")
+const API_KEYS = (process.env.GEMINI_API_KEYS || process.env.GEMINI_API_KEY || "")
   .split(",")
   .map(k => k.trim())
   .filter(Boolean);
@@ -222,13 +222,16 @@ async function queryGemini(prompt: string, jsonMode: boolean = true): Promise<st
   }
 
   const candidateModels = [
-    "gemini-3.6-flash",
-    "gemini-3.5-flash-lite",
+    "gemini-3.5-flash-lite", // 500 RPD / 15 RPM (High free quota)
     "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-1.5-flash",
+    "gemini-3.5-flash",
+    "gemini-3.8-flash",
     "gemini-3.7-flash",
+    "gemini-3.6-flash",
     "gemini-flash-latest",
     "gemini-flash-lite-latest",
-    "gemini-pro-latest",
   ];
 
   for (const apiKey of API_KEYS) {
