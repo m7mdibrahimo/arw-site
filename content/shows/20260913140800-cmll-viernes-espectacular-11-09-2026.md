@@ -18,7 +18,7 @@ servers:
   - url: https://ok.ru/videoembed/17230359759456
   - url: https://fembed.co/embed/uv3_0nBp-t4uq
   - url: https://cdn.loadvid.com/videos/play/ktcGpKSVmspvFlJGbVQF
-  - url: https://uqload.vc/jupb7g8u69i9.html
+  - url: https://uqload.vc/e/jupb7g8u69i9?strm4.uqload.vc/i/04/05700/jupb7g8u69i9
   - url: https://turbovidhls.com/t/6aa6ac187f1c8
 downloads_medium: >-
   https://1cloudfile.com/1w561
