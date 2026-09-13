@@ -737,11 +737,53 @@ async function pollBufferPostUntilResolved(
 // Posts to Facebook via Buffer — reverted from the brief direct-Graph-API
 // experiment. Direct posting worked technically (Graph API accepted the
 // posts, they appeared on the Page) but stayed invisible to the public
-// because the "ARW AutoPost" Meta app hasn't been through App Review for
-// pages_manage_posts yet — until that review is approved, anything posted
-// through that app's token is only visible to the app's own admins/testers,
-// not real visitors. Buffer already has the needed permissions live, so
-// routing through it is the only way posts are actually public right now.
+// Posts to Facebook directly via Meta Graph API (now live and published)
+async function postToFacebookDirect(
+  env: Env,
+  key: string,
+  data: { title: string; text?: string; image?: string }
+): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
+  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
+
+  const caption = buildDividedCaption(data.title, data.text);
+  const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+    const endpoint = imageUrl
+      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
+      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
+    const body = imageUrl
+      ? { url: imageUrl, caption, access_token: pageToken }
+      : { message: caption, access_token: pageToken };
+
+    let res: Response;
+    try {
+      res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+    } catch (e) {
+      return { ok: false, ambiguous: true };
+    }
+    const result: any = await res.json().catch(() => ({ __unparsed: true }));
+
+    // Success shape: /photos -> { id, post_id }; /feed -> { id }.
+    if (result.id || result.post_id) return { ok: true, result };
+
+    const errCode = result?.error?.code;
+    const errSubcode = result?.error?.error_subcode;
+    const isThrottled = [4, 17, 32, 613].includes(errCode) || errSubcode === 2207051;
+    if (isThrottled) await setPlatformDailyLimitCooldown(env, "facebook");
+    if (result.__unparsed) return { ok: false, result, ambiguous: true };
+
+    return { ok: false, result };
+  } catch (e) {
+    return { ok: false };
+  }
+}
+
 async function postToFacebookViaBuffer(
   env: Env,
   key: string,
@@ -1054,7 +1096,8 @@ async function publishToPlatform(
   // postToFacebookViaBuffer/postToXViaBuffer expires. `force` (the admin's
   // manual "publish anyway" button) bypasses this, same as it bypasses the
   // normal claim.
-  if (!force && (platform === "facebook" || platform === "x")) {
+  // Only X is subject to Buffer cooldown; Facebook is now direct Meta Graph API
+  if (!force && platform === "x") {
     const cooldownUntil = await getPlatformCooldownUntil(env, platform);
     if (Date.now() < cooldownUntil) return { status: "rate_limited" };
   }
@@ -1072,7 +1115,12 @@ async function publishToPlatform(
     ok = !!(r && r.ok);
     raw = r;
   } else if (platform === "facebook") {
-    const r = await postToFacebookViaBuffer(env, key, item);
+    // 1. Try Direct Meta Graph API first (free, unlimited, instant, 100% public)
+    let r = await postToFacebookDirect(env, key, item);
+    if (!r.ok && !r.ambiguous && !r.skipped) {
+      console.warn(`[Facebook] Direct Graph API error, falling back to Buffer:`, r.result);
+      r = await postToFacebookViaBuffer(env, key, item);
+    }
     ok = r.ok;
     skipped = !!r.skipped;
     ambiguous = !!r.ambiguous;
@@ -1149,9 +1197,8 @@ async function runWatcherPoll(env: Env): Promise<void> {
   // the handful of recent ones that actually matter.
   let processedInThisTick = 0;
   const MAX_PER_TICK = 5; // Allow publishing up to 5 items simultaneously in the same tick
-  let bufferFbAttemptedInTick = 0;
   let bufferXAttemptedInTick = 0;
-  const MAX_BUFFER_PER_TICK = 1; // Pace Buffer to 1 post per minute per channel to avoid rate limits
+  const MAX_BUFFER_PER_TICK = 1; // Pace Buffer (X/Twitter) to 1 post per minute to avoid rate limits
 
   for (const item of items) {
     if (processedInThisTick >= MAX_PER_TICK) break;
@@ -1170,19 +1217,17 @@ async function runWatcherPoll(env: Env): Promise<void> {
     // If completely done on all platforms, skip
     if (tgDone && fbDone && igDone && xDone) continue;
 
-    // Check platform cooldowns (e.g. daily limit hit on Buffer)
+    // Check platform cooldowns (e.g. daily limit hit on Buffer for X)
     const now = Date.now();
-    const fbCooldown = (state.cooldowns?.facebook || 0) > now;
     const xCooldown = (state.cooldowns?.x || 0) > now;
 
     // Determine what can actually be attempted right now
     const canDoTg = !tgDone;
     const canDoIg = !igDone;
-    const canDoFb = !fbDone && !fbCooldown && bufferFbAttemptedInTick < MAX_BUFFER_PER_TICK;
+    const canDoFb = !fbDone; // Direct Meta Graph API (instant, unlimited)
     const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
-    // If nothing actionable can be done for this item (e.g. only Facebook is missing and it's in daily cooldown),
-    // skip it so subsequent articles in the queue are never blocked!
+    // If nothing actionable can be done for this item, skip it
     if (!canDoTg && !canDoIg && !canDoFb && !canDoX) {
       continue;
     }
@@ -1209,7 +1254,6 @@ async function runWatcherPoll(env: Env): Promise<void> {
       }
 
       if (canDoFb) {
-        bufferFbAttemptedInTick++;
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       }
       if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
@@ -1226,7 +1270,6 @@ async function runWatcherPoll(env: Env): Promise<void> {
       }
       const payload = { title: item.title, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
       if (canDoFb) {
-        bufferFbAttemptedInTick++;
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
       }
