@@ -1,5 +1,15 @@
 [
   {
+    "id": 328299,
+    "link": "https://www.fightful.com/wrestling/lacey-evans-back-in-the-ring-training/",
+    "date": "2026-09-13T14:04:26",
+    "date_gmt": "2026-09-13T18:04:26",
+    "title": {
+      "rendered": "Lacey Evans Back In The Ring Training"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/12/27212147/wwe-lacey-evans-64ddfe7439ce0.jpeg"
+  },
+  {
     "id": 328287,
     "link": "https://www.fightful.com/wrestling/bayley-reflects-on-wwes-south-america-live-tour-i-had-some-of-my-favorite-moments-of-my-career-this-week-and-thats-not-an-exaggeration/",
     "date": "2026-09-13T13:50:33",
@@ -288,15 +298,5 @@
       "rendered": "Daniel Garcia Wins The Butcher Battle Royale On 9/12 AEW Collision"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12221700/image-2.png"
-  },
-  {
-    "id": 328190,
-    "link": "https://www.fightful.com/wrestling/aew-blood-and-guts-2026-set-for-november-4-in-jacksonville-florida/",
-    "date": "2026-09-12T22:05:50",
-    "date_gmt": "2026-09-13T02:05:50",
-    "title": {
-      "rendered": "AEW Blood And Guts 2026 Set For November 4 In Jacksonville, Florida"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12220324/HSD4mZBWwAUhED-.jpg"
   }
 ]
