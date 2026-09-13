@@ -2,9 +2,11 @@
   "enabled": true,
   "processedIds": [
     328202,
-    328064
+    328064,
+    328154,
+    328171
   ],
-  "lastChecked": "2026-09-13T06:00:29.683Z",
+  "lastChecked": "2026-09-13T06:15:38.823Z",
   "apiCallsToday": 0,
   "apiCallDate": "2026-09-13"
 }
