@@ -1,5 +1,15 @@
 [
   {
+    "id": 328304,
+    "link": "https://www.fightful.com/wrestling/sami-zayn-ride-or-dies-rejoice-justice-at-last-two-time-wwe-champion/",
+    "date": "2026-09-13T14:56:31",
+    "date_gmt": "2026-09-13T18:56:31",
+    "title": {
+      "rendered": "Sami Zayn: &#8216;Ride Or Dies Rejoice, Justice At Last! Two Time WWE Champion!&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12100944/092_SD_09112026ME_115955.jpg"
+  },
+  {
     "id": 328301,
     "link": "https://www.fightful.com/wrestling/wwe-live-results-from-santiago-chile-9-12/",
     "date": "2026-09-13T14:21:57",
@@ -288,15 +298,5 @@
       "rendered": "Ryan Garcia Stops Conor Benn In Round Two"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12233830/Screenshot-2026-09-12-at-11.38.11-PM.png"
-  },
-  {
-    "id": 328202,
-    "link": "https://www.fightful.com/wrestling/stephanie-vaquer-wins-wwe-womens-world-title-at-wwe-live-in-chile/",
-    "date": "2026-09-12T22:23:11",
-    "date_gmt": "2026-09-13T02:23:11",
-    "title": {
-      "rendered": "Stephanie Vaquer Wins WWE Women&#8217;s World Title At WWE Live In Chile"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/24202458/HQhtG-EWUAA9G2E.jpg"
   }
 ]
