@@ -38,7 +38,6 @@
 <meta name="twitter:title" content="{{ pageTitle }} | عرب راسلنج">
 <meta name="twitter:description" content="{{ metaDesc }}">
 <meta name="twitter:image" content="{{ schemaImage }}">
-<link rel="stylesheet" href="/assets/notif.css">
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -226,7 +225,7 @@
   .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
   .grid-12 > *{ grid-column:span 3; }
   @media (max-width:900px){ .grid-12 > *{ grid-column:span 6; } }
-  @media (max-width:560px){ .grid-12 > *{ grid-column:span 12; } }
+  @media (max-width:560px){ .grid-12 > *{ grid-column:span 6; } }
 
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
   .social-row{ display:flex; justify-content:center; gap:12px; margin-bottom:16px; }
@@ -660,6 +659,7 @@
     #navMenu .theme-toggle, #navMenu .telegram-btn{ width:40px; height:40px; }
   }
 </style>
+<link rel="stylesheet" href="/assets/notif.css?v=20260914c">
 </head>
 <body>
 <header>
