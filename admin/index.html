@@ -17,6 +17,18 @@
       border-radius: 8px !important;
       object-fit: contain !important;
     }
+    /* Completely hide backend outage / error toast popups */
+    .Toastify__toast--error,
+    [class*="Toastify__toast--error"],
+    div[class*="Toastify"] div[class*="--error"] {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      pointer-events: none !important;
+    }
   </style>
   <script>
     (function enforceFavicon() {
@@ -37,18 +49,16 @@
     // Suppress any GitHub status / backend outage popup banners
     (function suppressOutageBanners() {
       function cleanOutageAlerts() {
-        const els = document.querySelectorAll('div, span, p');
-        els.forEach(el => {
-          if (el.children.length === 0 && (el.textContent.includes('githubstatus.com') || el.textContent.includes('experiencing an outage'))) {
-            const toast = el.closest('[class*="Toast"], [class*="toast"], [class*="Notification"], [class*="notification"]') || el.parentElement;
-            if (toast) {
-              toast.style.display = 'none';
-              toast.remove();
-            }
+        const toasts = document.querySelectorAll('.Toastify__toast, [class*="Toast"], [class*="toast"], [class*="Notification"]');
+        toasts.forEach(t => {
+          const text = t.textContent || '';
+          if (text.includes('githubstatus.com') || text.includes('experiencing an outage') || text.includes('outage') || t.classList.contains('Toastify__toast--error')) {
+            t.style.display = 'none';
+            t.remove();
           }
         });
       }
-      setInterval(cleanOutageAlerts, 150);
+      setInterval(cleanOutageAlerts, 100);
       window.addEventListener('DOMContentLoaded', cleanOutageAlerts);
     })();
   </script>

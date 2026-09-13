@@ -472,6 +472,55 @@ function isShowResultsArticle(originalTitle: string, plainText: string = ""): bo
   return false;
 }
 
+// Resilient JSON parser that handles code blocks, malformed quotes, and regex fallback
+function safeParseJson<T>(rawText: string): T | null {
+  if (!rawText) return null;
+  let text = rawText.trim();
+
+  if (text.startsWith("```")) {
+    text = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+  }
+
+  try {
+    return JSON.parse(text) as T;
+  } catch (e1) {}
+
+  const firstBrace = text.indexOf("{");
+  const lastBrace = text.lastIndexOf("}");
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    const jsonBlock = text.slice(firstBrace, lastBrace + 1);
+    try {
+      return JSON.parse(jsonBlock) as T;
+    } catch (e2) {}
+  }
+
+  // Regex extraction fallback for resilient parsing of AI responses
+  try {
+    const titleMatch = text.match(/"title"\s*:\s*"([\s\S]+?)(?<!\\)",?\s*\n/i) || text.match(/"title"\s*:\s*"([^"]+)"/i);
+    const fedMatch = text.match(/"federation"\s*:\s*"([^"]+)"/i);
+    const tagsMatch = text.match(/"tags"\s*:\s*\[([\s\S]*?)\]/i);
+    const bodyMatch = text.match(/"body_markdown"\s*:\s*"([\s\S]+?)"\s*(?:,\s*"tags"|\})/i);
+
+    if (titleMatch || bodyMatch) {
+      const tags: string[] = [];
+      if (tagsMatch) {
+        const rawTags = tagsMatch[1].match(/"([^"]+)"/g);
+        if (rawTags) {
+          rawTags.forEach(t => tags.push(t.replace(/"/g, "").trim()));
+        }
+      }
+      return {
+        title: titleMatch ? titleMatch[1].replace(/\\"/g, '"').trim() : "",
+        federation: fedMatch ? fedMatch[1].trim() : "INDIE",
+        tags: tags.length ? tags : ["أخبار المصارعة"],
+        body_markdown: bodyMatch ? bodyMatch[1].replace(/\\n/g, "\n").replace(/\\"/g, '"').trim() : ""
+      } as unknown as T;
+    }
+  } catch (e3) {}
+
+  return null;
+}
+
 // Rewrites raw English post using Gemini into high-quality Arabic journalism
 async function rewriteWithGemini(
   originalTitle: string,
@@ -582,7 +631,11 @@ ${plainText.slice(0, 4000)}
   if (!text) return null;
 
   try {
-    const parsed: RewrittenArticle = JSON.parse(text);
+    const parsed = safeParseJson<RewrittenArticle>(text);
+    if (!parsed || !parsed.title || !parsed.body_markdown) {
+      console.warn("[Watcher] safeParseJson returned incomplete object:", text.slice(0, 150));
+      return null;
+    }
 
     // Sanitize any instances of 'حلقة' to 'عرض'
     parsed.title = sanitizeWrestlingTerms(parsed.title);
@@ -859,7 +912,9 @@ async function cli() {
   const isDaemon = args.includes("--daemon");
   const isForceOne = args.includes("--force-one");
   const urlsArg = args.find(a => a.startsWith("--urls="))?.split("=").slice(1).join("=") ||
-                  args.find(a => a.startsWith("--url="))?.split("=").slice(1).join("=");
+                  args.find(a => a.startsWith("--url="))?.split("=").slice(1).join("=") ||
+                  args.find(a => a.startsWith("--post-urls="))?.split("=").slice(1).join("=") ||
+                  args.find(a => a.startsWith("--post-url="))?.split("=").slice(1).join("=");
 
   if (urlsArg) {
     const rawList = urlsArg.split(/[,\s]+/).map(u => u.trim()).filter(Boolean);

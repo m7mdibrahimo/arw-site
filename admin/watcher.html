@@ -138,6 +138,7 @@
   }
   .badge-state.added { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
   .badge-state.missing { background: var(--yellow-bg); color: #fbbf24; border: 1px solid rgba(245,158,11,.3); }
+  .badge-state.pending { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); }
 
   .post-card .actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
   .add-btn {
@@ -420,12 +421,9 @@
   async function loadWatcherState() {
     try {
       let data = null;
-      try {
-        const res = await fetch(`${API_BASE}/api/watcher/status`, { cache: "no-store" });
-        if (res.ok) data = await res.json();
-      } catch (e) {}
 
-      if (!data || !data.success) {
+      // Try local watcher-state.json first (fastest, guaranteed zero CORS issues)
+      try {
         const localRes = await fetch(`/watcher-state.json?_cb=${Date.now()}`);
         if (localRes.ok) {
           const raw = await localRes.json();
@@ -439,10 +437,21 @@
             apiCallDate: raw.apiCallDate || "",
           };
         }
+      } catch (e) {
+        console.warn("Local state fetch failed:", e);
+      }
+
+      // If not found locally, try Cloudflare Worker API endpoint
+      if (!data) {
+        const res = await fetch(`${API_BASE}/api/watcher/status?_cb=${Date.now()}`);
+        if (res.ok) {
+          data = await res.json();
+        }
       }
 
       if (data && data.success) {
         watcherState = data;
+        pendingDispatchedIds.clear();
         try {
           let rawDispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
           const now = Date.now();
@@ -452,11 +461,11 @@
           rawDispatched.forEach(item => {
             const id = typeof item === 'object' ? Number(item.id) : Number(item);
             const time = typeof item === 'object' && item.time ? Number(item.time) : 0;
-            // Purge 328200 and any items older than 3 minutes
-            if (id && id !== 328200 && (now - time) < MAX_AGE) {
-              validDispatched.push({ id, time });
-              if (!watcherState.processedIds.includes(id)) {
-                watcherState.processedIds.push(id);
+            // Purge 328200, 328233 and any items older than 3 minutes
+            if (id && id !== 328200 && id !== 328233 && (now - time) < MAX_AGE) {
+              if (!watcherState.processedIds.includes(id) && !sitePublishedSourceIds.has(id)) {
+                validDispatched.push({ id, time });
+                pendingDispatchedIds.add(id);
               }
             }
           });
@@ -620,7 +629,9 @@
 
   // Batch selection management
   function isSelectable(post) {
-    return !isPostProcessed(post);
+    if (!post) return false;
+    const pid = Number(post.id);
+    return !isPostProcessed(post) && !pendingDispatchedIds.has(pid);
   }
 
   window.toggleSelectPost = function(postId, checked) {
@@ -640,7 +651,8 @@
   };
 
   window.handleCardClick = function(event, postId) {
-    if (isPostProcessed({ id: postId })) return;
+    const pid = Number(postId);
+    if (isPostProcessed({ id: pid }) || pendingDispatchedIds.has(pid)) return;
     const isSel = selectedPosts.has(postId);
     toggleSelectPost(postId, !isSel);
   };
@@ -764,9 +776,7 @@
           });
           selectedPosts.forEach((val, pid) => {
             const numId = Number(pid);
-            if (!watcherState.processedIds.includes(numId)) {
-              watcherState.processedIds.push(numId);
-            }
+            pendingDispatchedIds.add(numId);
             if (!dispatched.some(x => (typeof x === 'object' ? x.id : x) === numId)) {
               dispatched.push({ id: numId, time: now });
             }
@@ -804,7 +814,9 @@
     }
 
     feedList.innerHTML = filtered.map(post => {
+      const pid = Number(post.id);
       const isAdded = isPostProcessed(post);
+      const isPending = !isAdded && pendingDispatchedIds.has(pid);
       const isSelected = selectedPosts.has(post.id);
       const featured = post.featured_image || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
       const cleanTitle = (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
@@ -812,20 +824,22 @@
       const postUrl = post.link || '';
 
       return `
-        <div class="post-card ${isAdded ? 'is-added' : ''} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
+        <div class="post-card ${isAdded ? 'is-added' : (isPending ? 'is-pending' : '')} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
           <div class="post-check-wrap" onclick="event.stopPropagation()">
             ${isAdded ? `
               <input type="checkbox" class="post-checkbox" disabled title="مضاف بالفعل للموقع" />
+            ` : (isPending ? `
+              <input type="checkbox" class="post-checkbox" disabled title="جاري النشر والمعالجة..." />
             ` : `
               <input type="checkbox" class="post-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectPost(${post.id}, this.checked)" />
-            `}
+            `)}
           </div>
           <img src="${featured}" onerror="this.src='/favicon.png'" alt="" />
           <div class="info">
             <div class="title-row">${cleanTitle}</div>
             <div class="meta-row">
-              <span class="badge-state ${isAdded ? 'added' : 'missing'}">
-                ${isAdded ? '✅ مضاف للموقع' : '⏳ لم يُضف بعد'}
+              <span class="badge-state ${isAdded ? 'added' : (isPending ? 'pending' : 'missing')}">
+                ${isAdded ? '✅ مضاف للموقع' : (isPending ? '⏳ جاري النشر...' : '⏳ لم يُضف بعد')}
               </span>
               <span>🕒 ${dateStr}</span>
               <span>رقم الخبر: #${post.id}</span>
@@ -834,11 +848,13 @@
           <div class="actions" onclick="event.stopPropagation()">
             ${isAdded ? `
               <span style="font-size:12px;color:var(--green);font-weight:600;">✓ تمت الإضافة</span>
+            ` : (isPending ? `
+              <span style="font-size:12px;color:#38bdf8;font-weight:600;">⏳ قيد المعالجة...</span>
             ` : `
               <button class="add-btn" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">
                 ➕ إضافة للموقع
               </button>
-            `}
+            `)}
             <a class="view-link" href="${postUrl}" target="_blank" rel="noopener">عرض المصدر ↗</a>
           </div>
         </div>
@@ -883,22 +899,20 @@
         showToast("✅ " + data.message);
         btnEl.innerHTML = '⏳ قيد المعالجة...';
         const numId = Number(postId);
-        if (!watcherState.processedIds.includes(numId)) {
-          watcherState.processedIds.push(numId);
-          try {
-            const now = Date.now();
-            let dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
-            dispatched = dispatched.filter(item => {
-              const time = typeof item === 'object' && item.time ? item.time : 0;
-              return (now - time) < 3 * 60 * 1000;
-            });
-            if (!dispatched.some(x => (typeof x === 'object' ? x.id : x) === numId)) {
-              dispatched.push({ id: numId, time: now });
-            }
-            localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
-          } catch (e) {}
-          renderFeed();
-        }
+        pendingDispatchedIds.add(numId);
+        try {
+          const now = Date.now();
+          let dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          dispatched = dispatched.filter(item => {
+            const time = typeof item === 'object' && item.time ? item.time : 0;
+            return (now - time) < 3 * 60 * 1000;
+          });
+          if (!dispatched.some(x => (typeof x === 'object' ? x.id : x) === numId)) {
+            dispatched.push({ id: numId, time: now });
+          }
+          localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
+        } catch (e) {}
+        renderFeed();
       } else {
         let errMsg = data.error || "فشل إرسال الأمر";
         if (typeof errMsg === "string" && (errMsg.includes("outage") || errMsg.includes("githubstatus"))) {
