@@ -357,7 +357,31 @@ function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bGiulia\b/gi, "جوليا")
     .replace(/\bTrick Williams\b/gi, "تريك ويليامز")
     .replace(/\bGrayson Waller\b/gi, "غرايسون والر")
-    .replace(/\bBaron Corbin\b/gi, "بارون كوربين");
+    .replace(/\bBaron Corbin\b/gi, "بارون كوربين")
+    .replace(/\bSolo\s+Sikoa\b/gi, "سولو سيكوا")
+    .replace(/\bJacob\s+Fatu\b/gi, "جاكوب فاتو")
+    .replace(/\bZilla\s+Fatu\b/gi, "زيلا فاتو")
+    .replace(/\bTama\s+Tonga\b/gi, "تاما تونغا")
+    .replace(/\bTanga\s+Loa\b/gi, "تانغا لوا")
+    .replace(/\bHikuleo\b/gi, "هيكوليو")
+    .replace(/\bJey\s+Uso\b/gi, "جاي اوسو")
+    .replace(/\bJimmy\s+Uso\b/gi, "جيمي اوسو")
+    .replace(/\bFinn\s+B[aá]lor\b/gi, "فين بالور")
+    .replace(/\bBron\s+Breakker\b/gi, "برون بريكر")
+    .replace(/\bBraun\s+Strowman\b/gi, "برون سترومان")
+    .replace(/\bRoxanne\s+Perez\b/gi, "روكسان بيريز")
+    .replace(/\bTiffany\s+Stratton\b/gi, "تيفاني ستراتون")
+    .replace(/\bJade\s+Cargill\b/gi, "جايد كارجيل")
+    .replace(/\bBianca\s+Belair\b/gi, "بيانكا بيلير")
+    .replace(/\bIyo\s+Sky\b/gi, "ايو سكاي")
+    .replace(/\bKairi\s+Sane\b/gi, "كايري سين")
+    .replace(/\bAsuka\b/gi, "اسكا")
+
+    // 6. Common wrestler name misspellings auto-correct (e.g. ستيف رولينز -> سيث رولينز)
+    .replace(/\bستيف\s+رولينز\b/g, "سيث رولينز")
+    .replace(/\bستيف\s+رولنز\b/g, "سيث رولينز")
+    .replace(/\bسيث\s+رولنز\b/g, "سيث رولينز")
+    .replace(/\bSeth\s+"?Freakin"?\s+Rollins\b/gi, "سيث رولينز");
 
   // Always strip all tashkeel / diacritics completely across all articles, titles, and tags
   return removeTashkeel(cleaned);
@@ -515,7 +539,7 @@ async function optimizeTitleForSEOAndCTR(
       - MJF يُكتب بالعربية: **ام جيه اف**
       - MVP يُكتب بالعربية: **ام في بي**
       - AJ Styles يُكتب بالعربية: **اي جي ستايلز**
-      - كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج... إلخ.
+      - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج... إلخ.
   - الألقاب والأحزمة بالعربية (لقب العالم، بطولة السيدات، بطولة القارات).
   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة).`;
   }
@@ -754,7 +778,7 @@ ${plainText.slice(0, 16000)}
      - ممنوع نهائياً: "الرو", "راو", "سماكداون", "ديناميت", "كوليجن", "إمباكت".
      - اكتب دائماً: WWE RAW, WWE SmackDown, AEW Dynamite, AEW Collision, TNA iMPACT.
       - **أسماء المصارعين والمصارعات بالعربية دائماً وحصراً (ممنوع منعاً باتاً كتابة اسم أي مصارع بالإنجليزية سواء في العنوان أو المتن)**:
-        مثل: ار تروث (ممنوع بتاتاً R-Truth)، سي ام بانك (CM Punk)، ال ايه نايت (LA Knight)، ام جيه اف (MJF)، ام في بي (MVP)، اي جي ستايلز (AJ Styles)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج.
+        مثل: سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، ار تروث (ممنوع بتاتاً R-Truth)، سي ام بانك (CM Punk)، ال ايه نايت (LA Knight)، ام جيه اف (MJF)، ام في بي (MVP)، اي جي ستايلز (AJ Styles)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج.
       - الألقاب والبطولات بالعربية (لقب العالم، بطولة الزوجي، بطولة القارات، بطولة السيدات).
       - التفاصيل، الكواليس، النزالات، الحوارات، التحليلات بالعربية.
     - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**؛ اكتب كل النصوص خالية تماماً من التشكيل لتكون سهلة وسريعة القراءة.
