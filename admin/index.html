@@ -42,6 +42,29 @@
     (function turbochargeDecap() {
       const originalFetch = window.fetch;
       const blobCache = new Map();
+      let fileOrderMap = null;
+      let fileOrderPromise = null;
+
+      function getFileOrder() {
+        if (fileOrderMap) return Promise.resolve(fileOrderMap);
+        if (!fileOrderPromise) {
+          fileOrderPromise = originalFetch('/admin-file-order.json?v=' + Date.now())
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+              if (data) {
+                fileOrderMap = {};
+                for (const section in data) {
+                  const m = new Map();
+                  data[section].forEach((fname, idx) => m.set(fname, idx));
+                  fileOrderMap[section] = m;
+                }
+              }
+              return fileOrderMap;
+            })
+            .catch(() => null);
+        }
+        return fileOrderPromise;
+      }
 
       window.fetch = async function(resource, init) {
         const url = typeof resource === 'string' ? resource : (resource ? resource.url : '');
@@ -60,7 +83,51 @@
           });
         }
 
-        // 2. Cache immutable git blobs in memory & sessionStorage
+        // 2. Sort git tree so that newest topics appear first on page 1 of Decap CMS!
+        if (url && url.includes('/git/trees/')) {
+          const res = await originalFetch(resource, init);
+          if (res.ok) {
+            try {
+              const clone = res.clone();
+              const data = await clone.json();
+              if (data && Array.isArray(data.tree) && data.tree.length > 0) {
+                let section = '';
+                if (url.includes('content%2Fnews') || url.includes('content/news')) section = 'news';
+                else if (url.includes('content%2Fshows') || url.includes('content/shows')) section = 'shows';
+                else if (url.includes('content%2Frecaps') || url.includes('content/recaps')) section = 'recaps';
+                else if (url.includes('content%2Fnostalgia-series') || url.includes('content/nostalgia-series')) section = 'nostalgia-series';
+                else if (url.includes('content%2Fnostalgia') || url.includes('content/nostalgia')) section = 'nostalgia';
+
+                const orders = await getFileOrder();
+                const sectionOrder = orders && section ? orders[section] : null;
+
+                data.tree.sort((a, b) => {
+                  const pathA = a.path || '';
+                  const pathB = b.path || '';
+                  if (sectionOrder) {
+                    const hasA = sectionOrder.has(pathA);
+                    const hasB = sectionOrder.has(pathB);
+                    if (hasA && hasB) return sectionOrder.get(pathA) - sectionOrder.get(pathB);
+                    if (!hasA && hasB) return -1; // Brand new unindexed files float to top
+                    if (hasA && !hasB) return 1;
+                  }
+                  // Fallback: sort date strings descending
+                  return pathB.localeCompare(pathA);
+                });
+
+                return new Response(JSON.stringify(data), {
+                  status: res.status,
+                  headers: res.headers
+                });
+              }
+            } catch(e) {
+              console.warn("Tree sort error:", e);
+            }
+          }
+          return res;
+        }
+
+        // 3. Cache immutable git blobs in memory & sessionStorage
         if (url && url.includes('/git/blobs/')) {
           const sha = url.split('/git/blobs/')[1]?.split('?')[0];
           if (sha) {
