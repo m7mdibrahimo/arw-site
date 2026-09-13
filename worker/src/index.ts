@@ -595,10 +595,10 @@ async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): P
 
 async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x"): Promise<void> {
   const now = Date.now();
-  const nowDate = new Date(now);
-  const nextUtcMidnight = Date.UTC(nowDate.getUTCFullYear(), nowDate.getUTCMonth(), nowDate.getUTCDate() + 1, 0, 0, 0);
-  const jitterMs = Math.floor(Math.random() * 10 * 60 * 1000); // 0–10 min jitter
-  const until = nextUtcMidnight + jitterMs;
+  // Instead of freezing until next midnight UTC (which locks out the platform for up to 24 hours),
+  // set a retry cooldown of 1 hour so the queue can clear and resume publishing during the day!
+  const jitterMs = Math.floor(Math.random() * 5 * 60 * 1000); // 0–5 min jitter
+  const until = now + (60 * 60 * 1000) + jitterMs;
 
   for (let attempt = 0; attempt < 5; attempt++) {
     let sha: string | null;
