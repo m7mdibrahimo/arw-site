@@ -144,40 +144,52 @@ async function getYouTubeThumbnailUrl(videoId: string): Promise<string | null> {
   return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 }
 
-// Extract media embeds (YouTube, Twitter/X, Instagram) from raw HTML
+// Extract media embed clean links (YouTube, Twitter/X, Instagram) from raw HTML
 function extractEmbeds(html: string): string[] {
-  const embeds: string[] = [];
+  const links: string[] = [];
+  const seenUrls = new Set<string>();
 
-  // YouTube iframes or watch links
-  const ytMatch = html.match(/https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/gi);
-  if (ytMatch) {
-    const seenIds = new Set<string>();
-    for (const link of ytMatch) {
-      const idMatch = link.match(/([a-zA-Z0-9_-]{11})$/);
-      if (idMatch && !seenIds.has(idMatch[1])) {
-        seenIds.add(idMatch[1]);
-        embeds.push(
-          `<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:24px 0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.15);"><iframe src="https://www.youtube-nocookie.com/embed/${idMatch[1]}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe></div>`
-        );
-      }
+  // 1. YouTube links (videos, shorts, embeds) -> clean URL: https://www.youtube.com/watch?v=ID
+  const ytRegex = /https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/gi;
+  let ytMatch: RegExpExecArray | null;
+  while ((ytMatch = ytRegex.exec(html)) !== null) {
+    const videoId = ytMatch[1];
+    const cleanUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    if (!seenUrls.has(cleanUrl)) {
+      seenUrls.add(cleanUrl);
+      links.push(cleanUrl);
     }
   }
 
-  // Twitter/X embeds
-  const tweetMatches = html.match(/<blockquote class="twitter-tweet"[\s\S]*?<\/blockquote>/gi);
-  if (tweetMatches) {
-    for (let tweet of tweetMatches) {
-      // Remove any tracking reference url back to fightful
-      tweet = tweet.replace(/&ref_url=https%3A%2F%2Fwww\.fightful\.com[^\s>"]*/gi, "");
-      // Skip tweets from Fightful account directly if any
-      if (/x\.com\/(?:Fightful|FightfulSelect)/i.test(tweet)) {
-        continue;
-      }
-      embeds.push(`<div class="tweet-embed" style="margin:24px auto;max-width:550px;">\n${tweet}\n</div>`);
+  // 2. Twitter / X links -> clean URL: https://x.com/USER/status/ID
+  const twRegex = /https?:\/\/(?:twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/([0-9]+)/gi;
+  let twMatch: RegExpExecArray | null;
+  while ((twMatch = twRegex.exec(html)) !== null) {
+    const user = twMatch[1];
+    const tweetId = twMatch[2];
+    if (/^(?:Fightful|FightfulSelect)$/i.test(user)) {
+      continue;
+    }
+    const cleanUrl = `https://x.com/${user}/status/${tweetId}`;
+    if (!seenUrls.has(cleanUrl)) {
+      seenUrls.add(cleanUrl);
+      links.push(cleanUrl);
     }
   }
 
-  return embeds;
+  // 3. Instagram links -> clean URL: https://www.instagram.com/p/ID/
+  const igRegex = /https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|tv)\/([a-zA-Z0-9_-]+)/gi;
+  let igMatch: RegExpExecArray | null;
+  while ((igMatch = igRegex.exec(html)) !== null) {
+    const igId = igMatch[1];
+    const cleanUrl = `https://www.instagram.com/p/${igId}/`;
+    if (!seenUrls.has(cleanUrl)) {
+      seenUrls.add(cleanUrl);
+      links.push(cleanUrl);
+    }
+  }
+
+  return links;
 }
 
 // Clean HTML to text for AI prompt
@@ -872,12 +884,13 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
   console.log(`[Watcher] Generated Arabic Title: "${rewritten.title}"`);
   console.log(`[Watcher] Federation: ${rewritten.federation} | Tags (${rewritten.tags.length}): ${rewritten.tags.join(", ")}`);
 
-  // 3. Extract media embeds and append to body
+  // 3. Extract media embeds and append clean standalone URLs to body
   const embeds = extractEmbeds(contentHtml);
-  if (ytVideoId && !embeds.some(e => e.includes(ytVideoId!))) {
-    embeds.push(
-      `<div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:24px 0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.15);"><iframe src="https://www.youtube-nocookie.com/embed/${ytVideoId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe></div>`
-    );
+  if (ytVideoId) {
+    const cleanYtUrl = `https://www.youtube.com/watch?v=${ytVideoId}`;
+    if (!embeds.includes(cleanYtUrl)) {
+      embeds.push(cleanYtUrl);
+    }
   }
   let finalBody = rewritten.body_markdown.trim();
   if (embeds.length > 0) {
