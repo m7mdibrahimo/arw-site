@@ -1095,6 +1095,39 @@ module.exports = function(eleventyConfig) {
         fs.copyFileSync(file, `_site/${file}`);
       }
     });
+
+    // Generate admin-file-order.json so Decap CMS always displays newest topics first
+    try {
+      const orderDirs = ["content/news", "content/shows", "content/recaps", "content/nostalgia", "content/nostalgia-series"];
+      const fileOrder = {};
+      orderDirs.forEach(dir => {
+        const section = dir.split("/")[1];
+        if (!fs.existsSync(dir)) return;
+        const mdFiles = fs.readdirSync(dir).filter(f => f.endsWith(".md"));
+        const items = [];
+        mdFiles.forEach(file => {
+          const content = fs.readFileSync(`${dir}/${file}`, "utf-8").slice(0, 500);
+          const m = content.match(/^date:\s*([^\n\r]+)/m) || content.match(/^event_date:\s*([^\n\r]+)/m);
+          let dateStr = m ? m[1].replace(/["\x27]/g, "").trim() : "";
+          let time = 0;
+          if (dateStr) {
+            time = new Date(dateStr).getTime() || 0;
+          } else {
+            const numMatch = file.match(/^(\d{4})(\d{2})(\d{2})/);
+            if (numMatch) {
+              time = new Date(`${numMatch[1]}-${numMatch[2]}-${numMatch[3]}`).getTime() || 0;
+            }
+          }
+          items.push({ file, time });
+        });
+        items.sort((a, b) => b.time - a.time);
+        fileOrder[section] = items.map(i => i.file);
+      });
+      fs.writeFileSync("_site/admin-file-order.json", JSON.stringify(fileOrder));
+      fs.writeFileSync("admin-file-order.json", JSON.stringify(fileOrder));
+    } catch(e) {
+      console.warn("Could not generate admin-file-order.json:", e);
+    }
   });
 
   return {
