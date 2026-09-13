@@ -502,7 +502,7 @@
 
     if (watcherState.lastChecked) {
       const d = new Date(watcherState.lastChecked);
-      statLastChecked.textContent = d.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }) + ' (' + d.toLocaleDateString('ar-EG') + ')';
+      statLastChecked.textContent = d.toLocaleTimeString('ar-EG-u-nu-latn', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit' }) + ' بتوقيت مصر (' + d.toLocaleDateString('ar-EG-u-nu-latn', { timeZone: 'Africa/Cairo' }) + ')';
     }
     statProcessedCount.textContent = `${(watcherState.processedIds || []).length} مقال`;
 
@@ -585,7 +585,11 @@
       }
 
       if (Array.isArray(posts) && posts.length) {
-        sourcePosts = posts;
+        sourcePosts = posts.sort((a, b) => {
+          const timeA = new Date(a.date_gmt ? (a.date_gmt.endsWith('Z') ? a.date_gmt : a.date_gmt + 'Z') : (a.date ? a.date + 'Z' : '')).getTime();
+          const timeB = new Date(b.date_gmt ? (b.date_gmt.endsWith('Z') ? b.date_gmt : b.date_gmt + 'Z') : (b.date ? b.date + 'Z' : '')).getTime();
+          return timeB - timeA;
+        });
         feedCountBadge.textContent = `(${posts.length} خبر)`;
         renderFeed();
       } else {
@@ -654,6 +658,21 @@
   // Keep for backwards compatibility
   function isPostProcessed(post) {
     return isPostAddedToSite(post);
+  }
+
+  // Format date strictly in Egypt/Cairo time (Africa/Cairo UTC+3)
+  function formatEgyptDate(post) {
+    if (!post) return '';
+    const dStr = post.date_gmt ? (post.date_gmt.endsWith('Z') ? post.date_gmt : post.date_gmt + 'Z') : (post.date ? (post.date.endsWith('Z') ? post.date : post.date + 'Z') : '');
+    const d = dStr ? new Date(dStr) : null;
+    if (!d || isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('ar-EG-u-nu-latn', {
+      timeZone: 'Africa/Cairo',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   }
 
   let selectedPosts = new Map(); // postId -> { id, link, title }
@@ -858,7 +877,7 @@
       const isSelected = selectedPosts.has(post.id);
       const featured = post.featured_image || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
       const cleanTitle = (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
-      const dateStr = post.date ? new Date(post.date).toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+      const dateStr = formatEgyptDate(post);
       const postUrl = post.link || '';
 
       let badgeHtml = '';

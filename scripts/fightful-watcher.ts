@@ -709,9 +709,16 @@ function generateSlug(title: string): string {
     .slice(0, 80);
 }
 
-// Format date to YYYYMMDDHHMMSS and ISO string strictly in UTC+3 (Cairo/Mecca time)
+// Format date to YYYYMMDDHHMMSS and ISO string strictly in UTC+3 (Egypt / Cairo time)
 function formatDate(dateString?: string) {
-  const d = dateString ? new Date(dateString) : new Date();
+  let d: Date;
+  if (!dateString) {
+    d = new Date();
+  } else {
+    const s = dateString.endsWith("Z") || dateString.includes("+") ? dateString : dateString + "Z";
+    d = new Date(s);
+  }
+  if (isNaN(d.getTime())) d = new Date();
   
   // Shift epoch ms by +3 hours to read UTC parts as exact local UTC+3 time
   const shifted = new Date(d.getTime() + 3 * 3600000);
