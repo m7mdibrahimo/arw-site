@@ -727,9 +727,26 @@ ${plainText.slice(0, 4000)}
   }
 }
 
+// Canonical Arabic slug matching eleventy.config.js
+function arabicSlug(str: string): string {
+  if (!str) return "";
+  return str
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .normalize("NFC")
+    .trim()
+    .toLowerCase()
+    .replace(/[\.\_\/\\]+/g, "-")
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\u0600-\u06FF\-]/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 // Generate clean Arabic slug from title
 function generateSlug(title: string): string {
-  return title
+  return arabicSlug(title) || title
     .replace(/[^\u0621-\u064A\u0660-\u0669a-zA-Z0-9\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-")
@@ -965,17 +982,41 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
     finalBody += `\n\n${embeds.join("\n\n")}`;
   }
 
-  // 4. Create markdown file
+  // 4. Create or update markdown file
   const { prefix, iso } = formatDate(effectiveDate);
-  const slug = generateSlug(rewritten.title);
-  const fileName = `${prefix}-${slug}.md`;
-  const filePath = path.join(NEWS_DIR, fileName);
+  let existingPermalink: string | null = null;
+  let targetFilePath = "";
+  let targetFileName = "";
 
+  if (existingFile) {
+    try {
+      const oldContent = fs.readFileSync(existingFile.filePath, "utf-8");
+      const pMatch = oldContent.match(/^permalink:\s*["']?([^"'\r\n]+)["']?/m);
+      if (pMatch && pMatch[1]) {
+        existingPermalink = pMatch[1].trim();
+      } else {
+        const tMatch = oldContent.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
+        if (tMatch && tMatch[1]) {
+          existingPermalink = `/news/${arabicSlug(tMatch[1])}.html`;
+        }
+      }
+    } catch (e) {}
+
+    // Maintain the EXACT same file and canonical URL permalink for 100% SEO safety & zero broken links
+    targetFilePath = existingFile.filePath;
+    targetFileName = existingFile.fileName;
+  } else {
+    const slug = generateSlug(rewritten.title);
+    targetFileName = `${prefix}-${slug}.md`;
+    targetFilePath = path.join(NEWS_DIR, targetFileName);
+  }
+
+  const permalinkYaml = existingPermalink ? `permalink: ${JSON.stringify(existingPermalink)}\n` : "";
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   const markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}
-date: ${iso}
+${permalinkYaml}date: ${iso}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
 tags:
@@ -986,33 +1027,23 @@ layout: post-layout.njk
 ${finalBody}
 `;
 
-  fs.writeFileSync(filePath, markdownContent, "utf-8");
-  console.log(`[Watcher] Successfully wrote news file: ${filePath}`);
+  fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
+  console.log(`[Watcher] Successfully ${existingFile ? "UPDATED" : "created"} news file: ${targetFilePath}`);
+  if (existingPermalink) {
+    console.log(`[Watcher] 🔒 Preserved canonical permalink: ${existingPermalink} (100% Google SEO and social links safe)`);
+  }
 
-  // If this was an update to an existing article with a different file name/path, remove the older version
-  if (existingFile && existingFile.filePath !== filePath) {
+  // Update admin-file-order.json so updated article appears at the very top of Decap CMS
+  const orderPath = path.join(process.cwd(), "admin-file-order.json");
+  if (fs.existsSync(orderPath)) {
     try {
-      if (fs.existsSync(existingFile.filePath)) {
-        fs.unlinkSync(existingFile.filePath);
-        console.log(`[Watcher] 🗑️ Removed previous version of news file: ${existingFile.fileName}`);
+      let order = JSON.parse(fs.readFileSync(orderPath, "utf-8"));
+      if (Array.isArray(order)) {
+        order = order.filter(f => f !== targetFileName);
+        order.unshift(targetFileName);
+        fs.writeFileSync(orderPath, JSON.stringify(order, null, 2), "utf-8");
       }
-      // Update admin-file-order.json if present
-      const orderPath = path.join(process.cwd(), "admin-file-order.json");
-      if (fs.existsSync(orderPath)) {
-        try {
-          let order = JSON.parse(fs.readFileSync(orderPath, "utf-8"));
-          if (Array.isArray(order)) {
-            order = order.filter(f => f !== existingFile.fileName);
-            if (!order.includes(fileName)) {
-              order.unshift(fileName);
-            }
-            fs.writeFileSync(orderPath, JSON.stringify(order, null, 2), "utf-8");
-          }
-        } catch (e) {}
-      }
-    } catch (err: any) {
-      console.warn(`[Watcher] Could not remove old news file (${existingFile.fileName}):`, err.message);
-    }
+    } catch (e) {}
   }
 
   return true;
