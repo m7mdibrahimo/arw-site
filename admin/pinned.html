@@ -473,26 +473,129 @@
     renderAvailableList();
   }
 
+  function getGitHubToken() {
+    try {
+      const decap = localStorage.getItem('decap-cms-user');
+      if (decap) {
+        const p = JSON.parse(decap);
+        if (p && p.token) return p.token;
+      }
+    } catch (e) {}
+
+    try {
+      const netlify = localStorage.getItem('netlify-cms-user');
+      if (netlify) {
+        const p = JSON.parse(netlify);
+        if (p && p.token) return p.token;
+      }
+    } catch (e) {}
+
+    const custom = localStorage.getItem('arw_github_token');
+    if (custom) return custom.trim();
+
+    return null;
+  }
+
+  async function saveToGitHub(token, items) {
+    const repo = "m7mdibrahimo/arw-site";
+    const filePath = "_data/pinned.json";
+    const branch = "main";
+    const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+
+    let sha = null;
+    try {
+      const getRes = await fetch(`${apiUrl}?ref=${branch}&_cb=${Date.now()}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+      if (getRes.ok) {
+        const fileData = await getRes.json();
+        sha = fileData.sha;
+      }
+    } catch (e) {
+      console.warn("Could not fetch existing file SHA:", e);
+    }
+
+    const jsonString = JSON.stringify(items, null, 2);
+    const base64Content = window.btoa(unescape(encodeURIComponent(jsonString)));
+
+    const putBody = {
+      message: "chore(pinned): update spotlight pinned items from admin dashboard",
+      content: base64Content,
+      branch: branch
+    };
+    if (sha) {
+      putBody.sha = sha;
+    }
+
+    const putRes = await fetch(apiUrl, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(putBody)
+    });
+
+    if (!putRes.ok) {
+      const errData = await putRes.json().catch(() => ({}));
+      throw new Error(errData.message || `HTTP ${putRes.status}`);
+    }
+
+    return await putRes.json();
+  }
+
   async function savePinnedData() {
     saveAllBtn.disabled = true;
-    saveAllBtn.innerHTML = '⏳ جاري الحفظ والتحديث...';
+    saveAllBtn.innerHTML = '⏳ جاري الحفظ والنشر...';
 
     try {
       localStorage.setItem('arw_pinned_items', JSON.stringify(pinnedItems));
 
-      const res = await fetch('/api/pinned', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(pinnedItems)
-      });
-
-      if (res.ok) {
-        showToast(`✅ تم حفظ وتحديث ${pinnedItems.length} مواضيع مثبتة بنجاح!`);
-      } else {
-        showToast("⚠️ تم الحفظ محلياً فقط (السيرفر غير متصل)", true);
+      // 1. If running on localhost and local server API is available
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (isLocalhost) {
+        try {
+          const res = await fetch('/api/pinned', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(pinnedItems)
+          });
+          if (res.ok) {
+            showToast(`✅ تم حفظ وتحديث ${pinnedItems.length} مواضيع مثبتة محلياً بنجاح!`);
+            return;
+          }
+        } catch (_) {}
       }
+
+      // 2. On live website, commit directly to GitHub repository
+      let token = getGitHubToken();
+      if (!token) {
+        const userPrompt = prompt(
+          "لم يتم العثور على جلسة تسجيل دخول نشطة.\n\nيرجى فتح لوحة التحكم الرئيسية (/admin/) لتسجيل الدخول، أو لصق GitHub Personal Access Token هنا للمتابعة:"
+        );
+        if (userPrompt && userPrompt.trim()) {
+          token = userPrompt.trim();
+          localStorage.setItem('arw_github_token', token);
+        } else {
+          showToast("⚠️ تم الحفظ في المتصفح فقط. يرجى فتح /admin/ لتسجيل الدخول أولاً ثم الحفظ.", true);
+          return;
+        }
+      }
+
+      await saveToGitHub(token, pinnedItems);
+      showToast(`🚀 تم نشر وحفظ ${pinnedItems.length} مواضيع مثبتة على الموقع الحقيقي بنجاح! سيتم التحديث خلال دقيقة.`);
     } catch (e) {
-      showToast("⚠️ تم الحفظ في المتصفح محلياً", true);
+      console.error("Save error:", e);
+      if (e.message && e.message.includes("Bad credentials")) {
+        localStorage.removeItem('arw_github_token');
+        showToast("⚠️ جلسة تسجيل الدخول منتهية. يرجى فتح /admin/ وتسجيل الدخول مجدداً.", true);
+      } else {
+        showToast(`⚠️ تعذر الحفظ على السيرفر: ${e.message}`, true);
+      }
     } finally {
       saveAllBtn.disabled = false;
       saveAllBtn.innerHTML = '<span>💾 حفظ ونشر التثبيت</span>';
