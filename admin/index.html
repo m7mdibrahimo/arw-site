@@ -70,8 +70,28 @@
         btn.style.fontWeight = 'bold';
         btn.style.textDecoration = 'none';
         btn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
-        btn.style.direction = 'rtl';
         document.body.appendChild(btn);
+
+        const watcherBtn = document.createElement('a');
+        watcherBtn.href = '/admin/watcher.html';
+        watcherBtn.target = '_blank';
+        watcherBtn.rel = 'noopener';
+        watcherBtn.textContent = '⚡ سحب الأخبار (الواتشر)';
+        watcherBtn.style.position = 'fixed';
+        watcherBtn.style.bottom = '75px';
+        watcherBtn.style.left = '20px';
+        watcherBtn.style.zIndex = '999999';
+        watcherBtn.style.background = '#10b981';
+        watcherBtn.style.color = '#fff';
+        watcherBtn.style.padding = '12px 20px';
+        watcherBtn.style.borderRadius = '12px';
+        watcherBtn.style.fontFamily = 'sans-serif';
+        watcherBtn.style.fontSize = '14px';
+        watcherBtn.style.fontWeight = 'bold';
+        watcherBtn.style.textDecoration = 'none';
+        watcherBtn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.35)';
+        watcherBtn.style.direction = 'rtl';
+        document.body.appendChild(watcherBtn);
       })();
 
       // ── Ensure site logo is rendered in the CMS header ────────────────

@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>إدارة ومراقبة سحب الأخبار التلقائي | عرب راسلنج</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+<link rel="icon" type="image/png" href="/favicon.png?v=3" />
+<link rel="shortcut icon" href="/favicon.ico?v=3" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+<style>
+  :root {
+    --bg: #0f1115; --card: #171a21; --card-hover: #1d212b; --border: #262b36;
+    --text: #e9ecf1; --muted: #8b93a5; --accent: #6366f1; --accent-hover: #7476f5;
+    --green: #22c55e; --green-bg: rgba(34,197,94,.12);
+    --red: #ef4444; --red-bg: rgba(239,68,68,.12);
+    --yellow: #f59e0b; --yellow-bg: rgba(245,158,11,.12);
+    --blue: #3b82f6; --blue-bg: rgba(59,130,246,.12);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    min-height: 100vh;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(15,17,21,.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  header .brand { display: flex; align-items: center; gap: 12px; }
+  header h1 { font-size: 18px; margin: 0; display: flex; align-items: center; gap: 10px; }
+  header .badge {
+    font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+    background: var(--accent); color: #fff;
+  }
+  header nav { display: flex; gap: 12px; align-items: center; }
+  header nav a {
+    color: var(--muted); text-decoration: none; font-size: 13px; padding: 6px 12px;
+    border-radius: 8px; border: 1px solid var(--border); transition: .15s;
+  }
+  header nav a:hover { color: var(--text); background: var(--card); border-color: #3a4150; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 24px; }
+
+  /* Top Control Card */
+  .control-card {
+    background: linear-gradient(180deg, #1a1e28 0%, #151821 100%);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 24px; margin-bottom: 24px; box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  }
+  .control-card-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border);
+  }
+  .status-badge-wrap { display: flex; align-items: center; gap: 12px; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+    border-radius: 24px; font-size: 13.5px; font-weight: 700;
+  }
+  .status-pill.active { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+  .status-pill.paused { background: var(--red-bg); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+  .status-pill .dot {
+    width: 9px; height: 9px; border-radius: 50%; display: inline-block;
+  }
+  .status-pill.active .dot { background: var(--green); box-shadow: 0 0 10px var(--green); }
+  .status-pill.paused .dot { background: var(--red); box-shadow: 0 0 10px var(--red); }
+
+  .toggle-btn {
+    padding: 10px 22px; border-radius: 10px; font-size: 13.5px; font-weight: 700;
+    cursor: pointer; border: none; transition: .2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .toggle-btn.pause-action {
+    background: var(--red); color: #fff;
+  }
+  .toggle-btn.pause-action:hover { background: #dc2626; box-shadow: 0 4px 14px rgba(239,68,68,.35); }
+  .toggle-btn.resume-action {
+    background: var(--green); color: #fff;
+  }
+  .toggle-btn.resume-action:hover { background: #16a34a; box-shadow: 0 4px 14px rgba(34,197,94,.35); }
+  .toggle-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;
+  }
+  .stat-box {
+    background: rgba(15,17,21,.5); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .stat-box .label { font-size: 11.5px; color: var(--muted); margin-bottom: 4px; }
+  .stat-box .val { font-size: 15px; font-weight: 700; color: var(--text); }
+
+  /* Feed Controls */
+  .feed-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .feed-title { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0; }
+  .feed-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-btn {
+    background: var(--card); border: 1px solid var(--border); color: var(--muted);
+    padding: 7px 14px; border-radius: 20px; font-size: 12.5px; cursor: pointer; transition: .15s;
+  }
+  .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .filter-btn:hover:not(.active) { color: var(--text); border-color: #3a4150; }
+
+  .refresh-btn {
+    background: var(--card); border: 1px solid var(--border); color: var(--text);
+    padding: 7px 14px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; transition: .15s;
+  }
+  .refresh-btn:hover { background: var(--card-hover); border-color: #3a4150; }
+
+  /* News Feed Cards */
+  .feed-list { display: flex; flex-direction: column; gap: 12px; }
+  .post-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px 18px; display: flex; align-items: center; gap: 16px; transition: .15s;
+  }
+  .post-card:hover { background: var(--card-hover); border-color: #3a4150; }
+  .post-card img {
+    width: 72px; height: 72px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+    background: #242938;
+  }
+  .post-card .info { flex: 1; min-width: 0; }
+  .post-card .title-row {
+    font-size: 14px; font-weight: 600; line-height: 1.5; margin: 0 0 6px;
+    direction: ltr; text-align: left;
+  }
+  .post-card .meta-row {
+    font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .badge-state {
+    display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+    border-radius: 12px; font-size: 11.5px; font-weight: 700;
+  }
+  .badge-state.added { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,197,94,.3); }
+  .badge-state.missing { background: var(--yellow-bg); color: #fbbf24; border: 1px solid rgba(245,158,11,.3); }
+
+  .post-card .actions { flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
+  .add-btn {
+    background: var(--accent); color: #fff; border: none; padding: 9px 16px;
+    border-radius: 8px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+    transition: .15s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .add-btn:hover { background: var(--accent-hover); box-shadow: 0 4px 12px rgba(99,102,241,.3); }
+  .add-btn:disabled { opacity: .5; cursor: not-allowed; }
+  .view-link {
+    color: var(--muted); text-decoration: none; font-size: 12px; padding: 7px 12px;
+    border-radius: 8px; border: 1px solid var(--border); transition: .15s;
+  }
+  .view-link:hover { color: var(--text); background: var(--card); }
+
+  /* Toast notification */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+    padding: 14px 20px; border-radius: 12px; font-size: 13.5px; font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4); display: none; align-items: center; gap: 10px;
+    transition: all .3s ease;
+  }
+  .toast.show { display: flex; }
+  .toast.ok { background: #166534; color: #dcfce7; border: 1px solid #22c55e; }
+  .toast.err { background: #991b1b; color: #fee2e2; border: 1px solid #ef4444; }
+
+  .spinner {
+    width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff;
+    border-radius: 50%; display: inline-block; animation: spin .7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .empty-state { text-align: center; color: var(--muted); padding: 50px 0; font-size: 14px; }
+
+  /* Selection Checkbox & Batch Controls */
+  .post-check-wrap {
+    display: flex; align-items: center; justify-content: center;
+    padding: 6px; cursor: pointer;
+  }
+  .post-checkbox {
+    width: 19px; height: 19px; cursor: pointer; accent-color: var(--accent);
+    border-radius: 5px; margin: 0;
+  }
+  .post-card { cursor: pointer; }
+  .post-card.selected {
+    border-color: var(--accent);
+    background: rgba(99, 102, 241, 0.08);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+  }
+  .post-card.is-added { cursor: default; }
+
+  .select-all-btn {
+    background: var(--card); border: 1px solid var(--border); color: #cbd5e1;
+    padding: 7px 14px; border-radius: 20px; font-size: 12.5px; cursor: pointer;
+    transition: .15s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .select-all-btn:hover { background: var(--card-hover); border-color: #4b5563; }
+  .select-all-btn.active-all {
+    background: rgba(99, 102, 241, 0.2); border-color: var(--accent); color: #fff;
+  }
+
+  /* Floating Batch Action Bar */
+  .batch-bar {
+    position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(140%);
+    background: rgba(23, 26, 33, 0.96); backdrop-filter: blur(16px);
+    border: 1px solid rgba(99, 102, 241, 0.45); border-radius: 20px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.7), 0 0 24px rgba(99, 102, 241, 0.25);
+    padding: 14px 26px; display: flex; align-items: center; gap: 20px;
+    z-index: 100; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    opacity: 0; pointer-events: none; max-width: 92vw; flex-wrap: wrap; justify-content: space-between;
+  }
+  .batch-bar.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1; pointer-events: auto;
+  }
+  .batch-bar .info-wrap {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .batch-bar .count-badge {
+    background: var(--accent); color: #fff; padding: 5px 14px; border-radius: 20px;
+    font-size: 13.5px; font-weight: 700;
+  }
+  .batch-bar .pacing-note {
+    font-size: 12.5px; color: var(--muted);
+  }
+  .batch-bar .pacing-note strong { color: #38bdf8; }
+  .batch-bar .btn-group { display: flex; align-items: center; gap: 10px; }
+
+  .batch-publish-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: #fff; border: none; padding: 10px 22px; border-radius: 12px;
+    font-size: 13.5px; font-weight: 700; cursor: pointer; display: inline-flex;
+    align-items: center; gap: 8px; transition: .2s; box-shadow: 0 4px 16px rgba(99,102,241,.4);
+  }
+  .batch-publish-btn:hover {
+    background: linear-gradient(135deg, #7476f5 0%, #5a52e8 100%);
+    box-shadow: 0 6px 22px rgba(99,102,241,.6); transform: translateY(-1px);
+  }
+  .batch-publish-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+  .batch-cancel-btn {
+    background: transparent; color: var(--muted); border: 1px solid var(--border);
+    padding: 9px 16px; border-radius: 10px; font-size: 13px; cursor: pointer; transition: .15s;
+  }
+  .batch-cancel-btn:hover { color: var(--text); background: var(--card-hover); }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-content {
+    background: #171a21; border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px 28px; width: 100%; max-width: 540px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.65);
+  }
+  .modal-content h3 { margin: 0 0 14px; font-size: 17px; color: var(--text); display: flex; align-items: center; gap: 10px; }
+  .modal-schedule-list {
+    background: rgba(15,17,21,0.7); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 16px; margin: 16px 0; font-size: 13px; line-height: 1.8;
+    max-height: 220px; overflow-y: auto;
+  }
+  .modal-schedule-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.07);
+    gap: 12px;
+  }
+  .modal-schedule-item:last-child { border-bottom: none; }
+  .modal-schedule-title {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 320px;
+    direction: ltr; text-align: left; font-size: 12.5px;
+  }
+  .modal-schedule-time {
+    color: #38bdf8; font-weight: 700; font-size: 12px; white-space: nowrap; flex-shrink: 0;
+  }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>⚡ لوحة سحب الأخبار <span class="badge">News Watcher</span></h1>
+  </div>
+  <nav>
+    <a href="/admin/publish.html">🚀 نشر السوشيال ميديا</a>
+    <a href="/admin/">← لوحة التحكم</a>
+    <a href="/" target="_blank">🌐 زيارة الموقع</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Top Control Card -->
+  <div class="control-card">
+    <div class="control-card-header">
+      <div class="status-badge-wrap">
+        <div class="status-pill active" id="status-pill">
+          <span class="dot"></span>
+          <span id="status-text">جاري التحقق من حالة الواتشر...</span>
+        </div>
+      </div>
+      <button class="toggle-btn pause-action" id="toggle-watcher-btn" disabled>
+        ⏸️ إيقاف الواتشر مؤقتاً
+      </button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="label">⏱️ الجدولة الآلية</div>
+        <div class="val">كل 15 دقيقة (GitHub Actions)</div>
+      </div>
+      <div class="stat-box">
+        <div class="label">🕒 آخر فحص تم في</div>
+        <div class="val" id="stat-last-checked">—</div>
+      </div>
+      <div class="stat-box">
+        <div class="label">📰 الأخبار المسجلة بالسجل</div>
+        <div class="val" id="stat-processed-count">—</div>
+      </div>
+      <div class="stat-box">
+        <div class="label">⚡ كوتا الذكاء الاصطناعي اليومية (Gemini)</div>
+        <div class="val" id="stat-gemini-quota" style="color:var(--green)">0 / 1,500 (آمن)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feed Section -->
+  <div class="feed-header">
+    <h2 class="feed-title">
+      📡 آخر 30 خبراً من المصدر
+      <span id="feed-count-badge" style="font-size:12px;color:var(--muted);font-weight:normal;"></span>
+    </h2>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <div class="feed-filters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="missing">غير مضاف فقط</button>
+        <button class="filter-btn" data-filter="added">مضاف بالفعل</button>
+        <button class="select-all-btn" id="select-all-btn" title="تحديد جميع الأخبار غير المضافة حالياً">
+          <span>☑️</span> <span id="select-all-btn-text">تحديد غير المضاف</span>
+        </button>
+      </div>
+      <button class="refresh-btn" id="refresh-feed-btn">
+        🔄 تحديث القائمة
+      </button>
+    </div>
+  </div>
+
+  <div id="feed-list" class="feed-list">
+    <div class="empty-state">جاري سحب آخر 30 خبراً والتحقق من حالة كل خبر على الموقع...</div>
+  </div>
+</main>
+
+<!-- Floating Batch Action Bar -->
+<div class="batch-bar" id="batch-bar">
+  <div class="info-wrap">
+    <span class="count-badge" id="batch-count-badge">0 محدد</span>
+    <span class="pacing-note">
+      ⏱️ جدولة متباعدة: <strong>فاصل 15 دقيقة</strong> بين كل خبر لحماية حسابات التواصل ومنع الحظر
+    </span>
+  </div>
+  <div class="btn-group">
+    <button class="batch-publish-btn" id="batch-publish-trigger">
+      🚀 نشر الأخبار المحددة (<span id="batch-btn-count">0</span>)
+    </button>
+    <button class="batch-cancel-btn" id="batch-cancel-btn">إلغاء التحديد</button>
+  </div>
+</div>
+
+<!-- Modal for Batch Publishing Confirmation -->
+<div class="modal-overlay" id="batch-modal">
+  <div class="modal-content">
+    <h3>⏱️ تأكيد النشر والجدولة المتباعدة</h3>
+    <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0 0 10px;">
+      لحماية صفحاتك على فيسبوك وتويتر (بافر) من الحظر التلقائي ومنع إغراق الموقع دفعة واحدة، سيتم نشر وجدولة الأخبار المحددة وفق الجدول الزمني التالي:
+    </p>
+    <div class="modal-schedule-list" id="modal-schedule-list">
+      <!-- Generated dynamically -->
+    </div>
+    <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:10px 14px;font-size:12.5px;color:#86efac;display:flex;align-items:center;gap:8px;">
+      <span>🛡️</span> <span>نظام حماية السوشيال ميديا مفعل (فاصل 10 دقائق أمان لمنع حظر فيسبوك وبافر).</span>
+    </div>
+    <div class="modal-actions">
+      <button class="batch-cancel-btn" id="modal-cancel-btn">تراجع</button>
+      <button class="batch-publish-btn" id="modal-confirm-btn">
+        🚀 تأكيد وبدء النشر المجدول
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const API_BASE = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
+  const SITE_ORIGIN = window.location.origin;
+
+  let watcherState = { enabled: true, processedIds: [], lastChecked: null };
+  let sourcePosts = [];
+  let currentFilter = 'all';
+
+  const statusPill = document.getElementById('status-pill');
+  const statusText = document.getElementById('status-text');
+  const toggleBtn = document.getElementById('toggle-watcher-btn');
+  const statLastChecked = document.getElementById('stat-last-checked');
+  const statProcessedCount = document.getElementById('stat-processed-count');
+  const statGeminiQuota = document.getElementById('stat-gemini-quota');
+  const feedList = document.getElementById('feed-list');
+  const feedCountBadge = document.getElementById('feed-count-badge');
+  const refreshFeedBtn = document.getElementById('refresh-feed-btn');
+  const toast = document.getElementById('toast');
+
+  function showToast(msg, isOk = true) {
+    toast.textContent = msg;
+    toast.className = `toast show ${isOk ? 'ok' : 'err'}`;
+    setTimeout(() => { toast.classList.remove('show'); }, 4000);
+  }
+
+  // 1. Load Watcher State (Enabled / Paused & Processed IDs)
+  async function loadWatcherState() {
+    try {
+      let data = null;
+      try {
+        const res = await fetch(`${API_BASE}/api/watcher/status`, { cache: "no-store" });
+        if (res.ok) data = await res.json();
+      } catch (e) {}
+
+      if (!data || !data.success) {
+        const localRes = await fetch(`/watcher-state.json?_cb=${Date.now()}`);
+        if (localRes.ok) {
+          const raw = await localRes.json();
+          data = {
+            success: true,
+            enabled: raw.enabled !== false,
+            lastChecked: raw.lastChecked,
+            processedCount: (raw.processedIds || []).length,
+            processedIds: raw.processedIds || [],
+            apiCallsToday: raw.apiCallsToday || 0,
+            apiCallDate: raw.apiCallDate || "",
+          };
+        }
+      }
+
+      if (data && data.success) {
+        watcherState = data;
+        updateStatusUI();
+      }
+    } catch (e) {
+      console.error("Error loading watcher state:", e);
+      statusText.textContent = "تعذر الاتصال ببيانات الواتشر";
+    }
+  }
+
+  function updateStatusUI() {
+    toggleBtn.disabled = false;
+    if (watcherState.enabled !== false) {
+      statusPill.className = "status-pill active";
+      statusText.textContent = "الواتشر نشط ويعمل تلقائياً";
+      toggleBtn.className = "toggle-btn pause-action";
+      toggleBtn.innerHTML = "⏸️ إيقاف الواتشر مؤقتاً";
+    } else {
+      statusPill.className = "status-pill paused";
+      statusText.textContent = "الواتشر متوقف مؤقتاً";
+      toggleBtn.className = "toggle-btn resume-action";
+      toggleBtn.innerHTML = "▶️ تشغيل واستئناف الواتشر";
+    }
+
+    if (watcherState.lastChecked) {
+      const d = new Date(watcherState.lastChecked);
+      statLastChecked.textContent = d.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }) + ' (' + d.toLocaleDateString('ar-EG') + ')';
+    }
+    statProcessedCount.textContent = `${(watcherState.processedIds || []).length} مقال`;
+
+    if (statGeminiQuota) {
+      const calls = watcherState.apiCallsToday || 0;
+      const pct = Math.round((calls / 1500) * 100);
+      statGeminiQuota.textContent = `${calls} / 1,500 طلب (${pct}%)`;
+      if (calls >= 1200) {
+        statGeminiQuota.style.color = "var(--red)";
+      } else if (calls >= 750) {
+        statGeminiQuota.style.color = "var(--yellow)";
+      } else {
+        statGeminiQuota.style.color = "var(--green)";
+      }
+    }
+  }
+
+  // Toggle Watcher (Pause / Resume)
+  toggleBtn.onclick = async () => {
+    const willEnable = watcherState.enabled === false;
+    if (!willEnable) {
+      if (!confirm("هل أنت متأكد من رغبتك في إيقاف سحب الأخبار التلقائي مؤقتاً؟\n(لن يتم سحب أو نشر أي خبر حتى تعيد تشغيله)")) {
+        return;
+      }
+    }
+    toggleBtn.disabled = true;
+    toggleBtn.innerHTML = '<span class="spinner"></span> جاري الحفظ...';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/watcher/toggle`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ enabled: willEnable })
+      });
+      const data = await res.json();
+      if (data.success) {
+        watcherState.enabled = data.enabled;
+        updateStatusUI();
+        showToast(data.message || (willEnable ? "تم تفعيل الواتشر بنجاح" : "تم إيقاف الواتشر مؤقتاً"));
+      } else {
+        showToast(data.error || "فشل تغيير حالة الواتشر", false);
+        toggleBtn.disabled = false;
+      }
+    } catch (e) {
+      showToast("خطأ في الاتصال بالسيرفر: " + e.message, false);
+      toggleBtn.disabled = false;
+    }
+  };
+
+  // 2. Fetch Latest 30 Source Posts
+  async function loadSourceFeed() {
+    feedList.innerHTML = '<div class="empty-state"><span class="spinner"></span> جاري جلب آخر 30 خبراً من المصدر...</div>';
+    try {
+      let posts = null;
+
+      // 1. Try local watcher-feed.json first (fastest, guaranteed zero CORS issues)
+      try {
+        const localRes = await fetch(`/watcher-feed.json?_cb=${Date.now()}`);
+        if (localRes.ok) {
+          const d = await localRes.json();
+          if (Array.isArray(d) && d.length) {
+            posts = d;
+          }
+        }
+      } catch (e) {
+        console.warn("Local feed fetch failed:", e);
+      }
+
+      // 2. If not found locally, try Cloudflare Worker API endpoint
+      if (!posts) {
+        try {
+          const res = await fetch(`${API_BASE}/api/watcher/feed?limit=30&_cb=${Date.now()}`);
+          if (res.ok) {
+            const d = await res.json();
+            if (d.success && Array.isArray(d.posts) && d.posts.length) posts = d.posts;
+          }
+        } catch (e) {
+          console.warn("Worker feed fetch failed:", e);
+        }
+      }
+
+      if (Array.isArray(posts) && posts.length) {
+        sourcePosts = posts;
+        feedCountBadge.textContent = `(${posts.length} خبر)`;
+        renderFeed();
+      } else {
+        feedList.innerHTML = `
+          <div class="empty-state">
+            <p>⚠️ تعذر جلب قائمة الأخبار حالياً. تأكد من وجود ملف watcher-feed.json أو تحديثه.</p>
+            <button class="refresh-btn" onclick="loadSourceFeed()" style="margin:10px auto;">🔄 إعادة المحاولة</button>
+          </div>
+        `;
+      }
+    } catch (e) {
+      feedList.innerHTML = `
+        <div class="empty-state">
+          <p>❌ خطأ في جلب التغذية: ${e.message}</p>
+          <button class="refresh-btn" onclick="loadSourceFeed()" style="margin:10px auto;">🔄 إعادة المحاولة</button>
+        </div>
+      `;
+    }
+  }
+
+  function isPostProcessed(post) {
+    if (!watcherState.processedIds) return false;
+    return watcherState.processedIds.includes(post.id);
+  }
+
+  let selectedPosts = new Map(); // postId -> { id, link, title }
+
+  // Batch selection management
+  function isSelectable(post) {
+    return !isPostProcessed(post);
+  }
+
+  window.toggleSelectPost = function(postId, checked) {
+    const post = sourcePosts.find(p => p.id === postId);
+    if (!post) return;
+
+    if (checked) {
+      selectedPosts.set(postId, {
+        id: post.id,
+        link: post.link,
+        title: (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'")
+      });
+    } else {
+      selectedPosts.delete(postId);
+    }
+    updateBatchUI();
+  };
+
+  window.handleCardClick = function(event, postId) {
+    if (isPostProcessed({ id: postId })) return;
+    const isSel = selectedPosts.has(postId);
+    toggleSelectPost(postId, !isSel);
+  };
+
+  function toggleSelectAll() {
+    const unadded = sourcePosts.filter(isSelectable);
+    const allSelected = unadded.length > 0 && unadded.every(p => selectedPosts.has(p.id));
+
+    if (allSelected) {
+      unadded.forEach(p => selectedPosts.delete(p.id));
+    } else {
+      unadded.forEach(p => {
+        selectedPosts.set(p.id, {
+          id: p.id,
+          link: p.link,
+          title: (p.title?.rendered || p.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'")
+        });
+      });
+    }
+    renderFeed();
+    updateBatchUI();
+  }
+
+  function updateBatchUI() {
+    const count = selectedPosts.size;
+    const batchBar = document.getElementById('batch-bar');
+    const countBadge = document.getElementById('batch-count-badge');
+    const btnCount = document.getElementById('batch-btn-count');
+    const selectAllBtn = document.getElementById('select-all-btn');
+    const selectAllText = document.getElementById('select-all-btn-text');
+
+    const unadded = sourcePosts.filter(isSelectable);
+    const allSelected = unadded.length > 0 && unadded.every(p => selectedPosts.has(p.id));
+
+    if (selectAllBtn && selectAllText) {
+      if (allSelected && unadded.length > 0) {
+        selectAllBtn.classList.add('active-all');
+        selectAllText.textContent = `إلغاء تحديد الكل (${unadded.length})`;
+      } else {
+        selectAllBtn.classList.remove('active-all');
+        selectAllText.textContent = `تحديد غير المضاف (${unadded.length})`;
+      }
+    }
+
+    if (count > 0) {
+      batchBar.classList.add('visible');
+      countBadge.textContent = `${count} محدد`;
+      btnCount.textContent = count;
+    } else {
+      batchBar.classList.remove('visible');
+    }
+
+    // Sync card active states and checkboxes in DOM
+    document.querySelectorAll('.post-card').forEach(card => {
+      const pid = Number(card.dataset.id);
+      const isSel = selectedPosts.has(pid);
+      card.classList.toggle('selected', isSel);
+      const chk = card.querySelector('.post-checkbox');
+      if (chk) chk.checked = isSel;
+    });
+  }
+
+  function clearSelection() {
+    selectedPosts.clear();
+    updateBatchUI();
+  }
+
+  document.getElementById('select-all-btn').onclick = toggleSelectAll;
+
+  // Batch Publish Trigger & Modal Handling
+  const batchModal = document.getElementById('batch-modal');
+  const modalScheduleList = document.getElementById('modal-schedule-list');
+  const modalConfirmBtn = document.getElementById('modal-confirm-btn');
+  const modalCancelBtn = document.getElementById('modal-cancel-btn');
+  const batchCancelBtn = document.getElementById('batch-cancel-btn');
+
+  document.getElementById('batch-publish-trigger').onclick = () => {
+    if (selectedPosts.size === 0) return;
+
+    const list = Array.from(selectedPosts.values());
+    const now = Date.now();
+    modalScheduleList.innerHTML = list.map((item, idx) => {
+      const staggerMin = idx * 15;
+      const scheduledTime = new Date(now + staggerMin * 60 * 1000);
+      const timeLabel = idx === 0 
+        ? "⚡ فوراً الآن" 
+        : `🕒 بعد ${staggerMin} دقيقة (${scheduledTime.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })})`;
+      
+      return `
+        <div class="modal-schedule-item">
+          <span class="modal-schedule-title">${item.title}</span>
+          <span class="modal-schedule-time">${timeLabel}</span>
+        </div>
+      `;
+    }).join('');
+
+    batchModal.classList.add('open');
+  };
+
+  modalCancelBtn.onclick = () => {
+    batchModal.classList.remove('open');
+  };
+  batchCancelBtn.onclick = clearSelection;
+
+  modalConfirmBtn.onclick = async () => {
+    if (selectedPosts.size === 0) return;
+    const urls = Array.from(selectedPosts.values()).map(p => p.link);
+
+    modalConfirmBtn.disabled = true;
+    modalConfirmBtn.innerHTML = '<span class="spinner"></span> جاري بدء الجدولة...';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/watcher/dispatch`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ urls: urls })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast(`✅ ${data.message || `تم بدء جدولة ونشر ${urls.length} أخبار بنجاح!`}`);
+        batchModal.classList.remove('open');
+        selectedPosts.forEach((val, pid) => {
+          if (!watcherState.processedIds.includes(pid)) {
+            watcherState.processedIds.push(pid);
+          }
+        });
+        clearSelection();
+        renderFeed();
+      } else {
+        showToast("❌ " + (data.error || "فشل إرسال الجدولة"), false);
+      }
+    } catch (e) {
+      showToast("❌ خطأ في الاتصال: " + e.message, false);
+    } finally {
+      modalConfirmBtn.disabled = false;
+      modalConfirmBtn.innerHTML = '🚀 تأكيد وبدء النشر المجدول';
+    }
+  };
+
+  function renderFeed() {
+    let filtered = sourcePosts.filter(p => {
+      const added = isPostProcessed(p);
+      if (currentFilter === 'added') return added;
+      if (currentFilter === 'missing') return !added;
+      return true;
+    });
+
+    if (!filtered.length) {
+      feedList.innerHTML = '<div class="empty-state">لا توجد أخبار مطابقة للتصفية الحالية.</div>';
+      return;
+    }
+
+    feedList.innerHTML = filtered.map(post => {
+      const isAdded = isPostProcessed(post);
+      const isSelected = selectedPosts.has(post.id);
+      const featured = post.featured_image || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
+      const cleanTitle = (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
+      const dateStr = post.date ? new Date(post.date).toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
+      const postUrl = post.link || '';
+
+      return `
+        <div class="post-card ${isAdded ? 'is-added' : ''} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
+          <div class="post-check-wrap" onclick="event.stopPropagation()">
+            ${isAdded ? `
+              <input type="checkbox" class="post-checkbox" disabled title="مضاف بالفعل للموقع" />
+            ` : `
+              <input type="checkbox" class="post-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectPost(${post.id}, this.checked)" />
+            `}
+          </div>
+          <img src="${featured}" onerror="this.src='/favicon.png'" alt="" />
+          <div class="info">
+            <div class="title-row">${cleanTitle}</div>
+            <div class="meta-row">
+              <span class="badge-state ${isAdded ? 'added' : 'missing'}">
+                ${isAdded ? '✅ مضاف للموقع' : '⏳ لم يُضف بعد'}
+              </span>
+              <span>🕒 ${dateStr}</span>
+              <span>رقم الخبر: #${post.id}</span>
+            </div>
+          </div>
+          <div class="actions" onclick="event.stopPropagation()">
+            ${isAdded ? `
+              <span style="font-size:12px;color:var(--green);font-weight:600;">✓ تمت الإضافة</span>
+            ` : `
+              <button class="add-btn" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">
+                ➕ إضافة للموقع
+              </button>
+            `}
+            <a class="view-link" href="${postUrl}" target="_blank" rel="noopener">عرض المصدر ↗</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    updateBatchUI();
+  }
+
+  // Filter Buttons
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.onclick = () => {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      b.classList.add('active');
+      currentFilter = b.dataset.filter;
+      renderFeed();
+    };
+  });
+
+  refreshFeedBtn.onclick = () => {
+    loadWatcherState().then(loadSourceFeed);
+  };
+
+  // Trigger manual processing of a specific post
+  window.triggerManualAdd = async function(encodedUrl, postId, btnEl) {
+    const postUrl = decodeURIComponent(encodedUrl);
+    if (!confirm(`هل تريد سحب وترجمة هذا الخبر ونشره على الموقع والسوشيال ميديا الآن؟\n\n${postUrl}`)) {
+      return;
+    }
+
+    btnEl.disabled = true;
+    btnEl.innerHTML = '<span class="spinner"></span> جاري الإرسال...';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/watcher/dispatch`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ post_url: postUrl })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast("✅ " + data.message);
+        btnEl.innerHTML = '⏳ قيد المعالجة...';
+        if (!watcherState.processedIds.includes(postId)) {
+          watcherState.processedIds.push(postId);
+          renderFeed();
+        }
+      } else {
+        showToast("❌ " + (data.error || "فشل إرسال الأمر"), false);
+        btnEl.disabled = false;
+        btnEl.innerHTML = '➕ إضافة للموقع';
+      }
+    } catch (e) {
+      showToast("❌ خطأ في الاتصال: " + e.message, false);
+      btnEl.disabled = false;
+      btnEl.innerHTML = '➕ إضافة للموقع';
+    }
+  };
+
+  // Init
+  loadWatcherState().then(loadSourceFeed);
+</script>
+</body>
+</html>

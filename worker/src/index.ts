@@ -334,6 +334,83 @@ async function githubWriteState(
   return { ok: true };
 }
 
+async function githubReadWatcherState(env: Env): Promise<{ sha: string | null; state: { enabled: boolean; processedIds: number[]; lastChecked: string; apiCallsToday?: number; apiCallDate?: string } }> {
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/watcher-state.json?ref=${env.GITHUB_BRANCH}`;
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "User-Agent": "arw-site-bot",
+    },
+  });
+  if (res.status === 404) return { sha: null, state: { enabled: true, processedIds: [], lastChecked: new Date().toISOString(), apiCallsToday: 0, apiCallDate: new Date().toISOString().slice(0, 10) } };
+  if (!res.ok) {
+    const errBody = await res.text().catch(() => "");
+    throw new Error(`GitHub read watcher-state failed: ${res.status} ${errBody}`);
+  }
+  const data: any = await res.json();
+  const state = JSON.parse(base64DecodeUtf8(data.content.replace(/\n/g, "")));
+  return {
+    sha: data.sha,
+    state: {
+      enabled: state.enabled !== false,
+      processedIds: Array.isArray(state.processedIds) ? state.processedIds : [],
+      lastChecked: state.lastChecked || new Date().toISOString(),
+      apiCallsToday: typeof state.apiCallsToday === "number" ? state.apiCallsToday : 0,
+      apiCallDate: state.apiCallDate || "",
+    },
+  };
+}
+
+async function githubWriteWatcherState(
+  env: Env,
+  state: any,
+  sha: string | null,
+  message: string
+): Promise<{ ok: boolean }> {
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/watcher-state.json`;
+  const body: any = {
+    message,
+    content: base64EncodeUtf8(JSON.stringify(state, null, 2)),
+    branch: env.GITHUB_BRANCH,
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+      "User-Agent": "arw-site-bot",
+    },
+    body: JSON.stringify(body),
+  });
+  return { ok: res.ok };
+}
+
+async function githubTriggerWatcherWorkflow(env: Env, postUrl?: string): Promise<{ ok: boolean; status: number; error?: string }> {
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/fightful-watcher.yml/dispatches`;
+  const body: any = {
+    ref: env.GITHUB_BRANCH || "main",
+    inputs: postUrl ? { post_url: postUrl } : {},
+  };
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+      "User-Agent": "arw-site-bot",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const txt = await res.text().catch(() => "");
+    return { ok: false, status: res.status, error: txt };
+  }
+  return { ok: true, status: res.status };
+}
+
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
 async function claimSend(env: Env, platform: Platform, key: string): Promise<boolean> {
@@ -1041,6 +1118,30 @@ async function runWatcherPoll(env: Env): Promise<void> {
     const fullyDone = state.telegram[key] && state.facebook[key] && state.instagram[key] && state.x[key];
     if (fullyDone) continue;
 
+    // Enforce intelligent anti-spam delay between social media posts:
+    // Facebook algorithms flag rapid successive posting as spam / bot activity,
+    // and Buffer has queue/channel burst rate limits.
+    // We enforce a minimum safe spacing of at least 10 minutes between new posts on Facebook & X.
+    const MIN_SOCIAL_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes safe cooldown
+    let lastSocialPostTime = 0;
+    if (state.facebook) {
+      for (const t of Object.values(state.facebook)) {
+        if (typeof t === "number" && t > lastSocialPostTime) lastSocialPostTime = t;
+      }
+    }
+    if (state.x) {
+      for (const t of Object.values(state.x)) {
+        if (typeof t === "number" && t > lastSocialPostTime) lastSocialPostTime = t;
+      }
+    }
+    const timeSinceLastSocial = Date.now() - lastSocialPostTime;
+
+    if (lastSocialPostTime > 0 && timeSinceLastSocial < MIN_SOCIAL_INTERVAL_MS) {
+      const waitMin = Math.ceil((MIN_SOCIAL_INTERVAL_MS - timeSinceLastSocial) / 60000);
+      console.log(`[Watcher] ⏳ Social pacing active (Buffer & Facebook anti-ban protection). Last post was ${Math.round(timeSinceLastSocial / 60000)}m ago. Waiting ${waitMin}m before publishing next post.`);
+      return; // Safe exit: Cloudflare cron runs every minute and will resume when cooldown passes!
+    }
+
     // Only spend the verify+publish subrequests on items that actually
     // still need something. Every new item still goes through Telegram
     // first (as before) since Facebook/Instagram captions reuse its body.
@@ -1338,12 +1439,83 @@ export default {
       //    existing extractTelegramPayload() call — no longer sends
       //    anything itself, the watcher (cron) owns all real publishing.
       //    Kept only so old cached admin/index.html versions don't error.
-      if (path === "/api/telegram/post" && request.method === "POST") {
-        return json({
-          success: true,
-          queued: true,
-          message: "النشر التلقائي بيحصل عن طريق الـ watcher (كل دقيقة) — مفيش حاجة تانية تتعمل هنا.",
+      // ── News Watcher management (used by admin/watcher.html) ──
+      if (path === "/api/watcher/feed" && request.method === "GET") {
+        const limit = Math.min(Number(url.searchParams.get("limit")) || 30, 50);
+        const feedUrl = `https://www.fightful.com/wp-json/wp/v2/posts?_embed=1&per_page=${limit}`;
+        const res = await fetch(feedUrl, {
+          headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" },
         });
+        if (!res.ok) {
+          return json({ success: false, error: `Failed to fetch source API: HTTP ${res.status}` }, 502);
+        }
+        const data = await res.json();
+        return json({ success: true, count: Array.isArray(data) ? data.length : 0, posts: data });
+      }
+
+      if (path === "/api/watcher/status" && request.method === "GET") {
+        try {
+          const { state } = await githubReadWatcherState(env);
+          return json({
+            success: true,
+            enabled: state.enabled,
+            lastChecked: state.lastChecked,
+            processedCount: state.processedIds.length,
+            processedIds: state.processedIds,
+            apiCallsToday: state.apiCallsToday || 0,
+            apiCallDate: state.apiCallDate || "",
+          });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/watcher/toggle" && request.method === "POST") {
+        try {
+          const { sha, state } = await githubReadWatcherState(env);
+          const body: any = await request.json().catch(() => ({}));
+          const newEnabled = typeof body.enabled === "boolean" ? body.enabled : !state.enabled;
+          state.enabled = newEnabled;
+          const res = await githubWriteWatcherState(
+            env,
+            state,
+            sha,
+            `chore(watcher): ${newEnabled ? "resume" : "pause"} automated news watcher`
+          );
+          if (!res.ok) throw new Error("Failed to write watcher-state.json to GitHub");
+          return json({
+            success: true,
+            enabled: state.enabled,
+            message: state.enabled ? "تم استئناف تشغيل الواتشر بنجاح" : "تم إيقاف الواتشر مؤقتاً بنجاح",
+          });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/watcher/dispatch" && request.method === "POST") {
+        try {
+          const body: any = await request.json().catch(() => ({}));
+          const postUrl = body.post_url ? String(body.post_url).trim() : undefined;
+          const urls: string[] = Array.isArray(body.urls)
+            ? body.urls.map((u: any) => String(u).trim()).filter(Boolean)
+            : (postUrl ? [postUrl] : []);
+
+          const dispatchPayload = urls.length > 0 ? urls.join(",") : undefined;
+          const res = await githubTriggerWatcherWorkflow(env, dispatchPayload);
+          if (!res.ok) throw new Error(`GitHub dispatch failed: ${res.status} ${res.error || ""}`);
+          return json({
+            success: true,
+            count: urls.length,
+            message: urls.length > 1
+              ? `تم إرسال أمر جدولة ونشر ${urls.length} أخبار بجدولة متباعدة (كل 15 دقيقة) بنجاح!`
+              : (urls.length === 1
+                  ? "تم إرسال أمر إضافة الخبر إلى GitHub Actions للبدء في معالجته ونشره فوراً!"
+                  : "تم تشغيل دورة فحص الأخبار بالكامل على السيرفر بنجاح!"),
+          });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
+        }
       }
 
       return json({ success: false, error: "Not found" }, 404);

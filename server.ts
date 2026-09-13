@@ -657,6 +657,9 @@ const fbInFlight = new Set<string>();
 const igInFlight = new Set<string>();
 const xInFlight = new Set<string>();
 
+let lastServerSocialPostTime = 0;
+const MIN_SOCIAL_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes safe interval
+
 function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; fullText?: string; url: string; image?: string; kind?: string }) {
   const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image) : undefined;
 
@@ -664,9 +667,20 @@ function crossPostToFacebookAndInstagram(key: string, item: { title: string; tex
     fbInFlight.add(key);
     (async () => {
       try {
+        const timeSince = Date.now() - lastServerSocialPostTime;
+        if (lastServerSocialPostTime > 0 && timeSince < MIN_SOCIAL_INTERVAL_MS) {
+          const waitMs = MIN_SOCIAL_INTERVAL_MS - timeSince;
+          console.log(`[Facebook Pacing] Cooldown active. Waiting ${Math.ceil(waitMs / 60000)}m before publishing to Facebook.`);
+          await new Promise(r => setTimeout(r, waitMs));
+        }
+
         if (!(await claimSend("facebook", key))) return;
         const r = await postToFacebook({ title: item.title, text: item.text, fullText: item.fullText, url: item.url, imageUrl, kind: item.kind });
-        if (!r.ok) await releaseSendClaim("facebook", key); // failed — let a later attempt retry
+        if (r.ok) {
+          lastServerSocialPostTime = Date.now();
+        } else {
+          await releaseSendClaim("facebook", key); // failed — let a later attempt retry
+        }
       } catch (e) {
         console.error("[Facebook] Unexpected error:", e);
         await releaseSendClaim("facebook", key);
@@ -696,9 +710,20 @@ function crossPostToFacebookAndInstagram(key: string, item: { title: string; tex
     xInFlight.add(key);
     (async () => {
       try {
+        const timeSince = Date.now() - lastServerSocialPostTime;
+        if (lastServerSocialPostTime > 0 && timeSince < MIN_SOCIAL_INTERVAL_MS) {
+          const waitMs = MIN_SOCIAL_INTERVAL_MS - timeSince;
+          console.log(`[X/Buffer Pacing] Cooldown active. Waiting ${Math.ceil(waitMs / 60000)}m before publishing to X.`);
+          await new Promise(r => setTimeout(r, waitMs));
+        }
+
         if (!(await claimSend("x", key))) return;
         const r = await postToXViaBuffer({ title: item.title, text: item.text, url: item.url });
-        if (!r.ok) await releaseSendClaim("x", key); // failed — let a later attempt retry
+        if (r.ok) {
+          lastServerSocialPostTime = Date.now();
+        } else {
+          await releaseSendClaim("x", key); // failed — let a later attempt retry
+        }
       } catch (e) {
         console.error("[X/Buffer] Unexpected error:", e);
         await releaseSendClaim("x", key);

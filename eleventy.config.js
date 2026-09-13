@@ -488,26 +488,35 @@ module.exports = function(eleventyConfig) {
     return 0;
   };
 
+  const isNotFuture = function(item) {
+    const ts = getItemTimestamp(item);
+    // If the post has a date more than 2 minutes in the future, it is scheduled and hidden until that time
+    if (ts && ts > (Date.now() + 120000)) {
+      return false;
+    }
+    return true;
+  };
+
   eleventyConfig.addCollection("shows", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/shows/*.md")
-      .filter(item => !(item.data && item.data.nostalgia_series) && !(item.data && item.data.tags && (Array.isArray(item.data.tags) ? (item.data.tags.includes("nostalgia") || item.data.tags.includes("نوستالجيا")) : (item.data.tags === "nostalgia" || item.data.tags === "نوستالجيا"))))
+      .filter(item => isNotFuture(item) && !(item.data && item.data.nostalgia_series) && !(item.data && item.data.tags && (Array.isArray(item.data.tags) ? (item.data.tags.includes("nostalgia") || item.data.tags.includes("نوستالجيا")) : (item.data.tags === "nostalgia" || item.data.tags === "نوستالجيا"))))
       .sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("recaps", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/recaps/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    return collectionApi.getFilteredByGlob("content/recaps/*.md").filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("news", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/news/*.md").sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    return collectionApi.getFilteredByGlob("content/news/*.md").filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("nostalgiaShows", function(collectionApi) {
-    return collectionApi.getFilteredByGlob(["content/nostalgia/*.md", "content/nostalgia-series/*.md"]).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    return collectionApi.getFilteredByGlob(["content/nostalgia/*.md", "content/nostalgia-series/*.md"]).filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("allContent", function(collectionApi) {
-    const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]);
+    const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]).filter(isNotFuture);
     shows.forEach(function(i){ i.kind = "show"; });
-    const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md");
+    const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md").filter(isNotFuture);
     recaps.forEach(function(i){ i.kind = "recap"; });
-    const news = collectionApi.getFilteredByGlob("content/news/*.md");
+    const news = collectionApi.getFilteredByGlob("content/news/*.md").filter(isNotFuture);
     news.forEach(function(i){ i.kind = "news"; });
     return shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
@@ -1035,6 +1044,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("admin/publish.html");
+  eleventyConfig.addPassthroughCopy("admin/watcher.html");
+  eleventyConfig.addPassthroughCopy("watcher-state.json");
+  eleventyConfig.addPassthroughCopy("watcher-feed.json");
   eleventyConfig.addPassthroughCopy("content/images");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("sw.js");
