@@ -745,8 +745,7 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
   }
 
   const batchLimit = options.maxCount || 20;
-  const maxPerRun = options.maxPerRun || 1; // Default: 1 article per 15-minute cycle to prevent flood
-  console.log(`[Watcher] Checking for new posts at ${new Date().toLocaleTimeString()} (Batch: ${batchLimit}, Max Per Run: ${options.forceLatest ? 'Unlimited' : maxPerRun})...`);
+  console.log(`[Watcher] Checking for new posts at ${new Date().toLocaleTimeString()} (Batch: ${batchLimit})...`);
 
   try {
     const posts = await fetchLatestFightfulPosts(batchLimit);
@@ -776,12 +775,6 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
         saveState(state);
         processedCount++;
 
-        // Staggered pacing: limit automated publishing to maxPerRun (default 1) per cycle.
-        // This prevents dumping multiple articles simultaneously onto the site, Facebook, and Buffer!
-        if (!options.forceLatest && processedCount >= maxPerRun) {
-          console.log(`[Watcher] ⏳ Paced release: successfully published ${processedCount} article this cycle. Remaining articles will be published in subsequent 15-minute cycles to protect social media accounts.`);
-          break;
-        }
 
         // Pause 2 seconds between posts to respect API rate limits
         await new Promise(r => setTimeout(r, 2000));
@@ -808,11 +801,10 @@ async function cli() {
   const isForceOne = args.includes("--force-one");
   const urlsArg = args.find(a => a.startsWith("--urls="))?.split("=").slice(1).join("=") ||
                   args.find(a => a.startsWith("--url="))?.split("=").slice(1).join("=");
-  const staggerArg = Number(args.find(a => a.startsWith("--stagger="))?.split("=")[1]) || 15;
 
   if (urlsArg) {
     const rawList = urlsArg.split(/[,\s]+/).map(u => u.trim()).filter(Boolean);
-    console.log(`[Watcher] Processing batch of ${rawList.length} articles with ${staggerArg}m safe interval...`);
+    console.log(`[Watcher] Processing batch of ${rawList.length} articles immediately...`);
     const state = loadState();
     let successCount = 0;
     for (let i = 0; i < rawList.length; i++) {
@@ -832,9 +824,9 @@ async function cli() {
         });
         const posts: any = await res.json();
         if (Array.isArray(posts) && posts[0]) {
-          // First post publishes now; subsequent posts get staggered by i * staggerArg minutes
-          const publishTime = (i === 0) ? new Date() : new Date(Date.now() + i * staggerArg * 60 * 1000);
-          console.log(`[Watcher] Scheduled release time: ${publishTime.toISOString()} (+${i * staggerArg}m)`);
+          // All posts publish immediately at current time
+          const publishTime = new Date();
+          console.log(`[Watcher] Publish time: ${publishTime.toISOString()} (Immediate)`);
           const ok = await processPost(posts[0], publishTime);
           if (ok) {
             successCount++;

@@ -1108,44 +1108,46 @@ async function runWatcherPoll(env: Env): Promise<void> {
   // ("exceededCpu") every minute — most of that 10ms budget was spent
   // walking thousands of already-irrelevant old items before ever reaching
   // the handful of recent ones that actually matter.
+  let processedInThisTick = 0;
+  const MAX_PER_TICK = 5; // Allow publishing up to 5 items simultaneously in the same tick
+
   for (const item of items) {
+    if (processedInThisTick >= MAX_PER_TICK) break;
+
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (minDate && ts && ts < minDate) break; // pre-cutover content — never auto-published, and nothing after this point is newer
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
 
-    const fullyDone = state.telegram[key] && state.facebook[key] && state.instagram[key] && state.x[key];
-    if (fullyDone) continue;
+    const tgDone = !!state.telegram[key];
+    const fbDone = !!state.facebook[key];
+    const igDone = !!state.instagram[key];
+    const xDone = !!state.x[key];
 
-    // Enforce intelligent anti-spam delay between social media posts:
-    // Facebook algorithms flag rapid successive posting as spam / bot activity,
-    // and Buffer has queue/channel burst rate limits.
-    // We enforce a minimum safe spacing of at least 10 minutes between new posts on Facebook & X.
-    const MIN_SOCIAL_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes safe cooldown
-    let lastSocialPostTime = 0;
-    if (state.facebook) {
-      for (const t of Object.values(state.facebook)) {
-        if (typeof t === "number" && t > lastSocialPostTime) lastSocialPostTime = t;
-      }
-    }
-    if (state.x) {
-      for (const t of Object.values(state.x)) {
-        if (typeof t === "number" && t > lastSocialPostTime) lastSocialPostTime = t;
-      }
-    }
-    const timeSinceLastSocial = Date.now() - lastSocialPostTime;
+    // If completely done on all platforms, skip
+    if (tgDone && fbDone && igDone && xDone) continue;
 
-    if (lastSocialPostTime > 0 && timeSinceLastSocial < MIN_SOCIAL_INTERVAL_MS) {
-      const waitMin = Math.ceil((MIN_SOCIAL_INTERVAL_MS - timeSinceLastSocial) / 60000);
-      console.log(`[Watcher] ⏳ Social pacing active (Buffer & Facebook anti-ban protection). Last post was ${Math.round(timeSinceLastSocial / 60000)}m ago. Waiting ${waitMin}m before publishing next post.`);
-      return; // Safe exit: Cloudflare cron runs every minute and will resume when cooldown passes!
+    // Check platform cooldowns (e.g. daily limit hit on Buffer)
+    const now = Date.now();
+    const fbCooldown = (state.cooldowns?.facebook || 0) > now;
+    const xCooldown = (state.cooldowns?.x || 0) > now;
+
+    // Determine what can actually be attempted right now
+    const canDoTg = !tgDone;
+    const canDoIg = !igDone;
+    const canDoFb = !fbDone && !fbCooldown;
+    const canDoX = !xDone && !xCooldown;
+
+    // If nothing actionable can be done for this item (e.g. only Facebook is missing and it's in daily cooldown),
+    // skip it so subsequent articles in the queue are never blocked!
+    if (!canDoTg && !canDoIg && !canDoFb && !canDoX) {
+      continue;
     }
 
-    // Only spend the verify+publish subrequests on items that actually
-    // still need something. Every new item still goes through Telegram
-    // first (as before) since Facebook/Instagram captions reuse its body.
-    if (!state.telegram[key]) {
+    let didWork = false;
+
+    if (!tgDone) {
       const verify = await verifyLiveOnSite(env, { url: item.url, image: item.image });
       if (!verify.ok) continue; // not fully live yet — try again next minute
 
@@ -1157,34 +1159,41 @@ async function runWatcherPoll(env: Env): Promise<void> {
       };
 
       const tgResult = await publishToPlatform(env, "telegram", key, payload, verify, false);
-      if (tgResult.status !== "sent") continue; // failed or already handled — Facebook/Instagram wait for a confirmed Telegram post like before
+      if (tgResult.status !== "sent") continue; // failed or already handled
+      didWork = true;
 
       if (collection === "shows" || collection === "recaps") {
         await sendPushToAllSubscribers(env, { ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
       }
 
-      await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
-      await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
-      await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+      if (canDoFb) await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+      if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
+      if (canDoX) await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
     } else {
-      // Telegram already sent on an earlier tick — just catch up any
-      // platform that's still missing (e.g. Instagram failed processing
-      // last time and its claim was released).
+      // Telegram already sent — catch up any missing platforms immediately
       let catchUpText = item.headline || item.description || "";
       if (!catchUpText) {
         const v = await verifyLiveOnSite(env, { url: item.url, image: item.image });
         catchUpText = v.bodySnippet || "";
       }
       const payload = { title: item.title, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
-      if (!state.facebook[key]) await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
-      if (!state.instagram[key]) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
-      if (!state.x[key]) await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+      if (canDoFb) {
+        await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+        didWork = true;
+      }
+      if (canDoIg) {
+        await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
+        didWork = true;
+      }
+      if (canDoX) {
+        await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+        didWork = true;
+      }
     }
 
-    // Keep each cron tick bounded — handle at most one item needing real
-    // publish work per minute. Anything else waits for the next tick;
-    // nothing is lost, dedup state already lives in GitHub.
-    break;
+    if (didWork) {
+      processedInThisTick++;
+    }
   }
 }
 
@@ -1508,7 +1517,7 @@ export default {
             success: true,
             count: urls.length,
             message: urls.length > 1
-              ? `تم إرسال أمر جدولة ونشر ${urls.length} أخبار بجدولة متباعدة (كل 15 دقيقة) بنجاح!`
+              ? `تم إرسال أمر نشر ${urls.length} أخبار فوراً في نفس الوقت بنجاح!`
               : (urls.length === 1
                   ? "تم إرسال أمر إضافة الخبر إلى GitHub Actions للبدء في معالجته ونشره فوراً!"
                   : "تم تشغيل دورة فحص الأخبار بالكامل على السيرفر بنجاح!"),

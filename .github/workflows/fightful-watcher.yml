@@ -37,7 +37,7 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.post_url }}" ]; then
             echo "Processing requested post URLs: ${{ github.event.inputs.post_url }}"
-            npx tsx scripts/fightful-watcher.ts --urls="${{ github.event.inputs.post_url }}" --stagger=15
+            npx tsx scripts/fightful-watcher.ts --urls="${{ github.event.inputs.post_url }}"
           else
             npx tsx scripts/fightful-watcher.ts
           fi

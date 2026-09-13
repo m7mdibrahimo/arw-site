@@ -356,12 +356,12 @@
   <div class="info-wrap">
     <span class="count-badge" id="batch-count-badge">0 محدد</span>
     <span class="pacing-note">
-      ⏱️ جدولة متباعدة: <strong>فاصل 15 دقيقة</strong> بين كل خبر لحماية حسابات التواصل ومنع الحظر
+      ⚡ نشر فوري: <strong>في نفس الوقت</strong> لجميع الأخبار المحددة دون أي تأخير
     </span>
   </div>
   <div class="btn-group">
     <button class="batch-publish-btn" id="batch-publish-trigger">
-      🚀 نشر الأخبار المحددة (<span id="batch-btn-count">0</span>)
+      🚀 نشر الأخبار المحددة فوراً (<span id="batch-btn-count">0</span>)
     </button>
     <button class="batch-cancel-btn" id="batch-cancel-btn">إلغاء التحديد</button>
   </div>
@@ -370,20 +370,20 @@
 <!-- Modal for Batch Publishing Confirmation -->
 <div class="modal-overlay" id="batch-modal">
   <div class="modal-content">
-    <h3>⏱️ تأكيد النشر والجدولة المتباعدة</h3>
+    <h3>🚀 تأكيد النشر الفوري المباشر</h3>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0 0 10px;">
-      لحماية صفحاتك على فيسبوك وتويتر (بافر) من الحظر التلقائي ومنع إغراق الموقع دفعة واحدة، سيتم نشر وجدولة الأخبار المحددة وفق الجدول الزمني التالي:
+      سيتم نشر جميع الأخبار المحددة فوراً دفعة واحدة وفي نفس الوقت دون أي تأخير أو فواصل زمنية:
     </p>
     <div class="modal-schedule-list" id="modal-schedule-list">
       <!-- Generated dynamically -->
     </div>
     <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:10px 14px;font-size:12.5px;color:#86efac;display:flex;align-items:center;gap:8px;">
-      <span>🛡️</span> <span>نظام حماية السوشيال ميديا مفعل (فاصل 10 دقائق أمان لمنع حظر فيسبوك وبافر).</span>
+      <span>⚡</span> <span>نشر متزامن فوري: سيتم معالجة الأخبار ونشرها فوراً على الموقع وجميع منصات التواصل في نفس الوقت.</span>
     </div>
     <div class="modal-actions">
       <button class="batch-cancel-btn" id="modal-cancel-btn">تراجع</button>
       <button class="batch-publish-btn" id="modal-confirm-btn">
-        🚀 تأكيد وبدء النشر المجدول
+        🚀 تأكيد وبدء النشر الفوري الآن
       </button>
     </div>
   </div>
@@ -443,6 +443,14 @@
 
       if (data && data.success) {
         watcherState = data;
+        try {
+          const dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          dispatched.forEach(id => {
+            if (!watcherState.processedIds.includes(id)) {
+              watcherState.processedIds.push(id);
+            }
+          });
+        } catch (e) {}
         updateStatusUI();
       }
     } catch (e) {
@@ -681,18 +689,11 @@
     if (selectedPosts.size === 0) return;
 
     const list = Array.from(selectedPosts.values());
-    const now = Date.now();
-    modalScheduleList.innerHTML = list.map((item, idx) => {
-      const staggerMin = idx * 15;
-      const scheduledTime = new Date(now + staggerMin * 60 * 1000);
-      const timeLabel = idx === 0 
-        ? "⚡ فوراً الآن" 
-        : `🕒 بعد ${staggerMin} دقيقة (${scheduledTime.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })})`;
-      
+    modalScheduleList.innerHTML = list.map((item) => {
       return `
         <div class="modal-schedule-item">
           <span class="modal-schedule-title">${item.title}</span>
-          <span class="modal-schedule-time">${timeLabel}</span>
+          <span class="modal-schedule-time" style="color:var(--green);font-weight:700;">⚡ فوراً الآن (في نفس الوقت)</span>
         </div>
       `;
     }).join('');
@@ -710,7 +711,7 @@
     const urls = Array.from(selectedPosts.values()).map(p => p.link);
 
     modalConfirmBtn.disabled = true;
-    modalConfirmBtn.innerHTML = '<span class="spinner"></span> جاري بدء الجدولة...';
+    modalConfirmBtn.innerHTML = '<span class="spinner"></span> جاري النشر الفوري...';
 
     try {
       const res = await fetch(`${API_BASE}/api/watcher/dispatch`, {
@@ -720,23 +721,30 @@
       });
       const data = await res.json();
       if (data.success) {
-        showToast(`✅ ${data.message || `تم بدء جدولة ونشر ${urls.length} أخبار بنجاح!`}`);
+        showToast(`✅ ${data.message || `تم إرسال أمر نشر ${urls.length} أخبار فوراً في نفس الوقت بنجاح!`}`);
         batchModal.classList.remove('open');
-        selectedPosts.forEach((val, pid) => {
-          if (!watcherState.processedIds.includes(pid)) {
-            watcherState.processedIds.push(pid);
-          }
-        });
+        try {
+          const dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+          selectedPosts.forEach((val, pid) => {
+            if (!watcherState.processedIds.includes(pid)) {
+              watcherState.processedIds.push(pid);
+            }
+            if (!dispatched.includes(pid)) {
+              dispatched.push(pid);
+            }
+          });
+          localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
+        } catch (e) {}
         clearSelection();
         renderFeed();
       } else {
-        showToast("❌ " + (data.error || "فشل إرسال الجدولة"), false);
+        showToast("❌ " + (data.error || "فشل إرسال أمر النشر"), false);
       }
     } catch (e) {
       showToast("❌ خطأ في الاتصال: " + e.message, false);
     } finally {
       modalConfirmBtn.disabled = false;
-      modalConfirmBtn.innerHTML = '🚀 تأكيد وبدء النشر المجدول';
+      modalConfirmBtn.innerHTML = '🚀 تأكيد وبدء النشر الفوري الآن';
     }
   };
 
@@ -834,6 +842,11 @@
         btnEl.innerHTML = '⏳ قيد المعالجة...';
         if (!watcherState.processedIds.includes(postId)) {
           watcherState.processedIds.push(postId);
+          try {
+            const dispatched = JSON.parse(localStorage.getItem('arw_dispatched_ids') || '[]');
+            if (!dispatched.includes(postId)) dispatched.push(postId);
+            localStorage.setItem('arw_dispatched_ids', JSON.stringify(dispatched));
+          } catch (e) {}
           renderFeed();
         }
       } else {
