@@ -181,10 +181,18 @@ interface RewrittenArticle {
   body_markdown: string;
 }
 
-// Convert any occurrence of 'حلقة' to 'عرض' for wrestling shows, and scrub third-party website/reporter branding
+// Remove all Arabic diacritics / tashkeel (fat-ha, damma, kasra, tanween, sukun, shadda, dagger alif, tatweel)
+function removeTashkeel(text: string): string {
+  if (!text) return "";
+  return text
+    .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, "")
+    .replace(/\u0640/g, "");
+}
+
+// Convert any occurrence of 'حلقة' to 'عرض' for wrestling shows, scrub third-party branding, and strip all tashkeel
 function sanitizeWrestlingTerms(text: string): string {
   if (!text) return text;
-  return text
+  const cleaned = text
     // Strict show terminology
     .replace(/\bحلقة\s+(الرو|سماكداون|ديناميت|كوليجن|رامبيج|إن\s*إكس\s*تي|NXT|RAW|SmackDown|Dynamite|Collision|إمباكت|IMPACT|عرض)\b/gi, "عرض $1")
     .replace(/حلقات\s+عروض/g, "عروض")
@@ -209,6 +217,9 @@ function sanitizeWrestlingTerms(text: string): string {
     .replace(/فايت\s*فول/gi, "مصادرنا")
     .replace(/فايتفول/gi, "مصادرنا")
     .replace(/\*?Fightful\*?/gi, "مصادرنا");
+
+  // Always strip all tashkeel / diacritics completely across all articles, titles, and tags
+  return removeTashkeel(cleaned);
 }
 
 // Helper to call Gemini with retry, quota protection & multi-key fallback
@@ -337,6 +348,7 @@ ${specificTitleRules}
 5. **طول العنوان وسيو جوجل**:
    - لا يتجاوز 75-80 حرفاً لضمان عدم اقتطاعه في نتائج بحث جوجل أو Google Discover.
    - ممنوع بتاتاً كلمة "حلقة"؛ استبدلها دائماً بكلمة "عرض".
+   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو شدة). اكتب العنوان نظيفاً وسهلاً.
 
 العنوان المقترح حالياً:
 ${draftTitle}
@@ -385,8 +397,14 @@ function isShowResultsArticle(originalTitle: string, plainText: string = ""): bo
   const title = (originalTitle || "").trim();
   const text = (plainText || "").trim();
 
-  // 1. Explicit negative check: Corporate / Financial / Medical / Survey results are NOT wrestling show results!
-  if (/\b(?:financial|quarterly|earnings|fiscal|q[1-4]|medical|drug test|wellness policy|investigation|poll|survey|election)\s+results\b/i.test(title)) {
+  // 1. Explicit negative checks: Non-show results (financial, medical tests, surveys, or news updates ABOUT results)
+  if (/\b(?:financial|quarterly|earnings|fiscal|q[1-4]|medical|drug|wellness|investigation|poll|survey|election|test|exam|blood)\s+.*?\bresults\b/i.test(title)) {
+    return false;
+  }
+  if (/\bresults\s+(?:update|clarification|details|reaction|comment|delayed|postponed)\b/i.test(title) && !/\b(?:live coverage|quick results|full results)\b/i.test(title)) {
+    return false;
+  }
+  if (/\b(?:preview|previews|set for|card for|how to watch|lineup|schedule|start time)\b/i.test(title) && !/\b(?:results|spoilers)\b/i.test(title)) {
     return false;
   }
 
@@ -405,7 +423,7 @@ function isShowResultsArticle(originalTitle: string, plainText: string = ""): bo
   }
 
   // If title doesn't have "Results", but the body explicitly contains a full show results intro AND multiple match results:
-  if (hasFullResultsIntro && hasMultipleMatches && !/\b(?:wins|defeated|injur|return|sign|update|report|rumor)\b/i.test(title)) {
+  if (hasFullResultsIntro && hasMultipleMatches && !/\b(?:wins|defeated|injur|return|sign|update|report|rumor|excited|comments|reacts)\b/i.test(title)) {
     return true;
   }
 
@@ -431,9 +449,10 @@ async function rewriteWithGemini(
 المهمة: تحويل تقرير العرض الإنجليزي إلى **تقرير نتائج عرض كامل ومفصل** باللغة العربية بأعلى درجات الاحترافية الصحفية.
 
 القواعد التحريرية والتنسيقية الإلزامية:
-1. **التعريب الكامل**:
+1. **التعريب الكامل وحظر التشكيل**:
    - كل شيء باللغة العربية (أسماء المصارعين، أسماء الفرق، أنواع المباريات، شروط النزالات، الأحزمة).
    - الاستثناء الوحيد فقط: اسم العرض نفسه بالإنجليزية (مثل: WWE SmackDown أو AEW Collision أو ROH TV).
+   - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
 2. **التنسيق المنظم والفصل بين السطور**:
    - في نتائج المباريات، اجعل بين كل سطر وسطر سطرين فارغين (Double Line Break).
    - الهيكل الدقيق لكل مباراة:
@@ -479,7 +498,9 @@ ${plainText.slice(0, 4000)}
      - **الفقرة الثانية (اللقطة الحاسمة والكواليس)**: كيف وقع الحدث، واللقطة المفصلية أو تصريحات الكواليس الساخنة.
      - **الفقرة الثالثة (ماذا بعد؟)**: سطرين ختاميين عن الأثر المرتقب في العروض القادمة والسيناريوهات المشتعلة.
    - **ممنوع بتاتاً**: الحشو الكلامي الزائد، أو تكرار العبارات، أو التطويل الممل؛ ركز على الزبدة والمفيد المثير فقط ليكون المقال سريع القراءة وممتعاً.
-4. **التعريب الكامل الشامل**: كل الأسماء والمصطلحات والبطولات تُكتب بالعربية فقط دون كلمات إنجليزية.
+4. **التعريب الكامل الشامل وحظر التشكيل نهائياً**:
+   - كل الأسماء والمصطلحات والبطولات تُكتب بالعربية فقط دون كلمات إنجليزية.
+   - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**؛ اكتب كل النصوص خالية تماماً من التشكيل لتكون سهلة وسريعة القراءة.
 5. **حظر كلمة "حلقة" نهائياً**: استبدلها دائماً بكلمة "عرض".
 6. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
 7. **حظر ذكر أي مصادر خارجية نهائياً**: صِغْ كل معلومة كأنها خبر حصري لموقع عرب راسلنج (أو "أفادت مصادرنا الخاصة", "كشفت تقارير مطلعة"). ممنوع ذكر Fightful.
