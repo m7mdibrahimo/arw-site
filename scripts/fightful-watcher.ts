@@ -519,7 +519,7 @@ function getArabicDateFormatted(dateString?: string): string {
 }
 
 // Second-pass AI Tool: Select and craft the ultimate viral, click-worthy, SEO-optimized title
-async function optimizeTitleForSEOAndCTR(
+export async function optimizeTitleForSEOAndCTR(
   draftTitle: string,
   articleSummary: string,
   isResultsPost: boolean,
@@ -616,18 +616,30 @@ async function optimizeTitleForSEOAndCTR(
   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة).`;
   }
 
-  const titleOptimizerPrompt = `أنت رئيس تحرير رقمي وخبير في كتابة العناوين الصحفية الرياضية وعناوين السيو (SEO & CTR Specialist) لموقع "عرب راسلنج".
+  const titleOptimizerPrompt = `أنت أعظم رئيس تحرير رقمي وعبقري صياغة عناوين الصحافة الرياضية والمصارعة الحرة العالمية (Elite Sports Headlining Director & Viral CTR Master) لموقع "عرب راسلنج".
 
-المهمة: ابتكار واختيار أفضل عنوان على الإطلاق للمقال التالي.
+المهمة: ابتكار 6 عناوين صحفية خارقة الجاذبية وغير مسبوقة للمقال، مأخوذة 100% من صلب الخبر دون أي تزييف، ثم إجراء منافسة تقييمية حاسمة (Tournament Evaluation) لاختيار وصقل "العنوان البطل الخارق" (Champion Title) الذي يستحيل على القارئ تجاوزه!
 
-المعايير الصارمة:
+القواعد الصارمة الملزمة لجميع العناوين:
 ${specificTitleRules}
 
 5. **طول العنوان وسيو جوجل ومصطلحات العروض**:
-   - لا يتجاوز 75-80 حرفاً لضمان عدم اقتطاعه في نتائج بحث جوجل أو Google Discover.
-   - **ممنوع بتاتاً منعاً باتاً استخدام كلمتي "حلقة" أو "مهرجان" نهائياً**؛ في عالم المصارعة لا يوجد شيء اسمه حلقة ولا مهرجان، بل اسمه **"عرض"** (أو **"عروض"** للجمع). لا تكتب "مهرجان ريسلمانيا" بل "عرض WrestleMania"، ولا "مهرجان تريبل مانيا" بل "عرض AAA Triplemanía". استبدل كل كلمة حلقة أو مهرجان بكلمة "عرض" دائماً.
-   - **إلزامية كتابة اسم الاتحاد قبل اسم العرض دائماً** (مثل: "عرض MLP Northern Rising"، "عرض WWE RAW").
-   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو شدة). اكتب العنوان نظيفاً وسهلاً بلغة عصرية بسيطة خالية من أي ألفاظ تراثية أو صيغ تثنية غريبة (استخدم دائماً: "أبناء ستينغ" / "أبناء الأسطورة" وممنوع تماماً: "ابنا" أو "نجلا").
+   - الطول المثالي: بين 55 و 80 حرفاً لضمان الظهور الكامل الجذاب في Google Discover ومواقع التواصل.
+   - **ممنوع بتاتاً استخدام كلمتي "حلقة" أو "مهرجان" نهائياً**؛ استخدم دائماً كلمة **"عرض"** (أو "عروض").
+   - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة** (مثل: عرض WWE SmackDown، عرض AEW Dynamite، عرض MLP Northern Rising).
+   - **ممنوع بتاتاً استخدام أي علامات تشكيل نهائياً** في العنوان (بدون فتحة أو ضمة أو كسرة أو تنوين أو شدة).
+   - **القاعدة الذهبية لما يكتب بالإنجليزية**: الشيء الوحيد المسموح بكتابته بالإنجليزية هو اسم الاتحاد واسم العرض مسبوقاً باسم الاتحاد. كل شيء آخر (المصارعين، الفرق، الألقاب) يترجم ويكتب بالعربية حصراً وبدون أي استثناء!
+
+ المطلوب بدقة:
+قم بابتكار 6 عناوين متنوعة تمثل 6 زوايا صحفية مختلفة تماماً:
+1. **الزاوية 1 (الصدمة والحدث الأقوى - Direct Shock & Impact)**: تركز على اللحظة الأكثر إثارة ومفاجأة في صلب الخبر بأسلوب حاسم ومباشر.
+2. **الزاوية 2 (التصريح الحارق والاقتباس المثير - Fiery Quote & Provocation)**: تصريح جريء أو اقتباس قوي للمصارع بين علامتي اقتباس ("...") يقلب الموازين.
+3. **الزاوية 3 (كشف الأسرار والكواليس الخفية - Backstage Revelation & Intrigue)**: تركز على ما دار خلف الستار، والسر غير المعلن عن السيناريو أو العقد أو الإصابة.
+4. **الزاوية 4 (الصراع والتهديد المرتقب - Conflict & High Stakes)**: تسلط الضوء على الخصومة المشتعلة، والتحدي الناري، وتبعات ما سيحدث في العروض القادمة.
+5. **الزاوية 5 (المفارقة والغموض المحفز للفضول - Curiosity Gap & The Unexpected)**: التقاط مفارقة غريبة أو زاوية مثيرة للتساؤل والدهشة تدفع القارئ فوراً للنقر لمعرفة الحقيقة.
+6. **الزاوية 6 (الصحافة الرياضية الراقية والرشيقة - Elite Sports Journalism)**: صياغة رصينة، بليغة، ومشدودة كعناوين كبريات الصحف والشبكات الرياضية العالمية.
+
+ثم قم بمقارنتها واختيار العنوان الأقوى والأكثر خطورة وجاذبية ومصداقية وصقله ليكون "العنوان البطل الخارق" (champion_title).
 
 العنوان المقترح حالياً:
 ${draftTitle}
@@ -637,21 +649,40 @@ ${articleSummary.slice(0, 4500)}
 
 تاريخ العرض (يستخدم فقط إذا كان المقال نتائج عرض ليلة واحدة): ${arabicDate}
 
-أجب بنص JSON فقط بالشكل التالي:
+أخرج النتيجة حصراً بتنسيق JSON:
 {
-  "best_title": "العنوان النهائي الأقوى والأمثل للسيو والمتوافق مع القواعد السابقة"
+  "candidates": [
+    { "angle": "الصدمة والحدث الأقوى", "title": "..." },
+    { "angle": "التصريح الحارق", "title": "..." },
+    { "angle": "كشف الكواليس والأسرار", "title": "..." },
+    { "angle": "الصراع والتهديد المرتقب", "title": "..." },
+    { "angle": "المفارقة والغموض", "title": "..." },
+    { "angle": "الصحافة الرياضية الراقية", "title": "..." }
+  ],
+  "champion_title": "العنوان النهائي الفائز الأكثر إثارة واحترافية والتزاماً بالقواعد"
 }`;
 
   try {
     const resText = await queryGemini(titleOptimizerPrompt, true);
     if (resText) {
-      const parsed = JSON.parse(resText);
-      if (parsed.best_title && parsed.best_title.trim().length > 10) {
-        return cleanHeadlineClichés(sanitizeWrestlingTerms(parsed.best_title.trim()));
+      const parsed = safeParseJson<{ candidates?: Array<{ angle: string; title: string }>; champion_title?: string; best_title?: string }>(resText);
+      if (parsed) {
+        if (Array.isArray(parsed.candidates) && parsed.candidates.length > 0) {
+          console.log(`[Watcher] 🥊 Headline Tournament - 6 Candidates Generated:`);
+          parsed.candidates.forEach((c, idx) => {
+            console.log(`  [${idx + 1}] (${c.angle}): "${c.title}"`);
+          });
+        }
+        const winningRaw = parsed.champion_title || parsed.best_title;
+        if (winningRaw && winningRaw.trim().length > 10) {
+          const winner = cleanHeadlineClichés(sanitizeWrestlingTerms(winningRaw.trim()));
+          console.log(`[Watcher] 🏆 Champion Headline Selected: "${winner}"`);
+          return winner;
+        }
       }
     }
   } catch (e) {
-    console.warn("[Watcher] Title optimization pass skipped, using draft title:", e);
+    console.warn("[Watcher] Title tournament pass skipped, using draft title:", e);
   }
 
   return cleanHeadlineClichés(sanitizeWrestlingTerms(draftTitle));
