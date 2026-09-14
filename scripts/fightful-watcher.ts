@@ -1039,7 +1039,7 @@ async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
       date: p.date,
       date_gmt: p.date_gmt || p.date,
       title: { rendered: p.title?.rendered || "" },
-      featured_image: p._embedded?.["wp:featuredmedia"]?.[0]?.source_url || ""
+      featured_image: p.jetpack_featured_media_url || p._embedded?.["wp:featuredmedia"]?.[0]?.source_url || ""
     }));
     fs.writeFileSync(feedPath, JSON.stringify(cleanFeed, null, 2), "utf-8");
   } catch (err) {
@@ -1101,8 +1101,8 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
   console.log(`[Watcher] Processing post #${postId}: "${rawTitle}"${isUpdate ? ` [UPDATE to ${existingFile?.fileName}]` : ""}`);
   console.log(`[Watcher] Effective publish date: ${effectiveDate} (Source: ${sourceDate})`);
 
-  // Extract featured image with fallback to content images
-  let imageUrl = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+  // Extract primary article image strictly from WordPress featured media or body image (NEVER from YouTube video)
+  let imageUrl = post.jetpack_featured_media_url || post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
   if (!imageUrl) {
     const bodyImgMatch = contentHtml.match(/<img[^>]+src=["']([^"']+)["']/i);
     if (bodyImgMatch && bodyImgMatch[1]) {
@@ -1110,29 +1110,8 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
     }
   }
 
-  // Detect YouTube video (from post content, or fetch web page if Watch/video post)
+  // Detect YouTube video solely for embedding the video watch link in the article text (NEVER as cover image)
   let ytVideoId = extractYouTubeVideoId(contentHtml) || extractYouTubeVideoId(post.link || "");
-  if (!ytVideoId && (/watch:/i.test(rawTitle) || /fusion/i.test(rawTitle) || /highlights/i.test(rawTitle) || /video/i.test(rawTitle)) && post.link) {
-    try {
-      const pageRes = await fetch(post.link, {
-        headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" },
-        signal: AbortSignal.timeout(6000)
-      });
-      if (pageRes.ok) {
-        const pageHtml = await pageRes.text();
-        ytVideoId = extractYouTubeVideoId(pageHtml);
-      }
-    } catch (e) {}
-  }
-
-  // Only fallback to YouTube thumbnail if the article has NO featured image at all
-  if (ytVideoId && !imageUrl) {
-    const ytThumb = await getYouTubeThumbnailUrl(ytVideoId);
-    if (ytThumb) {
-      console.log(`[Watcher] 🎥 No article image found, using YouTube thumbnail as fallback (${ytVideoId}): ${ytThumb}`);
-      imageUrl = ytThumb;
-    }
-  }
 
   // Extract categories & tags
   const terms: string[] = [];
