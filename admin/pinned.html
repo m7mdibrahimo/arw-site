@@ -95,10 +95,35 @@
     background: #13161c; border: 1px solid #2a3140; border-radius: 12px;
     padding: 14px 18px; display: flex; align-items: center; gap: 16px;
     transition: all .2s ease;
+    cursor: grab;
+    user-select: none;
+  }
+  .pinned-item:active {
+    cursor: grabbing;
   }
   .pinned-item:hover {
     background: #171b24; border-color: #3b4458;
   }
+  .pinned-item.dragging {
+    opacity: 0.45;
+    border: 2px dashed var(--accent);
+    background: rgba(99,102,241,0.08);
+    transform: scale(0.99);
+  }
+  .pinned-item.drag-over-top {
+    border-top: 3px solid var(--accent);
+    transform: translateY(-2px);
+  }
+  .pinned-item.drag-over-bottom {
+    border-bottom: 3px solid var(--accent);
+    transform: translateY(2px);
+  }
+  .drag-handle {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #4b5563; font-size: 16px; width: 22px; height: 34px; cursor: grab;
+    flex-shrink: 0; transition: color .15s; letter-spacing: -2px;
+  }
+  .pinned-item:hover .drag-handle { color: #9ca3af; }
   .pinned-rank {
     width: 34px; height: 34px; border-radius: 10px; background: rgba(245,158,11,0.18);
     color: #fbbf24; display: flex; align-items: center; justify-content: center;
@@ -237,7 +262,7 @@
         <span>⭐ المواضيع المثبتة حالياً بالسلايدر</span>
         <span class="count-tag" id="pinnedCountBadge">0 مواضيع</span>
       </h3>
-      <span style="font-size:12px; color:var(--muted);">يمكنك تغيير ترتيب الظهور باستخدام أزرار الأسهم (▲ و ▼)</span>
+      <span style="font-size:12px; color:var(--muted);">يمكنك سحب وإفلات أي موضوع للأعلى أو للأسفل لتغيير ترتيبه، أو باستخدام الأسهم (▲ و ▼)</span>
     </div>
 
     <div class="pinned-list" id="pinnedList">
@@ -353,7 +378,8 @@
       const isLast = index === pinnedItems.length - 1;
 
       return `
-        <div class="pinned-item" data-index="${index}">
+        <div class="pinned-item" data-index="${index}" draggable="true">
+          <div class="drag-handle" title="اسحب لإعادة الترتيب">⋮⋮</div>
           <div class="pinned-rank">#${index + 1}</div>
           <img src="${img}" class="pinned-thumb" onerror="this.src='/content/images/jtct9rkqmcshcyh6.jpg'" />
           <div class="pinned-details">
@@ -376,6 +402,8 @@
         </div>
       `;
     }).join('');
+
+    setupDragAndDrop();
   }
 
   function renderAvailableList() {
@@ -465,6 +493,135 @@
     pinnedItems[index] = pinnedItems[target];
     pinnedItems[target] = temp;
     renderPinnedList();
+  }
+
+  // Drag and Drop (Mouse + Touch) Implementation
+  let dragSrcIndex = null;
+  let touchDragItem = null;
+  let touchStartY = 0;
+
+  function setupDragAndDrop() {
+    const items = pinnedListEl.querySelectorAll('.pinned-item');
+    items.forEach(item => {
+      // 1. Desktop HTML5 Drag Events
+      item.addEventListener('dragstart', (e) => {
+        // Don't trigger drag if user is typing in badge input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') {
+          e.preventDefault();
+          return;
+        }
+        dragSrcIndex = parseInt(item.getAttribute('data-index'), 10);
+        item.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dragSrcIndex);
+      });
+
+      item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+        items.forEach(el => el.classList.remove('drag-over-top', 'drag-over-bottom'));
+      });
+
+      item.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        const targetIndex = parseInt(item.getAttribute('data-index'), 10);
+        if (dragSrcIndex === null || dragSrcIndex === targetIndex) return;
+
+        const rect = item.getBoundingClientRect();
+        const midY = rect.top + rect.height / 2;
+        if (e.clientY < midY) {
+          item.classList.add('drag-over-top');
+          item.classList.remove('drag-over-bottom');
+        } else {
+          item.classList.add('drag-over-bottom');
+          item.classList.remove('drag-over-top');
+        }
+      });
+
+      item.addEventListener('dragleave', () => {
+        item.classList.remove('drag-over-top', 'drag-over-bottom');
+      });
+
+      item.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const targetIndex = parseInt(item.getAttribute('data-index'), 10);
+        item.classList.remove('drag-over-top', 'drag-over-bottom');
+        if (dragSrcIndex === null || dragSrcIndex === targetIndex) return;
+
+        const rect = item.getBoundingClientRect();
+        const midY = rect.top + rect.height / 2;
+        let insertIndex = targetIndex;
+        if (e.clientY > midY) {
+          // dropped below center
+          if (dragSrcIndex > targetIndex) insertIndex = targetIndex + 1;
+        } else {
+          // dropped above center
+          if (dragSrcIndex < targetIndex) insertIndex = targetIndex - 1;
+        }
+
+        const moved = pinnedItems.splice(dragSrcIndex, 1)[0];
+        pinnedItems.splice(insertIndex, 0, moved);
+        dragSrcIndex = null;
+        renderPinnedList();
+        showToast("تم تحديث ترتيب المثبت بالسحب! لا تنس الضغط على حفظ.");
+      });
+
+      // 2. Mobile Touch Drag Support on .drag-handle
+      const handle = item.querySelector('.drag-handle');
+      if (handle) {
+        handle.addEventListener('touchstart', (e) => {
+          touchDragItem = item;
+          dragSrcIndex = parseInt(item.getAttribute('data-index'), 10);
+          touchStartY = e.touches[0].clientY;
+          item.classList.add('dragging');
+        }, { passive: true });
+
+        handle.addEventListener('touchmove', (e) => {
+          if (!touchDragItem) return;
+          const touchY = e.touches[0].clientY;
+          const elemUnder = document.elementFromPoint(e.touches[0].clientX, touchY);
+          const targetItem = elemUnder ? elemUnder.closest('.pinned-item') : null;
+
+          items.forEach(el => el.classList.remove('drag-over-top', 'drag-over-bottom'));
+          if (targetItem && targetItem !== touchDragItem) {
+            const rect = targetItem.getBoundingClientRect();
+            const midY = rect.top + rect.height / 2;
+            if (touchY < midY) {
+              targetItem.classList.add('drag-over-top');
+            } else {
+              targetItem.classList.add('drag-over-bottom');
+            }
+          }
+        }, { passive: true });
+
+        handle.addEventListener('touchend', (e) => {
+          if (!touchDragItem || dragSrcIndex === null) return;
+          const touchY = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientY : touchStartY;
+          const elemUnder = document.elementFromPoint(e.changedTouches[0].clientX, touchY);
+          const targetItem = elemUnder ? elemUnder.closest('.pinned-item') : null;
+
+          items.forEach(el => el.classList.remove('drag-over-top', 'drag-over-bottom'));
+          touchDragItem.classList.remove('dragging');
+
+          if (targetItem && targetItem !== touchDragItem) {
+            const targetIndex = parseInt(targetItem.getAttribute('data-index'), 10);
+            const rect = targetItem.getBoundingClientRect();
+            const midY = rect.top + rect.height / 2;
+            let insertIndex = targetIndex;
+            if (touchY > midY && dragSrcIndex > targetIndex) insertIndex = targetIndex + 1;
+            if (touchY < midY && dragSrcIndex < targetIndex) insertIndex = targetIndex - 1;
+
+            const moved = pinnedItems.splice(dragSrcIndex, 1)[0];
+            pinnedItems.splice(insertIndex, 0, moved);
+            renderPinnedList();
+            showToast("تم تحديث ترتيب المثبت بالسحب! لا تنس الضغط على حفظ.");
+          }
+
+          touchDragItem = null;
+          dragSrcIndex = null;
+        });
+      }
+    });
   }
 
   function updateItemBadge(index, newBadge) {
