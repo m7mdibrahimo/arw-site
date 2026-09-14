@@ -391,10 +391,12 @@ function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bGarrett\s+Borden\b/gi, "غاريت بوردن")
     .replace(/\bSting\b/gi, "ستينغ")
 
-    // 7. Simplify archaic words and dual forms into modern, reader-friendly Arabic
-    .replace(/\b(?:نجلا|نجلي)\s+الأسطورة\b/g, "ابنا الأسطورة")
-    .replace(/\bنجلا\b/g, "ابنا")
-    .replace(/\bنجلي\b/g, "ابني")
+    // 7. Simplify archaic words and dual forms into modern, reader-friendly Arabic (strictly use standard plural 'أبناء' instead of dual 'ابنا/نجلا')
+    .replace(/\b(?:نجلا|نجلي|ابنا|ابني)\s+الأسطورة\b/g, "أبناء الأسطورة")
+    .replace(/\b(?:نجلا|نجلي|ابنا|ابني)\s+ستينغ\b/g, "أبناء ستينغ")
+    .replace(/\b(?:نجلا|نجلي)\b/g, "أبناء")
+    .replace(/\bابنا\s+(ال[^\s]+|[A-Z][a-z]+|ستينغ)/g, "أبناء $1")
+    .replace(/\bابني\s+(ال[^\s]+|[A-Z][a-z]+|ستينغ)/g, "أبناء $1")
 
     // 8. Mandatory federation prefix for show names (e.g. MLP Northern Rising)
     .replace(/\b(?:عرض|عروض|مهرجان)?\s*Northern\s+Rising\b/gi, "عرض MLP Northern Rising")
@@ -573,10 +575,10 @@ async function optimizeTitleForSEOAndCTR(
   - **قاعدة إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**:
     - **ممنوع نهائياً كتابة اسم أي عرض بدون ذكر اسم الاتحاد قبله مباشرة** ليعرف القارئ تبعية العرض فوراً.
     - اكتب دائماً: "عرض MLP Northern Rising" (ممنوع نهائياً: "عرض Northern Rising" فقط بدون MLP)، "عرض WWE SmackDown"، "عرض AEW Collision"، "عرض TNA iMPACT"، "عرض AAA Triplemanía"، "عرض MLW Battle Riot"، "عرض CMLL Viernes Espectacular".
-  - **قاعدة اللغة العربية المبسطة والحديثة (حظر الألفاظ التراثية والمعقدة)**:
+  - **قاعدة اللغة العربية المبسطة والحديثة (حظر الألفاظ التراثية وصيغ التثنية تماماً)**:
     - صِغ العنوان بلغة عربية صحفية سهلة وسلسة ومبسطة جداً تناسب جمهور الشباب ومحبي الرياضة.
-    - **ممنوع بتاتاً منعاً باتاً استخدام الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة** (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "خضم", ❌ "غمار", ❌ "أتون").
-    - استخدم دائماً الألفاظ المألوفة السهلة (مثل: "ابنا الأسطورة ستينغ" أو "أبناء ستينغ"، "خلال"، "وسط").
+    - **ممنوع بتاتاً منعاً باتاً استخدام صيغ التثنية الغريبة أو الألفاظ المعقدة** (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "ابنا الأسطورة", ❌ "ابنا ستينغ", ❌ "ابنا", ❌ "ابني", ❌ "خضم", ❌ "غمار", ❌ "أتون").
+    - **استخدم دائماً صيغة الجمع البسيطة الطبيعية والواضحة**: اكتب حصراً **"أبناء الأسطورة ستينغ"** أو **"أبناء ستينغ"**، واستخدم "خلال"، "وسط".
   - الألقاب والأحزمة بالعربية (لقب العالم، بطولة السيدات، بطولة القارات).
   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة).`;
   }
@@ -592,7 +594,7 @@ ${specificTitleRules}
    - لا يتجاوز 75-80 حرفاً لضمان عدم اقتطاعه في نتائج بحث جوجل أو Google Discover.
    - **ممنوع بتاتاً منعاً باتاً استخدام كلمتي "حلقة" أو "مهرجان" نهائياً**؛ في عالم المصارعة لا يوجد شيء اسمه حلقة ولا مهرجان، بل اسمه **"عرض"** (أو **"عروض"** للجمع). لا تكتب "مهرجان ريسلمانيا" بل "عرض WrestleMania"، ولا "مهرجان تريبل مانيا" بل "عرض AAA Triplemanía". استبدل كل كلمة حلقة أو مهرجان بكلمة "عرض" دائماً.
    - **إلزامية كتابة اسم الاتحاد قبل اسم العرض دائماً** (مثل: "عرض MLP Northern Rising"، "عرض WWE RAW").
-   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو شدة). اكتب العنوان نظيفاً وسهلاً بلغة عصرية بسيطة خالية من أي ألفاظ تراثية غريبة (مثل نجلا).
+   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو شدة). اكتب العنوان نظيفاً وسهلاً بلغة عصرية بسيطة خالية من أي ألفاظ تراثية أو صيغ تثنية غريبة (استخدم دائماً: "أبناء ستينغ" / "أبناء الأسطورة" وممنوع تماماً: "ابنا" أو "نجلا").
 
 العنوان المقترح حالياً:
 ${draftTitle}
@@ -750,7 +752,7 @@ async function rewriteWithGemini(
    - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**: ممنوع نهائياً كتابة اسم العرض مفرداً بدون اسم الاتحاد (اكتب دائماً: عرض MLP Northern Rising، عرض WWE SmackDown، عرض AEW Collision، عرض TNA iMPACT).
    - كل شيء آخر يُترجم ويُكتب بالعربية (أسماء المصارعين، أنواع المباريات، شروط النزالات، الأحزمة، التفاصيل).
    - **أسماء المصارعين بالعربية دائماً وبدقة تامة**: أندرادي أو أندرادي إل إيدولو (Andrade - ممنوع نهائياً انقرادي أو أنقرادي)، روهيت راجو (Rohit Raju)، ستيفن بوردن، غاريت بوردن، ستينغ، سيث رولينز (ممنوع ستيف رولينز).
-   - **قاعدة اللغة العربية السلسة والمبسطة**: اكتب بلغة عربية واضحة ومبسطة يفهمها الشباب بسهولة. ممنوع بتاتاً الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا"؛ استخدم دائماً: "ابنا الأسطورة ستينغ" أو "أبناء ستينغ").
+   - **قاعدة اللغة العربية السلسة والمبسطة وحظر صيغ التثنية تماماً**: اكتب بلغة عربية واضحة ومبسطة يفهمها الشباب بسهولة. ممنوع بتاتاً الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "ابنا الأسطورة", ❌ "ابنا ستينغ"؛ استخدم دائماً صيغة الجمع الطبيعية: "أبناء الأسطورة ستينغ" أو "أبناء ستينغ").
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
 2. **التنسيق المنظم والفصل بين السطور**:
    - في نتائج المباريات، اجعل بين كل سطر وسطر سطرين فارغين (Double Line Break).
@@ -835,10 +837,10 @@ ${plainText.slice(0, 16000)}
      - روهيت راجو (Rohit Raju)
      - ستيفن بوردن (Steven Borden)، غاريت بوردن (Garrett Borden)، ستينغ (Sting)
      - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، ار تروث (ممنوع بتاتاً R-Truth)، سي ام بانك (CM Punk)، ال ايه نايت (LA Knight)، ام جيه اف (MJF)، ام في بي (MVP)، اي جي ستايلز (AJ Styles)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج.
-   - **قاعدة اللغة العربية المبسطة والحديثة (حظر الألفاظ التراثية والمعقدة تماماً)**:
+   - **قاعدة اللغة العربية المبسطة والحديثة (حظر الألفاظ التراثية وصيغ التثنية تماماً)**:
      - اكتب المقال والعنوان بلغة عربية صحفية مبسطة وسلسة جداً وواضحة يفهمها جمهور الشباب بسهولة.
-     - **ممنوع بتاتاً منعاً باتاً استخدام الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة** (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "خضم", ❌ "غمار", ❌ "أتون").
-     - استخدم بدائل سهلة وعصرية (مثل: "ابنا الأسطورة ستينغ" أو "أبناء ستينغ"، "خلال"، "وسط").
+     - **ممنوع بتاتاً منعاً باتاً استخدام صيغ التثنية الغريبة أو الألفاظ المعقدة** (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "ابنا الأسطورة", ❌ "ابنا ستينغ", ❌ "ابنا", ❌ "ابني", ❌ "خضم", ❌ "غمار", ❌ "أتون").
+     - **استخدم دائماً صيغة الجمع البسيطة الطبيعية والواضحة**: اكتب حصراً **"أبناء الأسطورة ستينغ"** أو **"أبناء ستينغ"**، واستخدم "خلال"، "وسط".
    - الألقاب والبطولات بالعربية (لقب العالم، بطولة الزوجي، بطولة القارات، بطولة السيدات).
    - التفاصيل، الكواليس، النزالات، الحوارات، التحليلات بالعربية.
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**؛ اكتب كل النصوص خالية تماماً من التشكيل لتكون سهلة وسريعة القراءة.
@@ -1163,41 +1165,41 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
     finalBody += `\n\n${embeds.join("\n\n")}`;
   }
 
-  // 4. Create or update markdown file
+  // 4. Create or update markdown file (Upon re-publishing/updating, delete old file completely as requested)
   const { prefix, iso } = formatDate(effectiveDate);
-  let existingPermalink: string | null = null;
-  let targetFilePath = "";
-  let targetFileName = "";
+  let oldSlug = "";
+  let oldFileName = "";
 
   if (existingFile) {
+    oldFileName = existingFile.fileName;
     try {
       const oldContent = fs.readFileSync(existingFile.filePath, "utf-8");
-      const pMatch = oldContent.match(/^permalink:\s*["']?([^"'\r\n]+)["']?/m);
-      if (pMatch && pMatch[1]) {
-        existingPermalink = pMatch[1].trim();
+      const tMatch = oldContent.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
+      if (tMatch && tMatch[1]) {
+        oldSlug = arabicSlug(tMatch[1]);
       } else {
-        const tMatch = oldContent.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
-        if (tMatch && tMatch[1]) {
-          existingPermalink = `/news/${arabicSlug(tMatch[1])}.html`;
-        }
+        oldSlug = existingFile.fileName.replace(/^\d+-/, "").replace(/\.md$/, "");
       }
-    } catch (e) {}
 
-    // Maintain the EXACT same file and canonical URL permalink for 100% SEO safety & zero broken links
-    targetFilePath = existingFile.filePath;
-    targetFileName = existingFile.fileName;
-  } else {
-    const slug = generateSlug(rewritten.title);
-    targetFileName = `${prefix}-${slug}.md`;
-    targetFilePath = path.join(NEWS_DIR, targetFileName);
+      // Delete the old file completely so it is replaced with a fresh new article
+      if (fs.existsSync(existingFile.filePath)) {
+        fs.unlinkSync(existingFile.filePath);
+        console.log(`[Watcher] 🗑️ Deleted old article file: ${existingFile.fileName}`);
+      }
+    } catch (e) {
+      console.warn(`[Watcher] Warning: could not delete old file:`, e);
+    }
   }
 
-  const permalinkYaml = existingPermalink ? `permalink: ${JSON.stringify(existingPermalink)}\n` : "";
+  const slug = generateSlug(rewritten.title);
+  const targetFileName = `${prefix}-${slug}.md`;
+  const targetFilePath = path.join(NEWS_DIR, targetFileName);
+
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   const markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}
-${permalinkYaml}date: ${iso}
+date: ${iso}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
 tags:
@@ -1209,9 +1211,23 @@ ${finalBody}
 `;
 
   fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
-  console.log(`[Watcher] Successfully ${existingFile ? "UPDATED" : "created"} news file: ${targetFilePath}`);
-  if (existingPermalink) {
-    console.log(`[Watcher] 🔒 Preserved canonical permalink: ${existingPermalink} (100% Google SEO and social links safe)`);
+  console.log(`[Watcher] Successfully published fresh news file: ${targetFilePath}`);
+
+  // Register 301 redirect if old article had a different URL
+  if (oldSlug && oldSlug !== slug) {
+    try {
+      const redirectsPath = path.join(process.cwd(), "_redirects");
+      if (fs.existsSync(redirectsPath)) {
+        const oldPath = `/news/${oldSlug}/`;
+        const newPath = `/news/${slug}/`;
+        const redirRule = `${oldPath}* ${newPath}:splat 301!`;
+        const currentRedir = fs.readFileSync(redirectsPath, "utf-8");
+        if (!currentRedir.includes(oldPath)) {
+          fs.appendFileSync(redirectsPath, `\n${redirRule}\n`, "utf-8");
+          console.log(`[Watcher] 🔀 Added 301 redirect from old article URL to new URL: ${redirRule}`);
+        }
+      }
+    } catch (e) {}
   }
 
   // Update admin-file-order.json so updated article appears at the very top of Decap CMS
@@ -1220,12 +1236,36 @@ ${finalBody}
     try {
       let order = JSON.parse(fs.readFileSync(orderPath, "utf-8"));
       if (Array.isArray(order)) {
+        if (oldFileName) order = order.filter(f => f !== oldFileName);
         order = order.filter(f => f !== targetFileName);
         order.unshift(targetFileName);
         fs.writeFileSync(orderPath, JSON.stringify(order, null, 2), "utf-8");
       }
     } catch (e) {}
   }
+
+  // Clear publish-state for this article so social platforms re-publish the updated content
+  try {
+    const stateFile = path.join(process.cwd(), "_data", "publish-state.json");
+    if (fs.existsSync(stateFile)) {
+      const pState = JSON.parse(fs.readFileSync(stateFile, "utf-8"));
+      let modified = false;
+      for (const platform of ["telegram", "facebook", "instagram", "x"] as const) {
+        if (pState[platform]) {
+          for (const k of Object.keys(pState[platform])) {
+            if ((oldSlug && k.includes(oldSlug)) || (slug && k.includes(slug))) {
+              delete pState[platform][k];
+              modified = true;
+            }
+          }
+        }
+      }
+      if (modified) {
+        fs.writeFileSync(stateFile, JSON.stringify(pState, null, 2), "utf-8");
+        console.log(`[Watcher] 📢 Reset publish-state so social media platforms will re-publish this post!`);
+      }
+    }
+  } catch (e) {}
 
   return true;
 }

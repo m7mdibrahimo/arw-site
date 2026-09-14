@@ -1069,7 +1069,7 @@
   // Trigger manual update / re-publishing of an existing post (e.g. live show results updated over time)
   window.triggerManualUpdate = async function(encodedUrl, postId, btnEl) {
     const postUrl = decodeURIComponent(encodedUrl);
-    if (!confirm(`هل تريد إعادة سحب وتحديث نتائج/تفاصيل هذا الخبر الآن؟\n\nالمصدر: ${postUrl}\n\nسيقوم الساحب الآلي بجلب أحدث التعديلات والنزالات المضافة من فايت فول، وإعادة صياغة التقرير الشامل، وحذف النسخة القديمة واستبدالها بالنسخة المحدثة فوراً.`)) {
+    if (!confirm(`هل تريد إعادة نشر هذا الموضوع من جديد؟\n\nالمصدر: ${postUrl}\n\nسيتم حذف المقال القديم تماماً، وإنشاء موضوع جديد برابط محدث يطابق العنوان الجديد، وإعادة نشره تلقائياً على جميع منصات التواصل الاجتماعي.`)) {
       return;
     }
 
