@@ -1,13 +1,14 @@
 [
   {
-    "url": "/news/ستيفاني-فاكير-تسقط-ليف-مورغان-وتتوج-بلقب-العالم-للسيدات-في-عرض-wwe-live",
-    "title": "ستيفاني فاكير تسقط ليف مورغان وتتوج بلقب العالم للسيدات في عرض WWE Live",
-    "image": "/img/cPx3fj7Sda-800.jpeg",
-    "federation": "WWE",
-    "kind": "news",
-    "kindLabel": "خبر",
-    "badge": "عاجل",
-    "description": ""
+    "url": "/shows/ufc-fight-night-288-silva-vs-delgado",
+    "title": "عرض يو اف سي فايت نايت 12.09.2026 مترجم",
+    "subtitle": "UFC Fight Night 288: Silva vs. Delgado",
+    "image": "/img/LaVcIUd4NL-800.jpeg",
+    "federation": "MMA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/aew-collision-12-09-2026",
