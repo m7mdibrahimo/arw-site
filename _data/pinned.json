@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/aaa-triplemania-34-night-2-2026",
+    "title": "عرض ايه ايه ايه تربل مانيا 34 الليلة الثانية 13.09.2026 مترجم",
+    "subtitle": "AAA TripleMania 34 Night 2 (2026)",
+    "image": "/img/c4NPqDBZq7-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الثانية مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aaa-triplemania-34-night-1-2026",
+    "title": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى 11.09.2026 مترجم",
+    "subtitle": "AAA TripleMania 34 Night 1 (2026)",
+    "image": "/img/qqgKt1XjG5-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض كامل",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/ufc-fight-night-288-silva-vs-delgado",
     "title": "عرض يو اف سي فايت نايت 12.09.2026 مترجم",
     "subtitle": "UFC Fight Night 288: Silva vs. Delgado",
@@ -31,17 +53,6 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث النارية واستعادة سامي زين للقب العالمي."
-  },
-  {
-    "url": "/shows/aaa-triplemania-34-night-1-2026",
-    "title": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى 11.09.2026 مترجم",
-    "subtitle": "AAA TripleMania 34 Night 1 (2026)",
-    "image": "/img/qqgKt1XjG5-800.jpeg",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/roh-10-09-2026",
@@ -86,17 +97,6 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-lfg-s03e24-06-09-2026",
-    "title": "برنامج دبليو دبليو اي ال اف جي الموسم 3 الحلقة 24 مترجمة",
-    "subtitle": "WWE LFG S03E24 06.09.2026",
-    "image": "/img/2xQbZdqAfu-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "برنامج",
-    "badge": "حصري ومترجم",
-    "description": "برنامج دبليو دبليو اي ال اف جي الموسم الثالث مترجم بالكامل مع جميع الأحداث والمواقف."
   },
   {
     "url": "/shows/nxt-08-09-2026",
