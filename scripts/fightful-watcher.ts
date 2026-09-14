@@ -1232,8 +1232,8 @@ ${finalBody}
 
 
 // Maximum allowed age (in hours) for auto-publishing articles from Fightful.
-// Anything older than 3 hours is strictly considered old news and will NEVER be published automatically.
-const MAX_AUTO_PUBLISH_AGE_HOURS = 3;
+// Anything older than 5 hours is considered old news in automated mode.
+const MAX_AUTO_PUBLISH_AGE_HOURS = 5;
 
 // Main check function
 export async function runWatcher(options: { forceLatest?: boolean; maxCount?: number; maxPerRun?: number } = {}) {
@@ -1244,7 +1244,7 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
     return;
   }
 
-  const batchLimit = options.maxCount || 20;
+  const batchLimit = options.maxCount || 30;
   console.log(`[Watcher] Checking for new posts at ${new Date().toLocaleTimeString()} (Batch: ${batchLimit}, Max Age: ${MAX_AUTO_PUBLISH_AGE_HOURS}h)...`);
 
   try {
@@ -1293,8 +1293,8 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
         processedCount++;
 
 
-        // Pause 2 seconds between posts to respect API rate limits
-        await new Promise(r => setTimeout(r, 2000));
+        // Pause 3.5 seconds between posts to respect API rate limits
+        await new Promise(r => setTimeout(r, 3500));
       }
 
       if (options.forceLatest && processedCount >= 1) {
