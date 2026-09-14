@@ -373,7 +373,10 @@
     pinnedListEl.innerHTML = pinnedItems.map((item, index) => {
       const fed = (item.federation || 'wwe').toLowerCase();
       const img = item.image ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/' + item.image) : '/content/images/jtct9rkqmcshcyh6.jpg';
-      const badge = item.badge || 'تغطية خاصة';
+      const isNews = item.kind === 'news' || (!item.kind && item.url && item.url.includes('/news/'));
+      const defaultBadge = isNews ? 'عاجل' : 'حصري ومترجم';
+      const badge = (item.badge && item.badge !== 'تغطية خاصة') ? item.badge : defaultBadge;
+      item.badge = badge;
       const isFirst = index === 0;
       const isLast = index === pinnedItems.length - 1;
 
@@ -457,8 +460,9 @@
       }
       const mainTitle = item.headline || item.title;
       const subTitle = (item.headline && item.title && item.headline !== item.title) ? item.title : (item.subtitle || '');
-      const defaultKindLabel = item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : item.kind === 'recap' ? 'ملخص' : 'خبر');
-      const defaultBadge = item.kind === 'news' ? 'عاجل' : 'حصري ومترجم';
+      const isNews = item.kind === 'news' || (!item.kind && item.url && item.url.includes('/news/'));
+      const defaultKindLabel = item.kindLabel || (isNews ? 'خبر' : item.kind === 'recap' ? 'ملخص' : 'عرض كامل');
+      const defaultBadge = isNews ? 'عاجل' : 'حصري ومترجم';
 
       pinnedItems.push({
         url: item.url,
@@ -466,7 +470,7 @@
         subtitle: subTitle,
         image: item.image,
         federation: item.federation || 'WWE',
-        kind: item.kind || 'news',
+        kind: isNews ? 'news' : (item.kind || 'show'),
         kindLabel: defaultKindLabel,
         badge: defaultBadge,
         description: item.description || ''
