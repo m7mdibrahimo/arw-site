@@ -1,5 +1,15 @@
 [
   {
+    "id": 328483,
+    "link": "https://www.fightful.com/wrestling/swerve-strickland-and-max-b-release-single-coo-coo/",
+    "date": "2026-09-14T13:15:13",
+    "date_gmt": "2026-09-14T17:15:13",
+    "title": {
+      "rendered": "Swerve Strickland And Max B Release Single &#8216;Coo Coo&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/09224115/04-swerve-strickland-vs-darby-al.webp"
+  },
+  {
     "id": 328480,
     "link": "https://www.fightful.com/wrestling/aew-continental-classic-to-begin-on-11-18-aew-dynamite/",
     "date": "2026-09-14T13:01:31",
@@ -288,15 +298,5 @@
       "rendered": "PWS Battle of Five Points Results (9/12)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/13230658/Screenshot-2026-09-13-at-11.06.49-PM.png"
-  },
-  {
-    "id": 328393,
-    "link": "https://www.fightful.com/wrestling/pete-dunne-producing-dominik-mysterio-vs-el-grande-americano-at-aaa-triplemania-34/",
-    "date": "2026-09-13T22:41:52",
-    "date_gmt": "2026-09-14T02:41:52",
-    "title": {
-      "rendered": "Pete Dunne Producing Dominik Mysterio vs. El Grande Americano At AAA Triplemanía 34"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12230533/20260814_AAATriplemania34_DomAmericano_MEX_16x9_Date_ENG.jpg"
   }
 ]
