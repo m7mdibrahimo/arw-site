@@ -385,7 +385,7 @@
   .server-tabs {
     display: flex !important;
     flex-wrap: wrap !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     align-items: center !important;
     gap: 9px !important;
     margin-bottom: 16px !important;
