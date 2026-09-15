@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-raw-14-09-2026",
+    "title": "عرض الرو 14.09.2026 مترجم",
+    "subtitle": "WWE RAW 14.09.2026",
+    "image": "/img/fmwhW8jBhV-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aaa-triplemania-34-night-2-2026",
     "title": "عرض ايه ايه ايه تربل مانيا 34 الليلة الثانية 13.09.2026 مترجم",
     "subtitle": "AAA TripleMania 34 Night 2 (2026)",
@@ -97,16 +108,5 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/nxt-08-09-2026",
-    "title": "عرض ان اكس تي 08.09.2026 مترجم",
-    "subtitle": "NXT 08.09.2026",
-    "image": "/img/-ynnzkwXXl-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض إن إكس تي مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
