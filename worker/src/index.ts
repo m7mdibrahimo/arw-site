@@ -1207,10 +1207,20 @@ async function publishToPlatform(
 function sanitizeResultsTitleSpoilers(title: string): string {
   if (!title) return title;
   let clean = title;
-  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
-  clean = clean.replace(/و?يحتفظ\s+(?:بلقبه|باللقب|ببطولة)\s*/g, "وصراع مشتعل على لقب ");
-  clean = clean.replace(/و?يتوج\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
+  clean = clean.replace(/فوز\s+(?:مثير|كبير|مستحق|صادم|تاريخي)?\s*لـ?([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:على|أمام)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة قوية بين $1 و$2");
+  clean = clean.replace(/فوز\s+(?:مثير|كبير|مستحق|صادم|تاريخي)\s*لـ?/g, "نزال ناري لـ");
+  clean = clean.replace(/و?(?:يحتفظ|يحافظ)\s+(?:بلقبه|باللقب|ببطولة|على لقبه|على اللقب|على بطولة)\s*/g, "وصراع مشتعل على لقب ");
+  clean = clean.replace(/و?(?:يتوج|يتوجان)\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+  clean = clean.replace(/و?(?:يتأهل|تأهل)\s+(?:لـ|لمواجهة|في تصفيات)\s*/g, "وصراع مشتعل للتأهل لـ");
   return clean.replace(/\s+/g, " ").trim();
+}
+
+function isResultsArticle(title: string = ""): boolean {
+  return /^نتائج\s+عرض\b/i.test(title) ||
+         /^نتائج\s+تسريبات\b/i.test(title) ||
+         /\bنتائج\s+عرض\b/i.test(title) ||
+         /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 
 function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
@@ -1342,9 +1352,15 @@ async function runWatcherPoll(env: Env): Promise<void> {
       if (!verify.ok) continue; // not fully live yet — try again next minute
 
       const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
+      const isShowResults = isResultsArticle(item.title);
+      const cleanTitle = isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title;
+      const cleanSnippet = isShowResults
+        ? "تابعوا التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري عبر موقعنا الرسمي."
+        : (item.headline || item.description || verify.bodySnippet || "");
+
       const payload = {
-        title: sanitizeResultsTitleSpoilers(item.title),
-        text: item.headline || item.description || verify.bodySnippet || "",
+        title: cleanTitle,
+        text: cleanSnippet,
         url: env.SITE_ORIGIN + (item.url || ""),
       };
 
@@ -1357,7 +1373,10 @@ async function runWatcherPoll(env: Env): Promise<void> {
       }
 
       if (canDoFb) {
-        await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+        const fbText = isShowResults
+          ? "إليكم التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري.\n\nلقراءة النتائج الكاملة ومعرفة كافة التفاصيل، تفضلوا بزيارة موقعنا عبر الرابط أدناه:"
+          : payload.text;
+        await publishToPlatform(env, "facebook", key, { ...payload, text: fbText, image: item.image, kind: item.kind }, {}, false);
       }
       if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
       if (canDoX) {
@@ -1366,12 +1385,16 @@ async function runWatcherPoll(env: Env): Promise<void> {
       }
     } else {
       // Telegram already sent — catch up any missing platforms immediately
-      let catchUpText = item.headline || item.description || "";
+      const isShowResults = isResultsArticle(item.title);
+      const cleanTitle = isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title;
+      let catchUpText = isShowResults
+        ? "تابعوا التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري عبر موقعنا الرسمي."
+        : (item.headline || item.description || "");
       if (!catchUpText) {
         const v = await verifyLiveOnSite(env, { url: item.url, image: item.image });
         catchUpText = v.bodySnippet || "";
       }
-      const payload = { title: sanitizeResultsTitleSpoilers(item.title), text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
+      const payload = { title: cleanTitle, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
       if (canDoFb) {
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;

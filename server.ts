@@ -1077,13 +1077,27 @@ function sanitizeResultsTitleSpoilers(title: string): string {
 
   // Patterns in Arabic where a match winner is spoiled in a show results title:
   // e.g. "رومان رينز يهزم بينتا" -> "مواجهة نارية بين رومان رينز وبينتا"
-  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
+  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
   
-  // "ويحتفظ بـ..." -> "وصراع مشتعل على..."
-  clean = clean.replace(/و?يحتفظ\s+(?:بلقبه|باللقب|ببطولة)\s*/g, "وصراع مشتعل على لقب ");
-  clean = clean.replace(/و?يتوج\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+  // e.g. "فوز مثير لـ..." / "فوز فلان على فلان"
+  clean = clean.replace(/فوز\s+(?:مثير|كبير|مستحق|صادم|تاريخي)?\s*لـ?([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:على|أمام)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة قوية بين $1 و$2");
+  clean = clean.replace(/فوز\s+(?:مثير|كبير|مستحق|صادم|تاريخي)\s*لـ?/g, "نزال ناري لـ");
+
+  // "ويحتفظ بـ..." / "يحافظ على..." -> "وصراع مشتعل على..."
+  clean = clean.replace(/و?(?:يحتفظ|يحافظ)\s+(?:بلقبه|باللقب|ببطولة|على لقبه|على اللقب|على بطولة)\s*/g, "وصراع مشتعل على لقب ");
+  clean = clean.replace(/و?(?:يتوج|يتوجان)\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+
+  // "تأهل فلان لـ..." -> "وصراع للتأهل لـ..."
+  clean = clean.replace(/و?(?:يتأهل|تأهل)\s+(?:لـ|لمواجهة|في تصفيات)\s*/g, "وصراع مشتعل للتأهل لـ");
 
   return clean.replace(/\s+/g, " ").trim();
+}
+
+function isResultsArticle(title: string = ""): boolean {
+  return /^نتائج\s+عرض\b/i.test(title) ||
+         /^نتائج\s+تسريبات\b/i.test(title) ||
+         /\bنتائج\s+عرض\b/i.test(title) ||
+         /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 
 // Robust spoiler filter: Detects individual match outcome micro-stubs (in both Arabic & English)
@@ -1183,13 +1197,23 @@ async function tryPublishSiteItem(item: any, key: string) {
       }
     }
 
-    const cleanTitle = sanitizeResultsTitleSpoilers(item.title);
+    const isShowResults = isResultsArticle(item.title);
+    const cleanTitle = isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title;
+
+    // For show results on social media, use a clean teaser so the snippet ("نبذة الخبر") never spoils winners!
+    const cleanSnippet = isShowResults
+      ? "تابعوا التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري عبر موقعنا الرسمي."
+      : (item.headline || item.description || verify.bodySnippet || "");
+
     const payload = {
       title: cleanTitle,
-      text: item.headline || item.description || verify.bodySnippet || "",
+      text: cleanSnippet,
       url: SITE_ORIGIN + (item.url || "")
     };
-    const fullText = verify.bodySnippet ? (verify as any).fullBody || payload.text : payload.text;
+
+    const fullText = isShowResults
+      ? "إليكم التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري.\n\nلقراءة النتائج الكاملة ومعرفة كافة التفاصيل، تفضلوا بزيارة موقعنا عبر الرابط أدناه:"
+      : (verify.bodySnippet ? (verify as any).fullBody || payload.text : payload.text);
 
     console.log(`[Watcher] Verified live on site, publishing: ${item.title}`);
 
