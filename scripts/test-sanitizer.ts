@@ -570,6 +570,10 @@ const extraTests: TestCase[] = [
   { description: "Rey Fenix English", input: "Rey Fenix flies from the ropes", expectedContains: "ري فينيكس" },
   { description: "Tessa Blanchard English", input: "Tessa Blanchard signs contract", expectedContains: "تيسا بلانشارد" },
   { description: "Jordynne Grace English", input: "Jordynne Grace lifts opponent", expectedContains: "جوردين غريس" },
+  { description: "Deonna Purrazzo English", input: "Deonna Purrazzo speaks on Vendetta faction", expectedContains: "ديونا بوراتزو", forbidden: ["بوراكزو", "بورازو"] },
+  { description: "Deonna Purrazzo typo بوراكزو", input: "ديونا بوراكزو تكشف كواليس انضمام جيزيل شو", expectedContains: "ديونا بوراتزو", forbidden: ["بوراكزو"] },
+  { description: "Deonna Purrazzo typo بوراكزو standalone", input: "أكدت بوراكزو أن المشروع كان يمتلك مقومات النجاح", expectedContains: "بوراتزو", forbidden: ["بوراكزو"] },
+  { description: "Deonna Purrazzo typo بورازو", input: "تصريحات ديونا بورازو في العرض", expectedContains: "ديونا بوراتزو", forbidden: ["بورازو"] },
 ];
 
 for (let j = 0; j < extraTests.length; j++) {
