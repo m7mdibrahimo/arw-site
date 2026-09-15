@@ -1605,6 +1605,11 @@ async function processPost(post: any, customDate?: Date | string, bypassSpoilerF
     }
   }
 
+  // Final fail-safe sanitization guarantee before saving to disk
+  rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(rewritten.title));
+  finalBody = sanitizeWrestlingTerms(finalBody);
+  rewritten.tags = (rewritten.tags || []).map(t => sanitizeWrestlingTerms(t));
+
   const slug = generateSlug(rewritten.title);
   const targetFileName = `${prefix}-${slug}.md`;
   const targetFilePath = path.join(NEWS_DIR, targetFileName);
