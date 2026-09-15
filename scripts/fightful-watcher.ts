@@ -26,6 +26,12 @@ const NEWS_DIR = path.join(process.cwd(), "content", "news");
 if (!fs.existsSync(IMAGES_DIR)) fs.mkdirSync(IMAGES_DIR, { recursive: true });
 if (!fs.existsSync(NEWS_DIR)) fs.mkdirSync(NEWS_DIR, { recursive: true });
 
+// Site Publishing Policy:
+// If false (default), all news articles are published to the website archive/news section,
+// while social media platforms remain 100% clean and spoiler-free via server.ts.
+// If true, single-match micro stubs are also skipped from the site.
+const SKIP_SINGLE_MATCH_ON_SITE = process.env.SKIP_SINGLE_MATCH_ON_SITE === "true";
+
 interface WatcherState {
   enabled?: boolean;
   processedIds: number[];
@@ -1472,9 +1478,9 @@ async function processPost(post: any, customDate?: Date | string, bypassSpoilerF
     return false;
   }
 
-  // Ironclad Single-Match Spoiler Shield: Strictly skip micro-match outcome stubs
-  if (!bypassSpoilerFilter && isSingleMatchResultArticle(rawTitle, plainText)) {
-    console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Post #${postId} ("${rawTitle}") is an individual match outcome stub. Skipping to preserve show surprises and protect social media!`);
+  // Single-Match Spoiler Shield: Only skip on site if explicitly configured, otherwise publish to site
+  if (SKIP_SINGLE_MATCH_ON_SITE && !bypassSpoilerFilter && isSingleMatchResultArticle(rawTitle, plainText)) {
+    console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Post #${postId} ("${rawTitle}") is an individual match outcome stub. Skipping on site.`);
     return false;
   }
 
@@ -1693,11 +1699,11 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
         continue;
       }
 
-      // Check single-match live result spoiler shield (Strict policy: never publish single match spoilers)
+      // Check single-match live result spoiler shield if enabled for site
       const contentHtml = post.content?.rendered || "";
       const plainText = htmlToPlainText(contentHtml);
-      if (isSingleMatchResultArticle(rawTitle, plainText)) {
-        console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Skipping individual match outcome #${postId} ("${rawTitle}"). (Protects social media and fans from spoilers)`);
+      if (SKIP_SINGLE_MATCH_ON_SITE && isSingleMatchResultArticle(rawTitle, plainText)) {
+        console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Skipping individual match outcome #${postId} ("${rawTitle}") on site.`);
         if (!state.processedIds.includes(postId)) {
           state.processedIds.push(postId);
         }

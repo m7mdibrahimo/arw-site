@@ -76,6 +76,12 @@ const BUFFER_X_CHANNEL_ID = process.env.BUFFER_X_CHANNEL_ID || "";
 // where to find more content. Kept as one place to edit the wording/link.
 const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
+// Social Media Posting Policy:
+// If false (default), automatic cross-posting of news to social channels is disabled
+// to keep followers' social media feeds 100% clean and spoiler-free while they wait for translated shows!
+// Shows and show recaps are always auto-posted when they drop.
+const AUTO_POST_NEWS_TO_SOCIAL = process.env.AUTO_POST_NEWS_TO_SOCIAL === "true";
+
 // Initialize VAPID Keys for Web Push Notifications
 const VAPID_FILE = path.join(STATE_DIR, "vapid.json");
 let vapidKeys: { publicKey: string; privateKey: string };
@@ -1086,6 +1092,22 @@ async function tryPublishSiteItem(item: any, key: string) {
     }
 
     const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
+
+    // Social Media Spoiler Shield: Skip automatic social media broadcast for news so followers' feeds stay 100% spoiler-free!
+    if (collection === "news" && !AUTO_POST_NEWS_TO_SOCIAL) {
+      delete watcherPendingSince[key];
+      telegramSentMap[key] = Date.now();
+      facebookSentMap[key] = Date.now();
+      instagramSentMap[key] = Date.now();
+      xSentMap[key] = Date.now();
+      await claimSend("telegram", key);
+      await claimSend("facebook", key);
+      await claimSend("instagram", key);
+      await claimSend("x", key);
+      console.log(`[Watcher] 🛡️ Social Media Spoiler Shield: News article "${item.title}" published on site only. Social feeds kept 100% spoiler-free for show releases.`);
+      return;
+    }
+
     const payload = {
       title: item.title,
       text: item.headline || item.description || verify.bodySnippet || "",
