@@ -1,5 +1,15 @@
 [
   {
+    "id": 328533,
+    "link": "https://www.fightful.com/uncategorized/sam-adonis-backstage-at-wwe-raw/",
+    "date": "2026-09-14T20:54:06",
+    "date_gmt": "2026-09-15T00:54:06",
+    "title": {
+      "rendered": "Sam Adonis Backstage At WWE Raw"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/14205347/HSNRuxNXAAAt9Iy.jpeg"
+  },
+  {
     "id": 328523,
     "link": "https://www.fightful.com/wrestling/el-grande-americano-returns-to-wwe-raw-teams-with-stephanie-vaquer-in-mixed-tag-action/",
     "date": "2026-09-14T20:39:02",
@@ -288,15 +298,5 @@
       "rendered": "Rey Mysterio: &#8216;I&#8217;m Down To Have Another Title Run. Just Put It In Front Of Me And I&#8217;ll Take Advantage Of It&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/03212534/G44GvMXXoAA6NQ5.jpeg"
-  },
-  {
-    "id": 328411,
-    "link": "https://www.fightful.com/wrestling/mlw-fusion-results-9-12-matt-riddle-competes/",
-    "date": "2026-09-14T09:00:00",
-    "date_gmt": "2026-09-14T13:00:00",
-    "title": {
-      "rendered": "MLW Fusion Results (9/12): Matt Riddle Competes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12200223/maxresdefault-69.jpg"
   }
 ]
