@@ -76,11 +76,6 @@ const BUFFER_X_CHANNEL_ID = process.env.BUFFER_X_CHANNEL_ID || "";
 // where to find more content. Kept as one place to edit the wording/link.
 const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
-// Social Media Posting Policy:
-// If false (default), automatic cross-posting of news to social channels is disabled
-// to keep followers' social media feeds 100% clean and spoiler-free while they wait for translated shows!
-// Shows and show recaps are always auto-posted when they drop.
-const AUTO_POST_NEWS_TO_SOCIAL = process.env.AUTO_POST_NEWS_TO_SOCIAL === "true";
 
 // Initialize VAPID Keys for Web Push Notifications
 const VAPID_FILE = path.join(STATE_DIR, "vapid.json");
@@ -1075,6 +1070,79 @@ const watcherPendingSince: Record<string, number> = {};
 // duplicate send before the first one finishes and marks telegramSentMap.
 const telegramInFlight = new Set<string>();
 
+// Programmatic safeguard: Ensures that show results titles NEVER spoil the match winners
+function sanitizeResultsTitleSpoilers(title: string): string {
+  if (!title) return title;
+  let clean = title;
+
+  // Patterns in Arabic where a match winner is spoiled in a show results title:
+  // e.g. "رومان رينز يهزم بينتا" -> "مواجهة نارية بين رومان رينز وبينتا"
+  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
+  
+  // "ويحتفظ بـ..." -> "وصراع مشتعل على..."
+  clean = clean.replace(/و?يحتفظ\s+(?:بلقبه|باللقب|ببطولة)\s*/g, "وصراع مشتعل على لقب ");
+  clean = clean.replace(/و?يتوج\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+
+  return clean.replace(/\s+/g, " ").trim();
+}
+
+// Robust spoiler filter: Detects individual match outcome micro-stubs (in both Arabic & English)
+// while explicitly preserving all normal wrestling news (injuries, signings, returns, rumors, match cards, full show results).
+function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
+  const title = (rawTitle || "").trim();
+  if (!title) return false;
+
+  // 1. RULE 1: Full show results coverage is ALWAYS preserved (Never single match stubs)
+  if (/^نتائج\s+عرض\b/i.test(title) || /\b(?:Full Show Results|Live Results|Show Results)\b/i.test(title)) {
+    return false;
+  }
+
+  // 2. RULE 2: Preserved Content Safeguards (Must NEVER be blocked on social media)
+  // 2.1 Upcoming match announcements / Previews / Cards
+  if (/\b(?:الإعلان عن|تحديد موعد|نزال مرتقب|مواجهة مرتقبة|نزالات التصفية|قائمة نزالات|بطاقة عرض|سيواجه|يواجه|يتحالف مع)\b/i.test(title) ||
+      /\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) {
+    return false;
+  }
+
+  // 2.2 Wrestler Returns, Debuts, Signings, Releases & Appearances
+  if (/\b(?:يعود إلى|تسجيل ظهوره الأول|ظهوره الأول|ظهور مفاجئ|يوقع مع|تجديد عقد|يغادر|رحيل|فسخ عقد|انتقال|يظهر في|يشارك في)\b/i.test(title) ||
+      /\b(?:returns? to|makes? (?:surprise )?return|debuts? (?:on|at|in)|makes? debut|signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by|makes? (?:surprise )?appearance|shows? up at)\b/i.test(title)) {
+    return false;
+  }
+
+  // 2.3 Backstage reports, Interviews, Quotes, Opinions & Reactions
+  if (/\b(?:كواليس|خلف كواليس|تصريحات|يعلق على|يرد على|يوضح|يكشف|يتحدث عن|يشيد بـ|يهاجم|ينتقد|شائعات|تقارير تصف|حديث|حوار)\b/i.test(title) ||
+      /\b(?:comments on|comments after|reacts to|reflects on|explains|discusses|reveals|details|opens up|recalls|speaks on|addresses|says|tells|praises|blasts|slams|shuts down|teases|advocates|pitches|names|backstage at|loves|remembers|unhappy with|frustrated with)\b/i.test(title) ||
+      /^[A-Za-z0-9'\s\.\-]+?\s*:\s*['"“]/i.test(title)) {
+    return false;
+  }
+
+  // 2.4 Medical, Injuries, Surgeries, Health, Movies & TV Ratings
+  if (/\b(?:إصابة|جراحة|الرباط الصليبي|كسر|ابتعاد|غياب|وعكة صحية|مستشفى|وفاة|قاعة المشاهير|نسب مشاهدة|تقييمات|مبيعات تذاكر)\b/i.test(title) ||
+      /\b(?:injury|injured|surgery|torn acl|neck injury|pulled from|medical|health|hospital|out indefinitely|gofundme|trailer|movie|film|podcast|hall of fame|funeral|passes away|passed away|dies at|death of|historic gate|ticket sales|viewership|ratings)\b/i.test(title)) {
+    return false;
+  }
+
+  // 3. RULE 3: POSITIVE IDENTIFICATION OF LIVE SINGLE-MATCH SPOILERS
+  // Arabic patterns:
+  const hasArabicDefeat = /\b(?:يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على|يحسم مواجهة لصالح)\b/i.test(title);
+  const hasArabicQualifier = /\b(?:يتأهل لـ|يتأهل لمواجهة|يتأهل في تصفيات|يحسم تأهله|يقصي|يخرج من تصفيات)\b/i.test(title);
+  const hasArabicRetain = /\b(?:يحتفظ بـ|يحتفظ بلقب|يحتفظ ببطولة|يحافظ على لقب|يحافظ على بطولة|احتفاظ باللقب|احتفاظ بالبطولة)\b/i.test(title);
+  const hasArabicWin = /\b(?:يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول)\b/i.test(title);
+
+  // English patterns:
+  const hasEnglishDefeat = /\b(?:defeats?|defeated|defeating|def\.|beats?|beaten|pins?|pinned|submits?|submitted|triumphs? over|victorious over)\b/i.test(title);
+  const hasEnglishQualifier = /\b(?:qualifies? for|qualified for|advances? (?:to|in)|advanced (?:to|in)|eliminates?|eliminated from)\b/i.test(title);
+  const hasEnglishRetain = /\b(?:retains?|retained)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?)|retains? against\b/i.test(title);
+  const hasEnglishWin = /\b(?:wins?|won|captures?|captured|crowned(?: new)?|becomes(?: new)?)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?|ladder match(?:es)?|battle royals?|eliminators?)\b/i.test(title) ||
+                        /\bbecomes (?:the\s+)?no\.?\s*1 contender\b/i.test(title) ||
+                        /\bearns (?:a\s+)?(?:.*?\s+)?title shot\b/i.test(title);
+  const hasEnglishSurvive = /\bsurvives?.*to retain\b/i.test(title);
+
+  return (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin ||
+          hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive);
+}
+
 async function tryPublishSiteItem(item: any, key: string) {
   if (telegramSentMap[key] || telegramInFlight.has(key)) return;
   telegramInFlight.add(key);
@@ -1093,23 +1161,31 @@ async function tryPublishSiteItem(item: any, key: string) {
 
     const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
 
-    // Social Media Spoiler Shield: Skip automatic social media broadcast for news so followers' feeds stay 100% spoiler-free!
-    if (collection === "news" && !AUTO_POST_NEWS_TO_SOCIAL) {
-      delete watcherPendingSince[key];
-      telegramSentMap[key] = Date.now();
-      facebookSentMap[key] = Date.now();
-      instagramSentMap[key] = Date.now();
-      xSentMap[key] = Date.now();
-      await claimSend("telegram", key);
-      await claimSend("facebook", key);
-      await claimSend("instagram", key);
-      await claimSend("x", key);
-      console.log(`[Watcher] 🛡️ Social Media Spoiler Shield: News article "${item.title}" published on site only. Social feeds kept 100% spoiler-free for show releases.`);
-      return;
+    // Social Media Spoiler Shield:
+    // Single-match live result spoilers (e.g. "X defeats Y", "X qualifies for MITB", "X retains title against Y")
+    // are strictly blocked from social media to keep followers' feeds 100% spoiler-free!
+    // Meanwhile, normal news (injuries, signings, returns, match cards, backstage news) and full show results
+    // are published to social media normally!
+    if (collection === "news") {
+      const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || verify.bodySnippet || "");
+      if (isSpoiler) {
+        delete watcherPendingSince[key];
+        telegramSentMap[key] = Date.now();
+        facebookSentMap[key] = Date.now();
+        instagramSentMap[key] = Date.now();
+        xSentMap[key] = Date.now();
+        await claimSend("telegram", key);
+        await claimSend("facebook", key);
+        await claimSend("instagram", key);
+        await claimSend("x", key);
+        console.log(`[Watcher] 🛡️ Social Media Spoiler Shield: Single-match spoiler "${item.title}" kept on site only. Social feeds protected.`);
+        return;
+      }
     }
 
+    const cleanTitle = sanitizeResultsTitleSpoilers(item.title);
     const payload = {
-      title: item.title,
+      title: cleanTitle,
       text: item.headline || item.description || verify.bodySnippet || "",
       url: SITE_ORIGIN + (item.url || "")
     };

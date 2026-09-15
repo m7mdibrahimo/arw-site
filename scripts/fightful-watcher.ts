@@ -1478,8 +1478,10 @@ async function processPost(post: any, customDate?: Date | string, bypassSpoilerF
     return false;
   }
 
+  const isSingleMatch = isSingleMatchResultArticle(rawTitle, plainText);
+
   // Single-Match Spoiler Shield: Only skip on site if explicitly configured, otherwise publish to site
-  if (SKIP_SINGLE_MATCH_ON_SITE && !bypassSpoilerFilter && isSingleMatchResultArticle(rawTitle, plainText)) {
+  if (SKIP_SINGLE_MATCH_ON_SITE && !bypassSpoilerFilter && isSingleMatch) {
     console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Post #${postId} ("${rawTitle}") is an individual match outcome stub. Skipping on site.`);
     return false;
   }
@@ -1577,6 +1579,7 @@ title: ${JSON.stringify(rewritten.title)}
 date: ${iso}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
+single_match_result: ${isSingleMatch}
 tags:
 ${tagsYaml}
 image: ${localImagePath}
@@ -1619,25 +1622,40 @@ ${finalBody}
     } catch (e) {}
   }
 
-  // Clear publish-state for this article so social platforms re-publish the updated content
+  // Handle publish-state for this article:
+  // If this is a single-match result, mark it as claimed across all social platforms
+  // so social feeds remain 100% spoiler-free!
+  // Otherwise, clear any old slug state so social platforms will publish fresh news.
   try {
     const stateFile = path.join(process.cwd(), "_data", "publish-state.json");
     if (fs.existsSync(stateFile)) {
       const pState = JSON.parse(fs.readFileSync(stateFile, "utf-8"));
-      let modified = false;
-      for (const platform of ["telegram", "facebook", "instagram", "x"] as const) {
-        if (pState[platform]) {
-          for (const k of Object.keys(pState[platform])) {
-            if ((oldSlug && k.includes(oldSlug)) || (slug && k.includes(slug))) {
-              delete pState[platform][k];
-              modified = true;
+      if (isSingleMatch) {
+        const siteUrl = `https://arab-wrestling.com/news/${slug}/`;
+        const itemKey = siteUrl.replace(/[^a-zA-Z0-9_-]/g, "_");
+        const now = Date.now();
+        for (const platform of ["telegram", "facebook", "instagram", "x"] as const) {
+          if (!pState[platform]) pState[platform] = {};
+          pState[platform][itemKey] = now;
+        }
+        fs.writeFileSync(stateFile, JSON.stringify(pState, null, 2), "utf-8");
+        console.log(`[Watcher] 🛡️ Social Media Shield: Post #${postId} ("${rawTitle}") saved to site archive, and marked claimed in publish-state.json to keep social media 100% spoiler-free!`);
+      } else {
+        let modified = false;
+        for (const platform of ["telegram", "facebook", "instagram", "x"] as const) {
+          if (pState[platform]) {
+            for (const k of Object.keys(pState[platform])) {
+              if ((oldSlug && k.includes(oldSlug)) || (slug && k.includes(slug))) {
+                delete pState[platform][k];
+                modified = true;
+              }
             }
           }
         }
-      }
-      if (modified) {
-        fs.writeFileSync(stateFile, JSON.stringify(pState, null, 2), "utf-8");
-        console.log(`[Watcher] 📢 Reset publish-state so social media platforms will re-publish this post!`);
+        if (modified) {
+          fs.writeFileSync(stateFile, JSON.stringify(pState, null, 2), "utf-8");
+          console.log(`[Watcher] 📢 Reset publish-state so social media platforms will re-publish this post!`);
+        }
       }
     }
   } catch (e) {}

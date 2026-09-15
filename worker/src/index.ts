@@ -1204,6 +1204,62 @@ async function publishToPlatform(
 // Watcher — runs on the cron trigger, once a minute.
 // ─────────────────────────────────────────────────────────────────────────
 
+function sanitizeResultsTitleSpoilers(title: string): string {
+  if (!title) return title;
+  let clean = title;
+  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
+  clean = clean.replace(/و?يحتفظ\s+(?:بلقبه|باللقب|ببطولة)\s*/g, "وصراع مشتعل على لقب ");
+  clean = clean.replace(/و?يتوج\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+  return clean.replace(/\s+/g, " ").trim();
+}
+
+function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
+  const title = (rawTitle || "").trim();
+  if (!title) return false;
+
+  if (/^نتائج\s+عرض\b/i.test(title) || /\b(?:Full Show Results|Live Results|Show Results)\b/i.test(title)) {
+    return false;
+  }
+
+  // Preserved content safeguards
+  if (/\b(?:الإعلان عن|تحديد موعد|نزال مرتقب|مواجهة مرتقبة|نزالات التصفية|قائمة نزالات|بطاقة عرض|سيواجه|يواجه|يتحالف مع)\b/i.test(title) ||
+      /\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) {
+    return false;
+  }
+
+  if (/\b(?:يعود إلى|تسجيل ظهوره الأول|ظهوره الأول|ظهور مفاجئ|يوقع مع|تجديد عقد|يغادر|رحيل|فسخ عقد|انتقال|يظهر في|يشارك في)\b/i.test(title) ||
+      /\b(?:returns? to|makes? (?:surprise )?return|debuts? (?:on|at|in)|makes? debut|signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by|makes? (?:surprise )?appearance|shows? up at)\b/i.test(title)) {
+    return false;
+  }
+
+  if (/\b(?:كواليس|خلف كواليس|تصريحات|يعلق على|يرد على|يوضح|يكشف|يتحدث عن|يشيد بـ|يهاجم|ينتقد|شائعات|تقارير تصف|حديث|حوار)\b/i.test(title) ||
+      /\b(?:comments on|comments after|reacts to|reflects on|explains|discusses|reveals|details|opens up|recalls|speaks on|addresses|says|tells|praises|blasts|slams|shuts down|teases|advocates|pitches|names|backstage at|loves|remembers|unhappy with|frustrated with)\b/i.test(title) ||
+      /^[A-Za-z0-9'\s\.\-]+?\s*:\s*['"“]/i.test(title)) {
+    return false;
+  }
+
+  if (/\b(?:إصابة|جراحة|الرباط الصليبي|كسر|ابتعاد|غياب|وعكة صحية|مستشفى|وفاة|قاعة المشاهير|نسب مشاهدة|تقييمات|مبيعات تذاكر)\b/i.test(title) ||
+      /\b(?:injury|injured|surgery|torn acl|neck injury|pulled from|medical|health|hospital|out indefinitely|gofundme|trailer|movie|film|podcast|hall of fame|funeral|passes away|passed away|dies at|death of|historic gate|ticket sales|viewership|ratings)\b/i.test(title)) {
+    return false;
+  }
+
+  const hasArabicDefeat = /\b(?:يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على|يحسم مواجهة لصالح)\b/i.test(title);
+  const hasArabicQualifier = /\b(?:يتأهل لـ|يتأهل لمواجهة|يتأهل في تصفيات|يحسم تأهله|يقصي|يخرج من تصفيات)\b/i.test(title);
+  const hasArabicRetain = /\b(?:يحتفظ بـ|يحتفظ بلقب|يحتفظ ببطولة|يحافظ على لقب|يحافظ على بطولة|احتفاظ باللقب|احتفاظ بالبطولة)\b/i.test(title);
+  const hasArabicWin = /\b(?:يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول)\b/i.test(title);
+
+  const hasEnglishDefeat = /\b(?:defeats?|defeated|defeating|def\.|beats?|beaten|pins?|pinned|submits?|submitted|triumphs? over|victorious over)\b/i.test(title);
+  const hasEnglishQualifier = /\b(?:qualifies? for|qualified for|advances? (?:to|in)|advanced (?:to|in)|eliminates?|eliminated from)\b/i.test(title);
+  const hasEnglishRetain = /\b(?:retains?|retained)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?)|retains? against\b/i.test(title);
+  const hasEnglishWin = /\b(?:wins?|won|captures?|captured|crowned(?: new)?|becomes(?: new)?)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?|ladder match(?:es)?|battle royals?|eliminators?)\b/i.test(title) ||
+                        /\bbecomes (?:the\s+)?no\.?\s*1 contender\b/i.test(title) ||
+                        /\bearns (?:a\s+)?(?:.*?\s+)?title shot\b/i.test(title);
+  const hasEnglishSurvive = /\bsurvives?.*to retain\b/i.test(title);
+
+  return (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin ||
+          hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive);
+}
+
 async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
@@ -1220,9 +1276,6 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
   const minDate = env.WATCHER_MIN_DATE ? new Date(env.WATCHER_MIN_DATE).getTime() : 0;
 
-  // One read of the publish-state up front to cheaply skip anything already
-  // fully published on every platform, without spending a subrequest per
-  // item just to find out.
   let state: PublishState;
   try {
     ({ state } = await githubReadState(env));
@@ -1230,27 +1283,16 @@ async function runWatcherPoll(env: Env): Promise<void> {
     return;
   }
 
-  // `items` comes from search-index.json, which eleventy.config.js builds
-  // sorted newest-first (allContent is sorted by timestamp descending). That
-  // means the moment we hit an item older than WATCHER_MIN_DATE, every item
-  // after it is guaranteed older too — so `break` here instead of `continue`
-  // stops the scan immediately instead of still paying the cost (Date parse
-  // + object lookups) of walking the entire historical archive on every
-  // single cron tick. On a site with a large back-catalog this was likely
-  // the main reason the scheduled handler was hitting the CPU-time limit
-  // ("exceededCpu") every minute — most of that 10ms budget was spent
-  // walking thousands of already-irrelevant old items before ever reaching
-  // the handful of recent ones that actually matter.
   let processedInThisTick = 0;
-  const MAX_PER_TICK = 5; // Allow publishing up to 5 items simultaneously in the same tick
+  const MAX_PER_TICK = 5;
   let bufferXAttemptedInTick = 0;
-  const MAX_BUFFER_PER_TICK = 1; // Pace Buffer (X/Twitter) to 1 post per minute to avoid rate limits
+  const MAX_BUFFER_PER_TICK = 1;
 
   for (const item of items) {
     if (processedInThisTick >= MAX_PER_TICK) break;
 
     const ts = item.date ? new Date(item.date).getTime() : 0;
-    if (minDate && ts && ts < minDate) break; // pre-cutover content — never auto-published, and nothing after this point is newer
+    if (minDate && ts && ts < minDate) break;
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
@@ -1260,11 +1302,26 @@ async function runWatcherPoll(env: Env): Promise<void> {
     const igDone = !!state.instagram[key];
     const xDone = !!state.x[key];
 
-    // If completely done on all platforms, skip
     if (tgDone && fbDone && igDone && xDone) continue;
 
-    // Check platform cooldowns (e.g. daily limit hit on Buffer for X)
     const now = Date.now();
+
+    // Social Media Spoiler Shield:
+    // Block individual match result stubs from social feeds.
+    // General news (injuries, signings, returns, announcements) and full show results are published!
+    const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
+    if (collection === "news") {
+      const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
+      if (isSpoiler) {
+        state.telegram[key] = now;
+        state.facebook[key] = now;
+        state.instagram[key] = now;
+        state.x[key] = now;
+        await githubWriteState(env, state, `social shield: skip single-match spoiler ${key}`).catch(() => {});
+        continue;
+      }
+    }
+
     const xCooldown = (state.cooldowns?.x || 0) > now;
 
     // Determine what can actually be attempted right now
@@ -1286,7 +1343,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
       const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
       const payload = {
-        title: item.title,
+        title: sanitizeResultsTitleSpoilers(item.title),
         text: item.headline || item.description || verify.bodySnippet || "",
         url: env.SITE_ORIGIN + (item.url || ""),
       };
@@ -1314,7 +1371,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
         const v = await verifyLiveOnSite(env, { url: item.url, image: item.image });
         catchUpText = v.bodySnippet || "";
       }
-      const payload = { title: item.title, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
+      const payload = { title: sanitizeResultsTitleSpoilers(item.title), text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
       if (canDoFb) {
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
