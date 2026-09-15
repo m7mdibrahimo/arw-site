@@ -743,9 +743,32 @@
 
   let selectedPosts = new Map(); // postId -> { id, link, title }
 
-  // Batch selection: ONLY allows selecting fresh new news!
+  // Single-match live result spoiler shield for frontend
+  function isSingleMatchResultClient(title) {
+    if (!title) return false;
+    if (/\b(?:results|spoilers|quick results|full results|live recap)\b/i.test(title)) return false;
+    if (/\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) return false;
+    if (/\b(?:returns? to|makes? (?:surprise )?return|debuts? (?:on|at|in)|makes? debut|signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by|makes? (?:surprise )?appearance|shows? up at)\b/i.test(title)) return false;
+    if (/\b(?:comments on|comments after|reacts to|reflects on|explains|discusses|reveals|details|opens up|recalls|speaks on|addresses|says|tells|praises|blasts|slams|shuts down|teases|advocates|pitches|names|backstage at|loves|remembers|unhappy with|frustrated with)\b/i.test(title)) return false;
+    if (/^[A-Za-z0-9'\s\.\-]+?\s*:\s*['"“]/i.test(title) || /^[A-Za-z0-9'\s\.\-]+?\s+on\s+(?:why|how|what|his|her|their|the)\b/i.test(title)) return false;
+    if (/\b(?:injury|injured|surgery|torn acl|neck injury|pulled from|medical|health|hospital|out indefinitely|gofundme|trailer|movie|film|podcast|hall of fame|funeral|passes away|passed away|dies at|death of|historic gate|ticket sales|viewership|ratings)\b/i.test(title)) return false;
+
+    const hasDefeatVerb = /\b(?:defeats?|defeated|defeating|def\.|beats?|beaten|pins?|pinned|submits?|submitted|triumphs? over|victorious over)\b/i.test(title);
+    const hasQualifierVerb = /\b(?:qualifies? for|qualified for|advances? (?:to|in)|advanced (?:to|in)|eliminates?|eliminated from)\b/i.test(title);
+    const hasRetainVerb = /\b(?:retains?|retained)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?)|retains? against\b/i.test(title);
+    const hasWinVerb = /\b(?:wins?|won|captures?|captured|crowned(?: new)?|becomes(?: new)?)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?|ladder match(?:es)?|battle royals?|eliminators?)\b/i.test(title) ||
+                       /\bbecomes (?:the\s+)?no\.?\s*1 contender\b/i.test(title) ||
+                       /\bearns (?:a\s+)?(?:.*?\s+)?title shot\b/i.test(title);
+    const hasSurviveVerb = /\bsurvives?.*to retain\b/i.test(title);
+
+    return Boolean(hasDefeatVerb || hasQualifierVerb || hasRetainVerb || hasWinVerb || hasSurviveVerb);
+  }
+
+  // Batch selection: ONLY allows selecting fresh news that are NOT single-match spoilers!
   function isSelectable(post) {
     if (!post) return false;
+    const cleanTitle = (post.title?.rendered || post.title || '').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
+    if (isSingleMatchResultClient(cleanTitle)) return false;
     return isPostFresh(post);
   }
 
@@ -766,8 +789,8 @@
   };
 
   window.handleCardClick = function(event, postId) {
-    const pid = Number(postId);
-    if (isPostAddedToSite({ id: pid }) || pendingDispatchedIds.has(pid)) return;
+    const post = sourcePosts.find(p => p.id === postId);
+    if (!post || !isSelectable(post)) return;
     const isSel = selectedPosts.has(postId);
     toggleSelectPost(postId, !isSel);
   };
@@ -950,6 +973,8 @@
       let badgeHtml = '';
       let actionHtml = '';
 
+      const isSingleMatch = !isAdded && isSingleMatchResultClient(cleanTitle);
+
       if (isPending) {
         badgeHtml = isAdded
           ? '<span class="badge-state pending">🔄 جاري التحديث والاستبدال...</span>'
@@ -962,6 +987,9 @@
             🔄 ${isResults ? 'تحديث نتائج العرض' : 'إعادة نشر وتحديث'}
           </button>
         `;
+      } else if (isSingleMatch) {
+        badgeHtml = '<span class="badge-state old" style="background:rgba(239,68,68,0.15);color:#fca5a5;border-color:rgba(239,68,68,0.35);">🛡️ نزال فردي (مستبعد لمنع الحرق)</span>';
+        actionHtml = `<button class="add-btn" style="background:#475569;font-size:11.5px;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)" title="هذا نزال فردي مستبعد تلقائياً لحماية السوشيال ميديا من الحرق. اضغط فقط إذا أردت نشره استثنائياً">➕ نشر استثنائي</button>`;
       } else if (isOld) {
         badgeHtml = '<span class="badge-state old">⏹️ خبر قديم</span>';
         actionHtml = `<button class="add-btn" style="background:#334155;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة يدوية</button>`;
@@ -971,15 +999,17 @@
       }
 
       return `
-        <div class="post-card ${isAdded ? 'is-added' : ''} ${isPending ? 'is-pending' : ''} ${isOld ? 'is-old' : ''} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
+        <div class="post-card ${isAdded ? 'is-added' : ''} ${isPending ? 'is-pending' : ''} ${isOld ? 'is-old' : ''} ${isSingleMatch ? 'is-single-match' : ''} ${isSelected ? 'selected' : ''}" data-id="${post.id}" onclick="handleCardClick(event, ${post.id})">
           <div class="post-check-wrap" onclick="event.stopPropagation()">
             ${isAdded ? `
               <input type="checkbox" class="post-checkbox" disabled title="مضاف بالفعل للموقع (استخدم زر التحديث لإعادة نشره)" />
             ` : (isPending ? `
               <input type="checkbox" class="post-checkbox" disabled title="جاري النشر والمعالجة..." />
+            ` : (isSingleMatch ? `
+              <input type="checkbox" class="post-checkbox" disabled title="نزال فردي مستبعد تلقائياً لحماية السوشيال ميديا من الحرق" />
             ` : `
               <input type="checkbox" class="post-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectPost(${post.id}, this.checked)" title="${isOld ? 'خبر قديم' : 'خبر جديد'}" />
-            `)}
+            `))}
           </div>
           <img src="${featured}" onerror="this.src='/favicon.png'" alt="" />
           <div class="info">

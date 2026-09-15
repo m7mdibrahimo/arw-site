@@ -710,16 +710,26 @@ export async function optimizeTitleForSEOAndCTR(
   if (isResultsPost) {
     specificTitleRules = `
 نوع المقال: **تقرير نتائج وتغطية عرض مصارعة كامل (Full Show Results)**
-1. **أولوية اختيار الأحداث (المين إيفنت والنزالات الكبرى أولاً)**:
-   - يجب حتماً أن يركز المانشيت على **الحدث الرئيسي (Main Event)** أو النزالات الكبرى والصدمات العنيفة.
-2. **قاعدة العروض متعددة الليالي (Multi-Night Events مثل Triplemania أو WrestleMania)**:
+1. **القاعدة الصارمة الحاسمة: حظر تام وشامل لأي حرق للنتائج في العنوان (Strict Zero-Spoiler Rule)**:
+   - **ممنوع بتاتاً منعاً باتاً ذكر اسم الفائز أو الخاسر أو نتيجة أي نزال في العنوان نهائياً!**
+   - **ممنوع منعاً باتاً** استخدام كلمات الحسم أو الفوز أو الخسارة في العنوان، مثل:
+     (❌ "يهزم", ❌ "يسقط", ❌ "يتفوق على", ❌ "ينتصر على", ❌ "يخسر أمام", ❌ "يحتفظ بلقبه بعد فوزه", ❌ "يتوج بـ", ❌ "تتويج", ❌ "حسم المواجهة", ❌ "يحسم نزاله").
+   - **البديل الاحترافي والتشويقي الإلزامي**:
+     اذكر أطراف النزالات الكبرى وطبيعة الصراع والتصفيات دون كشف الفائز:
+     - بدلاً من: ❌ "رومان رينز يهزم بينتا"
+     - اكتب: ✅ "مواجهة نارية بين رومان رينز وبينتا" أو "صدام ملحمي بين رومان رينز وبينتا على لقب العالم" أو "رومان رينز يدافع عن لقبه أمام بينتا".
+     - بدلاً من: ❌ "جيفون إيفانز يهزم إل فيسكال ويتأهل لموني إن ذا بانك"
+     - اكتب: ✅ "تصفيات مشتعلة وحاسمة لمواجهة موني إن ذا بانك".
+2. **أولوية اختيار الأحداث (المين إيفنت والنزالات الكبرى أولاً)**:
+   - يجب حتماً أن يركز المانشيت على **الحدث الرئيسي (Main Event)** أو النزالات الكبرى والأحداث المشتعلة دون كشف نتائجها.
+3. **قاعدة العروض متعددة الليالي (Multi-Night Events مثل Triplemania أو WrestleMania)**:
    - **احذف التاريخ نهائياً ولا تضعه في العنوان مطلقاً!**
    - ضع رقم الليلة بالعربية: "(الليلة الأولى)" أو "(الليلة الثانية)".
-   - الصيغة: "نتائج عرض [اسم العرض] (الليلة الأولى): [وصف مثير ومفصل للحدث الأضخم/الرئيسي].. و[حدث بارز آخر]"
-3. **قاعدة العروض العادية (ذات الليلة الواحدة فقط)**:
+   - الصيغة: "نتائج عرض [اسم العرض] (الليلة الأولى): [وصف مثير ومفصل للحدث الأضخم/الرئيسي دون ذكر الفائز].. و[حدث بارز آخر]"
+4. **قاعدة العروض العادية (ذات الليلة الواحدة فقط)**:
    - **يجب حتماً تضمين التاريخ بين قوسين**: (${arabicDate}).
-   - الصيغة: "نتائج عرض [اسم العرض] (${arabicDate}): [أقوى حدث بالعرض].. و[حدث هام آخر]"
-4. **أسماء الاتحادات والعروض بالإنجليزية حصراً**:
+   - الصيغة: "نتائج عرض [اسم العرض] (${arabicDate}): [المواجهة الكبرى بأطرافها دون ذكر الفائز].. و[أبرز الأحداث والتصفيات]"
+5. **أسماء الاتحادات والعروض بالإنجليزية حصراً**:
    - أسماء الاتحادات تظل بالإنجليزية دائماً كما هي: (WWE, AEW, TNA, ROH, NJPW, MLW, AAA, CMLL, UFC).
    - أسماء العروض تظل بالإنجليزية دائماً: (مثل WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, Triplemania).
    - باقي الكلمات (النتائج، المصارعين، الأحداث، الوصف) بالعربية التامة وبدون أي تشكيل.`;
@@ -843,7 +853,10 @@ ${articleSummary.slice(0, 3000)}
         }
         const winningRaw = parsed.champion_title || parsed.best_title;
         if (winningRaw && winningRaw.trim().length > 10) {
-          const winner = cleanHeadlineClichés(sanitizeWrestlingTerms(winningRaw.trim()));
+          let winner = cleanHeadlineClichés(sanitizeWrestlingTerms(winningRaw.trim()));
+          if (isResultsPost) {
+            winner = sanitizeResultsTitleSpoilers(winner);
+          }
           console.log(`[Watcher] 🏆 Champion Headline Selected: "${winner}"`);
           return winner;
         }
@@ -853,7 +866,11 @@ ${articleSummary.slice(0, 3000)}
     console.warn("[Watcher] Title tournament pass skipped, using draft title:", e);
   }
 
-  return cleanHeadlineClichés(sanitizeWrestlingTerms(draftTitle));
+  let finalTitle = cleanHeadlineClichés(sanitizeWrestlingTerms(draftTitle));
+  if (isResultsPost) {
+    finalTitle = sanitizeResultsTitleSpoilers(finalTitle);
+  }
+  return finalTitle;
 }
 
 // Format markdown to ensure clean spacing between lines and match sections
@@ -872,7 +889,7 @@ function formatResultsMarkdown(text: string): string {
 
 
 // Bulletproof detection of Show Results vs Single News
-function isShowResultsArticle(originalTitle: string, plainText: string = ""): boolean {
+export function isShowResultsArticle(originalTitle: string, plainText: string = ""): boolean {
   const title = (originalTitle || "").trim();
 
   // 1. Explicit negative checks: Non-show results (financial, medical tests, surveys, or news updates ABOUT results)
@@ -900,6 +917,98 @@ function isShowResultsArticle(originalTitle: string, plainText: string = ""): bo
   }
 
   return false;
+}
+
+/**
+ * Ironclad Protection Shield: Detects single-match live coverage / spoiler stubs.
+ * Filters out posts like:
+ * - "Roman Reigns Defeats Penta To Retain World Heavyweight Championship On 9/14 WWE Raw"
+ * - "Je’Von Evans Qualifies For Men’s Money In The Bank Match On WWE Raw"
+ * - "Lola Vice Qualifies For Women's Money In The Bank Match On 9/14 WWE Raw"
+ * - "Chad Gable Retains Intercontinental Championship Against Dragon Lee And Dr. Wagner Jr On 9/14 WWE Raw"
+ * - "Rey Fenix Defeats El Fiscal To Advance In WWE World Heavyweight Title Tournament On 9/14 WWE Raw"
+ *
+ * GUARANTEES:
+ * 1. Full Show Results recaps are NEVER blocked.
+ * 2. Upcoming match announcements ("Set For", "Announced For", "To Face") are NEVER blocked.
+ * 3. Surprise returns, debuts, and signings ("Returns", "Debuts", "Signs") are NEVER blocked.
+ * 4. Backstage news, injuries, surgeries, and interviews/quotes are NEVER blocked.
+ */
+export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
+  const title = (rawTitle || "").trim();
+  if (!title) return false;
+
+  // 1. RULE 1: Full show results are ALWAYS preserved (Never single match stubs)
+  if (isShowResultsArticle(title, plainText)) {
+    return false;
+  }
+
+  // 2. RULE 2: Preserved Content Safeguards (Must NEVER be blocked)
+  // 2.1 Upcoming match announcements / Previews / Cards
+  if (/\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) {
+    return false;
+  }
+
+  // 2.2 Wrestler Returns, Debuts, Signings, Releases & Appearances
+  if (/\b(?:returns? to|makes? (?:surprise )?return|debuts? (?:on|at|in)|makes? debut|signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by|makes? (?:surprise )?appearance|shows? up at)\b/i.test(title)) {
+    return false;
+  }
+
+  // 2.3 Backstage reports, Interviews, Quotes, Opinions & Reactions
+  if (/\b(?:comments on|comments after|reacts to|reflects on|explains|discusses|reveals|details|opens up|recalls|speaks on|addresses|says|tells|praises|blasts|slams|shuts down|teases|advocates|pitches|names|backstage at|loves|remembers|unhappy with|frustrated with)\b/i.test(title)) {
+    return false;
+  }
+  // Format like: 'Wrestler: Quote' or 'Wrestler On...'
+  if (/^[A-Za-z0-9'\s\.\-]+?\s*:\s*['"“]/i.test(title) || /^[A-Za-z0-9'\s\.\-]+?\s+on\s+(?:why|how|what|his|her|their|the)\b/i.test(title)) {
+    return false;
+  }
+
+  // 2.4 Medical, Injuries, Surgeries, Health, Movies & Non-match news
+  if (/\b(?:injury|injured|surgery|torn acl|neck injury|pulled from|medical|health|hospital|out indefinitely|gofundme|trailer|movie|film|podcast|hall of fame|funeral|passes away|passed away|dies at|death of|historic gate|ticket sales|viewership|ratings)\b/i.test(title)) {
+    return false;
+  }
+
+  // 3. RULE 3: POSITIVE IDENTIFICATION OF LIVE SINGLE-MATCH SPOILERS
+  // A. Defeats / Beats / Pins / Submits / Triumphs Over (e.g. "X Defeats Y", "X Pins Y")
+  const hasDefeatVerb = /\b(?:defeats?|defeated|defeating|def\.|beats?|beaten|pins?|pinned|submits?|submitted|triumphs? over|victorious over)\b/i.test(title);
+
+  // B. Qualifiers / Tournaments (e.g. "Qualifies For Men's Money In The Bank", "Advances In Title Tournament")
+  const hasQualifierVerb = /\b(?:qualifies? for|qualified for|advances? (?:to|in)|advanced (?:to|in)|eliminates?|eliminated from)\b/i.test(title);
+
+  // C. Title Retains / Title Defenses (e.g. "Retains World Heavyweight Championship Against X")
+  const hasRetainVerb = /\b(?:retains?|retained)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?)|retains? against\b/i.test(title);
+
+  // D. Title Wins / New Champions in single matches (e.g. "Wins Women's Title In Chile", "Captures TNT Championship")
+  const hasWinVerb = /\b(?:wins?|won|captures?|captured|crowned(?: new)?|becomes(?: new)?)\s+(?:the\s+)?(?:.*?\s+)?(?:championships?|titles?|champions?|gold|belts?|crowns?|ladder match(?:es)?|battle royals?|eliminators?)\b/i.test(title) ||
+                     /\bbecomes (?:the\s+)?no\.?\s*1 contender\b/i.test(title) ||
+                     /\bearns (?:a\s+)?(?:.*?\s+)?title shot\b/i.test(title);
+
+  // E. Survives to retain
+  const hasSurviveVerb = /\bsurvives?.*to retain\b/i.test(title);
+
+  if (hasDefeatVerb || hasQualifierVerb || hasRetainVerb || hasWinVerb || hasSurviveVerb) {
+    return true;
+  }
+
+  return false;
+}
+
+// Programmatic safeguard: Ensures that show results titles NEVER spoil the match winners
+export function sanitizeResultsTitleSpoilers(title: string): string {
+  if (!title) return title;
+  let clean = title;
+
+  // Patterns in Arabic where a match winner is spoiled in a show results title:
+  // e.g. "رومان رينز يهزم بينتا" -> "مواجهة نارية بين رومان رينز وبينتا"
+  // e.g. "رومان رينز يسقط بينتا" -> "مواجهة نارية بين رومان رينز وبينتا"
+  // e.g. "رومان رينز يتفوق على بينتا" -> "مواجهة نارية بين رومان رينز وبينتا"
+  clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
+  
+  // "ويحتفظ بـ..." -> "وصراع مشتعل على..."
+  clean = clean.replace(/و?يحتفظ\s+(?:بلقبه|باللقب|ببطولة)\s*/g, "وصراع مشتعل على لقب ");
+  clean = clean.replace(/و?يتوج\s+(?:بلقب|ببطولة)\s*/g, "ونزال تاريخي على بطولة ");
+
+  return clean.replace(/\s+/g, " ").trim();
 }
 
 // Resilient JSON parser that handles code blocks, malformed quotes, and regex fallback
@@ -998,9 +1107,11 @@ async function rewriteWithGemini(
 
 🏆 **الفائز:** [اسم الفائز بالعربي] (مع إضافة "واحتفظ باللقب" إذا كان نزال بطولة).
 
-3. **العنوان لنتائج العروض**:
-   - إذا كان العرض ليلة واحدة: "نتائج عرض [اسم العرض مسبوقاً باسم الاتحاد] (${arabicDate}): [أقوى حدث بالعرض].. و[حدث هام آخر]"
-   - إذا كان مقسماً لليالٍ (Night 1 / Night 2): احذف التاريخ واكتب: "نتائج عرض [اسم العرض مسبوقاً باسم الاتحاد] (الليلة الأولى): [وصف مفصل للحدث الرئيسي].. و[حدث بارز]"
+3. **العنوان لنتائج العروض (حظر تام وشامل لأي حرق لنتائج النزالات في العنوان - Strict Zero-Spoiler Rule)**:
+   - **ممنوع نهائياً ذكر اسم الفائز أو الخاسر أو نتيجة أي نزال في العنوان مطلقاً!**
+   - اذكر أطراف النزال الرئيسي أو الصدام الناري دون كشف الفائز (مثل: "مواجهة نارية بين رومان رينز وبينتا.. وتصفيات مشتعلة لموني إن ذا بانك").
+   - إذا كان العرض ليلة واحدة: "نتائج عرض [اسم العرض مسبوقاً باسم الاتحاد] (${arabicDate}): [أطراف المواجهة الكبرى دون ذكر الفائز].. و[أبرز الأحداث والتصفيات]"
+   - إذا كان مقسماً لليالٍ (Night 1 / Night 2): احذف التاريخ واكتب: "نتائج عرض [اسم العرض مسبوقاً باسم الاتحاد] (الليلة الأولى): [أطراف الحدث الرئيسي دون ذكر الفائز].. و[حدث بارز]"
 4. **حظر تام لكلمتي "حلقة" و"مهرجان" نهائياً**: استبدلها دائماً بكلمة "عرض" (أو "عروض" للجمع). لا يوجد حلقة ولا مهرجان، بل اسمه "عرض".
 5. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
 6. **حظر ذكر أي مصادر خارجية نهائياً**: صِغْ كل شيء كأنه حصري لموقع عرب راسلنج، ممنوع تماماً ذكر Fightful أو محرريها.
@@ -1143,6 +1254,9 @@ ${plainText.slice(0, 4000)}
 
     // Sanitize any instances of 'حلقة' to 'عرض' & remove cliché prefixes
     parsed.title = cleanHeadlineClichés(sanitizeWrestlingTerms(parsed.title));
+    if (isResultsPost) {
+      parsed.title = sanitizeResultsTitleSpoilers(parsed.title);
+    }
     parsed.body_markdown = formatResultsMarkdown(sanitizeWrestlingTerms(parsed.body_markdown));
     parsed.tags = (parsed.tags || []).map(t => sanitizeWrestlingTerms(t));
 
@@ -1311,7 +1425,7 @@ function findExistingNewsFile(postId: number, postUrl?: string): { filePath: str
 }
 
 // Process a single Fightful post
-async function processPost(post: any, customDate?: Date | string): Promise<boolean> {
+async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false): Promise<boolean> {
   const postId = post.id;
   const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || "News";
   const postUrl = post.link || "";
@@ -1355,6 +1469,12 @@ async function processPost(post: any, customDate?: Date | string): Promise<boole
   const plainText = htmlToPlainText(contentHtml);
   if (plainText.length < 25) {
     console.warn(`[Watcher] Post #${postId} has insufficient text content, skipping.`);
+    return false;
+  }
+
+  // Ironclad Single-Match Spoiler Shield: Strictly skip micro-match outcome stubs
+  if (!bypassSpoilerFilter && isSingleMatchResultArticle(rawTitle, plainText)) {
+    console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Post #${postId} ("${rawTitle}") is an individual match outcome stub. Skipping to preserve show surprises and protect social media!`);
     return false;
   }
 
@@ -1567,6 +1687,17 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       // In automated mode, skip old news (older than MAX_AUTO_PUBLISH_AGE_HOURS)
       if (!options.forceLatest && ageHours > MAX_AUTO_PUBLISH_AGE_HOURS) {
         console.log(`[Watcher] ⏭️ Skipping OLD post #${postId} ("${rawTitle}"): published ${ageHours.toFixed(1)}h ago (older than ${MAX_AUTO_PUBLISH_AGE_HOURS}h threshold).`);
+        if (!state.processedIds.includes(postId)) {
+          state.processedIds.push(postId);
+        }
+        continue;
+      }
+
+      // Check single-match live result spoiler shield (Strict policy: never publish single match spoilers)
+      const contentHtml = post.content?.rendered || "";
+      const plainText = htmlToPlainText(contentHtml);
+      if (isSingleMatchResultArticle(rawTitle, plainText)) {
+        console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Skipping individual match outcome #${postId} ("${rawTitle}"). (Protects social media and fans from spoilers)`);
         if (!state.processedIds.includes(postId)) {
           state.processedIds.push(postId);
         }
