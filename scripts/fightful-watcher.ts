@@ -644,6 +644,7 @@ async function queryGemini(prompt: string, jsonMode: boolean = true): Promise<st
             contents: [{ parts: [{ text: prompt }] }],
             generationConfig: {
               temperature: 0.6,
+              maxOutputTokens: 2500,
               ...(jsonMode ? { responseMimeType: "application/json" } : {}),
             },
           }),
@@ -861,31 +862,6 @@ function formatResultsMarkdown(text: string): string {
     .trim();
 }
 
-// Detect single-match spoiler stubs from Fightful (e.g. "X Defeats Y", "X Qualifies For MITB", "X Retains Title")
-// to prevent burning show outcomes on Instagram, Facebook, and the website.
-function isSingleMatchSpoiler(rawTitle: string): boolean {
-  const t = (rawTitle || "").trim();
-
-  // 1. Taped show spoilers (leaks before TV broadcast)
-  if (/\b(?:taped spoilers?|spoilers? for the upcoming)\b/i.test(t)) {
-    return true;
-  }
-
-  // 2. Full show recaps must ALWAYS be kept (they are the official master results post)
-  if (/\b(?:results|full results|live recap)\b/i.test(t)) {
-    return false;
-  }
-
-  // 3. Single match outcomes / qualifiers / title defense stubs
-  if (/\b(?:defeats|defeated|def\.|pins|pinned|qualifies for|advances to)\b/i.test(t)) {
-    return true;
-  }
-  if (/\b(?:wins|retains|captures)\b.*\b(?:championship|title|match)\b/i.test(t) && /\b(?:on|at)\b.*\b(?:raw|smackdown|nxt|dynamite|collision|impact)\b/i.test(t)) {
-    return true;
-  }
-
-  return false;
-}
 
 // Bulletproof detection of Show Results vs Single News
 function isShowResultsArticle(originalTitle: string, plainText: string = ""): boolean {
@@ -927,6 +903,11 @@ function safeParseJson<T>(rawText: string): T | null {
     text = text.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
   }
 
+  // Auto-fix: if "title": unquoted text, wrap it cleanly in quotes
+  text = text.replace(/"title"\s*:\s*([^"\n\r\{\[].*?)(,\s*\n|,\s*"|\n)/i, (m, val, ending) => {
+    return `"title": "${val.trim().replace(/^"|"$/g, "")}"${ending}`;
+  });
+
   try {
     return JSON.parse(text) as T;
   } catch (e1) {}
@@ -942,7 +923,9 @@ function safeParseJson<T>(rawText: string): T | null {
 
   // Regex extraction fallback for resilient parsing of AI responses
   try {
-    const titleMatch = text.match(/"title"\s*:\s*"([\s\S]+?)(?<!\\)",?\s*\n/i) || text.match(/"title"\s*:\s*"([^"]+)"/i);
+    const titleMatch = text.match(/"title"\s*:\s*"([\s\S]+?)(?<!\\)",?\s*\n/i) ||
+                       text.match(/"title"\s*:\s*"([^"]+)"/i) ||
+                       text.match(/"title"\s*:\s*([^",\n\r]+)/i);
     const fedMatch = text.match(/"federation"\s*:\s*"([^"]+)"/i);
     const tagsMatch = text.match(/"tags"\s*:\s*\[([\s\S]*?)\]/i);
     const bodyMatch = text.match(/"body_markdown"\s*:\s*"([\s\S]+?)"\s*(?:,\s*"tags"|\})/i);
@@ -1582,15 +1565,6 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
         continue;
       }
 
-      // In automated mode, skip single-match spoiler stubs to protect social media and site from spoilers
-      if (!options.forceLatest && isSingleMatchSpoiler(rawTitle)) {
-        console.log(`[Watcher] ⏭️ Skipping single-match spoiler stub #${postId} ("${rawTitle}") to protect social media and website from spoilers.`);
-        if (!state.processedIds.includes(postId)) {
-          state.processedIds.push(postId);
-        }
-        saveState(state);
-        continue;
-      }
 
       const success = await processPost(post);
       if (success) {
