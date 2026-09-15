@@ -46,8 +46,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "ARW News Bot"
-          if [[ -n $(git status -s content/news/ content/images/ watcher-state.json watcher-feed.json) ]]; then
-            git add content/news/ content/images/ watcher-state.json watcher-feed.json
+          if [[ -n $(git status -s) ]]; then
+            git add -A
             git commit -m "feat(news): auto-publish latest wrestling news"
             git pull --rebase origin main
             git push
