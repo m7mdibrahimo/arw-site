@@ -861,38 +861,57 @@ function formatResultsMarkdown(text: string): string {
     .trim();
 }
 
+// Detect single-match spoiler stubs from Fightful (e.g. "X Defeats Y", "X Qualifies For MITB", "X Retains Title")
+// to prevent burning show outcomes on Instagram, Facebook, and the website.
+function isSingleMatchSpoiler(rawTitle: string): boolean {
+  const t = (rawTitle || "").trim();
+
+  // 1. Taped show spoilers (leaks before TV broadcast)
+  if (/\b(?:taped spoilers?|spoilers? for the upcoming)\b/i.test(t)) {
+    return true;
+  }
+
+  // 2. Full show recaps must ALWAYS be kept (they are the official master results post)
+  if (/\b(?:results|full results|live recap)\b/i.test(t)) {
+    return false;
+  }
+
+  // 3. Single match outcomes / qualifiers / title defense stubs
+  if (/\b(?:defeats|defeated|def\.|pins|pinned|qualifies for|advances to)\b/i.test(t)) {
+    return true;
+  }
+  if (/\b(?:wins|retains|captures)\b.*\b(?:championship|title|match)\b/i.test(t) && /\b(?:on|at)\b.*\b(?:raw|smackdown|nxt|dynamite|collision|impact)\b/i.test(t)) {
+    return true;
+  }
+
+  return false;
+}
+
 // Bulletproof detection of Show Results vs Single News
 function isShowResultsArticle(originalTitle: string, plainText: string = ""): boolean {
   const title = (originalTitle || "").trim();
-  const text = (plainText || "").trim();
 
   // 1. Explicit negative checks: Non-show results (financial, medical tests, surveys, or news updates ABOUT results)
   if (/\b(?:financial|quarterly|earnings|fiscal|q[1-4]|medical|drug|wellness|investigation|poll|survey|election|test|exam|blood)\s+.*?\bresults\b/i.test(title)) {
     return false;
   }
-  if (/\bresults\s+(?:update|clarification|details|reaction|comment|delayed|postponed)\b/i.test(title) && !/\b(?:live coverage|quick results|full results)\b/i.test(title)) {
+  if (/\bresults\s+(?:update|clarification|details|reaction|comment|delayed|postponed)\b/i.test(title) && !/\b(?:quick results|full results)\b/i.test(title)) {
     return false;
   }
   if (/\b(?:preview|previews|set for|card for|how to watch|lineup|schedule|start time)\b/i.test(title) && !/\b(?:results|spoilers)\b/i.test(title)) {
     return false;
   }
 
-  // 2. Strong Title Signals for Full Show Results / Spoilers
-  // Matches "Results", "Spoilers", "Quick Results", "Full Results", "Live Coverage", "Live Recap"
-  const hasResultsInTitle = /\b(?:results|spoilers|quick results|full results|live coverage|live recap|post-show recap)\b/i.test(title);
-
-  // 3. Body Signals: Check if content actually describes a full show with multiple matches
-  const matchSignals = (text.match(/\b(?:def\.|defeated|defeats|vs\.?|championship|battle royal|eliminator match|main event|pinfall|submission)\b/gi) || []).length;
-  const hasMultipleMatches = matchSignals >= 3;
-  const hasFullResultsIntro = /\b(?:full results|live coverage|detailed results|results for the|live recap)\b/i.test(text);
-
-  // If title explicitly announces results/spoilers -> 100% SHOW RESULTS!
-  if (hasResultsInTitle) {
-    return true;
+  // Single match / title defense / qualifier articles must NEVER be treated as full show results
+  if (/\b(?:defeats|defeated|defeating|def\.|pins|pinned|qualifies|advances|wins.*(?:championship|title|match)|retains.*(?:championship|title))\b/i.test(title)) {
+    return false;
   }
 
-  // If title doesn't have "Results", but the body explicitly contains a full show results intro AND multiple match results:
-  if (hasFullResultsIntro && hasMultipleMatches && !/\b(?:wins|defeated|injur|return|sign|update|report|rumor|excited|comments|reacts)\b/i.test(title)) {
+  // 2. Strong Title Signals for Full Show Results / Spoilers
+  // On Fightful, full show recaps ALWAYS announce themselves explicitly in the title:
+  // e.g. "WWE Raw Results (9/14/2026): ...", "AEW Dynamite Results: ...", "WWE SmackDown Spoilers: ..."
+  const hasResultsInTitle = /\b(?:results|spoilers|quick results|full results|live recap)\b/i.test(title);
+  if (hasResultsInTitle) {
     return true;
   }
 
@@ -1560,6 +1579,16 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
         if (!state.processedIds.includes(postId)) {
           state.processedIds.push(postId);
         }
+        continue;
+      }
+
+      // In automated mode, skip single-match spoiler stubs to protect social media and site from spoilers
+      if (!options.forceLatest && isSingleMatchSpoiler(rawTitle)) {
+        console.log(`[Watcher] ⏭️ Skipping single-match spoiler stub #${postId} ("${rawTitle}") to protect social media and website from spoilers.`);
+        if (!state.processedIds.includes(postId)) {
+          state.processedIds.push(postId);
+        }
+        saveState(state);
         continue;
       }
 
