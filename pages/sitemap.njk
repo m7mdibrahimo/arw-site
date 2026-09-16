@@ -36,6 +36,12 @@ eleventyExcludeFromCollections: true
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://arab-wrestling.com/nostalgia/</loc>
+    <lastmod>{{ latestDate }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://arab-wrestling.com/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -58,6 +64,14 @@ eleventyExcludeFromCollections: true
     <priority>0.8</priority>
   </url>
   {% endfor %}
+  {% for series in collections.nostalgiaSeries %}
+  <url>
+    <loc>https://arab-wrestling.com/nostalgia/{{ series.slug }}/</loc>
+    <lastmod>{{ latestDate }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% endfor %}
   {% for item in collections.allContent %}
   <url>
     <loc>https://arab-wrestling.com{{ item.url | cleanUrl }}</loc>
@@ -65,14 +79,5 @@ eleventyExcludeFromCollections: true
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  {% endfor %}
-  {% for tagObj in collections.tagList %}
-  {% if tagObj.count >= 3 %}
-  <url>
-    <loc>https://arab-wrestling.com/tag/{{ tagObj.slug }}/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  {% endif %}
   {% endfor %}
 </urlset>

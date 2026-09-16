@@ -2,6 +2,13 @@
 https://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 
+# تحويل مسارات النوستالجيا القديمة إلى المسارات الرسمية النظيفة
+/content/nostalgia-series/* /nostalgia/:splat 301!
+/content/nostalgia/* /nostalgia/:splat 301!
+
+# تحويل مسار /all/ المكرر إلى قسم الاتحادات الرسمي لمنع تكرار المحتوى في جوجل
+/all/* /federations/:splat 301!
+
 # تحويلات 301 لصفحات الوسوم اللي اتدمجت بعد توحيد أشكال الهمزة (أ/إ/آ -> ا)
 # عشان أي رابط قديم مؤرشف في جوجل أو مشارك بره الموقع يوصل للصفحة الصح بدل 404
 /tag/آدم-بيرس/* /tag/ادم-بيرس/:splat 301!
