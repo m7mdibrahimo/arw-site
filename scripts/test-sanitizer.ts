@@ -574,6 +574,11 @@ const extraTests: TestCase[] = [
   { description: "Deonna Purrazzo typo بوراكزو", input: "ديونا بوراكزو تكشف كواليس انضمام جيزيل شو", expectedContains: "ديونا بوراتزو", forbidden: ["بوراكزو"] },
   { description: "Deonna Purrazzo typo بوراكزو standalone", input: "أكدت بوراكزو أن المشروع كان يمتلك مقومات النجاح", expectedContains: "بوراتزو", forbidden: ["بوراكزو"] },
   { description: "Deonna Purrazzo typo بورازو", input: "تصريحات ديونا بورازو في العرض", expectedContains: "ديونا بوراتزو", forbidden: ["بورازو"] },
+  { description: "Tony Schiavone English", input: "Tony Schiavone comments on AEW dynamics", expectedContains: "توني شيفاني", forbidden: ["Tony Schiavone", "كيفاني", "سكيافوني"] },
+  { description: "Tony Schiavone typo كيفاني", input: "توني كيفاني يرى ترقبا مثيرا لاحتمالية توجيه كريس جيريكو للنجم نيك واين", expectedContains: "توني شيفاني", forbidden: ["كيفاني"] },
+  { description: "Tony Schiavone standalone كيفاني", input: "أكد كيفاني أن النزال كان في غاية الإثارة", expectedContains: "شيفاني", forbidden: ["كيفاني"] },
+  { description: "Tony Schiavone typo سكيافوني", input: "تصريحات توني سكيافوني حول كواليس العرض", expectedContains: "توني شيفاني", forbidden: ["سكيافوني"] },
+  { description: "Tony Schiavone typo شيافوني", input: "المعلق توني شيافوني في طاولة التعليق", expectedContains: "توني شيفاني", forbidden: ["شيافوني"] },
 ];
 
 for (let j = 0; j < extraTests.length; j++) {
