@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/nxt-15-09-2026",
+    "title": "عرض ان اكس تي 15.09.2026 مترجم",
+    "subtitle": "NXT 15.09.2026",
+    "image": "/img/EKrOPZ7IlF-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض إن إكس تي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-raw-14-09-2026",
     "title": "عرض الرو 14.09.2026 مترجم",
     "subtitle": "WWE RAW 14.09.2026",
@@ -31,17 +42,6 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/ufc-fight-night-288-silva-vs-delgado",
-    "title": "عرض يو اف سي فايت نايت 12.09.2026 مترجم",
-    "subtitle": "UFC Fight Night 288: Silva vs. Delgado",
-    "image": "/img/LaVcIUd4NL-800.jpeg",
-    "federation": "MMA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/aew-collision-12-09-2026",
