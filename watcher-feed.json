@@ -1,5 +1,15 @@
 [
   {
+    "id": 328715,
+    "link": "https://www.fightful.com/wrestling/la-catalina-appears-on-9-15-wwe-nxt/",
+    "date": "2026-09-15T21:36:39",
+    "date_gmt": "2026-09-16T01:36:39",
+    "title": {
+      "rendered": "La Catalina Appears On 9/15 WWE NXT"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15213545/HSTRnjVWIAAmocd.jpg"
+  },
+  {
     "id": 328711,
     "link": "https://www.fightful.com/wrestling/aew-to-air-on-hulu-japan/",
     "date": "2026-09-15T21:24:44",
@@ -288,15 +298,5 @@
       "rendered": "Swerve Strickland Confirms That He Had Been Wrestling On A Torn Meniscus Since 2019 Prior To 2025 Surgery"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/08/25172423/Swerve-Strickland-1.jpg"
-  },
-  {
-    "id": 328604,
-    "link": "https://www.fightful.com/wrestling/megatron-mdk-all-day/",
-    "date": "2026-09-15T12:34:55",
-    "date_gmt": "2026-09-15T16:34:55",
-    "title": {
-      "rendered": "Megatron: MDK All Day"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15121119/Screenshot-321-e1789488697301.png"
   }
 ]
