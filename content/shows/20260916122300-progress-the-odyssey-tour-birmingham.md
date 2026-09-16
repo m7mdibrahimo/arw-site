@@ -2,10 +2,10 @@
 show_type: عرض
 federation: INDIE
 title: PROGRESS The Odyssey Tour Birmingham
-headline: عرض بروجرس ريسلينج شابتر 197 15.09.2026 مترجم
+headline: عرض بروجرس ذا اوديسي تور برمنجهام 15.09.2026 مترجم
 program_name: PROGRESS Wrestling
 is_annual: true
-description: عرض بروجرس اوديسي شابتر 197 مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض بروجرس ذا اوديسي تور برمنجهام مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-13
 date: 2026-09-16T15:23:00.000+03:00
 duration: 02:56:24
