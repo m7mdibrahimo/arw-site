@@ -1266,8 +1266,14 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
                         /\bearns (?:a\s+)?(?:.*?\s+)?title shot\b/i.test(title);
   const hasEnglishSurvive = /\bsurvives?.*to retain\b/i.test(title);
 
-  return (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin ||
-          hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive);
+  // Live in-show angles/attacks/segments from weekly shows
+  const hasArabicLiveShow = /\b(?:في عرض|خلال عرض|عبر عرض|بعرض)\s+(?:WWE\s+)?(?:RAW|SmackDown|NXT|الرو|سماك\s*داون|إمباكت)|\b(?:في عرض|خلال عرض|عبر عرض|بعرض)\s+(?:AEW\s+)?(?:Dynamite|Collision|داينمايت|كوليجن)\b/i.test(title);
+  const hasArabicLiveAngle = /\b(?:يهاجم|تهاجم|يعتدي على|تعتدي على|يغدر بـ|تغدر بـ|يصدم|يواجه|تواجه|يصفع|تصفع|يقتحم|تقتحم|يشعل|يشعلان|تظهر في|يظهر في|يفاجئ|تفاجئ|يقاطع|تقاطع)\b/i.test(title);
+  const hasEnglishLiveShow = /\b(?:on\s+(?:\d+[-\/]\d+\s+)?(?:WWE\s+)?(?:RAW|SmackDown|NXT)|on\s+(?:AEW\s+)?(?:Dynamite|Collision))\b/i.test(title);
+  const hasEnglishLiveAngle = /\b(?:attacks?|ambushes?|turns on|brawls with|appears on|shows up on|confronts?|cost\b|interferes?)\b/i.test(title);
+
+  return (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin || (hasArabicLiveShow && hasArabicLiveAngle) ||
+          hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive || (hasEnglishLiveShow && hasEnglishLiveAngle));
 }
 
 async function runWatcherPoll(env: Env): Promise<void> {

@@ -1144,6 +1144,10 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
   const hasArabicRetain = /\b(?:يحتفظ بـ|يحتفظ بلقب|يحتفظ ببطولة|يحافظ على لقب|يحافظ على بطولة|احتفاظ باللقب|احتفاظ بالبطولة)\b/i.test(title);
   const hasArabicWin = /\b(?:يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول)\b/i.test(title);
 
+  // Live in-show angles/attacks/segments from weekly shows
+  const hasArabicLiveShow = /\b(?:في عرض|خلال عرض|عبر عرض|بعرض)\s+(?:WWE\s+)?(?:RAW|SmackDown|NXT|الرو|سماك\s*داون|إمباكت)|\b(?:في عرض|خلال عرض|عبر عرض|بعرض)\s+(?:AEW\s+)?(?:Dynamite|Collision|داينمايت|كوليجن)\b/i.test(title);
+  const hasArabicLiveAngle = /\b(?:يهاجم|تهاجم|يعتدي على|تعتدي على|يغدر بـ|تغدر بـ|يصدم|يواجه|تواجه|يصفع|تصفع|يقتحم|تقتحم|يشعل|يشعلان|تظهر في|يظهر في|يفاجئ|تفاجئ|يقاطع|تقاطع)\b/i.test(title);
+
   // English patterns:
   const hasEnglishDefeat = /\b(?:defeats?|defeated|defeating|def\.|beats?|beaten|pins?|pinned|submits?|submitted|triumphs? over|victorious over)\b/i.test(title);
   const hasEnglishQualifier = /\b(?:qualifies? for|qualified for|advances? (?:to|in)|advanced (?:to|in)|eliminates?|eliminated from)\b/i.test(title);
@@ -1152,9 +1156,11 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
                         /\bbecomes (?:the\s+)?no\.?\s*1 contender\b/i.test(title) ||
                         /\bearns (?:a\s+)?(?:.*?\s+)?title shot\b/i.test(title);
   const hasEnglishSurvive = /\bsurvives?.*to retain\b/i.test(title);
+  const hasEnglishLiveShow = /\b(?:on\s+(?:\d+[-\/]\d+\s+)?(?:WWE\s+)?(?:RAW|SmackDown|NXT)|on\s+(?:AEW\s+)?(?:Dynamite|Collision))\b/i.test(title);
+  const hasEnglishLiveAngle = /\b(?:attacks?|ambushes?|turns on|brawls with|appears on|shows up on|confronts?|cost\b|interferes?)\b/i.test(title);
 
-  return (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin ||
-          hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive);
+  return (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin || (hasArabicLiveShow && hasArabicLiveAngle) ||
+          hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive || (hasEnglishLiveShow && hasEnglishLiveAngle));
 }
 
 async function tryPublishSiteItem(item: any, key: string) {

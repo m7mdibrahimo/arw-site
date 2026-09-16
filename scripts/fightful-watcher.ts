@@ -1024,7 +1024,14 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
   // E. Survives to retain
   const hasSurviveVerb = /\bsurvives?.*to retain\b/i.test(title);
 
+  // F. Live In-Show Angles / Attacks / Debuts / Segments during weekly shows (RAW, SmackDown, NXT, Dynamite, Collision)
+  const hasLiveShow = /\b(?:on\s+(?:\d+[-\/]\d+\s+)?(?:WWE\s+)?(?:RAW|SmackDown|NXT)|on\s+(?:AEW\s+)?(?:Dynamite|Collision))\b/i.test(title);
+  const hasLiveAngle = /\b(?:attacks?|ambushes?|turns on|brawls with|appears on|shows up on|confronts?|cost\b|interferes?)\b/i.test(title);
+
   if (hasDefeatVerb || hasQualifierVerb || hasRetainVerb || hasWinVerb || hasSurviveVerb) {
+    return true;
+  }
+  if (hasLiveShow && hasLiveAngle) {
     return true;
   }
 
