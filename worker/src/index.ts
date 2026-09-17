@@ -70,7 +70,13 @@ const SOCIAL_FOLLOW_LINE =
 
 function generateSocialHashtags(title: string, text?: string): string {
   const content = `${title} ${text || ""}`.toLowerCase();
-  const tags = ["#عرب_راسلنج", "#مصارعة_المحترفين", "#أخبار_المصارعة"];
+  const tags = ["#عرب_راسلنج", "#مصارعة_المحترفين"];
+
+  if (content.includes("عرض") || content.includes("نتائج") || content.includes("ملخص") || content.includes("مواجهات")) {
+    tags.push("#عروض_المصارعة");
+  } else {
+    tags.push("#أخبار_المصارعة");
+  }
 
   if (content.includes("wwe") || content.includes("رو") || content.includes("سماكداون") || content.includes("nxt") || content.includes("رينز") || content.includes("بانك") || content.includes("كودي")) {
     tags.push("#WWE");
@@ -86,16 +92,49 @@ function generateSocialHashtags(title: string, text?: string): string {
   return tags.join(" ");
 }
 
-function buildFacebookCaption(title: string, text?: string): string {
+function getHeaderEmoji(title: string, kind?: string): string {
+  const t = title.toLowerCase();
+  if (kind === "show" || /عرض|مهرجان|رويال رامبل|ريسلمانيا|سمر سلام|سيرفايفر|سيريس|باكلاش|كراون جول|raw|smackdown|nxt|dynamite|collision|wrestlemania|royal rumble|summer slam/i.test(t)) {
+    return "🏆";
+  }
+  if (/نتائج|نتيجة|الفائز|الأبطال|نزال|مواجهة/i.test(t)) {
+    return "⚡";
+  }
+  if (kind === "recap" || /ملخص|أحداث/i.test(t)) {
+    return "🎬";
+  }
+  if (/عاجل|رسمياً|مفاجأة|صدمة|تسريبات|هام/i.test(t)) {
+    return "🚨";
+  }
+  return "🔴";
+}
+
+function buildEngagementPrompt(title: string, kind?: string): string {
+  const t = title.toLowerCase();
+  const isResults = /نتائج|نتيجة|الفائز|الأبطال|نزال|مواجهة/i.test(t);
+  const isShow = kind === "show" || /عرض|مهرجان|رويال رامبل|ريسلمانيا|سمر سلام|سيرفايفر|raw|smackdown|nxt|dynamite|collision/i.test(t);
+  const isRecap = kind === "recap" || /ملخص|أحداث/i.test(t);
+
+  if (isResults) {
+    return "💬 ما هو تقييمكم للنتائج والمواجهات؟ شاركونا آراءكم في التعليقات! 🔥";
+  }
+  if (isShow || isRecap) {
+    return "💬 ما هو تقييمكم لمستوى وأحداث العرض؟ شاركونا آراءكم في التعليقات! 🔥";
+  }
+  return "💬 ما هو تقييمكم وتوقعاتكم حول هذا الموضوع؟ شاركونا آراءكم في التعليقات! 🔥";
+}
+
+function buildFacebookCaption(title: string, text?: string, kind?: string): string {
   const DIVIDER = "\n\n──────────────\n\n";
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
   const hashtags = generateSocialHashtags(title, text);
+  const emoji = getHeaderEmoji(title, kind);
 
-  const header = `🔴 ${cleanTitle}`;
+  const header = `${emoji} ${cleanTitle}`;
   const snippet = cleanText ? `📌 ${cleanText}` : "";
-  const engagement = `💬 ما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
-  const footer = `🔍 للتفاصيل والتغطية الكاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
+  const engagement = buildEngagementPrompt(title, kind);
+  const footer = `🔍 للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
@@ -104,16 +143,17 @@ function buildFacebookCaption(title: string, text?: string): string {
   return parts.join(DIVIDER);
 }
 
-function buildInstagramCaption(title: string, text?: string): string {
+function buildInstagramCaption(title: string, text?: string, kind?: string): string {
   const DIVIDER = "\n\n──────────────\n\n";
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
   const hashtags = generateSocialHashtags(title, text);
+  const emoji = getHeaderEmoji(title, kind);
 
-  const header = `💥 ${cleanTitle}`;
-  const snippet = cleanText ? `📝 ${cleanText}` : "";
-  const engagement = `💬 شاركونا آراءكم وتوقعاتكم في التعليقات! 🔥`;
-  const footer = `🔍 للتفاصيل والتغطية الكاملة:\nابحث في جوجل عن "عرب راسلنج" أو اضغط على الرابط في البايو 👆\n(arab-wrestling.com)\n\n${hashtags}`;
+  const header = `${emoji} ${cleanTitle}`;
+  const snippet = cleanText ? `📌 ${cleanText}` : "";
+  const engagement = buildEngagementPrompt(title, kind);
+  const footer = `🔍 للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو اضغط على الرابط في البايو 👆\n(arab-wrestling.com)\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
@@ -122,8 +162,8 @@ function buildInstagramCaption(title: string, text?: string): string {
   return parts.join(DIVIDER);
 }
 
-function buildDividedCaption(title: string, text?: string): string {
-  return buildFacebookCaption(title, text);
+function buildDividedCaption(title: string, text?: string, kind?: string): string {
+  return buildFacebookCaption(title, text, kind);
 }
 
 
@@ -803,11 +843,11 @@ async function pollBufferPostUntilResolved(
 async function postToFacebookDirect(
   env: Env,
   key: string,
-  data: { title: string; text?: string; image?: string; url?: string }
+  data: { title: string; text?: string; image?: string; url?: string; kind?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
 
-  const caption = buildFacebookCaption(data.title, data.text);
+  const caption = buildFacebookCaption(data.title, data.text, data.kind);
 
   try {
     const pageToken = await getPageAccessToken(env);
@@ -852,7 +892,7 @@ async function postToFacebookDirect(
 async function postToFacebookViaBuffer(
   env: Env,
   key: string,
-  data: { title: string; text?: string; image?: string; url?: string }
+  data: { title: string; text?: string; image?: string; url?: string; kind?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
 
@@ -869,7 +909,7 @@ async function postToFacebookViaBuffer(
 
   if (!postId) {
     const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
-    const caption = buildDividedCaption(data.title, data.text);
+    const caption = buildDividedCaption(data.title, data.text, data.kind);
     // If URL is present, omit assets to allow Facebook/Buffer to generate the native link preview card
     const imageUrl = !rawUrl && data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
@@ -926,7 +966,7 @@ async function postToFacebookViaBuffer(
 async function postToInstagram(
   env: Env,
   key: string,
-  data: { title: string; text?: string; url: string; imageUrl?: string }
+  data: { title: string; text?: string; url: string; imageUrl?: string; kind?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
 if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
   return { ok: false, skipped: true };
@@ -935,7 +975,7 @@ if (!data.imageUrl) return { ok: false, skipped: true };
 
 const safeImageUrl = instagramSafeImageUrl(data.imageUrl);
 
-const caption = buildInstagramCaption(data.title, data.text);
+const caption = buildInstagramCaption(data.title, data.text, data.kind);
 const kvKey = `ig-pending:${key}`;
 
   try {
@@ -1526,11 +1566,11 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
       if (canDoFb) {
         const fbText = isShowResults
-          ? "إليكم التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري.\n\nلقراءة النتائج الكاملة ومعرفة كافة التفاصيل، تفضلوا بزيارة موقعنا عبر الرابط أدناه:"
+          ? "إليكم التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري."
           : payload.text;
         await publishToPlatform(env, "facebook", key, { ...payload, text: fbText, image: item.image, kind: item.kind }, {}, false);
       }
-      if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
+      if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
       if (canDoX) {
         bufferXAttemptedInTick++;
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
@@ -1552,7 +1592,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
         didWork = true;
       }
       if (canDoIg) {
-        await publishToPlatform(env, "instagram", key, { ...payload, image: item.image }, {}, false);
+        await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
       }
       if (canDoX) {
