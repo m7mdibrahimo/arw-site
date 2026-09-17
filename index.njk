@@ -831,6 +831,25 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     justify-content: center !important;
     width: 100% !important;
   }
+  .spotlight-content {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .spotlight-badges,
+  .spotlight-actions {
+    justify-content: center !important;
+  }
+  .spotlight-title-group {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .spotlight-title,
+  .spotlight-subtitle {
+    text-align: center !important;
+  }
+  .spotlight-cta-btn {
+    align-self: center !important;
+  }
 }
 
 @media (max-width: 580px) {
@@ -877,8 +896,8 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    text-align: right;
+    align-items: center !important;
+    text-align: center !important;
     padding: 12px 16px 44px;
     background: #0d131f;
     box-sizing: border-box;
@@ -888,7 +907,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   .spotlight-badges {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center !important;
     width: 100%;
     gap: 6px;
   }
@@ -899,33 +918,33 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   .spotlight-title-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center !important;
     width: 100%;
-    text-align: right;
+    text-align: center !important;
     gap: 4px;
   }
   .spotlight-title {
     font-size: 18px;
     line-height: 1.34;
-    text-align: right;
+    text-align: center !important;
     width: 100%;
   }
   .spotlight-subtitle {
     font-size: 12.5px;
-    text-align: right;
+    text-align: center !important;
     width: 100%;
     direction: ltr;
     unicode-bidi: isolate;
   }
   .spotlight-actions {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center !important;
     width: 100%;
     margin-top: auto;
     margin-bottom: 2px;
   }
   .spotlight-cta-btn {
-    align-self: flex-start;
+    align-self: center !important;
     padding: 7px 16px;
     font-size: 12.5px;
     border-radius: 9px;
