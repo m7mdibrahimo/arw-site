@@ -280,6 +280,7 @@ permalink: "/apps/index.html"
   }
 
   .mark-android{ background:linear-gradient(135deg, #15803d, #16a34a 60%, #0d5a27); }
+  .mark-harmonyos{ background:linear-gradient(135deg, #b91c1c, #dc2626 60%, #991b1b); }
   .mark-windows{ background:linear-gradient(135deg, #0369a1, #0284c7 60%, #075985); }
   .mark-macos{ background:linear-gradient(135deg, #6d28d9, #7c3aed 60%, #4c1d95); }
   .mark-ios{ background:linear-gradient(135deg, #be123c, #e11d48 60%, #9f1239); }
@@ -294,12 +295,14 @@ permalink: "/apps/index.html"
   .cat{ display:inline-flex; align-items:center; font-size:11px; font-weight:800; padding:3px 10px; border-radius:999px; }
   
   .cat-android{ background:rgba(22,163,74,0.14) !important; color:#16a34a !important; }
+  .cat-harmonyos{ background:rgba(220,38,38,0.14) !important; color:#dc2626 !important; }
   .cat-windows{ background:rgba(2,132,199,0.14) !important; color:#0284c7 !important; }
   .cat-macos{ background:rgba(124,58,237,0.14) !important; color:#7c3aed !important; }
   .cat-ios{ background:rgba(225,29,72,0.14) !important; color:#e11d48 !important; }
   .cat-linux{ background:rgba(217,119,6,0.14) !important; color:#d97706 !important; }
 
   html.arw-dark .cat-android{ background:rgba(22,163,74,0.22) !important; color:#4ade80 !important; }
+  html.arw-dark .cat-harmonyos{ background:rgba(220,38,38,0.22) !important; color:#f87171 !important; }
   html.arw-dark .cat-windows{ background:rgba(2,132,199,0.22) !important; color:#38bdf8 !important; }
   html.arw-dark .cat-macos{ background:rgba(124,58,237,0.22) !important; color:#a78bfa !important; }
   html.arw-dark .cat-ios{ background:rgba(225,29,72,0.22) !important; color:#fb7185 !important; }
@@ -612,12 +615,6 @@ permalink: "/apps/index.html"
       gap:4px !important;
       text-align:center !important;
     }
-    .steps-tabs .step-tab-btn:nth-child(4){
-      grid-column:2 / span 2 !important;
-    }
-    .steps-tabs .step-tab-btn:nth-child(5){
-      grid-column:4 / span 2 !important;
-    }
     @media (max-width:360px){
       .step-tab-btn{ font-size:11px !important; padding:6px 2px !important; }
     }
@@ -766,12 +763,12 @@ permalink: "/apps/index.html"
 
     <!-- شريط تصفية الأنظمة السريع -->
     <div class="platform-filter-bar">
-      <button type="button" class="filter-pill active" onclick="filterPlatforms('all', this)">جميع الأنظمة (5)</button>
-      <button type="button" class="filter-pill" onclick="filterPlatforms('mobile', this)">📱 الهواتف (2)</button>
+      <button type="button" class="filter-pill active" onclick="filterPlatforms('all', this)">جميع الأنظمة (6)</button>
+      <button type="button" class="filter-pill" onclick="filterPlatforms('mobile', this)">📱 الهواتف (3)</button>
       <button type="button" class="filter-pill" onclick="filterPlatforms('desktop', this)">💻 الكمبيوتر (3)</button>
     </div>
 
-    <!-- شبكة كروت المنصات الخمس الاحترافية بالبانرات الملونة -->
+    <!-- شبكة كروت المنصات الست الاحترافية بالبانرات الملونة -->
     <div class="apps-grid">
 
       <!-- 1. أندرويد -->
@@ -804,6 +801,41 @@ permalink: "/apps/index.html"
             <a href="/assets/downloads/ArabWrestling.apk" download class="btn-download">
               <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
               <span>تحميل ملف APK مباشر</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. هواوي HarmonyOS -->
+      <div class="fed-card reveal" id="card-harmonyos" data-category="mobile">
+        <div class="fed-mark mark-harmonyos">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.14-7-7 3.14-7 7-7zm0 2.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 2a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"/></svg>
+          <span>HarmonyOS هواوي</span>
+        </div>
+        <div class="info">
+          <div class="badges-row">
+            <span class="kind-badge kind-show">تطبيق HAP أصلي</span>
+            <span class="cat cat-harmonyos">5.8 ميجابايت</span>
+          </div>
+          <h3 class="card-title" style="font-size:18px; font-weight:900; margin:6px 0 10px; color:var(--ink);">عرب راسلنج لهواتف هواوي</h3>
+          <ul class="card-features">
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>حزمة HAP مخصصة لنظام HarmonyOS بمختلف إصداراته.</span>
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>يعمل بنسبة 100% بدون الحاجة لخدمات جوجل (Google Play Services).</span>
+            </li>
+            <li>
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>مشغل فيديو ملء الشاشة مع السحب للأسفل للتحديث الفوري.</span>
+            </li>
+          </ul>
+          <div class="card-action">
+            <a href="/assets/downloads/ArabWrestling.hap" download class="btn-download">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>تحميل ملف HAP مباشر</span>
             </a>
           </div>
         </div>
@@ -991,6 +1023,7 @@ permalink: "/apps/index.html"
 
       <div class="steps-tabs">
         <button type="button" class="step-tab-btn active" onclick="switchGuide('guide-android', this)">🤖 أندرويد</button>
+        <button type="button" class="step-tab-btn" onclick="switchGuide('guide-harmonyos', this)">🌺 هواوي</button>
         <button type="button" class="step-tab-btn" onclick="switchGuide('guide-ios', this)">📱 آيفون iOS</button>
         <button type="button" class="step-tab-btn" onclick="switchGuide('guide-windows', this)">🪟 ويندوز</button>
         <button type="button" class="step-tab-btn" onclick="switchGuide('guide-mac', this)">🍏 ماك macOS</button>
@@ -1018,6 +1051,31 @@ permalink: "/apps/index.html"
           <div class="step-text">
             <h5>فتح التطبيق والاستمتاع</h5>
             <p>انقر على "تثبيت" وستظهر أيقونة "عرب راسلنج" في قائمة تطبيقات هاتفك فوراً وبشكل دائم.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- هواوي HarmonyOS -->
+      <div class="step-content" id="guide-harmonyos">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-text">
+            <h5>تنزيل حزمة HAP</h5>
+            <p>اضغط على زر "تحميل ملف HAP مباشر" لتنزيل الحزمة الرسمية المخصصة لأجهزة وهواتف هواوي.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-text">
+            <h5>تأكيد التثبيت عبر مدير الملفات</h5>
+            <p>افتح الملف عبر تطبيق "الملفات" (Files) في هاتف هواوي، واختر تثبيت الحزمة الأصلية، ولا يتطلب وجود خدمات Google.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-text">
+            <h5>تشغيل التطبيق</h5>
+            <p>ستظهر أيقونة "عرب راسلنج" فوراً على واجهة نظام HarmonyOS مع دعم التحديث التلقائي والتشغيل السريع.</p>
           </div>
         </div>
       </div>
@@ -1187,7 +1245,13 @@ permalink: "/apps/index.html"
     var downloadUrl = "#all-platforms";
     var cardId = "";
 
-    if (/android/i.test(ua)) {
+    if (/harmonyos|huawei|honor/i.test(ua)) {
+      osTitle = "هاتف هواوي (HarmonyOS)";
+      osIcon = "🌺";
+      btnText = "تحميل مباشر لهواوي (5.8 MB)";
+      downloadUrl = "/assets/downloads/ArabWrestling.hap";
+      cardId = "card-harmonyos";
+    } else if (/android/i.test(ua)) {
       osTitle = "هاتف أندرويد (Android)";
       osIcon = "🤖";
       btnText = "تحميل مباشر للأندرويد (5.9 MB)";
@@ -1229,7 +1293,7 @@ permalink: "/apps/index.html"
     if(btnTextEl) btnTextEl.textContent = btnText;
     if(btnEl) {
       btnEl.href = downloadUrl;
-      if(downloadUrl.endsWith('.apk') || downloadUrl.endsWith('.dmg') || downloadUrl.endsWith('.msi') || downloadUrl.endsWith('.deb')){
+      if(downloadUrl.endsWith('.apk') || downloadUrl.endsWith('.hap') || downloadUrl.endsWith('.dmg') || downloadUrl.endsWith('.msi') || downloadUrl.endsWith('.deb')){
         btnEl.setAttribute('download', '');
       }
     }
@@ -1266,9 +1330,9 @@ permalink: "/apps/index.html"
   }
 
   function showIosGuide(){
-    var tabs = document.querySelectorAll('.step-tab-btn');
-    if(tabs.length >= 2){
-      switchGuide('guide-ios', tabs[1]);
+    var iosBtn = document.querySelector(".step-tab-btn[onclick*='guide-ios']");
+    if(iosBtn){
+      switchGuide('guide-ios', iosBtn);
       var guideEl = document.getElementById('install-guide');
       if(guideEl) guideEl.scrollIntoView({ behavior: 'smooth' });
     }
