@@ -467,14 +467,20 @@ const testCases: TestCase[] = [
   {
     description: "Scrub Sean Ross Sapp",
     input: "وفق ما ذكره Sean Ross Sapp في تقريره",
-    expectedContains: "مصادر صحفية مطلعة",
+    expectedContains: "تقارير صحفية مطلعة",
     forbidden: ["Sean Ross Sapp", "Sean Ross"],
   },
   {
     description: "Scrub Fightful",
     input: "أكد موقع Fightful في تسريباته",
-    expectedContains: "مصادر صحفية خاصة",
+    expectedContains: "تقارير صحفية",
     forbidden: ["Fightful"],
+  },
+  {
+    description: "Purge 'مصادرنا الخاصة'",
+    input: "أفادت مصادرنا الخاصة بأن النجم يستعد للمواجهة",
+    expectedContains: "كشفت تقارير صحفية أن النجم يستعد للمواجهة",
+    forbidden: ["مصادرنا الخاصة", "مصادرنا"],
   },
 
   // 25. Complete Zero-Tashkeel Rule
