@@ -130,9 +130,9 @@
     --gold:#f4b352; --gold-soft:rgba(244,179,82,.15); --violet:#9a8ff0; --violet-soft:rgba(154,143,240,.15);
     --nostalgia: #38bdf8; --nostalgia-soft: rgba(56,189,248,.15);
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; background-color:var(--bg); }
-  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  html{ scroll-behavior:smooth; background-color:var(--bg); -webkit-text-size-adjust:100%; -moz-text-size-adjust:100%; text-size-adjust:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; -webkit-text-size-adjust:100%; -moz-text-size-adjust:100%; text-size-adjust:100%; }
 
   /* 120Hz Tactile Active Feedback & Hardware Acceleration */
   .show-card, .news-card, .fed-card, .btn, .qn, .navlink, .tag-pill, .tag-card, .server-tab, .dl-btn, .ep-pill, .season-tab, .ep-nav-btn {
@@ -660,7 +660,7 @@
     #navMenu .theme-toggle, #navMenu .telegram-btn{ width:40px; height:40px; }
   }
 </style>
-<link rel="stylesheet" href="/assets/notif.css?v=20260917j">
+<link rel="stylesheet" href="/assets/notif.css?v=20260917k">
 </head>
 <body>
 <header>

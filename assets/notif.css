@@ -1,3 +1,24 @@
+/* Global Text Size & Anti-Aliasing Lock for Perfect Mobile Proportions (iOS & Android) */
+html {
+  -webkit-text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+body {
+  -webkit-text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+*, *::before, *::after {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 /* Telegram Floating Bar Styling for Arab Wrestling */
 :root {
   --tg-blue: #24A1DE;
@@ -597,7 +618,7 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 415px) {
   section.content {
     padding: 20px 8px 32px !important;
   }
@@ -609,9 +630,19 @@
   }
   .show-body h3, .news-body h3, .series-body h3 {
     font-size: 12px !important;
+    line-height: 1.35 !important;
   }
   .show-body .desc, .news-body p, .series-body .desc {
     font-size: 10px !important;
+    line-height: 1.4 !important;
+  }
+  .kind-badge, .cat, .fed-badge {
+    font-size: 9px !important;
+    padding: 2px 6px !important;
+  }
+  .show-body .foot, .news-body .date, .series-body .foot {
+    font-size: 9.5px !important;
+    padding-top: 6px !important;
   }
   .nav {
     padding: 6px 8px 7px !important;
