@@ -17,7 +17,7 @@ eleventyExcludeFromCollections: true
       <video:thumbnail_loc>{{ thumbUrl }}</video:thumbnail_loc>
       <video:title>{{ videoTitle | truncate(100) }}</video:title>
       <video:description>{{ videoDesc | truncate(2048) }}</video:description>
-      <video:player_loc>{{ item.data.servers[0].url }}</video:player_loc>
+      <video:player_loc>{{ item.data.servers[0].url | safePlayerUrl }}</video:player_loc>
       <video:publication_date>{{ item.date.toISOString() }}</video:publication_date>
       {%- set sec = item.data.duration | durationSeconds %}
       {%- if sec %}

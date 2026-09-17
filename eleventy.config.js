@@ -184,6 +184,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("durationSeconds", durationSeconds);
   eleventyConfig.addNunjucksFilter("durationSeconds", durationSeconds);
 
+  // يضمن أن رابط مشغل الفيديو يبدأ بـ https:// دائماً ومطابق لاشتراطات خرائط جوجل
+  const safePlayerUrl = function(url) {
+    if (!url) return "";
+    const u = url.toString().trim();
+    if (u.startsWith("http://") || u.startsWith("https://")) return u;
+    if (u.startsWith("//")) return "https:" + u;
+    return "https://" + u;
+  };
+  eleventyConfig.addFilter("safePlayerUrl", safePlayerUrl);
+  eleventyConfig.addNunjucksFilter("safePlayerUrl", safePlayerUrl);
+
   // بيحول أي رابط صورة/ملف لرابط مطلق كامل (لو كان نسبي زي /content/images/x.jpg)
   const absUrl = function(url) {
     if (!url) return "";

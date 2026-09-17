@@ -16,7 +16,7 @@ servers:
   - url: https://ok.ru/videoembed/17023728159328
   - url: https://fembed.co/embed/Hy5m9K6_aX-Sg
   - url: https://cdn.loadvid.com/videos/play/QCzvTlRLLbMwreuDbXoV
-  - url: turbovidhls.com/t/6a91814a585af
+  - url: https://turbovidhls.com/t/6a91814a585af
 downloads_low: >-
   https://1cloudfile.com/4TKyU
 
