@@ -89,21 +89,6 @@ function generateSocialHashtags(title: string, text?: string): string {
   return tags.join(" ");
 }
 
-function buildEngagementPrompt(title: string, kind?: string): string {
-  const t = title.toLowerCase();
-  const isResults = /نتائج|نتيجة|الفائز|الأبطال|نزال|مواجهة/i.test(t);
-  const isShow = kind === "show" || /عرض|مهرجان|رويال رامبل|ريسلمانيا|سمر سلام|سيرفايفر|raw|smackdown|nxt|dynamite|collision/i.test(t);
-  const isRecap = kind === "recap" || /ملخص|أحداث/i.test(t);
-
-  if (isResults) {
-    return "ما رأيكم في هذه النتائج؟ شاركونا في التعليقات 👇";
-  }
-  if (isShow || isRecap) {
-    return "ما هو تقييمكم لمستوى العرض والأحداث؟ شاركونا في التعليقات 👇";
-  }
-  return "شاركونا آراءكم وتوقعاتكم في التعليقات 👇";
-}
-
 function buildFacebookCaption(title: string, text?: string, kind?: string): string {
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
@@ -111,12 +96,10 @@ function buildFacebookCaption(title: string, text?: string, kind?: string): stri
 
   const header = `« ${cleanTitle} »`;
   const snippet = cleanText;
-  const engagement = buildEngagementPrompt(title, kind);
   const websiteCta = `🌐 للتغطية الكاملة: ابحث في جوجل عن "عرب راسلنج" (arab-wrestling.com)`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
-  parts.push(engagement);
   parts.push(websiteCta);
   if (hashtags) parts.push(hashtags);
   return parts.join("\n\u2800\n");
@@ -129,12 +112,10 @@ function buildInstagramCaption(title: string, text?: string, kind?: string): str
 
   const header = `« ${cleanTitle} »`;
   const snippet = cleanText;
-  const engagement = buildEngagementPrompt(title, kind);
   const websiteCta = `🌐 للتغطية الكاملة: ابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة الرابط في البايو\n(arab-wrestling.com)`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
-  parts.push(engagement);
   parts.push(websiteCta);
   if (hashtags) parts.push(hashtags);
   return parts.join("\n\u2800\n");
@@ -593,7 +574,7 @@ async function sendVerifiedTelegramPost(
   const safeText = escapeTelegramHtml(data.text || "");
   const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || env.SITE_ORIGIN));
   const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
-  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n<a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج 🔗</b></a>\n\n#عرب_راسلنج`;
+  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n<a href="${safeUrl}">تابع المحتوى على موقع عرب راسلنج 🔗</a>\n\n#عرب_راسلنج`;
 
   if (imageBuffer) {
     try {
