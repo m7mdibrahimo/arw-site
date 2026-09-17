@@ -1,5 +1,15 @@
 [
   {
+    "id": 328879,
+    "link": "https://www.fightful.com/wrestling/wwe-evolve-results-9-16/",
+    "date": "2026-09-16T23:30:00",
+    "date_gmt": "2026-09-17T03:30:00",
+    "title": {
+      "rendered": "WWE EVOLVE Results (9/16)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04212900/wwe_evolve_1.jpg"
+  },
+  {
     "id": 328890,
     "link": "https://www.fightful.com/wrestling/kazuchika-okada-vs-tommaso-ciampa-darby-allin-steven-borden-tag-set-for-aew-all-out/",
     "date": "2026-09-16T22:34:00",
@@ -288,15 +298,5 @@
       "rendered": "Tony Schiavone Says There&#8217;s &#8216;Some Intrigue&#8217; In Chris Jericho Potentially Mentoring Nick Wayne"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16100611/maxresdefault-96.jpg"
-  },
-  {
-    "id": 328734,
-    "link": "https://www.fightful.com/wrestling/produce-volume-4-night-life-results-9-13/",
-    "date": "2026-09-16T10:00:00",
-    "date_gmt": "2026-09-16T14:00:00",
-    "title": {
-      "rendered": "PRODUCE Volume 4 Night Life Results (9/13)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16065751/2026-09-13-PRODUCE-Vol.-4-Night-Life.jpg.webp"
   }
 ]
