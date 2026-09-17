@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 
 {% set schemaImage = (image | absUrl) if image else 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop' %}
-{% set isVideoContent = duration and servers and servers.length %}
+{% set isVideoContent = servers and servers.length %}
 {% set pageUrl = 'https://arab-wrestling.com' + (page.url | cleanUrl) %}
 
 <!-- Open Graph / Facebook -->
@@ -663,7 +663,7 @@
 </head>
 <body>
 <header>
-  <div class="nav">
+  <nav class="nav" aria-label="التنقل الرئيسي">
     <a class="brand" href="/">عرب <span>راسلنج</span></a>
     <form class="site-search" action="/search/" method="get">
       <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه...">
@@ -696,7 +696,7 @@
         </a>
       </li>
     </ul>
-  </div>
+  </nav>
 </header>
 
 
@@ -768,7 +768,7 @@
         {% endfor %}
       </div>
       {% endif %}
-      <div class="video-embed reveal">
+      <div class="video-embed">
         <iframe id="videoFrame" src="{{ servers[0].url }}" allowfullscreen></iframe>
       </div>
     {% endif %}

@@ -293,7 +293,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 </head>
 <body>
 <header>
-  <div class="nav">
+  <nav class="nav" aria-label="التنقل الرئيسي">
     <a class="brand" href="/">عرب <span>راسلنج</span></a>
     <form class="site-search" action="/search/" method="get">
       <input type="text" name="q" placeholder="اكتب ما تريد البحث عنه...">
@@ -326,7 +326,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
         </a>
       </li>
     </ul>
-  </div>
+  </nav>
 </header>
 
 {% set latestImg = "" %}
