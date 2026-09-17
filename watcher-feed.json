@@ -1,5 +1,15 @@
 [
   {
+    "id": 328915,
+    "link": "https://www.fightful.com/wrestling/mlp-mayhem-results-9-17/",
+    "date": "2026-09-17T09:00:00",
+    "date_gmt": "2026-09-17T13:00:00",
+    "title": {
+      "rendered": "MLP Mayhem Results (9/17)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/28212231/maple-leaf-pro-wrestling-lands-weekly-tsn-series-with-mlp-mayhem-46.jpg"
+  },
+  {
     "id": 328919,
     "link": "https://www.fightful.com/wrestling/wren-sinclair-is-done-being-a-good-little-solider-for-nxt-ive-been-here-for-almost-three-years-and-i-dont-have-anything-to-show-for-it/",
     "date": "2026-09-17T08:43:32",
@@ -288,15 +298,5 @@
       "rendered": "AEW Releases &#8216;Aw Dude&#8217; Shirt On AEW Shop"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16132420/Aw-Dude-2-e1789579493879.jpg"
-  },
-  {
-    "id": 328794,
-    "link": "https://www.fightful.com/wrestling/janel-grant-receives-advocacy-in-action-award-from-connecticut-alliance-to-end-sexual-violence/",
-    "date": "2026-09-16T13:32:16",
-    "date_gmt": "2026-09-16T17:32:16",
-    "title": {
-      "rendered": "Janel Grant Receives Advocacy In Action Award From Connecticut Alliance To End Sexual Violence"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16133141/Screenshot-2026-09-16-at-1.28.13-PM.png"
   }
 ]
