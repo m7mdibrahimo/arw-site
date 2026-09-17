@@ -15,7 +15,6 @@ tags:
   - Stephanie Vaquer
   - Liv Morgan
   - WWE Live Chile
-  - ""
 image: /content/images/hximlxr5f93949qb.jpg
 servers:
   - url: https://ok.ru/videoembed/17273947621984
