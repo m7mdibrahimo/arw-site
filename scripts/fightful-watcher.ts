@@ -1578,7 +1578,7 @@ function findExistingNewsFile(postId: number, postUrl?: string): { filePath: str
 }
 
 // Process a single Fightful post
-async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false): Promise<boolean> {
+export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false): Promise<boolean> {
   const postId = post.id;
   const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || "News";
   const postUrl = post.link || "";
@@ -1844,8 +1844,12 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       const postId = post.id;
       const isAlreadyProcessed = state.processedIds.includes(postId);
 
+      // Verify physical file: only skip if it actually exists in content/news
       if (isAlreadyProcessed && !options.forceLatest) {
-        continue;
+        const existing = findExistingNewsFile(postId, post.link);
+        if (existing) {
+          continue;
+        }
       }
 
       // Check age: strictly skip old news in automated watcher mode
@@ -1859,9 +1863,6 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       // In automated mode, skip old news (older than MAX_AUTO_PUBLISH_AGE_HOURS)
       if (!options.forceLatest && ageHours > MAX_AUTO_PUBLISH_AGE_HOURS) {
         console.log(`[Watcher] ⏭️ Skipping OLD post #${postId} ("${rawTitle}"): published ${ageHours.toFixed(1)}h ago (older than ${MAX_AUTO_PUBLISH_AGE_HOURS}h threshold).`);
-        if (!state.processedIds.includes(postId)) {
-          state.processedIds.push(postId);
-        }
         continue;
       }
 
@@ -1870,9 +1871,6 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       const plainText = htmlToPlainText(contentHtml);
       if (SKIP_SINGLE_MATCH_ON_SITE && isSingleMatchResultArticle(rawTitle, plainText)) {
         console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Skipping individual match outcome #${postId} ("${rawTitle}") on site.`);
-        if (!state.processedIds.includes(postId)) {
-          state.processedIds.push(postId);
-        }
         continue;
       }
 

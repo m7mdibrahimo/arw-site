@@ -1,0 +1,21 @@
+---
+federation: INDIE
+title: "الإعلان عن مشاركة كيلر كروس في عرض HOG Windy City Warfare القادم"
+date: 2026-09-17T19:58:45.000+03:00
+source_id: 328953
+source_url: "https://www.fightful.com/wrestling/killer-kross-announced-for-hog-windy-city-warfare/"
+single_match_result: false
+tags:
+  - INDIE
+  - Killer Kross
+  - House of Glory
+  - كيلر كروس
+  - عروض المصارعة
+image: /content/images/m71114plx5faz7tk.jpg
+layout: post-layout.njk
+---
+أعلن اتحاد House of Glory Wrestling رسميا عن عودة النجم كيلر كروس للمشاركة في عرض HOG Windy City Warfare، والمقرر إقامته يوم الجمعة الخامس والعشرين من سبتمبر في قاعة لوغان سكوير أوديتوريوم الشهيرة بمدينة شيكاغو.
+
+تأتي هذه العودة لتشعل حماس الجماهير نظرا لتاريخ كروس الحافل بالعديد من المواجهات القوية واللحظات الحاسمة داخل الاتحاد، حيث يترقب المتابعون ما سيقدمه النجم في هذه العودة المرتقبة والأهداف الجديدة التي يسعى لتحقيقها.
+
+من المقرر أن يتم بث العرض مباشرة وبشكل مجاني عبر القناة الرسمية لاتحاد House of Glory على موقع يوتيوب، مما يتيح لجماهير المصارعة حول العالم متابعة الحدث وتفاصيل المواجهات المنتظرة عن قرب.
