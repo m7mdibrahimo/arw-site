@@ -999,7 +999,8 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     border-radius: 14px !important;
     overflow: hidden !important;
     box-shadow: 0 4px 14px -6px rgba(0,0,0,0.08) !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   .show-thumb, .news-thumb {
     height: auto !important;
@@ -1017,7 +1018,9 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   }
   .show-body, .news-body {
     padding: 9px 10px 11px !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
   }
   .kind-badge, .cat, .fed-badge {
     display: inline-flex !important;
@@ -1033,12 +1036,13 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   .show-body h3, .news-body h3 {
     font-size: 12.5px !important;
     font-weight: 800 !important;
-    line-height: 1.36 !important;
+    line-height: 1.38 !important;
     margin: 2px 0 5px !important;
     display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
+    -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
+    word-break: break-word !important;
   }
   .show-body .desc, .news-body p {
     font-size: 10.5px !important;
@@ -1133,7 +1137,9 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     padding: 7px 8px 9px !important;
   }
   .show-body h3, .news-body h3 {
-    font-size: 11.5px !important;
+    font-size: 12px !important;
+    line-height: 1.36 !important;
+    -webkit-line-clamp: 4 !important;
   }
   .show-body .desc, .news-body p {
     font-size: 9.5px !important;
@@ -1148,7 +1154,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   }
 }
 </style>
-<link rel="stylesheet" href="/assets/notif.css?v=20260914h">
+<link rel="stylesheet" href="/assets/notif.css?v=20260917i">
 </head>
 <body>
 <header>

@@ -314,7 +314,8 @@
     border-radius: 14px !important;
     overflow: hidden !important;
     box-shadow: 0 4px 14px -6px rgba(0,0,0,0.08) !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   .show-thumb, .news-thumb, .series-thumb {
     height: auto !important;
@@ -341,7 +342,9 @@
   }
   .show-body, .news-body, .series-body {
     padding: 9px 10px 11px !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
   }
   .kind-badge, .cat, .fed-badge {
     display: inline-flex !important;
@@ -357,12 +360,13 @@
   .show-body h3, .news-body h3, .series-body h3 {
     font-size: 12.5px !important;
     font-weight: 800 !important;
-    line-height: 1.36 !important;
+    line-height: 1.38 !important;
     margin: 2px 0 5px !important;
     display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
+    -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
+    word-break: break-word !important;
   }
   .show-body .desc, .news-body p, .series-body .desc {
     font-size: 10.5px !important;
@@ -610,6 +614,8 @@
   }
   .show-body h3, .news-body h3, .series-body h3 {
     font-size: 12px !important;
+    line-height: 1.36 !important;
+    -webkit-line-clamp: 4 !important;
   }
   .show-body .desc, .news-body p, .series-body .desc {
     font-size: 10px !important;
