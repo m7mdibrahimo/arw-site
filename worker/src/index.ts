@@ -290,10 +290,11 @@ type PublishState = {
   // interval, so a cooldown written in KV on one tick could still read as
   // "not set" on the very next tick and get silently ignored.
   cooldowns: Partial<Record<"facebook" | "x", number>>;
+  lastStoryAt?: number;
 };
 
 function emptyPublishState(): PublishState {
-  return { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} };
+  return { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {}, lastStoryAt: 0 };
 }
 
 function githubContentsUrl(env: Env): string {
@@ -1072,6 +1073,126 @@ const kvKey = `ig-pending:${key}`;
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Curated Stories: Instagram & Facebook Stories (9:16 Vertical Ratio)
+// ─────────────────────────────────────────────────────────────────────────
+
+function storyImageUrl(imageUrl: string): string {
+  const clean = imageUrl.replace(/^https?:\/\//, "");
+  return `https://wsrv.nl/?url=${encodeURIComponent(clean)}&w=1080&h=1920&fit=contain&bg=0f1115&output=jpg&q=90`;
+}
+
+function isStoryWorthy(item: { title: string; kind?: string }): boolean {
+  if (item.kind === "show" || item.kind === "recap") return true;
+  const title = (item.title || "").trim();
+  if (isResultsArticle(title)) return true;
+  if (/^(?:عاجل|رسمياً|مفاجأة|صدمة|تتويج|تاريخي)\b/i.test(title)) return true;
+  return false;
+}
+
+async function postToInstagramStory(
+  env: Env,
+  data: { imageUrl?: string }
+): Promise<{ ok: boolean; result?: any }> {
+  if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false };
+  if (!data.imageUrl) return { ok: false };
+
+  const sUrl = storyImageUrl(data.imageUrl);
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+    const createRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          image_url: sUrl,
+          media_type: "STORIES",
+          access_token: pageToken,
+        }),
+      }
+    );
+    const createResult: any = await createRes.json().catch(() => ({}));
+    if (!createResult.id) return { ok: false, result: createResult };
+
+    const containerId = createResult.id;
+
+    for (let i = 0; i < 3; i++) {
+      await new Promise((r) => setTimeout(r, 3000));
+      const statusRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
+      );
+      const statusData: any = await statusRes.json().catch(() => ({}));
+      if (statusData.status_code === "FINISHED") break;
+      if (statusData.status_code === "ERROR") return { ok: false, result: statusData };
+    }
+
+    const pubRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creation_id: containerId,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const pubResult: any = await pubRes.json().catch(() => ({}));
+    if (pubResult.id) return { ok: true, result: pubResult };
+    return { ok: false, result: pubResult };
+  } catch (e) {
+    return { ok: false };
+  }
+}
+
+async function postToFacebookStory(
+  env: Env,
+  data: { imageUrl?: string }
+): Promise<{ ok: boolean; result?: any }> {
+  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false };
+  if (!data.imageUrl) return { ok: false };
+
+  const sUrl = storyImageUrl(data.imageUrl);
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+
+    const uploadRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: sUrl,
+          published: false,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const uploadResult: any = await uploadRes.json().catch(() => ({}));
+    if (!uploadResult.id) return { ok: false, result: uploadResult };
+
+    const storyRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photo_stories`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          photo_id: uploadResult.id,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const storyResult: any = await storyRes.json().catch(() => ({}));
+    if (storyResult.id || storyResult.post_id) return { ok: true, result: storyResult };
+    return { ok: false, result: storyResult };
+  } catch (e) {
+    return { ok: false };
+  }
+}
+
 // Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
 // see the BUFFER_API_KEY comment on Env for why. "mode: shareNow" publishes
 // immediately instead of dropping into Buffer's queue for a scheduled slot
@@ -1457,6 +1578,27 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
     if (didWork) {
       processedInThisTick++;
+
+      // Curated Story Publisher:
+      // Publishes flagship show results and major breaking events as vertical 9:16 Stories
+      // to Instagram and Facebook, spaced by at least 3 hours to prevent algorithmic story-spam.
+      if (item.image && isStoryWorthy(item)) {
+        const lastStory = state.lastStoryAt || 0;
+        const STORY_COOLDOWN_MS = 3 * 60 * 60 * 1000;
+        if (now - lastStory >= STORY_COOLDOWN_MS) {
+          try {
+            const igStoryPromise = postToInstagramStory(env, { imageUrl: item.image }).catch(() => ({ ok: false }));
+            const fbStoryPromise = postToFacebookStory(env, { imageUrl: item.image }).catch(() => ({ ok: false }));
+            const [igStoryRes, fbStoryRes] = await Promise.all([igStoryPromise, fbStoryPromise]);
+            if (igStoryRes?.ok || fbStoryRes?.ok) {
+              state.lastStoryAt = now;
+              await githubWriteState(env, state, currentSha, `chore(publish): publish story for ${key}`).catch(() => {});
+            }
+          } catch (storyErr) {
+            console.warn("[Stories] Story publish skipped or failed:", storyErr);
+          }
+        }
+      }
     }
   }
 }
