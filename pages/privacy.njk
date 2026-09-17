@@ -4,7 +4,7 @@ permalink: "/privacy/index.html"
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<script>if(window.location.hostname.includes('pages.dev')){window.location.replace('https://arab-wrestling.com'+window.location.pathname+window.location.search+window.location.hash);}</script>
+<script>if(window.location.hostname.includes("pages.dev")){window.location.replace("https://arab-wrestling.com"+window.location.pathname+window.location.search+window.location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
@@ -21,43 +21,70 @@ permalink: "/privacy/index.html"
     --teal: #0e9594;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{ font-family:'Tajawal',sans-serif; background:var(--bg); color:var(--ink); line-height:1.9; }
-  header{ background:var(--card); border-bottom:1px solid var(--line); padding:20px 24px; }
-  header a{ color:var(--teal); text-decoration:none; font-family:'Cairo',sans-serif; font-weight:900; font-size:20px; }
-  main{ max-width:760px; margin:0 auto; padding:40px 24px 80px; }
-  h1{ font-family:'Cairo',sans-serif; font-weight:900; font-size:28px; margin-bottom:8px; }
+  body{ font-family:"Tajawal",sans-serif; background:var(--bg); color:var(--ink); line-height:1.9; }
+  header{ background:var(--card); border-bottom:1px solid var(--line); padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
+  header a{ color:var(--teal); text-decoration:none; font-family:"Cairo",sans-serif; font-weight:900; font-size:20px; }
+  header nav a{ margin-inline-start:16px; font-size:14px; color:var(--muted); font-weight:600; text-decoration:none; }
+  header nav a:hover{ color:var(--teal); }
+  main{ max-width:800px; margin:0 auto; padding:40px 24px 80px; }
+  h1{ font-family:"Cairo",sans-serif; font-weight:900; font-size:28px; margin-bottom:8px; }
   .updated{ color:var(--muted); font-size:14px; margin-bottom:32px; }
-  h2{ font-family:'Cairo',sans-serif; font-weight:800; font-size:20px; margin:32px 0 12px; color:var(--teal); }
+  h2{ font-family:"Cairo",sans-serif; font-weight:800; font-size:20px; margin:32px 0 12px; color:var(--teal); }
   p, li{ color:var(--ink); font-size:16px; margin-bottom:12px; }
-  ul{ padding-inline-start: 20px; }
-  a{ color:var(--teal); }
+  ul{ padding-inline-start: 24px; margin-bottom:16px; }
+  a{ color:var(--teal); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); background:var(--card); }
+  .footer-links{ margin-bottom:12px; }
+  .footer-links a{ color:var(--muted); margin:0 8px; font-size:13px; text-decoration:none; }
+  .footer-links a:hover{ color:var(--teal); }
 </style>
 </head>
 <body>
-<header><a href="/">عرب راسلنج</a></header>
+<header>
+  <a href="/">عرب راسلنج</a>
+  <nav>
+    <a href="/">الرئيسية</a>
+    <a href="/news/">الأخبار</a>
+    <a href="/privacy/">الخصوصية</a>
+    <a href="/support/">تواصل معنا</a>
+  </nav>
+</header>
 <main>
   <h1>سياسة الخصوصية</h1>
-  <p class="updated">آخر تحديث: أغسطس 2026</p>
+  <p class="updated">آخر تحديث: سبتمبر 2026</p>
 
-  <p>يحترم موقع عرب راسلنج (arab-wrestling.com) خصوصية زواره، وهذه الصفحة توضح البيانات التي قد يتم جمعها وكيفية استخدامها.</p>
+  <p>يحترم موقع عرب راسلنج (arab-wrestling.com) خصوصية زواره الكرام، وتوضح هذه السياسة كيفية جمع واستخدام وحماية البيانات أثناء تصفحك لمنصتنا.</p>
 
-  <h2>البيانات التي نجمعها</h2>
+  <h2>1. البيانات التي نجمعها</h2>
   <ul>
-    <li>بيانات تصفح عامة وغير شخصية (مثل نوع المتصفح والصفحات التي تتم زيارتها) لأغراض تحليل استخدام الموقع.</li>
-    <li>عنوان البريد الإلكتروني أو بيانات الاشتراك في حال قام الزائر بالتسجيل للحصول على إشعارات الموقع (Push Notifications) بشكل اختياري.</li>
+    <li><strong>بيانات التصفح غير المحددة للهوية:</strong> مثل نوع المتصفح، نظام التشغيل، والصفحات التي تمت زيارتها لتحسين أداء الموقع وسرعته.</li>
+    <li><strong>إشعارات الويب (Push Notifications):</strong> عند اشتراكك الاختياري في استلام إشعارات العروض والأخبار، نقوم بتخزين معرف الاشتراك المشفر حصراً لإرسال التنبيهات.</li>
   </ul>
 
-  <h2>كيف نستخدم البيانات</h2>
-  <p>تُستخدم البيانات المذكورة أعلاه فقط لتحسين تجربة المستخدم على الموقع، وإرسال إشعارات بالمحتوى الجديد لمن يختار الاشتراك فيها، ولا تتم مشاركتها مع أي طرف ثالث لأغراض تسويقية.</p>
+  <h2>2. ملفات تعريف الارتباط وإعلانات Google AdSense</h2>
+  <p>يستخدم الموقع ملفات تعريف ارتباط (Cookies) أساسية لتحسين تجربة التصفح وحفظ تفضيلات الزوار.</p>
+  <p>قد تستخدم جهات خارجية، بما في ذلك Google، ملفات تعريف ارتباط لعرض الإعلانات بناءً على زيارات المستخدم السابقة لموقعنا أو لمواقع أخرى على الويب. وتتيح ملفات تعريف الارتباط الإعلانية لشركة Google وشركائها عرض الإعلانات للمستخدمين بناءً على زيارتهم لمواقعهم عبر الإنترنت. يمكنك إلغاء الاشتراك في الإعلانات المخصصة عبر زيارة <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">إعدادات إعلانات Google</a>.</p>
 
-  <h2>ملفات تعريف الارتباط (Cookies)</h2>
-  <p>قد يستخدم الموقع ملفات تعريف ارتباط أساسية لتشغيل بعض الميزات (مثل تفضيل الوضع الليلي)، ولا تُستخدم لتتبع الزوار عبر مواقع أخرى.</p>
+  <h2>3. أمان وحماية البيانات</h2>
+  <p>نحن نطبق أعلى معايير التشفير والأمان عبر بروتوكولات HTTPS و HSTS المشفرة لضمان سرية الاتصال بين متصفحك وخوادمنا السحابية ومنع أي طرف ثالث من اعتراض البيانات.</p>
 
-  <h2>حذف البيانات</h2>
-  <p>لطلب حذف أي بيانات شخصية مرتبطة بحسابك في إشعارات الموقع، يمكنك التواصل معنا عبر البريد الإلكتروني الموضح أدناه.</p>
+  <h2>4. حذف البيانات وحقوقك</h2>
+  <p>يحق لأي مستخدم في أي وقت طلب حذف بياناته أو إلغاء اشتراكه في الإشعارات من إعدادات متصفحه مباشرة أو عبر التواصل معنا.</p>
 
-  <h2>التواصل</h2>
-  <p>لأي استفسار بخصوص سياسة الخصوصية هذه، يمكنك التواصل معنا عبر صفحاتنا الرسمية على فيسبوك وإنستجرام.</p>
+  <h2>5. التواصل</h2>
+  <p>لأي استفسارات تتعلق بسياسة الخصوصية، يسعدنا تواصلكم عبر البريد: <a href="mailto:contact@arab-wrestling.com">contact@arab-wrestling.com</a> أو عبر صفحاتنا الرسمية على فيسبوك وإنستجرام.</p>
 </main>
+<footer>
+  <div class="footer-links">
+    <a href="/">الرئيسية</a> |
+    <a href="/news/">الأخبار</a> |
+    <a href="/privacy/">سياسة الخصوصية</a> |
+    <a href="/dmca/">حقوق الملكية والنشر (DMCA)</a> |
+    <a href="/terms/">شروط الاستخدام</a> |
+    <a href="/support/">تواصل معنا</a>
+  </div>
+  <div>© 2026 عرب راسلنج — موقع عربي إخباري مستقل غير تابع لأي اتحاد رسمي.</div>
+</footer>
 </body>
 </html>
