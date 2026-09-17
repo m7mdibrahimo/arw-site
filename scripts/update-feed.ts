@@ -23,7 +23,7 @@ async function updateFeed() {
       link: p.link,
       date: p.date,
       title: { rendered: p.title?.rendered || "" },
-      featured_image: p.jetpack_featured_media_url || p._embedded?.["wp:featuredmedia"]?.[0]?.source_url || ""
+      featured_image: p.jetpack_featured_media_url || p._embedded?.["wp:featuredmedia"]?.[0]?.source_url || p.yoast_head_json?.og_image?.[0]?.url || ""
     }));
 
     const targetFile = path.join(process.cwd(), "watcher-feed.json");

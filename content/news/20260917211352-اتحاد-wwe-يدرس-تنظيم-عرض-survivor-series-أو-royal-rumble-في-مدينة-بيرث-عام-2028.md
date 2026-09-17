@@ -11,7 +11,7 @@ tags:
   - أستراليا
   - Survivor Series
   - Royal Rumble
-image: /content/images/03pwzxh9wy4pxwlt.jpg
+image: /content/images/wwe_perth_official.jpg
 layout: post-layout.njk
 ---
 يخطط اتحاد WWE لتوسيع نطاق عروضه الكبرى خارج أمريكا الشمالية، حيث تشير التقارير الأخيرة إلى وجود شراكة ممتدة لمدة ثلاثة أعوام مع مدينة بيرث الأسترالية لتنظيم عروض كبرى في عطلات نهاية الأسبوع خلال السنوات القادمة.

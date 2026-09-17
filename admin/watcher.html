@@ -964,7 +964,7 @@
       const isOld = isPostOld(post);
       const isFresh = isPostFresh(post);
       const isSelected = selectedPosts.has(post.id);
-      const featured = post.featured_image || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
+      const featured = post.featured_image || post.yoast_head_json?.og_image?.[0]?.url || post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/favicon.png';
       const cleanTitle = (post.title?.rendered || post.title || 'No title').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
       const isResults = /\b(?:results|coverage|recap|spoilers)\b/i.test(cleanTitle) || /(?:نتائج|تغطية)/.test(cleanTitle);
       const dateStr = formatEgyptDate(post);

@@ -110,10 +110,11 @@ async function downloadAndOptimizeImage(imageUrl: string): Promise<string | null
     const randomName = generateRandomImageName();
     const targetPath = path.join(IMAGES_DIR, randomName);
 
-    // Compress with Sharp: auto-orient, max width 1200px, quality 85, mozjpeg
+    // Compress with Sharp: auto-orient, max width 1200px, flatten transparency to white background, quality 85, mozjpeg
     await sharp(buffer)
       .rotate()
       .resize({ width: 1200, withoutEnlargement: true })
+      .flatten({ background: "#ffffff" })
       .jpeg({ quality: 85, mozjpeg: true })
       .toFile(targetPath);
 
@@ -1451,6 +1452,58 @@ function formatDate(dateString?: string) {
   return { prefix, iso };
 }
 
+// Quick helper to extract image from WordPress API payload (Jetpack, featuredmedia, or Yoast SEO og_image)
+function getQuickFeaturedImageUrl(p: any): string {
+  if (p.jetpack_featured_media_url) return p.jetpack_featured_media_url;
+  if (p._embedded?.["wp:featuredmedia"]?.[0]?.source_url) {
+    return p._embedded["wp:featuredmedia"][0].source_url;
+  }
+  if (p.yoast_head_json?.og_image?.[0]?.url) {
+    return p.yoast_head_json.og_image[0].url;
+  }
+  if (p.yoast_head) {
+    const m = p.yoast_head.match(/property=["']og:image["']\s+content=["']([^"']+)["']/i) ||
+              p.yoast_head.match(/content=["']([^"']+)["']\s+property=["']og:image["']/i);
+    if (m && m[1]) return m[1];
+  }
+  return "";
+}
+
+// Deep resolver to guarantee extracting an official image (checks payload, HTML body, and live page og:image metadata)
+async function resolvePostFeaturedImage(post: any, contentHtml: string = ""): Promise<string> {
+  const quick = getQuickFeaturedImageUrl(post);
+  if (quick) return quick;
+
+  // Check body <img> tag
+  const html = contentHtml || post.content?.rendered || "";
+  const bodyMatch = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  if (bodyMatch && bodyMatch[1] && !bodyMatch[1].startsWith("data:")) {
+    return bodyMatch[1];
+  }
+
+  // Check live article page og:image metadata as guaranteed fallback
+  if (post.link) {
+    try {
+      const pageRes = await fetch(post.link, {
+        signal: AbortSignal.timeout(6000),
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        },
+      });
+      if (pageRes.ok) {
+        const pageHtml = await pageRes.text();
+        const ogMatch = pageHtml.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
+                        pageHtml.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i) ||
+                        pageHtml.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i);
+        if (ogMatch && ogMatch[1]) {
+          return ogMatch[1];
+        }
+      }
+    } catch (e) {}
+  }
+  return "";
+}
+
 // Fetch posts from Fightful WordPress REST API
 async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
   const fetchCount = Math.max(limit, 30);
@@ -1479,7 +1532,7 @@ async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
       date: p.date,
       date_gmt: p.date_gmt || p.date,
       title: { rendered: p.title?.rendered || "" },
-      featured_image: p.jetpack_featured_media_url || p._embedded?.["wp:featuredmedia"]?.[0]?.source_url || ""
+      featured_image: getQuickFeaturedImageUrl(p)
     }));
     fs.writeFileSync(feedPath, JSON.stringify(cleanFeed, null, 2), "utf-8");
   } catch (err) {
@@ -1541,14 +1594,8 @@ async function processPost(post: any, customDate?: Date | string, bypassSpoilerF
   console.log(`[Watcher] Processing post #${postId}: "${rawTitle}"${isUpdate ? ` [UPDATE to ${existingFile?.fileName}]` : ""}`);
   console.log(`[Watcher] Effective publish date: ${effectiveDate} (Source: ${sourceDate})`);
 
-  // Extract primary article image strictly from WordPress featured media or body image (NEVER from YouTube video)
-  let imageUrl = post.jetpack_featured_media_url || post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
-  if (!imageUrl) {
-    const bodyImgMatch = contentHtml.match(/<img[^>]+src=["']([^"']+)["']/i);
-    if (bodyImgMatch && bodyImgMatch[1]) {
-      imageUrl = bodyImgMatch[1];
-    }
-  }
+  // Extract primary article image strictly from WordPress featured media, Yoast SEO, body image, or live page og:image (NEVER from YouTube video)
+  let imageUrl = await resolvePostFeaturedImage(post, contentHtml);
 
   // Detect YouTube video solely for embedding the video watch link in the article text (NEVER as cover image)
   let ytVideoId = extractYouTubeVideoId(contentHtml) || extractYouTubeVideoId(post.link || "");
@@ -1600,14 +1647,10 @@ async function processPost(post: any, customDate?: Date | string, bypassSpoilerF
 
   if (!localImagePath) {
     console.warn(`[Watcher] Could not download image for post #${postId}, using reliable site fallback banner.`);
-    // Look for any existing jpg image in content/images as a safe fallback
-    try {
-      const existing = fs.readdirSync(IMAGES_DIR).filter(f => f.endsWith(".jpg"));
-      if (existing.length > 0) {
-        localImagePath = `/content/images/${existing[0]}`;
-      }
-    } catch (e) {}
-    if (!localImagePath) {
+    const defaultBanner = path.join(IMAGES_DIR, "wwe_perth_official.jpg");
+    if (fs.existsSync(defaultBanner)) {
+      localImagePath = "/content/images/wwe_perth_official.jpg";
+    } else {
       localImagePath = "/favicon.png";
     }
   }
