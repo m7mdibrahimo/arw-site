@@ -359,10 +359,9 @@
     font-weight: 800 !important;
     line-height: 1.36 !important;
     margin: 2px 0 5px !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
+    display: block !important;
+    overflow: visible !important;
+    word-break: break-word !important;
   }
   .show-body .desc, .news-body p, .series-body .desc {
     font-size: 10.5px !important;
