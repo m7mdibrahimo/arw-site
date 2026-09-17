@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-dynamite-16-09-2026",
+    "title": "عرض ديناميت 16.09.2026 مترجم",
+    "subtitle": "AEW Dynamite 16.09.2026",
+    "image": "/img/yXtz3sDQ6k-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026",
     "title": "مباراة ستيفاني فاكير ضد ليف مورغان 12.09.2026 في سانتياغو عاصمة تشيلي",
     "subtitle": "WWE Live Stephanie Vaquer vs Liv Morgan 12.09.2026",
@@ -97,16 +108,5 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-09-09-2026",
-    "title": "عرض ديناميت 09.09.2026 مترجم",
-    "subtitle": "AEW Dynamite 09.09.2026",
-    "image": "/img/8nHqh-ZExG-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
