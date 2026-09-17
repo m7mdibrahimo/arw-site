@@ -120,13 +120,14 @@ function buildFacebookCaption(title: string, text?: string, kind?: string): stri
   const header = `« ${cleanTitle} »`;
   const snippet = cleanText;
   const engagement = buildEngagementPrompt(title, kind);
-  const footer = `▫️ للتغطية الكاملة، ابحث في جوجل عن "عرب راسلنج" (arab-wrestling.com)\n\n${hashtags}`;
+  const websiteCta = `🌐 للتغطية الكاملة: ابحث في جوجل عن "عرب راسلنج" (arab-wrestling.com)`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
   parts.push(engagement);
-  parts.push(footer);
-  return parts.join("\n\n");
+  parts.push(websiteCta);
+  if (hashtags) parts.push(hashtags);
+  return parts.join("\n\u2800\n");
 }
 
 function buildInstagramCaption(title: string, text?: string, kind?: string): string {
@@ -137,13 +138,14 @@ function buildInstagramCaption(title: string, text?: string, kind?: string): str
   const header = `« ${cleanTitle} »`;
   const snippet = cleanText;
   const engagement = buildEngagementPrompt(title, kind);
-  const footer = `▫️ للتغطية الكاملة، ابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة الرابط في البايو\n(arab-wrestling.com)\n\n${hashtags}`;
+  const websiteCta = `🌐 للتغطية الكاملة: ابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة الرابط في البايو\n(arab-wrestling.com)`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
   parts.push(engagement);
-  parts.push(footer);
-  return parts.join("\n\n");
+  parts.push(websiteCta);
+  if (hashtags) parts.push(hashtags);
+  return parts.join("\n\u2800\n");
 }
 
 
