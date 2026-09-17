@@ -1081,6 +1081,9 @@ module.exports = function(eleventyConfig) {
   if (fs.existsSync("_redirects")) {
     eleventyConfig.addPassthroughCopy("_redirects");
   }
+  if (fs.existsSync("_headers")) {
+    eleventyConfig.addPassthroughCopy("_headers");
+  }
 
   eleventyConfig.on("eleventy.after", () => {
     if (!fs.existsSync("_site")) fs.mkdirSync("_site", { recursive: true });
@@ -1090,6 +1093,9 @@ module.exports = function(eleventyConfig) {
     }
     if (fs.existsSync("_redirects")) {
       fs.copyFileSync("_redirects", "_site/_redirects");
+    }
+    if (fs.existsSync("_headers")) {
+      fs.copyFileSync("_headers", "_site/_headers");
     }
     if (fs.existsSync("favicon.svg")) {
       fs.copyFileSync("favicon.svg", "_site/favicon.svg");
