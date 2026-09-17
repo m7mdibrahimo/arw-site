@@ -1,5 +1,15 @@
 [
   {
+    "id": 328666,
+    "link": "https://www.fightful.com/wrestling/cm-punk-nobody-hates-wrestling-more-than-wrestling-fans-nobody-loves-wrestling-more-than-wrestling-fans/",
+    "date": "2026-09-17T11:00:00",
+    "date_gmt": "2026-09-17T15:00:00",
+    "title": {
+      "rendered": "CM Punk: Nobody Hates Wrestling More Than Wrestling Fans, Nobody Loves Wrestling More Than Wrestling Fans"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/19172226/Screenshot-87-e1763590958379.png"
+  },
+  {
     "id": 328929,
     "link": "https://www.fightful.com/wrestling/aalyah-mysterio-the-dropouts-more-announced-as-wwe-recruiting-class/",
     "date": "2026-09-17T10:33:16",
@@ -288,15 +298,5 @@
       "rendered": "WWE SmackDown (9/11) Viewership Down, Demo Rating Holds"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25192008/smackdown_6.jpg"
-  },
-  {
-    "id": 328828,
-    "link": "https://www.fightful.com/wrestling/bronson-reed-says-he-was-set-to-have-featured-matches-at-wrestlemania-41-42-before-suffering-injuries/",
-    "date": "2026-09-16T17:12:01",
-    "date_gmt": "2026-09-16T21:12:01",
-    "title": {
-      "rendered": "Bronson Reed Says He Was Set To Have Featured Matches At WrestleMania 41 &#038; 42 Before Suffering Injuries"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/01/04173457/bronson_reed_9.jpg"
   }
 ]
