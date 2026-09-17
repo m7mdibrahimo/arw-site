@@ -574,7 +574,7 @@ async function sendVerifiedTelegramPost(
   const safeText = escapeTelegramHtml(data.text || "");
   const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || env.SITE_ORIGIN));
   const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
-  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n<a href="${safeUrl}">تابع المحتوى على موقع عرب راسلنج 🔗</a>\n\n#عرب_راسلنج`;
+  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
 
   if (imageBuffer) {
     try {
