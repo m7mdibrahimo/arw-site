@@ -1,0 +1,32 @@
+/* Arab Wrestling Mac Native Header Perfection */
+:root {
+  --mac-titlebar-height: 38px;
+}
+
+/* 1. Dedicated draggable titlebar zone with site's matching background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--mac-titlebar-height);
+  background: var(--bg, #0f172a);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 99999;
+  -webkit-app-region: drag;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 2. Position the sticky header directly below the 38px titlebar */
+header {
+  top: var(--mac-titlebar-height) !important;
+  margin-top: var(--mac-titlebar-height) !important;
+  -webkit-app-region: no-drag;
+}
+
+/* 3. Ensure all links, search, and buttons in header work cleanly */
+header * {
+  -webkit-app-region: no-drag;
+}

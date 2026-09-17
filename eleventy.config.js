@@ -1083,6 +1083,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("content/images");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("sw.js");
+  eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("googlee6fae402f63eee54.html");
   eleventyConfig.addPassthroughCopy("nxuwkfsaraeq723u4jfsdf3yivfgmn.html");
   eleventyConfig.addPassthroughCopy("ads.txt");
@@ -1104,6 +1105,9 @@ module.exports = function(eleventyConfig) {
     }
     if (fs.existsSync("_headers")) {
       fs.copyFileSync("_headers", "_site/_headers");
+    }
+    if (fs.existsSync("manifest.json")) {
+      fs.copyFileSync("manifest.json", "_site/manifest.json");
     }
     if (fs.existsSync("favicon.svg")) {
       fs.copyFileSync("favicon.svg", "_site/favicon.svg");
