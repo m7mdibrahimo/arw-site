@@ -712,8 +712,8 @@
     if (isPostAddedToSite(post)) return false;
     const pid = Number(post.id);
     if (pendingDispatchedIds.has(pid)) return false;
-    // An unadded post older than 4 hours is considered old news
-    return getPostAgeHours(post) > 4;
+    // An unadded post older than 24 hours is considered old news
+    return getPostAgeHours(post) > 24;
   }
 
   function isPostFresh(post) {
