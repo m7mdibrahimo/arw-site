@@ -46,9 +46,9 @@ permalink: "/apps/index.html"
     --violet: #9a8ff0; --violet-soft: rgba(154,143,240,0.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{ scroll-behavior:smooth; background-color:var(--bg); }
-  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal',sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; }
-  h1,h2,h3,h4,h5,.brand{ font-family:'Cairo',sans-serif; font-weight:900; }
+  html{ scroll-behavior:smooth; background-color:var(--bg); -webkit-text-size-adjust:100%; -moz-text-size-adjust:100%; text-size-adjust:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height:1.75; transition:background-color .3s ease, color .3s ease; -webkit-tap-highlight-color:transparent; }
+  h1,h2,h3,h4,h5,.brand{ font-family:'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight:900; }
 
   /* ===== الهيدر الأصلي للموقع (مطابق 100% لباقي صفحات الموقع) ===== */
   header{ position:sticky; top:0; z-index:50; background:var(--bg); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:background-color .3s ease, border-color .3s ease, transform .35s cubic-bezier(0.16,1,0.3,1), -webkit-transform .35s cubic-bezier(0.16,1,0.3,1); will-change:transform; }
