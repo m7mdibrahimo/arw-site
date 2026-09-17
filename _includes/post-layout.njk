@@ -685,7 +685,7 @@
       </li>
       <li><a class="navlink{% if kind == 'show' and not fed and not isNostalgiaItem and not (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink{% if kind == 'recap' %} active{% endif %}" href="/recaps/">ملخصات العروض</a></li>
-      <li><a class="navlink{% if kind == 'news' or isNews %} active{% endif %}" href="/news/">الأخبار</a></li><li><a class="navlink{% if isNostalgiaItem or (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/nostalgia/">نوستالجيا</a></li>
+      <li><a class="navlink{% if kind == 'news' or isNews %} active{% endif %}" href="/news/">الأخبار</a></li><li><a class="navlink{% if isNostalgiaItem or (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
       <li class="utility-row">
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
           <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
