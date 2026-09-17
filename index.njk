@@ -817,12 +817,25 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   }
 }
 
+@media (max-width: 680px) {
+  .spotlight-nav-group {
+    display: none !important;
+  }
+  .spotlight-bottom-bar {
+    justify-content: center !important;
+  }
+  .spotlight-bars-wrap {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
+
 @media (max-width: 580px) {
   .spotlight-section {
     padding: 12px 10px 14px;
   }
   .spotlight-container {
-    height: 425px;
+    height: 430px;
     border-radius: 16px;
   }
   .spotlight-slide {
@@ -837,7 +850,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   .spotlight-bg-wrap {
     position: relative;
     width: 100%;
-    height: 205px;
+    height: 195px;
     flex-shrink: 0;
     background: #0d131f;
     overflow: hidden;
@@ -863,11 +876,11 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     justify-content: flex-start;
     align-items: flex-start;
     text-align: right;
-    padding: 12px 16px 52px;
+    padding: 10px 14px 44px;
     background: #0d131f;
     box-sizing: border-box;
     max-width: 100%;
-    gap: 10px;
+    gap: 8px;
   }
   .spotlight-badges {
     display: flex;
@@ -886,26 +899,35 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     align-items: flex-start;
     width: 100%;
     text-align: right;
-    gap: 4px;
+    gap: 3px;
   }
   .spotlight-title {
-    font-size: 18px;
-    line-height: 1.34;
+    font-size: 17px;
+    line-height: 1.32;
     text-align: right;
     width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .spotlight-subtitle {
-    font-size: 12.5px;
+    font-size: 12px;
     text-align: right;
     width: 100%;
     direction: ltr;
     unicode-bidi: isolate;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .spotlight-actions {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    margin-top: 2px;
+    margin-top: auto;
+    margin-bottom: 2px;
   }
   .spotlight-cta-btn {
     align-self: flex-start;
@@ -917,25 +939,30 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     bottom: 12px;
     left: 14px;
     right: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .spotlight-bars-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
+    width: 100%;
   }
   .spotlight-bar-seg {
-    width: 20px;
+    flex: 1;
+    max-width: 30px;
+    min-width: 8px;
     height: 3.5px;
+    border-radius: 4px;
   }
   .spotlight-bar-seg.active {
-    width: 36px;
+    flex: 1.6;
+    max-width: 48px;
   }
-  .spotlight-nav-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-  }
-  .spotlight-nav-btn svg {
-    width: 14px;
-    height: 14px;
+  .spotlight-nav-group {
+    display: none !important;
   }
 }
 
