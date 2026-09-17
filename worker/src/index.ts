@@ -92,23 +92,6 @@ function generateSocialHashtags(title: string, text?: string): string {
   return tags.join(" ");
 }
 
-function getHeaderEmoji(title: string, kind?: string): string {
-  const t = title.toLowerCase();
-  if (kind === "show" || /عرض|مهرجان|رويال رامبل|ريسلمانيا|سمر سلام|سيرفايفر|سيريس|باكلاش|كراون جول|raw|smackdown|nxt|dynamite|collision|wrestlemania|royal rumble|summer slam/i.test(t)) {
-    return "🏆";
-  }
-  if (/نتائج|نتيجة|الفائز|الأبطال|نزال|مواجهة/i.test(t)) {
-    return "⚡";
-  }
-  if (kind === "recap" || /ملخص|أحداث/i.test(t)) {
-    return "🎬";
-  }
-  if (/عاجل|رسمياً|مفاجأة|صدمة|تسريبات|هام/i.test(t)) {
-    return "🚨";
-  }
-  return "🔴";
-}
-
 function buildEngagementPrompt(title: string, kind?: string): string {
   const t = title.toLowerCase();
   const isResults = /نتائج|نتيجة|الفائز|الأبطال|نزال|مواجهة/i.test(t);
@@ -116,12 +99,12 @@ function buildEngagementPrompt(title: string, kind?: string): string {
   const isRecap = kind === "recap" || /ملخص|أحداث/i.test(t);
 
   if (isResults) {
-    return "💬 ما هو تقييمكم للنتائج والمواجهات؟ شاركونا آراءكم في التعليقات! 🔥";
+    return "ما هو تقييمكم للنتائج والمواجهات؟ شاركونا آراءكم في التعليقات.";
   }
   if (isShow || isRecap) {
-    return "💬 ما هو تقييمكم لمستوى وأحداث العرض؟ شاركونا آراءكم في التعليقات! 🔥";
+    return "ما هو تقييمكم لمستوى وأحداث العرض؟ شاركونا آراءكم في التعليقات.";
   }
-  return "💬 ما هو تقييمكم وتوقعاتكم حول هذا الموضوع؟ شاركونا آراءكم في التعليقات! 🔥";
+  return "ما هو تقييمكم وتوقعاتكم حول هذا الموضوع؟ شاركونا آراءكم في التعليقات.";
 }
 
 function buildFacebookCaption(title: string, text?: string, kind?: string): string {
@@ -129,12 +112,11 @@ function buildFacebookCaption(title: string, text?: string, kind?: string): stri
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
   const hashtags = generateSocialHashtags(title, text);
-  const emoji = getHeaderEmoji(title, kind);
 
-  const header = `${emoji} ${cleanTitle}`;
-  const snippet = cleanText ? `📌 ${cleanText}` : "";
+  const header = cleanTitle;
+  const snippet = cleanText;
   const engagement = buildEngagementPrompt(title, kind);
-  const footer = `🔍 للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
+  const footer = `للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
@@ -148,12 +130,11 @@ function buildInstagramCaption(title: string, text?: string, kind?: string): str
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
   const hashtags = generateSocialHashtags(title, text);
-  const emoji = getHeaderEmoji(title, kind);
 
-  const header = `${emoji} ${cleanTitle}`;
-  const snippet = cleanText ? `📌 ${cleanText}` : "";
+  const header = cleanTitle;
+  const snippet = cleanText;
   const engagement = buildEngagementPrompt(title, kind);
-  const footer = `🔍 للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو اضغط على الرابط في البايو 👆\n(arab-wrestling.com)\n\n${hashtags}`;
+  const footer = `للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة الرابط في البايو\n(arab-wrestling.com)\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
@@ -615,7 +596,7 @@ async function sendVerifiedTelegramPost(
   const safeText = escapeTelegramHtml(data.text || "");
   const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || env.SITE_ORIGIN));
   const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
-  const messageHtml = `⚡ <b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>قراءة التغطية والتفاصيل الكاملة عبر موقعنا ⬅️</b></a>\n\n#عرب_راسلنج`;
+  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n<a href="${safeUrl}"><b>قراءة التغطية والتفاصيل الكاملة عبر موقعنا</b></a>\n\n#عرب_راسلنج`;
 
   if (imageBuffer) {
     try {
