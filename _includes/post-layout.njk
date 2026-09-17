@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 {% include "adsense.njk" %}
-<script>if(window.location.hostname.includes('pages.dev')){window.location.replace('https://arab-wrestling.com'+window.location.pathname+window.location.search+window.location.hash);}</script>
+<script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">

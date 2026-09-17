@@ -1064,6 +1064,14 @@ module.exports = function(eleventyConfig) {
     return pages;
   });
 
+  // Transform to strip all internal developer HTML comments from published pages for privacy & cleaner code
+  eleventyConfig.addTransform("stripComments", function(content, outputPath) {
+    if (outputPath && outputPath.endsWith(".html") && !outputPath.includes("/admin/")) {
+      return content.replace(/<!--(?!\[if)[\s\S]*?-->/g, "");
+    }
+    return content;
+  });
+
   eleventyConfig.addPassthroughCopy("admin/index.html");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("admin/publish.html");
