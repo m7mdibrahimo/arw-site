@@ -1,0 +1,44 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>عرب راسلنج | أخبار المصارعة الحرة</title>
+    <link>https://arab-wrestling.com/</link>
+    <atom:link href="https://arab-wrestling.com/feed.xml" rel="self" type="application/rss+xml" />
+    <description>الموقع العربي الأول لمتابعة عروض وأخبار المصارعة الحرة WWE وAEW مترجمة بأعلى جودة.</description>
+    <language>ar</language>
+    <lastBuildDate>{{ collections.news[0].date.toUTCString() }}</lastBuildDate>
+    <image>
+      <url>https://arab-wrestling.com/assets/logo.png</url>
+      <title>عرب راسلنج</title>
+      <link>https://arab-wrestling.com/</link>
+    </image>
+    {% for item in collections.news.slice(0, 30) %}
+    {% set itemUrl = "https://arab-wrestling.com" + (item.url | cleanUrl) %}
+    {% set itemImg = (item.data.image | absUrl) if item.data.image else "https://arab-wrestling.com/assets/logo.png" %}
+    <item>
+      <title>{{ (item.data.headline or item.data.title) | escape }}</title>
+      <link>{{ itemUrl }}</link>
+      <guid isPermaLink="true">{{ itemUrl }}</guid>
+      <pubDate>{{ item.date.toUTCString() }}</pubDate>
+      <dc:creator><![CDATA[فريق تحرير عرب راسلنج]]></dc:creator>
+      <description><![CDATA[{{ item.data.description or (item.templateContent | striptags | truncate(250)) }}]]></description>
+      <content:encoded><![CDATA[{{ item.templateContent | safe }}]]></content:encoded>
+      <media:content url="{{ itemImg }}" medium="image" />
+      <enclosure url="{{ itemImg }}" type="image/jpeg" length="0" />
+      {% if item.data.tags and item.data.tags.length %}
+      {% for t in item.data.tags %}
+      <category><![CDATA[{{ t }}]]></category>
+      {% endfor %}
+      {% endif %}
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

@@ -18,6 +18,7 @@
 <meta name="keywords" content="{{ tags | join(', ') }}">
 {% endif %}
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
+<link rel="alternate" type="application/rss+xml" title="عرب راسلنج - تغذية الأخبار RSS" href="https://arab-wrestling.com/feed.xml">
 
 {% set schemaImage = (image | absUrl) if image else 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop' %}
 {% set isVideoContent = servers and servers.length %}
