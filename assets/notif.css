@@ -359,10 +359,10 @@
     font-weight: 800 !important;
     line-height: 1.36 !important;
     margin: 2px 0 5px !important;
-    display: block !important;
-    -webkit-line-clamp: unset !important;
-    overflow: visible !important;
-    word-break: break-word !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
   }
   .show-body .desc, .news-body p, .series-body .desc {
     font-size: 10.5px !important;
@@ -609,12 +609,7 @@
     padding: 8px 8px 10px !important;
   }
   .show-body h3, .news-body h3, .series-body h3 {
-    font-size: 11.5px !important;
-    line-height: 1.36 !important;
-    display: block !important;
-    -webkit-line-clamp: unset !important;
-    overflow: visible !important;
-    word-break: break-word !important;
+    font-size: 12px !important;
   }
   .show-body .desc, .news-body p, .series-body .desc {
     font-size: 10px !important;
