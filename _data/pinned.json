@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026",
+    "title": "مباراة ستيفاني فاكير ضد ليف مورغان 12.09.2026 في سانتياغو عاصمة تشيلي",
+    "subtitle": "WWE Live Stephanie Vaquer vs Liv Morgan 12.09.2026",
+    "image": "/img/vtLmD-ggc3-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "مباراة ستيفاني فاكير ضد ليف مورغان كاملة مع جميع والأحداث."
+  },
+  {
     "url": "/shows/nxt-15-09-2026",
     "title": "عرض ان اكس تي 15.09.2026 مترجم",
     "subtitle": "NXT 15.09.2026",
@@ -97,16 +108,5 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/mlp-mayhem-09-09-2026",
-    "title": "عرض ام ال بي 09.09.2026 مترجم",
-    "subtitle": "MLP Mayhem 09.09.2026",
-    "image": "/img/EFQbH-Dqa1-800.jpeg",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
