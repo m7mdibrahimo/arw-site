@@ -78,25 +78,22 @@ const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وك�
 
 function generateSocialHashtags(title: string, text?: string): string {
   const content = `${title} ${text || ""}`.toLowerCase();
-  const tags = ["#عرب_راسلنج", "#مصارعة_المحترفين"];
+  const tags = ["#عرب_راسلنج"];
+
+  if (content.includes("wwe") || content.includes("رو") || content.includes("سماكداون") || content.includes("nxt") || content.includes("رينز") || content.includes("بانك") || content.includes("كودي")) {
+    tags.push("#WWE");
+  } else if (content.includes("aew") || content.includes("داينامايت") || content.includes("كوليجن") || content.includes("أوسبري") || content.includes("موكسلي") || content.includes("ستريكلاند")) {
+    tags.push("#AEW");
+  } else if (content.includes("tna") || content.includes("إمباكت") || content.includes("امباكت")) {
+    tags.push("#TNA");
+  }
 
   if (content.includes("عرض") || content.includes("نتائج") || content.includes("ملخص") || content.includes("مواجهات")) {
     tags.push("#عروض_المصارعة");
   } else {
-    tags.push("#أخبار_المصارعة");
+    tags.push("#مصارعة_المحترفين");
   }
 
-  if (content.includes("wwe") || content.includes("رو") || content.includes("سماكداون") || content.includes("nxt") || content.includes("رينز") || content.includes("بانك") || content.includes("كودي")) {
-    tags.push("#WWE");
-  }
-  if (content.includes("aew") || content.includes("داينامايت") || content.includes("كوليجن") || content.includes("أوسبري") || content.includes("موكسلي") || content.includes("ستريكلاند")) {
-    tags.push("#AEW");
-  }
-  if (content.includes("tna") || content.includes("إمباكت") || content.includes("امباكت")) {
-    tags.push("#TNA");
-  }
-
-  tags.push("#Wrestling");
   return tags.join(" ");
 }
 
@@ -107,48 +104,46 @@ function buildEngagementPrompt(title: string, kind?: string): string {
   const isRecap = kind === "recap" || /ملخص|أحداث/i.test(t);
 
   if (isResults) {
-    return "ما هو تقييمكم للنتائج والمواجهات؟ شاركونا آراءكم في التعليقات.";
+    return "ما رأيكم في هذه النتائج؟ شاركونا في التعليقات 👇";
   }
   if (isShow || isRecap) {
-    return "ما هو تقييمكم لمستوى وأحداث العرض؟ شاركونا آراءكم في التعليقات.";
+    return "ما هو تقييمكم لمستوى العرض والأحداث؟ شاركونا في التعليقات 👇";
   }
-  return "ما هو تقييمكم وتوقعاتكم حول هذا الموضوع؟ شاركونا آراءكم في التعليقات.";
+  return "شاركونا آراءكم وتوقعاتكم في التعليقات 👇";
 }
 
 function buildFacebookCaption(title: string, text?: string, kind?: string): string {
-  const DIVIDER = "\n\n──────────────\n\n";
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
   const hashtags = generateSocialHashtags(title, text);
 
-  const header = cleanTitle;
+  const header = `« ${cleanTitle} »`;
   const snippet = cleanText;
   const engagement = buildEngagementPrompt(title, kind);
-  const footer = `للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
+  const footer = `▫️ للتغطية الكاملة، ابحث في جوجل عن "عرب راسلنج" (arab-wrestling.com)\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
   parts.push(engagement);
   parts.push(footer);
-  return parts.join(DIVIDER);
+  return parts.join("\n\n");
 }
 
 function buildInstagramCaption(title: string, text?: string, kind?: string): string {
-  const DIVIDER = "\n\n──────────────\n\n";
   const cleanTitle = title.trim();
   const cleanText = (text || "").trim();
   const hashtags = generateSocialHashtags(title, text);
 
-  const header = cleanTitle;
+  const header = `« ${cleanTitle} »`;
   const snippet = cleanText;
   const engagement = buildEngagementPrompt(title, kind);
-  const footer = `للتفاصيل والتغطية الشاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة الرابط في البايو\n(arab-wrestling.com)\n\n${hashtags}`;
+  const footer = `▫️ للتغطية الكاملة، ابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة الرابط في البايو\n(arab-wrestling.com)\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
   parts.push(engagement);
   parts.push(footer);
-  return parts.join(DIVIDER);
+  return parts.join("\n\n");
 }
 
 
@@ -1106,7 +1101,7 @@ async function sendVerifiedTelegramPost(
   const safeText = escapeTelegramHtml(data.text || "");
   const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || SITE_ORIGIN));
   const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
-  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n<a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n<a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج 🔗</b></a>\n\n#عرب_راسلنج`;
 
   if (imageBuffer) {
     try {
