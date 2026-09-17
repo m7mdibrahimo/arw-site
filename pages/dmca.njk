@@ -40,6 +40,19 @@ permalink: "/dmca/index.html"
   .footer-links{ margin-bottom:12px; }
   .footer-links a{ color:var(--muted); margin:0 8px; font-size:13px; text-decoration:none; }
   .footer-links a:hover{ color:var(--teal); }
+
+  .form-group{ margin-bottom:18px; }
+  .form-group label{ display:block; font-family:"Cairo",sans-serif; font-weight:700; font-size:14px; margin-bottom:6px; color:var(--ink); }
+  .form-control{ width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:8px; font-family:"Tajawal",sans-serif; font-size:15px; background:#fff; color:var(--ink); outline:none; }
+  .form-control:focus{ border-color:var(--teal); box-shadow:0 0 0 3px rgba(14,149,148,0.15); }
+  textarea.form-control{ min-height:120px; resize:vertical; }
+  .submit-btn{ width:100%; padding:13px; background:var(--teal); color:#fff; border:none; border-radius:8px; font-family:"Cairo",sans-serif; font-weight:800; font-size:15px; cursor:pointer; }
+  .submit-btn:hover{ background:#0a6c6b; }
+  .submit-btn:disabled{ opacity:0.6; cursor:not-allowed; }
+  .honeypot{ display:none !important; }
+  .alert-box{ display:none; padding:16px; border-radius:8px; margin-top:16px; font-size:14px; text-align:center; }
+  .alert-success{ background:#e6f7f0; border:1px solid #a3e6cb; color:#0d6832; }
+  .alert-error{ background:#fde8e8; border:1px solid #f8b4b4; color:#9b1c1c; }
 </style>
 </head>
 <body>
@@ -49,7 +62,7 @@ permalink: "/dmca/index.html"
     <a href="/">الرئيسية</a>
     <a href="/news/">الأخبار</a>
     <a href="/privacy/">الخصوصية</a>
-    <a href="/support/">تواصل معنا</a>
+    <a href="/contact/">تواصل معنا</a>
   </nav>
 </header>
 <main>
@@ -86,12 +99,82 @@ permalink: "/dmca/index.html"
   </ul>
 
   <div class="contact-card">
-    <h3 style="font-family:Cairo,sans-serif; color:var(--teal); margin-bottom:12px;">جهة الاتصال المعتمدة لطلبات الملكية الفكرية (Designated DMCA Agent)</h3>
-    <p>يرجى إرسال كافة الإخطارات والطلبات مباشرة إلى البريد الإلكتروني المعتمد لإدارة الموقع:</p>
-    <p>📧 <strong>البريد الإلكتروني:</strong> <a href="mailto:contact@arab-wrestling.com">contact@arab-wrestling.com</a></p>
-    <p>أو من خلال التواصل عبر صفحتنا الموثقة على <a href="https://www.facebook.com/ArabWrestlingEG/" target="_blank" rel="noopener">فيسبوك</a> أو <a href="https://www.instagram.com/arabwrestling/" target="_blank" rel="noopener">إنستجرام</a>.</p>
-    <p style="margin-top:10px; font-size:14px; color:var(--muted);">نلتزم بالرد ومراجعة كافة الطلبات الرسمية واتخاذ الإجراء الفوري بحذف المحتوى خلال مدة أقصاها <strong>24 إلى 48 ساعة</strong> من تاريخ استلام الإشعار.</p>
+    <h3 style="font-family:Cairo,sans-serif; color:var(--teal); margin-bottom:12px;">إرسال طلب إزالة محتوى أو إشعار فوري (DMCA Notice)</h3>
+    <p style="margin-bottom:20px; font-size:15px; color:var(--muted);">يمكنك تقديم طلبك الرسمي مباشرة من خلال النموذج الآمن أدناه ليصل إلى إدارة الموقع فوراً، أو عبر صفحة <a href="/contact/">تواصل معنا</a>:</p>
+    
+    <form id="dmcaForm">
+      <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+      <div class="form-group">
+        <label>الاسم بالكامل / الجهة صاحبة الحق</label>
+        <input type="text" name="name" class="form-control" placeholder="اسمك أو اسم المؤسسة" required>
+      </div>
+      <div class="form-group">
+        <label>بريدك الإلكتروني للرد والمتابعة</label>
+        <input type="email" name="email" class="form-control" placeholder="example@domain.com" required dir="ltr" style="text-align:right;">
+      </div>
+      <div class="form-group">
+        <label>رابط المحتوى المتنازع عليه على موقعنا (URL)</label>
+        <input type="url" name="url" class="form-control" placeholder="https://arab-wrestling.com/news/..." required dir="ltr" style="text-align:right;">
+      </div>
+      <div class="form-group">
+        <label>تفاصيل الإشعار وبيان الملكية الفكرية</label>
+        <textarea name="message" class="form-control" placeholder="وضح تفاصيل حق الملكية الفكرية والمادة المطلوب حذفها..." required></textarea>
+      </div>
+      <button type="submit" id="dmcaSubmitBtn" class="submit-btn">إرسال إشعار الملكية الفكرية بأمان</button>
+      <div id="dmcaSuccess" class="alert-box alert-success">
+        <strong>تم استلام إشعارك بنجاح! ✅</strong><br>
+        سيتم مراجعة الطلب والتحقق منه فوراً واتخاذ الإجراء اللازم خلال 24 ساعة.
+      </div>
+      <div id="dmcaError" class="alert-box alert-error">
+        <strong>حدث خطأ أثناء الإرسال!</strong> يرجى المحاولة لاحقاً أو مراسلتنا عبر فيسبوك وإنستجرام.
+      </div>
+    </form>
+    <p style="margin-top:20px; font-size:13px; color:var(--muted); text-align:center;">نلتزم بالرد ومراجعة كافة الطلبات الرسمية واتخاذ الإجراء الفوري بحذف المحتوى خلال مدة أقصاها <strong>24 إلى 48 ساعة</strong> من تاريخ استلام الإشعار.</p>
   </div>
+  
+  <script>
+  document.getElementById("dmcaForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    if (form._honey && form._honey.value) return;
+    var btn = document.getElementById("dmcaSubmitBtn");
+    var sAlert = document.getElementById("dmcaSuccess");
+    var eAlert = document.getElementById("dmcaError");
+    sAlert.style.display = "none";
+    eAlert.style.display = "none";
+    btn.disabled = true;
+    btn.innerText = "جاري الإرسال بأمان...";
+    var data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      subject: "إشعار حقوق ملكية DMCA لموقع عرب راسلنج",
+      target_url: form.url.value.trim(),
+      message: form.message.value.trim(),
+      _subject: "[عاجل - DMCA] طلب إزالة محتوى من: " + form.name.value.trim(),
+      _template: "table",
+      _captcha: "false"
+    };
+    var target = atob("bTdtZGlicmFoaW1wY0BnbWFpbC5jb20=");
+    try {
+      var res = await fetch("https://formsubmit.co/ajax/" + target, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        form.reset();
+        btn.style.display = "none";
+        sAlert.style.display = "block";
+      } else {
+        throw new Error();
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.innerText = "إعادة المحاولة";
+      eAlert.style.display = "block";
+    }
+  });
+  </script>
 </main>
 <footer>
   <div class="footer-links">
@@ -100,7 +183,7 @@ permalink: "/dmca/index.html"
     <a href="/privacy/">سياسة الخصوصية</a> |
     <a href="/dmca/">حقوق الملكية والنشر (DMCA)</a> |
     <a href="/terms/">شروط الاستخدام</a> |
-    <a href="/support/">تواصل معنا</a>
+    <a href="/contact/">تواصل معنا</a>
   </div>
   <div>© 2026 عرب راسلنج — موقع عربي إخباري مستقل غير تابع لأي اتحاد رسمي.</div>
 </footer>
