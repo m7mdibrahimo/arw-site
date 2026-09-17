@@ -68,17 +68,60 @@ const GRAPH_API_VERSION = "v21.0";
 const SOCIAL_FOLLOW_LINE =
   "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
-// Facebook and X captions keep the title, the article snippet, and the
-// "visit the site" line as three visually distinct blocks (a divider line
-// between each) instead of running them together with just a blank line —
-// easier to scan on platforms that don't format text at all.
-function buildDividedCaption(title: string, text?: string): string {
-  const DIVIDER = "\n\n────────\n\n";
-  const followBody = SOCIAL_FOLLOW_LINE.replace(/^\n+/, "");
-  const parts = [title.trim()];
-  if (text && text.trim()) parts.push(text.trim());
-  parts.push(followBody);
+function generateSocialHashtags(title: string, text?: string): string {
+  const content = `${title} ${text || ""}`.toLowerCase();
+  const tags = ["#عرب_راسلنج", "#مصارعة_المحترفين", "#أخبار_المصارعة"];
+
+  if (content.includes("wwe") || content.includes("رو") || content.includes("سماكداون") || content.includes("nxt") || content.includes("رينز") || content.includes("بانك") || content.includes("كودي")) {
+    tags.push("#WWE");
+  }
+  if (content.includes("aew") || content.includes("داينامايت") || content.includes("كوليجن") || content.includes("أوسبري") || content.includes("موكسلي") || content.includes("ستريكلاند")) {
+    tags.push("#AEW");
+  }
+  if (content.includes("tna") || content.includes("إمباكت") || content.includes("امباكت")) {
+    tags.push("#TNA");
+  }
+
+  tags.push("#Wrestling");
+  return tags.join(" ");
+}
+
+function buildFacebookCaption(title: string, text?: string): string {
+  const DIVIDER = "\n\n──────────────\n\n";
+  const cleanTitle = title.trim();
+  const cleanText = (text || "").trim();
+  const hashtags = generateSocialHashtags(title, text);
+
+  const header = `🔴 ${cleanTitle}`;
+  const snippet = cleanText ? `📌 ${cleanText}` : "";
+  const engagement = `💬 رابط الخبر والتفاصيل الكاملة ستجدونه في أول تعليق بالأسفل 👇\nما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
+  const footer = `🌐 تابعوا أحدث أخبار وتغطيات عروض المصارعة لحظة بلحظة عبر موقعنا: arab-wrestling.com\n\n${hashtags}`;
+
+  const parts = [header];
+  if (snippet) parts.push(snippet);
+  parts.push(engagement);
+  parts.push(footer);
   return parts.join(DIVIDER);
+}
+
+function buildInstagramCaption(title: string, text?: string): string {
+  const DIVIDER = "\n\n──────────────\n\n";
+  const cleanTitle = title.trim();
+  const cleanText = (text || "").trim();
+  const hashtags = generateSocialHashtags(title, text);
+
+  const header = `💥 ${cleanTitle}`;
+  const snippet = cleanText ? `📝 ${cleanText}` : "";
+  const footer = `🔗 التفاصيل الكاملة وتغطية الخبر متوفرة الآن عبر موقعنا الرسمي (الرابط في البايو 👆)\nأو بالبحث في جوجل عن "عرب راسلنج"\n\n${hashtags}`;
+
+  const parts = [header];
+  if (snippet) parts.push(snippet);
+  parts.push(footer);
+  return parts.join(DIVIDER);
+}
+
+function buildDividedCaption(title: string, text?: string): string {
+  return buildFacebookCaption(title, text);
 }
 
 
@@ -529,7 +572,7 @@ async function sendVerifiedTelegramPost(
   const safeText = escapeTelegramHtml(data.text || "");
   const safeUrl = escapeTelegramHtml(normalizeArticleUrl(data.url || env.SITE_ORIGIN));
   const bodyBlock = safeText ? `\n\n<blockquote expandable>${safeText}</blockquote>` : "";
-  const messageHtml = `<b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>تابع المحتوى على موقع عرب راسلنج</b></a>`;
+  const messageHtml = `⚡ <b>${safeTitle}</b>${bodyBlock}\n\n🔗 <a href="${safeUrl}"><b>قراءة التغطية والتفاصيل الكاملة عبر موقعنا ⬅️</b></a>\n\n#عرب_راسلنج`;
 
   if (imageBuffer) {
     try {
@@ -762,7 +805,7 @@ async function postToFacebookDirect(
   if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
 
   const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
-  const caption = buildDividedCaption(data.title, data.text);
+  const caption = buildFacebookCaption(data.title, data.text);
 
   try {
     const pageToken = await getPageAccessToken(env);
@@ -906,7 +949,7 @@ if (!data.imageUrl) return { ok: false, skipped: true };
 
 const safeImageUrl = instagramSafeImageUrl(data.imageUrl);
 
-const caption = buildDividedCaption(data.title, data.text);
+const caption = buildInstagramCaption(data.title, data.text);
 const kvKey = `ig-pending:${key}`;
 
   try {

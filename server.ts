@@ -76,6 +76,58 @@ const BUFFER_X_CHANNEL_ID = process.env.BUFFER_X_CHANNEL_ID || "";
 // where to find more content. Kept as one place to edit the wording/link.
 const SOCIAL_FOLLOW_LINE = "\n\nلمتابعة التفاصيل كاملة وكل جديد في عالم المصارعة، ابحثوا عن \"عرب راسلنج\" على جوجل أو زوروا موقعنا: arab-wrestling.com";
 
+function generateSocialHashtags(title: string, text?: string): string {
+  const content = `${title} ${text || ""}`.toLowerCase();
+  const tags = ["#عرب_راسلنج", "#مصارعة_المحترفين", "#أخبار_المصارعة"];
+
+  if (content.includes("wwe") || content.includes("رو") || content.includes("سماكداون") || content.includes("nxt") || content.includes("رينز") || content.includes("بانك") || content.includes("كودي")) {
+    tags.push("#WWE");
+  }
+  if (content.includes("aew") || content.includes("داينامايت") || content.includes("كوليجن") || content.includes("أوسبري") || content.includes("موكسلي") || content.includes("ستريكلاند")) {
+    tags.push("#AEW");
+  }
+  if (content.includes("tna") || content.includes("إمباكت") || content.includes("امباكت")) {
+    tags.push("#TNA");
+  }
+
+  tags.push("#Wrestling");
+  return tags.join(" ");
+}
+
+function buildFacebookCaption(title: string, text?: string): string {
+  const DIVIDER = "\n\n──────────────\n\n";
+  const cleanTitle = title.trim();
+  const cleanText = (text || "").trim();
+  const hashtags = generateSocialHashtags(title, text);
+
+  const header = `🔴 ${cleanTitle}`;
+  const snippet = cleanText ? `📌 ${cleanText}` : "";
+  const engagement = `💬 رابط الخبر والتفاصيل الكاملة ستجدونه في أول تعليق بالأسفل 👇\nما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
+  const footer = `🌐 تابعوا أحدث أخبار وتغطيات عروض المصارعة لحظة بلحظة عبر موقعنا: arab-wrestling.com\n\n${hashtags}`;
+
+  const parts = [header];
+  if (snippet) parts.push(snippet);
+  parts.push(engagement);
+  parts.push(footer);
+  return parts.join(DIVIDER);
+}
+
+function buildInstagramCaption(title: string, text?: string): string {
+  const DIVIDER = "\n\n──────────────\n\n";
+  const cleanTitle = title.trim();
+  const cleanText = (text || "").trim();
+  const hashtags = generateSocialHashtags(title, text);
+
+  const header = `💥 ${cleanTitle}`;
+  const snippet = cleanText ? `📝 ${cleanText}` : "";
+  const footer = `🔗 التفاصيل الكاملة وتغطية الخبر متوفرة الآن عبر موقعنا الرسمي (الرابط في البايو 👆)\nأو بالبحث في جوجل عن "عرب راسلنج"\n\n${hashtags}`;
+
+  const parts = [header];
+  if (snippet) parts.push(snippet);
+  parts.push(footer);
+  return parts.join(DIVIDER);
+}
+
 
 // Initialize VAPID Keys for Web Push Notifications
 const VAPID_FILE = path.join(STATE_DIR, "vapid.json");
@@ -506,7 +558,7 @@ async function refreshFacebookLinkPreview(url: string, pageToken: string): Promi
 // and puts the full article URL in the first comment for maximum organic reach.
 async function postToFacebook(data: { title: string; text?: string; fullText?: string; url: string; imageUrl?: string; kind?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const caption = buildFacebookCaption(data.title, data.text);
 
   try {
     const pageToken = await getPageAccessToken();
@@ -597,7 +649,7 @@ async function postToInstagram(data: { title: string; text?: string; url: string
   const safeImageUrl = await prepareInstagramImage(data.imageUrl);
   if (!safeImageUrl) return { ok: false, skipped: true };
 
-  const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
+  const caption = buildInstagramCaption(data.title, data.text);
 
   try {
     const pageToken = await getPageAccessToken();
