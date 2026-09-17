@@ -94,8 +94,8 @@ function buildFacebookCaption(title: string, text?: string): string {
 
   const header = `🔴 ${cleanTitle}`;
   const snippet = cleanText ? `📌 ${cleanText}` : "";
-  const engagement = `💬 رابط الخبر والتفاصيل الكاملة ستجدونه في أول تعليق بالأسفل 👇\nما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
-  const footer = `🌐 تابعوا أحدث أخبار وتغطيات عروض المصارعة لحظة بلحظة عبر موقعنا: arab-wrestling.com\n\n${hashtags}`;
+  const engagement = `💬 ما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
+  const footer = `🔍 للتفاصيل والتغطية الكاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
@@ -112,10 +112,12 @@ function buildInstagramCaption(title: string, text?: string): string {
 
   const header = `💥 ${cleanTitle}`;
   const snippet = cleanText ? `📝 ${cleanText}` : "";
-  const footer = `🔗 التفاصيل الكاملة وتغطية الخبر متوفرة الآن عبر موقعنا الرسمي (الرابط في البايو 👆)\nأو بالبحث في جوجل عن "عرب راسلنج"\n\n${hashtags}`;
+  const engagement = `💬 شاركونا آراءكم وتوقعاتكم في التعليقات! 🔥`;
+  const footer = `🔍 للتفاصيل والتغطية الكاملة:\nابحث في جوجل عن "عرب راسلنج" أو اضغط على الرابط في البايو 👆\n(arab-wrestling.com)\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
+  parts.push(engagement);
   parts.push(footer);
   return parts.join(DIVIDER);
 }
@@ -797,7 +799,7 @@ async function pollBufferPostUntilResolved(
 // Posts to Facebook via Buffer — reverted from the brief direct-Graph-API
 // experiment. Direct posting worked technically (Graph API accepted the
 // posts, they appeared on the Page) but stayed invisible to the public
-// Posts to Facebook directly via Meta Graph API (photo post without outbound link for maximum organic reach)
+// Posts to Facebook directly via Meta Graph API (photo post without outbound link for maximum organic reach and SEO brand authority)
 async function postToFacebookDirect(
   env: Env,
   key: string,
@@ -805,7 +807,6 @@ async function postToFacebookDirect(
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) return { ok: false, skipped: true };
 
-  const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
   const caption = buildFacebookCaption(data.title, data.text);
 
   try {
@@ -833,22 +834,6 @@ async function postToFacebookDirect(
 
     const result: any = await res.json().catch(() => ({ __unparsed: true }));
     if (result.id || result.post_id) {
-      // Main post succeeded! Attempt to post article link in the first comment
-      if (rawUrl) {
-        try {
-          const targetPostId = result.post_id || result.id;
-          await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${targetPostId}/comments`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              message: `رابط الخبر والتفاصيل الكاملة عبر موقعنا:\n${rawUrl}`,
-              access_token: pageToken,
-            }),
-          });
-        } catch (commentErr) {
-          console.warn("[Facebook] Could not add link comment:", commentErr);
-        }
-      }
       return { ok: true, result };
     }
 

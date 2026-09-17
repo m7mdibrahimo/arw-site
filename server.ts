@@ -102,8 +102,8 @@ function buildFacebookCaption(title: string, text?: string): string {
 
   const header = `🔴 ${cleanTitle}`;
   const snippet = cleanText ? `📌 ${cleanText}` : "";
-  const engagement = `💬 رابط الخبر والتفاصيل الكاملة ستجدونه في أول تعليق بالأسفل 👇\nما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
-  const footer = `🌐 تابعوا أحدث أخبار وتغطيات عروض المصارعة لحظة بلحظة عبر موقعنا: arab-wrestling.com\n\n${hashtags}`;
+  const engagement = `💬 ما رأيكم بهذا الخبر؟ شاركونا توقعاتكم وآراءكم في التعليقات! 🔥`;
+  const footer = `🔍 للتفاصيل والتغطية الكاملة:\nابحث في جوجل عن "عرب راسلنج" أو تفضل بزيارة موقعنا الرسمي: arab-wrestling.com\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
@@ -120,10 +120,12 @@ function buildInstagramCaption(title: string, text?: string): string {
 
   const header = `💥 ${cleanTitle}`;
   const snippet = cleanText ? `📝 ${cleanText}` : "";
-  const footer = `🔗 التفاصيل الكاملة وتغطية الخبر متوفرة الآن عبر موقعنا الرسمي (الرابط في البايو 👆)\nأو بالبحث في جوجل عن "عرب راسلنج"\n\n${hashtags}`;
+  const engagement = `💬 شاركونا آراءكم وتوقعاتكم في التعليقات! 🔥`;
+  const footer = `🔍 للتفاصيل والتغطية الكاملة:\nابحث في جوجل عن "عرب راسلنج" أو اضغط على الرابط في البايو 👆\n(arab-wrestling.com)\n\n${hashtags}`;
 
   const parts = [header];
   if (snippet) parts.push(snippet);
+  parts.push(engagement);
   parts.push(footer);
   return parts.join(DIVIDER);
 }
@@ -550,12 +552,8 @@ async function refreshFacebookLinkPreview(url: string, pageToken: string): Promi
   }
 }
 
-// Posts a photo directly to the Facebook Page's timeline, with the full
-// article title + body text as the caption — no link included. This is an
-// experiment to see whether Facebook's reduced organic reach for posts
-// containing outbound links (a well-documented anti-spam behavior) was
-// Posts a photo directly to the Facebook Page's timeline without outbound link in caption,
-// and puts the full article URL in the first comment for maximum organic reach.
+// Posts a photo directly to the Facebook Page's timeline without outbound link in caption or comments,
+// driving users via Google Brand Search ("عرب راسلنج") for maximum organic reach and SEO authority.
 async function postToFacebook(data: { title: string; text?: string; fullText?: string; url: string; imageUrl?: string; kind?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
   const caption = buildFacebookCaption(data.title, data.text);
@@ -578,21 +576,6 @@ async function postToFacebook(data: { title: string; text?: string; fullText?: s
     const result = await res.json().catch(() => ({}));
     if (result.id || result.post_id) {
       console.log(`[Facebook] Post published: ${data.title}`);
-      if (data.url) {
-        try {
-          const targetId = result.post_id || result.id;
-          await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${targetId}/comments`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              message: `رابط الخبر والتفاصيل الكاملة عبر موقعنا:\n${data.url}`,
-              access_token: pageToken
-            })
-          });
-        } catch (commentErr) {
-          console.warn("[Facebook] Could not add link comment:", commentErr);
-        }
-      }
       return { ok: true, result };
     }
     console.error("[Facebook] Post failed:", result);
