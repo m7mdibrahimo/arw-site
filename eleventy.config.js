@@ -172,6 +172,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("isoDuration", isoDuration);
   eleventyConfig.addNunjucksFilter("isoDuration", isoDuration);
 
+  // بيحول مدة الفيديو إلى ثوانٍ رقمية (مثل 7200) المطلوبة في خريطة فيديوهات جوجل
+  const durationSeconds = function(str) {
+    if (!str) return null;
+    const parts = str.toString().split(":").map(function(n){ return parseInt(n, 10) || 0; });
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    if (parts.length === 2) return parts[0] * 60 + parts[1];
+    if (parts.length === 1) return parts[0];
+    return null;
+  };
+  eleventyConfig.addFilter("durationSeconds", durationSeconds);
+  eleventyConfig.addNunjucksFilter("durationSeconds", durationSeconds);
+
   // بيحول أي رابط صورة/ملف لرابط مطلق كامل (لو كان نسبي زي /content/images/x.jpg)
   const absUrl = function(url) {
     if (!url) return "";

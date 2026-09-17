@@ -1,0 +1,37 @@
+---
+permalink: /video-sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+{%- for item in collections.allContent %}
+{%- if item.data.servers and item.data.servers.length %}
+{%- set pageUrl = "https://arab-wrestling.com" + (item.url | cleanUrl) %}
+{%- set thumbUrl = (item.data.image | absUrl) if item.data.image else "https://arab-wrestling.com/assets/logo.png" %}
+{%- set videoTitle = (item.data.headline or item.data.title) | escape %}
+{%- set videoDesc = (item.data.description or (videoTitle + " - مشاهدة وتحميل العرض مترجم بجودة عالية على موقع عرب راسلنج.")) | escape %}
+  <url>
+    <loc>{{ pageUrl }}</loc>
+    <video:video>
+      <video:thumbnail_loc>{{ thumbUrl }}</video:thumbnail_loc>
+      <video:title>{{ videoTitle | truncate(100) }}</video:title>
+      <video:description>{{ videoDesc | truncate(2048) }}</video:description>
+      <video:player_loc>{{ item.data.servers[0].url }}</video:player_loc>
+      <video:publication_date>{{ item.date.toISOString() }}</video:publication_date>
+      {%- set sec = item.data.duration | durationSeconds %}
+      {%- if sec %}
+      <video:duration>{{ sec }}</video:duration>
+      {%- endif %}
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+      {%- if item.data.tags and item.data.tags.length %}
+      {%- for t in item.data.tags.slice(0, 5) %}
+      <video:tag>{{ t | escape }}</video:tag>
+      {%- endfor %}
+      {%- endif %}
+    </video:video>
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>
