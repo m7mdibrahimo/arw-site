@@ -15,6 +15,10 @@
   Pragma: no-cache
 
 /content/images/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
+  X-Content-Type-Options: nosniff
+
+/img/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
 
