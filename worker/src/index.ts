@@ -608,6 +608,17 @@ function detectBufferRateLimit(result: any): boolean {
   return false;
 }
 
+function extractBufferRateLimitDuration(result: any): number {
+  if (Array.isArray(result?.errors)) {
+    for (const err of result.errors) {
+      if (err?.extensions?.window === "24h") return 24 * 60 * 60 * 1000;
+      if (err?.extensions?.window === "12h") return 12 * 60 * 60 * 1000;
+      if (err?.extensions?.window === "1h") return 60 * 60 * 1000;
+    }
+  }
+  return 24 * 60 * 60 * 1000;
+}
+
 async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): Promise<number> {
   try {
     const { state } = await githubReadState(env);
@@ -617,11 +628,7 @@ async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): P
   }
 }
 
-async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x"): Promise<void> {
-  await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
-}
-
-async function setBufferRateLimitCooldown(env: Env, durationMs: number = 30 * 60 * 1000): Promise<void> {
+async function setPlatformCooldown(env: Env, platform: "facebook" | "x", durationMs: number): Promise<void> {
   const now = Date.now();
   const until = now + durationMs;
 
@@ -633,23 +640,21 @@ async function setBufferRateLimitCooldown(env: Env, durationMs: number = 30 * 60
     } catch (e) {
       return;
     }
-    const fbExisting = state.cooldowns?.facebook || 0;
-    const xExisting = state.cooldowns?.x || 0;
-    if (fbExisting >= until - 60_000 && xExisting >= until - 60_000) return;
+    const existing = state.cooldowns?.[platform] || 0;
+    if (existing >= until - 60_000) return;
 
     state.cooldowns = {
       ...state.cooldowns,
-      facebook: Math.max(fbExisting, until),
-      x: Math.max(xExisting, until),
+      [platform]: Math.max(existing, until),
     };
     const write = await githubWriteState(
       env,
       state,
       sha,
-      `chore(publish): pause Buffer channels until ${new Date(until).toISOString()} (rate limit / quota cooldown)`
+      `chore(publish): pause ${platform} until ${new Date(until).toISOString()} (rate limit cooldown)`
     );
     if (write.ok) {
-      console.log(`[Buffer] paused facebook and x until ${new Date(until).toISOString()}`);
+      console.log(`[Publish] paused ${platform} until ${new Date(until).toISOString()}`);
       return;
     }
     if (write.conflict) {
@@ -658,6 +663,15 @@ async function setBufferRateLimitCooldown(env: Env, durationMs: number = 30 * 60
     }
     return;
   }
+}
+
+async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x"): Promise<void> {
+  const durationMs = platform === "facebook" ? 2 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
+  await setPlatformCooldown(env, platform, durationMs);
+}
+
+async function setBufferRateLimitCooldown(env: Env, durationMs: number = 24 * 60 * 60 * 1000): Promise<void> {
+  await setPlatformCooldown(env, "x", durationMs);
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -717,8 +731,8 @@ async function pollBufferPostUntilResolved(
       error { message }
     }
   }`;
-  for (let attempt = 0; attempt < 5; attempt++) {
-    await new Promise((r) => setTimeout(r, 3000));
+  for (let attempt = 0; attempt < 2; attempt++) {
+    await new Promise((r) => setTimeout(r, 4000));
     try {
       const res = await fetch("https://api.buffer.com", {
         method: "POST",
@@ -739,7 +753,7 @@ async function pollBufferPostUntilResolved(
 // Posts to Facebook via Buffer — reverted from the brief direct-Graph-API
 // experiment. Direct posting worked technically (Graph API accepted the
 // posts, they appeared on the Page) but stayed invisible to the public
-// Posts to Facebook directly via Meta Graph API (now live and published)
+// Posts to Facebook directly via Meta Graph API (photo post without outbound link for maximum organic reach)
 async function postToFacebookDirect(
   env: Env,
   key: string,
@@ -752,49 +766,9 @@ async function postToFacebookDirect(
 
   try {
     const pageToken = await getPageAccessToken(env);
-
-    // Link Post (Interactive Card): When an article URL is present, publish to /feed
-    // with `link`. Facebook automatically scrapes the page's Open Graph tags (og:image,
-    // og:title, og:description) and renders the interactive preview card with the full-width
-    // featured image. Clicking anywhere on the card/image takes users directly to the article.
-    if (rawUrl) {
-      let encodedUrl = rawUrl;
-      try {
-        encodedUrl = new URL(rawUrl).toString();
-      } catch (e) {}
-
-      const endpoint = `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
-      const body = {
-        message: caption,
-        link: encodedUrl,
-        access_token: pageToken,
-      };
-
-      let res: Response;
-      try {
-        res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
-      } catch (e) {
-        return { ok: false, ambiguous: true };
-      }
-
-      const result: any = await res.json().catch(() => ({ __unparsed: true }));
-      if (result.id || result.post_id) return { ok: true, result };
-
-      const errCode = result?.error?.code;
-      const errSubcode = result?.error?.error_subcode;
-      const isThrottled = [4, 17, 32, 613].includes(errCode) || errSubcode === 2207051;
-      if (isThrottled) await setPlatformDailyLimitCooldown(env, "facebook");
-      if (result.__unparsed) return { ok: false, result, ambiguous: true };
-
-      console.warn("[Facebook] Direct Link Post error, falling back to photo:", result);
-    }
-
-    // Fallback: Photo post if no URL was provided or if link post returned an error
     const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
+
+    // Direct Photo Post (or feed post if no image) — NO link in main post body for maximum reach
     const endpoint = imageUrl
       ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
       : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
@@ -812,8 +786,27 @@ async function postToFacebookDirect(
     } catch (e) {
       return { ok: false, ambiguous: true };
     }
+
     const result: any = await res.json().catch(() => ({ __unparsed: true }));
-    if (result.id || result.post_id) return { ok: true, result };
+    if (result.id || result.post_id) {
+      // Main post succeeded! Attempt to post article link in the first comment
+      if (rawUrl) {
+        try {
+          const targetPostId = result.post_id || result.id;
+          await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${targetPostId}/comments`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              message: `رابط الخبر والتفاصيل الكاملة عبر موقعنا:\n${rawUrl}`,
+              access_token: pageToken,
+            }),
+          });
+        } catch (commentErr) {
+          console.warn("[Facebook] Could not add link comment:", commentErr);
+        }
+      }
+      return { ok: true, result };
+    }
 
     const errCode = result?.error?.code;
     const errSubcode = result?.error?.error_subcode;
@@ -1096,7 +1089,8 @@ async function postToXViaBuffer(
       postId = result?.data?.createPost?.post?.id;
       if (!postId) {
         if (detectBufferRateLimit(result)) {
-          await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
+          const dur = extractBufferRateLimitDuration(result);
+          await setBufferRateLimitCooldown(env, dur);
         }
         return { ok: false, result };
       }
@@ -1114,7 +1108,8 @@ async function postToXViaBuffer(
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
   if (!outcome.ok && detectBufferRateLimit(outcome.raw)) {
-    await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
+    const dur = extractBufferRateLimitDuration(outcome.raw);
+    await setBufferRateLimitCooldown(env, dur);
   }
   return { ok: !!outcome.ok, result: outcome.raw };
 }
@@ -1293,8 +1288,9 @@ async function runWatcherPoll(env: Env): Promise<void> {
   const minDate = env.WATCHER_MIN_DATE ? new Date(env.WATCHER_MIN_DATE).getTime() : 0;
 
   let state: PublishState;
+  let currentSha: string | null = null;
   try {
-    ({ state } = await githubReadState(env));
+    ({ sha: currentSha, state } = await githubReadState(env));
   } catch (e) {
     return;
   }
@@ -1333,7 +1329,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
         state.facebook[key] = now;
         state.instagram[key] = now;
         state.x[key] = now;
-        await githubWriteState(env, state, `social shield: skip single-match spoiler ${key}`).catch(() => {});
+        await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;
       }
     }

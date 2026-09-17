@@ -502,28 +502,45 @@ async function refreshFacebookLinkPreview(url: string, pageToken: string): Promi
 // article title + body text as the caption — no link included. This is an
 // experiment to see whether Facebook's reduced organic reach for posts
 // containing outbound links (a well-documented anti-spam behavior) was
-// part of why posts weren't showing up for logged-out visitors; a native
-// photo post keeps people on Facebook and typically gets normal reach.
+// Posts a photo directly to the Facebook Page's timeline without outbound link in caption,
+// and puts the full article URL in the first comment for maximum organic reach.
 async function postToFacebook(data: { title: string; text?: string; fullText?: string; url: string; imageUrl?: string; kind?: string }): Promise<{ ok: boolean; result?: any; skipped?: boolean }> {
   if (!FACEBOOK_PAGE_ID || !FACEBOOK_PAGE_ACCESS_TOKEN) return { ok: false, skipped: true };
-  // Link post: Facebook auto-generates the preview card (image/title/desc)
-  // from the article's og: meta tags, showing a clickable thumbnail + link
-  // together — the original, first working format, same idea as Telegram
-  // (title + short blurb + link) rather than a plain uploaded photo.
   const caption = `${data.title}\n\n${data.text || ""}`.trim() + SOCIAL_FOLLOW_LINE;
 
   try {
     const pageToken = await getPageAccessToken();
-    await refreshFacebookLinkPreview(data.url, pageToken);
 
-    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/feed`, {
+    const endpoint = data.imageUrl
+      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/photos`
+      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${FACEBOOK_PAGE_ID}/feed`;
+    const body = data.imageUrl
+      ? { url: data.imageUrl, caption, access_token: pageToken }
+      : { message: caption, access_token: pageToken };
+
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: caption, link: data.url, access_token: pageToken })
+      body: JSON.stringify(body)
     });
     const result = await res.json().catch(() => ({}));
-    if (result.id) {
-      console.log(`[Facebook] Link post published: ${data.title}`);
+    if (result.id || result.post_id) {
+      console.log(`[Facebook] Post published: ${data.title}`);
+      if (data.url) {
+        try {
+          const targetId = result.post_id || result.id;
+          await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${targetId}/comments`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              message: `رابط الخبر والتفاصيل الكاملة عبر موقعنا:\n${data.url}`,
+              access_token: pageToken
+            })
+          });
+        } catch (commentErr) {
+          console.warn("[Facebook] Could not add link comment:", commentErr);
+        }
+      }
       return { ok: true, result };
     }
     console.error("[Facebook] Post failed:", result);
