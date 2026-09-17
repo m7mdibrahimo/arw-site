@@ -1086,6 +1086,7 @@ function isStoryWorthy(item: { title: string; kind?: string }): boolean {
   if (item.kind === "show" || item.kind === "recap") return true;
   const title = (item.title || "").trim();
   if (isResultsArticle(title)) return true;
+  if (/\b(?:مترجم|كامل|ملخص|تغطية|مشاهدة عرض)\b/i.test(title)) return true;
   if (/^(?:عاجل|رسمياً|مفاجأة|صدمة|تتويج|تاريخي)\b/i.test(title)) return true;
   return false;
 }
@@ -1584,7 +1585,8 @@ async function runWatcherPoll(env: Env): Promise<void> {
       // to Instagram and Facebook, spaced by at least 3 hours to prevent algorithmic story-spam.
       if (item.image && isStoryWorthy(item)) {
         const lastStory = state.lastStoryAt || 0;
-        const STORY_COOLDOWN_MS = 3 * 60 * 60 * 1000;
+        const isMajorShow = item.kind === "show" || item.kind === "recap";
+        const STORY_COOLDOWN_MS = isMajorShow ? 30 * 60 * 1000 : 3 * 60 * 60 * 1000;
         if (now - lastStory >= STORY_COOLDOWN_MS) {
           try {
             const igStoryPromise = postToInstagramStory(env, { imageUrl: item.image }).catch(() => ({ ok: false }));
