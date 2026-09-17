@@ -585,6 +585,12 @@ const extraTests: TestCase[] = [
   { description: "Tony Schiavone standalone كيفاني", input: "أكد كيفاني أن النزال كان في غاية الإثارة", expectedContains: "شيفاني", forbidden: ["كيفاني"] },
   { description: "Tony Schiavone typo سكيافوني", input: "تصريحات توني سكيافوني حول كواليس العرض", expectedContains: "توني شيفاني", forbidden: ["سكيافوني"] },
   { description: "Tony Schiavone typo شيافوني", input: "المعلق توني شيافوني في طاولة التعليق", expectedContains: "توني شيفاني", forbidden: ["شيافوني"] },
+  { description: "New Level English", input: "The match will see the New Level defend titles", expectedContains: "نيو ليفل", forbidden: ["New Level"] },
+  { description: "New Level typo نيوليف", input: "يستعد فريق نيوليف للدفاع عن اللقب", expectedContains: "نيو ليفل", forbidden: ["نيوليف"] },
+  { description: "The Demand English", input: "against The Demand in title bout", expectedContains: "ذا ديماند", forbidden: ["The Demand"] },
+  { description: "The Demand typo ذا دييماند", input: "ضد منافسيهم في فريق ذا دييماند", expectedContains: "ذا ديماند", forbidden: ["دييماند"] },
+  { description: "Purge أفادت مصادرنا الخاصة بأن", input: "أفادت مصادرنا الخاصة بأن مواجهة مرتقبة قد تم تحديدها", expectedContains: "تقارير صحفية", forbidden: ["مصادرنا"] },
+  { description: "Purge مصادرنا لموقع عرب راسلنج", input: "أفادت مصادرنا الخاصة لموقع عرب راسلنج أن النزال رسمي", expectedContains: "تقارير صحفية", forbidden: ["مصادرنا"] },
 ];
 
 for (let j = 0; j < extraTests.length; j++) {

@@ -319,8 +319,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\*?Fightful\*?/gi, "التقارير الصحفية")
 
     // 4.1 Strict purge of "مصادرنا الخاصة" / "مصادرنا" claim (as instructed by user)
-    .replace(arWord("(?:أفادت|افادت|أكدت|اكدت|كشفت|أوضحت|اوضحت|ذكرت)\\s+(?:مصادرنا|مصادرنا\\s+الخاصة|مصادرنا\\s+الخاصه)\\s+(?:بأن|بان|أن|ان)?"), "كشفت تقارير صحفية أن")
-    .replace(arWord("(?:مصادرنا\\s+الخاصة|مصادرنا\\s+الخاصه|مصادرنا)"), "تقارير صحفية")
+    .replace(/(?:و\s*)?(?:أفادت|افادت|أكدت|اكدت|كشفت|أوضحت|اوضحت|ذكرت|علمت)\s+(?:مصادرنا\s+الخاص[ةه]|مصادرنا)(?:\s+(?:في|لدى|لموقع)?\s*(?:موقع\s+)?عرب\s*راسلنج)?\s+(?:بأن|بان|أن|ان)?\s*/gi, "كشفت تقارير صحفية أن ")
+    .replace(/(?:مصادرنا\s+الخاص[ةه]|مصادرنا)/gi, "التقارير الصحفية")
+    .replace(/(?:في|لدى|لموقع)\s+موقع\s+عرب\s*راسلنج/gi, "")
 
     // 5. Enforce Arabic names for Wrestlers (convert English wrestler names, abbreviations and acronyms to standard Arabic)
     // 5.1 Initials & Acronyms
@@ -625,6 +626,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bBang\s+Bang\s+Gang\b/gi, "بانغ بانغ غانغ")
     .replace(/\bThe\s+Conglomeration\b/gi, "كونغلوميريشن")
     .replace(/\bThe\s+Demand\b/gi, "ذا ديماند")
+    .replace(arWord("ذا\\s*د[ي]+ماند"), "ذا ديماند")
+    .replace(/\bNew\s+Level\b/gi, "نيو ليفل")
+    .replace(arWord("نيوليف(?:ل)?"), "نيو ليفل")
     .replace(/\bBlackpool\s+Combat\s+Club\b/gi, "بلاكبول كومبات كلوب")
     .replace(/\bDeath\s+Triangle\b/gi, "ديث ترايانغل")
     .replace(/\bHouse\s+of\s+Black\b/gi, "هاوس أوف بلاك")
@@ -651,10 +655,25 @@ export function sanitizeWrestlingTerms(text: string): string {
 // Helper to remove repetitive clickbait / cliché prefixes (e.g. "تصريحات نارية..", "صدمة مدوية..")
 function cleanHeadlineClichés(title: string): string {
   if (!title) return title;
-  return title
+  let cleaned = title
     .replace(/^(?:تصريحات\s*نارية|صدمة\s*مدوية|اعترافات\s*صادمة|ليلة\s*نارية|مفاجأة\s*مدوية|مفاجأة\s*كبرى|كارثة\s*حقيقية|فضيحة\s*مدوية|عاجل|حصرياً|خاص)\s*[:.،\-–—]+\s*/i, "")
     .replace(/^(?:تصريح\s*ناري|تصريحات\s*ساخنة|تصريحات\s*صادمة|اعترافات\s*نارية|صدمة\s*كبرى)\s*[:.،\-–—]+\s*/i, "")
-    .trim();
+    // Purge fake sources claims from headlines if any
+    .replace(/(?:و\s*)?(?:أفادت|افادت|أكدت|اكدت|كشفت|أوضحت|اوضحت|ذكرت|علمت)\s+مصادرنا(?:\s+الخاص[ةه])?(?:\s+(?:في|لدى|لموقع)?\s*(?:موقع\s+)?عرب\s*راسلنج)?\s+(?:بأن|بان|أن|ان)?\s*[:.،\-–—]?\s*/gi, "")
+    .replace(/مصادرنا\s+الخاص[ةه]/gi, "تقارير صحفية")
+    .replace(/مصادرنا/gi, "تقارير صحفية");
+
+  // Upcoming Show Rule: Convert raw numeric dates for upcoming weekly shows into "القادم"
+  // (Applies to news & previews, never to past show results starting with "نتائج عرض")
+  if (!cleaned.startsWith("نتائج عرض")) {
+    cleaned = cleaned
+      .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, " القادم")
+      .replace(/\s*في\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))/g, " القادم")
+      .replace(/القادم\s+القادم/g, "القادم")
+      .replace(/عرض\s+عرض/g, "عرض");
+  }
+
+  return cleaned.trim();
 }
 
 // Helper to call Gemini with retry, quota protection & multi-key fallback
@@ -1645,7 +1664,7 @@ async function processPost(post: any, customDate?: Date | string, bypassSpoilerF
   const targetFilePath = path.join(NEWS_DIR, targetFileName);
 
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
-  const markdownContent = `---
+  let markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}
 date: ${iso}
@@ -1659,6 +1678,12 @@ layout: post-layout.njk
 ---
 ${finalBody}
 `;
+
+  // Absolute fail-safe guarantee: Never allow fake source claims to reach saved news files
+  markdownContent = markdownContent
+    .replace(/(?:و\s*)?(?:أفادت|افادت|أكدت|اكدت|كشفت|أوضحت|اوضحت|ذكرت|علمت)\s+مصادرنا(?:\s+الخاص[ةه])?(?:\s+(?:في|لدى|لموقع)?\s*(?:موقع\s+)?عرب\s*راسلنج)?\s+(?:بأن|بان|أن|ان)?\s*/gi, "كشفت تقارير صحفية أن ")
+    .replace(/مصادرنا\s+الخاص[ةه]/gi, "التقارير الصحفية")
+    .replace(/مصادرنا/gi, "التقارير الصحفية");
 
   fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
   console.log(`[Watcher] Successfully published fresh news file: ${targetFilePath}`);
