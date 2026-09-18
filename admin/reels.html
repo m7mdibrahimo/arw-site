@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>🎬 استوديو الريلز والسوشيال ميديا | عرب راسلنج</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+<link rel="icon" type="image/png" href="/favicon.png?v=3" />
+<link rel="shortcut icon" href="/favicon.ico?v=3" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+<style>
+  :root {
+    --bg: #0b0d13;
+    --card: #141822;
+    --card-hover: #1b202e;
+    --border: #232938;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --accent: #8b5cf6;
+    --accent-hover: #a78bfa;
+    --pink: #ec4899;
+    --red: #ef4444;
+    --green: #10b981;
+    --gold: #f59e0b;
+    --blue: #3b82f6;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    min-height: 100vh; padding-bottom: 80px;
+  }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11, 13, 19, 0.94); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-title { font-size: 17px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+  .brand-badge {
+    font-size: 10.5px; font-weight: 800; padding: 4px 10px; border-radius: 20px;
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%); color: #fff;
+    letter-spacing: 0.5px;
+  }
+  nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  nav a {
+    color: var(--muted); text-decoration: none; font-size: 13px; padding: 6px 14px;
+    border-radius: 8px; border: 1px solid var(--border); transition: .15s; font-weight: 600;
+  }
+  nav a:hover { color: var(--text); background: var(--card); border-color: #3b4458; }
+  nav a.active {
+    background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(236,72,153,0.2) 100%);
+    color: #c084fc; border-color: #a855f7;
+  }
+
+  main { max-width: 1240px; margin: 0 auto; padding: 24px 20px; }
+
+  /* Top Info Hero Banner */
+  .hero-card {
+    background: linear-gradient(180deg, #181c29 0%, #121520 100%);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 26px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  }
+  .hero-content h2 {
+    font-size: 20px; font-weight: 800; margin-bottom: 6px; display: flex; align-items: center; gap: 10px;
+  }
+  .hero-content p {
+    color: var(--muted); font-size: 13.5px; line-height: 1.6; max-width: 780px;
+  }
+  .hero-stats {
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: #0d1017; border: 1px solid #232938; border-radius: 10px;
+    padding: 10px 16px; text-align: center; min-width: 105px;
+  }
+  .stat-chip .val { font-size: 20px; font-weight: 900; color: #a78bfa; display: block; }
+  .stat-chip .lbl { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+
+  /* Filter Section */
+  .controls-bar {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .controls-row-top {
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .search-wrap {
+    flex: 1; min-width: 260px; position: relative;
+  }
+  .search-input {
+    width: 100%; background: #0c0f16; border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 16px; padding-left: 36px; color: #fff;
+    font-size: 13.5px; transition: border-color .15s;
+  }
+  .search-input:focus { outline: none; border-color: var(--accent); }
+  .search-icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); pointer-events: none; font-size: 14px;
+  }
+  .select-filter {
+    background: #0c0f16; border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 14px; color: #fff; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .select-filter:focus { outline: none; border-color: var(--accent); }
+
+  .controls-row-bottom {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px;
+  }
+  .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .pill-btn {
+    background: #0c0f16; border: 1px solid var(--border); color: var(--muted);
+    padding: 6px 14px; border-radius: 20px; font-size: 12.5px; cursor: pointer;
+    font-weight: 600; transition: .15s;
+  }
+  .pill-btn:hover { color: var(--text); border-color: #3e485e; }
+  .pill-btn.active {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+
+  /* Pagination Bar */
+  .pagination-wrap {
+    display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted);
+  }
+  .page-btn {
+    background: #0c0f16; border: 1px solid var(--border); color: var(--text);
+    padding: 5px 12px; border-radius: 8px; cursor: pointer; font-weight: 700;
+  }
+  .page-btn:hover:not(:disabled) { background: #1e2433; border-color: #475569; }
+  .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Cards Grid */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px; margin-bottom: 30px;
+  }
+
+  .content-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s;
+    position: relative;
+  }
+  .content-card:hover {
+    transform: translateY(-3px); border-color: #3b4458;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+  }
+  .content-card.has-reel {
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+  .content-card.has-reel:hover {
+    border-color: #a855f7;
+  }
+
+  .card-thumb-wrap {
+    position: relative; width: 100%; aspect-ratio: 16/9; background: #0c0e14; overflow: hidden;
+  }
+  .card-thumb {
+    width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease;
+  }
+  .content-card:hover .card-thumb { transform: scale(1.04); }
+
+  .badge-category {
+    position: absolute; top: 10px; right: 10px; z-index: 2;
+    padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 700;
+    color: #fff; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+  }
+  .badge-category.news { background: rgba(239, 68, 68, 0.85); }
+  .badge-category.show { background: rgba(59, 130, 246, 0.85); }
+  .badge-category.recap { background: rgba(245, 158, 11, 0.85); }
+
+  .badge-reel-status {
+    position: absolute; bottom: 10px; left: 10px; z-index: 2;
+    padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; gap: 5px; backdrop-filter: blur(8px);
+  }
+  .badge-reel-status.ready {
+    background: rgba(16, 185, 129, 0.9); color: #fff;
+    box-shadow: 0 2px 8px rgba(16,185,129,0.5);
+  }
+  .badge-reel-status.not-ready {
+    background: rgba(30, 41, 59, 0.85); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .card-body {
+    padding: 14px 16px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;
+  }
+  .card-meta-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11.5px; color: var(--muted);
+  }
+  .fed-tag {
+    padding: 2px 7px; border-radius: 5px; font-weight: 700; font-size: 10.5px;
+    background: #1e2433; color: #cbd5e1;
+  }
+  .fed-wwe { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+  .fed-aew { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+  .fed-tna { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+
+  .card-title {
+    font-size: 14px; font-weight: 700; line-height: 1.45; color: #fff;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex; gap: 8px; align-items: center; margin-top: auto;
+  }
+  .btn-open-reel {
+    flex: 1; border: none; padding: 9px 14px; border-radius: 9px;
+    font-size: 13px; font-weight: 700; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; gap: 6px; transition: .15s;
+  }
+  .btn-open-reel.ready {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+    color: #fff; box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+  }
+  .btn-open-reel.ready:hover {
+    background: linear-gradient(135deg, #9f75ff 0%, #7579f6 100%);
+    transform: translateY(-1px);
+  }
+  .btn-open-reel.not-ready {
+    background: #1e2433; color: #cbd5e1; border: 1px solid #2d3648;
+  }
+  .btn-open-reel.not-ready:hover {
+    background: #283042; color: #fff; border-color: var(--accent);
+  }
+
+  /* Dedicated Modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px); z-index: 999; align-items: center; justify-content: center;
+    padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #11141c; border: 1px solid #272f42; border-radius: 18px;
+    width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto;
+    padding: 22px 24px; color: #fff; box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+    position: relative; direction: rtl;
+  }
+  .btn-close-modal {
+    position: absolute; top: 18px; left: 18px; background: #1e2433; border: 1px solid #2f384c;
+    color: #94a3b8; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+    font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    transition: .15s;
+  }
+  .btn-close-modal:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+  .modal-header {
+    margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    padding-left: 36px;
+  }
+  .modal-header-meta {
+    display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); margin-bottom: 6px;
+  }
+  .modal-title {
+    font-size: 16px; font-weight: 800; line-height: 1.4; color: #f8fafc;
+  }
+
+  /* Player Section */
+  .modal-player-wrap {
+    text-align: center; margin-bottom: 16px;
+  }
+  .video-frame {
+    max-width: 260px; margin: 0 auto; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7); border: 2px solid var(--accent);
+    background: #000;
+  }
+  .video-frame video {
+    width: 100%; aspect-ratio: 9/16; display: block; background: #000;
+  }
+
+  .video-tools {
+    display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap;
+  }
+  .tool-btn {
+    background: #191f2c; border: 1px solid #2d364a; color: #cbd5e1;
+    padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: .15s;
+  }
+  .tool-btn:hover { background: #232b3d; color: #fff; border-color: #44516d; }
+  .tool-btn.dl { background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.4); color: #6ee7b7; }
+  .tool-btn.dl:hover { background: #10b981; color: #fff; }
+
+  /* Social Publish Box */
+  .social-publish-card {
+    background: #151a24; border: 1px solid #2c384d; border-radius: 12px;
+    padding: 16px; margin-bottom: 16px;
+  }
+  .social-publish-header {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+  }
+  .social-publish-title {
+    font-size: 14px; font-weight: 700; color: #60a5fa; display: flex; align-items: center; gap: 6px;
+  }
+  .social-publish-badge {
+    font-size: 11px; background: rgba(59,130,246,0.2); color: #93c5fd;
+    padding: 2px 8px; border-radius: 6px; font-weight: 600;
+  }
+  .social-desc {
+    font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 12px;
+  }
+  .platforms-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; font-size: 12.5px;
+  }
+  .platform-check {
+    display: flex; align-items: center; gap: 8px; background: #0e1219;
+    padding: 8px 12px; border-radius: 8px; border: 1px solid #232938; cursor: pointer;
+    user-select: none; transition: .15s;
+  }
+  .platform-check:hover { background: #161c28; border-color: #3b4458; }
+  .platform-check input { accent-color: #3b82f6; width: 16px; height: 16px; cursor: pointer; }
+
+  .btn-publish-all {
+    width: 100%; background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #fff; border: none; padding: 12px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 800; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; gap: 8px; transition: .15s;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.4);
+  }
+  .btn-publish-all:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    transform: translateY(-1px);
+  }
+  .btn-publish-all:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .publish-results {
+    margin-top: 12px; border-top: 1px solid #273142; padding-top: 10px;
+    display: flex; flex-direction: column; gap: 6px; font-size: 12px;
+  }
+
+  /* Generation Box */
+  .gen-box {
+    background: #141923; border: 1px solid #273142; border-radius: 12px;
+    padding: 16px; text-align: center;
+  }
+  .btn-trigger-gen {
+    width: 100%; background: linear-gradient(135deg, #ef4444 0%, #ec4899 100%);
+    color: #fff; border: none; padding: 13px 18px; border-radius: 10px;
+    font-size: 14px; font-weight: 800; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; gap: 8px; transition: .15s;
+    box-shadow: 0 4px 16px rgba(239,68,68,0.35);
+  }
+  .btn-trigger-gen:hover {
+    background: linear-gradient(135deg, #f87171 0%, #f472b6 100%);
+    transform: translateY(-1px);
+  }
+  .btn-trigger-gen:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .gen-status-text {
+    font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.5;
+  }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: #1e2433; border: 1px solid var(--border); color: #fff;
+    padding: 12px 24px; border-radius: 30px; font-size: 13.5px; z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6); opacity: 0; transition: all .3s ease; pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+  .toast.ok { border-color: var(--green); background: rgba(16, 185, 129, 0.25); backdrop-filter: blur(10px); }
+  .toast.err { border-color: var(--red); background: rgba(239, 68, 68, 0.25); backdrop-filter: blur(10px); }
+
+  .empty-state {
+    text-align: center; color: var(--muted); padding: 60px 0; font-size: 15px; grid-column: 1 / -1;
+  }
+  .spinner {
+    width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+    border-radius: 50%; display: inline-block; animation: spin .7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-title">
+      <span>🎬 استوديو الريلز والسوشيال ميديا</span>
+      <span style="color:var(--muted); font-weight:400;">| عرب راسلنج</span>
+    </div>
+    <span class="brand-badge">60FPS HYPERFRAMES</span>
+  </div>
+  <nav>
+    <a href="/admin/reels.html" class="active">🎬 استوديو الريلز</a>
+    <a href="/admin/pinned.html" style="background:#242938;color:#fbbf24;font-weight:700;">📌 إدارة المثبت</a>
+    <a href="/admin/publish.html">🚀 نشر السوشيال ميديا</a>
+    <a href="/admin/watcher.html">⚡ سحب الأخبار (الواتشر)</a>
+    <a href="/admin/">← لوحة التحكم</a>
+    <a href="/" target="_blank">🌐 زيارة الموقع</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Info Card -->
+  <div class="hero-card">
+    <div class="hero-content">
+      <h2>🎬 استوديو إنتاج ونشر الريلز والستوري (Reels & Stories Studio)</h2>
+      <p>
+        منصة الإنتاج الاحترافي لتصيير ونشر مقاطع الفيديو الرأسية (9:16) فائقة السلاسة (60fps) لجميع محتويات الموقع:
+        <strong>الأخبار، العروض الكاملة، والملخصات</strong>.
+        يمكنك توليد الفيديو سحابياً بضغطة زر واحدة، ثم نشره فوراً وبشكل يدوي تماماً على تليجرام وفيسبوك وإنستغرام.
+      </p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-chip">
+        <span class="val" id="statTotalItems">...</span>
+        <span class="lbl">إجمالي المحتوى</span>
+      </div>
+      <div class="stat-chip">
+        <span class="val" id="statReadyReels">...</span>
+        <span class="lbl">ريلز جاهز</span>
+      </div>
+      <div class="stat-chip">
+        <span class="val" style="color:#38bdf8;">60 FPS</span>
+        <span class="lbl">معدل الإطارات</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls & Filters Bar -->
+  <div class="controls-bar">
+    <div class="controls-row-top">
+      <div class="search-wrap">
+        <input type="text" class="search-input" id="searchInput" placeholder="ابحث في الأخبار، العروض، الملخصات بالاسم أو الاتحاد أو الكلمات المفتاحية..." oninput="onFilterChange()" />
+        <span class="search-icon">🔍</span>
+      </div>
+      <select class="select-filter" id="fedFilter" onchange="onFilterChange()">
+        <option value="all">جميع الاتحادات</option>
+        <option value="wwe">WWE</option>
+        <option value="aew">AEW</option>
+        <option value="tna">TNA</option>
+        <option value="ufc">UFC</option>
+        <option value="njpw">NJPW</option>
+        <option value="other">اتحادات أخرى</option>
+      </select>
+      <select class="select-filter" id="statusFilter" onchange="onFilterChange()">
+        <option value="all">حالة الريلز: الكل</option>
+        <option value="ready">🟢 الفيديوهات الجاهزة فقط</option>
+        <option value="unready">⚪ غير المولدة بعد</option>
+      </select>
+    </div>
+
+    <div class="controls-row-bottom">
+      <div class="filter-pills">
+        <button type="button" class="pill-btn active" data-kind="all" onclick="setKindFilter('all', this)">الكل</button>
+        <button type="button" class="pill-btn" data-kind="news" onclick="setKindFilter('news', this)">📰 الأخبار</button>
+        <button type="button" class="pill-btn" data-kind="show" onclick="setKindFilter('show', this)">🏆 العروض الكاملة</button>
+        <button type="button" class="pill-btn" data-kind="recap" onclick="setKindFilter('recap', this)">⚡ الملخصات</button>
+      </div>
+
+      <div class="pagination-wrap">
+        <span id="pageCountInfo">صفحة 1 من 1</span>
+        <button class="page-btn" id="btnPrevPage" onclick="changePage(-1)" disabled>السابق</button>
+        <button class="page-btn" id="btnNextPage" onclick="changePage(1)" disabled>التالي</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid of Content -->
+  <div class="grid-container" id="cardsGrid">
+    <div class="empty-state">
+      <div class="spinner" style="margin-bottom:12px;"></div>
+      <div>جاري تحميل فهرس المحتوى ومكتبة الفيديوهات...</div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal: Reels Studio & Social Media Publishing -->
+<div class="modal-overlay" id="reelModal">
+  <div class="modal-box">
+    <button class="btn-close-modal" onclick="closeReelModal()" title="إغلاق">✕</button>
+
+    <div class="modal-header">
+      <div class="modal-header-meta">
+        <span id="modalFedBadge" class="fed-tag">WWE</span>
+        <span id="modalKindBadge" style="font-weight:700;">خبر</span>
+        <span id="modalDateBadge">• اليوم</span>
+      </div>
+      <h3 class="modal-title" id="modalTitle">عنوان الموضوع</h3>
+    </div>
+
+    <!-- Video Player Preview (when video is ready) -->
+    <div id="modalPlayerSection" style="display:none;" class="modal-player-wrap">
+      <div class="video-frame">
+        <video id="modalVideoPlayer" controls playsinline></video>
+      </div>
+      <div class="video-tools">
+        <a id="btnDownloadVideo" href="#" download class="tool-btn dl">
+          <span>⬇️ تحميل MP4</span>
+        </a>
+        <button class="tool-btn" onclick="copyVideoLink()">
+          <span>📋 نسخ الرابط</span>
+        </button>
+        <button class="tool-btn" onclick="triggerReelGeneration(true)">
+          <span>🔄 إعادة التوليد</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Social Publishing Panel (when video is ready) -->
+    <div id="modalSocialSection" style="display:none;" class="social-publish-card">
+      <div class="social-publish-header">
+        <div class="social-publish-title">
+          <span>🚀 النشر اليدوي على السوشيال ميديا</span>
+        </div>
+        <span class="social-publish-badge">بضغطة واحدة</span>
+      </div>
+      <p class="social-desc">
+        اختر المنصات التي ترغب في نشر هذا الريلز عليها فوراً وبشكل يدوي (لن يُنشر أي فيديو إلا بضغطك الشخصي):
+      </p>
+
+      <div class="platforms-grid">
+        <label class="platform-check">
+          <input type="checkbox" id="pubTg" checked />
+          <span>✈️ تليجرام (فيديو)</span>
+        </label>
+        <label class="platform-check">
+          <input type="checkbox" id="pubFbReel" checked />
+          <span>📘 فيسبوك ريلز</span>
+        </label>
+        <label class="platform-check">
+          <input type="checkbox" id="pubIgReel" checked />
+          <span>📸 إنستغرام ريلز</span>
+        </label>
+        <label class="platform-check">
+          <input type="checkbox" id="pubFbStory" checked />
+          <span>📘 فيسبوك ستوري</span>
+        </label>
+        <label class="platform-check">
+          <input type="checkbox" id="pubIgStory" checked />
+          <span>📸 إنستغرام ستوري</span>
+        </label>
+      </div>
+
+      <button id="btnPublishSocial" class="btn-publish-all" onclick="publishReelToSocial()">
+        <span>🚀 نشر الفيديو فوراً على المنصات المحددة</span>
+      </button>
+
+      <div id="publishResultsBox" class="publish-results" style="display:none;"></div>
+    </div>
+
+    <!-- Generation Section (when video is not generated, or during generation) -->
+    <div id="modalGenSection" class="gen-box">
+      <div id="modalPreviewCoverWrap" style="max-width:240px; margin:0 auto 14px; border-radius:12px; overflow:hidden; border:1px solid #2a3449;">
+        <img id="modalPreviewCover" src="" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block;" />
+      </div>
+
+      <button id="btnTriggerGen" class="btn-trigger-gen" onclick="triggerReelGeneration(false)">
+        <span>⚡ توليد فيديو ريلز (HyperFrames 60fps)</span>
+      </button>
+      <div class="gen-status-text" id="modalGenStatus">
+        سيتم تصيير فيديو رأسي بدقة 1080x1920 وبمعدل 60 إطاراً في الثانية، شاملاً العناوين والشعار الحركي لموقع عرب راسلنج.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toastEl"></div>
+
+<script>
+  const API_BASE = 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
+  const PAGE_SIZE = 24;
+
+  let allItems = [];
+  let videoManifest = [];
+  let filteredItems = [];
+  let currentPage = 1;
+  let activeKind = 'all';
+  let currentItem = null;
+  let pollTimer = null;
+
+  const toastEl = document.getElementById('toastEl');
+  const cardsGrid = document.getElementById('cardsGrid');
+  const searchInput = document.getElementById('searchInput');
+  const fedFilter = document.getElementById('fedFilter');
+  const statusFilter = document.getElementById('statusFilter');
+  const pageCountInfo = document.getElementById('pageCountInfo');
+  const btnPrevPage = document.getElementById('btnPrevPage');
+  const btnNextPage = document.getElementById('btnNextPage');
+  const statTotalItems = document.getElementById('statTotalItems');
+  const statReadyReels = document.getElementById('statReadyReels');
+
+  function showToast(msg, isOk = true) {
+    toastEl.textContent = msg;
+    toastEl.className = `toast show ${isOk ? 'ok' : 'err'}`;
+    setTimeout(() => { toastEl.className = 'toast'; }, 3800);
+  }
+
+  // Calculate standard cleanSlug from item
+  function getItemSlug(item) {
+    if (item.inputPath) {
+      return item.inputPath.split('/').pop().replace(/\.md$/, '').slice(0, 45);
+    }
+    const cleanUrl = (item.url || '').replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news|shows|recaps|nostalgia)\//, '').replace(/\.html$/, '').replace(/^\/+/, '');
+    return cleanUrl.slice(0, 45);
+  }
+
+  function findReelForSlug(slug) {
+    if (!slug || !Array.isArray(videoManifest)) return null;
+    const clean = slug.toLowerCase();
+    return videoManifest.find(v => {
+      const f = (v.filename || '').toLowerCase();
+      const s = (v.cleanSlug || '').toLowerCase();
+      return f.includes(clean) || clean.includes(s) || s.includes(clean);
+    });
+  }
+
+  async function init() {
+    try {
+      // 1. Fetch videos manifest
+      try {
+        const resManifest = await fetch('/videos/manifest.json?_cb=' + Date.now());
+        if (resManifest.ok) {
+          videoManifest = await resManifest.json();
+        }
+      } catch (e) {
+        console.warn('Could not fetch /videos/manifest.json, trying /api/videos/list:', e);
+      }
+
+      if (!videoManifest || !videoManifest.length) {
+        try {
+          const resList = await fetch('/api/videos/list?_cb=' + Date.now());
+          if (resList.ok) {
+            const data = await resList.json();
+            videoManifest = data.videos || [];
+          }
+        } catch (e) {}
+      }
+
+      statReadyReels.textContent = (videoManifest && videoManifest.length) ? videoManifest.length : '0';
+
+      // 2. Fetch search-index.json for all content
+      const res = await fetch('/search-index.json?_cb=' + Date.now());
+      if (!res.ok) throw new Error('فشل جلب فهرس الموقع');
+      const data = await res.json();
+      allItems = (Array.isArray(data) ? data : [])
+        .filter(it => it.title && it.url)
+        .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+      statTotalItems.textContent = allItems.length;
+
+      onFilterChange();
+    } catch (err) {
+      console.error('Init error:', err);
+      cardsGrid.innerHTML = `<div class="empty-state">❌ تعذر تحميل البيانات: ${err.message}</div>`;
+      showToast('تعذر تحميل فهرس المحتوى', false);
+    }
+  }
+
+  function setKindFilter(kind, btn) {
+    activeKind = kind;
+    document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    currentPage = 1;
+    onFilterChange();
+  }
+
+  function onFilterChange() {
+    const q = (searchInput.value || '').trim().toLowerCase();
+    const fed = fedFilter.value.toLowerCase();
+    const status = statusFilter.value;
+
+    filteredItems = allItems.filter(item => {
+      // Kind filter
+      if (activeKind !== 'all' && item.kind !== activeKind) return false;
+
+      // Federation filter
+      if (fed !== 'all') {
+        const itemFed = (item.federation || '').toLowerCase();
+        if (fed === 'other') {
+          if (['wwe', 'aew', 'tna', 'ufc', 'njpw'].includes(itemFed)) return false;
+        } else if (!itemFed.includes(fed)) {
+          return false;
+        }
+      }
+
+      // Status filter
+      const slug = getItemSlug(item);
+      const hasReel = !!findReelForSlug(slug);
+      if (status === 'ready' && !hasReel) return false;
+      if (status === 'unready' && hasReel) return false;
+
+      // Search query
+      if (q) {
+        const hay = `${item.title || ''} ${item.headline || ''} ${item.description || ''} ${(item.tags || []).join(' ')} ${item.federation || ''}`.toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+
+      return true;
+    });
+
+    currentPage = 1;
+    renderGrid();
+  }
+
+  function renderGrid() {
+    const total = filteredItems.length;
+    const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    pageCountInfo.textContent = `صفحة ${currentPage} من ${totalPages} (${total} موضوع)`;
+    btnPrevPage.disabled = currentPage <= 1;
+    btnNextPage.disabled = currentPage >= totalPages;
+
+    if (total === 0) {
+      cardsGrid.innerHTML = `<div class="empty-state">لا توجد محتويات تطابق خيارات البحث الحالية.</div>`;
+      return;
+    }
+
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const paged = filteredItems.slice(start, start + PAGE_SIZE);
+
+    cardsGrid.innerHTML = paged.map((item, idx) => {
+      const globalIdx = start + idx;
+      const slug = getItemSlug(item);
+      const reel = findReelForSlug(slug);
+      const hasReel = !!reel;
+      const fed = (item.federation || 'WWE').toLowerCase();
+      const fedClass = fed.includes('wwe') ? 'fed-wwe' : (fed.includes('aew') ? 'fed-aew' : (fed.includes('tna') ? 'fed-tna' : ''));
+      const kindClass = item.kind === 'news' ? 'news' : (item.kind === 'show' ? 'show' : 'recap');
+      const kindLabel = item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
+      const img = item.image ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/' + item.image) : '/content/images/jtct9rkqmcshcyh6.jpg';
+
+      let dateStr = '';
+      if (item.date) {
+        try {
+          const d = new Date(item.date);
+          dateStr = d.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', year: 'numeric' });
+        } catch (e) {}
+      }
+
+      return `
+        <div class="content-card ${hasReel ? 'has-reel' : ''}">
+          <div class="card-thumb-wrap" onclick="openReelModalByIndex(${globalIdx})" style="cursor:pointer;">
+            <img src="${img}" class="card-thumb" onerror="this.src='/content/images/jtct9rkqmcshcyh6.jpg'" loading="lazy" />
+            <span class="badge-category ${kindClass}">${kindLabel}</span>
+            <span class="badge-reel-status ${hasReel ? 'ready' : 'not-ready'}">
+              ${hasReel ? '▶️ ريلز جاهز 60fps' : '⚪ غير مولد'}
+            </span>
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-meta-top">
+                <span class="fed-tag ${fedClass}">${item.federation || 'WWE'}</span>
+                <span>${dateStr}</span>
+              </div>
+              <h4 class="card-title" title="${item.title}" style="margin-top:6px;">${item.title}</h4>
+            </div>
+            <div class="card-footer">
+              <button class="btn-open-reel ${hasReel ? 'ready' : 'not-ready'}" onclick="openReelModalByIndex(${globalIdx})">
+                ${hasReel ? '▶️ فتح الاستوديو والنشر' : '⚡ توليد ريلز الآن'}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function changePage(delta) {
+    currentPage += delta;
+    renderGrid();
+    window.scrollTo({ top: 180, behavior: 'smooth' });
+  }
+
+  // Modal Handling
+  window.openReelModalByIndex = async function(index) {
+    const item = filteredItems[index];
+    if (!item) return;
+    currentItem = item;
+
+    const slug = getItemSlug(item);
+    const reel = findReelForSlug(slug);
+
+    document.getElementById('modalTitle').textContent = item.title;
+    document.getElementById('modalFedBadge').textContent = item.federation || 'WWE';
+    document.getElementById('modalKindBadge').textContent = item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
+
+    let dateStr = '';
+    if (item.date) {
+      try {
+        const d = new Date(item.date);
+        dateStr = d.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', year: 'numeric' });
+      } catch (e) {}
+    }
+    document.getElementById('modalDateBadge').textContent = dateStr ? `• ${dateStr}` : '';
+
+    const img = item.image ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/' + item.image) : '/content/images/jtct9rkqmcshcyh6.jpg';
+    document.getElementById('modalPreviewCover').src = img;
+
+    document.getElementById('reelModal').classList.add('open');
+    document.getElementById('publishResultsBox').style.display = 'none';
+    document.getElementById('publishResultsBox').innerHTML = '';
+
+    if (reel) {
+      setupModalForReadyVideo(reel.videoUrl);
+    } else {
+      setupModalForUnreadyVideo();
+      // Also perform live check in case it was just generated
+      checkLiveVideoExistence(slug);
+    }
+  };
+
+  function setupModalForReadyVideo(videoUrl) {
+    const fullVideoUrl = videoUrl.startsWith('http') ? videoUrl : window.location.origin + (videoUrl.startsWith('/') ? '' : '/') + videoUrl;
+    const player = document.getElementById('modalVideoPlayer');
+    player.src = fullVideoUrl;
+
+    document.getElementById('btnDownloadVideo').href = fullVideoUrl;
+    document.getElementById('modalPlayerSection').style.display = 'block';
+    document.getElementById('modalSocialSection').style.display = 'block';
+    document.getElementById('modalGenSection').style.display = 'none';
+
+    if (currentItem) currentItem.readyVideoUrl = fullVideoUrl;
+  }
+
+  function setupModalForUnreadyVideo() {
+    const player = document.getElementById('modalVideoPlayer');
+    player.pause();
+    player.src = '';
+
+    document.getElementById('modalPlayerSection').style.display = 'none';
+    document.getElementById('modalSocialSection').style.display = 'none';
+    document.getElementById('modalGenSection').style.display = 'block';
+
+    const btnGen = document.getElementById('btnTriggerGen');
+    btnGen.disabled = false;
+    btnGen.innerHTML = '<span>⚡ توليد فيديو ريلز (HyperFrames 60fps)</span>';
+    document.getElementById('modalGenStatus').textContent = 'الفيديو غير مولد بعد. انقر على الزر لتصيير فيديو رأسي 60fps احترافي عبر خوادم السحاب.';
+  }
+
+  async function checkLiveVideoExistence(slug) {
+    try {
+      const res = await fetch(`/api/videos/check?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.exists && data.videoUrl) {
+          // Add to manifest in-memory
+          videoManifest.push({
+            filename: data.filename,
+            videoUrl: data.videoUrl,
+            size: data.size,
+            mtime: Date.now(),
+            cleanSlug: slug
+          });
+          statReadyReels.textContent = videoManifest.length;
+          setupModalForReadyVideo(data.videoUrl);
+          renderGrid();
+        }
+      }
+    } catch (e) {}
+  }
+
+  window.closeReelModal = function() {
+    document.getElementById('reelModal').classList.remove('open');
+    const player = document.getElementById('modalVideoPlayer');
+    player.pause();
+    player.src = '';
+    if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeReelModal();
+  });
+
+  window.copyVideoLink = function() {
+    if (!currentItem || !currentItem.readyVideoUrl) return;
+    navigator.clipboard.writeText(currentItem.readyVideoUrl).then(() => {
+      showToast('📋 تم نسخ رابط الفيديو المباشر إلى الحافظة!');
+    });
+  };
+
+  window.triggerReelGeneration = async function(isRegen = false) {
+    if (!currentItem) return;
+    const slug = getItemSlug(currentItem);
+    const postUrl = currentItem.url;
+    const inputPath = currentItem.inputPath || '';
+
+    const btn = document.getElementById('btnTriggerGen');
+    btn.disabled = true;
+    btn.innerHTML = `<span class="spinner"></span> <span>جاري إرسال طلب التوليد للخوادم السحابية...</span>`;
+    document.getElementById('modalGenStatus').innerHTML = `🚀 تم إطلاق مهمة التوليد السحابية عبر GitHub Actions.<br>يتم الآن تصيير الإطارات (60fps) وتحزيم الفيديو بدقة 1080x1920. يستغرق ذلك عادة من 40 إلى 80 ثانية.`;
+
+    // Show generation box even if regen
+    if (isRegen) {
+      document.getElementById('modalPlayerSection').style.display = 'none';
+      document.getElementById('modalSocialSection').style.display = 'none';
+      document.getElementById('modalGenSection').style.display = 'block';
+    }
+
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const targetApi = isLocal ? '/api/videos/generate' : `${API_BASE}/api/videos/dispatch`;
+
+    try {
+      const res = await fetch(targetApi, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          slug: inputPath || slug,
+          file: inputPath || undefined,
+          postUrl: postUrl ? (postUrl.startsWith('http') ? postUrl : 'https://arabwrestling.org' + postUrl) : undefined,
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        showToast('🚀 تم إطلاق مهمة التوليد بنجاح! جاري المتابعة تلقائياً...');
+        startPollingForReel(slug);
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = '<span>⚡ إعادة المحاولة</span>';
+        document.getElementById('modalGenStatus').innerHTML = `<span style="color:#f87171;">❌ خطأ في الإرسال: ${data.error || 'تعذر التواصل مع الخادم'}</span>`;
+        showToast('❌ تعذر إطلاق مهمة التوليد', false);
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = '<span>⚡ إعادة المحاولة</span>';
+      document.getElementById('modalGenStatus').innerHTML = `<span style="color:#f87171;">❌ خطأ في الاتصال: ${err.message}</span>`;
+      showToast('❌ خطأ في الاتصال', false);
+    }
+  };
+
+  function startPollingForReel(slug) {
+    if (pollTimer) clearInterval(pollTimer);
+    let attempts = 0;
+    const maxAttempts = 35; // ~3.5 minutes
+
+    pollTimer = setInterval(async () => {
+      attempts++;
+      document.getElementById('modalGenStatus').innerHTML = `⏳ جاري فحص حالة الفيديو على الخوادم... (محاولة ${attempts}/${maxAttempts})`;
+
+      try {
+        const res = await fetch(`/api/videos/check?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.exists && data.videoUrl) {
+            clearInterval(pollTimer);
+            pollTimer = null;
+            showToast('🎉 تم تصيير وتجهيز الفيديو بنجاح!');
+            videoManifest.push({
+              filename: data.filename,
+              videoUrl: data.videoUrl,
+              size: data.size,
+              mtime: Date.now(),
+              cleanSlug: slug
+            });
+            statReadyReels.textContent = videoManifest.length;
+            setupModalForReadyVideo(data.videoUrl);
+            renderGrid();
+            return;
+          }
+        }
+      } catch (e) {}
+
+      if (attempts >= maxAttempts) {
+        clearInterval(pollTimer);
+        pollTimer = null;
+        document.getElementById('modalGenStatus').innerHTML = `⚠️ استغرقت المهمة وقتاً أطول من المعتاد. يمكنك تحديث الصفحة بعد دقيقة أو النقر على "إعادة المحاولة".`;
+        document.getElementById('btnTriggerGen').disabled = false;
+        document.getElementById('btnTriggerGen').innerHTML = '<span>🔄 فحص الجاهزية مرة أخرى</span>';
+      }
+    }, 6000);
+  }
+
+  // Social Publishing
+  window.publishReelToSocial = async function() {
+    if (!currentItem || !currentItem.readyVideoUrl) {
+      showToast('⚠️ لا يوجد فيديو جاهز للنشر بعد!', false);
+      return;
+    }
+
+    const platforms = [];
+    if (document.getElementById('pubTg')?.checked) platforms.push('telegram');
+    if (document.getElementById('pubFbReel')?.checked) platforms.push('facebook_reel');
+    if (document.getElementById('pubFbStory')?.checked) platforms.push('facebook_story');
+    if (document.getElementById('pubIgReel')?.checked) platforms.push('instagram_reel');
+    if (document.getElementById('pubIgStory')?.checked) platforms.push('instagram_story');
+
+    if (platforms.length === 0) {
+      showToast('⚠️ يُرجى اختيار منصة واحدة على الأقل للنشر!', false);
+      return;
+    }
+
+    const btn = document.getElementById('btnPublishSocial');
+    const resBox = document.getElementById('publishResultsBox');
+
+    btn.disabled = true;
+    btn.innerHTML = `<span class="spinner"></span> <span>جاري نشر الفيديو على ${platforms.length} منصة...</span>`;
+    resBox.style.display = 'block';
+    resBox.innerHTML = '<div style="color:#94a3b8;">⏳ جاري إرسال الفيديو عبر واجهات الربط الرسمية للمنصات المختارة...</div>';
+
+    const postFullUrl = currentItem.url ? (currentItem.url.startsWith('http') ? currentItem.url : 'https://arabwrestling.org' + currentItem.url) : '';
+
+    try {
+      const res = await fetch(`${API_BASE}/api/videos/publish-social`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          videoUrl: currentItem.readyVideoUrl,
+          slug: getItemSlug(currentItem),
+          title: currentItem.title,
+          postUrl: postFullUrl,
+          platforms,
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+      btn.disabled = false;
+      btn.innerHTML = '<span>🚀 نشر الفيديو فوراً على المنصات المحددة</span>';
+
+      if (res.ok && data.results) {
+        let html = '';
+        const labels = {
+          telegram: '✈️ تليجرام',
+          facebook_reel: '📘 فيسبوك ريلز',
+          facebook_story: '📘 فيسبوك ستوري',
+          instagram_reel: '📸 إنستغرام ريلز',
+          instagram_story: '📸 إنستغرام ستوري'
+        };
+
+        let successCount = 0;
+        for (const [p, r] of Object.entries(data.results)) {
+          const name = labels[p] || p;
+          if (r.ok) {
+            successCount++;
+            html += `<div style="color:#4ade80; background:rgba(34,197,94,0.12); padding:8px 12px; border-radius:8px; display:flex; align-items:center; gap:8px;">✅ <strong>${name}</strong>: ${r.message || 'تم النشر بنجاح!'}</div>`;
+          } else {
+            html += `<div style="color:#f87171; background:rgba(239,68,68,0.12); padding:8px 12px; border-radius:8px; display:flex; align-items:center; gap:8px;">❌ <strong>${name}</strong>: ${r.error || r.message || 'فشل النشر'}</div>`;
+          }
+        }
+        resBox.innerHTML = html;
+
+        if (successCount > 0) {
+          showToast(`🎉 تم نشر الفيديو بنجاح على ${successCount} منصة!`);
+        } else {
+          showToast('❌ فشل النشر على المنصات المحددة، راجع التفاصيل', false);
+        }
+      } else {
+        resBox.innerHTML = `<div style="color:#f87171; background:rgba(239,68,68,0.12); padding:8px 12px; border-radius:8px;">❌ خطأ: ${data.error || 'فشل الاتصال بخدمة النشر'}</div>`;
+        showToast('❌ حدث خطأ أثناء النشر', false);
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = '<span>🚀 نشر الفيديو فوراً على المنصات المحددة</span>';
+      resBox.innerHTML = `<div style="color:#f87171; background:rgba(239,68,68,0.12); padding:8px 12px; border-radius:8px;">❌ خطأ في الاتصال: ${err.message}</div>`;
+      showToast('❌ تعذر الاتصال بالسيرفر', false);
+    }
+  };
+
+  // Run on page load
+  init();
+</script>
+
+</body>
+</html>

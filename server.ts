@@ -1532,11 +1532,11 @@ app.get("/api/videos/check", (req, res) => {
   const slug = String(req.query.slug || "").trim();
   if (!slug) return res.json({ exists: false });
 
-  const cleanSlug = slug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news\/)?/, "").replace(/\.html$/, "").slice(0, 45);
+  const cleanSlug = slug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news|shows|recaps|nostalgia)\//, "").replace(/\.html$/, "").slice(0, 45);
   if (!fs.existsSync(videosDistPath)) return res.json({ exists: false });
 
   const files = fs.readdirSync(videosDistPath);
-  const found = files.find(f => f.endsWith(".mp4") && f.includes(cleanSlug));
+  const found = files.find(f => f.endsWith(".mp4") && (f.includes(cleanSlug) || cleanSlug.includes(f.replace(/^reel-/, '').replace(/\.mp4$/, ''))));
   if (found) {
     const stat = fs.statSync(path.join(videosDistPath, found));
     return res.json({
@@ -1559,6 +1559,7 @@ app.get("/api/videos/list", (req, res) => {
       videoUrl: `/videos/${f}`,
       size: stat.size,
       mtime: stat.mtimeMs,
+      cleanSlug: f.replace(/^reel-/, '').replace(/\.mp4$/, ''),
     };
   }).sort((a, b) => b.mtime - a.mtime);
   res.json({ videos });
@@ -1566,32 +1567,52 @@ app.get("/api/videos/list", (req, res) => {
 
 app.post("/api/videos/generate", (req, res) => {
   const { slug, file } = req.body || {};
-  const newsDir = path.join(process.cwd(), "content", "news");
+  const contentDirs = [
+    path.join(process.cwd(), "content", "news"),
+    path.join(process.cwd(), "content", "shows"),
+    path.join(process.cwd(), "content", "recaps"),
+    path.join(process.cwd(), "content", "nostalgia"),
+    path.join(process.cwd(), "content", "nostalgia-series"),
+  ];
   let targetFile = "";
 
   if (file && fs.existsSync(file)) {
     targetFile = file;
-  } else if (file && fs.existsSync(path.join(newsDir, file))) {
-    targetFile = path.join(newsDir, file);
-  } else if (slug) {
-    const cleanSlug = slug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news\/)?/, "").replace(/\.html$/, "");
-    if (fs.existsSync(newsDir)) {
-      const files = fs.readdirSync(newsDir).filter(f => f.endsWith(".md"));
-      const matched = files.find(f => f.includes(cleanSlug));
-      if (matched) {
-        targetFile = path.join(newsDir, matched);
+  } else if (file && fs.existsSync(path.resolve(process.cwd(), file))) {
+    targetFile = path.resolve(process.cwd(), file);
+  } else if (file) {
+    for (const d of contentDirs) {
+      if (fs.existsSync(path.join(d, file))) {
+        targetFile = path.join(d, file);
+        break;
       }
     }
   }
 
-  if (!targetFile && fs.existsSync(newsDir)) {
-    const files = fs.readdirSync(newsDir).filter(f => f.endsWith(".md"));
-    files.sort((a, b) => fs.statSync(path.join(newsDir, b)).mtimeMs - fs.statSync(path.join(newsDir, a)).mtimeMs);
-    if (files.length) targetFile = path.join(newsDir, files[0]);
+  if (!targetFile && slug) {
+    const cleanSlug = slug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news|shows|recaps|nostalgia)\//, "").replace(/\.html$/, "");
+    for (const d of contentDirs) {
+      if (!fs.existsSync(d)) continue;
+      const files = fs.readdirSync(d).filter(f => f.endsWith(".md"));
+      const matched = files.find(f => f.replace(/\.md$/, '').includes(cleanSlug) || cleanSlug.includes(f.replace(/\.md$/, '')));
+      if (matched) {
+        targetFile = path.join(d, matched);
+        break;
+      }
+    }
+  }
+
+  if (!targetFile) {
+    const newsDir = path.join(process.cwd(), "content", "news");
+    if (fs.existsSync(newsDir)) {
+      const files = fs.readdirSync(newsDir).filter(f => f.endsWith(".md"));
+      files.sort((a, b) => fs.statSync(path.join(newsDir, b)).mtimeMs - fs.statSync(path.join(newsDir, a)).mtimeMs);
+      if (files.length) targetFile = path.join(newsDir, files[0]);
+    }
   }
 
   if (!targetFile || !fs.existsSync(targetFile)) {
-    return res.status(404).json({ error: "News article not found" });
+    return res.status(404).json({ error: "Content item not found" });
   }
 
   const scriptPath = path.join(process.cwd(), "scripts", "generate-news-video.ts");

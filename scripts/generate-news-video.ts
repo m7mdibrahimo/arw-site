@@ -35,24 +35,55 @@ function parseFrontmatter(content: string): Record<string, string> {
   return data;
 }
 
-function getTargetNewsFile(input?: string): string {
+const CONTENT_DIRS = [
+  path.join(ROOT_DIR, 'content/news'),
+  path.join(ROOT_DIR, 'content/shows'),
+  path.join(ROOT_DIR, 'content/recaps'),
+  path.join(ROOT_DIR, 'content/nostalgia'),
+  path.join(ROOT_DIR, 'content/nostalgia-series'),
+];
+
+function getTargetContentFile(input?: string): string {
   if (input && fs.existsSync(input)) {
     return path.resolve(input);
   }
-  if (input && fs.existsSync(path.join(NEWS_DIR, input))) {
-    return path.join(NEWS_DIR, input);
+  if (input) {
+    const rawInput = input.trim();
+    // Strip domain and route prefixes
+    const clean = rawInput
+      .replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news|shows|recaps|nostalgia)\//, '')
+      .replace(/\.html$/, '')
+      .replace(/^\/+/, '');
+
+    // Check each content directory
+    for (const d of CONTENT_DIRS) {
+      if (!fs.existsSync(d)) continue;
+      const c1 = path.join(d, rawInput);
+      if (fs.existsSync(c1)) return c1;
+      const c2 = path.join(d, `${rawInput}.md`);
+      if (fs.existsSync(c2)) return c2;
+      const c3 = path.join(d, `${clean}.md`);
+      if (fs.existsSync(c3)) return c3;
+
+      const files = fs.readdirSync(d).filter(f => f.endsWith('.md'));
+      for (const f of files) {
+        const fNoExt = f.replace(/\.md$/, '');
+        if (fNoExt === clean || fNoExt.includes(clean) || clean.includes(fNoExt)) {
+          return path.join(d, f);
+        }
+      }
+    }
   }
-  // Find newest file in content/news
+
+  // Fallback: newest file in content/news
   const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith('.md'));
-  if (!files.length) throw new Error('No news files found in content/news');
-  files.sort((a, b) => {
-    return fs.statSync(path.join(NEWS_DIR, b)).mtimeMs - fs.statSync(path.join(NEWS_DIR, a)).mtimeMs;
-  });
+  if (!files.length) throw new Error('No content files found in content/news');
+  files.sort((a, b) => fs.statSync(path.join(NEWS_DIR, b)).mtimeMs - fs.statSync(path.join(NEWS_DIR, a)).mtimeMs);
   return path.join(NEWS_DIR, files[0]);
 }
 
 export async function generateNewsVideo(inputTarget?: string) {
-  const targetFile = getTargetNewsFile(inputTarget);
+  const targetFile = getTargetContentFile(inputTarget);
   console.log(`🎬 Processing News Post: ${path.basename(targetFile)}`);
 
   const raw = fs.readFileSync(targetFile, 'utf-8');
@@ -325,6 +356,8 @@ export async function generateNewsVideo(inputTarget?: string) {
   });
 
   console.log(`\n🎉 Success! Video generated at: ${outPath}`);
+  updateVideosManifest();
+
   return {
     success: true,
     videoUrl: `/videos/reel-${baseSlug}.mp4`,
@@ -332,6 +365,31 @@ export async function generateNewsVideo(inputTarget?: string) {
     filePath: outPath,
     title,
   };
+}
+
+export function updateVideosManifest() {
+  try {
+    if (!fs.existsSync(OUT_DIR)) {
+      fs.mkdirSync(OUT_DIR, { recursive: true });
+    }
+    const files = fs.readdirSync(OUT_DIR).filter(f => f.endsWith('.mp4'));
+    const manifest = files.map(f => {
+      const stat = fs.statSync(path.join(OUT_DIR, f));
+      return {
+        filename: f,
+        videoUrl: `/videos/${f}`,
+        size: stat.size,
+        mtime: stat.mtimeMs,
+        cleanSlug: f.replace(/^reel-/, '').replace(/\.mp4$/, ''),
+      };
+    }).sort((a, b) => b.mtime - a.mtime);
+    fs.writeFileSync(path.join(OUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
+    console.log(`📋 Updated videos manifest with ${manifest.length} videos.`);
+    return manifest;
+  } catch (err) {
+    console.error('⚠️ Could not update videos manifest:', err);
+    return [];
+  }
 }
 
 if (require.main === module || process.argv[1]?.endsWith('generate-news-video.ts')) {
