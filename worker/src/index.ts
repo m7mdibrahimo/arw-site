@@ -494,6 +494,7 @@ async function githubTriggerVideoWorkflow(env: Env, slug: string): Promise<{ ok:
     const txt = await res.text().catch(() => "");
     return { ok: false, status: res.status, error: txt };
   }
+  return { ok: true, status: res.status };
 }
 
 async function githubGetVideosManifest(env: Env): Promise<any[]> {
