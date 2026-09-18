@@ -566,6 +566,56 @@ module.exports = function(eleventyConfig) {
     });
   }
 
+  const getRelatedPosts = function(currentUrl, tags, federation, allContent, limit) {
+    if (!allContent || !Array.isArray(allContent)) return [];
+    const maxItems = (typeof limit === "number" && limit > 0) ? limit : 4;
+    const normUrl = (currentUrl || "").replace(/\/+$/, "");
+
+    const currentTags = Array.isArray(tags)
+      ? tags.map(t => String(t || "").trim().toLowerCase()).filter(Boolean)
+      : [];
+    const targetFed = (federation || "").toString().trim().toUpperCase();
+
+    const scored = [];
+
+    for (const item of allContent) {
+      if (!item || !item.url) continue;
+      const itemUrl = (item.url || "").replace(/\/+$/, "");
+      if (itemUrl === normUrl) continue;
+
+      let score = 0;
+      const itemFed = (item.data && item.data.federation || "").toString().trim().toUpperCase();
+      if (targetFed && itemFed && targetFed === itemFed) {
+        score += 3;
+      }
+
+      if (currentTags.length > 0 && item.data && Array.isArray(item.data.tags)) {
+        const itemTags = item.data.tags.map(t => String(t || "").trim().toLowerCase());
+        for (const t of currentTags) {
+          if (t && itemTags.includes(t)) {
+            score += 5;
+          }
+        }
+      }
+
+      scored.push({
+        item,
+        score,
+        time: getItemTimestamp(item)
+      });
+    }
+
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return b.time - a.time;
+    });
+
+    return scored.slice(0, maxItems).map(s => s.item);
+  };
+  eleventyConfig.addFilter("getRelatedPosts", getRelatedPosts);
+  eleventyConfig.addNunjucksFilter("getRelatedPosts", getRelatedPosts);
+
+
   eleventyConfig.addCollection("shows", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/shows/*.md")
       .filter(item => isNotFuture(item) && !(item.data && item.data.nostalgia_series) && !(item.data && item.data.tags && (Array.isArray(item.data.tags) ? (item.data.tags.includes("nostalgia") || item.data.tags.includes("نوستالجيا")) : (item.data.tags === "nostalgia" || item.data.tags === "نوستالجيا"))))

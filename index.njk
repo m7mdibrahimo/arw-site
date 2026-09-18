@@ -9,6 +9,7 @@ permalink: "/index.html"
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -1162,6 +1163,36 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     padding-top: 6px !important;
   }
 }
+
+/* Weekly Schedule Styles */
+.schedule-section{ padding:28px 24px 36px; background:var(--bg); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.schedule-next-badge{ display:inline-flex; align-items:center; gap:8px; padding:6px 14px; background:rgba(235,179,56,0.12); border:1px solid rgba(235,179,56,0.3); border-radius:999px; font-size:12.5px; font-weight:800; color:var(--gold); }
+.pulse-indicator{ width:8px; height:8px; border-radius:50%; background:var(--gold); animation:schedule-pulse 1.8s infinite; }
+@keyframes schedule-pulse{ 0%{ transform:scale(0.9); opacity:0.6; } 50%{ transform:scale(1.3); opacity:1; } 100%{ transform:scale(0.9); opacity:0.6; } }
+.schedule-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-top:16px; }
+.schedule-card{ display:flex; flex-direction:column; justify-content:space-between; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; transition:all .28s cubic-bezier(.34,1.56,.64,1); position:relative; overflow:hidden; }
+.schedule-card:hover{ transform:translateY(-3px); border-color:var(--teal); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+.schedule-card.is-today{ border-color:var(--gold) !important; background:rgba(235,179,56,0.06); box-shadow:0 0 0 2px rgba(235,179,56,0.25), 0 8px 22px rgba(235,179,56,0.15); }
+.schedule-card.is-today::before{ content:'عرض الليلة'; position:absolute; top:0; left:0; right:0; background:linear-gradient(90deg, var(--gold), #f59e0b); color:#000; font-size:10px; font-weight:900; text-align:center; padding:2px 0; letter-spacing:0.5px; }
+.schedule-card.is-today .schedule-card-top{ margin-top:8px; }
+.schedule-card-top{ display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:8px; }
+.schedule-day{ font-weight:800; font-size:13px; color:var(--ink); }
+.schedule-fed{ font-size:10px; font-weight:900; padding:2px 6px; border-radius:4px; text-transform:uppercase; }
+.fed-wwe .schedule-fed{ background:rgba(199,59,44,0.15); color:#e11d48; }
+.fed-aew .schedule-fed{ background:rgba(212,160,23,0.18); color:#b45309; }
+.fed-tna .schedule-fed{ background:rgba(138,95,224,0.18); color:#7c3aed; }
+.schedule-show-name{ font-family:'Cairo',sans-serif; font-size:18px; font-weight:900; color:var(--ink); margin:4px 0 6px; }
+.schedule-timing{ display:flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); font-weight:600; }
+.schedule-link{ display:inline-block; font-size:11.5px; font-weight:700; color:var(--teal); text-decoration:none; margin-top:10px; padding-top:8px; border-top:1px dashed var(--line); transition:color .2s ease; }
+.schedule-link:hover{ color:var(--coral); }
+@media (max-width:1024px){
+  .schedule-grid{ grid-template-columns:repeat(3,1fr); gap:12px; }
+}
+@media (max-width:600px){
+  .schedule-grid{ grid-template-columns:repeat(2,1fr); gap:10px; }
+  .schedule-card{ padding:12px; }
+  .schedule-show-name{ font-size:16px; }
+}
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260917k">
 </head>
@@ -1330,6 +1361,99 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </div>
 </div>
 </section>
+
+<section class="content schedule-section" id="weekly-schedule">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="head-text">
+        <h2 style="color:var(--gold);">
+          <span class="dot" style="background:var(--gold)"></span>
+          جدول العروض الأسبوعية ومواعيد البث
+        </h2>
+        <p class="section-subtitle">مواعيد البث المباشر لأبرز عروض المصارعة بتوقيت مكة المكرمة والقاهرة</p>
+      </div>
+      <div class="schedule-next-badge" id="scheduleNextBadge">
+        <span class="pulse-indicator"></span>
+        <span id="scheduleNextText">جاري تحميل موعد العرض...</span>
+      </div>
+    </div>
+    <div class="schedule-grid reveal">
+      <div class="schedule-card fed-wwe" data-day="1">
+        <div class="schedule-card-top">
+          <span class="schedule-day">الاثنين</span>
+          <span class="schedule-fed">WWE</span>
+        </div>
+        <div class="schedule-show-name">RAW</div>
+        <div class="schedule-timing">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          فجر الثلاثاء 3:00 ص
+        </div>
+        <a href="/federation/wwe/" class="schedule-link">عروض RAW &larr;</a>
+      </div>
+      <div class="schedule-card fed-wwe" data-day="2">
+        <div class="schedule-card-top">
+          <span class="schedule-day">الثلاثاء</span>
+          <span class="schedule-fed">WWE</span>
+        </div>
+        <div class="schedule-show-name">NXT</div>
+        <div class="schedule-timing">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          فجر الأربعاء 3:00 ص
+        </div>
+        <a href="/federation/wwe/" class="schedule-link">عروض NXT &larr;</a>
+      </div>
+      <div class="schedule-card fed-aew" data-day="3">
+        <div class="schedule-card-top">
+          <span class="schedule-day">الأربعاء</span>
+          <span class="schedule-fed">AEW</span>
+        </div>
+        <div class="schedule-show-name">Dynamite</div>
+        <div class="schedule-timing">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          فجر الخميس 3:00 ص
+        </div>
+        <a href="/federation/aew/" class="schedule-link">عروض Dynamite &larr;</a>
+      </div>
+      <div class="schedule-card fed-tna" data-day="4">
+        <div class="schedule-card-top">
+          <span class="schedule-day">الخميس</span>
+          <span class="schedule-fed">TNA</span>
+        </div>
+        <div class="schedule-show-name">iMPACT</div>
+        <div class="schedule-timing">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          فجر الجمعة 3:00 ص
+        </div>
+        <a href="/federation/tna/" class="schedule-link">عروض TNA &larr;</a>
+      </div>
+      <div class="schedule-card fed-wwe" data-day="5">
+        <div class="schedule-card-top">
+          <span class="schedule-day">الجمعة</span>
+          <span class="schedule-fed">WWE</span>
+        </div>
+        <div class="schedule-show-name">SmackDown</div>
+        <div class="schedule-timing">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          فجر السبت 3:00 ص
+        </div>
+        <a href="/federation/wwe/" class="schedule-link">عروض SmackDown &larr;</a>
+      </div>
+      <div class="schedule-card fed-aew" data-day="6">
+        <div class="schedule-card-top">
+          <span class="schedule-day">السبت</span>
+          <span class="schedule-fed">AEW</span>
+        </div>
+        <div class="schedule-show-name">Collision</div>
+        <div class="schedule-timing">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          فجر الأحد 3:00 ص
+        </div>
+        <a href="/federation/aew/" class="schedule-link">عروض Collision &larr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="content" id="full-shows" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
 <div class="wrap">
 <div class="section-head reveal">
@@ -1741,6 +1865,35 @@ ticking = true;
 
   updateSlide(0);
   startAutoplay();
+})();
+
+// Weekly Schedule Active Day & Next Show Indicator
+(function(){
+  try {
+    var now = new Date();
+    // Convert to Arab timezone (UTC+3 for KSA / UTC+2 Egypt)
+    var localOffsetMin = now.getTimezoneOffset(); // in minutes
+    var targetOffsetMin = -180; // UTC+3 in minutes
+    var arabTime = new Date(now.getTime() + (targetOffsetMin - localOffsetMin) * -60000);
+    var day = arabTime.getDay(); // 0 = Sun, 1 = Mon, 2 = Tue, 3 = Wed, 4 = Thu, 5 = Fri, 6 = Sat
+
+    var showNames = { 1: "WWE RAW", 2: "WWE NXT", 3: "AEW Dynamite", 4: "TNA iMPACT", 5: "WWE SmackDown", 6: "AEW Collision" };
+    var badgeText = document.getElementById('scheduleNextText');
+
+    var todayCard = document.querySelector('.schedule-card[data-day="' + day + '"]');
+    if (todayCard) {
+      todayCard.classList.add('is-today');
+      if (badgeText) {
+        badgeText.textContent = 'عرض الليلة: ' + (showNames[day] || '') + ' — فجر الغد 3:00 ص';
+      }
+    } else {
+      // Sunday (0) -> Next is Monday RAW
+      var nextCard = document.querySelector('.schedule-card[data-day="1"]');
+      if (badgeText) {
+        badgeText.textContent = 'العرض القادم: WWE RAW (مساء الاثنين)';
+      }
+    }
+  } catch(e){}
 })();
 </script>
 </body>

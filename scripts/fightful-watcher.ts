@@ -88,11 +88,24 @@ function generateRandomImageName(): string {
   return result + ".jpg";
 }
 
+// Clean image URL by stripping tracking parameters (UTM, Facebook, Google query params)
+function cleanImageUrl(rawUrl: string): string {
+  try {
+    const u = new URL(rawUrl);
+    const paramsToDelete = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "fbclid", "gclid"];
+    paramsToDelete.forEach(p => u.searchParams.delete(p));
+    return u.toString();
+  } catch (e) {
+    return rawUrl;
+  }
+}
+
 // Download and optimize image using Sharp
 async function downloadAndOptimizeImage(imageUrl: string): Promise<string | null> {
   try {
-    console.log(`[Watcher] Downloading image: ${imageUrl}`);
-    const res = await fetch(imageUrl, {
+    const sanitizedUrl = cleanImageUrl(imageUrl);
+    console.log(`[Watcher] Downloading image: ${sanitizedUrl}`);
+    const res = await fetch(sanitizedUrl, {
       signal: AbortSignal.timeout(15000),
       headers: {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
@@ -653,7 +666,30 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("بطولة\\s+(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)\\s+(?:للفرق|للزوجي)"), "بطولة العالم للزوجي");
 
   // Always strip all tashkeel / diacritics completely across all articles, titles, and tags
-  return removeTashkeel(cleaned);
+  return sanitizeAIWatermarks(removeTashkeel(cleaned));
+}
+
+/**
+ * Strips invisible Unicode characters, AI watermarking artifacts, zero-width spaces,
+ * bidirectional overrides, and exotic whitespace from text.
+ */
+export function sanitizeAIWatermarks(text: string): string {
+  if (!text || typeof text !== "string") return "";
+  return text
+    // 1. Remove invisible zero-width chars, soft hyphens, byte-order marks, and bidi override tags
+    .replace(/[\u200B-\u200D\uFEFF\u200E\u200F\u202A-\u202E\u2060-\u206F\u00AD]/g, "")
+    // 2. Normalize exotic unicode whitespace (non-breaking spaces, thin spaces, ideographic space) to standard space
+    .replace(/[\u00A0\u1680\u2000-\u200A\u202F\u205F\u3000]/g, " ")
+    // 3. Normalize curly / smart quotes to standard clean quotes
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
+    // 4. Remove typical AI-generated robotic fillers
+    .replace(/(?:في\s+الختام|ختاماً|ختاما|في\s+نهاية\s+المطاف|من\s+الجدير\s+بالذكر\s+أن|جدير\s+بالذكر\s+أن|تجدر\s+الإشارة\s+إلى\s+أن|تجدر\s+الإشارة\s+بان|تجدر\s+الاشارة\s+الى\s+ان)\s*[:،,]?\s*/gi, "")
+    // 5. Clean up multiple horizontal spaces (except newlines)
+    .replace(/[^\S\r\n]+/g, " ")
+    // 6. Clean up excessive blank lines (max 2 newlines)
+    .replace(/(\r\n|\r|\n){3,}/g, "\n\n")
+    .trim();
 }
 
 // Helper to remove repetitive clickbait / cliché prefixes (e.g. "تصريحات نارية..", "صدمة مدوية..")

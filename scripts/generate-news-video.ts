@@ -182,8 +182,11 @@ export async function generateNewsVideo(inputTarget?: string) {
       .brand-title {
         font-size: 36px;
         font-weight: 900;
-        color: #f59e0b;
+        background: linear-gradient(135deg, #f59e0b, #ef4444);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         letter-spacing: -0.5px;
+        filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
       }
 
       .media-container {
@@ -194,7 +197,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         height: 960px;
         border-radius: 36px;
         overflow: hidden;
-        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 0 2px rgba(255, 255, 255, 0.12);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.16);
         background: #151820;
         z-index: 10;
       }
@@ -209,22 +212,22 @@ export async function generateNewsVideo(inputTarget?: string) {
       .media-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(9, 12, 16, 0) 50%, rgba(9, 12, 16, 0.95) 100%);
+        background: linear-gradient(180deg, rgba(9, 12, 16, 0) 45%, rgba(9, 12, 16, 0.95) 100%);
       }
 
       .fed-tag {
         position: absolute;
         top: 30px;
         right: 30px;
-        background: rgba(15, 23, 42, 0.85);
-        backdrop-filter: blur(12px);
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(14px);
         border: 2px solid #f59e0b;
         color: #fef3c7;
         font-size: 26px;
         font-weight: 800;
         padding: 10px 24px;
         border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 158, 11, 0.25);
       }
 
       .content-box {
@@ -243,9 +246,9 @@ export async function generateNewsVideo(inputTarget?: string) {
       .headline {
         font-size: 50px;
         font-weight: 900;
-        line-height: 1.35;
+        line-height: 1.32;
         color: #ffffff;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8);
       }
 
       .subtext {
@@ -253,6 +256,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         font-weight: 600;
         color: #cbd5e1;
         line-height: 1.5;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
       }
 
       .bottom-cta {
@@ -264,11 +268,12 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(30, 41, 59, 0.7);
-        backdrop-filter: blur(16px);
-        border: 2px solid rgba(255, 255, 255, 0.15);
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(18px);
+        border: 2px solid rgba(56, 189, 248, 0.3);
         padding: 0 40px;
         border-radius: 28px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(56, 189, 248, 0.15);
         z-index: 20;
       }
 
@@ -283,6 +288,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         font-weight: 900;
         color: #38bdf8;
         letter-spacing: 0.5px;
+        text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
       }
     </style>
   </head>
