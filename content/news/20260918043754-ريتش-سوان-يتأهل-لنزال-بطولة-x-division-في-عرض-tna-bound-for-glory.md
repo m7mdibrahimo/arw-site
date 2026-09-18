@@ -1,0 +1,21 @@
+---
+federation: TNA
+title: "ريتش سوان يتأهل لنزال بطولة X Division في عرض TNA Bound For Glory"
+date: 2026-09-18T04:37:54.000+03:00
+source_id: 329022
+source_url: "https://www.fightful.com/wrestling/rich-swann-qualifies-for-tna-x-division-title-match-at-bound-for-glory/"
+single_match_result: true
+tags:
+  - TNA
+  - TNA Bound For Glory
+  - ريتش سوان
+  - TNA Wrestling
+  - تنسيقات المصارعة
+image: /content/images/o5augq4ze1jtg8bo.jpg
+layout: post-layout.njk
+---
+حجز المصارع ريتش سوان مقعده رسميا في نزال السداسي المثير على بطولة X Division الشاغرة في عرض TNA Bound For Glory المرتقب المقررة اقامته في الحادي عشر من شهر تشرين الاول اكتوبر المقبل.
+
+جاء تأهل ريتش سوان بعد تفوقه على منافسه ال جيه كليري في مواجهة تصفيات حماسية شهدت اداء قويا من الطرفين، لينضم رسميا الى قائمة المتنافسين التي تضم حتى الان كل من كيسي نافارو، فابيان ايشنر، سيدريك ألكسندر، بانتظار تحديد المصارعين اللذين سيشغلان المقعدين الاخيرين المتبقيين في النزال.
+
+وفي السياق ذاته، يبرز عرض TNA Bound For Glory بمواجهات كبرى اخرى على راسها نزال بطولة العالم بين البطل نيك نيميث وليون سلاتر، وسط ترقب جماهيري واسع لاكتمال باقي تفاصيل بطاقة النزالات في الايام القادمة.
