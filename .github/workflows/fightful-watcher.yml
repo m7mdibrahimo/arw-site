@@ -37,7 +37,7 @@ jobs:
 
       - name: Run Fightful Watcher
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || 'AQ.Ab8RN6KL8UF_W02V7MgbfG4Ne2FHWvzzlEOHHIfhfaBThj_igg' }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           if [ -n "${{ github.event.inputs.post_url }}" ]; then
             echo "Processing requested post URLs: ${{ github.event.inputs.post_url }}"
