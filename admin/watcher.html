@@ -1174,6 +1174,10 @@
     document.getElementById('reelPlayerWrap').style.display = 'none';
     document.getElementById('btnDownloadReel').style.display = 'none';
     document.getElementById('btnCopyReelLink').style.display = 'none';
+    const socSec = document.getElementById('reelSocialPublishSection');
+    if (socSec) socSec.style.display = 'none';
+    const socRes = document.getElementById('reelSocialResults');
+    if (socRes) { socRes.style.display = 'none'; socRes.innerHTML = ''; }
     document.getElementById('reelStatusText').innerHTML = '⏳ جاري فحص ما إذا كان هناك فيديو جاهز...';
 
     // Clean slug for direct video path
@@ -1196,6 +1200,7 @@
           dlBtn.style.display = 'block';
 
           document.getElementById('btnCopyReelLink').style.display = 'block';
+          if (socSec) socSec.style.display = 'block';
           document.getElementById('btnGenerateReel').innerHTML = '🔄 إعادة طلب تصيير الفيديو';
         } else {
           // If not static, try API check (e.g. on localhost)
@@ -1215,6 +1220,7 @@
                 dlBtn.style.display = 'block';
 
                 document.getElementById('btnCopyReelLink').style.display = 'block';
+                if (socSec) socSec.style.display = 'block';
                 document.getElementById('btnGenerateReel').innerHTML = '🔄 إعادة تصيير الفيديو من جديد';
               } else {
                 document.getElementById('reelStatusText').innerHTML = 'ℹ️ لم يتم توليد فيديو لهذا الخبر بعد. اضغط على الزر بالأسفل لتوليد فيديو 60fps فوراً.';
@@ -1262,7 +1268,7 @@
         if (r.ok && (data.success || data.videoUrl)) {
           if (data.videoUrl) {
             currentReelData.videoUrl = data.videoUrl;
-            document.getElementById('reelStatusText').innerHTML = '🎉 <strong>تم توليد الفيديو بنجاح! جاهز للمعاينة والتنزيل.</strong>';
+            document.getElementById('reelStatusText').innerHTML = '🎉 <strong>تم توليد الفيديو بنجاح! جاهز للمعاينة والتنزيل والنشر.</strong>';
             const vid = document.getElementById('reelPreviewVideo');
             vid.src = data.videoUrl;
             document.getElementById('reelPlayerWrap').style.display = 'block';
@@ -1273,6 +1279,8 @@
             dlBtn.style.display = 'block';
 
             document.getElementById('btnCopyReelLink').style.display = 'block';
+            const socSec = document.getElementById('reelSocialPublishSection');
+            if (socSec) socSec.style.display = 'block';
             btn.innerHTML = '🔄 إعادة توليد الفيديو';
             showToast('🎬 تم إنتاج فيديو الريلز بنجاح!');
           } else {
@@ -1295,10 +1303,100 @@
 
   window.copyReelLink = function() {
     if (!currentReelData.videoUrl) return;
-    const fullUrl = window.location.origin + currentReelData.videoUrl;
+    const fullUrl = currentReelData.videoUrl.startsWith('http')
+      ? currentReelData.videoUrl
+      : window.location.origin + currentReelData.videoUrl;
     navigator.clipboard.writeText(fullUrl).then(() => {
       showToast('📋 تم نسخ رابط الفيديو المباشر إلى الحافظة!');
     });
+  };
+
+  window.publishReelToSocial = async function() {
+    if (!currentReelData.videoUrl) {
+      showToast('⚠️ لا يوجد فيديو جاهز للنشر بعد!');
+      return;
+    }
+
+    const platforms = [];
+    if (document.getElementById('pubTg')?.checked) platforms.push('telegram');
+    if (document.getElementById('pubFbReel')?.checked) platforms.push('facebook_reel');
+    if (document.getElementById('pubFbStory')?.checked) platforms.push('facebook_story');
+    if (document.getElementById('pubIgReel')?.checked) platforms.push('instagram_reel');
+    if (document.getElementById('pubIgStory')?.checked) platforms.push('instagram_story');
+
+    if (platforms.length === 0) {
+      showToast('⚠️ يرجى تحديد منصة واحدة على الأقل للنشر!');
+      return;
+    }
+
+    const btn = document.getElementById('btnPublishReelSocial');
+    const resBox = document.getElementById('reelSocialResults');
+    btn.disabled = true;
+    btn.innerHTML = '⏳ جاري الرفع والمعالجة على المنصات...';
+    resBox.style.display = 'block';
+    resBox.innerHTML = '<div style="color:#38bdf8;">⏳ جاري إرسال الفيديو ومعالجته على خوادم السوشيال ميديا، يرجى الانتظار قليلاً...</div>';
+
+    const fullVideoUrl = currentReelData.videoUrl.startsWith('http')
+      ? currentReelData.videoUrl
+      : (window.location.origin.includes('localhost') ? 'https://arab-wrestling.com' : window.location.origin) + currentReelData.videoUrl;
+
+    try {
+      const targetApi = `${API_BASE}/api/videos/publish-social`;
+
+      const res = await fetch(targetApi, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          videoUrl: fullVideoUrl,
+          slug: currentReelData.slug,
+          title: currentReelData.title,
+          postUrl: currentReelData.postUrl,
+          platforms: platforms
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+      btn.disabled = false;
+      btn.innerHTML = '🚀 إعادة النشر على المنصات';
+
+      if (res.ok && data.results) {
+        let html = '<div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">';
+        const labels = {
+          telegram: '✈️ تليجرام',
+          facebook_reel: '📘 فيسبوك ريلز',
+          facebook_story: '📘 فيسبوك ستوري',
+          instagram_reel: '📸 إنستغرام ريلز',
+          instagram_story: '📸 إنستغرام ستوري'
+        };
+
+        let successCount = 0;
+        for (const [p, r] of Object.entries(data.results)) {
+          const name = labels[p] || p;
+          if (r.ok) {
+            successCount++;
+            html += `<div style="color:#4ade80; background:rgba(34,197,94,0.1); padding:6px 10px; border-radius:6px;">✅ ${name}: ${r.message || 'تم النشر بنجاح!'}</div>`;
+          } else {
+            html += `<div style="color:#f87171; background:rgba(239,68,68,0.1); padding:6px 10px; border-radius:6px;">❌ ${name}: ${r.error || r.message || 'فشل النشر'}</div>`;
+          }
+        }
+        html += '</div>';
+        resBox.innerHTML = html;
+
+        if (successCount > 0) {
+          showToast(`🎉 تم نشر الفيديو على ${successCount} منصة بنجاح!`);
+        } else {
+          showToast('❌ تعذر النشر على المنصات المحددة، راجع التفاصيل');
+        }
+      } else {
+        resBox.innerHTML = `<div style="color:#f87171;">❌ خطأ: ${data.error || 'فشل الاتصال بخدمة النشر'}</div>`;
+        showToast('❌ حدث خطأ أثناء النشر');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.innerHTML = '🚀 نشر الفيديو فوراً على المنصات المحددة';
+      resBox.innerHTML = `<div style="color:#f87171;">❌ خطأ في الاتصال: ${err.message}</div>`;
+      showToast('❌ تعذر الاتصال بالسيرفر');
+    }
   };
 
   // Init
@@ -1307,7 +1405,7 @@
 
 <!-- 🎬 Reels Video Studio Modal -->
 <div id="reelModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
-  <div style="background: #131722; border: 1px solid #2d3748; border-radius: 16px; max-width: 440px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 22px; color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.7); position: relative; direction: rtl;">
+  <div style="background: #131722; border: 1px solid #2d3748; border-radius: 16px; max-width: 460px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 22px; color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.7); position: relative; direction: rtl;">
     <button onclick="closeReelModal()" style="position: absolute; top: 16px; left: 16px; background: #262b36; border: none; color: #94a3b8; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold;">✕</button>
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
       <span style="font-size: 22px;">🎬</span>
@@ -1325,6 +1423,46 @@
       </div>
     </div>
 
+    <!-- Social Publishing Section (Shown only when video is ready) -->
+    <div id="reelSocialPublishSection" style="display: none; background: #181d28; border: 1px solid #3b82f6; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+        <h4 style="margin: 0; font-size: 13.5px; color: #60a5fa; font-weight: 700;">🚀 نشر الفيديو على السوشيال ميديا يدوياً</h4>
+        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: #93c5fd; padding: 2px 8px; border-radius: 6px;">يدوي بضغطة واحدة</span>
+      </div>
+      <p style="margin: 0 0 10px 0; font-size: 11.5px; color: #94a3b8; line-height: 1.4;">
+        اختر المنصات التي تريد نشر الفيديو عليها فوراً. لن يُنشر الفيديو إطلاقاً إلا بضغطك يدوياً:
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; font-size: 12.5px;">
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="pubTg" checked style="accent-color: #3b82f6;">
+          <span>✈️ تليجرام (فيديو)</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="pubFbReel" checked style="accent-color: #3b82f6;">
+          <span>📘 فيسبوك ريلز</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="pubIgReel" checked style="accent-color: #3b82f6;">
+          <span>📸 إنستغرام ريلز</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="pubFbStory" checked style="accent-color: #3b82f6;">
+          <span>📘 فيسبوك ستوري</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+          <input type="checkbox" id="pubIgStory" checked style="accent-color: #3b82f6;">
+          <span>📸 إنستغرام ستوري</span>
+        </label>
+      </div>
+
+      <button id="btnPublishReelSocial" onclick="publishReelToSocial()" style="width: 100%; background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: #fff; border: none; padding: 11px 16px; border-radius: 10px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <span>🚀 نشر الفيديو فوراً على المنصات المحددة</span>
+      </button>
+
+      <div id="reelSocialResults" style="display: none; margin-top: 10px; font-size: 12px; border-top: 1px solid #2d3748; padding-top: 8px;"></div>
+    </div>
+
     <!-- Action Buttons -->
     <div style="display: flex; flex-direction: column; gap: 10px;">
       <button id="btnGenerateReel" onclick="generateReelNow()" style="background: linear-gradient(135deg, #ef4444 0%, #ec4899 100%); color: #fff; border: none; padding: 12px 18px; border-radius: 10px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
@@ -1332,7 +1470,7 @@
       </button>
 
       <a id="btnDownloadReel" href="#" download style="display: none; background: #16a34a; color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 10px; font-size: 13.5px; font-weight: 700; text-align: center;">
-        ⬇️ تحميل ملف الفيديو (MP4) للنشر
+        ⬇️ تحميل ملف الفيديو (MP4)
       </a>
 
       <button id="btnCopyReelLink" onclick="copyReelLink()" style="display: none; background: #262b36; color: #cbd5e1; border: 1px solid #3a4150; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer;">

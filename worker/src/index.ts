@@ -1202,6 +1202,369 @@ async function postToFacebookStory(
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// On-Demand Manual Video Publishing: Telegram, Facebook Reels/Story, Instagram Reels/Story
+// ─────────────────────────────────────────────────────────────────────────
+
+function buildReelCaption(title: string, postUrl?: string): string {
+  const cleanTitle = (title || "").trim();
+  const linkText = postUrl ? `\n\n🔗 التفاصيل والتحليلات الكاملة على موقع عرب راسلنج` : "";
+  const hashtags = "\n\n#مصارعة_المحترفين #عرب_راسلنج #wwe #wrestling #مصارعة #أخبار_المصارعة";
+  return `${cleanTitle}${linkText}${hashtags}`;
+}
+
+function buildTelegramVideoCaption(title: string, postUrl?: string): string {
+  const safeTitle = escapeTelegramHtml((title || "").trim());
+  const siteUrl = postUrl ? normalizeArticleUrl(postUrl) : "https://arab-wrestling.com";
+  const safeUrl = escapeTelegramHtml(siteUrl);
+  return `🎬 <b>${safeTitle}</b>\n\n🔗 <a href="${safeUrl}"><b>اقرأ التغطية والتحليل الكامل على عرب راسلنج</b></a>\n\n#عرب_راسلنج #WWE #المصارعة`;
+}
+
+async function postVideoToTelegram(
+  env: Env,
+  data: { videoUrl: string; title: string; postUrl?: string }
+): Promise<{ ok: boolean; result?: any; error?: string }> {
+  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
+    return { ok: false, error: "Telegram credentials missing in Worker" };
+  }
+
+  const caption = buildTelegramVideoCaption(data.title, data.postUrl);
+
+  try {
+    // 1. Try URL-based submission first
+    const payload = {
+      chat_id: env.TELEGRAM_CHAT_ID,
+      video: data.videoUrl,
+      caption,
+      parse_mode: "HTML",
+      supports_streaming: true,
+    };
+    const res = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendVideo`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const result: any = await res.json().catch(() => ({}));
+    if (result.ok) return { ok: true, result };
+
+    // 2. Fallback: Download and send as multipart FormData
+    const videoRes = await fetch(data.videoUrl);
+    if (videoRes.ok) {
+      const blob = await videoRes.blob();
+      const formData = new FormData();
+      formData.append("chat_id", env.TELEGRAM_CHAT_ID);
+      formData.append("video", blob, "reel.mp4");
+      formData.append("caption", caption);
+      formData.append("parse_mode", "HTML");
+      formData.append("supports_streaming", "true");
+
+      const formRes = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendVideo`, {
+        method: "POST",
+        body: formData,
+      });
+      const formResult: any = await formRes.json().catch(() => ({}));
+      if (formResult.ok) return { ok: true, result: formResult };
+      return { ok: false, result: formResult, error: formResult.description || "فشل رفع الفيديو لتليجرام" };
+    }
+
+    return { ok: false, result, error: result.description || "فشل إرسال الفيديو لتليجرام" };
+  } catch (e: any) {
+    return { ok: false, error: e.message || "خطأ أثناء الاتصال بتليجرام" };
+  }
+}
+
+async function postVideoToFacebookReel(
+  env: Env,
+  data: { videoUrl: string; title: string; postUrl?: string }
+): Promise<{ ok: boolean; result?: any; error?: string }> {
+  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) {
+    return { ok: false, error: "Facebook Page credentials missing in Worker" };
+  }
+
+  const caption = buildReelCaption(data.title, data.postUrl);
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+
+    // Method A: Try Facebook Video Reels API
+    try {
+      const initRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
+        }
+      );
+      const initData: any = await initRes.json().catch(() => ({}));
+
+      if (initData.video_id && initData.upload_url) {
+        // Transfer phase
+        const uploadRes = await fetch(initData.upload_url, {
+          method: "POST",
+          headers: {
+            Authorization: `OAuth ${pageToken}`,
+            file_url: data.videoUrl,
+          },
+        });
+        const uploadData: any = await uploadRes.json().catch(() => ({}));
+
+        if (uploadData.success !== false) {
+          // Finish phase
+          const finishRes = await fetch(
+            `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                upload_phase: "finish",
+                video_id: initData.video_id,
+                video_state: "PUBLISHED",
+                description: caption,
+                access_token: pageToken,
+              }),
+            }
+          );
+          const finishData: any = await finishRes.json().catch(() => ({}));
+          if (finishData.success || finishData.id || finishData.post_id) {
+            return { ok: true, result: finishData };
+          }
+        }
+      }
+    } catch (e) {
+      // Fallback to standard Page Video
+    }
+
+    // Method B: Standard page videos endpoint (auto-categorized as Reels in feed for 9:16)
+    const fbRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/videos`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          file_url: data.videoUrl,
+          description: caption,
+          title: data.title,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const fbData: any = await fbRes.json().catch(() => ({}));
+    if (fbData.id) {
+      return { ok: true, result: fbData };
+    }
+    return { ok: false, result: fbData, error: fbData?.error?.message || "فشل نشر الفيديو على صفحة الفيسبوك" };
+  } catch (e: any) {
+    return { ok: false, error: e.message || "خطأ أثناء النشر على الفيسبوك" };
+  }
+}
+
+async function postVideoToFacebookStory(
+  env: Env,
+  data: { videoUrl: string }
+): Promise<{ ok: boolean; result?: any; error?: string }> {
+  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) {
+    return { ok: false, error: "Facebook Page credentials missing in Worker" };
+  }
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+
+    const initRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
+      }
+    );
+    const initData: any = await initRes.json().catch(() => ({}));
+    if (!initData.video_id || !initData.upload_url) {
+      return { ok: false, result: initData, error: initData?.error?.message || "فشل تهيئة رفع ستوري الفيديو لفيسبوك" };
+    }
+
+    await fetch(initData.upload_url, {
+      method: "POST",
+      headers: {
+        Authorization: `OAuth ${pageToken}`,
+        file_url: data.videoUrl,
+      },
+    });
+
+    const finishRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          upload_phase: "finish",
+          video_id: initData.video_id,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const finishData: any = await finishRes.json().catch(() => ({}));
+    if (finishData.success || finishData.id || finishData.post_id) {
+      return { ok: true, result: finishData };
+    }
+    return { ok: false, result: finishData, error: finishData?.error?.message || "فشل نشر ستوري الفيديو على فيسبوك" };
+  } catch (e: any) {
+    return { ok: false, error: e.message || "خطأ أثناء نشر ستوري فيسبوك" };
+  }
+}
+
+async function postVideoToInstagramReel(
+  env: Env,
+  data: { videoUrl: string; title: string; postUrl?: string }
+): Promise<{ ok: boolean; result?: any; error?: string }> {
+  if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
+    return { ok: false, error: "Instagram credentials missing in Worker" };
+  }
+
+  const caption = buildReelCaption(data.title, data.postUrl);
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+
+    // 1. Create Reels Container
+    const createRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          media_type: "REELS",
+          video_url: data.videoUrl,
+          caption,
+          share_to_feed: true,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const createData: any = await createRes.json().catch(() => ({}));
+    if (!createData.id) {
+      return { ok: false, result: createData, error: createData?.error?.message || "فشل إنشاء حاوية ريلز إنستغرام" };
+    }
+
+    const containerId = createData.id;
+
+    // 2. Poll container status until FINISHED
+    let ready = false;
+    for (let i = 0; i < 15; i++) {
+      await new Promise((r) => setTimeout(r, 3500));
+      const statusRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
+      );
+      const statusData: any = await statusRes.json().catch(() => ({}));
+      if (statusData.status_code === "FINISHED") {
+        ready = true;
+        break;
+      }
+      if (statusData.status_code === "ERROR") {
+        return { ok: false, result: statusData, error: statusData?.status || "حدث خطأ أثناء معالجة فيديو الريلز في إنستغرام" };
+      }
+    }
+
+    if (!ready) {
+      return { ok: false, error: "استغرقت معالجة الفيديو في إنستغرام وقتاً أطول من المعتاد" };
+    }
+
+    // 3. Publish Reel
+    const pubRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creation_id: containerId,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const pubData: any = await pubRes.json().catch(() => ({}));
+    if (pubData.id) {
+      return { ok: true, result: pubData };
+    }
+    return { ok: false, result: pubData, error: pubData?.error?.message || "فشل نشر ريلز إنستغرام النهائي" };
+  } catch (e: any) {
+    return { ok: false, error: e.message || "خطأ أثناء نشر ريلز إنستغرام" };
+  }
+}
+
+async function postVideoToInstagramStory(
+  env: Env,
+  data: { videoUrl: string }
+): Promise<{ ok: boolean; result?: any; error?: string }> {
+  if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
+    return { ok: false, error: "Instagram credentials missing in Worker" };
+  }
+
+  try {
+    const pageToken = await getPageAccessToken(env);
+
+    // 1. Create Video Story Container
+    const createRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          media_type: "STORIES",
+          video_url: data.videoUrl,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const createData: any = await createRes.json().catch(() => ({}));
+    if (!createData.id) {
+      return { ok: false, result: createData, error: createData?.error?.message || "فشل إنشاء حاوية ستوري إنستغرام" };
+    }
+
+    const containerId = createData.id;
+
+    // 2. Poll until FINISHED
+    let ready = false;
+    for (let i = 0; i < 15; i++) {
+      await new Promise((r) => setTimeout(r, 3500));
+      const statusRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
+      );
+      const statusData: any = await statusRes.json().catch(() => ({}));
+      if (statusData.status_code === "FINISHED") {
+        ready = true;
+        break;
+      }
+      if (statusData.status_code === "ERROR") {
+        return { ok: false, result: statusData, error: statusData?.status || "حدث خطأ أثناء معالجة فيديو الستوري في إنستغرام" };
+      }
+    }
+
+    if (!ready) {
+      return { ok: false, error: "استغرقت معالجة ستوري الفيديو وقتاً أطول من المعتاد في إنستغرام" };
+    }
+
+    // 3. Publish Story
+    const pubRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creation_id: containerId,
+          access_token: pageToken,
+        }),
+      }
+    );
+    const pubData: any = await pubRes.json().catch(() => ({}));
+    if (pubData.id) {
+      return { ok: true, result: pubData };
+    }
+    return { ok: false, result: pubData, error: pubData?.error?.message || "فشل نشر ستوري الفيديو النهائي" };
+  } catch (e: any) {
+    return { ok: false, error: e.message || "خطأ أثناء نشر ستوري إنستغرام" };
+  }
+}
+
 // Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
 // see the BUFFER_API_KEY comment on Env for why. "mode: shareNow" publishes
 // immediately instead of dropping into Buffer's queue for a scheduled slot
@@ -1954,6 +2317,86 @@ export default {
           return json({
             success: true,
             message: "تم إرسال أمر توليد الفيديو إلى خوادم GitHub Actions السحابية بنجاح! سيتم تصييره ورفعه للموقع تلقائياً.",
+          });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/videos/publish-social" && request.method === "POST") {
+        try {
+          const body: any = await request.json().catch(() => ({}));
+          const rawVideoUrl = String(body.videoUrl || "").trim();
+          if (!rawVideoUrl) {
+            return json({ success: false, error: "رابط الفيديو مطلوب (videoUrl is required)" }, 400);
+          }
+          const fullVideoUrl = rawVideoUrl.startsWith("http")
+            ? rawVideoUrl
+            : `${env.SITE_ORIGIN}${rawVideoUrl.startsWith("/") ? "" : "/"}${rawVideoUrl}`;
+
+          const title = String(body.title || "").trim();
+          const postUrl = body.postUrl ? String(body.postUrl).trim() : undefined;
+          const requestedPlatforms: string[] = Array.isArray(body.platforms) && body.platforms.length > 0
+            ? body.platforms
+            : ["telegram", "facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
+
+          const results: Record<string, { ok: boolean; message: string; error?: string }> = {};
+
+          // 1. Telegram Video
+          if (requestedPlatforms.includes("telegram")) {
+            const tgRes = await postVideoToTelegram(env, { videoUrl: fullVideoUrl, title, postUrl });
+            results.telegram = {
+              ok: tgRes.ok,
+              message: tgRes.ok ? "تم نشر الفيديو في قناة تليجرام بنجاح!" : "فشل النشر في تليجرام",
+              error: tgRes.error,
+            };
+          }
+
+          // 2. Facebook Reel
+          if (requestedPlatforms.includes("facebook_reel")) {
+            const fbRes = await postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl });
+            results.facebook_reel = {
+              ok: fbRes.ok,
+              message: fbRes.ok ? "تم نشر الريلز على صفحة الفيسبوك بنجاح!" : "فشل النشر في فيسبوك ريلز",
+              error: fbRes.error,
+            };
+          }
+
+          // 3. Facebook Story
+          if (requestedPlatforms.includes("facebook_story")) {
+            const fbStoryRes = await postVideoToFacebookStory(env, { videoUrl: fullVideoUrl });
+            results.facebook_story = {
+              ok: fbStoryRes.ok,
+              message: fbStoryRes.ok ? "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!" : "فشل النشر في فيسبوك ستوري",
+              error: fbStoryRes.error,
+            };
+          }
+
+          // 4. Instagram Reel
+          if (requestedPlatforms.includes("instagram_reel")) {
+            const igRes = await postVideoToInstagramReel(env, { videoUrl: fullVideoUrl, title, postUrl });
+            results.instagram_reel = {
+              ok: igRes.ok,
+              message: igRes.ok ? "تم نشر الريلز على الإنستغرام بنجاح!" : "فشل النشر في إنستغرام ريلز",
+              error: igRes.error,
+            };
+          }
+
+          // 5. Instagram Story
+          if (requestedPlatforms.includes("instagram_story")) {
+            const igStoryRes = await postVideoToInstagramStory(env, { videoUrl: fullVideoUrl });
+            results.instagram_story = {
+              ok: igStoryRes.ok,
+              message: igStoryRes.ok ? "تم نشر ستوري الفيديو على حساب الإنستغرام بنجاح!" : "فشل النشر في إنستغرام ستوري",
+              error: igStoryRes.error,
+            };
+          }
+
+          const anySuccess = Object.values(results).some((r) => r.ok);
+          return json({
+            success: anySuccess,
+            results,
+            videoUrl: fullVideoUrl,
           });
         } catch (e: any) {
           return json({ success: false, error: e.message }, 500);
