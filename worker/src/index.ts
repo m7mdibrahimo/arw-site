@@ -2636,13 +2636,13 @@ export default {
             fullVideoUrl = encodeURI(fullVideoUrl);
           }
 
-          // Reliability check: if fullVideoUrl returns 404 on site origin, fallback to raw worker URL
+          // Reliability check: if fullVideoUrl returns 404 on site origin, fallback to direct GitHub raw CDN
           try {
             const headCheck = await fetch(fullVideoUrl, { method: "HEAD" });
             if (!headCheck.ok && headCheck.status === 404) {
               const filename = fullVideoUrl.split("/").pop();
               if (filename && filename.endsWith(".mp4")) {
-                fullVideoUrl = `https://arw-site-bot.m7mdibrahimpc.workers.dev/api/videos/raw?file=${encodeURIComponent(filename)}`;
+                fullVideoUrl = `https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${env.GITHUB_BRANCH || "main"}/dist/videos/${encodeURIComponent(decodeURIComponent(filename))}`;
               }
             }
           } catch (_) {}
