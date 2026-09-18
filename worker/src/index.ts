@@ -1446,6 +1446,12 @@ async function postVideoToInstagramReel(
   }
 
   const caption = buildReelCaption(data.title, data.postUrl);
+  let safeVideoUrl = data.videoUrl;
+  try {
+    safeVideoUrl = encodeURI(decodeURI(data.videoUrl));
+  } catch (e) {
+    safeVideoUrl = encodeURI(data.videoUrl);
+  }
 
   try {
     const pageToken = await getPageAccessToken(env);
@@ -1458,7 +1464,7 @@ async function postVideoToInstagramReel(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           media_type: "REELS",
-          video_url: data.videoUrl,
+          video_url: safeVideoUrl,
           caption,
           share_to_feed: true,
           access_token: pageToken,
@@ -1523,6 +1529,13 @@ async function postVideoToInstagramStory(
     return { ok: false, error: "Instagram credentials missing in Worker" };
   }
 
+  let safeVideoUrl = data.videoUrl;
+  try {
+    safeVideoUrl = encodeURI(decodeURI(data.videoUrl));
+  } catch (e) {
+    safeVideoUrl = encodeURI(data.videoUrl);
+  }
+
   try {
     const pageToken = await getPageAccessToken(env);
 
@@ -1535,7 +1548,7 @@ async function postVideoToInstagramStory(
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             media_type: "STORIES",
-            video_url: data.videoUrl,
+            video_url: safeVideoUrl,
             access_token: pageToken,
           }),
         }
@@ -2361,9 +2374,14 @@ export default {
           if (!rawVideoUrl) {
             return json({ success: false, error: "رابط الفيديو مطلوب (videoUrl is required)" }, 400);
           }
-          const fullVideoUrl = rawVideoUrl.startsWith("http")
+          let fullVideoUrl = rawVideoUrl.startsWith("http")
             ? rawVideoUrl
             : `${env.SITE_ORIGIN}${rawVideoUrl.startsWith("/") ? "" : "/"}${rawVideoUrl}`;
+          try {
+            fullVideoUrl = encodeURI(decodeURI(fullVideoUrl));
+          } catch (e) {
+            fullVideoUrl = encodeURI(fullVideoUrl);
+          }
 
           const title = String(body.title || "").trim();
           const postUrl = body.postUrl ? String(body.postUrl).trim() : undefined;
@@ -2372,9 +2390,16 @@ export default {
             : ["telegram", "facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
 
           const rawImageUrl = body.imageUrl ? String(body.imageUrl).trim() : undefined;
-          const fullImageUrl = rawImageUrl
+          let fullImageUrl = rawImageUrl
             ? (rawImageUrl.startsWith("http") ? rawImageUrl : `${env.SITE_ORIGIN}${rawImageUrl.startsWith("/") ? "" : "/"}${rawImageUrl}`)
             : undefined;
+          if (fullImageUrl) {
+            try {
+              fullImageUrl = encodeURI(decodeURI(fullImageUrl));
+            } catch (e) {
+              fullImageUrl = encodeURI(fullImageUrl);
+            }
+          }
 
           const results: Record<string, { ok: boolean; message: string; error?: string }> = {};
 
@@ -2420,6 +2445,9 @@ export default {
 
           // 5. Instagram Story
           if (requestedPlatforms.includes("instagram_story")) {
+            if (requestedPlatforms.includes("instagram_reel")) {
+              await new Promise((r) => setTimeout(r, 2500));
+            }
             const igStoryRes = await postVideoToInstagramStory(env, { videoUrl: fullVideoUrl, imageUrl: fullImageUrl });
             results.instagram_story = {
               ok: igStoryRes.ok,

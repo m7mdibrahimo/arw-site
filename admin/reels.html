@@ -907,7 +907,7 @@
         body: JSON.stringify({
           slug: inputPath || slug,
           file: inputPath || undefined,
-          postUrl: postUrl ? (postUrl.startsWith('http') ? postUrl : 'https://arabwrestling.org' + postUrl) : undefined,
+          postUrl: postUrl ? (postUrl.startsWith('http') ? postUrl : 'https://arab-wrestling.com' + postUrl) : undefined,
         })
       });
 
@@ -1001,12 +1001,19 @@
     const postFullUrl = currentItem.url ? (currentItem.url.startsWith('http') ? currentItem.url : 'https://arab-wrestling.com' + currentItem.url) : '';
     const postImageUrl = currentItem.image ? (currentItem.image.startsWith('http') ? currentItem.image : 'https://arab-wrestling.com' + (currentItem.image.startsWith('/') ? '' : '/') + currentItem.image) : undefined;
 
+    let videoUrl = currentItem.readyVideoUrl;
+    try {
+      videoUrl = encodeURI(decodeURI(videoUrl));
+    } catch (e) {
+      videoUrl = encodeURI(videoUrl);
+    }
+
     try {
       const res = await fetch(`${API_BASE}/api/videos/publish-social`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          videoUrl: currentItem.readyVideoUrl,
+          videoUrl,
           slug: getItemSlug(currentItem),
           title: currentItem.title,
           postUrl: postFullUrl,
