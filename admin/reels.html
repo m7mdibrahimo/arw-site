@@ -230,6 +230,140 @@
     background: #283042; color: #fff; border-color: var(--accent);
   }
 
+  /* Queue States */
+  .btn-open-reel.in-queue {
+    background: rgba(245, 158, 11, 0.15) !important; color: #fcd34d !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important; cursor: wait;
+  }
+  .btn-open-reel.rendering {
+    background: rgba(59, 130, 246, 0.2) !important; color: #93c5fd !important;
+    border: 1px solid rgba(59, 130, 246, 0.5) !important;
+    animation: queuePulse 1.8s ease-in-out infinite; cursor: wait;
+  }
+  .btn-open-reel.publishing {
+    background: rgba(168, 85, 247, 0.25) !important; color: #d8b4fe !important;
+    border: 1px solid rgba(168, 85, 247, 0.5) !important;
+    animation: queuePulse 1.4s ease-in-out infinite; cursor: wait;
+  }
+  .btn-open-reel.done {
+    background: rgba(34, 197, 94, 0.2) !important; color: #4ade80 !important;
+    border: 1px solid rgba(34, 197, 94, 0.4) !important;
+  }
+  .btn-open-reel.error {
+    background: rgba(239, 68, 68, 0.2) !important; color: #fca5a5 !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important; cursor: pointer;
+  }
+  @keyframes queuePulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 rgba(59,130,246,0); }
+    50% { opacity: 0.82; box-shadow: 0 0 16px rgba(59,130,246,0.35); }
+  }
+
+  .btn-mini-opt {
+    background: #19202e; border: 1px solid #2d3748; color: #94a3b8; border-radius: 9px;
+    padding: 8px 11px; font-size: 13px; cursor: pointer; transition: .15s;
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .btn-mini-opt:hover { background: #263147; color: #fff; border-color: #4a5568; transform: translateY(-1px); }
+  .btn-mini-opt.pub-direct { background: rgba(37, 99, 235, 0.15); border-color: rgba(37, 99, 235, 0.35); color: #93c5fd; }
+  .btn-mini-opt.pub-direct:hover { background: #2563eb; color: #fff; }
+
+  /* Floating Sequential Queue Dock */
+  .queue-dock {
+    position: fixed; bottom: 20px; right: 24px; z-index: 998; direction: rtl;
+    background: rgba(15, 19, 28, 0.96); backdrop-filter: blur(16px);
+    border: 1px solid #2e384d; border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+    max-width: 500px; width: calc(100% - 48px); transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .queue-dock.hidden {
+    opacity: 0; pointer-events: none; transform: translateY(40px) scale(0.96);
+  }
+  .queue-dock-main {
+    padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    cursor: pointer; user-select: none;
+  }
+  .queue-dock-info {
+    display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1;
+  }
+  .queue-ring-indicator {
+    width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 14px; flex-shrink: 0;
+    background: rgba(59, 130, 246, 0.15); border: 2px solid #3b82f6; color: #93c5fd;
+  }
+  .queue-dock.active .queue-ring-indicator {
+    border-top-color: transparent; animation: spin 1s linear infinite;
+  }
+  .queue-dock-texts {
+    min-width: 0; flex: 1;
+  }
+  .queue-dock-title-line {
+    display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: #fff;
+  }
+  .queue-dock-title-line strong {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px;
+  }
+  .queue-badge-count {
+    background: #2563eb; color: #fff; font-size: 10.5px; font-weight: 700;
+    padding: 2px 7px; border-radius: 12px; flex-shrink: 0;
+  }
+  .queue-dock-status {
+    font-size: 11.5px; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px;
+  }
+  .queue-dock-actions {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .queue-toggle-btn {
+    background: #1e2638; border: 1px solid #333f56; color: #cbd5e1; border-radius: 8px;
+    padding: 6px 10px; font-size: 11.5px; font-weight: 700; cursor: pointer; transition: .15s;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .queue-toggle-btn:hover { background: #2a354c; color: #fff; }
+
+  .queue-drawer {
+    display: none; border-top: 1px solid #232b3d; padding: 12px 16px;
+    max-height: 260px; overflow-y: auto; background: rgba(11, 14, 21, 0.98);
+    border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;
+  }
+  .queue-drawer.open { display: block; }
+  .queue-drawer-header {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;
+    font-size: 12px; color: #94a3b8; font-weight: 700;
+  }
+  .queue-btn-clear {
+    background: transparent; border: none; color: #64748b; font-size: 11px; cursor: pointer;
+  }
+  .queue-btn-clear:hover { color: #f87171; text-decoration: underline; }
+  .queue-items-list {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .queue-item-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    background: #161b27; padding: 8px 10px; border-radius: 8px; border: 1px solid #252e42;
+    font-size: 12px;
+  }
+  .queue-item-left {
+    display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1;
+  }
+  .queue-item-thumb {
+    width: 32px; height: 32px; border-radius: 6px; object-fit: cover; flex-shrink: 0;
+  }
+  .queue-item-name {
+    color: #f1f5f9; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .queue-item-status-pill {
+    font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; white-space: nowrap; flex-shrink: 0;
+  }
+  .queue-item-status-pill.queued { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+  .queue-item-status-pill.rendering { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
+  .queue-item-status-pill.publishing { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+  .queue-item-status-pill.done { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+  .queue-item-status-pill.error { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+  @media (max-width: 600px) {
+    .queue-dock {
+      bottom: 14px; right: 12px; left: 12px; width: auto; max-width: none;
+    }
+  }
+
   /* Dedicated Modal */
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
@@ -560,11 +694,45 @@
   </div>
 </div>
 
+<!-- Floating Sequential Background Queue Dock -->
+<div id="queueDock" class="queue-dock hidden">
+  <div class="queue-dock-main" onclick="toggleQueueDrawer()">
+    <div class="queue-dock-info">
+      <div class="queue-ring-indicator" id="queueRing">🎬</div>
+      <div class="queue-dock-texts">
+        <div class="queue-dock-title-line">
+          <span class="queue-badge-count" id="queueCountBadge">0 من 0</span>
+          <strong id="queueCurrentTitle">طابور النشر التلقائي</strong>
+        </div>
+        <div class="queue-dock-status" id="queueCurrentStatus">في انتظار المهام...</div>
+      </div>
+    </div>
+    <div class="queue-dock-actions">
+      <button class="queue-toggle-btn" id="queueToggleBtn" type="button">
+        <span>التفاصيل</span> <span id="queueCaret">▲</span>
+      </button>
+    </div>
+  </div>
+  <div id="queueDrawer" class="queue-drawer">
+    <div class="queue-drawer-header">
+      <span>قائمة مهام التوليد والنشر المتتالي (واحد تلو الآخر)</span>
+      <button class="queue-btn-clear" onclick="clearCompletedQueue(event)">مسح المكتمل</button>
+    </div>
+    <div id="queueItemsList" class="queue-items-list"></div>
+  </div>
+</div>
+
 <div class="toast" id="toastEl"></div>
 
 <script>
   const API_BASE = 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
   const PAGE_SIZE = 24;
+
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const CHECK_API = isLocal ? '/api/videos/check' : `${API_BASE}/api/videos/check`;
+  const DISPATCH_API = isLocal ? '/api/videos/generate' : `${API_BASE}/api/videos/dispatch`;
+  const LIST_API = isLocal ? '/api/videos/list' : `${API_BASE}/api/videos/list`;
+  const PUBLISH_API = `${API_BASE}/api/videos/publish-social`;
 
   let allItems = [];
   let videoManifest = [];
@@ -573,6 +741,11 @@
   let activeKind = 'all';
   let currentItem = null;
   let pollTimer = null;
+
+  // ── Global Queue State ───────────────────────────────────────────────────
+  let queue = [];
+  let isProcessingQueue = false;
+  let queueDrawerOpen = false;
 
   const toastEl = document.getElementById('toastEl');
   const cardsGrid = document.getElementById('cardsGrid');
@@ -588,11 +761,12 @@
   function showToast(msg, isOk = true) {
     toastEl.textContent = msg;
     toastEl.className = `toast show ${isOk ? 'ok' : 'err'}`;
-    setTimeout(() => { toastEl.className = 'toast'; }, 3800);
+    setTimeout(() => { toastEl.className = 'toast'; }, 4000);
   }
 
   // Calculate standard cleanSlug from item
   function getItemSlug(item) {
+    if (!item) return '';
     if (item.inputPath) {
       return item.inputPath.split('/').pop().replace(/\.md$/, '').slice(0, 45);
     }
@@ -610,6 +784,14 @@
     });
   }
 
+  function getQueueTask(slug) {
+    return queue.find(t => t.slug === slug);
+  }
+
+  function getActiveQueueTask() {
+    return queue.find(t => t.status === 'rendering' || t.status === 'publishing');
+  }
+
   async function init() {
     try {
       // 1. Fetch videos manifest
@@ -619,17 +801,19 @@
           videoManifest = await resManifest.json();
         }
       } catch (e) {
-        console.warn('Could not fetch /videos/manifest.json, trying /api/videos/list:', e);
+        console.warn('Could not fetch local /videos/manifest.json:', e);
       }
 
       if (!videoManifest || !videoManifest.length) {
         try {
-          const resList = await fetch('/api/videos/list?_cb=' + Date.now());
+          const resList = await fetch(`${LIST_API}?_cb=` + Date.now());
           if (resList.ok) {
             const data = await resList.json();
             videoManifest = data.videos || [];
           }
-        } catch (e) {}
+        } catch (e) {
+          console.warn('Could not fetch from LIST_API:', e);
+        }
       }
 
       statReadyReels.textContent = (videoManifest && videoManifest.length) ? videoManifest.length : '0';
@@ -723,7 +907,7 @@
       const fed = (item.federation || 'WWE').toLowerCase();
       const fedClass = fed.includes('wwe') ? 'fed-wwe' : (fed.includes('aew') ? 'fed-aew' : (fed.includes('tna') ? 'fed-tna' : ''));
       const kindClass = item.kind === 'news' ? 'news' : (item.kind === 'show' ? 'show' : 'recap');
-      const kindLabel = item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
+      const kindLabel = item.kindLabel || (item.kind === 'show' ? 'عرض' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
       const img = item.image ? (item.image.startsWith('http') || item.image.startsWith('/') ? item.image : '/' + item.image) : '/content/images/jtct9rkqmcshcyh6.jpg';
 
       let dateStr = '';
@@ -732,6 +916,96 @@
           const d = new Date(item.date);
           dateStr = d.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', year: 'numeric' });
         } catch (e) {}
+      }
+
+      const queueTask = getQueueTask(slug);
+      let buttonHtml = '';
+      let secondaryBtnHtml = '';
+
+      if (hasReel && (!queueTask || queueTask.status === 'done')) {
+        buttonHtml = `
+          <button class="btn-open-reel ready" onclick="openReelModalByIndex(${globalIdx})">
+            ▶️ فتح الاستوديو والنشر
+          </button>
+        `;
+        secondaryBtnHtml = `
+          <button class="btn-mini-opt pub-direct" onclick="quickPublishExisting(${globalIdx}, event)" title="نشر فوري سريع لجميع المنصات (فيسبوك وإنستجرام)">
+            🚀
+          </button>
+        `;
+      } else if (queueTask) {
+        if (queueTask.status === 'queued') {
+          const pendingList = queue.filter(t => t.status === 'queued');
+          const queuedIndex = pendingList.findIndex(t => t.id === queueTask.id) + 1;
+          buttonHtml = `
+            <button class="btn-open-reel in-queue" disabled>
+              ⏳ في قائمة الانتظار (#${queuedIndex})
+            </button>
+          `;
+          secondaryBtnHtml = `
+            <button class="btn-mini-opt" onclick="openReelModalByIndex(${globalIdx}); event.stopPropagation();" title="تخصيص ومعاينة">
+              ⚙️
+            </button>
+          `;
+        } else if (queueTask.status === 'rendering') {
+          buttonHtml = `
+            <button class="btn-open-reel rendering" disabled>
+              <span class="spinner" style="width:13px;height:13px;border-width:2px;"></span>
+              <span>جاري التصيير 60fps...</span>
+            </button>
+          `;
+          secondaryBtnHtml = `
+            <button class="btn-mini-opt" onclick="openReelModalByIndex(${globalIdx}); event.stopPropagation();" title="تخصيص ومعاينة">
+              ⚙️
+            </button>
+          `;
+        } else if (queueTask.status === 'publishing') {
+          buttonHtml = `
+            <button class="btn-open-reel publishing" disabled>
+              <span class="spinner" style="width:13px;height:13px;border-width:2px;"></span>
+              <span>جاري النشر التلقائي...</span>
+            </button>
+          `;
+          secondaryBtnHtml = `
+            <button class="btn-mini-opt" onclick="openReelModalByIndex(${globalIdx}); event.stopPropagation();" title="تخصيص ومعاينة">
+              ⚙️
+            </button>
+          `;
+        } else if (queueTask.status === 'done') {
+          buttonHtml = `
+            <button class="btn-open-reel done" onclick="openReelModalByIndex(${globalIdx})">
+              ✅ تم النشر على السوشيال!
+            </button>
+          `;
+          secondaryBtnHtml = `
+            <button class="btn-mini-opt" onclick="openReelModalByIndex(${globalIdx}); event.stopPropagation();" title="فتح الاستوديو">
+              ⚙️
+            </button>
+          `;
+        } else if (queueTask.status === 'error') {
+          buttonHtml = `
+            <button class="btn-open-reel error" onclick="addToQueueByIndex(${globalIdx}, event)">
+              ⚠️ خطأ - انقر للإعادة
+            </button>
+          `;
+          secondaryBtnHtml = `
+            <button class="btn-mini-opt" onclick="openReelModalByIndex(${globalIdx}); event.stopPropagation();" title="تخصيص يدوي">
+              ⚙️
+            </button>
+          `;
+        }
+      } else {
+        // Not yet generated, not in queue: 1-click Auto Generate & Auto Publish!
+        buttonHtml = `
+          <button class="btn-open-reel not-ready" onclick="addToQueueByIndex(${globalIdx}, event)">
+            ⚡ توليد ونشر ريلز تلقائياً
+          </button>
+        `;
+        secondaryBtnHtml = `
+          <button class="btn-mini-opt" onclick="openReelModalByIndex(${globalIdx}); event.stopPropagation();" title="تخصيص ومعاينة يدوية بالاستوديو">
+            ⚙️
+          </button>
+        `;
       }
 
       return `
@@ -752,9 +1026,8 @@
               <h4 class="card-title" title="${item.title}" style="margin-top:6px;">${item.title}</h4>
             </div>
             <div class="card-footer">
-              <button class="btn-open-reel ${hasReel ? 'ready' : 'not-ready'}" onclick="openReelModalByIndex(${globalIdx})">
-                ${hasReel ? '▶️ فتح الاستوديو والنشر' : '⚡ توليد ريلز الآن'}
-              </button>
+              ${buttonHtml}
+              ${secondaryBtnHtml}
             </div>
           </div>
         </div>
@@ -768,7 +1041,352 @@
     window.scrollTo({ top: 180, behavior: 'smooth' });
   }
 
-  // Modal Handling
+  // ── Sequential Queue Manager ─────────────────────────────────────────────
+  window.addToQueueByIndex = function(index, event) {
+    if (event) event.stopPropagation();
+    const item = filteredItems[index];
+    if (!item) return;
+
+    const slug = getItemSlug(item);
+    const existing = getQueueTask(slug);
+
+    if (existing) {
+      if (existing.status === 'queued' || existing.status === 'rendering' || existing.status === 'publishing') {
+        showToast('⚠️ هذا الفيديو موجود بالفعل في طابور العمليات الحالي!', false);
+        return;
+      }
+      // If error or done, remove old task to allow re-run
+      queue = queue.filter(t => t.slug !== slug);
+    }
+
+    const task = {
+      id: 'task_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+      slug,
+      item,
+      status: 'queued',
+      progressText: 'في قائمة الانتظار...',
+      videoUrl: null,
+      errorMsg: null,
+      publishResults: null,
+      queuedAt: Date.now()
+    };
+
+    queue.push(task);
+    updateQueueDockUI();
+    renderGrid();
+
+    const pendingCount = queue.filter(t => t.status === 'queued').length;
+    showToast(`⚡ تمت الإضافة لطابور التوليد والنشر التلقائي (#${pendingCount})!`);
+
+    if (!isProcessingQueue) {
+      processQueue();
+    }
+  };
+
+  async function processQueue() {
+    if (isProcessingQueue) return;
+
+    const nextTask = queue.find(t => t.status === 'queued');
+    if (!nextTask) {
+      isProcessingQueue = false;
+      updateQueueDockUI();
+      renderGrid();
+      return;
+    }
+
+    isProcessingQueue = true;
+    const task = nextTask;
+    const slug = task.slug;
+    const item = task.item;
+    const postUrl = item.url ? (item.url.startsWith('http') ? item.url : 'https://arab-wrestling.com' + item.url) : '';
+    const inputPath = item.inputPath || '';
+
+    // Step 1: Start 60fps Cloud Rendering
+    task.status = 'rendering';
+    task.progressText = '🚀 جاري إطلاق التصيير السحابي (60fps)...';
+    updateQueueDockUI();
+    renderGrid();
+
+    let dispatchOk = false;
+    try {
+      const res = await fetch(DISPATCH_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          slug: inputPath || slug,
+          file: inputPath || undefined,
+          postUrl: postUrl || undefined,
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        dispatchOk = true;
+      } else {
+        task.errorMsg = data.error || 'فشل إرسال أمر التوليد للخوادم';
+      }
+    } catch (e) {
+      task.errorMsg = 'خطأ اتصال: ' + e.message;
+    }
+
+    if (!dispatchOk) {
+      task.status = 'error';
+      task.progressText = '❌ ' + (task.errorMsg || 'فشل بدء التوليد');
+      showToast(`❌ فشل بدء توليد "${item.title.slice(0, 25)}..."`, false);
+      isProcessingQueue = false;
+      updateQueueDockUI();
+      renderGrid();
+      // Proceed sequentially to next
+      setTimeout(processQueue, 1500);
+      return;
+    }
+
+    // Step 2: Poll for Video Readiness
+    task.progressText = '⏳ جاري تصيير الفيديو 60fps على الخوادم...';
+    updateQueueDockUI();
+    renderGrid();
+
+    let pollAttempts = 0;
+    const maxPollAttempts = 40; // ~4 minutes
+    let readyVideoData = null;
+
+    while (pollAttempts < maxPollAttempts) {
+      await new Promise(r => setTimeout(r, 6000));
+      pollAttempts++;
+      task.progressText = `⏳ جاري تصيير الفيديو 60fps... (محاولة ${pollAttempts}/${maxPollAttempts})`;
+      updateQueueDockUI();
+
+      try {
+        const cRes = await fetch(`${CHECK_API}?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
+        if (cRes.ok) {
+          const cData = await cRes.json();
+          if (cData.exists && cData.videoUrl) {
+            readyVideoData = cData;
+            break;
+          }
+        }
+      } catch (e) {}
+    }
+
+    if (!readyVideoData) {
+      task.status = 'error';
+      task.errorMsg = 'استغرق التصيير وقتاً أطول من المتوقع';
+      task.progressText = '⚠️ انتهت مهلة التصيير';
+      showToast(`⚠️ استغرق تصيير "${item.title.slice(0, 25)}..." وقتاً أطول من المتوقع`, false);
+      isProcessingQueue = false;
+      updateQueueDockUI();
+      renderGrid();
+      setTimeout(processQueue, 1500);
+      return;
+    }
+
+    // Video is ready!
+    task.videoUrl = readyVideoData.videoUrl;
+    if (!findReelForSlug(slug)) {
+      videoManifest.unshift({
+        filename: readyVideoData.filename,
+        videoUrl: readyVideoData.videoUrl,
+        size: readyVideoData.size,
+        mtime: Date.now(),
+        cleanSlug: slug
+      });
+      statReadyReels.textContent = videoManifest.length;
+    }
+
+    // Step 3: Automatic Social Media Publishing (Facebook Reel + Story, Instagram Reel + Story)
+    task.status = 'publishing';
+    task.progressText = '📢 جاري النشر التلقائي فوراً على فيسبوك وإنستجرام...';
+    updateQueueDockUI();
+    renderGrid();
+
+    const postImageUrl = item.image ? (item.image.startsWith('http') ? item.image : 'https://arab-wrestling.com' + (item.image.startsWith('/') ? '' : '/') + item.image) : undefined;
+
+    try {
+      const pubRes = await fetch(PUBLISH_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          videoUrl: readyVideoData.videoUrl,
+          slug,
+          title: item.title,
+          postUrl,
+          imageUrl: postImageUrl,
+          platforms: ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'],
+        })
+      });
+
+      const pubData = await pubRes.json().catch(() => ({}));
+      if (pubRes.ok && pubData.results) {
+        task.publishResults = pubData.results;
+        let successes = 0;
+        for (const r of Object.values(pubData.results)) {
+          if (r && r.ok) successes++;
+        }
+        if (successes > 0) {
+          task.status = 'done';
+          task.progressText = `✅ تم النشر بنجاح على ${successes} منصات!`;
+          showToast(`🎉 تم توليد ونشر "${item.title.slice(0, 28)}..." على السوشيال بنجاح!`);
+        } else {
+          task.status = 'error';
+          task.progressText = '❌ فشل النشر على المنصات';
+          task.errorMsg = 'فشل نشر الفيديو على منصات ميتا';
+          showToast(`⚠️ تم تجهيز الفيديو ولكن تعذر النشر على السوشيال`, false);
+        }
+      } else {
+        task.status = 'error';
+        task.progressText = '❌ فشل الاتصال بخدمة النشر';
+        task.errorMsg = pubData.error || 'تعذر النشر التلقائي';
+      }
+    } catch (e) {
+      task.status = 'error';
+      task.progressText = '❌ خطأ أثناء النشر: ' + e.message;
+      task.errorMsg = e.message;
+    }
+
+    updateQueueDockUI();
+    renderGrid();
+    isProcessingQueue = false;
+
+    // Advance to next item in queue sequentially!
+    setTimeout(processQueue, 1200);
+  }
+
+  // Quick 1-click publish for an already rendered video
+  window.quickPublishExisting = async function(globalIdx, event) {
+    if (event) event.stopPropagation();
+    const item = filteredItems[globalIdx];
+    if (!item) return;
+    const slug = getItemSlug(item);
+    const reel = findReelForSlug(slug);
+    if (!reel) {
+      showToast('⚠️ الفيديو غير مولد بعد!', false);
+      return;
+    }
+
+    showToast(`🚀 جاري النشر الفوري لـ "${item.title.slice(0, 25)}..." على فيسبوك وإنستجرام...`);
+
+    const postUrl = item.url ? (item.url.startsWith('http') ? item.url : 'https://arab-wrestling.com' + item.url) : '';
+    const postImageUrl = item.image ? (item.image.startsWith('http') ? item.image : 'https://arab-wrestling.com' + (item.image.startsWith('/') ? '' : '/') + item.image) : undefined;
+    const fullVideoUrl = reel.videoUrl.startsWith('http') ? reel.videoUrl : 'https://arab-wrestling.com' + (reel.videoUrl.startsWith('/') ? '' : '/') + reel.videoUrl;
+
+    try {
+      const res = await fetch(PUBLISH_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          videoUrl: fullVideoUrl,
+          slug,
+          title: item.title,
+          postUrl,
+          imageUrl: postImageUrl,
+          platforms: ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'],
+        })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.results) {
+        let successes = 0;
+        for (const r of Object.values(data.results)) {
+          if (r && r.ok) successes++;
+        }
+        if (successes > 0) {
+          showToast(`🎉 تم نشر الفيديو فوراً على ${successes} منصات بنجاح!`);
+        } else {
+          showToast('❌ تعذر النشر، افتح الاستوديو لمعاينة التفاصيل', false);
+        }
+      } else {
+        showToast('❌ خطأ في الاتصال بالسيرفر', false);
+      }
+    } catch (err) {
+      showToast('❌ خطأ: ' + err.message, false);
+    }
+  };
+
+  // Queue Dock UI helper
+  function updateQueueDockUI() {
+    const queueDock = document.getElementById('queueDock');
+    const queueRing = document.getElementById('queueRing');
+    const queueCountBadge = document.getElementById('queueCountBadge');
+    const queueCurrentTitle = document.getElementById('queueCurrentTitle');
+    const queueCurrentStatus = document.getElementById('queueCurrentStatus');
+    const queueItemsList = document.getElementById('queueItemsList');
+
+    if (!queue || queue.length === 0) {
+      queueDock.classList.add('hidden');
+      return;
+    }
+
+    queueDock.classList.remove('hidden');
+
+    const total = queue.length;
+    const completed = queue.filter(t => t.status === 'done' || t.status === 'error').length;
+    const activeTask = getActiveQueueTask();
+
+    if (activeTask) {
+      queueDock.classList.add('active');
+      queueRing.innerHTML = '<span class="spinner" style="width:14px;height:14px;border-width:2px;"></span>';
+      const activeIdx = queue.findIndex(t => t.id === activeTask.id) + 1;
+      queueCountBadge.textContent = `${activeIdx} من ${total}`;
+      queueCurrentTitle.textContent = activeTask.item.title;
+      queueCurrentStatus.textContent = activeTask.progressText;
+    } else {
+      queueDock.classList.remove('active');
+      const allDone = queue.every(t => t.status === 'done');
+      queueRing.innerHTML = allDone ? '✅' : '🎬';
+      queueCountBadge.textContent = `${completed} من ${total}`;
+      if (allDone) {
+        queueCurrentTitle.textContent = 'اكتملت جميع مهام النشر بنجاح!';
+        queueCurrentStatus.textContent = `تم الانتهاء من توليد ونشر ${total} مقاطع بنجاح.`;
+      } else {
+        queueCurrentTitle.textContent = 'طابور النشر التلقائي';
+        queueCurrentStatus.textContent = `مكتمل ${completed} من ${total} مهام.`;
+      }
+    }
+
+    // Render Drawer list
+    queueItemsList.innerHTML = queue.map((t, idx) => {
+      const img = t.item.image ? (t.item.image.startsWith('http') || t.item.image.startsWith('/') ? t.item.image : '/' + t.item.image) : '/content/images/jtct9rkqmcshcyh6.jpg';
+      let statusLabel = 'قيد الانتظار';
+      let pillClass = 'queued';
+      if (t.status === 'rendering') { statusLabel = '⚙️ تصيير 60fps'; pillClass = 'rendering'; }
+      else if (t.status === 'publishing') { statusLabel = '📢 نشر اجتماعي'; pillClass = 'publishing'; }
+      else if (t.status === 'done') { statusLabel = '✅ تم النشر'; pillClass = 'done'; }
+      else if (t.status === 'error') { statusLabel = '❌ خطأ'; pillClass = 'error'; }
+
+      return `
+        <div class="queue-item-row">
+          <div class="queue-item-left">
+            <img src="${img}" class="queue-item-thumb" onerror="this.src='/content/images/jtct9rkqmcshcyh6.jpg'" />
+            <div style="min-width:0;">
+              <div class="queue-item-name" title="${t.item.title}">${t.item.title}</div>
+              <div style="font-size:11px; color:#94a3b8; margin-top:2px;">${t.progressText}</div>
+            </div>
+          </div>
+          <span class="queue-item-status-pill ${pillClass}">${statusLabel}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.toggleQueueDrawer = function() {
+    queueDrawerOpen = !queueDrawerOpen;
+    const drawer = document.getElementById('queueDrawer');
+    const caret = document.getElementById('queueCaret');
+    if (queueDrawerOpen) {
+      drawer.classList.add('open');
+      caret.textContent = '▼';
+    } else {
+      drawer.classList.remove('open');
+      caret.textContent = '▲';
+    }
+  };
+
+  window.clearCompletedQueue = function(event) {
+    if (event) event.stopPropagation();
+    queue = queue.filter(t => t.status === 'queued' || t.status === 'rendering' || t.status === 'publishing');
+    updateQueueDockUI();
+    renderGrid();
+  };
+
+  // ── Modal Handling ───────────────────────────────────────────────────────
   window.openReelModalByIndex = async function(index) {
     const item = filteredItems[index];
     if (!item) return;
@@ -779,7 +1397,7 @@
 
     document.getElementById('modalTitle').textContent = item.title;
     document.getElementById('modalFedBadge').textContent = item.federation || 'WWE';
-    document.getElementById('modalKindBadge').textContent = item.kindLabel || (item.kind === 'show' ? 'عرض كامل' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
+    document.getElementById('modalKindBadge').textContent = item.kindLabel || (item.kind === 'show' ? 'عرض' : (item.kind === 'recap' ? 'ملخص' : 'خبر'));
 
     let dateStr = '';
     if (item.date) {
@@ -801,7 +1419,6 @@
       setupModalForReadyVideo(reel.videoUrl);
     } else {
       setupModalForUnreadyVideo();
-      // Also perform live check in case it was just generated
       checkLiveVideoExistence(slug);
     }
   };
@@ -836,19 +1453,20 @@
 
   async function checkLiveVideoExistence(slug) {
     try {
-      const res = await fetch(`/api/videos/check?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
+      const res = await fetch(`${CHECK_API}?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
       if (res.ok) {
         const data = await res.json();
         if (data.exists && data.videoUrl) {
-          // Add to manifest in-memory
-          videoManifest.push({
-            filename: data.filename,
-            videoUrl: data.videoUrl,
-            size: data.size,
-            mtime: Date.now(),
-            cleanSlug: slug
-          });
-          statReadyReels.textContent = videoManifest.length;
+          if (!findReelForSlug(slug)) {
+            videoManifest.unshift({
+              filename: data.filename,
+              videoUrl: data.videoUrl,
+              size: data.size,
+              mtime: Date.now(),
+              cleanSlug: slug
+            });
+            statReadyReels.textContent = videoManifest.length;
+          }
           setupModalForReadyVideo(data.videoUrl);
           renderGrid();
         }
@@ -884,20 +1502,16 @@
     const btn = document.getElementById('btnTriggerGen');
     btn.disabled = true;
     btn.innerHTML = `<span class="spinner"></span> <span>جاري إرسال طلب التوليد للخوادم السحابية...</span>`;
-    document.getElementById('modalGenStatus').innerHTML = `🚀 تم إطلاق مهمة التوليد السحابية عبر GitHub Actions.<br>يتم الآن تصيير الإطارات (60fps) وتحزيم الفيديو بدقة 1080x1920. يستغرق ذلك عادة من 40 إلى 80 ثانية.`;
+    document.getElementById('modalGenStatus').innerHTML = `🚀 تم إطلاق مهمة التوليد السحابية عبر GitHub Actions.<br>يتم الآن تصيير الإطارات (60fps) بدقة 1080x1920. يستغرق ذلك عادة من 40 إلى 80 ثانية.`;
 
-    // Show generation box even if regen
     if (isRegen) {
       document.getElementById('modalPlayerSection').style.display = 'none';
       document.getElementById('modalSocialSection').style.display = 'none';
       document.getElementById('modalGenSection').style.display = 'block';
     }
 
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const targetApi = isLocal ? '/api/videos/generate' : `${API_BASE}/api/videos/dispatch`;
-
     try {
-      const res = await fetch(targetApi, {
+      const res = await fetch(DISPATCH_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -928,28 +1542,30 @@
   function startPollingForReel(slug) {
     if (pollTimer) clearInterval(pollTimer);
     let attempts = 0;
-    const maxAttempts = 35; // ~3.5 minutes
+    const maxAttempts = 40; // ~4 minutes
 
     pollTimer = setInterval(async () => {
       attempts++;
       document.getElementById('modalGenStatus').innerHTML = `⏳ جاري فحص حالة الفيديو على الخوادم... (محاولة ${attempts}/${maxAttempts})`;
 
       try {
-        const res = await fetch(`/api/videos/check?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
+        const res = await fetch(`${CHECK_API}?slug=${encodeURIComponent(slug)}&_cb=${Date.now()}`);
         if (res.ok) {
           const data = await res.json();
           if (data.exists && data.videoUrl) {
             clearInterval(pollTimer);
             pollTimer = null;
             showToast('🎉 تم تصيير وتجهيز الفيديو بنجاح!');
-            videoManifest.push({
-              filename: data.filename,
-              videoUrl: data.videoUrl,
-              size: data.size,
-              mtime: Date.now(),
-              cleanSlug: slug
-            });
-            statReadyReels.textContent = videoManifest.length;
+            if (!findReelForSlug(slug)) {
+              videoManifest.unshift({
+                filename: data.filename,
+                videoUrl: data.videoUrl,
+                size: data.size,
+                mtime: Date.now(),
+                cleanSlug: slug
+              });
+              statReadyReels.textContent = videoManifest.length;
+            }
             setupModalForReadyVideo(data.videoUrl);
             renderGrid();
             return;
@@ -967,7 +1583,7 @@
     }, 6000);
   }
 
-  // Social Publishing
+  // ── Manual Social Publishing from Studio Modal ────────────────────────────
   window.publishReelToSocial = async function() {
     if (!currentItem || !currentItem.readyVideoUrl) {
       showToast('⚠️ لا يوجد فيديو جاهز للنشر بعد!', false);
@@ -1004,7 +1620,7 @@
     }
 
     try {
-      const res = await fetch(`${API_BASE}/api/videos/publish-social`, {
+      const res = await fetch(PUBLISH_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

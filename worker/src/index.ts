@@ -494,9 +494,29 @@ async function githubTriggerVideoWorkflow(env: Env, slug: string): Promise<{ ok:
     const txt = await res.text().catch(() => "");
     return { ok: false, status: res.status, error: txt };
   }
-  return { ok: true, status: res.status };
 }
 
+async function githubGetVideosManifest(env: Env): Promise<any[]> {
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/dist/videos/manifest.json?ref=${env.GITHUB_BRANCH || "main"}&_t=${Date.now()}`,
+      {
+        headers: {
+          Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+          Accept: "application/vnd.github+json",
+          "User-Agent": "arw-site-bot",
+        },
+      }
+    );
+    if (!res.ok) return [];
+    const data: any = await res.json();
+    if (!data.content) return [];
+    const content = base64DecodeUtf8(data.content.replace(/\n/g, ""));
+    return JSON.parse(content);
+  } catch (e) {
+    return [];
+  }
+}
 
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
@@ -2352,6 +2372,105 @@ export default {
         }
       }
 
+      if (path === "/api/videos/list" && request.method === "GET") {
+        try {
+          const videos = await githubGetVideosManifest(env);
+          return json({ success: true, videos });
+        } catch (e: any) {
+          return json({ success: false, error: e.message, videos: [] }, 500);
+        }
+      }
+
+      if (path === "/api/videos/check" && request.method === "GET") {
+        try {
+          const rawSlug = decodeURIComponent(url.searchParams.get("slug") || "").toLowerCase().trim();
+          const clean = rawSlug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news|shows|recaps|nostalgia)\//, "").replace(/\.html$/, "").replace(/^\/+/, "").slice(0, 45);
+
+          const manifest = await githubGetVideosManifest(env);
+          const matched = manifest.find((v: any) => {
+            const f = (v.filename || "").toLowerCase();
+            const s = (v.cleanSlug || "").toLowerCase();
+            return (rawSlug && (f.includes(rawSlug) || s.includes(rawSlug) || rawSlug.includes(s))) ||
+                   (clean && (f.includes(clean) || clean.includes(s) || s.includes(clean)));
+          });
+
+          if (matched) {
+            let videoUrl = matched.videoUrl;
+            if (!videoUrl.startsWith("http")) {
+              videoUrl = `${env.SITE_ORIGIN}${videoUrl.startsWith("/") ? "" : "/"}${videoUrl}`;
+            }
+            return json({
+              exists: true,
+              filename: matched.filename,
+              videoUrl,
+              size: matched.size,
+              mtime: matched.mtime,
+              cleanSlug: matched.cleanSlug,
+            });
+          }
+
+          // Check if GitHub Actions is currently running generate-reel.yml
+          let runStatus = "unknown";
+          let runConclusion: string | null = null;
+          try {
+            const runsRes = await fetch(
+              `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/generate-reel.yml/runs?per_page=1`,
+              {
+                headers: {
+                  Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+                  Accept: "application/vnd.github+json",
+                  "User-Agent": "arw-site-bot",
+                },
+              }
+            );
+            if (runsRes.ok) {
+              const runsData: any = await runsRes.json();
+              if (runsData.workflow_runs && runsData.workflow_runs.length > 0) {
+                const latestRun = runsData.workflow_runs[0];
+                runStatus = latestRun.status; // queued, in_progress, completed
+                runConclusion = latestRun.conclusion;
+              }
+            }
+          } catch (_) {}
+
+          return json({
+            exists: false,
+            runStatus,
+            runConclusion,
+          });
+        } catch (e: any) {
+          return json({ exists: false, error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/videos/raw" && request.method === "GET") {
+        try {
+          const file = decodeURIComponent(url.searchParams.get("file") || "").trim();
+          if (!file || !file.endsWith(".mp4")) return json({ error: "Invalid filename" }, 400);
+          const safeName = file.split("/").pop() || "";
+          const ghRes = await fetch(
+            `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/dist/videos/${encodeURIComponent(safeName)}?ref=${env.GITHUB_BRANCH || "main"}`,
+            {
+              headers: {
+                Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+                Accept: "application/vnd.github.raw+json",
+                "User-Agent": "arw-site-bot",
+              },
+            }
+          );
+          if (!ghRes.ok) return json({ error: "Video not found in repository" }, 404);
+          return new Response(ghRes.body, {
+            headers: {
+              "Content-Type": "video/mp4",
+              "Access-Control-Allow-Origin": "*",
+              "Cache-Control": "public, max-age=86400",
+            },
+          });
+        } catch (e: any) {
+          return json({ error: e.message }, 500);
+        }
+      }
+
       if (path === "/api/videos/dispatch" && request.method === "POST") {
         try {
           const body: any = await request.json().catch(() => ({}));
@@ -2382,6 +2501,17 @@ export default {
           } catch (e) {
             fullVideoUrl = encodeURI(fullVideoUrl);
           }
+
+          // Reliability check: if fullVideoUrl returns 404 on site origin, fallback to raw worker URL
+          try {
+            const headCheck = await fetch(fullVideoUrl, { method: "HEAD" });
+            if (!headCheck.ok && headCheck.status === 404) {
+              const filename = fullVideoUrl.split("/").pop();
+              if (filename && filename.endsWith(".mp4")) {
+                fullVideoUrl = `https://arw-site-bot.m7mdibrahimpc.workers.dev/api/videos/raw?file=${encodeURIComponent(filename)}`;
+              }
+            }
+          } catch (_) {}
 
           const title = String(body.title || "").trim();
           const postUrl = body.postUrl ? String(body.postUrl).trim() : undefined;
