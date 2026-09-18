@@ -110,6 +110,16 @@
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18112242/images-18.jpg"
   },
   {
+    "id": 10390,
+    "link": "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more/",
+    "date": "2026-09-18T11:06:00",
+    "date_gmt": "2026-09-18T15:06:00",
+    "title": {
+      "rendered": "WWE, AEW, TNA, NJPW Wrestler Injury Report List: Expected Returns, Inactives | Fightful"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/17140514/Resources.png"
+  },
+  {
     "id": 329047,
     "link": "https://www.fightful.com/wrestling/cmll-93-anniversary-preview-start-time-how-to-watch-9-18/",
     "date": "2026-09-18T11:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Moose Def. Frankie Kazarian To Save TNA Career On 9/17 Thursday Night iMPACT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17230543/HSd5xOBWMAAAIjV.jpg"
-  },
-  {
-    "id": 329025,
-    "link": "https://www.fightful.com/wrestling/roh-tv-results-9-17-bandido-competes/",
-    "date": "2026-09-17T22:30:00",
-    "date_gmt": "2026-09-18T02:30:00",
-    "title": {
-      "rendered": "ROH TV Results (9/17): Bandido Competes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17215402/HSV_r06XMAAjmKU.jpeg"
   }
 ]
