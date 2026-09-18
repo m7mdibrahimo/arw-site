@@ -414,10 +414,11 @@ html.arw-dark .post-bookmark-btn.bookmarked {
 .instant-search-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  right: 0;
-  left: auto;
-  width: 440px;
-  max-width: min(480px, calc(100vw - 24px));
+  right: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -492,25 +493,29 @@ html.arw-dark .post-bookmark-btn.bookmarked {
   transform: translateX(-3px);
 }
 .instant-search-thumb {
-  width: 68px !important;
-  height: 46px !important;
-  min-width: 68px !important;
-  max-width: 68px !important;
+  width: 62px !important;
+  height: 42px !important;
+  min-width: 62px !important;
+  max-width: 62px !important;
   border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
   background: #181c24;
   border: 1px solid var(--line);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  order: 1 !important;
+  margin: 0 !important;
 }
 .instant-search-info {
-  flex: 1 1 auto !important;
+  flex: 1 1 0% !important;
   min-width: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 5px !important;
+  gap: 4px !important;
   direction: rtl !important;
   text-align: right !important;
+  overflow: hidden !important;
+  order: 2 !important;
 }
 .instant-search-title {
   font-family: 'Cairo', sans-serif;
@@ -602,15 +607,6 @@ html.arw-dark .post-bookmark-btn.bookmarked {
 }
 
 @media (max-width: 600px) {
-  .instant-search-dropdown {
-    position: fixed;
-    top: 66px;
-    left: 10px;
-    right: 10px;
-    width: auto;
-    max-width: none;
-    border-radius: 16px;
-  }
   .bookmarks-drawer {
     max-width: 100%;
   }
