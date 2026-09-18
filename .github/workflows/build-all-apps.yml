@@ -3,8 +3,6 @@ name: Build Arab Wrestling Desktop & Mobile Apps
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 
@@ -21,6 +19,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
       - name: Install Pake CLI
         run: npm install -g pake-cli
 
@@ -28,12 +29,10 @@ jobs:
         run: |
           pake https://arab-wrestling.com/ `
             --name "ArabWrestling" `
-            --title "عرب راسلنج" `
             --width 1300 `
             --height 850 `
             --new-window `
             --icon assets/arab_wrestling.ico `
-            --safe-domain "arab-wrestling.com" `
             --targets msi
 
       - name: Upload Windows MSI Artifact
@@ -54,6 +53,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
       - name: Install Linux Dependencies
         run: |
           sudo apt-get update
@@ -66,12 +68,10 @@ jobs:
         run: |
           pake https://arab-wrestling.com/ \
             --name "ArabWrestling" \
-            --title "عرب راسلنج" \
             --width 1300 \
             --height 850 \
             --new-window \
             --icon assets/icon-512.png \
-            --safe-domain "arab-wrestling.com" \
             --targets deb
 
       - name: Upload Linux DEB Artifact
@@ -79,3 +79,4 @@ jobs:
         with:
           name: ArabWrestling-Linux-DEB
           path: "*.deb"
+

@@ -10,6 +10,10 @@ on:
         required: false
         default: ''
 
+concurrency:
+  group: fightful-watcher
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -37,9 +41,9 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.post_url }}" ]; then
             echo "Processing requested post URLs: ${{ github.event.inputs.post_url }}"
-            npx tsx scripts/fightful-watcher.ts --urls="${{ github.event.inputs.post_url }}"
+            npx tsx scripts/fightful-watcher.ts --urls="${{ github.event.inputs.post_url }}" || echo "Watcher finished with warning"
           else
-            npx tsx scripts/fightful-watcher.ts
+            npx tsx scripts/fightful-watcher.ts || echo "Watcher finished with warning"
           fi
 
       - name: Commit and push if new articles were generated
@@ -49,8 +53,16 @@ jobs:
           if [[ -n $(git status -s) ]]; then
             git add -A
             git commit -m "feat(news): auto-publish latest wrestling news"
-            git pull --rebase --autostash origin main || true
-            git push origin main
+            for i in {1..3}; do
+              git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
+              if git push origin main; then
+                echo "Successfully pushed news to main."
+                break
+              fi
+              echo "Push retry $i/3 failed, retrying in 3 seconds..."
+              sleep 3
+            done
           else
             echo "No new news articles found."
           fi
+

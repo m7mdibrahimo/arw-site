@@ -20,3 +20,4 @@ vite.config.ts
 videos/**/*.mp4
 videos/**/assets/
 dist/videos/
+.agents/
