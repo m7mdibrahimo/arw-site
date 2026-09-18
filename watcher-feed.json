@@ -1,5 +1,15 @@
 [
   {
+    "id": 329185,
+    "link": "https://www.fightful.com/wrestling/aew-dynamite-9-16-viewership-back-over-700000-viewers/",
+    "date": "2026-09-18T19:46:45",
+    "date_gmt": "2026-09-18T23:46:45",
+    "title": {
+      "rendered": "AEW Dynamite (9/16) Viewership Back Over 700,000 Viewers"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/10194242/dynamite-2024-1-2.jpg"
+  },
+  {
     "id": 329183,
     "link": "https://www.fightful.com/wrestling/wwe-smackdown-results-9-18-2026-sami-zayn-appears-mitb-qualifiers-more/",
     "date": "2026-09-18T19:20:00",
@@ -288,15 +298,5 @@
       "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
-  },
-  {
-    "id": 329013,
-    "link": "https://www.fightful.com/wrestling/wrestling-open-ri-results-9-14/",
-    "date": "2026-09-18T09:00:00",
-    "date_gmt": "2026-09-18T13:00:00",
-    "title": {
-      "rendered": "Wrestling Open RI Results (9/14)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17195939/HSCj44ZaAAAbahp.jpeg"
   }
 ]
