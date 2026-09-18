@@ -795,9 +795,43 @@
     #navMenu li.utility-row .telegram-btn{ order:3; }
     #navMenu .theme-toggle, #navMenu .telegram-btn{ width:40px; height:40px; }
   }
+
+  /* تموضع زر حفظ للمشاهدة: على اليسار بالديسكتوب وفي المنتصف التام بالموبايل */
+  .post-bookmark-wrap {
+    margin-inline-start: auto;
+    display: inline-flex;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .post-meta-bar {
+      position: relative;
+    }
+    .post-bookmark-wrap {
+      flex-basis: 100% !important;
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      margin: 10px 0 2px 0 !important;
+      order: 99 !important;
+    }
+    .post-bookmark-wrap .post-bookmark-btn {
+      margin: 0 auto !important;
+      display: inline-flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 6px 20px !important;
+      font-size: 13px !important;
+      border-radius: 999px !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    }
+  }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260917k">
-<link rel="stylesheet" href="/assets/features.css?v=20260918a">
+<link rel="stylesheet" href="/assets/features.css?v=20260918b">
 </head>
 <body>
 <header>
@@ -1643,7 +1677,7 @@
 
 </script>
 <script src="/assets/notif.js" defer></script>
-<script src="/assets/features.js?v=20260918a" defer></script>
+<script src="/assets/features.js?v=20260918b" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

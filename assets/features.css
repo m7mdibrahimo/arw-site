@@ -574,21 +574,30 @@ html.arw-dark .post-bookmark-btn.bookmarked {
   .bookmarks-drawer {
     max-width: 100%;
   }
+}
 
+@media (max-width: 768px) {
   /* تموضع زر حفظ للمشاهدة في المنتصف تماماً في نسخة الموبايل */
   .post-bookmark-wrap {
+    flex-basis: 100% !important;
     width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    margin: 8px auto 2px !important;
+    text-align: center !important;
+    margin: 10px 0 2px 0 !important;
     order: 99 !important;
   }
   .post-bookmark-btn {
     margin: 0 auto !important;
-    padding: 6px 18px !important;
-    font-size: 12.5px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 6px 20px !important;
+    font-size: 13px !important;
     border-radius: 999px !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
   }
 }
