@@ -1,5 +1,15 @@
 [
   {
+    "id": 329016,
+    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-9-17/",
+    "date": "2026-09-17T23:30:00",
+    "date_gmt": "2026-09-18T03:30:00",
+    "title": {
+      "rendered": "WWE Main Event Results (9/17)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17203558/maxresdefault-112.jpg"
+  },
+  {
     "id": 329036,
     "link": "https://www.fightful.com/wrestling/moose-def-frankie-kazarian-to-save-tna-career-on-9-17-thursday-night-impact/",
     "date": "2026-09-17T23:06:53",
@@ -288,15 +298,5 @@
       "rendered": "Perry Saturn Details 2004 Shooting Incident"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/05/08000639/perry_saturn_0_1_1.jpg"
-  },
-  {
-    "id": 328939,
-    "link": "https://www.fightful.com/wrestling/logan-paul-wont-be-cleared-until-at-least-november/",
-    "date": "2026-09-17T11:24:45",
-    "date_gmt": "2026-09-17T15:24:45",
-    "title": {
-      "rendered": "Logan Paul Won&#8217;t Be Cleared Until At Least November"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/05025446/logan_paul_19.jpg"
   }
 ]
