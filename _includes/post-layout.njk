@@ -10,6 +10,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageTitle = headline or title %}
 {% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
+{% set isNews = (kind == 'news') or (page.inputPath and ("content/news" in page.inputPath)) or (page.url and page.url.startsWith('/news/')) %}
 <title>{{ pageTitle }} | عرب راسلنج</title>
 {% set baseDesc = description or (content | striptags | truncate(140)) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
 {% set metaDesc = (pageTitle + " - " + baseDesc) | truncate(165) %}
@@ -21,7 +22,7 @@
 <link rel="alternate" type="application/rss+xml" title="عرب راسلنج - تغذية الأخبار RSS" href="https://arab-wrestling.com/feed.xml">
 
 {% set schemaImage = (image | absUrl) if image else 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop' %}
-{% set isVideoContent = servers and servers.length %}
+{% set isVideoContent = (servers and servers.length) and not isNews %}
 {% set pageUrl = 'https://arab-wrestling.com' + (page.url | cleanUrl) %}
 
 <!-- Open Graph / Facebook -->
@@ -66,9 +67,9 @@
       {% if tags and tags.length %}"keywords": "{{ tags | join(', ') | escape }}",{% endif %}
       "inLanguage": "ar",
       "author": {
-        "@type": "Organization",
-        "name": "عرب راسلنج",
-        "url": "https://arab-wrestling.com/"
+        "@type": "{{ 'Person' if (author and author != 'عرب راسلنج' and author != 'فريق تحرير عرب راسلنج') else 'Organization' }}",
+        "name": "{{ (author or 'فريق تحرير عرب راسلنج') | escape }}",
+        "url": "https://arab-wrestling.com/about/"
       },
       "publisher": {
         "@type": "Organization",
