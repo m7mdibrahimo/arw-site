@@ -1190,6 +1190,10 @@ module.exports = function(eleventyConfig) {
             const numMatch = file.match(/^(\d{4})(\d{2})(\d{2})/);
             if (numMatch) {
               time = new Date(`${numMatch[1]}-${numMatch[2]}-${numMatch[3]}`).getTime() || 0;
+            } else {
+              try {
+                time = fs.statSync(`${dir}/${file}`).mtimeMs || 0;
+              } catch(e) {}
             }
           }
           items.push({ file, time });
