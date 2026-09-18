@@ -1,5 +1,15 @@
 [
   {
+    "id": 329183,
+    "link": "https://www.fightful.com/wrestling/wwe-smackdown-results-9-18-2026-sami-zayn-appears-mitb-qualifiers-more/",
+    "date": "2026-09-18T19:20:00",
+    "date_gmt": "2026-09-18T23:20:00",
+    "title": {
+      "rendered": "WWE SmackDown Results (9/18/2026): Sami Zayn Appears, MITB Qualifiers, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16214129/20260916_SD_Match_Sami_16x9_friday-2.jpg"
+  },
+  {
     "id": 329179,
     "link": "https://www.fightful.com/wrestling/monsters-mayhem-match-set-for-mlp-northern-rising/",
     "date": "2026-09-18T19:10:22",
@@ -288,15 +298,5 @@
       "rendered": "Wrestling Open RI Results (9/14)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17195939/HSCj44ZaAAAbahp.jpeg"
-  },
-  {
-    "id": 329067,
-    "link": "https://www.fightful.com/wrestling/tony-schiavone-i-think-theres-a-very-good-career-ahead-of-steven-borden/",
-    "date": "2026-09-18T08:24:39",
-    "date_gmt": "2026-09-18T12:24:39",
-    "title": {
-      "rendered": "Tony Schiavone: I Think There&#8217;s A Very Good Career Ahead Of Steven Borden"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/06/08012121/tony-schiavone-aew-microphone.jpg"
   }
 ]
