@@ -153,6 +153,12 @@ html.arw-dark .spoiler-result {
   transition: transform 0.2s ease;
 }
 
+.post-bookmark-wrap {
+  margin-inline-start: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
 .post-bookmark-btn {
   display: inline-flex;
   align-items: center;
@@ -167,7 +173,6 @@ html.arw-dark .spoiler-result {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  margin-inline-start: auto;
   flex-shrink: 0;
 }
 .post-bookmark-btn:hover {
@@ -568,5 +573,22 @@ html.arw-dark .post-bookmark-btn.bookmarked {
   }
   .bookmarks-drawer {
     max-width: 100%;
+  }
+
+  /* تموضع زر حفظ للمشاهدة في المنتصف تماماً في نسخة الموبايل */
+  .post-bookmark-wrap {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 8px auto 2px !important;
+    order: 99 !important;
+  }
+  .post-bookmark-btn {
+    margin: 0 auto !important;
+    padding: 6px 18px !important;
+    font-size: 12.5px !important;
+    border-radius: 999px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 }
