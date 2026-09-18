@@ -1,5 +1,15 @@
 [
   {
+    "id": 329123,
+    "link": "https://www.fightful.com/wrestling/ganon-jones-jr-steps-away-from-wrestling-following-the-butcher-andy-williams-passing/",
+    "date": "2026-09-18T14:39:11",
+    "date_gmt": "2026-09-18T18:39:11",
+    "title": {
+      "rendered": "Ganon Jones Jr. Steps Away From Wrestling Following &#8216;The Butcher&#8217; Andy Williams’ Passing"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18143433/Repost-from-%E2%80%A2-%40murphyleemoschetta-2025.12.13-Duke-Davis-Ganon-Jones-Jr-TME%40dukedavistme-1.jpg"
+  },
+  {
     "id": 329119,
     "link": "https://www.fightful.com/wrestling/malakai-black-says-match-with-randy-orton-was-pitched-for-wrestlemania-42/",
     "date": "2026-09-18T14:23:36",
@@ -160,6 +170,16 @@
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/30212725/kurt_angle_6.jpg"
   },
   {
+    "id": 14463,
+    "link": "https://www.fightful.com/wrestling/confirmed-wrestling-contract-expirations/",
+    "date": "2026-09-18T09:00:00",
+    "date_gmt": "2026-09-18T13:00:00",
+    "title": {
+      "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
+  },
+  {
     "id": 329013,
     "link": "https://www.fightful.com/wrestling/wrestling-open-ri-results-9-14/",
     "date": "2026-09-18T09:00:00",
@@ -278,25 +298,5 @@
       "rendered": "ROH TV Results (9/17): Bandido Competes"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17215402/HSV_r06XMAAjmKU.jpeg"
-  },
-  {
-    "id": 329026,
-    "link": "https://www.fightful.com/wrestling/eddie-edwards-issues-challenge-to-ricky-sosa-for-tna-bound-for-glory/",
-    "date": "2026-09-17T22:07:18",
-    "date_gmt": "2026-09-18T02:07:18",
-    "title": {
-      "rendered": "Eddie Edwards Issues Challenge To Ricky Sosa For TNA Bound For Glory"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17220617/HSdrMwrXgAEgrB4.png"
-  },
-  {
-    "id": 329022,
-    "link": "https://www.fightful.com/wrestling/rich-swann-qualifies-for-tna-x-division-title-match-at-bound-for-glory/",
-    "date": "2026-09-17T21:37:54",
-    "date_gmt": "2026-09-18T01:37:54",
-    "title": {
-      "rendered": "Rich Swann Qualifies For TNA X Division Title Match At Bound For Glory"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17213623/HSdlWbPXIAAk2NF.jpg"
   }
 ]
