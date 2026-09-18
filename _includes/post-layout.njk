@@ -1242,10 +1242,11 @@
       </div>
       <div class="related-posts-grid">
         {% for rItem in relatedPosts %}
+        {% set rThumb = rItem.data.image or rItem.data.poster or rItem.data.thumbnail or rItem.data.header_image %}
         <a href="{{ rItem.url }}" class="related-card">
           <div class="related-card-thumb">
-            {% if rItem.data.poster %}
-              <img src="{{ rItem.data.poster }}" alt="{{ rItem.data.title }}" loading="lazy" width="280" height="155">
+            {% if rThumb %}
+              <img src="{% optImg rThumb, 'https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg' %}" alt="{{ rItem.data.title }}" loading="lazy" width="280" height="155">
             {% else %}
               <div class="related-card-placeholder">عرب راسلنج</div>
             {% endif %}
