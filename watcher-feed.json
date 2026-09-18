@@ -1,5 +1,15 @@
 [
   {
+    "id": 329179,
+    "link": "https://www.fightful.com/wrestling/monsters-mayhem-match-set-for-mlp-northern-rising/",
+    "date": "2026-09-18T19:10:22",
+    "date_gmt": "2026-09-18T23:10:22",
+    "title": {
+      "rendered": "Monster&#8217;s Mayhem Match Set For MLP Northern Rising"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18190921/Screenshot-2026-09-18-at-7.04.03-PM.png"
+  },
+  {
     "id": 329177,
     "link": "https://www.fightful.com/mma/ufc-331-weigh-in-results/",
     "date": "2026-09-18T18:59:53",
@@ -288,15 +298,5 @@
       "rendered": "Tony Schiavone: I Think There&#8217;s A Very Good Career Ahead Of Steven Borden"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/06/08012121/tony-schiavone-aew-microphone.jpg"
-  },
-  {
-    "id": 329066,
-    "link": "https://www.fightful.com/wrestling/chelsea-green-says-nick-aldis-helped-write-8-14-wwe-smackdown-promo-felt-title-reign-was-going-in-lame-direction-before-injury/",
-    "date": "2026-09-18T08:13:07",
-    "date_gmt": "2026-09-18T12:13:07",
-    "title": {
-      "rendered": "Chelsea Green Says Nick Aldis Helped Write 8/14 WWE SmackDown Promo, Felt Title Reign Was Going In Lame Direction Before Injury"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18081311/maxresdefault-114.jpg"
   }
 ]
