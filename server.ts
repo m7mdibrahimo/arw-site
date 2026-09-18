@@ -1512,6 +1512,108 @@ app.use((req, res, next) => {
   next();
 });
 
+// ── Video Reels API & Static Serving ──────────────────────────────────
+const videosDistPath = path.join(process.cwd(), "dist", "videos");
+if (!fs.existsSync(videosDistPath)) {
+  fs.mkdirSync(videosDistPath, { recursive: true });
+}
+
+app.use("/videos", express.static(videosDistPath, {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith(".mp4")) {
+      res.setHeader("Content-Type", "video/mp4");
+      res.setHeader("Accept-Ranges", "bytes");
+      res.setHeader("Cache-Control", "public, max-age=86400");
+    }
+  }
+}));
+
+app.get("/api/videos/check", (req, res) => {
+  const slug = String(req.query.slug || "").trim();
+  if (!slug) return res.json({ exists: false });
+
+  const cleanSlug = slug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news\/)?/, "").replace(/\.html$/, "").slice(0, 45);
+  if (!fs.existsSync(videosDistPath)) return res.json({ exists: false });
+
+  const files = fs.readdirSync(videosDistPath);
+  const found = files.find(f => f.endsWith(".mp4") && f.includes(cleanSlug));
+  if (found) {
+    const stat = fs.statSync(path.join(videosDistPath, found));
+    return res.json({
+      exists: true,
+      videoUrl: `/videos/${found}`,
+      filename: found,
+      size: stat.size,
+    });
+  }
+  return res.json({ exists: false });
+});
+
+app.get("/api/videos/list", (req, res) => {
+  if (!fs.existsSync(videosDistPath)) return res.json({ videos: [] });
+  const files = fs.readdirSync(videosDistPath).filter(f => f.endsWith(".mp4"));
+  const videos = files.map(f => {
+    const stat = fs.statSync(path.join(videosDistPath, f));
+    return {
+      filename: f,
+      videoUrl: `/videos/${f}`,
+      size: stat.size,
+      mtime: stat.mtimeMs,
+    };
+  }).sort((a, b) => b.mtime - a.mtime);
+  res.json({ videos });
+});
+
+app.post("/api/videos/generate", (req, res) => {
+  const { slug, file } = req.body || {};
+  const newsDir = path.join(process.cwd(), "content", "news");
+  let targetFile = "";
+
+  if (file && fs.existsSync(file)) {
+    targetFile = file;
+  } else if (file && fs.existsSync(path.join(newsDir, file))) {
+    targetFile = path.join(newsDir, file);
+  } else if (slug) {
+    const cleanSlug = slug.replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news\/)?/, "").replace(/\.html$/, "");
+    if (fs.existsSync(newsDir)) {
+      const files = fs.readdirSync(newsDir).filter(f => f.endsWith(".md"));
+      const matched = files.find(f => f.includes(cleanSlug));
+      if (matched) {
+        targetFile = path.join(newsDir, matched);
+      }
+    }
+  }
+
+  if (!targetFile && fs.existsSync(newsDir)) {
+    const files = fs.readdirSync(newsDir).filter(f => f.endsWith(".md"));
+    files.sort((a, b) => fs.statSync(path.join(newsDir, b)).mtimeMs - fs.statSync(path.join(newsDir, a)).mtimeMs);
+    if (files.length) targetFile = path.join(newsDir, files[0]);
+  }
+
+  if (!targetFile || !fs.existsSync(targetFile)) {
+    return res.status(404).json({ error: "News article not found" });
+  }
+
+  const scriptPath = path.join(process.cwd(), "scripts", "generate-news-video.ts");
+  console.log(`[Videos API] Generating reel for: ${targetFile}`);
+
+  exec(`npx tsx "${scriptPath}" "${targetFile}"`, { cwd: process.cwd(), timeout: 180000 }, (error, stdout, stderr) => {
+    if (error) {
+      console.error("[Videos API] Error generating video:", error, stderr);
+      return res.status(500).json({ error: "Failed to generate video", details: error.message });
+    }
+
+    const baseSlug = path.basename(targetFile, ".md").slice(0, 45);
+    const filename = `reel-${baseSlug}.mp4`;
+    res.json({
+      success: true,
+      videoUrl: `/videos/${filename}`,
+      filename,
+      title: path.basename(targetFile, ".md"),
+    });
+  });
+});
+
 // Serve static assets from _site.
 // maxAge tells the visitor's browser to reuse cached images/CSS/JS instead
 // of re-downloading them on every page view. Images/CSS/JS get a long cache

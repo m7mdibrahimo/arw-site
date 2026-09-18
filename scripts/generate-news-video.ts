@@ -51,8 +51,8 @@ function getTargetNewsFile(input?: string): string {
   return path.join(NEWS_DIR, files[0]);
 }
 
-async function main() {
-  const targetFile = getTargetNewsFile(process.argv[2]);
+export async function generateNewsVideo(inputTarget?: string) {
+  const targetFile = getTargetNewsFile(inputTarget);
   console.log(`🎬 Processing News Post: ${path.basename(targetFile)}`);
 
   const raw = fs.readFileSync(targetFile, 'utf-8');
@@ -76,9 +76,9 @@ async function main() {
     console.warn(`⚠️ Warning: Image not found at ${imageSrc}, using fallback`);
   }
 
-  // Generate index.html for reel
+  // Generate index.html for reel (Note: avoid dir="rtl" on <html> for HyperFrames headless capture)
   const htmlTemplate = `<!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
@@ -98,9 +98,7 @@ async function main() {
         height: 1920px;
         overflow: hidden;
         background: #090b10;
-        font-family: 'Cairo', 'Geeza Pro', 'Damascus', 'Arial', sans-serif;
-        direction: rtl;
-        text-align: right;
+        font-family: 'Cairo', Arial, sans-serif;
         color: #ffffff;
       }
 
@@ -109,6 +107,8 @@ async function main() {
         width: 1080px;
         height: 1920px;
         overflow: hidden;
+        direction: rtl;
+        text-align: right;
         background: radial-gradient(circle at 50% 12%, rgba(220, 38, 38, 0.35) 0%, transparent 55%),
                     radial-gradient(circle at 50% 88%, rgba(245, 158, 11, 0.2) 0%, transparent 55%),
                     #090c10;
@@ -325,9 +325,19 @@ async function main() {
   });
 
   console.log(`\n🎉 Success! Video generated at: ${outPath}`);
+  return {
+    success: true,
+    videoUrl: `/videos/reel-${baseSlug}.mp4`,
+    filename: `reel-${baseSlug}.mp4`,
+    filePath: outPath,
+    title,
+  };
 }
 
-main().catch(err => {
-  console.error('❌ Error generating video:', err);
-  process.exit(1);
-});
+if (require.main === module || process.argv[1]?.endsWith('generate-news-video.ts')) {
+  generateNewsVideo(process.argv[2]).catch(err => {
+    console.error('❌ Error generating video:', err);
+    process.exit(1);
+  });
+}
+

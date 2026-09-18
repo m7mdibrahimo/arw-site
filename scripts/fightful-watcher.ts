@@ -1739,6 +1739,14 @@ ${finalBody}
   fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
   console.log(`[Watcher] Successfully published fresh news file: ${targetFilePath}`);
 
+  // Optional background auto-reel generation if enabled
+  if (process.env.AUTO_GENERATE_REEL === "true") {
+    import("./generate-news-video.js")
+      .catch(() => import("./generate-news-video.ts"))
+      .then(m => m.generateNewsVideo(targetFilePath))
+      .catch(err => console.warn("[Watcher] Auto-reel note:", err.message));
+  }
+
   // Register 301 redirect if old article had a different URL
   if (oldSlug && oldSlug !== slug) {
     try {

@@ -549,6 +549,72 @@
     width: 100% !important;
     min-height: 340px;
   }
+
+  /* ── ARW Reels Video Player ── */
+  .arw-reel-card {
+    max-width: 380px;
+    margin: 28px auto 32px;
+    background: linear-gradient(180deg, #131722 0%, #0d0f15 100%);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(220, 38, 38, 0.15);
+    text-align: center;
+  }
+  .arw-reel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .arw-reel-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.12);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+  }
+  .arw-reel-dot {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ef4444;
+    animation: arw-pulse 1.5s infinite;
+  }
+  @keyframes arw-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+  .arw-reel-hint {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+  .arw-reel-video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  .arw-reel-video-wrapper video {
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    display: block;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+  }
+
   .youtube-skeleton {
     position: absolute;
     inset: 0;
@@ -784,6 +850,43 @@
 
     {% if image and isNews %}
     <img class="post-cover reveal" src="{% optImg image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{{ title }}">
+
+    <!-- 🎬 ARW Reels Video Showcase -->
+    <div id="arwReelShowcase" class="arw-reel-card reveal" style="display: none;">
+      <div class="arw-reel-header">
+        <div class="arw-reel-badge">
+          <span class="arw-reel-dot"></span>
+          <span>عرب راسلنج REELS</span>
+        </div>
+        <div class="arw-reel-hint">شاهد ملخص الخبر سريعاً ⚡</div>
+      </div>
+      <div class="arw-reel-video-wrapper">
+        <video id="arwReelVideo" playsinline preload="metadata" controls poster="{% optImg image, '' %}">
+          <source src="" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+    </div>
+    <script>
+      (function checkReelAvailability() {
+        var wrap = document.getElementById('arwReelShowcase');
+        var vid = document.getElementById('arwReelVideo');
+        if (!wrap || !vid) return;
+        var slug = window.location.pathname.replace(/^\/news\//, '').replace(/\/+$/, '').replace(/\.html$/, '');
+        if (!slug) return;
+        fetch('/api/videos/check?slug=' + encodeURIComponent(slug))
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data && data.exists && data.videoUrl) {
+              var srcEl = vid.querySelector('source');
+              if (srcEl) srcEl.src = data.videoUrl;
+              vid.load();
+              wrap.style.display = 'block';
+            }
+          })
+          .catch(function() {});
+      })();
+    </script>
     {% endif %}
 
     {% if servers and servers.length %}
