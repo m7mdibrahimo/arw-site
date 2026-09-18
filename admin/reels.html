@@ -998,7 +998,8 @@
     resBox.style.display = 'block';
     resBox.innerHTML = '<div style="color:#94a3b8;">⏳ جاري إرسال الفيديو عبر واجهات الربط الرسمية للمنصات المختارة...</div>';
 
-    const postFullUrl = currentItem.url ? (currentItem.url.startsWith('http') ? currentItem.url : 'https://arabwrestling.org' + currentItem.url) : '';
+    const postFullUrl = currentItem.url ? (currentItem.url.startsWith('http') ? currentItem.url : 'https://arab-wrestling.com' + currentItem.url) : '';
+    const postImageUrl = currentItem.image ? (currentItem.image.startsWith('http') ? currentItem.image : 'https://arab-wrestling.com' + (currentItem.image.startsWith('/') ? '' : '/') + currentItem.image) : undefined;
 
     try {
       const res = await fetch(`${API_BASE}/api/videos/publish-social`, {
@@ -1009,6 +1010,7 @@
           slug: getItemSlug(currentItem),
           title: currentItem.title,
           postUrl: postFullUrl,
+          imageUrl: postImageUrl,
           platforms,
         })
       });

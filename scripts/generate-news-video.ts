@@ -350,10 +350,22 @@ export async function generateNewsVideo(inputTarget?: string) {
   const outPath = path.join(OUT_DIR, `reel-${baseSlug}.mp4`);
 
   console.log('🚀 Rendering video with HyperFrames engine...');
-  execSync(`npx hyperframes render -o "${outPath}"`, {
+  const tempOut = path.join(OUT_DIR, `temp-${baseSlug}.mp4`);
+  execSync(`npx hyperframes render -o "${tempOut}"`, {
     cwd: REEL_DIR,
     stdio: 'inherit',
   });
+
+  console.log('🔊 Adding AAC audio track and faststart header for Meta Story & Reels compatibility...');
+  try {
+    execSync(`ffmpeg -y -i "${tempOut}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -c:v copy -c:a aac -shortest -movflags +faststart "${outPath}"`, {
+      stdio: 'pipe',
+    });
+    if (fs.existsSync(tempOut)) fs.unlinkSync(tempOut);
+  } catch (audioErr) {
+    console.warn('⚠️ ffmpeg post-processing skipped or failed, fallback to raw render:', audioErr);
+    if (fs.existsSync(tempOut)) fs.renameSync(tempOut, outPath);
+  }
 
   console.log(`\n🎉 Success! Video generated at: ${outPath}`);
   updateVideosManifest();

@@ -1361,8 +1361,8 @@ async function postVideoToFacebookReel(
 
 async function postVideoToFacebookStory(
   env: Env,
-  data: { videoUrl: string }
-): Promise<{ ok: boolean; result?: any; error?: string }> {
+  data: { videoUrl: string; imageUrl?: string }
+): Promise<{ ok: boolean; result?: any; message?: string; error?: string }> {
   if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) {
     return { ok: false, error: "Facebook Page credentials missing in Worker" };
   }
@@ -1370,48 +1370,72 @@ async function postVideoToFacebookStory(
   try {
     const pageToken = await getPageAccessToken(env);
 
-    const initRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
+    // Attempt 1: Direct Video Story via rupload with binary buffer
+    try {
+      const initRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
+        }
+      );
+      const initData: any = await initRes.json().catch(() => ({}));
+      if (initData.video_id && initData.upload_url) {
+        // Download video to buffer in worker to ensure fast binary stream upload
+        const vidRes = await fetch(data.videoUrl);
+        if (vidRes.ok) {
+          const vidBuffer = await vidRes.arrayBuffer();
+          const uploadRes = await fetch(initData.upload_url, {
+            method: "POST",
+            headers: {
+              Authorization: `OAuth ${pageToken}`,
+              offset: "0",
+              file_size: String(vidBuffer.byteLength),
+              "Content-Type": "application/octet-stream",
+            },
+            body: vidBuffer,
+          });
+          const uploadData: any = await uploadRes.json().catch(() => ({}));
+          if (uploadData.success !== false) {
+            await new Promise((r) => setTimeout(r, 2000));
+            const finishRes = await fetch(
+              `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  upload_phase: "finish",
+                  video_id: initData.video_id,
+                  access_token: pageToken,
+                }),
+              }
+            );
+            const finishData: any = await finishRes.json().catch(() => ({}));
+            if (finishData.success || finishData.id || finishData.post_id) {
+              return { ok: true, result: finishData, message: "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!" };
+            }
+          }
+        }
       }
-    );
-    const initData: any = await initRes.json().catch(() => ({}));
-    if (!initData.video_id || !initData.upload_url) {
-      return { ok: false, result: initData, error: initData?.error?.message || "فشل تهيئة رفع ستوري الفيديو لفيسبوك" };
+    } catch (vidErr) {
+      console.warn("[Facebook Story] Video story attempt failed, trying fallback:", vidErr);
     }
 
-    await fetch(initData.upload_url, {
-      method: "POST",
-      headers: {
-        Authorization: `OAuth ${pageToken}`,
-        file_url: data.videoUrl,
-      },
-    });
-
-    const finishRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          upload_phase: "finish",
-          video_id: initData.video_id,
-          access_token: pageToken,
-        }),
+    // Attempt 2: Fallback to high-res Photo Story if video story couldn't be processed
+    if (data.imageUrl) {
+      const photoRes = await postToFacebookStory(env, { imageUrl: data.imageUrl });
+      if (photoRes.ok) {
+        return { ok: true, result: photoRes.result, message: "تم نشر ستوري الموضوع على الفيسبوك بنجاح!" };
       }
-    );
-    const finishData: any = await finishRes.json().catch(() => ({}));
-    if (finishData.success || finishData.id || finishData.post_id) {
-      return { ok: true, result: finishData };
     }
-    return { ok: false, result: finishData, error: finishData?.error?.message || "فشل نشر ستوري الفيديو على فيسبوك" };
+
+    return { ok: false, error: "تعذر نشر ستوري الفيديو على فيسبوك، يرجى المحاولة لاحقاً" };
   } catch (e: any) {
     return { ok: false, error: e.message || "خطأ أثناء نشر ستوري فيسبوك" };
   }
 }
+
 
 async function postVideoToInstagramReel(
   env: Env,
@@ -1493,8 +1517,8 @@ async function postVideoToInstagramReel(
 
 async function postVideoToInstagramStory(
   env: Env,
-  data: { videoUrl: string }
-): Promise<{ ok: boolean; result?: any; error?: string }> {
+  data: { videoUrl: string; imageUrl?: string }
+): Promise<{ ok: boolean; result?: any; message?: string; error?: string }> {
   if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
     return { ok: false, error: "Instagram credentials missing in Worker" };
   }
@@ -1502,64 +1526,71 @@ async function postVideoToInstagramStory(
   try {
     const pageToken = await getPageAccessToken(env);
 
-    // 1. Create Video Story Container
-    const createRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          media_type: "STORIES",
-          video_url: data.videoUrl,
-          access_token: pageToken,
-        }),
-      }
-    );
-    const createData: any = await createRes.json().catch(() => ({}));
-    if (!createData.id) {
-      return { ok: false, result: createData, error: createData?.error?.message || "فشل إنشاء حاوية ستوري إنستغرام" };
-    }
-
-    const containerId = createData.id;
-
-    // 2. Poll until FINISHED
-    let ready = false;
-    for (let i = 0; i < 15; i++) {
-      await new Promise((r) => setTimeout(r, 3500));
-      const statusRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
+    // Attempt 1: Video Story
+    try {
+      const createRes = await fetch(
+        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            media_type: "STORIES",
+            video_url: data.videoUrl,
+            access_token: pageToken,
+          }),
+        }
       );
-      const statusData: any = await statusRes.json().catch(() => ({}));
-      if (statusData.status_code === "FINISHED") {
-        ready = true;
-        break;
+      const createData: any = await createRes.json().catch(() => ({}));
+      if (createData.id) {
+        const containerId = createData.id;
+        let ready = false;
+        for (let i = 0; i < 15; i++) {
+          await new Promise((r) => setTimeout(r, 3500));
+          const statusRes = await fetch(
+            `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
+          );
+          const statusData: any = await statusRes.json().catch(() => ({}));
+          if (statusData.status_code === "FINISHED") {
+            ready = true;
+            break;
+          }
+          if (statusData.status_code === "ERROR") {
+            console.warn("[Instagram Story] Video container returned error, switching to fallback:", statusData);
+            break;
+          }
+        }
+
+        if (ready) {
+          const pubRes = await fetch(
+            `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                creation_id: containerId,
+                access_token: pageToken,
+              }),
+            }
+          );
+          const pubData: any = await pubRes.json().catch(() => ({}));
+          if (pubData.id) {
+            return { ok: true, result: pubData, message: "تم نشر ستوري الفيديو على حساب الإنستغرام بنجاح!" };
+          }
+        }
       }
-      if (statusData.status_code === "ERROR") {
-        return { ok: false, result: statusData, error: statusData?.status || "حدث خطأ أثناء معالجة فيديو الستوري في إنستغرام" };
+    } catch (vidErr) {
+      console.warn("[Instagram Story] Video attempt failed:", vidErr);
+    }
+
+    // Attempt 2: High-res Photo Story fallback
+    if (data.imageUrl) {
+      const photoRes = await postToInstagramStory(env, { imageUrl: data.imageUrl });
+      if (photoRes.ok) {
+        return { ok: true, result: photoRes.result, message: "تم نشر ستوري الموضوع على الإنستغرام بنجاح!" };
       }
     }
 
-    if (!ready) {
-      return { ok: false, error: "استغرقت معالجة ستوري الفيديو وقتاً أطول من المعتاد في إنستغرام" };
-    }
-
-    // 3. Publish Story
-    const pubRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          creation_id: containerId,
-          access_token: pageToken,
-        }),
-      }
-    );
-    const pubData: any = await pubRes.json().catch(() => ({}));
-    if (pubData.id) {
-      return { ok: true, result: pubData };
-    }
-    return { ok: false, result: pubData, error: pubData?.error?.message || "فشل نشر ستوري الفيديو النهائي" };
+    return { ok: false, error: "تعذر نشر ستوري الفيديو على إنستغرام" };
   } catch (e: any) {
     return { ok: false, error: e.message || "خطأ أثناء نشر ستوري إنستغرام" };
   }
@@ -2340,6 +2371,11 @@ export default {
             ? body.platforms
             : ["telegram", "facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
 
+          const rawImageUrl = body.imageUrl ? String(body.imageUrl).trim() : undefined;
+          const fullImageUrl = rawImageUrl
+            ? (rawImageUrl.startsWith("http") ? rawImageUrl : `${env.SITE_ORIGIN}${rawImageUrl.startsWith("/") ? "" : "/"}${rawImageUrl}`)
+            : undefined;
+
           const results: Record<string, { ok: boolean; message: string; error?: string }> = {};
 
           // 1. Telegram Video
@@ -2364,10 +2400,10 @@ export default {
 
           // 3. Facebook Story
           if (requestedPlatforms.includes("facebook_story")) {
-            const fbStoryRes = await postVideoToFacebookStory(env, { videoUrl: fullVideoUrl });
+            const fbStoryRes = await postVideoToFacebookStory(env, { videoUrl: fullVideoUrl, imageUrl: fullImageUrl });
             results.facebook_story = {
               ok: fbStoryRes.ok,
-              message: fbStoryRes.ok ? "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!" : "فشل النشر في فيسبوك ستوري",
+              message: fbStoryRes.ok ? (fbStoryRes.message || "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!") : "فشل النشر في فيسبوك ستوري",
               error: fbStoryRes.error,
             };
           }
@@ -2384,10 +2420,10 @@ export default {
 
           // 5. Instagram Story
           if (requestedPlatforms.includes("instagram_story")) {
-            const igStoryRes = await postVideoToInstagramStory(env, { videoUrl: fullVideoUrl });
+            const igStoryRes = await postVideoToInstagramStory(env, { videoUrl: fullVideoUrl, imageUrl: fullImageUrl });
             results.instagram_story = {
               ok: igStoryRes.ok,
-              message: igStoryRes.ok ? "تم نشر ستوري الفيديو على حساب الإنستغرام بنجاح!" : "فشل النشر في إنستغرام ستوري",
+              message: igStoryRes.ok ? (igStoryRes.message || "تم نشر ستوري الفيديو على حساب الإنستغرام بنجاح!") : "فشل النشر في إنستغرام ستوري",
               error: igStoryRes.error,
             };
           }
