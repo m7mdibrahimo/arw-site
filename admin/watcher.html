@@ -1155,6 +1155,8 @@
       btnEl.disabled = false;
       btnEl.innerHTML = '🔄 إعادة نشر وتحديث';
     }
+  };
+
   // Init
   Promise.all([loadWatcherState(), loadSiteIndex()]).then(loadSourceFeed);
 </script>
