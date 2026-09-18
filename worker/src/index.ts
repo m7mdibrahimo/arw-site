@@ -1948,7 +1948,7 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
     }
 
     const now = Date.now();
-    const INTERVAL_MS = 14 * 60 * 1000; // ~14-15 minutes
+    const INTERVAL_MS = 9 * 60 * 1000; // ~9-10 minutes
 
     if (now - lastTrigger >= INTERVAL_MS) {
       let isEnabled = true;

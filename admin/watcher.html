@@ -492,11 +492,11 @@
         } catch (e) {}
         updateStatusUI();
 
-        // Auto catch-up if last checked was more than 16 minutes ago and not already auto-dispatched in this session
+        // Auto catch-up if last checked was more than 10 minutes ago and not already auto-dispatched in this session
         if (watcherState.enabled !== false && watcherState.lastChecked && !window._hasAutoDispatched) {
           const lastTime = new Date(watcherState.lastChecked).getTime();
           const ageMinutes = (Date.now() - lastTime) / (60 * 1000);
-          if (ageMinutes > 16) {
+          if (ageMinutes > 10) {
             window._hasAutoDispatched = true;
             console.log(`[Watcher] Auto-triggering check: last checked was ${Math.round(ageMinutes)} mins ago.`);
             fetch(`${API_BASE}/api/watcher/dispatch`, {
