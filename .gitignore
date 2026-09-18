@@ -14,7 +14,7 @@ telegram-pending-queue.json
 facebook-sent-map.json
 instagram-sent-map.json
 bun.lock
-index.html
+/index.html
 /src/
 vite.config.ts
 videos/**/*.mp4

@@ -1,83 +1,4 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { execSync } from 'node:child_process';
-
-const ROOT_DIR = process.cwd();
-const NEWS_DIR = path.join(ROOT_DIR, 'content/news');
-const REEL_DIR = path.join(ROOT_DIR, 'videos/news-reel');
-const OUT_DIR = path.join(ROOT_DIR, 'dist/videos');
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-function parseFrontmatter(content: string): Record<string, string> {
-  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!match) return {};
-  const lines = match[1].split('\n');
-  const data: Record<string, string> = {};
-  for (const line of lines) {
-    const idx = line.indexOf(':');
-    if (idx !== -1) {
-      const key = line.slice(0, idx).trim();
-      let val = line.slice(idx + 1).trim();
-      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-        val = val.slice(1, -1);
-      }
-      data[key] = val;
-    }
-  }
-  return data;
-}
-
-function getTargetNewsFile(input?: string): string {
-  if (input && fs.existsSync(input)) {
-    return path.resolve(input);
-  }
-  if (input && fs.existsSync(path.join(NEWS_DIR, input))) {
-    return path.join(NEWS_DIR, input);
-  }
-  // Find newest file in content/news
-  const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith('.md'));
-  if (!files.length) throw new Error('No news files found in content/news');
-  files.sort((a, b) => {
-    return fs.statSync(path.join(NEWS_DIR, b)).mtimeMs - fs.statSync(path.join(NEWS_DIR, a)).mtimeMs;
-  });
-  return path.join(NEWS_DIR, files[0]);
-}
-
-async function main() {
-  const targetFile = getTargetNewsFile(process.argv[2]);
-  console.log(`🎬 Processing News Post: ${path.basename(targetFile)}`);
-
-  const raw = fs.readFileSync(targetFile, 'utf-8');
-  const meta = parseFrontmatter(raw);
-
-  const title = meta.headline || meta.title || 'خبر عاجل من عرب راسلنج';
-  const fed = meta.federation || 'عرب راسلنج';
-  const desc = meta.description || 'تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.';
-  let imageRel = meta.image || '';
-  if (imageRel.startsWith('/')) imageRel = imageRel.slice(1);
-
-  const imageSrc = path.join(ROOT_DIR, imageRel);
-  const targetImage = path.join(REEL_DIR, 'assets/news-cover.jpg');
-
-  fs.mkdirSync(path.join(REEL_DIR, 'assets'), { recursive: true });
-  fs.mkdirSync(OUT_DIR, { recursive: true });
-
-  if (fs.existsSync(imageSrc)) {
-    fs.copyFileSync(imageSrc, targetImage);
-  } else {
-    console.warn(`⚠️ Warning: Image not found at ${imageSrc}, using fallback`);
-  }
-
-  // Generate index.html for reel
-  const htmlTemplate = `<!doctype html>
+<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
@@ -275,14 +196,14 @@ async function main() {
       </div>
 
       <div class="media-container" id="mediaCard">
-        <img class="media-img" id="heroImg" src="assets/news-cover.jpg" alt="${escapeHtml(title)}" />
+        <img class="media-img" id="heroImg" src="assets/news-cover.jpg" alt="نتائج عرض TNA iMPACT (17 سبتمبر 2026): مواجهة قوية بين موس وكازاريان.. وظهور مميز ليون سلاتر" />
         <div class="media-overlay"></div>
-        <div class="fed-tag" id="fedTag">${escapeHtml(fed)}</div>
+        <div class="fed-tag" id="fedTag">TNA</div>
       </div>
 
       <div class="content-box" id="contentBox">
-        <h1 class="headline" id="headlineText">${escapeHtml(title)}</h1>
-        <p class="subtext" id="subtext">${escapeHtml(desc)}</p>
+        <h1 class="headline" id="headlineText">نتائج عرض TNA iMPACT (17 سبتمبر 2026): مواجهة قوية بين موس وكازاريان.. وظهور مميز ليون سلاتر</h1>
+        <p class="subtext" id="subtext">تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.</p>
       </div>
 
       <div class="bottom-cta" id="bottomBar">
@@ -311,23 +232,4 @@ async function main() {
       tl.seek(0);
     </script>
   </body>
-</html>`;
-
-  fs.writeFileSync(path.join(REEL_DIR, 'index.html'), htmlTemplate, 'utf-8');
-
-  const baseSlug = path.basename(targetFile, '.md').slice(0, 45);
-  const outPath = path.join(OUT_DIR, `reel-${baseSlug}.mp4`);
-
-  console.log('🚀 Rendering video with HyperFrames engine...');
-  execSync(`npx hyperframes render -o "${outPath}"`, {
-    cwd: REEL_DIR,
-    stdio: 'inherit',
-  });
-
-  console.log(`\n🎉 Success! Video generated at: ${outPath}`);
-}
-
-main().catch(err => {
-  console.error('❌ Error generating video:', err);
-  process.exit(1);
-});
+</html>
