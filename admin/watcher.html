@@ -1176,30 +1176,59 @@
     document.getElementById('btnCopyReelLink').style.display = 'none';
     document.getElementById('reelStatusText').innerHTML = '⏳ جاري فحص ما إذا كان هناك فيديو جاهز...';
 
-    fetch('/api/videos/check?slug=' + encodeURIComponent(slug))
-      .then(r => r.json())
-      .then(data => {
-        if (data && data.exists && data.videoUrl) {
-          currentReelData.videoUrl = data.videoUrl;
-          document.getElementById('reelStatusText').innerHTML = '✅ <strong>فيديو الريلز جاهز وبجودة فائقة!</strong> ' + (data.size ? '(' + (data.size / 1024 / 1024).toFixed(1) + ' MB)' : '');
+    // Clean slug for direct video path
+    const cleanSlug = (slug || '').replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news\/)?/, '').replace(/\.html$/, '').slice(0, 45);
+    const directVideoUrl = '/videos/reel-' + cleanSlug + '.mp4';
+
+    // 1. First check if static video exists directly on site/CDN (works on Netlify & production)
+    fetch(directVideoUrl, { method: 'HEAD' })
+      .then(res => {
+        if (res.ok) {
+          currentReelData.videoUrl = directVideoUrl;
+          document.getElementById('reelStatusText').innerHTML = '✅ <strong>فيديو الريلز جاهز وبجودة فائقة 60fps!</strong>';
           const vid = document.getElementById('reelPreviewVideo');
-          vid.src = data.videoUrl;
+          vid.src = directVideoUrl;
           document.getElementById('reelPlayerWrap').style.display = 'block';
 
           const dlBtn = document.getElementById('btnDownloadReel');
-          dlBtn.href = data.videoUrl;
-          dlBtn.setAttribute('download', data.filename || 'reel.mp4');
+          dlBtn.href = directVideoUrl;
+          dlBtn.setAttribute('download', 'reel-' + cleanSlug + '.mp4');
           dlBtn.style.display = 'block';
 
           document.getElementById('btnCopyReelLink').style.display = 'block';
-          document.getElementById('btnGenerateReel').innerHTML = '🔄 إعادة تصيير الفيديو من جديد';
+          document.getElementById('btnGenerateReel').innerHTML = '🔄 إعادة طلب تصيير الفيديو';
         } else {
-          document.getElementById('reelStatusText').innerHTML = 'ℹ️ لم يتم توليد فيديو لهذا الخبر بعد. اضغط على الزر بالأسفل لتوليد فيديو 60fps فوراً.';
-          document.getElementById('btnGenerateReel').innerHTML = '⚡ توليد فيديو ريلز جديد (HyperFrames 60fps)';
+          // If not static, try API check (e.g. on localhost)
+          fetch('/api/videos/check?slug=' + encodeURIComponent(slug))
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+              if (data && data.exists && data.videoUrl) {
+                currentReelData.videoUrl = data.videoUrl;
+                document.getElementById('reelStatusText').innerHTML = '✅ <strong>فيديو الريلز جاهز وبجودة فائقة!</strong> ' + (data.size ? '(' + (data.size / 1024 / 1024).toFixed(1) + ' MB)' : '');
+                const vid = document.getElementById('reelPreviewVideo');
+                vid.src = data.videoUrl;
+                document.getElementById('reelPlayerWrap').style.display = 'block';
+
+                const dlBtn = document.getElementById('btnDownloadReel');
+                dlBtn.href = data.videoUrl;
+                dlBtn.setAttribute('download', data.filename || 'reel.mp4');
+                dlBtn.style.display = 'block';
+
+                document.getElementById('btnCopyReelLink').style.display = 'block';
+                document.getElementById('btnGenerateReel').innerHTML = '🔄 إعادة تصيير الفيديو من جديد';
+              } else {
+                document.getElementById('reelStatusText').innerHTML = 'ℹ️ لم يتم توليد فيديو لهذا الخبر بعد. اضغط على الزر بالأسفل لتوليد فيديو 60fps فوراً.';
+                document.getElementById('btnGenerateReel').innerHTML = '⚡ توليد فيديو ريلز جديد (HyperFrames 60fps)';
+              }
+            })
+            .catch(() => {
+              document.getElementById('reelStatusText').innerHTML = 'ℹ️ لم يتم توليد فيديو لهذا الخبر بعد. اضغط على الزر بالأسفل لبدء التوليد.';
+              document.getElementById('btnGenerateReel').innerHTML = '⚡ توليد فيديو ريلز جديد (HyperFrames 60fps)';
+            });
         }
       })
       .catch(() => {
-        document.getElementById('reelStatusText').innerHTML = 'ℹ️ يمكنك توليد الفيديو الآن.';
+        document.getElementById('reelStatusText').innerHTML = 'ℹ️ جاهز لتوليد الفيديو.';
       });
   };
 
@@ -1213,40 +1242,53 @@
   window.generateReelNow = function() {
     const btn = document.getElementById('btnGenerateReel');
     btn.disabled = true;
-    btn.innerHTML = '⏳ جاري توليد الفيديو وتصيير الإطارات (حوالي 15 ثانية)...';
-    document.getElementById('reelStatusText').innerHTML = '🚀 محرك HyperFrames يقوم بإنتاج الفيديو بدقة 1080x1920 وبمعدل 60fps... برجاء الانتظار.';
+    btn.innerHTML = '⏳ جاري إرسال طلب التوليد لخوادم السحاب...';
+    document.getElementById('reelStatusText').innerHTML = '🚀 جاري إطلاق مهمة التوليد السحابية عبر GitHub Actions...';
 
-    fetch('/api/videos/generate', {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const targetApi = isLocal ? '/api/videos/generate' : `${API_BASE}/api/videos/dispatch`;
+
+    fetch(targetApi, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slug: currentReelData.slug, postUrl: currentReelData.postUrl })
     })
-      .then(r => r.json())
-      .then(data => {
+      .then(async r => {
+        const text = await r.text().catch(() => '');
+        let data = {};
+        try { data = JSON.parse(text); } catch (e) { data = { message: text }; }
         btn.disabled = false;
-        if (data && data.success && data.videoUrl) {
-          currentReelData.videoUrl = data.videoUrl;
-          document.getElementById('reelStatusText').innerHTML = '🎉 <strong>تم توليد الفيديو بنجاح! جاهز للمعاينة والتنزيل.</strong>';
-          const vid = document.getElementById('reelPreviewVideo');
-          vid.src = data.videoUrl;
-          document.getElementById('reelPlayerWrap').style.display = 'block';
 
-          const dlBtn = document.getElementById('btnDownloadReel');
-          dlBtn.href = data.videoUrl;
-          dlBtn.setAttribute('download', data.filename || 'reel.mp4');
-          dlBtn.style.display = 'block';
+        if (r.ok && (data.success || data.videoUrl)) {
+          if (data.videoUrl) {
+            currentReelData.videoUrl = data.videoUrl;
+            document.getElementById('reelStatusText').innerHTML = '🎉 <strong>تم توليد الفيديو بنجاح! جاهز للمعاينة والتنزيل.</strong>';
+            const vid = document.getElementById('reelPreviewVideo');
+            vid.src = data.videoUrl;
+            document.getElementById('reelPlayerWrap').style.display = 'block';
 
-          document.getElementById('btnCopyReelLink').style.display = 'block';
-          btn.innerHTML = '🔄 إعادة توليد الفيديو';
-          showToast('🎬 تم إنتاج فيديو الريلز بنجاح!');
+            const dlBtn = document.getElementById('btnDownloadReel');
+            dlBtn.href = data.videoUrl;
+            dlBtn.setAttribute('download', data.filename || 'reel.mp4');
+            dlBtn.style.display = 'block';
+
+            document.getElementById('btnCopyReelLink').style.display = 'block';
+            btn.innerHTML = '🔄 إعادة توليد الفيديو';
+            showToast('🎬 تم إنتاج فيديو الريلز بنجاح!');
+          } else {
+            document.getElementById('reelStatusText').innerHTML = '⏳ <strong>' + (data.message || 'تم إرسال أمر التوليد للسحاب بنجاح!') + '</strong><br><span style="color:#94a3b8;font-size:12px;">يستغرق التصيير السحابي حوالي دقيقة واحدة. اضغط زر الفحص لمعاينته فور انتهائه.</span>';
+            btn.innerHTML = '🔄 فحص جاهزية الفيديو الآن';
+            btn.onclick = () => window.openReelModal(encodeURIComponent(currentReelData.postUrl), currentReelData.postId, encodeURIComponent(currentReelData.title));
+            showToast('🚀 تم إطلاق مهمة توليد الفيديو السحابية بنجاح!');
+          }
         } else {
-          document.getElementById('reelStatusText').innerHTML = '❌ فشل التوليد: ' + (data.error || 'خطأ غير معروف');
+          document.getElementById('reelStatusText').innerHTML = '❌ ' + (data.error || data.message || 'حدث خطأ أثناء الاتصال بالسيرفر');
           btn.innerHTML = '⚡ إعادة المحاولة';
         }
       })
       .catch(err => {
         btn.disabled = false;
-        document.getElementById('reelStatusText').innerHTML = '❌ حدث خطأ في الاتصال: ' + err.message;
+        document.getElementById('reelStatusText').innerHTML = '❌ خطأ في الاتصال: ' + err.message;
         btn.innerHTML = '⚡ إعادة المحاولة';
       });
   };

@@ -474,6 +474,30 @@ async function githubTriggerWatcherWorkflow(env: Env, postUrl?: string): Promise
   return { ok: true, status: res.status };
 }
 
+async function githubTriggerVideoWorkflow(env: Env, slug: string): Promise<{ ok: boolean; status: number; error?: string }> {
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/generate-reel.yml/dispatches`;
+  const body: any = {
+    ref: env.GITHUB_BRANCH || "main",
+    inputs: { slug: slug || "latest" },
+  };
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+      "User-Agent": "arw-site-bot",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const txt = await res.text().catch(() => "");
+    return { ok: false, status: res.status, error: txt };
+  }
+  return { ok: true, status: res.status };
+}
+
+
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
 async function claimSend(env: Env, platform: Platform, key: string): Promise<boolean> {
@@ -1915,6 +1939,21 @@ export default {
               : (urls.length === 1
                   ? "تم إرسال أمر إضافة الخبر إلى GitHub Actions للبدء في معالجته ونشره فوراً!"
                   : "تم تشغيل دورة فحص الأخبار بالكامل على السيرفر بنجاح!"),
+          });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/videos/dispatch" && request.method === "POST") {
+        try {
+          const body: any = await request.json().catch(() => ({}));
+          const slug = body.slug ? String(body.slug).trim() : "latest";
+          const res = await githubTriggerVideoWorkflow(env, slug);
+          if (!res.ok) throw new Error(`GitHub video dispatch failed: ${res.status} ${res.error || ""}`);
+          return json({
+            success: true,
+            message: "تم إرسال أمر توليد الفيديو إلى خوادم GitHub Actions السحابية بنجاح! سيتم تصييره ورفعه للموقع تلقائياً.",
           });
         } catch (e: any) {
           return json({ success: false, error: e.message }, 500);

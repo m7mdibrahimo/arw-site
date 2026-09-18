@@ -1080,6 +1080,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"_data/pinned.json": "data/pinned.json"});
   eleventyConfig.addPassthroughCopy("watcher-state.json");
   eleventyConfig.addPassthroughCopy("watcher-feed.json");
+  if (fs.existsSync("dist/videos")) {
+    eleventyConfig.addPassthroughCopy({"dist/videos": "videos"});
+  }
   eleventyConfig.addPassthroughCopy("content/images");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("sw.js");
