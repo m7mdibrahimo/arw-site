@@ -84,6 +84,7 @@
       var dropdown = document.createElement('div');
       dropdown.className = 'instant-search-dropdown';
       dropdown.setAttribute('role', 'listbox');
+      dropdown.setAttribute('dir', 'rtl');
       dropdown.innerHTML = '<div class="instant-search-loading"><div class="instant-search-spinner"></div><span>جاري تحميل الفهرس...</span></div>';
       form.appendChild(dropdown);
 
@@ -168,7 +169,7 @@
 
             html += '<li class="instant-search-item" data-index="' + idx + '">' +
               '<a href="' + it.url + '">' +
-                '<img class="instant-search-thumb" src="' + thumb + '" alt="" loading="lazy">' +
+                '<img class="instant-search-thumb" src="' + thumb + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg\';">' +
                 '<div class="instant-search-info">' +
                   '<div class="instant-search-title">' + escapeHtml(it.title) + '</div>' +
                   '<div class="instant-search-meta">' +

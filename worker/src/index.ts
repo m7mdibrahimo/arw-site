@@ -2559,13 +2559,15 @@ export default {
             }
           );
           if (!ghRes.ok) return json({ error: "Video not found in repository" }, 404);
-          return new Response(ghRes.body, {
-            headers: {
-              "Content-Type": "video/mp4",
-              "Access-Control-Allow-Origin": "*",
-              "Cache-Control": "public, max-age=86400",
-            },
-          });
+          const contentLength = ghRes.headers.get("content-length");
+          const headers: Record<string, string> = {
+            "Content-Type": "video/mp4",
+            "Access-Control-Allow-Origin": "*",
+            "Cache-Control": "public, max-age=86400",
+            "Accept-Ranges": "bytes",
+          };
+          if (contentLength) headers["Content-Length"] = contentLength;
+          return new Response(ghRes.body, { headers });
         } catch (e: any) {
           return json({ error: e.message }, 500);
         }
@@ -2739,6 +2741,7 @@ export default {
     ctx.waitUntil(Promise.all([
       runWatcherPoll(env),
       runNewsWatcherCron(env),
+      runVideoRetentionCleanup(env),
     ]));
   },
 } satisfies ExportedHandler<Env>;
@@ -2779,5 +2782,27 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
     }
   } catch (err: any) {
     console.error("[Worker] Error in scheduled news watcher trigger:", err.message);
+  }
+}
+
+// Automatically prune videos older than 3 days from GitHub to save storage
+// while guaranteeing social media platforms have finished ingesting them
+async function runVideoRetentionCleanup(env: Env): Promise<void> {
+  try {
+    const now = new Date();
+    // Run once an hour around minute 15
+    if (now.getMinutes() !== 15) return;
+    const manifest = await githubGetVideosManifest(env);
+    if (!manifest || !manifest.length) return;
+    const maxAgeMs = 3 * 24 * 60 * 60 * 1000; // 3 days max retention
+    const nowMs = Date.now();
+    for (const v of manifest) {
+      if (v.mtime && (nowMs - v.mtime > maxAgeMs) && v.filename) {
+        console.log(`[Video Retention] Pruning old reel video: ${v.filename}`);
+        await githubDeleteVideoFile(env, v.filename);
+      }
+    }
+  } catch (err) {
+    console.warn("[Video Retention] Check failed:", err);
   }
 }

@@ -1225,28 +1225,9 @@
           if (r && r.ok) successes++;
         }
         if (successes > 0) {
-          task.progressText = `🧹 تم التأكد من النشر على ${successes} منصات! جاري مسح الفيديو المؤقت من السيرفر...`;
-          updateQueueDockUI();
-          showToast(`🎉 تم نشر "${item.title.slice(0, 24)}..." بنجاح! جاري حذف الفيديو المؤقت...`);
-
-          // Safe buffer to ensure Meta servers finish downloading video
-          await new Promise(r => setTimeout(r, 12000));
-
-          try {
-            await fetch(`${API_BASE}/api/videos/delete`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ filename: readyVideoData.filename, slug }),
-            });
-            videoManifest = videoManifest.filter(v => v.filename !== readyVideoData.filename);
-            statReadyReels.textContent = videoManifest.length;
-          } catch (delErr) {
-            console.warn('Auto-cleanup error:', delErr);
-          }
-
           task.status = 'done';
-          task.progressText = `✅ تم النشر وحذف الفيديو من السيرفر بنجاح!`;
-          showToast(`✅ تم النشر وحذف ملف الفيديو لتوفير المساحة تماماً!`);
+          task.progressText = `✅ تم النشر وتأكيده على ${successes} منصات بنجاح! تم حفظ الفيديو ونشره.`;
+          showToast(`🎉 تم نشر "${item.title.slice(0, 24)}..." وتأكيده على منصات التواصل!`);
         } else {
           task.status = 'error';
           task.progressText = '❌ فشل النشر على المنصات';
