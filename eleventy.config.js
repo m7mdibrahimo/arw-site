@@ -155,18 +155,42 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("cleanUrl", cleanUrl);
   eleventyConfig.addNunjucksFilter("cleanUrl", cleanUrl);
 
-  // بيحول مدة زي "02:15:05" أو "45:12" لصيغة ISO 8601 (PT2H15M5S) المطلوبة في Schema.org VideoObject
-  const isoDuration = function(str) {
-    if (!str) return "";
-    const parts = str.toString().split(":").map(function(n){ return parseInt(n, 10) || 0; });
+  // بيحول مدة زي "02:15:05" أو "45:12" أو "00:19::15" لصيغة ISO 8601 (PT2H15M5S) المطلوبة في Schema.org VideoObject
+  const parseCleanDuration = function(str) {
+    if (!str) return null;
+    const cleanStr = str.toString().trim().replace(/^['"\s]+|['"\s]+$/g, "");
+    if (!cleanStr) return null;
+    const nums = (cleanStr.match(/\d+/g) || []).map(function(n){ return parseInt(n, 10); });
+    if (!nums.length) return null;
     let h = 0, m = 0, s = 0;
-    if (parts.length === 3) { h = parts[0]; m = parts[1]; s = parts[2]; }
-    else if (parts.length === 2) { m = parts[0]; s = parts[1]; }
-    else if (parts.length === 1) { s = parts[0]; }
+    if (nums.length >= 3) {
+      h = nums[0];
+      m = nums[1];
+      s = nums[2];
+    } else if (nums.length === 2) {
+      if (cleanStr.endsWith(":")) {
+        h = nums[0];
+        m = nums[1];
+        s = 0;
+      } else {
+        m = nums[0];
+        s = nums[1];
+      }
+    } else if (nums.length === 1) {
+      s = nums[0];
+    }
+    const totalSec = h * 3600 + m * 60 + s;
+    if (totalSec <= 0) return null;
+    return { h: h, m: m, s: s, totalSec: totalSec };
+  };
+
+  const isoDuration = function(str) {
+    const parsed = parseCleanDuration(str);
+    if (!parsed) return "";
     let out = "PT";
-    if (h) out += h + "H";
-    if (m) out += m + "M";
-    if (s || (!h && !m)) out += s + "S";
+    if (parsed.h) out += parsed.h + "H";
+    if (parsed.m) out += parsed.m + "M";
+    if (parsed.s) out += parsed.s + "S";
     return out;
   };
   eleventyConfig.addFilter("isoDuration", isoDuration);
@@ -174,12 +198,8 @@ module.exports = function(eleventyConfig) {
 
   // بيحول مدة الفيديو إلى ثوانٍ رقمية (مثل 7200) المطلوبة في خريطة فيديوهات جوجل
   const durationSeconds = function(str) {
-    if (!str) return null;
-    const parts = str.toString().split(":").map(function(n){ return parseInt(n, 10) || 0; });
-    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-    if (parts.length === 2) return parts[0] * 60 + parts[1];
-    if (parts.length === 1) return parts[0];
-    return null;
+    const parsed = parseCleanDuration(str);
+    return parsed ? parsed.totalSec : null;
   };
   eleventyConfig.addFilter("durationSeconds", durationSeconds);
   eleventyConfig.addNunjucksFilter("durationSeconds", durationSeconds);

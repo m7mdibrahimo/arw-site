@@ -20,7 +20,7 @@ eleventyExcludeFromCollections: true
       <video:player_loc>{{ item.data.servers[0].url | safePlayerUrl }}</video:player_loc>
       <video:publication_date>{{ item.date.toISOString() }}</video:publication_date>
       {%- set sec = item.data.duration | durationSeconds %}
-      {%- if sec %}
+      {%- if sec and sec > 0 %}
       <video:duration>{{ sec }}</video:duration>
       {%- endif %}
       <video:family_friendly>yes</video:family_friendly>
