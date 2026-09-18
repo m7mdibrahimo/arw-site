@@ -406,7 +406,7 @@
       <p>
         منصة الإنتاج الاحترافي لتصيير ونشر مقاطع الفيديو الرأسية (9:16) فائقة السلاسة (60fps) لجميع محتويات الموقع:
         <strong>الأخبار، العروض الكاملة، والملخصات</strong>.
-        يمكنك توليد الفيديو سحابياً بضغطة زر واحدة، ثم نشره فوراً وبشكل يدوي تماماً على تليجرام وفيسبوك وإنستغرام.
+        يمكنك توليد الفيديو سحابياً بضغطة زر واحدة، ثم نشره فوراً وبشكل يدوي تماماً على فيسبوك وإنستغرام (ريلز وستوري).
       </p>
     </div>
     <div class="hero-stats">
@@ -518,10 +518,6 @@
       </p>
 
       <div class="platforms-grid">
-        <label class="platform-check">
-          <input type="checkbox" id="pubTg" checked />
-          <span>✈️ تليجرام (فيديو)</span>
-        </label>
         <label class="platform-check">
           <input type="checkbox" id="pubFbReel" checked />
           <span>📘 فيسبوك ريلز</span>
@@ -979,7 +975,6 @@
     }
 
     const platforms = [];
-    if (document.getElementById('pubTg')?.checked) platforms.push('telegram');
     if (document.getElementById('pubFbReel')?.checked) platforms.push('facebook_reel');
     if (document.getElementById('pubFbStory')?.checked) platforms.push('facebook_story');
     if (document.getElementById('pubIgReel')?.checked) platforms.push('instagram_reel');
@@ -1029,7 +1024,6 @@
       if (res.ok && data.results) {
         let html = '';
         const labels = {
-          telegram: '✈️ تليجرام',
           facebook_reel: '📘 فيسبوك ريلز',
           facebook_story: '📘 فيسبوك ستوري',
           instagram_reel: '📸 إنستغرام ريلز',

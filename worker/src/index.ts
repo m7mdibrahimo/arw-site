@@ -2387,7 +2387,7 @@ export default {
           const postUrl = body.postUrl ? String(body.postUrl).trim() : undefined;
           const requestedPlatforms: string[] = Array.isArray(body.platforms) && body.platforms.length > 0
             ? body.platforms
-            : ["telegram", "facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
+            : ["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
 
           const rawImageUrl = body.imageUrl ? String(body.imageUrl).trim() : undefined;
           let fullImageUrl = rawImageUrl
