@@ -18,7 +18,7 @@ eleventyComputed:
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <title>{{ series.title }} | نوستالجيا | عرب راسلنج</title>
-<meta name="description" content="{{ series.title }} مترجم بالكامل: {{ series.count }} من العروض التمهيدية التي أسّست للعرض الشهري، مرتبة بالترتيب الزمني.">
+<meta name="description" content="{{ series.title }} مترجم بالكامل: {{ series.count }} من {% if series.isProgram %}الحلقات المرتبة بالترتيب الكامل.{% else %}العروض التمهيدية التي أسّست للعرض الشهري، مرتبة بالترتيب الزمني.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com/nostalgia/{{ series.slug }}/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,13 +273,13 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 
 <div class="shero" {% if series.poster %}style="background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.88) 100%), url('{% optImg series.poster, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;"{% endif %}>
 <div class="shero-inner">
-<span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>موسم نوستالجيا {{ series.year }}</span>
+<span class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{% if series.isProgram %}برنامج نوستالجيا {{ series.year }}{% else %}موسم نوستالجيا {{ series.year }}{% endif %}</span>
 <h1>{{ series.title }}</h1>
-<p>{{ series.description or "المسار كاملًا من أول عرض أسبوعي وحتى ليلة العرض الشهري — جميع العروض مترجمة بالكامل." }}</p>
+<p>{{ series.description or (series.isProgram and "جميع حلقات البرنامج كاملة ومترجمة بأعلى جودة.") or "المسار كاملًا من أول عرض أسبوعي وحتى ليلة العرض الشهري — جميع العروض مترجمة بالكامل." }}</p>
 <div class="shero-stats">
-<div><p>{{ series.count }}</p><p>عروض</p></div>
+<div><p>{{ series.count }}</p><p>{% if series.isProgram %}حلقات{% else %}عروض{% endif %}</p></div>
 <div><p>{{ series.year }}</p><p>السنة</p></div>
-<div><p>1</p><p>عرض ختامي</p></div>
+<div><p>{% if series.isProgram %}{{ series.count }}{% else %}1{% endif %}</p><p>{% if series.isProgram %}حلقة متوفرة{% else %}عرض ختامي{% endif %}</p></div>
 </div>
 </div>
 </div>
@@ -287,7 +287,7 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 <section class="content">
 <div class="wrap">
 <div class="section-head">
-<div><h2 style="color:var(--nostalgia);"><span class="dot" style="background:var(--nostalgia)"></span>خط الأحداث</h2><p>مرتبة حسب تسلسل بناء القصة، من البداية وحتى العرض الختامي</p></div>
+<div><h2 style="color:var(--nostalgia);"><span class="dot" style="background:var(--nostalgia)"></span>{% if series.isProgram %}قائمة الحلقات{% else %}خط الأحداث{% endif %}</h2><p>{% if series.isProgram %}مرتبة تسلسلياً بجميع حلقات البرنامج مترجمة{% else %}مرتبة حسب تسلسل بناء القصة، من البداية وحتى العرض الختامي{% endif %}</p></div>
 </div>
 
 <div class="timeline">
@@ -298,7 +298,7 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 <div class="ep-thumb" {% if ep.image %}style="background-image:url('{% optImg ep.image, "https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop" %}');"{% else %}style="background:linear-gradient(135deg,#c73b2c,#5c150c);"{% endif %}>{% if not ep.image %}{{ ep.title }}{% endif %}</div>
 <div class="ep-body">
 <h3>{{ ep.headline or ep.title }}</h3>
-<div class="foot"><span class="ep-badge">{% if ep.isMain %}العرض الختامي{% else %}عرض تمهيدي مترجم{% endif %}</span><span>{{ ep.event_date | date }}</span></div>
+<div class="foot"><span class="ep-badge">{% if series.isProgram %}{% if ep.isMain %}الحلقة الختامية{% else %}حلقة مترجمة{% endif %}{% else %}{% if ep.isMain %}العرض الختامي{% else %}عرض تمهيدي مترجم{% endif %}{% endif %}</span><span>{{ ep.event_date | date }}</span></div>
 </div>
 </a>
 </div>

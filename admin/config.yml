@@ -146,16 +146,25 @@ collections:
     slug: "{{year}}-{{slug}}"
     summary: "{{title}}"
     fields:
-      - { label: "اسم السلسلة / الحدث (بالعربي)", name: "title", widget: "string", hint: "مثال: اكستريم رولز 2012 أو راسلمينيا 28" }
+      - { label: "اسم السلسلة / الحدث (بالعربي)", name: "title", widget: "string", hint: "مثال: اكستريم رولز 2012 أو برنامج تف انف الموسم الاول" }
+      - label: "نوع المحتوى النوستالجي"
+        name: "series_type"
+        widget: "select"
+        options:
+          - { label: "سلسلة عروض (Road to PPV / مسار عرض شهري)", value: "shows" }
+          - { label: "برنامج تلفزيوني / وثائقي / مواسم (TV Series / Program)", value: "program" }
+        default: "shows"
+        required: false
+        hint: "حدد إذا كان المحتوى سلسلة عروض تمهيدية لعرض شهري أم برنامج تلفزيوني بمواسم وحلقات"
       - { label: "الاتحاد", name: "federation", widget: "select", options: ["WWE","AEW","TNA","ROH","MMA","INDIE"], default: "WWE" }
       - { label: "سنة السلسلة (للفلترة في الموقع)", name: "year", widget: "string", hint: "مثال: 2012 (لتظهر السلسلة في فلتر سنة 2012 بقسم النوستالجيا)" }
       - { label: "الوسوم / التاجز (اختياري)", name: "tags", widget: "list", required: false, default: ["WWE", "نوستالجيا"], hint: "أضف التاجز مثل: WWE, نوستالجيا, اكستريم رولز 2012" }
       - { label: "صورة بوستر / غلاف السلسلة", name: "image", widget: "image", required: true, hint: "الصورة الرئيسية الكبيرة لكارت السلسلة في صفحة النوستالجيا" }
-      - { label: "نبذة عن السلسلة / القصة (اختياري)", name: "description", widget: "text", required: false, hint: "وصف موجز عن قصة هذه السلسلة والبناء التمهيدي لها" }
+      - { label: "نبذة عن السلسلة / القصة (اختياري)", name: "description", widget: "text", required: false, hint: "وصف موجز عن قصة هذه السلسلة أو فكرة البرنامج" }
 
   - name: "nostalgia"
-    label: "🎬 عروض النوستالجيا"
-    label_singular: "عرض نوستالجيا"
+    label: "🎬 عروض وحلقات النوستالجيا"
+    label_singular: "عرض / حلقة نوستالجيا"
     folder: "content/nostalgia"
     extension: "md"
     format: "frontmatter"
@@ -166,23 +175,33 @@ collections:
     preview_path: "nostalgia/{{title}}"
     summary: "{{title}}"
     fields:
-      - label: "اختر السلسلة التابع لها هذا العرض"
+      - label: "اختر السلسلة أو البرنامج التابع له"
         name: "nostalgia_series"
         widget: "relation"
         collection: "nostalgia_series"
         search_fields: ["title", "year"]
         value_field: "{{slug}}"
         display_fields: ["title", "year"]
-        hint: "اختر السلسلة المحضّرة مسبقاً من القائمة وسيتم ربط العرض بها تلقائياً"
-      - { label: "ترتيب العرض في مسار السلسلة", name: "nostalgia_order", widget: "number", value_type: "int", default: 1, hint: "رقم تسلسلي: 1 للعرض التمهيدي الأول، 2 للثاني... والعرض الشهري الختامي يأخذ آخر رقم" }
-      - { label: "هل هذا هو العرض الرئيسي/الختامي للسلسلة؟", name: "nostalgia_main", widget: "boolean", default: false, required: false, hint: "فعّلها فقط إذا كان هذا العرض هو العرض الشهري النهائي للقصة (مثل عرض PPV الختامي)" }
-      - { label: "اسم العرض", name: "title", widget: "string", hint: "مثال: الرو 16.04.2012 (نوستالجيا)" }
-      - { label: "عنوان العرض الرئيسي (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو 16.04.2012 مترجم | طريق اكستريم رولز" }
-      - { label: "الوسوم / التاجز", name: "tags", widget: "list", required: false, default: ["WWE", "نوستالجيا"], hint: "أضف التاجز مثل: WWE, نوستالجيا, اكستريم رولز 2012" }
+        hint: "اختر السلسلة أو البرنامج المحضّر مسبقاً من القائمة وسيتم ربطه به تلقائياً"
+      - label: "نوع المحتوى (اختياري، يتبع السلسلة تلقائياً)"
+        name: "series_type"
+        widget: "select"
+        options:
+          - { label: "تلقائي حسب السلسلة المختارة", value: "" }
+          - { label: "عرض من مسار عرض شهري", value: "shows" }
+          - { label: "حلقة من برنامج تلفزيوني", value: "program" }
+        default: ""
+        required: false
+        hint: "اتركه فارغاً ليرث النوع تلقائياً من السلسلة/البرنامج التابع له"
+      - { label: "ترتيب العرض / الحلقة في المسار", name: "nostalgia_order", widget: "number", value_type: "int", default: 1, hint: "رقم تسلسلي: 1 للعرض أو الحلقة الأولى، 2 للثانية... والعرض/الحلقة الختامية تأخذ آخر رقم" }
+      - { label: "هل هذا هو العرض الرئيسي أو الحلقة الختامية؟", name: "nostalgia_main", widget: "boolean", default: false, required: false, hint: "فعّلها فقط إذا كان هذا العرض هو العرض الشهري النهائي، أو الحلقة الختامية للبرنامج/الموسم" }
+      - { label: "اسم العرض / الحلقة", name: "title", widget: "string", hint: "مثال: الرو 16.04.2012 أو WWF Tough Enough S01E01" }
+      - { label: "العنوان الرئيسي (Headline)", name: "headline", widget: "string", required: false, hint: "مثال: عرض الرو 16.04.2012 مترجم أو تف انف الموسم 1 الحلقة 1" }
+      - { label: "الوسوم / التاجز", name: "tags", widget: "list", required: false, default: ["WWE", "نوستالجيا"], hint: "أضف التاجز مثل: WWE, نوستالجيا, Tough Enough" }
       - { label: "صورة الغلاف / الفيديو", name: "image", widget: "image", required: true }
       - { label: "تاريخ العرض الأصلي (اختياري)", name: "event_date", widget: "datetime", date_format: "DD/MM/YYYY", format: "YYYY-MM-DD", time_format: false, required: false }
       - { label: "تاريخ النشر (اختياري)", name: "date", widget: "datetime", required: false }
-      - { label: "مدة العرض (اختياري)", name: "duration", widget: "string", required: false, hint: "مثال: 01:45:00" }
+      - { label: "مدة العرض / الحلقة (اختياري)", name: "duration", widget: "string", required: false, hint: "مثال: 00:45:00" }
       - { label: "سيرفرات المشاهدة", name: "servers", widget: "list", required: false, fields: [{ label: "رابط الـ embed", name: "url", widget: "string" }] }
       - { label: "سيرفرات التحميل - جودة منخفضة (480p)", name: "downloads_low", widget: "text", required: false }
       - { label: "سيرفرات التحميل - جودة متوسطة (720p)", name: "downloads_medium", widget: "text", required: false }

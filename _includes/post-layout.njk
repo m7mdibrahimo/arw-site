@@ -832,7 +832,7 @@
 <main>
   <div class="post-wrap reveal">
     {% if isNostalgiaItem %}
-    <a class="back-link" href="/nostalgia/{% if nostalgia_series %}{{ nostalgia_series }}/{% endif %}">→ {% if nostalgia_series %}رجوع لمسار السلسلة{% else %}رجوع لقسم نوستالجيا{% endif %}</a>
+    <a class="back-link" href="/nostalgia/{% if nostalgia_series %}{{ nostalgia_series }}/{% endif %}">→ {% if nostalgia_series %}{% if series_type == 'program' or (nav and (nav.program.isProgram or nav.program.seriesType == 'program')) or (program_name and 'حلقات' in program_name) %}رجوع لمسار البرنامج{% else %}رجوع لمسار السلسلة{% endif %}{% else %}رجوع لقسم نوستالجيا{% endif %}</a>
     {% else %}
     <a class="back-link" href="/">→ رجوع للرئيسية</a>
     {% endif %}
@@ -939,11 +939,11 @@
       {% set navPrograms = collections.recapsProgramsGrouped if isRecap else collections.programsGrouped %}
       {% set nav = getEpisodeNav(program_name, page.url, navPrograms) %}
       {% if nav %}
-        {% set isNostalgiaItem = (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series %}
-        {% set isSeries = (nav.program.mode == "series") and not isNostalgiaItem %}
+        {% set isNostalgiaItem = (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or nav.program.isNostalgia %}
+        {% set isProgram = (series_type == "program") or (nav.program.isProgram) or (nav.program.seriesType == "program") %}
+        {% set isSeries = ((nav.program.mode == "series") and not isNostalgiaItem) or isProgram %}
         {% set nounSingle = "حلقة" if isSeries else "عرض" %}
         {% set nounPlural = "حلقات" if isSeries else "عروض" %}
-        {% set isNostalgiaItem = (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or nav.program.isNostalgia %}
         {% set isAnnual = isNostalgiaItem or (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "annual") or (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "nostalgia") %}
         <div class="episodes-nav reveal">
           <div class="episodes-nav-head">
@@ -956,11 +956,15 @@
               {% endif %}
             </h3>
             {% set epCount = nav.program.episodes.length %}
-            {% set countSingle = "عرض" if isNostalgiaItem else ("ملخص" if isRecap else nounSingle) %}
-            {% set countPlural = "عروض" if isNostalgiaItem else ("ملخصات" if isRecap else nounPlural) %}
+            {% set countSingle = "حلقة" if isProgram else ("عرض" if isNostalgiaItem else ("ملخص" if isRecap else nounSingle)) %}
+            {% set countPlural = "حلقات" if isProgram else ("عروض" if isNostalgiaItem else ("ملخصات" if isRecap else nounPlural)) %}
             <span class="episodes-count">
               {% if isNostalgiaItem %}
-              مسار العروض ({{ epCount }})
+                {% if isProgram %}
+                قائمة الحلقات ({{ epCount }})
+                {% else %}
+                مسار العروض ({{ epCount }})
+                {% endif %}
               {% elif epCount == 1 %}
               1 {{ countSingle }}
               {% else %}
@@ -972,7 +976,7 @@
           <div class="episodes-search">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
             {% if isNostalgiaItem %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث في عروض السلسلة..." autocomplete="off">
+            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="{% if isProgram %}ابحث في حلقات البرنامج...{% else %}ابحث في عروض السلسلة...{% endif %}" autocomplete="off">
             {% elif isAnnual %}
             <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث بالاسم أو الرقم أو السنة... مثال: 2026 أو 285" autocomplete="off">
             {% elif isSeries %}

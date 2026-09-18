@@ -595,22 +595,44 @@ module.exports = function(eleventyConfig) {
     const nostalgiaSeriesMap = new Map();
     seriesDefs.forEach(function(sItem) {
       const sSlug = String(sItem.fileSlug || "").trim();
-      if (sSlug) nostalgiaSeriesMap.set(sSlug, sItem.data.title || sSlug);
+      if (sSlug) {
+        const isProg = (sItem.data.series_type === "program") || /برنامج/i.test(sItem.data.title || "");
+        nostalgiaSeriesMap.set(sSlug, {
+          title: sItem.data.title || sSlug,
+          series_type: sItem.data.series_type || (isProg ? "program" : "shows"),
+          isProgram: isProg
+        });
+      }
     });
 
     items.forEach(function(item) {
       const inputPath = String(item.inputPath || "");
       const isNostalgia = !!(item.data && (item.data.nostalgia_series || inputPath.includes("content/nostalgia")));
       let rawName = item.data && item.data.program_name;
+      let isProgram = false;
 
       if (isNostalgia) {
         const ref = String(item.data.nostalgia_series || "").trim();
-        let sTitle = nostalgiaSeriesMap.get(ref) || item.data.nostalgia_series_title || ref;
+        const sInfo = nostalgiaSeriesMap.get(ref);
+        let sTitle = (sInfo && sInfo.title) || item.data.nostalgia_series_title || ref;
         if (!sTitle) {
           sTitle = (item.data.title || "").replace(/\s*\(نوستالجيا\)\s*/g, "");
         }
+        isProgram = (item.data.series_type === "program") ||
+                    (sInfo && sInfo.series_type === "program") ||
+                    /برنامج/i.test(sTitle) ||
+                    /برنامج/i.test(item.data.title || "");
+
         const cleanEventName = String(sTitle).replace(/^عرض\s+/g, "").trim();
-        rawName = "رحلة الوصول إلى عرض " + cleanEventName;
+        if (isProgram) {
+          if (/^برنامج\s+/i.test(cleanEventName)) {
+            rawName = "حلقات " + cleanEventName;
+          } else {
+            rawName = "حلقات برنامج " + cleanEventName;
+          }
+        } else {
+          rawName = "رحلة الوصول إلى عرض " + cleanEventName;
+        }
         item.data.program_name = rawName;
       }
 
@@ -624,6 +646,8 @@ module.exports = function(eleventyConfig) {
           slug: slug, 
           name: name, 
           isNostalgia: isNostalgia,
+          isProgram: isProgram,
+          seriesType: isProgram ? "program" : "shows",
           episodes: [] 
         });
       }
@@ -651,10 +675,11 @@ module.exports = function(eleventyConfig) {
         : (episodeLabel !== null ? episodeLabel : (shortDate || null));
 
       if (isNostalgia) {
-        if (item.data.nostalgia_main === true || item.data.nostalgia_main === "true") {
-          pillLabel = "العرض الختامي";
+        const isMain = item.data.nostalgia_main === true || item.data.nostalgia_main === "true";
+        if (isProgram) {
+          pillLabel = isMain ? "الحلقة الختامية" : ("الحلقة " + (item.data.nostalgia_order || 1));
         } else {
-          pillLabel = "عرض " + (item.data.nostalgia_order || 1);
+          pillLabel = isMain ? "العرض الختامي" : ("عرض " + (item.data.nostalgia_order || 1));
         }
       }
 
@@ -674,6 +699,8 @@ module.exports = function(eleventyConfig) {
         groupType: groupType,
         pillLabel: pillLabel,
         isNostalgia: isNostalgia,
+        isProgram: isProgram,
+        seriesType: isProgram ? "program" : "shows",
         timestamp: getItemTimestamp(item)
       });
     });
@@ -703,9 +730,11 @@ module.exports = function(eleventyConfig) {
 
       // "series" = برنامج/مسلسل ليه رقم موسم أو رقم/عنوان حلقة مكتوب صريح (زي WWE LFG) → يستخدم كلمة "حلقة/حلقات".
       // "recurring" = عرض متكرر مفيهوش أي ترقيم صريح وبيعتمد على تاريخ العرض بس (زي WWE Raw) → يستخدم كلمة "عرض/عروض".
-      prog.mode = prog.isNostalgia
-        ? "recurring"
-        : (prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; }) ? "series" : "recurring");
+      prog.mode = (prog.isProgram || prog.seriesType === "program")
+        ? "series"
+        : (prog.isNostalgia
+            ? "recurring"
+            : (prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; }) ? "series" : "recurring"));
     });
 
     return programs;
@@ -796,9 +825,12 @@ module.exports = function(eleventyConfig) {
     seriesDefs.forEach(function(item) {
       const slug = String(item.fileSlug || "").trim();
       if (!slug) return;
+      const isProg = (item.data.series_type === "program") || /برنامج/i.test(item.data.title || "");
       map.set(slug, {
         slug: slug,
         title: item.data.title || slug,
+        series_type: item.data.series_type || (isProg ? "program" : "shows"),
+        isProgram: isProg,
         era: item.data.year || null,
         year: item.data.year || null,
         federation: item.data.federation || "WWE",
@@ -823,10 +855,13 @@ module.exports = function(eleventyConfig) {
       }
       if (!s) {
         // إنشاء السلسلة تلقائياً إذا أضاف المستخدم عرضاً ببيانات قديمة دون ملف سلسلة منفصل
+        const isProg = (item.data.series_type === "program") || /برنامج/i.test(item.data.title || "") || /برنامج/i.test(rawRef);
         const fallbackSlug = arabicSlug(rawRef) || rawRef;
         s = {
           slug: fallbackSlug,
           title: item.data.nostalgia_title || item.data.program_name || rawRef,
+          series_type: item.data.series_type || (isProg ? "program" : "shows"),
+          isProgram: isProg,
           era: item.data.nostalgia_era || null,
           year: item.data.nostalgia_era || null,
           federation: item.data.federation || "WWE",
@@ -843,7 +878,11 @@ module.exports = function(eleventyConfig) {
       }
       // تعيين اسم البرنامج تلقائياً ليعمل شريط ترقيم الحلقات في صفحة العرض
       if (!item.data.program_name) {
-        item.data.program_name = "سلسلة " + s.title;
+        if (s.isProgram) {
+          item.data.program_name = /^برنامج\s+/i.test(s.title) ? ("حلقات " + s.title) : ("حلقات برنامج " + s.title);
+        } else {
+          item.data.program_name = "سلسلة " + s.title;
+        }
       }
 
       const dateVal = getDateValue(item);
@@ -857,7 +896,9 @@ module.exports = function(eleventyConfig) {
         year: dateVal ? dateVal.getUTCFullYear() : (s.year || null),
         order: (item.data.nostalgia_order !== undefined && item.data.nostalgia_order !== null)
           ? parseInt(item.data.nostalgia_order, 10) : 999,
-        isMain: item.data.nostalgia_main === true || item.data.nostalgia_main === "true"
+        isMain: item.data.nostalgia_main === true || item.data.nostalgia_main === "true",
+        isProgram: s.isProgram,
+        seriesType: s.series_type
       });
     });
 
