@@ -441,12 +441,17 @@
     try {
       let data = null;
 
-      // Try local watcher-state.json first (fastest, guaranteed zero CORS issues)
-      try {
-        const localRes = await fetch(`/watcher-state.json?_cb=${Date.now()}`);
-        if (localRes.ok) {
+      // Fetch both local watcher-state.json and Cloudflare Worker API in parallel, then pick freshest
+      const [localRes, apiRes] = await Promise.all([
+        fetch(`/watcher-state.json?_cb=${Date.now()}`).catch(() => null),
+        fetch(`${API_BASE}/api/watcher/status?_cb=${Date.now()}`).catch(() => null)
+      ]);
+
+      let localData = null;
+      if (localRes && localRes.ok) {
+        try {
           const raw = await localRes.json();
-          data = {
+          localData = {
             success: true,
             enabled: raw.enabled !== false,
             lastChecked: raw.lastChecked,
@@ -455,17 +460,25 @@
             apiCallsToday: raw.apiCallsToday || 0,
             apiCallDate: raw.apiCallDate || "",
           };
-        }
-      } catch (e) {
-        console.warn("Local state fetch failed:", e);
+        } catch (e) {}
       }
 
-      // If not found locally, try Cloudflare Worker API endpoint
-      if (!data) {
-        const res = await fetch(`${API_BASE}/api/watcher/status?_cb=${Date.now()}`);
-        if (res.ok) {
-          data = await res.json();
-        }
+      let apiData = null;
+      if (apiRes && apiRes.ok) {
+        try {
+          const rawApi = await apiRes.json();
+          if (rawApi && rawApi.success) {
+            apiData = rawApi;
+          }
+        } catch (e) {}
+      }
+
+      if (localData && apiData) {
+        const localTime = new Date(localData.lastChecked || 0).getTime();
+        const apiTime = new Date(apiData.lastChecked || 0).getTime();
+        data = (apiTime >= localTime) ? apiData : localData;
+      } else {
+        data = apiData || localData;
       }
 
       if (data && data.success) {
