@@ -520,6 +520,32 @@ module.exports = function(eleventyConfig) {
     return true;
   };
 
+  function deduplicateItems(items) {
+    const seenIds = new Set();
+    const seenUrls = new Set();
+    const seenTitles = new Set();
+    return items.filter(function(item) {
+      const d = item.data || {};
+      const sId = d.source_id ? String(d.source_id) : null;
+      const sUrl = d.source_url ? String(d.source_url).replace(/\/+$/, "") : null;
+      const title = (d.title || "").trim();
+
+      if (sId) {
+        if (seenIds.has(sId)) return false;
+        seenIds.add(sId);
+      }
+      if (sUrl) {
+        if (seenUrls.has(sUrl)) return false;
+        seenUrls.add(sUrl);
+      }
+      if (title) {
+        if (seenTitles.has(title)) return false;
+        seenTitles.add(title);
+      }
+      return true;
+    });
+  }
+
   eleventyConfig.addCollection("shows", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/shows/*.md")
       .filter(item => isNotFuture(item) && !(item.data && item.data.nostalgia_series) && !(item.data && item.data.tags && (Array.isArray(item.data.tags) ? (item.data.tags.includes("nostalgia") || item.data.tags.includes("نوستالجيا")) : (item.data.tags === "nostalgia" || item.data.tags === "نوستالجيا"))))
@@ -529,7 +555,8 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob("content/recaps/*.md").filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
   eleventyConfig.addCollection("news", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("content/news/*.md").filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    const raw = collectionApi.getFilteredByGlob("content/news/*.md").filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
+    return deduplicateItems(raw);
   });
   eleventyConfig.addCollection("nostalgiaShows", function(collectionApi) {
     return collectionApi.getFilteredByGlob(["content/nostalgia/*.md", "content/nostalgia-series/*.md"]).filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
@@ -539,7 +566,7 @@ module.exports = function(eleventyConfig) {
     shows.forEach(function(i){ i.kind = "show"; });
     const recaps = collectionApi.getFilteredByGlob("content/recaps/*.md").filter(isNotFuture);
     recaps.forEach(function(i){ i.kind = "recap"; });
-    const news = collectionApi.getFilteredByGlob("content/news/*.md").filter(isNotFuture);
+    const news = deduplicateItems(collectionApi.getFilteredByGlob("content/news/*.md").filter(isNotFuture));
     news.forEach(function(i){ i.kind = "news"; });
     return shows.concat(recaps, news).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });

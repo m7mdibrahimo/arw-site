@@ -1577,6 +1577,64 @@ function findExistingNewsFile(postId: number, postUrl?: string): { filePath: str
   return null;
 }
 
+// ── Global Deduplication Safety Guard ──────────────────────────────
+// Scans content/news to guarantee no duplicate articles with same source_id or source_url exist
+export function deduplicateNewsFiles(): number {
+  if (!fs.existsSync(NEWS_DIR)) return 0;
+  const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith(".md"));
+  const seenId = new Map<number, string>();
+  const seenUrl = new Map<string, string>();
+  let removedCount = 0;
+
+  for (const file of files) {
+    const fullPath = path.join(NEWS_DIR, file);
+    try {
+      const content = fs.readFileSync(fullPath, "utf-8");
+      const idMatch = content.match(/source_id:\s*["']?(\d+)["']?/);
+      const urlMatch = content.match(/source_url:\s*["']?([^"'\r\n]+)["']?/);
+      const sId = idMatch ? Number(idMatch[1]) : null;
+      const sUrl = urlMatch ? urlMatch[1].replace(/\/+$/, "") : null;
+
+      let isDuplicate = false;
+      let originalFile = "";
+
+      if (sId && seenId.has(sId)) {
+        isDuplicate = true;
+        originalFile = seenId.get(sId)!;
+      } else if (sUrl && seenUrl.has(sUrl)) {
+        isDuplicate = true;
+        originalFile = seenUrl.get(sUrl)!;
+      }
+
+      if (isDuplicate) {
+        console.warn(`[Watcher] 🧹 Duplicate news detected! Removing redundant file: ${file} (Kept: ${originalFile})`);
+        const imgMatch = content.match(/image:\s*["']?([^"'\r\n]+)["']?/);
+        if (imgMatch && imgMatch[1]) {
+          const imgRel = imgMatch[1].replace(/^\//, "");
+          const imgFull = path.join(process.cwd(), imgRel);
+          if (fs.existsSync(imgFull) && !imgFull.includes("default")) {
+            try { fs.unlinkSync(imgFull); } catch (e) {}
+          }
+        }
+        if (fs.existsSync(fullPath)) {
+          fs.unlinkSync(fullPath);
+        }
+        removedCount++;
+      } else {
+        if (sId) seenId.set(sId, file);
+        if (sUrl) seenUrl.set(sUrl, file);
+      }
+    } catch (err) {
+      console.warn(`[Watcher] Error checking file for deduplication (${file}):`, err);
+    }
+  }
+
+  if (removedCount > 0) {
+    console.log(`[Watcher] ✅ Deduplication complete: purged ${removedCount} duplicate file(s).`);
+  }
+  return removedCount;
+}
+
 // Process a single Fightful post
 export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false): Promise<boolean> {
   const postId = post.id;
@@ -1736,6 +1794,15 @@ ${finalBody}
     .replace(/مصادرنا\s+الخاص[ةه]/gi, "التقارير الصحفية")
     .replace(/مصادرنا/gi, "التقارير الصحفية");
 
+  // Extra safeguard: remove any prior file matching postId or postUrl before writing
+  const prior = findExistingNewsFile(postId, postUrl);
+  if (prior && prior.filePath !== targetFilePath && fs.existsSync(prior.filePath)) {
+    try {
+      fs.unlinkSync(prior.filePath);
+      console.log(`[Watcher] 🗑️ Cleaned up existing duplicate file before write: ${prior.fileName}`);
+    } catch (e) {}
+  }
+
   fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
   console.log(`[Watcher] Successfully published fresh news file: ${targetFilePath}`);
 
@@ -1826,6 +1893,9 @@ const MAX_AUTO_PUBLISH_AGE_HOURS = 24;
 
 // Main check function
 export async function runWatcher(options: { forceLatest?: boolean; maxCount?: number; maxPerRun?: number } = {}) {
+  // Pre-execution deduplication guarantee
+  deduplicateNewsFiles();
+
   const state = loadState();
 
   if (state.enabled === false && !options.forceLatest) {
@@ -1903,6 +1973,9 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
 
     state.lastChecked = new Date().toISOString();
     saveState(state);
+
+    // Post-execution deduplication guarantee
+    deduplicateNewsFiles();
 
     console.log(`[Watcher] Check completed. New posts published: ${processedCount}`);
   } catch (e) {
