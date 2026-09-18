@@ -38,6 +38,12 @@ permalink: "/about/index.html"
   .feature-card h3{ font-family:"Cairo",sans-serif; font-size:18px; margin-bottom:8px; color:var(--ink); }
   .feature-card p{ font-size:14.5px; color:var(--muted); margin:0; }
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); background:var(--card); margin-top:60px; }
+  .footer-nav{ display:flex; justify-content:center; flex-wrap:wrap; gap:10px 18px; margin:18px 0 14px; font-weight:700; font-size:14.5px; }
+  .footer-nav a{ color:var(--ink); text-decoration:none; transition:color 0.2s ease, transform 0.2s ease; }
+  .footer-nav a:hover{ color:var(--teal) !important; transform:translateY(-1px); }
+  .footer-nav a.support-link{ color:var(--coral); }
+  .footer-nav a.support-link:hover{ color:var(--coral) !important; }
+
   .footer-links{ margin-bottom:12px; }
   .footer-links a{ color:var(--muted); margin:0 8px; font-size:13px; text-decoration:none; }
   .footer-links a:hover{ color:var(--teal); }
@@ -87,7 +93,16 @@ permalink: "/about/index.html"
   <p>نحن نؤمن بأن تفاعل الجمهور هو سر نجاحنا وتطورنا المستمر. إذا كان لديك أي استفسار أو مقترح أو رغبة في الانضمام إلى فريق العمل، يمكنك مراسلتنا في أي وقت عبر <a href="/contact/" style="color:var(--teal); font-weight:700;">صفحة تواصل معنا</a>.</p>
 </main>
 <footer>
-  <div class="footer-links">
+    <nav class="footer-nav" aria-label="أقسام الموقع الرئيسية">
+    <a href="/shows/">عروض المصارعة</a>
+    <a href="/federations/">الاتحادات</a>
+    <a href="/recaps/">ملخصات العروض</a>
+    <a href="/news/">الأخبار</a>
+    <a href="/nostalgia/">نوستالجيا</a>
+    <a href="/apps/">تطبيقات الموقع</a>
+    <a href="/support/" class="support-link">ادعم الموقع</a>
+  </nav>
+<div class="footer-links">
     <a href="/">الرئيسية</a> |
     <a href="/news/">الأخبار</a> |
     <a href="/about/">من نحن</a> |

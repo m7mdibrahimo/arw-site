@@ -171,6 +171,12 @@ permalink: "{{ tagPage.permalink }}"
   .kind-news{ background:var(--coral-soft); color:var(--coral); }
   .news-body h3, .show-body h3{ font-size:15.5px; font-weight:700; margin:4px 0 8px; line-height:1.45;; transition:color 0.2s ease; }
   footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+  .footer-nav{ display:flex; justify-content:center; flex-wrap:wrap; gap:10px 18px; margin:18px 0 14px; font-weight:700; font-size:14.5px; }
+  .footer-nav a{ color:var(--ink); text-decoration:none; transition:color 0.2s ease, transform 0.2s ease; }
+  .footer-nav a:hover{ color:var(--teal) !important; transform:translateY(-1px); }
+  .footer-nav a.support-link{ color:var(--coral); }
+  .footer-nav a.support-link:hover{ color:var(--coral) !important; }
+
 
   /* Smart Compact & Professional Pagination */
   .pagination-nav { margin-top: 52px; margin-bottom: 24px; display: flex; justify-content: center; align-items: center; width: 100%; }
@@ -345,7 +351,16 @@ permalink: "{{ tagPage.permalink }}"
     <a aria-label="اكس" href="https://x.com/ArabWrestlingEG" target="_blank" rel="noopener"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     <a aria-label="تيليجرام" href="https://t.me/arab_wrestling" target="_blank" rel="noopener"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg></a>
   </div>
-  <div class="footer-legal-links" style="margin:14px 0 10px; font-size:13px;">
+    <nav class="footer-nav" aria-label="أقسام الموقع الرئيسية">
+    <a href="/shows/">عروض المصارعة</a>
+    <a href="/federations/">الاتحادات</a>
+    <a href="/recaps/">ملخصات العروض</a>
+    <a href="/news/">الأخبار</a>
+    <a href="/nostalgia/">نوستالجيا</a>
+    <a href="/apps/">تطبيقات الموقع</a>
+    <a href="/support/" class="support-link">ادعم الموقع</a>
+  </nav>
+<div class="footer-legal-links" style="margin:14px 0 10px; font-size:13px;">
     <a href="/about/" style="color:var(--muted); margin:0 6px; text-decoration:none;">من نحن</a> ·
     <a href="/privacy/" style="color:var(--muted); margin:0 6px; text-decoration:none;">سياسة الخصوصية</a> ·
     <a href="/dmca/" style="color:var(--muted); margin:0 6px; text-decoration:none;">حقوق النشر والملكية (DMCA)</a> ·
