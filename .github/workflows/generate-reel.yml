@@ -25,17 +25,40 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install system dependencies & Arabic fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg xvfb fontconfig \
+            libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxcomposite1 \
+            libxdamage1 libxrandr2 libcups2 libpangocairo-1.0-0 \
+            libxshmfence1 libgtk-3-0 \
+            fonts-noto-core fonts-noto-color-emoji fonts-dejavu-core
+          fc-cache -f
+
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Render 60fps Vertical Reel Video
+      - name: Install Chrome Headless Shell
         run: |
-          SLUG="${{ github.event.inputs.slug }}"
-          echo "Rendering reel for slug: $SLUG"
-          if [ "$SLUG" = "latest" ] || [ -z "$SLUG" ]; then
-            npx tsx scripts/generate-news-video.ts
+          npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path $HOME/.cache/puppeteer
+          SHELL_PATH=$(find $HOME/.cache/puppeteer \( -name "chrome-headless-shell" -o -name "headless_shell" \) -type f | head -1)
+          echo "Discovered Chrome Headless Shell at: $SHELL_PATH"
+          if [ -n "$SHELL_PATH" ]; then
+            chmod +x "$SHELL_PATH"
+            echo "PRODUCER_HEADLESS_SHELL_PATH=$SHELL_PATH" >> $GITHUB_ENV
+            echo "HYPERFRAMES_BROWSER_PATH=$SHELL_PATH" >> $GITHUB_ENV
+          fi
+
+      - name: Render 60fps Vertical Reel Video
+        env:
+          INPUT_SLUG: ${{ github.event.inputs.slug }}
+        run: |
+          echo "Rendering reel for slug: $INPUT_SLUG"
+          if [ "$INPUT_SLUG" = "latest" ] || [ -z "$INPUT_SLUG" ]; then
+            xvfb-run -a npx tsx scripts/generate-news-video.ts
           else
-            npx tsx scripts/generate-news-video.ts "$SLUG"
+            xvfb-run -a npx tsx scripts/generate-news-video.ts "$INPUT_SLUG"
           fi
 
       - name: Commit and push generated video to main
@@ -44,7 +67,7 @@ jobs:
           git config --local user.name "ARW Video Bot"
           if [[ -n $(git status -s dist/videos/) ]]; then
             git add dist/videos/
-            git commit -m "feat(video): auto-generate reel video for ${{ github.event.inputs.slug }}"
+            git commit -m "feat(video): auto-generate reel video [skip ci]"
             for i in {1..3}; do
               git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
               if git push origin main; then
