@@ -1,0 +1,572 @@
+/* ==========================================================================
+   Arab Wrestling - Enhanced Features (Live Search, Bookmarks, Spoilers, Auto-Tags)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Superstar Auto-Tag Links (ربط أسماء المصارعين بالوسوم تلقائياً)
+   -------------------------------------------------------------------------- */
+.star-mention-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--teal, #0e9594);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  font-weight: 700;
+}
+.star-mention-link:hover {
+  color: var(--teal, #0e9594);
+  text-decoration-color: var(--gold, #f2a53c);
+}
+html.arw-dark .star-mention-link {
+  text-decoration-color: var(--teal, #1cb5b3);
+}
+html.arw-dark .star-mention-link:hover {
+  color: var(--teal, #1cb5b3);
+  text-decoration-color: var(--gold, #f4b352);
+}
+
+/* --------------------------------------------------------------------------
+   2. Smart Interactive Spoiler Blocker (حماية الحرق)
+   -------------------------------------------------------------------------- */
+.spoiler-control-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(255, 111, 89, 0.08), rgba(242, 165, 60, 0.08));
+  border: 1px dashed rgba(255, 111, 89, 0.4);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 20px 0 26px;
+  font-size: 13.5px;
+  color: var(--ink);
+  direction: rtl;
+}
+.spoiler-banner-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.spoiler-banner-btn {
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.spoiler-banner-btn:hover {
+  border-color: var(--coral, #ff6f59);
+  color: var(--coral, #ff6f59);
+  transform: translateY(-1px);
+}
+
+.spoiler-result {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  vertical-align: baseline;
+  user-select: none;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin: 0 4px;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  line-height: inherit;
+}
+html.arw-dark .spoiler-result {
+  background: rgba(255, 255, 255, 0.1);
+}
+.spoiler-result .spoiler-inner {
+  filter: blur(6.5px);
+  transition: filter 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  display: inline-block;
+  opacity: 0.75;
+}
+.spoiler-result .spoiler-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10.5px;
+  font-weight: 800;
+  background: var(--coral, #ff6f59);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 2;
+}
+.spoiler-result.revealed {
+  background: transparent;
+  user-select: text;
+}
+.spoiler-result.revealed .spoiler-inner {
+  filter: blur(0);
+  opacity: 1;
+}
+.spoiler-result.revealed .spoiler-badge {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* --------------------------------------------------------------------------
+   3. Watch Later / Bookmarks (المفضلة وقائمة المشاهدة لاحقاً)
+   -------------------------------------------------------------------------- */
+.bookmarks-btn {
+  position: relative;
+}
+.bookmark-badge {
+  position: absolute;
+  top: -4px;
+  inset-inline-end: -4px;
+  background: var(--coral, #ff6f59);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid var(--card);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.post-bookmark-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-inline-start: auto;
+  flex-shrink: 0;
+}
+.post-bookmark-btn:hover {
+  border-color: var(--gold, #f2a53c);
+  color: var(--gold, #f2a53c);
+  transform: translateY(-1px);
+}
+.post-bookmark-btn .bm-icon-filled {
+  display: none;
+  color: var(--gold, #f2a53c);
+}
+.post-bookmark-btn.bookmarked {
+  border-color: var(--gold, #f2a53c);
+  background: var(--gold-soft, #fdf1de);
+  color: #b58509;
+}
+html.arw-dark .post-bookmark-btn.bookmarked {
+  color: var(--gold, #f4b352);
+  background: rgba(244, 179, 82, 0.15);
+}
+.post-bookmark-btn.bookmarked .bm-icon-empty {
+  display: none;
+}
+.post-bookmark-btn.bookmarked .bm-icon-filled {
+  display: inline-block;
+}
+
+/* Slide-in Drawer Modal */
+.bookmarks-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 99995;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.bookmarks-drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.bookmarks-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  z-index: 99996;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  direction: rtl;
+  font-family: 'Tajawal', sans-serif;
+}
+.bookmarks-drawer.active {
+  transform: translateX(0);
+}
+.bookmarks-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.bookmarks-drawer-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.bookmarks-drawer-title svg {
+  color: var(--gold, #f2a53c);
+}
+.bookmarks-drawer-close {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.bookmarks-drawer-close:hover {
+  background: var(--line);
+  color: var(--ink);
+}
+.bookmarks-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bookmark-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bookmark-card:hover {
+  border-color: var(--teal);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+.bookmark-card-thumb {
+  width: 72px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #222;
+}
+.bookmark-card-info {
+  flex: 1;
+  min-width: 0;
+}
+.bookmark-card-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.bookmark-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.bookmark-badge-tag {
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.bookmark-badge-show {
+  background: var(--gold-soft);
+  color: #b58509;
+}
+.bookmark-badge-recap {
+  background: rgba(124, 110, 232, 0.15);
+  color: var(--violet);
+}
+.bookmark-badge-news {
+  background: var(--coral-soft);
+  color: var(--coral);
+}
+.bookmark-card-remove {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+.bookmark-card-remove:hover {
+  color: var(--coral);
+  background: var(--coral-soft);
+}
+.bookmarks-empty {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+}
+.bookmarks-empty svg {
+  width: 48px;
+  height: 48px;
+  color: var(--line);
+  margin-bottom: 14px;
+}
+.bookmarks-empty p {
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.bookmarks-drawer-foot {
+  padding: 14px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.bookmarks-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--coral);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  transition: opacity 0.2s ease;
+}
+.bookmarks-clear-btn:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   4. Instant Live Search Dropdown (البحث الفوري المنسدل)
+   -------------------------------------------------------------------------- */
+.site-search {
+  position: relative;
+}
+.instant-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 380px;
+  max-width: calc(100vw - 24px);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.98);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  direction: rtl;
+  font-family: 'Tajawal', sans-serif;
+}
+.instant-search-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.instant-search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.instant-search-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  max-height: 380px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.instant-search-item a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.instant-search-item a:hover,
+.instant-search-item.selected a {
+  background: var(--teal-soft);
+  transform: translateX(-2px);
+}
+.instant-search-thumb {
+  width: 54px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #222;
+}
+.instant-search-info {
+  flex: 1;
+  min-width: 0;
+}
+.instant-search-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.instant-search-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+.instant-search-badge {
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.instant-search-badge.badge-show {
+  background: var(--gold-soft);
+  color: #b58509;
+}
+.instant-search-badge.badge-recap {
+  background: rgba(124, 110, 232, 0.15);
+  color: var(--violet);
+}
+.instant-search-badge.badge-news {
+  background: var(--coral-soft);
+  color: var(--coral);
+}
+.instant-search-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  text-align: center;
+}
+.instant-search-all-btn {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.instant-search-all-btn:hover {
+  text-decoration: underline;
+}
+.instant-search-empty {
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+.instant-search-loading {
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.instant-search-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--line);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: search-spin 0.6s linear infinite;
+}
+@keyframes search-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .instant-search-dropdown {
+    position: fixed;
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+  }
+  .bookmarks-drawer {
+    max-width: 100%;
+  }
+}

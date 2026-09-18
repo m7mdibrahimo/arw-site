@@ -1165,6 +1165,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260917k">
+<link rel="stylesheet" href="/assets/features.css?v=20260918a">
 </head>
 <body>
 <header>
@@ -1191,6 +1192,10 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 <li><a class="navlink" href="/recaps/">ملخصات العروض</a></li>
 <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
 <li class="utility-row">
+<button aria-label="المفضلة وقائمة المشاهدة لاحقاً" class="theme-toggle bookmarks-btn" id="arwBookmarksBtn" type="button" title="المفضلة والمشاهدة لاحقاً">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+<span class="bookmark-badge" id="arwBookmarkBadge" style="display:none;">0</span>
+</button>
 <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
 <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
 <svg class="icon-sun" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="currentColor" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
@@ -1496,6 +1501,7 @@ if(a && a.href && a.origin === location.origin) prefetch(a.href);
 })();
 </script>
 <script src="/assets/notif.js" defer></script>
+<script src="/assets/features.js?v=20260918a" defer></script>
 <script>
 (function(){
 var header = document.querySelector('header');

@@ -415,6 +415,117 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("groupDownloadsByQuality", groupDownloadsByQuality);
   eleventyConfig.addNunjucksFilter("autoEmbedSocials", autoEmbedSocials);
 
+  // --------------------------------------------------------------------------
+  // 1. ربط أسماء المصارعين بالوسوم تلقائياً (Auto-Tag Linking for Superstars)
+  // --------------------------------------------------------------------------
+  const WRESTLING_SUPERSTARS = [
+    { names: ["رومان رينز", "Roman Reigns"], slug: "رومان-رينز" },
+    { names: ["كودي رودز", "Cody Rhodes"], slug: "كودي-رودز" },
+    { names: ["سي إم بانك", "سي ام بانك", "CM Punk"], slug: "سي-ام-بانك" },
+    { names: ["جون سينا", "John Cena"], slug: "جون-سينا" },
+    { names: ["راندي أورتن", "راندي اورتن", "Randy Orton"], slug: "راندي-اورتن" },
+    { names: ["ذا روك", "The Rock"], slug: "ذا-روك" },
+    { names: ["بروك ليسنر", "Brock Lesnar"], slug: "بروك-ليسنر" },
+    { names: ["أندرتيكر", "اندرتيكر", "The Undertaker"], slug: "اندرتيكر" },
+    { names: ["سيث رولينز", "Seth Rollins"], slug: "سيث-رولينز" },
+    { names: ["سامي زين", "Sami Zayn"], slug: "سامي-زين" },
+    { names: ["كيفين أوينز", "كيفن اوينز", "Kevin Owens"], slug: "كيفين-اوينز" },
+    { names: ["غونتر", "Gunther"], slug: "غونتر" },
+    { names: ["درو ماكنتاير", "Drew McIntyre"], slug: "درو-ماكنتاير" },
+    { names: ["إل إيه نايت", "ال ايه نايت", "LA Knight"], slug: "ال-ايه-نايت" },
+    { names: ["ري ميستيريو", "ري ميستريو", "Rey Mysterio"], slug: "ري-ميستيريو" },
+    { names: ["دومينيك ميستيريو", "دومينيك ميستريو", "Dominik Mysterio"], slug: "دومينيك-ميستيريو" },
+    { names: ["سولو سيكوا", "Solo Sikoa"], slug: "سولو-سيكوا" },
+    { names: ["جاكوب فاتو", "Jacob Fatu"], slug: "جاكوب-فاتو" },
+    { names: ["جون موكسلي", "Jon Moxley"], slug: "جون-موكسلي" },
+    { names: ["ويل أوسبري", "ويل اوسبري", "Will Ospreay"], slug: "ويل-اوسبري" },
+    { names: ["ريا ريبلي", "Rhea Ripley"], slug: "ريا-ريبلي" },
+    { names: ["بيكي لينش", "Becky Lynch"], slug: "بيكي-لينش" },
+    { names: ["شارلوت فلير", "Charlotte Flair"], slug: "شارلوت-فلير" },
+    { names: ["بايلي", "Bayley"], slug: "بايلي" },
+    { names: ["ليف مورغان", "ليف مورجان", "Liv Morgan"], slug: "ليف-مورغان" },
+    { names: ["تيفاني ستراتون", "Tiffany Stratton"], slug: "تيفاني-ستراتون" },
+    { names: ["إيو سكاي", "ايو سكاي", "IYO SKY"], slug: "ايو-سكاي" },
+    { names: ["بيانكا بيلير", "Bianca Belair"], slug: "بيانكا-بيلير" },
+    { names: ["جايد كارجيل", "Jade Cargill"], slug: "جايد-كارجيل" },
+    { names: ["توني خان", "Tony Khan"], slug: "توني-خان" },
+    { names: ["تريبل إتش", "تربل اتش", "Triple H"], slug: "تريبل-اتش" },
+    { names: ["فين بالور", "Finn Balor"], slug: "فين-بالور" },
+    { names: ["ديميان بريست", "Damian Priest"], slug: "ديميان-بريست" },
+    { names: ["داربي ألين", "داربي الين", "Darby Allin"], slug: "داربي-الين" },
+    { names: ["سويرف ستريكلاند", "Swerve Strickland"], slug: "سويرف-ستريكلاند" },
+    { names: ["كيني أوميغا", "كيني اوميغا", "Kenny Omega"], slug: "كيني-اوميغا" },
+    { names: ["كازوتشيكا أوكادا", "Kazuchika Okada"], slug: "كازوتشيكا-اوكادا" },
+    { names: ["آدم كول", "ادم كول", "Adam Cole"], slug: "ادم-كول" },
+    { names: ["إم جيه إف", "ام جيه اف", "MJF"], slug: "ام-جيه-اف" }
+  ];
+
+  const autoLinkWrestlingStars = function(html) {
+    if (!html || typeof html !== "string") return html;
+    const tokens = html.split(/(<[^>]+>)/g);
+    let inAnchor = 0;
+    let inHeading = 0;
+    let inScriptOrStyle = 0;
+    const linkedStars = new Set();
+
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i];
+      if (token.startsWith("<")) {
+        const lower = token.toLowerCase();
+        if (/^<a[\s>]/i.test(lower)) inAnchor++;
+        else if (/^<\/a>/i.test(lower)) inAnchor = Math.max(0, inAnchor - 1);
+        else if (/^<h[1-6][\s>]/i.test(lower)) inHeading++;
+        else if (/^<\/h[1-6]>/i.test(lower)) inHeading = Math.max(0, inHeading - 1);
+        else if (/^<(script|style|figcaption)[\s>]/i.test(lower)) inScriptOrStyle++;
+        else if (/^<\/(script|style|figcaption)>/i.test(lower)) inScriptOrStyle = Math.max(0, inScriptOrStyle - 1);
+        continue;
+      }
+
+      if (inAnchor > 0 || inHeading > 0 || inScriptOrStyle > 0 || !token.trim()) {
+        continue;
+      }
+
+      let text = token;
+      for (const star of WRESTLING_SUPERSTARS) {
+        if (linkedStars.has(star.slug)) continue;
+
+        for (const name of star.names) {
+          const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          const re = new RegExp(`(^|[^\\p{L}\\p{N}_])(${escaped})([^\\p{L}\\p{N}_]|$)`, "u");
+          const match = text.match(re);
+          if (match) {
+            const prefix = match[1];
+            const matchedName = match[2];
+            const suffix = match[3];
+            const replacement = `${prefix}<a href="/tag/${star.slug}/" class="star-mention-link" title="مواضيع وأخبار ${matchedName}">${matchedName}</a>${suffix}`;
+            text = text.slice(0, match.index) + replacement + text.slice(match.index + match[0].length);
+            linkedStars.add(star.slug);
+            break;
+          }
+        }
+      }
+      tokens[i] = text;
+    }
+    return tokens.join("");
+  };
+  eleventyConfig.addFilter("autoLinkWrestlingStars", autoLinkWrestlingStars);
+  eleventyConfig.addNunjucksFilter("autoLinkWrestlingStars", autoLinkWrestlingStars);
+
+  // --------------------------------------------------------------------------
+  // 2. حماية الحرق للنتائج والنزالات (Smart Interactive Spoiler Blocker)
+  // --------------------------------------------------------------------------
+  const wrapSpoilers = function(contentHtml) {
+    if (!contentHtml || typeof contentHtml !== "string") return contentHtml;
+    const re = /(🏆\s*(?:<strong[^>]*>)?\s*(?:الفائز(?:ة|ون|ان|تان)?)\s*(?::\s*<\/strong>|<\/strong>\s*:|:|<\/strong>)\s*)([\s\S]*?)(?=<\/li>|<\/p>|<br\s*\/?>|$)/gi;
+    return contentHtml.replace(re, (match, prefix, winnerContent) => {
+      const trimmed = winnerContent.trim();
+      if (!trimmed) return match;
+      return prefix + `<span class="spoiler-result" title="اضغط لكشف الفائز" data-spoiler="true"><span class="spoiler-inner">${trimmed}</span><span class="spoiler-badge">👁️ كشف الفائز</span></span>`;
+    });
+  };
+  eleventyConfig.addFilter("wrapSpoilers", wrapSpoilers);
+  eleventyConfig.addNunjucksFilter("wrapSpoilers", wrapSpoilers);
+
   // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
   const optImgShortcode = async function(src, fallback) {
     const defaultFallback = "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg";
