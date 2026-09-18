@@ -4,3 +4,5 @@ CLAUDE.md
 worker/
 scripts/
 tests/
+.agents/
+videos/

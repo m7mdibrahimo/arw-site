@@ -1,0 +1,333 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { execSync } from 'node:child_process';
+
+const ROOT_DIR = process.cwd();
+const NEWS_DIR = path.join(ROOT_DIR, 'content/news');
+const REEL_DIR = path.join(ROOT_DIR, 'videos/news-reel');
+const OUT_DIR = path.join(ROOT_DIR, 'dist/videos');
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function parseFrontmatter(content: string): Record<string, string> {
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return {};
+  const lines = match[1].split('\n');
+  const data: Record<string, string> = {};
+  for (const line of lines) {
+    const idx = line.indexOf(':');
+    if (idx !== -1) {
+      const key = line.slice(0, idx).trim();
+      let val = line.slice(idx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      data[key] = val;
+    }
+  }
+  return data;
+}
+
+function getTargetNewsFile(input?: string): string {
+  if (input && fs.existsSync(input)) {
+    return path.resolve(input);
+  }
+  if (input && fs.existsSync(path.join(NEWS_DIR, input))) {
+    return path.join(NEWS_DIR, input);
+  }
+  // Find newest file in content/news
+  const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith('.md'));
+  if (!files.length) throw new Error('No news files found in content/news');
+  files.sort((a, b) => {
+    return fs.statSync(path.join(NEWS_DIR, b)).mtimeMs - fs.statSync(path.join(NEWS_DIR, a)).mtimeMs;
+  });
+  return path.join(NEWS_DIR, files[0]);
+}
+
+async function main() {
+  const targetFile = getTargetNewsFile(process.argv[2]);
+  console.log(`🎬 Processing News Post: ${path.basename(targetFile)}`);
+
+  const raw = fs.readFileSync(targetFile, 'utf-8');
+  const meta = parseFrontmatter(raw);
+
+  const title = meta.headline || meta.title || 'خبر عاجل من مصارعة العرب';
+  const fed = meta.federation || 'عرب راسلنج';
+  const desc = meta.description || 'تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.';
+  let imageRel = meta.image || '';
+  if (imageRel.startsWith('/')) imageRel = imageRel.slice(1);
+
+  const imageSrc = path.join(ROOT_DIR, imageRel);
+  const targetImage = path.join(REEL_DIR, 'assets/news-cover.jpg');
+
+  fs.mkdirSync(path.join(REEL_DIR, 'assets'), { recursive: true });
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  if (fs.existsSync(imageSrc)) {
+    fs.copyFileSync(imageSrc, targetImage);
+  } else {
+    console.warn(`⚠️ Warning: Image not found at ${imageSrc}, using fallback`);
+  }
+
+  // Generate index.html for reel
+  const htmlTemplate = `<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #090b10;
+        font-family: 'Cairo', 'Geeza Pro', 'Damascus', 'Arial', sans-serif;
+        direction: rtl;
+        text-align: right;
+        color: #ffffff;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: radial-gradient(circle at 50% 12%, rgba(220, 38, 38, 0.35) 0%, transparent 55%),
+                    radial-gradient(circle at 50% 88%, rgba(245, 158, 11, 0.2) 0%, transparent 55%),
+                    #090c10;
+      }
+
+      .top-header {
+        position: absolute;
+        top: 80px;
+        left: 60px;
+        right: 60px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 20;
+      }
+
+      .badge-breaking {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: rgba(220, 38, 38, 0.25);
+        border: 2px solid #ef4444;
+        color: #fee2e2;
+        padding: 14px 28px;
+        border-radius: 9999px;
+        font-size: 30px;
+        font-weight: 800;
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+      }
+
+      .pulse-dot {
+        width: 18px;
+        height: 18px;
+        background: #ef4444;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #ef4444;
+      }
+
+      .brand-title {
+        font-size: 36px;
+        font-weight: 900;
+        color: #f59e0b;
+        letter-spacing: -0.5px;
+      }
+
+      .media-container {
+        position: absolute;
+        top: 200px;
+        left: 60px;
+        right: 60px;
+        height: 960px;
+        border-radius: 36px;
+        overflow: hidden;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 0 2px rgba(255, 255, 255, 0.12);
+        background: #151820;
+        z-index: 10;
+      }
+
+      .media-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform-origin: center center;
+      }
+
+      .media-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(9, 12, 16, 0) 50%, rgba(9, 12, 16, 0.95) 100%);
+      }
+
+      .fed-tag {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(12px);
+        border: 2px solid #f59e0b;
+        color: #fef3c7;
+        font-size: 26px;
+        font-weight: 800;
+        padding: 10px 24px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .content-box {
+        position: absolute;
+        top: 1200px;
+        left: 60px;
+        right: 60px;
+        height: 480px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+        z-index: 20;
+      }
+
+      .headline {
+        font-size: 50px;
+        font-weight: 900;
+        line-height: 1.35;
+        color: #ffffff;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .subtext {
+        font-size: 32px;
+        font-weight: 600;
+        color: #cbd5e1;
+        line-height: 1.5;
+      }
+
+      .bottom-cta {
+        position: absolute;
+        bottom: 70px;
+        left: 60px;
+        right: 60px;
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(16px);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        padding: 0 40px;
+        border-radius: 28px;
+        z-index: 20;
+      }
+
+      .cta-text {
+        font-size: 28px;
+        font-weight: 700;
+        color: #e2e8f0;
+      }
+
+      .cta-url {
+        font-size: 34px;
+        font-weight: 900;
+        color: #38bdf8;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="8"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div class="top-header" id="header">
+        <div class="badge-breaking" id="badge">
+          <div class="pulse-dot"></div>
+          <span>عاجل | مصارعة العرب</span>
+        </div>
+        <div class="brand-title" id="brand">
+          <span>عرب راسلنج</span>
+        </div>
+      </div>
+
+      <div class="media-container" id="mediaCard">
+        <img class="media-img" id="heroImg" src="assets/news-cover.jpg" alt="${escapeHtml(title)}" />
+        <div class="media-overlay"></div>
+        <div class="fed-tag" id="fedTag">${escapeHtml(fed)}</div>
+      </div>
+
+      <div class="content-box" id="contentBox">
+        <h1 class="headline" id="headlineText">${escapeHtml(title)}</h1>
+        <p class="subtext" id="subtext">${escapeHtml(desc)}</p>
+      </div>
+
+      <div class="bottom-cta" id="bottomBar">
+        <div class="cta-text">التفاصيل الكاملة عبر موقعنا:</div>
+        <div class="cta-url">arab-wrestling.com</div>
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#badge", { opacity: 0, y: -40, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.7)" }, 0.2);
+      tl.fromTo("#brand", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.4);
+
+      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.92, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.12, duration: 7.5, ease: "sine.inOut" }, 0.3);
+      tl.fromTo("#fedTag", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(2)" }, 0.7);
+
+      tl.fromTo("#headlineText", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.8);
+      tl.fromTo("#subtext", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.2);
+
+      tl.fromTo("#bottomBar", { opacity: 0, y: 30, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 1.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>`;
+
+  fs.writeFileSync(path.join(REEL_DIR, 'index.html'), htmlTemplate, 'utf-8');
+
+  const baseSlug = path.basename(targetFile, '.md').slice(0, 45);
+  const outPath = path.join(OUT_DIR, `reel-${baseSlug}.mp4`);
+
+  console.log('🚀 Rendering video with HyperFrames engine...');
+  execSync(`npx hyperframes render -o "${outPath}"`, {
+    cwd: REEL_DIR,
+    stdio: 'inherit',
+  });
+
+  console.log(`\n🎉 Success! Video generated at: ${outPath}`);
+}
+
+main().catch(err => {
+  console.error('❌ Error generating video:', err);
+  process.exit(1);
+});

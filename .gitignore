@@ -17,4 +17,6 @@ bun.lock
 index.html
 /src/
 vite.config.ts
-_site/
+videos/**/*.mp4
+videos/**/assets/
+dist/videos/

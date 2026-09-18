@@ -34,6 +34,14 @@
 <meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
+<meta property="article:published_time" content="{{ page.date.toISOString() }}">
+<meta property="article:modified_time" content="{{ page.date.toISOString() }}">
+{% if federation %}<meta property="article:section" content="{{ federation }}">{% endif %}
+{% if tags and tags.length %}
+{% for t in tags %}
+<meta property="article:tag" content="{{ t }}">
+{% endfor %}
+{% endif %}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -49,9 +57,9 @@
     {
       "@type": "{{ 'VideoObject' if isVideoContent else 'NewsArticle' }}",
       "headline": "{{ pageTitle | escape }}",
+      "description": "{{ (description or baseDesc) | escape }}",
       {% if isVideoContent %}
       "name": "{{ pageTitle | escape }}",
-      "description": "{{ (description or baseDesc) | escape }}",
       "thumbnailUrl": ["{{ schemaImage }}"],
       "uploadDate": {{ page.date | jsonify | safe }},
       {% if duration %}"duration": "{{ duration | isoDuration }}",{% endif %}
@@ -59,13 +67,22 @@
       {% endif %}
       "image": {
         "@type": "ImageObject",
-        "url": "{{ schemaImage }}"
+        "url": "{{ schemaImage }}",
+        "caption": "{{ pageTitle | escape }}"
       },
       "datePublished": {{ page.date | jsonify | safe }},
       "dateModified": {{ page.date | jsonify | safe }},
       {% if federation %}"articleSection": "{{ federation }}",{% endif %}
       {% if tags and tags.length %}"keywords": "{{ tags | join(', ') | escape }}",{% endif %}
       "inLanguage": "ar",
+      "isAccessibleForFree": "true",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "xpath": [
+          "/html/head/title",
+          "/html/head/meta[@name='description']/@content"
+        ]
+      },
       "author": {
         "@type": "{{ 'Person' if (author and author != 'عرب راسلنج' and author != 'فريق تحرير عرب راسلنج') else 'Organization' }}",
         "name": "{{ (author or 'فريق تحرير عرب راسلنج') | escape }}",
@@ -74,6 +91,7 @@
       "publisher": {
         "@type": "Organization",
         "name": "عرب راسلنج",
+        "url": "https://arab-wrestling.com",
         "logo": {
           "@type": "ImageObject",
           "url": "https://arab-wrestling.com/assets/logo.png"
