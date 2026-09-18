@@ -518,6 +518,105 @@ async function githubGetVideosManifest(env: Env): Promise<any[]> {
   }
 }
 
+async function githubDeleteVideoFile(env: Env, filename: string): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const cleanName = filename.split("/").pop() || "";
+    if (!cleanName || !cleanName.endsWith(".mp4")) {
+      return { ok: false, error: "اسم ملف الفيديو غير صالح" };
+    }
+
+    // 1. Get the file SHA from GitHub
+    const fileRes = await fetch(
+      `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/dist/videos/${encodeURIComponent(cleanName)}?ref=${env.GITHUB_BRANCH || "main"}`,
+      {
+        headers: {
+          Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+          Accept: "application/vnd.github+json",
+          "User-Agent": "arw-site-bot",
+        },
+      }
+    );
+
+    let fileSha: string | null = null;
+    if (fileRes.ok) {
+      const fileData: any = await fileRes.json();
+      fileSha = fileData.sha || null;
+    }
+
+    // 2. Delete the file if found
+    if (fileSha) {
+      const delRes = await fetch(
+        `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/dist/videos/${encodeURIComponent(cleanName)}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+            Accept: "application/vnd.github+json",
+            "Content-Type": "application/json",
+            "User-Agent": "arw-site-bot",
+          },
+          body: JSON.stringify({
+            message: `chore(video): auto-cleanup published reel ${cleanName} [skip ci]`,
+            sha: fileSha,
+            branch: env.GITHUB_BRANCH || "main",
+          }),
+        }
+      );
+      if (!delRes.ok) {
+        const errTxt = await delRes.text().catch(() => "");
+        console.warn(`[Video Cleanup] Delete ${cleanName} failed: ${delRes.status} ${errTxt}`);
+      }
+    }
+
+    // 3. Update manifest.json on GitHub
+    const manifestRes = await fetch(
+      `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/dist/videos/manifest.json?ref=${env.GITHUB_BRANCH || "main"}&_t=${Date.now()}`,
+      {
+        headers: {
+          Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+          Accept: "application/vnd.github+json",
+          "User-Agent": "arw-site-bot",
+        },
+      }
+    );
+
+    if (manifestRes.ok) {
+      const manifestData: any = await manifestRes.json();
+      if (manifestData.content && manifestData.sha) {
+        let manifest: any[] = [];
+        try {
+          manifest = JSON.parse(base64DecodeUtf8(manifestData.content.replace(/\n/g, "")));
+        } catch (_) {}
+        const filtered = manifest.filter((v: any) => v.filename !== cleanName);
+        if (filtered.length !== manifest.length) {
+          await fetch(
+            `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/dist/videos/manifest.json`,
+            {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+                Accept: "application/vnd.github+json",
+                "Content-Type": "application/json",
+                "User-Agent": "arw-site-bot",
+              },
+              body: JSON.stringify({
+                message: `chore(video): remove ${cleanName} from manifest after cleanup [skip ci]`,
+                content: base64EncodeUtf8(JSON.stringify(filtered, null, 2)),
+                sha: manifestData.sha,
+                branch: env.GITHUB_BRANCH || "main",
+              }),
+            }
+          );
+        }
+      }
+    }
+
+    return { ok: true };
+  } catch (err: any) {
+    return { ok: false, error: err.message };
+  }
+}
+
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
 async function claimSend(env: Env, platform: Platform, key: string): Promise<boolean> {
@@ -2468,6 +2567,38 @@ export default {
           });
         } catch (e: any) {
           return json({ error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/videos/delete" && request.method === "POST") {
+        try {
+          const body: any = await request.json().catch(() => ({}));
+          const filename = String(body.filename || "").trim();
+          const slug = String(body.slug || "").trim();
+
+          let targetFile = filename;
+          if (!targetFile && slug) {
+            const manifest = await githubGetVideosManifest(env);
+            const found = manifest.find((v: any) => {
+              const f = (v.filename || "").toLowerCase();
+              const s = (v.cleanSlug || "").toLowerCase();
+              return f.includes(slug.toLowerCase()) || s.includes(slug.toLowerCase());
+            });
+            if (found) targetFile = found.filename;
+            else targetFile = `reel-${slug}.mp4`;
+          }
+
+          if (!targetFile) {
+            return json({ success: false, error: "filename or slug is required" }, 400);
+          }
+
+          const res = await githubDeleteVideoFile(env, targetFile);
+          return json({
+            success: res.ok,
+            message: res.ok ? `تم حذف ملف الفيديو ${targetFile} وتنظيف السيرفر بنجاح!` : (res.error || "فشل حذف الفيديو"),
+          });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
         }
       }
 

@@ -636,6 +636,9 @@
         <button class="tool-btn" onclick="triggerReelGeneration(true)">
           <span>🔄 إعادة التوليد</span>
         </button>
+        <button class="tool-btn" onclick="deleteCurrentVideo()" style="color:#f87171; border-color:rgba(239,68,68,0.35);">
+          <span>🗑️ حذف من السيرفر</span>
+        </button>
       </div>
     </div>
 
@@ -1222,9 +1225,28 @@
           if (r && r.ok) successes++;
         }
         if (successes > 0) {
+          task.progressText = `🧹 تم التأكد من النشر على ${successes} منصات! جاري مسح الفيديو المؤقت من السيرفر...`;
+          updateQueueDockUI();
+          showToast(`🎉 تم نشر "${item.title.slice(0, 24)}..." بنجاح! جاري حذف الفيديو المؤقت...`);
+
+          // Safe buffer to ensure Meta servers finish downloading video
+          await new Promise(r => setTimeout(r, 12000));
+
+          try {
+            await fetch(`${API_BASE}/api/videos/delete`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ filename: readyVideoData.filename, slug }),
+            });
+            videoManifest = videoManifest.filter(v => v.filename !== readyVideoData.filename);
+            statReadyReels.textContent = videoManifest.length;
+          } catch (delErr) {
+            console.warn('Auto-cleanup error:', delErr);
+          }
+
           task.status = 'done';
-          task.progressText = `✅ تم النشر بنجاح على ${successes} منصات!`;
-          showToast(`🎉 تم توليد ونشر "${item.title.slice(0, 28)}..." على السوشيال بنجاح!`);
+          task.progressText = `✅ تم النشر وحذف الفيديو من السيرفر بنجاح!`;
+          showToast(`✅ تم النشر وحذف ملف الفيديو لتوفير المساحة تماماً!`);
         } else {
           task.status = 'error';
           task.progressText = '❌ فشل النشر على المنصات';
@@ -1491,6 +1513,41 @@
     navigator.clipboard.writeText(currentItem.readyVideoUrl).then(() => {
       showToast('📋 تم نسخ رابط الفيديو المباشر إلى الحافظة!');
     });
+  };
+
+  window.deleteCurrentVideo = async function() {
+    if (!currentItem) return;
+    const slug = getItemSlug(currentItem);
+    const reel = findReelForSlug(slug);
+    if (!reel) {
+      showToast('⚠️ لا يوجد ملف فيديو محفوظ لهذا المحتوى!', false);
+      return;
+    }
+
+    if (!confirm('هل تريد بالتأكيد حذف ملف الفيديو نهائياً من السيرفر وجيت هاب لتوفير المساحة؟')) {
+      return;
+    }
+
+    showToast('⏳ جاري حذف الفيديو من السيرفر وجيت هاب...');
+    try {
+      const res = await fetch(`${API_BASE}/api/videos/delete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: reel.filename, slug }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        showToast('🗑️ تم حذف ملف الفيديو من السيرفر بنجاح!');
+        videoManifest = videoManifest.filter(v => v.filename !== reel.filename);
+        statReadyReels.textContent = videoManifest.length;
+        setupModalForUnreadyVideo();
+        renderGrid();
+      } else {
+        showToast('❌ تعذر الحذف: ' + (data.error || 'خطأ بالسيرفر'), false);
+      }
+    } catch (err) {
+      showToast('❌ تعذر الاتصال بالسيرفر', false);
+    }
   };
 
   window.triggerReelGeneration = async function(isRegen = false) {
