@@ -1,5 +1,25 @@
 [
   {
+    "id": 329105,
+    "link": "https://www.fightful.com/wrestling/john-cena-discovered-mason-rook-on-his-hotel-tv-while-filming-matchbox-the-movie-in-budapest/",
+    "date": "2026-09-18T13:13:51",
+    "date_gmt": "2026-09-18T17:13:51",
+    "title": {
+      "rendered": "John Cena Discovered Mason Rook On His Hotel TV While Filming &#8216;Matchbox: The Movie&#8217; In Budapest"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
+  },
+  {
+    "id": 329079,
+    "link": "https://www.fightful.com/wrestling/mlw-fusion-results-9-17-mistico-vs-trevor-lee/",
+    "date": "2026-09-18T13:10:08",
+    "date_gmt": "2026-09-18T17:10:08",
+    "title": {
+      "rendered": "MLW Fusion Results (9/17): Mistico vs. Trevor Lee"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17105940/mlw-fusion-e1789657188887.webp"
+  },
+  {
     "id": 328801,
     "link": "https://www.fightful.com/wrestling/m-by-elegance-i-dont-think-im-holding-the-knockouts-tv-title-without-the-elegance-brand/",
     "date": "2026-09-18T12:18:00",
@@ -278,25 +298,5 @@
       "rendered": "UFC 331: Van vs. Pantoja 2 Betting Odds Courtesy of MyBookie"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17182946/UFC-331.jpg.webp"
-  },
-  {
-    "id": 328992,
-    "link": "https://www.fightful.com/wrestling/progress-odyssey-tour-bournemouth-results-9-12/",
-    "date": "2026-09-17T16:03:54",
-    "date_gmt": "2026-09-17T20:03:54",
-    "title": {
-      "rendered": "PROGRESS Odyssey Tour Bournemouth Results (9/12)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17170618/Screenshot-2026-09-17-at-5.02.01-PM.png"
-  },
-  {
-    "id": 328985,
-    "link": "https://www.fightful.com/wrestling/aaa-guerra-de-titanes-announced-for-december-19/",
-    "date": "2026-09-17T15:09:06",
-    "date_gmt": "2026-09-17T19:09:06",
-    "title": {
-      "rendered": "AAA Guerra De Titanes Announced For December 19"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17150758/Screenshot-2026-09-17-at-3.04.31-PM.png"
   }
 ]
