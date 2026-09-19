@@ -82,6 +82,12 @@ permalink: "/contact/index.html"
   <div class="contact-header">
     <h1>تواصل معنا</h1>
     <p>يسعدنا دائماً استقبال رسائلكم واستفساراتكم، وملاحظاتكم، واقتراحاتكم لتطوير الموقع.</p>
+    <div style="margin-top:16px;">
+      <a href="mailto:contact@arab-wrestling.com" style="display:inline-flex; align-items:center; gap:8px; background:var(--card); color:var(--teal); padding:10px 18px; border-radius:12px; text-decoration:none; font-weight:700; font-size:15px; border:1px solid var(--line); box-shadow:0 4px 12px rgba(0,0,0,0.03); transition:transform 0.2s;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span dir="ltr">contact@arab-wrestling.com</span>
+      </a>
+    </div>
   </div>
 
   <div class="form-card">
@@ -132,7 +138,13 @@ permalink: "/contact/index.html"
   </div>
 
   <div class="social-channels">
-    <h3>أو يمكنك مراسلتنا مباشرة عبر منصاتنا الرسمية:</h3>
+    <h3>أو يمكنك مراسلتنا مباشرة عبر البريد الإلكتروني الرسمي أو منصاتنا:</h3>
+    <div style="margin-bottom:14px;">
+      <a href="mailto:contact@arab-wrestling.com" style="display:inline-flex; align-items:center; gap:8px; color:var(--teal); text-decoration:none; font-weight:700; font-size:15px; padding:10px 18px; background:rgba(14,149,148,0.08); border:1px solid rgba(14,149,148,0.2); border-radius:10px; transition:all .2s;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span dir="ltr">contact@arab-wrestling.com</span>
+      </a>
+    </div>
     <div class="social-icons">
       <a href="https://www.facebook.com/ArabWrestlingEG/" target="_blank" rel="noopener">
         <span>فيسبوك Facebook</span>
@@ -196,8 +208,8 @@ document.getElementById("contactForm").addEventListener("submit", async function
     _captcha: "false"
   };
   
-  // Obfuscated destination to shield against scrapers
-  var target = atob("bTdtZGlicmFoaW1wY0BnbWFpbC5jb20=");
+  // Obfuscated destination to shield against scrapers (contact@arab-wrestling.com)
+  var target = atob("Y29udGFjdEBhcmFiLXdyZXN0bGluZy5jb20=");
   
   try {
     var response = await fetch("https://formsubmit.co/ajax/" + target, {

@@ -147,7 +147,7 @@ if (fs.existsSync(VAPID_FILE)) {
 }
 
 webpush.setVapidDetails(
-  "mailto:admin@arab-wrestling.com",
+  "mailto:contact@arab-wrestling.com",
   vapidKeys.publicKey,
   vapidKeys.privateKey
 );
