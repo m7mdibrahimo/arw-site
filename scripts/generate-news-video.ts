@@ -257,28 +257,28 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Top Header */
       .top-header {
         position: absolute;
-        top: 60px;
+        top: 65px;
         left: 60px;
         right: 60px;
         height: 85px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        z-index: 20;
+        z-index: 25;
       }
       .badge-breaking {
         display: inline-flex;
         align-items: center;
         gap: 14px;
-        background: rgba(220, 38, 38, 0.32);
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.4), rgba(185, 28, 28, 0.2));
         border: 2px solid #ef4444;
-        color: #fee2e2;
-        padding: 13px 28px;
+        color: #ffffff;
+        padding: 14px 30px;
         border-radius: 9999px;
         font-size: 30px;
-        font-weight: 800;
-        box-shadow: 0 0 35px rgba(239, 68, 68, 0.5);
-        backdrop-filter: blur(14px);
+        font-weight: 900;
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(16px);
       }
       .pulse-dot {
         width: 18px;
@@ -286,24 +286,29 @@ export async function generateNewsVideo(inputTarget?: string) {
         background: #ef4444;
         border-radius: 50%;
         box-shadow: 0 0 15px #ef4444, 0 0 25px #ef4444;
+        animation: pulseDot 1.6s infinite ease-in-out;
+      }
+      @keyframes pulseDot {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.3); opacity: 0.7; }
       }
       .brand-title {
-        font-size: 38px;
+        font-size: 40px;
         font-weight: 900;
-        background: linear-gradient(135deg, #f59e0b, #ef4444);
+        background: linear-gradient(135deg, #fbbf24, #f59e0b, #ef4444);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         letter-spacing: -0.5px;
-        filter: drop-shadow(0 2px 12px rgba(245, 158, 11, 0.45));
+        filter: drop-shadow(0 2px 14px rgba(245, 158, 11, 0.5));
       }
 
-      /* 16:9 Showcase Card */
+      /* 16:9 Showcase Card - Epic Cinema Centerpiece */
       .media-showcase-container {
         position: absolute;
-        top: 165px;
+        top: 180px;
         left: 60px;
         right: 60px;
-        height: 500px;
+        height: 560px;
         z-index: 15;
         perspective: 1000px;
       }
@@ -311,10 +316,10 @@ export async function generateNewsVideo(inputTarget?: string) {
         position: relative;
         width: 100%;
         height: 100%;
-        border-radius: 26px;
+        border-radius: 30px;
         overflow: hidden;
-        border: 2px solid rgba(245, 158, 11, 0.5);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(245, 158, 11, 0.2);
+        border: 2.5px solid rgba(245, 158, 11, 0.55);
+        box-shadow: 0 35px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(245, 158, 11, 0.25);
         background: #000;
         transform-origin: center center;
       }
@@ -328,28 +333,40 @@ export async function generateNewsVideo(inputTarget?: string) {
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 45%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, transparent 45%);
+      }
+      /* Animated Luxury Light Sheen Sweep */
+      .card-sheen {
+        position: absolute;
+        top: -50%;
+        bottom: -50%;
+        width: 120px;
+        left: -150px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+        transform: rotate(25deg);
+        pointer-events: none;
+        z-index: 5;
       }
       .fed-tag-floating {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        background: rgba(15, 23, 42, 0.92);
+        top: 24px;
+        right: 24px;
+        background: rgba(10, 15, 30, 0.92);
         backdrop-filter: blur(16px);
         border: 2px solid #f59e0b;
         color: #fef3c7;
-        font-size: 26px;
+        font-size: 27px;
         font-weight: 900;
-        padding: 10px 24px;
-        border-radius: 14px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 18px rgba(245, 158, 11, 0.4);
+        padding: 10px 26px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(245, 158, 11, 0.4);
         z-index: 20;
       }
 
       /* Feature Ribbon Directly Below Poster */
       .feature-ribbon {
         position: absolute;
-        top: 695px;
+        top: 770px;
         left: 60px;
         right: 60px;
         display: flex;
@@ -362,39 +379,39 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        background: rgba(10, 15, 30, 0.88);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        padding: 12px 30px;
+        background: rgba(10, 15, 30, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.22);
+        padding: 13px 34px;
         border-radius: 999px;
-        font-size: 27px;
+        font-size: 28px;
         font-weight: 900;
         color: #ffffff;
-        backdrop-filter: blur(14px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
       }
       .ribbon-chip.fire {
-        background: rgba(239, 68, 68, 0.25);
-        border-color: rgba(239, 68, 68, 0.7);
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(185, 28, 28, 0.15));
+        border-color: #ef4444;
         color: #fee2e2;
-        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
+        box-shadow: 0 8px 30px rgba(239, 68, 68, 0.45);
       }
       .ribbon-chip.gold {
-        background: rgba(245, 158, 11, 0.25);
-        border-color: rgba(245, 158, 11, 0.7);
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(180, 83, 9, 0.15));
+        border-color: #f59e0b;
         color: #fef08a;
-        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
+        box-shadow: 0 8px 30px rgba(245, 158, 11, 0.45);
       }
       .ribbon-chip.cyan {
-        background: rgba(56, 189, 248, 0.25);
-        border-color: rgba(56, 189, 248, 0.7);
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(3, 105, 161, 0.15));
+        border-color: #38bdf8;
         color: #e0f2fe;
-        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);
+        box-shadow: 0 8px 30px rgba(56, 189, 248, 0.45);
       }
 
       /* Titles Area */
       .titles-section {
         position: absolute;
-        top: 785px;
+        top: 852px;
         left: 60px;
         right: 60px;
         display: flex;
@@ -403,11 +420,11 @@ export async function generateNewsVideo(inputTarget?: string) {
         z-index: 20;
       }
       .headline {
-        font-size: 56px;
+        font-size: 58px;
         font-weight: 900;
-        line-height: 1.25;
+        line-height: 1.22;
         color: #ffffff;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 1), 0 2px 6px #000000;
+        text-shadow: 0 4px 25px rgba(0, 0, 0, 1), 0 2px 8px #000000;
       }
       .secondary-title {
         display: inline-flex;
@@ -419,22 +436,22 @@ export async function generateNewsVideo(inputTarget?: string) {
         letter-spacing: 0.5px;
         direction: ltr;
         text-align: right;
-        text-shadow: 0 2px 14px rgba(0, 0, 0, 1);
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 1);
       }
       .secondary-title::before {
         content: '';
         display: inline-block;
         width: 8px;
-        height: 28px;
+        height: 30px;
         background: #fbbf24;
         border-radius: 4px;
-        box-shadow: 0 0 14px #fbbf24;
+        box-shadow: 0 0 16px #fbbf24;
       }
 
-      /* Show Specs / Stats Grid (Large & Clear) */
+      /* Show Specs / Stats Grid (3 High-Impact Cards) */
       .specs-grid {
         position: absolute;
-        top: 960px;
+        top: 1045px;
         left: 60px;
         right: 60px;
         display: grid;
@@ -443,14 +460,14 @@ export async function generateNewsVideo(inputTarget?: string) {
         z-index: 20;
       }
       .spec-card {
-        background: rgba(10, 15, 30, 0.88);
-        border: 2px solid rgba(255, 255, 255, 0.18);
-        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(10, 15, 30, 0.96) 100%);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 26px;
         padding: 16px 14px;
         text-align: center;
-        backdrop-filter: blur(16px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        height: 160px;
+        backdrop-filter: blur(18px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        height: 155px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -463,7 +480,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: block;
       }
       .spec-label {
-        font-size: 24px;
+        font-size: 23px;
         line-height: 1.25;
         font-weight: 700;
         color: #cbd5e1;
@@ -476,22 +493,22 @@ export async function generateNewsVideo(inputTarget?: string) {
         color: #ffffff;
         display: block;
         margin-top: 4px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
       }
 
-      /* Summary / Description Glass Card (Spacious & Clear) */
+      /* Summary / Description Glass Card (Grand Showcase) */
       .summary-card {
         position: absolute;
-        top: 1165px;
+        top: 1230px;
         left: 60px;
         right: 60px;
-        height: 320px;
-        background: rgba(10, 15, 30, 0.92);
-        border: 2px solid rgba(245, 158, 11, 0.45);
-        border-radius: 26px;
-        padding: 28px 34px;
+        height: 330px;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.94) 0%, rgba(10, 15, 30, 0.97) 100%);
+        border: 2.5px solid rgba(245, 158, 11, 0.5);
+        border-radius: 28px;
+        padding: 30px 36px;
         backdrop-filter: blur(20px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+        box-shadow: 0 25px 65px rgba(0, 0, 0, 0.8), 0 0 35px rgba(245, 158, 11, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         z-index: 20;
         display: flex;
         flex-direction: column;
@@ -506,25 +523,27 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-size: 26px;
+        font-size: 27px;
         font-weight: 900;
         color: #f59e0b;
+        text-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
       }
       .summary-pill-live {
-        background: rgba(16, 185, 129, 0.25);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(5, 150, 105, 0.15));
         border: 1.5px solid #10b981;
         color: #a7f3d0;
-        font-size: 22px;
+        font-size: 23px;
         font-weight: 900;
-        padding: 6px 18px;
+        padding: 6px 20px;
         border-radius: 999px;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
       }
       .summary-text {
-        font-size: 33px;
+        font-size: 34px;
         font-weight: 700;
         color: #ffffff;
         line-height: 1.55;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 1);
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 1);
       }
       .summary-footer {
         display: flex;
@@ -532,45 +551,45 @@ export async function generateNewsVideo(inputTarget?: string) {
         gap: 12px;
         font-size: 24px;
         font-weight: 800;
-        color: #cbd5e1;
+        color: #e2e8f0;
       }
       .summary-dot {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         background: #f59e0b;
         border-radius: 50%;
-        box-shadow: 0 0 8px #f59e0b;
+        box-shadow: 0 0 12px #f59e0b, 0 0 20px #f59e0b;
       }
 
-      /* Call To Action Bar */
+      /* Call To Action Bar - Glowing Neon Finale */
       .bottom-cta {
         position: absolute;
-        top: 1535px;
+        top: 1595px;
         left: 60px;
         right: 60px;
-        height: 115px;
+        height: 118px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(10, 15, 30, 0.95);
+        background: linear-gradient(180deg, rgba(10, 15, 30, 0.96) 0%, rgba(5, 8, 16, 0.98) 100%);
         backdrop-filter: blur(20px);
-        border: 2px solid rgba(56, 189, 248, 0.6);
-        padding: 0 42px;
-        border-radius: 28px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.3);
+        border: 2.5px solid rgba(56, 189, 248, 0.7);
+        padding: 0 44px;
+        border-radius: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 45px rgba(56, 189, 248, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         z-index: 20;
       }
       .cta-text {
-        font-size: 30px;
+        font-size: 31px;
         font-weight: 800;
         color: #ffffff;
       }
       .cta-url {
-        font-size: 36px;
+        font-size: 38px;
         font-weight: 900;
         color: #38bdf8;
         letter-spacing: 0.5px;
-        text-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+        text-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
       }
     </style>
   </head>
@@ -602,6 +621,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         <div class="media-showcase" id="mediaCard">
           <img id="heroImg" src="assets/news-cover.jpg" alt="${escapeHtml(title)}" />
           <div class="card-gloss"></div>
+          <div class="card-sheen" id="cardSheen"></div>
           <div class="fed-tag-floating" id="fedTag">${escapeHtml(fed)}</div>
         </div>
       </div>
@@ -653,33 +673,36 @@ export async function generateNewsVideo(inputTarget?: string) {
     <script>
       const tl = gsap.timeline({ paused: true });
 
-      // Ambient slow cinematic zoom
-      tl.fromTo("#ambientBg", { scale: 1.0 }, { scale: 1.08, duration: 8, ease: "sine.inOut" }, 0);
+      // Continuous cinematic ambient breathing across all 8 seconds
+      tl.fromTo("#ambientBg", { scale: 1.0 }, { scale: 1.10, duration: 8, ease: "sine.inOut" }, 0);
+      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.06, duration: 8, ease: "none" }, 0);
 
-      // Top bar - silky smooth entrance
-      tl.fromTo("#badge", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.1);
-      tl.fromTo("#brand", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.9, ease: "power2.out" }, 0.2);
+      // Top bar - liquid smooth glide
+      tl.fromTo("#badge", { opacity: 0, y: -24, force3D: true }, { opacity: 1, y: 0, duration: 1.0, ease: "expo.out" }, 0.1);
+      tl.fromTo("#brand", { opacity: 0, x: -24, force3D: true }, { opacity: 1, x: 0, duration: 1.0, ease: "expo.out" }, 0.2);
 
-      // Media card - elegant glide and subtle scale
-      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.97, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 1.0, ease: "power2.out" }, 0.25);
-      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.04, duration: 8, ease: "sine.inOut" }, 0.25);
-      tl.fromTo("#fedTag", { opacity: 0, scale: 0.9, y: -8 }, { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0.5);
+      // Media poster card - luxurious rise & settle
+      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.94, y: 30, force3D: true }, { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: "expo.out" }, 0.25);
+      tl.fromTo("#fedTag", { opacity: 0, scale: 0.8, y: -10, force3D: true }, { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: "expo.out" }, 0.6);
 
-      // Ribbon chips - graceful staggered fade & slide
-      tl.fromTo(".ribbon-chip", { opacity: 0, y: 15, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.8, stagger: 0.12, ease: "power2.out" }, 0.55);
+      // Television Light Sheen Sweep across the poster (1.6s to 3.0s)
+      tl.fromTo("#cardSheen", { left: "-150px", opacity: 0 }, { left: "1150px", opacity: 0.8, duration: 1.4, ease: "power2.inOut" }, 1.5);
+
+      // Ribbon chips - fluid staggered wave
+      tl.fromTo(".ribbon-chip", { opacity: 0, y: 20, scale: 0.94, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.12, ease: "expo.out" }, 0.6);
 
       // Titles - smooth upward glide
-      tl.fromTo("#headlineText", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 0.75);
-      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 0.9);` : ''}
+      tl.fromTo("#headlineText", { opacity: 0, y: 24, force3D: true }, { opacity: 1, y: 0, duration: 1.1, ease: "expo.out" }, 0.8);
+      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 1.0, ease: "expo.out" }, 0.95);` : ''}
 
-      // Specs grid cards - fluid sequence
-      tl.fromTo(".spec-card", { opacity: 0, y: 18, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.85, stagger: 0.1, ease: "power2.out" }, 1.0);
+      // Specs cards - velvety staggered arrival
+      tl.fromTo(".spec-card", { opacity: 0, y: 24, scale: 0.96, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 1.0, stagger: 0.1, ease: "expo.out" }, 1.1);
 
-      // Summary Card - smooth reveal
-      tl.fromTo("#summaryCard", { opacity: 0, y: 20, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.95, ease: "power2.out" }, 1.2);
+      // Summary Card - grand smooth reveal
+      tl.fromTo("#summaryCard", { opacity: 0, y: 28, scale: 0.97, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: "expo.out" }, 1.35);
 
-      // Bottom Bar - gentle rise
-      tl.fromTo("#bottomBar", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 1.4);
+      // Bottom Bar - glowing rise
+      tl.fromTo("#bottomBar", { opacity: 0, y: 24, force3D: true }, { opacity: 1, y: 0, duration: 1.0, ease: "expo.out" }, 1.55);
 
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
