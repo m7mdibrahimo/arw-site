@@ -257,10 +257,10 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Top Header */
       .top-header {
         position: absolute;
-        top: 75px;
+        top: 65px;
         left: 60px;
         right: 60px;
-        height: 90px;
+        height: 80px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -269,20 +269,20 @@ export async function generateNewsVideo(inputTarget?: string) {
       .badge-breaking {
         display: inline-flex;
         align-items: center;
-        gap: 14px;
+        gap: 12px;
         background: rgba(220, 38, 38, 0.32);
         border: 2px solid #ef4444;
         color: #fee2e2;
-        padding: 14px 28px;
+        padding: 12px 26px;
         border-radius: 9999px;
-        font-size: 30px;
+        font-size: 28px;
         font-weight: 800;
         box-shadow: 0 0 35px rgba(239, 68, 68, 0.5);
         backdrop-filter: blur(14px);
       }
       .pulse-dot {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         background: #ef4444;
         border-radius: 50%;
         box-shadow: 0 0 15px #ef4444, 0 0 25px #ef4444;
@@ -297,13 +297,13 @@ export async function generateNewsVideo(inputTarget?: string) {
         filter: drop-shadow(0 2px 12px rgba(245, 158, 11, 0.45));
       }
 
-      /* 16:9 Showcase Card with Zero Crop */
+      /* 16:9 Showcase Card */
       .media-showcase-container {
         position: absolute;
-        top: 195px;
+        top: 180px;
         left: 60px;
         right: 60px;
-        height: 600px;
+        height: 510px;
         z-index: 15;
         perspective: 1000px;
       }
@@ -311,10 +311,10 @@ export async function generateNewsVideo(inputTarget?: string) {
         position: relative;
         width: 100%;
         height: 100%;
-        border-radius: 28px;
+        border-radius: 26px;
         overflow: hidden;
-        border: 2.5px solid rgba(245, 158, 11, 0.5);
-        box-shadow: 0 35px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(245, 158, 11, 0.25);
+        border: 2px solid rgba(245, 158, 11, 0.5);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 45px rgba(245, 158, 11, 0.2);
         background: #000;
         transform-origin: center center;
       }
@@ -332,16 +332,16 @@ export async function generateNewsVideo(inputTarget?: string) {
       }
       .fed-tag-floating {
         position: absolute;
-        top: 24px;
-        right: 24px;
+        top: 20px;
+        right: 20px;
         background: rgba(15, 23, 42, 0.92);
         backdrop-filter: blur(16px);
         border: 2px solid #f59e0b;
         color: #fef3c7;
-        font-size: 26px;
+        font-size: 25px;
         font-weight: 900;
-        padding: 10px 24px;
-        border-radius: 16px;
+        padding: 8px 22px;
+        border-radius: 14px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 18px rgba(245, 158, 11, 0.4);
         z-index: 20;
       }
@@ -349,13 +349,13 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Feature Ribbon Directly Below Poster */
       .feature-ribbon {
         position: absolute;
-        top: 825px;
+        top: 725px;
         left: 60px;
         right: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: 22px;
         z-index: 20;
       }
       .ribbon-chip {
@@ -364,7 +364,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         gap: 10px;
         background: rgba(10, 15, 30, 0.88);
         border: 2px solid rgba(255, 255, 255, 0.2);
-        padding: 12px 28px;
+        padding: 11px 28px;
         border-radius: 999px;
         font-size: 26px;
         font-weight: 900;
@@ -394,16 +394,16 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Titles Area */
       .titles-section {
         position: absolute;
-        top: 915px;
+        top: 815px;
         left: 60px;
         right: 60px;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 10px;
         z-index: 20;
       }
       .headline {
-        font-size: 56px;
+        font-size: 50px;
         font-weight: 900;
         line-height: 1.25;
         color: #ffffff;
@@ -412,8 +412,8 @@ export async function generateNewsVideo(inputTarget?: string) {
       .secondary-title {
         display: inline-flex;
         align-items: center;
-        gap: 14px;
-        font-size: 36px;
+        gap: 12px;
+        font-size: 32px;
         font-weight: 900;
         color: #fbbf24;
         letter-spacing: 0.5px;
@@ -424,8 +424,8 @@ export async function generateNewsVideo(inputTarget?: string) {
       .secondary-title::before {
         content: '';
         display: inline-block;
-        width: 8px;
-        height: 30px;
+        width: 7px;
+        height: 26px;
         background: #fbbf24;
         border-radius: 4px;
         box-shadow: 0 0 14px #fbbf24;
@@ -434,7 +434,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Show Specs / Stats Grid */
       .specs-grid {
         position: absolute;
-        top: 1140px;
+        top: 970px;
         left: 60px;
         right: 60px;
         display: grid;
@@ -446,44 +446,52 @@ export async function generateNewsVideo(inputTarget?: string) {
         background: rgba(10, 15, 30, 0.88);
         border: 2px solid rgba(255, 255, 255, 0.18);
         border-radius: 22px;
-        padding: 22px 18px;
+        padding: 12px 14px;
         text-align: center;
         backdrop-filter: blur(16px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       .spec-icon {
-        font-size: 36px;
-        margin-bottom: 8px;
+        font-size: 30px;
+        line-height: 1;
+        margin-bottom: 4px;
         display: block;
       }
       .spec-label {
-        font-size: 24px;
+        font-size: 21px;
+        line-height: 1.25;
         font-weight: 700;
-        color: #e2e8f0;
+        color: #cbd5e1;
         display: block;
       }
       .spec-val {
-        font-size: 30px;
+        font-size: 26px;
+        line-height: 1.25;
         font-weight: 900;
         color: #ffffff;
         display: block;
-        margin-top: 4px;
+        margin-top: 3px;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
       }
 
       /* Summary / Description Glass Card */
       .summary-card {
         position: absolute;
-        top: 1340px;
+        top: 1170px;
         left: 60px;
         right: 60px;
-        height: 340px;
+        height: 295px;
         background: rgba(10, 15, 30, 0.92);
         border: 2px solid rgba(245, 158, 11, 0.45);
-        border-radius: 28px;
-        padding: 32px 36px;
+        border-radius: 26px;
+        padding: 26px 32px;
         backdrop-filter: blur(20px);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
         z-index: 20;
         display: flex;
         flex-direction: column;
@@ -498,7 +506,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-size: 26px;
+        font-size: 25px;
         font-weight: 900;
         color: #f59e0b;
       }
@@ -508,11 +516,11 @@ export async function generateNewsVideo(inputTarget?: string) {
         color: #a7f3d0;
         font-size: 22px;
         font-weight: 900;
-        padding: 6px 18px;
+        padding: 5px 16px;
         border-radius: 999px;
       }
       .summary-text {
-        font-size: 33px;
+        font-size: 31px;
         font-weight: 700;
         color: #ffffff;
         line-height: 1.55;
@@ -522,13 +530,13 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: flex;
         align-items: center;
         gap: 12px;
-        font-size: 24px;
+        font-size: 23px;
         font-weight: 800;
-        color: #e2e8f0;
+        color: #cbd5e1;
       }
       .summary-dot {
-        width: 9px;
-        height: 9px;
+        width: 8px;
+        height: 8px;
         background: #f59e0b;
         border-radius: 50%;
         box-shadow: 0 0 8px #f59e0b;
@@ -537,28 +545,28 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Call To Action Bar */
       .bottom-cta {
         position: absolute;
-        bottom: 70px;
+        top: 1530px;
         left: 60px;
         right: 60px;
-        height: 115px;
+        height: 110px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background: rgba(10, 15, 30, 0.95);
         backdrop-filter: blur(20px);
-        border: 2.5px solid rgba(56, 189, 248, 0.6);
-        padding: 0 42px;
-        border-radius: 30px;
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.35);
+        border: 2px solid rgba(56, 189, 248, 0.6);
+        padding: 0 40px;
+        border-radius: 28px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.3);
         z-index: 20;
       }
       .cta-text {
-        font-size: 30px;
+        font-size: 29px;
         font-weight: 800;
         color: #ffffff;
       }
       .cta-url {
-        font-size: 36px;
+        font-size: 35px;
         font-weight: 900;
         color: #38bdf8;
         letter-spacing: 0.5px;
@@ -645,33 +653,33 @@ export async function generateNewsVideo(inputTarget?: string) {
     <script>
       const tl = gsap.timeline({ paused: true });
 
-      // Ambient breathing
-      tl.fromTo("#ambientBg", { scale: 1.0 }, { scale: 1.15, duration: 8, ease: "sine.inOut" }, 0);
+      // Ambient slow cinematic zoom
+      tl.fromTo("#ambientBg", { scale: 1.0 }, { scale: 1.10, duration: 8, ease: "sine.inOut" }, 0);
 
-      // Top bar
-      tl.fromTo("#badge", { opacity: 0, y: -40, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.8)" }, 0.2);
-      tl.fromTo("#brand", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.35);
+      // Top bar - silky smooth entrance
+      tl.fromTo("#badge", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.15);
+      tl.fromTo("#brand", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }, 0.25);
 
-      // Media card 3D pop & settle
-      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.88, y: 50, rotationX: 10 }, { opacity: 1, scale: 1, y: 0, rotationX: 0, duration: 0.9, ease: "power3.out" }, 0.4);
-      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.05, duration: 8, ease: "sine.inOut" }, 0.4);
-      tl.fromTo("#fedTag", { opacity: 0, scale: 0, rotation: 15 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2)" }, 0.85);
+      // Media card - elegant glide and subtle scale
+      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.95, y: 25 }, { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.05, duration: 8, ease: "sine.inOut" }, 0.3);
+      tl.fromTo("#fedTag", { opacity: 0, scale: 0.85, y: -10 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.6);
 
-      // Ribbon chips bounce
-      tl.fromTo(".ribbon-chip", { opacity: 0, y: 25, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.1, ease: "back.out(1.7)" }, 0.9);
+      // Ribbon chips - graceful staggered fade & slide
+      tl.fromTo(".ribbon-chip", { opacity: 0, y: 18, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.12, ease: "power3.out" }, 0.65);
 
-      // Titles
-      tl.fromTo("#headlineText", { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.1);
-      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.3);` : ''}
+      // Titles - smooth upward glide
+      tl.fromTo("#headlineText", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.85);
+      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.0);` : ''}
 
-      // Specs grid cards
-      tl.fromTo(".spec-card", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.5)" }, 1.45);
+      // Specs grid cards - fluid sequence
+      tl.fromTo(".spec-card", { opacity: 0, y: 22, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.75, stagger: 0.1, ease: "power3.out" }, 1.1);
 
-      // Summary Card
-      tl.fromTo("#summaryCard", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.7);
+      // Summary Card - smooth reveal
+      tl.fromTo("#summaryCard", { opacity: 0, y: 25, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: "power3.out" }, 1.3);
 
-      // Bottom Bar
-      tl.fromTo("#bottomBar", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 1.9);
+      // Bottom Bar - gentle rise
+      tl.fromTo("#bottomBar", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 1.5);
 
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
