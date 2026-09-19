@@ -33,9 +33,9 @@ async function autoPublish() {
       : `https://arab-wrestling.com${data.image.startsWith('/') ? '' : '/'}${data.image}`;
   }
 
-  // 1. Auto-Publish Video Reel to Facebook Reel & Instagram Reel
+  // 1. Auto-Publish Video Reel & Story to Facebook and Instagram
   try {
-    console.log('📹 [Auto-Publish] Publishing Reel to Facebook & Instagram...');
+    console.log('📹 [Auto-Publish] Publishing Reel & Story to Facebook & Instagram...');
     const reelRes = await fetch(`${WORKER_URL}/api/videos/publish-social`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -44,42 +44,17 @@ async function autoPublish() {
         title: data.title,
         postUrl,
         imageUrl,
-        platforms: ['facebook_reel', 'instagram_reel'],
+        platforms: ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'],
       }),
     });
 
     const reelData: any = await reelRes.json().catch(() => ({}));
-    console.log('✅ Reel Publish Response:', JSON.stringify(reelData, null, 2));
+    console.log('✅ Reel & Story Publish Response:', JSON.stringify(reelData, null, 2));
   } catch (reelErr) {
-    console.error('⚠️ Failed to publish Reel:', reelErr);
+    console.error('⚠️ Failed to publish Reel & Story:', reelErr);
   }
 
-  // 2. If this is a full show, also ensure the standard feed post is published to Facebook & Instagram
-  if (data.kind === 'show' || (data.postUrl && data.postUrl.includes('/shows/'))) {
-    try {
-      console.log('📰 [Auto-Publish] Publishing Standard Show Post to Facebook & Instagram Feed...');
-      const postRes = await fetch(`${WORKER_URL}/api/social/manual-publish`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: data.title,
-          text: data.description || 'مشاهدة وتحميل العرض كاملاً ومترجماً بجودة عالية حصرياً عبر موقعنا.',
-          url: postUrl || 'https://arab-wrestling.com',
-          image: imageUrl,
-          kind: 'show',
-          platforms: ['facebook', 'instagram'],
-          force: false, // Don't duplicate if already sent
-        }),
-      });
-
-      const postData: any = await postRes.json().catch(() => ({}));
-      console.log('✅ Feed Post Publish Response:', JSON.stringify(postData, null, 2));
-    } catch (postErr) {
-      console.error('⚠️ Failed to publish Feed Post:', postErr);
-    }
-  }
-
-  console.log('🎉 [Auto-Publish] Completed social broadcasting successfully.');
+  console.log('🎉 [Auto-Publish] Completed Reel and Story broadcasting successfully.');
 }
 
 autoPublish().catch((err) => {
