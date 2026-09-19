@@ -476,7 +476,8 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/(?<![\u0600-\u06FF])(?:و)?سوري\s+ستريكلاند(?![\u0600-\u06FF])/g, (m) => m.startsWith("و") ? "وسويرف ستريكلاند" : "سويرف ستريكلاند")
     .replace(/(?<![\u0600-\u06FF])(?:و)?ستركلند(?![\u0600-\u06FF])/g, (m) => m.startsWith("و") ? "وستريكلاند" : "ستريكلاند")
     .replace(/(?<![\u0600-\u06FF])(?:و)?سوير\s+(?=(?:أثينا|جاك|موكسلي|كوفي|أوسبري|أوميغا|هانغمان|دانيلسون|كوبلاند|خان|في|ضد|أمام|يحقق|يسجل|يتحدث|يكشف|يؤكد|يدافع|يخوض|يفوز))/g, (m) => m.startsWith("و") ? "وسويرف " : "سويرف ")
-    .replace(/(?<![\u0600-\u06FF])(?:النجم|المصارع|البطل)\s+(?:و)?سوير(?![\u0600-\u06FF])/g, (m) => m.replace(/سوير$/, "سويرف"))
+    .replace(/\bDark\s*Silueta\b/gi, "دارك سيلويتا")
+    .replace(arWord("(?:اركت|أركت|دارك)\\s*(?:سيليوتا|سيلويتا)"), "دارك سيلويتا")
     .replace(/\bDarby\s*Allin\b/gi, "داربي ألين")
     .replace(arWord("داربي\\s+الين"), "داربي ألين")
     .replace(/\bMatt\s*Riddle\b/gi, "مات ريدل")
@@ -825,6 +826,8 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
         .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, "")
         .replace(/القادم\s+القادم/g, "القادم");
     }
+  }
+
   // Remove prompt leaks & rogue English words from headlines
   cleaned = cleaned
     .replace(/---\s*لا\s*تنسى\s*الفاصل[^\n-]*---/gi, "")
@@ -2205,6 +2208,9 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
     console.log(`[Watcher] Check completed. New posts published: ${processedCount}`);
   } catch (e) {
     console.error("[Watcher] Error during watcher execution:", e);
+  } finally {
+    state.lastChecked = new Date().toISOString();
+    saveState(state);
   }
 }
 
