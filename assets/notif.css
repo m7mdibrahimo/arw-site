@@ -660,3 +660,189 @@ body {
   }
 }
 
+/* ==========================================================================
+   Global Overflow Protection & Fluid Desktop Navbar (720p, Laptops, 2K & 4K)
+   ========================================================================== */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
+/* Fluid Desktop Navbar Scaling for screens between 1151px and 1580px (1366x768, 1440x900, 1536x864) */
+@media (min-width: 1151px) and (max-width: 1580px) {
+  .nav {
+    max-width: 100% !important;
+    padding: 12px 16px !important;
+    gap: clamp(8px, 1.2vw, 14px) !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+  }
+  .brand {
+    font-size: 19.5px !important;
+    gap: 7px !important;
+    flex-shrink: 0 !important;
+  }
+  .brand img.brand-logo {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .site-search {
+    flex: 0 1 240px !important;
+    width: 240px !important;
+    min-width: 160px !important;
+    max-width: 260px !important;
+    padding: 4px 6px 4px 12px !important;
+  }
+  .site-search input {
+    font-size: 13px !important;
+    padding: 4px 4px !important;
+  }
+  .site-search button {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .site-search button svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+  #navMenu {
+    gap: clamp(2px, 0.35vw, 4px) !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+  #navMenu li {
+    display: inline-flex !important;
+    flex-shrink: 0 !important;
+  }
+  #navMenu a.navlink {
+    font-size: 13.5px !important;
+    padding: 7px 11px !important;
+    white-space: nowrap !important;
+  }
+  #navMenu a.navlink.support-btn {
+    font-size: 13px !important;
+    padding: 7px 13px !important;
+    gap: 6px !important;
+  }
+  #navMenu a.navlink.support-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .utility-row {
+    gap: 6px !important;
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+  }
+  .theme-toggle, .telegram-btn, .bookmarks-btn {
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+  .theme-toggle svg, .telegram-btn svg, .bookmarks-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* Extra Fine-Tuned Scaling for 720p / 1280px / 1366px screens (1151px - 1340px) */
+@media (min-width: 1151px) and (max-width: 1340px) {
+  .nav {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  .brand {
+    font-size: 18px !important;
+    gap: 6px !important;
+  }
+  .brand img.brand-logo {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .site-search {
+    flex: 0 1 185px !important;
+    width: 185px !important;
+    min-width: 140px !important;
+    max-width: 200px !important;
+    padding: 3px 5px 3px 10px !important;
+  }
+  .site-search input {
+    font-size: 12.5px !important;
+  }
+  .site-search input::placeholder {
+    font-size: 12px !important;
+  }
+  .site-search button {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .site-search button svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  #navMenu {
+    gap: 2px !important;
+  }
+  #navMenu a.navlink {
+    font-size: 12.5px !important;
+    padding: 6px 8px !important;
+  }
+  #navMenu a.navlink.support-btn {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    gap: 5px !important;
+  }
+  #navMenu a.navlink.support-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  .utility-row {
+    gap: 5px !important;
+  }
+  .theme-toggle, .telegram-btn, .bookmarks-btn {
+    width: 33px !important;
+    height: 33px !important;
+  }
+  .theme-toggle svg, .telegram-btn svg, .bookmarks-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
+
+/* Hero Section Proportional Adaptation for 720p / Laptops */
+@media (max-width: 1366px) {
+  .hero {
+    padding: clamp(55px, 8vh, 95px) 20px clamp(40px, 6vh, 75px) !important;
+  }
+  .eyebrow {
+    margin-bottom: 18px !important;
+    padding: 6px 15px !important;
+    font-size: 12.5px !important;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 3.8vw, 48px) !important;
+    margin-bottom: 16px !important;
+    line-height: 1.22 !important;
+  }
+  .hero p {
+    font-size: 15.5px !important;
+    margin-bottom: 24px !important;
+  }
+  .cta-row {
+    gap: 12px !important;
+  }
+  .cta-row .btn {
+    padding: 11px 22px !important;
+    font-size: 14px !important;
+  }
+  .quicknav {
+    margin-top: 30px !important;
+    gap: 10px !important;
+  }
+  .qn {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
+}
+
