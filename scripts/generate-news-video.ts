@@ -35,6 +35,21 @@ function parseFrontmatter(content: string): Record<string, string> {
   return data;
 }
 
+function formatArabicDate(dateStr?: string): string {
+  if (!dateStr) return 'اليوم';
+  try {
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return String(dateStr);
+    const months = [
+      'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+      'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+    ];
+    return `${d.getDate()} ${months[d.getMonth()]}`;
+  } catch {
+    return String(dateStr);
+  }
+}
+
 const CONTENT_DIRS = [
   path.join(ROOT_DIR, 'content/news'),
   path.join(ROOT_DIR, 'content/shows'),
@@ -108,6 +123,29 @@ export async function generateNewsVideo(inputTarget?: string) {
   const desc = meta.description || (isShow ? 'مشاهدة وتحميل العرض كاملاً ومترجماً بجودة عالية حصرياً.' : 'تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.');
   const badgeText = isShow ? 'عرض كامل | مترجم' : 'عاجل | عرب راسلنج';
   const ctaText = isShow ? 'شاهد العرض كاملاً عبر موقعنا:' : 'التفاصيل الكاملة عبر موقعنا:';
+
+  // Dynamic specs
+  const specDuration = meta.duration || (isShow ? 'عرض كامل' : 'تغطية عاجلة');
+  const specDurationLabel = isShow ? 'المدة الزمنية' : 'طبيعة التغطية';
+  const specDate = formatArabicDate(meta.event_date || meta.date);
+  const specDateLabel = isShow ? 'تاريخ الحدث' : 'تاريخ النشر';
+  const specType = isShow ? (meta.program_name || (meta.federation ? `عرض ${meta.federation}` : 'أسبوعي كامل')) : (meta.category || meta.federation || 'أخبار عامة');
+  const specTypeLabel = isShow ? 'نوع العرض' : 'التصنيف';
+
+  // Feature ribbon chips
+  const chipsHtml = isShow ? `
+        <div class="ribbon-chip fire">🔥 تغطية كاملة</div>
+        <div class="ribbon-chip gold">⚡ جودة 1080p FHD</div>
+        <div class="ribbon-chip cyan">🎙️ ترجمة حصرية</div>` : `
+        <div class="ribbon-chip fire">🔥 خبر عاجل</div>
+        <div class="ribbon-chip gold">⚡ تحديث فوري</div>
+        <div class="ribbon-chip cyan">🎙️ تغطية شاملة</div>`;
+
+  // Summary card text
+  const summaryTag = isShow ? '✨ نبذة عن العرض' : '✨ تفاصيل الخبر';
+  const summaryPill = isShow ? 'متاح الآن' : 'تحديث عاجل';
+  const summaryFooter = isShow ? 'سيرفرات سريعة ومشاهدة مباشرة بدون إعلانات مزعجة' : 'تابع أحدث الكواليس والنتائج أولاً بأول على موقعنا';
+
   let imageRel = meta.image || '';
   if (imageRel.startsWith('/')) imageRel = imageRel.slice(1);
 
@@ -131,7 +169,7 @@ export async function generateNewsVideo(inputTarget?: string) {
     <meta name="viewport" content="width=1080, height=1920" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
       * {
@@ -144,7 +182,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         width: 1080px;
         height: 1920px;
         overflow: hidden;
-        background: #090b10;
+        background: #06080d;
         font-family: 'Cairo', Arial, sans-serif;
         color: #ffffff;
       }
@@ -156,14 +194,50 @@ export async function generateNewsVideo(inputTarget?: string) {
         overflow: hidden;
         direction: rtl;
         text-align: right;
-        background: radial-gradient(circle at 50% 12%, rgba(220, 38, 38, 0.35) 0%, transparent 55%),
-                    radial-gradient(circle at 50% 88%, rgba(245, 158, 11, 0.2) 0%, transparent 55%),
-                    #090c10;
+        background: radial-gradient(circle at 50% 12%, rgba(220, 38, 38, 0.45) 0%, transparent 60%),
+                    radial-gradient(circle at 50% 88%, rgba(245, 158, 11, 0.3) 0%, transparent 60%),
+                    #07090f;
       }
 
+      /* Animated Glowing Ambient Stage Backdrop */
+      .ambient-stage {
+        position: absolute;
+        inset: -40px;
+        width: calc(100% + 80px);
+        height: calc(100% + 80px);
+        background: url('assets/news-cover.jpg') center 22% / cover no-repeat;
+        filter: blur(55px) brightness(0.25) saturate(1.6);
+        opacity: 0.9;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .ambient-light-top {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 400px;
+        background: radial-gradient(ellipse, rgba(239, 68, 68, 0.3) 0%, transparent 70%);
+        z-index: 2;
+        pointer-events: none;
+      }
+      .ambient-light-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 900px;
+        height: 450px;
+        background: radial-gradient(ellipse, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* Top Header */
       .top-header {
         position: absolute;
-        top: 80px;
+        top: 75px;
         left: 60px;
         right: 60px;
         height: 90px;
@@ -172,182 +246,300 @@ export async function generateNewsVideo(inputTarget?: string) {
         justify-content: space-between;
         z-index: 20;
       }
-
       .badge-breaking {
         display: inline-flex;
         align-items: center;
         gap: 14px;
-        background: rgba(220, 38, 38, 0.25);
+        background: rgba(220, 38, 38, 0.32);
         border: 2px solid #ef4444;
         color: #fee2e2;
         padding: 14px 28px;
         border-radius: 9999px;
         font-size: 30px;
         font-weight: 800;
-        box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+        box-shadow: 0 0 35px rgba(239, 68, 68, 0.5);
+        backdrop-filter: blur(14px);
       }
-
       .pulse-dot {
         width: 18px;
         height: 18px;
         background: #ef4444;
         border-radius: 50%;
-        box-shadow: 0 0 15px #ef4444;
+        box-shadow: 0 0 15px #ef4444, 0 0 25px #ef4444;
       }
-
       .brand-title {
-        font-size: 36px;
+        font-size: 38px;
         font-weight: 900;
         background: linear-gradient(135deg, #f59e0b, #ef4444);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         letter-spacing: -0.5px;
-        filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.3));
+        filter: drop-shadow(0 2px 12px rgba(245, 158, 11, 0.45));
       }
 
-      .media-container {
+      /* 16:9 Showcase Card with Zero Crop */
+      .media-showcase-container {
         position: absolute;
-        top: 210px;
+        top: 195px;
         left: 60px;
         right: 60px;
-        height: 860px;
-        border-radius: 36px;
-        overflow: hidden;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.16);
-        background: #090c10;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 600px;
+        z-index: 15;
+        perspective: 1000px;
       }
-
-      .media-blur-bg {
-        position: absolute;
-        inset: -20px;
-        width: calc(100% + 40px);
-        height: calc(100% + 40px);
-        object-fit: cover;
-        filter: blur(32px) brightness(0.35) saturate(1.4);
-        transform: scale(1.15);
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .media-img {
+      .media-showcase {
         position: relative;
         width: 100%;
         height: 100%;
-        object-fit: contain;
-        z-index: 2;
-        filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85));
+        border-radius: 28px;
+        overflow: hidden;
+        border: 2.5px solid rgba(245, 158, 11, 0.5);
+        box-shadow: 0 35px 90px rgba(0, 0, 0, 0.95), 0 0 50px rgba(245, 158, 11, 0.25);
+        background: #000;
+        transform-origin: center center;
       }
-
-      .media-overlay {
+      .media-showcase img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .card-gloss {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(9, 12, 16, 0) 70%, rgba(9, 12, 16, 0.85) 100%);
-        z-index: 3;
         pointer-events: none;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 45%);
       }
-
-      .fed-tag {
+      .fed-tag-floating {
         position: absolute;
-        top: 30px;
-        right: 30px;
-        background: rgba(15, 23, 42, 0.9);
-        backdrop-filter: blur(14px);
+        top: 24px;
+        right: 24px;
+        background: rgba(15, 23, 42, 0.92);
+        backdrop-filter: blur(16px);
         border: 2px solid #f59e0b;
         color: #fef3c7;
         font-size: 26px;
-        font-weight: 800;
+        font-weight: 900;
         padding: 10px 24px;
         border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 158, 11, 0.25);
-        z-index: 4;
-      }
-
-      .content-box {
-        position: absolute;
-        top: 1120px;
-        left: 60px;
-        right: 60px;
-        height: 540px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 18px rgba(245, 158, 11, 0.4);
         z-index: 20;
       }
 
-      .headline {
-        font-size: 48px;
-        font-weight: 900;
-        line-height: 1.28;
-        color: #ffffff;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8);
+      /* Feature Ribbon Directly Below Poster */
+      .feature-ribbon {
+        position: absolute;
+        top: 825px;
+        left: 60px;
+        right: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 20;
+      }
+      .ribbon-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1.5px solid rgba(255, 255, 255, 0.14);
+        padding: 10px 24px;
+        border-radius: 999px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #e2e8f0;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      }
+      .ribbon-chip.fire {
+        background: rgba(239, 68, 68, 0.18);
+        border-color: rgba(239, 68, 68, 0.5);
+        color: #fecaca;
+        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.25);
+      }
+      .ribbon-chip.gold {
+        background: rgba(245, 158, 11, 0.18);
+        border-color: rgba(245, 158, 11, 0.5);
+        color: #fef08a;
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.25);
+      }
+      .ribbon-chip.cyan {
+        background: rgba(56, 189, 248, 0.18);
+        border-color: rgba(56, 189, 248, 0.5);
+        color: #bae6fd;
+        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.25);
       }
 
+      /* Titles Area */
+      .titles-section {
+        position: absolute;
+        top: 915px;
+        left: 60px;
+        right: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        z-index: 20;
+      }
+      .headline {
+        font-size: 54px;
+        font-weight: 900;
+        line-height: 1.25;
+        color: #ffffff;
+        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+      }
       .secondary-title {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
-        font-size: 32px;
+        gap: 14px;
+        font-size: 34px;
         font-weight: 800;
         color: #f59e0b;
         letter-spacing: 0.5px;
         direction: ltr;
         text-align: right;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
       }
-
       .secondary-title::before {
         content: '';
         display: inline-block;
-        width: 6px;
-        height: 26px;
+        width: 7px;
+        height: 28px;
         background: #f59e0b;
-        border-radius: 3px;
-        box-shadow: 0 0 10px #f59e0b;
+        border-radius: 4px;
+        box-shadow: 0 0 12px #f59e0b;
       }
 
-      .subtext {
+      /* Show Specs / Stats Grid */
+      .specs-grid {
+        position: absolute;
+        top: 1140px;
+        left: 60px;
+        right: 60px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        z-index: 20;
+      }
+      .spec-card {
+        background: rgba(15, 23, 42, 0.78);
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        border-radius: 22px;
+        padding: 22px 18px;
+        text-align: center;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+      }
+      .spec-icon {
+        font-size: 34px;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .spec-label {
+        font-size: 22px;
+        font-weight: 600;
+        color: #94a3b8;
+        display: block;
+      }
+      .spec-val {
+        font-size: 26px;
+        font-weight: 900;
+        color: #f1f5f9;
+        display: block;
+        margin-top: 4px;
+      }
+
+      /* Summary / Description Glass Card */
+      .summary-card {
+        position: absolute;
+        top: 1340px;
+        left: 60px;
+        right: 60px;
+        height: 340px;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1.5px solid rgba(245, 158, 11, 0.3);
+        border-radius: 28px;
+        padding: 32px 36px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+        z-index: 20;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .summary-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .summary-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 24px;
+        font-weight: 800;
+        color: #f59e0b;
+      }
+      .summary-pill-live {
+        background: rgba(16, 185, 129, 0.2);
+        border: 1px solid #10b981;
+        color: #6ee7b7;
+        font-size: 20px;
+        font-weight: 800;
+        padding: 4px 16px;
+        border-radius: 999px;
+      }
+      .summary-text {
         font-size: 30px;
         font-weight: 600;
-        color: #cbd5e1;
-        line-height: 1.45;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+        color: #e2e8f0;
+        line-height: 1.55;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      }
+      .summary-footer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #94a3b8;
+      }
+      .summary-dot {
+        width: 8px;
+        height: 8px;
+        background: #f59e0b;
+        border-radius: 50%;
       }
 
+      /* Call To Action Bar */
       .bottom-cta {
         position: absolute;
         bottom: 70px;
         left: 60px;
         right: 60px;
-        height: 110px;
+        height: 115px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(18px);
-        border: 2px solid rgba(56, 189, 248, 0.3);
-        padding: 0 40px;
-        border-radius: 28px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(56, 189, 248, 0.15);
+        background: rgba(15, 23, 42, 0.92);
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(56, 189, 248, 0.45);
+        padding: 0 42px;
+        border-radius: 30px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.75), 0 0 35px rgba(56, 189, 248, 0.25);
         z-index: 20;
       }
-
       .cta-text {
         font-size: 28px;
         font-weight: 700;
         color: #e2e8f0;
       }
-
       .cta-url {
         font-size: 34px;
         font-weight: 900;
         color: #38bdf8;
         letter-spacing: 0.5px;
-        text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        text-shadow: 0 0 18px rgba(56, 189, 248, 0.55);
       }
     </style>
   </head>
@@ -361,6 +553,10 @@ export async function generateNewsVideo(inputTarget?: string) {
       data-width="1080"
       data-height="1920"
     >
+      <div class="ambient-stage" id="ambientBg"></div>
+      <div class="ambient-light-top"></div>
+      <div class="ambient-light-bottom"></div>
+
       <div class="top-header" id="header">
         <div class="badge-breaking" id="badge">
           <div class="pulse-dot"></div>
@@ -371,21 +567,54 @@ export async function generateNewsVideo(inputTarget?: string) {
         </div>
       </div>
 
-      <div class="media-container" id="mediaCard">
-        <img class="media-blur-bg" src="assets/news-cover.jpg" alt="" />
-        <img class="media-img" id="heroImg" src="assets/news-cover.jpg" alt="${escapeHtml(title)}" />
-        <div class="media-overlay"></div>
-        <div class="fed-tag" id="fedTag">${escapeHtml(fed)}</div>
+      <div class="media-showcase-container" id="mediaContainer">
+        <div class="media-showcase" id="mediaCard">
+          <img id="heroImg" src="assets/news-cover.jpg" alt="${escapeHtml(title)}" />
+          <div class="card-gloss"></div>
+          <div class="fed-tag-floating" id="fedTag">${escapeHtml(fed)}</div>
+        </div>
       </div>
 
-      <div class="content-box" id="contentBox">
+      <div class="feature-ribbon" id="featureRibbon">${chipsHtml}
+      </div>
+
+      <div class="titles-section" id="titlesSection">
         <h1 class="headline" id="headlineText">${escapeHtml(title)}</h1>
         ${secondaryTitle ? `<div class="secondary-title" id="secondaryTitle">${escapeHtml(secondaryTitle)}</div>` : ''}
-        <p class="subtext" id="subtext">${escapeHtml(desc)}</p>
+      </div>
+
+      <div class="specs-grid" id="specsGrid">
+        <div class="spec-card">
+          <span class="spec-icon">⏱️</span>
+          <span class="spec-label">${escapeHtml(specDurationLabel)}</span>
+          <span class="spec-val">${escapeHtml(specDuration)}</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-icon">📅</span>
+          <span class="spec-label">${escapeHtml(specDateLabel)}</span>
+          <span class="spec-val">${escapeHtml(specDate)}</span>
+        </div>
+        <div class="spec-card">
+          <span class="spec-icon">🏆</span>
+          <span class="spec-label">${escapeHtml(specTypeLabel)}</span>
+          <span class="spec-val">${escapeHtml(specType)}</span>
+        </div>
+      </div>
+
+      <div class="summary-card" id="summaryCard">
+        <div class="summary-header">
+          <div class="summary-tag">${escapeHtml(summaryTag)}</div>
+          <div class="summary-pill-live">${escapeHtml(summaryPill)}</div>
+        </div>
+        <p class="summary-text" id="summaryText">${escapeHtml(desc)}</p>
+        <div class="summary-footer">
+          <div class="summary-dot"></div>
+          <span id="summaryFooterText">${escapeHtml(summaryFooter)}</span>
+        </div>
       </div>
 
       <div class="bottom-cta" id="bottomBar">
-        <div class="cta-text">${escapeHtml(ctaText)}</div>
+        <div class="cta-text" id="ctaText">${escapeHtml(ctaText)}</div>
         <div class="cta-url">arab-wrestling.com</div>
       </div>
     </div>
@@ -393,18 +622,33 @@ export async function generateNewsVideo(inputTarget?: string) {
     <script>
       const tl = gsap.timeline({ paused: true });
 
-      tl.fromTo("#badge", { opacity: 0, y: -40, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.7)" }, 0.2);
-      tl.fromTo("#brand", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.4);
+      // Ambient breathing
+      tl.fromTo("#ambientBg", { scale: 1.0 }, { scale: 1.15, duration: 8, ease: "sine.inOut" }, 0);
 
-      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.92, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
-      tl.fromTo("#heroImg", { scale: 0.98 }, { scale: 1.02, duration: 7.5, ease: "sine.inOut" }, 0.3);
-      tl.fromTo("#fedTag", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(2)" }, 0.7);
+      // Top bar
+      tl.fromTo("#badge", { opacity: 0, y: -40, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.8)" }, 0.2);
+      tl.fromTo("#brand", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.35);
 
-      tl.fromTo("#headlineText", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.8);
-      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.0);` : ''}
-      tl.fromTo("#subtext", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, ${secondaryTitle ? '1.3' : '1.2'});
+      // Media card 3D pop & settle
+      tl.fromTo("#mediaCard", { opacity: 0, scale: 0.88, y: 50, rotationX: 10 }, { opacity: 1, scale: 1, y: 0, rotationX: 0, duration: 0.9, ease: "power3.out" }, 0.4);
+      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.05, duration: 8, ease: "sine.inOut" }, 0.4);
+      tl.fromTo("#fedTag", { opacity: 0, scale: 0, rotation: 15 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2)" }, 0.85);
 
-      tl.fromTo("#bottomBar", { opacity: 0, y: 30, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 1.5);
+      // Ribbon chips bounce
+      tl.fromTo(".ribbon-chip", { opacity: 0, y: 25, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.1, ease: "back.out(1.7)" }, 0.9);
+
+      // Titles
+      tl.fromTo("#headlineText", { opacity: 0, y: 35 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.1);
+      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.3);` : ''}
+
+      // Specs grid cards
+      tl.fromTo(".spec-card", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.5)" }, 1.45);
+
+      // Summary Card
+      tl.fromTo("#summaryCard", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 1.7);
+
+      // Bottom Bar
+      tl.fromTo("#bottomBar", { opacity: 0, y: 40, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 1.9);
 
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
