@@ -393,25 +393,25 @@ export async function generateNewsVideo(inputTarget?: string) {
         background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(185, 28, 28, 0.15));
         border-color: #ef4444;
         color: #fee2e2;
-        box-shadow: 0 8px 30px rgba(239, 68, 68, 0.45);
+        box-shadow: 0 4px 18px rgba(239, 68, 68, 0.35);
       }
       .ribbon-chip.gold {
         background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(180, 83, 9, 0.15));
         border-color: #f59e0b;
         color: #fef08a;
-        box-shadow: 0 8px 30px rgba(245, 158, 11, 0.45);
+        box-shadow: 0 4px 18px rgba(245, 158, 11, 0.35);
       }
       .ribbon-chip.cyan {
         background: linear-gradient(135deg, rgba(56, 189, 248, 0.35), rgba(3, 105, 161, 0.15));
         border-color: #38bdf8;
         color: #e0f2fe;
-        box-shadow: 0 8px 30px rgba(56, 189, 248, 0.45);
+        box-shadow: 0 4px 18px rgba(56, 189, 248, 0.35);
       }
 
       /* Titles Area (Moved down for breathing room) */
       .titles-section {
         position: absolute;
-        top: 815px;
+        top: 835px;
         left: 60px;
         right: 60px;
         display: flex;
@@ -464,7 +464,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Show Specs / Stats Grid (Enlarged & Prominent) */
       .specs-grid {
         position: absolute;
-        top: 975px;
+        top: 985px;
         left: 60px;
         right: 60px;
         display: grid;
@@ -512,7 +512,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Summary / Description Glass Card (Enlarged & Dominant) */
       .summary-card {
         position: absolute;
-        top: 1175px;
+        top: 1180px;
         left: 60px;
         right: 60px;
         height: 345px;
@@ -577,7 +577,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Call To Action Bar - Enlarged & Glowing */
       .bottom-cta {
         position: absolute;
-        top: 1550px;
+        top: 1555px;
         left: 60px;
         right: 60px;
         height: 125px;
