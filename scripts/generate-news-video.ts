@@ -124,29 +124,43 @@ export async function generateNewsVideo(inputTarget?: string) {
   const badgeText = isShow ? 'عرض كامل | مترجم' : 'عاجل | عرب راسلنج';
   const ctaText = isShow ? 'شاهد العرض كاملاً عبر موقعنا:' : 'التفاصيل الكاملة عبر موقعنا:';
 
-  // Dynamic font sizing & positioning for titles so long headlines never collide with specs
+  // Dynamic font sizing & positioning for titles and cards
   let titleFontSize = 58;
   let titleLineHeight = 1.22;
   let titleTop = 835;
   let barHeight = 48;
-  if (!isShow || title.length > 50) {
+  if (!isShow) {
+    titleTop = 785;
     if (title.length > 70) {
-      titleFontSize = 38;
-      titleLineHeight = 1.26;
-      titleTop = 750;
-      barHeight = 34;
+      titleFontSize = 42;
+      titleLineHeight = 1.28;
+      barHeight = 36;
     } else if (title.length > 45) {
+      titleFontSize = 46;
+      titleLineHeight = 1.28;
+      barHeight = 40;
+    } else {
+      titleFontSize = 52;
+      titleLineHeight = 1.26;
+      barHeight = 44;
+    }
+  } else if (title.length > 50) {
+    if (title.length > 70) {
       titleFontSize = 44;
       titleLineHeight = 1.24;
-      titleTop = 770;
-      barHeight = 40;
+      barHeight = 38;
     } else {
       titleFontSize = 50;
       titleLineHeight = 1.22;
-      titleTop = 800;
       barHeight = 44;
     }
   }
+
+  const summaryTop = isShow ? 1180 : 1040;
+  const summaryHeight = isShow ? 345 : 520;
+  const summaryPadding = isShow ? '32px 36px' : '40px 42px';
+  const summaryTagSize = isShow ? 28 : 36;
+  const summaryTextSize = isShow ? 36 : 38;
 
   // Dynamic specs
   const specDuration = meta.duration || (isShow ? 'عرض كامل' : 'تغطية عاجلة');
@@ -536,14 +550,14 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Summary / Description Glass Card (Enlarged & Dominant) */
       .summary-card {
         position: absolute;
-        top: 1180px;
+        top: ${summaryTop}px;
         left: 60px;
         right: 60px;
-        height: 345px;
+        height: ${summaryHeight}px;
         background: linear-gradient(180deg, rgba(15, 23, 42, 0.94) 0%, rgba(10, 15, 30, 0.97) 100%);
         border: 2.5px solid rgba(245, 158, 11, 0.5);
         border-radius: 28px;
-        padding: 32px 36px;
+        padding: ${summaryPadding};
         backdrop-filter: blur(20px);
         box-shadow: 0 25px 65px rgba(0, 0, 0, 0.8), 0 0 35px rgba(245, 158, 11, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         z-index: 20;
@@ -554,13 +568,14 @@ export async function generateNewsVideo(inputTarget?: string) {
       .summary-header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: ${isShow ? 'space-between' : 'flex-start'};
+        ${isShow ? '' : 'border-bottom: 2px solid rgba(255, 255, 255, 0.12); padding-bottom: 20px;'}
       }
       .summary-tag {
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        font-size: 28px;
+        font-size: ${summaryTagSize}px;
         font-weight: 900;
         color: #f59e0b;
         text-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
@@ -576,10 +591,12 @@ export async function generateNewsVideo(inputTarget?: string) {
         box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
       }
       .summary-text {
-        font-size: 36px;
+        font-family: 'Tajawal', sans-serif;
+        font-size: ${summaryTextSize}px;
         font-weight: 700;
         color: #ffffff;
-        line-height: 1.55;
+        line-height: 1.6;
+        ${isShow ? '' : 'margin: auto 0;'}
         text-shadow: 0 2px 14px rgba(0, 0, 0, 1);
       }
       .summary-footer {
@@ -589,6 +606,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         font-size: 26px;
         font-weight: 800;
         color: #e2e8f0;
+        ${isShow ? '' : 'border-top: 2px solid rgba(255, 255, 255, 0.12); padding-top: 20px;'}
       }
       .summary-dot {
         width: 10px;
@@ -663,15 +681,14 @@ export async function generateNewsVideo(inputTarget?: string) {
         </div>
       </div>
 
-      <div class="feature-ribbon" id="featureRibbon">${chipsHtml}
-      </div>
+      ${isShow ? `<div class="feature-ribbon" id="featureRibbon">${chipsHtml}</div>` : ''}
 
       <div class="titles-section" id="titlesSection">
         <h1 class="headline" id="headlineText">${escapeHtml(title)}</h1>
         ${secondaryTitle ? `<div class="secondary-title" id="secondaryTitle">${escapeHtml(secondaryTitle)}</div>` : ''}
       </div>
 
-      <div class="specs-grid" id="specsGrid">
+      ${isShow ? `<div class="specs-grid" id="specsGrid">
         <div class="spec-card">
           <span class="spec-icon">⏱️</span>
           <span class="spec-label">${escapeHtml(specDurationLabel)}</span>
@@ -687,12 +704,12 @@ export async function generateNewsVideo(inputTarget?: string) {
           <span class="spec-label">${escapeHtml(specTypeLabel)}</span>
           <span class="spec-val">${escapeHtml(specType)}</span>
         </div>
-      </div>
+      </div>` : ''}
 
       <div class="summary-card" id="summaryCard">
         <div class="summary-header">
           <div class="summary-tag">${escapeHtml(summaryTag)}</div>
-          <div class="summary-pill-live">${escapeHtml(summaryPill)}</div>
+          ${isShow ? `<div class="summary-pill-live">${escapeHtml(summaryPill)}</div>` : ''}
         </div>
         <p class="summary-text" id="summaryText">${escapeHtml(desc)}</p>
         <div class="summary-footer">
@@ -725,15 +742,15 @@ export async function generateNewsVideo(inputTarget?: string) {
       // Television Light Sheen Sweep across the poster (1.6s to 3.0s)
       tl.fromTo("#cardSheen", { left: "-160px", opacity: 0 }, { left: "1150px", opacity: 0.8, duration: 1.4, ease: "power2.inOut" }, 1.5);
 
-      // Ribbon chips - fluid staggered wave
-      tl.fromTo(".ribbon-chip", { opacity: 0, y: 20, scale: 0.94, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.12, ease: "expo.out" }, 0.6);
+      ${isShow ? `// Ribbon chips - fluid staggered wave
+      tl.fromTo(".ribbon-chip", { opacity: 0, y: 20, scale: 0.94, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.12, ease: "expo.out" }, 0.6);` : ''}
 
       // Titles - smooth upward glide
       tl.fromTo("#headlineText", { opacity: 0, y: 24, force3D: true }, { opacity: 1, y: 0, duration: 1.1, ease: "expo.out" }, 0.8);
       ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 16, force3D: true }, { opacity: 1, y: 0, duration: 1.0, ease: "expo.out" }, 0.95);` : ''}
 
-      // Specs cards - velvety staggered arrival
-      tl.fromTo(".spec-card", { opacity: 0, y: 24, scale: 0.96, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 1.0, stagger: 0.1, ease: "expo.out" }, 1.1);
+      ${isShow ? `// Specs cards - velvety staggered arrival
+      tl.fromTo(".spec-card", { opacity: 0, y: 24, scale: 0.96, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 1.0, stagger: 0.1, ease: "expo.out" }, 1.1);` : ''}
 
       // Summary Card - grand smooth reveal
       tl.fromTo("#summaryCard", { opacity: 0, y: 28, scale: 0.97, force3D: true }, { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: "expo.out" }, 1.35);
