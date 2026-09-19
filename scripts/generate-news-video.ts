@@ -368,7 +368,7 @@ export async function generateNewsVideo(inputTarget?: string) {
 
   console.log('🔊 Adding AAC audio track and faststart header for Meta Story & Reels compatibility...');
   try {
-    execSync(`ffmpeg -y -i "${tempOut}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -c:v copy -c:a aac -shortest -movflags +faststart "${outPath}"`, {
+    execSync(`ffmpeg -y -i "${tempOut}" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -c:v libx264 -crf 23 -preset veryfast -pix_fmt yuv420p -c:a aac -b:a 128k -shortest -movflags +faststart "${outPath}"`, {
       stdio: 'pipe',
     });
     if (fs.existsSync(tempOut)) fs.unlinkSync(tempOut);

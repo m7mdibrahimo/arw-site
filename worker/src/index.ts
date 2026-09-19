@@ -1406,76 +1406,87 @@ async function postVideoToFacebookReel(
   try {
     const pageToken = await getPageAccessToken(env);
 
-    // Method A: Try Facebook Video Reels API
-    try {
-      const initRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
-        }
-      );
-      const initData: any = await initRes.json().catch(() => ({}));
+    // 1. Download video binary buffer into memory
+    const vidRes = await fetch(data.videoUrl);
+    if (!vidRes.ok) {
+      return { ok: false, error: `فشل تحميل ملف الفيديو من الرابط السحابي: ${vidRes.status}` };
+    }
+    const vidBuffer = await vidRes.arrayBuffer();
 
-      if (initData.video_id && initData.upload_url) {
-        // Transfer phase
-        const uploadRes = await fetch(initData.upload_url, {
-          method: "POST",
-          headers: {
-            Authorization: `OAuth ${pageToken}`,
-            file_url: data.videoUrl,
-          },
-        });
-        const uploadData: any = await uploadRes.json().catch(() => ({}));
-
-        if (uploadData.success !== false) {
-          // Finish phase
-          const finishRes = await fetch(
-            `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                upload_phase: "finish",
-                video_id: initData.video_id,
-                video_state: "PUBLISHED",
-                description: caption,
-                access_token: pageToken,
-              }),
-            }
-          );
-          const finishData: any = await finishRes.json().catch(() => ({}));
-          if (finishData.success || finishData.id || finishData.post_id) {
-            return { ok: true, result: finishData };
-          }
-        }
+    // 2. Start Facebook Video Reels Session
+    const initRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
       }
-    } catch (e) {
-      // Fallback to standard Page Video
+    );
+    const initData: any = await initRes.json().catch(() => ({}));
+    if (!initData.video_id || !initData.upload_url) {
+      return {
+        ok: false,
+        result: initData,
+        error: initData?.error?.message || "فشل بدء جلسة رفع الريلز على فيسبوك",
+      };
     }
 
-    // Method B: Standard page videos endpoint (auto-categorized as Reels in feed for 9:16)
-    const fbRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/videos`,
+    const videoId = initData.video_id;
+    const uploadUrl = initData.upload_url;
+
+    // 3. Upload binary stream to rupload.facebook.com
+    const uploadRes = await fetch(uploadUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `OAuth ${pageToken}`,
+        offset: "0",
+        file_size: String(vidBuffer.byteLength),
+        "Content-Type": "application/octet-stream",
+      },
+      body: vidBuffer,
+    });
+    const uploadData: any = await uploadRes.json().catch(() => ({}));
+
+    if (uploadData.error) {
+      return {
+        ok: false,
+        result: uploadData,
+        error: uploadData.error.message || "فشل نقل بيانات الفيديو إلى خوادم فيسبوك ريلز",
+      };
+    }
+
+    // Allow Meta's ingestion pipeline a brief moment to register the chunks
+    await new Promise((r) => setTimeout(r, 4000));
+
+    // 4. Finish phase: Publish Reel to Facebook Reels Tab
+    const finishRes = await fetch(
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          file_url: data.videoUrl,
+          upload_phase: "finish",
+          video_id: videoId,
+          video_state: "PUBLISHED",
           description: caption,
           title: data.title,
           access_token: pageToken,
         }),
       }
     );
-    const fbData: any = await fbRes.json().catch(() => ({}));
-    if (fbData.id) {
-      return { ok: true, result: fbData };
+    const finishData: any = await finishRes.json().catch(() => ({}));
+
+    if (finishData.success || finishData.id || finishData.post_id) {
+      return { ok: true, result: { videoId, finish: finishData, upload: uploadData } };
     }
-    return { ok: false, result: fbData, error: fbData?.error?.message || "فشل نشر الفيديو على صفحة الفيسبوك" };
+
+    return {
+      ok: false,
+      result: finishData,
+      error: finishData?.error?.message || "فشل تأكيد ونشر الريلز على صفحة الفيسبوك",
+    };
   } catch (e: any) {
-    return { ok: false, error: e.message || "خطأ أثناء النشر على الفيسبوك" };
+    return { ok: false, error: e.message || "خطأ أثناء نشر الريلز على الفيسبوك" };
   }
 }
 
@@ -2684,6 +2695,7 @@ export default {
               ok: fbRes.ok,
               message: fbRes.ok ? "تم نشر الريلز على صفحة الفيسبوك بنجاح!" : "فشل النشر في فيسبوك ريلز",
               error: fbRes.error,
+              raw: fbRes.result,
             };
           }
 
@@ -2704,6 +2716,7 @@ export default {
               ok: igRes.ok,
               message: igRes.ok ? "تم نشر الريلز على الإنستغرام بنجاح!" : "فشل النشر في إنستغرام ريلز",
               error: igRes.error,
+              raw: igRes.result,
             };
           }
 
