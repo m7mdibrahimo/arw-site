@@ -141,12 +141,25 @@
           var formRect = form.getBoundingClientRect();
           var isSameRow = (brandRect.bottom > formRect.top - 10) && (brandRect.top < formRect.bottom + 10);
           if (brandRect.right > formRect.right + 10 && isSameRow) {
-            var targetRight = Math.min(brandRect.right, (window.innerWidth || document.documentElement.clientWidth) - 12);
-            var targetLeft = Math.max(formRect.left, 12);
+            var span = brand.querySelector('span');
+            var spanRect = span ? span.getBoundingClientRect() : null;
+            var homeLink = document.querySelector('#navMenu a.navlink') || document.querySelector('.nav a.navlink');
+            var homeRect = homeLink ? homeLink.getBoundingClientRect() : null;
+
+            // Right edge: start of 'راسلنج' (leaving 'عرب' visible on the right)
+            var targetRight = spanRect ? spanRect.right : (brandRect.right - 50);
+            targetRight = Math.min(targetRight, (window.innerWidth || document.documentElement.clientWidth) - 12);
+
+            // Left edge: middle of 'الرئيسية' link
+            var targetLeft = homeRect ? (homeRect.left + homeRect.width / 2) : (formRect.left - 60);
+            targetLeft = Math.max(targetLeft, 12);
+
             var offsetRight = Math.round(targetRight - formRect.right);
+            var offsetLeft = Math.round(formRect.left - targetLeft);
             var totalWidth = Math.round(targetRight - targetLeft);
+
             dropdown.style.setProperty('right', (-offsetRight) + 'px', 'important');
-            dropdown.style.setProperty('left', '0px', 'important');
+            dropdown.style.setProperty('left', (-offsetLeft) + 'px', 'important');
             dropdown.style.setProperty('width', totalWidth + 'px', 'important');
             dropdown.style.setProperty('min-width', totalWidth + 'px', 'important');
             dropdown.style.setProperty('max-width', totalWidth + 'px', 'important');
