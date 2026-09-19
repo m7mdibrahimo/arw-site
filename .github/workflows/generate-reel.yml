@@ -7,6 +7,11 @@ on:
         description: 'Post slug or filename to render'
         required: true
         default: 'latest'
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/shows/**'
 
 permissions:
   contents: write
@@ -71,11 +76,24 @@ jobs:
         env:
           INPUT_SLUG: ${{ github.event.inputs.slug }}
         run: |
-          echo "Rendering reel for slug: $INPUT_SLUG"
-          if [ "$INPUT_SLUG" = "latest" ] || [ -z "$INPUT_SLUG" ]; then
+          echo "Determining target content to render..."
+          if [ -n "$INPUT_SLUG" ] && [ "$INPUT_SLUG" != "latest" ]; then
+            TARGET="$INPUT_SLUG"
+          else
+            # If triggered by a push event, find the modified show file in the commit
+            CHANGED_SHOW=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '^content/shows/' | head -1 || true)
+            if [ -n "$CHANGED_SHOW" ]; then
+              echo "Detected pushed show file: $CHANGED_SHOW"
+              TARGET="$CHANGED_SHOW"
+            else
+              TARGET="latest"
+            fi
+          fi
+          echo "Rendering reel for target: $TARGET"
+          if [ "$TARGET" = "latest" ]; then
             xvfb-run -a npx tsx scripts/generate-news-video.ts
           else
-            xvfb-run -a npx tsx scripts/generate-news-video.ts "$INPUT_SLUG"
+            xvfb-run -a npx tsx scripts/generate-news-video.ts "$TARGET"
           fi
 
       - name: Commit and push generated video to main
@@ -100,3 +118,10 @@ jobs:
           else
             echo "No new video file was produced."
           fi
+
+      - name: Auto-Publish Reel & Post to Facebook and Instagram
+        env:
+          WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
+        run: |
+          echo "Auto-publishing reel and post to social channels..."
+          npx tsx scripts/auto-publish-reel.ts

@@ -405,10 +405,19 @@ html.arw-dark .post-bookmark-btn.bookmarked {
    4. Instant Live Search Dropdown (البحث الفوري المنسدل)
    -------------------------------------------------------------------------- */
 .site-search {
-  position: relative;
-}
-.site-search {
   position: relative !important;
+  flex: 0 1 400px !important;
+  width: 400px !important;
+  max-width: 460px !important;
+  min-width: 260px !important;
+}
+@media (max-width: 1250px) {
+  .site-search {
+    flex-basis: 100% !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
 }
 
 .instant-search-dropdown {

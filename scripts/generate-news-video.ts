@@ -84,14 +84,17 @@ function getTargetContentFile(input?: string): string {
 
 export async function generateNewsVideo(inputTarget?: string) {
   const targetFile = getTargetContentFile(inputTarget);
-  console.log(`🎬 Processing News Post: ${path.basename(targetFile)}`);
+  const isShow = targetFile.includes('/shows/') || targetFile.includes('\\shows\\');
+  console.log(`🎬 Processing ${isShow ? 'Full Show' : 'News'} Post: ${path.basename(targetFile)}`);
 
   const raw = fs.readFileSync(targetFile, 'utf-8');
   const meta = parseFrontmatter(raw);
 
-  const title = meta.headline || meta.title || 'خبر عاجل من عرب راسلنج';
+  const title = meta.headline || meta.title || (isShow ? 'عرض مصارعة مترجم' : 'خبر عاجل من عرب راسلنج');
   const fed = meta.federation || 'عرب راسلنج';
-  const desc = meta.description || 'تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.';
+  const desc = meta.description || (isShow ? 'مشاهدة وتحميل العرض كاملاً ومترجماً بجودة عالية حصرياً.' : 'تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.');
+  const badgeText = isShow ? 'عرض كامل | مترجم' : 'عاجل | عرب راسلنج';
+  const ctaText = isShow ? 'شاهد العرض كاملاً عبر موقعنا:' : 'التفاصيل الكاملة عبر موقعنا:';
   let imageRel = meta.image || '';
   if (imageRel.startsWith('/')) imageRel = imageRel.slice(1);
 
@@ -305,7 +308,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       <div class="top-header" id="header">
         <div class="badge-breaking" id="badge">
           <div class="pulse-dot"></div>
-          <span>عاجل | عرب راسلنج</span>
+          <span>${escapeHtml(badgeText)}</span>
         </div>
         <div class="brand-title" id="brand">
           <span>عرب راسلنج</span>
@@ -324,7 +327,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       </div>
 
       <div class="bottom-cta" id="bottomBar">
-        <div class="cta-text">التفاصيل الكاملة عبر موقعنا:</div>
+        <div class="cta-text">${escapeHtml(ctaText)}</div>
         <div class="cta-url">arab-wrestling.com</div>
       </div>
     </div>
@@ -375,6 +378,18 @@ export async function generateNewsVideo(inputTarget?: string) {
   }
 
   console.log(`\n🎉 Success! Video generated at: ${outPath}`);
+  const latestRender = {
+    videoUrl: `/videos/reel-${baseSlug}.mp4`,
+    filename: `reel-${baseSlug}.mp4`,
+    title,
+    description: desc,
+    postUrl: isShow ? `/shows/${baseSlug}` : `/news/${baseSlug}`,
+    kind: isShow ? 'show' : 'news',
+    slug: baseSlug,
+    image: meta.image || '',
+    renderedAt: Date.now(),
+  };
+  fs.writeFileSync(path.join(OUT_DIR, 'latest-render.json'), JSON.stringify(latestRender, null, 2), 'utf-8');
   updateVideosManifest();
 
   return {
