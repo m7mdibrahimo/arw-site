@@ -19,8 +19,25 @@ permalink: "{{ tagPage.permalink }}"
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <title>مواضيع الوسم #{{ tagObj.name }}{% if tagPage.pageNumber > 1 %} - صفحة {{ tagPage.pageNumber }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
 <link rel="canonical" href="https://arab-wrestling.com{{ tagPage.url }}">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arab-wrestling.com{{ tagPage.url }}">
+<meta property="og:title" content="مواضيع الوسم #{{ tagObj.name }} | عرب راسلنج">
+<meta property="og:description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
+<meta property="og:image" content="https://arab-wrestling.com/assets/logo.png">
+<meta property="og:image:secure_url" content="https://arab-wrestling.com/assets/logo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:alt" content="شعار موقع عرب راسلنج">
+<meta property="og:site_name" content="عرب راسلنج">
+<meta property="og:locale" content="ar_AR">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="مواضيع الوسم #{{ tagObj.name }} | عرب راسلنج">
+<meta name="twitter:description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
+<meta name="twitter:image" content="https://arab-wrestling.com/assets/logo.png">
 {% if tagObj.count < 3 %}
 <!-- وسم فيه محتوى قليل جدًا (أقل من 3 مواضيع)، بنمنع فهرسته عشان مايتحسبش محتوى ضعيف/مكرر على الموقع، لكن بيفضل قابل للوصول للزوار وللينكات الداخلية -->
 <meta name="robots" content="noindex, follow">

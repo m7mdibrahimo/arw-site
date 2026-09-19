@@ -243,7 +243,7 @@ permalink: "{{ fedPage.permalink }}"
   .social-row a{ width:38px; height:38px; border-radius:50%; background:var(--card); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-4px) scale(1.12); box-shadow:0 8px 16px rgba(14,149,148,0.3); }
   /* Hero Section Animations */
-  .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
+  .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: radial-gradient(circle at 50% 15%, rgba(14,149,148,.22) 0%, transparent 65%), radial-gradient(circle at 85% 10%, rgba(242,165,60,.16) 0%, transparent 55%), linear-gradient(180deg, rgba(13,15,19,.96) 0%, var(--bg) 100%); }
   .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
   
   @keyframes shimmer {
@@ -373,7 +373,7 @@ permalink: "{{ fedPage.permalink }}"
 {% for item in fedPage.items %}
   <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %} reveal" href="{{ item.url | cleanUrl }}">
     {% if item.kind == 'news' %}
-    <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}"><img class="thumb-img" src="{% optImg item.data.image, 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=900&auto=format&fit=crop' %}" alt="{{ item.data.title }}" loading="lazy" width="450" height="160"></div>
+    <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}"><img class="thumb-img" src="{% optImg item.data.image, '/assets/logo.png' %}" alt="{{ item.data.title }}" loading="lazy" width="450" height="160"></div>
     <div class="news-body">
       <span class="kind-badge kind-news">خبر</span>{% if fed.code %}<span class="cat cat-{{ fed.code | lower }}">{{ fed.code }}</span>{% endif %}
       <h3>{{ item.data.title }}</h3>

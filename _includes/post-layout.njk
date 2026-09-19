@@ -22,7 +22,7 @@
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <link rel="alternate" type="application/rss+xml" title="عرب راسلنج - تغذية الأخبار RSS" href="https://arab-wrestling.com/feed.xml">
 
-{% set schemaImage = (image | absUrl) if image else 'https://images.unsplash.com/photo-1543429294-fc2d8c7be842?w=1200&auto=format&fit=crop' %}
+{% set schemaImage = (image | absUrl) if image else 'https://arab-wrestling.com/assets/logo.png' %}
 {% set isVideoContent = (servers and servers.length) and not isNews %}
 {% set pageUrl = 'https://arab-wrestling.com' + (page.url | cleanUrl) %}
 
@@ -262,7 +262,7 @@
   .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-4px) scale(1.12); box-shadow:0 8px 16px rgba(14,149,148,0.3); }
 
   /* Hero Section Animations & Background Banner */
-  .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.72) 55%, var(--bg) 100%), url('https://images.unsplash.com/photo-1543429294-fc2d8c7be842?fm=jpg&q=70&w=1800&auto=format&fit=crop') center 30%/cover no-repeat; }
+  .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: radial-gradient(circle at 50% 15%, rgba(14,149,148,.22) 0%, transparent 65%), radial-gradient(circle at 85% 10%, rgba(242,165,60,.16) 0%, transparent 55%), linear-gradient(180deg, rgba(13,15,19,.96) 0%, var(--bg) 100%); }
   .hero-inner{ position:relative; max-width:1050px; margin:0 auto; }
   
   @keyframes shimmer {
