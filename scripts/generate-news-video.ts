@@ -354,7 +354,8 @@ export async function generateNewsVideo(inputTarget?: string) {
         right: 60px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 20px;
         z-index: 20;
       }
       .ribbon-chip {
@@ -686,7 +687,9 @@ export async function generateNewsVideo(inputTarget?: string) {
   const tempOut = path.join(OUT_DIR, `temp-${baseSlug}.mp4`);
   execSync(`npx hyperframes render -o "${tempOut}"`, {
     cwd: REEL_DIR,
-    stdio: 'inherit',
+    stdio: ['pipe', 'inherit', 'inherit'],
+    input: '\n',
+    env: { ...process.env, CI: '1' },
   });
 
   console.log('🔊 Adding AAC audio track and faststart header for Meta Story & Reels compatibility...');
