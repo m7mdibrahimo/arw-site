@@ -91,6 +91,19 @@ export async function generateNewsVideo(inputTarget?: string) {
   const meta = parseFrontmatter(raw);
 
   const title = meta.headline || meta.title || (isShow ? 'عرض مصارعة مترجم' : 'خبر عاجل من عرب راسلنج');
+  let secondaryTitle = '';
+  if (meta.headline && meta.title && meta.headline !== meta.title) {
+    secondaryTitle = String(meta.title).trim();
+  } else if (meta.secondary_title) {
+    secondaryTitle = String(meta.secondary_title).trim();
+  } else if (meta.title_en) {
+    secondaryTitle = String(meta.title_en).trim();
+  } else if (meta.subtitle) {
+    secondaryTitle = String(meta.subtitle).trim();
+  } else if (isShow && meta.program_name && meta.program_name !== title) {
+    secondaryTitle = String(meta.program_name).trim();
+  }
+
   const fed = meta.federation || 'عرب راسلنج';
   const desc = meta.description || (isShow ? 'مشاهدة وتحميل العرض كاملاً ومترجماً بجودة عالية حصرياً.' : 'تغطية حصرية لكافة النزالات والأحداث المثيرة في أحدث عروض المصارعة.');
   const badgeText = isShow ? 'عرض كامل | مترجم' : 'عاجل | عرب راسلنج';
@@ -242,23 +255,46 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 20px;
+        gap: 16px;
         z-index: 20;
       }
 
       .headline {
-        font-size: 50px;
+        font-size: 48px;
         font-weight: 900;
-        line-height: 1.32;
+        line-height: 1.28;
         color: #ffffff;
         text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8);
       }
 
-      .subtext {
+      .secondary-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
         font-size: 32px;
+        font-weight: 800;
+        color: #f59e0b;
+        letter-spacing: 0.5px;
+        direction: ltr;
+        text-align: right;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      }
+
+      .secondary-title::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 26px;
+        background: #f59e0b;
+        border-radius: 3px;
+        box-shadow: 0 0 10px #f59e0b;
+      }
+
+      .subtext {
+        font-size: 30px;
         font-weight: 600;
         color: #cbd5e1;
-        line-height: 1.5;
+        line-height: 1.45;
         text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
       }
 
@@ -323,6 +359,7 @@ export async function generateNewsVideo(inputTarget?: string) {
 
       <div class="content-box" id="contentBox">
         <h1 class="headline" id="headlineText">${escapeHtml(title)}</h1>
+        ${secondaryTitle ? `<div class="secondary-title" id="secondaryTitle">${escapeHtml(secondaryTitle)}</div>` : ''}
         <p class="subtext" id="subtext">${escapeHtml(desc)}</p>
       </div>
 
@@ -343,7 +380,8 @@ export async function generateNewsVideo(inputTarget?: string) {
       tl.fromTo("#fedTag", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(2)" }, 0.7);
 
       tl.fromTo("#headlineText", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.8);
-      tl.fromTo("#subtext", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.2);
+      ${secondaryTitle ? `tl.fromTo("#secondaryTitle", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.0);` : ''}
+      tl.fromTo("#subtext", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, ${secondaryTitle ? '1.3' : '1.2'});
 
       tl.fromTo("#bottomBar", { opacity: 0, y: 30, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 1.5);
 
@@ -382,6 +420,7 @@ export async function generateNewsVideo(inputTarget?: string) {
     videoUrl: `/videos/reel-${baseSlug}.mp4`,
     filename: `reel-${baseSlug}.mp4`,
     title,
+    secondaryTitle: secondaryTitle || undefined,
     description: desc,
     postUrl: isShow ? `/shows/${baseSlug}` : `/news/${baseSlug}`,
     kind: isShow ? 'show' : 'news',
@@ -426,7 +465,8 @@ export function updateVideosManifest() {
   }
 }
 
-if (require.main === module || process.argv[1]?.endsWith('generate-news-video.ts')) {
+const isMain = process.argv[1]?.includes('generate-news-video');
+if (isMain) {
   generateNewsVideo(process.argv[2]).catch(err => {
     console.error('❌ Error generating video:', err);
     process.exit(1);
