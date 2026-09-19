@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-18-09-2026",
+    "title": "عرض سماك داون 18.09.2026 مترجم",
+    "subtitle": "WWE Smackdown 18.09.2026",
+    "image": "/img/DETTsYKh2E-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/tna-impact-17-09-2026",
     "title": "عرض تي ان ايه امباكت 17.09.2026 مترجم",
     "subtitle": "TNA iMPACT 17.09.2026",
@@ -97,16 +108,5 @@
     "kindLabel": "عرض كامل",
     "badge": "حصري ومترجم",
     "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث المشتعلة وتحديات نجوم AEW الكبار."
-  },
-  {
-    "url": "/shows/wwe-smackdown-11-09-2026",
-    "title": "عرض سماك داون 11.09.2026 مترجم",
-    "subtitle": "WWE SmackDown 11.09.2026",
-    "image": "/img/TIvFsQCFkN-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث النارية واستعادة سامي زين للقب العالمي."
   }
 ]
