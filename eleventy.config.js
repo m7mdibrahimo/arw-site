@@ -364,12 +364,15 @@ module.exports = function(eleventyConfig) {
       let rawUrl = (hrefUrl || textUrl || "").trim();
       if (!rawUrl || !rawUrl.startsWith("http")) return match;
 
-      // 1. Twitter / X
-      const twMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/([0-9]+)/i);
+      // 1. Twitter / X (Supports any handle or status link)
+      const twMatch = rawUrl.match(/^https?:\/\/(?:www\.)?(?:twitter\.com|x\.com)\/([^\/\r\n]+)\/status\/([0-9]+)/i);
       if (twMatch) {
-        const user = twMatch[1];
+        let user = twMatch[1].trim();
         const tweetId = twMatch[2];
-        return `<div class="social-embed-box embed-twitter" dir="ltr" lang="en" style="min-height:280px;"><blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" dir="ltr"><div class="embed-skeleton-card"><div class="embed-platform-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X (Twitter)</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور X...</span><span class="embed-skeleton-link"><a href="https://twitter.com/${user}/status/${tweetId}" target="_blank" rel="noopener">فتح المنشور على X (@${user}) &rarr;</a></span></div></blockquote></div>`;
+        if (!/^[a-zA-Z0-9_]+$/.test(user)) {
+          user = "i";
+        }
+        return `<div class="social-embed-box embed-twitter" dir="ltr" lang="en" style="min-height:280px;"><blockquote class="twitter-tweet" data-lang="en" lang="en" data-dnt="true" dir="ltr"><div class="embed-skeleton-card"><div class="embed-platform-badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X (Twitter)</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تحميل منشور X...</span><span class="embed-skeleton-link"><a href="https://twitter.com/${user}/status/${tweetId}" target="_blank" rel="noopener">فتح المنشور على X &rarr;</a></span></div></blockquote></div>`;
       }
 
       // 2. Instagram
@@ -460,53 +463,9 @@ module.exports = function(eleventyConfig) {
     { names: ["إم جيه إف", "ام جيه اف", "MJF"], slug: "ام-جيه-اف" }
   ];
 
+  // Auto-linking of superstar names disabled as requested (keeps articles pure text)
   const autoLinkWrestlingStars = function(html) {
-    if (!html || typeof html !== "string") return html;
-    const tokens = html.split(/(<[^>]+>)/g);
-    let inAnchor = 0;
-    let inHeading = 0;
-    let inScriptOrStyle = 0;
-    const linkedStars = new Set();
-
-    for (let i = 0; i < tokens.length; i++) {
-      const token = tokens[i];
-      if (token.startsWith("<")) {
-        const lower = token.toLowerCase();
-        if (/^<a[\s>]/i.test(lower)) inAnchor++;
-        else if (/^<\/a>/i.test(lower)) inAnchor = Math.max(0, inAnchor - 1);
-        else if (/^<h[1-6][\s>]/i.test(lower)) inHeading++;
-        else if (/^<\/h[1-6]>/i.test(lower)) inHeading = Math.max(0, inHeading - 1);
-        else if (/^<(script|style|figcaption)[\s>]/i.test(lower)) inScriptOrStyle++;
-        else if (/^<\/(script|style|figcaption)>/i.test(lower)) inScriptOrStyle = Math.max(0, inScriptOrStyle - 1);
-        continue;
-      }
-
-      if (inAnchor > 0 || inHeading > 0 || inScriptOrStyle > 0 || !token.trim()) {
-        continue;
-      }
-
-      let text = token;
-      for (const star of WRESTLING_SUPERSTARS) {
-        if (linkedStars.has(star.slug)) continue;
-
-        for (const name of star.names) {
-          const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-          const re = new RegExp(`(^|[^\\p{L}\\p{N}_])(${escaped})([^\\p{L}\\p{N}_]|$)`, "u");
-          const match = text.match(re);
-          if (match) {
-            const prefix = match[1];
-            const matchedName = match[2];
-            const suffix = match[3];
-            const replacement = `${prefix}<a href="/tag/${star.slug}/" class="star-mention-link" title="مواضيع وأخبار ${matchedName}">${matchedName}</a>${suffix}`;
-            text = text.slice(0, match.index) + replacement + text.slice(match.index + match[0].length);
-            linkedStars.add(star.slug);
-            break;
-          }
-        }
-      }
-      tokens[i] = text;
-    }
-    return tokens.join("");
+    return html;
   };
   eleventyConfig.addFilter("autoLinkWrestlingStars", autoLinkWrestlingStars);
   eleventyConfig.addNunjucksFilter("autoLinkWrestlingStars", autoLinkWrestlingStars);

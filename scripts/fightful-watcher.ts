@@ -264,11 +264,18 @@ function removeTashkeel(text: string): string {
 // Convert any occurrence of 'حلقة' to 'عرض', enforce English promotion/show names, scrub third-party branding, and strip all tashkeel
 export function sanitizeWrestlingTerms(text: string): string {
   if (!text) return text;
+  // Protect all URLs so handles, paths and links are never corrupted into Arabic
+  const safeUrls: string[] = [];
+  const textShielded = text.replace(/https?:\/\/[^\s"'<>]+/gi, (url) => {
+    safeUrls.push(url);
+    return `__ARW_SAFE_URL_${safeUrls.length - 1}__`;
+  });
+
   const arBoundL = "(?<![\\u0600-\\u06FF])";
   const arBoundR = "(?![\\u0600-\\u06FF])";
   const arWord = (pattern: string, flags = "g") => new RegExp(arBoundL + "(?:" + pattern + ")" + arBoundR, flags);
 
-  const cleaned = text
+  const cleaned = textShielded
     // 1. Enforce English names for Promotions (no Arabic transliterations)
     .replace(arWord("(?:اتحاد\\s+)?(?:دبليو\\s*دبليو\\s*[إا]ي)"), "WWE")
     .replace(arWord("(?:اتحاد\\s+)?(?:[إا]يه\\s*[إا]ي\\s*دبليو)"), "AEW")
@@ -660,13 +667,13 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women'?s\s+World(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للسيدات")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women'?s(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة السيدات")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Tag\s+Team(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للزوجي")
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Tag\s+Team(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة للزوجي")
-    .replace(/بطولة\s+بطولة/g, "بطولة")
-    .replace(arWord("بطولة\\s+(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)\\s+World\\s+Tag\\s+Team"), "بطولة العالم للزوجي")
-    .replace(arWord("بطولة\\s+(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)\\s+(?:للفرق|للزوجي)"), "بطولة العالم للزوجي");
+    .replace(/بطولة\s+بطولة/g, "بطولة");
+
+  // Always restore protected URLs so URLs and social handles remain 100% clean and uncorrupted
+  const restored = cleaned.replace(/__ARW_SAFE_URL_(\d+)__/g, (_, idx) => safeUrls[Number(idx)] || "");
 
   // Always strip all tashkeel / diacritics completely across all articles, titles, and tags
-  return sanitizeAIWatermarks(removeTashkeel(cleaned));
+  return sanitizeAIWatermarks(removeTashkeel(restored));
 }
 
 /**
@@ -1768,11 +1775,6 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
       embeds.push(cleanYtUrl);
     }
   }
-  let finalBody = rewritten.body_markdown.trim();
-  if (embeds.length > 0) {
-    finalBody += `\n\n${embeds.join("\n\n")}`;
-  }
-
   // 4. Create or update markdown file (Upon re-publishing/updating, delete old file completely as requested)
   const { prefix, iso } = formatDate(effectiveDate);
   let oldSlug = "";
@@ -1801,7 +1803,10 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   // Final fail-safe sanitization guarantee before saving to disk
   rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(rewritten.title));
-  finalBody = sanitizeWrestlingTerms(finalBody);
+  let finalBody = sanitizeWrestlingTerms(rewritten.body_markdown.trim());
+  if (embeds.length > 0) {
+    finalBody += `\n\n${embeds.join("\n\n")}`;
+  }
   rewritten.tags = (rewritten.tags || []).map(t => sanitizeWrestlingTerms(t));
 
   const slug = generateSlug(rewritten.title);
