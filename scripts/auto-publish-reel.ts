@@ -21,7 +21,8 @@ async function autoPublish() {
 
   console.log(`🚀 [Auto-Publish] Processing: "${data.title}" (Kind: ${data.kind || 'unknown'})`);
 
-  const rawVideoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main${data.videoUrl}`;
+  const videoFileName = data.filename || path.basename(data.videoUrl || '');
+  const rawVideoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos/${videoFileName}`;
   const postUrl = data.postUrl
     ? (data.postUrl.startsWith('http') ? data.postUrl : `https://arab-wrestling.com${data.postUrl.startsWith('/') ? '' : '/'}${data.postUrl}`)
     : undefined;
