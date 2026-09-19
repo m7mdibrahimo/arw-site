@@ -1,5 +1,15 @@
 [
   {
+    "id": 329236,
+    "link": "https://www.fightful.com/wrestling/darby-allin-to-defend-aew-tnt-title-on-9-19-aew-collision/",
+    "date": "2026-09-18T22:50:50",
+    "date_gmt": "2026-09-19T02:50:50",
+    "title": {
+      "rendered": "Darby Allin To Defend AEW TNT Title On 9/19 AEW Collision"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18225004/HSi7hs_WYAAy3IY.jpeg"
+  },
+  {
     "id": 329232,
     "link": "https://www.fightful.com/mma/dana-white-says-ciryl-gane-will-not-be-promoted-to-undisputed-ufc-heavyweight-champion/",
     "date": "2026-09-18T22:30:06",
@@ -288,15 +298,5 @@
       "rendered": "John Cena Discovered Mason Rook On His Hotel TV While Filming &#8216;Matchbox: The Movie&#8217; In Budapest"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
-  },
-  {
-    "id": 329079,
-    "link": "https://www.fightful.com/wrestling/mlw-fusion-results-9-17-mistico-vs-trevor-lee/",
-    "date": "2026-09-18T13:10:08",
-    "date_gmt": "2026-09-18T17:10:08",
-    "title": {
-      "rendered": "MLW Fusion Results (9/17): Mistico vs. Trevor Lee"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17105940/mlw-fusion-e1789657188887.webp"
   }
 ]
