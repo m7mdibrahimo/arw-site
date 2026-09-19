@@ -699,8 +699,74 @@ export function sanitizeAIWatermarks(text: string): string {
     .trim();
 }
 
-// Helper to remove repetitive clickbait / cliché prefixes (e.g. "تصريحات نارية..", "صدمة مدوية..")
-function cleanHeadlineClichés(title: string): string {
+// Interface for show timing analysis
+interface ShowTimingInfo {
+  isTonight: boolean;
+  isFuture: boolean;
+  isPreview: boolean;
+}
+
+// Analyzes whether an article refers to an event happening tonight/today vs future vs preview
+function analyzeShowTiming(originalTitle: string, postDate?: string): ShowTimingInfo {
+  const isPreview = /preview\b/i.test(originalTitle) || 
+                    /how to watch\b/i.test(originalTitle) || 
+                    /start time\b/i.test(originalTitle) ||
+                    /watch guide\b/i.test(originalTitle) ||
+                    /match card\b/i.test(originalTitle);
+
+  const d = postDate ? new Date(postDate) : new Date();
+  const postMonth = d.getMonth() + 1;
+  const postDay = d.getDate();
+  const postYear = d.getFullYear();
+
+  // Pattern like (9/19) or (09/19) or 9/19 or 9-19
+  const slashMatch = originalTitle.match(/\b(0?[1-9]|1[0-2])[\/\-](0?[1-9]|[12]\d|3[01])\b/);
+
+  // Month names like Sept 19 or September 19
+  const monthNames = ["jan(?:uary)?", "feb(?:ruary)?", "mar(?:ch)?", "apr(?:il)?", "may", "june?", "july?", "aug(?:ust)?", "sep(?:tember)?", "oct(?:ober)?", "nov(?:ember)?", "dec(?:ember)?"];
+  const monthRegex = new RegExp(`\\b(${monthNames.join("|")})\\s+(0?[1-9]|[12]\\d|3[01])\\b`, "i");
+  const monthMatch = originalTitle.match(monthRegex);
+
+  let showMonth: number | null = null;
+  let showDay: number | null = null;
+
+  if (slashMatch) {
+    showMonth = parseInt(slashMatch[1], 10);
+    showDay = parseInt(slashMatch[2], 10);
+  } else if (monthMatch) {
+    const mStr = monthMatch[1].toLowerCase().slice(0, 3);
+    const mIdx = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].indexOf(mStr);
+    if (mIdx !== -1) {
+      showMonth = mIdx + 1;
+      showDay = parseInt(monthMatch[2], 10);
+    }
+  }
+
+  if (showMonth !== null && showDay !== null) {
+    if (showMonth === postMonth && showDay === postDay) {
+      return { isTonight: true, isFuture: false, isPreview };
+    }
+    const showDate = new Date(postYear, showMonth - 1, showDay);
+    const postMidnight = new Date(postYear, postMonth - 1, postDay);
+    if (showDate.getTime() > postMidnight.getTime()) {
+      return { isTonight: false, isFuture: true, isPreview };
+    }
+    if (showDate.getTime() === postMidnight.getTime()) {
+      return { isTonight: true, isFuture: false, isPreview };
+    }
+    return { isTonight: false, isFuture: false, isPreview };
+  }
+
+  // Previews of weekly TV shows (Collision, SmackDown, Dynamite, Raw, NXT, iMPACT) without a future date are for tonight
+  if (isPreview) {
+    return { isTonight: true, isFuture: false, isPreview: true };
+  }
+
+  return { isTonight: false, isFuture: false, isPreview: false };
+}
+
+// Helper to remove repetitive clickbait / cliché prefixes and enforce accurate timing words (الليلة vs القادم)
+function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?: string): string {
   if (!title) return title;
   let cleaned = title
     .replace(/^(?:تصريحات\s*نارية|صدمة\s*مدوية|اعترافات\s*صادمة|ليلة\s*نارية|مفاجأة\s*مدوية|مفاجأة\s*كبرى|كارثة\s*حقيقية|فضيحة\s*مدوية|عاجل|حصرياً|خاص)\s*[:.،\-–—]+\s*/i, "")
@@ -710,17 +776,37 @@ function cleanHeadlineClichés(title: string): string {
     .replace(/مصادرنا\s+الخاص[ةه]/gi, "تقارير صحفية")
     .replace(/مصادرنا/gi, "تقارير صحفية");
 
-  // Upcoming Show Rule: Convert raw numeric dates for upcoming weekly shows into "القادم"
-  // (Applies to news & previews, never to past show results starting with "نتائج عرض")
+  // Show timing analysis
+  const timing = originalTitle ? analyzeShowTiming(originalTitle, postDate) : { isTonight: false, isFuture: false, isPreview: false };
+  const isPreviewHeadline = /دليل\s*مشاهدة/i.test(cleaned) || /معاينة\s*عرض/i.test(cleaned) || timing.isPreview;
+
+  // Never alter past show results headlines starting with "نتائج عرض"
   if (!cleaned.startsWith("نتائج عرض")) {
-    cleaned = cleaned
-      .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, " القادم")
-      .replace(/\s*في\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))/g, " القادم")
-      .replace(/القادم\s+القادم/g, "القادم")
-      .replace(/عرض\s+عرض/g, "عرض");
+    if (timing.isTonight || (isPreviewHeadline && !timing.isFuture)) {
+      // Show is TONIGHT / TODAY: "القادم" is strictly prohibited!
+      cleaned = cleaned
+        .replace(/\s*عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, " عرض $1 الليلة")
+        .replace(/\s+القادم\s*$/g, " الليلة")
+        .replace(/\s+القادم\s+/g, " الليلة ")
+        .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, " الليلة")
+        .replace(/\s*في\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))/g, " الليلة")
+        .replace(/الليلة\s+الليلة/g, "الليلة");
+    } else if (timing.isFuture) {
+      // Show is strictly on a FUTURE date
+      cleaned = cleaned
+        .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, " القادم")
+        .replace(/\s*في\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))/g, " القادم")
+        .replace(/القادم\s+القادم/g, "القادم");
+    } else {
+      // General news: remove awkward numeric date fragments without falsely adding "القادم"
+      cleaned = cleaned
+        .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, "")
+        .replace(/القادم\s+القادم/g, "القادم");
+    }
   }
 
-  return cleaned.trim();
+  cleaned = cleaned.replace(/عرض\s+عرض/g, "عرض").trim();
+  return cleaned;
 }
 
 // Helper to call Gemini with retry, quota protection & multi-key fallback
@@ -809,8 +895,10 @@ export async function optimizeTitleForSEOAndCTR(
   draftTitle: string,
   articleSummary: string,
   isResultsPost: boolean,
-  arabicDate: string
+  arabicDate: string,
+  postDate?: string
 ): Promise<string> {
+  const timing = analyzeShowTiming(originalTitle, postDate);
   let specificTitleRules = "";
   if (isResultsPost) {
     specificTitleRules = `
@@ -911,9 +999,15 @@ export async function optimizeTitleForSEOAndCTR(
     - **ممنوع بتاتاً كتابة كلمات معربة صوتياً تبدو كأنها كلام هندي أو غير مفهوم** (مثل: ❌ "ديماند" أو ❌ "نيوليف").
     - اكتب دائماً أسماء النجوم صراحة: "الثلاثي ريكوشيه وبيشوب كاون وتوا ليونا"، و"سويرف ستريكلاند وكوفي واوستن كريد"، وإذا ذكرت اسم الفريق اكتبه بوضوح مقروناً بالإنجليزية: (فريق The Demand / فريق New Level).
   - **قاعدة أسماء الألقاب والبطولات بالعربية الخالصة ودون تكرار اسم الاتحاد**:
-  - **قاعدة ذكر "العرض القادم" عند الإعلان عن ظهور أو نزال (Upcoming Show Rule)**:
+  ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `- 🚨 **قاعدة توقيت العروض الحاسمة (العرض يُقام الليلة/اليوم - Strict Rule)**:
+    - هذا العرض يقام **الليلة** (${arabicDate}) وليس في موعد مستقبلي!
+    - **ممنوع منعاً باتاً كتابة كلمة "القادم" نهائياً في أي عنوان من العناوين المرشحة!**
+    - استخدم بدلاً منها **"الليلة"** أو اكتب اسم العرض مباشرة دون إضافات:
+      - ✅ مثال صحيح: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة"
+      - ✅ مثال صحيح: "كل ما تريد معرفته عن مواجهات وتفاصيل عرض AEW Collision الليلة"
+      - ❌ ممنوع تماماً ومرفوض: "عرض AEW Collision القادم"` : timing.isFuture ? `- **قاعدة العروض القادمة (Upcoming Show Rule)**:
     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض التالي أو تحديد نزال في العرض القادم (مثل: Sami Zayn To Appear On 9/18 WWE SmackDown أو Match Set For 9/23 AEW Dynamite):
-    - **وضح دائماً وبشكل طبيعي وسلس أنه "العرض القادم"** بدلاً من الاكتفاء بالصيغ الرقمية الجافة (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم"، أو "مواجهة نارية في عرض AEW Collision القادم").
+    - **وضح دائماً وبشكل طبيعي وسلس أنه "العرض القادم"** بدلاً من الاكتفاء بالصيغ الرقمية الجافة (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم"، أو "مواجهة نارية في عرض AEW Collision القادم").` : `- **قاعدة ذكر العروض**: اذكر اسم العرض مسبوقاً باسم الاتحاد دون إضافة كلمة "القادم" إلا إذا كان العرض مجدولاً لموعد مستقبلي.`}
   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة).`;
   }
 
@@ -929,14 +1023,13 @@ export async function optimizeTitleForSEOAndCTR(
 المطلوب الأساسي:
 صياغة العنوان العربي ليكون **واضحاً، مفهوماً جداً، ومباشراً كعناوين موقع Fightful العالمي تماماً**:
 1. **الوضوح التام والمباشر (Fightful Style)**: العنوان يجب أن يوضح الخبر ومجرياته بدقة من القراءة الأولى دون أي غموض أو لف أو دوران.
-2. **الأمانة التامة لوقائع العنوان الأصلي مع توضيح "العرض القادم"**:
+2. **الأمانة التامة لوقائع العنوان الأصلي ودقة التوقيت الزمني**:
    - ممنوع إضافة أي وقائع أو تفاصيل أو تكهنات لم ترد في العنوان الأصلي.
-   - **قاعدة العروض القادمة والظهور (قاعدة ذهبية إضافية)**:
-     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض الأسبوعي التالي أو نزال قادم (مثل: Sami Zayn To Appear On 9/18 WWE SmackDown):
-       - اكتب دائماً بوضوح وسلاسة: **"في عرض [الاتحاد والعرض] القادم"** (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم" بدلاً من كتابة أرقام جافة مثل "بتاريخ 18/9").
-   - إذا كان العنوان الأصلي يحتوي على نزال محدد، اذكره بالأسماء الصريحة والمباشرة واسم العرض القادم.
+   - **قاعدة توقيت العروض (الليلة vs القادم)**:
+${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذا العرض يقام **الليلة** (${arabicDate})، ممنوع منعاً باتاً كتابة "القادم"! اكتب "الليلة" أو اذكر اسم العرض فقط دون إضافات (مثال: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة").` : timing.isFuture ? `     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض الأسبوعي التالي أو نزال قادم: اكتب بوضوح وسلاسة "في عرض [الاتحاد والعرض] القادم".` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
+   - إذا كان العنوان الأصلي يحتوي على نزال محدد، اذكره بالأسماء الصريحة والمباشرة واسم العرض بدقة.
    - إذا كان العنوان الأصلي يحتوي على تصريح لمصارع، اذكر اسم المصارع والاقتباس بوضوح بين علامتي تنصيص.
-   - إذا كان العنوان الأصلي يحتوي على حدث أو إصابة أو ظهور، اذكره مباشرة كما هو (مثل: "تيفاني ستراتون تتعرض لسقوط مخيف فوق الحبل العلوي" أو "سامي زين يظهر في عرض WWE SmackDown القادم").
+   - إذا كان العنوان الأصلي يحتوي على حدث أو إصابة أو ظهور، اذكره مباشرة كما هو (مثل: "تيفاني ستراتون تتعرض لسقوط مخيف فوق الحبل العلوي").
 3. **لغة عربية صحفية سليمة وسلسة واحترافية**: تجمع بين دقة ووضوح Fightful التام وبين الرشاقة اللغوية العربية.
 
 قم بصياغة 4 خيارات عناوين واضحة ومفهومة ومباشرة تماماً:
@@ -979,7 +1072,7 @@ ${articleSummary.slice(0, 3000)}
         }
         const winningRaw = parsed.champion_title || parsed.best_title;
         if (winningRaw && winningRaw.trim().length > 10) {
-          let winner = cleanHeadlineClichés(sanitizeWrestlingTerms(winningRaw.trim()));
+          let winner = cleanHeadlineClichés(sanitizeWrestlingTerms(winningRaw.trim()), postDate, originalTitle);
           if (isResultsPost) {
             winner = sanitizeResultsTitleSpoilers(winner);
           }
@@ -992,7 +1085,7 @@ ${articleSummary.slice(0, 3000)}
     console.warn("[Watcher] Title tournament pass skipped, using draft title:", e);
   }
 
-  let finalTitle = cleanHeadlineClichés(sanitizeWrestlingTerms(draftTitle));
+  let finalTitle = cleanHeadlineClichés(sanitizeWrestlingTerms(draftTitle), postDate, originalTitle);
   if (isResultsPost) {
     finalTitle = sanitizeResultsTitleSpoilers(finalTitle);
   }
@@ -1213,6 +1306,7 @@ async function rewriteWithGemini(
   console.log(`[Watcher] Article classification: "${originalTitle}" -> [${isResultsPost ? "SHOW_RESULTS (نتائج عرض)" : "NEWS_ARTICLE (خبر صحفي)"}]${isUpdate ? " [REWRITE_UPDATE (تحديث)]" : ""}`);
 
   const arabicDate = getArabicDateFormatted(postDate);
+  const timing = analyzeShowTiming(originalTitle, postDate);
 
   const prompt = isResultsPost
     ? `أنت كبير محرري موقع "عرب راسلنج" (arab-wrestling.com)، متخصص في الصحافة الرياضية وتغطية المصارعة الحرة العالمية وفنون القتال.
@@ -1233,54 +1327,71 @@ async function rewriteWithGemini(
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
 2. **التنسيق المنظم والفصل بين السطور**:
    - في نتائج المباريات، اجعل بين كل سطر وسطر سطرين فارغين (Double Line Break).
-   - الهيكل الدقيق لكل مباراة:
-**المواجهة الأولى (نوع النزال بالعربي): [المصارع 1] ضد [المصارع 2]**
-
-**تفاصيل النزال:** [شرح سريع ومثير في سطر أو سطرين لأبرز لحظات النزال وكيف انتهى].
-
-🏆 **الفائز:** [اسم الفائز بالعربي] (مع إضافة "واحتفظ باللقب" إذا كان نزال بطولة).
-
-3. **العنوان لنتائج العروض (حظر تام وشامل لأي حرق لنتائج النزالات في العنوان - Strict Zero-Spoiler Rule)**:
-   - **ممنوع نهائياً ذكر اسم الفائز أو الخاسر أو نتيجة أي نزال في العنوان مطلقاً!**
-   - اذكر أطراف النزال الرئيسي أو الصدام الناري دون كشف الفائز (مثل: "مواجهة نارية بين رومان رينز وبينتا.. وتصفيات مشتعلة لموني إن ذا بانك").
+   - اتبع هذا الترتيب الدقيق لكل مواجهة:
+     ---
+     **المواجهة [رقم المواجهة بالعربية]: [طبيعة المواجهة/اللقب إن وجد]**
+     
+     [تفاصيل وسيناريو المواجهة، مجريات الصراع، اللحظات الحاسمة في سياق سردي شيق وواضح]
+     
+     🏆 **الفائز:** [اسم الفائز بالعربي، أو تفاصيل النتيجة كالإقصاء أو التعادل]
+   - في الحدث الرئيسي (Main Event):
+     ---
+     **الحدث الرئيسي (Main Event): [طبيعة النزال]**
+     
+     [وصف حماسي ومفصل لأطوار المواجهة الكبرى وتدخلات الحلبة حتى لحظة الحسم]
+     
+     🏆 **الفائز:** [اسم الفائز بالعربي]
+3. **قاعدة حظر حرق النتائج في العنوان (Zero-Spoiler Headline)**:
+   - **ممنوع نهائياً ذكر اسم الفائز أو الخاسر أو نتيجة أي نزال في العنوان!**
+   - اكتب العنوان بصيغة تشويقية تركز على أسماء المتنافسين في المين إيفنت والتصفيات الكبرى وتاريخ العرض:
    - إذا كان العرض ليلة واحدة: "نتائج عرض [اسم العرض مسبوقاً باسم الاتحاد] (${arabicDate}): [أطراف المواجهة الكبرى دون ذكر الفائز].. و[أبرز الأحداث والتصفيات]"
-   - إذا كان مقسماً لليالٍ (Night 1 / Night 2): احذف التاريخ واكتب: "نتائج عرض [اسم العرض مسبوقاً باسم الاتحاد] (الليلة الأولى): [أطراف الحدث الرئيسي دون ذكر الفائز].. و[حدث بارز]"
-4. **حظر تام لكلمتي "حلقة" و"مهرجان" نهائياً**: استبدلها دائماً بكلمة "عرض" (أو "عروض" للجمع). لا يوجد حلقة ولا مهرجان، بل اسمه "عرض".
-5. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
-6. **حظر ذكر Fightful نهائياً وحظر ادعاء 'مصادرنا الخاصة'**: اذكر مجريات ونتائج العرض بأسلوب صحفي محايد وممتع دون ذكر Fightful أو محرريها، وممنوع نهائياً استخدام عبارة "مصادرنا الخاصة" أو اختلاق مصادر وهمية.
-7. **الوسوم (tags)**: بين 5 إلى 7 وسوم دقيقة (تتضمن اسم الاتحاد بالإنجليزية مثل WWE أو AEW، واسم العرض بالإنجليزية مثل WWE RAW، وباقي الوسوم وأسماء المصارعين بالعربية).
+   - إذا كان العرض ليلتين (مثل Triplemania أو WrestleMania): احذف التاريخ (${arabicDate}) وضع "(الليلة الأولى)" أو "(الليلة الثانية)".
+4. **توليد الوسوم (Tags)**:
+   - ولد بين 5 إلى 7 وسوم دقيقة وذات صلة وثيقة بالعرض.
+   - أول وسمين إلزاميين: اسم الاتحاد واسم العرض (مثل "WWE", "WWE RAW" أو "AEW", "AEW Dynamite").
+   - باقي الوسوم تكون بالعربية حصراً: أسماء أبرز النجوم المشاركين، اسم الحدث الرئيسي، أو نوع البطولة.
+   - ممنوع وضع كلمات إنجليزية في الوسوم غير اسم الاتحاد واسم العرض!
 
-التقرير الأصلي:
-العنوان: ${originalTitle}
-التصنيفات: ${categories.join(", ")}
 تاريخ الحدث: ${arabicDate}
-النص:
-${plainText.slice(0, 16000)}
+بيانات المقال الأصلي:
+العنوان: ${originalTitle}
+المحتوى:
+${plainText}
 
-أخرج النتيجة بتنسيق JSON حصراً:
+أخرج النتيجة حصراً بتنسيق JSON:
 {
-  "title": "نتائج عرض...",
-  "federation": "WWE",
-  "tags": ["وسم 1", "وسم 2", "وسم 3", "وسم 4", "وسم 5"],
-  "body_markdown": "المحتوى المنسق بسطور مفصولة وفقرات مستقلة..."
-}
-`
-    : `أنت كبير محرري موقع "عرب راسلنج" (arab-wrestling.com)، متخصص في الصحافة الرياضية وتغطية المصارعة الحرة العالمية وفنون القتال.
+  "title": "...",
+  "federation": "...",
+  "tags": ["..."],
+  "body_markdown": "..."
+}`
+    : `أنت كبير محرري موقع "عرب راسلنج" (arab-wrestling.com)، المتخصص الأول في تغطية كواليس وأخبار المصارعة الحرة العالمية.
 
-المهمة: تحويل هذا الخبر/الكواليس/التصريح إلى **مقال صحفي إخباري رياضي احترافي ومباشر ومفصل** باللغة العربية.
+المهمة الصحفية: إعادة صياغة هذا الخبر الإنجليزي إلى **مقال صحفي رياضي احترافي عربي** فصيح، سريع، شيق، ودقيق جداً.
 
-القواعد التحريرية والتنسيقية الإلزامية (حاسمة جداً):
-1. **طبيعة المقال**: هذا خبر صحفي مفرد (News). **ممنوع منعاً باتاً كتابة كلمة "نتائج عرض" أو وضع التاريخ بين قوسين في بداية العنوان!**
-2. **العنوان (مطابقة تامة لوقائع العنوان الأصلي بصياغة عربية رياضية فصيحة ورشيقة - 100% Faithful Rephrasing)**:
-   - **القاعدة الذهبية للعنوان**: صِغْ العنوان ليكون نقلاً أميناً ومطابقاً 100% لنفس وقائع وأسماء العنوان الأصلي الإنجليزي: (${originalTitle}).
-   - المطلوب هو **إعادة صياغة صحفية رشيقة باللغة العربية لنفس الخبر**، وليس ترجمة آلية ميتة، مع الالتزام الصارم بنفس الأحداث.
-   - **حظر تام للبادئات المكررة**: ممنوع منعاً باتاً بدء العناوين بعبارات مكررة مثل:
-     - ❌ "تصريحات نارية.."
-     - ❌ "صدمة مدوية.."
-     - ❌ "ليلة نارية.."
-     - ❌ "اعترافات صادمة.."
-     - ❌ "مفاجأة كبرى.."
-   - كل عنوان يجب أن يبدأ بأسلوب مختلف ومتنوع يبرز جوهر الخبر مباشرة (مثل: اسم المصارع وفعل الحدث، أو تصريح مثير بين علامتي اقتباس).
+القواعد الصارمة والإلزامية لنجاح الصياغة:
+1. **قاعدة التصنيف الصحيح وتحديد الاتحاد (Strict Category Rule)**:
+   - حقل "federation" في الـ JSON يجب أن يحتوي حصراً على واحدة من هذه القيم الست:
+     - "WWE" (لكل أخبار WWE بمختلف عروضها ونزالاتها ونجومها).
+     - "AEW" (لكل أخبار All Elite Wrestling).
+     - "TNA" (لكل أخبار اتحاد تيم إمباكت / TNA).
+     - "ROH" (لكل أخبار Ring of Honor).
+     - "MMA" (لكل أخبار UFC وفنون القتال المختلطة).
+     - "INDIE" (لاتحادات المصارعة المستقلة الأخرى: NJPW, MLW, AAA, CMLL, GCW, MLP وغيرها).
+2. **العنوان (أمين 100% لوقائع المصدر، جذاب ورياضي، وبدون كليشيهات مستهلكة)**:
+   - **القاعدة الذهبية الحاسمة: التماثل التام مع وقائع العنوان الأصلي (100% Factual Fidelity)**:
+     - العنوان الأصلي من المصدر: "${originalTitle}"
+     - **العنوان العربي يجب أن ينقل نفس وقائع العنوان الأصلي بدقة متناهية دون زيادة أو نقصان**:
+       - من عاد؟ من فاز؟ من تم الإعلان عنه؟ مع من تحالف؟ ما هو التصريح الدقيق؟
+       - ممنوع حذف أي تفصيل جوهري، وممنوع اختلاق أحداث لم تقع!
+   - **حظر تام وتجريم البادئات والكليشيهات المكررة (Crucial Anti-Cliché Rule)**:
+     - **ممنوع بتاتاً منعاً باتاً** بدء العنوان بأي بادئة مستهلكة مثل:
+       - ❌ "تصريحات نارية.."
+       - ❌ "صدمة مدوية.."
+       - ❌ "ليلة نارية.."
+       - ❌ "اعترافات صادمة.."
+       - ❌ "مفاجأة كبرى.."
+     - كل عنوان يجب أن يبدأ بأسلوب مختلف ومتنوع يبرز جوهر الخبر مباشرة (مثل: اسم المصارع وفعل الحدث، أو تصريح مثير بين علامتي اقتباس).
    - **قاعدة الالتزام التام بالحقائق وتفاصيل الخبر وعدم اختلاق المفاجآت أو التهويل الفارغ (Factual Truth & Zero Hallucinated Clickbait - حاسمة جداً)**:
       - **ممنوع منعاً باتاً استبدال وقائع وتفاصيل الخبر المحددة بعبارات تهويل كاذبة أو فارغة** (مثل: ❌ "يفاجئ الجميع", ❌ "عودته الصاعقة", ❌ "يهز الحلبات", ❌ "صدمة مدوية").
       - إذا كان العنوان الأصلي يحتوي على حدثين مترابطين (مثل: عودة مصارع + تشكيل فريق في نزال مختلط مع شريك محدد):
@@ -1289,9 +1400,14 @@ ${plainText.slice(0, 16000)}
           - ❌ صياغة تهويلية مبتذلة وفارغة ممنوعة: "إل غراندي أمريكانو يفاجئ الجميع ويسجل عودته الصاعقة في عرض WWE RAW"
           - ✅ **الصياغة الصحفية الذكية والدقيقة**: "إل غراندي أمريكانو يعود إلى عرض WWE RAW ويتحالف مع ستيفاني فاكير في مواجهة مختلطة"
       - الإثارة الصحفية المطلوبة تتحقق بـ **جمال وبلاغة الأسلوب الرياضي الفصيح ونقل الحقائق والأسماء الهامة**، وليس باختلاق كلمة "مفاجأة" أو "صاعقة" حيث لا توجد مفاجأة ولا صدمة!
-   - **قاعدة العروض القادمة والظهور المحدد (Upcoming Show Rule)**:
-     - إذا كان الخبر الأصلي يتحدث عن ظهور مصارع أو تحديد نزال في العرض الأسبوعي التالي (مثل: Sami Zayn To Appear On 9/18 WWE SmackDown أو Match Set For 9/23 AEW Dynamite):
-     - **وضح دائماً وبشكل طبيعي وسلس أنه في "العرض القادم"** (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم"، أو "تحديد مواجهة قوية في عرض AEW Collision القادم") بدلاً من استخدام تواريخ رقمية جافة مثل "18/9" أو صياغات معقدة.
+   - **قاعدة توقيت العروض الحاسمة (الليلة vs القادم - التمييز الزمني الدقيق والاحترافي)**:
+${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **تنبيه زمني حاسم جداً: هذا العرض يقام الليلة / اليوم (${arabicDate})!**
+       - **ممنوع منعاً باتاً كتابة كلمة "القادم" نهائياً سواء في العنوان أو في المتن!**
+       - استخدم بدلاً منها **"الليلة"** أو اذكر اسم العرض مباشرة دون إضافات:
+         - ✅ في العنوان: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة"
+         - ✅ في المتن: "يستعد اتحاد AEW لتقديم عرض AEW Collision الليلة..."
+         - ❌ ممنوع تماماً ومرفوض: "عرض AEW Collision القادم" أو "يوم التاسع عشر من سبتمبر"` : timing.isFuture ? `     - **إذا كان الخبر يتحدث عن ظهور مصارع أو تحديد نزال في العرض الأسبوعي القادم (تاريخ مستقبلي بعد أيام)**:
+       - وضح بسلاسة أنه في **"العرض القادم"** (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم") بدلاً من استخدام تواريخ رقمية جافة.` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
    - **قاعدة تصريحات وردود أفعال المصارعين وإعادة الصياغة الصحفية الذكية (Smart Rewriting vs Literal Translation - حاسمة جداً)**:
      - إذا كان الخبر الأصلي عبارة عن رد فعل، تغريدة، منشور إنستغرام أو تويتر، أو تصريح لمصارع (مثل: 'Wrestler: Quote' أو 'Wrestler Reacts To...'):
        - **ممنوع منعاً باتاً تغيير زاوية أو موضوع الخبر** أو تحويله إلى تقرير عن فوز بنزال أو خسارة لقب وكأنه حدث للتو مع تجاهل التصريح!
@@ -1397,11 +1513,17 @@ ${plainText.slice(0, 4000)}
     }
 
     // Sanitize any instances of 'حلقة' to 'عرض' & remove cliché prefixes
-    parsed.title = cleanHeadlineClichés(sanitizeWrestlingTerms(parsed.title));
+    parsed.title = cleanHeadlineClichés(sanitizeWrestlingTerms(parsed.title), postDate, originalTitle);
     if (isResultsPost) {
       parsed.title = sanitizeResultsTitleSpoilers(parsed.title);
     }
     parsed.body_markdown = formatResultsMarkdown(sanitizeWrestlingTerms(parsed.body_markdown));
+    if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
+      parsed.body_markdown = parsed.body_markdown
+        .replace(/\bالعرض\s+القادم\b/g, "عرض الليلة")
+        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة")
+        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, "عرض $1 الليلة");
+    }
     parsed.tags = (parsed.tags || []).map(t => sanitizeWrestlingTerms(t));
 
     // Validate & normalize federation strictly to the site's 6 allowed categories
@@ -1426,10 +1548,16 @@ ${plainText.slice(0, 4000)}
     // Pass 2: Run through our dedicated Title Optimizer with date & full Arabic rules
     await new Promise(r => setTimeout(r, 1500)); // Gentle 1.5s pause to respect Gemini free tier RPM limits
     console.log(`[Watcher] Optimizing title with dedicated AI Title Engine (Date: ${arabicDate})...`);
-    parsed.title = await optimizeTitleForSEOAndCTR(originalTitle, parsed.title, parsed.body_markdown, isResultsPost, arabicDate);
+    parsed.title = await optimizeTitleForSEOAndCTR(originalTitle, parsed.title, parsed.body_markdown, isResultsPost, arabicDate, postDate);
     // Double-pass sanitization guarantee to ensure 0% chance of typos, English terms or tashkeel slipping through
-    parsed.title = cleanHeadlineClichés(sanitizeWrestlingTerms(parsed.title));
+    parsed.title = cleanHeadlineClichés(sanitizeWrestlingTerms(parsed.title), postDate, originalTitle);
     parsed.body_markdown = sanitizeWrestlingTerms(parsed.body_markdown);
+    if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
+      parsed.body_markdown = parsed.body_markdown
+        .replace(/\bالعرض\s+القادم\b/g, "عرض الليلة")
+        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة")
+        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, "عرض $1 الليلة");
+    }
     parsed.tags = (parsed.tags || []).map(t => sanitizeWrestlingTerms(t));
     console.log(`[Watcher] Final Optimized Title: "${parsed.title}" (length: ${parsed.title.length} chars)`);
 
@@ -1802,8 +1930,15 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
 
   // Final fail-safe sanitization guarantee before saving to disk
-  rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(rewritten.title));
+  rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(rewritten.title), sourceDate, rawTitle);
   let finalBody = sanitizeWrestlingTerms(rewritten.body_markdown.trim());
+  const timing = analyzeShowTiming(rawTitle, sourceDate);
+  if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
+    finalBody = finalBody
+      .replace(/\bالعرض\s+القادم\b/g, "عرض الليلة")
+      .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة")
+      .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, "عرض $1 الليلة");
+  }
   if (embeds.length > 0) {
     finalBody += `\n\n${embeds.join("\n\n")}`;
   }
