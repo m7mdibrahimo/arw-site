@@ -154,9 +154,9 @@ export async function generateNewsVideo(inputTarget?: string) {
   }
   const specTypeLabel = isShow ? 'نوع العرض' : 'التصنيف';
 
-  // Feature ribbon chips (2 chips on the edges with middle empty)
+  // Feature ribbon chips (2 chips centered)
   const chipsHtml = isShow ? `
-        <div class="ribbon-chip gold">⚡ جودة 1080p FHD</div>
+        <div class="ribbon-chip gold">⚡ بجودة عالية</div>
         <div class="ribbon-chip cyan">🎙️ ترجمة حصرية</div>` : `
         <div class="ribbon-chip fire">🔥 خبر عاجل</div>
         <div class="ribbon-chip cyan">⚡ تحديث فوري</div>`;
