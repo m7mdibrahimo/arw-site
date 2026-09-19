@@ -1,5 +1,15 @@
 [
   {
+    "id": 329328,
+    "link": "https://www.fightful.com/wrestling/aew-collision-results-9-19-2026-andrade-el-idolo-vs-daniel-garcia-thekla-darby-allin-more/",
+    "date": "2026-09-19T19:15:00",
+    "date_gmt": "2026-09-19T23:15:00",
+    "title": {
+      "rendered": "AEW Collision Results (9/19/2026): Andrade El Idolo vs. Daniel Garcia, THEKLA, Darby Allin, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16221040/HSYhvzAXMAAHo21.jpg"
+  },
+  {
     "id": 329364,
     "link": "https://www.fightful.com/wrestling/six-teams-announced-for-nxt-dusty-rhodes-tag-classic/",
     "date": "2026-09-19T17:45:09",
@@ -288,15 +298,5 @@
       "rendered": "LA Knight To Speak, Men&#8217;s And Women&#8217;s Money In The Bank Qualifying Matches Set For 9/21 WWE Raw"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18220706/image-5.png"
-  },
-  {
-    "id": 329344,
-    "link": "https://www.fightful.com/wrestling/njpw-take-off-from-new-chitose-airport-results-9-18/",
-    "date": "2026-09-18T22:15:44",
-    "date_gmt": "2026-09-19T02:15:44",
-    "title": {
-      "rendered": "NJPW TAKE OFF! From New Chitose Airport Results (9/18)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/17100606/%E3%82%AD%E3%83%BC%E3%83%93%E3%82%B8%E3%83%A5%E3%82%A2%E3%83%AB%EF%BC%88%E6%B1%BA%E5%AE%9A%E7%A8%BF%EF%BC%89-e1786975610322.jpg"
   }
 ]
