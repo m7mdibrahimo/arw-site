@@ -124,6 +124,30 @@ export async function generateNewsVideo(inputTarget?: string) {
   const badgeText = isShow ? 'عرض كامل | مترجم' : 'عاجل | عرب راسلنج';
   const ctaText = isShow ? 'شاهد العرض كاملاً عبر موقعنا:' : 'التفاصيل الكاملة عبر موقعنا:';
 
+  // Dynamic font sizing & positioning for titles so long headlines never collide with specs
+  let titleFontSize = 58;
+  let titleLineHeight = 1.22;
+  let titleTop = 835;
+  let barHeight = 48;
+  if (!isShow || title.length > 50) {
+    if (title.length > 70) {
+      titleFontSize = 38;
+      titleLineHeight = 1.26;
+      titleTop = 750;
+      barHeight = 34;
+    } else if (title.length > 45) {
+      titleFontSize = 44;
+      titleLineHeight = 1.24;
+      titleTop = 770;
+      barHeight = 40;
+    } else {
+      titleFontSize = 50;
+      titleLineHeight = 1.22;
+      titleTop = 800;
+      barHeight = 44;
+    }
+  }
+
   // Dynamic specs
   const specDuration = meta.duration || (isShow ? 'عرض كامل' : 'تغطية عاجلة');
   const specDurationLabel = isShow ? 'المدة الزمنية' : 'طبيعة التغطية';
@@ -408,10 +432,10 @@ export async function generateNewsVideo(inputTarget?: string) {
         box-shadow: 0 4px 18px rgba(56, 189, 248, 0.35);
       }
 
-      /* Titles Area (Moved down for breathing room) */
+      /* Titles Area (Dynamic spacing and sizing) */
       .titles-section {
         position: absolute;
-        top: 835px;
+        top: ${titleTop}px;
         left: 60px;
         right: 60px;
         display: flex;
@@ -423,9 +447,9 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: inline-flex;
         align-items: center;
         gap: 16px;
-        font-size: 58px;
+        font-size: ${titleFontSize}px;
         font-weight: 900;
-        line-height: 1.22;
+        line-height: ${titleLineHeight};
         color: #ffffff;
         text-shadow: 0 4px 25px rgba(0, 0, 0, 1), 0 2px 8px #000000;
       }
@@ -433,7 +457,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         content: '';
         display: inline-block;
         width: 8px;
-        height: 48px;
+        height: ${barHeight}px;
         background: linear-gradient(180deg, #ef4444, #f59e0b);
         border-radius: 4px;
         box-shadow: 0 0 16px #ef4444, 0 0 24px #f59e0b;
