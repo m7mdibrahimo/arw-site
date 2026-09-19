@@ -129,17 +129,37 @@ export async function generateNewsVideo(inputTarget?: string) {
   const specDurationLabel = isShow ? 'المدة الزمنية' : 'طبيعة التغطية';
   const specDate = formatArabicDate(meta.event_date || meta.date);
   const specDateLabel = isShow ? 'تاريخ الحدث' : 'تاريخ النشر';
-  const specType = isShow ? (meta.program_name || (meta.federation ? `عرض ${meta.federation}` : 'أسبوعي كامل')) : (meta.category || meta.federation || 'أخبار عامة');
+
+  let specType = 'عرض أسبوعي';
+  if (isShow) {
+    const rawLower = raw.toLowerCase();
+    const isMonthly =
+      meta.is_annual === 'true' ||
+      meta.is_annual === true ||
+      meta.is_ppv === 'true' ||
+      meta.is_ppv === true ||
+      (meta.show_type && (meta.show_type.includes('شهري') || meta.show_type.toLowerCase().includes('ppv') || meta.show_type.toLowerCase().includes('ple'))) ||
+      rawLower.includes('عروض شهرية') ||
+      rawLower.includes('عرض شهري') ||
+      rawLower.includes('مهرجان') ||
+      rawLower.includes('ppv') ||
+      rawLower.includes('ple') ||
+      /\b(wrestlemania|summerslam|royal rumble|survivor series|backlash|money in the bank|elimination chamber|crown jewel|bad blood|fastlane|all in|all out|revolution|double or nothing|wrestledream|worlds end|forbidden door|bound for glory|slammiversary|rebellion|triplemania|hard to kill)\b/i.test(
+        `${meta.title || ''} ${meta.headline || ''} ${meta.program_name || ''}`
+      );
+
+    specType = isMonthly ? 'عرض شهري' : 'عرض أسبوعي';
+  } else {
+    specType = meta.category || meta.federation || 'أخبار عامة';
+  }
   const specTypeLabel = isShow ? 'نوع العرض' : 'التصنيف';
 
-  // Feature ribbon chips
+  // Feature ribbon chips (2 chips on the edges with middle empty)
   const chipsHtml = isShow ? `
-        <div class="ribbon-chip fire">🔥 تغطية كاملة</div>
         <div class="ribbon-chip gold">⚡ جودة 1080p FHD</div>
         <div class="ribbon-chip cyan">🎙️ ترجمة حصرية</div>` : `
         <div class="ribbon-chip fire">🔥 خبر عاجل</div>
-        <div class="ribbon-chip gold">⚡ تحديث فوري</div>
-        <div class="ribbon-chip cyan">🎙️ تغطية شاملة</div>`;
+        <div class="ribbon-chip cyan">⚡ تحديث فوري</div>`;
 
   // Summary card text
   const summaryTag = isShow ? '✨ نبذة عن العرض' : '✨ تفاصيل الخبر';
