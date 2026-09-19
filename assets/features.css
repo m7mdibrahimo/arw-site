@@ -423,11 +423,11 @@ html.arw-dark .post-bookmark-btn.bookmarked {
 .instant-search-dropdown {
   position: absolute;
   top: calc(100% + 8px);
-  right: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
+  right: 0;
+  left: 0;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;

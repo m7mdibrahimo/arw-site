@@ -207,28 +207,47 @@ export async function generateNewsVideo(inputTarget?: string) {
 
       .media-container {
         position: absolute;
-        top: 200px;
+        top: 210px;
         left: 60px;
         right: 60px;
-        height: 960px;
+        height: 860px;
         border-radius: 36px;
         overflow: hidden;
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.16);
-        background: #151820;
+        background: #090c10;
         z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .media-blur-bg {
+        position: absolute;
+        inset: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        object-fit: cover;
+        filter: blur(32px) brightness(0.35) saturate(1.4);
+        transform: scale(1.15);
+        z-index: 1;
+        pointer-events: none;
       }
 
       .media-img {
+        position: relative;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        transform-origin: center center;
+        object-fit: contain;
+        z-index: 2;
+        filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.85));
       }
 
       .media-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(9, 12, 16, 0) 45%, rgba(9, 12, 16, 0.95) 100%);
+        background: linear-gradient(180deg, rgba(9, 12, 16, 0) 70%, rgba(9, 12, 16, 0.85) 100%);
+        z-index: 3;
+        pointer-events: none;
       }
 
       .fed-tag {
@@ -244,18 +263,19 @@ export async function generateNewsVideo(inputTarget?: string) {
         padding: 10px 24px;
         border-radius: 16px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 158, 11, 0.25);
+        z-index: 4;
       }
 
       .content-box {
         position: absolute;
-        top: 1200px;
+        top: 1120px;
         left: 60px;
         right: 60px;
-        height: 480px;
+        height: 540px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        gap: 16px;
+        gap: 18px;
         z-index: 20;
       }
 
@@ -352,6 +372,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       </div>
 
       <div class="media-container" id="mediaCard">
+        <img class="media-blur-bg" src="assets/news-cover.jpg" alt="" />
         <img class="media-img" id="heroImg" src="assets/news-cover.jpg" alt="${escapeHtml(title)}" />
         <div class="media-overlay"></div>
         <div class="fed-tag" id="fedTag">${escapeHtml(fed)}</div>
@@ -376,7 +397,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       tl.fromTo("#brand", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 0.4);
 
       tl.fromTo("#mediaCard", { opacity: 0, scale: 0.92, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.3);
-      tl.fromTo("#heroImg", { scale: 1.0 }, { scale: 1.12, duration: 7.5, ease: "sine.inOut" }, 0.3);
+      tl.fromTo("#heroImg", { scale: 0.98 }, { scale: 1.02, duration: 7.5, ease: "sine.inOut" }, 0.3);
       tl.fromTo("#fedTag", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.6, ease: "back.out(2)" }, 0.7);
 
       tl.fromTo("#headlineText", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.8);

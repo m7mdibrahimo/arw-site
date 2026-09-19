@@ -129,6 +129,36 @@
       var debounceTimer = null;
       var selectedIndex = -1;
 
+      function updateDropdownPosition() {
+        var brand = null;
+        var p = form.parentElement;
+        while (p && !brand && p !== document.body) {
+          brand = p.querySelector('.brand');
+          p = p.parentElement;
+        }
+        if (brand && window.innerWidth > 900) {
+          var brandRect = brand.getBoundingClientRect();
+          var formRect = form.getBoundingClientRect();
+          if (brandRect.right > formRect.right && Math.abs(brandRect.top - formRect.top) < 45) {
+            var offsetRight = Math.round(brandRect.right - formRect.right);
+            dropdown.style.setProperty('right', (-offsetRight) + 'px', 'important');
+            dropdown.style.setProperty('left', '0px', 'important');
+            dropdown.style.setProperty('width', (formRect.width + offsetRight) + 'px', 'important');
+            dropdown.style.setProperty('min-width', (formRect.width + offsetRight) + 'px', 'important');
+            dropdown.style.setProperty('max-width', (formRect.width + offsetRight) + 'px', 'important');
+            return;
+          }
+        }
+        dropdown.style.removeProperty('right');
+        dropdown.style.removeProperty('left');
+        dropdown.style.removeProperty('width');
+        dropdown.style.removeProperty('min-width');
+        dropdown.style.removeProperty('max-width');
+      }
+
+      window.addEventListener('resize', updateDropdownPosition);
+      window.addEventListener('scroll', updateDropdownPosition, { passive: true });
+
       function performSearch(query) {
         var trimmed = query.trim();
         if (!trimmed) {
@@ -137,6 +167,7 @@
           return;
         }
 
+        updateDropdownPosition();
         dropdown.innerHTML = '<div class="instant-search-loading"><div class="instant-search-spinner"></div><span>جاري البحث...</span></div>';
         dropdown.classList.add('open');
 
@@ -225,6 +256,7 @@
       });
 
       input.addEventListener('focus', function() {
+        updateDropdownPosition();
         if (input.value.trim().length > 0) {
           performSearch(input.value);
         }
@@ -364,7 +396,7 @@
     } else {
       btn.classList.remove('bookmarked');
       btn.setAttribute('title', 'حفظ للمشاهدة لاحقاً في المفضلة');
-      if (textEl) textEl.textContent = 'حفظ للمشاهدة';
+      if (textEl) textEl.textContent = 'حفظ للمشاهدة لاحقاً';
     }
   }
 
@@ -381,7 +413,7 @@
     if (!list.length) {
       drawerBody.innerHTML = '<div class="bookmarks-empty">' +
         '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
-        '<p>قائمة المشاهدة لاحقاً فارغة حالياً.<br>اضغط على زر <strong>«حفظ للمشاهدة»</strong> في أي عرض أو خبر للرجوع إليه هنا في أي وقت!</p>' +
+        '<p>قائمة المشاهدة لاحقاً فارغة حالياً.<br>اضغط على زر <strong>«حفظ للمشاهدة لاحقاً»</strong> في أي عرض أو خبر للرجوع إليه هنا في أي وقت!</p>' +
       '</div>';
       return;
     }
