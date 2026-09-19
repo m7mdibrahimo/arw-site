@@ -156,7 +156,7 @@ export async function generateNewsVideo(inputTarget?: string) {
 
   // Feature ribbon chips (2 chips centered)
   const chipsHtml = isShow ? `
-        <div class="ribbon-chip gold">⚡ بجودة عالية</div>
+        <div class="ribbon-chip gold">⚡ جودة عالية</div>
         <div class="ribbon-chip cyan">🎙️ ترجمة حصرية</div>` : `
         <div class="ribbon-chip fire">🔥 خبر عاجل</div>
         <div class="ribbon-chip cyan">⚡ تحديث فوري</div>`;
@@ -362,33 +362,33 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: rgba(15, 23, 42, 0.8);
-        border: 1.5px solid rgba(255, 255, 255, 0.14);
-        padding: 10px 24px;
+        background: rgba(10, 15, 30, 0.88);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        padding: 12px 28px;
         border-radius: 999px;
-        font-size: 24px;
-        font-weight: 800;
-        color: #e2e8f0;
+        font-size: 26px;
+        font-weight: 900;
+        color: #ffffff;
         backdrop-filter: blur(14px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
       }
       .ribbon-chip.fire {
-        background: rgba(239, 68, 68, 0.18);
-        border-color: rgba(239, 68, 68, 0.5);
-        color: #fecaca;
-        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.25);
+        background: rgba(239, 68, 68, 0.25);
+        border-color: rgba(239, 68, 68, 0.7);
+        color: #fee2e2;
+        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
       }
       .ribbon-chip.gold {
-        background: rgba(245, 158, 11, 0.18);
-        border-color: rgba(245, 158, 11, 0.5);
+        background: rgba(245, 158, 11, 0.25);
+        border-color: rgba(245, 158, 11, 0.7);
         color: #fef08a;
-        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.25);
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
       }
       .ribbon-chip.cyan {
-        background: rgba(56, 189, 248, 0.18);
-        border-color: rgba(56, 189, 248, 0.5);
-        color: #bae6fd;
-        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.25);
+        background: rgba(56, 189, 248, 0.25);
+        border-color: rgba(56, 189, 248, 0.7);
+        color: #e0f2fe;
+        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);
       }
 
       /* Titles Area */
@@ -403,32 +403,32 @@ export async function generateNewsVideo(inputTarget?: string) {
         z-index: 20;
       }
       .headline {
-        font-size: 54px;
+        font-size: 56px;
         font-weight: 900;
         line-height: 1.25;
         color: #ffffff;
-        text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 1), 0 2px 6px #000000;
       }
       .secondary-title {
         display: inline-flex;
         align-items: center;
         gap: 14px;
-        font-size: 34px;
-        font-weight: 800;
-        color: #f59e0b;
+        font-size: 36px;
+        font-weight: 900;
+        color: #fbbf24;
         letter-spacing: 0.5px;
         direction: ltr;
         text-align: right;
-        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 1);
       }
       .secondary-title::before {
         content: '';
         display: inline-block;
-        width: 7px;
-        height: 28px;
-        background: #f59e0b;
+        width: 8px;
+        height: 30px;
+        background: #fbbf24;
         border-radius: 4px;
-        box-shadow: 0 0 12px #f59e0b;
+        box-shadow: 0 0 14px #fbbf24;
       }
 
       /* Show Specs / Stats Grid */
@@ -443,31 +443,32 @@ export async function generateNewsVideo(inputTarget?: string) {
         z-index: 20;
       }
       .spec-card {
-        background: rgba(15, 23, 42, 0.78);
-        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        background: rgba(10, 15, 30, 0.88);
+        border: 2px solid rgba(255, 255, 255, 0.18);
         border-radius: 22px;
         padding: 22px 18px;
         text-align: center;
         backdrop-filter: blur(16px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
       }
       .spec-icon {
-        font-size: 34px;
+        font-size: 36px;
         margin-bottom: 8px;
         display: block;
       }
       .spec-label {
-        font-size: 22px;
-        font-weight: 600;
-        color: #94a3b8;
+        font-size: 24px;
+        font-weight: 700;
+        color: #e2e8f0;
         display: block;
       }
       .spec-val {
-        font-size: 26px;
+        font-size: 30px;
         font-weight: 900;
-        color: #f1f5f9;
+        color: #ffffff;
         display: block;
         margin-top: 4px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
       }
 
       /* Summary / Description Glass Card */
@@ -477,12 +478,12 @@ export async function generateNewsVideo(inputTarget?: string) {
         left: 60px;
         right: 60px;
         height: 340px;
-        background: rgba(15, 23, 42, 0.85);
-        border: 1.5px solid rgba(245, 158, 11, 0.3);
+        background: rgba(10, 15, 30, 0.92);
+        border: 2px solid rgba(245, 158, 11, 0.45);
         border-radius: 28px;
         padding: 32px 36px;
         backdrop-filter: blur(20px);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
         z-index: 20;
         display: flex;
         flex-direction: column;
@@ -497,39 +498,40 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-size: 24px;
-        font-weight: 800;
+        font-size: 26px;
+        font-weight: 900;
         color: #f59e0b;
       }
       .summary-pill-live {
-        background: rgba(16, 185, 129, 0.2);
-        border: 1px solid #10b981;
-        color: #6ee7b7;
-        font-size: 20px;
-        font-weight: 800;
-        padding: 4px 16px;
+        background: rgba(16, 185, 129, 0.25);
+        border: 1.5px solid #10b981;
+        color: #a7f3d0;
+        font-size: 22px;
+        font-weight: 900;
+        padding: 6px 18px;
         border-radius: 999px;
       }
       .summary-text {
-        font-size: 30px;
-        font-weight: 600;
-        color: #e2e8f0;
+        font-size: 33px;
+        font-weight: 700;
+        color: #ffffff;
         line-height: 1.55;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 1);
       }
       .summary-footer {
         display: flex;
         align-items: center;
         gap: 12px;
-        font-size: 22px;
-        font-weight: 700;
-        color: #94a3b8;
+        font-size: 24px;
+        font-weight: 800;
+        color: #e2e8f0;
       }
       .summary-dot {
-        width: 8px;
-        height: 8px;
+        width: 9px;
+        height: 9px;
         background: #f59e0b;
         border-radius: 50%;
+        box-shadow: 0 0 8px #f59e0b;
       }
 
       /* Call To Action Bar */
@@ -542,25 +544,25 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(15, 23, 42, 0.92);
+        background: rgba(10, 15, 30, 0.95);
         backdrop-filter: blur(20px);
-        border: 2px solid rgba(56, 189, 248, 0.45);
+        border: 2.5px solid rgba(56, 189, 248, 0.6);
         padding: 0 42px;
         border-radius: 30px;
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.75), 0 0 35px rgba(56, 189, 248, 0.25);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.35);
         z-index: 20;
       }
       .cta-text {
-        font-size: 28px;
-        font-weight: 700;
-        color: #e2e8f0;
+        font-size: 30px;
+        font-weight: 800;
+        color: #ffffff;
       }
       .cta-url {
-        font-size: 34px;
+        font-size: 36px;
         font-weight: 900;
         color: #38bdf8;
         letter-spacing: 0.5px;
-        text-shadow: 0 0 18px rgba(56, 189, 248, 0.55);
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
       }
     </style>
   </head>
