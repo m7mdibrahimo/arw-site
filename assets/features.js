@@ -141,8 +141,10 @@
           var formRect = form.getBoundingClientRect();
           var isSameRow = (brandRect.bottom > formRect.top - 10) && (brandRect.top < formRect.bottom + 10);
           if (brandRect.right > formRect.right + 10 && isSameRow) {
-            var offsetRight = Math.round(brandRect.right - formRect.right);
-            var totalWidth = Math.round(formRect.width + offsetRight);
+            var targetRight = Math.min(brandRect.right, (window.innerWidth || document.documentElement.clientWidth) - 12);
+            var targetLeft = Math.max(formRect.left, 12);
+            var offsetRight = Math.round(targetRight - formRect.right);
+            var totalWidth = Math.round(targetRight - targetLeft);
             dropdown.style.setProperty('right', (-offsetRight) + 'px', 'important');
             dropdown.style.setProperty('left', '0px', 'important');
             dropdown.style.setProperty('width', totalWidth + 'px', 'important');
