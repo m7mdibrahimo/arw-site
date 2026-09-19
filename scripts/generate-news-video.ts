@@ -298,6 +298,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       data-composition-id="main"
       data-start="0"
       data-duration="8"
+      data-fps="30"
       data-width="1080"
       data-height="1920"
     >

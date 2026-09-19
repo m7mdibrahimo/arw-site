@@ -36,12 +36,29 @@ jobs:
             fonts-noto-core fonts-noto-color-emoji fonts-dejavu-core
           fc-cache -f
 
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-cache-${{ runner.os }}-
+
       - name: Install dependencies
-        run: npm ci || npm install
+        run: npm ci --prefer-offline || npm install
+
+      - name: Cache Chrome Headless Shell
+        id: cache-puppeteer
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-chrome-headless-${{ runner.os }}-v1
 
       - name: Install Chrome Headless Shell
         run: |
-          npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path $HOME/.cache/puppeteer
+          if [ "${{ steps.cache-puppeteer.outputs.cache-hit }}" != "true" ]; then
+            npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path $HOME/.cache/puppeteer
+          fi
           SHELL_PATH=$(find $HOME/.cache/puppeteer \( -name "chrome-headless-shell" -o -name "headless_shell" \) -type f | head -1)
           echo "Discovered Chrome Headless Shell at: $SHELL_PATH"
           if [ -n "$SHELL_PATH" ]; then
