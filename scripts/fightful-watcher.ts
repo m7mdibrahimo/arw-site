@@ -655,7 +655,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bZoey\s*Stark\b/gi, "زوي ستارك")
     .replace(/\bShayna\s*Baszler\b/gi, "شاينا بازلر")
     .replace(/\bSonya\s*Deville\b/gi, "سونيا ديفيل")
-    .replace(/\bNatalya\b/gi, "نتاليا")
+    .replace(/\b(?:Natalya|Nattie|Natty)\b/gi, "ناتاليا")
+    .replace(/\bنتاليا\b/g, "ناتاليا")
+    .replace(/\bناتي\b/g, "ناتاليا")
     .replace(/\bRaquel\s*Rodriguez\b/gi, "راكيل رودريغيز")
     .replace(/\bDakota\s*Kai\b/gi, "داكوتا كاي")
     .replace(/\bCandice\s*LeRae\b/gi, "كانديس ليراي")
@@ -941,7 +943,9 @@ export function translateTitleDeterministic(englishTitle: string): string | null
     [/\bRoxanne\s*Perez\b/gi, "روكسان بيريز"],
     [/\bLiv\s*Morgan\b/gi, "ليف مورغان"],
     [/\bSonya\s*Deville\b/gi, "سونيا ديفيل"],
-    [/\bNatalya\b/gi, "نتاليا"],
+    [/\b(?:Natalya|Nattie|Natty)\b/gi, "ناتاليا"],
+    [/\bنتاليا\b/g, "ناتاليا"],
+    [/\bناتي\b/g, "ناتاليا"],
     [/\bRaquel\s*Rodriguez\b/gi, "راكيل رودريغيز"],
     [/\bDakota\s*Kai\b/gi, "داكوتا كاي"],
     [/\bCandice\s*LeRae\b/gi, "كانديس ليراي"],
@@ -1782,6 +1786,7 @@ export async function optimizeTitleForSEOAndCTR(
       - **Deonna Purrazzo** يُكتب بالعربية حصراً: **ديونا بوراتزو** (ممنوع منعاً باتاً كتابة: "ديونا بوراكزو" أو "بورازو").
       - **Tony Schiavone** يُكتب بالعربية حصراً: **توني شيفاني** (ممنوع منعاً باتاً كتابة: "توني كيفاني" أو "سكيافوني").
       - **Paige** يُكتب بالعربية حصراً: **بايج** (ممنوع منعاً باتاً كتابة: "بايد" أو "بيج" أو "بيدج"؛ اسمها المعتمد حصراً هو: **بايج**).
+      - **Natalya / Nattie / Natty** يُكتب بالعربية حصراً: **ناتاليا** (ممنوع منعاً باتاً كتابة: "ناتي" أو "نتاليا"؛ اسمها المعتمد حصراً هو: **ناتاليا**).
       - **Logan Paul** يُكتب بالعربية حصراً: **لوغان بول** (ممنوع منعاً باتاً كتابة: "لغان بول" أو "لوجن بول" أو "لوجان بول"؛ اسمه المعتمد حصراً في الموقع هو: **لوغان بول**).
       - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو.
   - **قاعدة مصطلحات Roster و Free Agency (حاسمة وإلزامية)**:
