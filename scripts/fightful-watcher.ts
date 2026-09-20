@@ -1577,6 +1577,20 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
     .replace(/\s*ولكني\s*STRAIGHT\b/gi, "")
     .replace(/\bSTRAIGHT\b/gi, "");
 
+  // Enforce "Live" retention in show names if present in original title
+  if (originalTitle && /\bLive\b/i.test(originalTitle)) {
+    if (/\bNXT\s+Live\b/i.test(originalTitle)) {
+      cleaned = cleaned.replace(/\bWWE\s+NXT\b(?!\s+Live)/gi, "WWE NXT Live");
+      cleaned = cleaned.replace(/(?<!WWE\s+)\bNXT\b(?!\s+Live)/gi, "NXT Live");
+    } else if (/\bRAW\s+Live\b/i.test(originalTitle)) {
+      cleaned = cleaned.replace(/\bWWE\s+RAW\b(?!\s+Live)/gi, "WWE RAW Live");
+    } else if (/\bSmackDown\s+Live\b/i.test(originalTitle)) {
+      cleaned = cleaned.replace(/\bWWE\s+SmackDown\b(?!\s+Live)/gi, "WWE SmackDown Live");
+    } else if (/\bWWE\s+Live\b/i.test(originalTitle)) {
+      cleaned = cleaned.replace(/\bWWE\b(?!\s+Live|\s+NXT|\s+RAW|\s+SmackDown)/gi, "WWE Live");
+    }
+  }
+
   cleaned = cleaned.replace(/عرض\s+عرض/g, "عرض").trim();
   return cleaned;
 }
