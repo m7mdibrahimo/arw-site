@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "الإعلان عن المواجهات الكاملة لحدث NJPW Destruction In Kobe"
+title: "الإعلان عن بطاقة النزالات الكاملة لعرض NJPW Destruction In Kobe"
 date: 2026-09-20T06:18:04.000+03:00
 source_id: 329460
 source_url: "https://www.fightful.com/wrestling/njpw-destruction-in-kobe-full-lineup-announced/"

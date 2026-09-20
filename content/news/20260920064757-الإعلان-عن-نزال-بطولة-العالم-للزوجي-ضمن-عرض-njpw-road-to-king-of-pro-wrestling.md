@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "الإعلان عن نزال بطولة العالم للزوجي ضمن عرض NJPW Road To King of Pro-Wrestling"
+title: "هيناري وغريت أو خان يواجهان أوسكار ويوتو آيس على بطولة IWGP للزوجي في عرض NJPW Road to King of Pro-Wrestling"
 date: 2026-09-20T06:47:57.000+03:00
 source_id: 329463
 source_url: "https://www.fightful.com/wrestling/iwgp-tag-team-title-bout-set-for-njpw-road-to-king-of-pro-wrestling/"

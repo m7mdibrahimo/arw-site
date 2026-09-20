@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض AAA on Fox (20 سبتمبر 2026): تبعات Triplemania 34 والإعلان عن مباريات Worlds Collide الكبرى"
+title: "نتائج عرض AAA On Fox (19 سبتمبر 2026): تبعات Triplemania 34 والإعلان عن نزالات Worlds Collide الكبرى"
 date: 2026-09-20T06:06:54.000+03:00
 source_id: 329449
 source_url: "https://www.fightful.com/wrestling/aaa-on-fox-results-9-19-triplemania-34-fallout/"
@@ -16,7 +16,7 @@ tags:
 image: /content/images/94qnf4ft7vux4icb.jpg
 layout: post-layout.njk
 ---
-أذاع اتحاد AAA عرض جديدة من عرض AAA on Fox بتاريخ 19 سبتمبر 2026 عبر قناة فوكس أمريكا اللاتينية ومنصة اليوتيوب، وشهد العرض العديد من الأحداث النارية والتبعاعات الساخنة لمهرجان Triplemania 34، إلى جانب الإعلان عن مواجهات كبرى لعرض Worlds Collide.
+قدّم اتحاد AAA عرضاً جديداً من عرض AAA on Fox بتاريخ 19 سبتمبر 2026 عبر قناة فوكس أمريكا اللاتينية ومنصة اليوتيوب، وشهد العرض العديد من الأحداث النارية والتبعاعات الساخنة لعرض Triplemania 34، إلى جانب الإعلان عن نزالات كبرى لعرض Worlds Collide.
 
 **المواجهة الأولى: الفردية**
 
