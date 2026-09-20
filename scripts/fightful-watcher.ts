@@ -200,9 +200,6 @@ function extractEmbeds(html: string): string[] {
   while ((twMatch = twRegex.exec(html)) !== null) {
     const user = twMatch[1];
     const tweetId = twMatch[2];
-    if (/^(?:Fightful|FightfulSelect)$/i.test(user)) {
-      continue;
-    }
     const cleanUrl = `https://x.com/${user}/status/${tweetId}`;
     if (!seenUrls.has(cleanUrl)) {
       seenUrls.add(cleanUrl);
@@ -1209,9 +1206,10 @@ export function translateTitleDeterministic(englishTitle: string): string | null
 
   // ── Wrestling & roster terminology ────────────────────────────────────────
   const TERMS: [RegExp, string][] = [
-    [/\bFree\s+Agency\b/gi, "الوكالة الحرة"],
-    [/\bFree\s+Agent\b/gi, "وكيل حر"],
-    [/\bFree\s+Agents\b/gi, "وكلاء أحرار"],
+    [/\bfrom\s+Free\s+Agency\b/gi, "من كونه مصارعاً حراً"],
+    [/\bFree\s+Agency\b/gi, "المصارعة الحرة بدون عقد"],
+    [/\bFree\s+Agents\b/gi, "مصارعون أحرار"],
+    [/\bFree\s+Agent\b/gi, "مصارع حر"],
     // Roster must come BEFORE championship patterns to avoid "Women's Roster" clash
     [/\b(WWE|AEW|TNA|ROH|NXT|SmackDown|RAW)\s+Roster\b/gi, "قائمة $1"],
     [/\bRoster\b/gi, "القائمة"],
