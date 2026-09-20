@@ -1,5 +1,25 @@
 [
   {
+    "id": 329497,
+    "link": "https://www.fightful.com/wrestling/etu-marcus-mathers-presents-all-i-want-4-results-9-19-avery-styles-vs-joey-janela/",
+    "date": "2026-09-20T13:16:21",
+    "date_gmt": "2026-09-20T17:16:21",
+    "title": {
+      "rendered": "ETU Marcus Mathers Presents All I Want 4 Results (9/19): Avery Styles vs. Joey Janela"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/20131554/Screenshot-2026-09-20-at-1.07.25-PM.png"
+  },
+  {
+    "id": 329496,
+    "link": "https://www.fightful.com/wrestling/stings-son-garrett-borden-competes-in-dark-match-before-9-19-aew-collision/",
+    "date": "2026-09-20T13:15:49",
+    "date_gmt": "2026-09-20T17:15:49",
+    "title": {
+      "rendered": "Sting&#8217;s Son Garrett Borden Competes In Dark Match Before 9/19 AEW Collision"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/20130945/garrett-borden-696x392-1.jpg"
+  },
+  {
     "id": 328807,
     "link": "https://www.fightful.com/wrestling/m-by-elegance-tna-328807/",
     "date": "2026-09-20T13:00:00",
@@ -278,25 +298,5 @@
       "rendered": "Wade Barrett Says He Always Planned To Return To Commentary Once His In-Ring Days Were Over"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19202247/maxresdefault-129.jpg"
-  },
-  {
-    "id": 329379,
-    "link": "https://www.fightful.com/mma/casey-oneill-hits-pop-up-armbar-at-ufc-331/",
-    "date": "2026-09-19T20:05:23",
-    "date_gmt": "2026-09-20T00:05:23",
-    "title": {
-      "rendered": "Casey O&#8217;Neill Hits Pop Up Armbar At UFC 331"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19200505/Screenshot-2026-09-19-at-8.03.11-PM.png"
-  },
-  {
-    "id": 329376,
-    "link": "https://www.fightful.com/wrestling/perry-saturn-details-his-struggles-after-leaving-wwe/",
-    "date": "2026-09-19T20:05:01",
-    "date_gmt": "2026-09-20T00:05:01",
-    "title": {
-      "rendered": "Perry Saturn Details His Struggles After Leaving WWE"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19200327/images-7.jpg"
   }
 ]
