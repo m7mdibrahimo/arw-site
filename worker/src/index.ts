@@ -315,17 +315,24 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
     const errBody = await res.text().catch(() => "");
     throw new Error(`GitHub read failed: ${res.status} ${errBody}`);
   }
-  const data: any = await res.json();
   let state: PublishState;
-  // IMPORTANT: a parse failure here means the file EXISTS on GitHub (we got
-  // a 200) but couldn't be read correctly this attempt — a transient glitch,
-  // not evidence the site has never published anything. Silently falling
-  // back to an empty state here was the actual cause of the "everything
-  // reposts at once" bug: every already-published item (Arabic AND English)
-  // suddenly looked unpublished and got sent again. Only a genuine 404
-  // (handled above) legitimately means "nothing published yet". Any other
-  // read/parse failure must abort this poll instead of guessing "empty".
-  state = JSON.parse(base64DecodeUtf8(data.content.replace(/\n/g, "")));
+  let rawStr = data.content ? base64DecodeUtf8(data.content.replace(/\n/g, "")) : "";
+  if (!rawStr && data.git_url) {
+    const blobRes = await fetch(data.git_url, {
+      headers: {
+        Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "User-Agent": "arw-site-bot",
+      },
+    });
+    if (blobRes.ok) {
+      const blobData: any = await blobRes.json();
+      if (blobData.content) {
+        rawStr = base64DecodeUtf8(blobData.content.replace(/\n/g, ""));
+      }
+    }
+  }
+  state = JSON.parse(rawStr);
   state.telegram = state.telegram || {};
   state.facebook = state.facebook || {};
   state.instagram = state.instagram || {};

@@ -348,10 +348,22 @@ async function githubReadState(): Promise<{ sha: string | null; state: PublishSt
   });
   if (res.status === 404) return { sha: null, state: emptyPublishState() }; // file doesn't exist yet
   if (!res.ok) throw new Error(`GitHub read failed: ${res.status} ${await res.text().catch(() => "")}`);
-  const data = await res.json();
+  const data: any = await res.json();
   let state: PublishState;
   try {
-    state = JSON.parse(Buffer.from(data.content, "base64").toString("utf-8"));
+    let rawStr = data.content ? Buffer.from(data.content, "base64").toString("utf-8") : "";
+    if (!rawStr && data.git_url) {
+      const blobRes = await fetch(data.git_url, {
+        headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, Accept: "application/vnd.github+json" }
+      });
+      if (blobRes.ok) {
+        const blobData: any = await blobRes.json();
+        if (blobData.content) {
+          rawStr = Buffer.from(blobData.content, "base64").toString("utf-8");
+        }
+      }
+    }
+    state = JSON.parse(rawStr);
   } catch (e) {
     state = emptyPublishState();
   }
