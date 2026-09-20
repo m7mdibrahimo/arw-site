@@ -125,6 +125,7 @@ function arabicSlug(str) {
     .normalize('NFC')
     .trim()
     .toLowerCase()
+    .replace(/[؟،؛«»"'`\u060C\u061B\u061F\?\,\;\:\!\(\)\[\]\{\}]/g, '')
     .replace(/[\.\_\/\\]+/g, '-')
     .replace(/\s+/g, '-')
     .replace(/[^\w\u0600-\u06FF\-]/g, '')
