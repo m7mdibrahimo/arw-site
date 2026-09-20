@@ -466,11 +466,19 @@ export async function generateNewsVideo(inputTarget?: string) {
         line-height: ${titleLineHeight};
         color: #ffffff;
         text-shadow: 0 4px 25px rgba(0, 0, 0, 1), 0 2px 8px #000000;
+        white-space: nowrap;
+        overflow: visible;
+        max-width: 100%;
+      }
+      .headline-text-inner {
+        white-space: nowrap;
+        display: inline;
       }
       .headline::before {
         content: '';
         display: inline-block;
         width: 8px;
+        min-width: 8px;
         height: ${barHeight}px;
         background: linear-gradient(180deg, #ef4444, #f59e0b);
         border-radius: 4px;
@@ -761,6 +769,26 @@ export async function generateNewsVideo(inputTarget?: string) {
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
       tl.seek(0);
+
+      // ── Auto-fit Arabic headline to single line ──────────────────────────
+      // Runs immediately (synchronous) so the layout is correct before HyperFrames
+      // captures frames. The container is 1080px wide with 60px padding on each side = 960px.
+      // The ::before pseudo-element bar takes ~24px (8px width + 16px gap).
+      (function fitHeadlineToOneLine() {
+        var el = document.getElementById('headlineText');
+        if (!el) return;
+        var container = el.parentElement || document.getElementById('root');
+        var maxWidth = container ? (container.offsetWidth || 960) - 0 : 960;
+        // Measure usable width: subtract the ::before bar (8px) + gap (16px) + small buffer
+        var usableWidth = maxWidth - 36;
+        var minSize = 26;
+        var currentSize = parseFloat(window.getComputedStyle(el).fontSize) || ${titleFontSize};
+        // Step font size down until scrollWidth fits inside usable width
+        while (el.scrollWidth > usableWidth && currentSize > minSize) {
+          currentSize -= 1;
+          el.style.fontSize = currentSize + 'px';
+        }
+      })();
     </script>
   </body>
 </html>`;
