@@ -2676,7 +2676,7 @@ export default {
             }
           }
 
-          const results: Record<string, { ok: boolean; message: string; error?: string }> = {};
+          const results: Record<string, { ok: boolean; message: string; error?: string; raw?: any }> = {};
 
           // 1. Telegram Video
           if (requestedPlatforms.includes("telegram")) {
@@ -2739,6 +2739,60 @@ export default {
             results,
             videoUrl: fullVideoUrl,
           });
+        } catch (e: any) {
+          return json({ success: false, error: e.message }, 500);
+        }
+      }
+
+      if (path === "/api/admin/clean-duplicate-social" && request.method === "POST") {
+        try {
+          const report: any = { telegram: [], facebook: [] };
+          const pageToken = await getPageAccessToken(env);
+
+          // 1. Fetch recent Facebook posts & photos
+          if (pageToken && env.FACEBOOK_PAGE_ID) {
+            const fbRes = await fetch(
+              `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/published_posts?fields=id,message,created_time&limit=60&access_token=${pageToken}`
+            );
+            const fbData: any = await fbRes.json().catch(() => ({}));
+            const posts = fbData.data || [];
+            report.total_fetched = posts.length;
+            report.raw_samples = posts.slice(0, 3);
+            
+            // Map of cleaned message title to posts
+            const seenMessages: Record<string, any[]> = {};
+            for (const p of posts) {
+              const msg = (p.message || "").trim();
+              const firstLine = msg.split("\n")[0].trim();
+              if (!firstLine || firstLine.length < 10) continue;
+              // Normalize key: remove dates, special chars
+              const norm = firstLine.replace(/[0-9]+/g, "").replace(/[^a-zA-Z\u0600-\u06FF]/g, "").slice(0, 35);
+              if (!seenMessages[norm]) seenMessages[norm] = [];
+              seenMessages[norm].push(p);
+            }
+
+            for (const [key, group] of Object.entries(seenMessages)) {
+              if (group.length > 1) {
+                // Sort chronologically ascending (oldest first)
+                group.sort((a, b) => new Date(a.created_time).getTime() - new Date(b.created_time).getTime());
+                // Delete all older duplicates, keep the latest one!
+                const toDelete = group.slice(0, group.length - 1);
+                for (const item of toDelete) {
+                  try {
+                    const delRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${item.id}?access_token=${pageToken}`, {
+                      method: "DELETE",
+                    });
+                    const delData: any = await delRes.json().catch(() => ({}));
+                    report.facebook.push({ id: item.id, message: item.message.slice(0, 50), deleted: delData.success || false });
+                  } catch (err: any) {
+                    report.facebook.push({ id: item.id, error: err.message });
+                  }
+                }
+              }
+            }
+          }
+
+          return json({ success: true, report });
         } catch (e: any) {
           return json({ success: false, error: e.message }, 500);
         }
