@@ -12,6 +12,12 @@ on:
       - main
     paths:
       - 'content/shows/**'
+  schedule:
+    - cron: '*/30 * * * *'
+
+concurrency:
+  group: generate-reel
+  cancel-in-progress: false
 
 permissions:
   contents: write
