@@ -1,7 +1,6 @@
 ---
 federation: AEW
-title: '"مواجهات نارية في الطريق نحو ويمبلي!".. اكتمال عقد ربع نهائي بطولة AEW
-  Continental Classic'
+title: '"مواجهات نارية في الطريق نحو ويمبلي!".. اكتمال عقد ربع نهائي بطولة AEW Continental Classic'
 date: 2026-08-19T04:25:00.000+03:00
 tags:
   - AEW

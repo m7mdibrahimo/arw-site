@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: لم شمل تاريخي لثنائي The Vaudevillains مع ليفا بيتس (Blue Pants) في عرض
-  ALW القادم
+title: لم شمل تاريخي لثنائي The Vaudevillains مع ليفا بيتس (Blue Pants) في عرض ALW القادم
 date: 2026-08-12T08:54:00.000+03:00
 tags:
   - Blue Pants

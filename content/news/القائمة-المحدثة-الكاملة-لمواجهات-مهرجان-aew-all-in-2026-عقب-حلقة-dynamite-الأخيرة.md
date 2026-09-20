@@ -1,7 +1,6 @@
 ---
 federation: AEW
-title: القائمة المحدثة الكاملة لمواجهات عرض AEW All In 2026 عقب عرض Dynamite
-  الأخيرة
+title: القائمة المحدثة الكاملة لمواجهات عرض AEW All In 2026 عقب عرض Dynamite الأخيرة
 date: 2026-08-13T22:25:00.000+03:00
 tags:
   - AEW

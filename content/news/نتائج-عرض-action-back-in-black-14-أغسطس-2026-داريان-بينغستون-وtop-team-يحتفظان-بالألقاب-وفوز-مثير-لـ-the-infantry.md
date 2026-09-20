@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض ACTION Back In Black (14 أغسطس 2026): داريان بينغستون وTop
-  Team يحتفظان بالألقاب وفوز مثير لـ The Infantry"
+title: "نتائج عرض ACTION Back In Black (14 أغسطس 2026): داريان بينغستون وTop Team يحتفظان بالألقاب وفوز مثير لـ The Infantry"
 date: 2026-08-16T02:55:00.000+03:00
 tags:
   - ACTION Wrestling

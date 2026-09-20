@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: نجمة WWE السابقة نيكي كروس تتحدث عن تجسيد شخصية "Abby The Witch" وتكريم
-  الراحل بري وايت
+title: نجمة WWE السابقة نيكي كروس تتحدث عن تجسيد شخصية "Abby The Witch" وتكريم الراحل بري وايت
 date: 2026-08-13T20:22:00.000+03:00
 tags:
   - Nikki Cross

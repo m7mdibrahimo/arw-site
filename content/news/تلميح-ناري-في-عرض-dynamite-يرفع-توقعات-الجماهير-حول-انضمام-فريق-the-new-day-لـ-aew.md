@@ -1,7 +1,6 @@
 ---
 federation: AEW
-title: تلميح ناري في عرض Dynamite يرفع توقعات الجماهير حول انضمام فريق The New
-  Day لـ AEW
+title: تلميح ناري في عرض Dynamite يرفع توقعات الجماهير حول انضمام فريق The New Day لـ AEW
 date: 2026-08-13T20:09:00.000+03:00
 tags:
   - ذا نيو داي

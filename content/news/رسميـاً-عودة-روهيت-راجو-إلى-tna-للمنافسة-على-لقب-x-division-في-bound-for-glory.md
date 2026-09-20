@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: رسميا.. عودة روهيت راجو إلى TNA للمنافسة على لقب X Division في Bound
-  For Glory
+title: رسميا.. عودة روهيت راجو إلى TNA للمنافسة على لقب X Division في Bound For Glory
 date: 2026-08-28T15:15:00.000+03:00
 tags:
   - TNA

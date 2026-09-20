@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Martes de Arena Mexico (1 سبتمبر 2026): فريق Sky Team
-  يهزم Infernales.. وتألق تيتان وبيرسيفوني"
+title: "نتائج عرض CMLL Martes de Arena Mexico (1 سبتمبر 2026): فريق Sky Team يهزم Infernales.. وتألق تيتان وبيرسيفوني"
 date: 2026-09-03T00:00:00.000+03:00
 tags:
   - CMLL

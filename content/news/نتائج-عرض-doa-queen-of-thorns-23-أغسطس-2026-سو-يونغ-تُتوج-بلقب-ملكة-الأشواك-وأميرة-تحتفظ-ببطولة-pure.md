@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض DOA Queen Of Thorns (23 أغسطس 2026): سو يونغ تتوج بلقب ملكة"
-  الأشواك.. وأميرة تحتفظ ببطولة Pure"
+title: "نتائج عرض DOA Queen Of Thorns (23 أغسطس 2026): سو يونغ تتوج بلقب ملكة الأشواك.. وأميرة تحتفظ ببطولة Pure"
 date: 2026-08-28T19:24:00.000+03:00
 tags:
   - DOA Pro Wrestling

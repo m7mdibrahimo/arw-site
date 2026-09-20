@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: "افتتاحية نارية ل TNA Lockdown: إيه جيه فرانسيس يهزم إيلايجا بعد عودة"
-  وانتقام Expressions"
+title: "افتتاحية نارية ل TNA Lockdown: إيه جيه فرانسيس يهزم إيلايجا بعد عودة وانتقام Expressions"
 date: 2026-08-24T04:52:00.000+03:00
 tags:
   - إيه جيه فرانسيس

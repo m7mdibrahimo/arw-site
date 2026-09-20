@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: '"صدام ثلاثي على اللقب ومعارك طاولات نارية!".. اتحاد Pro Wrestling
-  Symphony يعلن القائمة الكاملة لنزالات Battle of Five Points'
+title: '"صدام ثلاثي على اللقب ومعارك طاولات نارية!".. اتحاد Pro Wrestling Symphony يعلن القائمة الكاملة لنزالات Battle of Five Points'
 date: 2026-08-20T07:42:00.000+03:00
 tags:
   - PWS

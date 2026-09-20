@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض PROGRESS Odyssey Tour: Manchester (6 سبتمبر 2026): مالاكاي
-  بلاك يُتوج ببطولة العالم.. وتألق ليو راش وداياك"
+title: "نتائج عرض PROGRESS Odyssey Tour: Manchester (6 سبتمبر 2026): مالاكاي بلاك يُتوج ببطولة العالم.. وتألق ليو راش وداياك"
 date: 2026-09-07T05:46:00.000+03:00
 tags:
   - PROGRESS Wrestling

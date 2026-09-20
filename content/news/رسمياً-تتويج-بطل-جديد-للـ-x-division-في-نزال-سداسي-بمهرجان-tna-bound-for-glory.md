@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: رسميا.. تتويج بطل جديد لل X-Division في نزال سداسي بمهرجان TNA Bound
-  For Glory
+title: رسميا.. تتويج بطل جديد لل X-Division في نزال سداسي بمهرجان TNA Bound For Glory
 date: 2026-08-27T18:41:00.000+03:00
 tags:
   - ليون سلاتر

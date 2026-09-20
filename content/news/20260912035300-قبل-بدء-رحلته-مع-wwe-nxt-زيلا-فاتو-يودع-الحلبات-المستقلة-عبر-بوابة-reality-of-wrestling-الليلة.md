@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: قبل بدء رحلته مع WWE NXT.. زيلا فاتو يودع الحلبات المستقلة عبر بوابة
-  Reality Of Wrestling الليلة
+title: قبل بدء رحلته مع WWE NXT.. زيلا فاتو يودع الحلبات المستقلة عبر بوابة Reality Of Wrestling الليلة
 date: 2026-09-12T06:53:00.000+03:00
 tags:
   - عروض WWE

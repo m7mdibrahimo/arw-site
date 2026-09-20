@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: إنجاز تاريخي.. M by Elegance تتوج كأول بطلة تلفزيون للسيدات (Knockouts
-  TV) في تاريخ TNA
+title: إنجاز تاريخي.. M by Elegance تتوج كأول بطلة تلفزيون للسيدات (Knockouts TV) في تاريخ TNA
 date: 2026-08-28T15:22:00.000+03:00
 tags:
   - عروض TNA

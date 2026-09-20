@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض ROW Summer Of Champions XII (9 أغسطس 2026): نجوم NXT يقتنصون"
-  الذهب وتتويجات جديدة بالألقاب"
+title: "نتائج عرض ROW Summer Of Champions XII (9 أغسطس 2026): نجوم NXT يقتنصون الذهب وتتويجات جديدة بالألقاب"
 date: 2026-08-11T22:26:00.000+03:00
 tags:
   - ROW

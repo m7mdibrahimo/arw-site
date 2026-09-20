@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: '"تحديد المنافسة الأولى!".. نزال غونتلت ناري في عرض AAA Ola de Calor
-  تمهيداً لمهرجان Triplemanía 34'
+title: '"تحديد المنافسة الأولى!".. نزال غونتلت ناري في عرض AAA Ola de Calor تمهيداً لمهرجان Triplemanía 34'
 date: 2026-08-23T06:02:00.000+03:00
 tags:
   - ري ميستريو

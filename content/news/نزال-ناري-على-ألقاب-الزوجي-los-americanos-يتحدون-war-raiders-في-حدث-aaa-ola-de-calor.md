@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "\"نزال ناري على ألقاب الزوجي!\".. Los Americanos يتحدون وار رايدرز في حدث"
-  AAA Ola de Calor'
+title: "\"نزال ناري على ألقاب الزوجي!\".. Los Americanos يتحدون وار رايدرز في حدث AAA Ola de Calor'
 date: 2026-08-23T06:03:00.000+03:00
 tags:
   - فريق وار رايدرز

@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: بضربة Trick Shot القاضية.. تريك ويليامز يستعيد لقب بطولة الولايات المتحدة
-  في عرض Sunday Night’s Main Event
+title: بضربة Trick Shot القاضية.. تريك ويليامز يستعيد لقب بطولة الولايات المتحدة في عرض Sunday Night’s Main Event
 date: 2026-09-07T05:48:00.000+03:00
 tags:
   - تريك ويليامز

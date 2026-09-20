@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: "جدول مواجهات TNA Lockdown المحدث: تعديل نزال لقب ال X-Division وإضافة"
-  مواجهتين تمهيديتين"
+title: "جدول مواجهات TNA Lockdown المحدث: تعديل نزال لقب ال X-Division وإضافة مواجهتين تمهيديتين"
 date: 2026-08-21T14:26:00.000+03:00
 tags:
   - TNA

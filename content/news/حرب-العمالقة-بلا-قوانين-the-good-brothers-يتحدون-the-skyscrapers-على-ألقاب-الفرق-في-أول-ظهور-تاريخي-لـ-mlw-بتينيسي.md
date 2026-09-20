@@ -1,12 +1,9 @@
 ---
 federation: INDIE
-title: "حرب العمالقة بلا قوانين: ذا جود براذرز يتحدون ذا سكاي سكريبرز على"
-  ألقاب الفرق في أول ظهور تاريخي لـ MLW بتينيسي"
+title: "حرب العمالقة بلا قوانين: ذا جود براذرز يتحدون ذا سكاي سكريبرز على ألقاب الفرق في أول ظهور تاريخي لـ MLW بتينيسي"
 date: 2026-08-16T02:58:00.000+03:00
 tags:
-  - ذا غود براذرز، كارل اندرسون، دوك غالوز، ميستيكو، اوستن اريس، تيدي لونغ، MLW،
-    MLW Fusion، The Good Brothers، Karl Anderson، Doc Gallows، Mistico، Austin
-    Aries، اخبار المصارعة
+  - ذا غود براذرز، كارل اندرسون، دوك غالوز، ميستيكو، اوستن اريس، تيدي لونغ، MLW، MLW Fusion، The Good Brothers، Karl Anderson، Doc Gallows، Mistico، Austin Aries، اخبار المصارعة
 image: /content/images/bggym5qiwpardwgu.jpg
 layout: post-layout.njk
 ---

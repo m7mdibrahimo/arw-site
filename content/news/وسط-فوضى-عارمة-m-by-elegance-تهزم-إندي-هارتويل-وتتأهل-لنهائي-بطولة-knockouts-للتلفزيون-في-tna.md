@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: "وسط فوضى عارمة: M by Elegance تهزم إندي هارتويل وتتأهل لنهائي بطولة
-  Knockouts للتلفزيون في TNA"
+title: "وسط فوضى عارمة: M by Elegance تهزم إندي هارتويل وتتأهل لنهائي بطولة Knockouts للتلفزيون في TNA"
 date: 2026-08-14T08:57:00.000+03:00
 tags:
   - TNA

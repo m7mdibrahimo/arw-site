@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض PROGRESS Odyssey Tour: Edinburgh (4 سبتمبر 2026): كارا نوير
-  يحتفظ باللقب.. ومالاكاي بلاك يسقط دونوفان داياك"
+title: "نتائج عرض PROGRESS Odyssey Tour: Edinburgh (4 سبتمبر 2026): كارا نوير يحتفظ باللقب.. ومالاكاي بلاك يسقط دونوفان داياك"
 date: 2026-09-10T06:24:00.000+03:00
 tags:
   - PROGRESS Wrestling

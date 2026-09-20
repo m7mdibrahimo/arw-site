@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: "تقارير: موعد انطلاق Worlds Collide 2026 تم اختياره عن قصد لسرقة مشاهدي
-  AEW All Out"
+title: "تقارير: موعد انطلاق Worlds Collide 2026 تم اختياره عن قصد لسرقة مشاهدي AEW All Out"
 date: 2026-09-11T08:06:00.000+03:00
 tags:
   - عروض WWE

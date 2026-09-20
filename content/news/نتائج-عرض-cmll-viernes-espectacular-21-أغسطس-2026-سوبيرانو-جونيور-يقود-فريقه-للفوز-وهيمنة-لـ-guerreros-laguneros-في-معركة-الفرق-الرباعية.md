@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Viernes Espectacular (21 أغسطس 2026): سوبيرانو جونيور
-  يقود فريقه للفوز.. وهيمنة لـ Guerreros Laguneros في معركة الفرق الرباعية"
+title: "نتائج عرض CMLL Viernes Espectacular (21 أغسطس 2026): سوبيرانو جونيور يقود فريقه للفوز.. وهيمنة لـ Guerreros Laguneros في معركة الفرق الرباعية"
 date: 2026-08-23T05:18:00.000+03:00
 tags:
   - CMLL

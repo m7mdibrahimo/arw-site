@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض Wrestling Open RI (10 أغسطس 2026): ستيتسون رانش يحتفظ بألقاب
-  الفرق وانتصارات مثيرة"
+title: "نتائج عرض Wrestling Open RI (10 أغسطس 2026): ستيتسون رانش يحتفظ بألقاب الفرق وانتصارات مثيرة"
 date: 2026-08-13T03:06:00.000+03:00
 tags:
   - Beyond Wrestling

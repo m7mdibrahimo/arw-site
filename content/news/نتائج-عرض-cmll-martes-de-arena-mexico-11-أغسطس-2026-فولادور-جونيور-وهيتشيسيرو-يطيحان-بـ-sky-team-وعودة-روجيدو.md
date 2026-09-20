@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Martes de Arena Mexico (11 أغسطس 2026): فولادور جونيور
-  وهيتشيسيرو يطيحان بـ Sky Team وعودة روجيدو"
+title: "نتائج عرض CMLL Martes de Arena Mexico (11 أغسطس 2026): فولادور جونيور وهيتشيسيرو يطيحان بـ Sky Team وعودة روجيدو"
 date: 2026-08-12T10:07:00.000+03:00
 tags:
   - CMLL

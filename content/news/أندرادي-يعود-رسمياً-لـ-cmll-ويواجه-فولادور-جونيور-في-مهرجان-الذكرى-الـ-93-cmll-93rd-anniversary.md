@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: أندرادي يعود رسميا ل CMLL ويواجه فولادور جونيور في عرض الذكرى ال 93
-  (CMLL 93rd Anniversary)
+title: أندرادي يعود رسميا ل CMLL ويواجه فولادور جونيور في عرض الذكرى ال 93 (CMLL 93rd Anniversary)
 date: 2026-08-13T05:57:00.000+03:00
 tags:
   - أندرادي

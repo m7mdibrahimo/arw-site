@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: "رسميا.. الإعلان عن مواجهة سداسية نارية للسيدات في حدث Sunday Night's"
-  Main Event
+title: "رسميا.. الإعلان عن مواجهة سداسية نارية للسيدات في حدث Sunday Night's Main Event
 date: 2026-08-29T05:17:00.000+03:00
 tags:
   - عروض WWE

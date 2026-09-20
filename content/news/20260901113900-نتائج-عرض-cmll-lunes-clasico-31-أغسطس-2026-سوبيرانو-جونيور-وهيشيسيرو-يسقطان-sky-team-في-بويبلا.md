@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Lunes Clásico (31 أغسطس 2026): سوبيرانو جونيور وهيشيسيرو
-  يسقطان Sky Team في بويبلا"
+title: "نتائج عرض CMLL Lunes Clásico (31 أغسطس 2026): سوبيرانو جونيور وهيشيسيرو يسقطان Sky Team في بويبلا"
 date: 2026-09-01T14:39:00.000+03:00
 tags:
   - CMLL

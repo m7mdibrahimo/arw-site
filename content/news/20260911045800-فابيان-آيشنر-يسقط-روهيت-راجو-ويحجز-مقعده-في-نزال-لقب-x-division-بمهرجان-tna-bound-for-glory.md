@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: فابيان آيشنر يسقط روهيت راجو ويحجز مقعده في نزال لقب X Division بمهرجان
-  TNA Bound For Glory
+title: فابيان آيشنر يسقط روهيت راجو ويحجز مقعده في نزال لقب X Division بمهرجان TNA Bound For Glory
 date: 2026-09-11T07:58:00.000+03:00
 tags:
   - عروض TNA

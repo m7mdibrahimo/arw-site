@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Domingo Familiar (9 أغسطس 2026): ميستيكو وبانديدو يتألقان
-  في أرينا المكسيك"
+title: "نتائج عرض CMLL Domingo Familiar (9 أغسطس 2026): ميستيكو وبانديدو يتألقان في أرينا المكسيك"
 date: 2026-08-10T14:53:00.000+03:00
 tags:
   - CMLL

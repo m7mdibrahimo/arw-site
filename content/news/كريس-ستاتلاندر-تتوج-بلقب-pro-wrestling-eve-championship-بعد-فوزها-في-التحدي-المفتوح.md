@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: كريس ستاتلاندر تتوج بلقب Pro-Wrestling EVE Championship بعد فوزها في
-  التحدي المفتوح
+title: كريس ستاتلاندر تتوج بلقب Pro-Wrestling EVE Championship بعد فوزها في التحدي المفتوح
 date: 2026-08-29T02:08:00.000+03:00
 tags:
   - كريس ستاتلاندر

@@ -1,7 +1,6 @@
 ---
 federation: AEW
-title: رسميا.. كريس جيريكو ومارك ديفيس ينضمان إلى نزال Casino Gauntlet في
-  مهرجان AEW All In
+title: رسميا.. كريس جيريكو ومارك ديفيس ينضمان إلى نزال Casino Gauntlet في مهرجان AEW All In
 date: 2026-08-27T06:09:00.000+03:00
 tags:
   - كريس جيريكو

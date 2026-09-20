@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: '"تدخل غامض وخطة ماكرة!".. جاكسون دريك وفريق Vanity Project يقتنصون فرص
-  المنافسة على ألقاب NXT في حدث Heatwave'
+title: '"تدخل غامض وخطة ماكرة!".. جاكسون دريك وفريق Vanity Project يقتنصون فرص المنافسة على ألقاب NXT في حدث Heatwave'
 date: 2026-08-19T05:20:00.000+03:00
 tags:
   - WWE NXT

@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض MLW Kings of Colosseum (6 سبتمبر 2026): كيلر كروس يدافع عن لقب
-  العالم.. وإعلان قرعة Opera Cup"
+title: "نتائج عرض MLW Kings of Colosseum (6 سبتمبر 2026): كيلر كروس يدافع عن لقب العالم.. وإعلان قرعة Opera Cup"
 date: 2026-09-06T11:03:00.000+03:00
 tags:
   - MLW

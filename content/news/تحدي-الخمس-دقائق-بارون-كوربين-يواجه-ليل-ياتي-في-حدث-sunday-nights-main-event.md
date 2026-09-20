@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: "\"تحدي الخمس دقائق!\".. بارون كوربين يواجه ليل ياتي في حدث Sunday
-  Night's Main Event"
+title: "\"تحدي الخمس دقائق!\".. بارون كوربين يواجه ليل ياتي في حدث Sunday Night's Main Event"
 date: 2026-08-22T07:12:00.000+03:00
 tags:
   - بارون كوربين

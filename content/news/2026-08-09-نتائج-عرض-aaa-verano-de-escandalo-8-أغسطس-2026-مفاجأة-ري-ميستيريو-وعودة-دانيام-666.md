@@ -1,7 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض AAA Verano de Escandalo (8 أغسطس 2026): مفاجأة ري ميستيريو
-  وعودة دانيام 666"
+title: "نتائج عرض AAA Verano de Escandalo (8 أغسطس 2026): مفاجأة ري ميستيريو وعودة دانيام 666"
 date: 2026-08-09T23:34:00.000+03:00
 tags:
   - Lucha Libre AAA

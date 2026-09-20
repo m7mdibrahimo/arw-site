@@ -1,7 +1,6 @@
 ---
 federation: WWE
-title: روكسان بيريز تقتنص فرصة العمر وتتأهل للمنافسة على لقب AAA Reina de Reinas
-  في مهرجان WWE Worlds Collide
+title: روكسان بيريز تقتنص فرصة العمر وتتأهل للمنافسة على لقب AAA Reina de Reinas في مهرجان WWE Worlds Collide
 date: 2026-09-12T06:53:00.000+03:00
 tags:
   - روكسان بيريز

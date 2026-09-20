@@ -1,7 +1,6 @@
 ---
 federation: ROH
-title: رسميا.. صراع رباعي على لقب السيدات ومواجهة قوية لبطولة الفرق في ROH
-  Death Before Dishonor
+title: رسميا.. صراع رباعي على لقب السيدات ومواجهة قوية لبطولة الفرق في ROH Death Before Dishonor
 date: 2026-08-21T06:14:00.000+03:00
 tags:
   - رينغ أوف هونر

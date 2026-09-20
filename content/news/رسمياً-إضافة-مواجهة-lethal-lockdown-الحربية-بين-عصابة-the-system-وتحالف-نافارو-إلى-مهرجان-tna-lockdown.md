@@ -1,7 +1,6 @@
 ---
 federation: TNA
-title: "رسميا: إضافة مواجهة Lethal Lockdown الحربية بين عصابة ذا سيستم وتحالف"
-  نافارو إلى مهرجان TNA Lockdown"
+title: "رسميا: إضافة مواجهة Lethal Lockdown الحربية بين عصابة ذا سيستم وتحالف نافارو إلى مهرجان TNA Lockdown"
 date: 2026-08-14T08:59:00.000+03:00
 tags:
   - TNA
