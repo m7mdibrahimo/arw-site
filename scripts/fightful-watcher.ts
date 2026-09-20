@@ -2722,21 +2722,18 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   console.log(`[Watcher] Generated Arabic Title (AI): "${rewritten.title}"`);
 
   // 2b. Override AI title with deterministic translation if confidence is high enough
-  // The deterministic translator is 100% consistent and hallucination-free.
-  // It handles the vast majority of news headlines (roster moves, returns, signings, etc.)
-  // and only falls back to the AI title when the headline is too complex or idiomatic.
-  if (!isShowResultsArticle(rawTitle, plainText)) {
+  // Rely on Gemini for natural, fluent, human Arabic titles that faithfully reflect Fightful.
+  // Use deterministic translation strictly as a fallback if AI title is missing or failed.
+  if (!rewritten.title || rewritten.title.trim().length < 5) {
     const deterministicTitle = translateTitleDeterministic(rawTitle);
     if (deterministicTitle) {
-      const cleaned = cleanHeadlineClichés(sanitizeWrestlingTerms(deterministicTitle), sourceDate, rawTitle);
-      if (cleaned && cleaned.length > 5) {
-        rewritten.title = cleaned;
-        console.log(`[Watcher] ✅ Deterministic Title Used: "${rewritten.title}"`);
-      }
-    } else {
-      console.log(`[Watcher] ⚠️ Deterministic translation low-confidence, keeping AI title: "${rewritten.title}"`);
+      rewritten.title = deterministicTitle;
+      console.log(`[Watcher] ⚠️ AI title missing, fallback to deterministic: "${rewritten.title}"`);
     }
   }
+
+  // Ensure title is sanitized, names glossary applied, and clichés cleaned
+  rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(applyNamesGlossary(rewritten.title)), sourceDate, rawTitle);
 
   console.log(`[Watcher] Final Title: "${rewritten.title}"`);
   console.log(`[Watcher] Federation: ${rewritten.federation} | Tags (${rewritten.tags.length}): ${rewritten.tags.join(", ")}`);
