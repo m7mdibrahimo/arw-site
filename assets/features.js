@@ -579,58 +579,6 @@
   }
 
   /* ==========================================================================
-     3. Interactive Spoiler Blocker (حماية الحرق)
-     ========================================================================== */
-  function initSpoilerBlocker() {
-    var spoilers = document.querySelectorAll('.spoiler-result');
-    if (!spoilers.length) return;
-
-    var postBody = document.querySelector('.post-body');
-    if (!postBody) return;
-
-    // Check if control banner already exists
-    if (!document.getElementById('arwSpoilerBanner')) {
-      var banner = document.createElement('div');
-      banner.className = 'spoiler-control-banner';
-      banner.id = 'arwSpoilerBanner';
-      banner.innerHTML = '<div class="spoiler-banner-info">' +
-        '<span>🛡️</span>' +
-        '<span>حماية حرق النتائج مفعلة (' + spoilers.length + ' نزال)</span>' +
-      '</div>' +
-      '<button class="spoiler-banner-btn" id="arwSpoilerToggleAll" type="button">' +
-        '<span>كشف جميع النتائج</span>' +
-      '</button>';
-
-      postBody.insertBefore(banner, postBody.firstChild);
-
-      var allRevealed = false;
-      var toggleBtn = document.getElementById('arwSpoilerToggleAll');
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
-          allRevealed = !allRevealed;
-          spoilers.forEach(function(sp) {
-            if (allRevealed) {
-              sp.classList.add('revealed');
-            } else {
-              sp.classList.remove('revealed');
-            }
-          });
-          toggleBtn.querySelector('span').textContent = allRevealed ? 'إخفاء جميع النتائج' : 'كشف جميع النتائج';
-        });
-      }
-    }
-
-    // Individual click to toggle reveal
-    spoilers.forEach(function(spoiler) {
-      spoiler.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        this.classList.toggle('revealed');
-      });
-    });
-  }
-
-  /* ==========================================================================
      Helper Utilities
      ========================================================================== */
   function escapeHtml(str) {
@@ -649,7 +597,6 @@
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
-    initSpoilerBlocker();
   }
 
   if (document.readyState === 'loading') {

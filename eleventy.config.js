@@ -472,16 +472,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("autoLinkWrestlingStars", autoLinkWrestlingStars);
 
   // --------------------------------------------------------------------------
-  // 2. حماية الحرق للنتائج والنزالات (Smart Interactive Spoiler Blocker)
+  // --------------------------------------------------------------------------
+  // 2. حماية الحرق ملغية تماماً بناءً على طلب المستخدم
   // --------------------------------------------------------------------------
   const wrapSpoilers = function(contentHtml) {
-    if (!contentHtml || typeof contentHtml !== "string") return contentHtml;
-    const re = /(🏆\s*(?:<strong[^>]*>)?\s*(?:الفائز(?:ة|ون|ان|تان)?)\s*(?::\s*<\/strong>|<\/strong>\s*:|:|<\/strong>)\s*)([\s\S]*?)(?=<\/li>|<\/p>|<br\s*\/?>|$)/gi;
-    return contentHtml.replace(re, (match, prefix, winnerContent) => {
-      const trimmed = winnerContent.trim();
-      if (!trimmed) return match;
-      return prefix + `<span class="spoiler-result" title="اضغط لكشف الفائز" data-spoiler="true"><span class="spoiler-inner">${trimmed}</span><span class="spoiler-badge">👁️ كشف الفائز</span></span>`;
-    });
+    return contentHtml;
   };
   eleventyConfig.addFilter("wrapSpoilers", wrapSpoilers);
   eleventyConfig.addNunjucksFilter("wrapSpoilers", wrapSpoilers);
