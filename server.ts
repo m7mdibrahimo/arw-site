@@ -757,18 +757,10 @@ const MIN_SOCIAL_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes safe interval
 function crossPostToFacebookAndInstagram(key: string, item: { title: string; text?: string; fullText?: string; url: string; image?: string; kind?: string }) {
   const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : SITE_ORIGIN + item.image) : undefined;
 
-  // ── Shows get a dedicated video Reel via generate-reel.yml workflow ─────
-  // Posting a plain image here for 'show' kind would duplicate the content
-  // (once as a photo post from this server, once as a Reel from GitHub Actions).
-  // So we skip Facebook & Instagram for shows entirely — the Reel workflow
-  // calls /api/videos/publish-social and handles FB Reel + Story + IG Reel + Story.
-  if (item.kind === "show" || item.kind === "shows") {
-    console.log(`[Server] ⏭️ Skipping plain FB/IG image post for show "${item.title}" — Reel will be published by generate-reel workflow.`);
-    // Still mark as sent so the watcher doesn't retry plain posting
-    if (!facebookSentMap[key]) facebookSentMap[key] = Date.now();
-    if (!instagramSentMap[key]) instagramSentMap[key] = Date.now();
-    return;
-  }
+  // ── Shows now get BOTH:
+  //    1. A regular image post (this server) → FB + IG as normal post
+  //    2. A Reel + Story (show-reel-monitor.yml workflow) → FB Reel + FB Story + IG Reel + IG Story
+  // Both systems are independent — no conflict, no duplication (different post types).
 
   if (!facebookSentMap[key] && !fbInFlight.has(key)) {
     fbInFlight.add(key);

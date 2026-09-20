@@ -26,6 +26,19 @@ const NEWS_DIR = path.join(process.cwd(), "content", "news");
 if (!fs.existsSync(IMAGES_DIR)) fs.mkdirSync(IMAGES_DIR, { recursive: true });
 if (!fs.existsSync(NEWS_DIR)) fs.mkdirSync(NEWS_DIR, { recursive: true });
 
+// ── Load wrestler name glossary (2000+ names from all federations) ──────────
+// File: scripts/wrestler-names.json — edit this file to add/fix any name.
+// Sorted by English name length descending so longer names match first.
+const NAMES_GLOSSARY_PATH = path.join(process.cwd(), "scripts", "wrestler-names.json");
+let WRESTLER_NAMES_MAP: Record<string, string> = {};
+try {
+  const raw = fs.readFileSync(NAMES_GLOSSARY_PATH, "utf-8");
+  WRESTLER_NAMES_MAP = JSON.parse(raw);
+  console.log(`[Names] ✅ Loaded ${Object.keys(WRESTLER_NAMES_MAP).length} name entries from wrestler-names.json`);
+} catch (e) {
+  console.warn("[Names] ⚠️ Could not load wrestler-names.json — falling back to built-in list:", e);
+}
+
 // Site Publishing Policy:
 // If false (default), all news articles are published to the website archive/news section,
 // while social media platforms remain 100% clean and spoiler-free via server.ts.
@@ -261,6 +274,43 @@ function removeTashkeel(text: string): string {
     .replace(/\u0640/g, "");
 }
 
+/**
+ * Applies the full wrestler-names.json glossary to any text.
+ * Replaces English names/terms with their correct Arabic translations.
+ * Works on titles, article body, tags — everything.
+ * 
+ * This is the permanent solution: add any name to wrestler-names.json
+ * and it automatically applies everywhere without touching the code.
+ */
+export function applyNamesGlossary(text: string): string {
+  if (!text || typeof text !== "string") return text;
+  if (Object.keys(WRESTLER_NAMES_MAP).length === 0) return text;
+
+  let result = text;
+
+  // Apply each name replacement (longest first, already sorted in JSON)
+  for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
+    if (!english || !arabic || english === arabic) continue;
+    // Skip federation abbreviations AND show names — they MUST stay in English
+    const KEEP_ENGLISH = /^(WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|MLP|UFC|NXT|RAW|SmackDown|iMPACT|Dynamite|Collision|Rampage|PPV|WrestleMania|SummerSlam|Survivor Series|Royal Rumble|Hell in a Cell|Elimination Chamber|Money in the Bank|Night of Champions|Clash at the Castle|TripleMania|All Out|All In|Full Gear|Double or Nothing|Revolution|Forbidden Door|WrestleDream|Grand Slam|Worlds Collide|Payback|Backlash|NXT TakeOver|War Games|Battleground|Vengeance Day|Stand and Deliver|Northern Rising|Mayhem|Fusion|Rebellion)$/i;
+    if (KEEP_ENGLISH.test(english.trim())) continue;
+    // Also skip if the Arabic value starts with Arabic transliteration of federation name 
+    // (دبليو دبليو إي, إيه إي دبليو, etc.) — sanitizeWrestlingTerms handles these separately
+    if (/دبليو دبليو إي|إيه إي دبليو|تي إن إيه|آر أو إتش|راو\b|سماك داون|داينامايت|كوليجن|رامباج|إمباكت/.test(arabic)) continue;
+
+    try {
+      // Escape special regex characters in the English name
+      const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const pattern = new RegExp(`\\b${escaped}\\b`, "gi");
+      result = result.replace(pattern, arabic);
+    } catch (e) {
+      // Skip if regex fails (unusual characters)
+    }
+  }
+
+  return result;
+}
+
 // Convert any occurrence of 'حلقة' to 'عرض', enforce English promotion/show names, scrub third-party branding, and strip all tashkeel
 export function sanitizeWrestlingTerms(text: string): string {
   if (!text) return text;
@@ -299,6 +349,23 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/WWE\s+WWE/g, "WWE")
     .replace(/AEW\s+AEW/g, "AEW")
     .replace(/TNA\s+TNA/g, "TNA")
+
+    // Protect "Live" — always stays in English in show names (WWE NXT Live, WWE Live, etc.)
+    // Note: \b word boundaries don't work between ASCII (NXT) and Arabic (الحي), so no \b here
+    .replace(/WWE\s+NXT\s+الحي/g, "WWE NXT Live")
+    .replace(/WWE\s+NXT\s+المباشر/g, "WWE NXT Live")
+    .replace(/NXT\s+الحي/g, "NXT Live")
+    .replace(/NXT\s+المباشر/g, "NXT Live")
+    .replace(/WWE\s+RAW\s+الحي/g, "WWE RAW Live")
+    .replace(/WWE\s+RAW\s+المباشر/g, "WWE RAW Live")
+    .replace(/WWE\s+الحي/g, "WWE Live")
+    .replace(/WWE\s+المباشر(?!\s+على)/g, "WWE Live")
+    .replace(/AEW\s+الحي/g, "AEW Live")
+    .replace(/AEW\s+المباشر/g, "AEW Live")
+    .replace(/TNA\s+الحي/g, "TNA Live")
+    .replace(/TNA\s+المباشر/g, "TNA Live")
+    .replace(/ROH\s+الحي/g, "ROH Live")
+    .replace(/ROH\s+المباشر/g, "ROH Live")
 
     // 3. Strict show terminology (strictly replace 'حلقة' and 'مهرجان' with 'عرض' / 'عروض')
     .replace(arWord("مهرجانات"), "عروض")
@@ -387,6 +454,14 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("قسم\\s+المصارعة\\s+النسائية"), "قسم السيدات")
     .replace(arWord("المصارعات\\s+النساء"), "مصارعات قسم السيدات")
     .replace(arWord("مصارعات\\s+النساء"), "مصارعات قسم السيدات")
+
+    // 5.2.1 Roster & Free Agency terminology
+    .replace(/\bFree\s+Agents?\b/gi, "الوكالة الحرة")
+    .replace(/\bFree\s+Agency\b/gi, "الوكالة الحرة")
+    .replace(/\bRoster\b/gi, "القائمة")
+    .replace(arWord("(?:قائمة\\s+)?(?:الوكلاء\\s+الأحرار|وكلاء\\s+أحرار|الوكلاء\\s+الحرة|وكلاء\\s+حرة)"), "الوكالة الحرة")
+    .replace(arWord("(?:قائمة\\s+)?(?:وكيل\\s+حر|وكلاء\\s+حرين)"), "الوكالة الحرة")
+    .replace(arWord("روستر"), "قائمة")
 
     // 5.3 Active & Legendary Wrestlers (English to Arabic + Arabic Auto-Correction)
     .replace(/\bSeth\s+"?Freakin"?\s+Rollins\b/gi, "سيث رولينز")
@@ -562,6 +637,16 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bToni\s*Storm\b/gi, "توني ستورم")
     .replace(/\bMariah\s*May\b/gi, "ماريا ماي")
     .replace(/\bSaraya\b/gi, "سارايا")
+    .replace(/\bPaige\b/gi, "بايج")
+    .replace(arWord("(?:بايد|بيد|بيج|بيدج)"), "بايج")
+    // Rush/Lio Rush — الأمريكي ليو راش، المكسيكي روش
+    // نحمي "Lio Rush / ليو راش" بـ placeholder أولاً عشان replace Rush لا يأثر عليهم
+    .replace(/\bLio\s*Rush\b/gi, "__LIO_RUSH__")
+    .replace(arWord("ليو\\s*راش"), "__LIO_RUSH__")
+    .replace(arWord("ليو\\s*روش"), "__LIO_RUSH__")   // autocorrect للغلط
+    .replace(/\bRush\b/gi, "روش")                    // Rush المكسيكي → روش
+    .replace(arWord("راش"), "روش")                   // راش → روش
+    .replace(/__LIO_RUSH__/g, "ليو راش")             // استرجاع ليو راش الصح
     .replace(/\bThunder\s*Rosa\b/gi, "ثاندر روزا")
     .replace(/\bBayley\b/gi, "بايلي")
     .replace(/\bNaomi\b/gi, "ناومي")
@@ -732,13 +817,651 @@ export function sanitizeAIWatermarks(text: string): string {
     // 3. Normalize curly / smart quotes to standard clean quotes
     .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
     .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
-    // 4. Remove typical AI-generated robotic fillers
+    // 4. Remove non-Arabic / non-Latin scripts that AI occasionally halluccinates
+    //    (Bengali, Devanagari, Tamil, Telugu, Gujarati, Kannada, Malayalam, Thai, CJK, etc.)
+    //    Keep: Arabic (0600-06FF), Latin (0020-024F), numbers, punctuation, emojis
+    .replace(/[\u0980-\u09FF]/g, "")   // Bengali / Assamese
+    .replace(/[\u0900-\u097F]/g, "")   // Devanagari (Hindi)
+    .replace(/[\u0B80-\u0BFF]/g, "")   // Tamil
+    .replace(/[\u0C00-\u0C7F]/g, "")   // Telugu
+    .replace(/[\u0A80-\u0AFF]/g, "")   // Gujarati
+    .replace(/[\u0C80-\u0CFF]/g, "")   // Kannada
+    .replace(/[\u0D00-\u0D7F]/g, "")   // Malayalam
+    .replace(/[\u0E00-\u0E7F]/g, "")   // Thai
+    .replace(/[\u4E00-\u9FFF]/g, "")   // CJK (Chinese/Japanese/Korean)
+    .replace(/[\u3040-\u30FF]/g, "")   // Hiragana / Katakana
+    .replace(/[\uAC00-\uD7AF]/g, "")   // Korean Hangul
+    .replace(/[\u0400-\u04FF]/g, "")   // Cyrillic (Russian)
+    .replace(/[\u0370-\u03FF]/g, "")   // Greek
+    .replace(/[\u0590-\u05FF]/g, "")   // Hebrew
+    // 5. Clean up "---" separators that AI added garbage chars to (e.g. "---ক্ষার")
+    .replace(/^---[\s\S]{0,30}$/gm, "---")
+    // 6. Remove typical AI-generated robotic fillers
     .replace(/(?:في\s+الختام|ختاماً|ختاما|في\s+نهاية\s+المطاف|من\s+الجدير\s+بالذكر\s+أن|جدير\s+بالذكر\s+أن|تجدر\s+الإشارة\s+إلى\s+أن|تجدر\s+الإشارة\s+بان|تجدر\s+الاشارة\s+الى\s+ان)\s*[:،,]?\s*/gi, "")
-    // 5. Clean up multiple horizontal spaces (except newlines)
+    // 7. Clean up multiple horizontal spaces (except newlines)
     .replace(/[^\S\r\n]+/g, " ")
-    // 6. Clean up excessive blank lines (max 2 newlines)
+    // 8. Clean up excessive blank lines (max 2 newlines)
     .replace(/(\r\n|\r|\n){3,}/g, "\n\n")
     .trim();
+}
+
+/**
+ * Deterministic English-to-Arabic title translator for wrestling headlines.
+ * Uses a fixed dictionary — zero AI, zero hallucinations, 100% consistent.
+ * Covers wrestler names, action verbs, wrestling terms, and structural words.
+ * Federations and show names are always preserved in English.
+ *
+ * Returns the translated title, or null if translation confidence is too low
+ * (i.e. too many untranslated English words remain after processing).
+ */
+export function translateTitleDeterministic(englishTitle: string): string | null {
+  if (!englishTitle || typeof englishTitle !== "string") return null;
+
+  // ── Protected zones: federation/show names stay in English ──────────────
+  const PROTECTED_PATTERNS = [
+    /\bWWE(?:\s+(?:RAW|SmackDown|NXT|Main\s+Event|Saturday\s+Night['']s\s+Main\s+Event|Superstars))?\b/gi,
+    /\bAEW(?:\s+(?:Dynamite|Collision|Rampage|Elevation|Dark|All\s+In|All\s+Out|Double\s+or\s+Nothing|Revolution|Dynasty|Full\s+Gear|WrestleDream|Forbidden\s+Door|Grand\s+Slam))?\b/gi,
+    /\bTNA(?:\s+iMPACT)?\b/gi,
+    /\bROH(?:\s+TV)?\b/gi,
+    /\bNJPW(?:\s+(?:Destruction|Dominion|King\s+of\s+Pro\s+Wrestling|Road\s+to\s+[A-Z]))?\b/gi,
+    /\bMLW\b/gi,
+    /\bAAA(?:\s+(?:On\s+FOX|TripleMania|Triplemania))?\b/gi,
+    /\bCMLL\b/gi,
+    /\bGCW\b/gi,
+    /\bMLP(?:\s+Northern\s+Rising)?\b/gi,
+    /\bUFC(?:\s+\d+)?\b/gi,
+    /\bWrestleMania(?:\s+\d+)?\b/gi,
+    /\bRoyal\s+Rumble\b/gi,
+    /\bSummerSlam\b/gi,
+    /\bSurvivor\s+Series\b/gi,
+    /\bMoney\s+In\s+The\s+Bank\b/gi,
+    /\bElimination\s+Chamber\b/gi,
+    /\bPayback\b/gi,
+    /\bBacklash\b/gi,
+    /\bNight\s+of\s+Champions\b/gi,
+    /\bClash\s+(?:at|of)\s+the\s+Castle\b/gi,
+    /\bTripleMania\s*\d*\b/gi,
+    /\bAll\s+Out\b/gi,
+    /\bAll\s+In\b/gi,
+    /\bDouble\s+or\s+Nothing\b/gi,
+    /\bFull\s+Gear\b/gi,
+    /\bWrestleDream\b/gi,
+    /\bForbidden\s+Door\b/gi,
+    /\bGrand\s+Slam\b/gi,
+    /\bWorlds\s+Collide\b/gi,
+    /\bNXT\s+(?:TakeOver|Stand\s+and\s+Deliver|War\s+Games|Vengeance\s+Day|Battleground)?\b/gi,
+    /\bDestruction\s+in\s+\w+\b/gi,
+    /\bRoad\s+to\s+King\s+of\s+Pro\s+Wrestling\b/gi,
+    /\bTailgate\s+Brawl\b/gi,
+    // "Live" always stays in English — WWE NXT Live, WWE Live, etc.
+    /\bLive\s+(?:Results?|Event|Show|Coverage|Report|Updates?)\b/gi,
+    /\bLive\b/gi,
+  ];
+
+  const protectedTokens: string[] = [];
+  let shielded = englishTitle;
+  for (const pat of PROTECTED_PATTERNS) {
+    shielded = shielded.replace(pat, (match) => {
+      protectedTokens.push(match);
+      return `__PT_${protectedTokens.length - 1}__`;
+    });
+  }
+
+  // ── Wrestler / personality name dictionary (English → Arabic) ────────────
+  const NAMES: [RegExp, string][] = [
+    [/\bSeth\s+"?Freakin"?\s+Rollins\b/gi, "سيث رولينز"],
+    [/\bSeth\s*Rollins\b/gi, "سيث رولينز"],
+    [/\bCody\s*Rhodes\b/gi, "كودي رودز"],
+    [/\bRoman\s*Reigns\b/gi, "رومان رينز"],
+    [/\bJohn\s*Cena\b/gi, "جون سينا"],
+    [/\bDrew\s*McIntyre\b/gi, "درو ماكنتاير"],
+    [/\bGunther\b/gi, "غونتر"],
+    [/\bRandy\s*Orton\b/gi, "راندي اورتون"],
+    [/\bDamian\s*Priest\b/gi, "داميان بريست"],
+    [/\bSami\s*Zayn\b/gi, "سامي زين"],
+    [/\bKevin\s*Owens\b/gi, "كيفين أوينز"],
+    [/\bBecky\s*Lynch\b/gi, "بيكي لينش"],
+    [/\bRhea\s*Ripley\b/gi, "ريا ريبلي"],
+    [/\bCharlotte\s*Flair\b/gi, "شارلوت فلير"],
+    [/\bMercedes\s*Mon[eé]\b/gi, "مرسيدس موني"],
+    [/\bPaige\b/gi, "بايج"],
+    [/\bSaraya\b/gi, "سارايا"],
+    [/\bBayley\b/gi, "بايلي"],
+    [/\bNaomi\b/gi, "ناومي"],
+    [/\bNia\s*Jax\b/gi, "نيا جاكس"],
+    [/\bChelsea\s*Green\b/gi, "تشيلسي غرين"],
+    [/\bPiper\s*Niven\b/gi, "بايبر نيفين"],
+    [/\bLyra\s*Valkyria\b/gi, "لايرا فالكيريا"],
+    [/\bZoey\s*Stark\b/gi, "زوي ستارك"],
+    [/\bShayna\s*Baszler\b/gi, "شاينا بازلر"],
+    [/\bTiffany\s*Stratton\b/gi, "تيفاني ستراتون"],
+    [/\bJade\s*Cargill\b/gi, "جايد كارجيل"],
+    [/\bBianca\s*Belair\b/gi, "بيانكا بيلير"],
+    [/\bIyo\s*Sky\b/gi, "إيو سكاي"],
+    [/\bKairi\s*Sane\b/gi, "كايري سين"],
+    [/\bAsuka\b/gi, "أسكا"],
+    [/\bRoxanne\s*Perez\b/gi, "روكسان بيريز"],
+    [/\bLiv\s*Morgan\b/gi, "ليف مورغان"],
+    [/\bSonya\s*Deville\b/gi, "سونيا ديفيل"],
+    [/\bNatalya\b/gi, "نتاليا"],
+    [/\bRaquel\s*Rodriguez\b/gi, "راكيل رودريغيز"],
+    [/\bDakota\s*Kai\b/gi, "داكوتا كاي"],
+    [/\bCandice\s*LeRae\b/gi, "كانديس ليراي"],
+    [/\bJordynne\s*Grace\b/gi, "جوردين غريس"],
+    [/\bToni\s*Storm\b/gi, "توني ستورم"],
+    [/\bMariah\s*May\b/gi, "ماريا ماي"],
+    [/\bThunder\s*Rosa\b/gi, "ثاندر روزا"],
+    [/\bDeonna\s*Purrazzo\b/gi, "ديونا بوراتزو"],
+    [/\bMasha\s*Slamovich\b/gi, "ماشا سلاموفيتش"],
+    [/\bGisele\s*Shaw\b/gi, "جيزيل شو"],
+    [/\bAsh\s*By\s*Elegance\b/gi, "آش باي إليغانس"],
+    [/\bStephanie\s*Vaquer\b/gi, "ستيفاني فاكير"],
+    [/\bMaria\s*Kanellis\b/gi, "ماريا كانيليس"],
+    [/\bAJ\s*Lee\b/gi, "إيه جيه لي"],
+    [/\bAJ\s*Styles\b/gi, "إيه جيه ستايلز"],
+    [/\bCJ\s*Perry\b/gi, "سي جيه بيري"],
+    [/\bCM\s*Punk\b/gi, "سي ام بانك"],
+    [/\bR-Truth\b/gi, "ار تروث"],
+    [/\bLA\s*Knight\b/gi, "ال ايه نايت"],
+    [/\bMJF\b/g, "ام جيه اف"],
+    [/\bMVP\b/g, "ام في بي"],
+    [/\bRVD\b/g, "ار في دي"],
+    [/\bJBL\b/g, "جيه بي إل"],
+    [/\bPCO\b/g, "بي سي أو"],
+    [/\bJD\s*McDonagh\b/gi, "جيه دي ماكدونا"],
+    [/\bBrock\s*Lesnar\b/gi, "بروك ليسنر"],
+    [/\b(?:The\s*)?Undertaker\b/gi, "أندرتيكر"],
+    [/\bTriple\s*H\b/gi, "تريبل إتش"],
+    [/\bShawn\s*Michaels\b/gi, "شون مايكلز"],
+    [/\b(?:Stone\s*Cold\s*)?Steve\s*Austin\b/gi, "ستيف أوستن"],
+    [/\bThe\s*Rock\b/gi, "ذا روك"],
+    [/\bDwayne\s*Johnson\b/gi, "دواين جونسون"],
+    [/\bHulk\s*Hogan\b/gi, "هولك هوغان"],
+    [/\bVince\s*McMahon\b/gi, "فينس مكمان"],
+    [/\bShane\s*McMahon\b/gi, "شين مكمان"],
+    [/\bStephanie\s*McMahon\b/gi, "ستيفاني مكمان"],
+    [/\bPaul\s*Heyman\b/gi, "بول هيمان"],
+    [/\bTony\s*Khan\b/gi, "توني خان"],
+    [/\bNick\s*Khan\b/gi, "نيك خان"],
+    [/\bTriple\s*H\b/gi, "تريبل إتش"],
+    [/\bShinsuke\s*Nakamura\b/gi, "شينسكي ناكامورا"],
+    [/\bSheamus\b/gi, "شيموس"],
+    [/\bCesaro\b/gi, "سيزارو"],
+    [/\bChad\s*Gable\b/gi, "تشاد غيبل"],
+    [/\bOtis\b/gi, "أوتيس"],
+    [/\bSantos\s*Escobar\b/gi, "سانتوس إسكوبار"],
+    [/\bBobby\s*Lashley\b/gi, "بوبي لاشلي"],
+    [/\bShelton\s*Benjamin\b/gi, "شيلتون بنجامين"],
+    [/\bMustafa\s*Ali\b/gi, "مصطفى علي"],
+    [/\bKeith\s*Lee\b/gi, "كيث لي"],
+    [/\bSamoa\s*Joe\b/gi, "ساموا جو"],
+    [/\bSolo\s*Sikoa\b/gi, "سولو سيكوا"],
+    [/\bJacob\s*Fatu\b/gi, "جاكوب فاتو"],
+    [/\bZilla\s*Fatu\b/gi, "زيلا فاتو"],
+    [/\bTama\s*Tonga\b/gi, "تاما تونغا"],
+    [/\bTanga\s*Loa\b/gi, "تانغا لوا"],
+    [/\bJey\s*Uso\b/gi, "جاي أوسو"],
+    [/\bJimmy\s*Uso\b/gi, "جيمي أوسو"],
+    [/\bFinn\s*B[aá]lor\b/gi, "فين بالور"],
+    [/\bBron\s*Breakker\b/gi, "برون بريكر"],
+    [/\bBraun\s*Strowman\b/gi, "برون سترومان"],
+    [/\bGrayson\s*Waller\b/gi, "غرايسون والر"],
+    [/\bBaron\s*Corbin\b/gi, "بارون كوربين"],
+    [/\bDominique\s*Mysterio\b/gi, "دومينيك ميستيريو"],
+    [/\bDominik\s*Mysterio\b/gi, "دومينيك ميستيريو"],
+    [/\bRey\s*Mysterio\b/gi, "ري ميستيريو"],
+    [/\bDragon\s*Lee\b/gi, "دراغون لي"],
+    [/\bWes\s*Lee\b/gi, "ويس لي"],
+    [/\bJe'?Von\s*Evans\b/gi, "جيفون إيفانز"],
+    [/\bOba\s*Femi\b/gi, "أوبا فيمي"],
+    [/\bNathan\s*Frazer\b/gi, "ناثان فريزر"],
+    [/\bAxiom\b/gi, "أكسيوم"],
+    [/\bTrick\s*Williams\b/gi, "تريك ويليامز"],
+    [/\bBron\s*Breakker\b/gi, "برون بريكر"],
+    [/\bEthan\s*Page\b/gi, "إيثان بيج"],
+    [/\bGiulia\b/gi, "جوليا"],
+    [/\bRicochet\b/gi, "ريكوشيه"],
+    [/\bWill\s*Ospreay\b/gi, "ويل أوسبري"],
+    [/\bKenny\s*Omega\b/gi, "كيني أوميغا"],
+    [/\bJon\s*Moxley\b/gi, "جون موكسلي"],
+    [/\bChris\s*Jericho\b/gi, "كريس جيريكو"],
+    [/\bAdam\s*Copeland\b/gi, "آدم كوبلاند"],
+    [/\bAdam\s*Cole\b/gi, "آدم كول"],
+    [/\bSwerve\s*Strickland\b/gi, "سويرف ستريكلاند"],
+    [/\bHangman\s*(?:Adam\s*)?Page\b/gi, "هانغمان بيج"],
+    [/\bDarby\s*Allin\b/gi, "داربي ألين"],
+    [/\bAndrade(?:\s+El\s+Idolo)?\b/gi, "أندرادي"],
+    [/\bEl\s*Grande\s*Americano\b/gi, "إل غراندي أمريكانو"],
+    [/\bOrange\s*Cassidy\b/gi, "أورانج كاسيدي"],
+    [/\bBritt\s*Baker\b/gi, "بريت بيكر"],
+    [/\bJamie\s*Hayter\b/gi, "جيمي هايتر"],
+    [/\bWillow\s*Nightingale\b/gi, "ويلو نايتينغيل"],
+    [/\bKris\s*Statlander\b/gi, "كريس ستاتلاندر"],
+    [/\bToni\s*Storm\b/gi, "توني ستورم"],
+    [/\bBryan\s*Danielson\b/gi, "برايان دانيلسون"],
+    [/\bMalakai\s*Black\b/gi, "مالاكاي بلاك"],
+    [/\bDaniel\s*Garcia\b/gi, "دانيال غارسيا"],
+    [/\bJay\s*White\b/gi, "جاي وايت"],
+    [/\bJay\s*Lethal\b/gi, "جاي ليثال"],
+    [/\bRicky\s*Starks\b/gi, "ريكي ستاركس"],
+    [/\bHook\b/g, "هوك"],
+    [/\bWardlow\b/gi, "واردلو"],
+    [/\bPowerhouse\s*Hobbs\b/gi, "باورهاوس هوبز"],
+    [/\bKazuchika\s*Okada\b/gi, "كازوتشيكا اوكادا"],
+    [/\bJack\s*Perry\b/gi, "جاك بيري"],
+    [/\bMatt\s*Riddle\b/gi, "مات ريدل"],
+    [/\bOmos\b/gi, "اوموس"],
+    [/\bDanhausen\b/gi, "دانهاوسن"],
+    [/\bMoose\b/gi, "موس"],
+    [/\bNic\s*Nemeth\b/gi, "نيك نيميث"],
+    [/\bJoe\s*Hendry\b/gi, "جو هندري"],
+    [/\bEddie\s*Edwards\b/gi, "إدي إدواردز"],
+    [/\bFrankie\s*Kazarian\b/gi, "فرانكي كازاريان"],
+    [/\bSteve\s*Maclin\b/gi, "ستيف ماكلين"],
+    [/\bLoganPaul\b/gi, "لوغان بول"],
+    [/\bLogan\s*Paul\b/gi, "لوغان بول"],
+    [/\bMatt\s*Cardona\b/gi, "مات كاردونا"],
+    [/\bSpeed[b]all\s*Mike\s*Bailey\b/gi, "سبيدبول مايك بيلي"],
+    [/\bSpeedball\s*Mike\s*Bailey\b/gi, "سبيدبول مايك بيلي"],
+    [/\bMike\s*Bailey\b/gi, "مايك بيلي"],
+    [/\bTony\s*Schiavone\b/gi, "توني شيفاني"],
+    [/\bLil\s*Yachty\b/gi, "ليل ياتي"],
+    [/\bSting\b/gi, "ستينغ"],
+    [/\bSteve[n]?\s*Borden\b/gi, "ستيفن بوردن"],
+    [/\bDean\s*Malenko\b/gi, "دين مالينكو"],
+    [/\bRob\s*Van\s*Dam\b/gi, "روب فان دام"],
+    [/\bMichin\b/gi, "ميتشين"],
+    [/\bIndi\s*Hartwell\b/gi, "إندي هارتويل"],
+    [/\bDark\s*Silueta\b/gi, "دارك سيلويتا"],
+    [/\bBlake\s*Monroe\b/gi, "بليك مونرو"],
+    [/\bGiulia\b/gi, "جوليا"],
+    [/\bEl\s*Hijo\s*del\s*Vikingo\b/gi, "إل هيخو ديل فيكينغو"],
+    [/\bRey\s*Fenix\b/gi, "ري فينيكس"],
+    [/\bPentagon(?:\s*Jr\.?)?\b/gi, "بينتاغون جونيور"],
+    [/\bPenta(?:\s*El\s*Zero\s*M)?\b/gi, "بينتا"],
+    [/\bWade\s*Barrett\b/gi, "ويد باريت"],
+    [/\bMaria\s*Kanellis\b/gi, "ماريا كانيليس"],
+    [/\bDon\s*Callis\b/gi, "دون كاليس"],
+    [/\bDorian\s*Roldan\b/gi, "دوريان رولدان"],
+  ];
+
+  for (const [pattern, replacement] of NAMES) {
+    shielded = shielded.replace(pattern, replacement);
+  }
+
+  // ── Action verbs and phrase patterns (order matters: longer first) ────────
+  const VERBS: [RegExp, string][] = [
+    // Movements / roster changes
+    [/\bMoved?\s+To\b/gi, "تنتقل إلى"],
+    [/\bTransferred?\s+To\b/gi, "تنتقل إلى"],
+    [/\bReturn(?:ed|s|ing)?\s+To\b/gi, "يعود إلى"],
+    [/\bReturn(?:ed|s|ing)?\b/gi, "يعود"],
+    [/\bSigned?\s+With\b/gi, "يوقع مع"],
+    [/\bSign(?:ed|s|ing)?\s+(?:A\s+)?(?:New\s+)?Deal(?:\s+With)?\b/gi, "يوقع عقداً"],
+    [/\bReleased?\b/gi, "أُطلق سراحه"],
+    [/\bLeaves?\b/gi, "يغادر"],
+    [/\bLeft\b/gi, "غادر"],
+    [/\bJoin(?:ed|s|ing)?\b/gi, "ينضم إلى"],
+    [/\bDepart(?:ed|s|ing|ure)?\b/gi, "يغادر"],
+    [/\bDebut(?:ed|s|ing)?\b/gi, "يظهر لأول مرة"],
+    [/\bAppear(?:ed|s|ing|ance|ances)?\b/gi, "يظهر"],
+    [/\bTo\s+Appear\s+On\b/gi, "سيظهر في"],
+
+    // Match/championship verbs
+    [/\bDef(?:eat(?:ed|s|ing)?|\.)\b/gi, "يهزم"],
+    [/\bDefeats?\b/gi, "يهزم"],
+    [/\bWin(?:s|ner|ning)?\b/gi, "يفوز"],
+    [/\bWon\b/gi, "فاز"],
+    [/\bLose(?:s)?\b/gi, "يخسر"],
+    [/\bLost\b/gi, "خسر"],
+    [/\bRetains?\b/gi, "يحتفظ بلقبه"],
+    [/\bClaim(?:s|ed|ing)?\b/gi, "يحصل على"],
+    [/\bCaptures?\b/gi, "يحصل على"],
+    [/\bDefends?\b/gi, "يدافع عن"],
+    [/\bChallenges?\b/gi, "يتحدى"],
+    [/\bFace(?:s|d|ing)?\b/gi, "يواجه"],
+    [/\bSet\s+For\b/gi, "مقرر في"],
+    [/\bAnnounced?\s+For\b/gi, "أُعلن عنه في"],
+    [/\bScheduled?\s+For\b/gi, "مجدول في"],
+    [/\bAdded?\s+To\b/gi, "أضيف إلى"],
+    [/\bRemoved?\s+From\b/gi, "أُزيل من"],
+
+    // Statements / reactions
+    [/\bSays?\b/gi, "يقول"],
+    [/\bSaid\b/gi, "قال"],
+    [/\bReacts?\s+To\b/gi, "يرد على"],
+    [/\bResponds?\s+To\b/gi, "يرد على"],
+    [/\bComments?\s+On\b/gi, "يعلق على"],
+    [/\bReveals?\b/gi, "يكشف"],
+    [/\bRevealed?\b/gi, "كشف"],
+    [/\bOpens?\s+Up(?:\s+About)?\b/gi, "يتحدث بصراحة عن"],
+    [/\bAddresses?\b/gi, "يتطرق إلى"],
+    [/\bDiscusses?\b/gi, "يتحدث عن"],
+    [/\bExplains?\b/gi, "يوضح"],
+    [/\bConfirms?\b/gi, "يؤكد"],
+    [/\bDenies?\b/gi, "ينفي"],
+    [/\bPraises?\b/gi, "يُشيد بـ"],
+    [/\bBlasts?\b/gi, "يهاجم"],
+    [/\bSlams?\b/gi, "ينتقد"],
+    [/\bCriticizes?\b/gi, "ينتقد"],
+    [/\bTeases?\b/gi, "يلمح إلى"],
+    [/\bTease(?:d|s)?\b/gi, "يلمح"],
+    [/\bPitches?\b/gi, "يقترح"],
+    [/\bAdvocates?\b/gi, "يدعو إلى"],
+    [/\bRecalls?\b/gi, "يستذكر"],
+    [/\bReflects?\s+On\b/gi, "يتأمل في"],
+    [/\bSpeaks?\s+On\b/gi, "يتحدث عن"],
+    [/\bNames?\b/gi, "يكشف عن"],
+    [/\bUnhappy\s+With\b/gi, "غير راضٍ عن"],
+    [/\bFrustrated?\s+With\b/gi, "محبط من"],
+    [/\bLoves?\b/gi, "يحب"],
+    [/\bRemembers?\b/gi, "يتذكر"],
+    [/\bPretends?\b/gi, "يتظاهر بـ"],
+    [/\bHopes?\b/gi, "يأمل في"],
+    [/\bWants?\b/gi, "يريد"],
+    [/\bPlans?\b/gi, "يخطط لـ"],
+    [/\bExpects?\b/gi, "يتوقع"],
+    [/\bThinks?\b/gi, "يعتقد"],
+    [/\bBelieves?\b/gi, "يؤمن بـ"],
+    [/\bWished?\b/gi, "تمنى"],
+    [/\bShuts?\s+Down\b/gi, "يرفض"],
+    [/\bCalled?\s+Out\b/gi, "يتحدى"],
+    [/\bPicked?\s+Up\b/gi, "يتعاقد مع"],
+    [/\bBackstage\s+At\b/gi, "كواليس"],
+    [/\bInjured?\b/gi, "يتعرض لإصابة"],
+    [/\bUpdated?\b/gi, "آخر تطورات"],
+    [/\bUpdate\s+On\b/gi, "آخر تطورات حول"],
+
+    // Injury terms
+    [/\bUndergoes?\s+Surgery\b/gi, "يخضع لعملية جراحية"],
+    [/\bTorn\s*Meniscus\b/gi, "تمزق في الغضروف الهلالي"],
+    [/\bSurgery\b/gi, "عملية جراحية"],
+    [/\bInjury\b/gi, "إصابة"],
+    [/\bRehab(?:ilitation)?\b/gi, "إعادة تأهيل"],
+
+    // Match types
+    [/\b(\d+)-Man\b/gi, "نزال $1 مقاتلين"],
+    [/\bLadder\s+Match\b/gi, "نزال السلالم"],
+    [/\bTables?\s+Match\b/gi, "نزال الطاولات"],
+    [/\bCage\s+Match\b/gi, "نزال القفص"],
+    [/\bHell\s+in\s+a\s+Cell\b/gi, "الجحيم في القفص"],
+    [/\bTLC\b/gi, "نزال السلالم والطاولات والكراسي"],
+    [/\bBattle\s*Royal\b/gi, "بات رويال"],
+    [/\bRoyal\s*Rumble\b/gi, "رويال رامبل"],
+    [/\bFatal\s*[4-]Way\b/gi, "نزال رباعي"],
+    [/\bTriple\s*Threat\b/gi, "نزال ثلاثي"],
+    [/\bMixed\s+Tag\b/gi, "نزال ثنائي مختلط"],
+    [/\bTag\s+Team\b/gi, "الزوجي"],
+    [/\bGauntlet\b/gi, "نزال البوابة"],
+    [/\bMain\s+Event\b/gi, "الحدث الرئيسي"],
+    [/\bMatch\b/gi, "نزال"],
+    [/\bBout\b/gi, "نزال"],
+    [/\bContest\b/gi, "نزال"],
+    [/\bShowdown\b/gi, "مواجهة"],
+    [/\bClash\b/gi, "صدام"],
+    [/\bWar(?:\s+Games)?\b/gi, "War Games"],
+  ];
+
+  for (const [pattern, replacement] of VERBS) {
+    shielded = shielded.replace(pattern, replacement);
+  }
+
+  // ── Wrestling & roster terminology ────────────────────────────────────────
+  const TERMS: [RegExp, string][] = [
+    [/\bFree\s+Agency\b/gi, "الوكالة الحرة"],
+    [/\bFree\s+Agent\b/gi, "وكيل حر"],
+    [/\bFree\s+Agents\b/gi, "وكلاء أحرار"],
+    // Roster must come BEFORE championship patterns to avoid "Women's Roster" clash
+    [/\b(WWE|AEW|TNA|ROH|NXT|SmackDown|RAW)\s+Roster\b/gi, "قائمة $1"],
+    [/\bRoster\b/gi, "القائمة"],
+    // Women's patterns — must come before generic World/Champion patterns
+    [/\bWomen[''\u2019]?s\s+World\s+(?:Heavyweight\s+)?Champion(?:ship)?\b/gi, "بطولة العالم للسيدات"],
+    [/\bWomen[''\u2019]?s\s+Tag\s+Team\s+Champion(?:ship)?\b/gi, "بطولة الزوجي للسيدات"],
+    [/\bWomen[''\u2019]?s\s+Champion(?:ship)?\b/gi, "بطولة السيدات"],
+    [/\bWomen[''\u2019]?s\s+Division\b/gi, "قسم السيدات"],
+    [/\bWomen[''\u2019]?s\b/gi, "السيدات"],
+    [/\bWorld\s+(?:Heavyweight\s+)?Champion(?:ship)?\b/gi, "بطولة العالم للوزن الثقيل"],
+    [/\bIntercontinental\s+Champion(?:ship)?\b/gi, "بطولة القارات"],
+    [/\bUnited\s+States\s+Champion(?:ship)?\b/gi, "بطولة الولايات المتحدة"],
+    [/\bWorld\s+Tag\s+Team\s+Champion(?:ship)?\b/gi, "بطولة العالم للزوجي"],
+    [/\bTag\s+Team\s+Champion(?:ship)?\b/gi, "بطولة الزوجي"],
+    [/\bChampionship\b/gi, "بطولة"],
+    [/\bChampion\b/gi, "بطل"],
+    [/\bTitle\s+Match\b/gi, "نزال البطولة"],
+    [/\bTitle\s+Defense\b/gi, "الدفاع عن اللقب"],
+    [/\bTitle\b/gi, "لقب"],
+    [/\bContract\b/gi, "عقد"],
+    [/\bExtension\b/gi, "تمديد"],
+    [/\bRenewal\b/gi, "تجديد"],
+    [/\bHeelTurn\b/gi, "تحول للشرير"],
+    [/\bFaceTurn\b/gi, "تحول للبطل"],
+    [/\bHeel\b/gi, "الشرير"],
+    [/\bFace\b/gi, "البطل"],
+    [/\bBabyface\b/gi, "البطل المحبوب"],
+    [/\bFeuding?\s+With\b/gi, "في صراع مع"],
+    [/\bFeud\b/gi, "صراع"],
+    [/\bStoryline\b/gi, "قصة عرض"],
+    [/\bSpoiler\b/gi, "حرق نتائج"],
+    [/\bResults?\b/gi, "نتائج"],
+    [/\bReport(?:edly)?\b/gi, "وفقاً لتقارير صحفية"],
+    [/\bSources?\s+(?:say|claim|report)\b/gi, "تقارير صحفية"],
+    [/\bAccording\s+To\b/gi, "وفقاً لـ"],
+    [/\bAccording\s+To\s+Reports?\b/gi, "وفقاً لتقارير صحفية"],
+    [/\bExclusive(?:ly)?\b/gi, "حصري"],
+    [/\bBreaking\b/gi, "عاجل"],
+    [/\bDetails?\b/gi, "تفاصيل"],
+    [/\bInsider\b/gi, "مصادر مطلعة"],
+    [/\bBackstage\b/gi, "كواليس"],
+    [/\bHouse\s+Show\b/gi, "House Show"],
+    [/\bLive\s+Event\b/gi, "Live Event"],
+    [/\bSpecial\s+Event\b/gi, "حدث خاص"],
+    [/\bPay-?Per-?View\b/gi, "Pay-Per-View"],
+    [/\bPPV\b/gi, "PPV"],
+    [/\bSegment\b/gi, "مقطع"],
+    [/\bPromo\b/gi, "ترويجي"],
+    [/\bKayfabe\b/gi, "الواقع المتخيل"],
+    [/\bHall\s+Of\s+Fame\b/gi, "قاعة المشاهير"],
+    [/\bInductee\b/gi, "مدخل"],
+    [/\bIndependent(?:s)?\b/gi, "المصارعة المستقلة"],
+    [/\bFaction\b/gi, "فصيل"],
+    [/\bStable\b/gi, "تحالف"],
+    [/\bPartner(?:ship)?\b/gi, "شراكة"],
+    [/\bRival(?:ry)?\b/gi, "منافسة"],
+    [/\bCoach(?:ing)?\b/gi, "مدرب"],
+    [/\bGeneral\s+Manager\b/gi, "المدير العام"],
+    [/\bAuthority\b/gi, "الإدارة"],
+    [/\bBoard\b/gi, "مجلس الإدارة"],
+    [/\bReturn\b/gi, "عودة"],
+    [/\bComeback\b/gi, "عودة قوية"],
+    [/\bDebut\b/gi, "ظهور أول"],
+    [/\bRetirement\b/gi, "اعتزال"],
+    [/\bSuspension\b/gi, "إيقاف"],
+    [/\bTerminated?\b/gi, "إنهاء العقد"],
+    [/\bWaived?\b/gi, "إطلاق سراح"],
+    [/\bVignette\b/gi, "مقطع ترويجي"],
+    [/\bHighlight(?:s|ed)?\b/gi, "أبرز لحظات"],
+  ];
+
+  for (const [pattern, replacement] of TERMS) {
+    shielded = shielded.replace(pattern, replacement);
+  }
+
+  // ── Structural words / prepositions ──────────────────────────────────────
+  const STRUCTURE: [RegExp, string][] = [
+    [/\bFrom\b/gi, "من"],
+    [/\bTo\b/gi, "إلى"],
+    [/\bAt\b/gi, "في"],
+    [/\bIn\b/gi, "في"],
+    [/\bOn\b/gi, "في"],
+    [/\bWith\b/gi, "مع"],
+    [/\bFor\b/gi, "لـ"],
+    [/\bOf\b/gi, "من"],
+    [/\bThe\b/gi, ""],
+    [/\bA\b/gi, ""],
+    [/\bAn\b/gi, ""],
+    [/\bAnd\b/gi, "و"],
+    [/\bOr\b/gi, "أو"],
+    [/\bBut\b/gi, "لكن"],
+    [/\bAfter\b/gi, "بعد"],
+    [/\bBefore\b/gi, "قبل"],
+    [/\bDuring\b/gi, "خلال"],
+    [/\bOver\b/gi, "على"],
+    [/\bAbout\b/gi, "حول"],
+    [/\bAgainst\b/gi, "ضد"],
+    [/\bVs\.?\b/gi, "ضد"],
+    [/\bVersus\b/gi, "ضد"],
+    [/\bDuring\b/gi, "خلال"],
+    [/\bPast\b/gi, "السابق"],
+    [/\bNext\b/gi, "القادم"],
+    [/\bUpcoming\b/gi, "القادم"],
+    [/\bLatest\b/gi, "أحدث"],
+    [/\bNew\b/gi, "جديد"],
+    [/\bBig\b/gi, "كبير"],
+    [/\bMajor\b/gi, "بارز"],
+    [/\bMore\b/gi, "المزيد"],
+    [/\bAll\b/gi, "جميع"],
+    [/\bFirst\b/gi, "الأول"],
+    [/\bSecond\b/gi, "الثاني"],
+    [/\bThird\b/gi, "الثالث"],
+    [/\bFormer\b/gi, "السابق"],
+    [/\bCurrent\b/gi, "الحالي"],
+    [/\bOfficial\b/gi, "رسمي"],
+    [/\bFull\b/gi, "كامل"],
+    [/\bPart\b/gi, "جزء"],
+    // Pronouns & question words
+    [/\bHe\b/g, "هو"],
+    [/\bShe\b/g, "هي"],
+    [/\bHis\b/gi, "ه"],
+    [/\bHer\b/gi, "ها"],
+    [/\bTheir\b/gi, ""],
+    [/\bThey\b/gi, ""],
+    [/\bWhy\b/gi, "لماذا"],
+    [/\bWhat\b/gi, "ما"],
+    [/\bWho\b/gi, "من"],
+    [/\bWhere\b/gi, "أين"],
+    [/\bWhen\b/gi, "متى"],
+    [/\bHow\b/gi, "كيف"],
+    [/\bIf\b/gi, "إذا"],
+    [/\bThat\b/gi, "أن"],
+    [/\bThis\b/gi, "هذا"],
+    [/\bThese\b/gi, "هذه"],
+    [/\bWas\b/gi, "كان"],
+    [/\bWere\b/gi, "كانوا"],
+    [/\bHas\b/gi, "لديه"],
+    [/\bHave\b/gi, "لديهم"],
+    [/\bHad\b/gi, "كان لديه"],
+    [/\bIs\b/gi, "هو"],
+    [/\bAre\b/gi, ""],
+    [/\bBeen\b/gi, ""],
+    [/\bBeing\b/gi, ""],
+    [/\bGet(?:s|ting)?\b/gi, "يحصل على"],
+    [/\bGot\b/gi, "حصل على"],
+    [/\bMake(?:s)?\b/gi, "يصنع"],
+    [/\bTalk(?:s|ing)?\b/gi, "يتحدث عن"],
+    [/\bAsk(?:s|ed|ing)?\b/gi, "يسأل عن"],
+    [/\bSend(?:s|ing)?\b/gi, "يرسل"],
+    [/\bSent\b/gi, "أرسل"],
+    [/\bOut\b/gi, "خارج"],
+    [/\bBack\b/gi, "مجدداً"],
+    [/\bDown\b/gi, ""],
+    [/\bUp\b/gi, ""],
+    [/\bOff\b/gi, ""],
+    [/\bAway\b/gi, "بعيداً"],
+    [/\bHome\b/gi, "المنزل"],
+    [/\bDay\b/gi, "يوم"],
+    [/\bNight\b/gi, "ليلة"],
+    [/\bTime\b/gi, "وقت"],
+    [/\bYear\b/gi, "سنة"],
+    [/\bWeek\b/gi, "أسبوع"],
+    [/\bMonth\b/gi, "شهر"],
+    [/\bLast\b/gi, "الماضي"],
+    [/\bOnce\b/gi, "مرة واحدة"],
+    [/\bTwo(?:\s*-?\s*Time)?\b/gi, "ذو المرتين"],
+    [/\bThree(?:\s*-?\s*Time)?\b/gi, "ذو المرات الثلاث"],
+    [/\bMultiple\b/gi, "متعددة"],
+    [/\bWhile\b/gi, "بينما"],
+    [/\bNow\b/gi, "الآن"],
+    [/\bStill\b/gi, "لا يزال"],
+    [/\bAlready\b/gi, "بالفعل"],
+    [/\bYet\b/gi, "بعد"],
+    [/\bJust\b/gi, "للتو"],
+    [/\bOnly\b/gi, "فقط"],
+    [/\bAlso\b/gi, "أيضاً"],
+    [/\bToo\b/gi, "أيضاً"],
+    [/\bEven\b/gi, "حتى"],
+    [/\bSoon\b/gi, "قريباً"],
+    [/\bLater\b/gi, "لاحقاً"],
+    [/\bRecently\b/gi, "مؤخراً"],
+    [/\bSuddenly\b/gi, "فجأة"],
+    [/\bFinally\b/gi, "أخيراً"],
+    [/\bSurprisingly\b/gi, "بشكل مفاجئ"],
+    [/\bOfficial(?:ly)?\b/gi, "رسمياً"],
+    [/\bConfirmed?\b/gi, "مؤكد"],
+    [/\bPossible\b/gi, "محتمل"],
+    [/\bPossibly\b/gi, "ربما"],
+    [/\bApparently\b/gi, "على ما يبدو"],
+    [/\bAllegedly\b/gi, "يُزعم"],
+    [/\bApprox(?:imately)?\b/gi, "تقريباً"],
+    [/\bLong\b/gi, "طويل"],
+    [/\bShort\b/gi, "قصير"],
+    [/\bBig(?:ger)?\b/gi, "أكبر"],
+    [/\bSmall(?:er)?\b/gi, "أصغر"],
+    [/\bBest\b/gi, "الأفضل"],
+    [/\bWorst\b/gi, "الأسوأ"],
+    [/\bGreat(?:est)?\b/gi, "الأعظم"],
+    [/\bGood\b/gi, "جيد"],
+    [/\bBad\b/gi, "سيء"],
+    [/\bTop\b/gi, "الأفضل"],
+    [/\bElite\b/gi, "النخبة"],
+    [/\bFuture\b/gi, "المستقبل"],
+    [/\bPast\b/gi, "الماضي"],
+    [/\bHistory\b/gi, "تاريخ"],
+    [/\bRecord\b/gi, "رقم قياسي"],
+    [/\bNews\b/gi, "أخبار"],
+    [/\bUpdate\b/gi, "تحديث"],
+    [/\bVideo\b/gi, "فيديو"],
+    [/\bPhoto\b/gi, "صورة"],
+  ];
+
+  for (const [pattern, replacement] of STRUCTURE) {
+    shielded = shielded.replace(pattern, replacement);
+  }
+
+  // ── Restore protected tokens ─────────────────────────────────────────────
+  let result = shielded.replace(/__PT_(\d+)__/g, (_, idx) => protectedTokens[Number(idx)] || "");
+
+  // ── Cleanup: collapse spaces, fix word order, remove stray particles ───────
+  result = result
+    .replace(/\s{2,}/g, " ")
+    .replace(/عرض\s+عرض/g, "عرض")
+    .replace(/\bمن\s+من\b/g, "من")
+    .replace(/\bإلى\s+إلى\b/g, "إلى")
+    .replace(/\bو\s+و\b/g, "و")
+    // Fix "WWE SmackDown القائمة" → "قائمة WWE SmackDown" (Roster came after protected show name)
+    .replace(/(WWE|AEW|TNA|ROH|NXT|NJPW|MLW|AAA|CMLL|GCW|MLP)\s+(RAW|SmackDown|Dynamite|Collision|Rampage|iMPACT|NXT|ROH TV)?\s*القائمة/g, "قائمة $1 $2")
+    .replace(/(WWE|AEW|TNA|ROH|NXT|NJPW|MLW|AAA|CMLL|GCW|MLP)\s+القائمة/g, "قائمة $1")
+    // Fix "يعود يعود" or "يعود إلى يعود إلى" duplicates
+    .replace(/يعود\s+يعود/g, "يعود")
+    .replace(/يعود\s+إلى\s+يعود\s+إلى/g, "يعود إلى")
+    // Fix "يكشف عن" not followed by anything → just "يكشف"
+    .replace(/يكشف\s+عن\s*$/g, "يكشف")
+    // Remove stray "لـ" at end
+    .replace(/\s+لـ\s*$/, "")
+    // Collapse repeated Arabic words (common after multi-pattern hits)
+    .replace(/(\S+)\s+\1\b/g, "$1")
+    .trim();
+
+  // ── Confidence check: if >30% of words are still untranslated English, fail ──
+  const words = result.split(/\s+/).filter(Boolean);
+  if (words.length === 0) return null;
+  const englishWords = words.filter(w => /^[a-zA-Z]{3,}/.test(w) && !/^(WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|MLP|UFC|PPV|RAW|NXT|SmackDown|iMPACT|Dynamite|Collision|Rampage|WrestleMania|SummerSlam)$/i.test(w));
+  const confidence = 1 - (englishWords.length / words.length);
+  if (confidence < 0.7) {
+    // Too many untranslated words — let AI handle this one
+    return null;
+  }
+
+  return sanitizeAIWatermarks(removeTashkeel(result));
 }
 
 // Interface for show timing analysis
@@ -1043,10 +1766,16 @@ export async function optimizeTitleForSEOAndCTR(
       - **Adam Copeland** يُكتب بالعربية حصراً: **آدم كوبلاند** (ممنوع كتابة: "أدم كوبلند").
       - **Money In The Bank** تُكتب بالعربية حصراً: **موني إن ذا بانك** (ممنوع منعاً باتاً كتابة: "موني إن دي بانك" أو "ماني إن دي").
       - **Lil Yachty** يُكتب بالعربية حصراً: **ليل ياتي** (ممنوع منعاً باتاً كتابة: "ليل ياشتي" أو "ليلت ياشتي"؛ اسمه المعتمد حصراً هو: **ليل ياتي**).
-      - **Deonna Purrazzo** تُكتب بالعربية حصراً: **ديونا بوراتزو** (ممنوع منعاً باتاً كتابة: "ديونا بوراكزو" أو "بورازو").
+      - **Deonna Purrazzo** يُكتب بالعربية حصراً: **ديونا بوراتزو** (ممنوع منعاً باتاً كتابة: "ديونا بوراكزو" أو "بورازو").
       - **Tony Schiavone** يُكتب بالعربية حصراً: **توني شيفاني** (ممنوع منعاً باتاً كتابة: "توني كيفاني" أو "سكيافوني").
+      - **Paige** يُكتب بالعربية حصراً: **بايج** (ممنوع منعاً باتاً كتابة: "بايد" أو "بيج" أو "بيدج"؛ اسمها المعتمد حصراً هو: **بايج**).
       - **Logan Paul** يُكتب بالعربية حصراً: **لوغان بول** (ممنوع منعاً باتاً كتابة: "لغان بول" أو "لوجن بول" أو "لوجان بول"؛ اسمه المعتمد حصراً في الموقع هو: **لوغان بول**).
       - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو.
+  - **قاعدة مصطلحات Roster و Free Agency (حاسمة وإلزامية)**:
+    - **Roster** = **قائمة** (ممنوع كتابة: "روستر" أو "قائمة عرض"؛ الصحيح: "قائمة WWE SmackDown" أو "قائمة WWE RAW").
+    - **Free Agency / Free Agent** = **الوكالة الحرة** (ممنوع منعاً باتاً كتابة: "وكلاء أحرار" أو "قائمة الوكلاء الأحرار"؛ الصحيح حصراً هو: **الوكالة الحرة**).
+    - مثال صحيح: "بايج تنتقل إلى قائمة WWE SmackDown من الوكالة الحرة" ✅
+    - مثال محظور: "بايد تنتقل إلى قائمة عرض WWE SmackDown قادمة من قائمة الوكلاء الأحرار" ❌
   - **قاعدة إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**:
     - ممنوع نهائياً كتابة اسم أي عرض بدون ذكر اسم الاتحاد قبله مباشرة (اكتب دائماً: عرض WWE RAW، عرض WWE SmackDown، عرض AEW Collision، عرض TNA iMPACT).
   - **قاعدة اللغة العربية المبسطة والحديثة (حظر الألفاظ التراثية وصيغ التثنية تماماً)**:
@@ -1386,7 +2115,7 @@ async function rewriteWithGemini(
    - كل شيء آخر يُترجم ويُكتب بالعربية (أسماء المصارعين، أنواع المباريات، شروط النزالات، الأحزمة، التفاصيل).
    - **أسماء الفرق والعصابات بالعربية دائماً وحصراً**: اكتب أسماء الفرق بالعربية دائماً (الإخوة فاغنر، وار رايدرز، ذا بلودلاين، ذا جادجمنت داي، ذا نيو داي، بيروس ديل مال).
    - **أسماء الألقاب والبطولات بالعربية الخالصة ودون تكرار اسم الاتحاد**: اكتب اللقب بالعربية مباشرة بدون اسم الاتحاد أمامه ("بطولة العالم للزوجي" وليس بطولة AAA للزوجي).
-   - **القاعدة الذهبية لما يُكتب بالإنجليزية**: الشيء الوحيد المسموح بكتابته بالإنجليزية هو اسم الاتحاد واسم العرض. كل شيء آخر (المصارعين، الفرق، البطولات، الحركات) يُترجم ويُكتب بالعربية حصراً!
+   - **القاعدة الذهبية لما يُكتب بالإنجليزية**: الشيء الوحيد المسموح بكتابته بالإنجليزية هو اسم الاتحاد واسم العرض بما فيها كلمة "Live" (مثل: WWE NXT Live, WWE Live, TNA Live). ممنوع ترجمة "Live" إلى "الحي" أو "المباشر" أبداً عند وجودها كجزء من اسم العرض — اكتبها دائماً Live. كل شيء آخر (المصارعين، الفرق، البطولات، الحركات) يُترجم ويُكتب بالعربية حصراً!
    - **قاعدة اللغة العربية السلسة والمبسطة وحظر صيغ التثنية تماماً**: اكتب بلغة عربية واضحة ومبسطة يفهمها الشباب بسهولة. ممنوع بتاتاً الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "ابنا الأسطورة", ❌ "ابنا ستينغ"؛ استخدم دائماً صيغة الجمع الطبيعية: "أبناء الأسطورة ستينغ" أو "أبناء ستينغ").
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
 2. **التنسيق المنظم والفصل بين السطور**:
@@ -1486,7 +2215,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
        - ❌ "يتوعد بركل رأس راندي أورتن بعنف" -> ✅ "كودي رودز: لن أتردد في سحق راندي أورتن بالضربة القاضية مجدداً"
        - ❌ "كل الطرق تقود إلي" -> ✅ "بارون كوربين يهدد تريك ويليامز: كل الطرق ستقودك لمواجهتي"
        - ❌ "مباراة السلال" -> ✅ "نزال السلالم"
-       - ❌ ترك أي كلمة إنجليزية داخل العنوان (مثل: STRAIGHT) -> ✅ ممنوع تماماً وجود أي كلمة إنجليزية داخل العنوان إلا اسم الاتحاد واسم العرض!
+       - ❌ ترك أي كلمة إنجليزية داخل العنوان (مثل: STRAIGHT) -> ✅ ممنوع تماماً وجود أي كلمة إنجليزية داخل العنوان إلا اسم الاتحاد واسم العرض وكلمة "Live" (مثل: WWE NXT Live, WWE Live)!
      - الصياغة يجب أن تكون بأسلوب محرر صحفي بشري رياضي محترف؛ فصيحة، رشيقة، مشوقة، ومفهومة جداً من القراءة الأولى.
    - **قاعدة تصريحات وردود أفعال المصارعين وإعادة الصياغة الصحفية الذكية (Smart Rewriting vs Literal Translation - حاسمة جداً)**:
      - إذا كان الخبر الأصلي عبارة عن رد فعل، تغريدة، منشور إنستغرام أو تويتر، أو تصريح لمصارع (مثل: 'Wrestler: Quote' أو 'Wrestler Reacts To...'):
@@ -1977,7 +2706,26 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
 
-  console.log(`[Watcher] Generated Arabic Title: "${rewritten.title}"`);
+  console.log(`[Watcher] Generated Arabic Title (AI): "${rewritten.title}"`);
+
+  // 2b. Override AI title with deterministic translation if confidence is high enough
+  // The deterministic translator is 100% consistent and hallucination-free.
+  // It handles the vast majority of news headlines (roster moves, returns, signings, etc.)
+  // and only falls back to the AI title when the headline is too complex or idiomatic.
+  if (!isShowResultsArticle(rawTitle, plainText)) {
+    const deterministicTitle = translateTitleDeterministic(rawTitle);
+    if (deterministicTitle) {
+      const cleaned = cleanHeadlineClichés(sanitizeWrestlingTerms(deterministicTitle), sourceDate, rawTitle);
+      if (cleaned && cleaned.length > 5) {
+        rewritten.title = cleaned;
+        console.log(`[Watcher] ✅ Deterministic Title Used: "${rewritten.title}"`);
+      }
+    } else {
+      console.log(`[Watcher] ⚠️ Deterministic translation low-confidence, keeping AI title: "${rewritten.title}"`);
+    }
+  }
+
+  console.log(`[Watcher] Final Title: "${rewritten.title}"`);
   console.log(`[Watcher] Federation: ${rewritten.federation} | Tags (${rewritten.tags.length}): ${rewritten.tags.join(", ")}`);
 
   // 3. Extract media embeds and append clean standalone URLs to body
@@ -2015,8 +2763,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
 
   // Final fail-safe sanitization guarantee before saving to disk
+  // Step 1: Apply full names glossary (2078 names) — permanent, no-code solution
+  rewritten.title = applyNamesGlossary(rewritten.title);
+  rewritten.body_markdown = applyNamesGlossary(rewritten.body_markdown.trim());
+  // Step 2: Apply wrestling terms sanitization on top
   rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(rewritten.title), sourceDate, rawTitle);
-  let finalBody = sanitizeWrestlingTerms(rewritten.body_markdown.trim());
+  let finalBody = sanitizeWrestlingTerms(rewritten.body_markdown);
   const timing = analyzeShowTiming(rawTitle, sourceDate);
   if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
     finalBody = finalBody
@@ -2027,7 +2779,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (embeds.length > 0) {
     finalBody += `\n\n${embeds.join("\n\n")}`;
   }
-  rewritten.tags = (rewritten.tags || []).map(t => sanitizeWrestlingTerms(t));
+  rewritten.tags = (rewritten.tags || []).map(t => sanitizeWrestlingTerms(applyNamesGlossary(t)));
 
   const slug = generateSlug(rewritten.title);
   const targetFileName = `${prefix}-${slug}.md`;

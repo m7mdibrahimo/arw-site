@@ -147,10 +147,4 @@ jobs:
           else
             echo "No new video file was produced."
           fi
-
-      - name: Auto-Publish Reel & Post to Facebook and Instagram
-        env:
-          WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
-        run: |
-          echo "Auto-publishing reel and post to social channels..."
-          npx tsx scripts/auto-publish-reel.ts
+          # NOTE: Publishing to social media is handled by show-reel-monitor.yml — not here.
