@@ -690,7 +690,26 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women'?s\s+World(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للسيدات")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women'?s(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة السيدات")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Tag\s+Team(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للزوجي")
-    .replace(/بطولة\s+بطولة/g, "بطولة");
+    .replace(/بطولة\s+بطولة/g, "بطولة")
+
+    // 10. Wrestling-specific terminology fixes (sport-accurate Arabic)
+    // مباريات is football/soccer terminology — in wrestling it's always نزالات/مباريات
+    .replace(arWord("مبارياتهم"), "نزالاتهم")
+    .replace(arWord("مباريات\\s+المصارعة"), "نزالات المصارعة")
+    .replace(arWord("مباريات\\s+([A-Z]+)"), "نزالات $1")
+    .replace(arWord("مباريات\\s+الـ"), "نزالات الـ")
+    .replace(arWord("مباريات\\s+Worlds\\s+Collide"), "نزالات Worlds Collide")
+    .replace(arWord("مباريات\\s+WrestleMania"), "نزالات WrestleMania")
+    .replace(arWord("([^ال])مباريات"), "$1نزالات")
+    .replace(arWord("^مباريات"), "نزالات")
+    .replace(arWord("المباريات"), "النزالات")
+    .replace(arWord("مباراة\\s+(المصارعة|النزال|الحسم|الختامية|الافتتاحية|التالية|القادمة|الكبرى|الرئيسية)"), "نزال $1")
+    // Gender agreement: "أذاع اتحاد" → "قدّم اتحاد" (أذاع is masculine fine, but "أذاعت" with feminine subject is wrong for اتحاد)
+    .replace(/أذاع\s+اتحاد/g, "قدّم اتحاد")
+    .replace(/أذاع\s+([A-Z]+)\s+عرضاً\s+جديدة/g, "قدّم $1 عرضاً جديداً")
+    .replace(/عرض\s+جديدة/g, "عرضاً جديداً")
+    // Fix: مباراة ≠ wrestling match; use نزال
+    .replace(arWord("مباراة\\s+(ثمانية|ثماني|عشرة|عشري|ستة|ستي|الرئيسية|الكبرى|نارية|حاسمة|مميزة|مثيرة|ملحمية)"), "نزال $1");
 
   // Always restore protected URLs so URLs and social handles remain 100% clean and uncorrupted
   const restored = cleaned.replace(/__ARW_SAFE_URL_(\d+)__/g, (_, idx) => safeUrls[Number(idx)] || "");
@@ -2216,6 +2235,10 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
     state.lastChecked = new Date().toISOString();
     saveState(state);
 
+    // ✅ NEW: Check if Fightful updated any article title in the last 2 hours
+    // (e.g. Tailgate Brawl: fetched at 01:02 with one title, Fightful updated at 02:15)
+    await checkAndUpdateRecentlyModifiedPosts(posts);
+
     // Post-execution deduplication guarantee
     deduplicateNewsFiles();
 
@@ -2227,6 +2250,81 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
     saveState(state);
   }
 }
+
+/**
+ * Checks recently fetched Fightful posts to see if their title was updated
+ * significantly after we first processed them. If yes, rewrites the Arabic title.
+ * This prevents the "Tailgate Brawl" scenario where Fightful edits articles post-publish.
+ */
+async function checkAndUpdateRecentlyModifiedPosts(posts: any[]): Promise<void> {
+  const fs = await import("fs");
+  const path = await import("path");
+  const newsDir = "content/news";
+
+  for (const post of posts) {
+    const postId = post.id;
+    const rawTitle = post.title?.rendered
+      ?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&")?.trim() || "";
+
+    // Only check posts modified significantly after publish (>20 minutes gap)
+    const publishedAt = post.date_gmt ? new Date(post.date_gmt + (post.date_gmt.endsWith("Z") ? "" : "Z")).getTime() : 0;
+    const modifiedAt = post.modified_gmt ? new Date(post.modified_gmt + (post.modified_gmt.endsWith("Z") ? "" : "Z")).getTime() : 0;
+    const ageHours = (Date.now() - publishedAt) / (1000 * 60 * 60);
+
+    // Only re-check articles published in last 3 hours that were modified >20min after publish
+    if (ageHours > 3 || !publishedAt || !modifiedAt || (modifiedAt - publishedAt) < 20 * 60 * 1000) continue;
+
+    // Find the local file for this post
+    const existing = findExistingNewsFile(postId, post.link);
+    if (!existing) continue;
+
+    try {
+      const filePath = path.join(newsDir, existing);
+      const content = fs.readFileSync(filePath, "utf8");
+
+      // Extract current Arabic title from frontmatter
+      const titleMatch = content.match(/^title:\s*"(.+?)"\s*$/m);
+      if (!titleMatch) continue;
+      const currentArabicTitle = titleMatch[1];
+
+      // Extract original English title stored in source_url line (indirect check via title similarity)
+      // If Fightful's current title doesn't match what we stored, it was updated
+      // We compare by checking if key wrestlers/match types from the new title are missing from current Arabic title
+      const newTitleKeywords = rawTitle
+        .replace(/[^a-zA-Z\s]/g, " ")
+        .split(/\s+/)
+        .filter(w => w.length > 3 && /^[A-Z]/.test(w)); // Proper nouns (capitalized)
+
+      // Check if our Arabic title is missing wrestler names that appear in the updated Fightful title
+      const missingKeyNames = newTitleKeywords.filter(name => {
+        // Convert name to rough Arabic equivalent check using the sanitizer's known names
+        const arabicEquiv = sanitizeWrestlingTerms(name);
+        return arabicEquiv !== name && !currentArabicTitle.includes(arabicEquiv.split(" ")[0]);
+      });
+
+      if (missingKeyNames.length >= 2) {
+        console.log(`[Watcher] 🔄 Fightful updated title for post #${postId}:`);
+        console.log(`   Old Fightful title was different — current Arabic: "${currentArabicTitle}"`);
+        console.log(`   New Fightful title: "${rawTitle}"`);
+        console.log(`   Missing key names in Arabic title: ${missingKeyNames.join(", ")}`);
+        console.log(`   → Marking for re-processing in next run by removing from processedIds`);
+
+        // Remove from processedIds so it gets re-processed in the next watcher run
+        const state = loadState();
+        state.processedIds = state.processedIds.filter((id: number) => id !== postId);
+        // Delete the old file
+        try {
+          fs.unlinkSync(filePath);
+          console.log(`   → Deleted old file: ${filePath}`);
+        } catch (e) { /* ignore */ }
+        saveState(state);
+      }
+    } catch (e) {
+      // Non-critical: if we can't check, just skip
+    }
+  }
+}
+
 
 // Command-line runner
 async function cli() {
