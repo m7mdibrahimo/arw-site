@@ -279,11 +279,12 @@
     "note": "pre-existing (imported from dist/videos)"
   },
   "20260920104800-njpw-road-to-destruction-19-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789925301685,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "title": "عرض ان جيه بي دبليو 19.09.2026 مترجم"
   },
   "20260916122300-progress-the-odyssey-tour-birmingham": {
     "publishedAt": null,
