@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "رسميا.. WWE تعتمد أغنية \"Let 'Em Know\" لنجم الراب T.I كموسيقى افتتاحية جديدة لعرض SmackDown
+title: "رسميا.. WWE تعتمد أغنية \Let Em Know\ لنجم الراب T.I كموسيقى افتتاحية جديدة لعرض SmackDown"
 date: 2026-09-12T06:40:00.000+03:00
 tags:
   - عروض عرض WWE SmackDown
