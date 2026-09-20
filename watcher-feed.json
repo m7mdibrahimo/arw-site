@@ -1,5 +1,15 @@
 [
   {
+    "id": 329526,
+    "link": "https://www.fightful.com/wrestling/marigold-dream-star-grand-prix-finals-results-9-20/",
+    "date": "2026-09-20T15:45:05",
+    "date_gmt": "2026-09-20T19:45:05",
+    "title": {
+      "rendered": "Marigold Dream Star Grand Prix Finals Results (9/20)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/20154442/HSlaxCEaQAAGW9z.jpeg"
+  },
+  {
     "id": 329522,
     "link": "https://www.fightful.com/wrestling/penta-to-speak-bayley-vs-lyra-valkyria-added-to-9-21-wwe-raw/",
     "date": "2026-09-20T15:40:33",
@@ -288,15 +298,5 @@
       "rendered": "Gable Steveson Gets Knocked Out By Sean Sharaf In 12 Seconds At UFC 331"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19221826/Screenshot-2026-09-19-at-10.18.02-PM.png"
-  },
-  {
-    "id": 329430,
-    "link": "https://www.fightful.com/wrestling/kevin-owens-vs-sami-zayn-wwe-title-match-finish-had-to-be-changed/",
-    "date": "2026-09-19T22:11:06",
-    "date_gmt": "2026-09-20T02:11:06",
-    "title": {
-      "rendered": "Kevin Owens Vs. Sami Zayn WWE Title Match Finish Had To Be Changed"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18220256/HSi1w3nWUAAFH_7.jpg"
   }
 ]
