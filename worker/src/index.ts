@@ -315,6 +315,7 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
     const errBody = await res.text().catch(() => "");
     throw new Error(`GitHub read failed: ${res.status} ${errBody}`);
   }
+  const data: any = await res.json();
   let state: PublishState;
   let rawStr = data.content ? base64DecodeUtf8(data.content.replace(/\n/g, "")) : "";
   if (!rawStr && data.git_url) {
@@ -634,7 +635,8 @@ async function claimSend(env: Env, platform: Platform, key: string): Promise<boo
     let state: PublishState;
     try {
       ({ sha, state } = await githubReadState(env));
-    } catch (e) {
+    } catch (e: any) {
+      console.error("[claimSend] githubReadState error:", e?.message || e);
       return false;
     }
     if (state[platform][key]) return false; // already claimed/sent
@@ -646,6 +648,7 @@ async function claimSend(env: Env, platform: Platform, key: string): Promise<boo
       await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
       continue;
     }
+    console.error(`[claimSend] githubWriteState returned false for ${platform} ${key}`);
     return false;
   }
   return false;
@@ -2846,7 +2849,7 @@ export default {
 
       return json({ success: false, error: "Not found" }, 404);
     } catch (error: any) {
-      return json({ success: false, error: error.message || "خطأ في السيرفر" }, 500);
+      return json({ success: false, error: error.message || "خطأ في السيرفر", stack: error.stack }, 500);
     }
   },
 
