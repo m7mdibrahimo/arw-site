@@ -1,5 +1,15 @@
 [
   {
+    "id": 329445,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-9-19-kelani-jordan-headlines/",
+    "date": "2026-09-20T11:00:00",
+    "date_gmt": "2026-09-20T15:00:00",
+    "title": {
+      "rendered": "WWE NXT Live Results (9/19): Kelani Jordan Headlines"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 329481,
     "link": "https://www.fightful.com/wrestling/paige-moved-to-wwe-smackdown-roster-from-free-agency/",
     "date": "2026-09-20T10:12:13",
@@ -288,15 +298,5 @@
       "rendered": "Six Teams Announced For NXT Dusty Rhodes Tag Classic"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15214321/Untitled-Design-14.jpg"
-  },
-  {
-    "id": 329424,
-    "link": "https://www.fightful.com/wrestling/bayley-celebrates-18-years-of-her-wrestling-career/",
-    "date": "2026-09-19T16:25:23",
-    "date_gmt": "2026-09-19T20:25:23",
-    "title": {
-      "rendered": "Bayley Celebrates 18 Years Of Her Wrestling Career"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/07212642/HRqEGoebAAAsw1x.jpeg"
   }
 ]
