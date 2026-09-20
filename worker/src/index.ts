@@ -2749,43 +2749,82 @@ export default {
           const report: any = { telegram: [], facebook: [] };
           const pageToken = await getPageAccessToken(env);
 
-          // 1. Fetch recent Facebook posts & photos
+          // 1. Fetch recent Facebook posts & photos (last 100 posts)
           if (pageToken && env.FACEBOOK_PAGE_ID) {
             const fbRes = await fetch(
-              `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/published_posts?fields=id,message,created_time&limit=60&access_token=${pageToken}`
+              `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/published_posts?fields=id,message,created_time&limit=100&access_token=${pageToken}`
             );
             const fbData: any = await fbRes.json().catch(() => ({}));
-            const posts = fbData.data || [];
+            const posts: any[] = fbData.data || [];
             report.total_fetched = posts.length;
-            report.raw_samples = posts.slice(0, 3);
-            
-            // Map of cleaned message title to posts
-            const seenMessages: Record<string, any[]> = {};
-            for (const p of posts) {
+
+            // Extract title words for semantic similarity
+            const parsedPosts = posts.map(p => {
               const msg = (p.message || "").trim();
               const firstLine = msg.split("\n")[0].trim();
-              if (!firstLine || firstLine.length < 10) continue;
-              // Normalize key: remove dates, special chars
-              const norm = firstLine.replace(/[0-9]+/g, "").replace(/[^a-zA-Z\u0600-\u06FF]/g, "").slice(0, 35);
-              if (!seenMessages[norm]) seenMessages[norm] = [];
-              seenMessages[norm].push(p);
-            }
+              const words = firstLine
+                .replace(/[«»"'\(\)\[\]،.\-:]/g, " ")
+                .split(/\s+/)
+                .filter((w: string) => w.length > 2 && !/^[0-9]+$/.test(w));
+              return {
+                id: p.id,
+                message: msg,
+                firstLine,
+                created_time: p.created_time,
+                time: new Date(p.created_time).getTime(),
+                words: new Set(words)
+              };
+            }).filter(p => p.firstLine.length >= 8);
 
-            for (const [key, group] of Object.entries(seenMessages)) {
-              if (group.length > 1) {
-                // Sort chronologically ascending (oldest first)
-                group.sort((a, b) => new Date(a.created_time).getTime() - new Date(b.created_time).getTime());
-                // Delete all older duplicates, keep the latest one!
-                const toDelete = group.slice(0, group.length - 1);
-                for (const item of toDelete) {
+            const deletedIds = new Set<string>();
+
+            // Compare each pair of posts
+            for (let i = 0; i < parsedPosts.length; i++) {
+              const p1 = parsedPosts[i];
+              if (deletedIds.has(p1.id)) continue;
+
+              for (let j = i + 1; j < parsedPosts.length; j++) {
+                const p2 = parsedPosts[j];
+                if (deletedIds.has(p2.id)) continue;
+
+                // Check word intersection
+                const common: string[] = [];
+                for (const w of Array.from(p1.words)) {
+                  if (p2.words.has(w as string)) common.push(w as string);
+                }
+
+                // Check if they discuss the exact same subject
+                // Condition 1: 4 or more common keywords
+                // Condition 2: specific topic match (e.g. "غريس", "الأجسام" or "شيباتا", "بيري" or "Tailgate" or "سيلويتا" or "إغوانا")
+                const isTopicDuplicate =
+                  common.length >= 4 ||
+                  (common.includes("غريس") && (common.includes("الأجسام") || common.includes("كمال"))) ||
+                  (common.includes("سيلويتا") && common.includes("السيدات")) ||
+                  ((common.includes("Tailgate") || common.includes("brawl") || common.includes("تيلغيت")) && (common.includes("AEW") || common.includes("All"))) ||
+                  (common.includes("هيناري") && common.includes("خان")) ||
+                  (common.includes("أووينز") && common.includes("زين")) ||
+                  (common.includes("ستيفسون") && common.includes("شاراف"));
+
+                if (isTopicDuplicate) {
+                  // Keep newer post, delete older post
+                  const older = p1.time < p2.time ? p1 : p2;
+                  const newer = p1.time < p2.time ? p2 : p1;
+
                   try {
-                    const delRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${item.id}?access_token=${pageToken}`, {
+                    const delRes = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${older.id}?access_token=${pageToken}`, {
                       method: "DELETE",
                     });
                     const delData: any = await delRes.json().catch(() => ({}));
-                    report.facebook.push({ id: item.id, message: item.message.slice(0, 50), deleted: delData.success || false });
+                    deletedIds.add(older.id);
+                    report.facebook.push({
+                      deleted_id: older.id,
+                      deleted_title: older.firstLine,
+                      kept_title: newer.firstLine,
+                      matched_keywords: common,
+                      success: delData.success || false
+                    });
                   } catch (err: any) {
-                    report.facebook.push({ id: item.id, error: err.message });
+                    report.facebook.push({ error: err.message, id: older.id });
                   }
                 }
               }
