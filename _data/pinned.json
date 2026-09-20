@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/aew-collision-19-09-2026",
+    "title": "عرض كوليجن 19.09.2026 مترجم",
+    "subtitle": "AEW Collision 19.09.2026",
+    "image": "/img/hNMaarGkKO-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/lucha-libre-aaa-19-09-2026",
+    "title": "عرض ايه ايه ايه 19.09.2026 مترجم",
+    "subtitle": "Lucha Libre AAA 19.09.2026",
+    "image": "/img/GfJKRoDc4H-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-18-09-2026",
     "title": "عرض سماك داون 18.09.2026 مترجم",
     "subtitle": "WWE Smackdown 18.09.2026",
@@ -86,27 +108,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الثانية مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aaa-triplemania-34-night-1-2026",
-    "title": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى 11.09.2026 مترجم",
-    "subtitle": "AAA TripleMania 34 Night 1 (2026)",
-    "image": "/img/qqgKt1XjG5-800.jpeg",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الاولى مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-collision-12-09-2026",
-    "title": "عرض كوليجن 12.09.2026 مترجم",
-    "subtitle": "AEW Collision 12.09.2026",
-    "image": "/img/t6hFSLz9ij-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض كامل",
-    "badge": "حصري ومترجم",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث المشتعلة وتحديات نجوم AEW الكبار."
   }
 ]
