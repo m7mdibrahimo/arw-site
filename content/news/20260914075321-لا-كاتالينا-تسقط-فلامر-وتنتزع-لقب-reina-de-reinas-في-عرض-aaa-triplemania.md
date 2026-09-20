@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "لا كاتالينا تسقط فلامر وتنتزع لقب Reina de Reinas في عرض AAA Triplemanía"
+title: لا كاتالينا تسقط فلامر وتنتزع لقب Reina de Reinas في عرض AAA تريبل مانيا
 date: 2026-09-14T07:53:21.000+03:00
 source_id: 328377
 source_url: "https://www.fightful.com/wrestling/la-catalina-ends-flammers-reign-as-aaa-reina-de-reinas-champion-at-triplemania-34/"
