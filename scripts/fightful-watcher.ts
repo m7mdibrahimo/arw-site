@@ -768,13 +768,17 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bMotor\s+City\s+Machine\s+Guns\b/gi, "موتور سيتي ماشين غانز")
     .replace(/\bPerros\s+Del\s+Mal\b/gi, "بيروس ديل مال")
 
+    // Preserve promotion names in English as requested
+    .replace(/\bRising\s+Stars\s+of\s+Women['’]?s\s+Wrestling\b/gi, "Rising Stars of Women’s Wrestling")
+    .replace(/\bRising\s+Stars\s+of\s*بطولة\s+السيدات\s+Wrestling\b/gi, "Rising Stars of Women’s Wrestling")
+
     // 9. Enforce Arabic for Championship Titles without duplicating federation acronym inside the title
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Heavyweight(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للوزن الثقيل")
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Intercontinental(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة القارات")
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*United\s+States(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة الولايات المتحدة")
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women'?s\s+World(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للسيدات")
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women'?s(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة السيدات")
-    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Tag\s+Team(?:\s+Championship|\s+Titles|\s+Title)?\b/gi, "بطولة العالم للزوجي")
+    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Heavyweight\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة العالم للوزن الثقيل")
+    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Intercontinental\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة القارات")
+    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*United\s+States\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة الولايات المتحدة")
+    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women['’]?s\s+World\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة العالم للسيدات")
+    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Women['’]?s\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة السيدات")
+    .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Tag\s+Team\s+(?:Championship|Titles|Title|Champions?)\b/gi, "بطولة العالم للزوجي")
     .replace(/بطولة\s+بطولة/g, "بطولة")
 
     // 10. Wrestling-specific terminology fixes (sport-accurate Arabic)
@@ -1217,6 +1221,8 @@ export function translateTitleDeterministic(englishTitle: string): string | null
     // Roster must come BEFORE championship patterns to avoid "Women's Roster" clash
     [/\b(WWE|AEW|TNA|ROH|NXT|SmackDown|RAW)\s+Roster\b/gi, "قائمة $1"],
     [/\bRoster\b/gi, "القائمة"],
+    // Promotions to preserve in English as requested
+    [/\bRising\s+Stars\s+of\s+Women[''\u2019]?s\s+Wrestling\b/gi, "Rising Stars of Women’s Wrestling"],
     // Women's patterns — must come before generic World/Champion patterns
     [/\bWomen[''\u2019]?s\s+World\s+(?:Heavyweight\s+)?Champion(?:ship)?\b/gi, "بطولة العالم للسيدات"],
     [/\bWomen[''\u2019]?s\s+Tag\s+Team\s+Champion(?:ship)?\b/gi, "بطولة الزوجي للسيدات"],
@@ -1788,6 +1794,7 @@ export async function optimizeTitleForSEOAndCTR(
       - **Paige** يُكتب بالعربية حصراً: **بايج** (ممنوع منعاً باتاً كتابة: "بايد" أو "بيج" أو "بيدج"؛ اسمها المعتمد حصراً هو: **بايج**).
       - **Natalya / Nattie / Natty** يُكتب بالعربية حصراً: **ناتاليا** (ممنوع منعاً باتاً كتابة: "ناتي" أو "نتاليا"؛ اسمها المعتمد حصراً هو: **ناتاليا**).
       - **Logan Paul** يُكتب بالعربية حصراً: **لوغان بول** (ممنوع منعاً باتاً كتابة: "لغان بول" أو "لوجن بول" أو "لوجان بول"؛ اسمه المعتمد حصراً في الموقع هو: **لوغان بول**).
+      - **Rising Stars of Women’s Wrestling**: اسم هذا الاتحاد يُكتب بالإنجليزية كما هو تماماً دون ترجمة أو تعريب (اكتب: **Rising Stars of Women’s Wrestling** وممنوع منعاً باتاً ترجمته أو تجزئته أو كتابة بطولة السيدات في اسمه).
       - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو.
   - **قاعدة مصطلحات Roster و Free Agency (حاسمة وإلزامية)**:
     - **Roster** = **قائمة** (ممنوع كتابة: "روستر" أو "قائمة عرض"؛ الصحيح: "قائمة WWE SmackDown" أو "قائمة WWE RAW").
