@@ -64,6 +64,16 @@ function getTargetContentFile(input?: string): string {
   }
   if (input) {
     const rawInput = input.trim();
+    if (rawInput === 'show' || rawInput === 'shows' || rawInput === 'shows:latest') {
+      const showDir = path.join(ROOT_DIR, 'content/shows');
+      if (fs.existsSync(showDir)) {
+        const sFiles = fs.readdirSync(showDir).filter(f => f.endsWith('.md'));
+        if (sFiles.length) {
+          sFiles.sort((a, b) => fs.statSync(path.join(showDir, b)).mtimeMs - fs.statSync(path.join(showDir, a)).mtimeMs);
+          return path.join(showDir, sFiles[0]);
+        }
+      }
+    }
     // Strip domain and route prefixes
     const clean = rawInput
       .replace(/^(?:https?:\/\/[^\/]+)?\/?(?:news|shows|recaps|nostalgia)\//, '')
@@ -90,11 +100,19 @@ function getTargetContentFile(input?: string): string {
     }
   }
 
-  // Fallback: newest file in content/news
-  const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith('.md'));
-  if (!files.length) throw new Error('No content files found in content/news');
-  files.sort((a, b) => fs.statSync(path.join(NEWS_DIR, b)).mtimeMs - fs.statSync(path.join(NEWS_DIR, a)).mtimeMs);
-  return path.join(NEWS_DIR, files[0]);
+  // Fallback: newest file across content/shows and content/news
+  const candidates: { file: string; mtime: number }[] = [];
+  for (const dir of [path.join(ROOT_DIR, 'content/shows'), NEWS_DIR]) {
+    if (fs.existsSync(dir)) {
+      for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.md'))) {
+        const full = path.join(dir, f);
+        candidates.push({ file: full, mtime: fs.statSync(full).mtimeMs });
+      }
+    }
+  }
+  if (!candidates.length) throw new Error('No content files found in content/shows or content/news');
+  candidates.sort((a, b) => b.mtime - a.mtime);
+  return candidates[0].file;
 }
 
 export async function generateNewsVideo(inputTarget?: string) {
@@ -125,34 +143,35 @@ export async function generateNewsVideo(inputTarget?: string) {
   const ctaText = isShow ? 'شاهد العرض كاملاً عبر موقعنا:' : 'التفاصيل الكاملة عبر موقعنا:';
 
   // Dynamic font sizing & positioning for titles and cards
-  let titleFontSize = 58;
-  let titleLineHeight = 1.22;
-  let titleTop = 835;
-  let barHeight = 48;
+  let titleFontSize = isShow ? 45 : 50;
+  let titleLineHeight = isShow ? 1.16 : 1.22;
+  let titleTop = isShow ? 830 : 775;
+  let barHeight = isShow ? 38 : 44;
   if (!isShow) {
-    titleTop = 785;
     if (title.length > 70) {
       titleFontSize = 42;
       titleLineHeight = 1.28;
       barHeight = 36;
     } else if (title.length > 45) {
       titleFontSize = 46;
-      titleLineHeight = 1.28;
-      barHeight = 40;
-    } else {
-      titleFontSize = 52;
       titleLineHeight = 1.26;
-      barHeight = 44;
-    }
-  } else if (title.length > 50) {
-    if (title.length > 70) {
-      titleFontSize = 44;
-      titleLineHeight = 1.24;
-      barHeight = 38;
+      barHeight = 40;
     } else {
       titleFontSize = 50;
       titleLineHeight = 1.22;
       barHeight = 44;
+    }
+  } else {
+    // Shows: calibrated to 45px for comfortable, eye-friendly readability on a single line
+    if (title.length > 55) {
+      titleFontSize = 40;
+      barHeight = 34;
+    } else if (title.length > 40) {
+      titleFontSize = 42;
+      barHeight = 36;
+    } else {
+      titleFontSize = 45;
+      barHeight = 38;
     }
   }
 
@@ -452,9 +471,11 @@ export async function generateNewsVideo(inputTarget?: string) {
         top: ${titleTop}px;
         left: 60px;
         right: 60px;
+        width: 960px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        align-items: flex-start;
+        gap: 10px;
         z-index: 20;
       }
       .headline {
@@ -467,15 +488,12 @@ export async function generateNewsVideo(inputTarget?: string) {
         color: #ffffff;
         text-shadow: 0 4px 25px rgba(0, 0, 0, 1), 0 2px 8px #000000;
         white-space: nowrap;
-        overflow: visible;
-        max-width: 100%;
+        width: max-content;
+        max-width: 960px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      .headline-text-inner {
-        white-space: nowrap;
-        display: inline;
-      }
-      .headline::before {
-        content: '';
+      .headline-bar {
         display: inline-block;
         width: 8px;
         min-width: 8px;
@@ -485,26 +503,39 @@ export async function generateNewsVideo(inputTarget?: string) {
         box-shadow: 0 0 16px #ef4444, 0 0 24px #f59e0b;
         flex-shrink: 0;
       }
+      .headline-text {
+        white-space: nowrap;
+        display: inline-block;
+      }
       .secondary-title {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 14px;
-        font-size: 36px;
+        gap: 12px;
+        font-size: 30px;
         font-weight: 900;
+        line-height: 1.15;
         color: #fbbf24;
         letter-spacing: 0.5px;
         direction: ltr;
-        text-align: right;
+        text-align: left;
+        width: 100%;
+        justify-content: flex-start;
         text-shadow: 0 2px 16px rgba(0, 0, 0, 1);
+        white-space: nowrap;
+        max-width: 960px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .secondary-title::before {
         content: '';
         display: inline-block;
-        width: 8px;
-        height: 30px;
+        width: 6px;
+        min-width: 6px;
+        height: 24px;
         background: #fbbf24;
-        border-radius: 4px;
+        border-radius: 3px;
         box-shadow: 0 0 16px #fbbf24;
+        flex-shrink: 0;
       }
 
       /* Show Specs / Stats Grid (Enlarged & Prominent) */
@@ -692,7 +723,10 @@ export async function generateNewsVideo(inputTarget?: string) {
       ${isShow ? `<div class="feature-ribbon" id="featureRibbon">${chipsHtml}</div>` : ''}
 
       <div class="titles-section" id="titlesSection">
-        <h1 class="headline" id="headlineText">${escapeHtml(title)}</h1>
+        <h1 class="headline" id="headlineText">
+          <span class="headline-bar"></span>
+          <span class="headline-text" id="headlineTextInner">${escapeHtml(title)}</span>
+        </h1>
         ${secondaryTitle ? `<div class="secondary-title" id="secondaryTitle">${escapeHtml(secondaryTitle)}</div>` : ''}
       </div>
 
@@ -770,25 +804,24 @@ export async function generateNewsVideo(inputTarget?: string) {
       window.__timelines["main"] = tl;
       tl.seek(0);
 
-      // ── Auto-fit Arabic headline to single line ──────────────────────────
-      // Runs immediately (synchronous) so the layout is correct before HyperFrames
-      // captures frames. The container is 1080px wide with 60px padding on each side = 960px.
-      // The ::before pseudo-element bar takes ~24px (8px width + 16px gap).
-      (function fitHeadlineToOneLine() {
+      // ── Auto-fit Arabic headline strictly to single line at maximum legible size ──
+      function fitHeadlineToOneLine() {
         var el = document.getElementById('headlineText');
-        if (!el) return;
-        var container = el.parentElement || document.getElementById('root');
-        var maxWidth = container ? (container.offsetWidth || 960) - 0 : 960;
-        // Measure usable width: subtract the ::before bar (8px) + gap (16px) + small buffer
-        var usableWidth = maxWidth - 36;
-        var minSize = 26;
-        var currentSize = parseFloat(window.getComputedStyle(el).fontSize) || ${titleFontSize};
-        // Step font size down until scrollWidth fits inside usable width
-        while (el.scrollWidth > usableWidth && currentSize > minSize) {
+        var inner = document.getElementById('headlineTextInner');
+        if (!el || !inner) return;
+        var maxAllowedWidth = 920; // 960px container minus 40px for bar & margins
+        var currentSize = ${titleFontSize};
+        var minSize = 36; // Keep it bold and clearly readable, never shrink to tiny text
+        el.style.fontSize = currentSize + 'px';
+        while ((inner.offsetWidth + 36) > maxAllowedWidth && currentSize > minSize) {
           currentSize -= 1;
           el.style.fontSize = currentSize + 'px';
         }
-      })();
+      }
+      fitHeadlineToOneLine();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(fitHeadlineToOneLine);
+      }
     </script>
   </body>
 </html>`;
@@ -832,6 +865,21 @@ export async function generateNewsVideo(inputTarget?: string) {
     renderedAt: Date.now(),
   };
   fs.writeFileSync(path.join(OUT_DIR, 'latest-render.json'), JSON.stringify(latestRender, null, 2), 'utf-8');
+
+  // Also append to batch queue for multi-item publishing
+  const queuePath = path.join(OUT_DIR, 'rendered-queue.json');
+  let queue: any[] = [];
+  if (fs.existsSync(queuePath)) {
+    try {
+      const parsed = JSON.parse(fs.readFileSync(queuePath, 'utf-8'));
+      if (Array.isArray(parsed)) queue = parsed;
+    } catch {
+      queue = [];
+    }
+  }
+  queue.push(latestRender);
+  fs.writeFileSync(queuePath, JSON.stringify(queue, null, 2), 'utf-8');
+
   updateVideosManifest();
 
   return {

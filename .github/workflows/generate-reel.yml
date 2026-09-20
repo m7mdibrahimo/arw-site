@@ -76,25 +76,47 @@ jobs:
         env:
           INPUT_SLUG: ${{ github.event.inputs.slug }}
         run: |
-          echo "Determining target content to render..."
+          echo "Determining target shows to render..."
+          TARGETS=()
           if [ -n "$INPUT_SLUG" ] && [ "$INPUT_SLUG" != "latest" ]; then
-            TARGET="$INPUT_SLUG"
+            TARGETS+=("$INPUT_SLUG")
           else
-            # If triggered by a push event, find the modified show file in the commit
-            CHANGED_SHOW=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '^content/shows/' | head -1 || true)
-            if [ -n "$CHANGED_SHOW" ]; then
-              echo "Detected pushed show file: $CHANGED_SHOW"
-              TARGET="$CHANGED_SHOW"
+            # 1. Inspect git push diff for all changed shows
+            if [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+              PUSH_SHOWS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^content/shows/.*\.md$' || true)
             else
-              TARGET="latest"
+              PUSH_SHOWS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '^content/shows/.*\.md$' || true)
             fi
+            for S in $PUSH_SHOWS; do
+              if [ -f "$S" ]; then
+                TARGETS+=("$S")
+              fi
+            done
+
+            # 2. Safety catch-up: scan recent shows (last 10) and render any show missing its video
+            for F in $(ls -t content/shows/*.md 2>/dev/null | head -10); do
+              SLUG=$(basename "$F" .md | cut -c 1-45)
+              if [ ! -f "dist/videos/reel-$SLUG.mp4" ]; then
+                echo "Found show missing reel video: $F"
+                if [[ ! " ${TARGETS[*]} " =~ " ${F} " ]]; then
+                  TARGETS+=("$F")
+                fi
+              fi
+            done
           fi
-          echo "Rendering reel for target: $TARGET"
-          if [ "$TARGET" = "latest" ]; then
-            xvfb-run -a npx tsx scripts/generate-news-video.ts
-          else
-            xvfb-run -a npx tsx scripts/generate-news-video.ts "$TARGET"
+
+          if [ ${#TARGETS[@]} -eq 0 ]; then
+            echo "No specific show targets found. Rendering latest show..."
+            TARGETS+=("shows:latest")
           fi
+
+          echo "Target shows to render: ${TARGETS[*]}"
+          for T in "${TARGETS[@]}"; do
+            echo "----------------------------------------"
+            echo "🎬 Rendering reel for: $T"
+            echo "----------------------------------------"
+            xvfb-run -a npx tsx scripts/generate-news-video.ts "$T"
+          done
 
       - name: Commit and push generated video to main
         run: |

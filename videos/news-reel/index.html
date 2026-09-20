@@ -224,57 +224,77 @@
         box-shadow: 0 4px 18px rgba(56, 189, 248, 0.35);
       }
 
-      /* Titles Area (Moved down for breathing room) */
+      /* Titles Area (Dynamic spacing and sizing) */
       .titles-section {
         position: absolute;
-        top: 835px;
+        top: 830px;
         left: 60px;
         right: 60px;
+        width: 960px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        align-items: flex-start;
+        gap: 10px;
         z-index: 20;
       }
       .headline {
         display: inline-flex;
         align-items: center;
         gap: 16px;
-        font-size: 58px;
+        font-size: 45px;
         font-weight: 900;
-        line-height: 1.22;
+        line-height: 1.16;
         color: #ffffff;
         text-shadow: 0 4px 25px rgba(0, 0, 0, 1), 0 2px 8px #000000;
+        white-space: nowrap;
+        width: max-content;
+        max-width: 960px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
-      .headline::before {
-        content: '';
+      .headline-bar {
         display: inline-block;
         width: 8px;
-        height: 48px;
+        min-width: 8px;
+        height: 38px;
         background: linear-gradient(180deg, #ef4444, #f59e0b);
         border-radius: 4px;
         box-shadow: 0 0 16px #ef4444, 0 0 24px #f59e0b;
         flex-shrink: 0;
       }
+      .headline-text {
+        white-space: nowrap;
+        display: inline-block;
+      }
       .secondary-title {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: 14px;
-        font-size: 36px;
+        gap: 12px;
+        font-size: 30px;
         font-weight: 900;
+        line-height: 1.15;
         color: #fbbf24;
         letter-spacing: 0.5px;
         direction: ltr;
-        text-align: right;
+        text-align: left;
+        width: 100%;
+        justify-content: flex-start;
         text-shadow: 0 2px 16px rgba(0, 0, 0, 1);
+        white-space: nowrap;
+        max-width: 960px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .secondary-title::before {
         content: '';
         display: inline-block;
-        width: 8px;
-        height: 30px;
+        width: 6px;
+        min-width: 6px;
+        height: 24px;
         background: #fbbf24;
-        border-radius: 4px;
+        border-radius: 3px;
         box-shadow: 0 0 16px #fbbf24;
+        flex-shrink: 0;
       }
 
       /* Show Specs / Stats Grid (Enlarged & Prominent) */
@@ -347,6 +367,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        
       }
       .summary-tag {
         display: inline-flex;
@@ -368,10 +389,12 @@
         box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
       }
       .summary-text {
+        font-family: 'Tajawal', sans-serif;
         font-size: 36px;
         font-weight: 700;
         color: #ffffff;
-        line-height: 1.55;
+        line-height: 1.6;
+        
         text-shadow: 0 2px 14px rgba(0, 0, 0, 1);
       }
       .summary-footer {
@@ -381,6 +404,7 @@
         font-size: 26px;
         font-weight: 800;
         color: #e2e8f0;
+        
       }
       .summary-dot {
         width: 10px;
@@ -448,7 +472,7 @@
 
       <div class="media-showcase-container" id="mediaContainer">
         <div class="media-showcase" id="mediaCard">
-          <img id="heroImg" src="assets/news-cover.jpg" alt="عرض الرو 03.08.2026 مترجم" />
+          <img id="heroImg" src="assets/news-cover.jpg" alt="عرض مين ايفنت 17.09.2026 مترجم" />
           <div class="card-gloss"></div>
           <div class="card-sheen" id="cardSheen"></div>
           <div class="fed-tag-floating" id="fedTag">WWE</div>
@@ -457,24 +481,26 @@
 
       <div class="feature-ribbon" id="featureRibbon">
         <div class="ribbon-chip gold">⚡ جودة عالية</div>
-        <div class="ribbon-chip cyan">🎙️ ترجمة حصرية</div>
-      </div>
+        <div class="ribbon-chip cyan">🎙️ ترجمة حصرية</div></div>
 
       <div class="titles-section" id="titlesSection">
-        <h1 class="headline" id="headlineText">عرض الرو 03.08.2026 مترجم</h1>
-        <div class="secondary-title" id="secondaryTitle">RAW 03.08.2026</div>
+        <h1 class="headline" id="headlineText">
+          <span class="headline-bar"></span>
+          <span class="headline-text" id="headlineTextInner">عرض مين ايفنت 17.09.2026 مترجم</span>
+        </h1>
+        <div class="secondary-title" id="secondaryTitle">WWE Main Event 17.09.2026</div>
       </div>
 
       <div class="specs-grid" id="specsGrid">
         <div class="spec-card">
           <span class="spec-icon">⏱️</span>
           <span class="spec-label">المدة الزمنية</span>
-          <span class="spec-val">02:37:11</span>
+          <span class="spec-val">00:30:09</span>
         </div>
         <div class="spec-card">
           <span class="spec-icon">📅</span>
           <span class="spec-label">تاريخ الحدث</span>
-          <span class="spec-val">3 أغسطس</span>
+          <span class="spec-val">17 سبتمبر</span>
         </div>
         <div class="spec-card">
           <span class="spec-icon">🏆</span>
@@ -488,7 +514,7 @@
           <div class="summary-tag">✨ نبذة عن العرض</div>
           <div class="summary-pill-live">متاح الآن</div>
         </div>
-        <p class="summary-text" id="summaryText">عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.</p>
+        <p class="summary-text" id="summaryText">عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.</p>
         <div class="summary-footer">
           <div class="summary-dot"></div>
           <span id="summaryFooterText">سيرفرات سريعة ومشاهدة مباشرة بدون إعلانات مزعجة</span>
@@ -538,6 +564,25 @@
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = tl;
       tl.seek(0);
+
+      // ── Auto-fit Arabic headline strictly to single line at maximum legible size ──
+      function fitHeadlineToOneLine() {
+        var el = document.getElementById('headlineText');
+        var inner = document.getElementById('headlineTextInner');
+        if (!el || !inner) return;
+        var maxAllowedWidth = 920; // 960px container minus 40px for bar & margins
+        var currentSize = 45;
+        var minSize = 36; // Keep it bold and clearly readable, never shrink to tiny text
+        el.style.fontSize = currentSize + 'px';
+        while ((inner.offsetWidth + 36) > maxAllowedWidth && currentSize > minSize) {
+          currentSize -= 1;
+          el.style.fontSize = currentSize + 'px';
+        }
+      }
+      fitHeadlineToOneLine();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(fitHeadlineToOneLine);
+      }
     </script>
   </body>
 </html>
