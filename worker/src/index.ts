@@ -290,7 +290,7 @@ type PublishState = {
   // every edge location), which is exactly as long as the watcher's cron
   // interval, so a cooldown written in KV on one tick could still read as
   // "not set" on the very next tick and get silently ignored.
-  cooldowns: Partial<Record<"facebook" | "x", number>>;
+  cooldowns: Partial<Record<"facebook" | "instagram" | "x", number>>;
   lastStoryAt?: number;
 };
 
@@ -368,8 +368,9 @@ async function githubWriteState(
   sha: string | null,
   message: string
 ): Promise<{ ok: boolean; conflict?: boolean }> {
+  const commitMessage = message.includes("[skip ci]") ? message : `${message} [skip ci]`;
   const body: any = {
-    message,
+    message: commitMessage,
     content: base64EncodeUtf8(JSON.stringify(state, null, 2)),
     branch: env.GITHUB_BRANCH,
   };
@@ -439,9 +440,10 @@ async function githubWriteWatcherState(
   sha: string | null,
   message: string
 ): Promise<{ ok: boolean }> {
+  const commitMessage = message.includes("[skip ci]") ? message : `${message} [skip ci]`;
   const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/watcher-state.json`;
   const body: any = {
-    message,
+    message: commitMessage,
     content: base64EncodeUtf8(JSON.stringify(state, null, 2)),
     branch: env.GITHUB_BRANCH,
   };
@@ -628,35 +630,76 @@ async function githubDeleteVideoFile(env: Env, filename: string): Promise<{ ok: 
 
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
-async function claimSend(env: Env, platform: Platform, key: string): Promise<boolean> {
+async function claimSend(env: Env, platform: Platform, key: string, force = false): Promise<boolean> {
   if (!key) return true;
+  try {
+    const { state } = await githubReadState(env);
+    if (!force && state[platform]?.[key]) return false; // already sent
+  } catch (e: any) {
+    console.error("[claimSend] githubReadState error:", e?.message || e);
+    return false;
+  }
+
+  // Use KV lock for in-flight requests to prevent concurrent execution without committing to Git
+  const lockKey = `lock:${platform}:${key}`;
+  try {
+    const locked = await env.PUSH_KV.get(lockKey);
+    if (locked && !force) return false;
+    await env.PUSH_KV.put(lockKey, "1", { expirationTtl: 300 }); // 5 minutes TTL
+  } catch (e) {}
+
+  // Check persistent fail backoff in KV (skip if failed 5 times recently)
+  const failKey = `fail:${platform}:${key}`;
+  try {
+    const fails = parseInt((await env.PUSH_KV.get(failKey)) || "0");
+    if (fails >= 5 && !force) return false;
+  } catch (e) {}
+
+  return true;
+}
+
+async function markSendSuccess(env: Env, platform: Platform, key: string): Promise<void> {
+  if (!key) return;
+  const lockKey = `lock:${platform}:${key}`;
+  const failKey = `fail:${platform}:${key}`;
+  try {
+    await env.PUSH_KV.delete(lockKey);
+    await env.PUSH_KV.delete(failKey);
+  } catch (e) {}
+
   for (let attempt = 0; attempt < 5; attempt++) {
     let sha: string | null;
     let state: PublishState;
     try {
       ({ sha, state } = await githubReadState(env));
     } catch (e: any) {
-      console.error("[claimSend] githubReadState error:", e?.message || e);
-      return false;
+      return;
     }
-    if (state[platform][key]) return false; // already claimed/sent
+    if (state[platform]?.[key]) return; // already marked
 
     state[platform][key] = Date.now();
     const write = await githubWriteState(env, state, sha, `chore(publish): mark ${platform} sent — ${key}`);
-    if (write.ok) return true;
+    if (write.ok) return;
     if (write.conflict) {
       await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
       continue;
     }
-    console.error(`[claimSend] githubWriteState returned false for ${platform} ${key}`);
-    return false;
+    return;
   }
-  return false;
 }
 
 async function releaseSendClaim(env: Env, platform: Platform, key: string): Promise<void> {
   if (!key) return;
-  for (let attempt = 0; attempt < 5; attempt++) {
+  const lockKey = `lock:${platform}:${key}`;
+  const failKey = `fail:${platform}:${key}`;
+  try {
+    await env.PUSH_KV.delete(lockKey);
+    const fails = parseInt((await env.PUSH_KV.get(failKey)) || "0");
+    await env.PUSH_KV.put(failKey, String(fails + 1), { expirationTtl: 86400 });
+  } catch (e) {}
+
+  // If key was somehow already recorded in GitHub state (e.g. forced retry or legacy claim), clean it up
+  for (let attempt = 0; attempt < 3; attempt++) {
     let sha: string | null;
     let state: PublishState;
     try {
@@ -664,15 +707,11 @@ async function releaseSendClaim(env: Env, platform: Platform, key: string): Prom
     } catch (e) {
       return;
     }
-    if (!state[platform][key]) return;
+    if (!state[platform]?.[key]) return;
     delete state[platform][key];
     const write = await githubWriteState(env, state, sha, `chore(publish): release ${platform} claim — ${key} (send failed)`);
-    if (write.ok) return;
-    if (write.conflict) {
-      await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
-      continue;
-    }
-    return;
+    if (write.ok || !write.conflict) return;
+    await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
   }
 }
 
@@ -818,7 +857,7 @@ function extractBufferRateLimitDuration(result: any): number {
   return 24 * 60 * 60 * 1000;
 }
 
-async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): Promise<number> {
+async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "instagram" | "x"): Promise<number> {
   try {
     const { state } = await githubReadState(env);
     return state.cooldowns?.[platform] || 0;
@@ -827,7 +866,7 @@ async function getPlatformCooldownUntil(env: Env, platform: "facebook" | "x"): P
   }
 }
 
-async function setPlatformCooldown(env: Env, platform: "facebook" | "x", durationMs: number): Promise<void> {
+async function setPlatformCooldown(env: Env, platform: "facebook" | "instagram" | "x", durationMs: number): Promise<void> {
   const now = Date.now();
   const until = now + durationMs;
 
@@ -864,8 +903,8 @@ async function setPlatformCooldown(env: Env, platform: "facebook" | "x", duratio
   }
 }
 
-async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "x"): Promise<void> {
-  const durationMs = platform === "facebook" ? 2 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
+async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "instagram" | "x"): Promise<void> {
+  const durationMs = platform === "facebook" ? 2 * 60 * 60 * 1000 : (platform === "instagram" ? 6 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000);
   await setPlatformCooldown(env, platform, durationMs);
 }
 
@@ -1127,7 +1166,15 @@ const kvKey = `ig-pending:${key}`;
         }
       );
       const createResult: any = await createRes.json().catch(() => ({}));
-      if (!createResult.id) return { ok: false, result: createResult };
+      if (!createResult.id) {
+        const errCode = createResult?.error?.code;
+        const errSubcode = createResult?.error?.error_subcode;
+        const isThrottled = [4, 9, 17, 32, 613].includes(errCode) || errSubcode === 2207069 || errSubcode === 2207051;
+        if (isThrottled) {
+          await setPlatformDailyLimitCooldown(env, "instagram");
+        }
+        return { ok: false, result: createResult };
+      }
       containerId = createResult.id;
       try {
         await env.PUSH_KV.put(
@@ -1198,8 +1245,12 @@ const kvKey = `ig-pending:${key}`;
     // check the account instead of an automatic retry.
     const errCode = publishResult?.error?.code;
     const errSubcode = publishResult?.error?.error_subcode;
-    const isBlocked = errCode === 4 || errSubcode === 2207051;
-    if (isBlocked || publishResult.__unparsed) return { ok: false, result: publishResult, ambiguous: true };
+    const isBlocked = [4, 9, 17, 32, 613].includes(errCode) || errSubcode === 2207051 || errSubcode === 2207069;
+    if (isBlocked) {
+      await setPlatformDailyLimitCooldown(env, "instagram");
+      return { ok: false, result: publishResult, ambiguous: true };
+    }
+    if (publishResult.__unparsed) return { ok: false, result: publishResult, ambiguous: true };
 
     // A clean rejection of the container itself (not a throttle) — it's
     // genuinely invalid, so clear the cache rather than let a retry poll
@@ -1856,13 +1907,13 @@ async function publishToPlatform(
   // manual "publish anyway" button) bypasses this, same as it bypasses the
   // normal claim.
   // Only X is subject to Buffer cooldown; Facebook is now direct Meta Graph API
-  if (!force && platform === "x") {
+  if (!force && (platform === "x" || platform === "facebook" || platform === "instagram")) {
     const cooldownUntil = await getPlatformCooldownUntil(env, platform);
     if (Date.now() < cooldownUntil) return { status: "rate_limited" };
   }
 
   if (force) await releaseSendClaim(env, platform, key);
-  if (!(await claimSend(env, platform, key))) return { status: "already_sent" };
+  if (!(await claimSend(env, platform, key, force))) return { status: "already_sent" };
 
   let ok = false;
   let skipped = false;
@@ -1902,7 +1953,10 @@ async function publishToPlatform(
     raw = r.result;
   }
 
-  if (ok) return { status: "sent" };
+  if (ok) {
+    await markSendSuccess(env, platform, key);
+    return { status: "sent" };
+  }
 
   // An ambiguous outcome means we genuinely don't know whether the post
   // went live on the platform's side (network error right at the publish
@@ -2056,11 +2110,13 @@ async function runWatcherPoll(env: Env): Promise<void> {
     }
 
     const xCooldown = (state.cooldowns?.x || 0) > now;
+    const igCooldown = (state.cooldowns?.instagram || 0) > now;
+    const fbCooldown = (state.cooldowns?.facebook || 0) > now;
 
     // Determine what can actually be attempted right now
     const canDoTg = !tgDone;
-    const canDoIg = !igDone;
-    const canDoFb = !fbDone; // Direct Meta Graph API (instant, unlimited)
+    const canDoIg = !igDone && !igCooldown;
+    const canDoFb = !fbDone && !fbCooldown;
     const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
     // If nothing actionable can be done for this item, skip it
