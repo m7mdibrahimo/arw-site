@@ -1,7 +1,7 @@
 ---
 federation: AEW
 title: "الدفاع عن بطولة العالم للزوجي الثلاثي في عرض AEW Dynamite وعرض AEW Collision القادم"
-permalink: /news/الدفاع-عن-بطولة-العالم-للزوجي-الثلاثي-في-عرض-aew-dynamite-وعرض-aew-collision-بتاريخ-23-سبتمبر.html
+permalink: /news/الدفاع-عن-بطولة-العالم-للزوجي-الثلاثي-في-عرض-aew-dynamite-وعرض-aew-collision-بتاريخ-23-سبتمبر/index.html
 date: 2026-09-17T05:22:31.000+03:00
 source_id: 328883
 source_url: "https://www.fightful.com/wrestling/aew-world-trios-titles-to-be-defended-on-9-23-aew-dynamite-collision/"

@@ -1,6 +1,6 @@
 {
   "layout": "post-layout.njk",
   "eleventyComputed": {
-    "permalink": "/nostalgia/{{ (title or page.fileSlug) | arabicSlug }}.html"
+    "permalink": "/nostalgia/{{ (title or page.fileSlug) | arabicSlug }}/index.html"
   }
 }
