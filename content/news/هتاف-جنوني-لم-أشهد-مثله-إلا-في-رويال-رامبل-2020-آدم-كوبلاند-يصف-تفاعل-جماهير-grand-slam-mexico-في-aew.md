@@ -1,5 +1,5 @@
 ---
-federation: WWE
+federation: AEW
 title: '"هتاف جنوني لم أشهد مثله إلا في رويال رامبل 2020!".. آدم كوبلاند يصف
   تفاعل جماهير Grand Slam Mexico في AEW'
 date: 2026-08-20T07:30:00.000+03:00
