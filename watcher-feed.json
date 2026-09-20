@@ -1,5 +1,25 @@
 [
   {
+    "id": 329439,
+    "link": "https://www.fightful.com/mma/gable-steveson-gets-knocked-out-by-sean-sharaf-in-12-seconds-at-ufc-331/",
+    "date": "2026-09-19T22:19:23",
+    "date_gmt": "2026-09-20T02:19:23",
+    "title": {
+      "rendered": "Gable Steveson Gets Knocked Out By Sean Sharaf In 12 Seconds At UFC 331"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19221826/Screenshot-2026-09-19-at-10.18.02-PM.png"
+  },
+  {
+    "id": 329430,
+    "link": "https://www.fightful.com/wrestling/kevin-owens-vs-sami-zayn-wwe-title-match-finish-had-to-be-changed/",
+    "date": "2026-09-19T22:11:06",
+    "date_gmt": "2026-09-20T02:11:06",
+    "title": {
+      "rendered": "Kevin Owens Vs. Sami Zayn WWE Title Match Finish Had To Be Changed"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18220256/HSi1w3nWUAAFH_7.jpg"
+  },
+  {
     "id": 329426,
     "link": "https://www.fightful.com/mma/ciryl-gane-vs-josh-hokit-amanda-nunes-vs-kayla-harrison-set-for-ufc-334/",
     "date": "2026-09-19T22:04:54",
@@ -35,7 +55,7 @@
     "date": "2026-09-19T21:02:04",
     "date_gmt": "2026-09-20T01:02:04",
     "title": {
-      "rendered": "Bang Bang Gang Vs. Death Riders And The Dogs 8-Man Tailgate Brawl Set For AEW Tailgate Brawl"
+      "rendered": "8-Man Tailgate Brawl, Jack Perry Vs. Katsuyori Shibata Set For AEW All Out Tailgate Brawl"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19214100/HSn6JLMW0AAmJkv-1.jpg"
   },
@@ -278,25 +298,5 @@
       "rendered": "Swerve Strickland Wants To Work With Tyler, The Creator, &#8216;I Would Collab With Him On Anything&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/09143729/aew-dynamite-spoilers-swerve-strickland-promo-v0-dDQ3NTNuanp4cXpnMWqqTLbQg9PoPHWIJYmCCXI1YwCy8BEUw4SUt6_JR2V_.webp"
-  },
-  {
-    "id": 329277,
-    "link": "https://www.fightful.com/wrestling/cody-rhodes-vows-to-kick-randy-ortons-fucking-head-off-if-given-the-opportunity-again/",
-    "date": "2026-09-19T10:38:55",
-    "date_gmt": "2026-09-19T14:38:55",
-    "title": {
-      "rendered": "Cody Rhodes Vows To Kick Randy Orton&#8217;s Fucking Head Off If Given The Opportunity Again"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/07215411/HPKb_L8WkAAm9o2.jpg"
-  },
-  {
-    "id": 329268,
-    "link": "https://www.fightful.com/wrestling/baron-corbin-reacts-to-trick-williams-qualifying-for-money-in-the-bank-you-can-run-all-you-want-but-all-roads-lead-to-me/",
-    "date": "2026-09-19T10:30:05",
-    "date_gmt": "2026-09-19T14:30:05",
-    "title": {
-      "rendered": "Baron Corbin Reacts To Trick Williams Qualifying For Money In The Bank: You Can Run All You Want, But All Roads Lead To Me"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19095654/Screenshot-2026-09-19-145600.png"
   }
 ]
