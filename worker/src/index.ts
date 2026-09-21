@@ -297,6 +297,11 @@ type PublishState = {
   deferrals?: Record<string, number>;
   lastStoryAt?: number;
   videoCooldowns?: Partial<Record<"facebook" | "instagram", number>>;
+  // Buffer's own RateLimit response header, read proactively so a post is
+  // skipped before it would be rejected rather than after — see
+  // recordBufferQuota/hasBufferQuota. X and Facebook share this because
+  // both go through the same Buffer API key (one client, one quota).
+  bufferQuota?: { remaining: number; resetAt: number; window: string; updatedAt: number }[];
 };
 
 function emptyPublishState(): PublishState {
@@ -860,8 +865,70 @@ async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "i
   await setPlatformCooldown(env, platform, durationMs);
 }
 
-async function setBufferRateLimitCooldown(env: Env, durationMs: number = 24 * 60 * 60 * 1000): Promise<void> {
-  await setPlatformCooldown(env, "x", durationMs);
+async function setBufferRateLimitCooldown(env: Env, durationMs: number = 24 * 60 * 60 * 1000, platform: "facebook" | "x" = "x"): Promise<void> {
+  await setPlatformCooldown(env, platform, durationMs);
+}
+
+// Buffer sends its live quota on every authenticated response as a
+// RateLimit header — one entry per window (15-minute, 24-hour, 30-day on
+// the Free plan), e.g.:
+//   RateLimit: "100-in-15min";r=98;t=897, "250-in-1day";r=248;t=86397, "3000-in-30days";r=2969;t=696980
+// r = requests remaining in that window, t = seconds until it resets.
+// Reading this after every call and checking it before the next one lets a
+// post be skipped before Buffer would reject it, instead of only finding
+// out from an error message after the fact (see Buffer's own guidance:
+// https://developers.buffer.com/guides/api-limits.html).
+function parseBufferRateLimitHeader(headerValue: string | null): { remaining: number; resetAt: number; window: string }[] {
+  if (!headerValue) return [];
+  const now = Date.now();
+  const entries: { remaining: number; resetAt: number; window: string }[] = [];
+  // fetch() joins repeated headers with ", " — split back into each quoted policy.
+  for (const part of headerValue.split(/,\s*(?=")/)) {
+    const windowMatch = part.match(/^"([^"]+)"/);
+    const rMatch = part.match(/[;\s]r=(\d+)/);
+    const tMatch = part.match(/[;\s]t=(\d+)/);
+    if (!windowMatch || !rMatch || !tMatch) continue;
+    entries.push({ window: windowMatch[1], remaining: Number(rMatch[1]), resetAt: now + Number(tMatch[1]) * 1000 });
+  }
+  return entries;
+}
+
+async function recordBufferQuota(env: Env, res: Response): Promise<void> {
+  const entries = parseBufferRateLimitHeader(res.headers.get("ratelimit"));
+  if (!entries.length) return;
+  const withTimestamp = entries.map((e) => ({ ...e, updatedAt: Date.now() }));
+
+  for (let attempt = 0; attempt < 3; attempt++) {
+    let sha: string | null;
+    let state: PublishState;
+    try {
+      ({ sha, state } = await githubReadState(env));
+    } catch (e) {
+      return;
+    }
+    const write = await githubWriteState(env, { ...state, bufferQuota: withTimestamp }, sha, "chore(publish): record Buffer API quota [skip ci]");
+    if (write.ok) return;
+    if (write.conflict) {
+      await new Promise((r) => setTimeout(r, 300 + Math.random() * 300));
+      continue;
+    }
+    return;
+  }
+}
+
+// A window only counts against the safety margin while its reset time is
+// still in the future — a stale, long-since-reset reading must never block
+// a post indefinitely just because it was never overwritten.
+async function hasBufferQuota(env: Env, safetyMargin: number = 5): Promise<boolean> {
+  try {
+    const { state } = await githubReadState(env);
+    const entries = state.bufferQuota;
+    if (!entries || !entries.length) return true; // no reading yet — don't block on nothing
+    const now = Date.now();
+    return entries.every((e) => e.resetAt < now || e.remaining > safetyMargin);
+  } catch (e) {
+    return true; // can't check — fail open rather than blocking all publishing
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -929,6 +996,7 @@ async function pollBufferPostUntilResolved(
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
         body: JSON.stringify({ query, variables: { id: postId } }),
       });
+      await recordBufferQuota(env, res);
       const result: any = await res.json().catch(() => ({}));
       const post = result?.data?.post;
       if (post?.sentAt) return { resolved: true, ok: true, raw: post };
@@ -994,6 +1062,7 @@ async function postToFacebookViaBuffer(
   data: { title: string; text?: string; image?: string; url?: string; kind?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
+  if (!(await hasBufferQuota(env))) return { ok: false, skipped: true, result: { skippedReason: "buffer_quota_exhausted" } };
 
   const kvKey = `buffer-pending:facebook:${key}`;
 
@@ -1035,11 +1104,12 @@ async function postToFacebookViaBuffer(
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
         body: JSON.stringify({ query, variables }),
       });
+      await recordBufferQuota(env, res);
       const result: any = await res.json().catch(() => ({}));
       postId = result?.data?.createPost?.post?.id;
       if (!postId) {
         if (detectBufferRateLimit(result)) {
-          await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
+          await setBufferRateLimitCooldown(env, 30 * 60 * 1000, "facebook");
         }
         return { ok: false, result };
       }
@@ -1057,7 +1127,7 @@ async function postToFacebookViaBuffer(
     await env.PUSH_KV.delete(kvKey);
   } catch (e) {}
   if (!outcome.ok && detectBufferRateLimit(outcome.raw)) {
-    await setBufferRateLimitCooldown(env, 30 * 60 * 1000);
+    await setBufferRateLimitCooldown(env, 30 * 60 * 1000, "facebook");
   }
   return { ok: !!outcome.ok, result: outcome.raw };
 }
@@ -1440,6 +1510,7 @@ async function postToXViaBuffer(
   data: { title: string; text?: string; image?: string }
 ): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
   if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, skipped: true };
+  if (!(await hasBufferQuota(env))) return { ok: false, skipped: true, result: { skippedReason: "buffer_quota_exhausted" } };
 
   const kvKey = `buffer-pending:x:${key}`;
 
@@ -1484,6 +1555,7 @@ async function postToXViaBuffer(
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
         body: JSON.stringify({ query, variables }),
       });
+      await recordBufferQuota(env, res);
       const result: any = await res.json().catch(() => ({}));
       postId = result?.data?.createPost?.post?.id;
       if (!postId) {
