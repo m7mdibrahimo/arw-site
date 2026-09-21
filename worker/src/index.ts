@@ -2098,6 +2098,14 @@ async function runWatcherPoll(env: Env): Promise<void> {
     // Block individual match result stubs from social feeds.
     // General news (injuries, signings, returns, announcements) and full show results are published!
     const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
+    const isShowItem = collection === "shows" || (item.url && item.url.startsWith("/shows/"));
+    if (isShowItem) {
+      // Shows are handled EXCLUSIVELY by the Show Reel system (60fps vertical Reels & Stories).
+      // Never post shows as standard static photo/link posts to Facebook or Instagram!
+      if (!state.facebook[key]) state.facebook[key] = now;
+      if (!state.instagram[key]) state.instagram[key] = now;
+    }
+
     if (collection === "news") {
       const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
       if (isSpoiler) {
@@ -2116,8 +2124,10 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
     // Determine what can actually be attempted right now
     const canDoTg = !tgDone;
-    const canDoIg = !igDone && !igCooldown;
-    const canDoFb = !fbDone && !fbCooldown;
+    // Instagram paused until daily quota resets per user instruction
+    const canDoIg = false;
+    // Facebook posts only for non-show articles
+    const canDoFb = !isShowItem && !fbDone && !fbCooldown;
     const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
     // If nothing actionable can be done for this item, skip it

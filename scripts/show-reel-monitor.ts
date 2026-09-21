@@ -197,12 +197,17 @@ async function main() {
       continue;
     }
 
+// Instagram is temporarily paused per user instruction until daily quota resets
+const ENABLE_INSTAGRAM = false;
+
     // 2. Determine remaining platforms: only those that have NOT succeeded yet!
     const targetPlatforms: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[] = [];
     if (!existing?.facebook_reel) targetPlatforms.push('facebook_reel');
     if (!existing?.facebook_story) targetPlatforms.push('facebook_story');
-    if (!existing?.instagram_reel) targetPlatforms.push('instagram_reel');
-    if (!existing?.instagram_story) targetPlatforms.push('instagram_story');
+    if (ENABLE_INSTAGRAM) {
+      if (!existing?.instagram_reel) targetPlatforms.push('instagram_reel');
+      if (!existing?.instagram_story) targetPlatforms.push('instagram_story');
+    }
 
     // If all target platforms are already done, skip!
     if (targetPlatforms.length === 0) {
@@ -210,9 +215,11 @@ async function main() {
       continue;
     }
 
-    // Cooldown check: if last attempt was less than 15 minutes ago, skip to give APIs time to recover
-    if (existing?.lastAttempt && (Date.now() - existing.lastAttempt < 15 * 60 * 1000)) {
-      console.log(`  ⏳ [${slug}] Attempted recently (${Math.round((Date.now() - existing.lastAttempt) / 60000)}m ago) — waiting for Meta cooldown.`);
+    // Cooldown check: enforce 45-minute window to allow Meta's anti-spam filter to clear completely
+    const COOLDOWN_MS = 45 * 60 * 1000;
+    if (existing?.lastAttempt && (Date.now() - existing.lastAttempt < COOLDOWN_MS)) {
+      const waitMins = Math.ceil((COOLDOWN_MS - (Date.now() - existing.lastAttempt)) / 60000);
+      console.log(`  ⏳ [${slug}] In Meta cooldown window (${waitMins}m remaining) — waiting to clear anti-spam lock.`);
       skipped++;
       continue;
     }
