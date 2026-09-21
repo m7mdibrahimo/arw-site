@@ -1485,6 +1485,33 @@ async function postVideoToFacebookReel(
     );
     const initData: any = await initRes.json().catch(() => ({}));
     if (!initData.video_id || !initData.upload_url) {
+      console.warn("[Facebook Reel] video_reels session failed, trying graph-video fallback:", initData);
+      try {
+        const fallbackRes = await fetch(
+          `https://graph-video.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/videos`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              file_url: data.videoUrl,
+              description: caption,
+              title: data.title,
+              access_token: pageToken,
+            }),
+          }
+        );
+        const fallbackData: any = await fallbackRes.json().catch(() => ({}));
+        if (fallbackData.id) {
+          return {
+            ok: true,
+            result: fallbackData,
+            message: "تم نشر فيديو الريلز على صفحة الفيسبوك بنجاح عبر بوابة الفيديو المباشرة!",
+          };
+        }
+      } catch (fbErr) {
+        console.warn("[Facebook Reel] graph-video fallback failed:", fbErr);
+      }
+
       return {
         ok: false,
         result: initData,
@@ -2098,13 +2125,6 @@ async function runWatcherPoll(env: Env): Promise<void> {
     // Block individual match result stubs from social feeds.
     // General news (injuries, signings, returns, announcements) and full show results are published!
     const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
-    const isShowItem = collection === "shows" || (item.url && item.url.startsWith("/shows/"));
-    if (isShowItem) {
-      // Shows are handled EXCLUSIVELY by the Show Reel system (60fps vertical Reels & Stories).
-      // Never post shows as standard static photo/link posts to Facebook or Instagram!
-      if (!state.facebook[key]) state.facebook[key] = now;
-      if (!state.instagram[key]) state.instagram[key] = now;
-    }
 
     if (collection === "news") {
       const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
@@ -2126,8 +2146,8 @@ async function runWatcherPoll(env: Env): Promise<void> {
     const canDoTg = !tgDone;
     // Instagram paused until daily quota resets per user instruction
     const canDoIg = false;
-    // Facebook posts only for non-show articles
-    const canDoFb = !isShowItem && !fbDone && !fbCooldown;
+    // Facebook publishes news and shows normally as posts
+    const canDoFb = !fbDone && !fbCooldown;
     const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
     // If nothing actionable can be done for this item, skip it
