@@ -13,8 +13,8 @@
 {% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
 {% set isNews = (kind == 'news') or (page.inputPath and ("content/news" in page.inputPath)) or (page.url and page.url.startsWith('/news/')) %}
 <title>{{ pageTitle }} | عرب راسلنج</title>
-{% set baseDesc = description or (content | striptags | truncate(140)) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
-{% set metaDesc = (pageTitle + " - " + baseDesc) | truncate(165) %}
+{% set baseDesc = description or (content | striptags | truncate(155)) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
+{% set metaDesc = baseDesc | truncate(160) %}
 <meta name="description" content="{{ metaDesc }}">
 {% if tags and tags.length %}
 <meta name="keywords" content="{{ tags | join(', ') }}">
