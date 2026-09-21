@@ -2080,6 +2080,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (minDate && ts && ts < minDate) continue;
+    if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) continue;
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
@@ -2163,9 +2164,9 @@ async function runWatcherPoll(env: Env): Promise<void> {
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
       }
     } else {
-      // Telegram already sent — only catch up missing platforms if article is fresh (under 2 hours old).
+      // Telegram already sent — only catch up missing platforms if article is fresh (under 12 hours old).
       // Never publish old historical articles!
-      const isFresh = ts > 0 && (now - ts) < 2 * 60 * 60 * 1000;
+      const isFresh = ts > 0 && (now - ts) < 12 * 60 * 60 * 1000;
       if (!isFresh) {
         continue;
       }
