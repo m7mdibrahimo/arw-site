@@ -664,8 +664,22 @@ body {
    Global Overflow Protection & Fluid Desktop Navbar (720p, Laptops, 2K & 4K)
    ========================================================================== */
 html, body {
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   max-width: 100vw;
+}
+
+/* Sticky Desktop Header (Web Only - min-width: 769px) */
+@media (min-width: 769px) {
+  header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background: var(--bg) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid var(--line) !important;
+    box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.08) !important;
+  }
 }
 
 /* Fluid Desktop Navbar Scaling for screens between 1151px and 1580px (1366x768, 1440x900, 1536x864) */
