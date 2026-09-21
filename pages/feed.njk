@@ -28,7 +28,7 @@ eleventyExcludeFromCollections: true
       <link>{{ itemUrl }}</link>
       <guid isPermaLink="true">{{ itemUrl }}</guid>
       <pubDate>{{ item.date.toUTCString() }}</pubDate>
-      <dc:creator><![CDATA[فريق تحرير عرب راسلنج]]></dc:creator>
+      <dc:creator><![CDATA[عرب راسلنج]]></dc:creator>
       <description><![CDATA[{{ item.data.description or (item.templateContent | striptags | truncate(250)) }}]]></description>
       <content:encoded><![CDATA[{{ item.templateContent | safe }}]]></content:encoded>
       <media:content url="{{ itemImg }}" medium="image" />
