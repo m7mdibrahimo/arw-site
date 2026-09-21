@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const cmdPath = path.join(__dirname, '..', 'node_modules', '@11ty', 'eleventy', 'cmd.js');
+const cmdPath = path.join(__dirname, '..', 'node_modules', '@11ty', 'eleventy', 'cmd.cjs');
 
 if (fs.existsSync(cmdPath)) {
   let content = fs.readFileSync(cmdPath, 'utf8');
@@ -22,6 +22,6 @@ if (fs.existsSync(cmdPath)) {
       content = patch + content;
     }
     fs.writeFileSync(cmdPath, content, 'utf8');
-    console.log('[patch-eleventy] Successfully patched @11ty/eleventy/cmd.js for --stack-size=4096');
+    console.log('[patch-eleventy] Successfully patched @11ty/eleventy/cmd.cjs for --stack-size=4096');
   }
 }
