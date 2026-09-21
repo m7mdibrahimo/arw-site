@@ -1,5 +1,15 @@
 [
   {
+    "id": 329557,
+    "link": "https://www.fightful.com/wrestling/john-silver-gets-married/",
+    "date": "2026-09-20T21:20:05",
+    "date_gmt": "2026-09-21T01:20:05",
+    "title": {
+      "rendered": "John Silver Gets Married"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/20211713/818424784_18632841187045231_1211179355264952942_n.-1.jpg"
+  },
+  {
     "id": 329552,
     "link": "https://www.fightful.com/wrestling/perry-saturn-recalls-mike-graham-pulling-a-knife-on-him-in-wcw/",
     "date": "2026-09-20T20:52:28",
@@ -288,15 +298,5 @@
       "rendered": "IWGP Tag Team Title Bout Set For NJPW Road To King of Pro-Wrestling"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19234718/20261006_RtKOPW_001-copy-2.jpg"
-  },
-  {
-    "id": 329457,
-    "link": "https://www.fightful.com/wrestling/triple-threat-match-mr-iguana-vs-taurus-more-set-for-9-26-aaa-on-fox/",
-    "date": "2026-09-19T23:34:58",
-    "date_gmt": "2026-09-20T03:34:58",
-    "title": {
-      "rendered": "Triple Threat Match, Mr. Iguana vs. Taurus, More Set For 9/26 AAA On FOX"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/25223758/Screenshot-52-1-e1777171113703.png"
   }
 ]
