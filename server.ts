@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { execSync, exec } from "child_process";
+import { execSync, exec, execFile } from "child_process";
 import webpush from "web-push";
 import sharp from "sharp";
 
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   if (req.method === "OPTIONS") {
     return res.sendStatus(204);
   }
@@ -218,7 +218,7 @@ app.get("/api/pinned", (req, res) => {
   }
 });
 
-app.post("/api/pinned", (req, res) => {
+app.post("/api/pinned", requireAdmin, (req, res) => {
   try {
     const items = req.body;
     if (!Array.isArray(items)) {
@@ -298,7 +298,7 @@ async function sendPushToAllSubscribers(data: {
   return { success: true, sentCount, totalSubs: subs.length };
 }
 
-app.post("/api/push/send", async (req, res) => {
+app.post("/api/push/send", requireAdmin, async (req, res) => {
   try {
     const result = await sendPushToAllSubscribers(req.body);
     res.json(result);
@@ -330,6 +330,31 @@ const GITHUB_REPO = process.env.GITHUB_REPO || "arw-site";
 const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
 const GITHUB_STATE_PATH = process.env.GITHUB_STATE_PATH || "_data/publish-state.json";
 const GITHUB_CONTENTS_URL = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_STATE_PATH}`;
+
+// Same check the Cloudflare Worker uses for its admin endpoints: the caller must present
+// a GitHub token with push/admin rights on this repo. Without this, any of the mutating
+// routes below could be called by anyone who finds this server's public URL.
+async function authorizeAdmin(req: express.Request): Promise<boolean> {
+  const token = req.headers.authorization;
+  if (!token?.startsWith("Bearer ") || token.length < 15) return false;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`, {
+      headers: { Authorization: token, Accept: "application/vnd.github+json", "User-Agent": "arw-site-server" },
+    });
+    if (!r.ok) return false;
+    const repo: any = await r.json();
+    return repo.permissions?.push === true || repo.permissions?.admin === true;
+  } catch {
+    return false;
+  }
+}
+
+function requireAdmin(req: express.Request, res: express.Response, next: express.NextFunction) {
+  authorizeAdmin(req).then(ok => {
+    if (!ok) return res.status(401).json({ success: false, error: "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع." });
+    next();
+  });
+}
 
 type PublishState = {
   telegram: Record<string, number>;
@@ -1443,7 +1468,7 @@ app.get("/api/x/status", async (req, res) => {
   }
 });
 
-app.post("/api/telegram/post", async (req, res) => {
+app.post("/api/telegram/post", requireAdmin, async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   try {
     const { title, text, url, image, collection, kind, id, slug, postId } = req.body || {};
@@ -1599,7 +1624,7 @@ app.get("/api/videos/list", (req, res) => {
   res.json({ videos });
 });
 
-app.post("/api/videos/generate", (req, res) => {
+app.post("/api/videos/generate", requireAdmin, (req, res) => {
   const { slug, file } = req.body || {};
   const contentDirs = [
     path.join(process.cwd(), "content", "news"),
@@ -1610,14 +1635,13 @@ app.post("/api/videos/generate", (req, res) => {
   ];
   let targetFile = "";
 
-  if (file && fs.existsSync(file)) {
-    targetFile = file;
-  } else if (file && fs.existsSync(path.resolve(process.cwd(), file))) {
-    targetFile = path.resolve(process.cwd(), file);
-  } else if (file) {
+  // Only ever accept a bare filename (never a path), then confine it to one of the
+  // known content directories — this rules out path traversal / arbitrary file access.
+  if (file) {
+    const safeName = path.basename(String(file));
     for (const d of contentDirs) {
-      if (fs.existsSync(path.join(d, file))) {
-        targetFile = path.join(d, file);
+      if (fs.existsSync(path.join(d, safeName))) {
+        targetFile = path.join(d, safeName);
         break;
       }
     }
@@ -1652,7 +1676,7 @@ app.post("/api/videos/generate", (req, res) => {
   const scriptPath = path.join(process.cwd(), "scripts", "generate-news-video.ts");
   console.log(`[Videos API] Generating reel for: ${targetFile}`);
 
-  exec(`npx tsx "${scriptPath}" "${targetFile}"`, { cwd: process.cwd(), timeout: 180000 }, (error, stdout, stderr) => {
+  execFile("npx", ["tsx", scriptPath, targetFile], { cwd: process.cwd(), timeout: 180000 }, (error, stdout, stderr) => {
     if (error) {
       console.error("[Videos API] Error generating video:", error, stderr);
       return res.status(500).json({ error: "Failed to generate video", details: error.message });

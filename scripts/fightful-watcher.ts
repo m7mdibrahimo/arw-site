@@ -3057,8 +3057,6 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
  */
 async function checkAndUpdateRecentlyModifiedPosts(posts: any[]): Promise<void> {
   const fs = await import("fs");
-  const path = await import("path");
-  const newsDir = "content/news";
 
   for (const post of posts) {
     const postId = post.id;
@@ -3078,7 +3076,7 @@ async function checkAndUpdateRecentlyModifiedPosts(posts: any[]): Promise<void> 
     if (!existing) continue;
 
     try {
-      const filePath = path.join(newsDir, existing);
+      const filePath = existing.filePath;
       const content = fs.readFileSync(filePath, "utf8");
 
       // Extract current Arabic title from frontmatter
