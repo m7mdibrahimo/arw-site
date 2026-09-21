@@ -1,5 +1,25 @@
 [
   {
+    "id": 329710,
+    "link": "https://www.fightful.com/wrestling/fightful-select-members-can-browse-main-website-ad-free-by-logging-in-with-patreon/",
+    "date": "2026-09-21T19:30:58",
+    "date_gmt": "2026-09-21T23:30:58",
+    "title": {
+      "rendered": "Fightful Select Members Can Browse Main Website Ad-Free By Logging In With Patreon"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/11/07182741/ff-select.png"
+  },
+  {
+    "id": 329706,
+    "link": "https://www.fightful.com/wrestling/penta-reflects-on-wwe-world-heavyweight-title-match-calls-roman-reigns-best-wrestler-in-the-world/",
+    "date": "2026-09-21T19:22:48",
+    "date_gmt": "2026-09-21T23:22:48",
+    "title": {
+      "rendered": "Penta Reflects On WWE World Heavyweight Title Match, Calls Roman Reigns &#8216;Best Wrestler In The World&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17132826/maxresdefault-110.jpg"
+  },
+  {
     "id": 329704,
     "link": "https://www.fightful.com/wrestling/penta-states-that-he-has-big-surprise-for-9-21-wwe-raw/",
     "date": "2026-09-21T19:15:47",
@@ -28,6 +48,16 @@
       "rendered": "Tommaso Ciampa Announced For HOG Salvation"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21190253/Screenshot-2026-09-21-at-7.01.03-PM.png"
+  },
+  {
+    "id": 35386,
+    "link": "https://www.fightful.com/wrestling/updated-all-elite-roster/",
+    "date": "2026-09-21T19:03:00",
+    "date_gmt": "2026-09-21T23:03:00",
+    "title": {
+      "rendered": "Full AEW Roster"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/11114236/6.png"
   },
   {
     "id": 329699,
@@ -268,35 +298,5 @@
       "rendered": "Paramount Settles With States Over WBD Merger"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/17115338/wbd-paramount-logo.jpg"
-  },
-  {
-    "id": 329616,
-    "link": "https://www.fightful.com/wrestling/pro-wrestling-noah-results-9-21-26-n-1-victory-tournament-continues/",
-    "date": "2026-09-21T10:44:45",
-    "date_gmt": "2026-09-21T14:44:45",
-    "title": {
-      "rendered": "Pro Wrestling NOAH Results (9/21/26): N-1 Victory Tournament Continues"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/25165655/8284_image_o_KrB.webp"
-  },
-  {
-    "id": 329611,
-    "link": "https://www.fightful.com/wrestling/kurt-angle-plays-speak-when-you-hear-a-better-wrestler-than-you-speaks-for-eddie-guerrero/",
-    "date": "2026-09-21T10:35:34",
-    "date_gmt": "2026-09-21T14:35:34",
-    "title": {
-      "rendered": "Kurt Angle Plays &#8216;Speak When You Hear A Better Wrestler Than You&#8217;, Speaks For Eddie Guerrero"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21103537/maxresdefault-136.jpg"
-  },
-  {
-    "id": 329612,
-    "link": "https://www.fightful.com/wrestling/speedball-mike-bailey-speaks-about-tony-khans-feedback-says-khan-knows-his-rosters-strengths/",
-    "date": "2026-09-21T10:22:16",
-    "date_gmt": "2026-09-21T14:22:16",
-    "title": {
-      "rendered": "&#8216;Speedball&#8217; Mike Bailey Speaks About Tony Khan&#8217;s Feedback, Says Khan Knows His Roster&#8217;s Strengths"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21101130/Screenshot-465-e1789999921615.png"
   }
 ]
