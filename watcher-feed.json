@@ -1,5 +1,35 @@
 [
   {
+    "id": 329654,
+    "link": "https://www.fightful.com/mma/paulo-costa-gives-ultimatum-to-ufc/",
+    "date": "2026-09-21T14:07:41",
+    "date_gmt": "2026-09-21T18:07:41",
+    "title": {
+      "rendered": "Paulo Costa Gives Ultimatum To UFC"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21140133/Screenshot-466-e1790013722156.png"
+  },
+  {
+    "id": 329648,
+    "link": "https://www.fightful.com/wrestling/speedball-mike-bailey-i-got-heat-with-the-death-riders-now-were-gonna-have-to-do-something-about-that/",
+    "date": "2026-09-21T14:00:45",
+    "date_gmt": "2026-09-21T18:00:45",
+    "title": {
+      "rendered": "Speedball Mike Bailey: I Got Heat With The Death Riders Now, We&#8217;re Gonna Have To Do Something About That"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21140049/maxresdefault-139.jpg"
+  },
+  {
+    "id": 329651,
+    "link": "https://www.fightful.com/wrestling/death-riders-vs-the-infantry-set-for-defy-wrestling-show/",
+    "date": "2026-09-21T13:56:08",
+    "date_gmt": "2026-09-21T17:56:08",
+    "title": {
+      "rendered": "Death Riders vs. The Infantry Set For DEFY Wrestling Show"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21134757/HSvsrSBWkAAxIE-.jpg"
+  },
+  {
     "id": 329645,
     "link": "https://www.fightful.com/wrestling/speedball-mike-bailey-on-veda-scotts-work-as-a-cmll-announcer-im-so-fking-proud/",
     "date": "2026-09-21T13:43:29",
@@ -268,35 +298,5 @@
       "rendered": "Mason Rook Recalls First Meeting John Cena, Cena Being A Fan Of His Work"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/05221931/HHmd9GrXQAIEstF.jpg"
-  },
-  {
-    "id": 329569,
-    "link": "https://www.fightful.com/wrestling/steph-de-lander-talks-about-the-creative-freedom-in-roh/",
-    "date": "2026-09-21T07:00:00",
-    "date_gmt": "2026-09-21T11:00:00",
-    "title": {
-      "rendered": "Steph De Lander Talks About The Creative Freedom In ROH"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/05214227/Screenshot-2506.png"
-  },
-  {
-    "id": 329584,
-    "link": "https://www.fightful.com/wrestling/njpw-road-to-destruction-results-9-21/",
-    "date": "2026-09-21T06:50:29",
-    "date_gmt": "2026-09-21T10:50:29",
-    "title": {
-      "rendered": "NJPW Road To Destruction Results (9/21)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21064948/0921_3.jpg"
-  },
-  {
-    "id": 329582,
-    "link": "https://www.fightful.com/wrestling/sanga-saurav-gurjar-arrested-for-alleged-sexual-exploitation/",
-    "date": "2026-09-21T06:42:25",
-    "date_gmt": "2026-09-21T10:42:25",
-    "title": {
-      "rendered": "Sanga (Saurav Gurjar) Arrested For Alleged Sexual Exploitation"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/04/27204349/wwe_sanga.jpg"
   }
 ]
