@@ -151,4 +151,25 @@ jobs:
           else
             echo "No new video file was produced."
           fi
-          # NOTE: Publishing to social media is handled by show-reel-monitor.yml — not here.
+
+      - name: Trigger reel publishing immediately
+        env:
+          WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
+          SITE_ORIGIN: "https://arab-wrestling.com"
+        run: |
+          echo "🎬 Publishing new reels to social media via show-reel-monitor..."
+          npx tsx scripts/show-reel-monitor.ts
+          git add _data/show-reel-state.json
+          if [[ -n $(git status -s _data/show-reel-state.json) ]]; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "ARW Video Bot"
+            git commit -m "chore(reels): update show-reel-state.json [skip ci]"
+            for i in {1..3}; do
+              git pull --rebase origin main || true
+              if git push origin main; then
+                echo "✅ State file committed and pushed."
+                break
+              fi
+              sleep 3
+            done
+          fi

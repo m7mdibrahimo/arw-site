@@ -54,6 +54,7 @@ function isShowEligible(fname: string, fm: Record<string, string>): boolean {
 
 interface ShowReelEntry {
   publishedAt: number | null;
+  lastAttempt?: number;
   facebook_reel: boolean;
   facebook_story: boolean;
   instagram_reel: boolean;
@@ -196,20 +197,22 @@ async function main() {
       continue;
     }
 
-    // 2. Already published → never re-publish!
-    if (existing?.publishedAt) {
-      skipped++;
-      continue;
-    }
-
-    // 3. Determine remaining platforms
+    // 2. Determine remaining platforms: only those that have NOT succeeded yet!
     const targetPlatforms: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[] = [];
     if (!existing?.facebook_reel) targetPlatforms.push('facebook_reel');
     if (!existing?.facebook_story) targetPlatforms.push('facebook_story');
     if (!existing?.instagram_reel) targetPlatforms.push('instagram_reel');
     if (!existing?.instagram_story) targetPlatforms.push('instagram_story');
 
+    // If all target platforms are already done, skip!
     if (targetPlatforms.length === 0) {
+      skipped++;
+      continue;
+    }
+
+    // Cooldown check: if last attempt was less than 15 minutes ago, skip to give APIs time to recover
+    if (existing?.lastAttempt && (Date.now() - existing.lastAttempt < 15 * 60 * 1000)) {
+      console.log(`  ⏳ [${slug}] Attempted recently (${Math.round((Date.now() - existing.lastAttempt) / 60000)}m ago) — waiting for Meta cooldown.`);
       skipped++;
       continue;
     }
@@ -243,7 +246,8 @@ async function main() {
 
     // Update state
     state[slug] = {
-      publishedAt: anySuccess ? Date.now() : (existing?.publishedAt || null),
+      publishedAt: anySuccess ? (existing?.publishedAt || Date.now()) : (existing?.publishedAt || null),
+      lastAttempt: Date.now(),
       facebook_reel:   publishResult.facebook_reel   || !!existing?.facebook_reel,
       facebook_story:  publishResult.facebook_story  || !!existing?.facebook_story,
       instagram_reel:  publishResult.instagram_reel  || !!existing?.instagram_reel,
