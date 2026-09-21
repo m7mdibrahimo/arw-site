@@ -2963,22 +2963,56 @@ export default {
   },
 } satisfies ExportedHandler<Env>;
 
-// Reliable scheduled trigger for the Fightful news watcher workflow
-// Cloudflare crons fire every minute with 100% reliability and zero delay,
-// avoiding GitHub Actions' internal cron lag or dropped runs.
+// Ultra-responsive Fightful watcher trigger:
+// Cloudflare crons fire every minute with 100% uptime.
+// Every minute, we poll Fightful WP REST API for the latest post ID.
+// The MOMENT Fightful publishes a new post, we trigger GitHub Actions immediately!
 async function runNewsWatcherCron(env: Env): Promise<void> {
   try {
-    const KV_KEY = "last_news_watcher_trigger_ts";
-    let lastTrigger = 0;
+    const KV_SEEN_KEY = "last_seen_fightful_post_id";
+    const KV_TRIGGER_TS_KEY = "last_news_watcher_trigger_ts";
+
+    let lastSeenId = "";
+    let lastTriggerTs = 0;
     if (env.PUSH_KV) {
-      const val = await env.PUSH_KV.get(KV_KEY);
-      if (val) lastTrigger = Number(val) || 0;
+      lastSeenId = (await env.PUSH_KV.get(KV_SEEN_KEY)) || "";
+      const val = await env.PUSH_KV.get(KV_TRIGGER_TS_KEY);
+      if (val) lastTriggerTs = Number(val) || 0;
     }
 
     const now = Date.now();
-    const INTERVAL_MS = 9 * 60 * 1000; // ~9-10 minutes
+    const FALLBACK_INTERVAL_MS = 10 * 60 * 1000; // ~10 min fallback
+    const isDueByTime = (now - lastTriggerTs) >= FALLBACK_INTERVAL_MS;
 
-    if (now - lastTrigger >= INTERVAL_MS) {
+    // 1-minute fast check: query Fightful's latest post
+    let hasNewPost = false;
+    let latestPostId = "";
+    try {
+      const res = await fetch("https://www.fightful.com/wp-json/wp/v2/posts?per_page=3", {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko)",
+          "Accept": "application/json",
+        },
+      });
+      if (res.ok) {
+        const posts: any = await res.json();
+        if (Array.isArray(posts) && posts.length > 0 && posts[0]?.id) {
+          latestPostId = String(posts[0].id);
+          if (lastSeenId && latestPostId !== lastSeenId) {
+            hasNewPost = true;
+          }
+        }
+      }
+    } catch (fetchErr) {
+      // Non-fatal network glitch — will retry next minute
+    }
+
+    if (hasNewPost || isDueByTime) {
+      // Throttle: don't trigger workflow runs faster than every 2 minutes
+      if (now - lastTriggerTs < 2 * 60 * 1000) {
+        return;
+      }
+
       let isEnabled = true;
       try {
         const { state } = await githubReadWatcherState(env);
@@ -2988,17 +3022,20 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
       } catch (e) {}
 
       if (isEnabled) {
-        console.log("[Worker] Triggering scheduled 15-minute Fightful news watcher workflow...");
+        console.log(`[Worker] ${hasNewPost ? `⚡ New Fightful post detected (${latestPostId})!` : "Periodic check"} Triggering news watcher workflow...`);
         const res = await githubTriggerWatcherWorkflow(env);
         if (res.ok) {
           if (env.PUSH_KV) {
-            await env.PUSH_KV.put(KV_KEY, String(now));
+            await env.PUSH_KV.put(KV_TRIGGER_TS_KEY, String(now));
+            if (latestPostId) {
+              await env.PUSH_KV.put(KV_SEEN_KEY, latestPostId);
+            }
           }
         }
       }
     }
   } catch (err: any) {
-    console.error("[Worker] Error in scheduled news watcher trigger:", err.message);
+    console.error("[Worker] Error in news watcher trigger:", err.message);
   }
 }
 
