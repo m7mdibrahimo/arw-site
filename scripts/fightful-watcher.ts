@@ -298,7 +298,10 @@ export function applyNamesGlossary(text: string): string {
     try {
       // Escape special regex characters in the English name
       const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const pattern = new RegExp(`\\b${escaped}\\b`, "gi");
+      // \b treats only [A-Za-z0-9_] as "word" characters, so it silently fails
+      // to anchor next to accented letters (Moné, Sadè, Ídolo...) — a lookaround
+      // against \p{L} (any Unicode letter) covers those correctly.
+      const pattern = new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "giu");
       result = result.replace(pattern, arabic);
     } catch (e) {
       // Skip if regex fails (unusual characters)
@@ -312,14 +315,19 @@ export function applyNamesGlossary(text: string): string {
 // Arabic names were actually recognized in the text instead of substituting
 // them — used to compare a candidate headline against already-published
 // Arabic tags/titles without needing a language-agnostic name matcher.
+const FEDERATION_OR_SHOW_NAME = /^(WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|MLP|UFC|NXT|RAW|SmackDown|iMPACT|Dynamite|Collision|Rampage|PPV|WrestleMania|SummerSlam|Survivor Series|Royal Rumble|Hell in a Cell|Elimination Chamber|Money in the Bank|Night of Champions|Clash at the Castle|TripleMania|All Out|All In|Full Gear|Double or Nothing|Revolution|Forbidden Door|WrestleDream|Grand Slam|Worlds Collide|Payback|Backlash|NXT TakeOver|War Games|Battleground|Vengeance Day|Stand and Deliver|Northern Rising|Mayhem|Fusion|Rebellion)$/i;
+
 export function findKnownArabicNames(text: string): string[] {
   if (!text || typeof text !== "string") return [];
   const found = new Set<string>();
   for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
     if (!english || !arabic || english === arabic) continue;
+    // Federation/show names appear in nearly every article — they identify a
+    // topic, not a specific story, so they'd swamp any duplicate-detection use.
+    if (FEDERATION_OR_SHOW_NAME.test(english.trim())) continue;
     try {
       const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      if (new RegExp(`\\b${escaped}\\b`, "i").test(text)) found.add(arabic);
+      if (new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "iu").test(text)) found.add(arabic);
     } catch (e) {}
   }
   return [...found];
