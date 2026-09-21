@@ -865,8 +865,8 @@ async function setPlatformDailyLimitCooldown(env: Env, platform: "facebook" | "i
   await setPlatformCooldown(env, platform, durationMs);
 }
 
-async function setBufferRateLimitCooldown(env: Env, durationMs: number = 24 * 60 * 60 * 1000, platform: "facebook" | "x" = "x"): Promise<void> {
-  await setPlatformCooldown(env, platform, durationMs);
+async function setBufferRateLimitCooldown(env: Env, durationMs: number = 24 * 60 * 60 * 1000): Promise<void> {
+  await setPlatformCooldown(env, "x", durationMs);
 }
 
 // Buffer sends its live quota on every authenticated response as a
@@ -1054,82 +1054,6 @@ async function postToFacebookDirect(
   } catch (e) {
     return { ok: false };
   }
-}
-
-async function postToFacebookViaBuffer(
-  env: Env,
-  key: string,
-  data: { title: string; text?: string; image?: string; url?: string; kind?: string }
-): Promise<{ ok: boolean; result?: any; skipped?: boolean; ambiguous?: boolean }> {
-  if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) return { ok: false, skipped: true };
-  if (!(await hasBufferQuota(env))) return { ok: false, skipped: true, result: { skippedReason: "buffer_quota_exhausted" } };
-
-  const kvKey = `buffer-pending:facebook:${key}`;
-
-  let postId: string | null = null;
-  try {
-    const cached = await env.PUSH_KV.get(kvKey);
-    if (cached) {
-      const parsed = JSON.parse(cached);
-      if (Date.now() - parsed.createdAt < 30 * 60 * 1000) postId = parsed.id;
-    }
-  } catch (e) {}
-
-  if (!postId) {
-    const rawUrl = data.url ? (data.url.startsWith("http") ? data.url : env.SITE_ORIGIN + data.url) : undefined;
-    const caption = buildDividedCaption(data.title, data.text, data.kind);
-    // If URL is present, omit assets to allow Facebook/Buffer to generate the native link preview card
-    const imageUrl = !rawUrl && data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
-
-    try {
-      const query = imageUrl
-        ? `mutation PostToFacebook($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
-            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ image: { url: $imageUrl } }], metadata: { facebook: { type: post } } }) {
-              ... on PostActionSuccess { post { id } }
-              ... on MutationError { message }
-            }
-          }`
-        : `mutation PostToFacebook($text: String!, $channelId: ChannelId!) {
-            createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, metadata: { facebook: { type: post } } }) {
-              ... on PostActionSuccess { post { id } }
-              ... on MutationError { message }
-            }
-          }`;
-      const variables = imageUrl
-        ? { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID, imageUrl }
-        : { text: caption, channelId: env.BUFFER_FACEBOOK_CHANNEL_ID };
-
-      const res = await fetch("https://api.buffer.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
-        body: JSON.stringify({ query, variables }),
-      });
-      await recordBufferQuota(env, res);
-      const result: any = await res.json().catch(() => ({}));
-      postId = result?.data?.createPost?.post?.id;
-      if (!postId) {
-        if (detectBufferRateLimit(result)) {
-          await setBufferRateLimitCooldown(env, 30 * 60 * 1000, "facebook");
-        }
-        return { ok: false, result };
-      }
-      try {
-        await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 3600 });
-      } catch (e) {}
-    } catch (e) {
-      return { ok: false };
-    }
-  }
-
-  const outcome = await pollBufferPostUntilResolved(env, postId);
-  if (!outcome.resolved) return { ok: false, ambiguous: true };
-  try {
-    await env.PUSH_KV.delete(kvKey);
-  } catch (e) {}
-  if (!outcome.ok && detectBufferRateLimit(outcome.raw)) {
-    await setBufferRateLimitCooldown(env, 30 * 60 * 1000, "facebook");
-  }
-  return { ok: !!outcome.ok, result: outcome.raw };
 }
 
 async function postToInstagram(
@@ -1644,22 +1568,14 @@ async function sendToPlatform(
     ambiguous = !!r?.ambiguous;
     raw = r;
   } else if (platform === "facebook") {
-    // 1. Try Direct Meta Graph API first (free, unlimited, instant, 100% public)
+    // Direct Meta Graph API only — free, unlimited, instant, 100% public.
+    // No Buffer fallback: Buffer's quota is shared with X (one API key for
+    // both), so any Facebook traffic through it eats into X's budget too.
+    // Per the site owner: Buffer is for X only, full stop.
     const directR = await postToFacebookDirect(env, key, item);
-    if (directR.ok) {
-      ok = true;
-      raw = directR.result;
-    } else if (directR.ambiguous) {
-      ambiguous = true;
-      raw = directR.result;
-    } else {
-      console.warn(`[Facebook] Direct Graph API error, falling back to Buffer:`, directR.result);
-      const bufferR = await postToFacebookViaBuffer(env, key, item);
-      ok = bufferR.ok;
-      skipped = !!bufferR.skipped;
-      ambiguous = !!bufferR.ambiguous;
-      raw = { direct: directR.result, buffer: bufferR.result };
-    }
+    ok = directR.ok;
+    ambiguous = !!directR.ambiguous;
+    raw = directR.result;
   } else if (platform === "instagram") {
     const imageUrl = item.image ? (item.image.startsWith("http") ? item.image : env.SITE_ORIGIN + item.image) : undefined;
     const r = await postToInstagram(env, key, { ...item, imageUrl });
