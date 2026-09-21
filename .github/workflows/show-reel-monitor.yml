@@ -1,25 +1,25 @@
 name: Show Reel Monitor — Publish Reels to Social Media
 
 # ═══════════════════════════════════════════════════════
-#  نظام تتبع ونشر ريلز العروض — مستقل تماماً
-#  يعمل كل 30 دقيقة أو لما يتضاف عرض جديد
-#  ينشر على: Facebook Reel | Facebook Story | Instagram Reel | Instagram Story
+#  أداة تتبع ونشر ريلز العروض — مستقلة تماماً
+#  المهمة الوحيدة: تتبع فيديوهات ريلز العروض ونشرها على:
+#    - Facebook Reel
+#    - Facebook Story
+#    - Instagram Reel
+#  تعمل كل 15 دقيقة (لإعادة محاولة المنصات المؤجلة بسبب الكوتة)،
+#  وعند إضافة أي فيديو ريل جديد في dist/videos/.
 # ═══════════════════════════════════════════════════════
 
 on:
-  # يشتغل كل 15 دقيقة
   schedule:
     - cron: '*/15 * * * *'
 
-  # يشتغل لو اتضاف/اتغير عرض
   push:
     branches:
       - main
     paths:
-      - 'content/shows/**'
       - 'dist/videos/**'
 
-  # تشغيل يدوي لو احتجت
   workflow_dispatch:
 
 concurrency:

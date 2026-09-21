@@ -1,0 +1,188 @@
+name: Auto Show Reel Generator
+
+# ═══════════════════════════════════════════════════════
+#  أداة توليد ريلز العروض التلقائية (مصارعة و MMA)
+#  مستقلة تماماً عن لوحة تحكم الاستوديو اليدوية وعن ناشر الأخبار.
+#  تعمل فور إضافة أو تحديث أي عرض في content/shows/
+#  تبدأ حصرياً من عروض UFC 331 (2026-09-21) والعروض المستقبلية فقط.
+# ═══════════════════════════════════════════════════════
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/shows/**'
+
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Specific show file or slug to render (optional)'
+        required: false
+        default: ''
+
+concurrency:
+  group: auto-show-reel
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  auto-render-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install system dependencies & Arabic fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg xvfb fontconfig \
+            libgbm1 libnss3 libatk-bridge2.0-0 libdrm2 libxcomposite1 \
+            libxdamage1 libxrandr2 libcups2 libpangocairo-1.0-0 \
+            libxshmfence1 libgtk-3-0 \
+            fonts-noto-core fonts-noto-color-emoji fonts-dejavu-core
+          fc-cache -f
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-cache-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline || npm install
+
+      - name: Cache Chrome Headless Shell
+        id: cache-puppeteer
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-chrome-headless-${{ runner.os }}-v1
+
+      - name: Install Chrome Headless Shell
+        run: |
+          if [ "${{ steps.cache-puppeteer.outputs.cache-hit }}" != "true" ]; then
+            npx --yes @puppeteer/browsers install chrome-headless-shell@stable --path $HOME/.cache/puppeteer
+          fi
+          SHELL_PATH=$(find $HOME/.cache/puppeteer \( -name "chrome-headless-shell" -o -name "headless_shell" \) -type f | head -1)
+          echo "Discovered Chrome Headless Shell at: $SHELL_PATH"
+          if [ -n "$SHELL_PATH" ]; then
+            chmod +x "$SHELL_PATH"
+            echo "PRODUCER_HEADLESS_SHELL_PATH=$SHELL_PATH" >> $GITHUB_ENV
+            echo "HYPERFRAMES_BROWSER_PATH=$SHELL_PATH" >> $GITHUB_ENV
+          fi
+
+      - name: Render Show Reel Videos (UFC 331+ Only)
+        env:
+          INPUT_SLUG: ${{ github.event.inputs.slug }}
+        run: |
+          echo "🔍 Scanning for eligible shows to generate reel videos..."
+          TARGETS=()
+
+          if [ -n "$INPUT_SLUG" ] && [ "$INPUT_SLUG" != "latest" ]; then
+            TARGETS+=("$INPUT_SLUG")
+          else
+            # 1. Inspect git push diff for changed/added shows
+            if [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+              PUSH_SHOWS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^content/shows/.*\.md$' || true)
+            else
+              PUSH_SHOWS=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '^content/shows/.*\.md$' || true)
+            fi
+
+            for S in $PUSH_SHOWS; do
+              if [ -f "$S" ]; then
+                BASE=$(basename "$S")
+                TS="${BASE:0:14}"
+                # Must be >= UFC 331 cutoff
+                if [[ "$TS" > "20260921002200" || "$TS" == "20260921002200" || "$BASE" == *"ufc-331"* ]]; then
+                  TARGETS+=("$S")
+                fi
+              fi
+            done
+
+            # 2. Safety catch-up: scan shows from 2026-09-21 onwards missing an MP4 video
+            CUTOFF="20260921002200"
+            for F in $(ls content/shows/*.md 2>/dev/null | grep -E 'content/shows/[0-9]{14}-' | sort); do
+              BASE=$(basename "$F")
+              TS="${BASE:0:14}"
+              if [[ "$TS" > "$CUTOFF" || "$TS" == "$CUTOFF" || "$BASE" == *"ufc-331"* ]]; then
+                SLUG=$(basename "$F" .md | cut -c 1-45)
+                MATCHING=$(find dist/videos -name "reel-${SLUG}*.mp4" 2>/dev/null || true)
+                if [ -z "$MATCHING" ]; then
+                  echo "Found new show missing reel video: $F"
+                  if [[ ! " ${TARGETS[*]} " =~ " ${F} " ]]; then
+                    TARGETS+=("$F")
+                  fi
+                fi
+              fi
+            done
+          fi
+
+          if [ ${#TARGETS[@]} -eq 0 ]; then
+            echo "✅ No eligible shows need reel generation at this time."
+            exit 0
+          fi
+
+          echo "🎬 Shows to render: ${TARGETS[*]}"
+          for T in "${TARGETS[@]}"; do
+            echo "════════════════════════════════════════"
+            echo "🎬 Rendering reel for: $T"
+            echo "════════════════════════════════════════"
+            xvfb-run -a npx tsx scripts/generate-news-video.ts "$T"
+          done
+
+      - name: Commit and push generated show reel videos
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "ARW Show Reel Bot"
+          git add -f dist/videos/
+          git checkout -- ':!dist/videos/' 2>/dev/null || true
+          git clean -fd -e dist/videos/ 2>/dev/null || true
+          if [[ -n $(git status -s dist/videos/) ]]; then
+            git commit -m "feat(video): auto-generate show reel video [skip ci]"
+            for i in {1..5}; do
+              git pull --rebase origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
+              if git push origin main; then
+                echo "✅ Successfully committed and pushed video to main."
+                break
+              fi
+              echo "Push retry $i/5 failed, retrying in 4s..."
+              sleep 4
+            done
+          else
+            echo "ℹ️ No new video file was produced."
+          fi
+
+      - name: Publish new show reels immediately to Facebook & Instagram
+        env:
+          WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
+          SITE_ORIGIN: "https://arab-wrestling.com"
+        run: |
+          echo "🚀 Publishing new show reels via show-reel-monitor..."
+          npx tsx scripts/show-reel-monitor.ts
+          git add _data/show-reel-state.json
+          if [[ -n $(git status -s _data/show-reel-state.json) ]]; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "ARW Show Reel Bot"
+            git commit -m "chore(reels): update show-reel-state.json [skip ci]"
+            for i in {1..3}; do
+              git pull --rebase origin main || true
+              if git push origin main; then
+                echo "✅ State file committed and pushed."
+                break
+              fi
+              sleep 3
+            done
+          fi
