@@ -1,5 +1,35 @@
 [
   {
+    "id": 289941,
+    "link": "https://www.fightful.com/wrestling/wade-barrett-on-his-favorite-commentary-partner-in-wwe/",
+    "date": "2026-09-21T08:00:00",
+    "date_gmt": "2026-09-21T12:00:00",
+    "title": {
+      "rendered": "Wade Barrett Talks About Working With Michael Cole And Joe Tessitore On Commentary In WWE"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21001947/maxresdefault-133.jpg"
+  },
+  {
+    "id": 329541,
+    "link": "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-9-21/",
+    "date": "2026-09-21T08:00:00",
+    "date_gmt": "2026-09-21T12:00:00",
+    "title": {
+      "rendered": "WWE Raw Preview, Start Time, How To Watch, Location (9/21)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
+  },
+  {
+    "id": 329589,
+    "link": "https://www.fightful.com/wrestling/zoey-serrano-says-she-is-really-disappointed-in-herself-that-she-didnt-show-her-true-personality-in-wwe/",
+    "date": "2026-09-21T07:57:31",
+    "date_gmt": "2026-09-21T11:57:31",
+    "title": {
+      "rendered": "Zoey Serrano Says She Is &#8216;Really Disappointed In Herself&#8217; That She Didn&#8217;t Show Her True Personality In WWE"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25190922/wwe-zoey-stark-interview.jpg"
+  },
+  {
     "id": 329573,
     "link": "https://www.fightful.com/wrestling/aj-francis-says-hes-peaking-in-his-wrestling-career-says-he-wants-to-be-the-tna-world-champion/",
     "date": "2026-09-21T07:30:00",
@@ -268,35 +298,5 @@
       "rendered": "Raquel Rodriguez Tells Lola Vice To &#8216;Get To The Back Of The Line&#8217; For A WWE Women&#8217;s Intercontinental Championship Opportunity"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/20113548/maxresdefault-132.jpg"
-  },
-  {
-    "id": 329490,
-    "link": "https://www.fightful.com/wrestling/all-teams-announced-for-dusty-rhodes-tag-team-classic/",
-    "date": "2026-09-20T11:22:11",
-    "date_gmt": "2026-09-20T15:22:11",
-    "title": {
-      "rendered": "All Teams Announced For Dusty Rhodes Tag Team Classic"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15214321/Untitled-Design-14.jpg"
-  },
-  {
-    "id": 329484,
-    "link": "https://www.fightful.com/wrestling/rush-responds-to-claims-that-he-is-injury-prone/",
-    "date": "2026-09-20T11:07:23",
-    "date_gmt": "2026-09-20T15:07:23",
-    "title": {
-      "rendered": "Rush Responds To Claims That He Is Injury Prone"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/12/17211806/rush_dralistico.jpg"
-  },
-  {
-    "id": 329445,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-9-19-kelani-jordan-headlines/",
-    "date": "2026-09-20T11:00:00",
-    "date_gmt": "2026-09-20T15:00:00",
-    "title": {
-      "rendered": "WWE NXT Live Results (9/19): Kelani Jordan Headlines"
-    },
-    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
   }
 ]
