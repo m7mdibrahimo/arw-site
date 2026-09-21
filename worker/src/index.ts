@@ -1804,16 +1804,9 @@ async function postVideoToInstagramStory(
           }
         }
       }
-    } catch (vidErr) {
+    } catch (vidErr: any) {
       console.warn("[Instagram Story] Video attempt failed:", vidErr);
-    }
-
-    // Attempt 2: High-res Photo Story fallback
-    if (data.imageUrl) {
-      const photoRes = await postToInstagramStory(env, { imageUrl: data.imageUrl });
-      if (photoRes.ok) {
-        return { ok: true, result: photoRes.result, message: "تم نشر ستوري الموضوع على الإنستغرام بنجاح!" };
-      }
+      return { ok: false, error: "فشل نشر ستوري الفيديو على إنستغرام: " + vidErr.message };
     }
 
     return { ok: false, error: "تعذر نشر ستوري الفيديو على إنستغرام" };

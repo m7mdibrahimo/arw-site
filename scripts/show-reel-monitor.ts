@@ -195,8 +195,8 @@ async function main() {
       continue;
     }
 
-// Instagram is temporarily paused per user instruction until daily quota resets
-const ENABLE_INSTAGRAM = false;
+// Instagram is active for new shows; all historical and current shows are already cleared in state
+const ENABLE_INSTAGRAM = true;
 
     // 2. Determine remaining platforms: only those that have NOT succeeded yet!
     const targetPlatforms: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[] = [];
