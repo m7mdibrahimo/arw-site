@@ -120,7 +120,6 @@ async function publishToSocial(params: {
   videoUrl: string;
   title: string;
   postUrl?: string;
-  imageUrl?: string;
   platforms?: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[];
 }): Promise<{ facebook_reel: boolean; facebook_story: boolean; instagram_reel: boolean; instagram_story: boolean; errors: string[] }> {
   const result = { facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false, errors: [] as string[] };
@@ -136,7 +135,6 @@ async function publishToSocial(params: {
         videoUrl: params.videoUrl,
         title: params.title,
         postUrl: params.postUrl,
-        imageUrl: params.imageUrl,
         platforms: targetPlatforms,
       }),
     });
@@ -225,7 +223,6 @@ const ENABLE_INSTAGRAM = false;
     }
 
     const title = fm.headline || fm.title || slug;
-    const imageUrl = fm.image ? `${SITE_ORIGIN}${fm.image.startsWith('/') ? '' : '/'}${fm.image}` : undefined;
     const postUrl = `${SITE_ORIGIN}/shows/${slug}`;
 
     // Find reel video
@@ -248,7 +245,7 @@ const ENABLE_INSTAGRAM = false;
     console.log(`   Video: ${videoFileName}`);
     console.log(`   Publishing to: ${targetPlatforms.join(' | ')}`);
 
-    const publishResult = await publishToSocial({ videoUrl, title, postUrl, imageUrl, platforms: targetPlatforms });
+    const publishResult = await publishToSocial({ videoUrl, title, postUrl, platforms: targetPlatforms });
     const anySuccess = publishResult.facebook_reel || publishResult.facebook_story || publishResult.instagram_reel || publishResult.instagram_story;
 
     // Update state

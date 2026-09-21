@@ -1634,22 +1634,16 @@ async function postVideoToFacebookStory(
             if (finishData.success || finishData.id || finishData.post_id) {
               return { ok: true, result: finishData, message: "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!" };
             }
+            return { ok: false, error: finishData?.error?.message || "فشل تأكيد نشر ستوري الفيديو على فيسبوك", result: { initData, uploadData, finishData } };
           }
+          return { ok: false, error: uploadData?.error?.message || "فشل رفع مقاطع فيديو الاستوري", result: { initData, uploadData } };
         }
+        return { ok: false, error: `فشل تحميل ملف الفيديو من الرابط السحابي (${vidRes.status})` };
       }
-    } catch (vidErr) {
-      console.warn("[Facebook Story] Video story attempt failed, trying fallback:", vidErr);
+      return { ok: false, error: initData?.error?.message || "فشل بدء جلسة رفع ستوري الفيديو", result: initData };
+    } catch (vidErr: any) {
+      return { ok: false, error: "خطأ داخلي أثناء معالجة ستوري الفيديو: " + vidErr.message };
     }
-
-    // Attempt 2: Fallback to high-res Photo Story if video story couldn't be processed
-    if (data.imageUrl) {
-      const photoRes = await postToFacebookStory(env, { imageUrl: data.imageUrl });
-      if (photoRes.ok) {
-        return { ok: true, result: photoRes.result, message: "تم نشر ستوري الموضوع على الفيسبوك بنجاح!" };
-      }
-    }
-
-    return { ok: false, error: "تعذر نشر ستوري الفيديو على فيسبوك، يرجى المحاولة لاحقاً" };
   } catch (e: any) {
     return { ok: false, error: e.message || "خطأ أثناء نشر ستوري فيسبوك" };
   }
