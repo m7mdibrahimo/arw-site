@@ -1,0 +1,39 @@
+name: Publishing regression checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'worker/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'lib/**'
+      - 'admin/**'
+      - 'package*.json'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - 'worker/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'lib/**'
+      - 'admin/**'
+      - 'package*.json'
+      - '.github/workflows/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm ci --prefix worker
+      - run: npx tsc -p worker/tsconfig.json
+      - run: npm run test:publishing
+      - run: npx tsx scripts/test-sanitizer.ts
+      - run: npx tsx scripts/test-spoiler-filter.ts

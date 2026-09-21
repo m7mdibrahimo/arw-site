@@ -31,6 +31,8 @@ async function autoPublish() {
 
   console.log(`🚀 [Auto-Publish] Found ${itemsToPublish.length} reel(s) to publish.`);
 
+  const remaining: any[] = [];
+  if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN is required for publishing");
   for (const data of itemsToPublish) {
     console.log(`\n🚀 [Auto-Publish] Processing: "${data.title}" (Kind: ${data.kind || 'unknown'})`);
     const videoFileName = data.filename || path.basename(data.videoUrl || '');
@@ -50,7 +52,7 @@ async function autoPublish() {
       console.log(`📹 [Auto-Publish] Publishing Reel & Story for "${data.title}"...`);
       const reelRes = await fetch(`${WORKER_URL}/api/videos/publish-social`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
         body: JSON.stringify({
           videoUrl: rawVideoUrl,
           title: data.title,
@@ -61,15 +63,19 @@ async function autoPublish() {
       });
 
       const reelData: any = await reelRes.json().catch(() => ({}));
-      console.log('✅ Reel & Story Publish Response:', JSON.stringify(reelData, null, 2));
+      console.log('Reel & Story Publish Response:', JSON.stringify(reelData, null, 2));
+      if (!reelRes.ok || !reelData.success) remaining.push(data);
     } catch (reelErr) {
+      remaining.push(data);
       console.error(`⚠️ Failed to publish Reel & Story for "${data.title}":`, reelErr);
     }
   }
 
-  if (fs.existsSync(queuePath)) {
-    try { fs.unlinkSync(queuePath); } catch {}
+  if (remaining.length) {
+    fs.writeFileSync(queuePath, JSON.stringify(remaining, null, 2));
+    throw new Error(`${remaining.length} video(s) remain incomplete; queue retained.`);
   }
+  if (fs.existsSync(queuePath)) fs.unlinkSync(queuePath);
   console.log('🎉 [Auto-Publish] Completed Reel and Story broadcasting successfully.');
 }
 

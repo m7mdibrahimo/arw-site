@@ -5,9 +5,8 @@
  *   - Site watcher: polls search-index.json, verifies each item is really
  *     live (page + image), then publishes to Telegram, then cross-posts to
  *     Facebook + Instagram.
- *   - Same GitHub-backed atomic claim/dedup system as before
- *     (claimSend/releaseSendClaim), so publishing can never duplicate a
- *     post unless "force" is explicitly requested by a human.
+ *   - GitHub SHA-based per-publication claims and durable acknowledgements.
+ *     Unknown outcomes remain blocked until checked on the destination.
  *   - Manual publish endpoints for the admin dashboard button.
  *   - Web Push (subscribe/unsubscribe/send) using Workers KV instead of
  *     local JSON files (which Render wiped on every restart anyway).
@@ -30,6 +29,8 @@
  *     between invocations anyway, so caching in memory would be unsafe).
  */
 
+import { deliverOnce, authorizeAdmin } from "./delivery";
+import { publishFacebookVideo, publishInstagramVideo } from "./video-publishing";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -57,6 +58,8 @@ export interface Env {
   SITE_ORIGIN: string;
   VAPID_SUBJECT: string;
   WATCHER_MIN_DATE: string;
+  INSTAGRAM_AUTO_ENABLED?: string;
+  AUTO_IMAGE_STORIES?: string;
   BUFFER_X_CHANNEL_ID: string;
   BUFFER_FACEBOOK_CHANNEL_ID: string;
 
@@ -292,6 +295,7 @@ type PublishState = {
   // "not set" on the very next tick and get silently ignored.
   cooldowns: Partial<Record<"facebook" | "instagram" | "x", number>>;
   lastStoryAt?: number;
+  videoCooldowns?: Partial<Record<"facebook" | "instagram", number>>;
 };
 
 function emptyPublishState(): PublishState {
@@ -630,34 +634,6 @@ async function githubDeleteVideoFile(env: Env, filename: string): Promise<{ ok: 
 
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
-async function claimSend(env: Env, platform: Platform, key: string, force = false): Promise<boolean> {
-  if (!key) return true;
-  try {
-    const { state } = await githubReadState(env);
-    if (!force && state[platform]?.[key]) return false; // already sent
-  } catch (e: any) {
-    console.error("[claimSend] githubReadState error:", e?.message || e);
-    return false;
-  }
-
-  // Use KV lock for in-flight requests to prevent concurrent execution without committing to Git
-  const lockKey = `lock:${platform}:${key}`;
-  try {
-    const locked = await env.PUSH_KV.get(lockKey);
-    if (locked && !force) return false;
-    await env.PUSH_KV.put(lockKey, "1", { expirationTtl: 60 }); // 60s TTL (prevents concurrent tick clash, but allows next-minute retry)
-  } catch (e) {}
-
-  // Check persistent fail backoff in KV (skip if failed 5 times recently)
-  const failKey = `fail:${platform}:${key}`;
-  try {
-    const fails = parseInt((await env.PUSH_KV.get(failKey)) || "0");
-    if (fails >= 5 && !force) return false;
-  } catch (e) {}
-
-  return true;
-}
-
 async function markSendSuccess(env: Env, platform: Platform, key: string): Promise<void> {
   if (!key) return;
   const lockKey = `lock:${platform}:${key}`;
@@ -685,33 +661,6 @@ async function markSendSuccess(env: Env, platform: Platform, key: string): Promi
       continue;
     }
     return;
-  }
-}
-
-async function releaseSendClaim(env: Env, platform: Platform, key: string): Promise<void> {
-  if (!key) return;
-  const lockKey = `lock:${platform}:${key}`;
-  const failKey = `fail:${platform}:${key}`;
-  try {
-    await env.PUSH_KV.delete(lockKey);
-    const fails = parseInt((await env.PUSH_KV.get(failKey)) || "0");
-    await env.PUSH_KV.put(failKey, String(fails + 1), { expirationTtl: 86400 });
-  } catch (e) {}
-
-  // If key was somehow already recorded in GitHub state (e.g. forced retry or legacy claim), clean it up
-  for (let attempt = 0; attempt < 3; attempt++) {
-    let sha: string | null;
-    let state: PublishState;
-    try {
-      ({ sha, state } = await githubReadState(env));
-    } catch (e) {
-      return;
-    }
-    if (!state[platform]?.[key]) return;
-    delete state[platform][key];
-    const write = await githubWriteState(env, state, sha, `chore(publish): release ${platform} claim — ${key} (send failed)`);
-    if (write.ok || !write.conflict) return;
-    await new Promise((r) => setTimeout(r, 400 + Math.random() * 400));
   }
 }
 
@@ -781,10 +730,10 @@ async function sendVerifiedTelegramPost(
         method: "POST",
         body: formData,
       });
-      const result: any = await tgRes.json().catch(() => ({ ok: false }));
-      if (result.ok) return result;
+      const result: any = await tgRes.json().catch(() => ({ ok: false, ambiguous: true }));
+      if (result.ok || result.ambiguous || tgRes.status >= 500) return { ...result, ambiguous: !result.ok };
     } catch (e) {
-      // fall through to text-only
+      return { ok: false, ambiguous: true };
     }
   }
 
@@ -794,7 +743,8 @@ async function sendVerifiedTelegramPost(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
-  const result = await tgRes.json().catch(() => ({ ok: false }));
+  const result: any = await tgRes.json().catch(() => ({ ok: false, ambiguous: true }));
+  if (tgRes.status >= 500) result.ambiguous = true;
   return result as { ok: boolean; [k: string]: any };
 }
 
@@ -1005,13 +955,8 @@ async function postToFacebookDirect(
     const pageToken = await getPageAccessToken(env);
     const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
-    // Direct Photo Post (or feed post if no image) — NO link in main post body for maximum reach
-    const endpoint = imageUrl
-      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
-      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
-    const body = imageUrl
-      ? { url: imageUrl, caption, access_token: pageToken }
-      : { message: caption, access_token: pageToken };
+    const endpoint = `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
+    const body = { message: caption, link: data.url, access_token: pageToken };
 
     let res: Response;
     try {
@@ -1454,370 +1399,31 @@ async function postVideoToTelegram(
   }
 }
 
-async function postVideoToFacebookReel(
-  env: Env,
-  data: { videoUrl: string; title: string; postUrl?: string }
-): Promise<{ ok: boolean; result?: any; error?: string }> {
-  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) {
-    return { ok: false, error: "Facebook Page credentials missing in Worker" };
+async function setVideoCooldown(env: Env, platform: "facebook" | "instagram") {
+  for (let i = 0; i < 5; i++) {
+    const { sha, state } = await githubReadState(env);
+    state.videoCooldowns = { ...state.videoCooldowns, [platform]: Date.now() + 24 * 60 * 60_000 };
+    const result = await githubWriteState(env, state, sha, `chore(publish): pause ${platform} videos after platform restriction`);
+    if (result.ok) return;
+    if (!result.conflict) throw new Error("Could not save video platform cooldown");
   }
-
-  const caption = buildReelCaption(data.title, data.postUrl);
-
-  try {
-    const pageToken = await getPageAccessToken(env);
-
-    // 1. Download video binary buffer into memory
-    const vidRes = await fetch(data.videoUrl);
-    if (!vidRes.ok) {
-      return { ok: false, error: `فشل تحميل ملف الفيديو من الرابط السحابي: ${vidRes.status}` };
-    }
-    const vidBuffer = await vidRes.arrayBuffer();
-
-    // 2. Start Facebook Video Reels Session
-    const initRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
-      }
-    );
-    const initData: any = await initRes.json().catch(() => ({}));
-    if (!initData.video_id || !initData.upload_url) {
-      console.warn("[Facebook Reel] video_reels session failed, trying graph-video fallback:", initData);
-      let fallbackData: any = null;
-      try {
-        const fallbackRes = await fetch(
-          `https://graph-video.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/videos`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              file_url: data.videoUrl,
-              description: caption,
-              title: data.title,
-              access_token: pageToken,
-            }),
-          }
-        );
-        fallbackData = await fallbackRes.json().catch(() => ({}));
-        if (fallbackData && fallbackData.id) {
-          return {
-            ok: true,
-            result: fallbackData,
-          };
-        }
-      } catch (fbErr: any) {
-        console.warn("[Facebook Reel] graph-video fallback failed:", fbErr);
-        return {
-          ok: false,
-          result: { init: initData, fbErr: fbErr.message },
-          error: initData?.error?.message || fbErr.message || "فشل بدء جلسة رفع الريلز على فيسبوك",
-        };
-      }
-
-      return {
-        ok: false,
-        result: { init: initData, fallback: fallbackData },
-        error: (fallbackData && fallbackData?.error?.message) ? fallbackData.error.message : (initData?.error?.message || "فشل بدء جلسة رفع الريلز على فيسبوك"),
-      };
-    }
-
-    const videoId = initData.video_id;
-    const uploadUrl = initData.upload_url;
-
-    // 3. Upload binary stream to rupload.facebook.com
-    const uploadRes = await fetch(uploadUrl, {
-      method: "POST",
-      headers: {
-        Authorization: `OAuth ${pageToken}`,
-        offset: "0",
-        file_size: String(vidBuffer.byteLength),
-        "Content-Type": "application/octet-stream",
-      },
-      body: vidBuffer,
-    });
-    const uploadData: any = await uploadRes.json().catch(() => ({}));
-
-    if (uploadData.error) {
-      return {
-        ok: false,
-        result: uploadData,
-        error: uploadData.error.message || "فشل نقل بيانات الفيديو إلى خوادم فيسبوك ريلز",
-      };
-    }
-
-    // Allow Meta's ingestion pipeline a brief moment to register the chunks
-    await new Promise((r) => setTimeout(r, 4000));
-
-    // 4. Finish phase: Publish Reel to Facebook Reels Tab
-    const finishRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_reels`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          upload_phase: "finish",
-          video_id: videoId,
-          video_state: "PUBLISHED",
-          description: caption,
-          title: data.title,
-          access_token: pageToken,
-        }),
-      }
-    );
-    const finishData: any = await finishRes.json().catch(() => ({}));
-
-    if (finishData.success || finishData.id || finishData.post_id) {
-      return { ok: true, result: { videoId, finish: finishData, upload: uploadData } };
-    }
-
-    return {
-      ok: false,
-      result: finishData,
-      error: finishData?.error?.message || "فشل تأكيد ونشر الريلز على صفحة الفيسبوك",
-    };
-  } catch (e: any) {
-    return { ok: false, error: e.message || "خطأ أثناء نشر الريلز على الفيسبوك" };
-  }
+  throw new Error("Could not save video platform cooldown after conflicts");
 }
 
-async function postVideoToFacebookStory(
-  env: Env,
-  data: { videoUrl: string; imageUrl?: string }
-): Promise<{ ok: boolean; result?: any; message?: string; error?: string }> {
-  if (!env.FACEBOOK_PAGE_ACCESS_TOKEN || !env.FACEBOOK_PAGE_ID) {
-    return { ok: false, error: "Facebook Page credentials missing in Worker" };
-  }
-
-  try {
-    const pageToken = await getPageAccessToken(env);
-
-    // Attempt 1: Direct Video Story via rupload with binary buffer
-    try {
-      const initRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ upload_phase: "start", access_token: pageToken }),
-        }
-      );
-      const initData: any = await initRes.json().catch(() => ({}));
-      if (initData.video_id && initData.upload_url) {
-        // Download video to buffer in worker to ensure fast binary stream upload
-        const vidRes = await fetch(data.videoUrl);
-        if (vidRes.ok) {
-          const vidBuffer = await vidRes.arrayBuffer();
-          const uploadRes = await fetch(initData.upload_url, {
-            method: "POST",
-            headers: {
-              Authorization: `OAuth ${pageToken}`,
-              offset: "0",
-              file_size: String(vidBuffer.byteLength),
-              "Content-Type": "application/octet-stream",
-            },
-            body: vidBuffer,
-          });
-          const uploadData: any = await uploadRes.json().catch(() => ({}));
-          if (uploadData.success !== false) {
-            await new Promise((r) => setTimeout(r, 2000));
-            const finishRes = await fetch(
-              `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/video_stories`,
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  upload_phase: "finish",
-                  video_id: initData.video_id,
-                  access_token: pageToken,
-                }),
-              }
-            );
-            const finishData: any = await finishRes.json().catch(() => ({}));
-            if (finishData.success || finishData.id || finishData.post_id) {
-              return { ok: true, result: finishData, message: "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!" };
-            }
-            return { ok: false, error: finishData?.error?.message || "فشل تأكيد نشر ستوري الفيديو على فيسبوك", result: { initData, uploadData, finishData } };
-          }
-          return { ok: false, error: uploadData?.error?.message || "فشل رفع مقاطع فيديو الاستوري", result: { initData, uploadData } };
-        }
-        return { ok: false, error: `فشل تحميل ملف الفيديو من الرابط السحابي (${vidRes.status})` };
-      }
-      return { ok: false, error: initData?.error?.message || "فشل بدء جلسة رفع ستوري الفيديو", result: initData };
-    } catch (vidErr: any) {
-      return { ok: false, error: "خطأ داخلي أثناء معالجة ستوري الفيديو: " + vidErr.message };
-    }
-  } catch (e: any) {
-    return { ok: false, error: e.message || "خطأ أثناء نشر ستوري فيسبوك" };
-  }
+async function postVideoToFacebookReel(env: Env, data: { videoUrl: string; title: string; postUrl?: string }) {
+  return publishFacebookVideo({ pageId: env.FACEBOOK_PAGE_ID, token: await getPageAccessToken(env),
+    videoUrl: data.videoUrl, caption: buildReelCaption(data.title, data.postUrl), story: false });
 }
-
-
-async function postVideoToInstagramReel(
-  env: Env,
-  data: { videoUrl: string; title: string; postUrl?: string }
-): Promise<{ ok: boolean; result?: any; error?: string }> {
-  if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
-    return { ok: false, error: "Instagram credentials missing in Worker" };
-  }
-
-  const caption = buildReelCaption(data.title, data.postUrl);
-  let safeVideoUrl = data.videoUrl;
-  try {
-    safeVideoUrl = encodeURI(decodeURI(data.videoUrl));
-  } catch (e) {
-    safeVideoUrl = encodeURI(data.videoUrl);
-  }
-
-  try {
-    const pageToken = await getPageAccessToken(env);
-
-    // 1. Create Reels Container
-    const createRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          media_type: "REELS",
-          video_url: safeVideoUrl,
-          caption,
-          share_to_feed: true,
-          access_token: pageToken,
-        }),
-      }
-    );
-    const createData: any = await createRes.json().catch(() => ({}));
-    if (!createData.id) {
-      return { ok: false, result: createData, error: createData?.error?.message || "فشل إنشاء حاوية ريلز إنستغرام" };
-    }
-
-    const containerId = createData.id;
-
-    // 2. Poll container status until FINISHED
-    let ready = false;
-    for (let i = 0; i < 15; i++) {
-      await new Promise((r) => setTimeout(r, 3500));
-      const statusRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
-      );
-      const statusData: any = await statusRes.json().catch(() => ({}));
-      if (statusData.status_code === "FINISHED") {
-        ready = true;
-        break;
-      }
-      if (statusData.status_code === "ERROR") {
-        return { ok: false, result: statusData, error: statusData?.status || "حدث خطأ أثناء معالجة فيديو الريلز في إنستغرام" };
-      }
-    }
-
-    if (!ready) {
-      return { ok: false, error: "استغرقت معالجة الفيديو في إنستغرام وقتاً أطول من المعتاد" };
-    }
-
-    // 3. Publish Reel
-    const pubRes = await fetch(
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          creation_id: containerId,
-          access_token: pageToken,
-        }),
-      }
-    );
-    const pubData: any = await pubRes.json().catch(() => ({}));
-    if (pubData.id) {
-      return { ok: true, result: pubData };
-    }
-    return { ok: false, result: pubData, error: pubData?.error?.message || "فشل نشر ريلز إنستغرام النهائي" };
-  } catch (e: any) {
-    return { ok: false, error: e.message || "خطأ أثناء نشر ريلز إنستغرام" };
-  }
+async function postVideoToFacebookStory(env: Env, data: { videoUrl: string; imageUrl?: string }) {
+  return publishFacebookVideo({ pageId: env.FACEBOOK_PAGE_ID, token: await getPageAccessToken(env), videoUrl: data.videoUrl, story: true });
 }
-
-async function postVideoToInstagramStory(
-  env: Env,
-  data: { videoUrl: string; imageUrl?: string }
-): Promise<{ ok: boolean; result?: any; message?: string; error?: string }> {
-  if (!env.INSTAGRAM_BUSINESS_ACCOUNT_ID || !env.FACEBOOK_PAGE_ACCESS_TOKEN) {
-    return { ok: false, error: "Instagram credentials missing in Worker" };
-  }
-
-  let safeVideoUrl = data.videoUrl;
-  try {
-    safeVideoUrl = encodeURI(decodeURI(data.videoUrl));
-  } catch (e) {
-    safeVideoUrl = encodeURI(data.videoUrl);
-  }
-
-  try {
-    const pageToken = await getPageAccessToken(env);
-
-    // Attempt 1: Video Story
-    try {
-      const createRes = await fetch(
-        `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            media_type: "STORIES",
-            video_url: safeVideoUrl,
-            access_token: pageToken,
-          }),
-        }
-      );
-      const createData: any = await createRes.json().catch(() => ({}));
-      if (createData.id) {
-        const containerId = createData.id;
-        let ready = false;
-        for (let i = 0; i < 15; i++) {
-          await new Promise((r) => setTimeout(r, 3500));
-          const statusRes = await fetch(
-            `https://graph.facebook.com/${GRAPH_API_VERSION}/${containerId}?fields=status_code,status&access_token=${pageToken}`
-          );
-          const statusData: any = await statusRes.json().catch(() => ({}));
-          if (statusData.status_code === "FINISHED") {
-            ready = true;
-            break;
-          }
-          if (statusData.status_code === "ERROR") {
-            console.warn("[Instagram Story] Video container returned error, switching to fallback:", statusData);
-            break;
-          }
-        }
-
-        if (ready) {
-          const pubRes = await fetch(
-            `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                creation_id: containerId,
-                access_token: pageToken,
-              }),
-            }
-          );
-          const pubData: any = await pubRes.json().catch(() => ({}));
-          if (pubData.id) {
-            return { ok: true, result: pubData, message: "تم نشر ستوري الفيديو على حساب الإنستغرام بنجاح!" };
-          }
-        }
-      }
-    } catch (vidErr: any) {
-      console.warn("[Instagram Story] Video attempt failed:", vidErr);
-      return { ok: false, error: "فشل نشر ستوري الفيديو على إنستغرام: " + vidErr.message };
-    }
-
-    return { ok: false, error: "تعذر نشر ستوري الفيديو على إنستغرام" };
-  } catch (e: any) {
-    return { ok: false, error: e.message || "خطأ أثناء نشر ستوري إنستغرام" };
-  }
+async function postVideoToInstagramReel(env: Env, data: { videoUrl: string; title: string; postUrl?: string }) {
+  return publishInstagramVideo({ accountId: env.INSTAGRAM_BUSINESS_ACCOUNT_ID, token: await getPageAccessToken(env),
+    videoUrl: data.videoUrl, caption: buildReelCaption(data.title, data.postUrl), story: false, kv: env.PUSH_KV });
+}
+async function postVideoToInstagramStory(env: Env, data: { videoUrl: string; imageUrl?: string }) {
+  return publishInstagramVideo({ accountId: env.INSTAGRAM_BUSINESS_ACCOUNT_ID, token: await getPageAccessToken(env),
+    videoUrl: data.videoUrl, story: true, kv: env.PUSH_KV });
 }
 
 // Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
@@ -1912,6 +1518,27 @@ async function postToXViaBuffer(
 // ─────────────────────────────────────────────────────────────────────────
 
 async function publishToPlatform(
+  env: Env, platform: Platform, key: string,
+  item: { title: string; text?: string; url: string; image?: string; kind?: string },
+  verified: { imageBuffer?: ArrayBuffer; imageContentType?: string }, force: boolean,
+): Promise<{ status: string; raw?: any }> {
+  // Fail closed if state cannot be read; absence of a read is not permission to resend.
+  const { state } = await githubReadState(env);
+  if (!force && state[platform]?.[key]) return { status: "already_sent" };
+  if (!force && platform !== "telegram" && (state.cooldowns?.[platform] || 0) > Date.now()) return { status: "rate_limited" };
+  const result = await deliverOnce(env, `post:${platform}:${key}`, async () => {
+    const r = await sendToPlatform(env, platform, key, item, verified, force);
+    return { ok: r.status === "sent", status: r.status, ambiguous: r.status === "uncertain",
+      error: r.status !== "sent" ? (r.raw?.error?.message || r.raw?.result?.error?.message || r.status) : undefined };
+  }, { force });
+  if (result.ok) {
+    await markSendSuccess(env, platform, key);
+    return { status: result.status === "already_sent" ? "already_sent" : "sent" };
+  }
+  return { status: result.ambiguous ? "uncertain" : result.status || "failed", raw: { error: { message: result.error } } };
+}
+
+async function sendToPlatform(
   env: Env,
   platform: Platform,
   key: string,
@@ -1919,21 +1546,6 @@ async function publishToPlatform(
   verified: { imageBuffer?: ArrayBuffer; imageContentType?: string },
   force: boolean
 ): Promise<{ status: string; raw?: any }> {
-  // Buffer's daily posting limit is per-channel, not per-item — if it was
-  // just hit, don't even attempt a claim (avoids a pointless GitHub write)
-  // or a Buffer call for this platform until the cooldown set in
-  // postToFacebookViaBuffer/postToXViaBuffer expires. `force` (the admin's
-  // manual "publish anyway" button) bypasses this, same as it bypasses the
-  // normal claim.
-  // Only X is subject to Buffer cooldown; Facebook is now direct Meta Graph API
-  if (!force && (platform === "x" || platform === "facebook" || platform === "instagram")) {
-    const cooldownUntil = await getPlatformCooldownUntil(env, platform);
-    if (Date.now() < cooldownUntil) return { status: "rate_limited" };
-  }
-
-  if (force) await releaseSendClaim(env, platform, key);
-  if (!(await claimSend(env, platform, key, force))) return { status: "already_sent" };
-
   let ok = false;
   let skipped = false;
   let ambiguous = false;
@@ -1942,12 +1554,16 @@ async function publishToPlatform(
   if (platform === "telegram") {
     const r = await sendVerifiedTelegramPost(env, item, verified.imageBuffer, verified.imageContentType);
     ok = !!(r && r.ok);
+    ambiguous = !!r?.ambiguous;
     raw = r;
   } else if (platform === "facebook") {
     // 1. Try Direct Meta Graph API first (free, unlimited, instant, 100% public)
     const directR = await postToFacebookDirect(env, key, item);
     if (directR.ok) {
       ok = true;
+      raw = directR.result;
+    } else if (directR.ambiguous) {
+      ambiguous = true;
       raw = directR.result;
     } else {
       console.warn(`[Facebook] Direct Graph API error, falling back to Buffer:`, directR.result);
@@ -1973,7 +1589,6 @@ async function publishToPlatform(
   }
 
   if (ok) {
-    await markSendSuccess(env, platform, key);
     return { status: "sent" };
   }
 
@@ -1985,7 +1600,6 @@ async function publishToPlatform(
   // for a human to check and clear manually if it really did fail.
   if (ambiguous) return { status: "uncertain", raw };
 
-  await releaseSendClaim(env, platform, key);
   return { status: skipped ? "not_configured" : "failed", raw };
 }
 
@@ -2153,8 +1767,8 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
     // Determine what can actually be attempted right now
     const canDoTg = !tgDone;
-    // Instagram paused until daily quota resets per user instruction
-    const canDoIg = false;
+    // Resume automatically after the persisted platform cooldown expires.
+    const canDoIg = env.INSTAGRAM_AUTO_ENABLED !== "false" && !igDone && !igCooldown;
     // Facebook publishes news and shows normally as posts
     const canDoFb = !fbDone && !fbCooldown;
     const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
@@ -2184,10 +1798,9 @@ async function runWatcherPoll(env: Env): Promise<void> {
       };
 
       const tgResult = await publishToPlatform(env, "telegram", key, payload, verify, false);
-      if (tgResult.status !== "sent") continue; // failed or already handled
       didWork = true;
 
-      if (collection === "shows" || collection === "recaps") {
+      if (tgResult.status === "sent" && (collection === "shows" || collection === "recaps")) {
         await sendPushToAllSubscribers(env, { ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
       }
 
@@ -2240,7 +1853,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
       // Curated Story Publisher:
       // Publishes flagship show results and major breaking events as vertical 9:16 Stories
       // to Instagram and Facebook, spaced by at least 3 hours to prevent algorithmic story-spam.
-      if (item.image && isStoryWorthy(item)) {
+      if (env.AUTO_IMAGE_STORIES === "true" && item.image && isStoryWorthy(item)) {
         const lastStory = state.lastStoryAt || 0;
         const isMajorShow = item.kind === "show" || item.kind === "recap";
         const STORY_COOLDOWN_MS = isMajorShow ? 30 * 60 * 1000 : 3 * 60 * 60 * 1000;
@@ -2333,7 +1946,7 @@ async function sendPushToAllSubscribers(
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
 function json(body: unknown, status = 200): Response {
@@ -2351,6 +1964,10 @@ export default {
     const path = url.pathname;
 
     try {
+      const publicMutations = new Set(["/api/push/subscribe", "/api/push/unsubscribe"]);
+      if (!["GET", "HEAD"].includes(request.method) && !publicMutations.has(path)) {
+        if (!(await authorizeAdmin(request, env))) return json({ success: false, error: "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع." }, 401);
+      }
       // ── Telegram/Facebook/Instagram config sanity checks ──
       if (path === "/api/telegram/status" && request.method === "GET") {
         const res = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/getMe`);
@@ -2407,6 +2024,13 @@ export default {
       }
 
 
+
+      if (path === "/api/publishing/status" && request.method === "GET") {
+        const { state } = await githubReadState(env);
+        return json({ success: true, instagramAutomatic: env.INSTAGRAM_AUTO_ENABLED !== "false",
+          imageStoriesAutomatic: env.AUTO_IMAGE_STORIES === "true", newsCooldowns: state.cooldowns,
+          videoCooldowns: state.videoCooldowns || {} });
+      }
 
       // ── Manual publish dashboard (used by admin/publish.html) ──
       if (path === "/api/social/status" && request.method === "GET") {
@@ -2476,7 +2100,9 @@ export default {
           if (r.raw !== undefined) debug.x = r.raw;
         }
 
-        return json({ success: true, key, results, debug });
+        const values = Object.values(results);
+        const success = values.length > 0 && values.every(value => value === "sent" || value === "already_sent");
+        return json({ success, partial: !success && values.some(value => value === "sent" || value === "already_sent"), key, results, debug });
       }
 
       // ── Web Push ──
@@ -2758,6 +2384,19 @@ export default {
             fullVideoUrl = encodeURI(fullVideoUrl);
           }
 
+          const requestedPlatforms: string[] = Array.isArray(body.platforms) && body.platforms.length > 0
+            ? body.platforms
+            : ["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
+          const allowed = new Set(["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"]);
+          if (!requestedPlatforms.length || requestedPlatforms.some(p => !allowed.has(p))) {
+            return json({ success: false, error: "منصة فيديو غير مدعومة؛ الأداة مخصصة لفيسبوك وإنستجرام." }, 400);
+          }
+          const videoHost = new URL(fullVideoUrl);
+          if (!videoHost.pathname.endsWith(".mp4")) return json({ success: false, error: "ملف الفيديو يجب أن يكون MP4." }, 400);
+          const sourceAllowed = videoHost.origin === new URL(env.SITE_ORIGIN).origin && videoHost.pathname.startsWith("/videos/")
+            || videoHost.origin === "https://raw.githubusercontent.com" && videoHost.pathname.startsWith(`/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${env.GITHUB_BRANCH}/dist/videos/`);
+          if (!sourceAllowed) return json({ success: false, error: "يجب استخدام فيديو من مكتبة الموقع." }, 400);
+
           // Reliability check: if fullVideoUrl returns 404 on site origin, fallback to direct GitHub raw CDN
           try {
             const headCheck = await fetch(fullVideoUrl, { method: "HEAD" });
@@ -2771,85 +2410,38 @@ export default {
 
           const title = String(body.title || "").trim();
           const postUrl = body.postUrl ? String(body.postUrl).trim() : undefined;
-          const requestedPlatforms: string[] = Array.isArray(body.platforms) && body.platforms.length > 0
-            ? body.platforms
-            : ["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
 
-          const rawImageUrl = body.imageUrl ? String(body.imageUrl).trim() : undefined;
-          let fullImageUrl = rawImageUrl
-            ? (rawImageUrl.startsWith("http") ? rawImageUrl : `${env.SITE_ORIGIN}${rawImageUrl.startsWith("/") ? "" : "/"}${rawImageUrl}`)
-            : undefined;
-          if (fullImageUrl) {
+
+          const results: Record<string, any> = {};
+          const asset = decodeURIComponent(videoHost.pathname.split("/").pop() || "");
+          for (const platform of [...new Set(requestedPlatforms)]) {
+            const network = platform.startsWith("facebook") ? "facebook" : "instagram";
+            const { state: currentState } = await githubReadState(env);
+            const retryAt = currentState.videoCooldowns?.[network] || 0;
+            if (retryAt > Date.now()) {
+              results[platform] = { ok: false, status: "rate_limited", retryAt, error: "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار." };
+              continue;
+            }
+            const send = () => platform === "facebook_reel" ? postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl })
+              : platform === "facebook_story" ? postVideoToFacebookStory(env, { videoUrl: fullVideoUrl })
+              : platform === "instagram_reel" ? postVideoToInstagramReel(env, { videoUrl: fullVideoUrl, title, postUrl })
+              : postVideoToInstagramStory(env, { videoUrl: fullVideoUrl });
             try {
-              fullImageUrl = encodeURI(decodeURI(fullImageUrl));
-            } catch (e) {
-              fullImageUrl = encodeURI(fullImageUrl);
+              results[platform] = await deliverOnce(env, `video:${platform}:${asset}`, async () => {
+                const result = await send();
+                if (!result.ok && (/limit how often|spam|quota|rate.limit|too many|temporarily blocked/i.test(result.error || "")
+                  || [4, 17, 32, 368, 613].includes(result.result?.error?.code))) {
+                  await setVideoCooldown(env, network);
+                }
+                return result;
+              }, { retryMs: 45 * 60_000 });
+            } catch (e: any) {
+              results[platform] = { ok: false, status: "uncertain", error: e.message };
             }
           }
-
-          const results: Record<string, { ok: boolean; message: string; error?: string; raw?: any }> = {};
-
-          // 1. Telegram Video
-          if (requestedPlatforms.includes("telegram")) {
-            const tgRes = await postVideoToTelegram(env, { videoUrl: fullVideoUrl, title, postUrl });
-            results.telegram = {
-              ok: tgRes.ok,
-              message: tgRes.ok ? "تم نشر الفيديو في قناة تليجرام بنجاح!" : "فشل النشر في تليجرام",
-              error: tgRes.error,
-            };
-          }
-
-          // 2. Facebook Reel
-          if (requestedPlatforms.includes("facebook_reel")) {
-            const fbRes = await postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl });
-            results.facebook_reel = {
-              ok: fbRes.ok,
-              message: fbRes.ok ? "تم نشر الريلز على صفحة الفيسبوك بنجاح!" : "فشل النشر في فيسبوك ريلز",
-              error: fbRes.error,
-              raw: fbRes.result,
-            };
-          }
-
-          // 3. Facebook Story
-          if (requestedPlatforms.includes("facebook_story")) {
-            const fbStoryRes = await postVideoToFacebookStory(env, { videoUrl: fullVideoUrl, imageUrl: fullImageUrl });
-            results.facebook_story = {
-              ok: fbStoryRes.ok,
-              message: fbStoryRes.ok ? (fbStoryRes.message || "تم نشر ستوري الفيديو على صفحة الفيسبوك بنجاح!") : "فشل النشر في فيسبوك ستوري",
-              error: fbStoryRes.error,
-            };
-          }
-
-          // 4. Instagram Reel
-          if (requestedPlatforms.includes("instagram_reel")) {
-            const igRes = await postVideoToInstagramReel(env, { videoUrl: fullVideoUrl, title, postUrl });
-            results.instagram_reel = {
-              ok: igRes.ok,
-              message: igRes.ok ? "تم نشر الريلز على الإنستغرام بنجاح!" : "فشل النشر في إنستغرام ريلز",
-              error: igRes.error,
-              raw: igRes.result,
-            };
-          }
-
-          // 5. Instagram Story
-          if (requestedPlatforms.includes("instagram_story")) {
-            if (requestedPlatforms.includes("instagram_reel")) {
-              await new Promise((r) => setTimeout(r, 2500));
-            }
-            const igStoryRes = await postVideoToInstagramStory(env, { videoUrl: fullVideoUrl, imageUrl: fullImageUrl });
-            results.instagram_story = {
-              ok: igStoryRes.ok,
-              message: igStoryRes.ok ? (igStoryRes.message || "تم نشر ستوري الفيديو على حساب الإنستغرام بنجاح!") : "فشل النشر في إنستغرام ستوري",
-              error: igStoryRes.error,
-            };
-          }
-
-          const anySuccess = Object.values(results).some((r) => r.ok);
-          return json({
-            success: anySuccess,
-            results,
-            videoUrl: fullVideoUrl,
-          });
+          const values = Object.values(results);
+          const allSuccess = values.length > 0 && values.every(r => r.ok);
+          return json({ success: allSuccess, partial: !allSuccess && values.some(r => r.ok), results, videoUrl: fullVideoUrl });
         } catch (e: any) {
           return json({ success: false, error: e.message }, 500);
         }
@@ -2950,7 +2542,7 @@ export default {
 
       return json({ success: false, error: "Not found" }, 404);
     } catch (error: any) {
-      return json({ success: false, error: error.message || "خطأ في السيرفر", stack: error.stack }, 500);
+      return json({ success: false, error: error.message || "خطأ في السيرفر" }, 500);
     }
   },
 

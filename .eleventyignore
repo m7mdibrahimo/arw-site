@@ -6,3 +6,6 @@ scripts/
 tests/
 .agents/
 videos/
+
+reports/
+lib/

@@ -9,10 +9,12 @@
     "watch:news": "tsx scripts/fightful-watcher.ts",
     "watch:news:daemon": "tsx scripts/fightful-watcher.ts --daemon",
     "update:feed": "tsx scripts/update-feed.ts",
-    "video:news": "tsx scripts/generate-news-video.ts"
+    "video:news": "tsx scripts/generate-news-video.ts",
+    "test:publishing": "tsx --test tests/publishing.test.mts"
   },
   "dependencies": {
     "express": "^4.21.2",
+    "gray-matter": "^4.0.3",
     "sharp": "^0.35.3",
     "web-push": "^3.6.7"
   },

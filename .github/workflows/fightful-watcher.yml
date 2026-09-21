@@ -12,7 +12,7 @@ on:
 
 concurrency:
   group: fightful-watcher
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -36,17 +36,20 @@ jobs:
         run: npm ci || npm install
 
       - name: Run Fightful Watcher
+        id: watch
         env:
+          INPUT_POST_URL: ${{ github.event.inputs.post_url }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          if [ -n "${{ github.event.inputs.post_url }}" ]; then
-            echo "Processing requested post URLs: ${{ github.event.inputs.post_url }}"
-            npx tsx scripts/fightful-watcher.ts --urls="${{ github.event.inputs.post_url }}" || echo "Watcher finished with warning"
+          if [ -n "$INPUT_POST_URL" ]; then
+            echo "Processing requested post URLs: $INPUT_POST_URL"
+            npx tsx scripts/fightful-watcher.ts --urls="$INPUT_POST_URL"
           else
-            npx tsx scripts/fightful-watcher.ts || echo "Watcher finished with warning"
+            npx tsx scripts/fightful-watcher.ts
           fi
 
       - name: Commit and push if new articles were generated
+        if: ${{ always() && (steps.watch.outcome == 'success' || steps.watch.outcome == 'failure') }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "ARW News Bot"
@@ -55,6 +58,7 @@ jobs:
           if [[ -n $(git status -s) ]]; then
             git add -A
             git commit -m "feat(news): auto-publish latest wrestling news"
+            PUSHED=false
             for i in {1..3}; do
               git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
               npx tsx -e "import('./scripts/fightful-watcher.ts').then(m => m.deduplicateNewsFiles())" || true
@@ -63,12 +67,14 @@ jobs:
                 git commit --amend --no-edit || true
               fi
               if git push origin main; then
+                PUSHED=true
                 echo "Successfully pushed news to main."
                 break
               fi
               echo "Push retry $i/3 failed, retrying in 3 seconds..."
               sleep 3
             done
+            if [ "$PUSHED" != "true" ]; then echo "Git push failed after retries" >&2; exit 1; fi
           else
             echo "No new news articles found."
           fi

@@ -511,6 +511,7 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
+<script src="/admin/api-auth.js"></script>
 </head>
 <body>
 
@@ -731,11 +732,25 @@
   const API_BASE = 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
   const PAGE_SIZE = 24;
 
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const CHECK_API = isLocal ? '/api/videos/check' : `${API_BASE}/api/videos/check`;
-  const DISPATCH_API = isLocal ? '/api/videos/generate' : `${API_BASE}/api/videos/dispatch`;
-  const LIST_API = isLocal ? '/api/videos/list' : `${API_BASE}/api/videos/list`;
+  const CHECK_API = `${API_BASE}/api/videos/check`;
+  const DISPATCH_API = `${API_BASE}/api/videos/dispatch`;
+  const LIST_API = `${API_BASE}/api/videos/list`;
   const PUBLISH_API = `${API_BASE}/api/videos/publish-social`;
+
+  async function publishVideo(init) {
+    const payload = JSON.parse(init.body);
+    const results = {};
+    for (const platform of payload.platforms) {
+      try {
+        const response = await fetch(PUBLISH_API, { ...init, body: JSON.stringify({ ...payload, platforms: [platform] }) });
+        const data = await response.json();
+        results[platform] = data.results?.[platform] || { ok: false, error: data.error || `HTTP ${response.status}` };
+      } catch (error) {
+        results[platform] = { ok: false, error: error.message };
+      }
+    }
+    return new Response(JSON.stringify({ success: Object.values(results).every(r => r.ok), results }), { headers: { 'Content-Type': 'application/json' } });
+  }
 
   let allItems = [];
   let videoManifest = [];
@@ -1204,7 +1219,7 @@
     const postImageUrl = item.image ? (item.image.startsWith('http') ? item.image : 'https://arab-wrestling.com' + (item.image.startsWith('/') ? '' : '/') + item.image) : undefined;
 
     try {
-      const pubRes = await fetch(PUBLISH_API, {
+      const pubRes = await publishVideo({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1224,14 +1239,14 @@
         for (const r of Object.values(pubData.results)) {
           if (r && r.ok) successes++;
         }
-        if (successes > 0) {
+        if (successes === 4) {
           task.status = 'done';
           task.progressText = `✅ تم النشر وتأكيده على ${successes} منصات بنجاح! تم حفظ الفيديو ونشره.`;
           showToast(`🎉 تم نشر "${item.title.slice(0, 24)}..." وتأكيده على منصات التواصل!`);
         } else {
           task.status = 'error';
-          task.progressText = '❌ فشل النشر على المنصات';
-          task.errorMsg = 'فشل نشر الفيديو على منصات ميتا';
+          task.progressText = `⚠️ اكتمل ${successes} من 4؛ راجع نتائج المنصات المتبقية.`;
+          task.errorMsg = Object.entries(pubData.results).filter(([, r]) => !r.ok).map(([p, r]) => `${p}: ${r.error || 'لم يتأكد النشر'}`).join(' | ');
           showToast(`⚠️ تم تجهيز الفيديو ولكن تعذر النشر على السوشيال`, false);
         }
       } else {
@@ -1272,7 +1287,7 @@
     const fullVideoUrl = reel.videoUrl.startsWith('http') ? reel.videoUrl : 'https://arab-wrestling.com' + (reel.videoUrl.startsWith('/') ? '' : '/') + reel.videoUrl;
 
     try {
-      const res = await fetch(PUBLISH_API, {
+      const res = await publishVideo({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1290,7 +1305,7 @@
         for (const r of Object.values(data.results)) {
           if (r && r.ok) successes++;
         }
-        if (successes > 0) {
+        if (successes === 4) {
           showToast(`🎉 تم نشر الفيديو فوراً على ${successes} منصات بنجاح!`);
         } else {
           showToast('❌ تعذر النشر، افتح الاستوديو لمعاينة التفاصيل', false);
@@ -1658,7 +1673,7 @@
     }
 
     try {
-      const res = await fetch(PUBLISH_API, {
+      const res = await publishVideo({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1696,7 +1711,7 @@
         }
         resBox.innerHTML = html;
 
-        if (successCount > 0) {
+        if (successCount === platforms.length) {
           showToast(`🎉 تم نشر الفيديو بنجاح على ${successCount} منصة!`);
         } else {
           showToast('❌ فشل النشر على المنصات المحددة، راجع التفاصيل', false);

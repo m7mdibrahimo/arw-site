@@ -156,22 +156,7 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
   return groups;
 }
 
-function arabicSlug(str) {
-  if (!str) return "";
-  return str
-    .toString()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .normalize('NFC')
-    .trim()
-    .toLowerCase()
-    .replace(/[؟،؛«»"'`\u060C\u061B\u061F\?\,\;\:\!\(\)\[\]\{\}]/g, '')
-    .replace(/[\.\_\/\\]+/g, '-')
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\u0600-\u06FF\-]/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
+const { arabicSlug } = require("./lib/slug.cjs");
 
 // بيوحّد أشكال الألف المختلفة (أ إ آ) لألف عادية (ا) عشان "اخبار المصارعة" و"أخبار المصارعة"
 // يتحسبوا نفس الوسم بدل ما يتقسموا لصفحتين منفصلتين. بيتستخدم بس لحساب الـ slug (تجميع/تصنيف)،

@@ -644,7 +644,8 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bMariah\s*May\b/gi, "ماريا ماي")
     .replace(/\bSaraya\b/gi, "سارايا")
     .replace(/\bPaige\b/gi, "بايج")
-    .replace(arWord("(?:بايد|بيد|بيج|بيدج)"), "بايج")
+    .replace(arWord("(?:بايد|بيد)"), "بايج")
+    .replace(/(?<!هانغمان\s|إيثان\s|آدم\s)(?<![\u0600-\u06FF])(?:بيج|بيدج)(?![\u0600-\u06FF])/g, "بايج")
     // Rush/Lio Rush — الأمريكي ليو راش، المكسيكي روش
     // نحمي "Lio Rush / ليو راش" بـ placeholder أولاً عشان replace Rush لا يأثر عليهم
     .replace(/\bLio\s*Rush\b/gi, "__LIO_RUSH__")

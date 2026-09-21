@@ -1,288 +1,123 @@
-/**
- * show-reel-monitor.ts
- * ════════════════════
- * نظام تتبع ونشر ريلز العروض — مستقل تماماً عن باقي أنظمة الموقع.
- *
- * المهام:
- *  1. يقرأ content/shows/ ويقارن بـ _data/show-reel-state.json
- *  2. لو عرض جديد وعنده فيديو في dist/videos/ → ينشره على:
- *       - Facebook Reel
- *       - Facebook Story
- *       - Instagram Reel
- *       - Instagram Story
- *  3. يحدّث show-reel-state.json بعد كل نشر ناجح
- *
- * لا يمس: fightful-watcher.ts | server.ts | auto-publish-reel.ts
- */
-
 import fs from 'node:fs';
 import path from 'node:path';
+import matter from 'gray-matter';
+import { arabicSlug } from '../lib/slug.cjs';
 
-const ROOT_DIR = process.cwd();
-const SHOWS_DIR = path.join(ROOT_DIR, 'content', 'shows');
-const VIDEOS_DIR = path.join(ROOT_DIR, 'dist', 'videos');
-const STATE_FILE = path.join(ROOT_DIR, '_data', 'show-reel-state.json');
+export const PLATFORMS = ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'] as const;
+type Platform = typeof PLATFORMS[number];
+type Entry = Record<Platform, boolean> & {
+  publishedAt: number | null; lastAttempt?: number; title?: string;
+  errors?: Record<string, string>; reviewPlatforms?: Platform[]; needsReview?: boolean; note?: string;
+};
+type State = Record<string, Entry>;
+const ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
+const WORKER = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
 
-const WORKER_URL = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
-const SITE_ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
-const GITHUB_RAW = 'https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos';
-
-// Only process shows starting from UFC 331 (2026-09-21) and future shows
-const SHOW_REEL_MIN_DATE = new Date('2026-09-21T00:00:00.000Z').getTime();
-const SHOW_REEL_MIN_SLUG_PREFIX = '20260921002200';
-
-function isShowEligible(fname: string, fm: Record<string, string>): boolean {
-  const slug = fname.replace(/\.md$/, '');
-  if (slug.includes('ufc-331-van-vs-pantoja-2')) return true;
-
-  const match = fname.match(/^(\d{14})-/);
-  if (match) {
-    return match[1] >= SHOW_REEL_MIN_SLUG_PREFIX;
-  }
-
-  if (fm.date) {
-    const t = new Date(fm.date).getTime();
-    if (!isNaN(t)) {
-      return t >= SHOW_REEL_MIN_DATE;
-    }
-  }
-
-  return false;
+export function isShowEligible(filename: string, data: Record<string, any>): boolean {
+  const prefix = filename.match(/^(\d{14})-/)?.[1];
+  return prefix ? prefix >= '20260921002200' : new Date(data.date).getTime() >= Date.parse('2026-09-21T00:00:00Z');
 }
-
-// ── State helpers ──────────────────────────────────────────────────────────
-
-interface ShowReelEntry {
-  publishedAt: number | null;
-  lastAttempt?: number;
-  facebook_reel: boolean;
-  facebook_story: boolean;
-  instagram_reel: boolean;
-  instagram_story: boolean;
-  title?: string;
-  note?: string;
+export function showUrl(filename: string, data: Record<string, any>, origin = ORIGIN): string {
+  const link = typeof data.permalink === 'string' && !data.permalink.includes('{{')
+    ? data.permalink.replace(/index\.html$/, '')
+    : `/shows/${arabicSlug(data.title || filename.replace(/\.md$/, ''))}/`;
+  const url = new URL(link, origin);
+  if (url.origin !== new URL(origin).origin) throw new Error('Show permalink must belong to the site');
+  return url.href;
 }
-type ReelState = Record<string, ShowReelEntry>;
-
-function loadState(): ReelState {
-  if (!fs.existsSync(STATE_FILE)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(STATE_FILE, 'utf-8')) as ReelState;
-  } catch {
-    return {};
-  }
+export function findReelVideo(slug: string, files: string[]): string | null {
+  // The generator uses exactly 45 characters. Never select an unrelated fuzzy match.
+  return [`reel-${slug}.mp4`, `reel-${slug.slice(0, 45)}.mp4`].find(f => files.includes(f)) || null;
 }
-
-function saveState(state: ReelState): void {
-  fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
-  fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2), 'utf-8');
-}
-
-// ── Frontmatter parser ────────────────────────────────────────────────────
-
-function parseFrontmatter(content: string): Record<string, string> {
-  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!match) return {};
-  const lines = match[1].split('\n');
-  const data: Record<string, string> = {};
-  for (const line of lines) {
-    const idx = line.indexOf(':');
-    if (idx !== -1) {
-      const key = line.slice(0, idx).trim();
-      let val = line.slice(idx + 1).trim();
-      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-        val = val.slice(1, -1);
-      }
-      data[key] = val;
-    }
-  }
-  return data;
-}
-
-// ── Find video for a show ─────────────────────────────────────────────────
-
-function findReelVideo(slug: string): string | null {
-  // Try exact match first
-  const exact = path.join(VIDEOS_DIR, `reel-${slug}.mp4`);
-  if (fs.existsSync(exact)) return `reel-${slug}.mp4`;
-
-  // Try partial slug match (truncated filenames)
-  if (!fs.existsSync(VIDEOS_DIR)) return null;
-  const files = fs.readdirSync(VIDEOS_DIR).filter(f => f.endsWith('.mp4'));
-  const cleanSlug = slug.slice(0, 50);
-  const found = files.find(f => f.includes(cleanSlug) || cleanSlug.includes(f.replace(/^reel-/, '').replace(/\.mp4$/, '')));
-  return found || null;
-}
-
-// ── Publish to social via worker ──────────────────────────────────────────
-
-async function publishToSocial(params: {
-  videoUrl: string;
-  title: string;
-  postUrl?: string;
-  platforms?: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[];
-}): Promise<{ facebook_reel: boolean; facebook_story: boolean; instagram_reel: boolean; instagram_story: boolean; errors: string[] }> {
-  const result = { facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false, errors: [] as string[] };
-  const targetPlatforms = params.platforms && params.platforms.length
-    ? params.platforms
-    : ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'];
-
-  try {
-    const res = await fetch(`${WORKER_URL}/api/videos/publish-social`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        videoUrl: params.videoUrl,
-        title: params.title,
-        postUrl: params.postUrl,
-        platforms: targetPlatforms,
-      }),
-    });
-
-    const data: any = await res.json().catch(() => ({}));
-    console.log(`  📡 [Publish] Response:`, JSON.stringify(data?.results || data, null, 2));
-
-    const r = data?.results || {};
-    result.facebook_reel   = !!r?.facebook_reel?.ok;
-    result.facebook_story  = !!r?.facebook_story?.ok;
-    result.instagram_reel  = !!r?.instagram_reel?.ok;
-    result.instagram_story = !!r?.instagram_story?.ok;
-
-    // Collect any errors
-    for (const [platform, val] of Object.entries(r) as any) {
-      if (!val?.ok && val?.error) {
-        result.errors.push(`${platform}: ${val.error}`);
-      }
-    }
-  } catch (e: any) {
-    console.error('  ❌ [Publish] Network error:', e.message);
-    result.errors.push(`network: ${e.message}`);
-  }
-
-  return result;
-}
-
-// ── Main ──────────────────────────────────────────────────────────────────
-
-async function main() {
-  console.log('\n🎬 [Show Reel Monitor] Starting...');
-
-  if (!fs.existsSync(SHOWS_DIR)) {
-    console.log('ℹ️ No content/shows/ directory found. Nothing to do.');
-    return;
-  }
-
-  const state = loadState();
-  const showFiles = fs.readdirSync(SHOWS_DIR).filter(f => f.endsWith('.md')).sort();
-  console.log(`📂 Found ${showFiles.length} shows in content/shows/`);
-
-  let processed = 0;
-  let skipped = 0;
-  let noVideo = 0;
-
-  for (const fname of showFiles) {
-    const slug = fname.replace('.md', '');
-    const existing = state[slug];
-
-    // Parse show frontmatter for title, image and date
-    const mdPath = path.join(SHOWS_DIR, fname);
-    const content = fs.readFileSync(mdPath, 'utf-8');
-    const fm = parseFrontmatter(content);
-
-    // 1. Strict filter: only UFC 331 and new shows onwards!
-    if (!isShowEligible(fname, fm)) {
-      skipped++;
-      continue;
-    }
-
-// Instagram is active for new shows; all historical and current shows are already cleared in state
-const ENABLE_INSTAGRAM = true;
-
-    // 2. Determine remaining platforms: only those that have NOT succeeded yet!
-    const targetPlatforms: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[] = [];
-    if (!existing?.facebook_reel) targetPlatforms.push('facebook_reel');
-    if (!existing?.facebook_story) targetPlatforms.push('facebook_story');
-    if (ENABLE_INSTAGRAM) {
-      if (!existing?.instagram_reel) targetPlatforms.push('instagram_reel');
-      if (!existing?.instagram_story) targetPlatforms.push('instagram_story');
-    }
-
-    // If all target platforms are already done, skip!
-    if (targetPlatforms.length === 0) {
-      skipped++;
-      continue;
-    }
-
-    // Cooldown check: enforce 45-minute window to allow Meta's anti-spam filter to clear completely
-    const COOLDOWN_MS = 45 * 60 * 1000;
-    if (existing?.lastAttempt && (Date.now() - existing.lastAttempt < COOLDOWN_MS)) {
-      const waitMins = Math.ceil((COOLDOWN_MS - (Date.now() - existing.lastAttempt)) / 60000);
-      console.log(`  ⏳ [${slug}] In Meta cooldown window (${waitMins}m remaining) — waiting to clear anti-spam lock.`);
-      skipped++;
-      continue;
-    }
-
-    const title = fm.headline || fm.title || slug;
-    const postUrl = `${SITE_ORIGIN}/shows/${slug}`;
-
-    // Find reel video
-    const videoFileName = findReelVideo(slug);
-    if (!videoFileName) {
-      console.log(`  ⏭️ [${slug}] No reel video found yet — waiting for render.`);
-      // Mark in state as pending (no video yet)
-      if (!existing) {
-        state[slug] = { publishedAt: null, facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false, title };
-      }
-      noVideo++;
-      continue;
-    }
-
-    // Build video URL — use GitHub Raw CDN (most reliable for external APIs)
-    const videoUrl = `${GITHUB_RAW}/${encodeURIComponent(videoFileName)}`;
-
-    console.log(`\n▶️  [${slug}]`);
-    console.log(`   Title: ${title}`);
-    console.log(`   Video: ${videoFileName}`);
-    console.log(`   Publishing to: ${targetPlatforms.join(' | ')}`);
-
-    const publishResult = await publishToSocial({ videoUrl, title, postUrl, platforms: targetPlatforms });
-    const anySuccess = publishResult.facebook_reel || publishResult.facebook_story || publishResult.instagram_reel || publishResult.instagram_story;
-
-    // Update state
-    state[slug] = {
-      publishedAt: anySuccess ? (existing?.publishedAt || Date.now()) : (existing?.publishedAt || null),
-      lastAttempt: Date.now(),
-      facebook_reel:   publishResult.facebook_reel   || !!existing?.facebook_reel,
-      facebook_story:  publishResult.facebook_story  || !!existing?.facebook_story,
-      instagram_reel:  publishResult.instagram_reel  || !!existing?.instagram_reel,
-      instagram_story: publishResult.instagram_story || !!existing?.instagram_story,
-      title,
-    };
-
-    if (anySuccess) {
-      console.log(`  ✅ Published: FB_Reel=${publishResult.facebook_reel} | FB_Story=${publishResult.facebook_story} | IG_Reel=${publishResult.instagram_reel} | IG_Story=${publishResult.instagram_story}`);
+export function applyResults(existing: Entry | undefined, results: Record<string, any>, requested: readonly Platform[], title: string): Entry {
+  const entry: Entry = { publishedAt: existing?.publishedAt || null,
+    facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false,
+    ...existing, title, lastAttempt: Date.now(), errors: { ...existing?.errors } };
+  for (const platform of requested) {
+    const result = results[platform];
+    if (result?.ok === true) {
+      entry[platform] = true;
+      entry.publishedAt ||= Date.now();
+      delete entry.errors![platform];
     } else {
-      console.log(`  ❌ All platforms failed. Errors: ${publishResult.errors.join('; ')}`);
-    }
-
-    // Save after each show to avoid losing progress on crash
-    saveState(state);
-    processed++;
-
-    // Brief pause between shows to respect API rate limits
-    if (processed < showFiles.length) {
-      await new Promise(r => setTimeout(r, 3000));
+      entry.errors![platform] = result?.error || 'لم تُرجع الخدمة تأكيدًا للنشر.';
     }
   }
-
-  // Final save
-  saveState(state);
-
-  console.log(`\n✅ [Show Reel Monitor] Done.`);
-  console.log(`   Processed: ${processed} | Skipped (already done): ${skipped} | No video yet: ${noVideo}`);
+  const review = new Set(existing?.reviewPlatforms || []);
+  for (const p of requested) {
+    if (results[p]?.ok) review.delete(p);
+    else if (results[p]?.ambiguous || results[p]?.status === 'uncertain') review.add(p);
+  }
+  entry.reviewPlatforms = [...review];
+  entry.needsReview = review.size > 0;
+  return entry;
 }
-
-main().catch(e => {
-  console.error('❌ Fatal error in show-reel-monitor:', e);
-  process.exit(1);
-});
+export async function main() {
+  const root = process.cwd();
+  const stateFile = path.join(root, '_data/show-reel-state.json');
+  const dir = path.join(root, 'content/shows');
+  const videoDir = path.join(root, 'dist/videos');
+  const dryRun = process.argv.includes('--dry-run');
+  // Invalid state must fail closed; resetting it to {} could repost every show.
+  const state: State = fs.existsSync(stateFile) ? JSON.parse(fs.readFileSync(stateFile, 'utf8')) : {};
+  const save = () => {
+    if (dryRun) return;
+    fs.mkdirSync(path.dirname(stateFile), { recursive: true });
+    fs.writeFileSync(stateFile + '.tmp', JSON.stringify(state, null, 2));
+    fs.renameSync(stateFile + '.tmp', stateFile);
+  };
+  const videos = fs.existsSync(videoDir) ? fs.readdirSync(videoDir) : [];
+  let failures = 0;
+  for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
+    const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
+    if (!isShowEligible(filename, data)) continue;
+    const slug = filename.replace(/\.md$/, '');
+    const previous = state[slug];
+    if (previous?.needsReview) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
+    const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
+    const pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p));
+    if (!pending.length) continue;
+    if (previous?.lastAttempt && Date.now() - previous.lastAttempt < 45 * 60_000) continue;
+    const file = findReelVideo(slug, videos);
+    if (!file) { console.log(`${slug}: waiting for rendered video.`); continue; }
+    const title = data.headline || data.title || slug;
+    const postUrl = showUrl(filename, data);
+    const videoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos/${encodeURIComponent(file)}`;
+    if (dryRun) { console.log(JSON.stringify({ slug, pending, postUrl, videoUrl })); continue; }
+    if (!process.env.GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required for authenticated publishing.');
+    let results: Record<string, any> = {};
+    // Check the canonical article, not just HTTP 200 (the host has a home-page fallback).
+    try {
+      const page = await fetch(postUrl, { signal: AbortSignal.timeout(20_000) });
+      const html = await page.text();
+      const canonical = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)?.[1];
+      if (!page.ok || !canonical || new URL(canonical, ORIGIN).pathname.replace(/\/$/, '') !== new URL(postUrl).pathname.replace(/\/$/, '')) {
+        throw new Error('صفحة العرض لم تصبح متاحة بالرابط الصحيح بعد.');
+      }
+      // One request per platform: persist each acknowledgement before attempting the next.
+      for (const platform of pending) {
+        try {
+          const response = await fetch(`${WORKER}/api/videos/publish-social`, {
+            method: 'POST', signal: AbortSignal.timeout(150_000),
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
+            body: JSON.stringify({ videoUrl, title, postUrl, platforms: [platform] }),
+          });
+          const body: any = await response.json();
+          results[platform] = body.results?.[platform] || { ok: false, error: body.error || `HTTP ${response.status}` };
+        } catch {
+          results[platform] = { ok: false, ambiguous: true, status: 'uncertain', error: 'انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.' };
+        }
+        state[slug] = applyResults(state[slug], results, [platform], title);
+        save();
+      }
+    } catch (error: any) {
+      results = Object.fromEntries(pending.map(p => [p, { ok: false, error: error.message }]));
+      state[slug] = applyResults(state[slug], results, pending, title);
+      save();
+    }
+    if (pending.some(p => results[p]?.ok !== true)) failures++;
+    console.log(JSON.stringify({ slug, results }));
+  }
+  if (failures) throw new Error(`${failures} show(s) have incomplete publishing; state and errors were saved.`);
+}
+if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });

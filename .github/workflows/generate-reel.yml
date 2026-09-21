@@ -97,15 +97,18 @@ jobs:
           git clean -fd -e dist/videos/ 2>/dev/null || true
           if [[ -n $(git status -s dist/videos/) ]]; then
             git commit -m "feat(video): manual studio render video [skip ci]"
+            PUSHED=false
             for i in {1..5}; do
               git pull --rebase origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
               if git push origin main; then
+                PUSHED=true
                 echo "✅ Successfully committed and pushed video to main."
                 break
               fi
               echo "Push retry $i/5 failed, retrying..."
               sleep 4
             done
+            if [ "$PUSHED" != "true" ]; then echo "Git push failed after retries" >&2; exit 1; fi
           else
             echo "ℹ️ No new video file was produced."
           fi

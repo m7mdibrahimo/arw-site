@@ -248,6 +248,7 @@
   }
   @keyframes spin{ to{ transform:rotate(360deg); } }
 </style>
+<script src="/admin/api-auth.js"></script>
 </head>
 <body>
 
@@ -686,7 +687,7 @@
       });
       const data = await res.json();
       const resultsEl = document.getElementById('modal-results');
-      if (!data.success){
+      if (!data.results){
         resultsEl.innerHTML = `<div class="result-line fail">❌ ${data.error || 'فشل غير معروف'}</div>`;
       } else {
         resultsEl.innerHTML = Object.entries(data.results).map(([platform, status]) => {
