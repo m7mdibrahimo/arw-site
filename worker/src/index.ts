@@ -1506,7 +1506,6 @@ async function postVideoToFacebookReel(
           return {
             ok: true,
             result: fallbackData,
-            message: "تم نشر فيديو الريلز على صفحة الفيسبوك بنجاح عبر بوابة الفيديو المباشرة!",
           };
         }
       } catch (fbErr: any) {
@@ -2006,6 +2005,23 @@ function sanitizeResultsTitleSpoilers(title: string): string {
   return clean.replace(/\s+/g, " ").trim();
 }
 
+function sanitizePublishedHeadline(title: string): string {
+  if (!title) return title;
+  const arBoundL = "(?<![\\u0600-\\u06FF])";
+  const arBoundR = "(?![\\u0600-\\u06FF])";
+  const arWord = (pattern: string, flags = "g") => new RegExp(arBoundL + "(?:" + pattern + ")" + arBoundR, flags);
+
+  return title
+    .replace(/(?:Road\s+to|Road\s+To)\s+ديستركشن/gi, "Road To Destruction")
+    .replace(/ديستركشن\s+in\s+Kobe/gi, "Destruction in Kobe")
+    .replace(arWord("ديستركشن"), "Destruction")
+    .replace(arWord("يستذكر"), "يتذكر")
+    .replace(arWord("تستذكر"), "تتذكر")
+    .replace(arWord("استذكار"), "تذكر")
+    .replace(/(يتذكر|تتذكر)\s+لقائه(?![\\u0600-\\u06FF])/g, "$1 لقاءه")
+    .replace(arWord("بإشهر"), "بإشهار");
+}
+
 function isResultsArticle(title: string = ""): boolean {
   return /^نتائج\s+عرض\b/i.test(title) ||
          /^نتائج\s+تسريبات\b/i.test(title) ||
@@ -2156,7 +2172,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
       const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
       const isShowResults = isResultsArticle(item.title);
-      const cleanTitle = isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title;
+      const cleanTitle = sanitizePublishedHeadline(isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title);
       const cleanSnippet = isShowResults
         ? "تابعوا التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري عبر موقعنا الرسمي."
         : (item.headline || item.description || verify.bodySnippet || "");
@@ -2194,7 +2210,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
         continue;
       }
       const isShowResults = isResultsArticle(item.title);
-      const cleanTitle = isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title;
+      const cleanTitle = sanitizePublishedHeadline(isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title);
       let catchUpText = isShowResults
         ? "تابعوا التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري عبر موقعنا الرسمي."
         : (item.headline || item.description || "");

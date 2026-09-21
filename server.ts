@@ -1161,6 +1161,23 @@ function sanitizeResultsTitleSpoilers(title: string): string {
   return clean.replace(/\s+/g, " ").trim();
 }
 
+function sanitizePublishedHeadline(title: string): string {
+  if (!title) return title;
+  const arBoundL = "(?<![\\u0600-\\u06FF])";
+  const arBoundR = "(?![\\u0600-\\u06FF])";
+  const arWord = (pattern: string, flags = "g") => new RegExp(arBoundL + "(?:" + pattern + ")" + arBoundR, flags);
+
+  return title
+    .replace(/(?:Road\s+to|Road\s+To)\s+ديستركشن/gi, "Road To Destruction")
+    .replace(/ديستركشن\s+in\s+Kobe/gi, "Destruction in Kobe")
+    .replace(arWord("ديستركشن"), "Destruction")
+    .replace(arWord("يستذكر"), "يتذكر")
+    .replace(arWord("تستذكر"), "تتذكر")
+    .replace(arWord("استذكار"), "تذكر")
+    .replace(/(يتذكر|تتذكر)\s+لقائه(?![\\u0600-\\u06FF])/g, "$1 لقاءه")
+    .replace(arWord("بإشهر"), "بإشهار");
+}
+
 function isResultsArticle(title: string = ""): boolean {
   return /^نتائج\s+عرض\b/i.test(title) ||
          /^نتائج\s+تسريبات\b/i.test(title) ||
@@ -1272,7 +1289,7 @@ async function tryPublishSiteItem(item: any, key: string) {
     }
 
     const isShowResults = isResultsArticle(item.title);
-    const cleanTitle = isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title;
+    const cleanTitle = sanitizePublishedHeadline(isShowResults ? sanitizeResultsTitleSpoilers(item.title) : item.title);
 
     // For show results on social media, use a clean teaser so the snippet ("نبذة الخبر") never spoils winners!
     const cleanSnippet = isShowResults
