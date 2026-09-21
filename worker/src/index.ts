@@ -898,21 +898,29 @@ async function recordBufferQuota(env: Env, res: Response): Promise<void> {
   if (!entries.length) return;
   const withTimestamp = entries.map((e) => ({ ...e, updatedAt: Date.now() }));
 
-  for (let attempt = 0; attempt < 3; attempt++) {
-    let sha: string | null;
-    let state: PublishState;
-    try {
-      ({ sha, state } = await githubReadState(env));
-    } catch (e) {
+  // Best-effort only: a missed quota reading just means the next call's
+  // reading is used instead. It must never throw — this runs inline in
+  // every Buffer post attempt, and an uncaught error here would abort
+  // that article's publish for every remaining platform this tick.
+  try {
+    for (let attempt = 0; attempt < 3; attempt++) {
+      let sha: string | null;
+      let state: PublishState;
+      try {
+        ({ sha, state } = await githubReadState(env));
+      } catch (e) {
+        return;
+      }
+      const write = await githubWriteState(env, { ...state, bufferQuota: withTimestamp }, sha, "chore(publish): record Buffer API quota [skip ci]");
+      if (write.ok) return;
+      if (write.conflict) {
+        await new Promise((r) => setTimeout(r, 300 + Math.random() * 300));
+        continue;
+      }
       return;
     }
-    const write = await githubWriteState(env, { ...state, bufferQuota: withTimestamp }, sha, "chore(publish): record Buffer API quota [skip ci]");
-    if (write.ok) return;
-    if (write.conflict) {
-      await new Promise((r) => setTimeout(r, 300 + Math.random() * 300));
-      continue;
-    }
-    return;
+  } catch (e) {
+    console.error("[Buffer] Failed to record API quota (non-fatal):", e);
   }
 }
 
@@ -1545,7 +1553,17 @@ async function publishToPlatform(
     await markSendSuccess(env, platform, key);
     return { status: result.status === "already_sent" ? "already_sent" : "sent" };
   }
-  await deferPublication(env, platform, key, !!result.ambiguous);
+  // deferPublication can throw after exhausting its retries on a persistent
+  // GitHub write conflict. Left uncaught, that exception propagates out of
+  // the whole watcher tick and aborts every other article queued behind
+  // this one — one stuck item then silently starves all publishing, every
+  // tick, since the loop re-picks the same oldest not-yet-done item each
+  // time. Never let a failed defer turn into a failure to publish anything.
+  try {
+    await deferPublication(env, platform, key, !!result.ambiguous);
+  } catch (e) {
+    console.error(`[Publish] Failed to save retry delay for ${platform}:${key}:`, e);
+  }
   return { status: result.ambiguous ? "uncertain" : result.status || "failed", raw: { error: { message: result.error } } };
 }
 
