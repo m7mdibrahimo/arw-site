@@ -4,7 +4,7 @@ federation: MMA
 title: "UFC 331: Van vs. Pantoja 2 (Early Prelims)"
 headline: عرض يو اف سي 331 ايرلي بريلمز مترجم
 program_name: UFC
-is_annual: false
+is_annual: true
 description: عرض يو اف سي 331 ايرلي بريلمز مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-19
 date: 2026-09-21T03:22:00.000+03:00
