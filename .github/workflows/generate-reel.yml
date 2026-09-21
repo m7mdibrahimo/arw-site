@@ -12,8 +12,6 @@ on:
       - main
     paths:
       - 'content/shows/**'
-  schedule:
-    - cron: '*/30 * * * *'
 
 concurrency:
   group: generate-reel
@@ -99,21 +97,27 @@ jobs:
               fi
             done
 
-            # 2. Safety catch-up: scan recent shows (last 10) and render any show missing its video
-            for F in $(ls -t content/shows/*.md 2>/dev/null | head -10); do
-              SLUG=$(basename "$F" .md | cut -c 1-45)
-              if [ ! -f "dist/videos/reel-$SLUG.mp4" ]; then
-                echo "Found show missing reel video: $F"
-                if [[ ! " ${TARGETS[*]} " =~ " ${F} " ]]; then
-                  TARGETS+=("$F")
+            # 2. Safety catch-up: scan shows from 2026-09-21 onwards (starts with UFC 331) missing a video
+            CUTOFF="20260921002200"
+            for F in $(ls content/shows/*.md 2>/dev/null | grep -E 'content/shows/[0-9]{14}-' | sort); do
+              BASE=$(basename "$F")
+              TS="${BASE:0:14}"
+              if [[ "$TS" > "$CUTOFF" || "$TS" == "$CUTOFF" ]]; then
+                SLUG=$(basename "$F" .md | cut -c 1-45)
+                MATCHING=$(find dist/videos -name "reel-${SLUG}*.mp4" 2>/dev/null || true)
+                if [ -z "$MATCHING" ]; then
+                  echo "Found new show missing reel video: $F"
+                  if [[ ! " ${TARGETS[*]} " =~ " ${F} " ]]; then
+                    TARGETS+=("$F")
+                  fi
                 fi
               fi
             done
           fi
 
           if [ ${#TARGETS[@]} -eq 0 ]; then
-            echo "No specific show targets found. Rendering latest show..."
-            TARGETS+=("shows:latest")
+            echo "No eligible new shows to render reel videos for."
+            exit 0
           fi
 
           echo "Target shows to render: ${TARGETS[*]}"

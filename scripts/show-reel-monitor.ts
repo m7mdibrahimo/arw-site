@@ -27,6 +27,29 @@ const WORKER_URL = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc
 const SITE_ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
 const GITHUB_RAW = 'https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos';
 
+// Only process shows starting from UFC 331 (2026-09-21) and future shows
+const SHOW_REEL_MIN_DATE = new Date('2026-09-21T00:00:00.000Z').getTime();
+const SHOW_REEL_MIN_SLUG_PREFIX = '20260921002200';
+
+function isShowEligible(fname: string, fm: Record<string, string>): boolean {
+  const slug = fname.replace(/\.md$/, '');
+  if (slug.includes('ufc-331-van-vs-pantoja-2')) return true;
+
+  const match = fname.match(/^(\d{14})-/);
+  if (match) {
+    return match[1] >= SHOW_REEL_MIN_SLUG_PREFIX;
+  }
+
+  if (fm.date) {
+    const t = new Date(fm.date).getTime();
+    if (!isNaN(t)) {
+      return t >= SHOW_REEL_MIN_DATE;
+    }
+  }
+
+  return false;
+}
+
 // ── State helpers ──────────────────────────────────────────────────────────
 
 interface ShowReelEntry {
@@ -97,8 +120,12 @@ async function publishToSocial(params: {
   title: string;
   postUrl?: string;
   imageUrl?: string;
+  platforms?: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[];
 }): Promise<{ facebook_reel: boolean; facebook_story: boolean; instagram_reel: boolean; instagram_story: boolean; errors: string[] }> {
   const result = { facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false, errors: [] as string[] };
+  const targetPlatforms = params.platforms && params.platforms.length
+    ? params.platforms
+    : ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'];
 
   try {
     const res = await fetch(`${WORKER_URL}/api/videos/publish-social`, {
@@ -109,7 +136,7 @@ async function publishToSocial(params: {
         title: params.title,
         postUrl: params.postUrl,
         imageUrl: params.imageUrl,
-        platforms: ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'],
+        platforms: targetPlatforms,
       }),
     });
 
@@ -158,16 +185,35 @@ async function main() {
     const slug = fname.replace('.md', '');
     const existing = state[slug];
 
-    // Already fully published on all 4 platforms → skip
-    if (existing?.publishedAt && existing.facebook_reel && existing.facebook_story && existing.instagram_reel && existing.instagram_story) {
+    // Parse show frontmatter for title, image and date
+    const mdPath = path.join(SHOWS_DIR, fname);
+    const content = fs.readFileSync(mdPath, 'utf-8');
+    const fm = parseFrontmatter(content);
+
+    // 1. Strict filter: only UFC 331 and new shows onwards!
+    if (!isShowEligible(fname, fm)) {
       skipped++;
       continue;
     }
 
-    // Parse show frontmatter for title and image
-    const mdPath = path.join(SHOWS_DIR, fname);
-    const content = fs.readFileSync(mdPath, 'utf-8');
-    const fm = parseFrontmatter(content);
+    // 2. Already published → never re-publish!
+    if (existing?.publishedAt) {
+      skipped++;
+      continue;
+    }
+
+    // 3. Determine remaining platforms
+    const targetPlatforms: ('facebook_reel' | 'facebook_story' | 'instagram_reel' | 'instagram_story')[] = [];
+    if (!existing?.facebook_reel) targetPlatforms.push('facebook_reel');
+    if (!existing?.facebook_story) targetPlatforms.push('facebook_story');
+    if (!existing?.instagram_reel) targetPlatforms.push('instagram_reel');
+    if (!existing?.instagram_story) targetPlatforms.push('instagram_story');
+
+    if (targetPlatforms.length === 0) {
+      skipped++;
+      continue;
+    }
+
     const title = fm.headline || fm.title || slug;
     const imageUrl = fm.image ? `${SITE_ORIGIN}${fm.image.startsWith('/') ? '' : '/'}${fm.image}` : undefined;
     const postUrl = `${SITE_ORIGIN}/shows/${slug}`;
@@ -175,7 +221,7 @@ async function main() {
     // Find reel video
     const videoFileName = findReelVideo(slug);
     if (!videoFileName) {
-      console.log(`  ⏭️ [${slug}] No reel video found yet — skipping.`);
+      console.log(`  ⏭️ [${slug}] No reel video found yet — waiting for render.`);
       // Mark in state as pending (no video yet)
       if (!existing) {
         state[slug] = { publishedAt: null, facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false, title };
@@ -190,9 +236,9 @@ async function main() {
     console.log(`\n▶️  [${slug}]`);
     console.log(`   Title: ${title}`);
     console.log(`   Video: ${videoFileName}`);
-    console.log(`   Publishing to: FB Reel | FB Story | IG Reel | IG Story`);
+    console.log(`   Publishing to: ${targetPlatforms.join(' | ')}`);
 
-    const publishResult = await publishToSocial({ videoUrl, title, postUrl, imageUrl });
+    const publishResult = await publishToSocial({ videoUrl, title, postUrl, imageUrl, platforms: targetPlatforms });
     const anySuccess = publishResult.facebook_reel || publishResult.facebook_story || publishResult.instagram_reel || publishResult.instagram_story;
 
     // Update state

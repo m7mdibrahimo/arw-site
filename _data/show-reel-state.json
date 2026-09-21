@@ -3,9 +3,9 @@
     "publishedAt": 1789952312711,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض يو اف سي فايت نايت 22.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260920045800-cmll-tarde-mexicana-16-09-2026": {
     "publishedAt": 1789909074297,
@@ -13,28 +13,31 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "20260902002600-cmll-domingo-familiar-30-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "raw-10-08-2026-1": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "aew-brawl-in-the-ballpark-23-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "roh-18-08-2026": {
     "publishedAt": 1789929184185,
@@ -42,7 +45,7 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض ار او اتش 18.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "20260918100300-roh-17-09-2026": {
     "publishedAt": 1789790708000,
@@ -50,21 +53,23 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "20260911053100-wwe-evolve-09-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ajpw-heat-of-battle-summer-action-wars-21-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260920104600-lucha-libre-aaa-19-09-2026": {
     "publishedAt": 1789913346915,
@@ -72,22 +77,23 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "mlp-mayhem-12-08-2026": {
     "publishedAt": 1789951977713,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ام ال بي 12.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "aaa-ola-de-calor-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260918100800-tna-impact-17-09-2026": {
     "publishedAt": 1789790147894,
@@ -95,35 +101,39 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "raw-17-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909222200-cmll-lunes-clasico-07-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260915111100-wwe-raw-14-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909194300-njpw-road-to-destruction-09-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "main-event-13-08-2026": {
     "publishedAt": 1789938090894,
@@ -131,77 +141,87 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض مين ايفنت 13.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "20260912041500-cmll-martes-de-glamour-08-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ajpw-nettou-summer-action-wars-26-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "evolve-12-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260914101300-ufc-fight-night-288-silva-vs-delgado": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "dynamite-12-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260915234000-cmll-domingo-familiar-internacional-13-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "nxt-11-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "njpw-g1-climax-36-12-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260904020500-wwe-evolve-02-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906105400-hog-fallout-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260920050600-cmll-93-aniversario-19-09-2026": {
     "publishedAt": 1789908733371,
@@ -209,14 +229,15 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "nxt-heatwave-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "roh-27-08-2026": {
     "publishedAt": 1789929368823,
@@ -224,56 +245,63 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض ار او اتش 27.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "2026-08-08-hog-high-intensity-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260912043100-wwe-smackdown-11-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "wwe-lfg-s03e22-30-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-martes-populares-18-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260911074400-tna-impact-10-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260902084500-nxt-01-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-la-arena-coliseo-de-guadalajara-18-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260920104200-aew-collision-19-09-2026": {
     "publishedAt": 1789910408362,
@@ -281,7 +309,7 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "20260920104800-njpw-road-to-destruction-19-09-2026": {
     "publishedAt": 1789925301685,
@@ -289,114 +317,127 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض ان جيه بي دبليو 19.09.2026 مترجم"
+    "note": "archived historical show"
   },
   "20260916122300-progress-the-odyssey-tour-birmingham": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-08-smackdown-07-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-viernes-espectacular-28-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260902202100-cmll-martes-populares-01-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ufc-330-prelims": {
     "publishedAt": 1789952281902,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض يو اف سي 330 بريلمز مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260911055500-wwe-main-event-10-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "wwe-smackdown-28-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ajpw-heat-of-battle-summer-action-wars-23-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "dark-side-of-the-ring-s07e08-18-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "nwa-powerrr-22-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906033100-cmll-viernes-espectacular-04-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-07-tna-06-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906092100-lucha-libre-aaa-05-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260907111400-progress-wrestling-chapter-197-wrestling-over-everything": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "stardom-5-star-gp-final-23-08-2026": {
     "publishedAt": 1789952139422,
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
-    "title": "عرض ستار دوم فايف ستار 23.08.2026 مترجم"
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260904081800-roh-03-09-2026": {
     "publishedAt": 1789804837797,
@@ -404,14 +445,15 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "2026-08-09-collision-08-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "roh-20-08-2026": {
     "publishedAt": 1789929278282,
@@ -419,14 +461,15 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض ار او اتش 20.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "cmll-lunes-clasico-24-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-05-raw-03-08-2026": {
     "publishedAt": 1789809427282,
@@ -434,80 +477,87 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "njpw-g1-climax-36-15-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "mlw-fusion-22-08-2026": {
     "publishedAt": 1789952078455,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ام ال دبليو 22.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "wow-women-of-wrestling-23-08-2026": {
     "publishedAt": 1789952328326,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض دبليو او دبليو 23.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909060700-tna-xplosion-04-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-martes-populares-25-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "mlp-mayhem-27-08-2026": {
     "publishedAt": 1789952043616,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ام ال بي 27.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-selectivo-rumbo-a-mr-and-miss-cmll-26-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260911052700-njpw-road-to-destruction-10-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-07-roh-06-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-10-njpw-g1-climax-36-09-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260919093100-wwe-smackdown-18-09-2026": {
     "publishedAt": 1789810953006,
@@ -515,156 +565,175 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "20260915233200-cmll-sabados-de-coliseo-12-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "lucha-libre-aaa-22-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260912084900-aaa-triplemania-34-night-1-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260901202300-wwe-lfg-s03e20-23-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-07-main-event-06-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-06-dynamite-grand-slam-mexico-05-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260913134900-njpw-road-to-destruction-13-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "tna-20-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260917172000-mlp-mayhem-16-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260904082600-wwe-main-event-03-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909061200-wwe-lfg-s03e23-06-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260916054400-nxt-15-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260913135100-aew-collision-12-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ufc-330-early-prelims": {
     "publishedAt": 1789952249466,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض يو اف سي 330 ايرلي بريلمز مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "tna-xplosion-21-08-2026": {
     "publishedAt": 1789952229913,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض تي ان ايه اكسبلوجن 21.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "raw-24-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-09-njpw-g1-climax-36-08-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260907110600-progress-wrestling-the-odyssey-tour-manchester": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260910062300-aew-dynamite-09-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260917030300-wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260913134400-mlw-fusion-12-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "main-event-20-08-2026": {
     "publishedAt": 1789938198710,
@@ -672,94 +741,103 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض مين ايفنت 20.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "njpw-g1-climax-36-13-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260902002800-cmll-lunes-clasico-31-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ufc-fight-night-286-nurmagomedov-vs-song": {
     "publishedAt": 1789952299172,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض يو اف سي فايت نايت 29.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260907193900-cmll-sabados-de-coliseo-06-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ufc-330-makhachev-vs-machado-garry-main-card": {
     "publishedAt": 1789952264953,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض يو اف سي 330 مين كارد مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-viernes-espectacular-23-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260903113000-aew-dynamite-02-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260907030200-njpw-yuji-nagata-produce-blue-justice-xix-aogi-futotsu-06-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260903223100-dark-side-of-the-cage-s02e01-02-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "mlw-fusion-29-08-2026": {
     "publishedAt": 1789952109635,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ام ال دبليو 29.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-08-mlp-mayhem-05-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-sabados-de-coliseo-22-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260920045400-wwe-main-event-17-09-2026": {
     "publishedAt": 1789909207831,
@@ -767,7 +845,7 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "smackdown-14-08-2026": {
     "publishedAt": 1789929612883,
@@ -775,108 +853,119 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض سماك داون 14.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "nxt-18-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "marigold-burning-desire-22-08-2026": {
     "publishedAt": 1789951943109,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ماريجولد بيرنينج ديزاير 22.08.2026"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906105900-mlw-kings-of-colosseum-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260916233800-tna-xplosion-11-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "noah-kawasaki-summer-voyage-23-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260913140800-cmll-viernes-espectacular-11-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "njpw-g1-climax-36-16-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "marigold-burning-desire-18-08-2026": {
     "publishedAt": 1789951908326,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ماريجولد بيرنينج ديزاير 18.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "wwe-lfg-s03e19-23-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "stardom-5-star-gp-in-korakuen-18-08-2026": {
     "publishedAt": 1789952154305,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ستار دوم فايف ستار 18.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260911052300-mlp-mayhem-09-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260901023300-aew-all-in-london-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260904020400-mlp-mayhem-03-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "dark-side-of-the-ring-s07e09-25-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "roh-13-08-2026": {
     "publishedAt": 1789929102739,
@@ -884,50 +973,55 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض ار او اتش 13.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "tna-lockdown-2026": {
     "publishedAt": 1789952198140,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض تي ان ايه لوك داون 2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "nxt-25-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "njpw-g1-climax-36-11-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260901065700-wwe-raw-31-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-viernes-espectacular-21-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "evolve-26-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260920045100-wwe-evolve-16-09-2026": {
     "publishedAt": 1789893986563,
@@ -935,100 +1029,111 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "note": "pre-existing (imported from dist/videos)"
+    "note": "archived historical show"
   },
   "2026-08-05-nxt-04-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906033600-njpw-road-to-destruction-05-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260902153100-tna-xplosion-28-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "dynamite-26-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "tna-xplosion-14-08-2026": {
     "publishedAt": 1789952215404,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض تي ان ايه اكسبلوجن 14.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260902002300-cmll-sabados-de-coliseo-29-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "ajpw-nettou-summer-action-wars-25-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "2026-08-08-gcw-20-years-of-bad-boy-06-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906110400-ufc-fight-night-287-hooker-vs-parnasse": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260908085200-wwe-raw-07-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "mlp-mayhem-19-08-2026": {
     "publishedAt": 1789952010684,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض ام ال بي 19.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "revpro-14-year-anniversary-show-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260901202500-wwe-lfg-s03e21-30-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "smackdown-21-08-2026": {
     "publishedAt": 1789929708874,
@@ -1036,129 +1141,143 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض سماك داون 21.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "20260916053800-cmll-lunes-clasico-14-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "roh-death-before-dishonor-2026": {
     "publishedAt": 1789952124996,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض ار او اتش ديث بيفور ديشونر 2026 مترجم"
+    "note": "archived historical show"
   },
   "20260907063200-wwe-sunday-night’s-main-event-06-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260905062000-wwe-smackdown-04-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "dynamite-19-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "aew-collision-29-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "evolve-19-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "tna-13-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909220900-cmll-domingo-familiar-06-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909092600-nxt-08-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260911061600-roh-10-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "cmll-arena-coliseo-de-guadalajara-25-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "tna-impact-27-08-2026": {
     "publishedAt": 1789952183300,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض تي ان ايه امباكت 27.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "tjpw-tokyo-princess-cup-final-23-08-2026": {
     "publishedAt": 1789952169299,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
-    "title": "عرض تي جي بي دبليو 23.08.2026 مترجم"
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260906102000-aew-collision-05-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260914101700-aaa-triplemania-34-night-2-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260904095600-tna-impact-03-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "main-event-27-08-2026": {
     "publishedAt": 1789938294429,
@@ -1166,42 +1285,47 @@
     "facebook_story": true,
     "instagram_reel": true,
     "instagram_story": true,
-    "title": "عرض مين ايفنت 27.08.2026 مترجم"
+    "note": "archived historical show"
   },
   "20260917080100-aew-dynamite-16-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "reality-of-wrestling-glory-22-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260909061500-wwe-lfg-s03e24-06-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "collision-22-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "collision-15-08-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
-    "instagram_story": false
+    "publishedAt": 1789900000000,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "note": "archived historical show"
   },
   "20260921002200-ufc-331-van-vs-pantoja-2-early-prelims": {
     "publishedAt": null,
@@ -1210,5 +1334,21 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 331 ايرلي بريلمز مترجم"
+  },
+  "20260921005200-ufc-331-van-vs-pantoja-2-prelims": {
+    "publishedAt": null,
+    "facebook_reel": false,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 331 بريلمز مترجم"
+  },
+  "20260921005500-ufc-331-van-vs-pantoja-2-main-card": {
+    "publishedAt": null,
+    "facebook_reel": false,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 331 مين كارد مترجم"
   }
 }
