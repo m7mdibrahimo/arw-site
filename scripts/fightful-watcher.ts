@@ -339,6 +339,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("(?:عرض\\s+)?(?:كوليجن|كوليزن|كوليجين)"), "عرض AEW Collision")
     .replace(arWord("(?:عرض\\s+)?(?:رامبيج|رامباج)"), "عرض AEW Rampage")
     .replace(arWord("(?:عرض\\s+)?(?:[إا]مباكت)"), "عرض TNA iMPACT")
+    .replace(/(?:Road\s+to|Road\s+To)\s+ديستركشن/gi, "Road To Destruction")
+    .replace(/ديستركشن\s+in\s+Kobe/gi, "Destruction in Kobe")
+    .replace(arWord("ديستركشن"), "Destruction")
 
     // Fix double occurrences created by replacement (e.g. "عرض عرض" or "WWE WWE")
     .replace(/(?:عرض\s+)+عرض\s+/g, "عرض ")
@@ -867,7 +870,7 @@ export function translateTitleDeterministic(englishTitle: string): string | null
     /\bAEW(?:\s+(?:Dynamite|Collision|Rampage|Elevation|Dark|All\s+In|All\s+Out|Double\s+or\s+Nothing|Revolution|Dynasty|Full\s+Gear|WrestleDream|Forbidden\s+Door|Grand\s+Slam))?\b/gi,
     /\bTNA(?:\s+iMPACT)?\b/gi,
     /\bROH(?:\s+TV)?\b/gi,
-    /\bNJPW(?:\s+(?:Destruction|Dominion|King\s+of\s+Pro\s+Wrestling|Road\s+to\s+[A-Z]))?\b/gi,
+    /\bNJPW(?:\s+(?:Destruction(?:\s+in\s+\w+)?|Dominion|King\s+of\s+Pro\s+Wrestling|Road\s+to\s+Destruction|Road\s+to\s+[A-Za-z\s]+|G1\s+Climax))?\b/gi,
     /\bMLW\b/gi,
     /\bAAA(?:\s+(?:On\s+FOX|TripleMania|Triplemania))?\b/gi,
     /\bCMLL\b/gi,
@@ -894,7 +897,9 @@ export function translateTitleDeterministic(englishTitle: string): string | null
     /\bGrand\s+Slam\b/gi,
     /\bWorlds\s+Collide\b/gi,
     /\bNXT\s+(?:TakeOver|Stand\s+and\s+Deliver|War\s+Games|Vengeance\s+Day|Battleground)?\b/gi,
+    /\bRoad\s+to\s+Destruction\b/gi,
     /\bDestruction\s+in\s+\w+\b/gi,
+    /\bDestruction\b/gi,
     /\bRoad\s+to\s+King\s+of\s+Pro\s+Wrestling\b/gi,
     /\bTailgate\s+Brawl\b/gi,
     // "Live" always stays in English — WWE NXT Live, WWE Live, etc.
@@ -1795,6 +1800,7 @@ export async function optimizeTitleForSEOAndCTR(
       - **Natalya / Nattie / Natty** يُكتب بالعربية حصراً: **ناتاليا** (ممنوع منعاً باتاً كتابة: "ناتي" أو "نتاليا"؛ اسمها المعتمد حصراً هو: **ناتاليا**).
       - **Logan Paul** يُكتب بالعربية حصراً: **لوغان بول** (ممنوع منعاً باتاً كتابة: "لغان بول" أو "لوجن بول" أو "لوجان بول"؛ اسمه المعتمد حصراً في الموقع هو: **لوغان بول**).
       - **Rising Stars of Women’s Wrestling**: اسم هذا الاتحاد يُكتب بالإنجليزية كما هو تماماً دون ترجمة أو تعريب (اكتب: **Rising Stars of Women’s Wrestling** وممنوع منعاً باتاً ترجمته أو تجزئته أو كتابة بطولة السيدات في اسمه).
+      - **NJPW Road to Destruction / NJPW Destruction**: اسم العرض وجولة **NJPW Road To Destruction** و**Destruction in Kobe** يُكتب بالإنجليزية حصراً دون ترجمة أو تعريب (ممنوع منعاً باتاً ترجمته إلى "ديستركشن" أو "الدمار"؛ اكتب دائماً: **NJPW Road To Destruction** أو **Destruction in Kobe**).
       - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو.
   - **قاعدة مصطلحات Roster و Free Agency (حاسمة وإلزامية)**:
     - **Roster** = **قائمة** (ممنوع كتابة: "روستر" أو "قائمة عرض"؛ الصحيح: "قائمة WWE SmackDown" أو "قائمة WWE RAW").
@@ -2134,9 +2140,10 @@ async function rewriteWithGemini(
  القواعد التحريرية والتنسيقية الإلزامية:
 1. **قاعدة أسماء الاتحادات والعروض بالإنجليزية حصراً**:
    - أسماء الاتحادات تظل بالإنجليزية دائماً كما هي دون تعريب: (WWE, AEW, TNA, ROH, NJPW, MLW, AAA, CMLL, GCW, UFC, MLP).
-   - أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي: (مثل WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, ROH TV, Triplemania, MLP Northern Rising).
+   - أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي: (مثل WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, ROH TV, Triplemania, MLP Northern Rising, NJPW Road To Destruction, NJPW Destruction in Kobe).
+   - **تنبيه خاص لـ NJPW**: اسم جولة وعرض **NJPW Road To Destruction** و**NJPW Destruction in Kobe** يظل بالإنجليزية دائماً دون أي ترجمة أو تعريب (ممنوع منعاً باتاً ترجمة أو تعريب "Destruction" إلى "ديستركشن" أو "الدمار" نهائياً!).
    - ممنوع نهائياً كتابة: "دبليو دبليو إي" أو "إيه إي دبليو" أو "عرض الرو" أو "سماكداون" أو "ديناميت"؛ اكتب دائماً: WWE, AEW, WWE RAW, WWE SmackDown, AEW Dynamite.
-   - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**: ممنوع نهائياً كتابة اسم العرض مفرداً بدون اسم الاتحاد (اكتب دائماً: عرض MLP Northern Rising، عرض WWE SmackDown، عرض AEW Collision، عرض TNA iMPACT).
+   - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**: ممنوع نهائياً كتابة اسم العرض مفرداً بدون اسم الاتحاد (اكتب دائماً: عرض MLP Northern Rising، عرض WWE SmackDown، عرض AEW Collision، عرض TNA iMPACT، عرض NJPW Road To Destruction).
    - كل شيء آخر يُترجم ويُكتب بالعربية (أسماء المصارعين، أنواع المباريات، شروط النزالات، الأحزمة، التفاصيل).
    - **أسماء الفرق والعصابات بالعربية دائماً وحصراً**: اكتب أسماء الفرق بالعربية دائماً (الإخوة فاغنر، وار رايدرز، ذا بلودلاين، ذا جادجمنت داي، ذا نيو داي، بيروس ديل مال).
    - **أسماء الألقاب والبطولات بالعربية الخالصة ودون تكرار اسم الاتحاد**: اكتب اللقب بالعربية مباشرة بدون اسم الاتحاد أمامه ("بطولة العالم للزوجي" وليس بطولة AAA للزوجي).
@@ -2265,10 +2272,10 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
      (WWE, AEW, TNA, ROH, NJPW, MLW, AAA, CMLL, GCW, UFC, MLP).
      - ممنوع نهائياً: "دبليو دبليو إي", "إيه إي دبليو", "تي إن إيه", "نيو جابان".
      - اكتب دائماً: WWE, AEW, TNA, NJPW, MLW.
-   - **أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي**:
-     (مثل: WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, AEW All In, WrestleMania, Royal Rumble, SummerSlam, MLP Northern Rising).
-     - ممنوع نهائياً: "الرو", "راو", "سماكداون", "ديناميت", "كوليجن", "إمباكت".
-     - اكتب دائماً: WWE RAW, WWE SmackDown, AEW Dynamite, AEW Collision, TNA iMPACT.
+    - **أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي**:
+      (مثل: WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, AEW All In, WrestleMania, Royal Rumble, SummerSlam, MLP Northern Rising, NJPW Road To Destruction, NJPW Destruction in Kobe).
+      - ممنوع نهائياً: "الرو", "راو", "سماكداون", "ديناميت", "كوليجن", "إمباكت", "ديستركشن".
+      - اكتب دائماً: WWE RAW, WWE SmackDown, AEW Dynamite, AEW Collision, TNA iMPACT, NJPW Road To Destruction.
    - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**:
      - ممنوع نهائياً كتابة اسم أي عرض بدون ذكر اسم الاتحاد قبله مباشرة في العناوين أو المتن ليعرف القارئ تبعية العرض فوراً.
      - اكتب دائماً: "عرض MLP Northern Rising" (ممنوع نهائياً: "عرض Northern Rising" فقط بدون MLP)، "عرض WWE SmackDown"، "عرض AEW Collision"، "عرض TNA iMPACT".
