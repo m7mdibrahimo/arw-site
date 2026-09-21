@@ -11,9 +11,6 @@ name: Show Reel Monitor — Publish Reels to Social Media
 # ═══════════════════════════════════════════════════════
 
 on:
-  schedule:
-    - cron: '*/15 * * * *'
-
   push:
     branches:
       - main

@@ -1486,6 +1486,7 @@ async function postVideoToFacebookReel(
     const initData: any = await initRes.json().catch(() => ({}));
     if (!initData.video_id || !initData.upload_url) {
       console.warn("[Facebook Reel] video_reels session failed, trying graph-video fallback:", initData);
+      let fallbackData: any = null;
       try {
         const fallbackRes = await fetch(
           `https://graph-video.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/videos`,
@@ -1500,22 +1501,27 @@ async function postVideoToFacebookReel(
             }),
           }
         );
-        const fallbackData: any = await fallbackRes.json().catch(() => ({}));
-        if (fallbackData.id) {
+        fallbackData = await fallbackRes.json().catch(() => ({}));
+        if (fallbackData && fallbackData.id) {
           return {
             ok: true,
             result: fallbackData,
             message: "تم نشر فيديو الريلز على صفحة الفيسبوك بنجاح عبر بوابة الفيديو المباشرة!",
           };
         }
-      } catch (fbErr) {
+      } catch (fbErr: any) {
         console.warn("[Facebook Reel] graph-video fallback failed:", fbErr);
+        return {
+          ok: false,
+          result: { init: initData, fbErr: fbErr.message },
+          error: initData?.error?.message || fbErr.message || "فشل بدء جلسة رفع الريلز على فيسبوك",
+        };
       }
 
       return {
         ok: false,
-        result: initData,
-        error: initData?.error?.message || "فشل بدء جلسة رفع الريلز على فيسبوك",
+        result: { init: initData, fallback: fallbackData },
+        error: (fallbackData && fallbackData?.error?.message) ? fallbackData.error.message : (initData?.error?.message || "فشل بدء جلسة رفع الريلز على فيسبوك"),
       };
     }
 
