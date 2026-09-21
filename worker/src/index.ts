@@ -645,7 +645,7 @@ async function claimSend(env: Env, platform: Platform, key: string, force = fals
   try {
     const locked = await env.PUSH_KV.get(lockKey);
     if (locked && !force) return false;
-    await env.PUSH_KV.put(lockKey, "1", { expirationTtl: 300 }); // 5 minutes TTL
+    await env.PUSH_KV.put(lockKey, "1", { expirationTtl: 60 }); // 60s TTL (prevents concurrent tick clash, but allows next-minute retry)
   } catch (e) {}
 
   // Check persistent fail backoff in KV (skip if failed 5 times recently)
