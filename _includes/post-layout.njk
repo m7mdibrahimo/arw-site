@@ -1272,7 +1272,7 @@
       {% endif %}
     {% endif %}
 
-    <div class="post-body reveal">
+    <div class="post-body">
       {{ content | autoLinkWrestlingStars | autoEmbedSocials | safe }}
 
     </div>
@@ -1409,7 +1409,7 @@
         if(e.isIntersecting){ e.target.classList.remove('reveal-hidden'); e.target.classList.add('is-visible'); }
         else { e.target.classList.remove('is-visible'); e.target.classList.add('reveal-hidden'); }
       });
-    }, { threshold:.12 });
+    }, { threshold:0, rootMargin:'0px 0px -10% 0px' });
     document.querySelectorAll('.reveal').forEach(el=>{
       el.classList.add('reveal-hidden');
       io.observe(el);
