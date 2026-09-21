@@ -3020,6 +3020,14 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       if (options.forceLatest && processedCount >= 1) {
         break;
       }
+
+      // Safe pacing cap: never publish more than 3 posts in a single automated run.
+      // If a backlog builds up, it will be drained gracefully 3 posts at a time every 10 minutes.
+      const MAX_POSTS_PER_AUTOMATED_RUN = 3;
+      if (!options.forceLatest && processedCount >= MAX_POSTS_PER_AUTOMATED_RUN) {
+        console.log(`[Watcher] 🛑 Safe pacing cap reached (${MAX_POSTS_PER_AUTOMATED_RUN} posts in this run). Remaining posts will be processed gracefully in the next 10-minute cycle.`);
+        break;
+      }
     }
 
     state.lastChecked = new Date().toISOString();
