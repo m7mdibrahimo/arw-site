@@ -2074,6 +2074,9 @@ export default {
 
         const key = sanitizeKey(normalizeArticleUrl(itemUrl));
         const wanted: Platform[] = Array.isArray(platforms) && platforms.length ? platforms : ["telegram", "facebook", "instagram", "x"];
+        if (wanted.length !== 1 || !["telegram", "facebook", "instagram", "x"].includes(wanted[0])) {
+          return json({ success: false, error: "أرسل منصة واحدة في كل طلب نشر؛ حدّث لوحة الإدارة إلى أحدث نسخة." }, 400);
+        }
         let pagePath = itemUrl;
         try {
           pagePath = new URL(itemUrl).pathname;
@@ -2407,8 +2410,8 @@ export default {
             ? body.platforms
             : ["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
           const allowed = new Set(["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"]);
-          if (!requestedPlatforms.length || requestedPlatforms.some(p => !allowed.has(p))) {
-            return json({ success: false, error: "منصة فيديو غير مدعومة؛ الأداة مخصصة لفيسبوك وإنستجرام." }, 400);
+          if (requestedPlatforms.length !== 1 || requestedPlatforms.some(p => !allowed.has(p))) {
+            return json({ success: false, error: "أرسل منصة فيديو واحدة في كل طلب؛ الأداة مخصصة لفيسبوك وإنستجرام." }, 400);
           }
           const videoHost = new URL(fullVideoUrl);
           if (!videoHost.pathname.endsWith(".mp4")) return json({ success: false, error: "ملف الفيديو يجب أن يكون MP4." }, 400);

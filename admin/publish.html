@@ -399,6 +399,25 @@
 <script>
   const API_BASE = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
   const SITE_ORIGIN = "https://arab-wrestling.com";
+  async function publishArticle(init) {
+    const payload = JSON.parse(init.body);
+    const results = {}, debug = {};
+    for (const platform of payload.platforms) {
+      try {
+        const response = await fetch(`${API_BASE}/api/social/manual-publish`, { ...init, body: JSON.stringify({ ...payload, platforms: [platform] }) });
+        const data = await response.json();
+        results[platform] = data.results?.[platform] || 'failed';
+        if (data.debug?.[platform]) debug[platform] = data.debug[platform];
+        else if (data.error) debug[platform] = { error: { message: data.error } };
+      } catch (error) {
+        results[platform] = 'uncertain';
+        debug[platform] = { error: { message: error.message } };
+      }
+    }
+    const success = Object.values(results).every(r => r === 'sent' || r === 'already_sent');
+    return new Response(JSON.stringify({ success, results, debug }), { headers: { 'Content-Type': 'application/json' } });
+  }
+
 
   const listEl = document.getElementById('list');
   const statusLine = document.getElementById('status-line');
@@ -672,7 +691,7 @@
     btn.innerHTML = '<span class="spinner"></span> جاري النشر...';
 
     try{
-      const res = await fetch(`${API_BASE}/api/social/manual-publish`, {
+      const res = await publishArticle({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -786,7 +805,7 @@
       batchProgressFill.style.width = `${Math.round(((i + 1) / total) * 100)}%`;
 
       try {
-        const res = await fetch(`${API_BASE}/api/social/manual-publish`, {
+        const res = await publishArticle({
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

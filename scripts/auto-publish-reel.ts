@@ -50,21 +50,18 @@ async function autoPublish() {
 
     try {
       console.log(`📹 [Auto-Publish] Publishing Reel & Story for "${data.title}"...`);
-      const reelRes = await fetch(`${WORKER_URL}/api/videos/publish-social`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
-        body: JSON.stringify({
-          videoUrl: rawVideoUrl,
-          title: data.title,
-          postUrl,
-          imageUrl,
-          platforms: ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'],
-        }),
-      });
-
-      const reelData: any = await reelRes.json().catch(() => ({}));
-      console.log('Reel & Story Publish Response:', JSON.stringify(reelData, null, 2));
-      if (!reelRes.ok || !reelData.success) remaining.push(data);
+      let complete = true;
+      for (const platform of ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story']) {
+        const reelRes = await fetch(`${WORKER_URL}/api/videos/publish-social`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
+          body: JSON.stringify({ videoUrl: rawVideoUrl, title: data.title, postUrl, imageUrl, platforms: [platform] }),
+        });
+        const reelData: any = await reelRes.json().catch(() => ({}));
+        console.log('Reel & Story Publish Response:', JSON.stringify(reelData, null, 2));
+        if (!reelRes.ok || !reelData.success) complete = false;
+      }
+      if (!complete) remaining.push(data);
     } catch (reelErr) {
       remaining.push(data);
       console.error(`⚠️ Failed to publish Reel & Story for "${data.title}":`, reelErr);
