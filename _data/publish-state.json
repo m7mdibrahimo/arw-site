@@ -7605,21 +7605,21 @@
   "bufferQuota": [
     {
       "window": "100-in-15min",
-      "remaining": 94,
-      "resetAt": 1790034548577,
-      "updatedAt": 1790034249577
+      "remaining": 93,
+      "resetAt": 1790034546857,
+      "updatedAt": 1790034256857
     },
     {
       "window": "250-in-1day",
-      "remaining": 162,
-      "resetAt": 1790096882577,
-      "updatedAt": 1790034249577
+      "remaining": 161,
+      "resetAt": 1790096879857,
+      "updatedAt": 1790034256857
     },
     {
       "window": "3000-in-30days",
-      "remaining": 13,
-      "resetAt": 1790859352577,
-      "updatedAt": 1790034249577
+      "remaining": 12,
+      "resetAt": 1790859349857,
+      "updatedAt": 1790034256857
     }
   ]
 }
