@@ -2081,6 +2081,24 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
   return false;
 }
 
+// Fightful maintains evergreen "Full/Complete/Updated [federation] Roster"
+// reference pages that get bumped with a fresh date_gmt whenever edited,
+// making them look like ordinary new posts to the watcher. Their real
+// content is a list of 100-300+ wrestler names grouped under headings
+// (Men's, Women's, Tag Teams, Backstage Roles...) — not a narrative, so the
+// site's "2-3 short paragraphs" rewrite prompt can only ever produce a vague
+// summary paragraph about the page instead of reproducing the actual list,
+// which is strictly worse than not publishing anything (a "complete list"
+// headline whose body names a handful of stars and stops there).
+// Anchored to the whole title, not just "contains roster" — genuine news
+// often mentions a wrestler's "roster spot" in a sentence (e.g. "Says Khan
+// Knows His Roster's Strengths"), which must still publish normally.
+export function isRosterReferencePage(rawTitle: string): boolean {
+  const title = (rawTitle || "").trim();
+  if (!title) return false;
+  return /^(?:full|complete|updated)\s+[a-z0-9\s]{0,40}\broster$/i.test(title);
+}
+
 // Programmatic safeguard: Ensures that show results titles NEVER spoil the match winners
 export function sanitizeResultsTitleSpoilers(title: string): string {
   if (!title) return title;
@@ -2745,6 +2763,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
 
+  if (isRosterReferencePage(rawTitle)) {
+    console.log(`[Watcher] 📋 Roster reference page: Post #${postId} ("${rawTitle}") skipped — a 100+ name list can't fit the news rewrite format.`);
+    return false;
+  }
+
   // 1. Download & compress image (with fallback)
   let localImagePath: string | null = null;
   if (imageUrl) {
@@ -3037,6 +3060,10 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
         continue;
       }
 
+      if (isRosterReferencePage(rawTitle)) {
+        console.log(`[Watcher] 📋 Roster reference page: Skipping #${postId} ("${rawTitle}") — a 100+ name list can't fit the news rewrite format.`);
+        continue;
+      }
 
       const success = await processPost(post);
       if (success) {
