@@ -99,3 +99,11 @@ export async function publishInstagramVideo(options: {
     return { ok: false, status: 'processing', error: 'الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.' };
   } catch { return { ok: false, ambiguous: publishing, error: 'تعذر إكمال الاتصال بإنستجرام.' }; }
 }
+
+// Pending and unverified show videos must survive platform cooldowns.
+export function mustRetainVideo(filename: string, state: Record<string, any>): boolean {
+  const prefix = filename.match(/^reel-(\d{14})-/)?.[1];
+  if (!prefix || prefix < '20260921002200') return false;
+  const entry = Object.entries(state).find(([slug]) => filename === `reel-${slug}.mp4` || filename === `reel-${slug.slice(0, 45)}.mp4`)?.[1];
+  return !entry || entry.needsReview || ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'].some(p => entry[p] !== true);
+}

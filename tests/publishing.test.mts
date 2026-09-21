@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
-import { finishPublication, publishFacebookVideo, publishInstagramVideo } from '../worker/src/video-publishing';
-import worker from '../worker/src/index';
+import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from '../worker/src/video-publishing';
+import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible } from '../scripts/show-reel-monitor';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -147,4 +147,33 @@ test('one uncertain platform does not erase another confirmed success or its own
   const next = applyResults(first, { instagram_reel: { ok: true } }, ['instagram_reel'], 'title');
   assert.equal(next.instagram_reel, true); assert.equal(next.facebook_reel, false);
   assert.deepEqual(next.reviewPlatforms, ['facebook_reel']); assert.equal(next.needsReview, true);
+});
+
+test('retention keeps pending or unknown show videos through platform restrictions', () => {
+  const slug = '20260921023300-mlw-fusion-19-09-2026';
+  const file = `reel-${slug}.mp4`;
+  assert.equal(mustRetainVideo(file, {}), true);
+  assert.equal(mustRetainVideo(file, { [slug]: { facebook_reel: true } }), true);
+  assert.equal(mustRetainVideo(file, { [slug]: { facebook_reel: true, facebook_story: true, instagram_reel: true, instagram_story: true } }), false);
+});
+
+test('automatic watcher bounds attempts and defers failed platforms without starving the next article', async t => {
+  const database = ledger();
+  const items = ['one', 'two'].map(slug => ({ url: `/news/${slug}/`, title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date().toISOString() }));
+  const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} };
+  for (const slug of ['one', 'two']) for (const p of ['telegram','facebook']) state[p][`httpssitetestnews${slug}`] = Date.now();
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/search-index.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  const config = { ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any;
+  await runWatcherPoll(config);
+  const first = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.equal(Object.keys(first.deferrals).length, 2);
+  assert.ok(first.deferrals['instagram:httpssitetestnewsone']);
+  await runWatcherPoll(config);
+  const second = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(second.deferrals['instagram:httpssitetestnewstwo']);
 });

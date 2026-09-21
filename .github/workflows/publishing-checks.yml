@@ -37,3 +37,5 @@ jobs:
       - run: npm run test:publishing
       - run: npx tsx scripts/test-sanitizer.ts
       - run: npx tsx scripts/test-spoiler-filter.ts
+      - run: npm run build
+      - run: test -s _site/admin/api-auth.js

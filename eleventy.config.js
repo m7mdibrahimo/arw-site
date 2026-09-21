@@ -1302,6 +1302,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy("admin/index.html");
+  eleventyConfig.addPassthroughCopy("admin/api-auth.js");
   eleventyConfig.addPassthroughCopy({"admin/config.yml": "admin/config.yml"});
   eleventyConfig.addPassthroughCopy("admin/publish.html");
   eleventyConfig.addPassthroughCopy("admin/watcher.html");

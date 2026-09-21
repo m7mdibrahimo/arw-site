@@ -30,7 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
-import { publishFacebookVideo, publishInstagramVideo } from "./video-publishing";
+import { publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from "./video-publishing";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -294,6 +294,7 @@ type PublishState = {
   // interval, so a cooldown written in KV on one tick could still read as
   // "not set" on the very next tick and get silently ignored.
   cooldowns: Partial<Record<"facebook" | "instagram" | "x", number>>;
+  deferrals?: Record<string, number>;
   lastStoryAt?: number;
   videoCooldowns?: Partial<Record<"facebook" | "instagram", number>>;
 };
@@ -654,6 +655,7 @@ async function markSendSuccess(env: Env, platform: Platform, key: string): Promi
     if (state[platform]?.[key]) return; // already marked
 
     state[platform][key] = Date.now();
+    if (state.deferrals) delete state.deferrals[`${platform}:${key}`];
     const write = await githubWriteState(env, state, sha, `chore(publish): mark ${platform} sent — ${key}`);
     if (write.ok) return;
     if (write.conflict) {
@@ -1517,6 +1519,18 @@ async function postToXViaBuffer(
 // only by the admin "force re-publish" checkbox).
 // ─────────────────────────────────────────────────────────────────────────
 
+async function deferPublication(env: Env, platform: Platform, key: string, uncertain: boolean) {
+  for (let i = 0; i < 3; i++) {
+    const { sha, state } = await githubReadState(env);
+    // Unknown sends need a human check. Definite failures are eligible again in five minutes.
+    state.deferrals = { ...state.deferrals, [`${platform}:${key}`]: uncertain ? 8640000000000000 : Date.now() + 5 * 60_000 };
+    const result = await githubWriteState(env, state, sha, `chore(publish): defer ${platform} delivery`);
+    if (result.ok) return;
+    if (!result.conflict) throw new Error("Could not save publication retry delay");
+  }
+  throw new Error("Could not save publication retry delay");
+}
+
 async function publishToPlatform(
   env: Env, platform: Platform, key: string,
   item: { title: string; text?: string; url: string; image?: string; kind?: string },
@@ -1535,6 +1549,7 @@ async function publishToPlatform(
     await markSendSuccess(env, platform, key);
     return { status: result.status === "already_sent" ? "already_sent" : "sent" };
   }
+  await deferPublication(env, platform, key, !!result.ambiguous);
   return { status: result.ambiguous ? "uncertain" : result.status || "failed", raw: { error: { message: result.error } } };
 }
 
@@ -1696,7 +1711,7 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
           hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive || (hasEnglishLiveShow && hasEnglishLiveAngle));
 }
 
-async function runWatcherPoll(env: Env): Promise<void> {
+export async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
     const res = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`), {
@@ -1721,12 +1736,15 @@ async function runWatcherPoll(env: Env): Promise<void> {
   }
 
   let processedInThisTick = 0;
-  const MAX_PER_TICK = 5;
+  // Bound external requests to remain compatible with Workers' free-tier budget.
+  const MAX_PER_TICK = 1;
+  let platformAttempts = 0;
+  const takeSlot = () => platformAttempts < 2 ? (++platformAttempts, true) : false;
   let bufferXAttemptedInTick = 0;
   const MAX_BUFFER_PER_TICK = 1;
 
   for (const item of items) {
-    if (processedInThisTick >= MAX_PER_TICK) break;
+    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
 
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (minDate && ts && ts < minDate) continue;
@@ -1766,12 +1784,13 @@ async function runWatcherPoll(env: Env): Promise<void> {
     const fbCooldown = (state.cooldowns?.facebook || 0) > now;
 
     // Determine what can actually be attempted right now
-    const canDoTg = !tgDone;
+    const deferred = (platform: Platform) => (state.deferrals?.[`${platform}:${key}`] || 0) > now;
+    const canDoTg = !tgDone && !deferred("telegram");
     // Resume automatically after the persisted platform cooldown expires.
-    const canDoIg = env.INSTAGRAM_AUTO_ENABLED !== "false" && !igDone && !igCooldown;
+    const canDoIg = env.INSTAGRAM_AUTO_ENABLED !== "false" && !igDone && !igCooldown && !deferred("instagram");
     // Facebook publishes news and shows normally as posts
-    const canDoFb = !fbDone && !fbCooldown;
-    const canDoX = !xDone && !xCooldown && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
+    const canDoFb = !fbDone && !fbCooldown && !deferred("facebook");
+    const canDoX = !xDone && !xCooldown && !deferred("x") && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
     // If nothing actionable can be done for this item, skip it
     if (!canDoTg && !canDoIg && !canDoFb && !canDoX) {
@@ -1780,7 +1799,7 @@ async function runWatcherPoll(env: Env): Promise<void> {
 
     let didWork = false;
 
-    if (!tgDone) {
+    if (canDoTg && takeSlot()) {
       const verify = await verifyLiveOnSite(env, { url: item.url, image: item.image });
       if (!verify.ok) continue; // not fully live yet — try again next minute
 
@@ -1804,14 +1823,14 @@ async function runWatcherPoll(env: Env): Promise<void> {
         await sendPushToAllSubscribers(env, { ...payload, image: item.image, collection, kind: item.kind }).catch(() => {});
       }
 
-      if (canDoFb) {
+      if (canDoFb && takeSlot()) {
         const fbText = isShowResults
           ? "إليكم التغطية الشاملة والنتائج الكاملة لكافة مواجهات وأحداث العرض بالتفصيل وبشكل حصري."
           : payload.text;
         await publishToPlatform(env, "facebook", key, { ...payload, text: fbText, image: item.image, kind: item.kind }, {}, false);
       }
-      if (canDoIg) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
-      if (canDoX) {
+      if (canDoIg && takeSlot()) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+      if (canDoX && takeSlot()) {
         bufferXAttemptedInTick++;
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
       }
@@ -1832,15 +1851,15 @@ async function runWatcherPoll(env: Env): Promise<void> {
         catchUpText = v.bodySnippet || "";
       }
       const payload = { title: cleanTitle, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
-      if (canDoFb) {
+      if (canDoFb && takeSlot()) {
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
       }
-      if (canDoIg) {
+      if (canDoIg && takeSlot()) {
         await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
       }
-      if (canDoX) {
+      if (canDoX && takeSlot()) {
         bufferXAttemptedInTick++;
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
         didWork = true;
@@ -2548,9 +2567,8 @@ export default {
 
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
     ctx.waitUntil(Promise.all([
-      runWatcherPoll(env),
+      new Date(_controller.scheduledTime).getUTCMinutes() === 15 ? runVideoRetentionCleanup(env) : runWatcherPoll(env),
       runNewsWatcherCron(env),
-      runVideoRetentionCleanup(env),
     ]));
   },
 } satisfies ExportedHandler<Env>;
@@ -2640,12 +2658,21 @@ async function runVideoRetentionCleanup(env: Env): Promise<void> {
     if (now.getMinutes() !== 15) return;
     const manifest = await githubGetVideosManifest(env);
     if (!manifest || !manifest.length) return;
-    const maxAgeMs = 3 * 24 * 60 * 60 * 1000; // 3 days max retention
+    const response = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/_data/show-reel-state.json?ref=${env.GITHUB_BRANCH}`, {
+      headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+    });
+    if (!response.ok) return; // Fail closed: do not prune when publishing state is unavailable.
+    const data: any = await response.json();
+    const showState = JSON.parse(base64DecodeUtf8(data.content.replace(/\n/g, "")));
+    const maxAgeMs = 3 * 24 * 60 * 60 * 1000; // Completed videos only.
     const nowMs = Date.now();
+    let pruned = 0;
     for (const v of manifest) {
-      if (v.mtime && (nowMs - v.mtime > maxAgeMs) && v.filename) {
+      if (pruned >= 2) break;
+      if (v.mtime && (nowMs - v.mtime > maxAgeMs) && v.filename && !mustRetainVideo(v.filename, showState)) {
         console.log(`[Video Retention] Pruning old reel video: ${v.filename}`);
         await githubDeleteVideoFile(env, v.filename);
+        pruned++;
       }
     }
   } catch (err) {
