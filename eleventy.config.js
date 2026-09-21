@@ -24,6 +24,13 @@ const KNOWN_HOST_NAMES = {
   "uqload.co": "Uqload",
   "uqload.io": "Uqload",
   "uqload.net": "Uqload",
+  "vidtube.one": "VidTube",
+  "vidtube.me": "VidTube",
+  "vidtube.io": "VidTube",
+  "vidtube.to": "VidTube",
+  "vidtube.com": "VidTube",
+  "vidtube.net": "VidTube",
+  "vidtube.site": "VidTube",
 };
 
 // لوجوهات مخصصة عالية الدقة لمواقع التحميل
@@ -34,11 +41,20 @@ const KNOWN_HOST_LOGOS = {
   "uqload.co": "/assets/hosts/uqload.png",
   "uqload.io": "/assets/hosts/uqload.png",
   "uqload.net": "/assets/hosts/uqload.png",
+  "vidtube.one": "/assets/hosts/vidtube.png",
+  "vidtube.me": "/assets/hosts/vidtube.png",
+  "vidtube.io": "/assets/hosts/vidtube.png",
+  "vidtube.to": "/assets/hosts/vidtube.png",
+  "vidtube.com": "/assets/hosts/vidtube.png",
+  "vidtube.net": "/assets/hosts/vidtube.png",
+  "vidtube.site": "/assets/hosts/vidtube.png",
 };
 
 function hostFromUrl(url) {
   try {
-    return new URL(url).hostname.replace(/^www\./, "");
+    const raw = String(url || "").trim();
+    const withProto = raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`;
+    return new URL(withProto).hostname.replace(/^www\./, "").toLowerCase();
   } catch (e) {
     return "";
   }
@@ -47,6 +63,12 @@ function hostFromUrl(url) {
 function siteNameFromHost(host) {
   if (!host) return "رابط تحميل";
   if (KNOWN_HOST_NAMES[host]) return KNOWN_HOST_NAMES[host];
+  // لو فيه سب دومين زي e24.uqload.vc أو dl.vidtube.one
+  const parts = host.split(".");
+  if (parts.length > 2) {
+    const root = parts.slice(-2).join(".");
+    if (KNOWN_HOST_NAMES[root]) return KNOWN_HOST_NAMES[root];
+  }
   const base = host.split(".")[0];
   return base.charAt(0).toUpperCase() + base.slice(1);
 }
@@ -60,11 +82,28 @@ function detectQuality(text) {
   return null;
 }
 
-// بياخد نص (ممكن يكون فيه أكتر من رابط، كل رابط في سطر) ويرجع مصفوفة روابط نضيفة (Regex بيلقط أي رابط حتى لو مكتوب مع نص زيادة)
+// بياخد نص (ممكن يكون فيه أكتر من رابط، كل رابط في سطر) ويرجع مصفوفة روابط نضيفة (بيلقط أي رابط حتى لو مكتوب مع نص أو بدون https://)
 function extractUrls(text) {
   if (!text) return [];
-  const matches = text.match(/https?:\/\/[^\s"'<>]+/g);
-  return matches || [];
+  const lines = String(text).split(/[\r\n]+/);
+  const result = [];
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) continue;
+    const httpMatches = line.match(/https?:\/\/[^\s"'<>\)]+/g);
+    if (httpMatches) {
+      httpMatches.forEach(function (u) {
+        const cleaned = u.replace(/[\.,;:!]+$/, "");
+        if (cleaned) result.push(cleaned);
+      });
+    } else {
+      const cleaned = line.replace(/^[-\*\d\.\s]+/, "").replace(/[\.,;:!]+$/, "").trim();
+      if (/^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\/[^\s"'<>\)]*)?$/.test(cleaned)) {
+        result.push("https://" + cleaned);
+      }
+    }
+  }
+  return result;
 }
 
 // بياخد مصفوفة downloads (بأي صيغة من الصيغ القديمة) + نصوص الصناديق الجديدة الصريحة من اللوحة
@@ -77,7 +116,8 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     if (!url) return;
     const host = hostFromUrl(url);
     const site = siteNameFromHost(host);
-    const logo = KNOWN_HOST_LOGOS[host] || `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
+    const rootHost = host.split(".").slice(-2).join(".");
+    const logo = KNOWN_HOST_LOGOS[host] || KNOWN_HOST_LOGOS[rootHost] || `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
     const item = { url: url, site: site, host: host, logo: logo };
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
