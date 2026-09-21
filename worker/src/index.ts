@@ -1033,8 +1033,16 @@ async function postToFacebookDirect(
     const pageToken = await getPageAccessToken(env);
     const imageUrl = data.image ? (data.image.startsWith("http") ? data.image : env.SITE_ORIGIN + data.image) : undefined;
 
-    const endpoint = `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
-    const body = { message: caption, link: data.url, access_token: pageToken };
+    // Per the site owner: post the article's own image natively, not a
+    // link-preview card. /photos with a remote url has Facebook fetch and
+    // host the image itself (no outbound link attached to the post at all).
+    // Falls back to a plain link post only on the rare article with no image.
+    const endpoint = imageUrl
+      ? `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/photos`
+      : `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.FACEBOOK_PAGE_ID}/feed`;
+    const body = imageUrl
+      ? { caption, url: imageUrl, access_token: pageToken }
+      : { message: caption, link: data.url, access_token: pageToken };
 
     let res: Response;
     try {
