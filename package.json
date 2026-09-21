@@ -4,7 +4,7 @@
   "scripts": {
     "postinstall": "node scripts/patch-eleventy.js",
     "dev": "tsx server.ts",
-    "build": "node --stack-size=4096 ./node_modules/@11ty/eleventy/cmd.js && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server.cjs",
+    "build": "node --stack-size=4096 ./node_modules/@11ty/eleventy/cmd.cjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "watch:news": "tsx scripts/fightful-watcher.ts",
     "watch:news:daemon": "tsx scripts/fightful-watcher.ts --daemon",
@@ -19,8 +19,8 @@
     "web-push": "^3.6.7"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-img": "^3.1.0",
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-img": "^7.0.0",
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "@types/web-push": "^3.6.4",
