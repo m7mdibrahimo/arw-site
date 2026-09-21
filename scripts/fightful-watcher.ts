@@ -308,6 +308,23 @@ export function applyNamesGlossary(text: string): string {
   return result;
 }
 
+// Same glossary and matching rules as applyNamesGlossary, but returns which
+// Arabic names were actually recognized in the text instead of substituting
+// them — used to compare a candidate headline against already-published
+// Arabic tags/titles without needing a language-agnostic name matcher.
+export function findKnownArabicNames(text: string): string[] {
+  if (!text || typeof text !== "string") return [];
+  const found = new Set<string>();
+  for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
+    if (!english || !arabic || english === arabic) continue;
+    try {
+      const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (new RegExp(`\\b${escaped}\\b`, "i").test(text)) found.add(arabic);
+    } catch (e) {}
+  }
+  return [...found];
+}
+
 // Convert any occurrence of 'حلقة' to 'عرض', enforce English promotion/show names, scrub third-party branding, and strip all tashkeel
 export function sanitizeWrestlingTerms(text: string): string {
   if (!text) return text;

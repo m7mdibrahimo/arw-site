@@ -251,6 +251,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("absUrl", absUrl);
   eleventyConfig.addNunjucksFilter("absUrl", absUrl);
 
+  // اسم عرض نظيف لمصدر الخبر انطلاقا من source_url (fightful.com -> Fightful.com)
+  const KNOWN_SOURCE_NAMES = { "fightful.com": "Fightful.com", "wrestlinginc.com": "Wrestling Inc" };
+  const sourceName = function(url) {
+    if (!url) return "";
+    try {
+      const host = new URL(url).hostname.replace(/^www\./, "");
+      return KNOWN_SOURCE_NAMES[host] || host;
+    } catch (e) {
+      return "";
+    }
+  };
+  eleventyConfig.addFilter("sourceName", sourceName);
+  eleventyConfig.addNunjucksFilter("sourceName", sourceName);
+
   const dateObj = function(str) {
     return new Date(str);
   };

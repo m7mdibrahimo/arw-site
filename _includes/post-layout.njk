@@ -1278,7 +1278,7 @@
     </div>
 
     {% if source_url %}
-    <p class="post-source reveal">المصدر: <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer nofollow">Fightful.com</a></p>
+    <p class="post-source reveal">المصدر: <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer nofollow">{{ source_url | sourceName }}</a></p>
     {% endif %}
 
     {% if tags and tags.length %}
