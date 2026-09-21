@@ -31,6 +31,12 @@ async function autoPublish() {
 
   console.log(`🚀 [Auto-Publish] Found ${itemsToPublish.length} reel(s) to publish.`);
 
+  // Check the original article date, never the render timestamp.
+  const indexResponse = await fetch('https://arab-wrestling.com/search-index.json', { cache: 'no-store' });
+  if (!indexResponse.ok) throw new Error('Cannot verify publication dates; publishing stopped.');
+  const index = await indexResponse.json() as any[];
+  if (!Array.isArray(index)) throw new Error('Invalid article index; publishing stopped.');
+  const normalize = (url: string) => new URL(url, 'https://arab-wrestling.com').href.replace(/\/$/, '');
   const remaining: any[] = [];
   if (!process.env.GITHUB_TOKEN) throw new Error("GITHUB_TOKEN is required for publishing");
   for (const data of itemsToPublish) {
@@ -40,6 +46,13 @@ async function autoPublish() {
     const postUrl = data.postUrl
       ? (data.postUrl.startsWith('http') ? data.postUrl : `https://arab-wrestling.com${data.postUrl.startsWith('/') ? '' : '/'}${data.postUrl}`)
       : undefined;
+
+    const article = postUrl && index.find(item => normalize(item.url) === normalize(postUrl));
+    const articleDate = article?.date ? Date.parse(article.date) : NaN;
+    if (!Number.isFinite(articleDate) || articleDate < Date.parse('2026-09-21T19:13:59Z') || articleDate > Date.now()) {
+      console.log('Skipping old or unverified content; no social requests sent.');
+      continue;
+    }
 
     let imageUrl: string | undefined = undefined;
     if (data.image) {

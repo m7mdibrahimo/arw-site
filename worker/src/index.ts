@@ -1711,6 +1711,21 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
           hasEnglishDefeat || hasEnglishQualifier || hasEnglishRetain || hasEnglishWin || hasEnglishSurvive || (hasEnglishLiveShow && hasEnglishLiveAngle));
 }
 
+// Resolve original article dates on the server; rendering or retrying cannot renew eligibility.
+async function eligiblePublication(env: Env, articleUrl: string): Promise<boolean> {
+  try {
+    const target = new URL(articleUrl, env.SITE_ORIGIN);
+    if (target.origin !== new URL(env.SITE_ORIGIN).origin) return false;
+    const response = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`));
+    if (!response.ok) return false;
+    const items: any = await response.json();
+    const item = Array.isArray(items) && items.find((entry: any) =>
+      normalizeArticleUrl(new URL(entry.url, env.SITE_ORIGIN).href) === normalizeArticleUrl(target.href));
+    const date = item?.date ? new Date(item.date).getTime() : NaN;
+    return Number.isFinite(date) && date >= Date.parse(env.WATCHER_MIN_DATE || '2026-09-21T19:13:59Z') && date <= Date.now();
+  } catch { return false; }
+}
+
 export async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
@@ -1747,7 +1762,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
 
     const ts = item.date ? new Date(item.date).getTime() : 0;
-    if (minDate && ts && ts < minDate) continue;
+    if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
     if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) continue;
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
@@ -2047,7 +2062,7 @@ export default {
       if (path === "/api/publishing/status" && request.method === "GET") {
         const { state } = await githubReadState(env);
         return json({ success: true, instagramAutomatic: env.INSTAGRAM_AUTO_ENABLED !== "false",
-          imageStoriesAutomatic: env.AUTO_IMAGE_STORIES === "true", newsCooldowns: state.cooldowns,
+          publicationCutoff: env.WATCHER_MIN_DATE, imageStoriesAutomatic: env.AUTO_IMAGE_STORIES === "true", newsCooldowns: state.cooldowns,
           videoCooldowns: state.videoCooldowns || {} });
       }
 
@@ -2076,6 +2091,9 @@ export default {
         const wanted: Platform[] = Array.isArray(platforms) && platforms.length ? platforms : ["telegram", "facebook", "instagram", "x"];
         if (wanted.length !== 1 || !["telegram", "facebook", "instagram", "x"].includes(wanted[0])) {
           return json({ success: false, error: "أرسل منصة واحدة في كل طلب نشر؛ حدّث لوحة الإدارة إلى أحدث نسخة." }, 400);
+        }
+        if (!await eligiblePublication(env, String(itemUrl))) {
+          return json({ success: false, code: "CONTENT_NOT_ELIGIBLE", error: "المحتوى القديم أو غير المؤكد مستبعد من النشر." }, 409);
         }
         let pagePath = itemUrl;
         try {
@@ -2418,6 +2436,10 @@ export default {
           const sourceAllowed = videoHost.origin === new URL(env.SITE_ORIGIN).origin && videoHost.pathname.startsWith("/videos/")
             || videoHost.origin === "https://raw.githubusercontent.com" && videoHost.pathname.startsWith(`/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${env.GITHUB_BRANCH}/dist/videos/`);
           if (!sourceAllowed) return json({ success: false, error: "يجب استخدام فيديو من مكتبة الموقع." }, 400);
+
+          if (!body.postUrl || !await eligiblePublication(env, String(body.postUrl))) {
+            return json({ success: false, code: "CONTENT_NOT_ELIGIBLE", error: "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد." }, 409);
+          }
 
           // Reliability check: if fullVideoUrl returns 404 on site origin, fallback to direct GitHub raw CDN
           try {

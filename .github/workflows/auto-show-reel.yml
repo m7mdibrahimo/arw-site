@@ -84,7 +84,7 @@ jobs:
             echo "HYPERFRAMES_BROWSER_PATH=$SHELL_PATH" >> $GITHUB_ENV
           fi
 
-      - name: Render Show Reel Videos (UFC 331+ Only)
+      - name: Render Show Reel Videos (New Content Only)
         env:
           INPUT_SLUG: ${{ github.event.inputs.slug }}
         run: |
@@ -105,19 +105,19 @@ jobs:
               if [ -f "$S" ]; then
                 BASE=$(basename "$S")
                 TS="${BASE:0:14}"
-                # Must be >= UFC 331 cutoff
-                if [[ "$TS" > "20260921002200" || "$TS" == "20260921002200" || "$BASE" == *"ufc-331"* ]]; then
+                # Only content after the publishing cutover
+                if [[ "$TS" > "20260921191359" || "$TS" == "20260921191359" ]]; then
                   TARGETS+=("$S")
                 fi
               fi
             done
 
             # 2. Safety catch-up: scan shows from 2026-09-21 onwards missing an MP4 video
-            CUTOFF="20260921002200"
+            CUTOFF="20260921191359"
             for F in $(ls content/shows/*.md 2>/dev/null | grep -E 'content/shows/[0-9]{14}-' | sort); do
               BASE=$(basename "$F")
               TS="${BASE:0:14}"
-              if [[ "$TS" > "$CUTOFF" || "$TS" == "$CUTOFF" || "$BASE" == *"ufc-331"* ]]; then
+              if [[ "$TS" > "$CUTOFF" || "$TS" == "$CUTOFF" ]]; then
                 SLUG=$(basename "$F" .md | cut -c 1-45)
                 MATCHING=$(find dist/videos -name "reel-${SLUG}*.mp4" 2>/dev/null || true)
                 if [ -z "$MATCHING" ]; then
@@ -138,6 +138,10 @@ jobs:
           echo "🎬 Shows to render: ${TARGETS[*]}"
           for T in "${TARGETS[@]}"; do
             echo "════════════════════════════════════════"
+            if ! npx tsx scripts/check-show-eligibility.ts "$T"; then
+              echo "Skipping old or undated show: $T"
+              continue
+            fi
             echo "🎬 Rendering reel for: $T"
             echo "════════════════════════════════════════"
             xvfb-run -a npx tsx scripts/generate-news-video.ts "$T"

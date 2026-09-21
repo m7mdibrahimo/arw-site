@@ -109,7 +109,10 @@ test('show links match Eleventy and retain explicit permalinks', () => {
   assert.equal(showUrl('20260921023300-mlw-fusion-19-09-2026.md', { title: 'MLW Fusion 19.09.2026' }), 'https://arab-wrestling.com/shows/mlw-fusion-19-09-2026/');
   assert.equal(showUrl('new.md', { title: 'changed', permalink: '/shows/original/index.html' }), 'https://arab-wrestling.com/shows/original/');
   assert.equal(isShowEligible('20260920000100-old.md', {}), false);
-  assert.equal(isShowEligible('20260921023300-new.md', {}), true);
+  assert.equal(isShowEligible('20260921023300-old.md', {date: '2026-09-21T05:33:00+03:00'}), false);
+  assert.equal(isShowEligible('20260921200000-new.md', {}), false);
+  assert.equal(isShowEligible('new.md', {date: 'invalid'}), false);
+  assert.equal(isShowEligible('new.md', {date: '2026-09-21T19:13:59Z'}), true);
 });
 test('reel matching uses exact generator filename, never broad partial matches', () => {
   const slug = '20260921002200-ufc-331-van-vs-pantoja-2-early-prelims';
@@ -176,4 +179,24 @@ test('automatic watcher bounds attempts and defers failed platforms without star
   await runWatcherPoll(config);
   const second = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   assert.ok(second.deferrals['instagram:httpssitetestnewstwo']);
+});
+
+
+test('old, undated and unknown articles cannot reach video publishing even with force', async t => {
+  t.mock.method(globalThis, 'fetch', async (input: any) => {
+    const url = String(input);
+    if (url === 'https://api.github.com/repos/owner/repo') return Response.json({permissions: {push: true}});
+    if (url.startsWith('https://site.test/search-index.json')) return Response.json([
+      {url: '/old/', date: '2026-09-21T19:13:58Z'}, {url: '/undated/'}
+    ]);
+    throw new Error('Unexpected external request: ' + url);
+  });
+  for (const postUrl of ['/old/', '/undated/', '/unknown/']) {
+    const response = await worker.fetch(new Request('https://worker/api/videos/publish-social', {
+      method: 'POST', headers: {Authorization: 'Bearer authorized-test-token'},
+      body: JSON.stringify({videoUrl: 'https://site.test/videos/test.mp4', postUrl, platforms: ['facebook_reel'], force: true})
+    }), {...env, SITE_ORIGIN: 'https://site.test', WATCHER_MIN_DATE: '2026-09-21T19:13:59Z'} as any);
+    assert.equal(response.status, 409);
+    assert.equal((await response.json() as any).code, 'CONTENT_NOT_ELIGIBLE');
+  }
 });

@@ -14,8 +14,8 @@ const ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
 const WORKER = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
 
 export function isShowEligible(filename: string, data: Record<string, any>): boolean {
-  const prefix = filename.match(/^(\d{14})-/)?.[1];
-  return prefix ? prefix >= '20260921002200' : new Date(data.date).getTime() >= Date.parse('2026-09-21T00:00:00Z');
+  const date = data.date ? new Date(data.date).getTime() : NaN;
+  return Number.isFinite(date) && date >= Date.parse('2026-09-21T19:13:59Z') && date <= Date.now();
 }
 export function showUrl(filename: string, data: Record<string, any>, origin = ORIGIN): string {
   const link = typeof data.permalink === 'string' && !data.permalink.includes('{{')
