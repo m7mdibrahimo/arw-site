@@ -494,6 +494,25 @@ async function githubTriggerWatcherWorkflow(env: Env, postUrl?: string): Promise
   return { ok: true, status: res.status };
 }
 
+async function githubTriggerReelMonitorWorkflow(env: Env): Promise<{ ok: boolean; status: number; error?: string }> {
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/show-reel-monitor.yml/dispatches`;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json",
+      "User-Agent": "arw-site-bot",
+    },
+    body: JSON.stringify({ ref: env.GITHUB_BRANCH || "main" }),
+  });
+  if (!res.ok) {
+    const txt = await res.text().catch(() => "");
+    return { ok: false, status: res.status, error: txt };
+  }
+  return { ok: true, status: res.status };
+}
+
 async function githubTriggerVideoWorkflow(env: Env, slug: string): Promise<{ ok: boolean; status: number; error?: string }> {
   const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/generate-reel.yml/dispatches`;
   const body: any = {
@@ -1743,7 +1762,12 @@ async function eligiblePublication(env: Env, articleUrl: string): Promise<boolea
 export async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
-    const res = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`), {
+    // watcher-feed.json is a small, fixed-size (~200 item) tail of the newest
+    // content, unlike search-index.json which dumps the site's entire history
+    // (1500+ items and growing forever). Parsing the full index here used to
+    // blow the Worker's per-invocation CPU budget on every single tick, which
+    // silently killed the run before any platform was ever posted to.
+    const res = await fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-feed.json`), {
       headers: { "Cache-Control": "no-cache" },
     });
     if (!res.ok) return;
@@ -1777,7 +1801,10 @@ export async function runWatcherPoll(env: Env): Promise<void> {
 
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
-    if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) continue;
+    // items are sorted newest-first, so once we hit one older than the
+    // window, everything after it is older too — stop scanning instead of
+    // continuing to burn CPU on the rest of the feed.
+    if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) break;
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
@@ -2608,6 +2635,7 @@ export default {
     ctx.waitUntil(Promise.all([
       new Date(_controller.scheduledTime).getUTCMinutes() === 15 ? runVideoRetentionCleanup(env) : runWatcherPoll(env),
       runNewsWatcherCron(env),
+      runReelMonitorCron(env),
     ]));
   },
 } satisfies ExportedHandler<Env>;
@@ -2685,6 +2713,32 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
     }
   } catch (err: any) {
     console.error("[Worker] Error in news watcher trigger:", err.message);
+  }
+}
+
+// GitHub's native `schedule:` cron trigger is documented as best-effort and
+// can silently skip ticks for a workflow when the account has heavy overall
+// Actions load — this repo's other watchers fire every 10-20 minutes, so
+// show-reel-monitor.yml (cron: every 15 min) has been observed going silent
+// for many hours at a time despite each individual run completing in
+// seconds. This gives it a second, independent trigger path through the
+// Worker's own cron (proven reliable — it fires every single minute), so a
+// missed native schedule tick self-heals within one throttle window instead
+// of stalling reel publishing for hours.
+async function runReelMonitorCron(env: Env): Promise<void> {
+  try {
+    if (!env.PUSH_KV) return;
+    const KV_KEY = "last_reel_monitor_trigger_ts";
+    const THROTTLE_MS = 14 * 60 * 1000; // just under the native 15-min cron
+    const now = Date.now();
+    const last = Number((await env.PUSH_KV.get(KV_KEY)) || 0) || 0;
+    if (now - last < THROTTLE_MS) return;
+    const res = await githubTriggerReelMonitorWorkflow(env);
+    if (res.ok) {
+      await env.PUSH_KV.put(KV_KEY, String(now));
+    }
+  } catch (err: any) {
+    console.error("[Worker] Error in reel monitor trigger:", err.message);
   }
 }
 

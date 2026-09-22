@@ -1,0 +1,12 @@
+---
+permalink: "/watcher-feed.json"
+eleventyExcludeFromCollections: true
+---
+[
+{% for item in collections.allContent %}
+{% if loop.index0 < 200 %}
+{% set kindLabel = "عرض" if item.kind == "show" else ("ملخص" if item.kind == "recap" else "خبر") %}
+{ "title": {{ item.data.title | jsonify | safe }}, "headline": {{ (item.data.headline or "") | jsonify | safe }}, "description": {{ (item.data.description or "") | jsonify | safe }}, "tags": {{ (item.data.tags or []) | jsonify | safe }}, "federation": {{ item.data.federation | jsonify | safe }}, "kind": {{ item.kind | jsonify | safe }}, "show_type": {{ (item.data.show_type or "") | jsonify | safe }}, "kindLabel": {{ kindLabel | jsonify | safe }}, "url": {{ (item.url | cleanUrl) | jsonify | safe }}, "inputPath": {{ item.inputPath | jsonify | safe }}, "image": "{% optImg item.data.image, '' %}", "date": {{ item.date | jsonify | safe }}, "source_id": {{ (item.data.source_id or "") | jsonify | safe }}, "single_match_result": {{ true if item.data.single_match_result else false }} }{% if not (loop.last or loop.index0 == 199) %},{% endif %}
+{% endif %}
+{% endfor %}
+]
