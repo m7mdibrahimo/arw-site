@@ -182,11 +182,24 @@ test('automatic watcher bounds attempts and defers failed platforms without star
   const config = { ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any;
   await runWatcherPoll(config);
   const first = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
-  assert.equal(Object.keys(first.deferrals).length, 2);
+  // MAX_PER_TICK now covers both articles in one call (raised after the paid
+  // plan upgrade — see its definition in index.ts), so both get their
+  // Instagram catch-up attempted and deferred in this single tick: neither
+  // is starved just because the other also needed work.
   assert.ok(first.deferrals['instagram:httpssitetestnewsone']);
+  assert.ok(first.deferrals['instagram:httpssitetestnewstwo']);
+  // Buffer/X's own rate limit is shared and deliberately NOT scaled with
+  // MAX_PER_TICK (MAX_BUFFER_PER_TICK stays 1) — only one of the two
+  // articles should get an X attempt in this same tick.
+  const xDeferralsAfterFirst = Object.keys(first.deferrals).filter(k => k.startsWith('x:'));
+  assert.equal(xDeferralsAfterFirst.length, 1);
   await runWatcherPoll(config);
   const second = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
-  assert.ok(second.deferrals['instagram:httpssitetestnewstwo']);
+  // The second tick picks up whichever article's X attempt Buffer's cap
+  // deferred to next time — over multiple ticks, neither article's X
+  // catch-up is starved indefinitely by the other's.
+  const xDeferralsAfterSecond = Object.keys(second.deferrals).filter(k => k.startsWith('x:'));
+  assert.equal(xDeferralsAfterSecond.length, 2);
 });
 
 

@@ -1899,11 +1899,25 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   }
 
   let processedInThisTick = 0;
-  // Bound external requests to remain compatible with Workers' free-tier budget.
-  const MAX_PER_TICK = 1;
+  // Was 1 (with a 2-platform-action global cap) to fit the Free plan's 10ms
+  // CPU/subrequest budget. Now that the account is on a paid plan (300ms
+  // budget, much higher subrequest ceiling), this was raised — a single
+  // article per tick meant a continuous stream of brand-new articles could
+  // starve older articles' catch-up work (e.g. Instagram) indefinitely,
+  // since "not started yet" is prioritized over "just needs one more
+  // platform" (see the notStarted/catchUpOnly split below) and there was
+  // never tick capacity left over for both kinds of work in the same tick.
+  // Observed live: Instagram went completely silent on regular news for 2+
+  // hours while Telegram/Facebook kept working. 3 articles/tick (up to 2
+  // platform actions each) gives room for both a new article's first post
+  // and older articles' catch-up to happen in the same tick.
+  const MAX_PER_TICK = 3;
   let platformAttempts = 0;
-  const takeSlot = () => platformAttempts < 2 ? (++platformAttempts, true) : false;
+  const MAX_PLATFORM_ACTIONS_PER_TICK = MAX_PER_TICK * 2;
+  const takeSlot = () => platformAttempts < MAX_PLATFORM_ACTIONS_PER_TICK ? (++platformAttempts, true) : false;
   let bufferXAttemptedInTick = 0;
+  // Buffer's own rate limit is shared across everything that uses it —
+  // deliberately not scaled with MAX_PER_TICK.
   const MAX_BUFFER_PER_TICK = 1;
 
   // Two-pass scan. A single fixed item-count cap on the *whole* scan
@@ -1964,7 +1978,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const toProcess = [...notStarted.reverse(), ...catchUpOnly.reverse()].slice(0, MAX_EXPENSIVE_PER_TICK);
 
   for (const { item, ts, key, tgDone, fbDone, igDone, xDone } of toProcess) {
-    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
+    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= MAX_PLATFORM_ACTIONS_PER_TICK) break;
 
     const now = Date.now();
 
