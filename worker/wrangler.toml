@@ -26,6 +26,7 @@ id = "f687ea6ee7b2461fb349405215cf8a32"
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
 INSTAGRAM_AUTO_ENABLED = "true"
+X_AUTO_ENABLED = "false"
 AUTO_IMAGE_STORIES = "false"
 TELEGRAM_CHAT_ID = "@arab_wrestling"
 FACEBOOK_PAGE_ID = "1229063470299837"

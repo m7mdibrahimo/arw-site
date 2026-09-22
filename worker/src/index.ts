@@ -66,6 +66,7 @@ export interface Env {
   VAPID_SUBJECT: string;
   WATCHER_MIN_DATE: string;
   INSTAGRAM_AUTO_ENABLED?: string;
+  X_AUTO_ENABLED?: string;
   AUTO_IMAGE_STORIES?: string;
   BUFFER_X_CHANNEL_ID: string;
   BUFFER_FACEBOOK_CHANNEL_ID: string;
@@ -2014,7 +2015,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     const canDoIg = env.INSTAGRAM_AUTO_ENABLED !== "false" && !igDone && !igCooldown && !deferred("instagram");
     // Facebook publishes news and shows normally as posts
     const canDoFb = !fbDone && !fbCooldown && !deferred("facebook");
-    const canDoX = !xDone && !xCooldown && !deferred("x") && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
+    const canDoX = env.X_AUTO_ENABLED !== "false" && !xDone && !xCooldown && !deferred("x") && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
 
     // If nothing actionable can be done for this item, skip it
     if (!canDoTg && !canDoIg && !canDoFb && !canDoX) {
@@ -2273,6 +2274,7 @@ export default {
       if (path === "/api/publishing/status" && request.method === "GET") {
         const { state } = await githubReadState(env);
         return json({ success: true, instagramAutomatic: env.INSTAGRAM_AUTO_ENABLED !== "false",
+          xAutomatic: env.X_AUTO_ENABLED !== "false",
           publicationCutoff: env.WATCHER_MIN_DATE, imageStoriesAutomatic: env.AUTO_IMAGE_STORIES === "true", newsCooldowns: state.cooldowns,
           videoCooldowns: state.videoCooldowns || {} });
       }
