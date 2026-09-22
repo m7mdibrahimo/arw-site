@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "ESPN & BAMTech Officially Added As Defendants In Lawsuit Against WWE"
+title: "رسميًا.. انضمام ESPN وBAMTech كمدعى عليهما في الدعوى القضائية ضد WWE"
+permalink: "/news/espn-bamtech-officially-added-as-defendants-in-lawsuit-against-wwe/index.html"
 date: 2026-09-22T17:58:38.000+03:00
 source_id: 329830
 source_url: "https://www.fightful.com/wrestling/espn-bamtech-officially-added-as-defendants-in-lawsuit-against-wwe/"

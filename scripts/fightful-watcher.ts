@@ -2808,13 +2808,32 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   // 2b. Override AI title with deterministic translation if confidence is high enough
   // Rely on Gemini for natural, fluent, human Arabic titles that faithfully reflect Fightful.
-  // Use deterministic translation strictly as a fallback if AI title is missing or failed.
-  if (!rewritten.title || rewritten.title.trim().length < 5) {
+  // Use deterministic translation strictly as a fallback if AI title is missing, failed, or
+  // — critically — if both AI passes silently echoed the English source title untranslated
+  // (a real observed failure mode: the body comes back in fluent Arabic while the title field
+  // alone leaks through verbatim, especially for acronym-heavy titles like "ESPN & BAMTech...").
+  // A title with zero Arabic characters can never be a legitimate translation, so it's treated
+  // exactly like a missing title rather than trusted as-is.
+  const hasArabicScript = (text: string) => /[؀-ۿ]/.test(text || "");
+  if (!rewritten.title || rewritten.title.trim().length < 5 || !hasArabicScript(rewritten.title)) {
+    if (rewritten.title && !hasArabicScript(rewritten.title)) {
+      console.warn(`[Watcher] ⚠️ AI title came back with no Arabic at all, discarding: "${rewritten.title}"`);
+    }
     const deterministicTitle = translateTitleDeterministic(rawTitle);
     if (deterministicTitle) {
       rewritten.title = deterministicTitle;
-      console.log(`[Watcher] ⚠️ AI title missing, fallback to deterministic: "${rewritten.title}"`);
+      console.log(`[Watcher] ⚠️ AI title missing/untranslated, fallback to deterministic: "${rewritten.title}"`);
+    } else {
+      rewritten.title = "";
     }
+  }
+
+  // Final guard: never publish an article whose title isn't Arabic. If every translation path
+  // failed, bail out without marking the post as processed so the watcher retries it next run
+  // instead of shipping an English-only headline live.
+  if (!rewritten.title || !hasArabicScript(rewritten.title)) {
+    console.error(`[Watcher] Refusing to publish post #${postId}: no valid Arabic title could be produced for "${rawTitle}".`);
+    return false;
   }
 
   // Ensure title is sanitized, names glossary applied, and clichés cleaned
