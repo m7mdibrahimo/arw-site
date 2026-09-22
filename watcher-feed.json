@@ -1,5 +1,15 @@
 [
   {
+    "id": 329915,
+    "link": "https://www.fightful.com/wrestling/cm-punk-confirmed-to-guest-star-on-9-22-episode-of-rj-decker/",
+    "date": "2026-09-22T16:29:13",
+    "date_gmt": "2026-09-22T20:29:13",
+    "title": {
+      "rendered": "CM Punk Confirmed To Guest Star On 9/22 Episode Of &#8216;RJ Decker&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/22160316/Screenshot-65-e1790107414738.png"
+  },
+  {
     "id": 329914,
     "link": "https://www.fightful.com/wrestling/dusty-rhodes-tag-team-classic-2026-bracket-revealed/",
     "date": "2026-09-22T16:02:10",
@@ -288,15 +298,5 @@
       "rendered": "NOAH&#8217;s Katsumi Inahata Suffers Dislocated Shoulder"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/26062200/noalogo.jpeg"
-  },
-  {
-    "id": 329822,
-    "link": "https://www.fightful.com/wrestling/pro-wrestling-noah-results-9-22-26-four-n-1-victory-tournament-matches/",
-    "date": "2026-09-22T10:22:34",
-    "date_gmt": "2026-09-22T14:22:34",
-    "title": {
-      "rendered": "Pro Wrestling NOAH Results (9/22/26): Four N-1 Victory Tournament Matches"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/25165655/8284_image_o_KrB.webp"
   }
 ]
