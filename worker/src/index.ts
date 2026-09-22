@@ -319,7 +319,29 @@ function githubContentsUrl(env: Env): string {
   return `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/contents/${env.GITHUB_STATE_PATH}`;
 }
 
+// This repo's own architecture has ~13 independent call sites for
+// githubReadState — runWatcherPoll, publishToPlatform, markSendSuccess,
+// deferPublication, and others each fetch and fully re-parse the state
+// file on their own. A single tick that publishes to even 2 platforms can
+// trigger 4-6+ of these in a few milliseconds, each repeating: a network
+// round-trip, a manual byte-by-byte base64 decode (see base64DecodeUtf8),
+// and a full JSON.parse — all against the same ~1-2MB file that hasn't
+// changed since the first read. That redundant cost, compounding with
+// everything else fixed today, is exactly what's been intermittently
+// tipping ticks over the CPU limit. Rather than thread state through 13
+// call sites (a much larger, riskier change), a short-TTL cache here
+// gives every one of them the benefit transparently. structuredClone on
+// each cache hit keeps callers isolated from each other's in-flight
+// mutations — cheap relative to what it replaces (network + base64 decode
+// + JSON.parse), and still correct even if it weren't, since every writer
+// already goes through githubWriteState's sha-conflict retry.
+let publishStateCache: { sha: string | null; state: PublishState; ts: number } | null = null;
+const PUBLISH_STATE_CACHE_TTL_MS = 5000; // well under the 60s tick interval
+
 async function githubReadState(env: Env): Promise<{ sha: string | null; state: PublishState }> {
+  if (publishStateCache && Date.now() - publishStateCache.ts < PUBLISH_STATE_CACHE_TTL_MS) {
+    return { sha: publishStateCache.sha, state: structuredClone(publishStateCache.state) };
+  }
   const res = await fetch(`${githubContentsUrl(env)}?ref=${env.GITHUB_BRANCH}`, {
     headers: {
       Authorization: `Bearer ${env.GITHUB_TOKEN}`,
@@ -356,7 +378,8 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
   state.instagram = state.instagram || {};
   state.x = state.x || {};
   state.cooldowns = state.cooldowns || {};
-  return { sha: data.sha, state };
+  publishStateCache = { sha: data.sha, state, ts: Date.now() };
+  return { sha: data.sha, state: structuredClone(state) };
 }
 
 function base64EncodeUtf8(str: string): string {
@@ -402,8 +425,18 @@ async function githubWriteState(
     },
     body: JSON.stringify(body),
   });
-  if (res.status === 409 || res.status === 422) return { ok: false, conflict: true };
+  if (res.status === 409 || res.status === 422) {
+    // Someone else's write landed first — our cached copy (if any) is now
+    // stale either way, so drop it rather than let a subsequent read within
+    // the TTL window hand back data that's already been superseded.
+    publishStateCache = null;
+    return { ok: false, conflict: true };
+  }
   if (!res.ok) return { ok: false };
+  // The file just changed under us; simplest correct thing is to drop the
+  // cache rather than try to reconstruct the new sha from this response —
+  // the next read (by us or anyone else this tick) just fetches fresh.
+  publishStateCache = null;
   return { ok: true };
 }
 
