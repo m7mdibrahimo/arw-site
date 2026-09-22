@@ -1884,5 +1884,22 @@
     "errors": {},
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20260922130100-njpw-road-to-destruction-21-09-2026": {
+    "publishedAt": null,
+    "facebook_reel": false,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو 21.09.2026 مترجم",
+    "lastAttempt": 1790083904842,
+    "errors": {
+      "facebook_reel": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع.",
+      "facebook_story": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع.",
+      "instagram_reel": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع.",
+      "instagram_story": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع."
+    },
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
