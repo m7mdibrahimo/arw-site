@@ -65,10 +65,26 @@ export async function deliverOnce(
 export async function authorizeAdmin(request: Request, env: DeliveryEnv): Promise<boolean> {
   const token = request.headers.get('Authorization');
   if (!token?.startsWith('Bearer ') || token.length < 15) return false;
-  const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`, {
-    headers: { Authorization: token, Accept: 'application/vnd.github+json', 'User-Agent': 'arw-site-bot' },
-  });
-  if (!r.ok) return false;
-  const repo: any = await r.json();
-  return repo.permissions?.push === true || repo.permissions?.admin === true;
+  // A real, correctly-scoped Actions token got rejected once in production
+  // by a single failed fetch here — this is a plain read of the caller's
+  // own repo permissions, not a mutation, so retrying it costs nothing and
+  // avoids treating one transient GitHub API hiccup as "not authorized"
+  // for an otherwise-valid, freshly-generated token.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`, {
+        headers: { Authorization: token, Accept: 'application/vnd.github+json', 'User-Agent': 'arw-site-bot' },
+      });
+      if (!r.ok) {
+        if (attempt === 0 && r.status >= 500) continue;
+        return false;
+      }
+      const repo: any = await r.json();
+      return repo.permissions?.push === true || repo.permissions?.admin === true;
+    } catch (e) {
+      if (attempt === 0) continue;
+      return false;
+    }
+  }
+  return false;
 }
