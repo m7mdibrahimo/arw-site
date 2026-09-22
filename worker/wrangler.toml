@@ -13,7 +13,7 @@ crons = ["* * * * *"]
 # paid plan. Free plan was hard-capped at 10ms regardless of this setting —
 # several CPU-limit incidents traced directly to that ceiling.
 [limits]
-cpu_ms = 300
+cpu_ms = 5000
 
 # مخزن KV لحفظ اشتراكات الإشعارات (Web Push) بدل ملفات JSON محلية كانت
 # بتتمسح مع كل إعادة تشغيل على Render. مجاني ضمن حدود الخطة المجانية.
