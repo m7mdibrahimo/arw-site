@@ -347,7 +347,22 @@ export function sanitizeWrestlingTerms(text: string): string {
   const arBoundR = "(?![\\u0600-\\u06FF])";
   const arWord = (pattern: string, flags = "g") => new RegExp(arBoundL + "(?:" + pattern + ")" + arBoundR, flags);
 
-  const cleaned = textShielded
+  // Gemini occasionally transliterates a word using Persian letterforms (ک ی گ چ پ ژ)
+  // instead of standard Arabic (ك ي) — a real observed case: "تگ کلاسیک" instead of
+  // "تاغ كلاسيك" for "Tag Classic", sometimes inconsistently within the same article
+  // (the title correct, the body/tags in Persian script). These render as a jarring
+  // foreign-script intrusion to an Arabic reader. Persian ک/ی map 1:1 to Arabic ك/ي;
+  // گ has no Arabic letter, so map it to غ (the closest phonetic value already used
+  // for the same hard-g sound elsewhere in this file's glossary, e.g. "تاغ" for "Tag").
+  const persianNormalized = textShielded
+    .replace(/ک/g, "ك")
+    .replace(/ی/g, "ي")
+    .replace(/گ/g, "غ")
+    .replace(/چ/g, "تش")
+    .replace(/پ/g, "ب")
+    .replace(/ژ/g, "ج");
+
+  const cleaned = persianNormalized
     // 1. Enforce English names for Promotions (no Arabic transliterations)
     .replace(arWord("(?:اتحاد\\s+)?(?:دبليو\\s*دبليو\\s*[إا]ي)"), "WWE")
     .replace(arWord("(?:اتحاد\\s+)?(?:[إا]يه\\s*[إا]ي\\s*دبليو)"), "AEW")
@@ -372,6 +387,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("استذكار"), "تذكر")
     .replace(/(يتذكر|تتذكر)\s+لقائه(?![\\u0600-\\u06FF])/g, "$1 لقاءه")
     .replace(arWord("بإشهر"), "بإشهار")
+    // "تگ" (Persian-script "Tag") loses its alef even after ک→ك normalization above
+    // (گ has no Arabic letter and was mapped to غ, giving "تغ" — still missing the ا).
+    .replace(arWord("تغ(?=\\s|$)"), "تاغ")
 
     // Fix double occurrences created by replacement (e.g. "عرض عرض" or "WWE WWE")
     .replace(/(?:عرض\s+)+عرض\s+/g, "عرض ")
@@ -381,21 +399,25 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/TNA\s+TNA/g, "TNA")
 
     // Protect "Live" — always stays in English in show names (WWE NXT Live, WWE Live, etc.)
-    // Note: \b word boundaries don't work between ASCII (NXT) and Arabic (الحي), so no \b here
-    .replace(/WWE\s+NXT\s+الحي/g, "WWE NXT Live")
-    .replace(/WWE\s+NXT\s+المباشر/g, "WWE NXT Live")
-    .replace(/NXT\s+الحي/g, "NXT Live")
-    .replace(/NXT\s+المباشر/g, "NXT Live")
-    .replace(/WWE\s+RAW\s+الحي/g, "WWE RAW Live")
-    .replace(/WWE\s+RAW\s+المباشر/g, "WWE RAW Live")
-    .replace(/WWE\s+الحي/g, "WWE Live")
-    .replace(/WWE\s+المباشر(?!\s+على)/g, "WWE Live")
-    .replace(/AEW\s+الحي/g, "AEW Live")
-    .replace(/AEW\s+المباشر/g, "AEW Live")
-    .replace(/TNA\s+الحي/g, "TNA Live")
-    .replace(/TNA\s+المباشر/g, "TNA Live")
-    .replace(/ROH\s+الحي/g, "ROH Live")
-    .replace(/ROH\s+المباشر/g, "ROH Live")
+    // Note: \b word boundaries don't work between ASCII (NXT) and Arabic (الحي), so no \b here.
+    // "المباشر"/"الحي" can appear with a trailing feminine ة (المباشرة/الحية) when the AI
+    // makes the adjective agree with a feminine/plural noun like "عروض" — matching only the
+    // masculine form left that ة orphaned after the substitution (produced "AEW Liveة" live).
+    // The optional (?:ة)? consumes it as part of the match instead.
+    .replace(/WWE\s+NXT\s+الحي(?:ة)?/g, "WWE NXT Live")
+    .replace(/WWE\s+NXT\s+المباشر(?:ة)?/g, "WWE NXT Live")
+    .replace(/NXT\s+الحي(?:ة)?/g, "NXT Live")
+    .replace(/NXT\s+المباشر(?:ة)?/g, "NXT Live")
+    .replace(/WWE\s+RAW\s+الحي(?:ة)?/g, "WWE RAW Live")
+    .replace(/WWE\s+RAW\s+المباشر(?:ة)?/g, "WWE RAW Live")
+    .replace(/WWE\s+الحي(?:ة)?/g, "WWE Live")
+    .replace(/WWE\s+المباشر(?:ة)?(?!\s+على)/g, "WWE Live")
+    .replace(/AEW\s+الحي(?:ة)?/g, "AEW Live")
+    .replace(/AEW\s+المباشر(?:ة)?/g, "AEW Live")
+    .replace(/TNA\s+الحي(?:ة)?/g, "TNA Live")
+    .replace(/TNA\s+المباشر(?:ة)?/g, "TNA Live")
+    .replace(/ROH\s+الحي(?:ة)?/g, "ROH Live")
+    .replace(/ROH\s+المباشر(?:ة)?/g, "ROH Live")
 
     // 3. Strict show terminology (strictly replace 'حلقة' and 'مهرجان' with 'عرض' / 'عروض')
     .replace(arWord("مهرجانات"), "عروض")
@@ -832,7 +854,14 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/أذاع\s+([A-Z]+)\s+عرضاً\s+جديدة/g, "قدّم $1 عرضاً جديداً")
     .replace(/عرض\s+جديدة/g, "عرضاً جديداً")
     // Fix: مباراة ≠ wrestling match; use نزال
-    .replace(arWord("مباراة\\s+(ثمانية|ثماني|عشرة|عشري|ستة|ستي|الرئيسية|الكبرى|نارية|حاسمة|مميزة|مثيرة|ملحمية)"), "نزال $1");
+    .replace(arWord("مباراة\\s+(ثمانية|ثماني|عشرة|عشري|ستة|ستي|الرئيسية|الكبرى|نارية|حاسمة|مميزة|مثيرة|ملحمية)"), "نزال $1")
+
+    // General safety net: Gemini occasionally glues a bare Arabic feminine/agreement
+    // marker (ة) directly onto an English word it was told to keep untranslated, with
+    // no space — a real observed case: "عروض AEW Liveة بأنها حميمة" (should just be
+    // "AEW Live"). A Latin word never legitimately ends in a bare attached ة in
+    // standard Arabic orthography, so it's always safe to drop when glued like this.
+    .replace(/([A-Za-z])ة(?=\s|$|[.,!؟،:;)\]])/g, "$1");
 
   // Always restore protected URLs so URLs and social handles remain 100% clean and uncorrupted
   const restored = cleaned.replace(/__ARW_SAFE_URL_(\d+)__/g, (_, idx) => safeUrls[Number(idx)] || "");
@@ -2713,6 +2742,51 @@ export function deduplicateNewsFiles(): number {
   return removedCount;
 }
 
+// ── Cross-Source Duplicate Guard ───────────────────────────────────
+// deduplicateNewsFiles/findExistingNewsFile only catch the SAME post republished
+// by the SAME source (matching source_id/source_url exactly). They can never catch
+// two different outlets (e.g. Fightful and Ringside News) independently covering
+// the same real-world event with their own source_id and URL — a real, observed
+// case (Titus O'Neil's move to WWE's alumni section got published twice, 8 minutes
+// apart, once from each source). This compares the new post's English title against
+// the source URLs of recently-created articles from ANY source and skips publishing
+// when the overlap in distinctive words is too high to be a coincidence.
+const DUPLICATE_STOPWORDS = new Set([
+  "the", "a", "an", "to", "of", "in", "on", "for", "and", "with", "after", "over",
+  "from", "is", "as", "at", "by", "his", "her", "their", "its", "he", "she", "they",
+  "new", "says", "said", "about", "into", "out", "up", "vs", "who", "what", "why",
+]);
+function tokenizeForDuplicateCheck(text: string): Set<string> {
+  return new Set((text.toLowerCase().match(/[a-z0-9']+/g) || []).filter(w => w.length > 2 && !DUPLICATE_STOPWORDS.has(w)));
+}
+export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 6): { isDuplicate: boolean; matchedFile?: string } {
+  if (!fs.existsSync(NEWS_DIR)) return { isDuplicate: false };
+  const newTokens = tokenizeForDuplicateCheck(rawTitle);
+  if (newTokens.size < 3) return { isDuplicate: false };
+  const cutoff = Date.now() - hoursWindow * 60 * 60 * 1000;
+  for (const file of fs.readdirSync(NEWS_DIR)) {
+    if (!file.endsWith(".md")) continue;
+    const fullPath = path.join(NEWS_DIR, file);
+    try {
+      if (fs.statSync(fullPath).mtimeMs < cutoff) continue;
+      const content = fs.readFileSync(fullPath, "utf-8");
+      const urlMatch = content.match(/source_url:\s*["']?([^"'\r\n]+)["']?/);
+      if (!urlMatch) continue;
+      const slug = (urlMatch[1].replace(/\/+$/, "").split("/").pop() || "").replace(/[-_]/g, " ");
+      const existingTokens = tokenizeForDuplicateCheck(slug);
+      if (existingTokens.size < 3) continue;
+      const shared = [...newTokens].filter(t => existingTokens.has(t));
+      const overlapRatio = shared.length / Math.min(newTokens.size, existingTokens.size);
+      if (shared.length >= 3 && overlapRatio >= 0.6) {
+        return { isDuplicate: true, matchedFile: file };
+      }
+    } catch (e) {
+      continue;
+    }
+  }
+  return { isDuplicate: false };
+}
+
 // Process a single Fightful post
 export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false): Promise<boolean> {
   const postId = post.id;
@@ -2766,6 +2840,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (isRosterReferencePage(rawTitle)) {
     console.log(`[Watcher] 📋 Roster reference page: Post #${postId} ("${rawTitle}") skipped — a 100+ name list can't fit the news rewrite format.`);
     return false;
+  }
+
+  if (!isUpdate) {
+    const dupe = findLikelyDuplicateStory(rawTitle);
+    if (dupe.isDuplicate) {
+      console.log(`[Watcher] 🔁 Likely duplicate of a recently published story (${dupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
+      return false;
+    }
   }
 
   // 1. Download & compress image (with fallback)
