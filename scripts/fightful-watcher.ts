@@ -3160,21 +3160,16 @@ async function checkAndUpdateRecentlyModifiedPosts(posts: any[]): Promise<void> 
       });
 
       if (missingKeyNames.length >= 2) {
-        console.log(`[Watcher] 🔄 Fightful updated title for post #${postId}:`);
-        console.log(`   Old Fightful title was different — current Arabic: "${currentArabicTitle}"`);
-        console.log(`   New Fightful title: "${rawTitle}"`);
-        console.log(`   Missing key names in Arabic title: ${missingKeyNames.join(", ")}`);
-        console.log(`   → Marking for re-processing in next run by removing from processedIds`);
-
-        // Remove from processedIds so it gets re-processed in the next watcher run
-        const state = loadState();
-        state.processedIds = state.processedIds.filter((id: number) => id !== postId);
-        // Delete the old file
-        try {
-          fs.unlinkSync(filePath);
-          console.log(`   → Deleted old file: ${filePath}`);
-        } catch (e) { /* ignore */ }
-        saveState(state);
+        // Deliberately log-only. This used to delete the file and clear the
+        // post from processedIds so the next run would recreate it — but the
+        // recreated article gets a brand-new URL slug (derived from the
+        // corrected title), and publish-state is keyed by URL, so the
+        // "same" article looked entirely new to the Worker and got a full
+        // second round of Telegram/Facebook/Instagram/X posts. A source
+        // tweaking its own title after the fact isn't worth spamming
+        // followers with a duplicate — this is now just a signal for manual
+        // review of the article's title if it matters.
+        console.log(`[Watcher] ℹ️ Fightful appears to have updated the title for post #${postId} (current Arabic title may be missing: ${missingKeyNames.join(", ")}). Leaving the published article as-is to avoid a duplicate social post — review "${filePath}" manually if the title needs correcting.`);
       }
     } catch (e) {
       // Non-critical: if we can't check, just skip
