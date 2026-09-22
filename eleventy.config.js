@@ -255,7 +255,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("absUrl", absUrl);
 
   // اسم عرض نظيف لمصدر الخبر انطلاقا من source_url (fightful.com -> Fightful.com)
-  const KNOWN_SOURCE_NAMES = { "fightful.com": "Fightful.com", "wrestlinginc.com": "Wrestling Inc" };
+  const KNOWN_SOURCE_NAMES = { "fightful.com": "Fightful.com", "wrestlinginc.com": "Wrestling Inc", "ringsidenews.com": "Ringside News" };
   const sourceName = function(url) {
     if (!url) return "";
     try {
