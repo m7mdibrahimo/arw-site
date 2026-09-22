@@ -3,14 +3,14 @@ nostalgia_series: 2026-باد-بلود-1997
 series_type: shows
 nostalgia_order: 5
 nostalgia_main: true
-title: "WWE Badd Blood: In Your House (1997)"
+title: "WWF Badd Blood: In Your House (1997)"
 headline: عرض باد بلود 29.09.1997 مترجم
 tags:
   - WWE
   - نوستالجيا المصارعة
-  - WWE Raw is War
+  - "WWF Badd Blood: In Your House"
   - WWE 1997
-  - WWE RAW 1997
+  - WWF Badd Blood 1997
 image: /content/images/9lcbbkf4xqc2dl51.jpg
 event_date: 1997-10-05
 date: 2026-09-22T10:22:00.000+03:00
