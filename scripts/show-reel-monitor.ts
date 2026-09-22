@@ -115,7 +115,11 @@ export async function main() {
       state[slug] = applyResults(state[slug], results, pending, title);
       save();
     }
-    if (pending.some(p => results[p]?.ok !== true)) failures++;
+    // Instagram's own async video processing ("status: processing") is a normal,
+    // expected wait state — the same container resumes on a later run without
+    // duplicating the post. Counting it as a CI failure just spams a "workflow
+    // failed" email for something that isn't actually broken and self-resolves.
+    if (pending.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing')) failures++;
     console.log(JSON.stringify({ slug, results }));
   }
   if (failures) throw new Error(`${failures} show(s) have incomplete publishing; state and errors were saved.`);

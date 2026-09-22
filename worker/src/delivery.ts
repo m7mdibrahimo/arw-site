@@ -65,24 +65,34 @@ export async function deliverOnce(
 export async function authorizeAdmin(request: Request, env: DeliveryEnv): Promise<boolean> {
   const token = request.headers.get('Authorization');
   if (!token?.startsWith('Bearer ') || token.length < 15) return false;
-  // A real, correctly-scoped Actions token got rejected once in production
-  // by a single failed fetch here — this is a plain read of the caller's
-  // own repo permissions, not a mutation, so retrying it costs nothing and
-  // avoids treating one transient GitHub API hiccup as "not authorized"
-  // for an otherwise-valid, freshly-generated token.
-  for (let attempt = 0; attempt < 2; attempt++) {
+  // A real, correctly-scoped Actions token got rejected in production by a single
+  // failed fetch here more than once — this is a plain read of the caller's own repo
+  // permissions, not a mutation, so retrying costs nothing and avoids treating one
+  // transient GitHub API hiccup as "not authorized" for an otherwise-valid token.
+  // With dozens of bot workflows hitting api.github.com concurrently, GitHub's
+  // secondary rate limiting (403, sometimes 429) is a real, recurring case here —
+  // not just 5xx/network errors — so it must be retried too, with backoff so an
+  // immediate retry doesn't just hit the same rate limit again.
+  const retryableStatus = (status: number) => status >= 500 || status === 403 || status === 429;
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`, {
         headers: { Authorization: token, Accept: 'application/vnd.github+json', 'User-Agent': 'arw-site-bot' },
       });
       if (!r.ok) {
-        if (attempt === 0 && r.status >= 500) continue;
+        if (attempt < 2 && retryableStatus(r.status)) {
+          await new Promise(res => setTimeout(res, 500 * (attempt + 1)));
+          continue;
+        }
         return false;
       }
       const repo: any = await r.json();
       return repo.permissions?.push === true || repo.permissions?.admin === true;
     } catch (e) {
-      if (attempt === 0) continue;
+      if (attempt < 2) {
+        await new Promise(res => setTimeout(res, 500 * (attempt + 1)));
+        continue;
+      }
       return false;
     }
   }
