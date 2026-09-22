@@ -1843,7 +1843,12 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // General news (injuries, signings, returns, announcements) and full show results are published!
     const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
 
-    if (collection === "news") {
+    // Only worth checking before the first (telegram) post ever goes out —
+    // once telegram is sent the item already cleared this gate, and
+    // re-running the regex-heavy check on every tick for the whole
+    // still-catching-up backlog was itself a real CPU cost contributing to
+    // hitting the Worker's per-invocation limit.
+    if (collection === "news" && !tgDone) {
       const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
       if (isSpoiler) {
         state.telegram[key] = now;
