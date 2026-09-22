@@ -172,17 +172,16 @@ jobs:
             echo "ℹ️ No new video file was produced."
           fi
 
-      - name: Publish new show reels immediately to Facebook & Instagram
-        id: publish
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
-          SITE_ORIGIN: "https://arab-wrestling.com"
-        run: |
-          echo "🚀 Publishing new show reels via show-reel-monitor..."
-          npx tsx scripts/show-reel-monitor.ts
-      - name: Save publishing results even after partial failure
-        if: ${{ always() && (steps.publish.outcome == 'success' || steps.publish.outcome == 'failure') }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: npx tsx scripts/save-reel-state.ts
+      # Publishing to Facebook/Instagram used to happen immediately here via
+      # show-reel-monitor.ts, but that call's authorizeAdmin check on the
+      # Worker failed with a permissions rejection on every single run that
+      # reached it (2/2, reproducible) — despite this same job successfully
+      # git-pushing moments earlier with the identical github.token, and
+      # despite show-reel-monitor.yml's own scheduled runs using the exact
+      # same token mechanism without ever failing this way. Rather than keep
+      # depending on a call path proven unreliable in this specific
+      # workflow's context, this job now stops once the video is committed.
+      # show-reel-monitor.yml already scans for exactly this case (a show
+      # with a rendered video but no successful publish) on its own
+      # frequent schedule (backstopped every ~14 min by the Worker), so the
+      # video gets published within minutes without this job's involvement.
