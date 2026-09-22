@@ -494,8 +494,8 @@ async function githubTriggerWatcherWorkflow(env: Env, postUrl?: string): Promise
   return { ok: true, status: res.status };
 }
 
-async function githubTriggerReelMonitorWorkflow(env: Env): Promise<{ ok: boolean; status: number; error?: string }> {
-  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/show-reel-monitor.yml/dispatches`;
+async function githubTriggerWorkflowByFile(env: Env, workflowFile: string): Promise<{ ok: boolean; status: number; error?: string }> {
+  const url = `https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/workflows/${workflowFile}/dispatches`;
   const res = await fetch(url, {
     method: "POST",
     headers: {
@@ -1759,6 +1759,13 @@ async function eligiblePublication(env: Env, articleUrl: string): Promise<boolea
   } catch { return false; }
 }
 
+// A parsed watcher-recent-content.json is only trustworthy if it actually
+// looks like the site's own content feed and not, say, a SPA-fallback HTML
+// page that happened to parse-as-JSON-shaped, or some other feed entirely.
+function looksLikeContentFeed(data: any): data is any[] {
+  return Array.isArray(data) && data.length > 0 && typeof data[0]?.title === "string" && typeof data[0]?.url === "string";
+}
+
 export async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
@@ -1770,9 +1777,22 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     const res = await fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-recent-content.json`), {
       headers: { "Cache-Control": "no-cache" },
     });
-    if (!res.ok) return;
-    const data = await res.json();
-    items = Array.isArray(data) ? data : [];
+    const data = res.ok ? await res.json().catch(() => null) : null;
+    if (looksLikeContentFeed(data)) {
+      items = data;
+    } else {
+      // Fall back to the full index if the lightweight feed is ever missing,
+      // stale-deployed, or serves something unexpected — slower, but this is
+      // the one feed that has never gone unavailable, so publishing degrades
+      // instead of silently doing nothing for hours.
+      console.warn("[Watcher] watcher-recent-content.json unavailable or invalid, falling back to search-index.json");
+      const fallbackRes = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`), {
+        headers: { "Cache-Control": "no-cache" },
+      });
+      if (!fallbackRes.ok) return;
+      const fallbackData = await fallbackRes.json();
+      items = Array.isArray(fallbackData) ? fallbackData : [];
+    }
   } catch (e) {
     return;
   }
@@ -2635,7 +2655,7 @@ export default {
     ctx.waitUntil(Promise.all([
       new Date(_controller.scheduledTime).getUTCMinutes() === 15 ? runVideoRetentionCleanup(env) : runWatcherPoll(env),
       runNewsWatcherCron(env),
-      runReelMonitorCron(env),
+      runScheduleBackstopCron(env),
     ]));
   },
 } satisfies ExportedHandler<Env>;
@@ -2718,27 +2738,35 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
 
 // GitHub's native `schedule:` cron trigger is documented as best-effort and
 // can silently skip ticks for a workflow when the account has heavy overall
-// Actions load — this repo's other watchers fire every 10-20 minutes, so
-// show-reel-monitor.yml (cron: every 15 min) has been observed going silent
-// for many hours at a time despite each individual run completing in
-// seconds. This gives it a second, independent trigger path through the
-// Worker's own cron (proven reliable — it fires every single minute), so a
-// missed native schedule tick self-heals within one throttle window instead
-// of stalling reel publishing for hours.
-async function runReelMonitorCron(env: Env): Promise<void> {
-  try {
-    if (!env.PUSH_KV) return;
-    const KV_KEY = "last_reel_monitor_trigger_ts";
-    const THROTTLE_MS = 14 * 60 * 1000; // just under the native 15-min cron
-    const now = Date.now();
-    const last = Number((await env.PUSH_KV.get(KV_KEY)) || 0) || 0;
-    if (now - last < THROTTLE_MS) return;
-    const res = await githubTriggerReelMonitorWorkflow(env);
-    if (res.ok) {
-      await env.PUSH_KV.put(KV_KEY, String(now));
+// Actions load — this repo runs several frequent scheduled workflows
+// competing for the account's runner slots. show-reel-monitor.yml (every 15
+// min), wrestlinginc-watcher.yml and ringsidenews-watcher.yml (every 20 min)
+// have all been observed going fully silent for hours — the two source
+// watchers, in particular, each ran exactly once the day they were added and
+// never fired again on their own — despite every individual run completing
+// in seconds once it does fire. This gives each one a second, independent
+// trigger path through the Worker's own cron (proven reliable — it fires
+// every single minute), so a missed native schedule tick self-heals within
+// one throttle window instead of stalling that source indefinitely.
+async function runScheduleBackstopCron(env: Env): Promise<void> {
+  if (!env.PUSH_KV) return;
+  const jobs: { workflow: string; kvKey: string; throttleMs: number }[] = [
+    { workflow: "show-reel-monitor.yml", kvKey: "last_reel_monitor_trigger_ts", throttleMs: 14 * 60 * 1000 },
+    { workflow: "wrestlinginc-watcher.yml", kvKey: "last_wrestlinginc_trigger_ts", throttleMs: 19 * 60 * 1000 },
+    { workflow: "ringsidenews-watcher.yml", kvKey: "last_ringsidenews_trigger_ts", throttleMs: 19 * 60 * 1000 },
+  ];
+  const now = Date.now();
+  for (const job of jobs) {
+    try {
+      const last = Number((await env.PUSH_KV.get(job.kvKey)) || 0) || 0;
+      if (now - last < job.throttleMs) continue;
+      const res = await githubTriggerWorkflowByFile(env, job.workflow);
+      if (res.ok) {
+        await env.PUSH_KV.put(job.kvKey, String(now));
+      }
+    } catch (err: any) {
+      console.error(`[Worker] Error triggering backstop for ${job.workflow}:`, err.message);
     }
-  } catch (err: any) {
-    console.error("[Worker] Error in reel monitor trigger:", err.message);
   }
 }
 
