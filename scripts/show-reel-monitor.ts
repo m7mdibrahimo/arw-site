@@ -29,6 +29,12 @@ export function findReelVideo(slug: string, files: string[]): string | null {
   // The generator uses exactly 45 characters. Never select an unrelated fuzzy match.
   return [`reel-${slug}.mp4`, `reel-${slug.slice(0, 45)}.mp4`].find(f => files.includes(f)) || null;
 }
+// A platform still mid-processing (Instagram's async video encoding) isn't a real
+// failure — it resumes on a later run without duplicating the post. Only a definite
+// non-ok, non-processing result should fail the CI job and page the owner.
+export function hasRealFailure(results: Record<string, any>, requested: readonly Platform[]): boolean {
+  return requested.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing');
+}
 export function applyResults(existing: Entry | undefined, results: Record<string, any>, requested: readonly Platform[], title: string): Entry {
   const entry: Entry = { publishedAt: existing?.publishedAt || null,
     facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false,
@@ -115,11 +121,7 @@ export async function main() {
       state[slug] = applyResults(state[slug], results, pending, title);
       save();
     }
-    // Instagram's own async video processing ("status: processing") is a normal,
-    // expected wait state — the same container resumes on a later run without
-    // duplicating the post. Counting it as a CI failure just spams a "workflow
-    // failed" email for something that isn't actually broken and self-resolves.
-    if (pending.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing')) failures++;
+    if (hasRealFailure(results, pending)) failures++;
     console.log(JSON.stringify({ slug, results }));
   }
   if (failures) throw new Error(`${failures} show(s) have incomplete publishing; state and errors were saved.`);

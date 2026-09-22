@@ -2759,14 +2759,14 @@ const DUPLICATE_STOPWORDS = new Set([
 function tokenizeForDuplicateCheck(text: string): Set<string> {
   return new Set((text.toLowerCase().match(/[a-z0-9']+/g) || []).filter(w => w.length > 2 && !DUPLICATE_STOPWORDS.has(w)));
 }
-export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 6): { isDuplicate: boolean; matchedFile?: string } {
-  if (!fs.existsSync(NEWS_DIR)) return { isDuplicate: false };
+export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 6, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
+  if (!fs.existsSync(newsDir)) return { isDuplicate: false };
   const newTokens = tokenizeForDuplicateCheck(rawTitle);
   if (newTokens.size < 3) return { isDuplicate: false };
   const cutoff = Date.now() - hoursWindow * 60 * 60 * 1000;
-  for (const file of fs.readdirSync(NEWS_DIR)) {
+  for (const file of fs.readdirSync(newsDir)) {
     if (!file.endsWith(".md")) continue;
-    const fullPath = path.join(NEWS_DIR, file);
+    const fullPath = path.join(newsDir, file);
     try {
       if (fs.statSync(fullPath).mtimeMs < cutoff) continue;
       const content = fs.readFileSync(fullPath, "utf-8");

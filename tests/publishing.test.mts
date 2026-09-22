@@ -1,9 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
-import { showUrl, findReelVideo, applyResults, isShowEligible } from '../scripts/show-reel-monitor';
+import { showUrl, findReelVideo, applyResults, isShowEligible, hasRealFailure } from '../scripts/show-reel-monitor';
+import { sanitizeWrestlingTerms, findLikelyDuplicateStory } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -210,5 +214,76 @@ test('old, undated and unknown articles cannot reach video publishing even with 
     }), {...env, SITE_ORIGIN: 'https://site.test', WATCHER_MIN_DATE: '2026-09-21T19:13:59Z'} as any);
     assert.equal(response.status, 409);
     assert.equal((await response.json() as any).code, 'CONTENT_NOT_ELIGIBLE');
+  }
+});
+
+// ── Regression tests for incidents found and fixed on 2026-09-22 ──────────────
+// Each of these reproduces a defect that actually reached production once, so a
+// future change can't silently reintroduce it without breaking the suite.
+
+test('admin authorization survives a transient GitHub rate limit, still fails closed if it persists', async t => {
+  // A real, correctly-scoped Actions token was rejected in production because the
+  // one-time permissions check hit GitHub's secondary rate limiting (403) — not a
+  // 5xx or network error, the only cases the old code retried.
+  let calls = 0;
+  t.mock.method(globalThis, 'fetch', async () => {
+    calls++;
+    if (calls === 1) return new Response('rate limited', { status: 403 });
+    return Response.json({ permissions: { push: true } });
+  });
+  assert.equal(await authorizeAdmin(new Request('https://worker/api', { headers: { Authorization: 'Bearer sufficiently-long-test-token' } }), env), true);
+  assert.equal(calls, 2, 'must have retried past the 403 instead of failing on the first attempt');
+
+  calls = 0;
+  t.mock.method(globalThis, 'fetch', async () => { calls++; return new Response('rate limited', { status: 403 }); });
+  assert.equal(await authorizeAdmin(new Request('https://worker/api', { headers: { Authorization: 'Bearer sufficiently-long-test-token' } }), env), false);
+  assert.equal(calls, 3, 'must give up after its retry budget, not retry forever');
+});
+
+test('show-reel-monitor never fails the job over Instagram still processing its video', () => {
+  // Instagram's async encoding ("status: processing") used to be counted the same as
+  // a real failure, turning a normal wait state into a "workflow failed" email.
+  assert.equal(hasRealFailure({ instagram_reel: { ok: false, status: 'processing' } }, ['instagram_reel']), false);
+  // A genuine, definite failure on the same platform must still be reported.
+  assert.equal(hasRealFailure({ instagram_reel: { ok: false, error: 'Meta rejected the media' } }, ['instagram_reel']), true);
+  // Success obviously isn't a failure either.
+  assert.equal(hasRealFailure({ facebook_reel: { ok: true } }, ['facebook_reel']), false);
+});
+
+test('sanitizeWrestlingTerms strips a stray Arabic suffix glued onto an English word', () => {
+  // Reached production once: "عروض AEW Liveة بأنها حميمة" — Gemini glued a bare
+  // feminine ة straight onto "Live" with no space. A Latin word never legitimately
+  // ends in an attached ة, so it must always be safe to drop.
+  assert.equal(sanitizeWrestlingTerms('عروض AEW Liveة بأنها حميمة'), 'عروض AEW Live بأنها حميمة');
+  // A correctly-formed "Live" followed by real Arabic text must be left untouched.
+  assert.equal(sanitizeWrestlingTerms('انضم إلى عرض AEW Live الليلة'), 'انضم إلى عرض AEW Live الليلة');
+  // Ordinary Arabic words ending in ة (not glued to Latin script) must be untouched.
+  assert.equal(sanitizeWrestlingTerms('شاهد المباراة القادمة'), 'شاهد المباراة القادمة');
+});
+
+test('sanitizeWrestlingTerms normalizes Persian letterforms to standard Arabic', () => {
+  // Reached production once, inconsistently within the same article (title correct,
+  // body/tags in Persian script): "تگ کلاسیک" instead of "تاغ كلاسيك".
+  assert.equal(sanitizeWrestlingTerms('بطولة تگ کلاسیک'), 'بطولة تاغ كلاسيك');
+});
+
+test('a cross-source duplicate story is detected and skipped, unrelated stories are not', () => {
+  // The existing dedup only matches an EXACT source_id/source_url repeat from the
+  // SAME outlet. It never caught two different outlets covering the same real event:
+  // Fightful and Ringside News both published their own article about Titus O'Neil
+  // moving to WWE's alumni section, 8 minutes apart, with different source_ids/URLs.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-test-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      '---\nsource_url: "https://www.fightful.com/wrestling/titus-oneil-moved-to-wwe-alumni-section/"\n---\nbody');
+    const dupe = findLikelyDuplicateStory(
+      "Titus O'Neil Quietly Moved To WWE Alumni Section Years Away From The Ring", 6, dir);
+    assert.equal(dupe.isDuplicate, true);
+    assert.equal(dupe.matchedFile, 'a.md');
+
+    const unrelated = findLikelyDuplicateStory('CM Punk Announces Retirement Plans For Next Year', 6, dir);
+    assert.equal(unrelated.isDuplicate, false, 'a genuinely different story must never be blocked');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
   }
 });
