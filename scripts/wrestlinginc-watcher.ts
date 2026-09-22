@@ -159,6 +159,23 @@ export async function runWrestlingIncWatcher(options: { dryRun?: boolean; maxPer
   const items = await fetchWrestlingIncFeed();
   console.log(`[WI Watcher] Fetched ${items.length} items from Wrestling Inc.`);
 
+  // Same purpose as fightful-watcher.ts's watcher-feed.json: lets
+  // admin/watcher.html show this source's latest posts too.
+  try {
+    const feedPath = path.join(process.cwd(), "watcher-feed-wrestlinginc.json");
+    const cleanFeed = items.slice(0, 30).map(item => ({
+      id: stableIdFromGuid(item.guid),
+      link: item.link,
+      date: item.pubDate,
+      date_gmt: item.pubDate ? new Date(item.pubDate).toISOString() : item.pubDate,
+      title: { rendered: item.title },
+      featured_image: item.thumbnail || "",
+    }));
+    fs.writeFileSync(feedPath, JSON.stringify(cleanFeed, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("[WI Watcher] Warning: could not write watcher-feed-wrestlinginc.json:", err);
+  }
+
   let processedCount = 0;
   const maxPerRun = options.maxPerRun ?? 5;
 

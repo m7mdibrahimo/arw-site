@@ -145,6 +145,23 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
   const items = await fetchRingsideNewsFeed();
   console.log(`[RSN Watcher] Fetched ${items.length} items from Ringside News.`);
 
+  // Same purpose as fightful-watcher.ts's watcher-feed.json: lets
+  // admin/watcher.html show this source's latest posts too.
+  try {
+    const feedPath = path.join(process.cwd(), "watcher-feed-ringsidenews.json");
+    const cleanFeed = items.slice(0, 30).map(item => ({
+      id: idFromGuid(item.guid),
+      link: item.link,
+      date: item.pubDate,
+      date_gmt: item.pubDate ? new Date(item.pubDate).toISOString() : item.pubDate,
+      title: { rendered: item.title },
+      featured_image: "",
+    }));
+    fs.writeFileSync(feedPath, JSON.stringify(cleanFeed, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("[RSN Watcher] Warning: could not write watcher-feed-ringsidenews.json:", err);
+  }
+
   let processedCount = 0;
   const maxPerRun = options.maxPerRun ?? 5;
 

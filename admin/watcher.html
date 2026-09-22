@@ -347,10 +347,16 @@
   <!-- Feed Section -->
   <div class="feed-header">
     <h2 class="feed-title">
-      📡 آخر 30 خبراً من المصدر
+      📡 آخر الأخبار من كل المصادر
       <span id="feed-count-badge" style="font-size:12px;color:var(--muted);font-weight:normal;"></span>
     </h2>
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <div class="feed-filters" id="source-filters">
+        <button class="filter-btn active" data-source="all">كل المصادر</button>
+        <button class="filter-btn" data-source="fightful">Fightful</button>
+        <button class="filter-btn" data-source="wrestlinginc">Wrestling Inc</button>
+        <button class="filter-btn" data-source="ringsidenews">Ringside News</button>
+      </div>
       <div class="feed-filters">
         <button class="filter-btn active" data-filter="all">الكل</button>
         <button class="filter-btn" data-filter="new">🆕 جديد فقط</button>
@@ -420,6 +426,13 @@
   let pendingDispatchedIds = new Set();
   let sourcePosts = [];
   let currentFilter = 'all';
+  let currentSourceFilter = 'all';
+  const SOURCE_LABELS = { fightful: 'Fightful', wrestlinginc: 'Wrestling Inc', ringsidenews: 'Ringside News' };
+  const SOURCE_FEEDS = [
+    { key: 'fightful', url: '/watcher-feed.json' },
+    { key: 'wrestlinginc', url: '/watcher-feed-wrestlinginc.json' },
+    { key: 'ringsidenews', url: '/watcher-feed-ringsidenews.json' },
+  ];
 
   const statusPill = document.getElementById('status-pill');
   const statusText = document.getElementById('status-text');
@@ -633,50 +646,58 @@
     };
   }
 
-  // 2. Fetch Latest 30 Source Posts
+  // 2. Fetch latest posts from every source (Fightful + Wrestling Inc + Ringside News)
   async function loadSourceFeed() {
-    feedList.innerHTML = '<div class="empty-state"><span class="spinner"></span> جاري جلب آخر 30 خبراً من المصدر...</div>';
+    feedList.innerHTML = '<div class="empty-state"><span class="spinner"></span> جاري جلب آخر الأخبار من كل المصادر...</div>';
     try {
-      let posts = null;
+      let merged = [];
 
-      // 1. Try local watcher-feed.json first (fastest, guaranteed zero CORS issues)
-      try {
-        const localRes = await fetch(`/watcher-feed.json?_cb=${Date.now()}`);
-        if (localRes.ok) {
-          const d = await localRes.json();
-          if (Array.isArray(d) && d.length) {
-            posts = d;
-          }
-        }
-      } catch (e) {
-        console.warn("Local feed fetch failed:", e);
-      }
-
-      // 2. If not found locally, try Cloudflare Worker API endpoint
-      if (!posts) {
+      for (const source of SOURCE_FEEDS) {
+        let posts = null;
         try {
-          const res = await fetch(`${API_BASE}/api/watcher/feed?limit=30&_cb=${Date.now()}`);
-          if (res.ok) {
-            const d = await res.json();
-            if (d.success && Array.isArray(d.posts) && d.posts.length) posts = d.posts;
+          const localRes = await fetch(`${source.url}?_cb=${Date.now()}`);
+          if (localRes.ok) {
+            const d = await localRes.json();
+            if (Array.isArray(d) && d.length) posts = d;
           }
         } catch (e) {
-          console.warn("Worker feed fetch failed:", e);
+          console.warn(`Local feed fetch failed for ${source.key}:`, e);
+        }
+
+        // Fightful-only fallback: the Worker exposes a live proxy to
+        // Fightful's own API for when the static file is stale. Wrestling
+        // Inc / Ringside News have no such source-specific API on the
+        // Worker, so the static feed file is their only path.
+        if (!posts && source.key === 'fightful') {
+          try {
+            const res = await fetch(`${API_BASE}/api/watcher/feed?limit=30&_cb=${Date.now()}`);
+            if (res.ok) {
+              const d = await res.json();
+              if (d.success && Array.isArray(d.posts) && d.posts.length) posts = d.posts;
+            }
+          } catch (e) {
+            console.warn("Worker feed fetch failed:", e);
+          }
+        }
+
+        if (Array.isArray(posts)) {
+          posts.forEach(p => { p.__source = source.key; });
+          merged = merged.concat(posts);
         }
       }
 
-      if (Array.isArray(posts) && posts.length) {
-        sourcePosts = posts.sort((a, b) => {
+      if (merged.length) {
+        sourcePosts = merged.sort((a, b) => {
           const timeA = new Date(a.date_gmt ? (a.date_gmt.endsWith('Z') ? a.date_gmt : a.date_gmt + 'Z') : (a.date ? a.date + 'Z' : '')).getTime();
           const timeB = new Date(b.date_gmt ? (b.date_gmt.endsWith('Z') ? b.date_gmt : b.date_gmt + 'Z') : (b.date ? b.date + 'Z' : '')).getTime();
           return timeB - timeA;
         });
-        feedCountBadge.textContent = `(${posts.length} خبر)`;
+        feedCountBadge.textContent = `(${merged.length} خبر)`;
         renderFeed();
       } else {
         feedList.innerHTML = `
           <div class="empty-state">
-            <p>⚠️ تعذر جلب قائمة الأخبار حالياً. تأكد من وجود ملف watcher-feed.json أو تحديثه.</p>
+            <p>⚠️ تعذر جلب قائمة الأخبار حالياً من أي مصدر.</p>
             <button class="refresh-btn" onclick="loadSourceFeed()" style="margin:10px auto;">🔄 إعادة المحاولة</button>
           </div>
         `;
@@ -782,6 +803,10 @@
   // Batch selection: ONLY allows selecting fresh news that are NOT single-match spoilers!
   function isSelectable(post) {
     if (!post) return false;
+    // Batch/manual dispatch only knows how to look posts up on Fightful's
+    // own API — Wrestling Inc / Ringside News are auto-published by their
+    // own watchers and aren't selectable here.
+    if (post.__source && post.__source !== 'fightful') return false;
     const cleanTitle = (post.title?.rendered || post.title || '').replace(/&amp;/g, '&').replace(/&#8217;/g, "'").replace(/&#8216;/g, "'");
     if (isSingleMatchResultClient(cleanTitle)) return false;
     return isPostFresh(post);
@@ -955,6 +980,7 @@
 
   function renderFeed() {
     let filtered = sourcePosts.filter(p => {
+      if (currentSourceFilter !== 'all' && p.__source !== currentSourceFilter) return false;
       const added = isPostAddedToSite(p);
       const isPending = !added && pendingDispatchedIds.has(Number(p.id));
       const isOld = isPostOld(p);
@@ -989,6 +1015,14 @@
       let actionHtml = '';
 
       const isSingleMatch = !isAdded && isSingleMatchResultClient(cleanTitle);
+      // Manual add/update dispatches to fightful-watcher.yml, which looks the
+      // slug up on Fightful's own API — it can't process a Wrestling Inc /
+      // Ringside News URL. Those two sources are auto-published by their own
+      // watchers already; this dashboard shows them for visibility only.
+      const isFightful = post.__source === 'fightful' || !post.__source;
+      const sourceBadge = post.__source && post.__source !== 'fightful'
+        ? `<span class="badge-state" style="background:rgba(56,189,248,0.12);color:#7dd3fc;border-color:rgba(56,189,248,0.3);">${SOURCE_LABELS[post.__source] || post.__source}</span>`
+        : '';
 
       if (isPending) {
         badgeHtml = isAdded
@@ -997,20 +1031,22 @@
         actionHtml = '<span style="font-size:12px;color:#38bdf8;font-weight:600;">⏳ قيد المعالجة...</span>';
       } else if (isAdded) {
         badgeHtml = `<span class="badge-state added">✅ مضاف للموقع ${isResults ? '• نتايج عرض' : ''}</span>`;
-        actionHtml = `
+        actionHtml = isFightful ? `
           <button class="add-btn update-btn" onclick="triggerManualUpdate('${encodeURIComponent(postUrl)}', ${post.id}, this)" title="إعادة سحب التحديثات والنتائج واستبدال الخبر القديم بالنسخة المحدثة">
             🔄 ${isResults ? 'تحديث نتائج العرض' : 'إعادة نشر وتحديث'}
           </button>
-        `;
+        ` : '';
       } else if (isSingleMatch) {
         badgeHtml = '<span class="badge-state old" style="background:rgba(239,68,68,0.15);color:#fca5a5;border-color:rgba(239,68,68,0.35);">🛡️ نزال فردي (مستبعد لمنع الحرق)</span>';
-        actionHtml = `<button class="add-btn" style="background:#475569;font-size:11.5px;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)" title="هذا نزال فردي مستبعد تلقائياً لحماية السوشيال ميديا من الحرق. اضغط فقط إذا أردت نشره استثنائياً">➕ نشر استثنائي</button>`;
+        actionHtml = isFightful ? `<button class="add-btn" style="background:#475569;font-size:11.5px;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)" title="هذا نزال فردي مستبعد تلقائياً لحماية السوشيال ميديا من الحرق. اضغط فقط إذا أردت نشره استثنائياً">➕ نشر استثنائي</button>` : '';
       } else if (isOld) {
         badgeHtml = '<span class="badge-state old">⏹️ خبر قديم</span>';
-        actionHtml = `<button class="add-btn" style="background:#334155;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة يدوية</button>`;
+        actionHtml = isFightful ? `<button class="add-btn" style="background:#334155;" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة يدوية</button>` : '';
       } else {
         badgeHtml = '<span class="badge-state missing">🆕 خبر جديد</span>';
-        actionHtml = `<button class="add-btn" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة للموقع</button>`;
+        actionHtml = isFightful
+          ? `<button class="add-btn" onclick="triggerManualAdd('${encodeURIComponent(postUrl)}', ${post.id}, this)">➕ إضافة للموقع</button>`
+          : `<span style="font-size:11.5px;color:var(--muted);">⚙️ يُعالج تلقائياً عبر أداة ${SOURCE_LABELS[post.__source] || post.__source}</span>`;
       }
 
       return `
@@ -1022,14 +1058,17 @@
               <input type="checkbox" class="post-checkbox" disabled title="جاري النشر والمعالجة..." />
             ` : (isSingleMatch ? `
               <input type="checkbox" class="post-checkbox" disabled title="نزال فردي مستبعد تلقائياً لحماية السوشيال ميديا من الحرق" />
+            ` : (!isFightful ? `
+              <input type="checkbox" class="post-checkbox" disabled title="يُعالج تلقائياً عبر أداة ${SOURCE_LABELS[post.__source] || post.__source} — غير قابل للتحديد اليدوي هنا" />
             ` : `
               <input type="checkbox" class="post-checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelectPost(${post.id}, this.checked)" title="${isOld ? 'خبر قديم' : 'خبر جديد'}" />
-            `))}
+            `)))}
           </div>
           <img src="${featured}" onerror="this.src='/favicon.png'" alt="" />
           <div class="info">
             <div class="title-row">${cleanTitle}</div>
             <div class="meta-row">
+              ${sourceBadge}
               ${badgeHtml}
               <span>🕒 ${dateStr}</span>
               <span>رقم الخبر: #${post.id}</span>
@@ -1046,12 +1085,22 @@
     updateBatchUI();
   }
 
-  // Filter Buttons
-  document.querySelectorAll('.filter-btn').forEach(b => {
+  // Status Filter Buttons (all / new / added / missing / old)
+  document.querySelectorAll('.feed-filters .filter-btn[data-filter]').forEach(b => {
     b.onclick = () => {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.feed-filters .filter-btn[data-filter]').forEach(btn => btn.classList.remove('active'));
       b.classList.add('active');
       currentFilter = b.dataset.filter;
+      renderFeed();
+    };
+  });
+
+  // Source Filter Buttons (all / fightful / wrestlinginc / ringsidenews)
+  document.querySelectorAll('#source-filters .filter-btn[data-source]').forEach(b => {
+    b.onclick = () => {
+      document.querySelectorAll('#source-filters .filter-btn[data-source]').forEach(btn => btn.classList.remove('active'));
+      b.classList.add('active');
+      currentSourceFilter = b.dataset.source;
       renderFeed();
     };
   });
