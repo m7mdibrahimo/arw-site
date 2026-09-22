@@ -36,6 +36,13 @@ import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-
 export interface Env {
   // Secrets — set with `wrangler secret put <NAME>`
   TELEGRAM_BOT_TOKEN: string;
+  // Optional: a personal Telegram chat id (not the public channel) that
+  // gets a direct message if publishing appears stalled. Get your chat id
+  // by messaging the bot once and checking
+  // https://api.telegram.org/bot<TOKEN>/getUpdates, then:
+  //   npx wrangler secret put ADMIN_TELEGRAM_CHAT_ID
+  // Alerting is silently skipped if this isn't set.
+  ADMIN_TELEGRAM_CHAT_ID?: string;
   FACEBOOK_PAGE_ACCESS_TOKEN: string;
   GITHUB_TOKEN: string;
   VAPID_PUBLIC_KEY: string;
@@ -666,6 +673,12 @@ async function markSendSuccess(env: Env, platform: Platform, key: string): Promi
   try {
     await env.PUSH_KV.delete(lockKey);
     await env.PUSH_KV.delete(failKey);
+  } catch (e) {}
+  // Cheap O(1) heartbeat the stall watchdog reads — never scans the
+  // ever-growing publish-state itself to figure out "when did anything last
+  // actually go out."
+  try {
+    await env.PUSH_KV.put("last_successful_publish_ts", String(Date.now()));
   } catch (e) {}
 
   for (let attempt = 0; attempt < 5; attempt++) {
@@ -1766,6 +1779,50 @@ function looksLikeContentFeed(data: any): data is any[] {
   return Array.isArray(data) && data.length > 0 && typeof data[0]?.title === "string" && typeof data[0]?.url === "string";
 }
 
+// Independent safety net, deliberately separate from the CPU-limit fixes
+// above: those close off the specific failure modes already seen, but this
+// is the fallback for "something nobody anticipated yet." If nothing has
+// actually gone out on any platform in 20+ minutes while genuinely fresh
+// (unpublished) content exists, the admin gets a direct Telegram message —
+// so the very next stall, whatever eventually causes it, is noticed within
+// minutes instead of being found by chance while browsing the site.
+async function checkPublishingStalled(env: Env, items: any[]): Promise<void> {
+  if (!env.PUSH_KV || !env.ADMIN_TELEGRAM_CHAT_ID) return;
+  try {
+    const now = Date.now();
+    const STALL_THRESHOLD_MS = 20 * 60 * 1000;
+
+    const lastSuccess = Number(await env.PUSH_KV.get("last_successful_publish_ts")) || 0;
+    if (!lastSuccess) return; // no baseline yet (e.g. right after this feature was deployed)
+    if (now - lastSuccess < STALL_THRESHOLD_MS) return;
+
+    // Don't alert on a quiet news day with nothing new to post — only when
+    // there's demonstrably fresh work that should have gone out by now.
+    const hasFreshWork = items.some((it) => {
+      const ts = it?.date ? new Date(it.date).getTime() : 0;
+      return ts > 0 && now - ts < STALL_THRESHOLD_MS;
+    });
+    if (!hasFreshWork) return;
+
+    const ALERT_THROTTLE_MS = 30 * 60 * 1000;
+    const lastAlert = Number(await env.PUSH_KV.get("last_stall_alert_ts")) || 0;
+    if (now - lastAlert < ALERT_THROTTLE_MS) return;
+
+    const minutesSinceSuccess = Math.round((now - lastSuccess) / 60000);
+    const text = `⚠️ تنبيه: النشر التلقائي متوقف منذ ${minutesSinceSuccess} دقيقة رغم وجود أخبار جديدة تنتظر النشر على المنصات. راجع لوحة الواتشر أو تحقق من الـ Worker.`;
+
+    await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: env.ADMIN_TELEGRAM_CHAT_ID, text }),
+    }).catch(() => {});
+
+    await env.PUSH_KV.put("last_stall_alert_ts", String(now));
+  } catch (e) {
+    // A broken watchdog must never break the watcher itself.
+  }
+}
+
 export async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
@@ -1816,8 +1873,21 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   let bufferXAttemptedInTick = 0;
   const MAX_BUFFER_PER_TICK = 1;
 
+  // Hard, fixed ceiling on how many items this tick will even look at, on
+  // top of (not instead of) the 18h break below. The 18h window bounds cost
+  // by *time*, but a big enough publishing backlog (many items still
+  // incomplete within that window) can still mean a lot of per-item work
+  // every single tick — that exact scenario has twice caused this Worker to
+  // silently exceed its per-invocation CPU limit before it ever reached
+  // publishToPlatform. This cap bounds the scan by *item count* instead,
+  // completely independent of how large any future backlog grows, so this
+  // failure mode cannot recur no matter what the site's content volume does.
+  const MAX_SCANNED_PER_TICK = 40;
+  let scannedInThisTick = 0;
+
   for (const item of items) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
+    if (scannedInThisTick++ >= MAX_SCANNED_PER_TICK) break;
 
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
@@ -1973,6 +2043,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       }
     }
   }
+
+  await checkPublishingStalled(env, items);
 }
 
 // ─────────────────────────────────────────────────────────────────────────
