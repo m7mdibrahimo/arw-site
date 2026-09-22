@@ -12,7 +12,7 @@
 // isLikelyDuplicateOfRecentCoverage().
 import fs from "fs";
 import path from "path";
-import { processPost, isSingleMatchResultArticle, deduplicateNewsFiles, findKnownArabicNames } from "./fightful-watcher";
+import { processPost, deduplicateNewsFiles, findKnownArabicNames } from "./fightful-watcher";
 
 if (fs.existsSync(".env")) {
   try {
@@ -185,12 +185,6 @@ export async function runWrestlingIncWatcher(options: { dryRun?: boolean; maxPer
 
     const ageHours = item.pubDate ? (Date.now() - new Date(item.pubDate).getTime()) / 3600000 : 999;
     if (ageHours > 24) continue; // same freshness window as the Fightful watcher
-
-    if (isSingleMatchResultArticle(item.title, item.contentHtml)) {
-      console.log(`[WI Watcher] 🛡️ Spoiler shield: skipping "${item.title}"`);
-      state.processedIds.push(id);
-      continue;
-    }
 
     if (isLikelyDuplicateOfRecentCoverage(item.title)) {
       console.log(`[WI Watcher] ⏭️ Likely already covered via another source: "${item.title}"`);

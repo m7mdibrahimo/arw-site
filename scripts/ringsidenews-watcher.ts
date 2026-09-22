@@ -6,7 +6,7 @@
 // as-is — see wrestlinginc-watcher.ts for how each of those works).
 import fs from "fs";
 import path from "path";
-import { processPost, isSingleMatchResultArticle, deduplicateNewsFiles, findKnownArabicNames } from "./fightful-watcher";
+import { processPost, deduplicateNewsFiles, findKnownArabicNames } from "./fightful-watcher";
 
 if (fs.existsSync(".env")) {
   try {
@@ -178,12 +178,6 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
 
     const ageHours = item.pubDate ? (Date.now() - new Date(item.pubDate).getTime()) / 3600000 : 999;
     if (ageHours > 24) continue;
-
-    if (isSingleMatchResultArticle(item.title, item.contentHtml)) {
-      console.log(`[RSN Watcher] 🛡️ Spoiler shield: skipping "${item.title}"`);
-      state.processedIds.push(id);
-      continue;
-    }
 
     if (isLikelyDuplicateOfRecentCoverage(item.title)) {
       console.log(`[RSN Watcher] ⏭️ Likely already covered via another source: "${item.title}"`);
