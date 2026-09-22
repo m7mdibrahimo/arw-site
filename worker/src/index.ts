@@ -1948,8 +1948,20 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // indefinitely — bounds an article's worst-case wait to roughly
   // (backlog size × ~2 min) instead of however long arrivals outpace
   // processing. Capped to the oldest 40 candidates for the expensive path.
+  //
+  // Within that, articles that haven't gone out anywhere yet (!tgDone) go
+  // first, ahead of ones only waiting on IG/X catch-up. A partially-done
+  // article can sit re-deferring on a single stubborn platform (observed
+  // live: permanently blocked on Instagram, cycling through real Buffer/X
+  // cooldowns every few minutes) — each retry consumes that tick's one
+  // MAX_PER_TICK slot without ever finishing, which could otherwise starve
+  // a brand-new article's very first post behind it indefinitely. A new
+  // article's first (Telegram) post is the most user-visible action there
+  // is; it shouldn't wait on older articles' slow catch-up retries.
   const MAX_EXPENSIVE_PER_TICK = 40;
-  const toProcess = candidates.slice(-MAX_EXPENSIVE_PER_TICK).reverse();
+  const notStarted = candidates.filter((c) => !c.tgDone);
+  const catchUpOnly = candidates.filter((c) => c.tgDone);
+  const toProcess = [...notStarted.reverse(), ...catchUpOnly.reverse()].slice(0, MAX_EXPENSIVE_PER_TICK);
 
   for (const { item, ts, key, tgDone, fbDone, igDone, xDone } of toProcess) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
