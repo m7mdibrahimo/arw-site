@@ -1715,13 +1715,22 @@ app.use(express.static(sitePath, {
 // Route for admin CMS
 app.use("/admin", express.static(path.join(sitePath, "admin")));
 
-// Fallback route
+// Fallback route.
+// Always answer with a real 404 status, even when falling back to the homepage
+// shell as a last resort. This used to implicitly return 200 with the full
+// homepage HTML for ANY unmatched path — including a missing built asset like
+// an eleventy-img-optimized photo (/img/<hash>-800.jpeg) when the build didn't
+// produce it. A 200 there looks like a valid, cacheable response to Cloudflare
+// and browsers, so a single transient build hiccup for one image got cached as
+// "this is the real content of that URL" for as long as a year, permanently
+// breaking that photo everywhere it's referenced. A 404 status is never cached
+// that aggressively, so this class of bug can no longer become permanent.
 app.get("*", (req, res) => {
   const file404 = path.join(sitePath, "404.html");
   if (fs.existsSync(file404)) {
     res.status(404).sendFile(file404);
   } else if (fs.existsSync(indexPath)) {
-    res.sendFile(indexPath);
+    res.status(404).sendFile(indexPath);
   } else {
     res.status(404).send("Page not found");
   }
