@@ -1899,19 +1899,13 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   }
 
   let processedInThisTick = 0;
-  // Was 1 (with a 2-platform-action global cap) to fit the Free plan's 10ms
-  // CPU/subrequest budget. Now that the account is on a paid plan (300ms
-  // budget, much higher subrequest ceiling), this was raised — a single
-  // article per tick meant a continuous stream of brand-new articles could
-  // starve older articles' catch-up work (e.g. Instagram) indefinitely,
-  // since "not started yet" is prioritized over "just needs one more
-  // platform" (see the notStarted/catchUpOnly split below) and there was
-  // never tick capacity left over for both kinds of work in the same tick.
-  // Observed live: Instagram went completely silent on regular news for 2+
-  // hours while Telegram/Facebook kept working. 3 articles/tick (up to 2
-  // platform actions each) gives room for both a new article's first post
-  // and older articles' catch-up to happen in the same tick.
-  const MAX_PER_TICK = 3;
+  // Briefly raised to 3 after the paid-plan upgrade to fix Instagram
+  // catch-up starving on regular news — that fix caused a worse regression
+  // (tripling per-tick work reintroduced "Exceeded CPU Limit" on
+  // essentially every tick, confirmed live via wrangler tail) and was
+  // reverted back to 1. The actual fix for starvation is the alternating
+  // priority below, which doesn't cost any extra CPU.
+  const MAX_PER_TICK = 1;
   let platformAttempts = 0;
   const MAX_PLATFORM_ACTIONS_PER_TICK = MAX_PER_TICK * 2;
   const takeSlot = () => platformAttempts < MAX_PLATFORM_ACTIONS_PER_TICK ? (++platformAttempts, true) : false;
@@ -1957,25 +1951,30 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     candidates.push({ item, ts, key, tgDone, fbDone, igDone, xDone });
   }
 
-  // Oldest-incomplete-first, so a steady stream of newer arrivals (3 active
-  // sources) can't keep jumping the queue and starve an older article
-  // indefinitely — bounds an article's worst-case wait to roughly
-  // (backlog size × ~2 min) instead of however long arrivals outpace
-  // processing. Capped to the oldest 40 candidates for the expensive path.
+  // Oldest-incomplete-first within each group, so a steady stream of newer
+  // arrivals (3 active sources) can't keep jumping the queue and starve an
+  // older article indefinitely. Capped to the oldest 40 candidates for the
+  // expensive path.
   //
-  // Within that, articles that haven't gone out anywhere yet (!tgDone) go
-  // first, ahead of ones only waiting on IG/X catch-up. A partially-done
-  // article can sit re-deferring on a single stubborn platform (observed
-  // live: permanently blocked on Instagram, cycling through real Buffer/X
-  // cooldowns every few minutes) — each retry consumes that tick's one
-  // MAX_PER_TICK slot without ever finishing, which could otherwise starve
-  // a brand-new article's very first post behind it indefinitely. A new
-  // article's first (Telegram) post is the most user-visible action there
-  // is; it shouldn't wait on older articles' slow catch-up retries.
+  // Split into "never posted anywhere yet" vs "only needs catch-up on
+  // remaining platforms" (a partially-done article can sit re-deferring on
+  // one stubborn platform, each retry consuming the tick's one slot without
+  // ever finishing). With MAX_PER_TICK back down to 1, giving either group
+  // *permanent* priority starves the other whenever it's non-empty — first
+  // tried notStarted-always-first, which starved catch-up so completely
+  // that Instagram went silent on regular news for 2+ hours straight while
+  // a continuous stream of new articles kept arriving. Alternating which
+  // group goes first by tick minute bounds each group's worst-case wait to
+  // about 2 minutes instead of "indefinitely, if the other group is never
+  // empty" — at zero extra CPU cost, unlike raising MAX_PER_TICK (tried,
+  // reverted: tripled per-tick work and reintroduced the CPU-limit failure
+  // this whole split exists to avoid).
   const MAX_EXPENSIVE_PER_TICK = 40;
-  const notStarted = candidates.filter((c) => !c.tgDone);
-  const catchUpOnly = candidates.filter((c) => c.tgDone);
-  const toProcess = [...notStarted.reverse(), ...catchUpOnly.reverse()].slice(0, MAX_EXPENSIVE_PER_TICK);
+  const notStarted = candidates.filter((c) => !c.tgDone).reverse();
+  const catchUpOnly = candidates.filter((c) => c.tgDone).reverse();
+  const preferNotStarted = new Date().getUTCMinutes() % 2 === 0;
+  const toProcess = (preferNotStarted ? [...notStarted, ...catchUpOnly] : [...catchUpOnly, ...notStarted])
+    .slice(0, MAX_EXPENSIVE_PER_TICK);
 
   for (const { item, ts, key, tgDone, fbDone, igDone, xDone } of toProcess) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= MAX_PLATFORM_ACTIONS_PER_TICK) break;
