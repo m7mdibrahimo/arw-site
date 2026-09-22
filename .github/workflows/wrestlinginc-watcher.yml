@@ -50,7 +50,7 @@ jobs:
             git add -A
             git commit -m "feat(news): auto-publish from Wrestling Inc"
             PUSHED=false
-            for i in {1..3}; do
+            for i in {1..8}; do
               git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
               npx tsx -e "import('./scripts/fightful-watcher.ts').then(m => m.deduplicateNewsFiles())" || true
               if [[ -n $(git status -s) ]]; then
@@ -62,8 +62,8 @@ jobs:
                 echo "Successfully pushed news to main."
                 break
               fi
-              echo "Push retry $i/3 failed, retrying in 3 seconds..."
-              sleep 3
+              echo "Push retry $i/8 failed, retrying..."
+              sleep $((2 + RANDOM % 5))
             done
             if [ "$PUSHED" != "true" ]; then echo "Git push failed after retries" >&2; exit 1; fi
           else
