@@ -1,5 +1,15 @@
 [
   {
+    "id": 1904719877,
+    "link": "https://www.wrestlinginc.com/2264943/wwe-nxt-september-22-dusty-rhodes-tag-team-classic-begins-womens-tag-match/",
+    "date": "Tue, 22 Sep 2026 23:00:00 +0000",
+    "date_gmt": "2026-09-22T23:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Results 9/22 - 2026 Dusty Rhodes Tag Team Classic Begins, Women's Tag Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-922-2026-dusty-rhodes-tag-team-classic-begins-womens-tag-match/l-intro-1790049448.jpg"
+  },
+  {
     "id": 1026751463,
     "link": "https://www.wrestlinginc.com/2266015/full-bracket-2026-dusty-rhodes-tag-team-classic-wwe-nxt-revealed/",
     "date": "Tue, 22 Sep 2026 22:27:29 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Biggest Winners And Losers Of The Week — 9/21/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/biggest-winners-and-losers-of-the-week-9212026/l-intro-1790031838.jpg"
-  },
-  {
-    "id": 4818469849,
-    "link": "https://www.wrestlinginc.com/2264796/wwe-raw-september-21-la-knight-penta-bayley-lyra-valkyria/",
-    "date": "Mon, 21 Sep 2026 23:00:08 +0000",
-    "date_gmt": "2026-09-21T23:00:08.000Z",
-    "title": {
-      "rendered": "WWE Raw Results 9/21 - LA Knight And Penta Appear, Bayley Takes On Lyra Valkyria"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-september-21-la-knight-penta-bayley-lyra-valkyria/l-intro-1790044222.jpg"
   }
 ]
