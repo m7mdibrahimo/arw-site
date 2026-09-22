@@ -162,7 +162,15 @@ test('retention keeps pending or unknown show videos through platform restrictio
 
 test('automatic watcher bounds attempts and defers failed platforms without starving the next article', async t => {
   const database = ledger();
-  const items = ['one', 'two'].map(slug => ({ url: `/news/${slug}/`, title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date().toISOString() }));
+  // The feed is newest-first (as watcher-recent-content.json always is in
+  // production), so 'two' comes first here even though 'one' is older. The
+  // Worker must still pick the oldest incomplete item ('one') first (see
+  // the eligibleItems.reverse() in runWatcherPoll), or a steady stream of
+  // newer arrivals like 'two' could starve it indefinitely.
+  const items = [
+    { url: '/news/two/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date().toISOString() },
+    { url: '/news/one/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date(Date.now() - 10 * 60_000).toISOString() },
+  ];
   const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} };
   for (const slug of ['one', 'two']) for (const p of ['telegram','facebook']) state[p][`httpssitetestnews${slug}`] = Date.now();
   const file = '/repos/owner/repo/contents/_data/publish-state.json';

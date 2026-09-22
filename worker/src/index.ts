@@ -1883,18 +1883,31 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // completely independent of how large any future backlog grows, so this
   // failure mode cannot recur no matter what the site's content volume does.
   const MAX_SCANNED_PER_TICK = 40;
-  let scannedInThisTick = 0;
 
+  // items is sorted newest-first. Collect the eligible window first...
+  const eligibleItems: any[] = [];
   for (const item of items) {
-    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
-    if (scannedInThisTick++ >= MAX_SCANNED_PER_TICK) break;
-
+    if (eligibleItems.length >= MAX_SCANNED_PER_TICK) break;
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
-    // items are sorted newest-first, so once we hit one older than the
-    // window, everything after it is older too — stop scanning instead of
-    // continuing to burn CPU on the rest of the feed.
+    // once we hit one older than the window, everything after it is older
+    // too — stop scanning instead of continuing to burn CPU on the rest.
     if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) break;
+    eligibleItems.push(item);
+  }
+
+  // ...then process it oldest-first. With MAX_PER_TICK capping this to one
+  // article per tick, always picking the *newest* actionable item meant a
+  // steady stream of new arrivals (3 active sources) could keep jumping the
+  // queue indefinitely, starving a still-incomplete older article forever —
+  // observed live: an article sat fully untouched for 2.5+ hours while
+  // newer ones kept publishing around it. Oldest-first bounds an article's
+  // worst-case wait to roughly (backlog size × ~2 min), instead of "however
+  // long new content keeps arriving faster than it's cleared."
+  for (const item of eligibleItems.slice().reverse()) {
+    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
+
+    const ts = new Date(item.date).getTime();
 
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
