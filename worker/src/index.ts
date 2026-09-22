@@ -2742,8 +2742,9 @@ export default {
   },
 
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    const minute = new Date(_controller.scheduledTime).getUTCMinutes();
     ctx.waitUntil(Promise.all([
-      new Date(_controller.scheduledTime).getUTCMinutes() === 15 ? runVideoRetentionCleanup(env) : runWatcherPoll(env),
+      minute === 15 ? runVideoRetentionCleanup(env) : minute === 45 ? runPublishStateCleanup(env) : runWatcherPoll(env),
       runNewsWatcherCron(env),
       runScheduleBackstopCron(env),
     ]));
@@ -2857,6 +2858,54 @@ async function runScheduleBackstopCron(env: Env): Promise<void> {
     } catch (err: any) {
       console.error(`[Worker] Error triggering backstop for ${job.workflow}:`, err.message);
     }
+  }
+}
+
+// _data/publish-state.json only ever grows — every article ever published
+// leaves a permanent entry in all four platform maps, forever, with nothing
+// that ever removes one. It reached ~2MB / ~1900 entries per platform today,
+// and githubReadState() parses the whole thing on essentially every Worker
+// action (every publish attempt, every defer, every success). That parse
+// cost is now large enough to intermittently tip runWatcherPoll over its
+// CPU limit on its own — the exact same "ever-growing data structure fully
+// processed every tick" failure class already fixed for the content feed,
+// just for the *state* file instead of the *content* file this time.
+// watcher-recent-content.json only ever holds the newest 200 articles, so
+// nothing published before that window can ever be looked up by the
+// watcher again — any state entry older than that is pure dead weight.
+// 30 days is a generous safety margin past that window.
+function pruneStaleStateEntries(state: PublishState, now: number): number {
+  const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
+  let removed = 0;
+  for (const platform of ["telegram", "facebook", "instagram", "x"] as const) {
+    const map = state[platform];
+    for (const key of Object.keys(map)) {
+      if (now - map[key] > MAX_AGE_MS) { delete map[key]; removed++; }
+    }
+  }
+  if (state.deferrals) {
+    for (const key of Object.keys(state.deferrals)) {
+      // Deferral values are "retry after" timestamps, not publish times —
+      // one that expired 30+ days ago is definitely stale either way (the
+      // article succeeded on a later attempt, or aged out of the window).
+      if (now - state.deferrals[key] > MAX_AGE_MS) { delete state.deferrals[key]; removed++; }
+    }
+  }
+  return removed;
+}
+
+async function runPublishStateCleanup(env: Env): Promise<void> {
+  try {
+    const now = new Date();
+    // Once an hour, around minute 45 (minute 15 is already runVideoRetentionCleanup's slot).
+    if (now.getMinutes() !== 45) return;
+    const { sha, state } = await githubReadState(env);
+    const removed = pruneStaleStateEntries(state, now.getTime());
+    if (removed > 0) {
+      await githubWriteState(env, state, sha, `chore(publish): prune ${removed} stale publish-state entries older than 30 days`);
+    }
+  } catch (e) {
+    // Never let cleanup itself become a new failure mode.
   }
 }
 
