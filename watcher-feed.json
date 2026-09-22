@@ -1,5 +1,15 @@
 [
   {
+    "id": 329846,
+    "link": "https://www.fightful.com/wrestling/von-wagner-to-debut-in-ajpw/",
+    "date": "2026-09-22T12:15:21",
+    "date_gmt": "2026-09-22T16:15:21",
+    "title": {
+      "rendered": "Von Wagner To Debut In AJPW"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/22121435/TTu10ccm.jpeg"
+  },
+  {
     "id": 329851,
     "link": "https://www.fightful.com/wrestling/kurt-angle-blind-ranks-his-top-10-greatest-rivals-naming-chris-benoit-as-his-number-one/",
     "date": "2026-09-22T11:49:30",
@@ -288,15 +298,5 @@
       "rendered": "Miku Kanae To Undergo Surgery For Torn ACL"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/22005540/HSQxl-bW4AAj7S--e1790052963276.jpg"
-  },
-  {
-    "id": 329719,
-    "link": "https://www.fightful.com/wrestling/nwa-powerrr-results-9-19-nattie-appears/",
-    "date": "2026-09-21T23:30:00",
-    "date_gmt": "2026-09-22T03:30:00",
-    "title": {
-      "rendered": "NWA Powerrr Results (9/19): Nattie Appears"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/07223643/Screenshot-2026-05-07-at-10.36.28-PM.png"
   }
 ]
