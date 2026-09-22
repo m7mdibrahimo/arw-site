@@ -1906,51 +1906,46 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   let bufferXAttemptedInTick = 0;
   const MAX_BUFFER_PER_TICK = 1;
 
-  // Hard, fixed ceiling on how many items this tick will even look at, on
-  // top of (not instead of) the 18h break below. The 18h window bounds cost
-  // by *time*, but a big enough publishing backlog (many items still
-  // incomplete within that window) can still mean a lot of per-item work
-  // every single tick — that exact scenario has twice caused this Worker to
-  // silently exceed its per-invocation CPU limit before it ever reached
-  // publishToPlatform. This cap bounds the scan by *item count* instead,
-  // completely independent of how large any future backlog grows, so this
-  // failure mode cannot recur no matter what the site's content volume does.
-  const MAX_SCANNED_PER_TICK = 40;
-
-  // items is sorted newest-first. Collect the eligible window first...
-  const eligibleItems: any[] = [];
+  // Two-pass scan. A single fixed item-count cap on the *whole* scan
+  // (tried first) turned out to just move the problem: once the backlog of
+  // still-incomplete articles within the 18h window grew past that cap,
+  // anything beyond it (however old) became permanently invisible to every
+  // future tick — observed live, an article sat untouched for 16+ hours
+  // while everything ahead of it in the scan order kept it buried. So the
+  // *cheap* part of the scan (date/window checks, key lookup, the four
+  // done-flags) now runs across the entire 18h window uncapped — none of
+  // that involves regex or I/O, and it's what lets an old backlog item be
+  // found at all. Only the *expensive* per-item work (the regex-heavy
+  // spoiler check, verifyLiveOnSite, actual publish attempts) is bounded to
+  // a small number of the oldest candidates — the exact cost that was
+  // blowing the CPU limit before, now capped independently of backlog size.
+  const candidates: { item: any; ts: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   for (const item of items) {
-    if (eligibleItems.length >= MAX_SCANNED_PER_TICK) break;
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
     // once we hit one older than the window, everything after it is older
     // too — stop scanning instead of continuing to burn CPU on the rest.
     if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) break;
-    eligibleItems.push(item);
-  }
-
-  // ...then process it oldest-first. With MAX_PER_TICK capping this to one
-  // article per tick, always picking the *newest* actionable item meant a
-  // steady stream of new arrivals (3 active sources) could keep jumping the
-  // queue indefinitely, starving a still-incomplete older article forever —
-  // observed live: an article sat fully untouched for 2.5+ hours while
-  // newer ones kept publishing around it. Oldest-first bounds an article's
-  // worst-case wait to roughly (backlog size × ~2 min), instead of "however
-  // long new content keeps arriving faster than it's cleared."
-  for (const item of eligibleItems.slice().reverse()) {
-    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
-
-    const ts = new Date(item.date).getTime();
-
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
-
     const tgDone = !!state.telegram[key];
     const fbDone = !!state.facebook[key];
     const igDone = !!state.instagram[key];
     const xDone = !!state.x[key];
-
     if (tgDone && fbDone && igDone && xDone) continue;
+    candidates.push({ item, ts, key, tgDone, fbDone, igDone, xDone });
+  }
+
+  // Oldest-incomplete-first, so a steady stream of newer arrivals (3 active
+  // sources) can't keep jumping the queue and starve an older article
+  // indefinitely — bounds an article's worst-case wait to roughly
+  // (backlog size × ~2 min) instead of however long arrivals outpace
+  // processing. Capped to the oldest 40 candidates for the expensive path.
+  const MAX_EXPENSIVE_PER_TICK = 40;
+  const toProcess = candidates.slice(-MAX_EXPENSIVE_PER_TICK).reverse();
+
+  for (const { item, ts, key, tgDone, fbDone, igDone, xDone } of toProcess) {
+    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
 
     const now = Date.now();
 
