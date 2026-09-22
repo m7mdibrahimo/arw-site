@@ -992,16 +992,17 @@
       {% if servers.length > 1 %}
       <div class="server-tabs" id="serverTabs">
         {% for s in servers %}
-        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url }}">سيرفر {{ loop.index }}</button>
+        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url | toEmbedUrl }}">سيرفر {{ loop.index }}</button>
         {% endfor %}
       </div>
       {% endif %}
       <div class="video-embed" id="videoEmbedBox">
-        {% set firstIsDirect = servers[0].url and (("pixeldrain.com/api/file/" in servers[0].url) or (".mp4" in servers[0].url) or (".webm" in servers[0].url)) %}
+        {% set firstEmbedUrl = servers[0].url | toEmbedUrl %}
+        {% set firstIsDirect = firstEmbedUrl and (("pixeldrain.com/api/file/" in firstEmbedUrl) or (".mp4" in firstEmbedUrl) or (".webm" in firstEmbedUrl)) %}
         {% if firstIsDirect %}
-        <video id="videoPlayer" controls playsinline preload="metadata" src="{{ servers[0].url }}"></video>
+        <video id="videoPlayer" controls playsinline preload="metadata" src="{{ firstEmbedUrl }}"></video>
         {% else %}
-        <iframe id="videoFrame" src="{{ servers[0].url }}" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
+        <iframe id="videoFrame" src="{{ firstEmbedUrl }}" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
         {% endif %}
       </div>
     {% endif %}
@@ -1456,6 +1457,27 @@
     });
   })();
 
+  function toEmbedUrl(raw) {
+    if (!raw || typeof raw !== 'string') return '';
+    var url = raw.trim();
+    url = url.replace(/^https?:\/\/(?:m\.)?ok\.ru\/video\/(\d+)/i, 'https://ok.ru/videoembed/$1');
+    url = url.replace(/^https?:\/\/(vidtube\.[a-z]+)\/(?!embed-)([a-zA-Z0-9_-]+)(?:\.html)?$/i, 'https://$1/embed-$2.html');
+    url = url.replace(/^https?:\/\/(uqload\.[a-z]+)\/(?!embed-)([a-zA-Z0-9_-]+)(?:\.html)?$/i, 'https://$1/embed-$2.html');
+    url = url.replace(/^https?:\/\/(streamtape\.[a-z]+)\/v\/([a-zA-Z0-9_-]+)(?:\/[^\s?]*)?/i, 'https://$1/e/$2');
+    url = url.replace(/^https?:\/\/(dood(?:stream)?\.[a-z]+)\/d\/([a-zA-Z0-9_-]+)/i, 'https://$1/e/$2');
+    url = url.replace(/^https?:\/\/([a-z0-9.-]*fe(?:mbed|url)[a-z0-9.-]*)\/[vf]\/([a-zA-Z0-9_-]+)/i, 'https://$1/embed/$2');
+    url = url.replace(/^https?:\/\/pixeldrain\.com\/u\/([a-zA-Z0-9_-]+)(?:\?.*)?$/i, 'https://pixeldrain.com/api/file/$1');
+    url = url.replace(/^https?:\/\/(?:cdn\.)?loadvid\.com\/(?:v|watch)\/([a-zA-Z0-9_-]+)/i, 'https://cdn.loadvid.com/videos/play/$1');
+    url = url.replace(/^https?:\/\/turbovidhls\.com\/(?:v\/)?([a-zA-Z0-9_-]+)$/i, 'https://turbovidhls.com/t/$1');
+    url = url.replace(/^https?:\/\/voe\.sx\/(?!e\/)([a-zA-Z0-9_-]+)$/i, 'https://voe.sx/e/$1');
+    url = url.replace(/^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+).*/i, 'https://www.youtube.com/embed/$1');
+    url = url.replace(/^https?:\/\/youtu\.be\/([a-zA-Z0-9_-]+).*/i, 'https://www.youtube.com/embed/$1');
+    url = url.replace(/^https?:\/\/(?:www\.)?dailymotion\.com\/video\/([a-zA-Z0-9_-]+).*/i, 'https://www.dailymotion.com/embed/video/$1');
+    url = url.replace(/^https?:\/\/dai\.ly\/([a-zA-Z0-9_-]+)/i, 'https://www.dailymotion.com/embed/video/$1');
+    url = url.replace(/^https?:\/\/(?:www\.)?vimeo\.com\/(\d+).*/i, 'https://player.vimeo.com/video/$1');
+    return url;
+  }
+
   document.querySelectorAll('.server-tab').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.server-tab').forEach(function(b){ b.classList.remove('active'); });
@@ -1464,8 +1486,7 @@
       var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
       if (!box) return;
 
-      // Auto-convert pixeldrain /u/ links to direct stream /api/file/
-      var src = rawSrc.replace(/pixeldrain\.com\/u\/([a-zA-Z0-9_-]+)/, 'pixeldrain.com/api/file/$1');
+      var src = toEmbedUrl(rawSrc);
       var isDirect = src.includes('pixeldrain.com/api/file/') || /\.mp4(\?|$)/i.test(src) || /\.webm(\?|$)/i.test(src);
 
       if (isDirect) {

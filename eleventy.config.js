@@ -157,6 +157,7 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
 }
 
 const { arabicSlug } = require("./lib/slug.cjs");
+const { toEmbedUrl } = require("./lib/embed.cjs");
 
 // بيوحّد أشكال الألف المختلفة (أ إ آ) لألف عادية (ا) عشان "اخبار المصارعة" و"أخبار المصارعة"
 // يتحسبوا نفس الوسم بدل ما يتقسموا لصفحتين منفصلتين. بيتستخدم بس لحساب الـ slug (تجميع/تصنيف)،
@@ -173,6 +174,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("arabicSlug", arabicSlug);
   eleventyConfig.addFilter("slug", arabicSlug);
   eleventyConfig.addNunjucksFilter("slug", arabicSlug);
+  eleventyConfig.addFilter("toEmbedUrl", toEmbedUrl);
+  eleventyConfig.addNunjucksFilter("toEmbedUrl", toEmbedUrl);
 
   const cleanUrl = function(url) {
     if (!url) return "";
