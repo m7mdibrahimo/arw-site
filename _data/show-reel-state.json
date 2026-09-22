@@ -1877,13 +1877,11 @@
     "publishedAt": 1790065355778,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض الرو 21.09.2026 مترجم",
-    "lastAttempt": 1790065355778,
-    "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
+    "lastAttempt": 1790067239992,
+    "errors": {},
     "reviewPlatforms": [],
     "needsReview": false
   }
