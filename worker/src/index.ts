@@ -1212,8 +1212,8 @@ const kvKey = `ig-pending:${key}`;
     // minute's retry resumes polling the SAME container instead of
     // starting a new upload.
     let ready = false;
-    for (let attempt = 0; attempt < 10; attempt++) {
-      await new Promise((r) => setTimeout(r, 3000));
+    for (let attempt = 0; attempt < 5; attempt++) {
+      await new Promise((r) => setTimeout(r, 2000));
       const statusRes = await fetch(
         // `status` (in addition to `status_code`) gives Meta's human-readable
         // reason when processing fails — plain `status_code` alone only says
@@ -1902,7 +1902,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // Bound external requests to remain compatible with Workers' free-tier budget.
   const MAX_PER_TICK = 1;
   let platformAttempts = 0;
-  const takeSlot = () => platformAttempts < 2 ? (++platformAttempts, true) : false;
+  const takeSlot = () => platformAttempts < 4 ? (++platformAttempts, true) : false;
   let bufferXAttemptedInTick = 0;
   const MAX_BUFFER_PER_TICK = 1;
 
@@ -1923,6 +1923,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
+    // Nostalgia content is an archival showcase, never auto-published to social media
+    if (item.url?.includes("/nostalgia/") || item.kind === "nostalgia" || item.nostalgia_series) continue;
     // once we hit one older than the window, everything after it is older
     // too — stop scanning instead of continuing to burn CPU on the rest.
     // Deliberately short (was 18h): with 3 active sources and today's
@@ -1964,7 +1966,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const toProcess = [...notStarted.reverse(), ...catchUpOnly.reverse()].slice(0, MAX_EXPENSIVE_PER_TICK);
 
   for (const { item, ts, key, tgDone, fbDone, igDone, xDone } of toProcess) {
-    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 2) break;
+    if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= 4) break;
 
     const now = Date.now();
 
