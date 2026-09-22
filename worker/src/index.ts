@@ -1925,7 +1925,14 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
     // once we hit one older than the window, everything after it is older
     // too — stop scanning instead of continuing to burn CPU on the rest.
-    if (ts && (Date.now() - ts) > 18 * 60 * 60 * 1000) break;
+    // Deliberately short (was 18h): with 3 active sources and today's
+    // repeated stalls, the backlog of still-incomplete-but-old articles
+    // kept growing deep enough to either blow the CPU limit or starve
+    // brand-new articles behind it. Per the site owner: don't chase down
+    // old backlog on social media at all — only genuinely fresh content is
+    // worth the server load of trying. Articles past this window simply
+    // never get attempted on social (the site itself is unaffected).
+    if (ts && (Date.now() - ts) > 3 * 60 * 60 * 1000) break;
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
     const tgDone = !!state.telegram[key];
