@@ -2873,9 +2873,13 @@ async function runScheduleBackstopCron(env: Env): Promise<void> {
 // watcher-recent-content.json only ever holds the newest 200 articles, so
 // nothing published before that window can ever be looked up by the
 // watcher again — any state entry older than that is pure dead weight.
-// 30 days is a generous safety margin past that window.
+// That 200-item window currently spans ~3 days at this site's publishing
+// volume; 7 days is a healthy multiple of margin past it (and the reason
+// this needed to be checked empirically rather than picking a round
+// number like 30 days, which turned out to prune nothing at all — every
+// entry in the file today was already within 30 days).
 function pruneStaleStateEntries(state: PublishState, now: number): number {
-  const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
+  const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
   let removed = 0;
   for (const platform of ["telegram", "facebook", "instagram", "x"] as const) {
     const map = state[platform];
