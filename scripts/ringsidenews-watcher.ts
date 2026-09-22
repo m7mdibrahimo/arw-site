@@ -57,6 +57,7 @@ interface RsnFeedItem {
   guid: string;
   pubDate: string;
   contentHtml: string;
+  thumbnail: string;
 }
 
 export function parseRingsideNewsFeed(xml: string): RsnFeedItem[] {
@@ -66,12 +67,18 @@ export function parseRingsideNewsFeed(xml: string): RsnFeedItem[] {
     const link = extractTag(block, "link");
     const guid = extractTag(block, "guid") || link;
     if (!link || !guid) continue;
+    const contentHtml = extractTag(block, "content:encoded") || extractTag(block, "description");
+    // Ringside News' feed has no media:thumbnail tag (unlike Wrestling
+    // Inc's) — the featured image is just the first <img> embedded at the
+    // start of the article body itself.
+    const imgMatch = contentHtml.match(/<img[^>]+src=["']([^"']+)["']/i);
     items.push({
       title: extractTag(block, "title"),
       link,
       guid,
       pubDate: extractTag(block, "pubDate"),
-      contentHtml: extractTag(block, "content:encoded") || extractTag(block, "description"),
+      contentHtml,
+      thumbnail: imgMatch ? imgMatch[1] : "",
     });
   }
   return items;
@@ -155,7 +162,7 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
       date: item.pubDate,
       date_gmt: item.pubDate ? new Date(item.pubDate).toISOString() : item.pubDate,
       title: { rendered: item.title },
-      featured_image: "",
+      featured_image: item.thumbnail || "",
     }));
     fs.writeFileSync(feedPath, JSON.stringify(cleanFeed, null, 2), "utf-8");
   } catch (err) {
