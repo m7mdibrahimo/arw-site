@@ -168,7 +168,7 @@ test('automatic watcher bounds attempts and defers failed platforms without star
   const file = '/repos/owner/repo/contents/_data/publish-state.json';
   database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
   t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
-    if (String(input).startsWith('https://site.test/watcher-feed.json')) return Response.json(items);
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
     return database.fetch(input, init);
   });
   const config = { ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any;

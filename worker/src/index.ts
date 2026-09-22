@@ -1762,12 +1762,12 @@ async function eligiblePublication(env: Env, articleUrl: string): Promise<boolea
 export async function runWatcherPoll(env: Env): Promise<void> {
   let items: any[] = [];
   try {
-    // watcher-feed.json is a small, fixed-size (~200 item) tail of the newest
+    // watcher-recent-content.json is a small, fixed-size (~200 item) tail of the newest
     // content, unlike search-index.json which dumps the site's entire history
     // (1500+ items and growing forever). Parsing the full index here used to
     // blow the Worker's per-invocation CPU budget on every single tick, which
     // silently killed the run before any platform was ever posted to.
-    const res = await fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-feed.json`), {
+    const res = await fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-recent-content.json`), {
       headers: { "Cache-Control": "no-cache" },
     });
     if (!res.ok) return;
