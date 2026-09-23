@@ -372,3 +372,22 @@ test('post-translation guard never blocks a broader story that only mentions the
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
+  // Reached production: a tag and the article body both showed
+  // "عرض MLPعرض MLPعرض MLPعرض MLP Northern Rising" — the old regex only matched
+  // an optional عرض directly before "Northern Rising" and never consumed an
+  // existing "MLP", so on already-correct text it left "MLP" in place and
+  // prepended a whole new "عرض MLP" — and since something in the pipeline calls
+  // sanitizeWrestlingTerms more than once on the same text, that compounded
+  // every extra call. A second, separate bug in the same regex: a leading \b
+  // right before the Arabic alternation doesn't behave as a boundary at all
+  // (JS's default \w excludes Arabic letters), which silently broke the
+  // optional-عرض branch entirely once the first bug was naively "fixed".
+  const variants = ['Northern Rising', 'MLP Northern Rising', 'عرض MLP Northern Rising', 'عرض Northern Rising', 'مهرجان Northern Rising'];
+  for (const input of variants) {
+    let s = input;
+    for (let i = 0; i < 5; i++) s = sanitizeWrestlingTerms(s);
+    assert.equal(s, 'عرض MLP Northern Rising', `input "${input}" must converge to the canonical form and stay stable across repeated passes`);
+  }
+});

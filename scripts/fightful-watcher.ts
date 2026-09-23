@@ -787,9 +787,22 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("ابنا\\s+(ال[^\\s]+|[A-Z][a-z]+|ستينغ)"), "أبناء $1")
     .replace(arWord("ابني\\s+(ال[^\\s]+|[A-Z][a-z]+|ستينغ)"), "أبناء $1")
 
-    // 7. Mandatory federation prefix for show names (e.g. MLP Northern Rising)
-    .replace(/\b(?:عرض|عروض|مهرجان)?\s*Northern\s+Rising\b/gi, "عرض MLP Northern Rising")
-    .replace(/عرض\s+عرض\s+MLP\s+Northern\s+Rising/gi, "عرض MLP Northern Rising")
+    // 7. Mandatory federation prefix for show names (e.g. MLP Northern Rising).
+    // Real bug: the old version only matched an optional "عرض" prefix directly
+    // before "Northern Rising", never consuming an existing "MLP" — so on text
+    // that was ALREADY correctly "عرض MLP Northern Rising", it left the existing
+    // "MLP" untouched and prepended another full "عرض MLP", and running the
+    // function again on its own output kept compounding that indefinitely
+    // (observed live: 4 "عرض MLP" copies stacked in front of one "Northern
+    // Rising"). The optional "عرض/عروض/مهرجان" AND optional "MLP" must both be
+    // part of the SAME match so any existing prefix is consumed and replaced
+    // wholesale, not left in place for a later pass to duplicate.
+    // A leading \b before the Arabic alternation doesn't work as intended —
+    // JS's default \w class doesn't include Arabic letters, so \b behaves
+    // unpredictably right before/after Arabic text (this silently broke the
+    // optional-عرض match entirely, which was the second half of this bug).
+    // Anchoring \b right before "Northern" (plain ASCII) instead is reliable.
+    .replace(/(?:(?:عرض|عروض|مهرجان)\s+)?(?:MLP\s+)?\bNorthern\s+Rising\b/gi, "عرض MLP Northern Rising")
 
     // 8. Enforce Arabic names for Tag Teams & Factions (teams and factions must be strictly in Arabic)
     .replace(/\bThe\s*Wagner\s+Brothers\b/gi, "الإخوة فاغنر")
