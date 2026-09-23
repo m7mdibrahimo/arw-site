@@ -67,7 +67,10 @@ test('saved successful receipt repairs an interrupted legacy state update', asyn
   assert.equal(result.id, 'known'); assert.equal(result.status, 'already_sent');
 });
 test('admin authorization requires repository write permission', async t => {
-  t.mock.method(globalThis, 'fetch', async () => Response.json({ permissions: { pull: true, push: false } }));
+  // Collaborators-list is gated on real push/admin access regardless of the repo's
+  // public/private visibility (unlike the bare repo GET, which returns 200 for anyone
+  // on a public repo) — a read-only token gets 403 here.
+  t.mock.method(globalThis, 'fetch', async () => new Response('Forbidden', { status: 403 }));
   assert.equal(await authorizeAdmin(new Request('https://worker/api', { headers: { Authorization: 'Bearer sufficiently-long-test-token' } }), env), false);
   assert.equal(await authorizeAdmin(new Request('https://worker/api'), env), false);
 });
@@ -135,8 +138,8 @@ test('partial results retain successful platforms and errors', () => {
 test('authenticated video calls reject foreign media and unsupported platforms without fetching media', async t => {
   let calls = 0;
   t.mock.method(globalThis, 'fetch', async (url: any) => {
-    calls++; assert.equal(String(url), 'https://api.github.com/repos/owner/repo');
-    return Response.json({ permissions: { push: true } });
+    calls++; assert.equal(String(url), 'https://api.github.com/repos/owner/repo/collaborators?per_page=1');
+    return Response.json([]);
   });
   for (const body of [
     { videoUrl: 'https://foreign.test/video.mp4', platforms: ['facebook_reel'] },
@@ -201,7 +204,7 @@ test('automatic watcher bounds attempts and defers failed platforms without star
 test('old, undated and unknown articles cannot reach video publishing even with force', async t => {
   t.mock.method(globalThis, 'fetch', async (input: any) => {
     const url = String(input);
-    if (url === 'https://api.github.com/repos/owner/repo') return Response.json({permissions: {push: true}});
+    if (url === 'https://api.github.com/repos/owner/repo/collaborators?per_page=1') return Response.json([]);
     if (url.startsWith('https://site.test/search-index.json')) return Response.json([
       {url: '/old/', date: '2026-09-21T19:13:58Z'}, {url: '/undated/'}
     ]);
@@ -221,23 +224,37 @@ test('old, undated and unknown articles cannot reach video publishing even with 
 // Each of these reproduces a defect that actually reached production once, so a
 // future change can't silently reintroduce it without breaking the suite.
 
-test('admin authorization survives a transient GitHub rate limit, still fails closed if it persists', async t => {
-  // A real, correctly-scoped Actions token was rejected in production because the
-  // one-time permissions check hit GitHub's secondary rate limiting (403) — not a
-  // 5xx or network error, the only cases the old code retried.
+test('admin authorization checks real collaborator access, not the public repo GET', async t => {
+  // The bare `GET /repos/{owner}/{repo}` endpoint this used to check returns 200 for
+  // ANYONE on a public repo like this one — its `.permissions` sub-object was the only
+  // thing standing between "authorized" and "not", and GitHub Actions' own token never
+  // populated it, so every automated call failed 100% of the time regardless of retries,
+  // even though the same token demonstrably had real write access (it successfully wrote
+  // to the repo via the Contents API moments later in the same job). The collaborators
+  // endpoint is gated on real push/admin access independent of the repo's visibility, so
+  // it can't be fooled by "public repo returns 200 for everyone" the way the old check was.
+  t.mock.method(globalThis, 'fetch', async (input: any) => {
+    assert.ok(String(input).includes('/collaborators'), 'must check the collaborators endpoint, not the bare repo GET');
+    return Response.json([]);
+  });
+  assert.equal(await authorizeAdmin(new Request('https://worker/api', { headers: { Authorization: 'Bearer sufficiently-long-test-token' } }), env), true);
+
+  // A transient 429/403-with-retry-after (genuine secondary rate limiting) is retried.
   let calls = 0;
   t.mock.method(globalThis, 'fetch', async () => {
     calls++;
-    if (calls === 1) return new Response('rate limited', { status: 403 });
-    return Response.json({ permissions: { push: true } });
+    if (calls === 1) return new Response('rate limited', { status: 429 });
+    return Response.json([]);
   });
   assert.equal(await authorizeAdmin(new Request('https://worker/api', { headers: { Authorization: 'Bearer sufficiently-long-test-token' } }), env), true);
-  assert.equal(calls, 2, 'must have retried past the 403 instead of failing on the first attempt');
+  assert.equal(calls, 2, 'must have retried past the 429 instead of failing on the first attempt');
 
+  // A plain 403 with no rate-limit signal is a real, final "not authorized" — not
+  // something to retry into a different answer.
   calls = 0;
-  t.mock.method(globalThis, 'fetch', async () => { calls++; return new Response('rate limited', { status: 403 }); });
+  t.mock.method(globalThis, 'fetch', async () => { calls++; return new Response('Forbidden', { status: 403 }); });
   assert.equal(await authorizeAdmin(new Request('https://worker/api', { headers: { Authorization: 'Bearer sufficiently-long-test-token' } }), env), false);
-  assert.equal(calls, 3, 'must give up after its retry budget, not retry forever');
+  assert.equal(calls, 1, 'a plain 403 is final and must not be retried as if it were rate limiting');
 });
 
 test('show-reel-monitor never fails the job over Instagram still processing its video', () => {

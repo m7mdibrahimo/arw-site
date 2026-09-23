@@ -65,34 +65,36 @@ export async function deliverOnce(
 export async function authorizeAdmin(request: Request, env: DeliveryEnv): Promise<boolean> {
   const token = request.headers.get('Authorization');
   if (!token?.startsWith('Bearer ') || token.length < 15) return false;
-  // A real, correctly-scoped Actions token got rejected in production by a single
-  // failed fetch here more than once — this is a plain read of the caller's own repo
-  // permissions, not a mutation, so retrying costs nothing and avoids treating one
-  // transient GitHub API hiccup as "not authorized" for an otherwise-valid token.
-  // With dozens of bot workflows hitting api.github.com concurrently, GitHub's
-  // secondary rate limiting (403, sometimes 429) is a real, recurring case here —
-  // not just 5xx/network errors — so it must be retried too, with backoff so an
-  // immediate retry doesn't just hit the same rate limit again.
-  const retryableStatus = (status: number) => status >= 500 || status === 403 || status === 429;
+  // This USED to check `GET /repos/{owner}/{repo}` and read `.permissions.push` off the
+  // response. That endpoint returns 200 for literally anyone on a public repo — this repo
+  // is public — so the ONLY thing standing between "authorized" and "not" was whether
+  // GitHub happened to populate the `.permissions` sub-object for this token. It reliably
+  // did NOT for GitHub Actions' own `github.token`: every automated call from
+  // show-reel-monitor.yml failed here, on the very first attempt, for a BRAND NEW show,
+  // 100% of the time, completely unaffected by retries — while the exact same token in the
+  // exact same job successfully wrote to this repo seconds later via the Contents API
+  // (scripts/save-reel-state.ts). That combination (write genuinely works, this specific
+  // read-only permission check never does) points at `.permissions` visibility, not actual
+  // access, being what was broken — retrying a deterministic result changes nothing.
+  //
+  // GET /repos/{owner}/{repo}/collaborators requires real push/admin access to return
+  // anything at all — GitHub gates it independent of the repo's public/private visibility
+  // (confirmed: anonymous requests get 401, even though the bare repo GET above returns 200
+  // for anyone). A 200 here is proof of genuine write-capable access; 401/403 without a
+  // rate-limit signal is a real, final "no".
+  const isRateLimited = (r: Response) => r.status === 429 || (r.status === 403 && r.headers.has('retry-after'));
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
-      const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`, {
+      const r = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/collaborators?per_page=1`, {
         headers: { Authorization: token, Accept: 'application/vnd.github+json', 'User-Agent': 'arw-site-bot' },
       });
-      if (!r.ok) {
-        if (attempt < 2 && retryableStatus(r.status)) {
-          await new Promise(res => setTimeout(res, 500 * (attempt + 1)));
-          continue;
-        }
-        return false;
+      if (r.ok) return true;
+      if (r.status >= 500 || isRateLimited(r)) {
+        if (attempt < 2) { await new Promise(res => setTimeout(res, 500 * (attempt + 1))); continue; }
       }
-      const repo: any = await r.json();
-      return repo.permissions?.push === true || repo.permissions?.admin === true;
+      return false;
     } catch (e) {
-      if (attempt < 2) {
-        await new Promise(res => setTimeout(res, 500 * (attempt + 1)));
-        continue;
-      }
+      if (attempt < 2) { await new Promise(res => setTimeout(res, 500 * (attempt + 1))); continue; }
       return false;
     }
   }
