@@ -2800,7 +2800,7 @@ function tokenizeForDuplicateCheck(text: string): Set<string> {
       .map(stemPlural)
   );
 }
-export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 6, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
+export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 24, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
   const newTokens = tokenizeForDuplicateCheck(rawTitle);
   if (newTokens.size < 3) return { isDuplicate: false };
@@ -2876,10 +2876,26 @@ function bodyOverlapRatio(a: string, b: string): number {
   for (const w of ta) if (tb.has(w)) shared++;
   return shared / Math.min(ta.size, tb.size);
 }
+// Two tags name the same real-world entity when one IS the other's initials —
+// e.g. "JCW" and "Juggalo Championship Wrestling" — which happens whenever one
+// source's AI translation run abbreviates a promotion/org and another spells it
+// out in full. Without this, a genuine cross-source duplicate about a narrow
+// person+org story is missed because the two "specific" tags never match as
+// exact strings even though they clearly refer to the same organization.
+function tagInitials(tag: string): string {
+  return tag.trim().split(/\s+/).map(w => w[0] || "").join("").toUpperCase();
+}
+function tagsRefertoSameEntity(a: string, b: string): boolean {
+  if (a === b) return true;
+  const isAcronym = (t: string) => /^[A-Z]{2,6}$/.test(t.trim());
+  if (isAcronym(a) && a.trim().length > 1 && tagInitials(b) === a.trim()) return true;
+  if (isAcronym(b) && b.trim().length > 1 && tagInitials(a) === b.trim()) return true;
+  return false;
+}
 export function findLikelyDuplicateStoryByTagsAndBody(
   newTags: string[],
   newBody: string,
-  hoursWindow: number = 6,
+  hoursWindow: number = 24,
   newsDir: string = NEWS_DIR
 ): { isDuplicate: boolean; matchedFile?: string } {
   const specificNewTags = [...new Set((newTags || []).map(t => (t || "").trim()).filter(t => t && !isGenericTag(t)))];
@@ -2895,7 +2911,7 @@ export function findLikelyDuplicateStoryByTagsAndBody(
       if (!tagsBlockMatch) continue;
       const existingTags = [...tagsBlockMatch[1].matchAll(/^\s*-\s*(.+?)\s*$/gm)].map(m => m[1]);
       const specificExistingTags = existingTags.filter(t => t && !isGenericTag(t));
-      const sharedTags = specificNewTags.filter(t => specificExistingTags.includes(t));
+      const sharedTags = specificNewTags.filter(t => specificExistingTags.some(e => tagsRefertoSameEntity(t, e)));
       if (sharedTags.length < 2) continue;
       const closingIdx = content.indexOf("\n---\n");
       const existingBody = closingIdx >= 0 ? content.slice(closingIdx + 5) : content;

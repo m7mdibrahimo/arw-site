@@ -432,6 +432,50 @@ test('post-translation guard never blocks a broader story that only mentions the
   }
 });
 
+test('cross-source dedup window covers a full day, not just 6 hours', () => {
+  // Motivated by production: Ringside News published "Vince Russo Leaves JCW..."
+  // at 04:43, and WrestlingInc published a follow-up about the same announcement
+  // at 16:00 — 11.3 hours later. The old 6-hour default meant the first article
+  // had already aged out of the scan by the time the second one arrived, so a
+  // duplicate with strong title-word overlap could never be caught this late.
+  // Word-overlap thresholds (not the time window) are what prevent false
+  // positives, so widening the window to a full day is safe.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-window-test-'));
+  try {
+    const filePath = path.join(dir, 'a.md');
+    fs.writeFileSync(filePath, '---\nsource_url: "https://www.fightful.com/wrestling/titus-oneil-moved-to-wwe-alumni-section/"\n---\nbody');
+    const elevenHoursAgo = new Date(Date.now() - 11.3 * 60 * 60 * 1000);
+    fs.utimesSync(filePath, elevenHoursAgo, elevenHoursAgo);
+    // Old default (6h) would miss this — the file is already older than that
+    // cutoff — but the new default (24h) must still catch it.
+    const dupe = findLikelyDuplicateStory(
+      "Titus O'Neil Quietly Moved To WWE Alumni Section Years Away From The Ring", undefined, dir);
+    assert.equal(dupe.isDuplicate, true);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('post-translation guard matches an acronym tag against its spelled-out equivalent', () => {
+  // A promotion abbreviated as "JCW" by one translation run and spelled out as
+  // "Juggalo Championship Wrestling" by another refer to the same organization,
+  // but never match as identical tag strings — undercounting shared specific
+  // tags below the required threshold of 2 even when the story is genuinely
+  // the same. Body text here is written to clearly overlap so this test isolates
+  // the tag-matching fix specifically, not the separate body-overlap threshold.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-acronym-test-'));
+  try {
+    const sharedBody = 'أعلن فينس روسو رسميا انفصاله عن اتحاد Juggalo Championship Wrestling بعد فترة طويلة من العمل معه، منهيا بذلك هذا الفصل من مسيرته المهنية والتعاون بينهما بشكل نهائي وودي بلا أي خلافات.';
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      `---\nsource_url: "https://www.ringsidenews.com/vince-russo-leaves-jcw/"\ntags:\n  - INDIE\n  - فينس روسو\n  - JCW\nimage: /content/images/x.jpg\n---\n${sharedBody}`);
+    const dupe = findLikelyDuplicateStoryByTagsAndBody(
+      ['INDIE', 'فينس روسو', 'Juggalo Championship Wrestling'], sharedBody, 24, dir);
+    assert.equal(dupe.isDuplicate, true);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
   // Reached production: a tag and the article body both showed
   // "عرض MLPعرض MLPعرض MLPعرض MLP Northern Rising" — the old regex only matched
