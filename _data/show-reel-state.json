@@ -1901,13 +1901,11 @@
     "publishedAt": 1790146381053,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض تي ان ايه اكسبلوجن 18.09.2026 مترجم",
-    "lastAttempt": 1790146471257,
-    "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
+    "lastAttempt": 1790149844866,
+    "errors": {},
     "reviewPlatforms": [],
     "needsReview": false
   },
