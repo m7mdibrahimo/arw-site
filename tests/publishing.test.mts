@@ -476,6 +476,31 @@ test('post-translation guard matches an acronym tag against its spelled-out equi
   }
 });
 
+test('post-translation guard catches a duplicate via a shared cited source link, even with only one matching tag', () => {
+  // Reached production: Ringside News's "First Look At MJF In Upcoming Thriller
+  // Stranglehold" and Fightful's "MJF, Kayla Becker And David Arquette Feature
+  // In First Trailer For Stranglehold" both cited the exact same source tweet
+  // (https://x.com/Collider/status/2100601926169592228) 10 minutes apart, but
+  // only "ام جيه اف" (MJF) matched as a shared specific tag — one article tagged
+  // the genre/industry, the other tagged the film's other cast members — so the
+  // required 2-tag threshold was never met and body overlap landed at 0.325,
+  // just under the 0.35 bar. The identical cited link is independent, stronger
+  // evidence and must catch this even when tags and body overlap both fall short.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-link-test-'));
+  try {
+    const existingBody = 'واصل نجم اتحاد AEW ام جيه اف تعزيز مسيرته السينمائية.\n\nhttps://x.com/Collider/status/2100601926169592228';
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      `---\nsource_url: "https://www.ringsidenews.com/first-look-mjf-upcoming-thriller-stranglehold/"\ntags:\n  - AEW\n  - ام جيه اف\n  - مشاريع سينمائية\n  - أفلام هوليوود\nimage: /content/images/x.jpg\n---\n${existingBody}`);
+
+    const newBody = 'ظهر النجم ام جيه اف إلى جانب كيلا بيكر وديفيد آركيت في المقطع الدعائي الأول لفيلم Stranglehold.\n\nhttps://x.com/Collider/status/2100601926169592228';
+    const dupe = findLikelyDuplicateStoryByTagsAndBody(
+      ['AEW', 'ام جيه اف', 'ديفيد آركيت', 'كيلا بيكر'], newBody, 24, dir);
+    assert.equal(dupe.isDuplicate, true);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
   // Reached production: a tag and the article body both showed
   // "عرض MLPعرض MLPعرض MLPعرض MLP Northern Rising" — the old regex only matched

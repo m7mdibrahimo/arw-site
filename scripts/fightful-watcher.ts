@@ -2892,6 +2892,15 @@ function tagsRefertoSameEntity(a: string, b: string): boolean {
   if (isAcronym(b) && b.trim().length > 1 && tagInitials(a) === b.trim()) return true;
   return false;
 }
+// Articles often close with the raw social-media post they were sourced from
+// (e.g. "https://x.com/Collider/status/2100601926169592228"). Two outlets citing
+// the literal same status link is near-certain proof they're covering the same
+// underlying event, even when they only share one distinctive tag (e.g. one
+// article tags the film's other cast members while the other tags the genre) —
+// a signal word-overlap and tag-overlap alone can both miss.
+function extractSpecificSourceLinks(text: string): string[] {
+  return (text.match(/https?:\/\/\S+\/status\/\d+/gi) || []).map(u => u.replace(/[.,)\]]+$/, ""));
+}
 export function findLikelyDuplicateStoryByTagsAndBody(
   newTags: string[],
   newBody: string,
@@ -2900,6 +2909,7 @@ export function findLikelyDuplicateStoryByTagsAndBody(
 ): { isDuplicate: boolean; matchedFile?: string } {
   const specificNewTags = [...new Set((newTags || []).map(t => (t || "").trim()).filter(t => t && !isGenericTag(t)))];
   if (specificNewTags.length < 2 || !fs.existsSync(newsDir)) return { isDuplicate: false };
+  const newLinks = extractSpecificSourceLinks(newBody);
   const cutoff = Date.now() - hoursWindow * 60 * 60 * 1000;
   for (const file of fs.readdirSync(newsDir)) {
     if (!file.endsWith(".md")) continue;
@@ -2912,9 +2922,11 @@ export function findLikelyDuplicateStoryByTagsAndBody(
       const existingTags = [...tagsBlockMatch[1].matchAll(/^\s*-\s*(.+?)\s*$/gm)].map(m => m[1]);
       const specificExistingTags = existingTags.filter(t => t && !isGenericTag(t));
       const sharedTags = specificNewTags.filter(t => specificExistingTags.some(e => tagsRefertoSameEntity(t, e)));
-      if (sharedTags.length < 2) continue;
       const closingIdx = content.indexOf("\n---\n");
       const existingBody = closingIdx >= 0 ? content.slice(closingIdx + 5) : content;
+      const sharedLink = newLinks.some(link => extractSpecificSourceLinks(existingBody).includes(link));
+      if (sharedLink) return { isDuplicate: true, matchedFile: file };
+      if (sharedTags.length < 2) continue;
       if (bodyOverlapRatio(newBody, existingBody) >= 0.35) {
         return { isDuplicate: true, matchedFile: file };
       }
