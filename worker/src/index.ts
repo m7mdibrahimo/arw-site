@@ -1885,6 +1885,24 @@ async function eligiblePublication(env: Env, articleUrl: string): Promise<boolea
   } catch { return false; }
 }
 
+// Same date cutoff as eligiblePublication, but resolved independently for show
+// reel videos: a show whose air date is before the cutoff must still be able to
+// finish publishing to platforms it hasn't reached yet if it was already
+// accepted into the pipeline before (i.e. it already has a show-reel-state.json
+// entry — proof, read directly from GitHub rather than trusted from the caller,
+// that this isn't an old show being newly/accidentally republished). Mirrors
+// shouldProcessShow() in scripts/show-reel-monitor.ts, which had the same bug:
+// without this, a show that aired just before WATCHER_MIN_DATE and got Instagram
+// published but not Facebook could never complete Facebook, forever.
+async function hasTrackedShowProgress(env: Env, videoFilename: string): Promise<boolean> {
+  try {
+    const response = await fetch(cacheBust(`https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${env.GITHUB_BRANCH}/_data/show-reel-state.json`));
+    if (!response.ok) return false;
+    const state: Record<string, any> = await response.json();
+    return Object.keys(state).some(slug => videoFilename === `reel-${slug}.mp4` || videoFilename === `reel-${slug.slice(0, 45)}.mp4`);
+  } catch { return false; }
+}
+
 // A parsed watcher-recent-content.json is only trustworthy if it actually
 // looks like the site's own content feed and not, say, a SPA-fallback HTML
 // page that happened to parse-as-JSON-shaped, or some other feed entirely.
@@ -2783,7 +2801,8 @@ export default {
             || videoHost.origin === "https://raw.githubusercontent.com" && videoHost.pathname.startsWith(`/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${env.GITHUB_BRANCH}/dist/videos/`);
           if (!sourceAllowed) return json({ success: false, error: "يجب استخدام فيديو من مكتبة الموقع." }, 400);
 
-          if (!body.postUrl || !await eligiblePublication(env, String(body.postUrl))) {
+          const videoFilename = decodeURIComponent(videoHost.pathname.split("/").pop() || "");
+          if (!body.postUrl || (!await eligiblePublication(env, String(body.postUrl)) && !await hasTrackedShowProgress(env, videoFilename))) {
             return json({ success: false, code: "CONTENT_NOT_ELIGIBLE", error: "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد." }, 409);
           }
 
@@ -2803,7 +2822,6 @@ export default {
 
 
           const results: Record<string, any> = {};
-          const asset = decodeURIComponent(videoHost.pathname.split("/").pop() || "");
           for (const platform of [...new Set(requestedPlatforms)]) {
             const network: "facebook" | "instagram" | "tiktok" = platform.startsWith("facebook") ? "facebook" : platform === "tiktok" ? "tiktok" : "instagram";
             if (platform === "tiktok" && env.TIKTOK_AUTO_ENABLED !== "true") {
@@ -2822,7 +2840,7 @@ export default {
               : platform === "tiktok" ? postVideoToTikTok(env, { videoUrl: fullVideoUrl, title, postUrl })
               : postVideoToInstagramStory(env, { videoUrl: fullVideoUrl });
             try {
-              results[platform] = await deliverOnce(env, `video:${platform}:${asset}`, async () => {
+              results[platform] = await deliverOnce(env, `video:${platform}:${videoFilename}`, async () => {
                 const result = await send();
                 if (!result.ok && (/limit how often|spam|quota|rate.limit|too many|temporarily blocked/i.test(result.error || "")
                   || [4, 17, 32, 368, 613].includes(result.result?.error?.code))) {

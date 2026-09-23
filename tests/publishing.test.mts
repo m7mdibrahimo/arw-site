@@ -232,6 +232,32 @@ test('old, undated and unknown articles cannot reach video publishing even with 
   }
 });
 
+test('a show already tracked in show-reel-state.json can finish publishing even though its air date is before the cutoff', async t => {
+  // Same bug as isShowEligible/shouldProcessShow, but this is the Worker's own
+  // independent copy of the date gate — reproduces incident #10: a show whose
+  // Instagram already succeeded before WATCHER_MIN_DATE was raised could never
+  // get its still-pending Facebook platforms published, because this endpoint
+  // re-rejected it on every retry regardless of the caller's own state.
+  t.mock.method(globalThis, 'fetch', async (input: any) => {
+    const url = String(input);
+    if (url === 'https://api.github.com/repos/owner/repo/collaborators?per_page=1') return Response.json([]);
+    if (url.startsWith('https://site.test/search-index.json')) return Response.json([{ url: '/old-show/', date: '2026-09-21T00:22:00Z' }]);
+    if (url.startsWith('https://raw.githubusercontent.com/owner/repo/main/_data/show-reel-state.json')) {
+      return Response.json({ '20260921002200-old-show': { instagram_reel: true, instagram_story: true, facebook_reel: false, facebook_story: false } });
+    }
+    if (url === 'https://graph.facebook.com/v21.0//video_reels') return Response.json({ video_id: 'v1', upload_url: 'https://upload.test' });
+    throw new Error('Unexpected external request: ' + url);
+  });
+  const response = await worker.fetch(new Request('https://worker/api/videos/publish-social', {
+    method: 'POST', headers: { Authorization: 'Bearer authorized-test-token' },
+    body: JSON.stringify({
+      videoUrl: 'https://site.test/videos/reel-20260921002200-old-show.mp4',
+      postUrl: '/old-show/', platforms: ['facebook_reel'],
+    }),
+  }), { ...env, SITE_ORIGIN: 'https://site.test', WATCHER_MIN_DATE: '2026-09-21T19:13:59Z' } as any);
+  assert.notEqual(response.status, 409);
+});
+
 // ── Regression tests for incidents found and fixed on 2026-09-22 ──────────────
 // Each of these reproduces a defect that actually reached production once, so a
 // future change can't silently reintroduce it without breaking the suite.
