@@ -1,5 +1,15 @@
 [
   {
+    "id": 330001,
+    "link": "https://www.fightful.com/wrestling/njpw-battle-line-hokkaido-results-9-23-26-two-championship-matches/",
+    "date": "2026-09-23T05:16:25",
+    "date_gmt": "2026-09-23T09:16:25",
+    "title": {
+      "rendered": "NJPW Battle Line Hokkaido Results (9/23/26): Two Championship Matches"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/17082716/Untitled-Design-15.jpg"
+  },
+  {
     "id": 329983,
     "link": "https://www.fightful.com/wrestling/cmll-martes-de-arena-mexico-results-9-22-2026-soberano-jr-vs-angel-de-oro-vs-barbaro-cavernario-more/",
     "date": "2026-09-23T01:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Nyla Rose Doesn&#8217;t Think Tony Khan Is To Blame For AEW Absence, &#8216;There May Be Some Things I Can&#8217;t Talk About&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19144407/maxresdefault-127.jpg"
-  },
-  {
-    "id": 329890,
-    "link": "https://www.fightful.com/wrestling/full-card-for-sareee-ism-chapter-xii/",
-    "date": "2026-09-22T13:38:58",
-    "date_gmt": "2026-09-22T17:38:58",
-    "title": {
-      "rendered": "Full Card For Sareee-ISM Chapter XII"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/22133310/HSyxrwZaUAA5WFU.jpg"
   }
 ]
