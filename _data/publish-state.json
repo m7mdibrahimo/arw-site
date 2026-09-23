@@ -7354,5 +7354,7 @@
     "expiresAt": 1790263242097,
     "openId": "-000JuRRt3BR014FJAj1kkvBy275mlVz2419"
   },
-  "videoCooldowns": {}
+  "videoCooldowns": {
+    "tiktok": 1790272463079
+  }
 }
