@@ -1749,6 +1749,20 @@ function getArabicDateFormatted(dateString?: string): string {
   return `${d.getDate()} ${monthsArabic[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+// Real mistakes that reached production before being caught and patched downstream
+// in sanitizeWrestlingTerms() / the title-validity check — listed here so the model
+// avoids them at generation time instead of relying only on being cleaned up
+// afterward. Shared by both the main article rewrite and the title-optimizer passes
+// below, since the observed failures happened in both. Add a new line here whenever
+// a genuinely new *class* of mistake (not a one-off typo) is found; see INCIDENTS.md.
+const KNOWN_MISTAKES_TO_AVOID = `
+أخطاء حقيقية حصلت من قبل ووصلت للموقع المباشر — تجنبها تماماً:
+- **العنوان يجب أن يكون عربياً بالكامل كجملة**: حتى لو بقيت فيه أسماء أو اختصارات إنجليزية (WWE، AEW، أسماء المصارعين...)، يُمنع أن يخرج العنوان بأكمله بالإنجليزية أو أغلبه بالإنجليزية دون ترجمة حقيقية لمعناه.
+- **ممنوع إلصاق أي حرف عربي مباشرة بكلمة إنجليزية بدون مسافة** (حصل فعلياً: "AEW Liveة" بدلاً من "AEW Live"). كلمة Live أو أي اسم إنجليزي يبقى مستقلاً بحروفه الإنجليزية فقط، بدون أي لاحقة عربية ملتصقة به.
+- **ممنوع استخدام حروف فارسية بدلاً من عربية** (حصل فعلياً: "تگ کلاسیک" بدلاً من "تاغ كلاسيك"؛ الفرق: ک/ی فارسية مقابل ك/ي عربية). استخدم الحروف العربية القياسية فقط دائماً.
+- **راجع توافق الجنس النحوي (مذكر/مؤنث) مع فاعل الجملة الحقيقي** (حصل فعلياً: كتابة "موقفها" بدلاً من "موقفه" عند الحديث عن مصارع رجل). تأكد أن الضمائر والصفات تطابق جنس الشخص المقصود فعلياً في كل جملة.
+`;
+
 // Second-pass AI Tool: Select and craft the ultimate faithful, click-worthy, SEO-optimized title
 export async function optimizeTitleForSEOAndCTR(
   originalTitle: string,
@@ -1933,7 +1947,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذ
 
 القواعد الصارمة الملزمة لجميع العناوين:
 ${specificTitleRules}
-
+${KNOWN_MISTAKES_TO_AVOID}
 ملخص ومحتوى المقال:
 ${articleSummary.slice(0, 3000)}
 
@@ -2261,7 +2275,7 @@ async function rewriteWithGemini(
    - أول وسمين إلزاميين: اسم الاتحاد واسم العرض (مثل "WWE", "WWE RAW" أو "AEW", "AEW Dynamite").
    - باقي الوسوم تكون بالعربية حصراً: أسماء أبرز النجوم المشاركين، اسم الحدث الرئيسي، أو نوع البطولة.
    - ممنوع وضع كلمات إنجليزية في الوسوم غير اسم الاتحاد واسم العرض!
-
+${KNOWN_MISTAKES_TO_AVOID}
 تاريخ الحدث: ${arabicDate}
 بيانات المقال الأصلي:
 العنوان: ${originalTitle}
@@ -2420,7 +2434,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
 6. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
 7. **حظر ذكر Fightful نهائياً وحظر عبارة 'مصادرنا الخاصة' قطيعاً**: ممنوع منعاً باتاً ومطلقاً استخدام عبارات مثل "أفادت مصادرنا الخاصة" أو "كشفت مصادرنا الخاصة" أو "مصادرنا" أو الادعاء بوجود مصادر خاصة لعرب راسلنج. ادخل في صلب الخبر مباشرة واذكر التفاصيل بأسلوب صحفي محايد ومباشر (مثل: "كشفت تقارير صحفية"، "أكدت التطورات الأخيرة"، أو البدء بالحدث مباشرة: "يستعد المصارع..." أو "أعلن اتحاد WWE رسمياً..."). ممنوع بتاتاً ذكر Fightful أو محرريها.
 8. **الوسوم (tags)**: بين 5 إلى 7 وسوم دقيقة (تتضمن اسم الاتحاد بالإنجليزية مثل WWE أو AEW، واسم العرض بالإنجليزية مثل WWE RAW، وباقي الوسوم وأسماء المصارعين بالعربية).
-
+${KNOWN_MISTAKES_TO_AVOID}
 الخبر الأصلي:
 العنوان: ${originalTitle}
 التصنيفات: ${categories.join(", ")}
