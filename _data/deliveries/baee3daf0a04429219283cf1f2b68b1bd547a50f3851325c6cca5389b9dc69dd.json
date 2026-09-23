@@ -1,1 +1,1 @@
-{"key":"video:tiktok:reel-20260923063300-wwe-nxt-22-09-2026.mp4","owner":"33a15c74-e45d-4bd1-87ea-06ee72a0fc9b","status":"sending","updatedAt":1790186873768}
+{"key":"video:tiktok:reel-20260923063300-wwe-nxt-22-09-2026.mp4","owner":"33a15c74-e45d-4bd1-87ea-06ee72a0fc9b","status":"failed","updatedAt":1790186875493,"retryAt":1790189575493,"error":"Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url (log_id: 20260924020755D49C46968FE4099A86E5)"}
