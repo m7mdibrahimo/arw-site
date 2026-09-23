@@ -1,1 +1,1 @@
-{"key":"video:tiktok:reel-2026-08-05-raw-03-08-2026.mp4","owner":"25727d40-c483-4eaa-ba68-e8c09cdbaad0","status":"sending","updatedAt":1790186042300}
+{"key":"video:tiktok:reel-2026-08-05-raw-03-08-2026.mp4","owner":"25727d40-c483-4eaa-ba68-e8c09cdbaad0","status":"failed","updatedAt":1790186043712,"retryAt":1790188743712,"error":"Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url"}
