@@ -344,18 +344,25 @@ export function findKnownArabicNames(text: string): string[] {
 // all 2000+ names without hand-listing exceptions in the prompt one at a time.
 export function buildNamesGlossaryHint(sourceText: string): string {
   if (!sourceText || typeof sourceText !== "string") return "";
-  const pairs: string[] = [];
-  for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
-    if (!english || !arabic || english === arabic) continue;
+  const matches: string[] = [];
+  for (const [english] of Object.entries(WRESTLER_NAMES_MAP)) {
+    if (!english || english === WRESTLER_NAMES_MAP[english]) continue;
     if (FEDERATION_OR_SHOW_NAME.test(english.trim())) continue;
     try {
       const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      if (new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "iu").test(sourceText)) {
-        pairs.push(`${english} = ${arabic}`);
-      }
+      if (new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "iu").test(sourceText)) matches.push(english);
     } catch (e) {}
   }
-  if (!pairs.length) return "";
+  // A short name that is itself a whole-word substring of a longer matched name
+  // (e.g. "Rush" inside "Lio Rush") must be dropped, not just also listed — telling
+  // the model "Rush = روش" right next to "Lio Rush = ليو راش" is self-contradicting
+  // guidance for the very same word, and can reproduce the exact bug this hint
+  // exists to prevent (e.g. splicing the two into "ليو روش").
+  const names = matches.filter(name =>
+    !matches.some(other => other !== name && other.length > name.length &&
+      new RegExp(`(?<!\\p{L})${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?!\\p{L})`, "iu").test(other)));
+  if (!names.length) return "";
+  const pairs = names.map(n => `${n} = ${WRESTLER_NAMES_MAP[n]}`);
   return `\nأسماء معتمدة يجب كتابتها بالضبط بهذا الشكل حيثما وردت (ممنوع أي تعريب صوتي بديل مهما بدا معقولاً):\n${pairs.join("\n")}\n`;
 }
 

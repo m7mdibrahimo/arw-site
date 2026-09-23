@@ -517,6 +517,26 @@ test('names glossary hint surfaces the canonical Arabic spelling for a name in t
   assert.equal(empty.includes('Thunder Rosa'), false);
 });
 
+test('names glossary hint drops a short name subsumed by a longer matched name', () => {
+  // Reached production: "Lio Rush" (glossary: "ليو راش") got written as "ليو روش"
+  // instead — a splice with the UNRELATED wrestler "Rush" (glossary: "روش"). The
+  // first version of this hint made that worse, not better: for text containing
+  // "Lio Rush" it surfaced BOTH "Lio Rush = ليو راش" AND "Rush = روش" side by
+  // side, since "Rush" is also a literal whole-word match inside "Lio Rush" —
+  // self-contradicting guidance for the same word that could reproduce the exact
+  // splice it exists to prevent. The shorter name must be dropped whenever it is
+  // a whole-word substring of a longer name also present in the same text.
+  const hint = buildNamesGlossaryHint('Lio Rush appeared on ROH TV tonight.');
+  assert.match(hint, /Lio Rush = ليو راش/);
+  assert.equal(/(?<!Lio )Rush = روش/.test(hint), false, 'standalone "Rush" must not also be listed');
+
+  // But text that only mentions the unrelated "Rush" (not "Lio Rush") must still
+  // get its own hint — the suppression only applies when the longer name is
+  // ALSO present in the same text.
+  const standalone = buildNamesGlossaryHint('Rush defended the AAA Mega Championship tonight.');
+  assert.match(standalone, /Rush = روش/);
+});
+
 test('sanitizeWrestlingTerms drops an orphaned English "The" glued to a transliterated team name', () => {
   // Reached production twice: "فريق The نيو ليفل" and "فريق The يانج باكس" — the
   // team name itself got transliterated to Arabic, but the English article "The"
