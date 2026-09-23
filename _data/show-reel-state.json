@@ -1899,6 +1899,6 @@
     "reviewPlatforms": [
       "instagram_reel"
     ],
-    "needsReview": false
+    "needsReview": true
   }
 }
