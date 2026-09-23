@@ -1,1 +1,1 @@
-{"key":"video:tiktok:reel-20260919093100-wwe-smackdown-18-09-2026.mp4","owner":"d49f535c-f969-45a7-9210-73e580e3084b","status":"sending","updatedAt":1790189599263}
+{"key":"video:tiktok:reel-20260919093100-wwe-smackdown-18-09-2026.mp4","owner":"d49f535c-f969-45a7-9210-73e580e3084b","status":"failed","updatedAt":1790189600737,"retryAt":1790192300737,"error":"Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url (log_id: 2026092402532094F01AE13C97D487F44E)"}
