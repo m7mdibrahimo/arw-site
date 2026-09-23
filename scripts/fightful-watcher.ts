@@ -424,6 +424,15 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/AEW\s+AEW/g, "AEW")
     .replace(/TNA\s+TNA/g, "TNA")
 
+    // A team name given the "The X" treatment (per the team-name prompt rule
+    // allowing e.g. "فريق The Demand") sometimes only gets its own name
+    // transliterated to Arabic while the English article is left glued in
+    // front of it — "فريق The نيو ليفل" instead of either "فريق The New Level"
+    // (fully English) or "فريق نيو ليفل" (fully Arabic). Neither is readable;
+    // dropping the orphaned "The" leaves the fully-Arabic form, which is how
+    // these team names are written everywhere else on the site.
+    .replace(/\bThe\s+(?=[؀-ۿ])/g, "")
+
     // Protect "Live" — always stays in English in show names (WWE NXT Live, WWE Live, etc.)
     // Note: \b word boundaries don't work between ASCII (NXT) and Arabic (الحي), so no \b here.
     // "المباشر"/"الحي" can appear with a trailing feminine ة (المباشرة/الحية) when the AI

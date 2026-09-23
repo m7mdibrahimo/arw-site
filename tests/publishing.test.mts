@@ -517,6 +517,18 @@ test('names glossary hint surfaces the canonical Arabic spelling for a name in t
   assert.equal(empty.includes('Thunder Rosa'), false);
 });
 
+test('sanitizeWrestlingTerms drops an orphaned English "The" glued to a transliterated team name', () => {
+  // Reached production twice: "فريق The نيو ليفل" and "فريق The يانج باكس" — the
+  // team name itself got transliterated to Arabic, but the English article "The"
+  // was left glued in front of it instead of being dropped or, alternatively,
+  // the whole name kept in English. Neither half-and-half form is readable.
+  assert.equal(sanitizeWrestlingTerms('فريق The نيو ليفل'), 'فريق نيو ليفل');
+  assert.equal(sanitizeWrestlingTerms('فريق The يانج باكس يحسمان الجدل'), 'فريق يانج باكس يحسمان الجدل');
+  // A team name that stayed fully English must be left untouched — the rule
+  // only targets "The" immediately followed by Arabic script.
+  assert.equal(sanitizeWrestlingTerms('فريق The Young Bucks قادم بقوة'), 'فريق The Young Bucks قادم بقوة');
+});
+
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
   // Reached production: a tag and the article body both showed
   // "عرض MLPعرض MLPعرض MLPعرض MLP Northern Rising" — the old regex only matched
