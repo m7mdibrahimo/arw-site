@@ -1,1 +1,1 @@
-{"key":"video:tiktok:reel-20260922072700-wwe-raw-21-09-2026.mp4","owner":"4ca42b14-2083-43f0-b6c1-df0a75d6ead0","status":"sending","updatedAt":1790181596697}
+{"key":"video:tiktok:reel-20260922072700-wwe-raw-21-09-2026.mp4","owner":"4ca42b14-2083-43f0-b6c1-df0a75d6ead0","status":"failed","updatedAt":1790181598172,"retryAt":1790184298172,"error":"Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url"}
