@@ -1,5 +1,15 @@
 [
   {
+    "id": 2560160582,
+    "link": "https://www.wrestlinginc.com/2266110/wwe-nxt-september-22-2026-3-things-hated-loved-opinion-review/",
+    "date": "Wed, 23 Sep 2026 04:00:16 +0000",
+    "date_gmt": "2026-09-23T04:00:16.000Z",
+    "title": {
+      "rendered": "WWE NXT - 9/22/2026: 3 Things We Hated & 3 We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-9222026-3-things-we-hated-3-we-loved/l-intro-1790135944.jpg"
+  },
+  {
     "id": 2956998986,
     "link": "https://www.wrestlinginc.com/2266077/thea-hail-set-wwe-nxt-womens-na-title-match/",
     "date": "Wed, 23 Sep 2026 02:26:27 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE RAW 9/21/2026: 3 Things We Hated & 3 Things We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-9212026-3-things-we-hated-3-things-we-loved/l-intro-1790050660.jpg"
-  },
-  {
-    "id": 1226921286,
-    "link": "https://www.wrestlinginc.com/2264941/wwe-smackdown-jbl-somber-september-11-2001/",
-    "date": "Tue, 22 Sep 2026 03:58:48 +0000",
-    "date_gmt": "2026-09-22T03:58:48.000Z",
-    "title": {
-      "rendered": "JBL Recalls Somber WWE SmackDown After 9/11"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-jbl-somber-september-11-2001/l-intro-1790051335.jpg"
   }
 ]
