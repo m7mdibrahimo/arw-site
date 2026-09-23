@@ -7,7 +7,7 @@ import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, hasRealFailure } from '../scripts/show-reel-monitor';
-import { sanitizeWrestlingTerms, findLikelyDuplicateStory } from '../scripts/fightful-watcher';
+import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -300,6 +300,74 @@ test('a cross-source duplicate story is detected and skipped, unrelated stories 
 
     const unrelated = findLikelyDuplicateStory('CM Punk Announces Retirement Plans For Next Year', 6, dir);
     assert.equal(unrelated.isDuplicate, false, 'a genuinely different story must never be blocked');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('plural/singular wording alone no longer hides a cross-source duplicate', () => {
+  // Reached production: Fightful's "TBS Title Bout, Will Ospreay Match Added To
+  // 9/23 AEW Dynamite/Collision" and Ringside News's "Two New Matches Added To
+  // September 23 AEW Dynamite And Collision Special" (17 minutes later) covered
+  // the exact same two additions to the same card, but the overlap ratio landed
+  // at 0.5 — just under the 0.6 bar — purely because "matches"/"match" and
+  // "added"/"added" didn't line up as identical strings without stemming.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-stem-test-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      '---\nsource_url: "https://www.fightful.com/wrestling/tbs-title-bout-will-ospreay-match-added-to-9-23-aew-dynamite-collision/"\n---\nbody');
+    const dupe = findLikelyDuplicateStory(
+      'Two New Matches Added to September 23 AEW Dynamite and Collision Special', 6, dir);
+    assert.equal(dupe.isDuplicate, true);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('post-translation tag+body guard catches duplicates whose headlines share no words', () => {
+  // Reached production twice: (1) Ringside News's "Two AEW Talents Have Years
+  // Left On AEW Contracts, Quiet Re-Signings" vs Fightful's "Details On The AEW
+  // Status Of Kip Sabian And Penelope Ford" — same re-signing story, 33 minutes
+  // apart, zero shared distinctive title words. (2) Ringside News's "Gable
+  // Steveson Breaks Silence After 12-Second UFC 331 Knockout And Pre-Fight
+  // Allegations" vs Fightful's "Gable Steveson Denies 2019 Rape Allegation,
+  // Issues Statement On KO Loss" — same statement, 40 minutes apart. Neither pre-
+  // translation title/slug check (which only sees the raw, name-free headlines)
+  // can catch these; the AI-translated tags and body, once available, can.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-tagbody-test-'));
+  try {
+    const existingBody = 'أكدت التقارير أن الثنائي كيب سابيان وبينيلوبي فورد جددا عقودهما بهدوء مع اتحاد AEW لسنوات قادمة دون أي ضجيج إعلامي، لينفيا بذلك شائعات اقتراب رحيلهما عن الاتحاد بعد تداول معلومات غير دقيقة حول عقود نجوم AEW.';
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      `---\nsource_url: "https://www.ringsidenews.com/two-aew-talents-have-years-left-aew-contracts-quiet-re-signings/"\ntags:\n  - AEW\n  - كيب سابيان\n  - بينيلوبي فورد\n  - عقود المصارعة\nimage: /content/images/x.jpg\n---\n${existingBody}`);
+
+    const newBody = 'كشفت تقارير صحفية عن تفاصيل موقف كيب سابيان وبينيلوبي فورد مع اتحاد AEW، حيث أكدت المصادر أنهما جددا عقودهما بهدوء دون ضجيج إعلامي رغم تكهنات سابقة حول اقتراب رحيلهما عن الاتحاد.';
+    const dupe = findLikelyDuplicateStoryByTagsAndBody(
+      ['AEW', 'كيب سابيان', 'بينيلوبي فورد', 'أخبار المصارعة الحرة'], newBody, 6, dir);
+    assert.equal(dupe.isDuplicate, true);
+    assert.equal(dupe.matchedFile, 'a.md');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('post-translation guard never blocks a broader story that only mentions the same people in passing', () => {
+  // A narrower "heated face-off" article and a later, much broader "full NXT
+  // card preview" article both legitimately tag Grayson Waller and Mason Rook —
+  // sharing two specific tags, same as the real duplicates above — but the
+  // preview's body is mostly about other matches entirely (women's title bout,
+  // Dusty Classic, Myles Borne's return). Tag overlap alone must never be enough;
+  // the bodies have to actually overlap too, or genuinely new coverage gets
+  // silently dropped.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-falsepos-test-'));
+  try {
+    const existingBody = 'تحدد رسميا موعد نزال بطولة WWE NXT بعد مواجهة كلامية ساخنة وجها لوجه بين غرايسون والر وميسون روك، حيث استحضر والر اسم الأسطورة جون سينا محذرا منافسه من الرهان على الشخص الخطأ.';
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      `---\nsource_url: "https://www.ringsidenews.com/wwe-nxt-championship-match-set-september-29-heated-face-off/"\ntags:\n  - WWE\n  - غرايسون والر\n  - ميسون روك\n  - بطولة NXT\nimage: /content/images/x.jpg\n---\n${existingBody}`);
+
+    const newBody = 'يشهد عرض WWE NXT القادم مواجهات حماسية، حيث يلتقي غرايسون والر مع ميسون روك، بينما تترقب الجماهير نزال بطولة السيدات لأمريكا الشمالية بين زاريا وثيا هيل. تتواصل منافسات بطولة داستي رودز للفرق بمواجهتين قويتين بين فراكسيوم ودارك ستيت، وبين بيرثرايت وميني فيكينغو، كما يسجل مايلز بورن عودته بعد هجومه الأخير على تافيون هايتس.';
+    const notDupe = findLikelyDuplicateStoryByTagsAndBody(
+      ['WWE', 'غرايسون والر', 'ميسون روك', 'بطولة NXT', 'بطولة السيدات لأمريكا الشمالية'], newBody, 6, dir);
+    assert.equal(notDupe.isDuplicate, false, 'a broader preview must never be blocked just for naming the same people');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }

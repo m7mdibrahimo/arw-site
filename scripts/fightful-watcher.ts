@@ -2756,8 +2756,22 @@ const DUPLICATE_STOPWORDS = new Set([
   "from", "is", "as", "at", "by", "his", "her", "their", "its", "he", "she", "they",
   "new", "says", "said", "about", "into", "out", "up", "vs", "who", "what", "why",
 ]);
+// Very light plural stemming: two outlets covering the same event routinely pick
+// different grammatical number for the same word ("matches" vs "match", "allegations"
+// vs "allegation") purely as a stylistic choice, which used to make otherwise-identical
+// headlines miss the overlap threshold by a single word. Only strips a bare trailing
+// "s"/"es" — never touches genuinely distinct short words or words already ending in "ss".
+function stemPlural(word: string): string {
+  if (word.length > 4 && word.endsWith("es") && !word.endsWith("ses")) return word.slice(0, -2);
+  if (word.length > 3 && word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
+  return word;
+}
 function tokenizeForDuplicateCheck(text: string): Set<string> {
-  return new Set((text.toLowerCase().match(/[a-z0-9']+/g) || []).filter(w => w.length > 2 && !DUPLICATE_STOPWORDS.has(w)));
+  return new Set(
+    (text.toLowerCase().match(/[a-z0-9']+/g) || [])
+      .filter(w => w.length > 2 && !DUPLICATE_STOPWORDS.has(w))
+      .map(stemPlural)
+  );
 }
 export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 6, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
@@ -2778,6 +2792,87 @@ export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number =
       const shared = [...newTokens].filter(t => existingTokens.has(t));
       const overlapRatio = shared.length / Math.min(newTokens.size, existingTokens.size);
       if (shared.length >= 3 && overlapRatio >= 0.6) {
+        return { isDuplicate: true, matchedFile: file };
+      }
+    } catch (e) {
+      continue;
+    }
+  }
+  return { isDuplicate: false };
+}
+
+// ── Cross-Source Duplicate Guard, Post-Translation Pass ────────────
+// findLikelyDuplicateStory (above) compares the raw English SOURCE title against
+// other stories' source URLs, before translation — cheap, but blind whenever the
+// headline itself never names the people involved. Two real cases reached
+// production despite that guard: Ringside News's "Two AEW Talents Have Years Left
+// On AEW Contracts, Quiet Re-Signings" vs Fightful's "Details On The AEW Status Of
+// Kip Sabian And Penelope Ford" (zero shared distinctive words, same story, 33
+// minutes apart), and Ringside News's "Gable Steveson Breaks Silence After
+// 12-Second UFC 331 Knockout And Pre-Fight Allegations" vs Fightful's "Gable
+// Steveson Denies 2019 Rape Allegation, Issues Statement On KO Loss" (same
+// statement, same fight, 40 minutes apart, but "allegations"/"allegation" and
+// "knockout"/"KO loss" never matched as literal words).
+//
+// By the time an article is translated, the AI-generated Arabic tags DO name the
+// people — and the same real person tends to get the same Arabic spelling from
+// one watcher run to the next, even though the *title itself* never mentioned
+// them. So tag overlap catches what pre-translation title-word overlap misses.
+// Requiring the article BODIES to also substantially overlap (not just the
+// people mentioned) is what keeps this from swallowing a legitimately broader
+// story that only touches the same person in passing — e.g. a full "next NXT
+// card" preview naming the same two wrestlers as an earlier, narrower article
+// about one confrontation on that card is NOT a duplicate of it.
+const GENERIC_TAG_MARKERS = ["المصارعة", "أخبار", "عقود", "كواليس", "اتحادات", "مستحقات", "تصريحات", "نجوم", "بطولة"];
+const KNOWN_PROMOTION_TAG = /^(WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|INDIE|MMA|UFC|NXT|RAW|SmackDown|iMPACT|Dynamite|Collision|Rampage)(\s+\S+)*$/i;
+function isGenericTag(tag: string): boolean {
+  const t = (tag || "").trim();
+  if (!t) return true;
+  if (KNOWN_PROMOTION_TAG.test(t)) return true;
+  return GENERIC_TAG_MARKERS.some(marker => t.includes(marker));
+}
+const CONTENT_STOPWORDS = new Set([
+  "من", "في", "على", "إلى", "الى", "عن", "مع", "أن", "ان", "إن", "لم", "لن", "قد", "هل", "لا", "ما", "كل",
+  "بعد", "قبل", "حيث", "حتى", "أو", "او", "ثم", "كان", "كانت", "كانوا", "يكون", "هذا", "هذه", "ذلك", "تلك",
+  "التي", "الذي", "الذين", "إلا", "الا", "كما", "بين", "ضد", "عند", "دون", "غير", "هناك", "نحو", "خلال", "إذا", "اذا",
+]);
+function tokenizeBodyForOverlap(text: string): Set<string> {
+  return new Set(
+    (text.toLowerCase().match(/[ء-يa-z0-9']+/g) || []).filter(w => w.length > 2 && !CONTENT_STOPWORDS.has(w))
+  );
+}
+function bodyOverlapRatio(a: string, b: string): number {
+  const ta = tokenizeBodyForOverlap(a);
+  const tb = tokenizeBodyForOverlap(b);
+  if (ta.size < 5 || tb.size < 5) return 0;
+  let shared = 0;
+  for (const w of ta) if (tb.has(w)) shared++;
+  return shared / Math.min(ta.size, tb.size);
+}
+export function findLikelyDuplicateStoryByTagsAndBody(
+  newTags: string[],
+  newBody: string,
+  hoursWindow: number = 6,
+  newsDir: string = NEWS_DIR
+): { isDuplicate: boolean; matchedFile?: string } {
+  const specificNewTags = [...new Set((newTags || []).map(t => (t || "").trim()).filter(t => t && !isGenericTag(t)))];
+  if (specificNewTags.length < 2 || !fs.existsSync(newsDir)) return { isDuplicate: false };
+  const cutoff = Date.now() - hoursWindow * 60 * 60 * 1000;
+  for (const file of fs.readdirSync(newsDir)) {
+    if (!file.endsWith(".md")) continue;
+    const fullPath = path.join(newsDir, file);
+    try {
+      if (fs.statSync(fullPath).mtimeMs < cutoff) continue;
+      const content = fs.readFileSync(fullPath, "utf-8");
+      const tagsBlockMatch = content.match(/\ntags:\n([\s\S]*?)\nimage:/);
+      if (!tagsBlockMatch) continue;
+      const existingTags = [...tagsBlockMatch[1].matchAll(/^\s*-\s*(.+?)\s*$/gm)].map(m => m[1]);
+      const specificExistingTags = existingTags.filter(t => t && !isGenericTag(t));
+      const sharedTags = specificNewTags.filter(t => specificExistingTags.includes(t));
+      if (sharedTags.length < 2) continue;
+      const closingIdx = content.indexOf("\n---\n");
+      const existingBody = closingIdx >= 0 ? content.slice(closingIdx + 5) : content;
+      if (bodyOverlapRatio(newBody, existingBody) >= 0.35) {
         return { isDuplicate: true, matchedFile: file };
       }
     } catch (e) {
@@ -2976,6 +3071,17 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     finalBody += `\n\n${embeds.join("\n\n")}`;
   }
   rewritten.tags = (rewritten.tags || []).map(t => sanitizeWrestlingTerms(applyNamesGlossary(t)));
+
+  // Second-pass cross-source duplicate guard, now that translation has produced
+  // real Arabic tags and body text (see findLikelyDuplicateStoryByTagsAndBody
+  // above for why this is needed in addition to the pre-translation check).
+  if (!isUpdate) {
+    const postDupe = findLikelyDuplicateStoryByTagsAndBody(rewritten.tags, finalBody);
+    if (postDupe.isDuplicate) {
+      console.log(`[Watcher] 🔁 Likely duplicate detected after translation (shared names + overlapping body with ${postDupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
+      return false;
+    }
+  }
 
   const slug = generateSlug(rewritten.title);
   const targetFileName = `${prefix}-${slug}.md`;
