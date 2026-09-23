@@ -2110,10 +2110,8 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض ان اكس تي 22.09.2026 مترجم",
-    "lastAttempt": 1790186074663,
-    "errors": {
-      "tiktok": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار."
-    },
+    "lastAttempt": 0,
+    "errors": {},
     "reviewPlatforms": [],
     "needsReview": false
   }
