@@ -572,6 +572,16 @@ test('sanitizeWrestlingTerms keeps WWF in English like every other federation na
   assert.equal(sanitizeWrestlingTerms('مسيرته في اتحاد دبليو دبليو إف'), 'مسيرته في WWF');
 });
 
+test('names glossary hint covers Violent J, added after inconsistent spellings reached production', () => {
+  // Reached production: "Violent J" (Insane Clown Posse / JCW owner) had no
+  // glossary entry at all, so two articles about the same Vince Russo/JCW
+  // story spelled him "فايولنت جاي" and a third spelled him "فايلنت جاي" —
+  // this class of bug (buildNamesGlossaryHint) can only help once a name is
+  // actually IN the glossary, so the missing entry itself was the root cause.
+  const hint = buildNamesGlossaryHint('Violent J broke his silence on Vince Russo leaving JCW.');
+  assert.match(hint, /Violent J = فايولنت جاي/);
+});
+
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
   // Reached production: a tag and the article body both showed
   // "عرض MLPعرض MLPعرض MLPعرض MLP Northern Rising" — the old regex only matched
