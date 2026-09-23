@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-nxt-22-09-2026/",
+    "title": "عرض ان اكس تي 22.09.2026 مترجم",
+    "subtitle": "WWE NXT 22.09.2026",
+    "image": "/img/3vWxVhbfxB-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض إن إكس تي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-raw-21-09-2026/",
     "title": "عرض الرو 21.09.2026 مترجم",
     "subtitle": "WWE RAW 21.09.2026",
@@ -86,27 +97,5 @@
     "kindLabel": "عرض",
     "badge": "حصرياً المباراة كاملة",
     "description": "مباراة ستيفاني فاكير ضد ليف مورغان كاملة مع جميع والأحداث."
-  },
-  {
-    "url": "/shows/nxt-15-09-2026",
-    "title": "عرض ان اكس تي 15.09.2026 مترجم",
-    "subtitle": "NXT 15.09.2026",
-    "image": "/img/EKrOPZ7IlF-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض إن إكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aaa-triplemania-34-night-2-2026",
-    "title": "عرض ايه ايه ايه تربل مانيا 34 الليلة الثانية 13.09.2026 مترجم",
-    "subtitle": "AAA TripleMania 34 Night 2 (2026)",
-    "image": "/img/c4NPqDBZq7-800.jpeg",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه تربل مانيا 34 الليلة الثانية مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
