@@ -1896,7 +1896,9 @@
     "errors": {
       "instagram_reel": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع."
     },
-    "reviewPlatforms": [],
+    "reviewPlatforms": [
+      "instagram_reel"
+    ],
     "needsReview": false
   }
 }
