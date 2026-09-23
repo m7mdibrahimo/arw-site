@@ -6,7 +6,7 @@ import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
-import { showUrl, findReelVideo, applyResults, isShowEligible, hasRealFailure } from '../scripts/show-reel-monitor';
+import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure } from '../scripts/show-reel-monitor';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -120,6 +120,18 @@ test('show links match Eleventy and retain explicit permalinks', () => {
   assert.equal(isShowEligible('20260921200000-new.md', {}), false);
   assert.equal(isShowEligible('new.md', {date: 'invalid'}), false);
   assert.equal(isShowEligible('new.md', {date: '2026-09-21T19:13:59Z'}), true);
+});
+test('a show already tracked with partial progress keeps retrying past the eligibility cutoff', () => {
+  const oldShowData = { date: '2026-09-21T05:33:00+03:00' };
+  // Never-seen old content stays excluded — the cutoff still does its job.
+  assert.equal(shouldProcessShow('old.md', oldShowData, undefined), false);
+  // But a show that already has a state entry (it was already accepted into the
+  // pipeline once, e.g. Instagram already published) must keep retrying the
+  // platforms still pending, even though its air date is before the cutoff —
+  // this is exactly what orphaned the UFC 331 shows' Facebook reel/story forever.
+  const partial = { facebook_reel: false, facebook_story: false, instagram_reel: true, instagram_story: true, tiktok: false, publishedAt: null } as any;
+  assert.equal(shouldProcessShow('old.md', oldShowData, partial), true);
+  assert.equal(shouldProcessShow('new.md', { date: '2026-09-21T19:13:59Z' }, undefined), true);
 });
 test('reel matching uses exact generator filename, never broad partial matches', () => {
   const slug = '20260921002200-ufc-331-van-vs-pantoja-2-early-prelims';

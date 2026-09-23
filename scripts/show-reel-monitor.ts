@@ -22,6 +22,15 @@ export function isShowEligible(filename: string, data: Record<string, any>): boo
   const date = data.date ? new Date(data.date).getTime() : NaN;
   return Number.isFinite(date) && date >= Date.parse('2026-09-21T19:13:59Z') && date <= Date.now();
 }
+// The date cutoff above exists only to stop the monitor from ever STARTING to
+// publish pre-existing old content it never saw before. It must not also block
+// a show that already has a state entry (meaning it was already accepted into
+// the pipeline and got at least one platform published) from finishing the
+// platforms still pending — otherwise a show that aired minutes before the
+// cutoff was raised is permanently orphaned with no way to ever complete.
+export function shouldProcessShow(filename: string, data: Record<string, any>, previous: Entry | undefined): boolean {
+  return isShowEligible(filename, data) || previous !== undefined;
+}
 export function showUrl(filename: string, data: Record<string, any>, origin = ORIGIN): string {
   const link = typeof data.permalink === 'string' && !data.permalink.includes('{{')
     ? data.permalink.replace(/index\.html$/, '')
@@ -85,9 +94,9 @@ export async function main() {
   let failures = 0;
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
     const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
-    if (!isShowEligible(filename, data)) continue;
     const slug = filename.replace(/\.md$/, '');
     const previous = state[slug];
+    if (!shouldProcessShow(filename, data, previous)) continue;
     if (previous?.needsReview) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
     const pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || TIKTOK_ENABLED));
