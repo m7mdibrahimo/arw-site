@@ -4,7 +4,7 @@ series_type: shows
 nostalgia_order: 5
 nostalgia_main: true
 title: "WWF Badd Blood: In Your House (1997)"
-headline: عرض باد بلود 29.09.1997 مترجم
+headline: عرض باد بلود 05.10.1997 مترجم
 tags:
   - WWE
   - نوستالجيا المصارعة
