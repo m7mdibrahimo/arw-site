@@ -1889,17 +1889,13 @@
     "publishedAt": 1790084375736,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض ان جيه بي دبليو 21.09.2026 مترجم",
     "lastAttempt": 1790137726643,
-    "errors": {
-      "instagram_reel": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع."
-    },
-    "reviewPlatforms": [
-      "instagram_reel"
-    ],
-    "needsReview": true
+    "errors": {},
+    "reviewPlatforms": [],
+    "needsReview": false
   },
   "20260923053600-tna-xplosion-18-09-2026": {
     "publishedAt": null,
