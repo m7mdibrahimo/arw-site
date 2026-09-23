@@ -1,5 +1,15 @@
 [
   {
+    "id": 2956998986,
+    "link": "https://www.wrestlinginc.com/2266077/thea-hail-set-wwe-nxt-womens-na-title-match/",
+    "date": "Wed, 23 Sep 2026 02:26:27 +0000",
+    "date_gmt": "2026-09-23T02:26:27.000Z",
+    "title": {
+      "rendered": "Thea Hail Set For WWE NXT Women's NA Title Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/thea-hail-set-for-wwe-nxt-womens-na-title-match/l-intro-1790130327.jpg"
+  },
+  {
     "id": 2371873655,
     "link": "https://www.wrestlinginc.com/2266068/romeo-moreno-noam-dar-more-advance-wwe-nxt-dusty-rhodes-tag-team-classic/",
     "date": "Wed, 23 Sep 2026 01:38:22 +0000",
@@ -188,15 +198,5 @@
       "rendered": "JBL Recalls Somber WWE SmackDown After 9/11"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-jbl-somber-september-11-2001/l-intro-1790051335.jpg"
-  },
-  {
-    "id": 1702711450,
-    "link": "https://www.wrestlinginc.com/2264918/wwe-raw-penta-mens-mitb-money-in-the-bank-solo-sikoa/",
-    "date": "Tue, 22 Sep 2026 02:41:32 +0000",
-    "date_gmt": "2026-09-22T02:41:32.000Z",
-    "title": {
-      "rendered": "Penta Qualifies For Men's MITB Ladder Match After Replacing Solo Sikoa On WWE Raw"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-penta-mens-mitb-money-in-the-bank-solo-sikoa/l-intro-1790045748.jpg"
   }
 ]
