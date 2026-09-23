@@ -1,5 +1,15 @@
 [
   {
+    "id": 3706691625,
+    "link": "https://www.wrestlinginc.com/2266822/aew-all-out-2026-draws-duds-will-ospreay-jon-moxley-steven-borden/",
+    "date": "Wed, 23 Sep 2026 18:25:00 +0000",
+    "date_gmt": "2026-09-23T18:25:00.000Z",
+    "title": {
+      "rendered": "AEW All Out 2026: Draws & Duds"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-all-out-2026-draws-duds/l-intro-1790187778.jpg"
+  },
+  {
     "id": 5022887459,
     "link": "https://www.wrestlinginc.com/2266786/wwe-tna-matt-hardy-wyatt-sicks-want-see/",
     "date": "Wed, 23 Sep 2026 18:07:06 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Results 9/22 - 2026 Dusty Rhodes Tag Team Classic Begins, Women's Tag Match"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-september-22-dusty-rhodes-tag-team-classic-begins-womens-tag-match/l-intro-1790128910.jpg"
-  },
-  {
-    "id": 1026751463,
-    "link": "https://www.wrestlinginc.com/2266015/full-bracket-2026-dusty-rhodes-tag-team-classic-wwe-nxt-revealed/",
-    "date": "Tue, 22 Sep 2026 22:27:29 +0000",
-    "date_gmt": "2026-09-22T22:27:29.000Z",
-    "title": {
-      "rendered": "Full Bracket For 2026 Dusty Rhodes Tag Team Classic Revealed Ahead Of WWE NXT"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/full-bracket-for-2026-dusty-rhodes-tag-team-classic-revealed-ahead-of-wwe-nxt/l-intro-1790115939.jpg"
   }
 ]
