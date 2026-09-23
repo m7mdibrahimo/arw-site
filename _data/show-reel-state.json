@@ -1880,8 +1880,10 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض الرو 21.09.2026 مترجم",
-    "lastAttempt": 1790067239992,
-    "errors": {},
+    "lastAttempt": 1790178188017,
+    "errors": {
+      "tiktok": "Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url"
+    },
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -1892,8 +1894,10 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض ان جيه بي دبليو 21.09.2026 مترجم",
-    "lastAttempt": 1790137726643,
-    "errors": {},
+    "lastAttempt": 1790178192136,
+    "errors": {
+      "tiktok": "Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url"
+    },
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -1904,8 +1908,10 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض تي ان ايه اكسبلوجن 18.09.2026 مترجم",
-    "lastAttempt": 1790149844866,
-    "errors": {},
+    "lastAttempt": 1790178195553,
+    "errors": {
+      "tiktok": "Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url"
+    },
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -1916,8 +1922,10 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض ان اكس تي 22.09.2026 مترجم",
-    "lastAttempt": 1790146593664,
-    "errors": {},
+    "lastAttempt": 1790178199894,
+    "errors": {
+      "tiktok": "Please review our URL ownership verification rules at https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide/#pull_from_url"
+    },
     "reviewPlatforms": [],
     "needsReview": false
   }
