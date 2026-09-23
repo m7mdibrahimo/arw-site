@@ -333,6 +333,32 @@ export function findKnownArabicNames(text: string): string[] {
   return [...found];
 }
 
+// applyNamesGlossary (above) only fixes a name the AI left in English — it can't
+// fix a name the AI DID translate, just to a plausible-but-wrong Arabic spelling
+// (e.g. "Thunder Rosa" -> "ثندر روزا" instead of the glossary's own "ثاندر روزا").
+// Ambiguous English names have several equally-plausible phonetic transliterations,
+// so the model picks a different one from run to run unless told which is correct.
+// Scanning the RAW ENGLISH source for every glossary name that actually appears in
+// THIS article and feeding those exact pairs into the prompt gives the model the
+// canonical spelling before it ever generates the Arabic — permanent, and scales to
+// all 2000+ names without hand-listing exceptions in the prompt one at a time.
+export function buildNamesGlossaryHint(sourceText: string): string {
+  if (!sourceText || typeof sourceText !== "string") return "";
+  const pairs: string[] = [];
+  for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
+    if (!english || !arabic || english === arabic) continue;
+    if (FEDERATION_OR_SHOW_NAME.test(english.trim())) continue;
+    try {
+      const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "iu").test(sourceText)) {
+        pairs.push(`${english} = ${arabic}`);
+      }
+    } catch (e) {}
+  }
+  if (!pairs.length) return "";
+  return `\nأسماء معتمدة يجب كتابتها بالضبط بهذا الشكل حيثما وردت (ممنوع أي تعريب صوتي بديل مهما بدا معقولاً):\n${pairs.join("\n")}\n`;
+}
+
 // Convert any occurrence of 'حلقة' to 'عرض', enforce English promotion/show names, scrub third-party branding, and strip all tashkeel
 export function sanitizeWrestlingTerms(text: string): string {
   if (!text) return text;
@@ -2243,6 +2269,7 @@ async function rewriteWithGemini(
 
   const arabicDate = getArabicDateFormatted(postDate);
   const timing = analyzeShowTiming(originalTitle, postDate);
+  const namesGlossaryHint = buildNamesGlossaryHint(`${originalTitle}\n${plainText}`);
 
   const prompt = isResultsPost
     ? `أنت كبير محرري موقع "عرب راسلنج" (arab-wrestling.com)، متخصص في الصحافة الرياضية وتغطية المصارعة الحرة العالمية وفنون القتال.
@@ -2289,6 +2316,7 @@ async function rewriteWithGemini(
    - باقي الوسوم تكون بالعربية حصراً: أسماء أبرز النجوم المشاركين، اسم الحدث الرئيسي، أو نوع البطولة.
    - ممنوع وضع كلمات إنجليزية في الوسوم غير اسم الاتحاد واسم العرض!
 ${KNOWN_MISTAKES_TO_AVOID}
+${namesGlossaryHint}
 تاريخ الحدث: ${arabicDate}
 بيانات المقال الأصلي:
 العنوان: ${originalTitle}
@@ -2448,6 +2476,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
 7. **حظر ذكر Fightful نهائياً وحظر عبارة 'مصادرنا الخاصة' قطيعاً**: ممنوع منعاً باتاً ومطلقاً استخدام عبارات مثل "أفادت مصادرنا الخاصة" أو "كشفت مصادرنا الخاصة" أو "مصادرنا" أو الادعاء بوجود مصادر خاصة لعرب راسلنج. ادخل في صلب الخبر مباشرة واذكر التفاصيل بأسلوب صحفي محايد ومباشر (مثل: "كشفت تقارير صحفية"، "أكدت التطورات الأخيرة"، أو البدء بالحدث مباشرة: "يستعد المصارع..." أو "أعلن اتحاد WWE رسمياً..."). ممنوع بتاتاً ذكر Fightful أو محرريها.
 8. **الوسوم (tags)**: بين 5 إلى 7 وسوم دقيقة (تتضمن اسم الاتحاد بالإنجليزية مثل WWE أو AEW، واسم العرض بالإنجليزية مثل WWE RAW، وباقي الوسوم وأسماء المصارعين بالعربية).
 ${KNOWN_MISTAKES_TO_AVOID}
+${namesGlossaryHint}
 الخبر الأصلي:
 العنوان: ${originalTitle}
 التصنيفات: ${categories.join(", ")}

@@ -7,7 +7,7 @@ import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure } from '../scripts/show-reel-monitor';
-import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody } from '../scripts/fightful-watcher';
+import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -499,6 +499,22 @@ test('post-translation guard catches a duplicate via a shared cited source link,
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('names glossary hint surfaces the canonical Arabic spelling for a name in the source text', () => {
+  // Reached production: one article spelled Thunder Rosa "ثندر روزا" instead of
+  // the glossary's own canonical "ثاندر روزا" used everywhere else on the site.
+  // applyNamesGlossary (English->Arabic substitution) can never catch this class
+  // of bug, since the AI already translated the name — just to a different,
+  // equally-plausible Arabic transliteration. The hint must surface the exact
+  // pair for any glossary name actually present in the source text, so the
+  // model is told the canonical spelling before it generates anything.
+  const hint = buildNamesGlossaryHint('Thunder Rosa spoke about her favorite looks from her career.');
+  assert.match(hint, /Thunder Rosa = ثاندر روزا/);
+
+  // A name that never appears in the source must not be mentioned at all.
+  const empty = buildNamesGlossaryHint('CM Punk cut a promo on Monday Night Raw.');
+  assert.equal(empty.includes('Thunder Rosa'), false);
 });
 
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
