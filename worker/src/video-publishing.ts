@@ -134,7 +134,11 @@ export async function publishTikTokVideo(options: {
       });
       const data: any = await init.json();
       if (!init.ok || data.error?.code !== 'ok' || !data.data?.publish_id) {
-        return { ok: false, error: data.error?.message || `فشل بدء نشر فيديو TikTok (${init.status}).`, result: data };
+        // TikTok's own bug-report form requires the x-tt-logid response header
+        // to investigate an API issue — without it a support ticket goes nowhere.
+        const logId = init.headers.get('x-tt-logid');
+        const baseError = data.error?.message || `فشل بدء نشر فيديو TikTok (${init.status}).`;
+        return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: data };
       }
       publishId = data.data.publish_id;
       await kv.put(cacheKey, JSON.stringify({ id: publishId, createdAt: Date.now() }), { expirationTtl: 86400 });
@@ -150,7 +154,9 @@ export async function publishTikTokVideo(options: {
       if (status === 'PUBLISH_COMPLETE') { await kv.delete(cacheKey); return { ok: true, id: publishId!, result: statusData }; }
       if (status === 'FAILED') { await kv.delete(cacheKey); return { ok: false, error: statusData.data?.fail_reason || 'فشلت معالجة فيديو TikTok.', result: statusData }; }
       if (statusData.error?.code && statusData.error.code !== 'ok') {
-        return { ok: false, error: statusData.error.message || 'خطأ من TikTok أثناء متابعة حالة النشر.', result: statusData };
+        const logId = statusRes.headers.get('x-tt-logid');
+        const baseError = statusData.error.message || 'خطأ من TikTok أثناء متابعة حالة النشر.';
+        return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: statusData };
       }
       await pause(3000);
     }

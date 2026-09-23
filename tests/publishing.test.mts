@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
-import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from '../worker/src/video-publishing';
+import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure } from '../scripts/show-reel-monitor';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
@@ -527,6 +527,19 @@ test('sanitizeWrestlingTerms drops an orphaned English "The" glued to a translit
   // A team name that stayed fully English must be left untouched — the rule
   // only targets "The" immediately followed by Arabic script.
   assert.equal(sanitizeWrestlingTerms('فريق The Young Bucks قادم بقوة'), 'فريق The Young Bucks قادم بقوة');
+});
+
+test('a failed TikTok init call surfaces the x-tt-logid header for support tickets', async t => {
+  // TikTok's own bug-report form requires a log ID captured from the
+  // "x-tt-logid" response header to investigate any API issue — without it a
+  // support ticket can't be filed usefully. We were discarding that header
+  // entirely and only kept the human-readable error message.
+  t.mock.method(globalThis, 'fetch', async () =>
+    new Response(JSON.stringify({ error: { code: 'url_ownership_unverified', message: 'Please review our URL ownership verification rules' } }),
+      { status: 403, headers: { 'x-tt-logid': '202609231234560000000000000001' } }));
+  const result = await publishTikTokVideo({ accessToken: 'token', videoUrl: 'https://site.test/videos/a.mp4', kv: { get: async () => null, put: async () => {} } as any });
+  assert.equal(result.ok, false);
+  assert.match(result.error!, /log_id: 202609231234560000000000000001/);
 });
 
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
