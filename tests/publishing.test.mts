@@ -265,6 +265,27 @@ test('show-reel-monitor never fails the job over Instagram still processing its 
   assert.equal(hasRealFailure({ instagram_reel: { ok: false, error: 'Meta rejected the media' } }, ['instagram_reel']), true);
   // Success obviously isn't a failure either.
   assert.equal(hasRealFailure({ facebook_reel: { ok: true } }, ['facebook_reel']), false);
+  // A platform the Worker deliberately skipped because it isn't configured/enabled
+  // yet (e.g. TikTok before the site owner turns it on) is a permanent, expected
+  // "not attempted" state — not a failure to retry into a workflow-failed email.
+  assert.equal(hasRealFailure({ tiktok: { ok: false, skipped: true, error: 'not enabled' } }, ['tiktok']), false);
+});
+
+test('publish-social skips TikTok cleanly while it is not yet enabled, without failing the request', async t => {
+  t.mock.method(globalThis, 'fetch', async (url: any) => {
+    const u = String(url);
+    if (u === 'https://api.github.com/repos/owner/repo/collaborators?per_page=1') return Response.json([]);
+    if (u.startsWith('https://site.test/search-index.json')) return Response.json([{ url: '/shows/test/', date: new Date().toISOString() }]);
+    if (u === 'https://site.test/videos/test.mp4') return new Response(null, { status: 200 });
+    throw new Error('Unexpected external request for a platform that should never be attempted: ' + url);
+  });
+  const response = await worker.fetch(new Request('https://worker/api/videos/publish-social', {
+    method: 'POST', headers: { Authorization: 'Bearer authorized-test-token' },
+    body: JSON.stringify({ videoUrl: 'https://site.test/videos/test.mp4', postUrl: '/shows/test/', platforms: ['tiktok'] }),
+  }), { ...env, SITE_ORIGIN: 'https://site.test', WATCHER_MIN_DATE: '2020-01-01T00:00:00Z' } as any);
+  const body: any = await response.json();
+  assert.equal(body.results.tiktok.ok, false);
+  assert.equal(body.results.tiktok.skipped, true);
 });
 
 test('sanitizeWrestlingTerms strips a stray Arabic suffix glued onto an English word', () => {

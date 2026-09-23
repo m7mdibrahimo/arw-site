@@ -30,7 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
-import { publishFacebookVideo, publishInstagramVideo, mustRetainVideo } from "./video-publishing";
+import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -53,6 +53,15 @@ export interface Env {
   // paid API relationship with X and a free Buffer account can queue posts
   // to a connected X channel at no extra cost.
   BUFFER_API_KEY: string;
+  // TikTok's Content Posting API (video.publish scope). Unlike Facebook/Instagram's
+  // long-lived page token, TikTok issues a per-user access_token that expires every
+  // 24h alongside a refresh_token (365-day life) — see getTikTokAccessToken, which
+  // refreshes and persists the rotating pair through the same GitHub-backed state
+  // store as everything else here rather than a Cloudflare secret (a secret can't be
+  // rewritten from inside the Worker itself). These two ARE the static app-level
+  // credentials (set once via wrangler secret, never rotate on their own).
+  TIKTOK_CLIENT_KEY?: string;
+  TIKTOK_CLIENT_SECRET?: string;
 
   // Plain vars — set in wrangler.toml [vars]
   TELEGRAM_CHAT_ID: string;
@@ -67,6 +76,7 @@ export interface Env {
   WATCHER_MIN_DATE: string;
   INSTAGRAM_AUTO_ENABLED?: string;
   X_AUTO_ENABLED?: string;
+  TIKTOK_AUTO_ENABLED?: string;
   AUTO_IMAGE_STORIES?: string;
   BUFFER_X_CHANNEL_ID: string;
   BUFFER_FACEBOOK_CHANNEL_ID: string;
@@ -304,12 +314,18 @@ type PublishState = {
   cooldowns: Partial<Record<"facebook" | "instagram" | "x", number>>;
   deferrals?: Record<string, number>;
   lastStoryAt?: number;
-  videoCooldowns?: Partial<Record<"facebook" | "instagram", number>>;
+  videoCooldowns?: Partial<Record<"facebook" | "instagram" | "tiktok", number>>;
   // Buffer's own RateLimit response header, read proactively so a post is
   // skipped before it would be rejected rather than after — see
   // recordBufferQuota/hasBufferQuota. X and Facebook share this because
   // both go through the same Buffer API key (one client, one quota).
   bufferQuota?: { remaining: number; resetAt: number; window: string; updatedAt: number }[];
+  // The current TikTok user access_token/refresh_token pair (see getTikTokAccessToken).
+  // Stored here — not as a Cloudflare secret — because it must be rewritten by the
+  // Worker itself on every refresh (TikTok returns a new refresh_token each time and
+  // the old one stops working), and only this GitHub-backed store gives the Worker a
+  // place it can both read and durably write to.
+  tiktokToken?: { accessToken: string; refreshToken: string; expiresAt: number; openId?: string };
 };
 
 function emptyPublishState(): PublishState {
@@ -1477,7 +1493,7 @@ async function postVideoToTelegram(
   }
 }
 
-async function setVideoCooldown(env: Env, platform: "facebook" | "instagram") {
+async function setVideoCooldown(env: Env, platform: "facebook" | "instagram" | "tiktok") {
   for (let i = 0; i < 5; i++) {
     const { sha, state } = await githubReadState(env);
     state.videoCooldowns = { ...state.videoCooldowns, [platform]: Date.now() + 24 * 60 * 60_000 };
@@ -1502,6 +1518,69 @@ async function postVideoToInstagramReel(env: Env, data: { videoUrl: string; titl
 async function postVideoToInstagramStory(env: Env, data: { videoUrl: string; imageUrl?: string }) {
   return publishInstagramVideo({ accountId: env.INSTAGRAM_BUSINESS_ACCOUNT_ID, token: await getPageAccessToken(env),
     videoUrl: data.videoUrl, story: true, kv: env.PUSH_KV });
+}
+
+// ── TikTok OAuth token management ──────────────────────────────────────────
+// TikTok's user access_token expires every 24h (unlike Facebook's effectively
+// permanent page token), paired with a refresh_token that itself expires after
+// 365 days and — per TikTok's own docs — "may be different" on every refresh,
+// so the old one must be treated as dead the moment a new one is issued. Both
+// are persisted through the same GitHub-backed state store as everything else
+// (see PublishState.tiktokToken) rather than a Cloudflare secret, because a
+// secret can only be *read* from inside the Worker, never rewritten by it.
+async function exchangeTikTokToken(env: Env, params: Record<string, string>): Promise<{ accessToken: string; refreshToken: string; expiresAt: number; openId?: string } | null> {
+  if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) return null;
+  const body = new URLSearchParams({ client_key: env.TIKTOK_CLIENT_KEY, client_secret: env.TIKTOK_CLIENT_SECRET, ...params });
+  try {
+    const res = await fetch("https://open.tiktokapis.com/v2/oauth/token/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" },
+      body: body.toString(),
+    });
+    const data: any = await res.json().catch(() => ({}));
+    if (!res.ok || !data.access_token || !data.refresh_token) return null;
+    return {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+      expiresAt: Date.now() + (Number(data.expires_in) || 86400) * 1000,
+      openId: data.open_id,
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+async function saveTikTokToken(env: Env, token: { accessToken: string; refreshToken: string; expiresAt: number; openId?: string }): Promise<boolean> {
+  for (let i = 0; i < 5; i++) {
+    const { sha, state } = await githubReadState(env);
+    state.tiktokToken = token;
+    const result = await githubWriteState(env, state, sha, "chore(tiktok): refresh access token");
+    if (result.ok) return true;
+    if (!result.conflict) return false;
+  }
+  return false;
+}
+
+// Returns a currently-valid access token, refreshing and persisting a new one
+// first if the stored token is missing, unconfigured, or close to expiring.
+// Returns null if TikTok has never been connected via the OAuth flow yet
+// (see /api/tiktok/oauth/start) or the refresh itself failed — callers must
+// treat that as "not configured", not retry it like a transient error.
+async function getTikTokAccessToken(env: Env): Promise<string | null> {
+  if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) return null;
+  const { state } = await githubReadState(env);
+  const current = state.tiktokToken;
+  if (!current) return null;
+  if (current.expiresAt - Date.now() > 5 * 60_000) return current.accessToken;
+  const refreshed = await exchangeTikTokToken(env, { grant_type: "refresh_token", refresh_token: current.refreshToken });
+  if (!refreshed) return null;
+  await saveTikTokToken(env, refreshed);
+  return refreshed.accessToken;
+}
+
+async function postVideoToTikTok(env: Env, data: { videoUrl: string; title: string; postUrl?: string }) {
+  return publishTikTokVideo({ accessToken: await getTikTokAccessToken(env),
+    videoUrl: data.videoUrl, caption: buildReelCaption(data.title, data.postUrl), kv: env.PUSH_KV });
 }
 
 // Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —
@@ -2256,6 +2335,60 @@ export default {
         return json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
       }
 
+      if (path === "/api/tiktok/status" && request.method === "GET") {
+        if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) {
+          return json({ success: false, configured: false, connected: false, message: "TIKTOK_CLIENT_KEY / TIKTOK_CLIENT_SECRET not set" });
+        }
+        const { state } = await githubReadState(env);
+        return json({ success: true, configured: true, connected: !!state.tiktokToken,
+          openId: state.tiktokToken?.openId, tokenExpiresAt: state.tiktokToken?.expiresAt,
+          autoEnabled: env.TIKTOK_AUTO_ENABLED === "true" });
+      }
+
+      // One-time manual setup: the site owner visits this link once, logged into the
+      // TikTok account arab-wrestling.com should post as, and approves access. Not
+      // something automation ever calls — TikTok itself only supports this as a real
+      // browser redirect through its own consent screen, there is no server-to-server
+      // equivalent. A short-lived state nonce in KV guards against a stale/replayed
+      // callback; it does not gate who may *start* the flow, since anyone who starts
+      // it just gets asked to log into their own TikTok account by TikTok itself, and
+      // whoever approves becomes the connected account — this link is only ever meant
+      // to be opened by the site owner.
+      if (path === "/api/tiktok/oauth/start" && request.method === "GET") {
+        if (!env.TIKTOK_CLIENT_KEY) return json({ success: false, error: "TIKTOK_CLIENT_KEY not set" }, 500);
+        const nonce = crypto.randomUUID();
+        await env.PUSH_KV.put(`tiktok-oauth-state:${nonce}`, "1", { expirationTtl: 600 });
+        const redirectUri = `${url.origin}/api/tiktok/oauth/callback`;
+        const authorizeUrl = new URL("https://www.tiktok.com/v2/auth/authorize/");
+        authorizeUrl.searchParams.set("client_key", env.TIKTOK_CLIENT_KEY);
+        authorizeUrl.searchParams.set("scope", "video.publish");
+        authorizeUrl.searchParams.set("response_type", "code");
+        authorizeUrl.searchParams.set("redirect_uri", redirectUri);
+        authorizeUrl.searchParams.set("state", nonce);
+        return Response.redirect(authorizeUrl.toString(), 302);
+      }
+
+      if (path === "/api/tiktok/oauth/callback" && request.method === "GET") {
+        const code = url.searchParams.get("code");
+        const state = url.searchParams.get("state");
+        const error = url.searchParams.get("error");
+        if (error) return json({ success: false, error: `رفض TikTok الطلب: ${error}` }, 400);
+        if (!code || !state) return json({ success: false, error: "رابط الرجوع من TikTok غير مكتمل (code/state مفقودان)." }, 400);
+        const nonceKey = `tiktok-oauth-state:${state}`;
+        const validNonce = await env.PUSH_KV.get(nonceKey);
+        if (!validNonce) return json({ success: false, error: "انتهت صلاحية رابط الربط أو استُخدم من قبل؛ ابدأ العملية من جديد عبر /api/tiktok/oauth/start." }, 400);
+        await env.PUSH_KV.delete(nonceKey);
+        const redirectUri = `${url.origin}/api/tiktok/oauth/callback`;
+        const token = await exchangeTikTokToken(env, { grant_type: "authorization_code", code, redirect_uri: redirectUri });
+        if (!token) return json({ success: false, error: "فشل تبادل رمز التفويض مع TikTok — تحقق من TIKTOK_CLIENT_KEY/SECRET وأن redirect_uri مطابق تمامًا للمسجل في إعدادات التطبيق." }, 502);
+        const saved = await saveTikTokToken(env, token);
+        if (!saved) return json({ success: false, error: "تم الحصول على التوكن لكن تعذر حفظه في حالة الموقع." }, 500);
+        return new Response(
+          `<!DOCTYPE html><html lang="ar" dir="rtl"><meta charset="UTF-8"><body style="font-family:sans-serif;text-align:center;padding:60px;"><h1>✅ تم ربط حساب TikTok بنجاح</h1><p>معرّف الحساب: ${token.openId || "غير متاح"}</p><p>ينتهي الوصول الحالي خلال 24 ساعة ويتجدد تلقائيًا؛ لا حاجة لإعادة هذه الخطوة إلا لو أُلغي الربط من داخل TikTok نفسه.</p></body></html>`,
+          { headers: { "Content-Type": "text/html; charset=UTF-8" } }
+        );
+      }
+
       if (path === "/api/facebook-buffer/status" && request.method === "GET") {
         if (!env.BUFFER_API_KEY || !env.BUFFER_FACEBOOK_CHANNEL_ID) {
           return json({ success: false, configured: false, message: "BUFFER_API_KEY / BUFFER_FACEBOOK_CHANNEL_ID not set" });
@@ -2640,9 +2773,9 @@ export default {
           const requestedPlatforms: string[] = Array.isArray(body.platforms) && body.platforms.length > 0
             ? body.platforms
             : ["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"];
-          const allowed = new Set(["facebook_reel", "facebook_story", "instagram_reel", "instagram_story"]);
+          const allowed = new Set(["facebook_reel", "facebook_story", "instagram_reel", "instagram_story", "tiktok"]);
           if (requestedPlatforms.length !== 1 || requestedPlatforms.some(p => !allowed.has(p))) {
-            return json({ success: false, error: "أرسل منصة فيديو واحدة في كل طلب؛ الأداة مخصصة لفيسبوك وإنستجرام." }, 400);
+            return json({ success: false, error: "أرسل منصة فيديو واحدة في كل طلب؛ الأداة مخصصة لفيسبوك وإنستجرام وTikTok." }, 400);
           }
           const videoHost = new URL(fullVideoUrl);
           if (!videoHost.pathname.endsWith(".mp4")) return json({ success: false, error: "ملف الفيديو يجب أن يكون MP4." }, 400);
@@ -2672,7 +2805,11 @@ export default {
           const results: Record<string, any> = {};
           const asset = decodeURIComponent(videoHost.pathname.split("/").pop() || "");
           for (const platform of [...new Set(requestedPlatforms)]) {
-            const network = platform.startsWith("facebook") ? "facebook" : "instagram";
+            const network: "facebook" | "instagram" | "tiktok" = platform.startsWith("facebook") ? "facebook" : platform === "tiktok" ? "tiktok" : "instagram";
+            if (platform === "tiktok" && env.TIKTOK_AUTO_ENABLED !== "true") {
+              results[platform] = { ok: false, skipped: true, error: "نشر TikTok غير مفعّل بعد (TIKTOK_AUTO_ENABLED)." };
+              continue;
+            }
             const { state: currentState } = await githubReadState(env);
             const retryAt = currentState.videoCooldowns?.[network] || 0;
             if (retryAt > Date.now()) {
@@ -2682,6 +2819,7 @@ export default {
             const send = () => platform === "facebook_reel" ? postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl })
               : platform === "facebook_story" ? postVideoToFacebookStory(env, { videoUrl: fullVideoUrl })
               : platform === "instagram_reel" ? postVideoToInstagramReel(env, { videoUrl: fullVideoUrl, title, postUrl })
+              : platform === "tiktok" ? postVideoToTikTok(env, { videoUrl: fullVideoUrl, title, postUrl })
               : postVideoToInstagramStory(env, { videoUrl: fullVideoUrl });
             try {
               results[platform] = await deliverOnce(env, `video:${platform}:${asset}`, async () => {

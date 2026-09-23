@@ -3,7 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { arabicSlug } from '../lib/slug.cjs';
 
-export const PLATFORMS = ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'] as const;
+export const PLATFORMS = ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story', 'tiktok'] as const;
 type Platform = typeof PLATFORMS[number];
 type Entry = Record<Platform, boolean> & {
   publishedAt: number | null; lastAttempt?: number; title?: string;
@@ -12,6 +12,11 @@ type Entry = Record<Platform, boolean> & {
 type State = Record<string, Entry>;
 const ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
 const WORKER = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc.workers.dev';
+// TikTok's Content Posting API needs the app approved by TikTok (video.publish scope)
+// before it can post publicly — until then, keep it out of the automatic attempt loop
+// entirely (rather than attempting and having the Worker return skipped:true) so it
+// costs nothing and shows nothing until the site owner flips this on for real.
+const TIKTOK_ENABLED = process.env.TIKTOK_AUTO_ENABLED === 'true';
 
 export function isShowEligible(filename: string, data: Record<string, any>): boolean {
   const date = data.date ? new Date(data.date).getTime() : NaN;
@@ -30,10 +35,14 @@ export function findReelVideo(slug: string, files: string[]): string | null {
   return [`reel-${slug}.mp4`, `reel-${slug.slice(0, 45)}.mp4`].find(f => files.includes(f)) || null;
 }
 // A platform still mid-processing (Instagram's async video encoding) isn't a real
-// failure — it resumes on a later run without duplicating the post. Only a definite
-// non-ok, non-processing result should fail the CI job and page the owner.
+// failure — it resumes on a later run without duplicating the post. Neither is a
+// platform the Worker deliberately skipped because it isn't configured/enabled yet
+// (e.g. TikTok before the site owner turns it on) — that's an expected, permanent
+// "not attempted" state, not something retrying will ever fix. Only a definite
+// non-ok, non-processing, non-skipped result should fail the CI job and page the
+// owner.
 export function hasRealFailure(results: Record<string, any>, requested: readonly Platform[]): boolean {
-  return requested.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing');
+  return requested.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing' && !results[p]?.skipped);
 }
 export function applyResults(existing: Entry | undefined, results: Record<string, any>, requested: readonly Platform[], title: string): Entry {
   const entry: Entry = { publishedAt: existing?.publishedAt || null,
@@ -81,7 +90,7 @@ export async function main() {
     const previous = state[slug];
     if (previous?.needsReview) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
-    const pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p));
+    const pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || TIKTOK_ENABLED));
     if (!pending.length) continue;
     if (previous?.lastAttempt && Date.now() - previous.lastAttempt < 45 * 60_000) continue;
     const file = findReelVideo(slug, videos);
