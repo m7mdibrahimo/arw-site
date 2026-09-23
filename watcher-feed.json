@@ -1,5 +1,15 @@
 [
   {
+    "id": 330011,
+    "link": "https://www.fightful.com/wrestling/thunder-rosa-i-think-the-characters-in-aew-are-completely-edgy-in-comparison-to-other-places/",
+    "date": "2026-09-23T09:06:18",
+    "date_gmt": "2026-09-23T13:06:18",
+    "title": {
+      "rendered": "Thunder Rosa: I Think The Characters In AEW Are Completely Edgy In Comparison To Other Places"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/06/27221606/thunder_rosa_1_0.jpg"
+  },
+  {
     "id": 330013,
     "link": "https://www.fightful.com/wrestling/juice-robinson-shaved-his-beard-after-it-got-caught-in-lat-pulldown-machine/",
     "date": "2026-09-23T09:02:11",
@@ -288,15 +298,5 @@
       "rendered": "Cody Rhodes Compares His In-Ring Style To Guile&#8217;s Fighting Style"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/24163331/Screenshot-180.png"
-  },
-  {
-    "id": 329909,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-9-14-scores-3-1-million-views-on-netflix-highest-since-april/",
-    "date": "2026-09-22T15:32:59",
-    "date_gmt": "2026-09-22T19:32:59",
-    "title": {
-      "rendered": "WWE Raw (9/14) Scores 3.1 Million Views On Netflix, Highest Since April"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04214939/20241212_new_rawlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
   }
 ]
