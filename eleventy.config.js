@@ -1341,6 +1341,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("nxuwkfsaraeq723u4jfsdf3yivfgmn.html");
   eleventyConfig.addPassthroughCopy("tiktokB09bhAwdbHqKJSxwpoKGsFAf46fRPa6c.txt");
   eleventyConfig.addPassthroughCopy("tiktokuOJmqoSFpXuJX6VMj9SICyoMTCTvK3H0.txt");
+  eleventyConfig.addPassthroughCopy("tiktokB3tgkt0dNmlKDHhe0BRwvie3TesB9SZT.txt");
   eleventyConfig.addPassthroughCopy("ads.txt");
   if (fs.existsSync("_redirects")) {
     eleventyConfig.addPassthroughCopy("_redirects");
