@@ -398,6 +398,11 @@ export function sanitizeWrestlingTerms(text: string): string {
   const cleaned = persianNormalized
     // 1. Enforce English names for Promotions (no Arabic transliterations)
     .replace(arWord("(?:اتحاد\\s+)?(?:دبليو\\s*دبليو\\s*[إا]ي)"), "WWE")
+    // WWF (the promotion's own name before its 2002 rename to WWE) comes up in
+    // historical articles about that era and was never covered by this list —
+    // it kept getting phonetically transliterated ("دبليو دبليو إف") instead of
+    // staying in English like every other federation name here.
+    .replace(arWord("(?:اتحاد\\s+)?(?:دبليو\\s*دبليو\\s*[إا]ف)"), "WWF")
     .replace(arWord("(?:اتحاد\\s+)?(?:[إا]يه\\s*[إا]ي\\s*دبليو)"), "AEW")
     .replace(arWord("(?:اتحاد\\s+)?(?:تي\\s*[إا]ن\\s*[إا]يه)"), "TNA")
     .replace(arWord("(?:اتحاد\\s+)?(?:[آا]ر\\s*[أا]وه\\s*[إا]تش)"), "ROH")
@@ -2896,7 +2901,7 @@ export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number =
 // card" preview naming the same two wrestlers as an earlier, narrower article
 // about one confrontation on that card is NOT a duplicate of it.
 const GENERIC_TAG_MARKERS = ["المصارعة", "أخبار", "عقود", "كواليس", "اتحادات", "مستحقات", "تصريحات", "نجوم", "بطولة"];
-const KNOWN_PROMOTION_TAG = /^(WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|INDIE|MMA|UFC|NXT|RAW|SmackDown|iMPACT|Dynamite|Collision|Rampage)(\s+\S+)*$/i;
+const KNOWN_PROMOTION_TAG = /^(WWE|WWF|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|INDIE|MMA|UFC|NXT|RAW|SmackDown|iMPACT|Dynamite|Collision|Rampage)(\s+\S+)*$/i;
 function isGenericTag(tag: string): boolean {
   const t = (tag || "").trim();
   if (!t) return true;

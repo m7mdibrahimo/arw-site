@@ -562,6 +562,16 @@ test('a failed TikTok init call surfaces the x-tt-logid header for support ticke
   assert.match(result.error!, /log_id: 202609231234560000000000000001/);
 });
 
+test('sanitizeWrestlingTerms keeps WWF in English like every other federation name', () => {
+  // WWE, AEW, TNA, ROH, MLW and NJPW all had a rule enforcing their English
+  // name over a phonetic Arabic transliteration, but WWF (the promotion's own
+  // name before its 2002 rename to WWE) was missing from that list entirely —
+  // any historical article about that era rendered it as "دبليو دبليو إف"
+  // instead, inconsistent with how every other federation name is handled.
+  assert.equal(sanitizeWrestlingTerms('نجم دبليو دبليو إف السابق'), 'نجم WWF السابق');
+  assert.equal(sanitizeWrestlingTerms('مسيرته في اتحاد دبليو دبليو إف'), 'مسيرته في WWF');
+});
+
 test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, never stacking prefixes', () => {
   // Reached production: a tag and the article body both showed
   // "عرض MLPعرض MLPعرض MLPعرض MLP Northern Rising" — the old regex only matched
