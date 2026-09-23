@@ -1900,5 +1900,22 @@
       "instagram_reel"
     ],
     "needsReview": true
+  },
+  "20260923053600-tna-xplosion-18-09-2026": {
+    "publishedAt": null,
+    "facebook_reel": false,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه اكسبلوجن 18.09.2026 مترجم",
+    "lastAttempt": 1790142926146,
+    "errors": {
+      "facebook_reel": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع.",
+      "facebook_story": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع.",
+      "instagram_reel": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع.",
+      "instagram_story": "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع."
+    },
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
