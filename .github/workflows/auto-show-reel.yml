@@ -193,16 +193,34 @@ jobs:
           git clean -fd -e dist/videos/ 2>/dev/null || true
           if [[ -n $(git status -s dist/videos/) ]]; then
             git commit -m "feat(video): auto-generate show reel video [skip ci]"
+            # main moves every few seconds while the Worker records social posts,
+            # and 5 fixed-interval retries lost that race (2026-09-24: a rendered
+            # video was thrown away). Rebase onto the freshest main right before
+            # each push; on a conflict in the render bookkeeping JSON the render's
+            # own version wins (-X theirs = the commit being replayed).
+            VIDEO_COMMIT=$(git rev-parse HEAD)
             PUSHED=false
-            for i in {1..5}; do
-              git pull --rebase origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
-              if git push origin main; then
+            for i in {1..12}; do
+              git fetch -q origin main
+              if ! git rebase -X theirs origin/main; then
+                # Fallback that can never undo anyone else's work: start from the
+                # freshest main, bring back only this render's new .mp4 files and
+                # rebuild the manifest from the directory listing.
+                echo "::warning::rebase failed on attempt $i:"; git status --short | head -20
+                git rebase --abort 2>/dev/null || true
+                git reset -q --hard origin/main
+                git diff-tree --no-commit-id --name-only -r "$VIDEO_COMMIT" -- dist/videos | grep '\.mp4$' | while read -r F; do git checkout "$VIDEO_COMMIT" -- "$F"; done
+                npx tsx -e "import('./scripts/generate-news-video.ts').then(m => m.updateVideosManifest())"
+                git add -f dist/videos/
+                git commit -q -m "feat(video): auto-generate show reel video [skip ci]" || true
+              fi
+              if git push origin main 2>push.err; then
                 PUSHED=true
                 echo "✅ Successfully committed and pushed video to main."
                 break
               fi
-              echo "Push retry $i/5 failed, retrying in 4s..."
-              sleep 4
+              echo "::warning::push attempt $i/12 rejected: $(tail -3 push.err | tr '\n' ' ')"
+              sleep $((3 + RANDOM % 10))
             done
             if [ "$PUSHED" != "true" ]; then echo "Git push failed after retries" >&2; exit 1; fi
           else
