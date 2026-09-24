@@ -6,7 +6,7 @@
 // as-is — see wrestlinginc-watcher.ts for how each of those works).
 import fs from "fs";
 import path from "path";
-import { processPost, deduplicateNewsFiles, findKnownArabicNames } from "./fightful-watcher";
+import { processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted } from "./fightful-watcher";
 
 if (fs.existsSync(".env")) {
   try {
@@ -222,6 +222,13 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
     const fakeWpPost = toWpPost(item, id);
 
     const ok = await processPost(fakeWpPost);
+    if (!ok && geminiQuotaExhausted()) {
+      // Gemini is out of quota: the article was never really tried. Leave it
+      // unprocessed so the next run picks it up (INCIDENTS #37 — these used to
+      // be marked processed and lost for good).
+      console.warn(`[RN Watcher] ⏸️ Gemini quota exhausted — "${item.title}" left for the next run.`);
+      break;
+    }
     state.processedIds.push(id);
     saveState(state);
     if (ok) {

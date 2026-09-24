@@ -1750,6 +1750,14 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
 const DAILY_CALLS_PER_KEY = 480;
 const exhaustedKeys = new Set<string>();
+let geminiBlocked = false;
+
+/** True once this run can no longer reach Gemini (every key out of quota, or the
+ *  daily safety cap hit). A processPost() failure after this point says nothing
+ *  about the article, so callers must NOT mark it processed (INCIDENTS #37). */
+export function geminiQuotaExhausted(): boolean {
+  return geminiBlocked || (API_KEYS.length > 0 && API_KEYS.every(k => exhaustedKeys.has(k)));
+}
 
 function isDailyQuotaError(body: string): boolean {
   return /per.?day|PerDay|daily|RESOURCE_EXHAUSTED[\s\S]*(?:Day|day)/.test(body);
@@ -1762,6 +1770,7 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
   const dailyCap = DAILY_CALLS_PER_KEY * Math.max(1, API_KEYS.length);
   if ((state.apiCallsToday || 0) >= dailyCap) {
     console.warn(`[Watcher] 🛑 Safety Circuit Breaker: ${state.apiCallsToday}/${dailyCap} Gemini calls today. Pausing AI queries until tomorrow.`);
+    geminiBlocked = true;
     return null;
   }
 
