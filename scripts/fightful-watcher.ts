@@ -3035,6 +3035,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Check if this post was already published on the site (e.g. show results/coverage updated over the course of the event)
   const existingFile = findExistingNewsFile(postId, postUrl);
   const isUpdate = Boolean(existingFile);
+  // Updating a published article (new title → new URL + social state reset) is
+  // only ever a deliberate action (admin panel / regenerate). Automatic runs that
+  // meet an existing article skip it — otherwise a lost processedIds entry turned
+  // into a second round of social posts for the same story.
+  if (isUpdate && !options.manual && !options.keepUrl) {
+    console.log(`[Watcher] ⏭️ Post #${postId} is already published (${existingFile!.fileName}); automatic runs never re-publish it.`);
+    return false;
+  }
   const guardDuplicates = !isUpdate && !options.manual;
 
   console.log(`\n--------------------------------------------------`);
@@ -3440,12 +3448,18 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
       const postId = post.id;
       const isAlreadyProcessed = state.processedIds.includes(postId);
 
-      // Verify physical file: only skip if it actually exists in content/news
-      if (isAlreadyProcessed && !options.forceLatest) {
-        const existing = findExistingNewsFile(postId, post.link);
-        if (existing) {
-          continue;
+      // An article already on the site is never re-processed automatically, even
+      // if its ID is missing from processedIds (a lost state update used to make
+      // the next run "update" it: new title/URL + social state reset = the same
+      // story posted to Telegram/Facebook twice). Re-publishing is a manual action
+      // from the admin panel (--urls). A missing ID is healed here.
+      if (!options.forceLatest && findExistingNewsFile(postId, post.link)) {
+        if (!isAlreadyProcessed) {
+          state.processedIds.push(postId);
+          saveState(state);
+          console.log(`[Watcher] 🩹 Post #${postId} is already on the site but was missing from processedIds — recorded, not re-published.`);
         }
+        continue;
       }
 
       // Check age: strictly skip old news in automated watcher mode

@@ -783,3 +783,13 @@ test('a platform pause (rate_limited) does not fail the reel monitor job', () =>
   assert.equal(hasRealFailure({ instagram_reel: { ok: false, status: 'rate_limited', error: 'paused' } }, ['instagram_reel']), false);
   assert.equal(hasRealFailure({ instagram_reel: { ok: false, error: 'boom' } }, ['instagram_reel']), true);
 });
+
+test('watcher state merge keeps both runs\' processed IDs and the higher API count', async () => {
+  const { mergeStates } = await import('../scripts/merge-watcher-state');
+  const local = { processedIds: [1, 2, 3, 330164], apiCallsToday: 40, apiCallDate: '2026-09-24', lastChecked: '2026-09-24T13:14:00Z' };
+  const remote = { processedIds: [1, 2, 3, 330170], apiCallsToday: 55, apiCallDate: '2026-09-24', lastChecked: '2026-09-24T13:10:00Z' };
+  const m = mergeStates(local, remote);
+  assert.deepEqual(m.processedIds, [1, 2, 3, 330170, 330164]);
+  assert.equal(m.apiCallsToday, 55);
+  assert.equal(m.lastChecked, '2026-09-24T13:14:00Z');
+});

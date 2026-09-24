@@ -49,7 +49,12 @@ jobs:
             git commit -m "feat(news): auto-publish from Ringside News"
             PUSHED=false
             for i in {1..8}; do
+              # The remote copy wins a rebase conflict (-X ours); merge this run's state back in.
+              cp watcher-state.json /tmp/watcher-state.json.local 2>/dev/null || true
+              cp ringsidenews-state.json /tmp/ringsidenews-state.json.local 2>/dev/null || true
               git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
+              npx tsx scripts/merge-watcher-state.ts /tmp/watcher-state.json.local watcher-state.json || true
+              npx tsx scripts/merge-watcher-state.ts /tmp/ringsidenews-state.json.local ringsidenews-state.json || true
               npx tsx -e "import('./scripts/fightful-watcher.ts').then(m => m.deduplicateNewsFiles())" || true
               if [[ -n $(git status -s) ]]; then
                 git add -A
