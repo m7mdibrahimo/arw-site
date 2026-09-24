@@ -38,6 +38,19 @@ test('concurrent requests and later retries send a publication only once', async
   assert.equal((await deliverOnce(env, 'one', send)).status, 'already_sent');
   assert.equal(sends, 1);
 });
+test('a platform still processing is re-checked in 5 minutes and reported as processing meanwhile', async t => {
+  t.mock.method(globalThis, 'fetch', ledger().fetch);
+  let sends = 0;
+  const send = async () => { sends++; return { ok: false, status: 'processing', error: 'still encoding' }; };
+  const t0 = Date.now();
+  assert.equal((await deliverOnce(env, 'ig', send, { retryMs: 45 * 60_000 })).status, 'processing');
+  // Within the recheck window: no second send, and the gate still says "processing".
+  assert.equal((await deliverOnce(env, 'ig', send, { retryMs: 45 * 60_000 })).status, 'processing');
+  assert.equal(sends, 1);
+  t.mock.method(Date, 'now', () => t0 + 6 * 60_000);
+  await deliverOnce(env, 'ig', send, { retryMs: 45 * 60_000 });
+  assert.equal(sends, 2);
+});
 test('lost acknowledgement remains uncertain and cannot be forced into a duplicate', async t => {
   t.mock.method(globalThis, 'fetch', ledger().fetch);
   let sends = 0;

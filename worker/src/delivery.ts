@@ -8,8 +8,13 @@ export interface DeliveryResult {
 }
 interface Receipt {
   key: string; owner: string; status: 'sending' | 'sent' | 'failed' | 'uncertain';
-  updatedAt: number; retryAt?: number; id?: string; error?: string;
+  updatedAt: number; retryAt?: number; id?: string; error?: string; processing?: boolean;
 }
+// A result still being processed by the platform (Instagram encodes video
+// asynchronously) is re-checked soon instead of waiting the caller's full retry
+// window — the 45-minute video window held finished reels back for most of an
+// hour, and the gate answered "rate_limited", hiding that it was only processing.
+const PROCESSING_RECHECK_MS = 5 * 60_000;
 export async function deliverOnce(
   env: DeliveryEnv, key: string, send: () => Promise<DeliveryResult>,
   options: { force?: boolean; retryMs?: number } = {},
@@ -44,7 +49,9 @@ export async function deliverOnce(
     if (value?.status === 'sending' || value?.status === 'uncertain') {
       return { ok: false, status: 'uncertain', ambiguous: true, error: 'عملية سابقة قيد التنفيذ أو نتيجتها غير مؤكدة؛ راجع المنصة قبل إعادة النشر.' };
     }
-    if (value?.retryAt && value.retryAt > Date.now() && !options.force) return { ok: false, status: 'rate_limited', error: value.error };
+    if (value?.retryAt && value.retryAt > Date.now() && !options.force) {
+      return { ok: false, status: value.processing ? 'processing' : 'rate_limited', error: value.error };
+    }
     if (await write({ key, owner, status: 'sending', updatedAt: Date.now() }, sha)) { claimed = true; break; }
   }
   if (!claimed) return { ok: false, status: 'busy', error: 'تعذر حجز عملية النشر؛ حاول لاحقًا.' };
@@ -54,9 +61,11 @@ export async function deliverOnce(
   for (let i = 0; i < 5; i++) {
     const { sha, value } = await read();
     if (value?.owner !== owner) throw new Error('Delivery ownership changed');
+    const processing = !result.ok && result.status === 'processing';
     if (await write({ key, owner, status: result.ok ? 'sent' : result.ambiguous ? 'uncertain' : 'failed',
-      updatedAt: Date.now(), retryAt: !result.ok ? Date.now() + (options.retryMs ?? 5 * 60_000) : undefined,
-      id: result.id, error: result.error }, sha)) return result;
+      updatedAt: Date.now(),
+      retryAt: !result.ok ? Date.now() + (processing ? PROCESSING_RECHECK_MS : (options.retryMs ?? 5 * 60_000)) : undefined,
+      id: result.id, error: result.error, ...(processing ? { processing: true } : {}) }, sha)) return result;
   }
   // Leave the sending receipt in place if acknowledgement storage fails.
   throw new Error('تعذر حفظ نتيجة النشر؛ تم منع إعادة النشر التلقائي لتجنب التكرار.');
