@@ -21,6 +21,20 @@ const TIKTOK_ENABLED = process.env.TIKTOK_AUTO_ENABLED === 'true';
 // Firing TikTok for every backlogged show in one run is what tripped its API rate
 // limit (and the Worker's 24h cooldown); drain the backlog one show per run instead.
 const TIKTOK_PER_RUN = 1;
+// Adding 7 shows at once sent ~14 Instagram reel/story publishes in a few
+// minutes on top of regular posts and tripped "User is performing too many
+// actions" (account paused 6h, 2026-09-24). Spread them: at most 2 Instagram
+// video publishes per run (runs every ~15 min ⇒ ≤ 8/hour).
+const INSTAGRAM_PER_RUN = 2;
+export function takePlatformBudget(pending: Platform[], budget: { tiktok: number; instagram: number }): Platform[] {
+  return pending.filter(p => {
+    const bucket = p === 'tiktok' ? 'tiktok' : p.startsWith('instagram') ? 'instagram' : null;
+    if (!bucket) return true;
+    if (budget[bucket] <= 0) return false;
+    budget[bucket]--;
+    return true;
+  });
+}
 
 export function isShowEligible(filename: string, data: Record<string, any>): boolean {
   const date = data.date ? new Date(data.date).getTime() : NaN;
@@ -110,7 +124,7 @@ export async function main() {
   };
   const videos = fs.existsSync(videoDir) ? fs.readdirSync(videoDir) : [];
   let failures = 0;
-  let tiktokBudget = TIKTOK_PER_RUN;
+  const budget = { tiktok: TIKTOK_PER_RUN, instagram: INSTAGRAM_PER_RUN };
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
     const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
     const slug = filename.replace(/\.md$/, '');
@@ -123,11 +137,8 @@ export async function main() {
     if (previous?.lastAttempt && Date.now() - previous.lastAttempt < retryDelayMs(previous, pending)) continue;
     const file = findReelVideo(slug, videos);
     if (!file) { console.log(`${slug}: waiting for rendered video.`); continue; }
-    if (pending.includes('tiktok')) {
-      if (tiktokBudget > 0) tiktokBudget--;
-      else pending = pending.filter(p => p !== 'tiktok');
-      if (!pending.length) continue;
-    }
+    pending = takePlatformBudget(pending, budget);
+    if (!pending.length) continue;
     const title = data.headline || data.title || slug;
     const postUrl = showUrl(filename, data);
     const videoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos/${encodeURIComponent(file)}`;

@@ -6,7 +6,7 @@ import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
-import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs } from '../scripts/show-reel-monitor';
+import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
 
@@ -771,4 +771,10 @@ test('copy editor may not undo an approved spelling', async () => {
   const { editIsAnImprovement } = await import('../scripts/editorial');
   assert.equal(editIsAnImprovement('ذا يانغ باكس', 'يانغ باكس'), false);
   assert.equal(editIsAnImprovement('فيتنس مكمان', 'فينس مكمان'), true);
+});
+
+test('Instagram video publishes are capped per run so a burst of shows cannot trip its action limit', () => {
+  const budget = { tiktok: 1, instagram: 2 };
+  assert.deepEqual(takePlatformBudget(['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'], budget), ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story']);
+  assert.deepEqual(takePlatformBudget(['facebook_reel', 'instagram_reel', 'instagram_story'], budget), ['facebook_reel']);
 });
