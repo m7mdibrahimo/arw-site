@@ -1,4 +1,6 @@
 # Arab Wrestling (عرب راسلنج) Robots Configuration
+# A crawler obeys ONLY its most specific User-agent group, so every named group
+# below repeats the /admin/ and /api/ disallows.
 # Optimized for Search Engines (Google, Bing) & Generative AI Citations (Google AI Overviews, Gemini, ChatGPT, Claude, Perplexity)
 
 User-agent: *
@@ -9,38 +11,60 @@ Disallow: /api/
 # Enable Google AI Overviews & Search Grounding
 User-agent: Googlebot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Googlebot-News
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # Enable ChatGPT, Claude, and Perplexity Citations
 User-agent: GPTBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Applebot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # Allow Meta / Facebook & Instagram Media Crawlers for Stories and Reels
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Instagram
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # Block Unwanted Heavy Scrapers
 User-agent: Bytespider

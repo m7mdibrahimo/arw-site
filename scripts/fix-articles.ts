@@ -3,6 +3,10 @@
 //   npx tsx scripts/fix-articles.ts --days 4 [--ai] [--dry-run]
 //   npx tsx scripts/fix-articles.ts --files a.md,b.md --ai
 //   npx tsx scripts/fix-articles.ts --all            (deterministic fixes only)
+//   npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues   (AI only where QA finds errors)
+//   npx tsx scripts/fix-articles.ts --ai --backlog 40             (next 40 never-reviewed articles)
+// --backlog walks the archive newest-first and records every reviewed file in
+// editorial/proofread-progress.json, so scheduled runs eventually cover all of it.
 // Edits are surgical (title line, tag lines, body) so frontmatter formatting is
 // untouched. A changed title gets an explicit `permalink:` pinned to the old URL,
 // because the default permalink is derived from the title (see content/news/news.json)
@@ -17,6 +21,15 @@ import { queryGemini, buildNamesGlossaryHint } from "./fightful-watcher";
 import { arabicSlug } from "../lib/slug.cjs";
 
 const NEWS_DIR = path.join(process.cwd(), "content", "news");
+const PROGRESS_FILE = path.join(process.cwd(), "editorial", "proofread-progress.json");
+// Articles published after the AI copy editor joined the pipeline were already reviewed at publish time.
+const PIPELINE_REVIEW_SINCE = Date.parse("2026-09-24T10:00:00Z");
+function loadProgress(): Set<string> {
+  try { return new Set(JSON.parse(fs.readFileSync(PROGRESS_FILE, "utf-8")).reviewed || []); } catch { return new Set(); }
+}
+function saveProgress(done: Set<string>) {
+  fs.writeFileSync(PROGRESS_FILE, JSON.stringify({ _comment: "Articles already reviewed by the AI copy editor (scripts/fix-articles.ts --backlog).", reviewed: [...done].sort() }, null, 1) + "\n");
+}
 
 interface Parsed { header: string; body: string; title: string; tags: string[]; date: number }
 function parse(raw: string): Parsed | null {
@@ -65,9 +78,21 @@ async function main() {
   let files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith(".md"));
   if (arg("--files")) files = arg("--files")!.split(",").map(f => path.basename(f.trim())).filter(Boolean);
   const days = Number(arg("--days") || 0);
+  const onlyIssues = args.includes("--only-issues");
+  const backlog = Number(arg("--backlog") || 0);
+  const progress = loadProgress();
+  if (backlog) {
+    const candidates = files
+      .filter(f => !progress.has(f))
+      .map(f => ({ f, p: parse(fs.readFileSync(path.join(NEWS_DIR, f), "utf-8")) }))
+      .filter(x => x.p && x.p.date < PIPELINE_REVIEW_SINCE)
+      .sort((a, b) => b.p!.date - a.p!.date);
+    files = candidates.slice(0, backlog).map(x => x.f);
+    console.log(`Backlog: ${candidates.length} unreviewed, taking ${files.length}.`);
+  }
   const report: any[] = [];
   let changed = 0;
-  for (const file of files.sort()) {
+  for (const file of backlog ? files : files.sort()) {
     const filePath = path.join(NEWS_DIR, file);
     if (!fs.existsSync(filePath)) { console.warn(`missing: ${file}`); continue; }
     const raw = fs.readFileSync(filePath, "utf-8");
@@ -77,7 +102,8 @@ async function main() {
 
     let draft = deterministic({ title: p.title, body: p.body, tags: p.tags });
     let applied: ProofEdit[] = [];
-    if (useAi) {
+    const hasErrors = checkArticle(draft.title, draft.body, draft.tags).some(i => i.severity === "error");
+    if (useAi && (!onlyIssues || hasErrors)) {
       const issues = checkArticle(draft.title, draft.body, draft.tags);
       const edits = parseProofEdits(await queryGemini(proofreadPrompt(draft, p.title,
         "(المصدر الإنجليزي غير متاح لهذا الخبر المنشور — أصلح الأخطاء اللغوية والإملائية وصيغ الأسماء العربية فقط. ممنوع تغيير أي معلومة أو رقم أو تاريخ أو كلمة إنجليزية، وممنوع استبدال كلمة صحيحة بمرادف.)",
@@ -87,6 +113,7 @@ async function main() {
       draft = deterministic(draft);
       await new Promise(r => setTimeout(r, 4500)); // stay under the free-tier per-minute limit
     }
+    if (backlog && !dryRun) { progress.add(file); saveProgress(progress); }
     const next = render(p, draft);
     if (next === raw) continue;
     // Never write a file whose frontmatter no longer parses or lost its title/tags.

@@ -703,3 +703,23 @@ test('copy editor may not turn "يذكر أن" into "يتذكر أن"', async ()
   const r = applyProofEdits({ title: 'عنوان الخبر هنا', body: 'يذكر أن الاتحاد يعتزم', tags: [] }, [{ field: 'body', find: 'يذكر أن', replace: 'يتذكر أن' }]);
   assert.equal(r.applied.length, 0);
 });
+
+test('recurring copy-editor fixes are promoted to permanent corrections, one-offs are not', async () => {
+  const { learnCorrections } = await import('../scripts/learn-corrections');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'learn-'));
+  fs.mkdirSync(path.join(dir, 'editorial')); fs.mkdirSync(path.join(dir, 'scripts'));
+  fs.writeFileSync(path.join(dir, 'editorial', 'corrections.json'), JSON.stringify({ corrections: [{ wrong: 'سي إم بانك', right: 'سي ام بانك' }] }));
+  fs.writeFileSync(path.join(dir, 'scripts', 'wrestler-names.json'), JSON.stringify({ 'Seth Rollins': 'سيث رولينز' }));
+  const log = (file: string, find: string, replace: string) => JSON.stringify({ file, field: 'body', find, replace });
+  fs.writeFileSync(path.join(dir, 'editorial', 'proofread-log.jsonl'), [
+    log('a.md', 'سيت رولينز', 'سيث رولينز'), log('b.md', 'سيت رولينز', 'سيث رولينز'), log('c.md', 'سيت رولينز', 'سيث رولينز'),
+    log('a.md', 'نادر جدا', 'نادرة جدا'),
+    log('a.md', 'سيث رولينز', 'سيت رولينز'), log('b.md', 'سيث رولينز', 'سيت رولينز'), log('c.md', 'سيث رولينز', 'سيت رولينز'),
+  ].join('\n'));
+  const cwd = process.cwd();
+  process.chdir(dir);
+  try {
+    const learned = learnCorrections(3, true);
+    assert.deepEqual(learned.map(l => `${l.wrong}→${l.right}`), ['سيت رولينز→سيث رولينز']);
+  } finally { process.chdir(cwd); }
+});
