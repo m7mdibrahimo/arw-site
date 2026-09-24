@@ -728,12 +728,12 @@
     "instagram_story": true,
     "note": "archived historical show",
     "errors": {
-      "tiktok": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار."
+      "tiktok": "Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/ (log_id: 20260924131947226BC5A7CBF25FC13F54)"
     },
     "reviewPlatforms": [],
     "needsReview": false,
     "title": "عرض الرو 03.08.2026 مترجم",
-    "lastAttempt": 1790223652713
+    "lastAttempt": 1790227189459
   },
   "njpw-g1-climax-36-15-08-2026": {
     "publishedAt": 1789900000000,
