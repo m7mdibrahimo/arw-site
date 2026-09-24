@@ -1,5 +1,25 @@
 [
   {
+    "id": 802247101,
+    "link": "https://www.ringsidenews.com/tony-khan-reveals-status-aew-worlds-end-2026/",
+    "date": "Thu, 24 Sep 2026 19:08:00 +0000",
+    "date_gmt": "2026-09-24T19:08:00.000Z",
+    "title": {
+      "rendered": "Tony Khan Reveals Status of AEW Worlds End 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/tony-khan-reveals-status-of-aew-worlds-end-2026-59.jpg?x40058"
+  },
+  {
+    "id": 802247091,
+    "link": "https://www.ringsidenews.com/mercedes-mones-injury-forced-major-creative-changes-aew-all-out/",
+    "date": "Thu, 24 Sep 2026 18:54:02 +0000",
+    "date_gmt": "2026-09-24T18:54:02.000Z",
+    "title": {
+      "rendered": "Mercedes Moné’s Injury Forced Major Creative Changes for AEW All Out"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/mercedes-mones-injury-forced-major-creative-changes-for-aew-all-out-36.jpg?x40058"
+  },
+  {
     "id": 802246978,
     "link": "https://www.ringsidenews.com/tony-khans-aew-all-out-media-call-highlights-september-24-2026/",
     "date": "Thu, 24 Sep 2026 18:25:09 +0000",
@@ -128,25 +148,5 @@
       "rendered": "Thea Hail Says Bald Spot Is Growing at ‘Concerning Rate’ Amid Alopecia Battle"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/thea-hail-says-bald-spot-is-growing-at-concerning-rate-amid-alopecia-battle-17.jpg?x40058"
-  },
-  {
-    "id": 802247001,
-    "link": "https://www.ringsidenews.com/wwe-reveals-10-new-dates-2026-holiday-live-tour/",
-    "date": "Thu, 24 Sep 2026 14:43:02 +0000",
-    "date_gmt": "2026-09-24T14:43:02.000Z",
-    "title": {
-      "rendered": "WWE Reveals 10 New Dates for 2026 Holiday Live Tour"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/wwe-reveals-10-new-dates-for-2026-holiday-live-tour-15.jpg?x40058"
-  },
-  {
-    "id": 802246992,
-    "link": "https://www.ringsidenews.com/aew-collision-viewership-sees-slight-drop-september-19-2026/",
-    "date": "Thu, 24 Sep 2026 14:21:55 +0000",
-    "date_gmt": "2026-09-24T14:21:55.000Z",
-    "title": {
-      "rendered": "AEW Collision Viewership Sees Slight Drop on September 19, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/AEW-Collision-Decrease.jpg?x40058"
   }
 ]
