@@ -697,3 +697,9 @@ test('copy editor may not invent numbers or English words the source lacks', asy
   assert.equal(applyProofEdits(draft, edits, '').applied.length, 0);
   assert.equal(applyProofEdits(draft, edits, 'Lainey Reed spoke on Sept. 23').applied.length, 2);
 });
+
+test('copy editor may not turn "يذكر أن" into "يتذكر أن"', async () => {
+  const { applyProofEdits } = await import('../scripts/editorial');
+  const r = applyProofEdits({ title: 'عنوان الخبر هنا', body: 'يذكر أن الاتحاد يعتزم', tags: [] }, [{ field: 'body', find: 'يذكر أن', replace: 'يتذكر أن' }]);
+  assert.equal(r.applied.length, 0);
+});

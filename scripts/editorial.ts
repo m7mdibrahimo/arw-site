@@ -96,6 +96,8 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
     const replace = e.replace.trim();
     if (!find || find === replace || find.length > 400 || replace.length > find.length * 2 + 40) continue;
     if (!editIsGrounded(find, replace, sourceText)) continue;
+    // "يُذكر أن" (it is worth noting) is not "يتذكر" (remembers) — seen in testing.
+    if (/(^|[^\u0621-\u064A])[وف]?يذكر/.test(find) && /يتذكر/.test(replace)) continue;
     if (e.field === "tags") {
       const i = out.tags.indexOf(find);
       if (i === -1 || !replace) continue;
