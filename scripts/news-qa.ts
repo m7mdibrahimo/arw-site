@@ -161,6 +161,8 @@ export function autoFix(text: string): string {
   const urls: string[] = [];
   let out = text.replace(/https?:\/\/\S+|<[^>]+>/g, m => `\u0000${urls.push(m) - 1}\u0000`);
   out = out
+    // "أارون" / "أاماساكي": hamza-alef + alef never occurs in Arabic — it is a long «آ»
+    .replace(/[أإ]ا/g, "آ")
     .replace(/ک/g, "ك").replace(/ی/g, "ي").replace(/گ/g, "غ").replace(/پ/g, "ب").replace(/ژ/g, "ج").replace(/ڤ/g, "ف").replace(/چ/g, "تش")
     // "AEW Liveة" → "AEW Live": a lone Arabic letter glued after an English word is always debris
     .replace(new RegExp(`([A-Za-z])[ةه](?![${AR}])`, "g"), "$1")
