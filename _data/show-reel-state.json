@@ -2129,7 +2129,10 @@
       "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "processing": [
+      "instagram_story"
+    ]
   },
   "20260924110800-cmll-domingo-familiar-20-09-2026": {
     "publishedAt": 1790249500667,
@@ -2143,7 +2146,10 @@
       "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "processing": [
+      "instagram_reel"
+    ]
   },
   "20260924111100-cmll-lunes-clasico-21-09-2026": {
     "publishedAt": 1790249619980,
