@@ -95,9 +95,22 @@ const QA_PROBE_PAD = " ".repeat(260) + "نص عربي للفحص فقط";
  * "AEW World Trios Championships", "حلقة العرض" → "عرض العرض"), and must not churn
  * text with diacritic-only edits ("رسميا" → "رسمياً") that aren't the site's style.
  */
+let approvedSpellings: string[] | null = null;
+function approvedNames(): string[] {
+  if (!approvedSpellings) {
+    const rights = loadCorrections().filter(c => !c.regex).map(c => c.right);
+    let glossary: string[] = [];
+    try { glossary = Object.values(JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8"))) as string[]; } catch {}
+    approvedSpellings = [...new Set([...rights, ...glossary])].filter(n => /[\u0621-\u064A]/.test(n) && n.includes(" ") && n.length >= 6);
+  }
+  return approvedSpellings;
+}
+
 export function editIsAnImprovement(find: string, replace: string): boolean {
   if (find.replace(DIACRITICS, "") === replace.replace(DIACRITICS, "")) return false;
   if (applyCorrections(replace) !== replace) return false; // introduces a known-wrong form
+  // Never undo an approved spelling (seen: "ذا يانغ باكس" → "يانغ باكس").
+  if (approvedNames().some(n => find.includes(n) && !replace.includes(n))) return false;
   const codes = (t: string) => new Set(checkArticle("عنوان عربي للفحص فقط", t + QA_PROBE_PAD, []).filter(i => i.severity === "error").map(i => i.code));
   const before = codes(find);
   return [...codes(replace)].every(c => before.has(c));

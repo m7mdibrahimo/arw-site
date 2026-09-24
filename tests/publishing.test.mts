@@ -753,3 +753,9 @@ test('platforms still processing are retried after 10 minutes, real failures aft
   assert.deepEqual(failed.processing, []);
   assert.equal(retryDelayMs(failed, ['instagram_story']), 45 * 60_000);
 });
+
+test('copy editor may not undo an approved spelling', async () => {
+  const { editIsAnImprovement } = await import('../scripts/editorial');
+  assert.equal(editIsAnImprovement('ذا يانغ باكس', 'يانغ باكس'), false);
+  assert.equal(editIsAnImprovement('فيتنس مكمان', 'فينس مكمان'), true);
+});
