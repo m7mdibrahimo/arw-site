@@ -647,4 +647,6 @@ test('_redirects is converted to rules Cloudflare Pages accepts', () => {
   assert.ok(out.includes('/news/قديم/ /news/جديد/ 301'));
   assert.ok(out.includes('/news/قديم /news/جديد/ 301'));
   assert.ok(out.includes('/tag/قديم/* /tag/جديد/:splat 301'), 'paginated target keeps its splat');
+  const firstSplat = out.findIndex(l => l.includes('*'));
+  assert.ok(out.slice(firstSplat).every(l => l.includes('*')), 'static rules must precede every splat rule');
 });
