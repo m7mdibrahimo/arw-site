@@ -7,6 +7,7 @@ import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure } from '../scripts/show-reel-monitor';
+import { toPagesRedirects } from '../lib/redirects.cjs';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -630,4 +631,20 @@ test('sanitizeWrestlingTerms normalizes "MLP Northern Rising" idempotently, neve
     for (let i = 0; i < 5; i++) s = sanitizeWrestlingTerms(s);
     assert.equal(s, 'عرض MLP Northern Rising', `input "${input}" must converge to the canonical form and stay stable across repeated passes`);
   }
+});
+
+test('_redirects is converted to rules Cloudflare Pages accepts', () => {
+  // Reached production: every rule used Netlify's "301!", which Pages rejects,
+  // so none of the 166 redirects worked and every renamed article URL 404'd.
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'site-'));
+  fs.mkdirSync(path.join(site, 'tag', 'جديد', '2'), { recursive: true });
+  const out = toPagesRedirects([
+    'https://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!',
+    '/news/قديم/* /news/جديد/:splat 301!',
+    '/tag/قديم/* /tag/جديد/:splat 301!',
+  ].join('\n'), site).trim().split('\n');
+  assert.ok(out.every(l => /^\/\S* \S+ \d{3}$/.test(l)), 'bare numeric status, path-only sources');
+  assert.ok(out.includes('/news/قديم/ /news/جديد/ 301'));
+  assert.ok(out.includes('/news/قديم /news/جديد/ 301'));
+  assert.ok(out.includes('/tag/قديم/* /tag/جديد/:splat 301'), 'paginated target keeps its splat');
 });

@@ -1343,9 +1343,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("tiktokuOJmqoSFpXuJX6VMj9SICyoMTCTvK3H0.txt");
   eleventyConfig.addPassthroughCopy("tiktokB3tgkt0dNmlKDHhe0BRwvie3TesB9SZT.txt");
   eleventyConfig.addPassthroughCopy("ads.txt");
-  if (fs.existsSync("_redirects")) {
-    eleventyConfig.addPassthroughCopy("_redirects");
-  }
   if (fs.existsSync("_headers")) {
     eleventyConfig.addPassthroughCopy("_headers");
   }
@@ -1357,7 +1354,8 @@ module.exports = function(eleventyConfig) {
       fs.cpSync("assets", "_site/assets", { recursive: true });
     }
     if (fs.existsSync("_redirects")) {
-      fs.copyFileSync("_redirects", "_site/_redirects");
+      const { toPagesRedirects } = require("./lib/redirects.cjs");
+      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8")));
     }
     if (fs.existsSync("_headers")) {
       fs.copyFileSync("_headers", "_site/_headers");
