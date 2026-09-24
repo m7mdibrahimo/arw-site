@@ -579,6 +579,20 @@ test('a failed TikTok init call surfaces the x-tt-logid header for support ticke
   assert.match(result.error!, /log_id: 202609231234560000000000000001/);
 });
 
+test('TikTok posts SELF_ONLY until the app is approved for public posting', async t => {
+  // An unaudited TikTok app is rejected outright if it asks for PUBLIC_TO_EVERYONE;
+  // the allowed levels come from creator_info, so the init call must follow them.
+  const sent: any[] = [];
+  t.mock.method(globalThis, 'fetch', async (url: string, init: any) => {
+    if (url.endsWith('/creator_info/query/')) return new Response(JSON.stringify({ error: { code: 'ok' }, data: { privacy_level_options: ['SELF_ONLY'] } }));
+    if (url.endsWith('/video/init/')) { sent.push(JSON.parse(init.body)); return new Response(JSON.stringify({ error: { code: 'ok' }, data: { publish_id: 'p1' } })); }
+    return new Response(JSON.stringify({ error: { code: 'ok' }, data: { status: 'PUBLISH_COMPLETE' } }));
+  });
+  const result = await publishTikTokVideo({ accessToken: 'token', videoUrl: 'https://site.test/videos/a.mp4', kv: { get: async () => null, put: async () => {}, delete: async () => {} } as any });
+  assert.equal(result.ok, true);
+  assert.equal(sent[0].post_info.privacy_level, 'SELF_ONLY');
+});
+
 test('sanitizeWrestlingTerms keeps WWF in English like every other federation name', () => {
   // WWE, AEW, TNA, ROH, MLW and NJPW all had a rule enforcing their English
   // name over a phonetic Arabic transliteration, but WWF (the promotion's own

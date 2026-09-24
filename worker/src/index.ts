@@ -2810,6 +2810,11 @@ export default {
           try {
             const headCheck = await fetch(fullVideoUrl, { method: "HEAD" });
             if (!headCheck.ok && headCheck.status === 404) {
+              // TikTok only pulls from the domain verified in its developer portal and
+              // always rejects raw GitHub URLs — wait for the site deploy instead.
+              if (requestedPlatforms.includes("tiktok")) {
+                return json({ success: false, results: { tiktok: { ok: false, status: "processing", error: "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر." } } });
+              }
               const filename = fullVideoUrl.split("/").pop();
               if (filename && filename.endsWith(".mp4")) {
                 fullVideoUrl = `https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/${env.GITHUB_BRANCH || "main"}/dist/videos/${encodeURIComponent(decodeURIComponent(filename))}`;

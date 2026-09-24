@@ -17,6 +17,9 @@ const WORKER = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc.wor
 // entirely (rather than attempting and having the Worker return skipped:true) so it
 // costs nothing and shows nothing until the site owner flips this on for real.
 const TIKTOK_ENABLED = process.env.TIKTOK_AUTO_ENABLED === 'true';
+// Firing TikTok for every backlogged show in one run is what tripped its API rate
+// limit (and the Worker's 24h cooldown); drain the backlog one show per run instead.
+const TIKTOK_PER_RUN = 1;
 
 export function isShowEligible(filename: string, data: Record<string, any>): boolean {
   const date = data.date ? new Date(data.date).getTime() : NaN;
@@ -92,6 +95,7 @@ export async function main() {
   };
   const videos = fs.existsSync(videoDir) ? fs.readdirSync(videoDir) : [];
   let failures = 0;
+  let tiktokBudget = TIKTOK_PER_RUN;
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
     const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
     const slug = filename.replace(/\.md$/, '');
@@ -99,14 +103,21 @@ export async function main() {
     if (!shouldProcessShow(filename, data, previous)) continue;
     if (previous?.needsReview) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
-    const pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || TIKTOK_ENABLED));
+    let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || TIKTOK_ENABLED));
     if (!pending.length) continue;
     if (previous?.lastAttempt && Date.now() - previous.lastAttempt < 45 * 60_000) continue;
     const file = findReelVideo(slug, videos);
     if (!file) { console.log(`${slug}: waiting for rendered video.`); continue; }
+    if (pending.includes('tiktok')) {
+      if (tiktokBudget > 0) tiktokBudget--;
+      else pending = pending.filter(p => p !== 'tiktok');
+      if (!pending.length) continue;
+    }
     const title = data.headline || data.title || slug;
     const postUrl = showUrl(filename, data);
     const videoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos/${encodeURIComponent(file)}`;
+    // TikTok's PULL_FROM_URL only accepts the domain verified in its developer portal.
+    const siteVideoUrl = new URL(`/videos/${encodeURIComponent(file)}`, ORIGIN).href;
     if (dryRun) { console.log(JSON.stringify({ slug, pending, postUrl, videoUrl })); continue; }
     if (!process.env.GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required for authenticated publishing.');
     let results: Record<string, any> = {};
@@ -124,7 +135,7 @@ export async function main() {
           const response = await fetch(`${WORKER}/api/videos/publish-social`, {
             method: 'POST', signal: AbortSignal.timeout(150_000),
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
-            body: JSON.stringify({ videoUrl, title, postUrl, platforms: [platform] }),
+            body: JSON.stringify({ videoUrl: platform === 'tiktok' ? siteVideoUrl : videoUrl, title, postUrl, platforms: [platform] }),
           });
           const body: any = await response.json();
           results[platform] = body.results?.[platform] || { ok: false, error: body.error || `HTTP ${response.status}` };

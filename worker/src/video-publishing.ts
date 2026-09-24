@@ -118,13 +118,28 @@ export async function publishTikTokVideo(options: {
     const cached = await kv.get(cacheKey);
     let publishId: string | undefined = cached ? JSON.parse(cached).id : undefined;
     if (!publishId) {
+      // An unaudited app may only post SELF_ONLY, and init rejects any privacy
+      // level not in the creator's own options — so ask instead of hardcoding
+      // public. Once TikTok approves the app, PUBLIC_TO_EVERYONE shows up here.
+      const info = await fetch(`${TIKTOK_API}/post/publish/creator_info/query/`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json; charset=UTF-8' },
+      });
+      const infoData: any = await info.json();
+      if (!info.ok || infoData.error?.code !== 'ok') {
+        const logId = info.headers.get('x-tt-logid');
+        const baseError = infoData.error?.message || `تعذر قراءة إعدادات حساب TikTok (${info.status}).`;
+        return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: infoData };
+      }
+      const privacyOptions: string[] = infoData.data?.privacy_level_options || [];
+      const privacyLevel = privacyOptions.includes('PUBLIC_TO_EVERYONE') ? 'PUBLIC_TO_EVERYONE' : 'SELF_ONLY';
       const init = await fetch(`${TIKTOK_API}/post/publish/video/init/`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json; charset=UTF-8' },
         body: JSON.stringify({
           post_info: {
             title: (caption || '').slice(0, 2200),
-            privacy_level: 'PUBLIC_TO_EVERYONE',
+            privacy_level: privacyLevel,
             disable_duet: false,
             disable_stitch: false,
             disable_comment: false,
