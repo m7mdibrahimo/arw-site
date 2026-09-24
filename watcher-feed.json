@@ -1,5 +1,15 @@
 [
   {
+    "id": 330131,
+    "link": "https://www.fightful.com/wrestling/nick-wayne-vs-chris-jericho-set-for-aew-grand-slam-france/",
+    "date": "2026-09-23T22:55:21",
+    "date_gmt": "2026-09-24T02:55:21",
+    "title": {
+      "rendered": "Nick Wayne vs. Chris Jericho Set For AEW Grand Slam France"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23225430/Screenshot-327-e1790218483914.png"
+  },
+  {
     "id": 330109,
     "link": "https://www.fightful.com/wrestling/speedball-mike-bailey-joins-united-empire-on-aew-dynamite/",
     "date": "2026-09-23T20:47:50",
@@ -288,15 +298,5 @@
       "rendered": "Vaughn Vertigo Recalls &#8216;Sign Vaughn Vertigo&#8217; Sign At AEW All Out 2025, &#8216;I Didn&#8217;t Pay Them&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21164716/G1WKmOQWwAAmkec-scaled-e1790023656139.jpg"
-  },
-  {
-    "id": 330025,
-    "link": "https://www.fightful.com/wrestling/aj-francis-explains-why-he-finds-being-a-heel-easier-than-being-a-babyface/",
-    "date": "2026-09-23T10:31:10",
-    "date_gmt": "2026-09-23T14:31:10",
-    "title": {
-      "rendered": "AJ Francis Explains Why He Finds Being A Heel Easier Than Being A Babyface"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/04/05031600/aj-francis.jpg"
   }
 ]
