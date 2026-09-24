@@ -1,5 +1,15 @@
 [
   {
+    "id": 2605190103,
+    "link": "https://www.wrestlinginc.com/2267270/persephone-underhanded-win-aew-tbs-title-defense/",
+    "date": "Thu, 24 Sep 2026 01:49:03 +0000",
+    "date_gmt": "2026-09-24T01:49:03.000Z",
+    "title": {
+      "rendered": "Persephone Gets Underhanded Win In AEW TBS Title Defense"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/persephone-gets-underhanded-win-in-aew-tbs-title-defense/l-intro-1790214490.jpg"
+  },
+  {
     "id": 3420509452,
     "link": "https://www.wrestlinginc.com/2263241/aew-jim-ross-bill-dundee/",
     "date": "Thu, 24 Sep 2026 01:00:00 +0000",
@@ -37,7 +47,7 @@
     "title": {
       "rendered": "AEW Dynamite & Collision Results 9/23 - World Trios Championship On The Line & More"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-collision-september-23-world-trios-championship-on-line-more/l-intro-1790213058.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-collision-september-23-world-trios-championship-on-line-more/l-intro-1790214007.jpg"
   },
   {
     "id": 1639485805,
@@ -188,15 +198,5 @@
       "rendered": "Dominik Mysterio Excited For Sister's WWE Journey"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/dominik-mysterio-excited-for-sisters-wwe-journey/l-intro-1790158187.jpg"
-  },
-  {
-    "id": 4595390996,
-    "link": "https://www.wrestlinginc.com/2266201/wwe-malakai-black-wrestlemania-42-randy-orton-pitched-never-happened/",
-    "date": "Wed, 23 Sep 2026 14:00:00 +0000",
-    "date_gmt": "2026-09-23T14:00:00.000Z",
-    "title": {
-      "rendered": "Ex-WWE Star Malakai Black Confirms WrestleMania 42 Match With Randy Orton Was Pitched"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ex-wwe-star-malakai-black-confirms-wrestlemania-42-match-with-randy-orton-was-pitched/l-intro-1790155886.jpg"
   }
 ]
