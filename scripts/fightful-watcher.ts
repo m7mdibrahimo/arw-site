@@ -2,6 +2,12 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import sharp from "sharp";
+import { applyCorrections, autoFix, checkArticle, loadNews } from "./news-qa";
+import {
+  editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
+  duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
+  type ArticleDraft, type ProofEdit,
+} from "./editorial";
 
 // Load environment variables if .env exists
 if (fs.existsSync(".env")) {
@@ -393,7 +399,8 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/گ/g, "غ")
     .replace(/چ/g, "تش")
     .replace(/پ/g, "ب")
-    .replace(/ژ/g, "ج");
+    .replace(/ژ/g, "ج")
+    .replace(/ڤ/g, "ف");
 
   const cleaned = persianNormalized
     // 1. Enforce English names for Promotions (no Arabic transliterations)
@@ -1730,7 +1737,7 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
 }
 
 // Helper to call Gemini with retry, quota protection & multi-key fallback
-async function queryGemini(prompt: string, jsonMode: boolean = true): Promise<string | null> {
+export async function queryGemini(prompt: string, jsonMode: boolean = true, temperature: number = 0.6): Promise<string | null> {
   const state = loadState();
   
   // Circuit breaker: Free tier limit is 1,500 calls/day. Safety cap pauses at 1,200 to protect quota.
@@ -1762,7 +1769,7 @@ async function queryGemini(prompt: string, jsonMode: boolean = true): Promise<st
           body: JSON.stringify({
             contents: [{ parts: [{ text: prompt }] }],
             generationConfig: {
-              temperature: 0.6,
+              temperature,
               maxOutputTokens: 2500,
               ...(jsonMode ? { responseMimeType: "application/json" } : {}),
             },
@@ -1815,13 +1822,9 @@ function getArabicDateFormatted(dateString?: string): string {
 // afterward. Shared by both the main article rewrite and the title-optimizer passes
 // below, since the observed failures happened in both. Add a new line here whenever
 // a genuinely new *class* of mistake (not a one-off typo) is found; see INCIDENTS.md.
-const KNOWN_MISTAKES_TO_AVOID = `
-أخطاء حقيقية حصلت من قبل ووصلت للموقع المباشر — تجنبها تماماً:
-- **العنوان يجب أن يكون عربياً بالكامل كجملة**: حتى لو بقيت فيه أسماء أو اختصارات إنجليزية (WWE، AEW، أسماء المصارعين...)، يُمنع أن يخرج العنوان بأكمله بالإنجليزية أو أغلبه بالإنجليزية دون ترجمة حقيقية لمعناه.
-- **ممنوع إلصاق أي حرف عربي مباشرة بكلمة إنجليزية بدون مسافة** (حصل فعلياً: "AEW Liveة" بدلاً من "AEW Live"). كلمة Live أو أي اسم إنجليزي يبقى مستقلاً بحروفه الإنجليزية فقط، بدون أي لاحقة عربية ملتصقة به.
-- **ممنوع استخدام حروف فارسية بدلاً من عربية** (حصل فعلياً: "تگ کلاسیک" بدلاً من "تاغ كلاسيك"؛ الفرق: ک/ی فارسية مقابل ك/ي عربية). استخدم الحروف العربية القياسية فقط دائماً.
-- **راجع توافق الجنس النحوي (مذكر/مؤنث) مع فاعل الجملة الحقيقي** (حصل فعلياً: كتابة "موقفها" بدلاً من "موقفه" عند الحديث عن مصارع رجل). تأكد أن الضمائر والصفات تطابق جنس الشخص المقصود فعلياً في كل جملة.
-`;
+// The editorial rules and every known wrong spelling now live in editorial/
+// (style-guide.md + corrections.json) so they can grow without code changes.
+
 
 // Second-pass AI Tool: Select and craft the ultimate faithful, click-worthy, SEO-optimized title
 export async function optimizeTitleForSEOAndCTR(
@@ -2007,7 +2010,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذ
 
 القواعد الصارمة الملزمة لجميع العناوين:
 ${specificTitleRules}
-${KNOWN_MISTAKES_TO_AVOID}
+${editorialGuideForPrompt()}
 ملخص ومحتوى المقال:
 ${articleSummary.slice(0, 3000)}
 
@@ -2336,7 +2339,7 @@ async function rewriteWithGemini(
    - أول وسمين إلزاميين: اسم الاتحاد واسم العرض (مثل "WWE", "WWE RAW" أو "AEW", "AEW Dynamite").
    - باقي الوسوم تكون بالعربية حصراً: أسماء أبرز النجوم المشاركين، اسم الحدث الرئيسي، أو نوع البطولة.
    - ممنوع وضع كلمات إنجليزية في الوسوم غير اسم الاتحاد واسم العرض!
-${KNOWN_MISTAKES_TO_AVOID}
+${editorialGuideForPrompt()}
 ${namesGlossaryHint}
 تاريخ الحدث: ${arabicDate}
 بيانات المقال الأصلي:
@@ -2496,7 +2499,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
 6. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
 7. **حظر ذكر Fightful نهائياً وحظر عبارة 'مصادرنا الخاصة' قطيعاً**: ممنوع منعاً باتاً ومطلقاً استخدام عبارات مثل "أفادت مصادرنا الخاصة" أو "كشفت مصادرنا الخاصة" أو "مصادرنا" أو الادعاء بوجود مصادر خاصة لعرب راسلنج. ادخل في صلب الخبر مباشرة واذكر التفاصيل بأسلوب صحفي محايد ومباشر (مثل: "كشفت تقارير صحفية"، "أكدت التطورات الأخيرة"، أو البدء بالحدث مباشرة: "يستعد المصارع..." أو "أعلن اتحاد WWE رسمياً..."). ممنوع بتاتاً ذكر Fightful أو محرريها.
 8. **الوسوم (tags)**: بين 5 إلى 7 وسوم دقيقة (تتضمن اسم الاتحاد بالإنجليزية مثل WWE أو AEW، واسم العرض بالإنجليزية مثل WWE RAW، وباقي الوسوم وأسماء المصارعين بالعربية).
-${KNOWN_MISTAKES_TO_AVOID}
+${editorialGuideForPrompt()}
 ${namesGlossaryHint}
 الخبر الأصلي:
 العنوان: ${originalTitle}
@@ -3059,6 +3062,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
 
+  if (!isUpdate && isKnownDuplicate(postUrl)) {
+    console.log(`[Watcher] 🔁 Already judged a duplicate of a published story: Post #${postId} ("${rawTitle}") skipped.`);
+    return false;
+  }
+
   if (!isUpdate) {
     const dupe = findLikelyDuplicateStory(rawTitle);
     if (dupe.isDuplicate) {
@@ -3205,6 +3213,50 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     }
   }
 
+  // Editorial pass (see scripts/editorial.ts): deterministic fixes + editorial/corrections.json,
+  // a Gemini same-story check against recent articles, then a Gemini copy editor.
+  let draft: ArticleDraft = {
+    title: applyCorrections(autoFix(applyCorrections(rewritten.title))),
+    body: applyCorrections(autoFix(applyCorrections(finalBody))),
+    tags: rewritten.tags.map(t => applyCorrections(autoFix(applyCorrections(t)))),
+  };
+
+  if (!isUpdate) {
+    const candidates = findDuplicateCandidates(draft, loadNews(NEWS_DIR));
+    if (candidates.length) {
+      const verdict = parseDuplicateAnswer(await queryGemini(duplicatePrompt(draft, candidates), true, 0.1), candidates);
+      if (verdict) {
+        recordDuplicate(postUrl, verdict.file, verdict.reason);
+        console.log(`[Watcher] 🔁 Gemini: same story as ${verdict.file} (${verdict.reason}): Post #${postId} ("${rawTitle}") skipped.`);
+        return false;
+      }
+    }
+  }
+
+  let proofEdits: ProofEdit[] = [];
+  const preIssues = checkArticle(draft.title, draft.body, draft.tags);
+  const edits = parseProofEdits(await queryGemini(
+    proofreadPrompt(draft, rawTitle, plainText, buildNamesGlossaryHint(`${rawTitle}\n${plainText}`), preIssues), true, 0.1));
+  if (edits) {
+    ({ article: draft, applied: proofEdits } = applyProofEdits(draft, edits, `${rawTitle}\n${plainText}`));
+    console.log(`[Watcher] ✍️ Copy editor applied ${proofEdits.length}/${edits.length} fixes.`);
+  } else {
+    console.warn(`[Watcher] ⚠️ Copy editor unavailable for post #${postId}; publishing with deterministic fixes only.`);
+  }
+  // The editor must never reintroduce a known mistake.
+  const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
+  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))] };
+
+  const blocking = checkArticle(draft.title, draft.body, draft.tags)
+    .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short"].includes(i.code));
+  if (blocking.length) {
+    console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
+    return false;
+  }
+  rewritten.title = draft.title;
+  finalBody = draft.body;
+  rewritten.tags = draft.tags;
+
   const slug = generateSlug(rewritten.title);
   const targetFileName = `${prefix}-${slug}.md`;
   const targetFilePath = path.join(NEWS_DIR, targetFileName);
@@ -3242,6 +3294,7 @@ ${finalBody}
 
   fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
   console.log(`[Watcher] Successfully published fresh news file: ${targetFilePath}`);
+  logProofEdits(targetFileName, proofEdits);
 
   // Optional background auto-reel generation if enabled
   if (process.env.AUTO_GENERATE_REEL === "true") {

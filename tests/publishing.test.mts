@@ -650,3 +650,50 @@ test('_redirects is converted to rules Cloudflare Pages accepts', () => {
   const firstSplat = out.findIndex(l => l.includes('*'));
   assert.ok(out.slice(firstSplat).every(l => l.includes('*')), 'static rules must precede every splat rule');
 });
+
+test('news QA auto-fixes defects that reached production and leaves legit text alone', async () => {
+  const { autoFix, checkArticle, applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(autoFix('لعروض WWE Liveة والمتلفزة'), 'لعروض WWE Live والمتلفزة');
+  assert.equal(autoFix('بطلة سابقة ل *NXTبطولة السيدات*'), 'بطلة سابقة لـ *NXT بطولة السيدات*');
+  assert.equal(autoFix('في عرض MLPعرض MLP Northern Rising'), 'في عرض MLP Northern Rising');
+  assert.equal(autoFix('ظهور خاص ل زينا ستيرلينج'), 'ظهور خاص لـزينا ستيرلينج');
+  assert.equal(autoFix('التحکيم'), 'التحكيم');
+  assert.equal(autoFix('فريق بانغ بانغ غانغ'), 'فريق بانغ بانغ غانغ');
+  assert.equal(autoFix('فاز 3 و 4'), 'فاز 3 و 4');
+  assert.equal(applyCorrections('رئيس AEW تونسي خان في عرض WWE إيفولف'), 'رئيس AEW توني خان في عرض WWE EVOLVE');
+  assert.equal(applyCorrections('الرومانسية'), 'الرومانسية');
+  const codes = checkArticle('نتائج عرض WWE إيفولف', 'x'.repeat(300) + ' سيطرت على مجريات اللعب').map(i => i.code);
+  assert.ok(codes.includes('transliterated_show') && codes.includes('game_terms'));
+});
+
+test('AI copy-editor edits are applied only when verifiable', async () => {
+  const { applyProofEdits, parseDuplicateAnswer } = await import('../scripts/editorial');
+  const draft = { title: 'تونسي خان يعلن', body: 'أعلن تونسي خان عن عرض خاصة.', tags: ['تونسي خان'] };
+  const { article, applied } = applyProofEdits(draft, [
+    { field: 'body', find: 'تونسي خان', replace: 'توني خان' },
+    { field: 'body', find: 'عرض خاصة', replace: 'عرض خاص' },
+    { field: 'title', find: 'تونسي خان', replace: 'توني خان' },
+    { field: 'tags', find: 'تونسي خان', replace: 'توني خان' },
+    { field: 'body', find: 'نص غير موجود', replace: 'أي شيء' },
+    { field: 'body', find: 'أعلن', replace: 'أعلن '.repeat(40) },
+  ]);
+  assert.equal(article.body, 'أعلن توني خان عن عرض خاص.');
+  assert.equal(article.title, 'توني خان يعلن');
+  assert.deepEqual(article.tags, ['توني خان']);
+  assert.equal(applied.length, 4);
+  const candidates = [{ file: 'a.md', title: '', body: '', tags: [], date: 0 }];
+  assert.equal(parseDuplicateAnswer('{"duplicate_of":0,"reason":"same"}', candidates)?.file, 'a.md');
+  assert.equal(parseDuplicateAnswer('{"duplicate_of":null}', candidates), null);
+  assert.equal(parseDuplicateAnswer('{"duplicate_of":5}', candidates), null);
+});
+
+test('copy editor may not invent numbers or English words the source lacks', async () => {
+  const { applyProofEdits } = await import('../scripts/editorial');
+  const draft = { title: 'نتائج العرض (24 سبتمبر 2026)', body: 'تحدثت Lainey Reid عن اﻻنتقال', tags: [] };
+  const edits = [
+    { field: 'title' as const, find: '(24 سبتمبر 2026)', replace: '(23 سبتمبر 2026)' },
+    { field: 'body' as const, find: 'Lainey Reid', replace: 'Lainey Reed' },
+  ];
+  assert.equal(applyProofEdits(draft, edits, '').applied.length, 0);
+  assert.equal(applyProofEdits(draft, edits, 'Lainey Reed spoke on Sept. 23').applied.length, 2);
+});
