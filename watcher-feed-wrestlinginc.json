@@ -1,5 +1,15 @@
 [
   {
+    "id": 3420509452,
+    "link": "https://www.wrestlinginc.com/2263241/aew-jim-ross-bill-dundee/",
+    "date": "Thu, 24 Sep 2026 01:00:00 +0000",
+    "date_gmt": "2026-09-24T01:00:00.000Z",
+    "title": {
+      "rendered": "AEW's Jim Ross Reflects On Working With The Late Bill Dundee"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jim-ross-reflects-on-working-with-the-late-bill-dundee/l-intro-1789847592.jpg"
+  },
+  {
     "id": 2067974406,
     "link": "https://www.wrestlinginc.com/2267250/swerve-strickland-new-level-retain-aew-world-trios-titles-en-route-all-out/",
     "date": "Thu, 24 Sep 2026 00:48:18 +0000",
@@ -27,7 +37,7 @@
     "title": {
       "rendered": "AEW Dynamite & Collision Results 9/23 - World Trios Championship On The Line & More"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-collision-september-23-world-trios-championship-on-line-more/l-intro-1790209886.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-collision-september-23-world-trios-championship-on-line-more/l-intro-1790212173.jpg"
   },
   {
     "id": 1639485805,
@@ -188,15 +198,5 @@
       "rendered": "Ex-WWE Star Malakai Black Confirms WrestleMania 42 Match With Randy Orton Was Pitched"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/ex-wwe-star-malakai-black-confirms-wrestlemania-42-match-with-randy-orton-was-pitched/l-intro-1790155886.jpg"
-  },
-  {
-    "id": 4802442421,
-    "link": "https://www.wrestlinginc.com/2266165/update-kip-sabian-penelope-ford-aew-futures/",
-    "date": "Wed, 23 Sep 2026 13:30:00 +0000",
-    "date_gmt": "2026-09-23T13:30:00.000Z",
-    "title": {
-      "rendered": "Update On Kip Sabian & Penelope Ford's AEW Futures"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/update-kip-sabian-penelope-ford-aew-futures/l-intro-1790175679.jpg"
   }
 ]
