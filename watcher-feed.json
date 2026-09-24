@@ -1,5 +1,15 @@
 [
   {
+    "id": 330104,
+    "link": "https://www.fightful.com/uncategorized/gia-miller-to-miss-tna-impact-tapings-due-to-medical-issue/",
+    "date": "2026-09-23T20:32:52",
+    "date_gmt": "2026-09-24T00:32:52",
+    "title": {
+      "rendered": "Gia Miller To Miss TNA iMPACT! Tapings Due To Medical Issue"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/02213059/Screenshot-2254.png"
+  },
+  {
     "id": 330064,
     "link": "https://www.fightful.com/wrestling/aew-dynamite-results-9-23-2026-persephone-vs-hyan-swerve-new-level-vs-demand-will-ospreay-more/",
     "date": "2026-09-23T19:15:00",
@@ -118,6 +128,16 @@
       "rendered": "Roman Reigns: If You&#8217;re In The Ring With Me, Your Value Is Going Up"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17132826/maxresdefault-110.jpg"
+  },
+  {
+    "id": 330101,
+    "link": "https://www.fightful.com/wrestling/kam-hendrix-addresses-viral-maxxine-dupri-and-austin-theory-video/",
+    "date": "2026-09-23T16:10:26",
+    "date_gmt": "2026-09-23T20:10:26",
+    "title": {
+      "rendered": "Kam Hendrix Addresses Viral Maxxine Dupri And Austin Theory Video"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/31190855/Untitled-Design-26.jpg"
   },
   {
     "id": 330067,
@@ -278,25 +298,5 @@
       "rendered": "Drake Maverick Heard Triple H Implemented Him More Into Shows, &#8216;Hunter Always Got Me&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23091052/maxresdefault-156.jpg"
-  },
-  {
-    "id": 329998,
-    "link": "https://www.fightful.com/wrestling/stu-grayson-super-grateful-for-his-time-in-aew/",
-    "date": "2026-09-23T09:30:00",
-    "date_gmt": "2026-09-23T13:30:00",
-    "title": {
-      "rendered": "Stu Grayson &#8216;Super Grateful&#8217; For His Time In AEW"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23043542/Screenshot-477.png"
-  },
-  {
-    "id": 330012,
-    "link": "https://www.fightful.com/wrestling/thunder-rosa-says-looks-with-really-big-head-pieces-are-her-favorites-from-her-career/",
-    "date": "2026-09-23T09:29:39",
-    "date_gmt": "2026-09-23T13:29:39",
-    "title": {
-      "rendered": "Thunder Rosa Says Looks With &#8216;Really Big Head Pieces&#8217; Are Her Favorites From Her Career"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/11/17205330/thunder_rosa_4.jpg"
   }
 ]
