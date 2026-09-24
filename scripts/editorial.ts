@@ -124,8 +124,17 @@ export function editIsAnImprovement(find: string, replace: string): boolean {
 export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourceText = ""): { article: ArticleDraft; applied: ProofEdit[] } {
   const out = { title: article.title, body: article.body, tags: [...article.tags] };
   const applied: ProofEdit[] = [];
+  // The same text proposed with two different replacements is ambiguous (seen
+  // live: «جيه بي إل» → «جي بي إل» and also → «AAA Worlds Collide»); a replace-all
+  // of either could swap a name for a show everywhere, so neither is applied.
+  const targets = new Map<string, Set<string>>();
+  for (const e of edits) {
+    const k = `${e.field}\u0000${e.find.trim()}`;
+    targets.set(k, (targets.get(k) || new Set()).add(e.replace.trim()));
+  }
   for (const e of edits) {
     const find = e.find.trim();
+    if ((targets.get(`${e.field}\u0000${find}`)?.size || 0) > 1) continue;
     // The site writes without tashkeel/tanween; never let an edit add it ("يوما" → "يوماً", seen live).
     const replace = DIACRITICS.test(find) ? e.replace.trim() : e.replace.trim().replace(DIACRITICS, "");
     DIACRITICS.lastIndex = 0;
@@ -139,9 +148,13 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
       if (i === -1 || !replace) continue;
       out.tags[i] = replace;
     } else {
-      if (!out[e.field].includes(find)) continue;
       if (e.field === "title" && !replace) continue;
-      out[e.field] = out[e.field].split(find).join(replace);
+      // Whole words only: a find that ends mid-word ("فايولنت جا" inside
+      // "فايولنت جاي") used to produce "فايولنت جايي".
+      const whole = new RegExp(`(?<![\\p{L}\\p{N}])${find.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\p{L}\\p{N}])`, "gu");
+      if (!whole.test(out[e.field])) continue;
+      whole.lastIndex = 0;
+      out[e.field] = out[e.field].replace(whole, () => replace);
     }
     applied.push({ ...e, find, replace });
   }

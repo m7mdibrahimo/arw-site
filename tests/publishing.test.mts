@@ -8,6 +8,7 @@ import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRet
 import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
+import { applyProofEdits } from '../scripts/editorial';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -821,4 +822,19 @@ test('watcher state merge keeps both runs\' processed IDs and the higher API cou
   assert.deepEqual(m.processedIds, [1, 2, 3, 330170, 330164]);
   assert.equal(m.apiCallsToday, 55);
   assert.equal(m.lastChecked, '2026-09-24T13:14:00Z');
+});
+
+
+test('copy-editor edits apply to whole words only and conflicting edits are skipped', () => {
+  // Live 2026-09-24: «فايولنت جا» → «فايولنت جاي» matched inside «فايولنت جاي» and
+  // produced «فايولنت جايي»; «جيه بي إل» was proposed as both a name fix and a show name.
+  const { article, applied } = applyProofEdits({ title: 'عنوان', body: 'باع حصته إلى فايولنت جاي. وقال جيه بي إل', tags: [] }, [
+    { field: 'body', find: 'إلى فايولنت جا', replace: 'إلى فايولنت جاي' },
+    { field: 'body', find: 'جيه بي إل', replace: 'جي بي إل' },
+    { field: 'body', find: 'جيه بي إل', replace: 'AAA Worlds Collide' },
+  ]);
+  assert.equal(article.body, 'باع حصته إلى فايولنت جاي. وقال جيه بي إل');
+  assert.equal(applied.length, 0);
+  const fixed = applyProofEdits({ title: 'عنوان', body: 'الفترة التي قضها ويل', tags: [] }, [{ field: 'body', find: 'قضها', replace: 'قضاها' }]);
+  assert.equal(fixed.article.body, 'الفترة التي قضاها ويل');
 });
