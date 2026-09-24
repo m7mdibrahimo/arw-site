@@ -227,6 +227,35 @@ test('automatic watcher bounds attempts and defers failed platforms without star
 });
 
 
+test('an article delayed on its way to the site is still posted: the social window starts at published_at, not the source date', async t => {
+  // INCIDENTS #36: a Gemini quota outage delayed articles by hours; they
+  // reached the site with source dates already outside the 3h window and the
+  // Worker never posted them. An old article with no published_at must still
+  // stay out.
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [
+    { url: '/news/fresh/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(0.5), published_at: hours(0.4) },
+    { url: '/news/stale/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(4) },
+    { url: '/news/late/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(5), published_at: hours(0.05) },
+  ];
+  const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} };
+  for (const slug of ['fresh', 'stale', 'late']) for (const p of ['telegram','facebook']) state[p][`httpssitetestnews${slug}`] = Date.now();
+  for (const p of ['instagram','x']) state[p]['httpssitetestnewsfresh'] = Date.now();
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const touched = Object.keys(after.deferrals || {}).concat(Object.keys(after.instagram), Object.keys(after.x));
+  assert.ok(touched.some(k => k.endsWith('httpssitetestnewslate')), 'the late-arriving article was attempted');
+  assert.ok(!touched.some(k => k.endsWith('httpssitetestnewsstale')), 'an old article without published_at stays out');
+});
+
+
 test('old, undated and unknown articles cannot reach video publishing even with force', async t => {
   t.mock.method(globalThis, 'fetch', async (input: any) => {
     const url = String(input);

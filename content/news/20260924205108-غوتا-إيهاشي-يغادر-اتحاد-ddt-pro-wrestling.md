@@ -2,6 +2,7 @@
 federation: INDIE
 title: "غوتا إيهاشي يغادر اتحاد DDT Pro-Wrestling"
 date: 2026-09-24T20:51:08.000+03:00
+published_at: 2026-09-24T21:34:28Z
 source_id: 330210
 source_url: "https://www.fightful.com/wrestling/gota-ihashi-departing-ddt-pro-wrestling/"
 single_match_result: false

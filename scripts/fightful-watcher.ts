@@ -3223,6 +3223,10 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   let oldFileName = "";
 
   let keptPermalink = "";
+  // When the article actually reached the site (the Worker's social window is
+  // measured from this, not from the source's own date — see INCIDENTS #36).
+  // A keepUrl repair keeps the original value so it never re-enters the window.
+  let publishedAt = new Date().toISOString();
   if (existingFile) {
     oldFileName = existingFile.fileName;
     try {
@@ -3230,6 +3234,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
       if (options.keepUrl) {
         const data = matter(oldContent).data;
         keptPermalink = data.permalink ? String(data.permalink) : `/news/${arabicSlug(String(data.title || ""))}/index.html`;
+        const oldPublishedAt = data.published_at ? new Date(data.published_at) : null;
+        publishedAt = oldPublishedAt && !isNaN(oldPublishedAt.getTime()) ? oldPublishedAt.toISOString() : new Date(data.date || 0).toISOString();
       }
       const tMatch = oldContent.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
       if (tMatch && tMatch[1]) {
@@ -3337,6 +3343,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}${keptPermalink ? `\npermalink: ${JSON.stringify(keptPermalink)}` : ""}
 date: ${iso}
+published_at: ${publishedAt}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
 single_match_result: ${isSingleMatch}

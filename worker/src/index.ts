@@ -2065,7 +2065,18 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // old backlog on social media at all — only genuinely fresh content is
     // worth the server load of trying. Articles past this window simply
     // never get attempted on social (the site itself is unaffected).
-    if (ts && (Date.now() - ts) > 3 * 60 * 60 * 1000) break;
+    //
+    // The 3h window is measured from when the article REACHED THE SITE
+    // (published_at), not from the source's own date: on 2026-09-24 a Gemini
+    // quota outage delayed 9 articles by 3-5h, they appeared on the site with
+    // source dates already outside the window and were never posted anywhere
+    // (INCIDENTS #36). The feed is sorted by source date, so a delayed article
+    // can sit below older-dated ones — only stop scanning past the watchers'
+    // own 24h source-age limit (+2h slack), skip the rest individually.
+    if (ts && (Date.now() - ts) > 26 * 60 * 60 * 1000) break;
+    const reachedSiteAt = item.published_at ? new Date(item.published_at).getTime() : ts;
+    const freshFrom = Number.isFinite(reachedSiteAt) && reachedSiteAt > 0 ? reachedSiteAt : ts;
+    if ((Date.now() - freshFrom) > 3 * 60 * 60 * 1000) continue;
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
     const tgDone = !!state.telegram[key];
