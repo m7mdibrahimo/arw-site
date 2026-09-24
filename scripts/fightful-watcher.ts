@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import sharp from "sharp";
+import matter from "gray-matter";
 import { applyCorrections, autoFix, checkArticle, loadNews } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
@@ -2280,6 +2281,13 @@ function safeParseJson<T>(rawText: string): T | null {
 }
 
 // Rewrites raw English post using Gemini into high-quality Arabic journalism
+// Opinion/list pieces ("3 Things We Hated & 3 We Loved", "5 Takeaways", match
+// ratings) promise N items in the headline; the default 120–180-word rule cut them
+// down to a generic summary that delivered none of the promised items.
+export function isListOrReviewArticle(title: string): boolean {
+  return /\b\d+\s+(?:things|reasons|takeaways|moments|matches|thoughts|questions|winners|losers|biggest|best|worst|stars|ways|storylines)\b|\bwe (?:hated|loved)\b|\bhated\b.*\bloved\b|\b(?:grades?|ratings?|ranked|rankings?|report card)\b/i.test(title || "");
+}
+
 async function rewriteWithGemini(
   originalTitle: string,
   plainText: string,
@@ -2430,10 +2438,14 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
    - **قاعدة الأمانة الخبرية التامة (100% Factual Fidelity)**:
      - انقل جميع الوقائع، الأسماء، النزالات، والأحداث الواردة في النص الإنجليزي بأمانة تامة ودقة متناهية دون زيادة أحداث من عندك أو حذف تفاصيل هامة.
      - الصيغة تكون عربية رياضية فصيحة وسلسة وممتعة، وليست ترجمة حرفية ركيكة.
-   - **قاعدة الإيجاز المشوق (Punchy & Concise)**: الزائر يمل بسرعة من النصوص الطويلة؛ اجعل الخبر مختصراً ومكثفاً في **فقرتين إلى 3 فقرات قصيرة فقط** (ما بين 120 إلى 180 كلمة):
+${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم (List / Review)**: عنوان المصدر يعد القارئ بعدد من النقاط (مثل "3 Things We Hated & 3 We Loved" أو "5 Takeaways")، لذلك يجب أن يغطي المتن **كل نقطة منها بالترتيب** حتى لا يَعِد العنوان بما لا يقدمه الخبر:
+     - فقرة افتتاحية قصيرة (سطرين) تذكر الحدث.
+     - ثم عنوان فرعي بخط عريض لكل قسم (مثل **ما أعجبنا** و**ما لم يعجبنا**)، وتحته كل نقطة في سطر مستقل يبدأ بـ "- " مع جملة أو جملتين تشرح النقطة كما وردت في المصدر بالضبط.
+     - الطول المسموح حتى 400 كلمة؛ لا تحذف أي نقطة ولا تضف نقاطاً غير موجودة.` : `   - **قاعدة الإيجاز المشوق (Punchy & Concise)**: الزائر يمل بسرعة من النصوص الطويلة؛ اجعل الخبر مختصراً ومكثفاً في **فقرتين إلى 3 فقرات قصيرة فقط** (ما بين 120 إلى 180 كلمة):
      - **الفقرة الأولى (جوهر الحدث)**: ادخل في صلب الحدث مباشرة وبوضوح تام ينقل الواقعة الرئيسية دون مقدمات إنشائية ميتة.
      - **الفقرة الثانية (تفاصيل ما جرى والكواليس)**: كيف وقع الحدث، وتفاصيل النزال أو التصريحات الحقيقية المذكورة في المصدر بدقة.
      - **الفقرة الثالثة (ماذا بعد؟)**: سطرين ختاميين عن الأثر المرتقب في العروض القادمة والسيناريوهات المشتعلة.
+     - إذا كان المصدر نفسه قصيراً فاكتب خبراً قصيراً بنفس القدر؛ لا تحشُ بجمل عامة لتصل للطول.`}
    - **ممنوع بتاتاً**: الحشو الكلامي الزائد، أو تكرار العبارات، أو التطويل الممل، أو اختلاق أحداث لم ترد في المصدر إطلاقاً.
 4. **قاعدة أسماء الاتحادات والعروض بالإنجليزية حصراً (Strict Rule)**:
    - **أسماء الاتحادات تظل بالإنجليزية دائماً كما هي دون أي تعريب أو ترجمة**:
@@ -2506,7 +2518,7 @@ ${namesGlossaryHint}
 التصنيفات: ${categories.join(", ")}
 تاريخ الحدث: ${arabicDate}
 النص:
-${plainText.slice(0, 4000)}
+${plainText.slice(0, isListOrReviewArticle(originalTitle) ? 16000 : 8000)}
 
 أخرج النتيجة بتنسيق JSON حصراً:
 {
@@ -3010,7 +3022,9 @@ export function findLikelyDuplicateStoryByTagsAndBody(
 // Process a single Fightful post
 // options.manual: an explicit add/update from the admin panel — the owner already
 // decided to publish it, so the automatic duplicate guards don't apply.
-export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean } = {}): Promise<boolean> {
+// options.keepUrl: rewrite an already-published article in place — same file, same
+// URL (pinned permalink), no redirect and no social re-post (used to repair articles).
+export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean; keepUrl?: boolean } = {}): Promise<boolean> {
   const postId = post.id;
   const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || "News";
   const postUrl = post.link || "";
@@ -3165,10 +3179,15 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   let oldSlug = "";
   let oldFileName = "";
 
+  let keptPermalink = "";
   if (existingFile) {
     oldFileName = existingFile.fileName;
     try {
       const oldContent = fs.readFileSync(existingFile.filePath, "utf-8");
+      if (options.keepUrl) {
+        const data = matter(oldContent).data;
+        keptPermalink = data.permalink ? String(data.permalink) : `/news/${arabicSlug(String(data.title || ""))}/index.html`;
+      }
       const tMatch = oldContent.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
       if (tMatch && tMatch[1]) {
         oldSlug = arabicSlug(tMatch[1]);
@@ -3251,7 +3270,13 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))] };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
-    .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short"].includes(i.code));
+    .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date"].includes(i.code));
+  // A body far longer than its source means Gemini padded a teaser with filler
+  // (what happened with Wrestling Inc's RSS teasers) — never publish that.
+  const proseLength = draft.body.replace(/https?:\/\/\S+/g, "").replace(/\s+/g, " ").trim().length;
+  if (!options.manual && plainText.length < 800 && proseLength > plainText.length * 3.5) {
+    blocking.push({ code: "padded", severity: "error", field: "body", message: `المتن (${proseLength} حرف) أطول بكثير من المصدر (${plainText.length} حرف) — حشو`, excerpt: "" });
+  }
   if (blocking.length) {
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
     return false;
@@ -3260,14 +3285,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 
-  const slug = generateSlug(rewritten.title);
-  const targetFileName = `${prefix}-${slug}.md`;
+  const slug = keptPermalink ? keptPermalink.replace(/^\/news\/|\/index\.html$/g, "") : generateSlug(rewritten.title);
+  const targetFileName = keptPermalink && oldFileName ? oldFileName : `${prefix}-${slug}.md`;
   const targetFilePath = path.join(NEWS_DIR, targetFileName);
 
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   let markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
-title: ${JSON.stringify(rewritten.title)}
+title: ${JSON.stringify(rewritten.title)}${keptPermalink ? `\npermalink: ${JSON.stringify(keptPermalink)}` : ""}
 date: ${iso}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
@@ -3308,7 +3333,7 @@ ${finalBody}
   }
 
   // Register 301 redirect if old article had a different URL
-  if (oldSlug && oldSlug !== slug) {
+  if (!keptPermalink && oldSlug && oldSlug !== slug) {
     try {
       const redirectsPath = path.join(process.cwd(), "_redirects");
       if (fs.existsSync(redirectsPath)) {
@@ -3344,7 +3369,7 @@ ${finalBody}
   // Otherwise, clear any old slug state so social platforms will publish fresh news.
   try {
     const stateFile = path.join(process.cwd(), "_data", "publish-state.json");
-    if (fs.existsSync(stateFile)) {
+    if (!keptPermalink && fs.existsSync(stateFile)) {
       const pState = JSON.parse(fs.readFileSync(stateFile, "utf-8"));
       if (isSingleMatch) {
         const siteUrl = `https://arab-wrestling.com/news/${slug}/`;

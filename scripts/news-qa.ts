@@ -78,6 +78,7 @@ const RULES: Rule[] = [
   { code: "artifact", severity: "error", re: /\bundefined\b|\bNaN\b|\[object Object\]|\{\{|\}\}|```|\\n|&amp;|&quot;|&#\d+;/g, message: "بقايا كود أو رموز غير مفهومة", fields: ["title", "body"] },
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
   { code: "empty_brackets", severity: "error", re: /\(\s*\)|\[\s*\]|«\s*»|""/g, message: "أقواس أو علامات تنصيص فاضية" },
+  { code: "english_jargon", severity: "error", re: new RegExp(`[${AR}]\\s+(?:segment|promo|heel|babyface|face turn|heel turn|feud|spot|push|booking|squash|botch|kayfabe|go-home|angle|storyline|run-in|pop|heat)\\b|\\b(?:segment|promo|heel|babyface|feud|booking|squash|botch|kayfabe|go-home|storyline)\\s+[${AR}]`, "gi"), message: "مصطلح مصارعة إنجليزي داخل جملة عربية (مثل segment ← فقرة، promo ← خطاب/حوار)", fields: ["title", "body"] },
   { code: "double_punct", severity: "warning", re: /[،,]\s*[،,.]|:\s*:|؟\s*؟/g, message: "علامات ترقيم مكررة", fields: ["title", "body"] },
 ];
 
@@ -110,6 +111,8 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   const arabicWords = t.split(/\s+/).filter(w => new RegExp(`[${AR}]{2,}`).test(w)).length;
   if (arabicWords < 3) issues.push({ code: "title_not_arabic", severity: "error", field: "title", message: "العنوان مش جملة عربية (أقل من 3 كلمات عربية)", excerpt: t });
   if (t.length > 0 && t.length < 25) issues.push({ code: "title_too_short", severity: "warning", field: "title", message: "العنوان قصير جدًا", excerpt: t });
+  // "AEW Collision-9-2026": a source date like 9/23/2026 mangled into a slug-ish fragment
+  if (/[A-Za-z]-\d{1,2}-\d{4}|\d{1,2}\/\d{1,2}\/\d{4}/.test(t)) issues.push({ code: "mangled_date", severity: "error", field: "title", message: "تاريخ مكتوب بصيغة غير عربية أو مكسور في العنوان (الصيغة المعتمدة: 23 سبتمبر 2026)", excerpt: t });
   if (/^(تصريحات نارية|صدمة مدوية|ليلة نارية|اعترافات صادمة|مفاجأة كبرى)/.test(t)) issues.push({ code: "title_cliche", severity: "error", field: "title", message: "بادئة كليشيه ممنوعة", excerpt: t });
 
   const prose = stripNonProse(body || "");

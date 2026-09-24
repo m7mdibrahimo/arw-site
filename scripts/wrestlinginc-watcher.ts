@@ -154,6 +154,38 @@ export function isLikelyDuplicateOfRecentCoverage(candidateTitle: string, hoursW
   return false;
 }
 
+// Wrestling Inc's RSS carries only a one-line teaser (~250 chars), never the
+// story. Articles written from that teaser came out as generic filler with
+// nothing the headline promised (e.g. "3 Things We Hated & 3 We Loved" with no
+// things). The full text lives in the page's <article class="news-post">.
+const MIN_FULL_TEXT = 600;
+export function extractWrestlingIncArticle(html: string): string | null {
+  const start = html.indexOf('<article class="news-post"');
+  if (start === -1) return null;
+  const end = html.indexOf("</article>", start);
+  let article = html.slice(start, end === -1 ? undefined : end);
+  const firstP = article.search(/<p[\s>]/i);
+  if (firstP > 0) article = article.slice(firstP); // drop headline/byline/"Add Wrestling Inc. on Google"
+  article = article
+    .replace(/<(script|style|noscript|svg|form|button)[\s\S]*?<\/\1>/gi, "")
+    .replace(/<p[^>]*>\s*Written by[\s\S]*?<\/p>/gi, "");
+  const text = article.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return text.length >= MIN_FULL_TEXT ? article : null;
+}
+
+export async function fetchWrestlingIncFullHtml(url: string): Promise<string | null> {
+  try {
+    const res = await fetch(url, {
+      signal: AbortSignal.timeout(20000),
+      headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36" },
+    });
+    if (!res.ok) return null;
+    return extractWrestlingIncArticle(await res.text());
+  } catch {
+    return null;
+  }
+}
+
 function toWpPost(item: { title: string; link: string; pubDate: string; contentHtml: string; thumbnail: string }, id: number) {
   return {
     id,
@@ -174,7 +206,12 @@ export async function processWrestlingIncUrl(url: string): Promise<boolean> {
     return false;
   }
   const id = stableIdFromGuid(item.guid);
-  const ok = await processPost(toWpPost(item, id), new Date(), false, { manual: true });
+  const full = await fetchWrestlingIncFullHtml(item.link);
+  if (!full) {
+    console.warn(`[WI Watcher] Could not fetch the full article text for ${url}; not publishing a teaser-only story.`);
+    return false;
+  }
+  const ok = await processPost(toWpPost({ ...item, contentHtml: full }, id), new Date(), false, { manual: true });
   const state = loadState();
   if (!state.processedIds.includes(id)) state.processedIds.push(id);
   saveState(state);
@@ -226,7 +263,13 @@ export async function runWrestlingIncWatcher(options: { dryRun?: boolean; maxPer
       continue;
     }
 
-    const fakeWpPost = toWpPost(item, id);
+    const full = await fetchWrestlingIncFullHtml(item.link);
+    if (!full) {
+      // Not marked processed: a transient fetch failure is retried next run.
+      console.warn(`[WI Watcher] ⏭️ Full text unavailable, skipping for now: "${item.title}"`);
+      continue;
+    }
+    const fakeWpPost = toWpPost({ ...item, contentHtml: full }, id);
 
     const ok = await processPost(fakeWpPost);
     state.processedIds.push(id);
