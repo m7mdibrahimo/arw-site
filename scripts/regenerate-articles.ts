@@ -21,7 +21,10 @@ async function fetchSource(url: string): Promise<{ title: string; html: string; 
   if (!res.ok) return null;
   const page = await res.text();
   const meta = (prop: string) => page.match(new RegExp(`<meta[^>]+property=["']${prop}["'][^>]+content=["']([^"']+)`, "i"))?.[1] || "";
-  const title = decode(meta("og:title"));
+  // og:title is sometimes just the section ("AEW"); the article's own <h1> is the headline.
+  const h1 = decode((page.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "").replace(/<[^>]+>/g, "").trim());
+  const og = decode(meta("og:title")).replace(/\s*-\s*Wrestling Inc\.?$/i, "");
+  const title = h1.split(/\s+/).length >= 4 ? h1 : og;
   const html = /wrestlinginc\.com/.test(url) ? extractWrestlingIncArticle(page) : null;
   if (!title || !html) return null;
   return { title, html, image: meta("og:image") };

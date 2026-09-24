@@ -1,12 +1,14 @@
-name: Editorial Maintenance — Fix & Learn
+name: Editorial Maintenance — Review & Learn
 
 # ═══════════════════════════════════════════════════════
-#  صيانة تحريرية تلقائية للأخبار (كل 3 ساعات):
-#  1. تصحيح ثابت لأخبار آخر 3 أيام (الأسماء، أسماء العروض، الحروف...)
-#  2. المدقق اللغوي (Gemini) على أي خبر حديث ما زال فيه خطأ
-#  3. مراجعة الأرشيف القديم بالتدريج (40 خبر في كل تشغيل) حتى يكتمل
-#  4. تعلّم التصحيحات المتكررة وإضافتها إلى editorial/corrections.json
-#     ثم تطبيقها على كل الأخبار — فلا يتكرر الخطأ مرة أخرى
+#  مراجعة وتعلّم تلقائي (كل 3 ساعات) — لا يعدّل أي خبر منشور:
+#  1. المدقق اللغوي (Gemini) يراجع أخبار آخر 3 أيام التي فيها أخطاء،
+#     ويسجل كل خطأ يجده في editorial/proofread-log.jsonl
+#  2. مراجعة الأرشيف بالتدريج (20 خبر في كل تشغيل) — مصدر إضافي للأخطاء
+#  3. أي تصحيح تكرر في 3 أخبار أو أكثر يتحول إلى قاعدة دائمة في
+#     editorial/corrections.json — تُطبق تلقائياً على كل خبر جديد
+#     وتُرسل لـ Gemini كصيغة ممنوعة، فلا يتكرر الخطأ مرة أخرى
+#  4. تقرير الجودة لآخر 3 أيام في editorial/qa-report.json
 # ═══════════════════════════════════════════════════════
 
 on:
@@ -40,29 +42,23 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Deterministic fixes (last 3 days)
-        run: npx tsx scripts/fix-articles.ts --days 3
-
-      - name: AI copy editor on recent articles that still have errors
+      - name: Review recent articles that have errors (log findings, edit nothing)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues || true
+        run: npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues --learn-only || true
 
-      - name: AI copy editor on the unreviewed archive (next batch)
+      - name: Review the archive (next batch, edit nothing)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: npx tsx scripts/fix-articles.ts --ai --backlog 40 || true
+        run: npx tsx scripts/fix-articles.ts --ai --backlog 20 --learn-only || true
 
-      - name: Learn recurring corrections and apply them everywhere
-        run: |
-          OUT=$(npx tsx scripts/learn-corrections.ts)
-          echo "$OUT"
-          if echo "$OUT" | grep -q "^learned:"; then
-            npx tsx scripts/fix-articles.ts --all
-          fi
+      - name: Learn recurring corrections (rules for every future article)
+        run: npx tsx scripts/learn-corrections.ts
 
       - name: Quality report
-        run: npx tsx scripts/news-qa.ts --days 3 || true
+        run: |
+          npx tsx scripts/news-qa.ts --days 3 || true
+          npx tsx scripts/news-qa.ts --days 3 --json > editorial/qa-report.json || true
 
       - name: Commit and push
         run: |
@@ -70,7 +66,7 @@ jobs:
           git config --local user.name "ARW Editorial Bot"
           if [[ -n $(git status -s) ]]; then
             git add -A
-            git commit -m "fix(content): editorial maintenance — proofreading and learned corrections"
+            git commit -m "chore(editorial): review findings and learned rules"
             PUSHED=false
             for i in {1..8}; do
               git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true

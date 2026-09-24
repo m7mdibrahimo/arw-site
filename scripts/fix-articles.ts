@@ -5,6 +5,10 @@
 //   npx tsx scripts/fix-articles.ts --all            (deterministic fixes only)
 //   npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues   (AI only where QA finds errors)
 //   npx tsx scripts/fix-articles.ts --ai --backlog 40             (next 40 never-reviewed articles)
+//   npx tsx scripts/fix-articles.ts --days 3 --ai --learn-only   (review only: log what's wrong, edit nothing)
+// --learn-only never touches a published article: the copy editor's findings go to
+// editorial/proofread-log.jsonl, where learn-corrections.ts turns recurring ones into
+// permanent rules for every FUTURE article (the owner's policy since 2026-09-24).
 // --backlog walks the archive newest-first and records every reviewed file in
 // editorial/proofread-progress.json, so scheduled runs eventually cover all of it.
 // Edits are surgical (title line, tag lines, body) so frontmatter formatting is
@@ -79,6 +83,7 @@ async function main() {
   if (arg("--files")) files = arg("--files")!.split(",").map(f => path.basename(f.trim())).filter(Boolean);
   const days = Number(arg("--days") || 0);
   const onlyIssues = args.includes("--only-issues");
+  const learnOnly = args.includes("--learn-only");
   const backlog = Number(arg("--backlog") || 0);
   const progress = loadProgress();
   if (backlog) {
@@ -114,6 +119,14 @@ async function main() {
       await new Promise(r => setTimeout(r, 4500)); // stay under the free-tier per-minute limit
     }
     if (backlog && !dryRun) { progress.add(file); saveProgress(progress); }
+    if (learnOnly) {
+      if (applied.length) {
+        changed++;
+        console.log(`🔎 ${file}\n    found: ${applied.map(e => `«${e.find}» → «${e.replace}»`).join(" | ")}`);
+        if (!dryRun) logProofEdits(file, applied);
+      }
+      continue;
+    }
     const next = render(p, draft);
     if (next === raw) continue;
     // Never write a file whose frontmatter no longer parses or lost its title/tags.
@@ -134,7 +147,7 @@ async function main() {
   }
   const out = arg("--report");
   if (out) fs.writeFileSync(out, JSON.stringify(report, null, 2));
-  console.log(`\n${dryRun ? "[dry-run] " : ""}${changed} article(s) changed.`);
+  console.log(`\n${dryRun ? "[dry-run] " : ""}${changed} article(s) ${learnOnly ? "with findings (nothing edited)" : "changed"}.`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });

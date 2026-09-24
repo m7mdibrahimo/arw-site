@@ -2285,7 +2285,7 @@ function safeParseJson<T>(rawText: string): T | null {
 // ratings) promise N items in the headline; the default 120–180-word rule cut them
 // down to a generic summary that delivered none of the promised items.
 export function isListOrReviewArticle(title: string): boolean {
-  return /\b\d+\s+(?:things|reasons|takeaways|moments|matches|thoughts|questions|winners|losers|biggest|best|worst|stars|ways|storylines)\b|\bwe (?:hated|loved)\b|\bhated\b.*\bloved\b|\b(?:grades?|ratings?|ranked|rankings?|report card)\b/i.test(title || "");
+  return /\b\d+\s+(?:things|reasons|takeaways|moments|matches|thoughts|questions|winners|losers|biggest|best|worst|stars|ways|storylines)\b|\bwe (?:hated|loved)\b|\bhated\b.*\bloved\b|\bwinners\b.*\blosers\b|\b(?:grades?|ratings?|ranked|rankings?|report card|power rankings)\b/i.test(title || "");
 }
 
 async function rewriteWithGemini(
