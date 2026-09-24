@@ -2197,12 +2197,27 @@
     "instagram_reel": false,
     "instagram_story": true,
     "title": "عرض ديناميت 23.09.2026 مترجم",
-    "lastAttempt": 1790250560012,
+    "lastAttempt": 1790251993058,
     "errors": {
       "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260924115800-aew-collision-23-09-2026": {
+    "publishedAt": 1790252021687,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض كوليجن 23.09.2026 مترجم",
+    "lastAttempt": 1790252117317,
+    "errors": {
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+    },
     "processing": [
-      "instagram_reel"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
