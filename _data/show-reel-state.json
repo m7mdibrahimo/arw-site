@@ -2193,9 +2193,9 @@
     "instagram_reel": false,
     "instagram_story": true,
     "title": "عرض ديناميت 23.09.2026 مترجم",
-    "lastAttempt": 1790251993058,
+    "lastAttempt": 1790255464206,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_reel": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار."
     },
     "processing": [],
     "reviewPlatforms": [],
