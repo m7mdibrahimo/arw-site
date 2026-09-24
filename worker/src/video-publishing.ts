@@ -128,7 +128,7 @@ export async function publishTikTokVideo(options: {
       const infoData: any = await info.json();
       if (!info.ok || infoData.error?.code !== 'ok') {
         const logId = info.headers.get('x-tt-logid');
-        const baseError = infoData.error?.message || `تعذر قراءة إعدادات حساب TikTok (${info.status}).`;
+        const baseError = `${infoData.error?.code ? `[${infoData.error.code}] ` : ''}${infoData.error?.message || `تعذر قراءة إعدادات حساب TikTok (${info.status}).`}`;
         return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: infoData };
       }
       const privacyOptions: string[] = infoData.data?.privacy_level_options || [];
@@ -152,7 +152,10 @@ export async function publishTikTokVideo(options: {
         // TikTok's own bug-report form requires the x-tt-logid response header
         // to investigate an API issue — without it a support ticket goes nowhere.
         const logId = init.headers.get('x-tt-logid');
-        const baseError = data.error?.message || `فشل بدء نشر فيديو TikTok (${init.status}).`;
+        // The message alone is often generic ("review our integration guidelines");
+        // the code (e.g. unaudited_client_can_only_post_to_private_accounts) is what
+        // actually says which rule was hit.
+        const baseError = `${data.error?.code ? `[${data.error.code}] ` : ''}${data.error?.message || `فشل بدء نشر فيديو TikTok (${init.status}).`}`;
         return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: data };
       }
       publishId = data.data.publish_id;
@@ -170,7 +173,7 @@ export async function publishTikTokVideo(options: {
       if (status === 'FAILED') { await kv.delete(cacheKey); return { ok: false, error: statusData.data?.fail_reason || 'فشلت معالجة فيديو TikTok.', result: statusData }; }
       if (statusData.error?.code && statusData.error.code !== 'ok') {
         const logId = statusRes.headers.get('x-tt-logid');
-        const baseError = statusData.error.message || 'خطأ من TikTok أثناء متابعة حالة النشر.';
+        const baseError = `[${statusData.error.code}] ${statusData.error.message || 'خطأ من TikTok أثناء متابعة حالة النشر.'}`;
         return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: statusData };
       }
       await pause(3000);

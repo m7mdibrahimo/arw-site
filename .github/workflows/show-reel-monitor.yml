@@ -62,7 +62,7 @@ jobs:
           # Off until TikTok approves the app and the video URL passes TikTok's
           # PULL_FROM_URL ownership verification (raw.githubusercontent.com can't
           # be verified). Keep in sync with worker/wrangler.toml.
-          TIKTOK_AUTO_ENABLED: "true"
+          TIKTOK_AUTO_ENABLED: "false"
         run: |
           echo "🎬 Starting Show Reel Monitor..."
           npx tsx scripts/show-reel-monitor.ts

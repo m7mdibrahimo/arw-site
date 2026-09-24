@@ -2381,8 +2381,18 @@ export default {
           return json({ success: false, configured: false, connected: false, message: "TIKTOK_CLIENT_KEY / TIKTOK_CLIENT_SECRET not set" });
         }
         const token = await loadTikTokToken(env);
+        // Read-only: which privacy levels TikTok currently allows this app/account to
+        // post with — PUBLIC_TO_EVERYONE is missing until Direct Post is audited.
+        let privacyLevelOptions: string[] | undefined;
+        const accessToken = token ? await getTikTokAccessToken(env) : null;
+        if (accessToken) {
+          const info: any = await fetch("https://open.tiktokapis.com/v2/post/publish/creator_info/query/", {
+            method: "POST", headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json; charset=UTF-8" },
+          }).then(r => r.json()).catch(() => null);
+          privacyLevelOptions = info?.data?.privacy_level_options;
+        }
         return json({ success: true, configured: true, connected: !!token,
-          openId: token?.openId, tokenExpiresAt: token?.expiresAt,
+          openId: token?.openId, tokenExpiresAt: token?.expiresAt, privacyLevelOptions,
           autoEnabled: env.TIKTOK_AUTO_ENABLED === "true" });
       }
 

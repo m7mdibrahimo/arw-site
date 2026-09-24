@@ -30,7 +30,7 @@ X_AUTO_ENABLED = "false"
 # Off until TikTok approves the app for the video.publish scope in production
 # (currently testing via a Sandbox app connection) — see worker/src/index.ts's
 # getTikTokAccessToken and scripts/show-reel-monitor.ts's TIKTOK_ENABLED gate.
-TIKTOK_AUTO_ENABLED = "true"
+TIKTOK_AUTO_ENABLED = "false"
 AUTO_IMAGE_STORIES = "false"
 TELEGRAM_CHAT_ID = "@arab_wrestling"
 FACEBOOK_PAGE_ID = "1229063470299837"
