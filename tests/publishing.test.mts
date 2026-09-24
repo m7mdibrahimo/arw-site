@@ -6,7 +6,7 @@ import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
-import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure } from '../scripts/show-reel-monitor';
+import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
 
@@ -743,4 +743,13 @@ test('date tags are junk; copy-editor edits never add tanween', async () => {
   const r = applyProofEdits({ title: 'عنوان عربي هنا', body: 'بعد فترة ال 90 يوما من الرحيل', tags: [] },
     [{ field: 'body', find: 'فترة ال 90 يوما', replace: 'فترة الـ 90 يوماً' }], 'the 90-day period');
   assert.equal(r.article.body, 'بعد فترة الـ 90 يوما من الرحيل');
+});
+
+test('platforms still processing are retried after 10 minutes, real failures after 45', () => {
+  const entry = applyResults(undefined, { instagram_story: { ok: false, status: 'processing' }, facebook_reel: { ok: true } } as any, ['instagram_story', 'facebook_reel'], 'x');
+  assert.deepEqual(entry.processing, ['instagram_story']);
+  assert.equal(retryDelayMs(entry, ['instagram_story']), 10 * 60_000);
+  const failed = applyResults(entry, { instagram_story: { ok: false, error: 'boom' } } as any, ['instagram_story'], 'x');
+  assert.deepEqual(failed.processing, []);
+  assert.equal(retryDelayMs(failed, ['instagram_story']), 45 * 60_000);
 });

@@ -8,6 +8,7 @@ type Platform = typeof PLATFORMS[number];
 type Entry = Record<Platform, boolean> & {
   publishedAt: number | null; lastAttempt?: number; title?: string;
   errors?: Record<string, string>; reviewPlatforms?: Platform[]; needsReview?: boolean; note?: string;
+  processing?: Platform[];
 };
 type State = Record<string, Entry>;
 const ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
@@ -56,6 +57,14 @@ export function findReelVideo(slug: string, files: string[]): string | null {
 export function hasRealFailure(results: Record<string, any>, requested: readonly Platform[]): boolean {
   return requested.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing' && !results[p]?.skipped);
 }
+// Instagram encodes video asynchronously; a platform left mid-processing is
+// usually ready within minutes, so waiting the full 45-minute retry gate held a
+// finished reel/story back for most of an hour (seen 2026-09-24). Real failures
+// keep the long gate so platform rate limits aren't hammered.
+export function retryDelayMs(previous: Entry | undefined, pending: readonly Platform[]): number {
+  const stillProcessing = new Set(previous?.processing || []);
+  return pending.length > 0 && pending.every(p => stillProcessing.has(p)) ? 10 * 60_000 : 45 * 60_000;
+}
 export function applyResults(existing: Entry | undefined, results: Record<string, any>, requested: readonly Platform[], title: string): Entry {
   const entry: Entry = { publishedAt: existing?.publishedAt || null,
     facebook_reel: false, facebook_story: false, instagram_reel: false, instagram_story: false,
@@ -70,6 +79,12 @@ export function applyResults(existing: Entry | undefined, results: Record<string
       entry.errors![platform] = result?.error || 'لم تُرجع الخدمة تأكيدًا للنشر.';
     }
   }
+  const processing = new Set(existing?.processing || []);
+  for (const p of requested) {
+    if (results[p]?.status === 'processing' && results[p]?.ok !== true) processing.add(p);
+    else processing.delete(p);
+  }
+  entry.processing = [...processing];
   const review = new Set(existing?.reviewPlatforms || []);
   for (const p of requested) {
     if (results[p]?.ok) review.delete(p);
@@ -105,7 +120,7 @@ export async function main() {
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
     let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || TIKTOK_ENABLED));
     if (!pending.length) continue;
-    if (previous?.lastAttempt && Date.now() - previous.lastAttempt < 45 * 60_000) continue;
+    if (previous?.lastAttempt && Date.now() - previous.lastAttempt < retryDelayMs(previous, pending)) continue;
     const file = findReelVideo(slug, videos);
     if (!file) { console.log(`${slug}: waiting for rendered video.`); continue; }
     if (pending.includes('tiktok')) {
