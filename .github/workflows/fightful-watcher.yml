@@ -45,6 +45,7 @@ jobs:
         env:
           INPUT_POST_URL: ${{ github.event.inputs.post_url }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
         run: |
           if [ -n "$INPUT_POST_URL" ]; then
             echo "Processing requested post URLs: $INPUT_POST_URL"

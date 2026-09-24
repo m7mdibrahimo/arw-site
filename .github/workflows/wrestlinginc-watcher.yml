@@ -43,6 +43,7 @@ jobs:
         id: watch
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
         run: npx tsx scripts/wrestlinginc-watcher.ts
 
       - name: Commit and push if new articles were generated

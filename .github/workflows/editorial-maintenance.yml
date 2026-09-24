@@ -45,11 +45,13 @@ jobs:
       - name: Review recent articles that have errors (log findings, edit nothing)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
         run: npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues --learn-only || true
 
       - name: Review the archive (next batch, edit nothing)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
         run: npx tsx scripts/fix-articles.ts --ai --backlog 20 --learn-only || true
 
       - name: Learn recurring corrections (rules for every future article)

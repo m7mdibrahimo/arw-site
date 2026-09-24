@@ -1738,36 +1738,41 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
   return cleaned;
 }
 
-// Helper to call Gemini with retry, quota protection & multi-key fallback
+// Helper to call Gemini with retry, quota protection & multi-key fallback.
+//
+// One model only — gemini-3.5-flash-lite (the owner's choice: highest free quota,
+// 500 requests/day per key). Quota comes from rotating KEYS, not from switching
+// models: GEMINI_API_KEYS is a comma-separated list; when a key's DAILY quota is
+// used up it is skipped for the rest of the run and the next key takes over. A
+// per-minute 429 waits and retries the same key. (2026-09-24: the single key hit
+// its daily quota at ~18:40 UTC and no news was published for hours while every
+// run still reported success.)
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+const DAILY_CALLS_PER_KEY = 480;
+const exhaustedKeys = new Set<string>();
+
+function isDailyQuotaError(body: string): boolean {
+  return /per.?day|PerDay|daily|RESOURCE_EXHAUSTED[\s\S]*(?:Day|day)/.test(body);
+}
+
 export async function queryGemini(prompt: string, jsonMode: boolean = true, temperature: number = 0.6): Promise<string | null> {
   const state = loadState();
-  
-  // Circuit breaker: Free tier limit is 1,500 calls/day. Safety cap pauses at 1,200 to protect quota.
-  if ((state.apiCallsToday || 0) >= 1200) {
-    console.warn(`[Watcher] 🛑 Safety Circuit Breaker: Daily Gemini API calls limit approached (${state.apiCallsToday}/1500). Pausing AI queries until tomorrow to protect quota.`);
+
+  // Circuit breaker sized to the number of keys (each key: 500 requests/day).
+  const dailyCap = DAILY_CALLS_PER_KEY * Math.max(1, API_KEYS.length);
+  if ((state.apiCallsToday || 0) >= dailyCap) {
+    console.warn(`[Watcher] 🛑 Safety Circuit Breaker: ${state.apiCallsToday}/${dailyCap} Gemini calls today. Pausing AI queries until tomorrow.`);
     return null;
   }
 
-  const candidateModels = [
-    "gemini-3.5-flash-lite", // 500 RPD / 15 RPM (High free quota)
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-1.5-flash",
-    "gemini-3.5-flash",
-    "gemini-3.8-flash",
-    "gemini-3.7-flash",
-    "gemini-3.6-flash",
-    "gemini-flash-latest",
-    "gemini-flash-lite-latest",
-  ];
-
-  for (const apiKey of API_KEYS) {
-    for (const model of candidateModels) {
+  for (const [index, apiKey] of API_KEYS.entries()) {
+    if (exhaustedKeys.has(apiKey)) continue;
+    for (let attempt = 0; attempt < 3; attempt++) {
       try {
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-        let res = await fetch(url, {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+        const res = await fetch(url, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
           body: JSON.stringify({
             contents: [{ parts: [{ text: prompt }] }],
             generationConfig: {
@@ -1778,33 +1783,48 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
           }),
         });
 
-        // 429 = Rate limit (RPM or quota on this specific model)
         if (res.status === 429) {
-          console.warn(`[Watcher] Rate limit (429) on ${model}, waiting 3s before trying next candidate...`);
-          await new Promise(r => setTimeout(r, 3000));
-          continue; // Seamlessly failover to next model in list!
+          const body = await res.text();
+          if (isDailyQuotaError(body) || attempt === 2) {
+            exhaustedKeys.add(apiKey);
+            console.warn(`[Watcher] 🔑 Gemini key #${index + 1} is out of quota — switching to the next key.`);
+            break;
+          }
+          console.warn(`[Watcher] Rate limit (429, per-minute) on key #${index + 1}; waiting 20s and retrying...`);
+          await new Promise(r => setTimeout(r, 20000));
+          continue;
         }
 
         if (!res.ok) {
           const errText = await res.text();
-          console.warn(`[Watcher] Model ${model} returned ${res.status}:`, errText.slice(0, 120));
+          console.warn(`[Watcher] ${GEMINI_MODEL} returned ${res.status} on key #${index + 1}:`, errText.slice(0, 160));
+          if (res.status === 400 || res.status === 401 || res.status === 403) {
+            exhaustedKeys.add(apiKey); // invalid/revoked key: never retry it this run
+            break;
+          }
+          await new Promise(r => setTimeout(r, 3000));
           continue;
         }
 
         const data: any = await res.json();
         const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
         if (text) {
-          // Increment daily quota usage counter
           state.apiCallsToday = (state.apiCallsToday || 0) + 1;
           saveState(state);
           return text;
         }
+        console.warn(`[Watcher] ${GEMINI_MODEL} returned no text (finishReason: ${data.candidates?.[0]?.finishReason || "?"}).`);
+        break;
       } catch (e: any) {
-        console.warn(`[Watcher] Error with model ${model}:`, e.message || e);
+        console.warn(`[Watcher] Error calling ${GEMINI_MODEL} on key #${index + 1}:`, e.message || e);
+        await new Promise(r => setTimeout(r, 3000));
       }
     }
   }
 
+  if (API_KEYS.length && API_KEYS.every(k => exhaustedKeys.has(k))) {
+    console.error(`[Watcher] ❌ All ${API_KEYS.length} Gemini keys are out of quota — nothing can be written until the quota resets.`);
+  }
   return null;
 }
 
