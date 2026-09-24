@@ -1,5 +1,25 @@
 [
   {
+    "id": 3911900977,
+    "link": "https://www.wrestlinginc.com/2267310/aew-tbs-title-open-challenge-announced-all-out/",
+    "date": "Thu, 24 Sep 2026 03:49:57 +0000",
+    "date_gmt": "2026-09-24T03:49:57.000Z",
+    "title": {
+      "rendered": "AEW TBS Title Open Challenge Announced For All Out"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-tbs-title-open-challenge-announced-for-all-out/l-intro-1790221695.jpg"
+  },
+  {
+    "id": 2516016189,
+    "link": "https://www.wrestlinginc.com/2267306/aew-dynamite-collision-september-23-2026-3-things-hated-loved-opinion-review/",
+    "date": "Thu, 24 Sep 2026 03:42:59 +0000",
+    "date_gmt": "2026-09-24T03:42:59.000Z",
+    "title": {
+      "rendered": "AEW Dynamite/Collision - 9/23/2026: 3 Things We Hated & 3 We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamitecollision-9232026-3-things-we-hated-3-we-loved/l-intro-1790221293.jpg"
+  },
+  {
     "id": 2889598513,
     "link": "https://www.wrestlinginc.com/2267295/chris-jericho-nick-wayne-france-aew-rematch/",
     "date": "Thu, 24 Sep 2026 03:08:19 +0000",
@@ -178,25 +198,5 @@
       "rendered": "TNA's Nic Nemeth: Leon Slater Will Be 'Running Pro Wrestling' For The Next 20 Years"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-nic-nemeth-leon-slater-will-be-running-pro-wrestling-for-the-next-20-years/l-intro-1790162519.jpg"
-  },
-  {
-    "id": 2193617092,
-    "link": "https://www.wrestlinginc.com/2266242/wwe-matt-hardy-sami-zayn-title-run-lackluster-first-reign/",
-    "date": "Wed, 23 Sep 2026 15:30:00 +0000",
-    "date_gmt": "2026-09-23T15:30:00.000Z",
-    "title": {
-      "rendered": "Matt Hardy Says Sami Zayn's WWE Title Run Could Make Up For 'Lackluster' First Reign"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/matt-hardy-says-sami-zayns-wwe-title-run-could-make-up-for-lackluster-first-reign/l-intro-1790166216.jpg"
-  },
-  {
-    "id": 3044608642,
-    "link": "https://www.wrestlinginc.com/2266235/wwe-smackdown-chelsea-green-injury-bounce-back-lame-promo/",
-    "date": "Wed, 23 Sep 2026 15:00:00 +0000",
-    "date_gmt": "2026-09-23T15:00:00.000Z",
-    "title": {
-      "rendered": "WWE's Chelsea Green Says Injury Helped Her Bounce Back From 'Lame' SmackDown Promo"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-chelsea-green-says-injury-helped-her-bounce-back-from-lame-smackdown-promo/l-intro-1790164208.jpg"
   }
 ]
