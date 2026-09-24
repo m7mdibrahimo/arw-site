@@ -94,6 +94,14 @@ export function isJunkTag(tag: string): boolean {
     || /(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر)\s+\d{4}/.test(t);
 }
 
+/** A tag that is really a sentence: a comma-joined list, or a 4+ word phrase
+ *  lifted straight out of the headline ("توني خان يتحدث عن اندماج باراماونت وWBD"). */
+export function isHeadlineTag(tag: string, title: string): boolean {
+  const t = (tag || "").trim();
+  if (/[،,]/.test(t)) return true;
+  return t.split(/\s+/).length >= 4 && (title || "").includes(t);
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });

@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { applyCorrections, autoFix, checkArticle, isJunkTag, loadNews } from "./news-qa";
+import { applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3316,7 +3316,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
-  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))].filter(t => !isJunkTag(t)) };
+  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title)) };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date"].includes(i.code));

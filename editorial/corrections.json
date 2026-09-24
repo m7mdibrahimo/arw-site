@@ -2823,6 +2823,66 @@
    "wrong": "اصطدمت رأسه",
    "right": "اصطدم رأسه",
    "note": "«رأس» مذكر"
+  },
+  {
+   "wrong": "(?:WWE\\s+)?(?:(?:فرايدي|فرايداي)\\s+نايت|Friday\\s+Night)\\s+(?:عرض\\s+)?(?:WWE\\s+)?(?:سماك\\s*داون|SmackDown)",
+   "right": "WWE SmackDown",
+   "regex": true,
+   "note": "أسماء العروض والاتحادات تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "كونتيننتال\\s+كلاسيك|كونتيننتال\\s+كلاسيك",
+   "right": "Continental Classic",
+   "regex": true,
+   "note": "أسماء البطولات والعروض تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "داستي\\s+رودس\\s+تاج\\s+تيم\\s+كلاسيك",
+   "right": "Dusty Rhodes Tag Team Classic",
+   "regex": true,
+   "note": "أسماء البطولات والعروض تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "(?:MLW\\s+)?فيوجن",
+   "right": "MLW Fusion",
+   "regex": true,
+   "note": "أسماء العروض تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "(?:MLW\\s+)?أندرجراوند",
+   "right": "MLW Underground",
+   "regex": true,
+   "note": "أسماء العروض تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "يو\\s+إف\\s+سي\\s+فايت\\s+نايت",
+   "right": "UFC Fight Night",
+   "regex": true,
+   "note": "أسماء العروض تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "(?:WWE\\s+)?Monday\\s+Night\\s+(?:Raw|RAW)",
+   "right": "WWE RAW",
+   "regex": true,
+   "note": "أسماء العروض تبقى بالإنجليزي بصيغة WWE RAW"
+  },
+  {
+   "wrong": "تي\\s+بي\\s+إس",
+   "right": "TBS",
+   "regex": true,
+   "note": "أسماء القنوات والبطولات بالإنجليزي: بطولة TBS"
+  },
+  {
+   "wrong": "تي\\s+إن\\s+تي",
+   "right": "TNT",
+   "regex": true,
+   "note": "بطولة TNT"
+  },
+  {
+   "wrong": "TNA\\s+ريسلي?نغ|TNA\\s+ريسلنج|TNA\\s+ريسلينج",
+   "right": "TNA",
+   "regex": true,
+   "note": "اسم الاتحاد: TNA"
   }
  ]
 }
