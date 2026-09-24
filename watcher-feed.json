@@ -1,5 +1,15 @@
 [
   {
+    "id": 330121,
+    "link": "https://www.fightful.com/wrestling/cmll-noche-de-campeones-lineup-announced/",
+    "date": "2026-09-23T23:59:00",
+    "date_gmt": "2026-09-24T03:59:00",
+    "title": {
+      "rendered": "CMLL Noche de Campeones Lineup Announced"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23215223/B0ABE5EF-46D6-4801-A81C-3B3A91B056D5.jpg"
+  },
+  {
     "id": 330113,
     "link": "https://www.fightful.com/wrestling/wwe-evolve-womens-showcase-special-results-9-23/",
     "date": "2026-09-23T23:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Dana White Provides Update On Jake Hager: We&#8217;re Sending Him To A Specialist Down In Miami"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18070215/Screenshot-2026-09-18-at-6.55.32-AM.png"
-  },
-  {
-    "id": 330028,
-    "link": "https://www.fightful.com/wrestling/ewing-athletics-releases-macho-man-randy-savage-inspired-shoes/",
-    "date": "2026-09-23T11:31:12",
-    "date_gmt": "2026-09-23T15:31:12",
-    "title": {
-      "rendered": "Ewing Athletics Releases &#8216;Macho Man&#8217; Randy Savage Inspired Shoes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23113048/Screenshot-2026-09-23-at-10.47.13-AM.png"
   }
 ]
