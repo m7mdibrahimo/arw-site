@@ -2838,6 +2838,18 @@ const DUPLICATE_STOPWORDS = new Set([
 // vs "allegation") purely as a stylistic choice, which used to make otherwise-identical
 // headlines miss the overlap threshold by a single word. Only strips a bare trailing
 // "s"/"es" — never touches genuinely distinct short words or words already ending in "ss".
+// Reads the `date:` frontmatter field rather than the file's filesystem mtime.
+// A fresh `git checkout` (every CI run does one) resets every file's mtime to
+// the checkout moment, so mtime-based cutoffs silently never filter anything
+// out in production — the frontmatter date is the only reliable signal for
+// when an article was actually published. Falls back to "just now" (never
+// filtered out) rather than risk hiding a real duplicate behind a parsing quirk.
+function getFrontmatterDateMs(content: string): number {
+  const match = content.match(/\ndate:\s*(.+)/);
+  if (!match) return Date.now();
+  const parsed = Date.parse(match[1].trim());
+  return Number.isFinite(parsed) ? parsed : Date.now();
+}
 function stemPlural(word: string): string {
   if (word.length > 4 && word.endsWith("es") && !word.endsWith("ses")) return word.slice(0, -2);
   if (word.length > 3 && word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
@@ -2859,8 +2871,13 @@ export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number =
     if (!file.endsWith(".md")) continue;
     const fullPath = path.join(newsDir, file);
     try {
-      if (fs.statSync(fullPath).mtimeMs < cutoff) continue;
       const content = fs.readFileSync(fullPath, "utf-8");
+      // The article's own `date:` frontmatter, not the file's filesystem mtime,
+      // is what actually reflects when it was published. CI checks out a fresh
+      // clone on every run, which resets every file's mtime to the checkout
+      // moment — silently making this cutoff a no-op (it never skips anything)
+      // regardless of hoursWindow's value.
+      if (getFrontmatterDateMs(content) < cutoff) continue;
       const urlMatch = content.match(/source_url:\s*["']?([^"'\r\n]+)["']?/);
       if (!urlMatch) continue;
       const slug = (urlMatch[1].replace(/\/+$/, "").split("/").pop() || "").replace(/[-_]/g, " ");
@@ -2965,8 +2982,8 @@ export function findLikelyDuplicateStoryByTagsAndBody(
     if (!file.endsWith(".md")) continue;
     const fullPath = path.join(newsDir, file);
     try {
-      if (fs.statSync(fullPath).mtimeMs < cutoff) continue;
       const content = fs.readFileSync(fullPath, "utf-8");
+      if (getFrontmatterDateMs(content) < cutoff) continue;
       const tagsBlockMatch = content.match(/\ntags:\n([\s\S]*?)\nimage:/);
       if (!tagsBlockMatch) continue;
       const existingTags = [...tagsBlockMatch[1].matchAll(/^\s*-\s*(.+?)\s*$/gm)].map(m => m[1]);

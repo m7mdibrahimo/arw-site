@@ -432,7 +432,7 @@ test('post-translation guard never blocks a broader story that only mentions the
   }
 });
 
-test('cross-source dedup window covers a full day, not just 6 hours', () => {
+test('cross-source dedup window covers a full day, not just 6 hours, and reads the article\'s own date rather than filesystem mtime', () => {
   // Motivated by production: Ringside News published "Vince Russo Leaves JCW..."
   // at 04:43, and WrestlingInc published a follow-up about the same announcement
   // at 16:00 — 11.3 hours later. The old 6-hour default meant the first article
@@ -440,17 +440,34 @@ test('cross-source dedup window covers a full day, not just 6 hours', () => {
   // duplicate with strong title-word overlap could never be caught this late.
   // Word-overlap thresholds (not the time window) are what prevent false
   // positives, so widening the window to a full day is safe.
+  //
+  // This must be checked against the file's own `date:` frontmatter, not its
+  // filesystem mtime: every CI run does a fresh `git checkout`, which resets
+  // every file's mtime to the checkout moment regardless of when it was
+  // actually published — silently making an mtime-based cutoff never filter
+  // anything out (or, just as wrong, filter out an article that just happens
+  // to not have been touched in this checkout). The test below only backdates
+  // the frontmatter date, and separately sets an unrelated, very recent mtime,
+  // to prove mtime is not what's being read.
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-window-test-'));
   try {
     const filePath = path.join(dir, 'a.md');
-    fs.writeFileSync(filePath, '---\nsource_url: "https://www.fightful.com/wrestling/titus-oneil-moved-to-wwe-alumni-section/"\n---\nbody');
-    const elevenHoursAgo = new Date(Date.now() - 11.3 * 60 * 60 * 1000);
-    fs.utimesSync(filePath, elevenHoursAgo, elevenHoursAgo);
-    // Old default (6h) would miss this — the file is already older than that
-    // cutoff — but the new default (24h) must still catch it.
+    const elevenHoursAgo = new Date(Date.now() - 11.3 * 60 * 60 * 1000).toISOString();
+    fs.writeFileSync(filePath, `---\nsource_url: "https://www.fightful.com/wrestling/titus-oneil-moved-to-wwe-alumni-section/"\ndate: ${elevenHoursAgo}\n---\nbody`);
+    fs.utimesSync(filePath, new Date(), new Date()); // mtime = right now, deliberately misleading
+    // Old default (6h) would miss this — the article is already older than
+    // that cutoff — but the new default (24h) must still catch it.
     const dupe = findLikelyDuplicateStory(
       "Titus O'Neil Quietly Moved To WWE Alumni Section Years Away From The Ring", undefined, dir);
     assert.equal(dupe.isDuplicate, true);
+
+    // An article older than even the 24h window must still be excluded.
+    const thirtyHoursAgo = new Date(Date.now() - 30 * 60 * 60 * 1000).toISOString();
+    fs.writeFileSync(filePath, `---\nsource_url: "https://www.fightful.com/wrestling/titus-oneil-moved-to-wwe-alumni-section/"\ndate: ${thirtyHoursAgo}\n---\nbody`);
+    fs.utimesSync(filePath, new Date(), new Date());
+    const tooOld = findLikelyDuplicateStory(
+      "Titus O'Neil Quietly Moved To WWE Alumni Section Years Away From The Ring", undefined, dir);
+    assert.equal(tooOld.isDuplicate, false, 'an article past the window must not be matched just because its mtime is recent');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
