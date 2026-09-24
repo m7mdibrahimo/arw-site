@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/aew-dynamite-23-09-2026/",
+    "title": "عرض ديناميت 23.09.2026 مترجم",
+    "subtitle": "AEW Dynamite 23.09.2026",
+    "image": "/img/5ekqyh_EeJ-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aew-collision-23-09-2026/",
+    "title": "عرض كوليجن 23.09.2026 مترجم",
+    "subtitle": "AEW Collision 23.09.2026",
+    "image": "/img/l_IyrBSYLf-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-22-09-2026/",
     "title": "عرض ان اكس تي 22.09.2026 مترجم",
     "subtitle": "WWE NXT 22.09.2026",
@@ -75,17 +97,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-16-09-2026",
-    "title": "عرض ديناميت 16.09.2026 مترجم",
-    "subtitle": "AEW Dynamite 16.09.2026",
-    "image": "/img/yXtz3sDQ6k-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026",
