@@ -23,6 +23,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          # A queued workflow_dispatch run would otherwise check out main as it was
+          # when it was DISPATCHED, not when it starts: it then missed articles the
+          # previous run had just published and wrote them again under a new title
+          # (2026-09-24, Thekla article: new URL, old one 404, posted twice).
+          ref: main
           fetch-depth: 0
 
       - name: Setup Node.js

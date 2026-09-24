@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
 import { applyCorrections, autoFix, checkArticle, isJunkTag, loadNews } from "./news-qa";
@@ -2777,54 +2778,68 @@ function findExistingNewsFile(postId: number, postUrl?: string): { filePath: str
 }
 
 // ── Global Deduplication Safety Guard ──────────────────────────────
-// Scans content/news to guarantee no duplicate articles with same source_id or source_url exist
+// Scans content/news to guarantee no duplicate articles with same source_id or source_url exist.
+// The copy that reached main FIRST is kept: its URL is the one already shared on
+// social media. (It used to keep whichever file sorted first alphabetically — on
+// 2026-09-24 that deleted the live Thekla article and kept a later rewrite, so the
+// Facebook/Telegram links went 404 and the story was posted twice.)
+function firstAddedAt(fileName: string): number {
+  try {
+    const out = execFileSync("git", ["log", "--diff-filter=A", "--format=%ct", "--", path.join("content/news", fileName)], { encoding: "utf-8" }).trim();
+    const times = out.split("\n").filter(Boolean).map(Number);
+    return times.length ? Math.min(...times) : Infinity;
+  } catch {
+    return Infinity;
+  }
+}
+
+function frontmatterValue(content: string, key: string): string | null {
+  const m = content.match(new RegExp(`^${key}:\\s*["']?([^"'\\r\\n]+)["']?`, "m"));
+  return m ? m[1].trim() : null;
+}
+
 export function deduplicateNewsFiles(): number {
   if (!fs.existsSync(NEWS_DIR)) return 0;
   const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith(".md"));
-  const seenId = new Map<number, string>();
-  const seenUrl = new Map<string, string>();
-  let removedCount = 0;
+  const groups = new Map<string, string[]>();
+  const keyOf = new Map<string, string>();
+  const byKey = new Map<string, string>(); // source id/url -> group key
 
   for (const file of files) {
-    const fullPath = path.join(NEWS_DIR, file);
-    try {
-      const content = fs.readFileSync(fullPath, "utf-8");
-      const idMatch = content.match(/source_id:\s*["']?(\d+)["']?/);
-      const urlMatch = content.match(/source_url:\s*["']?([^"'\r\n]+)["']?/);
-      const sId = idMatch ? Number(idMatch[1]) : null;
-      const sUrl = urlMatch ? urlMatch[1].replace(/\/+$/, "") : null;
+    let content = "";
+    try { content = fs.readFileSync(path.join(NEWS_DIR, file), "utf-8"); } catch { continue; }
+    const sId = frontmatterValue(content, "source_id");
+    const sUrl = frontmatterValue(content, "source_url")?.replace(/\/+$/, "") || null;
+    const keys = [sId && /^\d+$/.test(sId) ? `id:${sId}` : null, sUrl ? `url:${sUrl}` : null].filter(Boolean) as string[];
+    if (!keys.length) continue;
+    const group = keys.map(k => byKey.get(k)).find(Boolean) || keys[0];
+    for (const k of keys) byKey.set(k, group);
+    keyOf.set(file, group);
+    groups.set(group, [...(groups.get(group) || []), file]);
+  }
 
-      let isDuplicate = false;
-      let originalFile = "";
-
-      if (sId && seenId.has(sId)) {
-        isDuplicate = true;
-        originalFile = seenId.get(sId)!;
-      } else if (sUrl && seenUrl.has(sUrl)) {
-        isDuplicate = true;
-        originalFile = seenUrl.get(sUrl)!;
-      }
-
-      if (isDuplicate) {
-        console.warn(`[Watcher] 🧹 Duplicate news detected! Removing redundant file: ${file} (Kept: ${originalFile})`);
-        const imgMatch = content.match(/image:\s*["']?([^"'\r\n]+)["']?/);
-        if (imgMatch && imgMatch[1]) {
-          const imgRel = imgMatch[1].replace(/^\//, "");
-          const imgFull = path.join(process.cwd(), imgRel);
+  let removedCount = 0;
+  for (const group of groups.values()) {
+    if (group.length < 2) continue;
+    const ranked = group.map(f => ({ f, t: firstAddedAt(f) })).sort((a, b) => a.t - b.t || a.f.localeCompare(b.f));
+    const kept = ranked[0].f;
+    const keptImage = frontmatterValue(fs.readFileSync(path.join(NEWS_DIR, kept), "utf-8"), "image");
+    for (const { f } of ranked.slice(1)) {
+      const fullPath = path.join(NEWS_DIR, f);
+      try {
+        console.warn(`[Watcher] 🧹 Duplicate news detected! Removing redundant file: ${f} (Kept: ${kept}, published first)`);
+        const image = frontmatterValue(fs.readFileSync(fullPath, "utf-8"), "image");
+        if (image && image !== keptImage) {
+          const imgFull = path.join(process.cwd(), image.replace(/^\//, ""));
           if (fs.existsSync(imgFull) && !imgFull.includes("default")) {
             try { fs.unlinkSync(imgFull); } catch (e) {}
           }
         }
-        if (fs.existsSync(fullPath)) {
-          fs.unlinkSync(fullPath);
-        }
+        if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
         removedCount++;
-      } else {
-        if (sId) seenId.set(sId, file);
-        if (sUrl) seenUrl.set(sUrl, file);
+      } catch (err) {
+        console.warn(`[Watcher] Error removing duplicate (${f}):`, err);
       }
-    } catch (err) {
-      console.warn(`[Watcher] Error checking file for deduplication (${file}):`, err);
     }
   }
 
