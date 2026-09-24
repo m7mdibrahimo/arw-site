@@ -1,5 +1,15 @@
 [
   {
+    "id": 330113,
+    "link": "https://www.fightful.com/wrestling/wwe-evolve-womens-showcase-special-results-9-23/",
+    "date": "2026-09-23T23:30:00",
+    "date_gmt": "2026-09-24T03:30:00",
+    "title": {
+      "rendered": "WWE EVOLVE Women&#8217;s Showcase Special Results (9/23)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04212900/wwe_evolve_1.jpg"
+  },
+  {
     "id": 330140,
     "link": "https://www.fightful.com/wrestling/aew-dynamite-330140/",
     "date": "2026-09-23T23:21:29",
@@ -288,15 +298,5 @@
       "rendered": "Ewing Athletics Releases &#8216;Macho Man&#8217; Randy Savage Inspired Shoes"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23113048/Screenshot-2026-09-23-at-10.47.13-AM.png"
-  },
-  {
-    "id": 330029,
-    "link": "https://www.fightful.com/wrestling/mjf-kayla-becker-and-david-arquette-feature-in-first-trailer-for-stranglehold/",
-    "date": "2026-09-23T11:31:06",
-    "date_gmt": "2026-09-23T15:31:06",
-    "title": {
-      "rendered": "MJF, Kayla Becker And David Arquette Feature In First Trailer For &#8216;Stranglehold&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23111228/Screenshot-2026-09-23-160941-e1790176398311.png"
   }
 ]
