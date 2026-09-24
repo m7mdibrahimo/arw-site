@@ -1,5 +1,15 @@
 [
   {
+    "id": 802247001,
+    "link": "https://www.ringsidenews.com/wwe-reveals-10-new-dates-2026-holiday-live-tour/",
+    "date": "Thu, 24 Sep 2026 14:43:02 +0000",
+    "date_gmt": "2026-09-24T14:43:02.000Z",
+    "title": {
+      "rendered": "WWE Reveals 10 New Dates for 2026 Holiday Live Tour"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/wwe-reveals-10-new-dates-for-2026-holiday-live-tour-15.jpg?x40058"
+  },
+  {
     "id": 802246992,
     "link": "https://www.ringsidenews.com/aew-collision-viewership-sees-slight-drop-september-19-2026/",
     "date": "Thu, 24 Sep 2026 14:21:55 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Persephone’s AEW All Out Open Challenge Comes With a Three-Person Blacklist"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/persephones-aew-all-out-open-challenge-comes-with-a-three-person-blacklist-03.jpg?x40058"
-  },
-  {
-    "id": 802246886,
-    "link": "https://www.ringsidenews.com/tna-impact-viewership-sees-drop-september-17-2026/",
-    "date": "Thu, 24 Sep 2026 03:13:11 +0000",
-    "date_gmt": "2026-09-24T03:13:11.000Z",
-    "title": {
-      "rendered": "TNA iMPACT Viewership Sees Drop on September 17, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/TNA-iMPACT-Massive-Decrease.jpg?x40058"
   }
 ]
