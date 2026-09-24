@@ -14,6 +14,11 @@ on:
     paths:
       - 'content/shows/**'
 
+  # Self-healing backstop: a cheap scan every 20 min; the heavy render job only
+  # starts when an eligible show is still missing its reel video.
+  schedule:
+    - cron: '3-59/20 * * * *'
+
   workflow_dispatch:
     inputs:
       slug:
@@ -36,7 +41,32 @@ permissions:
   contents: write
 
 jobs:
+  scan-missing:
+    runs-on: ubuntu-latest
+    outputs:
+      missing: ${{ steps.scan.outputs.missing }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Find eligible shows without a reel video
+        id: scan
+        run: |
+          MISSING=false
+          NOW=$(date -u +%s)
+          for F in $(ls content/shows/*.md 2>/dev/null | grep -E 'content/shows/[0-9]{14}-' | sort); do
+            BASE=$(basename "$F"); TS="${BASE:0:14}"
+            [[ "$TS" < "20260921191359" ]] && continue
+            SLUG=$(basename "$F" .md | cut -c 1-45)
+            [ -n "$(find dist/videos -name "reel-${SLUG}*.mp4" 2>/dev/null)" ] && continue
+            D=$(grep -m1 '^date:' "$F" | sed 's/^date:[[:space:]]*//; s/["'"'"']//g')
+            T=$(date -u -d "$D" +%s 2>/dev/null || echo 0)
+            if [ "$T" -gt 0 ] && [ "$T" -le "$NOW" ]; then echo "Missing reel: $F"; MISSING=true; fi
+          done
+          echo "missing=$MISSING" >> "$GITHUB_OUTPUT"
+
   auto-render-and-publish:
+    needs: scan-missing
+    if: ${{ github.event_name != 'schedule' || needs.scan-missing.outputs.missing == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
