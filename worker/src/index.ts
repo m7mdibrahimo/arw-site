@@ -320,12 +320,9 @@ type PublishState = {
   // recordBufferQuota/hasBufferQuota. X and Facebook share this because
   // both go through the same Buffer API key (one client, one quota).
   bufferQuota?: { remaining: number; resetAt: number; window: string; updatedAt: number }[];
-  // The current TikTok user access_token/refresh_token pair (see getTikTokAccessToken).
-  // Stored here — not as a Cloudflare secret — because it must be rewritten by the
-  // Worker itself on every refresh (TikTok returns a new refresh_token each time and
-  // the old one stops working), and only this GitHub-backed store gives the Worker a
-  // place it can both read and durably write to.
-  tiktokToken?: { accessToken: string; refreshToken: string; expiresAt: number; openId?: string };
+  // Legacy: where the TikTok token pair used to be stored. This file is public, so
+  // tokens now live in KV; loadTikTokToken revokes and removes any found here.
+  tiktokToken?: TikTokToken;
 };
 
 function emptyPublishState(): PublishState {
@@ -1525,10 +1522,39 @@ async function postVideoToInstagramStory(env: Env, data: { videoUrl: string; ima
 // permanent page token), paired with a refresh_token that itself expires after
 // 365 days and — per TikTok's own docs — "may be different" on every refresh,
 // so the old one must be treated as dead the moment a new one is issued. Both
-// are persisted through the same GitHub-backed state store as everything else
-// (see PublishState.tiktokToken) rather than a Cloudflare secret, because a
-// secret can only be *read* from inside the Worker, never rewritten by it.
-async function exchangeTikTokToken(env: Env, params: Record<string, string>): Promise<{ accessToken: string; refreshToken: string; expiresAt: number; openId?: string } | null> {
+// live in KV (not a Cloudflare secret, which the Worker can't rewrite) and never
+// in the GitHub state file: the repo is public, so anything written there can
+// be read — and used to post to the account — by anyone.
+type TikTokToken = { accessToken: string; refreshToken: string; expiresAt: number; openId?: string };
+const TIKTOK_TOKEN_KEY = "tiktok-token";
+
+async function revokeTikTokToken(env: Env, token: string) {
+  if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) return;
+  await fetch("https://open.tiktokapis.com/v2/oauth/revoke/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ client_key: env.TIKTOK_CLIENT_KEY, client_secret: env.TIKTOK_CLIENT_SECRET, token }).toString(),
+  }).catch(() => {});
+}
+
+// A token still found in the GitHub state (where it used to be stored) was
+// already exposed publicly: revoke it and drop it, so the account has to be
+// reconnected via /api/tiktok/oauth/start and the fresh token lands in KV only.
+async function loadTikTokToken(env: Env): Promise<TikTokToken | null> {
+  const stored = await env.PUSH_KV.get(TIKTOK_TOKEN_KEY);
+  if (stored) return JSON.parse(stored);
+  for (let i = 0; i < 5; i++) {
+    const { sha, state } = await githubReadState(env);
+    if (!state.tiktokToken) return null;
+    await revokeTikTokToken(env, state.tiktokToken.accessToken);
+    delete state.tiktokToken;
+    const result = await githubWriteState(env, state, sha, "chore(tiktok): remove exposed token from public state");
+    if (result.ok || !result.conflict) return null;
+  }
+  return null;
+}
+
+async function exchangeTikTokToken(env: Env, params: Record<string, string>): Promise<TikTokToken | null> {
   if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) return null;
   const body = new URLSearchParams({ client_key: env.TIKTOK_CLIENT_KEY, client_secret: env.TIKTOK_CLIENT_SECRET, ...params });
   try {
@@ -1550,15 +1576,13 @@ async function exchangeTikTokToken(env: Env, params: Record<string, string>): Pr
   }
 }
 
-async function saveTikTokToken(env: Env, token: { accessToken: string; refreshToken: string; expiresAt: number; openId?: string }): Promise<boolean> {
-  for (let i = 0; i < 5; i++) {
-    const { sha, state } = await githubReadState(env);
-    state.tiktokToken = token;
-    const result = await githubWriteState(env, state, sha, "chore(tiktok): refresh access token");
-    if (result.ok) return true;
-    if (!result.conflict) return false;
+async function saveTikTokToken(env: Env, token: TikTokToken): Promise<boolean> {
+  try {
+    await env.PUSH_KV.put(TIKTOK_TOKEN_KEY, JSON.stringify(token));
+    return true;
+  } catch {
+    return false;
   }
-  return false;
 }
 
 // Returns a currently-valid access token, refreshing and persisting a new one
@@ -1568,8 +1592,7 @@ async function saveTikTokToken(env: Env, token: { accessToken: string; refreshTo
 // treat that as "not configured", not retry it like a transient error.
 async function getTikTokAccessToken(env: Env): Promise<string | null> {
   if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) return null;
-  const { state } = await githubReadState(env);
-  const current = state.tiktokToken;
+  const current = await loadTikTokToken(env);
   if (!current) return null;
   if (current.expiresAt - Date.now() > 5 * 60_000) return current.accessToken;
   const refreshed = await exchangeTikTokToken(env, { grant_type: "refresh_token", refresh_token: current.refreshToken });
@@ -2357,9 +2380,9 @@ export default {
         if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) {
           return json({ success: false, configured: false, connected: false, message: "TIKTOK_CLIENT_KEY / TIKTOK_CLIENT_SECRET not set" });
         }
-        const { state } = await githubReadState(env);
-        return json({ success: true, configured: true, connected: !!state.tiktokToken,
-          openId: state.tiktokToken?.openId, tokenExpiresAt: state.tiktokToken?.expiresAt,
+        const token = await loadTikTokToken(env);
+        return json({ success: true, configured: true, connected: !!token,
+          openId: token?.openId, tokenExpiresAt: token?.expiresAt,
           autoEnabled: env.TIKTOK_AUTO_ENABLED === "true" });
       }
 
