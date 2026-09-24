@@ -3,7 +3,7 @@ import path from "path";
 import crypto from "crypto";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { applyCorrections, autoFix, checkArticle, loadNews } from "./news-qa";
+import { applyCorrections, autoFix, checkArticle, isJunkTag, loadNews } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3240,7 +3240,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   let draft: ArticleDraft = {
     title: applyCorrections(autoFix(applyCorrections(rewritten.title))),
     body: applyCorrections(autoFix(applyCorrections(finalBody))),
-    tags: rewritten.tags.map(t => applyCorrections(autoFix(applyCorrections(t)))),
+    tags: rewritten.tags.map(t => applyCorrections(autoFix(applyCorrections(t)))).filter(t => !isJunkTag(t)),
   };
 
   if (guardDuplicates) {
@@ -3267,7 +3267,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
-  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))] };
+  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))].filter(t => !isJunkTag(t)) };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date"].includes(i.code));

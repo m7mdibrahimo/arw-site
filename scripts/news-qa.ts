@@ -87,8 +87,16 @@ const RULES: Rule[] = [
 
 const TRANSLITERATED_SHOWS = /(?:سماك\s*داون|داينامايت|ديناميت|داينمايت|كوليجن|رامبيج|إمباكت|(?<![ء-ي])راو(?![ء-ي])|(?<![ء-ي])الرو(?![ء-ي])|[إا]ن\s*[إا]كس\s*تي|[إا]يفولف)/g;
 
+/** A tag must name a person, team, show, federation or topic — never a date ("تاريخ 24 سبتمبر 2026", seen live). */
+export function isJunkTag(tag: string): boolean {
+  const t = (tag || "").trim();
+  return !t || /^تاريخ(?:\s|$)/.test(t) || /^\d+$/.test(t)
+    || /(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر)\s+\d{4}/.test(t);
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
+  for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });
   const fields: [QaIssue["field"], string][] = [["title", title || ""], ["body", stripNonProse(body || "")], ["tags", tags.join(" | ")]];
   for (const [field, text] of fields) {
     for (const rule of RULES) {

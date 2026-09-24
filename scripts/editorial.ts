@@ -109,7 +109,9 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
   const applied: ProofEdit[] = [];
   for (const e of edits) {
     const find = e.find.trim();
-    const replace = e.replace.trim();
+    // The site writes without tashkeel/tanween; never let an edit add it ("يوما" → "يوماً", seen live).
+    const replace = DIACRITICS.test(find) ? e.replace.trim() : e.replace.trim().replace(DIACRITICS, "");
+    DIACRITICS.lastIndex = 0;
     if (!find || find === replace || find.length > 400 || replace.length > find.length * 2 + 40) continue;
     if (!editIsGrounded(find, replace, sourceText)) continue;
     if (!editIsAnImprovement(find, replace)) continue;

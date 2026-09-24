@@ -734,3 +734,13 @@ test('copy editor edits that break the site rules are refused', async () => {
   assert.equal(editIsAnImprovement('تونسي خان', 'توني خان'), true);
   assert.equal(editIsAnImprovement('عرض خاصة', 'عرض خاص'), true);
 });
+
+test('date tags are junk; copy-editor edits never add tanween', async () => {
+  const { isJunkTag } = await import('../scripts/news-qa');
+  const { applyProofEdits } = await import('../scripts/editorial');
+  assert.equal(isJunkTag('تاريخ 24 سبتمبر 2026'), true);
+  assert.equal(isJunkTag('نيكي بيلا'), false);
+  const r = applyProofEdits({ title: 'عنوان عربي هنا', body: 'بعد فترة ال 90 يوما من الرحيل', tags: [] },
+    [{ field: 'body', find: 'فترة ال 90 يوما', replace: 'فترة الـ 90 يوماً' }], 'the 90-day period');
+  assert.equal(r.article.body, 'بعد فترة الـ 90 يوما من الرحيل');
+});
