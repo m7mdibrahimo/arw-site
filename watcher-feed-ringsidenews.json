@@ -1,5 +1,15 @@
 [
   {
+    "id": 802246992,
+    "link": "https://www.ringsidenews.com/aew-collision-viewership-sees-slight-drop-september-19-2026/",
+    "date": "Thu, 24 Sep 2026 14:21:55 +0000",
+    "date_gmt": "2026-09-24T14:21:55.000Z",
+    "title": {
+      "rendered": "AEW Collision Viewership Sees Slight Drop on September 19, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/AEW-Collision-Decrease.jpg?x40058"
+  },
+  {
     "id": 802246995,
     "link": "https://www.ringsidenews.com/thekla-addresses-rumors-kairi-sane-joining-aew/",
     "date": "Thu, 24 Sep 2026 14:09:22 +0000",
@@ -138,15 +148,5 @@
       "rendered": "TNA iMPACT Viewership Sees Drop on September 17, 2026"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/TNA-iMPACT-Massive-Decrease.jpg?x40058"
-  },
-  {
-    "id": 802246787,
-    "link": "https://www.ringsidenews.com/chris-jericho-nick-wayne-set-aew-grand-slam-france-rematch/",
-    "date": "Thu, 24 Sep 2026 03:01:27 +0000",
-    "date_gmt": "2026-09-24T03:01:27.000Z",
-    "title": {
-      "rendered": "Chris Jericho and Nick Wayne Set for AEW Grand Slam France Rematch"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/chris-jericho-and-nick-wayne-set-for-aew-grand-slam-france-rematch-58.jpg?x40058"
   }
 ]
