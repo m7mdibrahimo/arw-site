@@ -1,5 +1,25 @@
 [
   {
+    "id": 330140,
+    "link": "https://www.fightful.com/wrestling/aew-dynamite-330140/",
+    "date": "2026-09-23T23:21:29",
+    "date_gmt": "2026-09-24T03:21:29",
+    "title": {
+      "rendered": "Persephone &#038; Britt Baker To Face Thunder Rosa &#038; Hyan On 9/30 AEW Dynamite"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23231826/HS80dqyWoAAovfB.jpg"
+  },
+  {
+    "id": 330136,
+    "link": "https://www.fightful.com/wrestling/persephone-aew-all-out-330136/",
+    "date": "2026-09-23T23:15:25",
+    "date_gmt": "2026-09-24T03:15:25",
+    "title": {
+      "rendered": "Persephone Announces TBS Title Open Challenge For AEW All Out"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23231408/HS82cXGWEAAv-ql-e1790219660652.jpg"
+  },
+  {
     "id": 330131,
     "link": "https://www.fightful.com/wrestling/nick-wayne-vs-chris-jericho-set-for-aew-grand-slam-france/",
     "date": "2026-09-23T22:55:21",
@@ -278,25 +298,5 @@
       "rendered": "MJF, Kayla Becker And David Arquette Feature In First Trailer For &#8216;Stranglehold&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23111228/Screenshot-2026-09-23-160941-e1790176398311.png"
-  },
-  {
-    "id": 14463,
-    "link": "https://www.fightful.com/wrestling/confirmed-wrestling-contract-expirations/",
-    "date": "2026-09-23T11:00:00",
-    "date_gmt": "2026-09-23T15:00:00",
-    "title": {
-      "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
-  },
-  {
-    "id": 329676,
-    "link": "https://www.fightful.com/wrestling/vaughn-vertigo-recalls-sign-vaughn-vertigo-sign-at-aew-all-out-2025-i-didnt-pay-them/",
-    "date": "2026-09-23T11:00:00",
-    "date_gmt": "2026-09-23T15:00:00",
-    "title": {
-      "rendered": "Vaughn Vertigo Recalls &#8216;Sign Vaughn Vertigo&#8217; Sign At AEW All Out 2025, &#8216;I Didn&#8217;t Pay Them&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21164716/G1WKmOQWwAAmkec-scaled-e1790023656139.jpg"
   }
 ]
