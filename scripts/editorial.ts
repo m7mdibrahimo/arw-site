@@ -18,8 +18,12 @@ export function editorialGuideForPrompt(): string {
   try {
     guide = fs.readFileSync(path.join(EDITORIAL_DIR, "style-guide.md"), "utf-8");
   } catch {}
-  const never = loadCorrections().filter(c => !c.regex).map(c => `- ❌ ${c.wrong} ← ✅ ${c.right}`);
-  return `${guide}\n\n## صيغ ممنوعة وتصحيحها (أخطاء وصلت للموقع من قبل — لا تكررها أبداً)\n${never.join("\n")}\n`;
+  const corrections = loadCorrections();
+  const never = corrections.filter(c => !c.regex).map(c => `- ❌ ${c.wrong} ← ✅ ${c.right}`);
+  // Pattern rules (mostly show/federation names) are applied automatically after
+  // writing, but Gemini should also learn the approved form itself.
+  const approved = [...new Set(corrections.filter(c => c.regex && c.right).map(c => c.right))];
+  return `${guide}\n\n## صيغ ممنوعة وتصحيحها (أخطاء وصلت للموقع من قبل — لا تكررها أبداً)\n${never.join("\n")}\n\n## أسماء تُكتب دائماً بهذه الصيغة بالضبط (لا تعرّبها ولا تغيّرها)\n${approved.join("، ")}\n`;
 }
 
 export interface ArticleDraft { title: string; body: string; tags: string[] }
