@@ -69,7 +69,10 @@ export function findReelVideo(slug: string, files: string[]): string | null {
 // non-ok, non-processing, non-skipped result should fail the CI job and page the
 // owner.
 export function hasRealFailure(results: Record<string, any>, requested: readonly Platform[]): boolean {
-  return requested.some(p => results[p]?.ok !== true && results[p]?.status !== 'processing' && !results[p]?.skipped);
+  // 'rate_limited' = the Worker is honouring a platform pause (e.g. Instagram's
+  // "too many actions"); it resumes by itself, so it must not fail the job and
+  // email the owner every 15 minutes for hours (seen 2026-09-24).
+  return requested.some(p => results[p]?.ok !== true && !['processing', 'rate_limited'].includes(results[p]?.status) && !results[p]?.skipped);
 }
 // Instagram encodes video asynchronously; a platform left mid-processing is
 // usually ready within minutes, so waiting the full 45-minute retry gate held a

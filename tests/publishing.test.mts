@@ -778,3 +778,8 @@ test('Instagram video publishes are capped per run so a burst of shows cannot tr
   assert.deepEqual(takePlatformBudget(['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'], budget), ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story']);
   assert.deepEqual(takePlatformBudget(['facebook_reel', 'instagram_reel', 'instagram_story'], budget), ['facebook_reel']);
 });
+
+test('a platform pause (rate_limited) does not fail the reel monitor job', () => {
+  assert.equal(hasRealFailure({ instagram_reel: { ok: false, status: 'rate_limited', error: 'paused' } }, ['instagram_reel']), false);
+  assert.equal(hasRealFailure({ instagram_reel: { ok: false, error: 'boom' } }, ['instagram_reel']), true);
+});
