@@ -31,6 +31,7 @@ export function learnCorrections(minArticles = 3, dryRun = false): { wrong: stri
     try { e = JSON.parse(line); } catch { continue; }
     const find = String(e.find || "").trim(), replace = String(e.replace || "").trim();
     if (!ARABIC_PHRASE.test(find) || !ARABIC_PHRASE.test(replace) || find === replace) continue;
+    if (find.replace(/[\u064B-\u0652\u0670]/g, "") === replace.replace(/[\u064B-\u0652\u0670]/g, "")) continue; // tanween/diacritics only
     if (find.split(" ").some(w => CONTEXTUAL.has(w)) || find.length < 4) continue;
     const key = `${find}\u0000${replace}`;
     if (!seen.has(key)) seen.set(key, new Set());

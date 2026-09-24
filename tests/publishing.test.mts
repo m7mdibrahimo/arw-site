@@ -723,3 +723,14 @@ test('recurring copy-editor fixes are promoted to permanent corrections, one-off
     assert.deepEqual(learned.map(l => `${l.wrong}→${l.right}`), ['سيت رولينز→سيث رولينز']);
   } finally { process.chdir(cwd); }
 });
+
+test('copy editor edits that break the site rules are refused', async () => {
+  const { editIsAnImprovement } = await import('../scripts/editorial');
+  // All seen in real copy-editor output on 2026-09-24:
+  assert.equal(editIsAnImprovement('عرض MLW Fusion', 'إم إل دبليو فيوجن'), false);
+  assert.equal(editIsAnImprovement('بطولة العالم للزوجي الثلاثي', 'بطولة AEW World Trios Championships'), false);
+  assert.equal(editIsAnImprovement('رسميا', 'رسمياً'), false);
+  assert.equal(editIsAnImprovement('حلقة العرض', 'عرض العرض'), false);
+  assert.equal(editIsAnImprovement('تونسي خان', 'توني خان'), true);
+  assert.equal(editIsAnImprovement('عرض خاصة', 'عرض خاص'), true);
+});

@@ -9,7 +9,7 @@
 // exists, a Gemini same-story check (duplicatePrompt) before it may be published.
 import fs from "fs";
 import path from "path";
-import { loadCorrections, tokens, jaccard, type NewsFile, type QaIssue } from "./news-qa";
+import { loadCorrections, applyCorrections, checkArticle, tokens, jaccard, type NewsFile, type QaIssue } from "./news-qa";
 
 const EDITORIAL_DIR = path.join(process.cwd(), "editorial");
 
@@ -87,6 +87,22 @@ export function editIsGrounded(find: string, replace: string, sourceText: string
   return [...latinWords(replace), ...numbers(replace)].every(tok => had.has(tok) || new RegExp(`(^|[^a-z0-9])${tok.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z0-9]|$)`).test(src));
 }
 
+const DIACRITICS = /[\u064B-\u0652\u0670]/g;
+const QA_PROBE_PAD = " ".repeat(260) + "نص عربي للفحص فقط";
+/**
+ * The copy editor must never make an article worse by the site's own rules
+ * (seen: "عرض MLW Fusion" → "إم إل دبليو فيوجن", an Arabic title name replaced by
+ * "AEW World Trios Championships", "حلقة العرض" → "عرض العرض"), and must not churn
+ * text with diacritic-only edits ("رسميا" → "رسمياً") that aren't the site's style.
+ */
+export function editIsAnImprovement(find: string, replace: string): boolean {
+  if (find.replace(DIACRITICS, "") === replace.replace(DIACRITICS, "")) return false;
+  if (applyCorrections(replace) !== replace) return false; // introduces a known-wrong form
+  const codes = (t: string) => new Set(checkArticle("عنوان عربي للفحص فقط", t + QA_PROBE_PAD, []).filter(i => i.severity === "error").map(i => i.code));
+  const before = codes(find);
+  return [...codes(replace)].every(c => before.has(c));
+}
+
 /** Applies only safe, verifiable edits: the text to replace must exist verbatim, and an edit may not balloon into a rewrite. */
 export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourceText = ""): { article: ArticleDraft; applied: ProofEdit[] } {
   const out = { title: article.title, body: article.body, tags: [...article.tags] };
@@ -96,6 +112,7 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
     const replace = e.replace.trim();
     if (!find || find === replace || find.length > 400 || replace.length > find.length * 2 + 40) continue;
     if (!editIsGrounded(find, replace, sourceText)) continue;
+    if (!editIsAnImprovement(find, replace)) continue;
     // "يُذكر أن" (it is worth noting) is not "يتذكر" (remembers) — seen in testing.
     if (/(^|[^\u0621-\u064A])[وف]?يذكر/.test(find) && /يتذكر/.test(replace)) continue;
     if (e.field === "tags") {
