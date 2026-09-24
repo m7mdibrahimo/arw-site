@@ -1493,7 +1493,11 @@ async function postVideoToTelegram(
 async function setVideoCooldown(env: Env, platform: "facebook" | "instagram" | "tiktok") {
   for (let i = 0; i < 5; i++) {
     const { sha, state } = await githubReadState(env);
-    state.videoCooldowns = { ...state.videoCooldowns, [platform]: Date.now() + 24 * 60 * 60_000 };
+    // Same account-level restriction as regular posts, so the same pause as
+    // setPlatformDailyLimitCooldown: a flat 24h here kept show reels/stories
+    // blocked for ~18 hours after Instagram posts had already resumed.
+    const pauseMs = platform === "facebook" ? 2 * 60 * 60_000 : platform === "instagram" ? 6 * 60 * 60_000 : 24 * 60 * 60_000;
+    state.videoCooldowns = { ...state.videoCooldowns, [platform]: Date.now() + pauseMs };
     const result = await githubWriteState(env, state, sha, `chore(publish): pause ${platform} videos after platform restriction`);
     if (result.ok) return;
     if (!result.conflict) throw new Error("Could not save video platform cooldown");
