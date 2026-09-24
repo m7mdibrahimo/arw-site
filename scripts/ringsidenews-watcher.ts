@@ -147,6 +147,33 @@ export function isLikelyDuplicateOfRecentCoverage(candidateTitle: string, hoursW
   return false;
 }
 
+function toWpPost(item: { title: string; link: string; pubDate: string; contentHtml: string; thumbnail: string }, id: number) {
+  return {
+    id,
+    title: { rendered: item.title },
+    content: { rendered: item.contentHtml },
+    link: item.link,
+    date_gmt: new Date(item.pubDate).toISOString(),
+    date: new Date(item.pubDate).toISOString(),
+  };
+}
+
+/** Manual add/update from the admin panel (fightful-watcher.yml routes this source's URLs here). */
+export async function processRingsideNewsUrl(url: string): Promise<boolean> {
+  const norm = (u: string) => u.replace(/[?#].*$/, "").replace(/\/+$/, "").toLowerCase();
+  const item = (await fetchRingsideNewsFeed()).find(i => norm(i.link) === norm(url));
+  if (!item) {
+    console.warn(`[RSN Watcher] ${url} is no longer in the RSS feed, so its full text can't be fetched.`);
+    return false;
+  }
+  const id = idFromGuid(item.guid);
+  const ok = await processPost(toWpPost(item, id), new Date(), false, { manual: true });
+  const state = loadState();
+  if (!state.processedIds.includes(id)) state.processedIds.push(id);
+  saveState(state);
+  return ok;
+}
+
 export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPerRun?: number } = {}): Promise<void> {
   const state = loadState();
   const items = await fetchRingsideNewsFeed();
@@ -192,14 +219,7 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
       continue;
     }
 
-    const fakeWpPost = {
-      id,
-      title: { rendered: item.title },
-      content: { rendered: item.contentHtml },
-      link: item.link,
-      date_gmt: new Date(item.pubDate).toISOString(),
-      date: new Date(item.pubDate).toISOString(),
-    };
+    const fakeWpPost = toWpPost(item, id);
 
     const ok = await processPost(fakeWpPost);
     state.processedIds.push(id);

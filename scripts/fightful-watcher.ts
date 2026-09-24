@@ -3008,7 +3008,9 @@ export function findLikelyDuplicateStoryByTagsAndBody(
 }
 
 // Process a single Fightful post
-export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false): Promise<boolean> {
+// options.manual: an explicit add/update from the admin panel — the owner already
+// decided to publish it, so the automatic duplicate guards don't apply.
+export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean } = {}): Promise<boolean> {
   const postId = post.id;
   const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || "News";
   const postUrl = post.link || "";
@@ -3019,6 +3021,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Check if this post was already published on the site (e.g. show results/coverage updated over the course of the event)
   const existingFile = findExistingNewsFile(postId, postUrl);
   const isUpdate = Boolean(existingFile);
+  const guardDuplicates = !isUpdate && !options.manual;
 
   console.log(`\n--------------------------------------------------`);
   console.log(`[Watcher] Processing post #${postId}: "${rawTitle}"${isUpdate ? ` [UPDATE to ${existingFile?.fileName}]` : ""}`);
@@ -3062,12 +3065,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
 
-  if (!isUpdate && isKnownDuplicate(postUrl)) {
+  if (guardDuplicates && isKnownDuplicate(postUrl)) {
     console.log(`[Watcher] 🔁 Already judged a duplicate of a published story: Post #${postId} ("${rawTitle}") skipped.`);
     return false;
   }
 
-  if (!isUpdate) {
+  if (guardDuplicates) {
     const dupe = findLikelyDuplicateStory(rawTitle);
     if (dupe.isDuplicate) {
       console.log(`[Watcher] 🔁 Likely duplicate of a recently published story (${dupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
@@ -3205,7 +3208,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Second-pass cross-source duplicate guard, now that translation has produced
   // real Arabic tags and body text (see findLikelyDuplicateStoryByTagsAndBody
   // above for why this is needed in addition to the pre-translation check).
-  if (!isUpdate) {
+  if (guardDuplicates) {
     const postDupe = findLikelyDuplicateStoryByTagsAndBody(rewritten.tags, finalBody);
     if (postDupe.isDuplicate) {
       console.log(`[Watcher] 🔁 Likely duplicate detected after translation (shared names + overlapping body with ${postDupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
@@ -3221,7 +3224,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     tags: rewritten.tags.map(t => applyCorrections(autoFix(applyCorrections(t)))),
   };
 
-  if (!isUpdate) {
+  if (guardDuplicates) {
     const candidates = findDuplicateCandidates(draft, loadNews(NEWS_DIR));
     if (candidates.length) {
       const verdict = parseDuplicateAnswer(await queryGemini(duplicatePrompt(draft, candidates), true, 0.1), candidates);
@@ -3577,6 +3580,21 @@ async function cli() {
     let successCount = 0;
     for (let i = 0; i < rawList.length; i++) {
       const itemUrl = rawList[i];
+      // The admin panel sends every source through this one workflow; the other
+      // two sources are RSS-based and have their own item → post adapters.
+      const host = (() => { try { return new URL(itemUrl).hostname; } catch { return ""; } })();
+      if (/wrestlinginc\.com$/.test(host) || /ringsidenews\.com$/.test(host)) {
+        console.log(`\n[Watcher] [${i + 1}/${rawList.length}] Routing ${host} URL: ${itemUrl}`);
+        try {
+          const ok = /wrestlinginc/.test(host)
+            ? await (await import("./wrestlinginc-watcher")).processWrestlingIncUrl(itemUrl)
+            : await (await import("./ringsidenews-watcher")).processRingsideNewsUrl(itemUrl);
+          if (ok) successCount++;
+        } catch (err: any) {
+          console.error(`[Watcher] Error processing "${itemUrl}":`, err.message);
+        }
+        continue;
+      }
       const cleanUrl = itemUrl.replace(/\/+$/, "");
       const slug = cleanUrl.split("/").pop();
       if (!slug) {
@@ -3595,7 +3613,7 @@ async function cli() {
           // All posts publish immediately at current time
           const publishTime = new Date();
           console.log(`[Watcher] Publish time: ${publishTime.toISOString()} (Immediate)`);
-          const ok = await processPost(posts[0], publishTime);
+          const ok = await processPost(posts[0], publishTime, false, { manual: true });
           if (ok) {
             successCount++;
             if (!state.processedIds.includes(posts[0].id)) {
