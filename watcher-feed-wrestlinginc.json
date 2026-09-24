@@ -1,5 +1,15 @@
 [
   {
+    "id": 4740916331,
+    "link": "https://www.wrestlinginc.com/2267378/wwe-aew-mvp-zilla-fatu-big-things-ahead/",
+    "date": "Thu, 24 Sep 2026 15:00:00 +0000",
+    "date_gmt": "2026-09-24T15:00:00.000Z",
+    "title": {
+      "rendered": "AEW's MVP Sees Big Things Ahead For Zilla Fatu In WWE"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-mvp-sees-big-things-ahead-for-zilla-fatu-in-wwe/l-intro-1790243442.jpg"
+  },
+  {
     "id": 1273732670,
     "link": "https://www.wrestlinginc.com/2267375/aew-thekla-mercedes-mone-dumb-blonde-jab-directed-someone-else/",
     "date": "Thu, 24 Sep 2026 14:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On AEW Contract Status Of Max Caster & Anthony Bowens"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-aew-contract-status-of-max-caster-anthony-bowens/l-intro-1790192868.jpg"
-  },
-  {
-    "id": 3772878790,
-    "link": "https://www.wrestlinginc.com/2266965/wwe-espn-defendant-lawsuit-streaming-deal/",
-    "date": "Wed, 23 Sep 2026 19:50:42 +0000",
-    "date_gmt": "2026-09-23T19:50:42.000Z",
-    "title": {
-      "rendered": "ESPN Joins WWE As Defendant In Lawsuit Regarding Streaming Deal"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/espn-joins-wwe-as-defendant-in-lawsuit-regarding-streaming-deal/l-intro-1790192804.jpg"
   }
 ]
