@@ -2124,15 +2124,13 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 19.09.2026 مترجم",
-    "lastAttempt": 1790249477798,
+    "lastAttempt": 1790250195039,
     "errors": {
       "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "reviewPlatforms": [],
     "needsReview": false,
-    "processing": [
-      "instagram_story"
-    ]
+    "processing": []
   },
   "20260924110800-cmll-domingo-familiar-20-09-2026": {
     "publishedAt": 1790249500667,
@@ -2141,15 +2139,13 @@
     "instagram_reel": false,
     "instagram_story": true,
     "title": "عرض سي ام ال ال 20.09.2026 مترجم",
-    "lastAttempt": 1790249592834,
+    "lastAttempt": 1790250195883,
     "errors": {
       "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "reviewPlatforms": [],
     "needsReview": false,
-    "processing": [
-      "instagram_reel"
-    ]
+    "processing": []
   },
   "20260924111100-cmll-lunes-clasico-21-09-2026": {
     "publishedAt": 1790249619980,
@@ -2160,6 +2156,54 @@
     "title": "عرض سي ام ال ال 21.09.2026 مترجم",
     "lastAttempt": 1790249708865,
     "errors": {},
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260924111500-cmll-martes-populares-22-09-2026": {
+    "publishedAt": 1790250225806,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 22.09.2026 مترجم",
+    "lastAttempt": 1790250287053,
+    "errors": {
+      "instagram_reel": "Error: Media upload has failed with error code 2207077",
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260924111800-njpw-road-to-destruction-22-09-2026": {
+    "publishedAt": 1790250342317,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": true,
+    "title": "عرض ان جيه بي دبليو 22.09.2026 مترجم",
+    "lastAttempt": 1790250439754,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260924112300-aew-dynamite-23-09-2026": {
+    "publishedAt": 1790250470582,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": true,
+    "title": "عرض ديناميت 23.09.2026 مترجم",
+    "lastAttempt": 1790250560012,
+    "errors": {
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
