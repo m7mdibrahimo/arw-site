@@ -1,5 +1,15 @@
 [
   {
+    "id": 330210,
+    "link": "https://www.fightful.com/wrestling/gota-ihashi-departing-ddt-pro-wrestling/",
+    "date": "2026-09-24T13:51:08",
+    "date_gmt": "2026-09-24T17:51:08",
+    "title": {
+      "rendered": "Gota Ihashi Departing DDT Pro-Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/16015233/ddt.png"
+  },
+  {
     "id": 330202,
     "link": "https://www.fightful.com/wrestling/miku-kanae-to-be-special-guest-ring-announcer-at-sareee-ism-show/",
     "date": "2026-09-24T13:41:26",
@@ -288,15 +298,5 @@
       "rendered": "Persephone Announces TBS Title Open Challenge For AEW All Out"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23231408/HS82cXGWEAAv-ql-e1790219660652.jpg"
-  },
-  {
-    "id": 330131,
-    "link": "https://www.fightful.com/wrestling/nick-wayne-vs-chris-jericho-set-for-aew-grand-slam-france/",
-    "date": "2026-09-23T22:55:21",
-    "date_gmt": "2026-09-24T02:55:21",
-    "title": {
-      "rendered": "Nick Wayne vs. Chris Jericho Set For AEW Grand Slam France"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23225430/Screenshot-327-e1790218483914.png"
   }
 ]
