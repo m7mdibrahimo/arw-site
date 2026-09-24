@@ -21,8 +21,15 @@ on:
         required: false
         default: ''
 
+# Own group: sharing "show-reel-publishing" with show-reel-monitor.yml let a
+# monitor dispatch (every ~15 min) replace a PENDING render run — GitHub keeps
+# only one pending run per group — so a newly added show could lose its render
+# with nothing ever retrying it (seen 2026-09-24: runs cancelled while shows
+# were being added). Within this group a newer pending render still replaces an
+# older one, which is safe: every run's catch-up scan renders ALL eligible shows
+# still missing a video, not just the show that triggered it.
 concurrency:
-  group: show-reel-publishing
+  group: show-reel-render
   cancel-in-progress: false
 
 permissions:
