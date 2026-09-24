@@ -12,7 +12,7 @@ tags:
 image: /content/images/0v5y5498hqap85il.jpg
 layout: post-layout.njk
 ---
-تصاعدت حدة الحرب الكلامية المشتعلة بين النجم الياباني الصاعد ريوهي أويوا (ريوهي أويوا) ونجم اتحاد AEW المثير للجدل ام جيه اف (ام جيه اف)، بعدما هدد أويوا باقتحام عروض الاتحاد الأمريكي بنفسه لمواجهة ام جيه اف وتحديد الأفضل داخل الحلبة.
+تصاعدت حدة الحرب الكلامية المشتعلة بين النجم الياباني الصاعد ريوهي أويوا ونجم اتحاد AEW المثير للجدل ام جيه اف، بعدما هدد أويوا باقتحام عروض الاتحاد الأمريكي بنفسه لمواجهة ام جيه اف وتحديد الأفضل داخل الحلبة.
 
 شرارة الخلاف والسخرية المتبادلة
 
@@ -22,7 +22,7 @@ layout: post-layout.njk
 
 وجه أويوا رسالة تحذيرية شديدة اللهجة لنجم AEW قائلا:
 
-> "لا تستهن باتحاد NJPW (NJPW). إذا كنت خائفا من المشاركة في ال G1 العام المقبل، فسأقتحم حلباتكم في AEW بنفسي لنحسم من هو المصارع الأفضل في تنفيذ حركة الهيدلوك!"
+> "لا تستهن باتحاد NJPW. إذا كنت خائفا من المشاركة في ال G1 العام المقبل، فسأقتحم حلباتكم في AEW بنفسي لنحسم من هو المصارع الأفضل في تنفيذ حركة الهيدلوك!"
 
 وجاء رد ام جيه اف سريعا كعادته بأسلوب حاد وهجومي:
 
@@ -30,6 +30,6 @@ layout: post-layout.njk
 
 يذكر أن ريوهي أويوا لم يسبق له الظهور في عروض AEW من قبل، ويستعد حاليا لخوض مواجهة مرتقبة على لقب بطولة العالم للوزن الثقيل IWGP Heavyweight Championship في حدث NJPW كينج أوف برو ريسلينج القادم.
 
-<https://x.com/njpw_ryoheioiwa/status/2090950256649543866?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090950256649543866%7Ctwgr%5E8a73c7aaa86c1cf7be620637194108b11f98c0a7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fryohei-oiwa-says-hell-come-storming-into-aew-to-face-إم جيه إف%2F>
+<https://x.com/njpw_ryoheioiwa/status/2090950256649543866?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090950256649543866%7Ctwgr%5E8a73c7aaa86c1cf7be620637194108b11f98c0a7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fryohei-oiwa-says-hell-come-storming-into-aew-to-face-ام جيه اف%2F>
 
-<https://x.com/The_MJF/status/2090955182121099310?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090955182121099310%7Ctwgr%5E8a73c7aaa86c1cf7be620637194108b11f98c0a7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fryohei-oiwa-says-hell-come-storming-into-aew-to-face-إم جيه إف%2F>
+<https://x.com/The_MJF/status/2090955182121099310?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090955182121099310%7Ctwgr%5E8a73c7aaa86c1cf7be620637194108b11f98c0a7%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fryohei-oiwa-says-hell-come-storming-into-aew-to-face-ام جيه اف%2F>

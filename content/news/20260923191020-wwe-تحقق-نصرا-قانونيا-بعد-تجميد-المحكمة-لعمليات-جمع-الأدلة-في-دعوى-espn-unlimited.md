@@ -8,7 +8,7 @@ single_match_result: false
 tags:
   - WWE
   - ESPN Unlimited
-  - نيق خان
+  - نيك خان
   - أخبار المصارعة
   - قضايا قانونية
 image: /content/images/4lhqpqlgu7e1qjg0.jpg

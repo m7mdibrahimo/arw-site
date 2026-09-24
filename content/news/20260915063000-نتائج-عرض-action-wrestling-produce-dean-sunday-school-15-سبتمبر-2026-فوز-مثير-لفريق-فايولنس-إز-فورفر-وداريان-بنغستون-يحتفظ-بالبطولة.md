@@ -1,13 +1,14 @@
 ---
 federation: INDIE
-title: "نتائج عرض ACTION WRESTLING & PRODUCE DEAN~!!! Sunday School (15 سبتمبر 2026): فوز مثير لفريق فايولنس إز فورفر.. وداريان بنغستون يحتفظ بالبطولة"
+title: "نتائج عرض ACTION WRESTLING & PRODUCE DEAN~!!! Sunday School (15 سبتمبر 2026): فوز مثير لفريق فايولنس إز فورفر.. وداريان بينغستون يحتفظ بالبطولة"
+permalink: "/news/نتائج-عرض-action-wrestling-produce-dean-sunday-school-15-سبتمبر-2026-فوز-مثير-لفريق-فايولنس-إز-فورفر-وداريان-بنغستون-يحتفظ-بالبطولة/index.html"
 date: 2026-09-15T06:30:00.000+03:00
 source_id: 328549
 source_url: "https://www.fightful.com/wrestling/action-wrestling-produce-dean-sunday-school-results-9-13/"
 tags:
   - INDIE
-  - ACTION x PRODUCE DEAN~!!! Sunday School
-  - داريان بنغستون
+  - "ACTION x PRODUCE DEAN~!!! Sunday School"
+  - داريان بينغستون
   - توني ديبين
   - سليد
   - هوميسيد
@@ -46,11 +47,11 @@ layout: post-layout.njk
 
 🏆 **الفائز:** آدم بريست
 
-**المواجهة السادسة (نزال على بطولة الاتحاد): داريان بنغستون ضد سكاييدي**
+**المواجهة السادسة (نزال على بطولة الاتحاد): داريان بينغستون ضد سكاييدي**
 
 **تفاصيل النزال:** نزال قوي دافع فيه البطل عن لقبه بضراوة ونجح في إحباط كل محاولات المنافس.
 
-🏆 **الفائز:** داريان بنغستون (واحتفظ باللقب)
+🏆 **الفائز:** داريان بينغستون (واحتفظ باللقب)
 
 **المواجهة السابعة (فردي): كارل مالينكو ضد لو كي**
 

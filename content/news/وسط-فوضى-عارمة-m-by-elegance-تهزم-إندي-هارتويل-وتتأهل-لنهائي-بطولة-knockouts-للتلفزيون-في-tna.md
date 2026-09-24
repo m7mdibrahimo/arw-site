@@ -15,7 +15,7 @@ tags:
 image: /content/images/fgc1o7czjyj1emsz.jpg
 layout: post-layout.njk
 ---
-شهدت عرض TNA Wrestling Thursday Night iMPACT (بتاريخ 13 أغسطس) حسم أولى بطاقات التأهل للمباراة النهائية في بطولة تتويج بطلة التلفزيون لفئة النوك أوتس (TNA Knockouts Television Championship)، بعد فوز مثير ومباغت للنجمة M by Elegance على حساب إندي هارتويل (إندي هارتويل).
+شهدت عرض TNA Wrestling Thursday Night iMPACT (بتاريخ 13 أغسطس) حسم أولى بطاقات التأهل للمباراة النهائية في بطولة تتويج بطلة التلفزيون لفئة النوك أوتس (TNA Knockouts Television Championship)، بعد فوز مثير ومباغت للنجمة M by Elegance على حساب إندي هارتويل.
 
 ### فوضى جانبية تقلب موازين النزال
 

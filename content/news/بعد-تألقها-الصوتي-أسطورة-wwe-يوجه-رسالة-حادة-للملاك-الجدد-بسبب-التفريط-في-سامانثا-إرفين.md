@@ -4,10 +4,9 @@ title: "تقرير نسب مشاهدات وتقييمات AEW Dynamite (عرض 1
 date: 2026-08-16T03:06:00.000+03:00
 tags:
   - نسب المشاهدات
-  - ديناميت
+  - AEW Dynamite
   - تقييمات المشاهدة
   - AEW
-  - AEW Dynamite
   - TBS
   - Dynamite Ratings
   - TV Ratings

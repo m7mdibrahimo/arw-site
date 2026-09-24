@@ -4,15 +4,14 @@ title: "نهاية السلسلة الخالية من الهزائم!.. ريتش
 date: 2026-08-21T06:06:00.000+03:00
 tags:
   - ريتش سوان
-  - إمباكت
+  - TNA iMPACT
   - أخبار المصارعة
   - Rich Swann
-  - TNA iMPACT
   - TNA Wrestling
 image: /content/images/jhozdj9wvu9agtpf.jpg
 layout: post-layout.njk
 ---
-شهد العرض الأخير من TNA Thursday Night iMPACT مفاجأة مدوية بعد أن نجح النجم الطائر ريتش سوان (ريتش سوان) في إنهاء السلسلة الخالية من الهزائم للنجم الصاعد مستر إليجانس (Mr. Elegance - Andreas John Ziegler) في منافسات الفردي.
+شهد العرض الأخير من TNA Thursday Night iMPACT مفاجأة مدوية بعد أن نجح النجم الطائر ريتش سوان في إنهاء السلسلة الخالية من الهزائم للنجم الصاعد مستر إليجانس (Mr. Elegance - Andreas John Ziegler) في منافسات الفردي.
 
 سقوط السلسلة بعد 7 انتصارات متتالية
 

@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "جاك بيري يواجه كاتسوياري شيباتا في نزال ثماني المقاتلين ضمن عرض AEW All Out Tailgate Brawl"
+title: "جاك بيري يواجه كاتسويوري شيباتا في نزال ثماني المقاتلين ضمن عرض AEW All Out Tailgate Brawl"
+permalink: "/news/جاك-بيري-يواجه-كاتسوياري-شيباتا-في-نزال-ثماني-المقاتلين-ضمن-عرض-aew-all-out-tailgate-brawl/index.html"
 date: 2026-09-20T04:02:04.000+03:00
 source_id: 329399
 source_url: "https://www.fightful.com/wrestling/bang-bang-gang-challenge-death-riders-and-the-dogs-in-10-man-tailgate-brawl-at-aew-tailgate-brawl/"
@@ -10,13 +11,13 @@ tags:
   - AEW All Out
   - AEW Tailgate Brawl
   - جاك بيري
-  - كاتسوياري شيباتا
+  - كاتسويوري شيباتا
   - بانغ بانغ غانغ
   - ديث رايدرز
 image: /content/images/aew-tailgate-brawl-jack-perry-shibata.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد AEW رسميا عن نزال جاك بيري ضد كاتسوياري شيباتا في إطار نزال ثماني المقاتلين من نوع Tailgate Brawl، وذلك ضمن فعاليات عرض AEW All Out Tailgate Brawl المقرر إقامته قبيل عرض All Out الكبير مباشرة.
+أعلن اتحاد AEW رسميا عن نزال جاك بيري ضد كاتسويوري شيباتا في إطار نزال ثماني المقاتلين من نوع Tailgate Brawl، وذلك ضمن فعاليات عرض AEW All Out Tailgate Brawl المقرر إقامته قبيل عرض All Out الكبير مباشرة.
 
 وفي السياق ذاته، أطلق فريق بانغ بانغ غانغ المكون من جاي وايت وجوس روبنسون وأوستن غان وكولتن غان واي سي أوستن تحديا رسميا ضد فريق ديث رايدرز وفريق ذا دوغز لخوض نزال عشاري في الحدث نفسه، ليضم الليلة مجموعة من أضخم المواجهات في تاريخ هذا الفورمات الفريد.
 

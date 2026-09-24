@@ -23,11 +23,11 @@ layout: post-layout.njk
 * بطولة CMLL World Historic للوزن الخفيف الثقيل:
 
  * البطل: أفيرنو (Averno)
- * المرشحون للمنافسة: باربارو كافيرناريو (Barbaro Cavernario) | سوبرانو جونيور (Soberano Jr.) | أنخيل دي أورو (Angel de Oro)
+ * المرشحون للمنافسة: باربارو كافيرناريو (Barbaro Cavernario) | سوبيرانو جونيور (Soberano Jr.) | أنخيل دي أورو (Angel de Oro)
 * بطولة CMLL Mexican National للوزن المتوسط:
 
  * البطل: غيريرو مايا جونيور (Guerrero Maya Jr.)
- * المرشحون للمنافسة: بريانتي جونيور (Brillante Jr.) | ري بيغاسوس (Rey Pegasus) | الأسطورة بلو بانثر (بلو بانثر)
+ * المرشحون للمنافسة: بريانتي جونيور (Brillante Jr.) | ري بيغاسوس (Rey Pegasus) | الأسطورة بلو بانثر
 * بطولة CMLL Mexican National للوزن الخفيف الثقيل:
 
  * البطل: إسفينخي (Esfinge)
