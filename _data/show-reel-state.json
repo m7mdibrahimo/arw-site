@@ -2210,15 +2210,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض كوليجن 23.09.2026 مترجم",
-    "lastAttempt": 1790252117317,
-    "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790252891810,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
