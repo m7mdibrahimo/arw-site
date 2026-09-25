@@ -2107,6 +2107,18 @@ function formatResultsMarkdown(text: string): string {
 
 
 // Bulletproof detection of Show Results vs Single News
+/** An English name tag («Hernandez») becomes its approved Arabic form when the
+ *  glossary has one; show/federation names map to themselves and stay English. */
+export function tagInArabic(tag: string): string {
+  const t = tag.trim();
+  if (!/^[A-Za-z0-9 .'&-]+$/.test(t)) return t;
+  // Federation / show abbreviations always stay English (WWE, NJPW, UFC, AEW...).
+  if (/^[A-Z0-9&.-]{2,6}$/.test(t) || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|UFC|GCW|NWA)\b/.test(t)) return t;
+  const exact = WRESTLER_NAMES_MAP[t];
+  const ci = exact ?? Object.entries(WRESTLER_NAMES_MAP).find(([k]) => k.toLowerCase() === t.toLowerCase())?.[1];
+  return ci && /[\u0600-\u06FF]/.test(ci) ? ci : t;
+}
+
 /** A results page that does not list its results yet (a live-coverage stub), or
  *  that is still being filled in during the show. A short show with a couple of
  *  matches is complete once the page has stopped changing (2026-09-25: WWE Main
