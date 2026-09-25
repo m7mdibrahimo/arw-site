@@ -947,7 +947,7 @@
       </div>
     </div>
 
-    {% include "ads/top.njk" %}
+    {% if ads.enabled %}{% include "ads/top.njk" %}{% endif %}
     {% if not isNews %}
     <h2>{{ headline or title }}</h2>
     {% endif %}
@@ -1015,7 +1015,7 @@
       </div>
     {% endif %}
 
-    {% if not isNews %}{% include "ads/mid.njk" %}{% endif %}
+    {% if not isNews and ads.enabled %}{% include "ads/mid.njk" %}{% endif %}
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
     {% if dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
     <div class="download-links reveal">
@@ -1289,11 +1289,11 @@
 
     {% set midAd %}{% include "ads/mid.njk" %}{% endset %}
     <div class="post-body">
-      {{ content | autoLinkWrestlingStars | autoEmbedSocials | injectMidAd(midAd if isNews else "") | safe }}
+      {{ content | autoLinkWrestlingStars | autoEmbedSocials | injectMidAd(midAd if (isNews and ads.enabled) else "") | safe }}
 
     </div>
 
-    {% include "ads/native.njk" %}
+    {% if ads.enabled %}{% include "ads/native.njk" %}{% endif %}
 
     {% if source_url %}
     <p class="post-source reveal">المصدر: <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer nofollow">{{ source_url | sourceName }}</a></p>
