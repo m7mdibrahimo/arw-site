@@ -2107,23 +2107,17 @@ function formatResultsMarkdown(text: string): string {
 
 
 // Bulletproof detection of Show Results vs Single News
-/** A results page that does not list any results yet (a live-coverage stub). */
-/** An English name tag («Hernandez») becomes its approved Arabic form when the
- *  glossary has one; show/federation names map to themselves and stay English. */
-export function tagInArabic(tag: string): string {
-  const t = tag.trim();
-  if (!/^[A-Za-z0-9 .'&-]+$/.test(t)) return t;
-  // Federation / show abbreviations always stay English (WWE, NJPW, UFC, AEW...).
-  if (/^[A-Z0-9&.-]{2,6}$/.test(t) || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|UFC|GCW|NWA)\b/.test(t)) return t;
-  const exact = WRESTLER_NAMES_MAP[t];
-  const ci = exact ?? Object.entries(WRESTLER_NAMES_MAP).find(([k]) => k.toLowerCase() === t.toLowerCase())?.[1];
-  return ci && /[\u0600-\u06FF]/.test(ci) ? ci : t;
-}
-
-export function isEmptyResultsStub(plainText: string): boolean {
+/** A results page that does not list its results yet (a live-coverage stub), or
+ *  that is still being filled in during the show. A short show with a couple of
+ *  matches is complete once the page has stopped changing (2026-09-25: WWE Main
+ *  Event, 2 matches / 370 chars, was held back forever by a length threshold). */
+export function isEmptyResultsStub(plainText: string, modifiedGmt?: string): boolean {
   // "def." ends in a period, so it can't sit inside \b…\b (that never matched).
   const resultLines = (plainText.match(/\bdef\.|\bvs\.?(?=\s)|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw)\b/gi) || []).length;
-  return plainText.length < 500 || resultLines < 2;
+  if (resultLines === 0) return true;
+  const modified = modifiedGmt ? new Date(modifiedGmt.endsWith("Z") ? modifiedGmt : modifiedGmt + "Z").getTime() : NaN;
+  const stillUpdating = Number.isFinite(modified) && Date.now() - modified < 45 * 60_000;
+  return resultLines < 3 && stillUpdating;
 }
 
 let lastPostRetryable = false;
@@ -3153,7 +3147,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // and automatic updates are refused, so the real results would never replace
   // it. Wait until the source actually lists results; the post stays
   // unprocessed and is retried on the next run.
-  if (isShowResultsArticle(rawTitle, plainText) && isEmptyResultsStub(plainText)) {
+  if (isShowResultsArticle(rawTitle, plainText) && isEmptyResultsStub(plainText, post.modified_gmt)) {
     console.log(`[Watcher] ⏳ Results not posted yet for #${postId} ("${rawTitle}") — will retry next run.`);
     lastPostRetryable = true;
     return false;
