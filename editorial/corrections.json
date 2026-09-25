@@ -3139,6 +3139,11 @@
    "wrong": "غان ك",
    "right": "ذا غانز",
    "note": "اسم فريق (The Gunns)"
+  },
+  {
+   "wrong": "NorthernRising",
+   "right": "Northern Rising",
+   "note": "اسم العرض بمسافة"
   }
  ]
 }
