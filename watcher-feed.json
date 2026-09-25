@@ -1,5 +1,15 @@
 [
   {
+    "id": 330297,
+    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-9-24/",
+    "date": "2026-09-24T23:30:00",
+    "date_gmt": "2026-09-25T03:30:00",
+    "title": {
+      "rendered": "WWE Main Event Results (9/24)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/06/27235010/wwe-main-event-logo_7.jpg"
+  },
+  {
     "id": 330343,
     "link": "https://www.fightful.com/wrestling/hernandez-in-attendance-at-9-24-tna-impact/",
     "date": "2026-09-24T23:20:43",
@@ -288,15 +298,5 @@
       "rendered": "Seth Rollins&#8217; WWE TV Return Is Lined Up"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/27182651/228_SS_08022025CN_21048.jpg"
-  },
-  {
-    "id": 330243,
-    "link": "https://www.fightful.com/wrestling/tony-khan-addresses-mara-sades-status-with-aew-shes-somebody-that-is-of-great-interest/",
-    "date": "2026-09-24T15:17:00",
-    "date_gmt": "2026-09-24T19:17:00",
-    "title": {
-      "rendered": "Tony Khan Addresses Mara Sadè&#8217;s Status With AEW: “She’s Somebody That Is Of Great Interest&#8221;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/29135058/617148733_1333805918780896_2961387364817281702_n-e1785347475928.jpg"
   }
 ]
