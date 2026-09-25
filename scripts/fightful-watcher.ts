@@ -2143,8 +2143,12 @@ export function tagInArabic(tag: string): string {
  *  Event, 2 matches / 370 chars, was held back forever by a length threshold). */
 export function isEmptyResultsStub(plainText: string, modifiedGmt?: string): boolean {
   // "def." ends in a period, so it can't sit inside \b…\b (that never matched).
-  const resultLines = (plainText.match(/\bdef\.|\bvs\.?(?=\s)|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw)\b/gi) || []).length;
+  // «vs.» is a match CARD, not a result (a Ringside live page listing «Trick Williams
+  // vs. Baron Corbin» before the show counted as results — 2026-09-26, INCIDENTS #53).
+  const resultLines = (plainText.match(/\bdef\.|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw)\b/gi) || []).length;
   if (resultLines === 0) return true;
+  // A live-coverage page that still announces results "to come".
+  if (resultLines < 3 && /stay tuned|refresh (?:this page|for the latest)|live,? match-by-match|results? (?:will be|are) (?:posted|updated)|check back/i.test(plainText)) return true;
   const modified = modifiedGmt ? new Date(modifiedGmt.endsWith("Z") ? modifiedGmt : modifiedGmt + "Z").getTime() : NaN;
   const stillUpdating = Number.isFinite(modified) && Date.now() - modified < 45 * 60_000;
   return resultLines < 3 && stillUpdating;
@@ -3428,6 +3432,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
+  // A results report must report results (INCIDENTS #53: a SmackDown «results» article
+  // was a match card with every winner line removed).
+  if (isShowResultsArticle(rawTitle, plainText) && !/الفائز|الفائزة|الفائزون|الفائزتان|الفائزان/.test(draft.body)) {
+    blocking.push({ code: "results_without_winners", severity: "error", field: "body", message: "تقرير نتائج بلا أي نتيجة", excerpt: "" });
+    lastPostRetryable = true;
+  }
   // A body far longer than its source means Gemini padded a teaser with filler
   // (what happened with Wrestling Inc's RSS teasers) — never publish that.
   const proseLength = draft.body.replace(/https?:\/\/\S+/g, "").replace(/\s+/g, " ").trim().length;

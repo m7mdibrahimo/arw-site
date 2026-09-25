@@ -10,7 +10,7 @@ import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle } from '../scripts/news-qa';
-import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
+import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -851,6 +851,15 @@ test('a results article with invented winners is caught, real finishes are not',
   assert.ok(vague.some(i => i.code === 'vague_result'));
   const real = checkArticle('نتائج عرض WWE RAW', '🏆 **الفائز:** انتهى النزال بالاستبعاد بعد تدخل خارجي\n🏆 **الفائز:** كينوه', []);
   assert.ok(!real.some(i => i.code === 'vague_result'));
+});
+
+test('a pre-show match card is not a results report', () => {
+  // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
+  // and was published as results with «الفائز: قيد الانتظار».
+  assert.ok(isEmptyResultsStub('Ringside News will provide live, match-by-match updates. Stay tuned. Trick Williams (c) vs. Baron Corbin. CM Punk vs. Finn Balor. Charlotte Flair vs. Giulia.'));
+  assert.ok(!isEmptyResultsStub('Trick Williams def. Baron Corbin to retain. CM Punk defeated Finn Balor. Giulia beats Charlotte Flair.'));
+  const pending = checkArticle('نتائج عرض WWE SmackDown', '🏆 **الفائز:** قيد الانتظار', []);
+  assert.ok(pending.some(i => i.code === 'vague_result'));
 });
 
 
