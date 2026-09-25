@@ -2266,13 +2266,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ار او اتش 24.09.2026 مترجم",
-    "lastAttempt": 1790356880943,
+    "lastAttempt": 1790360461582,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
