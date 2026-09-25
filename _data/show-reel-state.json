@@ -2245,5 +2245,21 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20260925093300-tna-impact-24-09-2026": {
+    "publishedAt": 1790329884795,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه امباكت 24.09.2026 مترجم",
+    "lastAttempt": 1790329927473,
+    "errors": {
+      "instagram_reel": "User is performing too many actions",
+      "instagram_story": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار."
+    },
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
