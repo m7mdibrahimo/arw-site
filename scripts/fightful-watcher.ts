@@ -2283,7 +2283,13 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
 export function isRosterReferencePage(rawTitle: string): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
-  return /^(?:full|complete|updated)\s+[a-z0-9\s]{0,40}\broster$/i.test(title);
+  // Evergreen reference pages (rosters, the free-agent list, current champions)
+  // are 100+ names that can't fit the news format — rewriting them produced an
+  // article promising «a list» with no names in it (2026-09-25, INCIDENTS #49).
+  return /^(?:full|complete|updated)\s+[a-z0-9\s]{0,40}\broster$/i.test(title)
+    || /^(?:pro\s+wrestling\s+|wrestling\s+|wwe\s+|aew\s+)?free\s+agents?(?:\s+list|\s+tracker)?$/i.test(title)
+    || /^(?:all\s+)?(?:current\s+)?(?:pro\s+)?wrestling\s+champions(?:\s+list)?$/i.test(title)
+    || /^(?:list\s+of\s+)?all\s+current\s+champions$/i.test(title);
 }
 
 // Programmatic safeguard: Ensures that show results titles NEVER spoil the match winners

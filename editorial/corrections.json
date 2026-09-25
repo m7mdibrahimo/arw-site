@@ -3144,6 +3144,26 @@
    "wrong": "NorthernRising",
    "right": "Northern Rising",
    "note": "اسم العرض بمسافة"
+  },
+  {
+   "wrong": "جاي White",
+   "right": "جاي وايت",
+   "note": "اسم مصارع (Jay White)"
+  },
+  {
+   "wrong": "أوستن جان",
+   "right": "أوستن غان",
+   "note": "اسم مصارع (Austin Gunn)"
+  },
+  {
+   "wrong": "كولتن جان",
+   "right": "كولتن غان",
+   "note": "اسم مصارع (Colten Gunn)"
+  },
+  {
+   "wrong": "غايب كيد",
+   "right": "جيب كيد",
+   "note": "اسم مصارع (Gabe Kidd) — الصيغة المعتمدة"
   }
  ]
 }
