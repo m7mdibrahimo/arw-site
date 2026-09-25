@@ -3357,7 +3357,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Second-pass cross-source duplicate guard, now that translation has produced
   // real Arabic tags and body text (see findLikelyDuplicateStoryByTagsAndBody
   // above for why this is needed in addition to the pre-translation check).
-  if (guardDuplicates) {
+  // Results reports and list/review pieces ("3 Things We Hated & Loved") name
+  // everyone from the episode, so shared names + overlapping text say nothing:
+  // a TNA review was recorded as a duplicate of a single Nic Nemeth news item
+  // (INCIDENTS #45). The Gemini same-story check below still judges them.
+  if (guardDuplicates && !isShowResultsArticle(rawTitle, plainText) && !isListOrReviewArticle(rawTitle)) {
     const postDupe = findLikelyDuplicateStoryByTagsAndBody(rewritten.tags, finalBody);
     if (postDupe.isDuplicate) {
       console.log(`[Watcher] 🔁 Likely duplicate detected after translation (shared names + overlapping body with ${postDupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
