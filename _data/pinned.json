@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/tna-impact-24-09-2026/",
+    "title": "عرض تي ان ايه امباكت 24.09.2026 مترجم",
+    "subtitle": "TNA iMPACT 24.09.2026",
+    "image": "/img/qKHB8vmPEN-800.jpeg",
+    "federation": "TNA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-dynamite-23-09-2026/",
     "title": "عرض ديناميت 23.09.2026 مترجم",
     "subtitle": "AEW Dynamite 23.09.2026",
@@ -64,17 +75,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/tna-impact-17-09-2026",
-    "title": "عرض تي ان ايه امباكت 17.09.2026 مترجم",
-    "subtitle": "TNA iMPACT 17.09.2026",
-    "image": "/img/vIILhJsb5K-800.jpeg",
-    "federation": "TNA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/roh-17-09-2026",
