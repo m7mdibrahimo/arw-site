@@ -2946,6 +2946,24 @@
    "wrong": "تووجه",
    "right": "توجه",
    "note": "خطأ إملائي"
+  },
+  {
+   "wrong": "كول\\s+يور\\s+شوت(?:\\s+(?:جونتلت|غونتلت|جاونتلت))?",
+   "right": "Call Your Shot Gauntlet",
+   "regex": true,
+   "note": "أسماء النزالات والبطولات تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "سوبر\\s+جونيور\\s+تاج\\s+ليج",
+   "right": "Super Junior Tag League",
+   "regex": true,
+   "note": "أسماء البطولات تبقى بالإنجليزي"
+  },
+  {
+   "wrong": "فيست\\s+أور\\s+فايرد",
+   "right": "Feast or Fired",
+   "regex": true,
+   "note": "أسماء النزالات تبقى بالإنجليزي"
   }
  ]
 }
