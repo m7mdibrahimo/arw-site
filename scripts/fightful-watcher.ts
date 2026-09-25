@@ -2109,6 +2109,20 @@ function formatResultsMarkdown(text: string): string {
 // Bulletproof detection of Show Results vs Single News
 /** An English name tag («Hernandez») becomes its approved Arabic form when the
  *  glossary has one; show/federation names map to themselves and stay English. */
+/** A wrestler/team name tag that the article never mentions («فريق ذا بلودلاين»
+ *  on a SmackDown preview that doesn't name them) is noise: drop it. Only tags
+ *  that are approved glossary NAMES are judged; topic tags stay. */
+let glossaryNameValues: Set<string> | null = null;
+export function isUnrelatedNameTag(tag: string, title: string, body: string): boolean {
+  if (!glossaryNameValues) {
+    glossaryNameValues = new Set(Object.values(WRESTLER_NAMES_MAP).filter(v => /[\u0600-\u06FF]/.test(v) && !/^بطولة|^جائزة|^حقيبة/.test(v)));
+  }
+  const bare = tag.replace(/^فريق\s+/, "").trim();
+  if (!glossaryNameValues.has(tag) && !glossaryNameValues.has(bare)) return false;
+  const text = `${title}\n${body}`;
+  return !text.includes(bare);
+}
+
 export function tagInArabic(tag: string): string {
   const t = tag.trim();
   if (!/^[A-Za-z0-9 .'&-]+$/.test(t)) return t;
@@ -3384,7 +3398,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
-  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title)) };
+  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));

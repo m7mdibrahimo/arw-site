@@ -3089,6 +3089,17 @@
    "right": "NJPW",
    "regex": true,
    "note": "أسماء الاتحادات بالإنجليزي"
+  },
+  {
+   "wrong": "يو\\s+إس\\s+إيه\\s+نيت?وورك|يو\\s+إس\\s+إيه\\s+نيتورك",
+   "right": "USA Network",
+   "regex": true,
+   "note": "أسماء القنوات بالإنجليزي"
+  },
+  {
+   "wrong": "غاينبرج فيلدهاوس",
+   "right": "غينبريدج فيلدهاوس",
+   "note": "Gainbridge Fieldhouse"
   }
  ]
 }
