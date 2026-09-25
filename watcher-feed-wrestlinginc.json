@@ -1,5 +1,15 @@
 [
   {
+    "id": 4614294952,
+    "link": "https://www.wrestlinginc.com/2268530/wwe-money-in-the-bank-seth-rollins-cm-punk/",
+    "date": "Fri, 25 Sep 2026 14:00:00 +0000",
+    "date_gmt": "2026-09-25T14:00:00.000Z",
+    "title": {
+      "rendered": "Backstage News On Potential WWE Money In The Bank Status Of Seth Rollins, CM Punk"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-potential-wwe-money-in-the-bank-status-of-seth-rollins-cm-punk/l-intro-1790319413.jpg"
+  },
+  {
     "id": 2278706786,
     "link": "https://www.wrestlinginc.com/2268524/wwe-bloodline-internally-listed-heels/",
     "date": "Fri, 25 Sep 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE's Matt Cardona Offers Update On Injury Recovery"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-matt-cardona-offers-update-on-injury-recovery/l-intro-1790248369.jpg"
-  },
-  {
-    "id": 4740916331,
-    "link": "https://www.wrestlinginc.com/2267378/wwe-aew-mvp-zilla-fatu-big-things-ahead/",
-    "date": "Thu, 24 Sep 2026 15:00:00 +0000",
-    "date_gmt": "2026-09-24T15:00:00.000Z",
-    "title": {
-      "rendered": "AEW's MVP Sees Big Things Ahead For Zilla Fatu In WWE"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-mvp-sees-big-things-ahead-for-zilla-fatu-in-wwe/l-intro-1790243442.jpg"
   }
 ]
