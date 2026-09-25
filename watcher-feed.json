@@ -1,5 +1,25 @@
 [
   {
+    "id": 330466,
+    "link": "https://www.fightful.com/wrestling/jose-jacobs-trujillo-passes-away/",
+    "date": "2026-09-25T17:45:20",
+    "date_gmt": "2026-09-25T21:45:20",
+    "title": {
+      "rendered": "Jose ‘Jacobs’ Trujillo Passes Away"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25174032/HTEyM5xXkAAZxMp.jpg"
+  },
+  {
+    "id": 330463,
+    "link": "https://www.fightful.com/wrestling/ena-edris-enofe-issues-apology-after-slapping-opponent-with-a-burger-at-misfits-boxing-press-conference/",
+    "date": "2026-09-25T17:38:59",
+    "date_gmt": "2026-09-25T21:38:59",
+    "title": {
+      "rendered": "ENA (Edris Enofe) Issues Apology After Slapping Opponent With A Burger At Misfits Boxing Press Conference"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25173029/Screenshot-493-e1790371852795.png"
+  },
+  {
     "id": 330454,
     "link": "https://www.fightful.com/wrestling/hangman-adam-page-to-donate-proceeds-from-pwt-live-auction-to-clean-air-task-force/",
     "date": "2026-09-25T16:18:43",
@@ -278,25 +298,5 @@
       "rendered": "Wheeler Yuta: Teaming With Daniel Garcia Is So Much Fun, I Think We Gel Well Together"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/19151322/Screenshot-84-e1763583215486.png"
-  },
-  {
-    "id": 330370,
-    "link": "https://www.fightful.com/wrestling/mlw-fusion-results-9-24/",
-    "date": "2026-09-25T09:02:07",
-    "date_gmt": "2026-09-25T13:02:07",
-    "title": {
-      "rendered": "MLW Fusion Results (9/24)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17105940/mlw-fusion-e1789657188887.webp"
-  },
-  {
-    "id": 330276,
-    "link": "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-9-25/",
-    "date": "2026-09-25T08:00:00",
-    "date_gmt": "2026-09-25T12:00:00",
-    "title": {
-      "rendered": "WWE SmackDown Preview, Start Time, How To Watch, Location (9/25)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24194828/20260923_SD_Match_TrickCorbin_Cage_16x9_Friday.jpg"
   }
 ]
