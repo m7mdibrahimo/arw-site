@@ -157,11 +157,16 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
  * (gender agreement, meaning, which spelling is right) is left to the AI copy
  * editor and editorial/corrections.json.
  */
+const AR_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+
 export function autoFix(text: string): string {
   if (!text) return text;
   const urls: string[] = [];
   let out = text.replace(/https?:\/\/\S+|<[^>]+>/g, m => `\u0000${urls.push(m) - 1}\u0000`);
   out = out
+    // "TNA iMPACT (9/24/2026)": an American M/D/YYYY date copied from the source
+    // title used to get the whole article blocked (mangled_date) — convert it.
+    .replace(/\b(1[0-2]|0?[1-9])\/(3[01]|[12]\d|0?[1-9])\/(20\d\d)\b/g, (_m, mo, d, y) => `${Number(d)} ${AR_MONTHS[Number(mo) - 1]} ${y}`)
     // "أارون" / "أاماساكي": hamza-alef + alef never occurs in Arabic — it is a long «آ»
     .replace(/[أإ]ا/g, "آ")
     .replace(/ک/g, "ك").replace(/ی/g, "ي").replace(/گ/g, "غ").replace(/پ/g, "ب").replace(/ژ/g, "ج").replace(/ڤ/g, "ف").replace(/چ/g, "تش")
