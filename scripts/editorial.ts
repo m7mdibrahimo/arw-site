@@ -131,7 +131,8 @@ function levenshtein(a: string, b: string): number {
 function isMinimalFix(find: string, replace: string): boolean {
   // Up to 2 Arabic words, or up to 3 words of a Latin name/show (seen: «WWE SmackDown» → «رومان رينز»).
   const words = find.split(/\s+/).length;
-  if (/^[\u0600-\u06FF\s]+$/.test(find) ? words > 2 : words > 3) return true;
+  // Up to 4 Arabic words (seen: «ورسائل المجتمع الرياضي» → «ورشات المجتمع الرياضي أو الأوساط الرياضية»).
+  if (/^[\u0600-\u06FF\s]+$/.test(find) ? words > 4 : words > 3) return true;
   if (replace.includes(find)) return true;
   if (applyCorrections(find) !== find) return true;
   const similarity = 1 - levenshtein(find, replace) / Math.max(find.length, replace.length);
