@@ -2108,7 +2108,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       const catchUp = (platform: "facebook" | "instagram", done: boolean) => {
         const pauseEnd = state.cooldowns?.[platform] || 0;
         return !done && pauseEnd > freshFrom && pauseEnd <= Date.now()
-          && Date.now() - pauseEnd < WINDOW_MS && pauseEnd - freshFrom < 12 * 60 * 60 * 1000;
+          // 6h after the pause: with 10 minutes between Instagram posts (#47)
+          // a long pause's backlog needs more than the normal 3h to drain.
+          && Date.now() - pauseEnd < 2 * WINDOW_MS && pauseEnd - freshFrom < 12 * 60 * 60 * 1000;
       };
       // Telegram is never paused, so it has no catch-up.
       const fbCatch = catchUp("facebook", fbDone), igCatch = catchUp("instagram", igDone);
