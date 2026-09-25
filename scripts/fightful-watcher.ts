@@ -2113,6 +2113,8 @@ function formatResultsMarkdown(text: string): string {
 export function tagInArabic(tag: string): string {
   const t = tag.trim();
   if (!/^[A-Za-z0-9 .'&-]+$/.test(t)) return t;
+  // Federation / show abbreviations always stay English (WWE, NJPW, UFC, AEW...).
+  if (/^[A-Z0-9&.-]{2,6}$/.test(t) || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|UFC|GCW|NWA)\b/.test(t)) return t;
   const exact = WRESTLER_NAMES_MAP[t];
   const ci = exact ?? Object.entries(WRESTLER_NAMES_MAP).find(([k]) => k.toLowerCase() === t.toLowerCase())?.[1];
   return ci && /[\u0600-\u06FF]/.test(ci) ? ci : t;
