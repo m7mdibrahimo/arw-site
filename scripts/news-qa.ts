@@ -167,6 +167,12 @@ export function autoFix(text: string): string {
     // "TNA iMPACT (9/24/2026)": an American M/D/YYYY date copied from the source
     // title used to get the whole article blocked (mangled_date) — convert it.
     .replace(/\b(1[0-2]|0?[1-9])\/(3[01]|[12]\d|0?[1-9])\/(20\d\d)\b/g, (_m, mo, d, y) => `${Number(d)} ${AR_MONTHS[Number(mo) - 1]} ${y}`)
+    // Ringside News ends articles with "Do you think…? Let us know in the comments"
+    // — Gemini translated it as a closing paragraph («شاركنا رأيك في التعليقات»).
+    // It's the source's sign-off, not news: drop that paragraph.
+    .replace(/(^|\n)[^\n]*(?:شاركنا|شاركونا|أخبرنا|أخبرونا|اتركوا|اترك)[^\n]*(?:التعليقات|رأيك|رأيكم)[^\n]*(?=\n|$)/g, "")
+    // "What's Your Story؟": an Arabic question mark inside an English name
+    .replace(/([A-Za-z])؟/g, "$1?")
     // "أارون" / "أاماساكي": hamza-alef + alef never occurs in Arabic — it is a long «آ»
     .replace(/[أإ]ا/g, "آ")
     .replace(/ک/g, "ك").replace(/ی/g, "ي").replace(/گ/g, "غ").replace(/پ/g, "ب").replace(/ژ/g, "ج").replace(/ڤ/g, "ف").replace(/چ/g, "تش")
