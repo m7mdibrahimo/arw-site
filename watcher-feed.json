@@ -1,5 +1,15 @@
 [
   {
+    "id": 330383,
+    "link": "https://www.fightful.com/wrestling/six-woman-tag-added-to-9-25-wwe-smackdown/",
+    "date": "2026-09-25T11:47:59",
+    "date_gmt": "2026-09-25T15:47:59",
+    "title": {
+      "rendered": "Six-Woman Tag Added To 9/25 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25114739/Screenshot-2026-09-25-at-11.31.03-AM.png"
+  },
+  {
     "id": 330379,
     "link": "https://www.fightful.com/wrestling/steve-maclin-explains-why-he-made-things-personal-with-adam-copeland-i-want-the-ultimate-opportunist/",
     "date": "2026-09-25T11:30:49",
@@ -8,6 +18,16 @@
       "rendered": "Steve Maclin Explains Why He Made Things Personal With Adam Copeland, &#8216;I Want The Ultimate Opportunist&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/07160721/Steve-Maclin-Impact-Wrestling-645x370-1.webp"
+  },
+  {
+    "id": 66498,
+    "link": "https://www.fightful.com/wrestling/tna-wrestling-roster/",
+    "date": "2026-09-25T10:45:00",
+    "date_gmt": "2026-09-25T14:45:00",
+    "title": {
+      "rendered": "Full TNA Wrestling Roster"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/11124348/Resources3.png"
   },
   {
     "id": 330377,
@@ -278,25 +298,5 @@
       "rendered": "Masha Slamovich Debuts For MLW"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24203533/Screenshot-2026-09-24-at-8.30.32-PM.png"
-  },
-  {
-    "id": 330282,
-    "link": "https://www.fightful.com/wrestling/nattie-reveals-she-underwent-dental-surgery-says-shes-cleared-to-wrestle/",
-    "date": "2026-09-24T20:23:35",
-    "date_gmt": "2026-09-25T00:23:35",
-    "title": {
-      "rendered": "Nattie Reveals She Underwent Dental Surgery, Says She&#8217;s Cleared To Wrestle"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24201436/035_AAA_N1_09112026MA_19551.jpg"
-  },
-  {
-    "id": 330279,
-    "link": "https://www.fightful.com/wrestling/tna-impact-results-9-24-the-hardys-appear-three-way-tna-international-title-match/",
-    "date": "2026-09-24T20:04:18",
-    "date_gmt": "2026-09-25T00:04:18",
-    "title": {
-      "rendered": "TNA iMPACT! Results (9/24): The Hardys Appear, Three-Way TNA International Title Match"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23173454/a1dd61e87c4690d30eb12db12e6e9bd2-1.jpg"
   }
 ]
