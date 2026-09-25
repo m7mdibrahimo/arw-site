@@ -1,5 +1,25 @@
 [
   {
+    "id": 802247488,
+    "link": "https://www.ringsidenews.com/ftr-pushed-bring-new-level-aew/",
+    "date": "Fri, 25 Sep 2026 18:44:20 +0000",
+    "date_gmt": "2026-09-25T18:44:20.000Z",
+    "title": {
+      "rendered": "FTR Pushed to Bring New Level Into AEW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/ftr-pushed-to-bring-new-level-into-aew-07.jpg?x75959"
+  },
+  {
+    "id": 802247493,
+    "link": "https://www.ringsidenews.com/kairi-sane-still-not-signed-aew-all-out-appearance-ruled-out/",
+    "date": "Fri, 25 Sep 2026 18:43:45 +0000",
+    "date_gmt": "2026-09-25T18:43:45.000Z",
+    "title": {
+      "rendered": "Kairi Sane Still Not Signed With AEW as All Out Appearance Ruled Out"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2023/11/kairi-sane-90404.jpg?x75959"
+  },
+  {
     "id": 802247482,
     "link": "https://www.ringsidenews.com/steven-borden-explains-why-he-decided-pursue-pro-wrestling/",
     "date": "Fri, 25 Sep 2026 17:50:41 +0000",
@@ -128,25 +148,5 @@
       "rendered": "Matt Hardy Fires Back at Fans Who Say He’s Too Old to Wrestle"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/matt-hardy-fires-back-at-fans-who-say-hes-too-old-to-wrestle-33.jpg?x75959"
-  },
-  {
-    "id": 802247392,
-    "link": "https://www.ringsidenews.com/wbd-executives-allegedly-privately-complained-about-tony-khans-aew-optimism/",
-    "date": "Fri, 25 Sep 2026 14:10:03 +0000",
-    "date_gmt": "2026-09-25T14:10:03.000Z",
-    "title": {
-      "rendered": "WBD Executives Allegedly Privately Complained About Tony Khan’s AEW Optimism"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2024/04/tony-khan-confirms-aews-media-exclusive-negotiation-window-with-wbd-nearing-end-11.jpg?x75959"
-  },
-  {
-    "id": 802247376,
-    "link": "https://www.ringsidenews.com/backstage-update-becky-lynchs-current-internal-wwe-status/",
-    "date": "Fri, 25 Sep 2026 13:56:44 +0000",
-    "date_gmt": "2026-09-25T13:56:44.000Z",
-    "title": {
-      "rendered": "Backstage Update on Becky Lynch’s Current Internal WWE Status"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/backstage-update-on-becky-lynchs-current-internal-wwe-status-00.jpg?x75959"
   }
 ]
