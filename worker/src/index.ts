@@ -2053,7 +2053,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // a small number of the oldest candidates — the exact cost that was
   // blowing the CPU limit before, now capped independently of backlog size.
   const WINDOW_MS = 3 * 60 * 60 * 1000;
-  const candidates: { item: any; ts: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
+  const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
@@ -2100,7 +2100,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       if (!fbCatch && !igCatch) continue;
       tgDone = true; fbDone = fbDone || !fbCatch; igDone = igDone || !igCatch; xDone = true;
     }
-    candidates.push({ item, ts, key, tgDone, fbDone, igDone, xDone });
+    candidates.push({ item, ts, freshFrom, key, tgDone, fbDone, igDone, xDone });
   }
 
   // Oldest-incomplete-first within each group, so a steady stream of newer
@@ -2128,7 +2128,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const toProcess = (preferNotStarted ? [...notStarted, ...catchUpOnly] : [...catchUpOnly, ...notStarted])
     .slice(0, MAX_EXPENSIVE_PER_TICK);
 
-  for (const { item, ts, key, tgDone, fbDone, igDone, xDone } of toProcess) {
+  for (const { item, freshFrom, key, tgDone, fbDone, igDone, xDone } of toProcess) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= MAX_PLATFORM_ACTIONS_PER_TICK) break;
 
     const now = Date.now();
@@ -2211,9 +2211,11 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
       }
     } else {
-      // Telegram already sent — only catch up missing platforms if article is fresh (under 12 hours old).
-      // Never publish old historical articles!
-      const isFresh = ts > 0 && (now - ts) < 12 * 60 * 60 * 1000;
+      // Telegram already sent — only catch up missing platforms if the article
+      // reached the site under 12 hours ago (published_at, not the source date:
+      // articles recovered hours after their source date were never caught up
+      // on Instagram — INCIDENTS #46). Never publish old historical articles!
+      const isFresh = freshFrom > 0 && (now - freshFrom) < 12 * 60 * 60 * 1000;
       if (!isFresh) {
         continue;
       }

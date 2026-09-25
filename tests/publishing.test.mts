@@ -893,3 +893,23 @@ test('sharing only a show name is not a duplicate (WWE Main Event results vs Mai
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+
+test('catch-up on remaining platforms uses when the article reached the site, not its source date', async t => {
+  // INCIDENTS #46: recovered articles (source date 16h old, on the site 1.5h)
+  // got Telegram+Facebook but Instagram catch-up judged them "too old".
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [{ url: '/news/recovered/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(16), published_at: hours(1.5) }];
+  const state: any = { telegram: { httpssitetestnewsrecovered: Date.now() }, facebook: { httpssitetestnewsrecovered: Date.now() }, instagram: {}, x: {}, cooldowns: {} };
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const touched = Object.keys(after.deferrals || {}).concat(Object.keys(after.instagram));
+  assert.ok(touched.some(k => k.endsWith('httpssitetestnewsrecovered')), 'Instagram attempted for the recovered article');
+});
