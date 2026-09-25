@@ -221,11 +221,13 @@ test('automatic watcher bounds attempts and defers failed platforms without star
   // reintroduced CPU-limit failures — see its definition in index.ts and the
   // alternating notStarted/catchUpOnly priority below it), so only the
   // oldest incomplete article ('one') is fully attempted this tick.
+  // Both only miss Instagram, which can't take every article (daily cap, INCIDENTS
+  // #51): the NEWER one goes first, the older one on the next tick.
   assert.equal(Object.keys(first.deferrals).length, 2);
-  assert.ok(first.deferrals['instagram:httpssitetestnewsone']);
+  assert.ok(first.deferrals['instagram:httpssitetestnewstwo']);
   await runWatcherPoll(config);
   const second = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
-  assert.ok(second.deferrals['instagram:httpssitetestnewstwo']);
+  assert.ok(second.deferrals['instagram:httpssitetestnewsone']);
 });
 
 
@@ -973,4 +975,23 @@ test('a waiting show reel reserves the next Instagram slot over news', async t =
   const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   const ig = Object.keys(after.deferrals || {}).filter(k => k.startsWith('instagram:')).concat(Object.keys(after.instagram));
   assert.ok(!ig.some(k => k.endsWith('httpssitetestnewsqueued')), 'news leaves the Instagram slot to the waiting reel');
+});
+
+test('news stops using Instagram once the daily budget (minus the video reserve) is spent', async t => {
+  const database = ledger();
+  const items = [{ url: '/news/capped/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date(Date.now() - 3600_000).toISOString(), published_at: new Date(Date.now() - 3600_000).toISOString() }];
+  const state: any = { telegram: { httpssitetestnewscapped: Date.now() }, facebook: { httpssitetestnewscapped: Date.now() }, instagram: {}, x: {}, cooldowns: {} };
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  const spent = Array.from({ length: 33 }, (_, i) => Date.now() - (i + 1) * 20 * 60_000);
+  const kv = new Map<string, string>([['ig_last_action_ts', String(Date.now() - 30 * 60_000)], ['ig_actions_24h', JSON.stringify(spent)]]);
+  const PUSH_KV = { get: async (k: string) => kv.get(k) ?? null, put: async (k: string, v: string) => { kv.set(k, v); }, delete: async (k: string) => { kv.delete(k); } };
+  await runWatcherPoll({ ...env, PUSH_KV, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const ig = Object.keys(after.deferrals || {}).filter(k => k.startsWith('instagram:')).concat(Object.keys(after.instagram));
+  assert.ok(!ig.some(k => k.endsWith('httpssitetestnewscapped')), 'news leaves the remaining daily budget to show reels');
 });

@@ -1728,6 +1728,21 @@ async function instagramSpacingWait(env: Env): Promise<number> {
 }
 async function markInstagramAction(env: Env): Promise<void> {
   await env.PUSH_KV?.put("ig_last_action_ts", String(Date.now())).catch(() => {});
+  const recent = await instagramActionsLast24h(env);
+  recent.push(Date.now());
+  await env.PUSH_KV?.put("ig_actions_24h", JSON.stringify(recent)).catch(() => {});
+}
+// Instagram caps API publishing at 50-100 posts per rolling 24h (reels and stories
+// included). The site publishes more news than that, so trying to post all of it
+// ended in "too many actions" blocks (INCIDENTS #47, #51). Stay under IG_DAILY_CAP
+// and keep IG_VIDEO_RESERVE of it for show reels/stories.
+const IG_DAILY_CAP = 45;
+const IG_VIDEO_RESERVE = 12;
+async function instagramActionsLast24h(env: Env): Promise<number[]> {
+  try {
+    const list = JSON.parse((await env.PUSH_KV?.get("ig_actions_24h")) || "[]");
+    return Array.isArray(list) ? list.filter((t: number) => Date.now() - t < 24 * 3600_000) : [];
+  } catch { return []; }
 }
 // Reels/stories come from the show-reel monitor (~every 15 min) while news polls
 // every minute, so news took every free Instagram slot and a show's reels waited
@@ -2149,10 +2164,17 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // empty" — at zero extra CPU cost, unlike raising MAX_PER_TICK (tried,
   // reverted: tripled per-tick work and reintroduced the CPU-limit failure
   // this whole split exists to avoid).
-  let igSpacingOk = (await instagramSpacingWait(env)) === 0 && !(await instagramVideoWaiting(env));
+  let igSpacingOk = (await instagramSpacingWait(env)) === 0 && !(await instagramVideoWaiting(env))
+    && (await instagramActionsLast24h(env)).length < IG_DAILY_CAP - IG_VIDEO_RESERVE;
   const MAX_EXPENSIVE_PER_TICK = 40;
   const notStarted = candidates.filter((c) => !c.tgDone).reverse();
-  const catchUpOnly = candidates.filter((c) => c.tgDone).reverse();
+  // Articles still missing Facebook: oldest first (as before). Articles missing only
+  // Instagram: NEWEST first — Instagram can't take every article (daily cap), so a
+  // fresh story beats one from hours ago.
+  const catchUpOnly = [
+    ...candidates.filter((c) => c.tgDone && !c.fbDone).reverse(),
+    ...candidates.filter((c) => c.tgDone && c.fbDone),
+  ];
   const preferNotStarted = new Date().getUTCMinutes() % 2 === 0;
   const toProcess = (preferNotStarted ? [...notStarted, ...catchUpOnly] : [...catchUpOnly, ...notStarted])
     .slice(0, MAX_EXPENSIVE_PER_TICK);
@@ -2941,6 +2963,10 @@ export default {
               continue;
             }
             if (network === "instagram") {
+              if ((await instagramActionsLast24h(env)).length >= IG_DAILY_CAP) {
+                results[platform] = { ok: false, status: "processing", spacing: true, error: "تم بلوغ الحد اليومي لمنشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا." };
+                continue;
+              }
               const wait = await instagramSpacingWait(env);
               if (wait > 0) {
                 // "processing" = not a failure; the show-reel monitor retries in 10 min (not 45).
