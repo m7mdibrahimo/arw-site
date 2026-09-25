@@ -2261,5 +2261,21 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20260925100800-roh-24-09-2026": {
+    "publishedAt": 1790331683805,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ار او اتش 24.09.2026 مترجم",
+    "lastAttempt": 1790331696046,
+    "errors": {
+      "instagram_reel": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار.",
+      "instagram_story": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار."
+    },
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
