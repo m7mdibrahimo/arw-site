@@ -3402,13 +3402,25 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   let proofEdits: ProofEdit[] = [];
   const preIssues = checkArticle(draft.title, draft.body, draft.tags);
-  const edits = parseProofEdits(await queryGemini(
-    proofreadPrompt(draft, rawTitle, plainText, buildNamesGlossaryHint(`${rawTitle}\n${plainText}`), preIssues), true, 0.1));
+  // The copy editor is part of publishing, not optional: an unreviewed article
+  // went out with 5 obvious mistakes when one call failed (2026-09-26). Retry
+  // once; if it still doesn't answer, wait for the next run (manual publishes
+  // from the admin panel still go out).
+  let edits: ProofEdit[] | null = null;
+  for (let attempt = 0; attempt < 2 && !edits; attempt++) {
+    if (attempt) await new Promise(r => setTimeout(r, 5000));
+    edits = parseProofEdits(await queryGemini(
+      proofreadPrompt(draft, rawTitle, plainText, buildNamesGlossaryHint(`${rawTitle}\n${plainText}`), preIssues), true, 0.1));
+  }
   if (edits) {
     ({ article: draft, applied: proofEdits } = applyProofEdits(draft, edits, `${rawTitle}\n${plainText}`));
     console.log(`[Watcher] ✍️ Copy editor applied ${proofEdits.length}/${edits.length} fixes.`);
+  } else if (!options.manual) {
+    console.warn(`[Watcher] ⏳ Copy editor unavailable for post #${postId} — not publishing unreviewed; retry next run.`);
+    lastPostRetryable = true;
+    return false;
   } else {
-    console.warn(`[Watcher] ⚠️ Copy editor unavailable for post #${postId}; publishing with deterministic fixes only.`);
+    console.warn(`[Watcher] ⚠️ Copy editor unavailable for manual post #${postId}; publishing with deterministic fixes only.`);
   }
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
