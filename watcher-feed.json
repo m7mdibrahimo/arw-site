@@ -1,5 +1,15 @@
 [
   {
+    "id": 330398,
+    "link": "https://www.fightful.com/wrestling/drew-mcintyre-back-in-the-ring-training/",
+    "date": "2026-09-25T12:53:05",
+    "date_gmt": "2026-09-25T16:53:05",
+    "title": {
+      "rendered": "Drew McIntyre Back In The Ring Training"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25123605/Screenshot-329-e1790354182827.png"
+  },
+  {
     "id": 330395,
     "link": "https://www.fightful.com/wrestling/trick-williams-graces-the-cover-of-slam-magazine-with-tyrese-haliburton/",
     "date": "2026-09-25T12:32:17",
@@ -288,15 +298,5 @@
       "rendered": "Ryan Nemeth Earns Spot In TNA X Division Title Match At Bound For Glory"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24213601/HTBosTeXkAAKObk-e1790300177473.jpg"
-  },
-  {
-    "id": 330302,
-    "link": "https://www.fightful.com/wrestling/call-your-shot-gauntlet-taking-place-at-tna-bound-for-glory/",
-    "date": "2026-09-24T21:26:22",
-    "date_gmt": "2026-09-25T01:26:22",
-    "title": {
-      "rendered": "Call Your Shot Gauntlet Taking Place At TNA Bound For Glory"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24211905/a39ca895d41feccbccb5d6e83330b3a1-1-1.jpg"
   }
 ]
