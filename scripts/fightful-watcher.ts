@@ -3187,6 +3187,9 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const dupe = findLikelyDuplicateStory(rawTitle);
     if (dupe.isDuplicate) {
       console.log(`[Watcher] 🔁 Likely duplicate of a recently published story (${dupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
+      // Record it: an unrecorded skip is retried (and re-translated by Gemini)
+      // on every run for 24h — INCIDENTS #43.
+      recordDuplicate(postUrl, dupe.matchedFile || "", "تشابه العنوان مع خبر منشور حديثاً");
       return false;
     }
   }
@@ -3336,6 +3339,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const postDupe = findLikelyDuplicateStoryByTagsAndBody(rewritten.tags, finalBody);
     if (postDupe.isDuplicate) {
       console.log(`[Watcher] 🔁 Likely duplicate detected after translation (shared names + overlapping body with ${postDupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
+      recordDuplicate(postUrl, postDupe.matchedFile || "", "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)");
       return false;
     }
   }

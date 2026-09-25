@@ -250,11 +250,11 @@ export async function runWrestlingIncWatcher(options: { dryRun?: boolean; maxPer
     const ageHours = item.pubDate ? (Date.now() - new Date(item.pubDate).getTime()) / 3600000 : 999;
     if (ageHours > 24) continue; // same freshness window as the Fightful watcher
 
-    if (isLikelyDuplicateOfRecentCoverage(item.title)) {
-      console.log(`[WI Watcher] ⏭️ Likely already covered via another source: "${item.title}"`);
-      state.processedIds.push(id);
-      continue;
-    }
+    // No title-name pre-filter here: it dropped any story whose title shared a
+    // single wrestler name with ANY article of the last 48h (every Roman Reigns
+    // story, for example) and left no trace (INCIDENTS #43). processPost's own
+    // duplicate guard compares the content, asks Gemini to confirm, and records
+    // real duplicates in _data/duplicate-skips.json.
 
     if (options.dryRun) {
       console.log(`[WI Watcher] [dry-run] Would process: "${item.title}" (${item.link})`);
