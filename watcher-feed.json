@@ -1,5 +1,15 @@
 [
   {
+    "id": 330373,
+    "link": "https://www.fightful.com/wrestling/mlp-mayhem-results-9-24/",
+    "date": "2026-09-25T09:23:54",
+    "date_gmt": "2026-09-25T13:23:54",
+    "title": {
+      "rendered": "MLP Mayhem Results (9/24)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/28212231/maple-leaf-pro-wrestling-lands-weekly-tsn-series-with-mlp-mayhem-46.jpg"
+  },
+  {
     "id": 330369,
     "link": "https://www.fightful.com/wrestling/wheeler-yuta-teaming-with-daniel-garcia-is-so-much-fun-i-think-we-gel-well-together/",
     "date": "2026-09-25T09:06:06",
@@ -288,15 +298,5 @@
       "rendered": "List Of Participants In 2026 CMLL Women&#8217;s Grand Prix"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/16111041/426baae3-6f6c-4342-a095-743f9807e8d7-e1760627472427.jpg"
-  },
-  {
-    "id": 330266,
-    "link": "https://www.fightful.com/mma/ufc-fight-night-rosas-jr-vs-barcelos-odds-courtesy-of-mybookie/",
-    "date": "2026-09-24T18:54:47",
-    "date_gmt": "2026-09-24T22:54:47",
-    "title": {
-      "rendered": "UFC Fight Night: Rosas Jr. vs. Barcelos Odds Courtesy Of MyBookie"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24185451/maxresdefault-168.jpg"
   }
 ]
