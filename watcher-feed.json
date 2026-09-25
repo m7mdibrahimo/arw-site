@@ -1,5 +1,15 @@
 [
   {
+    "id": 330404,
+    "link": "https://www.fightful.com/wrestling/mystery-wrestling-launches-talent-initiative-program-signs-30-wrestlers/",
+    "date": "2026-09-25T13:30:45",
+    "date_gmt": "2026-09-25T17:30:45",
+    "title": {
+      "rendered": "Mystery Wrestling Launches Talent Initiative Program, Signs 30+ Wrestlers"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25132927/HTE0wLRWsAA481K-e1790357385203.jpg"
+  },
+  {
     "id": 330400,
     "link": "https://www.fightful.com/wrestling/seth-rollins-returning-to-nfl-networks-good-morning-football/",
     "date": "2026-09-25T12:56:43",
@@ -288,15 +298,5 @@
       "rendered": "Katsuyori Shibata Scheduled For New Texas Pro Show"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/07/08023944/gszvojkw0aa7srv.jpeg"
-  },
-  {
-    "id": 330312,
-    "link": "https://www.fightful.com/wrestling/rosemary-vignette-airs-during-9-24-tna-impact/",
-    "date": "2026-09-24T21:44:00",
-    "date_gmt": "2026-09-25T01:44:00",
-    "title": {
-      "rendered": "Rosemary Vignette Airs During 9/24 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24214343/Screenshot-478.png"
   }
 ]
