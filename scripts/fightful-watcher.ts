@@ -2108,6 +2108,16 @@ function formatResultsMarkdown(text: string): string {
 
 // Bulletproof detection of Show Results vs Single News
 /** A results page that does not list any results yet (a live-coverage stub). */
+/** An English name tag («Hernandez») becomes its approved Arabic form when the
+ *  glossary has one; show/federation names map to themselves and stay English. */
+export function tagInArabic(tag: string): string {
+  const t = tag.trim();
+  if (!/^[A-Za-z0-9 .'&-]+$/.test(t)) return t;
+  const exact = WRESTLER_NAMES_MAP[t];
+  const ci = exact ?? Object.entries(WRESTLER_NAMES_MAP).find(([k]) => k.toLowerCase() === t.toLowerCase())?.[1];
+  return ci && /[\u0600-\u06FF]/.test(ci) ? ci : t;
+}
+
 export function isEmptyResultsStub(plainText: string): boolean {
   // "def." ends in a period, so it can't sit inside \b…\b (that never matched).
   const resultLines = (plainText.match(/\bdef\.|\bvs\.?(?=\s)|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw)\b/gi) || []).length;
@@ -3354,7 +3364,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
-  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title)) };
+  draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title)) };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
