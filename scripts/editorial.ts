@@ -138,10 +138,30 @@ function isMinimalFix(find: string, replace: string): boolean {
   return similarity >= 0.5;
 }
 
+// English the site keeps as-is: show/federation/championship names from the
+// glossary (values without Arabic) and the approved forms of pattern rules.
+let latinApproved: Set<string> | null = null;
+function isApprovedLatin(text: string): boolean {
+  if (!latinApproved) {
+    latinApproved = new Set<string>();
+    try {
+      const glossary = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8"));
+      for (const v of Object.values(glossary) as string[]) if (!/[\u0600-\u06FF]/.test(v)) latinApproved.add(v.toLowerCase());
+    } catch {}
+    for (const c of loadCorrections()) if (c.right && !/[\u0600-\u06FF]/.test(c.right)) latinApproved.add(c.right.toLowerCase());
+  }
+  return latinApproved.has(text.trim().toLowerCase());
+}
+
 export function editIsAnImprovement(find: string, replace: string): boolean {
   if (find.replace(DIACRITICS, "") === replace.replace(DIACRITICS, "")) return false;
+  // Arabic → English is only allowed for an approved show/federation name (seen:
+  // «مواجهة بلا قوانين» → «Unsanctioned Match»; match types stay Arabic).
+  if (!/[A-Za-z]/.test(find) && /^[A-Za-z0-9\s.'&:-]+$/.test(replace) && !isApprovedLatin(replace)) return false;
   if (applyCorrections(replace) !== replace) return false; // introduces a known-wrong form
-  if (!isMinimalFix(find, replace)) return false;
+  // A transliterated name → its approved English form («كراون جويل» → «Crown Jewel») is a real fix.
+  const toApprovedLatin = !/[A-Za-z]/.test(find) && isApprovedLatin(replace);
+  if (!toApprovedLatin && !isMinimalFix(find, replace)) return false;
   // Never undo an approved spelling (seen: "ذا يانغ باكس" → "يانغ باكس").
   if (approvedNames().some(n => find.includes(n) && !replace.includes(n))) return false;
   const codes = (t: string) => new Set(checkArticle("عنوان عربي للفحص فقط", t + QA_PROBE_PAD, []).filter(i => i.severity === "error").map(i => i.code));
