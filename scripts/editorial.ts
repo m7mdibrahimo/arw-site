@@ -182,6 +182,9 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
       if (!whole.test(out[e.field])) continue;
       whole.lastIndex = 0;
       out[e.field] = out[e.field].replace(whole, () => replace);
+      // A name fixed in the title/body is fixed in the tags too (seen: body
+      // «جايدن كول» after the fix, tag still «ايدن كول»).
+      if (replace) out.tags = out.tags.map(t => t.replace(new RegExp(whole.source, "gu"), () => replace));
     }
     applied.push({ ...e, find, replace });
   }

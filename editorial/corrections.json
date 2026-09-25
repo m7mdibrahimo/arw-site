@@ -3105,6 +3105,17 @@
    "wrong": "دأمور",
    "right": "دي أمور",
    "note": "اسم (Scott D'Amore)"
+  },
+  {
+   "wrong": "تايتل\\s+ماتش\\s+(?:نت|نيت)وو?رك",
+   "right": "Title Match Network",
+   "regex": true,
+   "note": "أسماء القنوات بالإنجليزي"
+  },
+  {
+   "wrong": "ايدن كول",
+   "right": "جايدن كول",
+   "note": "اسم مصارع (Jayden Kole)"
   }
  ]
 }

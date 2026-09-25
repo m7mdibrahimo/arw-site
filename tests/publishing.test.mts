@@ -724,7 +724,9 @@ test('AI copy-editor edits are applied only when verifiable', async () => {
   assert.equal(article.body, 'أعلن توني خان عن عرض خاص.');
   assert.equal(article.title, 'توني خان يعلن');
   assert.deepEqual(article.tags, ['توني خان']);
-  assert.equal(applied.length, 4);
+  // The body fix already carries the name into the tags, so the explicit tags
+  // edit finds nothing left to change.
+  assert.equal(applied.length, 3);
   const candidates = [{ file: 'a.md', title: '', body: '', tags: [], date: 0 }];
   assert.equal(parseDuplicateAnswer('{"duplicate_of":0,"reason":"same"}', candidates)?.file, 'a.md');
   assert.equal(parseDuplicateAnswer('{"duplicate_of":null}', candidates), null);
