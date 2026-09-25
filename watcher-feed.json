@@ -1,5 +1,15 @@
 [
   {
+    "id": 330200,
+    "link": "https://www.fightful.com/wrestling/330200-wheeler-yuta-dogs-death-riders/",
+    "date": "2026-09-25T12:00:00",
+    "date_gmt": "2026-09-25T16:00:00",
+    "title": {
+      "rendered": "Wheeler Yuta Talks The Dogs x Death Riders Alliance, &#8216;We&#8217;re Like-Minded In A Sense&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/09/03075300/maxresdefault-5.jpg"
+  },
+  {
     "id": 330383,
     "link": "https://www.fightful.com/wrestling/six-woman-tag-added-to-9-25-wwe-smackdown/",
     "date": "2026-09-25T11:47:59",
@@ -18,6 +28,16 @@
       "rendered": "Steve Maclin Explains Why He Made Things Personal With Adam Copeland, &#8216;I Want The Ultimate Opportunist&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/07160721/Steve-Maclin-Impact-Wrestling-645x370-1.webp"
+  },
+  {
+    "id": 71467,
+    "link": "https://www.fightful.com/wrestling/pro-wrestling-free-agents/",
+    "date": "2026-09-25T10:54:00",
+    "date_gmt": "2026-09-25T14:54:00",
+    "title": {
+      "rendered": "Pro Wrestling Free Agents"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14160822/Resources1.jpg"
   },
   {
     "id": 66498,
@@ -278,25 +298,5 @@
       "rendered": "Nattie Shares That She Brought TJ Wilson To NWA To Produce Her Matches &amp; Work With Other Women&#8217;s Wrestlers"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/21105903/Screenshot-760.png"
-  },
-  {
-    "id": 330285,
-    "link": "https://www.fightful.com/wrestling/tj-wilson-was-interviewed-for-charlotte-flairs-podcast/",
-    "date": "2026-09-24T20:38:36",
-    "date_gmt": "2026-09-25T00:38:36",
-    "title": {
-      "rendered": "TJ Wilson Was Interviewed For Charlotte Flair&#8217;s Podcast"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/19231928/HLB4A2bXoAAVSw9-e1781925591235.jpg"
-  },
-  {
-    "id": 330286,
-    "link": "https://www.fightful.com/wrestling/masha-slamovich-debuts-for-mlw/",
-    "date": "2026-09-24T20:36:16",
-    "date_gmt": "2026-09-25T00:36:16",
-    "title": {
-      "rendered": "Masha Slamovich Debuts For MLW"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24203533/Screenshot-2026-09-24-at-8.30.32-PM.png"
   }
 ]
