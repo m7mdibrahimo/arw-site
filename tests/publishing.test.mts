@@ -954,3 +954,23 @@ test('no correction rule matches its own correct form', () => {
   }).map((c: any) => `${c.wrong} → ${c.right}`);
   assert.deepEqual(selfMatching, []);
 });
+
+test('a waiting show reel reserves the next Instagram slot over news', async t => {
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [{ url: '/news/queued/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(1), published_at: hours(1) }];
+  const state: any = { telegram: { httpssitetestnewsqueued: Date.now() }, facebook: { httpssitetestnewsqueued: Date.now() }, instagram: {}, x: {}, cooldowns: {} };
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  // Gap already satisfied (20 min), but a reel is waiting for the slot.
+  const kv = new Map<string, string>([['ig_last_action_ts', String(Date.now() - 20 * 60_000)], ['ig_video_waiting', String(Date.now() - 60_000)]]);
+  const PUSH_KV = { get: async (k: string) => kv.get(k) ?? null, put: async (k: string, v: string) => { kv.set(k, v); }, delete: async (k: string) => { kv.delete(k); } };
+  await runWatcherPoll({ ...env, PUSH_KV, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const ig = Object.keys(after.deferrals || {}).filter(k => k.startsWith('instagram:')).concat(Object.keys(after.instagram));
+  assert.ok(!ig.some(k => k.endsWith('httpssitetestnewsqueued')), 'news leaves the Instagram slot to the waiting reel');
+});

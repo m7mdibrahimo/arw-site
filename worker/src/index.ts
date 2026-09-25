@@ -1729,6 +1729,17 @@ async function instagramSpacingWait(env: Env): Promise<number> {
 async function markInstagramAction(env: Env): Promise<void> {
   await env.PUSH_KV?.put("ig_last_action_ts", String(Date.now())).catch(() => {});
 }
+// Reels/stories come from the show-reel monitor (~every 15 min) while news polls
+// every minute, so news took every free Instagram slot and a show's reels waited
+// for hours (2026-09-25). A waiting video reserves the next slot.
+async function markInstagramVideoWaiting(env: Env, waiting: boolean): Promise<void> {
+  if (waiting) await env.PUSH_KV?.put("ig_video_waiting", String(Date.now())).catch(() => {});
+  else await env.PUSH_KV?.delete("ig_video_waiting").catch(() => {});
+}
+async function instagramVideoWaiting(env: Env): Promise<boolean> {
+  const at = Number((await env.PUSH_KV?.get("ig_video_waiting").catch(() => null)) || 0);
+  return at > 0 && Date.now() - at < 30 * 60_000;
+}
 
 async function publishToPlatform(
   env: Env, platform: Platform, key: string,
@@ -2138,7 +2149,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // empty" — at zero extra CPU cost, unlike raising MAX_PER_TICK (tried,
   // reverted: tripled per-tick work and reintroduced the CPU-limit failure
   // this whole split exists to avoid).
-  let igSpacingOk = (await instagramSpacingWait(env)) === 0;
+  let igSpacingOk = (await instagramSpacingWait(env)) === 0 && !(await instagramVideoWaiting(env));
   const MAX_EXPENSIVE_PER_TICK = 40;
   const notStarted = candidates.filter((c) => !c.tgDone).reverse();
   const catchUpOnly = candidates.filter((c) => c.tgDone).reverse();
@@ -2932,10 +2943,13 @@ export default {
             if (network === "instagram") {
               const wait = await instagramSpacingWait(env);
               if (wait > 0) {
-                results[platform] = { ok: false, status: "rate_limited", retryAt: Date.now() + wait, error: "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا." };
+                // "processing" = not a failure; the show-reel monitor retries in 10 min (not 45).
+                await markInstagramVideoWaiting(env, true);
+                results[platform] = { ok: false, status: "processing", spacing: true, retryAt: Date.now() + wait, error: "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا." };
                 continue;
               }
               await markInstagramAction(env);
+              await markInstagramVideoWaiting(env, false);
             }
             const send = () => platform === "facebook_reel" ? postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl })
               : platform === "facebook_story" ? postVideoToFacebookStory(env, { videoUrl: fullVideoUrl })
