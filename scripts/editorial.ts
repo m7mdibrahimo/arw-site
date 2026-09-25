@@ -155,6 +155,13 @@ function isApprovedLatin(text: string): boolean {
 
 export function editIsAnImprovement(find: string, replace: string): boolean {
   if (find.replace(DIACRITICS, "") === replace.replace(DIACRITICS, "")) return false;
+  // «الراحل» before a known deceased legend is correct — never remove it (seen:
+  // «الأسطورة الراحل إيدي غيريرو» → «الأسطورة إيدي غيريرو»).
+  if (/الراحل/.test(find) && !/الراحل/.test(replace)) {
+    let deceased: string[] = [];
+    try { deceased = JSON.parse(fs.readFileSync(path.join(process.cwd(), "editorial", "deceased.json"), "utf-8")).names || []; } catch {}
+    if (deceased.some(n => find.includes(n))) return false;
+  }
   // Arabic → English is only allowed for an approved show/federation name (seen:
   // «مواجهة بلا قوانين» → «Unsanctioned Match»; match types stay Arabic).
   if (!/[A-Za-z]/.test(find) && /^[A-Za-z0-9\s.'&:-]+$/.test(replace) && !isApprovedLatin(replace)) return false;

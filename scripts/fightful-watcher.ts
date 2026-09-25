@@ -3426,7 +3426,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // الراحل فينس مكمان»). Any death wording must be backed by the source.
   const deathWords = /(?:^|[^\u0621-\u064A])(?:[وبل]?ال)?(?:راحل|راحلة|الراحلين)(?![\u0621-\u064A])(?!\s+عن)|وفاته|وفاتها|توفي|توفيت|رحل عن عالمنا|رحيله عن الحياة/;
   const sourceMentionsDeath = /\b(?:late|passed away|passing|died|dies|death|dead|RIP|R\.I\.P|memorial|funeral|tribute|in memory|obituary)\b/i.test(plainText);
-  if (!sourceMentionsDeath && deathWords.test(`${draft.title}\n${draft.body}`)) {
+  // Known deceased legends («الأسطورة الراحل إيدي غيريرو») are fine without a death word in the source.
+  let deceased: string[] = [];
+  try { deceased = JSON.parse(fs.readFileSync(path.join(process.cwd(), "editorial", "deceased.json"), "utf-8")).names || []; } catch {}
+  const withoutKnownDeceased = deceased.reduce((text, name) =>
+    text.split(`الراحل ${name}`).join(name).split(`${name} الراحل`).join(name).split(`الراحلة ${name}`).join(name), `${draft.title}\n${draft.body}`);
+  if (!sourceMentionsDeath && deathWords.test(withoutKnownDeceased)) {
     blocking.push({ code: "invented_death", severity: "error", field: "body", message: "الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة", excerpt: "" });
   }
   if (blocking.length) {
