@@ -3164,6 +3164,45 @@
    "wrong": "غايب كيد",
    "right": "جيب كيد",
    "note": "اسم مصارع (Gabe Kidd) — الصيغة المعتمدة"
+  },
+  {
+   "wrong": "(?:لقب\\s+)?كراون\\s+Jewel\\s+Championship|Crown\\s+Jewel\\s+Championship",
+   "right": "بطولة Crown Jewel",
+   "regex": true,
+   "note": "اسم البطولة"
+  },
+  {
+   "wrong": "كراون\\s+(?:Jewel|جويل|جوويل)",
+   "right": "Crown Jewel",
+   "regex": true,
+   "note": "أسماء العروض بالإنجليزي"
+  },
+  {
+   "wrong": "فونت فيرتيغو",
+   "right": "فون فيرتيغو",
+   "note": "اسم مصارع (Vaughn Vertigo)"
+  },
+  {
+   "wrong": "ميبل\\s+ليف\\s+برو",
+   "right": "Maple Leaf Pro",
+   "regex": true,
+   "note": "أسماء الاتحادات بالإنجليزي"
+  },
+  {
+   "wrong": "ميبل\\s+ليف\\s+ريسلي?نغ",
+   "right": "Maple Leaf Wrestling",
+   "regex": true,
+   "note": "أسماء الاتحادات بالإنجليزي"
+  },
+  {
+   "wrong": "المصارين",
+   "right": "المصارعين",
+   "note": "كلمة مبتورة: «المصارين» تعني الأمعاء"
+  },
+  {
+   "wrong": "للمصارين",
+   "right": "للمصارعين",
+   "note": "كلمة مبتورة"
   }
  ]
 }
