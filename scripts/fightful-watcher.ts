@@ -2109,7 +2109,8 @@ function formatResultsMarkdown(text: string): string {
 // Bulletproof detection of Show Results vs Single News
 /** A results page that does not list any results yet (a live-coverage stub). */
 export function isEmptyResultsStub(plainText: string): boolean {
-  const resultLines = (plainText.match(/\b(?:def\.|defeats?|defeated|beat|beats|retains?|retained|won|wins|no contest|draw|vs\.?)\b/gi) || []).length;
+  // "def." ends in a period, so it can't sit inside \b…\b (that never matched).
+  const resultLines = (plainText.match(/\bdef\.|\bvs\.?(?=\s)|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw)\b/gi) || []).length;
   return plainText.length < 500 || resultLines < 2;
 }
 
