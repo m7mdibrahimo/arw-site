@@ -2107,6 +2107,19 @@ function formatResultsMarkdown(text: string): string {
 
 
 // Bulletproof detection of Show Results vs Single News
+/** A results page that does not list any results yet (a live-coverage stub). */
+export function isEmptyResultsStub(plainText: string): boolean {
+  const resultLines = (plainText.match(/\b(?:def\.|defeats?|defeated|beat|beats|retains?|retained|won|wins|no contest|draw|vs\.?)\b/gi) || []).length;
+  return plainText.length < 500 || resultLines < 2;
+}
+
+let lastPostRetryable = false;
+/** True when the last processPost() call skipped an article that is expected to
+ *  become publishable later (e.g. results not filled in yet): don't mark it processed. */
+export function lastPostShouldRetry(): boolean {
+  return lastPostRetryable;
+}
+
 export function isShowResultsArticle(originalTitle: string, plainText: string = ""): boolean {
   const title = (originalTitle || "").trim();
 
@@ -3069,6 +3082,7 @@ export function findLikelyDuplicateStoryByTagsAndBody(
 // options.keepUrl: rewrite an already-published article in place — same file, same
 // URL (pinned permalink), no redirect and no social re-post (used to repair articles).
 export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean; keepUrl?: boolean } = {}): Promise<boolean> {
+  lastPostRetryable = false;
   const postId = post.id;
   const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || "News";
   const postUrl = post.link || "";
@@ -3115,6 +3129,18 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const plainText = htmlToPlainText(contentHtml);
   if (plainText.length < 25) {
     console.warn(`[Watcher] Post #${postId} has insufficient text content, skipping.`);
+    return false;
+  }
+
+  // Live results pages are published as a stub ("Full results are below.") and
+  // filled in during the show. Writing from the stub made Gemini invent a whole
+  // results article with no results (2026-09-24, TNA iMPACT — INCIDENTS #39),
+  // and automatic updates are refused, so the real results would never replace
+  // it. Wait until the source actually lists results; the post stays
+  // unprocessed and is retried on the next run.
+  if (isShowResultsArticle(rawTitle, plainText) && isEmptyResultsStub(plainText)) {
+    console.log(`[Watcher] ⏳ Results not posted yet for #${postId} ("${rawTitle}") — will retry next run.`);
+    lastPostRetryable = true;
     return false;
   }
 
@@ -3328,7 +3354,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title)) };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
-    .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date"].includes(i.code));
+    .filter(i => ["title_not_arabic", "artifact", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
   // A body far longer than its source means Gemini padded a teaser with filler
   // (what happened with Wrestling Inc's RSS teasers) — never publish that.
   const proseLength = draft.body.replace(/https?:\/\/\S+/g, "").replace(/\s+/g, " ").trim().length;

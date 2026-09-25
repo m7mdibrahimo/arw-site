@@ -82,6 +82,7 @@ const RULES: Rule[] = [
   { code: "english_title_name", severity: "error", re: new RegExp(`[${AR}]\\s+(?:[A-Z][A-Za-z']+\\s+){0,4}(?:Championships?|Titles?|Tag Team Classic|Cup|Tournament)\\b`, "g"), message: "اسم بطولة/لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...)", fields: ["title", "body"] },
   { code: "glossary_artifact", severity: "error", re: /بطلة? \((?:الاتحاد|العالمي|العالم|القارات|الأمريكي|أمريكا الشمالية|إن إكس تي|سبيد|الاتحاد للفرق|العالمي للفرق|إن إكس تي للفرق|إيفولف|إيفولف للفرق|دبليو دبليو إن)\)/g, message: "اسم بطولة مكسور من القاموس القديم مثل «بطل (الاتحاد)» — يُحذف أو يُكتب اسم البطولة الصحيح (بطولة WWE، بطولة العالم للوزن الثقيل...)", fields: ["title", "body"] },
   { code: "truncated_word", severity: "error", re: /(?<=^|\s)[ءآأؤإئاتثجحخدذرزسشصضطظعغقمنهةى](?=\s)/g, message: "حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)", fields: ["title", "body"] },
+  { code: "vague_result", severity: "error", re: /الفائز:\*{0,2}\s*(?:تم\s+حسم|تحديد|حسم\s+النتيجة|غير\s+معروف|لم\s+يتم|انتهى\s+الحدث|انتهت\s+الأحداث|[^\n]{0,25}وسط\s+أجواء)[^\n]*/g, message: "سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)", fields: ["body"] },
   { code: "double_punct", severity: "warning", re: /[،,]\s*[،,.]|:\s*:|؟\s*؟/g, message: "علامات ترقيم مكررة", fields: ["title", "body"] },
 ];
 

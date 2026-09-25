@@ -9,6 +9,7 @@ import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
+import { checkArticle } from '../scripts/news-qa';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -837,4 +838,13 @@ test('copy-editor edits apply to whole words only and conflicting edits are skip
   assert.equal(applied.length, 0);
   const fixed = applyProofEdits({ title: 'عنوان', body: 'الفترة التي قضها ويل', tags: [] }, [{ field: 'body', find: 'قضها', replace: 'قضاها' }]);
   assert.equal(fixed.article.body, 'الفترة التي قضاها ويل');
+});
+
+
+test('a results article with invented winners is caught, real finishes are not', () => {
+  // INCIDENTS #39: TNA iMPACT was written from an empty live-results stub.
+  const vague = checkArticle('نتائج عرض TNA iMPACT', 'نزال ثلاثي.\n🏆 **الفائز:** تم حسم النتيجة وتحديد الفائز في أجواء تنافسية مثيرة.', []);
+  assert.ok(vague.some(i => i.code === 'vague_result'));
+  const real = checkArticle('نتائج عرض WWE RAW', '🏆 **الفائز:** انتهى النزال بالاستبعاد بعد تدخل خارجي\n🏆 **الفائز:** كينوه', []);
+  assert.ok(!real.some(i => i.code === 'vague_result'));
 });

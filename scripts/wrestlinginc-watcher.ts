@@ -12,7 +12,7 @@
 // isLikelyDuplicateOfRecentCoverage().
 import fs from "fs";
 import path from "path";
-import { processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted } from "./fightful-watcher";
+import { processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted, lastPostShouldRetry } from "./fightful-watcher";
 
 if (fs.existsSync(".env")) {
   try {
@@ -279,6 +279,7 @@ export async function runWrestlingIncWatcher(options: { dryRun?: boolean; maxPer
       console.warn(`[WI Watcher] ⏸️ Gemini quota exhausted — "${item.title}" left for the next run.`);
       break;
     }
+    if (!ok && lastPostShouldRetry()) continue; // e.g. results not posted yet — retry next run
     state.processedIds.push(id);
     saveState(state);
     if (ok) {
