@@ -848,3 +848,35 @@ test('a results article with invented winners is caught, real finishes are not',
   const real = checkArticle('نتائج عرض WWE RAW', '🏆 **الفائز:** انتهى النزال بالاستبعاد بعد تدخل خارجي\n🏆 **الفائز:** كينوه', []);
   assert.ok(!real.some(i => i.code === 'vague_result'));
 });
+
+
+test('an article that arrived during an Instagram pause is posted to Instagram after the pause, and nothing else is re-posted', async t => {
+  // INCIDENTS #44: a 5h Instagram cooldown outlasted the 3h window and 16
+  // articles never reached Instagram.
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [
+    { url: '/news/paused/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(5), published_at: hours(5) },
+    // 13h old when the pause ended: past the 12h catch-up limit, stays out.
+    { url: '/news/old/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(14), published_at: hours(14) },
+  ];
+  const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: { instagram: Date.now() - 3600_000 } };
+  for (const slug of ['paused', 'old']) for (const p of ['telegram', 'facebook']) state[p][`httpssitetestnews${slug}`] = Date.now();
+  state.cooldowns.instagram = Date.now() - 3600_000; // pause ended 1h ago, i.e. after both arrived
+  delete state.telegram['httpssitetestnewsold']; // old: never on Telegram and must NOT be sent there now
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  const sent: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.includes('api.telegram.org')) sent.push('telegram');
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const touched = Object.keys(after.deferrals || {}).concat(Object.keys(after.instagram));
+  assert.ok(touched.some(k => k === 'instagram:httpssitetestnewspaused' || k === 'httpssitetestnewspaused'), 'Instagram retried for the paused article');
+  assert.ok(!touched.some(k => k.endsWith('httpssitetestnewsold') && !k.startsWith('instagram')), 'no other platform touched for stale articles');
+  assert.ok(!sent.includes('telegram'), 'a stale article is never sent to Telegram');
+});

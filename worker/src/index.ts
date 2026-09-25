@@ -2052,6 +2052,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // spoiler check, verifyLiveOnSite, actual publish attempts) is bounded to
   // a small number of the oldest candidates — the exact cost that was
   // blowing the CPU limit before, now capped independently of backlog size.
+  const WINDOW_MS = 3 * 60 * 60 * 1000;
   const candidates: { item: any; ts: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
@@ -2076,14 +2077,29 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     if (ts && (Date.now() - ts) > 26 * 60 * 60 * 1000) break;
     const reachedSiteAt = item.published_at ? new Date(item.published_at).getTime() : ts;
     const freshFrom = Number.isFinite(reachedSiteAt) && reachedSiteAt > 0 ? reachedSiteAt : ts;
-    if ((Date.now() - freshFrom) > 3 * 60 * 60 * 1000) continue;
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     if (!key) continue;
-    const tgDone = !!state.telegram[key];
-    const fbDone = !!state.facebook[key];
-    const igDone = !!state.instagram[key];
-    const xDone = !!state.x[key];
+    let tgDone = !!state.telegram[key];
+    let fbDone = !!state.facebook[key];
+    let igDone = !!state.instagram[key];
+    let xDone = !!state.x[key];
     if (tgDone && fbDone && igDone && xDone) continue;
+    if ((Date.now() - freshFrom) > WINDOW_MS) {
+      // Past its window. A platform that was paused (rate-limit cooldown) while
+      // the article was fresh gets WINDOW_MS after the pause ends — only that
+      // platform, only for articles under 12h old at that point. Otherwise a
+      // long Instagram pause silently cost every article in it its Instagram
+      // post (2026-09-24: 16 articles, INCIDENTS #44).
+      const catchUp = (platform: "facebook" | "instagram", done: boolean) => {
+        const pauseEnd = state.cooldowns?.[platform] || 0;
+        return !done && pauseEnd > freshFrom && pauseEnd <= Date.now()
+          && Date.now() - pauseEnd < WINDOW_MS && pauseEnd - freshFrom < 12 * 60 * 60 * 1000;
+      };
+      // Telegram is never paused, so it has no catch-up.
+      const fbCatch = catchUp("facebook", fbDone), igCatch = catchUp("instagram", igDone);
+      if (!fbCatch && !igCatch) continue;
+      tgDone = true; fbDone = fbDone || !fbCatch; igDone = igDone || !igCatch; xDone = true;
+    }
     candidates.push({ item, ts, key, tgDone, fbDone, igDone, xDone });
   }
 
