@@ -1,5 +1,15 @@
 [
   {
+    "id": 3523548670,
+    "link": "https://www.wrestlinginc.com/2263468/wwe-wrestlemania-18-x8-maven-vince-mcmahon-goldust-dustin-rhodes-angering-mistake/",
+    "date": "Fri, 25 Sep 2026 01:00:00 +0000",
+    "date_gmt": "2026-09-25T01:00:00.000Z",
+    "title": {
+      "rendered": "Maven Recalls Angering Vince McMahon After WWE WrestleMania Mistake"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/maven-recalls-angering-vince-mcmahon-after-wwe-wrestlemania-mistake/l-intro-1789937536.jpg"
+  },
+  {
     "id": 2463455521,
     "link": "https://www.wrestlinginc.com/2268444/tna-thursday-night-impact-september-24-international-title-match-tag-team-bout-more/",
     "date": "Thu, 24 Sep 2026 23:57:56 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Persephone Gets Underhanded Win In AEW TBS Title Defense"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/persephone-gets-underhanded-win-in-aew-tbs-title-defense/l-intro-1790214490.jpg"
-  },
-  {
-    "id": 3420509452,
-    "link": "https://www.wrestlinginc.com/2263241/aew-jim-ross-bill-dundee/",
-    "date": "Thu, 24 Sep 2026 01:00:00 +0000",
-    "date_gmt": "2026-09-24T01:00:00.000Z",
-    "title": {
-      "rendered": "AEW's Jim Ross Reflects On Working With The Late Bill Dundee"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jim-ross-reflects-on-working-with-the-late-bill-dundee/l-intro-1789847592.jpg"
   }
 ]
