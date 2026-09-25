@@ -3361,6 +3361,13 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (!options.manual && plainText.length < 800 && proseLength > plainText.length * 3.5) {
     blocking.push({ code: "padded", severity: "error", field: "body", message: `المتن (${proseLength} حرف) أطول بكثير من المصدر (${plainText.length} حرف) — حشو`, excerpt: "" });
   }
+  // Calling a living person dead is the worst possible error (seen: «رئيس الاتحاد
+  // الراحل فينس مكمان»). Any death wording must be backed by the source.
+  const deathWords = /(?:^|[^\u0621-\u064A])(?:[وبل]?ال)?(?:راحل|راحلة|الراحلين)(?![\u0621-\u064A])(?!\s+عن)|وفاته|وفاتها|توفي|توفيت|رحل عن عالمنا|رحيله عن الحياة/;
+  const sourceMentionsDeath = /\b(?:late|passed away|passing|died|dies|death|dead|RIP|R\.I\.P|memorial|funeral|tribute|in memory|obituary)\b/i.test(plainText);
+  if (!sourceMentionsDeath && deathWords.test(`${draft.title}\n${draft.body}`)) {
+    blocking.push({ code: "invented_death", severity: "error", field: "body", message: "الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة", excerpt: "" });
+  }
   if (blocking.length) {
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
     return false;

@@ -110,9 +110,36 @@ function approvedNames(): string[] {
   return approvedSpellings;
 }
 
+function levenshtein(a: string, b: string): number {
+  const prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    let diag = prev[0];
+    prev[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = prev[j];
+      prev[j] = Math.min(prev[j] + 1, prev[j - 1] + 1, diag + (a[i - 1] === b[j - 1] ? 0 : 1));
+      diag = tmp;
+    }
+  }
+  return prev[b.length];
+}
+
+/** A one/two-word edit must be a spelling fix, not a different word. Seen live:
+ *  «مسترجعا» → «متذمرا» (recalling → complaining), «كودي رودز» → «بينتا»,
+ *  «إجماع الحكام» → «الإجماع». Expanding a name («كوفي» → «كوفي كينغستون») and
+ *  replacing a known-wrong form stay allowed. */
+function isMinimalFix(find: string, replace: string): boolean {
+  if (find.split(/\s+/).length > 2 || !/^[\u0600-\u06FF\s]+$/.test(find)) return true;
+  if (replace.includes(find)) return true;
+  if (applyCorrections(find) !== find) return true;
+  const similarity = 1 - levenshtein(find, replace) / Math.max(find.length, replace.length);
+  return similarity >= 0.5;
+}
+
 export function editIsAnImprovement(find: string, replace: string): boolean {
   if (find.replace(DIACRITICS, "") === replace.replace(DIACRITICS, "")) return false;
   if (applyCorrections(replace) !== replace) return false; // introduces a known-wrong form
+  if (!isMinimalFix(find, replace)) return false;
   // Never undo an approved spelling (seen: "ذا يانغ باكس" → "يانغ باكس").
   if (approvedNames().some(n => find.includes(n) && !replace.includes(n))) return false;
   const codes = (t: string) => new Set(checkArticle("عنوان عربي للفحص فقط", t + QA_PROBE_PAD, []).filter(i => i.severity === "error").map(i => i.code));
