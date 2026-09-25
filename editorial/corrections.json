@@ -3030,6 +3030,17 @@
    "wrong": "أتيك بورت",
    "right": "في تيك بورت",
    "note": "Boeing Center at Tech Port"
+  },
+  {
+   "wrong": "جوزيف سوير",
+   "right": "جوزيف ساير",
+   "note": "اسم مصارع (Joseph Sawyer)"
+  },
+  {
+   "wrong": "(?:عائلة\\s+)?وايت\\s+6",
+   "right": "وايت سيكس",
+   "regex": true,
+   "note": "The Wyatt Sicks = وايت سيكس (ليست عائلة وايت القديمة)"
   }
  ]
 }
