@@ -659,6 +659,12 @@
   }
 
   .post-source{ margin-top:22px; font-size:13px; color:var(--muted); }
+  .ad-slot{ margin:22px auto; text-align:center; overflow:hidden; max-width:100%; }
+  .ad-slot iframe{ max-width:100%; }
+  .ad-label{ display:block; font-size:11px; color:var(--muted); margin-bottom:6px; letter-spacing:.5px; }
+  .ad-top{ min-height:50px; }
+  @media (min-width:768px){ .ad-top{ min-height:90px; } }
+  .ad-mid{ min-height:250px; }
   .post-source a{ color:var(--teal); font-weight:700; text-decoration:none; }
   .post-source a:hover{ text-decoration:underline; }
   .post-tags{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:28px; padding-top:20px; border-top:1px solid var(--line); }
@@ -940,6 +946,8 @@
         </button>
       </div>
     </div>
+
+    {% include "ads/top.njk" %}
     {% if not isNews %}
     <h2>{{ headline or title }}</h2>
     {% endif %}
@@ -1007,6 +1015,7 @@
       </div>
     {% endif %}
 
+    {% if not isNews %}{% include "ads/mid.njk" %}{% endif %}
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
     {% if dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
     <div class="download-links reveal">
@@ -1278,10 +1287,13 @@
       {% endif %}
     {% endif %}
 
+    {% set midAd %}{% include "ads/mid.njk" %}{% endset %}
     <div class="post-body">
-      {{ content | autoLinkWrestlingStars | autoEmbedSocials | safe }}
+      {{ content | autoLinkWrestlingStars | autoEmbedSocials | injectMidAd(midAd if isNews else "") | safe }}
 
     </div>
+
+    {% include "ads/native.njk" %}
 
     {% if source_url %}
     <p class="post-source reveal">المصدر: <a href="{{ source_url }}" target="_blank" rel="noopener noreferrer nofollow">{{ source_url | sourceName }}</a></p>

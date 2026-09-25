@@ -1,0 +1,15 @@
+{# Adsterra banner under the title: 728x90 on desktop (unit 31404753), 320x50 on
+   mobile (unit 31404754). Only the one that fits is written, so a page never
+   loads both. document.write keeps Adsterra's synchronous atOptions → invoke.js
+   order exactly as in their snippet. #}
+<aside class="ad-slot ad-top" aria-label="إعلان">
+  <span class="ad-label">إعلان</span>
+  <script>
+    (function () {
+      var wide = window.innerWidth >= 768;
+      var key = wide ? '0836abe965fa39f9315540184f58b5a8' : 'dda1cc4188deb500aa99df5341c8d852';
+      document.write('<script>atOptions = {"key":"' + key + '","format":"iframe","height":' + (wide ? 90 : 50) + ',"width":' + (wide ? 728 : 320) + ',"params":{}};<\/script>'
+        + '<script src="https://www.highrevenueformat.com/' + key + '/invoke.js"><\/script>');
+    })();
+  </script>
+</aside>
