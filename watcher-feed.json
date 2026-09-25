@@ -1,5 +1,15 @@
 [
   {
+    "id": 330312,
+    "link": "https://www.fightful.com/wrestling/rosemary-vignette-airs-during-9-24-tna-impact/",
+    "date": "2026-09-24T21:44:00",
+    "date_gmt": "2026-09-25T01:44:00",
+    "title": {
+      "rendered": "Rosemary Vignette Airs During 9/24 TNA iMPACT"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24214343/Screenshot-478.png"
+  },
+  {
     "id": 330308,
     "link": "https://www.fightful.com/wrestling/ryan-nemeth-earns-spot-in-tna-x-division-title-match-at-bound-for-glory/",
     "date": "2026-09-24T21:37:11",
@@ -288,15 +298,5 @@
       "rendered": "New WWE Production Trucks Are On The Way"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/18132421/WWE-Logo-1536x1024-1-e1752859487683.jpeg"
-  },
-  {
-    "id": 330218,
-    "link": "https://www.fightful.com/wrestling/large-concern-within-wwe-regarding-crown-jewel-in-saudi-arabia/",
-    "date": "2026-09-24T14:14:28",
-    "date_gmt": "2026-09-24T18:14:28",
-    "title": {
-      "rendered": "Large Concern Within WWE Regarding Crown Jewel In Saudi Arabia"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
   }
 ]
