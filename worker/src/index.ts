@@ -1715,6 +1715,21 @@ async function deferPublication(env: Env, platform: Platform, key: string, uncer
   throw new Error("Could not save publication retry delay");
 }
 
+// ── Instagram pacing ─────────────────────────────────────────────
+// Instagram answers bursts with "User is performing too many actions" and then
+// blocks the account for hours (2026-09-25: 4 news posts in 3 minutes at 09:08
+// UTC, then a show reel at 09:52 was refused and Instagram paused until 15:12 —
+// INCIDENTS #47). Every Instagram action (news post, reel, story) now keeps at
+// least IG_MIN_GAP_MS from the previous one, shared through KV.
+const IG_MIN_GAP_MS = 10 * 60_000;
+async function instagramSpacingWait(env: Env): Promise<number> {
+  const last = Number((await env.PUSH_KV?.get("ig_last_action_ts").catch(() => null)) || 0);
+  return Math.max(0, last + IG_MIN_GAP_MS - Date.now());
+}
+async function markInstagramAction(env: Env): Promise<void> {
+  await env.PUSH_KV?.put("ig_last_action_ts", String(Date.now())).catch(() => {});
+}
+
 async function publishToPlatform(
   env: Env, platform: Platform, key: string,
   item: { title: string; text?: string; url: string; image?: string; kind?: string },
@@ -2121,6 +2136,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // empty" — at zero extra CPU cost, unlike raising MAX_PER_TICK (tried,
   // reverted: tripled per-tick work and reintroduced the CPU-limit failure
   // this whole split exists to avoid).
+  let igSpacingOk = (await instagramSpacingWait(env)) === 0;
   const MAX_EXPENSIVE_PER_TICK = 40;
   const notStarted = candidates.filter((c) => !c.tgDone).reverse();
   const catchUpOnly = candidates.filter((c) => c.tgDone).reverse();
@@ -2163,7 +2179,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     const deferred = (platform: Platform) => (state.deferrals?.[`${platform}:${key}`] || 0) > now;
     const canDoTg = !tgDone && !deferred("telegram");
     // Resume automatically after the persisted platform cooldown expires.
-    const canDoIg = env.INSTAGRAM_AUTO_ENABLED !== "false" && !igDone && !igCooldown && !deferred("instagram");
+    const canDoIg = env.INSTAGRAM_AUTO_ENABLED !== "false" && !igDone && !igCooldown && !deferred("instagram") && igSpacingOk;
     // Facebook publishes news and shows normally as posts
     const canDoFb = !fbDone && !fbCooldown && !deferred("facebook");
     const canDoX = env.X_AUTO_ENABLED !== "false" && !xDone && !xCooldown && !deferred("x") && bufferXAttemptedInTick < MAX_BUFFER_PER_TICK;
@@ -2205,7 +2221,11 @@ export async function runWatcherPoll(env: Env): Promise<void> {
           : payload.text;
         await publishToPlatform(env, "facebook", key, { ...payload, text: fbText, image: item.image, kind: item.kind }, {}, false);
       }
-      if (canDoIg && takeSlot()) await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+      if (canDoIg && takeSlot()) {
+        await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+        await markInstagramAction(env);
+        igSpacingOk = false;
+      }
       if (canDoX && takeSlot()) {
         bufferXAttemptedInTick++;
         await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
@@ -2235,6 +2255,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       }
       if (canDoIg && takeSlot()) {
         await publishToPlatform(env, "instagram", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
+        await markInstagramAction(env);
+        igSpacingOk = false;
         didWork = true;
       }
       if (canDoX && takeSlot()) {
@@ -2904,6 +2926,14 @@ export default {
             if (retryAt > Date.now()) {
               results[platform] = { ok: false, status: "rate_limited", retryAt, error: "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار." };
               continue;
+            }
+            if (network === "instagram") {
+              const wait = await instagramSpacingWait(env);
+              if (wait > 0) {
+                results[platform] = { ok: false, status: "rate_limited", retryAt: Date.now() + wait, error: "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا." };
+                continue;
+              }
+              await markInstagramAction(env);
             }
             const send = () => platform === "facebook_reel" ? postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl })
               : platform === "facebook_story" ? postVideoToFacebookStory(env, { videoUrl: fullVideoUrl })

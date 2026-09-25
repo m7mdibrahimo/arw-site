@@ -913,3 +913,29 @@ test('catch-up on remaining platforms uses when the article reached the site, no
   const touched = Object.keys(after.deferrals || {}).concat(Object.keys(after.instagram));
   assert.ok(touched.some(k => k.endsWith('httpssitetestnewsrecovered')), 'Instagram attempted for the recovered article');
 });
+
+
+test('Instagram actions keep a minimum gap so a backlog never goes out as a burst', async t => {
+  // INCIDENTS #47: 4 Instagram posts in 3 minutes → "too many actions" → a
+  // 6-hour Instagram block that also hit the show reels.
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [{ url: '/news/queued/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: hours(1), published_at: hours(1) }];
+  const state: any = { telegram: { httpssitetestnewsqueued: Date.now() }, facebook: { httpssitetestnewsqueued: Date.now() }, instagram: {}, x: {}, cooldowns: {} };
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  const kv = new Map<string, string>([['ig_last_action_ts', String(Date.now() - 60_000)]]);
+  const PUSH_KV = { get: async (k: string) => kv.get(k) ?? null, put: async (k: string, v: string) => { kv.set(k, v); }, delete: async (k: string) => { kv.delete(k); } };
+  await runWatcherPoll({ ...env, PUSH_KV, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const igTouched = (st: any) => Object.keys(st.deferrals || {}).filter(k => k.startsWith('instagram:')).concat(Object.keys(st.instagram));
+  assert.ok(!igTouched(after).some(k => k.endsWith('httpssitetestnewsqueued')), 'no Instagram attempt within 10 minutes of the previous one');
+  kv.set('ig_last_action_ts', String(Date.now() - 11 * 60_000));
+  await runWatcherPoll({ ...env, PUSH_KV, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const later = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(igTouched(later).some(k => k.endsWith('httpssitetestnewsqueued')), 'attempted once the gap has passed');
+});
