@@ -2955,8 +2955,13 @@ function tokenizeForDuplicateCheck(text: string): Set<string> {
       .map(stemPlural)
   );
 }
+const SHOW_NAME_TOKENS = new Set(["wwe", "aew", "tna", "njpw", "roh", "mlw", "aaa", "cmll", "nwa", "gcw", "ufc", "raw", "smackdown", "nxt", "dynamite", "collision", "rampage", "impact", "main", "event", "results", "result", "show", "night", "friday", "monday", "saturday", "pro", "wrestling", "tv", "episode", "live"]);
+
 export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 24, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
+  // Federation and show-name words say nothing about the STORY: "WWE Main Event
+  // Results (9/24)" shared "wwe main event" with "WWE Main Event headed to new
+  // streaming platform" and was dropped as its duplicate (INCIDENTS #45).
   const newTokens = tokenizeForDuplicateCheck(rawTitle);
   if (newTokens.size < 3) return { isDuplicate: false };
   const cutoff = Date.now() - hoursWindow * 60 * 60 * 1000;
@@ -2978,7 +2983,8 @@ export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number =
       if (existingTokens.size < 3) continue;
       const shared = [...newTokens].filter(t => existingTokens.has(t));
       const overlapRatio = shared.length / Math.min(newTokens.size, existingTokens.size);
-      if (shared.length >= 3 && overlapRatio >= 0.6) {
+      const sharedStoryWords = shared.filter(t => !SHOW_NAME_TOKENS.has(t)).length;
+      if (shared.length >= 3 && overlapRatio >= 0.6 && sharedStoryWords >= 2) {
         return { isDuplicate: true, matchedFile: file };
       }
     } catch (e) {
@@ -3183,7 +3189,9 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
 
-  if (guardDuplicates) {
+  // Results reports are never judged by title words (every episode of a show
+  // shares them); the content + Gemini check below handles them.
+  if (guardDuplicates && !isShowResultsArticle(rawTitle, plainText)) {
     const dupe = findLikelyDuplicateStory(rawTitle);
     if (dupe.isDuplicate) {
       console.log(`[Watcher] 🔁 Likely duplicate of a recently published story (${dupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);

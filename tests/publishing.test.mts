@@ -880,3 +880,16 @@ test('an article that arrived during an Instagram pause is posted to Instagram a
   assert.ok(!touched.some(k => k.endsWith('httpssitetestnewsold') && !k.startsWith('instagram')), 'no other platform touched for stale articles');
   assert.ok(!sent.includes('telegram'), 'a stale article is never sent to Telegram');
 });
+
+
+test('sharing only a show name is not a duplicate (WWE Main Event results vs Main Event streaming news)', () => {
+  // INCIDENTS #45
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-show-test-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      `---\ndate: ${new Date().toISOString()}\nsource_url: "https://www.fightful.com/wrestling/wwe-main-event-heading-to-rumble-exclusively-in-october/"\n---\nbody`);
+    assert.equal(findLikelyDuplicateStory('WWE Main Event Results (9/24)', 24, dir).isDuplicate, false);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

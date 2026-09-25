@@ -99,11 +99,6 @@
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
     "at": "2026-09-25T07:20:18.424Z"
   },
-  "https://www.fightful.com/wrestling/wwe-main-event-results-9-24/": {
-    "matchedFile": "20260924160859-عرض-wwe-main-event-يبدأ-البث-حصريا-على-منصة-rumble-في-أكتوبر.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T07:20:18.622Z"
-  },
   "https://www.ringsidenews.com/jbl-admits-even-he-doesnt-know-how-fans-will-watch-wwe-x-aaa-worlds-collide/": {
     "matchedFile": "20260925022401-جي-بي-إل-يوضح-أن-المعلقين-لن-يتواجدوا-في-عرض-aaa-worlds-collide-وأنه-سيتم-تسجيل-التعليق-لاحقا.md",
     "reason": "الخبر الجديد يكرر نفس التصريحات والمعلومات الموجودة في الخبر المنشورة مسبقاً بشأن تعليق جي بي إل على عرض AAA Worlds Collide وتسجيل التعليق لاحقاً وعدم معرفته بطريقة البث.",
