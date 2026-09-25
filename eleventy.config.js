@@ -171,24 +171,6 @@ module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
   eleventyConfig.addGlobalData("buildTime", () => new Date().toISOString());
   eleventyConfig.addFilter("arabicSlug", arabicSlug);
-  // Puts the in-article ad after the 2nd paragraph (after the last one for short
-  // articles) — never inside a table, list, blockquote or embed.
-  eleventyConfig.addFilter("injectMidAd", (html, adHtml) => {
-    if (!html || !adHtml) return html;
-    const text = String(html);
-    const re = /<\/p>/g;
-    let m, count = 0, at = -1;
-    const openBefore = (i, tag) => (text.slice(0, i).match(new RegExp(`<${tag}[\\s>]`, "g")) || []).length
-      - (text.slice(0, i).match(new RegExp(`</${tag}>`, "g")) || []).length;
-    while ((m = re.exec(text))) {
-      const end = m.index + m[0].length;
-      if (openBefore(end, "blockquote") > 0 || openBefore(end, "table") > 0) continue; // inside an embed/table
-      count++;
-      if (count === 2) { at = end; break; }
-    }
-    if (at === -1) return text + adHtml;
-    return text.slice(0, at) + adHtml + text.slice(at);
-  });
   eleventyConfig.addNunjucksFilter("arabicSlug", arabicSlug);
   eleventyConfig.addFilter("slug", arabicSlug);
   eleventyConfig.addNunjucksFilter("slug", arabicSlug);
