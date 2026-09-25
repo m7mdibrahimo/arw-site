@@ -853,6 +853,13 @@ test('a results article with invented winners is caught, real finishes are not',
   assert.ok(!real.some(i => i.code === 'vague_result'));
 });
 
+test('letters from another script inside Arabic text are caught', () => {
+  // INCIDENTS #54: «وパاتريك ويطمان», «ناтан فرايزر», tag «مصارعة חברה».
+  for (const [body, tags] of [['فريق كاش ماكغينيس وパاتريك', []], ['فريق Fraxiom (ناтан فرايزر وأكسيوم)', []], ['نص سليم', ['مصارعة חברה']]] as [string, string[]][])
+    assert.ok(checkArticle('عنوان عربي سليم تماما هنا', body, tags).some(i => i.code === 'foreign_script'));
+  assert.ok(!checkArticle('عنوان عربي سليم تماما هنا', 'فاز Bobby Casale بلقب IWTV — نص عادي', ['Beyond Wrestling']).some(i => i.code === 'foreign_script'));
+});
+
 test('a pre-show match card is not a results report', () => {
   // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
   // and was published as results with «الفائز: قيد الانتظار».

@@ -76,6 +76,9 @@ const RULES: Rule[] = [
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },
   { code: "game_terms", severity: "error", re: /مجريات اللعب|المباراة الكروية|الشوط (?:الأول|الثاني)|أرض الملعب/g, message: "تعبير رياضي غير مناسب للمصارعة (المعتمد: مجريات النزال)" },
   { code: "artifact", severity: "error", re: /\bundefined\b|\bNaN\b|\[object Object\]|\{\{|\}\}|```|\\n|&amp;|&quot;|&#\d+;/g, message: "بقايا كود أو رموز غير مفهومة", fields: ["title", "body"] },
+  // Gemini sometimes swaps one letter of a name for a look-alike from another script:
+  // «وパاتريك» (Japanese), «ناтан» (Cyrillic), «مصارعة חברה» (Hebrew tag) — INCIDENTS #54.
+  { code: "foreign_script", severity: "error", re: /[\u0370-\u03FF\u0400-\u052F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]+/g, message: "حروف من لغة أخرى (يابانية/روسية/عبرية...) داخل النص" },
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
   { code: "empty_brackets", severity: "error", re: /\(\s*\)|\[\s*\]|«\s*»|""/g, message: "أقواس أو علامات تنصيص فاضية" },
   { code: "english_jargon", severity: "error", re: new RegExp(`[${AR}]\\s+(?:segment|promo|promoter|heel|babyface|face turn|heel turn|feud|spot|push|booking|booker|squash|botch|kayfabe|go-home|angle|storyline|run-in|pop|heat|tag team|finisher|jobber|mic skills|main event|midcard|house show)\\b|\\b(?:segment|promo|heel|babyface|feud|booking|squash|botch|kayfabe|go-home|storyline)\\s+[${AR}]`, "gi"), message: "مصطلح مصارعة إنجليزي داخل جملة عربية (مثل segment ← فقرة، promo ← خطاب/حوار)", fields: ["title", "body"] },
