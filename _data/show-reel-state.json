@@ -2253,12 +2253,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 24.09.2026 مترجم",
-    "lastAttempt": 1790351469236,
+    "lastAttempt": 1790355056227,
     "errors": {
-      "instagram_reel": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار.",
-      "instagram_story": "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
-    "processing": [],
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
