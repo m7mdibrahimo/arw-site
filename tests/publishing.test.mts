@@ -941,3 +941,16 @@ test('Instagram actions keep a minimum gap so a backlog never goes out as a burs
   const later = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   assert.ok(igTouched(later).some(k => k.endsWith('httpssitetestnewsqueued')), 'attempted once the gap has passed');
 });
+
+test('no correction rule matches its own correct form', () => {
+  // 2026-09-25: an FTR rule written as «[اإ]ف تي [اآ]ر → إف تي آر» also matched the
+  // right spelling, so QA flagged correct articles and the copy editor could never
+  // write the approved name.
+  const { corrections } = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8'));
+  const selfMatching = corrections.filter((c: any) => {
+    if (!c.right) return false;
+    const body = c.regex ? c.wrong : c.wrong.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(`(?<![\\u0621-\\u064A])(?:${body})(?![\\u0621-\\u064A])`).test(c.right);
+  }).map((c: any) => `${c.wrong} → ${c.right}`);
+  assert.deepEqual(selfMatching, []);
+});
