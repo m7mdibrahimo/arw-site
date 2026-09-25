@@ -11,6 +11,17 @@
     "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
+    "url": "/shows/roh-24-09-2026/",
+    "title": "عرض ار او اتش 24.09.2026 مترجم",
+    "subtitle": "ROH 24.09.2026",
+    "image": "/img/qUfJ91hA0F-800.jpeg",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-dynamite-23-09-2026/",
     "title": "عرض ديناميت 23.09.2026 مترجم",
     "subtitle": "AEW Dynamite 23.09.2026",
@@ -75,17 +86,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/roh-17-09-2026",
-    "title": "عرض ار او اتش 17.09.2026 مترجم",
-    "subtitle": "ROH 17.09.2026",
-    "image": "/img/CvAD9Q5ZmG-800.jpeg",
-    "federation": "ROH",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026",
