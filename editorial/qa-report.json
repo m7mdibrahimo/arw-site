@@ -1,113 +1,6 @@
 {
-  "scanned": 250,
+  "scanned": 254,
   "articles": [
-    {
-      "file": "20260922034411-روكسان-بيريز-تتأهل-لنزال-موني-إن-ذا-بانك-للسيدات-في-عرض-wwe-raw.md",
-      "title": "روكسان بيريز تتأهل لنزال موني إن ذا بانك للسيدات في عرض WWE RAW",
-      "issues": [
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "body",
-          "message": "\"WWE\\s+Raw\" → \"WWE RAW\" (أسماء العروض والاتحادات تبقى بالإنجليزي)",
-          "excerpt": "صفيوي مثير أقيم خلال عرض WWE Raw لهذا الأسبوع، وشهد منافس"
-        },
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "tags",
-          "message": "\"WWE\\s+Raw\" → \"WWE RAW\" (أسماء العروض والاتحادات تبقى بالإنجليزي)",
-          "excerpt": "WWE | WWE Raw | روكسان بيريز | إيو سكا"
-        }
-      ]
-    },
-    {
-      "file": "20260922042711-اوبا-فيمي-يعود-في-عرض-wwe-raw-ويسحق-فريق-ذا-فيجن.md",
-      "title": "أوبا فيمي يعود في عرض WWE RAW ويسحق فريق ذا فيجن",
-      "issues": [
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "body",
-          "message": "\"يترقب الجماهير\" → \"تترقب الجماهير\" (الجماهير جمع تكسير: الفعل قبلها مؤنث)",
-          "excerpt": "ام عشاق المصارعة الحرة. يترقب الجماهير التداعيات الكبرى لهذا ال"
-        },
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "tags",
-          "message": "\"WWE\\s+Raw\" → \"WWE RAW\" (أسماء العروض والاتحادات تبقى بالإنجليزي)",
-          "excerpt": "WWE | WWE Raw | أوبا فيمي | برون بريكر"
-        }
-      ]
-    },
-    {
-      "file": "20260922053028-بنتا-يحجز-مقعده-في-نزال-موني-إن-ذا-بانك-بعد-تغييرات-اللحظة-الأخيرة-في-عرض-wwe-raw.md",
-      "title": "بنتا يحجز مقعده في نزال موني إن ذا بانك بعد تغييرات اللحظة الأخيرة في عرض WWE RAW",
-      "issues": [
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "title",
-          "message": "\"بنتا\" → \"بينتا\" (اسم مصارع/فريق (Penta))",
-          "excerpt": "بنتا يحجز مقعده في نزال موني"
-        },
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "body",
-          "message": "\"بنتا\" → \"بينتا\" (اسم مصارع/فريق (Penta))",
-          "excerpt": "استغل المصارع بنتا فرصة ذهبية في اللحظات ال"
-        },
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "tags",
-          "message": "\"بنتا\" → \"بينتا\" (اسم مصارع/فريق (Penta))",
-          "excerpt": "WWE | WWE RAW | بنتا | دومينيك ميستيريو | درا"
-        }
-      ]
-    },
-    {
-      "file": "20260922053350-بينتا-يحل-محل-سولو-سيكوا-ويحجز-مقعده-في-موني-إن-ذا-بانك-خلال-عرض-wwe-raw.md",
-      "title": "بينتا يحل محل سولو سيكوا ويحجز مقعده في موني إن ذا بانك خلال عرض WWE RAW",
-      "issues": [
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "tags",
-          "message": "\"WWE\\s+Raw\" → \"WWE RAW\" (أسماء العروض والاتحادات تبقى بالإنجليزي)",
-          "excerpt": "WWE | WWE Raw | بينتا | دومينيك ميستير"
-        }
-      ]
-    },
-    {
-      "file": "20260922065848-جيه-بي-إل-يتذكر-أجواء-عرض-wwe-smackdown-الكئيبة-بعد-أحداث-الحادي-عشر-من-سبتمبر.md",
-      "title": "جيه بي إل يتذكر أجواء عرض WWE SmackDown الكئيبة بعد أحداث الحادي عشر من سبتمبر",
-      "issues": [
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "title",
-          "message": "\"جيه بي إل\" → \"جي بي إل\" (اسم مصارع/فريق (JBL) — الصيغة المعتمدة)",
-          "excerpt": "جيه بي إل يتذكر أجواء عرض WWE Smac"
-        },
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "body",
-          "message": "\"جيه بي إل\" → \"جي بي إل\" (اسم مصارع/فريق (JBL) — الصيغة المعتمدة)",
-          "excerpt": "تحدث النجم المخضرم جيه بي إل عن الأجواء الغريبة والكئ"
-        },
-        {
-          "code": "known_wrong",
-          "severity": "error",
-          "field": "tags",
-          "message": "\"جيه بي إل\" → \"جي بي إل\" (اسم مصارع/فريق (JBL) — الصيغة المعتمدة)",
-          "excerpt": "WWE | WWE SmackDown | جيه بي إل | أحداث الحادي عشر من سب"
-        }
-      ]
-    },
     {
       "file": "20260922083801-نتائج-عرض-wwe-raw-21-سبتمبر-2026-تصفيات-موني-إن-ذا-بانك-بيلي-ضد-لايرا-فالكيريا-بنتا-ال-ايه-نايت-والمزيد.md",
       "title": "نتائج عرض WWE RAW (21 سبتمبر 2026): تصفيات موني إن ذا بانك، بيلي ضد ليرا فالكيريا، بنتا، ال ايه نايت، والمزيد",
@@ -1291,6 +1184,226 @@
           "excerpt": "ampionship Wrestling إلى فايولنت جايي، مما وفر تفسيرا دراميا م"
         }
       ]
+    },
+    {
+      "file": "20260925033616-ماشا-سلاموفيتش-تظهر-للمرة-الأولى-في-اتحاد-mlw.md",
+      "title": "ماشا سلاموفيتش تظهر للمرة الأولى في اتحاد MLW",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"بطولة\\s+TNA\\s+Knockouts(?:\\s+(?:World\\s+)?(?:Championship|Title))?\" → \"بطولة TNA العالمية للسيدات\" (اسم البطولة بالعربية)",
+          "excerpt": "د TNA ومقررة لمنافسة على بطولة TNA Knockouts في عرض Victory Road، قبل"
+        }
+      ]
+    },
+    {
+      "file": "20260925040000-مايفن-يتذكر-إغضاب-فينس-مكمان-بعد-خطأ-ارتكبه-في-عرض-wrestlemania.md",
+      "title": "مايفن يتذكر إغضاب فينس مكمان بعد خطأ ارتكبه في عرض WrestleMania",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"الراحل فينس مكمان\" → \"فينس مكمان\" (فينس مكمان على قيد الحياة — «الراحل» اختراع)",
+          "excerpt": "ة أثارت غضب رئيس الاتحاد الراحل فينس مكمان بعد خطأ ارتكبه في إحدى ا"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"تووجه\" → \"توجه\" (خطأ إملائي)",
+          "excerpt": "واقعية نوعا ما. وأكد أنه تووجه نحو الكواليس فور انتهاء"
+        }
+      ]
+    },
+    {
+      "file": "20260925040056-جوني-بوليود-يفوز-بالبطولة-العالمية-في-عرض-pwr-kranti.md",
+      "title": "جوني بوليود يفوز بالبطولة العالمية في عرض PWR Kranti",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"(?:معركة\\s+)?كرا?نتي\\s+كاب(?:\\s+باتل\\s+رويال)?\" → \"Kranti Cup Battle Royal\" (أسماء البطولات تبقى بالإنجليزي)",
+          "excerpt": "لات، تمكن شانكي من الفوز بمعركة كرنتي كاب باتل رويال، بينما فاز جورا جوهل على"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "tags",
+          "message": "\"مانصور\" → \"منصور\" (اسم مصارع (Mansoor))",
+          "excerpt": "غ دامو | دونوفان ديجاك | مانصور | ميسون مادن"
+        }
+      ]
+    },
+    {
+      "file": "20260925041536-نيك-نيميث-قد-يجرد-من-بطولة-tna-العالمية-بعد-شرط-جديد-في-عرض-bound-for-glory.md",
+      "title": "نيك نيميث قد يجرد من بطولة TNA العالمية بعد شرط جديد في عرض Bound For Glory",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "title",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "لمية بعد شرط جديد في عرض Bound For Glory"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "ديد اللهجة قبل إقامة عرض Bound For Glory، بعدما فرض اتحاد TNA عقو"
+        }
+      ]
+    },
+    {
+      "file": "20260925042622-نزال-كول-يور-شوت-جونتلت-يقام-في-عرض-tna-bound-for-glory.md",
+      "title": "نزال كول يور شوت جونتلت يقام في عرض TNA Bound For Glory",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "title",
+          "message": "\"كول\\s+يور\\s+شوت(?:\\s+(?:جونتلت|غونتلت|جاونتلت))?\" → \"Call Your Shot Gauntlet\" (أسماء النزالات والبطولات تبقى بالإنجليزي)",
+          "excerpt": "نزال كول يور شوت جونتلت يقام في عرض TNA Bound Fo"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "title",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "ت جونتلت يقام في عرض TNA Bound For Glory"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"كول\\s+يور\\s+شوت(?:\\s+(?:جونتلت|غونتلت|جاونتلت))?\" → \"Call Your Shot Gauntlet\" (أسماء النزالات والبطولات تبقى بالإنجليزي)",
+          "excerpt": "تحاد TNA رسميا عودة نزال كول يور شوت جونتلت الشهير، والذي سيقام ضمن"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "يقام ضمن فعاليات عرض TNA Bound For Glory المرتقب المقررة إقامته ي"
+        }
+      ]
+    },
+    {
+      "file": "20260925043711-رايان-نيميث-يحجز-مقعده-في-نزال-بطولة-tna-x-division-ضمن-عرض-bound-for-glory.md",
+      "title": "رايان نيميث يحجز مقعده في نزال بطولة TNA X Division ضمن عرض Bound For Glory",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "title",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "ة TNA X Division ضمن عرض Bound For Glory"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"كيه سي نافارو\" → \"كي سي نافارو\" (اسم مصارع/فريق (KC Navarro))",
+          "excerpt": "الذي يضم حتى الآن كل من كيه سي نافارو، فابيان أيتشنر، سيدريك أ"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "vision الجديد في عرض TNA Bound For Glory المرتقب المقرر إقامته يو"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "tags",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "TNA | Bound For Glory | رايان نيميث"
+        }
+      ]
+    },
+    {
+      "file": "20260925044400-بث-مقطع-مرئي-لروزماري-خلال-عرض-tna-impact.md",
+      "title": "بث مقطع مرئي لروزماري خلال عرض TNA iMPACT",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"بطولة TNA العالمية للسيدات للفرق\" → \"بطولة TNA العالمية للفرق للسيدات\" (اسم البطولة المعتمد)",
+          "excerpt": "س الماضي، حيث كانت تحتفظ ببطولة TNA العالمية للسيدات للفرق مناصفة مع زميلتها ألي."
+        }
+      ]
+    },
+    {
+      "file": "20260925045959-إيفري-ستايلز-يستعد-لتسجيل-ظهوره-الأول-في-حلبات-tna-خلال-عرض-bound-for-glory.md",
+      "title": "إيفري ستايلز يستعد لتسجيل ظهوره الأول في حلبات TNA خلال عرض Bound for Glory",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "Shot Gauntlet، ليشهد عرض Bound For Glory المرتقب المقرر إقامته في"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"لينضمان\" → \"لينضما\" (الفعل بعد لام التعليل منصوب: تحذف النون)",
+          "excerpt": "مشاركته في النزال ذاته، لينضمان إلى برونسون الذي أعلن مش"
+        },
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "tags",
+          "message": "\"Bound\\s+For\\s+Glory\" → \"Bound for Glory\" (الاسم الرسمي للعرض)",
+          "excerpt": "TNA | Bound For Glory | TNA iMPACT | إيفري ستا"
+        }
+      ]
+    },
+    {
+      "file": "20260925053000-نتائج-عرض-roh-tv-25-سبتمبر-2026-أثينا-وبيلي-ستاركز-تتحدان-في-المواجهات.md",
+      "title": "نتائج عرض ROH TV (25 سبتمبر 2026): أثينا وبيلي ستاركز تتحدان في المواجهات",
+      "issues": [
+        {
+          "code": "title_body_date",
+          "severity": "warning",
+          "field": "title",
+          "message": "تاريخ العنوان (25) غير موجود في النص (24)",
+          "excerpt": "نتائج عرض ROH TV (25 سبتمبر 2026): أثينا وبيلي ستاركز تتحدان في المواجهات"
+        }
+      ]
+    },
+    {
+      "file": "20260925055736-ساكوان-شوجرز-يتحدى-تشاد-غيبل-على-بطولة-wwe-القارات-في-عرض-wwe-nxt.md",
+      "title": "ساكوان شوجرز يتحدى تشاد غيبل على بطولة WWE القارات في عرض WWE NXT",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"دفع بنجاح عن\" → \"دافع بنجاح عن\" (defended = دافع (دفع = ادفع/سدد))",
+          "excerpt": "ال شهر أغسطس الماضي، وقد دفع بنجاح عن لقبه في مناسبتين حتى الآ"
+        }
+      ]
+    },
+    {
+      "file": "20260925063441-ذا-هارديز-يتحديان-جوزيف-ساير-وصامويل-شو-مع-الإعلان-عن-نزال-لتحديد-المترشح-لبطولة-x-division-في-عرض-tna-impact-القادم.md",
+      "title": "ذا هارديز يتحديان جوزيف ساير وصامويل شو مع الإعلان عن نزال لتحديد المترشح لبطولة X Division في عرض TNA iMPACT القادم",
+      "issues": [
+        {
+          "code": "known_wrong",
+          "severity": "error",
+          "field": "body",
+          "message": "\"ليون سراتر\" → \"ليون سلاتر\" (اسم مصارع (Leon Slater))",
+          "excerpt": "دي هارتويل ضد زوي سيرانو وليون سراتر ضد جو ألونسو."
+        }
+      ]
     }
   ],
   "duplicates": [
@@ -1336,7 +1449,7 @@
       "a": "اخبار المصارعة",
       "b": "أخبار المصارعة",
       "countA": 385,
-      "countB": 449
+      "countB": 452
     },
     {
       "a": "اخبار المصارعة",
@@ -1401,7 +1514,7 @@
     {
       "a": "أخبار المصارعة",
       "b": "أخبارالمصارعة",
-      "countA": 449,
+      "countA": 452,
       "countB": 1
     },
     {
@@ -1426,6 +1539,12 @@
       "a": "عروض AAA",
       "b": "عرض AAA",
       "countA": 14,
+      "countB": 1
+    },
+    {
+      "a": "ديكستر لوميس",
+      "b": "دكستر لوميس",
+      "countA": 3,
       "countB": 1
     },
     {
@@ -1492,7 +1611,7 @@
       "a": "كريستيان كيدج",
       "b": "كريستيان كيج",
       "countA": 3,
-      "countB": 2
+      "countB": 3
     },
     {
       "a": "نسب المشاهدة",
@@ -1561,6 +1680,12 @@
       "countB": 1
     },
     {
+      "a": "كيرا هوغان",
+      "b": "كيرا هوجان",
+      "countA": 3,
+      "countB": 1
+    },
+    {
       "a": "عاليا ميستيريو",
       "b": "أليا ميستريو",
       "countA": 1,
@@ -1605,7 +1730,7 @@
     {
       "a": "أخبار المصارعة الحرة",
       "b": "اخبار المصارعة الحرة",
-      "countA": 63,
+      "countA": 64,
       "countB": 3
     },
     {
@@ -1653,7 +1778,7 @@
     {
       "a": "جوزيف ساير",
       "b": "جوزيف سوير",
-      "countA": 1,
+      "countA": 3,
       "countB": 1
     },
     {
@@ -1676,8 +1801,20 @@
     },
     {
       "a": "شيا بروكسايد",
+      "b": "كسيا بروكسايد",
+      "countA": 2,
+      "countB": 1
+    },
+    {
+      "a": "شيا بروكسايد",
       "b": "زيا بروكسايد",
       "countA": 2,
+      "countB": 1
+    },
+    {
+      "a": "برايان كيث",
+      "b": "براين كيث",
+      "countA": 3,
       "countB": 1
     },
     {
@@ -1744,7 +1881,7 @@
       "a": "أفري ستايلز",
       "b": "إيفري ستايلز",
       "countA": 1,
-      "countB": 3
+      "countB": 4
     },
     {
       "a": "جاكسون دريك",
@@ -1780,17 +1917,23 @@
       "a": "ايفري ستيلز",
       "b": "إيفري ستايلز",
       "countA": 1,
-      "countB": 3
+      "countB": 4
     },
     {
       "a": "ايفري ستايلز",
       "b": "إيفري ستايلز",
       "countA": 2,
-      "countB": 3
+      "countB": 4
     },
     {
       "a": "شاحنات الإنتاج",
       "b": "شاحنات إنتاج",
+      "countA": 1,
+      "countB": 1
+    },
+    {
+      "a": "بيلي ستاركس",
+      "b": "بيلي ستاركز",
       "countA": 1,
       "countB": 1
     },
@@ -1839,6 +1982,18 @@
     {
       "a": "كارل أندرسون",
       "b": "كارل اندرسون",
+      "countA": 1,
+      "countB": 1
+    },
+    {
+      "a": "داستن رودس",
+      "b": "داستن رودز",
+      "countA": 1,
+      "countB": 1
+    },
+    {
+      "a": "كسيا بروكسايد",
+      "b": "زيا بروكسايد",
       "countA": 1,
       "countB": 1
     },
