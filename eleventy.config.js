@@ -162,6 +162,10 @@ const { toEmbedUrl } = require("./lib/embed.cjs");
 // بيوحّد أشكال الألف المختلفة (أ إ آ) لألف عادية (ا) عشان "اخبار المصارعة" و"أخبار المصارعة"
 // يتحسبوا نفس الوسم بدل ما يتقسموا لصفحتين منفصلتين. بيتستخدم بس لحساب الـ slug (تجميع/تصنيف)،
 // مش للعنوان أو الرابط الأصلي بتاع المقالات، عشان مايغيرش أي رابط مقال موجود بالفعل.
+// Tag pages with fewer items are noindex (pages/tag.njk) and are not linked (tagHref).
+const MIN_INDEXED_TAG_ITEMS = 3;
+let tagCountBySlug = new Map();
+
 function normalizeArabicHamza(str) {
   if (!str) return "";
   return str.toString().replace(/[أإآ]/g, 'ا');
@@ -1219,7 +1223,19 @@ module.exports = function(eleventyConfig) {
         });
       }
     });
+    tagCountBySlug = new Map(Array.from(tagMap.values()).map(t => [t.slug, t.count]));
     return Array.from(tagMap.values()).sort((a,b) => b.count - a.count);
+  });
+
+  // Link a tag only when its page is indexable (3+ items — pages/tag.njk puts noindex on
+  // smaller ones) and link the canonical hamza-normalized slug directly. Every article used
+  // to link 1,700+ noindex tag pages plus ~440 redirecting spellings, which Search Console
+  // reported as "Excluded by noindex" / "Page with redirect" and which ate the crawl budget
+  // Google should spend on articles ("Discovered – currently not indexed").
+  eleventyConfig.addFilter("tagHref", (tag) => {
+    const slug = arabicSlug(normalizeArabicHamza(String(tag || "").trim()));
+    if (!slug || (tagCountBySlug.get(slug) || 0) < MIN_INDEXED_TAG_ITEMS) return "";
+    return `/tag/${slug}/`;
   });
 
   eleventyConfig.addCollection("federationPaginated", function(collectionApi) {

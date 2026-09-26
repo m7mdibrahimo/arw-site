@@ -212,11 +212,11 @@ permalink: /tags/
 <section class="content">
   <div class="wrap">
     <div class="tags-cloud">
-      {% for tagObj in collections.tagList %}
+      {% for tagObj in collections.tagList %}{% if tagObj.count >= 3 %}
       <a class="tag-card reveal" href="/tag/{{ tagObj.slug }}/">
         <span>#{{ tagObj.name }}</span>
         <span class="tag-badge">{{ tagObj.count }} موضوع</span>
-      </a>
+      </a>{% endif %}
       {% else %}
       <p style="text-align:center; color:var(--muted);">لا توجد وسوم مضافة حالياً.</p>
       {% endfor %}
