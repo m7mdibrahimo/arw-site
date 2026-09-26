@@ -175,6 +175,11 @@ export function autoFix(text: string): string {
     // — Gemini translated it as a closing paragraph («شاركنا رأيك في التعليقات»).
     // It's the source's sign-off, not news: drop that paragraph.
     .replace(/(^|\n)[^\n]*(?:شاركنا|شاركونا|أخبرنا|أخبرونا|اتركوا|اترك)[^\n]*(?:التعليقات|رأيك|رأيكم)[^\n]*(?=\n|$)/g, "")
+    // Punctuation orphaned when the copy editor deletes a clause: «كانديس ليراي، .»
+    // (INCIDENTS #57) — keep the stronger mark, drop the space before it.
+    .replace(/[،,؛]\s*([.!؟?])/g, "$1")
+    .replace(/([،؛])\s*[،,؛]/g, "$1")
+    .replace(/[ \t]+([.،؛!؟])(?=\s|$)/g, "$1")
     // "What's Your Story؟": an Arabic question mark inside an English name
     .replace(/([A-Za-z])؟/g, "$1?")
     // "أارون" / "أاماساكي": hamza-alef + alef never occurs in Arabic — it is a long «آ»

@@ -9,7 +9,7 @@ import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
-import { checkArticle } from '../scripts/news-qa';
+import { checkArticle, autoFix } from '../scripts/news-qa';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -858,6 +858,13 @@ test('letters from another script inside Arabic text are caught', () => {
   for (const [body, tags] of [['فريق كاش ماكغينيس وパاتريك', []], ['فريق Fraxiom (ناтан فرايزر وأكسيوم)', []], ['نص سليم', ['مصارعة חברה']]] as [string, string[]][])
     assert.ok(checkArticle('عنوان عربي سليم تماما هنا', body, tags).some(i => i.code === 'foreign_script'));
   assert.ok(!checkArticle('عنوان عربي سليم تماما هنا', 'فاز Bobby Casale بلقب IWTV — نص عادي', ['Beyond Wrestling']).some(i => i.code === 'foreign_script'));
+});
+
+test('punctuation left behind by a deleted clause is cleaned', () => {
+  // INCIDENTS #57: «…لجارجانو وزوجته كانديس ليراي، .»
+  assert.equal(autoFix('لجارجانو وزوجته كانديس ليراي، .'), 'لجارجانو وزوجته كانديس ليراي.');
+  assert.equal(autoFix('فاز، ، ثم رحل .'), 'فاز، ثم رحل.');
+  assert.equal(autoFix('نص عادي، ثم نص.'), 'نص عادي، ثم نص.');
 });
 
 test('a pre-show match card is not a results report', () => {
