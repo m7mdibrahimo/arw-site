@@ -3601,6 +3601,16 @@
    "wrong": "أفيرونو",
    "right": "أفيرنو",
    "note": "Averno"
+  },
+  {
+   "wrong": "الفانت",
+   "right": "الفوز",
+   "note": "steal the win = خطف الفوز"
+  },
+  {
+   "wrong": "باك كارتويل",
+   "right": "جاك كارتويل",
+   "note": "Jack Cartwheel"
   }
  ]
 }
