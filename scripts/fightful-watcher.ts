@@ -2145,7 +2145,8 @@ export function isEmptyResultsStub(plainText: string, modifiedGmt?: string): boo
   // "def." ends in a period, so it can't sit inside \b…\b (that never matched).
   // «vs.» is a match CARD, not a result (a Ringside live page listing «Trick Williams
   // vs. Baron Corbin» before the show counted as results — 2026-09-26, INCIDENTS #53).
-  const resultLines = (plainText.match(/\bdef\.|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw)\b/gi) || []).length;
+  // Ringside writes play-by-play: «…third Book End for the win.» / «The winner of the match…».
+  const resultLines = (plainText.match(/\bdef\.|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw|for the (?:win|victory)|the winners? (?:of|is|are)|winner:|picks? up the (?:win|victory)|gets? the (?:win|pin)|pinfall victory)\b/gi) || []).length;
   if (resultLines === 0) return true;
   // A live-coverage page that still announces results "to come".
   if (resultLines < 3 && /stay tuned|refresh (?:this page|for the latest)|live,? match-by-match|results? (?:will be|are) (?:posted|updated)|check back/i.test(plainText)) return true;

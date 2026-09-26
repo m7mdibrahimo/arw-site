@@ -865,6 +865,8 @@ test('a pre-show match card is not a results report', () => {
   // and was published as results with «الفائز: قيد الانتظار».
   assert.ok(isEmptyResultsStub('Ringside News will provide live, match-by-match updates. Stay tuned. Trick Williams (c) vs. Baron Corbin. CM Punk vs. Finn Balor. Charlotte Flair vs. Giulia.'));
   assert.ok(!isEmptyResultsStub('Trick Williams def. Baron Corbin to retain. CM Punk defeated Finn Balor. Giulia beats Charlotte Flair.'));
+  // Ringside's play-by-play style is a real result too.
+  assert.ok(!isEmptyResultsStub('Stay tuned. Williams hits a third Book End for the win. The winner of the Steel Cage Match, Trick Williams! Punk hits the GTS for the win. Flair hits Natural Selection for the win.'));
   const pending = checkArticle('نتائج عرض WWE SmackDown', '🏆 **الفائز:** قيد الانتظار', []);
   assert.ok(pending.some(i => i.code === 'vague_result'));
 });
