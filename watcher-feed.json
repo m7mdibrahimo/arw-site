@@ -1,5 +1,15 @@
 [
   {
+    "id": 330602,
+    "link": "https://www.fightful.com/wrestling/hog-windy-city-warfare-results-9-25/",
+    "date": "2026-09-26T15:00:00",
+    "date_gmt": "2026-09-26T19:00:00",
+    "title": {
+      "rendered": "HOG Windy City Warfare Results (9/25)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25223704/maxresdefault-172.jpg"
+  },
+  {
     "id": 330601,
     "link": "https://www.fightful.com/wrestling/update-on-bobby-roode-and-drake-mavericks-status-with-wwe/",
     "date": "2026-09-26T14:49:59",
@@ -288,15 +298,5 @@
       "rendered": "CM Punk Qualifies For Men&#8217;s Money In The Bank On 9/25 WWE SmackDown"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25220430/IMG_2875.png"
-  },
-  {
-    "id": 330514,
-    "link": "https://www.fightful.com/wrestling/giulia-vs-blake-monroe-mens-and-womens-money-in-the-bank-qualifying-matches-set-for-10-2-wwe-smackdown/",
-    "date": "2026-09-25T21:45:58",
-    "date_gmt": "2026-09-26T01:45:58",
-    "title": {
-      "rendered": "Giulia Vs. Blake Monroe, Final Men&#8217;s And Women&#8217;s Money In The Bank Qualifying Matches Set For 10/2 WWE SmackDown"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25214253/HTGzp7-XYAAWJh8.jpg"
   }
 ]
