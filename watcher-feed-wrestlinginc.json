@@ -1,5 +1,35 @@
 [
   {
+    "id": 2467185298,
+    "link": "https://www.wrestlinginc.com/2269693/wwe-smackdown-lash-legend-wins-triple-threat-qualifies-womens-mitb-money-in-the-bank/",
+    "date": "Sat, 26 Sep 2026 01:02:14 +0000",
+    "date_gmt": "2026-09-26T01:02:14.000Z",
+    "title": {
+      "rendered": "Lash Legend Wins WWE SmackDown Triple Threat, Qualifies For Women's MITB Ladder Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-lash-legend-wins-triple-threat-qualifies-womens-mitb-money-in-the-bank/l-intro-1790385099.jpg"
+  },
+  {
+    "id": 1821634350,
+    "link": "https://www.wrestlinginc.com/2269692/wwe-worlds-collide-air-youtube-wednesday-aew-dynamite/",
+    "date": "Sat, 26 Sep 2026 01:01:08 +0000",
+    "date_gmt": "2026-09-26T01:01:08.000Z",
+    "title": {
+      "rendered": "WWE Announces Worlds Collide Will Air On YouTube (But Not This Saturday)"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-worlds-collide-air-youtube-wednesday-aew-dynamite/l-intro-1790384593.jpg"
+  },
+  {
+    "id": 1247769665,
+    "link": "https://www.wrestlinginc.com/2268769/wwe-matt-cardona-zack-ryder-getting-fired-best-day-life/",
+    "date": "Sat, 26 Sep 2026 01:00:00 +0000",
+    "date_gmt": "2026-09-26T01:00:00.000Z",
+    "title": {
+      "rendered": "Matt Cardona Says Getting Fired By WWE Wound Up Being The Best Day Of His Life"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/matt-cardona-says-getting-fired-by-wwe-wound-up-being-the-best-day-of-his-life/l-intro-1790344889.jpg"
+  },
+  {
     "id": 5057498565,
     "link": "https://www.wrestlinginc.com/2269688/wwe-smackdown-trick-williams-baron-corbin-steel-cage-us-title/",
     "date": "Sat, 26 Sep 2026 00:34:29 +0000",
@@ -37,7 +67,7 @@
     "title": {
       "rendered": "WWE SmackDown Results 9/25 - US Championship Steel Cage Match, MITB Qualifiers & More"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-september-25-us-championship-steel-cage-match-money-in-the-bank-qualifiers-more/l-intro-1790382115.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-september-25-us-championship-steel-cage-match-money-in-the-bank-qualifiers-more/l-intro-1790384103.jpg"
   },
   {
     "id": 4745967814,
@@ -168,35 +198,5 @@
       "rendered": "Netflix Reportedly 'Enthusiastic And Impressed' With WWE Raw Numbers From Mexico City"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/netflix-reportedly-enthusiastic-and-impressed-with-wwe-raw-numbers-from-mexico-city/l-intro-1790335333.jpg"
-  },
-  {
-    "id": 1803373572,
-    "link": "https://www.wrestlinginc.com/2269041/wwes-rhea-ripley-provides-injury-update-learnt-how-to-walk-last-week/",
-    "date": "Fri, 25 Sep 2026 16:28:30 +0000",
-    "date_gmt": "2026-09-25T16:28:30.000Z",
-    "title": {
-      "rendered": "WWE's Rhea Ripley Provides Injury Update: 'Learnt How To Walk Last Week'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-rhea-ripley-provides-injury-update-learnt-how-to-walk-last-week/l-intro-1790353129.jpg"
-  },
-  {
-    "id": 4327250007,
-    "link": "https://www.wrestlinginc.com/2269027/aew-wwe-mvp-roman-reigns-mainstream-crossover-appeal/",
-    "date": "Fri, 25 Sep 2026 16:20:56 +0000",
-    "date_gmt": "2026-09-25T16:20:56.000Z",
-    "title": {
-      "rendered": "AEW Star MVP Isn't Sure WWE's Roman Reigns Has 'Mainstream Crossover Potential'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-star-mvp-isnt-sure-wwes-roman-reigns-has-mainstream-crossover-appeal/l-intro-1790352979.jpg"
-  },
-  {
-    "id": 1182662255,
-    "link": "https://www.wrestlinginc.com/2268575/wwe-smackdown-world-title-absolutely-blundered-finish-sami-zayn-cm-punk/",
-    "date": "Fri, 25 Sep 2026 16:00:00 +0000",
-    "date_gmt": "2026-09-25T16:00:00.000Z",
-    "title": {
-      "rendered": "Backstage Details On 'Absolutely Blundered' Finish To WWE SmackDown World Title Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-absolutely-blundered-finish-to-wwe-smackdown-world-title-match/l-intro-1790330955.jpg"
   }
 ]
