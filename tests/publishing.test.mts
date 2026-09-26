@@ -867,6 +867,13 @@ test('punctuation left behind by a deleted clause is cleaned', () => {
   assert.equal(autoFix('نص عادي، ثم نص.'), 'نص عادي، ثم نص.');
 });
 
+test('a paragraph written twice is kept once', () => {
+  // INCIDENTS #58
+  const intro = 'شهد عرض WWE SmackDown الذي أقيم مساء 25 سبتمبر 2026 أحداثا ساخنة ومواجهات قوية تمهيدا للعرض المرتقب.';
+  assert.equal(autoFix(`${intro}\n\n---\n${intro}\n\n---\n**المواجهة الأولى**`), `${intro}\n\n---\n**المواجهة الأولى**`);
+  assert.equal(autoFix(`${intro}\n\n${intro}\n\n**المواجهة الأولى**\n\n🏆 **الفائز:** تريك ويليامز\n\n🏆 **الفائز:** تريك ويليامز`), `${intro}\n\n**المواجهة الأولى**\n\n🏆 **الفائز:** تريك ويليامز\n\n🏆 **الفائز:** تريك ويليامز`);
+});
+
 test('a pre-show match card is not a results report', () => {
   // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
   // and was published as results with «الفائز: قيد الانتظار».
@@ -980,6 +987,16 @@ test('no correction rule matches its own correct form', () => {
     return new RegExp(`(?<![\\u0621-\\u064A])(?:${body})(?![\\u0621-\\u064A])`).test(c.right);
   }).map((c: any) => `${c.wrong} → ${c.right}`);
   assert.deepEqual(selfMatching, []);
+});
+
+test('corrections never undo each other and never rewrite a glossary spelling', () => {
+  // 2026-09-26: «جايسي جاين → جيسي جين» was added while «جيسي جين → جايسي جاين»
+  // existed — the two rules flipped the name back and forth (INCIDENTS #58).
+  const { corrections } = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8'));
+  const plain = new Map<string, string>(corrections.filter((c: any) => !c.regex).map((c: any) => [c.wrong, c.right]));
+  assert.deepEqual([...plain].filter(([w, r]) => plain.get(r) === w), []);
+  const glossary = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts/wrestler-names.json'), 'utf8'));
+  assert.deepEqual(Object.entries(glossary).filter(([, v]) => typeof v === 'string' && plain.has(v as string)), []);
 });
 
 test('a waiting show reel reserves the next Instagram slot over news', async t => {
