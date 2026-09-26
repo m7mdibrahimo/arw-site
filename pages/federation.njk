@@ -300,7 +300,7 @@ permalink: "{{ fedPage.permalink }}"
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
 <link rel="stylesheet" href="/assets/features.css?v=20260926h">
-<link rel="stylesheet" href="/assets/dark.css?v=20260926h">
+<link rel="stylesheet" href="/assets/dark.css?v=20260926i">
 </head>
 <body>
 <header>
@@ -349,10 +349,6 @@ permalink: "{{ fedPage.permalink }}"
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">قسم {{ fed.code }}<span class="u">{{ fed.name }}</span></h1>
     <p>{% if fed.slug == "indie" or fed.code | lower == "indie" or fed.code | lower == "indies" %}أحدث عروض وملخصات وأخبار اتحادات INDIES.{% else %}أحدث عروض وملخصات وأخبار اتحاد {{ fed.code }}.{% endif %}</p>
-    <div class="cta-row">
-      <a href="/federations/" class="btn">تصفح الاتحادات</a>
-      <a href="/shows/" class="btn">جميع العروض</a>
-    </div>
   </div>
 </div>
 

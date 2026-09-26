@@ -99,3 +99,22 @@ html.arw-dark .quality-grid > *:hover, html.arw-dark .ep-nav-btn:hover, html.arw
   background:linear-gradient(180deg, #1a212c, #121820) padding-box, linear-gradient(180deg, rgba(47,208,204,.5), rgba(47,208,204,.08)) border-box !important;
 }
 html.arw-dark .server-tab.active{ background:linear-gradient(135deg, #2fd0cc, #1fa7c9) !important; color:#04161a !important; border-color:transparent !important; box-shadow:0 6px 22px -6px rgba(47,208,204,.6) !important; }
+
+/* Simple pages (about / contact / privacy / terms / DMCA / 404): their own
+   hard-coded light pieces get the dark surfaces too. */
+html.arw-dark body > header nav a{ color:var(--muted) !important; }
+html.arw-dark body > header nav a:hover{ color:var(--teal) !important; }
+html.arw-dark .form-card, html.arw-dark .feature-card{
+  border:1px solid transparent !important;
+  background:linear-gradient(180deg, #131821 0%, #0d1117 100%) padding-box, linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 50%, rgba(255,255,255,.02)) border-box !important;
+  box-shadow:0 14px 34px -10px rgba(0,0,0,.7) !important;
+}
+html.arw-dark .form-control{ background:#0b0f15 !important; border:1px solid rgba(255,255,255,.12) !important; color:var(--ink) !important; }
+html.arw-dark .form-control::placeholder{ color:#6b7483 !important; }
+html.arw-dark .form-control:focus{ background:#0f141b !important; border-color:var(--teal) !important; box-shadow:0 0 0 3px rgba(47,208,204,.18) !important; }
+html.arw-dark select.form-control option{ background:#10141b; color:var(--ink); }
+html.arw-dark .notice-box{ background:rgba(47,208,204,.08) !important; color:var(--ink) !important; border-right-color:var(--teal) !important; }
+html.arw-dark .alert-success{ background:rgba(46,204,113,.10) !important; border-color:rgba(46,204,113,.35) !important; color:#86e3ad !important; }
+html.arw-dark .alert-error{ background:rgba(255,99,99,.10) !important; border-color:rgba(255,99,99,.35) !important; color:#ff9e9e !important; }
+html.arw-dark .submit-btn, html.arw-dark .home-link{ background:linear-gradient(135deg, #2fd0cc, #1fa7c9) !important; color:#04161a !important; box-shadow:0 8px 24px -8px rgba(47,208,204,.6) !important; }
+html.arw-dark .social-icons a{ background:rgba(47,208,204,.10) !important; }
