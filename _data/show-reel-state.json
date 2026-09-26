@@ -2277,15 +2277,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سماك داون 25.09.2026 مترجم",
-    "lastAttempt": 1790413630704,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790414502458,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
