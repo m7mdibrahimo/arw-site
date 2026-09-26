@@ -1,5 +1,15 @@
 [
   {
+    "id": 5057498565,
+    "link": "https://www.wrestlinginc.com/2269688/wwe-smackdown-trick-williams-baron-corbin-steel-cage-us-title/",
+    "date": "Sat, 26 Sep 2026 00:34:29 +0000",
+    "date_gmt": "2026-09-26T00:34:29.000Z",
+    "title": {
+      "rendered": "Trick Williams Beats Baron Corbin In WWE SmackDown Steel Cage Match, Retains US Title"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/trick-williams-beats-baron-corbin-in-wwe-smackdown-steel-cage-match-retains-us-title/l-intro-1790382758.jpg"
+  },
+  {
     "id": 3411005289,
     "link": "https://www.wrestlinginc.com/2269668/aew-maya-world-backstage-update-injury-status/",
     "date": "Fri, 25 Sep 2026 23:48:58 +0000",
@@ -27,7 +37,7 @@
     "title": {
       "rendered": "WWE SmackDown Results 9/25 - US Championship Steel Cage Match, MITB Qualifiers & More"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-september-25-us-championship-steel-cage-match-money-in-the-bank-qualifiers-more/l-intro-1790381762.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-september-25-us-championship-steel-cage-match-money-in-the-bank-qualifiers-more/l-intro-1790382115.jpg"
   },
   {
     "id": 4745967814,
@@ -37,7 +47,7 @@
     "title": {
       "rendered": "TNA Impact Viewership & Ratings Report: 9/17/2026"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-9172026/l-intro-1790375853.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-september-17-2026/l-intro-1790382098.jpg"
   },
   {
     "id": 5024128578,
@@ -188,15 +198,5 @@
       "rendered": "Backstage Details On 'Absolutely Blundered' Finish To WWE SmackDown World Title Match"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-absolutely-blundered-finish-to-wwe-smackdown-world-title-match/l-intro-1790330955.jpg"
-  },
-  {
-    "id": 2908659763,
-    "link": "https://www.wrestlinginc.com/2268552/aew-collision-viewership-ratings-report-september-19-2026/",
-    "date": "Fri, 25 Sep 2026 15:30:00 +0000",
-    "date_gmt": "2026-09-25T15:30:00.000Z",
-    "title": {
-      "rendered": "AEW Collision Viewership & Ratings Report, 9/19/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-viewership-ratings-report-9192026/l-intro-1790326891.jpg"
   }
 ]
