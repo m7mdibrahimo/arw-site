@@ -3456,6 +3456,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (!sourceMentionsDeath && deathWords.test(withoutKnownDeceased)) {
     blocking.push({ code: "invented_death", severity: "error", field: "body", message: "الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة", excerpt: "" });
   }
+  // Severity must come from the source: a plain "procedure" became «عملية جراحية
+  // عاجلة» (Maya World, 2026-09-26 — INCIDENTS #55). Drop invented urgency.
+  if (!/\b(?:emergency|urgent(?:ly)?|immediate)\b/i.test(plainText)) {
+    const dropUrgency = (t: string) => t.replace(/((?:عملية|جراحة|إجراء)(?:\s+(?:جراحية|طبية|جراحي|طبي))?)\s+(?:عاجلة|طارئة|عاجل|طارئ)(?![\u0621-\u064A])/g, "$1");
+    draft = { ...draft, title: dropUrgency(draft.title), body: dropUrgency(draft.body) };
+  }
   if (blocking.length) {
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
     if (blocking.some(i => ["artifact", "foreign_script", "ai_leak", "vague_result", "results_without_winners"].includes(i.code))) lastPostRetryable = true;

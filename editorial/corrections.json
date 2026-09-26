@@ -3499,6 +3499,17 @@
    "wrong": "بروذر غريتنيس",
    "right": "براذر غريتنس",
    "note": "Brother Greatness"
+  },
+  {
+   "wrong": "(?:مواجهة|نزال|مباراة) ثلاثية للفرق",
+   "right": "نزال فرق سداسي",
+   "note": "6-Woman/6-Man Tag",
+   "regex": true
+  },
+  {
+   "wrong": "All In لندن",
+   "right": "All In London",
+   "note": "اسم العرض كامل بالإنجليزي"
   }
  ]
 }
