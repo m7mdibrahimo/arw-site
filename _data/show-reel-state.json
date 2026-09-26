@@ -2271,5 +2271,22 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20260926084700-wwe-smackdown-25-09-2026": {
+    "publishedAt": 1790413579032,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض سماك داون 25.09.2026 مترجم",
+    "lastAttempt": 1790413630704,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
