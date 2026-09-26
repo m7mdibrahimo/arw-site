@@ -85,7 +85,10 @@ export async function runLiveResultsUpdater(options: { dryRun?: boolean } = {}):
   const next: Record<string, LiveEntry> = {};
   let rewritten = 0;
 
-  const files = fs.readdirSync(NEWS_DIR).filter(f => f.endsWith(".md")).sort().reverse().slice(0, 200);
+  // Newest first by the YYYYMMDDHHMMSS name prefix. A plain name sort put ~800 old
+  // Arabic-named files ahead of every timestamped one, so the newest 200 were all old and
+  // no live results article was ever followed (AEW All Out 26/09 — INCIDENTS #69).
+  const files = fs.readdirSync(NEWS_DIR).filter(f => /^\d{14}-.*\.md$/.test(f)).sort().reverse().slice(0, 200);
   for (const file of files) {
     const filePath = path.join(NEWS_DIR, file);
     const { data } = matter(fs.readFileSync(filePath, "utf-8"));
