@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-25-09-2026/",
+    "title": "عرض سماك داون 25.09.2026 مترجم",
+    "subtitle": "WWE Smackdown 25.09.2026",
+    "image": "/img/RzMQ4iomGo-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/tna-impact-24-09-2026/",
     "title": "عرض تي ان ايه امباكت 24.09.2026 مترجم",
     "subtitle": "TNA iMPACT 24.09.2026",
@@ -75,17 +86,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-18-09-2026",
-    "title": "عرض سماك داون 18.09.2026 مترجم",
-    "subtitle": "WWE Smackdown 18.09.2026",
-    "image": "/img/DETTsYKh2E-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026",
