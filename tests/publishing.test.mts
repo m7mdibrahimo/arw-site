@@ -925,6 +925,10 @@ test('a pre-show match card is not a results report', () => {
   assert.ok(!isEmptyResultsStub('Stay tuned. Williams hits a third Book End for the win. The winner of the Steel Cage Match, Trick Williams! Punk hits the GTS for the win. Flair hits Natural Selection for the win.'));
   const pending = checkArticle('نتائج عرض WWE SmackDown', '🏆 **الفائز:** قيد الانتظار', []);
   assert.ok(pending.some(i => i.code === 'vague_result'));
+  // INCIDENTS #65: «الفائزة/الفائزان: قيد الانتظار» and a live page whose preview narrates past wins.
+  assert.ok(checkArticle('نتائج عرض AEW All Out', '🏆 **الفائزة:** قيد الانتظار', []).some(i => i.code === 'vague_result'));
+  assert.ok(checkArticle('نتائج عرض AEW All Out', '🏆 **الفائزان:** قيد الانتظار', []).some(i => i.code === 'vague_result'));
+  assert.ok(isEmptyResultsStub("Welcome to Wrestling Inc.'s live coverage for AEW All Out. Ospreay defeated Omega at All In; Cage and Copeland retained against the Bucks; Okada won the title; Andrade defeated The Demand."));
 });
 
 

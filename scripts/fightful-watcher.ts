@@ -2153,8 +2153,11 @@ export function isEmptyResultsStub(plainText: string, modifiedGmt?: string): boo
   // Ringside writes play-by-play: «…third Book End for the win.» / «The winner of the match…».
   const resultLines = countResultLines(plainText);
   if (resultLines === 0) return true;
-  // A live-coverage page that still announces results "to come".
+  // A live-coverage page that still announces results "to come". Its preview part
+  // narrates past matches («defeated», «retained»), so allow a few such verbs
+  // (Wrestling Inc's All Out page had 4 before the show began — INCIDENTS #65).
   if (resultLines < 3 && /stay tuned|refresh (?:this page|for the latest)|live,? match-by-match|results? (?:will be|are) (?:posted|updated)|check back/i.test(plainText)) return true;
+  if (resultLines < 6 && /live coverage|coming to you live|live blog/i.test(plainText)) return true;
   const modified = modifiedGmt ? new Date(modifiedGmt.endsWith("Z") ? modifiedGmt : modifiedGmt + "Z").getTime() : NaN;
   const stillUpdating = Number.isFinite(modified) && Date.now() - modified < 45 * 60_000;
   return resultLines < 3 && stillUpdating;
