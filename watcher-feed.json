@@ -1,5 +1,15 @@
 [
   {
+    "id": 330496,
+    "link": "https://www.fightful.com/wrestling/wwe-announces-worlds-collide-will-air-on-youtube-on-september-30/",
+    "date": "2026-09-25T20:42:36",
+    "date_gmt": "2026-09-26T00:42:36",
+    "title": {
+      "rendered": "WWE Announces Worlds Collide Will Air On YouTube On September 30"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25203541/HTGj_MJWsAEysKs.jpg"
+  },
+  {
     "id": 330483,
     "link": "https://www.fightful.com/wrestling/wrestling-open-results-9-24-new-tag-team-champs/",
     "date": "2026-09-25T19:41:48",
@@ -288,15 +298,5 @@
       "rendered": "Pro Wrestling Free Agents"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14160822/Resources1.jpg"
-  },
-  {
-    "id": 66498,
-    "link": "https://www.fightful.com/wrestling/tna-wrestling-roster/",
-    "date": "2026-09-25T10:45:00",
-    "date_gmt": "2026-09-25T14:45:00",
-    "title": {
-      "rendered": "Full TNA Wrestling Roster"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/11124348/Resources3.png"
   }
 ]
