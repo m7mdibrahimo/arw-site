@@ -6,9 +6,10 @@
 //   npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues   (AI only where QA finds errors)
 //   npx tsx scripts/fix-articles.ts --ai --backlog 40             (next 40 never-reviewed articles)
 //   npx tsx scripts/fix-articles.ts --days 3 --ai --learn-only   (review only: log what's wrong, edit nothing)
-// --learn-only never touches a published article: the copy editor's findings go to
-// editorial/proofread-log.jsonl, where learn-corrections.ts turns recurring ones into
-// permanent rules for every FUTURE article (the owner's policy since 2026-09-24).
+// --learn-only never touches a published article: the copy editor's findings only go to
+// editorial/proofread-log.jsonl (learn-corrections.ts turns recurring ones into rules).
+// Since 2026-09-24 scheduled runs were learn-only; on 2026-09-27 the owner approved
+// fixing published articles in place, so scheduled runs now edit (same URL, no re-post).
 // --backlog walks the archive newest-first and records every reviewed file in
 // editorial/proofread-progress.json, so scheduled runs eventually cover all of it.
 // Edits are surgical (title line, tag lines, body) so frontmatter formatting is
@@ -96,6 +97,7 @@ async function main() {
     console.log(`Backlog: ${candidates.length} unreviewed, taking ${files.length}.`);
   }
   const report: any[] = [];
+  const tagMoves = new Map<string, string>();
   let changed = 0;
   for (const file of backlog ? files : files.sort()) {
     const filePath = path.join(NEWS_DIR, file);
@@ -143,7 +145,16 @@ async function main() {
     if (!dryRun) {
       fs.writeFileSync(filePath, next, "utf-8");
       logProofEdits(file, applied);
+      // A corrected tag («إتش أو جي» → «HOG») moves its tag page; keep the old link alive.
+      p.tags.forEach(t => { const from = arabicSlug(t), to = arabicSlug(fixText(t)); if (from && to && from !== to) tagMoves.set(from, to); });
     }
+  }
+  if (tagMoves.size) {
+    const file = path.join(process.cwd(), "_redirects");
+    const existing = fs.existsSync(file) ? fs.readFileSync(file, "utf-8") : "";
+    const lines = [...tagMoves].filter(([from]) => !existing.includes(`/tag/${from}/*`)).map(([from, to]) => `/tag/${from}/* /tag/${to}/:splat 301!`);
+    if (lines.length) fs.writeFileSync(file, existing.replace(/\n*$/, "\n") + lines.join("\n") + "\n");
+    console.log(`${lines.length} tag redirect(s) added.`);
   }
   const out = arg("--report");
   if (out) fs.writeFileSync(out, JSON.stringify(report, null, 2));

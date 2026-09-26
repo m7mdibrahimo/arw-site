@@ -6,7 +6,7 @@ tags:
   - أسكا
   - Asuka
   - WWE
-  - WWE Raw
+  - WWE RAW
   - اخبار المصارعة
 image: /content/images/pjtlomm4vtrcp1w0.jpg
 layout: post-layout.njk

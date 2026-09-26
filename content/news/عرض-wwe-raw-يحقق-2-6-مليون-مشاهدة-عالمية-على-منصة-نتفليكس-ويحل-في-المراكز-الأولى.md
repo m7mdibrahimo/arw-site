@@ -3,7 +3,7 @@ federation: WWE
 title: عرض WWE RAW يحقق 2.6 مليون مشاهدة عالمية على منصة نتفليكس ويحل في المراكز الأولى
 date: 2026-08-11T23:46:00.000+03:00
 tags:
-  - WWE Raw
+  - WWE RAW
   - Netflix
   - WWE
   - Tudum

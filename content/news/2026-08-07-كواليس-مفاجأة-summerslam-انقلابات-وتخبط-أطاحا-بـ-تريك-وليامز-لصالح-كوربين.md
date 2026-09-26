@@ -5,7 +5,6 @@ date: 2026-08-07T03:32:00.000+03:00
 tags:
   - WWE
   - Royal Rumble
-  - رويال رامبل
   - اخبار المصارعة
 image: /content/images/ho5a8jqbqaaih8y-1.jpg
 ---

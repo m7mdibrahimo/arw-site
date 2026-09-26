@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "تحديد نزال بطولة AEW Trios في عرض AEW All Out بعد نجاح سويرف ستريكلاند وفريق نيو ليفل في تجاوز عقبة فريق ذا ديماند"
+title: "تحديد نزال بطولة AEW Trios في عرض AEW All Out بعد نجاح سويرف ستريكلاند وفريق ذا نيو ليفل في تجاوز عقبة فريق ذا ديماند"
+permalink: "/news/تحديد-نزال-بطولة-aew-trios-في-عرض-aew-all-out-بعد-نجاح-سويرف-ستريكلاند-وفريق-نيو-ليفل-في-تجاوز-عقبة-فريق-ذا-ديماند/index.html"
 date: 2026-09-24T03:35:29.000+03:00
 source_id: 802246652
 source_url: "https://www.ringsidenews.com/aew-all-out-trios-title-match-set-swerve-strickland-new-level-survive-demand/"

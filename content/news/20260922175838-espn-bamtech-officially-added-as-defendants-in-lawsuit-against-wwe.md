@@ -8,7 +8,7 @@ source_url: "https://www.fightful.com/wrestling/espn-bamtech-officially-added-as
 single_match_result: false
 tags:
   - WWE
-  - WWE Raw
+  - WWE RAW
   - الدعوى القضائية
   - أخبار المصارعة الحرة
   - WWE Network

@@ -9,7 +9,7 @@ tags:
   - WWE
   - WWE NXT
   - ليكسيس كينغ
-  - ايفري ستايلز
+  - إيفري ستايلز
   - إيه جيه ستايلز
 image: /content/images/nt5ojrcz0zwwaeke.jpg
 layout: post-layout.njk

@@ -180,28 +180,31 @@ const AR_ORDINALS = ["الأولى", "الثانية", "الثالثة", "الر
  * Give each one a heading and renumber every «المواجهة» heading in order.
  */
 export function headUnheadedMatches(text: string): string {
-  const HEADING = /^\*\*المواجهة\s+[^:*\n]+?(?::\s*([^*\n]*))?\*\*\s*$/;
+  const HEADING = /^\*\*المواجهة\s/;
   const lines = text.split("\n");
   if (!lines.some(l => HEADING.test(l.trim()))) return text;
-  let n = 0;
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
-    const m = line.match(HEADING);
-    if (m) {
-      if (n < AR_ORDINALS.length) lines[i] = `**المواجهة ${AR_ORDINALS[n]}${m[1] ? `: ${m[1].trim()}` : ""}**`;
-      n++;
-      continue;
-    }
-    if (!/^-{3,}$/.test(line)) continue;
+  // Only touch reports that really have a match without a heading.
+  const unheaded = (i: number) => {
+    if (!/^-{3,}$/.test(lines[i].trim())) return false;
     let j = i + 1;
     while (j < lines.length && !lines[j].trim()) j++;
     const next = (lines[j] || "").trim();
-    // The next block is a match (a result line followed by its 🏆 line), not a heading or the end.
-    if (!next || next.startsWith("**") || next.startsWith("🏆") || n >= AR_ORDINALS.length) continue;
-    const trophyAhead = lines.slice(j + 1, j + 4).some(l => l.trim().startsWith("🏆"));
-    if (!trophyAhead) continue;
-    lines[i] = `**المواجهة ${AR_ORDINALS[n]}**\n`;
-    n++;
+    if (!next || next.startsWith("**") || next.startsWith("🏆")) return false;
+    return lines.slice(j + 1, j + 4).some(l => l.trim().startsWith("🏆"));
+  };
+  if (!lines.some((_, i) => unheaded(i))) return text;
+  const ORDINAL = new RegExp(`^(\\*\\*المواجهة\\s+)(?:${[...AR_ORDINALS].sort((a, b) => b.length - a.length).join("|")}|\\d+)`);
+  let n = 0;
+  for (let i = 0; i < lines.length && n < AR_ORDINALS.length; i++) {
+    const line = lines[i].trim();
+    if (HEADING.test(line)) {
+      // Renumber only the ordinal; keep «(نزال فردي): …» and the rest as written.
+      if (ORDINAL.test(line)) lines[i] = line.replace(ORDINAL, `$1${AR_ORDINALS[n]}`);
+      n++;
+    } else if (unheaded(i)) {
+      lines[i] = `**المواجهة ${AR_ORDINALS[n]}**\n`;
+      n++;
+    }
   }
   return lines.join("\n");
 }
@@ -235,6 +238,10 @@ export function autoFix(text: string): string {
     .replace(/[،,؛]\s*([.!؟?])/g, "$1")
     .replace(/([،؛])\s*[،,؛]/g, "$1")
     .replace(/[ \t]+([.،؛!؟])(?=\s|$)/g, "$1")
+    // «عرض WWE WWE RAW»: a correction («مندي نايت رو» → «WWE RAW») after a federation name already there
+    .replace(/\b(WWE|AEW|TNA|AAA|NJPW|ROH|NXT|UFC|CMLL|NOAH|GCW|wXw)\s+\1\b/g, "$1")
+    // «فريق The نيو ليفل»: an English article left before an Arabic team name
+    .replace(new RegExp(`\\b[Tt]he\\s+(?=[${AR}])`, "g"), "ذا ")
     // "What's Your Story؟": an Arabic question mark inside an English name
     .replace(/([A-Za-z])؟/g, "$1?")
     // "أارون" / "أاماساكي": hamza-alef + alef never occurs in Arabic — it is a long «آ»

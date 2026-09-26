@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: أوكتاغون جونيور يفاجئ جماهير AAA ويظهر علنا في الليلة الثانية من عرض AAA تريبل مانيا
+title: "أوكتاغون جونيور يفاجئ جماهير AAA ويظهر علنا في الليلة الثانية من عرض AAA TripleMania"
+permalink: "/news/أوكتاغون-جونيور-يفاجئ-جماهير-aaa-ويظهر-علنا-في-الليلة-الثانية-من-عرض-aaa-تريبل-مانيا/index.html"
 date: 2026-09-14T06:16:53.000+03:00
 source_id: 328390
 source_url: "https://www.fightful.com/wrestling/octagon-jr-in-attendance-at-night-2-of-aaa-triplemania-34/"

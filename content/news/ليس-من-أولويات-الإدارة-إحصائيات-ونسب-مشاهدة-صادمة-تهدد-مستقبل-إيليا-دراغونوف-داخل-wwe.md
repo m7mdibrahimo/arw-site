@@ -6,7 +6,7 @@ tags:
   - إيليا دراغونوف
   - Ilja Dragunov
   - WWE
-  - WWE Raw
+  - WWE RAW
   - اخبار المصارعة
 image: /content/images/im6jdjvsco0rrgri.jpg
 layout: post-layout.njk

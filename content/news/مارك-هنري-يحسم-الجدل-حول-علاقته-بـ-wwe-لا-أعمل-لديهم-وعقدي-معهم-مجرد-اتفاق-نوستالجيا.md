@@ -7,7 +7,7 @@ tags:
   - مارك هنري
   - أخبار المصارعة
   - عروض WWE
-  - سمر سلام
+  - SummerSlam
   - Mark Henry
   - WWE
   - Busted Open

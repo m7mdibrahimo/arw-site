@@ -1,14 +1,17 @@
 name: Editorial Maintenance — Review & Learn
 
 # ═══════════════════════════════════════════════════════
-#  مراجعة وتعلّم تلقائي (كل 3 ساعات) — لا يعدّل أي خبر منشور:
-#  1. المدقق اللغوي (Gemini) يراجع أخبار آخر 3 أيام التي فيها أخطاء،
-#     ويسجل كل خطأ يجده في editorial/proofread-log.jsonl
-#  2. مراجعة الأرشيف بالتدريج (20 خبر في كل تشغيل) — مصدر إضافي للأخطاء
+#  مراجعة وتصحيح وتعلّم تلقائي (كل 3 ساعات). المالك وافق في 2026-09-27 على
+#  تصحيح الأخبار المنشورة في مكانها (نفس الرابط، بدون إعادة نشر على المنصات):
+#  1. المدقق اللغوي (Gemini) يصحح أخبار آخر 3 أيام التي فيها أخطاء،
+#     ويسجل كل تصحيح في editorial/proofread-log.jsonl
+#  2. تصحيح الأرشيف بالتدريج (20 خبر في كل تشغيل)
 #  3. أي تصحيح تكرر في 3 أخبار أو أكثر يتحول إلى قاعدة دائمة في
 #     editorial/corrections.json — تُطبق تلقائياً على كل خبر جديد
 #     وتُرسل لـ Gemini كصيغة ممنوعة، فلا يتكرر الخطأ مرة أخرى
-#  4. تقرير الجودة لآخر 3 أيام في editorial/qa-report.json
+#  4. كل القواعد (التصحيحات + الإصلاح التلقائي) تُطبق على الأرشيف كله، فأي
+#     قاعدة جديدة تصلح الأخبار القديمة أيضاً
+#  5. تقرير الجودة لآخر 3 أيام في editorial/qa-report.json
 # ═══════════════════════════════════════════════════════
 
 on:
@@ -42,20 +45,23 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Review recent articles that have errors (log findings, edit nothing)
+      - name: Fix recent articles that have errors
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
-        run: npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues --learn-only || true
+        run: npx tsx scripts/fix-articles.ts --days 3 --ai --only-issues || true
 
-      - name: Review the archive (next batch, edit nothing)
+      - name: Fix the archive (next batch)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
-        run: npx tsx scripts/fix-articles.ts --ai --backlog 20 --learn-only || true
+        run: npx tsx scripts/fix-articles.ts --ai --backlog 20 || true
 
       - name: Learn recurring corrections (rules for every future article)
         run: npx tsx scripts/learn-corrections.ts
+
+      - name: Apply every rule to the whole archive (same URLs, no social re-post)
+        run: npx tsx scripts/fix-articles.ts --all || true
 
       - name: Quality report
         run: |

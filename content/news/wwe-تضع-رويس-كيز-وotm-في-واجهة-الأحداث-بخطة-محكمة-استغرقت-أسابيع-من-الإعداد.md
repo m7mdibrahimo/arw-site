@@ -7,7 +7,7 @@ tags:
   - فريق OTM
   - عروض WWE
   - أخبار المصارعة
-  - WWE Raw
+  - WWE RAW
   - Royce Keys
   - The Usos
 image: /content/images/od1oftynp7glwo22.jpg

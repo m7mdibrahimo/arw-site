@@ -27,7 +27,7 @@ layout: post-layout.njk
 * 15 أغسطس: عرض NXT Live — بيتسبرغ.
 * 20 - 24 أغسطس: جولة كندا (لندن, Toronto, Edmonton, Calgary, Ottawa).
 * 28 - 30 أغسطس: عروض Raw/SmackDown والجولة الصيفية (Cleveland, Savannah, North Charleston).
-* 6 سبتمبر: عرض Main Event — أتلانتا.
+* 6 سبتمبر: عرض WWE Main Event — أتلانتا.
 * 9 - 11 سبتمبر: جولة المكسيك (Guadalajara, مونتيري, Mexico City).
 * 18 و 25 سبتمبر: عرض SmackDown (Corpus Christi, Indianapolis).
 * 26 سبتمبر: حدث Worlds Collide — شيكاغو.

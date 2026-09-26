@@ -9,7 +9,7 @@ import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
-import { checkArticle, autoFix, headUnheadedMatches } from '../scripts/news-qa';
+import { checkArticle, autoFix, headUnheadedMatches, applyCorrections } from '../scripts/news-qa';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -1094,4 +1094,14 @@ test("results matches left with only a «---» separator get a numbered heading"
   // A news article with a plain «---» and no match headings is untouched.
   const plain = "فقرة.\n\n---\nفقرة أخرى.\n\n🏆 ليس تقريرا";
   assert.equal(headUnheadedMatches(plain), plain);
+});
+
+test("sweep leftovers: doubled federation, stray «The» before Arabic, Knockouts TV untouched", () => {
+  assert.equal(autoFix("في عرض WWE WWE RAW القادم"), "في عرض WWE RAW القادم");
+  assert.equal(autoFix("فريق The نيو ليفل ضد The Bloodline"), "فريق ذا نيو ليفل ضد The Bloodline");
+  assert.equal(applyCorrections("بطولة TNA Knockouts TV للسيدات"), "بطولة TNA Knockouts TV للسيدات");
+  assert.equal(applyCorrections("بطولة TNA Knockouts World Championship."), "بطولة TNA العالمية للسيدات.");
+  // Renumbering keeps what a heading says; untouched when no match lacks a heading.
+  const h = "**المواجهة الثانية (نزال فردي): أ**\n\nس";
+  assert.equal(headUnheadedMatches(h), h);
 });

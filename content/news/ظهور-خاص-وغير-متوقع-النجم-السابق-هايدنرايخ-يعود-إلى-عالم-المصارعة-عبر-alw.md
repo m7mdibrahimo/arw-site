@@ -11,7 +11,7 @@ tags:
 image: /content/images/x5udtzp5dyzy1rsp.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد Atomic Legacy Wrestling (ALW) رسميا عن تسجيل نجم اتحاد WWE السابق هايدنرايخ (Heidenreich) لظهور خاص واستثنائي في عرضه القادم We Wear The كراون، والمقرر إقامته يوم 12 سبتمبر المقبل في مركز RP Funding Center بمدينة ليكلاند بولاية فلوريدا.
+أعلن اتحاد Atomic Legacy Wrestling (ALW) رسميا عن تسجيل نجم اتحاد WWE السابق هايدنرايخ (Heidenreich) لظهور خاص واستثنائي في عرضه القادم We Wear ذا كراون، والمقرر إقامته يوم 12 سبتمبر المقبل في مركز RP Funding Center بمدينة ليكلاند بولاية فلوريدا.
 
 عودة للأضواء بعد واقعة طريفة
 
