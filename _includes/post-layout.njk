@@ -963,7 +963,6 @@
         </button>
       </div>
     </div>
-    {{ shareBar('top', shareUrl, shareTitle, isNews) }}
     {% if not isNews %}
     <h2>{{ headline or title }}</h2>
     {% endif %}
@@ -1322,6 +1321,8 @@
     </div>
     {% endif %}
 
+
+    {{ shareBar('bottom', shareUrl, shareTitle, isNews) }}
 
     {% if isNews %}
     {% set newerNews = collections.news | getPreviousCollectionItem(page) %}
