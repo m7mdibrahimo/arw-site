@@ -102,8 +102,6 @@ html.arw-dark .server-tab.active{ background:linear-gradient(135deg, #2fd0cc, #1
 
 /* Simple pages (about / contact / privacy / terms / DMCA / 404): their own
    hard-coded light pieces get the dark surfaces too. */
-html.arw-dark body > header nav a{ color:var(--muted) !important; }
-html.arw-dark body > header nav a:hover{ color:var(--teal) !important; }
 html.arw-dark .form-card, html.arw-dark .feature-card{
   border:1px solid transparent !important;
   background:linear-gradient(180deg, #131821 0%, #0d1117 100%) padding-box, linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03) 50%, rgba(255,255,255,.02)) border-box !important;
@@ -118,3 +116,6 @@ html.arw-dark .alert-success{ background:rgba(46,204,113,.10) !important; border
 html.arw-dark .alert-error{ background:rgba(255,99,99,.10) !important; border-color:rgba(255,99,99,.35) !important; color:#ff9e9e !important; }
 html.arw-dark .submit-btn, html.arw-dark .home-link{ background:linear-gradient(135deg, #2fd0cc, #1fa7c9) !important; color:#04161a !important; box-shadow:0 8px 24px -8px rgba(47,208,204,.6) !important; }
 html.arw-dark .social-icons a{ background:rgba(47,208,204,.10) !important; }
+
+/* The logo reads as one word in dark mode: «عرب راسلنج» all in the brand teal. */
+html.arw-dark header .brand, html.arw-dark header .brand span{ color:var(--teal) !important; }
