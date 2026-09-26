@@ -875,6 +875,30 @@ test('a paragraph written twice is kept once', () => {
   assert.equal(autoFix(`${intro}\n\n${intro}\n\n**المواجهة الأولى**\n\n🏆 **الفائز:** تريك ويليامز\n\n🏆 **الفائز:** تريك ويليامز`), `${intro}\n\n**المواجهة الأولى**\n\n🏆 **الفائز:** تريك ويليامز\n\n🏆 **الفائز:** تريك ويليامز`);
 });
 
+test('a live results article follows its source until the show ends', async () => {
+  // The owner used to re-publish every results article by hand after the show
+  // (new URL + social re-post). Now it is rewritten in place as the source grows.
+  const { decideLiveUpdate } = await import('../scripts/live-results-updater');
+  const min = 60_000;
+  let e = { lastSeenHash: '', lastChangeAt: 0, generatedHash: 'h3', generatedResults: 3, generatedLength: 3000, lastRegenAt: 0, rewrites: 0 };
+  // Same page as published → nothing to do.
+  assert.equal(decideLiveUpdate(e, { hash: 'h3', results: 3, length: 3000 }, 10 * min).rewrite, false);
+  // One more finish mid-show → wait for more.
+  let d = decideLiveUpdate(e, { hash: 'h4', results: 4, length: 4000 }, 20 * min);
+  assert.equal(d.rewrite, false);
+  // Two more finishes → rewrite now.
+  d = decideLiveUpdate(d.entry, { hash: 'h5', results: 5, length: 5000 }, 25 * min);
+  assert.equal(d.rewrite, true);
+  e = { ...d.entry, generatedHash: 'h5', generatedResults: 5, generatedLength: 5000, lastRegenAt: 25 * min, rewrites: 1 };
+  // Main event added, then the page stops changing → final rewrite after 20 min.
+  d = decideLiveUpdate(e, { hash: 'h6', results: 6, length: 6500 }, 40 * min);
+  assert.equal(d.rewrite, false);
+  d = decideLiveUpdate(d.entry, { hash: 'h6', results: 6, length: 6500 }, 61 * min);
+  assert.equal(d.rewrite, true);
+  // A broken fetch with fewer results never replaces a fuller article.
+  assert.equal(decideLiveUpdate(e, { hash: 'x', results: 1, length: 900 }, 200 * min).rewrite, false);
+});
+
 test('a pre-show match card is not a results report', () => {
   // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
   // and was published as results with «الفائز: قيد الانتظار».

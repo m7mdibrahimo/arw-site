@@ -147,6 +147,15 @@ export function isLikelyDuplicateOfRecentCoverage(candidateTitle: string, hoursW
   return false;
 }
 
+/** The article body of a Ringside News page (live results pages grow here during the show). */
+export function extractRingsideArticle(page: string): string | null {
+  const start = page.indexOf('<div class="entry-content rsn-single-content"');
+  if (start < 0) return null;
+  let end = page.indexOf("rsn-laai-ad-below-article-content", start);
+  if (end < 0) end = page.indexOf("Add as a preferred source", start);
+  return page.slice(start, end > start ? end : start + 80000);
+}
+
 function toWpPost(item: { title: string; link: string; pubDate: string; contentHtml: string; thumbnail: string }, id: number) {
   return {
     id,

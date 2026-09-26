@@ -54,6 +54,16 @@ jobs:
             npx tsx scripts/fightful-watcher.ts
           fi
 
+      # Results pages fill in during the show: keep each results article (last 8h)
+      # in step with its source, in place — same URL, no social re-post.
+      - name: Update live show results
+        if: ${{ !github.event.inputs.post_url }}
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
+        run: npx tsx scripts/live-results-updater.ts
+
       - name: Commit and push if new articles were generated
         if: ${{ always() && (steps.watch.outcome == 'success' || steps.watch.outcome == 'failure') }}
         run: |

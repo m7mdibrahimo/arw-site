@@ -244,7 +244,7 @@ function extractEmbeds(html: string): string[] {
 }
 
 // Clean HTML to text for AI prompt
-function htmlToPlainText(html: string): string {
+export function htmlToPlainText(html: string): string {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
@@ -2141,12 +2141,17 @@ export function tagInArabic(tag: string): string {
  *  that is still being filled in during the show. A short show with a couple of
  *  matches is complete once the page has stopped changing (2026-09-25: WWE Main
  *  Event, 2 matches / 370 chars, was held back forever by a length threshold). */
+/** How many match finishes a results page reports (Fightful «def.», Ringside «…for the win»). */
+export function countResultLines(plainText: string): number {
+  return (plainText.match(/\bdef\.|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw|for the (?:win|victory)|the winners? (?:of|is|are)|winner:|picks? up the (?:win|victory)|gets? the (?:win|pin)|pinfall victory)\b/gi) || []).length;
+}
+
 export function isEmptyResultsStub(plainText: string, modifiedGmt?: string): boolean {
   // "def." ends in a period, so it can't sit inside \b…\b (that never matched).
   // «vs.» is a match CARD, not a result (a Ringside live page listing «Trick Williams
   // vs. Baron Corbin» before the show counted as results — 2026-09-26, INCIDENTS #53).
   // Ringside writes play-by-play: «…third Book End for the win.» / «The winner of the match…».
-  const resultLines = (plainText.match(/\bdef\.|\b(?:defeats?|defeated|beats?|retains?|retained|won|wins|no contest|draw|for the (?:win|victory)|the winners? (?:of|is|are)|winner:|picks? up the (?:win|victory)|gets? the (?:win|pin)|pinfall victory)\b/gi) || []).length;
+  const resultLines = countResultLines(plainText);
   if (resultLines === 0) return true;
   // A live-coverage page that still announces results "to come".
   if (resultLines < 3 && /stay tuned|refresh (?:this page|for the latest)|live,? match-by-match|results? (?:will be|are) (?:posted|updated)|check back/i.test(plainText)) return true;
@@ -3496,7 +3501,7 @@ date: ${iso}
 published_at: ${publishedAt}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
-single_match_result: ${isSingleMatch}
+single_match_result: ${isSingleMatch}${isShowResultsArticle(rawTitle, plainText) ? `\nsource_title: ${JSON.stringify(rawTitle)}\nsource_results: ${countResultLines(plainText)}` : ""}
 tags:
 ${tagsYaml}
 image: ${localImagePath}
