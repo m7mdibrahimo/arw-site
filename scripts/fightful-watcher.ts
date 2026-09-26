@@ -2229,10 +2229,17 @@ export function isReturnOrDebutStory(rawTitle: string, plainText: string = ""): 
   return /\b(?:made (?:his|her|their) (?:\w+ )?(?:return|debut)|made a surprise|returned (?:at|on|to|during|tonight)|debuted (?:at|on|during|tonight)|surprise (?:return|appearance|debut))\b/i.test(lead);
 }
 
-/** A match result in the lead of a story that is not a full results report («X def. Y» news). */
-export function leadHasMatchResult(plainText: string = ""): boolean {
-  const lead = plainText.slice(0, 500);
-  return /(?:\bdef\.|\b(?:defeated|defeats|beat|pinned|submitted|retained|won (?:the|his|her|their)|picked up (?:the|a) win|scored (?:the|a) win)\b)/i.test(lead);
+/**
+ * Any win/loss wording in the title or the story's lead. Verb lists kept missing a
+ * phrasing ("Sisters Of Sin Score Win At AEW All Out" / "picked up the victory" /
+ * "bested" reached Telegram and Facebook — INCIDENTS #71); the owner's rule is absolute:
+ * no match outcome on social, only full results reports.
+ */
+const OUTCOME_WORDS = /(?:\bdef\.|\b(?:wins?|won|winning|winners?|victory|victories|victorious|defeat(?:s|ed|ing)?|beats?|beaten|bested|bests|pins?|pinned|pinfall|submits?|submitted|submission victory|retains?|retained|retaining|triumphs?|triumphed|overcomes?|overcame|topples?|toppled|edges?|edged|outlasts?|outlasted|eliminates?|eliminated|advances?|advanced|qualif(?:y|ies|ied)|captures?|captured|crowned|dethron(?:e|es|ed)|lose|loses|lost|losing|falls? to|fell to|upsets?|conquers?|conquered|dominates?|dominated|squash(?:es|ed)?|for the (?:win|victory|pin|fall)|by (?:pinfall|submission|dq|disqualification|count-?out|knockout|ko|tko)|no contest|draw)\b)/i;
+export function leadHasMatchResult(plainText: string = "", title: string = ""): boolean {
+  // "Losing 50 Pounds" is about weight, not a match.
+  const clean = (t: string) => t.replace(/\b(?:los(?:e|es|ing|t)|won't)\s+(?:\d+\s+)?(?:pounds|lbs|kg|kilos|weight)\b/gi, "");
+  return OUTCOME_WORDS.test(clean(title)) || OUTCOME_WORDS.test(clean(plainText.slice(0, 500)));
 }
 
 export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
@@ -2247,7 +2254,7 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
   // 1.2 Returns / debuts / surprise appearances never go to social (owner, 2026-09-27).
   if (isReturnOrDebutStory(title, plainText)) return true;
   // 1.3 A single match result in the story's lead («after Jack Perry defeated Shibata»).
-  if (leadHasMatchResult(plainText)) return true;
+  if (leadHasMatchResult(plainText, title)) return true;
 
   // 1.5 A leaked/revealed outcome ("Spoiler: Men's MITB Qualifying Outcome For 9/25
   // SmackDown Revealed") is a single-match result — INCIDENTS #56.

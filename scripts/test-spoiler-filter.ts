@@ -2,6 +2,7 @@ import { isSingleMatchResultArticle } from "./fightful-watcher";
 
 // Comprehensive test suite of 100+ headlines across all wrestling promotions, styles, and edge cases.
 export const testCases: Array<{ title: string; expectedFiltered: boolean; category: string }> = [
+  { title: "Sisters Of Win Score Win At AEW All Out", expectedFiltered: true, category: "Win phrasing outside the verb lists (INCIDENTS #71)" },
   { title: "Samoa Joe Returns At AEW All Out, Headbutts Jack Perry", expectedFiltered: true, category: "Return at a PPV (INCIDENTS #68)" },
   { title: "ساموا جو يعود في عرض AEW All Out", expectedFiltered: true, category: "Arabic return title (INCIDENTS #68)" },
   { title: "أول ظهور لإيليا دراغونوف في AEW", expectedFiltered: true, category: "Arabic debut title" },
@@ -510,7 +511,7 @@ export const testCases: Array<{ title: string; expectedFiltered: boolean; catego
   },
   {
     title: "Stephanie Vaquer Comments After Winning WWE Women's World Championship In Chile",
-    expectedFiltered: false,
+    expectedFiltered: true /* a title win is an outcome — owner 2026-09-27 */,
     category: "Post-Match Interview"
   },
   {

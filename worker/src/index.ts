@@ -1918,6 +1918,10 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
   const hasArabicRetain = ar("يحتفظ بـ|يحتفظ بلقب|يحتفظ ببطولة|يحافظ على لقب|يحافظ على بطولة|احتفاظ باللقب|احتفاظ بالبطولة").test(title);
   const hasArabicWin = ar("يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول").test(title);
   if (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin) return true;
+  // Any win/loss wording at all. Verb lists always missed a phrasing («فريق Sisters Of Sin
+  // يحقق الفوز في عرض AEW All Out» reached Telegram and Facebook — INCIDENTS #71), and the
+  // owner's rule is absolute: no match outcome on social, only full results reports.
+  if (ar("(?:و|ف)?(?:ال)?(?:فوز|فوزه|فوزها|فوزهم|فوزهما|يفوز|تفوز|يفوزان|تفوزان|يفوزون|فاز|فازت|انتصار|انتصاره|انتصارها|انتصارا|ينتصر|تنتصر|انتصر|انتصرت|تغلب|يتغلب|تتغلب|يتغلبان|تغلبت|يهزم|تهزم|يهزمان|هزم|هزمت|هزيمة|الهزيمة|يسقط|تسقط|أسقط|أسقطت|يطيح|تطيح|أطاح|أطاحت|يحتفظ|تحتفظ|يحتفظان|احتفظ|احتفظت|احتفاظ|يتوج|تتوج|يتوجان|توج|تتويج|يخسر|تخسر|خسر|خسرت|خسارة|خسارته|خسارتها|يتأهل|تتأهل|يتأهلان|تأهل|تأهلت|يقصي|تقصي|أقصى|إقصاء|ينتزع|تنتزع|انتزع|انتزعت|يخطف|تخطف|خطف|يحسم|تحسم|حسم|يكتسح|تكتسح|يسحق|تسحق|يثبت|تثبت|تثبيت|يستسلم|تستسلم|إخضاع|يخضع|تخضع|ينجو|تنجو|يبطل|يجرد|تجرد)(?![\\u0600-\\u06FF])").test(title)) return true;
 
   // Preserved content safeguards
   if (ar("الإعلان عن|تحديد موعد|نزال مرتقب|مواجهة مرتقبة|نزالات التصفية|قائمة نزالات|بطاقة عرض|سيواجه|يواجه|يتحالف مع").test(title) ||
