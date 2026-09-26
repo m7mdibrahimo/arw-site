@@ -195,6 +195,67 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
   html.arw-dark .era-pill.active{ background:#fff !important; color:#1e2530 !important; border-color:#fff !important; box-shadow:0 4px 14px rgba(255,255,255,0.2) !important; }
   html.arw-dark .era-pill.active svg{ stroke:#1e2530 !important; }
 
+  /* Compact year filter: «all», the year being added now, and a panel with every year */
+  /* Above the series cards (their reveal transforms stack later in the page). */
+  .era-rail{ position:relative; z-index:30; }
+  .era-pill .era-live{ display:inline-flex; align-items:center; gap:5px; margin-inline-start:2px; padding:3px 8px 3px 9px; border-radius:999px; background:var(--nostalgia-soft); color:var(--nostalgia); font-size:11.5px; font-weight:800; }
+  .era-pill .era-live i{ width:6px; height:6px; border-radius:50%; background:currentColor; box-shadow:0 0 0 0 currentColor; animation:eraPulse 1.8s ease-out infinite; }
+  .era-pill.active .era-live{ background:rgba(255,255,255,.16); color:#fff; }
+  html.arw-dark .era-pill.active .era-live{ background:rgba(30,37,48,.1); color:#1e2530; }
+  @keyframes eraPulse{ 0%{ box-shadow:0 0 0 0 rgba(2,132,199,.45); } 70%{ box-shadow:0 0 0 7px rgba(2,132,199,0); } 100%{ box-shadow:0 0 0 0 rgba(2,132,199,0); } }
+  .era-more{ display:inline-flex; }
+  .era-more-btn .era-count{ min-width:22px; height:22px; padding:0 7px; border-radius:999px; background:var(--bg); border:1px solid var(--line); color:var(--ink); font-size:12px; font-weight:800; display:inline-flex; align-items:center; justify-content:center; }
+  .era-more-btn .era-chev{ transition:transform .25s cubic-bezier(0.16,1,0.3,1); }
+  .era-more-btn[aria-expanded="true"]{ border-color:var(--nostalgia); color:var(--nostalgia); box-shadow:0 6px 18px rgba(2,132,199,.18); }
+  .era-more-btn[aria-expanded="true"] svg{ stroke:var(--nostalgia); }
+  .era-more-btn[aria-expanded="true"] .era-chev{ transform:rotate(180deg); }
+  .era-more-btn.active .era-count{ display:none; }
+  .era-pill.active .era-count{ background:rgba(255,255,255,.14); border-color:transparent; color:#fff; }
+  html.arw-dark .era-pill.active .era-count{ background:rgba(30,37,48,.1); color:#1e2530; }
+  .era-panel{ position:absolute; top:calc(100% - 22px); left:50%; z-index:40; width:min(420px, calc(100vw - 32px)); background:var(--card); border:1px solid var(--line); border-radius:22px; box-shadow:0 24px 60px rgba(15,23,42,.18), 0 2px 6px rgba(15,23,42,.06); padding:16px; opacity:0; visibility:hidden; transform:translate(-50%, -6px) scale(.98); transform-origin:top center; transition:opacity .22s ease, transform .28s cubic-bezier(0.16,1,0.3,1), visibility 0s linear .28s; }
+  .era-panel.open{ opacity:1; visibility:visible; transform:translate(-50%, 0) scale(1); transition:opacity .22s ease, transform .28s cubic-bezier(0.16,1,0.3,1), visibility 0s; }
+  html.arw-dark .era-panel{ box-shadow:0 24px 60px rgba(0,0,0,.55); }
+  .era-panel-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:2px 4px 12px; margin-bottom:12px; border-bottom:1px solid var(--line); }
+  .era-panel-head strong{ font-family:'Cairo',sans-serif; font-size:15.5px; font-weight:900; color:var(--ink); }
+  .era-panel-head span{ font-size:12.5px; color:var(--muted); font-weight:600; }
+  .era-panel-body{ max-height:min(360px, 60vh); overflow-y:auto; overscroll-behavior:contain; padding:2px 2px 4px; display:flex; flex-direction:column; gap:14px; scrollbar-width:thin; }
+  .era-decade-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
+  .era-decade-range{ font-family:'Cairo',sans-serif; font-size:13px; font-weight:900; color:var(--nostalgia); letter-spacing:.4px; }
+  .era-decade-head::after{ content:""; order:1; flex:1; height:1px; background:var(--line); }
+  .era-decade-count{ order:2; font-size:11.5px; font-weight:700; color:var(--muted); }
+  .era-decade-years{ display:grid; grid-template-columns:repeat(auto-fill, minmax(78px, 1fr)); gap:7px; }
+  .era-year{ position:relative; display:inline-flex; align-items:center; justify-content:center; gap:7px; height:40px; padding:0 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; font-family:'Tajawal',sans-serif; transition:border-color .2s ease, background .2s ease, transform .2s cubic-bezier(0.16,1,0.3,1), box-shadow .2s ease; }
+  .era-year:hover, .era-year:focus-visible{ border-color:var(--nostalgia); transform:translateY(-1px); box-shadow:0 6px 14px rgba(2,132,199,.14); outline:none; }
+  .era-year-num{ font-family:'Cairo',sans-serif; font-size:15px; font-weight:900; line-height:1; }
+  .era-year-meta{ min-width:18px; height:18px; padding:0 5px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-size:10.5px; font-weight:800; color:var(--muted); display:inline-flex; align-items:center; justify-content:center; }
+  .era-year.is-new{ border-color:var(--nostalgia); }
+  .era-year.is-new::after{ content:""; position:absolute; top:-3px; inset-inline-start:-3px; width:9px; height:9px; border-radius:50%; background:var(--nostalgia); border:2px solid var(--card); }
+  .era-year[aria-checked="true"]{ background:#1e2530; border-color:#1e2530; color:#fff; }
+  .era-year[aria-checked="true"] .era-year-meta{ background:rgba(255,255,255,.14); border-color:transparent; color:#fff; }
+  html.arw-dark .era-year[aria-checked="true"]{ background:#fff; border-color:#fff; color:#1e2530; }
+  html.arw-dark .era-year[aria-checked="true"] .era-year-meta{ background:rgba(30,37,48,.1); color:#1e2530; }
+  @media (min-width:769px){ .era-panel{ width:min(500px, calc(100vw - 32px)); } .era-decade-years{ grid-template-columns:repeat(5, 1fr); } }
+  .era-panel-legend{ display:flex; align-items:center; gap:6px; margin-top:12px; padding-top:10px; border-top:1px solid var(--line); font-size:11.5px; color:var(--muted); font-weight:600; }
+  .era-panel-legend i{ width:8px; height:8px; border-radius:50%; background:var(--nostalgia); }
+  @media (max-width:768px){
+    .era-rail{ flex-wrap:wrap !important; overflow:visible !important; justify-content:center !important; padding:8px 12px 24px !important; }
+    .era-panel{ top:calc(100% - 14px); }
+    .era-pill .era-live{ padding:3px 7px; font-size:11px; }
+  }
+  /* Phones: the three buttons stay on one line — no leading icons, the «now» badge becomes a pulsing dot. */
+  @media (max-width:480px){
+    .era-rail{ gap:6px !important; flex-wrap:nowrap !important; padding:8px 10px 22px !important; }
+    .era-rail .era-pill{ padding:8px 12px !important; gap:6px; min-height:40px !important; font-size:13px !important; }
+    .era-rail .era-pill > svg:first-child{ display:none; }
+    .era-pill .era-live{ padding:0; background:none; margin:0; }
+    .era-pill .era-live span{ display:none; }
+    .era-pill .era-live i{ width:7px; height:7px; }
+    .era-more-btn .era-count{ min-width:20px; height:20px; font-size:11px; padding:0 6px; }
+    .era-panel{ top:calc(100% - 12px); }
+  }
+  @media (max-width:380px){ .era-decade-years{ grid-template-columns:repeat(auto-fill, minmax(72px, 1fr)); } }
+  @media (prefers-reduced-motion:reduce){ .era-panel, .era-panel.open, .era-year, .era-more-btn .era-chev{ transition:none; } .era-pill .era-live i{ animation:none; } }
+
   /* Series Grid & Cards - Exact Match with index.njk */
   .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
   .grid-12 > *{ grid-column:span 3; }
@@ -327,21 +388,48 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 <div class="wrap">
 
 {% if collections.nostalgiaSeries.length > 0 %}
-{% set years = [] %}
-{% for s in collections.nostalgiaSeries %}
-  {% if s.year and years.indexOf(s.year) == -1 %}{% set years = (years.push(s.year), years) %}{% endif %}
-{% endfor %}
+{% set ny = collections.nostalgiaSeries | nostalgiaYears %}
 <div class="era-rail reveal" id="eraRail">
 <button type="button" class="era-pill active" data-year="all">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
   <span>جميع السنوات</span>
 </button>
-{% for y in years %}
-<button type="button" class="era-pill" data-year="{{ y }}">
+{% if ny.current %}
+<button type="button" class="era-pill era-current" data-year="{{ ny.current }}" title="أحدث سنة تُضاف عروضها الآن">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-  <span>سنة {{ y }}</span>
+  <span>سنة {{ ny.current }}</span>
+  <span class="era-live" aria-label="تُضاف عروضها الآن"><i></i><span>يُضاف الآن</span></span>
 </button>
-{% endfor %}
+{% endif %}
+{% if ny.years.length > 1 %}
+<div class="era-more">
+<button type="button" class="era-pill era-more-btn" id="eraMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="eraPanel">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+  <span class="era-more-label">كل السنوات</span>
+  <span class="era-count">{{ ny.years.length }}</span>
+  <svg class="era-chev" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+</div>
+<div class="era-panel" id="eraPanel" role="dialog" aria-label="اختر سنة من أرشيف نوستالجيا">
+  <div class="era-panel-head"><strong>أرشيف السنوات</strong><span>{{ ny.years.length }} سنوات من الذكريات</span></div>
+  <div class="era-panel-body" role="radiogroup">
+  {% for d in ny.decades %}
+    <div class="era-decade">
+      <div class="era-decade-head"><span class="era-decade-range">{{ d.start }} – {{ d.end }}</span><span class="era-decade-count">{% if d.years.length == 1 %}سنة واحدة{% elif d.years.length == 2 %}سنتان{% else %}{{ d.years.length }} سنوات{% endif %}</span></div>
+      <div class="era-decade-years">
+      {% for y in d.years %}
+        <button type="button" class="era-year{% if y.isCurrent %} is-new{% endif %}" role="radio" aria-checked="false" data-year="{{ y.year }}" title="{% if y.count == 1 %}سلسلة واحدة{% elif y.count == 2 %}سلسلتان{% elif y.count <= 10 %}{{ y.count }} سلاسل{% else %}{{ y.count }} سلسلة{% endif %}">
+          <span class="era-year-num">{{ y.year }}</span>
+          <span class="era-year-meta">{{ y.count }}</span>
+        </button>
+      {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  {% if ny.current %}<div class="era-panel-legend"><i></i><span>سنة {{ ny.current }} تُضاف عروضها الآن · الرقم بجانب كل سنة = عدد السلاسل</span></div>{% endif %}
+</div>
+{% endif %}
 </div>
 
 <div class="grid-12" id="seriesGrid">
@@ -377,23 +465,48 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 (function(){
   var rail = document.getElementById('eraRail');
   if(!rail) return;
-  var pills = rail.querySelectorAll('.era-pill');
   var cards = document.querySelectorAll('.series-card');
   var noResults = document.getElementById('noYearResults');
+  var moreBtn = document.getElementById('eraMoreBtn');
+  var panel = document.getElementById('eraPanel');
+  var moreLabel = moreBtn ? moreBtn.querySelector('.era-more-label') : null;
+  var currentPill = rail.querySelector('.era-current');
+  var currentYear = currentPill ? currentPill.getAttribute('data-year') : null;
+
+  function openPanel(){
+    if(!panel) return;
+    panel.classList.add('open');
+    moreBtn.setAttribute('aria-expanded', 'true');
+    var target = panel.querySelector('.era-year[aria-checked="true"]') || panel.querySelector('.era-year');
+    if(target) setTimeout(function(){ target.focus({ preventScroll:true }); }, 60);
+  }
+  function closePanel(returnFocus){
+    if(!panel || !panel.classList.contains('open')) return;
+    panel.classList.remove('open');
+    moreBtn.setAttribute('aria-expanded', 'false');
+    if(returnFocus) moreBtn.focus();
+  }
 
   function filterByYear(year) {
     var visibleCount = 0;
-    pills.forEach(function(p){
-      if(p.getAttribute('data-year') === year) {
-        p.classList.add('active');
-      } else {
-        p.classList.remove('active');
-      }
+    // «all» and the year being added have their own pills; any other year lights up
+    // the «all years» button and shows its name there.
+    var inPanelOnly = year !== 'all' && year !== currentYear;
+    rail.querySelectorAll('.era-pill[data-year]').forEach(function(p){
+      p.classList.toggle('active', p.getAttribute('data-year') === year);
     });
+    if(moreBtn){
+      moreBtn.classList.toggle('active', inPanelOnly);
+      if(moreLabel) moreLabel.textContent = inPanelOnly ? ('سنة ' + year) : 'كل السنوات';
+    }
+    if(panel){
+      panel.querySelectorAll('.era-year').forEach(function(b){
+        b.setAttribute('aria-checked', b.getAttribute('data-year') === year ? 'true' : 'false');
+      });
+    }
 
     cards.forEach(function(card){
-      var cardYear = card.getAttribute('data-year');
-      var match = (year === 'all') || (cardYear === year);
+      var match = (year === 'all') || (card.getAttribute('data-year') === year);
       if(match){
         card.style.display = '';
         card.classList.remove('reveal-hidden');
@@ -404,27 +517,53 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
         card.style.display = 'none';
       }
     });
+    if(noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
 
-    if(noResults){
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  function choose(year){
+    filterByYear(year);
+    if(window.history && window.history.replaceState){
+      window.history.replaceState(null, '', year === 'all' ? window.location.pathname : window.location.pathname + '?year=' + year);
     }
   }
 
   rail.addEventListener('click', function(e){
-    var btn = e.target.closest('.era-pill');
-    if(!btn) return;
-    var year = btn.getAttribute('data-year');
-    filterByYear(year);
-    if(window.history && window.history.replaceState){
-      var newUrl = year === 'all' ? window.location.pathname : window.location.pathname + '?year=' + year;
-      window.history.replaceState(null, '', newUrl);
+    if(e.target.closest('#eraMoreBtn')){
+      panel.classList.contains('open') ? closePanel(false) : openPanel();
+      return;
     }
+    var yearBtn = e.target.closest('.era-year');
+    if(yearBtn){
+      choose(yearBtn.getAttribute('data-year'));
+      closePanel(true);
+      return;
+    }
+    var pill = e.target.closest('.era-pill[data-year]');
+    if(pill){
+      choose(pill.getAttribute('data-year'));
+      closePanel(false);
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if(panel && panel.classList.contains('open') && !e.target.closest('#eraPanel') && !e.target.closest('#eraMoreBtn')) closePanel(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if(!panel || !panel.classList.contains('open')) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closePanel(true); return; }
+    // Arrow keys move between years inside the panel.
+    var items = Array.prototype.slice.call(panel.querySelectorAll('.era-year'));
+    var i = items.indexOf(document.activeElement);
+    if(i === -1) return;
+    var cols = 4;
+    var step = { ArrowLeft: 1, ArrowRight: -1, ArrowDown: cols, ArrowUp: -cols }[e.key];
+    if(step){ e.preventDefault(); var n = items[Math.max(0, Math.min(items.length - 1, i + step))]; if(n) n.focus(); }
   });
 
   // Check URL params on initial load
   var urlParams = new URLSearchParams(window.location.search);
   var initialYear = urlParams.get('year') || window.location.hash.replace('#', '');
-  if(initialYear && rail.querySelector('.era-pill[data-year="' + initialYear + '"]')){
+  if(initialYear && rail.querySelector('[data-year="' + initialYear + '"]')){
     filterByYear(initialYear);
   }
 })();

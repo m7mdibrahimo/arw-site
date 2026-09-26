@@ -446,13 +446,13 @@
   }
 
   /* 9. شريط السنين في قسم النوستالجيا */
+  /* Only «all», the current year and «all years» are shown now — wrap, never
+     scroll, so the years panel under them isn't clipped. */
   .era-rail {
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    justify-content: flex-start !important;
-    padding: 8px 14px 18px !important;
+    flex-wrap: wrap !important;
+    overflow: visible !important;
+    justify-content: center !important;
+    padding: 8px 12px 24px !important;
     gap: 8px !important;
   }
   .era-rail::-webkit-scrollbar {

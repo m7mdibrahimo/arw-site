@@ -995,6 +995,31 @@ module.exports = function(eleventyConfig) {
   //   nostalgia_order: 1                       -> ترتيب الحلقة جوه السلسلة (العرض الشهري بياخد آخر رقم)
   //   nostalgia_main: true                     -> بس على العرض الشهري (العرض الرئيسي/نهاية المسلسل)
   //   nostalgia_era: "2012"                    -> اختياري، تسمية العصر لو عايز تجمع أكتر من سنة سوا
+  // Year filter for the nostalgia page: every year (newest first) with its series
+  // count, and the year whose shows are being added right now (latest-added series).
+  eleventyConfig.addFilter("nostalgiaYears", function(series) {
+    const counts = new Map();
+    let current = null, latest = -1;
+    (series || []).forEach(function(s) {
+      if (!s.year) return;
+      const y = String(s.year);
+      counts.set(y, (counts.get(y) || 0) + 1);
+      if ((s.addedAt || 0) > latest) { latest = s.addedAt || 0; current = y; }
+    });
+    const years = Array.from(counts.entries())
+      .map(function([year, count]) { return { year: year, count: count, isCurrent: year === current }; })
+      .sort(function(a, b) { return Number(b.year) - Number(a.year); });
+    // Grouped by decade (newest first) so the panel stays short however many years are added.
+    const decades = [];
+    years.forEach(function(y) {
+      const start = Math.floor(Number(y.year) / 10) * 10;
+      let d = decades.find(function(x) { return x.start === start; });
+      if (!d) { d = { start: start, end: start + 9, years: [] }; decades.push(d); }
+      d.years.push(y);
+    });
+    return { years: years, decades: decades, current: current };
+  });
+
   eleventyConfig.addCollection("nostalgiaSeries", function(collectionApi) {
     const map = new Map();
 
@@ -1064,6 +1089,10 @@ module.exports = function(eleventyConfig) {
       }
 
       const dateVal = getDateValue(item);
+      // When the episode was added to the site: files are named «YYYYMMDDHHMMSS-…».
+      const addedStamp = (String(item.inputPath || "").split("/").pop() || "").match(/^(\d{14})/);
+      const addedAt = addedStamp ? Number(addedStamp[1]) : 0;
+      if (addedAt > (s.addedAt || 0)) s.addedAt = addedAt;
       s.episodes.push({
         url: item.url,
         title: item.data.title || "",
