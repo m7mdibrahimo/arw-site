@@ -1,5 +1,25 @@
 [
   {
+    "id": 330617,
+    "link": "https://www.fightful.com/wrestling/steven-borden-i-spent-my-whole-life-running-from-wrestling-but-it-eventually-caught-up-to-me/",
+    "date": "2026-09-26T15:18:55",
+    "date_gmt": "2026-09-26T19:18:55",
+    "title": {
+      "rendered": "Steven Borden: I Spent My Whole Life Running From Wrestling, But It Eventually Caught Up To Me"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/30184711/HQ_p1E4WYAAPC7f.jpeg"
+  },
+  {
+    "id": 330610,
+    "link": "https://www.fightful.com/wrestling/cm-punk-involvement-at-wwe-worlds-collide-was-discussed-from-very-early-on-in-the-planning-stages-of-the-event/",
+    "date": "2026-09-26T15:08:05",
+    "date_gmt": "2026-09-26T19:08:05",
+    "title": {
+      "rendered": "CM Punk’s Involvement At Worlds Collide Was Discussed From Very Early On In The Planning Stages Of The Event"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/11060052/l-intro-1785558226.jpg"
+  },
+  {
     "id": 330602,
     "link": "https://www.fightful.com/wrestling/hog-windy-city-warfare-results-9-25/",
     "date": "2026-09-26T15:00:00",
@@ -278,25 +298,5 @@
       "rendered": "John Morrison Compares Tony Khan To Vince McMahon: &#8216;I Sometimes Think He’s A Lot Like Vince Except With A Good Heart&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/30193734/36-AEW-All-In-London-Post-Show-Media-Scrum-8-30-26-London-England-YouTube-08-31-2026_05_07_AM-1.png"
-  },
-  {
-    "id": 330520,
-    "link": "https://www.fightful.com/wrestling/john-morrison-vince-mcmahon-had-no-checks-and-balances-triple-h-doesnt-have-that-since-hes-under-the-tko-umbrella/",
-    "date": "2026-09-25T22:11:27",
-    "date_gmt": "2026-09-26T02:11:27",
-    "title": {
-      "rendered": "John Morrison: Vince McMahon Had No Checks And Balances. Triple H Doesn&#8217;t Have That Since He&#8217;s Under The TKO Umbrella"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/08091027/triple-hhh-vince-mcmahon.jpg"
-  },
-  {
-    "id": 330525,
-    "link": "https://www.fightful.com/wrestling/cm-punk-qualifies-for-mens-money-in-the-bank-on-9-25-wwe-smackdown/",
-    "date": "2026-09-25T22:06:34",
-    "date_gmt": "2026-09-26T02:06:34",
-    "title": {
-      "rendered": "CM Punk Qualifies For Men&#8217;s Money In The Bank On 9/25 WWE SmackDown"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25220430/IMG_2875.png"
   }
 ]
