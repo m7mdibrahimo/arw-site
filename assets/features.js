@@ -661,23 +661,14 @@
       });
     }
 
-    // Header hides while scrolling down, comes back on the way up.
+    // The header stays fixed on phones; it only gains a soft shadow once the page scrolls.
     if (header) {
-      var lastY = window.scrollY, ticking = false;
+      var ticking = false;
       window.addEventListener('scroll', function () {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(function () {
-          var y = window.scrollY;
-          var phone = window.matchMedia('(max-width: 768px)').matches;
-          header.classList.toggle('arw-scrolled', y > 8);
-          if (phone && !header.classList.contains('arw-search-open') && !document.documentElement.classList.contains('arw-more-open')) {
-            if (y > lastY + 6 && y > 140) header.classList.add('arw-hidden');
-            else if (y < lastY - 6 || y < 140) header.classList.remove('arw-hidden');
-          } else {
-            header.classList.remove('arw-hidden');
-          }
-          lastY = y;
+          header.classList.toggle('arw-scrolled', window.scrollY > 8);
           ticking = false;
         });
       }, { passive: true });

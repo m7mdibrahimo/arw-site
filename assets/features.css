@@ -606,12 +606,13 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 .news-pn-title{ font-family:'Cairo',sans-serif; font-size:14.5px; font-weight:800; line-height:1.55; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 @media (max-width:560px){ .news-pn{ grid-template-columns:1fr; } .news-pn-next{ text-align:right; } }
 
-/* ═══ Phone header + bottom navigation ═══ */
+/* ═══ Phone header (fixed at the top) + bottom navigation ═══ */
 .arw-bottom-nav, .arw-more-sheet, .arw-more-overlay, .arw-search-toggle{ display:none; }
 @media (max-width:768px){
   html body header{ transition:transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s ease !important; }
-  html body header.arw-hidden{ transform:translateY(-100%); }
   html body header.arw-scrolled{ box-shadow:0 6px 18px rgba(0,0,0,.08); }
+  /* The header stays put on phones: the pages' older hide-on-scroll script is overruled. */
+  html body header.header-hidden{ transform:none !important; }
   html body header .nav{ flex-wrap:nowrap !important; justify-content:space-between !important; padding:9px 14px !important; gap:10px !important; }
   html body header .brand{ font-size:20px !important; }
   html body header .site-search{ display:none !important; }
