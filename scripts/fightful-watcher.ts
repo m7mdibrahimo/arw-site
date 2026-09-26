@@ -3497,7 +3497,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
-    .filter(i => ["title_not_arabic", "artifact", "foreign_script", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
+    .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
   // A results report must report results (INCIDENTS #53: a SmackDown «results» article
   // was a match card with every winner line removed).
   if (isShowResultsArticle(rawTitle, plainText) && !/الفائز|الفائزة|الفائزون|الفائزتان|الفائزان/.test(draft.body)) {
@@ -3530,7 +3530,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   if (blocking.length) {
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
-    if (blocking.some(i => ["artifact", "foreign_script", "ai_leak", "vague_result", "results_without_winners"].includes(i.code))) lastPostRetryable = true;
+    if (blocking.some(i => ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners"].includes(i.code))) lastPostRetryable = true;
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
     return false;
   }

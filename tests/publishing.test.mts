@@ -908,6 +908,14 @@ test('same event or same wording is not the same story', () => {
   assert.ok(!clearlyDifferentStories('Trick Williams Beats Baron Corbin In WWE SmackDown Steel Cage Match', 'trick-williams-retains-us-title-steel-cage-smackdown'));
 });
 
+test('a draft that dropped its hamzas is blocked, names and N-1 are not', () => {
+  // INCIDENTS #64: Logan Paul petition — «انها»، «اطلق»، «اشار إلى ان»…
+  const bad = checkArticle('إطلاق عريضة تطالب لوغان بول بقص شعره', 'اطلق صديقه عريضة، واشار إلى ان مظهره السابق افضل، مؤكدا انها حملة ساخرة وان الجميع سيوقع.', []);
+  assert.ok(bad.some(i => i.code === 'hamza_dropped'));
+  const ok = checkArticle('روب فان دام يدافع عن كيفن ناش', 'قال روب فان دام إن ناش محق، وتابع نزالات بطولة ان 1 فيكتوري بعد أن فاز فان دام.', []);
+  assert.ok(!ok.some(i => i.code === 'hamza_dropped'));
+});
+
 test('a pre-show match card is not a results report', () => {
   // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
   // and was published as results with «الفائز: قيد الانتظار».

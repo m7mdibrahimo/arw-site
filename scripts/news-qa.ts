@@ -87,6 +87,8 @@ const RULES: Rule[] = [
   { code: "truncated_word", severity: "error", re: /(?<=^|\s)[ءآأؤإئاتثجحخدذرزسشصضطظعغقمنهةى](?=\s)/g, message: "حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)", fields: ["title", "body"] },
   { code: "vague_result", severity: "error", re: /الفائز:\*{0,2}\s*(?:تم\s+حسم|تحديد|حسم\s+النتيجة|غير\s+معروف|لم\s+يتم|لم\s+يحسم|قيد\s+الانتظار|بانتظار|سيتم|يحدد\s+لاحقا|انتهى\s+الحدث|انتهت\s+الأحداث|[^\n]{0,25}وسط\s+أجواء)[^\n]*/g, message: "سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)", fields: ["body"] },
   { code: "missing_hamza", severity: "error", re: /(?<![\u0621-\u064A])[وف]?(?:الى|الي)(?![\u0621-\u064A])/g, message: "«الى/الي» بلا همزة — «إلى» (حرف الجر) أو «إليّ» حسب المعنى (حصل: «للوصول الي» والمقصود «إليّ»)", fields: ["title", "body"] },
+  // A draft that dropped hamzas everywhere («انها»، «اشار إلى ان»، «اطلق»…) is a bad
+  // Gemini output, not a few typos — the counted check below blocks it (INCIDENTS #64).
   { code: "double_punct", severity: "warning", re: /[،,]\s*[،,.]|:\s*:|؟\s*؟/g, message: "علامات ترقيم مكررة", fields: ["title", "body"] },
 ];
 
@@ -128,6 +130,12 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
       if (m) issues.push({ code: "known_wrong", severity: "error", field, message: `"${c.wrong}" → "${c.right}"${c.note ? ` (${c.note})` : ""}`, excerpt: excerptAround(text, m.index, m[0].length) });
     }
   }
+
+  // Dropped hamzas across the text = a broken Gemini draft: retranslate it.
+  // No «ف» prefix («روب فان دام»), and «ان» before a number is «N-1 Victory», not «أن».
+  const HAMZALESS = /(?<![\u0621-\u064A])[وبل]?(?:ان|انه|انها|انهم|اذا|اشار|اشارت|اكد|اكدت|اطلق|اضاف|اوضح|اكثر|ايضا|اول|اخر|امام|اصبح|اصبحت|اعلن|اعلنت|تاثير|اسلوب)(?![\u0621-\u064A]|[\s-]*(?:\d|واحد))/g;
+  const hamzaless = ((body || "") + " " + (title || "")).match(HAMZALESS) || [];
+  if (hamzaless.length >= 4) issues.push({ code: "hamza_dropped", severity: "error", field: "body", message: `همزات ساقطة في ${hamzaless.length} مواضع — النص يحتاج إعادة ترجمة`, excerpt: hamzaless.slice(0, 6).join("، ") });
 
   const t = title || "";
   // Show/federation names legitimately stay English, so judge by how many real
