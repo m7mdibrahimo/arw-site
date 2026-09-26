@@ -1,5 +1,15 @@
 [
   {
+    "id": 330541,
+    "link": "https://www.fightful.com/?p=330541",
+    "date": "2026-09-26T00:30:00",
+    "date_gmt": "2026-09-26T04:30:00",
+    "title": {
+      "rendered": "Vegas Depredador Wins the CMLL National Light Heavyweight Title"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26002605/IMG_2897-2.jpg?v=20260926042637"
+  },
+  {
     "id": 330534,
     "link": "https://www.fightful.com/wrestling/rey-pegasus-wins-the-cmll-mexican-national-middleweight-title/",
     "date": "2026-09-25T23:45:00",
@@ -288,15 +298,5 @@
       "rendered": "Steven Borden Says His Journey In Wrestling Has Been A Fun Ride So Far"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25134411/Screenshot-491-e1790358275924.png"
-  },
-  {
-    "id": 330404,
-    "link": "https://www.fightful.com/wrestling/mystery-wrestling-launches-talent-initiative-program-signs-30-wrestlers/",
-    "date": "2026-09-25T13:30:45",
-    "date_gmt": "2026-09-25T17:30:45",
-    "title": {
-      "rendered": "Mystery Wrestling Launches Talent Initiative Program, Signs 30+ Wrestlers"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25132927/HTE0wLRWsAA481K-e1790357385203.jpg"
   }
 ]
