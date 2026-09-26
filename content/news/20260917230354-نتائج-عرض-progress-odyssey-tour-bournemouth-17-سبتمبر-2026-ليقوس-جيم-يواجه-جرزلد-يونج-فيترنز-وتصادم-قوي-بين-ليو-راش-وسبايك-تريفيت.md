@@ -15,7 +15,7 @@ tags:
 image: /content/images/ao9aznjk5utrxkke.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد PROGRESS Wrestling عرض PROGRESS Odyssey Tour Bournemouth في الثاني عشر من سبتمبر من قاعة أو تو أكاديمي في مدينة بورنموث الإنجليزية، وشهد العرض مواجهات قوية وحماسية حضرتها جماهير غفير، وإليكم النتائج الكاملة للمباريات.
+أقام اتحاد PROGRESS Wrestling عرض PROGRESS Odyssey Tour Bournemouth في الثاني عشر من سبتمبر من قاعة أو تو أكاديمي في مدينة بورنموث الإنجليزية.
 
 **المواجهة الأولى (نزال فرق): ليقوس جيم (كيد ليقوس وكيد ليقوس الثاني) ضد جرزلد يونج فيترنز (جيمس دريك وزاك جيبسون)**
 

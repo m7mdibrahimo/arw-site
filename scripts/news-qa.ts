@@ -78,7 +78,7 @@ const RULES: Rule[] = [
   { code: "artifact", severity: "error", re: /\bundefined\b|\bNaN\b|\[object Object\]|\{\{|\}\}|```|\\n|&amp;|&quot;|&#\d+;/g, message: "بقايا كود أو رموز غير مفهومة", fields: ["title", "body"] },
   // Gemini sometimes swaps one letter of a name for a look-alike from another script:
   // «وパاتريك» (Japanese), «ناтан» (Cyrillic), «مصارعة חברה» (Hebrew tag) — INCIDENTS #54.
-  { code: "foreign_script", severity: "error", re: /[\u0370-\u03FF\u0400-\u052F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]+/g, message: "حروف من لغة أخرى (يابانية/روسية/عبرية...) داخل النص" },
+  { code: "foreign_script", severity: "error", re: /[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]+/g, message: "حروف من لغة أخرى (يابانية/روسية/عبرية/بورمية...) داخل النص" },
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
   { code: "empty_brackets", severity: "error", re: /\(\s*\)|\[\s*\]|«\s*»|""/g, message: "أقواس أو علامات تنصيص فاضية" },
   { code: "english_jargon", severity: "error", re: new RegExp(`[${AR}]\\s+(?:segment|promo|promoter|heel|babyface|face turn|heel turn|feud|spot|push|booking|booker|squash|botch|kayfabe|go-home|angle|storyline|run-in|pop|heat|tag team|finisher|jobber|mic skills|main event|midcard|house show)\\b|\\b(?:segment|promo|heel|babyface|feud|booking|squash|botch|kayfabe|go-home|storyline)\\s+[${AR}]`, "gi"), message: "مصطلح مصارعة إنجليزي داخل جملة عربية (مثل segment ← فقرة، promo ← خطاب/حوار)", fields: ["title", "body"] },
@@ -209,8 +209,13 @@ export function headUnheadedMatches(text: string): string {
   return lines.join("\n");
 }
 
+const FILLER_NOUNS = "مواجهات|نزالات|أحداثا|منافسات";
+const FILLER_ADJ = "حماسية|نارية|مثيرة|قوية";
+
 export function autoFix(text: string): string {
   if (!text) return text;
+  // HTML line breaks written into the markdown body («<br><br>**المواجهة الأولى…»)
+  text = text.replace(/<br\s*\/?>/gi, "\n").replace(/\n{3,}/g, "\n\n");
   const urls: string[] = [];
   let out = text.replace(/https?:\/\/\S+|<[^>]+>/g, m => `\u0000${urls.push(m) - 1}\u0000`);
   // Gemini sometimes writes the intro twice — as two paragraphs (SmackDown 25/09) or
@@ -238,6 +243,14 @@ export function autoFix(text: string): string {
     .replace(/[،,؛]\s*([.!؟?])/g, "$1")
     .replace(/([،؛])\s*[،,؛]/g, "$1")
     .replace(/[ \t]+([.،؛!؟])(?=\s|$)/g, "$1")
+    // «---**المواجهة الثانية**»: a separator glued to the next heading renders as literal text
+    .replace(/(^|\n)(-{3,})[ \t]*(?=[^\s-])/g, "$1$2\n\n")
+    // Filler Gemini keeps adding although the style guide bans it (All Out 26/09 — INCIDENTS #72)
+    .replace(/(?:^|(?<=[\n.]\s*))تجهيزا\s+(?:للمنافسات|للمنافسة|للمواجهة|للنزال)(?:\s+(?:القوية|الكبرى|المرتقبة))?[،,]\s*/g, "")
+    .replace(new RegExp(`[،,]\\s*(?:و)?شهد(?:ت)?\\s+(?:العرض|الأمسية|الليلة)\\s+(?:${FILLER_NOUNS})\\s+(?:${FILLER_ADJ})[^.\\n]*(?=\\.)`, "g"), "")
+    .replace(new RegExp(`(^|[.!])[ \\t]*(?:و)?شهد(?:ت)?\\s+(?:العرض|الأمسية|الليلة)\\s+(?:${FILLER_NOUNS})\\s+(?:${FILLER_ADJ})[^.\\n]*\\.[ \\t]*`, "gm"), "$1")
+    // Self-promotion lines («لا تنسى زيارة موقعنا باستمرار…», «لا تنسى الفواصل…»)
+    .replace(/(^|\n)[ \t]*لا\s+تنس[ىي][^\n]*(?=\n|$)/g, "$1")
     // Leftovers of the old glossary: «(بطولة WWE الموحدة - بطل (الاتحاد))», «بطولة X (بطل (الاتحاد للفرق))»
     .replace(/\s*[-–]\s*بطل \(الاتحاد[^()\n]*\)/g, "")
     .replace(/\s*\(بطل \(الاتحاد[^()\n]*\)\)/g, "")

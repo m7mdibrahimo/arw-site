@@ -1122,3 +1122,17 @@ test("the copy editor without a source only corrects — never rewrites, invents
   assert.equal(out.article.body, "عودة وظهور خاص للنجمة بايج.");
   assert.equal(autoFix("* المباراة (بطولة WWE الموحدة - بطل (الاتحاد)): أ"), "* المباراة (بطولة WWE الموحدة): أ");
 });
+
+test("glued separators and banned filler are cleaned (INCIDENTS #72)", () => {
+  assert.equal(autoFix("🏆 x\n\n---**المواجهة الثانية: فرق**\n\nنص."), "🏆 x\n\n---\n\n**المواجهة الثانية: فرق**\n\nنص.");
+  assert.equal(autoFix("تجهيزا للمنافسات القوية، تواجه فريق أ ضد فريق ب."), "تواجه فريق أ ضد فريق ب.");
+  assert.equal(autoFix("أقيم عرض AEW All Out في شيكاغو، وشهد العرض مواجهات حماسية وتحديات على عدة ألقاب كبرى."), "أقيم عرض AEW All Out في شيكاغو.");
+});
+
+test("filler removal never cuts inside a word; self-promo lines, <br> and Burmese letters are handled", () => {
+  assert.equal(autoFix("إلى جانب نزال اللقب، يشهد العرض مواجهات قوية أخرى تتضمن لقاء."), "إلى جانب نزال اللقب، يشهد العرض مواجهات قوية أخرى تتضمن لقاء.");
+  assert.equal(autoFix("أقيم العرض في اليابان. شهد العرض مواجهات قوية وحماسية بين النجوم، وإليكم النتائج.\n\nنص"), "أقيم العرض في اليابان.\n\nنص");
+  assert.equal(autoFix("نص.\n\nلا تنسى زيارة موقعنا باستمرار لمتابعة أحدث الأخبار---").trim(), "نص.");
+  assert.equal(autoFix("---\n<br><br>**المواجهة الأولى**<br><br>نص"), "---\n\n**المواجهة الأولى**\n\nنص");
+  assert.ok(checkArticle("عنوان عربي", "مာ**المواجهة**", []).some(i => i.code === "foreign_script"));
+});
