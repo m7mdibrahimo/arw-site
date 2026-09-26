@@ -1888,8 +1888,12 @@ function isResultsArticle(title: string = ""): boolean {
 function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
+  // JS «\b» only knows ASCII word characters, so «/\bيهزم\b/» never matched an Arabic
+  // title — every Arabic rule below was dead until 2026-09-27 (INCIDENTS #68).
+  const ar = (alts: string) => new RegExp(`(?<![\\u0600-\\u06FF\\w])(?:${alts})`, "i");
 
-  if (/^نتائج\s+عرض\b/i.test(title) || /\b(?:Full Show Results|Live Results|Show Results)\b/i.test(title)) {
+  // Full show results go to social; leaked results of a taped show («نتائج تسريبات…») do not.
+  if (/^نتائج\s+عرض(?![\u0600-\u06FF])/.test(title) || /\b(?:Full Show Results|Live Results|Show Results)\b/i.test(title)) {
     return false;
   }
 
@@ -1900,32 +1904,43 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
     return true;
   }
 
+  // Returns, debuts and surprise appearances never go to social — the owner's rule
+  // (2026-09-27: «ساموا جو يعود في عرض AEW All Out» reached Telegram and Facebook).
+  if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(title) ||
+      /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
+    return true;
+  }
+
+  // An Arabic title that states a result is a spoiler whatever else it says
+  // («… يهزم … ويكشف …» used to fall into the «يكشف» interview safeguard below).
+  const hasArabicDefeat = ar("يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على|يحسم مواجهة لصالح").test(title);
+  const hasArabicQualifier = ar("يتأهل لـ|يتأهل لمواجهة|يتأهل في تصفيات|يحسم تأهله|يقصي|يخرج من تصفيات").test(title);
+  const hasArabicRetain = ar("يحتفظ بـ|يحتفظ بلقب|يحتفظ ببطولة|يحافظ على لقب|يحافظ على بطولة|احتفاظ باللقب|احتفاظ بالبطولة").test(title);
+  const hasArabicWin = ar("يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول").test(title);
+  if (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin) return true;
+
   // Preserved content safeguards
-  if (/\b(?:الإعلان عن|تحديد موعد|نزال مرتقب|مواجهة مرتقبة|نزالات التصفية|قائمة نزالات|بطاقة عرض|سيواجه|يواجه|يتحالف مع)\b/i.test(title) ||
+  if (ar("الإعلان عن|تحديد موعد|نزال مرتقب|مواجهة مرتقبة|نزالات التصفية|قائمة نزالات|بطاقة عرض|سيواجه|يواجه|يتحالف مع").test(title) ||
       /\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) {
     return false;
   }
 
-  if (/\b(?:يعود إلى|تسجيل ظهوره الأول|ظهوره الأول|ظهور مفاجئ|يوقع مع|تجديد عقد|يغادر|رحيل|فسخ عقد|انتقال|يظهر في|يشارك في)\b/i.test(title) ||
+  if (ar("يوقع مع|تجديد عقد|يغادر|رحيل|فسخ عقد|انتقال|يظهر في|يشارك في").test(title) ||
       /\b(?:returns? to|makes? (?:surprise )?return|debuts? (?:on|at|in)|makes? debut|signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by|makes? (?:surprise )?appearance|shows? up at)\b/i.test(title)) {
     return false;
   }
 
-  if (/\b(?:كواليس|خلف كواليس|تصريحات|يعلق على|يرد على|يوضح|يكشف|يتحدث عن|يشيد بـ|يهاجم|ينتقد|شائعات|تقارير تصف|حديث|حوار)\b/i.test(title) ||
+  if (ar("كواليس|خلف كواليس|تصريحات|يعلق على|يرد على|يوضح|يكشف|يتحدث عن|يشيد بـ|يهاجم|ينتقد|شائعات|تقارير تصف|حديث|حوار").test(title) ||
       /\b(?:comments on|comments after|reacts to|reflects on|explains|discusses|reveals|details|opens up|recalls|speaks on|addresses|says|tells|praises|blasts|slams|shuts down|teases|advocates|pitches|names|backstage at|loves|remembers|unhappy with|frustrated with)\b/i.test(title) ||
       /^[A-Za-z0-9'\s\.\-]+?\s*:\s*['"“]/i.test(title)) {
     return false;
   }
 
-  if (/\b(?:إصابة|جراحة|الرباط الصليبي|كسر|ابتعاد|غياب|وعكة صحية|مستشفى|وفاة|قاعة المشاهير|نسب مشاهدة|تقييمات|مبيعات تذاكر)\b/i.test(title) ||
+  if (ar("إصابة|جراحة|الرباط الصليبي|كسر|ابتعاد|غياب|وعكة صحية|مستشفى|وفاة|قاعة المشاهير|نسب مشاهدة|تقييمات|مبيعات تذاكر").test(title) ||
       /\b(?:injury|injured|surgery|torn acl|neck injury|pulled from|medical|health|hospital|out indefinitely|gofundme|trailer|movie|film|podcast|hall of fame|funeral|passes away|passed away|dies at|death of|historic gate|ticket sales|viewership|ratings)\b/i.test(title)) {
     return false;
   }
 
-  const hasArabicDefeat = /\b(?:يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على|يحسم مواجهة لصالح)\b/i.test(title);
-  const hasArabicQualifier = /\b(?:يتأهل لـ|يتأهل لمواجهة|يتأهل في تصفيات|يحسم تأهله|يقصي|يخرج من تصفيات)\b/i.test(title);
-  const hasArabicRetain = /\b(?:يحتفظ بـ|يحتفظ بلقب|يحتفظ ببطولة|يحافظ على لقب|يحافظ على بطولة|احتفاظ باللقب|احتفاظ بالبطولة)\b/i.test(title);
-  const hasArabicWin = /\b(?:يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول)\b/i.test(title);
 
   const hasEnglishDefeat = /\b(?:defeats?|defeated|defeating|def\.|beats?|beaten|pins?|pinned|submits?|submitted|triumphs? over|victorious over)\b/i.test(title);
   const hasEnglishQualifier = /\b(?:qualifies? for|qualified for|advances? (?:to|in)|advanced (?:to|in)|eliminates?|eliminated from)\b/i.test(title);
@@ -1936,8 +1951,8 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
   const hasEnglishSurvive = /\bsurvives?.*to retain\b/i.test(title);
 
   // Live in-show angles/attacks/segments from weekly shows
-  const hasArabicLiveShow = /\b(?:في عرض|خلال عرض|عبر عرض|بعرض)\s+(?:WWE\s+)?(?:RAW|SmackDown|NXT|الرو|سماك\s*داون|إمباكت)|\b(?:في عرض|خلال عرض|عبر عرض|بعرض)\s+(?:AEW\s+)?(?:Dynamite|Collision|داينمايت|كوليجن)\b/i.test(title);
-  const hasArabicLiveAngle = /\b(?:يهاجم|تهاجم|يعتدي على|تعتدي على|يغدر بـ|تغدر بـ|يصدم|يواجه|تواجه|يصفع|تصفع|يقتحم|تقتحم|يشعل|يشعلان|تظهر في|يظهر في|يفاجئ|تفاجئ|يقاطع|تقاطع)\b/i.test(title);
+  const hasArabicLiveShow = ar("(?:في عرض|خلال عرض|عبر عرض|بعرض)\\s+(?:WWE\\s+|AEW\\s+)?(?:RAW|SmackDown|NXT|الرو|سماك\\s*داون|إمباكت|Dynamite|Collision|داينمايت|كوليجن)").test(title);
+  const hasArabicLiveAngle = ar("يهاجم|تهاجم|يعتدي على|تعتدي على|يغدر بـ|تغدر بـ|يصدم|يواجه|تواجه|يصفع|تصفع|يقتحم|تقتحم|يشعل|يشعلان|تظهر في|يظهر في|يفاجئ|تفاجئ|يقاطع|تقاطع").test(title);
   const hasEnglishLiveShow = /\b(?:on\s+(?:\d+[-\/]\d+\s+)?(?:WWE\s+)?(?:RAW|SmackDown|NXT)|on\s+(?:AEW\s+)?(?:Dynamite|Collision))\b/i.test(title);
   const hasEnglishLiveAngle = /\b(?:attacks?|ambushes?|turns on|brawls with|appears on|shows up on|confronts?|cost\b|interferes?)\b/i.test(title);
 
@@ -2201,7 +2216,10 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // re-running the regex-heavy check on every tick for the whole
     // still-catching-up backlog was itself a real CPU cost contributing to
     // hitting the Worker's per-invocation limit.
-    if (collection === "news" && !tgDone) {
+    // Checked before EVERY platform, not only before Telegram: an item already on
+    // Telegram could still reach Instagram later (INCIDENTS #68). The check is a few
+    // regexes on the title and toProcess is capped per tick, so the cost stays small.
+    if (collection === "news" && !(tgDone && fbDone && igDone && xDone)) {
       const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
       if (isSpoiler) {
         state.telegram[key] = now;

@@ -2,6 +2,9 @@ import { isSingleMatchResultArticle } from "./fightful-watcher";
 
 // Comprehensive test suite of 100+ headlines across all wrestling promotions, styles, and edge cases.
 export const testCases: Array<{ title: string; expectedFiltered: boolean; category: string }> = [
+  { title: "Samoa Joe Returns At AEW All Out, Headbutts Jack Perry", expectedFiltered: true, category: "Return at a PPV (INCIDENTS #68)" },
+  { title: "ساموا جو يعود في عرض AEW All Out", expectedFiltered: true, category: "Arabic return title (INCIDENTS #68)" },
+  { title: "أول ظهور لإيليا دراغونوف في AEW", expectedFiltered: true, category: "Arabic debut title" },
   // =========================================================================
   // CATEGORY 1: SINGLE MATCH LIVE RESULTS (MUST BE FILTERED / BLOCKED = TRUE)
   // =========================================================================
@@ -389,12 +392,12 @@ export const testCases: Array<{ title: string; expectedFiltered: boolean; catego
   // =========================================================================
   {
     title: "El Grande Americano Returns To WWE Raw, Teams With Stephanie Vaquer In Mixed Tag Action",
-    expectedFiltered: false,
+    expectedFiltered: true /* returns/debuts never go to social — owner 2026-09-27 */,
     category: "Wrestler Return"
   },
   {
     title: "'Pitbull' Gary Wolfe To Make GCW Debut In October",
-    expectedFiltered: false,
+    expectedFiltered: true /* returns/debuts never go to social — owner 2026-09-27 */,
     category: "Wrestler Debut"
   },
   {
@@ -404,12 +407,12 @@ export const testCases: Array<{ title: string; expectedFiltered: boolean; catego
   },
   {
     title: "AJ Lee Returns To WWE At SmackDown In Surprise Appearance",
-    expectedFiltered: false,
+    expectedFiltered: true /* returns/debuts never go to social — owner 2026-09-27 */,
     category: "Surprise Return"
   },
   {
     title: "Motor City Machine Guns Debut On WWE SmackDown, Attack Bloodline",
-    expectedFiltered: false,
+    expectedFiltered: true /* returns/debuts never go to social — owner 2026-09-27 */,
     category: "Faction Debut"
   },
   {

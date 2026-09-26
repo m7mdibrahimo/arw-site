@@ -2215,6 +2215,26 @@ export function isShowResultsArticle(originalTitle: string, plainText: string = 
  * 3. Surprise returns, debuts, and signings ("Returns", "Debuts", "Signs") are NEVER blocked.
  * 4. Backstage news, injuries, surgeries, and interviews/quotes are NEVER blocked.
  */
+/**
+ * Returns, debuts and surprise appearances are show spoilers: the owner forbade them on
+ * social entirely (2026-09-27, «ساموا جو يعود في عرض AEW All Out» reached Telegram and
+ * Facebook — INCIDENTS #68). Announced future returns/debuts are blocked too.
+ */
+export function isReturnOrDebutStory(rawTitle: string, plainText: string = ""): boolean {
+  const title = rawTitle || "";
+  if (/\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|re-?debut|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|is back|are back|back on (?:tv|television)|reappears?)\b/i.test(title)) return true;
+  const AR_B = "(?<![\\u0600-\\u06FF])";
+  if (new RegExp(`${AR_B}(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)`).test(title)) return true;
+  const lead = plainText.slice(0, 500);
+  return /\b(?:made (?:his|her|their) (?:\w+ )?(?:return|debut)|made a surprise|returned (?:at|on|to|during|tonight)|debuted (?:at|on|during|tonight)|surprise (?:return|appearance|debut))\b/i.test(lead);
+}
+
+/** A match result in the lead of a story that is not a full results report («X def. Y» news). */
+export function leadHasMatchResult(plainText: string = ""): boolean {
+  const lead = plainText.slice(0, 500);
+  return /(?:\bdef\.|\b(?:defeated|defeats|beat|pinned|submitted|retained|won (?:the|his|her|their)|picked up (?:the|a) win|scored (?:the|a) win)\b)/i.test(lead);
+}
+
 export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
@@ -2223,6 +2243,11 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
   if (isShowResultsArticle(title, plainText)) {
     return false;
   }
+
+  // 1.2 Returns / debuts / surprise appearances never go to social (owner, 2026-09-27).
+  if (isReturnOrDebutStory(title, plainText)) return true;
+  // 1.3 A single match result in the story's lead («after Jack Perry defeated Shibata»).
+  if (leadHasMatchResult(plainText)) return true;
 
   // 1.5 A leaked/revealed outcome ("Spoiler: Men's MITB Qualifying Outcome For 9/25
   // SmackDown Revealed") is a single-match result — INCIDENTS #56.
@@ -2236,8 +2261,8 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
     return false;
   }
 
-  // 2.2 Wrestler Returns, Debuts, Signings, Releases & Appearances
-  if (/\b(?:returns? to|makes? (?:surprise )?return|debuts? (?:on|at|in)|makes? debut|signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by|makes? (?:surprise )?appearance|shows? up at)\b/i.test(title)) {
+  // 2.2 Signings, Releases & Departures (returns/debuts are blocked above — rule 1.2)
+  if (/\b(?:signs? with|signed with|contract|free agent|re-signs?|departs?|leaves?|released by)\b/i.test(title)) {
     return false;
   }
 
