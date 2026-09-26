@@ -1,5 +1,15 @@
 [
   {
+    "id": 330553,
+    "link": "https://www.fightful.com/wrestling/the-undertaker-appears-at-savannah-bananas-game/",
+    "date": "2026-09-26T09:17:55",
+    "date_gmt": "2026-09-26T13:17:55",
+    "title": {
+      "rendered": "The Undertaker Appears At Savannah Bananas Game"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26091737/Screenshot-2026-09-26-at-9.17.26-AM.png"
+  },
+  {
     "id": 330550,
     "link": "https://www.fightful.com/wrestling/yuya-uemura-illness-kosei-fujita-injury-forces-njpw-destruction-in-kobe-changes/",
     "date": "2026-09-26T09:06:39",
@@ -288,15 +298,5 @@
       "rendered": "Dani Luna Has Joined AEW, Expected To Debut Fairly Soon"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25144321/IMG_2825.jpg"
-  },
-  {
-    "id": 330424,
-    "link": "https://www.fightful.com/wrestling/thekla-opens-up-about-not-having-match-at-aew-all-in-2026/",
-    "date": "2026-09-25T14:40:51",
-    "date_gmt": "2026-09-25T18:40:51",
-    "title": {
-      "rendered": "Thekla Opens Up About Not Having Match At AEW All In 2026"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/30123837/HQ-8sZQbwAAFT2K.jpeg"
   }
 ]
