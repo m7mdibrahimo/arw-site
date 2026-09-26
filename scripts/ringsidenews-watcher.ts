@@ -153,6 +153,9 @@ export function extractRingsideArticle(page: string): string | null {
   if (start < 0) return null;
   let end = page.indexOf("rsn-laai-ad-below-article-content", start);
   if (end < 0) end = page.indexOf("Add as a preferred source", start);
+  // The end marker sits inside the ad div's class attribute: cut before that tag opens,
+  // or Gemini receives a half tag («<div class="rsn-laai-ad …») as article text.
+  if (end > start) { const tagOpen = page.lastIndexOf("<", end); if (tagOpen > start) end = tagOpen; }
   return page.slice(start, end > start ? end : start + 80000);
 }
 

@@ -171,6 +171,41 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
  */
 const AR_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
 
+const AR_ORDINALS = ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة",
+  "الحادية عشرة", "الثانية عشرة", "الثالثة عشرة", "الرابعة عشرة", "الخامسة عشرة", "السادسة عشرة", "السابعة عشرة", "الثامنة عشرة", "التاسعة عشرة", "العشرون"];
+
+/**
+ * A results report where some matches got only a «---» separator instead of their
+ * «**المواجهة N: …**» heading (wXw Extreme Wrestling Party 25/09: matches 2, 3 and 6).
+ * Give each one a heading and renumber every «المواجهة» heading in order.
+ */
+export function headUnheadedMatches(text: string): string {
+  const HEADING = /^\*\*المواجهة\s+[^:*\n]+?(?::\s*([^*\n]*))?\*\*\s*$/;
+  const lines = text.split("\n");
+  if (!lines.some(l => HEADING.test(l.trim()))) return text;
+  let n = 0;
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    const m = line.match(HEADING);
+    if (m) {
+      if (n < AR_ORDINALS.length) lines[i] = `**المواجهة ${AR_ORDINALS[n]}${m[1] ? `: ${m[1].trim()}` : ""}**`;
+      n++;
+      continue;
+    }
+    if (!/^-{3,}$/.test(line)) continue;
+    let j = i + 1;
+    while (j < lines.length && !lines[j].trim()) j++;
+    const next = (lines[j] || "").trim();
+    // The next block is a match (a result line followed by its 🏆 line), not a heading or the end.
+    if (!next || next.startsWith("**") || next.startsWith("🏆") || n >= AR_ORDINALS.length) continue;
+    const trophyAhead = lines.slice(j + 1, j + 4).some(l => l.trim().startsWith("🏆"));
+    if (!trophyAhead) continue;
+    lines[i] = `**المواجهة ${AR_ORDINALS[n]}**\n`;
+    n++;
+  }
+  return lines.join("\n");
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   const urls: string[] = [];
@@ -186,6 +221,7 @@ export function autoFix(text: string): string {
     seenLines.add(key);
     return true;
   }).join("\n").replace(/(\n-{3,}[ \t]*)(?:\n[ \t]*)*\n-{3,}[ \t]*(?=\n)/g, "$1").replace(/\n{3,}/g, "\n\n");
+  out = headUnheadedMatches(out);
   out = out
     // "TNA iMPACT (9/24/2026)": an American M/D/YYYY date copied from the source
     // title used to get the whole article blocked (mangled_date) — convert it.

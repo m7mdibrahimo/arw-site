@@ -9,7 +9,7 @@ import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
-import { checkArticle, autoFix } from '../scripts/news-qa';
+import { checkArticle, autoFix, headUnheadedMatches } from '../scripts/news-qa';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -1082,4 +1082,16 @@ test('news stops using Instagram once the daily budget (minus the video reserve)
   const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   const ig = Object.keys(after.deferrals || {}).filter(k => k.startsWith('instagram:')).concat(Object.keys(after.instagram));
   assert.ok(!ig.some(k => k.endsWith('httpssitetestnewscapped')), 'news leaves the remaining daily budget to show reels');
+});
+
+test("results matches left with only a «---» separator get a numbered heading", () => {
+  const body = "مقدمة.\n\n**المواجهة الأولى: نزال تورنيدو للفرق**\n\nفريق Hyperactive يفوز.\n\n🏆 **الفائز:** فريق Hyperactive\n\n---\nكورو يحقق الفوز على ليدز لويس.\n\n🏆 **الفائز:** كورو\n\n**المواجهة الرابعة: بطولة 24/7**\n\nكيلر كيلي تتوج.\n\n🏆 **الفائزة:** كيلر كيلي\n\n**الحدث الرئيسي (Main Event): اللقب**\n\nأهورا يحتفظ.\n\n🏆 **الفائز:** أهورا";
+  const fixed = autoFix(body);
+  assert.match(fixed, /\*\*المواجهة الثانية\*\*\n+كورو/);
+  assert.match(fixed, /\*\*المواجهة الثالثة: بطولة 24\/7\*\*/);
+  assert.ok(!/^---$/m.test(fixed));
+  assert.match(fixed, /\*\*الحدث الرئيسي \(Main Event\): اللقب\*\*/);
+  // A news article with a plain «---» and no match headings is untouched.
+  const plain = "فقرة.\n\n---\nفقرة أخرى.\n\n🏆 ليس تقريرا";
+  assert.equal(headUnheadedMatches(plain), plain);
 });
