@@ -1,5 +1,15 @@
 [
   {
+    "id": 330534,
+    "link": "https://www.fightful.com/wrestling/rey-pegasus-wins-the-cmll-mexican-national-middleweight-title/",
+    "date": "2026-09-25T23:45:00",
+    "date_gmt": "2026-09-26T03:45:00",
+    "title": {
+      "rendered": "Rey Pegasus Wins the CMLL Mexican National Middleweight Title"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25232815/IMG_2884.jpg"
+  },
+  {
     "id": 330494,
     "link": "https://www.fightful.com/wrestling/c4-for-the-love-of-the-game-results-9-18/",
     "date": "2026-09-25T23:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Mystery Wrestling Launches Talent Initiative Program, Signs 30+ Wrestlers"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25132927/HTE0wLRWsAA481K-e1790357385203.jpg"
-  },
-  {
-    "id": 330400,
-    "link": "https://www.fightful.com/wrestling/seth-rollins-returning-to-nfl-networks-good-morning-football/",
-    "date": "2026-09-25T12:56:43",
-    "date_gmt": "2026-09-25T16:56:43",
-    "title": {
-      "rendered": "Seth Rollins Returning To NFL Network&#8217;s Good Morning Football"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25124720/Untitled-Design-17.jpg"
   }
 ]
