@@ -871,6 +871,7 @@ test('a paragraph written twice is kept once', () => {
   // INCIDENTS #58
   const intro = 'شهد عرض WWE SmackDown الذي أقيم مساء 25 سبتمبر 2026 أحداثا ساخنة ومواجهات قوية تمهيدا للعرض المرتقب.';
   assert.equal(autoFix(`${intro}\n\n---\n${intro}\n\n---\n**المواجهة الأولى**`), `${intro}\n\n---\n**المواجهة الأولى**`);
+  assert.equal(autoFix(`${intro}\n${intro}\n\n**المواجهة الأولى**`), `${intro}\n\n**المواجهة الأولى**`);
   assert.equal(autoFix(`${intro}\n\n${intro}\n\n**المواجهة الأولى**\n\n🏆 **الفائز:** تريك ويليامز\n\n🏆 **الفائز:** تريك ويليامز`), `${intro}\n\n**المواجهة الأولى**\n\n🏆 **الفائز:** تريك ويليامز\n\n🏆 **الفائز:** تريك ويليامز`);
 });
 

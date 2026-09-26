@@ -167,17 +167,17 @@ export function autoFix(text: string): string {
   if (!text) return text;
   const urls: string[] = [];
   let out = text.replace(/https?:\/\/\S+|<[^>]+>/g, m => `\u0000${urls.push(m) - 1}\u0000`);
-  // Gemini sometimes writes the intro paragraph twice (SmackDown 25/09 — INCIDENTS #58).
-  // A long paragraph repeated word-for-word is never intended: keep the first.
-  const seenParagraphs = new Set<string>();
-  out = out.split(/\n{2,}/).filter(para => {
-    // Sections are separated by a «---» line glued to the next paragraph.
-    const key = para.replace(/^(?:\s*-{3,}\s*\n)+/, "").replace(/\s+/g, " ").trim();
+  // Gemini sometimes writes the intro twice — as two paragraphs (SmackDown 25/09) or
+  // two consecutive lines (C4 18/09) — INCIDENTS #58/#59. A long line repeated
+  // word-for-word is never intended: keep the first, and drop a «---» left orphaned.
+  const seenLines = new Set<string>();
+  out = out.split("\n").filter(line => {
+    const key = line.replace(/\s+/g, " ").trim();
     if (key.length < 60) return true;
-    if (seenParagraphs.has(key)) return false;
-    seenParagraphs.add(key);
+    if (seenLines.has(key)) return false;
+    seenLines.add(key);
     return true;
-  }).join("\n\n");
+  }).join("\n").replace(/(\n-{3,}[ \t]*)(?:\n[ \t]*)*\n-{3,}[ \t]*(?=\n)/g, "$1").replace(/\n{3,}/g, "\n\n");
   out = out
     // "TNA iMPACT (9/24/2026)": an American M/D/YYYY date copied from the source
     // title used to get the whole article blocked (mangled_date) — convert it.
