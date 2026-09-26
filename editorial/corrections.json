@@ -3782,6 +3782,29 @@
    "right": "N-1 Victory",
    "note": "اسم بطولة NOAH يبقى بالإنجليزي",
    "regex": true
+  },
+  {
+   "wrong": "كونيغ دير كاشت?شر",
+   "right": "König Der Catcher",
+   "note": "اسم بطولة wXw يبقى بالإنجليزي كما في المصدر",
+   "regex": true
+  },
+  {
+   "wrong": "فيمز فاتال(?:ي)?س",
+   "right": "Femmes Fatales",
+   "note": "اسم بطولة wXw يبقى بالإنجليزي كما في المصدر",
+   "regex": true
+  },
+  {
+   "wrong": "(?:ون|وان) كولد ماندرز",
+   "right": "1 Called Manders",
+   "note": "اسم المصارع يبدأ برقم 1 ويبقى كما في المصدر",
+   "regex": true
+  },
+  {
+   "wrong": "بيستبروس",
+   "right": "بيست بروس",
+   "note": "اسم فريق BestBros"
   }
  ]
 }
