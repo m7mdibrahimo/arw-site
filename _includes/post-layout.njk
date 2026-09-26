@@ -838,7 +838,7 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20260919v4">
+<link rel="stylesheet" href="/assets/features.css?v=20260926a">
 </head>
 <body>
 <header>
@@ -919,12 +919,34 @@
   </div>
 </div>
 
+{% set shareUrl = "https://arab-wrestling.com" + page.url %}
+{% set shareTitle = (title if isNews else (headline or title)) %}
+{% macro shareBar(variant, shareUrl, shareTitle, isNews) %}
+<div class="arw-share arw-share--{{ variant }}" data-url="{{ shareUrl }}" data-title="{{ shareTitle | escape }}">
+  {% if variant == 'bottom' %}<span class="arw-share-label">{% if isNews %}شارك الخبر مع أصحابك{% else %}شارك العرض مع أصحابك{% endif %}</span>{% endif %}
+  <div class="arw-share-btns">
+    <a class="sh-wa" href="https://wa.me/?text={{ (shareTitle + ' ' + shareUrl) | urlencode }}" target="_blank" rel="noopener" aria-label="مشاركة على واتساب"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 0 1 6.67 2.77 9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.45 9.43zm8.03-17.46A11.28 11.28 0 0 0 12.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.64l6.04-1.58a11.3 11.3 0 0 0 5.4 1.38h.01c6.26 0 11.35-5.09 11.36-11.35 0-3.03-1.18-5.88-3.32-8.03z"/></svg>{% if variant == 'bottom' %}<span>واتساب</span>{% endif %}</a>
+    <a class="sh-tg" href="https://t.me/share/url?url={{ shareUrl | urlencode }}&text={{ shareTitle | urlencode }}" target="_blank" rel="noopener" aria-label="مشاركة على تيليجرام"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>{% if variant == 'bottom' %}<span>تيليجرام</span>{% endif %}</a>
+    <a class="sh-fb" href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl | urlencode }}" target="_blank" rel="noopener" aria-label="مشاركة على فيسبوك"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>{% if variant == 'bottom' %}<span>فيسبوك</span>{% endif %}</a>
+    <a class="sh-x" href="https://twitter.com/intent/tweet?url={{ shareUrl | urlencode }}&text={{ shareTitle | urlencode }}" target="_blank" rel="noopener" aria-label="مشاركة على إكس"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>{% if variant == 'bottom' %}<span>إكس</span>{% endif %}</a>
+    <button type="button" class="sh-copy" aria-label="نسخ الرابط"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="sh-copy-text">{% if variant == 'bottom' %}نسخ الرابط{% endif %}</span></button>
+    <button type="button" class="sh-native" aria-label="مشاركة"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>{% if variant == 'bottom' %}<span>مشاركة</span>{% endif %}</button>
+  </div>
+</div>
+{% endmacro %}
 <main>
   <div class="post-wrap reveal">
     {% if isNostalgiaItem %}
     <a class="back-link" href="/nostalgia/{% if nostalgia_series %}{{ nostalgia_series }}/{% endif %}">→ {% if nostalgia_series %}{% if series_type == 'program' or (nav and (nav.program.isProgram or nav.program.seriesType == 'program')) or (program_name and 'حلقات' in program_name) %}رجوع لمسار البرنامج{% else %}رجوع لمسار السلسلة{% endif %}{% else %}رجوع لقسم نوستالجيا{% endif %}</a>
     {% else %}
-    <a class="back-link" href="/">→ رجوع للرئيسية</a>
+    {% set crumbSection = "الأخبار" if isNews else ("ملخصات العروض" if isRecap else "عروض المصارعة") %}
+    {% set crumbHref = "/news/" if isNews else ("/recaps/" if isRecap else "/shows/") %}
+    <nav class="arw-crumbs" aria-label="مسار التنقل">
+      <a href="/">الرئيسية</a><span aria-hidden="true">‹</span>
+      <a href="{{ crumbHref }}">{{ crumbSection }}</a>
+      {% if federation %}<span aria-hidden="true">‹</span><a href="/federation/{{ federation | lower }}/">{{ federation }}</a>{% endif %}
+    </nav>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://arab-wrestling.com/"},{"@type":"ListItem","position":2,"name":"{{ crumbSection }}","item":"https://arab-wrestling.com{{ crumbHref }}"}{% if federation %},{"@type":"ListItem","position":3,"name":"{{ federation }}","item":"https://arab-wrestling.com/federation/{{ federation | lower }}/"}{% endif %}]}</script>
     {% endif %}
     <div class="post-meta-bar">
       {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ "عرض" if (show_type == 'عرض كامل' or not show_type) else show_type }}</span>{% endif %}
@@ -932,6 +954,7 @@
       {% if title and headline and title != headline %}<span class="post-ep-name">{{ title }}</span>{% endif %}
       {% if duration %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ duration }}</span>{% endif %}
       {% if isNews and date %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><time datetime="{{ (date | dateObj).toISOString() }}">{{ date | date }}</time></span>{% endif %}
+      {% if isNews %}{% set readMin = content | readingMinutes %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>{% if readMin <= 1 %}دقيقة قراءة{% elif readMin == 2 %}دقيقتان قراءة{% else %}{{ readMin }} دقائق قراءة{% endif %}</span>{% endif %}
       <div class="post-bookmark-wrap">
         <button type="button" class="post-bookmark-btn" id="arwPostBookmarkBtn" data-url="{{ page.url }}" data-title="{% if isNews %}{{ title | escape }}{% else %}{{ (headline or title) | escape }}{% endif %}" data-image="{% optImg image, '' %}" data-kind="{{ kind }}" data-kindlabel="{% if kind == 'show' %}عرض{% elif kind == 'recap' %}ملخص{% else %}خبر{% endif %}" data-fed="{{ federation or '' }}">
           <svg class="bm-icon-empty" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
@@ -940,6 +963,7 @@
         </button>
       </div>
     </div>
+    {{ shareBar('top', shareUrl, shareTitle, isNews) }}
     {% if not isNews %}
     <h2>{{ headline or title }}</h2>
     {% endif %}
@@ -1296,6 +1320,18 @@
         {% endif %}
       {% endfor %}
     </div>
+    {% endif %}
+
+
+    {% if isNews %}
+    {% set newerNews = collections.news | getPreviousCollectionItem(page) %}
+    {% set olderNews = collections.news | getNextCollectionItem(page) %}
+    {% if newerNews or olderNews %}
+    <nav class="news-pn reveal" aria-label="التنقل بين الأخبار">
+      {% if olderNews %}<a class="news-pn-item news-pn-prev" href="{{ olderNews.url }}"><span class="news-pn-label">→ الخبر السابق</span><span class="news-pn-title">{{ olderNews.data.title }}</span></a>{% else %}<span></span>{% endif %}
+      {% if newerNews %}<a class="news-pn-item news-pn-next" href="{{ newerNews.url }}"><span class="news-pn-label">الخبر التالي ←</span><span class="news-pn-title">{{ newerNews.data.title }}</span></a>{% endif %}
+    </nav>
+    {% endif %}
     {% endif %}
 
     {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4) %}
@@ -1727,7 +1763,7 @@
 
 </script>
 <script src="/assets/notif.js" defer></script>
-<script src="/assets/features.js?v=20260919v4" defer></script>
+<script src="/assets/features.js?v=20260926a" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

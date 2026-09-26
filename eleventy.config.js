@@ -997,6 +997,13 @@ module.exports = function(eleventyConfig) {
   //   nostalgia_era: "2012"                    -> اختياري، تسمية العصر لو عايز تجمع أكتر من سنة سوا
   // Year filter for the nostalgia page: every year (newest first) with its series
   // count, and the year whose shows are being added right now (latest-added series).
+  // Reading time in minutes (Nunjucks' own wordcount only counts Latin words).
+  eleventyConfig.addFilter("readingMinutes", function(html) {
+    const text = String(html || "").replace(/<[^>]+>/g, " ").replace(/https?:\/\/\S+/g, " ");
+    const words = text.split(/\s+/).filter(function(w) { return /[\u0621-\u064AA-Za-z0-9]/.test(w); }).length;
+    return Math.max(1, Math.round(words / 180));
+  });
+
   eleventyConfig.addFilter("nostalgiaYears", function(series) {
     const counts = new Map();
     let current = null, latest = -1;

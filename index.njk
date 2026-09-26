@@ -336,7 +336,56 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 .section-head p{ color:var(--muted); font-size:14.5px; margin-top:8px; text-align:center; }
 .view-all{ display:inline-flex; align-items:center; gap:6px; background:var(--card); border:1px solid var(--line); color:var(--ink); text-decoration:none; font-weight:700; font-size:13.5px; padding:10px 18px; border-radius:999px; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space:nowrap; }
 .view-all:hover{ border-color:var(--teal); color:var(--teal); transform:translateX(-4px); box-shadow:0 6px 16px rgba(14,149,148,0.2); }
-#feds{ background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+/* Homepage sections flow into each other as one soft gradient: each section holds a
+   whisper (~4%) of its own colour in the middle and meets its neighbour halfway at the
+   seam, so there are no hard edges. Starts and ends on the page background. */
+#feds, #full-shows, #recaps, #nostalgia-home, #news{
+  --base: var(--bg); --amt: 9%;
+  --top: color-mix(in srgb, color-mix(in srgb, var(--prev) 50%, var(--sec)) var(--amt), var(--base));
+  --mid: color-mix(in srgb, var(--sec) var(--amt), var(--base));
+  --bot: color-mix(in srgb, color-mix(in srgb, var(--sec) 50%, var(--next)) var(--amt), var(--base));
+  border:0 !important;
+  background:linear-gradient(180deg, var(--top) 0%, var(--mid) 30%, var(--mid) 70%, var(--bot) 100%);
+}
+#feds{ --prev: var(--teal); --sec: var(--teal); --next: var(--gold); }
+#full-shows{ --prev: var(--teal); --sec: var(--gold); --next: var(--violet); }
+#recaps{ --prev: var(--gold); --sec: var(--violet); --next: var(--nostalgia); }
+#nostalgia-home{ --prev: var(--violet); --sec: var(--nostalgia); --next: var(--coral); }
+#news{ --prev: var(--nostalgia); --sec: var(--coral); --next: var(--coral); }
+/* Enter from and leave to the page background above and below. */
+/* Slider → «الاتحادات». The slider keeps the plain page beige (no background of its own:
+   its section sits above the next one — z-index 5 — and would cover the divider).
+   «الاتحادات» starts on that exact beige and eases into its tint over a fixed ~300px
+   (px, not %, so the ramp looks the same on every screen and begins well below the
+   slider's own edge). Mixed in sRGB: near-grey colours interpolated in oklch swing
+   through hues and show a visible band. */
+#spotlight-wrap{ padding-bottom:40px !important; }
+#feds{
+  --top: var(--bg);
+  background:linear-gradient(180deg,
+    var(--bg) 0px, var(--bg) 40px,
+    color-mix(in srgb, var(--mid) 20%, var(--bg)) 110px,
+    color-mix(in srgb, var(--mid) 55%, var(--bg)) 190px,
+    color-mix(in srgb, var(--mid) 85%, var(--bg)) 270px,
+    var(--mid) 340px, var(--mid) 70%, var(--bot) 100%);
+}
+
+#news{ background:linear-gradient(180deg, var(--top) 0%, var(--mid) 30%, var(--mid) 70%, var(--bg) 100%); }
+html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-dark #nostalgia-home, html.arw-dark #news{ --base: var(--bg); --amt: 9%; }
+/* Section divider: a hairline in the section's colour that fades out at both ends,
+   with a small ringed dot in the middle — marks where each section starts without
+   breaking the gradient. */
+#feds, #full-shows, #recaps, #nostalgia-home, #news{ position:relative; }
+#feds::before, #full-shows::before, #recaps::before, #nostalgia-home::before, #news::before{
+  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:min(760px, 78%); height:1px; pointer-events:none;
+  background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec) 45%, var(--line)) 30%, color-mix(in srgb, var(--sec) 45%, var(--line)) 70%, transparent);
+}
+#feds::after, #full-shows::after, #recaps::after, #nostalgia-home::after, #news::after{
+  content:""; position:absolute; top:0; left:50%; transform:translate(-50%, -50%);
+  width:9px; height:9px; border-radius:50%; pointer-events:none;
+  background:var(--sec); box-shadow:0 0 0 4px var(--top), 0 0 0 5px color-mix(in srgb, var(--sec) 30%, transparent);
+}
 .news-thumb.breaking::after{ content:"عاجل"; position:absolute; top:12px; right:12px; background:var(--coral); color:#fff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; animation: floatSlow 2s ease-in-out infinite; box-shadow:0 4px 10px rgba(255,111,89,0.4); }
 /* ===== Mobile Navigation: compact, elegant, everything visible ===== */
 @media (max-width:1150px){
@@ -1170,9 +1219,15 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     padding-top: 6px !important;
   }
 }
+
+#nostalgia-home .show-card .desc{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+@media (max-width:768px){
+  /* The bottom bar now carries the section links; the hero doesn't repeat them. */
+  .quicknav{ display:none !important; }
+}
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20260919v4">
+<link rel="stylesheet" href="/assets/features.css?v=20260926a">
 </head>
 <body>
 <header>
@@ -1344,7 +1399,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </div>
 </section>
 
-<section class="content" id="full-shows" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+<section class="content" id="full-shows">
 <div class="wrap">
 <div class="section-head reveal">
 <div class="head-text"><h2 style="color:var(--gold);"><span class="dot" style="background:var(--gold)"></span>عروض المصارعة</h2><p>العروض الكاملة مترجمة بالعربية</p></div>
@@ -1400,7 +1455,32 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </div>
 </div>
 </section>
-<section class="content" id="news" style="background:var(--coral-soft);">
+{% if collections.nostalgiaSeries and collections.nostalgiaSeries.length %}
+<section class="content" id="nostalgia-home">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="head-text"><h2 style="color:var(--nostalgia);"><span class="dot" style="background:var(--nostalgia)"></span>من أرشيف نوستالجيا</h2><p>عروض المصارعة الكلاسيكية كاملة ومترجمة، بالمسار الذي أوصل لكل ليلة تاريخية.</p></div>
+</div>
+<div class="grid-12">
+{% for s in collections.nostalgiaSeries %}{% if loop.index <= 8 %}
+<a class="show-card reveal" href="/nostalgia/{{ s.slug }}/">
+<div class="show-thumb" style="background-image:url('{% optImg s.poster, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+<div class="show-body">
+<span class="kind-badge" style="background:var(--nostalgia-soft); color:var(--nostalgia);">نوستالجيا{% if s.year %} · {{ s.year }}{% endif %}</span>{% set fed = s.federation or (s.mainEpisode and s.mainEpisode.federation) %}{% if fed %}<span class="cat cat-{{ fed | lower }}">{{ fed }}</span>{% endif %}
+<h3>{{ s.title }}</h3>
+<p class="desc">{% if s.description %}{{ s.description }}{% elif s.isProgram %}برنامج توثيقي بجميع حلقاته كاملة ومترجمة.{% else %}سلسلة العروض التي مهّدت للحدث الكبير، كاملة ومترجمة بالترتيب.{% endif %}</p>
+<div class="foot"><span>{{ s.count }} {% if s.isProgram %}حلقات{% else %}عروض{% endif %} بالترتيب</span></div>
+</div>
+</a>
+{% endif %}{% endfor %}
+</div>
+<div class="reveal" style="text-align:center; margin-top:36px;">
+<a href="/nostalgia/" class="view-all" style="color:var(--nostalgia); border-color:var(--nostalgia);">كل أرشيف نوستالجيا ←</a>
+</div>
+</div>
+</section>
+{% endif %}
+<section class="content" id="news">
 <div class="wrap">
 <div class="section-head reveal">
 <div class="head-text"><h2 style="color:var(--coral);"><span class="dot" style="background:var(--coral)"></span>آخر الأخبار</h2><p>أبرز الانتقالات والإصابات والقرارات الإدارية.</p></div>
@@ -1508,7 +1588,7 @@ if(a && a.href && a.origin === location.origin) prefetch(a.href);
 })();
 </script>
 <script src="/assets/notif.js" defer></script>
-<script src="/assets/features.js?v=20260919v4" defer></script>
+<script src="/assets/features.js?v=20260926a" defer></script>
 <script>
 (function(){
 var header = document.querySelector('header');

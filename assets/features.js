@@ -594,9 +594,147 @@
   /* ==========================================================================
      Bootstrapping
      ========================================================================== */
+  /* ==========================================================================
+     Share bar: copy link + the phone's own share sheet
+     ========================================================================== */
+  function initShare() {
+    if (navigator.share) document.documentElement.classList.add('arw-can-share');
+    document.addEventListener('click', function (e) {
+      var copyBtn = e.target.closest('.arw-share .sh-copy');
+      var nativeBtn = e.target.closest('.arw-share .sh-native');
+      if (!copyBtn && !nativeBtn) return;
+      var box = e.target.closest('.arw-share');
+      var url = box.getAttribute('data-url'), title = box.getAttribute('data-title');
+      if (nativeBtn) {
+        navigator.share({ title: title, text: title, url: url }).catch(function () {});
+        return;
+      }
+      var done = function () {
+        var label = copyBtn.querySelector('.sh-copy-text');
+        var before = label ? label.textContent : '';
+        copyBtn.classList.add('copied');
+        if (label) label.textContent = 'تم النسخ ✓';
+        setTimeout(function () { copyBtn.classList.remove('copied'); if (label) label.textContent = before; }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(function () { window.prompt('انسخ الرابط:', url); });
+      } else {
+        window.prompt('انسخ الرابط:', url);
+      }
+    });
+  }
+
+  /* ==========================================================================
+     Phones: compact header that hides while scrolling down + bottom navigation
+     ========================================================================== */
+  var ICONS = {
+    home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>',
+    shows: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg>',
+    news: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h13a1 1 0 0 1 1 1v14a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z"/><path d="M18 8h2a1 1 0 0 1 1 1v10a2 2 0 0 1-2 2"/><path d="M8 8h6M8 12h6M8 16h4"/></svg>',
+    nostalgia: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/></svg>',
+    more: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>',
+    feds: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg>',
+    recaps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>',
+    apps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>',
+    heart: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.7-4.35-9.43-8.06C.69 10.2 1.2 6.6 4.1 4.9c2.3-1.35 5.1-.7 6.6 1.2.5.6.9 1.3 1.3 2 .4-.7.8-1.4 1.3-2 1.5-1.9 4.3-2.55 6.6-1.2 2.9 1.7 3.41 5.3 1.53 8.04C18.72 16.65 12 21 12 21Z"/></svg>',
+    tg: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>',
+    search: '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>'
+  };
+
+  function initMobileChrome() {
+    var header = document.querySelector('header');
+    var path = location.pathname;
+
+    // Search moves behind an icon on phones.
+    var util = header && header.querySelector('#navMenu li.utility-row');
+    var search = header && header.querySelector('.site-search');
+    if (util && search && !header.querySelector('.arw-search-toggle')) {
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'arw-search-toggle';
+      toggle.setAttribute('aria-label', 'بحث');
+      toggle.innerHTML = ICONS.search;
+      util.insertBefore(toggle, util.firstChild);
+      toggle.addEventListener('click', function () {
+        var open = header.classList.toggle('arw-search-open');
+        if (open) { var input = search.querySelector('input'); if (input) setTimeout(function () { input.focus(); }, 30); }
+      });
+    }
+
+    // Header hides while scrolling down, comes back on the way up.
+    if (header) {
+      var lastY = window.scrollY, ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var y = window.scrollY;
+          var phone = window.matchMedia('(max-width: 768px)').matches;
+          header.classList.toggle('arw-scrolled', y > 8);
+          if (phone && !header.classList.contains('arw-search-open') && !document.documentElement.classList.contains('arw-more-open')) {
+            if (y > lastY + 6 && y > 140) header.classList.add('arw-hidden');
+            else if (y < lastY - 6 || y < 140) header.classList.remove('arw-hidden');
+          } else {
+            header.classList.remove('arw-hidden');
+          }
+          lastY = y;
+          ticking = false;
+        });
+      }, { passive: true });
+    }
+
+    if (document.querySelector('.arw-bottom-nav')) return;
+    var section = path === '/' ? 'home'
+      : /^\/(shows)\//.test(path) ? 'shows'
+      : /^\/news\//.test(path) ? 'news'
+      : /^\/nostalgia\//.test(path) ? 'nostalgia'
+      : /^\/(federations?|recaps|apps|support)\//.test(path) ? 'more' : '';
+    var items = [
+      ['home', '/', 'الرئيسية'], ['shows', '/shows/', 'العروض'], ['news', '/news/', 'الأخبار'], ['nostalgia', '/nostalgia/', 'نوستالجيا']
+    ];
+    var nav = document.createElement('nav');
+    nav.className = 'arw-bottom-nav';
+    nav.setAttribute('aria-label', 'التنقل السريع');
+    nav.innerHTML = items.map(function (it) {
+      return '<a href="' + it[1] + '"' + (section === it[0] ? ' class="active" aria-current="page"' : '') + '>' + ICONS[it[0]] + '<span>' + it[2] + '</span></a>';
+    }).join('') + '<button type="button" class="arw-more-btn' + (section === 'more' ? ' active' : '') + '" aria-haspopup="dialog" aria-expanded="false">' + ICONS.more + '<span>المزيد</span></button>';
+    document.body.appendChild(nav);
+    document.body.classList.add('arw-has-bottom-nav');
+
+    var overlay = document.createElement('div');
+    overlay.className = 'arw-more-overlay';
+    var sheet = document.createElement('div');
+    sheet.className = 'arw-more-sheet';
+    sheet.setAttribute('role', 'dialog');
+    sheet.setAttribute('aria-label', 'المزيد من الأقسام');
+    sheet.innerHTML = '<div class="arw-more-grip"></div><div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
+      '<a href="/federations/">' + ICONS.feds + 'الاتحادات</a>' +
+      '<a href="/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
+      '<a href="/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
+      '<a class="more-tg" href="https://t.me/arab_wrestling" target="_blank" rel="noopener">' + ICONS.tg + 'قناة التليجرام</a>' +
+      '<a class="more-support" href="/support/" style="grid-column:1/-1; justify-content:center;">' + ICONS.heart + 'ادعم الموقع</a>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    document.body.appendChild(sheet);
+    var moreBtn = nav.querySelector('.arw-more-btn');
+    function setMore(open) {
+      document.documentElement.classList.toggle('arw-more-open', open);
+      moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    moreBtn.addEventListener('click', function () { setMore(!document.documentElement.classList.contains('arw-more-open')); });
+    overlay.addEventListener('click', function () { setMore(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMore(false); });
+    // Swipe the sheet down to close it.
+    var startY = null;
+    sheet.addEventListener('touchstart', function (e) { startY = e.touches[0].clientY; }, { passive: true });
+    sheet.addEventListener('touchend', function (e) { if (startY !== null && e.changedTouches[0].clientY - startY > 60) setMore(false); startY = null; });
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
+    initShare();
+    initMobileChrome();
   }
 
   if (document.readyState === 'loading') {
