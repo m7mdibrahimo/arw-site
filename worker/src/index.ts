@@ -1893,6 +1893,13 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
     return false;
   }
 
+  // A revealed/leaked outcome is a spoiler whatever else the title says («كشف نتيجة
+  // نزال التأهيل…» from Ringside's "Spoiler: … Outcome Revealed" — INCIDENTS #56).
+  if (/(?:^|[\s«])(?:كشف|الكشف عن|تسريب|حرق|يكشف|تكشف)\s+(?:عن\s+)?(?:نتيجة|الفائز|هوية الفائز|الفائزة)|نتيجة\s+(?:نزال|مواجهة)\s+(?:التأهل|التأهيل|تصفيات)/.test(title) ||
+      /\bspoiler\b[^\n]*\b(?:outcome|result|winner|wins?|qualif)/i.test(title)) {
+    return true;
+  }
+
   // Preserved content safeguards
   if (/\b(?:الإعلان عن|تحديد موعد|نزال مرتقب|مواجهة مرتقبة|نزالات التصفية|قائمة نزالات|بطاقة عرض|سيواجه|يواجه|يتحالف مع)\b/i.test(title) ||
       /\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) {

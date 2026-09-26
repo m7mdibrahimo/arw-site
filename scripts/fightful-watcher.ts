@@ -2216,6 +2216,12 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
     return false;
   }
 
+  // 1.5 A leaked/revealed outcome ("Spoiler: Men's MITB Qualifying Outcome For 9/25
+  // SmackDown Revealed") is a single-match result — INCIDENTS #56.
+  if (/\bspoiler\b[^\n]*\b(?:outcome|result|winner|wins?|qualif\w*)\b/i.test(title) || /\b(?:outcome|winner)\b[^\n]*\brevealed\b/i.test(title)) {
+    return true;
+  }
+
   // 2. RULE 2: Preserved Content Safeguards (Must NEVER be blocked)
   // 2.1 Upcoming match announcements / Previews / Cards
   if (/\b(?:set for|announced for|added to|scheduled for|card for|match card|lineup for|line-up for|official for|will face|to face|to battle|to clash|to meet|to team|to challenge|to defend|to appear)\b/i.test(title)) {
