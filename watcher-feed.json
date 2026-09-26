@@ -1,5 +1,15 @@
 [
   {
+    "id": 330640,
+    "link": "https://www.fightful.com/wrestling/wxw-extreme-wrestling-party-results-9-25/",
+    "date": "2026-09-26T18:53:24",
+    "date_gmt": "2026-09-26T22:53:24",
+    "title": {
+      "rendered": "wXw Extreme Wrestling Party Results (9/25)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26185223/HTBbtWeXgAE05f0.jpg.webp"
+  },
+  {
     "id": 330637,
     "link": "https://www.fightful.com/wrestling/watch-aew-all-out-buy-in/",
     "date": "2026-09-26T18:28:01",
@@ -288,15 +298,5 @@
       "rendered": "AEW All Out 2026 Preview, Start Time, How To Watch, Location (9/26)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25190813/AEW-All-Out-2026-X-LE.jpg"
-  },
-  {
-    "id": 330480,
-    "link": "https://www.fightful.com/wrestling/aew-all-out-tailgate-brawl-preview-start-time-how-to-watch/",
-    "date": "2026-09-26T07:00:00",
-    "date_gmt": "2026-09-26T11:00:00",
-    "title": {
-      "rendered": "AEW All Out Tailgate Brawl Preview, Start Time, How To Watch"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25191433/Screenshot-2026-09-25-at-7.14.21-PM.png"
   }
 ]
