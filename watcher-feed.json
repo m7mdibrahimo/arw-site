@@ -1,5 +1,15 @@
 [
   {
+    "id": 330556,
+    "link": "https://www.fightful.com/wrestling/gcw-rock-bottom-results-9-25/",
+    "date": "2026-09-26T12:30:00",
+    "date_gmt": "2026-09-26T16:30:00",
+    "title": {
+      "rendered": "GCW Rock Bottom Results (9/25)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26092820/image-1-1.jpeg.webp"
+  },
+  {
     "id": 330568,
     "link": "https://www.fightful.com/wrestling/dr-redacted-okay-after-scary-gcw-spot-that-goes-viral/",
     "date": "2026-09-26T12:14:55",
@@ -288,15 +298,5 @@
       "rendered": "Hangman Adam Page To Donate His Share From PWT Live Auction To Clean Air Task Force"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/11202050/HM_GkcnbIAA4ZDh.jpg"
-  },
-  {
-    "id": 330445,
-    "link": "https://www.fightful.com/wrestling/thunder-rosa-details-spot-that-sidelined-her-with-a-back-injury-in-2022/",
-    "date": "2026-09-25T16:16:40",
-    "date_gmt": "2026-09-25T20:16:40",
-    "title": {
-      "rendered": "Thunder Rosa Details Spot That Sidelined Her With A Back Injury In 2022"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/08/27233502/thunder-rosa-aew-dynamite.jpg"
   }
 ]
