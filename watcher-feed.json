@@ -1,5 +1,15 @@
 [
   {
+    "id": 330644,
+    "link": "https://www.fightful.com/wrestling/samoa-joe-jack-perry-katsuyori-shibata-aew-all-out/",
+    "date": "2026-09-26T19:19:57",
+    "date_gmt": "2026-09-26T23:19:57",
+    "title": {
+      "rendered": "Samoa Joe Returns At AEW All Out"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26191936/HTLc0_TWQAAC_eH.jpeg"
+  },
+  {
     "id": 330640,
     "link": "https://www.fightful.com/wrestling/wxw-extreme-wrestling-party-results-9-25/",
     "date": "2026-09-26T18:53:24",
@@ -288,15 +298,5 @@
       "rendered": "AAA x WWE Worlds Collide Preview, Start Time, How To Watch, Location (9/26)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25202233/CS-067119_LVE_WORLD_COLIDE_INITIAL_SIZES_1920x1080.jpg"
-  },
-  {
-    "id": 330477,
-    "link": "https://www.fightful.com/wrestling/aew-all-out-2026-preview-start-time-how-to-watch-location-9-26/",
-    "date": "2026-09-26T08:00:00",
-    "date_gmt": "2026-09-26T12:00:00",
-    "title": {
-      "rendered": "AEW All Out 2026 Preview, Start Time, How To Watch, Location (9/26)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25190813/AEW-All-Out-2026-X-LE.jpg"
   }
 ]
