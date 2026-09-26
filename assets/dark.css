@@ -1,0 +1,101 @@
+/* ═══ Dark mode — «Cinematic Night» ═══
+   Designed for dark, not a recolour of the light theme: cinema-black base, layered
+   surfaces that get lighter as they rise, hairline borders lit from above, and each
+   homepage section lit by a soft stage light in its own colour. */
+html.arw-dark{
+  --bg:#07090d; --card:#10141b; --surface-2:#151a23; --ink:#eceff4; --muted:#8e97a6; --line:rgba(255,255,255,.07);
+  --teal:#2fd0cc; --gold:#ffbf5a; --coral:#ff8b76; --violet:#a89cff; --nostalgia:#52c7ff;
+  --teal-soft:rgba(47,208,204,.12); --gold-soft:rgba(255,191,90,.12); --coral-soft:rgba(255,139,118,.12); --nostalgia-soft:rgba(82,199,255,.12);
+  color-scheme:dark;
+  scrollbar-color:#2a3140 #07090d;
+}
+html.arw-dark ::selection{ background:rgba(47,208,204,.35); color:#fff; }
+html.arw-dark body{ background:var(--bg) !important; }
+html.arw-dark ::-webkit-scrollbar{ width:11px; height:11px; }
+html.arw-dark ::-webkit-scrollbar-track{ background:#07090d; }
+html.arw-dark ::-webkit-scrollbar-thumb{ background:#232a36; border-radius:10px; border:3px solid #07090d; }
+
+/* Glass header, lit hairline underneath. */
+html.arw-dark body header{
+  background:rgba(7,9,13,.72) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(160%); backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid rgba(255,255,255,.05) !important;
+}
+html.arw-dark body header::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; pointer-events:none;
+  background:linear-gradient(90deg, transparent 5%, rgba(47,208,204,.6) 30%, rgba(255,191,90,.6) 55%, rgba(255,139,118,.55) 78%, transparent 95%);
+}
+
+/* Cards: a surface one step above the page, with a border lit from above. */
+html.arw-dark .show-card, html.arw-dark .news-card, html.arw-dark .lib-card, html.arw-dark .series-card,
+html.arw-dark .related-card, html.arw-dark .news-pn-item, html.arw-dark .arw-share--bottom, html.arw-dark .era-panel{
+  border:1px solid transparent !important;
+  background:
+    linear-gradient(180deg, #131821 0%, #0d1117 100%) padding-box,
+    linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.03) 45%, rgba(255,255,255,.02)) border-box !important;
+  box-shadow:0 1px 2px rgba(0,0,0,.6), 0 14px 34px -8px rgba(0,0,0,.7) !important;
+}
+html.arw-dark .show-card:hover, html.arw-dark .news-card:hover, html.arw-dark .lib-card:hover, html.arw-dark .series-card:hover,
+html.arw-dark .related-card:hover, html.arw-dark .news-pn-item:hover{
+  background:
+    linear-gradient(180deg, #161c26 0%, #0f141b 100%) padding-box,
+    linear-gradient(180deg, rgba(47,208,204,.55), rgba(47,208,204,.08) 55%, rgba(255,255,255,.03)) border-box !important;
+  box-shadow:0 1px 2px rgba(0,0,0,.6), 0 22px 46px -10px rgba(0,0,0,.8), 0 10px 40px -12px rgba(47,208,204,.35) !important;
+}
+html.arw-dark .show-card .desc, html.arw-dark .news-card p{ color:#8b94a3 !important; }
+
+/* Homepage: each section lit by a stage light in its own colour, falling from the top
+   centre and fading into the black — replaces the flat light-mode tints. */
+html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-dark #nostalgia-home, html.arw-dark #news{
+  background:
+    radial-gradient(ellipse 55% 340px at 50% 0, color-mix(in srgb, var(--sec) 16%, transparent), transparent 72%),
+    radial-gradient(ellipse 90% 520px at 50% 0, color-mix(in srgb, var(--sec) 6%, transparent), transparent 80%),
+    var(--bg) !important;
+}
+html.arw-dark #spotlight-wrap{ background:transparent !important; }
+html.arw-dark #feds::before, html.arw-dark #full-shows::before, html.arw-dark #recaps::before, html.arw-dark #nostalgia-home::before, html.arw-dark #news::before{
+  background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec) 70%, transparent) 50%, transparent) !important; opacity:.8;
+}
+html.arw-dark #feds::after, html.arw-dark #full-shows::after, html.arw-dark #recaps::after, html.arw-dark #nostalgia-home::after, html.arw-dark #news::after{
+  box-shadow:0 0 0 4px var(--bg), 0 0 18px 2px color-mix(in srgb, var(--sec) 70%, transparent) !important;
+}
+
+/* Section titles: a gradient from the section colour to a lighter tint, softly lit. */
+html.arw-dark .section-head h2, html.arw-dark .page-head h2{
+  text-shadow:none;
+  filter:drop-shadow(0 0 22px color-mix(in srgb, currentColor 35%, transparent));
+}
+
+/* Controls on the dark surfaces. */
+html.arw-dark .view-all, html.arw-dark .lib-all-btn, html.arw-dark .era-pill, html.arw-dark .lib-fed, html.arw-dark .lib-search, html.arw-dark .site-search, html.arw-dark .qn, html.arw-dark .btn-ghost{
+  background:linear-gradient(180deg, #151a23, #10141b) padding-box, linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.04)) border-box !important;
+  border:1px solid transparent !important;
+}
+html.arw-dark .view-all:hover, html.arw-dark .lib-all-btn:hover{ box-shadow:0 0 0 1px rgba(47,208,204,.35), 0 10px 28px -8px rgba(47,208,204,.45) !important; }
+html.arw-dark .era-pill.active, html.arw-dark .lib-fed.active, html.arw-dark #navMenu a.navlink.active:not(.support-btn){
+  background:linear-gradient(135deg, #2fd0cc, #1fa7c9) !important; color:#04161a !important; border-color:transparent !important;
+  box-shadow:0 6px 22px -6px rgba(47,208,204,.6) !important;
+}
+html.arw-dark .page-link.active{ background:linear-gradient(135deg, #2fd0cc, #1fa7c9) !important; color:#04161a !important; border-color:transparent !important; }
+
+/* Footer, bottom bar and sheets. */
+html.arw-dark footer{ background:#05070a !important; border-top:1px solid rgba(255,255,255,.05) !important; }
+html.arw-dark .arw-bottom-nav{ background:rgba(7,9,13,.82) !important; border-top-color:rgba(255,255,255,.06) !important; }
+html.arw-dark .arw-bottom-nav .active{ color:var(--teal) !important; }
+html.arw-dark .arw-more-sheet{ background:#0d1117 !important; border-top:1px solid rgba(255,255,255,.08); }
+html.arw-dark .arw-more-grid a:not(.more-support){ background:#141922 !important; border-color:rgba(255,255,255,.07) !important; }
+
+/* Show pages: download box and the show-navigation panel as raised surfaces. */
+html.arw-dark .download-links, html.arw-dark .episodes-nav{
+  border:1px solid transparent !important;
+  background:linear-gradient(180deg, #121720 0%, #0d1117 100%) padding-box, linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03) 50%, rgba(255,255,255,.02)) border-box !important;
+  box-shadow:0 14px 34px -10px rgba(0,0,0,.7) !important;
+}
+html.arw-dark .quality-grid > *, html.arw-dark .ep-nav-btn, html.arw-dark .server-tab:not(.active){
+  background:linear-gradient(180deg, #171d27, #11161e) padding-box, linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.03)) border-box !important;
+  border:1px solid transparent !important;
+}
+html.arw-dark .quality-grid > *:hover, html.arw-dark .ep-nav-btn:hover, html.arw-dark .server-tab:not(.active):hover{
+  background:linear-gradient(180deg, #1a212c, #121820) padding-box, linear-gradient(180deg, rgba(47,208,204,.5), rgba(47,208,204,.08)) border-box !important;
+}
+html.arw-dark .server-tab.active{ background:linear-gradient(135deg, #2fd0cc, #1fa7c9) !important; color:#04161a !important; border-color:transparent !important; box-shadow:0 6px 22px -6px rgba(47,208,204,.6) !important; }
