@@ -1,5 +1,15 @@
 [
   {
+    "id": 330559,
+    "link": "https://www.fightful.com/wrestling/tony-khan-aew-all-out-is-mocha-joes/",
+    "date": "2026-09-26T10:00:00",
+    "date_gmt": "2026-09-26T14:00:00",
+    "title": {
+      "rendered": "Tony Khan: AEW All Out Is Mocha Joe&#8217;s"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26093525/Screenshot-2026-09-24-at-6.12.54-PM.png"
+  },
+  {
     "id": 330553,
     "link": "https://www.fightful.com/wrestling/the-undertaker-appears-at-savannah-bananas-game/",
     "date": "2026-09-26T09:17:55",
@@ -288,15 +298,5 @@
       "rendered": "Thunder Rosa Recalls Viral Video With Mia Khalifa, &#8216;She&#8217;s Good In My Book&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25144732/Screenshot-2026-09-25-at-2.45.53-PM.png"
-  },
-  {
-    "id": 330430,
-    "link": "https://www.fightful.com/wrestling/dani-luna-has-joined-aew-expected-to-debut-fairly-soon/",
-    "date": "2026-09-25T14:41:04",
-    "date_gmt": "2026-09-25T18:41:04",
-    "title": {
-      "rendered": "Dani Luna Has Joined AEW, Expected To Debut Fairly Soon"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25144321/IMG_2825.jpg"
   }
 ]
