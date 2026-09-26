@@ -2997,6 +2997,48 @@ function tokenizeForDuplicateCheck(text: string): Set<string> {
 }
 const SHOW_NAME_TOKENS = new Set(["wwe", "aew", "tna", "njpw", "roh", "mlw", "aaa", "cmll", "nwa", "gcw", "ufc", "raw", "smackdown", "nxt", "dynamite", "collision", "rampage", "impact", "main", "event", "results", "result", "show", "night", "friday", "monday", "saturday", "pro", "wrestling", "tv", "episode", "live"]);
 
+// Two articles about the same EVENT are still different stories when they are
+// different kinds of article: «AEW All Out: preview, start time, how to watch»
+// is not a duplicate of «AEW All Out predictions» (INCIDENTS #62).
+export function storyKind(title: string): "preview" | "predictions" | "results" | "review" | "other" {
+  const t = (title || "").toLowerCase().replace(/[-_]/g, " ");
+  if (/\b(?:predictions?|picks|who will win|winners? predicted)\b/.test(t)) return "predictions";
+  if (/\b(?:hated|loved|grades?|review|winners and losers|takeaways|things we)\b/.test(t)) return "review";
+  if (/\bresults?\b/.test(t)) return "results";
+  if (/\b(?:preview|start time|how to watch|where to watch|card|lineup|line up)\b/.test(t)) return "preview";
+  return "other";
+}
+
+let personNamesCache: string[] | null = null;
+function personNames(): string[] {
+  if (personNamesCache) return personNamesCache;
+  try {
+    const glossary = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8"));
+    personNamesCache = Object.keys(glossary)
+      .filter(k => /^[A-Z][A-Za-z.'-]+(?: [A-Z][A-Za-z.'-]+){1,3}$/.test(k) && !/\b(?:Championship|Title|Tag|Match|Cup|Tournament|Series|Wrestling|Event|Show|Night|Era)\b/.test(k))
+      // Shows and promotions («WWE SmackDown», «AEW Dynamite») are not people.
+      .filter(k => !k.split(" ").some(w => /^[A-Z]{3,}$/.test(w) || SHOW_NAME_TOKENS.has(w.toLowerCase())))
+      .map(k => k.toLowerCase());
+  } catch { personNamesCache = []; }
+  return personNamesCache;
+}
+function peopleIn(text: string): Set<string> {
+  const t = " " + (text || "").toLowerCase().replace(/[-_]/g, " ").replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ") + " ";
+  return new Set(personNames().filter(n => t.includes(" " + n + " ")));
+}
+/** Different kinds of article, or clearly different people («CM Punk qualifies…» vs
+ *  «Lash Legend qualifies…»), or men's vs women's: never the same story. */
+export function clearlyDifferentStories(a: string, b: string): boolean {
+  const ka = storyKind(a), kb = storyKind(b);
+  if (ka !== "other" && kb !== "other" && ka !== kb) return true;
+  const pa = peopleIn(a), pb = peopleIn(b);
+  if (pa.size && pb.size && ![...pa].some(n => pb.has(n))) return true;
+  const norm = (x: string) => x.replace(/[-_]/g, " ").replace(/[’‘]/g, "'");
+  const women = (x: string) => /\bwomen'?s\b/i.test(norm(x)), men = (x: string) => /\bmen'?s\b/i.test(norm(x));
+  if ((women(a) && men(b)) || (men(a) && women(b))) return true;
+  return false;
+}
+
 export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 24, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
   // Federation and show-name words say nothing about the STORY: "WWE Main Event
@@ -3024,7 +3066,7 @@ export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number =
       const shared = [...newTokens].filter(t => existingTokens.has(t));
       const overlapRatio = shared.length / Math.min(newTokens.size, existingTokens.size);
       const sharedStoryWords = shared.filter(t => !SHOW_NAME_TOKENS.has(t)).length;
-      if (shared.length >= 3 && overlapRatio >= 0.6 && sharedStoryWords >= 2) {
+      if (shared.length >= 3 && overlapRatio >= 0.6 && sharedStoryWords >= 2 && !clearlyDifferentStories(rawTitle, slug)) {
         return { isDuplicate: true, matchedFile: file };
       }
     } catch (e) {
@@ -3413,7 +3455,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const candidates = findDuplicateCandidates(draft, loadNews(NEWS_DIR));
     if (candidates.length) {
       const verdict = parseDuplicateAnswer(await queryGemini(duplicatePrompt(draft, candidates), true, 0.1), candidates);
-      if (verdict) {
+      // Gemini judges "same event" too eagerly: a start-time preview, a predictions
+      // piece and a results report of one show are three different stories.
+      let matchedSource = "";
+      try { matchedSource = String(matter(fs.readFileSync(path.join(NEWS_DIR, verdict ? verdict.file : ""), "utf-8")).data.source_url || ""); } catch {}
+      const matchedSlug = matchedSource.replace(/[?#].*$/, "").replace(/\/+$/, "").split("/").pop() || "";
+      if (verdict && matchedSlug && clearlyDifferentStories(rawTitle, matchedSlug)) {
+        console.log(`[Watcher] ↪️ Gemini called #${postId} a duplicate of ${verdict.file}, but they are different kinds of story / different people — publishing.`);
+      } else if (verdict) {
         recordDuplicate(postUrl, verdict.file, verdict.reason);
         console.log(`[Watcher] 🔁 Gemini: same story as ${verdict.file} (${verdict.reason}): Post #${postId} ("${rawTitle}") skipped.`);
         return false;

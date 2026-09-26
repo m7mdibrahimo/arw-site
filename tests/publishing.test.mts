@@ -10,7 +10,7 @@ import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow
 import { toPagesRedirects } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix } from '../scripts/news-qa';
-import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub } from '../scripts/fightful-watcher';
+import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -897,6 +897,15 @@ test('a live results article follows its source until the show ends', async () =
   assert.equal(d.rewrite, true);
   // A broken fetch with fewer results never replaces a fuller article.
   assert.equal(decideLiveUpdate(e, { hash: 'x', results: 1, length: 900 }, 200 * min).rewrite, false);
+});
+
+test('same event or same wording is not the same story', () => {
+  // INCIDENTS #62: a start-time preview was dropped as a duplicate of a predictions
+  // piece, and «CM Punk qualifies…» as a duplicate of «Lash Legend qualifies…».
+  assert.ok(clearlyDifferentStories('AEW All Out 2026 Preview, Start Time, How To Watch', 'aew-all-out-2026-predictions-winners'));
+  assert.ok(clearlyDifferentStories('CM Punk Qualifies For Men’s Money In The Bank On 9/25 WWE SmackDown', 'lash-legend-qualifies-for-womens-money-in-the-bank-on-9-25-wwe-smackdown'));
+  assert.ok(!clearlyDifferentStories('Gable Steveson Denies 2019 Rape Allegation, Issues Statement On KO Loss', 'gable-steveson-breaks-silence-12-second-ufc-331-knockout-pre-fight-allegations'));
+  assert.ok(!clearlyDifferentStories('Trick Williams Beats Baron Corbin In WWE SmackDown Steel Cage Match', 'trick-williams-retains-us-title-steel-cage-smackdown'));
 });
 
 test('a pre-show match card is not a results report', () => {
