@@ -1,5 +1,35 @@
 [
   {
+    "id": 330595,
+    "link": "https://www.fightful.com/wrestling/kenny-omega-was-not-planned-for-aew-all-out/",
+    "date": "2026-09-26T14:16:56",
+    "date_gmt": "2026-09-26T18:16:56",
+    "title": {
+      "rendered": "Kenny Omega Was Not Planned For AEW All Out"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12034423/Screenshot-439-e1789199090866.png"
+  },
+  {
+    "id": 330591,
+    "link": "https://www.fightful.com/wrestling/dax-harwood-i-dont-know-if-any-team-stepped-up-and-taken-what-weve-built-were-begging-any-team-to-take-our-spot/",
+    "date": "2026-09-26T14:11:11",
+    "date_gmt": "2026-09-26T18:11:11",
+    "title": {
+      "rendered": "Dax Harwood: I Don&#8217;t Know If Any Team Stepped Up And Taken What We&#8217;ve Built, We&#8217;re Begging Any Team To Take Our Spot"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/27212934/G9ON9EVXAAAOmDl.jpg"
+  },
+  {
+    "id": 330590,
+    "link": "https://www.fightful.com/wrestling/aews-plan-is-to-keep-the-butcher-on-the-aew-roster-page-permanently/",
+    "date": "2026-09-26T14:10:36",
+    "date_gmt": "2026-09-26T18:10:36",
+    "title": {
+      "rendered": "AEW&#8217;s Plan Is To Keep The Butcher On The AEW Roster Page Permanently"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/06085037/05-orange-cassidy-vs-the-butcher_2023_03_29_aew_dynamite_0021-scaled-e1788699060466.jpg"
+  },
+  {
     "id": 329925,
     "link": "https://www.fightful.com/wrestling/vaughn-vertigo-explains-why-he-tried-to-avoid-wrestling-in-the-us-for-years/",
     "date": "2026-09-26T14:00:00",
@@ -268,35 +298,5 @@
       "rendered": "WWE Announces Worlds Collide Will Air On YouTube On September 30"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25203541/HTGj_MJWsAEysKs.jpg"
-  },
-  {
-    "id": 330535,
-    "link": "https://www.fightful.com/wrestling/watch-hog-windy-city-warfare-full-live-show-9-25-26-chicago/",
-    "date": "2026-09-25T19:45:04",
-    "date_gmt": "2026-09-25T23:45:04",
-    "title": {
-      "rendered": "Watch: HOG Windy City Warfare [FULL LIVE SHOW] 9/25/26 Chicago"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25223704/maxresdefault-172.jpg"
-  },
-  {
-    "id": 330483,
-    "link": "https://www.fightful.com/wrestling/wrestling-open-results-9-24-new-tag-team-champs/",
-    "date": "2026-09-25T19:41:48",
-    "date_gmt": "2026-09-25T23:41:48",
-    "title": {
-      "rendered": "Wrestling Open Results (9/24): New Tag Team Champs"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25194118/HS0m42dXQAAq6KC.jpeg"
-  },
-  {
-    "id": 330471,
-    "link": "https://www.fightful.com/wrestling/wwe-smackdown-results-9-25-2026-steel-cage-match-two-mitb-qualifiers-more/",
-    "date": "2026-09-25T19:15:00",
-    "date_gmt": "2026-09-25T23:15:00",
-    "title": {
-      "rendered": "WWE SmackDown Results (9/25/2026): Steel Cage Match, Two MITB Qualifiers, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24194828/20260923_SD_Match_TrickCorbin_Cage_16x9_Friday.jpg"
   }
 ]
