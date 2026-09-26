@@ -316,7 +316,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20260926c">
+<link rel="stylesheet" href="/assets/features.css?v=20260926d">
 </head>
 <body>
 <header>
@@ -328,17 +328,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
     </form>
     <ul id="navMenu">
       <li><a class="navlink" href="/">الرئيسية</a></li>
-      <li class="nav-dropdown">
-        <a class="navlink" href="/federations/">الاتحادات</a>
-        <ul class="dropdown-menu">
-          <li><a href="/federation/wwe/" class="drop-item drop-wwe"><span class="drop-dot"></span><span>WWE</span></a></li>
-          <li><a href="/federation/aew/" class="drop-item drop-aew"><span class="drop-dot"></span><span>AEW</span></a></li>
-          <li><a href="/federation/tna/" class="drop-item drop-tna"><span class="drop-dot"></span><span>TNA</span></a></li>
-          <li><a href="/federation/roh/" class="drop-item drop-roh"><span class="drop-dot"></span><span>ROH</span></a></li>
-          <li><a href="/federation/mma/" class="drop-item drop-mma"><span class="drop-dot"></span><span>MMA</span></a></li>
-          <li><a href="/federation/indie/" class="drop-item drop-indie"><span class="drop-dot"></span><span>INDIE</span></a></li>
-        </ul>
-      </li>
+      <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
       <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink" href="/recaps/">ملخصات العروض</a></li>
       <li><a class="navlink active" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
@@ -450,6 +440,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
   </div>
     <nav class="footer-nav" aria-label="أقسام الموقع الرئيسية">
     <a href="/shows/">عروض المصارعة</a>
+    <a href="/library/">مكتبة العروض</a>
     <a href="/federations/">الاتحادات</a>
     <a href="/recaps/">ملخصات العروض</a>
     <a href="/news/">الأخبار</a>
@@ -524,7 +515,7 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
   })();
 </script>
 <script src="/assets/notif.js" defer></script>
-<script src="/assets/features.js?v=20260926c" defer></script>
+<script src="/assets/features.js?v=20260926d" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

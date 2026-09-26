@@ -838,7 +838,7 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20260926c">
+<link rel="stylesheet" href="/assets/features.css?v=20260926d">
 </head>
 <body>
 <header>
@@ -850,17 +850,7 @@
     </form>
     <ul id="navMenu">
       <li><a class="navlink" href="/">الرئيسية</a></li>
-      <li class="nav-dropdown">
-        <a class="navlink{% if fed %} active{% endif %}" href="/federations/">الاتحادات</a>
-        <ul class="dropdown-menu">
-          <li><a href="/federation/wwe/" class="drop-item drop-wwe{% if fed == 'wwe' %} active{% endif %}"><span class="drop-dot"></span><span>WWE</span></a></li>
-          <li><a href="/federation/aew/" class="drop-item drop-aew{% if fed == 'aew' %} active{% endif %}"><span class="drop-dot"></span><span>AEW</span></a></li>
-          <li><a href="/federation/tna/" class="drop-item drop-tna{% if fed == 'tna' %} active{% endif %}"><span class="drop-dot"></span><span>TNA</span></a></li>
-          <li><a href="/federation/roh/" class="drop-item drop-roh{% if fed == 'roh' %} active{% endif %}"><span class="drop-dot"></span><span>ROH</span></a></li>
-          <li><a href="/federation/mma/" class="drop-item drop-mma{% if fed == 'mma' %} active{% endif %}"><span class="drop-dot"></span><span>MMA</span></a></li>
-          <li><a href="/federation/indie/" class="drop-item drop-indie{% if fed == 'indie' %} active{% endif %}"><span class="drop-dot"></span><span>INDIE</span></a></li>
-        </ul>
-      </li>
+      <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
       <li><a class="navlink{% if kind == 'show' and not fed and not isNostalgiaItem and not (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink{% if kind == 'recap' %} active{% endif %}" href="/recaps/">ملخصات العروض</a></li>
       <li><a class="navlink{% if kind == 'news' or isNews %} active{% endif %}" href="/news/">الأخبار</a></li><li><a class="navlink{% if isNostalgiaItem or (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
@@ -1428,6 +1418,7 @@
   </div>
     <nav class="footer-nav" aria-label="أقسام الموقع الرئيسية">
     <a href="/shows/">عروض المصارعة</a>
+    <a href="/library/">مكتبة العروض</a>
     <a href="/federations/">الاتحادات</a>
     <a href="/recaps/">ملخصات العروض</a>
     <a href="/news/">الأخبار</a>
@@ -1764,7 +1755,7 @@
 
 </script>
 <script src="/assets/notif.js" defer></script>
-<script src="/assets/features.js?v=20260926c" defer></script>
+<script src="/assets/features.js?v=20260926d" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

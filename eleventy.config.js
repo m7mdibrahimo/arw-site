@@ -879,7 +879,11 @@ module.exports = function(eleventyConfig) {
         isNostalgia: isNostalgia,
         isProgram: isProgram,
         seriesType: isProgram ? "program" : "shows",
-        timestamp: getItemTimestamp(item)
+        timestamp: getItemTimestamp(item),
+        federation: (item.data && item.data.federation) || "",
+        eventDate: (item.data && (item.data.event_date || item.data.date)) || null,
+        duration: (item.data && item.data.duration) || "",
+        showType: (item.data && item.data.show_type) || ""
       });
     });
 
@@ -920,6 +924,60 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("programsGrouped", function(collectionApi) {
     return buildProgramsGrouped(collectionApi, ["content/shows/*.md", "content/nostalgia/*.md"]);
+  });
+  // «مكتبة العروض»: every section the shows are linked to (the dashboard's «اسم البرنامج»),
+  // the most recently created section first, each with its shows newest first. Nostalgia series have their
+  // own section and are left out; scheduled (future) shows are not listed yet.
+  const buildLibrary = function(collectionApi) {
+    const now = Date.now();
+    return buildProgramsGrouped(collectionApi, ["content/shows/*.md"])
+      .filter(function(p) { return !p.isNostalgia; })
+      .map(function(p) {
+        const shows = p.episodes.filter(function(e) { return !e.isNostalgia && e.timestamp <= now; })
+          .sort(function(a, b) { return b.timestamp - a.timestamp; });
+        const fedCount = {};
+        shows.forEach(function(e) { if (e.federation) fedCount[e.federation] = (fedCount[e.federation] || 0) + 1; });
+        const federation = Object.keys(fedCount).sort(function(a, b) { return fedCount[b] - fedCount[a]; })[0] || "";
+        // When the section first appeared on the site = its oldest show.
+        const firstAdded = shows.length ? shows[shows.length - 1].timestamp : 0;
+        return { slug: p.slug, name: p.name, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+      })
+      .filter(function(p) { return p.count > 0; })
+      // Newest section first: a section created today tops the library.
+      .sort(function(a, b) { return (b.firstAdded - a.firstAdded) || (b.latest.timestamp - a.latest.timestamp); });
+  };
+  eleventyConfig.addCollection("library", buildLibrary);
+  // One entry per page of a program's shows (20 per page, like «عروض المصارعة»):
+  // /library/<slug>/, /library/<slug>/2/, …
+  const LIBRARY_PAGE_SIZE = 20;
+  eleventyConfig.addCollection("libraryPages", function(collectionApi) {
+    const pages = [];
+    buildLibrary(collectionApi).forEach(function(prog) {
+      const total = Math.max(1, Math.ceil(prog.shows.length / LIBRARY_PAGE_SIZE));
+      const href = function(n) { return "/library/" + prog.slug + "/" + (n > 1 ? n + "/" : ""); };
+      for (let i = 0; i < total; i++) {
+        pages.push({
+          prog: prog,
+          pageNumber: i + 1,
+          totalPages: total,
+          items: prog.shows.slice(i * LIBRARY_PAGE_SIZE, (i + 1) * LIBRARY_PAGE_SIZE),
+          href: href(i + 1),
+          prev: i > 0 ? href(i) : null,
+          next: i + 1 < total ? href(i + 2) : null,
+          pageLinks: Array.from({ length: total }, function(_, k) { return { n: k + 1, href: href(k + 1), current: k === i }; })
+        });
+      }
+    });
+    return pages;
+  });
+  eleventyConfig.addFilter("libraryFederations", function(library) {
+    const seen = [];
+    (library || []).forEach(function(p) { if (p.federation && seen.indexOf(p.federation) === -1) seen.push(p.federation); });
+    const order = ["WWE", "AEW", "TNA", "ROH", "NJPW", "CMLL", "AAA", "MLW", "UFC"];
+    return seen.sort(function(a, b) {
+      const ia = order.indexOf(a), ib = order.indexOf(b);
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || a.localeCompare(b);
+    });
   });
   eleventyConfig.addCollection("recapsProgramsGrouped", function(collectionApi) {
     return buildProgramsGrouped(collectionApi, "content/recaps/*.md");
