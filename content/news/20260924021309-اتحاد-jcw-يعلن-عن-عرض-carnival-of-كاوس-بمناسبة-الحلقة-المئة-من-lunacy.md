@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "اتحاد JCW يعلن عن عرض Carnival of كاوس بمناسبة الحلقة المئة من Lunacy"
+title: "اتحاد JCW يعلن عن عرض Carnival of كاوس بمناسبة النسخة المئة من Lunacy"
+permalink: "/news/اتحاد-jcw-يعلن-عن-عرض-carnival-of-كاوس-بمناسبة-الحلقة-المئة-من-lunacy/index.html"
 date: 2026-09-24T02:13:09.000+03:00
 source_id: 330095
 source_url: "https://www.fightful.com/wrestling/jcw-announces-carnival-of-chaos-for-100th-episode-of-lunacy/"
@@ -14,7 +15,7 @@ tags:
 image: /content/images/zs1ga5cpxyk9sf2f.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد Juggalo Championship Wrestling رسميا عن تفاصيل عرض الكرنفال الكبير المسمى Carnival of كاوس، والذي يمثل الاحتفالية التاريخية بالنسخة المئة من عرض Lunacy المقرر بثه مباشرة وبدون إشفار عبر منصة يوتيوب.
+أعلن اتحاد Juggalo Championship Wrestling رسميا عن تفاصيل عرض الكرنفال الكبير المسمى Carnival of كاوس، والذي يمثل الاحتفالية التاريخية بالنسخة المئة من عرض Lunacy المقرر بثه مباشرة وبدون تشفير عبر منصة يوتيوب.
 
 يشهد هذا الحدث المرتقب جدول نزالات حافلا بالقمم الساخنة، أبرزها مواجهة كالب كونلي ضد شين ميرسر على بطولة العالم، ونزال داني مو ضد أليس كراولي على بطولة العالم للسيدات، بالإضافة إلى صراع ثلاثي يجمع جوش بيشوب وكرول وكوكين على بطولة Linear العالمية، وسط ترقب جماهيري كبير لملامح الحقبة الجديدة عقب رحيل فينس روسو.
 

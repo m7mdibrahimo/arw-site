@@ -41,7 +41,7 @@ layout: post-layout.njk
 * بطولة ROH Pure للمصارعة النقية:
 
  * لي موريارتي (البطل) ضد نايجل ماكغينيس.
-* بطولة ROH Pure للسيدات (بطولة السيدات Pure Championship):
+* بطولة ROH Pure للسيدات (بطولة Pure للسيدات):
 
  * ديونا بوراتزو (البطلة) ضد ستيف دي لاندر.
 * بطولة التلفزيون العالمية (World Television Championship - Fight Without Honor):

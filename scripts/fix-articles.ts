@@ -86,6 +86,9 @@ async function main() {
   const onlyIssues = args.includes("--only-issues");
   const learnOnly = args.includes("--learn-only");
   const backlog = Number(arg("--backlog") || 0);
+  //   --replay report.json   re-apply the AI edits recorded by an earlier --report run
+  const replay = arg("--replay") ? new Map<string, ProofEdit[]>((JSON.parse(fs.readFileSync(arg("--replay")!, "utf-8")) as any[]).map(r => [r.file, r.aiEdits || []])) : null;
+  if (replay) files = files.filter(f => replay.has(f));
   const progress = loadProgress();
   if (backlog) {
     const candidates = files
@@ -110,7 +113,12 @@ async function main() {
     let draft = deterministic({ title: p.title, body: p.body, tags: p.tags });
     let applied: ProofEdit[] = [];
     const hasErrors = checkArticle(draft.title, draft.body, draft.tags).some(i => i.severity === "error");
-    if (useAi && (!onlyIssues || hasErrors)) {
+    if (replay) {
+      // Re-apply a previous run's AI edits through today's guards (no Gemini call).
+      const edits = replay.get(file) || [];
+      if (edits.length) ({ article: draft, applied } = applyProofEdits(draft, edits));
+      draft = deterministic(draft);
+    } else if (useAi && (!onlyIssues || hasErrors)) {
       const issues = checkArticle(draft.title, draft.body, draft.tags);
       const edits = parseProofEdits(await queryGemini(proofreadPrompt(draft, p.title,
         "(المصدر الإنجليزي غير متاح لهذا الخبر المنشور — أصلح الأخطاء اللغوية والإملائية وصيغ الأسماء العربية فقط. ممنوع تغيير أي معلومة أو رقم أو تاريخ أو كلمة إنجليزية، وممنوع استبدال كلمة صحيحة بمرادف.)",

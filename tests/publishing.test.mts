@@ -1105,3 +1105,20 @@ test("sweep leftovers: doubled federation, stray «The» before Arabic, Knockout
   const h = "**المواجهة الثانية (نزال فردي): أ**\n\nس";
   assert.equal(headUnheadedMatches(h), h);
 });
+
+test("the copy editor without a source only corrects — never rewrites, invents or deletes (INCIDENTS #70)", async () => {
+  const { editStaysClose, applyProofEdits } = await import('../scripts/editorial');
+  assert.ok(editStaysClose("أوميجا", "أوميغا"));
+  assert.ok(editStaysClose("قبولاعند", "قبولا عند"));
+  assert.ok(editStaysClose("🏆 **الفائزة:** قيد الانتظار", ""));
+  assert.ok(editStaysClose("قدم اتحاد AEW حلقة نارية ومثيرة من عرض Dynamite", "قدم اتحاد AEW عرضا ناريا ومثيرا من عرض Dynamite"));
+  assert.ok(!editStaysClose("نيك وين (نيك واين).", "نيك واين (البطل) ضد بانديدو."));
+  assert.ok(!editStaysClose("تدخل البطلة فلامر ورد حاسم بحركة Pop Rox", ""));
+  assert.ok(!editStaysClose("لـليزاي راين", "لـلايني ريد"));
+  assert.ok(!editStaysClose("نهائي بطولة Tokyo Princess Cup 2026", "نهائي بطولة كأس أميرة طوكيو 2026"));
+  assert.ok(!editStaysClose("أرييل وسامي لين", "أرييل وساامي لين"));
+  assert.ok(!editStaysClose("وتحديد مواجهة جماعية كبرى.", "وتحديد مواجهة جماعية كبرى *"));
+  const out = applyProofEdits({ title: "ت", body: "عودة وظهور خاص للنجمة بايج.", tags: [] }, [{ field: "body", find: "للنجمة بايج", replace: "للنجمة سارايا" } as any]);
+  assert.equal(out.article.body, "عودة وظهور خاص للنجمة بايج.");
+  assert.equal(autoFix("* المباراة (بطولة WWE الموحدة - بطل (الاتحاد)): أ"), "* المباراة (بطولة WWE الموحدة): أ");
+});

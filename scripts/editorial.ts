@@ -124,6 +124,36 @@ function levenshtein(a: string, b: string): number {
   return prev[b.length];
 }
 
+const normAr = (w: string) => w.replace(/[أإآا]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه").replace(/[ؤئ]/g, "ء").replace(/[^\p{L}\p{N}]/gu, "");
+/**
+ * Without the English source (fixing an already-published article) the copy editor
+ * may only correct, never rewrite. On 2026-09-27 it invented «ضد بانديدو» and
+ * «ستيف دي لاندر», deleted a whole sentence, turned «بطل (الاتحاد)» into «بطولة العالم
+ * للوزن الثقيل» (CM Punk holds the WWE Undisputed title), «ليزي راين» into «لايني ريد»,
+ * «بايج» into «سارايا» and «Tokyo Princess Cup» into «كأس أميرة طوكيو» (INCIDENTS #70).
+ * Allowed: spelling/hamza fixes, removing a duplicate or a short cliché, up to one new word.
+ */
+export function editStaysClose(find: string, replace: string): boolean {
+  if ((replace.match(/\*/g) || []).length > (find.match(/\*/g) || []).length) return false;
+  if (/اا/.test(replace) && !/اا/.test(find)) return false;
+  // Deleting a pending-winner line is always right; any other deletion must be short.
+  if (!replace) return find.length <= 30 || /قيد\s+الانتظار|بانتظار|لم\s+يحسم/.test(find);
+  // Spacing only («قبولاعند» → «قبولا عند», «لـكيفن» → «لـ كيفن»).
+  if (normAr(find) === normAr(replace)) return true;
+  // «حلقة» → «عرض» is the site's own term, not new content.
+  const SITE_TERM = /^(?:و|ف|ب|ل|ال|بال|لل|وال)?(?:عرض|عرضا|عروض|عروضه|عروضها)$/;
+  const fw = find.split(/\s+/).map(normAr).filter(Boolean);
+  const rw = replace.split(/\s+/).map(normAr).filter(w => w && !SITE_TERM.test(w));
+  // Pure removal (a duplicate «(Alexa Bliss)», a «صدمة مدوية..» prefix): every kept word was there.
+  const near = (w: string) => fw.some(f => f === w || (w.length >= 3 && levenshtein(f, w) <= Math.max(1, Math.floor(Math.min(f.length, w.length) / 3))));
+  const added = rw.filter(w => !near(w));
+  if (added.length > 1) return false;
+  if (rw.length < fw.length) return find.length - replace.length <= 30;
+  // A same-length rewrite must still read as the same text (a name is not another name).
+  const a = normAr(find), b = normAr(replace);
+  return levenshtein(a, b) <= Math.max(2, Math.ceil(Math.max(a.length, b.length) * 0.34));
+}
+
 /** A one/two-word edit must be a spelling fix, not a different word. Seen live:
  *  «مسترجعا» → «متذمرا» (recalling → complaining), «كودي رودز» → «بينتا»,
  *  «إجماع الحكام» → «الإجماع». Expanding a name («كوفي» → «كوفي كينغستون») and
@@ -197,6 +227,9 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
     DIACRITICS.lastIndex = 0;
     if (!find || find === replace || find.length > 400 || replace.length > find.length * 2 + 40) continue;
     if (!editIsGrounded(find, replace, sourceText)) continue;
+    if (!sourceText && !editStaysClose(find, replace)) continue;
+    // The owner's rule: Paige is «بايج» and Saraya is «سارايا», each exactly as the source says.
+    if ((/بايج/.test(find) && !/بايج/.test(replace) && /سارايا/.test(replace)) || (/سارايا/.test(find) && !/سارايا/.test(replace) && /بايج/.test(replace))) continue;
     if (!editIsAnImprovement(find, replace)) continue;
     // "يُذكر أن" (it is worth noting) is not "يتذكر" (remembers) — seen in testing.
     if (/(^|[^\u0621-\u064A])[وف]?يذكر/.test(find) && /يتذكر/.test(replace)) continue;

@@ -82,7 +82,7 @@ const RULES: Rule[] = [
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
   { code: "empty_brackets", severity: "error", re: /\(\s*\)|\[\s*\]|«\s*»|""/g, message: "أقواس أو علامات تنصيص فاضية" },
   { code: "english_jargon", severity: "error", re: new RegExp(`[${AR}]\\s+(?:segment|promo|promoter|heel|babyface|face turn|heel turn|feud|spot|push|booking|booker|squash|botch|kayfabe|go-home|angle|storyline|run-in|pop|heat|tag team|finisher|jobber|mic skills|main event|midcard|house show)\\b|\\b(?:segment|promo|heel|babyface|feud|booking|squash|botch|kayfabe|go-home|storyline)\\s+[${AR}]`, "gi"), message: "مصطلح مصارعة إنجليزي داخل جملة عربية (مثل segment ← فقرة، promo ← خطاب/حوار)", fields: ["title", "body"] },
-  { code: "english_title_name", severity: "error", re: new RegExp(`[${AR}]\\s+(?:[A-Z][A-Za-z']+\\s+){0,4}(?:Championships?|Titles?|Tag Team Classic|Cup|Tournament)\\b`, "g"), message: "اسم بطولة/لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...)", fields: ["title", "body"] },
+  { code: "english_title_name", severity: "error", re: new RegExp(`[${AR}]\\s+(?:[A-Z][A-Za-z']+\\s+){0,4}(?:Championships?|Titles?)\\b`, "g"), message: "اسم لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...). أسماء الدورات (Cup/Classic/Tournament) تبقى بالإنجليزي", fields: ["title", "body"] },
   { code: "glossary_artifact", severity: "error", re: /بطلة? \((?:الاتحاد|العالمي|العالم|القارات|الأمريكي|أمريكا الشمالية|إن إكس تي|سبيد|الاتحاد للفرق|العالمي للفرق|إن إكس تي للفرق|إيفولف|إيفولف للفرق|دبليو دبليو إن)\)/g, message: "اسم بطولة مكسور من القاموس القديم مثل «بطل (الاتحاد)» — يُحذف أو يُكتب اسم البطولة الصحيح (بطولة WWE، بطولة العالم للوزن الثقيل...)", fields: ["title", "body"] },
   { code: "truncated_word", severity: "error", re: /(?<=^|\s)[ءآأؤإئاتثجحخدذرزسشصضطظعغقمنهةى](?=\s)/g, message: "حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)", fields: ["title", "body"] },
   { code: "vague_result", severity: "error", re: /الفائز(?:ة|ان|تان|ون|ين|ات)?:\*{0,2}\s*(?:تم\s+حسم|تحديد|حسم\s+النتيجة|غير\s+معروف|لم\s+يتم|لم\s+يحسم|قيد\s+الانتظار|بانتظار|سيتم|يحدد\s+لاحقا|انتهى\s+الحدث|انتهت\s+الأحداث|[^\n]{0,25}وسط\s+أجواء)[^\n]*/g, message: "سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)", fields: ["body"] },
@@ -238,6 +238,9 @@ export function autoFix(text: string): string {
     .replace(/[،,؛]\s*([.!؟?])/g, "$1")
     .replace(/([،؛])\s*[،,؛]/g, "$1")
     .replace(/[ \t]+([.،؛!؟])(?=\s|$)/g, "$1")
+    // Leftovers of the old glossary: «(بطولة WWE الموحدة - بطل (الاتحاد))», «بطولة X (بطل (الاتحاد للفرق))»
+    .replace(/\s*[-–]\s*بطل \(الاتحاد[^()\n]*\)/g, "")
+    .replace(/\s*\(بطل \(الاتحاد[^()\n]*\)\)/g, "")
     // «عرض WWE WWE RAW»: a correction («مندي نايت رو» → «WWE RAW») after a federation name already there
     .replace(/\b(WWE|AEW|TNA|AAA|NJPW|ROH|NXT|UFC|CMLL|NOAH|GCW|wXw)\s+\1\b/g, "$1")
     // «فريق The نيو ليفل»: an English article left before an Arabic team name
