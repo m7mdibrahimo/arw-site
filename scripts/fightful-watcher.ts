@@ -3340,7 +3340,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
         publishedAt = oldPublishedAt && !isNaN(oldPublishedAt.getTime()) ? oldPublishedAt.toISOString() : new Date(data.date || 0).toISOString();
       }
       const tMatch = oldContent.match(/^title:\s*["']?([^"'\r\n]+)["']?/m);
-      if (tMatch && tMatch[1]) {
+      // A repaired article is served from its pinned permalink, not its title slug —
+      // redirect from THAT address (INCIDENTS #60: the old SmackDown link went 404).
+      const pinned = String(matter(oldContent).data.permalink || "").replace(/^\/news\/|\/index\.html$/g, "");
+      if (pinned) {
+        oldSlug = pinned;
+      } else if (tMatch && tMatch[1]) {
         oldSlug = arabicSlug(tMatch[1]);
       } else {
         oldSlug = existingFile.fileName.replace(/^\d+-/, "").replace(/\.md$/, "");
