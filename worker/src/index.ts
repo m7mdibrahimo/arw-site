@@ -1736,8 +1736,30 @@ async function markInstagramAction(env: Env): Promise<void> {
 // included). The site publishes more news than that, so trying to post all of it
 // ended in "too many actions" blocks (INCIDENTS #47, #51). Stay under IG_DAILY_CAP
 // and keep IG_VIDEO_RESERVE of it for show reels/stories.
-const IG_DAILY_CAP = 45;
+const IG_DAILY_CAP = 45;          // fallback when Instagram's own limit can't be read
 const IG_VIDEO_RESERVE = 12;
+const IG_QUOTA_MARGIN = 10;       // stay this far under Instagram's real limit
+// The account's real limit is 100/24h (content_publishing_limit, checked 2026-09-27);
+// a fixed 45 left half of it unused. Read it from Instagram (cached 10 min) and count
+// with whichever is higher: our own log or Instagram's quota_usage.
+let igQuotaCache: { at: number; total: number; usage: number } | null = null;
+async function instagramQuota(env: Env): Promise<{ total: number; usage: number } | null> {
+  if (igQuotaCache && Date.now() - igQuotaCache.at < 10 * 60_000) return igQuotaCache;
+  try {
+    const res = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/content_publishing_limit?fields=config,quota_usage&access_token=${await getPageAccessToken(env)}`);
+    const row: any = ((await res.json()) as any)?.data?.[0];
+    const total = Number(row?.config?.quota_total), usage = Number(row?.quota_usage);
+    if (Number.isFinite(total) && total > 0 && Number.isFinite(usage)) igQuotaCache = { at: Date.now(), total, usage };
+  } catch {}
+  return igQuotaCache;
+}
+/** Is there room for one more Instagram action, keeping `reserve` for show reels/stories? */
+async function instagramRoomLeft(env: Env, reserve: number): Promise<boolean> {
+  const q = await instagramQuota(env);
+  const cap = q ? Math.max(IG_DAILY_CAP, q.total - IG_QUOTA_MARGIN) : IG_DAILY_CAP;
+  const used = Math.max((await instagramActionsLast24h(env)).length, q?.usage ?? 0);
+  return used < cap - reserve;
+}
 async function instagramActionsLast24h(env: Env): Promise<number[]> {
   try {
     const list = JSON.parse((await env.PUSH_KV?.get("ig_actions_24h")) || "[]");
@@ -2198,7 +2220,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // reverted: tripled per-tick work and reintroduced the CPU-limit failure
   // this whole split exists to avoid).
   let igSpacingOk = (await instagramSpacingWait(env)) === 0 && !(await instagramVideoWaiting(env))
-    && (await instagramActionsLast24h(env)).length < IG_DAILY_CAP - IG_VIDEO_RESERVE;
+    && (await instagramRoomLeft(env, IG_VIDEO_RESERVE));
   const MAX_EXPENSIVE_PER_TICK = 40;
   const notStarted = candidates.filter((c) => !c.tgDone).reverse();
   // Articles still missing Facebook: oldest first (as before). Articles missing only
@@ -2486,7 +2508,11 @@ export default {
           `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}?fields=id,username&access_token=${env.FACEBOOK_PAGE_ACCESS_TOKEN}`
         );
         const data: any = await res.json();
-        return json({ success: !data.error, configured: true, account: data });
+        // Instagram's own API publishing limit for this account (quota_total per 24h, quota_usage so far).
+        const limitRes = await fetch(
+          `https://graph.facebook.com/${GRAPH_API_VERSION}/${env.INSTAGRAM_BUSINESS_ACCOUNT_ID}/content_publishing_limit?fields=config,quota_usage&access_token=${await getPageAccessToken(env)}`
+        ).then(r => r.json()).catch((e: any) => ({ error: String(e) })) as any;
+        return json({ success: !data.error, configured: true, account: data, publishingLimit: limitRes?.data?.[0] || limitRes, internalCap: (await instagramQuota(env)) ? Math.max(IG_DAILY_CAP, igQuotaCache!.total - IG_QUOTA_MARGIN) : IG_DAILY_CAP, newsRoomLeft: await instagramRoomLeft(env, IG_VIDEO_RESERVE), internalUsedLast24h: (await instagramActionsLast24h(env)).length });
       }
 
       if (path === "/api/x/status" && request.method === "GET") {
@@ -2999,7 +3025,7 @@ export default {
               continue;
             }
             if (network === "instagram") {
-              if ((await instagramActionsLast24h(env)).length >= IG_DAILY_CAP) {
+              if (!(await instagramRoomLeft(env, 0))) {
                 results[platform] = { ok: false, status: "processing", spacing: true, error: "تم بلوغ الحد اليومي لمنشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا." };
                 continue;
               }
