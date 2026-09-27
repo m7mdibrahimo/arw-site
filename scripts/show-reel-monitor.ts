@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { arabicSlug } from '../lib/slug.cjs';
+import { showPath } from '../lib/show-permalink.cjs';
+const SHOW_DIR_FOR_URLS = path.join(process.cwd(), 'content', 'shows');
 
 export const PLATFORMS = ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story', 'tiktok'] as const;
 type Platform = typeof PLATFORMS[number];
@@ -52,7 +54,7 @@ export function shouldProcessShow(filename: string, data: Record<string, any>, p
 export function showUrl(filename: string, data: Record<string, any>, origin = ORIGIN): string {
   const link = typeof data.permalink === 'string' && !data.permalink.includes('{{')
     ? data.permalink.replace(/index\.html$/, '')
-    : `/shows/${arabicSlug(data.title || filename.replace(/\.md$/, ''))}/`;
+    : showPath(filename, data.title, SHOW_DIR_FOR_URLS);
   const url = new URL(link, origin);
   if (url.origin !== new URL(origin).origin) throw new Error('Show permalink must belong to the site');
   return url.href;

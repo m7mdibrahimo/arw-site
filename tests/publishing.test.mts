@@ -1197,3 +1197,14 @@ test("a vague results title names the main-event winner from the report (INCIDEN
   // No main-event block: untouched.
   assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): ليلة حافلة", "🏆 **الفائز:** أ"), "نتائج عرض X (1 أكتوبر 2026): ليلة حافلة");
 });
+
+test("two shows with the same title get different URLs instead of breaking the build (INCIDENTS #83)", async () => {
+  const fs = await import('fs'); const os = await import('os'); const path = await import('path');
+  const { createRequire } = await import('module');
+  const { showPath } = createRequire(import.meta.url)('../lib/show-permalink.cjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'shows-'));
+  fs.writeFileSync(path.join(dir, '20260920104600-lucha-libre-aaa-19-09-2026.md'), '---\ntitle: Lucha Libre AAA 19.09.2026\n---\n');
+  fs.writeFileSync(path.join(dir, '20260927053700-lucha-libre-aaa-19-09-2026.md'), '---\ntitle: Lucha Libre AAA 19.09.2026\n---\n');
+  assert.equal(showPath('20260920104600-lucha-libre-aaa-19-09-2026.md', 'Lucha Libre AAA 19.09.2026', dir, true), '/shows/lucha-libre-aaa-19-09-2026/');
+  assert.equal(showPath('20260927053700-lucha-libre-aaa-19-09-2026.md', 'Lucha Libre AAA 19.09.2026', dir), '/shows/lucha-libre-aaa-19-09-2026-2/');
+});
