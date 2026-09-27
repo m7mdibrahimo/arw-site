@@ -11,7 +11,7 @@ tags:
   - سي ام بانك
   - ري ميستيريو
   - دومينيك ميستيريو
-  - اوموس
+  - أوموس
 image: /content/images/mgbktcherqx9ol5q.jpg
 layout: post-layout.njk
 ---
