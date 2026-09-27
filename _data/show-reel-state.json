@@ -2348,11 +2348,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 26.09.2026 مترجم",
-    "lastAttempt": 1790488661976,
-    "errors": {
-      "facebook_reel": "صفحة العرض لم تصبح متاحة بالرابط الصحيح بعد.",
-      "facebook_story": "صفحة العرض لم تصبح متاحة بالرابط الصحيح بعد."
-    },
+    "errors": {},
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false

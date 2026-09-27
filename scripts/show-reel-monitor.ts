@@ -158,7 +158,11 @@ export async function main() {
       const html = await page.text();
       const canonical = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)?.[1];
       if (!page.ok || !canonical || new URL(canonical, ORIGIN).pathname.replace(/\/$/, '') !== new URL(postUrl).pathname.replace(/\/$/, '')) {
-        throw new Error('صفحة العرض لم تصبح متاحة بالرابط الصحيح بعد.');
+        // Not live yet (Cloudflare still building) is a wait, not a failure: recording it as
+        // an error parked the show for the 45-minute failure retry — Lucha Libre AAA 26.09
+        // sat unposted after its page went live (INCIDENTS #84). Check again next run.
+        console.log(`${slug}: waiting for its page to go live at ${postUrl}`);
+        continue;
       }
       // One request per platform: persist each acknowledgement before attempting the next.
       for (const platform of pending) {
