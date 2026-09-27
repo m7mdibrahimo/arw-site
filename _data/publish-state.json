@@ -2053,7 +2053,6 @@
     "https___arab-wrestling_com_news_____-_____-_____-__-_____-iwgp-_____-______-__-_____-_____-__-___-njpw-king-of-pro-wrestling_": 1790510380963,
     "httpsarab-wrestlingcomnewsيوتا-تسوجي-يدافع-عن-بطولة-iwgp-للوزن-الثقيل-ضد-ريوهي-أويوا-في-عرض-njpw-king-of-pro-wrestling": 1790510620331,
     "https___arab-wrestling_com_news_____-___-___-_____-____-____-______-_________-______-______-__-______": 1790512181158,
-    "httpsarab-wrestlingcomnewsبايج-ترد-على-متابع-بسبب-هوسه-بتغيير-المصارعات-لملابس-الحلبة-كل-أسبوع": 1790512947592,
     "httpsarab-wrestlingcomnewsأوموس-يتحدث-عن-علاقة-العمل-مع-مسؤول-الحجز-في-aaa-أندرتيكر": 1790513015982,
     "httpsarab-wrestlingcomshowsaew-all-out-tailgate-brawl-2026": 1790513316952
   },
@@ -4110,7 +4109,6 @@
     "https___arab-wrestling_com_news_____-_____-_____-__-_____-iwgp-_____-______-__-_____-_____-__-___-njpw-king-of-pro-wrestling_": 1790510380963,
     "httpsarab-wrestlingcomnewsيوتا-تسوجي-يدافع-عن-بطولة-iwgp-للوزن-الثقيل-ضد-ريوهي-أويوا-في-عرض-njpw-king-of-pro-wrestling": 1790510620331,
     "https___arab-wrestling_com_news_____-___-___-_____-____-____-______-_________-______-______-__-______": 1790512181158,
-    "httpsarab-wrestlingcomnewsبايج-ترد-على-متابع-بسبب-هوسه-بتغيير-المصارعات-لملابس-الحلبة-كل-أسبوع": 1790512947592,
     "httpsarab-wrestlingcomnewsأوموس-يتحدث-عن-علاقة-العمل-مع-مسؤول-الحجز-في-aaa-أندرتيكر": 1790513031215,
     "httpsarab-wrestlingcomshowsaew-all-out-tailgate-brawl-2026": 1790513334102
   },
@@ -5990,7 +5988,6 @@
     "httpsarab-wrestlingcomshowslucha-libre-aaa-26-09-2026": 1790511477619,
     "httpsarab-wrestlingcomshowshog-windy-city-warfare-2026": 1790512132198,
     "httpsarab-wrestlingcomshowsgcw-rock-bottom-2026": 1790512793089,
-    "httpsarab-wrestlingcomnewsبايج-ترد-على-متابع-بسبب-هوسه-بتغيير-المصارعات-لملابس-الحلبة-كل-أسبوع": 1790512947592,
     "httpsarab-wrestlingcomshowsaew-all-out-tailgate-brawl-2026": 1790513451206
   },
   "x": {
@@ -7654,8 +7651,7 @@
     "httpsarab-wrestlingcomnewsشينغو-تاكاغي-يحقق-فوزا-على-كلاوديو-كاستانيولي-في-عرض-njpw-destruction-in-kobe": 1790502219803,
     "https___arab-wrestling_com_news_____-_____-_____-__-_____-iwgp-_____-______-__-_____-_____-__-___-njpw-king-of-pro-wrestling_": 1790510380963,
     "httpsarab-wrestlingcomnewsيوتا-تسوجي-يدافع-عن-بطولة-iwgp-للوزن-الثقيل-ضد-ريوهي-أويوا-في-عرض-njpw-king-of-pro-wrestling": 1790510620331,
-    "https___arab-wrestling_com_news_____-___-___-_____-____-____-______-_________-______-______-__-______": 1790512181158,
-    "httpsarab-wrestlingcomnewsبايج-ترد-على-متابع-بسبب-هوسه-بتغيير-المصارعات-لملابس-الحلبة-كل-أسبوع": 1790512947592
+    "https___arab-wrestling_com_news_____-___-___-_____-____-____-______-_________-______-______-__-______": 1790512181158
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -7745,5 +7741,8 @@
   ],
   "videoCooldowns": {
     "instagram": 1790351524422
+  },
+  "released": {
+    "httpsarab-wrestlingcomnewsبايج-ترد-على-متابع-بسبب-هوسه-بتغيير-المصارعات-لملابس-الحلبة-كل-أسبوع": 1790513823648
   }
 }

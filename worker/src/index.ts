@@ -2260,7 +2260,10 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // Checked before EVERY platform, not only before Telegram: an item already on
     // Telegram could still reach Instagram later (INCIDENTS #68). The check is a few
     // regexes on the title and toProcess is capped per tick, so the cost stays small.
-    if (collection === "news" && !(tgDone && fbDone && igDone && xDone)) {
+    // state.released[key]: an item the owner cleared after a false spoiler hit. Read from the
+    // publish state itself, so a release doesn't wait for the site's feed to rebuild — the
+    // Harley Cameron and Paige stories were re-blocked by the stale feed flag (INCIDENTS #89).
+    if (collection === "news" && !(tgDone && fbDone && igDone && xDone) && !(state as any).released?.[key]) {
       const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
       if (isSpoiler) {
         state.telegram[key] = now;
