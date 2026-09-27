@@ -1913,7 +1913,7 @@ function isResultsArticle(title: string = ""): boolean {
          /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 
-function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
+export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
   // JS «\b» only knows ASCII word characters, so «/\bيهزم\b/» never matched an Arabic
@@ -1934,7 +1934,11 @@ function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): bo
 
   // Returns, debuts and surprise appearances never go to social — the owner's rule
   // (2026-09-27: «ساموا جو يعود في عرض AEW All Out» reached Telegram and Facebook).
-  if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(title) ||
+  // A return that hasn't happened is not a spoiler: «كوري غريفز… لا يستبعد العودة إلى المصارعة»,
+  // «أنتوني هنري لا يعرف ما إذا كان سيعود» (injury/clearance stories — INCIDENTS #95).
+  const notYetReturn = ar("(?:لا\\s+)?(?:يستبعد|تستبعد|يأمل|تأمل|يتمنى|تتمنى|يفكر|تفكر|يخطط|تخطط|يقترب|تقترب|يستعد|تستعد|ينتظر|تنتظر|يلمح|تلمح|يتطلع|تتطلع|يرغب|ترغب|يريد|تريد)(?:\\s+(?:في|إلى|الى|من|ل))?\\s+(?:ال)?عود(?:ة|ته|تها|تهم)|(?:موعد|توقيت|تفاصيل|خطط|احتمال|إمكانية|فرص)\\s+(?:ال)?عود(?:ة|ته|تها|تهم)|(?:ما\\s+)?إذا\\s+كان(?:ت)?\\s+(?:س|ست)?(?:يعود|تعود)|هل\\s+(?:س)?(?:يعود|تعود)|قد\\s+(?:يعود|تعود)|لن\\s+(?:يعود|تعود)");
+  const returnTitle = title.replace(new RegExp(notYetReturn.source, "gi"), " ");
+  if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;
   }

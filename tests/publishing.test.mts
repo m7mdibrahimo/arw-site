@@ -1188,6 +1188,14 @@ test("a story about a match at tonight's show is kept off social even with an an
   assert.equal(revealsTonightsMatch("X Official For AEW WrestleDream", "At AEW All Out, X won.", []), false);
 });
 
+test("the worker lets Arabic titles about a return that hasn't happened through (INCIDENTS #95)", async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler("كوري غريفز يؤكد حصوله على التصريح الطبي ولا يستبعد العودة إلى المصارعة"), false);
+  assert.equal(isSingleMatchSpoiler("أنتوني هنري نجم AEW لا يعرف ما إذا كان سيعود إلى المصارعة الحرة"), false);
+  assert.equal(isSingleMatchSpoiler("ساموا جو يعود في عرض AEW All Out"), true);
+  assert.equal(isSingleMatchSpoiler("عودة مفاجئة لنجم سابق في عرض الرو"), true);
+});
+
 test("a return that has not happened yet is not a spoiler (INCIDENTS #95)", async () => {
   const { isReturnOrDebutStory } = await import('../scripts/fightful-watcher');
   assert.equal(isReturnOrDebutStory("AEW's Anthony Henry Doesn't Know If He'll Return To Pro Wrestling"), false);
