@@ -1206,6 +1206,16 @@ test("a title never repeats its subject, and a bare finished results title names
   assert.equal(resultsTitleOutcome("نتائج عرض TNA iMPACT (24 سبتمبر 2026)", "**المواجهة الأولى**\n\nنص"), "نتائج عرض TNA iMPACT (24 سبتمبر 2026)");
 });
 
+test("a promotion war is not a match result (INCIDENTS #97)", async () => {
+  const { leadHasMatchResult } = await import('../scripts/fightful-watcher');
+  assert.equal(leadHasMatchResult("", "Jonathan Coachman Explains Why AEW Won Battle Against WWE In Chicago"), false);
+  assert.equal(leadHasMatchResult("", "AEW Beat WWE In Ticket Sales"), false);
+  assert.equal(leadHasMatchResult("", "Kevin Knight Wins Battle Royal At AEW Collision"), true);
+  assert.equal(leadHasMatchResult("", "Swerve Strickland Won The Match At All Out"), true);
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler("جوناثان كوتشمان يوضح لماذا تفوقت AEW في المعركة ضد WWE في شيكاغو"), false);
+});
+
 test("a return that has not happened yet is not a spoiler (INCIDENTS #95)", async () => {
   const { isReturnOrDebutStory } = await import('../scripts/fightful-watcher');
   assert.equal(isReturnOrDebutStory("AEW's Anthony Henry Doesn't Know If He'll Return To Pro Wrestling"), false);

@@ -2250,7 +2250,10 @@ const OUTCOME_WORDS = /(?:\bdef\.|\b(?:wins?|won|winning|winners?|victory|victor
 const LEAD_OUTCOME_WORDS = /(?:\bdef\.|\b(?:defeated|defeats|bested|pinned|pinfall|submitted|retained (?:the|his|her|their)|retains (?:the|his|her|their)|captured the|crowned|dethroned|picked up (?:the|a) (?:win|victory)|scored (?:the|a) (?:win|victory)|for the (?:win|victory|pin|fall)|by (?:pinfall|submission|dq|disqualification|count-?out|knockout|tko)|no contest|won the (?:match|bout|title|championship|belt)|to (?:win|retain|capture) the (?:title|championship|belt))\b)/i;
 export function leadHasMatchResult(plainText: string = "", title: string = ""): boolean {
   // "Losing 50 Pounds" is about weight, not a match.
-  const clean = (t: string) => t.replace(/\b(?:los(?:e|es|ing|t)|won't)\s+(?:\d+\s+)?(?:pounds|lbs|kg|kilos|weight)\b/gi, "");
+  // "Why AEW Won Battle Against WWE In Chicago" is a promotion war, not a match (INCIDENTS #97).
+  const clean = (t: string) => t.replace(/\b(?:los(?:e|es|ing|t)|won't)\s+(?:\d+\s+)?(?:pounds|lbs|kg|kilos|weight)\b/gi, "")
+    .replace(/\b(?:won|wins?|winning|lost|loses?|losing)\s+(?:the\s+)?(?:\w+\s+)?(?:battle(?!\s+royal)|war|ratings?|head-to-head|weekend|night)\b(?:\s+(?:against|over|with|vs\.?)\s+(?:AEW|WWE|TNA|NXT|ROH|NJPW))?/gi, "")
+    .replace(/\b(?:AEW|WWE|TNA|NXT|ROH|NJPW)\s+(?:beat|beats|tops|topped|won|wins|lost to|loses to)\s+(?:AEW|WWE|TNA|NXT|ROH|NJPW)\b/gi, "");
   return OUTCOME_WORDS.test(clean(title)) || LEAD_OUTCOME_WORDS.test(clean(plainText.slice(0, 500)));
 }
 
