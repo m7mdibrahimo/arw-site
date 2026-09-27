@@ -16,7 +16,6 @@ tags:
   - يو اف سي فايت نايت
 image: /content/images/tp327u5m38fcpjtd.jpg
 servers:
-  - url: https://ok.ru/video/17413697440352
   - url: https://vidtube.one/7iv2qm758dq1.html
   - url: https://fembed.co/embed/o-wFg2Ga_1lx0
   - url: https://uqload.vc/embed-4rbrsn6gmfad.html
