@@ -212,6 +212,37 @@ export function headUnheadedMatches(text: string): string {
 const FILLER_NOUNS = "مواجهات|نزالات|أحداثا|منافسات";
 const FILLER_ADJ = "حماسية|نارية|مثيرة|قوية";
 
+/**
+ * A finished show's results title that only names the match («نتائج عرض AAA on FOX (26
+ * سبتمبر 2026): مستر إغوانا في مواجهة تيروس») says nothing the reader came for. When the
+ * report's own 🏆 lines name one side as the winner, state the outcome instead.
+ */
+export function resultsTitleOutcome(title: string, body: string): string {
+  if (!/^نتائج\s+(?:عرض|نهائي|الليلة|تسريبات)/.test(title)) return title;
+  // The whole subtitle must be exactly «A في مواجهة B»: no «..», «،» or second clause.
+  const m = title.match(/^(.*?:\s*)([^:.،,؛]+?)\s+(?:في\s+مواجهة|يواجه|تواجه|يواجهان|تواجهان|ضد)\s+([^:.،,؛]+?)\s*$/);
+  if (!m) return title;
+  const [, head, a, b] = m;
+  const words = (x: string) => x.trim().split(/\s+/).length;
+  if (words(a) > 5 || words(b) > 5 || /(?:^|\s)(?:و|ضد)\s/.test(` ${b} `) || /^(?:دامية|قوية|نارية|مثيرة|حاسمة)/.test(b)) return title;
+  const norm = (x: string) => x.replace(/^(?:فريق|الفريق|ثنائي|الثنائي|البطل|البطلة)\s+/, "").replace(/[.!…]+$/, "").trim();
+  const [na, nb] = [norm(a), norm(b)];
+  // The winner line must belong to THIS match: its block (up to the next heading) names both sides.
+  for (const block of body.split(/\n(?=\*\*|#{2,4}\s|---)/)) {
+    if (!block.includes(na) || !block.includes(nb)) continue;
+    const w = block.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
+    if (!w) continue;
+    const who = norm(w[2]);
+    const winner = who === na ? a : who === nb ? b : "";
+    if (!winner) continue;
+    const loser = winner === a ? b : a;
+    const feminine = w[1] === "الفائزة" || /(?:تغلبت|تفوقت|فازت|نجحت|انتصرت|احتفظت|توجت|حسمت|تمكنت|خطفت)/.test(block);
+    const verb = /ان$|تان$|ون$/.test(w[1]) ? "يتغلبان على" : feminine ? "تتغلب على" : "يتغلب على";
+    return `${head}${winner} ${verb} ${loser}`;
+  }
+  return title;
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   // HTML line breaks written into the markdown body («<br><br>**المواجهة الأولى…»)

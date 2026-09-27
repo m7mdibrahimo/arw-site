@@ -1151,3 +1151,18 @@ test("one results report per show: another source's report of the same show is a
   assert.equal(findSameShowResults("NJPW Road To Destruction Results (9/22)", 30, dir).isDuplicate, false);
   assert.equal(findSameShowResults("AEW Collision Results (9/26)", 30, dir).isDuplicate, false);
 });
+
+test("a finished show's results title states the outcome, taken from the report's own winner lines", async () => {
+  const { resultsTitleOutcome } = await import('../scripts/news-qa');
+  const body = "**المواجهة الأولى: نزال فردي**\n\nتغلب مستر إغوانا على تيروس.\n\n🏆 **الفائز:** مستر إغوانا\n";
+  assert.equal(resultsTitleOutcome("نتائج عرض AAA on FOX (26 سبتمبر 2026): مستر إغوانا في مواجهة تيروس", body), "نتائج عرض AAA on FOX (26 سبتمبر 2026): مستر إغوانا يتغلب على تيروس");
+  assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): تيروس في مواجهة مستر إغوانا", body), "نتائج عرض X (1 أكتوبر 2026): مستر إغوانا يتغلب على تيروس");
+  const fem = "**المواجهة السادسة**\n\nتغلبت كاي لي راي على ستيفاني ميز.\n\n🏆 **الفائزة:** كاي لي راي\n";
+  assert.equal(resultsTitleOutcome("نتائج عرض wXw (25 سبتمبر 2026): كاي لي راي ضد ستيفاني ميز", fem), "نتائج عرض wXw (25 سبتمبر 2026): كاي لي راي تتغلب على ستيفاني ميز");
+  // A two-part subtitle or a descriptive phrase is left alone.
+  assert.equal(resultsTitleOutcome("نتائج عرض TNA iMPACT (17 سبتمبر 2026): موس يواجه فرانكي كازاريان بمسيرته.. وليون سلاتر يتألق", "**المواجهة**\nموس ضد فرانكي كازاريان\n🏆 **الفائز:** موس"), "نتائج عرض TNA iMPACT (17 سبتمبر 2026): موس يواجه فرانكي كازاريان بمسيرته.. وليون سلاتر يتألق");
+  assert.equal(resultsTitleOutcome("نتائج عرض X (13 سبتمبر 2025): أكس كولون وإيفي في مواجهة دامية ضد فريق ذا ريجكتس", "🏆 **الفائز:** أكس كولون وإيفي"), "نتائج عرض X (13 سبتمبر 2025): أكس كولون وإيفي في مواجهة دامية ضد فريق ذا ريجكتس");
+  // Unknown winner (live page, no 🏆 for that match) or not a results title: untouched.
+  assert.equal(resultsTitleOutcome("نتائج عرض AEW All Out (26 سبتمبر 2026): أوسبراي في مواجهة موكسلي", body), "نتائج عرض AEW All Out (26 سبتمبر 2026): أوسبراي في مواجهة موكسلي");
+  assert.equal(resultsTitleOutcome("أوسبراي في مواجهة موكسلي", body), "أوسبراي في مواجهة موكسلي");
+});

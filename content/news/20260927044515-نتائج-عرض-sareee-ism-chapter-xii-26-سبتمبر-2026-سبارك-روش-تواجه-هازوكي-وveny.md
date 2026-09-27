@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض Sareee-ISM Chapter XII (26 سبتمبر 2026): سبارك روش تواجه هازوكي وVENY"
+title: "نتائج عرض Sareee-ISM Chapter XII (26 سبتمبر 2026): سبارك روش تتغلب على هازوكي وVENY"
+permalink: "/news/نتائج-عرض-sareee-ism-chapter-xii-26-سبتمبر-2026-سبارك-روش-تواجه-هازوكي-وveny/index.html"
 date: 2026-09-27T04:45:15.000+03:00
 published_at: 2026-09-27T01:56:02.673Z
 source_id: 330699

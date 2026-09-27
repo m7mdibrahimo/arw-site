@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews } from "./news-qa";
+import { resultsTitleOutcome, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3619,7 +3619,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
     return false;
   }
-  rewritten.title = draft.title;
+  rewritten.title = resultsTitleOutcome(draft.title, draft.body);
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 
