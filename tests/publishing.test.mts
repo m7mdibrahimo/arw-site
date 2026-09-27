@@ -1173,3 +1173,14 @@ test("a Fightful story's featured video (outside the API content) is found (INCI
   assert.deepEqual(extractFeaturedVideos(page), ["https://www.youtube.com/watch?v=CxC1DbTl89U"]);
   assert.deepEqual(extractFeaturedVideos('<div class="entry-content"><p>no video</p></div>'), []);
 });
+
+test("a story about a match at tonight's show is kept off social even with an announcement title (INCIDENTS #79)", async () => {
+  const { revealsTonightsMatch } = await import('../scripts/fightful-watcher');
+  const shows = ["aew all out"];
+  assert.equal(revealsTonightsMatch("Thekla Vs. Mercedes Mone For AEW Women's World Title Official For AEW WrestleDream", "Thekla gets a title shot against Mercedes Mone at AEW WrestleDream. At AEW All Out 2026, Thekla and Willow Nightingale went up against each other to determine Mercedes Mone's challenger.", shows), true);
+  // A crowd moment or a segment at the same show is not a match outcome.
+  assert.equal(revealsTonightsMatch("Marina Shafir Chokes Out Woman During Andrade's Selfie Moment At AEW All Out", "Marina Shafir choked out a fan during Andrade's selfie segment at AEW All Out.", shows), false);
+  // A story about another show is untouched.
+  assert.equal(revealsTonightsMatch("Harley Cameron Reveals Knee Injury", "Harley Cameron said she hurt her knee teaming with Kris Statlander, and they won at AEW All In.", shows), false);
+  assert.equal(revealsTonightsMatch("X Official For AEW WrestleDream", "At AEW All Out, X won.", []), false);
+});

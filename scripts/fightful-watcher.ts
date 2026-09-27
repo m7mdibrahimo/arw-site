@@ -2242,6 +2242,41 @@ export function leadHasMatchResult(plainText: string = "", title: string = ""): 
   return OUTCOME_WORDS.test(clean(title)) || OUTCOME_WORDS.test(clean(plainText.slice(0, 500)));
 }
 
+/** Shows that aired in the last hours = the shows that have a results report published recently. */
+export function recentShowNames(hours: number = 12, newsDir: string = NEWS_DIR): string[] {
+  const names = new Set<string>();
+  if (!fs.existsSync(newsDir)) return [];
+  const cutoff = Date.now() - hours * 3600_000;
+  for (const file of fs.readdirSync(newsDir)) {
+    if (!/^\d{14}-.*\.md$/.test(file)) continue;
+    try {
+      const content = fs.readFileSync(path.join(newsDir, file), "utf-8");
+      const published = content.match(/^published_at:\s*(\S+)/m);
+      const when = published ? Date.parse(published[1]) : getFrontmatterDateMs(content);
+      if (!(when >= cutoff)) continue;
+      const src = content.match(/^source_title:\s*(.+)$/m);
+      if (!src) continue;
+      const raw = src[1].trim();
+      const name = showResultsKey(raw.startsWith('"') ? JSON.parse(raw) : raw).name;
+      if (name.split(" ").length >= 2) names.add(name);
+    } catch { continue; }
+  }
+  return [...names];
+}
+
+/**
+ * A story about a match at a show that aired in the last hours gives its outcome away
+ * even when the title is an announcement: "Thekla Vs. Mercedes Mone Official For AEW
+ * WrestleDream" opens with "At AEW All Out 2026, Thekla and Willow Nightingale went up
+ * against each other to determine Mercedes Mone's challenger" (INCIDENTS #79).
+ */
+export function revealsTonightsMatch(rawTitle: string, plainText: string, shows: string[] = recentShowNames()): boolean {
+  if (!shows.length) return false;
+  const text = `${rawTitle} ${plainText.slice(0, 700)}`.toLowerCase().replace(/[^a-z0-9#.' ]+/g, " ").replace(/\s+/g, " ");
+  if (!shows.some(n => text.includes(n))) return false;
+  return /\b(?:to determine|number one contender|#1 contender|no\. 1 contender|contendership|eliminator|went up against|faced off|squared off|battled|defeat\w*|beat|won|wins?|victory|pinn?ed|retain\w*|lost|the (?:bout|match) ended|finish)\b/i.test(text);
+}
+
 export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
@@ -2255,6 +2290,8 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
   if (isReturnOrDebutStory(title, plainText)) return true;
   // 1.3 A match outcome in the TITLE («Sisters Of Win Score Win At AEW All Out»).
   if (leadHasMatchResult("", title)) return true;
+  // 1.4 A match at a show that aired in the last hours, whatever the title says (INCIDENTS #79).
+  if (revealsTonightsMatch(title, plainText)) return true;
 
   // 1.5 A leaked/revealed outcome ("Spoiler: Men's MITB Qualifying Outcome For 9/25
   // SmackDown Revealed") is a single-match result — INCIDENTS #56.
