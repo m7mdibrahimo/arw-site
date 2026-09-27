@@ -2,6 +2,7 @@ import { isSingleMatchResultArticle } from "./fightful-watcher";
 
 // Comprehensive test suite of 100+ headlines across all wrestling promotions, styles, and edge cases.
 export const testCases: Array<{ title: string; expectedFiltered: boolean; category: string }> = [
+  { title: "Stephen Borden vs. Kevin Knight Match Stopped At AEW All Out After Head Collision", expectedFiltered: true, category: "Stopped match = outcome (INCIDENTS #75)" },
   { title: "Harley Cameron Reveals Knee Injury", expectedFiltered: false, category: "Injury news mentioning an old win (INCIDENTS #74)" },
   { title: "Marina Shafir Chokes Out Woman During Andrade's Selfie Moment At AEW All Out", expectedFiltered: false, category: "Segment at a show — allowed (INCIDENTS #74)" },
   { title: "Sisters Of Win Score Win At AEW All Out", expectedFiltered: true, category: "Win phrasing outside the verb lists (INCIDENTS #71)" },
