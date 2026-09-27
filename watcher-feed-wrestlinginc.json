@@ -1,5 +1,15 @@
 [
   {
+    "id": 1105311891,
+    "link": "https://www.wrestlinginc.com/2269906/aew-all-out-tailgate-brawl-jack-perry-sisters-sin-bang-bang-gang/",
+    "date": "Sun, 27 Sep 2026 00:08:56 +0000",
+    "date_gmt": "2026-09-27T00:08:56.000Z",
+    "title": {
+      "rendered": "Jack Perry, Sisters Of Sin, Bang Bang Gang Pick Up Wins On AEW All Out Tailgate Brawl"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jack-perry-sisters-of-sin-bang-bang-gang-pick-up-wins-on-aew-all-out-tailgate-brawl/l-intro-1790467654.jpg"
+  },
+  {
     "id": 5099918400,
     "link": "https://www.wrestlinginc.com/2269727/aew-all-out-2026-several-titles-on-line-two-number-one-contenders-matches/",
     "date": "Sat, 26 Sep 2026 22:00:00 +0000",
@@ -7,7 +17,7 @@
     "title": {
       "rendered": "AEW All Out Results 9/26 - Several Titles On The Line, Two #1 Contenders Matches"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-all-out-2026-several-titles-on-line-two-number-one-contenders-matches/l-intro-1790467429.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-all-out-2026-several-titles-on-line-two-number-one-contenders-matches/l-intro-1790468016.jpg"
   },
   {
     "id": 2977376265,
@@ -188,15 +198,5 @@
       "rendered": "CM Punk Pins GUNTHER On WWE SmackDown, Qualifies For Men's Money In The Bank Match"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-cm-punk-gunther-qualifies-mens-money-in-the-bank-mitb/l-intro-1790390573.jpg"
-  },
-  {
-    "id": 2467185298,
-    "link": "https://www.wrestlinginc.com/2269693/wwe-smackdown-lash-legend-wins-triple-threat-qualifies-womens-mitb-money-in-the-bank/",
-    "date": "Sat, 26 Sep 2026 01:02:14 +0000",
-    "date_gmt": "2026-09-26T01:02:14.000Z",
-    "title": {
-      "rendered": "Lash Legend Wins WWE SmackDown Triple Threat, Qualifies For Women's MITB Ladder Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-lash-legend-wins-triple-threat-qualifies-womens-mitb-money-in-the-bank/l-intro-1790385099.jpg"
   }
 ]
