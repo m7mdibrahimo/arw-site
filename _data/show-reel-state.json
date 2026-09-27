@@ -2346,16 +2346,29 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ايه ايه ايه 26.09.2026 مترجم",
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "lastAttempt": 1790489577710
+    "lastAttempt": 1790490439434
+  },
+  "20260927054100-njpw-road-to-destruction-23-09-2026": {
+    "publishedAt": 1790490480886,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو 23.09.2026 مترجم",
+    "lastAttempt": 1790490505039,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
