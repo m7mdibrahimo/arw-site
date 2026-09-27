@@ -2303,15 +2303,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال 25.09.2026 مترجم",
-    "lastAttempt": 1790491367557,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790492222144,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -2322,9 +2318,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو 25.09.2026 مترجم",
-    "lastAttempt": 1790487818316,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1790492224257,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
