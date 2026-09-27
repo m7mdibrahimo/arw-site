@@ -2315,15 +2315,15 @@
     "publishedAt": 1790487805285,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو 25.09.2026 مترجم",
-    "lastAttempt": 1790492224257,
+    "lastAttempt": 1790495824358,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
