@@ -2375,5 +2375,24 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20260927104500-aew-all-out-2026": {
+    "publishedAt": 1790507198545,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض اول اوت 26.09.2026 مترجم",
+    "lastAttempt": 1790507211397,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
