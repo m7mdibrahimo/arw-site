@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض ETU Marcus Mathers Presents All I Want 4 (20 سبتمبر 2026): إيفري ستايلز يواجه جوي جانيلا وتفاصيل النزالات الكبرى"
+title: "نتائج عرض ETU Marcus Mathers Presents All I Want 4 (20 سبتمبر 2026): فوز ماركوس ماذرز في الحدث الرئيسي"
 permalink: "/news/نتائج-عرض-etu-marcus-mathers-presents-all-i-want-4-20-سبتمبر-2026-ايفري-ستيلز-يواجه-جو-جانيلا-وتفاصيل-النزالات-الكبرى/index.html"
 date: 2026-09-20T20:16:21.000+03:00
 source_id: 329497

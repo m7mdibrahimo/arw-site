@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض Marigold Dream Star Grand Prix Finals (20 سبتمبر 2026): فيكتوريا يوزوكي تواجه ري سيتو في النهائي الكبير.. ومواجهات حماسية"
+title: "نتائج عرض Marigold Dream Star Grand Prix Finals (20 سبتمبر 2026): فوز فيكتوريا يوزوكي في الحدث الرئيسي"
+permalink: "/news/نتائج-عرض-marigold-dream-star-grand-prix-finals-20-سبتمبر-2026-فيكتوريا-يوزوكي-تواجه-ري-سيتو-في-النهائي-الكبير-ومواجهات-حماسية/index.html"
 date: 2026-09-20T22:45:05.000+03:00
 source_id: 329526
 source_url: "https://www.fightful.com/wrestling/marigold-dream-star-grand-prix-finals-results-9-20/"

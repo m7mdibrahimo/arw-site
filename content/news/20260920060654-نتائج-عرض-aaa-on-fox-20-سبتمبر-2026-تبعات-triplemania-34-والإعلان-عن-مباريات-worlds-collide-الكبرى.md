@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض AAA On Fox (19 سبتمبر 2026): تبعات Triplemania 34 والإعلان عن نزالات Worlds Collide الكبرى"
+title: "نتائج عرض AAA On Fox (19 سبتمبر 2026): فوز لا هيدرا في الحدث الرئيسي"
+permalink: "/news/نتائج-عرض-aaa-on-fox-19-سبتمبر-2026-تبعات-triplemania-34-والإعلان-عن-نزالات-worlds-collide-الكبرى/index.html"
 date: 2026-09-20T06:06:54.000+03:00
 source_id: 329449
 source_url: "https://www.fightful.com/wrestling/aaa-on-fox-results-9-19-triplemania-34-fallout/"

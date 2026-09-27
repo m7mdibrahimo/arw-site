@@ -217,8 +217,32 @@ const FILLER_ADJ = "حماسية|نارية|مثيرة|قوية";
  * سبتمبر 2026): مستر إغوانا في مواجهة تيروس») says nothing the reader came for. When the
  * report's own 🏆 lines name one side as the winner, state the outcome instead.
  */
+const OUTCOME_VERB = /(?:يفوز|تفوز|يفوزون|يفوزان|فوز|يتغلب|تتغلب|يتغلبان|ينتصر|تنتصر|ينتصرون|انتصار|يهزم|تهزم|يحتفظ|تحتفظ|يحتفظان|احتفاظ|يتوج|تتوج|تتويج|يسقط|تسقط|يحسم|تحسم|حسم|يخطف|تخطف|ينتزع|تنتزع|يتأهل|تتأهل|يطيح|تطيح|يكتسح|يقصي|خسارة|سقوط)/;
+const VAGUE_SUBTITLE = /(?:مواجهات|نزالات|منافسات|أحداث|ليلة|قمة|صراع|صراعات|بقيادة|حافل|حافلة|قوية|كبرى|نارية|مثيرة|ملحمية|حماسية)/;
+/**
+ * A finished show's results title with only filler («نتائج عرض WWE x AAA Worlds Collide (26
+ * سبتمبر 2026): مواجهات كبرى بقيادة سي ام بانك…») names the main-event winner instead,
+ * read from the report's own «الحدث الرئيسي» block (INCIDENTS #80).
+ */
+function mainEventTitle(title: string, body: string): string {
+  const m = title.match(/^(نتائج\s+[^:]+:\s*)(.+)$/);
+  if (!m || OUTCOME_VERB.test(m[2]) || !VAGUE_SUBTITLE.test(m[2])) return title;
+  // MMA cards split into prelims/main card: «the main event» of a report is not reliable there.
+  if (/\b(?:UFC|PFL|Bellator|ONE|KSW|MMA)\b/i.test(m[1])) return title;
+  const main = body.split(/\n(?=\*\*|#{2,4}\s)/).find(b => /^(?:\*\*|#{2,4}\s*)?الحدث الرئيسي/.test(b.trim()));
+  const w = main && main.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
+  if (!w) return title;
+  // Only the name: drop «بالاستبعاد», «للاحتفاظ بالبطولة», «بعد…» and anything after them.
+  const winner = w[2].replace(/\s+(?:بال(?:استبعاد|تثبيت|إخضاع|عد|ضربة)|(?:و|ل|لل)?(?:ال)?(?:احتفاظ|يحتفظ|تحتفظ|يتوج|تتوج|تتويج|انتزاع)|بعد|عبر|إثر|وسط|في)(?:\s.*)?$/, "").trim();
+  if (!winner || winner.split(/\s+/).length > 9) return title;
+  // «فوز X» has no gender or number: right for a man, a woman or a team alike.
+  return `${m[1]}فوز ${winner} في الحدث الرئيسي`;
+}
+
 export function resultsTitleOutcome(title: string, body: string): string {
   if (!/^نتائج\s+(?:عرض|نهائي|الليلة|تسريبات)/.test(title)) return title;
+  const byMain = mainEventTitle(title, body);
+  if (byMain !== title) return byMain;
   // The whole subtitle must be exactly «A في مواجهة B»: no «..», «،» or second clause.
   const m = title.match(/^(.*?:\s*)([^:.،,؛]+?)\s+(?:في\s+مواجهة|يواجه|تواجه|يواجهان|تواجهان|ضد)\s+([^:.،,؛]+?)\s*$/);
   if (!m) return title;

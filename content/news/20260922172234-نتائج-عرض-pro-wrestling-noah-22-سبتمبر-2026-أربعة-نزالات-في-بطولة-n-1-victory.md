@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض Pro Wrestling NOAH (22 سبتمبر 2026): أربعة نزالات في بطولة N-1 Victory"
+title: "نتائج عرض Pro Wrestling NOAH (22 سبتمبر 2026): فوز كاي كيتيوميا في الحدث الرئيسي"
+permalink: "/news/نتائج-عرض-pro-wrestling-noah-22-سبتمبر-2026-أربعة-نزالات-في-بطولة-n-1-victory/index.html"
 date: 2026-09-22T17:22:34.000+03:00
 source_id: 329822
 source_url: "https://www.fightful.com/wrestling/pro-wrestling-noah-results-9-22-26-four-n-1-victory-tournament-matches/"

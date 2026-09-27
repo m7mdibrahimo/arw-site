@@ -3515,6 +3515,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   let oldFileName = "";
 
   let keptPermalink = "";
+  let oldFileToRemove = "";
   // When the article actually reached the site (the Worker's social window is
   // measured from this, not from the source's own date — see INCIDENTS #36).
   // A keepUrl repair keeps the original value so it never re-enters the window.
@@ -3541,11 +3542,10 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
         oldSlug = existingFile.fileName.replace(/^\d+-/, "").replace(/\.md$/, "");
       }
 
-      // Delete the old file completely so it is replaced with a fresh new article
-      if (fs.existsSync(existingFile.filePath)) {
-        fs.unlinkSync(existingFile.filePath);
-        console.log(`[Watcher] 🗑️ Deleted old article file: ${existingFile.fileName}`);
-      }
+      // The old file is removed only AFTER the new version is written (below). Deleting it
+      // here lost the article whenever the rewrite was then refused by QA — a regenerated
+      // «نتائج عرض AEW Collision (19 سبتمبر)» vanished this way (INCIDENTS #81).
+      oldFileToRemove = existingFile.filePath;
     } catch (e) {
       console.warn(`[Watcher] Warning: could not delete old file:`, e);
     }
@@ -3719,6 +3719,10 @@ ${finalBody}
 
   fs.writeFileSync(targetFilePath, markdownContent, "utf-8");
   console.log(`[Watcher] Successfully published fresh news file: ${targetFilePath}`);
+  if (oldFileToRemove && path.resolve(oldFileToRemove) !== path.resolve(targetFilePath) && fs.existsSync(oldFileToRemove)) {
+    fs.unlinkSync(oldFileToRemove);
+    console.log(`[Watcher] 🗑️ Replaced old article file: ${path.basename(oldFileToRemove)}`);
+  }
   logProofEdits(targetFileName, proofEdits);
 
   // Optional background auto-reel generation if enabled

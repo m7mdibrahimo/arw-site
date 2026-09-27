@@ -1184,3 +1184,14 @@ test("a story about a match at tonight's show is kept off social even with an an
   assert.equal(revealsTonightsMatch("Harley Cameron Reveals Knee Injury", "Harley Cameron said she hurt her knee teaming with Kris Statlander, and they won at AEW All In.", shows), false);
   assert.equal(revealsTonightsMatch("X Official For AEW WrestleDream", "At AEW All Out, X won.", []), false);
 });
+
+test("a vague results title names the main-event winner from the report (INCIDENTS #80)", async () => {
+  const { resultsTitleOutcome } = await import('../scripts/news-qa');
+  const body = "**المواجهة الأولى: نزال فردي**\n\n🏆 **الفائز:** دراغون لي\n\n**الحدث الرئيسي (Main Event): نزال فرق سداسي**\n\nانتصر فريق سي ام بانك.\n\n🏆 **الفائز:** فريق سي ام بانك وري ميستيريو وإل غراندي أمريكانو\n";
+  assert.equal(resultsTitleOutcome("نتائج عرض WWE x AAA Worlds Collide (26 سبتمبر 2026): مواجهات كبرى بقيادة سي ام بانك وري ميستيريو ودومينيك ميستيريو", body),
+    "نتائج عرض WWE x AAA Worlds Collide (26 سبتمبر 2026): فوز فريق سي ام بانك وري ميستيريو وإل غراندي أمريكانو في الحدث الرئيسي");
+  // A title that already states an outcome is left alone.
+  assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): بانك يحتفظ باللقب.. ومواجهات قوية", body), "نتائج عرض X (1 أكتوبر 2026): بانك يحتفظ باللقب.. ومواجهات قوية");
+  // No main-event block: untouched.
+  assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): ليلة حافلة", "🏆 **الفائز:** أ"), "نتائج عرض X (1 أكتوبر 2026): ليلة حافلة");
+});
