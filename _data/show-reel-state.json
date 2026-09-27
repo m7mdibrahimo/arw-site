@@ -2290,15 +2290,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال 22.09.2026 مترجم",
-    "lastAttempt": 1790487725475,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790488621280,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -2324,6 +2320,39 @@
     "title": "عرض جي سي دبليو 25.09.2026 مترجم",
     "lastAttempt": 1790487818316,
     "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260927053000-hog-windy-city-warfare-2026": {
+    "publishedAt": 1790488648968,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض اتش او جي فول اوت 25.09.2026 مترجم",
+    "lastAttempt": 1790488661703,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260927053700-lucha-libre-aaa-19-09-2026": {
+    "publishedAt": null,
+    "facebook_reel": false,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايه ايه ايه 26.09.2026 مترجم",
+    "lastAttempt": 1790488661976,
+    "errors": {
+      "facebook_reel": "صفحة العرض لم تصبح متاحة بالرابط الصحيح بعد.",
+      "facebook_story": "صفحة العرض لم تصبح متاحة بالرابط الصحيح بعد."
+    },
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
