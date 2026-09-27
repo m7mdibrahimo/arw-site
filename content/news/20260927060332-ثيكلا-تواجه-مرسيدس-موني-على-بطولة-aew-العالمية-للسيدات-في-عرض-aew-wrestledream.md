@@ -5,7 +5,7 @@ date: 2026-09-27T06:03:32.000+03:00
 published_at: 2026-09-27T03:08:14.711Z
 source_id: 330729
 source_url: "https://www.fightful.com/wrestling/thekla-vs-mercedes-mone-for-aew-womens-world-title-official-for-aew-wrestledream/"
-single_match_result: false
+single_match_result: true
 tags:
   - AEW
   - عرض AEW WrestleDream
