@@ -1208,3 +1208,17 @@ test("two shows with the same title get different URLs instead of breaking the b
   assert.equal(showPath('20260920104600-lucha-libre-aaa-19-09-2026.md', 'Lucha Libre AAA 19.09.2026', dir, true), '/shows/lucha-libre-aaa-19-09-2026/');
   assert.equal(showPath('20260927053700-lucha-libre-aaa-19-09-2026.md', 'Lucha Libre AAA 19.09.2026', dir), '/shows/lucha-libre-aaa-19-09-2026-2/');
 });
+
+test("counts in titles are written in words with the right gender (INCIDENTS #85)", async () => {
+  const { numberWordsInTitle } = await import('../scripts/news-qa');
+  assert.equal(numberWordsInTitle("عرض AEW All Out: 3 أمور كرهناها و3 أمور أحببناها"), "عرض AEW All Out: ثلاثة أمور كرهناها وثلاثة أمور أحببناها");
+  assert.equal(numberWordsInTitle("5 مواجهات نارية في عرض RAW"), "خمس مواجهات نارية في عرض RAW");
+  assert.equal(numberWordsInTitle("أفضل 10 لحظات في WrestleMania"), "أفضل عشر لحظات في WrestleMania");
+  assert.equal(numberWordsInTitle("عرضي AEW Dynamite وAEW Collision: 3 أمور كرهناها و3 أحببناها"), "عرضي AEW Dynamite وAEW Collision: ثلاثة أمور كرهناها وثلاثة أحببناها");
+  assert.equal(numberWordsInTitle("طردوني بعد الجراحة بـ 6 أيام!"), "طردوني بعد الجراحة بستة أيام!");
+  assert.equal(numberWordsInTitle("موعد عودة SmackDown لـ 3 ساعات"), "موعد عودة SmackDown لثلاث ساعات");
+  // Dates, money, scores and nouns of unknown gender stay as they are.
+  assert.equal(numberWordsInTitle("نتائج عرض WWE RAW (21 سبتمبر 2026)"), "نتائج عرض WWE RAW (21 سبتمبر 2026)");
+  assert.equal(numberWordsInTitle("صفقة بقيمة 3 ملايين دولار"), "صفقة بقيمة 3 ملايين دولار");
+  assert.equal(numberWordsInTitle("عرض 7 أكتوبر"), "عرض 7 أكتوبر");
+});

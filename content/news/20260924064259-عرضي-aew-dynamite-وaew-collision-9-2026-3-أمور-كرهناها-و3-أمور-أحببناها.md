@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "عرضي AEW Dynamite وAEW Collision: 3 أمور كرهناها و3 أحببناها"
+title: "عرضي AEW Dynamite وAEW Collision: ثلاثة أمور كرهناها وثلاثة أحببناها"
 permalink: "/news/عرضي-aew-dynamite-وaew-collision-9-2026-3-أمور-كرهناها-و3-أمور-أحببناها/index.html"
 date: 2026-09-24T06:42:59.000+03:00
 source_id: 2516016189

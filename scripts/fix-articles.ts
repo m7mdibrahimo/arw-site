@@ -19,7 +19,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { autoFix, applyCorrections, checkArticle, resultsTitleOutcome } from "./news-qa";
+import { autoFix, applyCorrections, checkArticle, resultsTitleOutcome, numberWordsInTitle } from "./news-qa";
 import { proofreadPrompt, parseProofEdits, applyProofEdits, logProofEdits, type ArticleDraft, type ProofEdit } from "./editorial";
 import { queryGemini, buildNamesGlossaryHint } from "./fightful-watcher";
 // @ts-ignore — CommonJS helper shared with eleventy.config.js
@@ -70,7 +70,7 @@ function render(p: Parsed, next: ArticleDraft): string {
 // that autoFix's repeated-word rule must never see), then autoFix, then again.
 const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
 const deterministic = (d: ArticleDraft): ArticleDraft => ({
-  title: resultsTitleOutcome(fixText(d.title), d.body),
+  title: numberWordsInTitle(resultsTitleOutcome(fixText(d.title), d.body)),
   body: fixText(d.body),
   tags: [...new Set(d.tags.map(fixText))],
 });

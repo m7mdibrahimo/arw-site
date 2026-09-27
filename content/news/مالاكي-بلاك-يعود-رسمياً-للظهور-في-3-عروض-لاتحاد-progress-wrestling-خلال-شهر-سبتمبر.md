@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "مالاكاي بلاك يعود رسميا للظهور في 3 عروض لاتحاد PROGRESS Wrestling خلال شهر سبتمبر"
+title: "مالاكاي بلاك يعود رسميا للظهور في ثلاثة عروض لاتحاد PROGRESS Wrestling خلال شهر سبتمبر"
 permalink: "/news/مالاكي-بلاك-يعود-رسميا-للظهور-في-3-عروض-لاتحاد-progress-wrestling-خلال-شهر-سبتمبر/index.html"
 date: 2026-08-12T22:49:00.000+03:00
 tags:

@@ -217,6 +217,33 @@ const FILLER_ADJ = "حماسية|نارية|مثيرة|قوية";
  * سبتمبر 2026): مستر إغوانا في مواجهة تيروس») says nothing the reader came for. When the
  * report's own 🏆 lines name one side as the winner, state the outcome instead.
  */
+/**
+ * Counts in a title are written in words: «عرض AEW All Out: 3 أمور كرهناها» rendered with
+ * the 3 flipped to the wrong side of the English name (bidi), unreadable (owner, 2026-09-27,
+ * INCIDENTS #85). Numbers 3–10 take the opposite gender of the counted noun's singular,
+ * so only nouns whose gender is known are converted; others are left for Gemini's rule.
+ */
+const NUM_WORDS: Record<string, [string, string]> = { // [before a masculine noun, before a feminine noun]
+  "3": ["ثلاثة", "ثلاث"], "4": ["أربعة", "أربع"], "5": ["خمسة", "خمس"], "6": ["ستة", "ست"], "7": ["سبعة", "سبع"],
+  "8": ["ثمانية", "ثماني"], "9": ["تسعة", "تسع"], "10": ["عشرة", "عشر"],
+};
+const MASC_PLURALS = "أمور|أشياء|أسباب|عروض|نزالات|مصارعين|نجوم|أسئلة|أيام|أشهر|أعوام|أسابيع|ألقاب|أبطال|فرق|دروس|أخطاء|أسرار|تغييرات|أحداث|أسماء|مواسم|أرقام|أهداف|عقود|أجزاء";
+const FEM_PLURALS = "مواجهات|بطولات|لحظات|مفاجآت|نقاط|حلقات|مباريات|مرات|ساعات|دقائق|سنوات|صفقات|مصارعات|نجمات|فقرات|تحديات|قصص|علامات|رسائل|أفكار|طرق|قواعد|توقعات|ملاحظات|حقائق|نسخ";
+export function numberWordsInTitle(title: string): string {
+  const used: Record<string, string> = {};
+  const conv = (gender: 0 | 1) => (_m: string, pre: string | undefined, n: string) => {
+    const word = NUM_WORDS[n][gender]; used[n] = word;
+    // «بـ 6 أيام» → «بستة أيام», «لـ 3 ساعات» → «لثلاث ساعات»
+    return `${pre ? pre[0] : ""}${word} `;
+  };
+  let out = title
+    .replace(new RegExp(`(?<![\\d.,/:])(?:([بل]ـ\\s*))?\\b(10|[3-9])\\s+(?=(?:${MASC_PLURALS})(?![\\u0621-\\u064A]))`, "g"), conv(0))
+    .replace(new RegExp(`(?<![\\d.,/:])(?:([بل]ـ\\s*))?\\b(10|[3-9])\\s+(?=(?:${FEM_PLURALS})(?![\\u0621-\\u064A]))`, "g"), conv(1));
+  // «ثلاثة أمور كرهناها و3 أحببناها»: the same count repeated without its noun.
+  out = out.replace(/(^|\s)و(10|[3-9])\s+(?=[\u0621-\u064A])/g, (m, sp, n) => used[n] ? `${sp}و${used[n]} ` : m);
+  return out;
+}
+
 const OUTCOME_VERB = /(?:يفوز|تفوز|يفوزون|يفوزان|فوز|يتغلب|تتغلب|يتغلبان|ينتصر|تنتصر|ينتصرون|انتصار|يهزم|تهزم|يحتفظ|تحتفظ|يحتفظان|احتفاظ|يتوج|تتوج|تتويج|يسقط|تسقط|يحسم|تحسم|حسم|يخطف|تخطف|ينتزع|تنتزع|يتأهل|تتأهل|يطيح|تطيح|يكتسح|يقصي|خسارة|سقوط)/;
 const VAGUE_SUBTITLE = /(?:مواجهات|نزالات|منافسات|أحداث|ليلة|قمة|صراع|صراعات|بقيادة|حافل|حافلة|قوية|كبرى|نارية|مثيرة|ملحمية|حماسية)/;
 /**

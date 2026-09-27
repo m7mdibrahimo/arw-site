@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "تصويت جماهيري يحسم مصير 7 بطولات!.. اتحاد CMLL يعلن رسميا عن حدث Noche de Campeones 2026'"
+title: "تصويت جماهيري يحسم مصير سبع بطولات!.. اتحاد CMLL يعلن رسميا عن حدث Noche de Campeones 2026'"
+permalink: "/news/تصويت-جماهيري-يحسم-مصير-7-بطولات-اتحاد-cmll-يعلن-رسميا-عن-حدث-noche-de-campeones-2026/index.html"
 date: 2026-08-20T16:21:00.000+03:00
 tags:
   - CMLL
