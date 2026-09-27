@@ -1,4 +1,0 @@
-{# Applies the saved theme BEFORE the first paint (it used to run at the end of <body>,
-   so dark-mode readers saw the light page flash on every load). Keep it first in <head>. #}
-<script>(function(){var t=null;try{t=localStorage.getItem('arw-theme');}catch(e){}if(t!=='dark'&&t!=='light'){try{var m=document.cookie.match(/(?:^|; )arw-theme=([^;]*)/);if(m)t=decodeURIComponent(m[1]);}catch(e){}}var d=document.documentElement;if(t==='dark')d.classList.add('arw-dark');})();</script>
-<style>html.arw-dark,html.arw-dark body{background-color:#07090d;color-scheme:dark}</style>

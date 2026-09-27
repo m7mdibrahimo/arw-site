@@ -1,6 +1,0 @@
-{
-  "layout": "post-layout.njk",
-  "eleventyComputed": {
-    "permalink": "{{ permalink or ('/news/' + ((title or page.fileSlug) | arabicSlug) + '/index.html') }}"
-  }
-}
