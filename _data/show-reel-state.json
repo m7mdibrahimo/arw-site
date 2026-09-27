@@ -2333,15 +2333,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض اتش او جي فول اوت 25.09.2026 مترجم",
-    "lastAttempt": 1790494034191,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790494941125,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -2365,7 +2361,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو 23.09.2026 مترجم",
-    "lastAttempt": 1790490505039,
+    "lastAttempt": 1790494942717,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
