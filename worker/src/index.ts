@@ -2182,7 +2182,11 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     let igDone = !!state.instagram[key];
     let xDone = !!state.x[key];
     if (tgDone && fbDone && igDone && xDone) continue;
-    if ((Date.now() - freshFrom) > WINDOW_MS) {
+    // A show (a full episode) keeps a 12h window: on a day with six shows, their Instagram
+    // posts queued behind the shows' own reels/stories and the news, ran past 3h and would
+    // never have been posted (INCIDENTS #87).
+    const windowMs = item.kind === "show" ? 12 * 60 * 60 * 1000 : WINDOW_MS;
+    if ((Date.now() - freshFrom) > windowMs) {
       // Past its window. A platform that was paused (rate-limit cooldown) while
       // the article was fresh gets WINDOW_MS after the pause ends — only that
       // platform, only for articles under 12h old at that point. Otherwise a
@@ -2230,7 +2234,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // fresh story beats one from hours ago.
   const catchUpOnly = [
     ...candidates.filter((c) => c.tgDone && !c.fbDone).reverse(),
-    ...candidates.filter((c) => c.tgDone && c.fbDone),
+    // Missing only Instagram: shows first (a full episode matters more than any one story).
+    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind === "show"),
+    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind !== "show"),
   ];
   const preferNotStarted = new Date().getUTCMinutes() % 2 === 0;
   const toProcess = (preferNotStarted ? [...notStarted, ...catchUpOnly] : [...catchUpOnly, ...notStarted])
