@@ -2,12 +2,12 @@
 show_type: عرض
 federation: AEW
 title: AEW All Out Tailgate Brawl (2026)
-headline: عرض اول اوت 26.09.2026 مترجم
+headline: عرض اول اوت تيلغيت برول 26.09.2026 مترجم
 program_name: AEW All Out
 is_annual: true
 maintenance: false
 maintenance_note: ""
-description: عرض اول ان لندن مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض اول اوت تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-26
 date: 2026-09-27T14:54:00.000+03:00
 duration: 00:44:57
