@@ -112,10 +112,12 @@ export async function runLiveResultsUpdater(options: { dryRun?: boolean } = {}):
     if (!decision.rewrite || options.dryRun || rewritten >= MAX_PER_RUN) continue;
     if (geminiQuotaExhausted()) { console.warn("[Live Results] Gemini quota exhausted — next run."); break; }
 
-    // Every rewrite stamps the article with the time of the update, so the site shows it
-    // as freshly updated and lists it first (owner, 2026-09-27). published_at is kept by
-    // keepUrl, so the social window never reopens and nothing is re-posted.
-    const date = new Date().toISOString();
+    // The rewrite is generated with the article's ORIGINAL date — it is the show's date
+    // Gemini writes into the title; passing "now" turned «AEW All Out (26 سبتمبر)» into
+    // «(27 سبتمبر)» (INCIDENTS #82). The update time is stamped after the write, below.
+    // `date` itself is re-stamped on every update, so the generation date is the first
+    // publication time (published_at never changes) — the show's own date.
+    const date = new Date(data.published_at || data.date).toISOString();
     const oldImage = String(data.image || "");
     const post = {
       id: Number(data.source_id),
@@ -128,6 +130,10 @@ export async function runLiveResultsUpdater(options: { dryRun?: boolean } = {}):
     const ok = await processPost(post, date, false, { manual: true, keepUrl: true }).catch(e => { console.error("[Live Results]", e.message); return false; });
     if (!ok) { console.warn(`[Live Results] ⚠️ Rewrite refused for ${file}; keeping the published version.`); continue; }
     rewritten++;
+    // Every update shows as fresh on the site: `date` = the time of this update (owner,
+    // 2026-09-27). published_at is untouched, so the social window never reopens.
+    const stamped = fs.readFileSync(filePath, "utf-8").replace(/^date:\s*.+$/m, `date: ${new Date().toISOString()}`);
+    fs.writeFileSync(filePath, stamped);
     next[file] = { ...decision.entry, generatedHash: snap.hash, generatedResults: snap.results, generatedLength: snap.length, lastRegenAt: now, rewrites: decision.entry.rewrites + 1 };
     console.log(`[Live Results] ✅ Rewrote ${file} from the updated source (${decision.reason}).`);
     // The rewrite stores a fresh copy of the cover image; drop the old one if nothing else uses it.

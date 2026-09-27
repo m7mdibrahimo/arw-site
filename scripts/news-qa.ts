@@ -230,7 +230,7 @@ function mainEventTitle(title: string, body: string): string {
   // MMA cards split into prelims/main card: «the main event» of a report is not reliable there.
   if (/\b(?:UFC|PFL|Bellator|ONE|KSW|MMA)\b/i.test(m[1])) return title;
   const main = body.split(/\n(?=\*\*|#{2,4}\s)/).find(b => /^(?:\*\*|#{2,4}\s*)?الحدث الرئيسي/.test(b.trim()));
-  const w = main && main.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
+  const w = main && main.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)(?:\s*\([^)\n]*\))?\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
   if (!w) return title;
   // Only the name: drop «بالاستبعاد», «للاحتفاظ بالبطولة», «بعد…» and anything after them.
   const winner = w[2].replace(/\s+(?:بال(?:استبعاد|تثبيت|إخضاع|عد|ضربة)|(?:و|ل|لل)?(?:ال)?(?:احتفاظ|يحتفظ|تحتفظ|يتوج|تتوج|تتويج|انتزاع)|بعد|عبر|إثر|وسط|في)(?:\s.*)?$/, "").trim();
@@ -254,7 +254,7 @@ export function resultsTitleOutcome(title: string, body: string): string {
   // The winner line must belong to THIS match: its block (up to the next heading) names both sides.
   for (const block of body.split(/\n(?=\*\*|#{2,4}\s|---)/)) {
     if (!block.includes(na) || !block.includes(nb)) continue;
-    const w = block.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
+    const w = block.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)(?:\s*\([^)\n]*\))?\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
     if (!w) continue;
     const who = norm(w[2]);
     const winner = who === na ? a : who === nb ? b : "";

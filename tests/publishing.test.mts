@@ -1192,6 +1192,8 @@ test("a vague results title names the main-event winner from the report (INCIDEN
     "نتائج عرض WWE x AAA Worlds Collide (26 سبتمبر 2026): فوز فريق سي ام بانك وري ميستيريو وإل غراندي أمريكانو في الحدث الرئيسي");
   // A title that already states an outcome is left alone.
   assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): بانك يحتفظ باللقب.. ومواجهات قوية", body), "نتائج عرض X (1 أكتوبر 2026): بانك يحتفظ باللقب.. ومواجهات قوية");
+  // «الفائز (وما زال البطل):» — a note in parentheses before the name.
+  assert.equal(resultsTitleOutcome("نتائج عرض AEW All Out (26 سبتمبر 2026): عدة نزالات على الألقاب", "**الحدث الرئيسي (Main Event): بطولة AEW العالمية**\n\nاحتفظ ويل أوسبراي باللقب.\n\n🏆 **الفائز (وما زال البطل):** ويل أوسبراي\n"), "نتائج عرض AEW All Out (26 سبتمبر 2026): فوز ويل أوسبراي في الحدث الرئيسي");
   // No main-event block: untouched.
   assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): ليلة حافلة", "🏆 **الفائز:** أ"), "نتائج عرض X (1 أكتوبر 2026): ليلة حافلة");
 });
