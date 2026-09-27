@@ -2228,7 +2228,9 @@ export function isShowResultsArticle(originalTitle: string, plainText: string = 
  * Facebook — INCIDENTS #68). Announced future returns/debuts are blocked too.
  */
 export function isReturnOrDebutStory(rawTitle: string, plainText: string = ""): boolean {
-  const title = rawTitle || "";
+  // A return that hasn't happened gives nothing away: "Anthony Henry Doesn't Know If He'll
+  // Return To Pro Wrestling" (neck surgery) was kept off social — INCIDENTS #95.
+  const title = (rawTitle || "").replace(/\b(?:will|won't|'ll|to|could|may|might|would|can|can't|cannot|not|hopes?|plans?|expects?|eyes|targets?|nears?|nearing|awaits?|awaiting)\s+(?:\w+\s+)?(?:returns?|debuts?|comeback)\b|\b(?:returns?|comeback|debut) (?:date|timeline|update|plans?|hopes?)\b|\b(?:if|whether|when)\s+(?:\w+\s+){0,3}(?:returns?|debuts?)\b/gi, "");
   if (/\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|re-?debut|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|is back|are back|back on (?:tv|television)|reappears?)\b/i.test(title)) return true;
   const AR_B = "(?<![\\u0600-\\u06FF])";
   if (new RegExp(`${AR_B}(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)`).test(title)) return true;

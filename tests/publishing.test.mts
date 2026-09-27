@@ -1188,6 +1188,14 @@ test("a story about a match at tonight's show is kept off social even with an an
   assert.equal(revealsTonightsMatch("X Official For AEW WrestleDream", "At AEW All Out, X won.", []), false);
 });
 
+test("a return that has not happened yet is not a spoiler (INCIDENTS #95)", async () => {
+  const { isReturnOrDebutStory } = await import('../scripts/fightful-watcher');
+  assert.equal(isReturnOrDebutStory("AEW's Anthony Henry Doesn't Know If He'll Return To Pro Wrestling"), false);
+  assert.equal(isReturnOrDebutStory("Cody Rhodes Hopes To Return Before WrestleMania"), false);
+  assert.equal(isReturnOrDebutStory("Samoa Joe Returns At AEW All Out"), true);
+  assert.equal(isReturnOrDebutStory("Former Champion Makes Surprise Return On RAW"), true);
+});
+
 test("a match at a show from the last three days is still a spoiler the next day (INCIDENTS #94)", async () => {
   const { recentShowNames, revealsTonightsMatch } = await import('../scripts/fightful-watcher');
   const fs = await import('node:fs'); const os = await import('node:os'); const path = await import('node:path');
