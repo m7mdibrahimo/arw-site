@@ -2368,15 +2368,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض يو اف سي فايت نايت 26.09.2026 مترجم",
-    "lastAttempt": 1790503607079,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790504510098,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
