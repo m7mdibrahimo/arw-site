@@ -230,6 +230,8 @@ const NUM_WORDS: Record<string, [string, string]> = { // [before a masculine nou
 const MASC_PLURALS = "أمور|أشياء|أسباب|عروض|نزالات|مصارعين|نجوم|أسئلة|أيام|أشهر|أعوام|أسابيع|ألقاب|أبطال|فرق|دروس|أخطاء|أسرار|تغييرات|أحداث|أسماء|مواسم|أرقام|أهداف|عقود|أجزاء";
 const FEM_PLURALS = "مواجهات|بطولات|لحظات|مفاجآت|نقاط|حلقات|مباريات|مرات|ساعات|دقائق|سنوات|صفقات|مصارعات|نجمات|فقرات|تحديات|قصص|علامات|رسائل|أفكار|طرق|قواعد|توقعات|ملاحظات|حقائق|نسخ";
 export function numberWordsInTitle(title: string): string {
+  // «ثاندر روزا تتحدث ثاندر روزا عن نزالها…»: the subject written again after its verb (INCIDENTS #96)
+  title = title.replace(/^((?:[^\s:]+\s+){0,3}[^\s:]+)\s+([^\s:]+)\s+\1(?=\s)/, "$1 $2");
   const used: Record<string, string> = {};
   const conv = (gender: 0 | 1) => (_m: string, pre: string | undefined, n: string) => {
     const word = NUM_WORDS[n][gender]; used[n] = word;
@@ -252,13 +254,15 @@ const VAGUE_SUBTITLE = /(?:بطل جديد|بطلة جديدة|التفاصيل 
  * read from the report's own «الحدث الرئيسي» block (INCIDENTS #80).
  */
 function mainEventTitle(title: string, body: string): string {
-  const m = title.match(/^(نتائج\s+[^:]+:\s*)(.+)$/);
+  // «نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية)» — no subtitle at all: once
+  // the main event has a winner, the finished report's title names it (INCIDENTS #96).
+  const m = title.includes(":") ? title.match(/^(نتائج\s+[^:]+:\s*)(.+)$/) : [title, `${title.trim()}: `, "…"] as RegExpMatchArray;
   // Filler («مواجهات كبرى…») or a bare line-up («يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد…»):
   // once the report's main event has a winner, the title says who won it.
   const plainSub = m ? m[2].replace(/[\u064B-\u0652\u0670]/g, "") : "";  // «يُسقط» → «يسقط»
   // «فوز فريق في الحدث الرئيسي»: an earlier cut-off name — rebuild it from the report.
   const brokenOwn = /^فوز\s+(?:فريق|الفريق|ثنائي|الثنائي|ثلاثي)?\s*في الحدث الرئيسي$/.test(plainSub.trim());
-  if (!m || (!brokenOwn && OUTCOME_VERB.test(plainSub)) || !(brokenOwn || VAGUE_SUBTITLE.test(m[2]) || /(?:^|\s)(?:ضد|في\s+مواجهة|يواجه|تواجه|يواجهان)\s/.test(m[2]))) return title;
+  if (!m || (!brokenOwn && OUTCOME_VERB.test(plainSub)) || !(brokenOwn || m[2] === "…" || VAGUE_SUBTITLE.test(m[2]) || /(?:^|\s)(?:ضد|في\s+مواجهة|يواجه|تواجه|يواجهان)\s/.test(m[2]))) return title;
   // MMA cards split into prelims/main card: «the main event» of a report is not reliable there.
   if (/\b(?:UFC|PFL|Bellator|ONE|KSW|MMA)\b/i.test(m[1])) return title;
   const main = body.split(/\n(?=\*\*|#{2,4}\s)/).find(b => /^(?:\*\*|#{2,4}\s*)?الحدث الرئيسي/.test(b.trim()));

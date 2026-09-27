@@ -1196,6 +1196,16 @@ test("the worker lets Arabic titles about a return that hasn't happened through 
   assert.equal(isSingleMatchSpoiler("عودة مفاجئة لنجم سابق في عرض الرو"), true);
 });
 
+test("a title never repeats its subject, and a bare finished results title names the main-event winner (INCIDENTS #96)", async () => {
+  const { numberWordsInTitle, resultsTitleOutcome } = await import('../scripts/news-qa');
+  assert.equal(numberWordsInTitle("ثاندر روزا تتحدث ثاندر روزا عن نزالها التاريخي"), "ثاندر روزا تتحدث عن نزالها التاريخي");
+  assert.equal(numberWordsInTitle("كين يعتبر تريبل إتش أفضل عقل"), "كين يعتبر تريبل إتش أفضل عقل");
+  const body = "**المواجهة الأولى: نزال فردي**\n\nتغلب أ على ب.\n\n🏆 **الفائز:** أ\n\n**الحدث الرئيسي (Main Event): بطولة wXw العالمية الموحدة**\n\nتغلب أهورا على ميرون ريد.\n\n🏆 **الفائز:** أهورا";
+  assert.equal(resultsTitleOutcome("نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية)", body), "نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية): فوز أهورا في الحدث الرئيسي");
+  // Still live (no main-event winner yet): untouched
+  assert.equal(resultsTitleOutcome("نتائج عرض TNA iMPACT (24 سبتمبر 2026)", "**المواجهة الأولى**\n\nنص"), "نتائج عرض TNA iMPACT (24 سبتمبر 2026)");
+});
+
 test("a return that has not happened yet is not a spoiler (INCIDENTS #95)", async () => {
   const { isReturnOrDebutStory } = await import('../scripts/fightful-watcher');
   assert.equal(isReturnOrDebutStory("AEW's Anthony Henry Doesn't Know If He'll Return To Pro Wrestling"), false);

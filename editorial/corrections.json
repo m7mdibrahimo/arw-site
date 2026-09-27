@@ -3838,6 +3838,26 @@
    "wrong": "اوموس",
    "right": "أوموس",
    "note": "تعلّمها المدقق الآلي من 3 أخبار"
+  },
+  {
+   "wrong": "نيك الشراير",
+   "right": "نيك شراير",
+   "note": "Nick Schreier (wXw)"
+  },
+  {
+   "wrong": "دريرتي",
+   "right": "ديرتي",
+   "note": "Quick & Dirty — «كويك أند ديرتي»"
+  },
+  {
+   "wrong": "بطولة wXw موحد لوزن العالم",
+   "right": "بطولة wXw العالمية الموحدة",
+   "note": "wXw Unified World Wrestling Championship"
+  },
+  {
+   "wrong": "ليحتفظ بطولته",
+   "right": "ليحتفظ ببطولته",
+   "note": "باء الجر ساقطة"
   }
  ]
 }
