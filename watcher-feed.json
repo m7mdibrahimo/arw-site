@@ -1,5 +1,15 @@
 [
   {
+    "id": 330892,
+    "link": "https://www.fightful.com/wrestling/dorian-van-dux-cleared-to-compete/",
+    "date": "2026-09-27T16:45:06",
+    "date_gmt": "2026-09-27T20:45:06",
+    "title": {
+      "rendered": "Dorian Van Dux Cleared To Compete"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27164417/Screenshot-2026-09-27-at-4.43.51-PM.png"
+  },
+  {
     "id": 330889,
     "link": "https://www.fightful.com/wrestling/wwe-sign-guy-rick-achberger-passes-away/",
     "date": "2026-09-27T16:36:14",
@@ -288,15 +298,5 @@
       "rendered": "Watch: AEW All Out Post Show Media Scrum"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27002829/maxresdefault-175.jpg"
-  },
-  {
-    "id": 330779,
-    "link": "https://www.fightful.com/mma/raoni-barcelos-is-fine-after-scary-stoppage-at-ufc-fight-night/",
-    "date": "2026-09-27T00:04:06",
-    "date_gmt": "2026-09-27T04:04:06",
-    "title": {
-      "rendered": "Raoni Barcelos Is Fine After Scary Stoppage At UFC Fight Night"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27000254/Screenshot-2026-09-27-at-12.02.23-AM.png"
   }
 ]
