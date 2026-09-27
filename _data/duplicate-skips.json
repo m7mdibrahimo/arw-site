@@ -613,5 +613,20 @@
     "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
     "at": "2026-09-27T03:11:31.084Z"
+  },
+  "https://www.ringsidenews.com/aew-teases-wardlows-return-all-out/": {
+    "matchedFile": "20260927064333-بث-مقطع-ترويجي-للمصارع-واردلو-في-عرض-aew-all-out.md",
+    "reason": "تشابه العنوان مع خبر منشور حديثاً",
+    "at": "2026-09-27T03:51:25.432Z"
+  },
+  "https://www.ringsidenews.com/young-bucks-win-aew-world-tag-team-titles-wild-ladder-match-all-out/": {
+    "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
+    "reason": "تشابه العنوان مع خبر منشور حديثاً",
+    "at": "2026-09-27T03:51:25.502Z"
+  },
+  "https://www.ringsidenews.com/wwe-worlds-collide-spoiler-results-september-30-2026/": {
+    "matchedFile": "20260927064116-نتائج-عرض-wwe-x-aaa-worlds-collide-26-سبتمبر-2026-مواجهات-كبرى-بقيادة-سي-ام-بانك-وري-ميستيريو-ودومينيك-ميستيريو.md",
+    "reason": "الخبر الجديد يغطي نفس نتائج عرض WWE Worlds Collide (26-27 سبتمبر 2026) والتي تم نشرها بالفعل في الخبر رقم 0 بنفس التفاصيل والنتائج.",
+    "at": "2026-09-27T03:51:37.724Z"
   }
 }
