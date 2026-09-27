@@ -1,5 +1,15 @@
 [
   {
+    "id": 330880,
+    "link": "https://www.fightful.com/wrestling/progress-chapter-198-results-9-27-new-progress-champion/",
+    "date": "2026-09-27T16:04:34",
+    "date_gmt": "2026-09-27T20:04:34",
+    "title": {
+      "rendered": "PROGRESS Chapter 198 Results (9/27): New PROGRESS Champion"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27160356/Screenshot-2026-09-27-at-4.03.47-PM.png"
+  },
+  {
     "id": 330877,
     "link": "https://www.fightful.com/wrestling/thunder-rosa-names-ac-dcs-thunderstruck-as-her-dream-entrance-theme-in-aew/",
     "date": "2026-09-27T15:53:30",
@@ -288,15 +298,5 @@
       "rendered": "Wardlow Vignette Airs At AEW All Out"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26233943/HTMX1R4WUAAtatK.jpg"
-  },
-  {
-    "id": 330759,
-    "link": "https://www.fightful.com/wrestling/wwe-x-aaa-worlds-collide-results-9-26/",
-    "date": "2026-09-26T23:41:16",
-    "date_gmt": "2026-09-27T03:41:16",
-    "title": {
-      "rendered": "WWE x AAA Worlds Collide Results (9/26)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/25202233/CS-067119_LVE_WORLD_COLIDE_INITIAL_SIZES_1920x1080.jpg"
   }
 ]
