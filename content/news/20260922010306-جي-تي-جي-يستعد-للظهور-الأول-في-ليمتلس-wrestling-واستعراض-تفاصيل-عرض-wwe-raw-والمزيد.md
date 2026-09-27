@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "جي تي جي يستعد للظهور الأول في ليمتلس Wrestling واستعراض تفاصيل عرض WWE RAW والمزيد"
+title: "جي تي يستعد للظهور الأول في ليمتلس Wrestling واستعراض تفاصيل عرض WWE RAW والمزيد"
+permalink: "/news/جي-تي-جي-يستعد-للظهور-الأول-في-ليمتلس-wrestling-واستعراض-تفاصيل-عرض-wwe-raw-والمزيد/index.html"
 date: 2026-09-22T01:03:06.000+03:00
 source_id: 329684
 source_url: "https://www.fightful.com/wrestling/jtg-to-make-limitless-wrestling-debut-wwe-raw-preview-more-fight-size/"
