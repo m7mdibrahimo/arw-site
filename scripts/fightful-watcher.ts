@@ -2253,8 +2253,8 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
 
   // 1.2 Returns / debuts / surprise appearances never go to social (owner, 2026-09-27).
   if (isReturnOrDebutStory(title, plainText)) return true;
-  // 1.3 A single match result in the story's lead («after Jack Perry defeated Shibata»).
-  if (leadHasMatchResult(plainText, title)) return true;
+  // 1.3 A match outcome in the TITLE («Sisters Of Win Score Win At AEW All Out»).
+  if (leadHasMatchResult("", title)) return true;
 
   // 1.5 A leaked/revealed outcome ("Spoiler: Men's MITB Qualifying Outcome For 9/25
   // SmackDown Revealed") is a single-match result — INCIDENTS #56.
@@ -2286,6 +2286,11 @@ export function isSingleMatchResultArticle(rawTitle: string, plainText: string =
   if (/\b(?:injury|injured|surgery|torn acl|neck injury|pulled from|medical|health|hospital|out indefinitely|gofundme|trailer|movie|film|podcast|hall of fame|funeral|passes away|passed away|dies at|death of|historic gate|ticket sales|viewership|ratings)\b/i.test(title)) {
     return false;
   }
+
+  // 2.5 Past the safeguards: a match outcome in the story's lead («after Jack Perry
+  // defeated Shibata…»). Checked only here, so an injury or interview story that
+  // mentions an old win in passing still goes out (Harley Cameron, INCIDENTS #74).
+  if (leadHasMatchResult(plainText)) return true;
 
   // 3. RULE 3: POSITIVE IDENTIFICATION OF LIVE SINGLE-MATCH SPOILERS
   // A. Defeats / Beats / Pins / Submits / Triumphs Over (e.g. "X Defeats Y", "X Pins Y")
