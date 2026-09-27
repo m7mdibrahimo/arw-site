@@ -3267,6 +3267,21 @@ export function findLikelyDuplicateStoryByTagsAndBody(
 // decided to publish it, so the automatic duplicate guards don't apply.
 // options.keepUrl: rewrite an already-published article in place — same file, same
 // URL (pinned permalink), no redirect and no social re-post (used to repair articles).
+/** The video(s) in a Fightful page's featured-video slot (`<div class="post-video"><iframe src=…>`), as clean watch URLs. */
+export function extractFeaturedVideos(pageHtml: string): string[] {
+  const out: string[] = [];
+  for (const m of pageHtml.matchAll(/class="[^"]*\bpost-video\b[^"]*"[^>]*>[\s\S]{0,600}?<iframe[^>]+src="([^"]+)"/gi)) {
+    for (const url of extractEmbeds(`<iframe src="${m[1]}"></iframe>`)) if (!out.includes(url)) out.push(url);
+  }
+  return out;
+}
+export async function fetchFeaturedVideos(pageUrl: string): Promise<string[]> {
+  try {
+    const res = await fetch(pageUrl, { signal: AbortSignal.timeout(15000), headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36" } });
+    return res.ok ? extractFeaturedVideos(await res.text()) : [];
+  } catch { return []; }
+}
+
 export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean; keepUrl?: boolean } = {}): Promise<boolean> {
   lastPostRetryable = false;
   const postId = post.id;
@@ -3445,6 +3460,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   // 3. Extract media embeds and append clean standalone URLs to body
   const embeds = extractEmbeds(contentHtml);
+  // Fightful puts a story's video in the theme's "featured video" slot above the text,
+  // which the WP API's content never includes — «مشاهدة العرض الكامل لعرض Lucha Libre AAA»
+  // went out without the video it is about (INCIDENTS #78).
+  if (/fightful\.com/i.test(postUrl) && !embeds.some(e => /youtube\.com|youtu\.be/.test(e))) {
+    for (const url of await fetchFeaturedVideos(postUrl)) if (!embeds.includes(url)) embeds.push(url);
+  }
   if (ytVideoId) {
     const cleanYtUrl = `https://www.youtube.com/watch?v=${ytVideoId}`;
     if (!embeds.includes(cleanYtUrl)) {

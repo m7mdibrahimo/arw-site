@@ -1166,3 +1166,10 @@ test("a finished show's results title states the outcome, taken from the report'
   assert.equal(resultsTitleOutcome("نتائج عرض AEW All Out (26 سبتمبر 2026): أوسبراي في مواجهة موكسلي", body), "نتائج عرض AEW All Out (26 سبتمبر 2026): أوسبراي في مواجهة موكسلي");
   assert.equal(resultsTitleOutcome("أوسبراي في مواجهة موكسلي", body), "أوسبراي في مواجهة موكسلي");
 });
+
+test("a Fightful story's featured video (outside the API content) is found (INCIDENTS #78)", async () => {
+  const { extractFeaturedVideos } = await import('../scripts/fightful-watcher');
+  const page = '<div class="featured-area"><div class="featured-area-inner"><div class="post-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/CxC1DbTl89U" frameborder="0" allowfullscreen></iframe></div></div></div><div class="entry-content"><p>Catch…</p></div><aside><img data-src="https://img.youtube.com/vi/DxMUL5DA2qM/maxresdefault.jpg"></aside>';
+  assert.deepEqual(extractFeaturedVideos(page), ["https://www.youtube.com/watch?v=CxC1DbTl89U"]);
+  assert.deepEqual(extractFeaturedVideos('<div class="entry-content"><p>no video</p></div>'), []);
+});

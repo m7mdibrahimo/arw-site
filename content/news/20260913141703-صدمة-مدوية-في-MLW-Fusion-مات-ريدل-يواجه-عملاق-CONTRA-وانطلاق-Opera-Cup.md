@@ -21,3 +21,5 @@ layout: post-layout.njk
 تعد هذه الأحداث بقلب موازين القوى في العروض القادمة رأسا على عقب، حيث تسعى النجوم لفرض هيمنتها والإطاحة بالمنافسين وسط ترقب جماهيري كبير لما ستسفر عنه المواجهات القادمة في طريق حصد الألقاب.
 
 <div class="video-container" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:24px 0;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.15);"><iframe src="https://www.youtube-nocookie.com/embed/9rfwfyqjraI" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe></div>
+
+https://www.youtube.com/watch?v=9rfwfyqjraI
