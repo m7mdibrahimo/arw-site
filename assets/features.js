@@ -144,7 +144,7 @@
           var formRect = form.getBoundingClientRect();
           var isSameRow = (brandRect.bottom > formRect.top - 10) && (brandRect.top < formRect.bottom + 10);
           if (brandRect.right > formRect.right + 10 && isSameRow) {
-            var span = brand.querySelector('span');
+            var span = brand.querySelector('.brand-name span') || brand.querySelector(':scope > span:not(.brand-mark)');
             var spanRect = span ? span.getBoundingClientRect() : null;
             var homeLink = document.querySelector('#navMenu a.navlink') || document.querySelector('.nav a.navlink');
             var homeRect = homeLink ? homeLink.getBoundingClientRect() : null;
