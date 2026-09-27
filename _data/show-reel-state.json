@@ -2342,15 +2342,20 @@
     "needsReview": false
   },
   "20260927053700-lucha-libre-aaa-19-09-2026": {
-    "publishedAt": null,
-    "facebook_reel": false,
-    "facebook_story": false,
-    "instagram_reel": false,
+    "publishedAt": 1790489521844,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 26.09.2026 مترجم",
-    "errors": {},
-    "processing": [],
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "lastAttempt": 1790489577710
   }
 }
