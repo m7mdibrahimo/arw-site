@@ -1726,8 +1726,9 @@ async function instagramSpacingWait(env: Env): Promise<number> {
   const last = Number((await env.PUSH_KV?.get("ig_last_action_ts").catch(() => null)) || 0);
   return Math.max(0, last + IG_MIN_GAP_MS - Date.now());
 }
-async function markInstagramAction(env: Env): Promise<void> {
+async function markInstagramAction(env: Env, kind: "post" | "video" = "post"): Promise<void> {
   await env.PUSH_KV?.put("ig_last_action_ts", String(Date.now())).catch(() => {});
+  await env.PUSH_KV?.put("ig_last_action_kind", kind).catch(() => {});
   const recent = await instagramActionsLast24h(env);
   recent.push(Date.now());
   await env.PUSH_KV?.put("ig_actions_24h", JSON.stringify(recent)).catch(() => {});
@@ -1775,7 +1776,12 @@ async function markInstagramVideoWaiting(env: Env, waiting: boolean): Promise<vo
 }
 async function instagramVideoWaiting(env: Env): Promise<boolean> {
   const at = Number((await env.PUSH_KV?.get("ig_video_waiting").catch(() => null)) || 0);
-  return at > 0 && Date.now() - at < 30 * 60_000;
+  if (!(at > 0 && Date.now() - at < 30 * 60_000)) return false;
+  // Alternate: right after a video went out, the next slot belongs to news. With six shows
+  // queued (a reel + a story each) a video was always waiting, and news got no Instagram
+  // slot for two hours (INCIDENTS #86).
+  const lastKind = await env.PUSH_KV?.get("ig_last_action_kind").catch(() => null);
+  return lastKind !== "video";
 }
 
 async function publishToPlatform(
@@ -3032,7 +3038,7 @@ export default {
                 results[platform] = { ok: false, status: "processing", spacing: true, retryAt: Date.now() + wait, error: "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا." };
                 continue;
               }
-              await markInstagramAction(env);
+              await markInstagramAction(env, "video");
               await markInstagramVideoWaiting(env, false);
             }
             const send = () => platform === "facebook_reel" ? postVideoToFacebookReel(env, { videoUrl: fullVideoUrl, title, postUrl })
