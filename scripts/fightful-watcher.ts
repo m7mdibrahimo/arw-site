@@ -310,7 +310,14 @@ export function applyNamesGlossary(text: string): string {
       // to anchor next to accented letters (Moné, Sadè, Ídolo...) — a lookaround
       // against \p{L} (any Unicode letter) covers those correctly.
       const pattern = new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "giu");
-      result = result.replace(pattern, arabic);
+      // A name inside an English phrase is part of a show/event name and stays English:
+      // «TNT Extreme Effy's Big Gay Brunch» became «TNT Extreme إيفي's بيغ (…) Gay Brunch»
+      // (INCIDENTS #90). Skip it when both neighbours are Latin words.
+      result = result.replace(pattern, (m: string, offset: number, whole: string) => {
+        const before = whole.slice(Math.max(0, offset - 2), offset);
+        const after = whole.slice(offset + m.length, offset + m.length + 3);
+        return /[A-Za-z]\s$|[A-Za-z]$/.test(before) && /^(?:['’]s\b|\s+[A-Za-z])/.test(after) ? m : arabic;
+      });
     } catch (e) {
       // Skip if regex fails (unusual characters)
     }

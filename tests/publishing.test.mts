@@ -1235,3 +1235,13 @@ test("a story's body counts only unmistakable match-result wording (INCIDENTS #8
   assert.equal(isSingleMatchResultArticle("Paige Calls Out Fan Obsession With Female Wrestlers Changing Gear Every Week", "Paige has dealt with plenty of criticism since returning to WWE. Right after joking that her SmackDown entrance was lost to a commercial break, the WWE star answered a fan."), false);
   assert.equal(isSingleMatchResultArticle("Jack Perry And Samoa Joe Face Off", "Jack Perry defeated Katsuyori Shibata in a Tailgate Brawl before Samoa Joe appeared."), true);
 });
+
+test("the names glossary never holds a common English word, and names inside an English show name stay English (INCIDENTS #90)", async () => {
+  const fs = await import('fs');
+  const g = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  const COMMON = ["Big","Little","King","Queen","The","Man","Boy","Girl","Gay","Party","Night","Day","Show","Cup","War","Best","Real","Great","Young","Old","New","Top","Star","Gold","Bad","Good"];
+  assert.deepEqual(COMMON.filter(w => w in g), []);
+  const { applyNamesGlossary } = await import('../scripts/fightful-watcher');
+  assert.equal(applyNamesGlossary("نتائج عرض TNT Extreme Effy's Big Gay Brunch"), "نتائج عرض TNT Extreme Effy's Big Gay Brunch");
+  assert.equal(applyNamesGlossary("فاز Effy على خصمه"), "فاز إيفي على خصمه");
+});
