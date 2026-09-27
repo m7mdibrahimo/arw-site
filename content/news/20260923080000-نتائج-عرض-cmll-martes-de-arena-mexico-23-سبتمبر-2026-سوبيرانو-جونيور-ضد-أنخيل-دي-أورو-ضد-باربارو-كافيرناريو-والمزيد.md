@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Martes de Arena Mexico (23 سبتمبر 2026): سوبيرانو جونيور ضد أنخيل دي أورو ضد باربارو كافيرناريو، والمزيد"
+title: "نتائج عرض CMLL Martes de Arena Mexico (23 سبتمبر 2026): فوز سوبيرانو جونيور في الحدث الرئيسي"
+permalink: "/news/نتائج-عرض-cmll-martes-de-arena-mexico-23-سبتمبر-2026-سوبيرانو-جونيور-ضد-أنخيل-دي-أورو-ضد-باربارو-كافيرناريو-والمزيد/index.html"
 date: 2026-09-23T08:00:00.000+03:00
 source_id: 329983
 source_url: "https://www.fightful.com/wrestling/cmll-martes-de-arena-mexico-results-9-22-2026-soberano-jr-vs-angel-de-oro-vs-barbaro-cavernario-more/"

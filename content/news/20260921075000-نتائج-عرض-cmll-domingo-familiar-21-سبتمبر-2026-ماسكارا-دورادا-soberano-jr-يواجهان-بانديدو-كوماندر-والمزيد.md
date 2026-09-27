@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Domingo Familiar (21 سبتمبر 2026): ماسكارا دورادا & Soberano Jr. يواجهان بانديدو & كوماندر.. والمزيد"
+title: "نتائج عرض CMLL Domingo Familiar (21 سبتمبر 2026): فوز ماسكارا دورادا وسوبيرانو جونيور في الحدث الرئيسي"
+permalink: "/news/نتائج-عرض-cmll-domingo-familiar-21-سبتمبر-2026-ماسكارا-دورادا-soberano-jr-يواجهان-بانديدو-كوماندر-والمزيد/index.html"
 date: 2026-09-21T07:50:00.000+03:00
 source_id: 329579
 source_url: "https://www.fightful.com/?p=329579"

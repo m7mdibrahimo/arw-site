@@ -1194,6 +1194,11 @@ test("a vague results title names the main-event winner from the report (INCIDEN
   assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): بانك يحتفظ باللقب.. ومواجهات قوية", body), "نتائج عرض X (1 أكتوبر 2026): بانك يحتفظ باللقب.. ومواجهات قوية");
   // «الفائز (وما زال البطل):» — a note in parentheses before the name.
   assert.equal(resultsTitleOutcome("نتائج عرض AEW All Out (26 سبتمبر 2026): عدة نزالات على الألقاب", "**الحدث الرئيسي (Main Event): بطولة AEW العالمية**\n\nاحتفظ ويل أوسبراي باللقب.\n\n🏆 **الفائز (وما زال البطل):** ويل أوسبراي\n"), "نتائج عرض AEW All Out (26 سبتمبر 2026): فوز ويل أوسبراي في الحدث الرئيسي");
+  // A bare line-up title of a finished show names the main-event winner; while the main
+  // event has no winner yet (live report), it is left alone.
+  const kobe = "**الحدث الرئيسي (Main Event): بطولة IWGP العالمية**\n\n🏆 **الفائز:** يوتا تسوجي\n";
+  assert.equal(resultsTitleOutcome("نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد دريلا مولوني", kobe), "نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): فوز يوتا تسوجي في الحدث الرئيسي");
+  assert.equal(resultsTitleOutcome("نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد دريلا مولوني", "**المواجهة الأولى**\n\n🏆 **الفائز:** يوه\n"), "نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد دريلا مولوني");
   // No main-event block: untouched.
   assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): ليلة حافلة", "🏆 **الفائز:** أ"), "نتائج عرض X (1 أكتوبر 2026): ليلة حافلة");
 });

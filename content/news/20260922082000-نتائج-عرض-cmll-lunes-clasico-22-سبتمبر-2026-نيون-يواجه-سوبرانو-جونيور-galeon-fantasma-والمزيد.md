@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Lunes Clásico (22 سبتمبر 2026): نيون يواجه سوبيرانو جونيور، Galeón Fantasma والمزيد"
+title: "نتائج عرض CMLL Lunes Clásico (22 سبتمبر 2026): فوز نيون في الحدث الرئيسي"
 permalink: "/news/نتائج-عرض-cmll-lunes-clasico-22-سبتمبر-2026-نيون-يواجه-سوبرانو-جونيور-galeon-fantasma-والمزيد/index.html"
 date: 2026-09-22T08:20:00.000+03:00
 source_id: 329768
