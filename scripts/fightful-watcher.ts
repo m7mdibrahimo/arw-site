@@ -2253,7 +2253,7 @@ export function leadHasMatchResult(plainText: string = "", title: string = ""): 
 }
 
 /** Shows that aired in the last hours = the shows that have a results report published recently. */
-export function recentShowNames(hours: number = 12, newsDir: string = NEWS_DIR): string[] {
+export function recentShowNames(hours: number = 72, newsDir: string = NEWS_DIR): string[] {
   const names = new Set<string>();
   if (!fs.existsSync(newsDir)) return [];
   const cutoff = Date.now() - hours * 3600_000;
@@ -2279,6 +2279,9 @@ export function recentShowNames(hours: number = 12, newsDir: string = NEWS_DIR):
  * even when the title is an announcement: "Thekla Vs. Mercedes Mone Official For AEW
  * WrestleDream" opens with "At AEW All Out 2026, Thekla and Willow Nightingale went up
  * against each other to determine Mercedes Mone's challenger" (INCIDENTS #79).
+ * The window is three days, not 12 hours: «Andrade: Pac Has To Be A World Champion…» opened
+ * with "he defended his AEW National Championship against Pac and retained the belt" at
+ * All Out 15 hours after the show and reached Telegram and Facebook (INCIDENTS #94).
  */
 export function revealsTonightsMatch(rawTitle: string, plainText: string, shows: string[] = recentShowNames()): boolean {
   if (!shows.length) return false;

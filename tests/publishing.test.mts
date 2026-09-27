@@ -1188,8 +1188,24 @@ test("a story about a match at tonight's show is kept off social even with an an
   assert.equal(revealsTonightsMatch("X Official For AEW WrestleDream", "At AEW All Out, X won.", []), false);
 });
 
+test("a match at a show from the last three days is still a spoiler the next day (INCIDENTS #94)", async () => {
+  const { recentShowNames, revealsTonightsMatch } = await import('../scripts/fightful-watcher');
+  const fs = await import('node:fs'); const os = await import('node:os'); const path = await import('node:path');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'recent-'));
+  const report = (hoursAgo: number, name: string) => `---\npublished_at: ${new Date(Date.now() - hoursAgo * 3600_000).toISOString()}\nsource_title: "${name} Results (9/26/2026)"\n---\nنص\n`;
+  fs.writeFileSync(path.join(dir, '20260927030000-all-out.md'), report(15, 'AEW All Out 2026'));
+  fs.writeFileSync(path.join(dir, '20260920030000-old.md'), report(24 * 5, 'WWE Old Show'));
+  const shows = recentShowNames(undefined, dir);
+  assert.ok(shows.includes('aew all out'), JSON.stringify(shows));
+  assert.ok(!shows.some(s => s.includes('old show')));
+  assert.equal(revealsTonightsMatch("Andrade: Pac Has To Be A World Champion In The Future, But He Needs To Leave The Death Riders",
+    "Andrade comments after wrestling Pac at AEW All Out. On the show, he defended his AEW National Championship against Pac and retained the belt successfully.", shows), true);
+});
+
 test("a vague results title names the main-event winner from the report (INCIDENTS #80)", async () => {
   const { resultsTitleOutcome } = await import('../scripts/news-qa');
+  // «بطل جديد… والتفاصيل الكاملة» says nothing either (INCIDENTS #94)
+  assert.equal(resultsTitleOutcome("نتائج عرض SLA Mega Ticket (25 سبتمبر 2026): بطل جديد للبطولة والتفاصيل الكاملة", "**الحدث الرئيسي: بطولة Gateway Heritage**\n\nفازت لايني ريد على مات فيتشيت.\n\n🏆 **الفائزة:** لايني ريد"), "نتائج عرض SLA Mega Ticket (25 سبتمبر 2026): فوز لايني ريد في الحدث الرئيسي");
   const body = "**المواجهة الأولى: نزال فردي**\n\n🏆 **الفائز:** دراغون لي\n\n**الحدث الرئيسي (Main Event): نزال فرق سداسي**\n\nانتصر فريق سي ام بانك.\n\n🏆 **الفائز:** فريق سي ام بانك وري ميستيريو وإل غراندي أمريكانو\n";
   assert.equal(resultsTitleOutcome("نتائج عرض WWE x AAA Worlds Collide (26 سبتمبر 2026): مواجهات كبرى بقيادة سي ام بانك وري ميستيريو ودومينيك ميستيريو", body),
     "نتائج عرض WWE x AAA Worlds Collide (26 سبتمبر 2026): فوز فريق سي ام بانك وري ميستيريو وإل غراندي أمريكانو في الحدث الرئيسي");
