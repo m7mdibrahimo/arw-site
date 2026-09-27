@@ -1788,5 +1788,70 @@
   }, {passive:true});
 })();
 </script>
+{% if maintenance %}
+{# «العرض تحت التعديل» from the admin panel: the page stays reachable, but a blurred
+   overlay tells visitors the correct version is being uploaded (2026-09-27). #}
+<div class="mnt-overlay" role="alertdialog" aria-modal="true" aria-labelledby="mntTitle" aria-describedby="mntText">
+  <div class="mnt-card">
+    <div class="mnt-icon" aria-hidden="true">
+      <svg class="mnt-ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44"/></svg>
+      <svg class="mnt-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    </div>
+    <span class="mnt-kicker"><i></i>جارٍ التحديث الآن</span>
+    <h2 id="mntTitle">نعمل على تحديث هذا العرض</h2>
+    <p id="mntText">{{ maintenance_note or "نستبدل الآن نسخة العرض بالنسخة الكاملة والصحيحة بأفضل جودة متاحة. سيعود العرض متاحًا للمشاهدة خلال وقت قصير، شكرًا لصبرك." }}</p>
+    <div class="mnt-progress" aria-hidden="true"><span></span></div>
+    <div class="mnt-actions">
+      <a class="mnt-btn mnt-primary" href="https://t.me/arab_wrestling" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.9c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 2.9c.9-.3 1.7.2 1.4 1.4z"/></svg>
+        أعلمني عند عودة العرض
+      </a>
+      <a class="mnt-btn" href="/shows/">تصفح العروض الأخرى</a>
+    </div>
+    <small class="mnt-show">{{ headline or title }}</small>
+  </div>
+</div>
+<style>
+  body.mnt-lock{ overflow:hidden; }
+  /* Nothing floats over the message (the Telegram prompt covered its buttons). */
+  body.mnt-lock #arwTgFloatBar, body.mnt-lock .notif-float-bar{ display:none !important; }
+  .mnt-overlay{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; padding:20px;
+    background:radial-gradient(900px 600px at 50% 0%, rgba(14,149,148,.22), transparent 65%), rgba(8,10,14,.55);
+    backdrop-filter:blur(16px) saturate(1.2); -webkit-backdrop-filter:blur(16px) saturate(1.2); animation:mntFade .5s ease both; }
+  .mnt-card{ position:relative; width:min(460px,100%); text-align:center; padding:34px 28px 26px; border-radius:26px;
+    background:linear-gradient(180deg, rgba(23,26,32,.92), rgba(13,15,19,.94)); color:#eef1f6;
+    border:1px solid rgba(255,255,255,.1); box-shadow:0 30px 80px -20px rgba(0,0,0,.7), 0 0 0 1px rgba(47,208,204,.08) inset;
+    animation:mntRise .6s cubic-bezier(.22,.8,.26,1) both; }
+  .mnt-card::before{ content:""; position:absolute; inset:-1px; border-radius:inherit; padding:1px; pointer-events:none;
+    background:linear-gradient(135deg, rgba(47,208,204,.6), transparent 35%, transparent 65%, rgba(255,191,90,.5));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
+  .mnt-icon{ position:relative; width:84px; height:84px; margin:0 auto 18px; display:grid; place-items:center; color:#2fd0cc; }
+  .mnt-ring{ position:absolute; inset:0; width:100%; height:100%; animation:mntSpin 2.4s linear infinite; }
+  .mnt-ring circle{ fill:none; stroke:url(#none); stroke:#2fd0cc; stroke-width:4; stroke-linecap:round; stroke-dasharray:70 210; opacity:.9; }
+  .mnt-gear{ width:38px; height:38px; animation:mntSpin 6s linear infinite reverse; filter:drop-shadow(0 0 12px rgba(47,208,204,.45)); }
+  .mnt-kicker{ display:inline-flex; align-items:center; gap:8px; font:800 12px 'Cairo',sans-serif; color:#ffbf5a; padding:6px 12px; border-radius:999px;
+    background:rgba(255,191,90,.1); border:1px solid rgba(255,191,90,.25); }
+  .mnt-kicker i{ width:7px; height:7px; border-radius:50%; background:#ffbf5a; box-shadow:0 0 0 0 rgba(255,191,90,.6); animation:mntPulse 1.6s infinite; }
+  .mnt-card h2{ font:900 24px/1.4 'Cairo',sans-serif; margin:14px 0 8px; color:#fff; }
+  .mnt-card p{ font-size:15px; line-height:1.95; color:#b9c1ce; margin:0 auto; max-width:370px; }
+  .mnt-progress{ height:4px; border-radius:4px; background:rgba(255,255,255,.08); overflow:hidden; margin:22px 6px 20px; }
+  .mnt-progress span{ display:block; width:40%; height:100%; border-radius:4px; background:linear-gradient(90deg, transparent, #2fd0cc, #8cf5f1, transparent); animation:mntSlide 1.6s ease-in-out infinite; }
+  .mnt-actions{ display:flex; flex-direction:column; gap:10px; }
+  .mnt-btn{ display:flex; align-items:center; justify-content:center; gap:9px; height:48px; border-radius:14px; font:800 15px 'Cairo',sans-serif;
+    text-decoration:none; color:#eef1f6; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); transition:transform .2s, background .2s; }
+  .mnt-btn:hover{ background:rgba(255,255,255,.1); transform:translateY(-1px); }
+  .mnt-btn svg{ width:19px; height:19px; }
+  .mnt-primary{ background:linear-gradient(135deg,#46e3dd,#1cb5b3); color:#032523; border-color:transparent; box-shadow:0 10px 26px -10px rgba(47,208,204,.6); }
+  .mnt-primary:hover{ background:linear-gradient(135deg,#5ceae4,#22c2c0); }
+  .mnt-show{ display:block; margin-top:16px; color:#6f7888; font-size:12.5px; }
+  @keyframes mntFade{ from{opacity:0} to{opacity:1} }
+  @keyframes mntRise{ from{opacity:0; transform:translateY(18px) scale(.97)} to{opacity:1; transform:none} }
+  @keyframes mntSpin{ to{ transform:rotate(360deg) } }
+  @keyframes mntPulse{ 70%{ box-shadow:0 0 0 8px rgba(255,191,90,0) } 100%{ box-shadow:0 0 0 0 rgba(255,191,90,0) } }
+  @keyframes mntSlide{ 0%{ transform:translateX(160%) } 100%{ transform:translateX(-260%) } }
+  @media (prefers-reduced-motion:reduce){ .mnt-ring,.mnt-gear,.mnt-progress span,.mnt-kicker i{ animation:none } }
+</style>
+<script>document.body.classList.add('mnt-lock');</script>
+{% endif %}
 </body>
 </html>
