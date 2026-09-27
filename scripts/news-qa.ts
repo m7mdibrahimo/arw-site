@@ -256,15 +256,18 @@ function mainEventTitle(title: string, body: string): string {
   // Filler («مواجهات كبرى…») or a bare line-up («يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد…»):
   // once the report's main event has a winner, the title says who won it.
   const plainSub = m ? m[2].replace(/[\u064B-\u0652\u0670]/g, "") : "";  // «يُسقط» → «يسقط»
-  if (!m || OUTCOME_VERB.test(plainSub) || !(VAGUE_SUBTITLE.test(m[2]) || /(?:^|\s)(?:ضد|في\s+مواجهة|يواجه|تواجه|يواجهان)\s/.test(m[2]))) return title;
+  // «فوز فريق في الحدث الرئيسي»: an earlier cut-off name — rebuild it from the report.
+  const brokenOwn = /^فوز\s+(?:فريق|الفريق|ثنائي|الثنائي|ثلاثي)?\s*في الحدث الرئيسي$/.test(plainSub.trim());
+  if (!m || (!brokenOwn && OUTCOME_VERB.test(plainSub)) || !(brokenOwn || VAGUE_SUBTITLE.test(m[2]) || /(?:^|\s)(?:ضد|في\s+مواجهة|يواجه|تواجه|يواجهان)\s/.test(m[2]))) return title;
   // MMA cards split into prelims/main card: «the main event» of a report is not reliable there.
   if (/\b(?:UFC|PFL|Bellator|ONE|KSW|MMA)\b/i.test(m[1])) return title;
   const main = body.split(/\n(?=\*\*|#{2,4}\s)/).find(b => /^(?:\*\*|#{2,4}\s*)?الحدث الرئيسي/.test(b.trim()));
   const w = main && main.match(/🏆\s*\*{0,2}\s*(الفائز(?:ة|ان|تان|ون)?)(?:\s*\([^)\n]*\))?\s*:?\s*\*{0,2}:?\s*([^\n(*]+)/);
   if (!w) return title;
   // Only the name: drop «بالاستبعاد», «للاحتفاظ بالبطولة», «بعد…» and anything after them.
-  const winner = w[2].replace(/\s+(?:بال(?:استبعاد|تثبيت|إخضاع|عد|ضربة)|(?:و|ل|لل)?(?:ال)?(?:احتفاظ|يحتفظ|تحتفظ|يتوج|تتوج|تتويج|انتزاع)|بعد|عبر|إثر|وسط|في)(?:\s.*)?$/, "").replace(/[.!؟?،,؛:]+$/, "").trim();
-  if (!winner || winner.split(/\s+/).length > 9) return title;
+  const winner = w[2].replace(/\s+(?:بال(?:استبعاد|تثبيت|إخضاع|عد|ضربة)|(?:و|ل|لل)?(?:ال)?(?:احتفاظ|يحتفظ|تحتفظ|يتوج|تتوج|تتويج|انتزاع)|بعد|عبر|إثر|وسط|في\s+(?:الحدث|النزال|المواجهة|عرض|نزال|مواجهة|الجولة))(?:\s.*)?$/, "").replace(/[.!؟?،,؛:]+$/, "").trim();
+  // A bare «فريق» (its name cut off) is not a winner's name — never title with it.
+  if (!winner || winner.split(/\s+/).length > 9 || /^(?:فريق|الفريق|ثنائي|الثنائي|ثلاثي)$/.test(winner)) return title;
   // «فوز X» has no gender or number: right for a man, a woman or a team alike.
   return `${m[1]}فوز ${winner} في الحدث الرئيسي`;
 }

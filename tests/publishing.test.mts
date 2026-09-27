@@ -1199,6 +1199,8 @@ test("a vague results title names the main-event winner from the report (INCIDEN
   const kobe = "**الحدث الرئيسي (Main Event): بطولة IWGP العالمية**\n\n🏆 **الفائز:** يوتا تسوجي\n";
   assert.equal(resultsTitleOutcome("نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد دريلا مولوني", kobe), "نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): فوز يوتا تسوجي في الحدث الرئيسي");
   assert.equal(resultsTitleOutcome("نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد دريلا مولوني", "**المواجهة الأولى**\n\n🏆 **الفائز:** يوه\n"), "نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): يوتا تسوجي ضد هيرووكي غوتو وجيب كيد ضد دريلا مولوني");
+  // A team whose name starts with «في» (VNDL48 → «في إن دي إل 48») keeps its name.
+  assert.equal(resultsTitleOutcome("نتائج عرض GCW The Score (26 سبتمبر 2026): فوز فريق في الحدث الرئيسي", "**الحدث الرئيسي (Main Event): نزال فرق**\n\n🏆 **الفائزون:** فريق في إن دي إل 48 (أتيكوس كوغار وأوتيس كوغار)\n"), "نتائج عرض GCW The Score (26 سبتمبر 2026): فوز فريق في إن دي إل 48 في الحدث الرئيسي");
   // No main-event block: untouched.
   assert.equal(resultsTitleOutcome("نتائج عرض X (1 أكتوبر 2026): ليلة حافلة", "🏆 **الفائز:** أ"), "نتائج عرض X (1 أكتوبر 2026): ليلة حافلة");
 });
