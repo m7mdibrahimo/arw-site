@@ -1,5 +1,15 @@
 [
   {
+    "id": 330902,
+    "link": "https://www.fightful.com/wrestling/revpro-live-in-paris-results-9-27/",
+    "date": "2026-09-27T18:54:57",
+    "date_gmt": "2026-09-27T22:54:57",
+    "title": {
+      "rendered": "RevPro Live In Paris Results (9/27)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27185433/HSgEcJhWIAA6TRV.jpg.webp"
+  },
+  {
     "id": 330892,
     "link": "https://www.fightful.com/wrestling/dorian-van-dux-cleared-to-compete/",
     "date": "2026-09-27T16:45:06",
@@ -288,15 +298,5 @@
       "rendered": "Will Ospreay Scores Win Over Jon Moxley To Retain AEW World Championship At All Out"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27002907/HTMibcnXsAAuady-e1790483365728.jpg"
-  },
-  {
-    "id": 330787,
-    "link": "https://www.fightful.com/wrestling/watch-aew-all-out-post-show-media-scrum/",
-    "date": "2026-09-27T00:28:25",
-    "date_gmt": "2026-09-27T04:28:25",
-    "title": {
-      "rendered": "Watch: AEW All Out Post Show Media Scrum"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27002829/maxresdefault-175.jpg"
   }
 ]
