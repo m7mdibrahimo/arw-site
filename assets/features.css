@@ -652,7 +652,7 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 }
 @media (prefers-reduced-motion:reduce){ html body header, .arw-more-sheet, .arw-more-overlay{ transition:none !important; } }
 
-/* Header brand lockup (2026-09-27): framed logo + name. */
+/* Header brand lockup (2026-09-27): framed logo + name (+ a short line under it on computers). */
 .brand.brand-lockup{display:inline-flex;align-items:center;gap:11px;text-decoration:none}
 .brand-mark{position:relative;display:block;flex:none;width:42px;height:42px;border-radius:13px;padding:2px;overflow:hidden;
   background:linear-gradient(135deg,#2fd0cc 0%,#8be9e5 30%,#ffbf5a 62%,#1cb5b3 100%);
@@ -667,4 +667,7 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 .brand:focus-visible .brand-mark{box-shadow:0 0 0 3px rgba(47,208,204,.55)}
 .brand-words{display:flex;flex-direction:column;justify-content:center;line-height:1}
 .brand-name{font:900 22px/1.05 "Cairo",sans-serif;letter-spacing:-.2px;white-space:nowrap}
+.brand-tag{font:700 10.5px/1 "Tajawal",sans-serif;color:var(--muted,#8e97a6);margin-top:6px;letter-spacing:.3px;white-space:nowrap;opacity:.9}
+/* The line under the name is for computers only (owner's choice): hidden on tablets and phones. */
+@media (max-width:1180px){.brand-tag{display:none}}
 @media (max-width:768px){.brand.brand-lockup{gap:9px}.brand-mark{width:34px;height:34px;border-radius:11px}.brand-mark img{border-radius:9px}.brand-name{font-size:19px}}
