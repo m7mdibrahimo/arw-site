@@ -1,5 +1,25 @@
 [
   {
+    "id": 330809,
+    "link": "https://www.fightful.com/wrestling/aew-holiday-bash-announced-for-december-23/",
+    "date": "2026-09-27T02:01:36",
+    "date_gmt": "2026-09-27T06:01:36",
+    "title": {
+      "rendered": "AEW Holiday Bash Announced For December 23"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27020113/HTMqgpHaQAA_JEB.jpeg"
+  },
+  {
+    "id": 330806,
+    "link": "https://www.fightful.com/wrestling/tony-khan-thinks-aztec-stadium-in-mexico-could-be-a-great-venue-for-wrestling/",
+    "date": "2026-09-27T01:57:50",
+    "date_gmt": "2026-09-27T05:57:50",
+    "title": {
+      "rendered": "Tony Khan Thinks Aztec Stadium In Mexico Could Be A Great Venue For Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27015030/f55c0af7-7d27-429b-9d80-a9f288ab6e81-234.jpg"
+  },
+  {
     "id": 330805,
     "link": "https://www.fightful.com/wrestling/njpw-destruction-in-kobe-results-9-27-yota-tsuji-vs-hirooki-goto-gabe-kidd-vs-drilla-moloney/",
     "date": "2026-09-27T01:52:34",
@@ -278,25 +298,5 @@
       "rendered": "Persephone Def. Dani Luna To Retain TBS Championship At AEW All Out"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26211836/HTL3_82WAAAr4pa.jpg"
-  },
-  {
-    "id": 330674,
-    "link": "https://www.fightful.com/wrestling/kyle-fletcher-and-kevin-knight-become-1-contenders-to-aew-world-tag-team-titles-at-aew-all-out-match-ends-via-referee-stoppage/",
-    "date": "2026-09-26T21:05:36",
-    "date_gmt": "2026-09-27T01:05:36",
-    "title": {
-      "rendered": "Kyle Fletcher And Kevin Knight Become #1 Contenders To AEW World Tag Team Titles At AEW All Out, Match Ends Via Referee Stoppage"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26205829/HTLyFGdWcAAp7ql.png"
-  },
-  {
-    "id": 330673,
-    "link": "https://www.fightful.com/wrestling/dani-luna-answers-tbs-title-open-challenge-at-aew-all-out/",
-    "date": "2026-09-26T21:00:00",
-    "date_gmt": "2026-09-27T01:00:00",
-    "title": {
-      "rendered": "Dani Luna Answers TBS Title Open Challenge At AEW All Out"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26205943/HTLztQ8WcAAzRfu.jpg"
   }
 ]
