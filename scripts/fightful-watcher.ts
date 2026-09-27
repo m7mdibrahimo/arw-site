@@ -2236,10 +2236,13 @@ export function isReturnOrDebutStory(rawTitle: string, plainText: string = ""): 
  * no match outcome on social, only full results reports.
  */
 const OUTCOME_WORDS = /(?:\bdef\.|\b(?:wins?|won|winning|winners?|victory|victories|victorious|defeat(?:s|ed|ing)?|beats?|beaten|bested|bests|pins?|pinned|pinfall|submits?|submitted|submission victory|retains?|retained|retaining|triumphs?|triumphed|overcomes?|overcame|topples?|toppled|edges?|edged|outlasts?|outlasted|eliminates?|eliminated|advances?|advanced|qualif(?:y|ies|ied)|captures?|captured|crowned|dethron(?:e|es|ed)|lose|loses|lost|losing|falls? to|fell to|upsets?|conquers?|conquered|dominates?|dominated|squash(?:es|ed)?|for the (?:win|victory|pin|fall)|by (?:pinfall|submission|dq|disqualification|count-?out|knockout|ko|tko)|no contest|draw|stopped|stoppage|called off|waved off|referee stops?|ends? in|ended in|cut short)\b)/i;
+// The story's body only counts words that can mean nothing but a match result: «her
+// SmackDown entrance was lost to a commercial break» blocked a Paige story (INCIDENTS #88).
+const LEAD_OUTCOME_WORDS = /(?:\bdef\.|\b(?:defeated|defeats|bested|pinned|pinfall|submitted|retained (?:the|his|her|their)|retains (?:the|his|her|their)|captured the|crowned|dethroned|picked up (?:the|a) (?:win|victory)|scored (?:the|a) (?:win|victory)|for the (?:win|victory|pin|fall)|by (?:pinfall|submission|dq|disqualification|count-?out|knockout|tko)|no contest|won the (?:match|bout|title|championship|belt)|to (?:win|retain|capture) the (?:title|championship|belt))\b)/i;
 export function leadHasMatchResult(plainText: string = "", title: string = ""): boolean {
   // "Losing 50 Pounds" is about weight, not a match.
   const clean = (t: string) => t.replace(/\b(?:los(?:e|es|ing|t)|won't)\s+(?:\d+\s+)?(?:pounds|lbs|kg|kilos|weight)\b/gi, "");
-  return OUTCOME_WORDS.test(clean(title)) || OUTCOME_WORDS.test(clean(plainText.slice(0, 500)));
+  return OUTCOME_WORDS.test(clean(title)) || LEAD_OUTCOME_WORDS.test(clean(plainText.slice(0, 500)));
 }
 
 /** Shows that aired in the last hours = the shows that have a results report published recently. */

@@ -1227,3 +1227,9 @@ test("counts in titles are written in words with the right gender (INCIDENTS #85
   assert.equal(numberWordsInTitle("صفقة بقيمة 3 ملايين دولار"), "صفقة بقيمة 3 ملايين دولار");
   assert.equal(numberWordsInTitle("عرض 7 أكتوبر"), "عرض 7 أكتوبر");
 });
+
+test("a story's body counts only unmistakable match-result wording (INCIDENTS #88)", async () => {
+  const { isSingleMatchResultArticle } = await import('../scripts/fightful-watcher');
+  assert.equal(isSingleMatchResultArticle("Paige Calls Out Fan Obsession With Female Wrestlers Changing Gear Every Week", "Paige has dealt with plenty of criticism since returning to WWE. Right after joking that her SmackDown entrance was lost to a commercial break, the WWE star answered a fan."), false);
+  assert.equal(isSingleMatchResultArticle("Jack Perry And Samoa Joe Face Off", "Jack Perry defeated Katsuyori Shibata in a Tailgate Brawl before Samoa Joe appeared."), true);
+});
