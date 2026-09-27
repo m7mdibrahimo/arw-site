@@ -1136,3 +1136,18 @@ test("filler removal never cuts inside a word; self-promo lines, <br> and Burmes
   assert.equal(autoFix("---\n<br><br>**المواجهة الأولى**<br><br>نص"), "---\n\n**المواجهة الأولى**\n\nنص");
   assert.ok(checkArticle("عنوان عربي", "مာ**المواجهة**", []).some(i => i.code === "foreign_script"));
 });
+
+test("one results report per show: another source's report of the same show is a duplicate (weekly shows need the same date)", async () => {
+  const { showResultsKey, findSameShowResults } = await import('../scripts/fightful-watcher');
+  assert.deepEqual(showResultsKey("AEW All Out Results 9/26 - Several Titles On The Line, Two #1 Contenders Matches"), { name: "aew all out", md: "9/26" });
+  assert.deepEqual(showResultsKey("AEW All Out 2026 Results (9/26)"), { name: "aew all out", md: "9/26" });
+  assert.notEqual(showResultsKey("wXw Pro-Wrestling Grand Prix 2026 Day 1 Results (9/25)").name, showResultsKey("wXw Pro-Wrestling Grand Prix 2026 Day 2 Results (9/26)").name);
+  const fs = await import('fs'); const os = await import('os'); const path = await import('path');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'showres-'));
+  const now = new Date(Date.now() - 2 * 3600_000).toISOString();
+  fs.writeFileSync(path.join(dir, '20260927010000-all-out.md'), `---\ntitle: "x"\ndate: ${now}\nsource_title: "AEW All Out Results 9/26 - Several Titles On The Line"\nsource_results: 6\n---\nbody`);
+  fs.writeFileSync(path.join(dir, '20260927010001-njpw.md'), `---\ntitle: "x"\ndate: ${now}\nsource_title: "NJPW Road To Destruction Results (9/21)"\nsource_results: 6\n---\nbody`);
+  assert.equal(findSameShowResults("AEW All Out 2026 Results (9/26)", 30, dir).isDuplicate, true);
+  assert.equal(findSameShowResults("NJPW Road To Destruction Results (9/22)", 30, dir).isDuplicate, false);
+  assert.equal(findSameShowResults("AEW Collision Results (9/26)", 30, dir).isDuplicate, false);
+});

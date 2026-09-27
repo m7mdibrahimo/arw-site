@@ -3079,6 +3079,43 @@ export function clearlyDifferentStories(a: string, b: string): boolean {
   return false;
 }
 
+/** "AEW All Out Results 9/26 - Several Titles…" / "AEW All Out 2026 Results (9/26)" → { name: "aew all out", md: "9/26" } */
+export function showResultsKey(title: string): { name: string; md: string } {
+  const t = String(title || "").toLowerCase().replace(/&#8217;|’/g, "'");
+  const md = (t.match(/\b(\d{1,2})\/(\d{1,2})\b/) || []).slice(1, 3).map(Number).join("/");
+  const head = t.split(/\bresults?\b|\bspoilers?\b|\blive coverage\b|\blive recap\b/)[0] || t;
+  const name = head.replace(/\(.*?\)/g, " ").replace(/\b\d{1,2}\/\d{1,2}(?:\/\d{2,4})?\b/g, " ").replace(/\b(?:19|20)\d\d\b/g, " ")
+    .replace(/\b(?:live|full|quick|night|day|the)\b/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+  return { name, md };
+}
+
+/**
+ * One results report per show: when a show already has one (Wrestling Inc's live
+ * AEW All Out page, kept current by the live-results updater), another source's
+ * "AEW All Out 2026 Results (9/26)" is the same report, not a new story (owner,
+ * 2026-09-27). Weekly shows share a name, so the date must match too (or, when a
+ * title has no date, the existing report must be from the last 20 hours).
+ */
+export function findSameShowResults(rawTitle: string, hoursWindow: number = 30, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
+  const key = showResultsKey(rawTitle);
+  if (!key.name || key.name.split(" ").length < 2 || !fs.existsSync(newsDir)) return { isDuplicate: false };
+  const cutoff = Date.now() - hoursWindow * 3600_000;
+  for (const file of fs.readdirSync(newsDir)) {
+    if (!/^\d{14}-.*\.md$/.test(file)) continue;
+    try {
+      const content = fs.readFileSync(path.join(newsDir, file), "utf-8");
+      const dateMs = getFrontmatterDateMs(content);
+      if (dateMs < cutoff) continue;
+      const src = content.match(/^source_title:\s*(.+)$/m);
+      if (!src) continue;
+      const other = showResultsKey(JSON.parse(src[1].trim().startsWith('"') ? src[1].trim() : JSON.stringify(src[1].trim())));
+      if (other.name !== key.name) continue;
+      if (key.md && other.md ? key.md === other.md : Date.now() - dateMs < 20 * 3600_000) return { isDuplicate: true, matchedFile: file };
+    } catch { continue; }
+  }
+  return { isDuplicate: false };
+}
+
 export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 24, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
   // Federation and show-name words say nothing about the STORY: "WWE Main Event
@@ -3311,6 +3348,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
 
+  if (guardDuplicates && isShowResultsArticle(rawTitle, plainText)) {
+    const same = findSameShowResults(rawTitle);
+    if (same.isDuplicate) {
+      console.log(`[Watcher] 🔁 This show already has a results report (${same.matchedFile}), kept current by the live-results updater: Post #${postId} ("${rawTitle}") skipped.`);
+      recordDuplicate(postUrl, same.matchedFile || "", "تقرير نتائج لنفس العرض منشور بالفعل");
+      return false;
+    }
+  }
   // Results reports are never judged by title words (every episode of a show
   // shares them); the content + Gemini check below handles them.
   if (guardDuplicates && !isShowResultsArticle(rawTitle, plainText)) {

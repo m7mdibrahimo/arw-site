@@ -112,7 +112,10 @@ export async function runLiveResultsUpdater(options: { dryRun?: boolean } = {}):
     if (!decision.rewrite || options.dryRun || rewritten >= MAX_PER_RUN) continue;
     if (geminiQuotaExhausted()) { console.warn("[Live Results] Gemini quota exhausted — next run."); break; }
 
-    const date = new Date(data.date).toISOString();
+    // Every rewrite stamps the article with the time of the update, so the site shows it
+    // as freshly updated and lists it first (owner, 2026-09-27). published_at is kept by
+    // keepUrl, so the social window never reopens and nothing is re-posted.
+    const date = new Date().toISOString();
     const oldImage = String(data.image || "");
     const post = {
       id: Number(data.source_id),
