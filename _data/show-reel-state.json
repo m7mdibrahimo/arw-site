@@ -2289,18 +2289,42 @@
     "publishedAt": 1790486801950,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 22.09.2026 مترجم",
-    "lastAttempt": 1790486818529,
+    "lastAttempt": 1790487725475,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260927051700-cmll-noche-de-campeones-25-09-2026": {
+    "publishedAt": 1790487756906,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 25.09.2026 مترجم",
+    "lastAttempt": 1790487770138,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260927052200-gcw-rock-bottom-2026": {
+    "publishedAt": 1790487805285,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو 25.09.2026 مترجم",
+    "lastAttempt": 1790487818316,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
