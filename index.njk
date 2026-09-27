@@ -1270,16 +1270,17 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </div>
 </div>
 
-{% if pinned and pinned.length > 0 %}
+{% set slides = pinned | freshPinned(collections.all) %}
+{% if slides and slides.length > 0 %}
 <section class="spotlight-section" id="spotlight-wrap">
 <div class="wrap">
-<div class="spotlight-container reveal is-visible" id="spotlightHero" data-slide-count="{{ pinned.length }}">
+<div class="spotlight-container reveal is-visible" id="spotlightHero" data-slide-count="{{ slides.length }}">
 <!-- Dynamic Ambient Background Glow -->
-<div class="spotlight-ambient-glow glow-{{ (pinned[0].federation or 'wwe') | lower }}" id="spotlightAmbientGlow"></div>
+<div class="spotlight-ambient-glow glow-{{ (slides[0].federation or 'wwe') | lower }}" id="spotlightAmbientGlow"></div>
 
 <!-- Slides Viewport -->
 <div class="spotlight-viewport" id="spotlightViewport">
-  {% for item in pinned %}
+  {% for item in slides %}
   {% set fedLower = (item.federation or "wwe") | lower %}
   <div class="spotlight-slide {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" data-fed="{{ fedLower }}">
     <!-- Full-Bleed Background Image (Anchored Left) -->
@@ -1342,7 +1343,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 <div class="spotlight-bottom-bar">
   <!-- Right side (in RTL): Progress Line Indicators -->
   <div class="spotlight-bars-wrap">
-    {% for item in pinned %}
+    {% for item in slides %}
     <button type="button" class="spotlight-bar-seg {% if loop.first %}active{% endif %}" data-target="{{ loop.index0 }}" aria-label="الشريحة {{ loop.index }}">
       <span class="spotlight-bar-fill"></span>
     </button>

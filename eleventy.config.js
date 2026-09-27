@@ -174,6 +174,30 @@ function normalizeArabicHamza(str) {
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
   eleventyConfig.addGlobalData("buildTime", () => new Date().toISOString());
+
+  // The home slider shows each pinned item as it is NOW. _data/pinned.json keeps a copy
+  // taken when the item was pinned, so an edited headline/description/image never reached
+  // the slider (AEW All Out Tailgate Brawl kept the All Out headline and an "All In London"
+  // description after being fixed — 2026-09-27). The copy is only a fallback now.
+  eleventyConfig.addFilter("freshPinned", (pinned, all) => {
+    if (!Array.isArray(pinned)) return pinned;
+    const norm = (u) => { let x = String(u || ""); try { x = decodeURIComponent(x); } catch (e) {} return x.replace(/index\.html$/, "").replace(/\/?$/, "/"); };
+    const byUrl = new Map((all || []).map((p) => [norm(p.url), p]));
+    return pinned.map((item) => {
+      const page = byUrl.get(norm(item.url));
+      if (!page) return item;
+      const d = page.data || {};
+      const isShow = item.kind === "show" || item.kind === "recap" || /\/(shows|recaps|nostalgia)\//.test(page.url);
+      return {
+        ...item,
+        title: (isShow ? d.headline || d.title : d.title) || item.title,
+        subtitle: isShow ? d.title || item.subtitle : item.subtitle,
+        image: d.image || item.image,
+        description: d.description || item.description,
+        federation: d.federation || item.federation,
+      };
+    });
+  });
   eleventyConfig.addFilter("arabicSlug", arabicSlug);
   eleventyConfig.addNunjucksFilter("arabicSlug", arabicSlug);
   eleventyConfig.addFilter("slug", arabicSlug);
