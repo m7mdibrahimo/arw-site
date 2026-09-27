@@ -1134,6 +1134,9 @@ test("filler removal never cuts inside a word; self-promo lines, <br> and Burmes
   assert.equal(autoFix("أقيم العرض في اليابان. شهد العرض مواجهات قوية وحماسية بين النجوم، وإليكم النتائج.\n\nنص"), "أقيم العرض في اليابان.\n\nنص");
   assert.equal(autoFix("نص.\n\nلا تنسى زيارة موقعنا باستمرار لمتابعة أحدث الأخبار---").trim(), "نص.");
   assert.equal(autoFix("---\n<br><br>**المواجهة الأولى**<br><br>نص"), "---\n\n**المواجهة الأولى**\n\nنص");
+  // INCIDENTS #93: a paragraph cut off on a comma is closed; list lines are left alone
+  assert.equal(autoFix("يذكر أن النجمة تحدثت عن النزال الذي أدى إلى غيابها عام 2022، \n\nhttps://x.com/a"), "يذكر أن النجمة تحدثت عن النزال الذي أدى إلى غيابها عام 2022.\n\nhttps://x.com/a");
+  assert.equal(autoFix("- فاز فريق ذا هارديز على الثنائي في نزال طويل وصعب،"), "- فاز فريق ذا هارديز على الثنائي في نزال طويل وصعب،");
   assert.ok(checkArticle("عنوان عربي", "مာ**المواجهة**", []).some(i => i.code === "foreign_script"));
 });
 

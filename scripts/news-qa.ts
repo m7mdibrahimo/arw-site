@@ -367,6 +367,10 @@ export function autoFix(text: string): string {
     // "آدم بيرس (آدم بيرس)" → "آدم بيرس"
     .replace(/(?<![^\s(«"])((?:[^\s()]+\s){0,3}[^\s()]+)\s*\(\1\)/g, "$1")
     .replace(/،\s*،/g, "،").replace(/:\s*:/g, ":").replace(/؟\s*؟/g, "؟");
+  // A paragraph ending on a comma («…بسبب إصابة في الظهر عام 2022، »): the source's
+  // "…which you can read here" link was dropped mid-sentence (INCIDENTS #93) — close it.
+  out = out.split("\n").map(line => /^[ \t]*[-*#|>]/.test(line) || line.trim().length < 40 ? line
+    : line.replace(/[،,][ \t]*$/, ".")).join("\n");
   return out.replace(/\u0000(\d+)\u0000/g, (_, i) => urls[Number(i)]);
 }
 
