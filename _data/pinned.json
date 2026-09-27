@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/ufc-fight-night-289-rosas-jr-vs-barcelos/",
+    "title": "عرض يو اف سي فايت نايت 26.09.2026 مترجم",
+    "subtitle": "UFC Fight Night 289: Rosas Jr. vs Barcelos",
+    "image": "/img/6qOZmuRD07-800.jpeg",
+    "federation": "MMA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/lucha-libre-aaa-26-09-2026/",
     "title": "عرض ايه ايه ايه 26.09.2026 مترجم",
     "subtitle": "Lucha Libre AAA 26.09.2026",
@@ -86,27 +97,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/lucha-libre-aaa-19-09-2026",
-    "title": "عرض ايه ايه ايه 19.09.2026 مترجم",
-    "subtitle": "Lucha Libre AAA 19.09.2026",
-    "image": "/img/GfJKRoDc4H-800.jpeg",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-live-stephanie-vaquer-vs-liv-morgan-12-09-2026",
-    "title": "مباراة ستيفاني فاكير ضد ليف مورغان 12.09.2026 في سانتياغو عاصمة تشيلي",
-    "subtitle": "WWE Live Stephanie Vaquer vs Liv Morgan 12.09.2026",
-    "image": "/img/vtLmD-ggc3-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصرياً المباراة كاملة",
-    "description": "مباراة ستيفاني فاكير ضد ليف مورغان كاملة مع جميع والأحداث."
   }
 ]
