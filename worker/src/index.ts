@@ -332,7 +332,7 @@ type PublishState = {
   tiktokToken?: TikTokToken;
 };
 
-type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; releasedAt?: number; dismissedAt?: number; by?: string };
+type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; why?: "title" | "lead" | "flag"; lead?: string; releasedAt?: number; dismissedAt?: number; by?: string };
 
 // Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
 function spoilerReason(title: string = ""): "result" | "return" {
@@ -1967,7 +1967,7 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // Any win/loss wording at all. Verb lists always missed a phrasing («فريق Sisters Of Sin
   // يحقق الفوز في عرض AEW All Out» reached Telegram and Facebook — INCIDENTS #71), and the
   // owner's rule is absolute: no match outcome on social, only full results reports.
-  if (ar("(?:و|ف)?(?:ال)?(?:فوز|فوزه|فوزها|فوزهم|فوزهما|يفوز|تفوز|يفوزان|تفوزان|يفوزون|فاز|فازت|انتصار|انتصاره|انتصارها|انتصارا|ينتصر|تنتصر|انتصر|انتصرت|تغلب|يتغلب|تتغلب|يتغلبان|تغلبت|يهزم|تهزم|يهزمان|هزم|هزمت|هزيمة|الهزيمة|يسقط|تسقط|أسقط|أسقطت|يطيح|تطيح|أطاح|أطاحت|يحتفظ|تحتفظ|يحتفظان|احتفظ|احتفظت|احتفاظ|يتوج|تتوج|يتوجان|توج|تتويج|يخسر|تخسر|خسر|خسرت|خسارة|خسارته|خسارتها|يتأهل|تتأهل|يتأهلان|تأهل|تأهلت|يقصي|تقصي|أقصى|إقصاء|ينتزع|تنتزع|انتزع|انتزعت|يخطف|تخطف|خطف|يحسم|تحسم|حسم|يكتسح|تكتسح|يسحق|تسحق|يثبت|تثبت|تثبيت|يستسلم|تستسلم|إخضاع|يخضع|تخضع|ينجو|تنجو|يبطل|يجرد|تجرد)(?![\\u0600-\\u06FF])").test(title)) return true;
+  if (ar("(?:و|ف)?(?:ال)?(?:فوز|فوزا|فوزًا|فوزه|فوزها|فوزهم|فوزهما|تجاوز|يتجاوز|تتجاوز|تجاوزه|تجاوزها|تخطى|يتخطى|تتخطى|تخطت|تخطيه|يفوز|تفوز|يفوزان|تفوزان|يفوزون|فاز|فازت|انتصار|انتصاره|انتصارها|انتصارا|ينتصر|تنتصر|انتصر|انتصرت|تغلب|يتغلب|تتغلب|يتغلبان|تغلبت|يهزم|تهزم|يهزمان|هزم|هزمت|هزيمة|الهزيمة|يسقط|تسقط|أسقط|أسقطت|يطيح|تطيح|أطاح|أطاحت|يحتفظ|تحتفظ|يحتفظان|احتفظ|احتفظت|احتفاظ|يتوج|تتوج|يتوجان|توج|تتويج|يخسر|تخسر|خسر|خسرت|خسارة|خسارته|خسارتها|يتأهل|تتأهل|يتأهلان|تأهل|تأهلت|يقصي|تقصي|أقصى|إقصاء|ينتزع|تنتزع|انتزع|انتزعت|يخطف|تخطف|خطف|يحسم|تحسم|حسم|يكتسح|تكتسح|يسحق|تسحق|يثبت|تثبت|تثبيت|يستسلم|تستسلم|إخضاع|يخضع|تخضع|ينجو|تنجو|يبطل|يجرد|تجرد)(?![\\u0600-\\u06FF])").test(title)) return true;
   // A match that ended without a normal finish is an outcome too («إيقاف نزال ستيفن بوردن… بعد
   // اصطدام في الرأس» reached Instagram — INCIDENTS #75).
   if (ar("إيقاف\\s+(?:ال)?(?:نزال|مواجهة|مباراة)|توقف\\s+(?:ال)?(?:نزال|مواجهة)|(?:ينتهي|انتهى|انتهاء|نهاية)\\s+(?:ال)?(?:نزال|مواجهة|مباراة)|إلغاء\\s+(?:ال)?نزال\\s+(?:بعد|خلال|أثناء)|بدون\\s+نتيجة|بلا\\s+نتيجة|بالتعادل|تعادل").test(title)) return true;
@@ -2286,8 +2286,22 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // publish state itself, so a release doesn't wait for the site's feed to rebuild — the
     // Harley Cameron and Paige stories were re-blocked by the stale feed flag (INCIDENTS #89).
     if (collection === "news" && !(tgDone && fbDone && igDone && xDone) && !(state as any).released?.[key]) {
-      const isSpoiler = item.single_match_result === true || isSingleMatchSpoiler(item.title, item.headline || item.description || "");
-      if (isSpoiler) {
+      // What goes out on social is the title and the start of the story (headline, description
+      // or the first ~220 letters of the page). The writer's flag marks any story about a show
+      // that just aired, even when only a later paragraph mentions a result — on its own it kept
+      // clean stories (a tribute, a medical clearance, a match announcement) off social
+      // (INCIDENTS #104). A flagged story is held only when that opening gives something away.
+      let why: HeldEntry["why"] | "" = isSingleMatchSpoiler(item.title, "") ? "title" : "";
+      let lead = "";
+      if (!why && item.single_match_result === true) {
+        lead = String(item.headline || item.description || "");
+        if (!lead) {
+          try { const r = await fetch(cacheBust(env.SITE_ORIGIN + (item.url || "")), { headers: { "Cache-Control": "no-cache" } }); if (r.ok) lead = extractSnippetFromHtml(await r.text()); } catch { /* next minute */ }
+        }
+        if (!lead) continue; // the page isn't readable yet: decide on the next tick
+        if (isSingleMatchSpoiler(lead, "")) why = "lead";
+      }
+      if (why) {
         state.telegram[key] = now;
         state.facebook[key] = now;
         state.instagram[key] = now;
@@ -2295,7 +2309,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         state.held = state.held || {};
         // Only a story that reached no platform yet is «held»; one already out (a title edited
         // into a spoiler later) is just stopped from going further.
-        if (!(tgDone || fbDone || igDone)) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: spoilerReason(item.title) };
+        if (!(tgDone || fbDone || igDone)) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}) };
         for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;

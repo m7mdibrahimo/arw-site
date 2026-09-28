@@ -1407,3 +1407,25 @@ test('when the main AI model is overloaded (503), the story is written with a fa
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('a story the writer flagged goes to social when its title and opening give nothing away, and is held when the opening does', async t => {
+  // INCIDENTS #104: the flag alone held a tribute, a medical clearance and a match announcement.
+  const database = ledger();
+  const fresh = new Date(Date.now() - 600_000).toISOString();
+  const items = [
+    { url: '/news/tribute/', title: 'الجماهير تتدفق على منشور أندرادي الأخير', description: 'تحولت صفحة التعليقات على منشور أندرادي إلى مساحة للعزاء بعد إعلان وفاة باك.', kind: 'news', date: fresh, published_at: fresh, single_match_result: true },
+    { url: '/news/challenge/', title: 'ويل أوسبراي يتحدى كازوتشيكا أوكادا لنزال في عرض Grand Slam باريس', description: 'تلقى أوسبراي تحديا جديدا عقب نجاحه في تجاوز عقبة جون موكسلي في عرض AEW All Out.', kind: 'news', date: fresh, published_at: fresh, single_match_result: true },
+  ];
+  const file = '/repos/owner/repo-flag/contents/_data/publish-state.json'; // own repo name: no cached state from other tests
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify({ telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} })).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.startsWith('https://site.test/')) return new Response('', { status: 404 });
+    return database.fetch(input, init);
+  });
+  for (let i = 0; i < 3; i++) await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-flag', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(!after.held?.httpssitetestnewstribute && !after.telegram.httpssitetestnewstribute, 'the tribute is not held (it only waits for the live page)');
+  assert.equal(after.held?.httpssitetestnewschallenge?.why, 'lead', 'the challenge story says Ospreay got past Moxley in its opening');
+});

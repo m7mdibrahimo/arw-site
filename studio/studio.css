@@ -603,3 +603,6 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
   .add-link { flex-direction: column; }
 }
 .batchbar[hidden] { display: none; }
+.clean-tag { color: var(--teal); font-weight: 800; }
+.post-preview { background: var(--cream); border-radius: 16px; padding: 12px 14px; margin: 8px 0; display: grid; gap: 6px; }
+.post-preview p { margin: 0; font-size: 13.5px; color: var(--muted); }

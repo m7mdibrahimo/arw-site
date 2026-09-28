@@ -7,6 +7,9 @@ import { html, mount, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 const REASON = { result: 'نتيجة أو حرق', return: 'عودة أو ظهور أول' };
 const PLATFORMS = [['telegram', 'تيليجرام', '#24a1de'], ['facebook', 'فيسبوك', '#1877f2'], ['instagram', 'إنستجرام', '#e1306c']];
 const FIRST = 7;
+// Why the shield held it: the title, the opening that goes out with it, or (older stories)
+// only the writer's broad flag — those show nothing on social.
+const why = (i) => i.why === 'flag' ? 'مفيهوش حرق ظاهر' : `${REASON[i.reason] || 'حرق'} ${i.why === 'lead' ? 'في أول الخبر' : 'في العنوان'}`;
 
 export async function renderHeld(el, { all = false } = {}) {
   if (!el) return;
@@ -20,7 +23,7 @@ export async function renderHeld(el, { all = false } = {}) {
   const row = (i) => html`<div class="row held-row ${i.releasedAt || i.dismissedAt ? 'is-done' : ''}">
     <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${i.image}" alt="" loading="lazy">` : ''}</a>
     <a class="row-main" href="${i.url}" target="_blank" title="افتح الخبر على الموقع"><b>${i.title}</b>
-      <small>${REASON[i.reason] || 'حرق'} · ${i.releasedAt ? `نشرته ${timeAgo(i.releasedAt)}` : i.dismissedAt ? `سبته ${timeAgo(i.dismissedAt)}` : timeAgo(i.at)}</small></a>
+      <small>${i.why === 'flag' ? html`<span class="clean-tag">${why(i)}</span>` : why(i)} · ${i.releasedAt ? `نشرته ${timeAgo(i.releasedAt)}` : i.dismissedAt ? `سبته ${timeAgo(i.dismissedAt)}` : timeAgo(i.at)}</small></a>
     <span class="row-actions">${i.releasedAt
       ? (i.sent && (i.sent.telegram || i.sent.facebook)
           ? html`<span class="plat-dots">${PLATFORMS.map(([k, n, c]) => html`<i class="${i.sent[k] ? 'on' : ''}" style="--c:${c}" title="${n}">${icon(k)}</i>`)}</span>`
@@ -42,7 +45,9 @@ export async function renderHeld(el, { all = false } = {}) {
     const i = find(b.dataset.publish);
     const ok = await dialog({
       title: 'نشر الخبر على السوشيال',
-      body: html`<p>«${i.title}»</p><p class="muted small">اتحجب تلقائي عشان شكله فيه حرق (${REASON[i.reason] || 'حرق'}). هيتنشر على تيليجرام وفيسبوك وإنستجرام خلال دقايق ومش هينفع يترجع. متأكد إن مفيهوش حرق؟</p>`,
+      body: html`<p class="muted small">ده اللي هيتنشر (${why(i)}):</p>
+        <div class="post-preview"><b>${i.title}</b>${i.lead ? html`<p>${i.lead}…</p>` : ''}</div>
+        <p class="muted small">هيتنشر على تيليجرام وفيسبوك وإنستجرام خلال دقايق، ومش هينفع يترجع.</p>`,
       confirm: 'أيوه، انشره',
     });
     if (!ok) return;
