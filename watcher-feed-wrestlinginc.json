@@ -1,5 +1,15 @@
 [
   {
+    "id": 3123673851,
+    "link": "https://www.wrestlinginc.com/2270273/hofer-eric-bischoff-wonders-wwe-upcoming-saudi-show/",
+    "date": "Mon, 28 Sep 2026 13:00:00 +0000",
+    "date_gmt": "2026-09-28T13:00:00.000Z",
+    "title": {
+      "rendered": "HOFer Eric Bischoff Wonders How WWE Pulls Off Upcoming Saudi Show"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/hofer-eric-bischoff-wonders-how-wwe-pulls-off-upcoming-saudi-show/l-intro-1790576701.jpg"
+  },
+  {
     "id": 2869507104,
     "link": "https://www.wrestlinginc.com/2267281/wwe-hofer-ric-flair-character-reckless-spending/",
     "date": "Mon, 28 Sep 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On Why WWE Chose Not To Broadcast Worlds Collide 2026 Live"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-why-wwe-chose-not-to-broadcast-worlds-collide-2026-live/l-intro-1790520882.jpg"
-  },
-  {
-    "id": 2858714451,
-    "link": "https://www.wrestlinginc.com/2266038/wwe-hofer-dvon-dudley-calls-zelina-vega-911-every-year/",
-    "date": "Sun, 27 Sep 2026 14:30:00 +0000",
-    "date_gmt": "2026-09-27T14:30:00.000Z",
-    "title": {
-      "rendered": "WWE HOFer Calls FKA Zelina Vega On 9/11 Every Year"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-calls-fka-zelina-vega-on-911-every-year/l-intro-1790121137.jpg"
   }
 ]
