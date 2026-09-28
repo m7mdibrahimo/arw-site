@@ -1,5 +1,15 @@
 [
   {
+    "id": 330928,
+    "link": "https://www.fightful.com/wrestling/wrestling-world-remembers-pac-benjamin-satterley/",
+    "date": "2026-09-27T22:06:26",
+    "date_gmt": "2026-09-28T02:06:26",
+    "title": {
+      "rendered": "Wrestling World Remembers Pac (Benjamin Satterley)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27215620/pac-aew-all-elite-wrestling.webp"
+  },
+  {
     "id": 330921,
     "link": "https://www.fightful.com/wrestling/pac-benjamin-satterley-passes-away/",
     "date": "2026-09-27T21:16:22",
@@ -288,15 +298,5 @@
       "rendered": "NJPW Destruction In Kobe Results (9/27): Yota Tsuji vs. Hirooki Goto, Gabe Kidd vs. Drilla Moloney"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19231737/20260927_DEST_09.jpg"
-  },
-  {
-    "id": 330802,
-    "link": "https://www.fightful.com/wrestling/tony-khan-was-surprised-that-wwe-was-surprised-aew-all-out-sold-so-well-weve-sold-out-this-arena-many-times/",
-    "date": "2026-09-27T01:44:10",
-    "date_gmt": "2026-09-27T05:44:10",
-    "title": {
-      "rendered": "Tony Khan Was Surprised That WWE Was Surprised AEW All Out Sold So Well, &#8216;We&#8217;ve Sold Out This Arena Many Times&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/16020316/Screenshot-2026-03-16-at-1.54.10-AM.png"
   }
 ]
