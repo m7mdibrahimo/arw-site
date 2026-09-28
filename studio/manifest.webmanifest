@@ -1,0 +1,15 @@
+{
+  "name": "استوديو عرب راسلنج",
+  "short_name": "الاستوديو",
+  "start_url": "/studio/",
+  "scope": "/studio/",
+  "display": "standalone",
+  "dir": "rtl",
+  "lang": "ar",
+  "background_color": "#0a0e14",
+  "theme_color": "#0b1017",
+  "icons": [
+    { "src": "/apple-touch-icon.png?v=3", "sizes": "180x180", "type": "image/png" },
+    { "src": "/favicon.png?v=3", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

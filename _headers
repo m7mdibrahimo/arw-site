@@ -24,6 +24,13 @@
   Cache-Control: no-cache, no-store, must-revalidate, max-age=0
   Pragma: no-cache
 
+/studio/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+  Cache-Control: no-cache, must-revalidate, max-age=0
+
+/studio-data.json
+  Cache-Control: no-cache, must-revalidate, max-age=0
+
 /content/images/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=3600
   X-Content-Type-Options: nosniff

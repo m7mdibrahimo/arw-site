@@ -1,0 +1,17 @@
+---
+permalink: "/studio-data.json"
+eleventyExcludeFromCollections: true
+---
+{#- Data for the owner's panel (/studio/): every show, recap and nostalgia item with the
+    fields the panel needs to copy from the last episode and to flag what is missing.
+    Includes future-dated (scheduled) items, which the public pages hide. -#}
+{%- set sep = joiner(",") -%}
+[
+{%- for item in collections.all -%}
+{%- set m = item.inputPath.match(r/\/content\/(shows|recaps|nostalgia|nostalgia-series|news)\/([^\/]+)\.md$/) -%}
+{%- if m and m[1] != "news" -%}
+{{ sep() }}
+{ "collection": {{ ("nostalgia_series" if m[1] == "nostalgia-series" else m[1]) | jsonify | safe }}, "slug": {{ m[2] | jsonify | safe }}, "url": {{ (item.url | cleanUrl) | jsonify | safe }}, "title": {{ (item.data.title or "") | jsonify | safe }}, "headline": {{ (item.data.headline or "") | jsonify | safe }}, "program_name": {{ (item.data.program_name or "") | jsonify | safe }}, "federation": {{ (item.data.federation or "") | jsonify | safe }}, "show_type": {{ (item.data.show_type or "") | jsonify | safe }}, "is_annual": {{ true if item.data.is_annual else false }}, "description": {{ (item.data.description or "") | jsonify | safe }}, "tags": {{ (item.data.tags or []) | jsonify | safe }}, "event_date": {{ (item.data.event_date or "") | jsonify | safe }}, "date": {{ item.date | jsonify | safe }}, "duration": {{ (item.data.duration or "") | string | jsonify | safe }}, "image": {{ (item.data.image or "") | jsonify | safe }}, "servers": {{ (item.data.servers or []) | length }}, "downloads": [{{ (item.data.downloads_low or "") | string | length }}, {{ (item.data.downloads_medium or "") | string | length }}, {{ (item.data.downloads_high or "") | string | length }}, {{ (item.data.downloads or "") | string | length }}], "maintenance": {{ true if item.data.maintenance else false }}, "nostalgia_series": {{ (item.data.nostalgia_series or "") | jsonify | safe }}, "nostalgia_order": {{ (item.data.nostalgia_order or 0) | jsonify | safe }}, "year": {{ (item.data.year or "") | string | jsonify | safe }}, "series_type": {{ (item.data.series_type or "") | jsonify | safe }} }
+{%- endif -%}
+{%- endfor %}
+]

@@ -16,6 +16,10 @@
           if (user?.token) { token = user.token; break; }
         } catch (_) {}
       }
+      // …or a session from the new panel (/studio/)
+      if (!token) {
+        try { token = localStorage.getItem('arw_studio_token') || sessionStorage.getItem('arw_studio_token') || ''; } catch (_) {}
+      }
       if (!token) throw new Error('افتح لوحة الإدارة /admin/ وسجّل الدخول بحساب GitHub، ثم ارجع إلى هذه الصفحة.');
       const headers = new Headers(init.headers || (input instanceof Request ? input.headers : undefined));
       headers.set('Authorization', `Bearer ${token}`);

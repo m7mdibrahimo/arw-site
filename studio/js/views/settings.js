@@ -1,0 +1,75 @@
+// Account & security: password, signed-in devices, login history.
+import { api, saveSession, clearSession, getUser, IS_LOCAL } from '../api.js';
+import { html, mount, $, icon, toast, dialog, timeAgo, fmtDate } from '../ui.js';
+
+function device(ua = '') {
+  const os = /iPhone|iPad/.test(ua) ? 'آيفون' : /Android/.test(ua) ? 'أندرويد' : /Mac OS/.test(ua) ? 'ماك' : /Windows/.test(ua) ? 'ويندوز' : /Linux/.test(ua) ? 'لينكس' : 'جهاز';
+  const br = /Edg\//.test(ua) ? 'إيدج' : /Chrome\//.test(ua) ? 'كروم' : /Safari\//.test(ua) ? 'سفاري' : /Firefox\//.test(ua) ? 'فايرفوكس' : '';
+  return [os, br].filter(Boolean).join(' · ');
+}
+const EVENTS = { login: 'دخول ناجح', failed: 'محاولة فاشلة', setup: 'إنشاء الحساب', reset: 'تغيير كلمة السر' };
+
+export async function renderSettings(page) {
+  const user = getUser() || {};
+  mount(page, html`
+    <div class="wrap page-in">
+    <div class="page-title"><div><h1>الإعدادات والأمان</h1><p class="muted">حسابك والأجهزة اللي داخلة بيه.</p></div></div>
+    <div class="grid-2">
+      <section class="card"><header class="card-head"><h2>${icon('user')} الحساب</h2></header>
+        <div class="card-body"><div class="acct"><span class="avatar avatar-lg">${(user.username || 'م')[0].toUpperCase()}</span><div><b>${user.username || ''}</b><small class="muted">${user.email || ''}</small></div></div>
+        <p class="muted small">تقدر تدخل باسم المستخدم أو بالإيميل.</p></div></section>
+      <section class="card"><header class="card-head"><h2>${icon('lock')} تغيير كلمة السر</h2></header>
+        <form class="card-body" id="pw-form">
+          <label class="field"><span>كلمة السر الحالية</span><input class="input" type="password" id="pw-cur" autocomplete="current-password" dir="ltr"></label>
+          <label class="field"><span>كلمة السر الجديدة</span><input class="input" type="password" id="pw-new" autocomplete="new-password" dir="ltr"></label>
+          <label class="field"><span>أكّد الجديدة</span><input class="input" type="password" id="pw-new2" autocomplete="new-password" dir="ltr"></label>
+          <button class="btn btn-primary" id="pw-btn">حفظ كلمة السر</button>
+          <p class="muted small">بعد التغيير كل الأجهزة التانية هيتعمل لها خروج.</p>
+        </form></section>
+    </div>
+    <section class="card"><header class="card-head"><h2>${icon('shield')} الأجهزة الداخلة</h2><button class="btn btn-danger btn-sm" id="out-all">${icon('logout')} خروج من كل الأجهزة</button></header>
+      <div class="card-body" id="sessions"><div class="skel-lines"></div></div></section>
+    <section class="card"><header class="card-head"><h2>${icon('clock')} سجل الدخول</h2></header><div class="card-body" id="log"><div class="skel-lines"></div></div></section>
+    </div>
+  `);
+
+  $('#pw-form').onsubmit = async (e) => {
+    e.preventDefault();
+    if ($('#pw-new').value !== $('#pw-new2').value) return toast('كلمتين السر الجديدة مش زي بعض.', 'error');
+    const btn = $('#pw-btn'); btn.disabled = true;
+    try {
+      const r = await api.changePassword({ current: $('#pw-cur').value, next: $('#pw-new').value });
+      let remember = false;
+      try { remember = !!localStorage.getItem('arw_studio_token'); } catch {}
+      saveSession({ token: r.token, user, remember });
+      toast('اتغيرت كلمة السر، والأجهزة التانية اتعمل لها خروج.');
+      e.target.reset();
+      load();
+    } catch (ex) { toast(ex.message, 'error'); } finally { btn.disabled = false; }
+  };
+  $('#out-all').onclick = async () => {
+    const ok = await dialog({ title: 'خروج من كل الأجهزة', body: 'كل الأجهزة، بما فيها الجهاز ده، هتحتاج تسجيل دخول من جديد.', confirm: 'خروج من الكل', danger: true });
+    if (!ok) return;
+    try { await api.logoutAll(); } catch {}
+    clearSession();
+    location.reload();
+  };
+
+  async function load() {
+    try {
+      const r = await api.sessions();
+      mount($('#sessions'), r.sessions.length ? html`<div class="sess-list">${r.sessions.map(s => html`<div class="sess ${s.id === r.current ? 'current' : ''}">
+        <i>${icon(/iPhone|Android/.test(s.ua) ? 'user' : 'globe')}</i>
+        <div><b>${device(s.ua)} ${s.id === r.current ? html`<span class="tag tag-auto">الجهاز ده</span>` : ''}</b>
+        <small class="muted">${s.place || 'مكان غير معروف'} · دخل ${timeAgo(s.createdAt)} · ${s.remember ? `فاكره لحد ${fmtDate(s.expiresAt)}` : 'جلسة مؤقتة'}</small></div></div>`)}</div>`
+        : html`<p class="muted">مفيش أجهزة.</p>`);
+      mount($('#log'), r.log.length ? html`<div class="log-list">${r.log.map(l => html`<div class="log ${l.event === 'failed' ? 'bad' : ''}"><span>${EVENTS[l.event] || l.event}</span><small class="muted">${device(l.ua)} · ${l.place || ''} · ${timeAgo(l.at)}</small></div>`)}</div>`
+        : html`<p class="muted">السجل فاضي.</p>`);
+    } catch (e) {
+      mount($('#sessions'), html`<p class="muted">${e.message}</p>`);
+      mount($('#log'), html``);
+    }
+  }
+  load();
+  if (IS_LOCAL) toast('النسخة التجريبية: الحساب ده على جهازك بس، منفصل عن حساب الموقع.', 'info', 5000);
+}

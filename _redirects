@@ -1,3 +1,5 @@
+/studio/%E2%80%8E /studio/ 301
+/studio/%E2%80%8F /studio/ 301
 # Redirect Cloudflare Pages domain to primary custom domain
 https://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!

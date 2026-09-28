@@ -10,7 +10,7 @@
     "watch:news:daemon": "tsx scripts/fightful-watcher.ts --daemon",
     "update:feed": "tsx scripts/update-feed.ts",
     "video:news": "tsx scripts/generate-news-video.ts",
-    "test:publishing": "tsx --test tests/publishing.test.mts"
+    "test:publishing": "tsx --test tests/publishing.test.mts tests/studio.test.mts"
   },
   "dependencies": {
     "express": "^4.21.2",

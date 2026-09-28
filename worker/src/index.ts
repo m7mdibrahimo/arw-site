@@ -30,6 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
+import { handleStudio, studioAuthorized, readRepoFile } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -2468,13 +2469,51 @@ async function sendPushToAllSubscribers(
   return { success: true, sentCount, totalSubs: subs.length };
 }
 
+// ── Studio dashboard: social publishing, Instagram room and the news sources, in one call ──
+async function studioOverview(env: Env, body: any) {
+  // Read through the studio helper so the local copy of the worker (no token) works too
+  const stateFile = await readRepoFile(env, env.GITHUB_STATE_PATH);
+  const state: any = stateFile ? JSON.parse(stateFile.content) : {};
+  const now = Date.now();
+  const platforms: Record<string, { last24h: number; last: number }> = {};
+  for (const p of ["telegram", "facebook", "instagram", "x"] as const) {
+    const times = Object.values((state as any)[p] || {}).map(Number).filter(Boolean);
+    platforms[p] = { last24h: times.filter(t => now - t < 86400_000).length, last: times.length ? Math.max(...times) : 0 };
+  }
+  const urls: string[] = Array.isArray(body?.urls) ? body.urls.slice(0, 40).map(String) : [];
+  const items: Record<string, any> = {};
+  for (const u of urls) {
+    const key = sanitizeKey(normalizeArticleUrl(new URL(u, env.SITE_ORIGIN).href));
+    items[u] = {
+      telegram: (state as any).telegram?.[key] || 0, facebook: (state as any).facebook?.[key] || 0,
+      instagram: (state as any).instagram?.[key] || 0, released: !!(state as any).released?.[key],
+      deferred: !!(state as any).deferrals?.[key],
+    };
+  }
+  const sources: any[] = [];
+  for (const [name, file] of [["فايتفول", "watcher-state.json"], ["رسلينغ إنك", "wrestlinginc-state.json"], ["رينغسايد نيوز", "ringsidenews-state.json"]]) {
+    try {
+      const f = await readRepoFile(env, file);
+      const d = f ? JSON.parse(f.content) : {};
+      sources.push({ name, lastChecked: d.lastChecked || null, enabled: d.enabled !== false, processed: (d.processedIds || []).length });
+    } catch { sources.push({ name, lastChecked: null, enabled: null, processed: 0 }); }
+  }
+  let instagram: any = null;
+  try {
+    const q = await instagramQuota(env);
+    instagram = { used24h: (await instagramActionsLast24h(env)).length, cap: q ? Math.max(IG_DAILY_CAP, q.total - IG_QUOTA_MARGIN) : IG_DAILY_CAP, quota: q };
+  } catch { /* the dashboard shows «غير متاح» */ }
+  return { success: true, platforms, items, sources, instagram, deferrals: Object.keys((state as any).deferrals || {}).length,
+    automatic: { instagram: env.INSTAGRAM_AUTO_ENABLED !== "false", x: env.X_AUTO_ENABLED !== "false" } };
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // HTTP router
 // ─────────────────────────────────────────────────────────────────────────
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
@@ -2493,9 +2532,18 @@ export default {
     const path = url.pathname;
 
     try {
+      // The owner's panel (/studio/): its own login and sessions, checked inside handleStudio.
+      if (path === "/api/studio/overview" && request.method === "POST") {
+        if (!(await studioAuthorized(request, env))) return json({ success: false, auth: false, error: "انتهت الجلسة. سجّل الدخول من جديد." }, 401);
+        return json(await studioOverview(env, await request.json().catch(() => ({}))));
+      }
+      const studio = await handleStudio(request, env, path, json);
+      if (studio) return studio;
+
       const publicMutations = new Set(["/api/push/subscribe", "/api/push/unsubscribe"]);
       if (!["GET", "HEAD"].includes(request.method) && !publicMutations.has(path)) {
-        if (!(await authorizeAdmin(request, env))) return json({ success: false, error: "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع." }, 401);
+        // A GitHub token from the old panel, or a session from the new one (/studio/)
+        if (!(await authorizeAdmin(request, env)) && !(await studioAuthorized(request, env))) return json({ success: false, error: "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع." }, 401);
       }
       // ── Telegram/Facebook/Instagram config sanity checks ──
       if (path === "/api/telegram/status" && request.method === "GET") {
