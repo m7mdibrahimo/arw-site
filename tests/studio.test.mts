@@ -251,3 +251,17 @@ test('the single-owner account moves to the new system with its password and ses
   assert.equal(r.status, 200);
   assert.equal(r.data.user.role, 'owner');
 });
+
+test('the old /admin/ panel is gone and every one of its jobs lives in the panel', async () => {
+  const fs = await import('node:fs');
+  assert.ok(!fs.existsSync('admin'), 'no old panel files');
+  const redirects = fs.readFileSync('_redirects', 'utf8');
+  for (const [from, to] of [['/admin/publish.html', '/studio/#/tools/social'], ['/admin/watcher.html', '/studio/#/tools/sources'], ['/admin/pinned.html', '/studio/#/tools/pinned'], ['/admin/reels.html', '/studio/#/tools/reels'], ['/admin', '/studio/'], ['/admin/*', '/studio/']]) {
+    assert.ok(redirects.includes(`${from} ${to} 301`), `${from} → ${to}`);
+  }
+  const app = fs.readFileSync('studio/js/app.js', 'utf8');
+  for (const tool of ['social', 'sources', 'pinned', 'reels']) assert.match(app, new RegExp(`#/tools/${tool}`));
+  const worker = fs.readFileSync('worker/src/index.ts', 'utf8');
+  for (const route of ['/api/studio/tools/social', '/api/studio/tools/sources', '/api/studio/tools/pinned', '/api/studio/tools/reels']) assert.ok(worker.includes(route), route);
+  assert.ok(!fs.readFileSync('eleventy.config.js', 'utf8').includes('addPassthroughCopy("admin/'));
+});

@@ -2628,11 +2628,15 @@ async function studioSources(env: Env) {
       const site = onSite.get(id);
       const title = String(p.title?.rendered ?? p.title ?? "").replace(/<[^>]+>/g, "")
         .replace(/&#(\d+);/g, (_m: string, n: string) => String.fromCharCode(Number(n))).replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+      const skipReason = skips?.[String(p.link || "")]?.reason || "";
+      // Fightful's date_gmt has no «Z»; read as local time it was hours off.
+      const gmt = String(p.date_gmt || "");
+      const date = gmt ? (/[zZ]|[+-]\d\d:?\d\d$/.test(gmt) ? gmt : `${gmt}Z`) : String(p.date || "");
       return {
-        id, link: String(p.link || ""), title, date: p.date_gmt || p.date || "",
-        status: site ? "site" : done.has(id) ? "skipped" : "waiting",
+        id, link: String(p.link || ""), title, date,
+        status: site ? "site" : done.has(id) || skipReason ? "skipped" : "waiting",
         site: site ? { url: site.url, title: site.title } : null,
-        skipReason: skips?.[String(p.link || "")]?.reason || "",
+        skipReason,
       };
     });
     sources.push({ id: s.id, name: s.name, lastChecked: st?.lastChecked || null, processed: (st?.processedIds || []).length,
@@ -2720,7 +2724,7 @@ export default {
       const publicMutations = new Set(["/api/push/subscribe", "/api/push/unsubscribe"]);
       if (!["GET", "HEAD"].includes(request.method) && !publicMutations.has(path)) {
         // A GitHub token from the old panel, or a session from the new one (/studio/) with the «tools» permission
-        if (!(await authorizeAdmin(request, env)) && !(await studioAuthorized(request, env, "tools"))) return json({ success: false, error: "سجّل الدخول من لوحة الإدارة بحساب GitHub لديه صلاحية تعديل الموقع." }, 401);
+        if (!(await authorizeAdmin(request, env)) && !(await studioAuthorized(request, env, "tools"))) return json({ success: false, error: "سجّل الدخول من لوحة التحكم (/studio/) بحساب معاه صلاحية «أدوات النشر»." }, 401);
       }
       // ── Telegram/Facebook/Instagram config sanity checks ──
       if (path === "/api/telegram/status" && request.method === "GET") {
@@ -2879,7 +2883,7 @@ export default {
         const key = sanitizeKey(normalizeArticleUrl(itemUrl));
         const wanted: Platform[] = Array.isArray(platforms) && platforms.length ? platforms : ["telegram", "facebook", "instagram", "x"];
         if (wanted.length !== 1 || !["telegram", "facebook", "instagram", "x"].includes(wanted[0])) {
-          return json({ success: false, error: "أرسل منصة واحدة في كل طلب نشر؛ حدّث لوحة الإدارة إلى أحدث نسخة." }, 400);
+          return json({ success: false, error: "أرسل منصة واحدة في كل طلب نشر؛ حدّث صفحة لوحة التحكم." }, 400);
         }
         if (!await eligiblePublication(env, String(itemUrl))) {
           return json({ success: false, code: "CONTENT_NOT_ELIGIBLE", error: "المحتوى القديم أو غير المؤكد مستبعد من النشر." }, 409);

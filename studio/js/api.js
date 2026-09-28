@@ -54,6 +54,32 @@ async function call(path, { method = 'GET', body, auth = true } = {}) {
   return data;
 }
 
+/** Like call(), but hands back a «didn't work» answer (success:false) instead of throwing —
+ *  the publishing tools show each platform's own result. Network/permission errors still throw. */
+async function callResult(path, opts = {}) {
+  try { return await call(path, opts); }
+  catch (e) { if (e.data && (e.data.results || e.data.code) && e.status !== 401 && e.status !== 403) return e.data; throw e; }
+}
+
+// ── Publishing tools (the old /admin/ pages, now in the panel) ──────────────
+export const tools = {
+  socialStatus: (urls) => call('/api/studio/tools/social', { method: 'POST', body: { urls } }),
+  /** One platform per request (the worker's rule), so each gets its own result. */
+  publish: (item, platform, force = false) => callResult('/api/social/manual-publish', { method: 'POST', body: {
+    title: item.title, text: item.headline || item.description || '', url: `https://arab-wrestling.com${item.url}`, image: item.image, kind: item.kind, platforms: [platform], force } }),
+  sources: () => call('/api/studio/tools/sources'),
+  pause: (paused) => call('/api/watcher/toggle', { method: 'POST', body: { enabled: !paused } }),
+  addNews: (urls) => call('/api/watcher/dispatch', { method: 'POST', body: { urls } }),
+  checkAll: () => call('/api/watcher/dispatch', { method: 'POST', body: {} }),
+  pinned: () => call('/api/studio/tools/pinned'),
+  savePinned: (items, sha) => call('/api/studio/tools/pinned', { method: 'POST', body: { items, sha } }),
+  reels: () => call('/api/studio/tools/reels'),
+  reelCheck: (slug) => callResult(`/api/videos/check?slug=${encodeURIComponent(slug)}`),
+  makeReel: (slug) => call('/api/videos/dispatch', { method: 'POST', body: { slug } }),
+  deleteReel: (filename) => call('/api/videos/delete', { method: 'POST', body: { filename } }),
+  publishReel: (video, platform, postUrl, title) => callResult('/api/videos/publish-social', { method: 'POST', body: { videoUrl: video.videoUrl, platforms: [platform], postUrl, title } }),
+};
+
 // ── Account ────────────────────────────────────────────────────────────────
 export const api = {
   status: () => call('/api/studio/status', { auth: false }),

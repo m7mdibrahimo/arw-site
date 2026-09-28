@@ -72,15 +72,8 @@ export async function renderLogin(root, { onDone, reason } = {}) {
   };
 }
 
-/** GitHub sign-in popup — the same one the old panel uses, only to prove ownership. */
+/** GitHub sign-in popup, only to prove ownership (first setup and password reset). */
 function githubToken() {
-  // Already signed in to the old panel on this site: use that
-  try {
-    for (const k of ['decap-cms-user', 'netlify-cms-user']) {
-      const u = JSON.parse(localStorage.getItem(k) || 'null');
-      if (u && u.token) return Promise.resolve(u.token);
-    }
-  } catch {}
   return new Promise((resolve, reject) => {
     const w = window.open(`${AUTH_BASE}/auth?provider=github&site_id=${encodeURIComponent(location.hostname)}&scope=repo`, 'arw-github', 'width=620,height=720');
     if (!w) return reject(new Error('المتصفح منع النافذة. اسمح بالنوافذ المنبثقة للموقع وجرّب تاني.'));

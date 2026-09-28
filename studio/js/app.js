@@ -8,14 +8,15 @@ import { renderList } from './views/list.js';
 import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js';
 import { renderSettings } from './views/settings.js';
 import { renderMembers, renderActivity } from './views/members.js';
+import { renderSocialTool, renderSourcesTool, renderPinnedTool, renderReelsTool } from './views/tools.js';
 import { renderForceChange } from './views/auth.js';
 
 const root = document.getElementById('app');
 const TOOLS = [
-  { href: '/admin/publish.html', icon: 'send', title: 'النشر اليدوي', text: 'انشر عرضا أو خبرا على المنصات' },
-  { href: '/admin/watcher.html', icon: 'bolt', title: 'سحب الأخبار', text: 'الأخبار التلقائية ومصادرها' },
-  { href: '/admin/pinned.html', icon: 'pin', title: 'المواضيع المثبتة', text: 'شريط العروض في الرئيسية' },
-  { href: '/admin/reels.html', icon: 'film', title: 'استوديو الريلز', text: 'فيديوهات العروض القصيرة' },
+  { href: '#/tools/social', icon: 'send', title: 'النشر على المنصات', text: 'انشر عرضا أو خبرا على المنصات' },
+  { href: '#/tools/sources', icon: 'bolt', title: 'مصادر الأخبار', text: 'الأخبار التلقائية ومصادرها' },
+  { href: '#/tools/pinned', icon: 'pin', title: 'المثبت في الرئيسية', text: 'شريط العروض في الرئيسية' },
+  { href: '#/tools/reels', icon: 'film', title: 'الريلز', text: 'فيديوهات العروض القصيرة' },
 ];
 export { TOOLS };
 
@@ -40,7 +41,7 @@ function renderShell(user) {
           ${can(user, 'tools') ? html`<div class="menu" id="tools-menu">
             <button class="tab" type="button">${icon('tools')}الأدوات</button>
             <div class="menu-pop" hidden>
-              ${TOOLS.map(t => html`<a href="${t.href}" target="_blank">${icon(t.icon)}${t.title}</a>`)}
+              ${TOOLS.map(t => html`<a href="${t.href}">${icon(t.icon)}${t.title}</a>`)}
               <a href="/" target="_blank">${icon('globe')}فتح الموقع</a>
             </div>
           </div>` : ''}
@@ -145,6 +146,7 @@ let lastHash = location.hash;
 let routeSeq = 0;
 async function route() {
   const seq = ++routeSeq;
+  window.onbeforeunload = null; // a tool page's «unsaved changes» guard ends with the page
   const page = $('#page');
   if (!page) return;
   const hash = location.hash || '#/';
@@ -165,6 +167,10 @@ async function route() {
     if (parts[0] === 'new' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.create`) ? await renderEditor(page, parts[1], null, { from: parts[2] || null }) : noAccess();
     if (parts[0] === 'edit' && COLLECTIONS[parts[1]] && parts[2]) return can(user, `${sec(parts[1])}.view`) ? await renderEditor(page, parts[1], parts.slice(2).join('/')) : noAccess();
     if (parts[0] === 'settings') return await renderSettings(page);
+    if (parts[0] === 'tools') {
+      const view = { social: renderSocialTool, sources: renderSourcesTool, pinned: renderPinnedTool, reels: renderReelsTool }[parts[1]];
+      if (view) return can(user, 'tools') ? await view(page) : noAccess();
+    }
     if (parts[0] === 'members') return user && user.role === 'owner' ? await renderMembers(page, parts[1] || null) : noAccess();
     if (parts[0] === 'activity') return user && user.role === 'owner' ? await renderActivity(page) : noAccess();
     mount(page, html`<div class="empty"><h2>الصفحة مش موجودة</h2><a class="btn" href="#/">الرئيسية</a></div>`);

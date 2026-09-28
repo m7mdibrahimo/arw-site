@@ -1,3 +1,10 @@
+# The old panel (/admin/, retired 2026-09-28) → the panel, each old tool to its new page
+/admin/publish.html /studio/#/tools/social 301
+/admin/watcher.html /studio/#/tools/sources 301
+/admin/pinned.html /studio/#/tools/pinned 301
+/admin/reels.html /studio/#/tools/reels 301
+/admin /studio/ 301
+/admin/* /studio/ 301
 /studio/%E2%80%8E /studio/ 301
 /studio/%E2%80%8F /studio/ 301
 # Redirect Cloudflare Pages domain to primary custom domain

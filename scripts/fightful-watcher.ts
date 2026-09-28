@@ -3827,20 +3827,6 @@ ${finalBody}
     } catch (e) {}
   }
 
-  // Update admin-file-order.json so updated article appears at the very top of Decap CMS
-  const orderPath = path.join(process.cwd(), "admin-file-order.json");
-  if (fs.existsSync(orderPath)) {
-    try {
-      let order = JSON.parse(fs.readFileSync(orderPath, "utf-8"));
-      if (Array.isArray(order)) {
-        if (oldFileName) order = order.filter(f => f !== oldFileName);
-        order = order.filter(f => f !== targetFileName);
-        order.unshift(targetFileName);
-        fs.writeFileSync(orderPath, JSON.stringify(order, null, 2), "utf-8");
-      }
-    } catch (e) {}
-  }
-
   // Handle publish-state for this article:
   // If this is a single-match result, mark it as claimed across all social platforms
   // so social feeds remain 100% spoiler-free!

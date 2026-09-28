@@ -1,5 +1,5 @@
 // Content model of the site — the same folders, file names, field names and order as
-// admin/config.yml, so a file saved here is byte-for-byte what the old panel would save.
+// the old Decap panel had (retired 2026-09-28), so saved files stay byte-for-byte the same.
 import { parse as parseYaml, stringify as stringifyYaml } from '../vendor/yaml/index.js';
 
 export const FEDERATIONS = ['WWE', 'AEW', 'TNA', 'ROH', 'MMA', 'INDIE'];
