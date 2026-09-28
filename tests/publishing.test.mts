@@ -1551,3 +1551,10 @@ test('a connective written twice in a row is collapsed before publishing', () =>
   assert.equal(autoFix('قال: لا لا يمكن'), 'قال: لا لا يمكن', 'a quoted «no, no» stays');
   assert.equal(autoFix('أنا أنت'), 'أنا أنت', 'only whole repeated words');
 });
+
+test('«ة» glued to the next word gets its space back', () => {
+  // INCIDENTS #107: «عرابتها الأولى في عالم المصارعةجاز», «المصارعةالحرة»
+  assert.equal(autoFix('في عالم المصارعةجاز'), 'في عالم المصارعة جاز');
+  assert.equal(autoFix('المصارعةالحرة'), 'المصارعة الحرة');
+  assert.equal(autoFix('المصارعة الحرة وجماعة'), 'المصارعة الحرة وجماعة', 'correct text untouched');
+});
