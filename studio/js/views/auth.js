@@ -111,6 +111,7 @@ export function renderSetup(root, { onDone, first = false, reset = false } = {})
         : html`<button type="button" class="btn btn-dark btn-block" id="gh-btn">${icon('shield')} تأكيد الملكية بحساب جيت هب</button>
                <p class="muted small">حساب جيت هب بيستخدم هنا مرة واحدة بس، عشان محدش غيرك يقدر يعمل الحساب.</p>`}
     </div>
+    <label class="field"><span>اسمك <em>بيظهر في الترحيب — اختياري</em></span><input class="input" id="s-name" dir="auto" maxlength="40" placeholder="مثال: محمد"></label>
     <label class="field"><span>اسم المستخدم</span><input class="input" id="s-user" autocomplete="username" dir="ltr" placeholder="مثال: mohamed" autocapitalize="off" spellcheck="false"></label>
     <label class="field"><span>الإيميل</span><input class="input" id="s-mail" type="email" autocomplete="email" dir="ltr" placeholder="name@example.com"></label>
     <label class="field"><span>كلمة السر</span><div class="input-ico">${icon('lock')}<input class="input" id="s-pass" type="password" autocomplete="new-password" dir="ltr"></div>
@@ -152,7 +153,7 @@ export function renderSetup(root, { onDone, first = false, reset = false } = {})
     const btn = $('#setup-btn');
     btn.disabled = true; btn.classList.add('loading');
     try {
-      await api.setup({ githubToken: ghToken, username, email, password });
+      await api.setup({ githubToken: ghToken, username, email, password, displayName: $('#s-name').value.trim() });
       const r = await api.login({ login: username, password, remember: true });
       saveSession({ token: r.token, user: r.user, remember: true });
       toast(first ? 'تم إنشاء الحساب. أهلا بيك!' : 'تم تغيير كلمة السر.');

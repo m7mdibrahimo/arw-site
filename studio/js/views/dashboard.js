@@ -75,7 +75,7 @@ export async function renderDashboard(page) {
   mount(page, html`
     <div class="wrap page-in">
       <div class="page-title hello">
-        <div><h1>أهلا يا <span>${user && user.username ? user.username : 'محمد'}</span>،<br>${summary ? `النهارده نزل ${summary}.` : 'لسه مفيش جديد النهارده.'}</h1>
+        <div><h1>أهلا يا <span>${user ? (user.displayName || user.username) : ''}</span>،<br>${summary ? `النهارده نزل ${summary}.` : 'لسه مفيش جديد النهارده.'}</h1>
           <p class="muted">${greet} · ${fmtDate(now)}</p></div>
         <div class="page-actions">
           <a class="btn btn-primary" href="#/new/shows">${icon('plus')} عرض جديد</a>

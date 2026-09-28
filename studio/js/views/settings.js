@@ -1,5 +1,5 @@
 // Account & security: password, signed-in devices, login history.
-import { api, saveSession, clearSession, getUser, IS_LOCAL } from '../api.js';
+import { api, saveSession, clearSession, getUser, updateUser, IS_LOCAL } from '../api.js';
 import { html, mount, $, icon, toast, dialog, timeAgo, fmtDate } from '../ui.js';
 
 function device(ua = '') {
@@ -16,8 +16,12 @@ export async function renderSettings(page) {
     <div class="page-title"><div><h1>الإعدادات والأمان</h1><p class="muted">حسابك والأجهزة اللي داخلة بيه.</p></div></div>
     <div class="grid-2">
       <section class="card"><header class="card-head"><h2>${icon('user')} الحساب</h2></header>
-        <div class="card-body"><div class="acct"><span class="avatar avatar-lg">${(user.username || 'م')[0].toUpperCase()}</span><div><b>${user.username || ''}</b><small class="muted">${user.email || ''}</small></div></div>
-        <p class="muted small">تقدر تدخل باسم المستخدم أو بالإيميل.</p></div></section>
+        <div class="card-body"><div class="acct"><span class="avatar avatar-lg">${(user.displayName || user.username || 'م')[0].toUpperCase()}</span><div><b>${user.displayName || user.username || ''}</b><small class="muted">${user.email || ''}</small></div></div>
+        <p class="muted small">تقدر تدخل باسم المستخدم أو بالإيميل.</p>
+        <form id="name-form" class="name-form">
+          <label class="field"><span>اسمك <em>بيظهر في «أهلا يا …»</em></span><input class="input" id="display-name" maxlength="40" dir="auto" placeholder="مثال: محمد" value="${user.displayName || ''}"></label>
+          <button class="btn btn-primary" id="name-btn">حفظ الاسم</button>
+        </form></div></section>
       <section class="card"><header class="card-head"><h2>${icon('lock')} تغيير كلمة السر</h2></header>
         <form class="card-body" id="pw-form">
           <label class="field"><span>كلمة السر الحالية</span><input class="input" type="password" id="pw-cur" autocomplete="current-password" dir="ltr"></label>
@@ -33,6 +37,15 @@ export async function renderSettings(page) {
     </div>
   `);
 
+  $('#name-form').onsubmit = async (e) => {
+    e.preventDefault();
+    const btn = $('#name-btn'); btn.disabled = true;
+    try {
+      const r = await api.saveProfile({ displayName: $('#display-name').value });
+      updateUser(r.user);
+      toast('اتحفظ الاسم ✓');
+    } catch (ex) { toast(ex.message, 'error'); } finally { btn.disabled = false; }
+  };
   $('#pw-form').onsubmit = async (e) => {
     e.preventDefault();
     if ($('#pw-new').value !== $('#pw-new2').value) return toast('كلمتين السر الجديدة مش زي بعض.', 'error');

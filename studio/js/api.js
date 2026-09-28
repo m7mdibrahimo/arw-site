@@ -25,6 +25,9 @@ export function saveSession({ token, user, remember }) {
     if (user) store.setItem(USER_KEY, JSON.stringify(user));
   } catch {}
 }
+export function updateUser(user) {
+  try { for (const s of [localStorage, sessionStorage]) if (s.getItem(TOKEN_KEY)) s.setItem(USER_KEY, JSON.stringify(user)); } catch {}
+}
 export function clearSession() {
   try { for (const s of [localStorage, sessionStorage]) { s.removeItem(TOKEN_KEY); s.removeItem(USER_KEY); } } catch {}
 }
@@ -61,6 +64,7 @@ export const api = {
   logoutAll: () => call('/api/studio/logout-all', { method: 'POST', body: {} }),
   sessions: () => call('/api/studio/sessions'),
   changePassword: (b) => call('/api/studio/password', { method: 'POST', body: b }),
+  saveProfile: (b) => call('/api/studio/profile', { method: 'POST', body: b }),
   overview: (urls) => call('/api/studio/overview', { method: 'POST', body: { urls } }),
   analytics: () => call('/api/studio/analytics'),
   connectAnalytics: (b) => call('/api/studio/analytics/config', { method: 'POST', body: b }),

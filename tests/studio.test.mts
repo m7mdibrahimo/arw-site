@@ -146,3 +146,16 @@ test('the local-only setup switch can never be enabled from wrangler.toml', asyn
   const fs = await import('node:fs');
   assert.ok(!fs.readFileSync(new URL('../worker/wrangler.toml', import.meta.url), 'utf8').includes('STUDIO_DEV'));
 });
+
+test('the display name is saved and returned, and signing in still uses the username', async () => {
+  mockGitHub();
+  try {
+    const e = env();
+    await call(e, 'setup', { body: { githubToken: 'good-token-123456', username: 'owner', email: 'o@x.com', password: 'Wrestling2026' } });
+    const s = await call(e, 'login', { body: { login: 'owner', password: 'Wrestling2026' } });
+    const r = await call(e, 'profile', { token: s.data.token, body: { displayName: 'محمد' } });
+    assert.equal(r.data.user.displayName, 'محمد');
+    assert.equal((await call(e, 'me', { token: s.data.token })).data.user.displayName, 'محمد');
+    assert.equal((await call(e, 'login', { body: { login: 'owner', password: 'Wrestling2026' } })).data.user.displayName, 'محمد');
+  } finally { globalThis.fetch = realFetch; }
+});

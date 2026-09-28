@@ -1,5 +1,5 @@
 // Studio shell: session check, sidebar, top bar, global search and routing.
-import { api, getToken, getUser, clearSession, siteData, IS_LOCAL } from './api.js';
+import { api, getToken, getUser, clearSession, updateUser, siteData, IS_LOCAL } from './api.js';
 import { COLLECTIONS } from './schema.js';
 import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce } from './ui.js';
 import { renderLogin } from './views/auth.js';
@@ -60,9 +60,9 @@ function renderShell(user) {
           </div>
           <button class="icon-btn" id="theme-btn" aria-label="تغيير المظهر">${icon('moon')}</button>
           <div class="menu" id="user-menu">
-            <button class="avatar" id="user-btn" aria-label="الحساب">${(user && user.username ? user.username[0] : 'م').toUpperCase()}</button>
+            <button class="avatar" id="user-btn" aria-label="الحساب">${((user && (user.displayName || user.username)) || 'م')[0].toUpperCase()}</button>
             <div class="menu-pop end" hidden>
-              <div class="menu-head"><b>${user ? user.username : ''}</b><small>${user ? user.email : ''}</small></div>
+              <div class="menu-head"><b>${user ? (user.displayName || user.username) : ''}</b><small>${user ? user.email : ''}</small></div>
               <a href="#/settings">${icon('settings')}الإعدادات والأمان</a>
               <button id="logout-btn" class="danger">${icon('logout')}تسجيل الخروج</button>
             </div>
@@ -186,6 +186,7 @@ async function start(reason) {
   if (!getToken()) return renderLogin(root, { onDone: enter, reason });
   try {
     const me = await api.me();
+    if (me.user) updateUser(me.user);
     enter(me.user);
   } catch (e) {
     if (e.status === 401) { clearSession(); return renderLogin(root, { onDone: enter, reason: 'انتهت الجلسة. سجّل الدخول من جديد.' }); }
