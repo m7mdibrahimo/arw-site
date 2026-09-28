@@ -330,6 +330,10 @@ export function autoFix(text: string): string {
     // — Gemini translated it as a closing paragraph («شاركنا رأيك في التعليقات»).
     // It's the source's sign-off, not news: drop that paragraph.
     .replace(/(^|\n)[^\n]*(?:شاركنا|شاركونا|أخبرنا|أخبرونا|اتركوا|اترك)[^\n]*(?:التعليقات|رأيك|رأيكم)[^\n]*(?=\n|$)/g, "")
+    // …and its other sign-off: «ما رأيك في دخول ويل أوسبراي…? هل تراه…?» (INCIDENTS #98)
+    .replace(/(^|\n)[ \t]*(?:ما|وما)\s+رأيك(?:م)?(?![\u0600-\u06FF])[^\n]*(?=\n|$)/g, "")
+    // An English «?» or «,» right after an Arabic word («عرض AEW All Out?» is English; «بيكر,» is not)
+    .replace(new RegExp(`([${AR}])\\?`, "g"), "$1؟").replace(new RegExp(`([${AR}]),(?=\\s)`, "g"), "$1،")
     // Punctuation orphaned when the copy editor deletes a clause: «كانديس ليراي، .»
     // (INCIDENTS #57) — keep the stronger mark, drop the space before it.
     .replace(/[،,؛]\s*([.!؟?])/g, "$1")

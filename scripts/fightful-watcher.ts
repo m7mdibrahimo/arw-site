@@ -186,6 +186,8 @@ async function getYouTubeThumbnailUrl(videoId: string): Promise<string | null> {
 }
 
 // Extract media embed clean links (YouTube, Twitter/X, Instagram) from raw HTML
+export const MAX_SOCIAL_EMBEDS = 4;
+
 function extractEmbeds(html: string): string[] {
   const links: string[] = [];
   const seenUrls = new Set<string>();
@@ -2292,6 +2294,10 @@ export function revealsTonightsMatch(rawTitle: string, plainText: string, shows:
   if (!shows.length) return false;
   const text = `${rawTitle} ${plainText.slice(0, 700)}`.toLowerCase().replace(/[^a-z0-9#.' ]+/g, " ").replace(/\s+/g, " ");
   if (!shows.some(n => text.includes(n))) return false;
+  // The result can sit anywhere in a story about the show: «How Will Ospreay's Assassin's Creed
+  // Entrance At AEW All Out Came Together» said in its third paragraph that he beat Moxley to
+  // retain (INCIDENTS #98). Past the lead only unmistakable result phrases count.
+  if (LEAD_OUTCOME_WORDS.test(plainText)) return true;
   return /\b(?:to determine|number one contender|#1 contender|no\. 1 contender|contendership|eliminator|went up against|faced off|squared off|battled|defeat\w*|beat|won|wins?|victory|pinn?ed|retain\w*|lost|the (?:bout|match) ended|finish)\b/i.test(text);
 }
 
@@ -3521,6 +3527,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (/fightful\.com/i.test(postUrl) && !embeds.some(e => /youtube\.com|youtu\.be/.test(e))) {
     for (const url of await fetchFeaturedVideos(postUrl)) if (!embeds.includes(url)) embeds.push(url);
   }
+  // A fan-reaction story embeds every tweet it quotes — 20 random fan posts under «الجماهير
+  // تتدفق على منشور أندرادي…» (INCIDENTS #98). Videos stay; social posts are capped at four.
+  let socialPosts = 0;
+  const cappedEmbeds = embeds.filter(u => /youtube\.com|youtu\.be/.test(u) || ++socialPosts <= MAX_SOCIAL_EMBEDS);
+  embeds.splice(0, embeds.length, ...cappedEmbeds);
   if (ytVideoId) {
     const cleanYtUrl = `https://www.youtube.com/watch?v=${ytVideoId}`;
     if (!embeds.includes(cleanYtUrl)) {

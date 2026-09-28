@@ -1186,6 +1186,9 @@ test("a story about a match at tonight's show is kept off social even with an an
   // A story about another show is untouched.
   assert.equal(revealsTonightsMatch("Harley Cameron Reveals Knee Injury", "Harley Cameron said she hurt her knee teaming with Kris Statlander, and they won at AEW All In.", shows), false);
   assert.equal(revealsTonightsMatch("X Official For AEW WrestleDream", "At AEW All Out, X won.", []), false);
+  // INCIDENTS #98: the result deep in a story about the show
+  assert.equal(revealsTonightsMatch("How Will Ospreay's Assassin's Creed Entrance At AEW All Out Came Together", "The entrance at AEW All Out was months in the making. " + "Ubisoft brought in the voice actor. ".repeat(30) + "Ospreay then defeated Jon Moxley to retain the AEW World Title.", shows), true);
+  assert.equal(revealsTonightsMatch("Donovan Dijak Blasts Fans Mocking Injured Wrestlers", "Dijak said he saw three examples during AEW All Out night alone. " + "People mock injuries. ".repeat(40), shows), false);
 });
 
 test("the worker lets Arabic titles about a return that hasn't happened through (INCIDENTS #95)", async () => {
@@ -1204,6 +1207,17 @@ test("a title never repeats its subject, and a bare finished results title names
   assert.equal(resultsTitleOutcome("نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية)", body), "نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية): فوز أهورا في الحدث الرئيسي");
   // Still live (no main-event winner yet): untouched
   assert.equal(resultsTitleOutcome("نتائج عرض TNA iMPACT (24 سبتمبر 2026)", "**المواجهة الأولى**\n\nنص"), "نتائج عرض TNA iMPACT (24 سبتمبر 2026)");
+});
+
+test("videos stay, social posts are capped, and «دفع عن» becomes «دافع عن» (INCIDENTS #98)", async () => {
+  const { MAX_SOCIAL_EMBEDS } = await import('../scripts/fightful-watcher');
+  assert.equal(MAX_SOCIAL_EMBEDS, 4);
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections("والتي دفع فيها عن بطولة AEW الوطنية"), "والتي دافع فيها عن بطولة AEW الوطنية");
+  const { autoFix } = await import('../scripts/news-qa');
+  assert.equal(autoFix("نص الخبر.\n\nما رأيك في دخول ويل أوسبراي في عرض AEW All Out? هل تراه الأفضل?").trim(), "نص الخبر.");
+  assert.equal(autoFix("من غريمتها بريت بيكر, موضحة أنها"), "من غريمتها بريت بيكر، موضحة أنها");
+  assert.equal(autoFix("قال: What's Your Story? هنا"), "قال: What's Your Story? هنا");
 });
 
 test("a promotion war is not a match result (INCIDENTS #97)", async () => {
