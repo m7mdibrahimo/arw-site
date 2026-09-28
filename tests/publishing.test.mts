@@ -1543,3 +1543,11 @@ test('an old result named in the title (last April) goes out when the meaning ch
   assert.equal(after.held?.httpssitetestnewsunsure?.why, 'title', 'the words win when the check does not say «old»');
   assert.equal(after.held?.['httpssitetestnewsno-verdict']?.why, 'title', 'no verdict: the words decide');
 });
+
+test('a connective written twice in a row is collapsed before publishing', () => {
+  // INCIDENTS #107: «أعربت لولا فايس عن رغبتها في أن أن يكون بول هيمان مديرا لأعمالها»
+  assert.equal(autoFix('عن رغبتها في أن أن يكون بول هيمان'), 'عن رغبتها في أن يكون بول هيمان');
+  assert.equal(autoFix('وصل إلى إلى الحلبة من من الخلف'), 'وصل إلى الحلبة من الخلف');
+  assert.equal(autoFix('قال: لا لا يمكن'), 'قال: لا لا يمكن', 'a quoted «no, no» stays');
+  assert.equal(autoFix('أنا أنت'), 'أنا أنت', 'only whole repeated words');
+});

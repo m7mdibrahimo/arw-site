@@ -336,6 +336,9 @@ export function autoFix(text: string): string {
     .replace(new RegExp(`([${AR}])\\?`, "g"), "$1؟").replace(new RegExp(`([${AR}]),(?=\\s)`, "g"), "$1،")
     // Punctuation orphaned when the copy editor deletes a clause: «كانديس ليراي، .»
     // (INCIDENTS #57) — keep the stronger mark, drop the space before it.
+    // A connective written twice («رغبتها في أن أن يكون» — Lola Vice, INCIDENTS #107): keep one.
+    // «لا لا» is left alone (it can be a quoted «no, no»).
+    .replace(/(?<![\u0600-\u06FF])(في|من|على|أن|إلى|عن|مع|قد|ما|التي|الذي|بعد|قبل|حيث|كما|هذا|هذه|بين|لم|لن|إن|أو|ثم)\s+\1(?![\u0600-\u06FF])/g, "$1")
     .replace(/[،,؛]\s*([.!؟?])/g, "$1")
     .replace(/([،؛])\s*[،,؛]/g, "$1")
     .replace(/[ \t]+([.،؛!؟])(?=\s|$)/g, "$1")
