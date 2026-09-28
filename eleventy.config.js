@@ -192,6 +192,10 @@ module.exports = function(eleventyConfig) {
     return n;
   };
   eleventyConfig.on("eleventy.before", () => {
+    try {
+      const top = fs.existsSync(".cache") ? fs.readdirSync(".cache") : null;
+      console.log(`[img-cache] cwd=${process.cwd()} .cache=${top ? JSON.stringify(top.slice(0, 10)) : "missing"}`);
+    } catch {}
     try { console.log(`[img-cache] restored ${syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
   });
