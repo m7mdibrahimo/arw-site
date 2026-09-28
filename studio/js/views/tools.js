@@ -233,12 +233,15 @@ export async function renderReelsTool(page) {
   let data;
   try { data = await tools.reels(); } catch (e) { return mount(page, html`<div class="empty"><h2>مقدرتش أجيب الريلز</h2><p class="muted">${e.message}</p></div>`); }
   const shows = (await siteData('studio-data.json').catch(() => [])).filter(d => d.collection === 'shows');
-  const bySlug = new Map(shows.map(s => [s.slug, s]));
   const videos = (data.videos || []).slice().sort((a, b) => (b.mtime || 0) - (a.mtime || 0));
   const plats = data.tiktok ? [...REEL_PLATFORMS, { key: 'tiktok', name: 'تيك توك', color: '#141414', icon: 'film' }] : REEL_PLATFORMS;
-  const stateOf = (v) => data.state[v.cleanSlug] || data.state[String(v.cleanSlug).replace(/^\d{12,14}-/, '')] || {};
-  const withVideo = new Set(videos.map(v => v.cleanSlug));
-  const missing = shows.filter(s => !withVideo.has(s.slug) && Date.now() - Date.parse(s.date) < 10 * 86400_000)
+  // A reel's name is the show's file name cut to 45 letters (older ones without the date prefix)
+  const bare = (s) => String(s).replace(/^\d{12,14}-/, '');
+  const fits = (show, v) => { const c = String(v.cleanSlug || ''); return !!c && (show.slug === c || show.slug.startsWith(c) || bare(show.slug) === c || bare(show.slug).startsWith(c)); };
+  const showOf = new Map(videos.map(v => [v, shows.find(s => fits(s, v))]));
+  const bySlug = { get: (c) => showOf.get(videos.find(v => v.cleanSlug === c)) };
+  const stateOf = (v) => { const s = showOf.get(v); return (s && (data.state[s.slug] || data.state[bare(s.slug)])) || data.state[v.cleanSlug] || data.state[bare(v.cleanSlug)] || {}; };
+  const missing = shows.filter(s => !videos.some(v => fits(s, v)) && Date.now() - Date.parse(s.date) < 10 * 86400_000)
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 8);
   let shown = 20;
 
