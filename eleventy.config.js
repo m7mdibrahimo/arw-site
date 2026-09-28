@@ -176,11 +176,16 @@ module.exports = function(eleventyConfig) {
   // One line per written file (5000+) only slows the host's build log down.
   eleventyConfig.setQuietMode(true);
 
-  // Resized article images (optImg → _site/img) are kept between builds, so a build only
-  // resizes new images instead of all ~2000 (about a minute on the host). On Cloudflare the
-  // only folder its build cache really carries over for this project is npm's (~/.npm —
-  // ".cache" is only kept for projects it detects as Eleventy, and it doesn't detect this one).
-  const IMG_CACHE = process.env.CF_PAGES ? path.join(require("os").homedir(), ".npm", "_arw_optimg") : ".cache/optimg";
+  // Resized article images (optImg → _site/img) are reused between builds, so a build only
+  // resizes new images instead of all ~2000 (about a minute on the host). Locally they stay in
+  // ".cache/optimg". Cloudflare's build cache doesn't carry any folder of ours between builds
+  // (".cache" is kept only for projects it detects as Eleventy; checked in the build logs), so
+  // there each build takes the already-resized files from the live site, listed in
+  // /img-cache.json. A file's name is a hash of its source and settings, so the same name is
+  // always the same picture; eleventy-img skips any output that already exists.
+  const IMG_CACHE = ".cache/optimg";
+  const IMG_RE = /^[A-Za-z0-9_-]+-\d+\.(jpeg|jpg|png|webp|avif)$/;
+  const LIVE = process.env.ARW_LIVE_ORIGIN || "https://arab-wrestling.com";
   const syncDir = (from, to) => {
     if (!fs.existsSync(from)) return 0;
     fs.mkdirSync(to, { recursive: true });
@@ -193,8 +198,34 @@ module.exports = function(eleventyConfig) {
     }
     return n;
   };
-  eleventyConfig.on("eleventy.before", () => {
-    try { console.log(`[img-cache] restored ${syncDir(IMG_CACHE, "_site/img")} resized images`); }
+  const fetchLiveImages = async () => {
+    const started = Date.now();
+    const list = await fetch(`${LIVE}/img-cache.json?_=${Date.now()}`, { signal: AbortSignal.timeout(10000) }).then(r => (r.ok ? r.json() : []));
+    fs.mkdirSync("_site/img", { recursive: true });
+    const have = new Set(fs.readdirSync("_site/img"));
+    const todo = (Array.isArray(list) ? list : []).filter(f => typeof f === "string" && IMG_RE.test(f) && !have.has(f));
+    let ok = 0, next = 0;
+    const worker = async () => {
+      while (next < todo.length) {
+        const f = todo[next++];
+        try {
+          const r = await fetch(`${LIVE}/img/${f}`, { signal: AbortSignal.timeout(20000) });
+          if (!r.ok || !String(r.headers.get("content-type") || "").startsWith("image/")) continue;
+          const buf = Buffer.from(await r.arrayBuffer());
+          const len = Number(r.headers.get("content-length") || 0);
+          if (!buf.length || (len && len !== buf.length)) continue;
+          const tmp = path.join("_site/img", `.${f}.part`);
+          fs.writeFileSync(tmp, buf);
+          fs.renameSync(tmp, path.join("_site/img", f));
+          ok++;
+        } catch {}
+      }
+    };
+    await Promise.all(Array.from({ length: 32 }, worker));
+    return `${ok}/${todo.length} from the live site in ${((Date.now() - started) / 1000).toFixed(1)}s`;
+  };
+  eleventyConfig.on("eleventy.before", async () => {
+    try { console.log(`[img-cache] restored ${process.env.CF_PAGES ? await fetchLiveImages() : syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
   });
   // /build.json: which commits this deployment contains, so the panel can say «ظهر على الموقع ✓»
@@ -211,8 +242,11 @@ module.exports = function(eleventyConfig) {
     } catch (e) { console.log(`[build.json] skipped: ${e.message}`); }
   });
   eleventyConfig.on("eleventy.after", () => {
-    try { console.log(`[img-cache] saved ${syncDir("_site/img", IMG_CACHE)} new resized images`); }
-    catch (e) { console.log(`[img-cache] save skipped: ${e.message}`); }
+    try {
+      const files = fs.existsSync("_site/img") ? fs.readdirSync("_site/img").filter(f => IMG_RE.test(f)) : [];
+      fs.writeFileSync("_site/img-cache.json", JSON.stringify(files));
+      if (!process.env.CF_PAGES) console.log(`[img-cache] saved ${syncDir("_site/img", IMG_CACHE)} new resized images`);
+    } catch (e) { console.log(`[img-cache] save skipped: ${e.message}`); }
   });
   eleventyConfig.addGlobalData("buildTime", () => new Date().toISOString());
 

@@ -35,6 +35,10 @@
   Cache-Control: no-store
   X-Robots-Tag: noindex
 
+/img-cache.json
+  Cache-Control: no-cache, must-revalidate, max-age=0
+  X-Robots-Tag: noindex
+
 /content/images/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=3600
   X-Content-Type-Options: nosniff

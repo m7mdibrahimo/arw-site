@@ -72,3 +72,13 @@ test('the panel can tell when a save is live: build.json lists the deployed comm
   assert.match(worker, /commit: sha, committedAt, sha:/);
   assert.match(worker, /commit: sha, committedAt \}/);
 });
+
+test('host builds reuse already-resized images from the live site (only new ones are resized)', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /_site\/img-cache\.json/);
+  assert.match(cfg, /process\.env\.CF_PAGES \? await fetchLiveImages\(\)/);
+  // Never keep a half-downloaded or non-image response: eleventy-img would skip it forever.
+  assert.match(cfg, /startsWith\("image\/"\)/);
+  assert.match(cfg, /fs\.renameSync\(tmp/);
+  assert.match(fs.readFileSync('_headers', 'utf8'), /\/img-cache\.json\n\s+Cache-Control: no-cache/);
+});
