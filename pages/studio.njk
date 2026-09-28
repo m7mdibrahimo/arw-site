@@ -1,3 +1,7 @@
+---
+permalink: "/studio/index.html"
+eleventyExcludeFromCollections: true
+---
 <!doctype html>
 <html lang="ar" dir="rtl" data-theme="light">
 <head>
@@ -12,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap">
-  <link rel="stylesheet" href="/studio/studio.css?v=3">
+  <link rel="stylesheet" href="/studio/{{ studioVersion }}/studio.css">
   <script>
     // Saved theme before the first paint (no light flash)
     try { document.documentElement.dataset.theme = localStorage.getItem('arw_studio_theme') || 'light'; } catch (e) {}
@@ -21,6 +25,6 @@
 <body>
   <div id="app"><div class="boot"><img src="/assets/brand-logo.png?v=2" alt=""><div class="spinner"></div></div></div>
   <noscript>اللوحة محتاجة جافاسكربت.</noscript>
-  <script type="module" src="/studio/js/app.js?v=1"></script>
+  <script type="module" src="/studio/{{ studioVersion }}/js/app.js"></script>
 </body>
 </html>
