@@ -1359,3 +1359,18 @@ test('a story the owner releases from the hold is posted even when it is older t
   const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   assert.ok(!after.telegram.httpssitetestnewsreleased, 'the shield does not hold a released story again');
 });
+
+test('a story that already reached a platform is not listed as held when a later edit makes it a spoiler', async t => {
+  const database = ledger();
+  const items = [{ url: '/news/edited/', title: 'ساموا جو يعود في عرض AEW All Out', description: 'تفاصيل', kind: 'news', date: new Date(Date.now() - 600_000).toISOString(), published_at: new Date(Date.now() - 600_000).toISOString() }];
+  const file = '/repos/owner/repo-edited/contents/_data/publish-state.json'; // own repo name: no cached state from the tests before
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify({ telegram: { httpssitetestnewsedited: Date.now() - 300_000 }, facebook: {}, instagram: {}, x: {}, cooldowns: {} })).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-edited', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(after.facebook.httpssitetestnewsedited, 'stopped before the other platforms');
+  assert.ok(!after.held?.httpssitetestnewsedited, 'not offered to the owner as held');
+});

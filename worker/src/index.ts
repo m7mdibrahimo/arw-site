@@ -363,11 +363,11 @@ function githubContentsUrl(env: Env): string {
 // mutations — cheap relative to what it replaces (network + base64 decode
 // + JSON.parse), and still correct even if it weren't, since every writer
 // already goes through githubWriteState's sha-conflict retry.
-let publishStateCache: { sha: string | null; state: PublishState; ts: number } | null = null;
+let publishStateCache: { sha: string | null; state: PublishState; ts: number; url: string } | null = null;
 const PUBLISH_STATE_CACHE_TTL_MS = 5000; // well under the 60s tick interval
 
 async function githubReadState(env: Env): Promise<{ sha: string | null; state: PublishState }> {
-  if (publishStateCache && Date.now() - publishStateCache.ts < PUBLISH_STATE_CACHE_TTL_MS) {
+  if (publishStateCache && publishStateCache.url === githubContentsUrl(env) && Date.now() - publishStateCache.ts < PUBLISH_STATE_CACHE_TTL_MS) {
     return { sha: publishStateCache.sha, state: structuredClone(publishStateCache.state) };
   }
   const res = await fetch(`${githubContentsUrl(env)}?ref=${env.GITHUB_BRANCH}`, {
@@ -406,7 +406,7 @@ async function githubReadState(env: Env): Promise<{ sha: string | null; state: P
   state.instagram = state.instagram || {};
   state.x = state.x || {};
   state.cooldowns = state.cooldowns || {};
-  publishStateCache = { sha: data.sha, state, ts: Date.now() };
+  publishStateCache = { sha: data.sha, state, ts: Date.now(), url: githubContentsUrl(env) };
   return { sha: data.sha, state: structuredClone(state) };
 }
 
@@ -2293,7 +2293,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         state.instagram[key] = now;
         state.x[key] = now;
         state.held = state.held || {};
-        state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: spoilerReason(item.title) };
+        // Only a story that reached no platform yet is «held»; one already out (a title edited
+        // into a spoiler later) is just stopped from going further.
+        if (!(tgDone || fbDone || igDone)) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: spoilerReason(item.title) };
         for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;
