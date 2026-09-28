@@ -264,6 +264,13 @@ export async function cfAnalytics(token: string, zoneId: string, days: number) {
   return { daily, hourly, topCountries, topPages, updatedAt: Date.now() };
 }
 
+// ── Account picture (small JPEG kept in KV, returned with the user) ─────────
+const AVATAR_KEY = 'studio:avatar';
+const MAX_AVATAR_CHARS = 120_000; // ~90 KB image; the panel sends a 256×256 JPEG (~20 KB)
+async function publicUser(env: StudioEnv, account: Account) {
+  return { username: account.username, email: account.email, displayName: account.displayName || '', avatar: (await env.PUSH_KV.get(AVATAR_KEY)) || '' };
+}
+
 // ── Router ─────────────────────────────────────────────────────────────────
 type J = (body: unknown, status?: number) => Response;
 
@@ -314,7 +321,7 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     }
     const session = await createSession(env, request, !!body.remember);
     await logLogin(env, { event: 'login', remember: !!body.remember, ...info });
-    return json({ success: true, ...session, user: { username: account.username, email: account.email, displayName: account.displayName || '' } });
+    return json({ success: true, ...session, user: await publicUser(env, account) });
   }
 
   // Everything below needs a live session.
@@ -358,15 +365,25 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
 
   if (route === 'me' && request.method === 'GET') {
     const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
-    return json({ success: true, user: account ? { username: account.username, email: account.email, displayName: account.displayName || '' } : null, session });
+    return json({ success: true, user: account ? await publicUser(env, account) : null, session });
   }
   // The name shown in «أهلا يا …» (the username stays for signing in)
+  if (route === 'avatar' && request.method === 'POST') {
+    const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
+    if (!account) return json({ success: false, error: 'الحساب غير موجود.' }, 404);
+    const img = String(body.image || '');
+    if (!img) { await env.PUSH_KV.delete(AVATAR_KEY); return json({ success: true, user: await publicUser(env, account) }); }
+    if (!/^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(img)) return json({ success: false, error: 'صورة غير صالحة.' }, 400);
+    if (img.length > MAX_AVATAR_CHARS) return json({ success: false, error: 'الصورة كبيرة. جرّب صورة تانية.' }, 400);
+    await env.PUSH_KV.put(AVATAR_KEY, img);
+    return json({ success: true, user: await publicUser(env, account) });
+  }
   if (route === 'profile' && request.method === 'POST') {
     const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
     if (!account) return json({ success: false, error: 'الحساب غير موجود.' }, 404);
     const displayName = String(body.displayName || '').trim().slice(0, 40);
     await env.PUSH_KV.put(ACCOUNT_KEY, JSON.stringify({ ...account, displayName, updatedAt: Date.now() }));
-    return json({ success: true, user: { username: account.username, email: account.email, displayName } });
+    return json({ success: true, user: await publicUser(env, { ...account, displayName }) });
   }
   if (route === 'logout' && request.method === 'POST') { await endSession(env, request); return json({ success: true }); }
   if (route === 'logout-all' && request.method === 'POST') { await endAllSessions(env); return json({ success: true }); }

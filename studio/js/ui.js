@@ -144,3 +144,9 @@ export function debounce(fn, ms = 250) { let t; return (...a) => { clearTimeout(
 export function normalizeArabic(t) {
   return String(t || '').toLowerCase().replace(/[ً-ٰٟ]/g, '').replace(/[إأآا]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').trim();
 }
+
+/** The account circle: the picture if there is one, else the first letter of the name. */
+export function avatarInner(user) {
+  if (user && user.avatar) return raw(`<img src="${esc(user.avatar)}" alt="">`);
+  return ((user && (user.displayName || user.username)) || 'م')[0].toUpperCase();
+}

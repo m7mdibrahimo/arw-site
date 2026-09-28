@@ -1,6 +1,7 @@
 // Account & security: password, signed-in devices, login history.
 import { api, saveSession, clearSession, getUser, updateUser, IS_LOCAL } from '../api.js';
-import { html, mount, $, icon, toast, dialog, timeAgo, fmtDate } from '../ui.js';
+import { html, mount, $, icon, toast, dialog, timeAgo, fmtDate, avatarInner } from '../ui.js';
+import { avatarDataUrl } from '../image.js';
 
 function device(ua = '') {
   const os = /iPhone|iPad/.test(ua) ? 'آيفون' : /Android/.test(ua) ? 'أندرويد' : /Mac OS/.test(ua) ? 'ماك' : /Windows/.test(ua) ? 'ويندوز' : /Linux/.test(ua) ? 'لينكس' : 'جهاز';
@@ -16,7 +17,11 @@ export async function renderSettings(page) {
     <div class="page-title"><div><h1>الإعدادات والأمان</h1><p class="muted">حسابك والأجهزة اللي داخلة بيه.</p></div></div>
     <div class="grid-2">
       <section class="card"><header class="card-head"><h2>${icon('user')} الحساب</h2></header>
-        <div class="card-body"><div class="acct"><span class="avatar avatar-lg">${(user.displayName || user.username || 'م')[0].toUpperCase()}</span><div><b>${user.displayName || user.username || ''}</b><small class="muted">${user.email || ''}</small></div></div>
+        <div class="card-body"><div class="acct"><span class="avatar avatar-lg" id="acct-avatar">${avatarInner(user)}</span><div><b>${user.displayName || user.username || ''}</b><small class="muted">${user.email || ''}</small></div></div>
+        <div class="avatar-actions">
+          <label class="btn btn-sm">${icon('image')} ${user.avatar ? 'تغيير الصورة' : 'إضافة صورة'}<input type="file" accept="image/*" id="avatar-file" hidden></label>
+          ${user.avatar ? html`<button type="button" class="btn btn-sm btn-danger" id="avatar-remove">${icon('trash')} إزالة</button>` : ''}
+        </div>
         <p class="muted small">تقدر تدخل باسم المستخدم أو بالإيميل.</p>
         <form id="name-form" class="name-form">
           <label class="field"><span>اسمك <em>بيظهر في «أهلا يا …»</em></span><input class="input" id="display-name" maxlength="40" dir="auto" placeholder="مثال: محمد" value="${user.displayName || ''}"></label>
@@ -37,12 +42,25 @@ export async function renderSettings(page) {
     </div>
   `);
 
+  const setUser = (u) => { updateUser(u); window.dispatchEvent(new CustomEvent('studio:user', { detail: u })); renderSettings(page); };
+  $('#avatar-file').onchange = async (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    try {
+      const r = await api.saveAvatar(await avatarDataUrl(f));
+      setUser(r.user); toast('اتحفظت الصورة ✓');
+    } catch (ex) { toast(ex.message, 'error'); }
+  };
+  const rm = $('#avatar-remove');
+  if (rm) rm.onclick = async () => {
+    try { const r = await api.saveAvatar(''); setUser(r.user); toast('اتشالت الصورة'); } catch (ex) { toast(ex.message, 'error'); }
+  };
   $('#name-form').onsubmit = async (e) => {
     e.preventDefault();
     const btn = $('#name-btn'); btn.disabled = true;
     try {
       const r = await api.saveProfile({ displayName: $('#display-name').value });
       updateUser(r.user);
+      window.dispatchEvent(new CustomEvent('studio:user', { detail: r.user }));
       toast('اتحفظ الاسم ✓');
     } catch (ex) { toast(ex.message, 'error'); } finally { btn.disabled = false; }
   };

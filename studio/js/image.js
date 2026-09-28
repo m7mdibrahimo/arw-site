@@ -62,3 +62,19 @@ export async function prepareImageFromUrl(link) {
 }
 
 export function kb(bytes) { return bytes > 1024 * 1024 ? `${(bytes / 1024 / 1024).toFixed(1)} ميجا` : `${Math.round(bytes / 1024)} ك.ب`; }
+
+/** Account picture: centre-cropped square, 256×256 JPEG as a data URL (~20 KB). */
+export async function avatarDataUrl(file, size = 256) {
+  if (!file || !/^image\//.test(file.type)) throw new Error('الملف ده مش صورة.');
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await loadImage(url);
+    const s = Math.min(img.naturalWidth, img.naturalHeight);
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, size, size);
+    ctx.drawImage(img, (img.naturalWidth - s) / 2, (img.naturalHeight - s) / 2, s, s, 0, 0, size, size);
+    return canvas.toDataURL('image/jpeg', 0.85);
+  } finally { URL.revokeObjectURL(url); }
+}

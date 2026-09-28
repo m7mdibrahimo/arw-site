@@ -65,6 +65,7 @@ export const api = {
   sessions: () => call('/api/studio/sessions'),
   changePassword: (b) => call('/api/studio/password', { method: 'POST', body: b }),
   saveProfile: (b) => call('/api/studio/profile', { method: 'POST', body: b }),
+  saveAvatar: (image) => call('/api/studio/avatar', { method: 'POST', body: { image } }),
   overview: (urls) => call('/api/studio/overview', { method: 'POST', body: { urls } }),
   analytics: () => call('/api/studio/analytics'),
   connectAnalytics: (b) => call('/api/studio/analytics/config', { method: 'POST', body: b }),

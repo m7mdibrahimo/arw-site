@@ -159,3 +159,19 @@ test('the display name is saved and returned, and signing in still uses the user
     assert.equal((await call(e, 'login', { body: { login: 'owner', password: 'Wrestling2026' } })).data.user.displayName, 'محمد');
   } finally { globalThis.fetch = realFetch; }
 });
+
+test('the account picture is saved, returned with the user, size-checked and removable', async () => {
+  mockGitHub();
+  try {
+    const e = env();
+    await call(e, 'setup', { body: { githubToken: 'good-token-123456', username: 'owner', email: 'o@x.com', password: 'Wrestling2026' } });
+    const s = await call(e, 'login', { body: { login: 'owner', password: 'Wrestling2026' } });
+    const img = 'data:image/jpeg;base64,' + 'A'.repeat(2000);
+    assert.equal((await call(e, 'avatar', { token: s.data.token, body: { image: img } })).data.user.avatar, img);
+    assert.equal((await call(e, 'me', { token: s.data.token })).data.user.avatar, img);
+    assert.equal((await call(e, 'avatar', { token: s.data.token, body: { image: 'javascript:alert(1)' } })).status, 400);
+    assert.equal((await call(e, 'avatar', { token: s.data.token, body: { image: 'data:image/jpeg;base64,' + 'A'.repeat(130000) } })).status, 400);
+    assert.equal((await call(e, 'avatar', { token: s.data.token, body: { image: '' } })).data.user.avatar, '');
+    assert.equal((await call(e, 'avatar', { body: { image: img } })).status, 401, 'needs a session');
+  } finally { globalThis.fetch = realFetch; }
+});

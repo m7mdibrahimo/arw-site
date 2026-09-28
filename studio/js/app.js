@@ -1,7 +1,7 @@
 // Studio shell: session check, sidebar, top bar, global search and routing.
 import { api, getToken, getUser, clearSession, updateUser, siteData, IS_LOCAL } from './api.js';
 import { COLLECTIONS } from './schema.js';
-import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce } from './ui.js';
+import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce, avatarInner } from './ui.js';
 import { renderLogin } from './views/auth.js';
 import { renderDashboard } from './views/dashboard.js';
 import { renderList } from './views/list.js';
@@ -60,7 +60,7 @@ function renderShell(user) {
           </div>
           <button class="icon-btn" id="theme-btn" aria-label="تغيير المظهر">${icon('moon')}</button>
           <div class="menu" id="user-menu">
-            <button class="avatar" id="user-btn" aria-label="الحساب">${((user && (user.displayName || user.username)) || 'م')[0].toUpperCase()}</button>
+            <button class="avatar" id="user-btn" aria-label="الحساب">${avatarInner(user)}</button>
             <div class="menu-pop end" hidden>
               <div class="menu-head"><b>${user ? (user.displayName || user.username) : ''}</b><small>${user ? user.email : ''}</small></div>
               <a href="#/settings">${icon('settings')}الإعدادات والأمان</a>
@@ -201,3 +201,6 @@ function enter(user) {
   route();
 }
 start();
+
+// Settings changes the picture or the name: refresh the circle in the top bar
+window.addEventListener('studio:user', (e) => { const b = document.getElementById('user-btn'); if (b) b.innerHTML = avatarInner(e.detail).__raw ?? avatarInner(e.detail); });
