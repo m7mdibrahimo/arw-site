@@ -24,7 +24,7 @@ const call = async (e: any, route: string, init: { method?: string; body?: any; 
     headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': init.ip || '1.1.1.1', ...(init.token ? { Authorization: `Bearer ${init.token}` } : {}) },
     body: init.body ? JSON.stringify(init.body) : undefined,
   });
-  const res = await handleStudio(req, e, `/api/studio/${route}`, json);
+  const res = await handleStudio(req, e, `/api/studio/${route.split('?')[0]}`, json); // like url.pathname
   return { status: res!.status, data: await res!.json() as any, req };
 };
 // GitHub answers «has write access» only for the token 'good'
@@ -60,7 +60,7 @@ test('the account can only be created with a GitHub token that can write to the 
     const ok = await call(e, 'setup', { body: { githubToken: 'good-token-123456', username: 'Owner', email: 'O@X.com', password: 'Wrestling2026' } });
     assert.equal(ok.status, 200);
     assert.equal((await call(e, 'status')).data.configured, true);
-    const stored = JSON.parse(e.PUSH_KV._map.get('studio:account').v);
+    const stored = JSON.parse(e.PUSH_KV._map.get('studio:users').v)[0];
     assert.equal(stored.username, 'owner');
     assert.ok(!JSON.stringify(stored).includes('Wrestling2026'), 'the password itself is never stored');
   } finally { globalThis.fetch = realFetch; }
@@ -174,4 +174,80 @@ test('the account picture is saved, returned with the user, size-checked and rem
     assert.equal((await call(e, 'avatar', { token: s.data.token, body: { image: '' } })).data.user.avatar, '');
     assert.equal((await call(e, 'avatar', { body: { image: img } })).status, 401, 'needs a session');
   } finally { globalThis.fetch = realFetch; }
+});
+
+
+// ── Members & permissions ──────────────────────────────────────────────────
+async function ownerAndMember(perms: string[]) {
+  const e = env();
+  await call(e, 'setup', { body: { githubToken: 'good-token-123456', username: 'owner', email: 'o@x.com', password: 'Wrestling2026' } });
+  const owner = (await call(e, 'login', { body: { login: 'owner', password: 'Wrestling2026' } })).data.token;
+  const created = await call(e, 'members/create', { token: owner, body: { username: 'editor', email: 'ed@x.com', displayName: 'أحمد', password: 'Temp12345', perms } });
+  return { e, owner, created };
+}
+
+test('the owner adds a member who must replace the temporary password before doing anything', async () => {
+  mockGitHub();
+  try {
+    const { e, created } = await ownerAndMember(['news.create']);
+    assert.equal(created.status, 200);
+    assert.deepEqual(created.data.member.perms, ['news.view', 'news.create'], 'creating implies viewing; unknown permissions dropped');
+    const m = await call(e, 'login', { body: { login: 'editor', password: 'Temp12345' } });
+    assert.equal(m.data.user.mustChange, true);
+    assert.equal((await call(e, 'list?collection=news', { token: m.data.token })).status, 403, 'blocked until the password is changed');
+    const changed = await call(e, 'password', { token: m.data.token, body: { current: 'Temp12345', next: 'MyOwn2026' } });
+    assert.equal(changed.status, 200);
+    assert.equal(changed.data.user.mustChange, false);
+    assert.equal((await call(e, 'me', { token: m.data.token })).status, 401, 'the old session ends with the password change');
+    assert.equal((await call(e, 'me', { token: changed.data.token })).status, 200);
+  } finally { globalThis.fetch = realFetch; }
+});
+
+test('permissions are enforced on the server for every section and action', async () => {
+  mockGitHub();
+  try {
+    const { e } = await ownerAndMember(['news.view', 'news.create']);
+    const t0 = (await call(e, 'login', { body: { login: 'editor', password: 'Temp12345' } })).data.token;
+    const t = (await call(e, 'password', { token: t0, body: { current: 'Temp12345', next: 'MyOwn2026' } })).data.token;
+    assert.equal((await call(e, 'entry?collection=shows&slug=x', { token: t })).status, 403, 'no shows.view');
+    assert.equal((await call(e, 'delete', { token: t, body: { collection: 'news', slug: 'x', confirm: 'x' } })).status, 403, 'no news.delete');
+    assert.equal((await call(e, 'analytics', { token: t })).status, 403, 'no stats');
+    assert.equal((await call(e, 'members', { token: t })).status, 403, 'members are owner-only');
+    assert.equal((await call(e, 'members/create', { token: t, body: { username: 'x2', email: 'x2@x.com', password: 'Abcdefg12', perms: ['news.delete'] } })).status, 403, 'no self-promotion');
+    assert.equal((await call(e, 'audit', { token: t })).status, 403);
+    const req = new Request('https://w.dev/api/admin/x', { method: 'POST', headers: { Authorization: `Bearer ${t}` } });
+    assert.equal(await studioAuthorized(req, e, 'tools'), false, 'no tools permission → old admin endpoints stay closed');
+  } finally { globalThis.fetch = realFetch; }
+});
+
+test('the owner can disable, sign out, reset and delete a member — never the owner account', async () => {
+  mockGitHub();
+  try {
+    const { e, owner, created } = await ownerAndMember(['news.view']);
+    const id = created.data.member.id;
+    const m = (await call(e, 'login', { body: { login: 'editor', password: 'Temp12345' } })).data.token;
+    await call(e, `members/${id}/disable`, { token: owner, body: {} });
+    assert.equal((await call(e, 'me', { token: m })).status, 401, 'disabled → signed out');
+    assert.equal((await call(e, 'login', { body: { login: 'editor', password: 'Temp12345' } })).status, 401, 'disabled → cannot sign in');
+    await call(e, `members/${id}/enable`, { token: owner, body: {} });
+    await call(e, `members/${id}/password`, { token: owner, body: { password: 'NewTemp999' } });
+    assert.equal((await call(e, 'login', { body: { login: 'editor', password: 'NewTemp999' } })).data.user.mustChange, true);
+    const members = (await call(e, 'members', { token: owner })).data.members;
+    assert.ok(!JSON.stringify(members).includes('hash'), 'password hashes never leave the server');
+    assert.equal((await call(e, 'members/owner/delete', { token: owner, body: { confirm: 'owner' } })).status, 404, 'the owner id is not a member route');
+    assert.equal((await call(e, `members/${id}/delete`, { token: owner, body: { confirm: 'wrong' } })).status, 400);
+    assert.equal((await call(e, `members/${id}/delete`, { token: owner, body: { confirm: 'editor' } })).status, 200);
+    assert.equal((await call(e, 'login', { body: { login: 'editor', password: 'NewTemp999' } })).status, 401);
+    const log = (await call(e, 'audit', { token: owner })).data.entries.map((x: any) => x.action);
+    assert.ok(log.includes('member.create') && log.includes('member.delete'));
+  } finally { globalThis.fetch = realFetch; }
+});
+
+test('the single-owner account moves to the new system with its password and sessions', async () => {
+  const e = env();
+  const h = await hashPassword('Wrestling2026');
+  await e.PUSH_KV.put('studio:account', JSON.stringify({ username: 'owner', email: 'o@x.com', ...h, createdAt: 1, updatedAt: 1 }));
+  const r = await call(e, 'login', { body: { login: 'owner', password: 'Wrestling2026' } });
+  assert.equal(r.status, 200);
+  assert.equal(r.data.user.role, 'owner');
 });

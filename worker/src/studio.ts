@@ -5,9 +5,10 @@
 // and the social publishing see no difference between the two panels.
 //
 // Security model
-// - One owner account, stored in KV as a PBKDF2-SHA256 hash (never the password).
-// - The account can only be created or reset by someone holding a GitHub token with
-//   write access to the repo (the same proof the old panel uses).
+// - Accounts are stored in KV with PBKDF2-SHA256 hashes (never the passwords). One owner
+//   (full control, created or recovered only with a GitHub token that can write to the repo)
+//   and members the owner adds, each with the permissions the owner chose. Permissions are
+//   checked here on every request, never only in the page.
 // - Sessions are random 256-bit tokens; KV keeps only their SHA-256, with a TTL
 //   (12 hours, or 30 days with «تذكرني»).
 // - Wrong passwords never lock the owner out (owner's choice, 2026-09-28). Every wrong
@@ -43,7 +44,27 @@ interface Account {
   username: string; email: string; displayName?: string; salt: string; hash: string; iterations: number;
   createdAt: number; updatedAt: number;
 }
-interface SessionRecord { id: string; createdAt: number; lastSeen: number; expiresAt: number; remember: boolean; ua: string; ip: string; place: string; }
+export interface StudioUser extends Account {
+  id: string; role: 'owner' | 'member'; perms: string[]; disabled?: boolean; mustChange?: boolean;
+  gen: number; createdBy?: string; lastLogin?: number;
+}
+interface SessionRecord { id: string; userId?: string; createdAt: number; lastSeen: number; expiresAt: number; remember: boolean; ua: string; ip: string; place: string; }
+
+// ── Permissions ────────────────────────────────────────────────────────────
+export const PERM_SECTIONS = ['shows', 'recaps', 'news', 'nostalgia'] as const;
+export const PERM_ACTIONS = ['view', 'create', 'edit', 'delete'] as const;
+export const EXTRA_PERMS = ['stats', 'status', 'tools'] as const;
+export const ALL_PERMS: string[] = [...PERM_SECTIONS.flatMap(s => PERM_ACTIONS.map(a => `${s}.${a}`)), ...EXTRA_PERMS];
+const sectionOf = (collection: string) => (collection === 'nostalgia_series' ? 'nostalgia' : collection);
+export function can(user: Pick<StudioUser, 'role' | 'perms'>, perm: string): boolean {
+  return user.role === 'owner' || (Array.isArray(user.perms) && user.perms.includes(perm));
+}
+/** Keeps only known permissions; creating, editing or deleting implies viewing. */
+export function cleanPerms(input: unknown): string[] {
+  const set = new Set((Array.isArray(input) ? input : []).map(String).filter(p => ALL_PERMS.includes(p)));
+  for (const s of PERM_SECTIONS) if (['create', 'edit', 'delete'].some(a => set.has(`${s}.${a}`))) set.add(`${s}.view`);
+  return ALL_PERMS.filter(p => set.has(p));
+}
 
 // ── Crypto helpers ─────────────────────────────────────────────────────────
 const enc = new TextEncoder();
@@ -100,17 +121,17 @@ async function readIndex(env: StudioEnv): Promise<SessionRecord[]> {
   const list = (await env.PUSH_KV.get(SESSION_INDEX_KEY, 'json')) as SessionRecord[] | null;
   return (list || []).filter(s => s.expiresAt > Date.now());
 }
-async function createSession(env: StudioEnv, request: Request, remember: boolean) {
+async function createSession(env: StudioEnv, request: Request, remember: boolean, userId: string) {
   const token = STUDIO_TOKEN_PREFIX + b64url(crypto.getRandomValues(new Uint8Array(32)));
   const id = await sha256hex(token);
   const ttl = remember ? SESSION_TTL_LONG : SESSION_TTL_SHORT;
   const now = Date.now();
   const info = clientInfo(request);
-  const rec: SessionRecord = { id: id.slice(0, 16), createdAt: now, lastSeen: now, expiresAt: now + ttl * 1000, remember, ...info };
+  const rec: SessionRecord = { id: id.slice(0, 16), userId, createdAt: now, lastSeen: now, expiresAt: now + ttl * 1000, remember, ...info };
   await env.PUSH_KV.put(`studio:session:${id}`, JSON.stringify(rec), { expirationTtl: ttl });
   const index = (await readIndex(env)).filter(s => s.id !== rec.id);
   index.unshift(rec);
-  await env.PUSH_KV.put(SESSION_INDEX_KEY, JSON.stringify(index.slice(0, 30)));
+  await env.PUSH_KV.put(SESSION_INDEX_KEY, JSON.stringify(index.slice(0, 120)));
   return { token, expiresAt: rec.expiresAt };
 }
 export async function studioSession(request: Request, env: StudioEnv): Promise<SessionRecord | null> {
@@ -128,20 +149,28 @@ async function endSession(env: StudioEnv, request: Request) {
   const index = (await readIndex(env)).filter(s => s.id !== id.slice(0, 16));
   await env.PUSH_KV.put(SESSION_INDEX_KEY, JSON.stringify(index));
 }
-async function endAllSessions(env: StudioEnv) {
-  // KV can't list by the hashed ids we index (only a prefix of the hash is kept), so sessions
-  // are invalidated through a generation stamp every session is checked against.
-  await env.PUSH_KV.put('studio:generation', String(Date.now()));
-  await env.PUSH_KV.put(SESSION_INDEX_KEY, JSON.stringify([]));
+/** Signs a user out everywhere: sessions older than the user's generation stamp are dead. */
+async function endUserSessions(env: StudioEnv, userId: string) {
+  const users = await loadUsers(env);
+  const u = users.find(x => x.id === userId);
+  if (!u) return;
+  u.gen = Date.now();
+  await saveUsers(env, users);
+  const index = (await readIndex(env)).filter(s => (s.userId || OWNER_ID) !== userId);
+  await env.PUSH_KV.put(SESSION_INDEX_KEY, JSON.stringify(index));
 }
-async function sessionAlive(env: StudioEnv, rec: SessionRecord): Promise<boolean> {
-  const gen = Number(await env.PUSH_KV.get('studio:generation')) || 0;
-  return rec.createdAt >= gen;
+/** The signed-in user behind a request, or null (expired, signed out, disabled or deleted). */
+export async function studioUser(request: Request, env: StudioEnv): Promise<{ user: StudioUser; session: SessionRecord } | null> {
+  const session = await studioSession(request, env);
+  if (!session) return null;
+  const user = (await loadUsers(env)).find(u => u.id === (session.userId || OWNER_ID));
+  if (!user || user.disabled || session.createdAt < (user.gen || 0)) return null;
+  return { user, session };
 }
-/** A valid studio session also unlocks the existing admin endpoints (publish, watcher, reels). */
-export async function studioAuthorized(request: Request, env: StudioEnv): Promise<boolean> {
-  const rec = await studioSession(request, env);
-  return !!rec && (await sessionAlive(env, rec));
+/** A studio session also unlocks the older admin endpoints, for a user holding `perm`. */
+export async function studioAuthorized(request: Request, env: StudioEnv, perm = 'tools'): Promise<boolean> {
+  const who = await studioUser(request, env);
+  return !!who && !who.user.mustChange && can(who.user, perm);
 }
 
 async function logLogin(env: StudioEnv, entry: Record<string, unknown>) {
@@ -267,8 +296,38 @@ export async function cfAnalytics(token: string, zoneId: string, days: number) {
 // ── Account picture (small JPEG kept in KV, returned with the user) ─────────
 const AVATAR_KEY = 'studio:avatar';
 const MAX_AVATAR_CHARS = 120_000; // ~90 KB image; the panel sends a 256×256 JPEG (~20 KB)
-async function publicUser(env: StudioEnv, account: Account) {
-  return { username: account.username, email: account.email, displayName: account.displayName || '', avatar: (await env.PUSH_KV.get(AVATAR_KEY)) || '' };
+async function publicUser(env: StudioEnv, u: StudioUser) {
+  return { ...memberView(u), avatar: (await env.PUSH_KV.get(`${AVATAR_KEY}:${u.id}`)) || '' };
+}
+
+// ── Users ──────────────────────────────────────────────────────────────────
+const USERS_KEY = 'studio:users';
+const AUDIT_KEY = 'studio:audit';
+const OWNER_ID = 'owner';
+async function loadUsers(env: StudioEnv): Promise<StudioUser[]> {
+  const list = (await env.PUSH_KV.get(USERS_KEY, 'json')) as StudioUser[] | null;
+  if (list) return list;
+  // One-time move from the single-owner version: same password, same picture, sessions kept.
+  const old = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
+  if (!old) return [];
+  const gen = Number(await env.PUSH_KV.get('studio:generation')) || 0;
+  const owner: StudioUser = { ...old, id: OWNER_ID, role: 'owner', perms: [], gen };
+  const avatar = await env.PUSH_KV.get(AVATAR_KEY);
+  if (avatar) await env.PUSH_KV.put(`${AVATAR_KEY}:${OWNER_ID}`, avatar);
+  await saveUsers(env, [owner]);
+  return [owner];
+}
+async function saveUsers(env: StudioEnv, users: StudioUser[]) { await env.PUSH_KV.put(USERS_KEY, JSON.stringify(users)); }
+const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(6)), b => b.toString(16).padStart(2, '0')).join('');
+async function audit(env: StudioEnv, who: StudioUser, action: string, details: Record<string, unknown> = {}) {
+  const log = ((await env.PUSH_KV.get(AUDIT_KEY, 'json')) as any[] | null) || [];
+  log.unshift({ at: Date.now(), userId: who.id, user: who.displayName || who.username, action, ...details });
+  await env.PUSH_KV.put(AUDIT_KEY, JSON.stringify(log.slice(0, 300)));
+}
+/** What a member can see about any account (never the password hash). */
+function memberView(u: StudioUser) {
+  return { id: u.id, username: u.username, email: u.email, displayName: u.displayName || '', role: u.role, perms: u.role === 'owner' ? ALL_PERMS : u.perms,
+    disabled: !!u.disabled, mustChange: !!u.mustChange, createdAt: u.createdAt, lastLogin: u.lastLogin || 0 };
 }
 
 // ── Router ─────────────────────────────────────────────────────────────────
@@ -279,13 +338,12 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
   const route = path.slice('/api/studio/'.length);
   const body: any = request.method === 'POST' ? await request.json().catch(() => ({})) : {};
 
-  // Public: is the account set up yet?
+  // Public: is there an owner yet?
   if (route === 'status' && request.method === 'GET') {
-    const account = await env.PUSH_KV.get(ACCOUNT_KEY);
-    return json({ success: true, configured: !!account });
+    return json({ success: true, configured: (await loadUsers(env)).length > 0 });
   }
 
-  // Create or reset the account — only with a GitHub token that can write to the repo.
+  // Create or recover the OWNER account — only with a GitHub token that can write to the repo.
   if (route === 'setup' && request.method === 'POST') {
     const gh = String(body.githubToken || '');
     const proof = new Request(request.url, { headers: { Authorization: `Bearer ${gh}` } });
@@ -297,36 +355,164 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ success: false, error: 'اكتب إيميل صحيح.' }, 400);
     const problem = passwordProblem(body.password);
     if (problem) return json({ success: false, error: problem }, 400);
-    const existing = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
+    const users = await loadUsers(env);
+    if (users.some(u => u.role !== 'owner' && (u.username === username || u.email === email))) return json({ success: false, error: 'اسم المستخدم أو الإيميل مستخدم لعضو تاني.' }, 400);
+    const existing = users.find(u => u.role === 'owner');
     const h = await hashPassword(body.password);
     const now = Date.now();
-    const displayName = String(body.displayName || existing?.displayName || '').trim().slice(0, 40);
-    await env.PUSH_KV.put(ACCOUNT_KEY, JSON.stringify({ username, email, displayName, ...h, createdAt: existing?.createdAt || now, updatedAt: now }));
-    await endAllSessions(env);
-    await logLogin(env, { event: existing ? 'reset' : 'setup', ...clientInfo(request) });
+    const owner: StudioUser = {
+      ...(existing || {} as StudioUser), id: OWNER_ID, role: 'owner', perms: [], username, email,
+      displayName: String(body.displayName || existing?.displayName || '').trim().slice(0, 40),
+      ...h, gen: now, mustChange: false, disabled: false, createdAt: existing?.createdAt || now, updatedAt: now,
+    };
+    await saveUsers(env, [owner, ...users.filter(u => u.role !== 'owner')]);
+    await logLogin(env, { event: existing ? 'reset' : 'setup', userId: OWNER_ID, username, ...clientInfo(request) });
     return json({ success: true });
   }
 
   if (route === 'login' && request.method === 'POST') {
     const info = clientInfo(request);
-    const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
-    if (!account) return json({ success: false, needsSetup: true, error: 'لسه مفيش حساب. اعمل الحساب الأول.' }, 409);
+    const users = await loadUsers(env);
+    if (!users.length) return json({ success: false, needsSetup: true, error: 'لسه مفيش حساب. اعمل الحساب الأول.' }, 409);
     const login = cleanUsername(body.login);
-    const matches = login === account.username || login === account.email;
-    const ok = matches && (await verifyPassword(String(body.password || ''), account));
-    if (!ok) {
-      await logLogin(env, { event: 'failed', ...info });
+    const user = users.find(u => u.username === login || u.email === login);
+    // Same answer and same time for «no such user», «wrong password» and «disabled»
+    const ok = user ? await verifyPassword(String(body.password || ''), user) : (await hashPassword(String(body.password || '')), false);
+    if (!ok || !user || user.disabled) {
+      await logLogin(env, { event: user && ok ? 'blocked' : 'failed', userId: user?.id || '', username: login.slice(0, 40), ...info });
       await new Promise(r => setTimeout(r, WRONG_PASSWORD_DELAY_MS));
-      return json({ success: false, error: 'اسم المستخدم أو كلمة السر غلط.' }, 401);
+      return json({ success: false, error: user && ok ? 'الحساب ده متوقف. كلّم صاحب الموقع.' : 'اسم المستخدم أو كلمة السر غلط.' }, 401);
     }
-    const session = await createSession(env, request, !!body.remember);
-    await logLogin(env, { event: 'login', remember: !!body.remember, ...info });
-    return json({ success: true, ...session, user: await publicUser(env, account) });
+    user.lastLogin = Date.now();
+    await saveUsers(env, users);
+    const session = await createSession(env, request, !!body.remember, user.id);
+    await logLogin(env, { event: 'login', userId: user.id, username: user.username, remember: !!body.remember, ...info });
+    return json({ success: true, ...session, user: await publicUser(env, user) });
   }
 
   // Everything below needs a live session.
-  const session = await studioSession(request, env);
-  if (!session || !(await sessionAlive(env, session))) return json({ success: false, auth: false, error: 'انتهت الجلسة. سجّل الدخول من جديد.' }, 401);
+  const who = await studioUser(request, env);
+  if (!who) return json({ success: false, auth: false, error: 'انتهت الجلسة. سجّل الدخول من جديد.' }, 401);
+  const { user: me, session } = who;
+  const deny = (msg = 'مش مسموحلك بده. اطلب الصلاحية من صاحب الموقع.') => json({ success: false, denied: true, error: msg }, 403);
+  const ownerOnly = me.role === 'owner';
+
+  // ── Own account (always allowed) ──────────────────────────────────────────
+  if (route === 'me' && request.method === 'GET') return json({ success: true, user: await publicUser(env, me), session });
+  if (route === 'logout' && request.method === 'POST') { await endSession(env, request); return json({ success: true }); }
+  if (route === 'password' && request.method === 'POST') {
+    if (!(await verifyPassword(String(body.current || ''), me))) return json({ success: false, error: 'كلمة السر الحالية غلط.' }, 400);
+    const problem = passwordProblem(body.next);
+    if (problem) return json({ success: false, error: problem }, 400);
+    if (String(body.next) === String(body.current)) return json({ success: false, error: 'اختار كلمة سر جديدة مختلفة عن الحالية.' }, 400);
+    const users = await loadUsers(env);
+    const u = users.find(x => x.id === me.id)!;
+    Object.assign(u, await hashPassword(body.next), { mustChange: false, updatedAt: Date.now(), gen: Date.now() });
+    await saveUsers(env, users);
+    const fresh = await createSession(env, request, session.remember, me.id);
+    await audit(env, me, 'password');
+    return json({ success: true, ...fresh, user: await publicUser(env, u) });
+  }
+  // A member with a temporary password must choose their own before anything else.
+  if (me.mustChange) return json({ success: false, mustChange: true, error: 'غيّر كلمة السر المؤقتة الأول.' }, 403);
+
+  if (route === 'logout-all' && request.method === 'POST') { await endUserSessions(env, me.id); return json({ success: true }); }
+  if (route === 'sessions' && request.method === 'GET') {
+    const log = ((await env.PUSH_KV.get(LOGIN_LOG_KEY, 'json')) as any[] | null) || [];
+    const mine = (x: any) => (x.userId || OWNER_ID) === me.id;
+    return json({ success: true, current: session.id, sessions: (await readIndex(env)).filter(mine).filter(s => s.createdAt >= (me.gen || 0)), log: log.filter(mine).slice(0, 20) });
+  }
+  if (route === 'profile' && request.method === 'POST') {
+    const users = await loadUsers(env);
+    const u = users.find(x => x.id === me.id)!;
+    u.displayName = String(body.displayName || '').trim().slice(0, 40);
+    u.updatedAt = Date.now();
+    await saveUsers(env, users);
+    return json({ success: true, user: await publicUser(env, u) });
+  }
+  if (route === 'avatar' && request.method === 'POST') {
+    const img = String(body.image || '');
+    const key = `${AVATAR_KEY}:${me.id}`;
+    if (!img) { await env.PUSH_KV.delete(key); return json({ success: true, user: await publicUser(env, me) }); }
+    if (!/^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(img)) return json({ success: false, error: 'صورة غير صالحة.' }, 400);
+    if (img.length > MAX_AVATAR_CHARS) return json({ success: false, error: 'الصورة كبيرة. جرّب صورة تانية.' }, 400);
+    await env.PUSH_KV.put(key, img);
+    return json({ success: true, user: await publicUser(env, me) });
+  }
+
+  // ── Members (owner only) ──────────────────────────────────────────────────
+  if (route.startsWith('members') || route === 'audit' || route === 'analytics/config') {
+    if (!ownerOnly) return deny('الجزء ده لصاحب الموقع بس.');
+  }
+  if (route === 'members' && request.method === 'GET') {
+    const users = await loadUsers(env);
+    const out = [];
+    for (const u of users) out.push({ ...memberView(u), avatar: (await env.PUSH_KV.get(`${AVATAR_KEY}:${u.id}`)) || '' });
+    return json({ success: true, members: out, perms: ALL_PERMS });
+  }
+  if (route === 'members/create' && request.method === 'POST') {
+    const users = await loadUsers(env);
+    const username = cleanUsername(body.username);
+    const email = String(body.email || '').trim().toLowerCase();
+    if (!/^[a-z0-9_.-]{3,32}$/.test(username)) return json({ success: false, error: 'اسم المستخدم من 3 لـ 32 حرف إنجليزي أو رقم (مسموح . و _ و -).' }, 400);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ success: false, error: 'اكتب إيميل صحيح.' }, 400);
+    if (users.some(u => u.username === username || u.email === email)) return json({ success: false, error: 'اسم المستخدم أو الإيميل مستخدم بالفعل.' }, 400);
+    if (users.length >= 50) return json({ success: false, error: 'وصلت لأقصى عدد أعضاء.' }, 400);
+    const problem = passwordProblem(body.password);
+    if (problem) return json({ success: false, error: `كلمة السر المؤقتة: ${problem}` }, 400);
+    const now = Date.now();
+    const u: StudioUser = {
+      id: newId(), role: 'member', username, email, displayName: String(body.displayName || '').trim().slice(0, 40),
+      perms: cleanPerms(body.perms), ...(await hashPassword(body.password)), mustChange: true, disabled: false,
+      gen: now, createdAt: now, updatedAt: now, createdBy: me.id,
+    };
+    users.push(u);
+    await saveUsers(env, users);
+    await audit(env, me, 'member.create', { target: u.username, perms: u.perms });
+    return json({ success: true, member: memberView(u) });
+  }
+  const memberRoute = route.match(/^members\/([a-f0-9]{12})\/(update|password|disable|enable|logout|delete)$/);
+  if (memberRoute && request.method === 'POST') {
+    const [, id, action] = memberRoute;
+    const users = await loadUsers(env);
+    const u = users.find(x => x.id === id);
+    if (!u) return json({ success: false, error: 'العضو غير موجود.' }, 404);
+    if (u.role === 'owner') return deny('حساب صاحب الموقع مبيتعدّلش من هنا.');
+    const now = Date.now();
+    if (action === 'update') {
+      const email = body.email != null ? String(body.email).trim().toLowerCase() : u.email;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ success: false, error: 'اكتب إيميل صحيح.' }, 400);
+      if (users.some(x => x.id !== u.id && x.email === email)) return json({ success: false, error: 'الإيميل مستخدم لعضو تاني.' }, 400);
+      const before = u.perms;
+      Object.assign(u, { email, displayName: body.displayName != null ? String(body.displayName).trim().slice(0, 40) : u.displayName, perms: body.perms ? cleanPerms(body.perms) : u.perms, updatedAt: now });
+      await audit(env, me, 'member.update', { target: u.username, before, perms: u.perms });
+    } else if (action === 'password') {
+      const problem = passwordProblem(body.password);
+      if (problem) return json({ success: false, error: `كلمة السر المؤقتة: ${problem}` }, 400);
+      Object.assign(u, await hashPassword(body.password), { mustChange: true, gen: now, updatedAt: now });
+      await audit(env, me, 'member.password', { target: u.username });
+    } else if (action === 'disable') {
+      Object.assign(u, { disabled: true, gen: now, updatedAt: now });
+      await audit(env, me, 'member.disable', { target: u.username });
+    } else if (action === 'enable') {
+      Object.assign(u, { disabled: false, updatedAt: now });
+      await audit(env, me, 'member.enable', { target: u.username });
+    } else if (action === 'logout') {
+      u.gen = now;
+      await audit(env, me, 'member.logout', { target: u.username });
+    } else if (action === 'delete') {
+      if (body.confirm !== u.username) return json({ success: false, error: 'اكتب اسم المستخدم بالظبط للتأكيد.' }, 400);
+      await saveUsers(env, users.filter(x => x.id !== u.id));
+      await env.PUSH_KV.delete(`${AVATAR_KEY}:${u.id}`);
+      await audit(env, me, 'member.delete', { target: u.username });
+      return json({ success: true });
+    }
+    await saveUsers(env, users);
+    return json({ success: true, member: memberView(u) });
+  }
+  if (route === 'audit' && request.method === 'GET') {
+    return json({ success: true, entries: ((await env.PUSH_KV.get(AUDIT_KEY, 'json')) as any[] | null) || [] });
+  }
 
   // ── Visitor statistics (Cloudflare's own analytics for the site's zone) ──
   if (route === 'analytics/config' && request.method === 'POST') {
@@ -342,6 +528,7 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     if ((test as any).error) return json({ success: false, error: `المفتاح مش شغال: ${(test as any).error}` }, 400);
     await env.PUSH_KV.put(ANALYTICS_KEY, JSON.stringify({ token, zoneId, at: Date.now() }));
     await env.PUSH_KV.delete(ANALYTICS_CACHE_KEY);
+    await audit(env, me, 'analytics.connect');
     return json({ success: true });
   }
   if (route === 'analytics/config' && request.method === 'DELETE') {
@@ -349,8 +536,9 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     return json({ success: true });
   }
   if (route === 'analytics' && request.method === 'GET') {
+    if (!can(me, 'stats')) return deny();
     const cfg = (await env.PUSH_KV.get(ANALYTICS_KEY, 'json')) as { token: string; zoneId: string } | null;
-    if (!cfg) return json({ success: true, configured: false });
+    if (!cfg) return json({ success: true, configured: false, canConfigure: ownerOnly });
     const cached = (await env.PUSH_KV.get(ANALYTICS_CACHE_KEY, 'json')) as any;
     if (cached && Date.now() - cached.at < 10 * 60_000) return json({ success: true, configured: true, ...cached.data });
     try {
@@ -363,67 +551,33 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     }
   }
 
-  if (route === 'me' && request.method === 'GET') {
-    const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
-    return json({ success: true, user: account ? await publicUser(env, account) : null, session });
-  }
-  // The name shown in «أهلا يا …» (the username stays for signing in)
-  if (route === 'avatar' && request.method === 'POST') {
-    const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
-    if (!account) return json({ success: false, error: 'الحساب غير موجود.' }, 404);
-    const img = String(body.image || '');
-    if (!img) { await env.PUSH_KV.delete(AVATAR_KEY); return json({ success: true, user: await publicUser(env, account) }); }
-    if (!/^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(img)) return json({ success: false, error: 'صورة غير صالحة.' }, 400);
-    if (img.length > MAX_AVATAR_CHARS) return json({ success: false, error: 'الصورة كبيرة. جرّب صورة تانية.' }, 400);
-    await env.PUSH_KV.put(AVATAR_KEY, img);
-    return json({ success: true, user: await publicUser(env, account) });
-  }
-  if (route === 'profile' && request.method === 'POST') {
-    const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
-    if (!account) return json({ success: false, error: 'الحساب غير موجود.' }, 404);
-    const displayName = String(body.displayName || '').trim().slice(0, 40);
-    await env.PUSH_KV.put(ACCOUNT_KEY, JSON.stringify({ ...account, displayName, updatedAt: Date.now() }));
-    return json({ success: true, user: await publicUser(env, { ...account, displayName }) });
-  }
-  if (route === 'logout' && request.method === 'POST') { await endSession(env, request); return json({ success: true }); }
-  if (route === 'logout-all' && request.method === 'POST') { await endAllSessions(env); return json({ success: true }); }
-  if (route === 'sessions' && request.method === 'GET') {
-    const log = ((await env.PUSH_KV.get(LOGIN_LOG_KEY, 'json')) as any[] | null) || [];
-    return json({ success: true, current: session.id, sessions: await readIndex(env), log: log.slice(0, 20) });
-  }
-  if (route === 'password' && request.method === 'POST') {
-    const account = (await env.PUSH_KV.get(ACCOUNT_KEY, 'json')) as Account | null;
-    if (!account || !(await verifyPassword(String(body.current || ''), account))) return json({ success: false, error: 'كلمة السر الحالية غلط.' }, 400);
-    const problem = passwordProblem(body.next);
-    if (problem) return json({ success: false, error: problem }, 400);
-    const h = await hashPassword(body.next);
-    await env.PUSH_KV.put(ACCOUNT_KEY, JSON.stringify({ ...account, ...h, updatedAt: Date.now() }));
-    await endAllSessions(env);
-    const fresh = await createSession(env, request, session.remember);
-    return json({ success: true, ...fresh });
-  }
-
   // ── Content ─────────────────────────────────────────────────────────────
+  const q = new URL(request.url).searchParams;
   if (route === 'list' && request.method === 'GET') {
-    const folder = COLLECTION_FOLDERS[new URL(request.url).searchParams.get('collection') || ''];
+    const collection = q.get('collection') || '';
+    const folder = COLLECTION_FOLDERS[collection];
     if (!folder) return json({ success: false, error: 'قسم غير معروف' }, 400);
+    if (!can(me, `${sectionOf(collection)}.view`)) return deny();
     const tree = await ghJson(env, `/git/trees/${encodeURIComponent(`${env.GITHUB_BRANCH}:${folder}`)}`);
     const files = (tree.tree || []).filter((e: any) => e.type === 'blob' && e.path.endsWith('.md')).map((e: any) => ({ slug: e.path.replace(/\.md$/, ''), sha: e.sha }));
     return json({ success: true, files });
   }
   if (route === 'entry' && request.method === 'GET') {
-    const q = new URL(request.url).searchParams;
-    const p = entryPath(q.get('collection') || '', q.get('slug') || '');
+    const collection = q.get('collection') || '';
+    const p = entryPath(collection, q.get('slug') || '');
     if (!p) return json({ success: false, error: 'مسار غير صالح' }, 400);
+    if (!can(me, `${sectionOf(collection)}.view`)) return deny();
     const file = await readRepoFile(env, p);
     if (!file) return json({ success: false, error: 'الموضوع غير موجود' }, 404);
     return json({ success: true, ...file });
   }
   if (route === 'save' && request.method === 'POST') {
-    const p = entryPath(String(body.collection || ''), String(body.slug || ''));
+    const collection = String(body.collection || '');
+    const p = entryPath(collection, String(body.slug || ''));
     if (!p) return json({ success: false, error: 'مسار غير صالح' }, 400);
     if (typeof body.content !== 'string' || !body.content.startsWith('---') || body.content.length > 400_000) return json({ success: false, error: 'محتوى غير صالح' }, 400);
     const existing = await readRepoFile(env, p);
+    if (!can(me, `${sectionOf(collection)}.${existing ? 'edit' : 'create'}`)) return deny();
     if (body.create && existing) return json({ success: false, error: 'في موضوع بنفس الاسم بالفعل.' }, 409);
     // Opened version ≠ current version: someone (usually the automatic fixes) changed it meanwhile.
     if (!body.create && body.sha && existing && existing.sha !== body.sha && !body.force) {
@@ -435,18 +589,24 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
       if (img.base64.length * 0.75 > MAX_IMAGE_BYTES) return json({ success: false, error: 'الصورة أكبر من 6 ميجا.' }, 400);
       changes.push({ path: img.path, base64: img.base64 });
     }
-    const label = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'عرض / حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' }[String(body.collection)] || 'موضوع';
-    const sha = await commitFiles(env, changes, `${existing ? 'Update' : 'Create'} ${label} “${body.slug}” (لوحة التحكم)`);
+    const label = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'عرض / حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' }[collection] || 'موضوع';
+    const by = me.displayName || me.username;
+    const sha = await commitFiles(env, changes, `${existing ? 'Update' : 'Create'} ${label} “${body.slug}” (لوحة التحكم — ${by})`);
     const saved = await readRepoFile(env, p).catch(() => null);
+    const title = (String(body.content).match(/^(?:headline|title):\s*["']?(.+?)["']?\s*$/m) || [])[1] || body.slug;
+    await audit(env, me, existing ? 'content.update' : 'content.create', { collection, slug: body.slug, title: String(title).slice(0, 160) });
     return json({ success: true, commit: sha, sha: saved?.sha || null });
   }
   if (route === 'delete' && request.method === 'POST') {
-    const p = entryPath(String(body.collection || ''), String(body.slug || ''));
+    const collection = String(body.collection || '');
+    const p = entryPath(collection, String(body.slug || ''));
     if (!p) return json({ success: false, error: 'مسار غير صالح' }, 400);
+    if (!can(me, `${sectionOf(collection)}.delete`)) return deny();
     if (body.confirm !== body.slug) return json({ success: false, error: 'تأكيد الحذف غير مطابق.' }, 400);
     const existing = await readRepoFile(env, p);
     if (!existing) return json({ success: false, error: 'الموضوع غير موجود' }, 404);
-    const sha = await commitFiles(env, [{ path: p, remove: true }], `Delete ${body.collection} “${body.slug}” (لوحة التحكم)`);
+    const sha = await commitFiles(env, [{ path: p, remove: true }], `Delete ${collection} “${body.slug}” (لوحة التحكم — ${me.displayName || me.username})`);
+    await audit(env, me, 'content.delete', { collection, slug: body.slug });
     return json({ success: true, commit: sha });
   }
 

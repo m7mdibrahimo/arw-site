@@ -1,12 +1,14 @@
 // Studio shell: session check, sidebar, top bar, global search and routing.
 import { api, getToken, getUser, clearSession, updateUser, siteData, IS_LOCAL } from './api.js';
 import { COLLECTIONS } from './schema.js';
-import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce, avatarInner } from './ui.js';
+import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce, avatarInner, can } from './ui.js';
 import { renderLogin } from './views/auth.js';
 import { renderDashboard } from './views/dashboard.js';
 import { renderList } from './views/list.js';
 import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js';
 import { renderSettings } from './views/settings.js';
+import { renderMembers, renderActivity } from './views/members.js';
+import { renderForceChange } from './views/auth.js';
 
 const root = document.getElementById('app');
 const TOOLS = [
@@ -34,17 +36,15 @@ function renderShell(user) {
         <a class="brand" href="#/"><img src="/assets/brand-logo.png?v=2" alt=""><span><b>لوحة التحكم</b><small>عرب راسلنج</small></span></a>
         <nav class="tabs" id="nav">
           <a class="tab" href="#/" data-nav="#/">${icon('home')}الرئيسية</a>
-          <a class="tab" href="#/list/shows" data-nav="#/list/shows">${icon('show')}العروض</a>
-          <a class="tab" href="#/list/recaps" data-nav="#/list/recaps">${icon('recap')}الملخصات</a>
-          <a class="tab" href="#/list/news" data-nav="#/list/news">${icon('news')}الأخبار</a>
-          <a class="tab" href="#/list/nostalgia" data-nav="#/list/nostalgia">${icon('nostalgia')}نوستالجيا</a>
-          <div class="menu" id="tools-menu">
+          ${[['shows', 'العروض'], ['recaps', 'الملخصات'], ['news', 'الأخبار'], ['nostalgia', 'نوستالجيا']].filter(([c]) => can(user, `${c}.view`)).map(([c, l]) => html`<a class="tab" href="#/list/${c}" data-nav="#/list/${c}">${icon(COLLECTIONS[c].icon)}${l}</a>`)}
+          ${user && user.role === 'owner' ? html`<a class="tab" href="#/members" data-nav="#/members">${icon('user')}الأعضاء</a>` : ''}
+          ${can(user, 'tools') ? html`<div class="menu" id="tools-menu">
             <button class="tab" type="button">${icon('tools')}الأدوات</button>
             <div class="menu-pop" hidden>
               ${TOOLS.map(t => html`<a href="${t.href}" target="_blank">${icon(t.icon)}${t.title}</a>`)}
               <a href="/" target="_blank">${icon('globe')}فتح الموقع</a>
             </div>
-          </div>
+          </div>` : ''}
         </nav>
         <div class="top-actions">
           <div class="search" id="search">
@@ -52,18 +52,19 @@ function renderShell(user) {
             <input id="search-input" placeholder="بحث…" autocomplete="off">
             <div class="search-results" id="search-results" hidden></div>
           </div>
-          <div class="menu" id="new-menu">
+          ${['shows', 'recaps', 'news', 'nostalgia'].some(c => can(user, `${c}.create`)) ? html`<div class="menu" id="new-menu">
             <button class="btn btn-primary" id="new-btn">${icon('plus')}<span>جديد</span></button>
             <div class="menu-pop end" hidden>
-              ${['shows', 'recaps', 'news', 'nostalgia'].map(c => html`<a href="#/new/${c}"><i style="--c:${COLLECTIONS[c].color}">${icon(COLLECTIONS[c].icon)}</i>${COLLECTIONS[c].singular} جديد</a>`)}
+              ${['shows', 'recaps', 'news', 'nostalgia'].filter(c => can(user, `${c}.create`)).map(c => html`<a href="#/new/${c}"><i style="--c:${COLLECTIONS[c].color}">${icon(COLLECTIONS[c].icon)}</i>${COLLECTIONS[c].singular} جديد</a>`)}
             </div>
-          </div>
+          </div>` : ''}
           <button class="icon-btn" id="theme-btn" aria-label="تغيير المظهر">${icon('moon')}</button>
           <div class="menu" id="user-menu">
             <button class="avatar" id="user-btn" aria-label="الحساب">${avatarInner(user)}</button>
             <div class="menu-pop end" hidden>
               <div class="menu-head"><b>${user ? (user.displayName || user.username) : ''}</b><small>${user ? user.email : ''}</small></div>
               <a href="#/settings">${icon('settings')}الإعدادات والأمان</a>
+              ${user && user.role === 'owner' ? html`<a href="#/members">${icon('user')}الأعضاء والصلاحيات</a><a href="#/activity">${icon('clock')}سجل النشاط</a>` : ''}
               <button id="logout-btn" class="danger">${icon('logout')}تسجيل الخروج</button>
             </div>
           </div>
@@ -104,7 +105,9 @@ async function loadSearchPool() {
   }
   for (const s of extra) if (s.collection === 'nostalgia_series') items.push({ collection: 'nostalgia_series', slug: s.slug, title: s.title, sub: s.year, image: s.image, date: s.date, url: s.url });
   items.forEach(it => { it.key = normalizeArabic(`${it.title} ${it.sub}`); });
-  searchPool = items;
+  // Only what this account may open
+  const u = getUser();
+  searchPool = items.filter(it => can(u, `${it.collection === 'nostalgia_series' ? 'nostalgia' : it.collection}.view`));
   return items;
 }
 function setupSearch() {
@@ -157,10 +160,15 @@ async function route() {
   if (!['new', 'edit'].includes(parts[0])) closeEditor();
   try {
     if (!parts[0]) return await renderDashboard(page);
-    if (parts[0] === 'list' && COLLECTIONS[parts[1]]) return await renderList(page, parts[1]);
-    if (parts[0] === 'new' && COLLECTIONS[parts[1]]) return await renderEditor(page, parts[1], null, { from: parts[2] || null });
-    if (parts[0] === 'edit' && COLLECTIONS[parts[1]] && parts[2]) return await renderEditor(page, parts[1], parts.slice(2).join('/'));
+    const user = getUser();
+    const sec = (c) => (c === 'nostalgia_series' ? 'nostalgia' : c);
+    const noAccess = () => mount(page, html`<div class="empty"><h2>مش مسموحلك تفتح الصفحة دي</h2><p class="muted">لو محتاجها، اطلب الصلاحية من صاحب الموقع.</p><a class="btn" href="#/">الرئيسية</a></div>`);
+    if (parts[0] === 'list' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.view`) ? await renderList(page, parts[1]) : noAccess();
+    if (parts[0] === 'new' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.create`) ? await renderEditor(page, parts[1], null, { from: parts[2] || null }) : noAccess();
+    if (parts[0] === 'edit' && COLLECTIONS[parts[1]] && parts[2]) return can(user, `${sec(parts[1])}.view`) ? await renderEditor(page, parts[1], parts.slice(2).join('/')) : noAccess();
     if (parts[0] === 'settings') return await renderSettings(page);
+    if (parts[0] === 'members') return user && user.role === 'owner' ? await renderMembers(page, parts[1] || null) : noAccess();
+    if (parts[0] === 'activity') return user && user.role === 'owner' ? await renderActivity(page) : noAccess();
     mount(page, html`<div class="empty"><h2>الصفحة مش موجودة</h2><a class="btn" href="#/">الرئيسية</a></div>`);
   } catch (e) {
     if (seq !== routeSeq) return; // the user already opened another page
@@ -196,6 +204,8 @@ async function start(reason) {
   }
 }
 function enter(user) {
+  // A temporary password from the owner: choose your own first
+  if (user && user.mustChange) return renderForceChange(root, user, (u) => { updateUser(u); enter(u); });
   document.body.classList.add('in-app');
   renderShell(user);
   route();

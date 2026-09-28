@@ -1,5 +1,5 @@
 // Visitor statistics at the top of the home page (Cloudflare's analytics for the site).
-import { api, siteData } from '../api.js';
+import { api, siteData, getUser } from '../api.js';
 import { html, mount, $, $$, icon, toast, num, esc } from '../ui.js';
 
 const countryName = (() => {
@@ -34,7 +34,11 @@ export async function renderAnalytics(el) {
     mount(el, html`<div class="panel"><div class="panel-head"><h2>${icon('chart')} إحصائيات الموقع</h2></div><p class="panel-pad muted">${e.message}</p></div>`);
     return;
   }
-  if (!data.configured) return renderSetup(el);
+  if (!data.configured) {
+    // Only the owner can connect the key; a member just sees that it isn't connected yet
+    if ((getUser() || {}).role !== 'owner') return mount(el, html`<div class="panel"><div class="panel-head"><h2>${icon('chart')} إحصائيات الموقع</h2></div><p class="panel-pad muted">الإحصائيات لسه مش متوصلة. صاحب الموقع بس اللي يقدر يوصلها.</p></div>`);
+    return renderSetup(el);
+  }
 
   const daily = data.daily || [];
   const today = daily[daily.length - 1] || { visitors: 0, views: 0 };

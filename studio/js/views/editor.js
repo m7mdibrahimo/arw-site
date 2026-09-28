@@ -1,11 +1,11 @@
 // Add / edit any content: sectioned form, live preview, checklist, smart helpers.
-import { content, siteData, addPending, IS_LOCAL } from '../api.js';
+import { content, siteData, addPending, IS_LOCAL, getUser } from '../api.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
   extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist,
 } from '../schema.js';
 import { prepareImage, prepareImageFromUrl, kb } from '../image.js';
-import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc } from '../ui.js';
+import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc, can, sectionOf } from '../ui.js';
 import { marked } from '../../vendor/marked.esm.js';
 
 let S = null; // the open editor's state
@@ -200,6 +200,10 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
 
   const sections = SECTIONS[collection];
   const isNew = !slug;
+  // What this account may do here (the server checks the same thing on every save)
+  const me = getUser(), sec = sectionOf(collection);
+  const mayCreate = can(me, `${sec}.create`), mayDelete = can(me, `${sec}.delete`);
+  const maySave = isNew ? mayCreate : can(me, `${sec}.edit`);
   mount(page, html`
     <div class="editor">
       <header class="editor-head">
@@ -210,11 +214,11 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
           ${S.url ? html`<a class="btn btn-ghost" href="${S.url}" target="_blank">${icon('eye')}<span class="hide-sm">على الموقع</span></a>` : ''}
           <div class="menu" id="more-menu"><button class="icon-btn" type="button" aria-label="المزيد">⋯</button>
             <div class="menu-pop" hidden>
-              ${!isNew && ['shows', 'recaps', 'nostalgia'].includes(collection) ? html`<a href="#/new/${collection}/${encodeURIComponent(slug)}">${icon('copy')}حلقة جديدة بنفس البيانات</a>` : ''}
-              <button type="button" id="save-new">${icon('plus')}حفظ وإضافة ${def.singular} جديد</button>
-              ${!isNew ? html`<button type="button" id="del" class="danger">${icon('trash')}حذف نهائي</button>` : ''}
+              ${!isNew && mayCreate && ['shows', 'recaps', 'nostalgia'].includes(collection) ? html`<a href="#/new/${collection}/${encodeURIComponent(slug)}">${icon('copy')}حلقة جديدة بنفس البيانات</a>` : ''}
+              ${maySave && mayCreate ? html`<button type="button" id="save-new">${icon('plus')}حفظ وإضافة ${def.singular} جديد</button>` : ''}
+              ${!isNew && mayDelete ? html`<button type="button" id="del" class="danger">${icon('trash')}حذف نهائي</button>` : ''}
             </div></div>
-          <button class="btn btn-primary btn-lg" id="save" type="button">${icon('check')} ${isNew ? 'نشر' : 'حفظ'}</button>
+          ${maySave ? html`<button class="btn btn-primary btn-lg" id="save" type="button">${icon('check')} ${isNew ? 'نشر' : 'حفظ'}</button>` : html`<span class="tag">${icon('eye')} عرض بس</span>`}
         </div>
       </header>
       <nav class="sec-nav" id="sec-nav">${sections.map((s, i) => html`<a href="#sec-${s.id}" data-sec="${s.id}" class="${i === 0 ? 'on' : ''}">${icon(s.icon)}${s.title}</a>`)}</nav>
@@ -313,7 +317,8 @@ function bindAll() {
   $$('#sec-nav a').forEach(a => a.onclick = (e) => { e.preventDefault(); $(`#sec-${a.dataset.sec}`).scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 
   // Actions
-  $('#save').onclick = () => save();
+  if (maySave) $('#save').onclick = () => save();
+  else $$('#ed-form input, #ed-form textarea, #ed-form select, #ed-form button').forEach(x => { x.disabled = true; });
   const sn = $('#save-new');
   if (sn) sn.onclick = () => save({ thenNew: true });
   const del = $('#del');

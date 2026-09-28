@@ -1,7 +1,7 @@
 // Content lists: filters, search, cards/rows, quick actions.
-import { content, siteData, pendingSaves, dropSiteCache } from '../api.js';
+import { content, siteData, pendingSaves, dropSiteCache, getUser } from '../api.js';
 import { COLLECTIONS, FEDERATIONS } from '../schema.js';
-import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
+import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, can, sectionOf } from '../ui.js';
 
 const PAGE = 24;
 const state = {}; // per collection: { q, fed, page, filter }
@@ -39,7 +39,7 @@ export async function renderList(page, collection) {
         <div class="page-actions">
           ${collection === 'nostalgia' ? html`<a class="btn" href="#/list/nostalgia_series">${icon('folder')} السلاسل</a>` : ''}
           ${collection === 'nostalgia_series' ? html`<a class="btn" href="#/list/nostalgia">${icon('nostalgia')} الحلقات</a>` : ''}
-          <a class="btn btn-primary" href="#/new/${collection}">${icon('plus')} ${def.singular} جديد</a>
+          ${can(getUser(), `${sectionOf(collection)}.create`) ? html`<a class="btn btn-primary" href="#/new/${collection}">${icon('plus')} ${def.singular} جديد</a>` : ''}
         </div>
       </div>
       <div class="filterbar">
@@ -95,9 +95,9 @@ export async function renderList(page, collection) {
       <a class="row-main" href="${editUrl(i)}"><b>${i.title}</b><small>${meta(i).filter(Boolean).join(' · ')}</small></a>
       <span class="row-actions">
         ${i.url ? html`<a class="icon-btn sm" href="${i.url}" target="_blank" title="فتح على الموقع">${icon('eye')}</a>` : ''}
-        ${canNext && !i.pending ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(i.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
+        ${canNext && !i.pending && can(getUser(), `${sectionOf(collection)}.create`) ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(i.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
         <a class="icon-btn sm" href="${editUrl(i)}" title="تعديل">${icon('edit')}</a>
-        <button class="icon-btn sm danger" data-del="${i.slug}" title="حذف">${icon('trash')}</button>
+        ${can(getUser(), `${sectionOf(collection)}.delete`) ? html`<button class="icon-btn sm danger" data-del="${i.slug}" title="حذف">${icon('trash')}</button>` : ''}
       </span></div>`)}`);
     $('#more').innerHTML = list.length > shown.length ? `<button class="btn btn-ghost" id="more-btn">عرض ${Math.min(PAGE, list.length - shown.length)} كمان</button>` : '';
     const mb = $('#more-btn');

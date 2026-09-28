@@ -1,7 +1,7 @@
 // Home, in the site's own layout: hero, quick numbers, then simple sections.
 import { api, siteData, pendingSaves, getUser, IS_LOCAL } from '../api.js';
 import { COLLECTIONS } from '../schema.js';
-import { html, mount, $, icon, timeAgo, fmtDate, num } from '../ui.js';
+import { html, mount, $, icon, timeAgo, fmtDate, num, can } from '../ui.js';
 import { renderAnalytics } from './analytics.js';
 
 const PLATFORMS = [
@@ -67,6 +67,9 @@ export async function renderDashboard(page) {
   for (const s of data.filter(d => new Date(d.date) > now)) attention.push({ href: `#/edit/${s.collection}/${encodeURIComponent(s.slug)}`, title: s.headline || s.title, text: `مجدول — هيظهر ${timeAgo(s.date)}`, kind: 'sched' });
   for (const p of pending) attention.push({ href: `#/edit/${p.collection}/${encodeURIComponent(p.slug)}`, title: p.title, text: 'اتحفظ — هيظهر على الموقع خلال دقيقتين', kind: 'sched' });
 
+  const mayEdit = (href) => { const m = href.match(/#\/edit\/([a-z_]+)/); return !m || can(user, `${m[1] === 'nostalgia_series' ? 'nostalgia' : m[1]}.edit`); };
+  for (let i = attention.length - 1; i >= 0; i--) if (!mayEdit(attention[i].href)) attention.splice(i, 1);
+
   const summary = [
     todayShows.length ? `${num(todayShows.length)} عرض` : '',
     todayNews.length ? `${num(todayNews.length)} خبر` : '',
@@ -78,13 +81,13 @@ export async function renderDashboard(page) {
         <div><h1>أهلا يا <span>${user ? (user.displayName || user.username) : ''}</span>،<br>${summary ? `النهارده نزل ${summary}.` : 'لسه مفيش جديد النهارده.'}</h1>
           <p class="muted">${greet} · ${fmtDate(now)}</p></div>
         <div class="page-actions">
-          <a class="btn btn-primary" href="#/new/shows">${icon('plus')} عرض جديد</a>
-          <a class="btn" href="#/new/recaps">${icon('recap')} ملخص</a>
-          <a class="btn" href="#/new/news">${icon('news')} خبر</a>
+          ${can(user, 'shows.create') ? html`<a class="btn btn-primary" href="#/new/shows">${icon('plus')} عرض جديد</a>` : ''}
+          ${can(user, 'recaps.create') ? html`<a class="btn" href="#/new/recaps">${icon('recap')} ملخص</a>` : ''}
+          ${can(user, 'news.create') ? html`<a class="btn" href="#/new/news">${icon('news')} خبر</a>` : ''}
         </div>
       </div>
 
-      <div id="analytics"></div>
+      ${can(user, 'stats') ? html`<div id="analytics"></div>` : ''}
 
       ${attention.length ? html`<details class="notice">
         <summary>${icon('alert')}<b>في ${num(attention.length)} حاجة محتاجة انتباهك</b><span class="muted">عرض التفاصيل</span></summary>
@@ -96,14 +99,14 @@ export async function renderDashboard(page) {
         ${[['shows', 'العروض', shows.length, `${num(shows.filter(s => now - new Date(s.date) < 7 * 864e5).length)} في آخر أسبوع`],
            ['recaps', 'الملخصات', recaps.length, ''],
            ['news', 'الأخبار', news.length, `${num(todayNews.length)} النهارده`],
-           ['nostalgia', 'نوستالجيا', nostalgia.length, '']].map(([c, label, n, sub]) => html`
+           ['nostalgia', 'نوستالجيا', nostalgia.length, '']].filter(([c]) => can(user, `${c}.view`)).map(([c, label, n, sub]) => html`
           <a class="stat" href="#/list/${c}" style="--c:${COLLECTIONS[c].color}">
             <i>${icon(COLLECTIONS[c].icon)}</i><span><small>${label}</small><b>${num(n)}</b>${sub ? html`<em>${sub}</em>` : ''}</span>
           </a>`)}
       </div>
 
       <div class="cols">
-        <section class="panel">
+        ${can(user, 'shows.view') ? html`<section class="panel">
           <header class="panel-head"><h2>آخر العروض</h2><a class="link" href="#/list/shows">الكل</a></header>
           <div class="rows">${shows.slice(0, 7).map(s => html`
             <a class="row" href="#/edit/shows/${encodeURIComponent(s.slug)}">
@@ -111,23 +114,23 @@ export async function renderDashboard(page) {
               <span class="row-main"><b>${s.headline || s.title}</b><small>${s.federation} · ${timeAgo(s.date)}${Date.parse(s.date) > Date.now() ? ' · مجدول' : ''}</small></span>
               <span class="row-go">${icon('edit')}</span>
             </a>`)}</div>
-        </section>
-        <section class="panel">
+        </section>` : ''}
+        ${can(user, 'news.view') ? html`<section class="panel">
           <header class="panel-head"><h2>آخر الأخبار</h2><a class="link" href="#/list/news">الكل</a></header>
           <div class="rows" id="latest-news"></div>
-        </section>
+        </section>` : ''}
       </div>
 
-      <section class="panel">
+      ${can(user, 'status') ? html`<section class="panel">
         <header class="panel-head"><h2>حالة الموقع</h2><span class="muted small">النشر على المنصات ومصادر الأخبار</span></header>
         <div class="health" id="status"><div class="skel-lines" style="height:70px"></div></div>
-      </section>
+      </section>` : ''}
     </div>
   `);
 
-  renderAnalytics($('#analytics'));
+  if ($('#analytics')) renderAnalytics($('#analytics'));
   const latest = news.slice(0, 6);
-  const drawNews = (items = {}) => mount($('#latest-news'), html`${latest.map(n => {
+  const drawNews = (items = {}) => $('#latest-news') && mount($('#latest-news'), html`${latest.map(n => {
     const st = items[n.url] || {};
     const edit = editHref(n) || n.url;
     return html`<a class="row" href="${edit}">
@@ -137,6 +140,7 @@ export async function renderDashboard(page) {
     </a>`;
   })}`);
   drawNews();
+  if (!$('#status')) return;
 
   try {
     const ov = await api.overview(latest.map(n => n.url));

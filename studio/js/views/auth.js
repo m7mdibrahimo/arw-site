@@ -1,5 +1,5 @@
 // Login, first-time setup and password reset.
-import { api, saveSession, IS_LOCAL } from '../api.js';
+import { api, saveSession, clearSession, IS_LOCAL } from '../api.js';
 import { html, mount, $, icon, toast, esc } from '../ui.js';
 
 const AUTH_BASE = 'https://arab-wrestling-auth.m7mdibrahimpc.workers.dev';
@@ -159,5 +159,42 @@ export function renderSetup(root, { onDone, first = false, reset = false } = {})
       toast(first ? 'تم إنشاء الحساب. أهلا بيك!' : 'تم تغيير كلمة السر.');
       onDone && onDone(r.user);
     } catch (ex) { fail(ex.message); } finally { btn.disabled = false; btn.classList.remove('loading'); }
+  };
+}
+
+/** A member signed in with the temporary password the owner gave them: they choose their own first. */
+export function renderForceChange(root, user, onDone) {
+  mount(root, shell(html`<form class="auth-card" id="fc-form" novalidate>
+    <h2>اختار كلمة سر خاصة بيك</h2>
+    <p class="muted">أهلا ${user.displayName || user.username}. كلمة السر اللي معاك مؤقتة من صاحب الموقع، ولازم تغيّرها قبل ما تدخل. محدش هيعرف الجديدة غيرك.</p>
+    <div class="alert alert-error" id="fc-error" hidden></div>
+    <label class="field"><span>كلمة السر المؤقتة</span><input class="input" id="fc-cur" type="password" autocomplete="current-password" dir="ltr"></label>
+    <label class="field"><span>كلمة السر الجديدة</span><div class="input-ico">${icon('lock')}<input class="input" id="fc-new" type="password" autocomplete="new-password" dir="ltr"></div>
+      <small class="muted">٨ حروف على الأقل، فيها حروف وأرقام</small></label>
+    <label class="field"><span>أكّد الجديدة</span><input class="input" id="fc-new2" type="password" autocomplete="new-password" dir="ltr"></label>
+    <button class="btn btn-primary btn-lg btn-block" id="fc-btn" type="submit">حفظ والدخول</button>
+    <a href="#" class="link center block" id="fc-out">خروج</a>
+  </form>`));
+  const err = $('#fc-error');
+  $('#fc-cur').focus();
+  $('#fc-out').onclick = async (e) => {
+    e.preventDefault();
+    try { await api.logout(); } catch {}
+    clearSession(); location.reload();
+  };
+  $('#fc-form').onsubmit = async (e) => {
+    e.preventDefault();
+    err.hidden = true;
+    if ($('#fc-new').value !== $('#fc-new2').value) { err.textContent = 'كلمتين السر الجديدة مش زي بعض.'; err.hidden = false; return; }
+    const btn = $('#fc-btn'); btn.disabled = true; btn.classList.add('loading');
+    try {
+      const r = await api.changePassword({ current: $('#fc-cur').value, next: $('#fc-new').value });
+      let remember = false;
+      try { remember = !!localStorage.getItem('arw_studio_token'); } catch {}
+      saveSession({ token: r.token, user: r.user, remember });
+      toast('اتحفظت كلمة السر. أهلا بيك!');
+      onDone(r.user);
+    } catch (ex) { err.textContent = ex.message; err.hidden = false; }
+    finally { btn.disabled = false; btn.classList.remove('loading'); }
   };
 }

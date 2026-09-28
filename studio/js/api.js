@@ -70,6 +70,10 @@ export const api = {
   analytics: () => call('/api/studio/analytics'),
   connectAnalytics: (b) => call('/api/studio/analytics/config', { method: 'POST', body: b }),
   disconnectAnalytics: () => call('/api/studio/analytics/config', { method: 'DELETE' }),
+  members: () => call('/api/studio/members'),
+  createMember: (b) => call('/api/studio/members/create', { method: 'POST', body: b }),
+  memberAction: (id, action, b = {}) => call(`/api/studio/members/${id}/${action}`, { method: 'POST', body: b }),
+  audit: () => call('/api/studio/audit'),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────

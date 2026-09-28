@@ -150,3 +150,9 @@ export function avatarInner(user) {
   if (user && user.avatar) return raw(`<img src="${esc(user.avatar)}" alt="">`);
   return ((user && (user.displayName || user.username)) || 'م')[0].toUpperCase();
 }
+
+/** Client-side mirror of the server's permission check (for hiding buttons; the server decides). */
+export function can(user, perm) {
+  return !!user && (user.role === 'owner' || (Array.isArray(user.perms) && user.perms.includes(perm)));
+}
+export const sectionOf = (collection) => (collection === 'nostalgia_series' ? 'nostalgia' : collection);
