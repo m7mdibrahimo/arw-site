@@ -88,7 +88,6 @@ export async function renderDashboard(page) {
         </div>
       </div>
 
-      ${can(user, 'tools') ? html`<div id="held"></div>` : ''}
       ${can(user, 'stats') ? html`<div id="analytics"></div>` : ''}
 
       ${attention.length ? html`<details class="notice">
@@ -121,6 +120,7 @@ export async function renderDashboard(page) {
           <header class="panel-head"><h2>آخر الأخبار</h2><a class="link" href="#/list/news">الكل</a></header>
           <div class="rows" id="latest-news"></div>
         </section>` : ''}
+        ${can(user, 'tools') ? html`<section class="panel held" id="held" hidden></section>` : ''}
       </div>
 
       ${can(user, 'status') ? html`<section class="panel">

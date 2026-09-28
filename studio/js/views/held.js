@@ -1,53 +1,48 @@
 // Stories the spoiler shield kept off social (results, returns, debuts): the owner reads each
 // one and either publishes it to the platforms or keeps it off. The site itself always has them.
-import { api, IS_LOCAL } from '../api.js';
-import { html, mount, $$, icon, toast, dialog, timeAgo } from '../ui.js';
+// Shown on the home page under the latest shows and news, in the same compact rows.
+import { api } from '../api.js';
+import { html, mount, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
 const REASON = { result: 'نتيجة أو حرق', return: 'عودة أو ظهور أول' };
-const FIRST = 6;
 const PLATFORMS = [['telegram', 'تيليجرام', '#24a1de'], ['facebook', 'فيسبوك', '#1877f2'], ['instagram', 'إنستجرام', '#e1306c']];
+const FIRST = 7;
 
 export async function renderHeld(el, { all = false } = {}) {
   if (!el) return;
   let items;
-  try { items = (await api.held()).items || []; }
-  catch (e) { return mount(el, IS_LOCAL ? '' : html`<section class="panel"><header class="panel-head"><h2>أخبار محجوبة عن السوشيال</h2></header><p class="muted panel-pad">${e.message}</p></section>`); }
+  try { items = (await api.held()).items || []; } catch { el.hidden = true; return; }
   const waiting = items.filter(i => !i.releasedAt && !i.dismissedAt);
-  const decided = items.filter(i => i.releasedAt || i.dismissedAt).slice(0, 8);
-  if (!items.length) return mount(el, '');
+  const decided = items.filter(i => i.releasedAt || i.dismissedAt).slice(0, 7);
+  if (!items.length) { el.hidden = true; return; }
+  el.hidden = false;
 
-  const row = (i) => {
-    const state = i.releasedAt
+  const row = (i) => html`<div class="row held-row ${i.releasedAt || i.dismissedAt ? 'is-done' : ''}">
+    <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${i.image}" alt="" loading="lazy">` : ''}</a>
+    <a class="row-main" href="${i.url}" target="_blank" title="افتح الخبر على الموقع"><b>${i.title}</b>
+      <small>${REASON[i.reason] || 'حرق'} · ${i.releasedAt ? `نشرته ${timeAgo(i.releasedAt)}` : i.dismissedAt ? `سبته ${timeAgo(i.dismissedAt)}` : timeAgo(i.at)}</small></a>
+    <span class="row-actions">${i.releasedAt
       ? (i.sent && (i.sent.telegram || i.sent.facebook)
           ? html`<span class="plat-dots">${PLATFORMS.map(([k, n, c]) => html`<i class="${i.sent[k] ? 'on' : ''}" style="--c:${c}" title="${n}">${icon(k)}</i>`)}</span>`
-          : html`<span class="tag tag-sched">${icon('clock')} بيتنشر دلوقتي</span>`)
-      : i.dismissedAt ? html`<span class="tag">مش هيتنشر</span>` : '';
-    return html`<div class="row held-row ${i.releasedAt || i.dismissedAt ? 'is-done' : ''}">
-      <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${i.image}" alt="" loading="lazy">` : ''}</a>
-      <a class="row-main" href="${i.url}" target="_blank" title="افتح الخبر على الموقع"><b>${i.title}</b>
-        <small><span class="tag tag-held">${REASON[i.reason] || 'حرق'}</span> · اتحجب ${timeAgo(i.at)}${i.releasedAt ? ` · نشرته ${timeAgo(i.releasedAt)}${i.by ? ` (${i.by})` : ''}` : i.dismissedAt ? ` · سبته ${timeAgo(i.dismissedAt)}${i.by ? ` (${i.by})` : ''}` : ''}</small></a>
-      <span class="row-actions">${state}
-        ${!i.releasedAt ? html`<button class="btn btn-sm btn-primary" data-publish="${i.key}">${icon('send')} انشره</button>` : ''}
-        ${!i.releasedAt && !i.dismissedAt ? html`<button class="btn btn-sm btn-ghost" data-keep="${i.key}">سيبه</button>` : ''}
-      </span></div>`;
-  };
+          : html`<span class="icon-btn sm" title="بيتنشر دلوقتي">${icon('clock')}</span>`)
+      : html`<button class="icon-btn sm held-pub" data-publish="${i.key}" title="انشره على المنصات">${icon('send')}</button>
+        ${i.dismissedAt ? '' : html`<button class="icon-btn sm" data-keep="${i.key}" title="سيبه من غير نشر">${icon('x')}</button>`}`}
+    </span></div>`;
 
-  mount(el, html`<section class="panel held">
-    <header class="panel-head"><h2>${icon('shield')} أخبار محجوبة عن السوشيال ${waiting.length ? html`<span class="count-pill">${waiting.length}</span>` : ''}</h2>
-      <span class="muted small">اتحجبت تلقائي عشان شكلها فيها حرق. هي موجودة على الموقع عادي؛ انت اللي بتقرر تتنشر على المنصات ولا لأ.</span></header>
-    ${waiting.length ? html`<div class="rows">${(all ? waiting : waiting.slice(0, FIRST)).map(row)}</div>
-      ${!all && waiting.length > FIRST ? html`<button class="btn btn-ghost btn-sm held-more" id="held-more">عرض الباقي (${waiting.length - FIRST})</button>` : ''}` : html`<p class="muted small">مفيش أخبار مستنية قرارك دلوقتي.</p>`}
-    ${decided.length ? html`<details class="held-done"><summary class="muted small">اللي اتقرر قبل كده (${decided.length})</summary><div class="rows">${decided.map(row)}</div></details>` : ''}
-  </section>`);
+  mount(el, html`
+    <header class="panel-head"><h2>محجوبة عن السوشيال ${waiting.length ? html`<span class="count-pill">${num(waiting.length)}</span>` : ''}</h2>
+      ${waiting.length > FIRST ? html`<a class="link" href="#" id="held-all">${all ? 'أقل' : 'الكل'}</a>` : ''}</header>
+    ${waiting.length ? html`<div class="rows">${(all ? waiting : waiting.slice(0, FIRST)).map(row)}</div>` : html`<p class="muted small">مفيش أخبار مستنية قرارك.</p>`}
+    ${decided.length ? html`<details class="held-done"><summary class="muted small">اللي اتقرر قبل كده (${num(decided.length)})</summary><div class="rows">${decided.map(row)}</div></details>` : ''}`);
 
-  const more = el.querySelector('#held-more');
-  if (more) more.onclick = () => renderHeld(el, { all: true });
+  const allLink = el.querySelector('#held-all');
+  if (allLink) allLink.onclick = (e) => { e.preventDefault(); renderHeld(el, { all: !all }); };
   const find = (key) => items.find(i => i.key === key);
   $$('[data-publish]', el).forEach(b => b.onclick = async () => {
     const i = find(b.dataset.publish);
     const ok = await dialog({
       title: 'نشر الخبر على السوشيال',
-      body: html`<p>«${i.title}»</p><p class="muted small">هيتنشر على تيليجرام وفيسبوك وإنستجرام خلال دقايق، ومش هينفع يترجع بعدها. متأكد إن مفيهوش حرق؟</p>`,
+      body: html`<p>«${i.title}»</p><p class="muted small">اتحجب تلقائي عشان شكله فيه حرق (${REASON[i.reason] || 'حرق'}). هيتنشر على تيليجرام وفيسبوك وإنستجرام خلال دقايق ومش هينفع يترجع. متأكد إن مفيهوش حرق؟</p>`,
       confirm: 'أيوه، انشره',
     });
     if (!ok) return;

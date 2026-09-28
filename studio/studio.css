@@ -559,20 +559,15 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .team-link span { flex: 1; min-width: 0; } .team-link b { display: block; font-weight: 900; } .team-link small { display: block; font-size: 12.5px; }
 .team-link > svg { color: var(--muted); }
 
-/* Home → stories held off social */
-.panel.held { margin-bottom: 18px; }
-.panel.held .panel-head { flex-wrap: wrap; gap: 6px 14px; }
-.panel.held .panel-head h2 { display: flex; align-items: center; gap: 8px; }
+/* Home → stories held off social (same compact rows as the latest shows/news next to it) */
 .count-pill { background: var(--coral); color: #fff; font-size: 13px; font-weight: 900; border-radius: 999px; padding: 0 10px; line-height: 1.9; }
-.held-row .row-main b { -webkit-line-clamp: 2; }
-.held-row .row-main small { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
-.held-row .row-actions { align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .held-row.is-done { opacity: .75; }
+.held-row .row-actions { align-items: center; }
+.held-pub { background: var(--coral); color: #fff; }
 .held-done { margin-top: 12px; }
 .held-done summary { cursor: pointer; padding: 6px 2px; }
 .held-done .rows { margin-top: 8px; }
-@media (max-width: 640px) { .held-row .plat-dots { display: flex; } }
-.held-more { margin-top: 10px; }
+@media (max-width: 640px) { .held-row .row-actions { grid-column: auto; } .held-row { grid-template-columns: 50px 1fr auto; } .held-row .plat-dots { display: flex; } }
 
 /* ── Tools (social, sources, pinned, reels) ─────────────────────────────── */
 .wrap > .panel + .panel, .wrap > .panel + .rows, .wrap > .filterbar + .batchbar, .wrap > .alert { margin-top: 16px; }
