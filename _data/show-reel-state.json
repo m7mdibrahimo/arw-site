@@ -2432,12 +2432,11 @@
     "publishedAt": 1790571810107,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم",
-    "lastAttempt": 1790575376136,
+    "lastAttempt": 1790578896028,
     "errors": {
-      "instagram_reel": "Error: Media upload has failed with error code 2207082",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
