@@ -1,5 +1,25 @@
 [
   {
+    "id": 330965,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-9-27/",
+    "date": "2026-09-28T10:00:00",
+    "date_gmt": "2026-09-28T14:00:00",
+    "title": {
+      "rendered": "WWE NXT Live Results (9/27)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
+    "id": 330979,
+    "link": "https://www.fightful.com/wrestling/wrestling-personalities-continue-to-pay-tribute-to-pac-benjamin-satterley/",
+    "date": "2026-09-28T09:54:33",
+    "date_gmt": "2026-09-28T13:54:33",
+    "title": {
+      "rendered": "Wrestling Personalities Continue To Pay Tribute To PAC (Benjamin Satterley)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/08/27220053/pac_aew.jpg"
+  },
+  {
     "id": 330971,
     "link": "https://www.fightful.com/wrestling/tavion-heights-names-jacob-fatu-as-his-dream-match-i-feel-like-thatd-be-a-really-fun-and-intense-match/",
     "date": "2026-09-28T09:27:53",
@@ -278,25 +298,5 @@
       "rendered": "Thunder Rosa Reflects On Lights Out Match With Britt Baker"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27145833/l-intro-1690350022.jpg"
-  },
-  {
-    "id": 330858,
-    "link": "https://www.fightful.com/wrestling/andrade-pac-has-to-be-a-world-champion-in-the-future-but-he-needs-to-leave-the-death-riders/",
-    "date": "2026-09-27T14:00:53",
-    "date_gmt": "2026-09-27T18:00:53",
-    "title": {
-      "rendered": "Andrade: &#8216;Pac Has To Be A World Champion In The Future, But He Needs To Leave The Death Riders&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26203352/HTLtxX9W0AAI-vC-e1790469254455.png"
-  },
-  {
-    "id": 330846,
-    "link": "https://www.fightful.com/wrestling/sla-mega-ticket-results-9-25-new-gateway-heritage-champion/",
-    "date": "2026-09-27T14:00:00",
-    "date_gmt": "2026-09-27T18:00:00",
-    "title": {
-      "rendered": "SLA Mega Ticket Results (9/25): New Gateway Heritage Champion"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27132750/HSQ1z0zWkAAu96Q.jpg-2.webp"
   }
 ]
