@@ -2315,7 +2315,7 @@ export function leadHasMatchResult(plainText: string = "", title: string = ""): 
 }
 
 /** Shows that aired in the last hours = the shows that have a results report published recently. */
-export function recentShowNames(hours: number = 72, newsDir: string = NEWS_DIR): string[] {
+export function recentShowNames(hours: number = 24, newsDir: string = NEWS_DIR): string[] {
   const names = new Set<string>();
   if (!fs.existsSync(newsDir)) return [];
   const cutoff = Date.now() - hours * 3600_000;
@@ -2371,26 +2371,29 @@ export function socialOpening(body: string, max = 300): string {
  * #71/#104), so the finished text is read for its meaning. The shield holds a story when this
  * OR its word rules say so; with no answer (AI down) the word rules decide alone.
  */
-export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = ""): Promise<{ spoils: boolean; kind: "result" | "return" | "none"; note: string; age: "recent" | "old" | "none" } | null> {
+export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<{ spoils: boolean; kind: "result" | "return" | "none"; note: string; age: "recent" | "old" | "none" } | null> {
   const opening = socialOpening(body);
-  const today = new Date().toISOString().slice(0, 10);
+  // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. After
+  // that it is ordinary news and goes out like any other story.
+  const now = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
   const prompt = `أنت مراجع لمنشورات صفحات موقع عرب راسلنج على السوشيال ميديا. المتابعين مش عايزين «حرق»: أي معلومة تكشف نتيجة نزال أو عودة/ظهور لمصارع قبل ما يشوفوا العرض بنفسهم.
-تاريخ النهارده: ${today}. الحرق يخص بس العروض اللي اتعرضت في آخر ٧ أيام (لسه ناس ماشافتهاش). أحداث أقدم من كده — ذكريات، «السنة اللي فاتت»، «في فبراير»، نزال من شهور — مش حرق.
+قاعدة صاحب الموقع: الحرق مدته ٢٤ ساعة بس. أي نزال أو عودة حصل من أكتر من ٢٤ ساعة بقى خبر عادي ومش حرق.
+الوقت دلوقتي: ${now}.${sourceDate ? ` المصدر نشر الخبر: ${sourceDate}.` : ""}
 
 المنشور هيحتوي بالظبط على العنوان وأول الخبر ده (مش أكتر):
 العنوان: ${JSON.stringify(title)}
 أول الخبر: ${JSON.stringify(opening)}
 (عنوان المصدر الإنجليزي للسياق فقط، مش هيتنشر: ${JSON.stringify(sourceTitle)})
 
-اعتبره حرق (spoils = true) لو النص اللي هيتنشر (العنوان أو أول الخبر) يكشف بأي صياغة، صريحة أو ضمنية:
+اعتبره حرق (spoils = true) لو النص اللي هيتنشر (العنوان أو أول الخبر) يكشف بأي صياغة، صريحة أو ضمنية، حدث حصل في آخر ٢٤ ساعة:
 - مين فاز أو خسر في نزال، أو احتفظ بلقب أو خسره أو فاز بيه، أو تأهل أو خرج، أو إن النزال اتوقف أو انتهى بشكل معين (kind = "result").
-- إن مصارع رجع أو ظهر لأول مرة أو عمل ظهور مفاجئ في عرض حصل فعلًا (kind = "return").
+- إن مصارع رجع أو ظهر لأول مرة أو عمل ظهور مفاجئ في عرض (kind = "return").
 
-مش حرق (spoils = false): أي حدث حصل من أكتر من ٧ أيام، إعلان نزال جاي، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
+مش حرق (spoils = false): أي حدث عدّى عليه أكتر من ٢٤ ساعة، أو إعلان نزال جاي، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
 
-وقول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة) حصل إمتى: "recent" لو في آخر ٧ أيام أو مش واضح إنه قديم، "old" لو واضح من النص إنه أقدم من ٧ أيام (فيه تاريخ أو شهر أو «السنة اللي فاتت»)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
+قول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة) حصل إمتى: "recent" لو في آخر ٢٤ ساعة أو مش واضح، "old" لو واضح إنه عدّى عليه أكتر من ٢٤ ساعة (تاريخ أو يوم أو شهر في النص، أو «الأسبوع اللي فات»، أو إن المصدر نفسه نشر بعد العرض بأكتر من يوم)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
 
-رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"none", "age": "recent"|"old"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة، أو ليه مفيهوش حرق"}`;
+رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"none", "age": "recent"|"old"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة وإمتى حصل، أو ليه مفيهوش حرق"}`;
   const text = await queryGemini(prompt, true, 0.1);
   if (!text) return null;
   const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown; age?: unknown }>(text);
@@ -3448,6 +3451,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const rawTitle = post.title?.rendered?.replace(/&#8217;/g, "'").replace(/&#8216;/g, "'").replace(/&amp;/g, "&") || "News";
   const postUrl = post.link || "";
   const sourceDate = post.date_gmt || post.date;
+  // When the source published it, in UTC — for the 24-hour spoiler rule's «how long ago»
+  const postDateGmtForSocial = post.date_gmt ? `${String(post.date_gmt).replace(/Z$/, "")}Z` : String(post.date || "");
   const effectiveDate = customDate ? (customDate instanceof Date ? customDate.toISOString() : customDate) : sourceDate;
   const contentHtml = post.content?.rendered || "";
 
@@ -3816,7 +3821,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   // The social shield's second opinion, on the finished text (full results reports go out with
   // a fixed text, so they need none).
-  const socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle).catch(() => null);
+  const socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
   const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}` : "";
   let markdownContent = `---

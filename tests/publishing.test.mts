@@ -1463,15 +1463,15 @@ test('the writer asks the AI about exactly the text that will be posted, and rea
         return Response.json({ candidates: [{ content: { parts: [{ text: '{"spoils": true, "kind": "none", "note": "بيقول مين فاز"}' }] } }] }); };
       const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
       const opening = m.socialOpening('## عنوان فرعي\\n\\n**فاز** فلان [بالنزال](https://x.y) ![صورة](a.jpg) في عرض كبير');
-      const verdict = await m.judgeSocialSpoiler('عنوان الخبر', 'فاز فلان في عرض كبير', 'Source Title');
-      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير'), hasDate: prompt.includes(new Date().toISOString().slice(0, 10)) && prompt.includes('آخر ٧ أيام') }));
+      const verdict = await m.judgeSocialSpoiler('عنوان الخبر', 'فاز فلان في عرض كبير', 'Source Title', '2026-09-27T10:00:00Z');
+      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير'), hasDate: prompt.includes(new Date().toISOString().slice(0, 10)) && prompt.includes('الحرق مدته ٢٤ ساعة بس') && prompt.includes('2026-09-27T10:00:00Z') }));
     `);
     const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1' }, stdio: ['ignore', 'pipe', 'pipe'] });
     const r = JSON.parse(out.trim().split('\n').pop()!);
     assert.equal(r.opening, 'عنوان فرعي فاز فلان بالنزال في عرض كبير');
     assert.deepEqual(r.verdict, { spoils: true, kind: 'result', age: 'recent', note: 'بيقول مين فاز' }); // no age given: treated as recent (never as «old»)
     assert.ok(r.hasTitle && r.hasOpening);
-    assert.ok(r.hasDate, 'knows today and that events older than a week are not spoilers (a Hardys return from last year was held — INCIDENTS #107)');
+    assert.ok(r.hasDate, 'knows the time now and the owner rule: a spoiler lasts 24 hours (a Hardys return from last year was held — INCIDENTS #107)');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -1557,4 +1557,39 @@ test('«ة» glued to the next word gets its space back', () => {
   assert.equal(autoFix('في عالم المصارعةجاز'), 'في عالم المصارعة جاز');
   assert.equal(autoFix('المصارعةالحرة'), 'المصارعة الحرة');
   assert.equal(autoFix('المصارعة الحرة وجماعة'), 'المصارعة الحرة وجماعة', 'correct text untouched');
+});
+
+test('a spoiler lasts 24 hours: a held story goes out on its own after that — unless the owner chose «سيبه»', async t => {
+  // Owner's rule, 2026-09-29
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [
+    { url: '/news/held-25h/', title: 'فلان يهزم علان في عرض RAW', description: 'تفاصيل', kind: 'news', date: hours(25), published_at: hours(25) },
+    { url: '/news/held-10h/', title: 'فلان يهزم علان في عرض NXT', description: 'تفاصيل', kind: 'news', date: hours(10), published_at: hours(10) },
+    { url: '/news/kept-off/', title: 'فلان يهزم علان في عرض SmackDown', description: 'تفاصيل', kind: 'news', date: hours(25), published_at: hours(25) },
+  ];
+  const stamp = (h: number) => Date.now() - h * 3600_000;
+  const keys = { a: 'httpssitetestnewsheld-25h', b: 'httpssitetestnewsheld-10h', c: 'httpssitetestnewskept-off' };
+  const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {}, held: {} };
+  for (const [k, h] of [[keys.a, 25], [keys.b, 10], [keys.c, 25]] as [string, number][]) {
+    for (const p of ['telegram', 'facebook', 'instagram', 'x']) state[p][k] = stamp(h);
+    state.held[k] = { at: stamp(h), title: 'x', url: '/news/x/', reason: 'result', why: 'title' };
+  }
+  state.held[keys.c].dismissedAt = stamp(20);
+  const file = '/repos/owner/repo-24h/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  const opened: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.startsWith('https://site.test/')) { opened.push(decodeURIComponent(new URL(url).pathname)); return new Response('', { status: 404 }); }
+    return database.fetch(input, init);
+  });
+  for (let i = 0; i < 3; i++) await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-24h', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(after.held[keys.a].releasedAt && after.released[keys.a], 'held 25h ago: released');
+  assert.equal(after.held[keys.a].by, 'تلقائي بعد ٢٤ ساعة');
+  assert.ok(opened.some(p => p.startsWith('/news/held-25h')), 'and on its way to the platforms');
+  assert.ok(!after.held[keys.b].releasedAt, 'held 10h ago: still held');
+  assert.ok(!after.held[keys.c].releasedAt, 'the owner kept it off: stays off');
 });

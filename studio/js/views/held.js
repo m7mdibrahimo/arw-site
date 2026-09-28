@@ -23,7 +23,7 @@ export async function renderHeld(el, { all = false } = {}) {
   const row = (i) => html`<div class="row held-row ${i.releasedAt || i.dismissedAt ? 'is-done' : ''}">
     <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${i.image}" alt="" loading="lazy">` : ''}</a>
     <a class="row-main" href="${i.url}" target="_blank" title="افتح الخبر على الموقع"><b>${i.title}</b>
-      <small>${i.why === 'flag' || i.why === 'old' ? html`<span class="clean-tag">${why(i)}</span>` : why(i)} · ${i.releasedAt ? `نشرته ${timeAgo(i.releasedAt)}` : i.dismissedAt ? `سبته ${timeAgo(i.dismissedAt)}` : timeAgo(i.at)}</small></a>
+      <small>${i.why === 'flag' || i.why === 'old' ? html`<span class="clean-tag">${why(i)}</span>` : why(i)} · ${i.releasedAt ? `نشرته ${timeAgo(i.releasedAt)}` : i.dismissedAt ? `سبته ${timeAgo(i.dismissedAt)}` : `${timeAgo(i.at)} · هيتنشر لوحده بعد ${Math.max(1, Math.ceil((24 * 3600_000 - (Date.now() - i.at)) / 3600_000))} ساعة`}</small></a>
     <span class="row-actions">${i.releasedAt
       ? (i.sent && (i.sent.telegram || i.sent.facebook)
           ? html`<span class="plat-dots">${PLATFORMS.map(([k, n, c]) => html`<i class="${i.sent[k] ? 'on' : ''}" style="--c:${c}" title="${n}">${icon(k)}</i>`)}</span>`

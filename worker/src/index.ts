@@ -2187,6 +2187,27 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // a small number of the oldest candidates — the exact cost that was
   // blowing the CPU limit before, now capped independently of backlog size.
   const WINDOW_MS = 3 * 60 * 60 * 1000;
+  // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. A story
+  // held for it goes out on its own once 24 hours have passed since the hold — unless the owner
+  // chose «سيبه». Only holds from the last 36 hours: older ones aren't dug back up.
+  {
+    const nowMs = Date.now();
+    const due = Object.entries(state.held || {}).filter(([, h]) => h && !h.releasedAt && !h.dismissedAt
+      && nowMs - h.at >= 24 * 3600_000 && nowMs - h.at < 36 * 3600_000);
+    if (due.length) {
+      state.released = state.released || {};
+      for (const [k, h] of due) {
+        state.released[k] = nowMs;
+        for (const p of ["telegram", "facebook", "instagram", "x"] as const) delete state[p][k];
+        for (const d of Object.keys(state.deferrals || {})) if (d.endsWith(`:${k}`)) delete state.deferrals![d];
+        h.releasedAt = nowMs;
+        h.by = "تلقائي بعد ٢٤ ساعة";
+      }
+      const w = await githubWriteState(env, state, currentSha, `social shield: release ${due.length} held stor${due.length === 1 ? "y" : "ies"} after 24 hours`).catch(() => ({ ok: false }));
+      if (!w.ok) return; // someone else wrote first: next minute reads the fresh state
+      ({ sha: currentSha, state } = await githubReadState(env));
+    }
+  }
   const recentReleases = new Set(Object.entries((state as any).released || {}).filter(([, t]) => Date.now() - Number(t) < WINDOW_MS).map(([k]) => k));
   const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   for (const item of items) {
