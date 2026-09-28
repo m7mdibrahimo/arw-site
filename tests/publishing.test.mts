@@ -1475,3 +1475,17 @@ test('the writer asks the AI about exactly the text that will be posted, and rea
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('a results report goes to social as «show + date» only — never with the winner the site title carries', async () => {
+  // INCIDENTS #106: «نتائج عرض AEW All Out (26 سبتمبر 2026): فوز ويل أوسبراي في الحدث الرئيسي» reached every platform.
+  const { socialResultsTitle } = await import('../worker/src/index');
+  const cases: [string, string][] = [
+    ['نتائج عرض AEW All Out (26 سبتمبر 2026): فوز ويل أوسبراي في الحدث الرئيسي', 'نتائج عرض AEW All Out (26 سبتمبر 2026)'],
+    ['نتائج عرض Sareee-ISM Chapter XII (26 سبتمبر 2026): سبارك روش تتغلب على هازوكي وVENY', 'نتائج عرض Sareee-ISM Chapter XII (26 سبتمبر 2026)'],
+    ['نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية): فوز أهورا في الحدث الرئيسي', 'نتائج عرض wXw Pro-Wrestling Grand Prix (الليلة الثانية)'],
+    ['نتائج عرض UFC Fight Night: راؤول روزاس جونيور ضد راوني بارسيلوس (26 سبتمبر 2026)', 'نتائج عرض UFC Fight Night: راؤول روزاس جونيور ضد راوني بارسيلوس (26 سبتمبر 2026)'],
+    ['نتائج عرض WWE RAW: فوز رومان رينز في الحدث الرئيسي', 'نتائج عرض WWE RAW'],
+    ['نتائج تسريبات عرض WWE SmackDown (30 سبتمبر 2026): فوز كودي', 'نتائج تسريبات عرض WWE SmackDown (30 سبتمبر 2026)'],
+  ];
+  for (const [site, social] of cases) assert.equal(socialResultsTitle(site), social);
+});

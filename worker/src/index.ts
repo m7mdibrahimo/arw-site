@@ -1810,7 +1810,10 @@ async function publishToPlatform(
   const result = await deliverOnce(env, `post:${platform}:${key}`, async () => {
     const r = await sendToPlatform(env, platform, key, item, verified, force);
     return { ok: r.status === "sent", status: r.status, ambiguous: r.status === "uncertain",
-      error: r.status !== "sent" ? (r.raw?.error?.message || r.raw?.result?.error?.message || r.status) : undefined };
+      error: r.status !== "sent"
+        // Telegram says why in «description» («Bad Request: …»): keep it, a bare «failed» told nobody anything
+        ? String(r.raw?.error?.message || r.raw?.result?.error?.message || (r.raw?.description ? `${r.raw.error_code || ""} ${r.raw.description}`.trim() : "") || r.status).slice(0, 300)
+        : undefined };
   }, { force });
   if (result.ok) {
     await markSendSuccess(env, platform, key);
@@ -1891,9 +1894,24 @@ async function sendToPlatform(
 // Watcher — runs on the cron trigger, once a minute.
 // ─────────────────────────────────────────────────────────────────────────
 
+/**
+ * A results report's title on social: the show and its date only. On the site the title
+ * names the main event's winner on purpose (INCIDENTS #80, for search), and the word
+ * replacements below never knew «فوز X في الحدث الرئيسي» — every report from 27 Sep went to
+ * Telegram, Facebook and Instagram with the winner in it (INCIDENTS #106). Whatever the
+ * subtitle says, it doesn't go out.
+ */
+export function socialResultsTitle(title: string): string {
+  const t = String(title || "").trim();
+  const dated = t.match(/^(نتائج\s+(?:عرض|تسريبات)[^()]*\([^)]*\))/);
+  if (dated) return dated[1].trim();
+  const named = t.match(/^(نتائج\s+(?:عرض|تسريبات)[^:：]*?)\s*[:：]/);
+  return named ? named[1].trim() : t;
+}
+
 function sanitizeResultsTitleSpoilers(title: string): string {
   if (!title) return title;
-  let clean = title;
+  let clean = socialResultsTitle(title);
   clean = clean.replace(/([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:يهزم|يهزمان|يهزمن|يسقط|يتفوق على|ينتصر على|يتغلب على)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة نارية بين $1 و$2");
   clean = clean.replace(/فوز\s+(?:مثير|كبير|مستحق|صادم|تاريخي)?\s*لـ?([^\s:،()]+(?:\s+[^\s:،()]+){0,3})\s+(?:على|أمام)\s+([^\s:،()]+(?:\s+[^\s:،()]+){0,3})/g, "مواجهة قوية بين $1 و$2");
   clean = clean.replace(/فوز\s+(?:مثير|كبير|مستحق|صادم|تاريخي)\s*لـ?/g, "نزال ناري لـ");
