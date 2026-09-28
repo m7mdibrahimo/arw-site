@@ -1,5 +1,25 @@
 [
   {
+    "id": 330983,
+    "link": "https://www.fightful.com/uncategorized/joe-hendry-says-the-skys-the-limit-for-the-remainder-of-his-wwe-run/",
+    "date": "2026-09-28T10:30:29",
+    "date_gmt": "2026-09-28T14:30:29",
+    "title": {
+      "rendered": "Joe Hendry Says &#8216;The Sky&#8217;s The Limit&#8217; For The Remainder Of His WWE Run"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/13214106/joe-hendry.jpeg"
+  },
+  {
+    "id": 330985,
+    "link": "https://www.fightful.com/wrestling/tna-wrestling-teaming-with-operation-hope-for-charity-initiatives/",
+    "date": "2026-09-28T10:21:01",
+    "date_gmt": "2026-09-28T14:21:01",
+    "title": {
+      "rendered": "TNA Wrestling Teaming With Operation HOPE For Charity Initiatives"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28101624/HTTxhLBXIAABZ0Q.jpeg"
+  },
+  {
     "id": 330965,
     "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-9-27/",
     "date": "2026-09-28T10:00:00",
@@ -278,25 +298,5 @@
       "rendered": "Malakai Black Loses PROGRESS Men&#8217;s World Title, Announces Return As Tommy End"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27152358/HTPstgGXQAAYzTK.jpg"
-  },
-  {
-    "id": 330861,
-    "link": "https://www.fightful.com/wrestling/wxw-pro-wrestling-grand-prix-day-two-results-9-26/",
-    "date": "2026-09-27T15:04:40",
-    "date_gmt": "2026-09-27T19:04:40",
-    "title": {
-      "rendered": "wXw Pro-Wrestling Grand Prix Day Two Results (9/26)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27150413/HTInlvLXUAERrZH.jpeg"
-  },
-  {
-    "id": 330860,
-    "link": "https://www.fightful.com/wrestling/thunder-rosa-reflects-on-lights-out-match-with-britt-baker/",
-    "date": "2026-09-27T15:01:28",
-    "date_gmt": "2026-09-27T19:01:28",
-    "title": {
-      "rendered": "Thunder Rosa Reflects On Lights Out Match With Britt Baker"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27145833/l-intro-1690350022.jpg"
   }
 ]
