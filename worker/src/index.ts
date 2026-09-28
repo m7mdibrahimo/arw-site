@@ -2547,7 +2547,8 @@ async function studioOverview(env: Env, body: any) {
 }
 
 // ── Studio: stories the spoiler shield kept off social, for the owner to publish or keep ──
-const HELD_DAYS = 3;
+// The owner wants only the last day's held stories in the list (older ones aren't worth posting)
+const HELD_WINDOW_MS = 24 * 3600_000;
 async function studioHeld(env: Env) {
   const stateFile = await readRepoFile(env, env.GITHUB_STATE_PATH);
   const state: any = stateFile ? JSON.parse(stateFile.content) : {};
@@ -2555,7 +2556,7 @@ async function studioHeld(env: Env) {
   const held: Record<string, HeldEntry> = { ...(state.held || {}) };
   const now = Date.now();
   const items = Object.entries(held)
-    .filter(([, h]) => h && now - (h.releasedAt || h.at) < HELD_DAYS * 86400_000)
+    .filter(([, h]) => h && now - (h.releasedAt || h.dismissedAt || h.at) < HELD_WINDOW_MS)
     .map(([key, h]) => {
       const after = (p: string) => (h.releasedAt && Number(state[p]?.[key]) > h.releasedAt ? Number(state[p][key]) : 0);
       return { ...h, key, sent: h.releasedAt ? { telegram: after("telegram"), facebook: after("facebook"), instagram: after("instagram") } : null };

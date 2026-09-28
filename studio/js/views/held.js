@@ -35,7 +35,7 @@ export async function renderHeld(el, { all = false } = {}) {
   mount(el, html`
     <header class="panel-head"><h2>محجوبة عن السوشيال ${waiting.length ? html`<span class="count-pill">${num(waiting.length)}</span>` : ''}</h2>
       ${waiting.length > FIRST ? html`<a class="link" href="#" id="held-all">${all ? 'أقل' : 'الكل'}</a>` : ''}</header>
-    ${waiting.length ? html`<div class="rows">${(all ? waiting : waiting.slice(0, FIRST)).map(row)}</div>` : html`<p class="muted small">مفيش أخبار مستنية قرارك.</p>`}
+    ${waiting.length ? html`<div class="rows">${(all ? waiting : waiting.slice(0, FIRST)).map(row)}</div>` : html`<p class="muted small">مفيش أخبار محجوبة مستنية قرارك في آخر ٢٤ ساعة.</p>`}
     ${decided.length ? html`<details class="held-done"><summary class="muted small">اللي اتقرر قبل كده (${num(decided.length)})</summary><div class="rows">${decided.map(row)}</div></details>` : ''}`);
 
   const allLink = el.querySelector('#held-all');
