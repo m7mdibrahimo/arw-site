@@ -1489,3 +1489,31 @@ test('a results report goes to social as «show + date» only — never with the
   ];
   for (const [site, social] of cases) assert.equal(socialResultsTitle(site), social);
 });
+
+test('a key out of the main model\'s daily quota still writes with the fallback models (their quota is separate)', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-gemini-quota-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'run.mts'), `
+      globalThis.setTimeout = ((fn) => { fn(); return 0; });
+      const calls = [];
+      globalThis.fetch = async (url, init) => {
+        const model = String(url).match(/models\\/([^:]+):/)[1];
+        const key = init.headers['x-goog-api-key'];
+        calls.push(key + ':' + model);
+        if (model === 'gemini-3.5-flash-lite') return new Response('{"error":{"code":429,"message":"Quota exceeded for quota metric GenerateRequestsPerDay"}}', { status: 429 });
+        return Response.json({ candidates: [{ content: { parts: [{ text: 'ok ' + calls.length }] } }] });
+      };
+      const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
+      const first = await m.queryGemini('a');
+      const second = await m.queryGemini('b');
+      console.log(JSON.stringify({ first, second, calls }));
+    `);
+    const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1', GEMINI_MODEL: '', GEMINI_FALLBACK_MODELS: '' }, stdio: ['ignore', 'pipe', 'pipe'] });
+    const r = JSON.parse(out.trim().split('\n').pop()!);
+    assert.ok(r.first && r.second, 'both requests written');
+    // Once the key is known to be out of the main model's quota it goes straight to the fallback
+    assert.deepEqual(r.calls, ['k1:gemini-3.5-flash-lite', 'k1:gemini-3.6-flash', 'k1:gemini-3.6-flash']);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

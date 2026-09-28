@@ -1770,7 +1770,9 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
 const GEMINI_FALLBACK_MODELS = (process.env.GEMINI_FALLBACK_MODELS || "gemini-3.6-flash,gemini-flash-latest,gemini-3.1-flash-lite,gemini-3.8-flash")
   .split(",").map(s => s.trim()).filter(m => m && m !== GEMINI_MODEL);
 const DAILY_CALLS_PER_KEY = 480;
-const exhaustedKeys = new Set<string>();
+const exhaustedKeys = new Set<string>(); // out of the MAIN model's daily quota (the fallbacks have their own)
+const invalidKeys = new Set<string>(); // rejected (400/401/403): no model gets it again this run
+const fallbackOut = new Set<string>(); // «key|model» pairs out of that fallback's quota
 let geminiBlocked = false;
 
 /** True once this run can no longer reach Gemini (every key out of quota, or the
@@ -1796,9 +1798,11 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
   }
 
   for (const [index, apiKey] of API_KEYS.entries()) {
-    if (exhaustedKeys.has(apiKey)) continue;
+    if (invalidKeys.has(apiKey)) continue;
     let overloaded = false;
-    for (let attempt = 0; attempt < 3; attempt++) {
+    // A key out of the main model's daily quota still has each fallback's own quota: it skips
+    // straight to them (2026-09-28: two of four keys ran out and half the writing power sat idle).
+    for (let attempt = 0; attempt < 3 && !exhaustedKeys.has(apiKey); attempt++) {
       try {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
         const res = await fetch(url, {
@@ -1831,6 +1835,7 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
           console.warn(`[Watcher] ${GEMINI_MODEL} returned ${res.status} on key #${index + 1}:`, errText.slice(0, 160));
           if (res.status === 400 || res.status === 401 || res.status === 403) {
             exhaustedKeys.add(apiKey); // invalid/revoked key: never retry it this run
+            invalidKeys.add(apiKey);
             break;
           }
           if (res.status === 503 || res.status === 500) overloaded = true;
@@ -1852,9 +1857,10 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
         await new Promise(r => setTimeout(r, 3000));
       }
     }
-    // The main model is overloaded (not out of quota): same request, other models, this key.
-    if (overloaded && !exhaustedKeys.has(apiKey)) {
+    // The main model is overloaded, or this key is out of its quota: same request, other models, this key.
+    if ((overloaded || exhaustedKeys.has(apiKey)) && !invalidKeys.has(apiKey)) {
       for (const model of GEMINI_FALLBACK_MODELS) {
+        if (fallbackOut.has(`${apiKey}|${model}`)) continue;
         try {
           const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
             method: "POST",
@@ -1871,12 +1877,13 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
           });
           if (!res.ok) {
             console.warn(`[Watcher] Fallback ${model} returned ${res.status} on key #${index + 1}.`);
+            if (res.status === 429 && isDailyQuotaError(await res.text().catch(() => ""))) fallbackOut.add(`${apiKey}|${model}`);
             continue;
           }
           const data: any = await res.json();
           const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
           if (text) {
-            console.log(`[Watcher] ⚡ ${GEMINI_MODEL} is overloaded — written with ${model} instead.`);
+            console.log(`[Watcher] ⚡ ${GEMINI_MODEL} ${exhaustedKeys.has(apiKey) ? `is out of quota on key #${index + 1}` : "is overloaded"} — written with ${model} instead.`);
             state.apiCallsToday = (state.apiCallsToday || 0) + 1;
             saveState(state);
             return text;
