@@ -1,5 +1,15 @@
 [
   {
+    "id": 331064,
+    "link": "https://www.fightful.com/wrestling/aew-dynamite-to-be-a-tribute-to-pac/",
+    "date": "2026-09-28T17:21:44",
+    "date_gmt": "2026-09-28T21:21:44",
+    "title": {
+      "rendered": "AEW Dynamite To Be A Tribute To PAC"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28172126/HTVU0_YbsAAKOKt.jpeg"
+  },
+  {
     "id": 331061,
     "link": "https://www.fightful.com/wrestling/ten-bell-salute-held-for-pac-at-roh-tapings/",
     "date": "2026-09-28T17:16:59",
@@ -288,15 +298,5 @@
       "rendered": "Marina Shafir Remembers PAC At Warrior Wrestling"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28072704/HTRkyKTXgAAAFlI.jpeg"
-  },
-  {
-    "id": 330943,
-    "link": "https://www.fightful.com/wrestling/wrestling-world-continues-to-remember-wwe-sign-guy-rick-achberger/",
-    "date": "2026-09-28T07:00:00",
-    "date_gmt": "2026-09-28T11:00:00",
-    "title": {
-      "rendered": "Wrestling World Continues To Remember WWE Sign Guy Rick Achberger"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27233521/HTQ0e9qWkAAyEzX.webp"
   }
 ]
