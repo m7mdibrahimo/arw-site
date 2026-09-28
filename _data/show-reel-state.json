@@ -2435,9 +2435,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم",
-    "lastAttempt": 1790571821806,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1790575376136,
+    "errors": {
+      "instagram_reel": "Error: Media upload has failed with error code 2207082",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
