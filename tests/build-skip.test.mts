@@ -9,13 +9,25 @@ import path from 'node:path';
 
 const SCRIPT = path.resolve('scripts/cf-pages-skip.sh');
 
-function decide(files: string[]): string {
+// liveAt: commitTime in the live /build.json — 'latest' = everything visible is deployed,
+// 'behind' = an earlier visible commit isn't live yet, 'down' = the site can't be reached.
+function decide(files: string[], liveAt: 'latest' | 'behind' | 'down' = 'latest'): string {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cfskip-'));
-  const sh = (c: string) => execSync(c, { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
-  sh('git init -q && git -c user.email=t@t -c user.name=t commit -q --allow-empty -m base && git branch -q remote-base');
+  const sh = (c: string, env: Record<string, string> = {}) => execSync(c, { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, ...env } });
+  const commit = (msg: string, when: number) => sh(`git add -A && git -c user.email=t@t -c user.name=t commit -q --allow-empty -m ${JSON.stringify(msg)}`, { GIT_COMMITTER_DATE: `${when} +0000`, GIT_AUTHOR_DATE: `${when} +0000` });
+  sh('git init -q');
+  fs.mkdirSync(path.join(dir, 'content/news'), { recursive: true });
+  fs.writeFileSync(path.join(dir, 'content/news/old.md'), 'x');
+  commit('an article', 1700001000);
+  fs.writeFileSync(path.join(dir, 'watcher-state.json'), '1');
+  commit('bot bookkeeping', 1700002000);
+  sh('git branch -q remote-base');
   for (const f of files) { fs.mkdirSync(path.join(dir, path.dirname(f)), { recursive: true }); fs.writeFileSync(path.join(dir, f), 'x'); }
-  sh('git add -A && git -c user.email=t@t -c user.name=t commit -q -m c');
-  const out = sh(`bash ${JSON.stringify(SCRIPT)} remote-base`);
+  commit('c', 1700003000);
+  const buildJson = path.join(dir, 'build.json');
+  fs.writeFileSync(buildJson, JSON.stringify({ commitTime: liveAt === 'latest' ? 1700001000 : 1700000900 }));
+  const url = liveAt === 'down' ? 'file:///nonexistent/build.json' : `file://${buildJson}`;
+  const out = sh(`bash ${JSON.stringify(SCRIPT)} remote-base`, { CF_LIVE_BUILD_URL: url });
   fs.rmSync(dir, { recursive: true, force: true });
   return out;
 }
@@ -24,6 +36,11 @@ test('bookkeeping-only bot pushes skip the Cloudflare build', () => {
   assert.equal(decide(['watcher-state.json']), ' [CF-Pages-Skip]');
   assert.equal(decide(['ringsidenews-state.json', 'watcher-feed-ringsidenews.json', 'content/images/abc.jpg']), ' [CF-Pages-Skip]');
   assert.equal(decide(['wrestlinginc-state.json', 'watcher-feed-wrestlinginc.json', 'editorial/proofread-log.jsonl', '_data/duplicate-skips.json']), ' [CF-Pages-Skip]');
+});
+
+test('never skips while an earlier visible change is not live yet (or the site cannot be checked)', () => {
+  assert.equal(decide(['watcher-state.json'], 'behind'), '');
+  assert.equal(decide(['watcher-state.json'], 'down'), '');
 });
 
 test('anything a visitor can see still builds', () => {
