@@ -36,6 +36,11 @@ export async function renderSettings(page) {
           <p class="muted small">بعد التغيير كل الأجهزة التانية هيتعمل لها خروج.</p>
         </form></section>
     </div>
+    ${user.role === 'owner' ? html`<section class="card"><header class="card-head"><h2>${icon('user')} الأعضاء والصلاحيات</h2></header>
+      <div class="card-body team-links">
+        <a class="team-link" href="#/members"><i>${icon('user')}</i><span><b>الأعضاء</b><small class="muted">ضيف أعضاء واختار كل واحد يقدر يعمل إيه</small></span>${icon('arrowLeft')}</a>
+        <a class="team-link" href="#/activity"><i>${icon('clock')}</i><span><b>سجل النشاط</b><small class="muted">مين أضاف أو عدّل أو حذف إيه وإمتى</small></span>${icon('arrowLeft')}</a>
+      </div></section>` : ''}
     <section class="card"><header class="card-head"><h2>${icon('shield')} الأجهزة الداخلة</h2><button class="btn btn-danger btn-sm" id="out-all">${icon('logout')} خروج من كل الأجهزة</button></header>
       <div class="card-body" id="sessions"><div class="skel-lines"></div></div></section>
     <section class="card"><header class="card-head"><h2>${icon('clock')} سجل الدخول</h2></header><div class="card-body" id="log"><div class="skel-lines"></div></div></section>

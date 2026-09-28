@@ -101,6 +101,11 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline || npm install
 
+      # The video renderer (~280 MB with its AI/browser parts) is only needed here, so it is
+      # not in package.json: that keeps the site build and the news bots' installs small.
+      - name: Install video renderer
+        run: npm install --no-save --no-audit --no-fund hyperframes@0.8.46
+
       - name: Cache Chrome Headless Shell
         id: cache-puppeteer
         uses: actions/cache@v4

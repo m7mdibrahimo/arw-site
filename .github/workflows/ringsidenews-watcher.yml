@@ -66,6 +66,9 @@ jobs:
                 git add -A
                 git commit --amend --no-edit || true
               fi
+              # Bookkeeping-only pushes don't rebuild the site (see scripts/cf-pages-skip.sh)
+              MSG="feat(news): auto-publish from Ringside News$(bash scripts/cf-pages-skip.sh origin/main)"
+              [ "$(git log -1 --format=%s)" = "$MSG" ] || git commit --amend -q -m "$MSG" || true
               if git push origin main; then
                 PUSHED=true
                 echo "Successfully pushed news to main."

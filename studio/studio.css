@@ -442,8 +442,8 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
   .a-main { grid-column: 1 / -1; grid-row: auto; min-height: 280px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
-/* The owner's bar has more tabs (members): fold them into the menu button earlier */
-@media (max-width: 1180px) {
+/* Between tablet and wide screens the tabs don't fit next to search: fold them into the menu button */
+@media (max-width: 1080px) {
   .topbar-in { gap: 16px; }
   .only-mobile { display: inline-grid; }
   .tabs { display: none; position: absolute; top: var(--head); inset-inline: 12px; background: var(--card); border-radius: 24px; flex-direction: column; align-items: stretch; gap: 2px; padding: 10px; box-shadow: 0 24px 50px -16px rgba(0,0,0,.3); }
@@ -550,3 +550,11 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
   .perm-row { padding: 8px; }
   .perm-cell i { width: 30px; height: 30px; }
 }
+
+/* Settings → members / activity */
+.team-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.team-link { display: flex; gap: 14px; align-items: center; background: var(--card); border-radius: 20px; padding: 14px 16px; transition: transform .15s; }
+.team-link:hover { transform: translateX(-3px); }
+.team-link i { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--yellow); color: #141414; flex: none; }
+.team-link span { flex: 1; min-width: 0; } .team-link b { display: block; font-weight: 900; } .team-link small { display: block; font-size: 12.5px; }
+.team-link > svg { color: var(--muted); }

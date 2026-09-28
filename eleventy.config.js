@@ -173,6 +173,32 @@ function normalizeArabicHamza(str) {
 
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
+  // One line per written file (5000+) only slows the host's build log down.
+  eleventyConfig.setQuietMode(true);
+
+  // Resized article images (optImg → _site/img) are kept in ".cache", which the host's build
+  // cache carries between builds, so a build only resizes new images instead of all ~2000.
+  const IMG_CACHE = ".cache/optimg";
+  const syncDir = (from, to) => {
+    if (!fs.existsSync(from)) return 0;
+    fs.mkdirSync(to, { recursive: true });
+    const have = new Set(fs.readdirSync(to));
+    let n = 0;
+    for (const f of fs.readdirSync(from)) {
+      if (have.has(f)) continue;
+      fs.copyFileSync(path.join(from, f), path.join(to, f));
+      n++;
+    }
+    return n;
+  };
+  eleventyConfig.on("eleventy.before", () => {
+    try { console.log(`[img-cache] restored ${syncDir(IMG_CACHE, "_site/img")} resized images`); }
+    catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
+  });
+  eleventyConfig.on("eleventy.after", () => {
+    try { console.log(`[img-cache] saved ${syncDir("_site/img", IMG_CACHE)} new resized images`); }
+    catch (e) { console.log(`[img-cache] save skipped: ${e.message}`); }
+  });
   eleventyConfig.addGlobalData("buildTime", () => new Date().toISOString());
 
   // The home slider shows each pinned item as it is NOW. _data/pinned.json keeps a copy
@@ -702,6 +728,22 @@ module.exports = function(eleventyConfig) {
     });
   }
 
+  // Called once per article (2000+ times per build), each time over every item:
+  // the per-item parts (url, federation, tags, date) are worked out once and kept.
+  const relatedInfo = new WeakMap();
+  const infoOf = function(item) {
+    let info = relatedInfo.get(item);
+    if (!info) {
+      info = {
+        url: (item.url || "").replace(/\/+$/, ""),
+        fed: (item.data && item.data.federation || "").toString().trim().toUpperCase(),
+        tags: item.data && Array.isArray(item.data.tags) ? item.data.tags.map(t => String(t || "").trim().toLowerCase()) : null,
+        time: getItemTimestamp(item)
+      };
+      relatedInfo.set(item, info);
+    }
+    return info;
+  };
   const getRelatedPosts = function(currentUrl, tags, federation, allContent, limit) {
     if (!allContent || !Array.isArray(allContent)) return [];
     const maxItems = (typeof limit === "number" && limit > 0) ? limit : 4;
@@ -712,41 +754,36 @@ module.exports = function(eleventyConfig) {
       : [];
     const targetFed = (federation || "").toString().trim().toUpperCase();
 
-    const scored = [];
-
-    for (const item of allContent) {
+    // Same order as sorting everything by score, then newest, then original position — keeping only the top few.
+    const best = [];
+    const better = (a, b) => a.score !== b.score ? a.score > b.score : a.time !== b.time ? a.time > b.time : a.idx < b.idx;
+    for (let idx = 0; idx < allContent.length; idx++) {
+      const item = allContent[idx];
       if (!item || !item.url) continue;
-      const itemUrl = (item.url || "").replace(/\/+$/, "");
-      if (itemUrl === normUrl) continue;
+      const info = infoOf(item);
+      if (info.url === normUrl) continue;
 
       let score = 0;
-      const itemFed = (item.data && item.data.federation || "").toString().trim().toUpperCase();
-      if (targetFed && itemFed && targetFed === itemFed) {
+      if (targetFed && info.fed && targetFed === info.fed) {
         score += 3;
       }
-
-      if (currentTags.length > 0 && item.data && Array.isArray(item.data.tags)) {
-        const itemTags = item.data.tags.map(t => String(t || "").trim().toLowerCase());
+      if (currentTags.length > 0 && info.tags) {
         for (const t of currentTags) {
-          if (t && itemTags.includes(t)) {
+          if (t && info.tags.includes(t)) {
             score += 5;
           }
         }
       }
 
-      scored.push({
-        item,
-        score,
-        time: getItemTimestamp(item)
-      });
+      const cand = { item, score, time: info.time, idx };
+      if (best.length === maxItems && !better(cand, best[best.length - 1])) continue;
+      let at = best.length;
+      while (at > 0 && better(cand, best[at - 1])) at--;
+      best.splice(at, 0, cand);
+      if (best.length > maxItems) best.pop();
     }
 
-    scored.sort((a, b) => {
-      if (b.score !== a.score) return b.score - a.score;
-      return b.time - a.time;
-    });
-
-    return scored.slice(0, maxItems).map(s => s.item);
+    return best.map(s => s.item);
   };
   eleventyConfig.addFilter("getRelatedPosts", getRelatedPosts);
   eleventyConfig.addNunjucksFilter("getRelatedPosts", getRelatedPosts);

@@ -80,7 +80,8 @@ export async function renderMembers(page, sub = null) {
   mount(page, html`
     <div class="wrap page-in">
       <div class="page-title">
-        <div><h1>الأعضاء والصلاحيات</h1><p class="muted">${members.length > 1 ? `${num(members.length - 1)} عضو · ${num(active)} شغالين` : 'لسه مفيش أعضاء غيرك.'}</p></div>
+        <div><a href="#/settings" class="back">${icon('arrowRight')} الإعدادات</a>
+          <h1>الأعضاء والصلاحيات</h1><p class="muted">${members.length > 1 ? `${num(members.length - 1)} عضو · ${num(active)} شغالين` : 'لسه مفيش أعضاء غيرك.'}</p></div>
         <div class="page-actions">
           <a class="btn" href="#/activity">${icon('clock')} سجل النشاط</a>
           <a class="btn btn-primary" href="#/members/new">${icon('plus')} عضو جديد</a>
@@ -242,7 +243,8 @@ export async function renderActivity(page) {
   mount(page, html`
     <div class="wrap page-in">
       <div class="page-title">
-        <div><h1>سجل النشاط</h1><p class="muted">آخر ${num(entries.length)} حاجة اتعملت من اللوحة، مين عملها وإمتى.</p></div>
+        <div><a href="#/settings" class="back">${icon('arrowRight')} الإعدادات</a>
+          <h1>سجل النشاط</h1><p class="muted">آخر ${num(entries.length)} حاجة اتعملت من اللوحة، مين عملها وإمتى.</p></div>
         <div class="page-actions"><select class="input" id="who"><option value="">كل الناس</option>${members.map(m => html`<option value="${m.id}">${m.displayName || m.username}</option>`)}</select></div>
       </div>
       <div class="rows" id="act-list"></div>

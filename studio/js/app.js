@@ -37,7 +37,6 @@ function renderShell(user) {
         <nav class="tabs" id="nav">
           <a class="tab" href="#/" data-nav="#/">${icon('home')}الرئيسية</a>
           ${[['shows', 'العروض'], ['recaps', 'الملخصات'], ['news', 'الأخبار'], ['nostalgia', 'نوستالجيا']].filter(([c]) => can(user, `${c}.view`)).map(([c, l]) => html`<a class="tab" href="#/list/${c}" data-nav="#/list/${c}">${icon(COLLECTIONS[c].icon)}${l}</a>`)}
-          ${user && user.role === 'owner' ? html`<a class="tab" href="#/members" data-nav="#/members">${icon('user')}الأعضاء</a>` : ''}
           ${can(user, 'tools') ? html`<div class="menu" id="tools-menu">
             <button class="tab" type="button">${icon('tools')}الأدوات</button>
             <div class="menu-pop" hidden>
@@ -64,7 +63,6 @@ function renderShell(user) {
             <div class="menu-pop end" hidden>
               <div class="menu-head"><b>${user ? (user.displayName || user.username) : ''}</b><small>${user ? user.email : ''}</small></div>
               <a href="#/settings">${icon('settings')}الإعدادات والأمان</a>
-              ${user && user.role === 'owner' ? html`<a href="#/members">${icon('user')}الأعضاء والصلاحيات</a><a href="#/activity">${icon('clock')}سجل النشاط</a>` : ''}
               <button id="logout-btn" class="danger">${icon('logout')}تسجيل الخروج</button>
             </div>
           </div>
