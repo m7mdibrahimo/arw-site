@@ -1,5 +1,15 @@
 [
   {
+    "id": 330959,
+    "link": "https://www.fightful.com/wrestling/journey-fatu-my-heart-was-so-full-to-see-zilla-fatu-debut-in-wwe/",
+    "date": "2026-09-28T07:43:10",
+    "date_gmt": "2026-09-28T11:43:10",
+    "title": {
+      "rendered": "Journey Fatu: My Heart Was So Full To See Zilla Fatu Debut In WWE"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/11233905/Screenshot-435-e1789184362982.png"
+  },
+  {
     "id": 330946,
     "link": "https://www.fightful.com/wrestling/more-wrestling-personalities-remember-pac-benjamin-satterley/",
     "date": "2026-09-28T07:30:00",
@@ -288,15 +298,5 @@
       "rendered": "CM Punk Reflects On WWE x AAA Worlds Collide"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26232724/Screenshot-2026-09-26-at-11.27.12-PM.png"
-  },
-  {
-    "id": 330740,
-    "link": "https://www.fightful.com/wrestling/gcw-the-score-results-9-26/",
-    "date": "2026-09-27T10:30:00",
-    "date_gmt": "2026-09-27T14:30:00",
-    "title": {
-      "rendered": "GCW The Score Results (9/26)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26230152/Screenshot-2026-09-26-at-11.00.44-PM.png"
   }
 ]
