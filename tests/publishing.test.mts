@@ -1464,13 +1464,14 @@ test('the writer asks the AI about exactly the text that will be posted, and rea
       const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
       const opening = m.socialOpening('## عنوان فرعي\\n\\n**فاز** فلان [بالنزال](https://x.y) ![صورة](a.jpg) في عرض كبير');
       const verdict = await m.judgeSocialSpoiler('عنوان الخبر', 'فاز فلان في عرض كبير', 'Source Title');
-      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير') }));
+      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير'), hasDate: prompt.includes(new Date().toISOString().slice(0, 10)) && prompt.includes('آخر ٧ أيام') }));
     `);
     const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1' }, stdio: ['ignore', 'pipe', 'pipe'] });
     const r = JSON.parse(out.trim().split('\n').pop()!);
     assert.equal(r.opening, 'عنوان فرعي فاز فلان بالنزال في عرض كبير');
     assert.deepEqual(r.verdict, { spoils: true, kind: 'result', note: 'بيقول مين فاز' });
     assert.ok(r.hasTitle && r.hasOpening);
+    assert.ok(r.hasDate, 'knows today and that events older than a week are not spoilers (a Hardys return from last year was held — INCIDENTS #107)');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
