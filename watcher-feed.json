@@ -1,5 +1,15 @@
 [
   {
+    "id": 331062,
+    "link": "https://www.fightful.com/?p=331062",
+    "date": "2026-09-28T19:15:00",
+    "date_gmt": "2026-09-28T23:15:00",
+    "title": {
+      "rendered": "WWE Raw Results (9/28/2026): Stephanie Vaquer Appears, Bloodline Calls Out 946, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28180712/IMG_3468.jpg?v=20260928221850"
+  },
+  {
     "id": 331077,
     "link": "https://www.fightful.com/wrestling/eddie-kingston-rusev-jeff-jarrett-nia-jax-more-pay-tribute-to-pac-benjamin-satterley/",
     "date": "2026-09-28T18:43:37",
@@ -288,15 +298,5 @@
       "rendered": "Journey Fatu On The 946&#8217;s Attempts To Intimidate The Bloodline: You Think Setting My Family&#8217;s Car On Fire Is Going To Scare Us?"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28080641/maxresdefault-177.jpg"
-  },
-  {
-    "id": 330906,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-9-28/",
-    "date": "2026-09-28T08:00:00",
-    "date_gmt": "2026-09-28T12:00:00",
-    "title": {
-      "rendered": "WWE Raw Preview, Start Time, How To Watch, Location (9/28)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
   }
 ]
