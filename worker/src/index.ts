@@ -2310,11 +2310,16 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       // clean stories (a tribute, a medical clearance, a match announcement) off social
       // (INCIDENTS #104). A flagged story is held only when that opening gives something away.
       let why: HeldEntry["why"] | "" = isSingleMatchSpoiler(item.title, "") ? "title" : "";
+      // The title's words say «result» but the meaning check read the finished text and found the
+      // event is over a week old («… when he won the AEW title» — last April): not a spoiler.
+      // Only this exact, stated reason overrules the words (INCIDENTS #107).
+      const statedOld = item.social_spoiler === false && item.social_spoiler_age === "old";
+      if (statedOld) why = "";
       let lead = "";
       // Second opinion written with the story: an AI read of the finished title + opening for
       // what they mean (word lists always miss a phrasing). Either one saying «spoils» holds it.
       if (!why && item.social_spoiler === true) why = "ai";
-      if (!why && item.single_match_result === true) {
+      if (!why && !statedOld && item.single_match_result === true) {
         lead = String(item.headline || item.description || "");
         if (!lead) {
           try { const r = await fetch(cacheBust(env.SITE_ORIGIN + (item.url || "")), { headers: { "Cache-Control": "no-cache" } }); if (r.ok) lead = extractSnippetFromHtml(await r.text()); } catch { /* next minute */ }

@@ -1469,7 +1469,7 @@ test('the writer asks the AI about exactly the text that will be posted, and rea
     const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1' }, stdio: ['ignore', 'pipe', 'pipe'] });
     const r = JSON.parse(out.trim().split('\n').pop()!);
     assert.equal(r.opening, 'عنوان فرعي فاز فلان بالنزال في عرض كبير');
-    assert.deepEqual(r.verdict, { spoils: true, kind: 'result', note: 'بيقول مين فاز' });
+    assert.deepEqual(r.verdict, { spoils: true, kind: 'result', age: 'recent', note: 'بيقول مين فاز' }); // no age given: treated as recent (never as «old»)
     assert.ok(r.hasTitle && r.hasOpening);
     assert.ok(r.hasDate, 'knows today and that events older than a week are not spoilers (a Hardys return from last year was held — INCIDENTS #107)');
   } finally {
@@ -1517,4 +1517,29 @@ test('a key out of the main model\'s daily quota still writes with the fallback 
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('an old result named in the title (last April) goes out when the meaning check states it is over a week old — and only then', async t => {
+  // INCIDENTS #107: «داربي ألين كان يعاني من تمزق في طبلة الأذن عندما فاز ببطولة AEW العالمية» was held by the title's words.
+  const database = ledger();
+  const fresh = new Date(Date.now() - 600_000).toISOString();
+  const base = { description: 'كشف داربي ألين عن تفاصيل قاسية سبقت لحظة تتويجه بلقب AEW العالمي في أبريل', kind: 'news', date: fresh, published_at: fresh, single_match_result: true };
+  const items = [
+    { ...base, url: '/news/old-win/', title: 'داربي ألين كان يعاني من تمزق في طبلة الأذن عندما فاز ببطولة AEW العالمية', social_spoiler: false, social_spoiler_age: 'old' },
+    { ...base, url: '/news/unsure/', title: 'داربي ألين يفوز ببطولة AEW العالمية', social_spoiler: false, social_spoiler_age: 'recent' },
+    { ...base, url: '/news/no-verdict/', title: 'داربي ألين يفوز ببطولة AEW العالمية' },
+  ];
+  const file = '/repos/owner/repo-old/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify({ telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} })).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.startsWith('https://site.test/')) return new Response('', { status: 404 });
+    return database.fetch(input, init);
+  });
+  for (let i = 0; i < 4; i++) await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-old', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(!after.held?.['httpssitetestnewsold-win'], 'stated over a week old: not held');
+  assert.equal(after.held?.httpssitetestnewsunsure?.why, 'title', 'the words win when the check does not say «old»');
+  assert.equal(after.held?.['httpssitetestnewsno-verdict']?.why, 'title', 'no verdict: the words decide');
 });

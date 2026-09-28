@@ -2371,7 +2371,7 @@ export function socialOpening(body: string, max = 300): string {
  * #71/#104), so the finished text is read for its meaning. The shield holds a story when this
  * OR its word rules say so; with no answer (AI down) the word rules decide alone.
  */
-export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = ""): Promise<{ spoils: boolean; kind: "result" | "return" | "none"; note: string } | null> {
+export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = ""): Promise<{ spoils: boolean; kind: "result" | "return" | "none"; note: string; age: "recent" | "old" | "none" } | null> {
   const opening = socialOpening(body);
   const today = new Date().toISOString().slice(0, 10);
   const prompt = `أنت مراجع لمنشورات صفحات موقع عرب راسلنج على السوشيال ميديا. المتابعين مش عايزين «حرق»: أي معلومة تكشف نتيجة نزال أو عودة/ظهور لمصارع قبل ما يشوفوا العرض بنفسهم.
@@ -2388,13 +2388,16 @@ export async function judgeSocialSpoiler(title: string, body: string, sourceTitl
 
 مش حرق (spoils = false): أي حدث حصل من أكتر من ٧ أيام، إعلان نزال جاي، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
 
-رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة، أو ليه مفيهوش حرق"}`;
+وقول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة) حصل إمتى: "recent" لو في آخر ٧ أيام أو مش واضح إنه قديم، "old" لو واضح من النص إنه أقدم من ٧ أيام (فيه تاريخ أو شهر أو «السنة اللي فاتت»)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
+
+رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"none", "age": "recent"|"old"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة، أو ليه مفيهوش حرق"}`;
   const text = await queryGemini(prompt, true, 0.1);
   if (!text) return null;
-  const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown }>(text);
+  const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown; age?: unknown }>(text);
   if (!parsed || typeof parsed.spoils !== "boolean") return null;
   const kind = parsed.kind === "result" || parsed.kind === "return" ? parsed.kind : "none";
-  return { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200) };
+  const age = parsed.age === "old" || parsed.age === "none" ? parsed.age : "recent";
+  return { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", age, note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200) };
 }
 
 export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
@@ -3815,7 +3818,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // a fixed text, so they need none).
   const socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle).catch(() => null);
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
-  const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}` : "";
+  const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}` : "";
   let markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}${keptPermalink ? `\npermalink: ${JSON.stringify(keptPermalink)}` : ""}
