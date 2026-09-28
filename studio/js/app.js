@@ -58,6 +58,7 @@ function renderShell(user) {
               ${['shows', 'recaps', 'news', 'nostalgia'].filter(c => can(user, `${c}.create`)).map(c => html`<a href="#/new/${c}"><i style="--c:${COLLECTIONS[c].color}">${icon(COLLECTIONS[c].icon)}</i>${COLLECTIONS[c].singular} جديد</a>`)}
             </div>
           </div>` : ''}
+          <a class="btn site-btn" href="/" target="_blank" rel="noopener" title="فتح الموقع">${icon('globe')}<span>فتح الموقع</span></a>
           <button class="icon-btn" id="theme-btn" aria-label="تغيير المظهر">${icon('moon')}</button>
           <div class="menu" id="user-menu">
             <button class="avatar" id="user-btn" aria-label="الحساب">${avatarInner(user)}</button>

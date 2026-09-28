@@ -332,7 +332,7 @@ type PublishState = {
   tiktokToken?: TikTokToken;
 };
 
-type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; why?: "title" | "lead" | "flag"; lead?: string; releasedAt?: number; dismissedAt?: number; by?: string };
+type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; why?: "title" | "lead" | "ai" | "flag"; lead?: string; note?: string; releasedAt?: number; dismissedAt?: number; by?: string };
 
 // Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
 function spoilerReason(title: string = ""): "result" | "return" {
@@ -2293,6 +2293,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       // (INCIDENTS #104). A flagged story is held only when that opening gives something away.
       let why: HeldEntry["why"] | "" = isSingleMatchSpoiler(item.title, "") ? "title" : "";
       let lead = "";
+      // Second opinion written with the story: an AI read of the finished title + opening for
+      // what they mean (word lists always miss a phrasing). Either one saying «spoils» holds it.
+      if (!why && item.social_spoiler === true) why = "ai";
       if (!why && item.single_match_result === true) {
         lead = String(item.headline || item.description || "");
         if (!lead) {
@@ -2309,7 +2312,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         state.held = state.held || {};
         // Only a story that reached no platform yet is «held»; one already out (a title edited
         // into a spoiler later) is just stopped from going further.
-        if (!(tgDone || fbDone || igDone)) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}) };
+        if (!(tgDone || fbDone || igDone)) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: why === "ai" ? (item.social_spoiler_kind === "return" ? "return" : "result") : spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}), ...(item.social_spoiler_note ? { note: String(item.social_spoiler_note).slice(0, 200) } : {}) };
         for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;

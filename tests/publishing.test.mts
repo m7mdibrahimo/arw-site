@@ -1429,3 +1429,49 @@ test('a story the writer flagged goes to social when its title and opening give 
   assert.ok(!after.held?.httpssitetestnewstribute && !after.telegram.httpssitetestnewstribute, 'the tribute is not held (it only waits for the live page)');
   assert.equal(after.held?.httpssitetestnewschallenge?.why, 'lead', 'the challenge story says Ospreay got past Moxley in its opening');
 });
+
+test('the AI read of the finished title + opening holds a story the word rules miss', async t => {
+  // INCIDENTS #105: word lists always miss a phrasing; the writer stores an AI verdict with the story.
+  const database = ledger();
+  const fresh = new Date(Date.now() - 600_000).toISOString();
+  const items = [
+    { url: '/news/ai-held/', title: 'أوسبراي يواصل مشواره مع اللقب بعد ليلة شيكاغو', description: 'تفاصيل', kind: 'news', date: fresh, published_at: fresh, single_match_result: false, social_spoiler: true, social_spoiler_kind: 'result', social_spoiler_note: 'العنوان بيقول إنه لسه البطل بعد العرض' },
+    { url: '/news/ai-clean/', title: 'خبر عام عن تعاقد جديد', description: 'تفاصيل', kind: 'news', date: fresh, published_at: fresh, single_match_result: false, social_spoiler: false },
+  ];
+  const file = '/repos/owner/repo-ai/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify({ telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} })).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.startsWith('https://site.test/')) return new Response('', { status: 404 });
+    return database.fetch(input, init);
+  });
+  for (let i = 0; i < 3; i++) await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-ai', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.equal(after.held?.['httpssitetestnewsai-held']?.why, 'ai');
+  assert.match(after.held?.['httpssitetestnewsai-held']?.note || '', /البطل/);
+  assert.ok(!after.held?.['httpssitetestnewsai-clean'], 'a clean verdict with a clean title is not held');
+});
+
+test('the writer asks the AI about exactly the text that will be posted, and reads its answer safely', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-social-judge-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'run.mts'), `
+      globalThis.setTimeout = ((fn) => { fn(); return 0; });
+      let prompt = '';
+      globalThis.fetch = async (url, init) => { prompt = JSON.parse(init.body).contents[0].parts[0].text;
+        return Response.json({ candidates: [{ content: { parts: [{ text: '{"spoils": true, "kind": "none", "note": "بيقول مين فاز"}' }] } }] }); };
+      const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
+      const opening = m.socialOpening('## عنوان فرعي\\n\\n**فاز** فلان [بالنزال](https://x.y) ![صورة](a.jpg) في عرض كبير');
+      const verdict = await m.judgeSocialSpoiler('عنوان الخبر', 'فاز فلان في عرض كبير', 'Source Title');
+      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير') }));
+    `);
+    const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1' }, stdio: ['ignore', 'pipe', 'pipe'] });
+    const r = JSON.parse(out.trim().split('\n').pop()!);
+    assert.equal(r.opening, 'عنوان فرعي فاز فلان بالنزال في عرض كبير');
+    assert.deepEqual(r.verdict, { spoils: true, kind: 'result', note: 'بيقول مين فاز' });
+    assert.ok(r.hasTitle && r.hasOpening);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

@@ -9,7 +9,7 @@ const PLATFORMS = [['telegram', 'تيليجرام', '#24a1de'], ['facebook', 'ف
 const FIRST = 7;
 // Why the shield held it: the title, the opening that goes out with it, or (older stories)
 // only the writer's broad flag — those show nothing on social.
-const why = (i) => i.why === 'flag' ? 'مفيهوش حرق ظاهر' : `${REASON[i.reason] || 'حرق'} ${i.why === 'lead' ? 'في أول الخبر' : 'في العنوان'}`;
+const why = (i) => i.why === 'flag' ? 'مفيهوش حرق ظاهر' : `${REASON[i.reason] || 'حرق'} ${i.why === 'lead' ? 'في أول الخبر' : i.why === 'ai' ? 'في معنى الخبر' : 'في العنوان'}`;
 
 export async function renderHeld(el, { all = false } = {}) {
   if (!el) return;
@@ -47,6 +47,7 @@ export async function renderHeld(el, { all = false } = {}) {
       title: 'نشر الخبر على السوشيال',
       body: html`<p class="muted small">ده اللي هيتنشر (${why(i)}):</p>
         <div class="post-preview"><b>${i.title}</b>${i.lead ? html`<p>${i.lead}…</p>` : ''}</div>
+        ${i.note ? html`<p class="small">سبب الحجب: ${i.note}</p>` : ''}
         <p class="muted small">هيتنشر على تيليجرام وفيسبوك وإنستجرام خلال دقايق، ومش هينفع يترجع.</p>`,
       confirm: 'أيوه، انشره',
     });

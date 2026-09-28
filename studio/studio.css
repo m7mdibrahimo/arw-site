@@ -606,3 +606,8 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .clean-tag { color: var(--teal); font-weight: 800; }
 .post-preview { background: var(--cream); border-radius: 16px; padding: 12px 14px; margin: 8px 0; display: grid; gap: 6px; }
 .post-preview p { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+/* Top bar: «فتح الموقع» next to «جديد»; on small screens both become round icons */
+.site-btn { white-space: nowrap; }
+@media (max-width: 980px) { .top-actions .site-btn { width: 42px; height: 42px; padding: 0; justify-content: center; } }
+@media (max-width: 560px) { .brand > span { display: none; } .top-actions { gap: 8px; } }

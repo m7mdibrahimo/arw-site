@@ -2349,6 +2349,45 @@ export function revealsTonightsMatch(rawTitle: string, plainText: string, shows:
   return /\b(?:to determine|number one contender|#1 contender|no\. 1 contender|contendership|eliminator|went up against|faced off|squared off|battled|defeat\w*|beat|won|wins?|victory|pinn?ed|retain\w*|lost|the (?:bout|match) ended|finish)\b/i.test(text);
 }
 
+/** The text a social post carries: the title and the story's opening (the site's snippet is
+ *  its first ~220 letters). Markdown, links and embeds stripped. */
+export function socialOpening(body: string, max = 300): string {
+  return String(body || "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/<[^>]+>/g, " ").replace(/^#+\s*/gm, "").replace(/[*_>`|]/g, " ")
+    .replace(/\s+/g, " ").trim().slice(0, max);
+}
+
+/**
+ * Does the post that would go to social (final title + opening) give away a match result or a
+ * return/debut? Word lists always missed a phrasing («نجاحه في تجاوز عقبة جون موكسلي», INCIDENTS
+ * #71/#104), so the finished text is read for its meaning. The shield holds a story when this
+ * OR its word rules say so; with no answer (AI down) the word rules decide alone.
+ */
+export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = ""): Promise<{ spoils: boolean; kind: "result" | "return" | "none"; note: string } | null> {
+  const opening = socialOpening(body);
+  const prompt = `أنت مراجع لمنشورات صفحات موقع عرب راسلنج على السوشيال ميديا. المتابعين مش عايزين «حرق»: أي معلومة تكشف نتيجة نزال أو عودة/ظهور لمصارع قبل ما يشوفوا العرض بنفسهم.
+
+المنشور هيحتوي بالظبط على العنوان وأول الخبر ده (مش أكتر):
+العنوان: ${JSON.stringify(title)}
+أول الخبر: ${JSON.stringify(opening)}
+(عنوان المصدر الإنجليزي للسياق فقط، مش هيتنشر: ${JSON.stringify(sourceTitle)})
+
+اعتبره حرق (spoils = true) لو النص اللي هيتنشر (العنوان أو أول الخبر) يكشف بأي صياغة، صريحة أو ضمنية:
+- مين فاز أو خسر في نزال، أو احتفظ بلقب أو خسره أو فاز بيه، أو تأهل أو خرج، أو إن النزال اتوقف أو انتهى بشكل معين (kind = "result").
+- إن مصارع رجع أو ظهر لأول مرة أو عمل ظهور مفاجئ في عرض حصل فعلًا (kind = "return").
+
+مش حرق (spoils = false): إعلان نزال جاي، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
+
+رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة، أو ليه مفيهوش حرق"}`;
+  const text = await queryGemini(prompt, true, 0.1);
+  if (!text) return null;
+  const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown }>(text);
+  if (!parsed || typeof parsed.spoils !== "boolean") return null;
+  const kind = parsed.kind === "result" || parsed.kind === "return" ? parsed.kind : "none";
+  return { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200) };
+}
+
 export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
@@ -3763,6 +3802,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const targetFilePath = path.join(NEWS_DIR, targetFileName);
 
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
+  // The social shield's second opinion, on the finished text (full results reports go out with
+  // a fixed text, so they need none).
+  const socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle).catch(() => null);
+  if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
+  const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}` : "";
   let markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}${keptPermalink ? `\npermalink: ${JSON.stringify(keptPermalink)}` : ""}
@@ -3770,7 +3814,7 @@ date: ${iso}
 published_at: ${publishedAt}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
-single_match_result: ${isSingleMatch}${isShowResultsArticle(rawTitle, plainText) ? `\nsource_title: ${JSON.stringify(rawTitle)}\nsource_results: ${countResultLines(plainText)}` : ""}
+single_match_result: ${isSingleMatch}${socialYaml}${isShowResultsArticle(rawTitle, plainText) ? `\nsource_title: ${JSON.stringify(rawTitle)}\nsource_results: ${countResultLines(plainText)}` : ""}
 tags:
 ${tagsYaml}
 image: ${localImagePath}
