@@ -61,6 +61,11 @@ interface WatcherState {
   apiCallDate?: string;
 }
 
+/** The panel's «إيقاف سحب الأخبار» switch (watcher-state.json → enabled), shared by all three news bots. */
+export function newsBotsPaused(): boolean {
+  try { return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8")).enabled === false; } catch { return false; }
+}
+
 function loadState(): WatcherState {
   const today = new Date().toISOString().slice(0, 10);
   if (fs.existsSync(STATE_FILE)) {
@@ -1749,7 +1754,7 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
 
 // Helper to call Gemini with retry, quota protection & multi-key fallback.
 //
-// One model only — gemini-3.5-flash-lite (the owner's choice: highest free quota,
+// Main model — gemini-3.5-flash-lite (the owner's choice: highest free quota,
 // 500 requests/day per key). Quota comes from rotating KEYS, not from switching
 // models: GEMINI_API_KEYS is a comma-separated list; when a key's DAILY quota is
 // used up it is skipped for the rest of the run and the next key takes over. A
@@ -1757,6 +1762,13 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
 // its daily quota at ~18:40 UTC and no news was published for hours while every
 // run still reported success.)
 const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+// Only when the main model answers «503 high demand» on every retry: the same request goes to
+// these, one after the other, instead of the story waiting hours (2026-09-28: flash-lite
+// was overloaded for 3+ hours and no Fightful story was written — INCIDENTS #102). Each model
+// has its own quota, so this never spends the main model's. Thinking is off to keep answers
+// short like flash-lite's.
+const GEMINI_FALLBACK_MODELS = (process.env.GEMINI_FALLBACK_MODELS || "gemini-3.6-flash,gemini-flash-latest,gemini-3.1-flash-lite,gemini-3.8-flash")
+  .split(",").map(s => s.trim()).filter(m => m && m !== GEMINI_MODEL);
 const DAILY_CALLS_PER_KEY = 480;
 const exhaustedKeys = new Set<string>();
 let geminiBlocked = false;
@@ -1785,6 +1797,7 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
 
   for (const [index, apiKey] of API_KEYS.entries()) {
     if (exhaustedKeys.has(apiKey)) continue;
+    let overloaded = false;
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
@@ -1820,6 +1833,7 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
             exhaustedKeys.add(apiKey); // invalid/revoked key: never retry it this run
             break;
           }
+          if (res.status === 503 || res.status === 500) overloaded = true;
           await new Promise(r => setTimeout(r, 3000));
           continue;
         }
@@ -1836,6 +1850,40 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
       } catch (e: any) {
         console.warn(`[Watcher] Error calling ${GEMINI_MODEL} on key #${index + 1}:`, e.message || e);
         await new Promise(r => setTimeout(r, 3000));
+      }
+    }
+    // The main model is overloaded (not out of quota): same request, other models, this key.
+    if (overloaded && !exhaustedKeys.has(apiKey)) {
+      for (const model of GEMINI_FALLBACK_MODELS) {
+        try {
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              generationConfig: {
+                temperature,
+                maxOutputTokens: 2500,
+                thinkingConfig: { thinkingBudget: 0 },
+                ...(jsonMode ? { responseMimeType: "application/json" } : {}),
+              },
+            }),
+          });
+          if (!res.ok) {
+            console.warn(`[Watcher] Fallback ${model} returned ${res.status} on key #${index + 1}.`);
+            continue;
+          }
+          const data: any = await res.json();
+          const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (text) {
+            console.log(`[Watcher] ⚡ ${GEMINI_MODEL} is overloaded — written with ${model} instead.`);
+            state.apiCallsToday = (state.apiCallsToday || 0) + 1;
+            saveState(state);
+            return text;
+          }
+        } catch (e: any) {
+          console.warn(`[Watcher] Fallback ${model} failed on key #${index + 1}:`, e.message || e);
+        }
       }
     }
   }

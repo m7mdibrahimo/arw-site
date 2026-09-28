@@ -6,7 +6,7 @@
 // as-is — see wrestlinginc-watcher.ts for how each of those works).
 import fs from "fs";
 import path from "path";
-import { processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted, lastPostShouldRetry } from "./fightful-watcher";
+import { newsBotsPaused, processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted, lastPostShouldRetry } from "./fightful-watcher";
 
 if (fs.existsSync(".env")) {
   try {
@@ -206,6 +206,14 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
     fs.writeFileSync(feedPath, JSON.stringify(cleanFeed, null, 2), "utf-8");
   } catch (err) {
     console.warn("[RSN Watcher] Warning: could not write watcher-feed-ringsidenews.json:", err);
+  }
+
+  // One pause switch for all news bots (watcher-state.json → «إيقاف سحب الأخبار» in the panel).
+  // The feed above is still refreshed, so the panel keeps showing what the source posted.
+  if (newsBotsPaused()) {
+    console.log("[RSN Watcher] Paused from the panel — not adding news this run.");
+    saveState(state);
+    return;
   }
 
   let processedCount = 0;

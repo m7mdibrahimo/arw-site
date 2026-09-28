@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -1373,4 +1374,36 @@ test('a story that already reached a platform is not listed as held when a later
   const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   assert.ok(after.facebook.httpssitetestnewsedited, 'stopped before the other platforms');
   assert.ok(!after.held?.httpssitetestnewsedited, 'not offered to the owner as held');
+});
+
+test('when the main AI model is overloaded (503), the story is written with a fallback model instead of waiting', () => {
+  // INCIDENTS #102: gemini-3.5-flash-lite answered «high demand» for 3+ hours; no Fightful story was written.
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-gemini-fallback-'));
+  try {
+    const script = `
+      globalThis.setTimeout = ((fn) => { fn(); return 0; });
+      const calls = [];
+      globalThis.fetch = async (url, init) => {
+        const model = String(url).match(/models\\/([^:]+):/)[1];
+        calls.push(model + ':' + (JSON.parse(init.body).generationConfig.thinkingConfig ? 'nothink' : 'default'));
+        if (model === 'gemini-3.5-flash-lite' || model === 'gemini-3.6-flash') return new Response('{"error":{"code":503}}', { status: 503 });
+        return Response.json({ candidates: [{ content: { parts: [{ text: '{"ok":true}' }] } }] });
+      };
+      const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
+      const text = await m.queryGemini('prompt');
+      console.log(JSON.stringify({ text, calls }));
+    `;
+    fs.writeFileSync(path.join(dir, 'run.mts'), script);
+    const out = execSync(`${JSON.stringify(path.resolve("node_modules/.bin/tsx"))} run.mts`, {
+      cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1', GEMINI_MODEL: '', GEMINI_FALLBACK_MODELS: '' },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    const r = JSON.parse(out.trim().split('\n').pop()!);
+    assert.equal(r.text, '{"ok":true}');
+    assert.deepEqual(r.calls, ['gemini-3.5-flash-lite:default', 'gemini-3.5-flash-lite:default', 'gemini-3.5-flash-lite:default', 'gemini-3.6-flash:nothink', 'gemini-flash-latest:nothink']);
+    // Counted like any other call (the daily safety cap still applies)
+    assert.equal(JSON.parse(fs.readFileSync(path.join(dir, 'watcher-state.json'), 'utf8')).apiCallsToday, 1);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });

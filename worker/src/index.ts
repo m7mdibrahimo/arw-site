@@ -30,7 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
-import { handleStudio, studioAuthorized, studioUser, readRepoFile, audit as studioAudit } from "./studio";
+import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -2583,6 +2583,73 @@ async function studioHeldAction(env: Env, request: Request, action: "publish" | 
   return json({ success: false, error: "مقدرتش أحفظ القرار دلوقتي، جرّب تاني." }, 503);
 }
 
+// ── Studio tools (the old /admin/ pages, now inside the panel) ──────────────
+// Platform status of many site items in one call (the old page asked once per item).
+async function studioSocialStatus(env: Env, body: any) {
+  const stateFile = await readRepoFile(env, env.GITHUB_STATE_PATH);
+  const state: any = stateFile ? JSON.parse(stateFile.content) : {};
+  const urls: string[] = Array.isArray(body?.urls) ? body.urls.slice(0, 80).map(String) : [];
+  const items: Record<string, any> = {};
+  for (const u of urls) {
+    const key = sanitizeKey(normalizeArticleUrl(new URL(u, env.SITE_ORIGIN).href));
+    const h = state.held?.[key];
+    items[u] = {
+      telegram: Number(state.telegram?.[key]) || 0, facebook: Number(state.facebook?.[key]) || 0,
+      instagram: Number(state.instagram?.[key]) || 0, x: Number(state.x?.[key]) || 0,
+      // Held by the spoiler shield: the stamps above mean «kept off», not «posted»
+      held: !!(h && !h.releasedAt), released: Number(state.released?.[key]) || 0,
+    };
+  }
+  return { success: true, items, automatic: { instagram: env.INSTAGRAM_AUTO_ENABLED !== "false", x: env.X_AUTO_ENABLED !== "false" } };
+}
+
+const NEWS_SOURCES = [
+  { id: "fightful", name: "فايتفول", state: "watcher-state.json", feed: "watcher-feed.json" },
+  { id: "wrestlinginc", name: "رسلينغ إنك", state: "wrestlinginc-state.json", feed: "watcher-feed-wrestlinginc.json" },
+  { id: "ringsidenews", name: "رينغسايد نيوز", state: "ringsidenews-state.json", feed: "watcher-feed-ringsidenews.json" },
+];
+// Each source's latest posts and what became of them — read from the repo, so it is as fresh
+// as the bots' last run (the copies on the site only change with a site build).
+async function studioSources(env: Env) {
+  const readJson = async (p: string) => { try { const f = await readRepoFile(env, p); return f ? JSON.parse(f.content) : null; } catch { return null; } };
+  const [skips, recent]: any[] = await Promise.all([
+    readJson("_data/duplicate-skips.json"),
+    fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-recent-content.json`)).then(r => (r.ok ? r.json() : [])).catch(() => []),
+  ]);
+  const onSite = new Map<string, any>();
+  for (const i of Array.isArray(recent) ? recent : []) if (i?.source_id) onSite.set(String(i.source_id), i);
+  const fightful: any = await readJson("watcher-state.json");
+  const sources = [];
+  for (const s of NEWS_SOURCES) {
+    const [st, feed]: any[] = await Promise.all([readJson(s.state), readJson(s.feed)]);
+    const done = new Set((st?.processedIds || []).map(String));
+    const posts = (Array.isArray(feed) ? feed : []).slice(0, 30).map((p: any) => {
+      const id = String(p.id);
+      const site = onSite.get(id);
+      const title = String(p.title?.rendered ?? p.title ?? "").replace(/<[^>]+>/g, "")
+        .replace(/&#(\d+);/g, (_m: string, n: string) => String.fromCharCode(Number(n))).replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+      return {
+        id, link: String(p.link || ""), title, date: p.date_gmt || p.date || "",
+        status: site ? "site" : done.has(id) ? "skipped" : "waiting",
+        site: site ? { url: site.url, title: site.title } : null,
+        skipReason: skips?.[String(p.link || "")]?.reason || "",
+      };
+    });
+    sources.push({ id: s.id, name: s.name, lastChecked: st?.lastChecked || null, processed: (st?.processedIds || []).length,
+      apiCallsToday: s.id === "fightful" ? Number(st?.apiCallsToday) || 0 : undefined, posts });
+  }
+  return { success: true, paused: fightful?.enabled === false, sources };
+}
+
+async function studioReels(env: Env) {
+  const [videos, stateFile] = await Promise.all([
+    githubGetVideosManifest(env).catch(() => []),
+    readRepoFile(env, "_data/show-reel-state.json").catch(() => null),
+  ]);
+  const state: any = stateFile ? JSON.parse(stateFile.content) : {};
+  return { success: true, videos, state, tiktok: env.TIKTOK_AUTO_ENABLED === "true" };
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // HTTP router
 // ─────────────────────────────────────────────────────────────────────────
@@ -2620,6 +2687,32 @@ export default {
       if ((path === "/api/studio/held/publish" || path === "/api/studio/held/keep") && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);
         return await studioHeldAction(env, request, path.endsWith("/publish") ? "publish" : "keep");
+      }
+      if (path.startsWith("/api/studio/tools/")) {
+        if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تستخدم أدوات النشر." }, 403);
+        if (path === "/api/studio/tools/social" && request.method === "POST") return json(await studioSocialStatus(env, await request.json().catch(() => ({}))));
+        if (path === "/api/studio/tools/sources" && request.method === "GET") return json(await studioSources(env));
+        if (path === "/api/studio/tools/reels" && request.method === "GET") return json(await studioReels(env));
+        if (path === "/api/studio/tools/pinned" && request.method === "GET") {
+          const f = await readRepoFile(env, "_data/pinned.json");
+          return json({ success: true, items: f ? JSON.parse(f.content) : [], sha: f?.sha || null });
+        }
+        if (path === "/api/studio/tools/pinned" && request.method === "POST") {
+          const body: any = await request.json().catch(() => ({}));
+          const clean = (v: any, n = 300) => String(v ?? "").slice(0, n);
+          const items = (Array.isArray(body.items) ? body.items : []).slice(0, 30)
+            .filter((i: any) => i && typeof i.url === "string" && /^\/(?:shows|recaps|news|nostalgia)\//.test(i.url))
+            .map((i: any) => ({ url: clean(i.url), title: clean(i.title), subtitle: clean(i.subtitle), image: clean(i.image), federation: clean(i.federation, 40) || "WWE",
+              kind: ["show", "recap", "news", "nostalgia"].includes(i.kind) ? i.kind : "show", kindLabel: clean(i.kindLabel, 40), badge: clean(i.badge, 40), description: clean(i.description, 600) }));
+          const current = await readRepoFile(env, "_data/pinned.json");
+          if (body.sha && current && current.sha !== body.sha) return json({ success: false, conflict: true, error: "المثبت اتعدّل من مكان تاني بعد ما فتحته. حدّث الصفحة وجرّب تاني." }, 409);
+          const who = await studioUser(request, env as any);
+          const by = who ? who.user.displayName || who.user.username : "";
+          const sha = await commitFiles(env as any, [{ path: "_data/pinned.json", text: JSON.stringify(items, null, 2) + "\n" }], `Update pinned home slider (لوحة التحكم — ${by})`);
+          if (who) await studioAudit(env as any, who.user, "pinned.update", { count: items.length }).catch(() => {});
+          return json({ success: true, commit: sha, committedAt: Date.now() });
+        }
+        return json({ success: false, error: "مش موجود" }, 404);
       }
       const studio = await handleStudio(request, env, path, json);
       if (studio) return studio;
