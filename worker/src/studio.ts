@@ -319,7 +319,7 @@ async function loadUsers(env: StudioEnv): Promise<StudioUser[]> {
 }
 async function saveUsers(env: StudioEnv, users: StudioUser[]) { await env.PUSH_KV.put(USERS_KEY, JSON.stringify(users)); }
 const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(6)), b => b.toString(16).padStart(2, '0')).join('');
-async function audit(env: StudioEnv, who: StudioUser, action: string, details: Record<string, unknown> = {}) {
+export async function audit(env: StudioEnv, who: StudioUser, action: string, details: Record<string, unknown> = {}) {
   const log = ((await env.PUSH_KV.get(AUDIT_KEY, 'json')) as any[] | null) || [];
   log.unshift({ at: Date.now(), userId: who.id, user: who.displayName || who.username, action, ...details });
   await env.PUSH_KV.put(AUDIT_KEY, JSON.stringify(log.slice(0, 300)));

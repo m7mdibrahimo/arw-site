@@ -3,6 +3,7 @@ import { api, siteData, pendingSaves, getUser, IS_LOCAL } from '../api.js';
 import { COLLECTIONS } from '../schema.js';
 import { html, mount, $, icon, timeAgo, fmtDate, num, can } from '../ui.js';
 import { renderAnalytics } from './analytics.js';
+import { renderHeld } from './held.js';
 
 const PLATFORMS = [
   { key: 'telegram', name: 'تيليجرام', icon: 'telegram', color: '#24a1de' },
@@ -87,6 +88,7 @@ export async function renderDashboard(page) {
         </div>
       </div>
 
+      ${can(user, 'tools') ? html`<div id="held"></div>` : ''}
       ${can(user, 'stats') ? html`<div id="analytics"></div>` : ''}
 
       ${attention.length ? html`<details class="notice">
@@ -128,6 +130,7 @@ export async function renderDashboard(page) {
     </div>
   `);
 
+  if ($('#held')) renderHeld($('#held'));
   if ($('#analytics')) renderAnalytics($('#analytics'));
   const latest = news.slice(0, 6);
   const drawNews = (items = {}) => $('#latest-news') && mount($('#latest-news'), html`${latest.map(n => {

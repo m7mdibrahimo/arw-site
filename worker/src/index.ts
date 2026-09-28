@@ -30,7 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
-import { handleStudio, studioAuthorized, readRepoFile } from "./studio";
+import { handleStudio, studioAuthorized, studioUser, readRepoFile, audit as studioAudit } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -314,6 +314,12 @@ type PublishState = {
   // "not set" on the very next tick and get silently ignored.
   cooldowns: Partial<Record<"facebook" | "instagram" | "x", number>>;
   deferrals?: Record<string, number>;
+  // Stories the spoiler shield kept off social, for the owner to review in the panel
+  // (the four platform stamps above are set too, so nothing else tries to post them).
+  held?: Record<string, HeldEntry>;
+  // The owner decided a held story may go out: the stamps were cleared and this time
+  // counts as its «fresh» moment, so it is posted in the next minutes whatever its age.
+  released?: Record<string, number>;
   lastStoryAt?: number;
   videoCooldowns?: Partial<Record<"facebook" | "instagram" | "tiktok", number>>;
   // Buffer's own RateLimit response header, read proactively so a post is
@@ -325,6 +331,13 @@ type PublishState = {
   // tokens now live in KV; loadTikTokToken revokes and removes any found here.
   tiktokToken?: TikTokToken;
 };
+
+type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; releasedAt?: number; dismissedAt?: number; by?: string };
+
+// Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
+function spoilerReason(title: string = ""): "result" | "return" {
+  return /(?<![\u0600-\u06FF\w])(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|الظهور الأول|ظهوره الأول|ظهورها الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة)|\b(?:returns?|returned|comeback|debuts?|debuted|surprise (?:appearance|return))\b/i.test(title) ? "return" : "result";
+}
 
 function emptyPublishState(): PublishState {
   return { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {}, lastStoryAt: 0 };
@@ -2156,6 +2169,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // a small number of the oldest candidates — the exact cost that was
   // blowing the CPU limit before, now capped independently of backlog size.
   const WINDOW_MS = 3 * 60 * 60 * 1000;
+  const recentReleases = new Set(Object.entries((state as any).released || {}).filter(([, t]) => Date.now() - Number(t) < WINDOW_MS).map(([k]) => k));
   const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
@@ -2177,11 +2191,14 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // (INCIDENTS #36). The feed is sorted by source date, so a delayed article
     // can sit below older-dated ones — only stop scanning past the watchers'
     // own 24h source-age limit (+2h slack), skip the rest individually.
-    if (ts && (Date.now() - ts) > 26 * 60 * 60 * 1000) break;
-    const reachedSiteAt = item.published_at ? new Date(item.published_at).getTime() : ts;
-    const freshFrom = Number.isFinite(reachedSiteAt) && reachedSiteAt > 0 ? reachedSiteAt : ts;
+    // Past the scan limit only a story the owner just released from the spoiler hold is still wanted.
+    const tooOld = !!ts && (Date.now() - ts) > 26 * 60 * 60 * 1000;
+    if (tooOld && !recentReleases.size) break;
     const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
-    if (!key) continue;
+    if (!key || (tooOld && !recentReleases.has(key))) continue;
+    const reachedSiteAt = item.published_at ? new Date(item.published_at).getTime() : ts;
+    const releasedAt = Number((state as any).released?.[key]) || 0;
+    const freshFrom = Math.max(Number.isFinite(reachedSiteAt) && reachedSiteAt > 0 ? reachedSiteAt : ts, releasedAt);
     let tgDone = !!state.telegram[key];
     let fbDone = !!state.facebook[key];
     let igDone = !!state.instagram[key];
@@ -2275,6 +2292,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         state.facebook[key] = now;
         state.instagram[key] = now;
         state.x[key] = now;
+        state.held = state.held || {};
+        state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: spoilerReason(item.title) };
+        for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;
       }
@@ -2507,6 +2527,60 @@ async function studioOverview(env: Env, body: any) {
     automatic: { instagram: env.INSTAGRAM_AUTO_ENABLED !== "false", x: env.X_AUTO_ENABLED !== "false" } };
 }
 
+// ── Studio: stories the spoiler shield kept off social, for the owner to publish or keep ──
+const HELD_DAYS = 3;
+async function studioHeld(env: Env) {
+  const stateFile = await readRepoFile(env, env.GITHUB_STATE_PATH);
+  const state: any = stateFile ? JSON.parse(stateFile.content) : {};
+  // Recorded by the shield when it holds a story (older ones were filled in once from its commits)
+  const held: Record<string, HeldEntry> = { ...(state.held || {}) };
+  const now = Date.now();
+  const items = Object.entries(held)
+    .filter(([, h]) => h && now - (h.releasedAt || h.at) < HELD_DAYS * 86400_000)
+    .map(([key, h]) => {
+      const after = (p: string) => (h.releasedAt && Number(state[p]?.[key]) > h.releasedAt ? Number(state[p][key]) : 0);
+      return { ...h, key, sent: h.releasedAt ? { telegram: after("telegram"), facebook: after("facebook"), instagram: after("instagram") } : null };
+    })
+    .sort((a, b) => (b.at || 0) - (a.at || 0));
+  return { success: true, items };
+}
+
+async function studioHeldAction(env: Env, request: Request, action: "publish" | "keep") {
+  const who = await studioUser(request, env as any);
+  const body: any = await request.json().catch(() => ({}));
+  const url = String(body.url || "");
+  if (!url.startsWith("/news/")) return json({ success: false, error: "رابط غير صالح." }, 400);
+  const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + url));
+  const by = who ? who.user.displayName || who.user.username : "";
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const { sha, state } = await githubReadState(env);
+    const now = Date.now();
+    state.held = state.held || {};
+    const h: HeldEntry = state.held[key] || { at: Number(state.telegram[key]) || now, title: String(body.title || "").slice(0, 240), url, image: String(body.image || ""), reason: spoilerReason(body.title) };
+    if (action === "publish") {
+      if (h.releasedAt) return json({ success: true, already: true });
+      state.released = state.released || {};
+      state.released[key] = now;
+      for (const p of ["telegram", "facebook", "instagram", "x"] as const) delete state[p][key];
+      for (const k of Object.keys(state.deferrals || {})) if (k.endsWith(`:${key}`)) delete state.deferrals![k];
+      h.releasedAt = now;
+      delete h.dismissedAt;
+    } else {
+      if (h.releasedAt) return json({ success: false, error: "الخبر ده اتبعت للنشر خلاص." }, 400);
+      h.dismissedAt = now;
+    }
+    h.by = by;
+    state.held[key] = h;
+    const r = await githubWriteState(env, state, sha, `studio: ${action === "publish" ? "release held story for social" : "keep story off social"} ${key}`);
+    if (r.ok) {
+      if (who) await studioAudit(env as any, who.user, action === "publish" ? "social.release" : "social.keep", { title: h.title, url }).catch(() => {});
+      return json({ success: true });
+    }
+    if (!r.conflict) break;
+  }
+  return json({ success: false, error: "مقدرتش أحفظ القرار دلوقتي، جرّب تاني." }, 503);
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // HTTP router
 // ─────────────────────────────────────────────────────────────────────────
@@ -2536,6 +2610,14 @@ export default {
       if (path === "/api/studio/overview" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "status"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف حالة الموقع." }, 403);
         return json(await studioOverview(env, await request.json().catch(() => ({}))));
+      }
+      if (path === "/api/studio/held" && request.method === "GET") {
+        if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);
+        return json(await studioHeld(env));
+      }
+      if ((path === "/api/studio/held/publish" || path === "/api/studio/held/keep") && request.method === "POST") {
+        if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);
+        return await studioHeldAction(env, request, path.endsWith("/publish") ? "publish" : "keep");
       }
       const studio = await handleStudio(request, env, path, json);
       if (studio) return studio;

@@ -1314,3 +1314,48 @@ test("the names glossary never holds a common English word, and names inside an 
   assert.equal(applyNamesGlossary("نتائج عرض TNT Extreme Effy's Big Gay Brunch"), "نتائج عرض TNT Extreme Effy's Big Gay Brunch");
   assert.equal(applyNamesGlossary("فاز Effy على خصمه"), "فاز إيفي على خصمه");
 });
+
+
+test('the spoiler shield records what it held, for the owner to review in the panel', async t => {
+  const database = ledger();
+  const items = [{ url: '/news/joe-returns/', title: 'ساموا جو يعود في عرض AEW All Out', description: 'تفاصيل', kind: 'news', date: new Date(Date.now() - 600_000).toISOString(), published_at: new Date(Date.now() - 600_000).toISOString() }];
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify({ telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} })).toString('base64') });
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    if (String(input).startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  const key = 'httpssitetestnewsjoe-returns';
+  assert.ok(after.telegram[key] && after.facebook[key] && after.instagram[key], 'kept off every platform');
+  assert.equal(after.held[key].reason, 'return');
+  assert.equal(after.held[key].url, '/news/joe-returns/');
+  assert.match(after.held[key].title, /ساموا جو/);
+});
+
+test('a story the owner releases from the hold is posted even when it is older than the usual window', async t => {
+  const database = ledger();
+  const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  const items = [
+    { url: '/news/fresh/', title: 'خبر عام', description: 'تفاصيل', kind: 'news', date: hours(1), published_at: hours(1) },
+    { url: '/news/released/', title: 'ساموا جو يعود في عرض AEW All Out', description: 'تفاصيل', kind: 'news', date: hours(30), published_at: hours(30) },
+    { url: '/news/not-released/', title: 'خبر قديم', description: 'تفاصيل', kind: 'news', date: hours(31), published_at: hours(31) },
+  ];
+  const state: any = { telegram: { httpssitetestnewsfresh: Date.now() }, facebook: { httpssitetestnewsfresh: Date.now() }, instagram: { httpssitetestnewsfresh: Date.now() }, x: { httpssitetestnewsfresh: Date.now() }, cooldowns: {},
+    released: { httpssitetestnewsreleased: Date.now() - 60_000 } };
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  const opened: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.startsWith('https://site.test/')) { opened.push(decodeURIComponent(new URL(url).pathname)); return new Response('', { status: 404 }); }
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  assert.ok(opened.some(p => p.startsWith('/news/released')), 'the released story went on to be checked live and posted');
+  assert.ok(!opened.some(p => p.startsWith('/news/not-released')), 'an old story nobody released stays out');
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(!after.telegram.httpssitetestnewsreleased, 'the shield does not hold a released story again');
+});

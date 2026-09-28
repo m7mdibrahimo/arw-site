@@ -74,6 +74,8 @@ export const api = {
   createMember: (b) => call('/api/studio/members/create', { method: 'POST', body: b }),
   memberAction: (id, action, b = {}) => call(`/api/studio/members/${id}/${action}`, { method: 'POST', body: b }),
   audit: () => call('/api/studio/audit'),
+  held: () => call('/api/studio/held'),
+  heldAction: (action, item) => call(`/api/studio/held/${action}`, { method: 'POST', body: { url: item.url, title: item.title, image: item.image } }),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────
