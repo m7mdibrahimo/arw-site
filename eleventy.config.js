@@ -176,9 +176,11 @@ module.exports = function(eleventyConfig) {
   // One line per written file (5000+) only slows the host's build log down.
   eleventyConfig.setQuietMode(true);
 
-  // Resized article images (optImg → _site/img) are kept in ".cache", which the host's build
-  // cache carries between builds, so a build only resizes new images instead of all ~2000.
-  const IMG_CACHE = ".cache/optimg";
+  // Resized article images (optImg → _site/img) are kept between builds, so a build only
+  // resizes new images instead of all ~2000 (about a minute on the host). On Cloudflare the
+  // only folder its build cache really carries over for this project is npm's (~/.npm —
+  // ".cache" is only kept for projects it detects as Eleventy, and it doesn't detect this one).
+  const IMG_CACHE = process.env.CF_PAGES ? path.join(require("os").homedir(), ".npm", "_arw_optimg") : ".cache/optimg";
   const syncDir = (from, to) => {
     if (!fs.existsSync(from)) return 0;
     fs.mkdirSync(to, { recursive: true });
@@ -192,10 +194,6 @@ module.exports = function(eleventyConfig) {
     return n;
   };
   eleventyConfig.on("eleventy.before", () => {
-    try {
-      const top = fs.existsSync(".cache") ? fs.readdirSync(".cache") : null;
-      console.log(`[img-cache] cwd=${process.cwd()} .cache=${top ? JSON.stringify(top.slice(0, 10)) : "missing"}`);
-    } catch {}
     try { console.log(`[img-cache] restored ${syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
   });
