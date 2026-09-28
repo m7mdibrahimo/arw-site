@@ -195,6 +195,19 @@ module.exports = function(eleventyConfig) {
     try { console.log(`[img-cache] restored ${syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
   });
+  // /build.json: which commits this deployment contains, so the panel can say «ظهر على الموقع ✓»
+  // the moment a save is really live instead of guessing a delay.
+  eleventyConfig.on("eleventy.after", () => {
+    try {
+      const { execSync } = require("child_process");
+      const git = (cmd) => { try { return execSync(cmd, { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim(); } catch { return ""; } };
+      const commit = process.env.CF_PAGES_COMMIT_SHA || git("git rev-parse HEAD");
+      const commitTime = Number(git("git log -1 --format=%ct")) || 0;
+      const recent = git("git log -60 --format=%H").split("\n").filter(Boolean);
+      fs.mkdirSync("_site", { recursive: true });
+      fs.writeFileSync("_site/build.json", JSON.stringify({ commit, commitTime, recent, builtAt: new Date().toISOString() }));
+    } catch (e) { console.log(`[build.json] skipped: ${e.message}`); }
+  });
   eleventyConfig.on("eleventy.after", () => {
     try { console.log(`[img-cache] saved ${syncDir("_site/img", IMG_CACHE)} new resized images`); }
     catch (e) { console.log(`[img-cache] save skipped: ${e.message}`); }

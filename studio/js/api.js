@@ -152,3 +152,40 @@ export function addPending(item) {
     localStorage.setItem(PENDING_KEY, JSON.stringify(list.slice(0, 20)));
   } catch {}
 }
+
+// ── «ظهر على الموقع ✓» ─────────────────────────────────────────────────────
+// After a save the site rebuilds on its own; /build.json says which commits the live copy has.
+const LIVE_KEY = 'arw_studio_live';
+function liveList() { try { return JSON.parse(localStorage.getItem(LIVE_KEY) || '[]').filter(x => Date.now() - x.at < 60 * 60_000); } catch { return []; } }
+function setLive(list) { try { localStorage.setItem(LIVE_KEY, JSON.stringify(list.slice(0, 20))); } catch {} }
+let liveTimer = null;
+export function trackLive({ commit, committedAt, title, removed = false, slug = '' }) {
+  if (LOCAL || !commit) return;
+  setLive([{ commit, committedAt: committedAt || Date.now(), title, removed, slug, at: Date.now() }, ...liveList()]);
+  watchLive();
+}
+export function watchLive(onLive) {
+  if (LOCAL || liveTimer) return;
+  const tick = async () => {
+    const list = liveList();
+    if (!list.length) { liveTimer = null; return; }
+    try {
+      const b = await fetch(`/build.json?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
+      if (b) {
+        const has = (x) => (b.recent || []).includes(x.commit) || b.commit === x.commit || (b.commitTime && b.commitTime * 1000 > x.committedAt + 5000);
+        const done = list.filter(has);
+        if (done.length) {
+          setLive(list.filter(x => !done.includes(x)));
+          try {
+            const slugs = new Set(done.map(d => d.slug));
+            localStorage.setItem(PENDING_KEY, JSON.stringify(pendingSaves().filter(p => !slugs.has(p.slug))));
+          } catch {}
+          dropSiteCache();
+          window.dispatchEvent(new CustomEvent('studio:live', { detail: done }));
+        }
+      }
+    } catch {}
+    liveTimer = setTimeout(tick, 12_000);
+  };
+  liveTimer = setTimeout(tick, 12_000);
+}

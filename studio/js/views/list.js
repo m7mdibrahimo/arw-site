@@ -1,5 +1,5 @@
 // Content lists: filters, search, cards/rows, quick actions.
-import { content, siteData, pendingSaves, dropSiteCache, getUser } from '../api.js';
+import { content, siteData, pendingSaves, dropSiteCache, trackLive, getUser } from '../api.js';
 import { COLLECTIONS, FEDERATIONS } from '../schema.js';
 import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, can, sectionOf } from '../ui.js';
 
@@ -114,9 +114,10 @@ export async function renderList(page, collection) {
     });
     if (!ok) return;
     try {
-      await content.remove(collection, slug);
+      const r = await content.remove(collection, slug);
+      trackLive({ commit: r.commit, committedAt: r.committedAt, title: item ? item.title : slug, slug, removed: true });
       items = items.filter(i => i.slug !== slug);
-      toast('اتحذف. هيختفي من الموقع مع البناء الجاي.');
+      toast('اتحذف. هقولك أول ما يختفي من الموقع.');
       draw();
     } catch (e) { toast(e.message, 'error'); }
   }

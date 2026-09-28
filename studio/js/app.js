@@ -1,5 +1,5 @@
 // Studio shell: session check, sidebar, top bar, global search and routing.
-import { api, getToken, getUser, clearSession, updateUser, siteData, IS_LOCAL } from './api.js';
+import { api, getToken, getUser, clearSession, updateUser, siteData, watchLive, IS_LOCAL } from './api.js';
 import { COLLECTIONS } from './schema.js';
 import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce, avatarInner, can } from './ui.js';
 import { renderLogin } from './views/auth.js';
@@ -207,7 +207,12 @@ function enter(user) {
   document.body.classList.add('in-app');
   renderShell(user);
   route();
+  watchLive();
 }
+// A save became visible on the live site
+window.addEventListener('studio:live', (e) => {
+  for (const d of e.detail) toast(d.removed ? `«${d.title}» اختفى من الموقع ✓` : `«${d.title}» ظهر على الموقع ✓`, 'ok', 7000);
+});
 start();
 
 // Settings changes the picture or the name: refresh the circle in the top bar

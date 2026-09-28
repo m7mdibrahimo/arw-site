@@ -65,7 +65,7 @@ export async function renderDashboard(page) {
     if (s.maintenance) attention.push({ href: `#/edit/shows/${encodeURIComponent(s.slug)}`, title: s.headline || s.title, text: 'رسالة «العرض تحت التعديل» ظاهرة للزوار', kind: 'info' });
   }
   for (const s of data.filter(d => new Date(d.date) > now)) attention.push({ href: `#/edit/${s.collection}/${encodeURIComponent(s.slug)}`, title: s.headline || s.title, text: `مجدول — هيظهر ${timeAgo(s.date)}`, kind: 'sched' });
-  for (const p of pending) attention.push({ href: `#/edit/${p.collection}/${encodeURIComponent(p.slug)}`, title: p.title, text: 'اتحفظ — هيظهر على الموقع خلال دقيقتين', kind: 'sched' });
+  for (const p of pending) attention.push({ href: `#/edit/${p.collection}/${encodeURIComponent(p.slug)}`, title: p.title, text: 'اتحفظ — بيتجهز على الموقع دلوقتي', kind: 'sched' });
 
   const mayEdit = (href) => { const m = href.match(/#\/edit\/([a-z_]+)/); return !m || can(user, `${m[1] === 'nostalgia_series' ? 'nostalgia' : m[1]}.edit`); };
   for (let i = attention.length - 1; i >= 0; i--) if (!mayEdit(attention[i].href)) attention.splice(i, 1);

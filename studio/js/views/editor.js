@@ -1,5 +1,5 @@
 // Add / edit any content: sectioned form, live preview, checklist, smart helpers.
-import { content, siteData, addPending, IS_LOCAL, getUser } from '../api.js';
+import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../api.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
   extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist,
@@ -231,7 +231,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
           <div class="card preview-card" id="preview"></div>
           <div class="card"><header class="card-head"><h2>${icon('check')} قبل النشر</h2></header><div class="card-body" id="checks"></div></div>
           ${IS_LOCAL ? html`<div class="note">${icon('shield')} النسخة التجريبية: الحفظ بيكتب على ملفات جهازك بس.</div>` : ''}
-          <div class="note muted small">${icon('clock')} بعد الحفظ الموقع بيتحدّث لوحده خلال دقيقتين، والنشر على المنصات بيحصل تلقائي زي دلوقتي.</div>
+          <div class="note muted small">${icon('clock')} بعد الحفظ الموقع بيتحدّث لوحده في حوالي دقيقتين، واللوحة بتقولك أول ما يظهر. النشر على المنصات بيحصل تلقائي زي دلوقتي.</div>
         </aside>
       </div>
     </div>`);
@@ -622,8 +622,9 @@ async function save({ thenNew = false, force = false } = {}) {
     S.images = [];
     S.dirty = false;
     addPending({ collection: S.collection, slug, title: S.data.headline || S.data.title, image: S.data.image, federation: S.data.federation });
+    trackLive({ commit: r.commit, committedAt: r.committedAt, title: S.data.headline || S.data.title || slug, slug });
     if (create) clearDraft(S.collection);
-    toast(create ? 'اتنشر ✓ هيظهر على الموقع خلال دقيقتين' : 'اتحفظ ✓ التعديل هيظهر خلال دقيقتين', 'ok', 5000);
+    toast(IS_LOCAL ? 'اتحفظ ✓' : create ? 'اتنشر ✓ بيتجهز على الموقع دلوقتي، وهقولك أول ما يظهر.' : 'اتحفظ ✓ التعديل بيتجهز على الموقع، وهقولك أول ما يظهر.', 'ok', 5000);
     if (thenNew) { location.hash = `#/new/${S.collection}`; return; }
     if (create) {
       // Reopen as an existing item (delete, «حلقة جديدة بنفس البيانات», …)
@@ -656,9 +657,10 @@ async function remove() {
   });
   if (!ok) return;
   try {
-    await content.remove(S.collection, S.slug);
+    const r = await content.remove(S.collection, S.slug);
+    trackLive({ commit: r.commit, committedAt: r.committedAt, title: S.data.headline || S.data.title || S.slug, slug: S.slug, removed: true });
     S.dirty = false;
-    toast('اتحذف.');
+    toast('اتحذف. هقولك أول ما يختفي من الموقع.');
     location.hash = `#/list/${S.collection}`;
   } catch (e) { toast(e.message, 'error'); }
 }

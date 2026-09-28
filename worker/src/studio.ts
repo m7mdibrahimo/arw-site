@@ -592,10 +592,11 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     const label = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'عرض / حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' }[collection] || 'موضوع';
     const by = me.displayName || me.username;
     const sha = await commitFiles(env, changes, `${existing ? 'Update' : 'Create'} ${label} “${body.slug}” (لوحة التحكم — ${by})`);
+    const committedAt = Date.now();
     const saved = await readRepoFile(env, p).catch(() => null);
     const title = (String(body.content).match(/^(?:headline|title):\s*["']?(.+?)["']?\s*$/m) || [])[1] || body.slug;
     await audit(env, me, existing ? 'content.update' : 'content.create', { collection, slug: body.slug, title: String(title).slice(0, 160) });
-    return json({ success: true, commit: sha, sha: saved?.sha || null });
+    return json({ success: true, commit: sha, committedAt, sha: saved?.sha || null });
   }
   if (route === 'delete' && request.method === 'POST') {
     const collection = String(body.collection || '');
@@ -606,8 +607,9 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     const existing = await readRepoFile(env, p);
     if (!existing) return json({ success: false, error: 'الموضوع غير موجود' }, 404);
     const sha = await commitFiles(env, [{ path: p, remove: true }], `Delete ${collection} “${body.slug}” (لوحة التحكم — ${me.displayName || me.username})`);
+    const committedAt = Date.now();
     await audit(env, me, 'content.delete', { collection, slug: body.slug });
-    return json({ success: true, commit: sha });
+    return json({ success: true, commit: sha, committedAt });
   }
 
   return json({ success: false, error: 'طلب غير معروف' }, 404);

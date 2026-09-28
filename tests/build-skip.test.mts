@@ -45,3 +45,13 @@ test('the site install stays small: the video renderer is only installed by the 
   assert.ok(!pkg.dependencies?.hyperframes && !pkg.devDependencies?.hyperframes);
   for (const wf of ['auto-show-reel', 'generate-reel']) assert.match(fs.readFileSync(`.github/workflows/${wf}.yml`, 'utf8'), /npm install --no-save --no-audit --no-fund hyperframes@/);
 });
+
+test('the panel can tell when a save is live: build.json lists the deployed commits and is never cached', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /_site\/build\.json/);
+  assert.match(cfg, /git log -60 --format=%H/);
+  assert.match(fs.readFileSync('_headers', 'utf8'), /\/build\.json\n\s+Cache-Control: no-store/);
+  const worker = fs.readFileSync('worker/src/studio.ts', 'utf8');
+  assert.match(worker, /commit: sha, committedAt, sha:/);
+  assert.match(worker, /commit: sha, committedAt \}/);
+});
