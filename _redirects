@@ -1,12 +1,14 @@
-# The old panel (/admin/, retired 2026-09-28) → the panel, each old tool to its new page
-/admin/publish.html /studio/#/tools/social 301
-/admin/watcher.html /studio/#/tools/sources 301
-/admin/pinned.html /studio/#/tools/pinned 301
-/admin/reels.html /studio/#/tools/reels 301
-/admin /studio/ 301
-/admin/* /studio/ 301
-/studio/%E2%80%8E /studio/ 301
-/studio/%E2%80%8F /studio/ 301
+# The panel lives at /admin/. The old panel's tool pages (retired 2026-09-28) open their
+# page in it; /studio/ (the panel's address for its first days) comes here too.
+/admin/publish.html /admin/#/tools/social 301
+/admin/watcher.html /admin/#/tools/sources 301
+/admin/pinned.html /admin/#/tools/pinned 301
+/admin/reels.html /admin/#/tools/reels 301
+/admin/config.yml /admin/ 301
+/admin/%E2%80%8E /admin/ 301
+/admin/%E2%80%8F /admin/ 301
+/studio /admin/ 301
+/studio/* /admin/ 301
 # Redirect Cloudflare Pages domain to primary custom domain
 https://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!

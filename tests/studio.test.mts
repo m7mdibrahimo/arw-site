@@ -1,4 +1,4 @@
-// The owner's panel (/studio/): login, sessions, lockout and the write guards.
+// The owner's panel (/admin/): login, sessions, lockout and the write guards.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { handleStudio, hashPassword, verifyPassword, passwordProblem, entryPath, imagePathOk, studioAuthorized } from '../worker/src/studio';
@@ -252,13 +252,16 @@ test('the single-owner account moves to the new system with its password and ses
   assert.equal(r.data.user.role, 'owner');
 });
 
-test('the old /admin/ panel is gone and every one of its jobs lives in the panel', async () => {
+test('the panel lives at /admin/: the old panel is gone and every one of its jobs lives in the new one', async () => {
   const fs = await import('node:fs');
   assert.ok(!fs.existsSync('admin'), 'no old panel files');
+  assert.match(fs.readFileSync('pages/studio.njk', 'utf8'), /permalink: "\/admin\/index\.html"/);
+  assert.match(fs.readFileSync('pages/studio.njk', 'utf8'), /src="\/admin\/\{\{ studioVersion \}\}\/js\/app\.js"/);
   const redirects = fs.readFileSync('_redirects', 'utf8');
-  for (const [from, to] of [['/admin/publish.html', '/studio/#/tools/social'], ['/admin/watcher.html', '/studio/#/tools/sources'], ['/admin/pinned.html', '/studio/#/tools/pinned'], ['/admin/reels.html', '/studio/#/tools/reels'], ['/admin', '/studio/'], ['/admin/*', '/studio/']]) {
+  for (const [from, to] of [['/admin/publish.html', '/admin/#/tools/social'], ['/admin/watcher.html', '/admin/#/tools/sources'], ['/admin/pinned.html', '/admin/#/tools/pinned'], ['/admin/reels.html', '/admin/#/tools/reels'], ['/studio', '/admin/'], ['/studio/*', '/admin/']]) {
     assert.ok(redirects.includes(`${from} ${to} 301`), `${from} → ${to}`);
   }
+  assert.ok(!/^\/admin\/?\*? \/studio/m.test(redirects), '/admin is the panel, never sent elsewhere');
   const app = fs.readFileSync('studio/js/app.js', 'utf8');
   for (const tool of ['social', 'sources', 'pinned', 'reels']) assert.match(app, new RegExp(`#/tools/${tool}`));
   const worker = fs.readFileSync('worker/src/index.ts', 'utf8');

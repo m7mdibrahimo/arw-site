@@ -1,4 +1,4 @@
-// ── Studio: the site's own admin panel (/studio/) ─────────────────────────
+// ── Studio: the site's own admin panel (/admin/) ─────────────────────────
 // Login with a username or e-mail and a password (no GitHub account needed day to day),
 // and content reads/writes committed to the repo exactly like Decap CMS does — same
 // folders, same file names, same front matter — so the site build, the automatic news

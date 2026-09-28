@@ -1,5 +1,5 @@
 ---
-permalink: "/studio/index.html"
+permalink: "/admin/index.html"
 eleventyExcludeFromCollections: true
 ---
 <!doctype html>
@@ -9,14 +9,14 @@ eleventyExcludeFromCollections: true
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#fffdf8">
-  <title>استوديو عرب راسلنج</title>
+  <title>لوحة التحكم — عرب راسلنج</title>
   <link rel="icon" type="image/png" href="/favicon.png?v=3">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
-  <link rel="manifest" href="/studio/manifest.webmanifest">
+  <link rel="manifest" href="/admin/manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap">
-  <link rel="stylesheet" href="/studio/{{ studioVersion }}/studio.css">
+  <link rel="stylesheet" href="/admin/{{ studioVersion }}/studio.css">
   <script>
     // Saved theme before the first paint (no light flash)
     try { document.documentElement.dataset.theme = localStorage.getItem('arw_studio_theme') || 'light'; } catch (e) {}
@@ -25,6 +25,6 @@ eleventyExcludeFromCollections: true
 <body>
   <div id="app"><div class="boot"><img src="/assets/brand-logo.png?v=2" alt=""><div class="spinner"></div></div></div>
   <noscript>اللوحة محتاجة جافاسكربت.</noscript>
-  <script type="module" src="/studio/{{ studioVersion }}/js/app.js"></script>
+  <script type="module" src="/admin/{{ studioVersion }}/js/app.js"></script>
 </body>
 </html>

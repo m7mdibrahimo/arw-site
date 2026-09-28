@@ -38,4 +38,4 @@ jobs:
       - run: npx tsx scripts/test-sanitizer.ts
       - run: npx tsx scripts/test-spoiler-filter.ts
       - run: npm run build
-      - run: test -s _site/studio/index.html && test ! -e _site/admin/index.html
+      - run: test -s _site/admin/index.html && ! grep -q decap _site/admin/index.html && test ! -e _site/studio/index.html

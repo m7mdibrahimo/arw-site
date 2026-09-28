@@ -67,7 +67,7 @@ document.addEventListener('click', (e) => {
   if (!b) return;
   const box = b.previousElementSibling;
   const codes = box ? Array.from(box.querySelectorAll('code'), c => c.textContent) : [];
-  navigator.clipboard.writeText(`لوحة التحكم: ${location.origin}/studio/\nاسم المستخدم: ${codes[0]}\nكلمة السر المؤقتة: ${codes[1]}`).then(() => toast('اتنسخت ✓'), () => toast('مقدرتش أنسخ، انسخها بإيدك.', 'error'));
+  navigator.clipboard.writeText(`لوحة التحكم: ${location.origin}/admin/\nاسم المستخدم: ${codes[0]}\nكلمة السر المؤقتة: ${codes[1]}`).then(() => toast('اتنسخت ✓'), () => toast('مقدرتش أنسخ، انسخها بإيدك.', 'error'));
 });
 
 export async function renderMembers(page, sub = null) {

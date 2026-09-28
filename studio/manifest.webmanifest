@@ -1,8 +1,8 @@
 {
   "name": "استوديو عرب راسلنج",
   "short_name": "الاستوديو",
-  "start_url": "/studio/",
-  "scope": "/studio/",
+  "start_url": "/admin/",
+  "scope": "/admin/",
   "display": "standalone",
   "dir": "rtl",
   "lang": "ar",

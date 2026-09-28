@@ -1701,7 +1701,7 @@ app.post("/api/videos/generate", requireAdmin, (req, res) => {
 // pages get a short cache (1 minute) since their content can change without
 // their filename changing (e.g. an edited article).
 // A link copied from an Arabic message can carry invisible direction marks (U+200E/U+200F)
-// at its end — «/studio/%E2%80%8E» was a 404. Drop them and redirect to the clean address.
+// at its end — «/admin/%E2%80%8E» was a 404. Drop them and redirect to the clean address.
 app.use((req, res, next) => {
   const clean = req.path.replace(/(?:%E2%80%8[EF]|\u200e|\u200f)+/gi, "");
   if (clean !== req.path) return res.redirect(301, clean + (req.url.slice(req.path.length) || ""));
@@ -1713,7 +1713,7 @@ app.use(express.static(sitePath, {
   index: "index.html",
   setHeaders: (res, filePath) => {
     // The owner's panel changes without renaming its files: always revalidate
-    if (filePath.includes(`${path.sep}studio${path.sep}`)) { res.setHeader("Cache-Control", "no-cache"); return; }
+    if (filePath.includes(`${path.sep}admin${path.sep}`)) { res.setHeader("Cache-Control", "no-cache"); return; }
     if (filePath.endsWith(".html") || filePath.endsWith(".htm")) {
       res.setHeader("Cache-Control", "public, max-age=60");
     } else {

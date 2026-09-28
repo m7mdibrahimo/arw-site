@@ -1538,16 +1538,16 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
-  // The old Decap panel (/admin/) was retired on 2026-09-28: /studio/ does everything it did.
-  // The owner's panel (/studio/): static files, no build step. Its code goes to a folder named
+  // The owner's panel, at /admin/ (the old Decap panel there was retired on 2026-09-28; the
+  // new one was at /studio/ for its first days — that address redirects here). Static files, no build step. Its code goes to a folder named
   // after the build — Cloudflare keeps .js for 4 hours in browsers, so a fixed path would keep
   // serving yesterday's panel after an update. The page itself (pages/studio.njk) is never cached.
   const STUDIO_VERSION = String(process.env.CF_PAGES_COMMIT_SHA || Date.now().toString(36)).slice(0, 10);
   eleventyConfig.addGlobalData("studioVersion", STUDIO_VERSION);
-  eleventyConfig.addPassthroughCopy({ "studio/js": `studio/${STUDIO_VERSION}/js` });
-  eleventyConfig.addPassthroughCopy({ "studio/vendor": `studio/${STUDIO_VERSION}/vendor` });
-  eleventyConfig.addPassthroughCopy({ "studio/studio.css": `studio/${STUDIO_VERSION}/studio.css` });
-  eleventyConfig.addPassthroughCopy("studio/manifest.webmanifest");
+  eleventyConfig.addPassthroughCopy({ "studio/js": `admin/${STUDIO_VERSION}/js` });
+  eleventyConfig.addPassthroughCopy({ "studio/vendor": `admin/${STUDIO_VERSION}/vendor` });
+  eleventyConfig.addPassthroughCopy({ "studio/studio.css": `admin/${STUDIO_VERSION}/studio.css` });
+  eleventyConfig.addPassthroughCopy({ "studio/manifest.webmanifest": "admin/manifest.webmanifest" });
   eleventyConfig.addPassthroughCopy({"_data/pinned.json": "data/pinned.json"});
   eleventyConfig.addPassthroughCopy("watcher-state.json");
   eleventyConfig.addPassthroughCopy("watcher-feed.json");

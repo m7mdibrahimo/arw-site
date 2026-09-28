@@ -2679,7 +2679,7 @@ export default {
     const path = url.pathname;
 
     try {
-      // The owner's panel (/studio/): its own login and sessions, checked inside handleStudio.
+      // The owner's panel (/admin/): its own login and sessions, checked inside handleStudio.
       if (path === "/api/studio/overview" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "status"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف حالة الموقع." }, 403);
         return json(await studioOverview(env, await request.json().catch(() => ({}))));
@@ -2723,8 +2723,8 @@ export default {
 
       const publicMutations = new Set(["/api/push/subscribe", "/api/push/unsubscribe"]);
       if (!["GET", "HEAD"].includes(request.method) && !publicMutations.has(path)) {
-        // A GitHub token from the old panel, or a session from the new one (/studio/) with the «tools» permission
-        if (!(await authorizeAdmin(request, env)) && !(await studioAuthorized(request, env, "tools"))) return json({ success: false, error: "سجّل الدخول من لوحة التحكم (/studio/) بحساب معاه صلاحية «أدوات النشر»." }, 401);
+        // A GitHub token from the old panel, or a session from the panel (/admin/) with the «tools» permission
+        if (!(await authorizeAdmin(request, env)) && !(await studioAuthorized(request, env, "tools"))) return json({ success: false, error: "سجّل الدخول من لوحة التحكم (/admin/) بحساب معاه صلاحية «أدوات النشر»." }, 401);
       }
       // ── Telegram/Facebook/Instagram config sanity checks ──
       if (path === "/api/telegram/status" && request.method === "GET") {
