@@ -332,7 +332,7 @@ type PublishState = {
   tiktokToken?: TikTokToken;
 };
 
-type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; why?: "title" | "lead" | "ai" | "flag"; lead?: string; note?: string; releasedAt?: number; dismissedAt?: number; by?: string };
+type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return"; why?: "title" | "lead" | "ai" | "flag" | "old"; lead?: string; note?: string; releasedAt?: number; dismissedAt?: number; by?: string };
 
 // Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
 function spoilerReason(title: string = ""): "result" | "return" {
