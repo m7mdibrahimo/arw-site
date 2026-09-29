@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews } from "./news-qa";
+import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3420,7 +3420,7 @@ export function findLikelyDuplicateStoryByTagsAndBody(
   newBody: string,
   hoursWindow: number = 24,
   newsDir: string = NEWS_DIR
-): { isDuplicate: boolean; matchedFile?: string } {
+): { isDuplicate: boolean; matchedFile?: string; byLink?: boolean } {
   const specificNewTags = [...new Set((newTags || []).map(t => (t || "").trim()).filter(t => t && !isGenericTag(t)))];
   if (specificNewTags.length < 2 || !fs.existsSync(newsDir)) return { isDuplicate: false };
   const newLinks = extractSpecificSourceLinks(newBody);
@@ -3439,7 +3439,7 @@ export function findLikelyDuplicateStoryByTagsAndBody(
       const closingIdx = content.indexOf("\n---\n");
       const existingBody = closingIdx >= 0 ? content.slice(closingIdx + 5) : content;
       const sharedLink = newLinks.some(link => extractSpecificSourceLinks(existingBody).includes(link));
-      if (sharedLink) return { isDuplicate: true, matchedFile: file };
+      if (sharedLink) return { isDuplicate: true, matchedFile: file, byLink: true };
       if (sharedTags.length < 2) continue;
       if (bodyOverlapRatio(newBody, existingBody) >= 0.35) {
         return { isDuplicate: true, matchedFile: file };
@@ -3449,6 +3449,12 @@ export function findLikelyDuplicateStoryByTagsAndBody(
     }
   }
   return { isDuplicate: false };
+}
+
+/** The shared-names suspect always reaches the same-story check, first in line. */
+export function withSuspect(candidates: NewsFile[], news: NewsFile[], suspect: string): NewsFile[] {
+  const hit = suspect ? news.find(n => n.file === suspect) : undefined;
+  return hit ? [hit, ...candidates.filter(c => c.file !== suspect)].slice(0, 5) : candidates;
 }
 
 // Process a single Fightful post
@@ -3745,11 +3751,18 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // everyone from the episode, so shared names + overlapping text say nothing:
   // a TNA review was recorded as a duplicate of a single Nic Nemeth news item
   // (INCIDENTS #45). The Gemini same-story check below still judges them.
+  // Shared names + overlapping text is only a suspicion: during a big story every follow-up
+  // shares them. PAC's death skipped «Dynamite will be a tribute show», Tony Khan's «the
+  // wrestlers have a choice» and «no signs of foul play» as copies of older articles
+  // (INCIDENTS #113). Only the same embedded post is proof; anything else goes to the
+  // Gemini same-story check below, which knows a real new development is not a duplicate.
+  let suspectedDuplicate = "";
   if (guardDuplicates && !isShowResultsArticle(rawTitle, plainText) && !isListOrReviewArticle(rawTitle)) {
     const postDupe = findLikelyDuplicateStoryByTagsAndBody(rewritten.tags, finalBody);
-    if (postDupe.isDuplicate) {
-      console.log(`[Watcher] 🔁 Likely duplicate detected after translation (shared names + overlapping body with ${postDupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
-      recordDuplicate(postUrl, postDupe.matchedFile || "", "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)");
+    if (postDupe.isDuplicate && !postDupe.byLink) suspectedDuplicate = postDupe.matchedFile || "";
+    else if (postDupe.isDuplicate) {
+      console.log(`[Watcher] 🔁 Same embedded post as ${postDupe.matchedFile}: Post #${postId} ("${rawTitle}") skipped.`);
+      recordDuplicate(postUrl, postDupe.matchedFile || "", "نفس المنشور المضمّن في خبر منشور حديثاً");
       return false;
     }
   }
@@ -3763,9 +3776,17 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   };
 
   if (guardDuplicates) {
-    const candidates = findDuplicateCandidates(draft, loadNews(NEWS_DIR));
+    const recentNews = loadNews(NEWS_DIR);
+    const candidates = withSuspect(findDuplicateCandidates(draft, recentNews), recentNews, suspectedDuplicate);
     if (candidates.length) {
-      const verdict = parseDuplicateAnswer(await queryGemini(duplicatePrompt(draft, candidates), true, 0.1), candidates);
+      const answer = await queryGemini(duplicatePrompt(draft, candidates), true, 0.1);
+      if (!answer && suspectedDuplicate && !options.manual) {
+        console.warn(`[Watcher] ⏳ Looks like ${suspectedDuplicate} but the same-story check didn't answer — retry next run.`);
+        noteOutcome(postUrl, "شبه خبر منشور، وفحص التكرار مردّش؛ هيتحاول تاني", true);
+        lastPostRetryable = true;
+        return false;
+      }
+      const verdict = parseDuplicateAnswer(answer, candidates);
       // Gemini judges "same event" too eagerly: a start-time preview, a predictions
       // piece and a results report of one show are three different stories.
       let matchedSource = "";

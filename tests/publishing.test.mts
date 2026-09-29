@@ -1628,3 +1628,29 @@ test('the same story from a second source reaches the same-story check even when
   // A shared promotion or show tag alone is no reason to ask
   assert.ok(!files.some(f => f.startsWith('other-')));
 });
+
+test('shared names and wording only raise a suspicion: the AI same-story check decides, so a real development still gets published', async () => {
+  const { withSuspect } = await import('../scripts/fightful-watcher');
+  const n = (file: string) => ({ file, title: file, body: '', tags: [], date: 0 });
+  const news = [n('ten-bells.md'), n('a.md'), n('b.md'), n('c.md'), n('d.md'), n('e.md')];
+  // «Dynamite will be a PAC tribute show» was dropped as a copy of the ROH ten-bell story
+  // without anyone asking whether it was the same news (INCIDENTS #113)
+  assert.deepEqual(withSuspect([n('a.md'), n('b.md'), n('c.md'), n('d.md'), n('e.md')], news, 'ten-bells.md').map(c => c.file),
+    ['ten-bells.md', 'a.md', 'b.md', 'c.md', 'd.md']);
+  assert.deepEqual(withSuspect([n('a.md'), n('ten-bells.md')], news, 'ten-bells.md').map(c => c.file), ['ten-bells.md', 'a.md']);
+  assert.deepEqual(withSuspect([n('a.md')], news, '').map(c => c.file), ['a.md']);
+
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  const guard = src.slice(src.indexOf('const postDupe = findLikelyDuplicateStoryByTagsAndBody('), src.indexOf('// Editorial pass'));
+  assert.match(guard, /postDupe\.isDuplicate && !postDupe\.byLink\) suspectedDuplicate/, 'no skip on shared names alone');
+  // The same embedded post is still proof on its own
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-link-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'a.md'), `---\ndate: ${new Date().toISOString()}\nsource_url: "https://x.test/a"\ntags:\n  - باك\n  - توني خان\nimage: /x.jpg\n---\nنص\n\nhttps://x.com/TonyKhan/status/2104679231078694942`);
+    const hit = findLikelyDuplicateStoryByTagsAndBody(['باك', 'توني خان'], 'نص مختلف\n\nhttps://x.com/TonyKhan/status/2104679231078694942', 6, dir);
+    assert.equal(hit.isDuplicate, true);
+    assert.equal(hit.byLink, true);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});

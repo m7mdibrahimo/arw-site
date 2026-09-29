@@ -969,16 +969,6 @@
     "reason": "الخبر الجديد يغطي نفس واقعة الوفاة التي تم الإعلان عنها مسبقاً، والتفاصيل المضافة (مكان العثور عليه وتقرير الشرطة) تعتبر تفاصيل إضافية لنفس الحدث وليست خبراً مستقلاً.",
     "at": "2026-09-28T20:06:36.258Z"
   },
-  "https://www.fightful.com/wrestling/report-no-indications-of-foul-play-or-trauma-in-death-of-pac-benjamin-satterley/": {
-    "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-28T20:08:36.455Z"
-  },
-  "https://www.wrestlinginc.com/2271305/new-details-death-aew-star-pac/": {
-    "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-28T20:19:49.634Z"
-  },
   "https://www.ringsidenews.com/spoiler-opening-segment-for-september-28-wwe-raw-revealed/": {
     "matchedFile": "20260928034407-تأكيد-إقامة-عدة-مواجهات-وفقرات-جديدة-في-عرض-wwe-raw.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
@@ -1004,30 +994,10 @@
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
     "at": "2026-09-28T21:26:40.443Z"
   },
-  "https://www.ringsidenews.com/tony-khan-announces-pac-tribute-show-september-30-aew-dynamite/": {
-    "matchedFile": "20260929001659-إقامة-تحية-الأجراس-العشرة-للمصارع-باك-في-تسجيلات-عرض-roh.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-28T21:27:23.897Z"
-  },
-  "https://www.fightful.com/wrestling/aew-dynamite-to-be-a-tribute-to-pac/": {
-    "matchedFile": "20260929001659-إقامة-تحية-الأجراس-العشرة-للمصارع-باك-في-تسجيلات-عرض-roh.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-28T21:29:39.560Z"
-  },
-  "https://www.ringsidenews.com/tony-khan-says-wrestlers-have-choice-about-performing-pacs-death/": {
-    "matchedFile": "20260929001659-إقامة-تحية-الأجراس-العشرة-للمصارع-باك-في-تسجيلات-عرض-roh.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-28T21:46:50.736Z"
-  },
   "https://www.ringsidenews.com/andy-williams-memorial-statue-planned-new-yorkfans-can-help-honor-butcher/": {
     "matchedFile": "20260929003742-إقامة-نصب-تذكاري-للمصارع-آندي-ويليامز-في-منتزه-غراتويك-ريفرسايد-في-نيويورك.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
     "at": "2026-09-28T21:47:14.036Z"
-  },
-  "https://www.wrestlinginc.com/2271421/pac-emotional-tony-khan-aew-dynamite-tribute-show/": {
-    "matchedFile": "20260929001659-إقامة-تحية-الأجراس-العشرة-للمصارع-باك-في-تسجيلات-عرض-roh.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-28T21:57:40.361Z"
   },
   "https://www.fightful.com/wrestling/eddie-kingston-rusev-jeff-jarrett-nia-jax-more-pay-tribute-to-pac-benjamin-satterley/": {
     "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
