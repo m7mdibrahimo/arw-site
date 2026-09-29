@@ -1907,3 +1907,20 @@ test('a debut that was only planned is not a spoiler; a real debut still is', as
   assert.equal(isSingleMatchSpoiler('نجمة WWE السابقة تسجل ظهورها الأول في عرض ROH خلال تصوير العروض'), true);
   assert.equal(isSingleMatchSpoiler('روميو مالفيردي يعود إلى الحلبات في أول نزال له'), true);
 });
+
+test('the promotion follows the site\'s recent stories on the same wrestler when the source never names the one the model chose', async () => {
+  // INCIDENTS #136: Joe Hendry (WWE RAW on this site) came out TNA with TNA tags
+  const { federationFromHistory } = await import('../scripts/fightful-watcher');
+  const now = Date.now();
+  const news = [1, 2, 3, 4].map(i => ({ tags: ['WWE', 'جو هندري'], federation: 'WWE', date: now - i * 86400_000 }));
+  const r = federationFromHistory('TNA', ['TNA', 'جو هندري', 'TNA iMPACT', 'أخبار المصارعة', 'عروض TNA'],
+    'Joe Hendry Explains Why He Faces Harsher Criticism Over His In-Ring Skills. Hendry spoke to Chris Van Vliet…', news, now);
+  assert.equal(r.federation, 'WWE');
+  assert.deepEqual(r.tags, ['WWE', 'جو هندري', 'أخبار المصارعة']);
+  // the source names TNA: the model's choice stands
+  assert.equal(federationFromHistory('TNA', ['TNA', 'جو هندري'], 'Joe Hendry returns to TNA iMPACT tonight', news, now).federation, 'TNA');
+  // too little history: no change
+  assert.equal(federationFromHistory('TNA', ['TNA', 'جو هندري'], 'Hendry spoke about criticism', news.slice(0, 2), now).federation, 'TNA');
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(src, /federationFromHistory\(rewritten\.federation \|\| "", rewritten\.tags \|\| \[\], `\$\{rawTitle\}\\n\$\{plainText\}`, loadNews\(NEWS_DIR\)\)/);
+});

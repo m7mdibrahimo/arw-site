@@ -411,12 +411,12 @@ export function autoFix(text: string): string {
 }
 
 // ── Cross-article checks ──────────────────────────────────────────────────
-export interface NewsFile { file: string; title: string; body: string; tags: string[]; date: number; sourceUrl?: string }
+export interface NewsFile { file: string; title: string; body: string; tags: string[]; date: number; sourceUrl?: string; federation?: string }
 export function loadNews(newsDir = path.join(process.cwd(), "content", "news")): NewsFile[] {
   return fs.readdirSync(newsDir).filter(f => f.endsWith(".md")).map(file => {
     const { data, content } = matter(fs.readFileSync(path.join(newsDir, file), "utf-8"));
     return { file, title: String(data.title || ""), body: content, tags: (data.tags || []).map(String),
-      date: data.date ? new Date(data.date).getTime() : 0, sourceUrl: data.source_url };
+      date: data.date ? new Date(data.date).getTime() : 0, sourceUrl: data.source_url, federation: data.federation ? String(data.federation) : undefined };
   });
 }
 

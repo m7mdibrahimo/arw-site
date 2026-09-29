@@ -3534,6 +3534,44 @@ export function findLikelyDuplicateStoryByTagsAndBody(
   return { isDuplicate: false };
 }
 
+const PROMOTION_IN_TEXT: Record<string, RegExp> = {
+  WWE: /\b(?:WWE|Raw|SmackDown|NXT|WrestleMania|SummerSlam)\b/i,
+  AEW: /\b(?:AEW|Dynamite|Collision|Rampage)\b/i,
+  TNA: /\b(?:TNA|iMPACT|Impact Wrestling)\b/i,
+  ROH: /\b(?:ROH|Ring of Honor)\b/i,
+  MMA: /\b(?:UFC|MMA|PFL|Bellator)\b/i,
+};
+/**
+ * The writer picks the promotion from what the model remembers: Joe Hendry — on WWE RAW for months
+ * on this site — came out «TNA» (his old home) with «TNA», «TNA iMPACT», «عروض TNA» tags, though the
+ * source never names TNA (INCIDENTS #136). When the source text doesn't name the chosen promotion
+ * and the site's last 30 days of stories on the same people clearly say another one, use that, and
+ * swap the old promotion's tags for the new one.
+ */
+export function federationFromHistory(federation: string, tags: string[], sourceText: string, news: { tags: string[]; federation?: string; date: number }[], now = Date.now()): { federation: string; tags: string[]; by: string } {
+  const fed = String(federation || "").toUpperCase();
+  const said = PROMOTION_IN_TEXT[fed];
+  if (!said || said.test(sourceText)) return { federation, tags, by: "" };
+  const people = tags.filter(t => /[\u0600-\u06FF]/.test(t) && !isGenericTag(t));
+  const recent = news.filter(n => now - n.date < 30 * 86400_000 && n.federation);
+  const count: Record<string, number> = {};
+  let by = "";
+  for (const person of people) {
+    const mine = recent.filter(n => n.tags.includes(person));
+    if (mine.length < 3) continue;
+    const c: Record<string, number> = {};
+    for (const n of mine) c[String(n.federation).toUpperCase()] = (c[String(n.federation).toUpperCase()] || 0) + 1;
+    const [top, k] = Object.entries(c).sort((a, b) => b[1] - a[1])[0];
+    if (top !== fed && k / mine.length >= 0.75 && !(c[fed] > 0)) { count[top] = (count[top] || 0) + 1; by = by || person; }
+  }
+  const winner = Object.keys(count).sort((a, b) => count[b] - count[a])[0];
+  if (!winner) return { federation, tags, by: "" };
+  const oldTag = new RegExp(`(?:^|\\s)${fed}(?:\\s|$)`, "i");
+  const kept = tags.filter(t => !oldTag.test(t));
+  if (!kept.some(t => t.toUpperCase() === winner)) kept.unshift(winner);
+  return { federation: winner, tags: kept, by };
+}
+
 /** The shared-names suspect always reaches the same-story check, first in line. */
 export function withSuspect(candidates: NewsFile[], news: NewsFile[], suspect: string): NewsFile[] {
   const hit = suspect ? news.find(n => n.file === suspect) : undefined;
@@ -3760,6 +3798,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   rewritten.title = cleanHeadlineClichés(sanitizeWrestlingTerms(applyNamesGlossary(rewritten.title)), sourceDate, rawTitle);
 
   console.log(`[Watcher] Final Title: "${rewritten.title}"`);
+  {
+    const fixed = federationFromHistory(rewritten.federation || "", rewritten.tags || [], `${rawTitle}\n${plainText}`, loadNews(NEWS_DIR));
+    if (fixed.federation !== rewritten.federation) console.log(`[Watcher] Federation ${rewritten.federation} → ${fixed.federation} (the source never names it; the site's recent stories on ${fixed.by} do)`);
+    rewritten.federation = fixed.federation; rewritten.tags = fixed.tags;
+  }
   console.log(`[Watcher] Federation: ${rewritten.federation} | Tags (${rewritten.tags.length}): ${rewritten.tags.join(", ")}`);
 
   // 3. Extract media embeds and append clean standalone URLs to body
