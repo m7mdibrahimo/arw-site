@@ -25,6 +25,23 @@ export function learnCorrections(minArticles = 3, dryRun = false): { wrong: stri
 
   const seen = new Map<string, Set<string>>();
   const targets = new Map<string, Set<string>>();
+  // The owner's own fixes in the panel (editorial/human-edits.jsonl, INCIDENTS #148) are authoritative:
+  // one is enough. They go in first, counted as many articles as the threshold asks for.
+  const HUMAN = path.join(process.cwd(), "editorial", "human-edits.jsonl");
+  const humanLines = fs.existsSync(HUMAN) ? fs.readFileSync(HUMAN, "utf-8").split("\n") : [];
+  for (const line of humanLines) {
+    if (!line.trim()) continue;
+    let e: any;
+    try { e = JSON.parse(line); } catch { continue; }
+    const find = String(e.find || "").trim(), replace = String(e.replace || "").trim();
+    if (!ARABIC_PHRASE.test(find) || !ARABIC_PHRASE.test(replace) || find === replace) continue;
+    if (find.split(" ").some(w => CONTEXTUAL.has(w)) || find.length < 3) continue;
+    const key = `${find}\u0000${replace}`;
+    if (!seen.has(key)) seen.set(key, new Set());
+    for (let k = 0; k < minArticles; k++) seen.get(key)!.add(`owner:${e.file}:${k}`);
+    if (!targets.has(find)) targets.set(find, new Set());
+    targets.get(find)!.add(replace);
+  }
   for (const line of fs.readFileSync(LOG, "utf-8").split("\n")) {
     if (!line.trim()) continue;
     let e: any;
@@ -50,7 +67,7 @@ export function learnCorrections(minArticles = 3, dryRun = false): { wrong: stri
     learned.push({ wrong, right, articles: files.size });
   }
   if (learned.length && !dryRun) {
-    for (const l of learned) corrections.push({ wrong: l.wrong, right: l.right, note: `تعلّمها المدقق الآلي من ${l.articles} أخبار` });
+    for (const l of learned) corrections.push({ wrong: l.wrong, right: l.right, note: `تعلّمها المدقق الآلي من ${l.articles} أخبار أو تعديلات صاحب الموقع` });
     fs.writeFileSync(CORRECTIONS, JSON.stringify(data, null, 1));
   }
   return learned;

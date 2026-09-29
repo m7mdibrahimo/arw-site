@@ -211,6 +211,33 @@ export async function readRepoFile(env: StudioEnv, path: string): Promise<{ cont
 }
 
 export interface FileChange { path: string; text?: string; base64?: string; remove?: boolean }
+export const HUMAN_EDITS_PATH = 'editorial/human-edits.jsonl';
+/**
+ * Word fixes between two versions of a story: paragraph by paragraph, the tokens between the common
+ * start and the common end, when both sides are 1–3 Arabic words («غابي كيد» → «جيب كيد»). A rewritten
+ * paragraph (a longer middle) is not a word fix and is left out.
+ */
+export function humanEdits(before: string, after: string): { find: string; replace: string }[] {
+  const paras = (t: string) => String(t || '').replace(/^---[\s\S]*?\n---\n/, (fm) => (fm.match(/^(?:title|headline):.*$/gm) || []).join('\n') + '\n').split(/\n+/).map(x => x.trim()).filter(Boolean);
+  const a = paras(before), b = paras(after);
+  if (a.length !== b.length) return [];
+  const out: { find: string; replace: string }[] = [];
+  const AR = /^[\u0600-\u06FF]+$/;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] === b[i]) continue;
+    const x = a[i].split(/\s+/), y = b[i].split(/\s+/);
+    let s = 0; while (s < x.length && s < y.length && x[s] === y[s]) s++;
+    let e = 0; while (e < x.length - s && e < y.length - s && x[x.length - 1 - e] === y[y.length - 1 - e]) e++;
+    const from = x.slice(s, x.length - e), to = y.slice(s, y.length - e);
+    const clean = (w: string[]) => w.map(t => t.replace(/^[«"“(]+|[»"”).,،؛:!?؟]+$/g, ''));
+    const f = clean(from), r = clean(to);
+    if (!f.length || !r.length || f.length > 3 || r.length > 3) continue;
+    if (!f.every(t => AR.test(t)) || !r.every(t => AR.test(t))) continue;
+    if (f.join(' ') !== r.join(' ')) out.push({ find: f.join(' '), replace: r.join(' ') });
+  }
+  return out.slice(0, 20);
+}
+
 export async function commitFiles(env: StudioEnv, changes: FileChange[], message: string): Promise<string> {
   // Blobs don't depend on the branch head, so they are uploaded once.
   const entries: any[] = [];
@@ -584,6 +611,16 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
       return json({ success: false, conflict: true, current: existing, error: 'الموضوع اتعدّل من مكان تاني بعد ما فتحته.' }, 409);
     }
     const changes: FileChange[] = [{ path: p, text: body.content }];
+    // The owner's word fixes teach the writer (INCIDENTS #148): logged with the save, promoted to
+    // editorial/corrections.json by scripts/learn-corrections.ts on its next run.
+    if (existing && ['news', 'shows', 'recaps', 'nostalgia'].includes(collection)) {
+      const edits = humanEdits(existing.content, body.content);
+      if (edits.length) {
+        const log = await readRepoFile(env, HUMAN_EDITS_PATH).catch(() => null);
+        const lines = edits.map(e => JSON.stringify({ at: new Date().toISOString(), file: String(body.slug), by: me.username, find: e.find, replace: e.replace }));
+        changes.push({ path: HUMAN_EDITS_PATH, text: `${log ? log.content.replace(/\n*$/, '\n') : ''}${lines.join('\n')}\n` });
+      }
+    }
     for (const img of Array.isArray(body.images) ? body.images : []) {
       if (!imagePathOk(String(img.path || '')) || typeof img.base64 !== 'string') return json({ success: false, error: 'صورة غير صالحة' }, 400);
       if (img.base64.length * 0.75 > MAX_IMAGE_BYTES) return json({ success: false, error: 'الصورة أكبر من 6 ميجا.' }, 400);

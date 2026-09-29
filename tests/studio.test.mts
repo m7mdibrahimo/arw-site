@@ -388,3 +388,29 @@ test('the most-viewed pages list names every page in words', async () => {
   assert.equal(pageLabel('/'), 'الصفحة الرئيسية');
   assert.equal(pageLabel('/search/'), 'صفحة البحث');
 });
+
+test('the owner\'s word fixes in the panel are logged with the save and learned as permanent corrections', async () => {
+  // INCIDENTS #148
+  const { humanEdits } = await import('../worker/src/studio');
+  const before = '---\ntitle: "غابي كيد يتحدث"\n---\nقال غابي كيد إن النزال كان صعبا.\n\nفقرة لم تتغير.';
+  const after = '---\ntitle: "جيب كيد يتحدث"\n---\nقال جيب كيد إن النزال كان صعبا.\n\nفقرة لم تتغير.';
+  assert.deepEqual(humanEdits(before, after), [{ find: 'غابي', replace: 'جيب' }, { find: 'غابي', replace: 'جيب' }]);
+  // a rewritten paragraph is not a word fix
+  assert.deepEqual(humanEdits('---\ntitle: "x"\n---\nجملة أولى طويلة عن العرض.', '---\ntitle: "x"\n---\nنص جديد تماما لا علاقة له بالقديم أبدا.'), []);
+  // learning: one owner fix is enough
+  const os = await import('node:os'); const path = await import('node:path');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-learn-'));
+  const cwd = process.cwd();
+  try {
+    fs.mkdirSync(path.join(dir, 'editorial')); fs.mkdirSync(path.join(dir, 'scripts'));
+    fs.writeFileSync(path.join(dir, 'editorial/corrections.json'), JSON.stringify({ corrections: [] }));
+    fs.writeFileSync(path.join(dir, 'scripts/wrestler-names.json'), '{}');
+    fs.writeFileSync(path.join(dir, 'editorial/proofread-log.jsonl'), '');
+    fs.writeFileSync(path.join(dir, 'editorial/human-edits.jsonl'), JSON.stringify({ file: 'x', find: 'سيلينا لينتون', replace: 'سيرينا لينتون' }) + '\n');
+    process.chdir(dir);
+    const { learnCorrections } = await import('../scripts/learn-corrections');
+    const learned = learnCorrections(3, false);
+    assert.deepEqual(learned.map((l: any) => [l.wrong, l.right]), [['سيلينا لينتون', 'سيرينا لينتون']]);
+    assert.equal(JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf8')).corrections[0].right, 'سيرينا لينتون');
+  } finally { process.chdir(cwd); fs.rmSync(dir, { recursive: true, force: true }); }
+});
