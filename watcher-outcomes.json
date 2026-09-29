@@ -1,4 +1,39 @@
 {
+ "https://www.fightful.com/wrestling/wwe-nxt-results-9-29-2026-grayson-waller-defends-the-nxt-title-dusty-cup-continues-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-09-29T23:48:52.152Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-akuma-insurance-ad-wwe-raw-highlights-more-fight-size": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-09-29T23:48:52.014Z"
+ },
+ "https://www.fightful.com/wrestling/report-unnamed-nxt-talent-files-order-of-protection-against-keanu-carver": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-09-29T23:48:51.763Z"
+ },
+ "https://www.fightful.com/wrestling/alexa-bliss-to-release-song-with-ryan-cabrera-on-october-9": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-09-29T23:48:51.649Z"
+ },
+ "https://www.fightful.com/wrestling/batista-pays-tribute-to-sign-guy-rick-achberger": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-09-29T23:48:51.456Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-9-29": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-09-29T23:48:51.154Z"
+ },
+ "https://www.fightful.com/wrestling/becky-lynch-bayley-penta-honor-pac-on-wwe-raw": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-09-29T23:48:50.983Z"
+ },
  "https://www.wrestlinginc.com/2271578/wwe-nxt-september-29-nxt-championship-womens-north-american-championship-on-line-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,41 +43,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-09-29T23:41:36.948Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-9-29-2026-grayson-waller-defends-the-nxt-title-dusty-cup-continues-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-29T23:38:56.726Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-akuma-insurance-ad-wwe-raw-highlights-more-fight-size": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:38:56.600Z"
- },
- "https://www.fightful.com/wrestling/report-unnamed-nxt-talent-files-order-of-protection-against-keanu-carver": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:38:56.367Z"
- },
- "https://www.fightful.com/wrestling/alexa-bliss-to-release-song-with-ryan-cabrera-on-october-9": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:38:56.261Z"
- },
- "https://www.fightful.com/wrestling/batista-pays-tribute-to-sign-guy-rick-achberger": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:38:56.080Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-9-29": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:38:55.795Z"
- },
- "https://www.fightful.com/wrestling/becky-lynch-bayley-penta-honor-pac-on-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:38:55.633Z"
  },
  "https://www.fightful.com/wrestling/331108-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
