@@ -1,5 +1,25 @@
 [
   {
+    "id": 1904220007,
+    "link": "https://www.wrestlinginc.com/2272825/mason-rook-out-foreseeable-future-grayson-waller-open-challenge-wwe-nxt/",
+    "date": "Tue, 29 Sep 2026 23:07:28 +0000",
+    "date_gmt": "2026-09-29T23:07:28.000Z",
+    "title": {
+      "rendered": "Mason Rook Out For 'Foreseeable Future,' Grayson Waller Open Challenge Set For WWE NXT"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/mason-rook-out-for-foreseeable-future-grayson-waller-open-challenge-set-for-wwe-nxt/l-intro-1790723155.jpg"
+  },
+  {
+    "id": 5007889121,
+    "link": "https://www.wrestlinginc.com/2272824/wwe-raw-viewership-ratings-report-september-21-2026/",
+    "date": "Tue, 29 Sep 2026 23:05:47 +0000",
+    "date_gmt": "2026-09-29T23:05:47.000Z",
+    "title": {
+      "rendered": "WWE Raw Viewership & Ratings Report, 9/21/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-viewership-ratings-report-9212026/l-intro-1790723070.jpg"
+  },
+  {
     "id": 1685494997,
     "link": "https://www.wrestlinginc.com/2271578/wwe-nxt-september-29-nxt-championship-womens-north-american-championship-on-line-more/",
     "date": "Tue, 29 Sep 2026 23:00:00 +0000",
@@ -77,7 +97,7 @@
     "title": {
       "rendered": "Order Of Protection Filed Against WWE NXT Star Keanu Carver"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/order-protection-filed-against-wwe-nxt-star-keanu-carver/l-intro-1790711898.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/order-protection-filed-against-wwe-nxt-star-keanu-carver/l-intro-1790723549.jpg"
   },
   {
     "id": 3516550715,
@@ -178,25 +198,5 @@
       "rendered": "WWE HOFer JBL Praises Vince McMahon As The Best Producer He Ever Worked With"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-jbl-praises-vince-mcmahon-as-the-best-producer-he-ever-worked-with/l-intro-1790218940.jpg"
-  },
-  {
-    "id": 1174967461,
-    "link": "https://www.wrestlinginc.com/2271581/aew-mjf-pwi-500-what-took-so-long/",
-    "date": "Tue, 29 Sep 2026 04:13:41 +0000",
-    "date_gmt": "2026-09-29T04:13:41.000Z",
-    "title": {
-      "rendered": "AEW's MJF On Topping PWI 500: 'What Took So Long?'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-mjf-on-topping-pwi-500-what-took-so-long/l-intro-1790655072.jpg"
-  },
-  {
-    "id": 2504582709,
-    "link": "https://www.wrestlinginc.com/2271579/wwe-raw-september-28-2026-hated-loved-opinion-review/",
-    "date": "Tue, 29 Sep 2026 04:02:47 +0000",
-    "date_gmt": "2026-09-29T04:02:47.000Z",
-    "title": {
-      "rendered": "WWE RAW 9/28/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-september-28-2026-hated-loved-opinion-review/l-intro-1790689999.jpg"
   }
 ]
