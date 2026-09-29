@@ -375,3 +375,16 @@ test('the bell lists what happened on the site in the last 12 hours, and every p
   const worker = fs.readFileSync('worker/src/index.ts', 'utf8');
   assert.match(worker, /path === "\/api\/studio\/notifications"[\s\S]{0,200}studioUser\(request/);
 });
+
+test('the most-viewed pages list names every page in words', async () => {
+  // «federation/wwe» showed as it is (the owner, 2026-09-29 — INCIDENTS #145)
+  const src = fs.readFileSync('studio/js/views/analytics.js', 'utf8');
+  const code = src.slice(src.indexOf('const SECTION_PAGES'), src.indexOf('const pct ='));
+  const pageLabel = new Function(code.replace('export function pageLabel', 'function pageLabel') + '\nreturn pageLabel;')();
+  assert.equal(pageLabel('/federation/wwe/'), 'صفحة اتحاد WWE');
+  assert.equal(pageLabel('/federation/indie/2/'), 'صفحة الاتحادات المستقلة (صفحة 2)');
+  assert.equal(pageLabel('/shows/3/'), 'صفحة كل العروض (صفحة 3)');
+  assert.equal(pageLabel('/tag/%D8%A8%D8%A7%D9%83/'), 'وسم «باك»');
+  assert.equal(pageLabel('/'), 'الصفحة الرئيسية');
+  assert.equal(pageLabel('/search/'), 'صفحة البحث');
+});

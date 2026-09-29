@@ -7,10 +7,26 @@ const countryName = (() => {
   try { dn = new Intl.DisplayNames(['ar'], { type: 'region' }); } catch {}
   return (code) => { try { return (dn && code && code.length === 2 && dn.of(code)) || code || 'غير معروف'; } catch { return code; } };
 })();
-const SECTION_PAGES = { '/': 'الصفحة الرئيسية', '/shows/': 'صفحة كل العروض', '/news/': 'صفحة الأخبار', '/recaps/': 'صفحة الملخصات', '/nostalgia/': 'صفحة النوستالجيا', '/library/': 'مكتبة العروض' };
-function pageLabel(path) {
+const SECTION_PAGES = {
+  '/': 'الصفحة الرئيسية', '/shows/': 'صفحة كل العروض', '/news/': 'صفحة الأخبار', '/recaps/': 'صفحة الملخصات',
+  '/nostalgia/': 'صفحة النوستالجيا', '/library/': 'مكتبة العروض', '/federations/': 'صفحة الاتحادات', '/tags/': 'صفحة الوسوم',
+  '/search/': 'صفحة البحث', '/about/': 'من نحن', '/contact/': 'اتصل بنا', '/privacy/': 'سياسة الخصوصية',
+  '/terms/': 'شروط الاستخدام', '/dmca/': 'حقوق النشر', '/apps/': 'صفحة التطبيقات',
+};
+const FEDERATION_PAGES = { wwe: 'صفحة اتحاد WWE', aew: 'صفحة اتحاد AEW', tna: 'صفحة اتحاد TNA', roh: 'صفحة اتحاد ROH', mma: 'صفحة رياضات القتال (MMA)', indie: 'صفحة الاتحادات المستقلة' };
+/** Every page of the site in words («federation/wwe» showed as it is — the owner, 2026-09-29).
+ *  Stories and shows get their real title from the search index afterwards. */
+export function pageLabel(path) {
   const p = decodeURIComponent(path || '/').replace(/\/?$/, '/');
-  return SECTION_PAGES[p] || p.replace(/^\/|\/$/g, '');
+  if (SECTION_PAGES[p]) return SECTION_PAGES[p];
+  let m;
+  if ((m = p.match(/^\/(shows|news|recaps|federations)\/(\d+)\/$/))) return `${SECTION_PAGES[`/${m[1]}/`]} (صفحة ${m[2]})`;
+  if ((m = p.match(/^\/federation\/([^/]+)\/(?:(\d+)\/)?$/))) return `${FEDERATION_PAGES[m[1]] || `صفحة اتحاد ${m[1].toUpperCase()}`}${m[2] ? ` (صفحة ${m[2]})` : ''}`;
+  if ((m = p.match(/^\/tag\/([^/]+)\/(?:(\d+)\/)?$/))) return `وسم «${m[1].replace(/-/g, ' ')}»${m[2] ? ` (صفحة ${m[2]})` : ''}`;
+  if ((m = p.match(/^\/library\/([^/]+)\/$/))) return `مكتبة: ${m[1].replace(/-/g, ' ')}`;
+  if ((m = p.match(/^\/nostalgia\/([^/]+)\/$/))) return `سلسلة نوستالجيا: ${m[1].replace(/-/g, ' ')}`;
+  if ((m = p.match(/^\/(news|shows|recaps)\/([^/]+)\/$/))) return m[2].replace(/-/g, ' ');
+  return p.replace(/^\/|\/$/g, '');
 }
 const pct = (a, b) => (!b ? null : Math.round(((a - b) / b) * 100));
 const shortDay = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'short' });
