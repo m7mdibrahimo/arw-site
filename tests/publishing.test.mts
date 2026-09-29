@@ -1936,3 +1936,13 @@ test('a ring name that is a doubled word survives the repeated-word fix', async 
   assert.ok(!checkArticle('كيلي كيلي تكشف السبب', 'نص الخبر عن كيلي كيلي', []).some(i => i.code === 'repeated_word'));
   assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'))['Kelly Kelly'], 'كيلي كيلي');
 });
+
+test('a wrestler named in the headline becomes a tag', async () => {
+  // INCIDENTS #140
+  const { titleNamesAsTags } = await import('../scripts/fightful-watcher');
+  const names = { 'Layla': 'لايلا', 'Kelly Kelly': 'كيلي كيلي', 'Kelly': 'كيلي', 'Sirena Linton': 'سيرينا لينتون', 'IWGP Championship': 'بطولة IWGP' };
+  assert.deepEqual(titleNamesAsTags('كيلي كيلي تلقي بولها بطريق الخطأ في فم لايلا خلال إحدى رحلات WWE', ['WWE', 'كيلي كيلي', 'سيرينا ديب'], names),
+    ['WWE', 'كيلي كيلي', 'لايلا', 'سيرينا ديب']);
+  assert.deepEqual(titleNamesAsTags('ظهور أول لسيرينا لينتون', ['ROH'], names), ['ROH', 'سيرينا لينتون']);
+  assert.deepEqual(titleNamesAsTags('خبر بدون أسماء', ['WWE'], names), ['WWE']);
+});

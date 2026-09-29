@@ -3572,6 +3572,27 @@ export function federationFromHistory(federation: string, tags: string[], source
   return { federation: winner, tags: kept, by };
 }
 
+/**
+ * A wrestler named in the headline is a tag: «سيرينا لينتون» (her ROH debut) and «لايلا» (the Kelly
+ * Kelly story about her) were in the title but not in the tags, so the story never reached their tag
+ * pages (INCIDENTS #140). Names come from the glossary (people, not titles or shows).
+ */
+export function titleNamesAsTags(title: string, tags: string[], names: Record<string, string> = WRESTLER_NAMES_MAP): string[] {
+  const out = [...tags];
+  const has = (n: string) => out.some(t => t === n);
+  const cand = [...new Set(Object.values(names))]
+    .filter(v => /^[\u0600-\u06FF]+(?: [\u0600-\u06FF]+){0,2}$/.test(v) && v.length >= 4 && !/(?:بطولة|عرض|اتحاد|نزال|فريق|لقب|حزام)/.test(v))
+    .sort((a, b) => b.length - a.length);
+  let covered = title;
+  for (const name of cand) {
+    const re = new RegExp(`(?<![\\u0600-\\u06FF])(?:ل|ب|و)?${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\u0600-\\u06FF])`);
+    if (!re.test(covered)) continue;
+    covered = covered.replace(re, " ");  // «كيلي كيلي» doesn't also add «كيلي»
+    if (!has(name)) out.splice(Math.min(out.length, 2), 0, name);
+  }
+  return out.slice(0, 10);
+}
+
 /** The shared-names suspect always reaches the same-story check, first in line. */
 export function withSuspect(candidates: NewsFile[], news: NewsFile[], suspect: string): NewsFile[] {
   const hit = suspect ? news.find(n => n.file === suspect) : undefined;
@@ -3964,6 +3985,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
   draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
+  draft.tags = titleNamesAsTags(draft.title, draft.tags);
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
