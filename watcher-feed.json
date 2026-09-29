@@ -1,5 +1,15 @@
 [
   {
+    "id": 331047,
+    "link": "https://www.fightful.com/wrestling/darby-allin-gabe-kidd-brings-a-certain-level-of-intensity-that-i-get-excited-about/",
+    "date": "2026-09-29T10:00:00",
+    "date_gmt": "2026-09-29T14:00:00",
+    "title": {
+      "rendered": "Darby Allin: Gabe Kidd Brings A Certain Level Of Intensity That I Get Excited About"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/06221841/HHrpibEXEAIbe-8.png"
+  },
+  {
     "id": 331131,
     "link": "https://www.fightful.com/wrestling/roh-tv-spoilers-taped-on-9-28/",
     "date": "2026-09-29T09:07:12",
@@ -288,15 +298,5 @@
       "rendered": "Newcastle Football Club Pay Tribute To PAC (Benjamin Satterley)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28131620/PAC-Newcastle-e1790615798996.jpg"
-  },
-  {
-    "id": 331012,
-    "link": "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-9-26-2026-depredadores-vs-fieras-del-ring-guerreros-laguneros-more/",
-    "date": "2026-09-28T13:30:00",
-    "date_gmt": "2026-09-28T17:30:00",
-    "title": {
-      "rendered": "CMLL Sábado De Coliseo Results (9/26/2026): Depredadores vs. Fieras del Ring, Guerreros Laguneros, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28131106/714E8261-D5E5-4026-A947-380040D7FBF6.jpg"
   }
 ]
