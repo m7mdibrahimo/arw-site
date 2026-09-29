@@ -1,5 +1,25 @@
 [
   {
+    "id": 331183,
+    "link": "https://www.fightful.com/wrestling/will-ospreay-vs-ricochet-announced-for-9-30-aew-dynamite/",
+    "date": "2026-09-29T17:11:13",
+    "date_gmt": "2026-09-29T21:11:13",
+    "title": {
+      "rendered": "Will Ospreay vs. Ricochet Announced For 9/30 AEW Dynamite"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29171051/HTaZ18vXgAA7CLS.jpeg"
+  },
+  {
+    "id": 331180,
+    "link": "https://www.fightful.com/wrestling/roman-reigns-cm-punk-noam-dar-more-pay-tribute-to-pac-benjamin-satterley/",
+    "date": "2026-09-29T17:11:10",
+    "date_gmt": "2026-09-29T21:11:10",
+    "title": {
+      "rendered": "Roman Reigns, CM Punk, Noam Dar, More Pay Tribute To PAC (Benjamin Satterley)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27211559/HTQ_MsjWUAAr_6M-1.jpeg"
+  },
+  {
     "id": 331169,
     "link": "https://www.fightful.com/wrestling/cinta-de-oro-says-hed-love-to-return-to-wwe-for-another-sin-cara-run/",
     "date": "2026-09-29T16:09:01",
@@ -278,25 +298,5 @@
       "rendered": "Oba Femi vs. Bronson Reed Set For WWE Money In The Bank"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28205130/HTWEslsWgAA_sGY.jpg"
-  },
-  {
-    "id": 331089,
-    "link": "https://www.fightful.com/wrestling/331089-pac-wwe/",
-    "date": "2026-09-28T20:12:58",
-    "date_gmt": "2026-09-29T00:12:58",
-    "title": {
-      "rendered": "WWE Pays Tribute To PAC (Neville)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28201100/HTV6gLfWsAA1D_z.jpg"
-  },
-  {
-    "id": 331090,
-    "link": "https://www.fightful.com/mma/raoni-barcelos-gives-update-after-scary-stoppage-at-ufc-fight-night/",
-    "date": "2026-09-28T20:11:26",
-    "date_gmt": "2026-09-29T00:11:26",
-    "title": {
-      "rendered": "Raoni Barcelos Gives Update After Scary Stoppage At UFC Fight Night"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27000254/Screenshot-2026-09-27-at-12.02.23-AM.png"
   }
 ]
