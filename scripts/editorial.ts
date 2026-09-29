@@ -259,9 +259,21 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
 export function findDuplicateCandidates(draft: ArticleDraft, news: NewsFile[], now = Date.now(), hours = 48): NewsFile[] {
   const t = tokens(draft.title);
   const b = tokens(draft.body.slice(0, 1500));
-  return news
-    .filter(n => now - n.date <= hours * 3600_000 && n.date <= now + 3600_000)
-    .map(n => ({ n, score: Math.max(jaccard(t, tokens(n.title)), jaccard(b, tokens(n.body.slice(0, 1500)))) }))
+  const recent = news.filter(n => now - n.date <= hours * 3600_000 && n.date <= now + 3600_000);
+  // Two sources rarely word one story alike: WWE's tribute to PAC from Ringside News and
+  // from Wrestling Inc scored 0.146 and never reached the same-story check (INCIDENTS #112).
+  // Sharing a specific name tag (Arabic, not on most recent articles — so not a promotion,
+  // show or catch-all tag) lifts a story into the candidates; Gemini still decides.
+  const freq = new Map<string, number>();
+  for (const n of recent) for (const tag of new Set(n.tags)) freq.set(tag, (freq.get(tag) || 0) + 1);
+  const specific = (tag: string) => /[\u0600-\u06FF]/.test(tag) && (freq.get(tag) || 0) <= Math.max(3, recent.length * 0.15);
+  const draftTags = new Set(draft.tags.filter(specific));
+  return recent
+    .map(n => {
+      const shared = n.tags.filter(tag => draftTags.has(tag)).length;
+      const lexical = Math.max(jaccard(t, tokens(n.title)), jaccard(b, tokens(n.body.slice(0, 1500))));
+      return { n, score: lexical + Math.min(shared, 2) * 0.05 };
+    })
     .filter(x => x.score >= 0.15)
     .sort((x, y) => y.score - x.score)
     .slice(0, 5)

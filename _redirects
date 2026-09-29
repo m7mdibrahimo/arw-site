@@ -516,3 +516,5 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /tag/جاكسون-رايكير/* /tag/جاكسون-رايكر/:splat 301!
 /tag/اوموس/* /tag/أوموس/:splat 301!
 /tag/جورني-فاتو/* /tag/جيرني-فاتو/:splat 301!
+
+/news/wwe-ينعي-نجم-aew-باك-عبر-وسائل-التواصل-الاجتماعي-وفي-افتتاح-عرض-wwe-raw/* /news/عرض-wwe-raw-يفتتح-فعالياته-بتكريم-المصارع-الراحل-باك/:splat 301!
