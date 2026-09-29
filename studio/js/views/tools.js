@@ -1,6 +1,7 @@
 // Publishing tools — what the old /admin/ pages did, inside the panel:
 // social posting, news sources, the home slider's pinned items and show reels.
 import { tools, siteData, trackLive } from '../api.js';
+import { notify } from '../notify.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, esc } from '../ui.js';
 
 const SITE = 'https://arab-wrestling.com';
@@ -138,7 +139,7 @@ export async function renderSourcesTool(page) {
   </div>`);
 
   const add = async (urls) => {
-    try { const r = await tools.addNews(urls); toast(`${r.message || 'اتبعت'} — الخبر بيظهر بعد ٣–٥ دقايق.`, 'ok', 7000); }
+    try { const r = await tools.addNews(urls); toast(`${r.message || 'اتبعت'} — الخبر بيظهر بعد ٣–٥ دقايق.`, 'ok', 7000); notify({ type: 'news-request' }); }
     catch (e) { toast(e.message, 'error'); }
   };
   $$('[data-pick]').forEach(c => c.onchange = () => {
@@ -306,6 +307,7 @@ export async function renderPinnedTool(page) {
     try {
       const r = await tools.savePinned(items, sha);
       trackLive({ commit: r.commit, committedAt: r.committedAt, title: 'المثبت في الرئيسية' });
+      notify({ type: 'pinned', count: items.length, commit: r.commit });
       dirty = false;
       toast('اتحفظ ✓ هيتغير في الرئيسية خلال دقيقتين، وهقولك أول ما يظهر.', 'ok', 6000);
       const f = await tools.pinned(); sha = f.sha;
@@ -397,6 +399,7 @@ export async function renderReelsTool(page) {
       } catch (e) { bad++; toast(`${name}: ${e.message}`, 'error', 7000); }
     }
     if (!bad) toast('خلص نشر الريل ✓');
+    if (picked.length > bad) notify({ type: 'reel', title: show ? show.headline || show.title : v.filename, detail: bad ? `${picked.length - bad} من ${picked.length} منصات` : picked.map(p => plats.find(x => x.key === p).name).join(' · ') });
     data = await tools.reels().catch(() => data);
     draw();
   }

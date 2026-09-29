@@ -1,5 +1,6 @@
 // Content lists: filters, search, cards/rows, quick actions.
 import { content, siteData, pendingSaves, dropSiteCache, trackLive, getUser } from '../api.js';
+import { notify } from '../notify.js';
 import { COLLECTIONS, FEDERATIONS } from '../schema.js';
 import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, can, sectionOf } from '../ui.js';
 
@@ -133,6 +134,7 @@ export async function renderList(page, collection, pageNum = 1) {
     try {
       const r = await content.remove(collection, slug);
       trackLive({ commit: r.commit, committedAt: r.committedAt, title: item ? item.title : slug, slug, removed: true });
+      notify({ type: 'delete', collection, slug, title: item ? item.title : slug, commit: r.commit });
       items = items.filter(i => i.slug !== slug);
       toast('اتحذف. هقولك أول ما يختفي من الموقع.');
       draw();

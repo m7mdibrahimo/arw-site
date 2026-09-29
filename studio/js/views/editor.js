@@ -1,5 +1,6 @@
 // Add / edit any content: sectioned form, live preview, checklist, smart helpers.
 import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../api.js';
+import { notify } from '../notify.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
   extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist,
@@ -629,6 +630,7 @@ async function save({ thenNew = false, force = false } = {}) {
     S.dirty = false;
     addPending({ collection: S.collection, slug, title: S.data.headline || S.data.title, image: S.data.image, federation: S.data.federation });
     trackLive({ commit: r.commit, committedAt: r.committedAt, title: S.data.headline || S.data.title || slug, slug });
+    notify({ type: create ? 'create' : 'edit', collection: S.collection, slug, title: S.data.headline || S.data.title || slug, commit: r.commit });
     if (create) clearDraft(S.collection);
     toast(IS_LOCAL ? 'اتحفظ ✓' : create ? 'اتنشر ✓ بيتجهز على الموقع دلوقتي، وهقولك أول ما يظهر.' : 'اتحفظ ✓ التعديل بيتجهز على الموقع، وهقولك أول ما يظهر.', 'ok', 5000);
     if (thenNew) { location.hash = `#/new/${S.collection}`; return; }
@@ -651,6 +653,7 @@ async function save({ thenNew = false, force = false } = {}) {
       return;
     }
     toast(e.message, 'error', 6000);
+    notify({ type: 'error', title: `تعذّر حفظ ${COLLECTIONS[S.collection].singular} «${S.data.headline || S.data.title || slug}»`, detail: e.message, collection: create ? '' : S.collection, slug: create ? '' : slug });
   } finally { btn.disabled = false; btn.classList.remove('loading'); }
 }
 
@@ -665,6 +668,7 @@ async function remove() {
   try {
     const r = await content.remove(S.collection, S.slug);
     trackLive({ commit: r.commit, committedAt: r.committedAt, title: S.data.headline || S.data.title || S.slug, slug: S.slug, removed: true });
+    notify({ type: 'delete', collection: S.collection, slug: S.slug, title: S.data.headline || S.data.title || S.slug, commit: r.commit });
     S.dirty = false;
     toast('اتحذف. هقولك أول ما يختفي من الموقع.');
     location.hash = `#/list/${S.collection}`;

@@ -79,8 +79,6 @@ export function toast(message, kind = 'ok', ms = 3800) {
   const t = document.createElement('div');
   t.className = `toast toast-${kind}`;
   t.innerHTML = `<span class="toast-ico">${ICONS[kind === 'error' ? 'alert' : kind === 'info' ? 'clock' : 'check']}</span><span>${esc(message)}</span>`;
-  // Everything the panel tells you also lands in the bell (notify.js)
-  window.dispatchEvent(new CustomEvent('studio:toast', { detail: { message: String(message || ''), kind } }));
   box.appendChild(t);
   requestAnimationFrame(() => t.classList.add('in'));
   setTimeout(() => { t.classList.remove('in'); setTimeout(() => t.remove(), 300); }, ms);

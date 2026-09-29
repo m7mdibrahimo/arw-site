@@ -2,6 +2,7 @@
 // one and either publishes it to the platforms or keeps it off. The site itself always has them.
 // Shown on the home page under the latest shows and news, in the same compact rows.
 import { api } from '../api.js';
+import { notify } from '../notify.js';
 import { html, mount, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
 const REASON = { result: 'نتيجة أو حرق', return: 'عودة أو ظهور أول', show: 'حاجة حصلت في عرض لسه متذاع' };
@@ -53,13 +54,13 @@ export async function renderHeld(el, { all = false } = {}) {
     });
     if (!ok) return;
     b.disabled = true;
-    try { await api.heldAction('publish', i); toast('تمام ✓ هيتنشر على المنصات خلال دقايق.'); renderHeld(el, { all }); }
+    try { await api.heldAction('publish', i); toast('تمام ✓ هيتنشر على المنصات خلال دقايق.'); notify({ type: 'held-publish', title: i.title }); renderHeld(el, { all }); }
     catch (e) { toast(e.message, 'error'); b.disabled = false; }
   });
   $$('[data-keep]', el).forEach(b => b.onclick = async () => {
     const i = find(b.dataset.keep);
     b.disabled = true;
-    try { await api.heldAction('keep', i); toast('تمام، مش هيتنشر على المنصات.'); renderHeld(el, { all }); }
+    try { await api.heldAction('keep', i); toast('تمام، مش هيتنشر على المنصات.'); notify({ type: 'held-keep', title: i.title }); renderHeld(el, { all }); }
     catch (e) { toast(e.message, 'error'); b.disabled = false; }
   });
 }

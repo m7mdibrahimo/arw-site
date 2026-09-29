@@ -345,7 +345,7 @@ test('the worker type-checks — the same «tsc -p worker» the GitHub check run
   assert.equal(out, '', out.split('\n').slice(0, 5).join('\n'));
 });
 
-test('the bell lists what happened on the site in the last two days, and every panel message', async () => {
+test('the bell lists what happened on the site in the last 12 hours, and every panel action as one event', async () => {
   const { studioNotifications } = await import('../worker/src/index');
   const now = Date.now();
   const iso = (h: number) => new Date(now - h * 3600_000).toISOString();
@@ -354,7 +354,7 @@ test('the bell lists what happened on the site in the last two days, and every p
     return new Response(JSON.stringify([
       { url: '/news/new/', inputPath: './content/news/20260929-new.md', title: 'خبر جديد', kind: 'news', published_at: iso(1) },
       { url: '/shows/raw/', inputPath: './content/shows/20260929-raw.md', title: 'WWE RAW', headline: 'عرض الرو مترجم', kind: 'show', published_at: iso(3) },
-      { url: '/news/old/', inputPath: './content/news/20260920-old.md', title: 'قديم', kind: 'news', published_at: iso(60) },
+      { url: '/news/old/', inputPath: './content/news/20260920-old.md', title: 'قديم', kind: 'news', published_at: iso(13) },
     ]), { status: 200 });
   }) as any;
   try {
@@ -364,8 +364,14 @@ test('the bell lists what happened on the site in the last two days, and every p
   // The panel side: the bell sits next to the theme button, every toast is kept, the route is signed-in only
   const app = fs.readFileSync('studio/js/app.js', 'utf8');
   assert.ok(app.indexOf('id="bell-btn"') > 0 && app.indexOf('id="bell-btn"') < app.indexOf('id="theme-btn"'));
-  assert.match(fs.readFileSync('studio/js/ui.js', 'utf8'), /dispatchEvent\(new CustomEvent\('studio:toast'/);
-  assert.match(fs.readFileSync('studio/js/notify.js', 'utf8'), /window\.addEventListener\('studio:toast'/);
+  // Structured events, not toast copies (INCIDENTS #134): a save follows through to «ظهر على الموقع»
+  const editor = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(editor, /notify\(\{ type: create \? 'create' : 'edit', collection: S\.collection, slug, title: [^}]*commit: r\.commit \}\)/);
+  assert.match(editor, /notify\(\{ type: 'delete'/);
+  const bell = fs.readFileSync('studio/js/notify.js', 'utf8');
+  assert.match(bell, /export const WINDOW_MS = 12 \* 3600_000;/);
+  assert.match(bell, /window\.addEventListener\('studio:live'[^\n]*markLive\(d\.commit\)/);
+  assert.ok(!/studio:toast/.test(fs.readFileSync('studio/js/ui.js', 'utf8')), 'input hints no longer reach the bell');
   const worker = fs.readFileSync('worker/src/index.ts', 'utf8');
   assert.match(worker, /path === "\/api\/studio\/notifications"[\s\S]{0,200}studioUser\(request/);
 });

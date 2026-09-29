@@ -2643,11 +2643,11 @@ async function studioHeld(env: Env) {
 
 /**
  * The panel's bell (owner, 2026-09-29: «زر اشعارات لاي حاجة»): what happened on the site in the
- * last two days, newest first. Stories and shows that went live (bots or the panel); with the
+ * last 12 hours, newest first. Stories and shows that went live (bots or the panel); with the
  * «tools» permission also where each one was posted, what the spoiler shield held or released,
  * posts that need a human check, and show reels. Messages are worded in the panel.
  */
-const NOTIFY_WINDOW_MS = 48 * 3600_000;
+const NOTIFY_WINDOW_MS = 12 * 3600_000; // the owner: only the last 12 hours
 export async function studioNotifications(env: Env, withSocial: boolean) {
   const now = Date.now();
   const recent = (t: number) => t > 0 && now - t < NOTIFY_WINDOW_MS && t <= now + 60_000;

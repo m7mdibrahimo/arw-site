@@ -664,7 +664,15 @@ body.pin-carrying, body.pin-carrying * { cursor: grabbing !important; user-selec
 .bell-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .bell-text b { font-size: 13.5px; font-weight: 800; line-height: 1.6; white-space: normal; overflow-wrap: anywhere; }
 .bell-text small { font-size: 12px; color: var(--muted); font-weight: 700; }
-.bell-dot { position: absolute; top: 16px; left: 12px; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+.bell-dot { flex: 0 0 9px; width: 9px; height: 9px; margin-top: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 3px var(--coral-soft); }
+.menu-pop .bell-item.unread { background: color-mix(in srgb, var(--cream) 55%, transparent); }
+.bell-day { padding: 10px 12px 4px; font-size: 12px; font-weight: 900; color: var(--muted); letter-spacing: .2px; }
+.bell-detail { font-size: 12.5px; font-weight: 700; color: var(--ink-2); line-height: 1.6; }
+.bell-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+.menu-pop .bell-chip { font-style: normal; font-size: 11px; font-weight: 900; padding: 2px 10px; border-radius: 999px; }
+.menu-pop .bell-chip.tone-teal { background: var(--teal-soft); color: var(--teal); }
+.menu-pop .bell-chip.tone-yellow { background: var(--yellow-soft); color: var(--amber); }
+.menu-pop .bell-chip.tone-coral { background: var(--coral-soft); color: var(--coral); }
 .bell-empty { padding: 30px 16px 36px; text-align: center; color: var(--muted); }
 .bell-empty svg { width: 34px; height: 34px; opacity: .5; }
 .bell-empty p { margin-top: 8px; font-weight: 800; }
