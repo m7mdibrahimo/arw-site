@@ -12,7 +12,7 @@ tags:
   - WWE SmackDown
   - AAA
   - TripleMania
-  - المصارعة الحرة
+  - مصارعة حرة
 image: /content/images/o127kiy8iq8akwot.jpg
 layout: post-layout.njk
 ---
