@@ -333,3 +333,14 @@ test('a new episode from the last one does not inherit that episode\'s descripti
   assert.match(src, /if \(S\.auto\.description && S\.data\.headline\) S\.data\.description = descriptionFromHeadline\(S\.data\.headline\);/);
   assert.match(src, /if \(k === 'headline' && S\.auto\.description\) \{ S\.data\.description = descriptionFromHeadline\(v\);/);
 });
+
+test('the worker type-checks — the same «tsc -p worker» the GitHub check runs', async () => {
+  // INCIDENTS #131: a type error in freshPinnedItems passed every local test and failed «Publishing
+  // regression checks» on four pushes in a row; each failure emailed the owner's phone.
+  const { execSync } = await import('node:child_process');
+  let out = '';
+  try {
+    execSync('node_modules/.bin/tsc -p worker/tsconfig.json', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  } catch (e: any) { out = String(e.stdout || e.message || 'tsc failed'); }
+  assert.equal(out, '', out.split('\n').slice(0, 5).join('\n'));
+});
