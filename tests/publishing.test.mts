@@ -1735,3 +1735,14 @@ test('two bots writing the same story at the same moment: the second to push dro
     assert.ok(push.indexOf('cross-run-dedupe.ts "$BASE"') > push.indexOf('git pull --rebase'), wf);
   }
 });
+
+test('a results report names the match type from the sides in the source line — one against two is a handicap match, not «نزال فردي»', () => {
+  // NWA Powerrr 9/26: «Nattie def. Kenzie Paige and Kylie Paige» was written as «نزال فردي» (INCIDENTS #118)
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  const prompt = src.slice(src.indexOf('async function rewriteWithGemini('));
+  assert.match(prompt, /«X def\. Y and Z» \(واحد ضد اتنين\) = نزال غير متكافئ/);
+  assert.match(prompt, /«A & B def\. C & D» = نزال فرق/);
+  assert.match(prompt, /مش افتراضيا «نزال فردي»/);
+  const corrections = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf8')).corrections;
+  assert.ok(corrections.some((c: any) => c.wrong === 'أحدث عرض من عرض'));
+});
