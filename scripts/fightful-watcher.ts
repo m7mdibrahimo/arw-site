@@ -232,8 +232,10 @@ function extractEmbeds(html: string): string[] {
     const user = twMatch[1];
     const tweetId = twMatch[2];
     const cleanUrl = `https://x.com/${user}/status/${tweetId}`;
-    if (!seenUrls.has(cleanUrl)) {
-      seenUrls.add(cleanUrl);
+    // A tweet is its ID: «wwenxt» and «WWENXT» are one account, and the same tweet was embedded twice
+    const key = `x:${tweetId}`;
+    if (!seenUrls.has(key)) {
+      seenUrls.add(key);
       links.push(cleanUrl);
     }
   }

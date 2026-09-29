@@ -118,6 +118,37 @@ export function isHeadlineTag(tag: string, title: string): boolean {
   return t.split(/\s+/).length >= 4 && (title || "").includes(t);
 }
 
+const SHOW_WEEKDAY: [RegExp, number][] = [[/WWE RAW/i, 1], [/WWE NXT/i, 2], [/AEW Dynamite/i, 3], [/TNA iMPACT/i, 4], [/WWE SmackDown/i, 5], [/AEW Collision/i, 6]];
+const AR_UNITS = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن", "التاسع"];
+function arabicDay(word: string): number | null {
+  const w = word.trim();
+  if (/^\d{1,2}$/.test(w)) return Number(w);
+  if (w === "العاشر") return 10;
+  if (w === "الحادي عشر") return 11;
+  if (w === "الثاني عشر") return 12;
+  if (w === "العشرين") return 20;
+  if (w === "الثلاثين") return 30;
+  const teen = AR_UNITS.indexOf(w.replace(/ عشر$/, ""));
+  if (/ عشر$/.test(w) && teen >= 3) return 10 + teen;
+  const m = w.match(/^(\S+) و(العشرين|الثلاثين)$/);
+  if (m) { const u = m[1] === "الحادي" ? 1 : AR_UNITS.indexOf(m[1]); if (u > 0) return (m[2] === "العشرين" ? 20 : 30) + u; }
+  const u = AR_UNITS.indexOf(w);
+  return u > 0 ? u : null;
+}
+/** The excerpt when a weekly show is dated to a day it doesn't air on (this year), else null. */
+export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYear()): string | null {
+  const re = new RegExp(`(WWE RAW|WWE NXT|AEW Dynamite|TNA iMPACT|WWE SmackDown|AEW Collision)[^.،\\n]{0,40}?يوم (\\d{1,2}|ال[\\u0600-\\u06FF]+(?: و?[\\u0600-\\u06FF]+)?) (?:من )?(${AR_MONTHS.join("|")})`, "gi");
+  for (const m of text.matchAll(re)) {
+    const day = arabicDay(m[2]);
+    const month = AR_MONTHS.indexOf(m[3]);
+    const want = SHOW_WEEKDAY.find(([r]) => r.test(m[1]))?.[1];
+    if (!day || day > 31 || month < 0 || want === undefined) continue;
+    if (/Live|المحلي|الحي|جولة|house/i.test(m[0])) continue; // house shows run any night
+    if (new Date(Date.UTC(year, month, day)).getUTCDay() !== want) return m[0];
+  }
+  return null;
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });
@@ -139,6 +170,11 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
       if (m) issues.push({ code: "known_wrong", severity: "error", field, message: `"${c.wrong}" → "${c.right}"${c.note ? ` (${c.note})` : ""}`, excerpt: excerptAround(text, m.index, m[0].length) });
     }
   }
+
+  // A weekly show on a date that isn't its day: «AEW Dynamite يوم الثامن والعشرين من سبتمبر»
+  // (a Monday) — the tribute Dynamite was the 30th; the writer made the date up (INCIDENTS #151).
+  const wrongDay = showOnWrongWeekday(body || "");
+  if (wrongDay) issues.push({ code: "show_wrong_day", severity: "error", field: "body", message: "تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر", excerpt: wrongDay });
 
   // Dropped hamzas across the text = a broken Gemini draft: retranslate it.
   // No «ف» prefix («روب فان دام»), and «ان» before a number is «N-1 Victory», not «أن».

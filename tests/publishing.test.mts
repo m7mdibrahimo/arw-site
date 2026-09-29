@@ -2038,3 +2038,14 @@ test('a nickname or a longer form of a name is not a new subject that overrules 
   assert.equal(newSubject({ title: 'إل كيماليتو يكرم باك', body: '', tags: ['إل كيماليتو', 'باك'] }, { title: 'ذا روك يشيد بـ باك', body: 'ذا روك', tags: ['ذا روك', 'باك'] }), 'إل كيماليتو');
   assert.equal(applyCorrections('رحيل ريك أخبرغر وريك أتشبيرجر'), 'رحيل ريك أتشبيرغر وريك أتشبيرغر');
 });
+
+test('a weekly show dated to a day it does not air on is flagged, and one tweet is embedded once (INCIDENTS #152)', async () => {
+  const { showOnWrongWeekday, checkArticle } = await import('../scripts/news-qa');
+  assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي يقام يوم الثامن والعشرين من سبتمبر', 2026), 'AEW Dynamite الذي يقام يوم الثامن والعشرين من سبتمبر');
+  assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي يقام يوم الثلاثين من سبتمبر', 2026), null);
+  assert.equal(showOnWrongWeekday('عرض WWE RAW يوم 28 سبتمبر', 2026), null);
+  assert.equal(showOnWrongWeekday('عرض WWE NXT Live يوم 18 سبتمبر', 2026), null);
+  assert.ok(checkArticle('x', 'يستعد الاتحاد لعرض AEW Dynamite يوم 28 سبتمبر المقبل.', []).some(i => i.code === 'show_wrong_day') || new Date().getUTCFullYear() !== 2026);
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(src, /const key = `x:\$\{tweetId\}`/);
+});
