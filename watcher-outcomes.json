@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-09-29T00:56:16.527Z"
+ },
  "https://www.fightful.com/wrestling/331089-pac-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T00:47:59.603Z"
- },
- "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-29T00:36:13.723Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-september-28-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
