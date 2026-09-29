@@ -1946,3 +1946,17 @@ test('a wrestler named in the headline becomes a tag', async () => {
   assert.deepEqual(titleNamesAsTags('ظهور أول لسيرينا لينتون', ['ROH'], names), ['ROH', 'سيرينا لينتون']);
   assert.deepEqual(titleNamesAsTags('خبر بدون أسماء', ['WWE'], names), ['WWE']);
 });
+
+test('a news page carries no video in its HTML: YouTube is a thumbnail until clicked, the reel player is added only when a reel exists', () => {
+  // INCIDENTS #142: Search Console listed ~900 stories under «video isn't on a watch page»
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  const facade = cfg.slice(cfg.indexOf('function ytFacade('), cfg.indexOf('module.exports'));
+  assert.ok(facade.includes('yt-facade-btn') && !/<iframe/.test(facade), 'the build-time YouTube embed is a thumbnail');
+  assert.match(cfg, /return ytFacade\(ytId\);/);
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  const html = layout.replace(/<script[\s\S]*?<\/script>/g, '');
+  assert.ok(!/<video id="arwReelVideo"/.test(html), 'no reel <video> in the page HTML');
+  assert.match(layout, /document\.createElement\('video'\)/, 'the reel player is created when a reel exists');
+  assert.match(layout, /closest\('\.yt-facade-btn'\)/, 'a click turns the thumbnail into the player');
+  assert.ok(!/embedDiv\.innerHTML = '<div class="embed-skeleton-card youtube-skeleton">/.test(layout), 'the in-page YouTube embed is a thumbnail too');
+});

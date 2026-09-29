@@ -171,6 +171,10 @@ function normalizeArabicHamza(str) {
   return str.toString().replace(/[أإآ]/g, 'ا');
 }
 
+function ytFacade(ytId) {
+  return `<div class="social-embed-box embed-yt-wrap yt-facade" data-yt="${ytId}" dir="ltr" lang="en"><button type="button" class="yt-facade-btn" aria-label="تشغيل فيديو يوتيوب"><img src="https://i.ytimg.com/vi/${ytId}/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span></button><a class="yt-facade-link" href="https://www.youtube.com/watch?v=${ytId}" target="_blank" rel="noopener">فتح على YouTube</a></div>`;
+}
+
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
   // One line per written file (5000+) only slows the host's build log down.
@@ -533,7 +537,9 @@ module.exports = function(eleventyConfig) {
       const ytMatch = rawUrl.match(/^https?:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?(?:[^&\s"']*(?:&|&amp;))*v=|shorts\/|live\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
       if (ytMatch) {
         const ytId = ytMatch[1];
-        return `<div class="social-embed-box embed-yt-wrap" dir="ltr" lang="en"><div class="embed-skeleton-card youtube-skeleton"><div class="embed-platform-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>YouTube</span></div><div class="embed-skeleton-shimmer"></div><span class="embed-skeleton-title">جاري تشغيل فيديو يوتيوب...</span><span class="embed-skeleton-link"><a href="${rawUrl}" target="_blank" rel="noopener">فتح الفيديو على YouTube &rarr;</a></span></div><iframe src="https://www.youtube-nocookie.com/embed/${ytId}?hl=en&cc_lang_pref=en" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>`;
+        // A thumbnail that becomes the player on click: an iframe in the HTML made Google list every
+        // story with a YouTube clip under «video isn't on a watch page» (INCIDENTS #142), and it loads faster.
+        return ytFacade(ytId);
       }
 
       // 4. TikTok
