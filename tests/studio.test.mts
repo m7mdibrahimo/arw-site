@@ -1,6 +1,7 @@
 // The owner's panel (/admin/): login, sessions, lockout and the write guards.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { handleStudio, hashPassword, verifyPassword, passwordProblem, entryPath, imagePathOk, studioAuthorized } from '../worker/src/studio';
 
 function memoryKV() {
@@ -278,4 +279,32 @@ test('every name the panel code uses is defined (a missing one crashed the edito
   } catch (e: any) { out = String(e.stdout || ''); }
   const undefinedNames = out.split('\n').filter(l => /^studio\/js\//.test(l) && /error TS(2304|2552)/.test(l));
   assert.deepEqual(undefinedNames, []);
+});
+
+test('the panel\'s pinned list shows each item as it is now, not the copy taken when it was pinned', async () => {
+  // «AEW All Out Tailgate Brawl» kept «عرض اول اوت 26.09.2026 مترجم» in the panel days after its
+  // headline was fixed, and saving the list wrote the old name back (INCIDENTS #120)
+  const { freshPinnedItems } = await import('../worker/src/index');
+  globalThis.fetch = (async (input: any) => {
+    assert.match(String(input), /\/search-index\.json/);
+    return new Response(JSON.stringify([
+      { url: '/shows/aew-all-out-tailgate-brawl-2026/', title: 'AEW All Out Tailgate Brawl (2026)', headline: 'عرض اول اوت تيلغيت برول 26.09.2026 مترجم', description: 'عرض اول اوت تيلغيت برول مترجم بالكامل', image: '/img/new-800.jpeg', federation: 'AEW' },
+      { url: '/news/%D8%AE%D8%A8%D8%B1/', title: 'عنوان الخبر الجديد', headline: '', image: '/img/n-800.jpeg', federation: 'WWE' },
+    ]), { status: 200 });
+  }) as any;
+  try {
+    const items = await freshPinnedItems({ SITE_ORIGIN: 'https://site.test' }, [
+      { url: '/shows/aew-all-out-tailgate-brawl-2026/', title: 'عرض اول اوت 26.09.2026 مترجم', subtitle: 'AEW All Out (2026)', image: '/content/images/old.jpg', kind: 'show', badge: 'حصري ومترجم' },
+      { url: '/news/خبر/', title: 'عنوان قديم', kind: 'news' },
+      { url: '/shows/gone/', title: 'اتمسح', kind: 'show' },
+    ]);
+    assert.equal(items[0].title, 'عرض اول اوت تيلغيت برول 26.09.2026 مترجم');
+    assert.equal(items[0].subtitle, 'AEW All Out Tailgate Brawl (2026)');
+    assert.equal(items[0].badge, 'حصري ومترجم', 'the owner\'s own fields stay');
+    assert.equal(items[1].title, 'عنوان الخبر الجديد', 'encoded and plain URLs match');
+    assert.equal(items[2].title, 'اتمسح', 'an item not on the site keeps its copy');
+  } finally { globalThis.fetch = realFetch; }
+  // The panel reads the list through it
+  const src = fs.readFileSync('worker/src/index.ts', 'utf8');
+  assert.match(src, /items: await freshPinnedItems\(env, f \? JSON\.parse\(f\.content\) : \[\]\)/);
 });

@@ -2609,6 +2609,33 @@ async function studioHeld(env: Env) {
   return { success: true, items };
 }
 
+/**
+ * The pinned list as it is NOW. _data/pinned.json keeps a copy of each item taken when it was pinned;
+ * the site's slider already reads the live page (freshPinned in eleventy.config.js), but the panel showed
+ * the copy — «AEW All Out Tailgate Brawl» still read «عرض اول اوت …» days after its headline was fixed,
+ * and saving the list wrote the old copy back (INCIDENTS #120). Same rules as freshPinned: a show's
+ * title is its Arabic headline, its subtitle the English title. The copy is only a fallback.
+ */
+export async function freshPinnedItems(env: Pick<Env, "SITE_ORIGIN">, items: any[]): Promise<any[]> {
+  if (!Array.isArray(items) || !items.length) return Array.isArray(items) ? items : [];
+  const index: any[] = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`)).then(r => (r.ok ? r.json() : [])).catch(() => []);
+  const norm = (u: any) => { let x = String(u || ""); try { x = decodeURIComponent(x); } catch { /* keep */ } return x.replace(/index\.html$/, "").replace(/\/?$/, "/"); };
+  const byUrl = new Map((Array.isArray(index) ? index : []).map((p: any) => [norm(p.url), p]));
+  return items.map((item) => {
+    const page: any = byUrl.get(norm(item.url));
+    if (!page) return item;
+    const isShow = item.kind === "show" || item.kind === "recap" || /^\/(shows|recaps|nostalgia)\//.test(norm(page.url));
+    return {
+      ...item,
+      title: (isShow ? page.headline || page.title : page.title) || item.title,
+      subtitle: isShow ? page.title || item.subtitle : item.subtitle,
+      image: page.image || item.image,
+      description: page.description || item.description,
+      federation: page.federation || item.federation,
+    };
+  });
+}
+
 async function studioHeldAction(env: Env, request: Request, action: "publish" | "keep") {
   const who = await studioUser(request, env as any);
   const body: any = await request.json().catch(() => ({}));
@@ -2803,7 +2830,7 @@ export default {
         if (path === "/api/studio/tools/reels" && request.method === "GET") return json(await studioReels(env));
         if (path === "/api/studio/tools/pinned" && request.method === "GET") {
           const f = await readRepoFile(env, "_data/pinned.json");
-          return json({ success: true, items: f ? JSON.parse(f.content) : [], sha: f?.sha || null });
+          return json({ success: true, items: await freshPinnedItems(env, f ? JSON.parse(f.content) : []), sha: f?.sha || null });
         }
         if (path === "/api/studio/tools/pinned" && request.method === "POST") {
           const body: any = await request.json().catch(() => ({}));
