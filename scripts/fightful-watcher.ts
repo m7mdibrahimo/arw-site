@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews, type NewsFile } from "./news-qa";
+import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -2387,8 +2387,58 @@ export function socialOpening(body: string, max = 300): string {
  * #71/#104), so the finished text is read for its meaning. The shield holds a story when this
  * OR its word rules say so; with no answer (AI down) the word rules decide alone.
  */
-export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<{ spoils: boolean; kind: "result" | "return" | "none"; note: string; age: "recent" | "old" | "none" } | null> {
+export type SocialVerdict = { spoils: boolean; kind: "result" | "return" | "show" | "none"; note: string; age: "recent" | "old" | "none" };
+
+const EN_MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+const AR_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+/** Month-day pairs a text states: «28 سبتمبر», «September 28», «9/28». */
+function statedMonthDays(text: string): { m: number; d: number }[] {
+  const out: { m: number; d: number }[] = [];
+  for (const x of text.matchAll(new RegExp(`(\\d{1,2})\\s+(${AR_MONTHS.join("|")})`, "g"))) out.push({ m: AR_MONTHS.indexOf(x[2]), d: +x[1] });
+  for (const x of text.matchAll(new RegExp(`\\b(${EN_MONTHS.join("|")})\\s+(\\d{1,2})\\b`, "gi"))) out.push({ m: EN_MONTHS.indexOf(x[1].toLowerCase()), d: +x[2] });
+  for (const x of text.matchAll(/(?<![\d/])(\d{1,2})\/(\d{1,2})(?:\/\d{2,4})?(?![\d/])/g)) if (+x[1] >= 1 && +x[1] <= 12) out.push({ m: +x[1] - 1, d: +x[2] });
+  return out.filter(x => x.d >= 1 && x.d <= 31);
+}
+
+/**
+ * Something that happened ON a show that aired in the last 24 hours — a match made during it, a
+ * contract signing, an attack, an appearance — is a spoiler of that show, not only a result: «Big
+ * Match Added To Money In The Bank During 9/28 WWE RAW» reached Telegram and Facebook while RAW was
+ * still on the air (INCIDENTS #114). Read from the English source title and the finished Arabic
+ * title + opening; a preview («will», «scheduled», «tonight … will») is not something that happened.
+ */
+export function happenedOnRecentShow(sourceTitle: string, arabicLead: string, shows: string[] = recentShowNames(24)): boolean {
+  if (!shows.length) return false;
+  const en = (sourceTitle || "").toLowerCase().replace(/[^a-z0-9/' ]+/g, " ").replace(/\s+/g, " ");
+  const ar = (arabicLead || "").toLowerCase().replace(/\s+/g, " ");
+  for (const show of shows) {
+    const s = show.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    if (new RegExp(`\\b(?:during|on|at|after)\\s+(?:this week'?s\\s+|monday'?s\\s+|last night'?s\\s+|tonight'?s\\s+)?(?:\\d{1,2}/\\d{1,2}(?:/\\d{2,4})?\\s+)?${s}\\b`).test(en)
+      && !/\b(?:will|to (?:appear|face|compete|return)|scheduled|preview|plans?|what to expect|how to watch|start time|lineup|card)\b/.test(en)) return true;
+    if (new RegExp(`(?:خلال|أثناء|اثناء|شهد|في ختام|في افتتاح|بعد)\\s+(?:حلقة\\s+)?(?:عرض\\s+)?${s}`).test(ar)
+      && !/(?:المقرر|المرتقب|سيشهد|يستعد|ستقام|سيقام|مرشح|توقعات|القادم)/.test(ar)) return true;
+  }
+  return false;
+}
+
+/**
+ * The model's «old» is only trusted when nothing in the text says otherwise. It called «RAW, 28
+ * September» over 24 hours old at 01:00 UTC on the 29th, while RAW was still on the air in America
+ * (INCIDENTS #114). A stated date of today or yesterday (UTC), or a show that aired in the last 24
+ * hours, can't be «old».
+ */
+export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(24), now = Date.now()): SocialVerdict {
+  if (v.age !== "old") return v;
+  const recentDays = [0, 1].map(i => new Date(now - i * 86400_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
+  const datedRecently = statedMonthDays(text).some(x => recentDays.some(r => r.m === x.m && r.d === x.d));
+  const lower = text.toLowerCase();
+  const recentShow = shows.some(n => lower.includes(n));
+  return datedRecently || recentShow ? { ...v, age: "recent" } : v;
+}
+
+export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<SocialVerdict | null> {
   const opening = socialOpening(body);
+  const shows = recentShowNames(24);
   // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. After
   // that it is ordinary news and goes out like any other story.
   const now = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
@@ -2404,7 +2454,8 @@ export async function judgeSocialSpoiler(title: string, body: string, sourceTitl
   const prompt = `أنت مراجع لمنشورات صفحات موقع عرب راسلنج على السوشيال ميديا. المتابعين مش عايزين «حرق»: أي معلومة تكشف نتيجة نزال أو عودة/ظهور لمصارع قبل ما يشوفوا العرض بنفسهم.
 قاعدة صاحب الموقع: الحرق مدته ٢٤ ساعة بس. أي نزال أو عودة حصل من أكتر من ٢٤ ساعة بقى خبر عادي ومش حرق.
 الوقت دلوقتي: ${now}.${sourceDate ? ` المصدر نشر الخبر: ${sourceDate}.` : ""}
-الأيام (بتوقيت جرينتش): ${days}. استخدم الجدول ده لأي «يوم كذا اللي فات» في النص، ومتحسبش بنفسك. عرض أمريكي بليل ممكن يبقى تاريخه بتوقيت جرينتش اليوم اللي بعده.
+الأيام (بتوقيت جرينتش): ${days}. استخدم الجدول ده لأي «يوم كذا اللي فات» في النص، ومتحسبش بنفسك. عرض أمريكي بليل ممكن يبقى تاريخه بتوقيت جرينتش اليوم اللي بعده: عرض تاريخه «امبارح» أو «النهارده» ممكن يكون لسه خالص من ساعة أو لسه شغال، فده مش «old».
+${shows.length ? `العروض اللي اتذاعت في آخر ٢٤ ساعة (أي حاجة حصلت فيها لسه حرق): ${shows.join("، ")}.` : ""}
 
 المنشور هيحتوي بالظبط على العنوان وأول الخبر ده (مش أكتر):
 العنوان: ${JSON.stringify(title)}
@@ -2414,19 +2465,21 @@ export async function judgeSocialSpoiler(title: string, body: string, sourceTitl
 اعتبره حرق (spoils = true) لو النص اللي هيتنشر (العنوان أو أول الخبر) يكشف بأي صياغة، صريحة أو ضمنية، حدث حصل في آخر ٢٤ ساعة:
 - مين فاز أو خسر في نزال، أو احتفظ بلقب أو خسره أو فاز بيه، أو تأهل أو خرج، أو إن النزال اتوقف أو انتهى بشكل معين (kind = "result").
 - إن مصارع رجع أو ظهر لأول مرة أو عمل ظهور مفاجئ في عرض (kind = "return").
+- أي حاجة حصلت جوه عرض اتذاع في آخر ٢٤ ساعة: نزال اتعلن أو عقد اتوقّع خلال العرض، هجوم، مواجهة، فقرة، ظهور، مين هيتحدى مين على لقب (kind = "show"). مثال: «إضافة نزال إلى موني إن ذا بانك خلال عرض رو» أو «أوبا فيمي يواجه برونسون ريد بعد توقيع العقد في رو هذا الأسبوع» = حرق لو رو اتذاع في آخر ٢٤ ساعة.
 
-مش حرق (spoils = false): أي حدث عدّى عليه أكتر من ٢٤ ساعة، أو إعلان نزال جاي، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
+مش حرق (spoils = false): أي حدث عدّى عليه أكتر من ٢٤ ساعة، أو إعلان نزال جاي اتعلن بره العروض (بيان أو موقع رسمي أو سوشيال قبل العرض)، أو معاينة لعرض لسه ماتذاعش، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
 
-قول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة) حصل إمتى: "recent" لو في آخر ٢٤ ساعة أو مش واضح، "old" لو واضح إنه عدّى عليه أكتر من ٢٤ ساعة (تاريخ أو يوم أو شهر في النص، أو «الأسبوع اللي فات»، أو إن المصدر نفسه نشر بعد العرض بأكتر من يوم)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
+قول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة أو اللي حصل في العرض) حصل إمتى: "recent" لو في آخر ٢٤ ساعة أو مش واضح، "old" لو واضح إنه عدّى عليه أكتر من ٢٤ ساعة (تاريخ أو يوم أو شهر في النص، أو «الأسبوع اللي فات»، أو إن المصدر نفسه نشر بعد العرض بأكتر من يوم)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
 
-رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"none", "age": "recent"|"old"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة وإمتى حصل، أو ليه مفيهوش حرق"}`;
+رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"show"|"none", "age": "recent"|"old"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة وإمتى حصل، أو ليه مفيهوش حرق"}`;
   const text = await queryGemini(prompt, true, 0.1);
   if (!text) return null;
   const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown; age?: unknown }>(text);
   if (!parsed || typeof parsed.spoils !== "boolean") return null;
-  const kind = parsed.kind === "result" || parsed.kind === "return" ? parsed.kind : "none";
+  const kind = parsed.kind === "result" || parsed.kind === "return" || parsed.kind === "show" ? parsed.kind : "none";
   const age = parsed.age === "old" || parsed.age === "none" ? parsed.age : "recent";
-  return { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", age, note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200) };
+  const verdict: SocialVerdict = { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", age, note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200) };
+  return settleSpoilerAge(verdict, `${title} ${opening} ${sourceTitle}`, shows);
 }
 
 export function isSingleMatchResultArticle(rawTitle: string, plainText: string = ""): boolean {
@@ -3422,8 +3475,9 @@ export function findLikelyDuplicateStoryByTagsAndBody(
   newsDir: string = NEWS_DIR
 ): { isDuplicate: boolean; matchedFile?: string; byLink?: boolean } {
   const specificNewTags = [...new Set((newTags || []).map(t => (t || "").trim()).filter(t => t && !isGenericTag(t)))];
-  if (specificNewTags.length < 2 || !fs.existsSync(newsDir)) return { isDuplicate: false };
   const newLinks = extractSpecificSourceLinks(newBody);
+  // The same embedded post is proof whatever the tags say
+  if ((specificNewTags.length < 2 && !newLinks.length) || !fs.existsSync(newsDir)) return { isDuplicate: false };
   const cutoff = Date.now() - hoursWindow * 60 * 60 * 1000;
   for (const file of fs.readdirSync(newsDir)) {
     if (!file.endsWith(".md")) continue;
@@ -3869,6 +3923,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     return false;
   }
   rewritten.title = numberWordsInTitle(resultsTitleOutcome(draft.title, draft.body));
+  if (!isShowResultsArticle(rawTitle, plainText)) rewritten.title = tonightInTitle(rewritten.title);
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 
@@ -3879,7 +3934,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   // The social shield's second opinion, on the finished text (full results reports go out with
   // a fixed text, so they need none).
-  const socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
+  let socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
+  // Something that happened on a show that just aired is held whatever the model said (INCIDENTS #114)
+  if (!isShowResultsArticle(rawTitle, plainText) && !socialVerdict?.spoils && happenedOnRecentShow(rawTitle, `${rewritten.title} ${socialOpening(finalBody)}`)) {
+    socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٢٤ ساعة، فهو حرق من العرض" };
+  }
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
   const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}` : "";
   let markdownContent = `---

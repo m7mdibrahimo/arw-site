@@ -4,7 +4,7 @@
 import { api } from '../api.js';
 import { html, mount, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
-const REASON = { result: 'نتيجة أو حرق', return: 'عودة أو ظهور أول' };
+const REASON = { result: 'نتيجة أو حرق', return: 'عودة أو ظهور أول', show: 'حاجة حصلت في عرض لسه متذاع' };
 const PLATFORMS = [['telegram', 'تيليجرام', '#24a1de'], ['facebook', 'فيسبوك', '#1877f2'], ['instagram', 'إنستجرام', '#e1306c']];
 const FIRST = 7;
 // Why the shield held it: the title, the opening that goes out with it, or (older stories)

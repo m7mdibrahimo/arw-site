@@ -69,6 +69,10 @@ jobs:
 
       - name: Commit and push if new articles were generated
         if: ${{ always() && (steps.watch.outcome == 'success' || steps.watch.outcome == 'failure') }}
+        # The cross-run duplicate check below asks Gemini whether two stories are the same
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "ARW News Bot"
@@ -77,6 +81,8 @@ jobs:
           if [[ -n $(git status -s) ]]; then
             git add -A
             git commit -m "feat(news): auto-publish latest wrestling news"
+            # What this run started from: articles pushed by the other bots since then are checked below
+            BASE=$(git rev-parse HEAD^)
             PUSHED=false
             for i in {1..8}; do
               # The remote copy wins a rebase conflict (-X ours); merge this run's state back in.
@@ -84,6 +90,8 @@ jobs:
               git pull --rebase -X ours origin main || (git rebase --abort 2>/dev/null || true; git pull -X ours --no-edit origin main) || true
               npx tsx scripts/merge-watcher-state.ts /tmp/watcher-state.json.local watcher-state.json || true
               npx tsx -e "import('./scripts/fightful-watcher.ts').then(m => m.deduplicateNewsFiles())" || true
+              # Same story written by another bot at the same moment (INCIDENTS #114)
+              npx tsx scripts/cross-run-dedupe.ts "$BASE" || true
               if [[ -n $(git status -s) ]]; then
                 git add -A
                 git commit --amend --no-edit || true

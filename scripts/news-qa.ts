@@ -229,6 +229,20 @@ const NUM_WORDS: Record<string, [string, string]> = { // [before a masculine nou
 };
 const MASC_PLURALS = "أمور|أشياء|أسباب|عروض|نزالات|مصارعين|نجوم|أسئلة|أيام|أشهر|أعوام|أسابيع|ألقاب|أبطال|فرق|دروس|أخطاء|أسرار|تغييرات|أحداث|أسماء|مواسم|أرقام|أهداف|عقود|أجزاء";
 const FEM_PLURALS = "مواجهات|بطولات|لحظات|مفاجآت|نقاط|حلقات|مباريات|مرات|ساعات|دقائق|سنوات|صفقات|مصارعات|نجمات|فقرات|تحديات|قصص|علامات|رسائل|أفكار|طرق|قواعد|توقعات|ملاحظات|حقائق|نسخ";
+/**
+ * A story about tonight's show says «الليلة», not today's date: «الكشف عن خطط جايدا باركر في عرض
+ * WWE RAW يوم 28 سبتمبر» was written during RAW on 28 September (US time) — the owner: «ده تاريخ
+ * النهارده، يتكتب عليه عرض الليلة» (INCIDENTS #114). Shows are dated in US Eastern time. Not for
+ * results reports, whose title is show + date.
+ */
+export function tonightInTitle(title: string, now = Date.now()): string {
+  const months = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+  const us = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).formatToParts(new Date(now));
+  const m = Number(us.find(p => p.type === "month")?.value) - 1, d = Number(us.find(p => p.type === "day")?.value);
+  const re = new RegExp(`\\s*(?:يوم|ليلة|بتاريخ)?\\s*(?:(?:الأحد|الاثنين|الإثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)\\s+)?\\(?(\\d{1,2})\\s+(${months.join("|")})(?:\\s+\\d{4})?\\)?`, "g");
+  return title.replace(re, (all, day, month) => (+day === d && months.indexOf(month) === m ? " الليلة" : all)).replace(/\s{2,}/g, " ").trim();
+}
+
 export function numberWordsInTitle(title: string): string {
   // «ثاندر روزا تتحدث ثاندر روزا عن نزالها…»: the subject written again after its verb (INCIDENTS #96)
   title = title.replace(/^((?:[^\s:]+\s+){0,3}[^\s:]+)\s+([^\s:]+)\s+\1(?=\s)/, "$1 $2");

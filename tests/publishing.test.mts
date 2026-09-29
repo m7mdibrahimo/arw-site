@@ -1654,3 +1654,65 @@ test('shared names and wording only raise a suspicion: the AI same-story check d
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('a story about tonight\'s show says «الليلة», not today\'s date (US time); other dates stay', async () => {
+  const { tonightInTitle } = await import('../scripts/news-qa');
+  const duringRaw = Date.parse('2026-09-29T00:26:00Z'); // 20:26 on 28 September in New York
+  assert.equal(tonightInTitle('الكشف عن خطط جايدا باركر في عرض WWE RAW يوم 28 سبتمبر', duringRaw), 'الكشف عن خطط جايدا باركر في عرض WWE RAW الليلة');
+  assert.equal(tonightInTitle('ترتيب فقرات عرض WWE RAW (28 سبتمبر 2026)', duringRaw), 'ترتيب فقرات عرض WWE RAW الليلة');
+  assert.equal(tonightInTitle('ماذا حدث في عرض WWE RAW يوم 21 سبتمبر', duringRaw), 'ماذا حدث في عرض WWE RAW يوم 21 سبتمبر');
+  assert.equal(tonightInTitle('عرض AEW Dynamite يوم 30 سبتمبر سيكون تأبينا لباك', duringRaw), 'عرض AEW Dynamite يوم 30 سبتمبر سيكون تأبينا لباك');
+  // The writer never touches a results report's «show + date» title
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(src, /if \(!isShowResultsArticle\(rawTitle, plainText\)\) rewritten\.title = tonightInTitle\(rewritten\.title\)/);
+});
+
+test('whatever happened ON a show that aired in the last 24h is a spoiler — a match made during RAW too', async () => {
+  const { happenedOnRecentShow, settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const shows = ['wwe raw'];
+  // INCIDENTS #114: both reached Telegram and Facebook while RAW was on the air
+  assert.equal(happenedOnRecentShow('Big Match Added To Money In The Bank During 9/28 WWE RAW', 'إضافة نزال كبير إلى عرض موني إن ذا بانك', shows), true);
+  assert.equal(happenedOnRecentShow('Oba Femi Vs. Bronson Reed Set For WWE Money In The Bank', 'أوبا فيمي يواجه برونسون ريد في عرض WWE موني إن ذا بانك جاء هذا الإعلان رسميا بعد أن وقع الثنائي عقد النزال خلال عرض WWE RAW هذا الأسبوع', shows), true);
+  // Previews of the show are not something that happened
+  assert.equal(happenedOnRecentShow('Spoiler: Two NXT Talents Scheduled For September 28 WWE RAW', 'يستعد عرض WWE RAW الليلة لاستقبال وجهين جديدين', shows), false);
+  assert.equal(happenedOnRecentShow('Tony Khan Announces PAC Tribute Show For September 30 AEW Dynamite', 'توني خان يعلن أن عرض داينامايت القادم سيكون تأبينا لباك', shows), false);
+  assert.equal(happenedOnRecentShow('Big Match Added During 9/28 WWE RAW', '', []), false, 'no show aired in the last 24h');
+
+  // «28 سبتمبر» at 01:00 UTC on the 29th is not «over 24 hours ago» (the model said it was)
+  const now = Date.parse('2026-09-29T01:00:00Z');
+  const old = { spoils: false, kind: 'none' as const, age: 'old' as const, note: '' };
+  assert.equal(settleSpoilerAge(old, 'شهد عرض WWE RAW الذي أقيم يوم 28 سبتمبر 2026 إعلانا', [], now).age, 'recent');
+  assert.equal(settleSpoilerAge(old, 'Big Match Added During 9/28 WWE RAW', [], now).age, 'recent');
+  assert.equal(settleSpoilerAge(old, 'شهد عرض WWE RAW إعلانا', shows, now).age, 'recent');
+  assert.equal(settleSpoilerAge(old, 'فاز باللقب يوم 12 أبريل الماضي', shows, now).age, 'old');
+  // The panel names the new reason
+  assert.match(fs.readFileSync('studio/js/views/held.js', 'utf8'), /show: 'حاجة حصلت في عرض لسه متذاع'/);
+  assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /item\.social_spoiler_kind === "show" \? "show"/);
+});
+
+test('two bots writing the same story at the same moment: the second to push drops its copy before it goes live', async () => {
+  const { crossRunDuplicates } = await import('../scripts/cross-run-dedupe');
+  const now = Date.parse('2026-09-29T01:00:00Z');
+  const mk = (file: string, title: string, body: string, tags: string[]) => ({ file, title, body, tags, date: now - 60_000 });
+  const rsn = mk('rsn.md', 'إضافة نزال كبير إلى عرض موني إن ذا بانك خلال عرض WWE RAW', 'شهد عرض رو إعلانا رسميا عن مواجهة بين أوبا فيمي وبرونسون ريد.\n\nhttps://x.com/WWE/status/2104734692498932211', ['WWE', 'أوبا فيمي', 'برونسون ريد']);
+  const fightful = mk('fightful.md', 'أوبا فيمي يواجه برونسون ريد في عرض WWE موني إن ذا بانك', 'تأكدت إقامة نزال ضخم بين أوبا فيمي وبرونسون ريد.\n\nhttps://x.com/WWE/status/2104734692498932211', ['WWE', 'أوبا فيمي', 'برونسون ريد']);
+  let asked = 0;
+  const hits = await crossRunDuplicates([fightful], [rsn], async () => { asked++; return null; }, now);
+  assert.deepEqual(hits.map(h => [h.file, h.matchedFile]), [['fightful.md', 'rsn.md']]);
+  assert.equal(asked, 0, 'the same embedded post needs no AI');
+  // Different tweets: the AI same-story check decides
+  const noLink = { ...fightful, body: 'تأكدت إقامة نزال ضخم ضمن فعاليات عرض موني إن ذا بانك بين أوبا فيمي وبرونسون ريد بعد توقيع العقد.' };
+  const judged = await crossRunDuplicates([noLink], [rsn], async () => '{"duplicate_of": 0, "reason": "نفس الإعلان"}', now);
+  assert.deepEqual(judged.map(h => h.matchedFile), ['rsn.md']);
+  // A different story is kept
+  const other = mk('other.md', 'توني خان يعلن تأبين باك في داينامايت', 'أعلن توني خان أن عرض داينامايت سيكون تأبينا لباك.', ['AEW', 'توني خان', 'باك']);
+  assert.deepEqual(await crossRunDuplicates([other], [rsn], async () => '{"duplicate_of": null}', now), []);
+  // Every writer bot runs it after pulling, with the AI keys
+  for (const wf of ['fightful-watcher', 'ringsidenews-watcher', 'wrestlinginc-watcher']) {
+    const y = fs.readFileSync(`.github/workflows/${wf}.yml`, 'utf8');
+    const push = y.slice(y.indexOf('Commit and push if new articles were generated'));
+    assert.match(push, /GEMINI_API_KEYS/, wf);
+    assert.match(push, /BASE=\$\(git rev-parse HEAD\^\)/, wf);
+    assert.ok(push.indexOf('cross-run-dedupe.ts "$BASE"') > push.indexOf('git pull --rebase'), wf);
+  }
+});
