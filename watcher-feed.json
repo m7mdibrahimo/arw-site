@@ -1,5 +1,15 @@
 [
   {
+    "id": 331098,
+    "link": "https://www.fightful.com/wrestling/nwa-powerrr-results-9-26/",
+    "date": "2026-09-28T23:30:00",
+    "date_gmt": "2026-09-29T03:30:00",
+    "title": {
+      "rendered": "NWA Powerrr Results (9/26)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/07223643/Screenshot-2026-05-07-at-10.36.28-PM.png"
+  },
+  {
     "id": 331096,
     "link": "https://www.fightful.com/wrestling/jaida-parker-runs-over-jacob-fatu-joins-the-946-on-wwe-raw/",
     "date": "2026-09-28T22:33:17",
@@ -288,15 +298,5 @@
       "rendered": "Ricochet Defends Spot That Led To Steven Borden Injury: No One Is At Fault Here"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/11162331/maxresdefault-18.jpg"
-  },
-  {
-    "id": 330983,
-    "link": "https://www.fightful.com/uncategorized/joe-hendry-says-the-skys-the-limit-for-the-remainder-of-his-wwe-run/",
-    "date": "2026-09-28T10:30:29",
-    "date_gmt": "2026-09-28T14:30:29",
-    "title": {
-      "rendered": "Joe Hendry Says &#8216;The Sky&#8217;s The Limit&#8217; For The Remainder Of His WWE Run"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/13214106/joe-hendry.jpeg"
   }
 ]
