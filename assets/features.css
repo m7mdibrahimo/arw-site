@@ -307,6 +307,9 @@ html.arw-dark .post-bookmark-btn.bookmarked {
    -------------------------------------------------------------------------- */
 .site-search {
   position: relative !important;
+  /* The form is its own layer (it is transformed), so without this the header's bottom line
+     (header::after, dark mode) was painted across the results dropdown. */
+  z-index: 2;
 }
 @media (min-width: 1581px) {
   .site-search {
