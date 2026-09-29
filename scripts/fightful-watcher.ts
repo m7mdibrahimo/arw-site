@@ -324,7 +324,7 @@ export function applyNamesGlossary(text: string): string {
     if (KEEP_ENGLISH.test(english.trim())) continue;
     // Also skip if the Arabic value starts with Arabic transliteration of federation name 
     // (دبليو دبليو إي, إيه إي دبليو, etc.) — sanitizeWrestlingTerms handles these separately
-    if (/دبليو دبليو إي|إيه إي دبليو|تي إن إيه|آر أو إتش|راو\b|سماك داون|داينامايت|كوليجن|رامباج|إمباكت/.test(arabic)) continue;
+    if (/دبليو دبليو إي|إيه إي دبليو|تي إن إيه|آر أو إتش|(?<![\u0600-\u06FF])راو(?![\u0600-\u06FF])|سماك داون|داينامايت|كوليجن|رامباج|إمباكت/.test(arabic)) continue;
 
     try {
       // Escape special regex characters in the English name
@@ -514,7 +514,8 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("المهرجان"), "العرض")
     .replace(arWord("بالمهرجان"), "بالعرض")
     .replace(arWord("للمهرجان"), "للعرض")
-    .replace(/\bحلقة\s+(NXT|RAW|SmackDown|Dynamite|Collision|IMPACT|WWE|AEW|TNA|ROH|عرض)\b/gi, "عرض $1")
+    // «حلقة عرض» is left to the next rule — «عرض $1» would make it «عرض عرض».
+    .replace(new RegExp(arBoundL + "حلقة\\s+(NXT|RAW|SmackDown|Dynamite|Collision|IMPACT|WWE|AEW|TNA|ROH)\\b", "gi"), "عرض $1")
     .replace(/حلقات\s+عروض/g, "عروض")
     .replace(/حلقة\s+عرض/g, "عرض")
     .replace(arWord("(?:في|خلال|من|بـ?|عبر)\\s+حلقة\\s+([^\\s]+)"), "في عرض $1")
@@ -798,8 +799,6 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bShayna\s*Baszler\b/gi, "شاينا بازلر")
     .replace(/\bSonya\s*Deville\b/gi, "سونيا ديفيل")
     .replace(/\b(?:Natalya|Nattie|Natty)\b/gi, "ناتاليا")
-    .replace(/\bنتاليا\b/g, "ناتاليا")
-    .replace(/\bناتي\b/g, "ناتاليا")
     .replace(/\bRaquel\s*Rodriguez\b/gi, "راكيل رودريغيز")
     .replace(/\bDakota\s*Kai\b/gi, "داكوتا كاي")
     .replace(/\bCandice\s*LeRae\b/gi, "كانديس ليراي")
@@ -1112,8 +1111,6 @@ export function translateTitleDeterministic(englishTitle: string): string | null
     [/\bLiv\s*Morgan\b/gi, "ليف مورغان"],
     [/\bSonya\s*Deville\b/gi, "سونيا ديفيل"],
     [/\b(?:Natalya|Nattie|Natty)\b/gi, "ناتاليا"],
-    [/\bنتاليا\b/g, "ناتاليا"],
-    [/\bناتي\b/g, "ناتاليا"],
     [/\bRaquel\s*Rodriguez\b/gi, "راكيل رودريغيز"],
     [/\bDakota\s*Kai\b/gi, "داكوتا كاي"],
     [/\bCandice\s*LeRae\b/gi, "كانديس ليراي"],
@@ -1607,9 +1604,9 @@ export function translateTitleDeterministic(englishTitle: string): string | null
   result = result
     .replace(/\s{2,}/g, " ")
     .replace(/عرض\s+عرض/g, "عرض")
-    .replace(/\bمن\s+من\b/g, "من")
-    .replace(/\bإلى\s+إلى\b/g, "إلى")
-    .replace(/\bو\s+و\b/g, "و")
+    // Not «من من»: "Who" is also «من», so «من من WWE» can be a real "who from WWE".
+    .replace(/(?<![\u0600-\u06FF])إلى\s+إلى(?![\u0600-\u06FF])/g, "إلى")
+    .replace(/(?<![\u0600-\u06FF])و\s+و(?![\u0600-\u06FF])/g, "و")
     // Fix "WWE SmackDown القائمة" → "قائمة WWE SmackDown" (Roster came after protected show name)
     .replace(/(WWE|AEW|TNA|ROH|NXT|NJPW|MLW|AAA|CMLL|GCW|MLP)\s+(RAW|SmackDown|Dynamite|Collision|Rampage|iMPACT|NXT|ROH TV)?\s*القائمة/g, "قائمة $1 $2")
     .replace(/(WWE|AEW|TNA|ROH|NXT|NJPW|MLW|AAA|CMLL|GCW|MLP)\s+القائمة/g, "قائمة $1")
@@ -1723,7 +1720,6 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
     if (timing.isTonight || (isPreviewHeadline && !timing.isFuture)) {
       // Show is TONIGHT / TODAY: "القادم" is strictly prohibited!
       cleaned = cleaned
-        .replace(/\s*عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, " عرض $1 الليلة")
         .replace(/\s+القادم\s*$/g, " الليلة")
         .replace(/\s+القادم\s+/g, " الليلة ")
         .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, " الليلة")
@@ -2970,9 +2966,7 @@ ${plainText.slice(0, isListOrReviewArticle(originalTitle) ? 16000 : 8000)}
     parsed.body_markdown = formatResultsMarkdown(sanitizeWrestlingTerms(parsed.body_markdown));
     if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
       parsed.body_markdown = parsed.body_markdown
-        .replace(/\bالعرض\s+القادم\b/g, "عرض الليلة")
-        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة")
-        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, "عرض $1 الليلة");
+        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة");
     }
     parsed.tags = (parsed.tags || []).map(t => sanitizeWrestlingTerms(t));
 
@@ -3004,9 +2998,7 @@ ${plainText.slice(0, isListOrReviewArticle(originalTitle) ? 16000 : 8000)}
     parsed.body_markdown = sanitizeWrestlingTerms(parsed.body_markdown);
     if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
       parsed.body_markdown = parsed.body_markdown
-        .replace(/\bالعرض\s+القادم\b/g, "عرض الليلة")
-        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة")
-        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, "عرض $1 الليلة");
+        .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة");
     }
     parsed.tags = (parsed.tags || []).map(t => sanitizeWrestlingTerms(t));
     console.log(`[Watcher] Final Optimized Title: "${parsed.title}" (length: ${parsed.title.length} chars)`);
@@ -3841,9 +3833,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const timing = analyzeShowTiming(rawTitle, sourceDate);
   if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
     finalBody = finalBody
-      .replace(/\bالعرض\s+القادم\b/g, "عرض الليلة")
-      .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة")
-      .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\b/g, "عرض $1 الليلة");
+      .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة");
   }
   if (embeds.length > 0) {
     finalBody += `\n\n${embeds.join("\n\n")}`;

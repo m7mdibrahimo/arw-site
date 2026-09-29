@@ -1863,3 +1863,29 @@ test('a news story whose title was edited keeps its first URL alive: the build r
   }
   assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\)\)/);
 });
+
+test('no «\\b» next to an Arabic letter in scripts/ or worker/src/ — JS «\\b» only knows ASCII, so the rule is silently dead', async () => {
+  // INCIDENTS #129 (and #68, #127): «/\bنتاليا\b/», «/\bالعرض\s+القادم\b/»… never matched Arabic text.
+  // Use «(?<![؀-ۿ])…(?![؀-ۿ])» (or arWord / arBoundL in sanitizeWrestlingTerms).
+  const AR = '[\\u0600-\\u06FF]';
+  const B = '\\\\{1,2}b'; // «\b» in a regex literal, «\\b» in a RegExp string
+  const bad = new RegExp(`${B}(?:\\(\\?:|\\()*${AR}|${AR}\\)*${B}`);
+  const offenders: string[] = [];
+  for (const dir of ['scripts', 'worker/src']) {
+    for (const name of fs.readdirSync(dir).filter(f => f.endsWith('.ts'))) {
+      fs.readFileSync(path.join(dir, name), 'utf8').split('\n').forEach((line, i) => {
+        const code = line.replace(/(^|\s)\/\/.*$/, '$1'); // comments may explain the bug
+        if (bad.test(code)) offenders.push(`${dir}/${name}:${i + 1}: ${line.trim().slice(0, 100)}`);
+      });
+    }
+  }
+  assert.deepEqual(offenders, []);
+
+  // the rules that were worth keeping now actually run
+  const { translateTitleDeterministic } = await import('../scripts/fightful-watcher');
+  assert.equal(sanitizeWrestlingTerms('موعد حلقة RAW الليلة'), 'موعد عرض RAW الليلة');
+  assert.equal(sanitizeWrestlingTerms('حلقة عرض NXT'), 'عرض NXT');
+  assert.equal(translateTitleDeterministic('Seth Rollins Returns To To RAW'), 'سيث رولينز يعود إلى RAW');
+  assert.match(translateTitleDeterministic('Who From WWE Will Win') || '', /من من WWE/); // "who from", not a duplicate
+  assert.equal(applyCorrections('مواجهة نتاليا وناتي'), 'مواجهة ناتاليا وناتاليا');
+});
