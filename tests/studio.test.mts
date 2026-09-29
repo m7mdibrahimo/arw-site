@@ -308,3 +308,18 @@ test('the panel\'s pinned list shows each item as it is now, not the copy taken 
   const src = fs.readFileSync('worker/src/index.ts', 'utf8');
   assert.match(src, /items: await freshPinnedItems\(env, f \? JSON\.parse\(f\.content\) : \[\]\)/);
 });
+
+test('the panel\'s Arabic headings have room: no tight line-height or negative letter-spacing', () => {
+  // «المثبت في الرئيسية» sat on the line under it and on «الرئيسية» above it: 48px Arabic at
+  // line-height 1.15 with -.5px letter-spacing (INCIDENTS #121)
+  const css = fs.readFileSync('studio/studio.css', 'utf8');
+  const rule = (sel: string) => { const m = css.match(new RegExp(`(?:^|\\n)${sel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\{([^}]*)\\}`)); assert.ok(m, sel); return m![1]; };
+  for (const sel of ['h1, h2, h3', '.page-title h1', '.auth-top h1', '.editor-title h1', '.blk > b.b-sm']) {
+    const body = rule(sel);
+    const lh = Number((body.match(/line-height:\s*([\d.]+)/) || [])[1]);
+    assert.ok(lh >= 1.4, `${sel} line-height ${lh}`);
+    assert.ok(!/letter-spacing:\s*-/.test(body), `${sel} has negative letter-spacing`);
+  }
+  assert.ok(Number(rule('.page-title p').match(/margin-top:\s*(\d+)px/)![1]) >= 8);
+  assert.ok(Number(rule('.page-title .back').match(/margin-bottom:\s*(\d+)px/)![1]) >= 14);
+});
