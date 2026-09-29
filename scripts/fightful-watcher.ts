@@ -61,6 +61,22 @@ interface WatcherState {
   apiCallDate?: string;
 }
 
+/**
+ * Why a source story did or didn't become an article — shown next to it in the panel's «مصادر
+ * الأخبار» (the owner asked for a reason next to every «اتخطى»). Bookkeeping only: keyed by the
+ * source link, newest 400 kept. `retry` = the bot will try it again on its own.
+ */
+const OUTCOMES_FILE = path.join(process.cwd(), "watcher-outcomes.json");
+export function noteOutcome(link: string, reason: string, retry = false): void {
+  if (!link) return;
+  try {
+    const all: Record<string, { reason: string; retry: boolean; at: string }> = fs.existsSync(OUTCOMES_FILE) ? JSON.parse(fs.readFileSync(OUTCOMES_FILE, "utf-8")) : {};
+    all[link.replace(/\/+$/, "")] = { reason, retry, at: new Date().toISOString() };
+    const kept = Object.entries(all).sort((a, b) => String(b[1].at).localeCompare(String(a[1].at))).slice(0, 400);
+    fs.writeFileSync(OUTCOMES_FILE, JSON.stringify(Object.fromEntries(kept), null, 1) + "\n", "utf-8");
+  } catch { /* informational only */ }
+}
+
 /** The panel's «إيقاف سحب الأخبار» switch (watcher-state.json → enabled), shared by all three news bots. */
 export function newsBotsPaused(): boolean {
   try { return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8")).enabled === false; } catch { return false; }
@@ -3465,6 +3481,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // into a second round of social posts for the same story.
   if (isUpdate && !options.manual && !options.keepUrl) {
     console.log(`[Watcher] ⏭️ Post #${postId} is already published (${existingFile!.fileName}); automatic runs never re-publish it.`);
+    noteOutcome(postUrl, "نزل قبل كده على الموقع");
     return false;
   }
   const guardDuplicates = !isUpdate && !options.manual;
@@ -3495,6 +3512,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const plainText = htmlToPlainText(contentHtml);
   if (plainText.length < 25) {
     console.warn(`[Watcher] Post #${postId} has insufficient text content, skipping.`);
+    noteOutcome(postUrl, "المصدر مفيهوش نص كفاية يتكتب منه خبر");
     return false;
   }
 
@@ -3506,6 +3524,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // unprocessed and is retried on the next run.
   if (isShowResultsArticle(rawTitle, plainText) && isEmptyResultsStub(plainText, post.modified_gmt)) {
     console.log(`[Watcher] ⏳ Results not posted yet for #${postId} ("${rawTitle}") — will retry next run.`);
+    noteOutcome(postUrl, "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني", true);
     lastPostRetryable = true;
     return false;
   }
@@ -3515,16 +3534,19 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Single-Match Spoiler Shield: Only skip on site if explicitly configured, otherwise publish to site
   if (SKIP_SINGLE_MATCH_ON_SITE && !bypassSpoilerFilter && isSingleMatch) {
     console.log(`[Watcher] 🛡️ Single-Match Spoiler Shield: Post #${postId} ("${rawTitle}") is an individual match outcome stub. Skipping on site.`);
+    noteOutcome(postUrl, "نتيجة نزال واحد، ومش بننزل النوع ده على الموقع");
     return false;
   }
 
   if (isRosterReferencePage(rawTitle)) {
     console.log(`[Watcher] 📋 Roster reference page: Post #${postId} ("${rawTitle}") skipped — a 100+ name list can't fit the news rewrite format.`);
+    noteOutcome(postUrl, "قائمة مصارعين طويلة، مش خبر");
     return false;
   }
 
   if (guardDuplicates && isKnownDuplicate(postUrl)) {
     console.log(`[Watcher] 🔁 Already judged a duplicate of a published story: Post #${postId} ("${rawTitle}") skipped.`);
+    noteOutcome(postUrl, "مكرر مع خبر نزل قبل كده");
     return false;
   }
 
@@ -3532,6 +3554,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const same = findSameShowResults(rawTitle);
     if (same.isDuplicate) {
       console.log(`[Watcher] 🔁 This show already has a results report (${same.matchedFile}), kept current by the live-results updater: Post #${postId} ("${rawTitle}") skipped.`);
+    noteOutcome(postUrl, "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده");
       recordDuplicate(postUrl, same.matchedFile || "", "تقرير نتائج لنفس العرض منشور بالفعل");
       return false;
     }
@@ -3582,6 +3605,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const rewritten = await rewriteWithGemini(rawTitle, plainText, terms, sourceDate, isUpdate);
   if (!rewritten || !rewritten.title || !rewritten.body_markdown) {
     console.error(`[Watcher] Failed to rewrite post #${postId} with Gemini.`);
+    noteOutcome(postUrl, "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني", true);
     return false;
   }
 
@@ -3614,6 +3638,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // instead of shipping an English-only headline live.
   if (!rewritten.title || !hasArabicScript(rewritten.title)) {
     console.error(`[Watcher] Refusing to publish post #${postId}: no valid Arabic title could be produced for "${rawTitle}".`);
+    noteOutcome(postUrl, "مقدرش يطلع عنوان عربي سليم، هيتحاول تاني", true);
     return false;
   }
 
@@ -3763,6 +3788,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     console.log(`[Watcher] ✍️ Copy editor applied ${proofEdits.length}/${edits.length} fixes.`);
   } else if (!options.manual) {
     console.warn(`[Watcher] ⏳ Copy editor unavailable for post #${postId} — not publishing unreviewed; retry next run.`);
+    noteOutcome(postUrl, "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني", true);
     lastPostRetryable = true;
     return false;
   } else {
@@ -3808,6 +3834,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
     if (blocking.some(i => ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners"].includes(i.code))) lastPostRetryable = true;
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
+    noteOutcome(postUrl, `المراجعة رفضته: ${blocking.map(i => i.message).join("، ")}`, lastPostRetryable);
     return false;
   }
   rewritten.title = numberWordsInTitle(resultsTitleOutcome(draft.title, draft.body));

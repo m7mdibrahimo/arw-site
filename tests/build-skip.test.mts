@@ -34,6 +34,7 @@ function decide(files: string[], liveAt: 'latest' | 'behind' | 'down' = 'latest'
 
 test('bookkeeping-only bot pushes skip the Cloudflare build', () => {
   assert.equal(decide(['watcher-state.json']), ' [CF-Pages-Skip]');
+  assert.equal(decide(['watcher-outcomes.json', 'watcher-state.json']), ' [CF-Pages-Skip]', 'the «why» notes for the panel are bookkeeping too');
   assert.equal(decide(['ringsidenews-state.json', 'watcher-feed-ringsidenews.json', 'content/images/abc.jpg']), ' [CF-Pages-Skip]');
   assert.equal(decide(['wrestlinginc-state.json', 'watcher-feed-wrestlinginc.json', 'editorial/proofread-log.jsonl', '_data/duplicate-skips.json']), ' [CF-Pages-Skip]');
 });

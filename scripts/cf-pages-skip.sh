@@ -8,7 +8,7 @@
 # Actions keep running as before.
 set -u
 BASE="${1:-origin/main}"
-BOOKKEEPING='^(watcher-state\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data/duplicate-skips\.json|editorial/.*|content/images/[^/]+)$'
+BOOKKEEPING='^(watcher-state\.json|watcher-outcomes\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data/duplicate-skips\.json|editorial/.*|content/images/[^/]+)$'
 files=$(git diff --name-only "$BASE" HEAD 2>/dev/null) || exit 0
 [ -n "$files" ] || exit 0
 grep -qvE "$BOOKKEEPING" <<<"$files" && exit 0
@@ -17,7 +17,7 @@ grep -qvE "$BOOKKEEPING" <<<"$files" && exit 0
 # a newer push arrives, so skipping this one could leave that change waiting for the next article.
 last=$(git log -1 --format=%ct "$BASE" -- . \
   ':(exclude)_data/publish-state.json' ':(exclude)worker' ':(exclude)editorial' \
-  ':(exclude)watcher-state.json' ':(exclude,glob)watcher-feed*.json' ':(exclude)ringsidenews-state.json' \
+  ':(exclude)watcher-state.json' ':(exclude)watcher-outcomes.json' ':(exclude,glob)watcher-feed*.json' ':(exclude)ringsidenews-state.json' \
   ':(exclude)wrestlinginc-state.json' ':(exclude)live-results-state.json' ':(exclude)_data/duplicate-skips.json' \
   ':(exclude,glob)content/images/*' 2>/dev/null)
 live=$(curl -fsS --max-time 8 "${CF_LIVE_BUILD_URL:-https://arab-wrestling.com/build.json}" 2>/dev/null \

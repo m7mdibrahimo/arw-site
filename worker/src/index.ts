@@ -2674,12 +2674,31 @@ const NEWS_SOURCES = [
 // as the bots' last run (the copies on the site only change with a site build).
 async function studioSources(env: Env) {
   const readJson = async (p: string) => { try { const f = await readRepoFile(env, p); return f ? JSON.parse(f.content) : null; } catch { return null; } };
-  const [skips, recent]: any[] = await Promise.all([
+  // The whole index (not only the latest 200) so an older story that did become an article is found
+  const [skips, outcomes, index, stateFile]: any[] = await Promise.all([
     readJson("_data/duplicate-skips.json"),
-    fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-recent-content.json`)).then(r => (r.ok ? r.json() : [])).catch(() => []),
+    readJson("watcher-outcomes.json"),
+    fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`)).then(r => (r.ok ? r.json() : [])).catch(() => []),
+    readJson(env.GITHUB_STATE_PATH),
   ]);
   const onSite = new Map<string, any>();
-  for (const i of Array.isArray(recent) ? recent : []) if (i?.source_id) onSite.set(String(i.source_id), i);
+  const byFile = new Map<string, any>();
+  for (const i of Array.isArray(index) ? index : []) {
+    if (i?.source_id) onSite.set(String(i.source_id), i);
+    const f = String(i?.inputPath || "").split("/").pop();
+    if (f) byFile.set(f, i);
+  }
+  const publish: any = stateFile || {};
+  // What happened on the platforms to a story that reached the site
+  const socialOf = (url: string) => {
+    const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + url));
+    const h = publish.held?.[key];
+    if (h && !h.releasedAt) return h.dismissedAt ? "ومش هيتنشر على المنصات (قرارك)" : "ومحجوب عن السوشيال لأن فيه حرق";
+    const done = ["telegram", "facebook", "instagram"].filter(p => publish[p]?.[key]);
+    if (!done.length) return "ولسه بيتنشر على المنصات";
+    const names: Record<string, string> = { telegram: "تيليجرام", facebook: "فيسبوك", instagram: "إنستغرام" };
+    return done.length === 3 ? "واتنشر على المنصات التلاتة" : `واتنشر على ${done.map(p => names[p]).join(" و")}`;
+  };
   const fightful: any = await readJson("watcher-state.json");
   const sources = [];
   for (const s of NEWS_SOURCES) {
@@ -2687,20 +2706,41 @@ async function studioSources(env: Env) {
     const done = new Set((st?.processedIds || []).map(String));
     const posts = (Array.isArray(feed) ? feed : []).slice(0, 30).map((p: any) => {
       const id = String(p.id);
+      const link = String(p.link || "");
       const site = onSite.get(id);
       const title = String(p.title?.rendered ?? p.title ?? "").replace(/<[^>]+>/g, "")
         .replace(/&#(\d+);/g, (_m: string, n: string) => String.fromCharCode(Number(n))).replace(/&amp;/g, "&").replace(/&quot;/g, '"');
-      const skipReason = skips?.[String(p.link || "")]?.reason || "";
       // Fightful's date_gmt has no «Z»; read as local time it was hours off.
       const gmt = String(p.date_gmt || "");
       const date = gmt ? (/[zZ]|[+-]\d\d:?\d\d$/.test(gmt) ? gmt : `${gmt}Z`) : String(p.date || "");
+      const dup = skips?.[link] || skips?.[link.replace(/\/+$/, "")];
+      const note = outcomes?.[link.replace(/\/+$/, "")];
+      const ageH = (Date.now() - Date.parse(date)) / 3600_000;
+      // One status and a plain reason for every story (the owner asked why each one did or didn't go up)
+      let status: "site" | "skipped" | "waiting", reason: string, match: { url: string; title: string } | null = null;
+      if (site) {
+        status = "site"; reason = `نزل على الموقع ${socialOf(site.url)}`;
+      } else if (dup) {
+        status = "skipped";
+        const m = byFile.get(String(dup.matchedFile || ""));
+        match = m ? { url: m.url, title: m.title } : null;
+        reason = `مكرر: نفس خبر نزل قبل كده${dup.reason ? ` (${dup.reason})` : ""}`;
+      } else if (note) {
+        status = note.retry && ageH < 24 ? "waiting" : "skipped";
+        reason = note.reason;
+      } else if (done.has(id)) {
+        status = "skipped"; reason = "اتقرر إنه مينزلش (مكرر أو ملوش لازمة للموقع)";
+      } else if (ageH > 24) {
+        status = "skipped"; reason = "أقدم من ٢٤ ساعة، والبوت مبينزلش أخبار قديمة";
+      } else {
+        status = "waiting"; reason = "هيتكتب في الفحص الجاي";
+      }
       return {
-        id, link: String(p.link || ""), title, date,
+        id, link, title, date,
         // The source's own picture, as it is on the source (only http(s) links)
         image: /^https?:\/\//.test(String(p.featured_image || "")) ? String(p.featured_image) : "",
-        status: site ? "site" : done.has(id) || skipReason ? "skipped" : "waiting",
+        status, reason, match,
         site: site ? { url: site.url, title: site.title } : null,
-        skipReason,
       };
     });
     sources.push({ id: s.id, name: s.name, lastChecked: st?.lastChecked || null, processed: (st?.processedIds || []).length,

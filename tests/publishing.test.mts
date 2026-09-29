@@ -1593,3 +1593,26 @@ test('a spoiler lasts 24 hours: a held story goes out on its own after that — 
   assert.ok(!after.held[keys.b].releasedAt, 'held 10h ago: still held');
   assert.ok(!after.held[keys.c].releasedAt, 'the owner kept it off: stays off');
 });
+
+test('the writer notes why a source story did not become an article, for the panel', () => {
+  // The owner asked for a reason next to every «اتخطى» in «مصادر الأخبار».
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-outcomes-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'run.mts'), `
+      const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
+      m.noteOutcome('https://www.fightful.com/wrestling/a/', 'خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني', true);
+      m.noteOutcome('https://www.fightful.com/wrestling/b', 'قائمة مصارعين طويلة، مش خبر');
+    `);
+    execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, stdio: 'ignore' });
+    const notes = JSON.parse(fs.readFileSync(path.join(dir, 'watcher-outcomes.json'), 'utf8'));
+    assert.equal(notes['https://www.fightful.com/wrestling/a'].retry, true, 'keyed without the trailing slash');
+    assert.equal(notes['https://www.fightful.com/wrestling/b'].reason, 'قائمة مصارعين طويلة، مش خبر');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+  // Every place the writer gives up on a story says why
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  const pp = src.slice(src.indexOf('export async function processPost('));
+  const body = pp.slice(0, pp.indexOf('\n}\n'));
+  assert.ok((body.match(/noteOutcome\(/g) || []).length >= 11);
+});

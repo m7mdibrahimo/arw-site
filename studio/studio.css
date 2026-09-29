@@ -621,3 +621,5 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .pin-filters { margin-bottom: 12px; }
 .pin-filters .search-wide { margin-bottom: 0; flex: 1; min-width: 200px; }
 @media (max-width: 640px) { .row.src-row { grid-template-columns: 26px 50px 1fr; } }
+
+.src-reason { color: var(--ink) !important; opacity: .8; }

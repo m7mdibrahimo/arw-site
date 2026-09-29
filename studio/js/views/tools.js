@@ -129,10 +129,12 @@ export async function renderSourcesTool(page) {
         <label class="row-check">${p.status !== 'site' ? html`<input type="checkbox" data-pick="${p.link}">` : ''}</label>
         <a class="row-img" href="${p.link}" target="_blank" rel="noopener">${p.image ? html`<img src="${p.image}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ''}</a>
         <a class="row-main" href="${p.link}" target="_blank" rel="noopener" dir="ltr"><b>${p.title}</b>
-          <small dir="rtl"><span class="tag ${STATUS[p.status][0]}">${STATUS[p.status][1]}</span> · ${timeAgo(p.date)}${p.skipReason ? ` · ${p.skipReason}` : ''}</small></a>
-        <span class="row-actions">${p.site ? html`<a class="btn btn-sm" href="${p.site.url}" target="_blank" title="${p.site.title}">${icon('eye')} خبرنا</a>` : ''}</span>
+          <small dir="rtl"><span class="tag ${STATUS[p.status][0]}">${STATUS[p.status][1]}</span> · ${timeAgo(p.date)}</small>
+          <small dir="rtl" class="src-reason">${p.reason || ''}</small></a>
+        <span class="row-actions">${p.site ? html`<a class="btn btn-sm" href="${p.site.url}" target="_blank" title="${p.site.title}">${icon('eye')} خبرنا</a>`
+          : p.match ? html`<a class="btn btn-sm" href="${p.match.url}" target="_blank" title="${p.match.title}">${icon('eye')} الخبر الأصلي عندنا</a>` : ''}</span>
       </div>`)}</div></section>`)}
-    <p class="muted small center">«لسه» يعني البوت لسه مكتبهوش (هيتكتب في الفحص الجاي أو اتأخر). «اتخطى» يعني مكرر أو ملوش لازمة للموقع.</p>
+    <p class="muted small center">تحت كل خبر مكتوب حصله إيه وليه. «لسه» يعني البوت هيحاول تاني لوحده. «اتخطى» يعني مش هينزل، وتقدر تضيفه بنفسك من المربع جنبه.</p>
   </div>`);
 
   const add = async (urls) => {
