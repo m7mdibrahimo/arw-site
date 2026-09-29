@@ -1995,3 +1995,11 @@ test('a quoted nickname is dropped from a tag; PAC\'s nickname and a broken phra
   assert.equal(applyCorrections('ذكرياته عن الرجل الذي نساه الجذب'), 'ذكرياته عن الرجل الذي نسيته الجاذبية');
   assert.equal(applyCorrections('توفي صغيرا في اليعمل يناهز 40 عاما'), 'توفي صغيرا عن عمر يناهز 40 عاما');
 });
+
+test('a doubled ya, a bare cardinal date and a genitive object are corrected (INCIDENTS #149)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('وسييشهد مراسم قرع الجرس'), 'وسيشهد مراسم قرع الجرس');
+  assert.equal(applyCorrections('يوم ثلاثين سبتمبر'), 'يوم الثلاثين من سبتمبر');
+  assert.equal(applyCorrections('أبدت استيائها الشديد'), 'أبدت استياءها الشديد');
+  assert.equal(applyCorrections('عبرت عن استيائها'), 'عبرت عن استيائها');
+});
