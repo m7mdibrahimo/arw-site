@@ -1898,3 +1898,12 @@ test('the worker entry file exports functions only — Cloudflare refuses to sta
   const bad = Object.entries(mod).filter(([k, v]) => k !== 'default' && typeof v !== 'function').map(([k]) => k);
   assert.deepEqual(bad, []);
 });
+
+test('a debut that was only planned is not a spoiler; a real debut still is', async () => {
+  // INCIDENTS #135: «جو هندري يقول إنه كان من المفترض أن يسجل ظهوره الأول…» was held off social
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('جو هندري يقول إنه كان من المفترض أن يسجل ظهوره الأول في القائمة الرئيسية في عرض WWE RAW بعد عرض WrestleMania'), false);
+  assert.equal(isSingleMatchSpoiler('الكشف عن خطط ظهوره الأول في عرض RAW'), false);
+  assert.equal(isSingleMatchSpoiler('نجمة WWE السابقة تسجل ظهورها الأول في عرض ROH خلال تصوير العروض'), true);
+  assert.equal(isSingleMatchSpoiler('روميو مالفيردي يعود إلى الحلبات في أول نزال له'), true);
+});
