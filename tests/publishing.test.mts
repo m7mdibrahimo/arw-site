@@ -1780,13 +1780,14 @@ test('show reel: the Arabic name is never cut — one line, scaled to fit; the E
 
 test('show reel «الحلبة»: the whole poster, names on one line sized to fit, a seekable 8-second timeline', async () => {
   const { showReelHtml, posterName, shortDuration } = await import('../scripts/show-reel-template');
-  // The date has its own box; «عرض … مترجم» is said by the poster itself
-  assert.equal(posterName('عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم'), 'بروجريس شابتر 198 وين سبتمبر اندز');
-  assert.equal(posterName('عرض سماك داون 25.09.2026 مترجم'), 'سماك داون');
+  // The whole Arabic title, as on the site: «الرو» alone looked unfinished (INCIDENTS #133)
+  assert.equal(posterName('عرض الرو 28.09.2026 مترجم'), 'عرض الرو 28.09.2026 مترجم');
+  assert.equal(posterName('  عرض بروجريس شابتر 198  وين سبتمبر اندز 27.09.2026 مترجم '), 'عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم');
   assert.equal(shortDuration('03:20:49'), '3:20:49');
   const html = showReelHtml({ arTitle: 'سماك داون', enTitle: 'WWE Smackdown 25.09.2026', federation: 'WWE', dateLabel: '25 سبتمبر', duration: '1:27:45', poster: 'assets/news-cover.jpg', logo: 'assets/logo.png' });
   // one line each, measured at the final letter-spacing (the English starts spaced out)
-  assert.match(html, /fit\('ar', 'arIn', 112, 970, 34\); fit\('en', 'enIn', 54, 970, 24, '2px'\)/);
+  assert.match(html, /fit\('ar', 'arIn', 112, 970, 34\);/);
+  assert.match(html, /fit\('en', 'enIn', Math\.min\(54, Math\.round\(arSize \* 0\.7\)\), 970, 22, '2px'\)/);
   assert.match(html, /\.ar \{ white-space: nowrap;/);
   assert.match(html, /\.en \{ white-space: nowrap;/);
   // the whole poster: no «cover» crop, the zone takes the image's proportions

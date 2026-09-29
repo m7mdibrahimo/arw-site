@@ -16,11 +16,10 @@ export interface ShowReelData {
 
 const esc = (t: string) => String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/** «عرض بروجريس … 27.09.2026 مترجم» → «بروجريس …»: the poster already says «حصريًا» and «كاملة ومترجمة»,
- *  and the date has its own box — the name gets the room. */
+/** The Arabic name exactly as the site shows it («عرض الرو 28.09.2026 مترجم»). Stripping «عرض»,
+ *  the date and «مترجم» left «الرو» alone on the RAW reel — the owner wants the whole title (INCIDENTS #133). */
 export function posterName(headline: string): string {
-  return String(headline || '').replace(/^\s*عرض\s+/, '').replace(/\s+مترجم(?:ة)?\s*$/, '')
-    .replace(/\s*\(?\b\d{1,2}[./-]\d{1,2}[./-]\d{2,4}\b\)?/g, '').replace(/\s{2,}/g, ' ').trim();
+  return String(headline || '').replace(/\s{2,}/g, ' ').trim();
 }
 
 /** «03:20:49» → «3:20:49» */
@@ -151,7 +150,13 @@ export function showReelHtml(d: ShowReelData): string {
     var st = document.querySelector('.stack'); var h = st.offsetHeight;
     st.style.top = Math.round(Math.max(262, 262 + (1690 - 262 - h) / 2)) + 'px';
   }
-  function fitAll() { fit('ar', 'arIn', 112, 970, 34); fit('en', 'enIn', 54, 970, 24, '2px'); centerStack(); }
+  // The Arabic name leads: the English one never comes out bigger than ~70% of it
+  function fitAll() {
+    fit('ar', 'arIn', 112, 970, 34);
+    var arSize = parseFloat(document.getElementById('ar').style.fontSize) || 112;
+    fit('en', 'enIn', Math.min(54, Math.round(arSize * 0.7)), 970, 22, '2px');
+    centerStack();
+  }
   // ── the whole poster: the zone takes the image's proportions (within a sane range) ──
   function sizePoster() {
     var img = new Image();
