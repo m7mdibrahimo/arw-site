@@ -2200,7 +2200,8 @@ export function isUnrelatedNameTag(tag: string, title: string, body: string): bo
 }
 
 export function tagInArabic(tag: string): string {
-  const t = tag.trim();
+  // A nickname in quotes doesn't belong in a tag: «تشانينغ “ستاكس” لورينزو» (INCIDENTS #147)
+  const t = tag.replace(/\s*[“"«][^”"»]*[”"»]\s*/g, " ").replace(/\s{2,}/g, " ").trim();
   if (!/^[A-Za-z0-9 .'&-]+$/.test(t)) return t;
   // Federation / show abbreviations always stay English (WWE, NJPW, UFC, AEW...).
   if (/^[A-Z0-9&.-]{2,6}$/.test(t)) return t;

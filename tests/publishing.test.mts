@@ -1986,3 +1986,12 @@ test('compound ordinals take «ال» and PAC\'s names and AEW\'s National title
   assert.equal(applyCorrections('المعروف باسم باك ونفيل'), 'المعروف باسم باك ونيفيل');
   assert.equal(applyCorrections('واجه أندرادي على بطولة ناشيونال'), 'واجه أندرادي على بطولة AEW الوطنية');
 });
+
+test('a quoted nickname is dropped from a tag; PAC\'s nickname and a broken phrase are fixed', async () => {
+  // INCIDENTS #147
+  const { tagInArabic } = await import('../scripts/fightful-watcher');
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections(tagInArabic('تشانينغ “ستاكس” لورينزو')), 'تشانينج لورينزو');
+  assert.equal(applyCorrections('ذكرياته عن الرجل الذي نساه الجذب'), 'ذكرياته عن الرجل الذي نسيته الجاذبية');
+  assert.equal(applyCorrections('توفي صغيرا في اليعمل يناهز 40 عاما'), 'توفي صغيرا عن عمر يناهز 40 عاما');
+});
