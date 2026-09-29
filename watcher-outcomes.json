@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-09-29T01:36:09.534Z"
+ },
  "https://www.fightful.com/wrestling/oba-femi-vs-bronson-reed-set-for-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T01:34:01.335Z"
- },
- "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-29T01:18:24.249Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-to-be-a-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
