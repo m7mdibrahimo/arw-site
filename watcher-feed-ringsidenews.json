@@ -1,5 +1,25 @@
 [
   {
+    "id": 802249322,
+    "link": "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-september-29-2026/",
+    "date": "Tue, 29 Sep 2026 23:31:00 +0000",
+    "date_gmt": "2026-09-29T23:31:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Results, Highlights and Key Moments for September 29, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/wwe-nxt-preview-for-september-29-2026-confirmed-matches-start-time-and-how-to-watch-21.jpg?x16776"
+  },
+  {
+    "id": 802249515,
+    "link": "https://www.ringsidenews.com/mason-rook-breaks-silence-pulled-nxt-championship-match/",
+    "date": "Tue, 29 Sep 2026 23:29:43 +0000",
+    "date_gmt": "2026-09-29T23:29:43.000Z",
+    "title": {
+      "rendered": "Mason Rook Breaks Silence After Being Pulled From NXT Championship Match"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/mason-rook-addresses-possibility-of-losing-weight-in-wwe-30.jpg?x16776"
+  },
+  {
     "id": 802249505,
     "link": "https://www.ringsidenews.com/kairi-sane-returns-ring-training-wrestling-return-draws-closer/",
     "date": "Tue, 29 Sep 2026 22:29:51 +0000",
@@ -128,25 +148,5 @@
       "rendered": "TNA Adding PAC Tribute to Upcoming Impact Episode After His Death"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/tna-adding-pac-tribute-to-upcoming-impact-episode-after-his-death-38.jpg?x16776"
-  },
-  {
-    "id": 802249392,
-    "link": "https://www.ringsidenews.com/alexa-bliss-set-drop-first-ever-song-im-just-drunk-lexis-texts/",
-    "date": "Tue, 29 Sep 2026 18:33:21 +0000",
-    "date_gmt": "2026-09-29T18:33:21.000Z",
-    "title": {
-      "rendered": "Alexa Bliss Set to Drop First-Ever Song ‘I’m Just Drunk (Lexi’s Texts)’"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/alexa-bliss-set-to-drop-first-ever-song-im-just-drunk-lexis-texts-12.jpg?x16776"
-  },
-  {
-    "id": 802249357,
-    "link": "https://www.ringsidenews.com/keanu-carvers-wwe-nxt-status-unclear-protection-order-involving-fellow-talent/",
-    "date": "Tue, 29 Sep 2026 18:27:46 +0000",
-    "date_gmt": "2026-09-29T18:27:46.000Z",
-    "title": {
-      "rendered": "Keanu Carver’s WWE NXT Status Unclear After Protection Order Involving Fellow Talent"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/keanu-carvers-wwe-nxt-status-unclear-after-protection-order-involving-fellow-talent-21.jpg?x16776"
   }
 ]
