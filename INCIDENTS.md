@@ -1308,4 +1308,7 @@
         - تحديث طبي أو قضائي.
     - قواعد «نفس الإعلان من مصدرين = تكرار» فضلت زي ما هي.
     - ٨ أخبار اترفضت غلط اتشالت من `_data/duplicate-skips.json`، فالبوتات هتعيد الحكم عليها بالقواعد الجديدة.
-- **الاختبار:** «the same-story check tells a new statement or backstage detail apart from the story it follows».
+    - حماية تانية مش بتعتمد على الموديل: `newSubject` في `scripts/editorial.ts`. لو الخبر الجديد عنوانه فيه اسم (تاج) مش موجود خالص في الخبر المنشور، يبقى خبر جديد وبينزل حتى لو الموديل قال «مكرر». الحماية دي شغالة في البوت، وفي فحص التكرار بين البوتات (`scripts/cross-run-dedupe.ts`).
+- **الاختبار:**
+    - «the same-story check tells a new statement or backstage detail apart from the story it follows».
+    - «a story about someone the matched story never mentions is published whatever the same-story check says».

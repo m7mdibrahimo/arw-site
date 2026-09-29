@@ -306,6 +306,23 @@ ${list}
 أعد JSON فقط: {"duplicate_of": رقم الخبر المكرر أو null, "reason": "سبب مختصر"}`;
 }
 
+/**
+ * The person the new story is about, when the story it was matched with never mentions them:
+ * «كيماليتو يرثي باك» is not «ذا روك يشيد بـ باك», whatever the same-story check says —
+ * it kept calling every PAC tribute and every follow-up «the same event» (INCIDENTS #150).
+ * A name tag that is in the new title and nowhere in the published story overrules a «duplicate».
+ */
+export function newSubject(draft: ArticleDraft, matched: { title: string; body: string; tags: string[] }): string | null {
+  const generic = /أخبار|عروض|عرض|اتحاد|بطولة|نتائج|المصارعة|تأبين|وفاة/;
+  const seen = `${matched.title}\n${matched.body}\n${matched.tags.join("\n")}`;
+  for (const tag of draft.tags) {
+    const t = tag.trim();
+    if (t.length < 3 || !/[؀-ۿ]/.test(t) || generic.test(t)) continue;
+    if (draft.title.includes(t) && !seen.includes(t)) return t;
+  }
+  return null;
+}
+
 export function parseDuplicateAnswer(raw: string | null, candidates: NewsFile[]): { file: string; reason: string } | null {
   if (!raw) return null;
   try {

@@ -2013,3 +2013,18 @@ test('the same-story check tells a new statement or backstage detail apart from 
   const skips = JSON.parse(fs.readFileSync('_data/duplicate-skips.json', 'utf8'));
   assert.equal(skips['https://www.fightful.com/wrestling/kemalito-pays-tribute-to-benjamin-satterley-pac'], undefined);
 });
+
+test('a story about someone the matched story never mentions is published whatever the same-story check says (INCIDENTS #150)', async () => {
+  const { newSubject } = await import('../scripts/editorial');
+  const rock = { title: 'ذا روك يشيد بـ باك', body: 'تحدث النجم ذا روك عن باك بعد وفاته.', tags: ['AEW', 'ذا روك', 'باك'] };
+  assert.equal(newSubject({ title: 'كيماليتو يرثي باك', body: '...', tags: ['AEW', 'كيماليتو', 'باك', 'أخبار المصارعة'] }, rock), 'كيماليتو');
+  // the same statement from another source stays a duplicate
+  assert.equal(newSubject({ title: 'ذا روك ينعى باك', body: '...', tags: ['ذا روك', 'باك'] }, rock), null);
+  // a generic tag in the title is not a new subject
+  assert.equal(newSubject({ title: 'عروض WWE تكرم باك', body: '...', tags: ['عروض WWE', 'باك'] }, rock), null);
+  const { crossRunDuplicates } = await import('../scripts/cross-run-dedupe');
+  const now = Date.parse('2026-09-29T21:00:00Z');
+  const mine = { file: 'a.md', title: 'باتيستا يرثي ريك أتشبيرغر', body: 'وجه باتيستا رسالة لريك أتشبيرغر', tags: ['باتيستا', 'ريك أتشبيرغر'], date: now };
+  const arrived = [{ file: 'b.md', title: 'وفاة ريك أتشبيرغر', body: 'توفي ريك أتشبيرغر المعروف بسين جاي', tags: ['ريك أتشبيرغر'], date: now }];
+  assert.deepEqual(await crossRunDuplicates(mine ? [mine] : [], arrived, async () => '{"duplicate_of":0,"reason":"نفس الحدث"}', now), []);
+});
