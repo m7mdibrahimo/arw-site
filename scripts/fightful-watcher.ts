@@ -3593,6 +3593,16 @@ export function titleNamesAsTags(title: string, tags: string[], names: Record<st
   return out.slice(0, 10);
 }
 
+/**
+ * One wrestler, one tag: «مايك بيلي» and «سبيدبول» next to «سبيدبول مايك بيلي» split the story over three
+ * tag pages (INCIDENTS #144). An Arabic tag whose words all sit, in order, inside a longer Arabic tag of
+ * the same story is dropped. Latin tags (WWE, WWE RAW) are left alone.
+ */
+export function dropPartialNameTags(tags: string[]): string[] {
+  const ar = (t: string) => /^[\u0600-\u06FF ]+$/.test(t.trim());
+  return tags.filter(t => !(ar(t) && tags.some(o => o !== t && ar(o) && o.length > t.length && ` ${o} `.includes(` ${t} `))));
+}
+
 /** The shared-names suspect always reaches the same-story check, first in line. */
 export function withSuspect(candidates: NewsFile[], news: NewsFile[], suspect: string): NewsFile[] {
   const hit = suspect ? news.find(n => n.file === suspect) : undefined;
@@ -3985,7 +3995,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
   draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
-  draft.tags = titleNamesAsTags(draft.title, draft.tags);
+  draft.tags = dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags));
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));

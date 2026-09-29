@@ -1969,3 +1969,11 @@ test('a word broken between Arabic and lowercase Latin is flagged for the copy e
   assert.ok(!codes('تحدثت تشيلسي غرين مع زوجها عبر منصة SiriusXM عن أغاني إمينيم، وخلال برنامج Good Karma Wrestling قال ألين').includes('broken_word'));
   assert.ok(!codes('ظهر في برنامج Two Count Tuesday وتحدث عن WWE وAEW بعد عرض All Out الأخير في شيكاغو أمام الجماهير').includes('broken_word'));
 });
+
+test('one wrestler, one tag: a part of a longer Arabic name tag is dropped', async () => {
+  // INCIDENTS #144
+  const { dropPartialNameTags } = await import('../scripts/fightful-watcher');
+  assert.deepEqual(dropPartialNameTags(['AEW', 'مايك بيلي', 'سبيدبول', 'باك', 'سبيدبول مايك بيلي', 'بنجامين ساتيرلي']), ['AEW', 'باك', 'سبيدبول مايك بيلي', 'بنجامين ساتيرلي']);
+  assert.deepEqual(dropPartialNameTags(['WWE', 'WWE RAW', 'كيلي كيلي', 'لايلا']), ['WWE', 'WWE RAW', 'كيلي كيلي', 'لايلا']);
+  assert.deepEqual(dropPartialNameTags(['باك', 'باك نيفيل']), ['باك نيفيل']);
+});
