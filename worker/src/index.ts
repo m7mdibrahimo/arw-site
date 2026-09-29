@@ -2642,6 +2642,61 @@ async function studioHeld(env: Env) {
 }
 
 /**
+ * The panel's bell (owner, 2026-09-29: «زر اشعارات لاي حاجة»): what happened on the site in the
+ * last two days, newest first. Stories and shows that went live (bots or the panel); with the
+ * «tools» permission also where each one was posted, what the spoiler shield held or released,
+ * posts that need a human check, and show reels. Messages are worded in the panel.
+ */
+const NOTIFY_WINDOW_MS = 48 * 3600_000;
+export async function studioNotifications(env: Env, withSocial: boolean) {
+  const now = Date.now();
+  const recent = (t: number) => t > 0 && now - t < NOTIFY_WINDOW_MS && t <= now + 60_000;
+  const feed: any[] = await fetch(cacheBust(`${env.SITE_ORIGIN}/watcher-recent-content.json`)).then((r): Promise<any> => (r.ok ? r.json() : Promise.resolve([]))).catch(() => []);
+  const items: any[] = [];
+  const byKey = new Map<string, any>();
+  for (const it of Array.isArray(feed) ? feed : []) {
+    const at = Date.parse(it.published_at || it.date || "") || 0;
+    const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || "")));
+    const m = String(it.inputPath || "").match(/content\/([^/]+)\/(.+)\.md$/);
+    const ref = { title: String(it.headline || it.title || "").slice(0, 200), url: it.url || "", image: it.image || "", kind: it.kind || "news", collection: m ? m[1] : "", slug: m ? m[2] : "" };
+    byKey.set(key, { ...ref, pub: at });
+    if (recent(at)) items.push({ id: `site:${key}`, type: "site", at, ...ref });
+  }
+  if (withSocial) {
+    let state: any = {};
+    try { state = (await githubReadState(env)).state; } catch { /* the site items still show */ }
+    const held = state.held || {};
+    for (const [key, ref] of byKey) {
+      const h = held[key];
+      const blocked = h && !h.releasedAt;
+      const after = h?.releasedAt || 0;
+      const sent = (["telegram", "facebook", "instagram"] as const).filter(p => { const t = Number(state[p]?.[key]) || 0; return recent(t) && !blocked && t >= after; });
+      // Posted where the story itself is listed: one line per story, not one per step
+      const siteItem = items.find(i => i.id === `site:${key}`);
+      if (sent.length && siteItem) siteItem.platforms = sent;
+      else if (sent.length) { const { pub: _pub, ...plain } = ref; items.push({ id: `social:${key}:${sent.join(",")}`, type: "social", at: Math.max(...sent.map(p => Number(state[p][key]))), platforms: sent, ...plain }); }
+      for (const p of ["telegram", "facebook", "instagram", "x"]) {
+        if (recent(ref.pub) && Number(state.deferrals?.[`${p}:${key}`]) === 8640000000000000) { const { pub, ...r } = ref; items.push({ id: `review:${p}:${key}`, type: "review", at: pub || now, platform: p, ...r }); }
+      }
+    }
+    for (const [key, h] of Object.entries(held) as [string, any][]) {
+      if (recent(h.at)) items.push({ id: `held:${key}`, type: "held", at: h.at, reason: h.reason, why: h.why, title: h.title, url: h.url, image: h.image || "" });
+      if (recent(h.releasedAt)) items.push({ id: `released:${key}`, type: "released", at: h.releasedAt, by: h.by || "", title: h.title, url: h.url, image: h.image || "" });
+    }
+    try {
+      const reels = await readRepoFile(env, "_data/show-reel-state.json");
+      for (const [slug, r] of Object.entries(reels ? JSON.parse(reels.content) : {}) as [string, any][]) {
+        const at = Number(r?.lastAttempt || r?.publishedAt) || 0;
+        const done = ["facebook_reel", "instagram_reel", "facebook_story", "instagram_story"].filter(k => r?.[k] === true);
+        if (recent(at) && done.length) items.push({ id: `reel:${slug}:${done.join(",")}`, type: "reel", at, done, title: String(r.title || slug).slice(0, 200), slug });
+      }
+    } catch { /* no reels file */ }
+  }
+  items.sort((a, b) => b.at - a.at);
+  return { success: true, items: items.slice(0, 120), now };
+}
+
+/**
  * The pinned list as it is NOW. _data/pinned.json keeps a copy of each item taken when it was pinned;
  * the site's slider already reads the live page (freshPinned in eleventy.config.js), but the panel showed
  * the copy — «AEW All Out Tailgate Brawl» still read «عرض اول اوت …» days after its headline was fixed,
@@ -2846,6 +2901,10 @@ export default {
       if (path === "/api/studio/overview" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "status"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف حالة الموقع." }, 403);
         return json(await studioOverview(env, await request.json().catch(() => ({}))));
+      }
+      if (path === "/api/studio/notifications" && request.method === "GET") {
+        if (!(await studioUser(request, env as any))) return json({ success: false, auth: false, error: "انتهت الجلسة. سجّل الدخول من جديد." }, 401);
+        return json(await studioNotifications(env, await studioAuthorized(request, env, "tools")));
       }
       if (path === "/api/studio/held" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);

@@ -61,6 +61,9 @@ async function callResult(path, opts = {}) {
   catch (e) { if (e.data && (e.data.results || e.data.code) && e.status !== 401 && e.status !== 403) return e.data; throw e; }
 }
 
+/** The bell: what happened on the site in the last two days (worker: studioNotifications). */
+export const notifications = () => call('/api/studio/notifications');
+
 // ── Publishing tools (the old /admin/ pages, now in the panel) ──────────────
 export const tools = {
   socialStatus: (urls) => call('/api/studio/tools/social', { method: 'POST', body: { urls } }),

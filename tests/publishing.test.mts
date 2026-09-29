@@ -1889,3 +1889,11 @@ test('no «\\b» next to an Arabic letter in scripts/ or worker/src/ — JS «\\
   assert.match(translateTitleDeterministic('Who From WWE Will Win') || '', /من من WWE/); // "who from", not a duplicate
   assert.equal(applyCorrections('مواجهة نتاليا وناتي'), 'مواجهة ناتاليا وناتاليا');
 });
+
+test('the worker entry file exports functions only — Cloudflare refuses to start on any other named export', async () => {
+  // INCIDENTS #132: «export const NOTIFY_WINDOW_MS = …» stopped the worker from starting at all
+  // («Incorrect type for map entry … not of type function or ExportedHandler»), caught locally.
+  const mod: any = await import('../worker/src/index');
+  const bad = Object.entries(mod).filter(([k, v]) => k !== 'default' && typeof v !== 'function').map(([k]) => k);
+  assert.deepEqual(bad, []);
+});

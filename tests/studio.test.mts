@@ -344,3 +344,28 @@ test('the worker type-checks — the same «tsc -p worker» the GitHub check run
   } catch (e: any) { out = String(e.stdout || e.message || 'tsc failed'); }
   assert.equal(out, '', out.split('\n').slice(0, 5).join('\n'));
 });
+
+test('the bell lists what happened on the site in the last two days, and every panel message', async () => {
+  const { studioNotifications } = await import('../worker/src/index');
+  const now = Date.now();
+  const iso = (h: number) => new Date(now - h * 3600_000).toISOString();
+  globalThis.fetch = (async (input: any) => {
+    assert.match(String(input), /watcher-recent-content\.json/);
+    return new Response(JSON.stringify([
+      { url: '/news/new/', inputPath: './content/news/20260929-new.md', title: 'خبر جديد', kind: 'news', published_at: iso(1) },
+      { url: '/shows/raw/', inputPath: './content/shows/20260929-raw.md', title: 'WWE RAW', headline: 'عرض الرو مترجم', kind: 'show', published_at: iso(3) },
+      { url: '/news/old/', inputPath: './content/news/20260920-old.md', title: 'قديم', kind: 'news', published_at: iso(60) },
+    ]), { status: 200 });
+  }) as any;
+  try {
+    const r = await studioNotifications({ SITE_ORIGIN: 'https://site.test' } as any, false);
+    assert.deepEqual(r.items.map((i: any) => [i.type, i.title, i.collection, i.slug]), [['site', 'خبر جديد', 'news', '20260929-new'], ['site', 'عرض الرو مترجم', 'shows', '20260929-raw']]);
+  } finally { globalThis.fetch = realFetch; }
+  // The panel side: the bell sits next to the theme button, every toast is kept, the route is signed-in only
+  const app = fs.readFileSync('studio/js/app.js', 'utf8');
+  assert.ok(app.indexOf('id="bell-btn"') > 0 && app.indexOf('id="bell-btn"') < app.indexOf('id="theme-btn"'));
+  assert.match(fs.readFileSync('studio/js/ui.js', 'utf8'), /dispatchEvent\(new CustomEvent\('studio:toast'/);
+  assert.match(fs.readFileSync('studio/js/notify.js', 'utf8'), /window\.addEventListener\('studio:toast'/);
+  const worker = fs.readFileSync('worker/src/index.ts', 'utf8');
+  assert.match(worker, /path === "\/api\/studio\/notifications"[\s\S]{0,200}studioUser\(request/);
+});

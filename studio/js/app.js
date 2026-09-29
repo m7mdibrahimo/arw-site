@@ -6,6 +6,7 @@ import { renderLogin } from './views/auth.js';
 import { renderDashboard } from './views/dashboard.js';
 import { renderList } from './views/list.js';
 import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js';
+import { setupBell } from './notify.js';
 import { renderSettings } from './views/settings.js';
 import { renderMembers, renderActivity } from './views/members.js';
 import { renderSocialTool, renderSourcesTool, renderPinnedTool, renderReelsTool } from './views/tools.js';
@@ -58,6 +59,13 @@ function renderShell(user) {
             </div>
           </div>` : ''}
           <a class="btn site-btn" href="/" target="_blank" rel="noopener" title="فتح الموقع">${icon('globe')}<span>فتح الموقع</span></a>
+          <div class="bell" id="bell">
+            <button class="icon-btn" id="bell-btn" aria-label="الإشعارات">${icon('bell')}<span class="bell-count" id="bell-count" hidden>0</span></button>
+            <div class="menu-pop end bell-pop" id="bell-pop" hidden>
+              <div class="bell-head"><b>الإشعارات</b><button type="button" id="bell-read">تعليم الكل كمقروء</button></div>
+              <div class="bell-list" id="bell-list"></div>
+            </div>
+          </div>
           <button class="icon-btn" id="theme-btn" aria-label="تغيير المظهر">${icon('moon')}</button>
           <div class="menu" id="user-menu">
             <button class="avatar" id="user-btn" aria-label="الحساب">${avatarInner(user)}</button>
@@ -88,6 +96,7 @@ function renderShell(user) {
   };
   $('#menu-btn').onclick = (e) => { e.stopPropagation(); document.body.classList.toggle('nav-open'); };
   setupSearch();
+  setupBell();
 }
 
 // ── Global search (all content from the site's index + studio data) ───────

@@ -39,6 +39,7 @@ export const ICONS = {
   trash: P('<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 14h10l1-14"/>'),
   copy: P('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>'),
   check: P('<path d="m5 12 5 5L20 7"/>'),
+  bell: P('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>'),
   x: P('<path d="M18 6 6 18M6 6l12 12"/>'),
   alert: P('<path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>'),
   image: P('<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/>'),
@@ -78,6 +79,8 @@ export function toast(message, kind = 'ok', ms = 3800) {
   const t = document.createElement('div');
   t.className = `toast toast-${kind}`;
   t.innerHTML = `<span class="toast-ico">${ICONS[kind === 'error' ? 'alert' : kind === 'info' ? 'clock' : 'check']}</span><span>${esc(message)}</span>`;
+  // Everything the panel tells you also lands in the bell (notify.js)
+  window.dispatchEvent(new CustomEvent('studio:toast', { detail: { message: String(message || ''), kind } }));
   box.appendChild(t);
   requestAnimationFrame(() => t.classList.add('in'));
   setTimeout(() => { t.classList.remove('in'); setTimeout(() => t.remove(), 300); }, ms);
