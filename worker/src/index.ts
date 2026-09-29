@@ -320,6 +320,10 @@ type PublishState = {
   // The owner decided a held story may go out: the stamps were cleared and this time
   // counts as its «fresh» moment, so it is posted in the next minutes whatever its age.
   released?: Record<string, number>;
+  // Content file → the URL key it was first posted under. A story's URL comes from its title, so
+  // fixing a word in a published title gave it a new URL — a «new» story — and it was posted a
+  // second time (CMLL 28 Sep, INCIDENTS #127). The file never changes.
+  byFile?: Record<string, string>;
   lastStoryAt?: number;
   videoCooldowns?: Partial<Record<"facebook" | "instagram" | "tiktok", number>>;
   // Buffer's own RateLimit response header, read proactively so a post is
@@ -333,6 +337,13 @@ type PublishState = {
 };
 
 type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return" | "show"; why?: "title" | "lead" | "ai" | "flag" | "old"; lead?: string; note?: string; releasedAt?: number; dismissedAt?: number; by?: string };
+
+/** The content file behind a feed item («./content/news/2026…-x.md» → «2026…-x»): its lasting identity. */
+export function contentFileId(item: { inputPath?: string } | null | undefined): string {
+  const p = String(item?.inputPath || "");
+  const m = p.match(/([^/\\]+)\.md$/);
+  return m ? m[1] : "";
+}
 
 // Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
 function spoilerReason(title: string = ""): "result" | "return" {
@@ -727,7 +738,7 @@ async function githubDeleteVideoFile(env: Env, filename: string): Promise<{ ok: 
 
 type Platform = "telegram" | "facebook" | "instagram" | "x";
 
-async function markSendSuccess(env: Env, platform: Platform, key: string): Promise<void> {
+async function markSendSuccess(env: Env, platform: Platform, key: string, file = ""): Promise<void> {
   if (!key) return;
   const lockKey = `lock:${platform}:${key}`;
   const failKey = `fail:${platform}:${key}`;
@@ -750,9 +761,10 @@ async function markSendSuccess(env: Env, platform: Platform, key: string): Promi
     } catch (e: any) {
       return;
     }
-    if (state[platform]?.[key]) return; // already marked
+    if (state[platform]?.[key] && (!file || state.byFile?.[file])) return; // already marked
 
-    state[platform][key] = Date.now();
+    state[platform][key] = state[platform][key] || Date.now();
+    if (file) { state.byFile = state.byFile || {}; if (!state.byFile[file]) state.byFile[file] = key; }
     if (state.deferrals) delete state.deferrals[`${platform}:${key}`];
     const write = await githubWriteState(env, state, sha, `chore(publish): mark ${platform} sent — ${key}`);
     if (write.ok) return;
@@ -1325,8 +1337,8 @@ function isStoryWorthy(item: { title: string; kind?: string }): boolean {
   if (item.kind === "show" || item.kind === "recap") return true;
   const title = (item.title || "").trim();
   if (isResultsArticle(title)) return true;
-  if (/\b(?:مترجم|كامل|ملخص|تغطية|مشاهدة عرض)\b/i.test(title)) return true;
-  if (/^(?:عاجل|رسمياً|مفاجأة|صدمة|تتويج|تاريخي)\b/i.test(title)) return true;
+  if (/(?<![\u0600-\u06FF])(?:مترجم|كامل|ملخص|تغطية|مشاهدة عرض)(?![\u0600-\u06FF])/.test(title)) return true;
+  if (/^(?:عاجل|رسمياً|مفاجأة|صدمة|تتويج|تاريخي)(?![\u0600-\u06FF])/.test(title)) return true;
   return false;
 }
 
@@ -1800,7 +1812,7 @@ async function instagramVideoWaiting(env: Env): Promise<boolean> {
 
 async function publishToPlatform(
   env: Env, platform: Platform, key: string,
-  item: { title: string; text?: string; url: string; image?: string; kind?: string },
+  item: { title: string; text?: string; url: string; image?: string; kind?: string; file?: string },
   verified: { imageBuffer?: ArrayBuffer; imageContentType?: string }, force: boolean,
 ): Promise<{ status: string; raw?: any }> {
   // Fail closed if state cannot be read; absence of a read is not permission to resend.
@@ -1816,7 +1828,7 @@ async function publishToPlatform(
         : undefined };
   }, { force });
   if (result.ok) {
-    await markSendSuccess(env, platform, key);
+    await markSendSuccess(env, platform, key, item.file || "");
     return { status: result.status === "already_sent" ? "already_sent" : "sent" };
   }
   // deferPublication can throw after exhausting its retries on a persistent
@@ -1938,10 +1950,11 @@ function sanitizePublishedHeadline(title: string): string {
     .replace(arWord("بإشهر"), "بإشهار");
 }
 
-function isResultsArticle(title: string = ""): boolean {
-  return /^نتائج\s+عرض\b/i.test(title) ||
-         /^نتائج\s+تسريبات\b/i.test(title) ||
-         /\bنتائج\s+عرض\b/i.test(title) ||
+// «\b» only knows ASCII word characters: next to Arabic letters it never matches, so this returned
+// false for every Arabic results report and they all went to social with the full title — the
+// winners — and the report's opening instead of the fixed text (CMLL 28 Sep, INCIDENTS #127).
+export function isResultsArticle(title: string = ""): boolean {
+  return /(?<![؀-ۿ])نتائج\s+(?:عرض|تسريبات)(?![؀-ۿ])/.test(title) ||
          /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 
@@ -2210,6 +2223,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   }
   const recentReleases = new Set(Object.entries((state as any).released || {}).filter(([, t]) => Date.now() - Number(t) < WINDOW_MS).map(([k]) => k));
   const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
+  const fileBackfill: Record<string, string> = {};
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
@@ -2242,6 +2256,11 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     let fbDone = !!state.facebook[key];
     let igDone = !!state.instagram[key];
     let xDone = !!state.x[key];
+    // Same file under an earlier URL (its title was edited): it already went out — never again.
+    const file = contentFileId(item);
+    const firstKey = file ? state.byFile?.[file] : "";
+    if (firstKey && firstKey !== key) continue;
+    if (file && !firstKey && (tgDone || fbDone || igDone || xDone)) fileBackfill[file] = key;
     if (tgDone && fbDone && igDone && xDone) continue;
     // A show (a full episode) keeps a 12h window: on a day with six shows, their Instagram
     // posts queued behind the shows' own reels/stories and the news, ran past 3h and would
@@ -2266,6 +2285,18 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       tgDone = true; fbDone = fbDone || !fbCatch; igDone = igDone || !igCatch; xDone = true;
     }
     candidates.push({ item, ts, freshFrom, key, tgDone, fbDone, igDone, xDone });
+  }
+  // Stories that went out before files were recorded: remember their file now (one write a tick)
+  if (Object.keys(fileBackfill).length) {
+    try {
+      const { sha, state: fresh } = await githubReadState(env);
+      fresh.byFile = fresh.byFile || {};
+      let added = 0;
+      for (const [f, k] of Object.entries(fileBackfill)) if (!fresh.byFile[f]) { fresh.byFile[f] = k; added++; }
+      const entries = Object.entries(fresh.byFile);
+      if (entries.length > 3000) fresh.byFile = Object.fromEntries(entries.slice(-2000));
+      if (added) { const w = await githubWriteState(env, fresh, sha, "chore(publish): remember which file each posted story is"); if (w.ok) state.byFile = fresh.byFile; }
+    } catch { /* next tick */ }
   }
 
   // Oldest-incomplete-first within each group, so a steady stream of newer
@@ -2398,6 +2429,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         title: cleanTitle,
         text: cleanSnippet,
         url: env.SITE_ORIGIN + (item.url || ""),
+        file: contentFileId(item),
       };
 
       const tgResult = await publishToPlatform(env, "telegram", key, payload, verify, false);
@@ -2440,7 +2472,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         const v = await verifyLiveOnSite(env, { url: item.url, image: item.image });
         catchUpText = v.bodySnippet || "";
       }
-      const payload = { title: cleanTitle, text: catchUpText, url: env.SITE_ORIGIN + (item.url || "") };
+      const payload = { title: cleanTitle, text: catchUpText, url: env.SITE_ORIGIN + (item.url || ""), file: contentFileId(item) };
       if (canDoFb && takeSlot()) {
         await publishToPlatform(env, "facebook", key, { ...payload, image: item.image, kind: item.kind }, {}, false);
         didWork = true;
@@ -2618,7 +2650,7 @@ async function studioHeld(env: Env) {
  */
 export async function freshPinnedItems(env: Pick<Env, "SITE_ORIGIN">, items: any[]): Promise<any[]> {
   if (!Array.isArray(items) || !items.length) return Array.isArray(items) ? items : [];
-  const index: any[] = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`)).then(r => (r.ok ? r.json() : [])).catch(() => []);
+  const index: any[] = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`)).then((r): Promise<any> => (r.ok ? r.json() : Promise.resolve([]))).catch(() => []);
   const norm = (u: any) => { let x = String(u || ""); try { x = decodeURIComponent(x); } catch { /* keep */ } return x.replace(/index\.html$/, "").replace(/\/?$/, "/"); };
   const byUrl = new Map((Array.isArray(index) ? index : []).map((p: any) => [norm(p.url), p]));
   return items.map((item) => {

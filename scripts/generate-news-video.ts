@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
+import { showReelHtml, posterName, shortDuration } from './show-reel-template';
 
 const ROOT_DIR = process.cwd();
 const NEWS_DIR = path.join(ROOT_DIR, 'content/news');
@@ -241,7 +242,17 @@ export async function generateNewsVideo(inputTarget?: string) {
   }
 
   // Generate index.html for reel (Note: avoid dir="rtl" on <html> for HyperFrames headless capture)
-  const htmlTemplate = `<!doctype html>
+  // Shows: the «الحلبة» poster reel (scripts/show-reel-template.ts). News keep the card below.
+  if (isShow) fs.copyFileSync(path.join(ROOT_DIR, 'assets/logo.png'), path.join(REEL_DIR, 'assets/logo.png'));
+  const htmlTemplate = isShow ? showReelHtml({
+    arTitle: posterName(title),
+    enTitle: secondaryTitle || String(meta.program_name || ''),
+    federation: String(fed),
+    dateLabel: specDate,
+    duration: shortDuration(String(meta.duration || '')) || 'عرض كامل',
+    poster: 'assets/news-cover.jpg',
+    logo: 'assets/logo.png',
+  }) : `<!doctype html>
 <html lang="ar">
   <head>
     <meta charset="UTF-8" />

@@ -1777,3 +1777,89 @@ test('show reel: the Arabic name is never cut — one line, scaled to fit; the E
   assert.ok(cta + ctaH <= 1700, 'above the caption area');
   assert.match(src, /if \(process\.env\.REEL_HTML_ONLY\) return;/);
 });
+
+test('show reel «الحلبة»: the whole poster, names on one line sized to fit, a seekable 8-second timeline', async () => {
+  const { showReelHtml, posterName, shortDuration } = await import('../scripts/show-reel-template');
+  // The date has its own box; «عرض … مترجم» is said by the poster itself
+  assert.equal(posterName('عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم'), 'بروجريس شابتر 198 وين سبتمبر اندز');
+  assert.equal(posterName('عرض سماك داون 25.09.2026 مترجم'), 'سماك داون');
+  assert.equal(shortDuration('03:20:49'), '3:20:49');
+  const html = showReelHtml({ arTitle: 'سماك داون', enTitle: 'WWE Smackdown 25.09.2026', federation: 'WWE', dateLabel: '25 سبتمبر', duration: '1:27:45', poster: 'assets/news-cover.jpg', logo: 'assets/logo.png' });
+  // one line each, measured at the final letter-spacing (the English starts spaced out)
+  assert.match(html, /fit\('ar', 'arIn', 112, 970, 34\); fit\('en', 'enIn', 54, 970, 24, '2px'\)/);
+  assert.match(html, /\.ar \{ white-space: nowrap;/);
+  assert.match(html, /\.en \{ white-space: nowrap;/);
+  // the whole poster: no «cover» crop, the zone takes the image's proportions
+  assert.match(html, /background: url\('assets\/news-cover\.jpg'\) center \/ 100% 100% no-repeat/);
+  assert.match(html, /var ratio = img\.naturalWidth \/ img\.naturalHeight/);
+  // the renderer seeks one paused timeline; the embers are seeded so every render matches
+  assert.match(html, /data-duration="8"/);
+  assert.match(html, /gsap\.timeline\(\{ paused: true \}\)/);
+  assert.match(html, /window\.__timelines\['main'\] = tl;/);
+  assert.match(html, /var seed = 7;/);
+  assert.ok(!/Math\.random/.test(html));
+  // shows use it; news keep their card
+  const gen = fs.readFileSync('scripts/generate-news-video.ts', 'utf8');
+  assert.match(gen, /const htmlTemplate = isShow \? showReelHtml\(\{/);
+});
+
+test('a published story whose title (and so URL) was edited is never posted again; Arabic results titles go out as show + date', async t => {
+  // INCIDENTS #127: fixing «بآربارو» in the CMLL 28 Sep report changed its URL, and the new URL was
+  // posted to Telegram, Facebook and Instagram a second time — with the winners in the title, because
+  // «\b» next to Arabic never matched and the report wasn't recognised as a results report.
+  const { contentFileId, isResultsArticle } = await import('../worker/src/index');
+  assert.equal(contentFileId({ inputPath: './content/news/20260929081500-نتائج-عرض-cmll.md' }), '20260929081500-نتائج-عرض-cmll');
+  assert.equal(isResultsArticle('نتائج عرض CMLL Lunes Clásico (28 سبتمبر 2026): فوز زاندوكان جونيور'), true);
+  assert.equal(isResultsArticle('نتائج تسريبات عرض NXT'), true);
+  assert.equal(isResultsArticle('توني خان يعلن تأبين باك'), false);
+
+  const database = ledger();
+  const now = new Date(Date.now() - 20 * 60_000).toISOString();
+  const inputPath = './content/news/20260929081500-cmll.md';
+  const items = [
+    { url: '/news/edited-title/', inputPath, title: 'نتائج عرض CMLL (28 سبتمبر 2026): فوز باربارو', description: 'x', kind: 'news', date: now, published_at: now },
+    { url: '/news/other-story/', inputPath: './content/news/20260929090000-other.md', title: 'خبر عام', description: 'تفاصيل', kind: 'news', date: now, published_at: now },
+  ];
+  const old = 'httpssitetestnewsold-title';
+  const state: any = { telegram: { [old]: Date.now() }, facebook: { [old]: Date.now() }, instagram: { [old]: Date.now() }, x: { [old]: Date.now() }, cooldowns: {},
+    byFile: { '20260929081500-cmll': old } };
+  const file = '/repos/owner/repo/contents/_data/publish-state.json';
+  database.records.set(file, { sha: 'initial', content: Buffer.from(JSON.stringify(state)).toString('base64') });
+  const telegramTitles: string[] = [];
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const url = String(input);
+    if (url.startsWith('https://site.test/watcher-recent-content.json')) return Response.json(items);
+    if (url.includes('api.telegram.org')) telegramTitles.push(String(init?.body || ''));
+    return database.fetch(input, init);
+  });
+  await runWatcherPoll({ ...env, SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
+  const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
+  assert.ok(!after.telegram['httpssitetestnewsedited-title'], 'the edited-title URL is not posted again');
+  assert.ok(!telegramTitles.some(b => b.includes('باربارو')), 'nothing about it went to Telegram');
+  // the source code keeps the file with every send
+  const src = fs.readFileSync('worker/src/index.ts', 'utf8');
+  assert.match(src, /await markSendSuccess\(env, platform, key, item\.file \|\| ""\)/);
+  assert.match(src, /if \(firstKey && firstKey !== key\) continue;/);
+});
+
+test('a news story whose title was edited keeps its first URL alive: the build redirects it to the new one', async () => {
+  // INCIDENTS #127
+  const { renamedArticleRedirects, toPagesRedirects } = await import('../lib/redirects.cjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-renamed-'));
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-site-'));
+  try {
+    fs.writeFileSync(path.join(dir, '20260929081500-فوز-وبآربارو.md'), '---\ntitle: "فوز وباربارو"\n---\nx');
+    fs.writeFileSync(path.join(dir, '20260929090000-خبر-عادي.md'), '---\ntitle: "خبر عادي"\n---\nx');
+    fs.writeFileSync(path.join(dir, '20260929091000-مثبت.md'), '---\ntitle: "عنوان جديد"\npermalink: "/news/مثبت/index.html"\n---\nx');
+    const extra = renamedArticleRedirects(dir, site);
+    assert.deepEqual(extra, [['/news/فوز-وبآربارو/', '/news/فوز-وباربارو/']]);
+    const out = toPagesRedirects('/news/manual/* /news/kept/:splat 301!\n', site, extra);
+    assert.match(out, /\/news\/فوز-وبآربارو\/ \/news\/فوز-وباربارو\/ 301/);
+    // a written rule always wins, and the limit is never passed
+    const manual = toPagesRedirects('/news/فوز-وبآربارو/* /news/elsewhere/:splat 301!\n', site, extra);
+    assert.ok(!/فوز-وباربارو/.test(manual));
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(site, { recursive: true, force: true });
+  }
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\)\)/);
+});

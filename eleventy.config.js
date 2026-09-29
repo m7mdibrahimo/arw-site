@@ -1577,8 +1577,8 @@ module.exports = function(eleventyConfig) {
       fs.cpSync("assets", "_site/assets", { recursive: true });
     }
     if (fs.existsSync("_redirects")) {
-      const { toPagesRedirects } = require("./lib/redirects.cjs");
-      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8")));
+      const { toPagesRedirects, renamedArticleRedirects } = require("./lib/redirects.cjs");
+      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", renamedArticleRedirects()));
     }
     if (fs.existsSync("_headers")) {
       fs.copyFileSync("_headers", "_site/_headers");
