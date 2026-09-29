@@ -268,3 +268,14 @@ test('the panel lives at /admin/: the old panel is gone and every one of its job
   for (const route of ['/api/studio/tools/social', '/api/studio/tools/sources', '/api/studio/tools/pinned', '/api/studio/tools/reels']) assert.ok(worker.includes(route), route);
   assert.ok(!fs.readFileSync('eleventy.config.js', 'utf8').includes('addPassthroughCopy("admin/'));
 });
+
+test('every name the panel code uses is defined (a missing one crashed the editor in every section)', async () => {
+  // INCIDENTS #109: «maySave is not defined» — the editor showed «حصلت مشكلة» for every show, recap and story.
+  const { execSync } = await import('node:child_process');
+  let out = '';
+  try {
+    execSync('node_modules/.bin/tsc --allowJs --checkJs --noEmit --target es2022 --module esnext --moduleResolution bundler --lib es2022,dom,dom.iterable --skipLibCheck studio/js/app.js', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  } catch (e: any) { out = String(e.stdout || ''); }
+  const undefinedNames = out.split('\n').filter(l => /^studio\/js\//.test(l) && /error TS(2304|2552)/.test(l));
+  assert.deepEqual(undefinedNames, []);
+});

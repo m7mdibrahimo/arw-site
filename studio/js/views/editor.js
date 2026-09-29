@@ -204,6 +204,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
   const me = getUser(), sec = sectionOf(collection);
   const mayCreate = can(me, `${sec}.create`), mayDelete = can(me, `${sec}.delete`);
   const maySave = isNew ? mayCreate : can(me, `${sec}.edit`);
+  S.maySave = maySave; // bindAll() runs outside this function and needs it too
   mount(page, html`
     <div class="editor">
       <header class="editor-head">
@@ -317,7 +318,7 @@ function bindAll() {
   $$('#sec-nav a').forEach(a => a.onclick = (e) => { e.preventDefault(); $(`#sec-${a.dataset.sec}`).scrollIntoView({ behavior: 'smooth', block: 'start' }); });
 
   // Actions
-  if (maySave) $('#save').onclick = () => save();
+  if (S.maySave) $('#save').onclick = () => save();
   else $$('#ed-form input, #ed-form textarea, #ed-form select, #ed-form button').forEach(x => { x.disabled = true; });
   const sn = $('#save-new');
   if (sn) sn.onclick = () => save({ thenNew: true });
@@ -328,7 +329,7 @@ function bindAll() {
     btn.addEventListener('click', (e) => { e.stopPropagation(); pop.hidden = !pop.hidden; });
   });
   document.onkeydown = (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's' && S) { e.preventDefault(); save(); }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's' && S) { e.preventDefault(); if (S.maySave) save(); }
   };
 }
 
