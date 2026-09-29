@@ -42,7 +42,6 @@ function renderShell(user) {
             <button class="tab" type="button">${icon('tools')}الأدوات</button>
             <div class="menu-pop" hidden>
               ${TOOLS.map(t => html`<a href="${t.href}">${icon(t.icon)}${t.title}</a>`)}
-              <a href="/" target="_blank">${icon('globe')}فتح الموقع</a>
             </div>
           </div>` : ''}
         </nav>
@@ -164,7 +163,7 @@ async function route() {
     const user = getUser();
     const sec = (c) => (c === 'nostalgia_series' ? 'nostalgia' : c);
     const noAccess = () => mount(page, html`<div class="empty"><h2>مش مسموحلك تفتح الصفحة دي</h2><p class="muted">لو محتاجها، اطلب الصلاحية من صاحب الموقع.</p><a class="btn" href="#/">الرئيسية</a></div>`);
-    if (parts[0] === 'list' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.view`) ? await renderList(page, parts[1]) : noAccess();
+    if (parts[0] === 'list' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.view`) ? await renderList(page, parts[1], Number(parts[2]) || 1) : noAccess();
     if (parts[0] === 'new' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.create`) ? await renderEditor(page, parts[1], null, { from: parts[2] || null }) : noAccess();
     if (parts[0] === 'edit' && COLLECTIONS[parts[1]] && parts[2]) return can(user, `${sec(parts[1])}.view`) ? await renderEditor(page, parts[1], parts.slice(2).join('/')) : noAccess();
     if (parts[0] === 'settings') return await renderSettings(page);

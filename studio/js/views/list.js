@@ -3,7 +3,7 @@ import { content, siteData, pendingSaves, dropSiteCache, trackLive, getUser } fr
 import { COLLECTIONS, FEDERATIONS } from '../schema.js';
 import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, can, sectionOf } from '../ui.js';
 
-const PAGE = 24;
+const PAGE = 15; // the owner's choice: numbered pages of 15, each its own address (#/list/shows/2)
 const state = {}; // per collection: { q, fed, page, filter }
 
 function slugFromPath(p) { const m = String(p || '').match(/\/([^/]+)\.md$/); return m ? m[1] : ''; }
@@ -29,9 +29,11 @@ async function loadItems(collection) {
   return items.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }
 
-export async function renderList(page, collection) {
+export async function renderList(page, collection, pageNum = 1) {
   const def = COLLECTIONS[collection];
   const st = state[collection] || (state[collection] = { q: '', fed: '', page: 1, filter: '' });
+  st.page = Math.max(1, pageNum);
+  if (pageNum > 1) window.scrollTo(0, 0);
   mount(page, html`
     <div class="wrap page-in">
       <div class="page-title">
@@ -77,10 +79,15 @@ export async function renderList(page, collection) {
         (st.filter === 'missing' && missing(i)) || (st.filter === 'scheduled' && Date.parse(i.date) > now)));
   }
 
+  // A new search or filter starts again at page 1 (the address follows without reloading the list)
+  const firstPage = () => { if (location.hash !== `#/list/${collection}`) history.replaceState(null, '', `#/list/${collection}`); };
+
   function draw() {
     const list = filtered();
-    const shown = list.slice(0, st.page * PAGE);
-    $('#count').textContent = `${num(list.length)} ${list.length === items.length ? '' : `من ${num(items.length)} `}موضوع`;
+    const pages = Math.max(1, Math.ceil(list.length / PAGE));
+    if (st.page > pages) st.page = pages;
+    const shown = list.slice((st.page - 1) * PAGE, st.page * PAGE);
+    $('#count').textContent = `${num(list.length)} ${list.length === items.length ? '' : `من ${num(items.length)} `}موضوع${pages > 1 ? ` · صفحة ${num(st.page)} من ${num(pages)}` : ''}`;
     const box = $('#items');
     if (!list.length) { mount(box, html`<div class="empty"><h3>مفيش نتايج</h3><p class="muted">جرّب كلمة تانية أو شيل الفلاتر.</p></div>`); $('#more').innerHTML = ''; return; }
     const editUrl = (i) => `#/edit/${collection}/${encodeURIComponent(i.slug)}`;
@@ -99,9 +106,19 @@ export async function renderList(page, collection) {
         <a class="icon-btn sm" href="${editUrl(i)}" title="تعديل">${icon('edit')}</a>
         ${can(getUser(), `${sectionOf(collection)}.delete`) ? html`<button class="icon-btn sm danger" data-del="${i.slug}" title="حذف">${icon('trash')}</button>` : ''}
       </span></div>`)}`);
-    $('#more').innerHTML = list.length > shown.length ? `<button class="btn btn-ghost" id="more-btn">عرض ${Math.min(PAGE, list.length - shown.length)} كمان</button>` : '';
-    const mb = $('#more-btn');
-    if (mb) mb.onclick = () => { st.page++; draw(); };
+    // Numbered pages: 1 … around the current one … last. Each is its own address in the panel.
+    const at = (n) => `#/list/${collection}${n > 1 ? `/${n}` : ''}`;
+    const nums = [...new Set([1, pages, st.page - 2, st.page - 1, st.page, st.page + 1, st.page + 2])].filter(n => n >= 1 && n <= pages).sort((a, b) => a - b);
+    const links = [];
+    nums.forEach((n, i) => {
+      if (i && n - nums[i - 1] > 1) links.push('<span class="pager-gap">…</span>');
+      links.push(n === st.page ? `<span class="pager-num on" aria-current="page">${num(n)}</span>` : `<a class="pager-num" href="${at(n)}">${num(n)}</a>`);
+    });
+    $('#more').innerHTML = pages > 1 ? `<nav class="pager" aria-label="الصفحات">
+      ${st.page > 1 ? `<a class="pager-step" href="${at(st.page - 1)}">→ السابقة</a>` : '<span class="pager-step off">→ السابقة</span>'}
+      ${links.join('')}
+      ${st.page < pages ? `<a class="pager-step" href="${at(st.page + 1)}">التالية ←</a>` : '<span class="pager-step off">التالية ←</span>'}
+    </nav>` : '';
     $$('[data-del]', box).forEach(b => b.onclick = () => del(b.dataset.del));
   }
 
@@ -122,8 +139,8 @@ export async function renderList(page, collection) {
     } catch (e) { toast(e.message, 'error'); }
   }
 
-  $('#q').addEventListener('input', debounce(e => { st.q = e.target.value; st.page = 1; draw(); }, 120));
-  $$('#feds .chip').forEach(b => b.onclick = () => { st.fed = b.dataset.fed; st.page = 1; $$('#feds .chip').forEach(x => x.classList.toggle('active', x === b)); draw(); });
-  $$('#filters .chip').forEach(b => b.onclick = () => { st.filter = b.dataset.f; st.page = 1; $$('#filters .chip').forEach(x => x.classList.toggle('active', x === b)); draw(); });
+  $('#q').addEventListener('input', debounce(e => { st.q = e.target.value; st.page = 1; firstPage(); draw(); }, 120));
+  $$('#feds .chip').forEach(b => b.onclick = () => { st.fed = b.dataset.fed; st.page = 1; firstPage(); $$('#feds .chip').forEach(x => x.classList.toggle('active', x === b)); draw(); });
+  $$('#filters .chip').forEach(b => b.onclick = () => { st.filter = b.dataset.f; st.page = 1; firstPage(); $$('#filters .chip').forEach(x => x.classList.toggle('active', x === b)); draw(); });
   draw();
 }

@@ -633,3 +633,11 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
   transform: rotate(-1.2deg) scale(1.03); box-shadow: 0 28px 60px -18px rgba(0,0,0,.55), 0 0 0 3px var(--yellow); opacity: .97; }
 .pin-ghost.landing { transform: none; box-shadow: 0 10px 30px -12px rgba(0,0,0,.4); }
 body.pin-carrying, body.pin-carrying * { cursor: grabbing !important; user-select: none; }
+
+/* Lists: numbered pages */
+.pager { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: center; margin: 22px 0 8px; }
+.pager-num, .pager-step { min-width: 40px; height: 40px; padding: 0 12px; border-radius: 999px; display: inline-grid; place-items: center; font-weight: 800; background: var(--cream); color: var(--ink); }
+.pager-num:hover, .pager-step:hover { background: var(--yellow); color: #141414; }
+.pager-num.on { background: var(--ink); color: var(--on-ink); }
+.pager-step.off { opacity: .35; }
+.pager-gap { padding: 0 4px; color: var(--muted); }
