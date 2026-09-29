@@ -1,5 +1,25 @@
 [
   {
+    "id": 331202,
+    "link": "https://www.fightful.com/wrestling/wxw-pro-wrestling-grand-prix-night-three-results-9-27/",
+    "date": "2026-09-29T19:34:11",
+    "date_gmt": "2026-09-29T23:34:11",
+    "title": {
+      "rendered": "wXw Pro-Wrestling Grand Prix Night Three Results (9/27)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29193338/HTNkA02XkAAFQh-.jpg.webp"
+  },
+  {
+    "id": 331199,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-results-9-29-2026-grayson-waller-defends-the-nxt-title-dusty-cup-continues-more/",
+    "date": "2026-09-29T19:30:00",
+    "date_gmt": "2026-09-29T23:30:00",
+    "title": {
+      "rendered": "WWE NXT Results (9/29/2026): Grayson Waller Defends the NXT Title, Dusty Cup Continues, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29192809/IMG_3687-1.jpg"
+  },
+  {
     "id": 331196,
     "link": "https://www.fightful.com/wrestling/aew-on-hbo-max-schedule-announced-for-october/",
     "date": "2026-09-29T18:17:03",
@@ -278,25 +298,5 @@
       "rendered": "NWA Powerrr Results (9/26)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/07223643/Screenshot-2026-05-07-at-10.36.28-PM.png"
-  },
-  {
-    "id": 331096,
-    "link": "https://www.fightful.com/wrestling/jaida-parker-runs-over-jacob-fatu-joins-the-946-on-wwe-raw/",
-    "date": "2026-09-28T22:33:17",
-    "date_gmt": "2026-09-29T02:33:17",
-    "title": {
-      "rendered": "Jaida Parker Runs Over Jacob Fatu, Joins The 946 On WWE Raw"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28222256/HTWapdcXUAErrhj.jpg"
-  },
-  {
-    "id": 331108,
-    "link": "https://www.fightful.com/wrestling/331108-wwe-raw/",
-    "date": "2026-09-28T22:12:28",
-    "date_gmt": "2026-09-29T02:12:28",
-    "title": {
-      "rendered": "AAA World Cruiserweight Title Bout, Becky Lynch vs. Liv Morgan, More Set For 10/5 WWE Raw"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28221135/HTWXpDkasAAo0EJ.jpg"
   }
 ]
