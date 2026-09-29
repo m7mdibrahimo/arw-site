@@ -1977,3 +1977,12 @@ test('one wrestler, one tag: a part of a longer Arabic name tag is dropped', asy
   assert.deepEqual(dropPartialNameTags(['WWE', 'WWE RAW', 'كيلي كيلي', 'لايلا']), ['WWE', 'WWE RAW', 'كيلي كيلي', 'لايلا']);
   assert.deepEqual(dropPartialNameTags(['باك', 'باك نيفيل']), ['باك نيفيل']);
 });
+
+test('compound ordinals take «ال» and PAC\'s names and AEW\'s National title read as on the rest of the site', async () => {
+  // INCIDENTS #146
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('جلسة في الثاني وعشرين من سبتمبر'), 'جلسة في الثاني والعشرين من سبتمبر');
+  assert.equal(applyCorrections('والحادي والعشرين'), 'والحادي والعشرين');
+  assert.equal(applyCorrections('المعروف باسم باك ونفيل'), 'المعروف باسم باك ونيفيل');
+  assert.equal(applyCorrections('واجه أندرادي على بطولة ناشيونال'), 'واجه أندرادي على بطولة AEW الوطنية');
+});
