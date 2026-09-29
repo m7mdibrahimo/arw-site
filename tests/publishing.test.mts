@@ -1682,6 +1682,19 @@ test('whatever happened ON a show that aired in the last 24h is a spoiler — a 
   assert.equal(happenedOnRecentShow('Spoiler: Two NXT Talents Scheduled For September 28 WWE RAW', 'يستعد عرض WWE RAW الليلة لاستقبال وجهين جديدين', shows), false);
   assert.equal(happenedOnRecentShow('Tony Khan Announces PAC Tribute Show For September 30 AEW Dynamite', 'توني خان يعلن أن عرض داينامايت القادم سيكون تأبينا لباك', shows), false);
   assert.equal(happenedOnRecentShow('Big Match Added During 9/28 WWE RAW', '', []), false, 'no show aired in the last 24h');
+  // Next week's card was made on the show that just aired (INCIDENTS #117) — but tonight's card is a preview
+  const afterRaw = Date.now();
+  const inAWeek = new Date(afterRaw + 6 * 86400_000);
+  const md = `${inAWeek.getUTCMonth() + 1}/${inAWeek.getUTCDate()}`;
+  assert.equal(happenedOnRecentShow(`AAA World Cruiserweight Title Bout, Becky Lynch vs. Liv Morgan, More Set For ${md} WWE Raw`, 'نزال على بطولة AAA الكروزرويت العالمية', shows), true);
+  assert.equal(happenedOnRecentShow('', 'تأكيد عودة رومان رينز وإقامة نزالات عدة في عرض WWE RAW القادم', shows), true);
+  const today = new Date(afterRaw);
+  assert.equal(happenedOnRecentShow(`Matches Set For ${today.getUTCMonth() + 1}/${today.getUTCDate()} WWE Raw`, 'نزالات عرض الليلة', shows), false);
+  // The same-story check is told that a small extra detail or the same card from another source is a duplicate
+  const { duplicatePrompt } = await import('../scripts/editorial');
+  const dp = duplicatePrompt({ title: 'x', body: 'y', tags: [] }, []);
+  assert.match(dp, /تفصيلة صغيرة زيادة على نفس الإعلان/);
+  assert.match(dp, /جدول أو بطاقة نزالات نفس العرض الجاي من مصدرين = تكرار/);
 
   // «28 سبتمبر» at 01:00 UTC on the 29th is not «over 24 hours ago» (the model said it was)
   const now = Date.parse('2026-09-29T01:00:00Z');

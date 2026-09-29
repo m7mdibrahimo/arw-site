@@ -2417,8 +2417,25 @@ export function happenedOnRecentShow(sourceTitle: string, arabicLead: string, sh
       && !/\b(?:will|to (?:appear|face|compete|return)|scheduled|preview|plans?|what to expect|how to watch|start time|lineup|card)\b/.test(en)) return true;
     if (new RegExp(`(?:خلال|أثناء|اثناء|شهد|في ختام|في افتتاح|بعد)\\s+(?:حلقة\\s+)?(?:عرض\\s+)?${s}`).test(ar)
       && !/(?:المقرر|المرتقب|سيشهد|يستعد|ستقام|سيقام|مرشح|توقعات|القادم)/.test(ar)) return true;
+    // Next week's card for the show that just aired was made ON that show: «AAA World Cruiserweight
+    // Title Bout, Becky Lynch vs. Liv Morgan, More Set For 10/5 WWE Raw» went to Telegram, Facebook
+    // and Instagram an hour after RAW went off the air (INCIDENTS #117).
+    const nextEpisodeEn = new RegExp(`\\b(?:set for|confirmed for|announced for|added to|lineup for|card for|for next week'?s)\\s+(?:(\\d{1,2})/(\\d{1,2})\\s+|(${EN_MONTHS.join("|")})\\s+(\\d{1,2})\\s+)?${s}\\b`).exec(en);
+    if (nextEpisodeEn) {
+      const [, mm, dd, mon, day] = nextEpisodeEn;
+      const m = mm ? +mm - 1 : mon ? EN_MONTHS.indexOf(mon) : -1, d = mm ? +dd : day ? +day : 0;
+      if (m < 0 || isDaysAhead(m, d, 3)) return true;
+    }
+    if (new RegExp(`${s}\\s+(?:القادم|المقبل)|${s}\\s+(?:في\\s+)?الأسبوع\\s+(?:القادم|المقبل)`).test(ar)) return true;
   }
   return false;
+}
+
+/** Is month/day at least `days` days after now (this year or, across new year, the next)? */
+function isDaysAhead(month: number, day: number, days: number, now = Date.now()): boolean {
+  const y = new Date(now).getUTCFullYear();
+  const t = [y, y + 1].map(yy => Date.UTC(yy, month, day)).find(x => x > now - 86400_000) ?? 0;
+  return t - now >= (days - 1) * 86400_000;
 }
 
 /**
