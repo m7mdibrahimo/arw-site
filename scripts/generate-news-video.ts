@@ -162,21 +162,23 @@ export async function generateNewsVideo(inputTarget?: string) {
       barHeight = 44;
     }
   } else {
-    // Shows: calibrated to 45px for comfortable, eye-friendly readability on a single line
-    if (title.length > 55) {
-      titleFontSize = 40;
-      barHeight = 34;
-    } else if (title.length > 40) {
-      titleFontSize = 42;
-      barHeight = 36;
-    } else {
-      titleFontSize = 45;
-      barHeight = 38;
-    }
+    // Shows: one line, as large as fits. The fit script below measures the rendered headline and
+    // scales it to the line — «عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم» stopped
+    // shrinking at 36px and was cut to «…مترج» (INCIDENTS #124).
+    titleFontSize = 54;
+    titleLineHeight = 1.3;
+    barHeight = 44;
   }
 
-  const summaryTop = isShow ? 1180 : 1040;
-  const summaryHeight = isShow ? 345 : 520;
+  // Show reels sit lower: the platforms draw their own buttons over the top ~140px of a reel or
+  // story, and the header and poster hid under them. Everything moves down and the blocks tighten
+  // so the call-to-action still ends well above the caption area (owner, 2026-09-29).
+  const L = isShow
+    ? { header: 150, media: 250, mediaH: 500, ribbon: 770, specs: 1026, specH: 160, cta: 1548, ctaH: 120 }
+    : { header: 65, media: 165, mediaH: 530, ribbon: 720, specs: 985, specH: 170, cta: 1555, ctaH: 125 };
+  if (isShow) titleTop = 872;
+  const summaryTop = isShow ? 1206 : 1040;
+  const summaryHeight = isShow ? 320 : 520;
   const summaryPadding = isShow ? '32px 36px' : '40px 42px';
   const summaryTagSize = isShow ? 28 : 36;
   const summaryTextSize = isShow ? 36 : 38;
@@ -314,7 +316,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Top Header */
       .top-header {
         position: absolute;
-        top: 65px;
+        top: ${L.header}px;
         left: 60px;
         right: 60px;
         height: 85px;
@@ -362,10 +364,10 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* 16:9 Showcase Card - Epic Cinema Centerpiece */
       .media-showcase-container {
         position: absolute;
-        top: 165px;
+        top: ${L.media}px;
         left: 60px;
         right: 60px;
-        height: 530px;
+        height: ${L.mediaH}px;
         z-index: 15;
         perspective: 1000px;
       }
@@ -423,7 +425,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Feature Ribbon Directly Below Poster */
       .feature-ribbon {
         position: absolute;
-        top: 720px;
+        top: ${L.ribbon}px;
         left: 60px;
         right: 60px;
         display: flex;
@@ -490,8 +492,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         white-space: nowrap;
         width: max-content;
         max-width: 960px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        ${isShow ? '' : 'overflow: hidden;\n        text-overflow: ellipsis;'}
       }
       .headline-bar {
         display: inline-block;
@@ -511,9 +512,9 @@ export async function generateNewsVideo(inputTarget?: string) {
         display: flex;
         align-items: center;
         gap: 12px;
-        font-size: 30px;
+        font-size: ${isShow ? 38 : 30}px;
         font-weight: 900;
-        line-height: 1.15;
+        line-height: 1.25;
         color: #fbbf24;
         letter-spacing: 0.5px;
         direction: ltr;
@@ -523,15 +524,15 @@ export async function generateNewsVideo(inputTarget?: string) {
         text-shadow: 0 2px 16px rgba(0, 0, 0, 1);
         white-space: nowrap;
         max-width: 960px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        ${isShow ? '' : 'overflow: hidden;\n        text-overflow: ellipsis;'}
       }
+      .secondary-title-text { white-space: nowrap; display: inline-block; }
       .secondary-title::before {
         content: '';
         display: inline-block;
         width: 6px;
         min-width: 6px;
-        height: 24px;
+        height: ${isShow ? 30 : 24}px;
         background: #fbbf24;
         border-radius: 3px;
         box-shadow: 0 0 16px #fbbf24;
@@ -541,7 +542,7 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Show Specs / Stats Grid (Enlarged & Prominent) */
       .specs-grid {
         position: absolute;
-        top: 985px;
+        top: ${L.specs}px;
         left: 60px;
         right: 60px;
         display: grid;
@@ -557,7 +558,7 @@ export async function generateNewsVideo(inputTarget?: string) {
         text-align: center;
         backdrop-filter: blur(18px);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        height: 170px;
+        height: ${L.specH}px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -658,10 +659,10 @@ export async function generateNewsVideo(inputTarget?: string) {
       /* Call To Action Bar - Enlarged & Glowing */
       .bottom-cta {
         position: absolute;
-        top: 1555px;
+        top: ${L.cta}px;
         left: 60px;
         right: 60px;
-        height: 125px;
+        height: ${L.ctaH}px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -727,7 +728,7 @@ export async function generateNewsVideo(inputTarget?: string) {
           <span class="headline-bar"></span>
           <span class="headline-text" id="headlineTextInner">${escapeHtml(title)}</span>
         </h1>
-        ${secondaryTitle ? `<div class="secondary-title" id="secondaryTitle">${escapeHtml(secondaryTitle)}</div>` : ''}
+        ${secondaryTitle ? `<div class="secondary-title" id="secondaryTitle"><span class="secondary-title-text" id="secondaryTitleInner">${escapeHtml(secondaryTitle)}</span></div>` : ''}
       </div>
 
       ${isShow ? `<div class="specs-grid" id="specsGrid">
@@ -804,29 +805,37 @@ export async function generateNewsVideo(inputTarget?: string) {
       window.__timelines["main"] = tl;
       tl.seek(0);
 
-      // ── Auto-fit Arabic headline strictly to single line at maximum legible size ──
-      function fitHeadlineToOneLine() {
-        var el = document.getElementById('headlineText');
-        var inner = document.getElementById('headlineTextInner');
-        if (!el || !inner) return;
-        var maxAllowedWidth = 920; // 960px container minus 40px for bar & margins
-        var currentSize = ${titleFontSize};
-        var minSize = 36; // Keep it bold and clearly readable, never shrink to tiny text
-        el.style.fontSize = currentSize + 'px';
-        while ((inner.offsetWidth + 36) > maxAllowedWidth && currentSize > minSize) {
-          currentSize -= 1;
-          el.style.fontSize = currentSize + 'px';
-        }
+      // ── Headline (and the English title under it) on ONE line, as large as fits ──
+      // Measures the rendered text and scales the font to the line; never cuts it.
+      function fitOneLine(boxId, innerId, avail, maxSize, minSize, barSel, barRatio) {
+        var box = document.getElementById(boxId);
+        var inner = document.getElementById(innerId);
+        if (!box || !inner) return;
+        var size = maxSize;
+        box.style.fontSize = size + 'px';
+        var w = inner.scrollWidth;
+        if (w > avail) size = Math.max(minSize, Math.floor(size * avail / w));
+        box.style.fontSize = size + 'px';
+        while (inner.scrollWidth > avail && size > minSize) { size -= 1; box.style.fontSize = size + 'px'; }
+        var bar = barSel && box.querySelector(barSel);
+        if (bar) bar.style.height = Math.round(size * barRatio) + 'px';
       }
-      fitHeadlineToOneLine();
+      function fitTitles() {
+        ${isShow
+          ? "fitOneLine('headlineText', 'headlineTextInner', 928, " + titleFontSize + ", 26, '.headline-bar', 0.82);\n        fitOneLine('secondaryTitle', 'secondaryTitleInner', 938, 38, 24);"
+          : "fitOneLine('headlineText', 'headlineTextInner', 920, " + titleFontSize + ", 36, null, 0);"}
+      }
+      fitTitles();
       if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(fitHeadlineToOneLine);
+        document.fonts.ready.then(fitTitles);
       }
     </script>
   </body>
 </html>`;
 
   fs.writeFileSync(path.join(REEL_DIR, 'index.html'), htmlTemplate, 'utf-8');
+  // Layout checks: write the page and stop, no video (tests and screenshots)
+  if (process.env.REEL_HTML_ONLY) return;
 
   const baseSlug = path.basename(targetFile, '.md').slice(0, 45);
   const outPath = path.join(OUT_DIR, `reel-${baseSlug}.mp4`);

@@ -1762,3 +1762,18 @@ test('«بتوقيت أمريكا» stays in the story but not in a headline', a
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /rewritten\.title = dropTimezoneFromTitle\(rewritten\.title\)/);
 });
+
+test('show reel: the Arabic name is never cut — one line, scaled to fit; the English name is readable; the layout clears the platforms\' top buttons', () => {
+  // «عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم» was cut to «…مترج» (INCIDENTS #124)
+  const src = fs.readFileSync('scripts/generate-news-video.ts', 'utf8');
+  assert.match(src, /function fitOneLine\(boxId, innerId, avail, maxSize, minSize/);
+  assert.match(src, /Math\.floor\(size \* avail \/ w\)/, 'the size comes from the measured width');
+  assert.match(src, /fitOneLine\('headlineText', 'headlineTextInner', 928, " \+ titleFontSize \+ ", 26/);
+  assert.match(src, /fitOneLine\('secondaryTitle', 'secondaryTitleInner', 938, 38, 24\)/);
+  assert.match(src, /\$\{isShow \? '' : 'overflow: hidden;\\n        text-overflow: ellipsis;'\}/, 'no ellipsis on show reels');
+  const layout = src.match(/\? \{ header: (\d+), media: (\d+), mediaH: (\d+), ribbon: (\d+), specs: (\d+), specH: (\d+), cta: (\d+), ctaH: (\d+) \}/)!.slice(1).map(Number);
+  const [header, , , , , , cta, ctaH] = layout;
+  assert.ok(header >= 140, 'below the platforms\' top buttons');
+  assert.ok(cta + ctaH <= 1700, 'above the caption area');
+  assert.match(src, /if \(process\.env\.REEL_HTML_ONLY\) return;/);
+});
