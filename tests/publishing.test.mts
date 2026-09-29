@@ -1926,3 +1926,13 @@ test('the promotion follows the site\'s recent stories on the same wrestler when
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /federationFromHistory\(rewritten\.federation \|\| "", rewritten\.tags \|\| \[\], `\$\{rawTitle\}\\n\$\{plainText\}`, loadNews\(NEWS_DIR\)\)/);
 });
+
+test('a ring name that is a doubled word survives the repeated-word fix', async () => {
+  // INCIDENTS #138: «Kelly Kelly» came out «كيلي»
+  const { autoFix, checkArticle } = await import('../scripts/news-qa');
+  assert.equal(autoFix('كشفت كيلي كيلي أنها رفضت العرض'), 'كشفت كيلي كيلي أنها رفضت العرض');
+  assert.equal(autoFix('ظهر بووم بووم في العرض'), 'ظهر بووم بووم في العرض');
+  assert.equal(autoFix('المصارع المصارع قال'), 'المصارع قال', 'a real repeat is still fixed');
+  assert.ok(!checkArticle('كيلي كيلي تكشف السبب', 'نص الخبر عن كيلي كيلي', []).some(i => i.code === 'repeated_word'));
+  assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'))['Kelly Kelly'], 'كيلي كيلي');
+});

@@ -66,6 +66,12 @@ interface Rule { code: string; severity: Severity; re: RegExp; message: string; 
 // letter-by-letter spellings of federations ("دبليو دبليو إي", "إيه إيه إيه") and
 // quoted emphasis. Only words of 4+ letters are ever collapsed.
 const LEGIT_DOUBLES = new Set(["بانغ", "بانج", "دبليو", "دابليو", "أبدا", "أبداً", "ابدا", "جدا", "جداً", "كلا", "هيا"]);
+// Ring names that ARE a doubled word — «كيلي كيلي», «بووم بووم», «زي زي» — come from the names
+// glossary: the repeated-word fix turned «Kelly Kelly» into «كيلي» (INCIDENTS #138).
+try {
+  const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")) as Record<string, string>;
+  for (const v of Object.values(names)) for (const m of String(v).matchAll(/(?<!\S)(\S+)\s+\1(?!\S)/g)) LEGIT_DOUBLES.add(m[1]);
+} catch { /* the glossary is optional here */ }
 const SHOW_WORDS = "(?:العرض|عرض|عروض|WWE|AEW|TNA|RAW|Raw|SmackDown|NXT|Dynamite|Collision|Rampage|iMPACT|EVOLVE)";
 
 const RULES: Rule[] = [
