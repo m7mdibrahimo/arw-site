@@ -611,3 +611,13 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .site-btn { white-space: nowrap; }
 @media (max-width: 980px) { .top-actions .site-btn { width: 42px; height: 42px; padding: 0; justify-content: center; } }
 @media (max-width: 560px) { .brand > span { display: none; } .top-actions { gap: 8px; } }
+
+/* Sources: the source's own picture; pinned: drag by the number */
+.row.src-row { grid-template-columns: 26px 58px 1fr auto; }
+.row.src-row .row-main { text-align: right; }
+.drag-handle { cursor: grab; touch-action: none; user-select: none; }
+.pin-row.dragging { opacity: .85; outline: 3px dashed var(--yellow); transform: scale(1.01); }
+.pin-row.dragging .drag-handle { cursor: grabbing; }
+.pin-filters { margin-bottom: 12px; }
+.pin-filters .search-wide { margin-bottom: 0; flex: 1; min-width: 200px; }
+@media (max-width: 640px) { .row.src-row { grid-template-columns: 26px 50px 1fr; } }

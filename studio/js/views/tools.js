@@ -127,9 +127,10 @@ export async function renderSourcesTool(page) {
         <span class="muted small">آخر فحص ${s.lastChecked ? timeAgo(s.lastChecked) : '—'} · ${num(s.posts.filter(p => p.status === 'site').length)} من آخر ${num(s.posts.length)} نزلوا${s.apiCallsToday != null ? ` · ${num(s.apiCallsToday)} طلب كتابة النهارده` : ''}</span></header>
       <div class="rows">${s.posts.map(p => html`<div class="row src-row">
         <label class="row-check">${p.status !== 'site' ? html`<input type="checkbox" data-pick="${p.link}">` : ''}</label>
-        <a class="row-main" href="${p.site ? p.site.url : p.link}" target="_blank"><b dir="auto">${p.site ? p.site.title : p.title}</b>
-          <small><span class="tag ${STATUS[p.status][0]}">${STATUS[p.status][1]}</span> · ${timeAgo(p.date)}${p.site ? html` · <bdi dir="ltr">${p.title}</bdi>` : ''}${p.skipReason ? ` · ${p.skipReason}` : ''}</small></a>
-        <span class="row-actions"><a class="icon-btn sm" href="${p.link}" target="_blank" title="المصدر">${icon('globe')}</a></span>
+        <a class="row-img" href="${p.link}" target="_blank" rel="noopener">${p.image ? html`<img src="${p.image}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ''}</a>
+        <a class="row-main" href="${p.link}" target="_blank" rel="noopener" dir="ltr"><b>${p.title}</b>
+          <small dir="rtl"><span class="tag ${STATUS[p.status][0]}">${STATUS[p.status][1]}</span> · ${timeAgo(p.date)}${p.skipReason ? ` · ${p.skipReason}` : ''}</small></a>
+        <span class="row-actions">${p.site ? html`<a class="btn btn-sm" href="${p.site.url}" target="_blank" title="${p.site.title}">${icon('eye')} خبرنا</a>` : ''}</span>
       </div>`)}</div></section>`)}
     <p class="muted small center">«لسه» يعني البوت لسه مكتبهوش (هيتكتب في الفحص الجاي أو اتأخر). «اتخطى» يعني مكرر أو ملوش لازمة للموقع.</p>
   </div>`);
@@ -164,18 +165,21 @@ export async function renderPinnedTool(page) {
   let items, sha;
   try { const r = await tools.pinned(); items = r.items || []; sha = r.sha; } catch (e) { return mount(page, html`<div class="empty"><h2>مقدرتش أجيب المثبت</h2><p class="muted">${e.message}</p></div>`); }
   const index = (await siteData('search-index.json').catch(() => [])).filter(i => i.url && i.title).sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-  let dirty = false, q = '';
+  let dirty = false, q = '', kind = '';
   mount(page, html`<div class="wrap page-in">
     ${header('المثبت في الرئيسية', 'المواضيع اللي بتظهر في الشريط الكبير أول الصفحة الرئيسية للموقع، بالترتيب.', html`<button class="btn btn-primary" id="save" disabled>${icon('check')} حفظ ونشر</button>`)}
     <section class="panel"><header class="panel-head"><h2>${icon('pin')} المثبت دلوقتي <span class="count-pill" id="count"></span></h2></header><div class="rows" id="pinned"></div></section>
     <section class="panel"><header class="panel-head"><h2>${icon('plus')} ثبّت موضوع</h2></header>
-      <div class="search search-wide">${icon('search')}<input id="q" placeholder="ابحث في مواضيع الموقع…"></div><div class="rows" id="avail"></div></section>
+      <div class="filterbar pin-filters">
+        <div class="seg" id="kinds">${[['', 'الكل'], ['show', 'عروض'], ['recap', 'ملخصات'], ['news', 'أخبار'], ['nostalgia', 'نوستالجيا']].map(([k, l]) => html`<button type="button" data-kind="${k}" class="${k ? '' : 'on'}">${l}</button>`)}</div>
+        <div class="search search-wide">${icon('search')}<input id="q" placeholder="ابحث في مواضيع الموقع…"></div>
+      </div><div class="rows" id="avail"></div></section>
   </div>`);
   const mark = () => { dirty = true; $('#save').disabled = false; };
   const drawPinned = () => {
     $('#count').textContent = num(items.length);
-    mount($('#pinned'), items.length ? html`${items.map((it, n) => html`<div class="row pin-row">
-      <span class="pin-rank">${num(n + 1)}</span>
+    mount($('#pinned'), items.length ? html`${items.map((it, n) => html`<div class="row pin-row" data-row="${n}">
+      <span class="pin-rank drag-handle" data-drag="${n}" title="اسحب لفوق أو لتحت">${num(n + 1)}</span>
       <span class="row-img">${it.image ? html`<img src="${img(it.image)}" alt="">` : ''}</span>
       <span class="row-main"><b>${it.title}</b><small><bdi dir="ltr">${it.subtitle || ''}</bdi> · ${it.federation || ''} · ${it.kindLabel || KIND[it.kind] || ''}</small>
         <label class="pin-badge">الشارة <input class="input" data-badge="${n}" value="${it.badge || ''}" maxlength="30"></label></span>
@@ -188,10 +192,38 @@ export async function renderPinnedTool(page) {
     $$('[data-down]').forEach(b => b.onclick = () => { const n = +b.dataset.down; [items[n + 1], items[n]] = [items[n], items[n + 1]]; mark(); drawPinned(); });
     $$('[data-rm]').forEach(b => b.onclick = () => { items.splice(+b.dataset.rm, 1); mark(); drawPinned(); drawAvail(); });
     $$('[data-badge]').forEach(i => i.oninput = () => { items[+i.dataset.badge].badge = i.value; mark(); });
+    // Drag a row by its number to a new place (mouse, finger or pen). The dragged row itself
+    // never moves in the page — its neighbours move around it — so the browser keeps following
+    // the pointer (moving the row that holds the pointer made it drop the drag half-way).
+    $$('[data-drag]').forEach(h => h.onpointerdown = (e) => {
+      e.preventDefault();
+      const box = $('#pinned'), row = h.closest('.pin-row');
+      row.classList.add('dragging');
+      try { h.setPointerCapture(e.pointerId); } catch {}
+      const move = (ev) => {
+        const over = document.elementFromPoint(ev.clientX, ev.clientY)?.closest('.pin-row');
+        if (!over || over === row || over.parentNode !== box) return;
+        const rows = $$('.pin-row', box);
+        if (rows.indexOf(over) > rows.indexOf(row)) box.insertBefore(over, row);
+        else box.insertBefore(over, row.nextSibling);
+      };
+      const end = () => {
+        window.removeEventListener('pointermove', move);
+        window.removeEventListener('pointerup', end);
+        window.removeEventListener('pointercancel', end);
+        row.classList.remove('dragging');
+        const order = $$('.pin-row', box).map(r => +r.dataset.row);
+        if (order.some((v, i) => v !== i)) { items = order.map(i => items[i]); mark(); }
+        drawPinned();
+      };
+      window.addEventListener('pointermove', move);
+      window.addEventListener('pointerup', end);
+      window.addEventListener('pointercancel', end);
+    });
   };
   const drawAvail = () => {
     const have = new Set(items.map(i => i.url));
-    const list = index.filter(i => !q || normalizeArabic(`${i.headline || ''} ${i.title}`).includes(q)).slice(0, 15);
+    const list = index.filter(i => (!kind || i.kind === kind) && (!q || normalizeArabic(`${i.headline || ''} ${i.title}`).includes(q))).slice(0, 15);
     mount($('#avail'), html`${list.map(i => html`<div class="row">
       <span class="row-img">${i.image ? html`<img src="${img(i.image)}" alt="" loading="lazy">` : ''}</span>
       <span class="row-main"><b>${i.headline || i.title}</b><small>${KIND[i.kind] || ''} · ${i.federation || ''} · ${timeAgo(i.date)}</small></span>
@@ -206,6 +238,7 @@ export async function renderPinnedTool(page) {
     });
   };
   $('#q').oninput = debounce((e) => { q = normalizeArabic(e.target.value.trim()); drawAvail(); }, 200);
+  $$('#kinds button').forEach(b => b.onclick = () => { kind = b.dataset.kind; $$('#kinds button').forEach(x => x.classList.toggle('on', x === b)); drawAvail(); });
   $('#save').onclick = async () => {
     const b = $('#save'); b.disabled = true; b.classList.add('loading');
     try {

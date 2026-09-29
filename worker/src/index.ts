@@ -2696,6 +2696,8 @@ async function studioSources(env: Env) {
       const date = gmt ? (/[zZ]|[+-]\d\d:?\d\d$/.test(gmt) ? gmt : `${gmt}Z`) : String(p.date || "");
       return {
         id, link: String(p.link || ""), title, date,
+        // The source's own picture, as it is on the source (only http(s) links)
+        image: /^https?:\/\//.test(String(p.featured_image || "")) ? String(p.featured_image) : "",
         status: site ? "site" : done.has(id) || skipReason ? "skipped" : "waiting",
         site: site ? { url: site.url, title: site.title } : null,
         skipReason,
