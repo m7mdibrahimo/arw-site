@@ -595,8 +595,9 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 
 /* ═══ Breadcrumbs ═══ */
 .arw-crumbs{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:0 0 14px; font-size:13px; font-weight:700; color:var(--muted); }
-.arw-crumbs a{ color:var(--muted); text-decoration:none; padding:2px 0; border-bottom:1px dashed transparent; transition:color .2s ease, border-color .2s ease; }
-.arw-crumbs a:hover{ color:var(--teal); border-color:var(--teal); }
+/* Hover only turns the link green — no dashed line under it (the owner's choice) */
+.arw-crumbs a{ color:var(--muted); text-decoration:none; padding:2px 0; transition:color .2s ease; }
+.arw-crumbs a:hover{ color:var(--teal); text-decoration:none; }
 .arw-crumbs a:last-child{ color:var(--ink); }
 .arw-crumbs span{ opacity:.55; }
 
