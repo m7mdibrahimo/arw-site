@@ -181,7 +181,7 @@ export async function renderPinnedTool(page) {
   const drawPinned = () => {
     $('#count').textContent = num(items.length);
     mount($('#pinned'), items.length ? html`${items.map((it, n) => html`<div class="row pin-row" data-row="${n}">
-      <span class="pin-rank drag-handle" data-drag="${n}" title="اسحب لفوق أو لتحت">${num(n + 1)}</span>
+      <span class="pin-rank">${num(n + 1)}</span>
       <span class="row-img">${it.image ? html`<img src="${img(it.image)}" alt="">` : ''}</span>
       <span class="row-main"><b>${it.title}</b><small><bdi dir="ltr">${it.subtitle || ''}</bdi> · ${it.federation || ''} · ${it.kindLabel || KIND[it.kind] || ''}</small>
         <label class="pin-badge">الشارة <input class="input" data-badge="${n}" value="${it.badge || ''}" maxlength="30"></label></span>
@@ -194,33 +194,93 @@ export async function renderPinnedTool(page) {
     $$('[data-down]').forEach(b => b.onclick = () => { const n = +b.dataset.down; [items[n + 1], items[n]] = [items[n], items[n + 1]]; mark(); drawPinned(); });
     $$('[data-rm]').forEach(b => b.onclick = () => { items.splice(+b.dataset.rm, 1); mark(); drawPinned(); drawAvail(); });
     $$('[data-badge]').forEach(i => i.oninput = () => { items[+i.dataset.badge].badge = i.value; mark(); });
-    // Drag a row by its number to a new place (mouse, finger or pen). The dragged row itself
-    // never moves in the page — its neighbours move around it — so the browser keeps following
-    // the pointer (moving the row that holds the pointer made it drop the drag half-way).
-    $$('[data-drag]').forEach(h => h.onpointerdown = (e) => {
-      e.preventDefault();
-      const box = $('#pinned'), row = h.closest('.pin-row');
-      row.classList.add('dragging');
-      try { h.setPointerCapture(e.pointerId); } catch {}
-      const move = (ev) => {
-        const over = document.elementFromPoint(ev.clientX, ev.clientY)?.closest('.pin-row');
-        if (!over || over === row || over.parentNode !== box) return;
-        const rows = $$('.pin-row', box);
-        if (rows.indexOf(over) > rows.indexOf(row)) box.insertBefore(over, row);
-        else box.insertBefore(over, row.nextSibling);
+    // Pick a row up from anywhere on it and carry it: a copy of the card follows the pointer
+    // over the whole page, the other rows slide aside to show where it will land, the page
+    // scrolls on its own near the top/bottom edge, and on release the card glides into place.
+    // Mouse: press and move. Finger: press and hold a moment, then move (a quick swipe scrolls).
+    $$('.pin-row', $('#pinned')).forEach(row => row.onpointerdown = (e) => {
+      if (e.button > 0 || e.target.closest('button, input, a, label')) return;
+      const box = $('#pinned');
+      const startX = e.clientX, startY = e.clientY;
+      let px = startX, py = startY, dragging = false, ghost = null, offX = 0, offY = 0, raf = 0, holdTimer = 0;
+      const touch = e.pointerType === 'touch';
+      const cleanup = () => {
+        clearTimeout(holdTimer); cancelAnimationFrame(raf);
+        window.removeEventListener('pointermove', onMove);
+        window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('pointercancel', onUp);
+        document.removeEventListener('touchmove', blockScroll);
       };
-      const end = () => {
-        window.removeEventListener('pointermove', move);
-        window.removeEventListener('pointerup', end);
-        window.removeEventListener('pointercancel', end);
-        row.classList.remove('dragging');
-        const order = $$('.pin-row', box).map(r => +r.dataset.row);
-        if (order.some((v, i) => v !== i)) { items = order.map(i => items[i]); mark(); }
-        drawPinned();
+      const blockScroll = (ev) => { if (dragging) ev.preventDefault(); };
+      // Slide the rows between their old and new places (FLIP)
+      const slide = (change) => {
+        const rows = $$('.pin-row', box).filter(r => r !== row);
+        const before = new Map(rows.map(r => [r, r.getBoundingClientRect().top]));
+        change();
+        for (const r of rows) {
+          const dy = before.get(r) - r.getBoundingClientRect().top;
+          if (!dy) continue;
+          r.style.transition = 'none'; r.style.transform = `translateY(${dy}px)`;
+          requestAnimationFrame(() => { r.style.transition = 'transform .22s cubic-bezier(.2,.8,.2,1)'; r.style.transform = ''; });
+        }
       };
-      window.addEventListener('pointermove', move);
-      window.addEventListener('pointerup', end);
-      window.addEventListener('pointercancel', end);
+      const start = () => {
+        dragging = true;
+        const r = row.getBoundingClientRect();
+        offX = px - r.left; offY = py - r.top;
+        ghost = row.cloneNode(true);
+        ghost.classList.add('pin-ghost');
+        Object.assign(ghost.style, { width: `${r.width}px`, left: `${r.left}px`, top: `${r.top}px` });
+        document.body.appendChild(ghost);
+        row.classList.add('pin-slot');
+        document.body.classList.add('pin-carrying');
+        if (navigator.vibrate) try { navigator.vibrate(12); } catch {}
+        const tick = () => {
+          ghost.style.left = `${px - offX}px`; ghost.style.top = `${py - offY}px`;
+          // Where would it land? Between the rows whose middles the pointer lies between.
+          const others = $$('.pin-row', box).filter(x => x !== row);
+          const after = others.find(x => { const b = x.getBoundingClientRect(); return py < b.top + b.height / 2; });
+          if ((after || null) !== row.nextElementSibling || (!after && box.lastElementChild !== row)) {
+            slide(() => (after ? box.insertBefore(row, after) : box.appendChild(row)));
+          }
+          // Near the edge of the window: scroll along
+          const edge = 80, vh = window.innerHeight;
+          if (py < edge) window.scrollBy(0, -Math.ceil((edge - py) / 6));
+          else if (py > vh - edge) window.scrollBy(0, Math.ceil((py - (vh - edge)) / 6));
+          raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      };
+      const onMove = (ev) => {
+        px = ev.clientX; py = ev.clientY;
+        if (dragging) return;
+        const far = Math.hypot(px - startX, py - startY) > 6;
+        if (touch) { if (far) cleanup(); } // moved before the hold: the finger wants to scroll
+        else if (far) start();
+      };
+      const onUp = () => {
+        cleanup();
+        if (!dragging) return;
+        dragging = false;
+        document.body.classList.remove('pin-carrying');
+        // Glide the card into its new slot, then put the list in that order
+        const target = row.getBoundingClientRect();
+        ghost.style.transition = 'left .2s ease, top .2s ease, transform .2s ease, box-shadow .2s ease';
+        ghost.classList.add('landing');
+        ghost.style.left = `${target.left}px`; ghost.style.top = `${target.top}px`;
+        setTimeout(() => {
+          ghost.remove();
+          row.classList.remove('pin-slot');
+          const order = $$('.pin-row', box).map(r => +r.dataset.row);
+          if (order.some((v, i) => v !== i)) { items = order.map(i => items[i]); mark(); }
+          drawPinned();
+        }, 210);
+      };
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
+      document.addEventListener('touchmove', blockScroll, { passive: false });
+      if (touch) holdTimer = setTimeout(start, 280);
     });
   };
   const drawAvail = () => {

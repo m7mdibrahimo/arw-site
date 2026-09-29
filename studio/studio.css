@@ -623,3 +623,13 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 @media (max-width: 640px) { .row.src-row { grid-template-columns: 26px 50px 1fr; } }
 
 .src-reason { color: var(--ink) !important; opacity: .8; }
+
+/* Pinned: carry a row anywhere on the page */
+.pin-row { cursor: grab; touch-action: pan-y; }
+.pin-row input, .pin-row button { cursor: auto; }
+.pin-slot { background: transparent !important; outline: 2px dashed var(--yellow); outline-offset: -2px; }
+.pin-slot > * { visibility: hidden; }
+.pin-ghost { position: fixed; z-index: 1000; margin: 0; pointer-events: none; cursor: grabbing;
+  transform: rotate(-1.2deg) scale(1.03); box-shadow: 0 28px 60px -18px rgba(0,0,0,.55), 0 0 0 3px var(--yellow); opacity: .97; }
+.pin-ghost.landing { transform: none; box-shadow: 0 10px 30px -12px rgba(0,0,0,.4); }
+body.pin-carrying, body.pin-carrying * { cursor: grabbing !important; user-select: none; }
