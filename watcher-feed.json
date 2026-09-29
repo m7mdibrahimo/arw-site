@@ -1,5 +1,25 @@
 [
   {
+    "id": 331089,
+    "link": "https://www.fightful.com/wrestling/331089-pac-wwe/",
+    "date": "2026-09-28T20:12:58",
+    "date_gmt": "2026-09-29T00:12:58",
+    "title": {
+      "rendered": "WWE Pays Tribute To PAC (Neville)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28201100/HTV6gLfWsAA1D_z.jpg"
+  },
+  {
+    "id": 331090,
+    "link": "https://www.fightful.com/mma/raoni-barcelos-gives-update-after-scary-stoppage-at-ufc-fight-night/",
+    "date": "2026-09-28T20:11:26",
+    "date_gmt": "2026-09-29T00:11:26",
+    "title": {
+      "rendered": "Raoni Barcelos Gives Update After Scary Stoppage At UFC Fight Night"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27000254/Screenshot-2026-09-27-at-12.02.23-AM.png"
+  },
+  {
     "id": 331081,
     "link": "https://www.fightful.com/wrestling/tnt-extreme-sirens-fury-total-carnage-results-9-27/",
     "date": "2026-09-28T19:19:04",
@@ -278,25 +298,5 @@
       "rendered": "Tavion Heights Says Getting To Wrestle The Hardys Was &#8216;Life Changing&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28090636/maxresdefault-178.jpg"
-  },
-  {
-    "id": 330974,
-    "link": "https://www.fightful.com/wrestling/wwe-signs-highlights-deal-with-bleacher-report/",
-    "date": "2026-09-28T08:49:12",
-    "date_gmt": "2026-09-28T12:49:12",
-    "title": {
-      "rendered": "WWE Signs Highlights Deal With Bleacher Report"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25190119/wwe_110.png?v=20260928124912"
-  },
-  {
-    "id": 330967,
-    "link": "https://www.fightful.com/wrestling/tavion-heights-i-didnt-know-my-best-friend-was-a-bum-hes-the-scum-of-the-earth/",
-    "date": "2026-09-28T08:43:39",
-    "date_gmt": "2026-09-28T12:43:39",
-    "title": {
-      "rendered": "Tavion Heights: I Didn&#8217;t Know My Best Friend Was A Bum, He&#8217;s The Scum Of The Earth"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/05164615/053_NXT_08042026CK_23567.jpg"
   }
 ]
