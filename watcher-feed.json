@@ -1,5 +1,15 @@
 [
   {
+    "id": 331169,
+    "link": "https://www.fightful.com/wrestling/cinta-de-oro-says-hed-love-to-return-to-wwe-for-another-sin-cara-run/",
+    "date": "2026-09-29T16:09:01",
+    "date_gmt": "2026-09-29T20:09:01",
+    "title": {
+      "rendered": "Cinta De Oro Says He&#8217;d Love To Return To WWE For Another Sin Cara Run"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2019/12/28022637/cinta_de_oro.png"
+  },
+  {
     "id": 331170,
     "link": "https://www.fightful.com/wrestling/wwe-raw-9-21-drops-back-to-2-5-million-views-on-netflix/",
     "date": "2026-09-29T15:55:38",
@@ -200,6 +210,16 @@
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29010247/E8524BFC-A729-4B08-984E-FF18DB23E954-1.jpg"
   },
   {
+    "id": 331148,
+    "link": "https://www.fightful.com/wrestling/kemalito-pays-tribute-to-benjamin-satterley-pac/",
+    "date": "2026-09-29T00:45:28",
+    "date_gmt": "2026-09-29T04:45:28",
+    "title": {
+      "rendered": "KeMalito Pays Tribute To Benjamin Satterley (PAC)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29123200/Screenshot-495.png"
+  },
+  {
     "id": 331098,
     "link": "https://www.fightful.com/wrestling/nwa-powerrr-results-9-26/",
     "date": "2026-09-28T23:30:00",
@@ -278,25 +298,5 @@
       "rendered": "Raoni Barcelos Gives Update After Scary Stoppage At UFC Fight Night"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27000254/Screenshot-2026-09-27-at-12.02.23-AM.png"
-  },
-  {
-    "id": 331081,
-    "link": "https://www.fightful.com/wrestling/tnt-extreme-sirens-fury-total-carnage-results-9-27/",
-    "date": "2026-09-28T19:19:04",
-    "date_gmt": "2026-09-28T23:19:04",
-    "title": {
-      "rendered": "TNT Extreme Sirens Fury Total Carnage Results (9/27)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28191839/HRduoVSbEAAP_fw-1.jpg.webp"
-  },
-  {
-    "id": 331062,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-results-9-28-2026-stephanie-vaquer-appears-bloodline-calls-out-946-more/",
-    "date": "2026-09-28T19:15:00",
-    "date_gmt": "2026-09-28T23:15:00",
-    "title": {
-      "rendered": "WWE Raw Results (9/28/2026): Stephanie Vaquer Appears, Bloodline Calls Out 946, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28180712/IMG_3468.jpg"
   }
 ]
