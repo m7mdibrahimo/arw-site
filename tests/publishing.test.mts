@@ -1960,3 +1960,12 @@ test('a news page carries no video in its HTML: YouTube is a thumbnail until cli
   assert.match(layout, /closest\('\.yt-facade-btn'\)/, 'a click turns the thumbnail into the player');
   assert.ok(!/embedDiv\.innerHTML = '<div class="embed-skeleton-card youtube-skeleton">/.test(layout), 'the in-page YouTube embed is a thumbnail too');
 });
+
+test('a word broken between Arabic and lowercase Latin is flagged for the copy editor; real Latin names are not', async () => {
+  // INCIDENTS #143: «شخصية أك uma الشهيرة»
+  const { checkArticle } = await import('../scripts/news-qa');
+  const codes = (b: string) => checkArticle('عنوان خبر عادي عن المصارعة', b, []).map(i => i.code);
+  assert.ok(codes('يستعد رومان رينز للظهور بدور شخصية أك uma الشهيرة، وذلك قبل طرح فيلم ستريت فايتر المرتقب في دور السينما').includes('broken_word'));
+  assert.ok(!codes('تحدثت تشيلسي غرين مع زوجها عبر منصة SiriusXM عن أغاني إمينيم، وخلال برنامج Good Karma Wrestling قال ألين').includes('broken_word'));
+  assert.ok(!codes('ظهر في برنامج Two Count Tuesday وتحدث عن WWE وAEW بعد عرض All Out الأخير في شيكاغو أمام الجماهير').includes('broken_word'));
+});
