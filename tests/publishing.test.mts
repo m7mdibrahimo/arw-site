@@ -2049,3 +2049,8 @@ test('a weekly show dated to a day it does not air on is flagged, and one tweet 
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /const key = `x:\$\{tweetId\}`/);
 });
+
+test('«first televised title defense» is not «his first television title» (INCIDENTS #153)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('يستعد غرايسون والر للدفاع عن لقبه التلفزيوني الأول منذ تتويجه'), 'يستعد غرايسون والر لخوض أول دفاع تلفزيوني عن لقبه منذ تتويجه');
+});
