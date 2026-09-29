@@ -1682,6 +1682,12 @@ test('whatever happened ON a show that aired in the last 24h is a spoiler — a 
   assert.equal(happenedOnRecentShow('Spoiler: Two NXT Talents Scheduled For September 28 WWE RAW', 'يستعد عرض WWE RAW الليلة لاستقبال وجهين جديدين', shows), false);
   assert.equal(happenedOnRecentShow('Tony Khan Announces PAC Tribute Show For September 30 AEW Dynamite', 'توني خان يعلن أن عرض داينامايت القادم سيكون تأبينا لباك', shows), false);
   assert.equal(happenedOnRecentShow('Big Match Added During 9/28 WWE RAW', '', []), false, 'no show aired in the last 24h');
+  // An earlier episode named after «خلال عرض RAW» is history, not tonight (INCIDENTS #119)
+  assert.equal(happenedOnRecentShow('WWE Preparing For Naomi Return After Pregnancy Hiatus', 'WWE تستعد لعودة نايومي بعد فترة غياب بسبب الحمل وكانت نايومي قد تخلت عن بطولة العالم للسيدات خلال عرض WWE RAW في شهر أغسطس من عام 2025 بعد إعلان حملها', shows), false);
+  assert.equal(happenedOnRecentShow('', 'فاز باللقب خلال عرض WWE RAW الأسبوع الماضي', shows), false);
+  const nowD = new Date();
+  const AR = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+  assert.equal(happenedOnRecentShow('', `وقع الثنائي العقد خلال عرض WWE RAW الذي أقيم يوم ${nowD.getUTCDate()} ${AR[nowD.getUTCMonth()]} ${nowD.getUTCFullYear()}`, shows), true, 'tonight\'s date is tonight');
   // Next week's card was made on the show that just aired (INCIDENTS #117) — but tonight's card is a preview
   const afterRaw = Date.now();
   const inAWeek = new Date(afterRaw + 6 * 86400_000);

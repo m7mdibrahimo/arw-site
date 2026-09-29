@@ -2415,8 +2415,11 @@ export function happenedOnRecentShow(sourceTitle: string, arabicLead: string, sh
     const s = show.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     if (new RegExp(`\\b(?:during|on|at|after)\\s+(?:this week'?s\\s+|monday'?s\\s+|last night'?s\\s+|tonight'?s\\s+)?(?:\\d{1,2}/\\d{1,2}(?:/\\d{2,4})?\\s+)?${s}\\b`).test(en)
       && !/\b(?:will|to (?:appear|face|compete|return)|scheduled|preview|plans?|what to expect|how to watch|start time|lineup|card)\b/.test(en)) return true;
-    if (new RegExp(`(?:خلال|أثناء|اثناء|شهد|في ختام|في افتتاح|بعد)\\s+(?:حلقة\\s+)?(?:عرض\\s+)?${s}`).test(ar)
-      && !/(?:المقرر|المرتقب|سيشهد|يستعد|ستقام|سيقام|مرشح|توقعات|القادم)/.test(ar)) return true;
+    // «تخلت عن اللقب خلال عرض WWE RAW في شهر أغسطس من عام 2025» is history, not tonight (INCIDENTS #119):
+    // a date, a year or «الماضي/منذ» right after the show name means another episode.
+    const onShow = new RegExp(`(?:خلال|أثناء|اثناء|شهد|في ختام|في افتتاح|بعد)\\s+(?:حلقة\\s+)?(?:عرض\\s+)?${s}(.{0,70})`, "g");
+    if (!/(?:المقرر|المرتقب|سيشهد|يستعد|ستقام|سيقام|مرشح|توقعات|القادم)/.test(ar)
+      && [...ar.matchAll(onShow)].some(m => !isOtherEpisode(m[1]))) return true;
     // Next week's card for the show that just aired was made ON that show: «AAA World Cruiserweight
     // Title Bout, Becky Lynch vs. Liv Morgan, More Set For 10/5 WWE Raw» went to Telegram, Facebook
     // and Instagram an hour after RAW went off the air (INCIDENTS #117).
@@ -2429,6 +2432,22 @@ export function happenedOnRecentShow(sourceTitle: string, arabicLead: string, sh
     if (new RegExp(`${s}\\s+(?:القادم|المقبل)|${s}\\s+(?:في\\s+)?الأسبوع\\s+(?:القادم|المقبل)`).test(ar)) return true;
   }
   return false;
+}
+
+/** Words right after «خلال عرض X» that place it on an earlier episode: «الماضي», a past year, a date
+ *  that isn't today or yesterday. «… الذي أقيم يوم 28 سبتمبر 2026» the night of the show is tonight. */
+function isOtherEpisode(after: string, now = Date.now()): boolean {
+  if (/(?:الماضي|الماضية|السابق|السابقة|منذ|قبل\s+\S+\s+(?:أيام|أسابيع|أشهر|سنوات|سنة|شهر))/.test(after)) return true;
+  const year = new Date(now).getUTCFullYear();
+  if ((after.match(/\b(?:19|20)\d{2}\b/g) || []).some(y => +y !== year)) return true;
+  const dates = statedMonthDays(after);
+  if (dates.length) {
+    const recent = [0, 1].map(i => new Date(now - i * 86400_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
+    return !dates.some(x => recent.some(r => r.m === x.m && r.d === x.d));
+  }
+  // A bare month («في شهر أغسطس») with no day is another episode unless it is this month
+  const month = AR_MONTHS.findIndex(m => after.includes(m));
+  return month >= 0 && month !== new Date(now).getUTCMonth();
 }
 
 /** Is month/day at least `days` days after now (this year or, across new year, the next)? */
