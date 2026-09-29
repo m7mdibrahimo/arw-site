@@ -1,68 +1,68 @@
 {
- "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-29T00:36:13.723Z"
- },
  "https://www.fightful.com/wrestling/331089-pac-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:04.433Z"
+  "at": "2026-09-29T00:48:01.137Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-9-28-2026-stephanie-vaquer-appears-bloodline-calls-out-946-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-09-29T00:37:04.308Z"
+  "at": "2026-09-29T00:48:00.968Z"
  },
  "https://www.fightful.com/wrestling/eddie-kingston-rusev-jeff-jarrett-nia-jax-more-pay-tribute-to-pac-benjamin-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:04.248Z"
+  "at": "2026-09-29T00:48:00.896Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-to-be-a-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:04.122Z"
+  "at": "2026-09-29T00:48:00.744Z"
  },
  "https://www.fightful.com/wrestling/report-no-indications-of-foul-play-or-trauma-in-death-of-pac-benjamin-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.997Z"
+  "at": "2026-09-29T00:48:00.528Z"
  },
  "https://www.fightful.com/wrestling/john-cena-sting-young-bucks-more-pay-tribute-to-pac-benjamin-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.873Z"
+  "at": "2026-09-29T00:48:00.383Z"
  },
  "https://www.fightful.com/wrestling/details-on-wwe-bleacher-report-deal-how-it-affects-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.784Z"
+  "at": "2026-09-29T00:48:00.285Z"
  },
  "https://www.fightful.com/wrestling/newcastle-football-club-pay-tribute-to-pac-benjamin-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.700Z"
+  "at": "2026-09-29T00:48:00.187Z"
  },
  "https://www.fightful.com/wrestling/triple-h-pays-tribute-to-pac-neville": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.555Z"
+  "at": "2026-09-29T00:48:00.021Z"
  },
  "https://www.fightful.com/wrestling/even-more-wrestling-personalities-remember-pac-benjamin-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.449Z"
+  "at": "2026-09-29T00:47:59.894Z"
  },
  "https://www.fightful.com/wrestling/ricochet-defends-spot-that-led-to-steven-borden-injury-no-one-is-at-fault-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:37:03.344Z"
+  "at": "2026-09-29T00:47:59.773Z"
  },
  "https://www.fightful.com/wrestling/wrestling-personalities-continue-to-pay-tribute-to-pac-benjamin-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-09-29T00:27:01.277Z"
+  "at": "2026-09-29T00:47:59.603Z"
+ },
+ "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-09-29T00:36:13.723Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-september-28-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
