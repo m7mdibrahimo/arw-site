@@ -243,6 +243,14 @@ export function tonightInTitle(title: string, now = Date.now()): string {
   return title.replace(re, (all, day, month) => (+day === d && months.indexOf(month) === m ? " الليلة" : all)).replace(/\s{2,}/g, " ").trim();
 }
 
+/**
+ * «(بتوقيت أمريكا)» explains a date inside a story; in a headline it is clutter: «WWE RAW 28 سبتمبر 2026
+ * (بتوقيت أمريكا): ثلاثة أمور كرهناها…» (INCIDENTS #122). The body keeps it.
+ */
+export function dropTimezoneFromTitle(title: string): string {
+  return title.replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim();
+}
+
 export function numberWordsInTitle(title: string): string {
   // «ثاندر روزا تتحدث ثاندر روزا عن نزالها…»: the subject written again after its verb (INCIDENTS #96)
   title = title.replace(/^((?:[^\s:]+\s+){0,3}[^\s:]+)\s+([^\s:]+)\s+\1(?=\s)/, "$1 $2");

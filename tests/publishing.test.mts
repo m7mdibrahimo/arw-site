@@ -1752,3 +1752,13 @@ test('a results report names the match type from the sides in the source line �
   const corrections = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf8')).corrections;
   assert.ok(corrections.some((c: any) => c.wrong === 'أحدث عرض من عرض'));
 });
+
+test('«بتوقيت أمريكا» stays in the story but not in a headline', async () => {
+  const { dropTimezoneFromTitle } = await import('../scripts/news-qa');
+  // INCIDENTS #122
+  assert.equal(dropTimezoneFromTitle('WWE RAW 28 سبتمبر 2026 (بتوقيت أمريكا): ثلاثة أمور كرهناها وثلاثة أحببناها'), 'WWE RAW 28 سبتمبر 2026: ثلاثة أمور كرهناها وثلاثة أحببناها');
+  assert.equal(dropTimezoneFromTitle('نتائج عرض AEW Dynamite يوم 30 سبتمبر بتوقيت أمريكا'), 'نتائج عرض AEW Dynamite يوم 30 سبتمبر');
+  assert.equal(dropTimezoneFromTitle('توني خان يعلن تأبين باك'), 'توني خان يعلن تأبين باك');
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(src, /rewritten\.title = dropTimezoneFromTitle\(rewritten\.title\)/);
+});

@@ -5,7 +5,7 @@ title: PROGRESS Chapter 198 When September Ends
 headline: عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم
 program_name: PROGRESS Wrestling
 is_annual: true
-description: عرض بروجرس ذا اوديسي تور برمنجهام مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض بروجريس شابتر 198 وين سبتمبر اندز مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-27
 date: 2026-09-29T07:46:00.000+03:00
 duration: 03:20:49

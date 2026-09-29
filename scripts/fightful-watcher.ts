@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, type NewsFile } from "./news-qa";
+import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3973,6 +3973,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   rewritten.title = numberWordsInTitle(resultsTitleOutcome(draft.title, draft.body));
   if (!isShowResultsArticle(rawTitle, plainText)) rewritten.title = tonightInTitle(rewritten.title);
+  rewritten.title = dropTimezoneFromTitle(rewritten.title);
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 

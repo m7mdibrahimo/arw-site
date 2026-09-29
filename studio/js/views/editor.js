@@ -245,9 +245,12 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
 
 // ── Template («املأ من آخر حلقة» / «التالي») ───────────────────────────────
 function applyTemplate(src, { keepTitle = true } = {}) {
-  for (const k of ['federation', 'program_name', 'show_type', 'is_annual', 'description', 'season_number', 'nostalgia_series', 'series_type']) {
+  // Not the description: it names that episode («عرض بروجرس ذا اوديسي تور برمنجهام…» landed on
+  // Chapter 198 — INCIDENTS #123). It follows the new headline instead.
+  for (const k of ['federation', 'program_name', 'show_type', 'is_annual', 'season_number', 'nostalgia_series', 'series_type']) {
     if (src[k] !== undefined && src[k] !== '' && src[k] !== false && src[k] !== null) S.data[k] = src[k];
   }
+  S.data.description = ''; S.auto.description = true;
   if (src.collection === 'nostalgia' && src.nostalgia_order) S.data.nostalgia_order = Number(src.nostalgia_order) + 1;
   // Year-specific tags («AEW All Out 2026») belong to that edition only
   if (Array.isArray(src.tags) && src.tags.length) S.data.tags = src.tags.filter(tg => !/(?:^|\D)(?:19|20)\d{2}(?:\D|$)/.test(tg));
@@ -261,7 +264,7 @@ function updateFromDate() {
   if (!S.template || !ev) return;
   if (S.auto.headline) { const h = nextHeadline(S.template.headline, ev); if (h) S.data.headline = h; }
   if (S.auto.title) { const t = nextHeadline(S.template.title, ev); if (t) S.data.title = t; }
-  if (S.auto.description && S.data.headline && !S.data.description) S.data.description = descriptionFromHeadline(S.data.headline);
+  if (S.auto.description && S.data.headline) S.data.description = descriptionFromHeadline(S.data.headline);
 }
 
 // ── Binding ────────────────────────────────────────────────────────────────
@@ -288,6 +291,8 @@ function bindAll() {
     if (k === 'duration') v = formatDuration(v);
     S.data[k] = v;
     if (k === 'event_date') { updateFromDate(); setVal('#f-headline', S.data.headline); setVal('#f-title', S.data.title); setVal('#f-desc', S.data.description); }
+    // Until the description is typed by hand it follows the Arabic headline
+    if (k === 'headline' && S.auto.description) { S.data.description = descriptionFromHeadline(v); setVal('#f-desc', S.data.description); }
     if (k === 'maintenance') $('#mnote') && $('#mnote').classList.toggle('hidden', !v);
     if (/^downloads_/.test(k)) { const c = $(`#cnt-${k}`); if (c) c.textContent = `${textToLines(v).length} رابط`; }
     if (k === 'title' && S.collection === 'news') titleHint();

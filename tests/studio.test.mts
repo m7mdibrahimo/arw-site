@@ -323,3 +323,13 @@ test('the panel\'s Arabic headings have room: no tight line-height or negative l
   assert.ok(Number(rule('.page-title p').match(/margin-top:\s*(\d+)px/)![1]) >= 8);
   assert.ok(Number(rule('.page-title .back').match(/margin-bottom:\s*(\d+)px/)![1]) >= 14);
 });
+
+test('a new episode from the last one does not inherit that episode\'s description — it follows the new headline', () => {
+  // PROGRESS Chapter 198 went live with «عرض بروجرس ذا اوديسي تور برمنجهام…» from the episode before (INCIDENTS #123)
+  const src = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  const tpl = src.slice(src.indexOf('function applyTemplate('), src.indexOf('function updateFromDate('));
+  assert.ok(!/'description'/.test(tpl.match(/for \(const k of \[([^\]]*)\]/)![1]), 'description is not copied');
+  assert.match(tpl, /S\.data\.description = ''; S\.auto\.description = true;/);
+  assert.match(src, /if \(S\.auto\.description && S\.data\.headline\) S\.data\.description = descriptionFromHeadline\(S\.data\.headline\);/);
+  assert.match(src, /if \(k === 'headline' && S\.auto\.description\) \{ S\.data\.description = descriptionFromHeadline\(v\);/);
+});
