@@ -318,7 +318,10 @@ export function newSubject(draft: ArticleDraft, matched: { title: string; body: 
   for (const tag of draft.tags) {
     const t = tag.trim();
     if (t.length < 3 || !/[؀-ۿ]/.test(t) || generic.test(t)) continue;
-    if (draft.title.includes(t) && !seen.includes(t)) return t;
+    // Every word of the name must be missing: «ساين غاي ريك» is the «ريك أتشبيرغر» the other
+    // story is about, and «باتيستا» is «ديف باتيستا» — a nickname or a longer form is not someone new.
+    const words = t.split(/\s+/).filter(w => w.length >= 3 && !/^(ال|إل|ذا|دي|فان)$/.test(w));
+    if (draft.title.includes(t) && words.length && words.every(w => !seen.includes(w))) return t;
   }
   return null;
 }

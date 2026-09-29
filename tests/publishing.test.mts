@@ -2028,3 +2028,13 @@ test('a story about someone the matched story never mentions is published whatev
   const arrived = [{ file: 'b.md', title: 'وفاة ريك أتشبيرغر', body: 'توفي ريك أتشبيرغر المعروف بسين جاي', tags: ['ريك أتشبيرغر'], date: now }];
   assert.deepEqual(await crossRunDuplicates(mine ? [mine] : [], arrived, async () => '{"duplicate_of":0,"reason":"نفس الحدث"}', now), []);
 });
+
+test('a nickname or a longer form of a name is not a new subject that overrules a duplicate (INCIDENTS #151)', async () => {
+  const { newSubject } = await import('../scripts/editorial');
+  const { applyCorrections } = await import('../scripts/news-qa');
+  const wi = { title: 'نجم WWE السابق ديف باتيستا يعلق على وفاة ريك أتشبيرغر الملقب بصاحب اللافتات', body: 'انضم ديف باتيستا إلى المودعين', tags: ['ديف باتيستا', 'ريك أتشبيرغر'] };
+  assert.equal(newSubject({ title: 'باتيستا يشيد بـ «ساين غاي ريك» بعد وفاته', body: '', tags: ['باتيستا', 'ساين غاي ريك', 'ريك أتشبيرغر'] }, wi), null);
+  // a person the other story never mentions still is
+  assert.equal(newSubject({ title: 'إل كيماليتو يكرم باك', body: '', tags: ['إل كيماليتو', 'باك'] }, { title: 'ذا روك يشيد بـ باك', body: 'ذا روك', tags: ['ذا روك', 'باك'] }), 'إل كيماليتو');
+  assert.equal(applyCorrections('رحيل ريك أخبرغر وريك أتشبيرجر'), 'رحيل ريك أتشبيرغر وريك أتشبيرغر');
+});
