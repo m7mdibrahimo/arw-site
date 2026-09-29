@@ -2392,9 +2392,19 @@ export async function judgeSocialSpoiler(title: string, body: string, sourceTitl
   // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. After
   // that it is ordinary news and goes out like any other story.
   const now = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
+  // Weekday arithmetic is where the model slipped («السبت الماضي… ضمن الـ24 ساعة» on a Tuesday —
+  // INCIDENTS #110): hand it the last week's days with their dates and ages instead.
+  const AR_DAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+  const AR_MONTHS_FULL = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+  const days = Array.from({ length: 8 }, (_, i) => {
+    const d = new Date(Date.now() - i * 86400_000);
+    const label = i === 0 ? "النهارده" : i === 1 ? "امبارح" : `من ${i} أيام`;
+    return `${AR_DAYS[d.getUTCDay()]} ${d.getUTCDate()} ${AR_MONTHS_FULL[d.getUTCMonth()]} = ${label}${i >= 2 ? " (أكتر من ٢٤ ساعة أكيد)" : ""}`;
+  }).join("، ");
   const prompt = `أنت مراجع لمنشورات صفحات موقع عرب راسلنج على السوشيال ميديا. المتابعين مش عايزين «حرق»: أي معلومة تكشف نتيجة نزال أو عودة/ظهور لمصارع قبل ما يشوفوا العرض بنفسهم.
 قاعدة صاحب الموقع: الحرق مدته ٢٤ ساعة بس. أي نزال أو عودة حصل من أكتر من ٢٤ ساعة بقى خبر عادي ومش حرق.
 الوقت دلوقتي: ${now}.${sourceDate ? ` المصدر نشر الخبر: ${sourceDate}.` : ""}
+الأيام (بتوقيت جرينتش): ${days}. استخدم الجدول ده لأي «يوم كذا اللي فات» في النص، ومتحسبش بنفسك. عرض أمريكي بليل ممكن يبقى تاريخه بتوقيت جرينتش اليوم اللي بعده.
 
 المنشور هيحتوي بالظبط على العنوان وأول الخبر ده (مش أكتر):
 العنوان: ${JSON.stringify(title)}
