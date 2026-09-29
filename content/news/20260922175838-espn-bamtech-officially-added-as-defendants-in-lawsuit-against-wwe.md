@@ -10,7 +10,7 @@ tags:
   - WWE
   - WWE RAW
   - الدعوى القضائية
-  - أخبار المصارعة الحرة
+  - أخبار المصارعة
   - WWE Network
 image: /content/images/y90xy4dprvzyepjb.jpg
 layout: post-layout.njk

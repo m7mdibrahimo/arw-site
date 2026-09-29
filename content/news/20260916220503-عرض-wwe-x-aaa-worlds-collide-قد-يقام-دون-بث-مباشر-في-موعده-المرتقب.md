@@ -10,7 +10,7 @@ tags:
   - AAA
   - Worlds Collide
   - عروض المصارعة
-  - أخبار المصارعة الحرة
+  - أخبار المصارعة
 image: /content/images/9fsfc2zuaipncp7h.jpg
 layout: post-layout.njk
 ---

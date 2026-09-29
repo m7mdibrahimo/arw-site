@@ -10,7 +10,7 @@ tags:
   - Peak Wrestling
   - ACW
   - تحرش جنسي
-  - أخبار المصارعة الحرة
+  - أخبار المصارعة
   - تحقيقات الكواليس
 image: /content/images/khl79h7t64l4v2rt.jpg
 layout: post-layout.njk

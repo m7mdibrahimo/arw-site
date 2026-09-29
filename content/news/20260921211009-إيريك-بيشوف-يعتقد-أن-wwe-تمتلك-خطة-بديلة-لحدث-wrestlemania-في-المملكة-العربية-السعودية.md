@@ -10,7 +10,7 @@ tags:
   - WrestleMania
   - إيريك بيشوف
   - المملكة العربية السعودية
-  - أخبار المصارعة الحرة
+  - أخبار المصارعة
 image: /content/images/lne96nsvfuh29ddz.jpg
 layout: post-layout.njk
 ---

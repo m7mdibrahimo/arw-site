@@ -10,7 +10,7 @@ tags:
   - براون ستروومان
   - Million Dollar Secret
   - تلفزيون الواقع
-  - أخبار المصارعة الحرة
+  - أخبار المصارعة
 image: /content/images/j0y0lz8rtrcg4jwg.jpg
 layout: post-layout.njk
 ---
