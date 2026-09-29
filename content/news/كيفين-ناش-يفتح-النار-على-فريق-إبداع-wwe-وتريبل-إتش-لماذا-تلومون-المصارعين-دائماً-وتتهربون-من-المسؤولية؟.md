@@ -10,7 +10,7 @@ tags:
   - Dominik Mysterio
   - WWE
   - WWE Creative
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/7mw462j0il8um4ed.jpg
 layout: post-layout.njk
 ---

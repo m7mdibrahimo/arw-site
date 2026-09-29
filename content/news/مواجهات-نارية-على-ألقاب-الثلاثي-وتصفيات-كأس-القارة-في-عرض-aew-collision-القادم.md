@@ -11,7 +11,7 @@ tags:
   - Mercedes Mone
   - Nigel McGuinness
   - Roderick Strong
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/j4oqr23t5k6h17wk.jpg
 layout: post-layout.njk
 ---

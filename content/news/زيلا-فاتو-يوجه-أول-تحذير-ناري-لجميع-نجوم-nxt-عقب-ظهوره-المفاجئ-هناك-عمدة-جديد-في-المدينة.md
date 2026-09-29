@@ -9,7 +9,7 @@ tags:
   - The Bloodline
   - Tony D’Angelo
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/6dancslqjk62macc.jpg
 layout: post-layout.njk
 ---

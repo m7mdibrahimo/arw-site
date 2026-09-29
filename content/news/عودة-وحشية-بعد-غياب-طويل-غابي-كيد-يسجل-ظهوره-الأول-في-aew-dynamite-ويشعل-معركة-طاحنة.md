@@ -6,7 +6,7 @@ tags:
   - جيب كيد
   - AEW Dynamite
   - AEW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/0lwttgv2e9xq41w8.jpg
 layout: post-layout.njk
 ---

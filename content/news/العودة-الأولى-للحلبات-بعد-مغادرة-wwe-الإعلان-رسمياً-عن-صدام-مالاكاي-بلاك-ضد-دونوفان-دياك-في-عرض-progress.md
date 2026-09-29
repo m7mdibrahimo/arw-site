@@ -8,7 +8,7 @@ tags:
   - دونوفان ديجاك
   - Malakai Black
   - PROGRESS Wrestling
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/is9tr79g0kqhm8fu.jpg
 layout: post-layout.njk
 ---

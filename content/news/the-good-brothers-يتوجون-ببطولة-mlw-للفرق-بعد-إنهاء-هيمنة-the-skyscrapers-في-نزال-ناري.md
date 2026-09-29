@@ -15,7 +15,7 @@ tags:
   - MLW
   - MLW Fusion
   - MLW Tag Team Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/gg9dzumcr2iicgv8.jpg
 layout: post-layout.njk
 ---

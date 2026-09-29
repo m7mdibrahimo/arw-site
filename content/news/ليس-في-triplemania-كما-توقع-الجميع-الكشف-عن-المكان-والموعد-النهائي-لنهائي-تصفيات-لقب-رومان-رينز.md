@@ -10,7 +10,7 @@ tags:
   - دراغون لي
   - لا باركا
   - ديف ميلتزر
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/8javzvjvsp1796qg.jpg
 layout: post-layout.njk
 ---

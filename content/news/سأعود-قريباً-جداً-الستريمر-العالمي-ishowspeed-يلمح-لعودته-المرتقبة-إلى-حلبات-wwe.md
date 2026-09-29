@@ -7,7 +7,7 @@ tags:
   - IShowSpeed
   - WWE
   - لوغان بول
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/acue0jawgmyifams.jpg
 layout: post-layout.njk
 ---

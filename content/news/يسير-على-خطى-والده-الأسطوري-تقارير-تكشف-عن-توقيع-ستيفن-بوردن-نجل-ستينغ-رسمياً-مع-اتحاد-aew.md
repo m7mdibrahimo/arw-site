@@ -9,7 +9,7 @@ tags:
   - توني خان
   - Sting
   - Steven Borden
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/08umjtnb8qbhy8zv.jpg
 layout: post-layout.njk
 ---

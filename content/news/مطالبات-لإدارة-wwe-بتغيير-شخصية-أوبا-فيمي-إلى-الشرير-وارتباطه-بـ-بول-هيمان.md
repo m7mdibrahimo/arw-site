@@ -11,7 +11,7 @@ tags:
   - Mark Henry
   - Paul Heyman
   - WWE RAW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/beopukwn4fricfm7.jpg
 layout: post-layout.njk
 ---

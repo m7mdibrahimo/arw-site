@@ -7,7 +7,7 @@ tags:
   - TNA iMPACT
   - TNA
   - نسب المشاهدات
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/16yyn2twwyddqogh.jpg
 layout: post-layout.njk
 ---

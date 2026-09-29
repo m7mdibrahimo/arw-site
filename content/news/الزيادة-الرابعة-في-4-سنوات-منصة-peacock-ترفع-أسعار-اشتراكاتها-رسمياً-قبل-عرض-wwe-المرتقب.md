@@ -7,7 +7,7 @@ tags:
   - Peacock
   - WWE
   - Sunday Nights Main Event
-  - اخبار المصارعة
+  - أخبار المصارعة
   - خدمات البث
 image: /content/images/1brphq26omisfxur.jpg
 layout: post-layout.njk

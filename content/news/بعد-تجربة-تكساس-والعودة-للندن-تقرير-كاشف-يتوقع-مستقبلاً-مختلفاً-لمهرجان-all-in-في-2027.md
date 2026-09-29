@@ -10,7 +10,7 @@ tags:
   - Wembley Stadium
   - Google Trends
   - AEW Tickets
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/q4fohqu4jbhmkfy0.jpg
 layout: post-layout.njk
 ---

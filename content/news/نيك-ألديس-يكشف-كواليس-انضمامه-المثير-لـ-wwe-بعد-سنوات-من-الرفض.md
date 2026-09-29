@@ -15,7 +15,7 @@ tags:
   - DDP
   - WWE
   - SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/qjznp1nsiqxlcvb6.jpg
 layout: post-layout.njk
 ---

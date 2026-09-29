@@ -10,7 +10,7 @@ tags:
   - MJF
   - Jon Moxley
   - Jay White
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/image-3.png
 layout: post-layout.njk
 ---

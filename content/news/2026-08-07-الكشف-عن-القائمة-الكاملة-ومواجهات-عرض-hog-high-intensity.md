@@ -8,7 +8,7 @@ tags:
   - HOG
   - Eddie Kingston
   - The Hardys
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/screenshot-2026-08-06-at-7.49.16-pm.png
 layout: post-layout.njk
 ---

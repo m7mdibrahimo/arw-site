@@ -9,7 +9,7 @@ tags:
   - Triple H
   - WrestleMania
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/wh9gr8veycwmhf7y.jpg
 layout: post-layout.njk
 ---

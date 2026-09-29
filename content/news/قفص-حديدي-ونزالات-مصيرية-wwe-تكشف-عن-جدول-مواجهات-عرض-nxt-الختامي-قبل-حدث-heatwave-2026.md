@@ -9,7 +9,7 @@ tags:
   - Rey Fenix
   - ZARIA
   - قفص حديدي
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/vo8e7pebt7vokfh7.jpg
 layout: post-layout.njk
 ---

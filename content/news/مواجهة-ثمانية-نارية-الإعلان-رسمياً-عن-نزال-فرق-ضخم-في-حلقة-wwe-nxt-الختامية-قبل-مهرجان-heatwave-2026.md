@@ -11,7 +11,7 @@ tags:
   - BirthRight
   - تشارلي ديمبسي
   - روبرت ستون
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/jeiddd93j4pwj3ju.jpg
 layout: post-layout.njk
 ---

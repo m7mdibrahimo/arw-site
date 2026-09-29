@@ -7,7 +7,7 @@ tags:
   - The Miz
   - WWE
   - SummerSlam
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/mhifznrdrdzwbeeu.jpg
 layout: post-layout.njk
 ---

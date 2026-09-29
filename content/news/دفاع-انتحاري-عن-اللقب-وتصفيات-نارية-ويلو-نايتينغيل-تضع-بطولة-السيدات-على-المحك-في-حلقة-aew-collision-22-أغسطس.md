@@ -7,7 +7,7 @@ tags:
   - AEW
   - AEW Collision
   - ويلو نايتينغيل
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/bw6kxl6y4p3i2c0r.jpg
 layout: post-layout.njk
 ---

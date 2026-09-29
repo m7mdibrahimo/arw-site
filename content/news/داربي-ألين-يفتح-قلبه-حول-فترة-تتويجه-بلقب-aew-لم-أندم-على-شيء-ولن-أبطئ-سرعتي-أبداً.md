@@ -8,7 +8,7 @@ tags:
   - AEW
   - AEW World Championship
   - Tommaso Ciampa
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/zdes7ough5siidz2.jpg
 layout: post-layout.njk
 ---

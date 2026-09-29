@@ -4,7 +4,7 @@ title: شراكة مبتكرة بين TNA وعلامة DUDE Wipes.. والتمي
 date: 2026-08-07T03:02:00.000+03:00
 tags:
   - TNA
-  - اخبار المصارعة
+  - أخبار المصارعة
   - TNA Wrestling
 image: /content/images/6-1-.jpg
 layout: post-layout.njk

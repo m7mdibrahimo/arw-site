@@ -8,7 +8,7 @@ tags:
   - The Bloodline
   - Logan Paul
   - WrestleVotes
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/748mejnk7dd63axi.jpg
 layout: post-layout.njk
 ---

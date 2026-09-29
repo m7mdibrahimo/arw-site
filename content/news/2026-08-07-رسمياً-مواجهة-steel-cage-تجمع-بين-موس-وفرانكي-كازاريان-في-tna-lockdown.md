@@ -7,7 +7,7 @@ tags:
   - Moose
   - Frankie Kazarian
   - TNA Lockdown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/62b2ca366ae2923f59930fdf99c58c66-1-1.jpg
 layout: post-layout.njk
 ---

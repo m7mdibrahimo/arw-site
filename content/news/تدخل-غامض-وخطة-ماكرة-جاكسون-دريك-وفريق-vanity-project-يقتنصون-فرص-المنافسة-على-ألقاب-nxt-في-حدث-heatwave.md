@@ -10,7 +10,7 @@ tags:
   - Vanity Project
   - شيلو هيل
   - ناراكو
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5iu15pdcbx6pb79u.jpg
 layout: post-layout.njk
 ---

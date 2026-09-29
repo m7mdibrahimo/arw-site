@@ -7,7 +7,7 @@ tags:
   - AEW
   - AEW Dynamite
   - Grand Slam Mexico
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/enrstvfi60nxwhi7.jpg
 layout: post-layout.njk
 ---

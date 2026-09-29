@@ -7,7 +7,7 @@ tags:
   - Bronson Reed
   - The Vision
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/oudmvprzr71edo7p.jpg
 layout: post-layout.njk
 ---

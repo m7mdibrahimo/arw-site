@@ -8,7 +8,7 @@ tags:
   - CM Punk
   - WWE
   - NXT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/aic9c064ksxg61ak.jpg
 layout: post-layout.njk
 ---

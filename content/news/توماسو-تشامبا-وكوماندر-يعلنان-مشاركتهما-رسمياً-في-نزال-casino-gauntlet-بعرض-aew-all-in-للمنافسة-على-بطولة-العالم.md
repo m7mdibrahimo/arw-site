@@ -15,7 +15,7 @@ tags:
   - AEW All In
   - Casino Gauntlet
   - AEW Collision
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/1uzujtqdvxx95dn2.jpg
 layout: post-layout.njk
 ---

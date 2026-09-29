@@ -10,7 +10,7 @@ tags:
   - WWE
   - AEW
   - SummerSlam
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hpjkplcxgaasqly.jpeg
 layout: post-layout.njk
 ---

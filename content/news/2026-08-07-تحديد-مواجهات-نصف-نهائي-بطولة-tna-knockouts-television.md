@@ -6,7 +6,7 @@ tags:
   - TNA
   - TNA iMPACT
   - Indi Hartwell
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/closer-look-at-the-knockouts-tv-championship-v0-whljjbo8ecah1-e1783045344792.jpg
 layout: post-layout.njk
 ---

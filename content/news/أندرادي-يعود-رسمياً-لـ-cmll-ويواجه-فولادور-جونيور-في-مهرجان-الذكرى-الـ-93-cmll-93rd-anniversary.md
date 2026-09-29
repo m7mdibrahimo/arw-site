@@ -11,7 +11,7 @@ tags:
   - CMLL
   - CMLL 93 Anniversary
   - Lucha Libre
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ooyawsfjmzyl0l2b.jpg
 layout: post-layout.njk
 ---

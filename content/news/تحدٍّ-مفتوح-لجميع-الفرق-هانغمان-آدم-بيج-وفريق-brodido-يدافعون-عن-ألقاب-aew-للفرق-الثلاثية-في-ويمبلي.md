@@ -13,7 +13,7 @@ tags:
   - بانديدو
   - بطولة الفرق الثلاثية
   - ملعب ويمبلي
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/u6l7farfiz452kvv.jpg
 layout: post-layout.njk
 ---

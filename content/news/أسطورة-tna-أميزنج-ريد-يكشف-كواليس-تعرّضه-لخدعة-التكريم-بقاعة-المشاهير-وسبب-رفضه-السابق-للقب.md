@@ -9,7 +9,7 @@ tags:
   - Frankie Kazarian
   - Slammiversary
   - X Division
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/zn9mapgxl250fwi8.jpg
 layout: post-layout.njk
 ---

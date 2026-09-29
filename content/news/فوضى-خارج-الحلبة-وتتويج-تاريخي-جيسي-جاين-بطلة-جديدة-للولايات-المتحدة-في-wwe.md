@@ -14,7 +14,7 @@ tags:
   - WWE
   - SmackDown
   - Womens US Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/wxlj3xkkkb7oayr7.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - ويل أوسبراي
   - Will Ospreay
   - ويلو نايتينغيل
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/aphkv2bg14jzuw4f.jpg
 layout: post-layout.njk
 ---

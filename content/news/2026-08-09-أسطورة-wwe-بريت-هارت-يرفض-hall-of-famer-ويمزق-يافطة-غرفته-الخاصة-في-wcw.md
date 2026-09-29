@@ -8,7 +8,7 @@ tags:
   - WWE
   - Hulk Hogan
   - Eric Bischoff
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/d4iv94x7lzdh4dms.jpg
 layout: post-layout.njk
 ---

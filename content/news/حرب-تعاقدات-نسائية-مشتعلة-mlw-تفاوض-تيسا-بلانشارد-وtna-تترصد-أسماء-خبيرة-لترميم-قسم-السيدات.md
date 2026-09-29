@@ -10,7 +10,7 @@ tags:
   - TNA
   - MLW
   - Knockouts
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/oaftat4cm8r5xevs.jpg
 layout: post-layout.njk
 ---

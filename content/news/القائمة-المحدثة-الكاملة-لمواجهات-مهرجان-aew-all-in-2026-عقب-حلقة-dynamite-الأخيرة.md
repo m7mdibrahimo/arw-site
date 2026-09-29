@@ -11,7 +11,7 @@ tags:
   - Kyle Fletcher
   - Kazuchika Okada
   - Wembley Stadium
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/874d6ztwy03d5i48.jpg
 layout: post-layout.njk
 ---

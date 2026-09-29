@@ -7,7 +7,7 @@ tags:
   - Yushin Hatazawa
   - Young Lion
   - Road to Destruction
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/n84hibx01eyo3tmq.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - AAA
   - عرض AAA Guerra De Titanes
   - اتحاد AAA
-  - اخبار المصارعة
+  - أخبار المصارعة
   - المصارعة الحرة
 image: /content/images/mjs1cm0v0bhd782f.jpg
 layout: post-layout.njk

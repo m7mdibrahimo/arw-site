@@ -7,7 +7,7 @@ tags:
   - Ilja Dragunov
   - WWE
   - WWE RAW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/im6jdjvsco0rrgri.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - قضايا ومحاكم
   - PLE
   - Disney
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/8driuz6cyvdc3wwn.jpg
 layout: post-layout.njk
 ---

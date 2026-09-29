@@ -9,7 +9,7 @@ tags:
   - Triple H
   - Bo Dallas
   - Chris Van Vliet
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/r2gi5f9ccllt7gyp.jpg
 layout: post-layout.njk
 ---

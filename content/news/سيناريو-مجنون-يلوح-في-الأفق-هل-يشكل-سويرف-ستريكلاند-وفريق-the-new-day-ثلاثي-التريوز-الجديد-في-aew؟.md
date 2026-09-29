@@ -12,7 +12,7 @@ tags:
   - AEW All In
   - AEW Dynamite
   - AEW Trios Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/n0gi8i0sjx2jaxrn.jpg
 layout: post-layout.njk
 ---

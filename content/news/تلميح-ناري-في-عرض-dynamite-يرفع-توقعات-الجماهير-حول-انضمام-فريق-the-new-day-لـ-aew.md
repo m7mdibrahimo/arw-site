@@ -11,7 +11,7 @@ tags:
   - AEW Dynamite
   - All In London
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/kreimp99gq2vtbwt.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - Jon Moxley
   - AEW
   - Cactus Jack
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/nkkarhiibwohzdrq.jpg
 layout: post-layout.njk
 ---

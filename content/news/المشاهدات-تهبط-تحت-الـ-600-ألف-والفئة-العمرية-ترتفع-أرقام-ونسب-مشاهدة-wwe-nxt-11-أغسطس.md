@@ -6,7 +6,7 @@ tags:
   - WWE NXT
   - نسب المشاهدات
   - Zilla Fatu
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/9n9itb97tgwvkukk.jpg
 layout: post-layout.njk
 ---

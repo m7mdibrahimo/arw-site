@@ -8,7 +8,7 @@ tags:
   - MLW
   - The Skyscrapers
   - Fightful
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/t4jdtgn7c5x9hm32.jpg
 layout: post-layout.njk
 ---

@@ -11,7 +11,7 @@ tags:
   - Shane Taylor
   - Mercedes Mone
   - Hangman Page
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/d2jf87a41ged3n6d.jpg
 layout: post-layout.njk
 ---

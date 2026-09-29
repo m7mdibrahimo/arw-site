@@ -10,7 +10,7 @@ tags:
   - WWE NXT
   - Performance Center
   - PWInsider
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/nygnm4p9x3ddp5a0.jpg
 layout: post-layout.njk
 ---

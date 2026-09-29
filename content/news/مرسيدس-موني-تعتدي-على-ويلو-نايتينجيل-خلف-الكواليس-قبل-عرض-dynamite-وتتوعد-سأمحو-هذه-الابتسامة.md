@@ -9,7 +9,7 @@ tags:
   - AEW
   - AEW Dynamite
   - All In London
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/h10pev1695lsr80d.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - توني دي أنجيلو
   - كندا
   - عروض المصارعة
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/g2012k0s5rqmi6lt.jpg
 layout: post-layout.njk
 ---

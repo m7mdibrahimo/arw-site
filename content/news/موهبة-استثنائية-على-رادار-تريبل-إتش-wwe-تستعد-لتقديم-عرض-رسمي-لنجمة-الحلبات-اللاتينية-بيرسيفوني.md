@@ -9,7 +9,7 @@ tags:
   - CMLL
   - AAA
   - Dave Meltzer
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ja78wytngu7o2bar.jpg
 layout: post-layout.njk
 ---

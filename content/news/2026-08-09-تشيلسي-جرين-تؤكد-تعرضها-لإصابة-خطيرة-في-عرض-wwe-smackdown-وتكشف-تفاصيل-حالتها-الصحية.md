@@ -9,7 +9,7 @@ tags:
   - تشيلسي غرين
   - إصابة تشيلسي غرين
   - تيفاني ستراتون
-  - اخبار المصارعة
+  - أخبار المصارعة
   - مصارعة حرة
 image: /content/images/mxj69c5sfcsilxo5.jpg
 layout: post-layout.njk

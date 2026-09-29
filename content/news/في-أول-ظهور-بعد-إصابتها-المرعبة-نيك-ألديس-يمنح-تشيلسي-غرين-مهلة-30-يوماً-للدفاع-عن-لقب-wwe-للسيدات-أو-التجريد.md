@@ -9,7 +9,7 @@ tags:
   - Nick Aldis
   - WWE
   - SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ldniagfk2vrpomu8.jpg
 layout: post-layout.njk
 ---

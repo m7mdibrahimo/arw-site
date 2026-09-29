@@ -8,7 +8,7 @@ tags:
   - SmackDown
   - ديف ميلتزر
   - ارشفة المصارعة
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/9v5hsycs595u5x7l.jpg
 layout: post-layout.njk
 ---

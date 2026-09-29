@@ -10,7 +10,7 @@ tags:
   - Triple H
   - WWE RAW
   - WWE SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/61x2pyh1kfbokawv.jpg
 layout: post-layout.njk
 ---

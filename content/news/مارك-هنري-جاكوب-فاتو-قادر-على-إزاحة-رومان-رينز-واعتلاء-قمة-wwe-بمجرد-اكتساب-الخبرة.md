@@ -8,7 +8,7 @@ tags:
   - Mark Henry
   - WWE
   - World Heavyweight Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/tdald2301t3bb8uf.jpg
 layout: post-layout.njk
 ---

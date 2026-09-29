@@ -11,7 +11,7 @@ tags:
   - AEW All Out
   - AEW
   - SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hml36ksw8aesrnh.jpg
 layout: post-layout.njk
 ---

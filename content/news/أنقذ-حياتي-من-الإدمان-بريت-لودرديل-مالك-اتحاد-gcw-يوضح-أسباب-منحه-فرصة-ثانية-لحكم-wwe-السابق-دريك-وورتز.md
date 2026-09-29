@@ -9,7 +9,7 @@ tags:
   - دريك وورتز
   - Drake Wuertz
   - WWE NXT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/9d09ctqjy1r4186l.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - Max Holloway
   - UFC
   - Chad Gable
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/fqtxjbgwzhfuvlok.jpg
 layout: post-layout.njk
 ---

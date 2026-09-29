@@ -6,7 +6,7 @@ tags:
   - سولو سيكوا
   - WWE
   - The Bloodline
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/q7jc6qhbw51x9k0n.jpg
 layout: post-layout.njk
 ---

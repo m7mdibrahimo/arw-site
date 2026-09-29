@@ -9,7 +9,7 @@ tags:
   - NXT Heatwave
   - Robert Stone
   - Wren Sinclair
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5x5vbdqb396duyry.jpg
 layout: post-layout.njk
 ---

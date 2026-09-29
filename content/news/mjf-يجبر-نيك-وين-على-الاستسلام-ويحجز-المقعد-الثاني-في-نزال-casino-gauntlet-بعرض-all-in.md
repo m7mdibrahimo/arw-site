@@ -10,7 +10,7 @@ tags:
   - AEW Dynamite
   - All In London
   - Andrade
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/tagr1a7vsl2regd4.jpg
 layout: post-layout.njk
 ---

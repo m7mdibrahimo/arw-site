@@ -10,7 +10,7 @@ tags:
   - AEW Collision
   - سبيدبول مايك بيلي
   - آندي ويليامز
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/czikqjdvyykc2nx1.jpg
 layout: post-layout.njk
 ---

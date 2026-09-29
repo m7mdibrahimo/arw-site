@@ -11,7 +11,7 @@ tags:
   - WWE
   - WWE Live
   - SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/nfvx26gfl266t1b1.jpg
 layout: post-layout.njk
 ---

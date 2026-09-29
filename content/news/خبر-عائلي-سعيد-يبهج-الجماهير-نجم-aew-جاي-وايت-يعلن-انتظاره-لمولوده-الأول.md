@@ -7,7 +7,7 @@ tags:
   - Jay White
   - AEW
   - Bang Bang Gang
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/8h7plbgdqt6f0khb.jpg
 layout: post-layout.njk
 ---

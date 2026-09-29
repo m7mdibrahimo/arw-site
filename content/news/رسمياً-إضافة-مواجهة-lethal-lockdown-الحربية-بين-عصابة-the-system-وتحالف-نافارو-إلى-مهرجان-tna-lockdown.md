@@ -12,7 +12,7 @@ tags:
   - Eddie Edwards
   - KC Navarro
   - Santino Marella
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/2bfs7r50rh7g7p3m.jpg
 layout: post-layout.njk
 ---

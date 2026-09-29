@@ -10,7 +10,7 @@ tags:
   - AEW All In
   - All In London
   - Kenny Omega
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4dsf9w8duwa05j5j.jpg
 layout: post-layout.njk
 ---

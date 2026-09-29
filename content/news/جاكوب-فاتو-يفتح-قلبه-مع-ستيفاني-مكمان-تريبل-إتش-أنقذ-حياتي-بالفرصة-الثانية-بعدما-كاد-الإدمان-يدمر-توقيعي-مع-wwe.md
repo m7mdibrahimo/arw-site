@@ -13,7 +13,7 @@ tags:
   - Jacob Fatu
   - Triple H
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/d9yl29b1q8o8jg2l.jpg
 layout: post-layout.njk
 ---

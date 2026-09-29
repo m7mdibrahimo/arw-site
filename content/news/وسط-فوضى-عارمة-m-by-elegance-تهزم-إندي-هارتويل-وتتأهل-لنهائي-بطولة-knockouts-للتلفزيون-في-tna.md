@@ -11,7 +11,7 @@ tags:
   - Xia Brookside
   - Elayna Black
   - TNA Knockouts
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/fgc1o7czjyj1emsz.jpg
 layout: post-layout.njk
 ---

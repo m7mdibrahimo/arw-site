@@ -9,7 +9,7 @@ tags:
   - USA Network
   - WrestleVotes
   - Fightful Select
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/83yz5y1mocumd0nl.jpg
 layout: post-layout.njk
 ---

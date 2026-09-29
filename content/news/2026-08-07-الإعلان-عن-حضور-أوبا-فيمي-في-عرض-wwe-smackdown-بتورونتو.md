@@ -6,7 +6,7 @@ tags:
   - WWE
   - Oba Femi
   - WWE SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/29963.png
 layout: post-layout.njk
 ---

@@ -13,7 +13,7 @@ tags:
   - TNA
   - HOG
   - World Tag Team Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/6dv3eb73c3gnvi0i.jpg
 layout: post-layout.njk
 ---

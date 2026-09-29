@@ -9,7 +9,7 @@ tags:
   - Matt Sydal
   - Claudio Castagnoli
   - AEW All In
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hppcgy0xqaasdne.jpg
 layout: post-layout.njk
 ---

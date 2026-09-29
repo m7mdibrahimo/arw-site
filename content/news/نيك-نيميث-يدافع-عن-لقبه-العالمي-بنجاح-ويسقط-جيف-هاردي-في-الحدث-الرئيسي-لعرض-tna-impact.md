@@ -11,7 +11,7 @@ tags:
   - TNA World Championship
   - The Hardys
   - TNA Lockdown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/6al8cvavxcw4izi2.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - Rey Mysterio
   - WWE RAW
   - بطولة القارات
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4ke6cm8akdpagkm3.jpg
 layout: post-layout.njk
 ---

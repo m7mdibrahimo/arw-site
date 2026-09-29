@@ -9,7 +9,7 @@ tags:
   - Brie Bella
   - WWE
   - SummerSlam 2026
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/9b9x4q071zlogd2b.jpg
 layout: post-layout.njk
 ---

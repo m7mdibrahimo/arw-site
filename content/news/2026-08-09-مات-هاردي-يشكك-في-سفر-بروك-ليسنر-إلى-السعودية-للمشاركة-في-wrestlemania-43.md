@@ -8,7 +8,7 @@ tags:
   - WWE
   - WrestleMania 43
   - Hall of Fame
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/h1feuk40c1n7xmtn.jpg
 layout: post-layout.njk
 ---

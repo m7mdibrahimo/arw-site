@@ -10,7 +10,7 @@ tags:
   - The Bloodline
   - جاكوب فاتو
   - LA Knight
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5ovi33409eszfkyi.jpg
 layout: post-layout.njk
 ---

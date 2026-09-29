@@ -10,7 +10,7 @@ tags:
   - AEW
   - WWE
   - توني خان
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/jy5bcx1rtpme34ys.jpg
 layout: post-layout.njk
 ---

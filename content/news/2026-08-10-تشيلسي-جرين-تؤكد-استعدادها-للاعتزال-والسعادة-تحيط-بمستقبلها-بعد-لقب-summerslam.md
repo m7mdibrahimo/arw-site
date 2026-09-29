@@ -9,7 +9,7 @@ tags:
   - SummerSlam
   - WWE SmackDown
   - Rhea Ripley
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/vlaj7e9wwr22skwp.jpg
 layout: post-layout.njk
 ---

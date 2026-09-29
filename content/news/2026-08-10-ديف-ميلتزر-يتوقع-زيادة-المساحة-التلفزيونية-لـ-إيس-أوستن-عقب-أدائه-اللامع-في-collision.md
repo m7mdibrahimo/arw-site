@@ -10,7 +10,7 @@ tags:
   - AEW Collision
   - Dave Meltzer
   - Ricochet
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/so9bi1poldvtga0q.jpg
 layout: post-layout.njk
 ---

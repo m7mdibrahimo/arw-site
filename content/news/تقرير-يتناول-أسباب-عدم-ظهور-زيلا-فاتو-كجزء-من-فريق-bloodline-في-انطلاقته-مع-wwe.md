@@ -9,7 +9,7 @@ tags:
   - Solo Sikoa
   - Umaga
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/c85oyti28zxgckjb.jpg
 layout: post-layout.njk
 ---

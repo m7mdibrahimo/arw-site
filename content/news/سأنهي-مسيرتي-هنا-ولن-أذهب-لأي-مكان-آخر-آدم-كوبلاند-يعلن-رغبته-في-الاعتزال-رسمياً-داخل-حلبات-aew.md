@@ -11,7 +11,7 @@ tags:
   - WWE
   - توني خان
   - اعتزال المصارعة
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/q5c391ownh80gy1h.jpg
 layout: post-layout.njk
 ---

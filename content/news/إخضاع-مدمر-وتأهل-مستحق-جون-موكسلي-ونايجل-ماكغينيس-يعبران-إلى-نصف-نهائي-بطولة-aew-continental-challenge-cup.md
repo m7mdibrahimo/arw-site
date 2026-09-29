@@ -14,7 +14,7 @@ tags:
   - AEW
   - AEW Dynamite
   - Continental Challenge Cup
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/7dveymp7r9teblqm.jpg
 layout: post-layout.njk
 ---

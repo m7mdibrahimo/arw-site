@@ -8,7 +8,7 @@ tags:
   - Eric Bischoff
   - WWE
   - TKO Group
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/sovprx7r1jps87a2.jpg
 layout: post-layout.njk
 ---

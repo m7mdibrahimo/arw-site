@@ -10,7 +10,7 @@ tags:
   - Maple Leaf Gardens
   - Scott DAmore
   - Christian Cage
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/gcag2bc3zvo4zb6j.jpg
 layout: post-layout.njk
 ---

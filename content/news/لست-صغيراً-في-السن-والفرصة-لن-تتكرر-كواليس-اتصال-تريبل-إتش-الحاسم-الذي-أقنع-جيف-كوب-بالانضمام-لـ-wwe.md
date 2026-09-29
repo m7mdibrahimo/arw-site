@@ -13,7 +13,7 @@ tags:
   - WWE
   - NJPW
   - Backlash
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/z4ny3egtgbru2o42.jpg
 layout: post-layout.njk
 ---

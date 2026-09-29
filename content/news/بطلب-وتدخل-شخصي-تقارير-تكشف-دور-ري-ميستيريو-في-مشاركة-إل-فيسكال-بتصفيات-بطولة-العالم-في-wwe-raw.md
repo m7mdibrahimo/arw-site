@@ -9,7 +9,7 @@ tags:
   - WWE RAW
   - Rey Mysterio
   - Rey Fenix
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hsl07s6y5aen42mq.jpg
 layout: post-layout.njk
 ---

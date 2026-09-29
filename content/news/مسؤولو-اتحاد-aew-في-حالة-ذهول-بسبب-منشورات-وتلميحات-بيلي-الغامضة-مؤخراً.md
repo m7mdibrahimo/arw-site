@@ -9,7 +9,7 @@ tags:
   - AEW All In
   - WWE
   - Bryan Alvarez
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/e9mf57ts6kqjdn8n.jpg
 layout: post-layout.njk
 ---

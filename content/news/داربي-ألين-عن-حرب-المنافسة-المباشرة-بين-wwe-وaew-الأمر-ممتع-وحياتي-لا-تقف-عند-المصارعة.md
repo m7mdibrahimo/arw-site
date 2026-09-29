@@ -9,7 +9,7 @@ tags:
   - AEW All Out
   - Worlds Collide
   - AAA
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/cpoohjo3mmn9vgtw.jpg
 layout: post-layout.njk
 ---

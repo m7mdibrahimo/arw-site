@@ -13,7 +13,7 @@ tags:
   - Ryohei Oiwa
   - Gabe Kidd
   - AEW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/j73oh0cxuu8wrx3j.jpg
 layout: post-layout.njk
 ---

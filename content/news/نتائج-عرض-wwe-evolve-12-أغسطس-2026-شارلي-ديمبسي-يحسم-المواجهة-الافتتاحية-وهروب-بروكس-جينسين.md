@@ -10,7 +10,7 @@ tags:
   - رين سنكلير
   - نيكيتا ليونز
   - ثيا هيل
-  - اخبار المصارعة
+  - أخبار المصارعة
   - مصارعة حرة
 image: /content/images/knume3fhqcfsns9c.jpg
 layout: post-layout.njk

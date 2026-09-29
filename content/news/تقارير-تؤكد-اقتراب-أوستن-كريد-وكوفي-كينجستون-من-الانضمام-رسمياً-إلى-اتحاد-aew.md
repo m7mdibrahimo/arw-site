@@ -10,7 +10,7 @@ tags:
   - AEW
   - WWE
   - Chris Jericho
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/sylfzmfko2ey3ull.jpg
 layout: post-layout.njk
 ---

@@ -16,7 +16,7 @@ tags:
   - All In
   - MLW
   - TNA
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/bnoyp1hedypawest.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - دومينيك ميستيريو
   - The Judgment Day
   - Big Cass
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/chgr3snaqlnuq00c.jpg
 layout: post-layout.njk
 ---

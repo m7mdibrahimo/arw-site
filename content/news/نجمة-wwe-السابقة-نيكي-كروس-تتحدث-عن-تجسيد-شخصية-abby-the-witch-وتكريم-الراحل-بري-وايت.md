@@ -9,7 +9,7 @@ tags:
   - WWE
   - Abby The Witch
   - WrestleMania
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/qgau13v8cnmqy988.jpg
 layout: post-layout.njk
 ---

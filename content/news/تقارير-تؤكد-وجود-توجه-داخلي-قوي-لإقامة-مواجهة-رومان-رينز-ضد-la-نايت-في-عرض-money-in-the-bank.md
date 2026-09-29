@@ -9,7 +9,7 @@ tags:
   - WWE RAW
   - Money in the Bank
   - Fightful Select
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/rvdwligloh2fna8w.jpg
 layout: post-layout.njk
 ---

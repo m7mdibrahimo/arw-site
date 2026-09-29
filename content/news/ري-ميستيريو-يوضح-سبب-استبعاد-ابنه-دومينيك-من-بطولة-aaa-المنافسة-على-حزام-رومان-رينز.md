@@ -9,7 +9,7 @@ tags:
   - AAA
   - WWE
   - WWE Undisputed Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/lub0apn8jbj8hs0a.jpg
 layout: post-layout.njk
 ---

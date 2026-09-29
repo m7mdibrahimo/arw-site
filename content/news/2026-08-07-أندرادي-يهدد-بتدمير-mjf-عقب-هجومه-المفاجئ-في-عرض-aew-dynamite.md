@@ -8,7 +8,7 @@ tags:
   - MJF
   - AEW All In
   - AEW Dynamite
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/234.jpg
 layout: post-layout.njk
 ---

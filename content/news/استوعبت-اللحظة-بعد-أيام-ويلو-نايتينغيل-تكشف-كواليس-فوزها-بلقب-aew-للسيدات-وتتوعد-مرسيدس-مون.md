@@ -12,7 +12,7 @@ tags:
   - Thekla
   - AEW All In
   - مصارعة السيدات
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/1q4kl8sfmcehuhsv.jpg
 layout: post-layout.njk
 ---

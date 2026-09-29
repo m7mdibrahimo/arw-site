@@ -8,7 +8,7 @@ tags:
   - Claudio Castagnoli
   - Ace Austin
   - AEW All In
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hppv4-wxsaamqxg.jpg
 layout: post-layout.njk
 ---

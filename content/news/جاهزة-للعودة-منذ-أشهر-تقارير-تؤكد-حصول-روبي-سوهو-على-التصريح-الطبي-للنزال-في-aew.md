@@ -9,7 +9,7 @@ tags:
   - The Outcasts
   - انجيلو باركر
   - مصارعة السيدات
-  - اخبار المصارعة
+  - أخبار المصارعة
   - Fightful
 image: /content/images/nz5q9w2se1wlq65a.jpg
 layout: post-layout.njk

@@ -17,7 +17,7 @@ tags:
   - Eric Bischoff
   - WWE
   - WWE RAW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/q2ppzclrqadync5i.jpg
 layout: post-layout.njk
 ---

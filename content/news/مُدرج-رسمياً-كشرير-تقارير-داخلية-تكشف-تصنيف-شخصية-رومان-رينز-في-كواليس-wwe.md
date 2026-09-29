@@ -9,7 +9,7 @@ tags:
   - WWE RAW
   - سولو سيكوا
   - جاكوب فاتو
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/2lnrm59i2tiubcok.jpg
 layout: post-layout.njk
 ---

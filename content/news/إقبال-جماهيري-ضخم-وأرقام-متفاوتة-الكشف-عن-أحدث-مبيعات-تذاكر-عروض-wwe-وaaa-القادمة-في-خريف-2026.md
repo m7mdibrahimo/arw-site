@@ -14,7 +14,7 @@ tags:
   - TripleMania
   - AAA
   - NXT Heatwave
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/jub77v9dseidf1uz.jpg
 layout: post-layout.njk
 ---

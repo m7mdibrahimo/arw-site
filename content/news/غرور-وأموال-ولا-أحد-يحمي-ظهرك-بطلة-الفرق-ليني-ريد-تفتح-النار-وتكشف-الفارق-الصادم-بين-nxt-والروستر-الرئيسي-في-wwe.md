@@ -19,7 +19,7 @@ tags:
   - WWE
   - SmackDown
   - NXT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/screenshot-348-e1786987529204.png
 layout: post-layout.njk
 ---

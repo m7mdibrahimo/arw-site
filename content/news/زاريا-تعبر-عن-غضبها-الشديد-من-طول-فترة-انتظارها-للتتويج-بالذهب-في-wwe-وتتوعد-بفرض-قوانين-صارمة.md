@@ -9,7 +9,7 @@ tags:
   - WWE
   - WWE NXT
   - NXT Womens North American Title
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/d18wgqrhik0f2sdh.jpg
 layout: post-layout.njk
 ---

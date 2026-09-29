@@ -10,7 +10,7 @@ tags:
   - Kevin Owens
   - Randy Orton
   - Charlotte Flair
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/20260804_sd_match_punkowens_16x9_friday.jpg
 layout: post-layout.njk
 ---

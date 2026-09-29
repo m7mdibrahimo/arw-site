@@ -7,7 +7,7 @@ tags:
   - Big Damo
   - MLW
   - MLW Fusion
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/m6sw8huf9nkkb8s5.jpg
 layout: post-layout.njk
 ---

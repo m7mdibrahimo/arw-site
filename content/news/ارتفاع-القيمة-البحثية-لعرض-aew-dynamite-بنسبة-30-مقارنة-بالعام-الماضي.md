@@ -8,7 +8,7 @@ tags:
   - Kenny Omega
   - MJF
   - Google Trends
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/eynrzvaxzxcd454w.jpg
 layout: post-layout.njk
 ---

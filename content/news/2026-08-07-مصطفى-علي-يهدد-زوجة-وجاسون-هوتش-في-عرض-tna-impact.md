@@ -6,7 +6,7 @@ tags:
   - TNA
   - Mustafa Ali
   - TNA iMPACT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/screenshot-319.png
 layout: post-layout.njk
 ---

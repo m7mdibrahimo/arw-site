@@ -11,7 +11,7 @@ tags:
   - TNA
   - Code Red
   - Spanish Fly
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/vn5f7surj92losrf.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - NJPW
   - NOAH
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/sy20c9nr80qikc5m.jpg
 layout: post-layout.njk
 ---

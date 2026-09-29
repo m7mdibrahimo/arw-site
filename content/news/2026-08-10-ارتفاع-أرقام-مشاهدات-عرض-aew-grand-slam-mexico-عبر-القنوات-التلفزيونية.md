@@ -8,7 +8,7 @@ tags:
   - MJF
   - Will Ospreay
   - Mistico
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/1k91mjg2wq5817ty.jpg
 layout: post-layout.njk
 ---

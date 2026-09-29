@@ -9,7 +9,7 @@ tags:
   - David Arquette
   - Ready To Rumble
   - WCW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/25ko31nhj2v1om5c.jpg
 layout: post-layout.njk
 ---

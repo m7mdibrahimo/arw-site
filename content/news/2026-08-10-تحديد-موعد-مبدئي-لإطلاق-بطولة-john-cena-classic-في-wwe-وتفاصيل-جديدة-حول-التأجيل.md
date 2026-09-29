@@ -7,7 +7,7 @@ tags:
   - WWE
   - WWE Backlash
   - Fightful
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/1b6076ejboepyl1k.jpg
 layout: post-layout.njk
 ---

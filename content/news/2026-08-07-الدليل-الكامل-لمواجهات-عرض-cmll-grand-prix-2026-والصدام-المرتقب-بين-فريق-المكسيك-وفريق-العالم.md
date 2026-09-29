@@ -9,7 +9,7 @@ tags:
   - Mistico
   - Claudio Castagnoli
   - Orange Cassidy
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/image-366.png
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - WWE
   - Tudum
   - SummerSlam
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/cfz6luzg6e37o5ro.jpg
 layout: post-layout.njk
 ---

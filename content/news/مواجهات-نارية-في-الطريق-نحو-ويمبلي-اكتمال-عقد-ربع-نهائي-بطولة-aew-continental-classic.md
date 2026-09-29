@@ -11,7 +11,7 @@ tags:
   - جاي وايت
   - إيدي كينغستون
   - أورانج كاسيدي
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/8yprwtx5yjwat838.jpg
 layout: post-layout.njk
 ---

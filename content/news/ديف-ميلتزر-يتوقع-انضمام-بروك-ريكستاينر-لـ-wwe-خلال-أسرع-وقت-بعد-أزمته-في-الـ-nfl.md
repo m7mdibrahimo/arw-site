@@ -10,7 +10,7 @@ tags:
   - WWE
   - NFL
   - Dave Meltzer
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/uticip670b2qti6l.jpg
 layout: post-layout.njk
 ---

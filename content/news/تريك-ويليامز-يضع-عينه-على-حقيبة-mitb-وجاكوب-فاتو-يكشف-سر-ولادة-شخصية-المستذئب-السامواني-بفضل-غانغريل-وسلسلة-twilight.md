@@ -17,7 +17,7 @@ tags:
   - Money In The Bank
   - WWE
   - The Bloodline
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/i0twhywtgr4l6rm6.jpg
 layout: post-layout.njk
 ---

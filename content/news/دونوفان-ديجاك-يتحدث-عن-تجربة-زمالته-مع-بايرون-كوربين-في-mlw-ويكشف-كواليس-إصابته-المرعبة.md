@@ -8,7 +8,7 @@ tags:
   - MLW
   - WWE
   - Fightful
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/evjufiz7mlbttejk.jpg
 layout: post-layout.njk
 ---

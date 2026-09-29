@@ -12,7 +12,7 @@ tags:
   - AEW
   - AEW Dynamite
   - AEW World Trios Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ceomj4z37wbievkb.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - Dexter Lumis
   - The Wyatt Sicks
   - Relentless Wrestling
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5rx6u7yo5k96x71z.jpg
 layout: post-layout.njk
 ---

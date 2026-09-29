@@ -12,7 +12,7 @@ tags:
   - WWE SmackDown
   - Baron Corbin
   - Paige
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/jpwr51of4wntsgy9.jpg
 layout: post-layout.njk
 ---

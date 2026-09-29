@@ -6,7 +6,7 @@ tags:
   - ROH
   - AEW
   - Tehuti Miles
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hpep2-lxsae9qag.jpeg
 layout: post-layout.njk
 ---

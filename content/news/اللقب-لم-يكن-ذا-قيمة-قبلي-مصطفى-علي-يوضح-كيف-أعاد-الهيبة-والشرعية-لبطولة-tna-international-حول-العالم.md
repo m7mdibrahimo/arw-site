@@ -7,7 +7,7 @@ tags:
   - Mustafa Ali
   - TNA
   - TNA Wrestling
-  - اخبار المصارعة
+  - أخبار المصارعة
   - شون روس ساب
   - Fightful
 image: /content/images/scgwotg9h3uoova1.jpg

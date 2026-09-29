@@ -10,7 +10,7 @@ tags:
   - AEW
   - AEW Dynamite
   - TBS Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/0f0phyzl6wysvjtt.jpg
 layout: post-layout.njk
 ---

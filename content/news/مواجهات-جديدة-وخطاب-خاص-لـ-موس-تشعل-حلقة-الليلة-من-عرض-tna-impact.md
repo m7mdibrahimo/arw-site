@@ -11,7 +11,7 @@ tags:
   - Eddie Edwards
   - Moose
   - Mustafa Ali
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/rad43y4x01dce7oy.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - AEW
   - WWE
   - Cactus Jack
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/f5b6pt3ze6p83qfq.jpg
 layout: post-layout.njk
 ---

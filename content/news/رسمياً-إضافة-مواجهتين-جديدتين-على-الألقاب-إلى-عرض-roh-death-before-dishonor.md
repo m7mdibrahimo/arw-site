@@ -12,7 +12,7 @@ tags:
   - Bandido
   - Athena
   - Dalton Castle
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/jgsr30qfgvmmdlwk.jpg
 layout: post-layout.njk
 ---

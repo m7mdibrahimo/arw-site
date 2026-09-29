@@ -11,7 +11,7 @@ tags:
   - AEW Dynamite
   - AEW All In
   - إصابات المصارعة
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/2x8gg12tjdc3tjrr.jpg
 layout: post-layout.njk
 ---

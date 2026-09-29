@@ -8,7 +8,7 @@ tags:
   - WWE RAW
   - رومان رينز
   - ري فينيكس
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/3kz7jlot6tai1y0j.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - Lexis King
   - Jackson Drake
   - AAA
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/u8f1glbvseq9vd37.jpg
 layout: post-layout.njk
 ---

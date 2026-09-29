@@ -10,7 +10,7 @@ tags:
   - Seth Rollins
   - Jeff Hardy
   - WXM
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/safmj7psmkjsal4p.jpg
 layout: post-layout.njk
 ---

@@ -12,7 +12,7 @@ tags:
   - Malakai Black
   - House of Glory
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/tv3aibh1g7gg0nr8.jpg
 layout: post-layout.njk
 ---

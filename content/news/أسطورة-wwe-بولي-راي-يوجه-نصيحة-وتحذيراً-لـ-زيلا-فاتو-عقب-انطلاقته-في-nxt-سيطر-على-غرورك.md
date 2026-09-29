@@ -10,7 +10,7 @@ tags:
   - WWE NXT
   - The Bloodline
   - Umaga
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/htkptiw20odhvdoz.jpg
 layout: post-layout.njk
 ---

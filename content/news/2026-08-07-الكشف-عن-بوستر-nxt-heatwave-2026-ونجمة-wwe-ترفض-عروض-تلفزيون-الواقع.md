@@ -6,7 +6,7 @@ tags:
   - WWE
   - WWE NXT
   - NXT Heatwave
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/26374.jpg
 layout: post-layout.njk
 ---

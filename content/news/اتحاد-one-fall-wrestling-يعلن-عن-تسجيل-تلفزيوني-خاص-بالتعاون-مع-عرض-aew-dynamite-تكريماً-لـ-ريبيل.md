@@ -9,7 +9,7 @@ tags:
   - QT Marshall
   - 1FW
   - Rebel Heart Dynamite
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/xphd9e0vwirk2tjr.jpg
 layout: post-layout.njk
 ---

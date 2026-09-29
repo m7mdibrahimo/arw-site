@@ -9,7 +9,7 @@ tags:
   - Undertaker
   - Lucha Libre
   - Hall of Fame
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5ecxwooyg6g299ig.jpg
 layout: post-layout.njk
 ---

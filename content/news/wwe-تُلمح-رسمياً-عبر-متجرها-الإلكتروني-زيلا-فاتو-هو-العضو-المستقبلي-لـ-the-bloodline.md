@@ -11,7 +11,7 @@ tags:
   - Roman Reigns
   - Bully Ray
   - Umaga
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/69ku8r8ya1sm2zyi.jpg
 layout: post-layout.njk
 ---

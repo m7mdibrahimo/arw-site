@@ -7,7 +7,7 @@ tags:
   - Rey Fenix
   - WWE RAW
   - رومان رينز
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/62rkeh86una5exwa.jpg
 layout: post-layout.njk
 ---

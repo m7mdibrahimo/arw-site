@@ -12,7 +12,7 @@ tags:
   - Jason Hotch
   - Rich Swann
   - Order 4
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/awqfu11fjanad1hc.jpg
 layout: post-layout.njk
 ---

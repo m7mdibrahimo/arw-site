@@ -11,7 +11,7 @@ tags:
   - The Hardys
   - Nic Nemeth
   - Mustafa Ali
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/pvjogb3gw9241r3q.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - Seth Rollins
   - CM Punk
   - Roman Reigns
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/p78sfvqg71j7hclm.jpg
 layout: post-layout.njk
 ---

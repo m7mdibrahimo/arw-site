@@ -14,7 +14,7 @@ tags:
   - Baron Corbin
   - Carmelo Hayes
   - Damian Priest
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/yy7528nqiwag77hw.jpg
 layout: post-layout.njk
 ---

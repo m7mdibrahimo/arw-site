@@ -8,7 +8,7 @@ tags:
   - REVOLT
   - Xplosion
   - كارلوس سيلفا
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/xg4aa1bjtzy798ch.jpg
 layout: post-layout.njk
 ---

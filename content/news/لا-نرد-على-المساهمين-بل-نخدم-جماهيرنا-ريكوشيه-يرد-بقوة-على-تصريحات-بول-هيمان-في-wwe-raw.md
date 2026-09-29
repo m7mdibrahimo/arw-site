@@ -10,7 +10,7 @@ tags:
   - AEW
   - WWE RAW
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/0k8buw5ml4v2dkdm.jpg
 layout: post-layout.njk
 ---

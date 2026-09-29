@@ -11,7 +11,7 @@ tags:
   - SummerSlam
   - Fightful Select
   - Nia Jax
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/1nut1696dh29zurt.jpg
 layout: post-layout.njk
 ---

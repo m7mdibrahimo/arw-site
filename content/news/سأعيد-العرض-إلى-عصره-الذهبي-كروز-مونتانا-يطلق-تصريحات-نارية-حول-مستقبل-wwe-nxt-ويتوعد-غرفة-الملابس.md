@@ -9,7 +9,7 @@ tags:
   - زيلا فاتو
   - مايك سانتانا
   - TNA
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/bua82v7uy85v7wvg.jpg
 layout: post-layout.njk
 ---

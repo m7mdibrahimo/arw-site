@@ -10,7 +10,7 @@ tags:
   - كودي رودز
   - سي ام بانك
   - رومان رينز
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/2n65j05k3j1dzfs5.jpg
 layout: post-layout.njk
 ---

@@ -11,7 +11,7 @@ tags:
   - Mustafa Ali
   - Order 4
   - Cage Match
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5etxds996we64dm3.jpg
 layout: post-layout.njk
 ---

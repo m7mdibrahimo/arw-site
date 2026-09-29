@@ -11,7 +11,7 @@ tags:
   - توني دي أنجيلو
   - غرايسون والر
   - كروز مونتانا
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/fma7ib5hy2ep0o3p.jpg
 layout: post-layout.njk
 ---

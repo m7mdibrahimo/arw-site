@@ -10,7 +10,7 @@ tags:
   - WWE RAW
   - AAA
   - Lucha Libre
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/etjtpe9jqfrdryh1.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - Logan Paul
   - Rhea Ripley
   - Adam Cole
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/txaaf9txaaf9txaa.jpg
 layout: post-layout.njk
 ---

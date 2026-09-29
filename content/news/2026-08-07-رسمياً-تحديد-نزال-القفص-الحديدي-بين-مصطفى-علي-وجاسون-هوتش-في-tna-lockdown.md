@@ -7,7 +7,7 @@ tags:
   - Mustafa Ali
   - TNA Lockdown
   - TNA iMPACT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/c4b662a8d58a34d46042e9bca635e255-1-1-1-1-e1786068722461.jpg
 layout: post-layout.njk
 ---

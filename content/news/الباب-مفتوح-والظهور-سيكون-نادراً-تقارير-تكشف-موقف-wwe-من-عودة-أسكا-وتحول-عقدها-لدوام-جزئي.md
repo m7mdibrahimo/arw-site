@@ -7,7 +7,7 @@ tags:
   - Asuka
   - WWE
   - WWE RAW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/pjtlomm4vtrcp1w0.jpg
 layout: post-layout.njk
 ---

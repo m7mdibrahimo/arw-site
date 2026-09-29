@@ -9,7 +9,7 @@ tags:
   - Grayson Waller
   - Cruz Montana
   - Heatwave
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/nvd9e5xopn6e744l.jpg
 layout: post-layout.njk
 ---

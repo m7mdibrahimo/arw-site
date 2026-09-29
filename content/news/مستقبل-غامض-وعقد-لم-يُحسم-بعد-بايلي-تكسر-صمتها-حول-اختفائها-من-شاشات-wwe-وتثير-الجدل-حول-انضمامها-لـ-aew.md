@@ -8,7 +8,7 @@ tags:
   - مرسيدس موني
   - WWE
   - AEW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/jgso40iufgvt7mb0.jpg
 layout: post-layout.njk
 ---

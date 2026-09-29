@@ -18,7 +18,7 @@ tags:
   - WWE
   - SmackDown
   - WWE Tag Team Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/6eg8vqkjcz7s5ben.jpg
 layout: post-layout.njk
 ---

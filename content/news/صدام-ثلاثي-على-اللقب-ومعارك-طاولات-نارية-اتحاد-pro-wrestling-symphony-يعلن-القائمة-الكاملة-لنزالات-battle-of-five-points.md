@@ -6,7 +6,7 @@ tags:
   - PWS
   - Pro Wrestling Symphony
   - مصارعة مستقلة
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/8pkjum7aeklgfotl.jpg
 layout: post-layout.njk
 ---

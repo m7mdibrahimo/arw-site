@@ -7,7 +7,7 @@ tags:
   - Viva Van
   - AEW
   - توني خان
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/d3gwgop4zkmwd5f7.jpg
 layout: post-layout.njk
 ---

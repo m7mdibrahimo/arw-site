@@ -7,7 +7,7 @@ tags:
   - WWE
   - Crown Jewel 2026
   - WrestleVotes
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/7oz7yhxxi9a9t66z.jpg
 layout: post-layout.njk
 ---

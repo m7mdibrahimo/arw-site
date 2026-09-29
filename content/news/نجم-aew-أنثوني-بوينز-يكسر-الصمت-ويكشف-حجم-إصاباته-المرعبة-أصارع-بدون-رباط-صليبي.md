@@ -7,7 +7,7 @@ tags:
   - AEW
   - ROH
   - AEW Dynamite
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4ysj8kkvzfb6n51x.jpg
 layout: post-layout.njk
 ---

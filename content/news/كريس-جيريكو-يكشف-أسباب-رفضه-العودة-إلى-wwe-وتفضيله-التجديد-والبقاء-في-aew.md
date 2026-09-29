@@ -8,7 +8,7 @@ tags:
   - WWE
   - Tony Khan
   - AEW Dynamite
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/dhuoi2pld399ipxs.jpg
 layout: post-layout.njk
 ---

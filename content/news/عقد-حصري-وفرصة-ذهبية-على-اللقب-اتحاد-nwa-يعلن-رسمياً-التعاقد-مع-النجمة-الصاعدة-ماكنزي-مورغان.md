@@ -9,7 +9,7 @@ tags:
   - Mackenzie Morgan
   - جيزيل شو
   - NWA Powerrr
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/yw31by2e4rwvxttq.jpg
 layout: post-layout.njk
 ---

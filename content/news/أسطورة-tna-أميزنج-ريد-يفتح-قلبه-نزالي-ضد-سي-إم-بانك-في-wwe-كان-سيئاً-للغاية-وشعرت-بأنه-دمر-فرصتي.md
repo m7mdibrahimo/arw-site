@@ -10,7 +10,7 @@ tags:
   - TNA
   - Ricky Steamboat
   - Ryback
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/lpi9plsrv97dszhl.jpg
 layout: post-layout.njk
 ---

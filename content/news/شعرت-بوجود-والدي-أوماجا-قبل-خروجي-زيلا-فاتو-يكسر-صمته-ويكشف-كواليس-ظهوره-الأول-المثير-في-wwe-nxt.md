@@ -10,7 +10,7 @@ tags:
   - Umaga
   - بوكر تي
   - The Bloodline
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/vcvvbl5z2eyisuc6.jpg
 layout: post-layout.njk
 ---

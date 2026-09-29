@@ -12,7 +12,7 @@ tags:
   - Royal Rumble 2020
   - WWE
   - AEW Grand Slam
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/26cbag54z1le6jpj.jpg
 layout: post-layout.njk
 ---

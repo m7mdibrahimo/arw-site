@@ -12,7 +12,7 @@ tags:
   - Konosuke Takeshita
   - TNT Championship
   - AEW International Championship
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/zptx9f467rh86flj.jpg
 layout: post-layout.njk
 ---

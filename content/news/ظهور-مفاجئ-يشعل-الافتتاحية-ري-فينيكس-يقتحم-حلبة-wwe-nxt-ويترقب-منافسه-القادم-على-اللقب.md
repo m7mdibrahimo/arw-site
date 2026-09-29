@@ -9,7 +9,7 @@ tags:
   - كروز مونتانا
   - زيلا فاتو
   - رومان رينز
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/oksf3p06323zd08o.jpg
 layout: post-layout.njk
 ---

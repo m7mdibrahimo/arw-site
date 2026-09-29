@@ -15,7 +15,7 @@ tags:
   - Yuya Uemura
   - Ryohei Oiwa
   - House of Torture
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4ebj63swmbsswzht.jpg
 layout: post-layout.njk
 ---

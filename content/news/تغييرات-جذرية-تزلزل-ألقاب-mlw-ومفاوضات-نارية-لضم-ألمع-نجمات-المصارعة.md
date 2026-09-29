@@ -10,7 +10,7 @@ tags:
   - MLW
   - NJPW
   - CMLL
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/clgaqrv050maf7s9.jpg
 layout: post-layout.njk
 ---

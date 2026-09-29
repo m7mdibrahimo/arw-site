@@ -14,7 +14,7 @@ tags:
   - House of Torture
   - SANADA
   - Dragongate
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/xm49ghczc6y8szgv.jpg
 layout: post-layout.njk
 ---

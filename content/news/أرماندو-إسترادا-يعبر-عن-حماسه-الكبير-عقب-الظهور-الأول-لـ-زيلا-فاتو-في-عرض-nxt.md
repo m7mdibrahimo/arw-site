@@ -10,7 +10,7 @@ tags:
   - WWE NXT
   - Grayson Waller
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/tp46rgx39mcdwb74.jpg
 layout: post-layout.njk
 ---

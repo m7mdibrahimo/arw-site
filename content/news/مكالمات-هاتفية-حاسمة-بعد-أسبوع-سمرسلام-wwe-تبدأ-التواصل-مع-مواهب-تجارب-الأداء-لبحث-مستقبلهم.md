@@ -14,7 +14,7 @@ tags:
   - WWE Tryouts
   - Performance Center
   - NXT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4fdwifou43000rkv.jpg
 layout: post-layout.njk
 ---

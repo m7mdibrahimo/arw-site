@@ -15,7 +15,7 @@ tags:
   - SmackDown
   - Sunday Nights Main Event
   - WrestleMania
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/64bizjari56vciw9.jpg
 layout: post-layout.njk
 ---

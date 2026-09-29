@@ -7,7 +7,7 @@ tags:
   - TNA Lockdown
   - Xia Brookside
   - Elayna Black
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/screenshot-321.png
 layout: post-layout.njk
 ---

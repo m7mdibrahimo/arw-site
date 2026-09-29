@@ -6,7 +6,7 @@ tags:
   - AAA
   - Lucha Libre AAA
   - Verano De Escandalo
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hpe-ai8a4aavgxt.jpeg
 layout: post-layout.njk
 ---

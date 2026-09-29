@@ -9,7 +9,7 @@ tags:
   - Xavier Woods
   - WWE
   - AEW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/re1wfq46zw0cth3i.jpg
 layout: post-layout.njk
 ---

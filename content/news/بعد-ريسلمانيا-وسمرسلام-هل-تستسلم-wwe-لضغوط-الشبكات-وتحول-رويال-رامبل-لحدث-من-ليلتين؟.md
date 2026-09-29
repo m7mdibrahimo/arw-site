@@ -12,7 +12,7 @@ tags:
   - JBL
   - ESPN
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4gtdca85s2wzfpos.jpg
 layout: post-layout.njk
 ---

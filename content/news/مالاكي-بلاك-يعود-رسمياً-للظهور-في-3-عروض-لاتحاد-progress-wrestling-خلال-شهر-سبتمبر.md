@@ -9,7 +9,7 @@ tags:
   - Tommy End
   - AEW
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/15r4qsrup5vixiyv.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - AEW
   - WWE
   - ارييل حلواني
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/y0x1kuygxx5vv69c.jpg
 layout: post-layout.njk
 ---

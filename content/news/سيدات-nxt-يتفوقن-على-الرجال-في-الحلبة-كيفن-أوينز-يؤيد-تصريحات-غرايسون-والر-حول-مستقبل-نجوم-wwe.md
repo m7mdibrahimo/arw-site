@@ -10,7 +10,7 @@ tags:
   - Grayson Waller
   - مصارعة السيدات
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/crtd322d4njwt8m2.jpg
 layout: post-layout.njk
 ---

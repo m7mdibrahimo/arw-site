@@ -14,7 +14,7 @@ tags:
   - The Bloodline
   - WWE
   - WWE NXT
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/q7lda5gtp9rn6oq7.jpg
 layout: post-layout.njk
 ---

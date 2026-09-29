@@ -6,7 +6,7 @@ tags:
   - WWE
   - Lady Leigh
   - Jin Tala
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/qgt6g9vl91zia7js.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - Darby Allin
   - AEW
   - حركات خطيرة
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/eitzxfqnt9kk81pr.jpg
 layout: post-layout.njk
 ---

@@ -6,7 +6,7 @@ tags:
   - Nikki Bella
   - Paige
   - WWE SmackDown
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/i3qsk3ev6lwnx165.jpg
 layout: post-layout.njk
 ---

@@ -16,7 +16,7 @@ tags:
   - Liv Morgan
   - WWE
   - WWE Live
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/rxqriybof658rdng.jpg
 layout: post-layout.njk
 ---

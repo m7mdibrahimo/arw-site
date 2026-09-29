@@ -13,7 +13,7 @@ tags:
   - NJPW
   - G1 Climax
   - G1 Climax 36
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/o42w0ap82e1splke.jpg
 layout: post-layout.njk
 ---

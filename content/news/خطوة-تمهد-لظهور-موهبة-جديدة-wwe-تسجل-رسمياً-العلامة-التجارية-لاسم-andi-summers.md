@@ -11,7 +11,7 @@ tags:
   - NXT
   - Performance Center
   - WWE Trademark
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/saauzaqdkx0yif30.jpg
 layout: post-layout.njk
 ---

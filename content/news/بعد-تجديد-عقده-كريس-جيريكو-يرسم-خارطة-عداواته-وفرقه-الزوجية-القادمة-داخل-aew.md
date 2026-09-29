@@ -16,7 +16,7 @@ tags:
   - AEW
   - Dynamite
   - The Rascalz
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/21ed62gjx4wk8bm3.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - Grayson Waller
   - Cruz Montana
   - Tony D’Angelo
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5h56z5e3auc0hgdr.jpg
 layout: post-layout.njk
 ---

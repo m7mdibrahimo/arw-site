@@ -12,7 +12,7 @@ tags:
   - House Of Glory
   - HOG Fallout
   - مصارعة السيدات
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/2zunc4a58fyidt1t.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - Survivor Series
   - WarGames
   - Street Fighter
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/4mw5af63pewyfvgu.jpg
 layout: post-layout.njk
 ---

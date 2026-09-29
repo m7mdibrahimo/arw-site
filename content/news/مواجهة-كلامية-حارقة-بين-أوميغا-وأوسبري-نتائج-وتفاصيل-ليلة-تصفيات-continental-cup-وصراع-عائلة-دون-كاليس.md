@@ -15,7 +15,7 @@ tags:
   - Jay White
   - مرسيدس موني
   - ويلو نايتينغيل
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5jj67aipvjnzv57d.jpg
 layout: post-layout.njk
 ---

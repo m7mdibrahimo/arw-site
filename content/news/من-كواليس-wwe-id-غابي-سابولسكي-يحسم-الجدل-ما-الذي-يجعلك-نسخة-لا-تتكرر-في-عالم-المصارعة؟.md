@@ -11,7 +11,7 @@ tags:
   - WWE ID
   - NXT
   - Performance Center
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/t4k1efi9t2pm0g74.jpg
 layout: post-layout.njk
 ---

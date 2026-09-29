@@ -7,7 +7,7 @@ tags:
   - AEW
   - Shark Week
   - Jon Moxley
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/uz3a6cms94tx1jjr.jpg
 layout: post-layout.njk
 ---

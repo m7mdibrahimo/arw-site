@@ -9,7 +9,7 @@ tags:
   - Carmelo Hayes
   - Tiffany Stratton
   - Damian Priest
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/hpkf7vuwuaa4j-f.jpg
 layout: post-layout.njk
 ---

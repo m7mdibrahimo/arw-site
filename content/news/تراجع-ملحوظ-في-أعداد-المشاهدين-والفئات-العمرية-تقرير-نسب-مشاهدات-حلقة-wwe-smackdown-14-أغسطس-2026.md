@@ -11,7 +11,7 @@ tags:
   - CM Punk
   - كيفن أوينز
   - Kevin Owens
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/d62tmkmebceijj8m.jpg
 layout: post-layout.njk
 ---

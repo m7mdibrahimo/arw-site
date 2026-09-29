@@ -7,7 +7,7 @@ tags:
   - AEW Collision
   - AEW
   - نسب المشاهدات
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/xmrorg9s4vxhnu47.jpg
 layout: post-layout.njk
 ---

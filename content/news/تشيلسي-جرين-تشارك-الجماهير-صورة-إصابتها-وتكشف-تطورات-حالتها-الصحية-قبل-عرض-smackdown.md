@@ -10,7 +10,7 @@ tags:
   - Rhea Ripley
   - Bayley
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ug05aymq0ut8324i.jpg
 layout: post-layout.njk
 ---

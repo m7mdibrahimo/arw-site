@@ -10,7 +10,7 @@ tags:
   - NXT
   - William Regal
   - Impact Wrestling
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/lpcvgyravte4iofk.jpg
 layout: post-layout.njk
 ---

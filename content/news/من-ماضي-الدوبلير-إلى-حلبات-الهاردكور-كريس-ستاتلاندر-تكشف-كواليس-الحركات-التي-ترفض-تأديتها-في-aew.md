@@ -9,7 +9,7 @@ tags:
   - حركات خطيرة
   - Blood and Guts
   - مصارعة السيدات
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/kunrrlqezraifaj2.jpg
 layout: post-layout.njk
 ---

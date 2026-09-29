@@ -10,7 +10,7 @@ tags:
   - AEW
   - بن بيشوب
   - Ben Bishop
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/8veulm7xqb1gssii.jpg
 layout: post-layout.njk
 ---

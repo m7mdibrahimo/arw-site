@@ -9,7 +9,7 @@ tags:
   - WCW
   - قاعة المشاهير
   - رون سيمونز
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/z215d7ucmdvmp357.jpg
 layout: post-layout.njk
 ---

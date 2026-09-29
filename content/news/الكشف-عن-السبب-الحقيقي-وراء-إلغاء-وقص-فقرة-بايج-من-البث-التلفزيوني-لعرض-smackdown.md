@@ -14,7 +14,7 @@ tags:
   - WWE
   - SmackDown
   - PWInsider
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/uh4ymae0rjevye73.jpg
 layout: post-layout.njk
 ---

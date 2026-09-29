@@ -16,7 +16,7 @@ tags:
   - Don Callis Family
   - AEW
   - AEW Dynamite
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/gsx71msnjxmydjbu.jpg
 layout: post-layout.njk
 ---

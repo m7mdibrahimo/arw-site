@@ -9,7 +9,7 @@ tags:
   - AEW
   - AEW All In
   - مرسيدس موني
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ln0eltrikehdzf8a.jpg
 layout: post-layout.njk
 ---

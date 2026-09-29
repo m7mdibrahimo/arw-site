@@ -8,7 +8,7 @@ tags:
   - Survivor Series
   - WarGames
   - Roman Reigns
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/767945595_2205199010242187_8511846253011589164_n.jpeg
 layout: post-layout.njk
 ---

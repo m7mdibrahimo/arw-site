@@ -11,7 +11,7 @@ tags:
   - Jay White
   - Jack Perry
   - All In London
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/zuzwc2ix74fyvwce.jpg
 layout: post-layout.njk
 ---

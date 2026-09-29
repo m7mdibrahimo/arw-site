@@ -10,7 +10,7 @@ tags:
   - CM Punk
   - WWE
   - Feed Me More
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/r7a88i84ads7vfbf.jpg
 layout: post-layout.njk
 ---

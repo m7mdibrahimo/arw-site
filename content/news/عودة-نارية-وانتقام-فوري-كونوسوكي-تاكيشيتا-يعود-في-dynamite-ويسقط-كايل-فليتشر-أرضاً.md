@@ -11,7 +11,7 @@ tags:
   - AEW
   - AEW Dynamite
   - AEW All In
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/nxzk5locfokw813a.jpg
 layout: post-layout.njk
 ---

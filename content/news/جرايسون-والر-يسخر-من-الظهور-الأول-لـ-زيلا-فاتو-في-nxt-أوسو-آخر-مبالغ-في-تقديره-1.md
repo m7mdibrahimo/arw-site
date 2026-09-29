@@ -10,7 +10,7 @@ tags:
   - Tony D’Angelo
   - Cruz Montana
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ufubhzoctyqh0k89.jpg
 layout: post-layout.njk
 ---

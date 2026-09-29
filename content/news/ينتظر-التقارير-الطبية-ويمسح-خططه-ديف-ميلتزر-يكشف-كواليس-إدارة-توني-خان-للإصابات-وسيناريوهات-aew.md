@@ -9,7 +9,7 @@ tags:
   - AEW Dynamite
   - ديف ميلتزر
   - Wrestling Observer
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/xvopp5ejstdi4dpg.jpg
 layout: post-layout.njk
 ---

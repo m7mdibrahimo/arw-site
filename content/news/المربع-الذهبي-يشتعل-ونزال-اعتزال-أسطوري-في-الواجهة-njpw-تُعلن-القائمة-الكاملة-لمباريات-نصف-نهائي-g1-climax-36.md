@@ -11,7 +11,7 @@ tags:
   - Satoshi Kojima
   - Wheeler Yuta
   - Zack Sabre Jr
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/juufq8d8xn7eo8o4.jpg
 layout: post-layout.njk
 ---

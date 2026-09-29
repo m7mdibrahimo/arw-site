@@ -7,7 +7,7 @@ tags:
   - CMLL
   - Noche de Campeones
   - لوتشا ليبري
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/chjpldowun53ye35.jpg
 layout: post-layout.njk
 ---

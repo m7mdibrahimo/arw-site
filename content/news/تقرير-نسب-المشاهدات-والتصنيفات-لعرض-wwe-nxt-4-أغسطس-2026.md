@@ -9,7 +9,7 @@ tags:
   - Kendal Grey
   - NXT Ratings
   - Wrestlenomics
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/imtr3vt13b1gf8ty.jpg
 layout: post-layout.njk
 ---

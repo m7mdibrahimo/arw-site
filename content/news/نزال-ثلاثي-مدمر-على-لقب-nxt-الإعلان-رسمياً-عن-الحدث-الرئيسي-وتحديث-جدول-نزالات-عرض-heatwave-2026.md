@@ -9,7 +9,7 @@ tags:
   - غرايسون والر
   - كروز مونتانا
   - كيلاني جوردان
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/68xg4nqb0ms01run.jpg
 layout: post-layout.njk
 ---

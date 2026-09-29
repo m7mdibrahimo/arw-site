@@ -12,7 +12,7 @@ tags:
   - Claudio Castagnoli
   - Orange Cassidy
   - Darby Allin
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/yknztek9i6bndwvy.jpg
 layout: post-layout.njk
 ---

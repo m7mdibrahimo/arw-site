@@ -10,7 +10,7 @@ tags:
   - The Vision
   - WWE SmackDown
   - WWE
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/itxd4q2obtgh00u4.jpg
 layout: post-layout.njk
 ---

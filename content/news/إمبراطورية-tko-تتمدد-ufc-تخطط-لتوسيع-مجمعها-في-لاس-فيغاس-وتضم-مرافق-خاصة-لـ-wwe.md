@@ -9,7 +9,7 @@ tags:
   - Las Vegas
   - Lawrence Epstein
   - اخبار UFC
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/cehqzaz1o4ejod5s.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - NJPW
   - G1 Climax
   - AEW All In
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/5t3xp7ijezdxp7ph.jpg
 layout: post-layout.njk
 ---

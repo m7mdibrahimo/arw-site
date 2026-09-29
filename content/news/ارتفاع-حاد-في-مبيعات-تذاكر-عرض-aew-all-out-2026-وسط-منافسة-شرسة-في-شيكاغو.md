@@ -8,7 +8,7 @@ tags:
   - All Out 2026
   - AAA Worlds Collide
   - WrestleTix
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/log8fh2dt28e27w4.jpg
 layout: post-layout.njk
 ---

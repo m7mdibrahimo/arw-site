@@ -9,7 +9,7 @@ tags:
   - WWE NXT
   - WrestleMania
   - Riot City Wrestling
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/1uiegz8j9rq5r06o.jpg
 layout: post-layout.njk
 ---

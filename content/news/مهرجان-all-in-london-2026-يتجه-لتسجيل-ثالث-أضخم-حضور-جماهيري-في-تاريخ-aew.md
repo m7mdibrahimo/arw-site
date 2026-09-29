@@ -11,7 +11,7 @@ tags:
   - All In
   - All In London
   - Wembley Stadium
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/smh26l044pqjyiq7.jpg
 layout: post-layout.njk
 ---

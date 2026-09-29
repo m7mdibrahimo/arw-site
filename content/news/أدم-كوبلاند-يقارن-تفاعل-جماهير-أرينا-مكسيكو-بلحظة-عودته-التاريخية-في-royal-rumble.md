@@ -10,7 +10,7 @@ tags:
   - AEW Grand Slam Mexico
   - Royal Rumble
   - Tony Schiavone
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ey046wz9js2e7f8m.jpg
 layout: post-layout.njk
 ---

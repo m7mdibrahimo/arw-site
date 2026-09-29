@@ -11,7 +11,7 @@ tags:
   - Aalyah Mysterio
   - WWE
   - WWE PC
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/mdlwvuykpwjfyz1g.jpg
 layout: post-layout.njk
 ---

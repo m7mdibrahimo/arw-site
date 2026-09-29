@@ -14,7 +14,7 @@ tags:
   - SNME
   - شون روس ساب
   - Fightful
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/ncd448bbjf00pfj9.jpg
 layout: post-layout.njk
 ---

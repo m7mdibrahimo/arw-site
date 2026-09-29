@@ -11,7 +11,7 @@ tags:
   - HOG
   - HOOK
   - Laredo Kid
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/wpsgb8qkdeqzf04n.jpg
 layout: post-layout.njk
 ---

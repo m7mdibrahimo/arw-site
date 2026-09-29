@@ -10,7 +10,7 @@ tags:
   - Road to Survivor Series
   - WWE Live Events
   - Houston
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/wjodedea0htplurq.jpg
 layout: post-layout.njk
 ---

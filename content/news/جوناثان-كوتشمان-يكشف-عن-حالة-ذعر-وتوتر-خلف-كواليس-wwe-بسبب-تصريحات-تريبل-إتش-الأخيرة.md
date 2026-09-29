@@ -7,7 +7,7 @@ tags:
   - WWE
   - SummerSlam 2026
   - Jonathan Coachman
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/rux1h90vax891yhs.jpg
 layout: post-layout.njk
 ---

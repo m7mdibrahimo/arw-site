@@ -9,7 +9,7 @@ tags:
   - AEW
   - WWE
   - AEW All In
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/swvm8up2wlk3o96y.jpg
 layout: post-layout.njk
 ---

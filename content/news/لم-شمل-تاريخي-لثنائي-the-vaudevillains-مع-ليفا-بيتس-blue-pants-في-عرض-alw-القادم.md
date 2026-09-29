@@ -10,7 +10,7 @@ tags:
   - The Vaudevillains
   - WWE NXT
   - ALW
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/0pmofghgx5zjcjq8.jpg
 layout: post-layout.njk
 ---

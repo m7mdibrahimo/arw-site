@@ -8,7 +8,7 @@ tags:
   - MLW
   - TNA
   - CMLL
-  - اخبار المصارعة
+  - أخبار المصارعة
 image: /content/images/67okgjk4k42ttrj9.jpg
 layout: post-layout.njk
 ---
