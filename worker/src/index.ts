@@ -1915,9 +1915,9 @@ async function sendToPlatform(
  */
 export function socialResultsTitle(title: string): string {
   const t = String(title || "").trim();
-  const dated = t.match(/^(نتائج\s+(?:عرض|تسريبات)[^()]*\([^)]*\))/);
+  const dated = t.match(/^(نتائج\s+(?:عرض|تسريبات|تسجيلات)[^()]*\([^)]*\))/);
   if (dated) return dated[1].trim();
-  const named = t.match(/^(نتائج\s+(?:عرض|تسريبات)[^:：]*?)\s*[:：]/);
+  const named = t.match(/^(نتائج\s+(?:عرض|تسريبات|تسجيلات)[^:：]*?)\s*[:：]/);
   return named ? named[1].trim() : t;
 }
 
@@ -1954,7 +1954,8 @@ function sanitizePublishedHeadline(title: string): string {
 // false for every Arabic results report and they all went to social with the full title — the
 // winners — and the report's opening instead of the fixed text (CMLL 28 Sep, INCIDENTS #127).
 export function isResultsArticle(title: string = ""): boolean {
-  return /(?<![؀-ۿ])نتائج\s+(?:عرض|تسريبات)(?![؀-ۿ])/.test(title) ||
+  // «نتائج تسجيلات عرض ROH TV» (TV tapings) is a results report too (INCIDENTS #137)
+  return /(?<![؀-ۿ])نتائج\s+(?:عرض|تسريبات|تسجيلات)(?![؀-ۿ])/.test(title) ||
          /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 

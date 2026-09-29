@@ -1812,6 +1812,8 @@ test('a published story whose title (and so URL) was edited is never posted agai
   assert.equal(contentFileId({ inputPath: './content/news/20260929081500-نتائج-عرض-cmll.md' }), '20260929081500-نتائج-عرض-cmll');
   assert.equal(isResultsArticle('نتائج عرض CMLL Lunes Clásico (28 سبتمبر 2026): فوز زاندوكان جونيور'), true);
   assert.equal(isResultsArticle('نتائج تسريبات عرض NXT'), true);
+  // INCIDENTS #137: TV tapings
+  assert.equal(isResultsArticle('نتائج تسجيلات عرض ROH TV (28 سبتمبر 2026)'), true);
   assert.equal(isResultsArticle('توني خان يعلن تأبين باك'), false);
 
   const database = ledger();
