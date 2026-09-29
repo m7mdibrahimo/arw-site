@@ -2003,3 +2003,13 @@ test('a doubled ya, a bare cardinal date and a genitive object are corrected (IN
   assert.equal(applyCorrections('أبدت استيائها الشديد'), 'أبدت استياءها الشديد');
   assert.equal(applyCorrections('عبرت عن استيائها'), 'عبرت عن استيائها');
 });
+
+test('the same-story check tells a new statement or backstage detail apart from the story it follows (INCIDENTS #150)', async () => {
+  const { duplicatePrompt } = await import('../scripts/editorial');
+  const dp = duplicatePrompt({ title: 'x', body: 'y', tags: [] }, []);
+  assert.match(dp, /«نفس الحدث» يعني نفس الواقعة المحددة، مش نفس الموضوع العام/);
+  assert.match(dp, /تأبين أو تصريح من شخص مش مذكور في الخبر المنشور/);
+  assert.match(dp, /كواليس أو سبب أو خطة وراء مشهد/);
+  const skips = JSON.parse(fs.readFileSync('_data/duplicate-skips.json', 'utf8'));
+  assert.equal(skips['https://www.fightful.com/wrestling/kemalito-pays-tribute-to-benjamin-satterley-pac'], undefined);
+});
