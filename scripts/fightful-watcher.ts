@@ -3634,11 +3634,26 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (guardDuplicates && !isShowResultsArticle(rawTitle, plainText)) {
     const dupe = findLikelyDuplicateStory(rawTitle);
     if (dupe.isDuplicate) {
-      console.log(`[Watcher] 🔁 Likely duplicate of a recently published story (${dupe.matchedFile}): Post #${postId} ("${rawTitle}") skipped.`);
-      // Record it: an unrecorded skip is retried (and re-translated by Gemini)
-      // on every run for 24h — INCIDENTS #43.
-      recordDuplicate(postUrl, dupe.matchedFile || "", "تشابه العنوان مع خبر منشور حديثاً");
-      return false;
+      // Title words shared with a recent story are names more often than news: «No Indications Of
+      // Foul Play Or Trauma In Death Of PAC (Benjamin Satterley)» was dropped as a copy of the death
+      // announcement (INCIDENTS #115). One short same-story question, on the source text, decides.
+      const match = loadNews(NEWS_DIR).filter(n => n.file === dupe.matchedFile);
+      const answer = match.length ? await queryGemini(duplicatePrompt({ title: rawTitle, body: plainText.slice(0, 1500), tags: [] }, match), true, 0.1) : null;
+      if (match.length && !answer && !options.manual) {
+        console.warn(`[Watcher] ⏳ Title looks like ${dupe.matchedFile} but the same-story check didn't answer — retry next run.`);
+        noteOutcome(postUrl, "عنوانه شبه خبر منشور، وفحص التكرار مردّش؛ هيتحاول تاني", true);
+        lastPostRetryable = true;
+        return false;
+      }
+      const verdict = parseDuplicateAnswer(answer, match);
+      if (verdict || !match.length) {
+        console.log(`[Watcher] 🔁 Same story as ${dupe.matchedFile}: Post #${postId} ("${rawTitle}") skipped.`);
+        // Record it: an unrecorded skip is retried (and re-translated by Gemini)
+        // on every run for 24h — INCIDENTS #43.
+        recordDuplicate(postUrl, dupe.matchedFile || "", verdict?.reason || "تشابه العنوان مع خبر منشور حديثاً");
+        return false;
+      }
+      console.log(`[Watcher] ↪️ Title shares words with ${dupe.matchedFile}, but it is new news — writing it.`);
     }
   }
 
@@ -3808,17 +3823,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Shared names + overlapping text is only a suspicion: during a big story every follow-up
   // shares them. PAC's death skipped «Dynamite will be a tribute show», Tony Khan's «the
   // wrestlers have a choice» and «no signs of foul play» as copies of older articles
-  // (INCIDENTS #113). Only the same embedded post is proof; anything else goes to the
-  // Gemini same-story check below, which knows a real new development is not a duplicate.
+  // (INCIDENTS #113). It goes to the Gemini same-story check below, which knows a real new
+  // development is not a duplicate.
   let suspectedDuplicate = "";
   if (guardDuplicates && !isShowResultsArticle(rawTitle, plainText) && !isListOrReviewArticle(rawTitle)) {
     const postDupe = findLikelyDuplicateStoryByTagsAndBody(rewritten.tags, finalBody);
-    if (postDupe.isDuplicate && !postDupe.byLink) suspectedDuplicate = postDupe.matchedFile || "";
-    else if (postDupe.isDuplicate) {
-      console.log(`[Watcher] 🔁 Same embedded post as ${postDupe.matchedFile}: Post #${postId} ("${rawTitle}") skipped.`);
-      recordDuplicate(postUrl, postDupe.matchedFile || "", "نفس المنشور المضمّن في خبر منشور حديثاً");
-      return false;
-    }
+    // Even the same embedded post is only a suspicion: Tony Khan's one tweet carried both the ROH
+    // ten-bell salute and «Dynamite will be a tribute show» — two stories (INCIDENTS #115).
+    if (postDupe.isDuplicate) suspectedDuplicate = postDupe.matchedFile || "";
   }
 
   // Editorial pass (see scripts/editorial.ts): deterministic fixes + editorial/corrections.json,

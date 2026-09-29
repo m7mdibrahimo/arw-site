@@ -1642,7 +1642,12 @@ test('shared names and wording only raise a suspicion: the AI same-story check d
 
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   const guard = src.slice(src.indexOf('const postDupe = findLikelyDuplicateStoryByTagsAndBody('), src.indexOf('// Editorial pass'));
-  assert.match(guard, /postDupe\.isDuplicate && !postDupe\.byLink\) suspectedDuplicate/, 'no skip on shared names alone');
+  assert.match(guard, /if \(postDupe\.isDuplicate\) suspectedDuplicate = /, 'no skip on shared names or a shared tweet alone');
+  assert.ok(!/return false/.test(guard), 'the post-translation guard never skips on its own');
+  // The title-words guard asks the same-story check too (INCIDENTS #115: «no foul play in PAC's death»)
+  const titleGuard = src.slice(src.indexOf('const dupe = findLikelyDuplicateStory(rawTitle);'), src.indexOf('// 1. Download & compress image'));
+  assert.match(titleGuard, /duplicatePrompt\(\{ title: rawTitle/);
+  assert.match(titleGuard, /if \(verdict \|\| !match\.length\)/);
   // The same embedded post is still proof on its own
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-link-'));
   try {
@@ -1696,10 +1701,11 @@ test('two bots writing the same story at the same moment: the second to push dro
   const mk = (file: string, title: string, body: string, tags: string[]) => ({ file, title, body, tags, date: now - 60_000 });
   const rsn = mk('rsn.md', 'إضافة نزال كبير إلى عرض موني إن ذا بانك خلال عرض WWE RAW', 'شهد عرض رو إعلانا رسميا عن مواجهة بين أوبا فيمي وبرونسون ريد.\n\nhttps://x.com/WWE/status/2104734692498932211', ['WWE', 'أوبا فيمي', 'برونسون ريد']);
   const fightful = mk('fightful.md', 'أوبا فيمي يواجه برونسون ريد في عرض WWE موني إن ذا بانك', 'تأكدت إقامة نزال ضخم بين أوبا فيمي وبرونسون ريد.\n\nhttps://x.com/WWE/status/2104734692498932211', ['WWE', 'أوبا فيمي', 'برونسون ريد']);
-  let asked = 0;
-  const hits = await crossRunDuplicates([fightful], [rsn], async () => { asked++; return null; }, now);
-  assert.deepEqual(hits.map(h => [h.file, h.matchedFile]), [['fightful.md', 'rsn.md']]);
-  assert.equal(asked, 0, 'the same embedded post needs no AI');
+  // Same embedded post: the same-story check decides; with no answer the tweet does
+  assert.deepEqual((await crossRunDuplicates([fightful], [rsn], async () => '{"duplicate_of": 0, "reason": "نفس الإعلان"}', now)).map(h => [h.file, h.matchedFile]), [['fightful.md', 'rsn.md']]);
+  assert.deepEqual((await crossRunDuplicates([fightful], [rsn], async () => null, now)).map(h => h.matchedFile), ['rsn.md']);
+  // One tweet, two stories (Tony Khan: ten bells at ROH + a Dynamite tribute show) — kept (INCIDENTS #115)
+  assert.deepEqual(await crossRunDuplicates([fightful], [rsn], async () => '{"duplicate_of": null, "reason": "خبر تاني"}', now), []);
   // Different tweets: the AI same-story check decides
   const noLink = { ...fightful, body: 'تأكدت إقامة نزال ضخم ضمن فعاليات عرض موني إن ذا بانك بين أوبا فيمي وبرونسون ريد بعد توقيع العقد.' };
   const judged = await crossRunDuplicates([noLink], [rsn], async () => '{"duplicate_of": 0, "reason": "نفس الإعلان"}', now);

@@ -28,14 +28,17 @@ export async function crossRunDuplicates(ours: NewsFile[], arrived: NewsFile[], 
   const hits: CrossRunHit[] = [];
   if (!arrived.length) return hits;
   for (const mine of ours) {
-    // The same embedded post (tweet) is proof on its own
+    // The same embedded post (tweet) puts a story first in line; one tweet can carry two stories
+    // (INCIDENTS #115), so the same-story check decides — and only if it can't answer, the tweet does.
     const links = statusLinks(mine.body);
     const sameLink = arrived.find(a => [...statusLinks(a.body)].some(l => links.has(l)));
-    if (sameLink) { hits.push({ file: mine.file, matchedFile: sameLink.file, reason: "نفس المنشور المضمّن في خبر نزل من بوت تاني في نفس الوقت" }); continue; }
-    const candidates = findDuplicateCandidates(mine, arrived, now, 6);
+    const found = findDuplicateCandidates(mine, arrived, now, 6).filter(c => c.file !== sameLink?.file);
+    const candidates = (sameLink ? [sameLink, ...found] : found).slice(0, 5);
     if (!candidates.length) continue;
-    const verdict = parseDuplicateAnswer(await judge(duplicatePrompt(mine, candidates)), candidates);
+    const answer = await judge(duplicatePrompt(mine, candidates));
+    const verdict = parseDuplicateAnswer(answer, candidates);
     if (verdict) hits.push({ file: mine.file, matchedFile: verdict.file, reason: verdict.reason || "نفس الخبر نزل من بوت تاني في نفس الوقت" });
+    else if (!answer && sameLink) hits.push({ file: mine.file, matchedFile: sameLink.file, reason: "نفس المنشور المضمّن في خبر نزل من بوت تاني في نفس الوقت" });
   }
   return hits;
 }
