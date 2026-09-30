@@ -2250,3 +2250,9 @@ test('a promotion or a broadcast format coming back is not a wrestler return (IN
   assert.equal(isSingleMatchSpoiler('عرض WWE Saturday Night Main Event يعود إلى قناة NBC'), false);
   assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
 });
+
+test('old-story sweep: a jussive after «لم», a cut word and a CMLL show name are corrected (INCIDENTS #160)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('لم يحتاج كينغ سوى ثوان'), 'لم يحتج كينغ سوى ثوان');
+  assert.equal(applyCorrections('ضمن عرض هوميناجي ا دو لييناس'), 'ضمن عرض Homenaje a Dos Leyendas');
+});
