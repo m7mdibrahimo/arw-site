@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "تايتشي يغيب عن عرض NJPW Road To Destruction بسبب وعكة صحية"
 date: 2026-09-22T10:03:04.000+03:00
 source_id: 329788

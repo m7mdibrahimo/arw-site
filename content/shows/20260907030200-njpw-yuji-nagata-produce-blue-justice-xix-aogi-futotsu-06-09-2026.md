@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: NJPW Yuji Nagata Produce Blue Justice XIX Aogi Futotsu 06.09.2026
 headline: عرض ان جيه بي دبليو 06.09.2026 مترجم
 program_name: NJPW

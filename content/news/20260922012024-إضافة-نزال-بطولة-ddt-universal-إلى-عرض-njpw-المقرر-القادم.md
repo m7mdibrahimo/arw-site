@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "إضافة نزال بطولة DDT Universal إلى عرض NJPW المقرر القادم"
 date: 2026-09-22T01:20:24.000+03:00
 source_id: 329692

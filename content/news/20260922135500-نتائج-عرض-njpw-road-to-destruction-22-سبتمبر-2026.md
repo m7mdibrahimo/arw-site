@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "نتائج عرض NJPW Road To Destruction (22 سبتمبر 2026): فوز أونباوند كو في الحدث الرئيسي"
 permalink: "/news/نتائج-عرض-njpw-road-to-destruction-22-سبتمبر-2026/index.html"
 date: 2026-09-22T13:55:00.000+03:00

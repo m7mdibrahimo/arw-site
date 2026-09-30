@@ -1,6 +1,6 @@
 ---
 show_type: عرض
-federation: INDIE
+federation: NJPW
 title: NJPW Destruction in Kobe (2026)
 headline: عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم
 program_name: NJPW

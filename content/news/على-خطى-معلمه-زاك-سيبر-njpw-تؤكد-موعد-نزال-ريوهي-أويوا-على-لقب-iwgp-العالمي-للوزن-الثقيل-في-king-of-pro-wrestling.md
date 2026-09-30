@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: '"على خطى معلمه زاك سيبر!".. NJPW تؤكد موعد نزال ريوهي أويوا على لقب IWGP العالمي للوزن الثقيل في King of Pro Wrestling'
 date: 2026-08-18T04:00:00.000+03:00
 tags:

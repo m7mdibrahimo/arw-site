@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "ظهور مفاجئ في G1 Climax!.. شون سكاي ووكر ينضم رسميا إلى NJPW ويعلن تحالفه مع عصابة HOUSE OF TORTURE'"
 permalink: "/news/ظهور-مفاجئ-في-جي-وان-كلايماكس-شون-سكاي-ووكر-ينضم-رسميا-إلى-njpw-ويعلن-تحالفه-مع-عصابة-house-of-torture/index.html"
 date: 2026-08-15T11:36:00.000+03:00

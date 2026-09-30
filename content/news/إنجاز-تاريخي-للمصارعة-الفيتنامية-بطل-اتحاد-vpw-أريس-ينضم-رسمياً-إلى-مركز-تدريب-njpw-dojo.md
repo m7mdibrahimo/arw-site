@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "إنجاز تاريخي للمصارعة الفيتنامية!.. بطل اتحاد VPW أريس ينضم رسميا إلى مركز تدريب NJPW Dojo'"
 date: 2026-08-24T04:43:00.000+03:00
 tags:

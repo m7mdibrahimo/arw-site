@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "يوتا تسوجي يدافع عن بطولة IWGP للوزن الثقيل ضد ريوهي أويوا في عرض NJPW King Of Pro-Wrestling"
 date: 2026-09-27T14:49:34.000+03:00
 published_at: 2026-09-27T11:59:35.275Z

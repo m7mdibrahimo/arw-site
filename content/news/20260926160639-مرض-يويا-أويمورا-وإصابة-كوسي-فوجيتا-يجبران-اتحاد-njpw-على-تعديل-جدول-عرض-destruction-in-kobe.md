@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "مرض يويا أويمورا وإصابة كوسي فوجيتا يجبران اتحاد NJPW على تعديل جدول عرض Destruction in Kobe"
 date: 2026-09-26T16:06:39.000+03:00
 published_at: 2026-09-26T13:15:29.524Z

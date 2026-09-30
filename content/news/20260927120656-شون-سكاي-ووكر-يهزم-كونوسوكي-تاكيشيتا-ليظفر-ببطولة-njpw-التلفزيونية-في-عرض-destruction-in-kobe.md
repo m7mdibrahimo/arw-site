@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "شون سكاي ووكر يهزم كونوسوكي تاكيشيتا ليظفر ببطولة NJPW التلفزيونية في عرض Destruction in Kobe"
 date: 2026-09-27T12:06:56.000+03:00
 published_at: 2026-09-27T09:08:28.681Z

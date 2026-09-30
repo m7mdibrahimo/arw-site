@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "غزو ياباني مرتقب لأعرق حلبات المكسيك!.. الإعلان عن نجوم NJPW وستاردوم في عرض Lucha Kingdom التاريخي'"
 permalink: "/news/غزو-ياباني-مرتقب-لأعرق-حلبات-المكسيك-الإعلان-عن-نجوم-njpw-وستاردوم-في-مهرجان-lucha-kingdom-التاريخي/index.html"
 date: 2026-08-20T16:22:00.000+03:00

@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "نتائج عرض NJPW TAKE OFF! From New Chitose Airport (19 سبتمبر 2026): فوز فريق روبي إكس، شينغو تاكاغي، تايجي إيشيموري ويوتا تسوجي في الحدث الرئيسي"
 permalink: "/news/نتائج-عرض-njpw-take-off-from-new-chitose-airport-19-سبتمبر-2026-صدام-كبرى-فرق-unbound-co-وجيش-غوتو-في-المين-إيفنت/index.html"
 date: 2026-09-19T05:15:44.000+03:00

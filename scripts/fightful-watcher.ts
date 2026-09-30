@@ -2502,6 +2502,11 @@ function isDaysAhead(month: number, day: number, days: number, now = Date.now())
 // show was judged against the model's guess: «Mason Rook not cleared for NXT» two hours before NXT
 // was held as «something from a show that aired» (INCIDENTS #156).
 const WEEKLY_TV: [string, number][] = [["wwe raw", 1], ["wwe nxt", 2], ["aew dynamite", 3], ["tna impact", 4], ["wwe smackdown", 5], ["aew collision", 6]];
+/** A story whose source title is about New Japan Pro-Wrestling. */
+export function isNjpwStory(sourceTitle: string): boolean {
+  return /\bNJPW\b|\bNew Japan\b|\bWrestle Kingdom\b|\bG1 Climax\b|\bBest of the Super Juniors\b/i.test(sourceTitle || "");
+}
+
 /** A report of a taped show's results before it airs: «… Spoilers From 9/26 Taping», «تسريبات عرض…». */
 export function isTapingSpoiler(sourceTitle: string, arabicTitle: string = ""): boolean {
   return /\bspoilers?\b|\btap(?:ing|ings|ed)\b/i.test(sourceTitle || "") || /(?:^|[\s«])تسريبات?(?:\s|$)/.test(arabicTitle || "");
@@ -2869,13 +2874,14 @@ ${plainText}
 
 القواعد الصارمة والإلزامية لنجاح الصياغة:
 1. **قاعدة التصنيف الصحيح وتحديد الاتحاد (Strict Category Rule)**:
-   - حقل "federation" في الـ JSON يجب أن يحتوي حصراً على واحدة من هذه القيم الست:
+   - حقل "federation" في الـ JSON يجب أن يحتوي حصراً على واحدة من هذه القيم السبع:
      - "WWE" (لكل أخبار WWE بمختلف عروضها ونزالاتها ونجومها).
      - "AEW" (لكل أخبار All Elite Wrestling).
      - "TNA" (لكل أخبار اتحاد تيم إمباكت / TNA).
      - "ROH" (لكل أخبار Ring of Honor).
+     - "NJPW" (لكل أخبار New Japan Pro-Wrestling وعروضها ونجومها).
      - "MMA" (لكل أخبار UFC وفنون القتال المختلطة).
-     - "INDIE" (لاتحادات المصارعة المستقلة الأخرى: NJPW, MLW, AAA, CMLL, GCW, MLP وغيرها).
+     - "INDIE" (لاتحادات المصارعة المستقلة الأخرى: MLW, AAA, CMLL, GCW, MLP وغيرها).
 2. **العنوان (أمين 100% لوقائع المصدر، جذاب ورياضي، وبدون كليشيهات مستهلكة)**:
     - **⚠️ القاعدة رقم 1 الذهبية الحاسمة: العنوان يُبنى من عنوان Fightful الأصلي حصراً — وليس من محتوى المقال!**
       - العنوان الأصلي من المصدر: **"${originalTitle}"**
@@ -3009,7 +3015,7 @@ ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم 
     - التفاصيل، الكواليس، النزالات، الحوارات، التحليلات بالعربية.
     - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**؛ اكتب كل النصوص خالية تماماً من التشكيل لتكون سهلة وسريعة القراءة.
 5. **حظر تام لكلمتي "حلقة" و"مهرجان" نهائياً**: في عالم المصارعة لا يوجد مصطلح "حلقة" ولا "مهرجان"، الاسم المعتمد دائماً هو **"عرض"** (أو **"عروض"** للجمع). استبدل أي ورود لكلمة حلقة أو مهرجان بكلمة "عرض" دائماً (مثل: عرض WrestleMania، عرض AAA Triplemanía، عروض WWE الشهرية، عروض AEW).
-6. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"].
+6. **الاتحاد (federation)**: حدد الاتحاد حصراً من: ["WWE", "AEW", "NJPW", "TNA", "ROH", "MMA", "INDIE"].
 7. **حظر ذكر Fightful نهائياً وحظر عبارة 'مصادرنا الخاصة' قطيعاً**: ممنوع منعاً باتاً ومطلقاً استخدام عبارات مثل "أفادت مصادرنا الخاصة" أو "كشفت مصادرنا الخاصة" أو "مصادرنا" أو الادعاء بوجود مصادر خاصة لعرب راسلنج. ادخل في صلب الخبر مباشرة واذكر التفاصيل بأسلوب صحفي محايد ومباشر (مثل: "كشفت تقارير صحفية"، "أكدت التطورات الأخيرة"، أو البدء بالحدث مباشرة: "يستعد المصارع..." أو "أعلن اتحاد WWE رسمياً..."). ممنوع بتاتاً ذكر Fightful أو محرريها.
 8. **الوسوم (tags)**: بين 5 إلى 7 وسوم دقيقة (تتضمن اسم الاتحاد بالإنجليزية مثل WWE أو AEW، واسم العرض بالإنجليزية مثل WWE RAW، وباقي الوسوم وأسماء المصارعين بالعربية).
 ${editorialGuideForPrompt()}
@@ -3053,13 +3059,15 @@ ${plainText.slice(0, isListOrReviewArticle(originalTitle) ? 16000 : 8000)}
     parsed.tags = (parsed.tags || []).map(t => sanitizeWrestlingTerms(t));
 
     // Validate & normalize federation strictly to the site's 6 allowed categories
-    const ALLOWED_FEDERATIONS = ["WWE", "AEW", "TNA", "ROH", "MMA", "INDIE"];
+    const ALLOWED_FEDERATIONS = ["WWE", "AEW", "NJPW", "TNA", "ROH", "MMA", "INDIE"];
     let fed = (parsed.federation || "").trim().toUpperCase();
     if (fed === "UFC" || fed === "PFL" || fed === "BELLATOR") {
       fed = "MMA";
     } else if (!ALLOWED_FEDERATIONS.includes(fed)) {
       fed = "INDIE";
     }
+    // NJPW has its own section since 2026-10-01 (INCIDENTS #175): a New Japan story never lands in INDIE
+    if (fed === "INDIE" && isNjpwStory(originalTitle)) fed = "NJPW";
     parsed.federation = fed;
 
     // Validate tags length (force 5-7 tags)
@@ -3621,6 +3629,7 @@ const PROMOTION_IN_TEXT: Record<string, RegExp> = {
   AEW: /\b(?:AEW|Dynamite|Collision|Rampage)\b/i,
   TNA: /\b(?:TNA|iMPACT|Impact Wrestling)\b/i,
   ROH: /\b(?:ROH|Ring of Honor)\b/i,
+  NJPW: /\b(?:NJPW|New Japan|Wrestle Kingdom|G1 Climax)\b/i,
   MMA: /\b(?:UFC|MMA|PFL|Bellator)\b/i,
 };
 /**

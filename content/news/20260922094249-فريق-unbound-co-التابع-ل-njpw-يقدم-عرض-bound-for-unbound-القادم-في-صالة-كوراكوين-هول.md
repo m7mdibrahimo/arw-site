@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "فريق Unbound Co. التابع لـ NJPW يقدم عرض Bound For Unbound القادم في صالة كوراكوين"
 permalink: "/news/فريق-unbound-co-التابع-ل-njpw-يقدم-عرض-bound-for-unbound-القادم-في-صالة-كوراكوين-هول/index.html"
 date: 2026-09-22T09:42:49.000+03:00

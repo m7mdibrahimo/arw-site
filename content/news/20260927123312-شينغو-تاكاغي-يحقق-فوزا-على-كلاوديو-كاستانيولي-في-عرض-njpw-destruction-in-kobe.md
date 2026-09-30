@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "شينغو تاكاغي يحقق فوزا على كلاوديو كاستانيولي في عرض NJPW Destruction In Kobe"
 date: 2026-09-27T12:33:12.000+03:00
 published_at: 2026-09-27T09:39:33.785Z

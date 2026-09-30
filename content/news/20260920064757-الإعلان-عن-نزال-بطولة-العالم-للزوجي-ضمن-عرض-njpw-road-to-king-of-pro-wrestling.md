@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "هيناري وغريت أو خان يواجهان أوسكار ويوتو آيس على بطولة IWGP للزوجي في عرض NJPW Road to King of Pro-Wrestling"
 permalink: "/news/هيناري-وغريت-أو-خان-يواجهان-أوسكار-ويوتو-آيس-على-بطولة-iwgp-للزوجي-في-عرض-njpw-road-to-كينج-أوف-برو-ريسلينج/index.html"
 date: 2026-09-20T06:47:57.000+03:00

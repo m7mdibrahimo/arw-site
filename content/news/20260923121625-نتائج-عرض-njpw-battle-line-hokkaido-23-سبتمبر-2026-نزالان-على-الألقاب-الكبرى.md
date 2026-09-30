@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "نتائج عرض NJPW Battle Line Hokkaido (23 سبتمبر 2026): فوز يو إتش في الحدث الرئيسي"
 permalink: "/news/نتائج-عرض-njpw-battle-line-hokkaido-23-سبتمبر-2026-نزالان-على-الألقاب-الكبرى/index.html"
 date: 2026-09-23T12:16:25.000+03:00

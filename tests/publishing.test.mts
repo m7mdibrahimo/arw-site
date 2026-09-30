@@ -2392,3 +2392,19 @@ test('a hold is lifted as soon as today\'s rules say it is not a spoiler (INCIDE
   // a title hold the meaning check also called a spoiler stays
   assert.equal(stillSpoiler({ why: 'title', title: 'اتحاد MLW يعود إلى نظام الدفع' }, { social_spoiler: true }), true);
 });
+
+test('NJPW has its own section: home block 3 + 4, a federation page, the panel list and the writer (INCIDENTS #175)', async () => {
+  const { isNjpwStory } = await import('../scripts/fightful-watcher');
+  assert.equal(isNjpwStory('NJPW Destruction In Kobe Results'), true);
+  assert.equal(isNjpwStory('Yota Tsuji Wants To Build An Equal Relationship With AEW'), false);
+  assert.equal(isNjpwStory('Wrestle Kingdom 21 Dates Announced'), true);
+  const feds = (await import('../_data/federations.js')).default as any[];
+  assert.deepEqual(feds.map(f => f.code), ['WWE', 'AEW', 'NJPW', 'TNA', 'ROH', 'MMA', 'INDIE']);
+  const home = fs.readFileSync('index.njk', 'utf8');
+  assert.match(home, /<div class="feds-grid feds-top">\n<a href="\/federation\/wwe\/"[^\n]*\n<a href="\/federation\/aew\/"[^\n]*\n<a href="\/federation\/njpw\/"/);
+  assert.match(home, /\.fed-njpw \.fed-mark\{ background:linear-gradient\(135deg,hsl\(212 16% 46%\),hsl\(214 20% 27%\)\); \}/);
+  assert.doesNotMatch(home, /class="count"/, 'no story counts on the cards');
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /slug: "njpw", code: "NJPW"/);
+  assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'NJPW'/);
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /const ALLOWED_FEDERATIONS = \["WWE", "AEW", "NJPW"/);
+});

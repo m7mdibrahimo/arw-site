@@ -227,17 +227,23 @@ section.content{ padding:40px 24px 70px; }
 .feds-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 @media (max-width:700px){ .feds-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:420px){ .feds-grid{ grid-template-columns:repeat(2,1fr); } }
+.feds-top{ margin-bottom:20px; }
+.feds-top .fed-mark{ height:150px; font-size:40px; }
+.feds-bot{ grid-template-columns:repeat(4,1fr); }
+.feds-bot .fed-mark{ height:84px; font-size:24px; }
+@media (max-width:700px){ .feds-top > .fed-card:first-child{ grid-column:1 / -1; } .feds-bot{ grid-template-columns:repeat(2,1fr); } .feds-top .fed-mark{ height:110px; font-size:30px; } .feds-bot .fed-mark{ height:72px; font-size:20px; } }
 /* Federation Cards & Animations */
 .fed-card{ display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; box-shadow:0 6px 16px -12px rgba(30,37,48,.15); position:relative; }
 .fed-card:hover{ transform:translateY(-8px) scale(1.02); box-shadow:0 20px 36px -16px rgba(14,149,148,.3); border-color:var(--teal); }
 .fed-mark{ height:110px; display:flex; align-items:center; justify-content:center; font-family:'Cairo',sans-serif; font-weight:900; font-size:28px; color:#fff; transition:transform 0.4s ease; }
 .fed-card:hover .fed-mark{ transform:scale(1.06); }
-.fed-wwe .fed-mark{ background:linear-gradient(135deg,#c73b2c,#8f2015); }
-.fed-aew .fed-mark{ background:linear-gradient(135deg,#e0b93c,#a87c14); }
-.fed-tna .fed-mark{ background:linear-gradient(135deg,#8a5fe0,#5a35a6); }
-.fed-roh .fed-mark{ background:linear-gradient(135deg,#3866c7,#1d3a80); }
-.fed-mma .fed-mark{ background:linear-gradient(135deg,#e07a2c,#a34d10); }
-.fed-indie .fed-mark{ background:linear-gradient(135deg,#1f8a72,#0f5245); }
+.fed-wwe .fed-mark{ background:linear-gradient(135deg,hsl(4 60% 50%),hsl(4 62% 31%)); }
+.fed-aew .fed-mark{ background:linear-gradient(135deg,hsl(42 62% 50%),hsl(40 66% 31%)); }
+.fed-njpw .fed-mark{ background:linear-gradient(135deg,hsl(212 16% 46%),hsl(214 20% 27%)); }
+.fed-tna .fed-mark{ background:linear-gradient(135deg,hsl(262 56% 58%),hsl(262 52% 38%)); }
+.fed-roh .fed-mark{ background:linear-gradient(135deg,hsl(218 56% 50%),hsl(220 60% 31%)); }
+.fed-mma .fed-mark{ background:linear-gradient(135deg,hsl(24 66% 50%),hsl(24 68% 31%)); }
+.fed-indie .fed-mark{ background:linear-gradient(135deg,hsl(166 56% 38%),hsl(168 60% 22%)); }
 .fed-card .info{ padding:16px 18px; text-align:center; }
 .fed-card p{ color:var(--muted); font-size:13px; }
 /* Show Cards Animations */
@@ -275,12 +281,14 @@ section.content{ padding:40px 24px 70px; }
 .cat-roh { background: rgba(44, 102, 199, 0.14) !important; color: #2358b5 !important; }
 .cat-mma { background: rgba(224, 122, 44, 0.14) !important; color: #c45b10 !important; }
 .cat-indie { background: rgba(31, 138, 114, 0.14) !important; color: #0f705b !important; }
+.cat-njpw { background: rgba(92, 108, 128, 0.14) !important; color: #4b5b70 !important; }
 html.arw-dark .cat-wwe { background: rgba(225, 75, 60, 0.2) !important; color: #ff6b5b !important; }
 html.arw-dark .cat-aew { background: rgba(240, 195, 60, 0.2) !important; color: #f4b352 !important; }
 html.arw-dark .cat-tna { background: rgba(155, 109, 240, 0.2) !important; color: #b18cff !important; }
 html.arw-dark .cat-roh { background: rgba(70, 130, 240, 0.2) !important; color: #60a5fa !important; }
 html.arw-dark .cat-mma { background: rgba(240, 140, 60, 0.2) !important; color: #ff9d5c !important; }
 html.arw-dark .cat-indie { background: rgba(40, 180, 150, 0.2) !important; color: #34d399 !important; }
+html.arw-dark .cat-njpw { background: rgba(148, 166, 190, 0.2) !important; color: #b8c6d8 !important; }
 .show-card:hover .kind-badge, .news-card:hover .kind-badge, .show-card:hover .cat, .news-card:hover .cat, .show-card:hover .fed-badge, .news-card:hover .fed-badge{ transform:scale(1.06); }
 .kind-show{ background:var(--gold-soft); color:#b45309; }
 html.arw-dark .kind-show{ background:var(--gold-soft); color:var(--gold); }
@@ -477,6 +485,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 .glow-roh { background: radial-gradient(circle at 75% 50%, rgba(50, 110, 220, 0.85) 0%, transparent 65%); }
 .glow-mma { background: radial-gradient(circle at 75% 50%, rgba(235, 125, 40, 0.85) 0%, transparent 65%); }
 .glow-indie { background: radial-gradient(circle at 75% 50%, rgba(30, 160, 130, 0.85) 0%, transparent 65%); }
+.glow-njpw { background: radial-gradient(circle at 75% 50%, rgba(112, 132, 158, 0.85) 0%, transparent 65%); }
 
 /* Slides Viewport */
 .spotlight-viewport {
@@ -651,6 +660,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 .fed-pill-roh { background: rgba(50, 110, 220, 0.22); color: #93c5fd; border: 1px solid rgba(50, 110, 220, 0.45); }
 .fed-pill-mma { background: rgba(235, 125, 40, 0.22); color: #fdba74; border: 1px solid rgba(235, 125, 40, 0.45); }
 .fed-pill-indie { background: rgba(30, 160, 130, 0.22); color: #5eead4; border: 1px solid rgba(30, 160, 130, 0.45); }
+.fed-pill-njpw { background: rgba(120, 140, 165, 0.22); color: #cbd5e1; border: 1px solid rgba(120, 140, 165, 0.45); }
 
 .type-pill {
   background: rgba(255, 255, 255, 0.1);
@@ -1371,13 +1381,17 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 <div class="section-head reveal">
 <div class="head-text"><h2 style="color:var(--teal);"><span class="dot" style="background:var(--teal)"></span>الاتحادات</h2></div>
 </div>
-<div class="feds-grid">
+<!-- the three biggest promotions large, the rest below (INCIDENTS #175) -->
+<div class="feds-grid feds-top">
 <a href="/federation/wwe/" class="fed-card fed-wwe"><div class="fed-mark">WWE</div><div class="info"><p>World Wrestling Entertainment</p></div></a>
 <a href="/federation/aew/" class="fed-card fed-aew"><div class="fed-mark">AEW</div><div class="info"><p>All Elite Wrestling</p></div></a>
+<a href="/federation/njpw/" class="fed-card fed-njpw"><div class="fed-mark">NJPW</div><div class="info"><p>New Japan Pro-Wrestling</p></div></a>
+</div>
+<div class="feds-grid feds-bot">
 <a href="/federation/tna/" class="fed-card fed-tna"><div class="fed-mark">TNA</div><div class="info"><p>Total Nonstop Action Wrestling</p></div></a>
 <a href="/federation/roh/" class="fed-card fed-roh"><div class="fed-mark">ROH</div><div class="info"><p>Ring of Honor</p></div></a>
-<a href="/federation/mma/" class="fed-card fed-mma"><div class="fed-mark">MMA</div><div class="info"><p>رياضات القتال المختلطة</p></div></a>
 <a href="/federation/indie/" class="fed-card fed-indie"><div class="fed-mark">INDIE</div><div class="info"><p>الاتحادات المستقلة</p></div></a>
+<a href="/federation/mma/" class="fed-card fed-mma"><div class="fed-mark">MMA</div><div class="info"><p>رياضات القتال المختلطة</p></div></a>
 </div>
 </div>
 </section>

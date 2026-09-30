@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: الإعلان عن بطاقة النزالات الكاملة لعرض NJPW Destruction in Kobe
 permalink: "/news/الإعلان-عن-بطاقة-النزالات-الكاملة-لعرض-njpw-ديستركشن-in-kobe/index.html"
 date: 2026-09-20T06:18:04.000+03:00

@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "نتائج عرض NJPW Road To Destruction (17 سبتمبر 2026): سبع مواجهات قوية وحماسية في جولة هوكايدو"
 permalink: "/news/نتائج-عرض-njpw-road-to-ديستركشن-17-سبتمبر-2026-سبع-مواجهات-قوية-وحماسية-في-جولة-هوكايدو/index.html"
 date: 2026-09-17T17:09:25.000+03:00

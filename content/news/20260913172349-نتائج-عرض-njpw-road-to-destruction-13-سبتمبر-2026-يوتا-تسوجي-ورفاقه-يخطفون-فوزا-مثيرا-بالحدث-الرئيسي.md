@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "نتائج عرض NJPW Road To Destruction (13 سبتمبر 2026): يوتا تسوجي ورفاقه يخطفون فوزا مثيرا بالحدث الرئيسي"
 permalink: "/news/نتائج-عرض-njpw-road-to-ديستركشن-13-سبتمبر-2026-يوتا-تسوجي-ورفاقه-يخطفون-فوزا-مثيرا-بالحدث-الرئيسي/index.html"
 date: 2026-09-13T17:23:49.000+03:00

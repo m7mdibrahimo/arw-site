@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "شون سكاي ووكر يفكر في التخلي عن لقب NJPW World TV ومغادرة NJPW"
 date: 2026-09-30T03:26:25.000+03:00
 published_at: 2026-09-30T00:27:02.082Z

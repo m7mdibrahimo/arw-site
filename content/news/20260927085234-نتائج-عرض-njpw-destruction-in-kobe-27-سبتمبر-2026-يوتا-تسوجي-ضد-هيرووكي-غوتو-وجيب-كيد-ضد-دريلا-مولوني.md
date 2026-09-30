@@ -1,5 +1,5 @@
 ---
-federation: INDIE
+federation: NJPW
 title: "نتائج عرض NJPW Destruction in Kobe (27 سبتمبر 2026): فوز يوتا تسوجي في الحدث الرئيسي"
 permalink: "/news/نتائج-عرض-njpw-destruction-in-kobe-27-سبتمبر-2026-يوتا-تسوجي-ضد-هيرووكي-غوتو-وجيب-كيد-ضد-دريلا-مولوني/index.html"
 date: 2026-09-27T10:54:47.364Z
