@@ -2070,6 +2070,20 @@ test('names from the NXT Dusty Classic coverage, and the same-story rules for re
   assert.match(p, /تقرير نتائج كامل فيه نفس النزال = تكرار/);
 });
 
+test('Kendal Grey is always «كيندال غراي» — never «غري» or «جراي» (INCIDENTS #159)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('قصة كيندال غري مع كيندال جراي'), 'قصة كيندال غراي مع كيندال غراي');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Kendal Grey'], 'كيندال غراي');
+  const wrong = /كيندال (جراي|غري)/;
+  for (const dir of ['content/news', 'content/shows']) {
+    for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.md'))) {
+      const body = fs.readFileSync(`${dir}/${f}`, 'utf8').replace(/^permalink:.*$/m, '');
+      assert.doesNotMatch(body, wrong, f);
+    }
+  }
+});
+
 test('a debut months ago told as history («منذ ظهوره الأول في أبريل») does not hold a story off social (INCIDENTS #154)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('نجح ميسون روك نجم عرض WWE NXT في ترك انطباع قوي سريع منذ ظهوره الأول في شهر أبريل الماضي، ليحصل على فرصة'), false);
