@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-september-29-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-09-30T00:20:52.312Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-9-29-2026-grayson-waller-defends-the-nxt-title-dusty-cup-continues-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-30T00:15:49.437Z"
- },
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-september-29-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-30T00:00:52.922Z"
  },
  "https://www.fightful.com/wrestling/331108-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
