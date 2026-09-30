@@ -2159,6 +2159,21 @@ test('an announcement about a weekly show that has not aired yet is not «someth
   assert.equal(settleSpoilerAge(held, 'حصل في عرض WWE NXT', ['wwe nxt'], beforeNxt, []).spoils, true);
 });
 
+test('a card set more than a week out names the day instead of «القادم» (INCIDENTS #162)', async () => {
+  const { farFutureShowDate, arabicDayOrdinal } = await import('../scripts/fightful-watcher');
+  assert.equal(arabicDayOrdinal(13), 'الثالث عشر');
+  assert.equal(arabicDayOrdinal(21), 'الحادي والعشرين');
+  assert.equal(arabicDayOrdinal(11), 'الحادي عشر');
+  assert.equal(arabicDayOrdinal(6), 'السادس');
+  const src = 'Saquon Shugars vs. Tristan Angels Made Official For 10/13 WWE NXT';
+  assert.equal(
+    farFutureShowDate('تحديد نزال بين ساكوان شوجرز وتريستان أنجيلز رسميا في عرض WWE NXT القادم', src, '2026-09-30T12:35:53Z'),
+    'تحديد نزال بين ساكوان شوجرز وتريستان أنجيلز رسميا في عرض WWE NXT يوم الثالث عشر من أكتوبر');
+  // next week's episode stays «القادم»
+  const next = 'نزال في عرض WWE NXT القادم';
+  assert.equal(farFutureShowDate(next, 'Match Set For 10/6 WWE NXT', '2026-09-30T12:35:53Z'), next);
+});
+
 test('the site watchdog checks pages, bots and platforms every minute and keeps a problem open until it is fixed (INCIDENTS #158)', async t => {
   const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth } = await import('../worker/src/health');
   const now = Date.parse('2026-09-30T12:00:00Z');

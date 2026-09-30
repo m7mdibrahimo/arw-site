@@ -1641,6 +1641,34 @@ interface ShowTimingInfo {
   isTonight: boolean;
   isFuture: boolean;
   isPreview: boolean;
+  daysAhead?: number;
+  showMonth?: number;
+  showDay?: number;
+}
+
+const AR_DAY_UNITS = ["", "الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس", "السابع", "الثامن", "التاسع"];
+const AR_MONTH_NAMES = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+/** Day of the month in words: 13 → «الثالث عشر», 21 → «الحادي والعشرين». */
+export function arabicDayOrdinal(n: number): string {
+  if (n === 10) return "العاشر";
+  if (n === 20) return "العشرين";
+  if (n === 30) return "الثلاثين";
+  const unit = n % 10 === 1 && n > 10 ? "الحادي" : AR_DAY_UNITS[n % 10];
+  if (n < 10) return AR_DAY_UNITS[n];
+  if (n < 20) return `${unit} عشر`;
+  return `${unit} و${n < 30 ? "العشرين" : "الثلاثين"}`;
+}
+
+/**
+ * «القادم» means the next episode. A card set two weeks out («Made Official For
+ * 10/13 WWE NXT», posted 9/30) was titled «في عرض WWE NXT القادم» though 10/6
+ * comes first (INCIDENTS #162): past a week, name the day instead.
+ */
+export function farFutureShowDate(title: string, originalTitle: string, postDate?: string): string {
+  const timing = analyzeShowTiming(originalTitle, postDate);
+  if (!timing.isFuture || !timing.daysAhead || timing.daysAhead <= 7 || !timing.showMonth || !timing.showDay) return title;
+  const when = `يوم ${arabicDayOrdinal(timing.showDay)} من ${AR_MONTH_NAMES[timing.showMonth - 1]}`;
+  return title.replace(/\s+(?:القادم|المقبل)(?=\s|$|[،.:])/, ` ${when}`);
 }
 
 // Analyzes whether an article refers to an event happening tonight/today vs future vs preview
@@ -1686,7 +1714,8 @@ function analyzeShowTiming(originalTitle: string, postDate?: string): ShowTiming
     const showDate = new Date(postYear, showMonth - 1, showDay);
     const postMidnight = new Date(postYear, postMonth - 1, postDay);
     if (showDate.getTime() > postMidnight.getTime()) {
-      return { isTonight: false, isFuture: true, isPreview };
+      const daysAhead = Math.round((showDate.getTime() - postMidnight.getTime()) / 86400000);
+      return { isTonight: false, isFuture: true, isPreview, daysAhead, showMonth, showDay };
     }
     if (showDate.getTime() === postMidnight.getTime()) {
       return { isTonight: true, isFuture: false, isPreview };
@@ -1733,6 +1762,7 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
         .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, " القادم")
         .replace(/\s*في\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))/g, " القادم")
         .replace(/القادم\s+القادم/g, "القادم");
+      cleaned = farFutureShowDate(cleaned, originalTitle || "", postDate);
     } else {
       // General news: remove awkward numeric date fragments without falsely adding "القادم"
       cleaned = cleaned
@@ -2077,7 +2107,7 @@ export async function optimizeTitleForSEOAndCTR(
       - ✅ مثال صحيح: "كل ما تريد معرفته عن مواجهات وتفاصيل عرض AEW Collision الليلة"
       - ❌ ممنوع تماماً ومرفوض: "عرض AEW Collision القادم"` : timing.isFuture ? `- **قاعدة العروض القادمة (Upcoming Show Rule)**:
     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض التالي أو تحديد نزال في العرض القادم (مثل: Sami Zayn To Appear On 9/18 WWE SmackDown أو Match Set For 9/23 AEW Dynamite):
-    - **وضح دائماً وبشكل طبيعي وسلس أنه "العرض القادم"** بدلاً من الاكتفاء بالصيغ الرقمية الجافة (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم"، أو "مواجهة نارية في عرض AEW Collision القادم").` : `- **قاعدة ذكر العروض**: اذكر اسم العرض مسبوقاً باسم الاتحاد دون إضافة كلمة "القادم" إلا إذا كان العرض مجدولاً لموعد مستقبلي.`}
+    - **وضح دائماً وبشكل طبيعي وسلس أنه "العرض القادم"** بدلاً من الاكتفاء بالصيغ الرقمية الجافة (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم"، أو "مواجهة نارية في عرض AEW Collision القادم").${(timing.daysAhead ?? 0) > 7 ? ` 🚨 لكن العرض ده بعد أكتر من أسبوع (يوم ${arabicDayOrdinal(timing.showDay!)} من ${AR_MONTH_NAMES[timing.showMonth! - 1]})، فممنوع "القادم" في العنوان والمتن: اكتب "يوم ${arabicDayOrdinal(timing.showDay!)} من ${AR_MONTH_NAMES[timing.showMonth! - 1]}".` : ""}` : `- **قاعدة ذكر العروض**: اذكر اسم العرض مسبوقاً باسم الاتحاد دون إضافة كلمة "القادم" إلا إذا كان العرض مجدولاً لموعد مستقبلي.`}
   - **ممنوع بتاتاً استخدام التشكيل نهائياً في العنوان** (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة).`;
   }
 
@@ -2103,7 +2133,7 @@ export async function optimizeTitleForSEOAndCTR(
 3. **الأمانة التامة لوقائع العنوان الأصلي ودقة التوقيت الزمني**:
    - ممنوع إضافة أي وقائع أو تفاصيل أو تكهنات لم ترد في العنوان الأصلي.
    - **قاعدة توقيت العروض (الليلة vs القادم)**:
-${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذا العرض يقام **الليلة** (${arabicDate})، ممنوع منعاً باتاً كتابة "القادم"! اكتب "الليلة" أو اذكر اسم العرض فقط دون إضافات (مثال: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة").` : timing.isFuture ? `     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض الأسبوعي التالي أو نزال قادم: اكتب بوضوح وسلاسة "في عرض [الاتحاد والعرض] القادم".` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
+${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذا العرض يقام **الليلة** (${arabicDate})، ممنوع منعاً باتاً كتابة "القادم"! اكتب "الليلة" أو اذكر اسم العرض فقط دون إضافات (مثال: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة").` : timing.isFuture ? `     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض الأسبوعي التالي أو نزال قادم: اكتب بوضوح وسلاسة "في عرض [الاتحاد والعرض] القادم".${(timing.daysAhead ?? 0) > 7 ? ` 🚨 لكن العرض ده بعد أكتر من أسبوع، فاكتب "يوم ${arabicDayOrdinal(timing.showDay!)} من ${AR_MONTH_NAMES[timing.showMonth! - 1]}" بدل "القادم".` : ""}` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
    - إذا كان العنوان الأصلي يحتوي على نزال محدد، اذكره بالأسماء الصريحة والمباشرة واسم العرض بدقة.
    - إذا كان العنوان الأصلي يحتوي على تصريح لمصارع، اذكر اسم المصارع والاقتباس بوضوح بين علامتي تنصيص.
    - إذا كان العنوان الأصلي يحتوي على حدث أو إصابة أو ظهور، اذكره مباشرة كما هو (مثل: "تيفاني ستراتون تتعرض لسقوط مخيف فوق الحبل العلوي").
@@ -2865,7 +2895,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
          - ✅ في العنوان: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة"
          - ✅ في المتن: "يستعد اتحاد AEW لتقديم عرض AEW Collision الليلة..."
          - ❌ ممنوع تماماً ومرفوض: "عرض AEW Collision القادم" أو "يوم التاسع عشر من سبتمبر"` : timing.isFuture ? `     - **إذا كان الخبر يتحدث عن ظهور مصارع أو تحديد نزال في العرض الأسبوعي القادم (تاريخ مستقبلي بعد أيام)**:
-       - وضح بسلاسة أنه في **"العرض القادم"** (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم") بدلاً من استخدام تواريخ رقمية جافة.` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
+       - وضح بسلاسة أنه في **"العرض القادم"** (مثل: "سامي زين يظهر في عرض WWE SmackDown القادم") بدلاً من استخدام تواريخ رقمية جافة.${(timing.daysAhead ?? 0) > 7 ? ` 🚨 لكن العرض ده بعد أكتر من أسبوع، فاكتب "يوم ${arabicDayOrdinal(timing.showDay!)} من ${AR_MONTH_NAMES[timing.showMonth! - 1]}" بدل "القادم" في العنوان والمتن.` : ""}` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
    - **حظر الترجمة الحرفية الآلية الركيكة وصياغة الأخبار كصحفي بشري محترف (Human Journalism vs Google Translate)**:
      - ممنوع بتاتاً منعاً باتاً الترجمة الحرفية الركيكة للألفاظ والمجازات الإنجليزية:
        - ❌ "فيلم حركة حي" -> ✅ "أفلام الأكشن الحية أمام الجماهير"
