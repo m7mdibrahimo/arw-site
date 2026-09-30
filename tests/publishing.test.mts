@@ -2054,3 +2054,25 @@ test('«first televised title defense» is not «his first television title» (I
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('يستعد غرايسون والر للدفاع عن لقبه التلفزيوني الأول منذ تتويجه'), 'يستعد غرايسون والر لخوض أول دفاع تلفزيوني عن لقبه منذ تتويجه');
 });
+
+test('names from the NXT Dusty Classic coverage, and the same-story rules for replies and single results (INCIDENTS #154)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('فوز تشارز «ستاربوي» هول بعد حركة ستاننر وهجوم رجينا فولكانو'), 'فوز تشاز «ستاربوي» هول بعد حركة ستانر وهجوم رينا فولكانو');
+  assert.equal(applyCorrections('تأهل فرأكسيوم وستارلوي'), 'تأهل فراكسيوم وستاربوي');
+  assert.equal(applyCorrections('تحية لروح النصر الراحل باك'), 'تحية لروح النجم الراحل باك');
+  assert.equal(applyCorrections('وصلت رينا فولكانو'), 'وصلت رينا فولكانو');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Mini Vikingo'], 'ميني فيكينغو');
+  assert.equal(names['Chazz Hall'], 'تشاز هول');
+  const { duplicatePrompt } = await import('../scripts/editorial');
+  const p = duplicatePrompt({ title: 'x', body: 'y', tags: [] } as any, []);
+  assert.match(p, /رد صاحب الشأن نفسه/);
+  assert.match(p, /تقرير نتائج كامل فيه نفس النزال = تكرار/);
+});
+
+test('a debut months ago told as history («منذ ظهوره الأول في أبريل») does not hold a story off social (INCIDENTS #154)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('نجح ميسون روك نجم عرض WWE NXT في ترك انطباع قوي سريع منذ ظهوره الأول في شهر أبريل الماضي، ليحصل على فرصة'), false);
+  assert.equal(isSingleMatchSpoiler('ميسون روك يسجل ظهوره الأول في عرض WWE NXT'), true);
+  assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
+});
