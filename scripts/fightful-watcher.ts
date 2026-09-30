@@ -2462,12 +2462,18 @@ function isDaysAhead(month: number, day: number, days: number, now = Date.now())
  * (INCIDENTS #114). A stated date of today or yesterday (UTC), or a show that aired in the last 24
  * hours, can't be «old».
  */
-export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(24), now = Date.now()): SocialVerdict {
-  if (v.age !== "old") return v;
+export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(24), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7)): SocialVerdict {
   const recentDays = [0, 1].map(i => new Date(now - i * 86400_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
   const datedRecently = statedMonthDays(text).some(x => recentDays.some(r => r.m === x.m && r.d === x.d));
   const lower = text.toLowerCase();
   const recentShow = shows.some(n => lower.includes(n));
+  // The reverse slip: the model called Ospreay's win at AEW All Out «recent» three days after the
+  // show and held the story (INCIDENTS #155). A result that names only a show whose last results
+  // report is over 24 hours old, with no recent date, is ordinary news — not a spoiler.
+  if (v.spoils && v.age === "recent" && v.kind !== "return" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
+    return { ...v, spoils: false, kind: "none", age: "old" };
+  }
+  if (v.age !== "old") return v;
   return datedRecently || recentShow ? { ...v, age: "recent" } : v;
 }
 

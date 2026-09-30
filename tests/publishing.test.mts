@@ -2083,4 +2083,17 @@ test('a title win someone is aiming for, and a return to training, do not hold a
   assert.equal(isSingleMatchSpoiler('كايري ساني تعود إلى التدريبات داخل الحلبة مع اقتراب موعد عودتها للمصارعة'), false);
   assert.equal(isSingleMatchSpoiler('كاسي لي تحقق الفوز ببطولة AEW العالمية للفرق للسيدات'), true);
   assert.equal(isSingleMatchSpoiler('كايري ساني تعود في عرض WWE RAW'), true);
+
+  // The model called a win at AEW All Out «recent» three days after the show
+  const { settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const now = Date.parse('2026-09-30T05:00:00Z');
+  const said = { spoils: true, kind: 'result' as const, age: 'recent' as const, note: '' };
+  const day = ['wwe nxt', 'roh tv'], week = ['aew all out', 'wwe nxt', 'roh tv'];
+  const out = settleSpoilerAge(said, 'ألقى ويل أوسبراي تصريحات عقب عرض AEW All Out بعد فوزه على جون موكسلي', day, now, week);
+  assert.equal(out.spoils, false);
+  assert.equal(out.age, 'old');
+  // A show that aired in the last day still spoils
+  assert.equal(settleSpoilerAge(said, 'فوز غرايسون والر في عرض WWE NXT بعد عرض AEW All Out', day, now, week).spoils, true);
+  // So does a stated date from today
+  assert.equal(settleSpoilerAge(said, 'فوزه في عرض AEW All Out يوم 30 سبتمبر', day, now, week).spoils, true);
 });
