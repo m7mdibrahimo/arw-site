@@ -4161,12 +4161,9 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   // The social shield's second opinion, on the finished text (full results reports go out with
   // a fixed text, so they need none).
-  let socialVerdict = isShowResultsArticle(rawTitle, plainText) && !isTapingSpoiler(rawTitle, rewritten.title) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
-  // Results of a taped show that hasn't aired are a spoiler whatever else is said: «WWE X AAA
-  // Worlds Collide Spoilers From 9/26 Taping» went out as a results report (INCIDENTS #168).
-  if (isTapingSpoiler(rawTitle, rewritten.title) && !socialVerdict?.spoils) {
-    socialVerdict = { spoils: true, kind: "result", age: "recent", note: "نتائج عرض متسجل لسه ماتذاعش (تسريبات)", priority: socialVerdict?.priority || "normal" };
-  }
+  // A leaks report («… Spoilers From 9/26 Taping») is a results report too: it goes out with the
+  // show's name and a fixed line only, never a result — the owner's call (INCIDENTS #168).
+  let socialVerdict = isShowResultsArticle(rawTitle, plainText) || isTapingSpoiler(rawTitle, rewritten.title) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
   // Something that happened on a show that just aired is held whatever the model said (INCIDENTS #114)
   if (!isShowResultsArticle(rawTitle, plainText) && !socialVerdict?.spoils && happenedOnRecentShow(rawTitle, `${rewritten.title} ${socialOpening(finalBody)}`)) {
     socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٢٤ ساعة، فهو حرق من العرض" };

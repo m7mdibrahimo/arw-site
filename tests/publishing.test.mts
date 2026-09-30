@@ -2323,16 +2323,17 @@ test('«program» is a storyline, «Cage & Cope» is one team, and a named sourc
   assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'))['Cage & Cope'], 'كريستيان كيج وآدم كوبلاند');
 });
 
-test('leaked results of a taped show never reach social before it airs (INCIDENTS #168)', async () => {
-  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+test('a leaks report goes out like a results report: the show name and a fixed line, never a result (INCIDENTS #168)', async () => {
+  const { isSingleMatchSpoiler, isResultsArticle, socialResultsTitle } = await import('../worker/src/index');
   const { isTapingSpoiler } = await import('../scripts/fightful-watcher');
-  assert.equal(isSingleMatchSpoiler('تسريبات عرض WWE X AAA Worlds Collide من تسجيلات 26 سبتمبر في شيكاغو'), true);
-  assert.equal(isSingleMatchSpoiler('نتائج تسريبات عرض ROH'), true);
-  assert.equal(isSingleMatchSpoiler('نتائج عرض WWE RAW 28 سبتمبر 2026'), false, 'a full report of an aired show still goes out');
+  const t = 'تسريبات عرض WWE X AAA Worlds Collide من تسجيلات 26 سبتمبر في شيكاغو';
+  assert.equal(isSingleMatchSpoiler(t), false, 'not held: the owner wants leaks on social as promotion');
+  assert.equal(isResultsArticle(t), true, 'so its text is the fixed line, not the first result');
+  assert.equal(socialResultsTitle('تسريبات عرض ROH (24 سبتمبر 2026): فوز فلان باللقب'), 'تسريبات عرض ROH (24 سبتمبر 2026)');
   assert.equal(isTapingSpoiler('WWE X AAA Worlds Collide Spoilers From 9/26 Taping In Chicago Reportedly Revealed'), true);
   assert.equal(isTapingSpoiler('WWE Raw Results 9/28/2026', 'نتائج عرض WWE RAW'), false);
-  const writer = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
-  assert.match(writer, /isShowResultsArticle\(rawTitle, plainText\) && !isTapingSpoiler\(rawTitle, rewritten\.title\) \? null/);
+  // a leak that names a winner in the title is still held
+  assert.equal(isSingleMatchSpoiler('تسريبات: فلان يهزم علان في تسجيلات ROH'), true);
 });
 
 test('«free agent» is «مصارع حر» and one-word generic tags are dropped (INCIDENTS #169)', async () => {

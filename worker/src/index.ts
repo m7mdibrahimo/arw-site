@@ -1933,9 +1933,9 @@ async function sendToPlatform(
  */
 export function socialResultsTitle(title: string): string {
   const t = String(title || "").trim();
-  const dated = t.match(/^(نتائج\s+(?:عرض|تسريبات|تسجيلات)[^()]*\([^)]*\))/);
+  const dated = t.match(/^((?:نتائج|تسريبات)\s+(?:عرض|تسريبات|تسجيلات)[^()]*\([^)]*\))/);
   if (dated) return dated[1].trim();
-  const named = t.match(/^(نتائج\s+(?:عرض|تسريبات|تسجيلات)[^:：]*?)\s*[:：]/);
+  const named = t.match(/^((?:نتائج|تسريبات)\s+(?:عرض|تسريبات|تسجيلات)[^:：]*?)\s*[:：]/);
   return named ? named[1].trim() : t;
 }
 
@@ -1973,7 +1973,9 @@ function sanitizePublishedHeadline(title: string): string {
 // winners — and the report's opening instead of the fixed text (CMLL 28 Sep, INCIDENTS #127).
 export function isResultsArticle(title: string = ""): boolean {
   // «نتائج تسجيلات عرض ROH TV» (TV tapings) is a results report too (INCIDENTS #137)
-  return /(?<![؀-ۿ])نتائج\s+(?:عرض|تسريبات|تسجيلات)(?![؀-ۿ])/.test(title) ||
+  // «تسريبات عرض WWE X AAA Worlds Collide…» is one too: it goes out like any report — the show's
+  // name and the fixed line, never a result — and brings readers to the site (the owner, INCIDENTS #168).
+  return /(?<![؀-ۿ])نتائج\s+(?:عرض|تسريبات|تسجيلات)(?![؀-ۿ])/.test(title) || /^تسريبات\s+(?:عرض|تسجيلات)(?![؀-ۿ])/.test(title.trim()) ||
          /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 
@@ -1984,9 +1986,6 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // title — every Arabic rule below was dead until 2026-09-27 (INCIDENTS #68).
   const ar = (alts: string) => new RegExp(`(?<![\\u0600-\\u06FF\\w])(?:${alts})`, "i");
 
-  // Leaked results of a taped show are a spoiler until it airs, however the title opens:
-  // «تسريبات عرض WWE X AAA Worlds Collide…» reached Telegram and Facebook (INCIDENTS #168).
-  if (/(?:^|[\s«])تسريبات?(?:\s|$)/.test(title) || /\bspoilers?\b|\btaping\b/i.test(title)) return true;
   // Full show results go to social; leaked results of a taped show («نتائج تسريبات…») do not.
   if (/^نتائج\s+عرض(?![\u0600-\u06FF])/.test(title) || /\b(?:Full Show Results|Live Results|Show Results)\b/i.test(title)) {
     return false;

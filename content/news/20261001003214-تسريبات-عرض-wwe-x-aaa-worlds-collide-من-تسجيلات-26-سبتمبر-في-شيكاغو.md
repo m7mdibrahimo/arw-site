@@ -6,10 +6,6 @@ published_at: 2026-09-30T22:00:13.410Z
 source_id: 1688173559
 source_url: "https://www.wrestlinginc.com/2274055/wwe-aaa-worlds-collide-spoilers-september-26-chicago/"
 single_match_result: false
-social_spoiler: true
-social_spoiler_kind: result
-social_spoiler_age: recent
-social_spoiler_note: "نتائج عرض متسجل لسه ماتذاعش (تسريبات) — الحادثة ١٦٨"
 source_title: "WWE X AAA Worlds Collide Spoilers From 9/26 Taping In Chicago Reportedly Revealed"
 source_results: 3
 tags:
