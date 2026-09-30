@@ -2522,11 +2522,12 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
   const recentDays = [0, 1].map(i => new Date(now - i * 86400_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
   const datedRecently = statedMonthDays(text).some(x => recentDays.some(r => r.m === x.m && r.d === x.d));
   const lower = text.toLowerCase();
-  const recentShow = shows.some(n => lower.includes(n));
+  const recentShow = shows.some(n => lower.includes(n)) || aired.some(n => lower.includes(n));
   // The reverse slip: the model called Ospreay's win at AEW All Out «recent» three days after the
-  // show and held the story (INCIDENTS #155). A result that names only a show whose last results
-  // report is over 24 hours old, with no recent date, is ordinary news — not a spoiler.
-  if (v.spoils && v.age === "recent" && v.kind !== "return" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
+  // show and held the story (INCIDENTS #155). A result — or a debut or return (Jaida Parker's RAW
+  // debut, 40 hours on: INCIDENTS #159) — that names only a show whose last results report is over
+  // 24 hours old and that hasn't aired since, with no recent date, is ordinary news — not a spoiler.
+  if (v.spoils && v.age === "recent" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
     return { ...v, spoils: false, kind: "none", age: "old" };
   }
   if (v.age !== "old") return v;

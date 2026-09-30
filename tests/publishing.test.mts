@@ -2233,3 +2233,20 @@ test('the site watchdog checks pages, bots and platforms every minute and keeps 
   assert.match(src, /runSiteHealthCheck\(env, minute/);
   assert.match(src, /type: "health"/);
 });
+
+test('a debut on a show that aired two days ago is ordinary news, not a spoiler (INCIDENTS #159)', async () => {
+  const { settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const now = Date.parse('2026-09-30T16:20:00Z'); // RAW of the 28th aired 00:00–03:00 UTC on the 29th
+  const v = { spoils: true, kind: 'return' as const, age: 'recent' as const, note: '' };
+  const text = 'بولي راي يعلق على ظهور جايدا باركر في عرض WWE RAW';
+  assert.equal(settleSpoilerAge(v, text, [], now, ['wwe raw']).spoils, false);
+  // the same debut the night of the show stays held
+  assert.equal(settleSpoilerAge(v, text, [], Date.parse('2026-09-29T02:00:00Z'), ['wwe raw']).spoils, true);
+});
+
+test('a promotion or a broadcast format coming back is not a wrestler return (INCIDENTS #159)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('اتحاد MLW يعود إلى نظام الدفع مقابل المشاهدة في السابع من نوفمبر'), false);
+  assert.equal(isSingleMatchSpoiler('عرض WWE Saturday Night Main Event يعود إلى قناة NBC'), false);
+  assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
+});

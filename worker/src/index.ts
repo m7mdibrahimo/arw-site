@@ -1986,7 +1986,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // «منذ ظهوره الأول في أبريل» is a debut months ago told as history, not tonight's (INCIDENTS #154).
   // «كايري ساني تعود إلى التدريبات داخل الحلبة» is back in training, not back on a show (INCIDENTS #155).
   const notYetReturn = ar("(?:ي|ت)?عود(?:ة|ته|تها|تهم)?\\s+(?:إلى|الى|ل)\\s*(?:ال)?(?:تدريبات|تدريب|تمارين|تمرين|صالة)|(?:لا\\s+)?(?:يستبعد|تستبعد|يأمل|تأمل|يتمنى|تتمنى|يفكر|تفكر|يخطط|تخطط|يقترب|تقترب|يستعد|تستعد|ينتظر|تنتظر|يلمح|تلمح|يتطلع|تتطلع|يرغب|ترغب|يريد|تريد)(?:\\s+(?:في|إلى|الى|من|ل))?\\s+(?:ال)?عود(?:ة|ته|تها|تهم)|(?:موعد|توقيت|تفاصيل|خطط|احتمال|إمكانية|فرص)\\s+(?:ال)?عود(?:ة|ته|تها|تهم)|(?:ما\\s+)?إذا\\s+كان(?:ت)?\\s+(?:س|ست)?(?:يعود|تعود)|هل\\s+(?:س)?(?:يعود|تعود)|قد\\s+(?:يعود|تعود)|لن\\s+(?:يعود|تعود)|(?:كان|كانت)\\s+(?:من\\s+)?(?:المفترض|المقرر|مقررا|مخططا|يفترض)\\s+(?:أن|ان)\\s+\\S+\\s+(?:ظهور(?:ه|ها|هم)?\\s+الأول|عود(?:ة|ته|تها|تهم))|(?:موعد|خطط|خطة|تفاصيل)\\s+(?:ال)?ظهور(?:ه|ها|هم)?\\s+الأول|منذ\\s+(?:ظهور(?:ه|ها|هم)?\\s+الأول|أول\\s+ظهور\\s+ل\\S+|عود(?:ته|تها|تهم))");
-  const returnTitle = title.replace(new RegExp(notYetReturn.source, "gi"), " ");
+  // A promotion or a format coming back is not a wrestler's return: «اتحاد MLW يعود إلى نظام الدفع
+  // مقابل المشاهدة» was held as a spoiler (INCIDENTS #159).
+  const formatReturn = ar("(?:ي|ت)?عود(?:ة|ته|تها)?\\s+(?:إلى|الى|ل)\\s*(?:ال)?(?:نظام|الدفع\\s+مقابل\\s+المشاهدة|البث|قناة|منصة|التلفزيون|تلفزيون)|^(?:اتحاد|شركة|منظمة|عرض|عروض)\\s+\\S+(?:\\s+\\S+)?\\s+(?:يعود|تعود)");
+  const returnTitle = title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ");
   if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;
