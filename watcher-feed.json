@@ -1,5 +1,15 @@
 [
   {
+    "id": 331220,
+    "link": "https://www.fightful.com/wrestling/wrestling-open-ri-results-9-28/",
+    "date": "2026-09-29T23:30:00",
+    "date_gmt": "2026-09-30T03:30:00",
+    "title": {
+      "rendered": "Wrestling Open RI Results (9/28)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29205519/HTThFInXgAENDeZ.jpeg"
+  },
+  {
     "id": 331234,
     "link": "https://www.fightful.com/wrestling/keanu-carver-yall-gonna-sound-dumb-as-sht-in-a-month/",
     "date": "2026-09-29T23:23:20",
@@ -288,15 +298,5 @@
       "rendered": "Bryan Danielson: Mushrooms Are So Hot"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/23123608/maxresdefault-30.jpg"
-  },
-  {
-    "id": 331084,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-9-29/",
-    "date": "2026-09-29T08:00:00",
-    "date_gmt": "2026-09-29T12:00:00",
-    "title": {
-      "rendered": "WWE NXT Preview, Start Time, How To Watch, Location (9/29)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28194340/HTFEO8BagAAPSNc.jpeg"
   }
 ]
