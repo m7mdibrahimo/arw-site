@@ -2312,3 +2312,13 @@ test('company names follow the glossary in tags and text: one Paramount and one 
   assert.equal(tagInArabic('Paramount'), 'باراماونت');
   assert.equal(applyCorrections('اندماج باراماونت وWDB'), 'اندماج باراماونت ووارنر براذرز ديسكفري');
 });
+
+test('«program» is a storyline, «Cage & Cope» is one team, and a named source is named (INCIDENTS #167)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('إثر تفوقهما على فريقي كيج وآدم كوبلاند وإف تي آر'), 'إثر تفوقهما على فريق كريستيان كيج وآدم كوبلاند وفريق إف تي آر');
+  assert.equal(applyCorrections('انضمام أوميغا إلى برنامجهما الرئيسي'), 'انضمام أوميغا إلى قصتهما الكبرى');
+  const writer = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(writer, /\*\*program\*\* في المصارعة = \*\*قصة\*\*/);
+  assert.match(writer, /ممنوع «أوضحت الكواليس»/);
+  assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'))['Cage & Cope'], 'كريستيان كيج وآدم كوبلاند');
+});
