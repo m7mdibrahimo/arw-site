@@ -32,6 +32,7 @@
 import { deliverOnce, authorizeAdmin } from "./delivery";
 import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
+import { runSiteHealthCheck, siteHealth } from "./health";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -2700,6 +2701,10 @@ export async function studioNotifications(env: Env, withSocial: boolean) {
       }
     } catch { /* no reels file */ }
   }
+  // Open problems the site's watchdog found stay in the bell until they're fixed (INCIDENTS #158)
+  try {
+    for (const p of (await siteHealth(env)).problems) items.push({ id: `health:${p.key}`, type: "health", at: p.since, code: p.code, title: p.title, detail: p.detail });
+  } catch { /* no watchdog record yet */ }
   items.sort((a, b) => b.at - a.at);
   return { success: true, items: items.slice(0, 120), now };
 }
@@ -2909,6 +2914,11 @@ export default {
       if (path === "/api/studio/overview" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "status"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف حالة الموقع." }, 403);
         return json(await studioOverview(env, await request.json().catch(() => ({}))));
+      }
+      // What the watchdog found — problem titles only, nothing private (INCIDENTS #158)
+      if (path === "/health" && request.method === "GET") {
+        const h = await siteHealth(env);
+        return json({ ok: !h.problems.length, checkedAt: h.checkedAt ? new Date(h.checkedAt).toISOString() : null, problems: h.problems.map(p => ({ title: p.title, detail: p.detail, since: new Date(p.since).toISOString() })) });
       }
       if (path === "/api/studio/notifications" && request.method === "GET") {
         if (!(await studioUser(request, env as any))) return json({ success: false, auth: false, error: "انتهت الجلسة. سجّل الدخول من جديد." }, 401);
@@ -3644,6 +3654,8 @@ export default {
       minute === 15 ? runVideoRetentionCleanup(env) : minute === 45 ? runPublishStateCleanup(env) : runWatcherPoll(env),
       runNewsWatcherCron(env),
       runScheduleBackstopCron(env),
+      // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)
+      runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state)),
     ]));
   },
 } satisfies ExportedHandler<Env>;

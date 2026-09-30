@@ -73,6 +73,7 @@ export function describe(n) {
     case 'held-keep': return { ico: 'shield', tone: 'ink', title: `${q(n.title)} هيفضل بعيد عن السوشيال`, detail: 'بقرار منك', chip: null, href: '#/' };
     case 'reel': return { ico: 'show', tone: 'coral', title: `تم نشر ريل ${q(n.title)}`, detail: n.detail || '', chip: null, href: '#/tools/reels' };
     case 'news-request': return { ico: 'news', tone: 'sky', title: 'تم إرسال الخبر للبوت', detail: 'بيظهر على الموقع خلال ٣ لـ٥ دقايق', chip: null, href: '#/tools/sources' };
+    case 'health': return { ico: 'alert', tone: 'coral', title: `حارس الموقع: ${n.title}`, detail: n.detail && !/^https?:/.test(n.detail) ? n.detail : 'مفتوحة لحد ما تتصلح', chip: { text: 'مشكلة مفتوحة', tone: 'coral' }, href: '' };
     case 'error': return { ico: 'alert', tone: 'coral', title: n.title || 'حصلت مشكلة', detail: n.detail || '', chip: null, href: editHref };
     // ── site ──
     case 'site': return { ico: KIND_ICON[n.kind] || 'news', tone: 'teal', title: `${singular(n.kind)} جديد على الموقع: ${q(n.title)}`, detail: n.platforms && n.platforms.length ? `اتنشر على ${platforms(n.platforms)}` : '', chip: null, href: editHref };
@@ -95,7 +96,7 @@ export function mergeItems(server, local) {
     if (own && item.type === 'site') { if (item.platforms) own.platforms = item.platforms; continue; }
     out.push(item);
   }
-  return out.filter(n => Date.now() - n.at < WINDOW_MS).sort((a, b) => b.at - a.at).slice(0, 100);
+  return out.filter(n => n.type === 'health' || Date.now() - n.at < WINDOW_MS).sort((a, b) => b.at - a.at).slice(0, 100);
 }
 
 function allItems() { return mergeItems(serverItems, localItems()); }

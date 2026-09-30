@@ -2111,3 +2111,55 @@ test('an announcement about a weekly show that has not aired yet is not «someth
   // a show named only through the results list still counts
   assert.equal(settleSpoilerAge(held, 'حصل في عرض WWE NXT', ['wwe nxt'], beforeNxt, []).spoils, true);
 });
+
+test('the site watchdog checks pages, bots and platforms every minute and keeps a problem open until it is fixed (INCIDENTS #158)', async t => {
+  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth } = await import('../worker/src/health');
+  const now = Date.parse('2026-09-30T12:00:00Z');
+  // latest finished run per workflow decides
+  assert.deepEqual(failedWorkflows([
+    { name: 'A', status: 'completed', conclusion: 'success', created_at: '2026-09-30T11:00:00Z' },
+    { name: 'A', status: 'completed', conclusion: 'failure', created_at: '2026-09-30T10:00:00Z' },
+    { name: 'B', status: 'in_progress', conclusion: null },
+    { name: 'B', status: 'completed', conclusion: 'failure', created_at: '2026-09-30T09:00:00Z', html_url: 'u' },
+  ]).map(f => f.name), ['B']);
+  // on the site over an hour, not held, missing a platform
+  const items = [
+    { url: '/news/a/', title: 'أ', published_at: '2026-09-30T10:30:00Z' },
+    { url: '/news/b/', title: 'ب', published_at: '2026-09-30T10:30:00Z' },
+    { url: '/news/c/', title: 'ج', published_at: '2026-09-30T11:30:00Z' },
+    { url: '/news/d/', title: 'د', published_at: '2026-09-30T10:30:00Z' },
+  ];
+  const state = { telegram: { a: 1, b: 1 }, facebook: { a: 1, b: 1 }, instagram: { a: 1 }, held: { d: { at: 1 } } };
+  assert.deepEqual(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now), [{ title: 'ب', missing: ['إنستغرام'] }]);
+  // «since» survives while the problem stays open
+  const first = mergeProblems([], [{ key: 'page:/', code: 'page_down', title: 'x', detail: '' }], ['page_down'], 1000);
+  assert.equal(mergeProblems(first, [{ key: 'page:/', code: 'page_down', title: 'x', detail: '' }], ['page_down'], 5000)[0].since, 1000);
+  assert.deepEqual(mergeProblems(first, [], ['page_down'], 5000), []);
+
+  // a full tick: the home page is down → recorded, and told once after two minutes
+  const kv = new Map<string, string>();
+  const env: any = { SITE_ORIGIN: 'https://site.test', GITHUB_TOKEN: 't', GITHUB_OWNER: 'o', GITHUB_REPO: 'r', TELEGRAM_BOT_TOKEN: 'b', ADMIN_TELEGRAM_CHAT_ID: '1',
+    PUSH_KV: { get: async (k: string) => kv.get(k) ?? null, put: async (k: string, v: string) => { kv.set(k, v); } } };
+  const told: string[] = [];
+  const page = '<html>' + 'x'.repeat(2000) + '</html>';
+  t.mock.method(globalThis, 'fetch', async (input: any, init: any) => {
+    const u = String(input);
+    if (u.includes('api.telegram.org')) { told.push(JSON.parse(init.body).text); return new Response('{}'); }
+    if (u.includes('watcher-recent-content.json')) return Response.json([{ url: '/news/a/', title: 'أ', published_at: new Date().toISOString() }]);
+    if (u.startsWith('https://site.test/?')) return new Response('down', { status: 502 });
+    return new Response(page, { status: 200 });
+  });
+  await runSiteHealthCheck(env, 1, (it: any) => it.url, async () => ({}));
+  let h = await siteHealth(env);
+  assert.deepEqual(h.problems.map(p => p.title), ['الصفحة الرئيسية مش بتفتح']);
+  assert.equal(told.length, 0, 'one failed minute is not told yet');
+  const rec = JSON.parse(kv.get('site_health')!); rec.problems[0].since -= 120_000; kv.set('site_health', JSON.stringify(rec));
+  await runSiteHealthCheck(env, 2, (it: any) => it.url, async () => ({}));
+  await runSiteHealthCheck(env, 3, (it: any) => it.url, async () => ({}));
+  assert.equal(told.length, 1, 'told once, not every minute');
+  assert.match(told[0], /الصفحة الرئيسية مش بتفتح/);
+  // index wires it into the minute tick and the bell
+  const src = fs.readFileSync('worker/src/index.ts', 'utf8');
+  assert.match(src, /runSiteHealthCheck\(env, minute/);
+  assert.match(src, /type: "health"/);
+});
