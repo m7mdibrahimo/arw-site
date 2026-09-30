@@ -2304,3 +2304,11 @@ test('a new tag takes the spelling the site already uses — one person, one tag
   assert.doesNotMatch(text, /^\s+- (?:إيو سكاي|أخبارالمصارعة|اصابات المصارعة|دي فون دادلي)$/m);
   assert.match(fs.readFileSync('_redirects', 'utf8'), /\/tag\/إيو-سكاي\/\* \/tag\/آيو-سكاي\/:splat 301!/);
 });
+
+test('company names follow the glossary in tags and text: one Paramount and one Warner Bros Discovery tag (INCIDENTS #165)', async () => {
+  const { tagInArabic } = await import('../scripts/fightful-watcher');
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(tagInArabic('Warner Bros Discovery'), 'وارنر براذرز ديسكفري');
+  assert.equal(tagInArabic('Paramount'), 'باراماونت');
+  assert.equal(applyCorrections('اندماج باراماونت وWDB'), 'اندماج باراماونت ووارنر براذرز ديسكفري');
+});
