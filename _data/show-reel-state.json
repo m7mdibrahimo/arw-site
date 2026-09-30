@@ -2479,5 +2479,37 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20260930152504-cmll-sabados-de-coliseo-26-09-2026": {
+    "publishedAt": 1790771893413,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 26.09.2026 مترجم",
+    "lastAttempt": 1790771909183,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260930152731-cmll-domingo-familiar-27-09-2026": {
+    "publishedAt": 1790771938882,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 27.09.2026 مترجم",
+    "lastAttempt": 1790771951315,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
