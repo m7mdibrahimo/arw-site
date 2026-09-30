@@ -1573,7 +1573,7 @@ test('a held story goes out on its own 12 hours after the hold — unless the ow
   const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {}, held: {} };
   for (const [k, h] of [[keys.a, 13], [keys.b, 10], [keys.c, 25]] as [string, number][]) {
     for (const p of ['telegram', 'facebook', 'instagram', 'x']) state[p][k] = stamp(h);
-    state.held[k] = { at: stamp(h), title: 'x', url: '/news/x/', reason: 'result', why: 'title' };
+    state.held[k] = { at: stamp(h), title: 'فلان يهزم علان في عرض RAW', url: '/news/x/', reason: 'result', why: 'title' };
   }
   state.held[keys.c].dismissedAt = stamp(20);
   const file = '/repos/owner/repo-24h/contents/_data/publish-state.json';
@@ -2378,4 +2378,17 @@ test('«ساعت» and the «مستذكر» forms are corrected (INCIDENTS #173)
   assert.equal(applyCorrections('بأقل من 24 ساعت عن عمر'), 'بأقل من 24 ساعة عن عمر');
   assert.equal(applyCorrections('عن باك، مستذكرا مواجهته'), 'عن باك، متذكرا مواجهته');
   assert.equal(applyCorrections('مستذكرين إسهاماته'), 'متذكرين إسهاماته');
+});
+
+test('a hold is lifted as soon as today\'s rules say it is not a spoiler (INCIDENTS #174)', async () => {
+  const { stillSpoiler } = await import('../worker/src/index');
+  assert.equal(stillSpoiler({ why: 'title', title: 'اتحاد MLW يعود إلى نظام الدفع مقابل المشاهدة في السابع من نوفمبر' }), false);
+  assert.equal(stillSpoiler({ why: 'title', title: 'عودة فريق ذا إيليت ونزال مرتقب على البطولة القارية ضمن عرض AEW Dynamite' }), false);
+  assert.equal(stillSpoiler({ why: 'title', title: 'ساموا جو يعود في عرض AEW All Out' }), true);
+  // an AI hold stands until the story itself is marked clean
+  assert.equal(stillSpoiler({ why: 'ai', title: 'بولي راي يعلق' }, { title: 'بولي راي يعلق', social_spoiler: true }), true);
+  assert.equal(stillSpoiler({ why: 'ai', title: 'بولي راي يعلق' }, { title: 'بولي راي يعلق', social_spoiler: false }), false);
+  assert.equal(stillSpoiler({ why: 'ai', title: 'x' }, undefined), true, 'unknown story: keep holding');
+  // a title hold the meaning check also called a spoiler stays
+  assert.equal(stillSpoiler({ why: 'title', title: 'اتحاد MLW يعود إلى نظام الدفع' }, { social_spoiler: true }), true);
 });

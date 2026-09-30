@@ -1979,6 +1979,20 @@ export function isResultsArticle(title: string = ""): boolean {
          /\b(?:Full Show Results|Show Results|Live Coverage)\b/i.test(title);
 }
 
+/**
+ * Would today's rules still hold this story? A rule fixed after a false hold used to leave that
+ * hold in place for its full wait: «اتحاد MLW يعود إلى نظام الدفع…» and Bully Ray on Jaida Parker's
+ * RAW debut stayed off social for hours after #159 (INCIDENTS #174). A title/lead hold is re-read
+ * with the current word rules; an AI hold stands until the story itself says it isn't a spoiler.
+ */
+export function stillSpoiler(h: { why?: string; title?: string; lead?: string }, item?: any): boolean {
+  if (item?.social_spoiler === true) return true; // the meaning check still says spoiler
+  if (h.why === "title") return isSingleMatchSpoiler(String(h.title || ""), "");
+  if (h.why === "lead") return isSingleMatchSpoiler(String(h.title || ""), "") || isSingleMatchSpoiler(String(h.lead || ""), "");
+  if (h.why === "ai") return !item || item.social_spoiler !== false || isSingleMatchSpoiler(String(item.title || ""), "");
+  return true;
+}
+
 export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = ""): boolean {
   const title = (rawTitle || "").trim();
   if (!title) return false;
@@ -2239,8 +2253,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   // the last 36 hours: older ones aren't dug back up.
   {
     const nowMs = Date.now();
-    const due = Object.entries(state.held || {}).filter(([, h]) => h && !h.releasedAt && !h.dismissedAt
-      && nowMs - h.at >= 12 * 3600_000 && nowMs - h.at < 36 * 3600_000);
+    const byKey = new Map(items.map((it: any) => [sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), it]));
+    const due = Object.entries(state.held || {}).filter(([k, h]) => h && !h.releasedAt && !h.dismissedAt
+      && nowMs - h.at < 36 * 3600_000 && (nowMs - h.at >= 12 * 3600_000 || !stillSpoiler(h, byKey.get(k))));
     if (due.length) {
       state.released = state.released || {};
       for (const [k, h] of due) {
@@ -2248,7 +2263,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         for (const p of ["telegram", "facebook", "instagram", "x"] as const) delete state[p][k];
         for (const d of Object.keys(state.deferrals || {})) if (d.endsWith(`:${k}`)) delete state.deferrals![d];
         h.releasedAt = nowMs;
-        h.by = "تلقائي بعد ١٢ ساعة";
+        h.by = nowMs - h.at >= 12 * 3600_000 ? "تلقائي بعد ١٢ ساعة" : "تلقائي: القاعدة اللي حجزته اتصلحت";
       }
       const w = await githubWriteState(env, state, currentSha, `social shield: release ${due.length} held stor${due.length === 1 ? "y" : "ies"} after 12 hours`).catch(() => ({ ok: false }));
       if (!w.ok) return; // someone else wrote first: next minute reads the fresh state
