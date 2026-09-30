@@ -2539,9 +2539,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "برنامج دارك سايد اوف ذا كيج الموسم 2 الحلقة 3 مترجمة",
-    "lastAttempt": 1790808196892,
+    "lastAttempt": 1790809074978,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
@@ -2556,9 +2556,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "برنامج دارك سايد اوف ذا كيج الموسم 2 الحلقة 4 مترجمة",
-    "lastAttempt": 1790803931321,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1790809076652,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
