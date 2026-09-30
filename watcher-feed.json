@@ -1,5 +1,15 @@
 [
   {
+    "id": 331388,
+    "link": "https://www.fightful.com/wrestling/aew-dynamite-results-9-30-2026-a-tribute-to-pac/",
+    "date": "2026-09-30T19:15:00",
+    "date_gmt": "2026-09-30T23:15:00",
+    "title": {
+      "rendered": "AEW Dynamite Results (9/30/2026): A Tribute to PAC"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28172126/HTVU0_YbsAAKOKt.jpeg"
+  },
+  {
     "id": 331383,
     "link": "https://www.fightful.com/wrestling/ethan-page-shoots-down-fan-theory-that-hes-the-secret-leader-of-the-946/",
     "date": "2026-09-30T18:27:46",
@@ -288,15 +298,5 @@
       "rendered": "Mason Rook Reacts To Not Being Cleared To Compete On 9/29 WWE NXT: Sometimes Life Is Cruel"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21083439/maxresdefault-134.jpg"
-  },
-  {
-    "id": 331283,
-    "link": "https://www.fightful.com/wrestling/cody-rhodes-if-somebody-hits-me-with-the-fed-im-blanked-out/",
-    "date": "2026-09-30T10:03:33",
-    "date_gmt": "2026-09-30T14:03:33",
-    "title": {
-      "rendered": "Cody Rhodes: If Somebody Hits Me With &#8216;The Fed,&#8217; I&#8217;m Blanked Out"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/07215411/HPKb_L8WkAAm9o2.jpg"
   }
 ]
