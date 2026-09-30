@@ -2462,7 +2462,33 @@ function isDaysAhead(month: number, day: number, days: number, now = Date.now())
  * (INCIDENTS #114). A stated date of today or yesterday (UTC), or a show that aired in the last 24
  * hours, can't be «old».
  */
-export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(24), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7)): SocialVerdict {
+// Weekly TV and the night it airs (8pm New York = 00:00 UTC the next day). The results report is
+// the only other record of «aired», and it comes out after the show — so a story written before the
+// show was judged against the model's guess: «Mason Rook not cleared for NXT» two hours before NXT
+// was held as «something from a show that aired» (INCIDENTS #156).
+const WEEKLY_TV: [string, number][] = [["wwe raw", 1], ["wwe nxt", 2], ["aew dynamite", 3], ["tna impact", 4], ["wwe smackdown", 5], ["aew collision", 6]];
+/** Weekly shows whose latest airing started within the last `hours` (and has started). */
+export function weeklyShowsAiredWithin(hours = 27, now = Date.now()): string[] {
+  const out: string[] = [];
+  for (const [name, weekday] of WEEKLY_TV) {
+    const slotDay = (weekday + 1) % 7;
+    const d = new Date(now);
+    const back = (d.getUTCDay() - slotDay + 7) % 7;
+    const slot = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - back);
+    if (slot <= now && now - slot < hours * 3600_000) out.push(name);
+  }
+  return out;
+}
+
+export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(24), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsAiredWithin(27, now)): SocialVerdict {
+  // «Something from a show» about a weekly show that hasn't aired in the last day is an
+  // announcement before the show, not a spoiler (INCIDENTS #156).
+  {
+    const low = text.toLowerCase();
+    const named = WEEKLY_TV.map(([n]) => n).filter(n => low.includes(n));
+    const anyRecent = shows.some(n => low.includes(n.toLowerCase())) || named.some(n => aired.includes(n));
+    if (v.spoils && v.kind === "show" && named.length && !anyRecent) return { ...v, spoils: false, kind: "none", age: "none" };
+  }
   const recentDays = [0, 1].map(i => new Date(now - i * 86400_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
   const datedRecently = statedMonthDays(text).some(x => recentDays.some(r => r.m === x.m && r.d === x.d));
   const lower = text.toLowerCase();
@@ -2479,7 +2505,7 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
 
 export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<SocialVerdict | null> {
   const opening = socialOpening(body);
-  const shows = recentShowNames(24);
+  const shows = [...new Set([...recentShowNames(24), ...weeklyShowsAiredWithin(27)])];
   // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. After
   // that it is ordinary news and goes out like any other story.
   const now = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";

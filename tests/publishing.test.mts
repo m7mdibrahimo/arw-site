@@ -2097,3 +2097,17 @@ test('a title win someone is aiming for, and a return to training, do not hold a
   // So does a stated date from today
   assert.equal(settleSpoilerAge(said, 'فوزه في عرض AEW All Out يوم 30 سبتمبر', day, now, week).spoils, true);
 });
+
+test('an announcement about a weekly show that has not aired yet is not «something from a show» (INCIDENTS #156)', async () => {
+  const { weeklyShowsAiredWithin, settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const beforeNxt = Date.parse('2026-09-29T21:50:00Z'); // NXT airs 00:00 UTC on the 30th
+  const afterNxt = Date.parse('2026-09-30T01:45:00Z');
+  assert.deepEqual(weeklyShowsAiredWithin(27, beforeNxt), ['wwe raw']);
+  assert.ok(weeklyShowsAiredWithin(27, afterNxt).includes('wwe nxt'));
+  const held = { spoils: true, kind: 'show' as const, age: 'recent' as const, note: '' };
+  const text = 'ميسون روك غير حاصل على التصريح الطبي للمنافسة في عرض WWE NXT';
+  assert.equal(settleSpoilerAge(held, text, [], beforeNxt, []).spoils, false);
+  assert.equal(settleSpoilerAge(held, 'إقامة نزال باتل رويال للسيدات في عرض WWE NXT', [], afterNxt, []).spoils, true);
+  // a show named only through the results list still counts
+  assert.equal(settleSpoilerAge(held, 'حصل في عرض WWE NXT', ['wwe nxt'], beforeNxt, []).spoils, true);
+});
