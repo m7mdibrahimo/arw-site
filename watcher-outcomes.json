@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2271578/wwe-nxt-september-29-nxt-championship-womens-north-american-championship-on-line-more": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-09-30T01:04:50.992Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-9-29-2026-grayson-waller-defends-the-nxt-title-dusty-cup-continues-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-30T00:57:48.841Z"
- },
- "https://www.wrestlinginc.com/2271578/wwe-nxt-september-29-nxt-championship-womens-north-american-championship-on-line-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-30T00:44:46.235Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-september-29-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
