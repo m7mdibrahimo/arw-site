@@ -753,6 +753,30 @@
     "kind": "show",
     "slug": "20260930152504-cmll-sabados-de-coliseo-26-09-",
     "image": "/content/images/llngl8qrounl5iai.jpg",
-    "renderedAt": 1790771668999
+    "renderedAt": 1790771357672
+  },
+  {
+    "videoUrl": "/videos/reel-20260930152942-cmll-lunes-clasico-28-09-2026.mp4",
+    "filename": "reel-20260930152942-cmll-lunes-clasico-28-09-2026.mp4",
+    "title": "عرض سي ام ال ال 28.09.2026 مترجم",
+    "secondaryTitle": "CMLL Lunes Clasico 28.09.2026",
+    "description": "عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260930152942-cmll-lunes-clasico-28-09-2026",
+    "kind": "show",
+    "slug": "20260930152942-cmll-lunes-clasico-28-09-2026",
+    "image": "/content/images/j3xjrcjkl1zmhqyu.jpg",
+    "renderedAt": 1790771907625
+  },
+  {
+    "videoUrl": "/videos/reel-20260930152731-cmll-domingo-familiar-27-09-20.mp4",
+    "filename": "reel-20260930152731-cmll-domingo-familiar-27-09-20.mp4",
+    "title": "عرض سي ام ال ال 27.09.2026 مترجم",
+    "secondaryTitle": "CMLL Domingo Familiar 27.09.2026",
+    "description": "عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260930152731-cmll-domingo-familiar-27-09-20",
+    "kind": "show",
+    "slug": "20260930152731-cmll-domingo-familiar-27-09-20",
+    "image": "/content/images/uy20pbsieciwkj3z.jpg",
+    "renderedAt": 1790772005802
   }
 ]
