@@ -1,5 +1,25 @@
 [
   {
+    "id": 3287202014,
+    "link": "https://www.wrestlinginc.com/2274103/wwe-corey-graves-pac-death-gravity-forgot-we-never-will/",
+    "date": "Wed, 30 Sep 2026 23:09:23 +0000",
+    "date_gmt": "2026-09-30T23:09:23.000Z",
+    "title": {
+      "rendered": "WWE's Corey Graves Reacts To Pac's Death: 'Gravity Forgot Him, We Never Will'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-corey-graves-reacts-to-pacs-death-gravity-forgot-him-we-never-will/l-intro-1790809354.jpg"
+  },
+  {
+    "id": 4041589560,
+    "link": "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more/",
+    "date": "Wed, 30 Sep 2026 23:00:00 +0000",
+    "date_gmt": "2026-09-30T23:00:00.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Results 9/30 - A Tribute To Death Riders Member PAC & More"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-results-930-a-tribute-to-death-riders-member-pac-more/l-intro-1790737028.jpg"
+  },
+  {
     "id": 1059191420,
     "link": "https://www.wrestlinginc.com/2274085/aew-tony-schiavone-tribute-pac-black-arrow-retired/",
     "date": "Wed, 30 Sep 2026 22:34:55 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE NXT Star Mason Rook Reveals Who He'd Love To Face At WrestleMania"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-star-mason-rook-reveals-who-hed-love-to-face-at-wrestlemania/l-intro-1790251595.jpg"
-  },
-  {
-    "id": 2074549615,
-    "link": "https://www.wrestlinginc.com/2272849/wwe-nxt-womens-na-champion-zaria-thea-hail-retain-title/",
-    "date": "Wed, 30 Sep 2026 00:38:00 +0000",
-    "date_gmt": "2026-09-30T00:38:00.000Z",
-    "title": {
-      "rendered": "WWE NXT Women's NA Champion Zaria Bests Thea Hail To Retain Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-womens-na-champion-zaria-bests-thea-hail-to-retain-title/l-intro-1790728610.jpg"
-  },
-  {
-    "id": 1883883188,
-    "link": "https://www.wrestlinginc.com/2272837/cm-punk-aj-styles-decline-grayson-waller-wwe-nxt-championship-open-challenge/",
-    "date": "Tue, 29 Sep 2026 23:58:28 +0000",
-    "date_gmt": "2026-09-29T23:58:28.000Z",
-    "title": {
-      "rendered": "CM Punk, AJ Styles Decline Grayson Waller WWE NXT Championship Open Challenge Tonight"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/cm-punk-aj-styles-decline-grayson-waller-wwe-nxt-championship-open-challenge/l-intro-1790726539.jpg"
   }
 ]
