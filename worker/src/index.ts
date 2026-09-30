@@ -3681,7 +3681,8 @@ export default {
       runNewsWatcherCron(env),
       runScheduleBackstopCron(env),
       // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)
-      runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state)),
+      runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state),
+        async () => { const b = await instagramBudget(env); return (p: unknown) => instagramAllowedFor(p, b.used, b.cap); }),
     ]));
   },
 } satisfies ExportedHandler<Env>;

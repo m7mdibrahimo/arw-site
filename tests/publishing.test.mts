@@ -2196,6 +2196,8 @@ test('the site watchdog checks pages, bots and platforms every minute and keeps 
   assert.deepEqual(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now), [{ title: 'ب', missing: ['إنستغرام'] }]);
   // Instagram posting newer stories (its daily ration): not a fault
   assert.deepEqual(stuckOnSocial(items, { ...state, instagram: { a: 1, z: now - 5 * 60_000 } }, (it: any) => it.url.split('/')[2], now), []);
+  // Instagram silent, but today's ration keeps this story off it: not a fault either
+  assert.deepEqual(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now, () => false), []);
   // Telegram missing is always a fault
   assert.deepEqual(stuckOnSocial(items, { ...state, telegram: { a: 1 }, instagram: { a: 1, b: 1, z: now } }, (it: any) => it.url.split('/')[2], now), [{ title: 'ب', missing: ['تيليجرام'] }]);
   // released from a hold eight minutes ago: not stuck yet, whatever its publish time

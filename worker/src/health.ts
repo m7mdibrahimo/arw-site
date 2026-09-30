@@ -52,7 +52,7 @@ const PLATFORM_AR: Record<string, string> = { telegram: "تيليجرام", face
  * is the later of publishing and the release from a hold: seven NXT stories the owner released
  * together were called stuck on Instagram eight minutes later (INCIDENTS #158).
  */
-export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now()): { title: string; missing: string[] }[] {
+export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now(), igAllows: (priority: unknown) => boolean = () => true): { title: string; missing: string[] }[] {
   const waiting: { title: string; missing: string[]; from: number }[] = [];
   for (const it of items) {
     const pub = Date.parse(it?.published_at || it?.date || "") || 0;
@@ -63,7 +63,10 @@ export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => stri
     const from = Math.max(pub, Number(h?.releasedAt) || 0);
     if (now - from > 12 * 3600_000) continue;
     const missing = PLATFORMS.filter(p => !Number(state?.[p]?.[key]));
-    if (missing.length) waiting.push({ title: String(it.title || "").slice(0, 120), missing, from });
+    // Today's Instagram posts are rationed by importance (#162): a story its priority keeps off
+    // Instagram isn't waiting for it.
+    const due = missing.filter(p => p !== "instagram" || igAllows(it.social_priority));
+    if (due.length) waiting.push({ title: String(it.title || "").slice(0, 120), missing: due, from });
   }
   // Instagram takes a limited number of posts a day, so the site sends it the newest stories first
   // and older ones may never go — by design. Missing Instagram is a fault only when Instagram has
@@ -87,7 +90,7 @@ async function readHealth(env: HealthEnv): Promise<HealthState> {
   try { return JSON.parse((await env.PUSH_KV!.get(HEALTH_KEY)) || "") as HealthState; } catch { return { checkedAt: 0, problems: [] }; }
 }
 
-export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: (it: any) => string, readState: () => Promise<any>): Promise<void> {
+export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: (it: any) => string, readState: () => Promise<any>, igRule: () => Promise<(priority: unknown) => boolean> = async () => () => true): Promise<void> {
   if (!env.PUSH_KV) return;
   try {
     const now = Date.now();
@@ -129,7 +132,8 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
       problems = mergeProblems(problems, quiet ? [{ key: "stale", code: "news_stale", title: "مفيش خبر جديد نزل من أكتر من ٦ ساعات", detail: `آخر خبر: ${String(newest?.title || "").slice(0, 100)}` }] : [], ["news_stale"], now);
       const state = await readState().catch(() => null);
       if (state) {
-        const stuck = stuckOnSocial(Array.isArray(feed) ? feed : [], state, keyOf, now)
+        const igAllows = await igRule().catch(() => () => true);
+        const stuck = stuckOnSocial(Array.isArray(feed) ? feed : [], state, keyOf, now, igAllows)
           .map(s => ({ key: `social:${s.title}`, code: "social_stuck", title: `«${s.title}» منزلش على ${s.missing.join(" و")}`, detail: "عدّى عليه أكتر من ساعة على الموقع ومش محجوز" }));
         problems = mergeProblems(problems, stuck, ["social_stuck"], now);
       }
