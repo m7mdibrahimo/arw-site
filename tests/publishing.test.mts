@@ -2076,3 +2076,11 @@ test('a debut months ago told as history («منذ ظهوره الأول في أ
   assert.equal(isSingleMatchSpoiler('ميسون روك يسجل ظهوره الأول في عرض WWE NXT'), true);
   assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
 });
+
+test('a title win someone is aiming for, and a return to training, do not hold a story off social (INCIDENTS #155)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('كاسي لي: الفوز ببطولة AEW العالمية للفرق للسيدات هو هدفي الأبرز في عالم المصارعة'), false);
+  assert.equal(isSingleMatchSpoiler('كايري ساني تعود إلى التدريبات داخل الحلبة مع اقتراب موعد عودتها للمصارعة'), false);
+  assert.equal(isSingleMatchSpoiler('كاسي لي تحقق الفوز ببطولة AEW العالمية للفرق للسيدات'), true);
+  assert.equal(isSingleMatchSpoiler('كايري ساني تعود في عرض WWE RAW'), true);
+});
