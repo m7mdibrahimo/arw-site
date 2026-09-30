@@ -2095,6 +2095,28 @@ test('«بالتميز» not «بالتمييز», and Kenta Kobashi is «كوب
   }
 });
 
+test('Hollywood is «هوليوود» with two waws (INCIDENTS #161)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('شبّه النجم الهوليودي نيكولاس كيج'), 'شبّه النجم الهوليوودي نيكولاس كيج');
+  assert.equal(applyCorrections('نجوم هوليود'), 'نجوم هوليوود');
+  assert.equal(applyCorrections('نجوم هوليوود'), 'نجوم هوليوود');
+  for (const f of fs.readdirSync('content/news').filter(n => n.endsWith('.md'))) {
+    const body = fs.readFileSync(`content/news/${f}`, 'utf8');
+    assert.doesNotMatch(body, /هوليود/, f);
+    // No story on the site embeds one tweet twice (the #152 fix came after the Tony Khan story)
+    const ids = [...body.matchAll(/^https:\/\/(?:x|twitter)\.com\/[^/\s]+\/status\/(\d+)/gm)].map(m => m[1]);
+    assert.equal(new Set(ids).size, ids.length, f);
+  }
+  // Two stories with one title are one story twice (RAW 21 Sep had two results reports, from before the one-report rule)
+  const titles = new Map<string, string>();
+  for (const f of fs.readdirSync('content/news').filter(n => n.endsWith('.md'))) {
+    const t = (fs.readFileSync(`content/news/${f}`, 'utf8').match(/^title:\s*"?(.+?)"?\s*$/m) || [])[1];
+    if (!t) continue;
+    assert.ok(!titles.has(t), `${f} has the same title as ${titles.get(t)}`);
+    titles.set(t, f);
+  }
+});
+
 test('a debut months ago told as history («منذ ظهوره الأول في أبريل») does not hold a story off social (INCIDENTS #154)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('نجح ميسون روك نجم عرض WWE NXT في ترك انطباع قوي سريع منذ ظهوره الأول في شهر أبريل الماضي، ليحصل على فرصة'), false);
