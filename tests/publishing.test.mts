@@ -2344,3 +2344,9 @@ test('«free agent» is «مصارع حر» and one-word generic tags are droppe
   assert.equal(isJunkTag('أخبار المصارعة'), false);
   assert.equal(isJunkTag('NWA'), false);
 });
+
+test('an English show name is not half-translated, and Chase Burnett keeps one spelling (INCIDENTS #170)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('يشهد عرض AEW Dynamite: Tribute To باك المخصص'), 'يشهد عرض AEW Dynamite التكريمي لباك المخصص');
+  assert.equal(applyCorrections('واعتزال تشيس بينيت بسبب الإصابة'), 'واعتزال تشيس بورنيت بسبب الإصابة');
+});

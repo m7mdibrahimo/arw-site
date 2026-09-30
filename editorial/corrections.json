@@ -4438,6 +4438,21 @@
    "wrong": "وكيلا حرا",
    "right": "مصارعا حرا",
    "note": "Free Agent (2026-10-01)"
+  },
+  {
+   "wrong": "AEW Dynamite: Tribute To باك",
+   "right": "AEW Dynamite التكريمي لباك",
+   "note": "اسم عرض إنجليزي اتعرّب جزء منه (2026-10-01)"
+  },
+  {
+   "wrong": "AEW Dynamite: A Tribute to باك",
+   "right": "AEW Dynamite التكريمي لباك",
+   "note": "اسم عرض إنجليزي اتعرّب جزء منه (2026-10-01)"
+  },
+  {
+   "wrong": "تشيس بينيت",
+   "right": "تشيس بورنيت",
+   "note": "Chase Burnett — المصدر كتبه Bennett غلط (2026-10-01)"
   }
  ]
 }
