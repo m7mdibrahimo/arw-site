@@ -2256,3 +2256,12 @@ test('old-story sweep: a jussive after «لم», a cut word and a CMLL show name
   assert.equal(applyCorrections('لم يحتاج كينغ سوى ثوان'), 'لم يحتج كينغ سوى ثوان');
   assert.equal(applyCorrections('ضمن عرض هوميناجي ا دو لييناس'), 'ضمن عرض Homenaje a Dos Leyendas');
 });
+
+test('CNN is written in full and a broken «رضى» phrase is corrected (INCIDENTS #161)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('شبكات مثل سي إن وسي بي إس نيوز'), 'شبكات مثل سي إن إن وسي بي إس نيوز');
+  assert.equal(applyCorrections('مثل سي إن إن وسي بي إس نيوز'), 'مثل سي إن إن وسي بي إس نيوز');
+  assert.equal(applyCorrections('لم تكن لديهم رضى عن التوقيت'), 'لم يكونوا راضين عن التوقيت');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['CNN'], 'سي إن إن');
+});
