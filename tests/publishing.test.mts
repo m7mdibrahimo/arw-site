@@ -2358,3 +2358,17 @@ test('an announced return on a show still to come is not held as a spoiler (INCI
   assert.equal(isSingleMatchSpoiler('رومان رينز يعود في عرض WWE RAW ويواجه سولو في العرض القادم'), true, 'a return that happened stays held');
   assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
 });
+
+test('Tony Schiavone is «توني شيفاني» everywhere, and the learner can never flip it back (INCIDENTS #172)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Tony Schiavone'], 'توني شيفاني');
+  assert.equal(applyCorrections('توني سكيافوني يشيد بالراحل باك'), 'توني شيفاني يشيد بالراحل باك');
+  assert.equal(applyCorrections('توني شيفاني'), 'توني شيفاني');
+  const corrections = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf8')).corrections;
+  assert.ok(!corrections.some((c: any) => c.wrong === 'توني شيفاني'), 'the learned reverse rule is gone');
+  const text = fs.readdirSync('content/news').filter(f => f.endsWith('.md')).map(f => fs.readFileSync(`content/news/${f}`, 'utf8').replace(/^permalink:.*$/m, '')).join('\n');
+  assert.doesNotMatch(text, /سكيافوني/);
+  // the learner skips a pair whose «wrong» is the glossary's spelling
+  assert.match(fs.readFileSync('scripts/learn-corrections.ts', 'utf8'), /canonical\.has\(wrong\)/);
+});
