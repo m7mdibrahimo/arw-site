@@ -2484,16 +2484,14 @@
     "publishedAt": 1790771893413,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 26.09.2026 مترجم",
-    "lastAttempt": 1790771909183,
+    "lastAttempt": 1790772762707,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -2507,6 +2505,19 @@
     "instagram_story": false,
     "title": "عرض سي ام ال ال 27.09.2026 مترجم",
     "lastAttempt": 1790771951315,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20260930152942-cmll-lunes-clasico-28-09-2026": {
+    "publishedAt": 1790772794459,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 28.09.2026 مترجم",
+    "lastAttempt": 1790772809325,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
