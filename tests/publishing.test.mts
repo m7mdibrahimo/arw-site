@@ -2084,6 +2084,17 @@ test('Kendal Grey is always «كيندال غراي» — never «غري» or «
   }
 });
 
+test('«بالتميز» not «بالتمييز», and Kenta Kobashi is «كوباشي» — never the other Kenta (INCIDENTS #160)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('مسيرته الحافلة بالتمييز والإبداع'), 'مسيرته الحافلة بالتميز والإبداع');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Kenta Kobashi'], 'كينتا كوباشي');
+  for (const f of fs.readdirSync('content/news').filter(n => n.endsWith('.md'))) {
+    const body = fs.readFileSync(`content/news/${f}`, 'utf8');
+    assert.doesNotMatch(body, /بالتمييز والإبداع|إتقان كينتا الأصلي/, f);
+  }
+});
+
 test('a debut months ago told as history («منذ ظهوره الأول في أبريل») does not hold a story off social (INCIDENTS #154)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('نجح ميسون روك نجم عرض WWE NXT في ترك انطباع قوي سريع منذ ظهوره الأول في شهر أبريل الماضي، ليحصل على فرصة'), false);
