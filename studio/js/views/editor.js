@@ -3,7 +3,7 @@ import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../
 import { notify } from '../notify.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
-  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist,
+  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode,
 } from '../schema.js';
 import { prepareImage, prepareImageFromUrl, kb } from '../image.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc, can, sectionOf } from '../ui.js';
@@ -292,6 +292,13 @@ function bindAll() {
     if (k === 'duration') v = formatDuration(v);
     S.data[k] = v;
     if (k === 'event_date') { updateFromDate(); setVal('#f-headline', S.data.headline); setVal('#f-title', S.data.title); setVal('#f-desc', S.data.description); }
+    // The episode code in both titles follows the season/episode fields (INCIDENTS #166)
+    if (k === 'episode_number' || k === 'season_number') {
+      S.data.title = syncEpisodeCode(S.data.title, S.data.season_number, S.data.episode_number);
+      S.data.headline = syncEpisodeCode(S.data.headline, S.data.season_number, S.data.episode_number);
+      if (S.auto.description && S.data.headline) S.data.description = descriptionFromHeadline(S.data.headline);
+      setVal('#f-title', S.data.title); setVal('#f-headline', S.data.headline); setVal('#f-desc', S.data.description);
+    }
     // Until the description is typed by hand it follows the Arabic headline
     if (k === 'headline' && S.auto.description) { S.data.description = descriptionFromHeadline(v); setVal('#f-desc', S.data.description); }
     if (k === 'maintenance') $('#mnote') && $('#mnote').classList.toggle('hidden', !v);
@@ -618,6 +625,10 @@ async function save({ thenNew = false, force = false } = {}) {
   const btn = $('#save');
   btn.disabled = true; btn.classList.add('loading');
   const create = !S.slug;
+  // Saved titles never carry another episode's code, whatever was typed (INCIDENTS #166)
+  if (S.data.episode_number !== undefined && S.data.episode_number !== '') {
+    for (const k of ['title', 'headline']) if (S.data[k]) S.data[k] = syncEpisodeCode(S.data[k], S.data.season_number, S.data.episode_number);
+  }
   const slug = S.slug || newFileSlug(S.collection, S.data);
   // Servers: drop empty rows
   if (Array.isArray(S.data.servers)) S.data.servers = S.data.servers.filter(s => s && s.url);

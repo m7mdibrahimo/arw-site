@@ -414,3 +414,16 @@ test('the owner\'s word fixes in the panel are logged with the save and learned 
     assert.equal(JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf8')).corrections[0].right, 'سيرينا لينتون');
   } finally { process.chdir(cwd); fs.rmSync(dir, { recursive: true, force: true }); }
 });
+
+test('an episode code in the titles follows the season and episode fields (INCIDENTS #166)', async () => {
+  const { syncEpisodeCode } = await import('../studio/js/schema.js');
+  assert.equal(syncEpisodeCode('Dark Side Of The Cage S02E01 08.09.2026', 2, '2'), 'Dark Side Of The Cage S02E02 08.09.2026');
+  assert.equal(syncEpisodeCode('Dark Side Of The Cage S02E01 29.09.2026', '2', 5), 'Dark Side Of The Cage S02E05 29.09.2026');
+  assert.equal(syncEpisodeCode('برنامج دارك سايد اوف ذا كيج الموسم 2 الحلقة 1 مترجمة', 3, 4), 'برنامج دارك سايد اوف ذا كيج الموسم 3 الحلقة 4 مترجمة');
+  // a named episode, or no code, is left alone
+  assert.equal(syncEpisodeCode('Dark Side Of The Cage S02E01', 2, 'The Final Chapter'), 'Dark Side Of The Cage S02E01');
+  assert.equal(syncEpisodeCode('WWE RAW 28.09.2026', undefined, 3), 'WWE RAW 28.09.2026');
+  const editor = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(editor, /k === 'episode_number' \|\| k === 'season_number'/);
+  assert.match(editor, /syncEpisodeCode\(S\.data\[k\], S\.data\.season_number, S\.data\.episode_number\)/);
+});

@@ -131,6 +131,22 @@ export function nextHeadline(previousHeadline, eventDate) {
   const replaced = previousHeadline.replace(/\d{1,2}[./-]\d{1,2}[./-]\d{4}/, dd);
   return replaced !== previousHeadline ? replaced : '';
 }
+/**
+ * Keeps the episode code in a title or headline in step with the season/episode fields: four
+ * episodes of Dark Side Of The Cage made from «حلقة جديدة بنفس البيانات» all kept «S02E01» in the
+ * English title while their numbers said 2–5, and that title went out on every platform
+ * (INCIDENTS #166). «S02E01» and «الموسم 2 الحلقة 1» follow the fields; anything else is untouched.
+ */
+export function syncEpisodeCode(text, season, episode) {
+  const t = String(text || '');
+  const ep = /^\d{1,3}$/.test(String(episode ?? '').trim()) ? Number(episode) : null;
+  const se = /^\d{1,2}$/.test(String(season ?? '').trim()) ? Number(season) : null;
+  if (ep === null) return t;
+  return t
+    .replace(/\bS(\d{1,2})E\d{1,3}\b/i, (_m, s) => `S${pad(se ?? Number(s))}E${pad(ep)}`)
+    .replace(/(الحلقة\s+)\d{1,3}/, `$1${ep}`)
+    .replace(/(الموسم\s+)\d{1,2}/, (m, a) => (se === null ? m : `${a}${se}`));
+}
 export function descriptionFromHeadline(headline) {
   const h = String(headline || '').replace(/\s*\d{1,2}[./-]\d{1,2}[./-]\d{4}\s*/, ' ').replace(/\s+/g, ' ').trim();
   if (!h) return '';
