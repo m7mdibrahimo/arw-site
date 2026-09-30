@@ -2350,3 +2350,11 @@ test('an English show name is not half-translated, and Chase Burnett keeps one s
   assert.equal(applyCorrections('يشهد عرض AEW Dynamite: Tribute To باك المخصص'), 'يشهد عرض AEW Dynamite التكريمي لباك المخصص');
   assert.equal(applyCorrections('واعتزال تشيس بينيت بسبب الإصابة'), 'واعتزال تشيس بورنيت بسبب الإصابة');
 });
+
+test('an announced return on a show still to come is not held as a spoiler (INCIDENTS #171)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('عودة فريق ذا إيليت ونزال مرتقب على البطولة القارية ضمن عرض AEW Dynamite'), false);
+  assert.equal(isSingleMatchSpoiler('عودة رومان رينز في عرض WWE RAW القادم'), false);
+  assert.equal(isSingleMatchSpoiler('رومان رينز يعود في عرض WWE RAW ويواجه سولو في العرض القادم'), true, 'a return that happened stays held');
+  assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
+});

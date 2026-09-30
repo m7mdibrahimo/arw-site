@@ -2008,7 +2008,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // A promotion or a format coming back is not a wrestler's return: «اتحاد MLW يعود إلى نظام الدفع
   // مقابل المشاهدة» was held as a spoiler (INCIDENTS #159).
   const formatReturn = ar("(?:ي|ت)?عود(?:ة|ته|تها)?\\s+(?:إلى|الى|ل)\\s*(?:ال)?(?:نظام|الدفع\\s+مقابل\\s+المشاهدة|البث|قناة|منصة|التلفزيون|تلفزيون)|^(?:اتحاد|شركة|منظمة|عرض|عروض)\\s+\\S+(?:\\s+\\S+)?\\s+(?:يعود|تعود)");
-  const returnTitle = title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ");
+  // An announced return on a show still to come is a match card, not a spoiler: «عودة فريق ذا إيليت
+  // ونزال مرتقب… ضمن عرض AEW Dynamite» — Tony Khan's announcement for that night (INCIDENTS #171).
+  const announced = ar("مرتقب|مرتقبة|المرتقب|المرتقبة|سيشهد|ستشهد|يستعد|تستعد|القادم|القادمة|المقبل|المقبلة").test(title) && !ar("يعود في|تعود في|عاد|عادت|يسجل عودته|تسجل عودتها|بعد عودته|بعد عودتها").test(title);
+  const returnTitle = announced ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ");
   if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;
