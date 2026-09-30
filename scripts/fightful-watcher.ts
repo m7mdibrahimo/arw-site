@@ -2502,6 +2502,11 @@ function isDaysAhead(month: number, day: number, days: number, now = Date.now())
 // show was judged against the model's guess: «Mason Rook not cleared for NXT» two hours before NXT
 // was held as «something from a show that aired» (INCIDENTS #156).
 const WEEKLY_TV: [string, number][] = [["wwe raw", 1], ["wwe nxt", 2], ["aew dynamite", 3], ["tna impact", 4], ["wwe smackdown", 5], ["aew collision", 6]];
+/** A report of a taped show's results before it airs: «… Spoilers From 9/26 Taping», «تسريبات عرض…». */
+export function isTapingSpoiler(sourceTitle: string, arabicTitle: string = ""): boolean {
+  return /\bspoilers?\b|\btap(?:ing|ings|ed)\b/i.test(sourceTitle || "") || /(?:^|[\s«])تسريبات?(?:\s|$)/.test(arabicTitle || "");
+}
+
 /** Weekly shows whose latest airing started within the last `hours` (and has started). */
 export function weeklyShowsAiredWithin(hours = 27, now = Date.now()): string[] {
   const out: string[] = [];
@@ -4156,7 +4161,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   // The social shield's second opinion, on the finished text (full results reports go out with
   // a fixed text, so they need none).
-  let socialVerdict = isShowResultsArticle(rawTitle, plainText) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
+  let socialVerdict = isShowResultsArticle(rawTitle, plainText) && !isTapingSpoiler(rawTitle, rewritten.title) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
+  // Results of a taped show that hasn't aired are a spoiler whatever else is said: «WWE X AAA
+  // Worlds Collide Spoilers From 9/26 Taping» went out as a results report (INCIDENTS #168).
+  if (isTapingSpoiler(rawTitle, rewritten.title) && !socialVerdict?.spoils) {
+    socialVerdict = { spoils: true, kind: "result", age: "recent", note: "نتائج عرض متسجل لسه ماتذاعش (تسريبات)", priority: socialVerdict?.priority || "normal" };
+  }
   // Something that happened on a show that just aired is held whatever the model said (INCIDENTS #114)
   if (!isShowResultsArticle(rawTitle, plainText) && !socialVerdict?.spoils && happenedOnRecentShow(rawTitle, `${rewritten.title} ${socialOpening(finalBody)}`)) {
     socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٢٤ ساعة، فهو حرق من العرض" };
