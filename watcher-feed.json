@@ -1,5 +1,15 @@
 [
   {
+    "id": 331370,
+    "link": "https://www.fightful.com/wrestling/report-nwa-joins-black-bear-digital-networks/",
+    "date": "2026-09-30T17:38:35",
+    "date_gmt": "2026-09-30T21:38:35",
+    "title": {
+      "rendered": "REPORT: NWA Joins Black Bear Digital Networks"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/01/27211219/nwa_logo_2_1.jpg?v=20260930213835"
+  },
+  {
     "id": 331372,
     "link": "https://www.fightful.com/wrestling/joseph-sawyer-pulled-from-10-2-wrestling-revolver-event-due-to-injury/",
     "date": "2026-09-30T17:25:20",
@@ -288,15 +298,5 @@
       "rendered": "LA Knight Says Roman Reigns &#8216;Doing Things On His Own&#8217; Will Probably Be His Downfall"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/05121255/001_RAW_08032026CN_118850-e1785946401633.jpg"
-  },
-  {
-    "id": 331272,
-    "link": "https://www.fightful.com/wrestling/shiloh-hill-really-pleased-with-the-opportunities-hes-been-given-in-nxt/",
-    "date": "2026-09-30T08:55:51",
-    "date_gmt": "2026-09-30T12:55:51",
-    "title": {
-      "rendered": "Shiloh Hill &#8216;Really Pleased&#8217; With The Opportunities He&#8217;s Been Given In NXT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/04214345/035_NXT_07282026GD_66853-e1785894241223.jpg"
   }
 ]
