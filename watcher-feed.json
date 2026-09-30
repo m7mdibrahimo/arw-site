@@ -1,5 +1,15 @@
 [
   {
+    "id": 331303,
+    "link": "https://www.fightful.com/wrestling/mlw-returning-to-ppv-on-november-7/",
+    "date": "2026-09-30T11:14:59",
+    "date_gmt": "2026-09-30T15:14:59",
+    "title": {
+      "rendered": "MLW Returning To PPV On November 7"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/01/27211508/mlw_logo_3-scaled.png"
+  },
+  {
     "id": 331290,
     "link": "https://www.fightful.com/wrestling/steve-maclin-states-that-its-very-humbling-to-be-facing-adam-copeland-at-mlp-northern-rising/",
     "date": "2026-09-30T11:06:39",
@@ -288,15 +298,5 @@
       "rendered": "WWE NXT Results (9/29/2026): Grayson Waller Defends the NXT Title, Dusty Cup Continues, More"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29192809/IMG_3687-1.jpg"
-  },
-  {
-    "id": 331196,
-    "link": "https://www.fightful.com/wrestling/aew-on-hbo-max-schedule-announced-for-october/",
-    "date": "2026-09-29T18:17:03",
-    "date_gmt": "2026-09-29T22:17:03",
-    "title": {
-      "rendered": "AEW On HBO Max Schedule Announced For October"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/09/11093616/Screenshot-2182.png"
   }
 ]
