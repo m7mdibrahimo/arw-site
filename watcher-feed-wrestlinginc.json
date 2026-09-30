@@ -1,5 +1,15 @@
 [
   {
+    "id": 3639033550,
+    "link": "https://www.wrestlinginc.com/2272812/remembering-pac-6-great-matches-aew-wwe-pwg/",
+    "date": "Wed, 30 Sep 2026 13:00:00 +0000",
+    "date_gmt": "2026-09-30T13:00:00.000Z",
+    "title": {
+      "rendered": "Remembering Pac: 6 Great Matches From The Late AEW & WWE Star"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/remembering-pac-6-great-matches-from-the-late-aew-wwe-star/l-intro-1790717288.jpg"
+  },
+  {
     "id": 2661343414,
     "link": "https://www.wrestlinginc.com/2268084/wwe-jim-ross-didnt-enjoy-getting-in-ring/",
     "date": "Wed, 30 Sep 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Order Of Protection Filed Against WWE NXT Star Keanu Carver"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/order-protection-filed-against-wwe-nxt-star-keanu-carver/l-intro-1790723549.jpg"
-  },
-  {
-    "id": 3516550715,
-    "link": "https://www.wrestlinginc.com/2272269/aew-double-or-nothing-2019-pac-adam-page/",
-    "date": "Tue, 29 Sep 2026 17:23:21 +0000",
-    "date_gmt": "2026-09-29T17:23:21.000Z",
-    "title": {
-      "rendered": "Backstage Report On What Kept PAC Out Of Inaugural AEW Double Or Nothing"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-what-kept-pac-out-of-inaugural-aew-double-or-nothing/l-intro-1790702453.jpg"
   }
 ]
