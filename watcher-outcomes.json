@@ -34,11 +34,6 @@
   "retry": false,
   "at": "2026-09-30T23:54:03.846Z"
  },
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-09-30T23:37:10.817Z"
- },
  "https://www.wrestlinginc.com/2274055/wwe-aaa-worlds-collide-spoilers-september-26-chicago": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
