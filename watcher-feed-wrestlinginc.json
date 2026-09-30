@@ -1,5 +1,15 @@
 [
   {
+    "id": 3639535592,
+    "link": "https://www.wrestlinginc.com/2274029/wwe-roman-reigns-leukemia-still-fighting/",
+    "date": "Wed, 30 Sep 2026 21:00:30 +0000",
+    "date_gmt": "2026-09-30T21:00:30.000Z",
+    "title": {
+      "rendered": "WWE's Roman Reigns Says He Is 'Still Fighting' Leukemia"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-roman-reigns-says-he-is-still-fighting-leukemia/l-intro-1790801942.jpg"
+  },
+  {
     "id": 1496396022,
     "link": "https://www.wrestlinginc.com/2273529/dave-meltzer-vince-mcmahon-not-happy-wealth-in-charge-wwe/",
     "date": "Wed, 30 Sep 2026 17:00:22 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Report: WWE Won't Move Worlds Collide Air Date Despite Going Against AEW Tribute Show"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/report-wwe-wont-move-worlds-collide-air-date-despite-going-against-aew-tribute-show/l-intro-1790720257.jpg"
-  },
-  {
-    "id": 4791853927,
-    "link": "https://www.wrestlinginc.com/2272783/tony-khan-main-event-aew-tribute-pac-ricochet-will-ospreay/",
-    "date": "Tue, 29 Sep 2026 22:04:14 +0000",
-    "date_gmt": "2026-09-29T22:04:14.000Z",
-    "title": {
-      "rendered": "Tony Khan Announces High-Profile Singles Match For AEW Dynamite: A Tribute To Pac"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-announces-high-profile-singles-match-for-aew-dynamite-a-tribute-to-pac/l-intro-1790719364.jpg"
   }
 ]
