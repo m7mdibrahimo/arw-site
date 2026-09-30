@@ -2578,5 +2578,24 @@
     ],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261001023014-tna-xplosion-25-09-2026": {
+    "publishedAt": 1790811704168,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه اكسبلوجن 25.09.2026 مترجم",
+    "lastAttempt": 1790811717542,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
