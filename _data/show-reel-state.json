@@ -2500,7 +2500,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 27.09.2026 مترجم",
-    "lastAttempt": 1790776254194,
+    "lastAttempt": 1790777041781,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -2517,9 +2517,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 28.09.2026 مترجم",
-    "lastAttempt": 1790772809325,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1790777042642,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
