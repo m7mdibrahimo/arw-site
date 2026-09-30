@@ -2372,3 +2372,10 @@ test('Tony Schiavone is «توني شيفاني» everywhere, and the learner ca
   // the learner skips a pair whose «wrong» is the glossary's spelling
   assert.match(fs.readFileSync('scripts/learn-corrections.ts', 'utf8'), /canonical\.has\(wrong\)/);
 });
+
+test('«ساعت» and the «مستذكر» forms are corrected (INCIDENTS #173)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('بأقل من 24 ساعت عن عمر'), 'بأقل من 24 ساعة عن عمر');
+  assert.equal(applyCorrections('عن باك، مستذكرا مواجهته'), 'عن باك، متذكرا مواجهته');
+  assert.equal(applyCorrections('مستذكرين إسهاماته'), 'متذكرين إسهاماته');
+});
