@@ -50,8 +50,7 @@ const PLATFORM_AR: Record<string, string> = { telegram: "تيليجرام", face
 /**
  * Stories that some platform still lacks an hour after they could go out, not held. «Could go out»
  * is the later of publishing and the release from a hold: seven NXT stories the owner released
- * together were called stuck on Instagram eight minutes later (INCIDENTS #158). Instagram posts
- * one story every 10 minutes, so a queue of N waiting for it gets N × 10 more minutes.
+ * together were called stuck on Instagram eight minutes later (INCIDENTS #158).
  */
 export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now()): { title: string; missing: string[] }[] {
   const waiting: { title: string; missing: string[]; from: number }[] = [];
@@ -66,9 +65,14 @@ export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => stri
     const missing = PLATFORMS.filter(p => !Number(state?.[p]?.[key]));
     if (missing.length) waiting.push({ title: String(it.title || "").slice(0, 120), missing, from });
   }
-  const igQueue = waiting.filter(w => w.missing.includes("instagram")).length;
+  // Instagram takes a limited number of posts a day, so the site sends it the newest stories first
+  // and older ones may never go — by design. Missing Instagram is a fault only when Instagram has
+  // posted nothing for an hour while stories wait (the 16:30 bell was full of rationed stories).
+  const lastIg = Math.max(0, ...Object.values(state?.instagram || {}).map(Number).filter(Number.isFinite));
+  const igStalled = now - lastIg > 60 * 60_000;
   return waiting
-    .filter(w => now - w.from >= 60 * 60_000 + (w.missing.includes("instagram") ? igQueue * 10 * 60_000 : 0))
+    .map(w => ({ ...w, missing: w.missing.filter(p => p !== "instagram" || igStalled) }))
+    .filter(w => w.missing.length && now - w.from >= 60 * 60_000)
     .map(w => ({ title: w.title, missing: w.missing.map(p => PLATFORM_AR[p]) }));
 }
 

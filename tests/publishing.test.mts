@@ -2192,7 +2192,12 @@ test('the site watchdog checks pages, bots and platforms every minute and keeps 
     { url: '/news/d/', title: 'د', published_at: '2026-09-30T10:30:00Z' },
   ];
   const state = { telegram: { a: 1, b: 1 }, facebook: { a: 1, b: 1 }, instagram: { a: 1 }, held: { d: { at: 1 } } };
+  // Instagram silent for hours: a fault
   assert.deepEqual(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now), [{ title: 'ب', missing: ['إنستغرام'] }]);
+  // Instagram posting newer stories (its daily ration): not a fault
+  assert.deepEqual(stuckOnSocial(items, { ...state, instagram: { a: 1, z: now - 5 * 60_000 } }, (it: any) => it.url.split('/')[2], now), []);
+  // Telegram missing is always a fault
+  assert.deepEqual(stuckOnSocial(items, { ...state, telegram: { a: 1 }, instagram: { a: 1, b: 1, z: now } }, (it: any) => it.url.split('/')[2], now), [{ title: 'ب', missing: ['تيليجرام'] }]);
   // released from a hold eight minutes ago: not stuck yet, whatever its publish time
   const released = { ...state, held: { ...state.held, b: { at: 1, releasedAt: now - 8 * 60_000 } } };
   assert.deepEqual(stuckOnSocial(items, released, (it: any) => it.url.split('/')[2], now), []);
