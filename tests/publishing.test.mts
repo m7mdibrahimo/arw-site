@@ -2145,6 +2145,9 @@ test('the site watchdog checks pages, bots and platforms every minute and keeps 
   ];
   const state = { telegram: { a: 1, b: 1 }, facebook: { a: 1, b: 1 }, instagram: { a: 1 }, held: { d: { at: 1 } } };
   assert.deepEqual(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now), [{ title: 'ب', missing: ['إنستغرام'] }]);
+  // released from a hold eight minutes ago: not stuck yet, whatever its publish time
+  const released = { ...state, held: { ...state.held, b: { at: 1, releasedAt: now - 8 * 60_000 } } };
+  assert.deepEqual(stuckOnSocial(items, released, (it: any) => it.url.split('/')[2], now), []);
   // «since» survives while the problem stays open
   const first = mergeProblems([], [{ key: 'page:/', code: 'page_down', title: 'x', detail: '' }], ['page_down'], 1000);
   assert.equal(mergeProblems(first, [{ key: 'page:/', code: 'page_down', title: 'x', detail: '' }], ['page_down'], 5000)[0].since, 1000);

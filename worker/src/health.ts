@@ -47,20 +47,29 @@ export function failedWorkflows(runs: any[]): { name: string; at: number; url: s
 const PLATFORMS = ["telegram", "facebook", "instagram"] as const;
 const PLATFORM_AR: Record<string, string> = { telegram: "تيليجرام", facebook: "فيسبوك", instagram: "إنستغرام" };
 
-/** Stories on the site for over an hour (and under 12) that some platform still lacks, not held. */
+/**
+ * Stories that some platform still lacks an hour after they could go out, not held. «Could go out»
+ * is the later of publishing and the release from a hold: seven NXT stories the owner released
+ * together were called stuck on Instagram eight minutes later (INCIDENTS #158). Instagram posts
+ * one story every 10 minutes, so a queue of N waiting for it gets N × 10 more minutes.
+ */
 export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now()): { title: string; missing: string[] }[] {
-  const out: { title: string; missing: string[] }[] = [];
+  const waiting: { title: string; missing: string[]; from: number }[] = [];
   for (const it of items) {
-    const at = Date.parse(it?.published_at || it?.date || "") || 0;
-    if (!at || now - at < 60 * 60_000 || now - at > 12 * 3600_000) continue;
-    if ((it.kind || "news") !== "news") continue;
+    const pub = Date.parse(it?.published_at || it?.date || "") || 0;
+    if (!pub || (it.kind || "news") !== "news") continue;
     const key = keyOf(it);
     const h = state?.held?.[key];
     if (h && !h.releasedAt) continue;
+    const from = Math.max(pub, Number(h?.releasedAt) || 0);
+    if (now - from > 12 * 3600_000) continue;
     const missing = PLATFORMS.filter(p => !Number(state?.[p]?.[key]));
-    if (missing.length) out.push({ title: String(it.title || "").slice(0, 120), missing: missing.map(p => PLATFORM_AR[p]) });
+    if (missing.length) waiting.push({ title: String(it.title || "").slice(0, 120), missing, from });
   }
-  return out;
+  const igQueue = waiting.filter(w => w.missing.includes("instagram")).length;
+  return waiting
+    .filter(w => now - w.from >= 60 * 60_000 + (w.missing.includes("instagram") ? igQueue * 10 * 60_000 : 0))
+    .map(w => ({ title: w.title, missing: w.missing.map(p => PLATFORM_AR[p]) }));
 }
 
 /** Merge this check's findings into the running list: keep «since» for problems still open. */
