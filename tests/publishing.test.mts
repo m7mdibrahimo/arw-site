@@ -2334,3 +2334,12 @@ test('leaked results of a taped show never reach social before it airs (INCIDENT
   const writer = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(writer, /isShowResultsArticle\(rawTitle, plainText\) && !isTapingSpoiler\(rawTitle, rewritten\.title\) \? null/);
 });
+
+test('«free agent» is «مصارع حر» and one-word generic tags are dropped (INCIDENTS #169)', async () => {
+  const { applyCorrections, isJunkTag } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('وتحوله إلى وكيل حر في الأول من أكتوبر'), 'وتحوله إلى مصارع حر في الأول من أكتوبر');
+  assert.equal(isJunkTag('تلفزيون'), true);
+  assert.equal(isJunkTag('اندبندنت'), true);
+  assert.equal(isJunkTag('أخبار المصارعة'), false);
+  assert.equal(isJunkTag('NWA'), false);
+});

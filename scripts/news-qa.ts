@@ -106,7 +106,8 @@ const TRANSLITERATED_SHOWS = /(?:سماك\s*داون|داينامايت|دينا
 /** A tag must name a person, team, show, federation or topic — never a date ("تاريخ 24 سبتمبر 2026", seen live). */
 export function isJunkTag(tag: string): boolean {
   const t = (tag || "").trim();
-  return !t || /^تاريخ(?:\s|$)/.test(t) || /^\d+$/.test(t)
+  // A one-word generic tag (a medium, «independent») names no one and no show (INCIDENTS #169)
+  return !t || /^تاريخ(?:\s|$)/.test(t) || /^\d+$/.test(t) || /^(?:تلفزيون|التلفزيون|اندبندنت|إندبندنت|مستقل|المستقلة|رياضة|مصارعة|المصارعة)$/.test(t)
     || /(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر)\s+\d{4}/.test(t);
 }
 
