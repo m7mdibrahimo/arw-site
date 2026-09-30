@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2274055/wwe-aaa-worlds-collide-spoilers-september-26-chicago": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-09-30T21:41:29.887Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-im-still-fighting-cml-but-its-under-control-and-under-baseline": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
