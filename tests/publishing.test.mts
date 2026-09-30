@@ -1469,7 +1469,7 @@ test('the writer asks the AI about exactly the text that will be posted, and rea
     const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1' }, stdio: ['ignore', 'pipe', 'pipe'] });
     const r = JSON.parse(out.trim().split('\n').pop()!);
     assert.equal(r.opening, 'عنوان فرعي فاز فلان بالنزال في عرض كبير');
-    assert.deepEqual(r.verdict, { spoils: true, kind: 'result', age: 'recent', note: 'بيقول مين فاز' }); // no age given: treated as recent (never as «old»)
+    assert.deepEqual(r.verdict, { spoils: true, kind: 'result', age: 'recent', note: 'بيقول مين فاز', priority: 'normal' }); // no age given: treated as recent (never as «old»); no priority: normal
     assert.ok(r.hasTitle && r.hasOpening);
     assert.ok(r.hasDate, 'knows the time now and the owner rule: a spoiler lasts 24 hours (a Hardys return from last year was held — INCIDENTS #107)');
   } finally {
@@ -2264,4 +2264,22 @@ test('CNN is written in full and a broken «رضى» phrase is corrected (INCIDE
   assert.equal(applyCorrections('لم تكن لديهم رضى عن التوقيت'), 'لم يكونوا راضين عن التوقيت');
   const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
   assert.equal(names['CNN'], 'سي إن إن');
+});
+
+test('Instagram\'s daily posts go to the most important stories first (INCIDENTS #162)', async () => {
+  const { instagramAllowedFor } = await import('../worker/src/index');
+  // cap 90, 12 kept for show reels → 78 for news; normal leaves 15 of them for big stories; low only the first half
+  assert.equal(instagramAllowedFor('high', 70, 90), true);
+  assert.equal(instagramAllowedFor('normal', 70, 90), false);
+  assert.equal(instagramAllowedFor('normal', 60, 90), true);
+  assert.equal(instagramAllowedFor('', 60, 90), true, 'unrated (older) stories count as normal');
+  assert.equal(instagramAllowedFor('low', 40, 90), false);
+  assert.equal(instagramAllowedFor('low', 30, 90), true);
+  assert.equal(instagramAllowedFor('high', 78, 90), false, 'the reels reserve is never touched');
+  // the writer asks for it and records it; the feed carries it to the worker
+  const writer = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(writer, /"priority": "high"\|"normal"\|"low"/);
+  assert.match(writer, /social_priority: \$\{socialVerdict\.priority\}/);
+  assert.match(fs.readFileSync('pages/watcher-recent-content.njk', 'utf8'), /"social_priority"/);
+  assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /!instagramAllowedFor\(item\.social_priority, igBudget\.used, igBudget\.cap\)\) igDone = true/);
 });

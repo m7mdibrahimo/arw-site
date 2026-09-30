@@ -1788,6 +1788,23 @@ async function instagramRoomLeft(env: Env, reserve: number): Promise<boolean> {
   const used = Math.max((await instagramActionsLast24h(env)).length, q?.usage ?? 0);
   return used < cap - reserve;
 }
+// Instagram takes ~90 posts a day and the site writes more news than that, so the day's posts go
+// to what matters most (the owner, 2026-09-30). The writer rates each story high/normal/low
+// (social_priority); high may use the whole news budget, normal leaves IG_HIGH_RESERVE of it for
+// the day's big stories, low goes only while less than half of it is used (INCIDENTS #162).
+const IG_HIGH_RESERVE = 15;
+async function instagramBudget(env: Env): Promise<{ used: number; cap: number }> {
+  const q = await instagramQuota(env);
+  const cap = q ? Math.max(IG_DAILY_CAP, q.total - IG_QUOTA_MARGIN) : IG_DAILY_CAP;
+  return { used: Math.max((await instagramActionsLast24h(env)).length, q?.usage ?? 0), cap };
+}
+/** May a story of this priority take an Instagram slot, with `used` of `cap` gone in 24h? */
+export function instagramAllowedFor(priority: unknown, used: number, cap: number): boolean {
+  const news = cap - IG_VIDEO_RESERVE;
+  if (priority === "high") return used < news;
+  if (priority === "low") return used < news / 2;
+  return used < news - IG_HIGH_RESERVE;
+}
 async function instagramActionsLast24h(env: Env): Promise<number[]> {
   try {
     const list = JSON.parse((await env.PUSH_KV?.get("ig_actions_24h")) || "[]");
@@ -2235,6 +2252,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   }
   const recentReleases = new Set(Object.entries((state as any).released || {}).filter(([, t]) => Date.now() - Number(t) < WINDOW_MS).map(([k]) => k));
   const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
+  const igBudget = await instagramBudget(env).catch(() => ({ used: 0, cap: IG_DAILY_CAP }));
   const fileBackfill: Record<string, string> = {};
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
@@ -2267,6 +2285,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     let tgDone = !!state.telegram[key];
     let fbDone = !!state.facebook[key];
     let igDone = !!state.instagram[key];
+    // Not important enough for today's remaining Instagram posts: Telegram and Facebook only (#162)
+    if (!igDone && item.kind !== "show" && !instagramAllowedFor(item.social_priority, igBudget.used, igBudget.cap)) igDone = true;
     let xDone = !!state.x[key];
     // Same file under an earlier URL (its title was edited): it already went out — never again.
     const file = contentFileId(item);
@@ -2340,7 +2360,10 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     ...candidates.filter((c) => c.tgDone && !c.fbDone).reverse(),
     // Missing only Instagram: shows first (a full episode matters more than any one story).
     ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind === "show"),
-    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind !== "show"),
+    // then the most important stories first, newest first within each (#162)
+    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind !== "show")
+      .map((c, i) => ({ c, i, r: c.item.social_priority === "high" ? 0 : c.item.social_priority === "low" ? 2 : 1 }))
+      .sort((a, b) => a.r - b.r || a.i - b.i).map(x => x.c),
   ];
   const preferNotStarted = new Date().getUTCMinutes() % 2 === 0;
   const toProcess = (preferNotStarted ? [...notStarted, ...catchUpOnly] : [...catchUpOnly, ...notStarted])

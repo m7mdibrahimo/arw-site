@@ -2416,7 +2416,8 @@ export function socialOpening(body: string, max = 300): string {
  * #71/#104), so the finished text is read for its meaning. The shield holds a story when this
  * OR its word rules say so; with no answer (AI down) the word rules decide alone.
  */
-export type SocialVerdict = { spoils: boolean; kind: "result" | "return" | "show" | "none"; note: string; age: "recent" | "old" | "none" };
+export type SocialPriority = "high" | "normal" | "low";
+export type SocialVerdict = { spoils: boolean; kind: "result" | "return" | "show" | "none"; note: string; age: "recent" | "old" | "none"; priority?: SocialPriority };
 
 const EN_MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 const AR_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
@@ -2569,14 +2570,20 @@ ${shows.length ? `العروض اللي اتذاعت في آخر ٢٤ ساعة (
 
 قول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة أو اللي حصل في العرض) حصل إمتى: "recent" لو في آخر ٢٤ ساعة أو مش واضح، "old" لو واضح إنه عدّى عليه أكتر من ٢٤ ساعة (تاريخ أو يوم أو شهر في النص، أو «الأسبوع اللي فات»، أو إن المصدر نفسه نشر بعد العرض بأكتر من يوم)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
 
-رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"show"|"none", "age": "recent"|"old"|"none", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة وإمتى حصل، أو ليه مفيهوش حرق"}`;
+وقيّم كمان أهمية الخبر لمتابعي إنستغرام (priority). إنستغرام بيقبل عدد محدود من المنشورات في اليوم، ومش كل خبر هيتنشر عليه، فخلي الحكم صارم:
+- "high": خبر كبير يهم أغلب متابعي المصارعة العرب: وفاة، أو تعاقد أو رحيل أو اعتزال نجم معروف، أو إصابة نجم كبير، أو إعلان نزال أو عرض كبير في WWE أو AEW، أو قرار رسمي مهم، أو قضية كبيرة، أو تقرير نتائج عرض رئيسي، أو خبر عن نجم من الصف الأول (رومان رينز، سي ام بانك، كودي رودز، جون سينا، ذا روك…) فيه معلومة جديدة فعلًا.
+- "normal": أخبار WWE وAEW وTNA العادية، وتصريحات نجوم معروفين فيها معلومة جديدة، والكواليس والخطط.
+- "low": اتحادات مستقلة صغيرة أو محلية، وتصريحات بودكاست أو مقابلات من غير معلومة جديدة، والموجة التانية والتالتة من ردود الفعل والتأبين على نفس الحدث، وأخبار البيزنس والإعلام والمنتجات ونسب المشاهدة، ونتائج العروض المستقلة الصغيرة، ونجوم قدام أو مغمورين.
+
+رد بـ JSON فقط: {"spoils": true|false, "kind": "result"|"return"|"show"|"none", "age": "recent"|"old"|"none", "priority": "high"|"normal"|"low", "note": "جملة عربية قصيرة: إيه اللي في النص بيكشف النتيجة وإمتى حصل، أو ليه مفيهوش حرق"}`;
   const text = await queryGemini(prompt, true, 0.1);
   if (!text) return null;
-  const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown; age?: unknown }>(text);
+  const parsed = safeParseJson<{ spoils?: unknown; kind?: unknown; note?: unknown; age?: unknown; priority?: unknown }>(text);
   if (!parsed || typeof parsed.spoils !== "boolean") return null;
   const kind = parsed.kind === "result" || parsed.kind === "return" || parsed.kind === "show" ? parsed.kind : "none";
   const age = parsed.age === "old" || parsed.age === "none" ? parsed.age : "recent";
-  const verdict: SocialVerdict = { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", age, note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200) };
+  const priority: SocialPriority = parsed.priority === "high" || parsed.priority === "low" ? parsed.priority : "normal";
+  const verdict: SocialVerdict = { spoils: parsed.spoils, kind: parsed.spoils ? (kind === "none" ? "result" : kind) : "none", age, note: String(parsed.note || "").replace(/\s+/g, " ").trim().slice(0, 200), priority };
   return settleSpoilerAge(verdict, `${title} ${opening} ${sourceTitle}`, shows);
 }
 
@@ -4125,7 +4132,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٢٤ ساعة، فهو حرق من العرض" };
   }
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
-  const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}` : "";
+  const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}${socialVerdict.priority ? `\nsocial_priority: ${socialVerdict.priority}` : ""}` : "";
   let markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
 title: ${JSON.stringify(rewritten.title)}${keptPermalink ? `\npermalink: ${JSON.stringify(keptPermalink)}` : ""}
