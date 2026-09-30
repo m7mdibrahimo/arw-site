@@ -5,7 +5,7 @@ permalink: "/news/فريق-وار-رايدرز-يطلق-تحديا-مفتوحا-
 date: 2026-09-06T11:11:00.000+03:00
 tags:
   - AAA
-  - Triplemania
+  - TripleMania
   - ري ميستيريو
   - دومينيك ميستيريو
   - War Raiders

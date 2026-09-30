@@ -2289,3 +2289,16 @@ test('«ابدا» takes its hamza (INCIDENTS #163)', async () => {
   assert.equal(applyCorrections('لن تكون للبيع ابدا'), 'لن تكون للبيع أبدا');
   assert.equal(applyCorrections('لا تقل أبدا'), 'لا تقل أبدا');
 });
+
+test('a new tag takes the spelling the site already uses — one person, one tag page (INCIDENTS #164)', async () => {
+  const { canonicalTags, knownTagSpellings, tagKey } = await import('../scripts/fightful-watcher');
+  const news = [{ tags: ['أخبار المصارعة', 'AAA on FOX'] }, { tags: ['أخبار المصارعة', 'AAA on FOX', 'إيو سكاي'] }, { tags: ['إيو سكاي'] }];
+  const known = knownTagSpellings(news, { 'Iyo Sky': 'آيو سكاي' });
+  assert.deepEqual(canonicalTags(['أخبارالمصارعة', 'AAA on Fox', 'إيو سكاي', 'باك'], known), ['أخبار المصارعة', 'AAA on FOX', 'آيو سكاي', 'باك']);
+  assert.equal(tagKey('إصابات المصارعة'), tagKey('اصابات المصارعة'));
+  // the site's own tags have no split names left
+  const files = fs.readdirSync('content/news').filter(f => f.endsWith('.md'));
+  const text = files.map(f => fs.readFileSync(`content/news/${f}`, 'utf8')).join('\n');
+  assert.doesNotMatch(text, /^\s+- (?:إيو سكاي|أخبارالمصارعة|اصابات المصارعة|دي فون دادلي)$/m);
+  assert.match(fs.readFileSync('_redirects', 'utf8'), /\/tag\/إيو-سكاي\/\* \/tag\/آيو-سكاي\/:splat 301!/);
+});

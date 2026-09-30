@@ -10,7 +10,7 @@ tags:
   - TNA Bound for Glory
   - سيدريك ألكسندر
   - فابيان آيشنر
-  - كيسي نافارو
+  - كي سي نافارو
   - نيك نيميث
 image: /content/images/r0eemzv2xpj36k8n.jpg
 layout: post-layout.njk

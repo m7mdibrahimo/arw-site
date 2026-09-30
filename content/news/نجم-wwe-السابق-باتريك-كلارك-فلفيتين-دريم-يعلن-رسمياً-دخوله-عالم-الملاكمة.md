@@ -8,7 +8,7 @@ tags:
   - WWE
   - WWE NXT
   - Boxing
-  - اخبار القتال
+  - أخبار القتال
 image: /content/images/8qau1w1mtdflr9i7.jpg
 layout: post-layout.njk
 ---

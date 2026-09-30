@@ -7,7 +7,7 @@ tags:
   - Ruby Soho
   - AEW
   - The Outcasts
-  - انجيلو باركر
+  - أنجيلو باركر
   - مصارعة السيدات
   - أخبار المصارعة
   - Fightful

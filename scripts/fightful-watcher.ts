@@ -3676,6 +3676,32 @@ export function dropPartialNameTags(tags: string[]): string[] {
   return tags.filter(t => !(ar(t) && tags.some(o => o !== t && ar(o) && o.length > t.length && ` ${o} `.includes(` ${t} `))));
 }
 
+/** Spelling-blind key of a tag: hamza forms, final ta/ya, spaces, dashes, tatweel and case don't count. */
+export function tagKey(tag: string): string {
+  return tag.replace(/[أإآ]/g, "ا").replace(/ة(?=\s|$)/g, "ه").replace(/ى/g, "ي").replace(/[\s\-ـ]/g, "").toLowerCase();
+}
+let knownTagCache: Map<string, string> | null = null;
+/** Spelling key → the spelling to use: the glossary's, else the one most stories already carry. */
+export function knownTagSpellings(news: { tags: string[] }[] = loadNews(NEWS_DIR), glossary: Record<string, string> = WRESTLER_NAMES_MAP): Map<string, string> {
+  const counts = new Map<string, Map<string, number>>();
+  for (const n of news) for (const t of n.tags) {
+    const k = tagKey(t); if (!k) continue;
+    const m = counts.get(k) || new Map<string, number>(); m.set(t, (m.get(t) || 0) + 1); counts.set(k, m);
+  }
+  const out = new Map<string, string>();
+  for (const [k, m] of counts) out.set(k, [...m].sort((a, b) => b[1] - a[1])[0][0]);
+  for (const v of Object.values(glossary)) if (v) out.set(tagKey(v), v);
+  return out;
+}
+/**
+ * One person, one tag page: «إيو سكاي» (5 stories) beside «آيو سكاي», «أخبارالمصارعة» beside «أخبار
+ * المصارعة» (521), «AAA on Fox» beside «AAA on FOX» — fourteen split tags (INCIDENTS #164). A new tag
+ * takes the spelling the site already uses for it.
+ */
+export function canonicalTags(tags: string[], known: Map<string, string> = (knownTagCache ||= knownTagSpellings())): string[] {
+  return [...new Set(tags.map(t => known.get(tagKey(t)) || t))];
+}
+
 /** The shared-names suspect always reaches the same-story check, first in line. */
 export function withSuspect(candidates: NewsFile[], news: NewsFile[], suspect: string): NewsFile[] {
   const hit = suspect ? news.find(n => n.file === suspect) : undefined;
@@ -4072,7 +4098,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
   draft = { title: fixText(draft.title), body: fixText(draft.body), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
-  draft.tags = dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags));
+  draft.tags = canonicalTags(dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags)));
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
