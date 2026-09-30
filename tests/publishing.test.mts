@@ -2283,3 +2283,9 @@ test('Instagram\'s daily posts go to the most important stories first (INCIDENTS
   assert.match(fs.readFileSync('pages/watcher-recent-content.njk', 'utf8'), /"social_priority"/);
   assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /!instagramAllowedFor\(item\.social_priority, igBudget\.used, igBudget\.cap\)\) igDone = true/);
 });
+
+test('«ابدا» takes its hamza (INCIDENTS #163)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('لن تكون للبيع ابدا'), 'لن تكون للبيع أبدا');
+  assert.equal(applyCorrections('لا تقل أبدا'), 'لا تقل أبدا');
+});
