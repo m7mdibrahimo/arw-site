@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "شيا بروكسايد تؤكد حصولها على ترخيص لاستخدام اغنية Where I Belong في WWE NXT UK لكن WWE لم توافق"
+title: "شيا بروكسايد تؤكد حصولها على ترخيص لاستخدام أغنية Where I Belong في WWE NXT UK لكن WWE لم توافق"
+permalink: "/news/شيا-بروكسايد-تؤكد-حصولها-على-ترخيص-لاستخدام-اغنية-where-i-belong-في-wwe-nxt-uk-لكن-wwe-لم-توافق/index.html"
 date: 2026-09-23T15:30:00.000+03:00
 source_id: 329992
 source_url: "https://www.fightful.com/wrestling/xia-brookside-says-she-had-clearance-to-use-where-i-belong-song-in-nxt-uk-but-wwe-did-not-approve/"
