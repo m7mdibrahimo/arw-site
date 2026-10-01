@@ -1,5 +1,15 @@
 [
   {
+    "id": 331258,
+    "link": "https://www.fightful.com/wrestling/aj-styles-i-never-said-i-was-the-leader-of-the-bullet-club/",
+    "date": "2026-10-01T14:00:00",
+    "date_gmt": "2026-10-01T18:00:00",
+    "title": {
+      "rendered": "AJ Styles: I Never Said I Was The Leader Of The Bullet Club"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/30083449/maxresdefault-188.jpg"
+  },
+  {
     "id": 331505,
     "link": "https://www.fightful.com/wrestling/wwe-smackdown-9-25-viewership-holds-demo-drops/",
     "date": "2026-10-01T13:55:47",
@@ -288,15 +298,5 @@
       "rendered": "Chad Wicks Bonded Out Of Jail After Detox Arrest"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01002910/828539146_4499879950285177_8025855876860465538_n-e1790829012216.jpg"
-  },
-  {
-    "id": 330267,
-    "link": "https://www.fightful.com/wrestling/list-of-participants-in-2026-cmll-womens-grand-prix/",
-    "date": "2026-09-30T23:43:07",
-    "date_gmt": "2026-10-01T03:43:07",
-    "title": {
-      "rendered": "List Of Participants In 2026 CMLL Women&#8217;s Grand Prix"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/16111041/426baae3-6f6c-4342-a095-743f9807e8d7-e1760627472427.jpg"
   }
 ]
