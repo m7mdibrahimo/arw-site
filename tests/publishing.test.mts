@@ -706,9 +706,10 @@ test('_redirects is converted to rules Cloudflare Pages accepts', () => {
     '/tag/قديم/* /tag/جديد/:splat 301!',
   ].join('\n'), site).trim().split('\n');
   assert.ok(out.every(l => /^\/\S* \S+ \d{3}$/.test(l)), 'bare numeric status, path-only sources');
-  assert.ok(out.includes('/news/قديم/ /news/جديد/ 301'));
-  assert.ok(out.includes('/news/قديم /news/جديد/ 301'));
-  assert.ok(out.includes('/tag/قديم/* /tag/جديد/:splat 301'), 'paginated target keeps its splat');
+  const e = encodeURIComponent; // Pages matches encoded paths (INCIDENTS #200)
+  assert.ok(out.includes(`/news/${e('قديم')}/ /news/${e('جديد')}/ 301`));
+  assert.ok(out.includes(`/news/${e('قديم')} /news/${e('جديد')}/ 301`));
+  assert.ok(out.includes(`/tag/${e('قديم')}/* /tag/${e('جديد')}/:splat 301`), 'paginated target keeps its splat');
   const firstSplat = out.findIndex(l => l.includes('*'));
   assert.ok(out.slice(firstSplat).every(l => l.includes('*')), 'static rules must precede every splat rule');
 });
@@ -1872,10 +1873,10 @@ test('a news story whose title was edited keeps its first URL alive: the build r
     const extra = renamedArticleRedirects(dir, site);
     assert.deepEqual(extra, [['/news/فوز-وبآربارو/', '/news/فوز-وباربارو/']]);
     const out = toPagesRedirects('/news/manual/* /news/kept/:splat 301!\n', site, extra);
-    assert.match(out, /\/news\/فوز-وبآربارو\/ \/news\/فوز-وباربارو\/ 301/);
+    assert.ok(out.includes(`/news/${encodeURIComponent('فوز-وبآربارو')}/ /news/${encodeURIComponent('فوز-وباربارو')}/ 301`));
     // a written rule always wins, and the limit is never passed
     const manual = toPagesRedirects('/news/فوز-وبآربارو/* /news/elsewhere/:splat 301!\n', site, extra);
-    assert.ok(!/فوز-وباربارو/.test(manual));
+    assert.ok(!manual.includes(encodeURIComponent('فوز-وباربارو')));
   } finally {
     fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(site, { recursive: true, force: true });
   }
@@ -2588,4 +2589,13 @@ test('Dynamite Kid stays a wrestler; a weekday that is not the date is flagged (
 
 test('reported speech stays in the third person: «شعر بداخلي» (INCIDENTS #199)', () => {
   assert.equal(applyCorrections('وأضاف أنه شعر بداخلي بأن تلك الليلة'), 'وأضاف أنه شعر في داخله بأن تلك الليلة');
+});
+
+test('Arabic redirect paths are written percent-encoded, the way Pages matches them (INCIDENTS #200)', () => {
+  const out = toPagesRedirects('/news/قديم/ /news/جديد/ 301\n/admin/%E2%80%8E /admin/ 301', '_site');
+  assert.match(out, /^\/news\/%D9%82%D8%AF%D9%8A%D9%85\/ \/news\/%D8%AC%D8%AF%D9%8A%D8%AF\/ 301$/m);
+  assert.match(out, /^\/admin\/%E2%80%8E \/admin\/ 301$/m);
+  assert.ok(!/[\u0600-\u06FF]/.test(out));
+  const long = 'ا'.repeat(200);
+  assert.equal(toPagesRedirects(`/news/${long}/ /news/${long}ب/ 301`, '_site').trim(), '', 'a rule over 1,000 characters is left out, not sent to Pages');
 });
