@@ -2029,7 +2029,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // An announced return on a show still to come is a match card, not a spoiler: «عودة فريق ذا إيليت
   // ونزال مرتقب… ضمن عرض AEW Dynamite» — Tony Khan's announcement for that night (INCIDENTS #171).
   const announced = ar("مرتقب|مرتقبة|المرتقب|المرتقبة|سيشهد|ستشهد|يستعد|تستعد|القادم|القادمة|المقبل|المقبلة").test(title) && !ar("يعود في|تعود في|عاد|عادت|يسجل عودته|تسجل عودتها|بعد عودته|بعد عودتها").test(title);
-  const returnTitle = announced ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ");
+  // News ABOUT a return still to come: «آخر التطورات حول عودة نايومي إلى WWE» — she hasn't been
+  // back yet, the story says her name isn't even in creative talks (INCIDENTS #204).
+  const pendingReturn = ar("(?:آخر\\s+)?(?:التطورات|تطورات|المستجدات|مستجدات|تحديث|تحديثات|تقارير|موعد|توقيت|خطط|أنباء|شائعات|تفاصيل)\\s+(?:جديدة\\s+)?(?:حول|بشأن|عن)\\s+(?:ال)?عودة");
+  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ");
   if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;

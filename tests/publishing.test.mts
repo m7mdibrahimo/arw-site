@@ -2628,3 +2628,10 @@ test('ages written out in the body become digits before publishing; titles keep 
 test('the writer is told «make the show» means taking part, not staging it (INCIDENTS #203)', () => {
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /«make it to \/ make the show \/ make \[event\]» معناها «يلحق بـ \/ يشارك في \/ يحضر»/);
 });
+
+test('news about a return still to come is not a return spoiler (INCIDENTS #204)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('آخر التطورات حول عودة نايومي إلى WWE', ''), false);
+  assert.equal(isSingleMatchSpoiler('تقارير جديدة بشأن عودة رومان رينز', ''), false);
+  assert.equal(isSingleMatchSpoiler('نايومي تعود في عرض WWE RAW', ''), true);
+});
