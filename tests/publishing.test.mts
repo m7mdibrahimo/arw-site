@@ -8,7 +8,7 @@ import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
-import { toPagesRedirects } from '../lib/redirects.cjs';
+import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix, headUnheadedMatches, applyCorrections } from '../scripts/news-qa';
 import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories } from '../scripts/fightful-watcher';
@@ -1880,7 +1880,7 @@ test('a news story whose title was edited keeps its first URL alive: the build r
   } finally {
     fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(site, { recursive: true, force: true });
   }
-  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\)\)/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\), tooLong\)/);
 });
 
 test('no «\\b» next to an Arabic letter in scripts/ or worker/src/ — JS «\\b» only knows ASCII, so the rule is silently dead', async () => {
@@ -2597,5 +2597,11 @@ test('Arabic redirect paths are written percent-encoded, the way Pages matches t
   assert.match(out, /^\/admin\/%E2%80%8E \/admin\/ 301$/m);
   assert.ok(!/[\u0600-\u06FF]/.test(out));
   const long = 'ا'.repeat(200);
-  assert.equal(toPagesRedirects(`/news/${long}/ /news/${long}ب/ 301`, '_site').trim(), '', 'a rule over 1,000 characters is left out, not sent to Pages');
+  const tooLong: [string, string][] = [];
+  assert.equal(toPagesRedirects(`/news/${long}/ /news/${long}ب/ 301`, '_site', [], tooLong).trim(), '', 'a rule over 1,000 characters is left out, not sent to Pages');
+  assert.deepEqual(tooLong, [[`/news/${long}/`, `/news/${long}ب/`]]);
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'rp-'));
+  assert.equal(writeRedirectPages(tooLong, site), 1);
+  const page = fs.readFileSync(path.join(site, 'news', long, 'index.html'), 'utf8');
+  assert.match(page, /http-equiv="refresh" content="0;url=\/news\//); assert.match(page, /rel="canonical"/);
 });
