@@ -1,5 +1,35 @@
 [
   {
+    "id": 331470,
+    "link": "https://www.fightful.com/wrestling/dragongate-to-hold-10-bell-salute-for-pac-before-october-2nd-show/",
+    "date": "2026-10-01T11:23:47",
+    "date_gmt": "2026-10-01T15:23:47",
+    "title": {
+      "rendered": "Dragongate To Hold 10-Bell Salute For PAC Before October 2nd Show"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01111059/Screenshot-496-e1790867494811.png"
+  },
+  {
+    "id": 331468,
+    "link": "https://www.fightful.com/wrestling/josh-alexander-american-dragon-aint-shit/",
+    "date": "2026-10-01T11:22:29",
+    "date_gmt": "2026-10-01T15:22:29",
+    "title": {
+      "rendered": "Josh Alexander: American Dragon Ain&#8217;t Shit"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01112035/Screenshot-335-e1790868053447.png"
+  },
+  {
+    "id": 331467,
+    "link": "https://www.fightful.com/wrestling/tommaso-ciampa-vs-charles-mason-added-to-hog-salvation/",
+    "date": "2026-10-01T11:19:25",
+    "date_gmt": "2026-10-01T15:19:25",
+    "title": {
+      "rendered": "Tommaso Ciampa vs. Charles Mason Added To HOG Salvation"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01111859/Screenshot-2026-10-01-at-11.13.19-AM.png"
+  },
+  {
     "id": 331464,
     "link": "https://www.fightful.com/wrestling/will-ospreay-talks-using-black-arrow-on-aew-dynamite-something-told-me-on-this-night-i-could-make-the-jump/",
     "date": "2026-10-01T10:36:56",
@@ -268,35 +298,5 @@
       "rendered": "REPORT: NWA Joins Black Bear Digital Networks"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/01/27211219/nwa_logo_2_1.jpg?v=20260930213835"
-  },
-  {
-    "id": 331372,
-    "link": "https://www.fightful.com/wrestling/joseph-sawyer-pulled-from-10-2-wrestling-revolver-event-due-to-injury/",
-    "date": "2026-09-30T17:25:20",
-    "date_gmt": "2026-09-30T21:25:20",
-    "title": {
-      "rendered": "Joseph Sawyer Pulled From 10/2 Wrestling REVOLVER Event Due To Injury"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30170935/HTfTo1sXkAASZcE-e1790802600703.jpg"
-  },
-  {
-    "id": 331368,
-    "link": "https://www.fightful.com/wrestling/paramount-wdb-merger-expected-to-close-on-10-6-ynon-kreiz-set-for-co-ceo-role/",
-    "date": "2026-09-30T17:01:04",
-    "date_gmt": "2026-09-30T21:01:04",
-    "title": {
-      "rendered": "Paramount-WDB Merger Expected To Close On 10/6, Ynon Kreiz Set For Co-CEO Role"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/17115338/wbd-paramount-logo.jpg"
-  },
-  {
-    "id": 331365,
-    "link": "https://www.fightful.com/wrestling/atlantis-jr-shares-photo-with-tom-cruise-invites-him-to-arena-mexico/",
-    "date": "2026-09-30T16:15:19",
-    "date_gmt": "2026-09-30T20:15:19",
-    "title": {
-      "rendered": "Atlantis Jr. Shares Photo With Tom Cruise, Invites Him To Arena Mexico"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30160054/HTWLx47XoAAnBfm-e1790798461485.jpg"
   }
 ]

@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/tommaso-ciampa-vs-charles-mason-added-to-hog-salvation": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-01T15:25:13.103Z"
+ },
  "https://www.fightful.com/wrestling/netflix-blacks-out-jacob-fatu-being-run-over-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T15:14:57.152Z"
+  "at": "2026-10-01T15:24:56.891Z"
  },
  "https://www.fightful.com/wrestling/wardlow-returns-to-the-ring-on-9-30-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T15:14:56.649Z"
+  "at": "2026-10-01T15:24:56.344Z"
  },
  "https://www.fightful.com/wrestling/watch-wwe-worlds-collide-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T15:14:56.375Z"
+  "at": "2026-10-01T15:24:56.046Z"
  },
  "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
