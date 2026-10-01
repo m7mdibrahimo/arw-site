@@ -2465,3 +2465,12 @@ test('a tatweel joins the name without a space: «لـباك», «بـباك» (
   assert.equal(applyCorrections('قميصا تكريميا لـ باك'), 'قميصا تكريميا لـباك');
   assert.equal(applyCorrections('يشيد بـ باك'), 'يشيد بـباك');
 });
+
+test('a story stopped as a spoiler is recorded as held even when Instagram\'s ration skipped it (INCIDENTS #185)', async () => {
+  const src = fs.readFileSync('worker/src/index.ts', 'utf8');
+  assert.match(src, /const reachedAny = !!\(state\.telegram\[key\] \|\| state\.facebook\[key\] \|\| state\.instagram\[key\]\);/);
+  assert.match(src, /if \(!reachedAny\) state\.held\[key\] = \{/);
+  assert.doesNotMatch(src, /if \(!\(tgDone \|\| fbDone \|\| igDone\)\) state\.held\[key\]/);
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('عودة النجم برايان دانيلسون'), 'عودة النجم براين دانيلسون');
+});

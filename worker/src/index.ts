@@ -2436,6 +2436,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         if (isSingleMatchSpoiler(lead, "")) why = "lead";
       }
       if (why) {
+        // «Reached a platform» is read from the stamps themselves: igDone is also true for a story
+        // today's Instagram ration skips (#162), which left two holds unrecorded (INCIDENTS #185).
+        const reachedAny = !!(state.telegram[key] || state.facebook[key] || state.instagram[key]);
         state.telegram[key] = now;
         state.facebook[key] = now;
         state.instagram[key] = now;
@@ -2443,7 +2446,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         state.held = state.held || {};
         // Only a story that reached no platform yet is «held»; one already out (a title edited
         // into a spoiler later) is just stopped from going further.
-        if (!(tgDone || fbDone || igDone)) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: why === "ai" ? (item.social_spoiler_kind === "return" ? "return" : item.social_spoiler_kind === "show" ? "show" : "result") : spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}), ...(item.social_spoiler_note ? { note: String(item.social_spoiler_note).slice(0, 200) } : {}) };
+        if (!reachedAny) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: why === "ai" ? (item.social_spoiler_kind === "return" ? "return" : item.social_spoiler_kind === "show" ? "show" : "result") : spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}), ...(item.social_spoiler_note ? { note: String(item.social_spoiler_note).slice(0, 200) } : {}) };
         for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;
