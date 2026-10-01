@@ -73,7 +73,7 @@
 
     // 4. Back to top with a reading ring
     var btn = document.createElement('button');
-    btn.type = 'button'; btn.className = 'xp-top'; btn.setAttribute('aria-label', 'ارجع لأول الصفحة');
+    btn.type = 'button'; btn.className = 'xp-top'; btn.setAttribute('aria-label', 'العودة إلى أعلى الصفحة');
     btn.innerHTML = '<svg class="ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="bg" cx="24" cy="24" r="22"/><circle class="fg" cx="24" cy="24" r="22"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
     document.body.appendChild(btn);
     var fg = btn.querySelector('.fg');
