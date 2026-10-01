@@ -2419,8 +2419,8 @@ test('NJPW has its own section: home block 3 + 4, a federation page, the panel l
 test('every page loads the motion and reader-experience layers, and they never hide content on their own (INCIDENTS #178, #179)', () => {
   const init = fs.readFileSync('_includes/theme-init.njk', 'utf8');
   assert.match(init, /\/assets\/motion\.css\?v=/);
-  assert.match(init, /\/assets\/motion\.js\?v=\d+" defer/);
-  assert.match(init, /\/assets\/experience\.js\?v=\d+" defer/);
+  assert.match(init, /\/assets\/motion\.js\?v=\w+" defer/);
+  assert.match(init, /\/assets\/experience\.js\?v=\w+" defer/);
   const css = fs.readFileSync('assets/motion.css', 'utf8');
   // cards are hidden only while the script runs (html.m-on), and reduced motion turns everything off
   assert.match(css, /html\.m-on \.m-card \{ opacity: 0;/);
