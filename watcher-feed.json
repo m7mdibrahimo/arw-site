@@ -1,5 +1,15 @@
 [
   {
+    "id": 331492,
+    "link": "https://www.fightful.com/wrestling/mistico-vs-el-desperado-set-for-njpw-x-cmll-lucha-kingdom/",
+    "date": "2026-10-01T12:48:02",
+    "date_gmt": "2026-10-01T16:48:02",
+    "title": {
+      "rendered": "Mistico vs. El Desperado Set For NJPW x CMLL Lucha Kingdom"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01124732/LUCHAKINGDOM_.png"
+  },
+  {
     "id": 331488,
     "link": "https://www.fightful.com/wrestling/update-on-naomi-wwe-return/",
     "date": "2026-10-01T12:40:28",
@@ -288,15 +298,5 @@
       "rendered": "Will Ospreay Owns United Empire Name &amp; Has Freedom To Use It In AEW"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27002907/HTMibcnXsAAuady-e1790483365728.jpg"
-  },
-  {
-    "id": 331388,
-    "link": "https://www.fightful.com/wrestling/aew-dynamite-results-9-30-2026-a-tribute-to-pac/",
-    "date": "2026-09-30T19:15:00",
-    "date_gmt": "2026-09-30T23:15:00",
-    "title": {
-      "rendered": "AEW Dynamite Results (9/30/2026): A Tribute to PAC"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28172126/HTVU0_YbsAAKOKt.jpeg"
   }
 ]
