@@ -2550,15 +2550,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "برنامج دارك سايد اوف ذا كيج الموسم 2 الحلقة 4 مترجمة",
-    "lastAttempt": 1790813497777,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1790814422585,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -2586,7 +2582,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 25.09.2026 مترجم",
-    "lastAttempt": 1790813614631,
+    "lastAttempt": 1790814424066,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
