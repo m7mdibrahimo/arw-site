@@ -83,6 +83,9 @@ const RULES: Rule[] = [
   { code: "game_terms", severity: "error", re: /مجريات اللعب|المباراة الكروية|الشوط (?:الأول|الثاني)|أرض الملعب/g, message: "تعبير رياضي غير مناسب للمصارعة (المعتمد: مجريات النزال)" },
   // A word the model broke in two scripts: «شخصية أك uma الشهيرة» (Akuma — INCIDENTS #143). Latin names in
   // the text are capitalised (WWE, SiriusXM); a short lowercase fragment glued after Arabic is a broken word.
+  // A big number written out in words is where the model gets the number wrong: «ألفا وخمسمائة وواحدا
+  // وخمسين دولارا وفلسين» for $1,501.51 (INCIDENTS #188). Amounts and years stay in digits.
+  { code: "spelled_number", severity: "error", re: /(?<![\u0600-\u06FF])(?:ألفين|ألفا|ألف)\s+و(?:مائة|مئة|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة|ستة|سبعة|خمسة|أربعة|ثلاثة|اثنين|واحد|عشرين|ثلاثين)|(?<![\u0600-\u06FF])(?:فلسين|فلسا|سنتا|سنتات)(?![\u0600-\u06FF])/g, message: "رقم كبير أو سنة أو مبلغ مكتوب بالحروف — يتكتب بالأرقام زي المصدر", fields: ["body"] },
   { code: "broken_word", severity: "error", re: /(?<=[\u0600-\u06FF]) (?!vs\b)(?:[a-z]{2,8})(?=[\s،,.؛:!؟?)]|$)(?! [A-Za-z])/g, message: "كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي", fields: ["title", "body"] },
   { code: "artifact", severity: "error", re: /\bundefined\b|\bNaN\b|\[object Object\]|\{\{|\}\}|```|\\n|&amp;|&quot;|&#\d+;/g, message: "بقايا كود أو رموز غير مفهومة", fields: ["title", "body"] },
   // Gemini sometimes swaps one letter of a name for a look-alike from another script:

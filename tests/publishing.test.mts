@@ -2487,3 +2487,12 @@ test('«المقاتليين» loses its extra ya (INCIDENTS #187)', async () =>
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('في نزال ثماني المقاتليين'), 'في نزال ثماني المقاتلين');
 });
+
+test('big numbers, years and amounts stay in digits; spelled-out ones are flagged (INCIDENTS #188)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const flag = (b: string) => checkArticle('عنوان عربي كامل للخبر هنا', b, []).some(i => i.code === 'spelled_number');
+  assert.equal(flag('بلغ مجموعها ألفا وخمسمائة وواحدا وخمسين دولارا أمريكيا وفلسين.'), true);
+  assert.equal(flag('تم توقيفه في سبتمبر ألفين وستة وعشرين.'), true);
+  assert.equal(flag('بلغ مجموعها 1501.51 دولار أمريكي، وحقق 857 ألف مشاهدة.'), false);
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /المبالغ والأعمار والسنين والأرقام الكبيرة تتكتب \*\*بالأرقام\*\*/);
+});
