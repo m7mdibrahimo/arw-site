@@ -4538,6 +4538,16 @@
    "wrong": "لعودة المرتقبة",
    "right": "للعودة المرتقبة",
    "note": "لام الجر + ال — INCIDENTS #195"
+  },
+  {
+   "wrong": "لايني لوك",
+   "right": "لايني لاك",
+   "note": "Laynie Luck — INCIDENTS #196"
+  },
+  {
+   "wrong": "ليني لاك",
+   "right": "لايني لاك",
+   "note": "Laynie Luck — INCIDENTS #196"
   }
  ]
 }

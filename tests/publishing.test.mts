@@ -2548,3 +2548,13 @@ test('a word cut after «الأ» is joined back; Conrad Thompson and two gramma
   assert.equal(applyCorrections('أدى إلى عدة سقوط وإصابات'), 'أدى إلى عدة سقطات وإصابات');
   assert.equal(applyCorrections('التمهيد لعودة المرتقبة لنايومي'), 'التمهيد للعودة المرتقبة لنايومي');
 });
+
+test('EVOLVE names the writer swapped for look-alikes are in the glossary; «Impact» as a plain word is flagged (INCIDENTS #196)', async () => {
+  const hint = buildNamesGlossaryHint("Thatcher announced Laynie Luck vs. Vanta The Unknown. Harley Riggins def. It's Gal");
+  assert.match(hint, /Laynie Luck = لايني لاك/); assert.match(hint, /Vanta The Unknown = فانتا ذا أنون/); assert.match(hint, /It's Gal = إتس غال/);
+  assert.equal(applyCorrections('نزال لايني لوك'), 'نزال لايني لاك');
+  const { checkArticle } = await import('../scripts/news-qa');
+  const jargon = (b: string) => checkArticle('عنوان عربي كامل للخبر هنا', b, []).some(i => i.code === 'english_jargon');
+  assert.equal(jargon('قطع الشاشة لإخفاء Impact الحقيقي للحظة.'), true);
+  assert.equal(jargon('يقام عرض Impact الليلة في تكساس.'), false);
+});
