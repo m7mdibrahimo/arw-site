@@ -2558,3 +2558,17 @@ test('EVOLVE names the writer swapped for look-alikes are in the glossary; «Imp
   assert.equal(jargon('قطع الشاشة لإخفاء Impact الحقيقي للحظة.'), true);
   assert.equal(jargon('يقام عرض Impact الليلة في تكساس.'), false);
 });
+
+test('a result placed in a past month is not held as recent (INCIDENTS #197)', async () => {
+  const { settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const now = Date.parse('2026-10-01T13:13:00Z');
+  const v = { spoils: true, kind: 'result', age: 'recent', note: '' } as any;
+  const lola = 'لولا فايس تتذكر فوزها ببطولة NXT للسيدات عندما انتزعت الحزام من جايسي جاين في عرض Stand & Deliver شهر أبريل الماضي';
+  assert.equal(settleSpoilerAge(v, lola, [], now, [], []).spoils, false);
+  // yesterday's month still counts: «سبتمبر» on 1 October
+  assert.equal(settleSpoilerAge(v, 'فاز في عرض سبتمبر الكبير', [], now, [], []).spoils, true);
+  // no month at all: the model's verdict stands
+  assert.equal(settleSpoilerAge(v, 'فاز باللقب في العرض', [], now, [], []).spoils, true);
+  assert.equal(settleSpoilerAge(v, 'He May Have Won The Title فاز باللقب', [], now, [], []).spoils, true);
+  assert.equal(settleSpoilerAge(v, 'Won The Title At Stand & Deliver In April', [], now, [], []).spoils, false);
+});

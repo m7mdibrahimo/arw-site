@@ -2551,6 +2551,16 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
   if (v.spoils && v.age === "recent" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
     return { ...v, spoils: false, kind: "none", age: "old" };
   }
+  // A result placed in a past month and nothing recent: Lola Vice's NXT title win «at Stand &
+  // Deliver in April» was called «recent» and held on 1 October (INCIDENTS #197). The month must
+  // be neither this one nor yesterday's, so «سبتمبر» on the 1st of October still counts as recent.
+  if (v.spoils && v.age === "recent" && !datedRecently && !recentShow) {
+    const fresh = new Set([0, 1].map(i => new Date(now - i * 86400_000).getUTCMonth()));
+    const months = [...text.matchAll(new RegExp(`(?<![\\u0600-\\u06FF])(${AR_MONTHS.join("|")})(?![\\u0600-\\u06FF])`, "g"))].map(x => AR_MONTHS.indexOf(x[1]))
+      // English: capitalised only, and never «May» (the verb)
+      .concat([...text.matchAll(new RegExp(`\\b(${EN_MONTHS.filter(m => m !== "may").map(m => m[0].toUpperCase() + m.slice(1)).join("|")})\\b`, "g"))].map(x => EN_MONTHS.indexOf(x[1].toLowerCase())));
+    if (months.length && months.every(m => !fresh.has(m))) return { ...v, spoils: false, kind: "none", age: "old" };
+  }
   if (v.age !== "old") return v;
   return datedRecently || recentShow ? { ...v, age: "recent" } : v;
 }
