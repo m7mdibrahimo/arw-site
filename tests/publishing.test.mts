@@ -2585,3 +2585,7 @@ test('Dynamite Kid stays a wrestler; a weekday that is not the date is flagged (
   assert.equal(weekdayNotOnDate('يوم السبت 26 سبتمبر 2026', 2026), null);
   assert.equal(weekdayNotOnDate('يوم الجمعة 26 سبتمبر 2026', 2026), 'الجمعة 26 سبتمبر 2026');
 });
+
+test('reported speech stays in the third person: «شعر بداخلي» (INCIDENTS #199)', () => {
+  assert.equal(applyCorrections('وأضاف أنه شعر بداخلي بأن تلك الليلة'), 'وأضاف أنه شعر في داخله بأن تلك الليلة');
+});
