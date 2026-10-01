@@ -2624,3 +2624,7 @@ test('ages written out in the body become digits before publishing; titles keep 
   assert.equal(spelledAgesToDigits('أقيم يوم الثلاثين من سبتمبر'), 'أقيم يوم الثلاثين من سبتمبر');
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /body: spelledAgesToDigits\(fixText\(draft\.body\)\)/);
 });
+
+test('the writer is told «make the show» means taking part, not staging it (INCIDENTS #203)', () => {
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /«make it to \/ make the show \/ make \[event\]» معناها «يلحق بـ \/ يشارك في \/ يحضر»/);
+});
