@@ -2664,3 +2664,9 @@ test('«Flash» Morgan Webster is one wrestler, not «مورغان و بستر»
 test('Goldberg has the glossary spelling (INCIDENTS #211)', () => {
   assert.equal(applyCorrections('بيل غولدبيرغ وابنه'), 'بيل غولدبيرج وابنه');
 });
+
+test('«عند عودته» is a return still to come, not a spoiler (INCIDENTS #212)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('كشف برونسون ريد أن تحوله الجسدي لم يكن لمجرد الظهور بشكل أفضل عند عودته إلى عروض WWE', ''), false);
+  assert.equal(isSingleMatchSpoiler('برونسون ريد يعود في عرض WWE RAW', ''), true);
+});

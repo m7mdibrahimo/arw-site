@@ -2032,7 +2032,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // News ABOUT a return still to come: «آخر التطورات حول عودة نايومي إلى WWE» — she hasn't been
   // back yet, the story says her name isn't even in creative talks (INCIDENTS #204).
   const pendingReturn = ar("(?:آخر\\s+)?(?:التطورات|تطورات|المستجدات|مستجدات|تحديث|تحديثات|تقارير|موعد|توقيت|خطط|أنباء|شائعات|تفاصيل)\\s+(?:جديدة\\s+)?(?:حول|بشأن|عن)\\s+(?:ال)?عودة");
-  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ");
+  // «عند عودته» / «حين عودتها» is a return still to come: Bronson Reed's lead «…بشكل أفضل عند عودته
+  // إلى عروض WWE» — he's out with a torn biceps (INCIDENTS #212).
+  const whenReturn = ar("(?:عند|لدى|حين|حال|فور|قبل|بمجرد)\\s+(?:عودته|عودتها|عودتهم|عودتهما|العودة)");
+  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ").replace(new RegExp(whenReturn.source, "gi"), " ");
   if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;
