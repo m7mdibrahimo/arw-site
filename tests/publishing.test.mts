@@ -2474,3 +2474,11 @@ test('a story stopped as a spoiler is recorded as held even when Instagram\'s ra
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('عودة النجم برايان دانيلسون'), 'عودة النجم براين دانيلسون');
 });
+
+test('«real name» is «واسمه الحقيقي», and nothing the source never said is added to a death story (INCIDENTS #186)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('تحية خاصة للمصارع باك الحقيقي بنجامين ساتيرلي'), 'تحية خاصة للمصارع باك، واسمه الحقيقي بنجامين ساتيرلي');
+  const writer = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(writer, /ممنوع «تمنوا له التوفيق» أو «الشفاء العاجل» لشخص متوفي/);
+  assert.match(writer, /\*\*real name X\*\* = «واسمه الحقيقي X»/);
+});
