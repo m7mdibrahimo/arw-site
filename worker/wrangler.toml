@@ -31,6 +31,8 @@ X_AUTO_ENABLED = "false"
 # (currently testing via a Sandbox app connection) — see worker/src/index.ts's
 # getTikTokAccessToken and scripts/show-reel-monitor.ts's TIKTOK_ENABLED gate.
 TIKTOK_AUTO_ENABLED = "false"
+# Public posts only after TikTok approves the app (support reply, Oct 2026: still staging).
+TIKTOK_APP_AUDITED = "false"
 AUTO_IMAGE_STORIES = "false"
 TELEGRAM_CHAT_ID = "@arab_wrestling"
 FACEBOOK_PAGE_ID = "1229063470299837"

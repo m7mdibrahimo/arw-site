@@ -65,6 +65,8 @@ export interface Env {
   // credentials (set once via wrangler secret, never rotate on their own).
   TIKTOK_CLIENT_KEY?: string;
   TIKTOK_CLIENT_SECRET?: string;
+  // "true" only after TikTok approves the app in Production; until then posts stay SELF_ONLY.
+  TIKTOK_APP_AUDITED?: string;
 
   // Plain vars — set in wrangler.toml [vars]
   TELEGRAM_CHAT_ID: string;
@@ -1635,7 +1637,8 @@ async function getTikTokAccessToken(env: Env): Promise<string | null> {
 
 async function postVideoToTikTok(env: Env, data: { videoUrl: string; title: string; postUrl?: string }) {
   return publishTikTokVideo({ accessToken: await getTikTokAccessToken(env),
-    videoUrl: data.videoUrl, caption: buildReelCaption(data.title, data.postUrl), kv: env.PUSH_KV });
+    videoUrl: data.videoUrl, caption: buildReelCaption(data.title, data.postUrl), kv: env.PUSH_KV,
+    audited: env.TIKTOK_APP_AUDITED === "true" });
 }
 
 // Posts to X (Twitter) via Buffer's GraphQL API instead of X's own API —

@@ -641,6 +641,21 @@ test('TikTok posts SELF_ONLY until the app is approved for public posting', asyn
   assert.equal(sent[0].post_info.privacy_level, 'SELF_ONLY');
 });
 
+test('TikTok stays SELF_ONLY on an unaudited app even when the account offers public', async t => {
+  // creator_info offered PUBLIC_TO_EVERYONE to our Sandbox app; asking for it got every
+  // init rejected with "review our integration guidelines" (INCIDENTS #191).
+  const sent: any[] = [];
+  t.mock.method(globalThis, 'fetch', async (url: string, init: any) => {
+    if (url.endsWith('/creator_info/query/')) return new Response(JSON.stringify({ error: { code: 'ok' }, data: { privacy_level_options: ['PUBLIC_TO_EVERYONE', 'MUTUAL_FOLLOW_FRIENDS', 'SELF_ONLY'] } }));
+    if (url.endsWith('/video/init/')) { sent.push(JSON.parse(init.body)); return new Response(JSON.stringify({ error: { code: 'ok' }, data: { publish_id: 'p' + sent.length } })); }
+    return new Response(JSON.stringify({ error: { code: 'ok' }, data: { status: 'PUBLISH_COMPLETE' } }));
+  });
+  const kv = { get: async () => null, put: async () => {}, delete: async () => {} } as any;
+  await publishTikTokVideo({ accessToken: 'token', videoUrl: 'https://site.test/videos/a.mp4', kv });
+  await publishTikTokVideo({ accessToken: 'token', videoUrl: 'https://site.test/videos/b.mp4', kv, audited: true });
+  assert.deepEqual(sent.map(b => b.post_info.privacy_level), ['SELF_ONLY', 'PUBLIC_TO_EVERYONE']);
+});
+
 test('sanitizeWrestlingTerms keeps WWF in English like every other federation name', () => {
   // WWE, AEW, TNA, ROH, MLW and NJPW all had a rule enforcing their English
   // name over a phonetic Arabic transliteration, but WWF (the promotion's own

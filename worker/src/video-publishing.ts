@@ -109,9 +109,9 @@ const TIKTOK_API = 'https://open.tiktokapis.com/v2';
 // status-fetch call needs that id, and losing it on a retry would silently start
 // a second, duplicate post.
 export async function publishTikTokVideo(options: {
-  accessToken: string | null; videoUrl: string; caption?: string; kv: KVNamespace;
+  accessToken: string | null; videoUrl: string; caption?: string; kv: KVNamespace; audited?: boolean;
 }): Promise<VideoResult> {
-  const { accessToken, videoUrl, caption, kv } = options;
+  const { accessToken, videoUrl, caption, kv, audited = false } = options;
   if (!accessToken) return { ok: false, error: 'حساب TikTok غير متصل بعد (لم تتم عملية الربط عبر OAuth).' };
   const cacheKey = `tiktok-publish:${videoUrl}`;
   try {
@@ -119,8 +119,11 @@ export async function publishTikTokVideo(options: {
     let publishId: string | undefined = cached ? JSON.parse(cached).id : undefined;
     if (!publishId) {
       // An unaudited app may only post SELF_ONLY, and init rejects any privacy
-      // level not in the creator's own options — so ask instead of hardcoding
-      // public. Once TikTok approves the app, PUBLIC_TO_EVERYONE shows up here.
+      // level not in the creator's own options. creator_info lists the ACCOUNT's
+      // levels, not the app's: our Sandbox app saw PUBLIC_TO_EVERYONE offered,
+      // asked for it, and every init came back "review our integration guidelines"
+      // (unaudited_client_can_only_post_to_private_accounts). So public only once
+      // TikTok has approved the app (TIKTOK_APP_AUDITED) AND the account offers it.
       const info = await fetch(`${TIKTOK_API}/post/publish/creator_info/query/`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json; charset=UTF-8' },
@@ -132,7 +135,7 @@ export async function publishTikTokVideo(options: {
         return { ok: false, error: logId ? `${baseError} (log_id: ${logId})` : baseError, result: infoData };
       }
       const privacyOptions: string[] = infoData.data?.privacy_level_options || [];
-      const privacyLevel = privacyOptions.includes('PUBLIC_TO_EVERYONE') ? 'PUBLIC_TO_EVERYONE' : 'SELF_ONLY';
+      const privacyLevel = audited && privacyOptions.includes('PUBLIC_TO_EVERYONE') ? 'PUBLIC_TO_EVERYONE' : 'SELF_ONLY';
       const init = await fetch(`${TIKTOK_API}/post/publish/video/init/`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json; charset=UTF-8' },
