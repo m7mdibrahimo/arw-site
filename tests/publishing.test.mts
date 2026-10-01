@@ -2459,3 +2459,9 @@ test('«الأكثر مشاهدة»: only single content pages are ranked, views
   assert.match(js, /overflow-y:hidden/, 'the row never scrolls up and down under the mouse wheel');
   assert.match(fs.readFileSync('index.njk', 'utf8'), /<script src="\/assets\/top10\.js\?v=\d+" defer><\/script>/);
 });
+
+test('a tatweel joins the name without a space: «لـباك», «بـباك» (INCIDENTS #184)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('قميصا تكريميا لـ باك'), 'قميصا تكريميا لـباك');
+  assert.equal(applyCorrections('يشيد بـ باك'), 'يشيد بـباك');
+});
