@@ -1,5 +1,15 @@
 [
   {
+    "id": 3472626507,
+    "link": "https://www.wrestlinginc.com/2274881/wwe-finn-balor-drew-mcintyre-tribute-late-aew-pac/",
+    "date": "Thu, 01 Oct 2026 18:11:28 +0000",
+    "date_gmt": "2026-10-01T18:11:28.000Z",
+    "title": {
+      "rendered": "WWE Stars Finn Balor, Drew McIntyre Pay Tribute To Late AEW Star Pac"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-stars-finn-balor-drew-mcintyre-pay-tribute-to-late-aew-star-pac/l-intro-1790877842.jpg"
+  },
+  {
     "id": 1614323750,
     "link": "https://www.wrestlinginc.com/2274851/sheamus-potentially-joining-aew-wwe-contract-expires/",
     "date": "Thu, 01 Oct 2026 17:56:05 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Tony Schiavone Pays Tribute To The Late Pac, Says Black Arrow Should Be Retired"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-tony-schiavone-tribute-pac-black-arrow-retired/l-intro-1790808514.jpg"
-  },
-  {
-    "id": 2258697517,
-    "link": "https://www.wrestlinginc.com/2274078/aew-pac-tribute-merchandise-all-proceeds-satterley-family/",
-    "date": "Wed, 30 Sep 2026 22:13:06 +0000",
-    "date_gmt": "2026-09-30T22:13:06.000Z",
-    "title": {
-      "rendered": "AEW Releases Pac Tribute Merchandise, All Proceeds To Benefit The Satterley Family"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-releases-pac-tribute-merchandise-all-proceeds-to-benefit-the-satterley-family/l-intro-1790806279.jpg"
   }
 ]
