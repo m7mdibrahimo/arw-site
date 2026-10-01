@@ -2527,3 +2527,9 @@ test('an English title name cut in half by «بطولة السيدات» is put 
   assert.equal(repairMixedTitles('تتويجها بلقب بطولة السيدات في عرض'), 'تتويجها بلقب بطولة السيدات في عرض');
   assert.match(autoFix('على لقب (NXT بطولة السيدات North American Championship) الليلة'), /NXT Women's North American Championship/);
 });
+
+test('Travis Williams is spelled ترافيس, never ترايفس (INCIDENTS #193)', () => {
+  assert.equal(applyCorrections('ثنائي جوداس إيكاروس وترايفس ويليامز'), 'ثنائي جوداس إيكاروس وترافيس ويليامز');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Travis Williams'], 'ترافيس ويليامز');
+});
