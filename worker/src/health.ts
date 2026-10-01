@@ -65,7 +65,10 @@ export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => stri
     const missing = PLATFORMS.filter(p => !Number(state?.[p]?.[key]));
     // Today's Instagram posts are rationed by importance (#162): a story its priority keeps off
     // Instagram isn't waiting for it.
-    const due = missing.filter(p => p !== "instagram" || igAllows(it.social_priority));
+    // The worker tries Instagram for 3 hours after a story could go out (12 for a show); past that
+    // it is never coming, by design, and not «stuck» (INCIDENTS #190).
+    const igWindow = (it.kind === "show" ? 12 : 3) * 3600_000;
+    const due = missing.filter(p => p !== "instagram" || (igAllows(it.social_priority) && now - from < igWindow));
     if (due.length) waiting.push({ title: String(it.title || "").slice(0, 120), missing: due, from });
   }
   // Instagram takes a limited number of posts a day, so the site sends it the newest stories first
