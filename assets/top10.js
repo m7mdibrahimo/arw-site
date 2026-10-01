@@ -72,7 +72,7 @@
     if (!spot) return;
     var sec = document.createElement('section');
     sec.className = 'content'; sec.id = 'top10'; sec.setAttribute('aria-label', 'الأكثر مشاهدة');
-    sec.innerHTML = '<div class="wrap"><div class="section-head"><div class="head-text"><h2 style="color:#ff6a3d;"><span class="dot" style="background:#ff6a3d"></span>الأكثر مشاهدة</h2><p>أكثر العروض متابعة من الجمهور الآن</p></div></div>' +
+    sec.innerHTML = '<div class="wrap"><div class="section-head"><div class="head-text"><h2 style="color:#ff6a3d;"><span class="dot" style="background:#ff6a3d"></span>الأكثر مشاهدة</h2><p>الأكثر متابعة على عرب راسلنج الآن</p></div></div>' +
       '<div class="t10-bar"><div class="t10-tabs" role="group" aria-label="الفترة"><button type="button" data-r="day" aria-pressed="true">اليوم</button><button type="button" data-r="week" aria-pressed="false">هذا الأسبوع</button></div></div>' +
       '<div class="t10-stage"><button type="button" class="t10-arrow t10-prev" aria-label="السابق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>' +
       '<div class="t10-row">' + rowHtml(top) + '</div>' +
