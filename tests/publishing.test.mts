@@ -2596,7 +2596,7 @@ test('Arabic redirect paths are written percent-encoded, the way Pages matches t
   assert.match(out, /^\/news\/%D9%82%D8%AF%D9%8A%D9%85\/ \/news\/%D8%AC%D8%AF%D9%8A%D8%AF\/ 301$/m);
   assert.match(out, /^\/admin\/%E2%80%8E \/admin\/ 301$/m);
   assert.ok(!/[\u0600-\u06FF]/.test(out));
-  const long = 'ا'.repeat(200);
+  const long = 'ا'.repeat(100); // 200 bytes: a real folder name on Linux, still over 1,000 characters encoded
   const tooLong: [string, string][] = [];
   assert.equal(toPagesRedirects(`/news/${long}/ /news/${long}ب/ 301`, '_site', [], tooLong).trim(), '', 'a rule over 1,000 characters is left out, not sent to Pages');
   assert.deepEqual(tooLong, [[`/news/${long}/`, `/news/${long}ب/`]]);
@@ -2604,4 +2604,14 @@ test('Arabic redirect paths are written percent-encoded, the way Pages matches t
   assert.equal(writeRedirectPages(tooLong, site), 1);
   const page = fs.readFileSync(path.join(site, 'news', long, 'index.html'), 'utf8');
   assert.match(page, /http-equiv="refresh" content="0;url=\/news\//); assert.match(page, /rel="canonical"/);
+  assert.equal(writeRedirectPages([[`/news/${'ا'.repeat(200)}/`, '/news/x/']], site), 0, 'a folder name over 255 bytes is skipped, not a build failure');
+});
+
+test('«الأربعين عاما» is an age in words too; two broken phrases are corrected (INCIDENTS #201)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const flag = (b: string) => checkArticle('عنوان عربي كامل للخبر هنا', b, []).some(i => i.code === 'spelled_number');
+  assert.equal(flag('رحل عن عالمنا عن عمر يناهز الأربعين عاما.'), true);
+  assert.equal(flag('أقيم يوم الثلاثين من سبتمبر.'), false);
+  assert.equal(applyCorrections('العرض الذي أقامة اتحاد AEW'), 'العرض الذي أقامه اتحاد AEW');
+  assert.equal(applyCorrections('كلمات النجوم الذين متذكرا خصاله'), 'كلمات النجوم الذين تذكروا خصاله');
 });
