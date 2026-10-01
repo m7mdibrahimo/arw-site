@@ -2674,3 +2674,7 @@ test('«عند عودته» is a return still to come, not a spoiler (INCIDENTS 
 test('«يتجادبان» is a typo for «يتجادلان» (INCIDENTS #213)', () => {
   assert.equal(applyCorrections('ظهر الاثنان يتجادبان عند المدخل'), 'ظهر الاثنان يتجادلان عند المدخل');
 });
+
+test('«أوسبريب» is Ospreay (INCIDENTS #214)', () => {
+  assert.equal(applyCorrections('ضد النجم ويل أوسبريب، في خطوة'), 'ضد النجم ويل أوسبراي، في خطوة');
+});
