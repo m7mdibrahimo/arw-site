@@ -4628,6 +4628,16 @@
    "wrong": "غولدبرغ",
    "right": "غولدبيرج",
    "note": "Goldberg — INCIDENTS #211"
+  },
+  {
+   "wrong": "يتجادبان",
+   "right": "يتجادلان",
+   "note": "تصحيف — INCIDENTS #213"
+  },
+  {
+   "wrong": "يتجادب",
+   "right": "يتجادل",
+   "note": "تصحيف — INCIDENTS #213"
   }
  ]
 }

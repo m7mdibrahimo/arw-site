@@ -2670,3 +2670,7 @@ test('«عند عودته» is a return still to come, not a spoiler (INCIDENTS 
   assert.equal(isSingleMatchSpoiler('كشف برونسون ريد أن تحوله الجسدي لم يكن لمجرد الظهور بشكل أفضل عند عودته إلى عروض WWE', ''), false);
   assert.equal(isSingleMatchSpoiler('برونسون ريد يعود في عرض WWE RAW', ''), true);
 });
+
+test('«يتجادبان» is a typo for «يتجادلان» (INCIDENTS #213)', () => {
+  assert.equal(applyCorrections('ظهر الاثنان يتجادبان عند المدخل'), 'ظهر الاثنان يتجادلان عند المدخل');
+});
