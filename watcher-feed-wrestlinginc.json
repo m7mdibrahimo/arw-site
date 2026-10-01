@@ -1,5 +1,25 @@
 [
   {
+    "id": 2534230549,
+    "link": "https://www.wrestlinginc.com/2274136/aew-dynamite-bryan-danielson-embraces-jon-moxley-continental-title-defense-orange-cassidy/",
+    "date": "Thu, 01 Oct 2026 00:43:14 +0000",
+    "date_gmt": "2026-10-01T00:43:14.000Z",
+    "title": {
+      "rendered": "Bryan Danielson Embraces Jon Moxley After Continental Title Defense On AEW Dynamite"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/bryan-danielson-embraces-jon-moxley-after-continental-title-defense-on-aew-dynamite/l-intro-1790815280.jpg"
+  },
+  {
+    "id": 3192246698,
+    "link": "https://www.wrestlinginc.com/2274132/aew-dynamite-jon-moxley-promo-ten-bell-salute-late-pac/",
+    "date": "Thu, 01 Oct 2026 00:38:48 +0000",
+    "date_gmt": "2026-10-01T00:38:48.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Opens With Haunting Jon Moxley Promo, Ten-Bell Salute For The Late Pac"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-jon-moxley-promo-ten-bell-salute-late-pac/l-intro-1790815903.jpg"
+  },
+  {
     "id": 3314358267,
     "link": "https://www.wrestlinginc.com/2274113/aew-tony-schiavone-health-steven-borden-all-out-2026-injury/",
     "date": "Wed, 30 Sep 2026 23:43:16 +0000",
@@ -27,7 +47,7 @@
     "title": {
       "rendered": "AEW Dynamite Results 9/30 - A Tribute To Death Riders Member PAC & More"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more/l-intro-1790814088.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more/l-intro-1790815782.jpg"
   },
   {
     "id": 1059191420,
@@ -178,25 +198,5 @@
       "rendered": "Eddie Kingston Posts Emotional Video Following Death Of Fellow AEW Star Pac"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/eddie-kingston-posts-emotional-video-following-death-of-fellow-aew-star-pac/l-intro-1790733942.jpg"
-  },
-  {
-    "id": 1848447144,
-    "link": "https://www.wrestlinginc.com/2272875/mini-vikingo-starboy-shake-up-dusty-classic-brackets-wwe-nxt/",
-    "date": "Wed, 30 Sep 2026 01:39:34 +0000",
-    "date_gmt": "2026-09-30T01:39:34.000Z",
-    "title": {
-      "rendered": "Mini-Vikingo & Starboy Shake Up Dusty Classic Brackets On WWE NXT"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/mini-vikingo-starboy-shake-up-dusty-classic-brackets-on-wwe-nxt/l-intro-1790732103.jpg"
-  },
-  {
-    "id": 1721812474,
-    "link": "https://www.wrestlinginc.com/2272869/massive-womens-battle-royale-set-wwe-nxt/",
-    "date": "Wed, 30 Sep 2026 01:16:41 +0000",
-    "date_gmt": "2026-09-30T01:16:41.000Z",
-    "title": {
-      "rendered": "Massive Women's Battle Royale Set For WWE NXT"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/massive-womens-battle-royale-set-wwe-nxt/l-intro-1790732429.jpg"
   }
 ]
