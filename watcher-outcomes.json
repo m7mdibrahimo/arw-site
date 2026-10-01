@@ -29,11 +29,6 @@
   "retry": false,
   "at": "2026-10-01T00:30:13.272Z"
  },
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-01T00:19:15.262Z"
- },
  "https://www.fightful.com/wrestling/mason-rook-reacts-to-not-being-cleared-to-compete-on-9-29-wwe-nxt-sometimes-life-is-cruel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
