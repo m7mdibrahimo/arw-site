@@ -12,7 +12,7 @@ tags:
 image: /content/images/6hzxnpzlcitsn80z.jpg
 layout: post-layout.njk
 ---
-أعلن المدير العام لاتحاد Lucha Libre AAA، الأسطورة ري ميستيريو، عن إضافة نزال إقصائي متعدد الأطراف من نوع Gauntlet Match إلى بطاقة عرض Ola de Calor، المقرر إقامته يوم 30 أغسطس في صالة Bert Ogden Arena بمدينة إيدينبرغ بولاية تكساس، وذلك لتحديد المتحدية الأولى على لقب بطولة السيدات Reina de Reinas Championship.
+أعلن المدير العام لاتحاد Lucha Libre AAA، الأسطورة ري ميستيريو، عن إضافة نزال إقصائي متعدد الأطراف من نوع Gauntlet Match إلى بطاقة عرض Ola de Calor، المقرر إقامته يوم 30 أغسطس في صالة Bert Ogden Arena بمدينة إيدينبرغ بولاية تكساس، وذلك لتحديد المتحدية الأولى على لقب Women's Reina de Reinas Championship.
 
 كواليس القرار وتحدي البطلة فلامر
 

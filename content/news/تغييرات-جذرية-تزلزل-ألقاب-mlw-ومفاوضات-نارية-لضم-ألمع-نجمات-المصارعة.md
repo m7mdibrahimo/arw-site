@@ -25,7 +25,7 @@ layout: post-layout.njk
 * بطولة العالم للوزن الثقيل.
 * بطولة العالم للوزن المتوسط (بطولة MLW العالمية للوزن المتوسط).
 * البطولة الوطنية للوزن المفتوح (National Openweight Championship).
-* بطولة العالم للسيدات لوزن الريشة (World بطولة السيدات Featherweight Championship).
+* بطولة العالم للسيدات لوزن الريشة (World Women's Featherweight Championship).
 
 ### استمرار المحادثات لضم تيسا بلانشارد وأسماء نسائية بارزة
 

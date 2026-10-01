@@ -2496,3 +2496,16 @@ test('big numbers, years and amounts stay in digits; spelled-out ones are flagge
   assert.equal(flag('بلغ مجموعها 1501.51 دولار أمريكي، وحقق 857 ألف مشاهدة.'), false);
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /المبالغ والأعمار والسنين والأرقام الكبيرة تتكتب \*\*بالأرقام\*\*/);
 });
+
+test('an English title name cut in half by «بطولة السيدات» is put back together (INCIDENTS #189)', async () => {
+  const { repairMixedTitles, autoFix } = await import('../scripts/news-qa');
+  assert.equal(repairMixedTitles('(NWA World بطولة السيدات TV Championship)'), "(NWA World Women's TV Championship)");
+  assert.equal(repairMixedTitles('(NXT بطولة السيدات North American Championship)'), "(NXT Women's North American Championship)");
+  assert.equal(repairMixedTitles('لقب بطولة السيدات C4 Championship)'), "لقب C4 Women's Championship)");
+  assert.equal(repairMixedTitles('(بطولة السيدات US Championship)'), "(Women's US Championship)");
+  assert.equal(repairMixedTitles('(إيفولفبطولة السيدات)'), "(WWE EVOLVE Women's Championship)");
+  assert.equal(repairMixedTitles('(بطولة العالم للسيدات Tag Team Championship)'), '(بطولة العالم للفرق النسائية)');
+  // ordinary Arabic is left alone
+  assert.equal(repairMixedTitles('تتويجها بلقب بطولة السيدات في عرض'), 'تتويجها بلقب بطولة السيدات في عرض');
+  assert.match(autoFix('على لقب (NXT بطولة السيدات North American Championship) الليلة'), /NXT Women's North American Championship/);
+});

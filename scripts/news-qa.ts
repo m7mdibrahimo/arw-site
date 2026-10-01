@@ -375,8 +375,31 @@ export function resultsTitleOutcome(title: string, body: string): string {
   return title;
 }
 
+/**
+ * An English title name the term rules cut in half: «NWA World بطولة السيدات TV Championship»,
+ * «NXT بطولة السيدات North American Championship», «إيفولفبطولة السيدات» (INCIDENTS #189).
+ * A «بطولة السيدات» standing between English words of one title name goes back to «Women's».
+ */
+export function repairMixedTitles(text: string): string {
+  if (!text) return text;
+  const W = "[A-Za-z0-9][\\w'’.&-]*";
+  const promo = /^(?:[A-Z0-9]{2,6}|C4)$/; // C4, MLP, ROW, NWA… come before «Women's»; Speed, TV, US come after
+  return text
+    .replace(/إيفولف\s*بطولة\s+السيدات/g, "WWE EVOLVE Women's Championship")
+    .replace(/بطولة العالم للسيدات\s+Tag\s+Team\s+Championships?/g, "بطولة العالم للفرق النسائية")
+    .replace(/(بطولة العالم للزوجي)\s+(?:Tag\s+Team\s+)?Championships?/g, "$1")
+    // English words on both sides: «NWA World بطولة السيدات TV Championship» → «NWA World Women's TV Championship»
+    .replace(new RegExp(`((?:${W}\\s+)+)بطولة\\s+السيدات\\s+((?:${W})(?:\\s+${W})*)`, "g"), "$1Women's $2")
+    // English only after: «بطولة السيدات C4 Championship» → «C4 Women's Championship», «بطولة السيدات Speed Championship» → «Women's Speed Championship»
+    .replace(new RegExp(`بطولة\\s+السيدات\\s+(${W})\\s+(Championships?)`, "g"), (_m, a: string, c: string) => promo.test(a) && !/^(?:US|TV)$/.test(a) ? `${a} Women's ${c}` : `Women's ${a} ${c}`)
+    .replace(new RegExp(`بطولة\\s+السيدات\\s+((?:${W}\\s+)+Championships?)`, "g"), "Women's $1")
+    // English only before, closing the name: «*NXT بطولة السيدات*» → «*NXT Women's Championship*»
+    .replace(new RegExp(`((?:${W}\\s+)+)بطولة\\s+السيدات(?=\\s*[*)])`, "g"), "$1Women's Championship");
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
+  text = repairMixedTitles(text);
   // HTML line breaks written into the markdown body («<br><br>**المواجهة الأولى…»)
   text = text.replace(/<br\s*\/?>/gi, "\n").replace(/\n{3,}/g, "\n\n");
   const urls: string[] = [];
