@@ -5,17 +5,30 @@
 // in KV for 30 minutes; the home page reads it from /top10 and hides the section when it is empty.
 
 interface Top10Env { PUSH_KV?: KVNamespace; SITE_ORIGIN: string }
-export interface Top10Item { url: string; title: string; image: string; kind: "show" | "news" | "recap" | "nostalgia"; views: number }
+export interface Top10Item { url: string; title: string; image: string; kind: "show" | "recap" | "nostalgia"; views: number }
 
 const CONFIG_KEY = "studio:analytics:config";
-const CACHE_KEY = (range: string) => `top10:${range}`;
+const CACHE_KEY = (range: string) => `top10:v2:${range}`; // v2: watch pages only, decoded titles (#181)
 const CACHE_MS = 30 * 60_000;
 
-/** Paths that are a single show, story, recap or nostalgia episode — not a list, a tag or a page number. */
+/**
+ * Paths that are a single show, recap or nostalgia episode — what people watch. News stays out: long
+ * headlines and mixed pictures don't suit the poster row (the owner, INCIDENTS #181). Not a list,
+ * a tag or a page number.
+ */
 export function contentKind(path: string): Top10Item["kind"] | null {
-  const m = String(path || "").match(/^\/(shows|news|recaps|nostalgia)\/([^/?#]+)\/?$/);
+  const m = String(path || "").match(/^\/(shows|recaps|nostalgia)\/([^/?#]+)\/?$/);
   if (!m || /^\d+$/.test(m[2])) return null;
-  return m[1] === "shows" ? "show" : m[1] === "news" ? "news" : m[1] === "recaps" ? "recap" : "nostalgia";
+  return m[1] === "shows" ? "show" : m[1] === "recaps" ? "recap" : "nostalgia";
+}
+
+/** og: values come with HTML entities still in them («I&#39;m»): turn them back into text. */
+export function decodeEntities(s: string): string {
+  const named: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
+  return String(s || "").replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e: string) => {
+    if (e[0] === "#") { const n = e[1] === "x" || e[1] === "X" ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10); return Number.isFinite(n) ? String.fromCodePoint(n) : m; }
+    return named[e.toLowerCase()] ?? m;
+  });
 }
 
 /** Sum views per page (the same page can come back as /x and /x/), keep content pages, best first. */
@@ -56,8 +69,8 @@ async function pageCard(origin: string, path: string): Promise<{ title: string; 
     .on('meta[property="og:title"]', { element(e) { title = title || e.getAttribute("content") || ""; } })
     .on('meta[property="og:image"]', { element(e) { image = image || e.getAttribute("content") || ""; } })
     .transform(res).arrayBuffer();
-  title = title.replace(/\s*[|–-]\s*عرب راسلنج.*$/, "").trim();
-  return title ? { title, image } : null;
+  title = decodeEntities(title).replace(/\s*[|–-]\s*عرب راسلنج.*$/, "").trim();
+  return title ? { title, image: decodeEntities(image) } : null;
 }
 
 export async function buildTop10(env: Top10Env, range: "day" | "week"): Promise<Top10Item[]> {

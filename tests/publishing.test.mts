@@ -2444,7 +2444,12 @@ test('«الأكثر مشاهدة»: only single content pages are ranked, views
     { path: '/news/a', views: 30 }, { path: '/news/a/', views: 25 }, { path: '/shows/b/', views: 40 },
     { path: '/federation/wwe/', views: 999 }, { path: '/shows/b/?x=1', views: 5 }, { path: '/admin/', views: 500 },
   ]);
-  assert.deepEqual(ranked.map(r => [r.path, r.views]), [['/news/a/', 55], ['/shows/b/', 45]]);
+  assert.deepEqual(ranked.map(r => [r.path, r.views]), [['/shows/b/', 45]], 'news stays out of the poster row (INCIDENTS #181)');
+  const { decodeEntities } = await import('../worker/src/top10');
+  assert.equal(decodeEntities('أغنيتها الأولى بعنوان I&#39;m Just Drunk &amp; More &#x2014;'), 'أغنيتها الأولى بعنوان I\'m Just Drunk & More —');
+  assert.equal(contentKind('/recaps/wwe-raw-28-09-2026/'), 'recap');
+  assert.equal(contentKind('/nostalgia/wwf-badd-blood-in-your-house-1997/'), 'nostalgia');
+  assert.equal(contentKind('/news/x/'), null);
   const src = fs.readFileSync('worker/src/index.ts', 'utf8');
   assert.match(src, /if \(path === "\/top10" && request\.method === "GET"\) return top10Response/);
   const js = fs.readFileSync('assets/top10.js', 'utf8');
