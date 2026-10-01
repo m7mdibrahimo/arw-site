@@ -1,5 +1,15 @@
 [
   {
+    "id": 331445,
+    "link": "https://www.fightful.com/wrestling/wwe-evolve-results-9-30/",
+    "date": "2026-10-01T08:48:35",
+    "date_gmt": "2026-10-01T12:48:35",
+    "title": {
+      "rendered": "WWE EVOLVE Results (9/30)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04212900/wwe_evolve_1.jpg"
+  },
+  {
     "id": 331363,
     "link": "https://www.fightful.com/wrestling/travis-williams-recounts-cruz-montana-steve-maclin-supporting-him-judas-icarus-in-tna/",
     "date": "2026-10-01T08:30:00",
@@ -288,15 +298,5 @@
       "rendered": "AEW Shop Releases New PAC Merchandise, All Proceeds To Go To The Satterley Family"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30131627/Screenshot-2026-09-30-181126-e1790788604567.png"
-  },
-  {
-    "id": 331330,
-    "link": "https://www.fightful.com/wrestling/corey-graves-pays-tribute-to-pac-gravity-forgot-him-we-never-will/",
-    "date": "2026-09-30T13:38:35",
-    "date_gmt": "2026-09-30T17:38:35",
-    "title": {
-      "rendered": "Corey Graves Pays Tribute To PAC: Gravity Forgot Him, We Never Will"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30124621/Screenshot-2026-09-30-174435.png"
   }
 ]
