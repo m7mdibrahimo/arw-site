@@ -1,5 +1,15 @@
 [
   {
+    "id": 3227163158,
+    "link": "https://www.wrestlinginc.com/2274373/jon-moxley-pac-aew-dynamite-off-the-air-tribute/",
+    "date": "Thu, 01 Oct 2026 13:30:34 +0000",
+    "date_gmt": "2026-10-01T13:30:34.000Z",
+    "title": {
+      "rendered": "Jon Moxley Pays Tribute To Pac After AEW Dynamite Goes Off The Air"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jon-moxley-pays-tribute-to-pac-after-aew-dynamite-goes-off-the-air/l-intro-1790861317.jpg"
+  },
+  {
     "id": 4698914482,
     "link": "https://www.wrestlinginc.com/2272081/wwe-kevin-nash-scott-hall-hologram/",
     "date": "Thu, 01 Oct 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE HOFer JBL Reacts To AAA TripleMania: Lucha Is Taking Over"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-jbl-reacts-to-aaa-triplemania-lucha-is-taking-over/l-intro-1790783381.jpg"
-  },
-  {
-    "id": 5101144203,
-    "link": "https://www.wrestlinginc.com/2273358/aew-andrade-el-idolo-pac-pens-tribute/",
-    "date": "Wed, 30 Sep 2026 15:57:23 +0000",
-    "date_gmt": "2026-09-30T15:57:23.000Z",
-    "title": {
-      "rendered": "AEW's Andrade El Idolo Pens Tribute To PAC"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-andrade-el-idolo-pens-tribute-to-pac/l-intro-1790783713.jpg"
   }
 ]
