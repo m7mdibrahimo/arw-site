@@ -2648,3 +2648,9 @@ test('Fatal Influence has one spelling; «نزال» takes a masculine verb (INC
 test('the writer keeps each roundup line\'s doer and meaning (INCIDENTS #208)', () => {
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /الموجزات \(«Fight Size» وأمثالها/);
 });
+
+test('a curly apostrophe in the source still finds the glossary name; Tony D\'Angelo has one spelling (INCIDENTS #209)', () => {
+  assert.match(buildNamesGlossaryHint('Tony D’Angelo Addresses Potential WWE Main Roster Call-Up'), /Tony D'Angelo = توني دي أنجيلو/);
+  assert.equal(applyCorrections('أكد توني دانجلو أن'), 'أكد توني دي أنجيلو أن');
+  assert.equal(applyCorrections('أشار دانجلو إلى'), 'أشار دي أنجيلو إلى');
+});

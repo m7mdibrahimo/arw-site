@@ -384,6 +384,8 @@ export function findKnownArabicNames(text: string): string[] {
 // all 2000+ names without hand-listing exceptions in the prompt one at a time.
 export function buildNamesGlossaryHint(sourceText: string): string {
   if (!sourceText || typeof sourceText !== "string") return "";
+  // Sources write «D’Angelo» with a curly apostrophe; the glossary has «D'Angelo» (INCIDENTS #209)
+  sourceText = sourceText.replace(/[\u2018\u2019\u02BC]/g, "'");
   const matches: string[] = [];
   for (const [english] of Object.entries(WRESTLER_NAMES_MAP)) {
     if (!english || english === WRESTLER_NAMES_MAP[english]) continue;
