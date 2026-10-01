@@ -4568,6 +4568,21 @@
    "wrong": "لم تهتم الجماهير برؤيتها",
    "right": "نادرا ما تشاهدها الجماهير",
    "note": "«fans don't often get to see» — INCIDENTS #205"
+  },
+  {
+   "wrong": "فاتال إنفلونس",
+   "right": "فايتال إنفلوينس",
+   "note": "Fatal Influence — INCIDENTS #206"
+  },
+  {
+   "wrong": "فيتال إنفلونس",
+   "right": "فايتال إنفلوينس",
+   "note": "Fatal Influence — INCIDENTS #206"
+  },
+  {
+   "wrong": "تصدرت نزال",
+   "right": "تصدر نزال",
+   "note": "«نزال» مذكر — INCIDENTS #206"
   }
  ]
 }

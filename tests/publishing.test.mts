@@ -2639,3 +2639,8 @@ test('news about a return still to come is not a return spoiler (INCIDENTS #204)
 test('«fans don\'t often get to see» is «نادرا ما تشاهدها الجماهير», not «لم تهتم» (INCIDENTS #205)', () => {
   assert.equal(applyCorrections('قواعد لم تهتم الجماهير برؤيتها كثيرا'), 'قواعد نادرا ما تشاهدها الجماهير كثيرا');
 });
+
+test('Fatal Influence has one spelling; «نزال» takes a masculine verb (INCIDENTS #206)', () => {
+  assert.equal(applyCorrections('تدخلت لمساعدة فاتال إنفلونس'), 'تدخلت لمساعدة فايتال إنفلوينس');
+  assert.equal(applyCorrections('تصدرت نزال ثلاثي القائمة'), 'تصدر نزال ثلاثي القائمة');
+});
