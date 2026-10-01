@@ -1,5 +1,15 @@
 [
   {
+    "id": 331402,
+    "link": "https://www.fightful.com/wrestling/motor-city-machine-guns-set-for-action-at-west-coast-pro-wrestling-event/",
+    "date": "2026-09-30T23:00:00",
+    "date_gmt": "2026-10-01T03:00:00",
+    "title": {
+      "rendered": "Motor City Machine Guns Set For Action At West Coast Pro Wrestling Event"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/31125455/HOg8SGvXoAAJy9w.jpeg"
+  },
+  {
     "id": 331414,
     "link": "https://www.fightful.com/wrestling/wardlow-returns-to-the-ring-on-9-30-aew-dynamite/",
     "date": "2026-09-30T22:33:22",
@@ -288,15 +298,5 @@
       "rendered": "Zoey Serrano Shares Pre-Match Ritual She Has With Shayna Baszler"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/05/08000739/wwe_raw_shayna_baszler_zoey_stark_1.jpg"
-  },
-  {
-    "id": 331301,
-    "link": "https://www.fightful.com/wrestling/steve-maclin-expresses-interest-in-aew/",
-    "date": "2026-09-30T11:33:45",
-    "date_gmt": "2026-09-30T15:33:45",
-    "title": {
-      "rendered": "Steve Maclin Expresses Interest In AEW"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/04/05154235/tnaunbreakable2025_ajfrancis_vs_stevemaclin_vs_ericyoung-wm-54-scaled.jpg"
   }
 ]
