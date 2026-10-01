@@ -2596,5 +2596,24 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261001135418-aaa-worlds-collide-2026": {
+    "publishedAt": 1790852829955,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايه ايه ايه وورلدز كوليد 30.09.2026 مترجم",
+    "lastAttempt": 1790852844189,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
