@@ -1,5 +1,15 @@
 [
   {
+    "id": 1614323750,
+    "link": "https://www.wrestlinginc.com/2274851/sheamus-potentially-joining-aew-wwe-contract-expires/",
+    "date": "Thu, 01 Oct 2026 17:56:05 +0000",
+    "date_gmt": "2026-10-01T17:56:05.000Z",
+    "title": {
+      "rendered": "Backstage Update On Sheamus Potentially Joining AEW As WWE Contract Expires"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-sheamus-potentially-joining-aew-as-wwe-contract-expires/l-intro-1790877212.jpg"
+  },
+  {
     "id": 1593328786,
     "link": "https://www.wrestlinginc.com/2274694/will-ospreay-pac-black-arrow-finisher-tribute-aew-dynamite/",
     "date": "Thu, 01 Oct 2026 16:37:27 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Releases Pac Tribute Merchandise, All Proceeds To Benefit The Satterley Family"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-releases-pac-tribute-merchandise-all-proceeds-to-benefit-the-satterley-family/l-intro-1790806279.jpg"
-  },
-  {
-    "id": 1688173559,
-    "link": "https://www.wrestlinginc.com/2274055/wwe-aaa-worlds-collide-spoilers-september-26-chicago/",
-    "date": "Wed, 30 Sep 2026 21:32:14 +0000",
-    "date_gmt": "2026-09-30T21:32:14.000Z",
-    "title": {
-      "rendered": "WWE X AAA Worlds Collide Spoilers From 9/26 Taping In Chicago Reportedly Revealed"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-x-aaa-worlds-collide-spoilers-from-926-taping-in-chicago-reportedly-revealed/l-intro-1790803851.jpg"
   }
 ]
