@@ -2635,3 +2635,7 @@ test('news about a return still to come is not a return spoiler (INCIDENTS #204)
   assert.equal(isSingleMatchSpoiler('تقارير جديدة بشأن عودة رومان رينز', ''), false);
   assert.equal(isSingleMatchSpoiler('نايومي تعود في عرض WWE RAW', ''), true);
 });
+
+test('«fans don\'t often get to see» is «نادرا ما تشاهدها الجماهير», not «لم تهتم» (INCIDENTS #205)', () => {
+  assert.equal(applyCorrections('قواعد لم تهتم الجماهير برؤيتها كثيرا'), 'قواعد نادرا ما تشاهدها الجماهير كثيرا');
+});
