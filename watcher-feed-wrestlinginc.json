@@ -1,5 +1,15 @@
 [
   {
+    "id": 3235517652,
+    "link": "https://www.wrestlinginc.com/2275296/announcing-date-wrestlemania-43-hasnt-been-priority-wwe/",
+    "date": "Thu, 01 Oct 2026 22:32:44 +0000",
+    "date_gmt": "2026-10-01T22:32:44.000Z",
+    "title": {
+      "rendered": "Announcing Date Of WrestleMania 43 'Hasn't Been A Priority' To WWE"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/announcing-date-wrestlemania-43-hasnt-been-priority-wwe/l-intro-1790894348.jpg"
+  },
+  {
     "id": 3058836383,
     "link": "https://www.wrestlinginc.com/2275264/aew-pac-tribute-videos-wrestlers-dynamite-broadcast/",
     "date": "Thu, 01 Oct 2026 21:44:34 +0000",
@@ -7,7 +17,7 @@
     "title": {
       "rendered": "AEW Releases Pac Tribute Videos From Wrestlers That Didn't Make Dynamite Broadcast"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-releases-pac-tribute-videos-from-wrestlers-that-didnt-make-dynamite-broadcast/l-intro-1790890829.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-pac-tribute-videos-wrestlers-dynamite-broadcast/l-intro-1790894265.jpg"
   },
   {
     "id": 3199352963,
@@ -17,7 +27,7 @@
     "title": {
       "rendered": "Eddie Osbourne Dead, Canadian Indie Veteran Dies At Age 43"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/eddie-osbourne-dead-canadian-indie-veteran-dies-at-age-43/l-intro-1790888893.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/eddie-osbourne-dead-canadian-indie-veteran-dies-age-43/l-intro-1790894147.jpg"
   },
   {
     "id": 3472626507,
@@ -188,15 +198,5 @@
       "rendered": "AEW's Tony Schiavone Provides Health Update On Steven Borden Following All Out 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-tony-schiavone-provides-health-update-on-steven-borden-following-all-out-2026/l-intro-1790811705.jpg"
-  },
-  {
-    "id": 3287202014,
-    "link": "https://www.wrestlinginc.com/2274103/wwe-corey-graves-pac-death-gravity-forgot-we-never-will/",
-    "date": "Wed, 30 Sep 2026 23:09:23 +0000",
-    "date_gmt": "2026-09-30T23:09:23.000Z",
-    "title": {
-      "rendered": "WWE's Corey Graves Reacts To Pac's Death: 'Gravity Forgot Him, We Never Will'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-corey-graves-reacts-to-pacs-death-gravity-forgot-him-we-never-will/l-intro-1790809354.jpg"
   }
 ]
