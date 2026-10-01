@@ -1480,14 +1480,14 @@ test('the writer asks the AI about exactly the text that will be posted, and rea
       const m = await import(${JSON.stringify(path.resolve('scripts/fightful-watcher.ts'))});
       const opening = m.socialOpening('## عنوان فرعي\\n\\n**فاز** فلان [بالنزال](https://x.y) ![صورة](a.jpg) في عرض كبير');
       const verdict = await m.judgeSocialSpoiler('عنوان الخبر', 'فاز فلان في عرض كبير', 'Source Title', '2026-09-27T10:00:00Z');
-      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير'), hasDate: prompt.includes(new Date().toISOString().slice(0, 10)) && prompt.includes('الحرق مدته ٢٤ ساعة بس') && prompt.includes('2026-09-27T10:00:00Z') && prompt.includes('= امبارح') && prompt.includes('(أكتر من ٢٤ ساعة أكيد)') }));
+      console.log(JSON.stringify({ opening, verdict, hasTitle: prompt.includes('عنوان الخبر'), hasOpening: prompt.includes('فاز فلان في عرض كبير'), hasDate: prompt.includes(new Date().toISOString().slice(0, 10)) && prompt.includes('الحرق مدته ٦ ساعات بس') && prompt.includes('2026-09-27T10:00:00Z') && prompt.includes('= امبارح') && prompt.includes('(أكتر من ٦ ساعات أكيد)') }));
     `);
     const out = execSync(`${JSON.stringify(path.resolve('node_modules/.bin/tsx'))} run.mts`, { cwd: dir, encoding: 'utf8', env: { ...process.env, GEMINI_API_KEYS: 'k1', GEMINI_API_KEY: 'k1' }, stdio: ['ignore', 'pipe', 'pipe'] });
     const r = JSON.parse(out.trim().split('\n').pop()!);
     assert.equal(r.opening, 'عنوان فرعي فاز فلان بالنزال في عرض كبير');
     assert.deepEqual(r.verdict, { spoils: true, kind: 'result', age: 'recent', note: 'بيقول مين فاز', priority: 'normal' }); // no age given: treated as recent (never as «old»); no priority: normal
     assert.ok(r.hasTitle && r.hasOpening);
-    assert.ok(r.hasDate, 'knows the time now and the owner rule: a spoiler lasts 24 hours (a Hardys return from last year was held — INCIDENTS #107)');
+    assert.ok(r.hasDate, 'knows the time now and the owner rule: a spoiler lasts 6 hours (INCIDENTS #107, #215)');
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -1575,8 +1575,8 @@ test('«ة» glued to the next word gets its space back', () => {
   assert.equal(autoFix('المصارعة الحرة وجماعة'), 'المصارعة الحرة وجماعة', 'correct text untouched');
 });
 
-test('a held story goes out on its own 12 hours after the hold — unless the owner chose «سيبه»', async t => {
-  // Owner's rule, 2026-09-29; 12 hours since 2026-09-30 (INCIDENTS #157)
+test('a held story goes out on its own 6 hours after the hold — unless the owner chose «سيبه»', async t => {
+  // Owner's rule, 2026-09-29; 12 hours since 2026-09-30 (INCIDENTS #157); 6 hours since 2026-10-02 (#215)
   const database = ledger();
   const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
   const items = [
@@ -1587,7 +1587,7 @@ test('a held story goes out on its own 12 hours after the hold — unless the ow
   const stamp = (h: number) => Date.now() - h * 3600_000;
   const keys = { a: 'httpssitetestnewsheld-25h', b: 'httpssitetestnewsheld-10h', c: 'httpssitetestnewskept-off' };
   const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {}, held: {} };
-  for (const [k, h] of [[keys.a, 13], [keys.b, 10], [keys.c, 25]] as [string, number][]) {
+  for (const [k, h] of [[keys.a, 13], [keys.b, 4], [keys.c, 25]] as [string, number][]) {
     for (const p of ['telegram', 'facebook', 'instagram', 'x']) state[p][k] = stamp(h);
     state.held[k] = { at: stamp(h), title: 'فلان يهزم علان في عرض RAW', url: '/news/x/', reason: 'result', why: 'title' };
   }
@@ -1604,9 +1604,9 @@ test('a held story goes out on its own 12 hours after the hold — unless the ow
   for (let i = 0; i < 3; i++) await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-24h', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
   const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
   assert.ok(after.held[keys.a].releasedAt && after.released[keys.a], 'held 13h ago: released');
-  assert.equal(after.held[keys.a].by, 'تلقائي بعد ١٢ ساعة');
+  assert.equal(after.held[keys.a].by, 'تلقائي بعد ٦ ساعات');
   assert.ok(opened.some(p => p.startsWith('/news/held-25h')), 'and on its way to the platforms');
-  assert.ok(!after.held[keys.b].releasedAt, 'held 10h ago: still held');
+  assert.ok(!after.held[keys.b].releasedAt, 'held 4h ago: still held');
   assert.ok(!after.held[keys.c].releasedAt, 'the owner kept it off: stays off');
 });
 

@@ -2376,6 +2376,9 @@ export function leadHasMatchResult(plainText: string = "", title: string = ""): 
 }
 
 /** Shows that aired in the last hours = the shows that have a results report published recently. */
+/** The owner (2 Oct): a spoiler lasts 6 hours, and nothing is held longer (INCIDENTS #215). */
+export const SPOILER_HOURS = 6;
+
 export function recentShowNames(hours: number = 24, newsDir: string = NEWS_DIR): string[] {
   const names = new Set<string>();
   if (!fs.existsSync(newsDir)) return [];
@@ -2453,7 +2456,7 @@ function statedMonthDays(text: string): { m: number; d: number }[] {
  * still on the air (INCIDENTS #114). Read from the English source title and the finished Arabic
  * title + opening; a preview («will», «scheduled», «tonight … will») is not something that happened.
  */
-export function happenedOnRecentShow(sourceTitle: string, arabicLead: string, shows: string[] = recentShowNames(24)): boolean {
+export function happenedOnRecentShow(sourceTitle: string, arabicLead: string, shows: string[] = recentShowNames(SPOILER_HOURS)): boolean {
   if (!shows.length) return false;
   const en = (sourceTitle || "").toLowerCase().replace(/[^a-z0-9/' ]+/g, " ").replace(/\s+/g, " ");
   const ar = (arabicLead || "").toLowerCase().replace(/\s+/g, " ");
@@ -2537,7 +2540,7 @@ export function weeklyShowsAiredWithin(hours = 27, now = Date.now()): string[] {
   return out;
 }
 
-export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(24), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsAiredWithin(27, now)): SocialVerdict {
+export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(SPOILER_HOURS), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsAiredWithin(SPOILER_HOURS + 3, now)): SocialVerdict {
   // «Something from a show» about a weekly show that hasn't aired in the last day is an
   // announcement before the show, not a spoiler (INCIDENTS #156).
   {
@@ -2546,7 +2549,8 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
     const anyRecent = shows.some(n => low.includes(n.toLowerCase())) || named.some(n => aired.includes(n));
     if (v.spoils && v.kind === "show" && named.length && !anyRecent) return { ...v, spoils: false, kind: "none", age: "none" };
   }
-  const recentDays = [0, 1].map(i => new Date(now - i * 86400_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
+  // Dates are US (Eastern) show dates: a date counts as recent only within the spoiler window
+  const recentDays = [0, SPOILER_HOURS + 3].map(h => new Date(now - h * 3600_000 - 4 * 3600_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
   const datedRecently = statedMonthDays(text).some(x => recentDays.some(r => r.m === x.m && r.d === x.d));
   const lower = text.toLowerCase();
   const recentShow = shows.some(n => lower.includes(n)) || aired.some(n => lower.includes(n));
@@ -2573,7 +2577,7 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
 
 export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<SocialVerdict | null> {
   const opening = socialOpening(body);
-  const shows = [...new Set([...recentShowNames(24), ...weeklyShowsAiredWithin(27)])];
+  const shows = [...new Set([...recentShowNames(SPOILER_HOURS), ...weeklyShowsAiredWithin(SPOILER_HOURS + 3)])];
   // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. After
   // that it is ordinary news and goes out like any other story.
   const now = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
@@ -2584,27 +2588,27 @@ export async function judgeSocialSpoiler(title: string, body: string, sourceTitl
   const days = Array.from({ length: 8 }, (_, i) => {
     const d = new Date(Date.now() - i * 86400_000);
     const label = i === 0 ? "النهارده" : i === 1 ? "امبارح" : `من ${i} أيام`;
-    return `${AR_DAYS[d.getUTCDay()]} ${d.getUTCDate()} ${AR_MONTHS_FULL[d.getUTCMonth()]} = ${label}${i >= 2 ? " (أكتر من ٢٤ ساعة أكيد)" : ""}`;
+    return `${AR_DAYS[d.getUTCDay()]} ${d.getUTCDate()} ${AR_MONTHS_FULL[d.getUTCMonth()]} = ${label}${i >= 2 ? " (أكتر من ٦ ساعات أكيد)" : i === 1 ? " (غالبا أكتر من ٦ ساعات)" : ""}`;
   }).join("، ");
   const prompt = `أنت مراجع لمنشورات صفحات موقع عرب راسلنج على السوشيال ميديا. المتابعين مش عايزين «حرق»: أي معلومة تكشف نتيجة نزال أو عودة/ظهور لمصارع قبل ما يشوفوا العرض بنفسهم.
-قاعدة صاحب الموقع: الحرق مدته ٢٤ ساعة بس. أي نزال أو عودة حصل من أكتر من ٢٤ ساعة بقى خبر عادي ومش حرق.
+قاعدة صاحب الموقع: الحرق مدته ٦ ساعات بس. أي نزال أو عودة حصل من أكتر من ٦ ساعات بقى خبر عادي ومش حرق.
 الوقت دلوقتي: ${now}.${sourceDate ? ` المصدر نشر الخبر: ${sourceDate}.` : ""}
 الأيام (بتوقيت جرينتش): ${days}. استخدم الجدول ده لأي «يوم كذا اللي فات» في النص، ومتحسبش بنفسك. عرض أمريكي بليل ممكن يبقى تاريخه بتوقيت جرينتش اليوم اللي بعده: عرض تاريخه «امبارح» أو «النهارده» ممكن يكون لسه خالص من ساعة أو لسه شغال، فده مش «old».
-${shows.length ? `العروض اللي اتذاعت في آخر ٢٤ ساعة (أي حاجة حصلت فيها لسه حرق): ${shows.join("، ")}.` : ""}
+${shows.length ? `العروض اللي اتذاعت في آخر ٦ ساعات (أي حاجة حصلت فيها لسه حرق): ${shows.join("، ")}.` : ""}
 
 المنشور هيحتوي بالظبط على العنوان وأول الخبر ده (مش أكتر):
 العنوان: ${JSON.stringify(title)}
 أول الخبر: ${JSON.stringify(opening)}
 (عنوان المصدر الإنجليزي للسياق فقط، مش هيتنشر: ${JSON.stringify(sourceTitle)})
 
-اعتبره حرق (spoils = true) لو النص اللي هيتنشر (العنوان أو أول الخبر) يكشف بأي صياغة، صريحة أو ضمنية، حدث حصل في آخر ٢٤ ساعة:
+اعتبره حرق (spoils = true) لو النص اللي هيتنشر (العنوان أو أول الخبر) يكشف بأي صياغة، صريحة أو ضمنية، حدث حصل في آخر ٦ ساعات:
 - مين فاز أو خسر في نزال، أو احتفظ بلقب أو خسره أو فاز بيه، أو تأهل أو خرج، أو إن النزال اتوقف أو انتهى بشكل معين (kind = "result").
 - إن مصارع رجع أو ظهر لأول مرة أو عمل ظهور مفاجئ في عرض (kind = "return").
-- أي حاجة حصلت جوه عرض اتذاع في آخر ٢٤ ساعة: نزال اتعلن أو عقد اتوقّع خلال العرض، هجوم، مواجهة، فقرة، ظهور، مين هيتحدى مين على لقب (kind = "show"). مثال: «إضافة نزال إلى موني إن ذا بانك خلال عرض رو» أو «أوبا فيمي يواجه برونسون ريد بعد توقيع العقد في رو هذا الأسبوع» = حرق لو رو اتذاع في آخر ٢٤ ساعة.
+- أي حاجة حصلت جوه عرض اتذاع في آخر ٦ ساعات: نزال اتعلن أو عقد اتوقّع خلال العرض، هجوم، مواجهة، فقرة، ظهور، مين هيتحدى مين على لقب (kind = "show"). مثال: «إضافة نزال إلى موني إن ذا بانك خلال عرض رو» أو «أوبا فيمي يواجه برونسون ريد بعد توقيع العقد في رو هذا الأسبوع» = حرق لو رو اتذاع في آخر ٦ ساعات.
 
-مش حرق (spoils = false): أي حدث عدّى عليه أكتر من ٢٤ ساعة، أو إعلان نزال جاي اتعلن بره العروض (بيان أو موقع رسمي أو سوشيال قبل العرض)، أو معاينة لعرض لسه ماتذاعش، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
+مش حرق (spoils = false): أي حدث عدّى عليه أكتر من ٦ ساعات، أو إعلان نزال جاي اتعلن بره العروض (بيان أو موقع رسمي أو سوشيال قبل العرض)، أو معاينة لعرض لسه ماتذاعش، أو توقعات، أو تصريحات ومقابلات من غير نتيجة، أو إصابات وحالة صحية، أو تعاقدات ورحيل، أو وفاة وتأبين، أو كواليس، أو نسب مشاهدة، أو عودة لسه محصلتش (بيتمنى، ممكن، هل هيرجع)، أو خبر عن تقرير نتائج كامل لعرض.
 
-قول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة أو اللي حصل في العرض) حصل إمتى: "recent" لو في آخر ٢٤ ساعة أو مش واضح، "old" لو واضح إنه عدّى عليه أكتر من ٢٤ ساعة (تاريخ أو يوم أو شهر في النص، أو «الأسبوع اللي فات»، أو إن المصدر نفسه نشر بعد العرض بأكتر من يوم)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
+قول كمان الحدث اللي بيتكلم عنه النص (النزال أو العودة أو اللي حصل في العرض) حصل إمتى: "recent" لو في آخر ٦ ساعات أو مش واضح، "old" لو واضح إنه عدّى عليه أكتر من ٦ ساعات (تاريخ أو يوم أو شهر في النص، أو «الأسبوع اللي فات»، أو إن المصدر نفسه نشر بعد العرض بأكتر من يوم)، "none" لو مفيش نزال ولا عودة في النص أصلًا.
 
 وقيّم كمان أهمية الخبر لمتابعي إنستغرام (priority). إنستغرام بيقبل عدد محدود من المنشورات في اليوم، ومش كل خبر هيتنشر عليه، فخلي الحكم صارم:
 - "high": خبر كبير يهم أغلب متابعي المصارعة العرب: وفاة، أو تعاقد أو رحيل أو اعتزال نجم معروف، أو إصابة نجم كبير، أو إعلان نزال أو عرض كبير في WWE أو AEW، أو قرار رسمي مهم، أو قضية كبيرة، أو تقرير نتائج عرض رئيسي، أو خبر عن نجم من الصف الأول (رومان رينز، سي ام بانك، كودي رودز، جون سينا، ذا روك…) فيه معلومة جديدة فعلًا.
@@ -4197,7 +4201,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   let socialVerdict = isShowResultsArticle(rawTitle, plainText) || isTapingSpoiler(rawTitle, rewritten.title) ? null : await judgeSocialSpoiler(rewritten.title, finalBody, rawTitle, postDateGmtForSocial).catch(() => null);
   // Something that happened on a show that just aired is held whatever the model said (INCIDENTS #114)
   if (!isShowResultsArticle(rawTitle, plainText) && !socialVerdict?.spoils && happenedOnRecentShow(rawTitle, `${rewritten.title} ${socialOpening(finalBody)}`)) {
-    socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٢٤ ساعة، فهو حرق من العرض" };
+    socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٦ ساعات، فهو حرق من العرض" };
   }
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
   const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(socialVerdict.note)}${socialVerdict.priority ? `\nsocial_priority: ${socialVerdict.priority}` : ""}` : "";

@@ -2265,7 +2265,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     const nowMs = Date.now();
     const byKey = new Map(items.map((it: any) => [sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), it]));
     const due = Object.entries(state.held || {}).filter(([k, h]) => h && !h.releasedAt && !h.dismissedAt
-      && nowMs - h.at < 36 * 3600_000 && (nowMs - h.at >= 12 * 3600_000 || !stillSpoiler(h, byKey.get(k))));
+      && nowMs - h.at < 36 * 3600_000 && (nowMs - h.at >= HOLD_RELEASE_MS || !stillSpoiler(h, byKey.get(k))));
     if (due.length) {
       state.released = state.released || {};
       for (const [k, h] of due) {
@@ -2273,7 +2273,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         for (const p of ["telegram", "facebook", "instagram", "x"] as const) delete state[p][k];
         for (const d of Object.keys(state.deferrals || {})) if (d.endsWith(`:${k}`)) delete state.deferrals![d];
         h.releasedAt = nowMs;
-        h.by = nowMs - h.at >= 12 * 3600_000 ? "تلقائي بعد ١٢ ساعة" : "تلقائي: القاعدة اللي حجزته اتصلحت";
+        h.by = nowMs - h.at >= HOLD_RELEASE_MS ? "تلقائي بعد ٦ ساعات" : "تلقائي: القاعدة اللي حجزته اتصلحت";
       }
       const w = await githubWriteState(env, state, currentSha, `social shield: release ${due.length} held stor${due.length === 1 ? "y" : "ies"} after 12 hours`).catch(() => ({ ok: false }));
       if (!w.ok) return; // someone else wrote first: next minute reads the fresh state
@@ -2693,6 +2693,8 @@ async function studioOverview(env: Env, body: any) {
 // ── Studio: stories the spoiler shield kept off social, for the owner to publish or keep ──
 // The owner wants only the last day's held stories in the list (older ones aren't worth posting)
 const HELD_WINDOW_MS = 24 * 3600_000;
+/** The owner (2 Oct): nothing stays off social more than 6 hours (INCIDENTS #215; was 12). */
+const HOLD_RELEASE_MS = 6 * 3600_000;
 async function studioHeld(env: Env) {
   const stateFile = await readRepoFile(env, env.GITHUB_STATE_PATH);
   const state: any = stateFile ? JSON.parse(stateFile.content) : {};
