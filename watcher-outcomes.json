@@ -1,33 +1,38 @@
 {
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-01T17:30:18.327Z"
+ "https://www.fightful.com/wrestling/wwe-in-no-rush-to-announce-wrestlemania-43-date": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-01T17:38:31.240Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:28:34.025Z"
+  "at": "2026-10-01T17:38:31.118Z"
  },
  "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:28:33.908Z"
+  "at": "2026-10-01T17:38:30.993Z"
  },
  "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:28:33.767Z"
+  "at": "2026-10-01T17:38:30.837Z"
  },
  "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:28:33.598Z"
+  "at": "2026-10-01T17:38:30.658Z"
  },
  "https://www.fightful.com/wrestling/netflix-blacks-out-jacob-fatu-being-run-over-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:28:33.329Z"
+  "at": "2026-10-01T17:38:30.365Z"
+ },
+ "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-01T17:30:18.327Z"
  },
  "https://www.fightful.com/wrestling/wardlow-returns-to-the-ring-on-9-30-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
