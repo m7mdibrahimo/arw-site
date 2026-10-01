@@ -1,5 +1,25 @@
 [
   {
+    "id": 802250092,
+    "link": "https://www.ringsidenews.com/aew-talent-favor-sheamus-joining-company-entering-free-agency/",
+    "date": "Thu, 01 Oct 2026 16:49:29 +0000",
+    "date_gmt": "2026-10-01T16:49:29.000Z",
+    "title": {
+      "rendered": "AEW Talent in Favor of Sheamus Joining Company After Entering Free Agency"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/aew-talent-in-favor-of-sheamus-joining-company-after-entering-free-agency-37.jpg?x16776"
+  },
+  {
+    "id": 802250086,
+    "link": "https://www.ringsidenews.com/wwes-expected-timeline-naomis-return-revealed/",
+    "date": "Thu, 01 Oct 2026 16:34:53 +0000",
+    "date_gmt": "2026-10-01T16:34:53.000Z",
+    "title": {
+      "rendered": "WWE’s Expected Timeline for Naomi’s Return Revealed"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/wwes-expected-timeline-for-naomis-return-revealed-48.jpg?x16776"
+  },
+  {
     "id": 802250082,
     "link": "https://www.ringsidenews.com/fred-ottman-provides-concerning-health-update-multiple-eye-surgeries/",
     "date": "Thu, 01 Oct 2026 15:46:35 +0000",
@@ -128,25 +148,5 @@
       "rendered": "Jim Ross Reveals Multiple Health Concerns Amid Kidney Tests and Brain Shunt Issues"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/jim-ross-reveals-multiple-health-concerns-amid-kidney-tests-and-brain-shunt-issues-11.jpg?x16776"
-  },
-  {
-    "id": 802249747,
-    "link": "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-september-30-2026/",
-    "date": "Wed, 30 Sep 2026 23:31:00 +0000",
-    "date_gmt": "2026-09-30T23:31:00.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Results, Highlights and Key Moments for September 30, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/aew-dynamite-preview-for-september-30-2026-confirmed-matches-start-time-and-how-to-watch-15.jpg?x16776"
-  },
-  {
-    "id": 802249860,
-    "link": "https://www.ringsidenews.com/wwes-original-vision-big-cass-his-return-revealed/",
-    "date": "Wed, 30 Sep 2026 22:11:56 +0000",
-    "date_gmt": "2026-09-30T22:11:56.000Z",
-    "title": {
-      "rendered": "WWE’s Original Vision for Big Cass After His Return Revealed"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/wwes-original-vision-for-big-cass-after-his-return-revealed-52.jpg?x16776"
   }
 ]
