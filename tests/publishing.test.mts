@@ -2512,6 +2512,13 @@ test('big numbers, years and amounts stay in digits; spelled-out ones are flagge
   assert.equal(flag('بلغ مجموعها ألفا وخمسمائة وواحدا وخمسين دولارا أمريكيا وفلسين.'), true);
   assert.equal(flag('تم توقيفه في سبتمبر ألفين وستة وعشرين.'), true);
   assert.equal(flag('بلغ مجموعها 1501.51 دولار أمريكي، وحقق 857 ألف مشاهدة.'), false);
+  // ages too: Eddie Osbourne «عن عمر يناهز ثلاثة وأربعين عاما» (INCIDENTS #194)
+  assert.equal(flag('توفي عن عمر يناهز ثلاثة وأربعين عاما.'), true);
+  assert.equal(flag('توفي عن عمر يناهز 43 عاما بعد عشرين عاما في الحلبات.'), true);
+  assert.equal(flag('توفي عن عمر يناهز 43 عاما.'), false);
+  const { isJunkTag } = await import('../scripts/news-qa');
+  assert.equal(isJunkTag('اتحاد INDIE'), true);
+  assert.equal(isJunkTag('Maple Leaf Pro'), false);
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /المبالغ والأعمار والسنين والأرقام الكبيرة تتكتب \*\*بالأرقام\*\*/);
 });
 
