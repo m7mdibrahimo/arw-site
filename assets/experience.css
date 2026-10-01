@@ -1,0 +1,30 @@
+/* ─── Reader experience (INCIDENTS #179) ─────────────────────────────────────
+   A «شاهدته» mark on shows already opened,
+   a «جديد» mark on what arrived since the last visit, a back-to-top button
+   that shows how far down you are, and a circular theme switch. */
+
+/* «شاهدته» and «جديد» marks on cards */
+.xp-badge { position: absolute; top: 10px; inset-inline-start: 10px; z-index: 4; display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 999px; font: 800 11px/1.4 'Cairo', sans-serif; pointer-events: none; }
+.xp-badge.seen { background: rgba(8,12,14,.72); color: #9ff0e6; backdrop-filter: blur(6px); }
+.xp-badge.new { background: #2fc7b8; color: #04201d; box-shadow: 0 6px 16px -6px rgba(47,199,184,.8); animation: xp-pop .5s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes xp-pop { from { transform: scale(.4); opacity: 0; } }
+.show-card, .news-card { position: relative; }
+
+/* Back to top, with a ring that fills as you read down */
+.xp-top { position: fixed; inset-inline-start: 18px; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); z-index: 900; width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--card, #12161b); color: #2fc7b8; box-shadow: 0 12px 30px -10px rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(16px) scale(.8); pointer-events: none; transition: opacity .35s, transform .45s cubic-bezier(.34,1.56,.64,1); }
+.xp-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.xp-top svg.ring { position: absolute; inset: 0; transform: rotate(-90deg); }
+.xp-top svg.ring circle { fill: none; stroke-width: 3; }
+.xp-top svg.ring .bg { stroke: rgba(47,199,184,.18); }
+.xp-top svg.ring .fg { stroke: #2fc7b8; stroke-linecap: round; stroke-dasharray: 138.2; stroke-dashoffset: 138.2; transition: stroke-dashoffset .15s linear; }
+.xp-top:focus-visible { outline: 2px solid #2fc7b8; outline-offset: 3px; }
+@media (max-width: 700px) { .xp-top { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; } }
+
+/* Circular theme switch from the button */
+::view-transition-old(xp-theme), ::view-transition-new(xp-theme) { animation: none; mix-blend-mode: normal; }
+
+@media (prefers-reduced-motion: reduce) {
+  .xp-top, .xp-badge.new { transition: none !important; animation: none !important; }
+}

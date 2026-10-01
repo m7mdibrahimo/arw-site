@@ -1,0 +1,86 @@
+/* ─── Site motion (INCIDENTS #178) ────────────────────────────────────────────
+   One shared motion layer for every page: page-to-page transitions, cards that
+   arrive in a cascade, a living hover on desktop, images that fade in sharp,
+   a header that settles as you scroll, and a reading bar on articles.
+   Transforms and opacity only (cheap for phones); everything is switched off
+   for readers who ask their device for less motion. Content is never hidden
+   unless motion.js is running (html.m-on), so a failed script hides nothing. */
+
+:root { --m-ease: cubic-bezier(.16, 1, .3, 1); --m-spring: cubic-bezier(.34, 1.56, .64, 1); }
+html { scroll-behavior: smooth; }
+
+/* 1. Page to page: the old page fades back, the new one rises in; the header stays put */
+@view-transition { navigation: auto; }
+header { view-transition-name: site-header; }
+::view-transition-old(root) { animation: m-page-out .22s ease both; }
+::view-transition-new(root) { animation: m-page-in .42s var(--m-ease) both; }
+@keyframes m-page-out { to { opacity: 0; transform: scale(.985); filter: blur(2px); } }
+@keyframes m-page-in { from { opacity: 0; transform: translateY(18px); } }
+
+/* 2. Cards arrive in a cascade as their row comes into view */
+html.m-on .m-card { opacity: 0; transform: translateY(26px) scale(.97); }
+html.m-on .m-card.m-in {
+  opacity: 1; transform: none;
+  transition: opacity .6s var(--m-ease), transform .7s var(--m-ease);
+  transition-delay: calc(var(--m-i, 0) * 55ms);
+}
+
+/* 3. Desktop hover: the card leans toward the pointer with a soft glare */
+@media (hover: hover) and (pointer: fine) {
+  .m-tilt { transform-style: preserve-3d; will-change: transform; }
+  .m-tilt.m-in, .m-tilt { transition: transform .45s var(--m-ease), box-shadow .45s ease, border-color .3s ease, opacity .6s var(--m-ease); }
+  .m-tilt.m-tilting { transition: transform .12s linear, box-shadow .45s ease, border-color .3s ease; }
+  .m-tilt::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; z-index: 3;
+    background: radial-gradient(420px circle at var(--m-x, 50%) var(--m-y, 0%), rgba(255,255,255,.14), transparent 45%);
+    opacity: 0; transition: opacity .35s ease;
+  }
+  .m-tilt:hover::after { opacity: 1; }
+  .m-tilt img { transition: transform .8s var(--m-ease); }
+  .m-tilt:hover img { transform: scale(1.06); }
+}
+
+/* 4. Federation cards: a light sweep across the colour on hover */
+.fed-card .fed-mark { position: relative; overflow: hidden; }
+.fed-card .fed-mark::before {
+  content: ""; position: absolute; inset: -40% auto -40% -60%; width: 45%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.28), transparent);
+  transform: skewX(-18deg) translateX(-120%); pointer-events: none;
+}
+.fed-card:hover .fed-mark::before { transform: skewX(-18deg) translateX(420%); transition: transform .9s var(--m-ease); }
+
+/* 5. Images fade in sharp once loaded */
+html.m-on img.m-img { opacity: 0; filter: blur(10px); transform: scale(1.03); }
+html.m-on img.m-img.m-loaded { opacity: 1; filter: none; transform: none; transition: opacity .6s ease, filter .7s ease, transform .9s var(--m-ease); }
+
+/* 6. Header settles into a compact glass bar after the first screen */
+header { transition: box-shadow .35s ease, backdrop-filter .35s ease, background-color .35s ease; }
+html.m-scrolled header { box-shadow: 0 10px 30px -18px rgba(0,0,0,.45); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); }
+
+/* 7. Reading bar on articles */
+.m-progress { position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 9999; pointer-events: none;
+  background: linear-gradient(90deg, #2fc7b8, #6ee7d8); transform-origin: right center; transform: scaleX(0); }
+
+/* 8. The home headline rises word by word (words, never letters: Arabic letters join) */
+.m-word { display: inline-block; opacity: 0; transform: translateY(.6em); filter: blur(6px);
+  animation: m-word .8s var(--m-ease) forwards; animation-delay: calc(var(--m-w, 0) * 90ms + 120ms); }
+@keyframes m-word { to { opacity: 1; transform: none; filter: none; } }
+
+/* 9. A press you can feel on phones */
+@media (hover: none) {
+  .show-card:active, .news-card:active, .fed-card:active, .tag-card:active, .btn:active { transform: scale(.97) !important; transition: transform .12s ease !important; }
+}
+
+/* 10. Section titles: the dot pulses once when the section arrives */
+html.m-on .section-head .dot { transform: scale(0); }
+html.m-on .section-head.m-in .dot { animation: m-dot .9s var(--m-spring) forwards; }
+@keyframes m-dot { 0% { transform: scale(0); } 60% { transform: scale(1.6); box-shadow: 0 0 0 8px rgba(47,199,184,.18); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(47,199,184,0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  @view-transition { navigation: none; }
+  html.m-on .m-card, html.m-on img.m-img, .m-word { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
+  .m-tilt, .m-tilt img, .fed-card .fed-mark::before { transition: none !important; transform: none !important; }
+  html.m-on .section-head .dot { transform: none; animation: none; }
+  .m-progress { display: none; }
+}

@@ -2415,3 +2415,21 @@ test('NJPW has its own section: home block 3 + 4, a federation page, the panel l
   assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'NJPW'/);
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /const ALLOWED_FEDERATIONS = \["WWE", "AEW", "NJPW"/);
 });
+
+test('every page loads the motion and reader-experience layers, and they never hide content on their own (INCIDENTS #178, #179)', () => {
+  const init = fs.readFileSync('_includes/theme-init.njk', 'utf8');
+  assert.match(init, /\/assets\/motion\.css\?v=/);
+  assert.match(init, /\/assets\/motion\.js\?v=\d+" defer/);
+  assert.match(init, /\/assets\/experience\.js\?v=\d+" defer/);
+  const css = fs.readFileSync('assets/motion.css', 'utf8');
+  // cards are hidden only while the script runs (html.m-on), and reduced motion turns everything off
+  assert.match(css, /html\.m-on \.m-card \{ opacity: 0;/);
+  assert.doesNotMatch(css.replace(/html\.m-on[^{]*\{[^}]*\}/g, ''), /\.m-card \{[^}]*opacity: 0/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  const js = fs.readFileSync('assets/motion.js', 'utf8');
+  assert.match(js, /if \(reduce \|\| !\('IntersectionObserver' in window\)\) return;/);
+  const xp = fs.readFileSync('assets/experience.js', 'utf8');
+  assert.doesNotMatch(xp, /كمّل المشاهدة/, 'the owner removed the «continue watching» row');
+  assert.match(xp, /speculationrules/);
+  assert.doesNotMatch(fs.readFileSync('index.njk', 'utf8'), /<svg[^>]*>[\s\S]{0,300}?<\/svg>مكتبة العروض/, 'the library card is the word alone');
+});
