@@ -2562,15 +2562,15 @@
     "publishedAt": 1790803956331,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "برنامج دارك سايد اوف ذا كيج الموسم 2 الحلقة 5 مترجمة",
-    "lastAttempt": 1790813498743,
+    "lastAttempt": 1790817126501,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
