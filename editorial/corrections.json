@@ -4523,6 +4523,21 @@
    "wrong": "ترايفس",
    "right": "ترافيس",
    "note": "Travis Williams (Sinner and Saint) — INCIDENTS #193"
+  },
+  {
+   "wrong": "كونراد طومسون",
+   "right": "كونراد تومسون",
+   "note": "Conrad Thompson — INCIDENTS #195"
+  },
+  {
+   "wrong": "عدة سقوط",
+   "right": "عدة سقطات",
+   "note": "جمع «سقطة» — INCIDENTS #195"
+  },
+  {
+   "wrong": "لعودة المرتقبة",
+   "right": "للعودة المرتقبة",
+   "note": "لام الجر + ال — INCIDENTS #195"
   }
  ]
 }

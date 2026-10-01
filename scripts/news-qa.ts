@@ -402,6 +402,8 @@ export function repairMixedTitles(text: string): string {
 export function autoFix(text: string): string {
   if (!text) return text;
   text = repairMixedTitles(text);
+  // A word cut after «الأ» and its rest glued to the next one: «بالأ اتحادات» ← «بالاتحادات» (INCIDENTS #195)
+  text = text.replace(/(?<![\u0600-\u06FF])([بلوفك]?)الأ ا(?=[\u0600-\u06FF]{2,})/g, "$1الا");
   // HTML line breaks written into the markdown body («<br><br>**المواجهة الأولى…»)
   text = text.replace(/<br\s*\/?>/gi, "\n").replace(/\n{3,}/g, "\n\n");
   const urls: string[] = [];

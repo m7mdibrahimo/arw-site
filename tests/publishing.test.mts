@@ -2540,3 +2540,11 @@ test('Travis Williams is spelled ترافيس, never ترايفس (INCIDENTS #19
   const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
   assert.equal(names['Travis Williams'], 'ترافيس ويليامز');
 });
+
+test('a word cut after «الأ» is joined back; Conrad Thompson and two grammar slips are corrected (INCIDENTS #195)', () => {
+  assert.equal(autoFix('لعدم مرورها بالأ اتحادات المستقلة'), 'لعدم مرورها بالاتحادات المستقلة');
+  assert.equal(autoFix('الأ ألعاب'), 'الأ ألعاب');
+  assert.equal(applyCorrections('أشار كونراد طومسون'), 'أشار كونراد تومسون');
+  assert.equal(applyCorrections('أدى إلى عدة سقوط وإصابات'), 'أدى إلى عدة سقطات وإصابات');
+  assert.equal(applyCorrections('التمهيد لعودة المرتقبة لنايومي'), 'التمهيد للعودة المرتقبة لنايومي');
+});
