@@ -2654,3 +2654,9 @@ test('a curly apostrophe in the source still finds the glossary name; Tony D\'An
   assert.equal(applyCorrections('أكد توني دانجلو أن'), 'أكد توني دي أنجيلو أن');
   assert.equal(applyCorrections('أشار دانجلو إلى'), 'أشار دي أنجيلو إلى');
 });
+
+test('«Flash» Morgan Webster is one wrestler, not «مورغان و بستر» (INCIDENTS #210)', () => {
+  assert.match(buildNamesGlossaryHint("Subculture ('Flash' Morgan Webster & Mark Andrews) def. The Natural Classics"), /Morgan Webster = (?:فلاش )?مورغان ويبستر/);
+  assert.equal(applyCorrections('(«فلاش» مورغان وبستر ومارك أندروز)'), '(«فلاش» مورغان ويبستر ومارك أندروز)');
+  assert.equal(applyCorrections('بعد أيام قليلة إبدائه تفاؤله'), 'بعد أيام قليلة من إبدائه تفاؤله');
+});
