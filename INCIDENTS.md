@@ -1983,3 +1983,17 @@
   - الخبر اتعدل `social_spoiler: false` عشان الحارس يفك حجزه.
   - اتصلح كمان «تستمتع كثيرة» في خبر لولا فايس التاني، وجملة اتكررت فيها «لحظة الاصطدام» في خبر نتفليكس.
 - **الاختبار:** «a result placed in a past month is not held as recent».
+
+## #198 — 2026-10-01: «داينامايت كيد» بقى «AEW Dynamite كيد»، و«الثلاثاء» بدل «الأربعاء» في خبر داينامايت
+- **اللي حصل:**
+  - خبر لعبة Ultra Pro Wrestling كتب «وAEW Dynamite كيد»، وخبر ناتاليا (25 سبتمبر) عنوانه «ناتاليا تطالب بانضمام AEW Dynamite كيد…».
+  - خبر غياب إم جيه إف قال إن عرض AEW Dynamite اتعمل «يوم الثلاثاء الثلاثين من سبتمبر»، والصح الأربعاء.
+- **السبب:**
+  - تصحيح «(AEW )داينامايت ← AEW Dynamite» في `editorial/corrections.json` كان بيمسك اسم المصارع Dynamite Kid.
+  - مفيش فحص بيقارن اسم اليوم بالتاريخ اللي جنبه.
+- **الإصلاح:**
+  - التصحيح بقى `(?!\s*كيد)`، ونفس الاستثناء في `sanitizeWrestlingTerms` و`TRANSLITERATED_SHOWS`.
+  - «Dynamite Kid» اتضاف للقاموس.
+  - فحص جديد `weekdayNotOnDate` («weekday_mismatch»)، والمدقق اللغوي بيتبلّغ بيه.
+  - الأخبار التلاتة اتصلحت. خبر ناتاليا اتثبت رابطه القديم بـ`permalink`.
+- **الاختبار:** «Dynamite Kid stays a wrestler; a weekday that is not the date is flagged».

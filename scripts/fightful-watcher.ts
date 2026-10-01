@@ -454,6 +454,8 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("(?:عرض\\s+)?(?:الرو|الراو)"), "عرض WWE RAW")
     .replace(arWord("(?:عرض\\s+)?(?:سماك\\s*داون|سماكداون)"), "عرض WWE SmackDown")
     .replace(arWord("(?:عرض\\s+)?(?:[إا]ن\\s*[إا]كس\\s*تي)"), "عرض WWE NXT")
+    // Dynamite Kid is a wrestler, not the show: «AEW Dynamite كيد» went live (INCIDENTS #198)
+    .replace(arWord("(?:ديناميت|داينمايت|داينامايت)\\s+كيد"), "داينامايت كيد")
     .replace(arWord("(?:عرض\\s+)?(?:ديناميت|داينمايت)"), "عرض AEW Dynamite")
     .replace(arWord("(?:عرض\\s+)?(?:كوليجن|كوليزن|كوليجين)"), "عرض AEW Collision")
     .replace(arWord("(?:عرض\\s+)?(?:رامبيج|رامباج)"), "عرض AEW Rampage")

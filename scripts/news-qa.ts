@@ -104,7 +104,7 @@ const RULES: Rule[] = [
   { code: "double_punct", severity: "warning", re: /[،,]\s*[،,.]|:\s*:|؟\s*؟/g, message: "علامات ترقيم مكررة", fields: ["title", "body"] },
 ];
 
-const TRANSLITERATED_SHOWS = /(?:سماك\s*داون|داينامايت|ديناميت|داينمايت|كوليجن|رامبيج|إمباكت|(?<![ء-ي])راو(?![ء-ي])|(?<![ء-ي])الرو(?![ء-ي])|[إا]ن\s*[إا]كس\s*تي|[إا]يفولف)/g;
+const TRANSLITERATED_SHOWS = /(?:سماك\s*داون|(?:داينامايت|ديناميت|داينمايت)(?!\s*كيد)|كوليجن|رامبيج|إمباكت|(?<![ء-ي])راو(?![ء-ي])|(?<![ء-ي])الرو(?![ء-ي])|[إا]ن\s*[إا]كس\s*تي|[إا]يفولف)/g;
 
 /** A tag must name a person, team, show, federation or topic — never a date ("تاريخ 24 سبتمبر 2026", seen live). */
 export function isJunkTag(tag: string): boolean {
@@ -140,6 +140,17 @@ function arabicDay(word: string): number | null {
   if (m) { const u = m[1] === "الحادي" ? 1 : AR_UNITS.indexOf(m[1]); if (u > 0) return (m[2] === "العشرين" ? 20 : 30) + u; }
   const u = AR_UNITS.indexOf(w);
   return u > 0 ? u : null;
+}
+const AR_WEEKDAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+/** «الثلاثاء الثلاثين من سبتمبر» when the 30th was a Wednesday (INCIDENTS #198): the excerpt, else null. */
+export function weekdayNotOnDate(text: string, year = new Date().getUTCFullYear()): string | null {
+  const re = new RegExp(`(${AR_WEEKDAYS.join("|")})،?\\s+(?:الموافق\\s+)?(\\d{1,2}|ال[\\u0600-\\u06FF]+(?: و[\\u0600-\\u06FF]+)?)\\s+(?:من\\s+)?(${AR_MONTHS.join("|")})(?:\\s+(\\d{4}))?`, "g");
+  for (const m of text.matchAll(re)) {
+    const day = arabicDay(m[2]), month = AR_MONTHS.indexOf(m[3]);
+    if (!day || day > 31 || month < 0) continue;
+    if (new Date(Date.UTC(m[4] ? +m[4] : year, month, day)).getUTCDay() !== AR_WEEKDAYS.indexOf(m[1])) return m[0];
+  }
+  return null;
 }
 /** The excerpt when a weekly show is dated to a day it doesn't air on (this year), else null. */
 export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYear()): string | null {
@@ -181,6 +192,8 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // (a Monday) — the tribute Dynamite was the 30th; the writer made the date up (INCIDENTS #151).
   const wrongDay = showOnWrongWeekday(body || "");
   if (wrongDay) issues.push({ code: "show_wrong_day", severity: "error", field: "body", message: "تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر", excerpt: wrongDay });
+  const badWeekday = weekdayNotOnDate(`${title || ""}\n${body || ""}`);
+  if (badWeekday) issues.push({ code: "weekday_mismatch", severity: "error", field: "body", message: "اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ", excerpt: badWeekday });
 
   // Dropped hamzas across the text = a broken Gemini draft: retranslate it.
   // No «ف» prefix («روب فان دام»), and «ان» before a number is «N-1 Victory», not «أن».

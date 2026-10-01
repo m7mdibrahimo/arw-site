@@ -2572,3 +2572,16 @@ test('a result placed in a past month is not held as recent (INCIDENTS #197)', a
   assert.equal(settleSpoilerAge(v, 'He May Have Won The Title فاز باللقب', [], now, [], []).spoils, true);
   assert.equal(settleSpoilerAge(v, 'Won The Title At Stand & Deliver In April', [], now, [], []).spoils, false);
 });
+
+test('Dynamite Kid stays a wrestler; a weekday that is not the date is flagged (INCIDENTS #198)', async () => {
+  assert.equal(sanitizeWrestlingTerms('بريتيش بولدوج، ديناميت كيد'), 'بريتيش بولدوج، داينامايت كيد');
+  assert.equal(applyCorrections('بريتيش بولدوج وداينامايت كيد'), 'بريتيش بولدوج وداينامايت كيد');
+  assert.equal(applyCorrections('عرض داينامايت الليلة'), 'عرض AEW Dynamite الليلة');
+  assert.equal(sanitizeWrestlingTerms('في عرض ديناميت الليلة'), 'في عرض AEW Dynamite الليلة');
+  const { checkArticle, weekdayNotOnDate } = await import('../scripts/news-qa');
+  assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'تضم القائمة بريتيش بولدوج وداينامايت كيد في اللعبة الجديدة.', []).some(i => i.code === 'transliterated_show'));
+  assert.equal(weekdayNotOnDate('أقيم يوم الثلاثاء الثلاثين من سبتمبر', 2026), 'الثلاثاء الثلاثين من سبتمبر');
+  assert.equal(weekdayNotOnDate('أقيم يوم الأربعاء الثلاثين من سبتمبر', 2026), null);
+  assert.equal(weekdayNotOnDate('يوم السبت 26 سبتمبر 2026', 2026), null);
+  assert.equal(weekdayNotOnDate('يوم الجمعة 26 سبتمبر 2026', 2026), 'الجمعة 26 سبتمبر 2026');
+});
