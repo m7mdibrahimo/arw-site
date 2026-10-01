@@ -1,5 +1,15 @@
 [
   {
+    "id": 331500,
+    "link": "https://www.fightful.com/wrestling/wwe-in-no-rush-to-announce-wrestlemania-43-date/",
+    "date": "2026-10-01T13:19:37",
+    "date_gmt": "2026-10-01T17:19:37",
+    "title": {
+      "rendered": "WWE In No Rush To Announce WrestleMania 43 Date"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/09/12160321/Screenshot-2025-09-12-at-4.02.45-PM.png"
+  },
+  {
     "id": 331497,
     "link": "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud/",
     "date": "2026-10-01T13:11:16",
@@ -288,15 +298,5 @@
       "rendered": "Motor City Machine Guns Set For Action At West Coast Pro Wrestling Event"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/31125455/HOg8SGvXoAAJy9w.jpeg"
-  },
-  {
-    "id": 331414,
-    "link": "https://www.fightful.com/wrestling/wardlow-returns-to-the-ring-on-9-30-aew-dynamite/",
-    "date": "2026-09-30T22:33:22",
-    "date_gmt": "2026-10-01T02:33:22",
-    "title": {
-      "rendered": "Wardlow Returns To The Ring On 9/30 AEW Dynamite"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30223210/HTgtJaqXQAAfYa6.jpg"
   }
 ]
