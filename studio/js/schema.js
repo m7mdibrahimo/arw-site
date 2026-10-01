@@ -147,6 +147,21 @@ export function syncEpisodeCode(text, season, episode) {
     .replace(/(الحلقة\s+)\d{1,3}/, `$1${ep}`)
     .replace(/(الموسم\s+)\d{1,2}/, (m, a) => (se === null ? m : `${a}${se}`));
 }
+/**
+ * Tags a template brought in that name the template's programme, once the item became another
+ * programme. AAA Worlds Collide 2026 was filled from TripleMania and went live tagged «TripleMania»
+ * and «ايه ايه ايه تربل مانيا» (INCIDENTS #192). A template tag stays when the new programme, title
+ * or headline still contains it («AAA», «ايه ايه ايه»); tags typed by hand are never touched.
+ */
+export function dropStaleTemplateTags(tags, template, data) {
+  const list = Array.isArray(tags) ? tags : [];
+  const norm = (x) => String(x || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  const from = norm(template && template.program), to = norm(data && data.program_name);
+  if (!template || !from || from === to || !Array.isArray(template.tags)) return list;
+  const inherited = new Set(template.tags.map(norm));
+  const now = norm([data.program_name, data.title, data.headline].join(' '));
+  return list.filter(t => !inherited.has(norm(t)) || now.includes(norm(t)));
+}
 export function descriptionFromHeadline(headline) {
   const h = String(headline || '').replace(/\s*\d{1,2}[./-]\d{1,2}[./-]\d{4}\s*/, ' ').replace(/\s+/g, ' ').trim();
   if (!h) return '';

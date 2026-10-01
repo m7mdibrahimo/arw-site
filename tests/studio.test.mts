@@ -427,3 +427,14 @@ test('an episode code in the titles follows the season and episode fields (INCID
   assert.match(editor, /k === 'episode_number' \|\| k === 'season_number'/);
   assert.match(editor, /syncEpisodeCode\(S\.data\[k\], S\.data\.season_number, S\.data\.episode_number\)/);
 });
+
+test('a show filled from another programme drops that programme\'s tags on save (INCIDENTS #192)', async () => {
+  const { dropStaleTemplateTags } = await import('../studio/js/schema.js');
+  const template = { program: 'AAA TripleMania', tags: ['AAA TripleMania', 'TripleMania', 'AAA', 'ايه ايه ايه تربل مانيا', 'ايه ايه ايه'] };
+  const data = { program_name: 'AAA Worlds Collide', title: 'AAA Worlds Collide (2026)', headline: 'عرض ايه ايه ايه وورلدز كوليد 30.09.2026 مترجم' };
+  assert.deepEqual(dropStaleTemplateTags([...template.tags, 'وورلدز كوليد'], template, data), ['AAA', 'ايه ايه ايه', 'وورلدز كوليد']);
+  // the same programme keeps every tag
+  assert.deepEqual(dropStaleTemplateTags(template.tags, template, { ...data, program_name: 'AAA TripleMania' }), template.tags);
+  const src = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(src, /S\.data\.tags = dropStaleTemplateTags\(S\.data\.tags, S\.template, S\.data\)/);
+});

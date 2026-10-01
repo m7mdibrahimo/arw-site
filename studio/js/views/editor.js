@@ -3,7 +3,7 @@ import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../
 import { notify } from '../notify.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
-  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode,
+  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode, dropStaleTemplateTags,
 } from '../schema.js';
 import { prepareImage, prepareImageFromUrl, kb } from '../image.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc, can, sectionOf } from '../ui.js';
@@ -255,7 +255,7 @@ function applyTemplate(src, { keepTitle = true } = {}) {
   if (src.collection === 'nostalgia' && src.nostalgia_order) S.data.nostalgia_order = Number(src.nostalgia_order) + 1;
   // Year-specific tags («AEW All Out 2026») belong to that edition only
   if (Array.isArray(src.tags) && src.tags.length) S.data.tags = src.tags.filter(tg => !/(?:^|\D)(?:19|20)\d{2}(?:\D|$)/.test(tg));
-  S.template = { headline: src.headline, title: src.title };
+  S.template = { headline: src.headline, title: src.title, program: src.program_name, tags: [...(S.data.tags || [])] };
   S.auto.headline = true; S.auto.title = !keepTitle || !S.data.title;
   updateFromDate();
 }
@@ -629,6 +629,8 @@ async function save({ thenNew = false, force = false } = {}) {
   if (S.data.episode_number !== undefined && S.data.episode_number !== '') {
     for (const k of ['title', 'headline']) if (S.data[k]) S.data[k] = syncEpisodeCode(S.data[k], S.data.season_number, S.data.episode_number);
   }
+  // Another programme than the one filled from: its tags go (INCIDENTS #192)
+  if (S.template && S.data.tags) S.data.tags = dropStaleTemplateTags(S.data.tags, S.template, S.data);
   const slug = S.slug || newFileSlug(S.collection, S.data);
   // Servers: drop empty rows
   if (Array.isArray(S.data.servers)) S.data.servers = S.data.servers.filter(s => s && s.url);
