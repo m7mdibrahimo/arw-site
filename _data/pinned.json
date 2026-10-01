@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-dynamite-30-09-2026/",
+    "title": "عرض ديناميت 30.09.2026 مترجم",
+    "subtitle": "AEW Dynamite 30.09.2026",
+    "image": "/img/JZN7yFF3BH-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-29-09-2026/",
     "title": "عرض ان اكس تي 29.09.2026 مترجم",
     "subtitle": "WWE NXT 29.09.2026",
@@ -97,17 +108,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-23-09-2026/",
-    "title": "عرض ديناميت 23.09.2026 مترجم",
-    "subtitle": "AEW Dynamite 23.09.2026",
-    "image": "/img/5ekqyh_EeJ-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/aew-collision-23-09-2026/",
