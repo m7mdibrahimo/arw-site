@@ -8,7 +8,7 @@ interface Top10Env { PUSH_KV?: KVNamespace; SITE_ORIGIN: string }
 export interface Top10Item { url: string; title: string; image: string; kind: "show" | "recap" | "nostalgia"; views: number }
 
 const CONFIG_KEY = "studio:analytics:config";
-const CACHE_KEY = (range: string) => `top10:v2:${range}`; // v2: watch pages only, decoded titles (#181)
+const CACHE_KEY = (range: string) => `top10:v3:${range}`; // v2: watch pages only, decoded titles (#181)
 const CACHE_MS = 30 * 60_000;
 
 /**
@@ -50,7 +50,7 @@ async function topPaths(token: string, zone: string, hours: number): Promise<{ p
     method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `query($zone: String!, $s: Time!, $u: Time!) { viewer { zones(filter: { zoneTag: $zone }) {
-        pages: httpRequestsAdaptiveGroups(limit: 60, filter: { datetime_geq: $s, datetime_lt: $u, requestSource: "eyeball", edgeResponseContentTypeName: "html", edgeResponseStatus: 200 }, orderBy: [count_DESC]) {
+        pages: httpRequestsAdaptiveGroups(limit: 400, filter: { datetime_geq: $s, datetime_lt: $u, requestSource: "eyeball", edgeResponseContentTypeName: "html", edgeResponseStatus: 200 }, orderBy: [count_DESC]) {
           count dimensions { clientRequestPath } } } } }`,
       variables: { zone, s: since.toISOString(), u: until.toISOString() },
     }),

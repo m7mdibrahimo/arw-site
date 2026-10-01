@@ -2454,6 +2454,7 @@ test('«الأكثر مشاهدة»: only single content pages are ranked, views
   assert.match(src, /if \(path === "\/top10" && request\.method === "GET"\) return top10Response/);
   const js = fs.readFileSync('assets/top10.js', 'utf8');
   assert.match(js, /if \(!top \|\| top\.length < 5\) return;/, 'no list, no section');
+  assert.match(js, /start = 'week';\n    return load\('week'\);/, 'a thin day falls back to the week');
   assert.match(js, /overflow-y:hidden/, 'the row never scrolls up and down under the mouse wheel');
   assert.match(fs.readFileSync('index.njk', 'utf8'), /<script src="\/assets\/top10\.js\?v=\d+" defer><\/script>/);
 });

@@ -66,14 +66,20 @@
       return '<a class="t10-item' + (n === 9 ? ' two' : '') + '" href="' + esc(i.url) + '"><span class="t10-n" aria-hidden="true">' + (n + 1) + '</span><span class="t10-card"><span class="t10-img" style="background-image:url(\'' + esc(i.image) + '\')"></span><span class="t10-chip">' + (kindLabel[i.kind] || 'عرض') + '</span><span class="t10-title">' + esc(i.title) + '</span></span></a>';
     }).join('');
   }
-  load('day').then(function (top) {
+  // A quiet day (most visits on news) falls back to the week, so the row is never thin
+  var start = 'day';
+  load('day').then(function (day) {
+    if (day && day.length >= 5) return day;
+    start = 'week';
+    return load('week');
+  }).then(function (top) {
     if (!top || top.length < 5) return;
     var spot = document.getElementById('spotlight-wrap');
     if (!spot) return;
     var sec = document.createElement('section');
     sec.className = 'content'; sec.id = 'top10'; sec.setAttribute('aria-label', 'الأكثر مشاهدة');
     sec.innerHTML = '<div class="wrap"><div class="section-head"><div class="head-text"><h2 style="color:#ff6a3d;"><span class="dot" style="background:#ff6a3d"></span>الأكثر مشاهدة</h2><p>الأكثر متابعة على عرب راسلنج الآن</p></div></div>' +
-      '<div class="t10-bar"><div class="t10-tabs" role="group" aria-label="الفترة"><button type="button" data-r="day" aria-pressed="true">اليوم</button><button type="button" data-r="week" aria-pressed="false">هذا الأسبوع</button></div></div>' +
+      '<div class="t10-bar"><div class="t10-tabs" role="group" aria-label="الفترة"><button type="button" data-r="day" aria-pressed="' + (start === 'day') + '">اليوم</button><button type="button" data-r="week" aria-pressed="' + (start === 'week') + '">هذا الأسبوع</button></div></div>' +
       '<div class="t10-stage"><button type="button" class="t10-arrow t10-prev" aria-label="السابق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>' +
       '<div class="t10-row">' + rowHtml(top) + '</div>' +
       '<button type="button" class="t10-arrow t10-next" aria-label="التالي"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button></div></div>';
@@ -88,7 +94,7 @@
     sec.querySelectorAll('.t10-tabs button').forEach(function (b) {
       b.addEventListener('click', function () {
         sec.querySelectorAll('.t10-tabs button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-        load(b.dataset.r).then(function (list) { if (list.length) { row.innerHTML = rowHtml(list); row.scrollLeft = 0; sync(); } });
+        load(b.dataset.r).then(function (list) { if (list.length >= 3) { row.innerHTML = rowHtml(list); row.scrollLeft = 0; sync(); } });
       });
     });
   });
