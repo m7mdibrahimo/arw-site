@@ -2628,5 +2628,22 @@
     ],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261002015538-mlp-mayhem-30-09-2026": {
+    "publishedAt": 1790896139974,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض ام ال بي 30.09.2026 مترجم",
+    "lastAttempt": 1790896191737,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
