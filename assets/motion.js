@@ -1,6 +1,10 @@
 /* Site motion (INCIDENTS #178) — see motion.css. Nothing here is required to read the page:
    if this file fails, every card and image is simply shown as it is. */
 (function () {
+  // A page-to-page transition the browser skips (a fast second click, a restored tab) rejects its
+  // promises; nothing is wrong, so say nothing.
+  addEventListener('pagereveal', function (e) { if (e.viewTransition) { e.viewTransition.ready.catch(function () {}); e.viewTransition.finished.catch(function () {}); } });
+  addEventListener('pageswap', function (e) { if (e.viewTransition) { e.viewTransition.finished.catch(function () {}); } });
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) return;
   var root = document.documentElement;

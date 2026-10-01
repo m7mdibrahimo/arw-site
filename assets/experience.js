@@ -104,8 +104,10 @@
         vt.ready.then(function () {
           document.documentElement.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + end + 'px at ' + x + 'px ' + y + 'px)'] },
             { duration: 650, easing: 'cubic-bezier(.16,1,.3,1)', pseudoElement: '::view-transition-new(xp-theme)' });
-        });
-        vt.finished.finally(function () { document.documentElement.style.viewTransitionName = ''; });
+        }).catch(function () {});
+        // a skipped transition (another one started, the tab hid) rejects these: nothing to report
+        if (vt.updateCallbackDone) vt.updateCallbackDone.catch(function () {});
+        vt.finished.catch(function () {}).then(function () { document.documentElement.style.viewTransitionName = ''; });
       }, true);
     }
   }
