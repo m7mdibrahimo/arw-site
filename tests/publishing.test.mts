@@ -2644,3 +2644,7 @@ test('Fatal Influence has one spelling; «نزال» takes a masculine verb (INC
   assert.equal(applyCorrections('تدخلت لمساعدة فاتال إنفلونس'), 'تدخلت لمساعدة فايتال إنفلوينس');
   assert.equal(applyCorrections('تصدرت نزال ثلاثي القائمة'), 'تصدر نزال ثلاثي القائمة');
 });
+
+test('the writer keeps each roundup line\'s doer and meaning (INCIDENTS #208)', () => {
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /الموجزات \(«Fight Size» وأمثالها/);
+});
