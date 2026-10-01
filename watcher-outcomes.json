@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-01T00:19:15.262Z"
- },
  "https://www.fightful.com/wrestling/aew-dynamite-results-9-30-2026-a-tribute-to-pac": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-01T00:09:14.561Z"
+  "at": "2026-10-01T00:20:14.045Z"
  },
  "https://www.fightful.com/wrestling/watch-wwe-worlds-collide-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T00:09:14.407Z"
+  "at": "2026-10-01T00:20:13.904Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-im-still-fighting-cml-but-its-under-control-and-under-baseline": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T00:09:14.110Z"
+  "at": "2026-10-01T00:20:13.568Z"
  },
  "https://www.fightful.com/wrestling/corey-graves-pays-tribute-to-pac-gravity-forgot-him-we-never-will": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T00:09:13.913Z"
+  "at": "2026-10-01T00:20:13.359Z"
  },
  "https://www.fightful.com/wrestling/tony-schiavone-says-he-spoke-with-steven-borden-steven-says-he-is-fine-after-aew-all-out-injury": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T00:09:13.773Z"
+  "at": "2026-10-01T00:20:13.206Z"
+ },
+ "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-01T00:19:15.262Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-reacts-to-not-being-cleared-to-compete-on-9-29-wwe-nxt-sometimes-life-is-cruel": {
   "reason": "مكرر مع خبر نزل قبل كده",
