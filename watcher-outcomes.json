@@ -1,43 +1,43 @@
 {
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-01T17:49:22.533Z"
- },
  "https://www.fightful.com/wrestling/aaa-wrestlers-to-be-featured-in-upcoming-wwe-merchandise": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:22.391Z"
+  "at": "2026-10-01T17:59:24.567Z"
  },
  "https://www.fightful.com/wrestling/wwe-in-no-rush-to-announce-wrestlemania-43-date": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:22.280Z"
+  "at": "2026-10-01T17:59:24.443Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:22.171Z"
+  "at": "2026-10-01T17:59:24.320Z"
  },
  "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:22.059Z"
+  "at": "2026-10-01T17:59:24.189Z"
  },
  "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:21.920Z"
+  "at": "2026-10-01T17:59:24.033Z"
  },
  "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:21.758Z"
+  "at": "2026-10-01T17:59:23.852Z"
  },
  "https://www.fightful.com/wrestling/netflix-blacks-out-jacob-fatu-being-run-over-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:48:21.495Z"
+  "at": "2026-10-01T17:59:23.555Z"
+ },
+ "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-01T17:49:22.533Z"
  },
  "https://www.fightful.com/wrestling/wardlow-returns-to-the-ring-on-9-30-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",

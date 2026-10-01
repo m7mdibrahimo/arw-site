@@ -1,5 +1,15 @@
 [
   {
+    "id": 331505,
+    "link": "https://www.fightful.com/wrestling/wwe-smackdown-9-25-viewership-holds-demo-drops/",
+    "date": "2026-10-01T13:55:47",
+    "date_gmt": "2026-10-01T17:55:47",
+    "title": {
+      "rendered": "WWE SmackDown (9/25) Viewership Holds, Demo Drops"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25192008/smackdown_6.jpg"
+  },
+  {
     "id": 331503,
     "link": "https://www.fightful.com/wrestling/aaa-wrestlers-to-be-featured-in-upcoming-wwe-merchandise/",
     "date": "2026-10-01T13:36:13",
@@ -288,15 +298,5 @@
       "rendered": "List Of Participants In 2026 CMLL Women&#8217;s Grand Prix"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/16111041/426baae3-6f6c-4342-a095-743f9807e8d7-e1760627472427.jpg"
-  },
-  {
-    "id": 331415,
-    "link": "https://www.fightful.com/wrestling/finn-balor-drew-mcintyre-pay-tribute-to-pac/",
-    "date": "2026-09-30T23:22:17",
-    "date_gmt": "2026-10-01T03:22:17",
-    "title": {
-      "rendered": "Finn Balor, Chris Jericho, And Drew McIntyre Pay Tribute To PAC"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27211559/HTQ_MsjWUAAr_6M-1.jpeg"
   }
 ]
