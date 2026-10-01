@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-01T17:30:18.327Z"
+ },
  "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-01T17:16:46.489Z"
- },
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-01T17:10:55.327Z"
  },
  "https://www.fightful.com/wrestling/watch-wwe-worlds-collide-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
