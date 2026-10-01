@@ -1,5 +1,15 @@
 [
   {
+    "id": 2482222807,
+    "link": "https://www.wrestlinginc.com/2274153/aew-dynamite-elite-reunite-don-callis-family-pac-tribute/",
+    "date": "Thu, 01 Oct 2026 01:19:07 +0000",
+    "date_gmt": "2026-10-01T01:19:07.000Z",
+    "title": {
+      "rendered": "The Elite Reunite On AEW Dynamite, Defeat Don Callis Family On Pac Tribute Episode"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/the-elite-reunite-on-aew-dynamite-defeat-don-callis-family-on-pac-tribute-episode/l-intro-1790817471.jpg"
+  },
+  {
     "id": 2838596159,
     "link": "https://www.wrestlinginc.com/2268355/wwe-chelsea-green-won-fans-over-perfect-storm/",
     "date": "Thu, 01 Oct 2026 01:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT - 9/29/2026: 3 Things We Hated & 3 We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-9292026-3-things-we-hated-3-we-loved/l-intro-1790748909.jpg"
-  },
-  {
-    "id": 3968319428,
-    "link": "https://www.wrestlinginc.com/2272886/grayson-waller-escapes-open-challenge-wwe-nxt-title/",
-    "date": "Wed, 30 Sep 2026 02:19:07 +0000",
-    "date_gmt": "2026-09-30T02:19:07.000Z",
-    "title": {
-      "rendered": "Grayson Waller Escapes Open Challenge With WWE NXT Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/grayson-waller-escapes-open-challenge-with-wwe-nxt-title/l-intro-1790734612.jpg"
   }
 ]
