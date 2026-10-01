@@ -2482,3 +2482,8 @@ test('«real name» is «واسمه الحقيقي», and nothing the source nev
   assert.match(writer, /ممنوع «تمنوا له التوفيق» أو «الشفاء العاجل» لشخص متوفي/);
   assert.match(writer, /\*\*real name X\*\* = «واسمه الحقيقي X»/);
 });
+
+test('«المقاتليين» loses its extra ya (INCIDENTS #187)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('في نزال ثماني المقاتليين'), 'في نزال ثماني المقاتلين');
+});
