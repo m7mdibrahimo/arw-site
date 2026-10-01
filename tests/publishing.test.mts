@@ -2404,6 +2404,9 @@ test('NJPW has its own section: home block 3 + 4, a federation page, the panel l
   assert.match(home, /<div class="feds-grid feds-top">\n<a href="\/federation\/wwe\/"[^\n]*\n<a href="\/federation\/aew\/"[^\n]*\n<a href="\/federation\/njpw\/"/);
   assert.match(home, /\.fed-njpw \.fed-mark\{ background:linear-gradient\(135deg,hsl\(212 16% 46%\),hsl\(214 20% 27%\)\); \}/);
   assert.doesNotMatch(home, /class="count"/, 'no story counts on the cards');
+  // phones: every card the same size, two per row, one grid (INCIDENTS #176)
+  assert.match(home, /\.feds-wrap\{ display:grid; grid-template-columns:repeat\(2,1fr\); gap:10px; \} \.feds-wrap > \.feds-grid\{ display:contents; \}/);
+  assert.doesNotMatch(home, /grid-column:1 \/ -1; \} \.feds-bot/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /slug: "njpw", code: "NJPW"/);
   assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'NJPW'/);
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /const ALLOWED_FEDERATIONS = \["WWE", "AEW", "NJPW"/);

@@ -231,7 +231,8 @@ section.content{ padding:40px 24px 70px; }
 .feds-top .fed-mark{ height:150px; font-size:40px; }
 .feds-bot{ grid-template-columns:repeat(4,1fr); }
 .feds-bot .fed-mark{ height:84px; font-size:24px; }
-@media (max-width:700px){ .feds-top > .fed-card:first-child{ grid-column:1 / -1; } .feds-bot{ grid-template-columns:repeat(2,1fr); } .feds-top .fed-mark{ height:110px; font-size:30px; } .feds-bot .fed-mark{ height:72px; font-size:20px; } }
+/* Phones: the old look — every card the same size, two per row, one continuous grid (INCIDENTS #176) */
+@media (max-width:700px){ .feds-wrap{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; } .feds-wrap > .feds-grid{ display:contents; } .feds-top .fed-mark, .feds-bot .fed-mark{ height:68px; font-size:20px; } }
 /* Federation Cards & Animations */
 .fed-card{ display:block; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.3s ease; box-shadow:0 6px 16px -12px rgba(30,37,48,.15); position:relative; }
 .fed-card:hover{ transform:translateY(-8px) scale(1.02); box-shadow:0 20px 36px -16px rgba(14,149,148,.3); border-color:var(--teal); }
@@ -1382,6 +1383,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 <div class="head-text"><h2 style="color:var(--teal);"><span class="dot" style="background:var(--teal)"></span>الاتحادات</h2></div>
 </div>
 <!-- the three biggest promotions large, the rest below (INCIDENTS #175) -->
+<div class="feds-wrap">
 <div class="feds-grid feds-top">
 <a href="/federation/wwe/" class="fed-card fed-wwe"><div class="fed-mark">WWE</div><div class="info"><p>World Wrestling Entertainment</p></div></a>
 <a href="/federation/aew/" class="fed-card fed-aew"><div class="fed-mark">AEW</div><div class="info"><p>All Elite Wrestling</p></div></a>
@@ -1392,6 +1394,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 <a href="/federation/roh/" class="fed-card fed-roh"><div class="fed-mark">ROH</div><div class="info"><p>Ring of Honor</p></div></a>
 <a href="/federation/indie/" class="fed-card fed-indie"><div class="fed-mark">INDIE</div><div class="info"><p>الاتحادات المستقلة</p></div></a>
 <a href="/federation/mma/" class="fed-card fed-mma"><div class="fed-mark">MMA</div><div class="info"><p>رياضات القتال المختلطة</p></div></a>
+</div>
 </div>
 </div>
 </section>
