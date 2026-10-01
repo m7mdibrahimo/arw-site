@@ -1,5 +1,25 @@
 [
   {
+    "id": 331488,
+    "link": "https://www.fightful.com/wrestling/update-on-naomi-wwe-return/",
+    "date": "2026-10-01T12:40:28",
+    "date_gmt": "2026-10-01T16:40:28",
+    "title": {
+      "rendered": "Update On Naomi/WWE Return"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/08/18221501/image-8-1.png"
+  },
+  {
+    "id": 331486,
+    "link": "https://www.fightful.com/wrestling/brady-booker-accidentally-chops-part-of-his-thumb-off-with-machete-on-survivor/",
+    "date": "2026-10-01T12:37:57",
+    "date_gmt": "2026-10-01T16:37:57",
+    "title": {
+      "rendered": "Brady Booker Accidentally Chops Part Of His Thumb Off With Machete On Survivor"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/31152918/intro-1668015682.jpg"
+  },
+  {
     "id": 331477,
     "link": "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful/",
     "date": "2026-10-01T12:06:55",
@@ -278,25 +298,5 @@
       "rendered": "AEW Dynamite Results (9/30/2026): A Tribute to PAC"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28172126/HTVU0_YbsAAKOKt.jpeg"
-  },
-  {
-    "id": 331383,
-    "link": "https://www.fightful.com/wrestling/ethan-page-shoots-down-fan-theory-that-hes-the-secret-leader-of-the-946/",
-    "date": "2026-09-30T18:27:46",
-    "date_gmt": "2026-09-30T22:27:46",
-    "title": {
-      "rendered": "Ethan Page Shoots Down Fan Theory That He&#8217;s The Secret Leader Of The 946"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/03093533/Screenshot-297-e1785764150789.png"
-  },
-  {
-    "id": 331382,
-    "link": "https://www.fightful.com/wrestling/the-elite-reunites-continental-title-bout-more-added-to-aew-dynamite-tribute-to-pac/",
-    "date": "2026-09-30T18:26:32",
-    "date_gmt": "2026-09-30T22:26:32",
-    "title": {
-      "rendered": "The Elite Reunites, Continental Title Bout, More Added To AEW Dynamite: Tribute To PAC"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30181243/HTfwP6RXYAAoZM3.jpg"
   }
 ]
