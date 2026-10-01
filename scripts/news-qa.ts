@@ -412,6 +412,17 @@ export function repairMixedTitles(text: string): string {
     .replace(new RegExp(`((?:${W}\\s+)+)بطولة\\s+السيدات(?=\\s*[*)])`, "g"), "$1Women's Championship");
 }
 
+const AGE_UNITS: Record<string, number> = { واحد: 1, اثنين: 2, ثلاثة: 3, أربعة: 4, خمسة: 5, ستة: 6, سبعة: 7, ثمانية: 8, تسعة: 9 };
+const AGE_TENS: Record<string, number> = { عشرين: 20, ثلاثين: 30, أربعين: 40, خمسين: 50, ستين: 60, سبعين: 70, ثمانين: 80, تسعين: 90 };
+/**
+ * Body only (titles keep counts in words): an age or a span of years written out becomes digits —
+ * «البالغ من العمر سبعين عاما» ← «70 عاما». The copy editor was told and left it (INCIDENTS #202).
+ */
+export function spelledAgesToDigits(body: string): string {
+  return String(body || "").replace(/(?<![\u0600-\u06FF])(?:(واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g,
+    (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`);
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   text = repairMixedTitles(text);

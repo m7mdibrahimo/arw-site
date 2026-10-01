@@ -2615,3 +2615,12 @@ test('«الأربعين عاما» is an age in words too; two broken phrases a
   assert.equal(applyCorrections('العرض الذي أقامة اتحاد AEW'), 'العرض الذي أقامه اتحاد AEW');
   assert.equal(applyCorrections('كلمات النجوم الذين متذكرا خصاله'), 'كلمات النجوم الذين تذكروا خصاله');
 });
+
+test('ages written out in the body become digits before publishing; titles keep words (INCIDENTS #202)', async () => {
+  const { spelledAgesToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledAgesToDigits('المصارع البالغ من العمر سبعين عاما'), 'المصارع البالغ من العمر 70 عاما');
+  assert.equal(spelledAgesToDigits('عن عمر يناهز ثلاثة وأربعين عاما'), 'عن عمر يناهز 43 عاما');
+  assert.equal(spelledAgesToDigits('عن عمر يناهز الأربعين عاما'), 'عن عمر يناهز 40 عاما');
+  assert.equal(spelledAgesToDigits('أقيم يوم الثلاثين من سبتمبر'), 'أقيم يوم الثلاثين من سبتمبر');
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /body: spelledAgesToDigits\(fixText\(draft\.body\)\)/);
+});
