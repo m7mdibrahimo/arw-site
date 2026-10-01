@@ -1,23 +1,28 @@
 {
- "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-01T17:10:55.327Z"
+ "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-01T17:13:05.479Z"
  },
  "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:03:08.238Z"
+  "at": "2026-10-01T17:13:05.372Z"
  },
  "https://www.fightful.com/wrestling/netflix-blacks-out-jacob-fatu-being-run-over-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:03:08.012Z"
+  "at": "2026-10-01T17:13:05.198Z"
  },
  "https://www.fightful.com/wrestling/wardlow-returns-to-the-ring-on-9-30-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-01T17:03:07.568Z"
+  "at": "2026-10-01T17:13:04.847Z"
+ },
+ "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-01T17:10:55.327Z"
  },
  "https://www.fightful.com/wrestling/watch-wwe-worlds-collide-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",

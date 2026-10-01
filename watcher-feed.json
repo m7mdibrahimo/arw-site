@@ -1,5 +1,25 @@
 [
   {
+    "id": 331497,
+    "link": "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud/",
+    "date": "2026-10-01T13:11:16",
+    "date_gmt": "2026-10-01T17:11:16",
+    "title": {
+      "rendered": "Update On Possible Culmination Of Bayley/Lyra Valkyria Feud"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/13213721/HNJrgAFXgAAUI7V.jpg"
+  },
+  {
+    "id": 331491,
+    "link": "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes/",
+    "date": "2026-10-01T13:08:12",
+    "date_gmt": "2026-10-01T17:08:12",
+    "title": {
+      "rendered": "Fred Ottman Undergoes Multiple Surgeries On His Eyes"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/25121842/Screenshot-2495-e1772039958874.png"
+  },
+  {
     "id": 327065,
     "link": "https://www.fightful.com/wrestling/cassie-lee-mckay-327065/",
     "date": "2026-10-01T13:00:00",
@@ -278,25 +298,5 @@
       "rendered": "Wardlow Returns To The Ring On 9/30 AEW Dynamite"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30223210/HTgtJaqXQAAfYa6.jpg"
-  },
-  {
-    "id": 331392,
-    "link": "https://www.fightful.com/wrestling/331392-pac-aew/",
-    "date": "2026-09-30T22:30:51",
-    "date_gmt": "2026-10-01T02:30:51",
-    "title": {
-      "rendered": "Full List Of Tributes To PAC (Benjamin Satterley) On 9/30 AEW Dynamite"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30223655/3928529E-4201-44F3-9F74-9E44EAAC5DBD.jpg"
-  },
-  {
-    "id": 331412,
-    "link": "https://www.fightful.com/wrestling/bryan-danielson-returns-to-the-ring-teams-with-the-death-riders-on-aew-dynamite/",
-    "date": "2026-09-30T22:29:53",
-    "date_gmt": "2026-10-01T02:29:53",
-    "title": {
-      "rendered": "Bryan Danielson Returns To The Ring, Teams With The Death Riders On AEW Dynamite"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30222838/HTguP77W0AEOR_8.jpg"
   }
 ]
