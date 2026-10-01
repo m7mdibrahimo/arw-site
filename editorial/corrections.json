@@ -4618,6 +4618,16 @@
    "wrong": "جراء غياب الوعود",
    "right": "جراء عدم الوفاء بالوعود",
    "note": "INCIDENTS #210"
+  },
+  {
+   "wrong": "غولدبيرغ",
+   "right": "غولدبيرج",
+   "note": "Goldberg — شكل القاموس، INCIDENTS #211"
+  },
+  {
+   "wrong": "غولدبرغ",
+   "right": "غولدبيرج",
+   "note": "Goldberg — INCIDENTS #211"
   }
  ]
 }

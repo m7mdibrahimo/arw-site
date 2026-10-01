@@ -2660,3 +2660,7 @@ test('«Flash» Morgan Webster is one wrestler, not «مورغان و بستر»
   assert.equal(applyCorrections('(«فلاش» مورغان وبستر ومارك أندروز)'), '(«فلاش» مورغان ويبستر ومارك أندروز)');
   assert.equal(applyCorrections('بعد أيام قليلة إبدائه تفاؤله'), 'بعد أيام قليلة من إبدائه تفاؤله');
 });
+
+test('Goldberg has the glossary spelling (INCIDENTS #211)', () => {
+  assert.equal(applyCorrections('بيل غولدبيرغ وابنه'), 'بيل غولدبيرج وابنه');
+});
