@@ -33,6 +33,7 @@ import { deliverOnce, authorizeAdmin } from "./delivery";
 import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { runSiteHealthCheck, siteHealth } from "./health";
+import { top10Response } from "./top10";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -2962,6 +2963,8 @@ export default {
         return json(await studioOverview(env, await request.json().catch(() => ({}))));
       }
       // What the watchdog found — problem titles only, nothing private (INCIDENTS #158)
+      // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
+      if (path === "/top10" && request.method === "GET") return top10Response(env, url.searchParams.get("range") || "day");
       if (path === "/health" && request.method === "GET") {
         const h = await siteHealth(env);
         return json({ ok: !h.problems.length, checkedAt: h.checkedAt ? new Date(h.checkedAt).toISOString() : null, problems: h.problems.map(p => ({ title: p.title, detail: p.detail, since: new Date(p.since).toISOString() })) });

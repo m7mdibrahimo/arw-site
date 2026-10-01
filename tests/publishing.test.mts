@@ -2433,3 +2433,22 @@ test('every page loads the motion and reader-experience layers, and they never h
   assert.match(xp, /speculationrules/);
   assert.doesNotMatch(fs.readFileSync('index.njk', 'utf8'), /<svg[^>]*>[\s\S]{0,300}?<\/svg>مكتبة العروض/, 'the library card is the word alone');
 });
+
+test('«الأكثر مشاهدة»: only single content pages are ranked, views summed per page, best first (INCIDENTS #180)', async () => {
+  const { rankPages, contentKind } = await import('../worker/src/top10');
+  assert.equal(contentKind('/shows/wwe-raw-28-09-2026/'), 'show');
+  assert.equal(contentKind('/news/2/'), null, 'a page number is not a story');
+  assert.equal(contentKind('/tag/wwe/'), null);
+  assert.equal(contentKind('/'), null);
+  const ranked = rankPages([
+    { path: '/news/a', views: 30 }, { path: '/news/a/', views: 25 }, { path: '/shows/b/', views: 40 },
+    { path: '/federation/wwe/', views: 999 }, { path: '/shows/b/?x=1', views: 5 }, { path: '/admin/', views: 500 },
+  ]);
+  assert.deepEqual(ranked.map(r => [r.path, r.views]), [['/news/a/', 55], ['/shows/b/', 45]]);
+  const src = fs.readFileSync('worker/src/index.ts', 'utf8');
+  assert.match(src, /if \(path === "\/top10" && request\.method === "GET"\) return top10Response/);
+  const js = fs.readFileSync('assets/top10.js', 'utf8');
+  assert.match(js, /if \(!top \|\| top\.length < 5\) return;/, 'no list, no section');
+  assert.match(js, /overflow-y:hidden/, 'the row never scrolls up and down under the mouse wheel');
+  assert.match(fs.readFileSync('index.njk', 'utf8'), /<script src="\/assets\/top10\.js\?v=\d+" defer><\/script>/);
+});
