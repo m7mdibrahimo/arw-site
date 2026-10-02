@@ -4768,6 +4768,21 @@
    "wrong": "جكسون",
    "right": "جاكسون",
    "note": "Jackson — INCIDENTS #234"
+  },
+  {
+   "wrong": "سترن أندرسون",
+   "right": "آرن أندرسون",
+   "note": "Arn Anderson — INCIDENTS #236"
+  },
+  {
+   "wrong": "أرن أندرسون",
+   "right": "آرن أندرسون",
+   "note": "Arn Anderson — INCIDENTS #236"
+  },
+  {
+   "wrong": "متما بالفضل",
+   "right": "معترفا بالفضل",
+   "note": "INCIDENTS #236"
   }
  ]
 }

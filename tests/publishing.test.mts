@@ -2790,3 +2790,8 @@ test('a name led into by an English word stays English (show and podcast titles)
   assert.equal(applyNamesGlossary('أكد Matt Hardy أن'), 'أكد مات هاردي أن');
   assert.equal(applyNamesGlossary('نجم TNA Matt Hardy'), 'نجم TNA مات هاردي');
 });
+
+test('Arn Anderson has one spelling (INCIDENTS #236)', () => {
+  assert.equal(applyCorrections('تيري تايلور وسترن أندرسون'), 'تيري تايلور وآرن أندرسون');
+  assert.equal(applyCorrections('أرن أندرسون'), 'آرن أندرسون');
+});
