@@ -1,5 +1,15 @@
 [
   {
+    "id": 331606,
+    "link": "https://www.fightful.com/wrestling/chris-jericho-the-next-version-of-nick-wayne-has-potential-to-be-a-world-champion/",
+    "date": "2026-10-02T12:26:05",
+    "date_gmt": "2026-10-02T16:26:05",
+    "title": {
+      "rendered": "Chris Jericho: The Next Version Of Nick Wayne Has Potential To Be A World Champion"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23225430/Screenshot-327-e1790218483914.png"
+  },
+  {
     "id": 331602,
     "link": "https://www.fightful.com/wrestling/chris-jericho-tony-khan-tells-us-what-he-wants-if-you-dont-like-it-go-make-eight-billion-dollars-and-start-your-own-wrestling-company/",
     "date": "2026-10-02T11:57:39",
@@ -288,15 +298,5 @@
       "rendered": "Tony D&#8217;Angelo Wants To Be A Grand Slam Champion On The Main Roster"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27171633/076_NXT_07212026CK_31378-e1787865625873.jpg"
-  },
-  {
-    "id": 331519,
-    "link": "https://www.fightful.com/wrestling/mlp-mayhem-results-10-1-nikki-storm-competes/",
-    "date": "2026-10-01T15:42:15",
-    "date_gmt": "2026-10-01T19:42:15",
-    "title": {
-      "rendered": "MLP Mayhem Results (10/1): Nikki Storm Competes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/28212231/maple-leaf-pro-wrestling-lands-weekly-tsn-series-with-mlp-mayhem-46.jpg"
   }
 ]
