@@ -1,5 +1,15 @@
 [
   {
+    "id": 331541,
+    "link": "https://www.fightful.com/wrestling/lucha-libre-aaa-live-event-announced-for-november-27-in-houston/",
+    "date": "2026-10-01T21:25:10",
+    "date_gmt": "2026-10-02T01:25:10",
+    "title": {
+      "rendered": "AAA Live Event Announced For November 27 In Houston"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01212333/CS-067657_LVE_AAA_HOUSTON_1920x1080_ALT.jpg"
+  },
+  {
     "id": 331539,
     "link": "https://www.fightful.com/wrestling/bde-wins-first-singles-match-in-tna-secures-spot-in-x-division-title-match-at-bound-for-glory/",
     "date": "2026-10-01T21:15:35",
@@ -288,15 +298,5 @@
       "rendered": "WWE, AEW, TNA, NJPW Wrestler Injury Report List: Expected Returns, Inactives | Fightful"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/17140514/Resources.png"
-  },
-  {
-    "id": 331458,
-    "link": "https://www.fightful.com/wrestling/ultra-pro-wrestling-releases-showcase-video-featuring-gameplay/",
-    "date": "2026-10-01T09:59:30",
-    "date_gmt": "2026-10-01T13:59:30",
-    "title": {
-      "rendered": "Ultra Pro Wrestling Releases Showcase Video Featuring Gameplay"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01095933/maxresdefault.jpg"
   }
 ]
