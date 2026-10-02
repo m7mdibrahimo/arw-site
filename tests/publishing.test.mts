@@ -2723,3 +2723,9 @@ test('a results report lists every source result; a match heading never carries 
   assert.equal(autoFix('**المواجهة الثانية: نزال فردي**'), '**المواجهة الثانية: نزال فردي**');
   assert.equal(applyCorrections('مصطفى علي وسبشال أجنت زيرو'), 'مصطفى علي وإيجنت زيرو');
 });
+
+test('Main Event names and «bittersweet» / «Scramble» are corrected (INCIDENTS #222)', () => {
+  assert.equal(applyCorrections('تغلب كيويكي على أكسيوم وتغلب أوتيس على ناروكو'), 'تغلب كيوكي على أكسيوم وتغلب أوتيس على ناراكو');
+  assert.equal(applyCorrections('عودته الحلوة والمررة'), 'عودته الحلوة والمرة');
+  assert.equal(applyCorrections('شانتيل مونرو'), 'شانتل مونرو');
+});
