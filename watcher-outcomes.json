@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2275333/tna-thursday-night-impact-october-1-bound-for-glory-x-division-championship-six-way-qualifier-syx-appear": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-02T01:21:32.974Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-10-1-syx-to-speak-leon-slater-competes": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-02T01:20:23.130Z"
- },
- "https://www.wrestlinginc.com/2275333/tna-thursday-night-impact-october-1-bound-for-glory-x-division-championship-six-way-qualifier-syx-appear": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T01:01:30.436Z"
  },
  "https://www.wrestlinginc.com/2272892/aew-dynamite-september-30-a-tribute-death-riders-member-pac-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
