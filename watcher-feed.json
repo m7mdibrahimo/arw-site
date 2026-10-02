@@ -1,5 +1,35 @@
 [
   {
+    "id": 331547,
+    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-10-1/",
+    "date": "2026-10-01T23:30:00",
+    "date_gmt": "2026-10-02T03:30:00",
+    "title": {
+      "rendered": "WWE Main Event Results (10/1)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01213814/maxresdefault-3.jpg"
+  },
+  {
+    "id": 331572,
+    "link": "https://www.fightful.com/wrestling/mickie-james-to-appear-at-tna-bound-for-glory/",
+    "date": "2026-10-01T23:28:44",
+    "date_gmt": "2026-10-02T03:28:44",
+    "title": {
+      "rendered": "Mickie James To Appear At TNA Bound For Glory"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01232356/Screenshot-499.png"
+  },
+  {
+    "id": 331570,
+    "link": "https://www.fightful.com/wrestling/wardlow-reflects-on-bittersweet-in-ring-return-on-aew-dynamite/",
+    "date": "2026-10-01T23:25:38",
+    "date_gmt": "2026-10-02T03:25:38",
+    "title": {
+      "rendered": "Wardlow Reflects On Bittersweet In-Ring Return On AEW Dynamite"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/30223210/HTgtJaqXQAAfYa6.jpg"
+  },
+  {
     "id": 331569,
     "link": "https://www.fightful.com/wrestling/tna-world-tag-title-bout-knockouts-tv-title-match-call-your-shot-gauntlet-advantage-match-set-for-10-8-thursday-night-impact/",
     "date": "2026-10-01T23:20:24",
@@ -268,35 +298,5 @@
       "rendered": "Mistico vs. El Desperado Set For NJPW x CMLL Lucha Kingdom"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01124732/LUCHAKINGDOM_.png"
-  },
-  {
-    "id": 331488,
-    "link": "https://www.fightful.com/wrestling/update-on-naomi-wwe-return/",
-    "date": "2026-10-01T12:40:28",
-    "date_gmt": "2026-10-01T16:40:28",
-    "title": {
-      "rendered": "Update On Naomi/WWE Return"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/08/18221501/image-8-1.png"
-  },
-  {
-    "id": 331486,
-    "link": "https://www.fightful.com/wrestling/brady-booker-accidentally-chops-part-of-his-thumb-off-with-machete-on-survivor/",
-    "date": "2026-10-01T12:37:57",
-    "date_gmt": "2026-10-01T16:37:57",
-    "title": {
-      "rendered": "Brady Booker Accidentally Chops Part Of His Thumb Off With Machete On Survivor"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/31152918/intro-1668015682.jpg"
-  },
-  {
-    "id": 331477,
-    "link": "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful/",
-    "date": "2026-10-01T12:06:55",
-    "date_gmt": "2026-10-01T16:06:55",
-    "title": {
-      "rendered": "Bayley: &#8220;Pro Wrestling Is So Special&#8230; Experiencing That Magic &amp; Escape, While At The Same Time Honoring A Loved One, Is Truly Powerful&#8221;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/29065758/HTXymTfXgAAILhc.jpeg"
   }
 ]
