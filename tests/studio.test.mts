@@ -438,3 +438,11 @@ test('a show filled from another programme drops that programme\'s tags on save 
   const src = fs.readFileSync('studio/js/views/editor.js', 'utf8');
   assert.match(src, /S\.data\.tags = dropStaleTemplateTags\(S\.data\.tags, S\.template, S\.data\)/);
 });
+
+test('a weekly show without its programme is flagged before saving (INCIDENTS #235)', async () => {
+  const { checklist } = await import('../studio/js/schema.js');
+  const row = (d: any) => checklist('shows', d).find((i: any) => i.label === 'اسم البرنامج');
+  assert.equal(row({ title: 'TNA iMPACT 01.10.2026' })?.ok, false);
+  assert.equal(row({ title: 'TNA iMPACT 01.10.2026', program_name: 'TNA iMPACT' })?.ok, true);
+  assert.equal(row({ title: 'AAA Worlds Collide (2026)', is_annual: true }), undefined);
+});

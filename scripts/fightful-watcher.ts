@@ -341,7 +341,12 @@ export function applyNamesGlossary(text: string): string {
       result = result.replace(pattern, (m: string, offset: number, whole: string) => {
         const before = whole.slice(Math.max(0, offset - 2), offset);
         const after = whole.slice(offset + m.length, offset + m.length + 3);
-        return /[A-Za-z]\s$|[A-Za-z]$/.test(before) && /^(?:['’]s\b|\s+[A-Za-z])/.test(after) ? m : arabic;
+        if (/[A-Za-z]\s$|[A-Za-z]$/.test(before) && /^(?:['’]s\b|\s+[A-Za-z])/.test(after)) return m;
+        // …and when an English word other than a federation code or «vs/and» leads into it: «Being The
+        // Elite» became «Being ذا إيليت», «The Extreme Life of Matt Hardy» «…of مات هاردي» (INCIDENTS #234)
+        const lead = whole.slice(Math.max(0, offset - 24), offset).match(/([A-Za-z]+)\s+$/)?.[1] || "";
+        if (lead && !/^(?:WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|MLP|UFC|NXT|vs|and|or|with|w)$/i.test(lead)) return m;
+        return arabic;
       });
     } catch (e) {
       // Skip if regex fails (unusual characters)

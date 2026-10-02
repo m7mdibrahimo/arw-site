@@ -4763,6 +4763,11 @@
    "wrong": "The Shield",
    "right": "ذا شيلد",
    "note": "INCIDENTS #232"
+  },
+  {
+   "wrong": "جكسون",
+   "right": "جاكسون",
+   "note": "Jackson — INCIDENTS #234"
   }
  ]
 }

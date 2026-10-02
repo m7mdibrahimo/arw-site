@@ -182,6 +182,9 @@ export function checklist(collection, data) {
   if (['shows', 'recaps', 'nostalgia'].includes(collection)) {
     items.push({ ok: Array.isArray(data.servers) && data.servers.some(s => s && s.url), label: 'سيرفر مشاهدة واحد على الأقل', required: false });
   }
+  // A weekly show without its programme never links to its other episodes («املأ من آخر حلقة», the
+  // series pages): TNA iMPACT 01.10.2026 went live without one (INCIDENTS #235)
+  if (collection === 'shows' && data.is_annual !== true) need('program_name', 'اسم البرنامج');
   if (['shows', 'nostalgia'].includes(collection)) {
     need('duration', 'مدة العرض');
     items.push({ ok: ['downloads_low', 'downloads_medium', 'downloads_high'].some(k => has(k)), label: 'روابط تحميل', required: false });

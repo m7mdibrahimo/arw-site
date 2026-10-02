@@ -2782,3 +2782,11 @@ test('Stephanie McMahon in a title becomes her full tag, not «ستيفاني» 
 test('The Bloodline and The Shield are written in Arabic like the glossary (INCIDENTS #232)', () => {
   assert.equal(applyCorrections('قصة فريق The Bloodline وذكريات فريق The Shield'), 'قصة فريق ذا بلودلاين وذكريات فريق ذا شيلد');
 });
+
+test('a name led into by an English word stays English (show and podcast titles) (INCIDENTS #234)', async () => {
+  const { applyNamesGlossary } = await import('../scripts/fightful-watcher');
+  assert.equal(applyNamesGlossary('سلسلة Being The Elite كانت مهمة'), 'سلسلة Being The Elite كانت مهمة');
+  assert.equal(applyNamesGlossary('بودكاست The Extreme Life of Matt Hardy'), 'بودكاست The Extreme Life of Matt Hardy');
+  assert.equal(applyNamesGlossary('أكد Matt Hardy أن'), 'أكد مات هاردي أن');
+  assert.equal(applyNamesGlossary('نجم TNA Matt Hardy'), 'نجم TNA مات هاردي');
+});
