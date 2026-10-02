@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-2-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-02T23:43:16.391Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-02T23:39:40.935Z"
- },
- "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-2-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T23:37:38.401Z"
  },
  "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
