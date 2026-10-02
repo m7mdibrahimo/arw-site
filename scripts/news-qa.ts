@@ -423,7 +423,10 @@ export function spelledAgesToDigits(body: string): string {
     (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`)
     // Round hundreds before a unit: «مسافة لا تقل عن خمسمائة قدم» ← «500 قدم» (INCIDENTS #225)
     .replace(/(?<![\u0600-\u06FF])(مائة|مئة|مائتي|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة)\s+(قدم|أقدام|متر|أمتار|ميل|كيلومتر|دولار|رطل|كيلوغرام|مشجع|متفرج)(?![\u0600-\u06FF])/g,
-      (_m, h: string, w: string) => `${HUNDREDS[h]} ${w}`);
+      (_m, h: string, w: string) => `${HUNDREDS[h]} ${w}`)
+    // …and round thousands: «أكثر من ألفي تذكرة» ← «2000 تذكرة» (INCIDENTS #238)
+    .replace(/(?<![\u0600-\u06FF])(ألف|ألفي|ألفين)\s+(تذكرة|مشجع|متفرج|مشاهد|دولار|قدم|متر|ميل)(?![\u0600-\u06FF])/g,
+      (_m, k: string, w: string) => `${k === "ألف" ? 1000 : 2000} ${w}`);
 }
 const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائتي: 200, مائتين: 200, ثلاثمائة: 300, أربعمائة: 400, خمسمائة: 500, ستمائة: 600, سبعمائة: 700, ثمانمائة: 800, تسعمائة: 900 };
 

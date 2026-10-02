@@ -2810,3 +2810,9 @@ test('not needing another win is not a result (INCIDENTS #237)', async () => {
   assert.equal(isSingleMatchSpoiler('كريس جيريكو يؤكد أنه لا يحتاج لتحقيق أي انتصار آخر في AEW', ''), false);
   assert.equal(isSingleMatchSpoiler('كريس جيريكو يحقق انتصارا على ريكوشيه في AEW', ''), true);
 });
+
+test('round thousands before a unit become digits too (INCIDENTS #238)', async () => {
+  const { spelledAgesToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledAgesToDigits('ليصل إلى أكثر من ألفي تذكرة'), 'ليصل إلى أكثر من 2000 تذكرة');
+  assert.equal(spelledAgesToDigits('حضر ألف مشجع'), 'حضر 1000 مشجع');
+});
