@@ -4668,6 +4668,21 @@
    "wrong": "بطل AAA للوزن الثقيل",
    "right": "بطل AAA ميغا",
    "note": "AAA Mega Champion — INCIDENTS #218"
+  },
+  {
+   "wrong": "أجينت زيرو",
+   "right": "إيجنت زيرو",
+   "note": "Agent Zero — الشكل الأكثر استخداما، INCIDENTS #220"
+  },
+  {
+   "wrong": "إيغنت زيرو",
+   "right": "إيجنت زيرو",
+   "note": "Agent Zero — INCIDENTS #220"
+  },
+  {
+   "wrong": "جيسي ماكي",
+   "right": "جيسي مكاي",
+   "note": "Jessie McKay — INCIDENTS #220"
   }
  ]
 }

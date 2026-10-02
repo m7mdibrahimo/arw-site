@@ -2707,3 +2707,9 @@ test('«old» without any evidence in the text is not trusted (INCIDENTS #219)',
   assert.equal(hasOldEvidence('عاد إلى الحلبة الليلة', now), false);
   assert.equal(settleSpoilerAge(v, 'عاد في عام 2021 إلى الحلبة', [], now, [], []).age, 'old');
 });
+
+test('Agent Zero and Jessie McKay have one spelling (INCIDENTS #220)', () => {
+  assert.equal(applyCorrections('أمرت تاشا ستيلز أجينت زيرو و إيغنت زيرو'), 'أمرت تاشا ستيلز إيجنت زيرو و إيجنت زيرو');
+  assert.equal(applyCorrections('برفقة جيسي ماكي'), 'برفقة جيسي مكاي');
+  assert.match(buildNamesGlossaryHint('Agent Zero and Jessie McKay'), /Agent Zero = إيجنت زيرو/);
+});
