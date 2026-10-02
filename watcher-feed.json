@@ -1,5 +1,25 @@
 [
   {
+    "id": 331583,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-9-29-draws-670000-viewers/",
+    "date": "2026-10-02T07:20:03",
+    "date_gmt": "2026-10-02T11:20:03",
+    "title": {
+      "rendered": "WWE NXT (9/29) Draws 670,000 Viewers"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25191506/nxt2024_25.jpg"
+  },
+  {
+    "id": 331579,
+    "link": "https://www.fightful.com/wrestling/tna-impact-9-24-remains-above-200000-viewers/",
+    "date": "2026-10-02T07:13:28",
+    "date_gmt": "2026-10-02T11:13:28",
+    "title": {
+      "rendered": "TNA iMPACT! (9/24) Remains Above 200,000 Viewers"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/26181456/48d23a281b51ea48d72d132dafab4752-1-1.jpg"
+  },
+  {
     "id": 331386,
     "link": "https://www.fightful.com/wrestling/sinner-saint-expresses-gratitude-to-scott-damore-for-highlighting-canadian-wrestlers-with-mlp/",
     "date": "2026-10-02T07:00:00",
@@ -278,25 +298,5 @@
       "rendered": "Update On Possible Culmination Of Bayley/Lyra Valkyria Feud"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/13213721/HNJrgAFXgAAUI7V.jpg"
-  },
-  {
-    "id": 331491,
-    "link": "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes/",
-    "date": "2026-10-01T13:08:12",
-    "date_gmt": "2026-10-01T17:08:12",
-    "title": {
-      "rendered": "Fred Ottman Undergoes Multiple Surgeries On His Eyes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/25121842/Screenshot-2495-e1772039958874.png"
-  },
-  {
-    "id": 327065,
-    "link": "https://www.fightful.com/wrestling/cassie-lee-mckay-327065/",
-    "date": "2026-10-01T13:00:00",
-    "date_gmt": "2026-10-01T17:00:00",
-    "title": {
-      "rendered": "Cassie Lee: I Wouldn&#8217;t Want My Tag Partner To Be Anyone Else But Jessie McKay"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2029/09/04095046/maxresdefault-24.jpg"
   }
 ]
