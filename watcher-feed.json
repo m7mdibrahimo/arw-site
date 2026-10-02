@@ -1,5 +1,15 @@
 [
   {
+    "id": 331550,
+    "link": "https://www.fightful.com/wrestling/chantel-monroe-returns-to-the-ring/",
+    "date": "2026-10-01T21:45:06",
+    "date_gmt": "2026-10-02T01:45:06",
+    "title": {
+      "rendered": "Chantel Monroe Returns To The Ring"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01214429/Screenshot-2026-10-01-at-9.44.11-PM.png"
+  },
+  {
     "id": 331541,
     "link": "https://www.fightful.com/wrestling/lucha-libre-aaa-live-event-announced-for-november-27-in-houston/",
     "date": "2026-10-01T21:25:10",
@@ -288,15 +298,5 @@
       "rendered": "Netflix Blacks Out Jacob Fatu Being Run Over On WWE Raw"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/28222256/HTWapdcXUAErrhj.jpg"
-  },
-  {
-    "id": 10390,
-    "link": "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more/",
-    "date": "2026-10-01T10:05:00",
-    "date_gmt": "2026-10-01T14:05:00",
-    "title": {
-      "rendered": "WWE, AEW, TNA, NJPW Wrestler Injury Report List: Expected Returns, Inactives | Fightful"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/17140514/Resources.png"
   }
 ]
