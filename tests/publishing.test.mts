@@ -2816,3 +2816,11 @@ test('round thousands before a unit become digits too (INCIDENTS #238)', async (
   assert.equal(spelledAgesToDigits('ليصل إلى أكثر من ألفي تذكرة'), 'ليصل إلى أكثر من 2000 تذكرة');
   assert.equal(spelledAgesToDigits('حضر ألف مشجع'), 'حضر 1000 مشجع');
 });
+
+test('a nearing return is not a spoiler; an ordinal age becomes digits (INCIDENTS #239)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('تحديثات الكواليس حول عودة درو ماكنتاير المرتقبة إلى WWE', ''), false);
+  assert.equal(isSingleMatchSpoiler('تشير التقارير الصحفية الأخيرة إلى قرب عودته إلى شاشات العرض', ''), false);
+  const { spelledAgesToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledAgesToDigits('مشيرا إلى أنه سيكون في الثالثة والأربعين من عمره عند انتهاء العقد'), 'مشيرا إلى أنه سيكون في الـ43 من عمره عند انتهاء العقد');
+});

@@ -2033,10 +2033,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   const announced = ar("مرتقب|مرتقبة|المرتقب|المرتقبة|سيشهد|ستشهد|يستعد|تستعد|القادم|القادمة|المقبل|المقبلة").test(title) && !ar("يعود في|تعود في|عاد|عادت|يسجل عودته|تسجل عودتها|بعد عودته|بعد عودتها").test(title);
   // News ABOUT a return still to come: «آخر التطورات حول عودة نايومي إلى WWE» — she hasn't been
   // back yet, the story says her name isn't even in creative talks (INCIDENTS #204).
-  const pendingReturn = ar("(?:آخر\\s+)?(?:التطورات|تطورات|المستجدات|مستجدات|تحديث|تحديثات|تقارير|موعد|توقيت|خطط|أنباء|شائعات|تفاصيل)\\s+(?:جديدة\\s+)?(?:حول|بشأن|عن)\\s+(?:ال)?عودة");
+  const pendingReturn = ar("(?:آخر\\s+)?(?:التطورات|تطورات|المستجدات|مستجدات|تحديث|تحديثات|تقارير|موعد|توقيت|خطط|أنباء|شائعات|تفاصيل)\\s+(?:جديدة\\s+|الكواليس\\s+|كواليس\\s+)?(?:حول|بشأن|عن)\\s+(?:ال)?عودة");
   // «عند عودته» / «حين عودتها» is a return still to come: Bronson Reed's lead «…بشكل أفضل عند عودته
   // إلى عروض WWE» — he's out with a torn biceps (INCIDENTS #212).
-  const whenReturn = ar("(?:عند|لدى|حين|حال|فور|قبل|بمجرد)\\s+(?:عودته|عودتها|عودتهم|عودتهما|العودة)");
+  const whenReturn = ar("(?:عند|لدى|حين|حال|فور|قبل|بمجرد|قرب|اقتراب)\\s+(?:موعد\\s+)?(?:عودته|عودتها|عودتهم|عودتهما|العودة)");
   // Talking ABOUT a return that is history: «نيكي بيلا تقول إن التغيرات… جعلت عودتها إلى WWE أكثر صعوبة»
   // — she came back in 2025 (INCIDENTS #228). The return is the subject of the talk, not tonight's news.
   const aboutReturn = ar("(?:جعلت|جعل|صعوبة|صعوبات|تحديات|ذكريات|أسرار|كواليس|تفاصيل)\\s+(?:ال)?(?:عودته|عودتها|عودتهم|عودة)");
