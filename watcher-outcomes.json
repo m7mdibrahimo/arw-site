@@ -1,58 +1,58 @@
 {
- "https://www.fightful.com/wrestling/chantel-monroe-returns-to-the-ring": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T01:48:03.906Z"
- },
  "https://www.fightful.com/wrestling/tna-impact-results-10-1-syx-to-speak-leon-slater-competes": {
   "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
   "retry": true,
-  "at": "2026-10-02T01:47:50.301Z"
+  "at": "2026-10-02T01:58:49.729Z"
  },
  "https://www.fightful.com/wrestling/gage-goldberg-states-that-hes-interested-in-pro-wrestling-career": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:39.313Z"
+  "at": "2026-10-02T01:58:37.179Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-wants-to-be-a-grand-slam-champion-on-the-main-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:39.191Z"
+  "at": "2026-10-02T01:58:37.067Z"
  },
  "https://www.fightful.com/wrestling/watch-extended-tributes-to-pac-aew-stars-remember-and-honor-benjamin-pac-satterley": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:39.007Z"
+  "at": "2026-10-02T01:58:36.899Z"
  },
  "https://www.fightful.com/wrestling/aaa-wrestlers-to-be-featured-in-upcoming-wwe-merchandise": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:38.760Z"
+  "at": "2026-10-02T01:58:36.674Z"
  },
  "https://www.fightful.com/wrestling/wwe-in-no-rush-to-announce-wrestlemania-43-date": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:38.636Z"
+  "at": "2026-10-02T01:58:36.563Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:38.513Z"
+  "at": "2026-10-02T01:58:36.453Z"
  },
  "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:38.390Z"
+  "at": "2026-10-02T01:58:36.342Z"
  },
  "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:38.236Z"
+  "at": "2026-10-02T01:58:36.202Z"
  },
  "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-02T01:47:38.056Z"
+  "at": "2026-10-02T01:58:36.038Z"
+ },
+ "https://www.fightful.com/wrestling/chantel-monroe-returns-to-the-ring": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-02T01:48:03.906Z"
  },
  "https://www.fightful.com/wrestling/netflix-blacks-out-jacob-fatu-being-run-over-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
