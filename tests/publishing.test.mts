@@ -2713,3 +2713,13 @@ test('Agent Zero and Jessie McKay have one spelling (INCIDENTS #220)', () => {
   assert.equal(applyCorrections('برفقة جيسي ماكي'), 'برفقة جيسي مكاي');
   assert.match(buildNamesGlossaryHint('Agent Zero and Jessie McKay'), /Agent Zero = إيجنت زيرو/);
 });
+
+test('a results report lists every source result; a match heading never carries the outcome (INCIDENTS #221)', async () => {
+  const { missingResults } = await import('../scripts/fightful-watcher');
+  const src = 'Results below. BDE def. Mr Elegance Leon Slater def. Joe Alonzo Cedric Alexander def. Ricky Sosa';
+  assert.equal(missingResults(src, '🏆 **الفائز:** BDE\n🏆 **الفائز:** ليون سلاتر').length, 3);
+  assert.equal(missingResults(src, '🏆 **الفائز:** BDE\n🏆 **الفائز:** ليون سلاتر\n🏆 **الفائز:** سيدريك ألكسندر').length, 0);
+  assert.equal(autoFix('**المواجهة الأولى: نزال تصفيات على بطولة X Division: BDE ينهزم أمام Mr Elegance**'), '**المواجهة الأولى: نزال تصفيات على بطولة X Division**');
+  assert.equal(autoFix('**المواجهة الثانية: نزال فردي**'), '**المواجهة الثانية: نزال فردي**');
+  assert.equal(applyCorrections('مصطفى علي وسبشال أجنت زيرو'), 'مصطفى علي وإيجنت زيرو');
+});

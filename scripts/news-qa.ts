@@ -426,6 +426,9 @@ export function spelledAgesToDigits(body: string): string {
 export function autoFix(text: string): string {
   if (!text) return text;
   text = repairMixedTitles(text);
+  // A match heading never carries the outcome: «…Bound for Glory: BDE ينهزم أمام Mr Elegance**» sat above
+  // «الفائز: BDE» (INCIDENTS #221). The winner line says who won; the heading keeps the match only.
+  text = text.replace(/^(\*\*(?:المواجهة|الحدث الرئيسي|النزال)[^\n*]*?):\s*[^\n*:]*?(?:ينهزم|يهزم|تهزم|تنهزم|يفوز|تفوز|يتغلب|تتغلب|ينتصر|تنتصر|يسقط|تسقط)[^\n*]*\*\*$/gm, "$1**");
   // A word cut after «الأ» and its rest glued to the next one: «بالأ اتحادات» ← «بالاتحادات» (INCIDENTS #195)
   text = text.replace(/(?<![\u0600-\u06FF])([بلوفك]?)الأ ا(?=[\u0600-\u06FF]{2,})/g, "$1الا");
   // HTML line breaks written into the markdown body («<br><br>**المواجهة الأولى…»)

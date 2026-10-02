@@ -2380,6 +2380,20 @@ export function leadHasMatchResult(plainText: string = "", title: string = ""): 
 /** The owner (2 Oct): a spoiler lasts 6 hours, and nothing is held longer (INCIDENTS #215). */
 export const SPOILER_HOURS = 6;
 
+/**
+ * Source result lines («A def. B») a results report has fewer winners than (INCIDENTS #221). Returns
+ * the source lines when the Arabic report has fewer «الفائز» lines than the source has results.
+ */
+export function missingResults(sourceText: string, body: string): string[] {
+  // The source arrives as one flattened line («… BDE def. Mr Elegance Indi Hartwell def. …»):
+  // count «def.» and hand the copy editor each one with its neighbours.
+  const src = String(sourceText || "");
+  const hits = [...src.matchAll(/\b(?:def\.|defeated|defeats)\s/gi)];
+  const winners = (String(body || "").match(/الفائز(?:ة|ان|تان|ون)?:/g) || []).length;
+  if (hits.length <= winners) return [];
+  return hits.map(m => src.slice(Math.max(0, m.index! - 45), m.index! + 55).replace(/\s+/g, " ").trim());
+}
+
 export function recentShowNames(hours: number = 24, newsDir: string = NEWS_DIR): string[] {
   const names = new Set<string>();
   if (!fs.existsSync(newsDir)) return [];
@@ -4136,6 +4150,10 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   let proofEdits: ProofEdit[] = [];
   const preIssues = checkArticle(draft.title, draft.body, draft.tags);
+  // A results report must carry every result the source lists: TNA iMPACT 1 Oct dropped «Cedric
+  // Alexander def. Ricky Sosa» (INCIDENTS #221). The copy editor gets the source lines to add.
+  const missing = missingResults(plainText, draft.body);
+  if (missing.length) preIssues.push({ code: "missing_result", severity: "error", field: "body", message: `تقرير النتائج ناقصه ${missing.length} نتيجة من المصدر — أضفها بنفس الشكل`, excerpt: missing.join(" | ") });
   // The copy editor is part of publishing, not optional: an unreviewed article
   // went out with 5 obvious mistakes when one call failed (2026-09-26). Retry
   // once; if it still doesn't answer, wait for the next run (manual publishes
