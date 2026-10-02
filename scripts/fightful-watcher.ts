@@ -2536,7 +2536,9 @@ function isDaysAhead(month: number, day: number, days: number, now = Date.now())
 // the only other record of «aired», and it comes out after the show — so a story written before the
 // show was judged against the model's guess: «Mason Rook not cleared for NXT» two hours before NXT
 // was held as «something from a show that aired» (INCIDENTS #156).
-const WEEKLY_TV: [string, number][] = [["wwe raw", 1], ["wwe nxt", 2], ["aew dynamite", 3], ["tna impact", 4], ["wwe smackdown", 5], ["aew collision", 6]];
+// Thursday streams too (MLW Fusion, ROH TV, WWE Main Event): Yota Tsuji's Fusion teaser was held a
+// day later because Fusion wasn't known as a weekly show (INCIDENTS #243)
+const WEEKLY_TV: [string, number][] = [["wwe raw", 1], ["wwe nxt", 2], ["aew dynamite", 3], ["tna impact", 4], ["wwe smackdown", 5], ["aew collision", 6], ["mlw fusion", 4], ["roh tv", 4], ["wwe main event", 4]];
 /** A story whose source title is about New Japan Pro-Wrestling. */
 export function isNjpwStory(sourceTitle: string): boolean {
   return /\bNJPW\b|\bNew Japan\b|\bWrestle Kingdom\b|\bG1 Climax\b|\bBest of the Super Juniors\b/i.test(sourceTitle || "");

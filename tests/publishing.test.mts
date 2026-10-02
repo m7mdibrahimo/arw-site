@@ -2839,3 +2839,10 @@ test('a promotion coming back is not a return spoiler; «بقضاء وقتا» c
   assert.equal(isSingleMatchSpoiler('عودة اتحاد Southern Underground Pro في شهر نوفمبر وأبرز محطات عرض TNA iMPACT', ''), false);
   assert.equal(applyCorrections('سعادتها بقضاء وقتا أطول'), 'سعادتها بقضاء وقت أطول');
 });
+
+test('MLW Fusion is a known weekly show, so a day-old Fusion moment is old (INCIDENTS #243)', async () => {
+  const { settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const v = { spoils: true, kind: 'show', age: 'recent', note: '' } as any;
+  assert.equal(settleSpoilerAge(v, 'عرض MLW Fusion يشهد عرض مقطع تمهيدي للمصارع يوتا تسوجي', [], Date.parse('2026-10-02T20:40:00Z'), ['mlw fusion'], []).spoils, false);
+  assert.equal(applyCorrections('حسمها لصوحه'), 'حسمها لصالحه');
+});
