@@ -644,7 +644,8 @@
     "httpsarab-wrestlingcomnewsميكي-جيمز-تظهر-في-عرض-tna-bound-for-glory": 1790912213132,
     "httpsarab-wrestlingcomnewsواردلو-يتحدث-عن-عودته-الحلوة-والمررة-إلى-الحلبات-في-عرض-aew-dynamite": 1790912268080,
     "httpsarab-wrestlingcomnewsنتائج-عرض-wwe-main-event-أول-أكتوبر-2026-كيويكي-وأكسيوم": 1790912272446,
-    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390
+    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390,
+    "httpsarab-wrestlingcomnewsعرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1790913887830
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsذا-هارديز-يتحديان-جوزيف-ساير-وصامويل-شو-مع-الإعلان-عن-نزال-لتحديد-المترشح-لبطولة-x-division-في-عرض-tna-impact-القادم": 1790308119523,
@@ -1292,7 +1293,8 @@
     "httpsarab-wrestlingcomnewsميكي-جيمز-تظهر-في-عرض-tna-bound-for-glory": 1790912223364,
     "httpsarab-wrestlingcomnewsواردلو-يتحدث-عن-عودته-الحلوة-والمررة-إلى-الحلبات-في-عرض-aew-dynamite": 1790912268080,
     "httpsarab-wrestlingcomnewsنتائج-عرض-wwe-main-event-أول-أكتوبر-2026-كيويكي-وأكسيوم": 1790912281672,
-    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390
+    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390,
+    "httpsarab-wrestlingcomnewsعرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1790913887830
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsذا-هارديز-يتحديان-جوزيف-ساير-وصامويل-شو-مع-الإعلان-عن-نزال-لتحديد-المترشح-لبطولة-x-division-في-عرض-tna-impact-القادم": 1790308182855,
@@ -1751,7 +1753,8 @@
     "httpsarab-wrestlingcomnewsتحديد-نزال-بطولة-tna-العالمية-للفرق-ونزال-بطولة-التلفزيون-للسيدات-ومواجهة-تحديد-أفضلية-call-your-shot-gauntlet-في-عرض-tna-impact-القادم": 1790911668116,
     "https___arab-wrestling_com_news_______-_____-__-_____-______-_______-___-_______-__-___-aew-dynamite_": 1790911987354,
     "httpsarab-wrestlingcomnewsواردلو-يتحدث-عن-عودته-الحلوة-والمررة-إلى-الحلبات-في-عرض-aew-dynamite": 1790912268080,
-    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390
+    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390,
+    "httpsarab-wrestlingcomnewsعرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1790913887830
   },
   "x": {
     "https___arab-wrestling_com_news_____-_______-____-_____-______-__-____-___-_____-___-___-wwe-smackdown-______-______-________-________": 1790383251303,
@@ -1879,7 +1882,8 @@
     "httpsarab-wrestlingcomnewsتحديد-نزال-بطولة-tna-العالمية-للفرق-ونزال-بطولة-التلفزيون-للسيدات-ومواجهة-تحديد-أفضلية-call-your-shot-gauntlet-في-عرض-tna-impact-القادم": 1790911668116,
     "https___arab-wrestling_com_news_______-_____-__-_____-______-_______-___-_______-__-___-aew-dynamite_": 1790911987354,
     "httpsarab-wrestlingcomnewsواردلو-يتحدث-عن-عودته-الحلوة-والمررة-إلى-الحلبات-في-عرض-aew-dynamite": 1790912268080,
-    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390
+    "https___arab-wrestling_com_news____-tna-impact-_____-____-_______-______-____-_________": 1790913642390,
+    "httpsarab-wrestlingcomnewsعرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1790913887830
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -2915,6 +2919,15 @@
       "reason": "return",
       "why": "title",
       "note": "النص يتحدث عن عودة واردلو في AEW Dynamite ولكن عرض AEW Dynamite لم يُذكر أنه ضمن آخر 6 ساعات وتاريخ النشر حديث، وتصنف العودة هنا كحدث تم في العرض."
+    },
+    "httpsarab-wrestlingcomnewsعرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": {
+      "at": 1790913887830,
+      "title": "عرض TNA iMPACT: ثلاثة أمور كرهناها وثلاثة أمور أحببناها",
+      "url": "/news/عرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها/",
+      "image": "/img/QNUGiiPpGW-780.jpeg",
+      "reason": "show",
+      "why": "ai",
+      "note": "النص يكشف تفاصيل وأداء من عرض TNA iMPACT الذي أذاع حديثاً في آخر 6 ساعات."
     }
   },
   "byFile": {
