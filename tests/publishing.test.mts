@@ -2795,3 +2795,18 @@ test('Arn Anderson has one spelling (INCIDENTS #236)', () => {
   assert.equal(applyCorrections('تيري تايلور وسترن أندرسون'), 'تيري تايلور وآرن أندرسون');
   assert.equal(applyCorrections('أرن أندرسون'), 'آرن أندرسون');
 });
+
+test('the health check finds a renamed story by its file, like the poster does (INCIDENTS #237)', async () => {
+  const { stuckOnSocial } = await import('../worker/src/health');
+  const now = Date.now();
+  const items = [{ url: '/news/new-title/', file: 'f1', title: 'خبر', published_at: new Date(now - 2 * 3600_000).toISOString() }];
+  const state = { telegram: { old: now }, facebook: { old: now }, instagram: { old: now }, held: {}, byFile: { f1: 'old' } };
+  assert.deepEqual(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now, () => true, (it: any) => it.file), []);
+  assert.equal(stuckOnSocial(items, state, (it: any) => it.url.split('/')[2], now).length, 1);
+});
+
+test('not needing another win is not a result (INCIDENTS #237)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('كريس جيريكو يؤكد أنه لا يحتاج لتحقيق أي انتصار آخر في AEW', ''), false);
+  assert.equal(isSingleMatchSpoiler('كريس جيريكو يحقق انتصارا على ريكوشيه في AEW', ''), true);
+});

@@ -52,12 +52,15 @@ const PLATFORM_AR: Record<string, string> = { telegram: "تيليجرام", face
  * is the later of publishing and the release from a hold: seven NXT stories the owner released
  * together were called stuck on Instagram eight minutes later (INCIDENTS #158).
  */
-export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now(), igAllows: (priority: unknown) => boolean = () => true): { title: string; missing: string[] }[] {
+export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now(), igAllows: (priority: unknown) => boolean = () => true, fileOf: (it: any) => string = () => ""): { title: string; missing: string[] }[] {
   const waiting: { title: string; missing: string[]; from: number }[] = [];
   for (const it of items) {
     const pub = Date.parse(it?.published_at || it?.date || "") || 0;
     if (!pub || (it.kind || "news") !== "news") continue;
-    const key = keyOf(it);
+    // A story whose title (and URL) was edited after posting is found by its file, like the poster does —
+    // Tony Khan's «Being The Elite» story was called «not on Telegram» after a title fix (INCIDENTS #237)
+    const f = fileOf(it);
+    const key = (f && state?.byFile?.[f]) || keyOf(it);
     const h = state?.held?.[key];
     if (h && !h.releasedAt) continue;
     const from = Math.max(pub, Number(h?.releasedAt) || 0);
@@ -93,7 +96,7 @@ async function readHealth(env: HealthEnv): Promise<HealthState> {
   try { return JSON.parse((await env.PUSH_KV!.get(HEALTH_KEY)) || "") as HealthState; } catch { return { checkedAt: 0, problems: [] }; }
 }
 
-export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: (it: any) => string, readState: () => Promise<any>, igRule: () => Promise<(priority: unknown) => boolean> = async () => () => true): Promise<void> {
+export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: (it: any) => string, readState: () => Promise<any>, igRule: () => Promise<(priority: unknown) => boolean> = async () => () => true, fileOf: (it: any) => string = () => ""): Promise<void> {
   if (!env.PUSH_KV) return;
   try {
     const now = Date.now();
@@ -136,7 +139,7 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
       const state = await readState().catch(() => null);
       if (state) {
         const igAllows = await igRule().catch(() => () => true);
-        const stuck = stuckOnSocial(Array.isArray(feed) ? feed : [], state, keyOf, now, igAllows)
+        const stuck = stuckOnSocial(Array.isArray(feed) ? feed : [], state, keyOf, now, igAllows, fileOf)
           .map(s => ({ key: `social:${s.title}`, code: "social_stuck", title: `«${s.title}» منزلش على ${s.missing.join(" و")}`, detail: "عدّى عليه أكتر من ساعة على الموقع ومش محجوز" }));
         problems = mergeProblems(problems, stuck, ["social_stuck"], now);
       }

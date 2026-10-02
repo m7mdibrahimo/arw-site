@@ -2059,7 +2059,11 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
     : title;
   // Betting odds before a card are a preview, not a result: «الكشف عن ترشيحات ونسب الفوز لمواجهات
   // UFC 332» was held (INCIDENTS #216).
-  const oddsFree = goalTitle.replace(new RegExp(ar("(?:و|ف)?(?:نسب|احتمالات|حظوظ|فرص|ترشيحات)\\s+(?:ال)?فوز").source, "gi"), " ");
+  // Not needing / not chasing wins is not a result: «جيريكو يؤكد أنه لا يحتاج لتحقيق أي انتصار آخر» (INCIDENTS #237)
+  const noNeed = ar("(?:لا|لم\\s+يعد|لن)\\s+(?:يحتاج|تحتاج|يهتم|تهتم|يسعى|تسعى|يريد|تريد|يبحث|تبحث)").test(title)
+    ? goalTitle.replace(new RegExp(ar("(?:ل|إلى\\s+)?(?:تحقيق\\s+)?(?:أي\\s+)?(?:ال)?(?:انتصار|انتصارات|فوز)(?:\\s+آخر|\\s+أخرى)?").source, "gi"), " ")
+    : goalTitle;
+  const oddsFree = noNeed.replace(new RegExp(ar("(?:و|ف)?(?:نسب|احتمالات|حظوظ|فرص|ترشيحات)\\s+(?:ال)?فوز").source, "gi"), " ");
   // Any win/loss wording at all. Verb lists always missed a phrasing («فريق Sisters Of Sin
   // يحقق الفوز في عرض AEW All Out» reached Telegram and Facebook — INCIDENTS #71), and the
   // owner's rule is absolute: no match outcome on social, only full results reports.
@@ -3727,7 +3731,8 @@ export default {
       runScheduleBackstopCron(env),
       // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)
       runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state),
-        async () => { const b = await instagramBudget(env); return (p: unknown) => instagramAllowedFor(p, b.used, b.cap); }),
+        async () => { const b = await instagramBudget(env); return (p: unknown) => instagramAllowedFor(p, b.used, b.cap); },
+        (it: any) => contentFileId(it)),
     ]));
   },
 } satisfies ExportedHandler<Env>;
