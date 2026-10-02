@@ -2684,3 +2684,8 @@ test('betting odds before a card are a preview, not a result (INCIDENTS #216)', 
   assert.equal(isSingleMatchSpoiler('الكشف عن ترشيحات ونسب الفوز لمواجهات UFC 332 بين سيلفا وكونغ بدعم من MyBookie', ''), false);
   assert.equal(isSingleMatchSpoiler('ناتاليا سيلفا تحقق الفوز على وانغ كونغ في UFC 332', ''), true);
 });
+
+test('«put him over» is losing to him, written plainly (INCIDENTS #217)', () => {
+  assert.equal(applyCorrections('منحه الأفضلية وخسره نزالا نظيفا'), 'منحه الأفضلية وخسر أمامه نزالا نظيفا');
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /«put \[someone\] over» معناها/);
+});
