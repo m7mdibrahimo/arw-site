@@ -2846,3 +2846,10 @@ test('MLW Fusion is a known weekly show, so a day-old Fusion moment is old (INCI
   assert.equal(settleSpoilerAge(v, 'عرض MLW Fusion يشهد عرض مقطع تمهيدي للمصارع يوتا تسوجي', [], Date.parse('2026-10-02T20:40:00Z'), ['mlw fusion'], []).spoils, false);
   assert.equal(applyCorrections('حسمها لصوحه'), 'حسمها لصالحه');
 });
+
+test('a spelled thousand after a number is left alone: «899 ألف مشاهد» (INCIDENTS #244)', async () => {
+  const { spelledAgesToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledAgesToDigits('استقطب 899 ألف مشاهد'), 'استقطب 899 ألف مشاهد');
+  assert.equal(spelledAgesToDigits('بلغت 5 مئة دولار'), 'بلغت 5 مئة دولار');
+  assert.equal(spelledAgesToDigits('أكثر من ألفي تذكرة'), 'أكثر من 2000 تذكرة');
+});
