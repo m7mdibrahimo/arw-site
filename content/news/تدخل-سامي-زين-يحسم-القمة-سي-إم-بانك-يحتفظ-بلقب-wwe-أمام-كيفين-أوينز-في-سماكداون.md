@@ -8,10 +8,9 @@ tags:
   - كيفن أوينز
   - سامي زين
   - داميان بريست
-  - عرض WWE SmackDown
+  - WWE SmackDown
   - CM Punk
   - Kevin Owens
-  - WWE SmackDown
 image: /content/images/uw671e90ulql2cjc.jpg
 layout: post-layout.njk
 ---

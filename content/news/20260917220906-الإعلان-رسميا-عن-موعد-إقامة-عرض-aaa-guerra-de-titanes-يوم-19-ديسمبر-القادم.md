@@ -7,7 +7,7 @@ source_url: "https://www.fightful.com/wrestling/aaa-guerra-de-titanes-announced-
 single_match_result: false
 tags:
   - AAA
-  - عرض AAA Guerra De Titanes
+  - AAA Guerra De Titanes
   - اتحاد AAA
   - أخبار المصارعة
   - المصارعة الحرة

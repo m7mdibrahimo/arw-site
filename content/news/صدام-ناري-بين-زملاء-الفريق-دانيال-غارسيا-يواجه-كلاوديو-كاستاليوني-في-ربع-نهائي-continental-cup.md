@@ -6,9 +6,8 @@ date: 2026-08-22T07:16:00.000+03:00
 tags:
   - دانيال غارسيا
   - كلاوديو كاستانيولي
-  - عرض AEW Collision
-  - Daniel Garcia
   - AEW Collision
+  - Daniel Garcia
 image: /content/images/vtgcow8gwc16imwd.jpg
 layout: post-layout.njk
 ---

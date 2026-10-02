@@ -8,7 +8,7 @@ tags:
   - هيرومو تاكاهاشي
   - شينسكي ناكامورا
   - عروض WWE
-  - عرض WWE RAW
+  - WWE RAW
   - Kyoki
 image: /content/images/f2uq4c81rg8yu1vi.jpg
 layout: post-layout.njk

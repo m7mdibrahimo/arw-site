@@ -5,10 +5,9 @@ date: 2026-08-25T20:02:00.000+03:00
 tags:
   - آدم بيرس
   - عروض WWE
-  - عرض WWE RAW
+  - WWE RAW
   - أخبار المصارعة
   - Adam Pearce
-  - WWE RAW
 image: /content/images/1ggpnufhmu860ouv.jpg
 layout: post-layout.njk
 ---

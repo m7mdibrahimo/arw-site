@@ -6,7 +6,7 @@ date: 2026-08-27T06:05:00.000+03:00
 tags:
   - عروض AEW
   - منصة Max
-  - عرض All Out
+  - All Out
   - أخبار المصارعة
   - AEW Dynamite
   - AEW Collision

@@ -8,8 +8,8 @@ source_url: "https://www.fightful.com/wrestling/thekla-vs-mercedes-mone-for-aew-
 single_match_result: true
 tags:
   - AEW
-  - عرض AEW WrestleDream
-  - عرض AEW All Out
+  - AEW WrestleDream
+  - AEW All Out
   - مرسيدس موني
   - ثيكلا
   - ويلو نايتينغيل

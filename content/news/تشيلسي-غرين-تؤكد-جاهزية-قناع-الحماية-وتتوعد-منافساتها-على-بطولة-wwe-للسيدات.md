@@ -5,9 +5,8 @@ date: 2026-08-23T05:09:00.000+03:00
 tags:
   - تشيلسي غرين
   - ريا ريبلي
-  - عرض WWE SmackDown
-  - Chelsea Green
   - WWE SmackDown
+  - Chelsea Green
 image: /content/images/qqwyvghn9t189p30.jpg
 layout: post-layout.njk
 ---

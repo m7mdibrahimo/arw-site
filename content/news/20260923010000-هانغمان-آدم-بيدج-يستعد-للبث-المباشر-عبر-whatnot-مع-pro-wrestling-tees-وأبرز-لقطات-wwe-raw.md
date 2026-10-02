@@ -10,8 +10,8 @@ tags:
   - AEW
   - WWE
   - hangmang-adam-page
-  - عرض WWE RAW
-  - عرض AEW All Out
+  - WWE RAW
+  - AEW All Out
 image: /content/images/hl12o3o0kzj8ymbv.jpg
 layout: post-layout.njk
 ---

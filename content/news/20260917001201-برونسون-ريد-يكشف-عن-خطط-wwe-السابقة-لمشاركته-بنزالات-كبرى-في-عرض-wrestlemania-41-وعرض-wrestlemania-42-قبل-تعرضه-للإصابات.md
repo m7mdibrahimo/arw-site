@@ -10,7 +10,7 @@ tags:
   - برونسون ريد
   - WrestleMania
   - أخبار المصارعة
-  - عرض WWE RAW
+  - WWE RAW
 image: /content/images/0j1ny3s5w201ymtm.jpg
 layout: post-layout.njk
 ---

@@ -4,10 +4,9 @@ title: '"تراجع حاد!".. نسب مشاهدة AEW Dynamite تهبط لأق�
 date: 2026-08-23T05:17:00.000+03:00
 tags:
   - نسب المشاهدة
-  - عرض AEW Dynamite
+  - AEW Dynamite
   - كيني أوميغا
   - ويل أوسبراي
-  - AEW Dynamite
 image: /content/images/guctfg8xvl06qojf.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,6 @@ tags:
   - AEW
   - AEW Dynamite
   - توني خان
-  - عرض AEW Dynamite
   - أخبار المصارعة
 image: /content/images/vq00085et32i8dpn.jpg
 layout: post-layout.njk

@@ -5,8 +5,8 @@ date: 2026-09-11T08:06:00.000+03:00
 tags:
   - عروض WWE
   - عروض AEW
-  - عرض Worlds Collide
-  - عرض All Out
+  - Worlds Collide
+  - All Out
   - حرب المصارعة
   - أخبار المصارعة
 image: /content/images/pr613n9wcea95pfh.jpg

@@ -7,7 +7,7 @@ tags:
   - تالا تونغا
   - تاما تونغا
   - عروض WWE
-  - عرض WWE SmackDown
+  - WWE SmackDown
   - أخبار المصارعة
   - Haku
   - SmackDown

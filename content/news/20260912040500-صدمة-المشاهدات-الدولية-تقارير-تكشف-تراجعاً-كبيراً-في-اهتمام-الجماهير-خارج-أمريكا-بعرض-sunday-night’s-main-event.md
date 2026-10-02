@@ -4,7 +4,7 @@ title: صدمة المشاهدات الدولية.. تقارير تكشف ترا
 date: 2026-09-12T07:05:00.000+03:00
 tags:
   - عروض WWE
-  - عرض Sunday Nights Main Event
+  - Sunday Nights Main Event
   - نسب المشاهدة
   - كودي رودز
   - راندي أورتن

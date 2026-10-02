@@ -6,10 +6,9 @@ tags:
   - بارون كوربين
   - تريك ويليامز
   - ليل ياتي
-  - عرض WWE SmackDown
+  - WWE SmackDown
   - Baron Corbin
   - Trick Williams
-  - WWE SmackDown
 image: /content/images/03pwzxh9wy4pxwlt.jpg
 layout: post-layout.njk
 ---

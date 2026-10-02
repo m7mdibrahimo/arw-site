@@ -11,7 +11,7 @@ tags:
   - ناتاليا
   - روكسان بيريز
   - تشيلسي غرين
-  - عرض AAA
+  - AAA
 image: /content/images/cyhxvc3jknv3y2mj.jpg
 layout: post-layout.njk
 ---

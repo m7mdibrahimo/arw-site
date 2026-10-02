@@ -6,7 +6,7 @@ tags:
   - روكسان بيريز
   - ناتاليا
   - عروض AAA
-  - عرض Triplemania 34
+  - Triplemania 34
   - أخبار المصارعة
   - عروض WWE
 image: /content/images/lk7hiozn15fzwk7l.jpg

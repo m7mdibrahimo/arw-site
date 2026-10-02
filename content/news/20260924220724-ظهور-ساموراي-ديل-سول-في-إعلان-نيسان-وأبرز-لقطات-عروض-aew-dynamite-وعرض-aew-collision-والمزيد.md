@@ -13,7 +13,7 @@ tags:
   - سي ام بانك
   - كلاوديو كاستانيولي
   - دومينيك ميستيريو
-  - عرض AEW Dynamite
+  - AEW Dynamite
 image: /content/images/dnm4jj5tlve78zlz.jpg
 layout: post-layout.njk
 ---

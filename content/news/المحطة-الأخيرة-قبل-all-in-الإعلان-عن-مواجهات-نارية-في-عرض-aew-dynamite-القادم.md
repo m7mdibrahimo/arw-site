@@ -6,7 +6,6 @@ tags:
   - سويرف ستريكلاند
   - جاك بيري
   - جون موكسلي
-  - عرض AEW Dynamite
   - AEW Dynamite
 image: /content/images/m5mtimxblwfv5s46.jpg
 layout: post-layout.njk

@@ -7,7 +7,6 @@ tags:
   - سولو سيكوا
   - ال ايه نايت
   - رومان رينز
-  - عرض WWE RAW
   - WWE RAW
 image: /content/images/oxw7ayb10ulhdw0v.jpg
 layout: post-layout.njk

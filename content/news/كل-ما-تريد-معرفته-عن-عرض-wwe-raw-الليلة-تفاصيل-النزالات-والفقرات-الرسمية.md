@@ -5,10 +5,9 @@ permalink: "/news/كل-ما-تريد-معرفته-عن-عرض-wwe-raw-الليل
 date: 2026-08-24T21:15:00.000+03:00
 tags:
   - عروض WWE
-  - عرض WWE RAW
+  - WWE RAW
   - أخبار المصارعة
   - نتائج العروض
-  - WWE RAW
 image: /content/images/b4q2ucwt1rddrfmi.jpg
 layout: post-layout.njk
 ---

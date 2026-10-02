@@ -10,7 +10,6 @@ tags:
   - WWE Main Event
   - Rumble
   - AEW Dynamite
-  - عرض WWE Main Event
 image: /content/images/o02sawhxi5rs9ioq.jpg
 layout: post-layout.njk
 ---

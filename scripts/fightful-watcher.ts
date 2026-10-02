@@ -3777,7 +3777,9 @@ export function knownTagSpellings(news: { tags: string[] }[] = loadNews(NEWS_DIR
  * takes the spelling the site already uses for it.
  */
 export function canonicalTags(tags: string[], known: Map<string, string> = (knownTagCache ||= knownTagSpellings())): string[] {
-  return [...new Set(tags.map(t => known.get(tagKey(t)) || t))];
+  // «عرض WWE SmackDown» is the tag «WWE SmackDown» with a word in front: 81 stories carried both
+  // forms and split the show's tag page in two (INCIDENTS #227)
+  return [...new Set(tags.map(t => t.replace(/^عرض\s+(?=[A-Za-z])/, "")).map(t => known.get(tagKey(t)) || t))];
 }
 
 /** The shared-names suspect always reaches the same-story check, first in line. */

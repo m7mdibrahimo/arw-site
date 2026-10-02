@@ -10,7 +10,7 @@ tags:
   - AEW Grand Slam France
   - كريس جيريكو
   - نيك واين
-  - عرض AEW Collision
+  - AEW Collision
 image: /content/images/8vu0rbqmv5yl6v0r.jpg
 layout: post-layout.njk
 ---

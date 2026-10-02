@@ -5,7 +5,7 @@ permalink: "/news/فابيان-آيشنر-يسقط-روهيت-راجو-ويحج�
 date: 2026-09-11T07:58:00.000+03:00
 tags:
   - عروض TNA
-  - عرض Bound for Glory
+  - Bound for Glory
   - فابيان آيشنر
   - بطولة X Division
   - أخبار المصارعة

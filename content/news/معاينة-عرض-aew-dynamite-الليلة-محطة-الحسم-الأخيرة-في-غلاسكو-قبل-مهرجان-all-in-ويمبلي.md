@@ -3,10 +3,9 @@ federation: AEW
 title: "معاينة عرض AEW Dynamite الليلة: محطة الحسم الأخيرة في غلاسكو قبل عرض All In ويمبلي"
 date: 2026-08-26T15:08:00.000+03:00
 tags:
-  - عرض AEW Dynamite
+  - AEW Dynamite
   - عروض AEW
   - أخبار المصارعة
-  - AEW Dynamite
   - Jon Moxley
   - All In 2026
 image: /content/images/yff3ck7lgttglfth.jpg

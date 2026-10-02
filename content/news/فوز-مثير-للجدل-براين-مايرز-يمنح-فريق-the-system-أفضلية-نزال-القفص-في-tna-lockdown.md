@@ -5,7 +5,7 @@ date: 2026-08-21T06:12:00.000+03:00
 tags:
   - TNA
   - براين مايرز
-  - عرض TNA iMPACT
+  - TNA iMPACT
   - TNA Lockdown
   - Lethal Lockdown
   - TNA Wrestling

@@ -2756,3 +2756,8 @@ test('a closing «هل تعتقد…?» reader question is dropped; three slips 
   assert.equal(autoFix('هل تعتقد الإدارة أن الوقت مناسب؟ قالها في المقابلة وتابع حديثه.\nسطر آخر.'), 'هل تعتقد الإدارة أن الوقت مناسب؟ قالها في المقابلة وتابع حديثه.\nسطر آخر.');
   assert.equal(applyCorrections('المحارب السكتلندي في برنامج بودست'), 'المحارب الاسكتلندي في برنامج بودكاست');
 });
+
+test('a tag «عرض WWE SmackDown» is the tag «WWE SmackDown» (INCIDENTS #227)', async () => {
+  const { canonicalTags } = await import('../scripts/fightful-watcher');
+  assert.deepEqual(canonicalTags(['WWE', 'عرض WWE SmackDown', 'WWE SmackDown', 'نيكي بيلا'], new Map()), ['WWE', 'WWE SmackDown', 'نيكي بيلا']);
+});

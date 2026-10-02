@@ -5,13 +5,12 @@ permalink: "/news/عودة-الزعيم-القبلي-رومان-رينز-ونز�
 date: 2026-08-25T04:17:00.000+03:00
 tags:
   - رومان رينز
-  - عرض WWE RAW
+  - WWE RAW
   - عروض WWE
   - أخبار المصارعة
   - راكيل رودريغيز
   - بينتا
   - ري فينيكس
-  - WWE RAW
 image: /content/images/2p5wov4jk81npt5r.jpg
 layout: post-layout.njk
 ---

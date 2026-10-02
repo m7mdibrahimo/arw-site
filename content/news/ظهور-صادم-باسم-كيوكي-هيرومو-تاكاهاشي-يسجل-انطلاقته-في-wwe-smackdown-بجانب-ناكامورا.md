@@ -5,9 +5,8 @@ date: 2026-08-22T07:14:00.000+03:00
 tags:
   - شينسكي ناكامورا
   - هيرومو تاكاهاشي
-  - عرض WWE SmackDown
-  - Shinsuke Nakamura
   - WWE SmackDown
+  - Shinsuke Nakamura
 image: /content/images/zxo2so455vsy4tog.jpg
 layout: post-layout.njk
 ---

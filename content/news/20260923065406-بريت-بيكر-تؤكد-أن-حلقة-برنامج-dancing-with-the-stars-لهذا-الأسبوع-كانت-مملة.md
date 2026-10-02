@@ -10,7 +10,6 @@ tags:
   - بريت بيكر
   - تصريحات نجوم المصارعة
   - أخبار المصارعة
-  - عرض AEW
 image: /content/images/2penzjysha6836su.jpg
 layout: post-layout.njk
 ---

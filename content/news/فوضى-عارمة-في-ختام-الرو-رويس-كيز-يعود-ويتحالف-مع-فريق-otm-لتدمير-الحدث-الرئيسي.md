@@ -4,12 +4,11 @@ title: فوضى عارمة في ختام عرض WWE RAW.. رويس كيز يعو
 date: 2026-08-25T04:19:00.000+03:00
 tags:
   - رويس كيز
-  - عرض WWE RAW
+  - WWE RAW
   - عروض WWE
   - أخبار المصارعة
   - Royce Keys
   - OTM
-  - WWE RAW
 image: /content/images/56quuslerq7aex7y.jpg
 layout: post-layout.njk
 ---

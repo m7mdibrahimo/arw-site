@@ -4,10 +4,10 @@ title: "خوفا من استهجان البطل.. الكشف عن السبب ا�
 date: 2026-09-12T07:07:00.000+03:00
 tags:
   - عروض AEW
-  - عرض Dynamite
+  - Dynamite
   - كيني أوميغا
   - ويل أوسبراي
-  - عرض All In London
+  - All In London
   - أخبار المصارعة
 image: /content/images/fy5lp30cqyzylci5.jpg
 layout: post-layout.njk

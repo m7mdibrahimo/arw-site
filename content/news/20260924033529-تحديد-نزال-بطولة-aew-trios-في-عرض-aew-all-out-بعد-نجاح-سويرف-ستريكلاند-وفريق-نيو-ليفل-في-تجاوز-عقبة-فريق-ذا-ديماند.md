@@ -11,7 +11,7 @@ tags:
   - AEW All Out
   - سويرف ستريكلاند
   - آدم بيدج
-  - عرض AEW Dynamite
+  - AEW Dynamite
 image: /content/images/izryp9k12d8jy5t8.jpg
 layout: post-layout.njk
 ---

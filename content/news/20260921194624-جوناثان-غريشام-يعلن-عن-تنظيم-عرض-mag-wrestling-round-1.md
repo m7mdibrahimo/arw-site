@@ -9,7 +9,7 @@ tags:
   - INDIE
   - جوناثان غريشام
   - MAG Wrestling
-  - عرض MAG Wrestling Round 1
+  - MAG Wrestling Round 1
   - المصارعة الحرة
 image: /content/images/pcei827luxqb9xu6.jpg
 layout: post-layout.njk

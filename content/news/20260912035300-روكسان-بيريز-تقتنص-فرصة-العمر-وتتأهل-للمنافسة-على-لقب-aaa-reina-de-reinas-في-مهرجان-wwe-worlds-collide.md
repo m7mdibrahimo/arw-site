@@ -5,8 +5,8 @@ permalink: "/news/روكسان-بيريز-تقتنص-فرصة-العمر-وتت�
 date: 2026-09-12T06:53:00.000+03:00
 tags:
   - روكسان بيريز
-  - عرض Triplemania 34
-  - عرض Worlds Collide
+  - Triplemania 34
+  - Worlds Collide
   - عروض AAA
   - عروض WWE
   - أخبار المصارعة
