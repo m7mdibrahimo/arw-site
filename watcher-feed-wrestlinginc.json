@@ -1,5 +1,25 @@
 [
   {
+    "id": 1020768189,
+    "link": "https://www.wrestlinginc.com/2275885/wwe-drew-mcintyre-expected-return-backstage-update/",
+    "date": "Fri, 02 Oct 2026 16:27:15 +0000",
+    "date_gmt": "2026-10-02T16:27:15.000Z",
+    "title": {
+      "rendered": "Backstage Update On Drew McIntyre's Expected WWE Return"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-drew-mcintyres-expected-wwe-return/l-intro-1790958330.jpg"
+  },
+  {
+    "id": 1277269309,
+    "link": "https://www.wrestlinginc.com/2275884/wwe-ethan-page-death-eddie-osbourne-canadian-indie-veteran/",
+    "date": "Fri, 02 Oct 2026 16:26:11 +0000",
+    "date_gmt": "2026-10-02T16:26:11.000Z",
+    "title": {
+      "rendered": "WWE's Ethan Page Comments On The Death Of Canadian Indie Veteran Eddie Osbourne"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-ethan-page-comments-on-the-death-of-canadian-indie-veteran-eddie-osbourne/l-intro-1790958134.jpg"
+  },
+  {
     "id": 2054444046,
     "link": "https://www.wrestlinginc.com/2275850/dave-meltzer-provides-update-keanu-carver-wwe-nxt-absence/",
     "date": "Fri, 02 Oct 2026 16:04:46 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Corey Graves Acknowledges Death Of AEW Star Pac On WWE X AAA World Collide Broadcast"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/corey-graves-death-aew-pac-wwe-aaa-worlds-collide-broadcast/l-intro-1790869032.jpg"
-  },
-  {
-    "id": 3274044181,
-    "link": "https://www.wrestlinginc.com/2274516/wwe-bayley-aew-dynamite-tribute-show-late-pac/",
-    "date": "Thu, 01 Oct 2026 14:56:52 +0000",
-    "date_gmt": "2026-10-01T14:56:52.000Z",
-    "title": {
-      "rendered": "WWE's Bayley Comments On AEW Dynamite Tribute Show For The Late Pac"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-bayley-aew-dynamite-tribute-show-late-pac/l-intro-1790870535.jpg"
-  },
-  {
-    "id": 3227163158,
-    "link": "https://www.wrestlinginc.com/2274373/jon-moxley-pac-aew-dynamite-off-the-air-tribute/",
-    "date": "Thu, 01 Oct 2026 13:30:34 +0000",
-    "date_gmt": "2026-10-01T13:30:34.000Z",
-    "title": {
-      "rendered": "Jon Moxley Pays Tribute To Pac After AEW Dynamite Goes Off The Air"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/jon-moxley-pays-tribute-to-pac-after-aew-dynamite-goes-off-the-air/l-intro-1790861317.jpg"
   }
 ]
