@@ -1991,6 +1991,8 @@ export function isResultsArticle(title: string = ""): boolean {
  */
 export function stillSpoiler(h: { why?: string; title?: string; lead?: string }, item?: any): boolean {
   if (item?.social_spoiler === true) return true; // the meaning check still says spoiler
+  // The meaning check now says the event is old (an edit, or the age fix in #223): the words don't hold it
+  if (item?.social_spoiler === false && item?.social_spoiler_age === "old") return false;
   if (h.why === "title") return isSingleMatchSpoiler(String(h.title || ""), "");
   if (h.why === "lead") return isSingleMatchSpoiler(String(h.title || ""), "") || isSingleMatchSpoiler(String(h.lead || ""), "");
   if (h.why === "ai") return !item || item.social_spoiler !== false || isSingleMatchSpoiler(String(item.title || ""), "");

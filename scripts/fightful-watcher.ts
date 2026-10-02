@@ -2573,7 +2573,9 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
   // show and held the story (INCIDENTS #155). A result — or a debut or return (Jaida Parker's RAW
   // debut, 40 hours on: INCIDENTS #159) — that names only a show whose last results report is over
   // 24 hours old and that hasn't aired since, with no recent date, is ordinary news — not a spoiler.
-  if (v.spoils && v.age === "recent" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
+  // …whether or not the model called it a spoiler: Wardlow's return story, a day after Dynamite, came back
+  // «not a spoiler, recent» and the title rule held it anyway (INCIDENTS #223).
+  if (v.age === "recent" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
     return { ...v, spoils: false, kind: "none", age: "old" };
   }
   // A result placed in a past month and nothing recent: Lola Vice's NXT title win «at Stand &

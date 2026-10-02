@@ -2729,3 +2729,14 @@ test('Main Event names and «bittersweet» / «Scramble» are corrected (INCIDEN
   assert.equal(applyCorrections('عودته الحلوة والمررة'), 'عودته الحلوة والمرة');
   assert.equal(applyCorrections('شانتيل مونرو'), 'شانتل مونرو');
 });
+
+test('a weekly show past the window makes the story old even when the model said «not a spoiler, recent»; old releases a hold (INCIDENTS #223)', async () => {
+  const { settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  const { stillSpoiler } = await import('../worker/src/index');
+  const v = { spoils: false, kind: 'none', age: 'recent', note: '' } as any;
+  const text = 'واردلو يتحدث عن عودته الحلوة والمرة إلى الحلبات في عرض AEW Dynamite';
+  assert.equal(settleSpoilerAge(v, text, [], Date.parse('2026-10-02T03:00:00Z'), ['aew dynamite'], []).age, 'old');
+  assert.equal(stillSpoiler({ why: 'title', title: text }, { social_spoiler: false, social_spoiler_age: 'old', title: text }), false);
+  assert.equal(stillSpoiler({ why: 'title', title: text }, { social_spoiler: false, social_spoiler_age: 'recent', title: text }), true);
+  assert.equal(applyCorrections('لشريكتها في فريق التناوب آلي'), 'لشريكتها في الفريق آلي');
+});
