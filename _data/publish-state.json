@@ -643,7 +643,8 @@
     "httpsarab-wrestlingcomnewsbde-يفوز-بأول-نزال-فردي-في-tna-ويحجز-مقعده-في-نزال-بطولة-x-division-في-عرض-bound-for-glory": 1790904228256,
     "httpsarab-wrestlingcomnewsاتحاد-aaa-يعلن-رسميا-عن-إقامة-عرض-حي-يوم-السابع-والعشرين-من-نوفمبر-في-هيوستن": 1790904893639,
     "https___arab-wrestling_com_news______-_____-____-___-_______": 1790906338686,
-    "httpsarab-wrestlingcomnewsشانتل-مونرو-تعود-إلى-الحلبة": 1790906520127
+    "httpsarab-wrestlingcomnewsشانتل-مونرو-تعود-إلى-الحلبة": 1790906520127,
+    "httpsarab-wrestlingcomnewsتاشا-ستيلز-توجه-أجينت-زيرو-للهجوم-على-مصطفى-علي-في-عرض-tna-impact": 1790906567569
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsرايان-نيميث-يحجز-مقعده-في-نزال-بطولة-tna-x-division-ضمن-عرض-bound-for-glory": 1790300800559,
@@ -1290,7 +1291,8 @@
     "httpsarab-wrestlingcomnewsbde-يفوز-بأول-نزال-فردي-في-tna-ويحجز-مقعده-في-نزال-بطولة-x-division-في-عرض-bound-for-glory": 1790904228256,
     "httpsarab-wrestlingcomnewsاتحاد-aaa-يعلن-رسميا-عن-إقامة-عرض-حي-يوم-السابع-والعشرين-من-نوفمبر-في-هيوستن": 1790904904611,
     "https___arab-wrestling_com_news______-_____-____-___-_______": 1790906338686,
-    "httpsarab-wrestlingcomnewsشانتل-مونرو-تعود-إلى-الحلبة": 1790906528505
+    "httpsarab-wrestlingcomnewsشانتل-مونرو-تعود-إلى-الحلبة": 1790906528505,
+    "httpsarab-wrestlingcomnewsتاشا-ستيلز-توجه-أجينت-زيرو-للهجوم-على-مصطفى-علي-في-عرض-tna-impact": 1790906567569
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsرايان-نيميث-يحجز-مقعده-في-نزال-بطولة-tna-x-division-ضمن-عرض-bound-for-glory": 1790300869840,
@@ -1750,7 +1752,8 @@
     "httpsarab-wrestlingcomshowsnwa-powerrr-26-09-2026": 1790903166744,
     "https___arab-wrestling_com_news_bde-____-____-____-____-__-tna-_____-_____-__-____-_____-x-division-__-___-bound-for-glory_": 1790904040206,
     "httpsarab-wrestlingcomnewsbde-يفوز-بأول-نزال-فردي-في-tna-ويحجز-مقعده-في-نزال-بطولة-x-division-في-عرض-bound-for-glory": 1790904228256,
-    "https___arab-wrestling_com_news______-_____-____-___-_______": 1790906338686
+    "https___arab-wrestling_com_news______-_____-____-___-_______": 1790906338686,
+    "httpsarab-wrestlingcomnewsتاشا-ستيلز-توجه-أجينت-زيرو-للهجوم-على-مصطفى-علي-في-عرض-tna-impact": 1790906567569
   },
   "x": {
     "https___arab-wrestling_com_news_____-_______-____-_____-______-__-____-___-_____-___-___-wwe-smackdown-______-______-________-________": 1790383251303,
@@ -1869,7 +1872,8 @@
     "https___arab-wrestling_com_news________-___-____-___-_____-______-_______": 1790889997081,
     "https___arab-wrestling_com_news_bde-____-____-____-____-__-tna-_____-_____-__-____-_____-x-division-__-___-bound-for-glory_": 1790904040206,
     "httpsarab-wrestlingcomnewsbde-يفوز-بأول-نزال-فردي-في-tna-ويحجز-مقعده-في-نزال-بطولة-x-division-في-عرض-bound-for-glory": 1790904228256,
-    "https___arab-wrestling_com_news______-_____-____-___-_______": 1790906338686
+    "https___arab-wrestling_com_news______-_____-____-___-_______": 1790906338686,
+    "httpsarab-wrestlingcomnewsتاشا-ستيلز-توجه-أجينت-زيرو-للهجوم-على-مصطفى-علي-في-عرض-tna-impact": 1790906567569
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -2851,6 +2855,15 @@
       "reason": "result",
       "why": "title",
       "note": "النص يكشف نتيجة نزال تأهيلي وحجز مقعد في TNA iMPACT الذي أقيم مساء أمس (العرض ضمن آخر ٦ ساعات)."
+    },
+    "httpsarab-wrestlingcomnewsتاشا-ستيلز-توجه-أجينت-زيرو-للهجوم-على-مصطفى-علي-في-عرض-tna-impact": {
+      "at": 1790906567569,
+      "title": "تاشا ستيلز توجه أجينت زيرو للهجوم على مصطفى علي في عرض TNA iMPACT",
+      "url": "/news/تاشا-ستيلز-توجه-أجينت-زيرو-للهجوم-على-مصطفى-علي-في-عرض-tna-impact/",
+      "image": "/img/lsdps_U55u-800.jpeg",
+      "reason": "result",
+      "why": "ai",
+      "note": "النص يكشف نتيجة نزال وخيانة حدثت في عرض TNA iMPACT الذي أقيم مساء أمس وتأثر بقاعدة الحرق خلال 6 ساعات."
     }
   },
   "byFile": {
