@@ -11,7 +11,6 @@ tags:
   - Zilla Fatu
   - Matt Hardy
   - Roman Reigns
-  - The Bloodline
   - WWE
   - WWE NXT
   - أخبار المصارعة

@@ -6,7 +6,7 @@ tags:
   - زيلا فاتو
   - WWE
   - WWE NXT
-  - The Bloodline
+  - ذا بلودلاين
   - Umaga
   - Tony DAngelo
   - Grayson Waller

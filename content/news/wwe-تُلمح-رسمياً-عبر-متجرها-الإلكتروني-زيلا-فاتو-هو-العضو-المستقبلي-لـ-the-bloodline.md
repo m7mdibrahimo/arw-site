@@ -5,7 +5,7 @@ permalink: "/news/wwe-تلمح-رسميا-عبر-متجرها-الإلكترون
 date: 2026-08-13T20:14:00.000+03:00
 tags:
   - زيلا فاتو
-  - The Bloodline
+  - ذا بلودلاين
   - WWE
   - WWE NXT
   - Roman Reigns

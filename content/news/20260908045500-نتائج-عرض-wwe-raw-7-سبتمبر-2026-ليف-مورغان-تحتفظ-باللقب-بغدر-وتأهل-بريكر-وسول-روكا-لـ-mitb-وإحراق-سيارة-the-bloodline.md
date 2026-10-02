@@ -8,7 +8,7 @@ tags:
   - WWE RAW
   - ليف مورغان
   - برون بريكر
-  - The Bloodline
+  - ذا بلودلاين
   - سول روكا
 image: /content/images/d7nk7b7fyicdc07k.jpg
 layout: post-layout.njk

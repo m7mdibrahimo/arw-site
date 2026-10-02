@@ -7,7 +7,6 @@ tags:
   - رومان رينز
   - فينس روسو
   - سولو سيكوا
-  - The Bloodline
   - Roman Reigns
   - WWE
 image: /content/images/jlkhae030fp60xc8.jpg
