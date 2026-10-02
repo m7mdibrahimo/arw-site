@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-02T23:17:48.366Z"
+ },
  "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
