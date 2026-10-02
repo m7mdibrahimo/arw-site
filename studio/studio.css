@@ -368,6 +368,15 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .tagchip button:hover { background: var(--coral); }
 .tagchip svg { width: 12px; height: 12px; }
 .tags input { flex: 1; min-width: 140px; border: 0; background: none; color: var(--ink); font: inherit; outline: none; padding: 4px; }
+.tags-copy { margin-inline-start: auto; flex: none; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 12px; background: transparent; color: var(--muted); cursor: pointer; transition: background .18s ease, color .18s ease, transform .18s ease; }
+.tags-copy svg { width: 17px; height: 17px; }
+.tags-copy:hover { background: var(--line); color: var(--ink); }
+.tags-copy:active { transform: scale(.92); }
+.tags-copy:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.tags-copy.done { color: var(--green); background: transparent; }
+.tags-copy.done svg { animation: tags-copied .32s ease; }
+@keyframes tags-copied { from { transform: scale(.6); opacity: .3; } to { transform: scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .tags-copy, .tags-copy.done svg { transition: none; animation: none; } }
 .md { padding-top: 4px !important; }
 .md-bar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .md-bar > button { width: 36px; height: 36px; border-radius: 50%; border: 0; background: var(--cream); cursor: pointer; font-weight: 900; display: grid; place-items: center; }

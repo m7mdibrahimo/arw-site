@@ -446,3 +446,11 @@ test('a weekly show without its programme is flagged before saving (INCIDENTS #2
   assert.equal(row({ title: 'TNA iMPACT 01.10.2026', program_name: 'TNA iMPACT' })?.ok, true);
   assert.equal(row({ title: 'AAA Worlds Collide (2026)', is_annual: true }), undefined);
 });
+
+test('the tags field has a copy-all button and pasting a copied list adds every tag', () => {
+  const src = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(src, /id="tags-copy"/);
+  assert.match(src, /tags\.join\('، '\)/);
+  assert.match(src, /input\.onpaste = /);
+  assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /\.tags-copy \{/);
+});

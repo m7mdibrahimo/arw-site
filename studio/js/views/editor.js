@@ -105,7 +105,8 @@ const F = {
     ${S.collection !== 'nostalgia_series' ? html`<button type="button" class="btn btn-soft" id="suggest-desc" title="اقتراح من العنوان">${icon('wand')}</button>` : ''}</div></div>`,
   tags: () => html`<div class="field"><label>الوسوم <em>Enter بعد كل وسم</em></label>
     <div class="tags" id="tags">${(S.data.tags || []).map((t, i) => html`<span class="tagchip">${t}<button type="button" data-rm="${i}" aria-label="حذف">${icon('x')}</button></span>`)}
-    <input id="tag-input" list="tag-list" dir="auto" placeholder="${(S.data.tags || []).length ? '' : 'مثال: WWE, رومان رينز'}"></div>
+    <input id="tag-input" list="tag-list" dir="auto" placeholder="${(S.data.tags || []).length ? '' : 'مثال: WWE, رومان رينز'}">
+    <button type="button" class="tags-copy" id="tags-copy" title="نسخ كل الوسوم" aria-label="نسخ كل الوسوم"${(S.data.tags || []).length ? '' : ' hidden'}>${icon('copy')}</button></div>
     <datalist id="tag-list">${S.tagSuggestions.map(t => html`<option value="${t}">`)}</datalist></div>`,
   duration: () => html`<div class="field field-half"><label for="f-duration">مدة العرض ${req('duration')}</label>
     <input class="input mono" id="f-duration" data-k="duration" dir="ltr" placeholder="02:37:11" value="${S.data.duration || ''}"></div>`,
@@ -508,11 +509,36 @@ function bindTags() {
     for (const one of String(t).split(/[,،]/).map(s => s.trim()).filter(Boolean)) if (!tags.includes(one)) tags.push(one);
     S.data.tags = tags; redraw();
   };
+  const copyBtn = $('#tags-copy');
   const redraw = () => {
     $$('.tagchip', box).forEach(c => c.remove());
     (S.data.tags || []).forEach((t, i) => input.insertAdjacentHTML('beforebegin', `<span class="tagchip">${esc(t)}<button type="button" data-rm="${i}" aria-label="حذف">${icon('x').__raw}</button></span>`));
     input.placeholder = (S.data.tags || []).length ? '' : 'مثال: WWE, رومان رينز';
+    if (copyBtn) copyBtn.hidden = !(S.data.tags || []).length;
     markDirty();
+  };
+  // Copy every tag in one go, comma-separated, ready to paste into another item's tags (the owner, 3 Oct)
+  if (copyBtn) copyBtn.onclick = async (e) => {
+    e.stopPropagation();
+    const tags = S.data.tags || [];
+    if (!tags.length) return;
+    const text = tags.join('، ');
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch {
+      const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); try { ok = document.execCommand('copy'); } catch { ok = false; } ta.remove();
+    }
+    if (!ok) return toast('مقدرتش أنسخ — جرّب تاني', 'error');
+    copyBtn.classList.add('done'); copyBtn.innerHTML = icon('check').__raw;
+    clearTimeout(copyBtn._t); copyBtn._t = setTimeout(() => { copyBtn.classList.remove('done'); copyBtn.innerHTML = icon('copy').__raw; }, 1600);
+    toast(`اتنسخ ${tags.length === 1 ? 'وسم واحد' : tags.length === 2 ? 'وسمين' : `${tags.length} وسوم`} — الصقهم في أي خبر تاني`, 'ok', 2600);
+  };
+  // Pasting a copied list (Ctrl/⌘+V or right-click → Paste) adds every tag at once
+  input.onpaste = (e) => {
+    const text = (e.clipboardData || window.clipboardData)?.getData('text') || '';
+    if (!/[,،\n]/.test(text)) return;
+    e.preventDefault();
+    add(text.replace(/\n+/g, '،')); input.value = '';
   };
   input.onkeydown = (e) => {
     if ((e.key === 'Enter' || e.key === ',' || e.key === '،') && input.value.trim()) { e.preventDefault(); add(input.value); input.value = ''; }
