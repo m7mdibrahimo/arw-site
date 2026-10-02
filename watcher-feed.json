@@ -1,5 +1,15 @@
 [
   {
+    "id": 331670,
+    "link": "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe/",
+    "date": "2026-10-02T17:51:56",
+    "date_gmt": "2026-10-02T21:51:56",
+    "title": {
+      "rendered": "The Young Bucks Say PAC Told Them Not To Sign With WWE"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02175133/young-bucks-pac-44.jpg"
+  },
+  {
     "id": 331650,
     "link": "https://www.fightful.com/wrestling/moose-responds-to-fans-judging-tna-bound-for-glory-ticket-sales/",
     "date": "2026-10-02T17:12:23",
@@ -288,15 +298,5 @@
       "rendered": "WWE Main Event Results (10/1)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01213814/maxresdefault-3.jpg"
-  },
-  {
-    "id": 331572,
-    "link": "https://www.fightful.com/wrestling/mickie-james-to-appear-at-tna-bound-for-glory/",
-    "date": "2026-10-01T23:28:44",
-    "date_gmt": "2026-10-02T03:28:44",
-    "title": {
-      "rendered": "Mickie James To Appear At TNA Bound For Glory"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01232356/Screenshot-499.png"
   }
 ]
