@@ -1,5 +1,15 @@
 [
   {
+    "id": 1639064958,
+    "link": "https://www.wrestlinginc.com/2275400/tna-impact-october-1-2026-hated-loved-opinion-review/",
+    "date": "Fri, 02 Oct 2026 03:41:29 +0000",
+    "date_gmt": "2026-10-02T03:41:29.000Z",
+    "title": {
+      "rendered": "TNA Impact 10/1/2026: 3 Things We Hated & 3 Things We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-1012026-3-things-we-hated-3-things-we-loved/l-intro-1790911295.jpg"
+  },
+  {
     "id": 1520121047,
     "link": "https://www.wrestlinginc.com/2275385/indie-wrestling-so-cal-crazy-47-battle-cancer/",
     "date": "Fri, 02 Oct 2026 02:41:01 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Bryan Danielson, Wardlow Return To The Ring In Chaotic 10-Man AEW Dynamite Main Event"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-bryan-danielson-wardlow-return-ring-chaotic-10-man-main-event/l-intro-1790823660.jpg"
-  },
-  {
-    "id": 1766975944,
-    "link": "https://www.wrestlinginc.com/2274162/aew-dynamite-will-ospreay-pac-finisher-black-arrow-tribute-show-ricochet/",
-    "date": "Thu, 01 Oct 2026 01:59:20 +0000",
-    "date_gmt": "2026-10-01T01:59:20.000Z",
-    "title": {
-      "rendered": "Will Ospreay Hits Pac Finisher The Black Arrow, Gets Win On AEW Dynamite Tribute Show"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-will-ospreay-pac-finisher-black-arrow-tribute-show-ricochet/l-intro-1790820915.jpg"
   }
 ]
