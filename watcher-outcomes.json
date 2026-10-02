@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2275333/tna-thursday-night-impact-october-1-bound-for-glory-x-division-championship-six-way-qualifier-syx-appear": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-02T02:18:54.412Z"
+ },
  "https://www.fightful.com/wrestling/gage-goldberg-states-that-hes-interested-in-pro-wrestling-career": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-02T02:09:29.458Z"
- },
- "https://www.wrestlinginc.com/2275333/tna-thursday-night-impact-october-1-bound-for-glory-x-division-championship-six-way-qualifier-syx-appear": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T02:01:28.718Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-1-syx-to-speak-leon-slater-competes": {
   "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
