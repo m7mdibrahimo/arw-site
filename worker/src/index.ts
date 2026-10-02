@@ -2063,7 +2063,9 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   const noNeed = ar("(?:لا|لم\\s+يعد|لن)\\s+(?:يحتاج|تحتاج|يهتم|تهتم|يسعى|تسعى|يريد|تريد|يبحث|تبحث)").test(title)
     ? goalTitle.replace(new RegExp(ar("(?:ل|إلى\\s+)?(?:تحقيق\\s+)?(?:أي\\s+)?(?:ال)?(?:انتصار|انتصارات|فوز)(?:\\s+آخر|\\s+أخرى)?").source, "gi"), " ")
     : goalTitle;
-  const oddsFree = noNeed.replace(new RegExp(ar("(?:و|ف)?(?:نسب|احتمالات|حظوظ|فرص|ترشيحات)\\s+(?:ال)?فوز").source, "gi"), " ");
+  // A prediction is not a result: «بولي راي يتكهن بتحالف ال ايه نايت مع 946 وهزيمة رومان رينز» (INCIDENTS #246)
+  const speculation = ar("يتكهن|تتكهن|يتوقع|تتوقع|يتنبأ|تتنبأ|يرشح|ترشح|يقترح|تقترح|يطالب|تطالب|يتمنى|تتمنى|تكهنات|توقعات").test(title);
+  const oddsFree = (speculation ? "" : noNeed).replace(new RegExp(ar("(?:و|ف)?(?:نسب|احتمالات|حظوظ|فرص|ترشيحات)\\s+(?:ال)?فوز").source, "gi"), " ");
   // Any win/loss wording at all. Verb lists always missed a phrasing («فريق Sisters Of Sin
   // يحقق الفوز في عرض AEW All Out» reached Telegram and Facebook — INCIDENTS #71), and the
   // owner's rule is absolute: no match outcome on social, only full results reports.

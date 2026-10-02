@@ -2853,3 +2853,9 @@ test('a spelled thousand after a number is left alone: «899 ألف مشاهد»
   assert.equal(spelledAgesToDigits('بلغت 5 مئة دولار'), 'بلغت 5 مئة دولار');
   assert.equal(spelledAgesToDigits('أكثر من ألفي تذكرة'), 'أكثر من 2000 تذكرة');
 });
+
+test('a prediction is not a result (INCIDENTS #246)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('بولي راي يتكهن بتحالف ال ايه نايت مع 946 وهزيمة رومان رينز في عرض WWE موني إن ذا بانك', ''), false);
+  assert.equal(isSingleMatchSpoiler('ال ايه نايت يهزم رومان رينز في عرض WWE موني إن ذا بانك', ''), true);
+});
