@@ -598,3 +598,4 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /tag/عرض-wrestlemania/* /tag/wrestlemania/:splat 301!
 /tag/عرض-wrestlemania-36/* /tag/wrestlemania-36/:splat 301!
 /tag/the-bloodline/* /tag/ذا-بلودلاين/:splat 301!
+/tag/عصابة-the-bloodline/* /tag/عصابة-ذا-بلودلاين/:splat 301!

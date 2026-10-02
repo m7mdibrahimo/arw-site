@@ -9,7 +9,6 @@ tags:
   - ذا بلودلاين
   - فينس روسو
   - إيريك بيشوف
-  - ذا بلودلاين
   - Roman Reigns
   - Solo Sikoa
   - Jey Uso
