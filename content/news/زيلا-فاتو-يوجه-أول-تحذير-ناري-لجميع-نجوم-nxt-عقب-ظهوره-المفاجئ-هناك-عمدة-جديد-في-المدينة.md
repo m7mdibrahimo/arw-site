@@ -6,7 +6,7 @@ tags:
   - زيلا فاتو
   - WWE NXT
   - Umaga
-  - The Bloodline
+  - ذا بلودلاين
   - Tony D’Angelo
   - WWE
   - أخبار المصارعة

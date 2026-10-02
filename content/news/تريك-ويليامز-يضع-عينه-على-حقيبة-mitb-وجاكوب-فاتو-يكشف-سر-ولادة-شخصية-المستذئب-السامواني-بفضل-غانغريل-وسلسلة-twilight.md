@@ -16,7 +16,7 @@ tags:
   - Rikishi
   - Money In The Bank
   - WWE
-  - The Bloodline
+  - ذا بلودلاين
   - أخبار المصارعة
 image: /content/images/i0twhywtgr4l6rm6.jpg
 layout: post-layout.njk

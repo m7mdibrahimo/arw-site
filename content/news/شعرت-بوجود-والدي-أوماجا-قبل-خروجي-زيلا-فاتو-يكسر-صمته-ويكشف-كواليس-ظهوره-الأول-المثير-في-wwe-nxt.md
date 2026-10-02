@@ -9,7 +9,7 @@ tags:
   - اوماجا
   - Umaga
   - بوكر تي
-  - The Bloodline
+  - ذا بلودلاين
   - أخبار المصارعة
 image: /content/images/vcvvbl5z2eyisuc6.jpg
 layout: post-layout.njk

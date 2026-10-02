@@ -2778,3 +2778,7 @@ test('Stephanie McMahon in a title becomes her full tag, not «ستيفاني» 
   const { titleNamesAsTags, dropPartialNameTags } = await import('../scripts/fightful-watcher');
   assert.deepEqual(dropPartialNameTags(titleNamesAsTags('ستيفاني مكمان تكشف القصة الكاملة لطلب تريبل إتش الزواج منها', ['WWE', 'ستيفاني', 'تريبل إتش'])).filter(t => t.startsWith('ستيفاني')), ['ستيفاني مكمان']);
 });
+
+test('The Bloodline and The Shield are written in Arabic like the glossary (INCIDENTS #232)', () => {
+  assert.equal(applyCorrections('قصة فريق The Bloodline وذكريات فريق The Shield'), 'قصة فريق ذا بلودلاين وذكريات فريق ذا شيلد');
+});

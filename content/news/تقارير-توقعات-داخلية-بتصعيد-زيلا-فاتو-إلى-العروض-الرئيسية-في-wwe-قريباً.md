@@ -7,7 +7,7 @@ tags:
   - Zilla Fatu
   - زيلا فاتو
   - WWE NXT
-  - The Bloodline
+  - ذا بلودلاين
   - WWE RAW
   - مصارعة حرة
 image: /content/images/t7v5rw7kzw6i4srv.jpg

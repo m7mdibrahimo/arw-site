@@ -4,7 +4,7 @@ title: تقرير يتناول أسباب عدم ظهور زيلا فاتو كج
 date: 2026-08-12T09:33:00.000+03:00
 tags:
   - زيلا فاتو
-  - The Bloodline
+  - ذا بلودلاين
   - WWE NXT
   - Solo Sikoa
   - Umaga

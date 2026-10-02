@@ -5,7 +5,7 @@ date: 2026-08-21T03:34:00.000+03:00
 tags:
   - سولو سيكوا
   - WWE
-  - The Bloodline
+  - ذا بلودلاين
   - أخبار المصارعة
 image: /content/images/q7jc6qhbw51x9k0n.jpg
 layout: post-layout.njk

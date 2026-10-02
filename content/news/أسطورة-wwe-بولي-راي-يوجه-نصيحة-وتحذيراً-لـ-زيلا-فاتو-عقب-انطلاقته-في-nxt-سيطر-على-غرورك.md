@@ -8,7 +8,7 @@ tags:
   - Bully Ray
   - WWE
   - WWE NXT
-  - The Bloodline
+  - ذا بلودلاين
   - Umaga
   - أخبار المصارعة
 image: /content/images/htkptiw20odhvdoz.jpg

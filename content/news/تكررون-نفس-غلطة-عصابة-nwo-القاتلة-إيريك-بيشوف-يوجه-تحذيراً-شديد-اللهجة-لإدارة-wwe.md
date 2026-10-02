@@ -9,7 +9,7 @@ tags:
   - ذا بلودلاين
   - فينس روسو
   - إيريك بيشوف
-  - The Bloodline
+  - ذا بلودلاين
   - Roman Reigns
   - Solo Sikoa
   - Jey Uso

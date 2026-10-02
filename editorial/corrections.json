@@ -4753,6 +4753,16 @@
    "wrong": "، ومؤكدة أن",
    "right": "، مؤكدة أن",
    "note": "واو زايدة قبل الحال — INCIDENTS #227"
+  },
+  {
+   "wrong": "The Bloodline",
+   "right": "ذا بلودلاين",
+   "note": "شكل القاموس — INCIDENTS #232"
+  },
+  {
+   "wrong": "The Shield",
+   "right": "ذا شيلد",
+   "note": "INCIDENTS #232"
   }
  ]
 }
