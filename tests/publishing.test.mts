@@ -2824,3 +2824,8 @@ test('a nearing return is not a spoiler; an ordinal age becomes digits (INCIDENT
   const { spelledAgesToDigits } = await import('../scripts/news-qa');
   assert.equal(spelledAgesToDigits('مشيرا إلى أنه سيكون في الثالثة والأربعين من عمره عند انتهاء العقد'), 'مشيرا إلى أنه سيكون في الـ43 من عمره عند انتهاء العقد');
 });
+
+test('«إلى متبقي» and «الإلتي كور» are corrected (INCIDENTS #240)', () => {
+  assert.equal(applyCorrections('أشار إلى متبقي ثلاثة أعوام'), 'أشار إلى تبقي ثلاثة أعوام');
+  assert.equal(applyCorrections('فرقة الإلتي كور'), 'فرقة الميتالكور');
+});

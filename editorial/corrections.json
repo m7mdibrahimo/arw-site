@@ -4783,6 +4783,16 @@
    "wrong": "متما بالفضل",
    "right": "معترفا بالفضل",
    "note": "INCIDENTS #236"
+  },
+  {
+   "wrong": "إلى متبقي",
+   "right": "إلى تبقي",
+   "note": "INCIDENTS #240"
+  },
+  {
+   "wrong": "الإلتي كور",
+   "right": "الميتالكور",
+   "note": "metalcore — INCIDENTS #240"
   }
  ]
 }
