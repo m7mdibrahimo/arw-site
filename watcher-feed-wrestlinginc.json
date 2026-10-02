@@ -1,5 +1,25 @@
 [
   {
+    "id": 2218753872,
+    "link": "https://www.wrestlinginc.com/2276074/aew-collision-chris-jericho-cruise-upcoming-show/",
+    "date": "Fri, 02 Oct 2026 18:22:32 +0000",
+    "date_gmt": "2026-10-02T18:22:32.000Z",
+    "title": {
+      "rendered": "AEW Set To Broadcast Show From Chris Jericho's Upcoming Cruise"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-set-to-broadcast-show-from-chris-jerichos-upcoming-cruise/l-intro-1790965031.jpg"
+  },
+  {
+    "id": 5038402096,
+    "link": "https://www.wrestlinginc.com/2276071/why-will-ospreay-bring-united-empire-name-aew/",
+    "date": "Fri, 02 Oct 2026 18:21:26 +0000",
+    "date_gmt": "2026-10-02T18:21:26.000Z",
+    "title": {
+      "rendered": "Backstage News On Why Will Ospreay Was Able To Bring United Empire Name To AEW"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-why-will-ospreay-was-able-to-bring-united-empire-name-to-aew/l-intro-1790965121.jpg"
+  },
+  {
     "id": 3302324335,
     "link": "https://www.wrestlinginc.com/2276006/classic-wwe-intercontinental-title-belt-wrestlemania-3-auction/",
     "date": "Fri, 02 Oct 2026 17:42:41 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE Stars Finn Balor, Drew McIntyre Pay Tribute To Late AEW Star Pac"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-finn-balor-drew-mcintyre-tribute-late-aew-pac/l-intro-1790879616.jpg"
-  },
-  {
-    "id": 1614323750,
-    "link": "https://www.wrestlinginc.com/2274851/sheamus-potentially-joining-aew-wwe-contract-expires/",
-    "date": "Thu, 01 Oct 2026 17:56:05 +0000",
-    "date_gmt": "2026-10-01T17:56:05.000Z",
-    "title": {
-      "rendered": "Backstage Update On Sheamus Potentially Joining AEW As WWE Contract Expires"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-sheamus-potentially-joining-aew-as-wwe-contract-expires/l-intro-1790877212.jpg"
-  },
-  {
-    "id": 1593328786,
-    "link": "https://www.wrestlinginc.com/2274694/will-ospreay-pac-black-arrow-finisher-tribute-aew-dynamite/",
-    "date": "Thu, 01 Oct 2026 16:37:27 +0000",
-    "date_gmt": "2026-10-01T16:37:27.000Z",
-    "title": {
-      "rendered": "Will Ospreay Comments On Hitting Pac's Black Arrow Finisher On Tribute AEW Dynamite"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/will-ospreay-pac-black-arrow-finisher-tribute-aew-dynamite/l-intro-1790875050.jpg"
   }
 ]
