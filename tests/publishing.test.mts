@@ -2761,3 +2761,10 @@ test('a tag «عرض WWE SmackDown» is the tag «WWE SmackDown» (INCIDENTS #22
   const { canonicalTags } = await import('../scripts/fightful-watcher');
   assert.deepEqual(canonicalTags(['WWE', 'عرض WWE SmackDown', 'WWE SmackDown', 'نيكي بيلا'], new Map()), ['WWE', 'WWE SmackDown', 'نيكي بيلا']);
 });
+
+test('talking about a past return is not a return spoiler (INCIDENTS #228)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('نيكي بيلا تقول إن التغيرات المستمرة في الشخصية جعلت عودتها إلى WWE أكثر صعوبة', ''), false);
+  assert.equal(isSingleMatchSpoiler('ميكي جيمز تكشف تفاصيل عودتها إلى TNA', ''), false);
+  assert.equal(isSingleMatchSpoiler('نيكي بيلا تعود إلى WWE في عرض RAW', ''), true);
+});
