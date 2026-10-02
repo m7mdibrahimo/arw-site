@@ -162,6 +162,26 @@ export function dropStaleTemplateTags(tags, template, data) {
   const now = norm([data.program_name, data.title, data.headline].join(' '));
   return list.filter(t => !inherited.has(norm(t)) || now.includes(norm(t)));
 }
+/**
+ * The next episode's name from the one before: «WWF Tough Enough S01E13» → «…S01E14»,
+ * «… الموسم 1 الحلقة 13» → «… الحلقة 14», «Episode 3»/«Part 3»/«#3» → 4. «حلقة جديدة بنفس البيانات»
+ * on a nostalgia episode used to leave both names empty: they carry no date to move forward (the owner).
+ */
+export function nextEpisodeTitle(text, n) {
+  const t = String(text || '');
+  if (!t || !Number.isFinite(n) || n < 1) return '';
+  const out = t
+    .replace(/\bS(\d{1,2})E\d{1,3}\b/i, (_m, se) => `S${se}E${pad(n)}`)
+    .replace(/(الحلقة\s+)\d{1,3}/, `$1${n}`)
+    .replace(/\b(Episode|Ep\.?|Part|Chapter)\s+\d{1,3}\b/i, (_m, w) => `${w} ${n}`)
+    .replace(/(^|\s)#\d{1,3}\b/, `$1#${n}`);
+  return out !== t ? out : '';
+}
+/** The next free place in a nostalgia series: one after the highest episode already in it. */
+export function nextNostalgiaOrder(items, series) {
+  const orders = (items || []).filter(d => d && d.collection === 'nostalgia' && d.nostalgia_series === series).map(d => Number(d.nostalgia_order) || 0);
+  return (orders.length ? Math.max(...orders) : 0) + 1;
+}
 export function descriptionFromHeadline(headline) {
   const h = String(headline || '').replace(/\s*\d{1,2}[./-]\d{1,2}[./-]\d{4}\s*/, ' ').replace(/\s+/g, ' ').trim();
   if (!h) return '';

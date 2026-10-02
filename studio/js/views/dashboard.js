@@ -29,7 +29,7 @@ export function showCard(s, collection = 'shows') {
       <div class="tile-foot"><span class="muted small">${timeAgo(s.date)}</span>
         <span class="tile-actions">
           ${s.url ? html`<a class="icon-btn sm" href="${s.url}" target="_blank" title="فتح على الموقع">${icon('eye')}</a>` : ''}
-          ${['shows', 'recaps', 'nostalgia'].includes(collection) && !s.pending ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(s.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
+          ${['shows', 'recaps', 'nostalgia'].includes(collection) ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(s.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
           <a class="icon-btn sm" href="${edit}" title="تعديل">${icon('edit')}</a>
         </span></div>
     </div>

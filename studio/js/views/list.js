@@ -103,7 +103,7 @@ export async function renderList(page, collection, pageNum = 1) {
       <a class="row-main" href="${editUrl(i)}"><b>${i.title}</b><small>${meta(i).filter(Boolean).join(' · ')}</small></a>
       <span class="row-actions">
         ${i.url ? html`<a class="icon-btn sm" href="${i.url}" target="_blank" title="فتح على الموقع">${icon('eye')}</a>` : ''}
-        ${canNext && !i.pending && can(getUser(), `${sectionOf(collection)}.create`) ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(i.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
+        ${canNext && can(getUser(), `${sectionOf(collection)}.create`) ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(i.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
         <a class="icon-btn sm" href="${editUrl(i)}" title="تعديل">${icon('edit')}</a>
         ${can(getUser(), `${sectionOf(collection)}.delete`) ? html`<button class="icon-btn sm danger" data-del="${i.slug}" title="حذف">${icon('trash')}</button>` : ''}
       </span></div>`)}`);

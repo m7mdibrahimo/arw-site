@@ -3,7 +3,7 @@ import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../
 import { notify } from '../notify.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
-  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode, dropStaleTemplateTags,
+  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode, dropStaleTemplateTags, nextEpisodeTitle, nextNostalgiaOrder,
 } from '../schema.js';
 import { prepareImage, prepareImageFromUrl, kb } from '../image.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc, can, sectionOf } from '../ui.js';
@@ -175,6 +175,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
     auto: { headline: !slug, title: !slug, description: !slug }, template: null,
     programs: [...new Set(studioData.filter(d => d.collection === collection && d.program_name).map(d => d.program_name))].sort(),
     series: studioData.filter(d => d.collection === 'nostalgia_series'),
+    nostalgiaItems: studioData.filter(d => d.collection === 'nostalgia'),
     tagSuggestions: [...new Set(studioData.flatMap(d => d.tags || []).concat(index.slice(0, 400).flatMap(i => i.tags || [])))].slice(0, 400),
     url: null,
   };
@@ -190,7 +191,13 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
     if (collection !== 'nostalgia_series') S.data.date = isoLocal();
     if (from) {
       // «التالي»: a new episode with the same programme data
-      const src = studioData.find(d => d.collection === collection && d.slug === from);
+      let src = studioData.find(d => d.collection === collection && d.slug === from);
+      // Saved minutes ago, the site hasn't been rebuilt yet: read the episode straight from its file —
+      // copying a series' first episode right after saving it filled nothing (the owner)
+      if (!src) {
+        try { const f = await content.get(collection, from); src = { ...parseFile(f.content).data, collection, slug: from }; } catch { src = null; }
+        if (src && collection === 'nostalgia' && !S.nostalgiaItems.some(d => d.slug === from)) S.nostalgiaItems.push(src);
+      }
       if (src) applyTemplate(src, { keepTitle: false });
     }
     const draft = loadDraft(collection);
@@ -253,10 +260,20 @@ function applyTemplate(src, { keepTitle = true } = {}) {
     if (src[k] !== undefined && src[k] !== '' && src[k] !== false && src[k] !== null) S.data[k] = src[k];
   }
   S.data.description = ''; S.auto.description = true;
-  if (src.collection === 'nostalgia' && src.nostalgia_order) S.data.nostalgia_order = Number(src.nostalgia_order) + 1;
+  // A nostalgia episode made from another: the next free place in its series (copying episode 1
+  // after 2 exists makes 3, never a second 2), and both names move to that episode (the owner)
+  if (src.collection === 'nostalgia') {
+    const n = nextNostalgiaOrder(S.nostalgiaItems, src.nostalgia_series);
+    S.data.nostalgia_order = n;
+    delete S.data.nostalgia_main; // the finale flag belongs to that one episode
+    const title = nextEpisodeTitle(src.title, n), headline = nextEpisodeTitle(src.headline, n);
+    if (title) S.data.title = title;
+    if (headline) S.data.headline = headline;
+  }
   // Year-specific tags («AEW All Out 2026») belong to that edition only
   if (Array.isArray(src.tags) && src.tags.length) S.data.tags = src.tags.filter(tg => !/(?:^|\D)(?:19|20)\d{2}(?:\D|$)/.test(tg));
   S.template = { headline: src.headline, title: src.title, program: src.program_name, tags: [...(S.data.tags || [])] };
+  if (src.collection === 'nostalgia') { S.auto.headline = !S.data.headline; S.auto.title = !S.data.title; S.auto.description = true; if (S.data.headline) S.data.description = descriptionFromHeadline(S.data.headline); return; }
   S.auto.headline = true; S.auto.title = !keepTitle || !S.data.title;
   updateFromDate();
 }
@@ -292,6 +309,12 @@ function bindAll() {
     if (k === 'description') S.auto.description = false;
     if (k === 'duration') v = formatDuration(v);
     S.data[k] = v;
+    // A new nostalgia episode: picking its series continues it from its last episode (the owner)
+    if (k === 'nostalgia_series' && !S.slug && S.collection === 'nostalgia' && v) {
+      const last = S.nostalgiaItems.filter(d => d.nostalgia_series === v).sort((a, b) => (Number(b.nostalgia_order) || 0) - (Number(a.nostalgia_order) || 0))[0];
+      if (last) { applyTemplate(last, { keepTitle: false }); rerenderSection('basics'); rerenderSection('info'); rerenderSection('cover'); toast(`كمّلت من «${last.headline || last.title}» — دي الحلقة رقم ${S.data.nostalgia_order}`, 'ok', 4200); markDirty(); return; }
+      S.data.nostalgia_order = 1; setVal('#f-order', '1');
+    }
     if (k === 'event_date') { updateFromDate(); setVal('#f-headline', S.data.headline); setVal('#f-title', S.data.title); setVal('#f-desc', S.data.description); }
     // The episode code in both titles follows the season/episode fields (INCIDENTS #166)
     if (k === 'episode_number' || k === 'season_number') {

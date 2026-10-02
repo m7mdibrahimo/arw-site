@@ -454,3 +454,23 @@ test('the tags field has a copy-all button and pasting a copied list adds every 
   assert.match(src, /input\.onpaste = /);
   assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /\.tags-copy \{/);
 });
+
+test('a nostalgia episode copied from another takes the next free place and the next episode name', async () => {
+  const { nextEpisodeTitle, nextNostalgiaOrder } = await import('../studio/js/schema.js');
+  assert.equal(nextEpisodeTitle('WWF Tough Enough S01E13', 14), 'WWF Tough Enough S01E14');
+  assert.equal(nextEpisodeTitle('دبليو دبليو اف تف انف الموسم 1 الحلقة 13', 14), 'دبليو دبليو اف تف انف الموسم 1 الحلقة 14');
+  assert.equal(nextEpisodeTitle('Monday Night War Episode 3', 4), 'Monday Night War Episode 4');
+  assert.equal(nextEpisodeTitle('WWF SummerSlam 1992', 5), '');
+  const items = [1, 2, 3].map(n => ({ collection: 'nostalgia', nostalgia_series: 's', nostalgia_order: n })).concat([{ collection: 'nostalgia', nostalgia_series: 'other', nostalgia_order: 9 }]);
+  assert.equal(nextNostalgiaOrder(items, 's'), 4, 'copying episode 1 after 3 exists makes 4, never a second 2');
+  assert.equal(nextNostalgiaOrder(items, 'new'), 1);
+  const src = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(src, /S\.data\.nostalgia_order = n;/);
+  assert.match(src, /k === 'nostalgia_series' && !S\.slug && S\.collection === 'nostalgia'/);
+});
+
+test('an episode saved minutes ago can be copied: the editor reads it from its file', () => {
+  const src = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(src, /const f = await content\.get\(collection, from\); src = \{ \.\.\.parseFile\(f\.content\)\.data, collection, slug: from \}/);
+  assert.ok(!/canNext && !i\.pending/.test(fs.readFileSync('studio/js/views/list.js', 'utf8')));
+});
