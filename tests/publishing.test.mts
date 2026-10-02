@@ -2829,3 +2829,7 @@ test('«إلى متبقي» and «الإلتي كور» are corrected (INCIDENTS
   assert.equal(applyCorrections('أشار إلى متبقي ثلاثة أعوام'), 'أشار إلى تبقي ثلاثة أعوام');
   assert.equal(applyCorrections('فرقة الإلتي كور'), 'فرقة الميتالكور');
 });
+
+test('«free agency» is «سوق المصارعين الأحرار» (INCIDENTS #241)', () => {
+  assert.equal(applyCorrections('أكد دخوله عالم المصارع الحر'), 'أكد دخوله سوق المصارعين الأحرار');
+});
