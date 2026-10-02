@@ -1,4 +1,49 @@
 {
+ "https://www.fightful.com/wrestling/gage-goldberg-states-that-hes-interested-in-pro-wrestling-career": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:30.616Z"
+ },
+ "https://www.fightful.com/wrestling/tony-dangelo-wants-to-be-a-grand-slam-champion-on-the-main-roster": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:30.505Z"
+ },
+ "https://www.fightful.com/wrestling/watch-extended-tributes-to-pac-aew-stars-remember-and-honor-benjamin-pac-satterley": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:30.334Z"
+ },
+ "https://www.fightful.com/wrestling/aaa-wrestlers-to-be-featured-in-upcoming-wwe-merchandise": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:30.107Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-in-no-rush-to-announce-wrestlemania-43-date": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:29.996Z"
+ },
+ "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:29.880Z"
+ },
+ "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:29.765Z"
+ },
+ "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:29.624Z"
+ },
+ "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-02T02:09:29.458Z"
+ },
  "https://www.wrestlinginc.com/2275333/tna-thursday-night-impact-october-1-bound-for-glory-x-division-championship-six-way-qualifier-syx-appear": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,51 +53,6 @@
   "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
   "retry": true,
   "at": "2026-10-02T01:58:49.729Z"
- },
- "https://www.fightful.com/wrestling/gage-goldberg-states-that-hes-interested-in-pro-wrestling-career": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:37.179Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-wants-to-be-a-grand-slam-champion-on-the-main-roster": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:37.067Z"
- },
- "https://www.fightful.com/wrestling/watch-extended-tributes-to-pac-aew-stars-remember-and-honor-benjamin-pac-satterley": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.899Z"
- },
- "https://www.fightful.com/wrestling/aaa-wrestlers-to-be-featured-in-upcoming-wwe-merchandise": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.674Z"
- },
- "https://www.fightful.com/wrestling/wwe-in-no-rush-to-announce-wrestlemania-43-date": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.563Z"
- },
- "https://www.fightful.com/wrestling/update-on-possible-culmination-of-bayley-lyra-valkyria-feud": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.453Z"
- },
- "https://www.fightful.com/wrestling/fred-ottman-undergoes-multiple-surgeries-on-his-eyes": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.342Z"
- },
- "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.202Z"
- },
- "https://www.fightful.com/wrestling/bayley-pro-wrestling-is-so-special-experiencing-that-magic-escape-while-at-the-same-time-honoring-a-loved-one-is-truly-powerful": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T01:58:36.038Z"
  },
  "https://www.fightful.com/wrestling/chantel-monroe-returns-to-the-ring": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
