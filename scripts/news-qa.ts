@@ -461,6 +461,8 @@ export function autoFix(text: string): string {
     .replace(/(^|\n)[^\n]*(?:شاركنا|شاركونا|أخبرنا|أخبرونا|اتركوا|اترك)[^\n]*(?:التعليقات|رأيك|رأيكم)[^\n]*(?=\n|$)/g, "")
     // …and its other sign-off: «ما رأيك في دخول ويل أوسبراي…? هل تراه…?» (INCIDENTS #98)
     .replace(/(^|\n)[ \t]*(?:ما|وما)\s+رأيك(?:م)?(?![\u0600-\u06FF])[^\n]*(?=\n|$)/g, "")
+    // …and «وهل تعتقد أن كيز وجد مكانه الصحيح في عروض WWE?» as the last line (INCIDENTS #226)
+    .replace(/(^|\n)[ \t]*(?:و|ف)?(?:هل\s+(?:تعتقد|تعتقدون|تظن|تظنون|ترى|ترون|تتوقع|تتوقعون)|برأيك|برأيكم)(?![\u0600-\u06FF])[^\n]*[?؟][ \t]*(?=\n?$)/g, "")
     // An English «?» or «,» right after an Arabic word («عرض AEW All Out?» is English; «بيكر,» is not)
     .replace(new RegExp(`([${AR}])\\?`, "g"), "$1؟").replace(new RegExp(`([${AR}]),(?=\\s)`, "g"), "$1،")
     // Punctuation orphaned when the copy editor deletes a clause: «كانديس ليراي، .»

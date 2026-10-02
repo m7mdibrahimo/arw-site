@@ -2750,3 +2750,9 @@ test('round hundreds before a unit become digits in the body (INCIDENTS #225)', 
   assert.equal(spelledAgesToDigits('بالابتعاد مسافة لا تقل عن خمسمائة قدم عنها'), 'بالابتعاد مسافة لا تقل عن 500 قدم عنها');
   assert.equal(spelledAgesToDigits('خمسمائة مشجع حضروا'), '500 مشجع حضروا');
 });
+
+test('a closing «هل تعتقد…?» reader question is dropped; three slips corrected (INCIDENTS #226)', () => {
+  assert.equal(autoFix('خبر كامل هنا.\nوهل تعتقد أن كيز وجد مكانه الصحيح في عروض WWE?'), 'خبر كامل هنا.');
+  assert.equal(autoFix('هل تعتقد الإدارة أن الوقت مناسب؟ قالها في المقابلة وتابع حديثه.\nسطر آخر.'), 'هل تعتقد الإدارة أن الوقت مناسب؟ قالها في المقابلة وتابع حديثه.\nسطر آخر.');
+  assert.equal(applyCorrections('المحارب السكتلندي في برنامج بودست'), 'المحارب الاسكتلندي في برنامج بودكاست');
+});

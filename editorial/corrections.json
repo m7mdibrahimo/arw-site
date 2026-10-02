@@ -4728,6 +4728,21 @@
    "wrong": "تصفيي",
    "right": "تأهيلي",
    "note": "«qualifier» — INCIDENTS #224"
+  },
+  {
+   "wrong": "السكتلندي",
+   "right": "الاسكتلندي",
+   "note": "INCIDENTS #226"
+  },
+  {
+   "wrong": "بودست",
+   "right": "بودكاست",
+   "note": "INCIDENTS #226"
+  },
+  {
+   "wrong": "مشابه ما يقوم",
+   "right": "مشابه لما يقوم",
+   "note": "INCIDENTS #226"
   }
  ]
 }
