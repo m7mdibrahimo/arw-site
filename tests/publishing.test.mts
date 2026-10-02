@@ -2695,3 +2695,15 @@ test('«AAA Mega Champion» and «Reina de Reinas Champion» have their glossary
   assert.match(hint, /AAA Mega Champion = بطل AAA ميغا/); assert.match(hint, /Reina de Reinas Champion = بطلة ملكة الملكات/);
   assert.equal(applyCorrections('بطل AAA للوزن الثقيل إل غراندي أمريكانو'), 'بطل AAA ميغا إل غراندي أمريكانو');
 });
+
+test('«old» without any evidence in the text is not trusted (INCIDENTS #219)', async () => {
+  const { settleSpoilerAge, hasOldEvidence } = await import('../scripts/fightful-watcher');
+  const now = Date.parse('2026-10-02T02:00:00Z');
+  const v = { spoils: false, kind: 'none', age: 'old', note: '' } as any;
+  const chantel = 'شانتل مونرو تعود إلى الحلبة شهد عرض WWE Main Event عودة المصارعة شانتل مونرو إلى الحلبة في مواجهة جمعتها مع ماكسين دوبري';
+  assert.notEqual(settleSpoilerAge(v, chantel, [], now, [], []).age, 'old');
+  assert.equal(hasOldEvidence('فاز باللقب في أبريل الماضي', now), true);
+  assert.equal(hasOldEvidence('عاد في عام 2021 إلى الحلبة', now), true);
+  assert.equal(hasOldEvidence('عاد إلى الحلبة الليلة', now), false);
+  assert.equal(settleSpoilerAge(v, 'عاد في عام 2021 إلى الحلبة', [], now, [], []).age, 'old');
+});

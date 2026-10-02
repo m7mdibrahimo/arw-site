@@ -2573,7 +2573,24 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
     if (months.length && months.every(m => !fresh.has(m))) return { ...v, spoils: false, kind: "none", age: "old" };
   }
   if (v.age !== "old") return v;
-  return datedRecently || recentShow ? { ...v, age: "recent" } : v;
+  if (datedRecently || recentShow) return { ...v, age: "recent" };
+  // «old» needs evidence in the text — a past month or date, a past year, «منذ سنوات/الماضي»…
+  // Chantel Monroe's return on that night's WWE Main Event was called «old» only because Main
+  // Event wasn't in the list of recent shows, and the return and the result reached all three
+  // platforms (INCIDENTS #219). Without evidence the age is unclear and the title rules decide.
+  return hasOldEvidence(text, now) ? v : { ...v, age: "unclear" as any };
+}
+
+/** Something in the text that places the event before the spoiler window (INCIDENTS #219). */
+export function hasOldEvidence(text: string, now = Date.now()): boolean {
+  const t = String(text || "");
+  const fresh = new Set([0, 1].map(i => new Date(now - i * 86400_000).getUTCMonth()));
+  const year = new Date(now).getUTCFullYear();
+  if ([...t.matchAll(new RegExp(`(?<![\\u0600-\\u06FF])(${AR_MONTHS.join("|")})(?![\\u0600-\\u06FF])`, "g"))].some(x => !fresh.has(AR_MONTHS.indexOf(x[1])))) return true;
+  if ([...t.matchAll(/(?<!\d)(19\d{2}|20\d{2})(?!\d)/g)].some(x => +x[1] < year)) return true;
+  if (/(?<![\u0600-\u06FF])(?:منذ\s+(?:سنوات|أعوام|عام|سنة|أشهر|شهور|أسابيع|فترة)|العام\s+الماضي|الشهر\s+الماضي|الأسبوع\s+الماضي|في\s+وقت\s+سابق\s+من\s+(?:العام|الشهر)|سابقا|قبل\s+(?:سنوات|أعوام|أشهر|أسابيع))/.test(t)) return true;
+  const recentDays = [0, 1].map(i => new Date(now - i * 86400_000 - 4 * 3600_000)).map(d => ({ m: d.getUTCMonth(), d: d.getUTCDate() }));
+  return statedMonthDays(t).some(x => !recentDays.some(r => r.m === x.m && r.d === x.d));
 }
 
 export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<SocialVerdict | null> {
