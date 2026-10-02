@@ -11,6 +11,50 @@
     "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
+    "url": "/shows/tna-impact-01-10-2026/",
+    "title": "عرض تي ان ايه امباكت 01.10.2026 مترجم",
+    "subtitle": "TNA iMPACT 01.10.2026",
+    "image": "/img/lMrmuf3u-m-800.jpeg",
+    "federation": "TNA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/roh-01-10-2026/",
+    "title": "عرض ار او اتش 01.10.2026 مترجم",
+    "subtitle": "ROH 01.10.2026",
+    "image": "/img/J5WeGBlRv5-800.jpeg",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aaa-worlds-collide-2026/",
+    "title": "عرض ايه ايه ايه وورلدز كوليد 30.09.2026 مترجم",
+    "subtitle": "AAA Worlds Collide (2026)",
+    "image": "/img/E9ozSUpb9L-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه وورلدز كوليد مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/mlp-mayhem-30-09-2026/",
+    "title": "عرض ام ال بي 30.09.2026 مترجم",
+    "subtitle": "MLP Mayhem 30.09.2026",
+    "image": "/img/51sGItPSLG-800.jpeg",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-29-09-2026/",
     "title": "عرض ان اكس تي 29.09.2026 مترجم",
     "subtitle": "WWE NXT 29.09.2026",
@@ -66,17 +110,6 @@
     "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
-    "url": "/shows/lucha-libre-aaa-26-09-2026/",
-    "title": "عرض ايه ايه ايه 26.09.2026 مترجم",
-    "subtitle": "Lucha Libre AAA 26.09.2026",
-    "image": "/img/Sm2iCHfeRx-800.jpeg",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
     "url": "/shows/wwe-smackdown-25-09-2026/",
     "title": "عرض سماك داون 25.09.2026 مترجم",
     "subtitle": "WWE Smackdown 25.09.2026",
@@ -86,28 +119,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/tna-impact-24-09-2026/",
-    "title": "عرض تي ان ايه امباكت 24.09.2026 مترجم",
-    "subtitle": "TNA iMPACT 24.09.2026",
-    "image": "/img/qKHB8vmPEN-800.jpeg",
-    "federation": "TNA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/roh-24-09-2026/",
-    "title": "عرض ار او اتش 24.09.2026 مترجم",
-    "subtitle": "ROH 24.09.2026",
-    "image": "/img/qUfJ91hA0F-800.jpeg",
-    "federation": "ROH",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ار او اتش مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/aew-collision-23-09-2026/",
