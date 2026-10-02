@@ -474,3 +474,7 @@ test('an episode saved minutes ago can be copied: the editor reads it from its f
   assert.match(src, /const f = await content\.get\(collection, from\); src = \{ \.\.\.parseFile\(f\.content\)\.data, collection, slug: from \}/);
   assert.ok(!/canNext && !i\.pending/.test(fs.readFileSync('studio/js/views/list.js', 'utf8')));
 });
+
+test('a copied nostalgia episode keeps the date of the one it was copied from', () => {
+  assert.match(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /if \(src\.event_date\) S\.data\.event_date = String\(src\.event_date\)\.slice\(0, 10\);/);
+});

@@ -266,6 +266,8 @@ function applyTemplate(src, { keepTitle = true } = {}) {
     const n = nextNostalgiaOrder(S.nostalgiaItems, src.nostalgia_series);
     S.data.nostalgia_order = n;
     delete S.data.nostalgia_main; // the finale flag belongs to that one episode
+    // …and keeps the episode's date, the owner's choice: the next one is nearly always the same season/day
+    if (src.event_date) S.data.event_date = String(src.event_date).slice(0, 10);
     const title = nextEpisodeTitle(src.title, n), headline = nextEpisodeTitle(src.headline, n);
     if (title) S.data.title = title;
     if (headline) S.data.headline = headline;
