@@ -2833,3 +2833,9 @@ test('«إلى متبقي» and «الإلتي كور» are corrected (INCIDENTS
 test('«free agency» is «سوق المصارعين الأحرار» (INCIDENTS #241)', () => {
   assert.equal(applyCorrections('أكد دخوله عالم المصارع الحر'), 'أكد دخوله سوق المصارعين الأحرار');
 });
+
+test('a promotion coming back is not a return spoiler; «بقضاء وقتا» corrected (INCIDENTS #242)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('عودة اتحاد Southern Underground Pro في شهر نوفمبر وأبرز محطات عرض TNA iMPACT', ''), false);
+  assert.equal(applyCorrections('سعادتها بقضاء وقتا أطول'), 'سعادتها بقضاء وقت أطول');
+});
