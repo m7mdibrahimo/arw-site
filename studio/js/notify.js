@@ -78,8 +78,8 @@ export function describe(n) {
     // ── site ──
     case 'site': return { ico: KIND_ICON[n.kind] || 'news', tone: 'teal', title: `${singular(n.kind)} جديد على الموقع: ${q(n.title)}`, detail: n.platforms && n.platforms.length ? `اتنشر على ${platforms(n.platforms)}` : '', chip: null, href: editHref };
     case 'social': return { ico: 'send', tone: 'sky', title: `${q(n.title)} اتنشر على السوشيال`, detail: platforms(n.platforms), chip: null, href: editHref };
-    case 'held': return { ico: 'shield', tone: 'yellow', title: `تم حجب ${q(n.title)} عن السوشيال`, detail: `السبب: ${HELD[n.reason] || 'حرق'} · بيتنشر لوحده بعد ٦ ساعات`, chip: null, href: '#/' };
-    case 'released': return { ico: 'check', tone: 'teal', title: `تم فك حجب ${q(n.title)}`, detail: n.by ? `بواسطة ${n.by}` : 'بعد ٦ ساعات من الحجب', chip: null, href: '#/' };
+    case 'held': return { ico: 'shield', tone: 'yellow', title: `تم حجب ${q(n.title)} عن السوشيال`, detail: `السبب: ${HELD[n.reason] || 'حرق'} · بيتنشر لوحده بعد ١٢ ساعة`, chip: null, href: '#/' };
+    case 'released': return { ico: 'check', tone: 'teal', title: `تم فك حجب ${q(n.title)}`, detail: n.by ? `بواسطة ${n.by}` : 'بعد ١٢ ساعة من الحجب', chip: null, href: '#/' };
     case 'review': return { ico: 'alert', tone: 'coral', title: `النشر على ${PLATFORM[n.platform] || n.platform} محتاج مراجعة`, detail: q(n.title), chip: null, href: '#/tools/social' };
     case 'reel-site': return { ico: 'show', tone: 'coral', title: `تم نشر ريل ${q(n.title)}`, detail: (n.done || []).map(d => REEL[d] || d).join(' · '), chip: null, href: '#/tools/reels' };
     default: return { ico: 'check', tone: 'ink', title: n.title || '', detail: n.detail || '', chip: null, href: '' };
