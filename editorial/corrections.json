@@ -4723,6 +4723,11 @@
    "wrong": "فريق التناوب",
    "right": "الفريق",
    "note": "«tag team» مش «rotation» — INCIDENTS #223"
+  },
+  {
+   "wrong": "تصفيي",
+   "right": "تأهيلي",
+   "note": "«qualifier» — INCIDENTS #224"
   }
  ]
 }

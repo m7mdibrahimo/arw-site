@@ -2740,3 +2740,7 @@ test('a weekly show past the window makes the story old even when the model said
   assert.equal(stillSpoiler({ why: 'title', title: text }, { social_spoiler: false, social_spoiler_age: 'recent', title: text }), true);
   assert.equal(applyCorrections('لشريكتها في فريق التناوب آلي'), 'لشريكتها في الفريق آلي');
 });
+
+test('«تصفيي» is «تأهيلي» (INCIDENTS #224)', () => {
+  assert.equal(applyCorrections('في نزال تصفيي ثلاثي'), 'في نزال تأهيلي ثلاثي');
+});
