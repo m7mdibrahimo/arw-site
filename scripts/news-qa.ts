@@ -420,8 +420,12 @@ const AGE_TENS: Record<string, number> = { عشرين: 20, ثلاثين: 30, أ�
  */
 export function spelledAgesToDigits(body: string): string {
   return String(body || "").replace(/(?<![\u0600-\u06FF])(?:(واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g,
-    (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`);
+    (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`)
+    // Round hundreds before a unit: «مسافة لا تقل عن خمسمائة قدم» ← «500 قدم» (INCIDENTS #225)
+    .replace(/(?<![\u0600-\u06FF])(مائة|مئة|مائتي|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة)\s+(قدم|أقدام|متر|أمتار|ميل|كيلومتر|دولار|رطل|كيلوغرام|مشجع|متفرج)(?![\u0600-\u06FF])/g,
+      (_m, h: string, w: string) => `${HUNDREDS[h]} ${w}`);
 }
+const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائتي: 200, مائتين: 200, ثلاثمائة: 300, أربعمائة: 400, خمسمائة: 500, ستمائة: 600, سبعمائة: 700, ثمانمائة: 800, تسعمائة: 900 };
 
 export function autoFix(text: string): string {
   if (!text) return text;

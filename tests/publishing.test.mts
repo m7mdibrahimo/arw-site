@@ -2744,3 +2744,9 @@ test('a weekly show past the window makes the story old even when the model said
 test('«تصفيي» is «تأهيلي» (INCIDENTS #224)', () => {
   assert.equal(applyCorrections('في نزال تصفيي ثلاثي'), 'في نزال تأهيلي ثلاثي');
 });
+
+test('round hundreds before a unit become digits in the body (INCIDENTS #225)', async () => {
+  const { spelledAgesToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledAgesToDigits('بالابتعاد مسافة لا تقل عن خمسمائة قدم عنها'), 'بالابتعاد مسافة لا تقل عن 500 قدم عنها');
+  assert.equal(spelledAgesToDigits('خمسمائة مشجع حضروا'), '500 مشجع حضروا');
+});
