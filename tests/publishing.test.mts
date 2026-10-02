@@ -2773,3 +2773,8 @@ test('«ال» written twice before a noun is undone; real «الال…» words
   assert.equal(autoFix('والالثنائي سيخوض مواجهة ثلاثية'), 'والثنائي سيخوض مواجهة ثلاثية');
   assert.equal(autoFix('أكد الالتزام بالقرار'), 'أكد الالتزام بالقرار');
 });
+
+test('Stephanie McMahon in a title becomes her full tag, not «ستيفاني» (INCIDENTS #231)', async () => {
+  const { titleNamesAsTags, dropPartialNameTags } = await import('../scripts/fightful-watcher');
+  assert.deepEqual(dropPartialNameTags(titleNamesAsTags('ستيفاني مكمان تكشف القصة الكاملة لطلب تريبل إتش الزواج منها', ['WWE', 'ستيفاني', 'تريبل إتش'])).filter(t => t.startsWith('ستيفاني')), ['ستيفاني مكمان']);
+});
