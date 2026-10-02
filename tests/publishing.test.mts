@@ -2689,3 +2689,9 @@ test('«put him over» is losing to him, written plainly (INCIDENTS #217)', () =
   assert.equal(applyCorrections('منحه الأفضلية وخسره نزالا نظيفا'), 'منحه الأفضلية وخسر أمامه نزالا نظيفا');
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /«put \[someone\] over» معناها/);
 });
+
+test('«AAA Mega Champion» and «Reina de Reinas Champion» have their glossary names (INCIDENTS #218)', () => {
+  const hint = buildNamesGlossaryHint('AAA Mega Champion El Grande Americano, Reina de Reinas Champion La Catalina');
+  assert.match(hint, /AAA Mega Champion = بطل AAA ميغا/); assert.match(hint, /Reina de Reinas Champion = بطلة ملكة الملكات/);
+  assert.equal(applyCorrections('بطل AAA للوزن الثقيل إل غراندي أمريكانو'), 'بطل AAA ميغا إل غراندي أمريكانو');
+});

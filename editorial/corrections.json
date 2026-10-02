@@ -4653,6 +4653,21 @@
    "wrong": "وخسره نزالا",
    "right": "وخسر أمامه نزالا",
    "note": "«put him over» — INCIDENTS #217"
+  },
+  {
+   "wrong": "بطولة AAA ميجا",
+   "right": "بطولة AAA ميغا",
+   "note": "شكل القاموس — INCIDENTS #218"
+  },
+  {
+   "wrong": "بطل AAA ميجا",
+   "right": "بطل AAA ميغا",
+   "note": "شكل القاموس — INCIDENTS #218"
+  },
+  {
+   "wrong": "بطل AAA للوزن الثقيل",
+   "right": "بطل AAA ميغا",
+   "note": "AAA Mega Champion — INCIDENTS #218"
   }
  ]
 }
