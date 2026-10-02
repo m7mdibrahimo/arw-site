@@ -2678,3 +2678,9 @@ test('«يتجادبان» is a typo for «يتجادلان» (INCIDENTS #213)',
 test('«أوسبريب» is Ospreay (INCIDENTS #214)', () => {
   assert.equal(applyCorrections('ضد النجم ويل أوسبريب، في خطوة'), 'ضد النجم ويل أوسبراي، في خطوة');
 });
+
+test('betting odds before a card are a preview, not a result (INCIDENTS #216)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('الكشف عن ترشيحات ونسب الفوز لمواجهات UFC 332 بين سيلفا وكونغ بدعم من MyBookie', ''), false);
+  assert.equal(isSingleMatchSpoiler('ناتاليا سيلفا تحقق الفوز على وانغ كونغ في UFC 332', ''), true);
+});
