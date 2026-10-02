@@ -2768,3 +2768,8 @@ test('talking about a past return is not a return spoiler (INCIDENTS #228)', asy
   assert.equal(isSingleMatchSpoiler('ميكي جيمز تكشف تفاصيل عودتها إلى TNA', ''), false);
   assert.equal(isSingleMatchSpoiler('نيكي بيلا تعود إلى WWE في عرض RAW', ''), true);
 });
+
+test('«ال» written twice before a noun is undone; real «الال…» words stay (INCIDENTS #229)', () => {
+  assert.equal(autoFix('والالثنائي سيخوض مواجهة ثلاثية'), 'والثنائي سيخوض مواجهة ثلاثية');
+  assert.equal(autoFix('أكد الالتزام بالقرار'), 'أكد الالتزام بالقرار');
+});

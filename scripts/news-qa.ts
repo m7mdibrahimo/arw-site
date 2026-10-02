@@ -430,6 +430,9 @@ const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائت�
 export function autoFix(text: string): string {
   if (!text) return text;
   text = repairMixedTitles(text);
+  // «ال» written twice: «والالثنائي سيخوض» (INCIDENTS #229). Only before nouns that never start with «ال»
+  // themselves, so «الالتزام» and «الالتفاف» stay as they are.
+  text = text.replace(/(?<![\u0600-\u06FF])([وفبلك]?)الال(?=(?:ثنائي|فريق|نجم|نجمة|مصارع|مصارعة|عرض|اتحاد|بطل|بطلة|بطولة|نزال|لقب)(?![\u0600-\u06FF]))/g, "$1ال");
   // A match heading never carries the outcome: «…Bound for Glory: BDE ينهزم أمام Mr Elegance**» sat above
   // «الفائز: BDE» (INCIDENTS #221). The winner line says who won; the heading keeps the match only.
   text = text.replace(/^(\*\*(?:المواجهة|الحدث الرئيسي|النزال)[^\n*]*?):\s*[^\n*:]*?(?:ينهزم|يهزم|تهزم|تنهزم|يفوز|تفوز|يتغلب|تتغلب|ينتصر|تنتصر|يسقط|تسقط)[^\n*]*\*\*$/gm, "$1**");
