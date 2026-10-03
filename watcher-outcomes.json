@@ -1,38 +1,43 @@
 {
- "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-03T00:56:41.445Z"
+ "https://www.fightful.com/wrestling/scott-damore-looked-at-running-maple-leaf-gardens-in-2025-praises-adam-copeland": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:06:50.399Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T00:56:49.525Z"
+  "at": "2026-10-03T01:06:50.251Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-9-23-averages-567000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T00:56:49.411Z"
+  "at": "2026-10-03T01:06:50.137Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-03T00:56:49.293Z"
+  "at": "2026-10-03T01:06:50.017Z"
  },
  "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T00:56:49.150Z"
+  "at": "2026-10-03T01:06:49.874Z"
  },
  "https://www.fightful.com/wrestling/moose-responds-to-fans-judging-tna-bound-for-glory-ticket-sales": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T00:56:49.033Z"
+  "at": "2026-10-03T01:06:49.755Z"
  },
  "https://www.fightful.com/wrestling/anthony-bowens-and-max-caster-are-free-agents": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T00:56:48.733Z"
+  "at": "2026-10-03T01:06:49.448Z"
+ },
+ "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-03T00:56:41.445Z"
  },
  "https://www.fightful.com/wrestling/watch-wrestling-revolver-tales-from-the-ring-10-2-26": {
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
