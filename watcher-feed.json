@@ -1,13 +1,43 @@
 [
   {
+    "id": 331755,
+    "link": "https://www.fightful.com/?p=331755",
+    "date": "2026-10-03T11:45:00",
+    "date_gmt": "2026-10-03T15:45:00",
+    "title": {
+      "rendered": "Rohan Raja Talks About Upcoming Match With Andrade At MLP Northern Rising: &#8216;Win Or Lose, I&#8217;ve Made A Statement. If He Loses, He Loses Everything&#8217;"
+    },
+    "featured_image": "https://www.fightful.com/social-thumb/youtube/2DydI3Lz2gI.jpg"
+  },
+  {
+    "id": 331805,
+    "link": "https://www.fightful.com/wrestling/adam-copeland-moves-are-great-but-wrestling-is-all-about-making-a-connection/",
+    "date": "2026-10-03T11:41:35",
+    "date_gmt": "2026-10-03T15:41:35",
+    "title": {
+      "rendered": "Adam Copeland: Moves Are Great, But Wrestling Is All About Making A Connection"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/12/17220623/adam_copeland_aew_worlds_end_3.jpg"
+  },
+  {
+    "id": 331762,
+    "link": "https://www.fightful.com/wrestling/jody-threat-discusses-her-upcoming-goals-in-pro-wrestling/",
+    "date": "2026-10-03T11:40:00",
+    "date_gmt": "2026-10-03T15:40:00",
+    "title": {
+      "rendered": "Jody Threat Discusses Her Upcoming Goals In Pro Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03112843/maxresdefault-13.jpg"
+  },
+  {
     "id": 331747,
-    "link": "https://www.fightful.com/?p=331747",
+    "link": "https://www.fightful.com/wrestling/rohan-raja-reflects-on-wrestling-without-a-crowd-in-nxt-uk-everything-in-the-ring-hurt-so-much-more-because-you-dont-feel-the-adrenaline-from-the-crowd/",
     "date": "2026-10-03T11:35:00",
     "date_gmt": "2026-10-03T15:35:00",
     "title": {
       "rendered": "Rohan Raja Reflects On Wrestling Without A Crowd In NXT UK: &#8216;Everything In The Ring Hurt So Much More Because You Don’t Feel The Adrenaline From The Crowd&#8217;"
     },
-    "featured_image": "https://www.fightful.com/social-thumb/youtube/2DydI3Lz2gI.jpg"
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03113341/maxresdefault-14.jpg"
   },
   {
     "id": 331760,
@@ -268,35 +298,5 @@
       "rendered": "Asuka: I Have Not Left WWE, I Have Not Quit"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/09211448/HH6nX-7XcAQH9lH.jpeg?v=20261003021249"
-  },
-  {
-    "id": 331729,
-    "link": "https://www.fightful.com/wrestling/kevin-owens-qualifies-for-mens-money-in-the-bank-on-10-2-wwe-smackdown/",
-    "date": "2026-10-02T22:06:19",
-    "date_gmt": "2026-10-03T02:06:19",
-    "title": {
-      "rendered": "Kevin Owens Qualifies For Men’s Money In The Bank On 10/2 WWE SmackDown"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02220324/image-1.png"
-  },
-  {
-    "id": 331689,
-    "link": "https://www.fightful.com/wrestling/david-finlay-opens-up-about-choosing-to-join-aew-over-wwe-nxt/",
-    "date": "2026-10-02T21:52:06",
-    "date_gmt": "2026-10-03T01:52:06",
-    "title": {
-      "rendered": "David Finlay Opens Up About Choosing To Join AEW Over WWE NXT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/03/27205417/david_finlay_2.png"
-  },
-  {
-    "id": 331723,
-    "link": "https://www.fightful.com/mma/ufc-332-silva-vs-cong-weigh-in-results/",
-    "date": "2026-10-02T21:48:43",
-    "date_gmt": "2026-10-03T01:48:43",
-    "title": {
-      "rendered": "UFC 332: Silva vs. Cong Weigh-In Results"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01201913/maxresdefault-2.jpg"
   }
 ]
