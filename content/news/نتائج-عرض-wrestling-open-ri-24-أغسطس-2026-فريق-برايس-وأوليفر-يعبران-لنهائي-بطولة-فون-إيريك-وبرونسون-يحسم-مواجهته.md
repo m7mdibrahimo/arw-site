@@ -12,7 +12,7 @@ tags:
 image: /content/images/hrda8ifpxewe069y.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد Beyond Wrestling عرضا جديدا وحافلة بالإثارة من عرض Wrestling Open RI عبر منصة IWTV، والتي احتضنتها صالة "Rhodes On The Pawtuxet" بمدينة كرانستون بولاية رود آيلاند الأمريكية؛ حيث شهدت الليلة استكمال منافسات نصف نهائي بطولة فون إيريك للفرق السداسية (Von Erich Six Man Tag Team Classic 2026)، إلى جانب سلسلة من المواجهات الفردية القوية.
+أقام اتحاد Beyond Wrestling عرضا جديدا وحافلا بالإثارة من عرض Wrestling Open RI عبر منصة IWTV، والتي احتضنتها صالة "Rhodes On The Pawtuxet" بمدينة كرانستون بولاية رود آيلاند الأمريكية؛ حيث شهدت الليلة استكمال منافسات نصف نهائي بطولة فون إيريك للفرق السداسية (Von Erich Six Man Tag Team Classic 2026)، إلى جانب سلسلة من المواجهات الفردية القوية.
 
 ### المواجهات الافتتاحية والنزاعات الفردية
 
