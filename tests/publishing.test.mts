@@ -2877,3 +2877,9 @@ test('an editor note left in parentheses is removed (INCIDENTS #251)', () => {
   assert.equal(autoFix('تحدث فينلي عن قراره (المصدر يشير إلى أنه اختار AEW بدلا من WWE NXT، وليس أنه انتقل فعليا من مكان لآخر)، وذلك خلال ظهوره.'), 'تحدث فينلي عن قراره، وذلك خلال ظهوره.');
   assert.equal(autoFix('فاز فريق ذا دوجز (كلارك كونورز وجيب كيد) بالنزال.'), 'فاز فريق ذا دوجز (كلارك كونورز وجيب كيد) بالنزال.');
 });
+
+test('a return announced for tonight show is a card, not a spoiler (INCIDENTS #253)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('كوفي يواجه لي موريارتي وجوليا هارت تعود للحلبة ضمن عرض AEW Collision الليلة', ''), false);
+  assert.equal(isSingleMatchSpoiler('جوليا هارت تعود إلى الحلبة في عرض AEW Collision', ''), true);
+});

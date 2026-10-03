@@ -2030,7 +2030,7 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   const formatReturn = ar("(?:ي|ت)?عود(?:ة|ته|تها)?\\s+(?:إلى|الى|ل)\\s*(?:ال)?(?:نظام|الدفع\\s+مقابل\\s+المشاهدة|البث|قناة|منصة|التلفزيون|تلفزيون)|^(?:اتحاد|شركة|منظمة|عرض|عروض)\\s+\\S+(?:\\s+\\S+)?\\s+(?:يعود|تعود)|^عودة\\s+(?:اتحاد|شركة|منظمة|عرض|عروض)(?![\\u0600-\\u06FF])");
   // An announced return on a show still to come is a match card, not a spoiler: «عودة فريق ذا إيليت
   // ونزال مرتقب… ضمن عرض AEW Dynamite» — Tony Khan's announcement for that night (INCIDENTS #171).
-  const announced = ar("مرتقب|مرتقبة|المرتقب|المرتقبة|سيشهد|ستشهد|يستعد|تستعد|القادم|القادمة|المقبل|المقبلة").test(title) && !ar("يعود في|تعود في|عاد|عادت|يسجل عودته|تسجل عودتها|بعد عودته|بعد عودتها").test(title);
+  const announced = ar("مرتقب|مرتقبة|المرتقب|المرتقبة|سيشهد|ستشهد|يستعد|تستعد|القادم|القادمة|المقبل|المقبلة|الليلة").test(title) && !ar("يعود في|تعود في|عاد|عادت|يسجل عودته|تسجل عودتها|بعد عودته|بعد عودتها").test(title);
   // News ABOUT a return still to come: «آخر التطورات حول عودة نايومي إلى WWE» — she hasn't been
   // back yet, the story says her name isn't even in creative talks (INCIDENTS #204).
   const pendingReturn = ar("(?:آخر\\s+)?(?:التطورات|تطورات|المستجدات|مستجدات|تحديث|تحديثات|تقارير|موعد|توقيت|خطط|أنباء|شائعات|تفاصيل)\\s+(?:جديدة\\s+|الكواليس\\s+|كواليس\\s+)?(?:حول|بشأن|عن)\\s+(?:ال)?عودة");
