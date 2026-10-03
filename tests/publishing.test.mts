@@ -2953,3 +2953,8 @@ test('«أمضي مسيرته» in the past is «أمضى» (INCIDENTS #265)', (
 test('a programme has episodes: «أحدث حلقة من برنامج» (INCIDENTS #266)', () => {
   assert.equal(applyCorrections('خلال ظهوره في أحدث عرض من برنامج The Mick And Kenny Show'), 'خلال ظهوره في أحدث حلقة من برنامج The Mick And Kenny Show');
 });
+
+test('a booker is «مسؤول الحجز وصناعة القصص» and «means every word» is not «يعنيهم حرفيا» (INCIDENTS #267)', () => {
+  assert.equal(applyCorrections('يستعد مسؤول الحجوزات والنجوم في اتحاد NJPW'), 'يستعد مسؤول الحجز وصناعة القصص في اتحاد NJPW');
+  assert.equal(applyCorrections('لأنني أعرف أنه يعنيهم حرفيا'), 'لأنني أعرف أنه يعني كل كلمة فيها');
+});
