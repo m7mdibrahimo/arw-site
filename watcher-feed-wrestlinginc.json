@@ -1,5 +1,15 @@
 [
   {
+    "id": 4342765728,
+    "link": "https://www.wrestlinginc.com/2271705/aew-steven-borden-decided-pursue-pro-wrestling/",
+    "date": "Sat, 03 Oct 2026 13:30:00 +0000",
+    "date_gmt": "2026-10-03T13:30:00.000Z",
+    "title": {
+      "rendered": "AEW Star Steven Borden Explains When He Decided To Pursue Pro Wrestling"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-star-steven-borden-explains-when-he-decided-to-pursue-pro-wrestling/l-intro-1790681976.jpg"
+  },
+  {
     "id": 4956309949,
     "link": "https://www.wrestlinginc.com/2271170/wwe-tna-apollo-crews-uhaa-nation-wrestled-non-compete-period/",
     "date": "Sat, 03 Oct 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Sheamus Is Reportedly A Free Agent After WWE Contract Expiration"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/sheamus-is-reportedly-a-free-agent-after-wwe-contract-expiration/l-intro-1790966849.jpg"
-  },
-  {
-    "id": 2218753872,
-    "link": "https://www.wrestlinginc.com/2276074/aew-collision-chris-jericho-cruise-upcoming-show/",
-    "date": "Fri, 02 Oct 2026 18:22:32 +0000",
-    "date_gmt": "2026-10-02T18:22:32.000Z",
-    "title": {
-      "rendered": "AEW Set To Broadcast Show From Chris Jericho's Upcoming Cruise"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-set-to-broadcast-show-from-chris-jerichos-upcoming-cruise/l-intro-1790965031.jpg"
   }
 ]
