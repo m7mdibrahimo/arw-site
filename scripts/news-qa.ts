@@ -92,6 +92,8 @@ const RULES: Rule[] = [
   // «وパاتريك» (Japanese), «ناтан» (Cyrillic), «مصارعة חברה» (Hebrew tag) — INCIDENTS #54.
   { code: "foreign_script", severity: "error", re: /[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]+/g, message: "حروف من لغة أخرى (يابانية/روسية/عبرية/بورمية...) داخل النص" },
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
+  // Not blocking (ai_leak is): the copy editor removes it — «خلال إضافة علامات التنصيص… كما في المصدر» (INCIDENTS #254)
+  { code: "echoed_instruction", severity: "error", re: /علامات التنصيص|كما (?:في|ورد في) المصدر/g, message: "تعليمات للكاتب اتنقلت جوه النص — احذفها", fields: ["title", "body"] },
   { code: "empty_brackets", severity: "error", re: /\(\s*\)|\[\s*\]|«\s*»|""/g, message: "أقواس أو علامات تنصيص فاضية" },
   { code: "english_jargon", severity: "error", re: new RegExp(`[${AR}]\\s+(?:segment|promo|promoter|heel|babyface|face turn|heel turn|feud|spot|push|booking|booker|squash|botch|kayfabe|go-home|angle|storyline|run-in|pop|heat|tag team|finisher|jobber|mic skills|main event|midcard|house show)\\b|(?<!عرض|TNA)\\s+impact\\s+(?=ال)|\\b(?:segment|promo|heel|babyface|feud|booking|squash|botch|kayfabe|go-home|storyline)\\s+[${AR}]`, "gi"), message: "مصطلح مصارعة إنجليزي داخل جملة عربية (مثل segment ← فقرة، promo ← خطاب/حوار)", fields: ["title", "body"] },
   { code: "english_title_name", severity: "error", re: new RegExp(`[${AR}]\\s+(?:[A-Z][A-Za-z']+\\s+){0,4}(?:Championships?|Titles?)\\b`, "g"), message: "اسم لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...). أسماء الدورات (Cup/Classic/Tournament) تبقى بالإنجليزي", fields: ["title", "body"] },
@@ -438,6 +440,9 @@ const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائت�
 export function autoFix(text: string): string {
   if (!text) return text;
   text = repairMixedTitles(text);
+  // An instruction the writer echoed into the text: «خلال إضافة علامات التنصيص وعلامة الاستفهام كما في
+  // المصدر، استرجع شيفاني…» went live (INCIDENTS #254) — the clause goes, the sentence stays
+  text = text.replace(/(?:^|(?<=[\n.،]\s?))(?:خلال|مع|بعد|عبر)\s+إضافة\s+علامات\s+التنصيص[^،.\n]*(?:كما\s+(?:في|ورد\s+في)\s+المصدر)?[،,]\s*/g, "");
   // An editor's note to itself left in the text: «(المصدر يشير إلى أنه اختار AEW بدلا من WWE NXT، وليس أنه
   // انتقل فعليا…)» went live in the David Finlay story (INCIDENTS #251)
   text = text.replace(/\s*\((?:المصدر|ملاحظة|ملحوظة|توضيح|للتوضيح|تنبيه)(?:\s|:)[^()\n]{0,240}\)/g, "");

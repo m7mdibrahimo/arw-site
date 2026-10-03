@@ -2883,3 +2883,9 @@ test('a return announced for tonight show is a card, not a spoiler (INCIDENTS #2
   assert.equal(isSingleMatchSpoiler('كوفي يواجه لي موريارتي وجوليا هارت تعود للحلبة ضمن عرض AEW Collision الليلة', ''), false);
   assert.equal(isSingleMatchSpoiler('جوليا هارت تعود إلى الحلبة في عرض AEW Collision', ''), true);
 });
+
+test('an echoed instruction about quote marks is removed and flagged (INCIDENTS #254)', async () => {
+  assert.equal(autoFix('خلال إضافة علامات التنصيص وعلامة الاستفهام كما في المصدر، استرجع شيفاني ذكريات النزال.'), 'استرجع شيفاني ذكريات النزال.');
+  const { checkArticle } = await import('../scripts/news-qa');
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'نص فيه كما في المصدر بالضبط ويكمل الكلام هنا بشكل عادي وطويل.', []).some(i => i.code === 'echoed_instruction'));
+});
