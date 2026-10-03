@@ -1,5 +1,15 @@
 [
   {
+    "id": 331774,
+    "link": "https://www.fightful.com/wrestling/mai-sakurai-finishing-up-with-marigold-on-october-24th/",
+    "date": "2026-10-03T08:31:47",
+    "date_gmt": "2026-10-03T12:31:47",
+    "title": {
+      "rendered": "Mai Sakurai Finishing Up With Marigold On October 24th"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03082523/Screenshot-500.png"
+  },
+  {
     "id": 331679,
     "link": "https://www.fightful.com/wrestling/aew-collision-preview-start-time-how-to-watch-location-10-3/",
     "date": "2026-10-03T08:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Bryce Remsburg Calls Jon Moxley &#8216;Ace&#8217; Of AEW Locker Room"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02153706/maxresdefault-4.jpg"
-  },
-  {
-    "id": 331630,
-    "link": "https://www.fightful.com/wrestling/the-hardys-to-have-full-creative-control-of-10-13-tna-impact-taping/",
-    "date": "2026-10-02T15:19:06",
-    "date_gmt": "2026-10-02T19:19:06",
-    "title": {
-      "rendered": "The Hardys To Have Full Creative Control Of 10/13 TNA Impact Taping"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02151433/7c505870119536d054844af1e3463647-1-1.jpg"
   }
 ]
