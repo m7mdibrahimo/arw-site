@@ -185,7 +185,9 @@ export function nextNostalgiaOrder(items, series) {
 export function descriptionFromHeadline(headline) {
   const h = String(headline || '').replace(/\s*\d{1,2}[./-]\d{1,2}[./-]\d{4}\s*/, ' ').replace(/\s+/g, ' ').trim();
   if (!h) return '';
-  return /مترجم/.test(h) ? `${h.replace(/\s*مترجم$/, '')} مترجم بالكامل مع جميع النزالات والأحداث.` : `${h} بالكامل مع جميع النزالات والأحداث.`;
+  // «… مترجم» (عرض) and «… مترجمة» (حلقة) both: the word stays as written, once (Tough Enough episodes)
+  const m = h.match(/\s*(مترجمة?)$/);
+  return m ? `${h.slice(0, m.index)} ${m[1]} بالكامل مع جميع النزالات والأحداث.` : `${h} بالكامل مع جميع النزالات والأحداث.`;
 }
 export function hostName(url) { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; } }
 

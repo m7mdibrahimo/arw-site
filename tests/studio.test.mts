@@ -478,3 +478,10 @@ test('an episode saved minutes ago can be copied: the editor reads it from its f
 test('a copied nostalgia episode keeps the date of the one it was copied from', () => {
   assert.match(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /if \(src\.event_date\) S\.data\.event_date = String\(src\.event_date\)\.slice\(0, 10\);/);
 });
+
+test('«مترجمة» at the end of an episode name carries into its description once, and the next episode keeps it', async () => {
+  const { descriptionFromHeadline, nextEpisodeTitle } = await import('../studio/js/schema.js');
+  assert.equal(descriptionFromHeadline('دبليو دبليو اف تف انف الموسم 2 الحلقة 14 مترجمة'), 'دبليو دبليو اف تف انف الموسم 2 الحلقة 14 مترجمة بالكامل مع جميع النزالات والأحداث.');
+  assert.equal(descriptionFromHeadline('عرض الرو 21.09.2026 مترجم'), 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.');
+  assert.equal(nextEpisodeTitle('دبليو دبليو اف تف انف الموسم 2 الحلقة 14 مترجمة', 15), 'دبليو دبليو اف تف انف الموسم 2 الحلقة 15 مترجمة');
+});
