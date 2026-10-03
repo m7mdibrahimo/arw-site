@@ -1,5 +1,15 @@
 [
   {
+    "id": 802250819,
+    "link": "https://www.ringsidenews.com/another-match-added-october-3-aew-collision-just-hours-before-show/",
+    "date": "Sat, 03 Oct 2026 21:06:38 +0000",
+    "date_gmt": "2026-10-03T21:06:38.000Z",
+    "title": {
+      "rendered": "Another Match Added to October 3 AEW Collision Just Hours Before Show"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2025/11/last-minute-match-added-to-november-15-aew-collision-39.jpg?x77927"
+  },
+  {
     "id": 802250812,
     "link": "https://www.ringsidenews.com/first-match-revealed-chris-jerichos-rock-n-wrestling-rager-sea/",
     "date": "Sat, 03 Oct 2026 21:02:13 +0000",
@@ -138,15 +148,5 @@
       "rendered": "WWE Royal Rumble 2027 Could Land on Same Day as AEW Dynasty"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/wwe-royal-rumble-2027-could-land-on-same-day-as-aew-dynasty-29.jpg?x77927"
-  },
-  {
-    "id": 802250709,
-    "link": "https://www.ringsidenews.com/las-vegas-not-available-wrestlemania-43-backup-plan-saudi-arabia/",
-    "date": "Sat, 03 Oct 2026 14:13:50 +0000",
-    "date_gmt": "2026-10-03T14:13:50.000Z",
-    "title": {
-      "rendered": "Las Vegas Not Available as WrestleMania 43 Backup Plan for Saudi Arabia"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/las-vegas-not-available-as-wrestlemania-43-backup-plan-for-saudi-arabia-47.jpg?x77927"
   }
 ]
