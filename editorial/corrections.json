@@ -4943,6 +4943,16 @@
    "wrong": "وكان العرض مجددا في الأصل",
    "right": "وكان العرض مقررا في الأصل",
    "note": "«مجددا» بدل «مقررا» — INCIDENTS #263"
+  },
+  {
+   "wrong": "ماتايمي غاردنز",
+   "right": "ميبل ليف غاردنز",
+   "note": "f.k.a. Maple Leaf Gardens — INCIDENTS #264"
+  },
+  {
+   "wrong": "ماتايمي",
+   "right": "ماتامي",
+   "note": "Mattamy — INCIDENTS #264"
   }
  ]
 }

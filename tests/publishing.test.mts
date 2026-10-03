@@ -2941,3 +2941,7 @@ test('a ring announcer is «مذيع الحلبة», not a commentator (INCIDENT
   assert.equal(applyCorrections('أعلن الاتحاد أن معلق الحلبة يوجي شيندو سيغيب'), 'أعلن الاتحاد أن مذيع الحلبة يوجي شيندو سيغيب');
   assert.equal(applyCorrections('وكان العرض مجددا في الأصل لينطلق'), 'وكان العرض مقررا في الأصل لينطلق');
 });
+
+test('Maple Leaf Gardens is not «ماتايمي غاردنز» (INCIDENTS #264)', () => {
+  assert.equal(applyCorrections('في مركز ماتايمي الرياضي، المعروف سابقا باسم ماتايمي غاردنز'), 'في مركز ماتامي الرياضي، المعروف سابقا باسم ميبل ليف غاردنز');
+});
