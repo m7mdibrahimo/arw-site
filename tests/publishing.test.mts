@@ -2949,3 +2949,7 @@ test('Maple Leaf Gardens is not «ماتايمي غاردنز» (INCIDENTS #264)
 test('«أمضي مسيرته» in the past is «أمضى» (INCIDENTS #265)', () => {
   assert.equal(applyCorrections('باعتباره أمضي مسيرته في الخسارة'), 'باعتباره أمضى مسيرته في الخسارة');
 });
+
+test('a programme has episodes: «أحدث حلقة من برنامج» (INCIDENTS #266)', () => {
+  assert.equal(applyCorrections('خلال ظهوره في أحدث عرض من برنامج The Mick And Kenny Show'), 'خلال ظهوره في أحدث حلقة من برنامج The Mick And Kenny Show');
+});
