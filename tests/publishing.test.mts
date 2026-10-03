@@ -2872,3 +2872,8 @@ test('a results report title takes the show date from the source, not the UTC da
   assert.equal(alignTitleDateToSource('نتائج عرض TNA iMPACT (2 أكتوبر 2026): X', 'TNA iMPACT! Results (10/1): Syx To Speak'), 'نتائج عرض TNA iMPACT (1 أكتوبر 2026): X');
   assert.equal(alignTitleDateToSource(t, 'no date here'), t);
 });
+
+test('an editor note left in parentheses is removed (INCIDENTS #251)', () => {
+  assert.equal(autoFix('تحدث فينلي عن قراره (المصدر يشير إلى أنه اختار AEW بدلا من WWE NXT، وليس أنه انتقل فعليا من مكان لآخر)، وذلك خلال ظهوره.'), 'تحدث فينلي عن قراره، وذلك خلال ظهوره.');
+  assert.equal(autoFix('فاز فريق ذا دوجز (كلارك كونورز وجيب كيد) بالنزال.'), 'فاز فريق ذا دوجز (كلارك كونورز وجيب كيد) بالنزال.');
+});
