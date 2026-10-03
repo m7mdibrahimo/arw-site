@@ -1,43 +1,48 @@
 {
- "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-03T01:16:48.340Z"
+ "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-2-2026": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-03T01:28:34.302Z"
  },
  "https://www.fightful.com/wrestling/scott-damore-looked-at-running-maple-leaf-gardens-in-2025-praises-adam-copeland": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T01:17:43.711Z"
+  "at": "2026-10-03T01:27:54.714Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T01:17:43.583Z"
+  "at": "2026-10-03T01:27:54.569Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-9-23-averages-567000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T01:17:43.486Z"
+  "at": "2026-10-03T01:27:54.457Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-03T01:17:43.383Z"
+  "at": "2026-10-03T01:27:54.340Z"
  },
  "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T01:17:43.262Z"
+  "at": "2026-10-03T01:27:54.201Z"
  },
  "https://www.fightful.com/wrestling/moose-responds-to-fans-judging-tna-bound-for-glory-ticket-sales": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T01:17:43.160Z"
+  "at": "2026-10-03T01:27:54.084Z"
  },
  "https://www.fightful.com/wrestling/anthony-bowens-and-max-caster-are-free-agents": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T01:17:42.904Z"
+  "at": "2026-10-03T01:27:53.789Z"
+ },
+ "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-03T01:16:48.340Z"
  },
  "https://www.fightful.com/wrestling/watch-wrestling-revolver-tales-from-the-ring-10-2-26": {
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T00:21:43.822Z"
- },
- "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-2-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-03T00:16:53.042Z"
  },
  "https://www.wrestlinginc.com/2276245/wwe-tatum-paxley-charlotte-flair-alexa-bliss-mentorship": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
