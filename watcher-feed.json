@@ -1,5 +1,15 @@
 [
   {
+    "id": 331766,
+    "link": "https://www.fightful.com/wrestling/cmll-viernes-espectacular-results-10-2-2026-olympia-advances-to-the-universal-championship-finals/",
+    "date": "2026-10-03T01:20:00",
+    "date_gmt": "2026-10-03T05:20:00",
+    "title": {
+      "rendered": "CMLL Viernes Espectacular Results (10/2/2026): Olympia Advances to the Universal Championship Finals"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03011531/image-408.png"
+  },
+  {
     "id": 331691,
     "link": "https://www.fightful.com/wrestling/defy-all-heart-results-10-1-jon-moxley-daniel-garcia-and-marina-shafir-team/",
     "date": "2026-10-02T23:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Sheamus Is Officially A Free Agent"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/01/04182737/sheamus_8.jpg"
-  },
-  {
-    "id": 331612,
-    "link": "https://www.fightful.com/wrestling/seth-rollins-has-a-contract-with-espn-for-a-set-number-of-on-air-appearances/",
-    "date": "2026-10-02T13:08:45",
-    "date_gmt": "2026-10-02T17:08:45",
-    "title": {
-      "rendered": "Seth Rollins Has A Contract With ESPN For A Set Number Of On-Air Appearances"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/06074620/Screenshot-159-e1770382007275.png"
   }
 ]
