@@ -2915,3 +2915,11 @@ test('CMLL names and a stray «نافت» are corrected (INCIDENTS #257)', () =>
   assert.equal(names['Barboza'], 'باربوزا');
   assert.equal(names['Esfinge'], 'إسفينخي');
 });
+
+test('a clause written twice in one paragraph keeps only its first copy (INCIDENTS #258)', () => {
+  const line = 'وذلك بعد تتويجه باللقب إثر تغلبه على دومينيك ميستيريو في عرض AAA TripleMania 34 الشهر الماضي، وهذا يأتي بعد تغلبه على دومينيك ميستيريو في عرض AAA TripleMania 34 الشهر الماضي حيث يترقب الجميع ما سيقوله.';
+  assert.equal(autoFix(line), 'وذلك بعد تتويجه باللقب إثر تغلبه على دومينيك ميستيريو في عرض AAA TripleMania 34 الشهر الماضي، حيث يترقب الجميع ما سيقوله.');
+  const ok = 'فاز كودي رودز على درو ماكنتاير، ثم فاز درو ماكنتاير على جي يوسو.';
+  assert.equal(autoFix(ok), ok);
+  assert.equal(applyCorrections('بطل أول-أريكان مرتين والانجازات'), 'بطل أول أمريكان مرتين والإنجازات');
+});

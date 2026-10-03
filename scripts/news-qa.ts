@@ -437,6 +437,33 @@ export function spelledAgesToDigits(body: string): string {
 const ORD_UNITS: Record<string, number> = { حادية: 1, ثانية: 2, ثالثة: 3, رابعة: 4, خامسة: 5, سادسة: 6, سابعة: 7, ثامنة: 8, تاسعة: 9, حادي: 1, ثاني: 2, ثالث: 3, رابع: 4, خامس: 5, سادس: 6, سابع: 7, ثامن: 8, تاسع: 9 };
 const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائتي: 200, مائتين: 200, ثلاثمائة: 300, أربعمائة: 400, خمسمائة: 500, ستمائة: 600, سبعمائة: 700, ثمانمائة: 800, تسعمائة: 900 };
 
+/**
+ * A clause written twice in one paragraph: «…إثر تغلبه على دومينيك ميستيريو في عرض AAA
+ * TripleMania 34 الشهر الماضي، وهذا يأتي بعد تغلبه على دومينيك ميستيريو في عرض AAA
+ * TripleMania 34 الشهر الماضي حيث…» (INCIDENTS #258). Seven or more words repeated
+ * word-for-word are never intended: drop the second copy and its lead-in back to the
+ * comma that ends the first one.
+ */
+export function dropRepeatedClause(line: string, minWords = 7): string {
+  for (let guard = 0; guard < 5; guard++) {
+    const words = [...line.matchAll(/\S+/g)].map(m => ({ w: m[0].replace(/[،,.:؛!?؟«»"()]/g, ""), start: m.index!, end: m.index! + m[0].length }));
+    let hit: { i: number; j: number; n: number } | null = null;
+    for (let i = 0; i < words.length && !hit; i++) {
+      for (let j = i + minWords; j + minWords <= words.length && !hit; j++) {
+        let n = 0;
+        while (j + n < words.length && i + n < j && words[i + n].w && words[i + n].w === words[j + n].w) n++;
+        if (n >= minWords) hit = { i, j, n };
+      }
+    }
+    if (!hit) return line;
+    const firstEnd = words[hit.i + hit.n - 1].end;
+    const comma = line.lastIndexOf("،", words[hit.j].start);
+    const cut = comma >= firstEnd - 1 ? comma + 1 : words[hit.j].start;
+    line = (line.slice(0, cut).replace(/\s+$/, "") + " " + line.slice(words[hit.j + hit.n - 1].end).replace(/^[\s،,]+/, "")).replace(/\s+$/, "");
+  }
+  return line;
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   text = repairMixedTitles(text);
@@ -462,7 +489,7 @@ export function autoFix(text: string): string {
   // two consecutive lines (C4 18/09) — INCIDENTS #58/#59. A long line repeated
   // word-for-word is never intended: keep the first, and drop a «---» left orphaned.
   const seenLines = new Set<string>();
-  out = out.split("\n").filter(line => {
+  out = out.split("\n").map(line => dropRepeatedClause(line)).filter(line => {
     const key = line.replace(/\s+/g, " ").trim();
     if (key.length < 60) return true;
     if (seenLines.has(key)) return false;
