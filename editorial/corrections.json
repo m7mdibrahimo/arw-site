@@ -4843,6 +4843,21 @@
    "wrong": "مسبقتا الترتيب",
    "right": "كانتا مقررتين مسبقا",
    "note": "INCIDENTS #250"
+  },
+  {
+   "wrong": "بلاك مونرو",
+   "right": "بليك مونرو",
+   "note": "Blake Monroe — INCIDENTS #255"
+  },
+  {
+   "wrong": "لـبلاك مونرو",
+   "right": "لبليك مونرو",
+   "note": "INCIDENTS #255"
+  },
+  {
+   "wrong": "بلايك مونرو",
+   "right": "بليك مونرو",
+   "note": "Blake Monroe — INCIDENTS #255"
   }
  ]
 }

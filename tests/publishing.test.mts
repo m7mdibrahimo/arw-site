@@ -2889,3 +2889,8 @@ test('an echoed instruction about quote marks is removed and flagged (INCIDENTS 
   const { checkArticle } = await import('../scripts/news-qa');
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'نص فيه كما في المصدر بالضبط ويكمل الكلام هنا بشكل عادي وطويل.', []).some(i => i.code === 'echoed_instruction'));
 });
+
+test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
+  assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
+  assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
+});
