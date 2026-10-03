@@ -1,5 +1,15 @@
 [
   {
+    "id": 331696,
+    "link": "https://www.fightful.com/wrestling/watch-wrestling-revolver-tales-from-the-ring-10-2-26/",
+    "date": "2026-10-02T20:19:39",
+    "date_gmt": "2026-10-03T00:19:39",
+    "title": {
+      "rendered": "Watch: Wrestling Revolver: Tales From The Ring | 10.2.26"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02201944/maxresdefault-5.jpg"
+  },
+  {
     "id": 331688,
     "link": "https://www.fightful.com/wrestling/aew-dynamite-and-collision-9-23-averages-567000-viewers-on-cable-tv/",
     "date": "2026-10-02T19:44:48",
@@ -288,15 +298,5 @@
       "rendered": "WWE SmackDown Preview, Start Time, How To Watch, Location (10/2)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01202856/20260930_SD_Match_KOCodyGargano_16x9_Friday.jpg"
-  },
-  {
-    "id": 331583,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-9-29-draws-670000-viewers/",
-    "date": "2026-10-02T07:20:03",
-    "date_gmt": "2026-10-02T11:20:03",
-    "title": {
-      "rendered": "WWE NXT (9/29) Draws 670,000 Viewers"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25191506/nxt2024_25.jpg"
   }
 ]
