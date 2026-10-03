@@ -2894,3 +2894,16 @@ test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
 });
+
+test('every pinned news permalink has a real slug and no two stories share one (INCIDENTS #256)', () => {
+  const dir = path.join(process.cwd(), 'content', 'news');
+  const seen = new Map<string, string>();
+  for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.md'))) {
+    let link = fs.readFileSync(path.join(dir, f), 'utf-8').match(/^permalink:\s*"?([^"\n]+)"?\s*$/m)?.[1];
+    if (!link) continue;
+    assert.match(link, /^\/news\/[^/\s]+\/(?:index\.html)?$/, `${f}: ${link}`);
+    link = link.replace(/index\.html$/, '');
+    assert.ok(!seen.has(link), `${f} and ${seen.get(link)} both write ${link}`);
+    seen.set(link, f);
+  }
+});
