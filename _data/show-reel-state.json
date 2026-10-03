@@ -2693,15 +2693,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال 29.09.2026 مترجم",
-    "lastAttempt": 1791024438991,
-    "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791025338516,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
