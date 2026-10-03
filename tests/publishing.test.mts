@@ -2923,3 +2923,8 @@ test('a clause written twice in one paragraph keeps only its first copy (INCIDEN
   assert.equal(autoFix(ok), ok);
   assert.equal(applyCorrections('بطل أول-أريكان مرتين والانجازات'), 'بطل أول أمريكان مرتين والإنجازات');
 });
+
+test('«فوريا» for «فورا» and «أسماء كبارة» are corrected, the wrestler Furia Roja is not (INCIDENTS #259)', () => {
+  assert.equal(applyCorrections('لترد جوليا فوريا بضربة برأسها، مع أسماء كبارة في هوليوود، قبل أن تتجه كواليس الصالة'), 'لترد جوليا فورا بضربة برأسها، مع أسماء كبيرة في هوليوود، قبل أن تتجه إلى كواليس الصالة');
+  assert.equal(applyCorrections('فاز زاندوكان جونيور وفوريا روخا'), 'فاز زاندوكان جونيور وفوريا روخا');
+});
