@@ -2399,6 +2399,21 @@ export function missingResults(sourceText: string, body: string): string[] {
   return hits.map(m => src.slice(Math.max(0, m.index! - 45), m.index! + 55).replace(/\s+/g, " ").trim());
 }
 
+/**
+ * «نتائج عرض WWE SmackDown (3 أكتوبر 2026)» for the 2 October show: the live report's later passes
+ * dated it by the UTC day (INCIDENTS #249). When the source names the show's date («october-2-2026»,
+ * «(10/2)», «October 2, 2026»), the «(D شهر YYYY)» in the Arabic title follows it.
+ */
+export function alignTitleDateToSource(title: string, source: string): string {
+  const src = String(source || "").toLowerCase();
+  let m: number | null = null, d: number | null = null;
+  const named = src.match(new RegExp(`\\b(${EN_MONTHS.join("|")})[-\\s]+(\\d{1,2})(?:st|nd|rd|th)?,?[-\\s]+(?:20\\d{2})\\b`));
+  if (named) { m = EN_MONTHS.indexOf(named[1]); d = +named[2]; }
+  else { const slash = src.match(/\((\d{1,2})\/(\d{1,2})(?:\/\d{2,4})?\)/); if (slash) { m = +slash[1] - 1; d = +slash[2]; } }
+  if (m === null || d === null || m < 0 || m > 11 || d < 1 || d > 31) return title;
+  return String(title || "").replace(new RegExp(`\\((\\d{1,2}|أول)\\s+(${AR_MONTHS.join("|")})\\s+(\\d{4})\\)`), (_all, _d, _mo, y) => `(${d} ${AR_MONTHS[m!]} ${y})`);
+}
+
 export function recentShowNames(hours: number = 24, newsDir: string = NEWS_DIR): string[] {
   const names = new Set<string>();
   if (!fs.existsSync(newsDir)) return [];
@@ -4233,6 +4248,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   rewritten.title = numberWordsInTitle(resultsTitleOutcome(draft.title, draft.body));
   if (!isShowResultsArticle(rawTitle, plainText)) rewritten.title = tonightInTitle(rewritten.title);
   rewritten.title = dropTimezoneFromTitle(rewritten.title);
+  // A results report's title date is the show's (US) date from the source, never today's UTC date
+  rewritten.title = alignTitleDateToSource(rewritten.title, `${postUrl} ${rawTitle}`);
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 

@@ -2864,3 +2864,11 @@ test('«AAA World Cruiserweight Champion» has a glossary name (INCIDENTS #248)'
   assert.match(buildNamesGlossaryHint('Fraxiom and AAA World Cruiserweight Champion Rey Fénix'), /AAA World Cruiserweight Champion = بطل الكروزرويت العالمي في AAA/);
   assert.equal(applyCorrections('وبطل العالم لوزن المتوسط في اتحاد AAA ري فينيكس'), 'وبطل الكروزرويت العالمي في AAA ري فينيكس');
 });
+
+test('a results report title takes the show date from the source, not the UTC day (INCIDENTS #249)', async () => {
+  const { alignTitleDateToSource } = await import('../scripts/fightful-watcher');
+  const t = 'نتائج عرض WWE SmackDown (3 أكتوبر 2026): تيفاني ستراتون تخطف بطاقة التأهل';
+  assert.equal(alignTitleDateToSource(t, 'https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-2-2026/'), 'نتائج عرض WWE SmackDown (2 أكتوبر 2026): تيفاني ستراتون تخطف بطاقة التأهل');
+  assert.equal(alignTitleDateToSource('نتائج عرض TNA iMPACT (2 أكتوبر 2026): X', 'TNA iMPACT! Results (10/1): Syx To Speak'), 'نتائج عرض TNA iMPACT (1 أكتوبر 2026): X');
+  assert.equal(alignTitleDateToSource(t, 'no date here'), t);
+});
