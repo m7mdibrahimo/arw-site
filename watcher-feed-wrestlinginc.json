@@ -1,5 +1,15 @@
 [
   {
+    "id": 4959330032,
+    "link": "https://www.wrestlinginc.com/2276491/mlw-major-league-wrestling-first-ppv-2019-saturday-night-superfight-chicago/",
+    "date": "Sat, 03 Oct 2026 02:22:05 +0000",
+    "date_gmt": "2026-10-03T02:22:05.000Z",
+    "title": {
+      "rendered": "MLW Announces First Pay-Per-View Since 2019"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/mlw-announces-first-pay-per-view-since-2019/l-intro-1790993955.jpg"
+  },
+  {
     "id": 4727440587,
     "link": "https://www.wrestlinginc.com/2270343/wwe-joe-hendry-cm-punk-dream-opponent-scotland/",
     "date": "Sat, 03 Oct 2026 01:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Drew McIntyre's Expected WWE Return"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-drew-mcintyres-expected-wwe-return/l-intro-1790958330.jpg"
-  },
-  {
-    "id": 1277269309,
-    "link": "https://www.wrestlinginc.com/2275884/wwe-ethan-page-death-eddie-osbourne-canadian-indie-veteran/",
-    "date": "Fri, 02 Oct 2026 16:26:11 +0000",
-    "date_gmt": "2026-10-02T16:26:11.000Z",
-    "title": {
-      "rendered": "WWE's Ethan Page Comments On The Death Of Canadian Indie Veteran Eddie Osbourne"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-ethan-page-death-eddie-osbourne-canadian-indie-veteran/l-intro-1790962090.jpg"
   }
 ]
