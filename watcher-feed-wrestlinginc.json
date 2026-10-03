@@ -1,5 +1,15 @@
 [
   {
+    "id": 4255875080,
+    "link": "https://www.wrestlinginc.com/2276492/kevin-owens-earns-final-spot-mens-wwe-mitb-ladder-match/",
+    "date": "Sat, 03 Oct 2026 02:34:26 +0000",
+    "date_gmt": "2026-10-03T02:34:26.000Z",
+    "title": {
+      "rendered": "Kevin Owens Earns Final Spot In Men's WWE MITB Ladder Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-owens-earns-final-spot-in-mens-wwe-mitb-ladder-match/l-intro-1790994668.jpg"
+  },
+  {
     "id": 4959330032,
     "link": "https://www.wrestlinginc.com/2276491/mlw-major-league-wrestling-first-ppv-2019-saturday-night-superfight-chicago/",
     "date": "Sat, 03 Oct 2026 02:22:05 +0000",
@@ -188,15 +198,5 @@
       "rendered": "New Name For Merged WBD-Paramount Revealed As Deal Is Set To Finalize"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/new-name-for-merged-wbd-paramount-revealed-as-deal-is-set-to-finalize/l-intro-1790962418.jpg"
-  },
-  {
-    "id": 1020768189,
-    "link": "https://www.wrestlinginc.com/2275885/wwe-drew-mcintyre-expected-return-backstage-update/",
-    "date": "Fri, 02 Oct 2026 16:27:15 +0000",
-    "date_gmt": "2026-10-02T16:27:15.000Z",
-    "title": {
-      "rendered": "Backstage Update On Drew McIntyre's Expected WWE Return"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-drew-mcintyres-expected-wwe-return/l-intro-1790958330.jpg"
   }
 ]
