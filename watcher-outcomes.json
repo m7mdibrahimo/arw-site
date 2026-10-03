@@ -1,4 +1,39 @@
 {
+ "https://www.fightful.com/wrestling/scott-damore-looked-at-running-maple-leaf-gardens-in-2025-praises-adam-copeland": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:37:45.188Z"
+ },
+ "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:37:45.043Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-and-collision-9-23-averages-567000-viewers-on-cable-tv": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:37:44.930Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-03T01:37:44.808Z"
+ },
+ "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:37:44.653Z"
+ },
+ "https://www.fightful.com/wrestling/moose-responds-to-fans-judging-tna-bound-for-glory-ticket-sales": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:37:44.526Z"
+ },
+ "https://www.fightful.com/wrestling/anthony-bowens-and-max-caster-are-free-agents": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-03T01:37:44.229Z"
+ },
  "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
@@ -8,41 +43,6 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-03T01:28:34.302Z"
- },
- "https://www.fightful.com/wrestling/scott-damore-looked-at-running-maple-leaf-gardens-in-2025-praises-adam-copeland": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T01:27:54.714Z"
- },
- "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T01:27:54.569Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-and-collision-9-23-averages-567000-viewers-on-cable-tv": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T01:27:54.457Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-03T01:27:54.340Z"
- },
- "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T01:27:54.201Z"
- },
- "https://www.fightful.com/wrestling/moose-responds-to-fans-judging-tna-bound-for-glory-ticket-sales": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T01:27:54.084Z"
- },
- "https://www.fightful.com/wrestling/anthony-bowens-and-max-caster-are-free-agents": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T01:27:53.789Z"
  },
  "https://www.fightful.com/wrestling/watch-wrestling-revolver-tales-from-the-ring-10-2-26": {
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
