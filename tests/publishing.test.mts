@@ -2907,3 +2907,11 @@ test('every pinned news permalink has a real slug and no two stories share one (
     seen.set(link, f);
   }
 });
+
+test('CMLL names and a stray «نافت» are corrected (INCIDENTS #257)', () => {
+  const out = applyCorrections('مواجهات قوية وحماسية نافت بين نجوم الاتحاد، وفاز دي فونتو وإسفينغي على زيوسيس.');
+  assert.equal(out, 'مواجهات قوية وحماسية بين نجوم الاتحاد، وفاز ديفونتو وإسفينخي على زيوكسيس.');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['Barboza'], 'باربوزا');
+  assert.equal(names['Esfinge'], 'إسفينخي');
+});
