@@ -1,33 +1,33 @@
 {
- "https://www.fightful.com/wrestling/wwe-nxt-live-results-10-2-jackson-drake-headlines": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-03T15:03:25.976Z"
- },
  "https://www.fightful.com/wrestling/aaa-on-fox-preview-start-time-how-to-watch-location-10-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T15:03:14.520Z"
+  "at": "2026-10-03T15:13:57.151Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-preview-start-time-how-to-watch-location-10-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T15:03:14.135Z"
+  "at": "2026-10-03T15:13:56.819Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-qualifies-for-mens-money-in-the-bank-on-10-2-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T15:03:13.750Z"
+  "at": "2026-10-03T15:13:56.456Z"
  },
  "https://www.fightful.com/mma/ufc-332-silva-vs-cong-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-03T15:03:13.556Z"
+  "at": "2026-10-03T15:13:56.340Z"
  },
  "https://www.fightful.com/wrestling/scott-damore-looked-at-running-maple-leaf-gardens-in-2025-praises-adam-copeland": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-03T15:03:13.373Z"
+  "at": "2026-10-03T15:13:56.158Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-live-results-10-2-jackson-drake-headlines": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-03T15:03:25.976Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
