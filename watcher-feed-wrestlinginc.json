@@ -1,5 +1,15 @@
 [
   {
+    "id": 1993813893,
+    "link": "https://www.wrestlinginc.com/2276467/tiffany-stratton-rounds-out-wwe-womens-mitb-match/",
+    "date": "Sat, 03 Oct 2026 00:30:03 +0000",
+    "date_gmt": "2026-10-03T00:30:03.000Z",
+    "title": {
+      "rendered": "Tiffany Stratton Rounds Out WWE Women's MITB Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tiffany-stratton-rounds-out-wwe-womens-mitb-match/l-intro-1790987304.jpg"
+  },
+  {
     "id": 3177837976,
     "link": "https://www.wrestlinginc.com/2276463/wwe-seth-rollins-return-time-right/",
     "date": "Sat, 03 Oct 2026 00:11:05 +0000",
@@ -27,7 +37,7 @@
     "title": {
       "rendered": "WWE SmackDown Results 10/2 - Final Money In The Bank Triple Threat Qualifiers & More"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-102-final-money-in-the-bank-triple-threat-qualifiers-more/l-intro-1790981862.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more/l-intro-1790986834.jpg"
   },
   {
     "id": 1127750880,
@@ -188,15 +198,5 @@
       "rendered": "Dave Meltzer Provides Update On Keanu Carver's WWE NXT Absence"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-provides-update-on-keanu-carvers-wwe-nxt-absence/l-intro-1790956761.jpg"
-  },
-  {
-    "id": 4536621828,
-    "link": "https://www.wrestlinginc.com/2275779/chris-jericho-remembers-late-pac-aew-dynamite-tribute-show/",
-    "date": "Fri, 02 Oct 2026 15:25:31 +0000",
-    "date_gmt": "2026-10-02T15:25:31.000Z",
-    "title": {
-      "rendered": "Chris Jericho Remembers The Late Pac Following AEW Dynamite Tribute Show"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/chris-jericho-remembers-the-late-pac-following-aew-dynamite-tribute-show/l-intro-1790954608.jpg"
   }
 ]

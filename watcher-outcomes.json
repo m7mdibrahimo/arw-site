@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-03T00:36:48.786Z"
+ },
  "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-03T00:16:53.042Z"
- },
- "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T23:56:46.250Z"
  },
  "https://www.wrestlinginc.com/2276245/wwe-tatum-paxley-charlotte-flair-alexa-bliss-mentorship": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
