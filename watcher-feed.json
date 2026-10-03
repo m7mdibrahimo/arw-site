@@ -1,5 +1,15 @@
 [
   {
+    "id": 331738,
+    "link": "https://www.fightful.com/wrestling/asuka-i-have-not-left-wwe-i-have-not-quit/",
+    "date": "2026-10-02T22:12:49",
+    "date_gmt": "2026-10-03T02:12:49",
+    "title": {
+      "rendered": "Asuka: I Have Not Left WWE, I Have Not Quit"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/09211448/HH6nX-7XcAQH9lH.jpeg?v=20261003021249"
+  },
+  {
     "id": 331729,
     "link": "https://www.fightful.com/wrestling/kevin-owens-qualifies-for-mens-money-in-the-bank-on-10-2-wwe-smackdown/",
     "date": "2026-10-02T22:06:19",
@@ -288,15 +298,5 @@
       "rendered": "Chris Jericho: The Next Version Of Nick Wayne Has Potential To Be A World Champion"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23225430/Screenshot-327-e1790218483914.png"
-  },
-  {
-    "id": 14463,
-    "link": "https://www.fightful.com/wrestling/confirmed-wrestling-contract-expirations/",
-    "date": "2026-10-02T12:00:00",
-    "date_gmt": "2026-10-02T16:00:00",
-    "title": {
-      "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
   }
 ]
