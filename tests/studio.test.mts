@@ -485,3 +485,13 @@ test('«مترجمة» at the end of an episode name carries into its descriptio
   assert.equal(descriptionFromHeadline('عرض الرو 21.09.2026 مترجم'), 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.');
   assert.equal(nextEpisodeTitle('دبليو دبليو اف تف انف الموسم 2 الحلقة 14 مترجمة', 15), 'دبليو دبليو اف تف انف الموسم 2 الحلقة 15 مترجمة');
 });
+
+test('a show copied from another show of the same programme drops the old show\'s name tag (INCIDENTS #261)', async () => {
+  const { dropStaleTemplateTags } = await import('../studio/js/schema.js');
+  const template = { program: 'CMLL', title: 'CMLL Noche De Campeones 25.09.2026', headline: 'عرض سي ام ال ال 25.09.2026 مترجم', tags: ['CMLL', 'Noche De Campeones', 'سي ام ال ال'] };
+  const data = { program_name: 'CMLL', title: 'CMLL Martes De Glamour 29.09.2026', headline: 'عرض سي ام ال ال 29.09.2026 مترجم' };
+  assert.deepEqual(dropStaleTemplateTags(template.tags, template, data), ['CMLL', 'سي ام ال ال']);
+  // a weekly show keeps its own tags from one week to the next
+  const raw = { program: 'WWE RAW', title: 'WWE RAW 28.09.2026', headline: 'عرض الرو 28.09.2026 مترجم', tags: ['WWE', 'WWE RAW', 'الرو', 'Becky Lynch'] };
+  assert.deepEqual(dropStaleTemplateTags(raw.tags, raw, { program_name: 'WWE RAW', title: 'WWE RAW 05.10.2026', headline: 'عرض الرو 05.10.2026 مترجم' }), raw.tags);
+});

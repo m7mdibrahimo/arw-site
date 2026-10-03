@@ -156,10 +156,15 @@ export function syncEpisodeCode(text, season, episode) {
 export function dropStaleTemplateTags(tags, template, data) {
   const list = Array.isArray(tags) ? tags : [];
   const norm = (x) => String(x || '').toLowerCase().replace(/\s+/g, ' ').trim();
-  const from = norm(template && template.program), to = norm(data && data.program_name);
-  if (!template || !from || from === to || !Array.isArray(template.tags)) return list;
-  const inherited = new Set(template.tags.map(norm));
+  if (!template || !Array.isArray(template.tags)) return list;
+  const from = norm(template.program), to = norm(data && data.program_name);
   const now = norm([data.program_name, data.title, data.headline].join(' '));
+  // Another programme: every tag it brought along that the new show doesn't name goes.
+  // The same programme («CMLL» → «CMLL»): only the tags naming the old show's own title do —
+  // «Noche De Campeones» stayed on «CMLL Martes De Glamour» (INCIDENTS #261).
+  const was = norm([template.title, template.headline].join(' '));
+  const inherited = new Set(template.tags.map(norm).filter(t => from && from !== to ? true : t && was.includes(t)));
+  if (!inherited.size) return list;
   return list.filter(t => !inherited.has(norm(t)) || now.includes(norm(t)));
 }
 /**
