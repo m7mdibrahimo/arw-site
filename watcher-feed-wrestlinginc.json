@@ -1,5 +1,25 @@
 [
   {
+    "id": 2878555261,
+    "link": "https://www.wrestlinginc.com/2273716/wwe-bully-ray-roman-reigns-everything-perfectly/",
+    "date": "Sat, 03 Oct 2026 16:30:00 +0000",
+    "date_gmt": "2026-10-03T16:30:00.000Z",
+    "title": {
+      "rendered": "Bully Ray On WWE's Roman Reigns: 'He Does Everything As Perfectly As Can Be'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/bully-ray-on-wwes-roman-reigns-he-does-everything-as-perfectly-as-can-be/l-intro-1790538730.jpg"
+  },
+  {
+    "id": 2242416630,
+    "link": "https://www.wrestlinginc.com/2276578/wwe-roman-reigns-little-bit-body-dysmorphia/",
+    "date": "Sat, 03 Oct 2026 16:26:08 +0000",
+    "date_gmt": "2026-10-03T16:26:08.000Z",
+    "title": {
+      "rendered": "WWE's Roman Reigns: 'We All Got A Little Bit Of Body Dysmorphia'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-roman-reigns-we-all-got-a-little-bit-of-body-dysmorphia/l-intro-1791044531.jpg"
+  },
+  {
     "id": 920395415,
     "link": "https://www.wrestlinginc.com/2273702/aew-mjf-contemplates-lessons-learned-first-world-title-run/",
     "date": "Sat, 03 Oct 2026 16:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Tony Schiavone Says Women's Division Star Is 'Banged Up' Following AEW All Out 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-schiavone-says-womens-division-star-is-banged-up-following-aew-all-out-2026/l-intro-1790973398.jpg"
-  },
-  {
-    "id": 5090425917,
-    "link": "https://www.wrestlinginc.com/2276273/aew-anthony-bowens-max-caster-acclaimed-free-agents-contracts-expire/",
-    "date": "Fri, 02 Oct 2026 20:06:25 +0000",
-    "date_gmt": "2026-10-02T20:06:25.000Z",
-    "title": {
-      "rendered": "Anthony Bowens & Max Caster Reportedly Free Agents As AEW Contracts Expire"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/anthony-bowens-max-caster-reportedly-free-agents-as-aew-contracts-expire/l-intro-1790971484.jpg"
-  },
-  {
-    "id": 3954257283,
-    "link": "https://www.wrestlinginc.com/2276270/killer-kross-bray-wyatt-sicks-promo-joseph-sawyer-joe-gacy/",
-    "date": "Fri, 02 Oct 2026 20:04:56 +0000",
-    "date_gmt": "2026-10-02T20:04:56.000Z",
-    "title": {
-      "rendered": "Killer Kross Invokes Bray Wyatt In Promo, Implies He Was Supposed To Be In Wyatt Sicks"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/killer-kross-invokes-bray-wyatt-in-promo-implies-he-was-supposed-to-be-in-wyatt-sicks/l-intro-1790971418.jpg"
   }
 ]
