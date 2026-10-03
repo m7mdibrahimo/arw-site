@@ -1,5 +1,35 @@
 [
   {
+    "id": 331723,
+    "link": "https://www.fightful.com/mma/ufc-332-silva-vs-cong-weigh-in-results/",
+    "date": "2026-10-02T21:48:43",
+    "date_gmt": "2026-10-03T01:48:43",
+    "title": {
+      "rendered": "UFC 332: Silva vs. Cong Weigh-In Results"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01201913/maxresdefault-2.jpg"
+  },
+  {
+    "id": 331720,
+    "link": "https://www.fightful.com/wrestling/cm-punk-return-womens-tag-team-title-bout-set-for-10-9-wwe-smackdown/",
+    "date": "2026-10-02T21:45:54",
+    "date_gmt": "2026-10-03T01:45:54",
+    "title": {
+      "rendered": "CM Punk Return, Women&#8217;s Tag Team Title Bout Set For 10/9 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02214255/HTq3ey4WkAAFUDB.jpg"
+  },
+  {
+    "id": 331715,
+    "link": "https://www.fightful.com/wrestling/blake-monroe-finally-makes-her-main-roster-in-ring-debut-defeats-giulia-on-10-2-wwe-smackdown/",
+    "date": "2026-10-02T21:41:53",
+    "date_gmt": "2026-10-03T01:41:53",
+    "title": {
+      "rendered": "Blake Monroe Finally Makes Her Main Roster In-Ring Debut, Defeats Giulia On 10/2 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02213832/HTq0aMDWEAA9oCz.jpg"
+  },
+  {
     "id": 331661,
     "link": "https://www.fightful.com/wrestling/scott-damore-reveals-the-brain-trust-behind-mlp-wrestling/",
     "date": "2026-10-02T20:52:43",
@@ -268,35 +298,5 @@
       "rendered": "WWE Files To Trademark &#8216;Ultranueva&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25190119/wwe_110.png?v=20261002154641"
-  },
-  {
-    "id": 331597,
-    "link": "https://www.fightful.com/wrestling/aew-hosting-collision-episode-on-chris-jerichos-rock-n-wrestling-rager-at-sea/",
-    "date": "2026-10-02T10:14:23",
-    "date_gmt": "2026-10-02T14:14:23",
-    "title": {
-      "rendered": "AEW Hosting Collision Episode On Chris Jericho&#8217;s Rock N&#8217; Wrestling Rager At Sea"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/09/07064809/aew-collision-logo-2-345373734-1.png"
-  },
-  {
-    "id": 331598,
-    "link": "https://www.fightful.com/wrestling/aaa-heroes-inmortales-announced-for-october-24/",
-    "date": "2026-10-02T10:10:57",
-    "date_gmt": "2026-10-02T14:10:57",
-    "title": {
-      "rendered": "AAA Heroes Inmortales Announced For October 24"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02100957/Screenshot-2026-10-02-at-10.03.34-AM.png"
-  },
-  {
-    "id": 331592,
-    "link": "https://www.fightful.com/wrestling/skydance-revealed-as-name-of-merged-paramount-wbd-company/",
-    "date": "2026-10-02T09:46:10",
-    "date_gmt": "2026-10-02T13:46:10",
-    "title": {
-      "rendered": "Skydance Revealed As Name Of Merged Paramount-WBD Company"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02092648/HToNM5cXcAAKXva.jpg"
   }
 ]
