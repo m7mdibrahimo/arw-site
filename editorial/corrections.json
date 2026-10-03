@@ -4928,6 +4928,21 @@
    "wrong": "مجلات Pro Wrestling Illustrated",
    "right": "مجلة Pro Wrestling Illustrated",
    "note": "مجلة واحدة — INCIDENTS #262"
+  },
+  {
+   "wrong": "معلق الحلبة",
+   "right": "مذيع الحلبة",
+   "note": "ring announcer مش commentator — INCIDENTS #263"
+  },
+  {
+   "wrong": "معلق حلبة",
+   "right": "مذيع حلبة",
+   "note": "ring announcer — INCIDENTS #263"
+  },
+  {
+   "wrong": "وكان العرض مجددا في الأصل",
+   "right": "وكان العرض مقررا في الأصل",
+   "note": "«مجددا» بدل «مقررا» — INCIDENTS #263"
   }
  ]
 }

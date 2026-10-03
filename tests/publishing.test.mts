@@ -2936,3 +2936,8 @@ test('Dudley Boyz, Road Warriors and the MLP names are in the glossary (INCIDENT
   assert.equal(names['Nikki Storm'], 'نيكي ستورم');
   assert.equal(names['Gabriel Fuerza'], 'غابرييل فويرزا');
 });
+
+test('a ring announcer is «مذيع الحلبة», not a commentator (INCIDENTS #263)', () => {
+  assert.equal(applyCorrections('أعلن الاتحاد أن معلق الحلبة يوجي شيندو سيغيب'), 'أعلن الاتحاد أن مذيع الحلبة يوجي شيندو سيغيب');
+  assert.equal(applyCorrections('وكان العرض مجددا في الأصل لينطلق'), 'وكان العرض مقررا في الأصل لينطلق');
+});
