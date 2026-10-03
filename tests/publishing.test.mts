@@ -2928,3 +2928,11 @@ test('«فوريا» for «فورا» and «أسماء كبارة» are correcte
   assert.equal(applyCorrections('لترد جوليا فوريا بضربة برأسها، مع أسماء كبارة في هوليوود، قبل أن تتجه كواليس الصالة'), 'لترد جوليا فورا بضربة برأسها، مع أسماء كبيرة في هوليوود، قبل أن تتجه إلى كواليس الصالة');
   assert.equal(applyCorrections('فاز زاندوكان جونيور وفوريا روخا'), 'فاز زاندوكان جونيور وفوريا روخا');
 });
+
+test('Dudley Boyz, Road Warriors and the MLP names are in the glossary (INCIDENTS #262)', () => {
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['Dudley Boyz'], 'ذا دادلي بويز');
+  assert.equal(names['The Road Warriors'], 'ذا رود ووريرز');
+  assert.equal(names['Nikki Storm'], 'نيكي ستورم');
+  assert.equal(names['Gabriel Fuerza'], 'غابرييل فويرزا');
+});

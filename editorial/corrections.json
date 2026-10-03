@@ -4918,6 +4918,16 @@
    "wrong": "تتجه كواليس",
    "right": "تتجه إلى كواليس",
    "note": "حرف جر ناقص — INCIDENTS #259"
+  },
+  {
+   "wrong": "فعالية لتوقيع التواقيع",
+   "right": "جلسة توقيعات",
+   "note": "autograph appearance — INCIDENTS #262"
+  },
+  {
+   "wrong": "مجلات Pro Wrestling Illustrated",
+   "right": "مجلة Pro Wrestling Illustrated",
+   "note": "مجلة واحدة — INCIDENTS #262"
   }
  ]
 }
