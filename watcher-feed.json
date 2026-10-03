@@ -1,5 +1,35 @@
 [
   {
+    "id": 331830,
+    "link": "https://www.fightful.com/wrestling/brock-lesnar-gets-inducted-into-minnesota-m-club-hall-of-fame/",
+    "date": "2026-10-03T12:08:26",
+    "date_gmt": "2026-10-03T16:08:26",
+    "title": {
+      "rendered": "Brock Lesnar Gets Inducted Into Minnesota M Club Hall Of Fame"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/04143731/Screenshot-308.png"
+  },
+  {
+    "id": 331806,
+    "link": "https://www.fightful.com/wrestling/adam-copeland-ive-always-appreciated-what-steve-maclin-brings-to-the-table/",
+    "date": "2026-10-03T12:02:30",
+    "date_gmt": "2026-10-03T16:02:30",
+    "title": {
+      "rendered": "Adam Copeland: I&#8217;ve Always Appreciated What Steve Maclin Brings To The Table"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/07160721/Steve-Maclin-Impact-Wrestling-645x370-1.webp"
+  },
+  {
+    "id": 331607,
+    "link": "https://www.fightful.com/wrestling/chris-jericho-im-in-the-hall-of-fame-in-my-head-and-in-the-heads-of-anybody-that-appreciates-the-work-ive-done/",
+    "date": "2026-10-03T12:00:00",
+    "date_gmt": "2026-10-03T16:00:00",
+    "title": {
+      "rendered": "Chris Jericho: I&#8217;m In The Hall Of Fame In My Head And In The Heads Of Anybody That Appreciates The Work I’ve Done"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/14202128/Screenshot-2026-05-14-at-8.04.00-PM.png"
+  },
+  {
     "id": 331819,
     "link": "https://www.fightful.com/wrestling/candela-mr-niebla-hector-garza-hijo-del-perro-aguayo-had-a-huge-influence-on-my-thinking-the-aesthetics-of-wrestling/",
     "date": "2026-10-03T11:55:34",
@@ -268,35 +298,5 @@
       "rendered": "MLP Northern Rising Preview, Start Time, How To Watch, Location (10/3)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02185408/MLP-Northern-Rising-1920x1080-1.jpg"
-  },
-  {
-    "id": 331766,
-    "link": "https://www.fightful.com/wrestling/cmll-viernes-espectacular-results-10-2-2026-olympia-advances-to-the-universal-championship-finals/",
-    "date": "2026-10-03T01:20:00",
-    "date_gmt": "2026-10-03T05:20:00",
-    "title": {
-      "rendered": "CMLL Viernes Espectacular Results (10/2/2026): Olympia Advances to the Universal Championship Finals"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03011531/image-408.png"
-  },
-  {
-    "id": 331691,
-    "link": "https://www.fightful.com/wrestling/defy-all-heart-results-10-1-jon-moxley-daniel-garcia-and-marina-shafir-team/",
-    "date": "2026-10-02T23:30:00",
-    "date_gmt": "2026-10-03T03:30:00",
-    "title": {
-      "rendered": "DEFY ALL HEART Results (10/1): Jon Moxley, Daniel Garcia, And Marina Shafir Team"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02195628/HSvsrSBWkAAxIE-.jpeg"
-  },
-  {
-    "id": 331743,
-    "link": "https://www.fightful.com/wrestling/kofi-vs-lee-moriarty-set-for-10-3-aew-collision/",
-    "date": "2026-10-02T22:46:44",
-    "date_gmt": "2026-10-03T02:46:44",
-    "title": {
-      "rendered": "Kofi Vs. Lee Moriarty, More Set For 10/3 AEW Collision"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02224518/HTq-o5rWYAADW-s.jpg"
   }
 ]
