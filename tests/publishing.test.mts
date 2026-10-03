@@ -2859,3 +2859,8 @@ test('a prediction is not a result (INCIDENTS #246)', async () => {
   assert.equal(isSingleMatchSpoiler('بولي راي يتكهن بتحالف ال ايه نايت مع 946 وهزيمة رومان رينز في عرض WWE موني إن ذا بانك', ''), false);
   assert.equal(isSingleMatchSpoiler('ال ايه نايت يهزم رومان رينز في عرض WWE موني إن ذا بانك', ''), true);
 });
+
+test('«AAA World Cruiserweight Champion» has a glossary name (INCIDENTS #248)', () => {
+  assert.match(buildNamesGlossaryHint('Fraxiom and AAA World Cruiserweight Champion Rey Fénix'), /AAA World Cruiserweight Champion = بطل الكروزرويت العالمي في AAA/);
+  assert.equal(applyCorrections('وبطل العالم لوزن المتوسط في اتحاد AAA ري فينيكس'), 'وبطل الكروزرويت العالمي في AAA ري فينيكس');
+});

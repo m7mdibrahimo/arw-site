@@ -4823,6 +4823,16 @@
    "wrong": "خسارته نزال على",
    "right": "خسارته نزالا على",
    "note": "مفعول به — INCIDENTS #247"
+  },
+  {
+   "wrong": "بطل العالم لوزن المتوسط في اتحاد AAA",
+   "right": "بطل الكروزرويت العالمي في AAA",
+   "note": "AAA World Cruiserweight Champion — INCIDENTS #248"
+  },
+  {
+   "wrong": "شهد الكواليس",
+   "right": "شهدت الكواليس",
+   "note": "INCIDENTS #248"
   }
  ]
 }
