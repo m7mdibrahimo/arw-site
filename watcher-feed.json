@@ -1,5 +1,15 @@
 [
   {
+    "id": 331793,
+    "link": "https://www.fightful.com/wrestling/tjpw-wrestle-princess-vii-results-10-3-26-four-championship-matches/",
+    "date": "2026-10-03T10:17:28",
+    "date_gmt": "2026-10-03T14:17:28",
+    "title": {
+      "rendered": "TJPW Wrestle Princess VII Results (10/3/26): Four Championship Matches"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/28002528/HQZLR30boAA1_kG.jpg"
+  },
+  {
     "id": 331779,
     "link": "https://www.fightful.com/wrestling/mick-foley-i-stay-glued-to-will-ospreays-promos-because-i-know-he-means-every-word-of-it/",
     "date": "2026-10-03T10:00:25",
@@ -288,15 +298,5 @@
       "rendered": "AEW Dynamite And Collision (9/23) Averages 567,000 Viewers On Cable TV"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/10194242/dynamite-2024-1-2.jpg"
-  },
-  {
-    "id": 331686,
-    "link": "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more/",
-    "date": "2026-10-02T19:15:00",
-    "date_gmt": "2026-10-02T23:15:00",
-    "title": {
-      "rendered": "WWE SmackDown Results (10/2/2026): MITB Qualifiers, Blake Monroe vs. Giulia, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01202856/20260930_SD_Match_KOCodyGargano_16x9_Friday.jpg"
   }
 ]
