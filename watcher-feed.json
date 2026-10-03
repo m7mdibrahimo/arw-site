@@ -1,5 +1,25 @@
 [
   {
+    "id": 331779,
+    "link": "https://www.fightful.com/wrestling/mick-foley-i-stay-glued-to-will-ospreays-promos-because-i-know-he-means-every-word-of-it/",
+    "date": "2026-10-03T10:00:25",
+    "date_gmt": "2026-10-03T14:00:25",
+    "title": {
+      "rendered": "Mick Foley: I Stay Glued To Will Ospreay&#8217;s Promos Because I Know He Means Every Word Of It"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27071620/maxresdefault-207.jpg"
+  },
+  {
+    "id": 331684,
+    "link": "https://www.fightful.com/wrestling/aaa-on-fox-preview-start-time-how-to-watch-location-10-3/",
+    "date": "2026-10-03T10:00:00",
+    "date_gmt": "2026-10-03T14:00:00",
+    "title": {
+      "rendered": "AAA on FOX Preview, Start Time, How To Watch, Location (10/3)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26224818/Screenshot-2026-09-26-at-10.43.56-PM.png"
+  },
+  {
     "id": 331789,
     "link": "https://www.fightful.com/wrestling/njpws-gedo-scheduled-for-wxw-germany-show-in-november/",
     "date": "2026-10-03T09:45:55",
@@ -278,25 +298,5 @@
       "rendered": "WWE SmackDown Results (10/2/2026): MITB Qualifiers, Blake Monroe vs. Giulia, More"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01202856/20260930_SD_Match_KOCodyGargano_16x9_Friday.jpg"
-  },
-  {
-    "id": 331677,
-    "link": "https://www.fightful.com/wrestling/drew-mcintyre-shows-off-body-transformation-since-january/",
-    "date": "2026-10-02T18:38:22",
-    "date_gmt": "2026-10-02T22:38:22",
-    "title": {
-      "rendered": "Drew McIntyre Shows Off Body Transformation Since January"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/31164307/HABc1DOWkAAgLob.jpeg"
-  },
-  {
-    "id": 331673,
-    "link": "https://www.fightful.com/wrestling/aew-dynamite-tribute-to-pac-draws-899000-viewers-on-cable-tv-highest-demo-since-2024/",
-    "date": "2026-10-02T18:12:05",
-    "date_gmt": "2026-10-02T22:12:05",
-    "title": {
-      "rendered": "AEW Dynamite: Tribute To PAC Draws 899,000 Viewers On Cable TV, Highest Demo Since 2024"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/10194242/dynamite-2024-1-2.jpg"
   }
 ]
