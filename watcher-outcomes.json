@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-03T01:16:48.340Z"
+ },
  "https://www.fightful.com/wrestling/scott-damore-looked-at-running-maple-leaf-gardens-in-2025-praises-adam-copeland": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T01:06:49.448Z"
- },
- "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-03T00:56:41.445Z"
  },
  "https://www.fightful.com/wrestling/watch-wrestling-revolver-tales-from-the-ring-10-2-26": {
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
