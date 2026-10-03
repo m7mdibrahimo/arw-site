@@ -639,7 +639,6 @@
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e06": 1790986736607,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e07": 1790986859029,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e08": 1790987046627,
-    "httpsarab-wrestlingcomnewsسيث-رولينز-يؤكد-عودته-إلى-شاشات-wwe-في-الوقت-المناسب": 1790987100345,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e09": 1790987105464,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e10": 1790987157255,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e11": 1790987283141,
@@ -1290,7 +1289,6 @@
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e06": 1790986746823,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e07": 1790986869659,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e08": 1790987056588,
-    "httpsarab-wrestlingcomnewsسيث-رولينز-يؤكد-عودته-إلى-شاشات-wwe-في-الوقت-المناسب": 1790987100345,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e09": 1790987116189,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e10": 1790987169857,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e11": 1790987295534,
@@ -1763,7 +1761,6 @@
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e02": 1790985259701,
     "httpsarab-wrestlingcomnewsبولي-راي-يتكهن-بتحالف-ال-ايه-نايت-مع-946-وهزيمة-رومان-رينز-في-عرض-wwe-موني-إن-ذا-بانك": 1790985922908,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e05": 1790986700591,
-    "httpsarab-wrestlingcomnewsسيث-رولينز-يؤكد-عودته-إلى-شاشات-wwe-في-الوقت-المناسب": 1790987100345,
     "httpsarab-wrestlingcomnostalgiawwf-tough-enough-s02e11": 1790987364464,
     "https___arab-wrestling_com_news_______-_______-____-_____-_________-__-____-____-__-__-____-_______-___-___-wwe-smackdown_": 1790987818932
   },
@@ -1893,7 +1890,6 @@
     "https___arab-wrestling_com_news________-________-___-____-___-________-________-___-wwe_": 1790959346773,
     "https___arab-wrestling_com_news_____-_____-southern-underground-pro-__-___-______-_____-_____-___-tna-impact_": 1790964552662,
     "https___arab-wrestling_com_news_____-__-______-____-___-_______-_________-_______-____-tna-impact-___-______-___-__-_______": 1790968934876,
-    "httpsarab-wrestlingcomnewsسيث-رولينز-يؤكد-عودته-إلى-شاشات-wwe-في-الوقت-المناسب": 1790987100345,
     "https___arab-wrestling_com_news_______-_______-____-_____-_________-__-____-____-__-__-____-_______-___-___-wwe-smackdown_": 1790987818932
   },
   "cooldowns": {
@@ -2011,7 +2007,8 @@
     "httpsarab-wrestlingcomnewsتحديثات-الكواليس-حول-عودة-درو-ماكنتاير-المرتقبة-إلى-wwe": 1790961019476,
     "httpsarab-wrestlingcomnewsعودة-اتحاد-southern-underground-pro-في-شهر-نوفمبر-وأبرز-محطات-عرض-tna-impact": 1790974398660,
     "httpsarab-wrestlingcomnewsعرض-mlw-fusion-يشهد-عرض-مقطع-تمهيدي-للمصارع-يوتا-تسوجي": 1790974803559,
-    "httpsarab-wrestlingcomnewsبولي-راي-يتكهن-بتحالف-ال-ايه-نايت-مع-946-وهزيمة-رومان-رينز-في-عرض-wwe-موني-إن-ذا-بانك": 1790985234557
+    "httpsarab-wrestlingcomnewsبولي-راي-يتكهن-بتحالف-ال-ايه-نايت-مع-946-وهزيمة-رومان-رينز-في-عرض-wwe-موني-إن-ذا-بانك": 1790985234557,
+    "httpsarab-wrestlingcomnewsسيث-رولينز-يؤكد-عودته-إلى-شاشات-wwe-في-الوقت-المناسب": 1790987934296
   },
   "held": {
     "httpsarab-wrestlingcomnewsنجمة-tna-السابقة-توضح-كيف-أدى-الطلاق-القاسي-ومعركة-حضانة-الأطفال-إلى-العودة-للمصارعة": {
@@ -3045,7 +3042,9 @@
       "image": "/img/gzZ-Sch3vj-800.jpeg",
       "reason": "return",
       "why": "title",
-      "note": "النص يتحدث عن تصريحات لسيث رولينز بشأن عودته المستقبلية ولا يكشف عن عودة فعلية حديثة، والحدث القديم المشار إليه هو SummerSlam."
+      "note": "النص يتحدث عن تصريحات لسيث رولينز بشأن عودته المستقبلية ولا يكشف عن عودة فعلية حديثة، والحدث القديم المشار إليه هو SummerSlam.",
+      "releasedAt": 1790987934296,
+      "by": "محمد"
     }
   },
   "byFile": {
