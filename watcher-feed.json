@@ -1,5 +1,15 @@
 [
   {
+    "id": 332110,
+    "link": "https://www.fightful.com/wrestling/former-wwe-nxt-talent-brinley-reece-gets-married/",
+    "date": "2026-10-04T12:20:03",
+    "date_gmt": "2026-10-04T16:20:03",
+    "title": {
+      "rendered": "Former WWE NXT Talent Brinley Reece Gets Married"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14070925/Brinley-Reece.jpg"
+  },
+  {
     "id": 332082,
     "link": "https://www.fightful.com/wrestling/zayda-steel-says-it-means-a-lot-to-be-the-first-arab-woman-in-aew/",
     "date": "2026-10-04T12:03:10",
@@ -288,15 +298,5 @@
       "rendered": "AAA on FOX Results (10/3): El Grande Americano And Rey Mysterio Team"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26224818/Screenshot-2026-09-26-at-10.43.56-PM.png"
-  },
-  {
-    "id": 332037,
-    "link": "https://www.fightful.com/wrestling/dominik-mysterio-challenging-el-grande-americano-for-aaa-mega-title-at-heroes-inmortales/",
-    "date": "2026-10-03T23:17:20",
-    "date_gmt": "2026-10-04T03:17:20",
-    "title": {
-      "rendered": "Dominik Mysterio Challenging El Grande Americano For AAA Mega Title At Héroes Inmortales"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03231632/Screenshot-505.png"
   }
 ]
