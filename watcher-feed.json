@@ -1,5 +1,25 @@
 [
   {
+    "id": 332040,
+    "link": "https://www.fightful.com/wrestling/aaa-on-fox-results-10-3-el-grande-americano-and-rey-mysterio-team/",
+    "date": "2026-10-03T23:25:53",
+    "date_gmt": "2026-10-04T03:25:53",
+    "title": {
+      "rendered": "AAA on FOX Results (10/3): El Grande Americano And Rey Mysterio Team"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26224818/Screenshot-2026-09-26-at-10.43.56-PM.png"
+  },
+  {
+    "id": 332037,
+    "link": "https://www.fightful.com/wrestling/dominik-mysterio-challenging-el-grande-americano-for-aaa-mega-title-at-heroes-inmortales/",
+    "date": "2026-10-03T23:17:20",
+    "date_gmt": "2026-10-04T03:17:20",
+    "title": {
+      "rendered": "Dominik Mysterio Challenging El Grande Americano For AAA Mega Title At Héroes Inmortales"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03231632/Screenshot-505.png"
+  },
+  {
     "id": 332034,
     "link": "https://www.fightful.com/wrestling/wwe-opposing-spike-dudley-trademarking-his-ring-name/",
     "date": "2026-10-03T23:02:15",
@@ -278,25 +298,5 @@
       "rendered": "Taylor Wilde Was Supposed To Win Knockouts World Title During TNA/IMPACT Comeback Run"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/01/27200453/taylor-wilde-impact-1.jpg"
-  },
-  {
-    "id": 331894,
-    "link": "https://www.fightful.com/wrestling/kc-navarro-vs-fabian-aichner-added-to-10-8-tna-impact/",
-    "date": "2026-10-03T16:25:41",
-    "date_gmt": "2026-10-03T20:25:41",
-    "title": {
-      "rendered": "KC Navarro vs. Fabian Aichner Added To 10/8 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/02122859/G7LBws8aUAA4Q2x.jpg"
-  },
-  {
-    "id": 331892,
-    "link": "https://www.fightful.com/wrestling/scorpio-sky-has-not-signed-new-aew-deal/",
-    "date": "2026-10-03T15:42:02",
-    "date_gmt": "2026-10-03T19:42:02",
-    "title": {
-      "rendered": "Scorpio Sky Has Not Signed New AEW Deal"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/17142540/GvIsCwiaAAA8TYy.jpeg"
   }
 ]
