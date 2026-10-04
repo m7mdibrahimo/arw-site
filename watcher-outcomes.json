@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-3-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-04T00:02:56.045Z"
+ },
  "https://www.fightful.com/wrestling/giulia-apologizes-for-making-fans-worry-after-being-helped-to-the-back-at-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T23:58:40.756Z"
- },
- "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-3-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-03T23:42:01.768Z"
  },
  "https://www.fightful.com/wrestling/jody-threat-explains-why-she-asked-for-her-tna-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
