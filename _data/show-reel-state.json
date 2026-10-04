@@ -2799,9 +2799,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 332 ايرلي بريلمز مترجم",
-    "lastAttempt": 1791157341363,
+    "lastAttempt": 1791158185629,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -2819,6 +2819,19 @@
     "instagram_story": false,
     "title": "عرض يو اف سي 332 بريلمز مترجم",
     "lastAttempt": 1791157376447,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261005023231-ufc-332-silva-vs-wang-main-card": {
+    "publishedAt": 1791158211959,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 332 مين كارد مترجم",
+    "lastAttempt": 1791158221994,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
