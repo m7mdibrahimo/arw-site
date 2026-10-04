@@ -1,23 +1,23 @@
 {
- "https://www.ringsidenews.com/samoa-joe-thought-his-wrestling-career-serious-concussion": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-04T21:58:24.409Z"
- },
  "https://www.fightful.com/wrestling/former-wwe-nxt-talent-brinley-reece-gets-married": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T21:55:50.557Z"
+  "at": "2026-10-04T22:05:42.610Z"
  },
  "https://www.fightful.com/wrestling/jevon-evans-and-penta-to-team-against-the-vision-on-10-5-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T21:55:50.401Z"
+  "at": "2026-10-04T22:05:42.442Z"
  },
  "https://www.fightful.com/wrestling/the-rock-on-recent-pac-tribute-video-when-one-of-our-own-passes-away-i-dont-care-nor-do-i-see-our-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T21:55:49.957Z"
+  "at": "2026-10-04T22:05:41.929Z"
+ },
+ "https://www.ringsidenews.com/samoa-joe-thought-his-wrestling-career-serious-concussion": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-04T21:58:24.409Z"
  },
  "https://www.fightful.com/wrestling/david-finlay-states-that-njpw-offered-him-salaried-deal-when-aew-launched": {
   "reason": "مكرر مع خبر نزل قبل كده",
