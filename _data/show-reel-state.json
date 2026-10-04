@@ -2713,5 +2713,22 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261004102041-aew-collision-03-10-2026": {
+    "publishedAt": 1791099304433,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض كوليجن 03.10.2026 مترجم",
+    "lastAttempt": 1791099356978,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
