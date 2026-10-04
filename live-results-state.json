@@ -1,21 +1,21 @@
 {
   "20261004023100-نتائج-عرض-aew-collision-3-أكتوبر-2026-أبرز-اللحظات-والمحطات-الرئيسية.md": {
-    "lastSeenHash": "f8c9359d17d35a2d8bf83150f7889b4aa61f2e82",
-    "lastChangeAt": 1791075050009,
-    "lastRegenAt": 0,
-    "rewrites": 0,
-    "generatedResults": 3,
-    "generatedHash": "",
-    "generatedLength": 0
+    "lastSeenHash": "3014b2f449cc25341123b23fe9f37a40a7200b8a",
+    "lastChangeAt": 1791075785371,
+    "lastRegenAt": 1791075785371,
+    "rewrites": 1,
+    "generatedResults": 6,
+    "generatedHash": "3014b2f449cc25341123b23fe9f37a40a7200b8a",
+    "generatedLength": 8807
   },
   "20261004013948-نتائج-عرض-mlp-northern-rising-3-أكتوبر-2026-فوز-ماسكارا-دورادا-وفريق-subculture-في-الحدث-الرئيسي.md": {
-    "lastSeenHash": "22748dc4f080ebcb1c503619a920d01f29fc0c2c",
-    "lastChangeAt": 1791075050009,
-    "lastRegenAt": 0,
-    "rewrites": 0,
-    "generatedResults": 3,
-    "generatedHash": "1c1ffbe1d1cbc9598cd3f6c1489066c20e86810e",
-    "generatedLength": 478
+    "lastSeenHash": "26dcdf0280c2c95fc18d0c516d49a9dee4cc9f7d",
+    "lastChangeAt": 1791075785371,
+    "lastRegenAt": 1791075785371,
+    "rewrites": 1,
+    "generatedResults": 5,
+    "generatedHash": "26dcdf0280c2c95fc18d0c516d49a9dee4cc9f7d",
+    "generatedLength": 706
   },
   "20261004004758-نتائج-عرض-ufc-332-سيلفا-ضد-كونغ-3-أكتوبر-2026.md": {
     "lastSeenHash": "ed534d1cebbb8442fc54545a4812a90f2912d4cc",
@@ -34,14 +34,5 @@
     "generatedResults": 8,
     "generatedHash": "07954dee2f62e60bc16fe3a2ff5ec33c3fb869ac",
     "generatedLength": 1122
-  },
-  "20261003200000-نتائج-عرض-eve-global-thunder-queens-attack-2-أكتوبر-2026-كاي-لي-راي-تتحدى-كريس-ستاتلاندر.md": {
-    "lastSeenHash": "243c92b66718e1eae74879282881f1b6c08c8494",
-    "lastChangeAt": 1791046868157,
-    "lastRegenAt": 0,
-    "rewrites": 0,
-    "generatedResults": 7,
-    "generatedHash": "243c92b66718e1eae74879282881f1b6c08c8494",
-    "generatedLength": 979
   }
 }
