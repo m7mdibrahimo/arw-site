@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-collision-03-10-2026/",
+    "title": "عرض كوليجن 03.10.2026 مترجم",
+    "subtitle": "AEW Collision 03.10.2026",
+    "image": "/img/TIm_bRJRI6-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-02-10-2026/",
     "title": "عرض سماك داون 02.10.2026 مترجم",
     "subtitle": "WWE Smackdown 02.10.2026",
@@ -119,16 +130,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-collision-23-09-2026/",
-    "title": "عرض كوليجن 23.09.2026 مترجم",
-    "subtitle": "AEW Collision 23.09.2026",
-    "image": "/img/MfOlP12L0y-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
