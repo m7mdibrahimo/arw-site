@@ -2774,12 +2774,16 @@
     "publishedAt": 1791104658777,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 03.10.2026 مترجم",
-    "lastAttempt": 1791104672302,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791109045900,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
