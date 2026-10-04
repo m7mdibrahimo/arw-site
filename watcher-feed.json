@@ -1,5 +1,15 @@
 [
   {
+    "id": 332074,
+    "link": "https://www.fightful.com/wrestling/john-cena-i-have-no-guilt-nor-shame-about-my-friendship-and-relationship-with-vince-mcmahon/",
+    "date": "2026-10-04T10:51:09",
+    "date_gmt": "2026-10-04T14:51:09",
+    "title": {
+      "rendered": "John Cena: I Have No Guilt Nor Shame About My Friendship And Relationship With Vince McMahon"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04095438/Cena-Vince.png"
+  },
+  {
     "id": 332068,
     "link": "https://www.fightful.com/wrestling/joe-hendry-i-would-rather-face-matt-cardona-in-the-ufc-than-wwe/",
     "date": "2026-10-04T10:29:40",
@@ -288,15 +298,5 @@
       "rendered": "Grizzled Young Veterans Win MLP Canadian Tag Team Titles"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03215917/HTwDK7bXwAAwU72.jpeg"
-  },
-  {
-    "id": 331988,
-    "link": "https://www.fightful.com/mma/alex-pereira-to-face-sergei-pavlovich-in-ufc-335-co-main-event/",
-    "date": "2026-10-03T21:39:23",
-    "date_gmt": "2026-10-04T01:39:23",
-    "title": {
-      "rendered": "Alex Pereira To Face Sergei Pavlovich In UFC 335 Co-Main Event"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03213827/Screenshot-2026-10-03-at-9.34.25-PM.png"
   }
 ]
