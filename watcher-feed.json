@@ -1,5 +1,15 @@
 [
   {
+    "id": 332060,
+    "link": "https://www.fightful.com/wrestling/shingo-takagi-calls-out-jon-moxley/",
+    "date": "2026-10-04T01:40:34",
+    "date_gmt": "2026-10-04T05:40:34",
+    "title": {
+      "rendered": "Shingo Takagi Calls Out Jon Moxley"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04013302/Untitled-Design-2.jpg"
+  },
+  {
     "id": 332056,
     "link": "https://www.fightful.com/wrestling/adam-copeland-praises-steve-maclin-that-man-should-be-the-most-wanted-free-agent-in-this-industry/",
     "date": "2026-10-04T01:13:11",
@@ -288,15 +298,5 @@
       "rendered": "Watch: MLP Countdown to Northern Rising"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03181804/maxresdefault-16.jpg"
-  },
-  {
-    "id": 331911,
-    "link": "https://www.fightful.com/mma/ufc-332-silva-vs-cong-results/",
-    "date": "2026-10-03T17:47:58",
-    "date_gmt": "2026-10-03T21:47:58",
-    "title": {
-      "rendered": "UFC 332: Silva vs. Cong Results"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03174740/UFC-332-poster-1920x1047.png.webp"
   }
 ]
