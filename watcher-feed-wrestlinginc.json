@@ -1,5 +1,15 @@
 [
   {
+    "id": 3494361704,
+    "link": "https://www.wrestlinginc.com/2274772/i-show-speed-wwe-wrestlemania-42-living-dream/",
+    "date": "Sun, 04 Oct 2026 17:30:00 +0000",
+    "date_gmt": "2026-10-04T17:30:00.000Z",
+    "title": {
+      "rendered": "IShowSpeed On WWE WrestleMania 42 Match: 'I'm Actually Living A Dream'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/ishowspeed-on-wwe-wrestlemania-42-match-im-actually-living-a-dream/l-intro-1790874641.jpg"
+  },
+  {
     "id": 4934671247,
     "link": "https://www.wrestlinginc.com/2275191/aew-wwe-dax-harwood-stokely-hathaway-ftr-alliance-first-pitched/",
     "date": "Sun, 04 Oct 2026 16:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Bully Ray On WWE's Roman Reigns: 'He Does Everything As Perfectly As Can Be'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/bully-ray-on-wwes-roman-reigns-he-does-everything-as-perfectly-as-can-be/l-intro-1790538730.jpg"
-  },
-  {
-    "id": 2242416630,
-    "link": "https://www.wrestlinginc.com/2276578/wwe-roman-reigns-little-bit-body-dysmorphia/",
-    "date": "Sat, 03 Oct 2026 16:26:08 +0000",
-    "date_gmt": "2026-10-03T16:26:08.000Z",
-    "title": {
-      "rendered": "WWE's Roman Reigns: 'We All Got A Little Bit Of Body Dysmorphia'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-roman-reigns-we-all-got-a-little-bit-of-body-dysmorphia/l-intro-1791044531.jpg"
   }
 ]
