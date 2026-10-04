@@ -2791,5 +2791,37 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261005022743-ufc-332-silva-vs-wang-early-prelims": {
+    "publishedAt": 1791157329773,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 332 ايرلي بريلمز مترجم",
+    "lastAttempt": 1791157341363,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261005023016-ufc-332-silva-vs-wang-prelims": {
+    "publishedAt": 1791157366502,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 332 بريلمز مترجم",
+    "lastAttempt": 1791157376447,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
