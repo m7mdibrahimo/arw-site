@@ -1,5 +1,35 @@
 [
   {
+    "id": 802251115,
+    "link": "https://www.ringsidenews.com/wwe-accused-ignoring-legacy-immediate-dopamine-main-events-move-rumble/",
+    "date": "Sun, 04 Oct 2026 20:41:12 +0000",
+    "date_gmt": "2026-10-04T20:41:12.000Z",
+    "title": {
+      "rendered": "WWE Accused of Ignoring Legacy for “Immediate Dopamine” Over Main Event’s Move to Rumble"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/wwe-accused-of-ignoring-legacy-for-immediate-dopamine-over-main-events-move-to-rumble-19.jpg?x77927"
+  },
+  {
+    "id": 802251109,
+    "link": "https://www.ringsidenews.com/ryback-shuts-down-rumor-hes-ready-wrestle-again/",
+    "date": "Sun, 04 Oct 2026 20:37:29 +0000",
+    "date_gmt": "2026-10-04T20:37:29.000Z",
+    "title": {
+      "rendered": "Ryback Shuts Down Rumor He’s Ready to Wrestle Again"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/ryback-shuts-down-rumor-hes-ready-to-wrestle-again-49.jpg?x77927"
+  },
+  {
+    "id": 802251104,
+    "link": "https://www.ringsidenews.com/bret-hart-came-hair-close-paralyzed-during-wwe-match/",
+    "date": "Sun, 04 Oct 2026 20:33:21 +0000",
+    "date_gmt": "2026-10-04T20:33:21.000Z",
+    "title": {
+      "rendered": "Bret Hart Came “A Hair Close” to Being Paralyzed During WWE Match"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/bret-hart-came-a-hair-close-to-being-paralyzed-during-wwe-match-48.jpg?x77927"
+  },
+  {
     "id": 802251097,
     "link": "https://www.ringsidenews.com/miz-gains-support-wwe-hall-fame-induction-next-year/",
     "date": "Sun, 04 Oct 2026 18:48:31 +0000",
@@ -118,35 +148,5 @@
       "rendered": "Cody Rhodes Links Up With LL Cool J While Dressed as Guile at UFC 332"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/cody-rhodes-links-up-with-ll-cool-j-while-dressed-as-guile-at-ufc-332-51.jpg?x77927"
-  },
-  {
-    "id": 802251002,
-    "link": "https://www.ringsidenews.com/rock-addresses-report-wwe-staff-surprised-he-praised-aew-pac-tribute/",
-    "date": "Sun, 04 Oct 2026 12:05:46 +0000",
-    "date_gmt": "2026-10-04T12:05:46.000Z",
-    "title": {
-      "rendered": "The Rock Addresses Report WWE Staff Were Surprised He Praised AEW in PAC Tribute"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/the-rock-addresses-report-wwe-staff-were-surprised-he-praised-aew-in-pac-tribute-03.jpg?x77927"
-  },
-  {
-    "id": 802250967,
-    "link": "https://www.ringsidenews.com/new-match-announced-aew-grand-slam-france/",
-    "date": "Sun, 04 Oct 2026 01:40:12 +0000",
-    "date_gmt": "2026-10-04T01:40:12.000Z",
-    "title": {
-      "rendered": "New Match Announced for AEW Grand Slam France"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/new-match-announced-for-aew-grand-slam-france-45.jpg?x77927"
-  },
-  {
-    "id": 802250833,
-    "link": "https://www.ringsidenews.com/aaa-fox-results-stream-highlights-key-moments-october-3-2026/",
-    "date": "Sun, 04 Oct 2026 01:31:00 +0000",
-    "date_gmt": "2026-10-04T01:31:00.000Z",
-    "title": {
-      "rendered": "AAA on FOX Results, Stream, Highlights and Key Moments for October 3, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/aaa-lucha-libre-on-fox-preview-for-october-3-2026-confirmed-matches-start-time-and-how-to-watch-02.jpg?x77927"
   }
 ]
