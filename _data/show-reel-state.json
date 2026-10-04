@@ -2732,15 +2732,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال 02.10.2026 مترجم",
-    "lastAttempt": 1791104584765,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791105496209,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
