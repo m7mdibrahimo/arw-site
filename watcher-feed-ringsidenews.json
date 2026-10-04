@@ -1,5 +1,25 @@
 [
   {
+    "id": 802251069,
+    "link": "https://www.ringsidenews.com/multiple-matches-segments-announced-october-5-wwe-raw/",
+    "date": "Sun, 04 Oct 2026 15:35:47 +0000",
+    "date_gmt": "2026-10-04T15:35:47.000Z",
+    "title": {
+      "rendered": "Multiple Matches and Segments Announced for October 5 WWE RAW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/07/opening-segment-and-matches-revealed-for-july-20-wwe-raw-in-detroit-36.jpg?x77927"
+  },
+  {
+    "id": 802251058,
+    "link": "https://www.ringsidenews.com/john-cena-addresses-criticism-wwe-holding-events-saudi-arabia/",
+    "date": "Sun, 04 Oct 2026 15:30:16 +0000",
+    "date_gmt": "2026-10-04T15:30:16.000Z",
+    "title": {
+      "rendered": "John Cena Addresses Criticism Over WWE Holding Events in Saudi Arabia"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/john-cena-addresses-criticism-over-wwe-holding-events-in-saudi-arabia-36.jpg?x77927"
+  },
+  {
     "id": 802251052,
     "link": "https://www.ringsidenews.com/john-cena-explains-why-hes-fine-wwetko-owning-part-his-name/",
     "date": "Sun, 04 Oct 2026 15:23:32 +0000",
@@ -128,25 +148,5 @@
       "rendered": "What You Didn’t See Before October 3 AEW Collision Went Live in Kentucky"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2025/11/last-minute-match-added-to-november-15-aew-collision-39.jpg?x77927"
-  },
-  {
-    "id": 802250710,
-    "link": "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-3-2026/",
-    "date": "Sat, 03 Oct 2026 23:31:00 +0000",
-    "date_gmt": "2026-10-03T23:31:00.000Z",
-    "title": {
-      "rendered": "AEW Collision Results, Highlights and Key Moments for October 3, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/aew-collision-preview-for-october-3-2026-confirmed-matches-start-time-and-how-to-watch-40.jpg?x77927"
-  },
-  {
-    "id": 802250836,
-    "link": "https://www.ringsidenews.com/former-ecw-wrestler-metal-maniac-jeff-miller-passes-away/",
-    "date": "Sat, 03 Oct 2026 23:24:24 +0000",
-    "date_gmt": "2026-10-03T23:24:24.000Z",
-    "title": {
-      "rendered": "Former ECW Wrestler “Metal Maniac” Jeff Miller Passes Away"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/former-ecw-wrestler-metal-maniac-jeff-miller-passes-away-02.jpg?x77927"
   }
 ]
