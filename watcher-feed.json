@@ -1,5 +1,15 @@
 [
   {
+    "id": 331988,
+    "link": "https://www.fightful.com/mma/alex-pereira-to-face-sergei-pavlovich-in-ufc-335-co-main-event/",
+    "date": "2026-10-03T21:39:23",
+    "date_gmt": "2026-10-04T01:39:23",
+    "title": {
+      "rendered": "Alex Pereira To Face Sergei Pavlovich In UFC 335 Co-Main Event"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03213827/Screenshot-2026-10-03-at-9.34.25-PM.png"
+  },
+  {
     "id": 331977,
     "link": "https://www.fightful.com/wrestling/young-bucks-to-defend-aew-world-tag-team-championship-against-kevin-knight-and-kyle-fletcher-at-aew-wrestledream/",
     "date": "2026-10-03T21:36:56",
@@ -288,15 +298,5 @@
       "rendered": "Indie Wrestler Chicken Finger (Charlie King) Passes Away"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03133243/HTt4tPrWwAAYBhn-1.jpg"
-  },
-  {
-    "id": 331751,
-    "link": "https://www.fightful.com/wrestling/eve-global-thunder-queens-attack-results-10-2/",
-    "date": "2026-10-03T13:00:00",
-    "date_gmt": "2026-10-03T17:00:00",
-    "title": {
-      "rendered": "EVE Global Thunder Queens Attack Results (10/2)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02231858/HTAQyu0WAAADBxf.jpeg"
   }
 ]
