@@ -1,5 +1,25 @@
 [
   {
+    "id": 332087,
+    "link": "https://www.fightful.com/wrestling/ozawa-wins-2026-noah-n-1-victory-tournament/",
+    "date": "2026-10-04T11:09:20",
+    "date_gmt": "2026-10-04T15:09:20",
+    "title": {
+      "rendered": "OZAWA Wins 2026 NOAH N-1 Victory Tournament"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04110135/Screenshot-514.png"
+  },
+  {
+    "id": 332076,
+    "link": "https://www.fightful.com/wrestling/john-cena-wwe-have-earned-their-share-of-ownership-of-the-character-of-john-cena/",
+    "date": "2026-10-04T11:09:19",
+    "date_gmt": "2026-10-04T15:09:19",
+    "title": {
+      "rendered": "John Cena: WWE Have Earned Their Share Of Ownership Of The Character Of &#8216;John Cena&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/07/08030641/john_cena_12.jpg"
+  },
+  {
     "id": 332074,
     "link": "https://www.fightful.com/wrestling/john-cena-i-have-no-guilt-nor-shame-about-my-friendship-and-relationship-with-vince-mcmahon/",
     "date": "2026-10-04T10:51:09",
@@ -278,25 +298,5 @@
       "rendered": "Cody Rhodes (As Guile) Attends UFC 332"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03221255/HTwGYItbYAAmxOJ.jpeg"
-  },
-  {
-    "id": 331996,
-    "link": "https://www.fightful.com/wrestling/multiple-title-matches-clockwork-carnage-qualifier-added-to-aew-grand-slam-france/",
-    "date": "2026-10-03T22:02:41",
-    "date_gmt": "2026-10-04T02:02:41",
-    "title": {
-      "rendered": "Multiple Title Matches, Clockwork Carnage Qualifier Added To AEW Grand Slam France"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03215620/image-4.png"
-  },
-  {
-    "id": 331995,
-    "link": "https://www.fightful.com/wrestling/grizzled-young-veterans-win-mlp-canadian-tag-team-titles/",
-    "date": "2026-10-03T21:59:50",
-    "date_gmt": "2026-10-04T01:59:50",
-    "title": {
-      "rendered": "Grizzled Young Veterans Win MLP Canadian Tag Team Titles"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03215917/HTwDK7bXwAAwU72.jpeg"
   }
 ]
