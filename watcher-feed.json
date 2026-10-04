@@ -1,5 +1,25 @@
 [
   {
+    "id": 332042,
+    "link": "https://www.fightful.com/wrestling/pagano-to-appear-1-contenders-four-way-announced-for-10-10-aaa-on-fox/",
+    "date": "2026-10-03T23:32:21",
+    "date_gmt": "2026-10-04T03:32:21",
+    "title": {
+      "rendered": "Pagano To Appear, #1 Contender&#8217;s Four-Way Announced For 10/10 AAA On FOX"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03232159/HTwRJB-XUAAESMp.jpg"
+  },
+  {
+    "id": 332038,
+    "link": "https://www.fightful.com/wrestling/adam-copeland-wins-first-non-aew-or-wwe-match-since-2001/",
+    "date": "2026-10-03T23:28:57",
+    "date_gmt": "2026-10-04T03:28:57",
+    "title": {
+      "rendered": "Adam Copeland Wins First Non-AEW Or WWE Match Since 2001"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03232707/HTwZN9OXEAERFfG.jpeg"
+  },
+  {
     "id": 332040,
     "link": "https://www.fightful.com/wrestling/aaa-on-fox-results-10-3-el-grande-americano-and-rey-mysterio-team/",
     "date": "2026-10-03T23:25:53",
@@ -278,25 +298,5 @@
       "rendered": "Death Riders To Compete On 10/3 AEW Collision"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03170330/HTvAwI1W8AAtSJO.jpeg"
-  },
-  {
-    "id": 331899,
-    "link": "https://www.fightful.com/wrestling/chris-jericho-to-team-with-the-hardys-on-rock-n-wrestling-rager-at-sea/",
-    "date": "2026-10-03T16:55:55",
-    "date_gmt": "2026-10-03T20:55:55",
-    "title": {
-      "rendered": "Chris Jericho To Team With The Hardys On Rock N Wrestling Rager At Sea"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03165525/Screenshot-2026-10-03-at-4.50.09-PM.png"
-  },
-  {
-    "id": 331896,
-    "link": "https://www.fightful.com/wrestling/taylor-wilde-was-supposed-to-win-knockouts-world-title-during-tna-impact-comeback-run/",
-    "date": "2026-10-03T16:38:06",
-    "date_gmt": "2026-10-03T20:38:06",
-    "title": {
-      "rendered": "Taylor Wilde Was Supposed To Win Knockouts World Title During TNA/IMPACT Comeback Run"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/01/27200453/taylor-wilde-impact-1.jpg"
   }
 ]
