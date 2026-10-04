@@ -1,5 +1,15 @@
 [
   {
+    "id": 332048,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-10-3/",
+    "date": "2026-10-04T10:00:00",
+    "date_gmt": "2026-10-04T14:00:00",
+    "title": {
+      "rendered": "WWE NXT Live Results (10/3)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 332070,
     "link": "https://www.fightful.com/wrestling/the-rock-on-recent-pac-tribute-video-when-one-of-our-own-passes-away-i-dont-care-nor-do-i-see-our-competition/",
     "date": "2026-10-04T09:45:13",
@@ -288,15 +298,5 @@
       "rendered": "Watch: FULL EPISODE: Lucha Libre AAA, Oct. 3, 2026"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03210110/maxresdefault-18.jpg"
-  },
-  {
-    "id": 331969,
-    "link": "https://www.fightful.com/wrestling/jay-white-suffered-injury-at-aew-all-out-will-be-out-for-1-2-months/",
-    "date": "2026-10-03T21:15:35",
-    "date_gmt": "2026-10-04T01:15:35",
-    "title": {
-      "rendered": "Jay White Suffered Injury At AEW All Out, Will Be Out For 1-2 Months"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/29025255/HL9kMg7akAAANDD-e1782715991655.jpg"
   }
 ]
