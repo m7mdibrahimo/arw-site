@@ -1272,6 +1272,18 @@
     "renderedAt": 1791118228674
   },
   {
+    "videoUrl": "/videos/reel-20261005023016-ufc-332-silva-vs-wang-prelims.mp4",
+    "filename": "reel-20261005023016-ufc-332-silva-vs-wang-prelims.mp4",
+    "title": "عرض يو اف سي 332 بريلمز مترجم",
+    "secondaryTitle": "UFC 332: Silva vs Wang (Prelims)",
+    "description": "عرض يو اف سي 332 بريلمز مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261005023016-ufc-332-silva-vs-wang-prelims",
+    "kind": "show",
+    "slug": "20261005023016-ufc-332-silva-vs-wang-prelims",
+    "image": "/content/images/nmkggv3iuasqyich.jpg",
+    "renderedAt": 1791156889636
+  },
+  {
     "videoUrl": "/videos/reel-20261005022743-ufc-332-silva-vs-wang-early-pr.mp4",
     "filename": "reel-20261005022743-ufc-332-silva-vs-wang-early-pr.mp4",
     "title": "عرض يو اف سي 332 ايرلي بريلمز مترجم",
@@ -1281,6 +1293,6 @@
     "kind": "show",
     "slug": "20261005022743-ufc-332-silva-vs-wang-early-pr",
     "image": "/content/images/jarwyesfr481sm0e.jpg",
-    "renderedAt": 1791156667994
+    "renderedAt": 1791156982077
   }
 ]
