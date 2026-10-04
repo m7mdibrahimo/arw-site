@@ -2726,5 +2726,37 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261004111922-cmll-viernes-espectacular-02-10-2026": {
+    "publishedAt": 1791102846380,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 02.10.2026 مترجم",
+    "lastAttempt": 1791102904265,
+    "errors": {
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261004112510-mlp-countdown-northern-rising-2026": {
+    "publishedAt": 1791102933316,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال بي كاونت داون نورثرن رايزنج 03.10.2026 مترجم",
+    "lastAttempt": 1791102943859,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
