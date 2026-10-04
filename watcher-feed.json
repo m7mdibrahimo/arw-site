@@ -1,5 +1,15 @@
 [
   {
+    "id": 332116,
+    "link": "https://www.fightful.com/wrestling/gcw-the-last-frontier-the-sequel-results-10-3/",
+    "date": "2026-10-04T13:27:03",
+    "date_gmt": "2026-10-04T17:27:03",
+    "title": {
+      "rendered": "GCW The Last Frontier: The Sequel Results (10/3)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04132631/Screenshot-2026-10-04-at-1.26.20-PM.png"
+  },
+  {
     "id": 332112,
     "link": "https://www.fightful.com/wrestling/big-e-speaks-about-new-level-im-so-proud-of-them/",
     "date": "2026-10-04T13:00:48",
@@ -288,15 +298,5 @@
       "rendered": "Pagano To Appear, #1 Contender&#8217;s Four-Way Announced For 10/10 AAA On FOX"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03232159/HTwRJB-XUAAESMp.jpg"
-  },
-  {
-    "id": 332038,
-    "link": "https://www.fightful.com/wrestling/adam-copeland-wins-first-non-aew-or-wwe-match-since-2001/",
-    "date": "2026-10-03T23:28:57",
-    "date_gmt": "2026-10-04T03:28:57",
-    "title": {
-      "rendered": "Adam Copeland Wins First Non-AEW Or WWE Match Since 2001"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03232707/HTwZN9OXEAERFfG.jpeg"
   }
 ]
