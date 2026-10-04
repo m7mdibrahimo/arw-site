@@ -1,5 +1,25 @@
 [
   {
+    "id": 332093,
+    "link": "https://www.fightful.com/wrestling/shuhei-taniguchi-announces-that-hes-set-to-retire-from-in-ring-competition/",
+    "date": "2026-10-04T11:21:05",
+    "date_gmt": "2026-10-04T15:21:05",
+    "title": {
+      "rendered": "Shuhei Taniguchi Announces That He&#8217;s Set To Retire From In-Ring Competition"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04111331/Screenshot-515.png"
+  },
+  {
+    "id": 332088,
+    "link": "https://www.fightful.com/wrestling/atticus-cogar-calls-out-joseph-sawyer-for-not-defending-gcw-title-sawyer-responds/",
+    "date": "2026-10-04T11:12:09",
+    "date_gmt": "2026-10-04T15:12:09",
+    "title": {
+      "rendered": "Atticus Cogar Calls Out Joseph Sawyer For Not Defending GCW Title, Sawyer Responds"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04111143/Screenshot-2026-10-04-at-11.11.32-AM.png"
+  },
+  {
     "id": 332087,
     "link": "https://www.fightful.com/wrestling/ozawa-wins-2026-noah-n-1-victory-tournament/",
     "date": "2026-10-04T11:09:20",
@@ -278,25 +298,5 @@
       "rendered": "Booker T Presents Josiah Jean With WWE ID Contract"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03222455/472399993_18370019314137697_5267520615046144236_n-e1791080714299.jpg"
-  },
-  {
-    "id": 332014,
-    "link": "https://www.fightful.com/mma/charles-oliveira-to-defend-bmf-title-in-ufc-335-main-event/",
-    "date": "2026-10-03T22:23:40",
-    "date_gmt": "2026-10-04T02:23:40",
-    "title": {
-      "rendered": "Charles Oliveira To Defend BMF Title In UFC 335 Main Event"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03222250/Screenshot-2026-10-03-at-10.17.12-PM.png"
-  },
-  {
-    "id": 332009,
-    "link": "https://www.fightful.com/wrestling/cody-rhodes-as-guile-attends-ufc-332/",
-    "date": "2026-10-03T22:13:50",
-    "date_gmt": "2026-10-04T02:13:50",
-    "title": {
-      "rendered": "Cody Rhodes (As Guile) Attends UFC 332"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03221255/HTwGYItbYAAmxOJ.jpeg"
   }
 ]
