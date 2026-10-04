@@ -1,5 +1,15 @@
 [
   {
+    "id": 331967,
+    "link": "https://www.fightful.com/wrestling/david-finlay-im-still-adjusting-to-tv-wrestling/",
+    "date": "2026-10-04T07:30:00",
+    "date_gmt": "2026-10-04T11:30:00",
+    "title": {
+      "rendered": "David Finlay: I’m Still Adjusting To TV Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/06161746/Untitled-Design-5.jpg"
+  },
+  {
     "id": 331955,
     "link": "https://www.fightful.com/wrestling/david-finlay-states-that-njpw-offered-him-salaried-deal-when-aew-launched/",
     "date": "2026-10-04T07:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Jeff Miller (Metal Maniac) Passes Away"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03190959/832926844_1590978359738756_3418452686188768426_n-e1791069018771.jpg"
-  },
-  {
-    "id": 331901,
-    "link": "https://www.fightful.com/wrestling/aew-collision-results-10-3-2026-kofi-vs-lee-moriarty-jon-moxley-death-riders-queen-aminata-more/",
-    "date": "2026-10-03T19:15:00",
-    "date_gmt": "2026-10-03T23:15:00",
-    "title": {
-      "rendered": "AEW Collision Results (10/3/2026): Kofi vs. Lee Moriarty, Jon Moxley, Death Riders, Queen Aminata, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02224518/HTq-o5rWYAADW-s.jpg"
   }
 ]
