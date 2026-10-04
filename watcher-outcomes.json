@@ -1,23 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/zach-gowen-worked-production-for-mlp-northern-rising": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-04T18:16:02.515Z"
+ },
  "https://www.fightful.com/wrestling/former-wwe-nxt-talent-brinley-reece-gets-married": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T18:04:59.117Z"
+  "at": "2026-10-04T18:15:43.772Z"
  },
  "https://www.fightful.com/wrestling/jevon-evans-and-penta-to-team-against-the-vision-on-10-5-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T18:04:59.003Z"
+  "at": "2026-10-04T18:15:43.608Z"
  },
  "https://www.fightful.com/wrestling/the-rock-on-recent-pac-tribute-video-when-one-of-our-own-passes-away-i-dont-care-nor-do-i-see-our-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T18:04:58.649Z"
+  "at": "2026-10-04T18:15:43.090Z"
  },
  "https://www.fightful.com/wrestling/david-finlay-states-that-njpw-offered-him-salaried-deal-when-aew-launched": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-04T18:04:58.426Z"
+  "at": "2026-10-04T18:15:42.771Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-results-10-3-el-grande-americano-and-rey-mysterio-team": {
   "reason": "مكرر مع خبر نزل قبل كده",
