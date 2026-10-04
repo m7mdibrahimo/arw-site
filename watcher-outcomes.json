@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/samoa-joe-thought-his-wrestling-career-serious-concussion": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-04T21:58:24.409Z"
+ },
  "https://www.fightful.com/wrestling/former-wwe-nxt-talent-brinley-reece-gets-married": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
