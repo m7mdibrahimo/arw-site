@@ -2734,7 +2734,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 02.10.2026 مترجم",
-    "lastAttempt": 1791103758020,
+    "lastAttempt": 1791104584765,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -2752,6 +2752,36 @@
     "instagram_story": false,
     "title": "عرض ام ال بي كاونت داون نورثرن رايزنج 03.10.2026 مترجم",
     "lastAttempt": 1791102943859,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261004114737-mlw-fusion-03-10-2026": {
+    "publishedAt": 1791104616759,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال دبليو فيوجن 03.10.2026 مترجم",
+    "lastAttempt": 1791104632626,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261004114942-lucha-libre-aaa-03-10-2026": {
+    "publishedAt": 1791104658777,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايه ايه ايه 03.10.2026 مترجم",
+    "lastAttempt": 1791104672302,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
