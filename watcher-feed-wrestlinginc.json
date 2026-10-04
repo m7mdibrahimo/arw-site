@@ -1,15 +1,5 @@
 [
   {
-    "id": 3321771850,
-    "link": "https://www.wrestlinginc.com/2275293/aew-ftr-dax-harwood-cash-wheeler-fell-in-love-tag-team-wrestling/",
-    "date": "Sun, 04 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-04T21:00:00.000Z",
-    "title": {
-      "rendered": "AEW's FTR Explains How They Fell In Love With Tag Team Wrestling"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-ftr-explains-how-they-fell-in-love-with-tag-team-wrestling/l-intro-1790893371.jpg"
-  },
-  {
     "id": 1138745026,
     "link": "https://www.wrestlinginc.com/2273774/aew-thunder-rosa-blood-guts-what-would-take/",
     "date": "Sun, 04 Oct 2026 20:24:16 +0000",
@@ -198,5 +188,15 @@
       "rendered": "AEW Collision Live Coverage - 10/3/2026: Kofi Makes AEW Singles Debut, More"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-october-3-2026-kofi-aew-singles-debut/l-intro-1791079595.jpg"
+  },
+  {
+    "id": 4852703010,
+    "link": "https://www.wrestlinginc.com/2274518/wwe-nxt-joe-hendry-shawn-michaels-conversation-title-win/",
+    "date": "Sat, 03 Oct 2026 20:30:00 +0000",
+    "date_gmt": "2026-10-03T20:30:00.000Z",
+    "title": {
+      "rendered": "WWE's Joe Hendry Believes Conversation With Shawn Michaels Led To NXT Title Win"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-joe-hendry-believes-conversation-with-shawn-michaels-led-to-nxt-title-win/l-intro-1790866607.jpg"
   }
 ]
