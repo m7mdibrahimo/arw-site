@@ -2851,9 +2851,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 03.10.2026 مترجم",
-    "lastAttempt": 1791207815014,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791211309259,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
