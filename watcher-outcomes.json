@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/tessa-blanchard-nearly-quit-wrestling-join-us-army": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-05T14:32:31.483Z"
- },
  "https://www.fightful.com/wrestling/shuhei-taniguchi-to-have-final-match-in-january-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:17.518Z"
+  "at": "2026-10-05T14:36:55.324Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-5": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:17.182Z"
+  "at": "2026-10-05T14:36:54.920Z"
  },
  "https://www.fightful.com/wrestling/road-dogg-wants-to-see-the-miz-inducted-into-the-wwe-hall-of-fame-next-year-why-put-it-off": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:17.071Z"
+  "at": "2026-10-05T14:36:54.789Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-spoilers-taped-on-10-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:16.821Z"
+  "at": "2026-10-05T14:36:54.490Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-puts-james-ellsworth-on-the-list-again-ten-years-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:16.744Z"
+  "at": "2026-10-05T14:36:54.399Z"
  },
  "https://www.fightful.com/wrestling/samoa-joe-thought-his-career-was-over-after-concussion-in-2020": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:16.575Z"
+  "at": "2026-10-05T14:36:54.202Z"
  },
  "https://www.fightful.com/wrestling/samoa-joe-four-hours-after-being-fired-by-wwe-for-a-second-time-i-got-the-call-for-twisted-metal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T14:28:16.463Z"
+  "at": "2026-10-05T14:36:54.069Z"
+ },
+ "https://www.ringsidenews.com/tessa-blanchard-nearly-quit-wrestling-join-us-army": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-05T14:32:31.483Z"
  },
  "https://www.fightful.com/wrestling/former-wwe-nxt-talent-brinley-reece-gets-married": {
   "reason": "مكرر مع خبر نزل قبل كده",
