@@ -2797,15 +2797,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض يو اف سي 332 ايرلي بريلمز مترجم",
-    "lastAttempt": 1791159909981,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791160824341,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -2816,9 +2812,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 332 بريلمز مترجم",
-    "lastAttempt": 1791157376447,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791160825579,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
