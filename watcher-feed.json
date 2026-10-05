@@ -110,6 +110,16 @@
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02092648/HToNM5cXcAAKXva.jpg"
   },
   {
+    "id": 234901,
+    "link": "https://www.fightful.com/wrestling/full-wwe-nxt-rosters/",
+    "date": "2026-10-05T11:33:00",
+    "date_gmt": "2026-10-05T15:33:00",
+    "title": {
+      "rendered": "Full WWE NXT Roster"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/11114240/8.png"
+  },
+  {
     "id": 332209,
     "link": "https://www.fightful.com/wrestling/john-cena-confirms-john-cena-classic-tournament-for-december/",
     "date": "2026-10-05T11:03:29",
@@ -288,15 +298,5 @@
       "rendered": "Alex Zayne Not Under AEW/ROH Contract"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04221334/Screenshot-2026-10-04-at-10.13.30-PM.png"
-  },
-  {
-    "id": 332162,
-    "link": "https://www.fightful.com/wrestling/aj-styles-saves-son-avery-styles-at-indie-event/",
-    "date": "2026-10-04T21:53:22",
-    "date_gmt": "2026-10-05T01:53:22",
-    "title": {
-      "rendered": "AJ Styles Saves Son Avery Styles At Indie Event"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/08232406/HPNeFlEWEAAyAjI-1.jpg"
   }
 ]
