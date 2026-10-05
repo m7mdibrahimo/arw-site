@@ -1,0 +1,53 @@
+name: Search Console Report
+
+# ═══════════════════════════════════════════════════════
+#  تقرير يومي من أدوات جوجل لمشرفي المواقع: عمليات البحث والنقرات والترتيب،
+#  وحالة الفهرسة لأحدث 60 خبر، وخرائط الموقع. التقرير بيتحفظ في
+#  seo/search-console.json و seo/search-console.md وجولات المراقبة بتقراه
+#  وتصلح اللي فيه. صلاحية قراءة بس — مفيش أي تغيير في حساب جوجل.
+#  محتاج سر GSC_SERVICE_ACCOUNT (مفتاح حساب خدمة متضاف كمستخدم في الخاصية).
+# ═══════════════════════════════════════════════════════
+
+on:
+  schedule:
+    - cron: '15 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: search-console
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the report
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: npx tsx scripts/search-console-report.ts
+
+      - name: Commit the report
+        run: |
+          [ -f seo/search-console.json ] || exit 0
+          git config user.name "ARW Fix Bot"
+          git config user.email "bot@arab-wrestling.com"
+          git add seo/
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(seo): daily Search Console report [skip ci]"
+          for i in 1 2 3; do git pull --rebase --autostash && git push && break; sleep 10; done

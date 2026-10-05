@@ -2988,3 +2988,20 @@ test('the site never blocks the right-click menu (owner, INCIDENTS #271)', () =>
   const head = fs.readFileSync('_includes/adsense.njk', 'utf-8');
   assert.doesNotMatch(head, /addEventListener\(\s*['"]contextmenu['"]/);
 });
+
+test('the Search Console report turns raw data into problems to fix (INCIDENTS #272)', async () => {
+  const { findProblems } = await import('../scripts/search-console-report');
+  const p = findProblems({
+    sitemaps: [{ path: 'https://arab-wrestling.com/sitemap.xml', errors: '2', warnings: '0' }],
+    inspections: [
+      { url: 'https://arab-wrestling.com/news/a/', result: { indexStatusResult: { verdict: 'PASS', coverageState: 'Submitted and indexed', pageFetchState: 'SUCCESSFUL' } } },
+      { url: 'https://arab-wrestling.com/news/b/', result: { indexStatusResult: { verdict: 'NEUTRAL', coverageState: 'Crawled - currently not indexed', pageFetchState: 'SUCCESSFUL', userCanonical: 'https://arab-wrestling.com/news/b/', googleCanonical: 'https://arab-wrestling.com/news/c/' } } },
+    ],
+    pages: [{ keys: ['https://arab-wrestling.com/news/d/'], impressions: 900, clicks: 2, ctr: 0.002, position: 6.2 }],
+  });
+  assert.equal(p.length, 4);
+  assert.match(p[0], /خريطة الموقع/);
+  assert.match(p.join('\n'), /مش متفهرس/);
+  assert.match(p.join('\n'), /صفحة أساسية تانية/);
+  assert.match(p.join('\n'), /ظهور كتير ونقرات قليلة/);
+});
