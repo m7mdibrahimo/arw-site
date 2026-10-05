@@ -318,8 +318,9 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 .social-row a:hover{ background:var(--teal); color:#fff; border-color:var(--teal); transform:translateY(-4px) scale(1.12); box-shadow:0 8px 16px rgba(14,149,148,0.3); }
 /* Scroll Reveal Smooth Motion */
 .reveal{ opacity:1; transform:none; }
-.reveal.reveal-hidden{ opacity:0; transform:translateY(48px); transition:none !important; }
-.reveal.is-visible{ opacity:1; transform:translateY(0); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+.reveal.reveal-hidden{ opacity:0; transform:translate3d(0, 16px, 0); transition:none !important; will-change:opacity, transform; }
+.reveal.is-visible{ opacity:1; transform:translate3d(0, 0, 0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); will-change:auto; }
+@media (prefers-reduced-motion: reduce){ .reveal.reveal-hidden{ opacity:1 !important; transform:none !important; } }
 /* Hero Section Animations */
 .hero{ position:relative; padding:130px 24px 90px; text-align:center; overflow:hidden; background: radial-gradient(circle at 50% 15%, rgba(14,149,148,.22) 0%, transparent 65%), radial-gradient(circle at 85% 10%, rgba(242,165,60,.16) 0%, transparent 55%), linear-gradient(180deg, rgba(13,15,19,.96) 0%, var(--bg) 100%); }
 .hero-inner{ position:relative; max-width:740px; margin:0 auto; }
@@ -1543,17 +1544,20 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </footer>
 <script>
 if('IntersectionObserver' in window){
-const io = new IntersectionObserver((entries)=>{
-entries.forEach(e=>{
-if(e.isIntersecting){ e.target.classList.remove('reveal-hidden'); e.target.classList.add('is-visible'); }
-else { e.target.classList.remove('is-visible'); e.target.classList.add('reveal-hidden'); }
-});
-}, { threshold:.12 });
-document.querySelectorAll('.reveal').forEach(el=>{
-el.classList.add('reveal-hidden');
-io.observe(el);
-});
-}
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.remove('reveal-hidden');
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el=>{
+      el.classList.add('reveal-hidden');
+      io.observe(el);
+    });
+  }
 </script>
 <script>
 (function(){
