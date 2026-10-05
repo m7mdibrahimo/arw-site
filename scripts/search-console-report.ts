@@ -118,6 +118,7 @@ async function main() {
   const report = { generatedAt: new Date().toISOString(), site, range, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections };
   const problems = findProblems(report);
   fs.mkdirSync(OUT_DIR, { recursive: true });
+  fs.rmSync(path.join(OUT_DIR, "search-console-error.txt"), { force: true });
   fs.writeFileSync(path.join(OUT_DIR, "search-console.json"), JSON.stringify({ ...report, problems }, null, 1) + "\n");
 
   const t = report.totals, tp = report.totalsPrev;
@@ -142,5 +143,11 @@ async function main() {
 }
 
 if (require.main === module) {
-  main().catch(e => { console.error("[GSC] ❌", e.message); process.exit(1); });
+  main().catch(e => {
+    console.error("[GSC] ❌", e.message);
+    // The run log needs a login to read; leave the reason where the monitoring rounds look.
+    fs.mkdirSync(OUT_DIR, { recursive: true });
+    fs.writeFileSync(path.join(OUT_DIR, "search-console-error.txt"), `${new Date().toISOString()}\n${String(e.message).replace(/-----BEGIN[\s\S]*?-----END[^-]*-----/g, "[key]").slice(0, 1000)}\n`);
+    process.exit(1);
+  });
 }

@@ -49,8 +49,9 @@ jobs:
         run: npx tsx scripts/search-console-report.ts
 
       - name: Commit the report
+        if: always()
         run: |
-          [ -f seo/search-console.json ] || exit 0
+          [ -d seo ] || exit 0
           git config user.name "ARW Fix Bot"
           git config user.email "bot@arab-wrestling.com"
           git add seo/
