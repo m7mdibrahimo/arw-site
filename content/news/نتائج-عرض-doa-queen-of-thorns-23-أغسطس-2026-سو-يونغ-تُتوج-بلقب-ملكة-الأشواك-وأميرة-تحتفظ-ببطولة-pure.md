@@ -12,7 +12,7 @@ tags:
 image: /content/images/fjwkoe8dqe5es5cn.jpg
 layout: post-layout.njk
 ---
-قدم اتحاد Don't Own Anyone Pro Wrestling (DOA) فعاليات عرضه النسائي المثير Queen of Thorns عبر منصة IWTV، والذي أقيمت منافساته من صالة "Morrison Market" بمدينة بورتلاند بولاية أوريغون الأمريكية؛ حيث شهد العرض إقامة بطولة "ملكة الأشواك" الكاملة، إلى جانب دفاع ناجح عن لقب البطولة الخالصة (DOA Pure Championship).
+قدم اتحاد Don't Own Anyone Pro Wrestling (DOA) فعاليات عرضه النسائي المثير Queen of Thorns عبر منصة IWTV، والذي أقيمت منافساته في صالة "Morrison Market" بمدينة بورتلاند بولاية أوريغون الأمريكية؛ حيث شهد العرض إقامة بطولة "ملكة الأشواك" الكاملة، إلى جانب دفاع ناجح عن لقب البطولة الخالصة (DOA Pure Championship).
 
 ### مواجهات الدور الأول من بطولة ملكة الأشواك (First Round)
 
