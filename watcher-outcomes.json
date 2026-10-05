@@ -24,11 +24,6 @@
   "retry": false,
   "at": "2026-10-05T23:36:47.261Z"
  },
- "https://www.wrestlinginc.com/2278180/wwe-raw-october-5-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-05T23:24:35.851Z"
- },
  "https://www.fightful.com/wrestling/shuhei-taniguchi-to-have-final-match-in-january-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
