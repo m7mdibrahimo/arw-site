@@ -2984,6 +2984,13 @@ test('a results winner that is not in its own match text is flagged (INCIDENTS #
   assert.equal(applyCorrections('خاضت برينسيسا سوجيهيت نزالا من جلتين، وانضم إلى بولت كلاب للاحتفاظ بطولة'), 'خاضت برينسيسا سوغيهيت نزالا من جولتين، وانضم إلى بوليت كلوب للاحتفاظ ببطولة');
 });
 
+test('spelling and agreement slips from the 5 Oct evening stories are fixed (INCIDENTS #276)', () => {
+  assert.equal(
+    applyCorrections('أقام عرضا تكوينيا خاصا، والصمام يسببه له آلاما، ومرورا بفتره ستاردست، وأنهت مشوارها بشكل رسميا، ولفت انظار الاتحاد في العرض الشهرى، ليحقا اللقب، بينما نشر القناة الفيديو'),
+    'أقام عرضا تكريميا خاصا، والصمام يسبب له آلاما، ومرورا بفترة ستاردست، وأنهت مشوارها بشكل رسمي، ولفت أنظار الاتحاد في العرض الشهري، ليحققا اللقب، بينما نشرت القناة الفيديو',
+  );
+});
+
 test('the site never blocks the right-click menu (owner, INCIDENTS #271)', () => {
   const head = fs.readFileSync('_includes/adsense.njk', 'utf-8');
   assert.doesNotMatch(head, /addEventListener\(\s*['"]contextmenu['"]/);
