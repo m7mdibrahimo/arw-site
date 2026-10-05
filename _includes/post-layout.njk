@@ -973,10 +973,10 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261005c">
+<link rel="stylesheet" href="/assets/features.css?v=20261005d">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
-<body>
+<body class="post-layout">
 <header>
   <nav class="nav" aria-label="التنقل الرئيسي">
     <a class="brand brand-lockup" href="/" aria-label="عرب راسلنج — الرئيسية"><span class="brand-mark"><img src="/assets/brand-logo.png?v=2" alt="" width="42" height="42"></span><span class="brand-words"><b class="brand-name">عرب <span>راسلنج</span></b><small class="brand-tag">المصارعة الحرة بالعربي</small></span></a>
@@ -2006,8 +2006,8 @@
   var ticking = false;
   function onScroll(){
     var currentY = window.scrollY;
-    if(window.innerWidth <= 600){
-      if(currentY > lastY && currentY > 80){
+    if(window.innerWidth <= 768 || window.innerHeight <= 520){
+      if(currentY > lastY && currentY > 40){
         header.classList.add('header-hidden');
       } else if(currentY < lastY){
         header.classList.remove('header-hidden');

@@ -655,36 +655,105 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 
 /* ═══ Phone Landscape Mode Polish (تحسين الوضع الأفقي للهواتف لتوفير أقصى مساحة رؤية للفيديو والمحتوى) ═══ */
 @media (orientation: landscape) and (max-height: 550px), (max-height: 500px) {
-  /* Top Header: Slim 42px single row with safe insets */
+  /* Top Header: Slim 40px single row that slides away on scroll */
   html body header .nav {
-    padding: 5px calc(14px + env(safe-area-inset-right, 0px)) 5px calc(14px + env(safe-area-inset-left, 0px)) !important;
+    padding: 4px calc(14px + env(safe-area-inset-right, 0px)) 4px calc(14px + env(safe-area-inset-left, 0px)) !important;
     gap: 8px !important;
-    min-height: 42px !important;
+    min-height: 40px !important;
   }
   html body header .brand-name {
-    font-size: 17px !important;
+    font-size: 16px !important;
   }
   html body header .brand-mark {
-    width: 28px !important;
-    height: 28px !important;
-    border-radius: 9px !important;
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 8px !important;
   }
   html body header .brand-mark img {
-    border-radius: 7px !important;
+    border-radius: 6px !important;
   }
   html body header #navMenu .theme-toggle,
   html body header .arw-search-toggle {
-    width: 32px !important;
-    height: 32px !important;
+    width: 30px !important;
+    height: 30px !important;
   }
   html body header #navMenu .theme-toggle svg,
   html body header .arw-search-toggle svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 15px !important;
+    height: 15px !important;
   }
 
-  /* Bottom Navigation: Slim 44px bar to maximize vertical space for videos */
-  body.arw-has-bottom-nav {
+  /* Allow header to slide away smoothly when scrolling down in landscape mode */
+  html body header.header-hidden {
+    transform: translateY(-100%) !important;
+  }
+
+  /* 🎬 Video/Watch pages in landscape: Hide the clutter so the video is front and center */
+  body.post-layout .hero,
+  .post-layout .hero {
+    display: none !important; /* Hide massive 350px hero banner on watch pages in landscape */
+  }
+  body.post-layout .arw-crumbs,
+  .post-layout .arw-crumbs,
+  body.post-layout .post-meta-bar,
+  .post-layout .post-meta-bar,
+  body.post-layout .quality-notice,
+  .post-layout .quality-notice {
+    display: none !important;
+  }
+
+  /* Bottom nav: completely hidden on post/watch pages in landscape so the video has 100% full height */
+  body.post-layout .arw-bottom-nav,
+  .post-layout .arw-bottom-nav {
+    display: none !important;
+  }
+  body.post-layout.arw-has-bottom-nav,
+  .post-layout.arw-has-bottom-nav {
+    padding-bottom: 0 !important;
+  }
+
+  /* Post layout content wrapper: starts immediately at top without wasted padding */
+  body.post-layout .post-wrap,
+  .post-layout .post-wrap {
+    padding: 6px calc(14px + env(safe-area-inset-right, 0px)) 24px calc(14px + env(safe-area-inset-left, 0px)) !important;
+    max-width: 1000px !important;
+  }
+  body.post-layout .post-wrap > h2,
+  .post-layout .post-wrap > h2 {
+    font-size: 14.5px !important;
+    margin: 2px 0 6px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+  body.post-layout .player-toolbar,
+  .post-layout .player-toolbar {
+    margin-bottom: 6px !important;
+    gap: 6px !important;
+    justify-content: center !important;
+  }
+  body.post-layout .server-tab,
+  .post-layout .server-tab,
+  body.post-layout .player-reload-btn,
+  .post-layout .player-reload-btn {
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+    min-height: 30px !important;
+  }
+
+  /* Video player in landscape: expands to maximum comfortable viewing area */
+  body.post-layout .video-embed,
+  .post-layout .video-embed {
+    width: 100% !important;
+    max-height: calc(100vh - 44px) !important;
+    max-width: calc((100vh - 44px) * 16 / 9) !important;
+    aspect-ratio: 16 / 9 !important;
+    margin: 0 auto 14px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  /* Bottom Navigation on non-post pages: Slim 44px bar */
+  body:not(.post-layout).arw-has-bottom-nav {
     padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
   }
   .arw-bottom-nav {
@@ -719,26 +788,6 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
     padding: 10px !important;
     font-size: 12.5px !important;
     gap: 6px !important;
-  }
-
-  /* Post pages & Video Player: compact padding so video is immediately visible */
-  .post-wrap {
-    padding: 12px calc(16px + env(safe-area-inset-right, 0px)) 36px calc(16px + env(safe-area-inset-left, 0px)) !important;
-    max-width: 960px !important;
-  }
-  .post-wrap h1 {
-    font-size: 18px !important;
-    margin-bottom: 6px !important;
-    line-height: 1.3 !important;
-  }
-  .post-meta-bar {
-    margin-bottom: 10px !important;
-  }
-  .video-embed {
-    margin-bottom: 14px !important;
-  }
-  .player-toolbar {
-    margin-bottom: 8px !important;
   }
 
   /* Home & Federation Grids in landscape: clean 3 or 4 columns across wide screen */

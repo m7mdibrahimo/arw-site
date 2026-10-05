@@ -1246,7 +1246,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261005c">
+<link rel="stylesheet" href="/assets/features.css?v=20261005d">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body>
@@ -1610,8 +1610,8 @@ var lastY = window.scrollY;
 var ticking = false;
 function onScroll(){
 var currentY = window.scrollY;
-if(window.innerWidth <= 600){
-if(currentY > lastY && currentY > 80){
+if(window.innerWidth <= 768 || window.innerHeight <= 520){
+if(currentY > lastY && currentY > 40){
 header.classList.add('header-hidden');
 } else if(currentY < lastY){
 header.classList.remove('header-hidden');
