@@ -2972,3 +2972,14 @@ test('a headline drops «/2026» after a show name and quotes with «» (INCIDEN
   assert.equal(dropTimezoneFromTitle('بولي راي يشيد بـرومان رينز: "هو يؤدي كل شيء بأعلى درجات الإتقان"'), 'بولي راي يشيد بـرومان رينز: «هو يؤدي كل شيء بأعلى درجات الإتقان»');
   assert.equal(applyCorrections('في عرض الأبطال الخالدون المقرر'), 'في عرض Heroes Inmortales المقرر');
 });
+
+test('a results winner that is not in its own match text is flagged (INCIDENTS #269)', async () => {
+  const { winnersNotInMatch } = await import('../scripts/news-qa');
+  const bad = '**المواجهة الأولى: نزال إقصائي رباعي**\n\nتاركة بصمتها في النزال، تفوق آلان على كل من ميللا مور.\n\n🏆 **الفائزة:** شانتل جوردان\n\n**المواجهة الثانية: نزال فردي**\n\nشهد النزال مواجهة قوية بين الطرفين حسمتها النتيجة لصالح المنتصرة.\n\n🏆 **الفائزة:** جاي جي يو';
+  assert.deepEqual(winnersNotInMatch(bad), ['شانتل جوردان', 'جاي جي يو']);
+  const good = '**المواجهة الأولى: نزال فرق**\n\nنجح فريق هايبرأكتيف المكون من أنيتا فوهان وسافاير ريد في الفوز على كيلر كوينز.\n\n🏆 **الفائزات:** فريق هايبرأكتيف (أنيتا فوهان وسافاير ريد)';
+  assert.deepEqual(winnersNotInMatch(good), []);
+  const { spelledAgesToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledAgesToDigits('المصارع البالغ من العمر تسعا وأربعين عاما'), 'المصارع البالغ من العمر 49 عاما');
+  assert.equal(applyCorrections('خاضت برينسيسا سوجيهيت نزالا من جلتين، وانضم إلى بولت كلاب للاحتفاظ بطولة'), 'خاضت برينسيسا سوغيهيت نزالا من جولتين، وانضم إلى بوليت كلوب للاحتفاظ ببطولة');
+});

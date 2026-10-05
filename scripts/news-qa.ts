@@ -168,6 +168,32 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
   return null;
 }
 
+/** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
+export function winnersNotInMatch(body: string): string[] {
+  const out: string[] = [];
+  const norm = (x: string) => x.replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
+  let block = "";
+  for (const line of body.split("\n")) {
+    const w = line.match(/^\s*🏆\s*\*\*\s*(?:الفائز|الفائزة|الفائزان|الفائزتان|الفائزون|الفائزات)\s*:?\s*\*\*\s*:?\s*(.+)$/);
+    if (!w) {
+      if (/^\s*\*\*[^*]+\*\*\s*$/.test(line)) block = ""; // a new match heading
+      else block += " " + line;
+      continue;
+    }
+    const name = w[1].replace(/\([^)]*\)/g, " ").replace(/\*/g, "").trim();
+    if (!name || !block.trim()) { block = ""; continue; }
+    // Names left out: «حسمتها النتيجة لصالح المنتصرة»
+    if (/لصالح\s+(?:المنتصر|الفائز)|حسمتها النتيجة|بين الطرفين حسم/.test(block)) { out.push(name); block = ""; continue; }
+    // Another winner in the text: «تفوق آلان على…» above «الفائزة: شانتل جوردان»
+    const skip = /^(?:فريق|الثنائي|الثلاثي|الفريق|ثنائي|ثلاثي|ذا|بطل|بطلة|البطل|البطلة|المصارع|المصارعة|النجم|النجمة|كل|من)$/;
+    const first = (x: string) => norm((x.split(/\s+/).find(y => y.length > 1 && !skip.test(y)) || "").replace(/[،,.]/g, ""));
+    const said = block.match(/(?:^|\s)(?:تفوق|تفوقت|تغلب|تغلبت|فاز|فازت|هزم|هزمت)\s+(?:فريق\s+|الثنائي\s+|الثلاثي\s+)?([\u0600-\u06FF][^،.]{1,40}?)\s+على\s/);
+    const k = first(name), sk = said ? first(said[1]) : "";
+    if (k && sk && k !== sk && !norm(block).includes(k)) out.push(name);
+    block = "";
+  }
+  return out;
+}
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });
@@ -218,6 +244,11 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   if (englishRun) issues.push({ code: "english_sentence", severity: "warning", field: "body", message: "جملة إنجليزية كاملة داخل النص", excerpt: englishRun[0].slice(0, 80) });
   if (prose.replace(/\s/g, "").length < 250) issues.push({ code: "body_too_short", severity: "error", field: "body", message: "نص الخبر قصير جدًا أو فاضي", excerpt: prose.slice(0, 80) });
   if (((body || "").match(/\*\*/g) || []).length % 2 === 1) issues.push({ code: "broken_bold", severity: "warning", field: "body", message: "تنسيق ** غير مقفول", excerpt: "" });
+
+  // A results block whose winner isn't in its own match text: «تاركة بصمتها في النزال، تفوق آلان على…
+  // 🏆 الفائزة: شانتل جوردان», «حسمتها النتيجة لصالح المنتصرة» with no names (EVE 2/10 — INCIDENTS #269)
+  const lost = winnersNotInMatch(body || "");
+  if (lost.length) issues.push({ code: "winner_not_in_match", severity: "error", field: "body", message: `الفائز مش مذكور في وصف نزاله (${lost.length}) — اكتب النزال من المصدر بأسماء الطرفين`, excerpt: lost.slice(0, 3).join("، ") });
 
   const titleDay = t.match(/\((\d{1,2}) ([ء-ي]+) (\d{4})\)/);
   if (titleDay) {
@@ -419,14 +450,16 @@ export function repairMixedTitles(text: string): string {
     .replace(new RegExp(`((?:${W}\\s+)+)بطولة\\s+السيدات(?=\\s*[*)])`, "g"), "$1Women's Championship");
 }
 
-const AGE_UNITS: Record<string, number> = { واحد: 1, اثنين: 2, ثلاثة: 3, أربعة: 4, خمسة: 5, ستة: 6, سبعة: 7, ثمانية: 8, تسعة: 9 };
+const AGE_UNITS: Record<string, number> = { واحد: 1, اثنين: 2, ثلاثة: 3, أربعة: 4, خمسة: 5, ستة: 6, سبعة: 7, ثمانية: 8, تسعة: 9,
+  // the accusative after «عمره/البالغ»: «تسعا وأربعين عاما» (INCIDENTS #269)
+  واحدا: 1, ثلاثا: 3, أربعا: 4, خمسا: 5, ستا: 6, سبعا: 7, ثمانيا: 8, تسعا: 9 };
 const AGE_TENS: Record<string, number> = { عشرين: 20, ثلاثين: 30, أربعين: 40, خمسين: 50, ستين: 60, سبعين: 70, ثمانين: 80, تسعين: 90 };
 /**
  * Body only (titles keep counts in words): an age or a span of years written out becomes digits —
  * «البالغ من العمر سبعين عاما» ← «70 عاما». The copy editor was told and left it (INCIDENTS #202).
  */
 export function spelledAgesToDigits(body: string): string {
-  return String(body || "").replace(/(?<![\u0600-\u06FF])(?:(واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g,
+  return String(body || "").replace(/(?<![\u0600-\u06FF])(?:(واحدا|ثلاثا|أربعا|خمسا|ستا|سبعا|ثمانيا|تسعا|واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g,
     (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`)
     // Round hundreds before a unit: «مسافة لا تقل عن خمسمائة قدم» ← «500 قدم» (INCIDENTS #225)
     .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(مائة|مئة|مائتي|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة)\s+(قدم|أقدام|متر|أمتار|ميل|كيلومتر|دولار|رطل|كيلوغرام|مشجع|متفرج)(?![\u0600-\u06FF])/g,
