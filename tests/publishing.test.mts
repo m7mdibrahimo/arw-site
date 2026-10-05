@@ -3005,3 +3005,17 @@ test('the Search Console report turns raw data into problems to fix (INCIDENTS #
   assert.match(p.join('\n'), /صفحة أساسية تانية/);
   assert.match(p.join('\n'), /ظهور كتير ونقرات قليلة/);
 });
+
+test('Search Console problems skip brand sitelinks and stories Google has not met yet (INCIDENTS #273)', async () => {
+  const { findProblems } = await import('../scripts/search-console-report');
+  const now = Date.parse('2026-10-06T00:00:00Z');
+  const p = findProblems({
+    generatedAt: '2026-10-06T00:00:00Z',
+    inspections: [{ url: 'https://arab-wrestling.com/news/x/', published: now - 3600_000, result: { indexStatusResult: { verdict: 'NEUTRAL', coverageState: 'لم يتعرّف محرّك بحث Google على عنوان URL.', pageFetchState: 'PAGE_FETCH_STATE_UNSPECIFIED' } } }],
+    pages: [
+      { keys: ['https://arab-wrestling.com/shows/3/'], impressions: 5210, clicks: 36, ctr: 0.007, position: 1.1 },
+      { keys: ['https://arab-wrestling.com/about/'], impressions: 1480, clicks: 1, ctr: 0.001, position: 1.5 },
+    ],
+  });
+  assert.deepEqual(p, []);
+});

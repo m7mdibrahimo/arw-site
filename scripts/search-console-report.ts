@@ -11,6 +11,9 @@ import matter from "gray-matter";
 
 const OUT_DIR = path.join(process.cwd(), "seo");
 const SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
+// Write scope is used for one thing only: keeping the submitted sitemaps equal to the ones
+// robots.txt declares (the owner gave the account «كامل» on 2026-10-06 for this).
+const WRITE_SCOPE = "https://www.googleapis.com/auth/webmasters";
 const ORIGIN = "https://arab-wrestling.com";
 const INSPECT_LIMIT = 60; // URL Inspection API allows 2,000/day per property; stay far below
 
@@ -18,10 +21,10 @@ interface ServiceAccount { client_email: string; private_key: string }
 
 const b64url = (b: Buffer | string) => Buffer.from(b).toString("base64").replace(/=+$/, "").replace(/\+/g, "-").replace(/\//g, "_");
 
-async function accessToken(sa: ServiceAccount): Promise<string> {
+async function accessToken(sa: ServiceAccount, scope = SCOPE): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
   const header = b64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
-  const claims = b64url(JSON.stringify({ iss: sa.client_email, scope: SCOPE, aud: "https://oauth2.googleapis.com/token", iat: now, exp: now + 3600 }));
+  const claims = b64url(JSON.stringify({ iss: sa.client_email, scope, aud: "https://oauth2.googleapis.com/token", iat: now, exp: now + 3600 }));
   const sig = b64url(crypto.createSign("RSA-SHA256").update(`${header}.${claims}`).sign(sa.private_key));
   const res = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
@@ -33,9 +36,9 @@ async function accessToken(sa: ServiceAccount): Promise<string> {
   return data.access_token;
 }
 
-async function api(token: string, url: string, body?: unknown): Promise<any> {
+async function api(token: string, url: string, body?: unknown, method?: string): Promise<any> {
   const res = await fetch(url, {
-    method: body ? "POST" : "GET",
+    method: method || (body ? "POST" : "GET"),
     headers: { Authorization: `Bearer ${token}`, ...(body ? { "Content-Type": "application/json" } : {}) },
     body: body ? JSON.stringify(body) : undefined,
     signal: AbortSignal.timeout(60000),
@@ -48,13 +51,13 @@ async function api(token: string, url: string, body?: unknown): Promise<any> {
 const day = (offset: number) => new Date(Date.now() - offset * 86400_000).toISOString().slice(0, 10);
 
 /** The site's newest article URLs (permalink, or the title slug the build uses). */
-function newestUrls(limit: number): string[] {
+function newestUrls(limit: number): { url: string; published: number }[] {
   const { arabicSlug } = require(path.join(process.cwd(), "lib", "slug.cjs"));
   const dir = path.join(process.cwd(), "content", "news");
   return fs.readdirSync(dir).filter(f => /^\d{14}-.*\.md$/.test(f)).sort().reverse().slice(0, limit).map(f => {
     const d = matter(fs.readFileSync(path.join(dir, f), "utf-8")).data;
     const p = d.permalink ? String(d.permalink).replace(/index\.html$/, "") : `/news/${arabicSlug(String(d.title || ""))}/`;
-    return ORIGIN + encodeURI(p);
+    return { url: ORIGIN + encodeURI(p), published: new Date(d.published_at || d.date).getTime() };
   });
 }
 
@@ -65,9 +68,13 @@ export function findProblems(r: any): string[] {
     if (Number(s.errors) > 0) out.push(`خريطة الموقع ${s.path} فيها ${s.errors} خطأ`);
     if (Number(s.warnings) > 0) out.push(`خريطة الموقع ${s.path} فيها ${s.warnings} تحذير`);
   }
+  const now = Date.parse(r.generatedAt || "") || Date.now();
   for (const i of r.inspections || []) {
     const v = i.result?.indexStatusResult;
     if (!v) { if (i.error) out.push(`فحص الرابط فشل: ${decodeURI(i.url)} — ${i.error}`); continue; }
+    // A story from the last 3 days that Google hasn't met yet is just new, not a problem
+    const fresh = i.published && now - i.published < 3 * 86400_000;
+    if (fresh && (!v.coverageState || /unknown|لم يتعرّف|لم يتعرف/i.test(v.coverageState))) continue;
     if (v.verdict !== "PASS") out.push(`مش متفهرس (${v.coverageState || v.verdict}): ${decodeURI(i.url)}`);
     if (v.googleCanonical && v.userCanonical && v.googleCanonical !== v.userCanonical) out.push(`جوجل اختار صفحة أساسية تانية: ${decodeURI(i.url)} ← ${decodeURI(v.googleCanonical)}`);
     if (v.pageFetchState && v.pageFetchState !== "SUCCESSFUL") out.push(`جوجل مقدرش يجيب الصفحة (${v.pageFetchState}): ${decodeURI(i.url)}`);
@@ -77,8 +84,12 @@ export function findProblems(r: any): string[] {
     if (rich && rich.verdict === "FAIL") out.push(`مشكلة في البيانات المنظمة: ${decodeURI(i.url)}`);
   }
   // Pages that show up a lot but almost nobody clicks: the title/description needs work.
+  // Only articles and show pages: listings and /about/ at position 1–2 are sitelinks under the
+  // brand result, where few clicks is normal.
   for (const p of r.pages || []) {
-    if (p.impressions >= 300 && p.ctr < 0.01 && p.position <= 15) out.push(`ظهور كتير ونقرات قليلة (${p.impressions} ظهور، ${(p.ctr * 100).toFixed(1)}٪، ترتيب ${p.position.toFixed(1)}): ${decodeURI(p.keys[0])}`);
+    const path = decodeURI(new URL(p.keys[0]).pathname);
+    const article = /^\/(?:news|shows|nostalgia)\/[^/]*[^\d/][^/]*\/?$/.test(path);
+    if (article && p.impressions >= 300 && p.ctr < 0.01 && p.position >= 3 && p.position <= 15) out.push(`ظهور كتير ونقرات قليلة (${p.impressions} ظهور، ${(p.ctr * 100).toFixed(1)}٪، ترتيب ${p.position.toFixed(1)}): ${decodeURI(p.keys[0])}`);
   }
   return out;
 }
@@ -108,14 +119,41 @@ async function main() {
   ]);
 
   const inspections: any[] = [];
-  for (const url of [ORIGIN + "/", ...newestUrls(INSPECT_LIMIT)]) {
+  for (const { url, published } of [{ url: ORIGIN + "/", published: 0 }, ...newestUrls(INSPECT_LIMIT)]) {
     try {
       const d = await api(token, "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", { inspectionUrl: url, siteUrl: site, languageCode: "ar" });
-      inspections.push({ url, result: d.inspectionResult });
-    } catch (e: any) { inspections.push({ url, error: String(e.message).slice(0, 200) }); }
+      inspections.push({ url, published, result: d.inspectionResult });
+    } catch (e: any) { inspections.push({ url, published, error: String(e.message).slice(0, 200) }); }
   }
 
-  const report = { generatedAt: new Date().toISOString(), site, range, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections };
+  // Which page answers each of the top searches — what to strengthen to reach #1.
+  const queryPages = await query(["query", "page"], range, 500);
+  const topQueries = new Set(queries.slice(0, 40).map((q: any) => q.keys[0]));
+  const bestPage: Record<string, any> = {};
+  for (const row of queryPages) if (topQueries.has(row.keys[0]) && (!bestPage[row.keys[0]] || row.clicks > bestPage[row.keys[0]].clicks)) bestPage[row.keys[0]] = row;
+
+  // Keep the submitted sitemaps equal to what robots.txt declares: drop one the site no longer
+  // serves (video-sitemap.xml, removed 2026-10-05, kept 500 warnings — INCIDENTS #273) and
+  // submit a declared one that is missing.
+  const actions: string[] = [];
+  try {
+    const robots = await (await fetch(`${ORIGIN}/robots.txt`, { signal: AbortSignal.timeout(20000) })).text();
+    const declared = [...robots.matchAll(/^Sitemap:\s*(\S+)/gim)].map(m => m[1]);
+    const writeToken = await accessToken(sa, WRITE_SCOPE);
+    for (const sm of sitemaps) {
+      const res = await fetch(sm.path, { method: "GET", signal: AbortSignal.timeout(20000) }).catch(() => null);
+      if (res && (res.status === 404 || res.status === 410) && !declared.includes(sm.path)) {
+        await api(writeToken, `https://www.googleapis.com/webmasters/v3/sites/${S}/sitemaps/${encodeURIComponent(sm.path)}`, undefined, "DELETE");
+        actions.push(`اتشالت خريطة مش موجودة على الموقع: ${sm.path}`);
+      }
+    }
+    for (const d of declared) if (!sitemaps.some((sm: any) => sm.path === d)) {
+      await api(writeToken, `https://www.googleapis.com/webmasters/v3/sites/${S}/sitemaps/${encodeURIComponent(d)}`, undefined, "PUT");
+      actions.push(`اتسجلت خريطة جديدة: ${d}`);
+    }
+  } catch (e: any) { actions.push(`ماقدرتش أظبط الخرائط: ${String(e.message).slice(0, 200)}`); }
+
+  const report = { generatedAt: new Date().toISOString(), site, range, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections, bestPage, actions };
   const problems = findProblems(report);
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.rmSync(path.join(OUT_DIR, "search-console-error.txt"), { force: true });
@@ -132,7 +170,10 @@ async function main() {
     `- نسبة النقر: ${t ? (t.ctr * 100).toFixed(2) : 0}٪ — متوسط الترتيب: ${t ? t.position.toFixed(1) : "—"}`,
     "",
     "## أكتر عمليات بحث",
-    ...queries.slice(0, 20).map((q: any) => `- ${q.keys[0]} — ${q.clicks} نقرة، ${q.impressions} ظهور، ترتيب ${q.position.toFixed(1)}`),
+    ...queries.slice(0, 20).map((q: any) => `- ${q.keys[0]} — ${q.clicks} نقرة، ${q.impressions} ظهور، ترتيب ${q.position.toFixed(1)}${bestPage[q.keys[0]] ? ` ← ${decodeURI(bestPage[q.keys[0]].keys[1]).replace(ORIGIN, "")}` : ""}`),
+    "",
+    `## اللي اتعمل تلقائي (${actions.length})`,
+    ...(actions.length ? actions.map(a => `- ${a}`) : ["- مفيش"]),
     "",
     `## مشاكل لازم تتصلح (${problems.length})`,
     ...(problems.length ? problems.map(p => `- ${p}`) : ["- مفيش"]),
