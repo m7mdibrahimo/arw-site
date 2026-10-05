@@ -1110,7 +1110,7 @@
   }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261005i">
+<link rel="stylesheet" href="/assets/features.css?v=20261005j">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body class="post-layout">
@@ -1297,19 +1297,9 @@
             </span>
             <span class="action-text">تحديث المشغل</span>
           </button>
-          {% if servers.length > 1 %}
-          <button type="button" class="player-action-btn player-next-btn" id="playerNextBtn" title="الانتقال إلى سيرفر المشاهدة التالي (اختصار: N)" aria-label="السيرفر التالي">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
-            <span>السيرفر التالي</span>
-          </button>
-          {% endif %}
           <button type="button" class="player-action-btn player-cinema-btn" id="playerCinemaBtn" title="تفعيل وضع السينما وإعتام الإضاءة (اختصار: T)" aria-label="وضع السينما">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
             <span>وضع السينما</span>
-          </button>
-          <button type="button" class="player-action-btn player-fs-btn" id="playerFsBtn" title="تكبير المشغل ملء الشاشة (اختصار: F)" aria-label="ملء الشاشة">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-            <span>ملء الشاشة</span>
           </button>
         </div>
       </div>
@@ -2005,11 +1995,6 @@
     tabs[nextIdx].click();
   }
 
-  var nextBtn = document.getElementById('playerNextBtn');
-  if (nextBtn) {
-    nextBtn.addEventListener('click', switchToNextServer);
-  }
-
   var loaderNextBtn = document.getElementById('loaderNextSrvBtn');
   if (loaderNextBtn) {
     var allTabs = document.querySelectorAll('.server-tab');
@@ -2082,38 +2067,7 @@
   if (cinemaBackdrop) cinemaBackdrop.addEventListener('click', function(){ toggleCinemaMode(false); });
   if (cinemaExitFloat) cinemaExitFloat.addEventListener('click', function(){ toggleCinemaMode(false); });
 
-  // Native Fullscreen Controller
-  var fsBtn = document.getElementById('playerFsBtn');
-  function toggleFullscreen() {
-    var target = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
-    if (!target) return;
-    var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
-    if (isFs) {
-      if (document.exitFullscreen) document.exitFullscreen().catch(function(){});
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-      else if (document.msExitFullscreen) document.msExitFullscreen();
-    } else {
-      if (target.requestFullscreen) target.requestFullscreen().catch(function(){});
-      else if (target.webkitRequestFullscreen) target.webkitRequestFullscreen();
-      else if (target.mozRequestFullScreen) target.mozRequestFullScreen();
-      else if (target.msRequestFullscreen) target.msRequestFullscreen();
-    }
-  }
-
-  if (fsBtn) {
-    fsBtn.addEventListener('click', toggleFullscreen);
-    function updateFsBtnState() {
-      var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
-      fsBtn.classList.toggle('is-active', isFs);
-      var text = fsBtn.querySelector('span');
-      if (text) text.textContent = isFs ? 'تصغير الشاشة' : 'ملء الشاشة';
-    }
-    document.addEventListener('fullscreenchange', updateFsBtnState);
-    document.addEventListener('webkitfullscreenchange', updateFsBtnState);
-  }
-
-  // Pro Keyboard Shortcuts (T: Cinema, F: Fullscreen, R: Reload, N: Next Server, Esc: Exit Cinema)
+  // Keyboard Shortcuts (T: Cinema, R: Reload, Esc: Exit Cinema)
   document.addEventListener('keydown', function(e){
     var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
@@ -2127,15 +2081,9 @@
     } else if (key === 't' || key === 'T' || key === 'ف') {
       e.preventDefault();
       toggleCinemaMode();
-    } else if (key === 'f' || key === 'F' || key === 'ب') {
-      e.preventDefault();
-      toggleFullscreen();
     } else if (key === 'r' || key === 'R' || key === 'ق') {
       e.preventDefault();
       reloadCurrentServer();
-    } else if (key === 'n' || key === 'N' || key === 'ى') {
-      e.preventDefault();
-      switchToNextServer();
     }
   });
 </script>
