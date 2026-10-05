@@ -314,7 +314,12 @@ export function tonightInTitle(title: string, now = Date.now()): string {
  * (بتوقيت أمريكا): ثلاثة أمور كرهناها…» (INCIDENTS #122). The body keeps it.
  */
 export function dropTimezoneFromTitle(title: string): string {
-  return title.replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim();
+  return title
+    // «عرض WWE NXT/2026»: a year glued to a show name by a slash (INCIDENTS #268)
+    .replace(/([A-Za-z])\/20\d\d\b/g, "$1")
+    // An Arabic headline quotes with «», not "": «بولي راي يشيد بـرومان رينز: "هو يؤدي…"» (INCIDENTS #268)
+    .replace(/"([^"\n]+)"/g, "«$1»")
+    .replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim();
 }
 
 export function numberWordsInTitle(title: string): string {

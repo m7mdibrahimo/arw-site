@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "\"إلى نصف النهائي!\".. كايل أورايلي وكلاوديو كاستانيولي يتقدمان في كأس Continental Challenge"
+title: "«إلى نصف النهائي!».. كايل أورايلي وكلاوديو كاستانيولي يتقدمان في كأس Continental Challenge"
 permalink: "/news/إلى-نصف-النهائي-كايل-أورايلي-وكلاوديو-كاستاليولي-يتقدمان-في-كأس-continental-challenge/index.html"
 date: 2026-08-23T05:28:00.000+03:00
 tags:

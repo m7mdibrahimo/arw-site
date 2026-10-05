@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "WWE تعلن رسميا عن جولات العروض المباشرة \"Road to Survivor Series: WarGames\""
+title: "WWE تعلن رسميا عن جولات العروض المباشرة «Road to Survivor Series: WarGames»"
 permalink: "/news/wwe-تعلن-رسميا-عن-جولات-العروض-المباشرة-road-to-سرفايفر-سيريز-وور-جيمز/index.html"
 date: 2026-08-13T20:38:00.000+03:00
 tags:

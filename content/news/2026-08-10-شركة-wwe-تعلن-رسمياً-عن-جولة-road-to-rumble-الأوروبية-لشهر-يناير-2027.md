@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "شركة WWE تعلن رسميا عن جولة \"Road To Rumble\" الأوروبية لشهر يناير 2027"
+title: "شركة WWE تعلن رسميا عن جولة «Road To Rumble» الأوروبية لشهر يناير 2027"
 date: 2026-08-10T16:08:00.000+03:00
 tags:
   - WWE

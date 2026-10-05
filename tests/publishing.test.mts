@@ -2958,3 +2958,17 @@ test('a booker is «مسؤول الحجز وصناعة القصص» and «means 
   assert.equal(applyCorrections('يستعد مسؤول الحجوزات والنجوم في اتحاد NJPW'), 'يستعد مسؤول الحجز وصناعة القصص في اتحاد NJPW');
   assert.equal(applyCorrections('لأنني أعرف أنه يعنيهم حرفيا'), 'لأنني أعرف أنه يعني كل كلمة فيها');
 });
+
+test('a ratings report for a show more than 8 days old is not published, a fresh one is (INCIDENTS #268)', async () => {
+  const { staleRatingsReport } = await import('../scripts/fightful-watcher');
+  assert.equal(staleRatingsReport('AEW Dynamite Ratings & Viewership Report', 'https://www.wrestlinginc.com/2276852/aew-dynamite-ratings-viewership-report-september-23-2026/', '2026-10-05T02:00:00'), '2026-09-23');
+  assert.equal(staleRatingsReport('WWE SmackDown 9/25 Viewership Holds, Demo Drops', 'https://www.fightful.com/wrestling/wwe-smackdown-9-25-viewership-holds-demo-drops/', '2026-10-01T18:00:00'), null);
+  assert.equal(staleRatingsReport('Brock Lesnar Inducted Into Hall Of Fame', 'https://x.com/september-1-2026', '2026-10-01'), null);
+});
+
+test('a headline drops «/2026» after a show name and quotes with «» (INCIDENTS #268)', async () => {
+  const { dropTimezoneFromTitle } = await import('../scripts/news-qa');
+  assert.equal(dropTimezoneFromTitle('تقرير نسب مشاهدة وتقييمات عرض WWE NXT/2026'), 'تقرير نسب مشاهدة وتقييمات عرض WWE NXT');
+  assert.equal(dropTimezoneFromTitle('بولي راي يشيد بـرومان رينز: "هو يؤدي كل شيء بأعلى درجات الإتقان"'), 'بولي راي يشيد بـرومان رينز: «هو يؤدي كل شيء بأعلى درجات الإتقان»');
+  assert.equal(applyCorrections('في عرض الأبطال الخالدون المقرر'), 'في عرض Heroes Inmortales المقرر');
+});

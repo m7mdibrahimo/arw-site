@@ -3830,6 +3830,30 @@ export async function fetchFeaturedVideos(pageUrl: string): Promise<string[]> {
   } catch { return []; }
 }
 
+/**
+ * A viewership/ratings report about a show more than STALE_RATINGS_DAYS before the source posted
+ * it. Wrestling Inc posted the 22–25 September reports on 5 October; the bot published them as
+ * new stories (two of them already on the site from Fightful), with titles like «… عرض WWE
+ * NXT/2026» (INCIDENTS #268). Returns the show's date when the report is stale, else null.
+ */
+export const STALE_RATINGS_DAYS = 8; // SmackDown numbers come out up to 6 days after the show
+export function staleRatingsReport(title: string, url: string, sourceDate: string | number | Date): string | null {
+  const text = `${title || ""} ${(url || "").replace(/[-_/]+/g, " ")}`;
+  if (!/\b(?:viewership|ratings?)\b/i.test(text)) return null;
+  const posted = new Date(sourceDate).getTime();
+  if (!Number.isFinite(posted)) return null;
+  const year = new Date(posted).getUTCFullYear();
+  let month = -1, day = 0, y = year;
+  const named = new RegExp(`\\b(${EN_MONTHS.join("|")})\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:,?\\s+(20\\d\\d))?\\b`, "i").exec(text);
+  const numeric = /\b(1[0-2]|0?[1-9])[\/.](3[01]|[12]\d|0?[1-9])(?:[\/.](20)?(\d\d))?\b/.exec(title || "");
+  if (named) { month = EN_MONTHS.indexOf(named[1].toLowerCase()); day = +named[2]; if (named[3]) y = +named[3]; }
+  else if (numeric) { month = +numeric[1] - 1; day = +numeric[2]; if (numeric[4]) y = 2000 + +numeric[4]; }
+  if (month < 0 || !day) return null;
+  let show = Date.UTC(y, month, day);
+  if (!named?.[3] && !numeric?.[4] && show > posted + 2 * 86400_000) show = Date.UTC(y - 1, month, day); // «December 30» read in January
+  return posted - show > STALE_RATINGS_DAYS * 86400_000 ? new Date(show).toISOString().slice(0, 10) : null;
+}
+
 export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean; keepUrl?: boolean } = {}): Promise<boolean> {
   lastPostRetryable = false;
   const postId = post.id;
@@ -3895,6 +3919,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     console.log(`[Watcher] ⏳ Results not posted yet for #${postId} ("${rawTitle}") — will retry next run.`);
     noteOutcome(postUrl, "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني", true);
     lastPostRetryable = true;
+    return false;
+  }
+
+  // A ratings report for a show that aired more than a few days ago is old news (INCIDENTS #268)
+  const staleShow = !options.manual ? staleRatingsReport(rawTitle, postUrl, sourceDate) : null;
+  if (staleShow) {
+    console.log(`[Watcher] ⏭️ Post #${postId} is a ratings report for ${staleShow} — too old to publish.`);
+    noteOutcome(postUrl, `تقرير مشاهدة لعرض قديم (${staleShow})`);
     return false;
   }
 

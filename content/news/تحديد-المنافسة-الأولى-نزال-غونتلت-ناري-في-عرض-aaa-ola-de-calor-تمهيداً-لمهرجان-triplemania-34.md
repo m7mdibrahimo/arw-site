@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "\"تحديد المنافسة الأولى!\".. نزال غونتلت ناري في عرض AAA Ola de Calor تمهيداً لعرض Triplemanía 34"
+title: "«تحديد المنافسة الأولى!».. نزال غونتلت ناري في عرض AAA Ola de Calor تمهيداً لعرض Triplemanía 34"
 permalink: "/news/تحديد-المنافسة-الأولى-نزال-غونتلت-ناري-في-عرض-aaa-ola-de-calor-تمهيداً-لمهرجان-triplemania-34/index.html"
 date: 2026-08-23T06:02:00.000+03:00
 tags:

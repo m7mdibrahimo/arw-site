@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "\"هتاف جنوني لم أشهد مثله إلا في Royal Rumble 2020!\".. آدم كوبلاند يصف تفاعل جماهير Grand Slam Mexico في AEW"
+title: "«هتاف جنوني لم أشهد مثله إلا في Royal Rumble 2020!».. آدم كوبلاند يصف تفاعل جماهير Grand Slam Mexico في AEW"
 permalink: "/news/هتاف-جنوني-لم-أشهد-مثله-إلا-في-رويال-رامبل-2020-آدم-كوبلاند-يصف-تفاعل-جماهير-grand-slam-mexico-في-aew/index.html"
 date: 2026-08-20T07:30:00.000+03:00
 tags:
