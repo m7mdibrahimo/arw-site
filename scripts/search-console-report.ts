@@ -1,4 +1,4 @@
-// Daily Search Console report for arab-wrestling.com, read by the monitoring rounds.
+// Daily Search Console report for arab-wrestling.com, read by the monitoring rounds (access granted 2026-10-06).
 // Auth: a Google service account (JSON key in GSC_SERVICE_ACCOUNT) that the owner added
 // as a user of the Search Console property. Read-only scope — this script never changes
 // anything in Search Console.
