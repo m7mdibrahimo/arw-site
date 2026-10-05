@@ -1,5 +1,15 @@
 [
   {
+    "id": 1456984713,
+    "link": "https://www.wrestlinginc.com/2276903/tna-impact-viewership-ratings-september-24-2026/",
+    "date": "Mon, 05 Oct 2026 14:00:00 +0000",
+    "date_gmt": "2026-10-05T14:00:00.000Z",
+    "title": {
+      "rendered": "TNA Impact Viewership & Ratings Report: 9/24/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-9242026/l-intro-1791183911.jpg"
+  },
+  {
     "id": 1867407119,
     "link": "https://www.wrestlinginc.com/2276895/trick-williams-praises-tyrese-haliburton-wwe-work/",
     "date": "Mon, 05 Oct 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Kevin Nash Says He Would Utilize This WWE Star Differently"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-nash-says-he-would-utilize-this-wwe-star-differently/l-intro-1790625257.jpg"
-  },
-  {
-    "id": 1097089889,
-    "link": "https://www.wrestlinginc.com/2276738/roh-tnt-more-aew-titles-set-defended-grand-slam-france/",
-    "date": "Sun, 04 Oct 2026 14:27:01 +0000",
-    "date_gmt": "2026-10-04T14:27:01.000Z",
-    "title": {
-      "rendered": "ROH, TNT, And More AEW Titles Set To Be Defended At Grand Slam: France"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/roh-tnt-and-more-aew-titles-set-to-be-defended-at-grand-slam-france/l-intro-1791123771.jpg"
   }
 ]
