@@ -57,17 +57,9 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "{{ 'VideoObject' if isVideoContent else 'NewsArticle' }}",
+      "@type": "NewsArticle",
       "headline": "{{ pageTitle | escape }}",
       "description": "{{ (description or baseDesc) | escape }}",
-      {% if isVideoContent %}
-      "name": "{{ pageTitle | escape }}",
-      "thumbnailUrl": ["{{ schemaImage }}"],
-      "uploadDate": {{ page.date | jsonify | safe }},
-      {% set isoDur = duration | isoDuration %}
-      {% if isoDur %}"duration": "{{ isoDur }}",{% endif %}
-      {% if servers and servers.length %}"embedUrl": "{{ servers[0].url }}",{% endif %}
-      {% endif %}
       "image": {
         "@type": "ImageObject",
         "url": "{{ schemaImage }}",
@@ -1014,18 +1006,15 @@
       {% if servers.length > 1 %}
       <div class="server-tabs" id="serverTabs">
         {% for s in servers %}
-        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-src="{{ s.url | toEmbedUrl }}">سيرفر {{ loop.index }}</button>
+        <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-srv="{{ (s.url | toEmbedUrl) | obfuscateUrl }}">سيرفر {{ loop.index }}</button>
         {% endfor %}
       </div>
       {% endif %}
-      <div class="video-embed" id="videoEmbedBox">
-        {% set firstEmbedUrl = servers[0].url | toEmbedUrl %}
-        {% set firstIsDirect = firstEmbedUrl and (("pixeldrain.com/api/file/" in firstEmbedUrl) or (".mp4" in firstEmbedUrl) or (".webm" in firstEmbedUrl)) %}
-        {% if firstIsDirect %}
-        <video id="videoPlayer" controls playsinline preload="metadata" src="{{ firstEmbedUrl }}"></video>
-        {% else %}
-        <iframe id="videoFrame" src="{{ firstEmbedUrl }}" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
-        {% endif %}
+      {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
+      <div class="video-embed" id="videoEmbedBox" data-init-srv="{{ firstEmbedUrl | obfuscateUrl }}">
+        <noscript>
+          <p style="color:#fff;text-align:center;padding:40px 20px;">يرجى تفعيل JavaScript لمشاهدة العرض.</p>
+        </noscript>
       </div>
     {% endif %}
 
@@ -1401,7 +1390,7 @@
     </div>
     <div class="dl-modal-body">
       {% for item in items %}
-      <a class="dl-site-card" href="{{ item.url }}" target="_blank" rel="noopener">
+      <a class="dl-site-card" data-dl="{{ item.url | obfuscateUrl }}" href="javascript:void(0)" rel="nofollow noopener" role="button">
         <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';}else{this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230d9488%22 stroke-width=%222%22><path d=%22M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4%22/><polyline points=%227 10 12 15 17 10%22/><line x1=%2212%22 y1=%2215%22 x2=%2212%22 y2=%223%22/></svg>';}">
         <span class="dl-site-info">
           <span class="dl-site-name">{{ item.site }}</span>
@@ -1516,25 +1505,63 @@
     return url;
   }
 
+  function deobfuscateUrl(str) {
+    if (!str || typeof str !== 'string') return '';
+    try {
+      return atob(str.split('').reverse().join(''));
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function mountVideo(box, rawSrc) {
+    if (!box || !rawSrc) return;
+    var src = toEmbedUrl(rawSrc);
+    var isDirect = src.includes('pixeldrain.com/api/file/') || /\.mp4(\?|$)/i.test(src) || /\.webm(\?|$)/i.test(src);
+
+    if (isDirect) {
+      box.innerHTML = '<video id="videoPlayer" controls playsinline preload="metadata" src="' + src + '"></video>';
+      var v = document.getElementById('videoPlayer');
+      if (v && v.play) { v.play().catch(function(){}); }
+    } else {
+      box.innerHTML = '<iframe id="videoFrame" src="' + src + '" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>';
+    }
+  }
+
+  // Mount initial video player on client load
+  var embedBox = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
+  if (embedBox && embedBox.dataset.initSrv) {
+    var initialSrc = deobfuscateUrl(embedBox.dataset.initSrv);
+    if (initialSrc) {
+      mountVideo(embedBox, initialSrc);
+    }
+  }
+
   document.querySelectorAll('.server-tab').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.server-tab').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
-      var rawSrc = (btn.dataset.src || '').trim();
+      var rawEnc = (btn.dataset.srv || '').trim();
       var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
-      if (!box) return;
+      if (!box || !rawEnc) return;
 
-      var src = toEmbedUrl(rawSrc);
-      var isDirect = src.includes('pixeldrain.com/api/file/') || /\.mp4(\?|$)/i.test(src) || /\.webm(\?|$)/i.test(src);
-
-      if (isDirect) {
-        box.innerHTML = '<video id="videoPlayer" controls playsinline preload="metadata" src="' + src + '"></video>';
-        var v = document.getElementById('videoPlayer');
-        if (v && v.play) { v.play().catch(function(){}); }
-      } else {
-        box.innerHTML = '<iframe id="videoFrame" src="' + src + '" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>';
+      var rawSrc = deobfuscateUrl(rawEnc);
+      if (rawSrc) {
+        mountVideo(box, rawSrc);
       }
     });
+  });
+
+  // Download links handler (deobfuscates locker URL and opens safely in new tab)
+  document.addEventListener('click', function(e){
+    var dlCard = e.target.closest && e.target.closest('.dl-site-card');
+    if (dlCard && dlCard.dataset.dl) {
+      e.preventDefault();
+      var targetUrl = deobfuscateUrl(dlCard.dataset.dl);
+      if (targetUrl) {
+        window.open(targetUrl, '_blank', 'noopener,noreferrer');
+      }
+    }
   });
 </script>
 <script>

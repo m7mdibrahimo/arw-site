@@ -76,9 +76,42 @@ Disallow: /
 User-agent: Amazonbot
 Disallow: /
 
+# Block DMCA & Automated Copyright Scrapers
+User-agent: MarkMonitor
+Disallow: /
+
+User-agent: Muso
+Disallow: /
+
+User-agent: Digimarc
+Disallow: /
+
+User-agent: Link-Busters
+Disallow: /
+
+User-agent: Corsearch
+Disallow: /
+
+User-agent: BrandShield
+Disallow: /
+
+User-agent: DMCA
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
 # Sitemaps
 Sitemap: https://arab-wrestling.com/sitemap.xml
 Sitemap: https://arab-wrestling.com/news-sitemap.xml
-Sitemap: https://arab-wrestling.com/video-sitemap.xml
 
 
