@@ -2858,6 +2858,9 @@ test('a prediction is not a result (INCIDENTS #246)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('بولي راي يتكهن بتحالف ال ايه نايت مع 946 وهزيمة رومان رينز في عرض WWE موني إن ذا بانك', ''), false);
   assert.equal(isSingleMatchSpoiler('ال ايه نايت يهزم رومان رينز في عرض WWE موني إن ذا بانك', ''), true);
+  // INCIDENTS #276
+  assert.equal(isSingleMatchSpoiler('جون سينا يناقش إمكانية فوز ال ايه نايت على رومان رينز في عرض WWE موني إن ذا بانك', ''), false);
+  assert.equal(isSingleMatchSpoiler('فوز ال ايه نايت على رومان رينز في عرض WWE موني إن ذا بانك', ''), true);
 });
 
 test('«AAA World Cruiserweight Champion» has a glossary name (INCIDENTS #248)', () => {
