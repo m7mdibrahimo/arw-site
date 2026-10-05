@@ -1,5 +1,25 @@
 [
   {
+    "id": 802251200,
+    "link": "https://www.ringsidenews.com/police-report-reveals-new-details-about-pacs-final-hours/",
+    "date": "Mon, 05 Oct 2026 15:27:43 +0000",
+    "date_gmt": "2026-10-05T15:27:43.000Z",
+    "title": {
+      "rendered": "Police Report Reveals New Details About PAC’s Final Hours"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/police-report-reveals-new-details-about-pacs-final-hours-21.jpg?x77927"
+  },
+  {
+    "id": 802251196,
+    "link": "https://www.ringsidenews.com/john-cena-reveals-when-inaugural-john-cena-classic-will-take-place/",
+    "date": "Mon, 05 Oct 2026 15:14:59 +0000",
+    "date_gmt": "2026-10-05T15:14:59.000Z",
+    "title": {
+      "rendered": "John Cena Reveals When the Inaugural John Cena Classic Will Take Place"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/john-cena-reveals-when-the-inaugural-john-cena-classic-will-take-place-04.jpg?x77927"
+  },
+  {
     "id": 802251192,
     "link": "https://www.ringsidenews.com/tessa-blanchard-nearly-quit-wrestling-join-us-army/",
     "date": "Mon, 05 Oct 2026 14:25:14 +0000",
@@ -128,25 +148,5 @@
       "rendered": "Mick Foley Takes Another Shot at Donald Trump Ahead of Midterm Elections"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/mick-foley-takes-another-shot-at-donald-trump-ahead-of-midterm-elections-44.jpg?x77927"
-  },
-  {
-    "id": 802251121,
-    "link": "https://www.ringsidenews.com/chris-jericho-puts-james-ellsworth-back-list-10-years-later/",
-    "date": "Sun, 04 Oct 2026 21:04:22 +0000",
-    "date_gmt": "2026-10-04T21:04:22.000Z",
-    "title": {
-      "rendered": "Chris Jericho Puts James Ellsworth Back on ‘The List’ 10 Years Later"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/chris-jericho-puts-james-ellsworth-back-on-the-list-10-years-later-57.jpg?x77927"
-  },
-  {
-    "id": 802251115,
-    "link": "https://www.ringsidenews.com/wwe-accused-ignoring-legacy-immediate-dopamine-main-events-move-rumble/",
-    "date": "Sun, 04 Oct 2026 20:41:12 +0000",
-    "date_gmt": "2026-10-04T20:41:12.000Z",
-    "title": {
-      "rendered": "WWE Accused of Ignoring Legacy for “Immediate Dopamine” Over Main Event’s Move to Rumble"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/wwe-accused-of-ignoring-legacy-for-immediate-dopamine-over-main-events-move-to-rumble-19.jpg?x77927"
   }
 ]
