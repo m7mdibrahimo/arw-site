@@ -1,18 +1,18 @@
 {
- "https://www.wrestlinginc.com/2278180/wwe-raw-october-5-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-05T22:07:01.414Z"
- },
  "https://www.fightful.com/wrestling/details-on-future-plans-for-bryan-danielson": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T21:57:37.627Z"
+  "at": "2026-10-05T22:08:35.428Z"
  },
  "https://www.fightful.com/wrestling/joe-hendrys-beyond-belief-album-now-available": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-05T21:57:37.106Z"
+  "at": "2026-10-05T22:08:34.917Z"
+ },
+ "https://www.wrestlinginc.com/2278180/wwe-raw-october-5-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-05T22:07:01.414Z"
  },
  "https://www.fightful.com/wrestling/shuhei-taniguchi-to-have-final-match-in-january-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
