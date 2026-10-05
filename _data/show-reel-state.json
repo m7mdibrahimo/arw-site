@@ -2827,15 +2827,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض يو اف سي 332 مين كارد مترجم",
-    "lastAttempt": 1791162633088,
-    "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791163494731,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
