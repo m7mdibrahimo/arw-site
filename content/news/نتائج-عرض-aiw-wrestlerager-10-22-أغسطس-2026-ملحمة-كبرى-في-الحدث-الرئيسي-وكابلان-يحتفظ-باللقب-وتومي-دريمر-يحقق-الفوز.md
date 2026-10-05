@@ -12,7 +12,7 @@ tags:
 image: /content/images/g8bnpoxs59tifsm5.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد Absolute Intense Wrestling (AIW) عرضه الحافل بالإثارة WrestleRager 10 من صالة "No Class" بمدينة كليفلاند بولاية أوهايو الأمريكية؛ حيث شهدت الليلة دفاعا عن لقب AIW Intense، ونزال طوق الكلاب (Dog Collar) العنيف، إلى جانب ملحمة جماعية ضخمة ضمت 12 مصارعا في الحدث الرئيسي.
+أقام اتحاد Absolute Intense Wrestling (AIW) عرضه الحافل بالإثارة WrestleRager 10 من صالة "No Class" بمدينة كليفلاند بولاية أوهايو الأمريكية؛ حيث شهدت الليلة دفاعا عن بطولة AIW Intense، ونزال طوق الكلاب (Dog Collar) العنيف، إلى جانب ملحمة جماعية ضخمة ضمت 12 مصارعا في الحدث الرئيسي.
 
 ### المواجهات الافتتاحية والنزاعات الفردية
 
