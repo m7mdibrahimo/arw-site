@@ -303,17 +303,106 @@
   .post-sub-title{ font-size:15px; font-weight:800; color:var(--gold); margin-bottom:16px; display:inline-block; }
   .post-desc{ font-size:15.5px; line-height:1.75; color:var(--ink); margin-bottom:24px; padding:16px 20px; background:var(--card); border-radius:12px; border:1px solid var(--line); border-inline-start:4px solid var(--teal); box-shadow:0 4px 12px -8px rgba(0,0,0,0.06); }
   .player-toolbar{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
-  .server-tabs{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-start; align-items:center; margin-bottom:0; }
-  .server-tab{ background:var(--card); border:1px solid var(--line); color:var(--ink); font-family:inherit; font-weight:800; font-size:14px; padding:10px 20px; border-radius:999px; cursor:pointer; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); user-select:none; display:inline-flex; align-items:center; gap:8px; }
+  .server-tabs{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-start; align-items:center; margin-bottom:0; }
+  .server-tab{ background:var(--card); border:1px solid var(--line); color:var(--ink); font-family:inherit; font-weight:800; font-size:13.5px; padding:9px 18px; border-radius:999px; cursor:pointer; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); user-select:none; display:inline-flex; align-items:center; gap:7px; }
   .server-tab:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); box-shadow:0 4px 12px rgba(14,149,148,0.15); }
   .server-tab.active{ background:var(--teal); color:#fff !important; border-color:var(--teal); box-shadow:0 4px 14px rgba(14,149,148,0.3); }
   .server-tab svg{ flex-shrink:0; }
-  .player-actions{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  .player-action-btn{ background:var(--card); border:1px solid var(--line); color:var(--muted); font-family:inherit; font-weight:700; font-size:13px; padding:9px 15px; border-radius:999px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:all 0.2s ease; user-select:none; }
-  .player-action-btn:hover{ color:var(--ink); border-color:var(--ink); background:var(--bg); transform:translateY(-1px); }
-  .player-action-btn:active{ transform:scale(0.96); }
-  .player-action-btn.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
-  html.arw-dark .player-action-btn.active{ background:#fff; color:#1e2530; border-color:#fff; }
+
+  .server-single-label{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--muted); padding:8px 16px; background:var(--card); border:1px solid var(--line); border-radius:999px; user-select:none; }
+  .server-pulse-dot{ width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 0 0 rgba(16,185,129,0.7); animation:pulseDot 2s infinite; flex-shrink:0; }
+  @keyframes pulseDot{ 0%{ box-shadow:0 0 0 0 rgba(16,185,129,0.7); } 70%{ box-shadow:0 0 0 7px rgba(16,185,129,0); } 100%{ box-shadow:0 0 0 0 rgba(16,185,129,0); } }
+
+  .player-actions{ display:flex; align-items:center; }
+  .player-reload-btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--card);
+    border:1px solid var(--line);
+    color:var(--ink);
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1;
+    padding:9px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    user-select:none;
+    box-shadow:0 2px 6px -2px rgba(0,0,0,0.06);
+    transition:all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .player-reload-btn:hover{
+    color:var(--teal);
+    border-color:var(--teal);
+    background:var(--card);
+    transform:translateY(-2px);
+    box-shadow:0 6px 16px -4px rgba(14,149,148,0.22);
+  }
+  .player-reload-btn:active{
+    transform:scale(0.96) translateY(0);
+    box-shadow:0 1px 4px rgba(0,0,0,0.08);
+  }
+  .player-reload-btn:disabled{
+    opacity:0.85;
+    cursor:wait;
+    pointer-events:none;
+  }
+  .reload-icon-wrap{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .reload-svg{
+    flex-shrink:0;
+    transition:transform 0.3s ease;
+  }
+  .reload-svg.is-spinning{
+    animation:playerSpin 0.75s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  @keyframes playerSpin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+
+  html.arw-dark .server-single-label{
+    background:rgba(255,255,255,0.04);
+    border-color:rgba(255,255,255,0.08);
+    color:rgba(255,255,255,0.65);
+  }
+  html.arw-dark .player-reload-btn{
+    background:rgba(255,255,255,0.04);
+    border-color:rgba(255,255,255,0.12);
+    color:#e2e8f0;
+    box-shadow:0 4px 14px -4px rgba(0,0,0,0.4);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  html.arw-dark .player-reload-btn:hover{
+    background:rgba(14,149,148,0.12);
+    border-color:rgba(14,149,148,0.5);
+    color:#2dd4bf;
+    box-shadow:0 6px 20px -4px rgba(14,149,148,0.35);
+  }
+
+  @media (max-width:640px){
+    .player-toolbar{ gap:10px; }
+    .server-tabs{ gap:6px; }
+    .server-tab{ font-size:12.5px; padding:8px 14px; gap:6px; }
+    .server-single-label{ font-size:12px; padding:7px 12px; gap:6px; }
+    .player-reload-btn{ font-size:12.5px; padding:8px 14px; gap:6px; }
+  }
+  @media (max-width:420px){
+    .player-toolbar{ justify-content:center; }
+    .server-tabs{ justify-content:center; width:100%; }
+    .server-single-label{ width:100%; justify-content:center; }
+    .player-actions{ width:100%; justify-content:center; }
+    .player-reload-btn{ width:100%; justify-content:center; }
+  }
+
   .quality-notice{ display:flex; align-items:center; justify-content:center; text-align:center; gap:10px; background:var(--coral-soft); border-inline-start:3px solid var(--coral); color:var(--ink); font-size:13.5px; font-weight:600; line-height:1.7; padding:12px 16px; border-radius:10px; margin-bottom:16px; }
   .quality-notice svg{ flex-shrink:0; color:var(--coral); }
   .quality-notice strong{ color:var(--coral); font-weight:800; }
@@ -1058,11 +1147,16 @@
           {% endfor %}
         </div>
         {% else %}
-        <div></div>
+        <div class="server-single-label">
+          <span class="server-pulse-dot"></span>
+          <span>مشغل الفيديو الرئيسي</span>
+        </div>
         {% endif %}
         <div class="player-actions">
-          <button type="button" class="player-action-btn" id="playerReloadBtn" title="إعادة تحميل المشغل عند التوقف أو انقطاع البث">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+          <button type="button" class="player-reload-btn" id="playerReloadBtn" title="إعادة تشغيل المشغل عند انقطاع البث أو حدوث خطأ" aria-label="تحديث المشغل">
+            <span class="reload-icon-wrap">
+              <svg class="reload-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+            </span>
             <span class="action-text">تحديث المشغل</span>
           </button>
         </div>
@@ -1073,7 +1167,6 @@
           <p style="color:#fff;text-align:center;padding:40px 20px;">يرجى تفعيل JavaScript لمشاهدة العرض.</p>
         </noscript>
       </div>
-      {% include "ad-banner.njk" %}
     {% endif %}
 
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
@@ -1382,8 +1475,6 @@
     {% endif %}
     {% endif %}
 
-    {% include "ad-native.njk" %}
-
     {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4) %}
     {% if relatedPosts and relatedPosts.length %}
     <section class="related-posts-section reveal" aria-label="أخبار وعروض ذات صلة">
@@ -1619,19 +1710,30 @@
     });
   });
 
-  // Reload current server button
+  // Reload current server button (with silky smooth icon spin & clear state feedback)
   var reloadBtn = document.getElementById('playerReloadBtn');
   if (reloadBtn) {
     reloadBtn.addEventListener('click', function(){
       var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
       if (!box || !currentActiveServerSrc) return;
-      reloadBtn.style.transform = 'rotate(360deg)';
-      reloadBtn.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      setTimeout(function(){
-        reloadBtn.style.transform = '';
-        reloadBtn.style.transition = '';
-      }, 500);
+
+      var svg = reloadBtn.querySelector('.reload-svg');
+      var label = reloadBtn.querySelector('.action-text');
+
+      if (svg) svg.classList.add('is-spinning');
+      if (label) label.textContent = 'جاري التحديث...';
+      reloadBtn.disabled = true;
+
       mountVideo(box, currentActiveServerSrc);
+
+      setTimeout(function(){
+        if (svg) svg.classList.remove('is-spinning');
+        if (label) label.textContent = 'تم التحديث ✓';
+        setTimeout(function(){
+          if (label) label.textContent = 'تحديث المشغل';
+          reloadBtn.disabled = false;
+        }, 1000);
+      }, 550);
     });
   }
 
