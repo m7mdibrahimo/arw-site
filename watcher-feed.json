@@ -1,5 +1,25 @@
 [
   {
+    "id": 332223,
+    "link": "https://www.fightful.com/wrestling/john-cena-i-know-theres-sentiment-out-there-that-man-theyre-wasting-gunther-maybe-currently-they-are/",
+    "date": "2026-10-05T12:29:43",
+    "date_gmt": "2026-10-05T16:29:43",
+    "title": {
+      "rendered": "John Cena: “I Know There’s Sentiment Out There That, ‘Man, They’re Wasting GUNTHER!’ Maybe Currently They Are&#8221;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/13220752/G8GRmKoXIAQTs2M.jpeg"
+  },
+  {
+    "id": 332212,
+    "link": "https://www.fightful.com/wrestling/mick-foley-says-that-25-of-his-income-came-from-his-previous-wwe-legends-deal/",
+    "date": "2026-10-05T12:29:17",
+    "date_gmt": "2026-10-05T16:29:17",
+    "title": {
+      "rendered": "Mick Foley Says That 25% Of His Income Came From His Previous WWE Legends Deal"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2021/12/28004014/mick_foley.jpg"
+  },
+  {
     "id": 332218,
     "link": "https://www.fightful.com/wrestling/report-keanu-carver-released-by-wwe/",
     "date": "2026-10-05T12:00:27",
@@ -278,25 +298,5 @@
       "rendered": "Samoa Joe: Four Hours After Being Fired By WWE For A Second Time, I Got The Call For &#8216;Twisted Metal&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/22134210/Screenshot-2026-07-22-at-1.36.12-PM.png"
-  },
-  {
-    "id": 332140,
-    "link": "https://www.fightful.com/wrestling/paul-wight-would-love-to-be-heel-work-with-darby-allin-i-would-sling-his-guts-all-over-the-place/",
-    "date": "2026-10-04T18:16:00",
-    "date_gmt": "2026-10-04T22:16:00",
-    "title": {
-      "rendered": "Paul Wight Would Love To Be Heel &amp; Work With Darby Allin: &#8220;I Would Sling His Guts All Over The Place!&#8221;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/07/27220352/paul_wight_1.jpg"
-  },
-  {
-    "id": 332137,
-    "link": "https://www.fightful.com/wrestling/paul-wight-comments-on-stretcher-spot-at-aaa-triplemania-34-imitation-is-the-best-form-of-flattery/",
-    "date": "2026-10-04T18:06:29",
-    "date_gmt": "2026-10-04T22:06:29",
-    "title": {
-      "rendered": "Paul Wight Comments On Stretcher Spot At AAA Triplemanía 34: &#8220;Imitation Is The Best Form Of Flattery&#8221;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04175415/082_AAA_N1_09112026MA_19815-e1791150885408.jpg"
   }
 ]
