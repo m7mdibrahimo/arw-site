@@ -746,6 +746,12 @@ html body header.header-hidden {
     gap: 6px !important;
     justify-content: center !important;
   }
+  body.post-layout .player-actions,
+  .post-layout .player-actions {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
   body.post-layout .server-tab,
   .post-layout .server-tab,
   body.post-layout .player-reload-btn,
@@ -753,6 +759,7 @@ html body header.header-hidden {
     font-size: 11px !important;
     padding: 5px 12px !important;
     min-height: 30px !important;
+    width: auto !important;
   }
 
   /* Video player in landscape: expands to maximum comfortable viewing area */
