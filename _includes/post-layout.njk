@@ -319,8 +319,6 @@
   .quality-notice strong{ color:var(--coral); font-weight:800; }
   @media (max-width:640px){ .quality-notice{ font-size:12.5px; padding:10px 14px; } }
   
-  .post-wrap.theater-mode{ max-width:1160px; }
-  .post-wrap.theater-mode .video-embed{ box-shadow:0 24px 60px -15px rgba(0,0,0,0.65); }
 
   .video-embed{ position:relative; width:100%; aspect-ratio:16/9; background:#000; border-radius:16px; overflow:hidden; margin-bottom:28px; box-shadow:0 12px 32px -12px rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.06); }
   @supports not (aspect-ratio: 16/9){ .video-embed{ padding-top:56.25%; } }
@@ -1067,14 +1065,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
             <span class="action-text">تحديث المشغل</span>
           </button>
-          <button type="button" class="player-action-btn" id="playerTheaterBtn" title="توسيع المشغل (الوضع المسرحي)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="17" y2="20"/></svg>
-            <span class="action-text">وضع المسرح</span>
-          </button>
-          <button type="button" class="player-action-btn" id="playerFullscreenBtn" title="ملء الشاشة">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-            <span class="action-text">ملء الشاشة</span>
-          </button>
         </div>
       </div>
       {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
@@ -1644,60 +1634,6 @@
       mountVideo(box, currentActiveServerSrc);
     });
   }
-
-  // Theater mode toggle button
-  var theaterBtn = document.getElementById('playerTheaterBtn');
-  var postWrap = document.querySelector('.post-wrap');
-  if (theaterBtn && postWrap) {
-    theaterBtn.addEventListener('click', function(){
-      var isTheater = postWrap.classList.toggle('theater-mode');
-      theaterBtn.classList.toggle('active', isTheater);
-      var embed = document.getElementById('videoEmbedBox');
-      if (embed && isTheater) {
-        embed.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  }
-
-  // Native Fullscreen toggle button (immune to black screen issues)
-  var fsBtn = document.getElementById('playerFullscreenBtn');
-  if (fsBtn) {
-    fsBtn.addEventListener('click', function(){
-      var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
-      if (!box) return;
-
-      var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
-      if (!isFs) {
-        if (box.requestFullscreen) {
-          box.requestFullscreen();
-        } else if (box.webkitRequestFullscreen) {
-          box.webkitRequestFullscreen();
-        } else if (box.mozRequestFullScreen) {
-          box.mozRequestFullScreen();
-        } else if (box.msRequestFullscreen) {
-          box.msRequestFullscreen();
-        }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      }
-    });
-  }
-
-  function syncFsBtn() {
-    var isFs = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement);
-    if (fsBtn) fsBtn.classList.toggle('active', isFs);
-  }
-  document.addEventListener('fullscreenchange', syncFsBtn);
-  document.addEventListener('webkitfullscreenchange', syncFsBtn);
-  document.addEventListener('mozfullscreenchange', syncFsBtn);
 
   // Download links handler (deobfuscates locker URL and opens safely in new tab)
   document.addEventListener('click', function(e){
