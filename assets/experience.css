@@ -21,6 +21,7 @@
 .xp-top svg.ring .fg { stroke: #2fc7b8; stroke-linecap: round; stroke-dasharray: 138.2; stroke-dashoffset: 138.2; transition: stroke-dashoffset .15s linear; }
 .xp-top:focus-visible { outline: 2px solid #2fc7b8; outline-offset: 3px; }
 @media (max-width: 700px) { .xp-top { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; } }
+@media (orientation: landscape) and (max-height: 550px), (max-height: 500px) { .xp-top { bottom: calc(56px + env(safe-area-inset-bottom, 0px)); width: 38px; height: 38px; } }
 
 /* Circular theme switch from the button */
 ::view-transition-old(xp-theme), ::view-transition-new(xp-theme) { animation: none; mix-blend-mode: normal; }

@@ -545,7 +545,7 @@ html.arw-dark .post-bookmark-btn.bookmarked {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (max-height: 500px) {
   /* تموضع زر حفظ للمشاهدة في المنتصف تماماً في نسخة الموبايل */
   .post-bookmark-wrap {
     flex-basis: 100% !important;
@@ -587,7 +587,7 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 .arw-share--bottom{ flex-direction:column; align-items:stretch; gap:12px; margin:26px 0 8px; padding:18px; border-radius:18px; background:var(--card); border:1px solid var(--line); }
 .arw-share-label{ font-family:'Cairo',sans-serif; font-weight:900; font-size:15.5px; color:var(--ink); }
 .arw-share--bottom .arw-share-btns a, .arw-share--bottom .arw-share-btns button{ flex:1 1 auto; height:42px; white-space:nowrap; padding:0 8px; }
-@media (max-width:768px){
+@media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (max-height: 500px){
   /* Phones: WhatsApp and the phone's own share sheet first — that's how people share here. */
   html.arw-can-share .arw-share--top .sh-fb, html.arw-can-share .arw-share--top .sh-x{ display:none; }
   .arw-share--bottom .arw-share-btns{ display:grid; grid-template-columns:repeat(3, 1fr); }
@@ -612,7 +612,7 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 
 /* ═══ Phone header (fixed at the top) + bottom navigation ═══ */
 .arw-bottom-nav, .arw-more-sheet, .arw-more-overlay, .arw-search-toggle{ display:none; }
-@media (max-width:768px){
+@media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (max-height: 500px){
   html body header{ transition:transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s ease !important; }
   html body header.arw-scrolled{ box-shadow:0 6px 18px rgba(0,0,0,.08); }
   /* The header stays put on phones: the pages' older hide-on-scroll script is overruled. */
@@ -652,6 +652,109 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
   .arw-more-grid a.more-tg svg{ color:#24a1de; }
 
 }
+
+/* ═══ Phone Landscape Mode Polish (تحسين الوضع الأفقي للهواتف لتوفير أقصى مساحة رؤية للفيديو والمحتوى) ═══ */
+@media (orientation: landscape) and (max-height: 550px), (max-height: 500px) {
+  /* Top Header: Slim 42px single row with safe insets */
+  html body header .nav {
+    padding: 5px calc(14px + env(safe-area-inset-right, 0px)) 5px calc(14px + env(safe-area-inset-left, 0px)) !important;
+    gap: 8px !important;
+    min-height: 42px !important;
+  }
+  html body header .brand-name {
+    font-size: 17px !important;
+  }
+  html body header .brand-mark {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 9px !important;
+  }
+  html body header .brand-mark img {
+    border-radius: 7px !important;
+  }
+  html body header #navMenu .theme-toggle,
+  html body header .arw-search-toggle {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  html body header #navMenu .theme-toggle svg,
+  html body header .arw-search-toggle svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Bottom Navigation: Slim 44px bar to maximize vertical space for videos */
+  body.arw-has-bottom-nav {
+    padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .arw-bottom-nav {
+    height: calc(44px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 0 calc(12px + env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) calc(12px + env(safe-area-inset-left, 0px)) !important;
+  }
+  .arw-bottom-nav a,
+  .arw-bottom-nav button {
+    gap: 1px !important;
+    font-size: 10px !important;
+  }
+  .arw-bottom-nav svg {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .arw-bottom-nav .active::before {
+    width: 22px !important;
+    height: 2px !important;
+  }
+
+  /* More sheet in landscape: 4 columns and scrollable */
+  .arw-more-sheet {
+    max-height: 82vh !important;
+    overflow-y: auto !important;
+    padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .arw-more-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+  }
+  .arw-more-grid a {
+    padding: 10px !important;
+    font-size: 12.5px !important;
+    gap: 6px !important;
+  }
+
+  /* Post pages & Video Player: compact padding so video is immediately visible */
+  .post-wrap {
+    padding: 12px calc(16px + env(safe-area-inset-right, 0px)) 36px calc(16px + env(safe-area-inset-left, 0px)) !important;
+    max-width: 960px !important;
+  }
+  .post-wrap h1 {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
+  }
+  .post-meta-bar {
+    margin-bottom: 10px !important;
+  }
+  .video-embed {
+    margin-bottom: 14px !important;
+  }
+  .player-toolbar {
+    margin-bottom: 8px !important;
+  }
+
+  /* Home & Federation Grids in landscape: clean 3 or 4 columns across wide screen */
+  section.content {
+    padding: 16px calc(16px + env(safe-area-inset-right, 0px)) 40px calc(16px + env(safe-area-inset-left, 0px)) !important;
+  }
+  .page-head {
+    margin-bottom: 14px !important;
+  }
+  .grid-12 > * {
+    grid-column: span 4 !important;
+  }
+  .feds-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
 @media (prefers-reduced-motion:reduce){ html body header, .arw-more-sheet, .arw-more-overlay{ transition:none !important; } }
 
 /* Header brand lockup (2026-09-27): framed logo + name (+ a short line under it on computers). */
@@ -672,4 +775,4 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
 .brand-tag{font:700 10.5px/1 "Tajawal",sans-serif;color:var(--muted,#8e97a6);margin-top:6px;letter-spacing:.3px;white-space:nowrap;opacity:.9}
 /* The line under the name is for computers only (owner's choice): hidden on tablets and phones. */
 @media (max-width:1180px){.brand-tag{display:none}}
-@media (max-width:768px){.brand.brand-lockup{gap:9px}.brand-mark{width:34px;height:34px;border-radius:11px}.brand-mark img{border-radius:9px}.brand-name{font-size:19px}}
+@media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (max-height: 500px){.brand.brand-lockup{gap:9px}.brand-mark{width:34px;height:34px;border-radius:11px}.brand-mark img{border-radius:9px}.brand-name{font-size:19px}}
