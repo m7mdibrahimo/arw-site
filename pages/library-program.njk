@@ -396,8 +396,8 @@ eleventyComputed:
 <div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg lp.prog.latest.image, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
   <div class="hero-inner">
     <span class="eyebrow">مكتبة العروض</span>
-    <h1 class="hero-title"><bdi>{{ lp.prog.name }}</bdi><span class="u">{% if lp.prog.count == 1 %}عرض واحد مترجم{% elif lp.prog.count == 2 %}عرضان مترجمان{% else %}{{ showsCount(lp.prog.count) }} مترجمة{% endif %}</span></h1>
-    <p>كل عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة بالترتيب من الأحدث للأقدم.</p>
+    <h1 class="hero-title"><bdi>{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} مترجم{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{% if lp.prog.count == 1 %}عرض واحد مترجم{% elif lp.prog.count == 2 %}عرضان مترجمان{% else %}{{ showsCount(lp.prog.count) }} مترجمة{% endif %}</span></h1>
+    <p>{% if lp.prog.arName and lp.pageNumber == 1 %}شاهد {{ lp.prog.arName }} الأخير مترجم بالعربي، و{% endif %}كل عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة بالترتيب من الأحدث للأقدم.{% if lp.prog.aliases.length and lp.pageNumber == 1 %} معروف كمان باسم: {% for a in lp.prog.aliases %}<bdi>{{ a }}</bdi>{% if not loop.last %}، {% endif %}{% endfor %}.{% endif %}</p>
   </div>
 </div>
 

@@ -115,7 +115,7 @@ async function main() {
   const query = (dims: string[], r = range, rowLimit = 250) => api(token, `https://searchconsole.googleapis.com/webmasters/v3/sites/${S}/searchAnalytics/query`, { ...r, dimensions: dims, rowLimit, dataState: "all" }).then(d => d.rows || []);
 
   const [totals, totalsPrev, queries, pages, countries, devices, sitemaps] = await Promise.all([
-    query([], range, 1), query([], prev, 1), query(["query"]), query(["page"]), query(["country"], range, 15), query(["device"], range, 5),
+    query([], range, 1), query([], prev, 1), query(["query"], range, 1000), query(["page"], range, 500), query(["country"], range, 15), query(["device"], range, 5),
     api(token, `https://www.googleapis.com/webmasters/v3/sites/${S}/sitemaps`).then(d => d.sitemap || []),
   ]);
 
@@ -128,7 +128,7 @@ async function main() {
   }
 
   // Which page answers each of the top searches — what to strengthen to reach #1.
-  const queryPages = await query(["query", "page"], range, 500);
+  const queryPages = await query(["query", "page"], range, 2000);
   const topQueries = new Set(queries.slice(0, 40).map((q: any) => q.keys[0]));
   const bestPage: Record<string, any> = {};
   for (const row of queryPages) if (topQueries.has(row.keys[0]) && (!bestPage[row.keys[0]] || row.clicks > bestPage[row.keys[0]].clicks)) bestPage[row.keys[0]] = row;
@@ -161,7 +161,28 @@ async function main() {
     if (res && (res.status === 404 || res.status === 410)) deadPages.push({ url: p.keys[0], clicks: p.clicks, impressions: p.impressions });
   }
 
-  const report = { generatedAt: new Date().toISOString(), site, range, deadPages, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections, bestPage, actions };
+  // Searches where the site shows up but is not #1 yet — the work list for reaching #1 (INCIDENTS #275)
+  const allBest: Record<string, any> = {};
+  for (const row of queryPages) if (!allBest[row.keys[0]] || row.impressions > allBest[row.keys[0]].impressions) allBest[row.keys[0]] = row;
+  const opportunities = queries
+    .filter((q: any) => q.impressions >= 40 && q.position > 1.4)
+    .map((q: any) => ({ query: q.keys[0], impressions: q.impressions, clicks: q.clicks, position: q.position, page: allBest[q.keys[0]]?.keys[1] || "", score: q.impressions * (q.position - 1) }))
+    .sort((a: any, b: any) => b.score - a.score)
+    .slice(0, 40);
+
+  // Daily history, to see whether a change moved a search up or down.
+  const histFile = path.join(OUT_DIR, "search-history.json");
+  let history: any[] = [];
+  try { history = JSON.parse(fs.readFileSync(histFile, "utf-8")); } catch {}
+  const today = new Date().toISOString().slice(0, 10);
+  history = history.filter(h => h.date !== today);
+  history.push({ date: today, clicks: totals[0]?.clicks ?? 0, impressions: totals[0]?.impressions ?? 0, position: totals[0]?.position ?? null, queries: Object.fromEntries(queries.slice(0, 60).map((q: any) => [q.keys[0], Number(q.position.toFixed(1))])) });
+  history = history.slice(-180);
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+  fs.writeFileSync(histFile, JSON.stringify(history, null, 1) + "\n");
+  const prevDay = history.length > 1 ? history[history.length - 2] : null;
+
+  const report = { generatedAt: new Date().toISOString(), site, range, deadPages, opportunities, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections, bestPage, actions };
   const problems = findProblems(report);
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.rmSync(path.join(OUT_DIR, "search-console-error.txt"), { force: true });
@@ -182,6 +203,14 @@ async function main() {
     "",
     `## اللي اتعمل تلقائي (${actions.length})`,
     ...(actions.length ? actions.map(a => `- ${a}`) : ["- مفيش"]),
+    "",
+    `## فرص للوصول للمركز الأول (${opportunities.length})`,
+    "عمليات بحث الموقع بيظهر فيها بس مش الأول. الأهم فوق. الهدف تقوية الصفحة اللي جنبها (العنوان، الوصف، الروابط الداخلية، المحتوى) أو عمل صفحة مخصوصة لو مفيش.",
+    ...opportunities.map((o: any) => {
+      const was = prevDay?.queries?.[o.query];
+      const move = was != null ? ` (كان ${was})` : "";
+      return `- ${o.query} — ترتيب ${o.position.toFixed(1)}${move}، ${o.impressions} ظهور، ${o.clicks} نقرة${o.page ? ` ← ${decodeURI(o.page).replace(ORIGIN, "")}` : ""}`;
+    }),
     "",
     `## مشاكل لازم تتصلح (${problems.length})`,
     ...(problems.length ? problems.map(p => `- ${p}`) : ["- مفيش"]),

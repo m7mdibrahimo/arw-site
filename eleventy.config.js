@@ -476,6 +476,7 @@ module.exports = function(eleventyConfig) {
     return String(dateObj);
   };
   eleventyConfig.addFilter("date", formatDate);
+  eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
   eleventyConfig.addNunjucksFilter("date", formatDate);
 
   const jsonify = function(obj){
@@ -1091,7 +1092,19 @@ module.exports = function(eleventyConfig) {
         // program's page, whose title only said «WWE RAW مترجم» (INCIDENTS #274).
         const latestHeadline = shows[0] ? String(shows[0].headline || "") : "";
         const arName = latestHeadline.replace(/\(.*?\)/g, " ").replace(/\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
-        return { slug: p.slug, name: p.name, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+        // Other spellings people search with (INCIDENTS #275)
+        const ALIASES = {
+          "wwe-raw": ["رو", "الرو", "راو", "WWE Raw", "Monday Night Raw"],
+          "wwe-smackdown": ["سماك داون", "سماكداون", "سماك دون", "WWE SmackDown", "Friday Night SmackDown"],
+          "wwe-nxt": ["إن إكس تي", "ان اكس تي", "WWE NXT"],
+          "aew-dynamite": ["ديناميت", "دايناميت", "AEW Dynamite"],
+          "aew-collision": ["كوليجن", "كوليجين", "AEW Collision"],
+          "tna-impact": ["إمباكت", "امباكت", "TNA iMPACT", "تي ان ايه امباكت"],
+          "wwe-main-event": ["مين إيفنت", "مين ايفنت", "WWE Main Event"],
+          "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],
+          "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
+        };
+        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
@@ -1196,6 +1209,25 @@ module.exports = function(eleventyConfig) {
     };
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
+  // Search titles for a show page, worded the way people search. «عرض الرو 28.09.2026 مترجم» became
+  // «عرض الرو الأخير مترجم (28 سبتمبر 2026) — WWE RAW» on the program's newest show, and every show
+  // got its own description instead of one sentence shared by all of them (INCIDENTS #275).
+  eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description) {
+    const base = String(headline || title || "");
+    const arName = base.replace(/\(.*?\)/g, " ").replace(/\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
+    const prog = String(programName || "").trim();
+    const day = eventDate ? formatDate(eventDate) : "";
+    const prog_ = (library || []).find(p => p.latest && p.latest.url === url);
+    const isLatest = Boolean(prog_);
+    if (!/[\u0600-\u06FF]/.test(arName) || !day) return { title: base, description: description || "", isLatest };
+    const tail = prog && !arName.includes(prog) ? ` — ${prog}` : "";
+    const t = isLatest ? `${arName} الأخير مترجم (${day})${tail}` : `${arName} ${day} مترجم${tail}`;
+    const generic = !description || /^عرض .* مترجم بالكامل مع جميع النزالات والأحداث\.?$/.test(String(description).trim());
+    const d = generic
+      ? `شاهد ${arName}${isLatest ? " الأخير" : ""}${prog ? ` (${prog})` : ""} بتاريخ ${day} مترجم بالعربي كامل بجودة عالية مع كل النزالات، مشاهدة وتحميل على عرب راسلنج.`
+      : description;
+    return { title: t, description: d, isLatest };
+  });
 
   // ===== نوستالجيا: بيجمع أي عرض/ملخص مكتوب فيه "nostalgia_series" في مجموعة (سلسلة) واحدة =====
   // مفيش محتاج مجلد جديد أو Content type جديد: أي عرض عادي في content/shows أو content/recaps

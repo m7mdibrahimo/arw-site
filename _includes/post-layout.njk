@@ -11,6 +11,7 @@
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageTitle = headline or title %}
+{% if page.inputPath and "content/shows" in page.inputPath %}{% set showSeoData = showSeo(headline, title, program_name, event_date, page.url, collections.library, description) %}{% set pageTitle = showSeoData.title %}{% set description = showSeoData.description %}{% endif %}
 {% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
 {% set isNews = (kind == 'news') or (page.inputPath and ("content/news" in page.inputPath)) or (page.url and page.url.startsWith('/news/')) %}
 <title>{{ pageTitle }} | عرب راسلنج</title>

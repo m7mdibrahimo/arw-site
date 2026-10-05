@@ -102,6 +102,21 @@ eleventyExcludeFromCollections: true
     <priority>0.8</priority>
   </url>
   {% endfor %}
+  {# The show library and each program's page («عرض الرو الأخير مترجم») were missing from the sitemap (INCIDENTS #275) #}
+  <url>
+    <loc>https://arab-wrestling.com/library/</loc>
+    <lastmod>{{ latestDate }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  {% for prog in collections.library %}
+  <url>
+    <loc>https://arab-wrestling.com/library/{{ prog.slug }}/</loc>
+    <lastmod>{{ prog.latest.timestamp | isoDay }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  {% endfor %}
   {% for series in collections.nostalgiaSeries %}
   <url>
     <loc>https://arab-wrestling.com/nostalgia/{{ series.slug }}/</loc>

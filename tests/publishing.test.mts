@@ -3029,3 +3029,11 @@ test('an article keeps redirect pages at its older addresses (INCIDENTS #274)', 
   const { findProblems } = await import('../scripts/search-console-report');
   assert.match(findProblems({ deadPages: [{ url: 'https://arab-wrestling.com/news/x', impressions: 599 }] })[0], /رابطها واقع/);
 });
+
+test('program pages are in the sitemap and show pages get search-worded titles (INCIDENTS #275)', () => {
+  assert.match(fs.readFileSync('pages/sitemap.njk', 'utf-8'), /for prog in collections\.library/);
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.match(cfg, /الأخير مترجم \(\$\{day\}\)/);
+  assert.match(fs.readFileSync('_redirects', 'utf-8'), /^\/raw\/\* \/library\/wwe-raw\/ 301!$/m);
+});

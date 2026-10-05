@@ -606,3 +606,9 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /tag/بولت-كلاب/* /tag/بوليت-كلوب/:splat 301!
 /tag/وار-دوجز/* /tag/وور-دوجز/:splat 301!
 /tag/ايه-شو-سبيد/* /tag/آيشو-سبيد/:splat 301!
+/raw/* /library/wwe-raw/ 301!
+/smackdown/* /library/wwe-smackdown/ 301!
+/nxt/* /library/wwe-nxt/ 301!
+/dynamite/* /library/aew-dynamite/ 301!
+/collision/* /library/aew-collision/ 301!
+/impact/* /library/tna-impact/ 301!
