@@ -12,6 +12,12 @@ on:
   schedule:
     - cron: '15 5 * * *'
   workflow_dispatch:
+  # A change to the report itself runs it once right away
+  push:
+    branches: [main]
+    paths:
+      - scripts/search-console-report.ts
+      - .github/workflows/search-console.yml
 
 concurrency:
   group: search-console
