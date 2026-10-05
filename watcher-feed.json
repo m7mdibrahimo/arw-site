@@ -1,5 +1,15 @@
 [
   {
+    "id": 332306,
+    "link": "https://www.fightful.com/wrestling/watch-roh-tv-special-monday-episode-10-5-2026/",
+    "date": "2026-10-05T19:30:00",
+    "date_gmt": "2026-10-05T23:30:00",
+    "title": {
+      "rendered": "Watch: ROH TV Special Monday Episode | 10/5/2026"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/05185426/maxresdefault-25.jpg"
+  },
+  {
     "id": 332284,
     "link": "https://www.fightful.com/wrestling/wwe-raw-returns-10-5-2026-roman-reigns-returns-becky-lynch-vs-liv-morgan-more/",
     "date": "2026-10-05T19:15:00",
@@ -288,15 +298,5 @@
       "rendered": "Full WWE NXT Roster"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/11114240/8.png"
-  },
-  {
-    "id": 332209,
-    "link": "https://www.fightful.com/wrestling/john-cena-confirms-john-cena-classic-tournament-for-december/",
-    "date": "2026-10-05T11:03:29",
-    "date_gmt": "2026-10-05T15:03:29",
-    "title": {
-      "rendered": "John Cena Confirms John Cena Classic For December"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
   }
 ]
