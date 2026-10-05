@@ -1344,6 +1344,18 @@
     "renderedAt": 1791207466723
   },
   {
+    "videoUrl": "/videos/reel-20261006015631-cmll-domingo-familiar-04-10-20.mp4",
+    "filename": "reel-20261006015631-cmll-domingo-familiar-04-10-20.mp4",
+    "title": "عرض سي ام ال ال 04.10.2026 مترجم",
+    "secondaryTitle": "CMLL Domingo Familiar 04.10.2026",
+    "description": "عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261006015631-cmll-domingo-familiar-04-10-20",
+    "kind": "show",
+    "slug": "20261006015631-cmll-domingo-familiar-04-10-20",
+    "image": "/content/images/4secgo6chjcigcqw.jpg",
+    "renderedAt": 1791241451892
+  },
+  {
     "videoUrl": "/videos/reel-20261006015444-cmll-sabados-de-coliseo-03-10-.mp4",
     "filename": "reel-20261006015444-cmll-sabados-de-coliseo-03-10-.mp4",
     "title": "عرض سي ام ال ال 03.10.2026 مترجم",
@@ -1353,6 +1365,6 @@
     "kind": "show",
     "slug": "20261006015444-cmll-sabados-de-coliseo-03-10-",
     "image": "/content/images/2fasj33b6uu3lgu6.jpg",
-    "renderedAt": 1791241098107
+    "renderedAt": 1791241516662
   }
 ]
