@@ -73,11 +73,17 @@ function hostFromUrl(url) {
 function siteNameFromHost(host) {
   if (!host) return "رابط تحميل";
   if (KNOWN_HOST_NAMES[host]) return KNOWN_HOST_NAMES[host];
+  if (host.includes("streamhg") || host.includes("hgcloud") || host.includes("shgcloud") || host.includes("hgplayer") || host.includes("hgstream")) {
+    return "StreamHG";
+  }
   // لو فيه سب دومين زي e24.uqload.vc أو dl.vidtube.one
   const parts = host.split(".");
   if (parts.length > 2) {
     const root = parts.slice(-2).join(".");
     if (KNOWN_HOST_NAMES[root]) return KNOWN_HOST_NAMES[root];
+    if (root.includes("streamhg") || root.includes("hgcloud") || root.includes("shgcloud") || root.includes("hgplayer") || root.includes("hgstream")) {
+      return "StreamHG";
+    }
   }
   const base = host.split(".")[0];
   return base.charAt(0).toUpperCase() + base.slice(1);
@@ -126,8 +132,13 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     if (!url) return;
     const host = hostFromUrl(url);
     const site = siteNameFromHost(host);
-    const rootHost = host.split(".").slice(-2).join(".");
-    const logo = KNOWN_HOST_LOGOS[host] || KNOWN_HOST_LOGOS[rootHost] || `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
+    let logo = KNOWN_HOST_LOGOS[host] || KNOWN_HOST_LOGOS[rootHost];
+    if (!logo && (host.includes("streamhg") || host.includes("hgcloud") || host.includes("shgcloud") || host.includes("hgplayer") || host.includes("hgstream"))) {
+      logo = "/assets/hosts/streamhg.png";
+    }
+    if (!logo) {
+      logo = `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
+    }
     const item = { url: url, site: site, host: host, logo: logo };
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
