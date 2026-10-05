@@ -1541,7 +1541,7 @@
     </div>
     <div class="dl-modal-body">
       {% for item in items %}
-      <a class="dl-site-card" data-dl="{{ item.url | obfuscateUrl }}" href="javascript:void(0)" rel="nofollow noopener" role="button">
+      <a class="dl-site-card" data-dl="{{ item.url | obfuscateUrl }}" href="#" target="_blank" rel="noopener noreferrer nofollow">
         <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';}else{this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230d9488%22 stroke-width=%222%22><path d=%22M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4%22/><polyline points=%227 10 12 15 17 10%22/><line x1=%2212%22 y1=%2215%22 x2=%2212%22 y2=%223%22/></svg>';}">
         <span class="dl-site-info">
           <span class="dl-site-name">{{ item.site }}</span>
@@ -1601,10 +1601,31 @@
   }
 </script>
 <script>
+  function deobfuscateUrl(str) {
+    if (!str || typeof str !== 'string') return '';
+    try {
+      return atob(str.split('').reverse().join(''));
+    } catch (e) {
+      return '';
+    }
+  }
+
   // ==== نظام روابط التحميل (منخفضة/متوسطة/عالية) ====
   (function(){
+    function prepareDlCard(card){
+      if (!card || !card.dataset.dl || card.dataset.ready) return;
+      var url = deobfuscateUrl(card.dataset.dl);
+      if (url) {
+        card.href = url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer nofollow';
+        card.dataset.ready = '1';
+      }
+    }
+
     function openModal(modal){
       if(!modal) return;
+      modal.querySelectorAll('.dl-site-card').forEach(prepareDlCard);
       modal.classList.add('open');
       document.body.classList.add('dl-modal-lock');
     }
@@ -1633,6 +1654,22 @@
         document.querySelectorAll('.dl-modal-backdrop.open').forEach(closeModal);
       }
     });
+
+    // Decoding on pointerdown ensures native link behavior without popup blockers
+    document.addEventListener('pointerdown', function(e){
+      var card = e.target.closest && e.target.closest('.dl-site-card');
+      if (card) prepareDlCard(card);
+    }, { passive: true });
+
+    document.addEventListener('click', function(e){
+      var card = e.target.closest && e.target.closest('.dl-site-card');
+      if (card) {
+        prepareDlCard(card);
+        if (!card.href || card.getAttribute('href') === '#') {
+          e.preventDefault();
+        }
+      }
+    });
   })();
 
   function toEmbedUrl(raw) {
@@ -1657,15 +1694,6 @@
     url = url.replace(/^https?:\/\/dai\.ly\/([a-zA-Z0-9_-]+)/i, 'https://www.dailymotion.com/embed/video/$1');
     url = url.replace(/^https?:\/\/(?:www\.)?vimeo\.com\/(\d+).*/i, 'https://player.vimeo.com/video/$1');
     return url;
-  }
-
-  function deobfuscateUrl(str) {
-    if (!str || typeof str !== 'string') return '';
-    try {
-      return atob(str.split('').reverse().join(''));
-    } catch (e) {
-      return '';
-    }
   }
 
   var currentActiveServerSrc = '';
@@ -1736,18 +1764,6 @@
       }, 550);
     });
   }
-
-  // Download links handler (deobfuscates locker URL and opens safely in new tab)
-  document.addEventListener('click', function(e){
-    var dlCard = e.target.closest && e.target.closest('.dl-site-card');
-    if (dlCard && dlCard.dataset.dl) {
-      e.preventDefault();
-      var targetUrl = deobfuscateUrl(dlCard.dataset.dl);
-      if (targetUrl) {
-        window.open(targetUrl, '_blank', 'noopener,noreferrer');
-      }
-    }
-  });
 </script>
 <script>
   (function(){
