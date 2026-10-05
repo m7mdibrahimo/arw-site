@@ -1,5 +1,15 @@
 [
   {
+    "id": 332284,
+    "link": "https://www.fightful.com/wrestling/wwe-raw-returns-10-5-2026-roman-reigns-returns-becky-lynch-vs-liv-morgan-more/",
+    "date": "2026-10-05T19:15:00",
+    "date_gmt": "2026-10-05T23:15:00",
+    "title": {
+      "rendered": "WWE Raw Returns (10/5/2026): Roman Reigns Returns, Becky Lynch vs. Liv Morgan, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/05162857/image-411.png"
+  },
+  {
     "id": 332304,
     "link": "https://www.fightful.com/wrestling/tnt-sports-ceo-luis-silberwasser-set-to-depart-merged-paramount-wbd-company/",
     "date": "2026-10-05T18:51:07",
@@ -288,15 +298,5 @@
       "rendered": "John Cena Confirms John Cena Classic For December"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
-  },
-  {
-    "id": 332205,
-    "link": "https://www.fightful.com/wrestling/gedo-knock-out-brothers-to-host-seminar-at-wxw-germany-academy/",
-    "date": "2026-10-05T10:33:50",
-    "date_gmt": "2026-10-05T14:33:50",
-    "title": {
-      "rendered": "Gedo &amp; Knock Out Brothers To Host Seminar At wXw Germany Academy"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/05102510/HTzPO3-W8AExzXV-e1791210345787.jpg"
   }
 ]
