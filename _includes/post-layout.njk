@@ -1083,6 +1083,7 @@
           <p style="color:#fff;text-align:center;padding:40px 20px;">يرجى تفعيل JavaScript لمشاهدة العرض.</p>
         </noscript>
       </div>
+      {% include "ad-banner.njk" %}
     {% endif %}
 
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
@@ -1390,6 +1391,8 @@
     </nav>
     {% endif %}
     {% endif %}
+
+    {% include "ad-native.njk" %}
 
     {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4) %}
     {% if relatedPosts and relatedPosts.length %}
