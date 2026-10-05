@@ -84,6 +84,7 @@ export function findProblems(r: any): string[] {
     if (rich && rich.verdict === "FAIL") out.push(`مشكلة في البيانات المنظمة: ${decodeURI(i.url)}`);
   }
   // Pages that show up a lot but almost nobody clicks: the title/description needs work.
+  for (const d of r.deadPages || []) out.push(`صفحة جوجل لسه بيبعت لها ناس ورابطها واقع (${d.impressions} ظهور): ${decodeURI(d.url)}`);
   // Only articles and show pages: listings and /about/ at position 1–2 are sitelinks under the
   // brand result, where few clicks is normal.
   for (const p of r.pages || []) {
@@ -153,7 +154,14 @@ async function main() {
     }
   } catch (e: any) { actions.push(`ماقدرتش أظبط الخرائط: ${String(e.message).slice(0, 200)}`); }
 
-  const report = { generatedAt: new Date().toISOString(), site, range, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections, bestPage, actions };
+  // Pages Google still sends people to that no longer answer: each one is lost traffic (INCIDENTS #274)
+  const deadPages: any[] = [];
+  for (const p of pages) {
+    const res = await fetch(p.keys[0], { method: "GET", redirect: "follow", signal: AbortSignal.timeout(25000) }).catch(() => null);
+    if (res && (res.status === 404 || res.status === 410)) deadPages.push({ url: p.keys[0], clicks: p.clicks, impressions: p.impressions });
+  }
+
+  const report = { generatedAt: new Date().toISOString(), site, range, deadPages, totals: totals[0] || null, totalsPrev: totalsPrev[0] || null, queries, pages, countries, devices, sitemaps, inspections, bestPage, actions };
   const problems = findProblems(report);
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.rmSync(path.join(OUT_DIR, "search-console-error.txt"), { force: true });

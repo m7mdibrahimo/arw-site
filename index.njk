@@ -1533,6 +1533,14 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
     <a href="/apps/">تطبيقات الموقع</a>
     <a href="/support/" class="support-link">ادعم الموقع</a>
   </nav>
+{# Search Console: «عرض الرو الاخير» / «عرض سماك داون الاخير» landed on the home page at position 4–6;
+   a plain link to each weekly show's page, worded the way people search, points them at the right page (INCIDENTS #274) #}
+<nav class="footer-legal-links" aria-label="آخر العروض الأسبوعية" style="margin:14px 0 0; font-size:13px;">
+{%- set weekly = ["wwe-raw", "wwe-smackdown", "wwe-nxt", "aew-dynamite", "aew-collision", "tna-impact"] -%}
+{%- for prog in collections.library -%}{%- if prog.slug in weekly and prog.arName %}
+<a href="/library/{{ prog.slug }}/" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.arName }} الأخير مترجم</a>{% if not loop.last %} · {% endif %}
+{%- endif -%}{%- endfor %}
+</nav>
 <div class="footer-legal-links" style="margin:14px 0 10px; font-size:13px;">
 <a href="/about/" style="color:var(--muted); margin:0 6px; text-decoration:none;">من نحن</a> ·
     <a href="/privacy/" style="color:var(--muted); margin:0 6px; text-decoration:none;">سياسة الخصوصية</a> ·

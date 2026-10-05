@@ -5,8 +5,8 @@ pagination:
   alias: lp
 permalink: "{{ lp.href }}index.html"
 eleventyComputed:
-  pageTitle: "{{ lp.prog.name }} مترجم — كل العروض{% if lp.pageNumber > 1 %} - صفحة {{ lp.pageNumber }}{% endif %}"
-  pageDesc: "جميع عروض {{ lp.prog.name }} المترجمة بالعربية مرتبة من الأحدث للأقدم على عرب راسلنج."
+  pageTitle: "{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير مترجم ({{ lp.prog.latest.eventDate | date }}) — كل عروض {{ lp.prog.name }}{% else %}{{ lp.prog.name }} مترجم — كل العروض{% if lp.pageNumber > 1 %} - صفحة {{ lp.pageNumber }}{% endif %}{% endif %}"
+  pageDesc: "{% if lp.prog.arName and lp.pageNumber == 1 %}شاهد {{ lp.prog.arName }} الأخير مترجم بالعربي ({{ lp.prog.latest.eventDate | date }}) بجودة عالية، وكل عروض {{ lp.prog.name }} المترجمة من الأحدث للأقدم على عرب راسلنج.{% else %}جميع عروض {{ lp.prog.name }} المترجمة بالعربية مرتبة من الأحدث للأقدم على عرب راسلنج.{% endif %}"
 ---
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -403,8 +403,8 @@ eleventyComputed:
 
 <div class="page-head reveal">
   <nav class="lib-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span><span><bdi>{{ lp.prog.name }}</bdi></span></nav>
-  <h2 style="color:var(--gold);">عروض <bdi>{{ lp.prog.name }}</bdi></h2>
-  <p>{% if lp.prog.federation %}{{ lp.prog.federation }} · {% endif %}آخر عرض {{ lp.prog.latest.eventDate | date }}</p>
+  <h2 style="color:var(--gold);">{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير مترجم{% else %}عروض <bdi>{{ lp.prog.name }}</bdi>{% endif %}</h2>
+  <p>{% if lp.prog.federation %}{{ lp.prog.federation }} · {% endif %}آخر عرض: <a href="{{ lp.prog.latest.url | cleanUrl }}" style="color:var(--teal);font-weight:700;">{{ lp.prog.latest.headline or lp.prog.latest.title }}</a> · {{ lp.prog.latest.eventDate | date }}</p>
 </div>
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in lp.items %}

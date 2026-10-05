@@ -3019,3 +3019,13 @@ test('Search Console problems skip brand sitelinks and stories Google has not me
   });
   assert.deepEqual(p, []);
 });
+
+test('an article keeps redirect pages at its older addresses (INCIDENTS #274)', async () => {
+  const { legacyArticleAddresses } = await import('../lib/redirects.cjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'legacy-'));
+  fs.writeFileSync(path.join(dir, '2026-08-06-اقتراب-عودة-درو-ماكنتاير-لـ-wwe.md'), '---\ntitle: "اقتراب عودة درو ماكنتاير لـ WWE"\npermalink: "/news/اقتراب-عودة-درو-ماكنتاير-ل-wwe/index.html"\n---\nنص');
+  const pairs = legacyArticleAddresses(dir, path.join(dir, '_site'));
+  assert.deepEqual(pairs, [['/news/اقتراب-عودة-درو-ماكنتاير-لـ-wwe/', '/news/اقتراب-عودة-درو-ماكنتاير-ل-wwe/']]);
+  const { findProblems } = await import('../scripts/search-console-report');
+  assert.match(findProblems({ deadPages: [{ url: 'https://arab-wrestling.com/news/x', impressions: 599 }] })[0], /رابطها واقع/);
+});

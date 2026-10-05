@@ -1086,7 +1086,12 @@ module.exports = function(eleventyConfig) {
         const federation = Object.keys(fedCount).sort(function(a, b) { return fedCount[b] - fedCount[a]; })[0] || "";
         // When the section first appeared on the site = its oldest show.
         const firstAdded = shows.length ? shows[shows.length - 1].timestamp : 0;
-        return { slug: p.slug, name: p.name, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+        // The Arabic name people search with: «عرض الرو 28.09.2026 مترجم» → «عرض الرو». Search Console:
+        // «عرض الرو الاخير» (2.3k impressions, position 4) landed on the home page, not on this
+        // program's page, whose title only said «WWE RAW مترجم» (INCIDENTS #274).
+        const latestHeadline = shows[0] ? String(shows[0].headline || "") : "";
+        const arName = latestHeadline.replace(/\(.*?\)/g, " ").replace(/\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
+        return { slug: p.slug, name: p.name, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
@@ -1614,6 +1619,7 @@ module.exports = function(eleventyConfig) {
       const tooLong = [];
       fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", renamedArticleRedirects(), tooLong));
       writeRedirectPages(tooLong, "_site"); // over-long Arabic redirects (INCIDENTS #200)
+      writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
     }
     if (fs.existsSync("_headers")) {
       fs.copyFileSync("_headers", "_site/_headers");
