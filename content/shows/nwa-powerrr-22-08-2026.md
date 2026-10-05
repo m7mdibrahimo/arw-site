@@ -25,4 +25,5 @@ downloads:
   - label: تحميل متعدد
     url: https://multiup.io/download/8d8bbf972863599cb9b526dd54d574c5/NWA.Powerrr.2026.08.22_720p.mp4
 layout: post-layout.njk
+program_name: NWA Powerrr
 ---
