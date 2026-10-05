@@ -1,5 +1,35 @@
 [
   {
+    "id": 802251262,
+    "link": "https://www.ringsidenews.com/spoiler-opening-segment-october-5-wwe-raw-revealed/",
+    "date": "Mon, 05 Oct 2026 20:29:05 +0000",
+    "date_gmt": "2026-10-05T20:29:05.000Z",
+    "title": {
+      "rendered": "Spoiler: Opening Segment for October 5 WWE RAW Revealed"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/spoiler-opening-segment-for-october-5-wwe-raw-revealed-46.jpg?x77927"
+  },
+  {
+    "id": 802251257,
+    "link": "https://www.ringsidenews.com/bryan-danielsons-aew-ring-future-surprise-return-pac-tribute-show/",
+    "date": "Mon, 05 Oct 2026 20:18:02 +0000",
+    "date_gmt": "2026-10-05T20:18:02.000Z",
+    "title": {
+      "rendered": "Bryan Danielson’s AEW In-Ring Future After Surprise Return at PAC Tribute Show"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/bryan-danielsons-aew-in-ring-future-after-surprise-return-at-pac-tribute-show-58.jpg?x77927"
+  },
+  {
+    "id": 802251253,
+    "link": "https://www.ringsidenews.com/lady-frost-finishes-mlw/",
+    "date": "Mon, 05 Oct 2026 20:08:35 +0000",
+    "date_gmt": "2026-10-05T20:08:35.000Z",
+    "title": {
+      "rendered": "Lady Frost Finishes Up With MLW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/lady-frost-finishes-up-with-mlw-36.jpg?x77927"
+  },
+  {
     "id": 802251249,
     "link": "https://www.ringsidenews.com/vince-russo-clears-air-brian-gewirtz-rock-remarks/",
     "date": "Mon, 05 Oct 2026 19:35:31 +0000",
@@ -118,35 +148,5 @@
       "rendered": "John Cena Reveals When the Inaugural John Cena Classic Will Take Place"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/john-cena-reveals-when-the-inaugural-john-cena-classic-will-take-place-04.jpg?x77927"
-  },
-  {
-    "id": 802251192,
-    "link": "https://www.ringsidenews.com/tessa-blanchard-nearly-quit-wrestling-join-us-army/",
-    "date": "Mon, 05 Oct 2026 14:25:14 +0000",
-    "date_gmt": "2026-10-05T14:25:14.000Z",
-    "title": {
-      "rendered": "Tessa Blanchard Nearly Quit Wrestling to Join the U.S. Army"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/tessa-blanchard-nearly-quit-wrestling-to-join-the-u-s-army-41.jpg?x77927"
-  },
-  {
-    "id": 802251188,
-    "link": "https://www.ringsidenews.com/ethan-page-tells-fans-stop-acting-theyre-wrestlers/",
-    "date": "Mon, 05 Oct 2026 13:32:10 +0000",
-    "date_gmt": "2026-10-05T13:32:10.000Z",
-    "title": {
-      "rendered": "Ethan Page Tells Fans to Stop Acting Like They’re Wrestlers"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/ethan-page-tells-fans-to-stop-acting-like-theyre-wrestlers-19.jpg?x77927"
-  },
-  {
-    "id": 802251178,
-    "link": "https://www.ringsidenews.com/kevin-nash-accuses-donald-trump-screwing-his-own-supporters-out-billions/",
-    "date": "Mon, 05 Oct 2026 12:48:27 +0000",
-    "date_gmt": "2026-10-05T12:48:27.000Z",
-    "title": {
-      "rendered": "Kevin Nash Accuses Donald Trump of Screwing His Own Supporters Out of Billions"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/kevin-nash-accuses-donald-trump-of-screwing-his-own-supporters-out-of-billions-42.jpg?x77927"
   }
 ]
