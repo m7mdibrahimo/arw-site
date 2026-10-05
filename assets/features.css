@@ -651,8 +651,6 @@ html.arw-can-share .arw-share .sh-native{ display:inline-flex; }
   .arw-more-grid a.more-support svg{ color:#fff; }
   .arw-more-grid a.more-tg svg{ color:#24a1de; }
 
-  /* Floating prompts sit above the bottom bar. */
-  body.arw-has-bottom-nav .tg-float-bar, body.arw-has-bottom-nav .notif-float-bar{ bottom:calc(76px + env(safe-area-inset-bottom, 0px)) !important; }
 }
 @media (prefers-reduced-motion:reduce){ html body header, .arw-more-sheet, .arw-more-overlay{ transition:none !important; } }
 
