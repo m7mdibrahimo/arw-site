@@ -31,6 +31,11 @@ const KNOWN_HOST_NAMES = {
   "vidtube.com": "VidTube",
   "vidtube.net": "VidTube",
   "vidtube.site": "VidTube",
+  "streamhg.com": "StreamHG",
+  "streamhg.to": "StreamHG",
+  "hgcloud.to": "StreamHG",
+  "hgcloud.io": "StreamHG",
+  "hgcloud.com": "StreamHG",
 };
 
 // لوجوهات مخصصة عالية الدقة لمواقع التحميل
@@ -48,6 +53,11 @@ const KNOWN_HOST_LOGOS = {
   "vidtube.com": "/assets/hosts/vidtube.png",
   "vidtube.net": "/assets/hosts/vidtube.png",
   "vidtube.site": "/assets/hosts/vidtube.png",
+  "streamhg.com": "/assets/hosts/streamhg.png",
+  "streamhg.to": "/assets/hosts/streamhg.png",
+  "hgcloud.to": "/assets/hosts/streamhg.png",
+  "hgcloud.io": "/assets/hosts/streamhg.png",
+  "hgcloud.com": "/assets/hosts/streamhg.png",
 };
 
 function hostFromUrl(url) {
