@@ -1,5 +1,25 @@
 [
   {
+    "id": 332221,
+    "link": "https://www.fightful.com/wrestling/mick-foley-i-marvel-when-i-see-chris-hero-working-with-a-talent-he-is-a-wrestling-genius/",
+    "date": "2026-10-05T13:15:01",
+    "date_gmt": "2026-10-05T17:15:01",
+    "title": {
+      "rendered": "Mick Foley: I Marvel When I See Chris Hero Working With A Talent, He Is A Wrestling Genius"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/06/27221920/chris-herojpg.jpg"
+  },
+  {
+    "id": 332233,
+    "link": "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-10-3-2026-esfinge-neon-star-jr-vs-infernales-valientes-more/",
+    "date": "2026-10-05T13:15:00",
+    "date_gmt": "2026-10-05T17:15:00",
+    "title": {
+      "rendered": "CMLL Sábado De Coliseo Results (10/3/2026): Esfinge, Neón &amp; Star Jr. vs. Infernales, Valientes, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/05130700/image-409.png"
+  },
+  {
     "id": 332231,
     "link": "https://www.fightful.com/wrestling/joe-hendrys-beyond-belief-album-now-available/",
     "date": "2026-10-05T13:02:30",
@@ -278,25 +298,5 @@
       "rendered": "AJ Styles Saves Son Avery Styles At Indie Event"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/08232406/HPNeFlEWEAAyAjI-1.jpg"
-  },
-  {
-    "id": 332160,
-    "link": "https://www.fightful.com/wrestling/aaa-on-fox-spoilers-taped-on-10-3/",
-    "date": "2026-10-04T21:38:51",
-    "date_gmt": "2026-10-05T01:38:51",
-    "title": {
-      "rendered": "AAA On Fox Spoilers (Taped On 10/3)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/25092650/AAAFox_16x9_v27-scaled.jpg"
-  },
-  {
-    "id": 332156,
-    "link": "https://www.fightful.com/wrestling/chris-jericho-puts-james-ellsworth-on-the-list-again-ten-years-later/",
-    "date": "2026-10-04T21:07:13",
-    "date_gmt": "2026-10-05T01:07:13",
-    "title": {
-      "rendered": "Chris Jericho Puts James Ellsworth On The List Again, Ten Years Later"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04210650/Screenshot-2026-10-04-at-8.58.03-PM.png"
   }
 ]
