@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2278180/wwe-raw-october-5-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-05T21:16:43.100Z"
+ },
  "https://www.fightful.com/wrestling/details-on-future-plans-for-bryan-danielson": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
