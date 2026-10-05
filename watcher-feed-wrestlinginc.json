@@ -1,5 +1,15 @@
 [
   {
+    "id": 4006586441,
+    "link": "https://www.wrestlinginc.com/2276852/aew-dynamite-ratings-viewership-report-september-23-2026/",
+    "date": "Mon, 05 Oct 2026 02:47:18 +0000",
+    "date_gmt": "2026-10-05T02:47:18.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Ratings & Viewership Report: 9/23/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-ratings-viewership-report-9232026/l-intro-1791168289.jpg"
+  },
+  {
     "id": 2063441718,
     "link": "https://www.wrestlinginc.com/2276834/aew-confirms-jay-white-injury/",
     "date": "Mon, 05 Oct 2026 01:35:30 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE SummerSlam Talent Reveals How He Became Minihausen, Wants Match With Hornswoggle"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-summerslam-talent-reveals-how-he-became-minihausen-wants-match-with-hornswoggle/l-intro-1790794867.jpg"
-  },
-  {
-    "id": 2223284071,
-    "link": "https://www.wrestlinginc.com/2276692/aew-dynamite-ratings-viewership-report-september-30-2026/",
-    "date": "Sun, 04 Oct 2026 03:32:39 +0000",
-    "date_gmt": "2026-10-04T03:32:39.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Ratings & Viewership Report: 9/30/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-ratings-viewership-report-september-30-2026/l-intro-1791165122.jpg"
   }
 ]
