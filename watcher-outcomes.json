@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-5-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-05T23:43:31.546Z"
+ },
  "https://www.fightful.com/wrestling/watch-roh-tv-special-monday-episode-10-5-2026": {
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
