@@ -1,11 +1,21 @@
 [
   {
+    "id": 332213,
+    "link": "https://www.fightful.com/wrestling/skydance-announces-leadership-team/",
+    "date": "2026-10-05T11:35:05",
+    "date_gmt": "2026-10-05T15:35:05",
+    "title": {
+      "rendered": "Skydance Announces Leadership Team"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02092648/HToNM5cXcAAKXva.jpg"
+  },
+  {
     "id": 332209,
     "link": "https://www.fightful.com/wrestling/john-cena-confirms-john-cena-classic-tournament-for-december/",
     "date": "2026-10-05T11:03:29",
     "date_gmt": "2026-10-05T15:03:29",
     "title": {
-      "rendered": "John Cena Confirms John Cena Classic Tournament For December"
+      "rendered": "John Cena Confirms John Cena Classic For December"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
   },
@@ -288,15 +298,5 @@
       "rendered": "Participants Set For Call Your Shot Gauntlet Advantage Match On 10/8 TNA iMPACT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/02122859/G7LBws8aUAA4Q2x.jpg"
-  },
-  {
-    "id": 332127,
-    "link": "https://www.fightful.com/wrestling/booker-t-vince-mcmahon-wanted-me-to-say-chagrin-shawn-michaels-told-me-i-dont-know-what-youre-saying-but-i-like-it/",
-    "date": "2026-10-04T14:48:13",
-    "date_gmt": "2026-10-04T18:48:13",
-    "title": {
-      "rendered": "Booker T: Vince McMahon Wanted Me To Say &#8216;Chagrin,&#8217; Shawn Michaels Told Me, &#8216;I Don&#8217;t Know What You&#8217;re Saying, But I Like It&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/06131655/Screenshot-1561.png"
   }
 ]
