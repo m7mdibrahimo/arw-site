@@ -2983,3 +2983,8 @@ test('a results winner that is not in its own match text is flagged (INCIDENTS #
   assert.equal(spelledAgesToDigits('المصارع البالغ من العمر تسعا وأربعين عاما'), 'المصارع البالغ من العمر 49 عاما');
   assert.equal(applyCorrections('خاضت برينسيسا سوجيهيت نزالا من جلتين، وانضم إلى بولت كلاب للاحتفاظ بطولة'), 'خاضت برينسيسا سوغيهيت نزالا من جولتين، وانضم إلى بوليت كلوب للاحتفاظ ببطولة');
 });
+
+test('the site never blocks the right-click menu (owner, INCIDENTS #271)', () => {
+  const head = fs.readFileSync('_includes/adsense.njk', 'utf-8');
+  assert.doesNotMatch(head, /addEventListener\(\s*['"]contextmenu['"]/);
+});
