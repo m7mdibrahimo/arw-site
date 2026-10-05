@@ -11,27 +11,106 @@
 .show-card, .news-card { position: relative; }
 
 /* Back to top, with a ring that fills as you read down */
-.xp-top { position: fixed; inset-inline-start: 18px; bottom: calc(28px + env(safe-area-inset-bottom, 0px)); z-index: 9995 !important; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(47,199,184,.35); cursor: pointer;
-  background: color-mix(in srgb, var(--card, #12161b) 90%, transparent); color: #2fc7b8; box-shadow: 0 8px 24px -4px rgba(0,0,0,.6), 0 0 10px rgba(47,199,184,.22);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center;
-  opacity: 0; transform: translateY(16px) scale(.85); pointer-events: none; transition: opacity .35s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.34,1.56,.64,1), background-color .25s, border-color .25s, box-shadow .25s; }
-.xp-top.show { opacity: 1; transform: none; pointer-events: auto; }
-.xp-top:hover { transform: translateY(-3px) scale(1.05); border-color: #2fc7b8; color: #5ef0e1; box-shadow: 0 12px 28px -4px rgba(0,0,0,.7), 0 0 16px rgba(47,199,184,.45); }
-.xp-top:active { transform: scale(0.92); }
-.xp-top svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); pointer-events: none; }
-.xp-top svg.ring circle { fill: none; stroke-width: 3.2; }
-.xp-top svg.ring .bg { stroke: rgba(47,199,184,.18); }
-.xp-top svg.ring .fg { stroke: #2fc7b8; stroke-linecap: round; stroke-dasharray: 138.2; stroke-dashoffset: 138.2; transition: stroke-dashoffset .15s linear; }
-.xp-top svg:not(.ring) { width: 18px; height: 18px; stroke-width: 2.8; transition: transform .2s ease; pointer-events: none; }
-.xp-top:hover svg:not(.ring) { transform: translateY(-2px); }
-.xp-top:focus-visible { outline: 2px solid #2fc7b8; outline-offset: 3px; }
-@media (max-width: 700px) {
-  .xp-top { inset-inline-start: 16px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; width: 44px; height: 44px; }
+.xp-top {
+  position: fixed;
+  inset-inline-start: 18px;
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  z-index: 9995 !important;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(47,199,184,.35);
+  cursor: pointer;
+  background: color-mix(in srgb, var(--card, #12161b) 92%, transparent);
+  color: #2fc7b8;
+  box-shadow: 0 8px 24px -4px rgba(0,0,0,.6), 0 0 10px rgba(47,199,184,.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(16px) scale(.85);
+  pointer-events: none;
+  transition: opacity .35s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.34,1.56,.64,1), background-color .25s, border-color .25s, box-shadow .25s;
 }
-@media (orientation: landscape) and (max-height: 550px), (max-height: 500px) {
-  .xp-top { inset-inline-start: 16px; bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important; width: 40px; height: 40px; }
-  body:not(.arw-has-bottom-nav) .xp-top,
-  body.post-layout .xp-top { bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important; }
+.xp-top.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.xp-top:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: #2fc7b8;
+  color: #5ef0e1;
+  box-shadow: 0 12px 28px -4px rgba(0,0,0,.7), 0 0 16px rgba(47,199,184,.45);
+}
+.xp-top:active {
+  transform: scale(0.92);
+}
+.xp-top svg.ring {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.xp-top svg.ring circle {
+  fill: none;
+  stroke-width: 3.2;
+}
+.xp-top svg.ring .bg {
+  stroke: rgba(47,199,184,.18);
+}
+.xp-top svg.ring .fg {
+  stroke: #2fc7b8;
+  stroke-linecap: round;
+  stroke-dasharray: 138.2;
+  stroke-dashoffset: 138.2;
+  transition: stroke-dashoffset .15s linear;
+}
+.xp-top svg:not(.ring) {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.8;
+  transition: transform .2s ease;
+  pointer-events: none;
+}
+.xp-top:hover svg:not(.ring) {
+  transform: translateY(-2px);
+}
+.xp-top:focus-visible {
+  outline: 2px solid #2fc7b8;
+  outline-offset: 3px;
+}
+
+/* Whenever the bottom nav is active on mobile portrait */
+@media (max-width: 768px) {
+  .xp-top {
+    inset-inline-start: 16px;
+    bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* When rotating phone sideways to landscape mode: always elevate above bottom nav bar */
+@media (orientation: landscape) and (max-height: 650px), (orientation: landscape) and (max-width: 1024px) {
+  .xp-top {
+    inset-inline-start: 16px;
+    bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
+    width: 40px;
+    height: 40px;
+  }
+  body.post-layout .xp-top {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* Fallback: if bottom nav exists on the page */
+body.arw-has-bottom-nav .xp-top {
+  bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
 /* Circular theme switch from the button */

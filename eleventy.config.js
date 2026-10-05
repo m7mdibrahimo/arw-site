@@ -131,6 +131,8 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
   function pushItem(quality, url, hintText) {
     if (!url) return;
     const host = hostFromUrl(url);
+    const parts = host.split(".");
+    const rootHost = parts.length > 2 ? parts.slice(-2).join(".") : host;
     const site = siteNameFromHost(host);
     let logo = KNOWN_HOST_LOGOS[host] || KNOWN_HOST_LOGOS[rootHost];
     if (!logo && (host.includes("streamhg") || host.includes("hgcloud") || host.includes("shgcloud") || host.includes("hgplayer") || host.includes("hgstream"))) {
