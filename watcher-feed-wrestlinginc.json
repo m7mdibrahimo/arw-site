@@ -1,5 +1,15 @@
 [
   {
+    "id": 2767114646,
+    "link": "https://www.wrestlinginc.com/2276889/wwe-nxt-viewership-ratings-september-22-2026/",
+    "date": "Mon, 05 Oct 2026 13:00:00 +0000",
+    "date_gmt": "2026-10-05T13:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Viewership & Ratings Report: 9/22/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-9222026/l-intro-1791179840.jpg"
+  },
+  {
     "id": 2880370087,
     "link": "https://www.wrestlinginc.com/2275329/wwe-al-snow-most-painful-injuries-retire/",
     "date": "Mon, 05 Oct 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW World Title To Be Defended In Clockwork Carnage Match At WrestleDream 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-world-title-first-ever-clockwork-carnage-match-wrestledream-2026/l-intro-1791130830.jpg"
-  },
-  {
-    "id": 5034464879,
-    "link": "https://www.wrestlinginc.com/2273693/wwe-mvp-freddie-prinze-jr-won-over/",
-    "date": "Sun, 04 Oct 2026 13:30:00 +0000",
-    "date_gmt": "2026-10-04T13:30:00.000Z",
-    "title": {
-      "rendered": "MVP Explains How Actor & Former WWE Writer Freddie Prinze Jr. Won Him Over"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/mvp-explains-how-actor-former-wwe-writer-freddie-prinze-jr-won-him-over/l-intro-1790790964.jpg"
   }
 ]
