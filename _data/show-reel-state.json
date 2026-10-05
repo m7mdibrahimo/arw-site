@@ -2856,5 +2856,24 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261006015444-cmll-sabados-de-coliseo-03-10-2026": {
+    "publishedAt": 1791241341912,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال 03.10.2026 مترجم",
+    "lastAttempt": 1791241355189,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
