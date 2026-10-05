@@ -2826,12 +2826,16 @@
     "publishedAt": 1791158211959,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي 332 مين كارد مترجم",
-    "lastAttempt": 1791158221994,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791161722541,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
