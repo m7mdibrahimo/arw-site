@@ -2903,7 +2903,7 @@ test('an echoed instruction about quote marks is removed and flagged (INCIDENTS 
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'نص فيه كما في المصدر بالضبط ويكمل الكلام هنا بشكل عادي وطويل.', []).some(i => i.code === 'echoed_instruction'));
 });
 
-test('filler «تخوض خطواتها القادمة» instead of a sourced fact is flagged (INCIDENTS #292)', async () => {
+test('filler «تخوض خطواتها القادمة» instead of a sourced fact is flagged (INCIDENTS #293)', async () => {
   const { checkArticle } = await import('../scripts/news-qa');
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'يذكر أن الثنائي رحل عن الاتحاد، حيث تخوض داكوتا كاي خطواتها القادمة بينما يعود هو تدريجيا.', []).some(i => i.code === 'vague_filler'));
   assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'خاضت داكوتا كاي آخر نزالاتها في أبريل الماضي وهي تفكر في الخطوة القادمة بهدوء.', []).some(i => i.code === 'vague_filler'));
