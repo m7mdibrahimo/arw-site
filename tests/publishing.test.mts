@@ -3062,3 +3062,11 @@ test('weekly roundups dated today are not tonight\'s show, and their fixes reach
   for (const w of ['العددا', 'باويز', 'أحذية ضخمة ليملأها']) assert.ok(c.some((x) => x.wrong === w), w);
   assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'))['Royce Keys'], 'رويس كيز');
 });
+
+test('six-man tag wording and Fenix/Usos names reach the model (INCIDENTS #279)', () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  assert.ok(c.some((x) => x.wrong === 'مواجهة فرق سداسية' && x.right === 'نزال فرق سداسي'));
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['Rey Fenix'], 'ري فينيكس');
+  assert.equal(names['The Usos'], 'ذا أوسوز');
+});
