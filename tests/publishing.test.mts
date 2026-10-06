@@ -3074,6 +3074,13 @@ test('six-man tag wording and Fenix/Usos names reach the model (INCIDENTS #279)'
   assert.equal(names['The Usos'], 'ذا أوسوز');
 });
 
+test('Knight transliteration and The 946 name reach the model (INCIDENTS #283)', () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  assert.ok(c.some((x) => x.wrong === 'وكايت هاجمه' && x.right.includes('نايت')));
+  assert.ok(c.some((x) => x.wrong === 'فريق 946' && x.right === 'فريق ذا 946'));
+  assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'))['The 946'], 'ذا 946');
+});
+
 test('a recap that takes a URL another file already went out under is posted with its own key (INCIDENTS #280)', async () => {
   const { urlKeyOwners, socialKeyFor } = await import('../worker/src/index');
   const url = 'httpsarab-wrestlingcomrecapswwe-raw-highlights-28-09-2026';
