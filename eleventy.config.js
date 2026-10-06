@@ -36,6 +36,7 @@ const KNOWN_HOST_NAMES = {
   "hgcloud.to": "StreamHG",
   "hgcloud.io": "StreamHG",
   "hgcloud.com": "StreamHG",
+  "hanerix.com": "StreamHG",
 };
 
 // لوجوهات مخصصة عالية الدقة لمواقع التحميل
@@ -58,6 +59,7 @@ const KNOWN_HOST_LOGOS = {
   "hgcloud.to": "/assets/hosts/streamhg.png",
   "hgcloud.io": "/assets/hosts/streamhg.png",
   "hgcloud.com": "/assets/hosts/streamhg.png",
+  "hanerix.com": "/assets/hosts/streamhg.png",
 };
 
 function hostFromUrl(url) {
@@ -307,6 +309,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("slug", arabicSlug);
   eleventyConfig.addFilter("toEmbedUrl", toEmbedUrl);
   eleventyConfig.addFilter("playableServers", require("./lib/embed.cjs").playableServers);
+  // Servers that play the same video in several qualities (the viewer picks 1080/720/480 inside the player):
+  // OK.ru and StreamHG with its mirrors (INCIDENTS #288)
+  const MULTI_QUALITY_RE = /(^|\.)(ok\.ru|hgcloud\.[a-z]+|streamhg\.[a-z]+|shgcloud\.[a-z]+|hgplayer\.[a-z]+|hgstream\.[a-z]+|hanerix\.com)$/i;
+  eleventyConfig.addFilter("isMultiQuality", function(u) {
+    try { return MULTI_QUALITY_RE.test(new URL(String(u || "").trim()).hostname.replace(/^www\./, "")); } catch (e) { return false; }
+  });
   eleventyConfig.addNunjucksFilter("toEmbedUrl", toEmbedUrl);
   eleventyConfig.addFilter("obfuscateUrl", obfuscateUrl);
   eleventyConfig.addNunjucksFilter("obfuscateUrl", obfuscateUrl);

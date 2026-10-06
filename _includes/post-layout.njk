@@ -327,6 +327,10 @@
   .server-tab:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); box-shadow:0 4px 12px rgba(14,149,148,0.15); }
   .server-tab.active{ background:var(--teal); color:#fff !important; border-color:var(--teal); box-shadow:0 4px 14px rgba(14,149,148,0.3); }
   .server-tab svg{ flex-shrink:0; }
+  /* multi-quality servers (OK.ru, StreamHG) — INCIDENTS #288 */
+  .srv-mq{ font-size:10.5px; font-weight:800; line-height:1; padding:4px 8px; border-radius:999px; background:linear-gradient(135deg, var(--gold), var(--coral)); color:#fff; letter-spacing:0; white-space:nowrap; box-shadow:0 2px 8px rgba(242,165,60,.35); }
+  .server-tab.is-mq{ border-color:var(--gold); }
+  .server-tab.is-mq.active .srv-mq{ background:#fff; color:var(--teal); box-shadow:none; }
 
   .server-single-label{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--muted); padding:8px 16px; background:var(--card); border:1px solid var(--line); border-radius:999px; user-select:none; margin:0 auto; }
   .server-pulse-dot{ width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 0 0 rgba(16,185,129,0.7); animation:pulseDot 2s infinite; flex-shrink:0; }
@@ -656,6 +660,11 @@
   .dl-site-info{ flex:1; min-width:0; }
   .dl-site-name{ font-weight:800; font-size:14px; color:var(--ink); }
   .dl-site-quality{ font-size:12px; color:var(--muted); font-weight:600; }
+  /* StreamHG in the download list: its own color and a multi-quality badge (INCIDENTS #288) */
+  .dl-site-card.is-mq{ order:-1; background:linear-gradient(135deg, var(--violet-soft), var(--gold-soft)); border:1.5px solid var(--violet); box-shadow:0 6px 18px -8px rgba(124,110,232,.55); }
+  .dl-site-card.is-mq:hover{ border-color:var(--gold); background:linear-gradient(135deg, var(--gold-soft), var(--violet-soft)); }
+  .dl-site-card.is-mq .dl-site-arrow{ color:var(--violet); }
+  .dl-mq-badge{ display:inline-block; vertical-align:middle; margin-inline-start:6px; font-size:10.5px; font-weight:800; line-height:1; padding:4px 8px; border-radius:999px; background:linear-gradient(135deg, var(--violet), var(--gold)); color:#fff; }
   .dl-site-arrow{ width:18px; height:18px; color:var(--teal); flex-shrink:0; transition:transform 0.25s ease; }
   .dl-site-card:hover .dl-site-arrow{ transform:translateX(-3px); }
   html.arw-dark .dl-site-card:hover .dl-site-arrow{ transform:translateX(3px); }
@@ -1302,9 +1311,11 @@
         {% if servers.length > 1 %}
         <div class="server-tabs" id="serverTabs">
           {% for s in servers %}
-          <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}" data-srv="{{ (s.url | toEmbedUrl) | obfuscateUrl }}" data-srv-name="سيرفر {{ loop.index }}">
+          {% set mq = (s.url | toEmbedUrl) | isMultiQuality %}
+          <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}{% if mq %} is-mq{% endif %}" data-srv="{{ (s.url | toEmbedUrl) | obfuscateUrl }}" data-srv-name="سيرفر {{ loop.index }}"{% if mq %} title="سيرفر متعدد الجودات: اختار الجودة من إعدادات المشغل"{% endif %}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
             <span>سيرفر {{ loop.index }}</span>
+            {% if mq %}<span class="srv-mq">متعدد الجودات</span>{% endif %}
           </button>
           {% endfor %}
         </div>
@@ -1723,11 +1734,12 @@
     </div>
     <div class="dl-modal-body">
       {% for item in items %}
-      <a class="dl-site-card" data-dl="{{ item.url | obfuscateUrl }}" href="#" target="_blank" rel="noopener noreferrer nofollow">
+      {% set dlMq = item.url | isMultiQuality %}
+      <a class="dl-site-card{% if dlMq %} is-mq{% endif %}" data-dl="{{ item.url | obfuscateUrl }}" href="#" target="_blank" rel="noopener noreferrer nofollow">
         <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';}else{this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230d9488%22 stroke-width=%222%22><path d=%22M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4%22/><polyline points=%227 10 12 15 17 10%22/><line x1=%2212%22 y1=%2215%22 x2=%2212%22 y2=%223%22/></svg>';}">
         <span class="dl-site-info">
-          <span class="dl-site-name">{{ item.site }}</span>
-          <span class="dl-site-quality">اضغط هنا للتحميل بجودة {{ qualityLabel }}</span>
+          <span class="dl-site-name">{{ item.site }}{% if dlMq %} <span class="dl-mq-badge">متعدد الجودات</span>{% endif %}</span>
+          <span class="dl-site-quality">{% if dlMq %}اختار الجودة اللي تناسبك من صفحة التحميل: 1080 أو 720 أو 480{% else %}اضغط هنا للتحميل بجودة {{ qualityLabel }}{% endif %}</span>
         </span>
         <svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>

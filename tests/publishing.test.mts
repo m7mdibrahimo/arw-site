@@ -3187,3 +3187,15 @@ test('«الأكثر مشاهدة» shows the short Arabic name, not the search 
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /<meta name="arw-card-title" content="\{\{ \(headline or title\) \| escape \}\}">/);
   assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /if \(cardTitle\) title = decodeEntities\(cardTitle\)\.trim\(\);/);
 });
+
+test('OK.ru and StreamHG are marked «متعدد الجودات» on watch tabs and downloads (INCIDENTS #289)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(layout, /\(s\.url \| toEmbedUrl\) \| isMultiQuality/);
+  assert.match(layout, /<span class="srv-mq">متعدد الجودات<\/span>/);
+  assert.match(layout, /item\.url \| isMultiQuality/);
+  assert.match(layout, /<span class="dl-mq-badge">متعدد الجودات<\/span>/);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  const re = new RegExp(cfg.match(/MULTI_QUALITY_RE = \/(.+)\/i;/)![1], 'i');
+  for (const h of ['ok.ru', 'streamhg.com', 'hgcloud.to', 'hanerix.com']) assert.ok(re.test(h), h);
+  for (const h of ['vidoza.net', 'dood.to', 'mega.nz']) assert.ok(!re.test(h), h);
+});
