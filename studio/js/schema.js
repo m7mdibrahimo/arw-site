@@ -32,7 +32,7 @@ export const COLLECTIONS = {
   },
   nostalgia_series: {
     label: 'سلاسل النوستالجيا', singular: 'سلسلة', icon: 'folder', color: '#38bdf8', folder: 'content/nostalgia-series', urlBase: '/nostalgia/',
-    order: ['title', 'series_type', 'federation', 'year', 'tags', 'image', 'description'],
+    order: ['title', 'series_type', 'federation', 'year', 'added_at', 'tags', 'image', 'description'],
     defaults: { series_type: 'shows', federation: 'WWE', tags: ['WWE', 'نوستالجيا'] },
     required: ['title', 'year', 'image'],
   },

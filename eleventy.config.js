@@ -1358,6 +1358,7 @@ module.exports = function(eleventyConfig) {
         federation: item.data.federation || "WWE",
         poster: item.data.image || null,
         description: item.data.description || null,
+        createdAt: item.data.added_at ? (new Date(item.data.added_at).getTime() || 0) : 0,
         episodes: []
       });
     });
@@ -1442,8 +1443,9 @@ module.exports = function(eleventyConfig) {
       }
     });
 
-    // ترتيب السلاسل بالأحدث
+    // ترتيب السلاسل بالأحدث إضافة للموقع (طلب صاحب الموقع): آخر سلسلة اتضافت أولًا، وبعدها اللي قبلها
     series.sort(function(a, b) {
+      if ((b.createdAt || 0) !== (a.createdAt || 0)) return (b.createdAt || 0) - (a.createdAt || 0);
       const da = a.mainEpisode && a.mainEpisode.event_date ? new Date(a.mainEpisode.event_date).getTime() : 0;
       const db = b.mainEpisode && b.mainEpisode.event_date ? new Date(b.mainEpisode.event_date).getTime() : 0;
       return db - da;

@@ -495,3 +495,12 @@ test('a show copied from another show of the same programme drops the old show\'
   const raw = { program: 'WWE RAW', title: 'WWE RAW 28.09.2026', headline: 'عرض الرو 28.09.2026 مترجم', tags: ['WWE', 'WWE RAW', 'الرو', 'Becky Lynch'] };
   assert.deepEqual(dropStaleTemplateTags(raw.tags, raw, { program_name: 'WWE RAW', title: 'WWE RAW 05.10.2026', headline: 'عرض الرو 05.10.2026 مترجم' }), raw.tags);
 });
+
+test('nostalgia series are listed newest-added first: every series records when it was added (INCIDENTS #306)', () => {
+  const dir = 'content/nostalgia-series/';
+  for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.md'))) {
+    assert.match(fs.readFileSync(dir + f, 'utf8'), /^added_at: \d{4}-\d{2}-\d{2}T/m, `${f} has no added_at`);
+  }
+  assert.match(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /else S\.data\.added_at = isoLocal\(\)/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /return \(b\.createdAt \|\| 0\) - \(a\.createdAt \|\| 0\)/);
+});

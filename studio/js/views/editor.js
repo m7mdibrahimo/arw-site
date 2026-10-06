@@ -189,6 +189,8 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
   } else {
     S.data = JSON.parse(JSON.stringify(def.defaults || {}));
     if (collection !== 'nostalgia_series') S.data.date = isoLocal();
+    // When the series was added: the nostalgia grids list the newest-added series first (the owner)
+    else S.data.added_at = isoLocal();
     if (from) {
       // «التالي»: a new episode with the same programme data
       let src = studioData.find(d => d.collection === collection && d.slug === from);
