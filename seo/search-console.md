@@ -73,10 +73,5 @@
 - عرض رو الاخير — ترتيب 4.0 (كان 4)، 329 ظهور، 41 نقرة ← /
 - اخباركم مصارعة — ترتيب 5.1، 239 ظهور، 10 نقرة ← /
 
-## مشاكل لازم تتصلح (6)
-- فحص الرابط فشل: https://arab-wrestling.com/news/كارل-فريدريكس-يسترجع-كواليس-توقيعه-مع-wwe-بالتزامن-مع-دعم-تريبل-إتش-لإدارة-ترامب/ — 500 https://searchconsole.googleapis.com/v1/urlInspection/index:inspect: "Internal error encountered."
-- فحص الرابط فشل: https://arab-wrestling.com/news/نتائج-عرض-wwe-raw-5-أكتوبر-2026-أبرز-اللحظات-والأحداث-الكبرى/ — 500 https://searchconsole.googleapis.com/v1/urlInspection/index:inspect: "Internal error encountered."
-- فحص الرابط فشل: https://arab-wrestling.com/news/جاك-روشو-يقول-إن-aew-وافقت-على-فيديو-التكريم-قبل-ستة-أسابيع-وينفي-إثارة-أي-غضب/ — 500 https://searchconsole.googleapis.com/v1/urlInspection/index:inspect: "Internal error encountered."
-- فحص الرابط فشل: https://arab-wrestling.com/news/تشير-التوقعات-إلى-إقامة-عرض-wwe-royal-rumble-لعام-2027-في-عطلة-نهاية-الأسبوع-الموافق-السادس-من-فبراير/ — 500 https://searchconsole.googleapis.com/v1/urlInspection/index:inspect: "Internal error encountered."
-- فحص الرابط فشل: https://arab-wrestling.com/news/غزيم-سيلماني-يقول-إنه-تلقى-عروضا-من-بيلاتور-وأجرى-محادثات-مع-ufc-في-سن-الثامنة-عشرة/ — 500 https://searchconsole.googleapis.com/v1/urlInspection/index:inspect: "Internal error encountered."
+## مشاكل لازم تتصلح (1)
 - ظهور كتير ونقرات قليلة (612 ظهور، 0.3٪، ترتيب 9.6): https://arab-wrestling.com/news/اقتراب-عودة-درو-ماكنتاير-لـ-wwe-بعد-انتهاء-تصوير-فيلمه-الجديد
