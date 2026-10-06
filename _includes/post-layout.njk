@@ -730,10 +730,18 @@
   .dl-site-name{ font-weight:800; font-size:14px; color:var(--ink); }
   .dl-site-quality{ font-size:12px; color:var(--muted); font-weight:600; }
   /* StreamHG in the download list: its own color and a multi-quality badge (INCIDENTS #288) */
-  .dl-site-card.is-mq{ order:-1; background:linear-gradient(135deg, var(--violet-soft), var(--gold-soft)); border:1.5px solid var(--violet); box-shadow:0 6px 18px -8px rgba(124,110,232,.55); }
-  .dl-site-card.is-mq:hover{ border-color:var(--gold); background:linear-gradient(135deg, var(--gold-soft), var(--violet-soft)); }
-  .dl-site-card.is-mq .dl-site-arrow{ color:var(--violet); }
-  .dl-mq-badge{ display:inline-block; vertical-align:middle; margin-inline-start:6px; font-size:10.5px; font-weight:800; line-height:1; padding:4px 8px; border-radius:999px; background:linear-gradient(135deg, var(--violet), var(--gold)); color:#fff; }
+  /* multi-quality hosts (StreamHG): first in the list, a quiet amber outline and a matching tag, readable in light
+     and dark alike (owner, 2026-10-06) */
+  .dl-site-card.is-mq{ order:-1; background:linear-gradient(rgba(242,165,60,.07), rgba(242,165,60,.07)), var(--bg); border:1.5px solid rgba(242,165,60,.55); box-shadow:none; }
+  .dl-site-card.is-mq:hover{ border-color:var(--gold); }
+  .dl-site-card.is-mq .dl-site-quality{ display:block; margin-top:3px; }
+  .dl-site-card.is-mq .dl-site-arrow{ color:#c27a12; }
+  .dl-mq-badge{ display:inline-flex; align-items:center; gap:4px; vertical-align:middle; margin-inline-start:6px; font-size:11px; font-weight:800; line-height:1; padding:4px 8px 4px 7px; border-radius:6px; color:#9a5b00; background:#fdf1de; border:1px solid rgba(242,165,60,.45); white-space:nowrap; }
+  .dl-mq-badge svg{ width:12px; height:12px; flex:none; }
+  html.arw-dark .dl-site-card.is-mq{ background:linear-gradient(rgba(244,179,82,.06), rgba(244,179,82,.06)), var(--bg); border-color:rgba(244,179,82,.38); }
+  html.arw-dark .dl-site-card.is-mq:hover{ border-color:rgba(244,179,82,.7); }
+  html.arw-dark .dl-site-card.is-mq .dl-site-arrow{ color:#f4b352; }
+  html.arw-dark .dl-mq-badge{ color:#f6c46f; background:rgba(244,179,82,.12); border-color:rgba(244,179,82,.35); }
   .dl-site-arrow{ width:18px; height:18px; color:var(--teal); flex-shrink:0; transition:transform 0.25s ease; }
   .dl-site-card:hover .dl-site-arrow{ transform:translateX(-3px); }
   html.arw-dark .dl-site-card:hover .dl-site-arrow{ transform:translateX(3px); }
@@ -1815,8 +1823,8 @@
       <a class="dl-site-card{% if dlMq %} is-mq{% endif %}" data-dl="{{ item.url | obfuscateUrl }}" href="#" target="_blank" rel="noopener noreferrer nofollow">
         <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';}else{this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230d9488%22 stroke-width=%222%22><path d=%22M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4%22/><polyline points=%227 10 12 15 17 10%22/><line x1=%2212%22 y1=%2215%22 x2=%2212%22 y2=%223%22/></svg>';}">
         <span class="dl-site-info">
-          <span class="dl-site-name">{{ item.site }}{% if dlMq %} <span class="dl-mq-badge">متعدد الجودات</span>{% endif %}</span>
-          <span class="dl-site-quality">{% if dlMq %}اختر الجودة المناسبة لك من صفحة التحميل: 1080 أو 720 أو 480{% else %}اضغط هنا للتحميل بجودة {{ qualityLabel }}{% endif %}</span>
+          <span class="dl-site-name">{{ item.site }}{% if dlMq %} <span class="dl-mq-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>متعدد الجودات</span>{% endif %}</span>
+          <span class="dl-site-quality">{% if dlMq %}اختر الجودة المناسبة لك{% else %}اضغط هنا للتحميل بجودة {{ qualityLabel }}{% endif %}</span>
         </span>
         <svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>

@@ -3218,7 +3218,9 @@ test('OK.ru and StreamHG are marked «متعدد الجودات» on watch tabs 
   assert.match(layout, /\(s\.url \| toEmbedUrl\) \| isMultiQuality/);
   assert.match(layout, /<span class="srv-mq">متعدد الجودات<\/span>/);
   assert.match(layout, /item\.url \| isMultiQuality/);
-  assert.match(layout, /<span class="dl-mq-badge">متعدد الجودات<\/span>/);
+  assert.match(layout, /<span class="dl-mq-badge"><svg [^>]*>.*?<\/svg>متعدد الجودات<\/span>/);
+  assert.match(layout, /\{% if dlMq %\}اختر الجودة المناسبة لك\{% else %\}/);
+  assert.match(layout, /html\.arw-dark \.dl-mq-badge\{/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   const re = new RegExp(cfg.match(/MULTI_QUALITY_RE = \/(.+)\/i;/)![1], 'i');
   for (const h of ['ok.ru', 'streamhg.com', 'hgcloud.to', 'hanerix.com']) assert.ok(re.test(h), h);
