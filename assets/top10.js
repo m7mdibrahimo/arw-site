@@ -51,7 +51,7 @@
   var API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/top10?range=';
   var cache = {};
   // The last list is kept in the browser, so on a return visit the row shows at once and its pictures
-  // come from the browser cache (INCIDENTS #279).
+  // come from the browser cache (INCIDENTS #285).
   var STORE = 'arw_top10_v3';
   function stored() { try { var d = JSON.parse(localStorage.getItem(STORE) || 'null'); return d && Array.isArray(d.items) && Date.now() - d.at < 6 * 3600e3 ? d.items : null; } catch (e) { return null; } }
   function load(range) {

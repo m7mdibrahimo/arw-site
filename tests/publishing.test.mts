@@ -3156,7 +3156,7 @@ test('the host check counts a CDN error page (5xx) as down (INCIDENTS #278)', ()
   assert.match(src, /\{ \.\.\.\(prev\.strikes \|\| \{\}\) \}/);
 });
 
-test('«الأكثر مشاهدة» uses each page\'s small card picture, not the full upload (INCIDENTS #279)', () => {
+test('«الأكثر مشاهدة» uses each page\'s small card picture, not the full upload (INCIDENTS #285)', () => {
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /\{% optThumbMeta image %\}/);
   assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /meta\[name="arw-thumb"\]/);
   const js = fs.readFileSync('assets/top10.js', 'utf-8');
@@ -3165,7 +3165,7 @@ test('«الأكثر مشاهدة» uses each page\'s small card picture, not th
   new Function(js); // still valid JavaScript
 });
 
-test('a show page path ends at its program, and every show has a program (INCIDENTS #282)', () => {
+test('a show page path ends at its program, and every show has a program (INCIDENTS #286)', () => {
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.match(layout, /libraryProgramOf\(page\.url, collections\.library\)/);
   assert.equal((layout.match(/"@type": ?"BreadcrumbList"/g) || []).length, 1, 'one BreadcrumbList');
@@ -3173,7 +3173,7 @@ test('a show page path ends at its program, and every show has a program (INCIDE
   assert.deepEqual(missing, []);
 });
 
-test('«الأكثر مشاهدة» shows the short Arabic name, not the search title (INCIDENTS #283)', () => {
+test('«الأكثر مشاهدة» shows the short Arabic name, not the search title (INCIDENTS #287)', () => {
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /<meta name="arw-card-title" content="\{\{ \(headline or title\) \| escape \}\}">/);
   assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /if \(cardTitle\) title = decodeEntities\(cardTitle\)\.trim\(\);/);
 });

@@ -765,7 +765,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode("optImg", optImgShortcode);
   // A small card picture (480px WebP, ~30 KB) for lists built in the browser. «الأكثر مشاهدة» showed
   // each page's og:image — the original upload, 350 KB and more — so its ten cards loaded long after
-  // everything else (INCIDENTS #279). Pages carry it as <meta name="arw-thumb"> (a name with «:» never matched in the worker's HTMLRewriter).
+  // everything else (INCIDENTS #285). Pages carry it as <meta name="arw-thumb"> (a name with «:» never matched in the worker's HTMLRewriter).
   const optThumb = async function(src) {
     const input = (src && typeof src === "string") ? src.trim() : "";
     if (!input || /^https?:\/\//i.test(input)) return "";
@@ -1232,7 +1232,7 @@ module.exports = function(eleventyConfig) {
     };
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
-  // The show's own program page for the navigation path: الرئيسية › عروض المصارعة › WWE › WWE RAW (INCIDENTS #282)
+  // The show's own program page for the navigation path: الرئيسية › عروض المصارعة › WWE › WWE RAW (INCIDENTS #286)
   eleventyConfig.addNunjucksGlobal("libraryProgramOf", function(url, library) {
     const prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
     return prog ? { slug: prog.slug, name: prog.name } : null;

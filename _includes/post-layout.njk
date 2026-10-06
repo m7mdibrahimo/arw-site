@@ -35,7 +35,7 @@
 <meta property="og:description" content="{{ metaDesc }}">
 <meta property="og:image" content="{{ schemaImage }}">
 {% if image and not isNews %}{% optThumbMeta image %}{% endif %}
-{# The short Arabic name for cards built in the browser («عرض الرو 28.09.2026 مترجم»), not the search title (INCIDENTS #283) #}
+{# The short Arabic name for cards built in the browser («عرض الرو 28.09.2026 مترجم»), not the search title (INCIDENTS #287) #}
 {% if not isNews and (headline or title) %}<meta name="arw-card-title" content="{{ (headline or title) | escape }}">{% endif %}
 <meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
@@ -1232,7 +1232,7 @@
       {% set crumbProg = libraryProgramOf(page.url, collections.library) if (not isNews and not isRecap) else null %}
       {% if crumbProg %}<span aria-hidden="true">‹</span><a href="/library/{{ crumbProg.slug }}/"><bdi>{{ crumbProg.name }}</bdi></a>{% endif %}
     </nav>
-    {# one BreadcrumbList only: the one in <head> has the whole path (INCIDENTS #282) #}
+    {# one BreadcrumbList only: the one in <head> has the whole path (INCIDENTS #286) #}
     {% endif %}
     <div class="post-meta-bar">
       {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ "عرض" if (show_type == 'عرض كامل' or not show_type) else show_type }}</span>{% endif %}
