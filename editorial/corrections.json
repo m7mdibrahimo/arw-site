@@ -2,6 +2,26 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "تعلقت المصارعة",
+   "right": "علّقت المصارعة",
+   "note": "«تعلّق على» يعني «علّق»: تعلّقت بالشيء غير علّقت على الأمر — INCIDENTS #308"
+  },
+  {
+   "wrong": "ومدير العروض ليل ياتي",
+   "right": "ليل ياتي، الذي يظهر مديرًا لأعمال المصارعين في WWE،",
+   "note": "WWE Manager = مدير أعمال على الشاشة، مش «مدير العروض» — INCIDENTS #308"
+  },
+  {
+   "wrong": "مسؤولة السلطة",
+   "right": "إحدى شخصيات السلطة على الشاشة",
+   "note": "on-screen authority figure ترجمة مكسورة — INCIDENTS #308"
+  },
+  {
+   "wrong": "أل سابيينزا",
+   "right": "آل سابينزا",
+   "note": "Al Sapienza — INCIDENTS #308"
+  },
+  {
    "wrong": "متأحرا",
    "right": "متأخرا",
    "note": "خطأ إملائي — الخاء لا الحاء (INCIDENTS #294)"

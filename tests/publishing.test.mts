@@ -3463,3 +3463,10 @@ test('every scheduled workflow the round depends on has the Worker backstop trig
     assert.ok(fs.readFileSync(`.github/workflows/${wf}`, 'utf-8').includes('workflow_dispatch'), wf);
   }
 });
+
+test('«تعلقت على» and broken «authority figure» / «WWE Manager» translations are fixed (INCIDENTS #308)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('تعلقت المصارعة تيفاني ستراتون على المقطع'), 'علّقت المصارعة تيفاني ستراتون على المقطع');
+  assert.equal(applyCorrections('انضمت مسؤولة السلطة داريا ري'), 'انضمت إحدى شخصيات السلطة على الشاشة داريا ري');
+  assert.equal(applyCorrections('مع تارا ريد وأل سابيينزا'), 'مع تارا ريد وآل سابينزا');
+});
