@@ -388,7 +388,6 @@ eleventyComputed:
     </ul>
   </nav>
 </header>
-{% macro showsCount(n) %}{% if n == 1 %}عرض واحد{% elif n == 2 %}عرضان{% elif n <= 10 %}{{ n }} عروض{% else %}{{ n }} عرضًا{% endif %}{% endmacro %}
 {% set lib = collections.library %}
 {% set heroImg = lib[0].latest.image if (lib.length and lib[0].latest) else "" %}
 <div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg heroImg, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
@@ -401,7 +400,7 @@ eleventyComputed:
 
 <div class="page-head reveal">
   <h2 style="color:var(--gold);">أقسام العروض</h2>
-  <p>{{ lib.length }} قسمًا · {{ collections.shows.length }} عرضًا مترجمًا</p>
+  <p>{{ lib.length | arCount("قسم واحد", "قسمان", "أقسام", "قسم") }} · {{ collections.shows.length | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</p>
 </div>
 <section class="content"><div class="wrap">
   <div class="lib-tools reveal">
@@ -419,7 +418,7 @@ eleventyComputed:
     <a class="lib-card reveal" href="/library/{{ p.slug }}/" data-fed="{{ p.federation }}" data-name="{{ p.name | lower }}">
       <div class="lib-thumb">
         <img src="{% optImg p.latest.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{{ p.name }}" loading="lazy" width="400" height="225">
-        <span class="lib-count"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>{{ showsCount(p.count) }}</span>
+        <span class="lib-count"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>{{ p.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</span>
       </div>
       <div class="lib-body">
         <h3 class="lib-name"><bdi>{{ p.name }}</bdi></h3>

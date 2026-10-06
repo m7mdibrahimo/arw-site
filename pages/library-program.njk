@@ -392,11 +392,10 @@ eleventyComputed:
     </ul>
   </nav>
 </header>
-{% macro showsCount(n) %}{% if n == 1 %}عرض واحد{% elif n == 2 %}عرضان{% elif n <= 10 %}{{ n }} عروض{% else %}{{ n }} عرضًا{% endif %}{% endmacro %}
 <div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg lp.prog.latest.image, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
   <div class="hero-inner">
     <span class="eyebrow">مكتبة العروض</span>
-    <h1 class="hero-title"><bdi>{% if lp.prog.arLibTitle and lp.pageNumber == 1 %}{{ lp.prog.arLibTitle }}{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{% if lp.prog.count == 1 %}عرض واحد مترجم{% elif lp.prog.count == 2 %}عرضان مترجمان{% else %}{{ showsCount(lp.prog.count) }} مترجمة{% endif %}</span></h1>
+    <h1 class="hero-title"><bdi>{% if lp.prog.arLibTitle and lp.pageNumber == 1 %}{{ lp.prog.arLibTitle }}{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{{ lp.prog.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</span></h1>
     {#- one line under the title, the same on every program page (owner chose this wording, 2026-10-06) -#}
     <p>{% if lp.prog.arLibTitle %}شاهد أحدث {{ lp.prog.arLibTitle | replace(" مترجمة", "") }} مترجمة إلى العربية، وتصفّح أرشيف <bdi>{{ lp.prog.name }}</bdi> كاملًا من الأحدث إلى الأقدم.{% else %}تصفّح أرشيف عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة إلى العربية كاملًا من الأحدث إلى الأقدم.{% endif %}</p>
   </div>

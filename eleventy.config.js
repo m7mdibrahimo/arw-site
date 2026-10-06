@@ -312,6 +312,16 @@ module.exports = function(eleventyConfig) {
   // Servers that play the same video in several qualities (the viewer picks 1080/720/480 inside the player):
   // OK.ru and StreamHG with its mirrors (INCIDENTS #288)
   const MULTI_QUALITY_RE = /(^|\.)(ok\.ru|hgcloud\.[a-z]+|streamhg\.[a-z]+|shgcloud\.[a-z]+|hgplayer\.[a-z]+|hgstream\.[a-z]+|hanerix\.com)$/i;
+  // A count with its noun the way the owner writes it (2026-10-06): 1 «عرض واحد مترجم», 2 «عرضان مترجمان»,
+  // 3–10 the plural «10 عروض مترجمة», 11 and up the singular «11 عرض مترجم» (by the last two digits: 103 «عروض»)
+  eleventyConfig.addFilter("arCount", function(n, one, two, few, many) {
+    n = Number(n) || 0;
+    const r = n % 100;
+    if (n === 1) return one;
+    if (n === 2) return two;
+    if (r >= 3 && r <= 10) return n + " " + few;
+    return n + " " + many;
+  });
   eleventyConfig.addFilter("isMultiQuality", function(u) {
     try { return MULTI_QUALITY_RE.test(new URL(String(u || "").trim()).hostname.replace(/^www\./, "")); } catch (e) { return false; }
   });

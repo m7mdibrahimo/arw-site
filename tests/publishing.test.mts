@@ -3349,3 +3349,18 @@ test('library pages: plural title from the program\'s own name, no «آخر عر
   assert.match(cfg, /\.replace\(\/\\s\*\(\?:الموسم\|موسم\)\\s\*\\d\+\/g, " "\)/);
   assert.match(cfg, /arName = arName\.replace\(\/\\s\+\(19\|20\)\\d\{2\}\$\/, ""\);/);
 });
+
+test('library counts read «10 عروض مترجمة» up to ten and «11 عرض مترجم» from eleven (INCIDENTS #298)', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  const body = cfg.match(/addFilter\("arCount", (function\(n, one, two, few, many\) \{[\s\S]*?\n  \})\);/)![1];
+  const arCount = new Function('return ' + body)();
+  const w = ['عرض واحد مترجم', 'عرضان مترجمان', 'عروض مترجمة', 'عرض مترجم'];
+  assert.equal(arCount(1, ...w), 'عرض واحد مترجم');
+  assert.equal(arCount(2, ...w), 'عرضان مترجمان');
+  assert.equal(arCount(3, ...w), '3 عروض مترجمة');
+  assert.equal(arCount(10, ...w), '10 عروض مترجمة');
+  assert.equal(arCount(11, ...w), '11 عرض مترجم');
+  assert.equal(arCount(100, ...w), '100 عرض مترجم');
+  assert.equal(arCount(103, ...w), '103 عروض مترجمة');
+  for (const f of ['pages/library.njk', 'pages/library-program.njk']) assert.doesNotMatch(fs.readFileSync(f, 'utf-8'), /showsCount|عرضًا/, f);
+});
