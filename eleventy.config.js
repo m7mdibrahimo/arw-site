@@ -765,7 +765,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksAsyncShortcode("optImg", optImgShortcode);
   // A small card picture (480px WebP, ~30 KB) for lists built in the browser. «الأكثر مشاهدة» showed
   // each page's og:image — the original upload, 350 KB and more — so its ten cards loaded long after
-  // everything else (INCIDENTS #279). Pages carry it as <meta name="arw:thumb">.
+  // everything else (INCIDENTS #279). Pages carry it as <meta name="arw-thumb"> (a name with «:» never matched in the worker's HTMLRewriter).
   const optThumb = async function(src) {
     const input = (src && typeof src === "string") ? src.trim() : "";
     if (!input || /^https?:\/\//i.test(input)) return "";
@@ -783,7 +783,7 @@ module.exports = function(eleventyConfig) {
   // The whole tag, or nothing (an async shortcode can't be captured with {% set %} in Nunjucks)
   eleventyConfig.addNunjucksAsyncShortcode("optThumbMeta", async function(src) {
     const url = await optThumb(src);
-    return url ? `<meta name="arw:thumb" content="https://arab-wrestling.com${url}">` : "";
+    return url ? `<meta name="arw-thumb" content="https://arab-wrestling.com${url}">` : "";
   });
 
   const getItemTimestamp = function(item) {

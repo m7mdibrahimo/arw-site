@@ -3158,7 +3158,7 @@ test('the host check counts a CDN error page (5xx) as down (INCIDENTS #278)', ()
 
 test('«الأكثر مشاهدة» uses each page\'s small card picture, not the full upload (INCIDENTS #279)', () => {
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /\{% optThumbMeta image %\}/);
-  assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /meta\[name="arw:thumb"\]/);
+  assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /meta\[name="arw-thumb"\]/);
   const js = fs.readFileSync('assets/top10.js', 'utf-8');
   assert.match(js, /<img class="t10-img" src=/);
   assert.match(js, /localStorage\.setItem\(STORE/);
