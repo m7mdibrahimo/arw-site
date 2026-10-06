@@ -1,5 +1,25 @@
 [
   {
+    "id": 1909860841,
+    "link": "https://www.wrestlinginc.com/2278794/aew-jim-ross-undergoing-another-brain-surgery/",
+    "date": "Tue, 06 Oct 2026 15:12:11 +0000",
+    "date_gmt": "2026-10-06T15:12:11.000Z",
+    "title": {
+      "rendered": "AEW's Jim Ross Announces He's Undergoing Another Brain Surgery"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jim-ross-announces-hes-undergoing-another-brain-surgery/l-intro-1791299372.jpg"
+  },
+  {
+    "id": 4861904575,
+    "link": "https://www.wrestlinginc.com/2278477/aj-styles-avery-styles-high-expectations/",
+    "date": "Tue, 06 Oct 2026 15:00:00 +0000",
+    "date_gmt": "2026-10-06T15:00:00.000Z",
+    "title": {
+      "rendered": "AJ Styles Has High Expectations For His Son Avery Styles: 'I'm A Little Hard On Him'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aj-styles-has-high-expectations-for-his-son-avery-styles-im-a-little-hard-on-him/l-intro-1791282117.jpg"
+  },
+  {
     "id": 4825455027,
     "link": "https://www.wrestlinginc.com/2278761/wwe-enzo-amore-big-cass-dave-meltzer-details-original-plan-return/",
     "date": "Tue, 06 Oct 2026 14:52:46 +0000",
@@ -7,7 +27,7 @@
     "title": {
       "rendered": "Dave Meltzer Details WWE's Original Plan For Enzo Amore's Return"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-details-wwes-original-plan-for-enzo-amores-return/l-intro-1791298229.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-enzo-amore-big-cass-dave-meltzer-details-original-plan-return/l-intro-1791299035.jpg"
   },
   {
     "id": 4565584823,
@@ -17,7 +37,7 @@
     "title": {
       "rendered": "John Cena Comments On Plans For WWE's John Cena Classic Later This Year"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-comments-on-plans-for-wwes-john-cena-classic-later-this-year/l-intro-1791297245.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-john-cena-classic-plans-comments/l-intro-1791298730.jpg"
   },
   {
     "id": 2702925038,
@@ -178,25 +198,5 @@
       "rendered": "WWE's John Cena On Vince McMahon: 'It's OK To Love Somebody When They're Not Perfect'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-john-cena-on-vince-mcmahon-its-ok-to-love-somebody-when-theyre-not-perfect/l-intro-1791238061.jpg"
-  },
-  {
-    "id": 3245003227,
-    "link": "https://www.wrestlinginc.com/2278236/former-wwe-star-enzo-calls-out-exploitative-timing-recently-released-interview/",
-    "date": "Mon, 05 Oct 2026 22:02:24 +0000",
-    "date_gmt": "2026-10-05T22:02:24.000Z",
-    "title": {
-      "rendered": "Former WWE Star Enzo Calls Out Exploitative Timing Of Recently Released Interview"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-enzo-calls-out-exploitative-timing-of-recently-released-interview/l-intro-1791237461.jpg"
-  },
-  {
-    "id": 2076490113,
-    "link": "https://www.wrestlinginc.com/2278184/wwe-surprised-dwayne-rock-johnson-tribute-pac/",
-    "date": "Mon, 05 Oct 2026 21:16:10 +0000",
-    "date_gmt": "2026-10-05T21:16:10.000Z",
-    "title": {
-      "rendered": "WWE Surprised By Dwayne 'The Rock' Johnson's Tribute To PAC"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-surprised-by-dwayne-the-rock-johnsons-tribute-to-pac/l-intro-1791234807.jpg"
   }
 ]
