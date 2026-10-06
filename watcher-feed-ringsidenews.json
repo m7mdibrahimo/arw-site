@@ -1,5 +1,35 @@
 [
   {
+    "id": 802251709,
+    "link": "https://www.ringsidenews.com/roman-reigns-announced-october-19-wwe-raw-san-diego/",
+    "date": "Tue, 06 Oct 2026 20:25:08 +0000",
+    "date_gmt": "2026-10-06T20:25:08.000Z",
+    "title": {
+      "rendered": "Roman Reigns Announced for October 19 WWE RAW in San Diego"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/roman-reigns-contract-signing-amp-oba-femi-appearance-set-for-may-25-wwe-raw-17.jpg?x51860"
+  },
+  {
+    "id": 802251701,
+    "link": "https://www.ringsidenews.com/tna-bound-glory-2026-gets-new-start-time-ahead-tampa-show/",
+    "date": "Tue, 06 Oct 2026 20:23:01 +0000",
+    "date_gmt": "2026-10-06T20:23:01.000Z",
+    "title": {
+      "rendered": "TNA Bound For Glory 2026 Gets New Start Time Ahead of Tampa Show"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/tna-bound-for-glory-2026-gets-new-start-time-ahead-of-tampa-show-54.jpg?x51860"
+  },
+  {
+    "id": 802251696,
+    "link": "https://www.ringsidenews.com/drakes-shabang-named-new-official-theme-song-wwe-nxt/",
+    "date": "Tue, 06 Oct 2026 20:16:49 +0000",
+    "date_gmt": "2026-10-06T20:16:49.000Z",
+    "title": {
+      "rendered": "Drake’s “Shabang” Named New Official Theme Song for WWE NXT"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/drakes-shabang-named-new-official-theme-song-for-wwe-nxt-18.jpg?x51860"
+  },
+  {
     "id": 802251690,
     "link": "https://www.ringsidenews.com/jacy-jayne-feared-she-about-released-before-nxt-womens-title-win/",
     "date": "Tue, 06 Oct 2026 20:04:15 +0000",
@@ -118,35 +148,5 @@
       "rendered": "Daria Rae Lands Movie Role in Upcoming Thriller Lazarus Syndrome"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/01/daria-rae-explains-why-she-didnt-join-tna-immediately-after-wwe-exit-39.jpg?x51860"
-  },
-  {
-    "id": 802251629,
-    "link": "https://www.ringsidenews.com/rush-addresses-timeline-his-aew-return/",
-    "date": "Tue, 06 Oct 2026 16:26:54 +0000",
-    "date_gmt": "2026-10-06T16:26:54.000Z",
-    "title": {
-      "rendered": "RUSH Addresses Timeline for His AEW Return"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/rush-addresses-timeline-for-his-aew-return-14.jpg?x51860"
-  },
-  {
-    "id": 802251608,
-    "link": "https://www.ringsidenews.com/wwe-streaming-lawsuit-plaintiffs-fight-espn-bamtechs-push-toward-arbitration/",
-    "date": "Tue, 06 Oct 2026 15:52:04 +0000",
-    "date_gmt": "2026-10-06T15:52:04.000Z",
-    "title": {
-      "rendered": "WWE Streaming Lawsuit Plaintiffs Fight ESPN and BAMTech’s Push Toward Arbitration"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/wwe-granted-extension-to-respond-to-espn-streaming-lawsuit-11.jpg?x51860"
-  },
-  {
-    "id": 802251616,
-    "link": "https://www.ringsidenews.com/first-look-aew-grand-slam-france-stage-setup-adidas-arena/",
-    "date": "Tue, 06 Oct 2026 15:27:24 +0000",
-    "date_gmt": "2026-10-06T15:27:24.000Z",
-    "title": {
-      "rendered": "First Look at AEW Grand Slam France Stage Setup at Adidas Arena"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/first-look-at-aew-grand-slam-france-stage-setup-at-adidas-arena-43.jpg?x51860"
   }
 ]
