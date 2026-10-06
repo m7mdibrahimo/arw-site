@@ -2903,6 +2903,12 @@ test('an echoed instruction about quote marks is removed and flagged (INCIDENTS 
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'نص فيه كما في المصدر بالضبط ويكمل الكلام هنا بشكل عادي وطويل.', []).some(i => i.code === 'echoed_instruction'));
 });
 
+test('filler «تخوض خطواتها القادمة» instead of a sourced fact is flagged (INCIDENTS #292)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'يذكر أن الثنائي رحل عن الاتحاد، حيث تخوض داكوتا كاي خطواتها القادمة بينما يعود هو تدريجيا.', []).some(i => i.code === 'vague_filler'));
+  assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'خاضت داكوتا كاي آخر نزالاتها في أبريل الماضي وهي تفكر في الخطوة القادمة بهدوء.', []).some(i => i.code === 'vague_filler'));
+});
+
 test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
@@ -3213,4 +3219,25 @@ test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
   assert.equal(shelvedNotCancelled('اتحاد AEW يلغي خططه', 'AEW cancelled the match.'), 'اتحاد AEW يلغي خططه');
   const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf-8');
   assert.match(watcher, /shelvedNotCancelled\(draft\.title, plainText\)/);
+});
+
+test('the watch box: servers listed beside the player in one box, notice inside it (INCIDENTS #292)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(layout, /<section class="watch-deck/);
+  assert.match(layout, /class="wd-list" id="serverTabs"/);
+  assert.match(layout, /class="srv-row\{% if loop\.index0 == 0 %\} active/);
+  // the list is exactly as tall as the player, and six rows share it
+  assert.match(layout, /\.wd-list\{ position:absolute; inset:0;/);
+  assert.match(layout, /\.srv-row\{ flex:1 1 0; min-height:44px;/);
+  // the owner's notice, word for word, inside the box; the old separate notice is gone
+  assert.ok(layout.includes('<b>تنبيه:</b> سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية'));
+  assert.doesNotMatch(layout, /class="quality-notice"/);
+  // the player script follows the new rows, not the old tabs
+  assert.doesNotMatch(layout, /querySelectorAll\('\.server-tab'\)/);
+  assert.match(layout, /var srvRows = Array\.from\(document\.querySelectorAll\('\.srv-row'\)\);/);
+  // cinema mode covers the whole screen
+  assert.match(layout, /body\.cinema-mode-active \.post-wrap\{ transform:none !important; \}/);
+  // no colloquial words in the box
+  const deck = layout.slice(layout.indexOf('<section class="watch-deck'), layout.indexOf('</section>', layout.indexOf('<section class="watch-deck')));
+  assert.doesNotMatch(deck, /دلوقتي|اختار |اللي|مش |ماشتغلش/);
 });

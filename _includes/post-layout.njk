@@ -322,15 +322,111 @@
   .post-sub-title{ font-size:15px; font-weight:800; color:var(--gold); margin-bottom:16px; display:inline-block; }
   .post-desc{ font-size:15.5px; line-height:1.75; color:var(--ink); margin-bottom:24px; padding:16px 20px; background:var(--card); border-radius:12px; border:1px solid var(--line); border-inline-start:4px solid var(--teal); box-shadow:0 4px 12px -8px rgba(0,0,0,0.06); }
   .player-toolbar{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; margin-bottom:16px; }
-  .server-tabs{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; align-items:center; margin-bottom:0; width:100%; }
-  .server-tab{ background:var(--card); border:1px solid var(--line); color:var(--ink); font-family:inherit; font-weight:800; font-size:13.5px; padding:9px 18px; border-radius:999px; cursor:pointer; transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1); user-select:none; display:inline-flex; align-items:center; gap:7px; }
-  .server-tab:hover{ border-color:var(--teal); color:var(--teal); transform:translateY(-2px); box-shadow:0 4px 12px rgba(14,149,148,0.15); }
-  .server-tab.active{ background:var(--teal); color:#fff !important; border-color:var(--teal); box-shadow:0 4px 14px rgba(14,149,148,0.3); }
-  .server-tab svg{ flex-shrink:0; }
   /* multi-quality servers (OK.ru, StreamHG) — INCIDENTS #288 */
   .srv-mq{ font-size:10.5px; font-weight:800; line-height:1; padding:4px 8px; border-radius:999px; background:linear-gradient(135deg, var(--gold), var(--coral)); color:#fff; letter-spacing:0; white-space:nowrap; box-shadow:0 2px 8px rgba(242,165,60,.35); }
-  .server-tab.is-mq{ border-color:var(--gold); }
-  .server-tab.is-mq.active .srv-mq{ background:#fff; color:var(--teal); box-shadow:none; }
+
+  /* ═══ «غرفة التحكم»: the watch box — servers on the right, player on the left, one dark box ═══ */
+  .watch-deck{
+    --wd-bg1:#151a26; --wd-bg2:#0a0d13; --wd-line:rgba(255,255,255,.08); --wd-ink:#eef1f6; --wd-muted:#8f98a8;
+    --wd-teal:#2fd0cc; --wd-teal-ink:#04201f; --wd-row:rgba(255,255,255,.035);
+    position:relative; isolation:isolate; overflow:hidden; container-type:inline-size;
+    width:min(1060px, calc(100vw - 48px)); margin:0 calc(50% - min(530px, 50vw - 24px)) 30px;
+    background:linear-gradient(160deg, var(--wd-bg1), var(--wd-bg2));
+    color:var(--wd-ink); border-radius:24px; padding:14px;
+    box-shadow:0 34px 70px -38px rgba(14,149,148,.6), 0 18px 40px -26px rgba(0,0,0,.55), inset 0 0 0 1px var(--wd-line);
+  }
+  .watch-deck::before{ content:""; position:absolute; z-index:-1; inset:-45% auto auto -18%; width:62%; height:130%; background:radial-gradient(closest-side, rgba(47,208,204,.16), transparent); pointer-events:none; }
+  .watch-deck::after{ content:""; position:absolute; z-index:-1; inset:auto -10% -60% auto; width:50%; height:110%; background:radial-gradient(closest-side, rgba(124,110,232,.12), transparent); pointer-events:none; }
+  .wd-bar{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:2px 4px 12px; }
+  .wd-title{ display:flex; align-items:center; gap:10px; min-width:0; flex-wrap:wrap; }
+  .wd-live{ display:inline-flex; align-items:center; gap:7px; font-size:12px; font-size:clamp(11.5px, 1.15cqi, 12.5px); font-weight:800; color:#ff8b76; background:rgba(255,111,89,.12); border:1px solid rgba(255,111,89,.32); padding:3px 11px; border-radius:999px; white-space:nowrap; }
+  .wd-live::before{ content:""; width:7px; height:7px; border-radius:50%; background:#ff6f59; animation:wdPulse 1.7s infinite; }
+  @keyframes wdPulse{ 0%{ box-shadow:0 0 0 0 rgba(255,111,89,.6); } 70%{ box-shadow:0 0 0 8px rgba(255,111,89,0); } 100%{ box-shadow:0 0 0 0 rgba(255,111,89,0); } }
+  .wd-now{ font-family:'Cairo',sans-serif; font-size:15px; font-size:clamp(13.5px, 1.5cqi, 16px); font-weight:800; color:var(--wd-ink); white-space:nowrap; }
+  .wd-count{ font-size:12.5px; font-size:clamp(12px, 1.2cqi, 13px); font-weight:700; color:var(--wd-muted); white-space:nowrap; }
+  .wd-acts{ width:auto !important; margin:0 !important; flex-wrap:nowrap !important; gap:6px !important; }
+  .watch-deck .wd-acts .player-action-btn{ background:rgba(255,255,255,.06); border:1px solid var(--wd-line); color:var(--wd-ink); box-shadow:none; border-radius:11px; padding:8px 14px; min-height:38px; font-size:13px; font-size:clamp(12.5px, 1.25cqi, 13.5px); backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .watch-deck .wd-acts .player-action-btn:hover{ background:rgba(47,208,204,.14); border-color:rgba(47,208,204,.5); color:var(--wd-teal); transform:translateY(-1px); box-shadow:none; }
+  .watch-deck .wd-acts .player-action-btn.is-active{ background:var(--wd-teal); color:var(--wd-teal-ink); border-color:var(--wd-teal); }
+  .wd-body{ display:grid; grid-template-columns:clamp(236px, 28%, 300px) minmax(0,1fr); gap:14px; }
+  .watch-deck.is-single .wd-body{ grid-template-columns:minmax(0,1fr); }
+  /* the list is exactly as tall as the player: six rows share its height, more than that scroll inside */
+  .wd-side{ position:relative; min-width:0; }
+  .wd-list{ position:absolute; inset:0; display:flex; flex-direction:column; gap:6px; padding:8px; overflow-y:auto; background:rgba(255,255,255,.025); border:1px solid var(--wd-line); border-radius:18px; scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.18) transparent; }
+  .srv-row{ flex:1 1 0; min-height:44px; max-height:74px; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:10px; padding:6px 10px; text-align:right; font-family:inherit; color:var(--wd-ink); background:var(--wd-row); border:1px solid transparent; border-radius:14px; cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; transition:background .2s ease, border-color .2s ease, box-shadow .25s ease, transform .2s ease; }
+  .srv-row:hover{ background:rgba(255,255,255,.07); border-color:var(--wd-line); }
+  .srv-row:active{ transform:scale(.985); }
+  .srv-row:focus-visible{ outline:2px solid var(--wd-teal); outline-offset:2px; }
+  .srv-num{ flex:none; width:36px; height:36px; width:clamp(32px, 3.5cqi, 38px); height:clamp(32px, 3.5cqi, 38px); border-radius:11px; display:grid; place-items:center; font-family:'Cairo',sans-serif; font-weight:900; font-size:16px; font-size:clamp(15px, 1.6cqi, 17px); background:rgba(255,255,255,.07); color:var(--wd-muted); transition:all .25s ease; }
+  .srv-name{ display:flex; flex-direction:column; min-width:0; line-height:1.3; }
+  .srv-name b{ font-size:15px; font-size:clamp(14px, 1.45cqi, 15.5px); font-weight:800; white-space:nowrap; }
+  .srv-name small{ font-size:12px; font-size:clamp(12px, 1.15cqi, 12.5px); font-weight:600; color:var(--wd-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .srv-name small > span{ display:none; align-items:center; gap:6px; }
+  .srv-name small > .s-idle{ display:inline; }
+  .srv-row.active .s-idle{ display:none; }
+  .srv-row.active .s-on{ display:inline-flex; color:#5fe3df; }
+  .watch-deck.is-loading .srv-row.active .s-on{ display:none; }
+  .watch-deck.is-loading .srv-row.active .s-load{ display:inline-flex; color:#ffd38a; }
+  .srv-eq{ display:inline-flex; gap:2px; align-items:flex-end; height:11px; }
+  .srv-eq i{ width:3px; height:3px; border-radius:2px; background:currentColor; animation:srvEq 1s ease-in-out infinite; }
+  .srv-eq i:nth-child(2){ animation-delay:.2s; } .srv-eq i:nth-child(3){ animation-delay:.4s; }
+  @keyframes srvEq{ 0%,100%{ height:3px; } 50%{ height:11px; } }
+  .srv-spin{ width:10px; height:10px; border-radius:50%; border:2px solid rgba(255,211,138,.3); border-top-color:#ffd38a; animation:loaderSpin .8s linear infinite; }
+  .srv-row .srv-mq{ font-size:11px; font-size:clamp(10.5px, 1.05cqi, 11.5px); padding:4px 9px; background:linear-gradient(90deg, #f4b352, #ff8b76); color:#1b1206; box-shadow:none; }
+  .srv-row.active{ background:linear-gradient(90deg, rgba(47,208,204,.07), rgba(47,208,204,.22)); border-color:rgba(47,208,204,.55); box-shadow:0 0 0 3px rgba(47,208,204,.08), 0 10px 24px -14px rgba(47,208,204,.6); }
+  .srv-row.active .srv-num{ background:var(--wd-teal); color:var(--wd-teal-ink); box-shadow:0 6px 16px -6px rgba(47,208,204,.8); }
+  .watch-deck .video-embed-container{ min-width:0; }
+  .watch-deck .video-embed{ margin:0 !important; border-radius:16px !important; box-shadow:0 0 0 1px var(--wd-line), 0 20px 40px -24px rgba(0,0,0,.9) !important; border:0 !important; }
+  .wd-foot{ display:flex; align-items:center; justify-content:space-between; gap:6px 16px; flex-wrap:wrap; padding:12px 4px 0; font-size:13px; font-size:clamp(12.5px, 1.25cqi, 13.5px); line-height:1.6; color:var(--wd-muted); }
+  .wd-tip{ display:flex; align-items:flex-start; gap:8px; min-width:0; flex:1 1 100%; }
+  .wd-tip-ico{ flex:none; width:17px; height:17px; margin-top:2px; color:#ff8b76; }
+  .wd-tip b{ color:#ff8b76; font-weight:800; }
+  .wd-tip a{ color:var(--wd-teal); font-weight:800; text-decoration:none; border-bottom:1px dashed rgba(47,208,204,.5); }
+  .wd-tip a:hover{ border-bottom-style:solid; }
+  .wd-keys{ white-space:nowrap; font-size:.92em; opacity:.85; }
+  .wd-keys kbd{ font-family:inherit; font-size:11.5px; font-weight:800; color:var(--wd-ink); background:rgba(255,255,255,.08); border:1px solid var(--wd-line); border-bottom-width:2px; border-radius:6px; padding:0 6px; }
+  @media (hover:none){ .wd-keys{ display:none; } }
+  html.arw-dark .watch-deck{ --wd-bg1:#121722; --wd-bg2:#07090d; box-shadow:0 34px 70px -38px rgba(47,208,204,.45), inset 0 0 0 1px rgba(255,255,255,.09); }
+  /* the reveal animation leaves a transform on .post-wrap, which made the «fixed» dark backdrop cover only the
+     820px text column; without it the backdrop covers the whole screen */
+  body.cinema-mode-active .post-wrap{ transform:none !important; }
+  body.cinema-mode-active header, body.cinema-mode-active .arw-bottom-nav{ opacity:.1; pointer-events:none; transition:opacity .35s ease; }
+  body.cinema-mode-active .watch-deck{ position:relative; z-index:9999; box-shadow:0 0 70px rgba(47,208,204,.28), 0 24px 70px rgba(0,0,0,.9); }
+
+  /* narrow box (tablet, phone): player on top, every server on screen under it in one or two rows */
+  @container (max-width:880px){
+    .wd-body{ grid-template-columns:minmax(0,1fr); gap:10px; }
+    .wd-side{ order:2; }
+    .wd-list{ position:static; display:grid; grid-template-columns:repeat(auto-fit, minmax(98px, 1fr)); gap:6px; padding:6px; border-radius:16px; overflow:visible; }
+    .srv-row{ min-height:46px; max-height:none; grid-template-columns:auto minmax(0,1fr); gap:7px; padding:7px 8px; border-radius:12px; }
+    .srv-row .srv-mq{ grid-column:1 / -1; justify-self:start; font-size:10.5px; padding:3px 8px; }
+    .srv-num{ width:30px; height:30px; font-size:15px; border-radius:9px; }
+    .srv-name b{ font-size:14px; }
+    .srv-name small{ display:none; }
+  }
+  @container (max-width:560px){
+    .watch-deck .wd-acts .player-action-btn{ padding:0; width:40px; min-height:40px; height:40px; }
+    .watch-deck .wd-acts .player-action-btn svg{ width:16px; height:16px; }
+    .watch-deck .wd-acts .action-text, .watch-deck .wd-acts .player-cinema-btn span{ display:none; }
+    .wd-count{ display:none; }
+    .wd-title{ flex-wrap:nowrap; gap:8px; }
+    .wd-live{ font-size:0; gap:0; padding:0; border:0; background:none; }
+    .wd-live::before{ width:9px; height:9px; }
+    .wd-now{ font-size:14px; }
+    .wd-list{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+    .srv-row{ padding:6px 7px; gap:6px; }
+    .srv-name b{ font-size:13.5px; }
+    .wd-foot{ font-size:12.5px; padding-top:10px; }
+    .wd-tip-ico{ width:16px; height:16px; }
+  }
+  /* the smallest phones (320px): two columns so every name stays whole */
+  @container (max-width:330px){
+    .wd-list{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  }
+  @media (max-width:640px){
+    .watch-deck{ width:auto; margin:0 -6px 24px; border-radius:20px; padding:10px; }
+    .watch-deck .video-embed{ border-radius:12px !important; }
+  }
 
   .server-single-label{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--muted); padding:8px 16px; background:var(--card); border:1px solid var(--line); border-radius:999px; user-select:none; margin:0 auto; }
   .server-pulse-dot{ width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 0 0 rgba(16,185,129,0.7); animation:pulseDot 2s infinite; flex-shrink:0; }
@@ -557,8 +653,6 @@
 
   @media (max-width:640px){
     .player-toolbar{ gap:10px; }
-    .server-tabs{ gap:6px; }
-    .server-tab{ font-size:12px; padding:7px 13px; gap:5px; }
     .server-single-label{ font-size:12px; padding:7px 12px; }
     .player-actions{ gap:6px; }
     .player-action-btn{ font-size:11.5px; padding:7px 12px; gap:5px; }
@@ -569,10 +663,6 @@
     .player-actions{ justify-content:center; }
   }
 
-  .quality-notice{ display:flex; align-items:center; justify-content:center; text-align:center; gap:10px; background:var(--coral-soft); border-inline-start:3px solid var(--coral); color:var(--ink); font-size:13.5px; font-weight:600; line-height:1.7; padding:12px 16px; border-radius:10px; margin-bottom:16px; }
-  .quality-notice svg{ flex-shrink:0; color:var(--coral); }
-  .quality-notice strong{ color:var(--coral); font-weight:800; }
-  @media (max-width:640px){ .quality-notice{ font-size:12.5px; padding:10px 14px; } }
   
 
   /* Fullscreen native engine resets (Prevents black screen across all browsers) */
@@ -1078,8 +1168,6 @@
   /* ===== Mobile Navigation: everything visible, wraps neatly, no scrolling ===== */
   @media (max-width:600px){
     header{ position:sticky; top:0; }
-    .server-tabs{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:9px; margin-bottom:16px; }
-    .server-tab{ width:auto; min-width:96px; display:inline-flex; align-items:center; justify-content:center; text-align:center; padding:10px 18px; min-height:40px; font-size:13.5px; font-weight:800; border-radius:999px; white-space:nowrap; }
   }
   @media (max-width:1150px){
     .nav{ padding:14px 16px 16px; gap:12px; flex-wrap:wrap; justify-content:center; }
@@ -1304,57 +1392,73 @@
 
     {% if servers and servers.length %}
       {% set servers = servers | playableServers(videoHosts) %}
-      {% if isShow %}
-      <div class="quality-notice"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span><strong>تنبيه:</strong> سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية يُنصح بتحميل العرض.</span></div>
-      {% endif %}
-      <div class="player-toolbar">
-        {% if servers.length > 1 %}
-        <div class="server-tabs" id="serverTabs">
-          {% for s in servers %}
-          {% set mq = (s.url | toEmbedUrl) | isMultiQuality %}
-          <button class="server-tab{% if loop.index0 == 0 %} active{% endif %}{% if mq %} is-mq{% endif %}" data-srv="{{ (s.url | toEmbedUrl) | obfuscateUrl }}" data-srv-name="سيرفر {{ loop.index }}"{% if mq %} title="سيرفر متعدد الجودات: اختار الجودة من إعدادات المشغل"{% endif %}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
-            <span>سيرفر {{ loop.index }}</span>
-            {% if mq %}<span class="srv-mq">متعدد الجودات</span>{% endif %}
-          </button>
-          {% endfor %}
-        </div>
-        {% else %}
-        <div class="server-single-label">
-          <span class="server-pulse-dot"></span>
-          <span>مشغل الفيديو الرئيسي</span>
-        </div>
-        {% endif %}
-        <div class="player-actions">
-          <button type="button" class="player-action-btn player-reload-btn" id="playerReloadBtn" title="إعادة تشغيل المشغل عند انقطاع البث أو حدوث خطأ (اختصار: R)" aria-label="تحديث المشغل">
-            <span class="reload-icon-wrap">
-              <svg class="reload-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
-            </span>
-            <span class="action-text">تحديث المشغل</span>
-          </button>
-          <button type="button" class="player-action-btn player-cinema-btn" id="playerCinemaBtn" title="تفعيل وضع السينما وإعتام الإضاءة (اختصار: T)" aria-label="وضع السينما">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
-            <span>وضع السينما</span>
-          </button>
-        </div>
-      </div>
       {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
-      <div class="video-embed-container">
-        <div class="video-embed" id="videoEmbedBox" data-init-srv="{{ firstEmbedUrl | obfuscateUrl }}">
-          <div class="video-loader" id="videoLoader">
-            <div class="video-loader-spinner"></div>
-            <div class="video-loader-status" id="videoLoaderStatus">جاري الاتصال بالسيرفر وتشغيل الفيديو...</div>
-            <div class="video-loader-progress" aria-hidden="true"><span id="videoLoaderBar"></span></div>
-            <div class="video-loader-fallback" id="videoLoaderFallback" style="display:none;">
-              <span>السيرفر يستغرق وقتاً طويلاً؟</span>
-              <button type="button" class="loader-switch-srv-btn" id="loaderNextSrvBtn">تجربة سيرفر آخر ⏭</button>
+      {% set firstMq = firstEmbedUrl | isMultiQuality %}
+      {#- «غرفة التحكم»: one dark box, the server list on the right and the player on the left; all six servers
+          are on screen at once on a computer and a phone (owner, 2026-10-06) -#}
+      <section class="watch-deck{% if servers.length < 2 %} is-single{% endif %}" id="watchDeck" aria-label="مشاهدة أونلاين">
+        <div class="wd-bar">
+          <div class="wd-title">
+            <span class="wd-live">مشاهدة أونلاين</span>
+            <span class="wd-now" id="wdNow">{% if servers.length > 1 %}سيرفر 1{% if firstMq %} · متعدد الجودات{% endif %}{% else %}مشغل الفيديو الرئيسي{% endif %}</span>
+            {% if servers.length > 1 %}<span class="wd-count">{{ servers.length }} سيرفرات</span>{% endif %}
+          </div>
+          <div class="player-actions wd-acts">
+            <button type="button" class="player-action-btn player-reload-btn" id="playerReloadBtn" title="إعادة تشغيل المشغل عند انقطاع البث أو حدوث خطأ (اختصار: R)" aria-label="تحديث المشغل">
+              <span class="reload-icon-wrap">
+                <svg class="reload-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+              </span>
+              <span class="action-text">تحديث المشغل</span>
+            </button>
+            <button type="button" class="player-action-btn player-cinema-btn" id="playerCinemaBtn" title="تفعيل وضع السينما وإعتام الإضاءة (اختصار: T)" aria-label="وضع السينما">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+              <span>وضع السينما</span>
+            </button>
+          </div>
+        </div>
+        <div class="wd-body">
+          {% if servers.length > 1 %}
+          <div class="wd-side">
+            <div class="wd-list" id="serverTabs" role="tablist" aria-label="سيرفرات المشاهدة">
+              {% for s in servers %}
+              {% set mq = (s.url | toEmbedUrl) | isMultiQuality %}
+              <button type="button" role="tab" aria-selected="{{ 'true' if loop.index0 == 0 else 'false' }}" class="srv-row{% if loop.index0 == 0 %} active{% endif %}{% if mq %} is-mq{% endif %}" data-srv="{{ (s.url | toEmbedUrl) | obfuscateUrl }}" data-srv-name="سيرفر {{ loop.index }}"{% if mq %} data-mq="1" title="سيرفر متعدد الجودات: اختر الجودة من إعدادات المشغّل"{% endif %}>
+                <span class="srv-num">{{ loop.index }}</span>
+                <span class="srv-name">
+                  <b>سيرفر {{ loop.index }}</b>
+                  <small><span class="s-idle">{% if mq %}1080 · 720 · 480{% else %}اضغط للتشغيل{% endif %}</span><span class="s-on"><span class="srv-eq" aria-hidden="true"><i></i><i></i><i></i></span>يعمل الآن</span><span class="s-load"><span class="srv-spin" aria-hidden="true"></span>جاري التشغيل...</span></small>
+                </span>
+                {% if mq %}<span class="srv-mq">متعدد الجودات</span>{% endif %}
+              </button>
+              {% endfor %}
             </div>
           </div>
-          <noscript>
-            <p style="color:#fff;text-align:center;padding:40px 20px;">يرجى تفعيل JavaScript لمشاهدة العرض.</p>
-          </noscript>
+          {% endif %}
+          <div class="video-embed-container">
+            <div class="video-embed" id="videoEmbedBox" data-init-srv="{{ firstEmbedUrl | obfuscateUrl }}">
+              <div class="video-loader" id="videoLoader">
+                <div class="video-loader-spinner"></div>
+                <div class="video-loader-status" id="videoLoaderStatus">جاري الاتصال بالسيرفر وتشغيل الفيديو...</div>
+                <div class="video-loader-progress" aria-hidden="true"><span id="videoLoaderBar"></span></div>
+                <div class="video-loader-fallback" id="videoLoaderFallback" style="display:none;">
+                  <span>السيرفر يستغرق وقتاً طويلاً؟</span>
+                  <button type="button" class="loader-switch-srv-btn" id="loaderNextSrvBtn">تجربة سيرفر آخر ⏭</button>
+                </div>
+              </div>
+              <noscript>
+                <p style="color:#fff;text-align:center;padding:40px 20px;">يرجى تفعيل JavaScript لمشاهدة العرض.</p>
+              </noscript>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="wd-foot">
+          {#- the quality notice lives inside the box now; the old separate notice above the player is gone -#}
+          {% if isShow %}
+          <span class="wd-tip"><svg class="wd-tip-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span><b>تنبيه:</b> سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية {% if downloads or downloads_low or downloads_medium or downloads_high %}<a href="#downloads">يُنصح بتحميل العرض</a>{% else %}يُنصح بتحميل العرض{% endif %}.</span></span>
+          {% endif %}
+          <span class="wd-keys">اختصارات لوحة المفاتيح: {% if servers.length > 1 %}<kbd>1</kbd>–<kbd>{{ servers.length if servers.length < 10 else 9 }}</kbd> للسيرفرات · {% endif %}<kbd>T</kbd> لوضع السينما · <kbd>R</kbd> لتحديث المشغّل</span>
+        </div>
+      </section>
       <div class="cinema-backdrop" id="cinemaBackdrop"></div>
       <button type="button" class="cinema-exit-float" id="cinemaExitFloat" aria-label="إلغاء وضع السينما">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -1364,7 +1468,7 @@
 
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
     {% if dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
-    <div class="download-links reveal">
+    <div class="download-links reveal" id="downloads">
       <h3>روابط التحميل</h3>
       <div class="quality-grid">
         {% if dlGroups.low.length %}
@@ -1739,7 +1843,7 @@
         <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';}else{this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230d9488%22 stroke-width=%222%22><path d=%22M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4%22/><polyline points=%227 10 12 15 17 10%22/><line x1=%2212%22 y1=%2215%22 x2=%2212%22 y2=%223%22/></svg>';}">
         <span class="dl-site-info">
           <span class="dl-site-name">{{ item.site }}{% if dlMq %} <span class="dl-mq-badge">متعدد الجودات</span>{% endif %}</span>
-          <span class="dl-site-quality">{% if dlMq %}اختار الجودة اللي تناسبك من صفحة التحميل: 1080 أو 720 أو 480{% else %}اضغط هنا للتحميل بجودة {{ qualityLabel }}{% endif %}</span>
+          <span class="dl-site-quality">{% if dlMq %}اختر الجودة المناسبة لك من صفحة التحميل: 1080 أو 720 أو 480{% else %}اضغط هنا للتحميل بجودة {{ qualityLabel }}{% endif %}</span>
         </span>
         <svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
@@ -1902,8 +2006,10 @@
 
   var loaderBar = document.getElementById('videoLoaderBar');
   function setLoaderProgress(pct) { if (loaderBar) loaderBar.style.width = Math.max(0, Math.min(100, pct)) + '%'; }
+  var watchDeck = document.getElementById('watchDeck');
   function setLoader(visible, text) {
     if (!loader) return;
+    if (watchDeck) watchDeck.classList.toggle('is-loading', !!visible);
     if (loaderTimer) { clearTimeout(loaderTimer); loaderTimer = null; }
     if (visible) {
       loader.classList.remove('is-hidden');
@@ -1965,7 +2071,7 @@
       v.addEventListener('canplay', function(){ if (seq === mountSeq) setLoader(false); });
       v.addEventListener('error', function(){
         if (seq !== mountSeq) return;
-        if (loaderStatus) loaderStatus.textContent = 'السيرفر ده مش شغال دلوقتي، جرّب سيرفر تاني';
+        if (loaderStatus) loaderStatus.textContent = 'هذا السيرفر لا يعمل حاليًا، جرّب سيرفرًا آخر';
         if (loaderFallback) loaderFallback.style.display = 'flex';
       });
 
@@ -2028,20 +2134,28 @@
 
   // Mount initial video player on client load
   var embedBox = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
+  var srvRows = Array.from(document.querySelectorAll('.srv-row'));
+  var SRV_KEY = 'arw_srv_' + window.location.pathname;
+  function markServer(btn) {
+    srvRows.forEach(function(b){ var on = b === btn; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    var now = document.getElementById('wdNow');
+    if (now && btn) now.textContent = (btn.getAttribute('data-srv-name') || 'السيرفر') + (btn.dataset.mq ? ' · متعدد الجودات' : '');
+  }
   if (embedBox && embedBox.dataset.initSrv) {
-    var initialSrc = deobfuscateUrl(embedBox.dataset.initSrv);
+    var initTab = srvRows[0] || null;
+    try { var savedIdx = parseInt(localStorage.getItem(SRV_KEY) || '', 10); if (srvRows[savedIdx]) initTab = srvRows[savedIdx]; } catch(e){}
+    var initialSrc = deobfuscateUrl(initTab ? initTab.dataset.srv : embedBox.dataset.initSrv);
     if (initialSrc) {
-      var firstTab = document.querySelector('.server-tab');
-      var firstLabel = firstTab ? firstTab.getAttribute('data-srv-name') : 'سيرفر 1';
-      mountVideo(embedBox, initialSrc, firstLabel);
+      if (initTab) markServer(initTab);
+      mountVideo(embedBox, initialSrc, initTab ? initTab.getAttribute('data-srv-name') : 'سيرفر 1');
     }
   }
 
   // Server tabs switcher
-  document.querySelectorAll('.server-tab').forEach(function(btn){
+  srvRows.forEach(function(btn, idx){
     btn.addEventListener('click', function(){
-      document.querySelectorAll('.server-tab').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
+      markServer(btn);
+      try { localStorage.setItem(SRV_KEY, String(idx)); } catch(e){}
       var rawEnc = (btn.dataset.srv || '').trim();
       var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
       if (!box || !rawEnc) return;
@@ -2056,7 +2170,7 @@
 
   // Next Server Switcher (Loops seamlessly across all available servers)
   function switchToNextServer() {
-    var tabs = Array.from(document.querySelectorAll('.server-tab'));
+    var tabs = srvRows;
     if (!tabs.length) return;
     var activeIdx = tabs.findIndex(function(t){ return t.classList.contains('active'); });
     var nextIdx = (activeIdx + 1) % tabs.length;
@@ -2065,7 +2179,7 @@
 
   var loaderNextBtn = document.getElementById('loaderNextSrvBtn');
   if (loaderNextBtn) {
-    var allTabs = document.querySelectorAll('.server-tab');
+    var allTabs = srvRows;
     if (allTabs.length <= 1) {
       loaderNextBtn.textContent = 'إعادة تحديث المشغل ↻';
       loaderNextBtn.addEventListener('click', function(){ reloadCurrentServer(); });
@@ -2080,7 +2194,7 @@
     var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
     if (!box || !currentActiveServerSrc) return;
 
-    var activeTab = document.querySelector('.server-tab.active');
+    var activeTab = document.querySelector('.srv-row.active');
     var srvLabel = activeTab ? activeTab.getAttribute('data-srv-name') : 'المشغل';
 
     if (reloadBtn) {
@@ -2124,9 +2238,14 @@
       if (text) text.textContent = shouldActivate ? 'إلغاء السينما' : 'وضع السينما';
     }
     if (shouldActivate) {
-      var container = document.querySelector('.video-embed-container') || embedBox;
-      if (container && container.scrollIntoView) {
-        container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // the whole box in view under the sticky header (centered when it fits, its top edge when it doesn't)
+      var container = document.getElementById('watchDeck') || embedBox;
+      if (container) {
+        var hdr = document.querySelector('header');
+        var off = (hdr ? hdr.getBoundingClientRect().height : 0) + 12;
+        var rect = container.getBoundingClientRect();
+        var room = window.innerHeight - off;
+        window.scrollTo({ top: window.scrollY + rect.top - off - Math.max(0, (room - rect.height) / 2), behavior: 'smooth' });
       }
     }
   }
@@ -2152,6 +2271,10 @@
     } else if (key === 'r' || key === 'R' || key === 'ق') {
       e.preventDefault();
       reloadCurrentServer();
+    } else if (/^[1-9١-٩]$/.test(key)) {
+      // 1–9 (or ١–٩) picks that server
+      var n = /[١-٩]/.test(key) ? key.charCodeAt(0) - 0x660 : +key;
+      if (srvRows[n - 1] && !srvRows[n - 1].classList.contains('active')) { e.preventDefault(); srvRows[n - 1].click(); }
     }
   });
 </script>
