@@ -1984,17 +1984,28 @@
   "https://arab-wrestling.com/library/revpro/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-10-06",
-   "pinged": "2026-10-06T17:59:09.444Z"
+   "pinged": "2026-10-06T17:59:09.444Z",
+   "inspected": "2026-10-06T23:58:57.961Z",
+   "verdict": "NEUTRAL",
+   "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL."
   },
   "https://arab-wrestling.com/nostalgia/2026-موني-ان-ذا-بانك-2010/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-10-06",
-   "pinged": "2026-10-06T17:38:32.011Z"
+   "pinged": "2026-10-06T17:38:32.011Z",
+   "inspected": "2026-10-06T23:58:57.961Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-06T23:58:57.961Z"
   },
   "https://arab-wrestling.com/shows/revpro-14-year-anniversary-show/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-08-31",
-   "pinged": "2026-10-06T17:38:32.011Z"
+   "pinged": "2026-10-06T17:38:32.011Z",
+   "inspected": "2026-10-06T23:58:57.961Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-06T23:58:57.961Z"
   },
   "https://arab-wrestling.com/shows/roh-05-10-2026/": {
    "firstSeen": "2026-10-06T17:59:09.444Z",
