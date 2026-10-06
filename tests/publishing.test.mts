@@ -3257,6 +3257,14 @@ test('the social shield note never carries letters from another script (INCIDENT
   }
 });
 
+test('JetSpeed is a tag team, never «شركة» (INCIDENTS #297)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('طقمين من ملابس شركة JetSpeed'), 'طقمين من ملابس فريق جيت سبيد');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['JetSpeed'], 'جيت سبيد');
+  assert.equal(names['Veda Scott'], 'فيدا سكوت');
+});
+
 test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
   const { shelvedNotCancelled } = await import('../scripts/news-qa');
   const src = 'That match is still shelved and tabled for right now.';
