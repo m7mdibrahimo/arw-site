@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: RevPro 14 Year Anniversary Show (2026)
+title: RevPro 14 Year Anniversary Show 29.08.2026
 headline: عرض ريف برو 14 يير انفيرسري شو 29.08.2026 مترجم
 program_name: RevPro
 is_annual: true
