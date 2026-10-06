@@ -2,22 +2,34 @@ name: Site Branch
 
 # ═══════════════════════════════════════════════════════
 #  Cloudflare بيبني الموقع من فرع «site»: نفس main بالظبط، من غير الصور الأصلية
-#  (content/images) وفيديوهات الريلز (dist/videos)، ودول بيتعرضوا من R2 عن طريق
-#  الـWorker «arw-media». كان Cloudflare بينزّل حوالي ٨٠٠ ميجا مع كل بناء، ودلوقتي
-#  بينزّل حوالي ١٠٠، فالتعديل بيظهر أسرع (الحادثة ٣١٢).
-#  كل رفع على main بيعمل commit واحد فوقه على «site» وفيه نفس الرسالة، فـ[skip ci]
-#  و[CF-Pages-Skip] بيفضلوا شغالين. وbuild.json بيقول commit الـmain الأصلي.
+#  (content/images) وفيديوهات الريلز (dist/videos)، ودول بيتعرضوا من الـWorker
+#  «arw-media». كان Cloudflare بينزّل حوالي ٨٠٠ ميجا مع كل بناء، ودلوقتي حوالي ١٠٠،
+#  فالتعديل بيظهر أسرع (الحادثة ٣١٢).
+#  بيشتغل بعد كل رفع من اللوحة أو من جهاز، وبعد ما أي بوت يخلص، وكل ١٠ دقايق كاحتياط.
+#  البوتات بترفع بمفتاح GitHub الداخلي، ورفعها مش بيشغّل workflows تانية، فلازم
+#  workflow_run. وكل مرة بيبني من آخر main، ومبيبنيش لو اللي اتغير حاجات المتابع مش بيشوفها.
+#  build.json بيقول commit الـmain الأصلي.
 #  للرجوع: خلي فرع الإنتاج في Cloudflare Pages يرجع main.
 # ═══════════════════════════════════════════════════════
 
 on:
   push:
     branches: [main]
-    # the same files Cloudflare ignored on main
-    paths-ignore:
-      - _data/publish-state.json
-      - 'worker/**'
-      - 'media-worker/**'
+  workflow_run:
+    workflows:
+      - Fightful News Auto Watcher
+      - Ringside News Auto Watcher
+      - Wrestling Inc Auto Watcher
+      - Editorial Maintenance — Review & Learn
+      - Auto Show Reel Generator
+      - Generate Reel Video
+      - Playback Check
+      - Video Hosts Check
+      - SEO New Shows
+      - Search Console Report
+    types: [completed]
+  schedule:
+    - cron: '*/10 * * * *'
   workflow_dispatch:
 
 concurrency:
@@ -34,27 +46,43 @@ jobs:
     steps:
       # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
       # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
-      - name: Point «site» at main without pictures and reels
+      - name: Point «site» at the latest main, without pictures and reels
         env:
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
           BASE="https://api.github.com/repos/$REPO/git"
-          api "$BASE/commits/$SHA" > c.json
+          MAIN=$(api "$BASE/ref/heads/main" | jq -r .object.sha)
+          SITE=$(api "$BASE/ref/heads/site" 2>/dev/null | jq -r .object.sha || true)
+          PREV=""
+          if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
+            PREV=$(api "$BASE/commits/$SITE" | jq -r .message | sed -n 's/^site-of: \([0-9a-f]\{40\}\).*/\1/p' | head -1)
+          fi
+          if [ "$PREV" = "$MAIN" ]; then echo "site is already at $MAIN"; exit 0; fi
+
+          # Nothing a visitor sees changed since the last site commit (the bots' bookkeeping, delivery records,
+          # reports, pictures and reels served by arw-media): no rebuild. The next real change carries these too.
+          if [ -n "$PREV" ]; then
+            api "https://api.github.com/repos/$REPO/compare/$PREV...$MAIN" > cmp.json
+            TOTAL=$(jq '.files | length' cmp.json)
+            VISIBLE=$(jq -r '.files[].filename' cmp.json | grep -cvE '^(_data/publish-state\.json|_data/deliveries/.*|worker/.*|media-worker/.*|seo/.*|reports/.*|editorial/.*|content/images/.*|dist/videos/.*|watcher-state\.json|watcher-outcomes\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data/duplicate-skips\.json|\.github/.*)$' || true)
+            # the compare API lists at most 300 files: a bigger change always builds
+            if [ "$TOTAL" -lt 300 ] && [ "$VISIBLE" = "0" ]; then echo "nothing visible changed since $PREV"; exit 0; fi
+          fi
+
+          api "$BASE/commits/$MAIN" > c.json
           ROOT=$(jq -r .tree.sha c.json); CT=$(date -d "$(jq -r .committer.date c.json)" +%s)
           TREE=$(jq -n --arg base "$ROOT" '{base_tree:$base, tree:[{path:"content/images",mode:"040000",type:"tree",sha:null},{path:"dist/videos",mode:"040000",type:"tree",sha:null}]}' \
             | api -X POST "$BASE/trees" -d @- | jq -r .sha)
-          # the two folders really are gone
-          api "$BASE/trees/$TREE" | jq -e '[.tree[].path] | index("content") != null' > /dev/null
           api "$BASE/trees/$TREE?recursive=1" | jq -e '[.tree[].path | select(startswith("content/images/") or startswith("dist/videos/"))] | length == 0' > /dev/null
-          MSG=$(jq -r .message c.json)
-          COMMIT=$(jq -n --arg m "$MSG"$'\n\n'"site-of: $SHA $CT" --arg t "$TREE" --arg p "$SHA" '{message:$m, tree:$t, parents:[$p]}' | api -X POST "$BASE/commits" -d @- | jq -r .sha)
-          if api "$BASE/refs/heads/site" > /dev/null 2>&1; then
+          # a visible change always builds: the skip markers of the newest commit don't apply to the ones under it
+          MSG=$(jq -r .message c.json | sed -E 's/\[(skip ci|ci skip|skip-ci|CF-Pages-Skip)\]//Ig')
+          COMMIT=$(jq -n --arg m "$MSG"$'\n\n'"site-of: $MAIN $CT" --arg t "$TREE" --arg p "$MAIN" '{message:$m, tree:$t, parents:[$p]}' | api -X POST "$BASE/commits" -d @- | jq -r .sha)
+          if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
             jq -n --arg s "$COMMIT" '{sha:$s, force:true}' | api -X PATCH "$BASE/refs/heads/site" -d @- > /dev/null
           else
             jq -n --arg s "$COMMIT" '{ref:"refs/heads/site", sha:$s}' | api -X POST "$BASE/refs" -d @- > /dev/null
           fi
-          echo "site ← $SHA as $COMMIT"
+          echo "site ← $MAIN as $COMMIT"
