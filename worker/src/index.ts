@@ -2040,7 +2040,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // Talking ABOUT a return that is history: «نيكي بيلا تقول إن التغيرات… جعلت عودتها إلى WWE أكثر صعوبة»
   // — she came back in 2025 (INCIDENTS #228). The return is the subject of the talk, not tonight's news.
   const aboutReturn = ar("(?:جعلت|جعل|صعوبة|صعوبات|تحديات|ذكريات|أسرار|كواليس|تفاصيل)\\s+(?:ال)?(?:عودته|عودتها|عودتهم|عودة)");
-  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ").replace(new RegExp(whenReturn.source, "gi"), " ").replace(new RegExp(aboutReturn.source, "gi"), " ");
+  // A nameless return says nothing: a weekly roundup's lead «…وعودة أسماء بارزة إلى الحلبات» was
+  // held as a return spoiler (INCIDENTS #277).
+  const namelessReturn = ar("(?:و|ف)?عودة\\s+(?:عدد\\s+من\\s+|بعض\\s+)?(?:ال)?(?:أسماء|اسماء|وجوه|نجوم|مصارعين|مصارعات)(?:\\s+(?:ال)?(?:بارزة|كبيرة|لامعة|معروفة|مألوفة|قديمة))?(?![\\u0600-\\u06FF])");
+  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ").replace(new RegExp(whenReturn.source, "gi"), " ").replace(new RegExp(aboutReturn.source, "gi"), " ").replace(new RegExp(namelessReturn.source, "gi"), " ");
   if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;

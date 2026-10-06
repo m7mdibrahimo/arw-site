@@ -1681,7 +1681,12 @@ export function farFutureShowDate(title: string, originalTitle: string, postDate
 }
 
 // Analyzes whether an article refers to an event happening tonight/today vs future vs preview
-function analyzeShowTiming(originalTitle: string, postDate?: string): ShowTimingInfo {
+export function analyzeShowTiming(originalTitle: string, postDate?: string): ShowTimingInfo {
+  // Weekly roundups ("Biggest Winners And Losers Of The Week — 10/5/2026") carry
+  // the publish date, not a show date — never treat them as tonight's show.
+  if (/winners\s+(?:and|&)\s+losers|\bof\s+the\s+week\b|\bweek\s+in\s+review\b/i.test(originalTitle)) {
+    return { isTonight: false, isFuture: false, isPreview: false };
+  }
   const isPreview = /preview\b/i.test(originalTitle) || 
                     /how to watch\b/i.test(originalTitle) || 
                     /start time\b/i.test(originalTitle) ||

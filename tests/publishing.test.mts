@@ -11,7 +11,7 @@ import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow
 import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix, headUnheadedMatches, applyCorrections } from '../scripts/news-qa';
-import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories } from '../scripts/fightful-watcher';
+import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -2861,6 +2861,9 @@ test('a prediction is not a result (INCIDENTS #246)', async () => {
   // INCIDENTS #276
   assert.equal(isSingleMatchSpoiler('جون سينا يناقش إمكانية فوز ال ايه نايت على رومان رينز في عرض WWE موني إن ذا بانك', ''), false);
   assert.equal(isSingleMatchSpoiler('فوز ال ايه نايت على رومان رينز في عرض WWE موني إن ذا بانك', ''), true);
+  // INCIDENTS #277
+  assert.equal(isSingleMatchSpoiler('شهد أسبوع آخر مليئا بالأحداث في عالم المصارعة الحرة، حيث يستعرض فريق العمل أبرز الرابحين والخاسرين لهذا الأسبوع في ظل الظروف العاطفية التي أعقبت رحيل النجم باك، مع إقامة عروض تكريمية مؤثرة وعودة أسماء بارزة إلى الحلبات.', ''), false);
+  assert.equal(isSingleMatchSpoiler('عودة راندي أورتن في عرض WWE RAW', ''), true);
 });
 
 test('«AAA World Cruiserweight Champion» has a glossary name (INCIDENTS #248)', () => {
@@ -3046,4 +3049,12 @@ test('program pages are in the sitemap and show pages get search-worded titles (
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.match(cfg, /الأخير مترجم \(\$\{day\}\)/);
   assert.match(fs.readFileSync('_redirects', 'utf-8'), /^\/raw\/\* \/library\/wwe-raw\/ 301!$/m);
+});
+
+test('weekly roundups dated today are not tonight\'s show, and their fixes reach the model (INCIDENTS #277)', () => {
+  assert.equal(analyzeShowTiming('Biggest Winners And Losers Of The Week — 10/5/2026', '2026-10-05T22:00:00Z').isTonight, false);
+  assert.equal(analyzeShowTiming('WWE Raw Preview (10/5)', '2026-10-05T12:00:00Z').isTonight, true);
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  for (const w of ['العددا', 'باويز', 'أحذية ضخمة ليملأها']) assert.ok(c.some((x) => x.wrong === w), w);
+  assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'))['Royce Keys'], 'رويس كيز');
 });
