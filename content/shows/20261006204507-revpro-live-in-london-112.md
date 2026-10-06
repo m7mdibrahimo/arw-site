@@ -21,6 +21,7 @@ servers:
   - url: https://fembed.co/embed/pGEaswh-b_LKs
   - url: https://uqload.vc/embed-mx1c10frrrh0.html
 downloads_medium: |-
+  https://hgcloud.to/d2xcy7nghoav
   https://1cloudfile.com/Qk0y
   https://1fichier.com/?v2mbj5hvsi89p96g5a5z
   https://gofile.io/d/q477qxpC
