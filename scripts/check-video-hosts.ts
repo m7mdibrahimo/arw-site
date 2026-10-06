@@ -48,6 +48,8 @@ async function probe(url: string): Promise<"ok" | "dead" | "noEmbed"> {
     await res.arrayBuffer().catch(() => null);
     // A bot challenge (Cloudflare) answers our script, not a viewer's browser: it says nothing about the host
     if (res.headers.get("cf-mitigated") === "challenge" || (res.status === 403 && /cloudflare/i.test(res.headers.get("server") || ""))) return "ok";
+    // The host's own server is down behind its CDN (Cloudflare 520–526, sg1.stackvid.com in Oct 2026) or failing
+    if (res.status >= 500) return "dead";
     if (refusesEmbedding(res.headers.get("x-frame-options") || "", res.headers.get("content-security-policy") || "")) return "noEmbed";
     return "ok"; // a 403/404 on one link is that file, not the host
   } catch {
@@ -58,12 +60,12 @@ async function probe(url: string): Promise<"ok" | "dead" | "noEmbed"> {
 async function main() {
   let prev: any = {};
   try { prev = JSON.parse(fs.readFileSync(OUT, "utf-8")); } catch {}
-  const strikes: Record<string, number> = prev.strikes || {};
+  const strikes: Record<string, number> = { ...(prev.strikes || {}) }; // a copy: comparing with prev must see the change
   const dead: string[] = [], noEmbed: string[] = [];
   for (const [host, urls] of samplePerHost()) {
     const results = [];
     for (const u of urls) results.push(await probe(u));
-    if (results.every(r => r === "dead")) strikes[host] = (strikes[host] || 0) + 1; else delete strikes[host];
+    if (results.every(r => r === "dead")) strikes[host] = Math.min(2, (strikes[host] || 0) + 1); else delete strikes[host]; // capped: no commit every run for a host that stays dead
     if ((strikes[host] || 0) >= 2) dead.push(host);
     if (results.includes("noEmbed")) noEmbed.push(host);
     console.log(`[Hosts] ${host}: ${results.join(", ")}${strikes[host] ? ` (strike ${strikes[host]})` : ""}`);

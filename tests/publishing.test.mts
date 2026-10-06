@@ -3119,3 +3119,9 @@ test('the player loader stays until the server has loaded and settled, never on 
   assert.match(layout, /var SETTLE_MS = multiStep \? \d+ : \d+;/);
   assert.match(layout, /id="videoLoaderBar"/);
 });
+
+test('the host check counts a CDN error page (5xx) as down (INCIDENTS #278)', () => {
+  const src = fs.readFileSync('scripts/check-video-hosts.ts', 'utf-8');
+  assert.match(src, /if \(res\.status >= 500\) return "dead";/);
+  assert.match(src, /\{ \.\.\.\(prev\.strikes \|\| \{\}\) \}/);
+});
