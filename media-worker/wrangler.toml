@@ -14,9 +14,8 @@ routes = [
 [vars]
 REPO_RAW = "https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main"
 
-# Added once R2 is enabled on the account:
-# [[r2_buckets]]
-# binding = "MEDIA"
-# bucket_name = "arw-media"
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "arw-media"
 
 

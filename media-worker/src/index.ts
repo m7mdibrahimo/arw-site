@@ -33,9 +33,19 @@ export default {
     const key = repoPathOf(new URL(req.url).pathname);
     if (!key) return new Response("Not found", { status: 404 });
 
+    // 0. the edge cache: a file once served stays near the visitor for a day, so R2 is read rarely (its free tier
+    // is 10 M reads a month)
+    const range = req.headers.get("range");
+    const cache = (globalThis as any).caches?.default as Cache | undefined;
+    const cacheKey = new Request(new URL(req.url).origin + new URL(req.url).pathname, { method: "GET" });
+    if (cache && req.method === "GET" && !range) {
+      const hit = await cache.match(cacheKey);
+      if (hit) return hit;
+    }
+    const remember = (res: Response) => { if (cache && req.method === "GET" && !range && res.status === 200) ctx.waitUntil(cache.put(cacheKey, res.clone())); return res; };
+
     // 1. R2 (ranges for video seeking)
     if (env.MEDIA) {
-      const range = req.headers.get("range");
       const obj = await env.MEDIA.get(key, range ? { range: req.headers } : {});
       if (obj) {
         const h = headersFor(key, { ETag: obj.httpEtag });
@@ -48,7 +58,7 @@ export default {
           return new Response(req.method === "HEAD" ? null : (obj as R2ObjectBody).body, { status: 206, headers: h });
         }
         h.set("Content-Length", String(obj.size));
-        return new Response(req.method === "HEAD" ? null : (obj as R2ObjectBody).body, { status: 200, headers: h });
+        return remember(new Response(req.method === "HEAD" ? null : (obj as R2ObjectBody).body, { status: 200, headers: h }));
       }
     }
 
@@ -59,6 +69,6 @@ export default {
     if (!res.ok) return new Response("Not found", { status: 404, headers: { "Cache-Control": "public, max-age=60" } });
     const buf = await res.arrayBuffer();
     if (env.MEDIA) ctx.waitUntil(env.MEDIA.put(key, buf, { httpMetadata: { contentType: typeOf(key), cacheControl: CACHE } }));
-    return new Response(req.method === "HEAD" ? null : buf, { status: 200, headers: headersFor(key, { "Content-Length": String(buf.byteLength) }) });
+    return remember(new Response(req.method === "HEAD" ? null : buf, { status: 200, headers: headersFor(key, { "Content-Length": String(buf.byteLength) }) }));
   },
 };
