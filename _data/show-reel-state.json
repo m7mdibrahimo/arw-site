@@ -2874,12 +2874,16 @@
     "publishedAt": 1791242236208,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال 04.10.2026 مترجم",
-    "lastAttempt": 1791242245225,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791245841054,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
