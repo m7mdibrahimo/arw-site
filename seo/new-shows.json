@@ -167,8 +167,8 @@
   },
   "https://arab-wrestling.com/library/roh/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
-   "lastmod": "2026-10-02",
-   "pinged": "before tracking"
+   "lastmod": "2026-10-06",
+   "pinged": "2026-10-06T17:59:09.444Z"
   },
   "https://arab-wrestling.com/library/aew-dynamite/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -1867,8 +1867,8 @@
   },
   "https://arab-wrestling.com/library/revpro/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
-   "lastmod": "2026-08-31",
-   "pinged": "2026-10-06T17:38:32.011Z"
+   "lastmod": "2026-10-06",
+   "pinged": "2026-10-06T17:59:09.444Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-موني-ان-ذا-بانك-2010/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
@@ -1879,7 +1879,17 @@
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-08-31",
    "pinged": "2026-10-06T17:38:32.011Z"
+  },
+  "https://arab-wrestling.com/shows/roh-05-10-2026/": {
+   "firstSeen": "2026-10-06T17:59:09.444Z",
+   "lastmod": "2026-10-06",
+   "pinged": "2026-10-06T17:59:09.444Z"
+  },
+  "https://arab-wrestling.com/shows/revpro-live-in-london-112/": {
+   "firstSeen": "2026-10-06T17:59:09.444Z",
+   "lastmod": "2026-10-06",
+   "pinged": "2026-10-06T17:59:09.444Z"
   }
  },
- "sitemapPinged": "2026-10-06T17:38:32.011Z"
+ "sitemapPinged": "2026-10-06T17:59:09.444Z"
 }
