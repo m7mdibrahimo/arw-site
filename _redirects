@@ -628,3 +628,4 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 # NJPW is split into one library section per tour (INCIDENTS #309): the old single section goes to the library
 /library/njpw/ /library/ 301
 /library/njpw /library/ 301
+/tag/سكايدانس/* /tag/سكاي-دانس/:splat 301!
