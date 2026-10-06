@@ -1381,7 +1381,7 @@
     {% endif %}
 
     {% if servers and servers.length %}
-      {% set servers = servers | playableServers(videoHosts) %}
+      {% set servers = servers | playableServers(videoHosts, videoLinks) %}
       {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
       {% set firstMq = firstEmbedUrl | isMultiQuality %}
       {#- «غرفة التحكم»: one card at the column width, like the download box — the servers on the right, the player

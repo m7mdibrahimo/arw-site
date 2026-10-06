@@ -3174,7 +3174,7 @@ test('watch servers: dead and non-embeddable hosts are hidden, StreamHG mirrors 
   assert.ok(refusesEmbedding('', "frame-ancestors 'self'"));
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.match(layout, /'allow', 'autoplay \*; fullscreen \*;/);
-  assert.match(layout, /servers \| playableServers\(videoHosts\)/);
+  assert.match(layout, /servers \| playableServers\(videoHosts, videoLinks\)/);
 });
 
 test('the player loader stays until the server has loaded and settled, never on a blind timer (INCIDENTS #277)', () => {
@@ -3279,7 +3279,7 @@ test('«كل من» needs «و» between the names, and the Cazanas read like th
   assert.equal(names['Romeo Quevedo'], 'روميو كيفيدو');
 });
 
-test('long Latin fragments, ى for ي, and the merger-day wording are caught (INCIDENTS #303)', async () => {
+test('long Latin fragments, ى for ي, and the merger-day wording are caught (INCIDENTS #304)', async () => {
   const { checkArticle, applyCorrections } = await import('../scripts/news-qa');
   const codes = (body: string) => checkArticle('عنوان عربي كامل للخبر هنا', body, []).map(i => i.code);
   const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
@@ -3419,6 +3419,40 @@ test('new show pages go to the search engines, invisibly (INCIDENTS #302)', asyn
   // search engines get every name of the program, in structured data only
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /"about": \{ "@type": "TVSeries"[^\n]*"alternateName"/);
   assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /\{% for item in lp\.items %\}/);
+});
+
+test('every watch server is played for real; one that fails twice is hidden until it plays (INCIDENTS #304)', async () => {
+  const m = await import('../scripts/check-playback.ts');
+  const ev = (o: any) => ({ mediaOk: [], mediaFail: [], playerErrors: [], frameText: '', progressed: false, ...o });
+  // the Raw 05.10.2026 vidtube file: its stream server sent no CORS header
+  assert.equal(m.classify(ev({ mediaFail: ['MissingAllowOriginHeader https://serv-stream-cdn44.cdn-video.xyz/hls2/x/master.m3u8'], frameText: 'This video file cannot be played.\n(Error Code: 232011)' })).status, 'broken');
+  assert.equal(m.classify(ev({ playerErrors: ['JW Player Error 232011'] })).status, 'broken');
+  assert.equal(m.classify(ev({ mediaOk: ['200 https://strm6.uqload.vc/hls2/x/master.m3u8'] })).status, 'ok');
+  assert.equal(m.classify(ev({ progressed: true })).status, 'ok');
+  // a bot check or no evidence never hides a server
+  assert.equal(m.classify(ev({ frameText: 'Just a moment...', mediaFail: ['403 x.m3u8'] })).status, 'unknown');
+  assert.equal(m.classify(ev({})).status, 'unknown');
+  assert.ok(m.isMedia('https://ok6-8.vkuser.net/expires/1791389390015/clientType/0/x'));
+  assert.ok(!m.isMedia('https://vidtube.one/dl?op=get_slides&url=https://img.cdn-video.xyz/a0000.jpg'));
+  // two broken checks in a row hide it, one good check brings it back
+  const u = 'https://vidtube.one/embed-dttpachdr7z2.html', page = 'https://arab-wrestling.com/shows/wwe-raw-05-10-2026/';
+  const ok = (url: string) => ({ url, page, status: 'ok', reason: '' });
+  const others = ['a', 'b', 'c', 'd'].map(x => ok(`https://h/${x}`));
+  let s = m.nextState({ links: {}, broken: [] }, [{ url: u, page, status: 'broken', reason: 'x' }, ...others]);
+  assert.deepEqual(s.broken, []);
+  s = m.nextState(s, [{ url: u, page, status: 'broken', reason: 'x' }, ...others]);
+  assert.deepEqual(s.broken, [u]);
+  s = m.nextState(s, [ok(u)]);
+  assert.deepEqual(s.broken, []);
+  // a run where most links fail is the checker's own trouble: nothing changes
+  const bad = ['a', 'b', 'c', 'd', 'e'].map(x => ({ url: `https://h/${x}`, page, status: 'broken', reason: '' }));
+  assert.deepEqual(m.nextState(m.nextState({ links: {}, broken: [] }, bad), bad).broken, []);
+  // the page hides only that one link, never every server
+  const { playableServers } = (await import('../lib/embed.cjs')).default;
+  const servers = [{ url: 'https://ok.ru/video/1' }, { url: 'https://vidtube.one/dttpachdr7z2.html' }];
+  assert.deepEqual(playableServers(servers, {}, { broken: [u] }).map((x: any) => x.url), ['https://ok.ru/video/1']);
+  assert.equal(playableServers([servers[1]], {}, { broken: [u] }).length, 1);
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /playableServers\(videoHosts, videoLinks\)/);
 });
 
 test('every scheduled workflow the round depends on has the Worker backstop trigger (INCIDENTS #305)', () => {
