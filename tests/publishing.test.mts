@@ -3420,3 +3420,12 @@ test('new show pages go to the search engines, invisibly (INCIDENTS #302)', asyn
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /"about": \{ "@type": "TVSeries"[^\n]*"alternateName"/);
   assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /\{% for item in lp\.items %\}/);
 });
+
+test('every scheduled workflow the round depends on has the Worker backstop trigger (INCIDENTS #305)', () => {
+  const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  const block = src.slice(src.indexOf('async function runScheduleBackstopCron'), src.indexOf('async function runScheduleBackstopCron') + 2000);
+  for (const wf of ['show-reel-monitor.yml', 'wrestlinginc-watcher.yml', 'ringsidenews-watcher.yml', 'seo-new-shows.yml', 'video-hosts.yml']) {
+    assert.ok(block.includes(`workflow: "${wf}"`), wf);
+    assert.ok(fs.readFileSync(`.github/workflows/${wf}`, 'utf-8').includes('workflow_dispatch'), wf);
+  }
+});

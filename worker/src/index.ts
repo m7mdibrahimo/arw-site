@@ -3865,6 +3865,10 @@ async function runScheduleBackstopCron(env: Env): Promise<void> {
     { workflow: "show-reel-monitor.yml", kvKey: "last_reel_monitor_trigger_ts", throttleMs: 14 * 60 * 1000 },
     { workflow: "wrestlinginc-watcher.yml", kvKey: "last_wrestlinginc_trigger_ts", throttleMs: 19 * 60 * 1000 },
     { workflow: "ringsidenews-watcher.yml", kvKey: "last_ringsidenews_trigger_ts", throttleMs: 19 * 60 * 1000 },
+    // Same failure on day one: both ran from their push only, then their
+    // native schedules stayed silent for hours (INCIDENTS #305).
+    { workflow: "seo-new-shows.yml", kvKey: "last_seo_new_shows_trigger_ts", throttleMs: 59 * 60 * 1000 },
+    { workflow: "video-hosts.yml", kvKey: "last_video_hosts_trigger_ts", throttleMs: 359 * 60 * 1000 },
   ];
   const now = Date.now();
   for (const job of jobs) {
