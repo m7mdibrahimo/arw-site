@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-06T23:42:26.904Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-06T23:42:26.796Z"
+ },
+ "https://www.fightful.com/wrestling/jacy-jayne-says-first-match-with-stephanie-vaquer-got-the-ball-rolling-for-her-in-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-06T23:42:26.677Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-spoilers-10-6": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-06T23:42:26.433Z"
+ },
+ "https://www.fightful.com/wrestling/tony-khan-responds-to-criticism-of-ring-of-honor-product": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-06T23:42:26.136Z"
+ },
+ "https://www.fightful.com/wrestling/paramount-completes-acquistion-of-wbd-skydance-made-official": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-06T23:42:25.880Z"
+ },
  "https://www.wrestlinginc.com/2279500/aew-dynamite-grand-slam-paris-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,36 +38,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-06T23:31:37.073Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T23:31:37.696Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T23:31:37.563Z"
- },
- "https://www.fightful.com/wrestling/jacy-jayne-says-first-match-with-stephanie-vaquer-got-the-ball-rolling-for-her-in-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-06T23:31:37.394Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-spoilers-10-6": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-06T23:31:37.026Z"
- },
- "https://www.fightful.com/wrestling/tony-khan-responds-to-criticism-of-ring-of-honor-product": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-06T23:31:36.601Z"
- },
- "https://www.fightful.com/wrestling/paramount-completes-acquistion-of-wbd-skydance-made-official": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-06T23:31:36.265Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
