@@ -1,28 +1,28 @@
 {
- "https://www.wrestlinginc.com/2278180/wwe-raw-october-5-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T01:02:20.907Z"
- },
  "https://www.fightful.com/wrestling/watch-roh-tv-special-monday-episode-10-5-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T01:00:59.773Z"
+  "reason": "المراجعة رفضته: المتن (449 حرف) أطول بكثير من المصدر (48 حرف) — حشو",
+  "retry": false,
+  "at": "2026-10-06T01:11:21.059Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-returns-10-5-2026-roman-reigns-returns-becky-lynch-vs-liv-morgan-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T01:00:31.957Z"
+  "at": "2026-10-06T01:10:51.014Z"
  },
  "https://www.fightful.com/wrestling/details-on-future-plans-for-bryan-danielson": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T01:00:31.664Z"
+  "at": "2026-10-06T01:10:50.747Z"
  },
  "https://www.fightful.com/wrestling/joe-hendrys-beyond-belief-album-now-available": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T01:00:31.112Z"
+  "at": "2026-10-06T01:10:50.248Z"
+ },
+ "https://www.wrestlinginc.com/2278180/wwe-raw-october-5-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-06T01:02:20.907Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-5-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
