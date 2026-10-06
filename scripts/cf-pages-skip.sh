@@ -15,11 +15,15 @@ grep -qvE "$BOOKKEEPING" <<<"$files" && exit 0
 
 # Never skip while an earlier visible change isn't live yet: Cloudflare drops a queued build when
 # a newer push arrives, so skipping this one could leave that change waiting for the next article.
-last=$(git log -1 --format=%ct "$BASE" -- . \
-  ':(exclude)_data/publish-state.json' ':(exclude)worker' ':(exclude)editorial' \
+# Commits that never build ([skip ci] — delivery receipts, search reports — or this marker) aren't
+# waited for: they never get a deployment of their own, so counting them kept the site "behind"
+# all day and almost no bookkeeping push could skip (122 needless builds a day, INCIDENTS #307).
+last=$(git log -200 --format='%ct %s' "$BASE" -- . \
+  ':(exclude)_data/publish-state.json' ':(exclude,glob)_data/deliveries/*' ':(exclude)worker' ':(exclude)editorial' ':(exclude)seo' \
   ':(exclude)watcher-state.json' ':(exclude)watcher-outcomes.json' ':(exclude,glob)watcher-feed*.json' ':(exclude)ringsidenews-state.json' \
   ':(exclude)wrestlinginc-state.json' ':(exclude)live-results-state.json' ':(exclude)_data/duplicate-skips.json' \
-  ':(exclude,glob)content/images/*' 2>/dev/null)
+  ':(exclude,glob)content/images/*' 2>/dev/null \
+  | grep -viE '\[(skip[ -]ci|ci[ -]skip|cf[ -]pages[ -]skip)\]' | head -1 | cut -d' ' -f1)
 live=$(curl -fsS --max-time 8 "${CF_LIVE_BUILD_URL:-https://arab-wrestling.com/build.json}" 2>/dev/null \
   | python3 -c 'import json,sys; print(int(json.load(sys.stdin).get("commitTime") or 0))' 2>/dev/null)
 [ -n "${last:-}" ] && [ -n "${live:-}" ] && [ "$live" -ge "$last" ] || exit 0

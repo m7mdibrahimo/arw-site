@@ -11,7 +11,8 @@ const SCRIPT = path.resolve('scripts/cf-pages-skip.sh');
 
 // liveAt: commitTime in the live /build.json — 'latest' = everything visible is deployed,
 // 'behind' = an earlier visible commit isn't live yet, 'down' = the site can't be reached.
-function decide(files: string[], liveAt: 'latest' | 'behind' | 'down' = 'latest'): string {
+// laterOnBase: commits pushed after the live build, as [file, message].
+function decide(files: string[], liveAt: 'latest' | 'behind' | 'down' = 'latest', laterOnBase: [string, string][] = []): string {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cfskip-'));
   const sh = (c: string, env: Record<string, string> = {}) => execSync(c, { cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, ...env } });
   const commit = (msg: string, when: number) => sh(`git add -A && git -c user.email=t@t -c user.name=t commit -q --allow-empty -m ${JSON.stringify(msg)}`, { GIT_COMMITTER_DATE: `${when} +0000`, GIT_AUTHOR_DATE: `${when} +0000` });
@@ -21,6 +22,11 @@ function decide(files: string[], liveAt: 'latest' | 'behind' | 'down' = 'latest'
   commit('an article', 1700001000);
   fs.writeFileSync(path.join(dir, 'watcher-state.json'), '1');
   commit('bot bookkeeping', 1700002000);
+  laterOnBase.forEach(([f, msg], i) => {
+    fs.mkdirSync(path.join(dir, path.dirname(f)), { recursive: true });
+    fs.writeFileSync(path.join(dir, f), String(i));
+    commit(msg, 1700002100 + i);
+  });
   sh('git branch -q remote-base');
   for (const f of files) { fs.mkdirSync(path.join(dir, path.dirname(f)), { recursive: true }); fs.writeFileSync(path.join(dir, f), 'x'); }
   commit('c', 1700003000);
@@ -42,6 +48,18 @@ test('bookkeeping-only bot pushes skip the Cloudflare build', () => {
 test('never skips while an earlier visible change is not live yet (or the site cannot be checked)', () => {
   assert.equal(decide(['watcher-state.json'], 'behind'), '');
   assert.equal(decide(['watcher-state.json'], 'down'), '');
+  // a panel edit pushed after the live build still has to wait for its own build
+  assert.equal(decide(['watcher-state.json'], 'latest', [['content/shows/x.md', 'Update عرض “x” (لوحة التحكم — محمد)']]), '');
+});
+
+test('commits that never build ([skip ci] receipts, search reports) do not keep the site "behind" (INCIDENTS #307)', () => {
+  assert.equal(decide(['watcher-state.json'], 'latest', [
+    ['_data/deliveries/abc.json', 'chore(publish): delivery sent [skip ci]'],
+    ['seo/new-shows.md', 'chore(seo): new pages sent to search engines [skip ci]'],
+    ['content/news/fixed.md', 'chore(publish): mark telegram sent [Skip CI]'],
+  ]), ' [CF-Pages-Skip]');
+  // [no ci] is GitHub's word only: Cloudflare builds that commit, so it still counts
+  assert.equal(decide(['watcher-state.json'], 'latest', [['content/news/n.md', 'x [no ci]']]), '');
 });
 
 test('anything a visitor can see still builds', () => {
@@ -72,6 +90,13 @@ test('the panel can tell when a save is live: build.json lists the deployed comm
   const worker = fs.readFileSync('worker/src/studio.ts', 'utf8');
   assert.match(worker, /commit: sha, committedAt, sha:/);
   assert.match(worker, /commit: sha, committedAt \}/);
+});
+
+test('the 4400+ original images are hard-linked into the site, not copied byte by byte (INCIDENTS #307)', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.doesNotMatch(cfg, /addPassthroughCopy\("content\/images"\)/);
+  assert.match(cfg, /linkTree\("content\/images", "_site\/content\/images"\)/);
+  assert.match(cfg, /fs\.linkSync\(src, dest\)/);
 });
 
 test('host builds reuse already-resized images from the live site (only new ones are resized)', () => {

@@ -228,6 +228,24 @@ module.exports = function(eleventyConfig) {
     }
     return n;
   };
+  // Mirrors a folder into _site with hard links (copies only across disks). Returns files placed.
+  const linkTree = (from, to) => {
+    if (!fs.existsSync(from)) return 0;
+    fs.mkdirSync(to, { recursive: true });
+    let n = 0;
+    for (const e of fs.readdirSync(from, { withFileTypes: true })) {
+      const src = path.join(from, e.name), dest = path.join(to, e.name);
+      if (e.isDirectory()) { n += linkTree(src, dest); continue; }
+      if (!e.isFile()) continue;
+      const s = fs.statSync(src);
+      const d = fs.existsSync(dest) ? fs.statSync(dest) : null;
+      if (d && ((d.ino === s.ino && d.dev === s.dev) || (d.size === s.size && d.mtimeMs >= s.mtimeMs))) continue;
+      if (d) fs.unlinkSync(dest);
+      try { fs.linkSync(src, dest); } catch { fs.copyFileSync(src, dest); }
+      n++;
+    }
+    return n;
+  };
   const fetchLiveImages = async () => {
     const started = Date.now();
     const list = await fetch(`${LIVE}/img-cache.json?_=${Date.now()}`, { signal: AbortSignal.timeout(10000) }).then(r => (r.ok ? r.json() : []));
@@ -1699,7 +1717,15 @@ module.exports = function(eleventyConfig) {
   if (fs.existsSync("dist/videos")) {
     eleventyConfig.addPassthroughCopy({"dist/videos": "videos"});
   }
-  eleventyConfig.addPassthroughCopy("content/images");
+  // content/images (4400+ originals, ~470 MB): hard links instead of Eleventy's byte-for-byte copy.
+  // The copy was half of every build (~40 s of ~80 s) and every save from the panel waited for it.
+  // A link is the same file on the same disk, made in a fraction of a second; a copy only when
+  // linking is impossible (another disk).
+  eleventyConfig.on("eleventy.before", () => {
+    const started = Date.now();
+    const n = linkTree("content/images", "_site/content/images");
+    console.log(`[images] ${n} originals linked in ${((Date.now() - started) / 1000).toFixed(1)}s`);
+  });
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("manifest.json");
