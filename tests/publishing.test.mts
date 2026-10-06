@@ -3533,3 +3533,32 @@ test('article pages load their styles and scripts from shared cached files (INCI
   // a changed file gets a new URL (/assets/* is cached for a year)
   assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /addNunjucksGlobal\("asset", function\(url\)/);
 });
+
+test('the site builds from a «site» branch without the original pictures and reels, served by arw-media (INCIDENTS #312)', async () => {
+  // the worker maps only the two folders, nothing else of the repo
+  const { repoPathOf } = await import('../media-worker/src/index.ts');
+  assert.equal(repoPathOf('/content/images/a%20b.jpg'), 'content/images/a b.jpg');
+  assert.equal(repoPathOf('/videos/reel-x.mp4'), 'dist/videos/reel-x.mp4');
+  assert.equal(repoPathOf('/content/images/../../package.json'), null);
+  assert.equal(repoPathOf('/package.json'), null);
+  assert.equal(repoPathOf('/content/images/'), null);
+  // routes at the top of wrangler.toml (under [vars] they were read as a variable and never routed)
+  const toml = fs.readFileSync('media-worker/wrangler.toml', 'utf-8');
+  assert.ok(toml.indexOf('routes = [') > -1 && toml.indexOf('routes = [') < toml.indexOf('[vars]'));
+  // the build reuses resized pictures without their originals, and fetches an original only for a new picture
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.match(cfg, /const known = mapped\(decoded, "800jpeg"\);/);
+  assert.match(cfg, /resolvedSource = await fetchOriginal\(decoded\)/);
+  assert.match(cfg, /fs\.writeFileSync\("_site\/img-map\.json"/);
+  // build.json names the main commit a «site» build was made from, so the panel's «ظهر على الموقع» still works
+  assert.match(cfg, /match\(\/\^site-of: \(\[0-9a-f\]\{40\}\) \(\\d\+\)\$\/m\)/);
+  // «site» follows main after the bots too: their pushes (GITHUB_TOKEN) start no push-triggered workflow
+  const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
+  for (const name of ['Fightful News Auto Watcher', 'Ringside News Auto Watcher', 'Wrestling Inc Auto Watcher']) assert.ok(wf.includes(`- ${name}`), name);
+  assert.match(wf, /cron: '\*\/10 \* \* \* \*'/);
+  assert.match(wf, /MAIN=\$\(api "\$BASE\/ref\/heads\/main"/);
+  for (const f of ['fightful-watcher.yml', 'ringsidenews-watcher.yml', 'wrestlinginc-watcher.yml']) {
+    const name = fs.readFileSync(`.github/workflows/${f}`, 'utf-8').match(/^name: (.+)$/m)![1].trim();
+    assert.ok(wf.includes(`- ${name}`), `site-branch.yml must list «${name}»`);
+  }
+});
