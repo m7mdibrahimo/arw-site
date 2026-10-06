@@ -86,7 +86,8 @@ const RULES: Rule[] = [
   // A big number written out in words is where the model gets the number wrong: «ألفا وخمسمائة وواحدا
   // وخمسين دولارا وفلسين» for $1,501.51 (INCIDENTS #188). Amounts and years stay in digits.
   { code: "spelled_number", severity: "error", re: /(?<![\u0600-\u06FF])(?:ألفين|ألفا|ألف)\s+و(?:مائة|مئة|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة|ستة|سبعة|خمسة|أربعة|ثلاثة|اثنين|واحد|عشرين|ثلاثين)|(?<![\u0600-\u06FF])(?:فلسين|فلسا|سنتا|سنتات)(?![\u0600-\u06FF])|(?<![\u0600-\u06FF])(?:(?:واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(?:عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(?:عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g, message: "رقم كبير أو سنة أو سن أو مبلغ مكتوب بالحروف — يتكتب بالأرقام زي المصدر", fields: ["body"] },
-  { code: "broken_word", severity: "error", re: /(?<=[\u0600-\u06FF]) (?!vs\b)(?:[a-z]{2,8})(?=[\s،,.؛:!؟?)]|$)(?! [A-Za-z])/g, message: "كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي", fields: ["title", "body"] },
+  // \u00AB\u0641\u064A \u0627\u0644\u062A synergies \u0627\u0644\u0633\u0646\u0648\u064A\u0629\u00BB \u2014 a 9-letter fragment slipped past the old {2,8} limit (INCIDENTS #303)
+  { code: "broken_word", severity: "error", re: /(?<=[\u0600-\u06FF]) (?!vs\b)(?:[a-z]{2,14})(?=[\s،,.؛:!؟?)]|$)(?! [A-Za-z])/g, message: "كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي", fields: ["title", "body"] },
   { code: "artifact", severity: "error", re: /\bundefined\b|\bNaN\b|\[object Object\]|\{\{|\}\}|```|\\n|&amp;|&quot;|&#\d+;/g, message: "بقايا كود أو رموز غير مفهومة", fields: ["title", "body"] },
   // Gemini sometimes swaps one letter of a name for a look-alike from another script:
   // «وパاتريك» (Japanese), «ناтан» (Cyrillic), «مصارعة חברה» (Hebrew tag) — INCIDENTS #54.
@@ -108,6 +109,8 @@ const RULES: Rule[] = [
   { code: "doubled_show_phrase", severity: "error", re: /عرض\s+((?:[A-Za-z0-9'’-]+\s+){0,3}[A-Za-z0-9'’-]+)\s+(?:في|خلال|ب)\s*عرض\s+\1(?![A-Za-z0-9])/g, message: "اسم العرض مكرر في نفس الجملة — اكتبه مرة واحدة (حصل: «خلال عرض WWE RAW في عرض WWE RAW»)", fields: ["title", "body"] },
   // «تواجه كل من كراتوس روميو كيفيدو في نزال» — the «و» between the two names dropped (INCIDENTS #301)
   { code: "kol_min_no_waw", severity: "error", re: /كل\s+من\s+(?:(?!و)[ء-ي]+\s+){2,4}في\s+نزال/g, message: "«كل من» بعدها اسمين من غير «و» بينهم (حصل: «تواجه كل من كراتوس روميو كيفيدو» والصح «كراتوس وروميو كيفيدو»)", fields: ["title", "body"] },
+  // «فى فيلم»، «الذى دفعه»، «لقاء صحفى» — ى مكان ي في آخر الكلمة (INCIDENTS #303)
+  { code: "alif_maqsura_ya", severity: "error", re: /(?<![ء-ي])(?:فى|الذى|التى|صحفى|عربى)(?![ء-ي])/g, message: "ى مكان ي (حصل: «فى WWE»، «الذى»، «صحفى») — الصح «في»، «الذي»، «صحفي»", fields: ["title", "body"] },
   { code: "missing_hamza", severity: "error", re: /(?<![\u0621-\u064A])[وف]?(?:الى|الي)(?![\u0621-\u064A])/g, message: "«الى/الي» بلا همزة — «إلى» (حرف الجر) أو «إليّ» حسب المعنى (حصل: «للوصول الي» والمقصود «إليّ»)", fields: ["title", "body"] },
   // A draft that dropped hamzas everywhere («انها»، «اشار إلى ان»، «اطلق»…) is a bad
   // Gemini output, not a few typos — the counted check below blocks it (INCIDENTS #64).

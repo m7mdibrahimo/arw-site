@@ -317,13 +317,18 @@ ${list}
 export function newSubject(draft: ArticleDraft, matched: { title: string; body: string; tags: string[] }): string | null {
   const generic = /أخبار|عروض|عرض|اتحاد|بطولة|نتائج|المصارعة|تأبين|وفاة/;
   const seen = `${matched.title}\n${matched.body}\n${matched.tags.join("\n")}`;
+  // «سكيدانس» is the «سكاي دانس» the other story names: compare without spaces and long vowels too,
+  // or a second spelling of one company reads as someone new (INCIDENTS #303).
+  const skel = (s: string) => s.replace(/[\sاويىأإآ]/g, "");
+  const seenSkel = skel(seen);
+  const missing = (w: string) => !seen.includes(w) && (skel(w).length < 4 || !seenSkel.includes(skel(w)));
   for (const tag of draft.tags) {
     const t = tag.trim();
     if (t.length < 3 || !/[؀-ۿ]/.test(t) || generic.test(t)) continue;
     // Every word of the name must be missing: «ساين غاي ريك» is the «ريك أتشبيرغر» the other
     // story is about, and «باتيستا» is «ديف باتيستا» — a nickname or a longer form is not someone new.
     const words = t.split(/\s+/).filter(w => w.length >= 3 && !/^(ال|إل|ذا|دي|فان)$/.test(w));
-    if (draft.title.includes(t) && words.length && words.every(w => !seen.includes(w))) return t;
+    if (draft.title.includes(t) && words.length && words.every(missing)) return t;
   }
   return null;
 }

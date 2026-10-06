@@ -3279,6 +3279,26 @@ test('«كل من» needs «و» between the names, and the Cazanas read like th
   assert.equal(names['Romeo Quevedo'], 'روميو كيفيدو');
 });
 
+test('long Latin fragments, ى for ي, and the merger-day wording are caught (INCIDENTS #303)', async () => {
+  const { checkArticle, applyCorrections } = await import('../scripts/news-qa');
+  const codes = (body: string) => checkArticle('عنوان عربي كامل للخبر هنا', body, []).map(i => i.code);
+  const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
+  assert.ok(codes('تستهدف تحقيق ستة مليارات دولار في الت synergies السنوية.' + filler).includes('broken_word'));
+  assert.ok(codes('تحدث جون سينا فى لقاء صحفى عن المخرج الذى دفعه.' + filler).includes('alif_maqsura_ya'));
+  assert.ok(!codes('تحدث جون سينا في لقاء صحفي عن المخرج الذي دفعه، والفتى مصطفى.' + filler).includes('alif_maqsura_ya'));
+  assert.equal(applyCorrections('في الت synergies السنوية'), 'في الوفورات السنوية');
+  assert.equal(applyCorrections('مدعوا القضية المتعلقة ببث WWE'), 'المدعيان في القضية المتعلقة ببث WWE');
+  assert.equal(applyCorrections('شركة باراماونت سكايدانس وسكيدانس'), 'شركة باراماونت سكاي دانس وسكاي دانس');
+  assert.equal(applyCorrections('أنا قسس قليلا عليه'), 'أنا قاس عليه قليلا');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['Skydance'], 'سكاي دانس');
+  assert.equal(names['Sean Mowry'], 'شون موري');
+  const { newSubject } = await import('../scripts/editorial');
+  const matched = { title: 'باراماونت تستحوذ على وارنر براذرز ديسكفري', body: 'أعلنت شركة سكاي دانس رسميا عن إتمام الاستحواذ.', tags: ['باراماونت'] };
+  assert.equal(newSubject({ title: 'اكتمال استحواذ باراماونت وتأسيس شركة سكيدانس رسميا', body: '', tags: ['سكيدانس'] }, matched), null);
+  assert.equal(newSubject({ title: 'كيماليتو يرثي باك', body: '', tags: ['كيماليتو'] }, matched), 'كيماليتو');
+});
+
 test('the social shield note never carries letters from another script (INCIDENTS #295)', async () => {
   const { cleanSpoilerNote } = await import('../scripts/news-qa');
   assert.equal(cleanSpoilerNote('لا يتضمن نتائج نزالات أو عодات حديثة.'), 'لا يتضمن نتائج نزالات أو عات حديثة.');
