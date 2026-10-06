@@ -1,5 +1,15 @@
 [
   {
+    "id": 332486,
+    "link": "https://www.fightful.com/wrestling/roman-reigns-announced-for-wwe-raw-on-october-19/",
+    "date": "2026-10-06T16:19:46",
+    "date_gmt": "2026-10-06T20:19:46",
+    "title": {
+      "rendered": "Roman Reigns Announced For WWE Raw On October 19"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/05121255/001_RAW_08032026CN_118850-e1785946401633.jpg"
+  },
+  {
     "id": 332483,
     "link": "https://www.fightful.com/wrestling/tna-bound-for-glory-to-start-at-430-pm-et/",
     "date": "2026-10-06T16:14:16",
@@ -288,15 +298,5 @@
       "rendered": "Speedball Mike Bailey Discusses &#8216;When The Fajitas Come Out Sizzlin&#8217; Meme: I F**king Love Fajitas"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/21101130/Screenshot-465-e1789999921615.png"
-  },
-  {
-    "id": 332413,
-    "link": "https://www.fightful.com/wrestling/el-hijo-del-vikingo-to-undergo-another-knee-surgery/",
-    "date": "2026-10-06T08:46:22",
-    "date_gmt": "2026-10-06T12:46:22",
-    "title": {
-      "rendered": "El Hijo Del Vikingo To Undergo Another Knee Surgery"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/16134801/020_SD_07042026CM_50704.jpg"
   }
 ]
