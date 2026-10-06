@@ -3240,4 +3240,12 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   // no colloquial words in the box
   const deck = layout.slice(layout.indexOf('<section class="watch-deck'), layout.indexOf('</section>', layout.indexOf('<section class="watch-deck')));
   assert.doesNotMatch(deck, /دلوقتي|اختار |اللي|مش |ماشتغلش/);
+  // the show's picture and a play button first; nothing loads from a server before the press
+  assert.match(layout, /<section class="watch-deck is-idle/);
+  assert.match(layout, /<button type="button" class="wd-poster" id="wdPoster"/);
+  assert.match(layout, /<div class="video-loader is-hidden" id="videoLoader">/);
+  assert.match(layout, /posterBtn\.addEventListener\('click', startPlayback\)/);
+  assert.doesNotMatch(layout, /mountVideo\(embedBox, initialSrc/);
+  // no shortcut line, no quality numbers under the rows, the notice is plain text
+  assert.doesNotMatch(deck, /wd-keys|1080 · 720|href="#downloads"/);
 });
