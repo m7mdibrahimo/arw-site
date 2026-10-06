@@ -106,6 +106,8 @@ const RULES: Rule[] = [
   { code: "doubled_name", severity: "error", re: /(?:(?<![ء-ي])|(?<=(?<![ء-ي])و))((?:[ء-ي]+\s+){1,3}[ء-ي]+)\s+و\1(?![ء-ي])(?!\s*(?:الثاني|الثانية|II|2)(?![ء-ي]))/g, message: "اسم مكتوب مرتين ورا بعض — اكتب أعضاء الفريق زي المصدر (حصل: «غريت أو خان وغريت أو خان»)", fields: ["title", "body"] },
   // «خلال عرض WWE RAW في عرض WWE RAW بتاريخ 21 سبتمبر» — the show named twice in one breath (INCIDENTS #299)
   { code: "doubled_show_phrase", severity: "error", re: /عرض\s+((?:[A-Za-z0-9'’-]+\s+){0,3}[A-Za-z0-9'’-]+)\s+(?:في|خلال|ب)\s*عرض\s+\1(?![A-Za-z0-9])/g, message: "اسم العرض مكرر في نفس الجملة — اكتبه مرة واحدة (حصل: «خلال عرض WWE RAW في عرض WWE RAW»)", fields: ["title", "body"] },
+  // «تواجه كل من كراتوس روميو كيفيدو في نزال» — the «و» between the two names dropped (INCIDENTS #301)
+  { code: "kol_min_no_waw", severity: "error", re: /كل\s+من\s+(?:(?!و)[ء-ي]+\s+){2,4}في\s+نزال/g, message: "«كل من» بعدها اسمين من غير «و» بينهم (حصل: «تواجه كل من كراتوس روميو كيفيدو» والصح «كراتوس وروميو كيفيدو»)", fields: ["title", "body"] },
   { code: "missing_hamza", severity: "error", re: /(?<![\u0621-\u064A])[وف]?(?:الى|الي)(?![\u0621-\u064A])/g, message: "«الى/الي» بلا همزة — «إلى» (حرف الجر) أو «إليّ» حسب المعنى (حصل: «للوصول الي» والمقصود «إليّ»)", fields: ["title", "body"] },
   // A draft that dropped hamzas everywhere («انها»، «اشار إلى ان»، «اطلق»…) is a bad
   // Gemini output, not a few typos — the counted check below blocks it (INCIDENTS #64).

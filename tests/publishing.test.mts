@@ -3267,6 +3267,18 @@ test('«سويا» takes a dual verb: «وتمكنا سويا من» (INCIDENTS 
   assert.equal(applyCorrections('تحالف مع ميستيكو وتمكن سويا من حصد البطولة'), 'تحالف مع ميستيكو وتمكنا سويا من حصد البطولة');
 });
 
+test('«كل من» needs «و» between the names, and the Cazanas read like the dictionary (INCIDENTS #301)', async () => {
+  const { checkArticle, applyCorrections } = await import('../scripts/news-qa');
+  const has = (body: string) => checkArticle('عنوان عربي كامل للخبر هنا', body, []).some(i => i.code === 'kol_min_no_waw');
+  const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
+  assert.ok(has('تواجه كل من كراتوس روميو كيفيدو في نزال فردي.' + filler));
+  assert.ok(!has('تواجه كل من كراتوس وروميو كيفيدو في نزال فردي.' + filler));
+  assert.equal(applyCorrections('ذا كونتري جنتلمن (كي سي كازانا وأجي كازانا)'), 'ذا كونتري جنتلمن (كي سي كازانا وإيه جيه كازانا)');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['AJ Cazana'], 'إيه جيه كازانا');
+  assert.equal(names['Romeo Quevedo'], 'روميو كيفيدو');
+});
+
 test('the social shield note never carries letters from another script (INCIDENTS #295)', async () => {
   const { cleanSpoilerNote } = await import('../scripts/news-qa');
   assert.equal(cleanSpoilerNote('لا يتضمن نتائج نزالات أو عодات حديثة.'), 'لا يتضمن نتائج نزالات أو عات حديثة.');
