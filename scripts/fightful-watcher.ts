@@ -4,7 +4,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, type NewsFile } from "./news-qa";
+import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4275,6 +4275,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const dropUrgency = (t: string) => t.replace(/((?:عملية|جراحة|إجراء)(?:\s+(?:جراحية|طبية|جراحي|طبي))?)\s+(?:عاجلة|طارئة|عاجل|طارئ)(?![\u0621-\u064A])/g, "$1");
     draft = { ...draft, title: dropUrgency(draft.title), body: dropUrgency(draft.body) };
   }
+  // "Shelved" is a pause, never «يلغي» (INCIDENTS #291).
+  draft = { ...draft, title: shelvedNotCancelled(draft.title, plainText), body: shelvedNotCancelled(draft.body, plainText) };
   if (blocking.length) {
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
     if (blocking.some(i => ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners"].includes(i.code))) lastPostRetryable = true;

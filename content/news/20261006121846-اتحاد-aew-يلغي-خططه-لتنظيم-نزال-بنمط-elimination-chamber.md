@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "اتحاد AEW يلغي خططه لتنظيم نزال بنمط Elimination Chamber"
+title: "اتحاد AEW يجمّد خططه لتنظيم نزال بنمط Elimination Chamber"
+permalink: "/news/اتحاد-aew-يلغي-خططه-لتنظيم-نزال-بنمط-elimination-chamber/index.html"
 date: 2026-10-06T12:18:46.000+03:00
 published_at: 2026-10-06T09:26:19.566Z
 source_id: 802251529

@@ -353,6 +353,25 @@ export function dropTimezoneFromTitle(title: string): string {
     .replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim();
 }
 
+/**
+ * "Shelved / on hold / tabled" is a pause, not a cancellation: «اتحاد AEW يلغي خططه لنزال بنمط
+ * Elimination Chamber» when the source said the match is "still shelved and tabled" (INCIDENTS #291).
+ * Unless the source itself cancels (cancel/scrap/nix/axe/drop), cancellation wording becomes freezing.
+ */
+export function shelvedNotCancelled(text: string, source: string): string {
+  if (!/\b(?:shelved|shelve|on hold|tabled|on the back burner|on ice|put aside)\b/i.test(source)) return text;
+  if (/\b(?:cancel(?:l?ed|s|ling)?|cancellation|scrap(?:ped|s)?|nix(?:ed)?|axed|called off|dropped|abandon(?:ed)?|killed)\b/i.test(source)) return text;
+  const map: Array<[RegExp, string]> = [
+    [/(^|[^ء-ي])يلغي(?![ء-ي])/g, "$1يجمّد"],
+    [/(^|[^ء-ي])تلغي(?![ء-ي])/g, "$1تجمّد"],
+    [/(^|[^ء-ي])(و?)(?:ألغى|الغى)(?![ء-ي])/g, "$1$2جمّد"],
+    [/(^|[^ء-ي])(و?)(?:ألغت|الغت)(?![ء-ي])/g, "$1$2جمّدت"],
+    [/(^|[^ء-ي])(و?[بل]?)(?:إلغاء|الغاء)(?![ء-ي])/g, "$1$2تجميد"],
+    [/(^|[^ء-ي])(و?)ال(?:إلغاء|الغاء)(?![ء-ي])/g, "$1$2التجميد"],
+  ];
+  return map.reduce((t, [re, to]) => t.replace(re, to), text);
+}
+
 export function numberWordsInTitle(title: string): string {
   // «ثاندر روزا تتحدث ثاندر روزا عن نزالها…»: the subject written again after its verb (INCIDENTS #96)
   title = title.replace(/^((?:[^\s:]+\s+){0,3}[^\s:]+)\s+([^\s:]+)\s+\1(?=\s)/, "$1 $2");

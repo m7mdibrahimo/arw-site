@@ -3203,3 +3203,14 @@ test('OK.ru and StreamHG are marked «متعدد الجودات» on watch tabs 
   for (const h of ['ok.ru', 'streamhg.com', 'hgcloud.to', 'hanerix.com']) assert.ok(re.test(h), h);
   for (const h of ['vidoza.net', 'dood.to', 'mega.nz']) assert.ok(!re.test(h), h);
 });
+
+test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
+  const { shelvedNotCancelled } = await import('../scripts/news-qa');
+  const src = 'That match is still shelved and tabled for right now.';
+  assert.equal(shelvedNotCancelled('اتحاد AEW يلغي خططه لتنظيم نزال بنمط Elimination Chamber', src), 'اتحاد AEW يجمّد خططه لتنظيم نزال بنمط Elimination Chamber');
+  assert.equal(shelvedNotCancelled('وألغى الاتحاد الفكرة بعد قرار الإلغاء', src), 'وجمّد الاتحاد الفكرة بعد قرار التجميد');
+  assert.equal(shelvedNotCancelled('اتحاد AEW يلغي خططه', 'The plans were shelved, then scrapped entirely.'), 'اتحاد AEW يلغي خططه');
+  assert.equal(shelvedNotCancelled('اتحاد AEW يلغي خططه', 'AEW cancelled the match.'), 'اتحاد AEW يلغي خططه');
+  const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf-8');
+  assert.match(watcher, /shelvedNotCancelled\(draft\.title, plainText\)/);
+});
