@@ -2864,6 +2864,10 @@ test('a prediction is not a result (INCIDENTS #246)', async () => {
   // INCIDENTS #277
   assert.equal(isSingleMatchSpoiler('شهد أسبوع آخر مليئا بالأحداث في عالم المصارعة الحرة، حيث يستعرض فريق العمل أبرز الرابحين والخاسرين لهذا الأسبوع في ظل الظروف العاطفية التي أعقبت رحيل النجم باك، مع إقامة عروض تكريمية مؤثرة وعودة أسماء بارزة إلى الحلبات.', ''), false);
   assert.equal(isSingleMatchSpoiler('عودة راندي أورتن في عرض WWE RAW', ''), true);
+  // INCIDENTS #278
+  assert.equal(isSingleMatchSpoiler('جيم روس يخضع لجراحة ثانية في الدماغ لعلاج مشكلة في التحويلة', ''), false);
+  assert.equal(isSingleMatchSpoiler('سيث رولينز يخضع لعملية جراحية في الركبة', ''), false);
+  assert.equal(isSingleMatchSpoiler('غونتر يخضع كودي رودز في عرض WWE RAW', ''), true);
 });
 
 test('«AAA World Cruiserweight Champion» has a glossary name (INCIDENTS #248)', () => {

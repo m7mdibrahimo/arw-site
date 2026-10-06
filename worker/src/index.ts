@@ -2069,7 +2069,9 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // A prediction is not a result: «بولي راي يتكهن بتحالف ال ايه نايت مع 946 وهزيمة رومان رينز» (INCIDENTS #246)
   const speculation = ar("يتكهن|تتكهن|يتوقع|تتوقع|يتنبأ|تتنبأ|يرشح|ترشح|يقترح|تقترح|يطالب|تطالب|يتمنى|تتمنى|تكهنات|توقعات").test(title);
   // A possible win is not a win: «جون سينا يناقش إمكانية فوز ال ايه نايت على رومان رينز» was held (INCIDENTS #276).
-  const oddsFree = (speculation ? "" : noNeed).replace(new RegExp(ar("(?:و|ف)?(?:نسب|احتمالات|حظوظ|فرص|ترشيحات|إمكانية|امكانية|احتمالية|احتمال)\\s+(?:ال)?فوز").source, "gi"), " ");
+  // Undergoing surgery is not a submission: «جيم روس يخضع لجراحة ثانية في الدماغ» was held (INCIDENTS #278).
+  const oddsFree = (speculation ? "" : noNeed).replace(new RegExp(ar("(?:و|ف)?(?:نسب|احتمالات|حظوظ|فرص|ترشيحات|إمكانية|امكانية|احتمالية|احتمال)\\s+(?:ال)?فوز").source, "gi"), " ")
+    .replace(new RegExp(ar("(?:ي|ت)?خضع(?:ت)?\\s+(?:ل|إلى\\s+|الى\\s+)(?:ال)?(?:جراحة|جراحات|عملية|عمليات|فحوصات|فحص|علاج|تأهيل|إجراء|اختبار|اختبارات|بروتوكول|عزل|تحقيق)").source, "gi"), " ");
   // Any win/loss wording at all. Verb lists always missed a phrasing («فريق Sisters Of Sin
   // يحقق الفوز في عرض AEW All Out» reached Telegram and Facebook — INCIDENTS #71), and the
   // owner's rule is absolute: no match outcome on social, only full results reports.
