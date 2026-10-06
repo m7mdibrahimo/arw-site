@@ -3104,6 +3104,16 @@ test('Knight transliteration and The 946 name reach the model (INCIDENTS #283)',
   assert.equal(JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'))['The 946'], 'ذا 946');
 });
 
+test('NXT preview title typos and tag-classic names reach the model (INCIDENTS #288)', () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  assert.ok(c.some((x) => x.wrong === 'الناعلة' && x.right === 'الناقلة'));
+  assert.ok(c.some((x) => x.wrong === 'ال الليلة' && x.right === 'الليلة'));
+  assert.ok(c.some((x) => x.wrong === 'كتور زانوف' && x.right === 'فيكتور زانوف'));
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['Shido Ash'], 'شيدو آش');
+  assert.equal(names['Zilla Fatu'], 'زيلا فاتو');
+});
+
 test('a recap that takes a URL another file already went out under is posted with its own key (INCIDENTS #280)', async () => {
   const { urlKeyOwners, socialKeyFor } = await import('../worker/src/index');
   const url = 'httpsarab-wrestlingcomrecapswwe-raw-highlights-28-09-2026';
