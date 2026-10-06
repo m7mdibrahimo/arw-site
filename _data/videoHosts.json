@@ -1,6 +1,7 @@
 {
-  "checkedAt": "2026-10-06T03:51:24.026Z",
+  "checkedAt": "2026-10-06T03:53:02.021Z",
   "dead": [
+    "sg1.stackvid.com",
     "turbovidhls.com"
   ],
   "noEmbed": [
@@ -8,6 +9,6 @@
   ],
   "strikes": {
     "turbovidhls.com": 2,
-    "sg1.stackvid.com": 1
+    "sg1.stackvid.com": 2
   }
 }
