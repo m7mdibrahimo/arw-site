@@ -21,7 +21,7 @@ interface ServiceAccount { client_email: string; private_key: string }
 
 const b64url = (b: Buffer | string) => Buffer.from(b).toString("base64").replace(/=+$/, "").replace(/\+/g, "-").replace(/\//g, "_");
 
-async function accessToken(sa: ServiceAccount, scope = SCOPE): Promise<string> {
+export async function accessToken(sa: ServiceAccount, scope = SCOPE): Promise<string> {
   const now = Math.floor(Date.now() / 1000);
   const header = b64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
   const claims = b64url(JSON.stringify({ iss: sa.client_email, scope, aud: "https://oauth2.googleapis.com/token", iat: now, exp: now + 3600 }));
@@ -36,7 +36,7 @@ async function accessToken(sa: ServiceAccount, scope = SCOPE): Promise<string> {
   return data.access_token;
 }
 
-async function api(token: string, url: string, body?: unknown, method?: string): Promise<any> {
+export async function api(token: string, url: string, body?: unknown, method?: string): Promise<any> {
   const res = await fetch(url, {
     method: method || (body ? "POST" : "GET"),
     headers: { Authorization: `Bearer ${token}`, ...(body ? { "Content-Type": "application/json" } : {}) },

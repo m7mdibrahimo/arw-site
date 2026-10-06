@@ -3378,3 +3378,25 @@ test('library counts read «10 عروض مترجمة» up to ten and «11 عرض
   assert.equal(arCount(103, ...w), '103 عروض مترجمة');
   for (const f of ['pages/library.njk', 'pages/library-program.njk']) assert.doesNotMatch(fs.readFileSync(f, 'utf-8'), /showsCount|عرضًا/, f);
 });
+
+test('new show pages go to the search engines, invisibly (INCIDENTS #302)', async () => {
+  const m = await import('../scripts/seo-new-shows.ts');
+  const today = new Date().toISOString().slice(0, 10);
+  const xml = '<urlset><url><loc>https://arab-wrestling.com/shows/wwe-raw-05-10-2026/</loc><lastmod>' + today + '</lastmod></url>'
+    + '<url>\n <loc>https://arab-wrestling.com/shows/old-show/</loc>\n <lastmod>2026-01-01</lastmod></url>'
+    + '<url><loc>https://arab-wrestling.com/news/x/</loc></url><url><loc>https://arab-wrestling.com/shows/</loc></url></urlset>';
+  const entries = m.parseSitemap(xml);
+  assert.equal(entries.length, 4);
+  const state: any = { pages: {} };
+  // first run: only the last three days are sent, older pages are just remembered; news and section pages never
+  assert.deepEqual(m.pagesToSend(entries, state), ['https://arab-wrestling.com/shows/wwe-raw-05-10-2026/']);
+  assert.ok(state.pages['https://arab-wrestling.com/shows/old-show/']);
+  // a known page goes again only when its lastmod moves
+  state.pages['https://arab-wrestling.com/shows/wwe-raw-05-10-2026/'] = { firstSeen: today, lastmod: today };
+  assert.deepEqual(m.pagesToSend(entries, state), []);
+  // the IndexNow key is served at the site root
+  assert.ok(fs.readFileSync('pages/indexnow-key.njk', 'utf-8').includes('permalink: /' + m.INDEXNOW_KEY + '.txt'));
+  // search engines get every name of the program, in structured data only
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /"about": \{ "@type": "TVSeries"[^\n]*"alternateName"/);
+  assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /\{% for item in lp\.items %\}/);
+});

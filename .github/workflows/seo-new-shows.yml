@@ -1,0 +1,66 @@
+name: SEO New Shows
+
+# ═══════════════════════════════════════════════════════
+#  أي عرض أو ملخص أو حلقة نوستالجيا جديدة بتتبعت لمحركات البحث أول ما تبقى
+#  على الموقع: IndexNow (بينج وياندكس وغيرهم)، وخريطة الموقع لجوجل، وبعدها
+#  بنتابع هل جوجل فهرسها وترتيبها إيه. الحالة في seo/new-shows.json والتقرير
+#  في seo/new-shows.md وجولات المراقبة بتقراه. مفيش أي تغيير على الصفحة نفسها.
+# ═══════════════════════════════════════════════════════
+
+on:
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'content/shows/**'
+      - 'content/recaps/**'
+      - 'content/nostalgia/**'
+      - scripts/seo-new-shows.ts
+      - .github/workflows/seo-new-shows.yml
+
+concurrency:
+  group: seo-new-shows
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # A push of a new show: give the site a few minutes to deploy before reading the live sitemap
+      - name: Wait for the deploy
+        if: github.event_name == 'push'
+        run: sleep 540
+
+      - name: Send new pages
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: npx tsx scripts/seo-new-shows.ts
+
+      - name: Commit the state
+        if: always()
+        run: |
+          [ -d seo ] || exit 0
+          git config user.name "ARW Fix Bot"
+          git config user.email "bot@arab-wrestling.com"
+          git add seo/new-shows.json seo/new-shows.md 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(seo): new pages sent to search engines [skip ci]"
+          for i in 1 2 3; do git pull --rebase --autostash && git push && break; sleep 10; done

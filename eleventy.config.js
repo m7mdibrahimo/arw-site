@@ -1288,7 +1288,7 @@ module.exports = function(eleventyConfig) {
   // The show's own program page for the navigation path: الرئيسية › عروض المصارعة › WWE › WWE RAW (INCIDENTS #286)
   eleventyConfig.addNunjucksGlobal("libraryProgramOf", function(url, library) {
     const prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
-    return prog ? { slug: prog.slug, name: prog.name } : null;
+    return prog ? { slug: prog.slug, name: prog.name, arName: prog.arName || "", aliases: prog.aliases || [] } : null;
   });
   // Search titles for a show page, worded the way people search. «عرض الرو 28.09.2026 مترجم» became
   // «عرض الرو الأخير مترجم (28 سبتمبر 2026) — WWE RAW» on the program's newest show, and every show

@@ -45,14 +45,16 @@ eleventyComputed:
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "عروض المصارعة",
+  "name": "{{ (lp.prog.arLibTitle or lp.prog.name) | escape }}",
   "url": "https://arab-wrestling.com{{ page.url | cleanUrl }}",
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
   "inLanguage": "ar",
+  {#- the program under every name people search it by — for search engines only, nothing on the page (owner) -#}
+  "about": { "@type": "TVSeries", "name": "{{ lp.prog.name | escape }}"{% if lp.prog.arName or lp.prog.aliases.length %}, "alternateName": [{% for a in ([lp.prog.arName] if lp.prog.arName else []).concat(lp.prog.aliases) %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %} },
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": [
-      {% for item in showItems %}
+      {% for item in lp.items %}
       { "@type": "ListItem", "position": {{ loop.index }}, "url": "https://arab-wrestling.com{{ item.url | cleanUrl }}" }{% if not loop.last %},{% endif %}
       {% endfor %}
     ]
