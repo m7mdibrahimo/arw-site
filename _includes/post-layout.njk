@@ -34,6 +34,7 @@
 <meta property="og:title" content="{{ pageTitle }} | عرب راسلنج">
 <meta property="og:description" content="{{ metaDesc }}">
 <meta property="og:image" content="{{ schemaImage }}">
+{% if image and not isNews %}{% optThumbMeta image %}{% endif %}
 <meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">

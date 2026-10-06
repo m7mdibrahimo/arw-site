@@ -24,7 +24,7 @@
   #top10 .t10-item:hover .t10-n, #top10 .t10-item:focus-visible .t10-n { -webkit-text-stroke-color:var(--t10-num-stroke-hover); }
   #top10 .t10-card { position:relative; z-index:1; display:block; width:236px; aspect-ratio:16/10; border-radius:14px; overflow:hidden; background:#151a1f;
     box-shadow:var(--t10-card-shadow); outline:2px solid transparent; outline-offset:2px; transition:outline-color .3s ease, box-shadow .3s ease; }
-  #top10 .t10-img { position:absolute; inset:0; background:#151a1f center/cover no-repeat; transition:transform .7s cubic-bezier(.16,1,.3,1); }
+  #top10 .t10-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; background:#151a1f; transition:transform .7s cubic-bezier(.16,1,.3,1); }
   #top10 .t10-card::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(5,8,10,0) 38%, rgba(5,8,10,.92) 100%); }
   #top10 .t10-item:hover .t10-card, #top10 .t10-item:focus-visible .t10-card { outline-color:var(--t10-accent); }
   #top10 .t10-item:hover .t10-img { transform:scale(1.06); }
@@ -50,20 +50,24 @@
   var esc = function (s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/top10?range=';
   var cache = {};
+  // The last list is kept in the browser, so on a return visit the row shows at once and its pictures
+  // come from the browser cache (INCIDENTS #279).
+  var STORE = 'arw_top10_v2';
+  function stored() { try { var d = JSON.parse(localStorage.getItem(STORE) || 'null'); return d && Array.isArray(d.items) && Date.now() - d.at < 6 * 3600e3 ? d.items : null; } catch (e) { return null; } }
   function load(range) {
     if (cache[range]) return Promise.resolve(cache[range]);
     return fetch(API + range).then(function (r) { return r.ok ? r.json() : { items: [] }; })
-      .then(function (d) { cache[range] = Array.isArray(d.items) ? d.items : []; return cache[range]; })
+      .then(function (d) { cache[range] = Array.isArray(d.items) ? d.items : []; try { if (cache[range].length) localStorage.setItem(STORE, JSON.stringify({ at: Date.now(), items: cache[range] })); } catch (e) {} return cache[range]; })
       .catch(function () { return []; });
   }
   var kindLabel = { show: 'عرض', news: 'خبر', recap: 'ملخص', nostalgia: 'نوستالجيا' };
   function rowHtml(top) {
     return top.map(function (i, n) {
-      return '<a class="t10-item' + (n === 9 ? ' two' : '') + '" href="' + esc(i.url) + '"><span class="t10-n" aria-hidden="true">' + (n + 1) + '</span><span class="t10-card"><span class="t10-img" style="background-image:url(\'' + esc(i.image) + '\')"></span><span class="t10-chip">' + (kindLabel[i.kind] || 'عرض') + '</span><span class="t10-title">' + esc(i.title) + '</span></span></a>';
+      return '<a class="t10-item' + (n === 9 ? ' two' : '') + '" href="' + esc(i.url) + '"><span class="t10-n" aria-hidden="true">' + (n + 1) + '</span><span class="t10-card"><img class="t10-img" src="' + esc(i.image) + '" alt="" width="236" height="148" decoding="async"' + (n < 4 ? ' fetchpriority="high"' : ' loading="lazy"') + '><span class="t10-chip">' + (kindLabel[i.kind] || 'عرض') + '</span><span class="t10-title">' + esc(i.title) + '</span></span></a>';
     }).join('');
   }
   // The week's ten most watched, one list, no day/week switch (the owner, INCIDENTS #183)
-  load('week').then(function (top) {
+  function build(top) {
     if (!top || top.length < 5) return;
     var spot = document.getElementById('spotlight-wrap');
     if (!spot) return;
@@ -81,5 +85,13 @@
     var sync = function () { var max = row.scrollWidth - row.clientWidth, x = Math.abs(row.scrollLeft); prev.disabled = x < 4; next.disabled = x > max - 4; };
     row.addEventListener('scroll', function () { requestAnimationFrame(sync); }, { passive: true });
     addEventListener('resize', sync); sync();
+  }
+  var shown = stored();
+  if (shown && shown.length >= 5) build(shown);
+  load('week').then(function (top) {
+    if (!top || top.length < 5) return;
+    var row = document.querySelector('#top10 .t10-row');
+    if (!row) build(top);
+    else if (JSON.stringify(top) !== JSON.stringify(shown)) row.innerHTML = rowHtml(top);
   });
 })();

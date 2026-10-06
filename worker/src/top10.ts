@@ -8,7 +8,7 @@ interface Top10Env { PUSH_KV?: KVNamespace; SITE_ORIGIN: string }
 export interface Top10Item { url: string; title: string; image: string; kind: "show" | "recap" | "nostalgia"; views: number }
 
 const CONFIG_KEY = "studio:analytics:config";
-const CACHE_KEY = (range: string) => `top10:v3:${range}`; // the home page asks for the week only (#183) // v2: watch pages only, decoded titles (#181)
+const CACHE_KEY = (range: string) => `top10:v4:${range}`; // v4: small card pictures (#279) // the home page asks for the week only (#183) // v2: watch pages only, decoded titles (#181)
 const CACHE_MS = 30 * 60_000;
 
 /**
@@ -64,11 +64,14 @@ async function topPaths(token: string, zone: string, hours: number): Promise<{ p
 async function pageCard(origin: string, path: string): Promise<{ title: string; image: string } | null> {
   const res = await fetch(origin + encodeURI(path), { headers: { "User-Agent": "ARW-Top10/1.0" } }).catch(() => null);
   if (!res || !res.ok) return null;
-  let title = "", image = "";
+  let title = "", image = "", thumb = "";
   await new HTMLRewriter()
     .on('meta[property="og:title"]', { element(e) { title = title || e.getAttribute("content") || ""; } })
     .on('meta[property="og:image"]', { element(e) { image = image || e.getAttribute("content") || ""; } })
+    // the page's small card picture (480px WebP) instead of the full upload (INCIDENTS #279)
+    .on('meta[name="arw:thumb"]', { element(e) { thumb = thumb || e.getAttribute("content") || ""; } })
     .transform(res).arrayBuffer();
+  if (thumb) image = thumb;
   title = decodeEntities(title).replace(/\s*[|–-]\s*عرب راسلنج.*$/, "").trim();
   return title ? { title, image: decodeEntities(image) } : null;
 }
