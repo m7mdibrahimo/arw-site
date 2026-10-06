@@ -3497,6 +3497,12 @@ test('NJPW library groups its shows by tour: the big event with its «Road To» 
   assert.equal(tours[0].cards[1].item.eventDate, '2026-09-25');
   assert.ok(tours[2].cards.every((c: any) => c.tag === ''));
   assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /\{% for c in tour\.cards %\}/);
+  // the show page's list: one tab per tour, the big event's pill named after it
+  const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(tpl, /\{% elif season\.type == "tour" %\}\{\{ season\.label \}\}/);
+  assert.match(tpl, /\{% if ep\.isTourMain %\} ep-pill-main\{% endif %\}/);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.match(cfg, /prog\.seasons = tourGroups\(prog\.episodes, TOUR_PREFIX\[prog\.slug\] \|\| ""\)\.reverse\(\)/);
   // every NJPW show is named after its event, not just the federation and the date
   for (const f of fs.readdirSync('content/shows').filter(x => x.endsWith('.md'))) {
     const t = fs.readFileSync('content/shows/' + f, 'utf-8');

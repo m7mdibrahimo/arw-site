@@ -1132,6 +1132,23 @@ module.exports = function(eleventyConfig) {
         : (prog.isNostalgia
             ? "recurring"
             : (prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; }) ? "series" : "recurring"));
+
+      // Tour programs (NJPW): one tab per tour on the show page — the «Road To» shows in date order, then the big
+      // event they built to, whose pill carries its name — instead of a «2026» tab and an «عروض متفرقة» one (INCIDENTS #309)
+      if (TOUR_PROGRAMS.indexOf(prog.slug) !== -1 && !prog.isNostalgia) {
+        const ordered = [];
+        prog.seasons = tourGroups(prog.episodes, TOUR_PREFIX[prog.slug] || "").reverse().map(function(t, i) {
+          const list = t.shows.slice().reverse().concat(t.main ? [t.main] : []);
+          list.forEach(function(ep) {
+            ep.groupKey = i; ep.groupType = "tour"; ep.isTourMain = ep === t.main;
+            if (ep.isTourMain) ep.pillLabel = t.name;
+            ordered.push(ep);
+          });
+          return { number: i, type: "tour", label: t.name, episodes: list };
+        });
+        prog.episodes = ordered;
+        prog.mode = "recurring";
+      }
     });
 
     return programs;
@@ -1146,6 +1163,7 @@ module.exports = function(eleventyConfig) {
   // Programs whose shows come as tours, not a weekly show (owner, 2026-10-06): NJPW runs «Road To X» nights that
   // build to one big event X, and multi-night events like the G1. Their library page shows one group per tour.
   const TOUR_PROGRAMS = ["njpw"];
+  const TOUR_PREFIX = { njpw: "عرض ان جيه بي دبليو" };
   const { tourGroups } = require("./lib/tours.cjs");
   const buildLibrary = function(collectionApi) {
     const now = Date.now();
