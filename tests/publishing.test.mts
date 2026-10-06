@@ -32,6 +32,12 @@ function ledger() {
   } };
 }
 
+/** The article/show page: the template and the styles and scripts it loads from /assets (INCIDENTS #311). */
+function layoutSource(): string {
+  return ['_includes/post-layout.njk', 'assets/post-layout.css', 'assets/post-seasons.js', 'assets/post-player.js', 'assets/post-theme.js']
+    .map(f => fs.readFileSync(f, 'utf-8')).join('\n');
+}
+
 test('concurrent requests and later retries send a publication only once', async t => {
   const store = ledger(); t.mock.method(globalThis, 'fetch', store.fetch);
   let sends = 0;
@@ -1972,7 +1978,7 @@ test('a news page carries no video in its HTML: YouTube is a thumbnail until cli
   const facade = cfg.slice(cfg.indexOf('function ytFacade('), cfg.indexOf('module.exports'));
   assert.ok(facade.includes('yt-facade-btn') && !/<iframe/.test(facade), 'the build-time YouTube embed is a thumbnail');
   assert.match(cfg, /return ytFacade\(ytId\);/);
-  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  const layout = layoutSource();
   const html = layout.replace(/<script[\s\S]*?<\/script>/g, '');
   assert.ok(!/<video id="arwReelVideo"/.test(html), 'no reel <video> in the page HTML');
   assert.match(layout, /document\.createElement\('video'\)/, 'the reel player is created when a reel exists');
@@ -3085,7 +3091,7 @@ test('source-folder addresses of shows, recaps and news redirect to their pages 
 
 test('program pages are in the sitemap and show pages get search-worded titles (INCIDENTS #275)', () => {
   assert.match(fs.readFileSync('pages/sitemap.njk', 'utf-8'), /for prog in collections\.library/);
-  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
+  assert.match(layoutSource(), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.match(cfg, /showSeoText\(\{ headline, title, programName, eventDate, day, isLatest, description \}\)/);
   assert.match(fs.readFileSync('_redirects', 'utf-8'), /^\/raw\/\* \/library\/wwe-raw\/ 301!$/m);
@@ -3103,7 +3109,7 @@ test('a show page title carries the dotted date people search with, only in the 
   // a written description is kept
   assert.equal(showSeoText({ ...raw, description: 'وصف خاص', isLatest: true }).description, 'وصف خاص');
   // nothing on the page itself changes: the heading still strips the date
-  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /\{\{ headline \| arabicShowName \| stripDate \}\}/);
+  assert.match(layoutSource(), /\{\{ headline \| arabicShowName \| stripDate \}\}/);
 });
 
 test('weekly roundups dated today are not tonight\'s show, and their fixes reach the model (INCIDENTS #277)', () => {
@@ -3172,13 +3178,13 @@ test('watch servers: dead and non-embeddable hosts are hidden, StreamHG mirrors 
   assert.ok(refusesEmbedding('sameorigin', ''));
   assert.ok(!refusesEmbedding('ALLOWALL, ALLOWALL', ''));
   assert.ok(refusesEmbedding('', "frame-ancestors 'self'"));
-  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  const layout = layoutSource();
   assert.match(layout, /'allow', 'autoplay \*; fullscreen \*;/);
   assert.match(layout, /servers \| playableServers\(videoHosts, videoLinks\)/);
 });
 
 test('the player loader stays until the server has loaded and settled, never on a blind timer (INCIDENTS #277)', () => {
-  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  const layout = layoutSource();
   assert.doesNotMatch(layout, /safetyHideTimer/);
   assert.match(layout, /if \(seq !== mountSeq\) return;/);
   assert.match(layout, /var SETTLE_MS = multiStep \? \d+ : \d+;/);
@@ -3192,7 +3198,7 @@ test('the host check counts a CDN error page (5xx) as down (INCIDENTS #278)', ()
 });
 
 test('«الأكثر مشاهدة» uses each page\'s small card picture, not the full upload (INCIDENTS #285)', () => {
-  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /\{% optThumbMeta image %\}/);
+  assert.match(layoutSource(), /\{% optThumbMeta image %\}/);
   assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /meta\[name="arw-thumb"\]/);
   const js = fs.readFileSync('assets/top10.js', 'utf-8');
   assert.match(js, /<img class="t10-img" src=/);
@@ -3201,7 +3207,7 @@ test('«الأكثر مشاهدة» uses each page\'s small card picture, not th
 });
 
 test('a show page path ends at its program, and every show has a program (INCIDENTS #286)', () => {
-  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  const layout = layoutSource();
   assert.match(layout, /libraryProgramOf\(page\.url, collections\.library\)/);
   assert.equal((layout.match(/"@type": ?"BreadcrumbList"/g) || []).length, 1, 'one BreadcrumbList');
   const missing = fs.readdirSync('content/shows').filter(f => f.endsWith('.md') && !/^program_name:\s*\S/m.test(fs.readFileSync(`content/shows/${f}`, 'utf-8')));
@@ -3209,12 +3215,12 @@ test('a show page path ends at its program, and every show has a program (INCIDE
 });
 
 test('«الأكثر مشاهدة» shows the short Arabic name, not the search title (INCIDENTS #287)', () => {
-  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /<meta name="arw-card-title" content="\{\{ \(headline or title\) \| escape \}\}">/);
+  assert.match(layoutSource(), /<meta name="arw-card-title" content="\{\{ \(headline or title\) \| escape \}\}">/);
   assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /if \(cardTitle\) title = decodeEntities\(cardTitle\)\.trim\(\);/);
 });
 
 test('OK.ru and StreamHG are marked «متعدد الجودات» on watch tabs and downloads (INCIDENTS #289)', () => {
-  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  const layout = layoutSource();
   assert.match(layout, /\(s\.url \| toEmbedUrl\) \| isMultiQuality/);
   assert.match(layout, /<span class="srv-mq">متعدد الجودات<\/span>/);
   assert.match(layout, /item\.url \| isMultiQuality/);
@@ -3331,7 +3337,7 @@ test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
 });
 
 test('the watch box: servers listed beside the player in one box, notice inside it (INCIDENTS #292)', () => {
-  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  const layout = layoutSource();
   assert.match(layout, /<section class="watch-deck/);
   assert.match(layout, /class="wd-list" id="serverTabs"/);
   assert.match(layout, /class="srv-row\{% if loop\.index0 == 0 %\} active/);
@@ -3417,7 +3423,7 @@ test('new show pages go to the search engines, invisibly (INCIDENTS #302)', asyn
   // the IndexNow key is served at the site root
   assert.ok(fs.readFileSync('pages/indexnow-key.njk', 'utf-8').includes('permalink: /' + m.INDEXNOW_KEY + '.txt'));
   // search engines get every name of the program, in structured data only
-  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /"about": \{ "@type": "TVSeries"[^\n]*"alternateName"/);
+  assert.match(layoutSource(), /"about": \{ "@type": "TVSeries"[^\n]*"alternateName"/);
   assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /\{% for item in lp\.items %\}/);
 });
 
@@ -3452,7 +3458,7 @@ test('every watch server is played for real; one that fails twice is hidden unti
   const servers = [{ url: 'https://ok.ru/video/1' }, { url: 'https://vidtube.one/dttpachdr7z2.html' }];
   assert.deepEqual(playableServers(servers, {}, { broken: [u] }).map((x: any) => x.url), ['https://ok.ru/video/1']);
   assert.equal(playableServers([servers[1]], {}, { broken: [u] }).length, 1);
-  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /playableServers\(videoHosts, videoLinks\)/);
+  assert.match(layoutSource(), /playableServers\(videoHosts, videoLinks\)/);
 });
 
 test('every scheduled workflow the round depends on has the Worker backstop trigger (INCIDENTS #305)', () => {
@@ -3503,4 +3509,15 @@ test('the show reels are linked into the build, not copied byte for byte (INCIDE
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.doesNotMatch(cfg, /addPassthroughCopy\(\{\s*"dist\/videos"/);
   assert.match(cfg, /linkTree\("dist\/videos", "_site\/videos"\)/);
+});
+
+test('article pages load their styles and scripts from shared cached files (INCIDENTS #311)', () => {
+  const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(tpl, /<link rel="stylesheet" href="\{\{ asset\('\/assets\/post-layout\.css'\) \}\}">/);
+  for (const f of ['post-seasons.js', 'post-player.js', 'post-theme.js']) assert.ok(tpl.includes(`<script src="{{ asset('/assets/${f}') }}"></script>`), f);
+  // nothing big left inline: every article page used to repeat ~97 KB of the same CSS and JS
+  const inlineCss = [...tpl.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].reduce((n, m) => n + m[1].length, 0);
+  assert.ok(inlineCss < 8000, String(inlineCss));
+  // a changed file gets a new URL (/assets/* is cached for a year)
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /addNunjucksGlobal\("asset", function\(url\)/);
 });

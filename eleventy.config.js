@@ -340,6 +340,15 @@ module.exports = function(eleventyConfig) {
     if (r >= 3 && r <= 10) return n + " " + few;
     return n + " " + many;
   });
+  // «/assets/x.css» → «/assets/x.css?v=<content hash>»: /assets/* is cached for a year, so a changed file gets a new URL
+  const assetHashes = {};
+  eleventyConfig.addNunjucksGlobal("asset", function(url) {
+    if (!(url in assetHashes)) {
+      try { assetHashes[url] = require("crypto").createHash("md5").update(fs.readFileSync(path.join(__dirname, url.replace(/^\//, "")))).digest("hex").slice(0, 10); }
+      catch (e) { assetHashes[url] = String(Date.now()); }
+    }
+    return url + "?v=" + assetHashes[url];
+  });
   eleventyConfig.addFilter("isMultiQuality", function(u) {
     try { return MULTI_QUALITY_RE.test(new URL(String(u || "").trim()).hostname.replace(/^www\./, "")); } catch (e) { return false; }
   });
