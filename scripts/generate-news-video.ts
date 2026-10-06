@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { showReelHtml, posterName, shortDuration } from './show-reel-template';
+import { ensureLocal } from './media-store';
 
 const ROOT_DIR = process.cwd();
 const NEWS_DIR = path.join(ROOT_DIR, 'content/news');
@@ -235,6 +236,8 @@ export async function generateNewsVideo(inputTarget?: string) {
   fs.mkdirSync(path.join(REEL_DIR, 'assets'), { recursive: true });
   fs.mkdirSync(OUT_DIR, { recursive: true });
 
+  // the pictures live in R2, not in this checkout (INCIDENTS #313): fetch the cover from the site first
+  if (imageRel && !fs.existsSync(imageSrc)) await ensureLocal(imageRel, ROOT_DIR);
   if (fs.existsSync(imageSrc)) {
     fs.copyFileSync(imageSrc, targetImage);
   } else {
@@ -916,17 +919,16 @@ export function updateVideosManifest() {
     if (!fs.existsSync(OUT_DIR)) {
       fs.mkdirSync(OUT_DIR, { recursive: true });
     }
-    const files = fs.readdirSync(OUT_DIR).filter(f => f.endsWith('.mp4'));
-    const manifest = files.map(f => {
+    // The reels themselves live in R2, not the repo (INCIDENTS #313): the manifest keeps every reel ever rendered
+    // (it's how a show's reel is known to exist, so none is rendered twice) and adds this checkout's new ones.
+    let previous: any[] = [];
+    try { previous = JSON.parse(fs.readFileSync(path.join(OUT_DIR, 'manifest.json'), 'utf-8')); } catch {}
+    const byName = new Map<string, any>((Array.isArray(previous) ? previous : []).filter(e => e && e.filename).map(e => [e.filename, e]));
+    for (const f of fs.readdirSync(OUT_DIR).filter(f => f.endsWith('.mp4'))) {
       const stat = fs.statSync(path.join(OUT_DIR, f));
-      return {
-        filename: f,
-        videoUrl: `/videos/${f}`,
-        size: stat.size,
-        mtime: stat.mtimeMs,
-        cleanSlug: f.replace(/^reel-/, '').replace(/\.mp4$/, ''),
-      };
-    }).sort((a, b) => b.mtime - a.mtime);
+      byName.set(f, { filename: f, videoUrl: `/videos/${f}`, size: stat.size, mtime: stat.mtimeMs, cleanSlug: f.replace(/^reel-/, '').replace(/\.mp4$/, '') });
+    }
+    const manifest = [...byName.values()].sort((a, b) => b.mtime - a.mtime);
     fs.writeFileSync(path.join(OUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf-8');
     console.log(`📋 Updated videos manifest with ${manifest.length} videos.`);
     return manifest;

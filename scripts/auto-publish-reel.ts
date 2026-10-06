@@ -42,7 +42,8 @@ async function autoPublish() {
   for (const data of itemsToPublish) {
     console.log(`\n🚀 [Auto-Publish] Processing: "${data.title}" (Kind: ${data.kind || 'unknown'})`);
     const videoFileName = data.filename || path.basename(data.videoUrl || '');
-    const rawVideoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos/${videoFileName}`;
+    // the reel is in R2, served by arw-media at the site's /videos/ (INCIDENTS #313)
+    const rawVideoUrl = `https://arab-wrestling.com/videos/${encodeURIComponent(videoFileName)}`;
     const postUrl = data.postUrl
       ? (data.postUrl.startsWith('http') ? data.postUrl : `https://arab-wrestling.com${data.postUrl.startsWith('/') ? '' : '/'}${data.postUrl}`)
       : undefined;

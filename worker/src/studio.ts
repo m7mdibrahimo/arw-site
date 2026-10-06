@@ -19,6 +19,8 @@ import { authorizeAdmin } from './delivery';
 export interface StudioEnv {
   GITHUB_OWNER: string; GITHUB_REPO: string; GITHUB_BRANCH: string; GITHUB_TOKEN: string;
   PUSH_KV: KVNamespace;
+  /** R2 bucket «arw-media»: the site's pictures, served by the arw-media worker (INCIDENTS #313). */
+  MEDIA?: R2Bucket;
   /** Only in worker/.dev.vars for `wrangler dev` on this computer — never in wrangler.toml. */
   STUDIO_DEV?: string;
 }
@@ -624,6 +626,14 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     for (const img of Array.isArray(body.images) ? body.images : []) {
       if (!imagePathOk(String(img.path || '')) || typeof img.base64 !== 'string') return json({ success: false, error: 'صورة غير صالحة' }, 400);
       if (img.base64.length * 0.75 > MAX_IMAGE_BYTES) return json({ success: false, error: 'الصورة أكبر من 6 ميجا.' }, 400);
+      // the picture goes to R2 like every other picture on the site (INCIDENTS #313); the repo only when R2 can't take it
+      if (env.MEDIA && /^content\/images\//.test(img.path)) {
+        try {
+          const bytes = Uint8Array.from(atob(img.base64), c => c.charCodeAt(0));
+          await env.MEDIA.put(img.path, bytes, { httpMetadata: { contentType: /\.png$/i.test(img.path) ? 'image/png' : /\.webp$/i.test(img.path) ? 'image/webp' : 'image/jpeg', cacheControl: 'public, max-age=86400, stale-while-revalidate=3600' } });
+          continue;
+        } catch { /* fall through to the repo */ }
+      }
       changes.push({ path: img.path, base64: img.base64 });
     }
     const label = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'عرض / حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' }[collection] || 'موضوع';

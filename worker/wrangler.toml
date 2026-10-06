@@ -23,6 +23,11 @@ cpu_ms = 5000
 binding = "PUSH_KV"
 id = "f687ea6ee7b2461fb349405215cf8a32"
 
+# The site's pictures (INCIDENTS #313): the panel puts a show's picture here instead of the repo
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "arw-media"
+
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
 INSTAGRAM_AUTO_ENABLED = "true"

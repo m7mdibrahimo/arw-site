@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { arabicSlug } from '../lib/slug.cjs';
 import { showPath } from '../lib/show-permalink.cjs';
+import { deleteMedia } from './media-store';
 const SHOW_DIR_FOR_URLS = path.join(process.cwd(), 'content', 'shows');
 
 export const PLATFORMS = ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story', 'tiktok'] as const;
@@ -11,6 +12,7 @@ type Entry = Record<Platform, boolean> & {
   publishedAt: number | null; lastAttempt?: number; title?: string;
   errors?: Record<string, string>; reviewPlatforms?: Platform[]; needsReview?: boolean; note?: string;
   processing?: Platform[];
+  mediaDeleted?: boolean;
 };
 type State = Record<string, Entry>;
 const ORIGIN = process.env.SITE_ORIGIN || 'https://arab-wrestling.com';
@@ -48,6 +50,18 @@ export function isShowEligible(filename: string, data: Record<string, any>): boo
 // the pipeline and got at least one platform published) from finishing the
 // platforms still pending — otherwise a show that aired minutes before the
 // cutoff was raised is permanently orphaned with no way to ever complete.
+/** A reel is needed only until it's posted (the networks keep their own copy): two hours after the last of its
+ *  platforms is done it leaves R2 (owner, 2026-10-07; INCIDENTS #313). The wait lets Facebook and Instagram finish
+ *  processing a video they accepted. */
+export const REEL_KEEP_MS = 2 * 3600_000;
+export function reelDone(entry: Entry | undefined, now = Date.now(), tiktok = TIKTOK_ENABLED): boolean {
+  if (!entry || entry.mediaDeleted || entry.needsReview || entry.processing?.length) return false;
+  const needed = PLATFORMS.filter(p => p !== 'tiktok' || tiktok);
+  if (!needed.every(p => entry[p])) return false;
+  const last = Math.max(entry.publishedAt || 0, entry.lastAttempt || 0);
+  return last > 0 && now - last >= REEL_KEEP_MS;
+}
+
 export function shouldProcessShow(filename: string, data: Record<string, any>, previous: Entry | undefined): boolean {
   return isShowEligible(filename, data) || previous !== undefined;
 }
@@ -127,7 +141,9 @@ export async function main() {
     fs.writeFileSync(stateFile + '.tmp', JSON.stringify(state, null, 2));
     fs.renameSync(stateFile + '.tmp', stateFile);
   };
-  const videos = fs.existsSync(videoDir) ? fs.readdirSync(videoDir) : [];
+  let listed: string[] = [];
+  try { listed = JSON.parse(fs.readFileSync(path.join(videoDir, 'manifest.json'), 'utf8')).map((e: any) => e && e.filename).filter(Boolean); } catch {}
+  const videos = [...new Set([...(fs.existsSync(videoDir) ? fs.readdirSync(videoDir) : []), ...listed])];
   let failures = 0;
   const budget = { tiktok: TIKTOK_PER_RUN, instagram: INSTAGRAM_PER_RUN };
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
@@ -146,7 +162,8 @@ export async function main() {
     if (!pending.length) continue;
     const title = data.headline || data.title || slug;
     const postUrl = showUrl(filename, data);
-    const videoUrl = `https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main/dist/videos/${encodeURIComponent(file)}`;
+    // the reel is in R2, served by arw-media at the site's /videos/ (INCIDENTS #313)
+    const videoUrl = new URL(`/videos/${encodeURIComponent(file)}`, ORIGIN).href;
     // TikTok's PULL_FROM_URL only accepts the domain verified in its developer portal.
     const siteVideoUrl = new URL(`/videos/${encodeURIComponent(file)}`, ORIGIN).href;
     if (dryRun) { console.log(JSON.stringify({ slug, pending, postUrl, videoUrl })); continue; }
@@ -187,6 +204,15 @@ export async function main() {
     }
     if (hasRealFailure(results, pending)) failures++;
     console.log(JSON.stringify({ slug, results }));
+  }
+  // posted everywhere: the reel leaves R2
+  if (!dryRun) for (const [slug, entry] of Object.entries(state)) {
+    if (!reelDone(entry)) continue;
+    const file = findReelVideo(slug, videos);
+    if (file && !(await deleteMedia(`dist/videos/${file}`))) continue;
+    entry.mediaDeleted = true;
+    save();
+    console.log(`${slug}: reel posted everywhere — removed from storage.`);
   }
   if (failures) throw new Error(`${failures} show(s) have incomplete publishing; state and errors were saved.`);
 }

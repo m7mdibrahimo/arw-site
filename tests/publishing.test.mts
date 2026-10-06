@@ -3569,3 +3569,34 @@ test('the site builds from a «site» branch without the original pictures and r
     assert.ok(wf.includes(`- ${name}`), `site-branch.yml must list «${name}»`);
   }
 });
+
+test('pictures and reels go to R2, not the repo; a reel leaves R2 once posted everywhere (INCIDENTS #313)', async () => {
+  const m = await import('../scripts/media-store.ts');
+  assert.equal(m.publicPath('content/images/a b.jpg'), '/content/images/a b.jpg');
+  assert.equal(m.publicPath('dist/videos/reel-x.mp4'), '/videos/reel-x.mp4');
+  assert.equal(m.publicPath('dist/videos/manifest.json'), null);
+  assert.equal(m.publicPath('content/news/x.md'), null);
+  // every bot that writes pictures stores them before it commits; the reel bots commit only the JSON
+  for (const f of ['fightful-watcher', 'ringsidenews-watcher', 'wrestlinginc-watcher', 'editorial-maintenance', 'auto-show-reel', 'generate-reel']) {
+    const wf = fs.readFileSync(`.github/workflows/${f}.yml`, 'utf-8');
+    const step = wf.slice(wf.indexOf('npx tsx scripts/media-store.ts sync'));
+    assert.ok(wf.includes('npx tsx scripts/media-store.ts sync'), f);
+    assert.ok(/GITHUB_TOKEN: \$\{\{ github\.token \}\}/.test(wf), `${f} gives the token`);
+    if (f.includes('reel')) assert.match(step, /git add -f dist\/videos\/\*\.json/, f);
+    else assert.ok(step.indexOf('npx tsx scripts/media-store.ts sync') < step.indexOf('git add -A'), f);
+  }
+  // reels are posted from the site's /videos/ (R2) and removed two hours after the last platform
+  const mon = await import('../scripts/show-reel-monitor.ts');
+  const done = { facebook_reel: true, facebook_story: true, instagram_reel: true, instagram_story: true, tiktok: false, publishedAt: Date.now() - 3 * 3600_000 } as any;
+  assert.equal(mon.reelDone(done, Date.now(), false), true);
+  assert.equal(mon.reelDone({ ...done, publishedAt: Date.now() - 600_000 }, Date.now(), false), false);
+  assert.equal(mon.reelDone({ ...done, instagram_story: false }, Date.now(), false), false);
+  assert.equal(mon.reelDone({ ...done, mediaDeleted: true }, Date.now(), false), false);
+  assert.doesNotMatch(fs.readFileSync('scripts/show-reel-monitor.ts', 'utf-8'), /raw\.githubusercontent\.com/);
+  assert.doesNotMatch(fs.readFileSync('scripts/auto-publish-reel.ts', 'utf-8'), /raw\.githubusercontent\.com/);
+  // the manifest remembers every rendered reel, so none is rendered twice once the files are gone
+  assert.match(fs.readFileSync('scripts/generate-news-video.ts', 'utf-8'), /JSON\.parse\(fs\.readFileSync\(path\.join\(OUT_DIR, 'manifest\.json'\)/);
+  // the panel puts a picture straight into R2
+  assert.match(fs.readFileSync('worker/src/studio.ts', 'utf-8'), /await env\.MEDIA\.put\(img\.path, bytes/);
+  assert.match(fs.readFileSync('worker/wrangler.toml', 'utf-8'), /binding = "MEDIA"\nbucket_name = "arw-media"/);
+});

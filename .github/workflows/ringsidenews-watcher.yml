@@ -51,12 +51,15 @@ jobs:
         if: ${{ always() && (steps.watch.outcome == 'success' || steps.watch.outcome == 'failure') }}
         # The cross-run duplicate check below asks Gemini whether two stories are the same
         env:
+          GITHUB_TOKEN: ${{ github.token }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEYS: ${{ secrets.GEMINI_API_KEYS }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "ARW News Bot (Ringside News)"
           npx tsx -e "import('./scripts/fightful-watcher.ts').then(m => m.deduplicateNewsFiles())" || true
+          # New pictures and reels go to R2, not the repo (INCIDENTS #313)
+          npx tsx scripts/media-store.ts sync || true
           if [[ -n $(git status -s) ]]; then
             git add -A
             git commit -m "feat(news): auto-publish from Ringside News"

@@ -92,15 +92,19 @@ jobs:
           xvfb-run -a npx tsx scripts/generate-news-video.ts "$TARGET"
 
       - name: Commit and push generated video to main
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "ARW Video Bot"
-          # Stage dist/videos/ first so latest-render.json and generated mp4 are protected
-          git add -f dist/videos/
+          # the new reel goes to R2 (kept in the repo only if R2 refuses it); the repo gets latest-render.json and
+          # the manifest (INCIDENTS #313)
+          npx tsx scripts/media-store.ts sync || true
+          git add -f dist/videos/*.json
           # Discard any modified files outside dist/videos/ so rebase never gets blocked
           git checkout -- ':!dist/videos/' 2>/dev/null || true
           git clean -fd -e dist/videos/ 2>/dev/null || true
-          if [[ -n $(git status -s dist/videos/) ]]; then
+          if ! git diff --cached --quiet -- dist/videos/; then
             git commit -m "feat(video): manual studio render video [skip ci]"
             PUSHED=false
             for i in {1..5}; do

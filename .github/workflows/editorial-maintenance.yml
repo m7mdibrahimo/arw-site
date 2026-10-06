@@ -69,9 +69,13 @@ jobs:
           npx tsx scripts/news-qa.ts --days 3 --json > editorial/qa-report.json || true
 
       - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "ARW Editorial Bot"
+          # New pictures and reels go to R2, not the repo (INCIDENTS #313)
+          npx tsx scripts/media-store.ts sync || true
           if [[ -n $(git status -s) ]]; then
             git add -A
             git commit -m "chore(editorial): review findings and learned rules"
