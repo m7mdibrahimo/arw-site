@@ -272,9 +272,33 @@ module.exports = function(eleventyConfig) {
     await Promise.all(Array.from({ length: 32 }, worker));
     return `${ok}/${todo.length} from the live site in ${((Date.now() - started) / 1000).toFixed(1)}s`;
   };
+  // The site builds without the original pictures in its checkout (INCIDENTS #312: they're served from R2 by the
+  // arw-media worker). /img-map.json on the live site says which resized file each original already has, so a build
+  // reuses it without the original; an original no build has resized yet is fetched once, to the same path, so its
+  // resized file gets the same name it always had.
+  const IMG_MAP = {};
+  const MEDIA_ORIGIN = process.env.ARW_MEDIA_ORIGIN || LIVE;
+  const mapKey = (rel, kind) => `${String(rel).normalize("NFC")}|${kind}`;
+  const mapped = (rel, kind) => { const u = IMG_MAP[mapKey(rel, kind)]; return u && fs.existsSync("_site" + u) ? u : ""; };
+  const fetchOriginal = async (rel) => {
+    const file = "." + rel;
+    if (fs.existsSync(file)) return file;
+    try {
+      const r = await fetch(MEDIA_ORIGIN + rel.split("/").map(encodeURIComponent).join("/"), { signal: AbortSignal.timeout(30000) });
+      if (!r.ok || !String(r.headers.get("content-type") || "").startsWith("image/")) return null;
+      fs.mkdirSync(path.dirname(file), { recursive: true });
+      fs.writeFileSync(file, Buffer.from(await r.arrayBuffer()));
+      return file;
+    } catch (e) { return null; }
+  };
   eleventyConfig.on("eleventy.before", async () => {
     try { console.log(`[img-cache] restored ${process.env.CF_PAGES ? await fetchLiveImages() : syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
+    try {
+      const live = await fetch(`${LIVE}/img-map.json?_=${Date.now()}`, { signal: AbortSignal.timeout(10000) }).then(r => (r.ok ? r.json() : {}));
+      if (live && typeof live === "object") Object.assign(IMG_MAP, live);
+      console.log(`[img-map] ${Object.keys(IMG_MAP).length} resized pictures known`);
+    } catch (e) { console.log(`[img-map] skipped: ${e.message}`); }
   });
   // /build.json: which commits this deployment contains, so the panel can say «ظهر على الموقع ✓»
   // the moment a save is really live instead of guessing a delay.
@@ -282,9 +306,11 @@ module.exports = function(eleventyConfig) {
     try {
       const { execSync } = require("child_process");
       const git = (cmd) => { try { return execSync(cmd, { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim(); } catch { return ""; } };
-      const commit = process.env.CF_PAGES_COMMIT_SHA || git("git rev-parse HEAD");
-      const commitTime = Number(git("git log -1 --format=%ct")) || 0;
-      const recent = git("git log -60 --format=%H").split("\n").filter(Boolean);
+      // a build of the «site» branch (INCIDENTS #312) reports the main commit it was made from
+      const siteOf = git("git log -1 --format=%B").match(/^site-of: ([0-9a-f]{40}) (\d+)$/m);
+      const commit = siteOf ? siteOf[1] : process.env.CF_PAGES_COMMIT_SHA || git("git rev-parse HEAD");
+      const commitTime = siteOf ? Number(siteOf[2]) : Number(git("git log -1 --format=%ct")) || 0;
+      const recent = [...new Set([commit, ...git("git log -60 --format=%H").split("\n").filter(Boolean)])];
       fs.mkdirSync("_site", { recursive: true });
       fs.writeFileSync("_site/build.json", JSON.stringify({ commit, commitTime, recent, builtAt: new Date().toISOString() }));
     } catch (e) { console.log(`[build.json] skipped: ${e.message}`); }
@@ -293,6 +319,9 @@ module.exports = function(eleventyConfig) {
     try {
       const files = fs.existsSync("_site/img") ? fs.readdirSync("_site/img").filter(f => IMG_RE.test(f)) : [];
       fs.writeFileSync("_site/img-cache.json", JSON.stringify(files));
+      const keep = {};
+      for (const k of Object.keys(IMG_MAP)) if (fs.existsSync("_site" + IMG_MAP[k])) keep[k] = IMG_MAP[k];
+      fs.writeFileSync("_site/img-map.json", JSON.stringify(keep));
       if (!process.env.CF_PAGES) console.log(`[img-cache] saved ${syncDir("_site/img", IMG_CACHE)} new resized images`);
     } catch (e) { console.log(`[img-cache] save skipped: ${e.message}`); }
   });
@@ -726,6 +755,10 @@ module.exports = function(eleventyConfig) {
         decoded = decodeURIComponent(cleanInput);
       } catch (e) {}
 
+      // already resized by an earlier build: no original needed
+      const known = mapped(decoded, "800jpeg");
+      if (known && !fs.existsSync("." + decoded)) return known;
+
       let resolvedSource = null;
       const candidates = [
         "." + cleanInput,
@@ -759,6 +792,8 @@ module.exports = function(eleventyConfig) {
         } catch (err) {}
       }
 
+      if (!resolvedSource && /^\/content\/images\//.test(decoded)) resolvedSource = await fetchOriginal(decoded);
+
       if (resolvedSource) {
         try {
           const metadata = await Image(resolvedSource, {
@@ -770,6 +805,7 @@ module.exports = function(eleventyConfig) {
           });
           const jpeg = metadata && metadata.jpeg && metadata.jpeg.length ? metadata.jpeg[metadata.jpeg.length - 1] : null;
           if (jpeg && jpeg.url) {
+            IMG_MAP[mapKey(decoded, "800jpeg")] = jpeg.url;
             return jpeg.url;
           }
         } catch (e) {
@@ -816,11 +852,18 @@ module.exports = function(eleventyConfig) {
     if (!input || /^https?:\/\//i.test(input)) return "";
     let rel = input.startsWith("/") ? input : "/" + input;
     try { rel = decodeURIComponent(rel); } catch (e) {}
-    const file = "." + rel;
-    if (!/^\.\/(content|images)\//.test(file) || !fs.existsSync(file)) return "";
+    let file = "." + rel;
+    if (!/^\.\/(content|images)\//.test(file)) return "";
+    if (!fs.existsSync(file)) {
+      const known = mapped(rel, "480webp");
+      if (known) return known;
+      file = /^\/content\/images\//.test(rel) ? await fetchOriginal(rel) : null;
+      if (!file) return "";
+    }
     try {
       const meta = await Image(file, { widths: [480], formats: ["webp"], outputDir: "_site/img/", urlPath: "/img/", sharpWebpOptions: { quality: 72 } });
       const w = meta && meta.webp && meta.webp[0];
+      if (w && w.url) IMG_MAP[mapKey(rel, "480webp")] = w.url;
       return w && w.url ? w.url : "";
     } catch (e) { return ""; }
   };

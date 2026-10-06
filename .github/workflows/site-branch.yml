@@ -1,0 +1,48 @@
+name: Site Branch
+
+# ═══════════════════════════════════════════════════════
+#  Cloudflare بيبني الموقع من فرع «site»: نفس main بالظبط، من غير الصور الأصلية
+#  (content/images) وفيديوهات الريلز (dist/videos)، ودول بيتعرضوا من R2 عن طريق
+#  الـWorker «arw-media». كان Cloudflare بينزّل حوالي ٨٠٠ ميجا مع كل بناء، ودلوقتي
+#  بينزّل حوالي ١٠٠، فالتعديل بيظهر أسرع (الحادثة ٣١٢).
+#  كل رفع على main بيعمل commit واحد فوقه على «site» وفيه نفس الرسالة، فـ[skip ci]
+#  و[CF-Pages-Skip] بيفضلوا شغالين. وbuild.json بيقول commit الـmain الأصلي.
+#  للرجوع: خلي فرع الإنتاج في Cloudflare Pages يرجع main.
+# ═══════════════════════════════════════════════════════
+
+on:
+  # push: is turned on together with the switch of Cloudflare's production branch to «site»
+  workflow_dispatch:
+
+concurrency:
+  group: site-branch
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  slim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Make the slim commit and push it to «site»
+        env:
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          git init -q slim && cd slim
+          git config user.name "ARW Fix Bot" && git config user.email "bot@arab-wrestling.com"
+          git remote add origin "https://x-access-token:${TOKEN}@github.com/${REPO}.git"
+          # trees and the commit only: no picture or video is downloaded here
+          git fetch -q --filter=blob:none --depth=1 origin "$SHA"
+          git read-tree "$SHA"
+          git rm -r -q --cached --ignore-unmatch content/images dist/videos
+          TREE=$(git write-tree)
+          MSG=$(git log -1 --format=%B "$SHA")
+          CT=$(git log -1 --format=%ct "$SHA")
+          COMMIT=$(printf '%s\n\nsite-of: %s %s\n' "$MSG" "$SHA" "$CT" | git commit-tree "$TREE" -p "$SHA")
+          git -c push.negotiate=true push -q -f origin "$COMMIT:refs/heads/site"
+          echo "site ← $SHA ($(git ls-tree -r --name-only "$TREE" | wc -l) files)"
