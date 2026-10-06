@@ -104,6 +104,8 @@ const RULES: Rule[] = [
   { code: "vague_filler", severity: "error", re: /(?:ت|ي)خوض(?:ان)?\s+(?:[ء-ي]+\s+){0,3}خطوات(?:ها|ه|هما)\s+(?:القادمة|المقبلة|التالية)/g, message: "جملة حشو مبهمة مكان واقعة — اكتب اللي قاله المصدر بالظبط (حصل: «تخوض داكوتا كاي خطواتها القادمة» والمصدر: آخر نزال لها في أبريل)", fields: ["title", "body"] },
   // A multi-word name listed twice in a row — «ويل أوسبراي وهينيرا وغريت أو خان وغريت أو خان» (INCIDENTS #294)
   { code: "doubled_name", severity: "error", re: /(?:(?<![ء-ي])|(?<=(?<![ء-ي])و))((?:[ء-ي]+\s+){1,3}[ء-ي]+)\s+و\1(?![ء-ي])(?!\s*(?:الثاني|الثانية|II|2)(?![ء-ي]))/g, message: "اسم مكتوب مرتين ورا بعض — اكتب أعضاء الفريق زي المصدر (حصل: «غريت أو خان وغريت أو خان»)", fields: ["title", "body"] },
+  // «خلال عرض WWE RAW في عرض WWE RAW بتاريخ 21 سبتمبر» — the show named twice in one breath (INCIDENTS #299)
+  { code: "doubled_show_phrase", severity: "error", re: /عرض\s+((?:[A-Za-z0-9'’-]+\s+){0,3}[A-Za-z0-9'’-]+)\s+(?:في|خلال|ب)\s*عرض\s+\1(?![A-Za-z0-9])/g, message: "اسم العرض مكرر في نفس الجملة — اكتبه مرة واحدة (حصل: «خلال عرض WWE RAW في عرض WWE RAW»)", fields: ["title", "body"] },
   { code: "missing_hamza", severity: "error", re: /(?<![\u0621-\u064A])[وف]?(?:الى|الي)(?![\u0621-\u064A])/g, message: "«الى/الي» بلا همزة — «إلى» (حرف الجر) أو «إليّ» حسب المعنى (حصل: «للوصول الي» والمقصود «إليّ»)", fields: ["title", "body"] },
   // A draft that dropped hamzas everywhere («انها»، «اشار إلى ان»، «اطلق»…) is a bad
   // Gemini output, not a few typos — the counted check below blocks it (INCIDENTS #64).
@@ -242,6 +244,10 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // "AEW Collision-9-2026": a source date like 9/23/2026 mangled into a slug-ish fragment
   if (/[A-Za-z]-\d{1,2}-\d{4}|\d{1,2}\/\d{1,2}\/\d{4}/.test(t)) issues.push({ code: "mangled_date", severity: "error", field: "title", message: "تاريخ مكتوب بصيغة غير عربية أو مكسور في العنوان (الصيغة المعتمدة: 23 سبتمبر 2026)", excerpt: t });
   if (/^(تصريحات نارية|صدمة مدوية|ليلة نارية|اعترافات صادمة|مفاجأة كبرى)/.test(t)) issues.push({ code: "title_cliche", severity: "error", field: "title", message: "بادئة كليشيه ممنوعة", excerpt: t });
+  // A quip lifted word for word into the headline: «...في دار أيتام بالمكسيك على ما أعتقد» (INCIDENTS #299)
+  if (/على ما (?:أعتقد|أظن)|(?:^|\s)(?:أعتقد|أظن)$/.test(t)) issues.push({ code: "title_first_person", severity: "error", field: "title", message: "العنوان فيه تحفظ بصيغة المتكلم منقول حرفيًا من تصريح ساخر — اكتب العنوان بصيغة الخبر", excerpt: t });
+  // «تقرير نسب المشاهدة والتقييمات لعرض WWE NXT 2026» — says nothing about which night (INCIDENTS #299)
+  if (/^تقرير (?:أرقام|نسب)/.test(t) && !/\d{1,2} (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)|الليلة|الماضي|الأخير/.test(t)) issues.push({ code: "ratings_title_no_date", severity: "error", field: "title", message: "عنوان تقرير المشاهدة من غير تاريخ العرض — اكتب اليوم والشهر (مثل: بتاريخ 29 سبتمبر)", excerpt: t });
 
   const prose = stripNonProse(body || "");
   const englishRun = prose.match(/(?:\b[A-Za-z][A-Za-z'’-]*\b[\s,]+){10,}/);

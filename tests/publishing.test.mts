@@ -3245,6 +3245,21 @@ test('a story about Vince Russo never says «مكمان»; new names and spellin
   assert.match(watcher, /vinceIsRusso\(draft\.title, plainText\)/);
 });
 
+test('a show named twice, a first-person quip headline and a dateless ratings headline are blocked (INCIDENTS #299)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const has = (title: string, body: string, code: string) => checkArticle(title, body, []).some(i => i.code === code);
+  const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
+  assert.ok(has('عنوان عربي كامل للخبر هنا', 'فازت بيريز خلال عرض WWE RAW في عرض WWE RAW بتاريخ 21 سبتمبر.' + filler, 'doubled_show_phrase'));
+  assert.ok(!has('عنوان عربي كامل للخبر هنا', 'فازت بيريز خلال عرض WWE RAW بتاريخ 21 سبتمبر.' + filler, 'doubled_show_phrase'));
+  assert.ok(has('سبيدبول مايك بيلي يوجه تحية لإيغل بلانك الذي يتواجد في دار أيتام بالمكسيك على ما أعتقد', filler, 'title_first_person'));
+  assert.ok(!has('سبيدبول مايك بيلي يمازح إيغل بلانك ويتحدث عن ارتباط الجماهير الفرنسية به', filler, 'title_first_person'));
+  assert.ok(has('تقرير نسب المشاهدة والتقييمات لعرض WWE NXT 2026', filler, 'ratings_title_no_date'));
+  assert.ok(!has('تقرير نسب مشاهدة وتقييمات عرض WWE NXT يوم 22 سبتمبر 2026', filler, 'ratings_title_no_date'));
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['EK Prosper'], 'إي كي بروسبر');
+  assert.equal(names['Aigle Blanc'], 'إيغل بلانك');
+});
+
 test('the social shield note never carries letters from another script (INCIDENTS #295)', async () => {
   const { cleanSpoilerNote } = await import('../scripts/news-qa');
   assert.equal(cleanSpoilerNote('لا يتضمن نتائج نزالات أو عодات حديثة.'), 'لا يتضمن نتائج نزالات أو عات حديثة.');
