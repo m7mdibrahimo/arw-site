@@ -3315,3 +3315,15 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   // no shortcut line, no quality numbers under the rows, the notice is plain text
   assert.doesNotMatch(deck, /wd-keys|1080 · 720|href="#downloads"/);
 });
+
+test('library pages: plural title from the program\'s own name, no «آخر عرض» line (INCIDENTS #298)', () => {
+  const page = fs.readFileSync('pages/library-program.njk', 'utf-8');
+  assert.match(page, /\{\{ lp\.prog\.arLibTitle \}\}/);
+  assert.doesNotMatch(page, /آخر عرض:/);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.match(cfg, /arName\.replace\(\/\^عرض\\s\/, "عروض "\) \+ " مترجمة"/);
+  assert.match(cfg, /"progress-wrestling": "عرض بروجرس ريسلينج"/);
+  // a series' season and episode and a yearly event's year never end up in the program's name
+  assert.match(cfg, /\.replace\(\/\\s\*\(\?:الموسم\|موسم\)\\s\*\\d\+\/g, " "\)/);
+  assert.match(cfg, /arName = arName\.replace\(\/\\s\+\(19\|20\)\\d\{2\}\$\/, ""\);/);
+});

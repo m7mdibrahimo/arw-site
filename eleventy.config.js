@@ -1122,7 +1122,42 @@ module.exports = function(eleventyConfig) {
         // «عرض الرو الاخير» (2.3k impressions, position 4) landed on the home page, not on this
         // program's page, whose title only said «WWE RAW مترجم» (INCIDENTS #274).
         const latestHeadline = shows[0] ? String(shows[0].headline || "") : "";
-        const arName = latestHeadline.replace(/\(.*?\)/g, " ").replace(/\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
+        // A series' headline carries its episode («… الموسم 2 الحلقة 5 مترجم»): the program's name is without it
+        const cleanHead = function(h) { return String(h || "").replace(/\(.*?\)/g, " ").replace(/\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s*(?:الموسم|موسم)\s*\d+/g, " ").replace(/\s*(?:الحلقة|حلقة)\s*\d+/g, " ").replace(/\s+/g, " ").trim(); };
+        // The program's own name, not one show's («عرض بروجريس شابتر 198 وين سبتمبر اندز»): a fixed name where the
+        // headlines don't agree, else the latest show's name when it repeats, else the most common one, else the words
+        // every headline starts with (minus a trailing number word), else the latest show's
+        const AR_NAMES = {
+          "progress-wrestling": "عرض بروجرس ريسلينج",
+          "mlp-northern-rising": "عرض ام ال بي نورثرن رايزنج",
+          "hog": "عرض اتش او جي",
+          "wwe-live": "عرض دبليو دبليو اي لايف",
+          "marigold": "عرض ماريجولد",
+          "stardom": "عرض ستار دوم",
+          "reality-of-wrestling": "عرض رياليتي اوف ريسلينج",
+          "revpro-anniversary-shows": "عرض ريف برو انفيرسري شو",
+        };
+        const names = shows.map(function(x) { return cleanHead(x.headline); }).filter(function(n) { return /[\u0600-\u06FF]/.test(n); });
+        const freq = {}; names.forEach(function(n) { freq[n] = (freq[n] || 0) + 1; });
+        const top = Object.keys(freq).sort(function(a, b) { return freq[b] - freq[a]; })[0];
+        let arName = cleanHead(latestHeadline);
+        if (AR_NAMES[p.slug]) arName = AR_NAMES[p.slug];
+        else if (freq[arName] >= 2) {}
+        else if (top && freq[top] >= 2) arName = top;
+        else if (names.length > 1) {
+          let common = names[0].split(" ");
+          names.forEach(function(n) { const w = n.split(" "); let k = 0; while (k < common.length && k < w.length && common[k] === w[k]) k++; common = common.slice(0, k); });
+          while (common.length && /\d|^(شابتر|الليلة|ليلة|اليوم|الجزء|الحدث)$/.test(common[common.length - 1])) common.pop();
+          if (common.length >= 2) arName = common.join(" ");
+        }
+        // A yearly event's name without the year of its latest edition («… ديث بيفور ديشونر 2026» → «… ديث بيفور ديشونر»)
+        arName = arName.replace(/\s+(19|20)\d{2}$/, "");
+        // The library page is a collection, so its title is always plural (owner, 2026-10-06):
+        // «عرض الرو» → «عروض الرو مترجمة», «برنامج …» → «حلقات برنامج … مترجمة»
+        const arLibTitle = !/[\u0600-\u06FF]/.test(arName) ? ""
+          : /^عرض\s/.test(arName) ? arName.replace(/^عرض\s/, "عروض ") + " مترجمة"
+          : /^(برنامج|مسلسل)\s/.test(arName) ? "حلقات " + arName + " مترجمة"
+          : "عروض " + arName + " مترجمة";
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
           "wwe-raw": ["رو", "الرو", "راو", "WWE Raw", "Monday Night Raw"],
@@ -1135,7 +1170,7 @@ module.exports = function(eleventyConfig) {
           "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
         };
-        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
