@@ -1232,6 +1232,11 @@ module.exports = function(eleventyConfig) {
     };
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
+  // The show's own program page for the navigation path: الرئيسية › عروض المصارعة › WWE › WWE RAW (INCIDENTS #282)
+  eleventyConfig.addNunjucksGlobal("libraryProgramOf", function(url, library) {
+    const prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
+    return prog ? { slug: prog.slug, name: prog.name } : null;
+  });
   // Search titles for a show page, worded the way people search. «عرض الرو 28.09.2026 مترجم» became
   // «عرض الرو الأخير مترجم (28 سبتمبر 2026) — WWE RAW» on the program's newest show, and every show
   // got its own description instead of one sentence shared by all of them (INCIDENTS #275).

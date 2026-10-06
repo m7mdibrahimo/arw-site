@@ -1,5 +1,6 @@
 ---
 federation: INDIE
+program_name: WOW
 title: WOW Women Of Wrestling 23.08.2026
 headline: عرض دبليو او دبليو 23.08.2026 مترجم
 description: عرض دبليو او دبليو وومن اوف ريسلينج مترجم بالكامل مع جميع النزالات والأحداث.

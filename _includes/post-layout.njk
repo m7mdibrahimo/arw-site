@@ -35,6 +35,8 @@
 <meta property="og:description" content="{{ metaDesc }}">
 <meta property="og:image" content="{{ schemaImage }}">
 {% if image and not isNews %}{% optThumbMeta image %}{% endif %}
+{# The short Arabic name for cards built in the browser («عرض الرو 28.09.2026 مترجم»), not the search title (INCIDENTS #283) #}
+{% if not isNews and (headline or title) %}<meta name="arw-card-title" content="{{ (headline or title) | escape }}">{% endif %}
 <meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
@@ -116,9 +118,24 @@
           "name": "{{ sectionName }}",
           "item": "https://arab-wrestling.com{{ sectionUrl }}"
         },
+        {% set ldFed = federation if (federation and not page.url.startsWith('/news/') and not isNostalgiaItem) else '' %}
+        {% set ldProg = libraryProgramOf(page.url, collections.library) if page.url.startsWith('/shows/') else null %}
+        {% set ldPos = 3 %}
+        {% if ldFed %}{
+          "@type": "ListItem",
+          "position": {{ ldPos }},
+          "name": "{{ ldFed }}",
+          "item": "https://arab-wrestling.com/federation/{{ ldFed | lower }}/"
+        },{% set ldPos = ldPos + 1 %}{% endif %}
+        {% if ldProg %}{
+          "@type": "ListItem",
+          "position": {{ ldPos }},
+          "name": "{{ ldProg.name }}",
+          "item": "https://arab-wrestling.com/library/{{ ldProg.slug }}/"
+        },{% set ldPos = ldPos + 1 %}{% endif %}
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": {{ ldPos }},
           "name": "{{ pageTitle | escape }}",
           "item": "{{ pageUrl }}"
         }
@@ -1212,8 +1229,10 @@
       <a href="/">الرئيسية</a><span aria-hidden="true">‹</span>
       <a href="{{ crumbHref }}">{{ crumbSection }}</a>
       {% if federation %}<span aria-hidden="true">‹</span><a href="/federation/{{ federation | lower }}/">{{ federation }}</a>{% endif %}
+      {% set crumbProg = libraryProgramOf(page.url, collections.library) if (not isNews and not isRecap) else null %}
+      {% if crumbProg %}<span aria-hidden="true">‹</span><a href="/library/{{ crumbProg.slug }}/"><bdi>{{ crumbProg.name }}</bdi></a>{% endif %}
     </nav>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://arab-wrestling.com/"},{"@type":"ListItem","position":2,"name":"{{ crumbSection }}","item":"https://arab-wrestling.com{{ crumbHref }}"}{% if federation %},{"@type":"ListItem","position":3,"name":"{{ federation }}","item":"https://arab-wrestling.com/federation/{{ federation | lower }}/"}{% endif %}]}</script>
+    {# one BreadcrumbList only: the one in <head> has the whole path (INCIDENTS #282) #}
     {% endif %}
     <div class="post-meta-bar">
       {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ "عرض" if (show_type == 'عرض كامل' or not show_type) else show_type }}</span>{% endif %}

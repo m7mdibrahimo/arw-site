@@ -1,5 +1,6 @@
 ---
 federation: INDIE
+program_name: AJPW
 title: AJPW Nettou Summer Action Wars 26.08.2026
 headline: عرض ايه جي بي دبليو 26.08.2026
 description: عرض ايه جي بي دبليو بالكامل مع جميع النزالات والأحداث.

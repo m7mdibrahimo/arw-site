@@ -1,5 +1,6 @@
 ---
 federation: INDIE
+program_name: Stardom
 title: Stardom 5 STAR GP in KORAKUEN 18.08.2026
 headline: عرض ستار دوم فايف ستار 18.08.2026 مترجم
 description: عرض ستار دوم فايف ستار مترجم بالكامل مع جميع النزالات والأحداث.

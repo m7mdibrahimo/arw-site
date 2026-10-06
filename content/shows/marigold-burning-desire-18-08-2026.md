@@ -1,5 +1,6 @@
 ---
 federation: INDIE
+program_name: Marigold
 title: Marigold Burning Desire 18.08.2026
 headline: عرض ماريجولد بيرنينج ديزاير 18.08.2026 مترجم
 description: عرض ماريجولد بيرنينج ديزاير مترجم بالكامل مع جميع النزالات والأحداث.

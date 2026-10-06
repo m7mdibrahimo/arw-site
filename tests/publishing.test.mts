@@ -3164,3 +3164,16 @@ test('«الأكثر مشاهدة» uses each page\'s small card picture, not th
   assert.match(js, /localStorage\.setItem\(STORE/);
   new Function(js); // still valid JavaScript
 });
+
+test('a show page path ends at its program, and every show has a program (INCIDENTS #282)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(layout, /libraryProgramOf\(page\.url, collections\.library\)/);
+  assert.equal((layout.match(/"@type": ?"BreadcrumbList"/g) || []).length, 1, 'one BreadcrumbList');
+  const missing = fs.readdirSync('content/shows').filter(f => f.endsWith('.md') && !/^program_name:\s*\S/m.test(fs.readFileSync(`content/shows/${f}`, 'utf-8')));
+  assert.deepEqual(missing, []);
+});
+
+test('«الأكثر مشاهدة» shows the short Arabic name, not the search title (INCIDENTS #283)', () => {
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /<meta name="arw-card-title" content="\{\{ \(headline or title\) \| escape \}\}">/);
+  assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /if \(cardTitle\) title = decodeEntities\(cardTitle\)\.trim\(\);/);
+});

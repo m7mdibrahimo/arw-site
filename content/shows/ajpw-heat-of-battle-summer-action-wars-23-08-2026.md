@@ -1,5 +1,6 @@
 ---
 federation: INDIE
+program_name: AJPW
 title: AJPW Heat of Battle Summer Action Wars 23.08.2026
 headline: عرض ايه جي بي دبليو 23.08.2026 مترجم
 description: عرض ايه جي بي دبليو مترجم بالكامل مع جميع النزالات والأحداث.

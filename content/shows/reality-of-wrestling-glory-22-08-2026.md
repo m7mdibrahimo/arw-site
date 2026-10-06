@@ -1,5 +1,6 @@
 ---
 federation: INDIE
+program_name: Reality of Wrestling
 title: Reality Of Wrestling Glory 22.08.2026
 headline: عرض رياليتي اوف ريسلينج جلوري 22.08.2026 مترجم
 description: عرض رياليتي اوف ريسلينج جلوري مترجم بالكامل مع جميع النزالات والأحداث.

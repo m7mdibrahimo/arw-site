@@ -1,5 +1,6 @@
 ---
 federation: AEW
+program_name: AEW Brawl in the Ballpark
 title: AEW Brawl in the Ballpark 23.08.2026
 headline: عرض ايه اي دبليو برول ان ذا بولبارك 23.08.2026 مترجم
 description: عرض ايه اي دبليو برول ان ذا بولبارك مترجم بالكامل مع جميع النزالات والأحداث.
