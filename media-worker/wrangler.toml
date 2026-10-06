@@ -11,10 +11,10 @@ REPO_RAW = "https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main"
 # binding = "MEDIA"
 # bucket_name = "arw-media"
 
-# Added when the switch is made (the Pages build then stops carrying these files):
-# routes = [
-#   { pattern = "arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
-#   { pattern = "arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
-#   { pattern = "www.arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
-#   { pattern = "www.arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
-# ]
+# The Pages build no longer carries these files (it's built from the «site» branch)
+routes = [
+  { pattern = "arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
+  { pattern = "arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
+  { pattern = "www.arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
+  { pattern = "www.arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
+]

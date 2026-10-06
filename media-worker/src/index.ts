@@ -23,7 +23,7 @@ export function repoPathOf(pathname: string): string | null {
 const typeOf = (key: string) => TYPES[(key.split(".").pop() || "").toLowerCase()] || "application/octet-stream";
 
 function headersFor(key: string, extra: Record<string, string> = {}): Headers {
-  const h = new Headers({ "Content-Type": typeOf(key), "Cache-Control": CACHE, "Accept-Ranges": "bytes", "X-Content-Type-Options": "nosniff", "Access-Control-Allow-Origin": "*", ...extra });
+  const h = new Headers({ "Content-Type": typeOf(key), "Cache-Control": CACHE, "Accept-Ranges": "bytes", "X-Content-Type-Options": "nosniff", "Access-Control-Allow-Origin": "*", "X-Served-By": "arw-media", ...extra });
   return h;
 }
 
@@ -54,7 +54,8 @@ export default {
 
     // 2. the repo, copied into R2 for next time
     const src = `${env.REPO_RAW.replace(/\/$/, "")}/${key.split("/").map(encodeURIComponent).join("/")}`;
-    const res = await fetch(src, { cf: { cacheTtl: 300, cacheEverything: true } });
+    // cached at the edge for a day: until R2 is on, this is the only source (names are unique per upload)
+    const res = await fetch(src, { cf: { cacheTtl: 86400, cacheEverything: true } });
     if (!res.ok) return new Response("Not found", { status: 404, headers: { "Cache-Control": "public, max-age=60" } });
     const buf = await res.arrayBuffer();
     if (env.MEDIA) ctx.waitUntil(env.MEDIA.put(key, buf, { httpMetadata: { contentType: typeOf(key), cacheControl: CACHE } }));
