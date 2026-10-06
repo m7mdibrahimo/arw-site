@@ -11,7 +11,11 @@ name: Site Branch
 # ═══════════════════════════════════════════════════════
 
 on:
-  # push: is turned on together with the switch of Cloudflare's production branch to «site»
+  # every main push is turned on together with the switch of Cloudflare's production branch to «site»;
+  # until then it runs when this file changes, as a test
+  push:
+    branches: [main]
+    paths: ['.github/workflows/site-branch.yml']
   workflow_dispatch:
 
 concurrency:
@@ -26,23 +30,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Make the slim commit and push it to «site»
+      # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
+      # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
+      - name: Point «site» at main without pictures and reels
         env:
           REPO: ${{ github.repository }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
-          git init -q slim && cd slim
-          git config user.name "ARW Fix Bot" && git config user.email "bot@arab-wrestling.com"
-          git remote add origin "https://x-access-token:${TOKEN}@github.com/${REPO}.git"
-          # trees and the commit only: no picture or video is downloaded here
-          git fetch -q --filter=blob:none --depth=1 origin "$SHA"
-          git read-tree "$SHA"
-          git rm -r -q --cached --ignore-unmatch content/images dist/videos
-          TREE=$(git write-tree)
-          MSG=$(git log -1 --format=%B "$SHA")
-          CT=$(git log -1 --format=%ct "$SHA")
-          COMMIT=$(printf '%s\n\nsite-of: %s %s\n' "$MSG" "$SHA" "$CT" | git commit-tree "$TREE" -p "$SHA")
-          git -c push.negotiate=true push -q -f origin "$COMMIT:refs/heads/site"
-          echo "site ← $SHA ($(git ls-tree -r --name-only "$TREE" | wc -l) files)"
+          api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
+          BASE="https://api.github.com/repos/$REPO/git"
+          api "$BASE/commits/$SHA" > c.json
+          ROOT=$(jq -r .tree.sha c.json); CT=$(date -d "$(jq -r .committer.date c.json)" +%s)
+          TREE=$(jq -n --arg base "$ROOT" '{base_tree:$base, tree:[{path:"content/images",mode:"040000",type:"tree",sha:null},{path:"dist/videos",mode:"040000",type:"tree",sha:null}]}' \
+            | api -X POST "$BASE/trees" -d @- | jq -r .sha)
+          # the two folders really are gone
+          api "$BASE/trees/$TREE" | jq -e '[.tree[].path] | index("content") != null' > /dev/null
+          api "$BASE/trees/$TREE?recursive=1" | jq -e '[.tree[].path | select(startswith("content/images/") or startswith("dist/videos/"))] | length == 0' > /dev/null
+          MSG=$(jq -r .message c.json)
+          COMMIT=$(jq -n --arg m "$MSG"$'\n\n'"site-of: $SHA $CT" --arg t "$TREE" --arg p "$SHA" '{message:$m, tree:$t, parents:[$p]}' | api -X POST "$BASE/commits" -d @- | jq -r .sha)
+          if api "$BASE/refs/heads/site" > /dev/null 2>&1; then
+            jq -n --arg s "$COMMIT" '{sha:$s, force:true}' | api -X PATCH "$BASE/refs/heads/site" -d @- > /dev/null
+          else
+            jq -n --arg s "$COMMIT" '{ref:"refs/heads/site", sha:$s}' | api -X POST "$BASE/refs" -d @- > /dev/null
+          fi
+          echo "site ← $SHA as $COMMIT"
