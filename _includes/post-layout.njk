@@ -256,7 +256,7 @@
   .page-head h1{ font-size:clamp(26px,4vw,36px); margin-bottom:8px; }
   .page-head p{ color:var(--muted); font-size:14.5px; }
   section.content{ padding:40px 24px 70px; }
-  .wrap{ max-width:992px; margin:0 auto; }
+  .wrap{ max-width:1180px; margin:0 auto; }
   .grid-12{ display:grid; grid-template-columns:repeat(12,1fr); gap:20px; }
   .grid-12 > *{ grid-column:span 3; }
   @media (max-width:900px){ .grid-12 > *{ grid-column:span 6; } }
@@ -302,9 +302,10 @@
   .qn .dot{ width:10px; height:10px; border-radius:50%; display:inline-block; transition:transform 0.3s ease; }
   .qn:hover .dot{ transform:scale(1.4); }
 
-  /* one width for the whole site: 992px of content here (1040 − 24px padding each side) and in every page's .wrap,
-     so articles, show pages and the lists all line up (owner, 2026-10-06) */
-  .post-wrap{ max-width:1040px; margin:0 auto; padding:48px 24px 80px; }
+  .post-wrap{ max-width:820px; margin:0 auto; padding:48px 24px 80px; }
+  /* show, recap and nostalgia pages get a wider column (992px of content), so the player is big and every box under
+     it keeps the same width; news and the rest of the site keep their own sizes (owner, 2026-10-06) */
+  .post-wrap.is-watch{ max-width:1040px; }
   .back-link{ display:inline-flex; align-items:center; gap:6px; color:var(--muted); text-decoration:none; font-weight:700; font-size:14px; margin-bottom:24px; transition:all 0.25s ease; }
   .back-link:hover{ color:var(--teal); transform:translateX(4px); }
   .post-fed{ display:inline-block; background:var(--gold-soft); color:var(--gold); font-weight:800; font-size:12.5px; padding:5px 14px; border-radius:999px; transition:transform 0.2s ease; }
@@ -1294,7 +1295,7 @@
 </div>
 {% endmacro %}
 <main>
-  <div class="post-wrap reveal{% if servers and servers.length %} is-watch{% endif %}">
+  <div class="post-wrap reveal{% if not isNews and (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') or isNostalgiaItem) %} is-watch{% endif %}">
     {% if isNostalgiaItem %}
     <a class="back-link" href="/nostalgia/{% if nostalgia_series %}{{ nostalgia_series }}/{% endif %}">→ {% if nostalgia_series %}{% if series_type == 'program' or (nav and (nav.program.isProgram or nav.program.seriesType == 'program')) or (program_name and 'حلقات' in program_name) %}رجوع لمسار البرنامج{% else %}رجوع لمسار السلسلة{% endif %}{% else %}رجوع لقسم نوستالجيا{% endif %}</a>
     {% else %}
