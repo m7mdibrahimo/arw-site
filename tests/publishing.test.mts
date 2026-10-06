@@ -1717,6 +1717,9 @@ test('whatever happened ON a show that aired in the last 24h is a spoiler — a 
   const dp = duplicatePrompt({ title: 'x', body: 'y', tags: [] }, []);
   assert.match(dp, /تفصيلة صغيرة زيادة على نفس الإعلان/);
   assert.match(dp, /جدول أو بطاقة نزالات نفس العرض الجاي من مصدرين = تكرار/);
+  // «at the same event» must name the show, not point back to the wrong one (INCIDENTS #281)
+  const styleGuide = (await import('node:fs')).readFileSync(new URL('../editorial/style-guide.md', import.meta.url), 'utf8');
+  assert.match(styleGuide, /at the same event \/ on the same show ← اكتب اسم العرض صراحة/);
 
   // «28 سبتمبر» at 01:00 UTC on the 29th is not «over 24 hours ago» (the model said it was)
   const now = Date.parse('2026-09-29T01:00:00Z');
