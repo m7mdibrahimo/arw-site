@@ -4,7 +4,7 @@ federation: INDIE
 title: GCW The Last Frontier The Sequel 03.10.2026
 headline: عرض جي سي دبليو 03.10.2026 مترجم
 program_name: GCW
-is_annual: false
+is_annual: true
 description: عرض جي سي دبليو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-03
 date: 2026-10-05T16:15:46.000+03:00
