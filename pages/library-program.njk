@@ -397,7 +397,8 @@ eleventyComputed:
   <div class="hero-inner">
     <span class="eyebrow">مكتبة العروض</span>
     <h1 class="hero-title"><bdi>{% if lp.prog.arLibTitle and lp.pageNumber == 1 %}{{ lp.prog.arLibTitle }}{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{% if lp.prog.count == 1 %}عرض واحد مترجم{% elif lp.prog.count == 2 %}عرضان مترجمان{% else %}{{ showsCount(lp.prog.count) }} مترجمة{% endif %}</span></h1>
-    <p>{% if lp.prog.arName and lp.pageNumber == 1 %}شاهد {{ lp.prog.arName }} الأخير مترجم بالعربي، و{% endif %}كل عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة بالترتيب من الأحدث للأقدم.{% if lp.prog.aliases.length and lp.pageNumber == 1 %} معروف كمان باسم: {% for a in lp.prog.aliases %}<bdi>{{ a }}</bdi>{% if not loop.last %}، {% endif %}{% endfor %}.{% endif %}</p>
+    {#- one line under the title, the same on every program page (owner chose this wording, 2026-10-06) -#}
+    <p>{% if lp.prog.arLibTitle %}شاهد أحدث {{ lp.prog.arLibTitle | replace(" مترجمة", "") }} مترجمة إلى العربية، وتصفّح أرشيف <bdi>{{ lp.prog.name }}</bdi> كاملًا من الأحدث إلى الأقدم.{% else %}تصفّح أرشيف عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة إلى العربية كاملًا من الأحدث إلى الأقدم.{% endif %}</p>
   </div>
 </div>
 

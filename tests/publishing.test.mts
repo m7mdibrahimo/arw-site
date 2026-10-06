@@ -3320,6 +3320,8 @@ test('library pages: plural title from the program\'s own name, no «آخر عر
   const page = fs.readFileSync('pages/library-program.njk', 'utf-8');
   assert.match(page, /\{\{ lp\.prog\.arLibTitle \}\}/);
   assert.doesNotMatch(page, /آخر عرض:/);
+  assert.match(page, /شاهد أحدث \{\{ lp\.prog\.arLibTitle \| replace\(" مترجمة", ""\) \}\} مترجمة إلى العربية، وتصفّح أرشيف/);
+  assert.doesNotMatch(page, /معروف كمان باسم/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.match(cfg, /arName\.replace\(\/\^عرض\\s\/, "عروض "\) \+ " مترجمة"/);
   assert.match(cfg, /"progress-wrestling": "عرض بروجرس ريسلينج"/);
