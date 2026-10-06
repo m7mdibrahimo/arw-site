@@ -3228,7 +3228,7 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   assert.match(layout, /class="srv-row\{% if loop\.index0 == 0 %\} active/);
   // the list is exactly as tall as the player, and six rows share it
   assert.match(layout, /\.wd-list\{ position:absolute; inset:0;/);
-  assert.match(layout, /\.srv-row\{ flex:1 1 0; min-height:44px;/);
+  assert.match(layout, /\.srv-row\{ position:relative; flex:1 1 0; min-height:44px;/);
   // the owner's notice, word for word, inside the box; the old separate notice is gone
   assert.ok(layout.includes('<b>تنبيه:</b> سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية'));
   assert.doesNotMatch(layout, /class="quality-notice"/);
@@ -3247,6 +3247,11 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   assert.match(layout, /<div class="video-loader is-hidden" id="videoLoader">/);
   assert.match(layout, /posterBtn\.addEventListener\('click', startPlayback\)/);
   assert.doesNotMatch(layout, /mountVideo\(embedBox, initialSrc/);
+  // one card in the download box's style, at the page's column width; pages with a player get a wider column
+  assert.match(layout, /\.watch-deck\{ position:relative; container-type:inline-size; background:var\(--card\); border:1px solid var\(--line\); border-radius:16px;/);
+  assert.match(layout, /<div class="post-wrap reveal\{% if servers and servers\.length %\} is-watch\{% endif %\}">/);
+  assert.match(layout, /\.post-wrap\.is-watch\{ max-width:1040px; \}/);
+  assert.match(fs.readFileSync('assets/dark.css', 'utf-8'), /html\.arw-dark \.watch-deck\{/);
   // no shortcut line, no quality numbers under the rows, the notice is plain text
   assert.doesNotMatch(deck, /wd-keys|1080 · 720|href="#downloads"/);
 });

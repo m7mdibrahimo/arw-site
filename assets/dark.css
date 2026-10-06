@@ -86,7 +86,7 @@ html.arw-dark .arw-more-sheet{ background:#0d1117 !important; border-top:1px sol
 html.arw-dark .arw-more-grid a:not(.more-support){ background:#141922 !important; border-color:rgba(255,255,255,.07) !important; }
 
 /* Show pages: download box and the show-navigation panel as raised surfaces. */
-html.arw-dark .download-links, html.arw-dark .episodes-nav{
+html.arw-dark .download-links, html.arw-dark .episodes-nav, html.arw-dark .watch-deck{
   border:1px solid transparent !important;
   background:linear-gradient(180deg, #121720 0%, #0d1117 100%) padding-box, linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03) 50%, rgba(255,255,255,.02)) border-box !important;
   box-shadow:0 14px 34px -10px rgba(0,0,0,.7) !important;

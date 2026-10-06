@@ -428,7 +428,7 @@
   .quality-sub {
     font-size: 10px !important;
   }
-  .download-links {
+  .download-links, .watch-deck {
     padding: 14px 14px !important;
     border-radius: 14px !important;
   }

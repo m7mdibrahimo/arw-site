@@ -355,7 +355,7 @@ body {
   .quality-sub {
     font-size: 11px !important;
   }
-  .download-links {
+  .download-links, .watch-deck {
     padding: 14px 16px !important;
     border-radius: 14px !important;
     margin-bottom: 20px !important;
