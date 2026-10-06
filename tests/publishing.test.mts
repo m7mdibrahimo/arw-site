@@ -3210,6 +3210,26 @@ test('OK.ru and StreamHG are marked «متعدد الجودات» on watch tabs 
   for (const h of ['vidoza.net', 'dood.to', 'mega.nz']) assert.ok(!re.test(h), h);
 });
 
+test('a story about Vince Russo never says «مكمان»; new names and spellings are learned (INCIDENTS #294)', async () => {
+  const { vinceIsRusso, applyCorrections } = await import('../scripts/news-qa');
+  const src = 'Bruce Wayne said Vince Russo leaving JCW left him shocked. Russo sold his stake.';
+  assert.equal(vinceIsRusso('فريق Choppa City يؤكد أن مغادرة فينس مكمان لاتحاد JCW أثارت صدمتهم', src), 'فريق Choppa City يؤكد أن مغادرة فينس روسو لاتحاد JCW أثارت صدمتهم');
+  assert.equal(vinceIsRusso('فينس مكمان', src), 'فينس روسو');
+  assert.equal(vinceIsRusso('فينس مكمان', 'Vince McMahon and Vince Russo argued.'), 'فينس مكمان');
+  assert.equal(vinceIsRusso('فينس مكمان', 'Vince McMahon said.'), 'فينس مكمان');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf-8'));
+  assert.equal(names['Vince Russo'], 'فينس روسو');
+  assert.equal(names['Zane Jay'], 'زين جاي');
+  assert.equal(applyCorrections('جيم روس: ليس متأحرا جدا'), 'جيم روس: ليس متأخرا جدا');
+  assert.equal(applyCorrections('جولة في كواليس غرفة الفتيس'), 'جولة في كواليس غرفة الملابس');
+  assert.equal(applyCorrections('لمدة مئة واربعة عشر يوما'), 'لمدة مئة وأربعة عشر يوما');
+  const { checkArticle } = await import('../scripts/news-qa');
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'فريق يونايتد إمباير المكون من ويل أوسبراي وهيناري وغريت أو خان وغريت أو خان في نزال.', []).some(i => i.code === 'doubled_name'));
+  assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'فريق يونايتد إمباير المكون من ويل أوسبراي وهيناري وغريت أو خان في نزال.', []).some(i => i.code === 'doubled_name'));
+  const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf-8');
+  assert.match(watcher, /vinceIsRusso\(draft\.title, plainText\)/);
+});
+
 test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
   const { shelvedNotCancelled } = await import('../scripts/news-qa');
   const src = 'That match is still shelved and tabled for right now.';

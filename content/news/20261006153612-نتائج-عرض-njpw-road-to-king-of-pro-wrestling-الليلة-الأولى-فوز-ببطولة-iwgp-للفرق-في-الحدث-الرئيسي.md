@@ -68,4 +68,4 @@ layout: post-layout.njk
 
 🏆 **الفائزون ببطولة IWGP للفرق:** نوك أوت برذرز (أوسكار ويوتو آيس)
 
-كشف نوك أوت برذرز عن جيف كوب ليكون الرجل الثالث لتحديهم على بطولة NEVER Openweight للفرق الثلاثية في عرض NJPW King of Pro-Wrestling.
+كشف نوك أوت برذرز عن جيف كوب ليكون الرجل الثالث معهم في نزال على بطولة NEVER Openweight للفرق السداسية في عرض NJPW King of Pro-Wrestling.

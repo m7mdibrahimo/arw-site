@@ -102,6 +102,8 @@ const RULES: Rule[] = [
   { code: "vague_result", severity: "error", re: /الفائز(?:ة|ان|تان|ون|ين|ات)?:\*{0,2}\s*(?:تم\s+حسم|تحديد|حسم\s+النتيجة|غير\s+معروف|لم\s+يتم|لم\s+يحسم|قيد\s+الانتظار|بانتظار|سيتم|يحدد\s+لاحقا|انتهى\s+الحدث|انتهت\s+الأحداث|[^\n]{0,25}وسط\s+أجواء)[^\n]*/g, message: "سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)", fields: ["body"] },
   // Filler that stands in for a missing fact — «حيث تخوض داكوتا كاي خطواتها القادمة» when the source said «last wrestled in April» (INCIDENTS #293)
   { code: "vague_filler", severity: "error", re: /(?:ت|ي)خوض(?:ان)?\s+(?:[ء-ي]+\s+){0,3}خطوات(?:ها|ه|هما)\s+(?:القادمة|المقبلة|التالية)/g, message: "جملة حشو مبهمة مكان واقعة — اكتب اللي قاله المصدر بالظبط (حصل: «تخوض داكوتا كاي خطواتها القادمة» والمصدر: آخر نزال لها في أبريل)", fields: ["title", "body"] },
+  // A multi-word name listed twice in a row — «ويل أوسبراي وهينيرا وغريت أو خان وغريت أو خان» (INCIDENTS #294)
+  { code: "doubled_name", severity: "error", re: /(?:(?<![ء-ي])|(?<=(?<![ء-ي])و))((?:[ء-ي]+\s+){1,3}[ء-ي]+)\s+و\1(?![ء-ي])(?!\s*(?:الثاني|الثانية|II|2)(?![ء-ي]))/g, message: "اسم مكتوب مرتين ورا بعض — اكتب أعضاء الفريق زي المصدر (حصل: «غريت أو خان وغريت أو خان»)", fields: ["title", "body"] },
   { code: "missing_hamza", severity: "error", re: /(?<![\u0621-\u064A])[وف]?(?:الى|الي)(?![\u0621-\u064A])/g, message: "«الى/الي» بلا همزة — «إلى» (حرف الجر) أو «إليّ» حسب المعنى (حصل: «للوصول الي» والمقصود «إليّ»)", fields: ["title", "body"] },
   // A draft that dropped hamzas everywhere («انها»، «اشار إلى ان»، «اطلق»…) is a bad
   // Gemini output, not a few typos — the counted check below blocks it (INCIDENTS #64).
@@ -372,6 +374,16 @@ export function shelvedNotCancelled(text: string, source: string): string {
     [/(^|[^ء-ي])(و?)ال(?:إلغاء|الغاء)(?![ء-ي])/g, "$1$2التجميد"],
   ];
   return map.reduce((t, [re, to]) => t.replace(re, to), text);
+}
+
+/**
+ * A bare "Vince" is not always McMahon: the Choppa City story about Vince Russo leaving JCW went out as
+ * «مغادرة فينس مكمان لاتحاد JCW» while its own body said «روسو» (INCIDENTS #294). When the source names
+ * Russo and never McMahon, every «مكمان» in the draft is Russo.
+ */
+export function vinceIsRusso(text: string, source: string): string {
+  if (!/\bRusso\b/i.test(source) || /\bMcMahon\b/i.test(source)) return text;
+  return text.replace(/(^|[^ء-ي])(و?[بل]?)(?:ماك\s?ماهون|مكماهون|مكمان)(?![ء-ي])/g, "$1$2روسو");
 }
 
 export function numberWordsInTitle(title: string): string {
