@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2279500/aew-dynamite-grand-slam-paris-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-06T23:11:31.936Z"
+ },
+ "https://www.wrestlinginc.com/2279489/wwe-nxt-october-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-06T23:11:31.847Z"
+ },
  "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -23,16 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-06T23:09:28.959Z"
- },
- "https://www.wrestlinginc.com/2279500/aew-dynamite-grand-slam-paris-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T22:51:16.539Z"
- },
- "https://www.wrestlinginc.com/2279489/wwe-nxt-october-6-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T22:51:16.448Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
