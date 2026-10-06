@@ -11,11 +11,13 @@ name: Site Branch
 # ═══════════════════════════════════════════════════════
 
 on:
-  # every main push is turned on together with the switch of Cloudflare's production branch to «site»;
-  # until then it runs when this file changes, as a test
   push:
     branches: [main]
-    paths: ['.github/workflows/site-branch.yml']
+    # the same files Cloudflare ignored on main
+    paths-ignore:
+      - _data/publish-state.json
+      - 'worker/**'
+      - 'media-worker/**'
   workflow_dispatch:
 
 concurrency:
