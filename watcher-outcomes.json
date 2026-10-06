@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-6-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T23:51:25.796Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-06T23:42:26.904Z"
+  "at": "2026-10-06T23:53:37.748Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-06T23:42:26.796Z"
+  "at": "2026-10-06T23:53:37.616Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-says-first-match-with-stephanie-vaquer-got-the-ball-rolling-for-her-in-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T23:42:26.677Z"
+  "at": "2026-10-06T23:53:37.450Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-spoilers-10-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T23:42:26.433Z"
+  "at": "2026-10-06T23:53:37.077Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-responds-to-criticism-of-ring-of-honor-product": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T23:42:26.136Z"
+  "at": "2026-10-06T23:53:36.656Z"
  },
  "https://www.fightful.com/wrestling/paramount-completes-acquistion-of-wbd-skydance-made-official": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-06T23:42:25.880Z"
+  "at": "2026-10-06T23:53:36.312Z"
+ },
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-6-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-06T23:51:25.796Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
