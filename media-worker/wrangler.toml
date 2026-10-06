@@ -3,6 +3,14 @@ name = "arw-media"
 main = "src/index.ts"
 compatibility_date = "2026-08-01"
 
+# The Pages build no longer carries these files (it's built from the «site» branch)
+routes = [
+  { pattern = "arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
+  { pattern = "arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
+  { pattern = "www.arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
+  { pattern = "www.arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
+]
+
 [vars]
 REPO_RAW = "https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main"
 
@@ -11,10 +19,4 @@ REPO_RAW = "https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main"
 # binding = "MEDIA"
 # bucket_name = "arw-media"
 
-# The Pages build no longer carries these files (it's built from the «site» branch)
-routes = [
-  { pattern = "arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
-  { pattern = "arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
-  { pattern = "www.arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
-  { pattern = "www.arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
-]
+
