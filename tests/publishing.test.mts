@@ -3087,8 +3087,23 @@ test('program pages are in the sitemap and show pages get search-worded titles (
   assert.match(fs.readFileSync('pages/sitemap.njk', 'utf-8'), /for prog in collections\.library/);
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
-  assert.match(cfg, /الأخير مترجم \(\$\{day\}\)/);
+  assert.match(cfg, /showSeoText\(\{ headline, title, programName, eventDate, day, isLatest, description \}\)/);
   assert.match(fs.readFileSync('_redirects', 'utf-8'), /^\/raw\/\* \/library\/wwe-raw\/ 301!$/m);
+});
+
+test('a show page title carries the dotted date people search with, only in the head (INCIDENTS #296)', async () => {
+  const { showSeoText } = (await import('../lib/show-seo.cjs')).default;
+  const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
+  const latest = showSeoText({ ...raw, isLatest: true });
+  assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 مترجم (5 أكتوبر 2026) — WWE RAW');
+  assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل بتاريخ 5 أكتوبر 2026 (WWE RAW October 5, 2026) بجودة عالية مع كل النزالات، مشاهدة وتحميل على عرب راسلنج.');
+  assert.equal(showSeoText({ ...raw, isLatest: false }).title, 'عرض الرو 05.10.2026 مترجم (5 أكتوبر 2026) — WWE RAW');
+  // no date in the name: it comes from the show's date
+  assert.equal(showSeoText({ ...raw, headline: 'عرض الرو مترجم', isLatest: false }).title, 'عرض الرو 05.10.2026 مترجم (5 أكتوبر 2026) — WWE RAW');
+  // a written description is kept
+  assert.equal(showSeoText({ ...raw, description: 'وصف خاص', isLatest: true }).description, 'وصف خاص');
+  // nothing on the page itself changes: the heading still strips the date
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /\{\{ headline \| arabicShowName \| stripDate \}\}/);
 });
 
 test('weekly roundups dated today are not tonight\'s show, and their fixes reach the model (INCIDENTS #277)', () => {
