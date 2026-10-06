@@ -3260,6 +3260,11 @@ test('a show named twice, a first-person quip headline and a dateless ratings he
   assert.equal(names['Aigle Blanc'], 'إيغل بلانك');
 });
 
+test('«سويا» takes a dual verb: «وتمكنا سويا من» (INCIDENTS #300)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('تحالف مع ميستيكو وتمكن سويا من حصد البطولة'), 'تحالف مع ميستيكو وتمكنا سويا من حصد البطولة');
+});
+
 test('the social shield note never carries letters from another script (INCIDENTS #295)', async () => {
   const { cleanSpoilerNote } = await import('../scripts/news-qa');
   assert.equal(cleanSpoilerNote('لا يتضمن نتائج نزالات أو عодات حديثة.'), 'لا يتضمن نتائج نزالات أو عات حديثة.');
