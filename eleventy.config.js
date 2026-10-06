@@ -306,6 +306,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("slug", arabicSlug);
   eleventyConfig.addNunjucksFilter("slug", arabicSlug);
   eleventyConfig.addFilter("toEmbedUrl", toEmbedUrl);
+  eleventyConfig.addFilter("playableServers", require("./lib/embed.cjs").playableServers);
   eleventyConfig.addNunjucksFilter("toEmbedUrl", toEmbedUrl);
   eleventyConfig.addFilter("obfuscateUrl", obfuscateUrl);
   eleventyConfig.addNunjucksFilter("obfuscateUrl", obfuscateUrl);

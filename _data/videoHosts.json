@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-06T03:03:21.757Z",
+  "dead": [
+    "turbovidhls.com"
+  ],
+  "noEmbed": [
+    "multiup.io"
+  ],
+  "strikes": {
+    "turbovidhls.com": 3
+  }
+}

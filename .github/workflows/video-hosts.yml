@@ -1,0 +1,53 @@
+name: Video Hosts Check
+
+# ═══════════════════════════════════════════════════════
+#  فحص سيرفرات المشاهدة كل ٦ ساعات: أي سيرفر دومينه وقع مرتين ورا بعض،
+#  أو بيرفض يتعرض جوه موقع تاني، بيستخبى من صفحات العروض لحد ما يرجع يشتغل.
+#  النتيجة في _data/videoHosts.json (الحادثة ٢٧٦).
+# ═══════════════════════════════════════════════════════
+
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/check-video-hosts.ts
+      - lib/embed.cjs
+
+concurrency:
+  group: video-hosts
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check the hosts
+        run: npx tsx scripts/check-video-hosts.ts
+
+      - name: Commit the result
+        run: |
+          git config user.name "ARW Fix Bot"
+          git config user.email "bot@arab-wrestling.com"
+          git add _data/videoHosts.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(player): video hosts check"
+          for i in 1 2 3; do git pull --rebase --autostash && git push && break; sleep 10; done

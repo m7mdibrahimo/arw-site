@@ -3091,3 +3091,20 @@ test('a recap that takes a URL another file already went out under is posted wit
   assert.match(src, /item\.kind === "show" \|\| item\.kind === "recap" \? 12 \* 60 \* 60 \* 1000/);
   assert.match(src, /item\.kind !== "show" && item\.kind !== "recap" && !instagramAllowedFor/);
 });
+
+test('watch servers: dead and non-embeddable hosts are hidden, StreamHG mirrors go through hgcloud, fullscreen works after a redirect (INCIDENTS #276)', async () => {
+  const { toEmbedUrl, playableServers } = await import('../lib/embed.cjs');
+  assert.equal(toEmbedUrl('https://hanerix.com/eid6vpj41xti'), 'https://hgcloud.to/e/eid6vpj41xti');
+  assert.equal(toEmbedUrl('https://hanerix.com/e/eid6vpj41xti'), 'https://hgcloud.to/e/eid6vpj41xti');
+  const servers = [{ url: 'https://turbovidhls.com/t/abc' }, { url: 'https://multiup.io/xyz' }, { url: 'https://ok.ru/video/1' }];
+  assert.deepEqual(playableServers(servers, { dead: ['turbovidhls.com'], noEmbed: [] }).map((s: any) => s.url), ['https://ok.ru/video/1']);
+  // never an empty player
+  assert.equal(playableServers([{ url: 'https://turbovidhls.com/t/abc' }], { dead: ['turbovidhls.com'] }).length, 1);
+  const { refusesEmbedding } = await import('../scripts/check-video-hosts');
+  assert.ok(refusesEmbedding('sameorigin', ''));
+  assert.ok(!refusesEmbedding('ALLOWALL, ALLOWALL', ''));
+  assert.ok(refusesEmbedding('', "frame-ancestors 'self'"));
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(layout, /'allow', 'autoplay \*; fullscreen \*;/);
+  assert.match(layout, /servers \| playableServers\(videoHosts\)/);
+});
