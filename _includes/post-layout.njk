@@ -396,9 +396,9 @@
   .wd-play-label{ position:absolute; z-index:2; inset-inline:0; bottom:16px; bottom:clamp(12px, 2.2cqi, 24px); text-align:center; font-family:'Cairo',sans-serif; font-weight:800; font-size:15px; font-size:clamp(13.5px, 1.5cqi, 17px); color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.7); }
   .watch-deck:not(.is-idle) .wd-poster{ opacity:0; visibility:hidden; pointer-events:none; }
   html.arw-dark .watch-deck{ --wd-bg1:#121722; --wd-bg2:#07090d; box-shadow:0 34px 70px -38px rgba(47,208,204,.45), inset 0 0 0 1px rgba(255,255,255,.09); }
-  /* the reveal animation leaves a transform on .post-wrap, which made the «fixed» dark backdrop cover only the
-     820px text column; without it the backdrop covers the whole screen */
-  body.cinema-mode-active .post-wrap{ transform:none !important; }
+  /* a transform on .post-wrap (the fade-in) traps the «fixed» dark backdrop inside the 820px text column and the box
+     under it; in cinema mode it is dropped at once, with no transition (a 0.45s slide made a black block first) */
+  body.cinema-mode-active .post-wrap{ transform:none !important; transition:none !important; will-change:auto !important; }
   body.cinema-mode-active header, body.cinema-mode-active .arw-bottom-nav{ opacity:.1; pointer-events:none; transition:opacity .35s ease; }
   body.cinema-mode-active .watch-deck{ position:relative; z-index:9999; box-shadow:0 0 70px rgba(47,208,204,.28), 0 24px 70px rgba(0,0,0,.9); }
 
@@ -1129,7 +1129,7 @@
   /* Scroll Reveal Smooth Motion */
   .reveal{ opacity:1; transform:none; }
 .reveal.reveal-hidden{ opacity:0; transform:translate3d(0, 16px, 0); transition:none !important; will-change:opacity, transform; }
-.reveal.is-visible{ opacity:1; transform:translate3d(0, 0, 0); transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); will-change:auto; }
+.reveal.is-visible{ opacity:1; transform:none; transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1); will-change:auto; }
 @media (prefers-reduced-motion: reduce){ .reveal.reveal-hidden{ opacity:1 !important; transform:none !important; } }
 
   /* Related Content Section */

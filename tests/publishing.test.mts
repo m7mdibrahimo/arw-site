@@ -3236,7 +3236,8 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   assert.doesNotMatch(layout, /querySelectorAll\('\.server-tab'\)/);
   assert.match(layout, /var srvRows = Array\.from\(document\.querySelectorAll\('\.srv-row'\)\);/);
   // cinema mode covers the whole screen
-  assert.match(layout, /body\.cinema-mode-active \.post-wrap\{ transform:none !important; \}/);
+  assert.match(layout, /body\.cinema-mode-active \.post-wrap\{ transform:none !important; transition:none !important;/);
+  assert.match(layout, /\.reveal\.is-visible\{ opacity:1; transform:none;/);
   // no colloquial words in the box
   const deck = layout.slice(layout.indexOf('<section class="watch-deck'), layout.indexOf('</section>', layout.indexOf('<section class="watch-deck')));
   assert.doesNotMatch(deck, /دلوقتي|اختار |اللي|مش |ماشتغلش/);
