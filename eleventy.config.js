@@ -1722,9 +1722,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("watcher-feed.json");
   eleventyConfig.addPassthroughCopy("watcher-feed-wrestlinginc.json");
   eleventyConfig.addPassthroughCopy("watcher-feed-ringsidenews.json");
-  if (fs.existsSync("dist/videos")) {
-    eleventyConfig.addPassthroughCopy({"dist/videos": "videos"});
-  }
   // content/images (4400+ originals, ~470 MB): hard links instead of Eleventy's byte-for-byte copy.
   // The copy was half of every build (~40 s of ~80 s) and every save from the panel waited for it.
   // A link is the same file on the same disk, made in a fraction of a second; a copy only when
@@ -1733,6 +1730,12 @@ module.exports = function(eleventyConfig) {
     const started = Date.now();
     const n = linkTree("content/images", "_site/content/images");
     console.log(`[images] ${n} originals linked in ${((Date.now() - started) / 1000).toFixed(1)}s`);
+    // the show reels (dist/videos, ~340 MB) the same way: their byte-for-byte copy was 42% of a build (~27 s)
+    // and every save from the panel waited for it (INCIDENTS #310)
+    if (fs.existsSync("dist/videos")) {
+      const t = Date.now(), v = linkTree("dist/videos", "_site/videos");
+      console.log(`[videos] ${v} reels linked in ${((Date.now() - t) / 1000).toFixed(1)}s`);
+    }
   });
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("sw.js");

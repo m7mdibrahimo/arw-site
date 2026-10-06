@@ -3498,3 +3498,9 @@ test('NJPW library groups its shows by tour: the big event with its «Road To» 
     assert.doesNotMatch(t, /^headline: عرض ان جيه بي دبليو \d/m, f);
   }
 });
+
+test('the show reels are linked into the build, not copied byte for byte (INCIDENTS #310)', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.doesNotMatch(cfg, /addPassthroughCopy\(\{\s*"dist\/videos"/);
+  assert.match(cfg, /linkTree\("dist\/videos", "_site\/videos"\)/);
+});
