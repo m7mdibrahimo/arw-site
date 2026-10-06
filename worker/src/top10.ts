@@ -8,7 +8,7 @@ interface Top10Env { PUSH_KV?: KVNamespace; SITE_ORIGIN: string }
 export interface Top10Item { url: string; title: string; image: string; kind: "show" | "recap" | "nostalgia"; views: number }
 
 const CONFIG_KEY = "studio:analytics:config";
-const CACHE_KEY = (range: string) => `top10:v6:${range}`; // v6: Arabic card names (#287), v5: small card pictures (#285) // the home page asks for the week only (#183) // v2: watch pages only, decoded titles (#181)
+const CACHE_KEY = (range: string) => `top10:v7:${range}`; // v7: rebuilt after the card-name meta went live (#287), v6: Arabic card names (#287), v5: small card pictures (#285) // the home page asks for the week only (#183) // v2: watch pages only, decoded titles (#181)
 const CACHE_MS = 30 * 60_000;
 
 /**
