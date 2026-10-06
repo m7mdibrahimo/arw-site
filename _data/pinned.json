@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-raw-05-10-2026/",
+    "title": "عرض الرو 05.10.2026 مترجم",
+    "subtitle": "WWE RAW 05.10.2026",
+    "image": "/img/apEorfJOI2-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-collision-03-10-2026/",
     "title": "عرض كوليجن 03.10.2026 مترجم",
     "subtitle": "AEW Collision 03.10.2026",
@@ -97,17 +108,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-28-09-2026/",
-    "title": "عرض الرو 28.09.2026 مترجم",
-    "subtitle": "WWE RAW 28.09.2026",
-    "image": "/img/6WnbuX84d3-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/aew-all-out-2026/",
