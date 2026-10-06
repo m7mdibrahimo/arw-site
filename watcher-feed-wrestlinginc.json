@@ -1,5 +1,25 @@
 [
   {
+    "id": 2700278250,
+    "link": "https://www.wrestlinginc.com/2278892/aaa-wwe-hijo-del-vikingo-another-surgery/",
+    "date": "Tue, 06 Oct 2026 16:08:37 +0000",
+    "date_gmt": "2026-10-06T16:08:37.000Z",
+    "title": {
+      "rendered": "AAA's El Hijo Del Vikingo Set To Undergo Another Surgery"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aaas-el-hijo-del-vikingo-set-to-undergo-another-surgery/l-intro-1791302727.jpg"
+  },
+  {
+    "id": 4981017104,
+    "link": "https://www.wrestlinginc.com/2278885/wwe-tiffany-stratton-video-training-botch-viral/",
+    "date": "Tue, 06 Oct 2026 16:03:56 +0000",
+    "date_gmt": "2026-10-06T16:03:56.000Z",
+    "title": {
+      "rendered": "WWE's Tiffany Stratton Comments On Video Of Training Botch Going Viral"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-tiffany-stratton-comments-on-video-of-training-botch-going-viral/l-intro-1791302510.jpg"
+  },
+  {
     "id": 3305849180,
     "link": "https://www.wrestlinginc.com/2278503/wwe-finn-balor-future-body-holding-up/",
     "date": "Tue, 06 Oct 2026 15:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "LA Knight Calls Roman Reigns 'Manufactured Corporate Puppet Industry Plant' On WWE Raw"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-la-knight-roman-reigns-manufactured-corporate-puppet-industry-plant/l-intro-1791249873.jpg"
-  },
-  {
-    "id": 4796910155,
-    "link": "https://www.wrestlinginc.com/2278308/aew-all-out-2026-jeff-jarrett-steven-borden-injury/",
-    "date": "Mon, 05 Oct 2026 23:39:22 +0000",
-    "date_gmt": "2026-10-05T23:39:22.000Z",
-    "title": {
-      "rendered": "Jeff Jarrett Reacts To Steven Borden's Injury At AEW All Out"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-all-out-2026-jeff-jarrett-steven-borden-injury/l-intro-1791249208.jpg"
-  },
-  {
-    "id": 1025333678,
-    "link": "https://www.wrestlinginc.com/2278277/wwe-john-cena-gunther-fan-perception-wasting/",
-    "date": "Mon, 05 Oct 2026 22:54:52 +0000",
-    "date_gmt": "2026-10-05T22:54:52.000Z",
-    "title": {
-      "rendered": "John Cena Comments On The Fan Perception Of WWE 'Wasting' Gunther"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-john-cena-gunther-fan-perception-wasting/l-intro-1791248413.jpg"
   }
 ]
