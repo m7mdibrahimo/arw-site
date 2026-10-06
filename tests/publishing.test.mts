@@ -3070,3 +3070,24 @@ test('six-man tag wording and Fenix/Usos names reach the model (INCIDENTS #279)'
   assert.equal(names['Rey Fenix'], 'ري فينيكس');
   assert.equal(names['The Usos'], 'ذا أوسوز');
 });
+
+test('a recap that takes a URL another file already went out under is posted with its own key (INCIDENTS #280)', async () => {
+  const { urlKeyOwners, socialKeyFor } = await import('../worker/src/index');
+  const url = 'httpsarab-wrestlingcomrecapswwe-raw-highlights-28-09-2026';
+  const owners = urlKeyOwners({
+    '20260929130239-wwe-raw-highlights-28-09-2026': url,
+    '20261006054610-wwe-raw-highlights-28-09-2026': url, // the wrong backfill the old code wrote
+  });
+  // the first file keeps its key; the newcomer gets a fresh one, so nothing reads as «already posted»
+  assert.equal(socialKeyFor(url, '20260929130239-wwe-raw-highlights-28-09-2026', owners), url);
+  const fresh = socialKeyFor(url, '20261006054610-wwe-raw-highlights-28-09-2026', owners);
+  assert.notEqual(fresh, url);
+  assert.ok(fresh.startsWith(url));
+  // a URL nobody owns yet, or a file without a name, keeps the plain URL key
+  assert.equal(socialKeyFor('httpsarab-wrestlingcomrecapsnew', 'x', owners), 'httpsarab-wrestlingcomrecapsnew');
+  assert.equal(socialKeyFor(url, '', owners), url);
+  // recaps are full episodes: the 12h window and Instagram without the news ration
+  const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  assert.match(src, /item\.kind === "show" \|\| item\.kind === "recap" \? 12 \* 60 \* 60 \* 1000/);
+  assert.match(src, /item\.kind !== "show" && item\.kind !== "recap" && !instagramAllowedFor/);
+});

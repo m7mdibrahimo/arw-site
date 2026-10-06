@@ -349,6 +349,22 @@ export function contentFileId(item: { inputPath?: string } | null | undefined): 
   return m ? m[1] : "";
 }
 
+// Which file first went out under each URL key (state.byFile read backwards; first claim wins).
+export function urlKeyOwners(byFile: Record<string, string> | undefined): Map<string, string> {
+  const owners = new Map<string, string>();
+  for (const [f, k] of Object.entries(byFile || {})) if (k && !owners.has(k)) owners.set(k, f);
+  return owners;
+}
+
+// A URL can change hands: a page posted on 29 Sep as «RAW Highlights 28.09» was retitled 21.09 in
+// the panel, and the real 28.09 recap a week later got the freed URL — the stamps under it said
+// «already posted», so the new recap never reached social (INCIDENTS #280). The stamps belong to
+// the file that went out first; any other file under that URL gets its own key.
+export function socialKeyFor(urlKey: string, file: string, owners: Map<string, string>): string {
+  const owner = owners.get(urlKey);
+  return urlKey && file && owner && owner !== file ? `${urlKey}_${sanitizeKey(file)}` : urlKey;
+}
+
 // Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
 function spoilerReason(title: string = ""): "result" | "return" {
   return /(?<![\u0600-\u06FF\w])(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|الظهور الأول|ظهوره الأول|ظهورها الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة)|\b(?:returns?|returned|comeback|debuts?|debuted|surprise (?:appearance|return))\b/i.test(title) ? "return" : "result";
@@ -768,7 +784,12 @@ async function markSendSuccess(env: Env, platform: Platform, key: string, file =
     if (state[platform]?.[key] && (!file || state.byFile?.[file])) return; // already marked
 
     state[platform][key] = state[platform][key] || Date.now();
-    if (file) { state.byFile = state.byFile || {}; if (!state.byFile[file]) state.byFile[file] = key; }
+    if (file) {
+      state.byFile = state.byFile || {};
+      // Replace a record pointing this file at a URL another file went out under (#280).
+      const was = state.byFile[file];
+      if (!was || (was !== key && urlKeyOwners(state.byFile).get(was) !== file)) state.byFile[file] = key;
+    }
     if (state.deferrals) delete state.deferrals[`${platform}:${key}`];
     const write = await githubWriteState(env, state, sha, `chore(publish): mark ${platform} sent — ${key}`);
     if (write.ok) return;
@@ -2304,6 +2325,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   const igBudget = await instagramBudget(env).catch(() => ({ used: 0, cap: IG_DAILY_CAP }));
   const fileBackfill: Record<string, string> = {};
+  const keyOwners = urlKeyOwners(state.byFile);
   for (const item of items) {
     const ts = item.date ? new Date(item.date).getTime() : 0;
     if (!Number.isFinite(ts) || !ts || ts > Date.now() || (minDate && ts < minDate)) continue;
@@ -2327,7 +2349,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // Past the scan limit only a story the owner just released from the spoiler hold is still wanted.
     const tooOld = !!ts && (Date.now() - ts) > 26 * 60 * 60 * 1000;
     if (tooOld && !recentReleases.size) break;
-    const key = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
+    const urlKey = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
+    const file = contentFileId(item);
+    const key = socialKeyFor(urlKey, file, keyOwners);
     if (!key || (tooOld && !recentReleases.has(key))) continue;
     const reachedSiteAt = item.published_at ? new Date(item.published_at).getTime() : ts;
     const releasedAt = Number((state as any).released?.[key]) || 0;
@@ -2336,18 +2360,20 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     let fbDone = !!state.facebook[key];
     let igDone = !!state.instagram[key];
     // Not important enough for today's remaining Instagram posts: Telegram and Facebook only (#162)
-    if (!igDone && item.kind !== "show" && !instagramAllowedFor(item.social_priority, igBudget.used, igBudget.cap)) igDone = true;
+    if (!igDone && item.kind !== "show" && item.kind !== "recap" && !instagramAllowedFor(item.social_priority, igBudget.used, igBudget.cap)) igDone = true;
     let xDone = !!state.x[key];
     // Same file under an earlier URL (its title was edited): it already went out — never again.
-    const file = contentFileId(item);
-    const firstKey = file ? state.byFile?.[file] : "";
+    // A record pointing this file at a URL another file owns is a wrong backfill, not a post (#280).
+    const recorded = file ? state.byFile?.[file] || "" : "";
+    const firstKey = recorded === urlKey && key !== urlKey ? "" : recorded;
     if (firstKey && firstKey !== key) continue;
     if (file && !firstKey && (tgDone || fbDone || igDone || xDone)) fileBackfill[file] = key;
     if (tgDone && fbDone && igDone && xDone) continue;
     // A show (a full episode) keeps a 12h window: on a day with six shows, their Instagram
     // posts queued behind the shows' own reels/stories and the news, ran past 3h and would
     // never have been posted (INCIDENTS #87).
-    const windowMs = item.kind === "show" ? 12 * 60 * 60 * 1000 : WINDOW_MS;
+    // A recap is a full episode too (INCIDENTS #280).
+    const windowMs = item.kind === "show" || item.kind === "recap" ? 12 * 60 * 60 * 1000 : WINDOW_MS;
     if ((Date.now() - freshFrom) > windowMs) {
       // Past its window. A platform that was paused (rate-limit cooldown) while
       // the article was fresh gets WINDOW_MS after the pause ends — only that
@@ -2374,7 +2400,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       const { sha, state: fresh } = await githubReadState(env);
       fresh.byFile = fresh.byFile || {};
       let added = 0;
-      for (const [f, k] of Object.entries(fileBackfill)) if (!fresh.byFile[f]) { fresh.byFile[f] = k; added++; }
+      for (const [f, k] of Object.entries(fileBackfill)) if (fresh.byFile[f] !== k && (!fresh.byFile[f] || keyOwners.get(fresh.byFile[f]) !== f)) { fresh.byFile[f] = k; added++; }
       const entries = Object.entries(fresh.byFile);
       if (entries.length > 3000) fresh.byFile = Object.fromEntries(entries.slice(-2000));
       if (added) { const w = await githubWriteState(env, fresh, sha, "chore(publish): remember which file each posted story is"); if (w.ok) state.byFile = fresh.byFile; }
@@ -2409,9 +2435,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const catchUpOnly = [
     ...candidates.filter((c) => c.tgDone && !c.fbDone).reverse(),
     // Missing only Instagram: shows first (a full episode matters more than any one story).
-    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind === "show"),
+    ...candidates.filter((c) => c.tgDone && c.fbDone && (c.item.kind === "show" || c.item.kind === "recap")),
     // then the most important stories first, newest first within each (#162)
-    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind !== "show")
+    ...candidates.filter((c) => c.tgDone && c.fbDone && c.item.kind !== "show" && c.item.kind !== "recap")
       .map((c, i) => ({ c, i, r: c.item.social_priority === "high" ? 0 : c.item.social_priority === "low" ? 2 : 1 }))
       .sort((a, b) => a.r - b.r || a.i - b.i).map(x => x.c),
   ];
