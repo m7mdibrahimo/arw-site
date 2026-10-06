@@ -3544,7 +3544,14 @@ test('the site builds from a «site» branch without the original pictures and r
   assert.equal(repoPathOf('/content/images/'), null);
   // routes at the top of wrangler.toml (under [vars] they were read as a variable and never routed)
   const toml = fs.readFileSync('media-worker/wrangler.toml', 'utf-8');
-  assert.ok(toml.indexOf('routes = [') > -1 && toml.indexOf('routes = [') < toml.indexOf('[vars]'));
+  // routes before the first [table] (after one, TOML reads them as part of that table and nothing is routed)
+  const firstTable = toml.search(/^\[/m);
+  assert.ok(toml.indexOf('routes = [') > -1 && toml.indexOf('routes = [') < firstTable);
+  assert.match(toml, /^\[triggers\]\ncrons = \["17 3 \* \* \*"\]/m);
+  const src = fs.readFileSync('media-worker/src/index.ts', 'utf-8');
+  // uploads only with a GitHub token that can write to the repo; reels leave R2 after 30 days (free tier for good)
+  assert.match(src, /collaborators\?per_page=1/);
+  assert.match(src, /export const REEL_DAYS = 30;/);
   // the build reuses resized pictures without their originals, and fetches an original only for a new picture
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.match(cfg, /const known = mapped\(decoded, "800jpeg"\);/);

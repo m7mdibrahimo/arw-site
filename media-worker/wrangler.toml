@@ -11,8 +11,14 @@ routes = [
   { pattern = "www.arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
 ]
 
+# once a day: reels older than 30 days leave R2 (src/index.ts pruneReels)
+[triggers]
+crons = ["17 3 * * *"]
+
 [vars]
 REPO_RAW = "https://raw.githubusercontent.com/m7mdibrahimo/arw-site/main"
+GITHUB_OWNER = "m7mdibrahimo"
+GITHUB_REPO = "arw-site"
 
 [[r2_buckets]]
 binding = "MEDIA"
