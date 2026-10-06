@@ -443,6 +443,8 @@
     font-weight:700;
     color:rgba(255, 255, 255, 0.9);
   }
+  .video-loader-progress{ width:min(240px,62%); height:3px; border-radius:999px; background:rgba(255,255,255,.1); overflow:hidden; }
+  .video-loader-progress span{ display:block; height:100%; width:0; border-radius:inherit; background:linear-gradient(90deg,#2fc7b8,#7be0d6); box-shadow:0 0 10px rgba(47,199,184,.55); transition:width .6s cubic-bezier(.22,.8,.3,1); }
   .video-loader-fallback{
     display:flex;
     flex-direction:column;
@@ -1311,6 +1313,7 @@
           <div class="video-loader" id="videoLoader">
             <div class="video-loader-spinner"></div>
             <div class="video-loader-status" id="videoLoaderStatus">جاري الاتصال بالسيرفر وتشغيل الفيديو...</div>
+            <div class="video-loader-progress" aria-hidden="true"><span id="videoLoaderBar"></span></div>
             <div class="video-loader-fallback" id="videoLoaderFallback" style="display:none;">
               <span>السيرفر يستغرق وقتاً طويلاً؟</span>
               <button type="button" class="loader-switch-srv-btn" id="loaderNextSrvBtn">تجربة سيرفر آخر ⏭</button>
@@ -1865,6 +1868,8 @@
   var loaderFallback = document.getElementById('videoLoaderFallback');
   var loaderTimer = null;
 
+  var loaderBar = document.getElementById('videoLoaderBar');
+  function setLoaderProgress(pct) { if (loaderBar) loaderBar.style.width = Math.max(0, Math.min(100, pct)) + '%'; }
   function setLoader(visible, text) {
     if (!loader) return;
     if (loaderTimer) { clearTimeout(loaderTimer); loaderTimer = null; }
@@ -1872,18 +1877,24 @@
       loader.classList.remove('is-hidden');
       if (loaderStatus && text) loaderStatus.textContent = text;
       if (loaderFallback) loaderFallback.style.display = 'none';
+      setLoaderProgress(8);
       loaderTimer = setTimeout(function(){
         if (loaderFallback && !loader.classList.contains('is-hidden')) {
           loaderFallback.style.display = 'flex';
         }
-      }, 8500);
+      }, 9000);
     } else {
+      setLoaderProgress(100);
       loader.classList.add('is-hidden');
     }
   }
 
+  // Every mount gets a number: a late load event from the previous server must not hide the new loader.
+  var mountSeq = 0;
   function mountVideo(box, rawSrc, serverLabel) {
     if (!box || !rawSrc) return;
+    var seq = ++mountSeq;
+    var mountedAt = Date.now();
     currentActiveServerSrc = rawSrc;
     var src = toEmbedUrl(rawSrc);
     var isDirect = src.includes('pixeldrain.com/api/file/') || /\.mp4(\?|$)/i.test(src) || /\.webm(\?|$)/i.test(src);
@@ -1911,7 +1922,7 @@
       // Smart Resume Memory for direct streams
       var resumeKey = 'arw_vpos_' + window.location.pathname;
       v.addEventListener('loadedmetadata', function(){
-        setLoader(false);
+        if (seq === mountSeq) setLoader(false);
         try {
           var saved = parseFloat(localStorage.getItem(resumeKey) || '0');
           if (saved > 10 && (!v.duration || saved < v.duration - 15)) {
@@ -1919,7 +1930,12 @@
           }
         } catch(e){}
       });
-      v.addEventListener('canplay', function(){ setLoader(false); });
+      v.addEventListener('canplay', function(){ if (seq === mountSeq) setLoader(false); });
+      v.addEventListener('error', function(){
+        if (seq !== mountSeq) return;
+        if (loaderStatus) loaderStatus.textContent = 'السيرفر ده مش شغال دلوقتي، جرّب سيرفر تاني';
+        if (loaderFallback) loaderFallback.style.display = 'flex';
+      });
 
       var lastSavedTime = 0;
       v.addEventListener('timeupdate', function(){
@@ -1952,10 +1968,26 @@
       ifr.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
       ifr.setAttribute('loading', 'eager');
 
-      var safetyHideTimer = setTimeout(function(){ setLoader(false); }, 3500);
+      // The loader stays until the player has really loaded: hosts like StreamHG load a «Loading…» page
+      // first and then move to their mirror, so every load restarts a short settle wait, and the loader
+      // goes only when no new page came for that long (and never before ~1.2s, so it doesn't flicker).
+      // No load at all = the server is down: the loader stays with «جرّب سيرفر تاني» (INCIDENTS #277).
+      var multiStep = /hgcloud\.|streamhg|vidmoly\.|uqload\./i.test(src);
+      var SETTLE_MS = multiStep ? 2400 : 1800;
+      var settleTimer = null, loads = 0;
+      setLoaderProgress(18);
       ifr.addEventListener('load', function(){
-        clearTimeout(safetyHideTimer);
-        setTimeout(function(){ setLoader(false); }, 250);
+        if (seq !== mountSeq) return;
+        loads++;
+        setLoaderProgress(loads === 1 ? 55 : 80);
+        if (loads === 1 && loaderStatus) loaderStatus.textContent = 'جاري تجهيز الفيديو على ' + (serverLabel || 'السيرفر') + '...';
+        if (settleTimer) clearTimeout(settleTimer);
+        settleTimer = setTimeout(function(){
+          if (seq !== mountSeq) return;
+          setLoaderProgress(100);
+          var wait = Math.max(0, 1200 - (Date.now() - mountedAt));
+          setTimeout(function(){ if (seq === mountSeq) setLoader(false); }, wait + 180);
+        }, SETTLE_MS);
       });
 
       box.appendChild(ifr);

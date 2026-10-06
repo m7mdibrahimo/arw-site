@@ -3111,3 +3111,11 @@ test('watch servers: dead and non-embeddable hosts are hidden, StreamHG mirrors 
   assert.match(layout, /'allow', 'autoplay \*; fullscreen \*;/);
   assert.match(layout, /servers \| playableServers\(videoHosts\)/);
 });
+
+test('the player loader stays until the server has loaded and settled, never on a blind timer (INCIDENTS #277)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.doesNotMatch(layout, /safetyHideTimer/);
+  assert.match(layout, /if \(seq !== mountSeq\) return;/);
+  assert.match(layout, /var SETTLE_MS = multiStep \? \d+ : \d+;/);
+  assert.match(layout, /id="videoLoaderBar"/);
+});
