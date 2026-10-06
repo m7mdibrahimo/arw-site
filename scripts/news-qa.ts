@@ -386,6 +386,15 @@ export function vinceIsRusso(text: string, source: string): string {
   return text.replace(/(^|[^ء-ي])(و?[بل]?)(?:ماك\s?ماهون|مكماهون|مكمان)(?![ء-ي])/g, "$1$2روسو");
 }
 
+/**
+ * The social shield's note lands in the front matter and on the dashboard; the model once wrote
+ * «عюدات» there (a Cyrillic «ю» inside an Arabic word) and no check reads that field (INCIDENTS #295).
+ * Letters from another script are dropped from the note before it is written.
+ */
+export function cleanSpoilerNote(note: string): string {
+  return note.replace(/[Ͱ-ϿЀ-֏֐-׿ऀ-෿฀-๿က-႟Ⴀ-ჿሀ-፿぀-ヿ㐀-鿿가-힯]+/g, "").replace(/\s{2,}/g, " ").trim();
+}
+
 export function numberWordsInTitle(title: string): string {
   // «ثاندر روزا تتحدث ثاندر روزا عن نزالها…»: the subject written again after its verb (INCIDENTS #96)
   title = title.replace(/^((?:[^\s:]+\s+){0,3}[^\s:]+)\s+([^\s:]+)\s+\1(?=\s)/, "$1 $2");

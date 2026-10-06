@@ -3230,6 +3230,18 @@ test('a story about Vince Russo never says «مكمان»; new names and spellin
   assert.match(watcher, /vinceIsRusso\(draft\.title, plainText\)/);
 });
 
+test('the social shield note never carries letters from another script (INCIDENTS #295)', async () => {
+  const { cleanSpoilerNote } = await import('../scripts/news-qa');
+  assert.equal(cleanSpoilerNote('لا يتضمن نتائج نزالات أو عодات حديثة.'), 'لا يتضمن نتائج نزالات أو عات حديثة.');
+  assert.equal(cleanSpoilerNote('ملاحظة سليمة عن WWE.'), 'ملاحظة سليمة عن WWE.');
+  const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf-8');
+  assert.match(watcher, /JSON\.stringify\(cleanSpoilerNote\(socialVerdict\.note\)\)/);
+  for (const f of fs.readdirSync('content/news').filter(n => n.startsWith('20261006'))) {
+    const note = fs.readFileSync(`content/news/${f}`, 'utf-8').match(/^social_spoiler_note: (.*)$/m)?.[1] ?? '';
+    assert.equal(note, cleanSpoilerNote(note), f);
+  }
+});
+
 test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
   const { shelvedNotCancelled } = await import('../scripts/news-qa');
   const src = 'That match is still shelved and tabled for right now.';
