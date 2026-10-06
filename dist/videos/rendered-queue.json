@@ -1435,8 +1435,44 @@
     "description": "عرض جي سي دبليو مترجم بالكامل مع جميع النزالات والأحداث.",
     "postUrl": "/shows/20261005162158-gcw-the-last-frontier-the-sequ",
     "kind": "show",
-    "slug": "20261005162158-gcw-the-last-frontier-the-sequ",
-    "image": "/content/images/7x1nr85m8uwyqmzf.jpg",
-    "renderedAt": 1791310162332
+    "slug": "20261006204507-revpro-live-in-london-112",
+    "image": "/content/images/t29ubxj36we66iny.jpg",
+    "renderedAt": 1791309907565
+  },
+  {
+    "videoUrl": "/videos/reel-20260922130100-njpw-road-to-destruction-21-09.mp4",
+    "filename": "reel-20260922130100-njpw-road-to-destruction-21-09.mp4",
+    "title": "عرض ان جيه بي دبليو رود تو ديستروكشن 21.09.2026 مترجم",
+    "secondaryTitle": "NJPW Road To Destruction 21.09.2026",
+    "description": "عرض ان جيه بي دبليو رود تو ديستروكشن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260922130100-njpw-road-to-destruction-21-09",
+    "kind": "show",
+    "slug": "20260922130100-njpw-road-to-destruction-21-09",
+    "image": "/content/images/qx5bwyuyaahclqzo.jpg",
+    "renderedAt": 1791310395994
+  },
+  {
+    "videoUrl": "/videos/reel-20260924111800-njpw-road-to-destruction-22-09.mp4",
+    "filename": "reel-20260924111800-njpw-road-to-destruction-22-09.mp4",
+    "title": "عرض ان جيه بي دبليو رود تو ديستروكشن 22.09.2026 مترجم",
+    "secondaryTitle": "NJPW Road To Destruction 22.09.2026",
+    "description": "عرض ان جيه بي دبليو رود تو ديستروكشن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924111800-njpw-road-to-destruction-22-09",
+    "kind": "show",
+    "slug": "20260924111800-njpw-road-to-destruction-22-09",
+    "image": "/content/images/c2suejneboc4qlk8.jpg",
+    "renderedAt": 1791310479543
+  },
+  {
+    "videoUrl": "/videos/reel-20260927054100-njpw-road-to-destruction-23-09.mp4",
+    "filename": "reel-20260927054100-njpw-road-to-destruction-23-09.mp4",
+    "title": "عرض ان جيه بي دبليو رود تو ديستروكشن 23.09.2026 مترجم",
+    "secondaryTitle": "NJPW Road To Destruction 23.09.2026",
+    "description": "عرض ان جيه بي دبليو رود تو ديستروكشن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260927054100-njpw-road-to-destruction-23-09",
+    "kind": "show",
+    "slug": "20260927054100-njpw-road-to-destruction-23-09",
+    "image": "/content/images/8p6zf1k220f8ggwa.jpg",
+    "renderedAt": 1791310564093
   }
 ]
