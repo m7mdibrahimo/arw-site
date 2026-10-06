@@ -472,7 +472,7 @@
             </button>
           </div>
 
-          {% if not isAnnual %}
+          {% if not isAnnual and not (nav.program.seasons.length == 1 and nav.program.seasons[0].type == "tour") %}
           <div class="season-tabs" id="seasonTabs-{{ nav.program.slug }}">
             {% for season in nav.program.seasons %}
             <button type="button" class="season-tab{% if season.number == nav.activeSeason %} active{% endif %}" data-season="{{ season.number }}">
