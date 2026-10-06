@@ -19,12 +19,15 @@ permalink: "{{ tagPage.permalink }}"
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
 <link rel="icon" type="image/png" href="/favicon.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-<title>مواضيع الوسم #{{ tagObj.name }}{% if tagPage.pageNumber > 1 %} - صفحة {{ tagPage.pageNumber }}{% endif %} | عرب راسلنج</title>
+{# A wrestler's name is what people search («درو ماكنتاير», 391 impressions at #11 — INCIDENTS #284): it leads the title, with a real description #}
+<title>{{ tagObj.name }}: آخر الأخبار والعروض والنتائج{% if tagPage.pageNumber > 1 %} - صفحة {{ tagPage.pageNumber }}{% endif %} | عرب راسلنج</title>
+<meta name="description" content="آخر أخبار {{ tagObj.name }} بالعربي أول بأول، مع العروض المترجمة والنتائج والملخصات المتعلقة بـ{{ tagObj.name }} على عرب راسلنج.">
+
 <link rel="canonical" href="https://arab-wrestling.com{{ tagPage.url }}">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arab-wrestling.com{{ tagPage.url }}">
-<meta property="og:title" content="مواضيع الوسم #{{ tagObj.name }} | عرب راسلنج">
+<meta property="og:title" content="{{ tagObj.name }}: آخر الأخبار والعروض والنتائج | عرب راسلنج">
 <meta property="og:description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
 <meta property="og:image" content="https://arab-wrestling.com/assets/logo.png">
 <meta property="og:image:secure_url" content="https://arab-wrestling.com/assets/logo.png">
@@ -288,7 +291,7 @@ permalink: "{{ tagPage.permalink }}"
 </header>
 
 <div class="page-head">
-  <h1>وسم: #{{ tagObj.name }}</h1>
+  <h1>{{ tagObj.name }}: آخر الأخبار والعروض</h1>
   <p>عروض وأخبار وملخصات المصارعة المتعلقة بـ #{{ tagObj.name }} ({{ tagObj.count }} نتائج)</p>
 </div>
 

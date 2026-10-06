@@ -3050,6 +3050,29 @@ test('an article keeps redirect pages at its older addresses (INCIDENTS #274)', 
   assert.match(findProblems({ deadPages: [{ url: 'https://arab-wrestling.com/news/x', impressions: 599 }] })[0], /رابطها واقع/);
 });
 
+test('source-folder addresses of shows, recaps and news redirect to their pages (INCIDENTS #284)', async () => {
+  const { contentFolderAddresses } = await import('../lib/redirects.cjs');
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'content-'));
+  const site = path.join(root, '_site');
+  for (const s of ['shows', 'recaps', 'news']) fs.mkdirSync(path.join(root, s));
+  fs.writeFileSync(path.join(root, 'shows', '2026-08-08-smackdown-07-08-2026.md'), '---\ntitle: "WWE SmackDown 07.08.2026"\n---\n');
+  fs.writeFileSync(path.join(root, 'recaps', '2026-08-05-full-raw-highlights-aug-3-2026.md'), '---\ntitle: "ملخص الرو"\n---\n');
+  fs.writeFileSync(path.join(root, 'news', '2026-08-06-خبر-قديم.md'), '---\ntitle: "خبر جديد"\n---\n');
+  fs.writeFileSync(path.join(root, 'news', 'لا-صفحة.md'), '---\ntitle: "لا صفحة له"\n---\n');
+  for (const p of ['shows/wwe-smackdown-07-08-2026', 'recaps/ملخص-الرو', 'news/خبر-جديد']) {
+    fs.mkdirSync(path.join(site, p), { recursive: true });
+    fs.writeFileSync(path.join(site, p, 'index.html'), '');
+  }
+  const pairs = contentFolderAddresses(root, site).map(([from]) => from).sort();
+  assert.deepEqual(pairs, ['/content/news/2026-08-06-خبر-قديم/', '/content/recaps/2026-08-05-full-raw-highlights-aug-3-2026/', '/content/shows/2026-08-08-smackdown-07-08-2026/']);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /contentFolderAddresses\(\)/);
+  // the searched words lead the home and tag pages
+  assert.match(fs.readFileSync('index.njk', 'utf-8'), /<title>عرب راسلنج \| مصارعة حرة/);
+  const tag = fs.readFileSync('pages/tag.njk', 'utf-8');
+  assert.match(tag, /<title>\{\{ tagObj\.name \}\}: آخر الأخبار/);
+  assert.match(tag, /<meta name="description" content="آخر أخبار \{\{ tagObj\.name \}\}/);
+});
+
 test('program pages are in the sitemap and show pages get search-worded titles (INCIDENTS #275)', () => {
   assert.match(fs.readFileSync('pages/sitemap.njk', 'utf-8'), /for prog in collections\.library/);
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
