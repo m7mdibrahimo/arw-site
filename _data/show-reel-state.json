@@ -3165,13 +3165,56 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو رود تو كينج اوف برو ريسلنج 06.10.2026 مترجم",
-    "lastAttempt": 1791383199808,
+    "lastAttempt": 1791384025317,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261007171145-tna-xplosion-02-10-2026": {
+    "publishedAt": 1791384055510,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه اكسبلوجن 02.10.2026 مترجم",
+    "lastAttempt": 1791384067696,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261007171657-wwe-nxt-06-10-2026": {
+    "publishedAt": 1791384098887,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان اكس تي 06.10.2026 مترجم",
+    "lastAttempt": 1791384110270,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261007172320-aew-dynamite-06-10-2026": {
+    "publishedAt": 1791384140816,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ديناميت 06.10.2026 مترجم",
+    "lastAttempt": 1791384151664,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
