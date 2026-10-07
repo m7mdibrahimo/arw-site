@@ -2998,6 +2998,14 @@ test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the na
   assert.match(buildNamesGlossaryHint('Sunil Singh gives update after collapsed lung'), /Sunil Singh = سونيل سينغ/);
 });
 
+test('MVP\'s WWE group is the Hurt Business, plus «ألمهحه» and «ووزن الثقيل» (INCIDENTS #336)', () => {
+  assert.equal(applyCorrections('جون لورينايتس ألمهحه حينها'), 'جون لورينايتس ألمح له حينها');
+  assert.equal(applyCorrections('بطولات العالمية ووزن الثقيل'), 'بطولات العالمية والوزن الثقيل');
+  assert.match(applyCorrections('وتشكيل فريق ذا هيرت سنديكيت مع بوبي لاشلي وشيلتون بنجامين وسيدريك ألكسندر'), /ذا هيرت بيزنس/);
+  assert.match(buildNamesGlossaryHint('MVP formed The Hurt Business with Cedric Alexander'), /The Hurt Business = ذا هيرت بيزنس/);
+  assert.match(buildNamesGlossaryHint('Knockout Brothers (OSKAR & Yuto-Ice) & Jeff Cobb'), /Knockout Brothers = نوكآوت براذرز/);
+});
+
 test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
