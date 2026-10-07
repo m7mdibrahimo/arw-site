@@ -3030,6 +3030,12 @@ test('MJF and Reigns stories: «آراءه», puroresu and Daikin Park is a stad
   assert.equal(applyCorrections('يوم 28 نوفمبر في صالة دايكن بارك بمدينة هيوستن'), 'يوم 28 نوفمبر في ملعب دايكن بارك بمدينة هيوستن');
 });
 
+test('Serrano and Bischoff stories: quote brackets in «Lethal Lockdown» and «الأربعينيات» (INCIDENTS #348)', () => {
+  assert.equal(applyCorrections('خوض نزال مثل (Lethal) Lockdown الشهير'), 'خوض نزال مثل Lethal Lockdown الشهير');
+  assert.equal(applyCorrections('توفي العديد من المصارعين في أوائل أربعينيات من أعمارهم'), 'توفي العديد من المصارعين في أوائل الأربعينيات من أعمارهم');
+  assert.equal(applyCorrections('وفاة مصارعين اثنين في سن الاربعين أمر غير طبيعي'), 'وفاة مصارعين اثنين في سن الأربعين أمر غير طبيعي');
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
