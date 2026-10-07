@@ -1394,6 +1394,7 @@ module.exports = function(eleventyConfig) {
     const nextEp = (idx >= 0 && idx < prog.episodes.length - 1) ? prog.episodes[idx + 1] : null;
 
     const MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    const WEEKDAYS = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
     // «عرض الرو 21.09.2026 مترجم» → «عرض الرو»: what a show is called once its date is taken out
     const kindOf = function(ep) {
       return String(ep.headline || "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}\s*/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
@@ -1407,6 +1408,9 @@ module.exports = function(eleventyConfig) {
       const kind = kindOf(ep);
       return Object.assign({}, ep, {
         dayLabel: ep.day && ep.month ? ep.day + " " + MONTHS[ep.month - 1] : "",
+        // the card's second line: the weekday and the year — the program's name is already the heading, and a long
+        // one («عرض ان جيه بي دبليو رود تو ديستركشن») only got cut off there
+        weekday: ep.day && ep.month && ep.year ? WEEKDAYS[new Date(Date.UTC(ep.year, ep.month - 1, ep.day)).getUTCDay()] : "",
         kindLabel: kind,
         named: !kind || (kindCount.get(kind) || 0) < 2 || !!ep.isNostalgia,
         // its English title, in full, as it was added («NJPW Destruction in Kobe (2026)») — owner, 2026-10-07
@@ -1414,9 +1418,13 @@ module.exports = function(eleventyConfig) {
         hasDateInName: /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/.test(String(ep.title || ep.headline || ""))
       });
     };
+    // Eight shows, newest first: the one being watched and the ones before it — and when it is among the first
+    // of its program, the newer ones fill the eight, so the cards always lead somewhere (owner, 2026-10-07)
     const here = idx >= 0 ? idx : prog.episodes.length - 1;
-    const recent = [];
-    for (let i = here; i >= 0 && recent.length < 8; i--) recent.push(card(prog.episodes[i]));
+    const newestFirst = prog.episodes.slice().reverse();
+    const at = prog.episodes.length - 1 - here;
+    const from = Math.max(0, Math.min(at, newestFirst.length - 8));
+    const recent = newestFirst.slice(from, from + 8).map(card);
 
     // the name the program's shows share («عرض الرو»), for the heading and the «كل عروض…» button — never a
     // single show's own name (the Kobe card named the whole program for a moment, INCIDENTS #332)
@@ -1427,7 +1435,6 @@ module.exports = function(eleventyConfig) {
       program: prog,
       programKind: programKind,
       recent: recent,
-      nextCard: nextEp ? card(nextEp) : null,
       libraryHref: "/library/" + prog.slug + "/",
       currentIndex: idx,
       activeSeason: activeSeason,

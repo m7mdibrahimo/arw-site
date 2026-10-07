@@ -3744,7 +3744,11 @@ test('a show page lists its program as cards (a show with its own name by that n
   const programs = [{ slug: 'wwe-raw', name: 'WWE RAW', episodes: eps, seasons: [{ number: 2026, type: 'year', episodes: eps }] }];
   const n = nav('WWE RAW', '/shows/raw-8/', programs);
   assert.deepEqual(n.recent.map((e: any) => e.url), ['/shows/raw-8/', '/shows/raw-7/', '/shows/raw-6/', '/shows/raw-5/', '/shows/raw-4/', '/shows/raw-3/', '/shows/raw-2/', '/shows/raw-1/']);
-  assert.equal(n.nextCard.url, '/shows/raw-9/');
+  // on the program's very first show, the newer ones fill the eight: no «next» card, always eight to move to
+  const first = nav('WWE RAW', '/shows/raw-0/', programs);
+  assert.deepEqual(first.recent.map((e: any) => e.url), ['/shows/raw-7/', '/shows/raw-6/', '/shows/raw-5/', '/shows/raw-4/', '/shows/raw-3/', '/shows/raw-2/', '/shows/raw-1/', '/shows/raw-0/']);
+  assert.equal(first.nextCard, undefined);
+  assert.equal(n.recent[0].weekday, 'الأربعاء'); // 9 September 2026, under the date instead of the program's name again
   assert.equal(n.recent[0].dayLabel, '9 سبتمبر');
   assert.equal(n.recent[0].kindLabel, 'عرض الرو');
   assert.equal(n.libraryHref, '/library/wwe-raw/');
@@ -3757,7 +3761,7 @@ test('a show page lists its program as cards (a show with its own name by that n
   ];
   const k = nav('NJPW', '/shows/kobe/', [{ slug: 'njpw', name: 'NJPW', episodes: tour, seasons: [{ number: 2026, type: 'year', episodes: tour }] }]);
   assert.deepEqual(k.recent.map((e: any) => e.named), [true, false, false]);
-  assert.equal(k.recent[0].fullName, 'NJPW Destruction in Kobe (2026)'); // its English title, in full
+  assert.equal(k.recent[0].fullName, 'NJPW Destruction in Kobe (2026)'); // its English title, in full (the owner went back to it)
   assert.equal(k.recent[0].hasDateInName, false);
   assert.equal(k.programKind, 'عرض ان جيه بي دبليو'); // the heading and the button name the program, not Kobe
   assert.equal(n.programKind, 'عرض الرو');

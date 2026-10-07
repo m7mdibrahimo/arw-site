@@ -446,27 +446,9 @@
 
           {% set showsWord = "حلقات" if isProgram else ("ملخصات" if isRecap else "عروض") %}
           {% set showWord = "حلقة" if isProgram else ("ملخص" if isRecap else "عرض") %}
-          {% if nav.nextCard %}
-          {% set nx = nav.nextCard %}
-          <a href="{{ nx.url | cleanUrl }}" class="sx-next" title="{{ nx.headline or nx.title }}">
-            <span class="sx-next-thumb">{% if nx.image %}<img src="{% optCard nx.image %}" alt="{{ nx.headline or nx.title }}" loading="lazy" decoding="async" width="168" height="94">{% endif %}</span>
-            <span class="sx-next-body">
-              <span class="sx-next-label">{{ "الحلقة التالية" if isProgram else ("الملخص التالي" if isRecap else "العرض التالي") }}</span>
-              {% if nx.named %}
-              <span class="sx-next-name"><bdi>{{ nx.fullName }}</bdi></span>
-              {% if not nx.hasDateInName and nx.dayLabel %}<span class="sx-next-sub">{{ nx.dayLabel }} {{ nx.year }}</span>{% endif %}
-              {% else %}
-              <span class="sx-next-date">{{ nx.dayLabel }} {{ nx.year }}</span>
-              {% if nx.kindLabel %}<span class="sx-next-sub">{{ nx.kindLabel }} مترجم</span>{% endif %}
-              {% endif %}
-            </span>
-            <span class="sx-next-go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
-          </a>
-          {% endif %}
-
           <div class="sx-list">
             {% for ep in nav.recent %}
-            {% set isNow = nav.currentIndex > -1 and loop.first %}
+            {% set isNow = nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %}
             <a href="{{ ep.url | cleanUrl }}" class="sx-card{% if isNow %} is-now{% endif %}{% if ep.named %} is-named{% endif %}" title="{{ ep.headline or ep.title }}"{% if isNow %} aria-current="page"{% endif %}>
               <span class="sx-thumb">
                 {% if ep.image %}<img src="{% optCard ep.image %}" alt="{{ ep.headline or ep.title }}" loading="lazy" decoding="async" width="320" height="180">{% else %}<span class="sx-thumb-empty">عرب راسلنج</span>{% endif %}
@@ -478,7 +460,7 @@
                 {% if not ep.hasDateInName and ep.dayLabel %}<span class="sx-meta">{{ ep.dayLabel }} {{ ep.year }}</span>{% endif %}
                 {% else %}
                 <span class="sx-date">{{ ep.dayLabel }}</span>
-                <span class="sx-meta">{% if ep.kindLabel %}{{ ep.kindLabel }} · {% endif %}{{ ep.year }}</span>
+                <span class="sx-meta">{% if ep.weekday %}{{ ep.weekday }} · {% endif %}{{ ep.year }}</span>
                 {% endif %}
               </span>
             </a>
