@@ -1107,11 +1107,8 @@
   .post-wrap.is-watch .post-ep-name{ order:5; background:none !important; border:0 !important; padding:0 6px !important; color:var(--muted) !important; font:700 13px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important; direction:ltr; }
   .post-wrap.is-watch .post-bookmark-wrap{ order:99; }
   .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ height:38px; padding:0 18px !important; font-size:13.5px !important; border-radius:999px !important; }
-  /* the title is on the cover already; the line under it stays for a phone held sideways, where the cover is hidden */
-  .post-wrap.is-watch > h2{ display:none; }
-  @media (orientation: landscape) and (max-height: 550px), (max-height: 500px){
-    .post-wrap.is-watch > h2{ display:block; }
-  }
+  /* the full Arabic title (with the show's date) under the card: a reading size, a gold mark on its side */
+  .post-wrap.is-watch > h2{ display:block; margin:2px 0 18px !important; padding-inline-start:14px; border-inline-start:4px solid var(--gold); font:800 clamp(19px,1.9vw,24px)/1.6 'Cairo',sans-serif !important; color:var(--ink); text-align:right !important; text-wrap:balance; }
   @media (max-width:768px){
     .hero h1.hero-title:not(.news-hero-title){ font-size:21px !important; line-height:1.5 !important; }
     .hero h1.hero-title:not(.news-hero-title) .u{ font-size:15px !important; margin-top:6px !important; }
@@ -1120,4 +1117,5 @@
     .post-wrap.is-watch .post-ep-name{ flex-basis:100%; justify-content:center; padding:2px 0 0 !important; font-size:12.5px !important; }
     .post-wrap.is-watch .post-bookmark-wrap{ margin:2px 0 0 !important; padding-top:12px; border-top:1px dashed var(--line); }
     .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ width:100%; height:40px; }
+    .post-wrap.is-watch > h2{ font-size:18px !important; line-height:1.65 !important; padding-inline-start:12px; margin:0 0 14px !important; }
   }
