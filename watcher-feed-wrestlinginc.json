@@ -1,5 +1,25 @@
 [
   {
+    "id": 1693320984,
+    "link": "https://www.wrestlinginc.com/2280006/indie-legend-necro-butcher-signs-wwe-legends-deal/",
+    "date": "Wed, 07 Oct 2026 15:05:23 +0000",
+    "date_gmt": "2026-10-07T15:05:23.000Z",
+    "title": {
+      "rendered": "Indie Legend Necro Butcher Signs WWE Legends Deal"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/indie-legend-necro-butcher-signs-wwe-legends-deal/l-intro-1791385304.jpg"
+  },
+  {
+    "id": 3804444600,
+    "link": "https://www.wrestlinginc.com/2279754/aew-wwe-chris-jericho-hall-fame-possible-induction/",
+    "date": "Wed, 07 Oct 2026 15:00:00 +0000",
+    "date_gmt": "2026-10-07T15:00:00.000Z",
+    "title": {
+      "rendered": "AEW's Chris Jericho Comments On Possible WWE Hall Of Fame Induction"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-chris-jericho-comments-on-possible-wwe-hall-of-fame-induction/l-intro-1791372896.jpg"
+  },
+  {
     "id": 1239958937,
     "link": "https://www.wrestlinginc.com/2279745/wwe-kevin-nash-roman-reigns-seth-rollins-lose-interest-wrestling/",
     "date": "Wed, 07 Oct 2026 14:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Tony Khan Comments On Bringing Will Ospreay's Clockwork Carnage Match Into AEW"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-comments-on-bringing-will-ospreays-clockwork-carnage-match-into-aew/l-intro-1791330272.jpg"
-  },
-  {
-    "id": 1144457876,
-    "link": "https://www.wrestlinginc.com/2279566/aew-tony-khan-my-first-day-working-skydance/",
-    "date": "Tue, 06 Oct 2026 23:24:33 +0000",
-    "date_gmt": "2026-10-06T23:24:33.000Z",
-    "title": {
-      "rendered": "AEW's Tony Khan Comments On 'My First Day Working For Skydance'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-tony-khan-comments-on-my-first-day-working-for-skydance/l-intro-1791328952.jpg"
-  },
-  {
-    "id": 3823932837,
-    "link": "https://www.wrestlinginc.com/2279549/wwe-raw-appearance-roman-reigns-october-19-world-heavyweight-champion/",
-    "date": "Tue, 06 Oct 2026 22:55:29 +0000",
-    "date_gmt": "2026-10-06T22:55:29.000Z",
-    "title": {
-      "rendered": "WWE Announces Next Raw Appearance For World Heavyweight Champion Roman Reigns"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-announces-next-raw-appearance-for-world-heavyweight-champion-roman-reigns/l-intro-1791327261.jpg"
   }
 ]
