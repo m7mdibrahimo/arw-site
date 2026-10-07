@@ -1,52 +1,52 @@
 {
- "checkedAt": "2026-10-07T14:49:43.754Z",
+ "checkedAt": "2026-10-07T15:24:22.039Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-07T14:49:43.754Z"
+   "checked": "2026-10-07T15:24:22.039Z"
   },
   "https://hgcloud.to/e/itjdwfs9z9xd": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-07T14:49:43.754Z",
-   "lastOk": "2026-10-07T14:49:43.754Z"
+   "checked": "2026-10-07T15:24:22.039Z",
+   "lastOk": "2026-10-07T15:24:22.039Z"
   },
   "https://vidmoly.org/embed-w0urkiswo86e.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-07T14:49:43.754Z",
-   "lastOk": "2026-10-07T14:49:43.754Z"
+   "checked": "2026-10-07T15:24:22.039Z",
+   "lastOk": "2026-10-07T15:24:22.039Z"
   },
   "https://vidtube.one/embed-dttpachdr7z2.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
-   "strikes": 2,
-   "checked": "2026-10-07T14:49:43.754Z",
-   "since": "2026-10-06T16:19:55.367Z"
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-07T15:24:22.039Z",
+   "lastOk": "2026-10-07T15:24:22.039Z"
   },
   "https://fembed.co/embed/p9wXve-qiR_Nr": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-07T14:49:43.754Z",
-   "lastOk": "2026-10-07T14:49:43.754Z"
+   "checked": "2026-10-07T15:24:22.039Z",
+   "lastOk": "2026-10-07T15:24:22.039Z"
   },
   "https://uqload.vc/embed-qag43zdn5ykm.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-07T14:49:43.754Z",
-   "lastOk": "2026-10-07T14:49:43.754Z"
+   "checked": "2026-10-07T15:24:22.039Z",
+   "lastOk": "2026-10-07T15:24:22.039Z"
   },
   "https://vidtube.one/embed-5dqlswnl89it.html": {
    "page": "https://arab-wrestling.com/shows/roh-special-05-10-2026/",
@@ -2191,7 +2191,5 @@
    "lastOk": "2026-10-07T14:49:43.754Z"
   }
  },
- "broken": [
-  "https://vidtube.one/embed-dttpachdr7z2.html"
- ]
+ "broken": []
 }

@@ -119,6 +119,9 @@ const RULES: Rule[] = [
   // Gemini output, not a few typos — the counted check below blocks it (INCIDENTS #64).
   // An all-caps English film/book title half-transliterated — «بعنوان I FOUGHT جون موكسلي» for «I FOUGHT JON MOXLEY» (INCIDENTS #339)
   { code: "mixed_caps_title", severity: "error", re: /(?<![A-Za-z])[A-Z]{2,}(?:\s+[A-Z]{2,})*\s+(?=[ء-ي]+\s+[ء-ي]+)(?<=(?:بعنوان|اسم|عنوان)\s+[A-Z\s]+)/g, message: "عنوان إنجليزي كله كابيتال واسم عربي ملزوق فيه (حصل: «بعنوان I FOUGHT جون موكسلي») — اكتب العنوان كامل زي المصدر بين «»", fields: ["title", "body"] },
+  // One speaker, two genders in the same sentence — «مشيرا إلى … موضحة أنه» about Kevin Owens (INCIDENTS #345)
+  // Only a «حال» followed by أن/إلى/على…: «معلومات مؤكدة حول» is an adjective, not the speaker.
+  { code: "mixed_haal_gender", severity: "error", re: /(?<![ء-ي])(?:مشيرا|مؤكدا|موضحا|مضيفا|معربا|لافتا|منتقدا|معتبرا)(?=\s+(?:أن|إن|إلى|على|عن|بأن|لأن)[ء-ي]{0,3}(?![ء-ي]))[^.؟!\n]{0,200}?(?<![ء-ي])(?:مشيرة|مؤكدة|موضحة|مضيفة|معربة|لافتة|منتقدة|معتبرة)(?=\s+(?:أن|إن|إلى|على|عن|بأن|لأن)[ء-ي]{0,3}(?![ء-ي]))|(?<![ء-ي])(?:مشيرة|مؤكدة|موضحة|مضيفة|معربة|لافتة|منتقدة|معتبرة)(?=\s+(?:أن|إن|إلى|على|عن|بأن|لأن)[ء-ي]{0,3}(?![ء-ي]))[^.؟!\n]{0,200}?(?<![ء-ي])(?:مشيرا|مؤكدا|موضحا|مضيفا|معربا|لافتا|منتقدا|معتبرا)(?=\s+(?:أن|إن|إلى|على|عن|بأن|لأن)[ء-ي]{0,3}(?![ء-ي]))/g, message: "حال مذكر ومؤنث لنفس المتكلم في جملة واحدة (حصل: «مشيرا إلى… موضحة أنه» عن كيفن أوينز) — وحّد التذكير أو التأنيث حسب المتكلم", fields: ["body"] },
   { code: "double_punct", severity: "warning", re: /[،,]\s*[،,.]|:\s*:|؟\s*؟/g, message: "علامات ترقيم مكررة", fields: ["title", "body"] },
 ];
 

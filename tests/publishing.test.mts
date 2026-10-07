@@ -3844,3 +3844,10 @@ test('a show page lists its program as cards (a show with its own name by that n
   // small 480px pictures on the cards, not the 800px ones
   assert.ok(!/optImg (nx\.image|ep\.image|rThumb)/.test(tpl) && /optCard ep\.image/.test(tpl) && /optCard rThumb/.test(tpl));
 });
+
+test('Kevin Owens on PAC: one speaker, two genders — «مشيرا … موضحة أنه» (INCIDENTS #345)', () => {
+  assert.ok(checkArticle('كيفن أوينز يؤكد أن باك هو أفضل مصارع عمل معه', 'استرجع أوينز ذكرياته، مشيرا إلى أن نزالهما كشف له قدرات فريدة، موضحة أنه كان يتقن الأداء الهوائي.', []).some(i => i.code === 'mixed_haal_gender'));
+  assert.ok(!checkArticle('كيفن أوينز يؤكد أن باك هو أفضل مصارع عمل معه', 'قال ناش ذلك، موضحا أنه لا يملك معلومات مؤكدة حول الأمر.', []).some(i => i.code === 'mixed_haal_gender'));
+  assert.equal(applyCorrections('ووصفها بأنها قطعة تنظيمية مميزة.'), 'ووصفها بأنها نموذج مميز في كتابة القصص.');
+  assert.equal(applyCorrections('مدى إعجاب حب زملائه له'), 'مدى حب زملائه له وإعجابهم به');
+});
