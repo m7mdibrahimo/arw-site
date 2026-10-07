@@ -1,5 +1,15 @@
 [
   {
+    "id": 4492247299,
+    "link": "https://www.wrestlinginc.com/2279673/john-cena-wwe-retirement-miss-performing-every-day/",
+    "date": "Wed, 07 Oct 2026 13:00:00 +0000",
+    "date_gmt": "2026-10-07T13:00:00.000Z",
+    "title": {
+      "rendered": "John Cena On WWE Retirement: 'I Miss Performing Every Single Day'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-on-wwe-retirement-i-miss-performing-every-single-day/l-intro-1791354709.jpg"
+  },
+  {
     "id": 4697301174,
     "link": "https://www.wrestlinginc.com/2279784/aew-njpw-mjf-ryohei-oiwa-challenges-actual-world-title/",
     "date": "Wed, 07 Oct 2026 12:38:53 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE HOFer On Gable Steveson: 'I Just Don't Think Our Business Was Made For Him'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-on-gable-steveson-i-just-dont-think-our-business-was-made-for-him/l-intro-1791322236.jpg"
-  },
-  {
-    "id": 3965542181,
-    "link": "https://www.wrestlinginc.com/2279500/aew-dynamite-grand-slam-paris-october-26-2026-results/",
-    "date": "Tue, 06 Oct 2026 21:28:21 +0000",
-    "date_gmt": "2026-10-06T21:28:21.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Grand Slam Paris 10/6/26 Results W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-grand-slam-paris-october-26-2026-results/l-intro-1791340133.jpg"
   }
 ]
