@@ -1,9 +1,9 @@
 ---
 federation: INDIE
 title: CMLL Sabados De Coliseo 22.08.2026
-headline: عرض سي ام ال ال 22.08.2026 مترجم
-program_name: CMLL
-description: عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.
+headline: عرض سي ام ال ال سابادوس دي كوليسيو 22.08.2026 مترجم
+program_name: CMLL Sabados De Coliseo
+description: عرض سي ام ال ال سابادوس دي كوليسيو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-22
 date: 2026-08-26T14:21:00.000+03:00
 layout: post-layout.njk
