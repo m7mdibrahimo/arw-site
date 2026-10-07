@@ -21,13 +21,16 @@
 @font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 200 800; font-display: swap; src: url(/assets/fonts/plus-jakarta-sans-latin-ext-wght-normal.woff2) format('woff2-variations');
   unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 
-html[lang="en"] { --en-text: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; --en-head: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
+/* an Arabic letter (a news headline) has no glyph in the English faces and falls to the Arabic site's own: Tajawal for
+   text, Cairo for headings, exactly as on the Arabic pages (owner, 2026-10-07) */
+html[lang="en"] { --en-text: 'Inter', 'Tajawal', 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; --en-head: 'Plus Jakarta Sans', 'Inter', 'Cairo', system-ui, sans-serif; }
 html[lang="en"] body { font-family: var(--en-text); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
 html[lang="en"] body :is(input, button, select, textarea) { font-family: var(--en-text); }
 /* headings, the brand and the big titles in the heading face */
 html[lang="en"] body :is(h1, h2, h3, .brand-name, .hero-title, .page-head h1, .page-head h2, .section-title, .sec-title) { font-family: var(--en-head) !important; letter-spacing: -0.01em; }
-/* an Arabic news headline inside the English site keeps the Arabic face and reads right to left */
-html[lang="en"] [lang="ar"] { font-family: 'Cairo', sans-serif; direction: rtl; unicode-bidi: isolate; }
+/* an Arabic news headline inside the English site reads right to left; its face is the Arabic site's own (the page's
+   rules, or the Arabic fallback in the stacks above) */
+html[lang="en"] [lang="ar"] { direction: rtl; unicode-bidi: isolate; }
 
 /* the language button */
 .lang-switch { display: inline-flex; align-items: center; justify-content: center; }
