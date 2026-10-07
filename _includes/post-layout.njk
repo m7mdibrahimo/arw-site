@@ -266,6 +266,8 @@
       {% if duration %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ duration }}</span>{% endif %}
       {% if isNews and date %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><time datetime="{{ (date | dateObj).toISOString() }}">{{ date | date }}</time></span>{% endif %}
       {% if isNews %}{% set readMin = content | readingMinutes %}<span class="post-meta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-inline-end:5px; flex-shrink:0;"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z"/><path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>{% if readMin <= 1 %}دقيقة قراءة{% elif readMin == 2 %}دقيقتان قراءة{% else %}{{ readMin }} دقائق قراءة{% endif %}</span>{% endif %}
+      {#- show / recap / nostalgia pages: the full Arabic title sits in this card with its badges (owner, 2026-10-07) -#}
+      {% if not isNews %}<h2 class="pm-title">{{ headline or title }}</h2>{% endif %}
       <div class="post-bookmark-wrap">
         <button type="button" class="post-bookmark-btn" id="arwPostBookmarkBtn" data-url="{{ page.url }}" data-title="{% if isNews %}{{ title | escape }}{% else %}{{ (headline or title) | escape }}{% endif %}" data-image="{% optImg image, '' %}" data-kind="{{ kind }}" data-kindlabel="{% if kind == 'show' %}عرض{% elif kind == 'recap' %}ملخص{% else %}خبر{% endif %}" data-fed="{{ federation or '' }}">
           <svg class="bm-icon-empty" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
@@ -274,9 +276,6 @@
         </button>
       </div>
     </div>
-    {% if not isNews %}
-    <h2>{{ headline or title }}</h2>
-    {% endif %}
 
     {% if image and isNews %}
     <img class="post-cover reveal" src="{% optImg image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{{ title }}">
