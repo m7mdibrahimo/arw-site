@@ -404,7 +404,7 @@ eleventyComputed:
 </div>
 
 <div class="page-head reveal">
-  <nav class="lib-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span><span><bdi>{{ lp.prog.name }}</bdi></span></nav>
+  <nav class="lib-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span>{% if lp.prog.promo %}<a href="/library/federation/{{ lp.prog.promo.key }}/"><bdi>{{ lp.prog.promo.mark }}</bdi></a><span>‹</span>{% endif %}<span><bdi>{{ lp.prog.name }}</bdi></span></nav>
   <h2 style="color:var(--gold);">{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير مترجم{% else %}عروض <bdi>{{ lp.prog.name }}</bdi>{% endif %}</h2>
 </div>
 <section class="content"><div class="wrap"><div class="grid-12">

@@ -109,6 +109,14 @@ eleventyExcludeFromCollections: true
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+  {% for v in collections.libraryViews %}{% if v.promo %}
+  <url>
+    <loc>https://arab-wrestling.com{{ v.href }}</loc>
+    <lastmod>{{ v.promo.latest.timestamp | isoDay }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% endif %}{% endfor %}
   {% for prog in collections.library %}
   <url>
     <loc>https://arab-wrestling.com/library/{{ prog.slug }}/</loc>

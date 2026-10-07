@@ -1238,6 +1238,42 @@ module.exports = function(eleventyConfig) {
   // «مكتبة العروض»: every section the shows are linked to (the dashboard's «اسم البرنامج»),
   // the most recently created section first, each with its shows newest first. Nostalgia series have their
   // own section and are left out; scheduled (future) shows are not listed yet.
+  // «مكتبة العروض» by federation (owner's request 2026-10-07): the library page lists the federations, and each
+  // federation has its own page (/library/federation/<key>/) with its sections. A section joins a federation by
+  // its name («CMLL Lunes Clasico» → CMLL), else by the federation set on its shows; listed in this order.
+  const LIBRARY_PROMOTIONS = [
+    { key: "wwe", mark: "WWE", name: "World Wrestling Entertainment", h: 6, s: 64, fed: "WWE" },
+    { key: "aew", mark: "AEW", name: "All Elite Wrestling", h: 42, s: 80, fed: "AEW" },
+    { key: "njpw", mark: "NJPW", name: "New Japan Pro-Wrestling", h: 215, s: 16, fed: "NJPW" },
+    { key: "tna", mark: "TNA", name: "Total Nonstop Action Wrestling", h: 262, s: 56, fed: "TNA" },
+    { key: "roh", mark: "ROH", name: "Ring of Honor", h: 218, s: 56, fed: "ROH" },
+    { key: "cmll", mark: "CMLL", name: "Consejo Mundial de Lucha Libre", h: 205, s: 78, re: /^CMLL\b/i },
+    { key: "aaa", mark: "AAA", name: "Lucha Libre AAA Worldwide", h: 350, s: 68, re: /^(AAA\b|Lucha Libre AAA)/i },
+    { key: "ufc", mark: "UFC", name: "Ultimate Fighting Championship", h: 24, s: 70, re: /^UFC\b/i },
+    { key: "mlw", mark: "MLW", name: "Major League Wrestling", h: 190, s: 62, re: /^MLW\b/i },
+    { key: "nwa", mark: "NWA", name: "National Wrestling Alliance", h: 30, s: 22, re: /^NWA\b/i },
+    { key: "gcw", mark: "GCW", name: "Game Changer Wrestling", h: 330, s: 58, re: /^GCW\b/i },
+    { key: "mlp", mark: "MLP", name: "Maple Leaf Pro Wrestling", h: 0, s: 66, re: /^MLP\b/i },
+    { key: "ajpw", mark: "AJPW", name: "All Japan Pro Wrestling", h: 228, s: 50, re: /^AJPW\b/i },
+    { key: "noah", mark: "NOAH", name: "Pro Wrestling NOAH", h: 150, s: 55, re: /^(Pro Wrestling )?NOAH\b/i },
+    { key: "stardom", mark: "STARDOM", name: "World Wonder Ring Stardom", h: 300, s: 50, re: /^Stardom\b/i },
+    { key: "marigold", mark: "Marigold", name: "Dream Star Fighting Marigold", h: 38, s: 85, re: /^Marigold\b/i },
+    { key: "tjpw", mark: "TJPW", name: "Tokyo Joshi Pro-Wrestling", h: 320, s: 65, re: /^TJPW\b/i },
+    { key: "revpro", mark: "RevPro", name: "Revolution Pro Wrestling", h: 355, s: 45, re: /^(RevPro|Rev Pro)\b/i },
+    { key: "progress", mark: "PROGRESS", name: "PROGRESS Wrestling", h: 170, s: 45, re: /^PROGRESS\b/i },
+    { key: "hog", mark: "HOG", name: "House of Glory", h: 275, s: 40, re: /^HOG\b/i },
+    { key: "wow", mark: "WOW", name: "Women of Wrestling", h: 285, s: 60, re: /^WOW\b/i },
+    { key: "row", mark: "ROW", name: "Reality of Wrestling", h: 120, s: 35, re: /^Reality of Wrestling\b/i },
+    { key: "documentaries", mark: "وثائقيات", name: "أفلام وسلاسل وثائقية عن المصارعة والقتال", h: 200, s: 18, re: /^Dark Side\b/i },
+    { key: "mma", mark: "MMA", name: "رياضات القتال المختلطة", h: 24, s: 66, fed: "MMA" },
+    { key: "indie", mark: "INDIE", name: "الاتحادات المستقلة", h: 166, s: 56, fed: "INDIE" },
+  ];
+  const libraryPromotionOf = function(prog) {
+    const name = String(prog.name || "");
+    return LIBRARY_PROMOTIONS.find(function(x) { return x.re && x.re.test(name); })
+      || LIBRARY_PROMOTIONS.find(function(x) { return x.fed && x.fed === prog.federation; })
+      || LIBRARY_PROMOTIONS.find(function(x) { return x.key === "indie"; });
+  };
   const buildLibrary = function(collectionApi) {
     const now = Date.now();
     return buildProgramsGrouped(collectionApi, ["content/shows/*.md"])
@@ -1302,7 +1338,8 @@ module.exports = function(eleventyConfig) {
           "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
         };
-        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+          promo: (function(x) { return { key: x.key, mark: x.mark }; })(libraryPromotionOf({ name: p.name, federation: federation })) };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
@@ -1340,6 +1377,28 @@ module.exports = function(eleventyConfig) {
       const ia = order.indexOf(a), ib = order.indexOf(b);
       return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || a.localeCompare(b);
     });
+  });
+  // The library's pages: /library/ (the federations) and /library/federation/<key>/ (one federation's sections)
+  eleventyConfig.addCollection("libraryViews", function(collectionApi) {
+    const lib = buildLibrary(collectionApi);
+    const promos = LIBRARY_PROMOTIONS.map(function(x) {
+      const programs = lib.filter(function(p) { return p.promo.key === x.key; });
+      if (!programs.length) return null;
+      const byLatest = programs.slice().sort(function(a, b) { return b.latest.timestamp - a.latest.timestamp; });
+      return {
+        key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s,
+        href: "/library/federation/" + x.key + "/",
+        programs: programs,
+        count: programs.length,
+        showCount: programs.reduce(function(n, p) { return n + p.count; }, 0),
+        latest: byLatest[0].latest,
+        // the latest poster of its three most recently updated sections, for the card's mosaic
+        images: byLatest.slice(0, 3).map(function(p) { return p.latest.image; }).filter(Boolean),
+        search: [x.mark, x.name].concat(programs.map(function(p) { return p.name + " " + (p.arName || ""); })).join(" ").toLowerCase()
+      };
+    }).filter(Boolean);
+    return [{ href: "/library/", promo: null, promos: promos, lib: lib }]
+      .concat(promos.map(function(x) { return { href: x.href, promo: x, promos: promos, lib: lib }; }));
   });
   eleventyConfig.addCollection("recapsProgramsGrouped", function(collectionApi) {
     return buildProgramsGrouped(collectionApi, "content/recaps/*.md");
