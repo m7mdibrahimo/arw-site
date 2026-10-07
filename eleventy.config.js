@@ -291,7 +291,10 @@ module.exports = function(eleventyConfig) {
       return file;
     } catch (e) { return null; }
   };
+  // how long each part of a build takes, in /build.json: the panel's «ظهر على الموقع» clock (INCIDENTS #315)
+  const BUILD_T = {};
   eleventyConfig.on("eleventy.before", async () => {
+    BUILD_T.before = Date.now();
     try { console.log(`[img-cache] restored ${process.env.CF_PAGES ? await fetchLiveImages() : syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
     try {
@@ -299,6 +302,7 @@ module.exports = function(eleventyConfig) {
       if (live && typeof live === "object") Object.assign(IMG_MAP, live);
       console.log(`[img-map] ${Object.keys(IMG_MAP).length} resized pictures known`);
     } catch (e) { console.log(`[img-map] skipped: ${e.message}`); }
+    BUILD_T.restored = Date.now();
   });
   // /build.json: which commits this deployment contains, so the panel can say «ظهر على الموقع ✓»
   // the moment a save is really live instead of guessing a delay.
@@ -312,7 +316,11 @@ module.exports = function(eleventyConfig) {
       const commitTime = siteOf ? Number(siteOf[2]) : Number(git("git log -1 --format=%ct")) || 0;
       const recent = [...new Set([commit, ...git("git log -60 --format=%H").split("\n").filter(Boolean)])];
       fs.mkdirSync("_site", { recursive: true });
-      fs.writeFileSync("_site/build.json", JSON.stringify({ commit, commitTime, recent, builtAt: new Date().toISOString() }));
+      // seconds: «site» commit → node started (Cloudflare's queue, clone, npm install), picture restore, the build itself
+      const now = Date.now(), nodeStart = now - process.uptime() * 1000, siteTime = Number(git("git log -1 --format=%ct")) * 1000;
+      const sec = (a, b) => (a && b ? Math.round((b - a) / 1000) : null);
+      const timing = { queueAndInstall: sec(siteTime, nodeStart), restore: sec(BUILD_T.before, BUILD_T.restored), eleventy: sec(BUILD_T.restored, now), node: sec(nodeStart, now) };
+      fs.writeFileSync("_site/build.json", JSON.stringify({ commit, commitTime, recent, builtAt: new Date().toISOString(), timing }));
     } catch (e) { console.log(`[build.json] skipped: ${e.message}`); }
   });
   eleventyConfig.on("eleventy.after", () => {

@@ -3577,6 +3577,8 @@ test('the site builds from a «site» branch without the original pictures and r
   assert.match(cfg, /fs\.writeFileSync\("_site\/img-map\.json"/);
   // build.json names the main commit a «site» build was made from, so the panel's «ظهر على الموقع» still works
   assert.match(cfg, /match\(\/\^site-of: \(\[0-9a-f\]\{40\}\) \(\\d\+\)\$\/m\)/);
+  // and how long each part of the build took, to find what still slows a save down (INCIDENTS #315)
+  assert.match(cfg, /timing = \{ queueAndInstall: .*, restore: .*, eleventy: .*, node: .* \}/);
   // «site» follows main after the bots too: their pushes (GITHUB_TOKEN) start no push-triggered workflow
   const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
   for (const name of ['Fightful News Auto Watcher', 'Ringside News Auto Watcher', 'Wrestling Inc Auto Watcher']) assert.ok(wf.includes(`- ${name}`), name);
