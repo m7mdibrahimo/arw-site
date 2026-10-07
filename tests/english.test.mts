@@ -110,7 +110,7 @@ test('English news: the list, the story, the cards and the language buttons', ()
   const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-news-'));
   const put = (u: string, html: string) => { fs.mkdirSync(path.join(site, u), { recursive: true }); fs.writeFileSync(path.join(site, u, 'index.html'), html); };
   put('', page('عرب راسلنج', `<div class="grid-12">${card('/news/خبر-أ/', 'خبر أ')}${card('/news/خبر-ب/', 'خبر ب', 'AEW')}</div>`));
-  put('news', page('الأخبار', `<div class="grid-12">${card('/news/خبر-أ/', 'خبر أ')}${card('/news/خبر-ب/', 'خبر ب', 'AEW')}</div>${pager}`));
+  put('news', page('الأخبار', `<script type="application/ld+json">{"@type":"CollectionPage","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://arab-wrestling.com/news/خبر-ج/"}]}}</script><div class="grid-12">${card('/news/خبر-أ/', 'خبر أ')}${card('/news/خبر-ب/', 'خبر ب', 'AEW')}</div>${pager}`));
   put('news/2', page('الأخبار', `<div class="grid-12">${card('/news/خبر-ج/', 'خبر ج')}</div>${pager}`));
   put('news/خبر-أ', page('خبر أ', '<p>خبر</p>'));
   put('news/خبر-ب', page('خبر ب', '<p>خبر</p>'));
@@ -130,6 +130,7 @@ test('English news: the list, the story, the cards and the language buttons', ()
   assert.match(list, /<html lang="en" dir="ltr">/);
   assert.match(list, /href="\/en\/news\/cody-logo\/"[\s\S]*Cody Rhodes Changing His Logo[\s\S]*href="\/en\/news\/aew-story\/"/);
   assert.match(list, /<span class="cat cat-aew">AEW<\/span>/);
+  assert.match(list, /"itemListElement":\[\{"@type":"ListItem","position":1,"url":"https:\/\/arab-wrestling\.com\/en\/news\/cody-logo\/"\},\{[^\]]*aew-story\/"\}\]/);
   assert.match(list, /<img class="thumb-img" src="\/a\.jpg" alt="Cody Rhodes Changing His Logo">/);
   assert.doesNotMatch(list, /pagination-nav/);
   const noButton = (h: string) => h.replace(/<meta name="description"[^>]*>/, '').replace(/<a[^>]*lang-switch[\s\S]*?<\/a>/, '');
