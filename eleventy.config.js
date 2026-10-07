@@ -1624,80 +1624,20 @@ module.exports = function(eleventyConfig) {
     return series;
   });
 
-  // «جديد» on the home page (owner's request 2026-10-07): everything except news published in the last
-  // 12 hours — full shows, recaps and nostalgia. The site is static, so the build keeps what is fresh at
-  // build time and the script under the section on index.njk drops each card in the browser once its 12 hours are up.
+  // «جديد» on the home page cards (owner's request 2026-10-07): a show, recap or nostalgia series published in
+  // the last 12 hours, never news. Returns the publish time while inside the window, else 0; the site is static,
+  // so the script at the bottom of index.njk removes the badge in the browser once its 12 hours are up.
   const FRESH_WINDOW_MS = 12 * 60 * 60 * 1000;
-  eleventyConfig.addCollection("freshContent", function(collectionApi) {
-    const since = Date.now() - FRESH_WINDOW_MS;
-    const isNostalgiaItem = (item) => {
-      const tags = [].concat((item.data && item.data.tags) || []);
-      return !!(item.data && item.data.nostalgia_series) || tags.includes("nostalgia") || tags.includes("نوستالجيا");
-    };
-    const fresh = [];
-    const pick = (glob, kind, kindLabel) => {
-      collectionApi.getFilteredByGlob(glob).filter(isNotFuture).forEach((item) => {
-        const ts = getItemTimestamp(item);
-        if (!ts || ts < since || isNostalgiaItem(item)) return;
-        const d = item.data || {};
-        fresh.push({
-          ts: ts,
-          kind: kind,
-          kindLabel: kind === "show" && d.show_type ? d.show_type : kindLabel,
-          url: item.url,
-          title: d.headline || d.title || "",
-          image: d.image || "",
-          federation: d.federation || "",
-          duration: d.duration || ""
-        });
-      });
-    };
-    pick("content/shows/*.md", "show", "عرض");
-    pick("content/recaps/*.md", "recap", "ملخص");
-
-    // Nostalgia episodes arrive a whole series at a time, so the series is one «جديد» card, dated by its
-    // latest episode (files are named «YYYYMMDDHHMMSS-…» in UTC) or by the series' own added_at.
-    const seriesDefs = new Map(collectionApi.getFilteredByGlob("content/nostalgia-series/*.md")
-      .map((s) => [String(s.fileSlug || "").trim(), s]));
-    const nostalgiaBySeries = new Map();
-    collectionApi.getFilteredByGlob(["content/nostalgia/*.md", "content/shows/*.md", "content/recaps/*.md"])
-      .filter((item) => item.data && item.data.nostalgia_series && isNotFuture(item))
-      .forEach((item) => {
-        const ref = String(item.data.nostalgia_series).trim();
-        const m = (String(item.inputPath || "").split("/").pop() || "").match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/);
-        const ts = m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : getItemTimestamp(item);
-        const prev = nostalgiaBySeries.get(ref);
-        if (!prev || ts > prev.ts) nostalgiaBySeries.set(ref, { ts: ts, item: item });
-      });
-    seriesDefs.forEach((s, slug) => {
-      const addedAt = s.data.added_at ? new Date(s.data.added_at).getTime() || 0 : 0;
-      if (!nostalgiaBySeries.has(slug) && addedAt) nostalgiaBySeries.set(slug, { ts: addedAt, item: null });
-      else if (nostalgiaBySeries.has(slug) && addedAt > nostalgiaBySeries.get(slug).ts) nostalgiaBySeries.get(slug).ts = addedAt;
-    });
-    nostalgiaBySeries.forEach((entry, ref) => {
-      if (!entry.ts || entry.ts < since || entry.ts > Date.now() + 120000) return;
-      const def = seriesDefs.get(ref) || Array.from(seriesDefs.values()).find((s) => s.data.title === ref);
-      if (!def) return;
-      const d = def.data || {};
-      const ep = entry.item ? entry.item.data : {};
-      fresh.push({
-        ts: entry.ts,
-        kind: "nostalgia",
-        kindLabel: "نوستالجيا" + (d.year ? " · " + d.year : ""),
-        url: "/nostalgia/" + String(def.fileSlug).trim() + "/",
-        title: d.title || ref,
-        image: d.image || ep.image || "",
-        federation: d.federation || ep.federation || "",
-        duration: ""
-      });
-    });
-
-    return fresh.sort((a, b) => b.ts - a.ts);
-  });
-  // The publish time of a show/recap card still inside the «جديد» window, else 0 (the «جديد» tag on the home grids)
   eleventyConfig.addFilter("freshTs", function(item) {
-    const ts = getItemTimestamp(item);
-    return ts && ts >= Date.now() - FRESH_WINDOW_MS ? ts : 0;
+    let ts = 0;
+    if (item && item.episodes) {
+      // a nostalgia series: its newest episode (addedAt is the «YYYYMMDDHHMMSS» UTC stamp of its file name) or its own added_at
+      const m = String(item.addedAt || "").match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})$/);
+      ts = Math.max(m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : 0, item.createdAt || 0);
+    } else {
+      ts = getItemTimestamp(item);
+    }
+    return ts && ts >= Date.now() - FRESH_WINDOW_MS && ts <= Date.now() + 120000 ? ts : 0;
   });
 
   eleventyConfig.addCollection("tagList", function(collectionApi) {
