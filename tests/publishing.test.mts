@@ -3555,6 +3555,13 @@ test('the site builds from a «site» branch without the original pictures and r
   assert.match(cfg, /match\(\/\^site-of: \(\[0-9a-f\]\{40\}\) \(\\d\+\)\$\/m\)/);
   // and how long each part of the build took, to find what still slows a save down (INCIDENTS #315)
   assert.match(cfg, /timing = \{ queueAndInstall: .*, restore: .*, eleventy: .*, node: .* \}/);
+  // the build doesn't merge the bots' bookkeeping into every page, and compiles each Nunjucks template once
+  assert.match(cfg, /BOOKKEEPING = \/\(\^\|\\\/\)_data\\\/\(deliveries\\\/\|publish-state/);
+  assert.match(cfg, /addDataExtension\("json", \{ parser: \(text, file\) => \(BOOKKEEPING\.test/);
+  assert.match(cfg, /eleventyConfig\.on\("eleventy\.engine\.njk"/);
+  // …and no page reads that bookkeeping: if one ever needs it, it must come out of BOOKKEEPING first
+  const tpl = ['pages', '_includes'].flatMap(d => fs.readdirSync(d).map(f => fs.readFileSync(`${d}/${f}`, 'utf-8'))).join('\n') + fs.readFileSync('index.njk', 'utf-8');
+  assert.ok(!/\bdeliveries\b|publish-state|duplicate-skips|show-reel-state/.test(tpl));
   // «site» follows main after the bots too: their pushes (GITHUB_TOKEN) start no push-triggered workflow
   const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
   for (const name of ['Fightful News Auto Watcher', 'Ringside News Auto Watcher', 'Wrestling Inc Auto Watcher']) assert.ok(wf.includes(`- ${name}`), name);

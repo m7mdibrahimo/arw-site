@@ -333,6 +333,35 @@ module.exports = function(eleventyConfig) {
       if (!process.env.CF_PAGES) console.log(`[img-cache] saved ${syncDir("_site/img", IMG_CACHE)} new resized images`);
     } catch (e) { console.log(`[img-cache] save skipped: ${e.message}`); }
   });
+  // Bookkeeping the pages never read — the delivery log (~3,900 files), the publish state, the duplicate
+  // skips, the reel state — was merged into the data of every one of the 6,500 pages: a quarter of the build
+  // (INCIDENTS #315). They stay in _data for the bots and the Worker; the site sees them empty.
+  const BOOKKEEPING = /(^|\/)_data\/(deliveries\/|publish-state\.json$|duplicate-skips\.json$|show-reel-state\.json$)/;
+  eleventyConfig.addDataExtension("json", { parser: (text, file) => (BOOKKEEPING.test(String(file).replace(/\\/g, "/")) ? {} : JSON.parse(text)) });
+  // Eleventy 3.1 hands Nunjucks a new Template for every page of a paginated template, so tag.njk was parsed
+  // and compiled again for each of its 3,000+ pages (6 of the build's 26 seconds). Same file, same source,
+  // same environment: compiled once (INCIDENTS #315).
+  eleventyConfig.on("eleventy.engine.njk", ({ nunjucks, environment }) => {
+    const T = nunjucks.Template.prototype;
+    if (T.__arwCompileCache) return;
+    const compiled = new WeakMap();
+    const original = T._compile;
+    T._compile = function () {
+      if (!this.tmplProps && typeof this.tmplStr === "string") {
+        let byEnv = compiled.get(this.env);
+        if (!byEnv) compiled.set(this.env, (byEnv = new Map()));
+        const key = `${this.path || ""}\0${this.tmplStr}`;
+        let props = byEnv.get(key);
+        if (!props) {
+          props = new Function(nunjucks.compiler.compile(this.tmplStr, this.env.asyncFilters, this.env.extensionsList, this.path, this.env.opts))(); // eslint-disable-line no-new-func
+          byEnv.set(key, props);
+        }
+        this.tmplProps = props;
+      }
+      return original.call(this);
+    };
+    T.__arwCompileCache = true;
+  });
   eleventyConfig.addGlobalData("buildTime", () => new Date().toISOString());
 
   // The home slider shows each pinned item as it is NOW. _data/pinned.json keeps a copy
