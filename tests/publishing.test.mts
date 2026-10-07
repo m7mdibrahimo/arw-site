@@ -3640,3 +3640,9 @@ test('a stray tatweel inside a word is removed, joined prefixes keep it; «وو�
   assert.equal(applyCorrections('لمواجهة الثنائي ذا ميز وون جون موريسون'), 'لمواجهة الثنائي ذا ميز وجون موريسون');
   assert.equal(applyCorrections('الحاصل على عدة اسطوانات بلاتينية'), 'الحاصل على عدة أسطوانات بلاتينية');
 });
+
+test('«basic legends deal» is a plain legends contract, not «عقدا أساسيا» (INCIDENTS #320)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('كشف عن توقيعه عقدا أساسيا مع WWE ضمن فئة الأساطير، وذلك'), 'كشف عن توقيعه عقد أساطير عاديا مع WWE، وذلك');
+  assert.equal(applyCorrections('وقع عقدا أساسيا ضمن فئة الأساطير'), 'وقع عقد أساطير عاديا');
+});
