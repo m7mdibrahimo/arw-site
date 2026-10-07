@@ -3740,12 +3740,18 @@ test('the site builds from a «site» branch without the original pictures and r
   const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
   for (const name of ['Fightful News Auto Watcher', 'Ringside News Auto Watcher', 'Wrestling Inc Auto Watcher']) assert.ok(wf.includes(`- ${name}`), name);
   // the bots' news is gathered (at most one Cloudflare build every 4 minutes); a push or a panel save never waits (INCIDENTS #315)
-  const gather = wf.slice(wf.indexOf("- name: Gather what was saved since the last build"), wf.indexOf('- name: Point «site» at the latest main'));
+  const gather = wf.slice(wf.indexOf("- name: Gather what was saved while Cloudflare builds"), wf.indexOf('- name: Point «site» at the latest main'));
+  assert.ok(gather.length > 200, 'the gathering step is there');
   assert.match(gather, /if: github\.event_name != 'workflow_dispatch'/);
   assert.match(gather, /grep -qE 'لوحة التحكم\|\^\(Create\|Update\|Delete\) '/);
   assert.match(gather, /BATCH: '240'/);
-  // panel saves too: «site» moves at most every 2.5 minutes, so Cloudflare never queues builds (INCIDENTS #343)
-  assert.match(gather, /MIN_GAP: '150'/);
+  // panel saves too: «site» never moves while Cloudflare still builds the last version, so it never queues builds
+  // (INCIDENTS #343) — and a save goes out the moment that build is done, not a fixed 2.5 minutes later (INCIDENTS #352)
+  assert.match(wf, /checks: read/);
+  assert.match(gather, /GAP=0 /);
+  assert.match(gather, /commits\/\$SITE\/check-runs\?check_name=Cloudflare%20Pages/);
+  assert.match(gather, /BUSY_MAX: '300'/);
+  assert.ok(!/MIN_GAP/.test(wf));
   assert.match(gather, /\[ "\$EVENT" = "push" \]/);
   assert.match(wf, /cancel-in-progress: true/);
   assert.match(wf, /cron: '\*\/10 \* \* \* \*'/);

@@ -8,7 +8,7 @@ name: Site Branch
 #  بيشتغل بعد كل رفع من اللوحة أو من جهاز، وبعد ما أي بوت يخلص، وكل ١٠ دقايق كاحتياط.
 #  البوتات بترفع بمفتاح GitHub الداخلي، ورفعها مش بيشغّل workflows تانية، فلازم
 #  workflow_run. أخبار البوتات بتتجمع وتتبني مرة كل ٤ دقايق بالكتير، واللي بيتحفظ من
-#  اللوحة بيتبني على طول من غير استنى (الحادثة ٣١٥). وكل مرة بيبني من آخر main، ومبيبنيش لو اللي اتغير حاجات المتابع مش بيشوفها.
+#  اللوحة بيتبني أول ما Cloudflare يخلص البناء اللي شغال (الحادثة ٣٥٢). وكل مرة بيبني من آخر main، ومبيبنيش لو اللي اتغير حاجات المتابع مش بيشوفها.
 #  build.json بيقول commit الـmain الأصلي.
 #  للرجوع: خلي فرع الإنتاج في Cloudflare Pages يرجع main.
 # ═══════════════════════════════════════════════════════
@@ -39,6 +39,7 @@ concurrency:
 
 permissions:
   contents: write
+  checks: read   # Cloudflare's «done» mark on the last «site» commit
 
 jobs:
   slim:
@@ -46,19 +47,22 @@ jobs:
     timeout-minutes: 9
     steps:
       # Cloudflare (free plan) builds one version at a time, ~2 minutes each, and builds every version it is
-      # given, even one a newer version already covers. So «site» moves at most once every 2.5 minutes, and
-      # whatever was saved meanwhile goes out together: five saves from the panel in a row had queued five builds
-      # and the site ran 16 minutes behind (INCIDENTS #343). The bots' news waits for 4 minutes (INCIDENTS #315).
-      # A newer run replaces a waiting one (cancel-in-progress) and the wait counts from the last «site» update,
-      # so it never grows.
-      - name: Gather what was saved since the last build
+      # given, even one a newer version already covers: five saves from the panel in a row had queued five builds
+      # and the site ran 16 minutes behind (INCIDENTS #343). So «site» never moves while Cloudflare is still building
+      # the last version: Cloudflare marks a «site» commit (check run «Cloudflare Pages») only when its build is done,
+      # and a save from the panel goes out the moment that mark is there, instead of a fixed 2.5 minutes after the
+      # last update (INCIDENTS #352). Whatever was saved meanwhile goes out together. The bots' news still gathers
+      # for 4 minutes (INCIDENTS #315). If the mark never comes (Cloudflare down or not reporting), 5 minutes is the
+      # most it waits. A newer run replaces a waiting one (cancel-in-progress) and everything counts from the last
+      # «site» update, so the wait never grows.
+      - name: Gather what was saved while Cloudflare builds
         if: github.event_name != 'workflow_dispatch'
         env:
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           EVENT: ${{ github.event_name }}
           BATCH: '240'
-          MIN_GAP: '150'
+          BUSY_MAX: '300'
         run: |
           set -uo pipefail
           api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
@@ -69,10 +73,18 @@ jobs:
           [ -n "$PREV" ] || exit 0
           GAP=$BATCH
           if [ "$EVENT" = "push" ] || api "https://api.github.com/repos/$REPO/compare/$PREV...main" | jq -r '.commits[].commit.message' | grep -qE 'لوحة التحكم|^(Create|Update|Delete) '; then
-            GAP=$MIN_GAP   # a save from the panel or a device: only as long as the last build needs
+            GAP=0   # a save from the panel or a device: only as long as Cloudflare is busy
           fi
-          AGE=$(( $(date +%s) - $(date -d "$(jq -r .committer.date s.json)" +%s) ))
-          if [ "$AGE" -lt "$GAP" ]; then echo "last site update ${AGE}s ago: gathering for $((GAP - AGE))s"; sleep $((GAP - AGE)); fi
+          SITE_AT=$(date -d "$(jq -r .committer.date s.json)" +%s)
+          built() { api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?check_name=Cloudflare%20Pages" | jq -e '[.check_runs[] | select(.status == "completed")] | length > 0' > /dev/null; }
+          while :; do
+            AGE=$(( $(date +%s) - SITE_AT ))
+            if [ "$AGE" -ge "$GAP" ]; then
+              if [ "$AGE" -ge "$BUSY_MAX" ]; then echo "Cloudflare hasn't reported the last version after ${AGE}s: going on"; break; fi
+              if built; then echo "Cloudflare finished the last version; it was updated ${AGE}s ago"; break; fi
+            fi
+            sleep 5
+          done
       # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
       # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
       - name: Point «site» at the latest main, without pictures and reels
