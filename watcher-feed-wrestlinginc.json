@@ -1,5 +1,15 @@
 [
   {
+    "id": 3464330776,
+    "link": "https://www.wrestlinginc.com/2279611/jon-moxley-defend-aew-continental-title-wrestledream/",
+    "date": "Wed, 07 Oct 2026 01:23:30 +0000",
+    "date_gmt": "2026-10-07T01:23:30.000Z",
+    "title": {
+      "rendered": "Jon Moxley To Defend AEW Continental Title At WrestleDream"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jon-moxley-to-defend-aew-continental-title-at-wrestledream/l-intro-1791336146.jpg"
+  },
+  {
     "id": 1797286753,
     "link": "https://www.wrestlinginc.com/2276316/wwe-joe-hendry-intends-become-world-champion/",
     "date": "Wed, 07 Oct 2026 01:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Report On Jacob Fatu's Absence From WWE Raw"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-jacob-fatus-absence-from-wwe-raw/l-intro-1791308141.jpg"
-  },
-  {
-    "id": 2700278250,
-    "link": "https://www.wrestlinginc.com/2278892/aaa-wwe-hijo-del-vikingo-another-surgery/",
-    "date": "Tue, 06 Oct 2026 16:08:37 +0000",
-    "date_gmt": "2026-10-06T16:08:37.000Z",
-    "title": {
-      "rendered": "AAA's El Hijo Del Vikingo Set To Undergo Another Surgery"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aaa-wwe-hijo-del-vikingo-another-surgery/l-intro-1791304503.jpg"
   }
 ]
