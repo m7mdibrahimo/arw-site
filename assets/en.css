@@ -1,0 +1,41 @@
+/* The English site (/en/, lib/i18n/mirror.cjs): its fonts and the left-to-right fixes. Loaded last in <head> on
+   English pages only; the Arabic site never loads it.
+
+   Fonts: Inter for text, Plus Jakarta Sans for headings (both self-hosted, SIL Open Font License: fonts/LICENSE-*).
+   The pages name 'Cairo' and 'Tajawal' everywhere; here those names point to Inter for Latin letters only, so every
+   English word on the site switches without touching a page's own CSS, while an Arabic news headline keeps Cairo. */
+@font-face { font-family: 'Cairo'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Cairo'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Tajawal'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Tajawal'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/assets/fonts/inter-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 200 800; font-display: swap; src: url(/assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 200 800; font-display: swap; src: url(/assets/fonts/plus-jakarta-sans-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+html[lang="en"] { --en-text: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; --en-head: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
+html[lang="en"] body { font-family: var(--en-text); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+html[lang="en"] body :is(input, button, select, textarea) { font-family: var(--en-text); }
+/* headings, the brand and the big titles in the heading face */
+html[lang="en"] body :is(h1, h2, h3, .brand-name, .hero-title, .page-head h1, .page-head h2, .section-title, .sec-title) { font-family: var(--en-head) !important; letter-spacing: -0.01em; }
+/* an Arabic news headline inside the English site keeps the Arabic face and reads right to left */
+html[lang="en"] [lang="ar"] { font-family: 'Cairo', sans-serif; direction: rtl; unicode-bidi: isolate; }
+
+/* the language button */
+.lang-switch { display: inline-flex; align-items: center; justify-content: center; }
+
+/* arrows and chevrons point the other way left to right (lib/i18n/mirror.cjs marks them) */
+html[dir="ltr"] svg.i18n-flip { transform: scaleX(-1); }
+
+/* the header search: Inter is wider than the Arabic face, and the box's input pushed its button out over «Home» */
+html[lang="en"] .site-search input { min-width: 0; width: 100%; text-overflow: ellipsis; }
+/* the home title's «all in one place» stays in one piece on a phone */
+html[lang="en"] .hero h1 .u { white-space: nowrap; }

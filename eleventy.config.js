@@ -1361,6 +1361,16 @@ module.exports = function(eleventyConfig) {
       .sort(function(a, b) { return (b.firstAdded - a.firstAdded) || (b.latest.timestamp - a.latest.timestamp); });
   };
   eleventyConfig.addCollection("library", buildLibrary);
+  // The English site (lib/i18n/mirror.cjs, owner 2026-10-07): the content's own English words, kept for eleventy.after
+  let I18N_CONTENT = {}, I18N_PAGES = {};
+  eleventyConfig.addCollection("i18nContent", function(collectionApi) {
+    const lib = buildLibrary(collectionApi);
+    const c = require("./lib/i18n/content.cjs");
+    I18N_CONTENT = c.buildContentMap({ library: lib });
+    // each page's own English <title> and description (a show's Arabic ones are cut at 160 letters, so no lookup finds them)
+    I18N_PAGES = c.buildPageMap({ items: collectionApi.getAll().filter(function(i) { return /content\/(shows|recaps|nostalgia)\//.test(i.inputPath || ""); }), library: lib });
+    return [];
+  });
   // One entry per page of a program's shows (20 per page, like «عروض المصارعة»):
   // /library/<slug>/, /library/<slug>/2/, …
   const LIBRARY_PAGE_SIZE = 20;
@@ -2054,6 +2064,18 @@ module.exports = function(eleventyConfig) {
       }
     });
 
+  });
+
+  // The English copy of the interface under /en/ (lib/i18n/mirror.cjs), from the finished Arabic pages. It runs last,
+  // after the assets are copied. Every Arabic word left on an English page outside the news goes to the log.
+  eleventyConfig.on("eleventy.after", () => {
+    if (process.env.ARW_NO_EN === "1") return;
+    try {
+      const { summary, leftovers } = require("./lib/i18n/mirror.cjs").buildEnglish("_site", { content: I18N_CONTENT, pages: I18N_PAGES });
+      console.log(`[en] ${JSON.stringify(summary)}`);
+      leftovers.slice(0, 20).forEach(function(x) { console.log(`[en] still Arabic (${x[1]} pages): ${x[0].slice(0, 120)}`); });
+      fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES }));
+    } catch (e) { console.log(`[en] skipped: ${e.stack}`); }
   });
 
   return {
