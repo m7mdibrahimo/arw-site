@@ -1,5 +1,25 @@
 [
   {
+    "id": 1797286753,
+    "link": "https://www.wrestlinginc.com/2276316/wwe-joe-hendry-intends-become-world-champion/",
+    "date": "Wed, 07 Oct 2026 01:00:00 +0000",
+    "date_gmt": "2026-10-07T01:00:00.000Z",
+    "title": {
+      "rendered": "Joe Hendry Explains How He Intends To Become World Champion In WWE"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-explains-how-he-intends-to-become-world-champion-in-wwe/l-intro-1790972790.jpg"
+  },
+  {
+    "id": 4919747926,
+    "link": "https://www.wrestlinginc.com/2279601/samoa-joe-earns-entry-clockwork-carnage-match-aew-wrestledream/",
+    "date": "Wed, 07 Oct 2026 00:51:10 +0000",
+    "date_gmt": "2026-10-07T00:51:10.000Z",
+    "title": {
+      "rendered": "Samoa Joe Earns Entry Into Clockwork Carnage Match At AEW WrestleDream"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/samoa-joe-earns-entry-into-clockwork-carnage-match-at-aew-wrestledream/l-intro-1791334191.jpg"
+  },
+  {
     "id": 1466288872,
     "link": "https://www.wrestlinginc.com/2279599/roh-world-champion-bandido-retains-title-aew-grand-slam-france/",
     "date": "Wed, 07 Oct 2026 00:43:40 +0000",
@@ -7,7 +27,7 @@
     "title": {
       "rendered": "ROH World Champion Bandido Retains Title At AEW Grand Slam: France"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/roh-world-champion-bandido-retains-title-at-aew-grand-slam-france/l-intro-1791333730.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/roh-world-champion-bandido-retains-title-aew-grand-slam-france/l-intro-1791334064.jpg"
   },
   {
     "id": 2506877560,
@@ -178,25 +198,5 @@
       "rendered": "AAA's El Hijo Del Vikingo Set To Undergo Another Surgery"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aaa-wwe-hijo-del-vikingo-another-surgery/l-intro-1791304503.jpg"
-  },
-  {
-    "id": 4981017104,
-    "link": "https://www.wrestlinginc.com/2278885/wwe-tiffany-stratton-video-training-botch-viral/",
-    "date": "Tue, 06 Oct 2026 16:03:56 +0000",
-    "date_gmt": "2026-10-06T16:03:56.000Z",
-    "title": {
-      "rendered": "WWE's Tiffany Stratton Comments On Video Of Training Botch Going Viral"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-tiffany-stratton-comments-on-video-of-training-botch-going-viral/l-intro-1791302510.jpg"
-  },
-  {
-    "id": 3305849180,
-    "link": "https://www.wrestlinginc.com/2278503/wwe-finn-balor-future-body-holding-up/",
-    "date": "Tue, 06 Oct 2026 15:30:00 +0000",
-    "date_gmt": "2026-10-06T15:30:00.000Z",
-    "title": {
-      "rendered": "Finn Balor Comments On His Future In WWE, How His Body Is Holding Up"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/finn-balor-comments-on-his-future-in-wwe-how-his-body-is-holding-up/l-intro-1791285244.jpg"
   }
 ]
