@@ -453,7 +453,7 @@
             <span class="sx-next-body">
               <span class="sx-next-label">{{ "الحلقة التالية" if isProgram else ("الملخص التالي" if isRecap else "العرض التالي") }}</span>
               {% if nx.named %}
-              <span class="sx-next-name">{{ nx.fullName }}</span>
+              <span class="sx-next-name"><bdi>{{ nx.fullName }}</bdi></span>
               {% if not nx.hasDateInName and nx.dayLabel %}<span class="sx-next-sub">{{ nx.dayLabel }} {{ nx.year }}</span>{% endif %}
               {% else %}
               <span class="sx-next-date">{{ nx.dayLabel }} {{ nx.year }}</span>
@@ -474,7 +474,7 @@
               </span>
               <span class="sx-body">
                 {% if ep.named %}
-                <span class="sx-name">{{ ep.fullName }}</span>
+                <span class="sx-name"><bdi>{{ ep.fullName }}</bdi></span>
                 {% if not ep.hasDateInName and ep.dayLabel %}<span class="sx-meta">{{ ep.dayLabel }} {{ ep.year }}</span>{% endif %}
                 {% else %}
                 <span class="sx-date">{{ ep.dayLabel }}</span>
@@ -486,7 +486,7 @@
           </div>
 
           {% if not isNostalgiaItem %}
-          <a href="{{ nav.libraryHref }}" class="sx-all">{% if not isRecap and not isProgram and kind0 and kind0.indexOf("عرض ") == 0 %}كل {{ "عروض " + kind0.slice(4) }}{% else %}كل {{ showsWord }} {{ nav.program.name }}{% endif %} <span class="sx-all-n">({{ epCount }})</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a href="{{ nav.libraryHref }}" class="sx-all">{% if not isRecap and not isProgram and kind0 and kind0.indexOf("عرض ") == 0 %}جميع {{ "عروض " + kind0.slice(4) }}{% else %}جميع {{ showsWord }} {{ nav.program.name }}{% endif %} <span class="sx-all-n">({{ epCount }})</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
           {% endif %}
         </div>
       {% endif %}

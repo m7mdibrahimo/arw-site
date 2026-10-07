@@ -3753,17 +3753,18 @@ test('a show page lists its program as cards (a show with its own name by that n
   const tour = [
     { url: '/shows/n1/', day: 9, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو 09.09.2026 مترجم' },
     { url: '/shows/n2/', day: 13, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو 13.09.2026 مترجم' },
-    { url: '/shows/kobe/', day: 27, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم' },
+    { url: '/shows/kobe/', day: 27, month: 9, year: 2026, title: 'NJPW Destruction in Kobe (2026)', headline: 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم' },
   ];
   const k = nav('NJPW', '/shows/kobe/', [{ slug: 'njpw', name: 'NJPW', episodes: tour, seasons: [{ number: 2026, type: 'year', episodes: tour }] }]);
   assert.deepEqual(k.recent.map((e: any) => e.named), [true, false, false]);
-  assert.equal(k.recent[0].fullName, 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم');
-  assert.equal(k.recent[0].hasDateInName, true);
+  assert.equal(k.recent[0].fullName, 'NJPW Destruction in Kobe (2026)'); // its English title, in full
+  assert.equal(k.recent[0].hasDateInName, false);
   assert.equal(k.programKind, 'عرض ان جيه بي دبليو'); // the heading and the button name the program, not Kobe
   assert.equal(n.programKind, 'عرض الرو');
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.ok(!/episodes-search|ep-pill|آخر 8/.test(tpl), 'the date buttons, the search and the «آخر 8» label are gone');
   assert.ok(!tpl.includes('أخبار وعروض ذات صلة'));
+  assert.ok(/جميع \{\{/.test(tpl) && !/[>}]كل \{\{/.test(tpl), '«جميع عروض…», in Fusha');
   // small 480px pictures on the cards, not the 800px ones
   assert.ok(!/optImg (nx\.image|ep\.image|rThumb)/.test(tpl) && /optCard ep\.image/.test(tpl) && /optCard rThumb/.test(tpl));
 });

@@ -1409,8 +1409,9 @@ module.exports = function(eleventyConfig) {
         dayLabel: ep.day && ep.month ? ep.day + " " + MONTHS[ep.month - 1] : "",
         kindLabel: kind,
         named: !kind || (kindCount.get(kind) || 0) < 2 || !!ep.isNostalgia,
-        fullName: String(ep.headline || ep.title || "").trim(),
-        hasDateInName: /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/.test(String(ep.headline || ""))
+        // its English title, in full, as it was added («NJPW Destruction in Kobe (2026)») — owner, 2026-10-07
+        fullName: String(ep.title || ep.headline || "").trim(),
+        hasDateInName: /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/.test(String(ep.title || ep.headline || ""))
       });
     };
     const here = idx >= 0 ? idx : prog.episodes.length - 1;
