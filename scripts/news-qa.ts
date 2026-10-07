@@ -65,6 +65,7 @@ interface Rule { code: string; severity: Severity; re: RegExp; message: string; 
 // Words that legitimately repeat: team/wrestler names ("Bang Bang", "JJ"), the old
 // letter-by-letter spellings of federations ("دبليو دبليو إي", "إيه إيه إيه") and
 // quoted emphasis. Only words of 4+ letters are ever collapsed.
+const TATWEEL_PREFIXES = new Set(["ب", "ل", "ال", "وب", "ول", "فب", "فل", "لل", "بال", "وال", "كال", "ولل", "وبال"]);
 const LEGIT_DOUBLES = new Set(["بانغ", "بانج", "دبليو", "دابليو", "أبدا", "أبداً", "ابدا", "جدا", "جداً", "كلا", "هيا"]);
 // Ring names that ARE a doubled word — «كيلي كيلي», «بووم بووم», «زي زي» — come from the names
 // glossary: the repeated-word fix turned «Kelly Kelly» into «كيلي» (INCIDENTS #138).
@@ -642,6 +643,9 @@ export function autoFix(text: string): string {
     .replace(new RegExp(`(^|[\\s(«"])([لب])\\s+(?=[${AR}])`, "gm"), "$1$2ـ")
     .replace(/(^|[\s(«"])([لب])\s+(?=[*«"]?[A-Za-z0-9"«])/gm, "$1$2ـ ")
     .replace(new RegExp(`(?<=[${AR}.،!؟"»)*]\\s)و\\s+(?=[${AR}])`, "g"), "و")
+    // "مؤقـتا" / "رسميـا" → "مؤقتا" / "رسميا": a tatweel inside a word is debris; only a joined
+    // prefix keeps it («بـ» / «لـ» / «الـ» / «وبـ»…) (INCIDENTS #317)
+    .replace(new RegExp(`(?<![${AR}])([${AR}]+)ـ(?=[${AR}])`, "g"), (m, w) => TATWEEL_PREFIXES.has(w) ? m : w)
     // "عرض MLP عرض MLP" → "عرض MLP"
     .replace(/(?<!\S)(\S+\s+\S+)(?:\s+\1)+(?!\S)/g, (m, phrase) => new RegExp(`[${AR}]`).test(phrase) ? phrase : m)
     // "صالة صالة" → "صالة" (team names like "بانغ بانغ" are kept)
