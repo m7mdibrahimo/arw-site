@@ -1755,8 +1755,8 @@
   },
   "https://arab-wrestling.com/library/cmll/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
-   "lastmod": "2026-10-05",
-   "pinged": "2026-10-06T14:36:02.667Z",
+   "lastmod": "2026-10-03",
+   "pinged": "2026-10-07T13:09:45.479Z",
    "inspected": "2026-10-07T10:54:43.074Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
@@ -2059,9 +2059,34 @@
   },
   "https://arab-wrestling.com/library/njpw-g1-climax-36/": {
    "firstSeen": "2026-10-07T12:49:15.159Z",
-   "lastmod": "2026-08-10",
-   "pinged": "2026-10-07T12:49:15.159Z"
+   "lastmod": "2026-08-17",
+   "pinged": "2026-10-07T13:09:45.479Z"
+  },
+  "https://arab-wrestling.com/library/cmll-domingo-familiar/": {
+   "firstSeen": "2026-10-07T13:09:45.479Z",
+   "lastmod": "2026-10-05",
+   "pinged": "2026-10-07T13:09:45.479Z"
+  },
+  "https://arab-wrestling.com/library/cmll-sabados-de-coliseo/": {
+   "firstSeen": "2026-10-07T13:09:45.479Z",
+   "lastmod": "2026-10-05",
+   "pinged": "2026-10-07T13:09:45.479Z"
+  },
+  "https://arab-wrestling.com/library/cmll-viernes-espectacular/": {
+   "firstSeen": "2026-10-07T13:09:45.479Z",
+   "lastmod": "2026-10-04",
+   "pinged": "2026-10-07T13:09:45.479Z"
+  },
+  "https://arab-wrestling.com/shows/njpw-road-to-destruction-2026-blue-justice-xix-06-09-2026/": {
+   "firstSeen": "2026-10-07T13:09:45.479Z",
+   "lastmod": "2026-09-07",
+   "pinged": "2026-10-07T13:09:45.479Z"
+  },
+  "https://arab-wrestling.com/shows/njpw-g1-climax-36-final-2016/": {
+   "firstSeen": "2026-10-07T13:09:45.479Z",
+   "lastmod": "2026-08-17",
+   "pinged": "2026-10-07T13:09:45.479Z"
   }
  },
- "sitemapPinged": "2026-10-07T12:49:15.159Z"
+ "sitemapPinged": "2026-10-07T13:09:45.479Z"
 }
