@@ -2,6 +2,9 @@
 name = "arw-media"
 main = "src/index.ts"
 compatibility_date = "2026-08-01"
+# the bots upload through arw-media.<account>.workers.dev/upload/… (scripts/media-store.ts): with routes set,
+# wrangler turns that address off unless it's asked for, and every upload fell back to the repo (INCIDENTS #313)
+workers_dev = true
 
 # The Pages build no longer carries these files (it's built from the «site» branch)
 routes = [

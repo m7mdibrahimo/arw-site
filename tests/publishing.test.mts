@@ -3562,6 +3562,9 @@ test('the site builds from a «site» branch without the original pictures and r
   // routes before the first [table] (after one, TOML reads them as part of that table and nothing is routed)
   const firstTable = toml.search(/^\[/m);
   assert.ok(toml.indexOf('routes = [') > -1 && toml.indexOf('routes = [') < firstTable);
+  // the bots upload through the workers.dev address, which wrangler turns off when routes are set (INCIDENTS #313)
+  assert.ok(/^workers_dev = true$/m.test(toml) && toml.search(/^workers_dev/m) < firstTable);
+  assert.match(fs.readFileSync('scripts/media-store.ts', 'utf-8'), /workers\.dev/);
   assert.match(toml, /^\[triggers\]\ncrons = \["17 3 \* \* \*"\]/m);
   const src = fs.readFileSync('media-worker/src/index.ts', 'utf-8');
   // uploads only with a GitHub token that can write to the repo; reels leave R2 after 30 days (free tier for good)
