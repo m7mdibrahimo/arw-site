@@ -3860,9 +3860,17 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
 // trigger path through the Worker's own cron (proven reliable — it fires
 // every single minute), so a missed native schedule tick self-heals within
 // one throttle window instead of stalling that source indefinitely.
+// A once-a-day job is due when today's UTC clock has passed its minute and
+// the last trigger was before that point today.
+export function dailyBackstopDue(now: number, last: number, afterUtcMin: number): boolean {
+  const d = new Date(now);
+  const dueAt = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) + afterUtcMin * 60 * 1000;
+  return now >= dueAt && last < dueAt;
+}
+
 async function runScheduleBackstopCron(env: Env): Promise<void> {
   if (!env.PUSH_KV) return;
-  const jobs: { workflow: string; kvKey: string; throttleMs: number }[] = [
+  const jobs: { workflow: string; kvKey: string; throttleMs: number; dailyAfterUtcMin?: number }[] = [
     { workflow: "show-reel-monitor.yml", kvKey: "last_reel_monitor_trigger_ts", throttleMs: 14 * 60 * 1000 },
     { workflow: "wrestlinginc-watcher.yml", kvKey: "last_wrestlinginc_trigger_ts", throttleMs: 19 * 60 * 1000 },
     { workflow: "ringsidenews-watcher.yml", kvKey: "last_ringsidenews_trigger_ts", throttleMs: 19 * 60 * 1000 },
@@ -3870,12 +3878,17 @@ async function runScheduleBackstopCron(env: Env): Promise<void> {
     // native schedules stayed silent for hours (INCIDENTS #305).
     { workflow: "seo-new-shows.yml", kvKey: "last_seo_new_shows_trigger_ts", throttleMs: 59 * 60 * 1000 },
     { workflow: "video-hosts.yml", kvKey: "last_video_hosts_trigger_ts", throttleMs: 359 * 60 * 1000 },
+    // The daily report's 05:15 tick hadn't fired by 06:20 on its first
+    // scheduled day — the morning round reads it (INCIDENTS #324). Once a
+    // UTC day, from 05:40, whatever the native schedule did.
+    { workflow: "search-console.yml", kvKey: "last_search_console_trigger_ts", throttleMs: 0, dailyAfterUtcMin: 5 * 60 + 40 },
   ];
   const now = Date.now();
   for (const job of jobs) {
     try {
       const last = Number((await env.PUSH_KV.get(job.kvKey)) || 0) || 0;
       if (now - last < job.throttleMs) continue;
+      if (job.dailyAfterUtcMin !== undefined && !dailyBackstopDue(now, last, job.dailyAfterUtcMin)) continue;
       const res = await githubTriggerWorkflowByFile(env, job.workflow);
       if (res.ok) {
         await env.PUSH_KV.put(job.kvKey, String(now));
