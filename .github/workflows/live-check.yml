@@ -1,0 +1,37 @@
+name: Live Check
+
+# What the live site really sends for one page: its cache headers, the stylesheets it points to, and a few markers.
+# For «I changed it but I still see the old page» (INCIDENTS #354): run it by hand with the page's address.
+on:
+  workflow_dispatch:
+    inputs:
+      path:
+        description: 'Page path, e.g. /shows/aew-dynamite-06-10-2026/'
+        required: true
+        default: '/'
+      grep:
+        description: 'Text to look for in the page (optional)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch the page as a visitor would
+        env:
+          P: ${{ inputs.path }}
+          G: ${{ inputs.grep }}
+        run: |
+          set -u
+          U="https://arab-wrestling.com${P}"
+          echo "== headers for $U"; curl -sS -D - -o page.html -A "Mozilla/5.0 (live-check)" "$U" | grep -iE '^(HTTP|cache-control|cf-cache-status|age|etag|last-modified|cdn-cache-control|cloudflare-cdn-cache-control|x-served-by|content-type):'
+          echo "== stylesheets and scripts it points to"; grep -oE '(href|src)="/(en/)?assets/[^"]+"' page.html | sort -u
+          echo "== build"; curl -sS "https://arab-wrestling.com/build.json?_=$(date +%s)" | head -c 300; echo
+          if [ -n "$G" ]; then echo "== «$G» in the page: $(grep -c -- "$G" page.html) line(s)"; grep -o -- ".\{0,120\}$G.\{0,160\}" page.html | head -5; fi
+          CSS=$(grep -oE 'href="/assets/post-layout\.css[^"]*"' page.html | head -1 | sed 's/href="//; s/"$//')
+          if [ -n "$CSS" ]; then echo "== $CSS"; curl -sS -D - -o css.css "https://arab-wrestling.com$CSS" | grep -iE '^(cache-control|cf-cache-status|age):'; grep -o '\.post-wrap\.is-watch \.post-ep-name{[^}]*}' css.css | head -2; fi
