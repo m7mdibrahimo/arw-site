@@ -3569,7 +3569,7 @@ test('the show reels are linked into the build, not copied byte for byte (INCIDE
 test('article pages load their styles and scripts from shared cached files (INCIDENTS #311)', () => {
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.match(tpl, /<link rel="stylesheet" href="\{\{ asset\('\/assets\/post-layout\.css'\) \}\}">/);
-  for (const f of ['post-seasons.js', 'post-player.js', 'post-theme.js']) assert.ok(tpl.includes(`<script src="{{ asset('/assets/${f}') }}"></script>`), f);
+  for (const f of ['post-player.js', 'post-theme.js']) assert.ok(tpl.includes(`<script src="{{ asset('/assets/${f}') }}"></script>`), f);
   // nothing big left inline: every article page used to repeat ~97 KB of the same CSS and JS
   const inlineCss = [...tpl.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].reduce((n, m) => n + m[1].length, 0);
   assert.ok(inlineCss < 8000, String(inlineCss));
@@ -3687,7 +3687,7 @@ test('a reel posted on Facebook and Instagram leaves R2; one still being posted 
   for (const f of ['media-cleanup', 'show-reel-monitor']) assert.match(fs.readFileSync(`.github/workflows/${f}.yml`, 'utf-8'), /^  contents: write/m, f);
 });
 
-test('a stray tatweel inside a word is removed, joined prefixes keep it; «وون» and «اسطوانات» fixed (INCIDENTS #318)', async () => {
+test('a stray tatweel inside a word is removed, joined prefixes keep it; «وون» and «اسطوانات» fixed (INCIDENTS #330)', async () => {
   const { autoFix, applyCorrections } = await import('../scripts/news-qa');
   assert.equal(autoFix('أبعده مؤقـتا عن الشاشة ولم يعلن رسميـا عن عودته'), 'أبعده مؤقتا عن الشاشة ولم يعلن رسميا عن عودته');
   assert.equal(autoFix('أشاد بـرومان رينز ولـسامي زين وبـكودي'), 'أشاد بـرومان رينز ولـسامي زين وبـكودي');
@@ -3704,4 +3704,38 @@ test('«basic legends deal» is a plain legends contract, not «عقدا أسا�
 test('«Trios title battle» is a fight over the trios titles, not «عداوة الثلاثي» (INCIDENTS #322)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('استمرار عداوة الثلاثي بين سويرف ستريكلاند وآدم بيدج'), 'استمرار صراع ألقاب الثلاثي بين سويرف ستريكلاند وآدم بيدج');
+});
+
+test('a show page lists its program as cards; «ذات صلة» is news only, picked by shared names and the days around the page (INCIDENTS #330)', async () => {
+  // the config's own helpers, read through a stand-in eleventyConfig that records them
+  const got: Record<string, any> = {};
+  const stub: any = new Proxy({}, { get: (_t, k: string) => (k === 'addFilter' || k === 'addNunjucksFilter' || k === 'addNunjucksGlobal') ? (name: string, fn: any) => { got[name] = fn; } : () => stub });
+  const { createRequire } = await import('module');
+  createRequire(import.meta.url)('../eleventy.config.js')(stub);
+  const related = got.getRelatedPosts, nav = got.getEpisodeNav;
+  const d = (s: string) => new Date(s + 'T03:00:00Z');
+  const item = (url: string, tags: string[], date: string, extra = {}) => ({ url, date: d(date), data: { tags, federation: 'WWE', date: d(date), ...extra } });
+  const all = [
+    item('/shows/raw-21/', ['WWE', 'RAW'], '2026-09-22'),
+    item('/news/old-roman/', ['WWE', 'رومان رينز'], '2026-06-01'),
+    item('/news/week-roman/', ['WWE', 'رومان رينز'], '2026-09-23'),
+    item('/news/week-other/', ['WWE'], '2026-09-22'),
+    item('/news/aew/', ['AEW'], '2026-09-22', { federation: 'AEW' }),
+  ];
+  const urls = related('/shows/raw-28/', ['WWE', 'RAW', 'رومان رينز'], 'WWE', all, 4, 'WWE RAW', '2026-09-22').map((x: any) => x.url);
+  assert.deepEqual(urls, ['/news/week-roman/', '/news/week-other/', '/news/old-roman/']); // no show, nothing from another federation; that week first
+  // the cards: the show being watched first, then the ones before it, at most 8; the next one on its own
+  const eps = Array.from({ length: 10 }, (_, i) => ({ url: `/shows/raw-${i}/`, day: i + 1, month: 9, year: 2026, headline: `عرض الرو ${String(i + 1).padStart(2, '0')}.09.2026 مترجم` }));
+  const programs = [{ slug: 'wwe-raw', name: 'WWE RAW', episodes: eps, seasons: [{ number: 2026, type: 'year', episodes: eps }] }];
+  const n = nav('WWE RAW', '/shows/raw-8/', programs);
+  assert.deepEqual(n.recent.map((e: any) => e.url), ['/shows/raw-8/', '/shows/raw-7/', '/shows/raw-6/', '/shows/raw-5/', '/shows/raw-4/', '/shows/raw-3/', '/shows/raw-2/', '/shows/raw-1/']);
+  assert.equal(n.nextCard.url, '/shows/raw-9/');
+  assert.equal(n.recent[0].dayLabel, '9 سبتمبر');
+  assert.equal(n.recent[0].kindLabel, 'عرض الرو');
+  assert.equal(n.libraryHref, '/library/wwe-raw/');
+  const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.ok(!/episodes-search|ep-pill|آخر 8/.test(tpl), 'the date buttons, the search and the «آخر 8» label are gone');
+  assert.ok(!tpl.includes('أخبار وعروض ذات صلة'));
+  // small 480px pictures on the cards, not the 800px ones
+  assert.ok(!/optImg (nx\.image|ep\.image|rThumb)/.test(tpl) && /optCard ep\.image/.test(tpl) && /optCard rThumb/.test(tpl));
 });

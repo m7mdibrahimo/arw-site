@@ -891,9 +891,10 @@ module.exports = function(eleventyConfig) {
     try { rel = decodeURIComponent(rel); } catch (e) {}
     let file = "." + rel;
     if (!/^\.\/(content|images)\//.test(file)) return "";
+    // a picture already made by an earlier build is used as it is, original or not (INCIDENTS #330)
+    const ready = mapped(rel, "480webp");
+    if (ready) return ready;
     if (!fs.existsSync(file)) {
-      const known = mapped(rel, "480webp");
-      if (known) return known;
       file = /^\/content\/images\//.test(rel) ? await fetchOriginal(rel) : null;
       if (!file) return "";
     }
@@ -905,6 +906,9 @@ module.exports = function(eleventyConfig) {
     } catch (e) { return ""; }
   };
   eleventyConfig.addNunjucksAsyncShortcode("optThumb", optThumb);
+  // a card's picture: the 480px WebP (~20–40 KB) — sharp on a phone's card too, which is about 255 points wide —
+  // or the original when there is none (INCIDENTS #330)
+  eleventyConfig.addNunjucksAsyncShortcode("optCard", async function(src) { return (await optThumb(src)) || String(src || ""); });
   // The whole tag, or nothing (an async shortcode can't be captured with {% set %} in Nunjucks)
   eleventyConfig.addNunjucksAsyncShortcode("optThumbMeta", async function(src) {
     const url = await optThumb(src);
@@ -974,38 +978,45 @@ module.exports = function(eleventyConfig) {
     }
     return info;
   };
-  const getRelatedPosts = function(currentUrl, tags, federation, allContent, limit) {
+  // «ذات صلة» (owner, 2026-10-07): news only, on every page. Ranked by what really ties a story to this page — the
+  // names it shares (a rare tag like a wrestler's name counts more than «WWE»), the same federation — and by time:
+  // news from the days around this show or story first, so each page gets its own list instead of the same newest four.
+  let tagCounts = null;
+  const tagWeight = function(allContent, t) {
+    if (!tagCounts) {
+      tagCounts = new Map();
+      for (const item of allContent) for (const x of (infoOf(item).tags || [])) tagCounts.set(x, (tagCounts.get(x) || 0) + 1);
+    }
+    const n = tagCounts.get(t) || 0;
+    return n > 300 ? 2 : n > 60 ? 4 : 6;
+  };
+  const getRelatedPosts = function(currentUrl, tags, federation, allContent, limit, excludeProgram, refDate) {
     if (!allContent || !Array.isArray(allContent)) return [];
     const maxItems = (typeof limit === "number" && limit > 0) ? limit : 4;
     const normUrl = (currentUrl || "").replace(/\/+$/, "");
-
     const currentTags = Array.isArray(tags)
-      ? tags.map(t => String(t || "").trim().toLowerCase()).filter(Boolean)
+      ? [...new Set(tags.map(t => String(t || "").trim().toLowerCase()).filter(Boolean))]
       : [];
     const targetFed = (federation || "").toString().trim().toUpperCase();
+    const ref = refDate ? new Date(refDate).getTime() : NaN;
+    const DAY = 86400000;
 
-    // Same order as sorting everything by score, then newest, then original position — keeping only the top few.
     const best = [];
-    const better = (a, b) => a.score !== b.score ? a.score > b.score : a.time !== b.time ? a.time > b.time : a.idx < b.idx;
+    const better = (a, b) => a.score !== b.score ? a.score > b.score : a.gap !== b.gap ? a.gap < b.gap : a.time !== b.time ? a.time > b.time : a.idx < b.idx;
     for (let idx = 0; idx < allContent.length; idx++) {
       const item = allContent[idx];
-      if (!item || !item.url) continue;
+      if (!item || !item.url || !/^\/news\//.test(item.url)) continue;
       const info = infoOf(item);
       if (info.url === normUrl) continue;
 
       let score = 0;
-      if (targetFed && info.fed && targetFed === info.fed) {
-        score += 3;
-      }
-      if (currentTags.length > 0 && info.tags) {
-        for (const t of currentTags) {
-          if (t && info.tags.includes(t)) {
-            score += 5;
-          }
-        }
-      }
+      if (targetFed && info.fed && targetFed === info.fed) score += 3;
+      if (currentTags.length && info.tags) for (const t of currentTags) if (info.tags.includes(t)) score += tagWeight(allContent, t);
+      if (!score) continue;
+      const gap = isNaN(ref) ? 0 : Math.abs(info.time - ref);
+      if (!isNaN(ref)) score += gap <= 2 * DAY ? 6 : gap <= 7 * DAY ? 4 : gap <= 30 * DAY ? 2 : 0;
 
-      const cand = { item, score, time: info.time, idx };
+      const cand = { item, score, gap, time: info.time, idx };
       if (best.length === maxItems && !better(cand, best[best.length - 1])) continue;
       let at = best.length;
       while (at > 0 && better(cand, best[at - 1])) at--;
@@ -1380,8 +1391,21 @@ module.exports = function(eleventyConfig) {
     const prevEp = idx > 0 ? prog.episodes[idx - 1] : null;
     const nextEp = (idx >= 0 && idx < prog.episodes.length - 1) ? prog.episodes[idx + 1] : null;
 
+    const MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    const card = function(ep) {
+      // «عرض الرو 21.09.2026 مترجم» → «عرض الرو»: the date has its own line on the card
+      const kind = String(ep.headline || "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}\s*/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
+      return Object.assign({}, ep, { dayLabel: ep.day && ep.month ? ep.day + " " + MONTHS[ep.month - 1] : "", kindLabel: kind });
+    };
+    const here = idx >= 0 ? idx : prog.episodes.length - 1;
+    const recent = [];
+    for (let i = here; i >= 0 && recent.length < 8; i--) recent.push(card(prog.episodes[i]));
+
     return {
       program: prog,
+      recent: recent,
+      nextCard: nextEp ? card(nextEp) : null,
+      libraryHref: "/library/" + prog.slug + "/",
       currentIndex: idx,
       activeSeason: activeSeason,
       activeSeasonLabel: seasonBadgeLabel(activeSeasonObj),

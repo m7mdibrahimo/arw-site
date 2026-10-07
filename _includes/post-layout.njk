@@ -435,89 +435,50 @@
               {% if isNostalgiaItem or nav.program.isNostalgia %}
               {{ nav.program.name }}
               {% else %}
-              {% if isRecap %}ملخصات {% endif %}{{ nounPlural }} {{ nav.program.name }}
+              {% set kind0 = nav.recent[0].kindLabel if nav.recent.length else "" %}
+              {% if not isRecap and not isProgram and kind0 and kind0.indexOf("عرض ") == 0 %}{{ "عروض " + kind0.slice(4) }}{% else %}{% if isRecap %}ملخصات {% endif %}{{ nounPlural }} {{ nav.program.name }}{% endif %}
               {% endif %}
             </h3>
             {% set epCount = nav.program.episodes.length %}
             {% set countSingle = "حلقة" if isProgram else ("عرض" if isNostalgiaItem else ("ملخص" if isRecap else nounSingle)) %}
             {% set countPlural = "حلقات" if isProgram else ("عروض" if isNostalgiaItem else ("ملخصات" if isRecap else nounPlural)) %}
-            <span class="episodes-count">
-              {% if isNostalgiaItem %}
-                {% if isProgram %}
-                قائمة الحلقات ({{ epCount }})
-                {% else %}
-                مسار العروض ({{ epCount }})
-                {% endif %}
-              {% elif epCount == 1 %}
-              1 {{ countSingle }}
-              {% else %}
-              {{ epCount }} {{ countPlural }}
-              {% endif %}
+          </div>
+
+          {% set showsWord = "حلقات" if isProgram else ("ملخصات" if isRecap else "عروض") %}
+          {% set showWord = "حلقة" if isProgram else ("ملخص" if isRecap else "عرض") %}
+          {% if nav.nextCard %}
+          {% set nx = nav.nextCard %}
+          <a href="{{ nx.url | cleanUrl }}" class="sx-next" title="{{ nx.headline or nx.title }}">
+            <span class="sx-next-thumb">{% if nx.image %}<img src="{% optCard nx.image %}" alt="{{ nx.headline or nx.title }}" loading="lazy" decoding="async" width="168" height="94">{% endif %}</span>
+            <span class="sx-next-body">
+              <span class="sx-next-label">{{ "الحلقة التالية" if isProgram else ("الملخص التالي" if isRecap else "العرض التالي") }}</span>
+              <span class="sx-next-date">{% if isAnnual %}{{ nx.headline or nx.title }}{% else %}{{ nx.dayLabel }} {{ nx.year }}{% endif %}</span>
+              {% if not isAnnual and nx.kindLabel %}<span class="sx-next-sub">{{ nx.kindLabel }} مترجم</span>{% endif %}
             </span>
-          </div>
-
-          <div class="episodes-search">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
-            {% if isNostalgiaItem %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="{% if isProgram %}ابحث في حلقات البرنامج...{% else %}ابحث في عروض السلسلة...{% endif %}" autocomplete="off">
-            {% elif isAnnual %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث بالاسم أو الرقم أو السنة... مثال: 2026 أو 285" autocomplete="off">
-            {% elif isSeries %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب رقم {{ nounSingle }}... مثال: 20" autocomplete="off">
-            {% else %}
-            <input type="text" class="episodes-search-input" id="epSearch-{{ nav.program.slug }}" placeholder="ابحث حسب اليوم أو الشهر... مثال: شهر 8 أو يوم 26" autocomplete="off">
-            {% endif %}
-            <button type="button" class="episodes-search-clear" id="epSearchClear-{{ nav.program.slug }}" aria-label="مسح البحث">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-
-          {% if not isAnnual %}
-          <div class="season-tabs" id="seasonTabs-{{ nav.program.slug }}">
-            {% for season in nav.program.seasons %}
-            <button type="button" class="season-tab{% if season.number == nav.activeSeason %} active{% endif %}" data-season="{{ season.number }}">
-              {% if season.type == "season" %}الموسم {{ season.number }}{% elif season.type == "year" %}{{ season.number }}{% else %}{{ nounPlural }} متفرقة{% endif %}
-            </button>
-            {% endfor %}
-          </div>
+            <span class="sx-next-go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></span>
+          </a>
           {% endif %}
 
-          {% for season in nav.program.seasons %}
-          <div class="episode-strip" data-season-panel="{{ season.number }}"{% if season.number != nav.activeSeason %} style="display:none;"{% endif %}>
-            {% for ep in season.episodes %}
-            <a href="{{ ep.url | cleanUrl }}" class="ep-pill{% if ep.pillLabel and ('/' in ep.pillLabel or ep.pillLabel.length > 3 or ep.isNostalgia or isNostalgiaItem) %} ep-pill-date{% endif %}{% if nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %} active{% endif %}" title="{{ ep.headline or ep.title }}" data-day="{{ ep.day }}" data-month="{{ ep.month }}" data-year="{{ ep.year }}" data-episode="{{ ep.episodeLabel }}" data-search="{{ ep.title }} {{ ep.headline }}">
-              <span class="ep-pill-num">{% if ep.pillLabel %}{{ ep.pillLabel }}{% else %}{{ loop.index }}{% endif %}</span>
+          <div class="sx-list">
+            {% for ep in nav.recent %}
+            {% set isNow = nav.currentIndex > -1 and loop.first %}
+            <a href="{{ ep.url | cleanUrl }}" class="sx-card{% if isNow %} is-now{% endif %}" title="{{ ep.headline or ep.title }}"{% if isNow %} aria-current="page"{% endif %}>
+              <span class="sx-thumb">
+                {% if ep.image %}<img src="{% optCard ep.image %}" alt="{{ ep.headline or ep.title }}" loading="lazy" decoding="async" width="320" height="180">{% else %}<span class="sx-thumb-empty">عرب راسلنج</span>{% endif %}
+                {% if isNow %}<span class="sx-now">{{ "تشاهدها الآن" if isProgram else "تشاهده الآن" }}</span>{% endif %}
+              </span>
+              <span class="sx-body">
+                <span class="sx-date">{% if isAnnual %}{{ ep.headline or ep.title }}{% else %}{{ ep.dayLabel }}{% endif %}</span>
+                <span class="sx-meta">{% if not isAnnual and ep.kindLabel %}{{ ep.kindLabel }} · {% endif %}{{ ep.year }}</span>
+              </span>
             </a>
             {% endfor %}
           </div>
-          {% endfor %}
 
-          <div class="episodes-no-results" id="epNoResults-{{ nav.program.slug }}" style="display:none;">لا توجد {{ nounPlural }} مطابقة لبحثك</div>
-
-          {% if nav.prevEp or nav.nextEp %}
-          <div class="ep-nav-arrows">
-            {% if nav.prevEp %}
-            <a href="{{ nav.prevEp.url | cleanUrl }}" class="ep-nav-btn ep-nav-prev" title="{{ nav.prevEp.headline or nav.prevEp.title }}">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-              <span class="ep-nav-text">
-                <span class="ep-nav-label">{% if isRecap %}ملخص {% endif %}{% if isSeries %}الحلقة السابقة{% else %}العرض السابق{% endif %}</span>
-                <span class="ep-nav-title">{{ nav.prevEpLabel }}</span>
-              </span>
-            </a>
-            {% endif %}
-            {% if nav.nextEp %}
-            <a href="{{ nav.nextEp.url | cleanUrl }}" class="ep-nav-btn ep-nav-next" title="{{ nav.nextEp.headline or nav.nextEp.title }}">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-              <span class="ep-nav-text">
-                <span class="ep-nav-label">{% if isRecap %}ملخص {% endif %}{% if isSeries %}الحلقة التالية{% else %}العرض التالي{% endif %}</span>
-                <span class="ep-nav-title">{{ nav.nextEpLabel }}</span>
-              </span>
-            </a>
-            {% endif %}
-          </div>
+          {% if not isNostalgiaItem %}
+          <a href="{{ nav.libraryHref }}" class="sx-all">{% if not isRecap and not isProgram and kind0 and kind0.indexOf("عرض ") == 0 %}كل {{ "عروض " + kind0.slice(4) }}{% else %}كل {{ showsWord }} {{ nav.program.name }}{% endif %} <span class="sx-all-n">({{ epCount }})</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
           {% endif %}
         </div>
-        <script src="{{ asset('/assets/post-seasons.js') }}"></script>
       {% endif %}
     {% endif %}
 
@@ -556,13 +517,13 @@
     {% endif %}
     {% endif %}
 
-    {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4) %}
+    {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4, program_name, event_date or page.date) %}
     {% if relatedPosts and relatedPosts.length %}
-    <section class="related-posts-section reveal" aria-label="أخبار وعروض ذات صلة">
+    <section class="related-posts-section reveal" aria-label="ذات صلة">
       <div class="related-posts-head">
         <h3 class="related-posts-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          أخبار وعروض ذات صلة
+          ذات صلة
         </h3>
         <span class="related-posts-badge">مقترحة لك</span>
       </div>
@@ -572,7 +533,7 @@
         <a href="{{ rItem.url }}" class="related-card">
           <div class="related-card-thumb">
             {% if rThumb %}
-              <img src="{% optImg rThumb, 'https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg' %}" alt="{{ rItem.data.title }}" loading="lazy" width="280" height="155">
+              <img src="{% optCard rThumb %}" alt="{{ rItem.data.title }}" loading="lazy" decoding="async" width="280" height="155">
             {% else %}
               <div class="related-card-placeholder">عرب راسلنج</div>
             {% endif %}
