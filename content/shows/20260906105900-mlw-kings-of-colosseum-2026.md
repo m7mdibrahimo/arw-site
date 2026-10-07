@@ -3,6 +3,7 @@ federation: INDIE
 title: MLW Kings of Colosseum (2026)
 headline: عرض ام ال دبليو كينجز اوف كولوسيوم 05.09.2026 مترجم
 program_name: MLW Kings of Colosseum
+card_title: name
 is_annual: true
 description: عرض ام ال دبليو كينجز اوف كولوسيوم مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-06

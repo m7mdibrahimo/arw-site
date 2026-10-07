@@ -1189,6 +1189,8 @@ module.exports = function(eleventyConfig) {
         seriesType: isProgram ? "program" : "shows",
         timestamp: getItemTimestamp(item),
         federation: (item.data && item.data.federation) || "",
+        // «طريقة ظهوره في قائمة العروض» in the panel: "name" = by its English title, otherwise by its date
+        cardTitle: (item.data && item.data.card_title) || "",
         eventDate: (item.data && (item.data.event_date || item.data.date)) || null,
         duration: (item.data && item.data.duration) || "",
         showType: (item.data && item.data.show_type) || ""
@@ -1399,9 +1401,6 @@ module.exports = function(eleventyConfig) {
     const kindOf = function(ep) {
       return String(ep.headline || "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}\s*/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
     };
-    // A show whose name the rest of its program doesn't share — «ديستروكشن ان كوبي» among the «Road To» nights,
-    // every UFC card, «All Out 2026» — is shown by its full name as it was added; a weekly show that only
-    // changes its date, by the date (owner, 2026-10-07: no «فعالية سنوية» switch, INCIDENTS #332)
     const kindCount = new Map();
     prog.episodes.forEach(function(ep) { const k = kindOf(ep); kindCount.set(k, (kindCount.get(k) || 0) + 1); });
     const card = function(ep) {
@@ -1412,7 +1411,8 @@ module.exports = function(eleventyConfig) {
         // one («عرض ان جيه بي دبليو رود تو ديستركشن») only got cut off there
         weekday: ep.day && ep.month && ep.year ? WEEKDAYS[new Date(Date.UTC(ep.year, ep.month - 1, ep.day)).getUTCDay()] : "",
         kindLabel: kind,
-        named: !kind || (kindCount.get(kind) || 0) < 2 || !!ep.isNostalgia,
+        // the owner picks it per show in the panel (INCIDENTS #332): by its English title, or by its date
+        named: ep.cardTitle === "name" || !!ep.isNostalgia,
         // its English title, in full, as it was added («NJPW Destruction in Kobe (2026)») — owner, 2026-10-07
         fullName: String(ep.title || ep.headline || "").trim(),
         hasDateInName: /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/.test(String(ep.title || ep.headline || ""))

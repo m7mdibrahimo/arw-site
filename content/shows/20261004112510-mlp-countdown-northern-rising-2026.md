@@ -4,6 +4,7 @@ federation: INDIE
 title: MLP Countdown Northern Rising (2026)
 headline: عرض ام ال بي كاونت داون نورثرن رايزنج 03.10.2026 مترجم
 program_name: MLP Northern Rising
+card_title: name
 is_annual: true
 description: عرض ام ال بي كاونت داون نورثرن رايزنج مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-03

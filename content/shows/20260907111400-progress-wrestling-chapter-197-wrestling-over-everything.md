@@ -4,6 +4,7 @@ federation: INDIE
 title: "PROGRESS Wrestling Chapter 197: Wrestling Over Everything"
 headline: عرض بروجرس ريسلينج شابتر 197 06.09.2026 مترجم
 program_name: PROGRESS Wrestling
+card_title: name
 is_annual: true
 description: عرض بروجرس اوديسي شابتر 197 مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-06

@@ -1,6 +1,7 @@
 ---
 federation: INDIE
 program_name: NOAH
+card_title: name
 title: NOAH Kawasaki Summer Voyage 23.08.2026
 headline: عرض نوا 23.08.2026 مترجم
 description: عرض نوا مترجم بالكامل مع جميع النزالات والأحداث.

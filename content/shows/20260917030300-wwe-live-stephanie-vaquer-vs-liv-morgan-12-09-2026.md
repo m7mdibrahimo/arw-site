@@ -4,6 +4,7 @@ federation: WWE
 title: WWE Live Stephanie Vaquer vs Liv Morgan 12.09.2026
 headline: مباراة ستيفاني فاكير ضد ليف مورغان 12.09.2026 في سانتياغو عاصمة تشيلي
 program_name: WWE Live
+card_title: name
 is_annual: true
 description: مباراة ستيفاني فاكير ضد ليف مورغان كاملة مع جميع والأحداث.
 event_date: 2026-09-12

@@ -3,6 +3,7 @@ federation: TNA
 title: TNA Lockdown (2026)
 headline: عرض تي ان ايه لوك داون 2026 مترجم
 program_name: TNA Lockdown
+card_title: name
 description: عرض تي ان ايه لوك داون 2026 مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-23
 date: 2026-08-24T11:17:00.000+03:00

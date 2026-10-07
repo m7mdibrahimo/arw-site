@@ -4,6 +4,7 @@ federation: AEW
 title: AEW All Out Tailgate Brawl (2026)
 headline: عرض اول اوت تيلغيت برول 26.09.2026 مترجم
 program_name: AEW All Out
+card_title: name
 is_annual: true
 maintenance: false
 maintenance_note: ""

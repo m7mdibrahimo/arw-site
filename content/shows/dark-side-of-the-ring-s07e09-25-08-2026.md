@@ -1,6 +1,7 @@
 ---
 federation: WWE
 program_name: Dark Side of the Ring
+card_title: name
 title: Dark Side of the Ring S07E09 25.08.2026
 headline: مسلسل دارك سايد اوف ذا رينج الموسم 7 الحلقة 9 مترجمة
 description: مسلسل دارك سايد اوف ذا رينج مترجم بالكامل مع جميع الأحداث والفقرات.

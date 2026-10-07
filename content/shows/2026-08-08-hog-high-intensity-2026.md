@@ -4,6 +4,7 @@ federation: INDIE
 title: HOG High Intensity (2026)
 headline: عرض اتش او جي هاي انتنسيتي 2026 مترجم
 program_name: HOG
+card_title: name
 is_annual: true
 description: عرض  اتش او جي هاي انتنسيتي 2026 مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-07

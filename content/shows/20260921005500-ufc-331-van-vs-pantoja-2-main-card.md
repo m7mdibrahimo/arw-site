@@ -4,6 +4,7 @@ federation: MMA
 title: "UFC 331: Van vs. Pantoja 2 (Main Card)"
 headline: عرض يو اف سي 331 مين كارد مترجم
 program_name: UFC
+card_title: name
 is_annual: true
 description: عرض يو اف سي 331 مين كارد مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-19

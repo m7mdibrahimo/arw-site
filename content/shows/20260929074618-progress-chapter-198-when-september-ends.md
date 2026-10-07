@@ -4,6 +4,7 @@ federation: INDIE
 title: PROGRESS Chapter 198 When September Ends
 headline: عرض بروجريس شابتر 198 وين سبتمبر اندز 27.09.2026 مترجم
 program_name: PROGRESS Wrestling
+card_title: name
 is_annual: true
 description: عرض بروجريس شابتر 198 وين سبتمبر اندز مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-27

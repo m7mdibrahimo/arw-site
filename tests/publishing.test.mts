@@ -3753,11 +3753,11 @@ test('a show page lists its program as cards (a show with its own name by that n
   assert.equal(n.recent[0].kindLabel, 'عرض الرو');
   assert.equal(n.libraryHref, '/library/wwe-raw/');
   assert.equal(n.recent[0].named, false); // a weekly show: its date
-  // a show the rest of its program doesn't share a name with: its full name, as it was added (INCIDENTS #332)
+  // the owner picks it per show in the panel («طريقة ظهوره في قائمة العروض»): by its English title, or by its date
   const tour = [
     { url: '/shows/n1/', day: 9, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو 09.09.2026 مترجم' },
     { url: '/shows/n2/', day: 13, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو 13.09.2026 مترجم' },
-    { url: '/shows/kobe/', day: 27, month: 9, year: 2026, title: 'NJPW Destruction in Kobe (2026)', headline: 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم' },
+    { url: '/shows/kobe/', day: 27, month: 9, year: 2026, cardTitle: 'name', title: 'NJPW Destruction in Kobe (2026)', headline: 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم' },
   ];
   const k = nav('NJPW', '/shows/kobe/', [{ slug: 'njpw', name: 'NJPW', episodes: tour, seasons: [{ number: 2026, type: 'year', episodes: tour }] }]);
   assert.deepEqual(k.recent.map((e: any) => e.named), [true, false, false]);
@@ -3768,6 +3768,12 @@ test('a show page lists its program as cards (a show with its own name by that n
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.ok(!/episodes-search|ep-pill|آخر 8/.test(tpl), 'the date buttons, the search and the «آخر 8» label are gone');
   assert.ok(!tpl.includes('أخبار وعروض ذات صلة'));
+  // under a date, the show's English title in full; the choice is in the panel
+  assert.match(tpl, /<span class="sx-meta sx-meta-en"><bdi>\{\{ ep\.title or ep\.year \}\}<\/bdi><\/span>/);
+  const editor = fs.readFileSync('studio/js/views/editor.js', 'utf-8');
+  assert.match(editor, /data-seg="card_title"/);
+  assert.match(editor, /\['date', 'بالتاريخ'\], \['name', 'بالاسم الإنجليزي'\]/);
+  assert.match(fs.readFileSync('content/shows/20260928043800-njpw-destruction-in-kobe-2026.md', 'utf-8'), /^card_title: name$/m);
   assert.ok(/جميع \{\{ showsWord \}\} \{\{ nav\.program\.name \}\}/.test(tpl) && !/[>}]كل \{\{/.test(tpl), '«جميع عروض WWE RAW»: Fusha, and the library\'s name');
   // small 480px pictures on the cards, not the 800px ones
   assert.ok(!/optImg (nx\.image|ep\.image|rThumb)/.test(tpl) && /optCard ep\.image/.test(tpl) && /optCard rThumb/.test(tpl));

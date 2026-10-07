@@ -4,6 +4,7 @@ federation: MMA
 title: "UFC 332: Silva vs Wang (Early Prelims)"
 headline: عرض يو اف سي 332 ايرلي بريلمز مترجم
 program_name: UFC
+card_title: name
 is_annual: true
 description: عرض يو اف سي 332 ايرلي بريلمز مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-03

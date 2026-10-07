@@ -8,7 +8,7 @@ export const FEDERATIONS = ['WWE', 'AEW', 'NJPW', 'TNA', 'ROH', 'MMA', 'INDIE'];
 export const COLLECTIONS = {
   shows: {
     label: 'العروض', singular: 'عرض', icon: 'show', color: '#7c6cf2', folder: 'content/shows', urlBase: '/shows/',
-    order: ['show_type', 'federation', 'title', 'headline', 'program_name', 'season_number', 'episode_number', 'maintenance', 'maintenance_note', 'description', 'event_date', 'date', 'duration', 'tags', 'image', 'servers', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
+    order: ['show_type', 'federation', 'title', 'headline', 'card_title', 'program_name', 'season_number', 'episode_number', 'maintenance', 'maintenance_note', 'description', 'event_date', 'date', 'duration', 'tags', 'image', 'servers', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
     defaults: { show_type: 'عرض', layout: 'post-layout.njk' },
     required: ['federation', 'title', 'duration', 'image'],
   },

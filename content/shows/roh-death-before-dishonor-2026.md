@@ -3,6 +3,7 @@ federation: ROH
 title: ROH Death Before Dishonor (2026)
 headline: عرض ار او اتش ديث بيفور ديشونر 2026 مترجم
 program_name: ROH Death Before Dishonor
+card_title: name
 description: عرض ار او اتش ديث بيفور ديشونر مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-21
 date: 2026-08-23T07:25:00.000+03:00

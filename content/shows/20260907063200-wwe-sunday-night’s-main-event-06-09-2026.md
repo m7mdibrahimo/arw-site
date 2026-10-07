@@ -4,6 +4,7 @@ federation: WWE
 title: WWE Sunday Night’s Main Event 06.09.2026
 headline: عرض صنداي نايت ماين ايفنت 06.09.2026 مترجم
 program_name: WWE Sunday Night’s Main Event
+card_title: name
 is_annual: true
 description: عرض صنداي نايت ماين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-06

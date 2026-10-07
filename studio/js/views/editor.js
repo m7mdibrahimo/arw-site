@@ -17,7 +17,7 @@ export function closeEditor() { S = null; document.onpaste = null; }
 // ── Section layout per collection ──────────────────────────────────────────
 const SECTIONS = {
   shows: [
-    { id: 'basics', title: 'البيانات الأساسية', icon: 'show', fields: ['program', 'federation', 'title', 'event_date', 'headline', 'show_type', 'numbering'] },
+    { id: 'basics', title: 'البيانات الأساسية', icon: 'show', fields: ['program', 'federation', 'title', 'event_date', 'headline', 'card_title', 'show_type', 'numbering'] },
     { id: 'watch', title: 'سيرفرات المشاهدة', icon: 'eye', fields: ['servers'] },
     { id: 'downloads', title: 'روابط التحميل', icon: 'upload', fields: ['downloads'] },
     { id: 'cover', title: 'الغلاف والتفاصيل', icon: 'image', fields: ['image', 'description', 'tags', 'duration', 'date', 'maintenance', 'body'] },
@@ -62,6 +62,9 @@ const F = {
   headline: () => html`<div class="field"><label for="f-headline">العنوان العربي ${req('headline')} <em>اللي بيظهر للزوار</em></label>
     <div class="combo"><input class="input" id="f-headline" data-k="headline" dir="auto" value="${S.data.headline || ''}" placeholder="مثال: عرض الرو 21.09.2026 مترجم">
     <button type="button" class="btn btn-soft" id="suggest-headline" title="اقتراح من آخر حلقة">${icon('wand')}</button></div></div>`,
+  // how the show is listed in its program's cards on the show pages (owner, 2026-10-07; INCIDENTS #332)
+  card_title: () => html`<div class="field"><label>طريقة ظهوره في قائمة العروض <em>تحت صفحة العرض</em></label>
+    <div class="seg" data-seg="card_title">${[['date', 'بالتاريخ'], ['name', 'بالاسم الإنجليزي']].map(([v, l]) => html`<button type="button" class="${(S.data.card_title || 'date') === v ? 'on' : ''}" data-v="${v}">${l}</button>`)}</div></div>`,
   show_type: () => html`<div class="field field-half"><label>نوع المحتوى</label>
     <div class="seg" data-seg="show_type">${['عرض', 'برنامج'].map(v => html`<button type="button" class="${(S.data.show_type || 'عرض') === v ? 'on' : ''}" data-v="${v}">${v}</button>`)}</div></div>`,
   numbering: () => html`<details class="field fold" ${S.data.season_number || S.data.episode_number ? 'open' : ''}>

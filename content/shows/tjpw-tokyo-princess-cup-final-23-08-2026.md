@@ -1,6 +1,7 @@
 ---
 federation: INDIE
 program_name: TJPW
+card_title: name
 title: TJPW Tokyo Princess Cup Final 23.08.2026
 headline: عرض تي جي بي دبليو 23.08.2026 مترجم
 description: عرض تي جي بي دبليو مترجم بالكامل مع جميع النزالات والأحداث.

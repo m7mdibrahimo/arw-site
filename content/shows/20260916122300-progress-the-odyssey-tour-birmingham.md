@@ -4,6 +4,7 @@ federation: INDIE
 title: PROGRESS The Odyssey Tour Birmingham
 headline: عرض بروجرس ذا اوديسي تور برمنجهام 15.09.2026 مترجم
 program_name: PROGRESS Wrestling
+card_title: name
 is_annual: true
 description: عرض بروجرس ذا اوديسي تور برمنجهام مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-13
