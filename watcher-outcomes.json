@@ -39,11 +39,6 @@
   "retry": false,
   "at": "2026-10-07T00:04:21.484Z"
  },
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-6-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-06T23:51:25.796Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,

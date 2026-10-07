@@ -1,5 +1,15 @@
 [
   {
+    "id": 802251741,
+    "link": "https://www.ringsidenews.com/aew-collision-spoiler-results-october-10-2026/",
+    "date": "Tue, 06 Oct 2026 23:57:11 +0000",
+    "date_gmt": "2026-10-06T23:57:11.000Z",
+    "title": {
+      "rendered": "AEW Collision Spoiler Results for October 10, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2023/09/AEW-Collision-Spoilers-2023.jpg?x51860"
+  },
+  {
     "id": 802251594,
     "link": "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-6-2026/",
     "date": "Tue, 06 Oct 2026 23:31:00 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Opening Match for October 6, 2026 WWE NXT Revealed"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/08/opening-match-for-august-18-wwe-nxt-revealed-20.jpg?x51860"
-  },
-  {
-    "id": 802251663,
-    "link": "https://www.ringsidenews.com/booker-t-confirms-he-trained-travis-scott-reveals-why-wwe-run-fell-apart/",
-    "date": "Tue, 06 Oct 2026 18:56:10 +0000",
-    "date_gmt": "2026-10-06T18:56:10.000Z",
-    "title": {
-      "rendered": "Booker T Confirms He Trained Travis Scott and Reveals Why WWE Run Fell Apart"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2025/12/booker-t-admits-wwe-jumped-the-gun-with-travis-scott-after-deal-collapse-54.jpg?x51860"
   }
 ]
