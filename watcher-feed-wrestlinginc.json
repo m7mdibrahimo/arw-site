@@ -1,5 +1,15 @@
 [
   {
+    "id": 1475422871,
+    "link": "https://www.wrestlinginc.com/2280460/wwe-kevin-owens-sami-zayn-penta-aew-pac-benjamin-satterley-neville/",
+    "date": "Wed, 07 Oct 2026 19:03:22 +0000",
+    "date_gmt": "2026-10-07T19:03:22.000Z",
+    "title": {
+      "rendered": "WWE Stars Kevin Owens, Sami Zayn, Penta & More Remember Late AEW Star Pac"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-stars-kevin-owens-sami-zayn-penta-more-remember-late-aew-star-pac/l-intro-1791399678.jpg"
+  },
+  {
     "id": 4056232048,
     "link": "https://www.wrestlinginc.com/2280418/wwe-wrestlemania-potentially-return-new-orleans-2029/",
     "date": "Wed, 07 Oct 2026 18:43:23 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Hank, Tank & More Advance In WWE NXT Dusty Rhodes Tag Team Classic"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/hank-tank-more-advance-in-wwe-nxt-dusty-rhodes-tag-team-classic/l-intro-1791337060.jpg"
-  },
-  {
-    "id": 4943713877,
-    "link": "https://www.wrestlinginc.com/2279613/darby-allin-escapes-aew-grand-slam-france-tnt-title/",
-    "date": "Wed, 07 Oct 2026 01:32:40 +0000",
-    "date_gmt": "2026-10-07T01:32:40.000Z",
-    "title": {
-      "rendered": "Darby Allin Escapes AEW Grand Slam: France With TNT Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/darby-allin-escapes-aew-grand-slam-france-with-tnt-title/l-intro-1791336655.jpg"
   }
 ]
