@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write   # arw-media deletes only for a key that can write the repo
 
 jobs:
   prune:

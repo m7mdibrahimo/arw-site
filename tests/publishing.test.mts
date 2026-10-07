@@ -3492,7 +3492,7 @@ test('«تعلقت على» and broken «authority figure» / «WWE Manager» tr
   assert.equal(applyCorrections('مع تارا ريد وأل سابيينزا'), 'مع تارا ريد وآل سابينزا');
 });
 
-test('the show reels are linked into the build, not copied byte for byte (INCIDENTS #310)', () => {
+test('the show reels are linked into the build, not copied byte for byte (INCIDENTS #317)', () => {
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.doesNotMatch(cfg, /addPassthroughCopy\(\{\s*"dist\/videos"/);
   assert.match(cfg, /linkTree\("dist\/videos", "_site\/videos"\)/);
@@ -3606,4 +3606,14 @@ test('a reel posted on Facebook and Instagram leaves R2; one still being posted 
   const state = { '20261005-raw': posted, '20261006-nxt': { ...posted, instagram_story: false }, '20260918-stuck': { facebook_reel: true } };
   assert.deepEqual(reelsToRemove(manifest, state, now).sort(), ['reel-20260918-stuck.mp4', 'reel-20261005-raw.mp4', 'reel-news-old.mp4']);
   assert.match(fs.readFileSync('.github/workflows/media-cleanup.yml', 'utf-8'), /npx tsx scripts\/media-store\.ts prune-reels/);
+  // arw-media deletes only for a key that can write the repo: a read-only cleanup removed nothing (INCIDENTS #313)
+  for (const f of ['media-cleanup', 'show-reel-monitor']) assert.match(fs.readFileSync(`.github/workflows/${f}.yml`, 'utf-8'), /^  contents: write/m, f);
+});
+
+test('a stray tatweel inside a word is removed, joined prefixes keep it; «وون» and «اسطوانات» fixed (INCIDENTS #317)', async () => {
+  const { autoFix, applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(autoFix('أبعده مؤقـتا عن الشاشة ولم يعلن رسميـا عن عودته'), 'أبعده مؤقتا عن الشاشة ولم يعلن رسميا عن عودته');
+  assert.equal(autoFix('أشاد بـرومان رينز ولـسامي زين وبـكودي'), 'أشاد بـرومان رينز ولـسامي زين وبـكودي');
+  assert.equal(applyCorrections('لمواجهة الثنائي ذا ميز وون جون موريسون'), 'لمواجهة الثنائي ذا ميز وجون موريسون');
+  assert.equal(applyCorrections('الحاصل على عدة اسطوانات بلاتينية'), 'الحاصل على عدة أسطوانات بلاتينية');
 });
