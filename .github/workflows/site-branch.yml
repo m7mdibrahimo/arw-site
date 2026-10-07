@@ -45,16 +45,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 9
     steps:
-      # The bots' news is built at most once every 4 minutes, all of it together: Cloudflare (free plan) builds one
-      # version at a time, and a save from the panel waited behind a bot's build (INCIDENTS #315). A push (the panel,
-      # a device) or a panel save among the new commits never waits; a newer run replaces a waiting one
-      # (cancel-in-progress) and the wait counts from the last «site» update, so it never grows.
-      - name: Gather the bots' news (the panel's saves go straight through)
-        if: github.event_name == 'workflow_run' || github.event_name == 'schedule'
+      # Cloudflare (free plan) builds one version at a time, ~2 minutes each, and builds every version it is
+      # given, even one a newer version already covers. So «site» moves at most once every 2.5 minutes, and
+      # whatever was saved meanwhile goes out together: five saves from the panel in a row had queued five builds
+      # and the site ran 16 minutes behind (INCIDENTS #343). The bots' news waits for 4 minutes (INCIDENTS #315).
+      # A newer run replaces a waiting one (cancel-in-progress) and the wait counts from the last «site» update,
+      # so it never grows.
+      - name: Gather what was saved since the last build
+        if: github.event_name != 'workflow_dispatch'
         env:
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT: ${{ github.event_name }}
           BATCH: '240'
+          MIN_GAP: '150'
         run: |
           set -uo pipefail
           api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
@@ -63,11 +67,12 @@ jobs:
           api "$BASE/commits/$SITE" > s.json || exit 0
           PREV=$(jq -r .message s.json | sed -n 's/^site-of: \([0-9a-f]\{40\}\).*/\1/p' | head -1)
           [ -n "$PREV" ] || exit 0
-          if api "https://api.github.com/repos/$REPO/compare/$PREV...main" | jq -r '.commits[].commit.message' | grep -qE 'لوحة التحكم|^(Create|Update|Delete) '; then
-            echo "a save from the panel is waiting: no batching"; exit 0
+          GAP=$BATCH
+          if [ "$EVENT" = "push" ] || api "https://api.github.com/repos/$REPO/compare/$PREV...main" | jq -r '.commits[].commit.message' | grep -qE 'لوحة التحكم|^(Create|Update|Delete) '; then
+            GAP=$MIN_GAP   # a save from the panel or a device: only as long as the last build needs
           fi
           AGE=$(( $(date +%s) - $(date -d "$(jq -r .committer.date s.json)" +%s) ))
-          if [ "$AGE" -lt "$BATCH" ]; then echo "last site update ${AGE}s ago: gathering for $((BATCH - AGE))s"; sleep $((BATCH - AGE)); fi
+          if [ "$AGE" -lt "$GAP" ]; then echo "last site update ${AGE}s ago: gathering for $((GAP - AGE))s"; sleep $((GAP - AGE)); fi
       # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
       # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
       - name: Point «site» at the latest main, without pictures and reels

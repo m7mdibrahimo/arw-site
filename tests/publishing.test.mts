@@ -2771,7 +2771,7 @@ test('Agent Zero and Jessie McKay have one spelling (INCIDENTS #220)', () => {
   assert.match(buildNamesGlossaryHint('Agent Zero and Jessie McKay'), /Agent Zero = إيجنت زيرو/);
 });
 
-test('a results report writes every name its source names — no swapped Robbie (INCIDENTS #335)', async () => {
+test('a results report writes every name its source names — no swapped Robbie (INCIDENTS #343)', async () => {
   const { sourceNamesMissing } = await import('../scripts/fightful-watcher');
   const src = 'TMDK (Kosei Fujita, Robbie Eagles & Hartley Jackson) def. Aaron Wolf. IWGP Junior Heavyweight Championship: YOH (c) def. Robbie X to retain the title.';
   assert.equal(sourceNamesMissing(src, 'تغلب روبي إيغلز. دافع يوه عن لقبه ضد روبي إيغلز.').includes('Robbie X'), true);
@@ -3689,10 +3689,13 @@ test('the site builds from a «site» branch without the original pictures and r
   const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
   for (const name of ['Fightful News Auto Watcher', 'Ringside News Auto Watcher', 'Wrestling Inc Auto Watcher']) assert.ok(wf.includes(`- ${name}`), name);
   // the bots' news is gathered (at most one Cloudflare build every 4 minutes); a push or a panel save never waits (INCIDENTS #315)
-  const gather = wf.slice(wf.indexOf("- name: Gather the bots' news"), wf.indexOf('- name: Point «site» at the latest main'));
-  assert.match(gather, /if: github\.event_name == 'workflow_run' \|\| github\.event_name == 'schedule'/);
+  const gather = wf.slice(wf.indexOf("- name: Gather what was saved since the last build"), wf.indexOf('- name: Point «site» at the latest main'));
+  assert.match(gather, /if: github\.event_name != 'workflow_dispatch'/);
   assert.match(gather, /grep -qE 'لوحة التحكم\|\^\(Create\|Update\|Delete\) '/);
   assert.match(gather, /BATCH: '240'/);
+  // panel saves too: «site» moves at most every 2.5 minutes, so Cloudflare never queues builds (INCIDENTS #343)
+  assert.match(gather, /MIN_GAP: '150'/);
+  assert.match(gather, /\[ "\$EVENT" = "push" \]/);
   assert.match(wf, /cancel-in-progress: true/);
   assert.match(wf, /cron: '\*\/10 \* \* \* \*'/);
   assert.match(wf, /MAIN=\$\(api "\$BASE\/ref\/heads\/main"/);
