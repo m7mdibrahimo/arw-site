@@ -87,6 +87,16 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .combo .input { flex: 1; }
 .combo .btn { border-radius: 18px; }
 .combo-top { align-items: flex-start; }
+/* Programme name + «الاتحاد في المكتبة» box on its left (2026-10-07) */
+.prog-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 280px); gap: 12px; align-items: end; }
+.prog-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.prog-col > label { font-weight: 800; font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.libfed { background: var(--yellow-soft); border: 2px solid color-mix(in srgb, var(--yellow) 55%, transparent); border-radius: 22px; padding: 10px 12px 12px; }
+.libfed > label svg { width: 17px; height: 17px; }
+.libfed select.input { font-weight: 800; border-color: transparent; }
+.libfed select.input:focus { border-color: var(--ink); }
+.libfed-warn { color: var(--amber); font-weight: 800; }
+@media (max-width: 760px) { .prog-grid { grid-template-columns: 1fr; } }
 .alert { padding: 13px 17px; border-radius: 18px; font-size: 14px; font-weight: 700; display: flex; gap: 8px; align-items: center; }
 .alert-error { background: var(--coral-soft); color: var(--red); }
 .alert-info { background: var(--sky-soft); color: var(--sky); }

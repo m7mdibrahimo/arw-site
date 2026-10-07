@@ -1191,6 +1191,8 @@ module.exports = function(eleventyConfig) {
         federation: (item.data && item.data.federation) || "",
         // «طريقة ظهوره في قائمة العروض» in the panel: "name" = by its English title, otherwise by its date
         cardTitle: (item.data && item.data.card_title) || "",
+        // the federation the panel files the section under in «مكتبة العروض» (empty = by the section's name)
+        libraryFederation: String((item.data && item.data.library_federation) || "").trim(),
         eventDate: (item.data && (item.data.event_date || item.data.date)) || null,
         duration: (item.data && item.data.duration) || "",
         showType: (item.data && item.data.show_type) || ""
@@ -1240,7 +1242,8 @@ module.exports = function(eleventyConfig) {
   // own section and are left out; scheduled (future) shows are not listed yet.
   // «مكتبة العروض» by federation (owner's request 2026-10-07): the library page lists the federations, and each
   // federation has its own page (/library/federation/<key>/) with its sections. A section joins a federation by
-  // its name («CMLL Lunes Clasico» → CMLL), else by the federation set on its shows; listed in this order.
+  // the federation picked for it in the panel (library_federation on its latest show), else by its name
+  // («CMLL Lunes Clasico» → CMLL), else by the federation set on its shows; listed in this order.
   const LIBRARY_PROMOTIONS = [
     { key: "wwe", mark: "WWE", name: "World Wrestling Entertainment", h: 6, s: 64, fed: "WWE" },
     { key: "aew", mark: "AEW", name: "All Elite Wrestling", h: 42, s: 80, fed: "AEW" },
@@ -1269,6 +1272,16 @@ module.exports = function(eleventyConfig) {
     { key: "indie", mark: "INDIE", name: "الاتحادات المستقلة", h: 166, s: 56, fed: "INDIE" },
   ];
   const libraryPromotionOf = function(prog) {
+    const chosen = String(prog.chosen || "").trim();
+    if (chosen) {
+      const c = chosen.toLowerCase();
+      const known = LIBRARY_PROMOTIONS.find(function(x) { return x.key === c || x.mark.toLowerCase() === c; });
+      if (known) return known;
+      // A federation typed in the panel that isn't in the list above: its own page, a colour from its name
+      const key = arabicSlug(chosen) || c.replace(/[^a-z0-9]+/g, "-");
+      let h = 0; for (const ch of key) h = (h * 31 + ch.charCodeAt(0)) % 360;
+      return { key: key, mark: chosen, name: chosen, h: h, s: 55, custom: true };
+    }
     const name = String(prog.name || "");
     return LIBRARY_PROMOTIONS.find(function(x) { return x.re && x.re.test(name); })
       || LIBRARY_PROMOTIONS.find(function(x) { return x.fed && x.fed === prog.federation; })
@@ -1339,7 +1352,9 @@ module.exports = function(eleventyConfig) {
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
         };
         return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
-          promo: (function(x) { return { key: x.key, mark: x.mark }; })(libraryPromotionOf({ name: p.name, federation: federation })) };
+          promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
+            name: p.name, federation: federation,
+            chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
@@ -1369,19 +1384,29 @@ module.exports = function(eleventyConfig) {
     });
     return pages;
   });
-  eleventyConfig.addFilter("libraryFederations", function(library) {
-    const seen = [];
-    (library || []).forEach(function(p) { if (p.federation && seen.indexOf(p.federation) === -1) seen.push(p.federation); });
-    const order = ["WWE", "AEW", "TNA", "ROH", "NJPW", "CMLL", "AAA", "MLW", "UFC"];
-    return seen.sort(function(a, b) {
-      const ia = order.indexOf(a), ib = order.indexOf(b);
-      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || a.localeCompare(b);
+  // For the panel's «مكانه في مكتبة العروض» picker: every federation and the one each section is filed under
+  eleventyConfig.addCollection("libraryFederationsForStudio", function(collectionApi) {
+    const lib = buildLibrary(collectionApi);
+    const list = LIBRARY_PROMOTIONS.filter(function(x) { return x.key !== "mma"; }).map(function(x) { return { key: x.key, mark: x.mark, name: x.name }; });
+    lib.forEach(function(p) {
+      if (p.promo.custom && !list.some(function(x) { return x.key === p.promo.key; })) list.push({ key: p.promo.key, mark: p.promo.mark, name: p.promo.name });
     });
+    list.forEach(function(x) { x.sections = lib.filter(function(p) { return p.promo.key === x.key; }).length; });
+    const programs = {};
+    lib.forEach(function(p) { programs[p.name] = p.promo.key; });
+    return [{ federations: list, programs: programs }];
   });
   // The library's pages: /library/ (the federations) and /library/federation/<key>/ (one federation's sections)
   eleventyConfig.addCollection("libraryViews", function(collectionApi) {
     const lib = buildLibrary(collectionApi);
-    const promos = LIBRARY_PROMOTIONS.map(function(x) {
+    // federations typed in the panel join the list before the documentaries
+    const list = LIBRARY_PROMOTIONS.slice();
+    lib.forEach(function(p) {
+      if (p.promo.custom && !list.some(function(x) { return x.key === p.promo.key; })) {
+        list.splice(list.findIndex(function(x) { return x.key === "documentaries"; }), 0, p.promo);
+      }
+    });
+    const promos = list.map(function(x) {
       const programs = lib.filter(function(p) { return p.promo.key === x.key; });
       if (!programs.length) return null;
       const byLatest = programs.slice().sort(function(a, b) { return b.latest.timestamp - a.latest.timestamp; });

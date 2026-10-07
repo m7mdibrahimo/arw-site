@@ -43,9 +43,101 @@ const SECTIONS = {
   ],
 };
 
+// ── «الاتحاد في المكتبة» (owner, 2026-10-07) ────────────────────────────────
+// Every section of «مكتبة العروض» lives under a federation (/library/federation/<key>/). The box next to
+// the programme name picks it: an existing programme shows where it already is, a new one is filed
+// where the owner puts it (library_federation on the show; empty = the site decides by the name).
+const LIB_MAIN_FED = { wwe: 'WWE', aew: 'AEW', njpw: 'NJPW', tna: 'TNA', roh: 'ROH', ufc: 'MMA', mma: 'MMA' };
+function libFeds() { return (S.lib && S.lib.federations) || []; }
+function libFedOfProgram(name) { return (S.lib && S.lib.programs && S.lib.programs[String(name || '').trim()]) || ''; }
+/** The saved value → a key of the list ('' = automatic, otherwise a typed new federation). */
+function libFedKey(v) {
+  const c = String(v || '').trim().toLowerCase();
+  if (!c) return '';
+  const f = libFeds().find(x => x.key === c || String(x.mark).toLowerCase() === c);
+  return f ? f.key : String(v).trim();
+}
+function libFedLabel(key) { const f = libFeds().find(x => x.key === key); return f ? f.mark : key; }
+/** What the box shows: the picked federation, else where the programme already is. */
+function libFedShown() { return libFedKey(S.data.library_federation) || libFedOfProgram(S.data.program_name); }
+function programsFor(key) {
+  if (!key || !S.lib || !S.lib.programs) return S.programs;
+  const inFed = new Set(Object.keys(S.lib.programs).filter(n => S.lib.programs[n] === key));
+  return S.programs.filter(p => inFed.has(p));
+}
+function libFedHint() {
+  const prog = String(S.data.program_name || '').trim(), shown = libFedShown();
+  const picked = libFedKey(S.data.library_federation), was = libFedOfProgram(prog);
+  if (!prog) return shown ? `اختار قسم من أقسام ${libFedLabel(shown)} أو اكتب اسم قسم جديد.` : 'اختار الاتحاد عشان تشوف أقسامه بس، أو اكتب اسم البرنامج على طول.';
+  if (was && picked && picked !== was) return raw(`<b class="libfed-warn">«${esc(prog)}» موجود في ${esc(libFedLabel(was))}. لو حفظت، القسم كله هيتنقل لـ ${esc(libFedLabel(picked))}.</b>`);
+  if (was) return `هيتضاف لقسم «${prog}» جوه ${libFedLabel(was)} في مكتبة العروض.`;
+  if (picked) return `قسم جديد «${prog}» هيتعمل جوه ${libFedLabel(picked)} في مكتبة العروض.`;
+  return 'قسم جديد: اختار الاتحاد اللي يتحط فيه، أو سيبه «تلقائي» والموقع هيحدده من الاسم.';
+}
+function sectionsCount(n) { return n === 1 ? 'قسم واحد' : n === 2 ? 'قسمين' : n % 100 >= 3 && n % 100 <= 10 ? `${n} أقسام` : `${n} قسم`; }
+function programWithLibrary() {
+  const shown = libFedShown();
+  const known = !shown || libFeds().some(f => f.key === shown);
+  return html`<div class="field">
+    <div class="prog-grid">
+      <div class="prog-col">
+        <label for="f-program">اسم البرنامج <em>اختار قسم موجود أو اكتب اسم قسم جديد</em></label>
+        <div class="combo"><input class="input" id="f-program" data-k="program_name" list="programs" dir="auto" placeholder="مثال: WWE RAW" value="${S.data.program_name || ''}">
+        <button type="button" class="btn btn-soft" id="fill-last">${icon('wand')} املأ من آخر حلقة</button></div>
+      </div>
+      <div class="prog-col libfed">
+        <label for="f-libfed">${icon('folder')} الاتحاد في المكتبة</label>
+        <select class="input" id="f-libfed">
+          <option value="" ${shown ? '' : 'selected'}>تلقائي (حسب اسم البرنامج)</option>
+          ${libFeds().map(f => html`<option value="${f.key}" ${f.key === shown ? 'selected' : ''}>${f.mark}${f.sections ? `\u200F · ${sectionsCount(f.sections)}` : ''}</option>`)}
+          <option value="__new" ${known ? '' : 'selected'}>+ اتحاد جديد…</option>
+        </select>
+        <input class="input" id="f-libfed-new" dir="ltr" placeholder="اسم الاتحاد، مثال: DDT" value="${known ? '' : shown}" ${known ? 'hidden' : ''}>
+      </div>
+    </div>
+    <datalist id="programs">${programsFor(known ? shown : '').map(p => html`<option value="${p}">`)}</datalist>
+    <small class="hint" id="libfed-hint">${libFedHint()}</small></div>`;
+}
+function refreshLibFed({ fromProgram = false } = {}) {
+  const sel = $('#f-libfed'); if (!sel) return;
+  const shown = libFedShown();
+  // A programme that already exists brings its federation with it
+  if (fromProgram && !$('#f-libfed-new').value) sel.value = libFeds().some(f => f.key === shown) ? shown : '';
+  const key = sel.value === '__new' ? '' : sel.value;
+  const dl = $('#programs');
+  if (dl) mount(dl, html`${programsFor(key).map(p => html`<option value="${p}">`)}`);
+  const hint = $('#libfed-hint'); if (hint) mount(hint, html`${libFedHint()}`);
+}
+/** The site's own federation follows the library's (CMLL → INDIE, UFC → MMA); the documentaries keep theirs. */
+function followMainFed(key) {
+  const main = key && key !== 'documentaries' ? (LIB_MAIN_FED[key] || 'INDIE') : '';
+  if (!main || !FEDERATIONS.includes(main) || S.data.federation === main) return;
+  S.data.federation = main;
+  $$('[data-seg="federation"] button').forEach(b => b.classList.toggle('on', b.dataset.v === main));
+}
+function bindLibFed(form) {
+  form.addEventListener('change', (e) => {
+    if (e.target.id !== 'f-libfed') return;
+    const v = e.target.value, box = $('#f-libfed-new');
+    box.hidden = v !== '__new';
+    if (v === '__new') { S.data.library_federation = box.value.trim() || undefined; box.focus(); }
+    else { S.data.library_federation = v || undefined; followMainFed(v); }
+    refreshLibFed(); markDirty();
+  });
+  form.addEventListener('input', (e) => {
+    if (e.target.id === 'f-libfed-new') { S.data.library_federation = e.target.value.trim() || undefined; refreshLibFed(); markDirty(); }
+    if (e.target.id === 'f-program') {
+      // Picking an existing programme files the show where that programme already is
+      const was = libFedOfProgram(e.target.value);
+      if (was) { S.data.library_federation = was; followMainFed(was); }
+      refreshLibFed({ fromProgram: !!was });
+    }
+  });
+}
+
 // ── Field renderers ────────────────────────────────────────────────────────
 const F = {
-  program: () => html`<div class="field">
+  program: () => S.collection === 'shows' ? programWithLibrary() : html`<div class="field">
     <label for="f-program">اسم البرنامج <em>اختياري — بيربط الحلقات ببعض</em></label>
     <div class="combo"><input class="input" id="f-program" data-k="program_name" list="programs" dir="auto" placeholder="مثال: WWE RAW" value="${S.data.program_name || ''}">
     <button type="button" class="btn btn-soft" id="fill-last">${icon('wand')} املأ من آخر حلقة</button></div>
@@ -170,6 +262,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
   mount(page, html`<div class="loading-page"><div class="spinner"></div><p class="muted">جاري الفتح…</p></div>`);
   const studioData = await siteData('studio-data.json').catch(() => []);
   const index = await siteData('search-index.json').catch(() => []);
+  const lib = collection === 'shows' ? await siteData('studio-library.json').catch(() => null) : null;
 
   S = {
     collection, slug, data: {}, body: '', keys: [], gap: true, eol: true, sha: null, images: [], dirty: false,
@@ -179,6 +272,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
     nostalgiaItems: studioData.filter(d => d.collection === 'nostalgia'),
     tagSuggestions: [...new Set(studioData.flatMap(d => d.tags || []).concat(index.slice(0, 400).flatMap(i => i.tags || [])))].slice(0, 400),
     url: null,
+    lib: lib && Array.isArray(lib.federations) ? lib : { federations: [], programs: {} },
   };
 
   if (slug) {
@@ -350,6 +444,7 @@ function bindAll() {
 
   bindHelpers();
   bindServers(); bindDownloads(); bindImage(); bindTags(); bindDate(); bindBody();
+  if (S.collection === 'shows') bindLibFed(form);
   if (S.collection === 'news') titleHint();
 
   // Section nav highlight

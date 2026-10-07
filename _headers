@@ -26,6 +26,9 @@
 /studio-data.json
   Cache-Control: no-cache, must-revalidate, max-age=0
 
+/studio-library.json
+  Cache-Control: no-cache, must-revalidate, max-age=0
+
 /build.json
   Cache-Control: no-store
   X-Robots-Tag: noindex

@@ -1,0 +1,7 @@
+---
+permalink: "/studio-library.json"
+eleventyExcludeFromCollections: true
+---
+{#- For the panel's «مكانه في مكتبة العروض» picker: every federation of the show library and the one
+    each section (program_name) is filed under. -#}
+{{ collections.libraryFederationsForStudio[0] | jsonify | safe }}
