@@ -3178,7 +3178,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 02.10.2026 مترجم",
-    "lastAttempt": 1791388045926,
+    "lastAttempt": 1791388960918,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -3195,9 +3195,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان اكس تي 06.10.2026 مترجم",
-    "lastAttempt": 1791384110270,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791388961915,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
