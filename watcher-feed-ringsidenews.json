@@ -1,5 +1,35 @@
 [
   {
+    "id": 802251875,
+    "link": "https://www.ringsidenews.com/aew-world-trios-title-match-announced-wrestledream/",
+    "date": "Wed, 07 Oct 2026 01:44:32 +0000",
+    "date_gmt": "2026-10-07T01:44:32.000Z",
+    "title": {
+      "rendered": "AEW World Trios Title Match Announced for WrestleDream"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/aew-world-trios-title-match-announced-for-wrestledream-56.jpg?x51860"
+  },
+  {
+    "id": 802251907,
+    "link": "https://www.ringsidenews.com/wwe-announces-four-matches-nxt-episode-october-13-2026/",
+    "date": "Wed, 07 Oct 2026 01:38:57 +0000",
+    "date_gmt": "2026-10-07T01:38:57.000Z",
+    "title": {
+      "rendered": "WWE Announces Four Matches for NXT Episode on October 13, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/last-minute-match-revealed-for-september-8-wwe-nxt-46.jpg?x51860"
+  },
+  {
+    "id": 802251821,
+    "link": "https://www.ringsidenews.com/birthright-advance-dusty-rhodes-tag-team-classic-106-wwe-nxt/",
+    "date": "Wed, 07 Oct 2026 01:32:23 +0000",
+    "date_gmt": "2026-10-07T01:32:23.000Z",
+    "title": {
+      "rendered": "BirthRight Advance in Dusty Rhodes Tag Team Classic on 10/6 WWE NXT"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/birthright-advance-in-dusty-rhodes-tag-team-classic-on-106-wwe-nxt-44.jpg?x51860"
+  },
+  {
     "id": 802251860,
     "link": "https://www.ringsidenews.com/jon-moxley-defend-aew-continental-championship-wrestledream/",
     "date": "Wed, 07 Oct 2026 01:09:04 +0000",
@@ -118,35 +148,5 @@
       "rendered": "Roman Reigns Announced for October 19 WWE RAW in San Diego"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/roman-reigns-contract-signing-amp-oba-femi-appearance-set-for-may-25-wwe-raw-17.jpg?x51860"
-  },
-  {
-    "id": 802251701,
-    "link": "https://www.ringsidenews.com/tna-bound-glory-2026-gets-new-start-time-ahead-tampa-show/",
-    "date": "Tue, 06 Oct 2026 20:23:01 +0000",
-    "date_gmt": "2026-10-06T20:23:01.000Z",
-    "title": {
-      "rendered": "TNA Bound For Glory 2026 Gets New Start Time Ahead of Tampa Show"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/tna-bound-for-glory-2026-gets-new-start-time-ahead-of-tampa-show-54.jpg?x51860"
-  },
-  {
-    "id": 802251696,
-    "link": "https://www.ringsidenews.com/drakes-shabang-named-new-official-theme-song-wwe-nxt/",
-    "date": "Tue, 06 Oct 2026 20:16:49 +0000",
-    "date_gmt": "2026-10-06T20:16:49.000Z",
-    "title": {
-      "rendered": "Drake’s “Shabang” Named New Official Theme Song for WWE NXT"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/drakes-shabang-named-new-official-theme-song-for-wwe-nxt-18.jpg?x51860"
-  },
-  {
-    "id": 802251690,
-    "link": "https://www.ringsidenews.com/jacy-jayne-feared-she-about-released-before-nxt-womens-title-win/",
-    "date": "Tue, 06 Oct 2026 20:04:15 +0000",
-    "date_gmt": "2026-10-06T20:04:15.000Z",
-    "title": {
-      "rendered": "Jacy Jayne Feared She Was About to Be Released Before NXT Women’s Title Win"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/jacy-jayne-feared-she-was-about-to-be-released-before-nxt-womens-title-win-32.jpg?x51860"
   }
 ]
