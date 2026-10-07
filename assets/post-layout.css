@@ -1105,7 +1105,7 @@
   .post-wrap.is-watch .arw-crumbs::-webkit-scrollbar{ display:none; }
   .post-wrap.is-watch .post-meta-bar{ justify-content:flex-start !important; align-items:center; gap:8px !important; margin-bottom:18px !important; padding:16px 20px !important; background:var(--card); border:1px solid var(--line); border-radius:18px; box-shadow:0 10px 24px -18px rgba(0,0,0,.4); text-align:right !important; }
   .post-wrap.is-watch .post-meta-bar h2.pm-title{ order:2; flex-basis:100%; margin:8px 0 0 !important; padding-inline-start:12px; border-inline-start:4px solid var(--gold); font:800 clamp(19px,1.8vw,23px)/1.6 'Cairo',sans-serif !important; color:var(--ink); text-align:right !important; text-wrap:balance; }
-  .post-wrap.is-watch .post-ep-name{ order:3; flex-basis:100%; justify-content:flex-start; margin:0; padding:0 16px 0 0 !important; background:none !important; border:0 !important; color:var(--muted) !important; font:700 13px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important; direction:ltr; text-align:right; }
+  .post-wrap.is-watch .post-ep-name{ order:3; flex-basis:100%; justify-content:flex-start; margin:0; padding:0 0 0 10px !important; background:none !important; border:0 !important; border-left:4px solid var(--gold) !important; border-radius:0 !important; color:var(--muted) !important; font:700 13px/1.35 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important; direction:ltr; text-align:left; }
   .post-wrap.is-watch .post-bookmark-wrap{ order:1; margin-inline-start:auto !important; }
   .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ height:38px; padding:0 18px !important; font-size:13.5px !important; border-radius:999px !important; }
   @media (max-width:768px){
@@ -1116,6 +1116,9 @@
     .post-wrap.is-watch .post-meta-bar{ padding:14px 14px 12px !important; margin-bottom:16px !important; }
     .post-wrap.is-watch .post-meta-bar h2.pm-title{ font-size:18px !important; line-height:1.65 !important; margin-top:6px !important; }
     .post-wrap.is-watch .post-ep-name{ font-size:12px !important; }
+    /* the Arabic title stays on one line: a long one is made smaller to fit (post-theme.js fitTitle), a short one keeps 18px */
+    .post-wrap.is-watch .post-meta-bar h2.pm-title{ white-space:nowrap; overflow:hidden; text-wrap:nowrap; padding-inline-start:10px; }
+    .post-wrap.is-watch .post-meta-bar h2.pm-title.pm-wrap{ white-space:normal; text-wrap:balance; }
     .post-wrap.is-watch .post-bookmark-wrap{ order:99 !important; margin:4px 0 0 !important; padding-top:12px; border-top:1px solid var(--line); }
     .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ width:100%; height:40px; }
   }
