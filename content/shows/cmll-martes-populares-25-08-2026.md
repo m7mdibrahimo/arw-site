@@ -1,9 +1,9 @@
 ---
 federation: INDIE
 title: CMLL Martes Populares 25.08.2026
-headline: عرض سي ام ال ال 25.08.2026 مترجم
-program_name: CMLL
-description: عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.
+headline: عرض سي ام ال ال مارتيس بوبيولاريس 25.08.2026 مترجم
+program_name: CMLL Martes Populares
+description: عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-25
 date: 2026-08-26T14:26:00.000+03:00
 layout: post-layout.njk
