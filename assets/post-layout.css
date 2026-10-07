@@ -1095,3 +1095,40 @@
     .sx-card{ flex:0 0 68%; scroll-snap-align:start; }
           }
   @media (prefers-reduced-motion: reduce){ .sx-thumb img, .sx-thumb{ transition:none; } }
+
+  /* ── Show / recap / nostalgia pages: one framed title card over the cover (owner, 2026-10-07) ──
+     Replaces the big centred title, the same title again under it and the loose badges. */
+  .hero.watch-hero{ padding:52px 24px 22px !important; text-align:right; border-radius:0 !important; }
+  .hero.watch-hero .hero-inner{ max-width:980px; }
+  .wh-card{ display:flex; flex-direction:column; gap:12px; padding:22px 24px 18px; border-radius:22px; text-align:right; background:rgba(12,15,20,.6); border:1px solid rgba(255,255,255,.14); box-shadow:0 22px 50px -26px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.06); -webkit-backdrop-filter:blur(14px) saturate(1.2); backdrop-filter:blur(14px) saturate(1.2); }
+  .wh-chips{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+  .wh-chip, .wh-card .post-fed{ display:inline-flex; align-items:center; height:26px; padding:0 11px; border-radius:999px; font:800 12px/1 'Tajawal',sans-serif; text-decoration:none; }
+  .wh-kind{ background:var(--gold); color:#1e2530; }
+  .wh-card .post-fed{ background:rgba(255,255,255,.12) !important; color:#fff !important; border:1px solid rgba(255,255,255,.2); }
+  .wh-sub{ background:transparent; color:rgba(255,255,255,.78); border:1px solid rgba(255,255,255,.18); }
+  .hero.watch-hero h1.hero-title{ font-size:clamp(20px,2.5vw,29px) !important; line-height:1.5 !important; margin:0 !important; letter-spacing:0 !important; text-align:right; color:#fff; text-shadow:none; text-wrap:balance; }
+  .hero.watch-hero h1.hero-title .u{ display:block; margin-top:4px !important; font-size:clamp(14px,1.4vw,16px) !important; font-weight:800 !important; color:var(--gold); }
+  .hero.watch-hero p.wh-en{ max-width:none !important; margin:-4px 0 0 !important; text-align:right; text-shadow:none !important; color:rgba(255,255,255,.6) !important; font:700 13px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important; letter-spacing:.2px; }
+  .wh-foot{ display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-top:2px; padding-top:12px; border-top:1px solid rgba(255,255,255,.1); }
+  .wh-dur{ display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,.85); font:800 13px/1 'Tajawal',sans-serif; }
+  .wh-dur svg{ color:var(--gold); }
+  .wh-card .post-bookmark-btn{ display:inline-flex !important; align-items:center; gap:7px; height:36px; margin:0 !important; margin-inline-start:auto !important; padding:0 16px !important; border-radius:999px !important; font:800 13px 'Tajawal',sans-serif !important; color:#fff !important; background:rgba(255,255,255,.1) !important; border:1px solid rgba(255,255,255,.22) !important; box-shadow:none !important; transition:background .2s ease; }
+  .wh-card .post-bookmark-btn:hover{ background:rgba(255,255,255,.18) !important; }
+  .wh-card .post-bookmark-btn.bookmarked{ background:var(--gold) !important; border-color:var(--gold) !important; color:#1e2530 !important; }
+  .post-wrap.is-watch > h2.watch-title{ display:none; }
+  @media (max-width:768px){
+    .hero.watch-hero{ padding:16px 14px 12px !important; }
+    .wh-card{ gap:10px; padding:15px 15px 13px; border-radius:18px; }
+    .wh-chip, .wh-card .post-fed{ height:24px; padding:0 10px; font-size:11.5px; }
+    .hero.watch-hero h1.hero-title{ font-size:18.5px !important; line-height:1.55 !important; }
+    .hero.watch-hero h1.hero-title .u{ font-size:13.5px !important; }
+    .hero.watch-hero p.wh-en{ font-size:12px !important; }
+    .wh-foot{ padding-top:10px; }
+    .wh-card .post-bookmark-btn{ height:34px; padding:0 14px !important; font-size:12.5px !important; }
+    /* the path on one line, the end fading out instead of wrapping under itself */
+    .post-wrap.is-watch .arw-crumbs{ flex-wrap:nowrap; overflow-x:auto; white-space:nowrap; scrollbar-width:none; font-size:12px; margin-bottom:12px; -webkit-mask-image:linear-gradient(to left, #000 82%, transparent); mask-image:linear-gradient(to left, #000 82%, transparent); }
+    .post-wrap.is-watch .arw-crumbs::-webkit-scrollbar{ display:none; }
+  }
+  @media (orientation: landscape) and (max-height: 550px), (max-height: 500px){
+    .post-wrap.is-watch > h2.watch-title{ display:block; }
+  }
