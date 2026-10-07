@@ -1,17 +1,11 @@
 {
- "generatedAt": "2026-10-07T06:25:19.151Z",
+ "generatedAt": "2026-10-07T11:52:40.862Z",
  "site": "https://arab-wrestling.com/",
  "range": {
   "startDate": "2026-09-07",
   "endDate": "2026-10-05"
  },
- "deadPages": [
-  {
-   "url": "https://arab-wrestling.com/shows/revpro-14-year-anniversary-show-2026",
-   "clicks": 1,
-   "impressions": 9
-  }
- ],
+ "deadPages": [],
  "opportunities": [
   {
    "query": "مصارعة",
@@ -14019,22 +14013,22 @@
  "sitemaps": [
   {
    "path": "https://arab-wrestling.com/sitemap.xml",
-   "lastSubmitted": "2026-10-07T00:59:04.801Z",
-   "isPending": true,
+   "lastSubmitted": "2026-10-07T09:19:50.992Z",
+   "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-10-06T17:38:36.082Z",
+   "lastDownloaded": "2026-10-07T09:47:36.417Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "2913",
+     "submitted": "2974",
      "indexed": "0"
     },
     {
      "type": "image",
-     "submitted": "2839",
+     "submitted": "2899",
      "indexed": "0"
     }
    ]
@@ -14062,18 +14056,18 @@
    "isPending": false,
    "isSitemapsIndex": false,
    "type": "sitemap",
-   "lastDownloaded": "2026-10-04T07:53:40.888Z",
+   "lastDownloaded": "2026-10-06T09:04:02.081Z",
    "warnings": "0",
    "errors": "0",
    "contents": [
     {
      "type": "web",
-     "submitted": "194",
+     "submitted": "153",
      "indexed": "0"
     },
     {
      "type": "news",
-     "submitted": "194",
+     "submitted": "153",
      "indexed": "0"
     }
    ]
@@ -14084,16 +14078,20 @@
    "url": "https://arab-wrestling.com/",
    "published": 0,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=mNJ-TiwvnO-MAsGqPiZvYQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=6-gSUOsVUKtNINa6u7SPMg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T05:08:11Z",
+     "lastCrawlTime": "2026-10-07T11:28:49Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/",
      "userCanonical": "https://arab-wrestling.com/",
+     "sitemap": [
+      "https://arab-wrestling.com/feed.xml",
+      "https://arab-wrestling.com/sitemap.xml"
+     ],
      "referringUrls": [
       "https://arab-wrestling.com/shows/aew-collision-12-09-2026.html",
       "https://arab-wrestling.com/tag/%D8%A8%D8%B1%D8%A7%D9%8A%D8%A7%D9%86-%D8%A5%D9%8A%D8%AF%D9%88%D9%84/",
@@ -14109,19 +14107,410 @@
    }
   },
   {
-   "url": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%84%D9%89-%D9%81%D9%8A%D9%84%D9%85-matchbox-%D8%AF%D9%88%D9%86-%D8%B1%D8%A4%D9%8A%D8%A9-%D8%A3%D9%8A-%D9%86%D8%B5-%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A/",
-   "published": 1791351117390,
+   "url": "https://arab-wrestling.com/news/%D8%A7%D9%85-%D8%AC%D9%8A%D9%87-%D8%A7%D9%81-%D9%8A%D8%B8%D9%87%D8%B1-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-njpw-road-to-king-of-pro-wrestling-%D9%88%D9%8A%D8%B7%D9%84%D9%82-%D8%AA%D8%AD%D8%AF%D9%8A%D8%A7-%D8%B6%D8%AF-%D8%B1%D9%8A%D9%88%D9%87%D9%8A-%D8%A3%D9%88%D9%8A%D9%88%D8%A7/",
+   "published": 1791371191291,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=f8OgI7x4VIeD1e9rcZ3knw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=lI9rdfdL9dfXTC7XJKl02w&utm_medium=link&utm_source=api",
     "indexStatusResult": {
-     "verdict": "NEUTRAL",
-     "coverageState": "لم يتعرّف محرّك بحث Google على عنوان URL.",
-     "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
-     "indexingState": "INDEXING_STATE_UNSPECIFIED",
-     "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T11:19:48Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%A7%D9%85-%D8%AC%D9%8A%D9%87-%D8%A7%D9%81-%D9%8A%D8%B8%D9%87%D8%B1-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-njpw-road-to-king-of-pro-wrestling-%D9%88%D9%8A%D8%B7%D9%84%D9%82-%D8%AA%D8%AD%D8%AF%D9%8A%D8%A7-%D8%B6%D8%AF-%D8%B1%D9%8A%D9%88%D9%87%D9%8A-%D8%A3%D9%88%D9%8A%D9%88%D8%A7/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%A7%D9%85-%D8%AC%D9%8A%D9%87-%D8%A7%D9%81-%D9%8A%D8%B8%D9%87%D8%B1-%D8%B9%D8%A8%D8%B1-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-njpw-road-to-king-of-pro-wrestling-%D9%88%D9%8A%D8%B7%D9%84%D9%82-%D8%AA%D8%AD%D8%AF%D9%8A%D8%A7-%D8%B6%D8%AF-%D8%B1%D9%8A%D9%88%D9%87%D9%8A-%D8%A3%D9%88%D9%8A%D9%88%D8%A7/",
+     "crawledAs": "MOBILE"
     },
     "mobileUsabilityResult": {
      "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D8%B4%D8%B9%D8%B1-%D8%A8%D8%A3%D9%86-%D8%AC%D9%85%D8%A7%D9%87%D9%8A%D8%B1-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%B1%D8%A3%D8%AA-%D9%81%D9%8A%D9%87%D8%A7-%D9%85%D8%B5%D8%A7%D8%B1%D8%B9%D8%A9-%D9%85%D8%B3%D8%AA%D9%82%D9%84%D8%A9-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1/",
+   "published": 1791371171623,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=U42aSv7ihOLAixfYOGAlSQ&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T11:19:48Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D8%B4%D8%B9%D8%B1-%D8%A8%D8%A3%D9%86-%D8%AC%D9%85%D8%A7%D9%87%D9%8A%D8%B1-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%B1%D8%A3%D8%AA-%D9%81%D9%8A%D9%87%D8%A7-%D9%85%D8%B5%D8%A7%D8%B1%D8%B9%D8%A9-%D9%85%D8%B3%D8%AA%D9%82%D9%84%D8%A9-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D8%B4%D8%B9%D8%B1-%D8%A8%D8%A3%D9%86-%D8%AC%D9%85%D8%A7%D9%87%D9%8A%D8%B1-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%B1%D8%A3%D8%AA-%D9%81%D9%8A%D9%87%D8%A7-%D9%85%D8%B5%D8%A7%D8%B1%D8%B9%D8%A9-%D9%85%D8%B3%D8%AA%D9%82%D9%84%D8%A9-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D8%B3%D9%88%D9%86%D9%8A%D9%84-%D8%B3%D9%8A%D9%86%D8%BA-%D9%8A%D9%82%D8%AF%D9%85-%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA-%D8%AD%D8%A7%D9%84%D8%AA%D9%87-%D8%A7%D9%84%D8%B5%D8%AD%D9%8A%D8%A9-%D8%A8%D8%B9%D8%AF-%D9%85%D8%B9%D8%A7%D9%86%D8%A7%D8%AA%D9%87-%D9%85%D9%86-%D8%A7%D9%86%D9%87%D9%8A%D8%A7%D8%B1-%D8%B1%D8%A6%D9%88%D9%8A/",
+   "published": 1791371124890,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=NqsY-iQXBFtF5wkJv5X0ug&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T11:19:49Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%B3%D9%88%D9%86%D9%8A%D9%84-%D8%B3%D9%8A%D9%86%D8%BA-%D9%8A%D9%82%D8%AF%D9%85-%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA-%D8%AD%D8%A7%D9%84%D8%AA%D9%87-%D8%A7%D9%84%D8%B5%D8%AD%D9%8A%D8%A9-%D8%A8%D8%B9%D8%AF-%D9%85%D8%B9%D8%A7%D9%86%D8%A7%D8%AA%D9%87-%D9%85%D9%86-%D8%A7%D9%86%D9%87%D9%8A%D8%A7%D8%B1-%D8%B1%D8%A6%D9%88%D9%8A/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%B3%D9%88%D9%86%D9%8A%D9%84-%D8%B3%D9%8A%D9%86%D8%BA-%D9%8A%D9%82%D8%AF%D9%85-%D9%85%D8%B3%D8%AA%D8%AC%D8%AF%D8%A7%D8%AA-%D8%AD%D8%A7%D9%84%D8%AA%D9%87-%D8%A7%D9%84%D8%B5%D8%AD%D9%8A%D8%A9-%D8%A8%D8%B9%D8%AF-%D9%85%D8%B9%D8%A7%D9%86%D8%A7%D8%AA%D9%87-%D9%85%D9%86-%D8%A7%D9%86%D9%87%D9%8A%D8%A7%D8%B1-%D8%B1%D8%A6%D9%88%D9%8A/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/wwe-%D8%AA%D8%B3%D8%AC%D9%84-%D8%B9%D9%84%D8%A7%D9%85%D8%A7%D8%AA-%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D9%84%D8%A7%D8%B3%D9%85-worlds-collide/",
+   "published": 1791369804214,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ehQQJIMWt7I-gF980jmVUg&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T10:59:48Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/wwe-%D8%AA%D8%B3%D8%AC%D9%84-%D8%B9%D9%84%D8%A7%D9%85%D8%A7%D8%AA-%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D9%84%D8%A7%D8%B3%D9%85-worlds-collide/",
+     "userCanonical": "https://arab-wrestling.com/news/wwe-%D8%AA%D8%B3%D8%AC%D9%84-%D8%B9%D9%84%D8%A7%D9%85%D8%A7%D8%AA-%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9-%D9%84%D8%A7%D8%B3%D9%85-worlds-collide/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D9%85%D9%88%D9%82%D9%81-%D8%B1%D9%8A%D8%AA%D8%B4%D8%A7%D8%B1%D8%AF-%D9%87%D9%88%D9%84%D9%8A%D8%AF%D8%A7%D9%8A-%D9%85%D8%B9-wwe-%D9%8A%D8%B4%D9%87%D8%AF-%D8%AA%D8%AD%D9%88%D9%84%D8%A7-%D8%BA%D9%8A%D8%B1-%D9%85%D8%AA%D9%88%D9%82%D8%B9-%D8%A8%D8%B9%D8%AF-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9/",
+   "published": 1791366678061,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=Oh1W-RCdlN3nbhXx9qe4RQ&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T10:04:38Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D9%85%D9%88%D9%82%D9%81-%D8%B1%D9%8A%D8%AA%D8%B4%D8%A7%D8%B1%D8%AF-%D9%87%D9%88%D9%84%D9%8A%D8%AF%D8%A7%D9%8A-%D9%85%D8%B9-wwe-%D9%8A%D8%B4%D9%87%D8%AF-%D8%AA%D8%AD%D9%88%D9%84%D8%A7-%D8%BA%D9%8A%D8%B1-%D9%85%D8%AA%D9%88%D9%82%D8%B9-%D8%A8%D8%B9%D8%AF-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9/",
+     "userCanonical": "https://arab-wrestling.com/news/%D9%85%D9%88%D9%82%D9%81-%D8%B1%D9%8A%D8%AA%D8%B4%D8%A7%D8%B1%D8%AF-%D9%87%D9%88%D9%84%D9%8A%D8%AF%D8%A7%D9%8A-%D9%85%D8%B9-wwe-%D9%8A%D8%B4%D9%87%D8%AF-%D8%AA%D8%AD%D9%88%D9%84%D8%A7-%D8%BA%D9%8A%D8%B1-%D9%85%D8%AA%D9%88%D9%82%D8%B9-%D8%A8%D8%B9%D8%AF-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%B1%D8%AF%D9%88%D8%AF-%D8%A7%D9%84%D9%81%D8%B9%D9%84-%D8%B9%D9%84%D9%89-%D8%AA%D9%82%D8%AF%D9%85-%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D8%A7%D8%AA-%D8%A3%D9%84%D9%8A%D8%A7%D9%87-%D8%BA%D9%88%D8%AA%D9%8A%D9%8A%D8%B1%D8%B2-%D9%81%D9%8A-wwe/",
+   "published": 1791365521296,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=5r7T2P-xRSptJrM2wYSYcQ&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T09:50:21Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%B1%D8%AF%D9%88%D8%AF-%D8%A7%D9%84%D9%81%D8%B9%D9%84-%D8%B9%D9%84%D9%89-%D8%AA%D9%82%D8%AF%D9%85-%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D8%A7%D8%AA-%D8%A3%D9%84%D9%8A%D8%A7%D9%87-%D8%BA%D9%88%D8%AA%D9%8A%D9%8A%D8%B1%D8%B2-%D9%81%D9%8A-wwe/",
+     "userCanonical": "https://arab-wrestling.com/news/%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%B1%D8%AF%D9%88%D8%AF-%D8%A7%D9%84%D9%81%D8%B9%D9%84-%D8%B9%D9%84%D9%89-%D8%AA%D9%82%D8%AF%D9%85-%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D8%A7%D8%AA-%D8%A3%D9%84%D9%8A%D8%A7%D9%87-%D8%BA%D9%88%D8%AA%D9%8A%D9%8A%D8%B1%D8%B2-%D9%81%D9%8A-wwe/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D9%84%D9%8A%D9%81-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%AA%D8%B9%D8%AA%D8%B1%D9%81-%D8%A8%D8%A3%D9%86-%D9%81%D8%B1%D9%8A%D9%82-%D8%B0%D8%A7-%D8%AC%D8%A7%D8%AF%D8%AC%D9%85%D9%86%D8%AA-%D8%AF%D8%A7%D9%8A-%D8%A3%D8%B5%D8%A8%D8%AD-%D8%B1%D8%A7%D9%83%D8%AF%D8%A7/",
+   "published": 1791364290053,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=QJ7hgjNtvq1msPoGszsERA&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T09:50:20Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D9%84%D9%8A%D9%81-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%AA%D8%B9%D8%AA%D8%B1%D9%81-%D8%A8%D8%A3%D9%86-%D9%81%D8%B1%D9%8A%D9%82-%D8%B0%D8%A7-%D8%AC%D8%A7%D8%AF%D8%AC%D9%85%D9%86%D8%AA-%D8%AF%D8%A7%D9%8A-%D8%A3%D8%B5%D8%A8%D8%AD-%D8%B1%D8%A7%D9%83%D8%AF%D8%A7/",
+     "userCanonical": "https://arab-wrestling.com/news/%D9%84%D9%8A%D9%81-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%AA%D8%B9%D8%AA%D8%B1%D9%81-%D8%A8%D8%A3%D9%86-%D9%81%D8%B1%D9%8A%D9%82-%D8%B0%D8%A7-%D8%AC%D8%A7%D8%AF%D8%AC%D9%85%D9%86%D8%AA-%D8%AF%D8%A7%D9%8A-%D8%A3%D8%B5%D8%A8%D8%AD-%D8%B1%D8%A7%D9%83%D8%AF%D8%A7/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D9%84%D9%8A%D9%81-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%AA%D8%AE%D8%B6%D8%B9-%D9%84%D8%AC%D8%B1%D8%A7%D8%AD%D8%A9-%D8%BA%D8%B1%D8%B3%D8%A7%D8%AA-%D8%AF%D9%87%D9%86%D9%8A%D8%A9-%D9%84%D8%A5%D8%B5%D9%84%D8%A7%D8%AD-%D8%A5%D8%B5%D8%A7%D8%A8%D8%A9-%D8%AC%D8%A8%D9%87%D8%AA%D9%87%D8%A7/",
+   "published": 1791363096570,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=gJn0i_DEw22IexU6PHyMVw&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T09:50:22Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D9%84%D9%8A%D9%81-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%AA%D8%AE%D8%B6%D8%B9-%D9%84%D8%AC%D8%B1%D8%A7%D8%AD%D8%A9-%D8%BA%D8%B1%D8%B3%D8%A7%D8%AA-%D8%AF%D9%87%D9%86%D9%8A%D8%A9-%D9%84%D8%A5%D8%B5%D9%84%D8%A7%D8%AD-%D8%A5%D8%B5%D8%A7%D8%A8%D8%A9-%D8%AC%D8%A8%D9%87%D8%AA%D9%87%D8%A7/",
+     "userCanonical": "https://arab-wrestling.com/news/%D9%84%D9%8A%D9%81-%D9%85%D9%88%D8%B1%D8%BA%D8%A7%D9%86-%D8%AA%D8%AE%D8%B6%D8%B9-%D9%84%D8%AC%D8%B1%D8%A7%D8%AD%D8%A9-%D8%BA%D8%B1%D8%B3%D8%A7%D8%AA-%D8%AF%D9%87%D9%86%D9%8A%D8%A9-%D9%84%D8%A5%D8%B5%D9%84%D8%A7%D8%AD-%D8%A5%D8%B5%D8%A7%D8%A8%D8%A9-%D8%AC%D8%A8%D9%87%D8%AA%D9%87%D8%A7/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D8%A2%D8%B1-%D9%81%D9%8A-%D8%AF%D9%8A-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A7%D8%B3%D8%AA%D8%A8%D8%B9%D8%A7%D8%AF-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D9%84%D9%87-%D9%85%D9%86-%D9%82%D8%A7%D8%A6%D9%85%D8%A9-%D8%A3%D9%81%D8%B6%D9%84-%D8%B9%D8%B4%D8%B1%D8%A9-%D9%81%D8%A7%D8%A6%D8%B2%D9%8A%D9%86-%D9%81%D9%8A-%D9%85%D9%88%D9%86%D9%8A-%D8%A5%D9%86-%D8%B0%D8%A7-%D8%A8%D8%A7%D9%86%D9%83/",
+   "published": 1791360689915,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=tF67UJj99Py7KFwUgpTDMg&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T09:50:23Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%A2%D8%B1-%D9%81%D9%8A-%D8%AF%D9%8A-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A7%D8%B3%D8%AA%D8%A8%D8%B9%D8%A7%D8%AF-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D9%84%D9%87-%D9%85%D9%86-%D9%82%D8%A7%D8%A6%D9%85%D8%A9-%D8%A3%D9%81%D8%B6%D9%84-%D8%B9%D8%B4%D8%B1%D8%A9-%D9%81%D8%A7%D8%A6%D8%B2%D9%8A%D9%86-%D9%81%D9%8A-%D9%85%D9%88%D9%86%D9%8A-%D8%A5%D9%86-%D8%B0%D8%A7-%D8%A8%D8%A7%D9%86%D9%83/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%A2%D8%B1-%D9%81%D9%8A-%D8%AF%D9%8A-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A7%D8%B3%D8%AA%D8%A8%D8%B9%D8%A7%D8%AF-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D9%84%D9%87-%D9%85%D9%86-%D9%82%D8%A7%D8%A6%D9%85%D8%A9-%D8%A3%D9%81%D8%B6%D9%84-%D8%B9%D8%B4%D8%B1%D8%A9-%D9%81%D8%A7%D8%A6%D8%B2%D9%8A%D9%86-%D9%81%D9%8A-%D9%85%D9%88%D9%86%D9%8A-%D8%A5%D9%86-%D8%B0%D8%A7-%D8%A8%D8%A7%D9%86%D9%83/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D9%83%D8%B4%D9%81-%D9%83%D9%8A%D9%81-%D9%86%D9%81%D8%B0%D8%AA-%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%AA%D8%B3%D9%84%D9%84%D9%87%D8%A7-%D8%A7%D9%84%D8%AC%D8%B1%D9%8A%D8%A6%D8%A9-%D9%81%D9%8A-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
+   "published": 1791363083182,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=7Cjvrz3YJrTAsW8eaB3yaw&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T09:50:22Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D9%83%D8%B4%D9%81-%D9%83%D9%8A%D9%81-%D9%86%D9%81%D8%B0%D8%AA-%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%AA%D8%B3%D9%84%D9%84%D9%87%D8%A7-%D8%A7%D9%84%D8%AC%D8%B1%D9%8A%D8%A6%D8%A9-%D9%81%D9%8A-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D9%83%D8%B4%D9%81-%D9%83%D9%8A%D9%81-%D9%86%D9%81%D8%B0%D8%AA-%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%AA%D8%B3%D9%84%D9%84%D9%87%D8%A7-%D8%A7%D9%84%D8%AC%D8%B1%D9%8A%D8%A6%D8%A9-%D9%81%D9%8A-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84-%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AF%D8%A7%D8%A1-%D8%A7%D9%84%D9%82%D8%A7%D8%B3%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D9%8A-%D8%A3%D9%82%D8%A7%D9%85%D9%87%D8%A7-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-summerslam/",
+   "published": 1791357074747,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=PBxMiuEK4eW9SUS4appiEQ&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T08:13:31Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84-%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AF%D8%A7%D8%A1-%D8%A7%D9%84%D9%82%D8%A7%D8%B3%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D9%8A-%D8%A3%D9%82%D8%A7%D9%85%D9%87%D8%A7-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-summerslam/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84-%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AF%D8%A7%D8%A1-%D8%A7%D9%84%D9%82%D8%A7%D8%B3%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D9%8A-%D8%A3%D9%82%D8%A7%D9%85%D9%87%D8%A7-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-summerslam/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  {
+   "url": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%84%D9%89-%D9%81%D9%8A%D9%84%D9%85-matchbox-%D8%AF%D9%88%D9%86-%D8%B1%D8%A4%D9%8A%D8%A9-%D8%A3%D9%8A-%D9%86%D8%B5-%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A/",
+   "published": 1791351117390,
+   "result": {
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=9wiTOLZU9eJVDN3-wSicng&utm_medium=link&utm_source=api",
+    "indexStatusResult": {
+     "verdict": "PASS",
+     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
+     "robotsTxtState": "ALLOWED",
+     "indexingState": "INDEXING_ALLOWED",
+     "lastCrawlTime": "2026-10-07T08:13:34Z",
+     "pageFetchState": "SUCCESSFUL",
+     "googleCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%84%D9%89-%D9%81%D9%8A%D9%84%D9%85-matchbox-%D8%AF%D9%88%D9%86-%D8%B1%D8%A4%D9%8A%D8%A9-%D8%A3%D9%8A-%D9%86%D8%B5-%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A/",
+     "userCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%84%D9%89-%D9%81%D9%8A%D9%84%D9%85-matchbox-%D8%AF%D9%88%D9%86-%D8%B1%D8%A4%D9%8A%D8%A9-%D8%A3%D9%8A-%D9%86%D8%B5-%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A/",
+     "crawledAs": "MOBILE"
+    },
+    "mobileUsabilityResult": {
+     "verdict": "VERDICT_UNSPECIFIED"
+    },
+    "richResultsResult": {
+     "verdict": "PASS",
+     "detectedItems": [
+      {
+       "richResultType": "مسارات التنقل",
+       "items": [
+        {
+         "name": "عنصر بدون اسم"
+        }
+       ]
+      }
+     ]
     }
    }
   },
@@ -14129,13 +14518,13 @@
    "url": "https://arab-wrestling.com/news/aew-grand-slam-france-%D9%88wwe-nxt-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D8%AB%D9%84%D8%A7%D8%AB%D8%A9-%D8%A3%D9%85%D9%88%D8%B1-%D9%83%D8%B1%D9%87%D9%86%D8%A7%D9%87%D8%A7-%D9%88%D8%AB%D9%84%D8%A7%D8%AB%D8%A9-%D8%A3%D8%AD%D8%A8%D8%A8%D9%86%D8%A7%D9%87%D8%A7/",
    "published": 1791346291289,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=HdWsLCHjHVtSvvmANxTadg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=n8osdg3LqckgUJ--2Vmzhg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T04:51:44Z",
+     "lastCrawlTime": "2026-10-07T10:04:39Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/aew-grand-slam-france-%D9%88wwe-nxt-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D8%AB%D9%84%D8%A7%D8%AB%D8%A9-%D8%A3%D9%85%D9%88%D8%B1-%D9%83%D8%B1%D9%87%D9%86%D8%A7%D9%87%D8%A7-%D9%88%D8%AB%D9%84%D8%A7%D8%AB%D8%A9-%D8%A3%D8%AD%D8%A8%D8%A8%D9%86%D8%A7%D9%87%D8%A7/",
      "userCanonical": "https://arab-wrestling.com/news/aew-grand-slam-france-%D9%88wwe-nxt-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D8%AB%D9%84%D8%A7%D8%AB%D8%A9-%D8%A3%D9%85%D9%88%D8%B1-%D9%83%D8%B1%D9%87%D9%86%D8%A7%D9%87%D8%A7-%D9%88%D8%AB%D9%84%D8%A7%D8%AB%D8%A9-%D8%A3%D8%AD%D8%A8%D8%A8%D9%86%D8%A7%D9%87%D8%A7/",
@@ -14163,13 +14552,13 @@
    "url": "https://arab-wrestling.com/news/%D9%85%D8%A7-%D9%84%D9%85-%D8%AA%D8%B4%D8%A7%D9%87%D8%AF%D9%87-%D9%82%D8%A8%D9%84-%D8%A8%D8%AB-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D9%81%D9%8A-%D8%A7%D9%84%D9%84%D9%8A%D9%84%D8%A9/",
    "published": 1791341546723,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=QEtslrYBXhJ9_ATBu6CzkA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=UP970_XwV_DEHuWzFcVaAg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:59:59Z",
+     "lastCrawlTime": "2026-10-07T08:13:34Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D9%85%D8%A7-%D9%84%D9%85-%D8%AA%D8%B4%D8%A7%D9%87%D8%AF%D9%87-%D9%82%D8%A8%D9%84-%D8%A8%D8%AB-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D9%81%D9%8A-%D8%A7%D9%84%D9%84%D9%8A%D9%84%D8%A9/",
      "userCanonical": "https://arab-wrestling.com/news/%D9%85%D8%A7-%D9%84%D9%85-%D8%AA%D8%B4%D8%A7%D9%87%D8%AF%D9%87-%D9%82%D8%A8%D9%84-%D8%A8%D8%AB-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D9%81%D9%8A-%D8%A7%D9%84%D9%84%D9%8A%D9%84%D8%A9/",
@@ -14197,13 +14586,13 @@
    "url": "https://arab-wrestling.com/news/%D8%B1%D9%88%D8%A8%D8%B1%D8%AA-%D8%B3%D8%AA%D9%88%D9%86-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D9%81%D9%88%D8%B2-%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%A7%D9%84%D9%85%D8%AB%D9%8A%D8%B1-%D9%84%D9%84%D8%AC%D8%AF%D9%84-%D9%81%D9%8A-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
    "published": 1791341508011,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=IbmKfFrdb-yR9GMlbhHQrw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=qECAwmDQPEQn6qxWQPpRLQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:59:59Z",
+     "lastCrawlTime": "2026-10-07T08:13:35Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%88%D8%A8%D8%B1%D8%AA-%D8%B3%D8%AA%D9%88%D9%86-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D9%81%D9%88%D8%B2-%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%A7%D9%84%D9%85%D8%AB%D9%8A%D8%B1-%D9%84%D9%84%D8%AC%D8%AF%D9%84-%D9%81%D9%8A-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
      "userCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%88%D8%A8%D8%B1%D8%AA-%D8%B3%D8%AA%D9%88%D9%86-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D9%81%D9%88%D8%B2-%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%A7%D9%84%D9%85%D8%AB%D9%8A%D8%B1-%D9%84%D9%84%D8%AC%D8%AF%D9%84-%D9%81%D9%8A-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
@@ -14231,13 +14620,13 @@
    "url": "https://arab-wrestling.com/news/%D9%86%D9%8A%D9%83%D8%B1%D9%88-%D8%A8%D9%88%D8%AA%D8%B4%D8%B1-%D9%8A%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%82%D8%AF%D8%A7-%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7-%D9%85%D8%B9-wwe-%D8%B6%D9%85%D9%86-%D9%81%D8%A6%D8%A9-%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B7%D9%8A%D8%B1/",
    "published": 1791339826896,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=9_iwrOqyglg-wMmPGpzk2w&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=s_45HZplItZ3bbKziiVzag&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:40:46Z",
+     "lastCrawlTime": "2026-10-07T08:13:32Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D9%86%D9%8A%D9%83%D8%B1%D9%88-%D8%A8%D9%88%D8%AA%D8%B4%D8%B1-%D9%8A%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%82%D8%AF%D8%A7-%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7-%D9%85%D8%B9-wwe-%D8%B6%D9%85%D9%86-%D9%81%D8%A6%D8%A9-%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B7%D9%8A%D8%B1/",
      "userCanonical": "https://arab-wrestling.com/news/%D9%86%D9%8A%D9%83%D8%B1%D9%88-%D8%A8%D9%88%D8%AA%D8%B4%D8%B1-%D9%8A%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%82%D9%8A%D8%B9%D9%87-%D8%B9%D9%82%D8%AF%D8%A7-%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7-%D9%85%D8%B9-wwe-%D8%B6%D9%85%D9%86-%D9%81%D8%A6%D8%A9-%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B7%D9%8A%D8%B1/",
@@ -14265,13 +14654,13 @@
    "url": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D9%82%D8%AA%D8%AD%D9%85-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%A8%D8%AA%D9%86%D9%83%D8%B1-%D8%BA%D8%B1%D9%8A%D8%A8-%D9%88%D8%AA%D8%AE%D8%B7%D9%81-%D9%81%D8%B1%D8%B5%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%81%D8%B3%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%84%D9%82%D8%A8/",
    "published": 1791339092563,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=LDmOqE1dUSHi3ZD7ZKGu6Q&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=8QoJHSMqWPFIh2F-mKo9ZQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:40:41Z",
+     "lastCrawlTime": "2026-10-07T08:13:31Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D9%82%D8%AA%D8%AD%D9%85-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%A8%D8%AA%D9%86%D9%83%D8%B1-%D8%BA%D8%B1%D9%8A%D8%A8-%D9%88%D8%AA%D8%AE%D8%B7%D9%81-%D9%81%D8%B1%D8%B5%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%81%D8%B3%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%84%D9%82%D8%A8/",
      "userCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%8A%D9%86-%D8%B3%D9%86%D9%83%D9%84%D9%8A%D8%B1-%D8%AA%D9%82%D8%AA%D8%AD%D9%85-%D9%86%D8%B2%D8%A7%D9%84-%D8%A8%D8%A7%D8%AA%D9%84-%D8%B1%D9%88%D9%8A%D8%A7%D9%84-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%A8%D8%AA%D9%86%D9%83%D8%B1-%D8%BA%D8%B1%D9%8A%D8%A8-%D9%88%D8%AA%D8%AE%D8%B7%D9%81-%D9%81%D8%B1%D8%B5%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%81%D8%B3%D8%A9-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%84%D9%82%D8%A8/",
@@ -14299,13 +14688,13 @@
    "url": "https://arab-wrestling.com/news/%D9%85%D8%B1%D8%B3%D9%8A%D8%AF%D8%B3-%D9%85%D9%88%D9%86%D9%8A-%D8%AA%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9-%D9%84%D9%84%D8%B3%D9%8A%D8%AF%D8%A7%D8%AA-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-dynamite-grand-slam-paris/",
    "published": 1791337956975,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=uEvgY5J756X9YBBwVd9eHw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=MgK8DoKRaffd67a1iknqvA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:04:53Z",
+     "lastCrawlTime": "2026-10-07T08:13:31Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D9%85%D8%B1%D8%B3%D9%8A%D8%AF%D8%B3-%D9%85%D9%88%D9%86%D9%8A-%D8%AA%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9-%D9%84%D9%84%D8%B3%D9%8A%D8%AF%D8%A7%D8%AA-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-dynamite-grand-slam-paris/",
      "userCanonical": "https://arab-wrestling.com/news/%D9%85%D8%B1%D8%B3%D9%8A%D8%AF%D8%B3-%D9%85%D9%88%D9%86%D9%8A-%D8%AA%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9-%D9%84%D9%84%D8%B3%D9%8A%D8%AF%D8%A7%D8%AA-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-dynamite-grand-slam-paris/",
@@ -14333,13 +14722,13 @@
    "url": "https://arab-wrestling.com/news/%D9%86%D8%B2%D8%A7%D9%84-%D9%85%D9%86-%D8%AB%D9%84%D8%A7%D8%AB-%D8%AC%D9%88%D9%84%D8%A7%D8%AA-%D8%B9%D9%84%D9%89-%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D9%84%D9%84%D8%AB%D9%84%D8%A7%D8%AB%D9%8A-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-aew-wrestledream/",
    "published": 1791337952775,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=YV-hq6-v17WkNWb5SzTq6g&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=2MjO7NcW8p7NJIYc4STicg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:04:52Z",
+     "lastCrawlTime": "2026-10-07T08:13:36Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D9%86%D8%B2%D8%A7%D9%84-%D9%85%D9%86-%D8%AB%D9%84%D8%A7%D8%AB-%D8%AC%D9%88%D9%84%D8%A7%D8%AA-%D8%B9%D9%84%D9%89-%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D9%84%D9%84%D8%AB%D9%84%D8%A7%D8%AB%D9%8A-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-aew-wrestledream/",
      "userCanonical": "https://arab-wrestling.com/news/%D9%86%D8%B2%D8%A7%D9%84-%D9%85%D9%86-%D8%AB%D9%84%D8%A7%D8%AB-%D8%AC%D9%88%D9%84%D8%A7%D8%AA-%D8%B9%D9%84%D9%89-%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D9%84%D9%84%D8%AB%D9%84%D8%A7%D8%AB%D9%8A-%D8%B6%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-aew-wrestledream/",
@@ -14367,13 +14756,13 @@
    "url": "https://arab-wrestling.com/news/%D8%A3%D8%B9%D9%84%D9%86-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D8%B9%D9%86-%D8%A3%D8%B1%D8%A8%D8%B9%D8%A9-%D9%86%D8%B2%D8%A7%D9%84%D8%A7%D8%AA-%D9%84%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%A8%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB-%D8%B9%D8%B4%D8%B1-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026/",
    "published": 1791337973485,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=GRjoG4ojwB9UupThlOzOdQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=EsHB_irnOmwiI87ay0Y0Cg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:04:52Z",
+     "lastCrawlTime": "2026-10-07T08:13:32Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D8%A3%D8%B9%D9%84%D9%86-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D8%B9%D9%86-%D8%A3%D8%B1%D8%A8%D8%B9%D8%A9-%D9%86%D8%B2%D8%A7%D9%84%D8%A7%D8%AA-%D9%84%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%A8%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB-%D8%B9%D8%B4%D8%B1-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026/",
      "userCanonical": "https://arab-wrestling.com/news/%D8%A3%D8%B9%D9%84%D9%86-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D8%B9%D9%86-%D8%A3%D8%B1%D8%A8%D8%B9%D8%A9-%D9%86%D8%B2%D8%A7%D9%84%D8%A7%D8%AA-%D9%84%D8%B9%D8%B1%D8%B6-wwe-nxt-%D8%A8%D8%AA%D8%A7%D8%B1%D9%8A%D8%AE-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB-%D8%B9%D8%B4%D8%B1-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026/",
@@ -14401,13 +14790,13 @@
    "url": "https://arab-wrestling.com/news/%D8%AF%D8%A7%D8%B1%D8%A8%D9%8A-%D8%A3%D9%84%D9%8A%D9%86-%D9%8A%D9%86%D8%AC%D9%88-%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-aew-grand-slam-france-%D9%88%D9%8A%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-tnt/",
    "published": 1791337896168,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=t2A2_SbDM_71q_W6ksEgiQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=XHHO_8v5Z-Nha78UJPqraA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T02:04:53Z",
+     "lastCrawlTime": "2026-10-07T08:13:36Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D8%AF%D8%A7%D8%B1%D8%A8%D9%8A-%D8%A3%D9%84%D9%8A%D9%86-%D9%8A%D9%86%D8%AC%D9%88-%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-aew-grand-slam-france-%D9%88%D9%8A%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-tnt/",
      "userCanonical": "https://arab-wrestling.com/news/%D8%AF%D8%A7%D8%B1%D8%A8%D9%8A-%D8%A3%D9%84%D9%8A%D9%86-%D9%8A%D9%86%D8%AC%D9%88-%D9%85%D9%86-%D8%B9%D8%B1%D8%B6-aew-grand-slam-france-%D9%88%D9%8A%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-tnt/",
@@ -14435,7 +14824,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D9%85%D9%88%D9%83%D8%B3%D9%84%D9%8A-%D9%8A%D8%AF%D8%A7%D9%81%D8%B9-%D8%B9%D9%86-%D8%A8%D8%B7%D9%88%D9%84%D8%A9-aew-%D8%A7%D9%84%D9%82%D8%A7%D8%B1%D9%8A%D8%A9-%D8%B6%D8%AF-%D9%85%D8%A7%D8%B1%D9%83-%D8%AF%D9%8A%D9%81%D9%8A%D8%B3-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-wrestledream/",
    "published": 1791335308627,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=mfsMVwH-QZ1BVo-CcOoWeg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=yhzsjOyYjDuaUFgpWoUXLg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14469,7 +14858,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%88-%D9%87%D9%86%D8%AF%D8%B1%D9%8A-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AE%D8%B7%D8%AA%D9%87-%D9%84%D9%84%D8%B8%D9%81%D8%B1-%D8%A8%D9%84%D9%82%D8%A8-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-%D9%81%D9%8A-wwe/",
    "published": 1791335492233,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=PE_oGU6eG5kIQW1nH7X6qw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=mXtnnCkOrQjWS95UjT9sTA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14503,7 +14892,7 @@
    "url": "https://arab-wrestling.com/news/%D9%87%D8%A7%D9%86%D9%83-%D9%88%D9%88%D9%83%D8%B1-%D9%88%D8%AA%D8%A7%D9%86%D9%83-%D9%84%D9%8A%D8%AF%D8%AC%D8%B1-%D9%8A%D8%AA%D8%A3%D9%87%D9%84%D8%A7%D9%86-%D9%81%D9%8A-%D8%A8%D8%B7%D9%88%D9%84%D8%A9-dusty-rhodes-tag-team-classic-%D8%AE%D9%84%D8%A7%D9%84-%D8%B9%D8%B1%D8%B6-wwe-nxt/",
    "published": 1791334283600,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=5V1A6aPhf4dOLRosAnKCtg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=iSOPP-pTOz3hBYynnxw-9A&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14537,7 +14926,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A8%D8%A7%D9%86%D8%AF%D9%8A%D8%AF%D9%88-%D9%8A%D8%AD%D8%AA%D9%81%D8%B8-%D8%A8%D9%84%D9%82%D8%A8-roh-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-grand-slam-france/",
    "published": 1791334302103,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=AnL3ILuTddy-95B4d6wDVA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=Wx2glgmafpvqoI6yQhVYYw&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14571,7 +14960,7 @@
    "url": "https://arab-wrestling.com/news/%D8%B3%D8%A7%D9%85%D9%88%D8%A7-%D8%AC%D9%88-%D9%8A%D8%AA%D8%A3%D9%87%D9%84-%D9%84%D9%86%D8%B2%D8%A7%D9%84-%D9%83%D9%84%D9%88%D9%83-%D9%88%D9%88%D8%B1%D9%83-%D9%83%D8%A7%D8%B1%D9%86%D9%8A%D8%AC-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-wrestledream/",
    "published": 1791334001349,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=F3RjoG-Zr9RW9dbTcb9vZA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=BXbV_iJfi_1LAMDYjzBhAw&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14605,7 +14994,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A5%D8%B6%D8%A7%D9%81%D8%A9-%D9%83%D9%8A%D8%B1%D8%A7-%D9%87%D9%88%D8%AC%D8%A7%D9%86-%D9%88%D8%A3%D9%84%D9%8A-%D8%A5%D9%84%D9%89-%D9%85%D9%88%D8%A7%D8%AC%D9%87%D8%A9-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-tna-impact-%D8%A7%D9%84%D9%82%D8%A7%D8%AF%D9%85/",
    "published": 1791333411884,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ePcKRlhUQf228Cmd6r0h3g&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ZWxPNTacRW4tRu7XAvWDBg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14639,7 +15028,7 @@
    "url": "https://arab-wrestling.com/news/%D9%85%D9%88%D9%82%D9%81-%D8%B4%D9%8A%D9%85%D8%A7%D8%B3-%D8%A7%D9%84%D8%AD%D8%A7%D9%84%D9%8A-%D8%A8%D8%B9%D8%AF-%D8%A7%D9%86%D8%AA%D9%87%D8%A7%D8%A1-%D8%B9%D9%82%D8%AF%D9%87-%D9%85%D8%B9-wwe/",
    "published": 1791333172882,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=r8SUs7JL2Jl8qoZro91Rgw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ZP0qKeim09ee34fFZzgVBQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14673,7 +15062,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A8%D9%88%D9%83%D8%B1-%D8%AA%D9%8A-%D9%86%D9%88%D8%A8%D8%A7%D8%AA-%D8%BA%D8%B6%D8%A8-%D9%81%D9%8A%D9%86%D8%B3-%D9%85%D9%83%D9%85%D8%A7%D9%86-%D8%AE%D9%84%D9%81-%D8%A7%D9%84%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D9%83%D8%A7%D9%86%D8%AA-%D8%AA%D8%AA%D8%B9%D9%84%D9%82-%D8%A8%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D8%A7-%D8%A8%D8%A7%D9%84%D8%A3%D9%86%D8%A7/",
    "published": 1791333144063,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=QNNdcwmNzIdyRqGigTggdw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=sPJQAr1hvXXHBcwMnec9xw&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14707,7 +15096,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AA%D9%88%D9%86%D9%8A-%D8%AE%D8%A7%D9%86-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%AC%D9%84%D8%A8-%D9%86%D8%B2%D8%A7%D9%84-%D9%83%D9%84%D9%88%D9%83-%D9%88%D9%88%D8%B1%D9%83-%D9%83%D8%A7%D8%B1%D9%86%D9%8A%D8%AC-%D8%A7%D9%84%D8%AE%D8%A7%D8%B5-%D8%A8%D9%80%D9%88%D9%8A%D9%84-%D8%A3%D9%88%D8%B3%D8%A8%D8%B1%D8%A7%D9%8A-%D8%A5%D9%84%D9%89-aew/",
    "published": 1791330698850,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=hyvu0pyNWGsbVfT8yNXCTA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=75lmqs6mNjI3oq8cQMTsyA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14741,13 +15130,13 @@
    "url": "https://arab-wrestling.com/news/%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%B9%D8%B1%D8%B6-wwe-nxt-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D8%B2%D9%8A%D9%84%D8%A7-%D9%81%D8%A7%D8%AA%D9%88-%D9%8A%D9%88%D8%A7%D8%AC%D9%87-%D9%84%D9%8A%D9%83%D8%B3%D9%8A%D8%B3-%D9%83%D9%8A%D9%86%D8%BA-%D9%88%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9-%D8%AA%D8%B5%D9%81%D9%8A%D8%A7%D8%AA-dusty-rhodes-tag-team-classic/",
    "published": 1791333585031,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=X2SGbEIjnBbFifNB9kjwQg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=xrePnerm9fR3zkct5pSZMQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
      "robotsTxtState": "ALLOWED",
      "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T01:28:22Z",
+     "lastCrawlTime": "2026-10-07T08:13:33Z",
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%B9%D8%B1%D8%B6-wwe-nxt-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D8%B2%D9%8A%D9%84%D8%A7-%D9%81%D8%A7%D8%AA%D9%88-%D9%8A%D9%88%D8%A7%D8%AC%D9%87-%D9%84%D9%8A%D9%83%D8%B3%D9%8A%D8%B3-%D9%83%D9%8A%D9%86%D8%BA-%D9%88%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9-%D8%AA%D8%B5%D9%81%D9%8A%D8%A7%D8%AA-dusty-rhodes-tag-team-classic/",
      "userCanonical": "https://arab-wrestling.com/news/%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%B9%D8%B1%D8%B6-wwe-nxt-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D8%B2%D9%8A%D9%84%D8%A7-%D9%81%D8%A7%D8%AA%D9%88-%D9%8A%D9%88%D8%A7%D8%AC%D9%87-%D9%84%D9%8A%D9%83%D8%B3%D9%8A%D8%B3-%D9%83%D9%8A%D9%86%D8%BA-%D9%88%D8%A8%D8%AF%D8%A7%D9%8A%D8%A9-%D8%AA%D8%B5%D9%81%D9%8A%D8%A7%D8%AA-dusty-rhodes-tag-team-classic/",
@@ -14775,7 +15164,7 @@
    "url": "https://arab-wrestling.com/news/%D9%83%D9%8A%D9%88-%D8%AA%D9%8A-%D9%85%D8%A7%D8%B1%D8%B4%D8%A7%D9%84-%D9%8A%D8%AF%D8%A7%D9%81%D8%B9-%D8%B9%D9%86-%D8%B3%D8%AA%D9%8A%D9%81%D9%86-%D8%A8%D9%88%D8%B1%D8%AF%D9%86-%D8%B6%D8%AF-%D8%A7%D9%86%D8%AA%D9%82%D8%A7%D8%AF%D8%A7%D8%AA-%D9%86%D9%82%D8%B5-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8-%D8%A8%D8%B9%D8%AF-%D8%B9%D8%B1%D8%B6-aew-all-out/",
    "published": 1791329538836,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=YheZKNvECYKJN4prgK2z4g&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=TES-J4SAr-j2B9asDbsg3w&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14809,7 +15198,7 @@
    "url": "https://arab-wrestling.com/news/%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%AA%D8%B3%D8%AC%D9%8A%D9%84%D8%A7%D8%AA-%D8%B9%D8%B1%D8%B6-aew-collision-grand-slam-france-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026/",
    "published": 1791328196340,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=hWLyvGaZM5Fxu8tI3Ml4Mg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=vOM1AQWxPcccovJewecKKw&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14843,7 +15232,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%8A-%D8%A8%D9%8A-%D8%A5%D9%84-%D9%8A%D8%B9%D8%AA%D9%82%D8%AF-%D8%A3%D9%86-%D9%85%D8%A7%D9%84%D8%A7%D9%83%D8%A7%D9%8A-%D8%A8%D9%84%D8%A7%D9%83-%D9%8A%D8%AD%D8%B1%D9%82-%D8%AC%D8%B3%D9%88%D8%B1-%D8%A7%D9%84%D8%B9%D9%88%D8%AF%D8%A9-%D8%A5%D9%84%D9%89-wwe/",
    "published": 1791325952451,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=GpFM8A9RArq4RyXtiiHlMA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=z0-Do9dCgmzkQvFFNIOBqg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14877,7 +15266,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A7%D9%84%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84-%D8%A7%D9%84%D8%AD%D9%84%D9%82%D8%A9-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB%D8%A9-%D9%85%D9%86-orange-crush-criterion-%D9%88%D8%A3%D8%A8%D8%B1%D8%B2-%D9%84%D9%82%D8%B7%D8%A7%D8%AA-%D8%B9%D8%B1%D8%B6-wwe-raw-%D9%88%D8%A7%D9%84%D9%85%D8%B2%D9%8A%D8%AF/",
    "published": 1791324395968,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=gpXr1ZDAWQ0YCL0BAfNVRA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=PtFhvWIGuQDvY8dia2xSvg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14911,7 +15300,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A5%D9%84-%D9%87%D9%8A%D8%AE%D9%88-%D8%AF%D9%8A%D9%84-%D9%81%D9%8A%D9%83%D9%8A%D9%86%D8%AC%D9%88-%D9%8A%D8%AE%D8%B6%D8%B9-%D9%84%D8%B9%D9%85%D9%84%D9%8A%D8%A9-%D8%AC%D8%B1%D8%A7%D8%AD%D9%8A%D8%A9-%D8%AB%D8%A7%D9%86%D9%8A%D8%A9-%D9%86%D8%A7%D8%AC%D8%AD%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%B1%D9%83%D8%A8%D8%A9/",
    "published": 1791323665987,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=rv9UTHHlQbVCbuuVD0Wjxw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=PuCr1WnG6V7j9dxjkm2jRw&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14945,7 +15334,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A3%D8%B3%D8%B7%D9%88%D8%B1%D8%A9-wwe-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D9%85%D8%B3%D9%8A%D8%B1%D8%A9-%D8%BA%D9%8A%D8%A8%D9%84-%D8%B3%D8%AA%D9%8A%D9%81%D8%B3%D9%88%D9%86-%D8%A3%D8%B9%D8%AA%D9%82%D8%AF-%D8%A3%D9%86-%D8%B5%D9%86%D8%A7%D8%B9%D8%AA%D9%86%D8%A7-%D9%84%D9%85-%D8%AA%D9%83%D9%86-%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A9-%D9%84%D9%87/",
    "published": 1791323675048,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=yBKUndDu-8bmNEioRTj2JQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=vNvE0kICuB3nNVm8Fn6U8Q&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -14979,7 +15368,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%88-%D9%87%D9%86%D8%AF%D8%B1%D9%8A-%D9%8A%D8%B1%D9%8A%D8%AF-%D9%85%D9%86-%D8%AC%D9%8A%D9%83-%D8%AC%D9%8A%D9%84%D9%86%D9%87%D8%A7%D9%84-%D8%AA%D8%AC%D8%B3%D9%8A%D8%AF-%D8%B4%D8%AE%D8%B5%D9%8A%D8%AA%D9%87-%D9%81%D9%8A-%D9%81%D9%8A%D9%84%D9%85-%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A/",
    "published": 1791322485524,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=94Yyc_8LKcP-30nPTdK62Q&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=aLoyziHgf5vyzH8W7l-DGg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15013,7 +15402,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%88-%D9%87%D9%86%D8%AF%D8%B1%D9%8A-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D9%85%D9%86%D8%AD-wwe-%D9%84%D9%87-%D8%AD%D8%B1%D9%8A%D8%A9-%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9%D9%8A%D8%A9-%D9%88%D8%A7%D8%B3%D8%B9%D8%A9-%D9%85%D8%B9-%D8%A3%D9%84%D8%A8%D9%88%D9%85%D9%87-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF/",
    "published": 1791322470881,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=Pzv8YWwTXfONiLjZ2XH5EQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=1bD0QC0K4SJ9OqpAn4H9kA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15047,7 +15436,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D8%A7%D9%8A%D8%B3%D9%8A-%D8%AC%D8%A7%D9%8A%D9%86-%D8%AA%D8%B3%D8%AA%D8%B1%D8%AC%D8%B9-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D8%A7%D9%84%D8%AE%D8%B1%D9%88%D8%AC-%D8%B9%D9%86-%D8%A7%D9%84%D9%88%D8%B9%D9%8A-%D8%AE%D9%84%D8%A7%D9%84-%D9%8A%D9%88%D9%85-%D8%AA%D8%AA%D9%88%D9%8A%D8%AC%D9%87%D8%A7-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-nxt-%D9%84%D9%84%D8%B3%D9%8A%D8%AF%D8%A7%D8%AA/",
    "published": 1791321214151,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=l1UAH1P8UfLRckfqh_YXww&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=tMrMhozIW9HNOawrDO09rA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15081,7 +15470,7 @@
    "url": "https://arab-wrestling.com/news/%D8%B3%D8%AA%D9%8A%D9%81%D8%A7%D9%86%D9%8A-%D9%81%D8%A7%D9%83%D9%8A%D8%B1-%D8%AA%D8%B3%D8%AE%D8%B1-%D9%85%D9%86-%D8%A8%D9%8A%D9%83%D9%8A-%D9%84%D9%8A%D9%86%D8%B4-%D8%A8%D8%B5%D9%88%D8%B1%D8%A9-%D8%AC%D8%B1%D9%8A%D8%A6%D8%A9-%D9%84%D8%A8%D8%B7%D9%88%D9%84%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85-%D9%84%D9%84%D8%B3%D9%8A%D8%AF%D8%A7%D8%AA/",
    "published": 1791320178459,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=iiCwmIyNqYmI_UiU7MxKDA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=BD4ltm_AThrVk0Whq3CuhQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15115,7 +15504,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AA%D9%88%D9%86%D9%8A-%D8%AE%D8%A7%D9%86-%D9%8A%D8%AA%D8%AD%D8%AF%D8%AB-%D8%B9%D9%86-%D8%AA%D8%B9%D8%AF%D9%8A%D9%84%D8%A7%D8%AA%D9%87-%D8%B9%D9%84%D9%89-%D9%86%D8%B2%D8%A7%D9%84-clockwork-carnage-%D8%B3%D8%A3%D8%B3%D8%AA%D8%B9%D8%B1%D8%B6-%D8%A7%D9%84%D9%82%D9%88%D8%A7%D8%B9%D8%AF-%D8%A8%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%B6%D8%A9/",
    "published": 1791319591281,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=YQeo2qgGJWmXFIqdo8-Gwg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=NbTGH-R_Kkj2F7_R8ijQUA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15149,7 +15538,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A8%D9%88%D9%84%D9%8A-%D8%B1%D8%A7%D9%8A-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-wwe-%D9%83%D8%A7%D9%86-%D9%8A%D8%AC%D8%A8-%D8%B9%D9%84%D9%8A%D9%87-%D8%AA%D8%B3%D9%84%D9%8A%D8%B7-%D8%A7%D9%84%D8%B6%D9%88%D8%A1-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%AC%D9%87%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D9%88%D8%AA%D8%B1%D8%A9-%D8%A8%D9%8A%D9%86-%D8%A3%D9%88%D8%A8%D8%A7-%D9%81%D9%8A%D9%85%D9%8A-%D9%88%D8%A8%D8%B1%D9%88%D9%86%D8%B3%D9%88%D9%86-%D8%B1%D9%8A%D8%AF/",
    "published": 1791319972998,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=UwXMPWL-1ZoAldBTJkbwnA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=6g9OBf55q2Y72XJ7kLQKMA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15183,7 +15572,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AA%D9%88%D9%86%D9%8A-%D8%AE%D8%A7%D9%86-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%B9%D9%85%D9%84%D9%87-%D9%85%D8%B9-%D8%B3%D9%83%D8%A7%D9%8A-%D8%AF%D8%A7%D9%86%D8%B3-%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%A3%D9%88%D9%84-%D8%B1%D8%A7%D8%A6%D8%B9-%D9%88%D8%A3%D8%AD%D8%A8-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%85%D8%B9-%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9/",
    "published": 1791319577642,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=DzV36mYAs1X5tuJdSrNPGQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=XUN-6Sf_am3vAsR-6zkMMg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15217,7 +15606,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86-%D8%B9%D9%86-%D9%85%D8%B4%D8%A7%D8%B1%D9%83%D8%A9-%D8%B1%D9%88%D9%85%D8%A7%D9%86-%D8%B1%D9%8A%D9%86%D8%B2-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wwe-raw-%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%AA%D8%A7%D8%B3%D8%B9-%D8%B9%D8%B4%D8%B1-%D9%85%D9%86-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1/",
    "published": 1791318317248,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=g5btbQ6BAexWLjdLi7E8zQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=_cw3BlvkDu6vA06xpPNzQg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15251,7 +15640,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A7%D9%86%D8%B7%D9%84%D8%A7%D9%82-%D8%B9%D8%B1%D8%B6-tna-bound-for-glory-%D9%81%D9%8A-%D8%AA%D9%85%D8%A7%D9%85-%D8%A7%D9%84%D8%B3%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D8%B1%D8%A7%D8%A8%D8%B9%D8%A9-%D9%88%D8%A7%D9%84%D9%86%D8%B5%D9%81-%D8%B9%D8%B5%D8%B1%D8%A7-%D8%A8%D8%AA%D9%88%D9%82%D9%8A%D8%AA-%D8%B4%D8%B1%D9%82-%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D8%A7/",
    "published": 1791317727641,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=-XQmvCFxj7e4yo21k8eAAw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=vdwW-zNbb_58deA9G959Hg&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15285,7 +15674,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A3%D8%BA%D9%86%D9%8A%D8%A9-shabang-%D9%84%D9%84%D9%81%D9%86%D8%A7%D9%86-%D8%AF%D8%B1%D9%8A%D9%83-%D8%AA%D8%B5%D8%A8%D8%AD-%D8%A7%D9%84%D8%B4%D8%B9%D8%A7%D8%B1-%D8%A7%D9%84%D8%B1%D8%B3%D9%85%D9%8A-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF-%D9%84%D8%B9%D8%B1%D8%B6-wwe-nxt/",
    "published": 1791317714377,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=rCIJCyzrfBz3F_nEo0uR-Q&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=Ql1MmvpgDNXk0alAWlvjog&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15319,7 +15708,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D8%A7%D9%8A%D8%B3%D9%8A-%D8%AC%D8%A7%D9%8A%D9%86-%D8%AA%D8%AE%D8%B4%D9%89-%D9%82%D8%B1%D8%A8-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%BA%D9%86%D8%A7%D8%A1-%D8%B9%D9%86%D9%87%D8%A7-%D9%82%D8%A8%D9%84-%D8%A7%D9%84%D9%81%D9%88%D8%B2-%D8%A8%D8%A8%D8%B7%D9%88%D9%84%D8%A9-nxt-%D9%84%D9%84%D8%B3%D9%8A%D8%AF%D8%A7%D8%AA/",
    "published": 1791317767144,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=K6Z2PiyINAry1w-VJmXcmw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=lE7Pty8RFQu0yKtfGZ00IA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15353,7 +15742,7 @@
    "url": "https://arab-wrestling.com/news/%D8%B4%D8%A7%D8%B1%D9%84%D9%88%D8%AA-%D9%81%D9%84%D9%8A%D8%B1-%D8%AA%D8%B9%D9%84%D9%86-%D8%A5%D8%B7%D9%84%D8%A7%D9%82-%D8%A8%D9%88%D8%AF%D9%83%D8%A7%D8%B3%D8%AA-off-the-pedestal-with-ashley-fliehr-%D8%AE%D9%84%D8%A7%D9%84-%D8%A3%D8%B3%D8%A7%D8%A8%D9%8A%D8%B9-%D9%82%D9%84%D9%8A%D9%84%D8%A9/",
    "published": 1791317120982,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ayP0u4hiCjZYj74MXSUrWw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=u2fIHg-3h5VTkuIepIZmXA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15387,7 +15776,7 @@
    "url": "https://arab-wrestling.com/news/%D9%83%D8%B1%D9%8A%D8%B3-%D8%AC%D9%8A%D8%B1%D9%8A%D9%83%D9%88-%D9%8A%D9%82%D8%AF%D9%85-%D8%AA%D8%AD%D9%8A%D8%A9-%D9%85%D8%A4%D8%AB%D8%B1%D8%A9-%D9%84%D8%A8%D8%A7%D9%83-%D8%AE%D9%84%D8%A7%D9%84-%D8%AA%D8%B3%D8%AC%D9%8A%D9%84-%D8%B9%D8%B1%D9%88%D8%B6-aew-grand-slam-france/",
    "published": 1791315374685,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=DzdaNqTBq21K-0W36CXmtw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=bA9uJD4lkshYW2TudNZEJA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15421,7 +15810,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%8A%D8%A7-%D9%85%D9%8A%D9%84%D8%B1-%D9%85%D8%B0%D9%8A%D8%B9%D8%A9-%D8%A7%D8%AA%D8%AD%D8%A7%D8%AF-tna-%D8%AA%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%AE%D8%B6%D9%88%D8%B9%D9%87%D8%A7-%D9%84%D8%B9%D9%85%D9%84%D9%8A%D8%AA%D9%8A%D9%86-%D8%AC%D8%B1%D8%A7%D8%AD%D9%8A%D8%AA%D9%8A%D9%86-%D8%B7%D9%81%D9%8A%D9%81%D8%AA%D9%8A%D9%86/",
    "published": 1791314599418,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=nNKRDcojzR7oXXfZWz2iHg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=53yCC556bcS-WuXMjxyUpQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15455,7 +15844,7 @@
    "url": "https://arab-wrestling.com/news/%D8%B9%D8%B1%D8%B6-wwe-raw-%D9%81%D9%8A-28-%D8%B3%D8%A8%D8%AA%D9%85%D8%A8%D8%B1-%D9%8A%D8%AD%D8%A7%D9%81%D8%B8-%D8%B9%D9%84%D9%89-%D8%A7%D8%B3%D8%AA%D9%82%D8%B1%D8%A7%D8%B1%D9%87-%D8%A8%D8%AD%D8%B5%D8%AF-2-5-%D9%85%D9%84%D9%8A%D9%88%D9%86-%D9%85%D8%B4%D8%A7%D9%87%D8%AF%D8%A9-%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9-%D8%B9%D8%A8%D8%B1-netflix/",
    "published": 1791313991377,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=wOv5xTxylw4cpF72bkvAYQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=SmgZi-XzIe61PhatDr-rNQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15489,7 +15878,7 @@
    "url": "https://arab-wrestling.com/news/%D9%86%D8%AC%D9%85-aew-%D8%A7%D9%85-%D9%81%D9%8A-%D8%A8%D9%8A-%D9%8A%D9%87%D8%A7%D8%AC%D9%85-%D8%AA%D8%B1%D9%8A%D8%A8%D9%84-%D8%A5%D8%AA%D8%B4-%D9%81%D9%8A-wwe-%D8%A5%D9%86%D9%87-%D8%AC%D8%A8%D8%A7%D9%86-%D8%A8%D9%84%D8%A7-%D8%B9%D9%85%D9%88%D8%AF-%D9%81%D9%82%D8%B1%D9%8A/",
    "published": 1791314179208,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=4UlzqTkoLYdqVr2u8SMQ7A&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=8z9ltrGAIUa7ZWScTCejGA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15523,7 +15912,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%88-%D9%87%D9%86%D8%AF%D8%B1%D9%8A-%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D9%85%D8%AA-%D9%85%D9%86%D8%B5%D8%AA%D9%8A-%D9%84%D8%B9%D9%85%D9%84-%D8%A7%D9%84%D8%AE%D9%8A%D8%B1-%D8%B9%D8%A8%D8%B1-%D8%A3%D8%BA%D9%86%D9%8A%D8%A9-%D8%A7%D8%B7%D8%B1%D8%AF%D9%88%D8%A7-%D9%84%D9%88%D8%BA%D8%A7%D9%86-%D8%A8%D9%88%D9%84/",
    "published": 1791312666076,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=61bRp59NogWBBDykf7ZrNw&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=f8gYxB0pPWTp5zOyYp3UQQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15557,7 +15946,7 @@
    "url": "https://arab-wrestling.com/news/%D8%AC%D9%88-%D9%87%D9%86%D8%AF%D8%B1%D9%8A-%D9%8A%D8%A4%D9%83%D8%AF-%D8%B9%D8%AF%D9%85-%D9%83%D8%AA%D8%A7%D8%A8%D8%A9-%D8%A3%D8%BA%D8%A7%D9%86%D9%8A-%D8%AF%D8%AE%D9%88%D9%84-%D9%84%D9%84%D9%85%D8%B5%D8%A7%D8%B1%D8%B9%D9%8A%D9%86-%D8%A7%D9%84%D8%A2%D8%AE%D8%B1%D9%8A%D9%86-%D9%84%D9%86-%D9%8A%D8%AD%D8%AF%D8%AB-%D8%B0%D9%84%D9%83/",
    "published": 1791311863760,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=286Cb0tj5x-dPf46uvR6aQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=0dvo1HhrPyBUIZDqAMC17w&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15591,7 +15980,7 @@
    "url": "https://arab-wrestling.com/news/%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%B9%D8%B1%D8%B6-aew-dynamite-6-%D8%A3%D9%83%D8%AA%D9%88%D8%A8%D8%B1-2026-%D9%81%D9%88%D8%B2-%D9%88%D9%8A%D9%84-%D8%A3%D9%88%D8%B3%D8%A8%D8%B1%D8%A7%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D8%AD%D8%AF%D8%AB-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A/",
    "published": 1791311859442,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=tQxPamxJoMdaZrX27mZslQ&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=Z1ka7ipYypEaQd_LXfwEdQ&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15625,7 +16014,7 @@
    "url": "https://arab-wrestling.com/news/aew-%D9%85%D9%87%D8%AA%D9%85-%D8%A8%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%82%D8%AF-%D9%85%D8%B9-%D9%86%D8%AC%D9%85%D8%A9-%D9%85%D8%B5%D8%A7%D8%B1%D8%B9%D8%A9-%D9%85%D8%B3%D8%AA%D9%82%D9%84%D8%A9-%D8%B4%D9%87%D9%8A%D8%B1%D8%A9/",
    "published": 1791311825563,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=lL81uztEDMX9CcPho8EWcA&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=pkE0v4BNTqmPnKNSGkZWGA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15659,7 +16048,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A8%D9%88%D9%83%D8%B1-%D8%AA%D9%8A-%D9%8A%D8%A4%D9%83%D8%AF-%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D9%87-%D9%84%D9%80-%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%B3-%D8%B3%D9%83%D9%88%D8%AA-%D9%88%D9%8A%D8%B1%D9%89-%D8%A3%D9%86-%D8%A7%D9%84%D8%AA%D9%88%D9%82%D9%8A%D8%AA-%D9%84%D9%85-%D9%8A%D9%83%D9%86-%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A7-%D9%84%D9%87/",
    "published": 1791310682602,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=m9ja5Z3JK0_3I9WipvVl6w&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=r-G-kthz9xD0YLEZO_hOVA&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15693,7 +16082,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A5%D8%B6%D8%A7%D9%81%D8%A9-%D9%81%D9%82%D8%B1%D8%A9-%D8%A8%D9%8A%D9%86-%D9%83%D8%B3%D9%8A%D8%A7-%D8%A8%D8%B1%D9%88%D9%83%D8%B3%D8%A7%D9%8A%D8%AF-%D9%88%D8%A5%D9%86%D8%AF%D9%8A-%D9%87%D8%A7%D8%B1%D8%AA%D9%88%D9%8A%D9%84-%D8%A5%D9%84%D9%89-%D8%B9%D8%B1%D8%B6-tna-impact-%D8%A7%D9%84%D9%82%D8%A7%D8%AF%D9%85/",
    "published": 1791310593198,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=HUzEJZ0jJbDO3BTVzGWtUg&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=dQt78wgyxIpq4BlDUBWA2g&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15727,7 +16116,7 @@
    "url": "https://arab-wrestling.com/news/%D8%A8%D9%88%D9%83%D8%B1-%D8%AA%D9%8A-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%A7%D9%82%D8%AA%D8%B1%D8%A7%D8%A8%D9%87-%D9%85%D9%86-%D8%A7%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%81-%D9%85%D8%B9-%D8%A8%D8%A7%D8%AF-%D8%A8%D8%A7%D9%86%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wrestlemania-37/",
    "published": 1791309914037,
    "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=z-qoPMAyuQ1mcDPId5ZJ0w&utm_medium=link&utm_source=api",
+    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=fu1j9Cp99CA5vgng1q9aBw&utm_medium=link&utm_source=api",
     "indexStatusResult": {
      "verdict": "PASS",
      "coverageState": "تم إرسال الصفحة وتمت فهرستها",
@@ -15737,380 +16126,6 @@
      "pageFetchState": "SUCCESSFUL",
      "googleCanonical": "https://arab-wrestling.com/news/%D8%A8%D9%88%D9%83%D8%B1-%D8%AA%D9%8A-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%A7%D9%82%D8%AA%D8%B1%D8%A7%D8%A8%D9%87-%D9%85%D9%86-%D8%A7%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%81-%D9%85%D8%B9-%D8%A8%D8%A7%D8%AF-%D8%A8%D8%A7%D9%86%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wrestlemania-37/",
      "userCanonical": "https://arab-wrestling.com/news/%D8%A8%D9%88%D9%83%D8%B1-%D8%AA%D9%8A-%D9%8A%D9%83%D8%B4%D9%81-%D8%B9%D9%86-%D8%A7%D9%82%D8%AA%D8%B1%D8%A7%D8%A8%D9%87-%D9%85%D9%86-%D8%A7%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%81-%D9%85%D8%B9-%D8%A8%D8%A7%D8%AF-%D8%A8%D8%A7%D9%86%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-wrestlemania-37/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A8%D9%8A%D8%B9-%D8%A8%D8%B7%D8%A7%D9%82%D8%AA%D9%87-%D9%85%D9%86-topps-%D9%85%D9%82%D8%A7%D8%A8%D9%84-329400-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%88%D9%8A%D8%A3%D9%85%D9%84-%D8%A3%D9%84%D8%A7-%D9%8A%D8%AD%D8%A7%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%8A-%D8%A5%D8%B9%D8%A7%D8%AF%D8%A9-%D8%A8%D9%8A%D8%B9%D9%87%D8%A7-%D8%A8%D8%B3%D8%B9%D8%B1-%D8%A3%D8%B9%D9%84%D9%89/",
-   "published": 1791309900576,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=zz0NdoOmA4wE8MiBIJIXGg&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T18:40:51Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A8%D9%8A%D8%B9-%D8%A8%D8%B7%D8%A7%D9%82%D8%AA%D9%87-%D9%85%D9%86-topps-%D9%85%D9%82%D8%A7%D8%A8%D9%84-329400-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%88%D9%8A%D8%A3%D9%85%D9%84-%D8%A3%D9%84%D8%A7-%D9%8A%D8%AD%D8%A7%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%8A-%D8%A5%D8%B9%D8%A7%D8%AF%D8%A9-%D8%A8%D9%8A%D8%B9%D9%87%D8%A7-%D8%A8%D8%B3%D8%B9%D8%B1-%D8%A3%D8%B9%D9%84%D9%89/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A8%D9%8A%D8%B9-%D8%A8%D8%B7%D8%A7%D9%82%D8%AA%D9%87-%D9%85%D9%86-topps-%D9%85%D9%82%D8%A7%D8%A8%D9%84-329400-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%88%D9%8A%D8%A3%D9%85%D9%84-%D8%A3%D9%84%D8%A7-%D9%8A%D8%AD%D8%A7%D9%88%D9%84-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%8A-%D8%A5%D8%B9%D8%A7%D8%AF%D8%A9-%D8%A8%D9%8A%D8%B9%D9%87%D8%A7-%D8%A8%D8%B3%D8%B9%D8%B1-%D8%A3%D8%B9%D9%84%D9%89/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%85%D9%86-%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%BA%D9%8A%D8%A7%D8%A8-%D8%AC%D8%A7%D9%83%D9%88%D8%A8-%D9%81%D8%A7%D8%AA%D9%88-%D8%B9%D9%86-%D8%B9%D8%B1%D8%B6-wwe-raw/",
-   "published": 1791309430102,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=8H9PMW-wAJt1pW6401yUnw&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T18:06:02Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%85%D9%86-%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%BA%D9%8A%D8%A7%D8%A8-%D8%AC%D8%A7%D9%83%D9%88%D8%A8-%D9%81%D8%A7%D8%AA%D9%88-%D8%B9%D9%86-%D8%B9%D8%B1%D8%B6-wwe-raw/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D9%85%D9%86-%D9%83%D9%88%D8%A7%D9%84%D9%8A%D8%B3-%D8%BA%D9%8A%D8%A7%D8%A8-%D8%AC%D8%A7%D9%83%D9%88%D8%A8-%D9%81%D8%A7%D8%AA%D9%88-%D8%B9%D9%86-%D8%B9%D8%B1%D8%B6-wwe-raw/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AC%D8%A7%D9%83-%D8%B1%D9%88%D8%AC%D9%88-%D8%B9%D8%B4%D8%B1%D8%A9-%D8%A8%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D8%A9-%D9%81%D9%82%D8%B7-%D9%85%D9%86-%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%87%D9%8A%D8%B1-%D8%A3%D8%B7%D9%84%D9%82%D8%AA-%D8%B5%D9%8A%D8%AD%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%87%D8%AC%D8%A7%D9%86-%D8%B6%D8%AF%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-redemption/",
-   "published": 1791308404414,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=eQUxKlmLUqSOJzaFwxrqAw&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T18:06:03Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AC%D8%A7%D9%83-%D8%B1%D9%88%D8%AC%D9%88-%D8%B9%D8%B4%D8%B1%D8%A9-%D8%A8%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D8%A9-%D9%81%D9%82%D8%B7-%D9%85%D9%86-%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%87%D9%8A%D8%B1-%D8%A3%D8%B7%D9%84%D9%82%D8%AA-%D8%B5%D9%8A%D8%AD%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%87%D8%AC%D8%A7%D9%86-%D8%B6%D8%AF%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-redemption/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AC%D8%A7%D9%83-%D8%B1%D9%88%D8%AC%D9%88-%D8%B9%D8%B4%D8%B1%D8%A9-%D8%A8%D8%A7%D9%84%D9%85%D8%A7%D8%A6%D8%A9-%D9%81%D9%82%D8%B7-%D9%85%D9%86-%D8%A7%D9%84%D8%AC%D9%85%D8%A7%D9%87%D9%8A%D8%B1-%D8%A3%D8%B7%D9%84%D9%82%D8%AA-%D8%B5%D9%8A%D8%AD%D8%A7%D8%AA-%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%87%D8%AC%D8%A7%D9%86-%D8%B6%D8%AF%D9%8A-%D9%81%D9%8A-%D8%B9%D8%B1%D8%B6-aew-redemption/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D9%85%D9%8A%D9%83-%D9%81%D9%88%D9%84%D9%8A-%D9%8A%D9%86%D8%AA%D9%82%D8%AF-%D8%AF%D9%88%D9%86%D8%A7%D9%84%D8%AF-%D8%AA%D8%B1%D8%A7%D9%85%D8%A8-%D8%A8%D8%B3%D8%A8%D8%A8-%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%D8%A7%D8%AA%D9%87-%D8%B9%D9%86-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D8%A7%D8%B3%D8%AA%D9%87%D8%AF%D8%A7%D9%81-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%AA%D9%8A-%D9%84%D9%88%D8%B3-%D8%A3%D9%86%D8%AC%D9%84%D9%88%D8%B3-%D9%88%D8%B3%D8%A7%D9%86-%D8%AF%D9%8A%D9%8A%D8%BA%D9%88/",
-   "published": 1791307040714,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ju_Q505chmrAW8Nm3QACYA&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T18:06:03Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D9%85%D9%8A%D9%83-%D9%81%D9%88%D9%84%D9%8A-%D9%8A%D9%86%D8%AA%D9%82%D8%AF-%D8%AF%D9%88%D9%86%D8%A7%D9%84%D8%AF-%D8%AA%D8%B1%D8%A7%D9%85%D8%A8-%D8%A8%D8%B3%D8%A8%D8%A8-%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%D8%A7%D8%AA%D9%87-%D8%B9%D9%86-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D8%A7%D8%B3%D8%AA%D9%87%D8%AF%D8%A7%D9%81-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%AA%D9%8A-%D9%84%D9%88%D8%B3-%D8%A3%D9%86%D8%AC%D9%84%D9%88%D8%B3-%D9%88%D8%B3%D8%A7%D9%86-%D8%AF%D9%8A%D9%8A%D8%BA%D9%88/",
-     "userCanonical": "https://arab-wrestling.com/news/%D9%85%D9%8A%D9%83-%D9%81%D9%88%D9%84%D9%8A-%D9%8A%D9%86%D8%AA%D9%82%D8%AF-%D8%AF%D9%88%D9%86%D8%A7%D9%84%D8%AF-%D8%AA%D8%B1%D8%A7%D9%85%D8%A8-%D8%A8%D8%B3%D8%A8%D8%A8-%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%D8%A7%D8%AA%D9%87-%D8%B9%D9%86-%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84-%D8%A7%D8%B3%D8%AA%D9%87%D8%AF%D8%A7%D9%81-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%AA%D9%8A-%D9%84%D9%88%D8%B3-%D8%A3%D9%86%D8%AC%D9%84%D9%88%D8%B3-%D9%88%D8%B3%D8%A7%D9%86-%D8%AF%D9%8A%D9%8A%D8%BA%D9%88/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D8%B4%D9%8A%D8%AF-%D8%A8%D9%83%D9%88%D8%AF%D9%8A-%D8%B1%D9%88%D8%AF%D8%B2-%D9%84%D8%A7%D9%85%D8%AA%D9%84%D8%A7%D9%83%D9%87-%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D9%83%D8%A7%D9%81%D9%8A%D8%A9-%D9%84%D9%84%D8%AA%D8%B1%D9%88%D9%8A%D8%AC-%D9%84%D9%81%D9%8A%D9%84%D9%85-street-fighter-%D8%A8%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9-%D8%BA%D8%A7%D9%8A%D9%84/",
-   "published": 1791306426922,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=WUzrC35mMOWRrASFGnmtAA&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T18:06:01Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D8%B4%D9%8A%D8%AF-%D8%A8%D9%83%D9%88%D8%AF%D9%8A-%D8%B1%D9%88%D8%AF%D8%B2-%D9%84%D8%A7%D9%85%D8%AA%D9%84%D8%A7%D9%83%D9%87-%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D9%83%D8%A7%D9%81%D9%8A%D8%A9-%D9%84%D9%84%D8%AA%D8%B1%D9%88%D9%8A%D8%AC-%D9%84%D9%81%D9%8A%D9%84%D9%85-street-fighter-%D8%A8%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9-%D8%BA%D8%A7%D9%8A%D9%84/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D9%8A%D8%B4%D9%8A%D8%AF-%D8%A8%D9%83%D9%88%D8%AF%D9%8A-%D8%B1%D9%88%D8%AF%D8%B2-%D9%84%D8%A7%D9%85%D8%AA%D9%84%D8%A7%D9%83%D9%87-%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%D8%A9-%D8%A7%D9%84%D9%83%D8%A7%D9%81%D9%8A%D8%A9-%D9%84%D9%84%D8%AA%D8%B1%D9%88%D9%8A%D8%AC-%D9%84%D9%81%D9%8A%D9%84%D9%85-street-fighter-%D8%A8%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9-%D8%BA%D8%A7%D9%8A%D9%84/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AF%D8%A7%D8%B1%D9%8A%D8%A7-%D8%B1%D9%8A-%D8%AA%D9%86%D8%B6%D9%85-%D8%A5%D9%84%D9%89-%D8%B7%D8%A7%D9%82%D9%85-%D9%81%D9%8A%D9%84%D9%85-%D8%A7%D9%84%D8%A5%D8%AB%D8%A7%D8%B1%D8%A9-lazarus-syndrome/",
-   "published": 1791304620470,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=xhvOzehFEjAGAtGbs3rKvw&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T17:06:03Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AF%D8%A7%D8%B1%D9%8A%D8%A7-%D8%B1%D9%8A-%D8%AA%D9%86%D8%B6%D9%85-%D8%A5%D9%84%D9%89-%D8%B7%D8%A7%D9%82%D9%85-%D9%81%D9%8A%D9%84%D9%85-%D8%A7%D9%84%D8%A5%D8%AB%D8%A7%D8%B1%D8%A9-lazarus-syndrome/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AF%D8%A7%D8%B1%D9%8A%D8%A7-%D8%B1%D9%8A-%D8%AA%D9%86%D8%B6%D9%85-%D8%A5%D9%84%D9%89-%D8%B7%D8%A7%D9%82%D9%85-%D9%81%D9%8A%D9%84%D9%85-%D8%A7%D9%84%D8%A5%D8%AB%D8%A7%D8%B1%D8%A9-lazarus-syndrome/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%B1%D9%88%D8%B4-%D9%8A%D8%AC%D9%8A%D8%A8-%D8%B9%D9%86-%D9%85%D9%88%D8%B9%D8%AF-%D8%B9%D9%88%D8%AF%D8%AA%D9%87-%D8%A5%D9%84%D9%89-aew-%D8%B1%D8%A8%D9%85%D8%A7-%D8%A7%D9%84%D8%B9%D8%A7%D9%85-%D8%A7%D9%84%D9%85%D9%82%D8%A8%D9%84/",
-   "published": 1791303970387,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=jan7TVhj1eO1iq0jP_jh8Q&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-07T03:16:05Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%88%D8%B4-%D9%8A%D8%AC%D9%8A%D8%A8-%D8%B9%D9%86-%D9%85%D9%88%D8%B9%D8%AF-%D8%B9%D9%88%D8%AF%D8%AA%D9%87-%D8%A5%D9%84%D9%89-aew-%D8%B1%D8%A8%D9%85%D8%A7-%D8%A7%D9%84%D8%B9%D8%A7%D9%85-%D8%A7%D9%84%D9%85%D9%82%D8%A8%D9%84/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%B1%D9%88%D8%B4-%D9%8A%D8%AC%D9%8A%D8%A8-%D8%B9%D9%86-%D9%85%D9%88%D8%B9%D8%AF-%D8%B9%D9%88%D8%AF%D8%AA%D9%87-%D8%A5%D9%84%D9%89-aew-%D8%B1%D8%A8%D9%85%D8%A7-%D8%A7%D9%84%D8%B9%D8%A7%D9%85-%D8%A7%D9%84%D9%85%D9%82%D8%A8%D9%84/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AA%D9%8A%D9%81%D8%A7%D9%86%D9%8A-%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%88%D9%86-%D8%AA%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A7%D9%86%D8%AA%D8%B4%D8%A7%D8%B1-%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D8%AE%D8%B7%D8%A6%D9%87%D8%A7-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D9%8A-%D8%A8%D8%B4%D9%83%D9%84-%D9%88%D8%A7%D8%B3%D8%B9/",
-   "published": 1791303429314,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=iy6LwrYJSppoyOd8chL_gw&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T16:52:37Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%8A%D9%81%D8%A7%D9%86%D9%8A-%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%88%D9%86-%D8%AA%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A7%D9%86%D8%AA%D8%B4%D8%A7%D8%B1-%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D8%AE%D8%B7%D8%A6%D9%87%D8%A7-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D9%8A-%D8%A8%D8%B4%D9%83%D9%84-%D9%88%D8%A7%D8%B3%D8%B9/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%8A%D9%81%D8%A7%D9%86%D9%8A-%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%88%D9%86-%D8%AA%D8%B9%D9%84%D9%82-%D8%B9%D9%84%D9%89-%D8%A7%D9%86%D8%AA%D8%B4%D8%A7%D8%B1-%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D8%AE%D8%B7%D8%A6%D9%87%D8%A7-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D9%8A-%D8%A8%D8%B4%D9%83%D9%84-%D9%88%D8%A7%D8%B3%D8%B9/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D9%85%D8%AF%D8%B9%D9%88%D8%A7-%D8%A7%D9%84%D9%82%D8%B6%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D8%B9%D9%84%D9%82%D8%A9-%D8%A8%D8%A8%D8%AB-wwe-%D9%8A%D9%82%D8%A7%D8%AA%D9%84%D9%88%D9%86-%D9%85%D8%B3%D8%A7%D8%B9%D9%8A-espn-%D9%88bamtech-%D9%86%D8%AD%D9%88-%D8%A7%D9%84%D8%AA%D8%AD%D9%83%D9%8A%D9%85/",
-   "published": 1791302313811,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=ccTtlB2YOFz1VV3wE6hvfg&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T16:52:39Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D9%85%D8%AF%D8%B9%D9%88%D8%A7-%D8%A7%D9%84%D9%82%D8%B6%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D8%B9%D9%84%D9%82%D8%A9-%D8%A8%D8%A8%D8%AB-wwe-%D9%8A%D9%82%D8%A7%D8%AA%D9%84%D9%88%D9%86-%D9%85%D8%B3%D8%A7%D8%B9%D9%8A-espn-%D9%88bamtech-%D9%86%D8%AD%D9%88-%D8%A7%D9%84%D8%AA%D8%AD%D9%83%D9%8A%D9%85/",
-     "userCanonical": "https://arab-wrestling.com/news/%D9%85%D8%AF%D8%B9%D9%88%D8%A7-%D8%A7%D9%84%D9%82%D8%B6%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D8%B9%D9%84%D9%82%D8%A9-%D8%A8%D8%A8%D8%AB-wwe-%D9%8A%D9%82%D8%A7%D8%AA%D9%84%D9%88%D9%86-%D9%85%D8%B3%D8%A7%D8%B9%D9%8A-espn-%D9%88bamtech-%D9%86%D8%AD%D9%88-%D8%A7%D9%84%D8%AA%D8%AD%D9%83%D9%8A%D9%85/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AA%D9%8A%D8%AA%D8%B3%D9%88%D9%8A%D8%A7-%D9%86%D8%A7%D9%8A%D8%AA%D9%88-%D9%84%D9%8A%D8%B3-%D9%84%D8%AF%D9%8A-%D8%A3%D9%8A-%D9%85%D8%B4%D8%A7%D8%B9%D8%B1-%D8%AA%D8%B9%D9%84%D9%82-%D8%AA%D8%AC%D8%A7%D9%87-njpw-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A5%D8%B7%D9%84%D8%A7%D9%82/",
-   "published": 1791301846536,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=GaszAmjgAmBRw2XhW48h7Q&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T17:06:05Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%8A%D8%AA%D8%B3%D9%88%D9%8A%D8%A7-%D9%86%D8%A7%D9%8A%D8%AA%D9%88-%D9%84%D9%8A%D8%B3-%D9%84%D8%AF%D9%8A-%D8%A3%D9%8A-%D9%85%D8%B4%D8%A7%D8%B9%D8%B1-%D8%AA%D8%B9%D9%84%D9%82-%D8%AA%D8%AC%D8%A7%D9%87-njpw-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A5%D8%B7%D9%84%D8%A7%D9%82/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AA%D9%8A%D8%AA%D8%B3%D9%88%D9%8A%D8%A7-%D9%86%D8%A7%D9%8A%D8%AA%D9%88-%D9%84%D9%8A%D8%B3-%D9%84%D8%AF%D9%8A-%D8%A3%D9%8A-%D9%85%D8%B4%D8%A7%D8%B9%D8%B1-%D8%AA%D8%B9%D9%84%D9%82-%D8%AA%D8%AC%D8%A7%D9%87-njpw-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A5%D8%B7%D9%84%D8%A7%D9%82/",
-     "crawledAs": "MOBILE"
-    },
-    "mobileUsabilityResult": {
-     "verdict": "VERDICT_UNSPECIFIED"
-    },
-    "richResultsResult": {
-     "verdict": "PASS",
-     "detectedItems": [
-      {
-       "richResultType": "مسارات التنقل",
-       "items": [
-        {
-         "name": "عنصر بدون اسم"
-        }
-       ]
-      }
-     ]
-    }
-   }
-  },
-  {
-   "url": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D8%A3%D8%B9%D8%AA%D9%82%D8%AF-%D8%A3%D9%86-%D8%AE%D9%88%D9%81%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D9%85%D8%B1%D8%AA%D9%81%D8%B9%D8%A7%D8%AA-%D9%86%D8%A7%D8%A8%D8%B9-%D9%85%D9%86-%D8%A7%D9%84%D8%B3%D9%82%D9%88%D8%B7-%D8%B7%D9%88%D8%A7%D9%84-%D8%AD%D9%8A%D8%A7%D8%AA%D9%8A-%D9%81%D9%89-wwe/",
-   "published": 1791301829565,
-   "result": {
-    "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=https://arab-wrestling.com/&id=-7urDNfnhnBfDA-HWYaT1Q&utm_medium=link&utm_source=api",
-    "indexStatusResult": {
-     "verdict": "PASS",
-     "coverageState": "تم إرسال الصفحة وتمت فهرستها",
-     "robotsTxtState": "ALLOWED",
-     "indexingState": "INDEXING_ALLOWED",
-     "lastCrawlTime": "2026-10-06T16:52:35Z",
-     "pageFetchState": "SUCCESSFUL",
-     "googleCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D8%A3%D8%B9%D8%AA%D9%82%D8%AF-%D8%A3%D9%86-%D8%AE%D9%88%D9%81%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D9%85%D8%B1%D8%AA%D9%81%D8%B9%D8%A7%D8%AA-%D9%86%D8%A7%D8%A8%D8%B9-%D9%85%D9%86-%D8%A7%D9%84%D8%B3%D9%82%D9%88%D8%B7-%D8%B7%D9%88%D8%A7%D9%84-%D8%AD%D9%8A%D8%A7%D8%AA%D9%8A-%D9%81%D9%89-wwe/",
-     "userCanonical": "https://arab-wrestling.com/news/%D8%AC%D9%88%D9%86-%D8%B3%D9%8A%D9%86%D8%A7-%D8%A3%D8%B9%D8%AA%D9%82%D8%AF-%D8%A3%D9%86-%D8%AE%D9%88%D9%81%D9%8A-%D9%85%D9%86-%D8%A7%D9%84%D9%85%D8%B1%D8%AA%D9%81%D8%B9%D8%A7%D8%AA-%D9%86%D8%A7%D8%A8%D8%B9-%D9%85%D9%86-%D8%A7%D9%84%D8%B3%D9%82%D9%88%D8%B7-%D8%B7%D9%88%D8%A7%D9%84-%D8%AD%D9%8A%D8%A7%D8%AA%D9%8A-%D9%81%D9%89-wwe/",
      "crawledAs": "MOBILE"
     },
     "mobileUsabilityResult": {
@@ -16536,7 +16551,6 @@
  },
  "actions": [],
  "problems": [
-  "صفحة جوجل لسه بيبعت لها ناس ورابطها واقع (9 ظهور): https://arab-wrestling.com/shows/revpro-14-year-anniversary-show-2026",
   "ظهور كتير ونقرات قليلة (630 ظهور، 0.3٪، ترتيب 9.7): https://arab-wrestling.com/news/اقتراب-عودة-درو-ماكنتاير-لـ-wwe-بعد-انتهاء-تصوير-فيلمه-الجديد"
  ]
 }
