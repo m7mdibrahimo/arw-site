@@ -2,6 +2,12 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "(?:إغلاق|غلق|إقفال)\\s+(?:عرض\\s+)?(?:Forbidden\\s+Door|فوربيدن\\s+دور)",
+   "right": "إقفال «الباب المحرم»",
+   "regex": true,
+   "note": "locking the Forbidden Door = إقفال الباب المحرم (تعبير مجازي عن التعاون بين الاتحادات، مش عرض بيتلغي) — INCIDENTS #334"
+  },
+  {
    "wrong": "راككيل",
    "right": "راكيل",
    "note": "Raquel Rodriguez = راكيل رودريغيز، كاف واحدة — INCIDENTS #331"

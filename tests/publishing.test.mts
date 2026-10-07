@@ -2984,6 +2984,12 @@ test('scrubbed reporter left as «تقارير صحفية أنه تحرى» is f
   assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'وبحسب تقارير صحفية مطلعة، فإن انتقال هوليداي إلى WWE لن يحدث في الوقت الحالي.', []).some(i => i.code === 'scrubbed_reporter_pronoun'));
 });
 
+test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
+  assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
+  assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
+  assert.match(buildNamesGlossaryHint('Sunil Singh gives update after collapsed lung'), /Sunil Singh = سونيل سينغ/);
+});
+
 test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
