@@ -1143,7 +1143,9 @@ module.exports = function(eleventyConfig) {
       const monthNum = dateVal ? (dateVal.getUTCMonth() + 1) : null;
       const dayNum = dateVal ? dateVal.getUTCDate() : null;
       const shortDate = dateVal ? ("يوم " + dayNum + " شهر " + monthNum) : null;
-      const isAnnual = isNostalgia || (item.data.is_annual === true || item.data.is_annual === "true");
+      // «فعالية سنوية» is gone from the panel: every show is listed the same way — by its date, newest first —
+      // whatever an older file still says (owner, 2026-10-07; INCIDENTS #332)
+      const isAnnual = isNostalgia;
 
       const episodeRaw = isNostalgia ? (item.data.nostalgia_order || item.data.episode_number) : item.data.episode_number;
       const episodeLabel = (episodeRaw !== undefined && episodeRaw !== null && String(episodeRaw).trim() !== "")
@@ -1392,10 +1394,24 @@ module.exports = function(eleventyConfig) {
     const nextEp = (idx >= 0 && idx < prog.episodes.length - 1) ? prog.episodes[idx + 1] : null;
 
     const MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+    // «عرض الرو 21.09.2026 مترجم» → «عرض الرو»: what a show is called once its date is taken out
+    const kindOf = function(ep) {
+      return String(ep.headline || "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}\s*/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
+    };
+    // A show whose name the rest of its program doesn't share — «ديستروكشن ان كوبي» among the «Road To» nights,
+    // every UFC card, «All Out 2026» — is shown by its full name as it was added; a weekly show that only
+    // changes its date, by the date (owner, 2026-10-07: no «فعالية سنوية» switch, INCIDENTS #332)
+    const kindCount = new Map();
+    prog.episodes.forEach(function(ep) { const k = kindOf(ep); kindCount.set(k, (kindCount.get(k) || 0) + 1); });
     const card = function(ep) {
-      // «عرض الرو 21.09.2026 مترجم» → «عرض الرو»: the date has its own line on the card
-      const kind = String(ep.headline || "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}\s*/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
-      return Object.assign({}, ep, { dayLabel: ep.day && ep.month ? ep.day + " " + MONTHS[ep.month - 1] : "", kindLabel: kind });
+      const kind = kindOf(ep);
+      return Object.assign({}, ep, {
+        dayLabel: ep.day && ep.month ? ep.day + " " + MONTHS[ep.month - 1] : "",
+        kindLabel: kind,
+        named: !kind || (kindCount.get(kind) || 0) < 2 || !!ep.isNostalgia,
+        fullName: String(ep.headline || ep.title || "").trim(),
+        hasDateInName: /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/.test(String(ep.headline || ""))
+      });
     };
     const here = idx >= 0 ? idx : prog.episodes.length - 1;
     const recent = [];

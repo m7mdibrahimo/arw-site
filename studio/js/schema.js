@@ -8,13 +8,13 @@ export const FEDERATIONS = ['WWE', 'AEW', 'NJPW', 'TNA', 'ROH', 'MMA', 'INDIE'];
 export const COLLECTIONS = {
   shows: {
     label: 'العروض', singular: 'عرض', icon: 'show', color: '#7c6cf2', folder: 'content/shows', urlBase: '/shows/',
-    order: ['show_type', 'federation', 'title', 'headline', 'program_name', 'season_number', 'episode_number', 'is_annual', 'maintenance', 'maintenance_note', 'description', 'event_date', 'date', 'duration', 'tags', 'image', 'servers', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
+    order: ['show_type', 'federation', 'title', 'headline', 'program_name', 'season_number', 'episode_number', 'maintenance', 'maintenance_note', 'description', 'event_date', 'date', 'duration', 'tags', 'image', 'servers', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
     defaults: { show_type: 'عرض', layout: 'post-layout.njk' },
     required: ['federation', 'title', 'duration', 'image'],
   },
   recaps: {
     label: 'الملخصات', singular: 'ملخص', icon: 'recap', color: '#f5a524', folder: 'content/recaps', urlBase: '/recaps/',
-    order: ['federation', 'title', 'program_name', 'is_annual', 'event_date', 'date', 'headline', 'description', 'tags', 'image', 'servers', 'body', 'layout'],
+    order: ['federation', 'title', 'program_name', 'event_date', 'date', 'headline', 'description', 'tags', 'image', 'servers', 'body', 'layout'],
     defaults: { layout: 'post-layout.njk' },
     required: ['federation', 'title', 'headline', 'description', 'image'],
   },
@@ -210,8 +210,9 @@ export function checklist(collection, data) {
     items.push({ ok: Array.isArray(data.servers) && data.servers.some(s => s && s.url), label: 'سيرفر مشاهدة واحد على الأقل', required: false });
   }
   // A weekly show without its programme never links to its other episodes («املأ من آخر حلقة», the
-  // series pages): TNA iMPACT 01.10.2026 went live without one (INCIDENTS #235)
-  if (collection === 'shows' && data.is_annual !== true) need('program_name', 'اسم البرنامج');
+  // series pages): TNA iMPACT 01.10.2026 went live without one (INCIDENTS #235). Every show has one now: the
+  // «فعالية سنوية» option is gone, every show is listed the same way (INCIDENTS #332)
+  if (collection === 'shows') need('program_name', 'اسم البرنامج');
   if (['shows', 'nostalgia'].includes(collection)) {
     need('duration', 'مدة العرض');
     items.push({ ok: ['downloads_low', 'downloads_medium', 'downloads_high'].some(k => has(k)), label: 'روابط تحميل', required: false });

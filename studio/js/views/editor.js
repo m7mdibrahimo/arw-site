@@ -23,7 +23,7 @@ const SECTIONS = {
     { id: 'cover', title: 'الغلاف والتفاصيل', icon: 'image', fields: ['image', 'description', 'tags', 'duration', 'date', 'maintenance', 'body'] },
   ],
   recaps: [
-    { id: 'basics', title: 'البيانات الأساسية', icon: 'recap', fields: ['program', 'federation', 'title', 'event_date', 'headline', 'is_annual'] },
+    { id: 'basics', title: 'البيانات الأساسية', icon: 'recap', fields: ['program', 'federation', 'title', 'event_date', 'headline'] },
     { id: 'watch', title: 'سيرفرات المشاهدة', icon: 'eye', fields: ['servers'] },
     { id: 'cover', title: 'الغلاف والتفاصيل', icon: 'image', fields: ['image', 'description', 'tags', 'date', 'body'] },
   ],
@@ -64,11 +64,9 @@ const F = {
     <button type="button" class="btn btn-soft" id="suggest-headline" title="اقتراح من آخر حلقة">${icon('wand')}</button></div></div>`,
   show_type: () => html`<div class="field field-half"><label>نوع المحتوى</label>
     <div class="seg" data-seg="show_type">${['عرض', 'برنامج'].map(v => html`<button type="button" class="${(S.data.show_type || 'عرض') === v ? 'on' : ''}" data-v="${v}">${v}</button>`)}</div></div>`,
-  is_annual: () => toggle('is_annual', 'فعالية سنوية', 'زي All In: كل نسخة باسمها كامل ومن غير مواسم'),
-  numbering: () => html`<details class="field fold" ${S.data.season_number || S.data.episode_number || S.data.is_annual ? 'open' : ''}>
+  numbering: () => html`<details class="field fold" ${S.data.season_number || S.data.episode_number ? 'open' : ''}>
     <summary>خيارات الترقيم ${icon('arrowLeft')}</summary>
     <div class="fold-body">
-      ${toggle('is_annual', 'فعالية سنوية', 'زي All In: كل نسخة باسمها كامل ومن غير مواسم')}
       <div class="row-2">
         <div class="field"><label for="f-season">رقم الموسم</label><input class="input" type="number" min="1" id="f-season" data-k="season_number" data-type="int" value="${S.data.season_number ?? ''}"></div>
         <div class="field"><label for="f-episode">رقم / عنوان الحلقة</label><input class="input" id="f-episode" data-k="episode_number" dir="auto" value="${S.data.episode_number ?? ''}"></div>
@@ -258,7 +256,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
 function applyTemplate(src, { keepTitle = true } = {}) {
   // Not the description: it names that episode («عرض بروجرس ذا اوديسي تور برمنجهام…» landed on
   // Chapter 198 — INCIDENTS #123). It follows the new headline instead.
-  for (const k of ['federation', 'program_name', 'show_type', 'is_annual', 'season_number', 'nostalgia_series', 'series_type']) {
+  for (const k of ['federation', 'program_name', 'show_type', 'season_number', 'nostalgia_series', 'series_type']) {
     if (src[k] !== undefined && src[k] !== '' && src[k] !== false && src[k] !== null) S.data[k] = src[k];
   }
   S.data.description = ''; S.auto.description = true;

@@ -2063,7 +2063,7 @@ test('RVD is written «آر في دي» with the madda everywhere (INCIDENTS #32
   assert.equal(applyCorrections('آر في دي'), 'آر في دي');
 });
 
-test('Raquel Rodriguez and Aalyah Gutierrez have one spelling each (INCIDENTS #331)', async () => {
+test('Raquel Rodriguez and Aalyah Gutierrez have one spelling each (INCIDENTS #332)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('وراككيل رودريغيز وروكسان بيريز'), 'وراكيل رودريغيز وروكسان بيريز');
   assert.equal(applyCorrections('انضمام أليا غوتيريز إلى مركز الأداء'), 'انضمام ألياه غوتييرز إلى مركز الأداء');
@@ -2978,6 +2978,12 @@ test('filler «تخوض خطواتها القادمة» instead of a sourced fac
   assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'خاضت داكوتا كاي آخر نزالاتها في أبريل الماضي وهي تفكر في الخطوة القادمة بهدوء.', []).some(i => i.code === 'vague_filler'));
 });
 
+test('scrubbed reporter left as «تقارير صحفية أنه تحرى» is flagged (INCIDENTS #332)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'وخلال جلسة أسئلة وأجوبة، أكدت تقارير صحفية مطلعة أنه تحرى عن وضع هوليداي ليخلص إلى أن الانتقال لن يحدث.', []).some(i => i.code === 'scrubbed_reporter_pronoun'));
+  assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'وبحسب تقارير صحفية مطلعة، فإن انتقال هوليداي إلى WWE لن يحدث في الوقت الحالي.', []).some(i => i.code === 'scrubbed_reporter_pronoun'));
+});
+
 test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
@@ -3715,7 +3721,7 @@ test('«Trios title battle» is a fight over the trios titles, not «عداوة 
   assert.equal(applyCorrections('استمرار عداوة الثلاثي بين سويرف ستريكلاند وآدم بيدج'), 'استمرار صراع ألقاب الثلاثي بين سويرف ستريكلاند وآدم بيدج');
 });
 
-test('a show page lists its program as cards; «ذات صلة» is news only, picked by shared names and the days around the page (INCIDENTS #330)', async () => {
+test('a show page lists its program as cards (a show with its own name by that name); «ذات صلة» is news only, picked by shared names and the days around the page (INCIDENTS #330, #332)', async () => {
   // the config's own helpers, read through a stand-in eleventyConfig that records them
   const got: Record<string, any> = {};
   const stub: any = new Proxy({}, { get: (_t, k: string) => (k === 'addFilter' || k === 'addNunjucksFilter' || k === 'addNunjucksGlobal') ? (name: string, fn: any) => { got[name] = fn; } : () => stub });
@@ -3742,6 +3748,17 @@ test('a show page lists its program as cards; «ذات صلة» is news only, pi
   assert.equal(n.recent[0].dayLabel, '9 سبتمبر');
   assert.equal(n.recent[0].kindLabel, 'عرض الرو');
   assert.equal(n.libraryHref, '/library/wwe-raw/');
+  assert.equal(n.recent[0].named, false); // a weekly show: its date
+  // a show the rest of its program doesn't share a name with: its full name, as it was added (INCIDENTS #332)
+  const tour = [
+    { url: '/shows/n1/', day: 9, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو 09.09.2026 مترجم' },
+    { url: '/shows/n2/', day: 13, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو 13.09.2026 مترجم' },
+    { url: '/shows/kobe/', day: 27, month: 9, year: 2026, headline: 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم' },
+  ];
+  const k = nav('NJPW', '/shows/kobe/', [{ slug: 'njpw', name: 'NJPW', episodes: tour, seasons: [{ number: 2026, type: 'year', episodes: tour }] }]);
+  assert.deepEqual(k.recent.map((e: any) => e.named), [true, false, false]);
+  assert.equal(k.recent[0].fullName, 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم');
+  assert.equal(k.recent[0].hasDateInName, true);
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.ok(!/episodes-search|ep-pill|آخر 8/.test(tpl), 'the date buttons, the search and the «آخر 8» label are gone');
   assert.ok(!tpl.includes('أخبار وعروض ذات صلة'));
