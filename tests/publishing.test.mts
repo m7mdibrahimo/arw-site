@@ -3016,6 +3016,14 @@ test('«الوقت الذي تبلغ فيه»: the pronoun follows the masculine
   assert.equal(applyCorrections('بحلول الوقت الذي تبلغ فيها ابنته الحادية عشرة'), 'بحلول الوقت الذي تبلغ فيه ابنته الحادية عشرة');
 });
 
+test('PAC tribute stories: hamza, «التعزية», «واسمه الحقيقي» and who feels unhappy (INCIDENTS #346)', () => {
+  assert.equal(applyCorrections('تحمست للقاءهم بشدة'), 'تحمست للقائهم بشدة');
+  assert.equal(applyCorrections('لتتوالى رسائل التعبئة والوفاء'), 'لتتوالى رسائل التعزية والوفاء');
+  assert.equal(applyCorrections('الراحل باك، المسمى حقيقية بنجامين'), 'الراحل باك، واسمه الحقيقي بنجامين');
+  assert.equal(applyCorrections('ذكريات جولاته مع باك الراحل برودي لي'), 'ذكريات جولاته مع باك والراحل برودي لي');
+  assert.equal(applyCorrections('إذا شعرت الشركة يوما ما بأنها لا تناسبه'), 'إذا شعر يوما ما بأن الشركة لا تناسبه');
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
