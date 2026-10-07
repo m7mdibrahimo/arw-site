@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2279489/wwe-nxt-october-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-07T00:51:24.940Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -28,11 +33,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-07T00:31:40.933Z"
- },
- "https://www.wrestlinginc.com/2279489/wwe-nxt-october-6-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-07T00:31:40.793Z"
  },
  "https://www.fightful.com/wrestling/paramount-completes-acquistion-of-wbd-skydance-made-official": {
   "reason": "مكرر مع خبر نزل قبل كده",
