@@ -720,6 +720,21 @@ test('_redirects is converted to rules Cloudflare Pages accepts', () => {
   assert.ok(out.slice(firstSplat).every(l => l.includes('*')), 'static rules must precede every splat rule');
 });
 
+test('the 100 dynamic redirects keep room for wildcard rules that can only be dynamic (INCIDENTS #314)', () => {
+  // 1 Oct–7 Oct: new articles gave one more tag pagination, the splats filled all 100 slots, the
+  // «/studio/*»-style rules came on top: 101/100 and every Cloudflare build failed for 40 minutes.
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'site-'));
+  const lines: string[] = [];
+  for (let i = 0; i < 105; i++) { fs.mkdirSync(path.join(site, 'tag', `t${i}`, '2'), { recursive: true }); lines.push(`/tag/o${i}/* /tag/t${i}/:splat 301!`); }
+  lines.push('/studio/* /admin/ 301', '/raw/* /library/wwe-raw/ 301', '/smackdown/* /library/wwe-smackdown/ 301');
+  const out = toPagesRedirects(lines.join('\n'), site).trim().split('\n');
+  const dynamic = out.filter(l => /[*:]/.test(l.split(' ')[0]));
+  assert.equal(dynamic.length, 100);
+  for (const l of ['/studio/* /admin/ 301', '/raw/* /library/wwe-raw/ 301', '/smackdown/* /library/wwe-smackdown/ 301']) assert.ok(out.includes(l), l);
+  // a splat that didn't fit still redirects, as static rules
+  assert.ok(out.includes('/tag/o104/ /tag/t104/ 301') && out.includes('/tag/o104 /tag/t104/ 301'));
+});
+
 test('news QA auto-fixes defects that reached production and leaves legit text alone', async () => {
   const { autoFix, checkArticle, applyCorrections } = await import('../scripts/news-qa');
   assert.equal(autoFix('لعروض WWE Liveة والمتلفزة'), 'لعروض WWE Live والمتلفزة');
