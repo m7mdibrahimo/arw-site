@@ -3759,6 +3759,8 @@ test('a show page lists its program as cards (a show with its own name by that n
   assert.deepEqual(k.recent.map((e: any) => e.named), [true, false, false]);
   assert.equal(k.recent[0].fullName, 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم');
   assert.equal(k.recent[0].hasDateInName, true);
+  assert.equal(k.programKind, 'عرض ان جيه بي دبليو'); // the heading and the button name the program, not Kobe
+  assert.equal(n.programKind, 'عرض الرو');
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.ok(!/episodes-search|ep-pill|آخر 8/.test(tpl), 'the date buttons, the search and the «آخر 8» label are gone');
   assert.ok(!tpl.includes('أخبار وعروض ذات صلة'));

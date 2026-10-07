@@ -435,7 +435,7 @@
               {% if isNostalgiaItem or nav.program.isNostalgia %}
               {{ nav.program.name }}
               {% else %}
-              {% set kind0 = nav.recent[0].kindLabel if nav.recent.length else "" %}
+              {% set kind0 = nav.programKind %}
               {% if not isRecap and not isProgram and kind0 and kind0.indexOf("عرض ") == 0 %}{{ "عروض " + kind0.slice(4) }}{% else %}{% if isRecap %}ملخصات {% endif %}{{ nounPlural }} {{ nav.program.name }}{% endif %}
               {% endif %}
             </h3>

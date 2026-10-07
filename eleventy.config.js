@@ -1417,8 +1417,14 @@ module.exports = function(eleventyConfig) {
     const recent = [];
     for (let i = here; i >= 0 && recent.length < 8; i--) recent.push(card(prog.episodes[i]));
 
+    // the name the program's shows share («عرض الرو»), for the heading and the «كل عروض…» button — never a
+    // single show's own name (the Kobe card named the whole program for a moment, INCIDENTS #332)
+    let programKind = "";
+    kindCount.forEach(function(n, k) { if (k && n >= 2 && n > (kindCount.get(programKind) || 0)) programKind = k; });
+
     return {
       program: prog,
+      programKind: programKind,
       recent: recent,
       nextCard: nextEp ? card(nextEp) : null,
       libraryHref: "/library/" + prog.slug + "/",
