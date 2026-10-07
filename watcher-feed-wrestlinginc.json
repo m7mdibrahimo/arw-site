@@ -1,5 +1,35 @@
 [
   {
+    "id": 2259672956,
+    "link": "https://www.wrestlinginc.com/2280219/wwe-raw-viewership-ratings-september-28-2026/",
+    "date": "Wed, 07 Oct 2026 16:54:58 +0000",
+    "date_gmt": "2026-10-07T16:54:58.000Z",
+    "title": {
+      "rendered": "WWE Raw Viewership & Ratings Report: 9/28/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-viewership-ratings-report-9282026/l-intro-1791391959.jpg"
+  },
+  {
+    "id": 3531075637,
+    "link": "https://www.wrestlinginc.com/2280218/roman-reigns-wwe-crown-jewel-survivor-series-raw/",
+    "date": "Wed, 07 Oct 2026 16:54:24 +0000",
+    "date_gmt": "2026-10-07T16:54:24.000Z",
+    "title": {
+      "rendered": "Roman Reigns Announced For WWE Crown Jewel, Survivor Series & More"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/roman-reigns-wwe-crown-jewel-survivor-series-raw/l-intro-1791393050.jpg"
+  },
+  {
+    "id": 2512999844,
+    "link": "https://www.wrestlinginc.com/2280185/eric-bischoff-pac-tribute-show-aew-deaths-concerning/",
+    "date": "Wed, 07 Oct 2026 16:36:19 +0000",
+    "date_gmt": "2026-10-07T16:36:19.000Z",
+    "title": {
+      "rendered": "Eric Bischoff Comments On Pac Tribute Show, Says Recent AEW Deaths Are 'Concerning'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/eric-bischoff-pac-tribute-show-aew-deaths-concerning/l-intro-1791392939.jpg"
+  },
+  {
     "id": 1693320984,
     "link": "https://www.wrestlinginc.com/2280006/indie-legend-necro-butcher-signs-wwe-legends-deal/",
     "date": "Wed, 07 Oct 2026 15:05:23 +0000",
@@ -77,7 +107,7 @@
     "title": {
       "rendered": "MJF On Kenny Omega Vs. Will Ospreay At AEW All In: 'Very Underwhelming'"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/mjf-on-kenny-omega-vs-will-ospreay-at-aew-all-in-very-underwhelming/l-intro-1791000496.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-all-in-mjf-kenny-omega-will-ospreay-very-underwhelming/l-intro-1791390461.jpg"
   },
   {
     "id": 1531503263,
@@ -168,35 +198,5 @@
       "rendered": "Joe Hendry Explains How He Intends To Become World Champion In WWE"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-explains-how-he-intends-to-become-world-champion-in-wwe/l-intro-1790972790.jpg"
-  },
-  {
-    "id": 4919747926,
-    "link": "https://www.wrestlinginc.com/2279601/samoa-joe-earns-entry-clockwork-carnage-match-aew-wrestledream/",
-    "date": "Wed, 07 Oct 2026 00:51:10 +0000",
-    "date_gmt": "2026-10-07T00:51:10.000Z",
-    "title": {
-      "rendered": "Samoa Joe Earns Entry Into Clockwork Carnage Match At AEW WrestleDream"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/samoa-joe-earns-entry-into-clockwork-carnage-match-at-aew-wrestledream/l-intro-1791334191.jpg"
-  },
-  {
-    "id": 1466288872,
-    "link": "https://www.wrestlinginc.com/2279599/roh-world-champion-bandido-retains-title-aew-grand-slam-france/",
-    "date": "Wed, 07 Oct 2026 00:43:40 +0000",
-    "date_gmt": "2026-10-07T00:43:40.000Z",
-    "title": {
-      "rendered": "ROH World Champion Bandido Retains Title At AEW Grand Slam: France"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/roh-world-champion-bandido-retains-title-aew-grand-slam-france/l-intro-1791334064.jpg"
-  },
-  {
-    "id": 2506877560,
-    "link": "https://www.wrestlinginc.com/2279572/tony-khan-will-ospreay-clockwork-carnage-match-aew/",
-    "date": "Tue, 06 Oct 2026 23:45:54 +0000",
-    "date_gmt": "2026-10-06T23:45:54.000Z",
-    "title": {
-      "rendered": "Tony Khan Comments On Bringing Will Ospreay's Clockwork Carnage Match Into AEW"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-comments-on-bringing-will-ospreays-clockwork-carnage-match-into-aew/l-intro-1791330272.jpg"
   }
 ]

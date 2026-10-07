@@ -1,5 +1,45 @@
 [
   {
+    "id": 332619,
+    "link": "https://www.fightful.com/wrestling/zoey-serrano-wants-to-be-part-of-a-major-stipulation-match-in-tna/",
+    "date": "2026-10-07T12:57:40",
+    "date_gmt": "2026-10-07T16:57:40",
+    "title": {
+      "rendered": "Zoey Serrano Wants To Be Part Of A Major Stipulation Match In TNA"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/11215451/d91e24c406f328b83de18dffd2c7d6d7-1-1.jpg"
+  },
+  {
+    "id": 332627,
+    "link": "https://www.fightful.com/wrestling/roman-reigns-confirmed-for-wwe-survivor-series-and-crown-jewel/",
+    "date": "2026-10-07T12:50:25",
+    "date_gmt": "2026-10-07T16:50:25",
+    "title": {
+      "rendered": "Roman Reigns Confirmed For WWE Survivor Series And Crown Jewel"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07124956/Screenshot-2026-10-07-at-12.46.38-PM.png"
+  },
+  {
+    "id": 332618,
+    "link": "https://www.fightful.com/wrestling/zoey-serrano-reveals-the-origins-of-her-z-360-finisher/",
+    "date": "2026-10-07T12:32:53",
+    "date_gmt": "2026-10-07T16:32:53",
+    "title": {
+      "rendered": "Zoey Serrano Reveals The Origins Of Her Z-360 Finisher"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07123257/maxresdefault-39.jpg"
+  },
+  {
+    "id": 332620,
+    "link": "https://www.fightful.com/wrestling/mjf-gives-statement-on-why-hes-doing-business-with-njpw/",
+    "date": "2026-10-07T12:15:51",
+    "date_gmt": "2026-10-07T16:15:51",
+    "title": {
+      "rendered": "MJF Gives Statement On Why He&#8217;s Doing Business With NJPW"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07070119/HUBdTFKboAEYHZw.jpeg"
+  },
+  {
     "id": 332611,
     "link": "https://www.fightful.com/wrestling/zoey-serrano-wants-to-wrestle-keira-hogan-jada-stone-and-xia-brookside-in-tna/",
     "date": "2026-10-07T12:08:05",
@@ -258,45 +298,5 @@
       "rendered": "Samoa Joe Qualifies For Clockwork Carnage Match At AEW WrestleDream"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/06204149/HT_QVt0XEAALLmi.jpeg"
-  },
-  {
-    "id": 332532,
-    "link": "https://www.fightful.com/wrestling/kiera-hogan-allie-in-action-added-to-10-8-tna-impact/",
-    "date": "2026-10-06T20:33:26",
-    "date_gmt": "2026-10-07T00:33:26",
-    "title": {
-      "rendered": "Kiera Hogan &amp; Allie In Action Added To 10/8 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/02122859/G7LBws8aUAA4Q2x.jpg"
-  },
-  {
-    "id": 332517,
-    "link": "https://www.fightful.com/wrestling/qt-marshall-defends-steven-borden-from-lack-of-training-criticism-following-aew-all-out/",
-    "date": "2026-10-06T19:23:06",
-    "date_gmt": "2026-10-06T23:23:06",
-    "title": {
-      "rendered": "QT Marshall Defends Steven Borden From Lack Of Training Criticism Following AEW All Out"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/23125437/maxresdefault-157.jpg"
-  },
-  {
-    "id": 332510,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more/",
-    "date": "2026-10-06T19:15:00",
-    "date_gmt": "2026-10-06T23:15:00",
-    "title": {
-      "rendered": "WWE NXT Results (10/6/2026): Battle Royal, Zilla Fatu vs. Lexis King, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/06184035/image-412.png"
-  },
-  {
-    "id": 332515,
-    "link": "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-spoilers-taped-on-10-6/",
-    "date": "2026-10-06T19:04:24",
-    "date_gmt": "2026-10-06T23:04:24",
-    "title": {
-      "rendered": "AEW Collision Grand Slam France Spoilers (Taped On 10/6)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/24081844/FQX4LTQPPBAOJEI5UYRJWJBVIY.png.avif"
   }
 ]
