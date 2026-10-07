@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/robert-stone-addresses-wren-sinclairs-controversial-nxt-battle-royal-win": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-07T02:32:08.883Z"
+ },
  "https://www.fightful.com/wrestling/will-ospreay-to-enter-clockwork-carnage-match-as-aew-champion-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
