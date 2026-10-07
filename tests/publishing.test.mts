@@ -3011,6 +3011,13 @@ test('Dominik story: imperative «ودع» mid-sentence and «الاصطدام �
   assert.equal(applyCorrections('رميه حول الحلبة والاصطدام به في عمود الحلبة'), 'رميه حول الحلبة وضربه بعمود الحلبة');
 });
 
+test('«لم يرى», Dani Mo and «top to bottom» in the JCW women story (INCIDENTS #338)', () => {
+  assert.equal(applyCorrections('مشددا على أنه لم يرى من قبل'), 'مشددا على أنه لم ير من قبل');
+  assert.equal(applyCorrections('وجي رود، ودانيا مو، وهايلي هود'), 'وجي رود، وداني مو، وهايلي هود');
+  assert.match(buildNamesGlossaryHint('Big Al teamed with Dani Mo'), /Dani Mo = داني مو/);
+  assert.match(buildNamesGlossaryHint('Choppa City praised the roster'), /Choppa City = تشوبا سيتي/);
+});
+
 test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
