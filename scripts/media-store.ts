@@ -3,6 +3,7 @@
 // (owner, 2026-10-07; INCIDENTS #313). The bots still write a new file where they always did; this puts it in R2.
 //   npx tsx scripts/media-store.ts sync       new local pictures and reels → R2 (GITHUB_TOKEN of the Action)
 //   npx tsx scripts/media-store.ts delete <repo path>
+//   npx tsx scripts/media-store.ts prune-reels   reels already posted leave R2
 // A file R2 refuses after retries is committed to the repo instead («git add -f»), where arw-media finds it too:
 // an article never goes out without its picture.
 import fs from "fs";
@@ -78,8 +79,31 @@ async function sync(root = process.cwd()) {
   console.log(`[media] ${stored} new file(s) stored in R2${kept.length ? `, ${kept.length} kept in the repo: ${kept.join(", ")}` : ""}`);
 }
 
+/** Reels not needed any more (owner, 2026-10-07: a posted reel is never needed again): every reel in the manifest
+ *  whose show is posted on all four Facebook/Instagram slots, and every other reel (news) older than six hours.
+ *  A show reel still being posted stays. */
+export function reelsToRemove(manifest: any[], state: Record<string, any>, now = Date.now()): string[] {
+  const posted = (e: any) => !!e && ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'].every(p => e[p]);
+  const out: string[] = [];
+  for (const m of Array.isArray(manifest) ? manifest : []) {
+    const f = m && m.filename;
+    if (!f || !/\.mp4$/.test(f)) continue;
+    const slug = Object.keys(state).find(k => f === `reel-${k}.mp4` || f === `reel-${k.slice(0, 45)}.mp4`);
+    if (slug) { if (posted(state[slug])) out.push(f); continue; }
+    if (now - Number(m.mtime || 0) > 6 * 3600_000) out.push(f);
+  }
+  return out;
+}
+async function pruneReels(root = process.cwd()) {
+  const read = (f: string) => { try { return JSON.parse(fs.readFileSync(path.join(root, f), "utf8")); } catch { return null; } };
+  const list = reelsToRemove(read("dist/videos/manifest.json") || [], read("_data/show-reel-state.json") || {});
+  let gone = 0;
+  for (const f of list) if (await deleteMedia(`dist/videos/${f}`)) gone++;
+  console.log(`[media] ${gone}/${list.length} posted reels removed from R2`);
+}
+
 if (require.main === module) {
   const [cmd, arg] = process.argv.slice(2);
-  const run = cmd === "sync" ? sync() : cmd === "delete" && arg ? deleteMedia(arg).then(ok => console.log(`[media] delete ${arg}: ${ok}`)) : Promise.resolve(console.log("usage: media-store.ts sync | delete <repo path>"));
+  const run = cmd === "sync" ? sync() : cmd === "prune-reels" ? pruneReels() : cmd === "delete" && arg ? deleteMedia(arg).then(ok => console.log(`[media] delete ${arg}: ${ok}`)) : Promise.resolve(console.log("usage: media-store.ts sync | delete <repo path>"));
   run.catch(e => { console.error("[media]", e.message); process.exitCode = 0; });
 }

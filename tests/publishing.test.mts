@@ -3600,3 +3600,18 @@ test('pictures and reels go to R2, not the repo; a reel leaves R2 once posted ev
   assert.match(fs.readFileSync('worker/src/studio.ts', 'utf-8'), /await env\.MEDIA\.put\(img\.path, bytes/);
   assert.match(fs.readFileSync('worker/wrangler.toml', 'utf-8'), /binding = "MEDIA"\nbucket_name = "arw-media"/);
 });
+
+test('a reel posted on Facebook and Instagram leaves R2; one still being posted stays (INCIDENTS #313)', async () => {
+  const { reelsToRemove } = await import('../scripts/media-store.ts');
+  const posted = { facebook_reel: true, facebook_story: true, instagram_reel: true, instagram_story: true };
+  const now = Date.parse('2026-10-07T12:00:00Z');
+  const manifest = [
+    { filename: 'reel-20261005-raw.mp4', mtime: now - 86400_000 },
+    { filename: 'reel-20261006-nxt.mp4', mtime: now - 600_000 },
+    { filename: 'reel-news-old.mp4', mtime: now - 7 * 3600_000 },
+    { filename: 'reel-news-new.mp4', mtime: now - 3600_000 },
+  ];
+  const state = { '20261005-raw': posted, '20261006-nxt': { ...posted, instagram_story: false } };
+  assert.deepEqual(reelsToRemove(manifest, state, now).sort(), ['reel-20261005-raw.mp4', 'reel-news-old.mp4']);
+  assert.match(fs.readFileSync('.github/workflows/media-cleanup.yml', 'utf-8'), /npx tsx scripts\/media-store\.ts prune-reels/);
+});
