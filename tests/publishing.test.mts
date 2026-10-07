@@ -2052,6 +2052,15 @@ test('the same-story check tells a new statement or backstage detail apart from 
   assert.match(dp, /كواليس أو سبب أو خطة وراء مشهد/);
   const skips = JSON.parse(fs.readFileSync('_data/duplicate-skips.json', 'utf8'));
   assert.equal(skips['https://www.fightful.com/wrestling/kemalito-pays-tribute-to-benjamin-satterley-pac'], undefined);
+  // INCIDENTS #327: the wrestler's own podcast account of how she pulled it off is new, not the match again.
+  assert.match(dp, /صاحب الواقعة نفسه يحكي في مقابلة أو بودكاست إزاي أو ليه عملها/);
+  assert.equal(skips['https://www.ringsidenews.com/wren-sinclair-reveals-how-she-pulled-off-her-nxt-battle-royal-heist/'], undefined);
+});
+
+test('RVD is written «آر في دي» with the madda everywhere (INCIDENTS #327)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('وتحدث ار في دي عن القائمة'), 'وتحدث آر في دي عن القائمة');
+  assert.equal(applyCorrections('آر في دي'), 'آر في دي');
 });
 
 test('a story about someone the matched story never mentions is published whatever the same-story check says (INCIDENTS #150)', async () => {
