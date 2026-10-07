@@ -3024,6 +3024,12 @@ test('PAC tribute stories: hamza, «التعزية», «واسمه الحقيق�
   assert.equal(applyCorrections('إذا شعرت الشركة يوما ما بأنها لا تناسبه'), 'إذا شعر يوما ما بأن الشركة لا تناسبه');
 });
 
+test('MJF and Reigns stories: «آراءه», puroresu and Daikin Park is a stadium (INCIDENTS #347)', () => {
+  assert.equal(applyCorrections('ولم يخف النجم آرائه السابقة'), 'ولم يخف النجم آراءه السابقة');
+  assert.equal(applyCorrections('يسعى لإزعاج جماهير مصارعة البورو على الإنترنت'), 'يسعى لإزعاج جماهير مصارعة البوروريسو اليابانية على الإنترنت');
+  assert.equal(applyCorrections('يوم 28 نوفمبر في صالة دايكن بارك بمدينة هيوستن'), 'يوم 28 نوفمبر في ملعب دايكن بارك بمدينة هيوستن');
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
