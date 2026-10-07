@@ -117,8 +117,11 @@
   },
   "https://arab-wrestling.com/library/tna-xplosion/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
-   "lastmod": "2026-09-30",
-   "pinged": "before tracking"
+   "lastmod": "2026-10-07",
+   "pinged": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T14:37:44.896Z",
+   "verdict": "NEUTRAL",
+   "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
   "https://arab-wrestling.com/library/stardom/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -178,13 +181,21 @@
   },
   "https://arab-wrestling.com/library/aew-dynamite/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
-   "lastmod": "2026-10-01",
-   "pinged": "before tracking"
+   "lastmod": "2026-10-07",
+   "pinged": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T14:37:44.896Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-07T14:37:44.896Z"
   },
   "https://arab-wrestling.com/library/wwe-nxt/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
-   "lastmod": "2026-09-30",
-   "pinged": "before tracking"
+   "lastmod": "2026-10-07",
+   "pinged": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T14:37:44.896Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-07T14:37:44.896Z"
   },
   "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-02-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2211,7 +2222,22 @@
    "firstSeen": "2026-10-07T14:17:27.956Z",
    "lastmod": "2026-10-07",
    "pinged": "2026-10-07T14:17:27.956Z"
+  },
+  "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/": {
+   "firstSeen": "2026-10-07T14:37:44.896Z",
+   "lastmod": "2026-10-07",
+   "pinged": "2026-10-07T14:37:44.896Z"
+  },
+  "https://arab-wrestling.com/shows/wwe-nxt-06-10-2026/": {
+   "firstSeen": "2026-10-07T14:37:44.896Z",
+   "lastmod": "2026-10-07",
+   "pinged": "2026-10-07T14:37:44.896Z"
+  },
+  "https://arab-wrestling.com/shows/tna-xplosion-02-10-2026/": {
+   "firstSeen": "2026-10-07T14:37:44.896Z",
+   "lastmod": "2026-10-07",
+   "pinged": "2026-10-07T14:37:44.896Z"
   }
  },
- "sitemapPinged": "2026-10-07T14:17:27.956Z"
+ "sitemapPinged": "2026-10-07T14:37:44.896Z"
 }
