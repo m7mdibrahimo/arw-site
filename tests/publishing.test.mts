@@ -3542,6 +3542,12 @@ test('the site builds from a «site» branch without the original pictures and r
   // «site» follows main after the bots too: their pushes (GITHUB_TOKEN) start no push-triggered workflow
   const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
   for (const name of ['Fightful News Auto Watcher', 'Ringside News Auto Watcher', 'Wrestling Inc Auto Watcher']) assert.ok(wf.includes(`- ${name}`), name);
+  // the bots' news is gathered (at most one Cloudflare build every 4 minutes); a push or a panel save never waits (INCIDENTS #315)
+  const gather = wf.slice(wf.indexOf("- name: Gather the bots' news"), wf.indexOf('- name: Point «site» at the latest main'));
+  assert.match(gather, /if: github\.event_name == 'workflow_run' \|\| github\.event_name == 'schedule'/);
+  assert.match(gather, /grep -qE 'لوحة التحكم\|\^\(Create\|Update\|Delete\) '/);
+  assert.match(gather, /BATCH: '240'/);
+  assert.match(wf, /cancel-in-progress: true/);
   assert.match(wf, /cron: '\*\/10 \* \* \* \*'/);
   assert.match(wf, /MAIN=\$\(api "\$BASE\/ref\/heads\/main"/);
   for (const f of ['fightful-watcher.yml', 'ringsidenews-watcher.yml', 'wrestlinginc-watcher.yml']) {

@@ -7,7 +7,8 @@ name: Site Branch
 #  فالتعديل بيظهر أسرع (الحادثة ٣١٢).
 #  بيشتغل بعد كل رفع من اللوحة أو من جهاز، وبعد ما أي بوت يخلص، وكل ١٠ دقايق كاحتياط.
 #  البوتات بترفع بمفتاح GitHub الداخلي، ورفعها مش بيشغّل workflows تانية، فلازم
-#  workflow_run. وكل مرة بيبني من آخر main، ومبيبنيش لو اللي اتغير حاجات المتابع مش بيشوفها.
+#  workflow_run. أخبار البوتات بتتجمع وتتبني مرة كل ٤ دقايق بالكتير، واللي بيتحفظ من
+#  اللوحة بيتبني على طول من غير استنى (الحادثة ٣١٥). وكل مرة بيبني من آخر main، ومبيبنيش لو اللي اتغير حاجات المتابع مش بيشوفها.
 #  build.json بيقول commit الـmain الأصلي.
 #  للرجوع: خلي فرع الإنتاج في Cloudflare Pages يرجع main.
 # ═══════════════════════════════════════════════════════
@@ -42,8 +43,31 @@ permissions:
 jobs:
   slim:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 9
     steps:
+      # The bots' news is built at most once every 4 minutes, all of it together: Cloudflare (free plan) builds one
+      # version at a time, and a save from the panel waited behind a bot's build (INCIDENTS #315). A push (the panel,
+      # a device) or a panel save among the new commits never waits; a newer run replaces a waiting one
+      # (cancel-in-progress) and the wait counts from the last «site» update, so it never grows.
+      - name: Gather the bots' news (the panel's saves go straight through)
+        if: github.event_name == 'workflow_run' || github.event_name == 'schedule'
+        env:
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BATCH: '240'
+        run: |
+          set -uo pipefail
+          api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
+          BASE="https://api.github.com/repos/$REPO/git"
+          SITE=$(api "$BASE/ref/heads/site" | jq -r .object.sha) || exit 0
+          api "$BASE/commits/$SITE" > s.json || exit 0
+          PREV=$(jq -r .message s.json | sed -n 's/^site-of: \([0-9a-f]\{40\}\).*/\1/p' | head -1)
+          [ -n "$PREV" ] || exit 0
+          if api "https://api.github.com/repos/$REPO/compare/$PREV...main" | jq -r '.commits[].commit.message' | grep -qE 'لوحة التحكم|^(Create|Update|Delete) '; then
+            echo "a save from the panel is waiting: no batching"; exit 0
+          fi
+          AGE=$(( $(date +%s) - $(date -d "$(jq -r .committer.date s.json)" +%s) ))
+          if [ "$AGE" -lt "$BATCH" ]; then echo "last site update ${AGE}s ago: gathering for $((BATCH - AGE))s"; sleep $((BATCH - AGE)); fi
       # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
       # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
       - name: Point «site» at the latest main, without pictures and reels
