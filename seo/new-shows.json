@@ -1988,7 +1988,7 @@
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-10-06",
    "pinged": "2026-10-06T17:59:09.444Z",
-   "inspected": "2026-10-07T06:25:45.683Z",
+   "inspected": "2026-10-07T12:49:15.159Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
@@ -2056,7 +2056,12 @@
    "firstSeen": "2026-10-07T09:09:20.220Z",
    "lastmod": "2026-09-28",
    "pinged": "2026-10-07T09:09:20.220Z"
+  },
+  "https://arab-wrestling.com/library/njpw-g1-climax-36/": {
+   "firstSeen": "2026-10-07T12:49:15.159Z",
+   "lastmod": "2026-08-10",
+   "pinged": "2026-10-07T12:49:15.159Z"
   }
  },
- "sitemapPinged": "2026-10-07T09:09:20.220Z"
+ "sitemapPinged": "2026-10-07T12:49:15.159Z"
 }
