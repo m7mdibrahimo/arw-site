@@ -1795,8 +1795,20 @@
     "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
     "postUrl": "/shows/20260924111500-cmll-martes-populares-22-09-20",
     "kind": "show",
-    "slug": "20260924111500-cmll-martes-populares-22-09-20",
-    "image": "/content/images/m8d59u7c9heju50p.jpg",
-    "renderedAt": 1791380437613
+    "slug": "20260927051400-cmll-martes-de-glamour-22-09-2",
+    "image": "/content/images/zin0uyuh59o9b063.jpg",
+    "renderedAt": 1791378866377
+  },
+  {
+    "videoUrl": "/videos/reel-20261006204847-roh-05-10-2026.mp4",
+    "filename": "reel-20261006204847-roh-05-10-2026.mp4",
+    "title": "عرض ار او اتش سبيشال 05.10.2026 مترجم",
+    "secondaryTitle": "ROH Special 05.10.2026",
+    "description": "عرض ار او اتش سبيشال مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261006204847-roh-05-10-2026",
+    "kind": "show",
+    "slug": "20261006204847-roh-05-10-2026",
+    "image": "/content/images/dihfg5cz3o9jc2cy.jpg",
+    "renderedAt": 1791380596895
   }
 ]
