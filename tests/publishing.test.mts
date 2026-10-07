@@ -2208,6 +2208,21 @@ test('an announcement about a weekly show that has not aired yet is not «someth
   assert.equal(settleSpoilerAge(held, 'حصل في عرض WWE NXT', ['wwe nxt'], beforeNxt, []).spoils, true);
 });
 
+test('the spoiler window of a weekly show starts when it goes off the air, not 3 hours after it starts (INCIDENTS #329)', async () => {
+  const { weeklyShowsInSpoilerWindow, settleSpoilerAge } = await import('../scripts/fightful-watcher');
+  // NXT 6 October: 00:00–02:00 UTC on the 7th; Wren Sinclair's interview was held at 08:54
+  const during = Date.parse('2026-10-07T07:30:00Z');
+  const after = Date.parse('2026-10-07T08:54:00Z');
+  assert.ok(weeklyShowsInSpoilerWindow(during).includes('wwe nxt'));
+  assert.ok(!weeklyShowsInSpoilerWindow(after).includes('wwe nxt'));
+  // RAW runs three hours: still a spoiler at 08:30 UTC on Tuesday
+  assert.ok(weeklyShowsInSpoilerWindow(Date.parse('2026-10-06T08:30:00Z')).includes('wwe raw'));
+  const said = { spoils: true, kind: 'result' as const, age: 'recent' as const, note: '' };
+  const text = 'رين سنكلير تكشف كيف نفذت عملية تسللها في نزال باتل رويال ضمن عرض WWE NXT الذي أقيم في السادس من أكتوبر';
+  assert.equal(settleSpoilerAge(said, text, [], during, ['wwe nxt'], weeklyShowsInSpoilerWindow(during), ['wwe nxt']).spoils, true);
+  assert.equal(settleSpoilerAge(said, text, [], after, ['wwe nxt'], weeklyShowsInSpoilerWindow(after), ['wwe nxt']).spoils, false);
+});
+
 test('a card set more than a week out names the day instead of «القادم» (INCIDENTS #162)', async () => {
   const { farFutureShowDate, arabicDayOrdinal } = await import('../scripts/fightful-watcher');
   assert.equal(arabicDayOrdinal(13), 'الثالث عشر');

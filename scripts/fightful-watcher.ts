@@ -2582,7 +2582,16 @@ export function weeklyShowsAiredWithin(hours = 27, now = Date.now()): string[] {
   return out;
 }
 
-export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(SPOILER_HOURS), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsAiredWithin(SPOILER_HOURS + 3, now), dayShows: string[] = recentShowNames(48)): SocialVerdict {
+// How long each weekly show runs. The spoiler window starts when the show ends, not a flat 3 hours
+// after it starts: Wren Sinclair's interview about NXT's battle royal was held at 08:54 UTC, nearly
+// 7 hours after NXT went off the air at 02:00 (INCIDENTS #329).
+const WEEKLY_TV_HOURS: Record<string, number> = { "wwe raw": 3 };
+/** Weekly shows that are on the air now or ended less than SPOILER_HOURS ago. */
+export function weeklyShowsInSpoilerWindow(now = Date.now()): string[] {
+  return WEEKLY_TV.map(([n]) => n).filter(n => weeklyShowsAiredWithin(SPOILER_HOURS + (WEEKLY_TV_HOURS[n] ?? 2), now).includes(n));
+}
+
+export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(SPOILER_HOURS), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsInSpoilerWindow(now), dayShows: string[] = recentShowNames(48)): SocialVerdict {
   // «Something from a show» about a weekly show that hasn't aired in the last day is an
   // announcement before the show, not a spoiler (INCIDENTS #156).
   {
@@ -2643,7 +2652,7 @@ export function hasOldEvidence(text: string, now = Date.now()): boolean {
 
 export async function judgeSocialSpoiler(title: string, body: string, sourceTitle: string = "", sourceDate: string = ""): Promise<SocialVerdict | null> {
   const opening = socialOpening(body);
-  const shows = [...new Set([...recentShowNames(SPOILER_HOURS), ...weeklyShowsAiredWithin(SPOILER_HOURS + 3)])];
+  const shows = [...new Set([...recentShowNames(SPOILER_HOURS), ...weeklyShowsInSpoilerWindow()])];
   // The owner's rule (2026-09-29): a result or a return is a spoiler for 24 hours only. After
   // that it is ordinary news and goes out like any other story.
   const now = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
