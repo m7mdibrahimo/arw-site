@@ -1999,7 +1999,7 @@
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-10-06",
    "pinged": "2026-10-06T17:59:09.444Z",
-   "inspected": "2026-10-07T12:49:15.159Z",
+   "inspected": "2026-10-07T18:51:34.256Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
@@ -2074,7 +2074,10 @@
   "https://arab-wrestling.com/library/njpw-g1-climax-36/": {
    "firstSeen": "2026-10-07T12:49:15.159Z",
    "lastmod": "2026-08-17",
-   "pinged": "2026-10-07T13:09:45.479Z"
+   "pinged": "2026-10-07T13:09:45.479Z",
+   "inspected": "2026-10-07T18:51:34.256Z",
+   "verdict": "NEUTRAL",
+   "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
   "https://arab-wrestling.com/library/cmll-domingo-familiar/": {
    "firstSeen": "2026-10-07T13:09:45.479Z",
