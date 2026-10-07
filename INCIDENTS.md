@@ -3215,3 +3215,14 @@
     - `autoFix` في `scripts/news-qa.ts` بيشيل أي تطويل جوه كلمة عربية، إلا بعد «بـ» و«لـ» و«الـ» وأخواتهم.
     - «ذا ميز وون جون موريسون» و«اسطوانات» اتضافوا لـ`editorial/corrections.json`.
 - **الاختبار:** «a stray tatweel inside a word is removed, joined prefixes keep it».
+
+## #319 — 2026-10-07: «داربي ألين ينجو من عرض…» وعرض «AEW Dynamite: Grand Slam Paris» اللي مش موجود
+- **اللي حصل:**
+    - عنوان خبر داربي ألين ترجم «escapes Grand Slam: France with TNT Title» حرفيًا: «ينجو من عرض… ويحتفظ ببطولة TNT»، كأنه نجا من العرض نفسه. وآخر جملة فيه قالت إن نزال أوسبراي وأوكادا «سيشهده» العرض، والعرض خلص.
+    - خبر مرسيدس موني سمّى العرض «AEW Dynamite: Grand Slam Paris»، والمصدر وباقي أخبار الموقع بيقولوا «AEW Grand Slam: France». وكانت فيه جملتين لازقين من غير نقطة.
+- **السبب الجذري:** جيميناي ترجم الفعل الإنجليزي «escapes» حرفيًا، واخترع اسم للعرض من مكانه (باريس) بدل اسمه الرسمي.
+- **الإصلاح:**
+    - الخبرين اتصلحوا في مكانهم من غير إعادة نشر، والرابط القديم اتثبّت بـ`permalink`.
+    - `dropTimezoneFromTitle` في `scripts/news-qa.ts` بيحوّل «فلان ينجو من عرض X ويحتفظ بـY» إلى «فلان يحتفظ بـY في عرض X».
+    - «AEW Dynamite: Grand Slam Paris» ← «AEW Grand Slam: France» في `editorial/corrections.json`.
+- **الاختبار:** ««escapes the show with the title» is a retention headline, and the Paris show keeps its name».

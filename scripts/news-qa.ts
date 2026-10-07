@@ -366,6 +366,9 @@ export function dropTimezoneFromTitle(title: string): string {
     .replace(/([A-Za-z])\/20\d\d\b/g, "$1")
     // An Arabic headline quotes with «», not "": «بولي راي يشيد بـرومان رينز: "هو يؤدي…"» (INCIDENTS #268)
     .replace(/"([^"\n]+)"/g, "«$1»")
+    // "Escapes <show> with the title" is a retention, not surviving a show: «داربي ألين ينجو من عرض
+    // AEW Grand Slam: France ويحتفظ ببطولة TNT» (INCIDENTS #319)
+    .replace(/(^|\s)([يت])نجو من (عرض .+?) و[يت]حتفظ (ب.+)$/, "$1$2حتفظ $4 في $3")
     .replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim();
 }
 

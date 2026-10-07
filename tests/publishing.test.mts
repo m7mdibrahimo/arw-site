@@ -3023,6 +3023,14 @@ test('a headline drops «/2026» after a show name and quotes with «» (INCIDEN
   assert.equal(applyCorrections('في عرض الأبطال الخالدون المقرر'), 'في عرض Heroes Inmortales المقرر');
 });
 
+test('«escapes the show with the title» is a retention headline, and the Paris show keeps its name (INCIDENTS #319)', async () => {
+  const { dropTimezoneFromTitle } = await import('../scripts/news-qa');
+  assert.equal(dropTimezoneFromTitle('داربي ألين ينجو من عرض AEW Grand Slam: France ويحتفظ ببطولة TNT'), 'داربي ألين يحتفظ ببطولة TNT في عرض AEW Grand Slam: France');
+  assert.equal(dropTimezoneFromTitle('توني ستورم تنجو من عرض AEW Dynamite وتحتفظ باللقب'), 'توني ستورم تحتفظ باللقب في عرض AEW Dynamite');
+  assert.equal(dropTimezoneFromTitle('داربي ألين ينجو من إصابة خطيرة'), 'داربي ألين ينجو من إصابة خطيرة');
+  assert.equal(applyCorrections('ضمن عرض AEW Dynamite: Grand Slam Paris قدمت'), 'ضمن عرض AEW Grand Slam: France قدمت');
+});
+
 test('a results winner that is not in its own match text is flagged (INCIDENTS #269)', async () => {
   const { winnersNotInMatch } = await import('../scripts/news-qa');
   const bad = '**المواجهة الأولى: نزال إقصائي رباعي**\n\nتاركة بصمتها في النزال، تفوق آلان على كل من ميللا مور.\n\n🏆 **الفائزة:** شانتل جوردان\n\n**المواجهة الثانية: نزال فردي**\n\nشهد النزال مواجهة قوية بين الطرفين حسمتها النتيجة لصالح المنتصرة.\n\n🏆 **الفائزة:** جاي جي يو';
