@@ -3183,24 +3183,19 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261007171657-wwe-nxt-06-10-2026": {
     "publishedAt": 1791384098887,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
+    "instagram_reel": true,
+    "instagram_story": true,
     "title": "عرض ان اكس تي 06.10.2026 مترجم",
-    "lastAttempt": 1791393703705,
-    "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_reel",
-      "instagram_story"
-    ],
+    "lastAttempt": 1791396434540,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -3208,16 +3203,12 @@
     "publishedAt": 1791384140816,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
+    "instagram_reel": true,
+    "instagram_story": true,
     "title": "عرض ديناميت 06.10.2026 مترجم",
-    "lastAttempt": 1791389883665,
-    "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_reel"
-    ],
+    "lastAttempt": 1791400925012,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }

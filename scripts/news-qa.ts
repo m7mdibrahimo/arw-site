@@ -81,6 +81,9 @@ const RULES: Rule[] = [
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },
+  // A quote run into the narration with no «»: «وأضاف: أنا سعيد بأن لدي هذا المقطع…» — the reader can't
+  // tell where his words stop and ours start, and the writer then pinned his dream on Copeland (INCIDENTS #349).
+  { code: "unquoted_quote", severity: "error", re: /(?<![؀-ۿ])(?:و?(?:أضاف|أضافت|قال|قالت|تابع|تابعت)|قائلا|قائلة|مضيفا|مضيفة)\s*:\s*(?:أنا|إنني|إني|لقد|نحن|كنت|شعرت|أعتقد|أعرف|لا أعرف|أنا سعيد)(?![؀-ۿ])/g, message: "اقتباس من غير علامات «» بعد «وأضاف:» — حط كلام الشخص بين «»", fields: ["body"] },
   { code: "game_terms", severity: "error", re: /مجريات اللعب|المباراة الكروية|الشوط (?:الأول|الثاني)|أرض الملعب/g, message: "تعبير رياضي غير مناسب للمصارعة (المعتمد: مجريات النزال)" },
   // A word the model broke in two scripts: «شخصية أك uma الشهيرة» (Akuma — INCIDENTS #143). Latin names in
   // the text are capitalised (WWE, SiriusXM); a short lowercase fragment glued after Arabic is a broken word.

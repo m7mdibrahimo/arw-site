@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/aew-dynamite-06-10-2026/",
+    "title": "عرض ديناميت 06.10.2026 مترجم",
+    "subtitle": "AEW Dynamite 06.10.2026",
+    "image": "/img/yaquLx3efy-800.jpeg",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-nxt-06-10-2026/",
+    "title": "عرض ان اكس تي 06.10.2026 مترجم",
+    "subtitle": "WWE NXT 06.10.2026",
+    "image": "/img/i5TQTBuQOQ-800.jpeg",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-raw-05-10-2026/",
     "title": "عرض الرو 05.10.2026 مترجم",
     "subtitle": "WWE RAW 05.10.2026",
@@ -97,38 +119,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-nxt-29-09-2026/",
-    "title": "عرض ان اكس تي 29.09.2026 مترجم",
-    "subtitle": "WWE NXT 29.09.2026",
-    "image": "/img/VX3idYsZos-800.jpeg",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-all-out-2026/",
-    "title": "عرض اول اوت 26.09.2026 مترجم",
-    "subtitle": "AEW All Out (2026)",
-    "image": "/img/yoBKAUgTQU-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض اول اوت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-all-out-tailgate-brawl-2026/",
-    "title": "عرض اول اوت تيلغيت برول 26.09.2026 مترجم",
-    "subtitle": "AEW All Out Tailgate Brawl (2026)",
-    "image": "/img/FhQiAPDT4X-800.jpeg",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض اول اوت تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
