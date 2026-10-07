@@ -3651,3 +3651,8 @@ test('«basic legends deal» is a plain legends contract, not «عقدا أسا�
   assert.equal(applyCorrections('كشف عن توقيعه عقدا أساسيا مع WWE ضمن فئة الأساطير، وذلك'), 'كشف عن توقيعه عقد أساطير عاديا مع WWE، وذلك');
   assert.equal(applyCorrections('وقع عقدا أساسيا ضمن فئة الأساطير'), 'وقع عقد أساطير عاديا');
 });
+
+test('«Trios title battle» is a fight over the trios titles, not «عداوة الثلاثي» (INCIDENTS #322)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('استمرار عداوة الثلاثي بين سويرف ستريكلاند وآدم بيدج'), 'استمرار صراع ألقاب الثلاثي بين سويرف ستريكلاند وآدم بيدج');
+});
