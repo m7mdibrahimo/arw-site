@@ -2060,7 +2060,8 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   const whenReturn = ar("(?:عند|لدى|حين|حال|فور|قبل|بمجرد|قرب|اقتراب)\\s+(?:موعد\\s+)?(?:عودته|عودتها|عودتهم|عودتهما|العودة)");
   // Talking ABOUT a return that is history: «نيكي بيلا تقول إن التغيرات… جعلت عودتها إلى WWE أكثر صعوبة»
   // — she came back in 2025 (INCIDENTS #228). The return is the subject of the talk, not tonight's news.
-  const aboutReturn = ar("(?:جعلت|جعل|صعوبة|صعوبات|تحديات|ذكريات|أسرار|كواليس|تفاصيل)\\s+(?:ال)?(?:عودته|عودتها|عودتهم|عودة)");
+  // «يحرق جسور العودة» / «يغلق باب العودة» is a door closing, not a return (INCIDENTS #323).
+  const aboutReturn = ar("(?:جعلت|جعل|صعوبة|صعوبات|تحديات|ذكريات|أسرار|كواليس|تفاصيل|جسور|جسر|باب|أبواب|ابواب)\\s+(?:ال)?(?:عودته|عودتها|عودتهم|عودة)");
   // A nameless return says nothing: a weekly roundup's lead «…وعودة أسماء بارزة إلى الحلبات» was
   // held as a return spoiler (INCIDENTS #277).
   const namelessReturn = ar("(?:و|ف)?عودة\\s+(?:عدد\\s+من\\s+|بعض\\s+)?(?:ال)?(?:أسماء|اسماء|وجوه|نجوم|مصارعين|مصارعات)(?:\\s+(?:ال)?(?:بارزة|كبيرة|لامعة|معروفة|مألوفة|قديمة))?(?![\\u0600-\\u06FF])");

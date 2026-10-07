@@ -2894,6 +2894,10 @@ test('a prediction is not a result (INCIDENTS #246)', async () => {
   // INCIDENTS #277
   assert.equal(isSingleMatchSpoiler('شهد أسبوع آخر مليئا بالأحداث في عالم المصارعة الحرة، حيث يستعرض فريق العمل أبرز الرابحين والخاسرين لهذا الأسبوع في ظل الظروف العاطفية التي أعقبت رحيل النجم باك، مع إقامة عروض تكريمية مؤثرة وعودة أسماء بارزة إلى الحلبات.', ''), false);
   assert.equal(isSingleMatchSpoiler('عودة راندي أورتن في عرض WWE RAW', ''), true);
+  // INCIDENTS #323
+  assert.equal(isSingleMatchSpoiler('جي بي إل يعتقد أن مالاكاي بلاك يحرق جسور العودة إلى WWE', ''), false);
+  assert.equal(isSingleMatchSpoiler('مالاكاي بلاك يغلق باب العودة إلى WWE', ''), false);
+  assert.equal(isSingleMatchSpoiler('مالاكاي بلاك يعود إلى WWE في عرض RAW', ''), true);
   // INCIDENTS #278
   assert.equal(isSingleMatchSpoiler('جيم روس يخضع لجراحة ثانية في الدماغ لعلاج مشكلة في التحويلة', ''), false);
   assert.equal(isSingleMatchSpoiler('سيث رولينز يخضع لعملية جراحية في الركبة', ''), false);
