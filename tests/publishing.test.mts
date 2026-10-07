@@ -2992,6 +2992,12 @@ test('scrubbed reporter left as «تقارير صحفية أنه تحرى» is f
   assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'وبحسب تقارير صحفية مطلعة، فإن انتقال هوليداي إلى WWE لن يحدث في الوقت الحالي.', []).some(i => i.code === 'scrubbed_reporter_pronoun'));
 });
 
+test('an all-caps English film title is not half-transliterated (INCIDENTS #339)', () => {
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'تسلط الضوء عليها في فيلم وثائقي جديد بعنوان I FOUGHT جون موكسلي والمقرر طرحه قريبا.', []).some(i => i.code === 'mixed_caps_title'));
+  assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'فيلم وثائقي جديد بعنوان «I FOUGHT JON MOXLEY» والمقرر طرحه قريبا في عرض WWE RAW الأخير.', []).some(i => i.code === 'mixed_caps_title'));
+  assert.equal(applyCorrections('فيلم وثائقي جديد بعنوان I FOUGHT جون موكسلي والمقرر'), 'فيلم وثائقي جديد بعنوان «I FOUGHT JON MOXLEY» والمقرر');
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
