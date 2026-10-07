@@ -2,11 +2,11 @@
 show_type: عرض
 federation: NJPW
 title: NJPW Destruction in Kobe (2026)
-headline: عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم
+headline: عرض ان جيه بي دبليو ديستركشن ان كوبي 27.09.2026 مترجم
 program_name: NJPW Road To Destruction 2026
 is_annual: true
 maintenance: false
-description: عرض ان جيه بي دبليو ديستروكشن ان كوبي مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض ان جيه بي دبليو ديستركشن ان كوبي مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-27
 date: 2026-09-28T07:38:00.000+03:00
 duration: 03:49:14
