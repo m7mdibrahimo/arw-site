@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2279489/wwe-nxt-october-6-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-07T00:51:24.940Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-07T00:46:31.127Z"
+  "at": "2026-10-07T00:57:16.869Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-07T00:46:30.988Z"
+  "at": "2026-10-07T00:57:16.775Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-says-first-match-with-stephanie-vaquer-got-the-ball-rolling-for-her-in-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-07T00:46:30.806Z"
+  "at": "2026-10-07T00:57:16.652Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-spoilers-10-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-07T00:46:30.436Z"
+  "at": "2026-10-07T00:57:16.404Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-responds-to-criticism-of-ring-of-honor-product": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-07T00:46:30.006Z"
+  "at": "2026-10-07T00:57:16.105Z"
+ },
+ "https://www.wrestlinginc.com/2279489/wwe-nxt-october-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-07T00:51:24.940Z"
  },
  "https://www.wrestlinginc.com/2279500/aew-dynamite-grand-slam-paris-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
