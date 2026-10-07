@@ -2233,5 +2233,15 @@
     "matchedFile": "20261007044548-نزال-من-ثلاث-جولات-على-بطولة-aew-للثلاثي-ضمن-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي نفس الإعلان عن نزال بطولة الثلاثي في عرض AEW WrestleDream المذكور في الخبر رقم 0، ولا يقدم تطوراً جديداً بل مجرد إعادة صياغة لنفس الحدث.",
     "at": "2026-10-07T02:11:45.054Z"
+  },
+  "https://www.fightful.com/wrestling/young-bucks-title-bout-more-set-for-aew-collision-grand-slam-france/": {
+    "matchedFile": "20261007020424-نتائج-تسجيلات-عرض-aew-collision-grand-slam-france-6-أكتوبر-2026.md",
+    "reason": "الخبر الجديد يتحدث عن بطاقة نزالات عرض AEW Collision Grand Slam France، بينما الخبر المنشور (0) هو تقرير نتائج كامل لنفس العرض، مما يجعل الخبر الجديد تكراراً للمعلومات التي تم تغطيتها بالفعل.",
+    "at": "2026-10-07T02:13:14.593Z"
+  },
+  "https://www.fightful.com/wrestling/will-ospreay-to-enter-clockwork-carnage-match-as-aew-champion-at-aew-wrestledream/": {
+    "matchedFile": "20261007024554-توني-خان-يعلق-على-جلب-نزال-كلوك-وورك-كارنيج-الخاص-بـويل-أوسبراي-إلى-aew.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (تأكيد مشاركة أوسبراي في نزال كلوك وورك كارنيج في عرض WrestleDream) مع تفاصيل إضافية عن نتيجة نزاله ضد أوكادا، وهي تفاصيل تعتبر جزءاً من تغطية نفس الحدث الذي تم الإعلان عنه مسبقاً.",
+    "at": "2026-10-07T02:13:15.651Z"
   }
 }
