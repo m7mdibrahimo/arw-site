@@ -28,3 +28,8 @@ videos/**/assets/
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Pictures and reels live in R2, served by the arw-media worker (INCIDENTS #313).
+# A file R2 refuses is still committed with «git add -f» by scripts/media-store.ts.
+content/images/
+dist/videos/*.mp4

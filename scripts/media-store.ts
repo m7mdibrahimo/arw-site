@@ -81,7 +81,7 @@ async function sync(root = process.cwd()) {
 
 /** Reels not needed any more (owner, 2026-10-07: a posted reel is never needed again): every reel in the manifest
  *  whose show is posted on all four Facebook/Instagram slots, and every other reel (news) older than six hours.
- *  A show reel still being posted stays. */
+ *  A show reel still being posted stays — for two days at most: a show held longer never goes out (stale holds). */
 export function reelsToRemove(manifest: any[], state: Record<string, any>, now = Date.now()): string[] {
   const posted = (e: any) => !!e && ['facebook_reel', 'facebook_story', 'instagram_reel', 'instagram_story'].every(p => e[p]);
   const out: string[] = [];
@@ -89,8 +89,8 @@ export function reelsToRemove(manifest: any[], state: Record<string, any>, now =
     const f = m && m.filename;
     if (!f || !/\.mp4$/.test(f)) continue;
     const slug = Object.keys(state).find(k => f === `reel-${k}.mp4` || f === `reel-${k.slice(0, 45)}.mp4`);
-    if (slug) { if (posted(state[slug])) out.push(f); continue; }
-    if (now - Number(m.mtime || 0) > 6 * 3600_000) out.push(f);
+    const age = now - Number(m.mtime || 0);
+    if (slug ? posted(state[slug]) || age > 48 * 3600_000 : age > 6 * 3600_000) out.push(f);
   }
   return out;
 }

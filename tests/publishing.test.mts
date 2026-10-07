@@ -3576,6 +3576,11 @@ test('pictures and reels go to R2, not the repo; a reel leaves R2 once posted ev
   assert.equal(m.publicPath('dist/videos/reel-x.mp4'), '/videos/reel-x.mp4');
   assert.equal(m.publicPath('dist/videos/manifest.json'), null);
   assert.equal(m.publicPath('content/news/x.md'), null);
+  // the repo holds no picture or reel: one deleted from R2 can't come back from GitHub, and the repo stops growing
+  const ignore = fs.readFileSync('.gitignore', 'utf-8').split('\n').map(l => l.trim());
+  assert.ok(ignore.lastIndexOf('content/images/') > -1 && ignore.lastIndexOf('dist/videos/*.mp4') > ignore.lastIndexOf('!dist/videos/**'));
+  // «site» drops only the folders main still has (GitHub refuses to drop a missing one)
+  assert.match(fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8'), /if \[ "\$DROP" = "\[\]" \]; then TREE=\$ROOT/);
   // every bot that writes pictures stores them before it commits; the reel bots commit only the JSON
   for (const f of ['fightful-watcher', 'ringsidenews-watcher', 'wrestlinginc-watcher', 'editorial-maintenance', 'auto-show-reel', 'generate-reel']) {
     const wf = fs.readFileSync(`.github/workflows/${f}.yml`, 'utf-8');
@@ -3610,8 +3615,9 @@ test('a reel posted on Facebook and Instagram leaves R2; one still being posted 
     { filename: 'reel-20261006-nxt.mp4', mtime: now - 600_000 },
     { filename: 'reel-news-old.mp4', mtime: now - 7 * 3600_000 },
     { filename: 'reel-news-new.mp4', mtime: now - 3600_000 },
+    { filename: 'reel-20260918-stuck.mp4', mtime: now - 19 * 86400_000 },
   ];
-  const state = { '20261005-raw': posted, '20261006-nxt': { ...posted, instagram_story: false } };
-  assert.deepEqual(reelsToRemove(manifest, state, now).sort(), ['reel-20261005-raw.mp4', 'reel-news-old.mp4']);
+  const state = { '20261005-raw': posted, '20261006-nxt': { ...posted, instagram_story: false }, '20260918-stuck': { facebook_reel: true } };
+  assert.deepEqual(reelsToRemove(manifest, state, now).sort(), ['reel-20260918-stuck.mp4', 'reel-20261005-raw.mp4', 'reel-news-old.mp4']);
   assert.match(fs.readFileSync('.github/workflows/media-cleanup.yml', 'utf-8'), /npx tsx scripts\/media-store\.ts prune-reels/);
 });

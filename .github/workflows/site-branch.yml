@@ -74,8 +74,16 @@ jobs:
 
           api "$BASE/commits/$MAIN" > c.json
           ROOT=$(jq -r .tree.sha c.json); CT=$(date -d "$(jq -r .committer.date c.json)" +%s)
-          TREE=$(jq -n --arg base "$ROOT" '{base_tree:$base, tree:[{path:"content/images",mode:"040000",type:"tree",sha:null},{path:"dist/videos",mode:"040000",type:"tree",sha:null}]}' \
-            | api -X POST "$BASE/trees" -d @- | jq -r .sha)
+          # main itself has no pictures or reels any more (INCIDENTS #313) — except a file R2 refused, kept as a fallback:
+          # drop whichever of the two folders is still there (GitHub refuses to drop a missing one)
+          has() { api "$BASE/trees/$1" | jq -r --arg n "$2" '.tree[] | select(.path == $n) | .sha'; }
+          DROP='[]'
+          CONTENT=$(has "$ROOT" content); DIST=$(has "$ROOT" dist)
+          [ -n "$CONTENT" ] && [ -n "$(has "$CONTENT" images)" ] && DROP=$(jq -c '. + [{path:"content/images",mode:"040000",type:"tree",sha:null}]' <<<"$DROP")
+          [ -n "$DIST" ] && [ -n "$(has "$DIST" videos)" ] && DROP=$(jq -c '. + [{path:"dist/videos",mode:"040000",type:"tree",sha:null}]' <<<"$DROP")
+          if [ "$DROP" = "[]" ]; then TREE=$ROOT; else
+            TREE=$(jq -n --arg base "$ROOT" --argjson t "$DROP" '{base_tree:$base, tree:$t}' | api -X POST "$BASE/trees" -d @- | jq -r .sha)
+          fi
           api "$BASE/trees/$TREE?recursive=1" | jq -e '[.tree[].path | select(startswith("content/images/") or startswith("dist/videos/"))] | length == 0' > /dev/null
           # a visible change always builds: the skip markers of the newest commit don't apply to the ones under it
           MSG=$(jq -r .message c.json | sed -E 's/\[(skip ci|ci skip|skip-ci|CF-Pages-Skip)\]//Ig')
