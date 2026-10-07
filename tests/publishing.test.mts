@@ -3743,13 +3743,13 @@ test('a show page lists its program as cards (a show with its own name by that n
   const eps = Array.from({ length: 10 }, (_, i) => ({ url: `/shows/raw-${i}/`, day: i + 1, month: 9, year: 2026, headline: `عرض الرو ${String(i + 1).padStart(2, '0')}.09.2026 مترجم` }));
   const programs = [{ slug: 'wwe-raw', name: 'WWE RAW', episodes: eps, seasons: [{ number: 2026, type: 'year', episodes: eps }] }];
   const n = nav('WWE RAW', '/shows/raw-8/', programs);
-  assert.deepEqual(n.recent.map((e: any) => e.url), ['/shows/raw-8/', '/shows/raw-7/', '/shows/raw-6/', '/shows/raw-5/', '/shows/raw-4/', '/shows/raw-3/', '/shows/raw-2/', '/shows/raw-1/']);
-  // on the program's very first show, the newer ones fill the eight: no «next» card, always eight to move to
+  // the program's latest eight, the same on every one of its pages
+  assert.deepEqual(n.recent.map((e: any) => e.url), ['/shows/raw-9/', '/shows/raw-8/', '/shows/raw-7/', '/shows/raw-6/', '/shows/raw-5/', '/shows/raw-4/', '/shows/raw-3/', '/shows/raw-2/']);
   const first = nav('WWE RAW', '/shows/raw-0/', programs);
-  assert.deepEqual(first.recent.map((e: any) => e.url), ['/shows/raw-7/', '/shows/raw-6/', '/shows/raw-5/', '/shows/raw-4/', '/shows/raw-3/', '/shows/raw-2/', '/shows/raw-1/', '/shows/raw-0/']);
+  assert.deepEqual(first.recent.map((e: any) => e.url), n.recent.map((e: any) => e.url));
   assert.equal(first.nextCard, undefined);
-  assert.equal(n.recent[0].weekday, 'الأربعاء'); // 9 September 2026, under the date instead of the program's name again
-  assert.equal(n.recent[0].dayLabel, '9 سبتمبر');
+  assert.equal(n.recent[1].weekday, 'الأربعاء'); // 9 September 2026, under the date instead of the program's name again
+  assert.equal(n.recent[1].dayLabel, '9 سبتمبر');
   assert.equal(n.recent[0].kindLabel, 'عرض الرو');
   assert.equal(n.libraryHref, '/library/wwe-raw/');
   assert.equal(n.recent[0].named, false); // a weekly show: its date
@@ -3768,7 +3768,7 @@ test('a show page lists its program as cards (a show with its own name by that n
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.ok(!/episodes-search|ep-pill|آخر 8/.test(tpl), 'the date buttons, the search and the «آخر 8» label are gone');
   assert.ok(!tpl.includes('أخبار وعروض ذات صلة'));
-  assert.ok(/جميع \{\{/.test(tpl) && !/[>}]كل \{\{/.test(tpl), '«جميع عروض…», in Fusha');
+  assert.ok(/جميع \{\{ showsWord \}\} \{\{ nav\.program\.name \}\}/.test(tpl) && !/[>}]كل \{\{/.test(tpl), '«جميع عروض WWE RAW»: Fusha, and the library\'s name');
   // small 480px pictures on the cards, not the 800px ones
   assert.ok(!/optImg (nx\.image|ep\.image|rThumb)/.test(tpl) && /optCard ep\.image/.test(tpl) && /optCard rThumb/.test(tpl));
 });

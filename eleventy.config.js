@@ -1418,13 +1418,9 @@ module.exports = function(eleventyConfig) {
         hasDateInName: /\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}/.test(String(ep.title || ep.headline || ""))
       });
     };
-    // Eight shows, newest first: the one being watched and the ones before it — and when it is among the first
-    // of its program, the newer ones fill the eight, so the cards always lead somewhere (owner, 2026-10-07)
-    const here = idx >= 0 ? idx : prog.episodes.length - 1;
-    const newestFirst = prog.episodes.slice().reverse();
-    const at = prog.episodes.length - 1 - here;
-    const from = Math.max(0, Math.min(at, newestFirst.length - 8));
-    const recent = newestFirst.slice(from, from + 8).map(card);
+    // The program's latest eight, newest first — the same eight on every one of its pages; the show being
+    // watched is marked when it is one of them (owner, 2026-10-07)
+    const recent = prog.episodes.slice(-8).reverse().map(card);
 
     // the name the program's shows share («عرض الرو»), for the heading and the «كل عروض…» button — never a
     // single show's own name (the Kobe card named the whole program for a moment, INCIDENTS #332)
