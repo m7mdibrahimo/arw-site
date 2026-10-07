@@ -3003,6 +3003,10 @@ test('Buff Bagwell story: «كانت لتمثله» and the Scotty Riggs name (I
   assert.match(buildNamesGlossaryHint('Buff Bagwell and Scotty Riggs faced Rick Steiner'), /Scotty Riggs = سكوتي ريغز/);
 });
 
+test('«move through space as a human being» is not outer space (INCIDENTS #341)', () => {
+  assert.equal(applyCorrections('كان له تأثير كبير على طريقة تحركي في الفضاء كإنسان'), 'كان له تأثير كبير على طريقة تعاملي مع العالم من حولي كإنسان');
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
