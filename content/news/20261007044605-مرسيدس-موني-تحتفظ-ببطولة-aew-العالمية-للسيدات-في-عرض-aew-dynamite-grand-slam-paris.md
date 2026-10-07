@@ -6,9 +6,9 @@ published_at: 2026-10-07T01:52:36.975Z
 source_id: 4912825567
 source_url: "https://www.wrestlinginc.com/2279618/mercedes-mone-retains-aew-womens-world-title-grand-slam-france/"
 single_match_result: true
-social_spoiler: false
-social_spoiler_kind: none
-social_spoiler_age: old
+social_spoiler: true
+social_spoiler_kind: result
+social_spoiler_age: recent
 social_spoiler_note: "المنشور يكشف نتيجة نزال احتفاظ مرسيدس موني باللقب في عرض AEW Dynamite: Grand Slam Paris الذي أقيم ضمن نطاق الـ 6 ساعات الأخيرة."
 social_priority: normal
 tags:

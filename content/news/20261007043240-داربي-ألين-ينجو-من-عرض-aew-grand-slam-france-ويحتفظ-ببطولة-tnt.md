@@ -6,9 +6,9 @@ published_at: 2026-10-07T01:51:36.168Z
 source_id: 4943713877
 source_url: "https://www.wrestlinginc.com/2279613/darby-allin-escapes-aew-grand-slam-france-tnt-title/"
 single_match_result: true
-social_spoiler: false
-social_spoiler_kind: none
-social_spoiler_age: old
+social_spoiler: true
+social_spoiler_kind: result
+social_spoiler_age: recent
 social_spoiler_note: "المنشور يكشف نتيجة نزال بطولة TNT واحتفاظ داربي ألين باللقب في عرض AEW Grand Slam: France الذي أقيم ضمن آخر 6 ساعات."
 social_priority: normal
 tags:

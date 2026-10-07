@@ -2284,9 +2284,9 @@ test('a debut on a show that aired two days ago is ordinary news, not a spoiler 
   const now = Date.parse('2026-09-30T16:20:00Z'); // RAW of the 28th aired 00:00–03:00 UTC on the 29th
   const v = { spoils: true, kind: 'return' as const, age: 'recent' as const, note: '' };
   const text = 'بولي راي يعلق على ظهور جايدا باركر في عرض WWE RAW';
-  assert.equal(settleSpoilerAge(v, text, [], now, ['wwe raw']).spoils, false);
+  assert.equal(settleSpoilerAge(v, text, [], now, ['wwe raw'], undefined, ['wwe raw']).spoils, false);
   // the same debut the night of the show stays held
-  assert.equal(settleSpoilerAge(v, text, [], Date.parse('2026-09-29T02:00:00Z'), ['wwe raw']).spoils, true);
+  assert.equal(settleSpoilerAge(v, text, [], Date.parse('2026-09-29T02:00:00Z'), ['wwe raw'], undefined, ['wwe raw']).spoils, true);
 });
 
 test('a promotion or a broadcast format coming back is not a wrestler return (INCIDENTS #159)', async () => {
@@ -2759,7 +2759,13 @@ test('a weekly show past the window makes the story old even when the model said
   const { stillSpoiler } = await import('../worker/src/index');
   const v = { spoils: false, kind: 'none', age: 'recent', note: '' } as any;
   const text = 'واردلو يتحدث عن عودته الحلوة والمرة إلى الحلبات في عرض AEW Dynamite';
-  assert.equal(settleSpoilerAge(v, text, [], Date.parse('2026-10-02T03:00:00Z'), ['aew dynamite'], []).age, 'old');
+  assert.equal(settleSpoilerAge(v, text, [], Date.parse('2026-10-02T03:00:00Z'), ['aew dynamite'], [], ['aew dynamite']).age, 'old');
+  // last week's Dynamite says nothing about a special that just aired on another night (INCIDENTS #317)
+  const paris = { spoils: true, kind: 'result', age: 'recent', note: '' } as any;
+  const mone = 'مرسيدس موني تحتفظ ببطولة AEW العالمية للسيدات في عرض AEW Dynamite: Grand Slam Paris';
+  const out = settleSpoilerAge(paris, mone, [], Date.parse('2026-10-07T01:40:00Z'), ['aew dynamite'], [], []);
+  assert.equal(out.spoils, true); assert.notEqual(out.age, 'old');
+  assert.equal(stillSpoiler({ why: 'title', title: mone }, { social_spoiler: true, title: mone }), true);
   assert.equal(stillSpoiler({ why: 'title', title: text }, { social_spoiler: false, social_spoiler_age: 'old', title: text }), false);
   assert.equal(stillSpoiler({ why: 'title', title: text }, { social_spoiler: false, social_spoiler_age: 'recent', title: text }), true);
   assert.equal(applyCorrections('لشريكتها في فريق التناوب آلي'), 'لشريكتها في الفريق آلي');
@@ -2867,7 +2873,7 @@ test('a promotion coming back is not a return spoiler; «بقضاء وقتا» c
 test('MLW Fusion is a known weekly show, so a day-old Fusion moment is old (INCIDENTS #243)', async () => {
   const { settleSpoilerAge } = await import('../scripts/fightful-watcher');
   const v = { spoils: true, kind: 'show', age: 'recent', note: '' } as any;
-  assert.equal(settleSpoilerAge(v, 'عرض MLW Fusion يشهد عرض مقطع تمهيدي للمصارع يوتا تسوجي', [], Date.parse('2026-10-02T20:40:00Z'), ['mlw fusion'], []).spoils, false);
+  assert.equal(settleSpoilerAge(v, 'عرض MLW Fusion يشهد عرض مقطع تمهيدي للمصارع يوتا تسوجي', [], Date.parse('2026-10-02T20:40:00Z'), ['mlw fusion'], [], ['mlw fusion']).spoils, false);
   assert.equal(applyCorrections('حسمها لصوحه'), 'حسمها لصالحه');
 });
 

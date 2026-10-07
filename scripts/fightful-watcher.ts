@@ -2582,7 +2582,7 @@ export function weeklyShowsAiredWithin(hours = 27, now = Date.now()): string[] {
   return out;
 }
 
-export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(SPOILER_HOURS), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsAiredWithin(SPOILER_HOURS + 3, now)): SocialVerdict {
+export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[] = recentShowNames(SPOILER_HOURS), now = Date.now(), weekShows: string[] = recentShowNames(24 * 7), aired: string[] = weeklyShowsAiredWithin(SPOILER_HOURS + 3, now), dayShows: string[] = recentShowNames(48)): SocialVerdict {
   // «Something from a show» about a weekly show that hasn't aired in the last day is an
   // announcement before the show, not a spoiler (INCIDENTS #156).
   {
@@ -2602,7 +2602,12 @@ export function settleSpoilerAge(v: SocialVerdict, text: string, shows: string[]
   // 24 hours old and that hasn't aired since, with no recent date, is ordinary news — not a spoiler.
   // …whether or not the model called it a spoiler: Wardlow's return story, a day after Dynamite, came back
   // «not a spoiler, recent» and the title rule held it anyway (INCIDENTS #223).
-  if (v.age === "recent" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n))) {
+  // …but only when that report really is the latest episode: a weekly show whose last report is over two days old
+  // has a new episode by now. Mercedes Moné's title defence at «AEW Dynamite: Grand Slam Paris», a special on another
+  // night with no report yet, was dated by last week's Dynamite, called «old», and reached Telegram and Facebook
+  // (INCIDENTS #317).
+  const weekly = new Set(WEEKLY_TV.map(([n]) => n));
+  if (v.age === "recent" && !datedRecently && !recentShow && weekShows.some(n => !shows.includes(n) && lower.includes(n) && (!weekly.has(n) || dayShows.includes(n)))) {
     return { ...v, spoils: false, kind: "none", age: "old" };
   }
   // A result placed in a past month and nothing recent: Lola Vice's NXT title win «at Stand &

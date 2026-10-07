@@ -6,9 +6,9 @@ published_at: 2026-10-07T00:46:41.349Z
 source_id: 332531
 source_url: "https://www.fightful.com/wrestling/samoa-joe-qualifies-for-clockwork-carnage-match-at-aew-wrestledream/"
 single_match_result: true
-social_spoiler: false
-social_spoiler_kind: none
-social_spoiler_age: old
+social_spoiler: true
+social_spoiler_kind: result
+social_spoiler_age: recent
 social_spoiler_note: "الخبر يكشف نتيجة نزال تأهيلي لساموا جو في عرض AEW Dynamite Grand Slam France الذي يعتبر من العروض الحديثة."
 social_priority: normal
 tags:
