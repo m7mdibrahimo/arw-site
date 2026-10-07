@@ -1634,10 +1634,11 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 (function(){
 var WINDOW = 12 * 3600 * 1000;
 function ar(n, one, two, few, many){ return n === 1 ? one : n === 2 ? two : (n % 100 >= 3 && n % 100 <= 10) ? n + ' ' + few : n + ' ' + many; }
-function span(ms){
-  var m = Math.max(1, Math.floor(ms / 60000));
+/* "منذ" rounds down and "يختفي بعد" rounds up, so the two always add up to 12 hours */
+function span(ms, up){
+  var r = up ? Math.ceil : Math.floor, m = Math.max(1, r(ms / 60000));
   if (m < 60) return ar(m, 'دقيقة', 'دقيقتين', 'دقائق', 'دقيقة');
-  return ar(Math.floor(m / 60), 'ساعة', 'ساعتين', 'ساعات', 'ساعة');
+  return ar(r(m / 60), 'ساعة', 'ساعتين', 'ساعات', 'ساعة');
 }
 function tick(){
   var now = Date.now();
@@ -1646,7 +1647,7 @@ function tick(){
     if (!(age < WINDOW)) { el.remove(); return; }
     var ago = el.querySelector('[data-fresh-ago]'), left = el.querySelector('[data-fresh-left]'), life = el.querySelector('[data-fresh-life]');
     if (ago) ago.textContent = age < 60000 ? 'الآن' : 'منذ ' + span(age);
-    if (left) left.textContent = 'يختفي بعد ' + span(WINDOW - age);
+    if (left) left.textContent = 'يختفي بعد ' + span(WINDOW - age, true);
     if (life) life.style.width = Math.max(4, 100 - age / WINDOW * 100) + '%';
   });
   var rail = document.getElementById('freshRail');
