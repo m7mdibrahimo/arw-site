@@ -3036,6 +3036,18 @@ test('Serrano and Bischoff stories: quote brackets in «Lethal Lockdown» and «
   assert.equal(applyCorrections('وفاة مصارعين اثنين في سن الاربعين أمر غير طبيعي'), 'وفاة مصارعين اثنين في سن الأربعين أمر غير طبيعي');
 });
 
+test('Maclin story: quotes need «», «المصارعة» not «المصارعة الحرة», Bobby Roode in the dictionary (INCIDENTS #349)', () => {
+  assert.equal(applyCorrections('شعرت بكل معنى كون المصارعة الحرة فنا قائما بذاته'), 'شعرت بكل معنى أن المصارعة فن قائم بذاته');
+  assert.equal(applyCorrections('مشيرا إلى أنه أيقن بنهايتها بأنه ينتمي'), 'مشيرا إلى أنه أيقن مع نهايتها أنه ينتمي إلى هذا المجال');
+  const pad = ' وهذا نص إضافي طويل لتجاوز الحد الأدنى لطول الخبر في المدقق الآلي.'.repeat(5);
+  const bad = checkArticle('ستيف ماكلين يتحدث عن نزاله مع آدم كوبلاند', 'شارك ماكلين انطباعاته، وأضاف: أنا سعيد بأن لدي هذا المقطع.' + pad);
+  assert.ok(bad.some(i => i.code === 'unquoted_quote'));
+  const good = checkArticle('ستيف ماكلين يتحدث عن نزاله مع آدم كوبلاند', 'شارك ماكلين انطباعاته، وقال: «أنا سعيد بأن لدي هذا المقطع».' + pad);
+  assert.ok(!good.some(i => i.code === 'unquoted_quote'));
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Bobby Roode'], 'بوبي رود');
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
