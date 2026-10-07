@@ -2998,6 +2998,11 @@ test('an all-caps English film title is not half-transliterated (INCIDENTS #339)
   assert.equal(applyCorrections('فيلم وثائقي جديد بعنوان I FOUGHT جون موكسلي والمقرر'), 'فيلم وثائقي جديد بعنوان «I FOUGHT JON MOXLEY» والمقرر');
 });
 
+test('Buff Bagwell story: «كانت لتمثله» and the Scotty Riggs name (INCIDENTS #340)', () => {
+  assert.equal(applyCorrections('مشددا على أن تلك المرحلة كانت لتمثله فرصة مثالية'), 'مشددا على أن تلك المرحلة كانت ستمثل له فرصة مثالية');
+  assert.match(buildNamesGlossaryHint('Buff Bagwell and Scotty Riggs faced Rick Steiner'), /Scotty Riggs = سكوتي ريغز/);
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
