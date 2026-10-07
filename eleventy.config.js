@@ -1397,6 +1397,16 @@ module.exports = function(eleventyConfig) {
 
     const MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
     const WEEKDAYS = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+    // «الحلقة الأولى»… «الحلقة الحادية والعشرون»: a programme's episodes by their number, in words (owner, 2026-10-07)
+    const ORD = ["", "الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة"];
+    const ORD_UNIT = ["", "الحادية", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة"];
+    const ORD_TENS = ["", "", "العشرون", "الثلاثون", "الأربعون", "الخمسون", "الستون", "السبعون", "الثمانون", "التسعون"];
+    const ordinal = function(n) {
+      if (n >= 1 && n <= 10) return ORD[n];
+      if (n > 10 && n < 20) return ORD_UNIT[n - 10] + " عشرة";
+      if (n >= 20 && n < 100) return n % 10 ? ORD_UNIT[n % 10] + " و" + ORD_TENS[Math.floor(n / 10)] : ORD_TENS[n / 10];
+      return String(n);
+    };
     // «عرض الرو 21.09.2026 مترجم» → «عرض الرو»: what a show is called once its date is taken out
     const kindOf = function(ep) {
       return String(ep.headline || "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}\s*/g, " ").replace(/\s*مترجم[ةه]?\s*$/, "").replace(/\s+/g, " ").trim();
@@ -1410,6 +1420,9 @@ module.exports = function(eleventyConfig) {
         // the card's second line: the weekday and the year — the program's name is already the heading, and a long
         // one («عرض ان جيه بي دبليو رود تو ديستركشن») only got cut off there
         weekday: ep.day && ep.month && ep.year ? WEEKDAYS[new Date(Date.UTC(ep.year, ep.month - 1, ep.day)).getUTCDay()] : "",
+        // its number from the panel, or its place in its season
+        episodeWords: "الحلقة " + ordinal(/^\d+$/.test(String(ep.episodeLabel || "")) ? parseInt(ep.episodeLabel, 10)
+          : prog.episodes.filter(function(x) { return x.groupKey === ep.groupKey; }).indexOf(ep) + 1),
         kindLabel: kind,
         // the owner picks it per show in the panel (INCIDENTS #332): by its English title, or by its date
         named: ep.cardTitle === "name" || !!ep.isNostalgia,

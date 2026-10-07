@@ -455,7 +455,10 @@
                 {% if isNow %}<span class="sx-now">{{ "تشاهدها الآن" if isProgram else "تشاهده الآن" }}</span>{% endif %}
               </span>
               <span class="sx-body">
-                {% if ep.named %}
+                {% if isSeries and not isNostalgiaItem %}
+                <span class="sx-date">{{ ep.episodeWords }}</span>
+                <span class="sx-meta sx-meta-en"><bdi>{{ ep.title or ep.year }}</bdi></span>
+                {% elif ep.named %}
                 <span class="sx-name"><bdi>{{ ep.fullName }}</bdi></span>
                 {% if not ep.hasDateInName and ep.dayLabel %}<span class="sx-meta">{{ ep.dayLabel }} {{ ep.year }}</span>{% endif %}
                 {% else %}
@@ -468,7 +471,7 @@
           </div>
 
           {% if not isNostalgiaItem %}
-          <a href="{{ nav.libraryHref }}" class="sx-all">جميع {{ showsWord }} {{ nav.program.name }} <span class="sx-all-n">({{ epCount }})</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
+          <a href="{{ nav.libraryHref }}" class="sx-all">جميع {{ "ملخصات" if isRecap else nounPlural }} {{ nav.program.name }} <span class="sx-all-n">({{ epCount }})</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></a>
           {% endif %}
         </div>
       {% endif %}
