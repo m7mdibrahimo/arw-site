@@ -1,5 +1,35 @@
 [
   {
+    "id": 4912825567,
+    "link": "https://www.wrestlinginc.com/2279618/mercedes-mone-retains-aew-womens-world-title-grand-slam-france/",
+    "date": "Wed, 07 Oct 2026 01:46:05 +0000",
+    "date_gmt": "2026-10-07T01:46:05.000Z",
+    "title": {
+      "rendered": "Mercedes Mone Retains AEW Women's World Title At Grand Slam: France"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/mercedes-mone-retains-aew-womens-world-title-at-grand-slam-france/l-intro-1791337478.jpg"
+  },
+  {
+    "id": 2231505575,
+    "link": "https://www.wrestlinginc.com/2279615/hank-tank-more-advance-wwe-nxt-dusty-rhodes-tag-team-classic/",
+    "date": "Wed, 07 Oct 2026 01:40:19 +0000",
+    "date_gmt": "2026-10-07T01:40:19.000Z",
+    "title": {
+      "rendered": "Hank, Tank & More Advance In WWE NXT Dusty Rhodes Tag Team Classic"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/hank-tank-more-advance-in-wwe-nxt-dusty-rhodes-tag-team-classic/l-intro-1791337060.jpg"
+  },
+  {
+    "id": 4943713877,
+    "link": "https://www.wrestlinginc.com/2279613/darby-allin-escapes-aew-grand-slam-france-tnt-title/",
+    "date": "Wed, 07 Oct 2026 01:32:40 +0000",
+    "date_gmt": "2026-10-07T01:32:40.000Z",
+    "title": {
+      "rendered": "Darby Allin Escapes AEW Grand Slam: France With TNT Title"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/darby-allin-escapes-aew-grand-slam-france-with-tnt-title/l-intro-1791336655.jpg"
+  },
+  {
     "id": 3464330776,
     "link": "https://www.wrestlinginc.com/2279611/jon-moxley-defend-aew-continental-title-wrestledream/",
     "date": "Wed, 07 Oct 2026 01:23:30 +0000",
@@ -168,35 +198,5 @@
       "rendered": "AEW Star MVP On WWE's Triple H: 'He's A Spineless Coward'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-star-mvp-on-wwes-triple-h-hes-a-spineless-coward/l-intro-1791312817.jpg"
-  },
-  {
-    "id": 3866012612,
-    "link": "https://www.wrestlinginc.com/2279238/wwe-john-cena-cody-rhodes-street-fighter-brave-promoting-in-character-guile/",
-    "date": "Tue, 06 Oct 2026 18:52:10 +0000",
-    "date_gmt": "2026-10-06T18:52:10.000Z",
-    "title": {
-      "rendered": "WWE's John Cena Says Cody Rhodes Is 'Brave' For Promoting Street Fighter In-Character"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-john-cena-says-cody-rhodes-is-brave-for-promoting-street-fighter-in-character/l-intro-1791312164.jpg"
-  },
-  {
-    "id": 2047401690,
-    "link": "https://www.wrestlinginc.com/2279088/aew-roh-tony-khan-reacts-fan-criticism-booking/",
-    "date": "Tue, 06 Oct 2026 17:41:18 +0000",
-    "date_gmt": "2026-10-06T17:41:18.000Z",
-    "title": {
-      "rendered": "AEW's Tony Khan Reacts To Fan Criticism Over His Booking Of ROH"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-tony-khan-reacts-to-fan-criticism-over-his-booking-of-roh/l-intro-1791308318.jpg"
-  },
-  {
-    "id": 1455920781,
-    "link": "https://www.wrestlinginc.com/2279075/wwe-raw-jacob-fatu-dave-meltzer-absence-backstage-report/",
-    "date": "Tue, 06 Oct 2026 17:37:43 +0000",
-    "date_gmt": "2026-10-06T17:37:43.000Z",
-    "title": {
-      "rendered": "Backstage Report On Jacob Fatu's Absence From WWE Raw"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-jacob-fatus-absence-from-wwe-raw/l-intro-1791308141.jpg"
   }
 ]
