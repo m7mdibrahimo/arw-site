@@ -2918,6 +2918,11 @@ test('an editor note left in parentheses is removed (INCIDENTS #251)', () => {
   assert.equal(autoFix('فاز فريق ذا دوجز (كلارك كونورز وجيب كيد) بالنزال.'), 'فاز فريق ذا دوجز (كلارك كونورز وجيب كيد) بالنزال.');
 });
 
+test('a «(مع تصحيح …)» note left in the text is removed (INCIDENTS #321)', () => {
+  assert.equal(autoFix('فاز تايران تاكي على بروكس جينسن (مع تصحيح اسم المصارع إلى تايران تاكي)، حيث تم تقديمه.'), 'فاز تايران تاكي على بروكس جينسن، حيث تم تقديمه.');
+  assert.equal(autoFix('حقق الفوز (بعد تعديل الاسم) في النزال.'), 'حقق الفوز في النزال.');
+});
+
 test('a return announced for tonight show is a card, not a spoiler (INCIDENTS #253)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('كوفي يواجه لي موريارتي وجوليا هارت تعود للحلبة ضمن عرض AEW Collision الليلة', ''), false);

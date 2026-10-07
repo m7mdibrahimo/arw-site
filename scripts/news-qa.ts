@@ -567,7 +567,8 @@ export function autoFix(text: string): string {
   text = text.replace(/(?:^|(?<=[\n.،]\s?))(?:خلال|مع|بعد|عبر)\s+إضافة\s+علامات\s+التنصيص[^،.\n]*(?:كما\s+(?:في|ورد\s+في)\s+المصدر)?[،,]\s*/g, "");
   // An editor's note to itself left in the text: «(المصدر يشير إلى أنه اختار AEW بدلا من WWE NXT، وليس أنه
   // انتقل فعليا…)» went live in the David Finlay story (INCIDENTS #251)
-  text = text.replace(/\s*\((?:المصدر|ملاحظة|ملحوظة|توضيح|للتوضيح|تنبيه)(?:\s|:)[^()\n]{0,240}\)/g, "");
+  // «(مع تصحيح اسم المصارع إلى تايران تاكي)» went live in the NXT pre-show story (INCIDENTS #321)
+  text = text.replace(/\s*\((?:المصدر|ملاحظة|ملحوظة|توضيح|للتوضيح|تنبيه|(?:مع|بعد|تم)\s+(?:تصحيح|تعديل))(?:\s|:)[^()\n]{0,240}\)/g, "");
   // «ال» written twice: «والالثنائي سيخوض» (INCIDENTS #229). Only before nouns that never start with «ال»
   // themselves, so «الالتزام» and «الالتفاف» stay as they are.
   text = text.replace(/(?<![\u0600-\u06FF])([وفبلك]?)الال(?=(?:ثنائي|فريق|نجم|نجمة|مصارع|مصارعة|عرض|اتحاد|بطل|بطلة|بطولة|نزال|لقب)(?![\u0600-\u06FF]))/g, "$1ال");

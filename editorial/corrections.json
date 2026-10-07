@@ -5413,6 +5413,16 @@
    "wrong": "عقدا أساسيا ضمن فئة الأساطير",
    "right": "عقد أساطير عاديا",
    "note": "«basic legends deal» عقد أساطير عادي — INCIDENTS #320"
+  },
+  {
+   "wrong": "بضربة مونوسولت صاعدة",
+   "right": "بحركة مونسولت من وضع الوقوف",
+   "note": "«standing moonsault» من وضع الوقوف، و«صاعدة» ترجمة غلط — INCIDENTS #321"
+  },
+  {
+   "wrong": "مونوسولت",
+   "right": "مونسولت",
+   "note": "«moonsault» تكتب مونسولت — INCIDENTS #321"
   }
  ]
 }
