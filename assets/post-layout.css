@@ -1096,20 +1096,28 @@
           }
   @media (prefers-reduced-motion: reduce){ .sx-thumb img, .sx-thumb{ transition:none; } }
 
-  /* ── Show / recap / nostalgia pages on a phone: the same header, tidied (owner, 2026-10-07) ──
+  /* ── Show / recap / nostalgia pages: the same header, tidied for phone and computer (owner, 2026-10-07) ──
      The title on the cover at a reading size, the path on one line, and the badges, the length, the
      English name and «حفظ للمشاهدة لاحقاً» together in one framed card instead of loose lines. */
-  @media (max-width:768px){
-    .hero h1.hero-title:not(.news-hero-title){ font-size:21px !important; line-height:1.5 !important; margin-bottom:0 !important; letter-spacing:0 !important; text-wrap:balance; }
-    .hero h1.hero-title:not(.news-hero-title) .u{ font-size:15px !important; margin-top:6px !important; }
-    .post-wrap.is-watch .arw-crumbs{ flex-wrap:nowrap; overflow-x:auto; white-space:nowrap; scrollbar-width:none; font-size:12.5px; margin-bottom:12px; -webkit-mask-image:linear-gradient(to left, #000 84%, transparent); mask-image:linear-gradient(to left, #000 84%, transparent); }
-    .post-wrap.is-watch .arw-crumbs::-webkit-scrollbar{ display:none; }
-    .post-wrap.is-watch .post-meta-bar{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:14px 14px 12px !important; gap:8px !important; margin-bottom:16px !important; box-shadow:0 10px 24px -18px rgba(0,0,0,.4); }
-    .post-wrap.is-watch .post-ep-name{ order:5; flex-basis:100%; justify-content:center; background:none !important; border:0 !important; padding:2px 0 0 !important; color:var(--muted) !important; font:700 12.5px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important; direction:ltr; }
-    .post-wrap.is-watch .post-bookmark-wrap{ margin:2px 0 0 !important; padding-top:12px; border-top:1px dashed var(--line); }
-    .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ width:100%; height:40px; padding:0 16px !important; font-size:13.5px !important; }
+  .hero h1.hero-title:not(.news-hero-title){ font-size:clamp(26px,2.6vw,34px) !important; line-height:1.45 !important; margin-bottom:0 !important; letter-spacing:0 !important; text-wrap:balance; max-width:900px; margin-inline:auto !important; }
+  .hero h1.hero-title:not(.news-hero-title) .u{ font-size:.62em !important; margin-top:8px !important; }
+  .post-wrap.is-watch .arw-crumbs{ flex-wrap:nowrap; overflow-x:auto; white-space:nowrap; scrollbar-width:none; }
+  .post-wrap.is-watch .arw-crumbs::-webkit-scrollbar{ display:none; }
+  .post-wrap.is-watch .post-meta-bar{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:12px 14px !important; gap:8px !important; margin-bottom:18px !important; box-shadow:0 10px 24px -18px rgba(0,0,0,.4); }
+  .post-wrap.is-watch .post-ep-name{ order:5; background:none !important; border:0 !important; padding:0 6px !important; color:var(--muted) !important; font:700 13px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif !important; direction:ltr; }
+  .post-wrap.is-watch .post-bookmark-wrap{ order:99; }
+  .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ height:38px; padding:0 18px !important; font-size:13.5px !important; border-radius:999px !important; }
+  /* the title is on the cover already; the line under it stays for a phone held sideways, where the cover is hidden */
+  .post-wrap.is-watch > h2{ display:none; }
+  @media (orientation: landscape) and (max-height: 550px), (max-height: 500px){
+    .post-wrap.is-watch > h2{ display:block; }
   }
-  /* the title is on the cover already; the line under it stays for a phone held sideways */
-  @media (max-width:768px) and (orientation:portrait){
-    .post-wrap.is-watch > h2{ display:none; }
+  @media (max-width:768px){
+    .hero h1.hero-title:not(.news-hero-title){ font-size:21px !important; line-height:1.5 !important; }
+    .hero h1.hero-title:not(.news-hero-title) .u{ font-size:15px !important; margin-top:6px !important; }
+    .post-wrap.is-watch .arw-crumbs{ font-size:12.5px; margin-bottom:12px; -webkit-mask-image:linear-gradient(to left, #000 84%, transparent); mask-image:linear-gradient(to left, #000 84%, transparent); }
+    .post-wrap.is-watch .post-meta-bar{ padding:14px 14px 12px !important; margin-bottom:16px !important; }
+    .post-wrap.is-watch .post-ep-name{ flex-basis:100%; justify-content:center; padding:2px 0 0 !important; font-size:12.5px !important; }
+    .post-wrap.is-watch .post-bookmark-wrap{ margin:2px 0 0 !important; padding-top:12px; border-top:1px dashed var(--line); }
+    .post-wrap.is-watch .post-bookmark-wrap .post-bookmark-btn{ width:100%; height:40px; }
   }
