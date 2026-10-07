@@ -1244,6 +1244,55 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   /* The bottom bar now carries the section links; the hero doesn't repeat them. */
   .quicknav{ display:none !important; }
 }
+
+/* «جديد» — everything but news from the last 12 hours (2026-10-07) */
+#fresh{ padding-top:28px; padding-bottom:28px; }
+.fresh-panel{ position:relative; border-radius:22px; padding:22px 22px 18px; background:linear-gradient(var(--card),var(--card)) padding-box, linear-gradient(120deg,var(--coral),var(--gold) 45%,var(--teal)) border-box; border:1.5px solid transparent; box-shadow:0 18px 40px -26px rgba(255,111,89,.45); overflow:hidden; }
+.fresh-panel::before{ content:""; position:absolute; inset:-40% -10% auto auto; width:320px; height:320px; background:radial-gradient(circle,rgba(255,111,89,.16),transparent 65%); pointer-events:none; }
+.fresh-head{ position:relative; display:flex; align-items:center; gap:14px; margin-bottom:16px; flex-wrap:wrap; }
+.fresh-title{ display:flex; align-items:center; gap:10px; }
+.fresh-title h2{ font-size:clamp(22px,3vw,28px); font-weight:900; letter-spacing:-.5px; background:linear-gradient(120deg,var(--coral),var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1.3; }
+.fresh-live{ position:relative; width:12px; height:12px; border-radius:50%; background:var(--coral); flex-shrink:0; }
+.fresh-live::after{ content:""; position:absolute; inset:0; border-radius:50%; background:var(--coral); animation:freshPing 1.6s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes freshPing{ 75%,100%{ transform:scale(2.4); opacity:0; } }
+.fresh-count{ font-size:12px; font-weight:800; color:var(--coral); background:var(--coral-soft); border-radius:999px; padding:2px 10px; }
+.fresh-sub{ color:var(--muted); font-size:13.5px; }
+.fresh-nav{ margin-inline-start:auto; display:flex; gap:8px; }
+.fresh-nav button{ width:36px; height:36px; border-radius:50%; border:1px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s ease, color .2s ease, border-color .2s ease; }
+.fresh-nav button:hover{ background:var(--coral); color:#fff; border-color:var(--coral); }
+.fresh-nav button:disabled{ opacity:.35; cursor:default; background:var(--bg); color:var(--ink); border-color:var(--line); }
+.fresh-rail{ position:relative; display:grid; grid-auto-flow:column; grid-auto-columns:calc((100% - 3*16px)/4); gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:4px 2px 6px; }
+.fresh-rail::-webkit-scrollbar{ display:none; }
+.fresh-card{ scroll-snap-align:start; display:flex; flex-direction:column; background:var(--bg); border:1px solid var(--line); border-radius:16px; overflow:hidden; text-decoration:none; color:var(--ink); transition:transform .35s cubic-bezier(0.34,1.56,0.64,1), box-shadow .35s ease, border-color .3s ease; }
+.fresh-card:hover{ transform:translateY(-6px); border-color:var(--coral); box-shadow:0 18px 32px -18px rgba(255,111,89,.45); }
+.fresh-thumb{ position:relative; aspect-ratio:16/9; background-size:cover; background-position:center; }
+.fresh-thumb::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.6)); }
+.fresh-ribbon, .fresh-tag{ position:absolute; top:10px; inset-inline-start:10px; z-index:2; display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:900; color:#fff; padding:4px 11px 4px 10px; border-radius:999px; background:linear-gradient(120deg,#ff5a43,#f2a53c); box-shadow:0 6px 16px -6px rgba(255,90,67,.8); overflow:hidden; line-height:1.2; }
+.fresh-ribbon::before, .fresh-tag::before{ content:""; width:6px; height:6px; border-radius:50%; background:#fff; box-shadow:0 0 0 3px rgba(255,255,255,.3); }
+.fresh-ribbon::after, .fresh-tag::after{ content:""; position:absolute; top:0; bottom:0; width:40%; left:-60%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent); animation:freshShine 2.8s ease-in-out infinite; }
+@keyframes freshShine{ 0%,55%{ left:-60%; } 100%{ left:130%; } }
+.fresh-dur{ position:absolute; bottom:8px; inset-inline-end:8px; z-index:2; font-size:11px; font-weight:700; color:#fff; background:rgba(0,0,0,.6); border-radius:6px; padding:1px 7px; direction:ltr; }
+.fresh-play{ position:absolute; z-index:2; top:50%; left:50%; transform:translate(-50%,-50%) scale(.85); width:44px; height:44px; border-radius:50%; background:rgba(255,90,67,.92); color:#fff; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .25s ease, transform .3s cubic-bezier(0.34,1.56,0.64,1); }
+.fresh-card:hover .fresh-play{ opacity:1; transform:translate(-50%,-50%) scale(1); }
+.fresh-body{ padding:12px 14px 12px; display:flex; flex-direction:column; flex:1; }
+.fresh-body .kind-badge, .fresh-body .cat{ margin-bottom:6px; }
+.fresh-body h3{ font-size:14.5px; font-weight:700; line-height:1.5; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; transition:color .2s ease; }
+.fresh-card:hover .fresh-body h3{ color:var(--coral); }
+.fresh-meta{ margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:11.5px; color:var(--muted); }
+.fresh-ago{ display:inline-flex; align-items:center; gap:4px; font-weight:700; }
+.fresh-left{ font-weight:700; color:var(--coral); }
+.fresh-life{ height:3px; border-radius:3px; background:var(--line); margin-top:8px; overflow:hidden; }
+.fresh-life i{ display:block; height:100%; border-radius:3px; background:linear-gradient(90deg,var(--gold),var(--coral)); }
+.show-thumb .fresh-tag{ position:absolute; }
+@media (max-width:1024px){ .fresh-rail{ grid-auto-columns:calc((100% - 2*16px)/3); } }
+@media (max-width:768px){
+  #fresh{ padding:18px 16px 10px; }
+  .fresh-panel{ padding:16px 14px 14px; border-radius:18px; }
+  .fresh-nav{ display:none; }
+  .fresh-sub{ width:100%; font-size:12.5px; margin-top:-6px; }
+  .fresh-rail{ grid-auto-columns:72%; gap:12px; }
+}
+@media (prefers-reduced-motion:reduce){ .fresh-live::after, .fresh-ribbon::after, .fresh-tag::after{ animation:none; } }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
 <link rel="stylesheet" href="/assets/features.css?v=20261005g">
@@ -1384,6 +1433,34 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </section>
 {% endif %}
 
+{% set freshItems = collections.freshContent %}
+{% if freshItems and freshItems.length > 0 %}
+<section class="content" id="fresh" aria-label="جديد">
+<div class="wrap">
+<div class="fresh-panel">
+<div class="fresh-head">
+<div class="fresh-title"><span class="fresh-live" aria-hidden="true"></span><h2>جديد</h2><span class="fresh-count" id="freshCount">{{ freshItems.length }}</span></div>
+<p class="fresh-sub">كل ما نزل على الموقع خلال آخر 12 ساعة</p>
+<div class="fresh-nav"><button type="button" data-dir="1" aria-label="السابق"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button><button type="button" data-dir="-1" aria-label="التالي"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button></div>
+</div>
+<div class="fresh-rail" id="freshRail">
+{% for item in freshItems %}
+<a class="fresh-card" href="{{ item.url | cleanUrl }}" data-fresh-ts="{{ item.ts }}">
+<div class="fresh-thumb" style="background-image:url('{% optImg item.image, '/content/images/jtct9rkqmcshcyh6.jpg' %}')"><span class="fresh-ribbon">جديد</span><span class="fresh-play"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></span>{% if item.duration %}<span class="fresh-dur">{{ item.duration }}</span>{% endif %}</div>
+<div class="fresh-body">
+<div><span class="kind-badge {% if item.kind == 'recap' %}kind-recap{% elif item.kind == 'nostalgia' %}kind-series{% elif item.kindLabel == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ item.kindLabel }}</span>{% if item.federation %}<span class="cat cat-{{ item.federation | lower }}">{{ item.federation }}</span>{% endif %}</div>
+<h3>{{ item.title }}</h3>
+<div class="fresh-meta"><span class="fresh-ago" data-fresh-ago></span><span class="fresh-left" data-fresh-left></span></div>
+<div class="fresh-life" aria-hidden="true"><i data-fresh-life></i></div>
+</div>
+</a>
+{% endfor %}
+</div>
+</div>
+</div>
+</section>
+{% endif %}
+
 <section class="content" id="feds">
 <div class="wrap">
 <div class="section-head reveal">
@@ -1419,7 +1496,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 {% if not isNostalgia and showCount < 8 %}
 {% set showCount = showCount + 1 %}
 <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
-<div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+<div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}')">{% set fts = item | freshTs %}{% if fts %}<span class="fresh-tag" data-fresh-ts="{{ fts }}">جديد</span>{% endif %}<div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
 <div class="show-body">
 <span class="kind-badge {% if item.data.show_type == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ item.data.show_type or "عرض" }}</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
 <h3>{{ item.data.headline or item.data.title }}</h3>
@@ -1448,7 +1525,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 {% if not isNostalgia and recapCount < 8 %}
 {% set recapCount = recapCount + 1 %}
 <a class="show-card reveal" href="{{ item.url | cleanUrl }}">
-<div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1715149721511-8e48fc0cb2f4?w=800&auto=format&fit=crop' %}')"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
+<div class="show-thumb" style="background-image:url('{% optImg item.data.image, 'https://images.unsplash.com/photo-1715149721511-8e48fc0cb2f4?w=800&auto=format&fit=crop' %}')">{% set fts = item | freshTs %}{% if fts %}<span class="fresh-tag" data-fresh-ts="{{ fts }}">جديد</span>{% endif %}<div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
 <div class="show-body">
 <span class="kind-badge kind-recap">ملخص</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
 <h3>{{ item.data.headline or item.data.title }}</h3>
@@ -1550,6 +1627,61 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 </div>
 © 2026 عرب راسلنج — موقع عربي مستقل غير تابع لأي اتحاد رسمي.
 </footer>
+<script>
+/* «جديد»: a card lives 12 hours from its publish time. The page is static (and may be served from cache),
+   so the browser drops expired cards itself, keeps the "منذ…" / "يختفي بعد…" text current, and hides
+   the section once nothing is left. */
+(function(){
+var WINDOW = 12 * 3600 * 1000;
+function ar(n, one, two, few, many){ return n === 1 ? one : n === 2 ? two : (n % 100 >= 3 && n % 100 <= 10) ? n + ' ' + few : n + ' ' + many; }
+function span(ms){
+  var m = Math.max(1, Math.floor(ms / 60000));
+  if (m < 60) return ar(m, 'دقيقة', 'دقيقتين', 'دقائق', 'دقيقة');
+  return ar(Math.floor(m / 60), 'ساعة', 'ساعتين', 'ساعات', 'ساعة');
+}
+function tick(){
+  var now = Date.now();
+  document.querySelectorAll('[data-fresh-ts]').forEach(function(el){
+    var age = now - Number(el.getAttribute('data-fresh-ts'));
+    if (!(age < WINDOW)) { el.remove(); return; }
+    var ago = el.querySelector('[data-fresh-ago]'), left = el.querySelector('[data-fresh-left]'), life = el.querySelector('[data-fresh-life]');
+    if (ago) ago.textContent = age < 60000 ? 'الآن' : 'منذ ' + span(age);
+    if (left) left.textContent = 'يختفي بعد ' + span(WINDOW - age);
+    if (life) life.style.width = Math.max(4, 100 - age / WINDOW * 100) + '%';
+  });
+  var rail = document.getElementById('freshRail');
+  if (!rail) return;
+  var n = rail.querySelectorAll('.fresh-card').length;
+  if (!n) { var sec = document.getElementById('fresh'); if (sec) sec.remove(); return; }
+  var c = document.getElementById('freshCount'); if (c) c.textContent = n;
+  navState();
+}
+function navState(){
+  var rail = document.getElementById('freshRail'); if (!rail) return;
+  var max = rail.scrollWidth - rail.clientWidth, x = Math.abs(rail.scrollLeft);
+  document.querySelectorAll('#fresh .fresh-nav button').forEach(function(b){
+    b.disabled = max <= 2 || (b.getAttribute('data-dir') === '1' ? x <= 2 : x >= max - 2);
+  });
+  var nav = document.querySelector('#fresh .fresh-nav'); if (nav) nav.style.visibility = max <= 2 ? 'hidden' : '';
+}
+var rail = document.getElementById('freshRail');
+if (rail) {
+  rail.addEventListener('scroll', navState, { passive: true });
+  window.addEventListener('resize', navState);
+  document.querySelectorAll('#fresh .fresh-nav button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var card = rail.querySelector('.fresh-card');
+      var step = card ? card.getBoundingClientRect().width + 16 : rail.clientWidth * 0.8;
+      /* RTL: «التالي» (data-dir -1) scrolls toward the end, which is negative scrollLeft */
+      rail.scrollBy({ left: Number(b.getAttribute('data-dir')) * step, behavior: 'smooth' });
+    });
+  });
+}
+tick();
+setInterval(tick, 60000);
+document.addEventListener('visibilitychange', function(){ if (!document.hidden) tick(); });
+})();
+</script>
 <script>
 if('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
