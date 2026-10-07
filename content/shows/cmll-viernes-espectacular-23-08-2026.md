@@ -1,9 +1,9 @@
 ---
 federation: INDIE
 title: CMLL Viernes Espectacular 23.08.2026
-headline: عرض سي ام ال ال 23.08.2026 مترجم
-program_name: CMLL
-description: عرض سي ام ال ال مترجم بالكامل مع جميع النزالات والأحداث.
+headline: عرض سي ام ال ال فيرنس اسبكتكيولار 23.08.2026 مترجم
+program_name: CMLL Viernes Espectacular
+description: عرض سي ام ال ال فيرنس اسبكتكيولار مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-08-23
 date: 2026-08-25T04:30:00.000+03:00
 layout: post-layout.njk
