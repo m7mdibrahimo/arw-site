@@ -3007,6 +3007,11 @@ test('«move through space as a human being» is not outer space (INCIDENTS #341
   assert.equal(applyCorrections('كان له تأثير كبير على طريقة تحركي في الفضاء كإنسان'), 'كان له تأثير كبير على طريقة تعاملي مع العالم من حولي كإنسان');
 });
 
+test('Madusa story: Lone Pine, Blackwater and the three-time title (INCIDENTS #342)', () => {
+  assert.equal(applyCorrections('شركة لونه باين برودكشنز إلى نزل بليكووتر'), 'شركة لون باين برودكشنز إلى نزل بلاك ووتر');
+  assert.match(buildNamesGlossaryHint('Madusa, the former Alundra Blayze'), /Madusa = مادوسا/);
+});
+
 test('«locking the Forbidden Door» is a metaphor, and Sunil Singh is in the names dictionary (INCIDENTS #334)', () => {
   assert.equal(applyCorrections('على بعد خطوة واحدة من إغلاق عرض Forbidden Door وإنهاء اتحاد NJPW'), 'على بعد خطوة واحدة من إقفال «الباب المحرم» وإنهاء اتحاد NJPW');
   assert.equal(applyCorrections('في عرض Forbidden Door المقبل'), 'في عرض Forbidden Door المقبل');
