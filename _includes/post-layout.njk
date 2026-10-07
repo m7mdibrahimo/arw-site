@@ -196,7 +196,6 @@
 {% set isShow = (page.inputPath and ("content/shows" in page.inputPath or "content/nostalgia" in page.inputPath)) %}
 {% set isRecap = (page.inputPath and "content/recaps" in page.inputPath) %}
 
-{% if isNews %}
 <div class="hero" id="top"{% if image %} style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg image, '' %}') center 30%/cover no-repeat;"{% endif %}>
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
@@ -228,45 +227,6 @@
     </h1>
   </div>
 </div>
-{% else %}
-{#- Show / recap / nostalgia pages: one framed title card over the cover — type and federation, the title with
-    its date, the English name, then the length and «حفظ للمشاهدة لاحقاً» (owner, 2026-10-07: the old big centred
-    title, the same title again under it and the loose badges looked unfinished on a phone) -#}
-<div class="hero watch-hero" id="top"{% if image %} style="background: linear-gradient(180deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.8) 60%, var(--bg) 100%), url('{% optImg image, '' %}') center 30%/cover no-repeat;"{% endif %}>
-  <div class="hero-inner">
-    <div class="wh-card">
-      <div class="wh-chips">
-        <span class="wh-chip wh-kind">{% if isNostalgiaItem %}نوستالجيا{% elif isRecap %}ملخص{% elif show_type and show_type != 'عرض كامل' %}{{ show_type }}{% else %}عرض{% endif %}</span>
-        {% if federation %}<a class="wh-chip post-fed cat-{{ federation | lower }}" href="/federation/{{ federation | lower }}/">{{ federation }}</a>{% endif %}
-        <span class="wh-chip wh-sub">مترجم بالعربية</span>
-      </div>
-      <h1 class="hero-title wh-title">
-        {% if headline %}
-          {{ headline | arabicShowName | stripDate }}
-        {% elif title %}
-          {% if "عرض" in title or "تغطية" in title or "ملخص" in title or "برنامج" in title or "مسلسل" in title %}
-            {{ title | arabicShowName | stripDate }}
-          {% else %}
-            {{ show_type or "عرض" }} {{ title | arabicShowName | stripDate }} مترجم
-          {% endif %}
-        {% else %}
-          عروض المصارعة المترجمة
-        {% endif %}
-        {% if event_date or date %}<span class="u">بتاريخ {{ (event_date or date) | date }}</span>{% endif %}
-      </h1>
-      {% if title and headline and title != headline %}<p class="wh-en" dir="ltr" lang="en">{{ title }}</p>{% endif %}
-      <div class="wh-foot">
-        {% if duration %}<span class="wh-dur"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span dir="ltr">{{ duration }}</span></span>{% endif %}
-        <button type="button" class="post-bookmark-btn" id="arwPostBookmarkBtn" data-url="{{ page.url }}" data-title="{% if isNews %}{{ title | escape }}{% else %}{{ (headline or title) | escape }}{% endif %}" data-image="{% optImg image, '' %}" data-kind="{{ kind }}" data-kindlabel="{% if kind == 'show' %}عرض{% elif kind == 'recap' %}ملخص{% else %}خبر{% endif %}" data-fed="{{ federation or '' }}">
-          <svg class="bm-icon-empty" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-          <svg class="bm-icon-filled" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-          <span class="bm-btn-text">حفظ للمشاهدة لاحقاً</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-{% endif %}
 
 {% set shareUrl = "https://arab-wrestling.com" + page.url %}
 {% set shareTitle = (title if isNews else (headline or title)) %}
@@ -299,7 +259,6 @@
     </nav>
     {# one BreadcrumbList only: the one in <head> has the whole path (INCIDENTS #286) #}
     {% endif %}
-    {% if isNews %}
     <div class="post-meta-bar">
       {% if isShow and not isNostalgiaItem %}<span class="post-type-badge {% if show_type == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ "عرض" if (show_type == 'عرض كامل' or not show_type) else show_type }}</span>{% endif %}
       {% if federation %}<span class="post-fed cat-{{ federation | lower }}">{{ federation }}</span>{% endif %}
@@ -315,10 +274,8 @@
         </button>
       </div>
     </div>
-    {% endif %}
     {% if not isNews %}
-    {#- the title card says it already; this line is for a phone held sideways, where the cover is hidden -#}
-    <h2 class="watch-title">{{ headline or title }}</h2>
+    <h2>{{ headline or title }}</h2>
     {% endif %}
 
     {% if image and isNews %}
