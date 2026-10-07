@@ -2405,6 +2405,28 @@ export function missingResults(sourceText: string, body: string): string[] {
 }
 
 /**
+ * Glossary names the source's results carry that the Arabic report never writes. NJPW 7 Oct: the
+ * main event «YOH def. Robbie X» came out «ضد روبي إيغلز» — the model swapped in the other Robbie
+ * from the next line (INCIDENTS #335). Returns the source spellings missing from the body.
+ */
+export function sourceNamesMissing(sourceText: string, body: string): string[] {
+  const src = String(sourceText || "").replace(/[‘’ʼ]/g, "'");
+  const text = String(body || "");
+  const found: string[] = [];
+  for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
+    if (!english || !arabic || english === arabic || FEDERATION_OR_SHOW_NAME.test(english.trim())) continue;
+    if (!/[ء-ي]/.test(arabic)) continue;
+    try {
+      const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "iu").test(src)) found.push(english);
+    } catch {}
+  }
+  // «Robbie» alone is part of «Robbie Eagles» — only whole names count
+  const names = found.filter(n => !found.some(o => o !== n && o.length > n.length && new RegExp(`(?<!\\p{L})${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?!\\p{L})`, "iu").test(o)));
+  return names.filter(n => !text.includes(WRESTLER_NAMES_MAP[n]));
+}
+
+/**
  * «نتائج عرض WWE SmackDown (3 أكتوبر 2026)» for the 2 October show: the live report's later passes
  * dated it by the UTC day (INCIDENTS #249). When the source names the show's date («october-2-2026»,
  * «(10/2)», «October 2, 2026»), the «(D شهر YYYY)» in the Arabic title follows it.
@@ -4231,6 +4253,9 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // Alexander def. Ricky Sosa» (INCIDENTS #221). The copy editor gets the source lines to add.
   const missing = missingResults(plainText, draft.body);
   if (missing.length) preIssues.push({ code: "missing_result", severity: "error", field: "body", message: `تقرير النتائج ناقصه ${missing.length} نتيجة من المصدر — أضفها بنفس الشكل`, excerpt: missing.join(" | ") });
+  // A results report names everyone the source names — a missing one usually means a swapped name.
+  const droppedNames = isShowResultsArticle(rawTitle, plainText) ? sourceNamesMissing(plainText, draft.body) : [];
+  if (droppedNames.length) preIssues.push({ code: "name_missing", severity: "error", field: "body", message: `أسماء في نتائج المصدر غير موجودة في التقرير — تأكد أن كل نزال بأسماء مصارعيه الصحيحة كما في المصدر ولم يُستبدل اسم بآخر`, excerpt: droppedNames.map(n => `${n} = ${WRESTLER_NAMES_MAP[n]}`).join(" | ") });
   // The copy editor is part of publishing, not optional: an unreviewed article
   // went out with 5 obvious mistakes when one call failed (2026-09-26). Retry
   // once; if it still doesn't answer, wait for the next run (manual publishes

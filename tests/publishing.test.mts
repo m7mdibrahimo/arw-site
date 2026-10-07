@@ -2771,6 +2771,14 @@ test('Agent Zero and Jessie McKay have one spelling (INCIDENTS #220)', () => {
   assert.match(buildNamesGlossaryHint('Agent Zero and Jessie McKay'), /Agent Zero = إيجنت زيرو/);
 });
 
+test('a results report writes every name its source names — no swapped Robbie (INCIDENTS #335)', async () => {
+  const { sourceNamesMissing } = await import('../scripts/fightful-watcher');
+  const src = 'TMDK (Kosei Fujita, Robbie Eagles & Hartley Jackson) def. Aaron Wolf. IWGP Junior Heavyweight Championship: YOH (c) def. Robbie X to retain the title.';
+  assert.equal(sourceNamesMissing(src, 'تغلب روبي إيغلز. دافع يوه عن لقبه ضد روبي إيغلز.').includes('Robbie X'), true);
+  assert.equal(sourceNamesMissing(src, 'تغلب روبي إيغلز. دافع يوه عن لقبه ضد روبي إكس.').includes('Robbie X'), false);
+  assert.equal(sourceNamesMissing(src, 'تغلب روبي إيغلز.').includes('Robbie Eagles'), false);
+});
+
 test('a results report lists every source result; a match heading never carries the outcome (INCIDENTS #221)', async () => {
   const { missingResults } = await import('../scripts/fightful-watcher');
   const src = 'Results below. BDE def. Mr Elegance Leon Slater def. Joe Alonzo Cedric Alexander def. Ricky Sosa';
