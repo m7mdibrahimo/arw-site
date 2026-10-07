@@ -335,6 +335,11 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 .eyebrow{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg, rgba(255,255,255,.12), rgba(255,255,255,.28), rgba(255,255,255,.12)); background-size:200% 100%; animation:shimmer 4s infinite linear, floatSlow 3s ease-in-out infinite; color:#fff; backdrop-filter:blur(6px); font-weight:700; font-size:13px; padding:8px 18px; border-radius:999px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
 .hero h1{ font-size:clamp(38px,6.4vw,68px); font-weight:900; line-height:1.18; margin-bottom:22px; letter-spacing:-.5px; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.4); }
 .hero h1 .u{ color:var(--gold); }
+/* the home title on exactly two lines (owner, 2026-10-07): «مصارعة حرة من جميع» / «الاتحادات، في مكان واحد», each
+   line kept whole and the size following the screen's width so the longer line always fits */
+.hero h1.home-h1{ font-size:clamp(25px,5.4vw,62px) !important; max-width:none; }
+.hero h1.home-h1 .h1-line{ display:block; white-space:nowrap; }
+.hero h1.home-h1 .u{ display:inline !important; font-size:1em !important; margin:0 !important; }
 .hero p{ color:rgba(255,255,255,.88); font-size:17.5px; max-width:540px; margin:0 auto 32px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
 .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
 .btn{ padding:14px 28px; border-radius:12px; font-weight:700; font-size:15px; text-decoration:none; display:inline-block; transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1); }
@@ -1289,7 +1294,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <div class="hero" id="top" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg') center 30%/cover no-repeat;">
 <div class="hero-inner">
 <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
-<h1>مصارعة حرة من جميع الاتحادات، <span class="u">في مكان واحد</span></h1>
+<h1 class="home-h1"><span class="h1-line">مصارعة حرة من جميع</span> <span class="h1-line">الاتحادات، <span class="u">في مكان واحد</span></span></h1>
 <p>عروض مصارعة حرة مترجمة، ملخصات العروض، وآخر أخبار المصارعة.</p>
 </div>
 </div>

@@ -37,5 +37,6 @@ html[dir="ltr"] svg.i18n-flip { transform: scaleX(-1); }
 
 /* the header search: Inter is wider than the Arabic face, and the box's input pushed its button out over «Home» */
 html[lang="en"] .site-search input { min-width: 0; width: 100%; text-overflow: ellipsis; }
-/* the home title's «all in one place» stays in one piece on a phone */
-html[lang="en"] .hero h1 .u { white-space: nowrap; }
+/* the home title's two lines (index.njk .home-h1): the English words are longer, so a size that keeps the longer
+   line inside the page at every width */
+html[lang="en"] .hero h1.home-h1 { font-size: clamp(22px, 4.6vw, 54px) !important; }
