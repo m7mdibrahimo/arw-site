@@ -1186,17 +1186,16 @@ module.exports = function(eleventyConfig) {
 
       // Tour programs (NJPW): one tab per tour on the show page — the «Road To» shows in date order, then the big
       // event they built to, whose pill carries its name — instead of a «2026» tab and an «عروض متفرقة» one (INCIDENTS #309)
-      if (isTourProgram(prog.slug) && !prog.isNostalgia) {
+      if (TOUR_PROGRAMS.indexOf(prog.slug) !== -1 && !prog.isNostalgia) {
         const ordered = [];
-        prog.seasons = tourGroups(prog.episodes, TOUR_PREFIX.njpw).reverse().map(function(t, i) {
+        prog.seasons = tourGroups(prog.episodes, TOUR_PREFIX[prog.slug] || "").reverse().map(function(t, i) {
           const list = t.shows.slice().reverse().concat(t.main ? [t.main] : []);
           list.forEach(function(ep) {
             ep.groupKey = i; ep.groupType = "tour"; ep.isTourMain = ep === t.main;
-            // its nights by number, the big event by its English name (owner, 2026-10-06)
-            ep.pillLabel = ep.isTourMain ? t.nameEnShort : (t.nightOf(ep) || ep.shortDate);
+            if (ep.isTourMain) ep.pillLabel = t.name;
             ordered.push(ep);
           });
-          return { number: i, type: "tour", label: t.nameEn, episodes: list };
+          return { number: i, type: "tour", label: t.name, episodes: list };
         });
         prog.episodes = ordered;
         prog.mode = "recurring";
@@ -1214,8 +1213,7 @@ module.exports = function(eleventyConfig) {
   // own section and are left out; scheduled (future) shows are not listed yet.
   // Programs whose shows come as tours, not a weekly show (owner, 2026-10-06): NJPW runs «Road To X» nights that
   // build to one big event X, and multi-night events like the G1. Their library page shows one group per tour.
-  // a tour's program («NJPW Destruction in Kobe 2026», lib/tours.cjs) — and the plain «NJPW» an unsorted show keeps
-  const isTourProgram = function(slug) { return /^njpw(-|$)/.test(String(slug || "")); };
+  const TOUR_PROGRAMS = ["njpw"];
   const TOUR_PREFIX = { njpw: "عرض ان جيه بي دبليو" };
   const { tourGroups } = require("./lib/tours.cjs");
   const buildLibrary = function(collectionApi) {
@@ -1283,9 +1281,8 @@ module.exports = function(eleventyConfig) {
           "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
         };
-        const tours = isTourProgram(p.slug) ? tourGroups(shows, TOUR_PREFIX.njpw) : null;
-        // a tour's section goes by its English event name («NJPW Destruction in Kobe 2026»), not an Arabic one
-        return { slug: p.slug, name: p.name, tours: tours, aliases: ALIASES[p.slug] || [], arName: !tours && /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: tours ? "" : arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+        const tours = TOUR_PROGRAMS.indexOf(p.slug) !== -1 ? tourGroups(shows, AR_NAMES[p.slug] || arName) : null;
+        return { slug: p.slug, name: p.name, tours: tours, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
@@ -1337,7 +1334,7 @@ module.exports = function(eleventyConfig) {
     if (ep.isNostalgia || ep.groupType === "nostalgia") {
       return (ep.headline || ep.title || "").replace(/\s*\(نوستالجيا\)\s*/g, "");
     }
-    if (ep.groupType === "annual" || ep.groupType === "tour") return ep.pillLabel || ep.headline || ep.title || "";
+    if (ep.groupType === "annual") return ep.pillLabel || ep.headline || ep.title || "";
     const noun = mode === "series" ? "الحلقة " : "العرض ";
     if (ep.episodeLabel !== null && ep.episodeLabel !== undefined) return noun + ep.episodeLabel;
     if (ep.shortDate) return ep.shortDate;

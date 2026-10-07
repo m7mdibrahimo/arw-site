@@ -422,13 +422,11 @@ eleventyComputed:
 {#- NJPW and the like: one group per tour — the big event with the «Road To» shows that built to it, a multi-night
     event's nights together (owner, 2026-10-06) -#}
 {% for tour in lp.prog.tours %}
-<section class="tour reveal" aria-label="{{ tour.nameEn }}">
-  {% if lp.prog.tours.length > 1 %}
+<section class="tour reveal" aria-label="{{ tour.name }}">
   <header class="tour-head">
-    <h3><bdi>{{ tour.nameEn }}</bdi></h3>
+    <h3>{{ tour.name }}</h3>
     <p>{{ tour.range }} · {{ tour.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</p>
   </header>
-  {% endif %}
   <div class="grid-12">
     {% for c in tour.cards %}
 <a class="show-card reveal{% if c.tag %} in-tour{% endif %}" href="{{ c.item.url | cleanUrl }}">
