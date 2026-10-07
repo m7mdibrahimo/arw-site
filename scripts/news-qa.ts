@@ -644,7 +644,7 @@ export function autoFix(text: string): string {
     .replace(/(^|[\s(«"])([لب])\s+(?=[*«"]?[A-Za-z0-9"«])/gm, "$1$2ـ ")
     .replace(new RegExp(`(?<=[${AR}.،!؟"»)*]\\s)و\\s+(?=[${AR}])`, "g"), "و")
     // "مؤقـتا" / "رسميـا" → "مؤقتا" / "رسميا": a tatweel inside a word is debris; only a joined
-    // prefix keeps it («بـ» / «لـ» / «الـ» / «وبـ»…) (INCIDENTS #317)
+    // prefix keeps it («بـ» / «لـ» / «الـ» / «وبـ»…) (INCIDENTS #318)
     .replace(new RegExp(`(?<![${AR}])([${AR}]+)ـ(?=[${AR}])`, "g"), (m, w) => TATWEEL_PREFIXES.has(w) ? m : w)
     // "عرض MLP عرض MLP" → "عرض MLP"
     .replace(/(?<!\S)(\S+\s+\S+)(?:\s+\1)+(?!\S)/g, (m, phrase) => new RegExp(`[${AR}]`).test(phrase) ? phrase : m)

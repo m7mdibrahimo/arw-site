@@ -119,8 +119,9 @@ export default {
 
     // 2. the repo, copied into R2 for next time
     const src = `${env.REPO_RAW.replace(/\/$/, "")}/${key.split("/").map(encodeURIComponent).join("/")}`;
-    // cached at the edge for a day: until R2 is on, this is the only source (names are unique per upload)
-    const res = await fetch(src, { cf: { cacheTtl: 86400, cacheEverything: true } });
+    // never kept at the edge: the repo holds only what R2 refused (INCIDENTS #313), and a day-long copy of a reel the
+    // repo no longer had put every deleted reel back into R2 the next time anyone opened it
+    const res = await fetch(src, { cache: "no-store" });
     if (!res.ok) return new Response("Not found", { status: 404, headers: { "Cache-Control": "public, max-age=60" } });
     const buf = await res.arrayBuffer();
     if (env.MEDIA) ctx.waitUntil(env.MEDIA.put(key, buf, { httpMetadata: { contentType: typeOf(key), cacheControl: CACHE } }));

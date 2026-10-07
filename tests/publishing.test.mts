@@ -3533,6 +3533,8 @@ test('the site builds from a «site» branch without the original pictures and r
   assert.match(fs.readFileSync('scripts/media-store.ts', 'utf-8'), /workers\.dev/);
   assert.match(toml, /^\[triggers\]\ncrons = \["17 3 \* \* \*"\]/m);
   const src = fs.readFileSync('media-worker/src/index.ts', 'utf-8');
+  // the repo fallback is never cached at the edge: a cached copy refilled R2 with every deleted reel (INCIDENTS #313)
+  assert.ok(!/cacheTtl: 86400/.test(src) && /fetch\(src, \{ cache: "no-store" \}\)/.test(src));
   // uploads only with a GitHub token that can write to the repo; reels leave R2 after 30 days (free tier for good)
   assert.match(src, /collaborators\?per_page=1/);
   assert.match(src, /export const REEL_DAYS = 30;/);
@@ -3616,7 +3618,7 @@ test('a reel posted on Facebook and Instagram leaves R2; one still being posted 
   for (const f of ['media-cleanup', 'show-reel-monitor']) assert.match(fs.readFileSync(`.github/workflows/${f}.yml`, 'utf-8'), /^  contents: write/m, f);
 });
 
-test('a stray tatweel inside a word is removed, joined prefixes keep it; «وون» and «اسطوانات» fixed (INCIDENTS #317)', async () => {
+test('a stray tatweel inside a word is removed, joined prefixes keep it; «وون» and «اسطوانات» fixed (INCIDENTS #318)', async () => {
   const { autoFix, applyCorrections } = await import('../scripts/news-qa');
   assert.equal(autoFix('أبعده مؤقـتا عن الشاشة ولم يعلن رسميـا عن عودته'), 'أبعده مؤقتا عن الشاشة ولم يعلن رسميا عن عودته');
   assert.equal(autoFix('أشاد بـرومان رينز ولـسامي زين وبـكودي'), 'أشاد بـرومان رينز ولـسامي زين وبـكودي');
