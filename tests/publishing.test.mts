@@ -3006,6 +3006,11 @@ test('MVP\'s WWE group is the Hurt Business, plus «ألمهحه» and «ووز�
   assert.match(buildNamesGlossaryHint('Knockout Brothers (OSKAR & Yuto-Ice) & Jeff Cobb'), /Knockout Brothers = نوكآوت براذرز/);
 });
 
+test('Dominik story: imperative «ودع» mid-sentence and «الاصطدام به في عمود الحلبة» (INCIDENTS #337)', () => {
+  assert.equal(applyCorrections('لم يتلق أي توجيهات سوى الجلوس ودع ليسنر يقوم بالباقي'), 'لم يتلق أي توجيهات سوى أن يجلس ويترك ليسنر يقوم بالباقي');
+  assert.equal(applyCorrections('رميه حول الحلبة والاصطدام به في عمود الحلبة'), 'رميه حول الحلبة وضربه بعمود الحلبة');
+});
+
 test('Blake Monroe is «بليك مونرو» (INCIDENTS #255)', () => {
   assert.equal(applyCorrections('نجحت بلاك مونرو في تقديم نزال قوي'), 'نجحت بليك مونرو في تقديم نزال قوي');
   assert.match(buildNamesGlossaryHint('Blake Monroe defeats Giulia'), /Blake Monroe = بليك مونرو/);
