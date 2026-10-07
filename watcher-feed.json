@@ -1,5 +1,15 @@
 [
   {
+    "id": 332645,
+    "link": "https://www.fightful.com/wrestling/john-cena-to-star-in-the-family-disappears/",
+    "date": "2026-10-07T15:49:18",
+    "date_gmt": "2026-10-07T19:49:18",
+    "title": {
+      "rendered": "John Cena To Star In &#8216;The Family Disappears&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/17174510/Screenshot-248-e1781732721555.png"
+  },
+  {
     "id": 332643,
     "link": "https://www.fightful.com/wrestling/cody-rhodes-i-just-re-signed-with-wwe-ill-end-my-wrestling-career-there/",
     "date": "2026-10-07T14:42:56",
@@ -288,15 +298,5 @@
       "rendered": "Will Ospreay To Enter Clockwork Carnage Match As AEW Champion At AEW WrestleDream"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/06221143/HT_jc_eXkAAklDS.jpeg"
-  },
-  {
-    "id": 332546,
-    "link": "https://www.fightful.com/wrestling/young-bucks-title-bout-more-set-for-aew-collision-grand-slam-france/",
-    "date": "2026-10-06T22:10:54",
-    "date_gmt": "2026-10-07T02:10:54",
-    "title": {
-      "rendered": "Young Bucks Title Bout, More Set For AEW Collision Grand Slam France"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/06220952/HT_aoi4W8AAv8ui.jpeg"
   }
 ]
