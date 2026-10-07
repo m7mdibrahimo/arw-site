@@ -3175,16 +3175,14 @@
     "publishedAt": 1791384055510,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 02.10.2026 مترجم",
-    "lastAttempt": 1791387110495,
+    "lastAttempt": 1791388045926,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
