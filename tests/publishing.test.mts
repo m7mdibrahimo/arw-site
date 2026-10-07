@@ -2063,6 +2063,15 @@ test('RVD is written «آر في دي» with the madda everywhere (INCIDENTS #32
   assert.equal(applyCorrections('آر في دي'), 'آر في دي');
 });
 
+test('Raquel Rodriguez and Aalyah Gutierrez have one spelling each (INCIDENTS #331)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('وراككيل رودريغيز وروكسان بيريز'), 'وراكيل رودريغيز وروكسان بيريز');
+  assert.equal(applyCorrections('انضمام أليا غوتيريز إلى مركز الأداء'), 'انضمام ألياه غوتييرز إلى مركز الأداء');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Raquel Rodriguez'], 'راكيل رودريغيز');
+  assert.equal(names['Aalyah Gutierrez'], 'ألياه غوتييرز');
+});
+
 test('a story about someone the matched story never mentions is published whatever the same-story check says (INCIDENTS #150)', async () => {
   const { newSubject } = await import('../scripts/editorial');
   const rock = { title: 'ذا روك يشيد بـ باك', body: 'تحدث النجم ذا روك عن باك بعد وفاته.', tags: ['AEW', 'ذا روك', 'باك'] };
