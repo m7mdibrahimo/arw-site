@@ -3157,5 +3157,22 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "mediaDeleted": true
+  },
+  "20261007170809-njpw-road-to-king-of-pro-wrestling-06-10-2026": {
+    "publishedAt": 1791383148291,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو رود تو كينج اوف برو ريسلنج 06.10.2026 مترجم",
+    "lastAttempt": 1791383199808,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
