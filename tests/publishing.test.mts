@@ -2978,7 +2978,7 @@ test('filler «تخوض خطواتها القادمة» instead of a sourced fac
   assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'خاضت داكوتا كاي آخر نزالاتها في أبريل الماضي وهي تفكر في الخطوة القادمة بهدوء.', []).some(i => i.code === 'vague_filler'));
 });
 
-test('scrubbed reporter left as «تقارير صحفية أنه تحرى» is flagged (INCIDENTS #332)', async () => {
+test('scrubbed reporter left as «تقارير صحفية أنه تحرى» is flagged (INCIDENTS #333)', async () => {
   const { checkArticle } = await import('../scripts/news-qa');
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'وخلال جلسة أسئلة وأجوبة، أكدت تقارير صحفية مطلعة أنه تحرى عن وضع هوليداي ليخلص إلى أن الانتقال لن يحدث.', []).some(i => i.code === 'scrubbed_reporter_pronoun'));
   assert.ok(!checkArticle('عنوان عربي كامل للخبر هنا', 'وبحسب تقارير صحفية مطلعة، فإن انتقال هوليداي إلى WWE لن يحدث في الوقت الحالي.', []).some(i => i.code === 'scrubbed_reporter_pronoun'));
