@@ -6,7 +6,7 @@
 // as-is — see wrestlinginc-watcher.ts for how each of those works).
 import fs from "fs";
 import path from "path";
-import { newsBotsPaused, processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted, lastPostShouldRetry } from "./fightful-watcher";
+import { newsBotsPaused, processPost, deduplicateNewsFiles, findKnownArabicNames, geminiQuotaExhausted, lastPostShouldRetry, englishCatchUp } from "./fightful-watcher";
 
 if (fs.existsSync(".env")) {
   try {
@@ -262,6 +262,7 @@ export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPer
   state.lastChecked = new Date().toISOString();
   saveState(state);
   deduplicateNewsFiles();
+  if (!options.dryRun) await englishCatchUp(); // English editions an earlier run could not write (INCIDENTS #354)
   console.log(`[RSN Watcher] Done. Published ${processedCount} new article(s).`);
 }
 

@@ -100,3 +100,125 @@ test('the dictionary is English, and the scripts keep what they compute with', (
   for (const [ar, en] of Object.entries(dict.ui) as [string, string][]) assert.doesNotMatch(String(en), AR, ar);
   assert.equal(mirror.trJs("var a='ا', d='٠١٢٣٤٥٦٧٨٩', t='جاري البحث...', u='/search-index.json';", tr), "var a='ا', d='٠١٢٣٤٥٦٧٨٩', t='Searching…', u='/en/search-index.json';");
 });
+
+// English news (INCIDENTS #354): new stories get an English edition from the English source; the English site lists
+// them, and an Arabic story with one points to it.
+const card = (href: string, title: string, fed = 'WWE') => `<a class="news-card reveal" href="${href}"><div class="news-thumb"><img class="thumb-img" src="/x.jpg" alt="${title}"></div><div class="news-body"><span class="kind-badge kind-news">خبر</span><span class="cat cat-${fed.toLowerCase()}">${fed}</span><h3>${title}</h3><span class="date">07 أكتوبر</span></div></a>`;
+const pager = '<nav class="pagination-nav" aria-label="تصفح الصفحات"><div class="pagination-wrap"><span class="page-link prev disabled" aria-disabled="true"><span>السابق</span></span><div class="page-numbers"><span class="page-link active" aria-current="page">1</span><a href="/news/2/" class="page-link">2</a></div><a href="/news/2/" class="page-link next" aria-label="الصفحة التالية"><span>التالي</span></a></div></nav>';
+
+test('English news: the list, the story, the cards and the language buttons', () => {
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-news-'));
+  const put = (u: string, html: string) => { fs.mkdirSync(path.join(site, u), { recursive: true }); fs.writeFileSync(path.join(site, u, 'index.html'), html); };
+  put('', page('عرب راسلنج', `<div class="grid-12">${card('/news/خبر-أ/', 'خبر أ')}${card('/news/خبر-ب/', 'خبر ب', 'AEW')}</div>`));
+  put('news', page('الأخبار', `<div class="grid-12">${card('/news/خبر-أ/', 'خبر أ')}${card('/news/خبر-ب/', 'خبر ب', 'AEW')}</div>${pager}`));
+  put('news/2', page('الأخبار', `<div class="grid-12">${card('/news/خبر-ج/', 'خبر ج')}</div>${pager}`));
+  put('news/خبر-أ', page('خبر أ', '<p>خبر</p>'));
+  put('news/خبر-ب', page('خبر ب', '<p>خبر</p>'));
+  const story = (t: string) => page(t, `<article><h1>${t}</h1><p>Cody Rhodes is making the first major change to his logo.</p><a class="sh-wa" href="https://wa.me/?text=https%3A%2F%2Farab-wrestling.com%2Fen-src%2Fnews%2Fcody-logo%2F">WhatsApp</a><link rel="canonical" href="https://arab-wrestling.com/en-src/news/cody-logo/"></article><div class="related"><a class="related-card" href="/news/خبر-ب/"><span class="related-card-fed fed-aew">AEW</span><h4 class="related-card-title">خبر ب</h4></a></div>`);
+  put('en-src/news/cody-logo', story('Cody Rhodes Changing His Logo'));
+  put('en-src/news/aew-story', story('An AEW Story'));
+  const news = [
+    { src: '/en-src/news/cody-logo/', en: '/en/news/cody-logo/', ar: '/news/خبر-أ/', title: 'Cody Rhodes Changing His Logo', date: '2026-10-07T21:55:39.000Z', image: '/a.jpg', federation: 'WWE', description: 'Cody.' },
+    { src: '/en-src/news/aew-story/', en: '/en/news/aew-story/', ar: '/news/خبر-ب/', title: 'An AEW Story', date: '2026-10-07T20:00:00.000Z', image: '/b.jpg', federation: 'AEW', description: 'AEW.' },
+  ];
+  fs.writeFileSync(path.join(site, 'search-index.json'), JSON.stringify([{ title: 'خبر أ', kind: 'news', url: '/news/خبر-أ/' }]));
+  mirror.buildEnglish(site, { content: {}, news });
+  const read = (u: string) => fs.readFileSync(path.join(site, u, 'index.html'), 'utf8');
+
+  // the list: English stories only, newest first, one page (no page numbers)
+  const list = read('en/news');
+  assert.match(list, /<html lang="en" dir="ltr">/);
+  assert.match(list, /href="\/en\/news\/cody-logo\/"[\s\S]*Cody Rhodes Changing His Logo[\s\S]*href="\/en\/news\/aew-story\/"/);
+  assert.match(list, /<span class="cat cat-aew">AEW<\/span>/);
+  assert.match(list, /<img class="thumb-img" src="\/a\.jpg" alt="Cody Rhodes Changing His Logo">/);
+  assert.doesNotMatch(list, /pagination-nav/);
+  const noButton = (h: string) => h.replace(/<meta name="description"[^>]*>/, '').replace(/<a[^>]*lang-switch[\s\S]*?<\/a>/, '');
+  assert.doesNotMatch(noButton(list), AR);
+  assert.ok(!fs.existsSync(path.join(site, 'en', 'news', '2')));
+  // the story: English, its related card another English story, its button to its Arabic story
+  const s = read('en/news/cody-logo');
+  assert.match(s, /<h1>Cody Rhodes Changing His Logo<\/h1>/);
+  assert.match(s, /<a class="related-card" href="\/en\/news\/aew-story\/">[\s\S]*An AEW Story/);
+  assert.match(s, /class="theme-toggle lang-switch" href="\/news\/%D8%AE%D8%A8%D8%B1-%D8%A3\/"|class="theme-toggle lang-switch" href="\/news\/خبر-أ\/"/);
+  assert.match(s, /hreflang="en" href="https:\/\/arab-wrestling\.com\/en\/news\/cody-logo\/"/);
+  assert.doesNotMatch(s, /en-src/i);
+  assert.doesNotMatch(noButton(s), AR);
+  // the Arabic story points to its English one; one with none points to the English home
+  assert.match(read('news/خبر-أ'), /class="theme-toggle lang-switch" href="\/en\/news\/cody-logo\/"/);
+  assert.match(read('news/خبر-أ'), /hreflang="en" href="https:\/\/arab-wrestling\.com\/en\/news\/cody-logo\/"/);
+  // the English home's news cards are the English stories
+  const home = read('en');
+  assert.match(home, /href="\/en\/news\/cody-logo\/"/);
+  assert.doesNotMatch(home, /خبر أ/);
+  // no Arabic story copied to /en/, no draft left, the search finds the English story
+  assert.ok(!fs.existsSync(path.join(site, 'en-src')));
+  const idx = JSON.parse(fs.readFileSync(path.join(site, 'en', 'search-index.json'), 'utf8'));
+  assert.deepEqual(idx.map((x: any) => x.url), ['/en/news/cody-logo/', '/en/news/aew-story/']);
+  assert.match(fs.readFileSync(path.join(site, 'en', 'sitemap.xml'), 'utf8'), /\/en\/news\/cody-logo\//);
+});
+
+test('English news list: page numbers, «previous» and «next» count the English pages', () => {
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-pages-'));
+  fs.mkdirSync(path.join(site, 'news'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'news', 'index.html'), page('الأخبار', `<div class="grid-12">${Array.from({ length: 20 }, (_, k) => card(`/news/خبر-${k}/`, `خبر ${k}`)).join('')}</div>${pager}`));
+  const news = Array.from({ length: 45 }, (_, k) => {
+    const u = `/en-src/news/s${k}/`;
+    fs.mkdirSync(path.join(site, u), { recursive: true });
+    fs.writeFileSync(path.join(site, u, 'index.html'), page(`Story ${k}`, `<h1>Story ${k}</h1>`));
+    return { src: u, en: `/en/news/s${k}/`, ar: `/news/خبر-${k}/`, title: `Story ${k}`, date: '2026-10-07T20:00:00.000Z', image: '/a.jpg', federation: 'WWE' };
+  });
+  mirror.buildEnglish(site, { content: {}, news });
+  const p = (n: string) => fs.readFileSync(path.join(site, 'en', 'news', n, 'index.html'), 'utf8');
+  assert.equal(p('').match(/class="news-card/g)!.length, 20);
+  assert.equal(p('3').match(/class="news-card/g)!.length, 5);
+  assert.match(p(''), /<span class="page-link prev disabled" aria-disabled="true">/);
+  assert.match(p(''), /<a href="\/en\/news\/2\/" class="page-link next" aria-label="Next page">/);
+  assert.match(p('2'), /<a href="\/en\/news\/" class="page-link prev" aria-label="Previous page">/);
+  assert.match(p('2'), /<span class="page-link active" aria-current="page">2<\/span>/);
+  assert.match(p('3'), /<span class="page-link next disabled" aria-disabled="true">/);
+  assert.match(p('3'), /<title>Pro Wrestling News, page 3 \| Arab Wrestling<\/title>/);
+});
+
+test('a list mixing news and shows by date: each story becomes its own English edition, an older one is taken out', () => {
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-mixed-'));
+  const put = (u: string, html: string) => { fs.mkdirSync(path.join(site, u), { recursive: true }); fs.writeFileSync(path.join(site, u, 'index.html'), html); };
+  const show = '<a class="show-card reveal" href="/shows/aew-dynamite-06-10-2026/"><h3>عرض ديناميت 06.10.2026 مترجم</h3></a>';
+  put('federation/aew', page('AEW', `<div class="grid-12">${card('/news/خبر-ب/', 'خبر ب', 'AEW')}${show}${card('/news/خبر-قديم/', 'خبر قديم', 'AEW')}</div>`));
+  put('shows/aew-dynamite-06-10-2026', page('عرض', '<p>x</p>'));
+  put('en-src/news/aew-story', page('An AEW Story', '<h1>An AEW Story</h1>'));
+  put('en-src/news/wwe-story', page('A WWE Story', '<h1>A WWE Story</h1>'));
+  mirror.buildEnglish(site, { content: { 'عرض ديناميت 06.10.2026 مترجم': 'AEW Dynamite 06.10.2026' }, news: [
+    { src: '/en-src/news/wwe-story/', en: '/en/news/wwe-story/', ar: '/news/خبر-أ/', title: 'A WWE Story', date: '2026-10-07T22:00:00.000Z', image: '/a.jpg', federation: 'WWE' },
+    { src: '/en-src/news/aew-story/', en: '/en/news/aew-story/', ar: '/news/%D8%AE%D8%A8%D8%B1-%D8%A8/', title: 'An AEW Story', date: '2026-10-07T20:00:00.000Z', image: '/b.jpg', federation: 'AEW' },
+  ] });
+  const html = fs.readFileSync(path.join(site, 'en', 'federation', 'aew', 'index.html'), 'utf8');
+  assert.equal(html.match(/class="news-card/g)!.length, 1);
+  assert.match(html, /href="\/en\/news\/aew-story\/"[\s\S]*An AEW Story[\s\S]*AEW Dynamite 06\.10\.2026/);
+  assert.doesNotMatch(html, /A WWE Story|خبر/);
+});
+
+test('a promotion\'s pages in English: the older stories out, the rest put back 20 a page, no empty page', () => {
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-feed-'));
+  const put = (u: string, html: string) => { fs.mkdirSync(path.join(site, u), { recursive: true }); fs.writeFileSync(path.join(site, u, 'index.html'), html); };
+  const show = (k: number) => `<a class="show-card reveal" href="/shows/s${k}/"><h3>S${k}</h3></a>`;
+  // three Arabic pages: page 1 = 1 new story (with an English edition) + 19 old ones, page 2 = 10 old + 10 shows, page 3 = 15 shows
+  const p1 = card('/news/جديد/', 'جديد') + Array.from({ length: 19 }, (_, k) => card(`/news/قديم-${k}/`, 'قديم')).join('');
+  const p2 = Array.from({ length: 10 }, (_, k) => card(`/news/قديم-ب-${k}/`, 'قديم')).join('') + Array.from({ length: 10 }, (_, k) => show(k)).join('');
+  const p3 = Array.from({ length: 15 }, (_, k) => show(10 + k)).join('');
+  [p1, p2, p3].forEach((g, i) => put(i ? `federation/wwe/${i + 1}` : 'federation/wwe', page('WWE', `<div class="grid-12">${g}</div>${pager}`)));
+  put('en-src/news/new', page('New', '<h1>New</h1>'));
+  mirror.buildEnglish(site, { content: {}, news: [{ src: '/en-src/news/new/', en: '/en/news/new/', ar: '/news/جديد/', title: 'A New Story', date: '2026-10-07T22:00:00.000Z', image: '/a.jpg', federation: 'WWE' }] });
+  const read = (u: string) => fs.readFileSync(path.join(site, u, 'index.html'), 'utf8');
+  const one = read('en/federation/wwe'), two = read('en/federation/wwe/2');
+  assert.equal(one.match(/class="(news|show)-card/g)!.length, 20); // the story + 19 shows
+  assert.match(one, /href="\/en\/news\/new\/"[\s\S]*A New Story/);
+  assert.equal(two.match(/class="(news|show)-card/g)!.length, 6);
+  assert.match(two, /href="\/shows\/s24\/"/);
+  assert.ok(!fs.existsSync(path.join(site, 'en', 'federation', 'wwe', '3')));
+  assert.match(two, /<span class="page-link next disabled"/);
+  assert.match(one, /<a href="\/en\/federation\/wwe\/2\/" class="page-link next"/);
+  // the third Arabic page: its button goes to the English list, with no English twin declared
+  const ar3 = read('federation/wwe/3');
+  assert.match(ar3, /class="theme-toggle lang-switch" href="\/en\/federation\/wwe\/"/);
+  assert.doesNotMatch(ar3, /<link[^>]*hreflang="en"/);
+});

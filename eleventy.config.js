@@ -1362,13 +1362,22 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addCollection("library", buildLibrary);
   // The English site (lib/i18n/mirror.cjs, owner 2026-10-07): the content's own English words, kept for eleventy.after
-  let I18N_CONTENT = {}, I18N_PAGES = {};
+  let I18N_CONTENT = {}, I18N_PAGES = {}, I18N_NEWS = [];
   eleventyConfig.addCollection("i18nContent", function(collectionApi) {
     const lib = buildLibrary(collectionApi);
     const c = require("./lib/i18n/content.cjs");
     I18N_CONTENT = c.buildContentMap({ library: lib });
     // each page's own English <title> and description (a show's Arabic ones are cut at 160 letters, so no lookup finds them)
     I18N_PAGES = c.buildPageMap({ items: collectionApi.getAll().filter(function(i) { return /content\/(shows|recaps|nostalgia)\//.test(i.inputPath || ""); }), library: lib });
+    // English news (content/news-en, INCIDENTS #354): each with its Arabic story, found by the source's id. One whose
+    // Arabic story is gone (a duplicate removed, a story taken down) is left out with it.
+    const arBySource = {};
+    collectionApi.getFilteredByGlob("content/news/*.md").forEach(function(i) { if (i.data.source_id != null) arBySource[String(i.data.source_id)] = i.url; });
+    I18N_NEWS = collectionApi.getFilteredByGlob("content/news-en/*.md").filter(isNotFuture).map(function(i) {
+      const d = i.data;
+      return { src: i.url, en: i.url.replace(/^\/en-src\//, "/en/"), ar: arBySource[String(d.source_id)] || "", title: d.title, date: new Date(d.date || i.date).toISOString(),
+        image: d.image || "", federation: d.federation || "", description: d.description || "" };
+    }).filter(function(x) { return x.ar && x.title; }).sort(function(a, b) { return b.date.localeCompare(a.date); });
     return [];
   });
   // One entry per page of a program's shows (20 per page, like «عروض المصارعة»):
@@ -2071,10 +2080,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.on("eleventy.after", () => {
     if (process.env.ARW_NO_EN === "1") return;
     try {
-      const { summary, leftovers } = require("./lib/i18n/mirror.cjs").buildEnglish("_site", { content: I18N_CONTENT, pages: I18N_PAGES });
+      const { summary, leftovers } = require("./lib/i18n/mirror.cjs").buildEnglish("_site", { content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS });
       console.log(`[en] ${JSON.stringify(summary)}`);
       leftovers.slice(0, 20).forEach(function(x) { console.log(`[en] still Arabic (${x[1]} pages): ${x[0].slice(0, 120)}`); });
-      fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES }));
+      fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS }));
     } catch (e) { console.log(`[en] skipped: ${e.stack}`); }
   });
 

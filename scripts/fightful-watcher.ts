@@ -1,4 +1,5 @@
 import fs from "fs";
+import { writeEnglishEdition, catchUpEnglishEditions } from "./english-edition";
 import path from "path";
 import crypto from "crypto";
 import { execFileSync } from "child_process";
@@ -1836,6 +1837,19 @@ let geminiBlocked = false;
 /** True once this run can no longer reach Gemini (every key out of quota, or the
  *  daily safety cap hit). A processPost() failure after this point says nothing
  *  about the article, so callers must NOT mark it processed (INCIDENTS #37). */
+/** English editions the last day's stories still lack (INCIDENTS #354): the source page fetched again, a few a run */
+export async function englishCatchUp(limit = 2): Promise<number> {
+  if (geminiQuotaExhausted() || newsBotsPaused()) return 0;
+  return catchUpEnglishEditions(queryGemini, async (url) => {
+    const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (compatible; ArabWrestlingBot/1.0)" }, signal: AbortSignal.timeout(20000) }).catch(() => null);
+    if (!res || !res.ok) return null;
+    const html = await res.text();
+    const title = (html.match(/<meta[^>]+property="og:title"[^>]+content="([^"]+)"/i) || html.match(/<title>([^<]+)<\/title>/i) || [])[1] || "";
+    const main = (html.match(/<article[\s\S]*?<\/article>/i) || html.match(/<div[^>]+class="[^"]*(?:entry-content|article-content|post-content)[^"]*"[\s\S]*?<\/div>\s*<\/div>/i) || [html])[0];
+    return { title: title.replace(/&amp;/g, "&").replace(/&#8217;|&#039;/g, "'"), text: htmlToPlainText(main) };
+  }, limit).catch((e) => { console.warn("[English] catch-up skipped:", e?.message || e); return 0; });
+}
+
 export function geminiQuotaExhausted(): boolean {
   return geminiBlocked || (API_KEYS.length > 0 && API_KEYS.every(k => exhaustedKeys.has(k)));
 }
@@ -4388,6 +4402,18 @@ ${finalBody}
   }
   logProofEdits(targetFileName, proofEdits);
 
+  // The English edition for the English site (INCIDENTS #354): from the same English source, in our own words. It
+  // never holds the Arabic story up; one that doesn't come out is tried again by englishCatchUp on a later run.
+  if (!geminiQuotaExhausted()) {
+    try {
+      await writeEnglishEdition({
+        sourceTitle: rawTitle, sourceText: plainText, sourceUrl: postUrl, sourceId: postId,
+        arabicTitle: rewritten.title, arabicBody: finalBody, federation: rewritten.federation || "WWE",
+        image: localImagePath, date: new Date(iso).toISOString(), filePrefix: prefix,
+      }, queryGemini);
+    } catch (e: any) { console.warn("[English] skipped:", e?.message || e); }
+  }
+
   // Optional background auto-reel generation if enabled
   if (process.env.AUTO_GENERATE_REEL === "true") {
     import("./generate-news-video.js")
@@ -4566,6 +4592,7 @@ export async function runWatcher(options: { forceLatest?: boolean; maxCount?: nu
 
     // Post-execution deduplication guarantee
     deduplicateNewsFiles();
+    await englishCatchUp(); // English editions an earlier run could not write (INCIDENTS #354)
 
     console.log(`[Watcher] Check completed. New posts published: ${processedCount}`);
   } catch (e) {
