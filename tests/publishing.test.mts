@@ -3118,7 +3118,17 @@ test('source-folder addresses of shows, recaps and news redirect to their pages 
     fs.writeFileSync(path.join(site, p, 'index.html'), '');
   }
   const pairs = contentFolderAddresses(root, site).map(([from]) => from).sort();
-  assert.deepEqual(pairs, ['/content/news/2026-08-06-خبر-قديم/', '/content/recaps/2026-08-05-full-raw-highlights-aug-3-2026/', '/content/shows/2026-08-08-smackdown-07-08-2026/']);
+  assert.deepEqual(pairs, ['/content/news/2026-08-06-خبر-قديم/', '/content/recaps/2026-08-05-full-raw-highlights-aug-3-2026/', '/content/shows/2026-08-08-smackdown-07-08-2026/', '/shows/smackdown-07-08-2026/']);
+  // an annual show's file-name address (with the year) leads to its year-less page (INCIDENTS #325)
+  fs.writeFileSync(path.join(root, 'shows', 'revpro-14-year-anniversary-show-2026.md'), '---\ntitle: "RevPro 14 Year Anniversary Show"\nis_annual: true\n---\n');
+  fs.mkdirSync(path.join(site, 'shows/revpro-14-year-anniversary-show'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'shows/revpro-14-year-anniversary-show/index.html'), '');
+  const annual = contentFolderAddresses(root, site).find(([from]) => from === '/shows/revpro-14-year-anniversary-show-2026/');
+  assert.equal(annual?.[1], '/shows/revpro-14-year-anniversary-show/');
+  // searched words in the head only: «مصارعة wwe», «نتائج عرض الرو الاخير», «wrestling in arabic» (INCIDENTS #325)
+  assert.match(fs.readFileSync('pages/federation.njk', 'utf-8'), /<title>مصارعة \{\{ fed\.code \}\}:/);
+  assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /pageDesc: "[^"]*مع نتائجه كاملة/);
+  assert.match(fs.readFileSync('index.njk', 'utf-8'), /"Wrestling in Arabic"/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /contentFolderAddresses\(\)/);
   // the searched words lead the home and tag pages
   assert.match(fs.readFileSync('index.njk', 'utf-8'), /<title>عرب راسلنج \| مصارعة حرة/);
