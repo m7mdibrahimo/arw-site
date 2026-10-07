@@ -5,8 +5,8 @@ pagination:
   alias: view
 permalink: "{{ view.href }}index.html"
 eleventyComputed:
-  pageTitle: "{% if view.promo %}عروض {{ view.promo.mark }} مترجمة — مكتبة العروض{% else %}مكتبة العروض{% endif %}"
-  pageDesc: "{% if view.promo %}كل أقسام عروض {{ view.promo.mark }} ({{ view.promo.name }}) المترجمة بالعربية في مكان واحد: {% for p in view.promo.programs %}{{ p.name }}{% if not loop.last %}، {% endif %}{% endfor %}.{% else %}مكتبة عروض المصارعة المترجمة مقسمة حسب الاتحاد: WWE وAEW وNJPW وTNA وROH وCMLL وAAA وUFC وغيرها — كل اتحاد بأقسامه وعروضه في مكان واحد.{% endif %}"
+  pageTitle: "{% if view.guide %}دليل اتحاد {{ view.promo.mark }} للمشاهد الجديد: نظامه وعروضه وألقابه{% elif view.promo %}عروض {{ view.promo.mark }} مترجمة — مكتبة العروض{% else %}مكتبة العروض{% endif %}"
+  pageDesc: "{% if view.guide %}{{ view.guide.tagline }} دليل مبسط بالعربية لنظام {{ view.promo.mark }} ومواعيد عروضه وأكبر أحداثه وألقابه وتاريخه.{% elif view.promo %}كل أقسام عروض {{ view.promo.mark }} ({{ view.promo.name }}) المترجمة بالعربية في مكان واحد: {% for p in view.promo.programs %}{{ p.name }}{% if not loop.last %}، {% endif %}{% endfor %}.{% else %}مكتبة عروض المصارعة المترجمة مقسمة حسب الاتحاد: WWE وAEW وNJPW وTNA وROH وCMLL وAAA وUFC وغيرها — كل اتحاد بأقسامه وعروضه في مكان واحد.{% endif %}"
 ---
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -356,6 +356,18 @@ eleventyComputed:
   .lib-crumbs{ display:flex; justify-content:center; flex-wrap:wrap; gap:8px; font-size:13px; font-weight:700; color:var(--muted); margin-bottom:10px; }
   .lib-crumbs a{ color:var(--muted); text-decoration:none; } .lib-crumbs a:hover{ color:var(--gold); }
   .hero-crumbs, .hero-crumbs a{ color:rgba(255,255,255,.75); } .hero-crumbs{ margin-bottom:16px; } .hero-crumbs a:hover{ color:var(--gold); }
+  /* «دليل الاتحاد» on a federation page */
+  .guide-cta{ display:inline-flex; align-items:center; gap:9px; margin-top:-8px; height:48px; padding:0 24px; border-radius:999px; background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 50%), hsl(var(--ph) var(--ps) 34%)); color:#fff; text-decoration:none; font:900 15.5px 'Cairo',sans-serif; box-shadow:0 10px 26px -8px hsl(var(--ph) var(--ps) 40% / .7); transition:transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease; }
+  .guide-cta:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -8px hsl(var(--ph) var(--ps) 40% / .85); }
+  .guide-card{ display:flex; align-items:center; gap:16px; max-width:980px; margin:0 auto 26px; padding:16px 20px; border-radius:20px; text-decoration:none; color:var(--ink); background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 45% / .12), transparent 70%), var(--card); border:1.5px solid hsl(var(--ph) var(--ps) 45% / .35); transition:transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease; }
+  .guide-card:hover{ transform:translateY(-3px); box-shadow:0 16px 34px -14px hsl(var(--ph) var(--ps) 40% / .6); }
+  .guide-card-icon{ flex:none; width:52px; height:52px; border-radius:16px; display:grid; place-items:center; color:#fff; background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 50%), hsl(var(--ph) var(--ps) 32%)); }
+  .guide-card-text{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .guide-card-text b{ font:900 17px 'Cairo',sans-serif; }
+  .guide-card-text span{ color:var(--muted); font-size:14px; line-height:1.7; }
+  .guide-card-go{ margin-inline-start:auto; flex:none; font:900 14px 'Cairo',sans-serif; color:hsl(var(--ph) var(--ps) 38%); white-space:nowrap; }
+  html.arw-dark .guide-card-go{ color:hsl(var(--ph) var(--ps) 68%); }
+  @media (max-width:560px){ .guide-card{ flex-wrap:wrap; gap:12px; padding:14px 16px; } .guide-card-icon{ width:44px; height:44px; } .guide-card-go{ margin-inline-start:0; } }
   /* ── الاتحادات (2026-10-07): one card per federation, its colour from --ph/--ps ── */
   .promo-card{ --pc:hsl(var(--ph) var(--ps) 42%); --pc-text:hsl(var(--ph) var(--ps) 36%); }
   html.arw-dark .promo-card{ --pc:hsl(var(--ph) var(--ps) 58%); --pc-text:hsl(var(--ph) calc(var(--ps) + 10%) 70%); }
@@ -409,12 +421,16 @@ eleventyComputed:
 {% set promo = view.promo %}
 {% set lib = promo.programs if promo else view.lib %}
 {% set heroImg = (promo.latest.image if promo else (lib[0].latest.image if (lib.length and lib[0].latest) else "")) %}
+{% if view.guide %}
+{% include "federation-guide.njk" %}
+{% else %}
 <div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg heroImg, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
   <div class="hero-inner">
     {% if promo %}
     <nav class="lib-crumbs hero-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span><span><bdi>{{ promo.mark }}</bdi></span></nav>
     <h1 class="hero-title">عروض <bdi>{{ promo.mark }}</bdi> مترجمة<span class="u"><bdi>{{ promo.name }}</bdi></span></h1>
     <p>كل أقسام عروض <bdi>{{ promo.mark }}</bdi> في مكان واحد، اختر القسم وتصفّح عروضه من الأحدث للأقدم.</p>
+    {% if promo.hasGuide %}<a class="guide-cta" href="{{ promo.guideHref }}" style="--ph:{{ promo.h }}; --ps:{{ promo.s }}%;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg><span>دليل الاتحاد</span></a>{% endif %}
     {% else %}
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">مكتبة العروض<span class="u">كل اتحاد بعروضه</span></h1>
@@ -435,6 +451,13 @@ eleventyComputed:
 </div>
 {% endif %}
 <section class="content"><div class="wrap">
+  {% if promo and promo.hasGuide %}
+  <a class="guide-card reveal" href="{{ promo.guideHref }}" style="--ph:{{ promo.h }}; --ps:{{ promo.s }}%;">
+    <span class="guide-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg></span>
+    <span class="guide-card-text"><b>جديد على <bdi>{{ promo.mark }}</bdi>؟</b><span>اقرأ دليل الاتحاد: كيف يعمل، ومواعيد عروضه، وأكبر أحداثه في السنة، وألقابه، ومن أين تبدأ.</span></span>
+    <span class="guide-card-go">افتح الدليل ←</span>
+  </a>
+  {% endif %}
   <div class="lib-tools reveal">
     <label class="lib-search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><input type="search" id="libSearch" placeholder="{% if promo %}ابحث في أقسام {{ promo.mark }}…{% else %}ابحث عن اتحاد أو عرض… (CMLL، Dynamite، UFC){% endif %}" autocomplete="off"></label>
   </div>
@@ -489,6 +512,7 @@ eleventyComputed:
   search.addEventListener('input', apply);
 })();
 </script>
+{% endif %}
 <footer>
   <div class="social-row">
     <a aria-label="فيسبوك" href="https://www.facebook.com/ArabWrestlingEG/" target="_blank"><svg fill="currentColor" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.17 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.77 8.44-4.94 8.44-9.94Z"/></svg></a>

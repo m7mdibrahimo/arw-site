@@ -1384,6 +1384,12 @@ module.exports = function(eleventyConfig) {
     });
     return pages;
   });
+  // «دليل الاتحاد»: the library page of a weekly show named in a guide («WWE RAW» → /library/wwe-raw/), else ""
+  eleventyConfig.addFilter("libraryProgramHref", function(promo, name) {
+    const n = String(name || "").trim().toLowerCase();
+    const p = n && promo && (promo.programs || []).find(function(x) { return String(x.name).trim().toLowerCase() === n; });
+    return p ? "/library/" + p.slug + "/" : "";
+  });
   // For the panel's «مكانه في مكتبة العروض» picker: every federation and the one each section is filed under
   eleventyConfig.addCollection("libraryFederationsForStudio", function(collectionApi) {
     const lib = buildLibrary(collectionApi);
@@ -1422,8 +1428,12 @@ module.exports = function(eleventyConfig) {
         search: [x.mark, x.name].concat(programs.map(function(p) { return p.name + " " + (p.arName || ""); })).join(" ").toLowerCase()
       };
     }).filter(Boolean);
+    // «دليل الاتحاد»: a guide page for every federation with an entry in _data/federationGuides.js
+    const guides = require("./_data/federationGuides.js");
+    promos.forEach(function(x) { x.hasGuide = !!guides[x.key]; x.guideHref = x.href + "guide/"; });
     return [{ href: "/library/", promo: null, promos: promos, lib: lib }]
-      .concat(promos.map(function(x) { return { href: x.href, promo: x, promos: promos, lib: lib }; }));
+      .concat(promos.map(function(x) { return { href: x.href, promo: x, promos: promos, lib: lib }; }))
+      .concat(promos.filter(function(x) { return x.hasGuide; }).map(function(x) { return { href: x.guideHref, promo: x, guide: guides[x.key], promos: promos, lib: lib }; }));
   });
   eleventyConfig.addCollection("recapsProgramsGrouped", function(collectionApi) {
     return buildProgramsGrouped(collectionApi, "content/recaps/*.md");

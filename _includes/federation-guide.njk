@@ -1,0 +1,272 @@
+{#- «دليل الاتحاد» (2026-10-07): /library/federation/<key>/guide/, rendered by pages/library.njk from
+    _data/federationGuides.js. Sections appear only when the guide has something for them. -#}
+{%- set g = view.guide -%}
+{%- set f = promo -%}
+{%- set DAYS = [["sat", "السبت"], ["sun", "الأحد"], ["mon", "الاثنين"], ["tue", "الثلاثاء"], ["wed", "الأربعاء"], ["thu", "الخميس"], ["fri", "الجمعة"]] -%}
+{%- set MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"] -%}
+{%- set RHYTHM = {
+  "weekly": ["عروض أسبوعية وعروض كبرى", "قصص تتطور كل أسبوع على التلفاز، وتحسم في العروض الكبرى."],
+  "tours": ["نظام الجولات", "جولات من العروض الحية، تنتهي كل جولة بعرض كبير."],
+  "arena": ["عروض حية كل أسبوع", "عروض ثابتة في صالات بعينها، لكل يوم عرضه واسمه."],
+  "events": ["عروض متفرقة", "لا يوجد عرض أسبوعي ثابت؛ كل عرض قائم بذاته."],
+  "seasons": ["مواسم تلفزيونية", "يعرض في مواسم، وكل موسم مجموعة عروض أسبوعية."],
+  "mma": ["عروض قتالية كل أسبوع تقريبا", "قتال حقيقي غير متفق عليه، داخل أوزان محددة."]
+} -%}
+{%- set weekDays = g.week | selectattr("day") | length -%}
+<style>
+  .fg{ --pc:hsl(var(--ph) var(--ps) 42%); --pc-text:hsl(var(--ph) var(--ps) 34%); --pc-soft:hsl(var(--ph) var(--ps) 42% / .1); --pc-line:hsl(var(--ph) var(--ps) 42% / .28); }
+  html.arw-dark .fg{ --pc:hsl(var(--ph) var(--ps) 58%); --pc-text:hsl(var(--ph) calc(var(--ps) + 10%) 72%); --pc-soft:hsl(var(--ph) var(--ps) 58% / .13); --pc-line:hsl(var(--ph) var(--ps) 58% / .32); }
+  .fg-hero .eyebrow{ display:inline-flex; align-items:center; gap:8px; }
+  .fg-mark{ display:inline-block; padding:4px 12px; border-radius:10px; background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 48%), hsl(var(--ph) var(--ps) 30%)); color:#fff; font:900 .9em 'Cairo',sans-serif; letter-spacing:.4px; }
+  .fg-hero-actions{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+  .fg-btn{ display:inline-flex; align-items:center; gap:8px; height:46px; padding:0 22px; border-radius:999px; border:1.5px solid rgba(255,255,255,.35); color:#fff; text-decoration:none; font:800 14.5px 'Tajawal',sans-serif; background:rgba(255,255,255,.08); backdrop-filter:blur(6px); transition:transform .2s ease, background .2s ease; }
+  .fg-btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,.16); }
+  .fg-btn-solid{ background:var(--gold); border-color:var(--gold); color:#1e2530; }
+  .fg-btn-solid:hover{ background:#f6b85c; }
+  .fg-toc{ position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .fg-toc-in{ max-width:1080px; margin:0 auto; padding:10px 16px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; }
+  .fg-toc-in::-webkit-scrollbar{ display:none; }
+  .fg-toc a{ flex:none; padding:7px 15px; border-radius:999px; border:1.5px solid var(--line); background:var(--card); color:var(--muted); text-decoration:none; font:800 13px 'Tajawal',sans-serif; transition:all .2s ease; }
+  .fg-toc a:hover, .fg-toc a.on{ border-color:var(--pc); color:var(--pc-text); background:var(--pc-soft); }
+  .fg-wrap{ max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:64px; }
+  .fg-sec{ scroll-margin-top:140px; display:flex; flex-direction:column; gap:20px; }
+  .fg-h{ display:flex; align-items:center; gap:12px; font:900 clamp(22px,3vw,28px)/1.3 'Cairo',sans-serif; color:var(--ink); }
+  .fg-h i{ width:38px; height:38px; flex:none; border-radius:12px; display:grid; place-items:center; background:var(--pc-soft); color:var(--pc-text); font-style:normal; }
+  .fg-h i svg{ width:20px; height:20px; }
+  .fg-sub{ color:var(--muted); font-size:15px; margin-top:-10px; max-width:70ch; }
+  .fg-lead{ font-size:clamp(17px,2.1vw,19.5px); line-height:1.95; color:var(--ink); max-width:70ch; }
+  .fg-facts{ display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:12px; }
+  .fg-fact{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; min-width:0; }
+  .fg-fact span{ font-size:12.5px; font-weight:800; color:var(--muted); }
+  .fg-fact b{ font:800 15.5px/1.6 'Tajawal',sans-serif; color:var(--ink); }
+  .fg-rhythm{ display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:18px; background:var(--pc-soft); border:1px solid var(--pc-line); }
+  .fg-rhythm b{ font:900 17px 'Cairo',sans-serif; color:var(--pc-text); white-space:nowrap; }
+  .fg-rhythm span{ color:var(--ink); font-size:14.5px; }
+  .fg-how{ display:flex; flex-direction:column; gap:12px; counter-reset:how; }
+  .fg-how p{ position:relative; padding-inline-start:34px; font-size:16px; line-height:1.95; color:var(--ink); max-width:75ch; }
+  .fg-how p::before{ content:""; position:absolute; inset-inline-start:8px; top:.75em; width:10px; height:10px; border-radius:3px; background:var(--pc); transform:rotate(45deg); }
+  .fg-days{ display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:8px; }
+  .fg-day{ border:1px solid var(--line); border-radius:14px; background:var(--card); padding:10px 8px; min-height:92px; display:flex; flex-direction:column; gap:6px; min-width:0; }
+  .fg-day > span{ font-size:12.5px; font-weight:900; color:var(--muted); text-align:center; }
+  .fg-day.has{ border-color:var(--pc-line); background:linear-gradient(180deg, var(--pc-soft), transparent 75%), var(--card); }
+  .fg-day.has > span{ color:var(--pc-text); }
+  .fg-day em{ font-style:normal; display:block; text-align:center; font:800 11.5px/1.35 'Tajawal',sans-serif; color:var(--ink); background:var(--card); border:1px solid var(--pc-line); border-radius:8px; padding:5px 4px; overflow-wrap:anywhere; }
+  .fg-shows{ display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:14px; }
+  .fg-show{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; min-width:0; }
+  .fg-show-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .fg-show h3{ font:900 18px 'Cairo',sans-serif; color:var(--ink); }
+  .fg-role{ font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:999px; background:var(--pc-soft); color:var(--pc-text); }
+  .fg-rows{ display:flex; flex-direction:column; gap:6px; font-size:14px; }
+  .fg-rows div{ display:flex; gap:8px; align-items:baseline; }
+  .fg-rows dt{ flex:none; width:96px; color:var(--muted); font-weight:700; font-size:13px; }
+  .fg-rows dd{ color:var(--ink); font-weight:700; min-width:0; }
+  .fg-rows dd.mecca{ color:var(--pc-text); font-weight:900; }
+  .fg-show a.fg-go{ margin-top:auto; align-self:flex-start; display:inline-flex; align-items:center; gap:6px; color:var(--pc-text); font-weight:800; font-size:13.5px; text-decoration:none; }
+  .fg-show a.fg-go:hover{ text-decoration:underline; }
+  .fg-note{ display:flex; gap:10px; align-items:flex-start; padding:14px 16px; border-radius:14px; background:var(--card); border:1px dashed var(--line); color:var(--muted); font-size:14px; line-height:1.85; }
+  .fg-note svg{ flex:none; width:18px; height:18px; margin-top:4px; color:var(--pc-text); }
+  .fg-months{ display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:4px; }
+  .fg-month{ border-radius:10px; padding:8px 2px 10px; text-align:center; background:var(--card); border:1px solid var(--line); display:flex; flex-direction:column; align-items:center; gap:6px; min-width:0; }
+  .fg-month span{ font-size:11.5px; font-weight:800; color:var(--muted); }
+  .fg-month i{ display:flex; gap:3px; min-height:8px; flex-wrap:wrap; justify-content:center; }
+  .fg-month i b{ width:8px; height:8px; border-radius:50%; background:var(--pc); opacity:.55; }
+  .fg-month i b.big{ opacity:1; box-shadow:0 0 0 3px var(--pc-soft); }
+  .fg-month.has{ border-color:var(--pc-line); }
+  .fg-month.has span{ color:var(--pc-text); }
+  .fg-events{ display:flex; flex-direction:column; gap:10px; }
+  .fg-event{ display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; align-items:start; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 18px; }
+  .fg-event.big{ border-color:var(--pc-line); box-shadow:inset -4px 0 0 var(--pc); }
+  .fg-when{ font-size:13px; font-weight:900; color:var(--pc-text); padding-top:3px; }
+  .fg-event h3{ font:900 17px 'Cairo',sans-serif; color:var(--ink); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .fg-star{ font:800 11px 'Tajawal',sans-serif; padding:2px 9px; border-radius:999px; background:var(--pc); color:#fff; }
+  .fg-event p{ color:var(--muted); font-size:14.5px; line-height:1.85; margin-top:4px; }
+  .fg-titles{ display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:14px; }
+  .fg-tgroup{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
+  .fg-tgroup h3{ font:900 15px 'Cairo',sans-serif; color:var(--pc-text); }
+  .fg-tgroup ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .fg-tgroup li{ display:flex; gap:10px; align-items:flex-start; }
+  .fg-tgroup li svg{ flex:none; width:18px; height:18px; margin-top:4px; color:var(--gold); }
+  .fg-tgroup li b{ display:block; font-weight:800; font-size:15px; color:var(--ink); }
+  .fg-tgroup li small{ display:block; color:var(--muted); font-size:13px; line-height:1.7; margin-top:2px; }
+  .fg-terms{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:12px; }
+  .fg-term{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; }
+  .fg-term dt{ font:900 15px 'Cairo',sans-serif; color:var(--pc-text); }
+  .fg-term dd{ color:var(--ink); font-size:14.5px; line-height:1.85; margin-top:4px; }
+  .fg-history{ list-style:none; position:relative; display:flex; flex-direction:column; gap:14px; padding-inline-start:4px; }
+  .fg-history::before{ content:""; position:absolute; inset-inline-start:42px; top:8px; bottom:8px; width:2px; background:var(--pc-line); }
+  .fg-history li{ position:relative; display:grid; grid-template-columns:86px minmax(0,1fr); gap:16px; align-items:start; }
+  .fg-history time{ position:relative; z-index:1; justify-self:start; padding:4px 10px; border-radius:10px; background:var(--pc); color:#fff; font:900 14px 'Cairo',sans-serif; direction:ltr; }
+  .fg-history p{ color:var(--ink); font-size:15.5px; line-height:1.85; padding-top:2px; }
+  .fg-steps{ list-style:none; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px; counter-reset:step; }
+  .fg-steps li{ counter-increment:step; position:relative; background:var(--card); border:1px solid var(--pc-line); border-radius:18px; padding:46px 18px 18px; font-size:15.5px; line-height:1.85; color:var(--ink); font-weight:600; }
+  .fg-steps li::before{ content:counter(step); position:absolute; top:14px; inset-inline-start:18px; width:26px; height:26px; border-radius:8px; display:grid; place-items:center; background:var(--pc); color:#fff; font:900 14px 'Cairo',sans-serif; }
+  .fg-end{ display:flex; flex-direction:column; align-items:center; gap:14px; text-align:center; }
+  .fg-end small{ color:var(--muted); font-size:13px; max-width:62ch; line-height:1.8; }
+  @media (max-width:760px){
+    .fg-wrap{ gap:48px; }
+    .fg-days{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+    .fg-day{ min-height:0; }
+    .fg-months{ grid-template-columns:repeat(6, minmax(0,1fr)); }
+    .fg-event{ grid-template-columns:1fr; gap:4px; }
+    .fg-shows, .fg-titles, .fg-terms{ grid-template-columns:1fr; }
+    .fg-history::before{ inset-inline-start:30px; }
+    .fg-history li{ grid-template-columns:64px minmax(0,1fr); gap:12px; }
+    .fg-history time{ font-size:13px; padding:3px 8px; }
+    .fg-rhythm{ flex-direction:column; align-items:flex-start; gap:4px; }
+  }
+</style>
+<div class="hero fg-hero" style="background: linear-gradient(180deg, rgba(10,12,16,.72) 0%, rgba(10,12,16,.86) 55%, var(--bg) 100%), url('{% optImg heroImg, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
+  <div class="hero-inner">
+    <nav class="lib-crumbs hero-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span><a href="{{ f.href }}"><bdi>{{ f.mark }}</bdi></a><span>‹</span><span>دليل الاتحاد</span></nav>
+    <span class="eyebrow">دليل المشاهد الجديد</span>
+    <h1 class="hero-title" style="--ph:{{ f.h }}; --ps:{{ f.s }}%;">دليل <span class="fg-mark"><bdi>{{ f.mark }}</bdi></span><span class="u"><bdi>{{ f.name }}</bdi></span></h1>
+    <p>{{ g.tagline }}</p>
+    <div class="fg-hero-actions">
+      <a class="fg-btn fg-btn-solid" href="#fg-how">كيف يعمل الاتحاد؟</a>
+      <a class="fg-btn" href="{{ f.href }}">شاهد عروض <bdi>{{ f.mark }}</bdi> مترجمة</a>
+    </div>
+  </div>
+</div>
+<nav class="fg-toc" aria-label="أقسام الدليل"><div class="fg-toc-in" id="fgToc">
+  <a href="#fg-about">نبذة</a>
+  <a href="#fg-how">كيف يعمل</a>
+  {% if g.week.length or g.weekNote %}<a href="#fg-week">مواعيد العروض</a>{% endif %}
+  {% if g.year.length %}<a href="#fg-year">السنة في <bdi>{{ f.mark }}</bdi></a>{% endif %}
+  {% if g.titles.length %}<a href="#fg-titles">{% if f.key == "ufc" %}الأوزان{% else %}الألقاب{% endif %}</a>{% endif %}
+  {% if g.terms.length %}<a href="#fg-terms">مصطلحات</a>{% endif %}
+  {% if g.history.length %}<a href="#fg-history">التاريخ</a>{% endif %}
+  <a href="#fg-start">من أين تبدأ</a>
+</div></nav>
+<section class="content fg" style="--ph:{{ f.h }}; --ps:{{ f.s }}%;"><div class="fg-wrap">
+
+  <section class="fg-sec reveal" id="fg-about">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></i>ما هو <bdi>{{ f.mark }}</bdi>؟</h2>
+    <p class="fg-lead">{{ g.intro }}</p>
+    <div class="fg-facts">{% for fact in g.facts %}<div class="fg-fact"><span>{{ fact[0] }}</span><b>{{ fact[1] }}</b></div>{% endfor %}</div>
+  </section>
+
+  <section class="fg-sec reveal" id="fg-how">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg></i>كيف يعمل الاتحاد؟</h2>
+    {% set r = RHYTHM[g.rhythm] %}{% if r %}<div class="fg-rhythm"><b>{{ r[0] }}</b><span>{{ r[1] }}</span></div>{% endif %}
+    <div class="fg-how">{% for para in g.how %}<p>{{ para }}</p>{% endfor %}</div>
+  </section>
+
+  {% if g.week.length or g.weekNote %}
+  <section class="fg-sec reveal" id="fg-week">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i>مواعيد العروض</h2>
+    {% if weekDays %}
+    <p class="fg-sub">أسبوع <bdi>{{ f.mark }}</bdi> يوما بيوم، بتوقيت مكة المكرمة.</p>
+    <div class="fg-days">
+      {% for d in DAYS %}
+      <div class="fg-day{% for w in g.week %}{% if w.day == d[0] and not (loop.index0 and g.week[loop.index0 - 1].day == d[0]) %} has{% endif %}{% endfor %}"><span>{{ d[1] }}</span>{% for w in g.week %}{% if w.day == d[0] %}<em><bdi>{{ w.show }}</bdi></em>{% endif %}{% endfor %}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if g.week.length %}
+    <div class="fg-shows">
+      {% for w in g.week %}
+      {% set href = f | libraryProgramHref(w.program) %}
+      <article class="fg-show">
+        <div class="fg-show-top"><h3><bdi>{{ w.show }}</bdi></h3>{% if w.role %}<span class="fg-role">{{ w.role }}</span>{% endif %}</div>
+        <dl class="fg-rows">
+          {% if w.day %}{% for d in DAYS %}{% if d[0] == w.day %}<div><dt>اليوم</dt><dd>كل {{ d[1] }}</dd></div>{% endif %}{% endfor %}{% endif %}
+          {% if w.time %}<div><dt>الموعد</dt><dd>{{ w.time }}</dd></div>{% endif %}
+          {% if w.mecca %}<div><dt>بتوقيت مكة</dt><dd class="mecca">{{ w.mecca }}</dd></div>{% endif %}
+          {% if w.length %}<div><dt>المدة</dt><dd>{{ w.length }}</dd></div>{% endif %}
+          {% if w.channel %}<div><dt>يبث على</dt><dd><bdi>{{ w.channel }}</bdi></dd></div>{% endif %}
+        </dl>
+        {% if href %}<a class="fg-go" href="{{ href }}">شاهد عروضه مترجمة ←</a>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if g.weekNote %}<div class="fg-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>{{ g.weekNote }}</span></div>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if g.year.length %}
+  <section class="fg-sec reveal" id="fg-year">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg></i>السنة في <bdi>{{ f.mark }}</bdi></h2>
+    <p class="fg-sub">أهم العروض والأحداث وموعدها المعتاد في السنة. العلامات الأكبر للعروض الأهم.</p>
+    {% if g.year | selectattr("months") | length %}
+    <div class="fg-months" aria-hidden="true">
+      {% for m in range(1, 13) %}
+      <div class="fg-month{% for e in g.year %}{% if e.months and m >= e.months[0] and m <= (e.months[1] or e.months[0]) %} has{% endif %}{% endfor %}"><span>{{ MONTHS[m - 1] }}</span><i>{% for e in g.year %}{% if e.months and m >= e.months[0] and m <= (e.months[1] or e.months[0]) %}<b class="{% if e.big %}big{% endif %}"></b>{% endif %}{% endfor %}</i></div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="fg-events">
+      {% for e in g.year %}{% if e.months %}
+      <article class="fg-event{% if e.big %} big{% endif %}">
+        <div class="fg-when">{{ MONTHS[e.months[0] - 1] }}{% if e.months[1] %} – {{ MONTHS[e.months[1] - 1] }}{% endif %}</div>
+        <div><h3><bdi>{{ e.name }}</bdi>{% if e.big %}<span class="fg-star">من الأهم</span>{% endif %}</h3>{% if e.text %}<p>{{ e.text }}</p>{% endif %}</div>
+      </article>
+      {% endif %}{% endfor %}
+      {% for e in g.year %}{% if not e.months %}
+      <article class="fg-event{% if e.big %} big{% endif %}">
+        <div class="fg-when">يتغير موعده</div>
+        <div><h3><bdi>{{ e.name }}</bdi>{% if e.big %}<span class="fg-star">من الأهم</span>{% endif %}</h3>{% if e.text %}<p>{{ e.text }}</p>{% endif %}</div>
+      </article>
+      {% endif %}{% endfor %}
+    </div>
+    {% if g.yearNote %}<div class="fg-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>{{ g.yearNote }}</span></div>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if g.titles.length %}
+  <section class="fg-sec reveal" id="fg-titles">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></i>{% if f.key == "ufc" %}الأوزان والأحزمة{% else %}الألقاب{% endif %}</h2>
+    <p class="fg-sub">{% if f.key == "ufc" %}كل وزن له بطل واحد يحمل حزامه.{% else %}الألقاب من الأعلى إلى الأقل في كل قسم. أسماء الأبطال الحاليين تتغير باستمرار، فتابعها في أخبار الموقع.{% endif %}</p>
+    <div class="fg-titles">
+      {% for grp in g.titles %}
+      <div class="fg-tgroup"><h3>{{ grp.group }}</h3>
+        <ul>{% for t in grp.items %}<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg><div><b>{{ t[0] }}</b>{% if t[1] %}<small>{{ t[1] }}</small>{% endif %}</div></li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% if g.titlesNote %}<div class="fg-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>{{ g.titlesNote }}</span></div>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if g.terms.length %}
+  <section class="fg-sec reveal" id="fg-terms">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg></i>مصطلحات ستسمعها</h2>
+    <dl class="fg-terms">{% for t in g.terms %}<div class="fg-term"><dt>{{ t[0] }}</dt><dd>{{ t[1] }}</dd></div>{% endfor %}</dl>
+  </section>
+  {% endif %}
+
+  {% if g.history.length %}
+  <section class="fg-sec reveal" id="fg-history">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></i>نبذة تاريخية</h2>
+    <ol class="fg-history">{% for h in g.history %}<li><time>{{ h[0] }}</time><p>{{ h[1] }}</p></li>{% endfor %}</ol>
+  </section>
+  {% endif %}
+
+  <section class="fg-sec reveal" id="fg-start">
+    <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i>من أين تبدأ؟</h2>
+    <ol class="fg-steps">{% for s in g.start %}<li>{{ s }}</li>{% endfor %}</ol>
+  </section>
+
+  <div class="fg-end reveal">
+    <a href="{{ f.href }}" class="lib-all-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v14"/><path d="M9 19V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v12"/><path d="m15 6.5 2.9-.8a1 1 0 0 1 1.2.7l3 11.4a1 1 0 0 1-.7 1.2l-2.9.8"/><path d="M3 19h18"/></svg><span>شاهد عروض <bdi>{{ f.mark }}</bdi> مترجمة</span></a>
+    <small>راجعنا هذا الدليل في أكتوبر 2026. المواعيد بتوقيت مكة المكرمة وقد تتغير في المناسبات الخاصة، والعروض الكبرى قد يتغير موعدها من سنة لأخرى.</small>
+  </div>
+
+</div></section>
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#fgToc a'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      links.forEach(function(a){
+        var on = a.getAttribute('href') === '#' + en.target.id;
+        a.classList.toggle('on', on);
+        if (on && a.scrollIntoView) a.parentNode.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+      });
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  links.forEach(function(a){ var s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
+})();
+</script>
