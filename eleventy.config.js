@@ -1183,23 +1183,6 @@ module.exports = function(eleventyConfig) {
         : (prog.isNostalgia
             ? "recurring"
             : (prog.episodes.some(function(ep) { return ep.season !== null || ep.episodeLabel !== null; }) ? "series" : "recurring"));
-
-      // Tour programs (NJPW): one tab per tour on the show page — the «Road To» shows in date order, then the big
-      // event they built to, whose pill carries its name — instead of a «2026» tab and an «عروض متفرقة» one (INCIDENTS #309)
-      if (TOUR_PROGRAMS.indexOf(prog.slug) !== -1 && !prog.isNostalgia) {
-        const ordered = [];
-        prog.seasons = tourGroups(prog.episodes, TOUR_PREFIX[prog.slug] || "").reverse().map(function(t, i) {
-          const list = t.shows.slice().reverse().concat(t.main ? [t.main] : []);
-          list.forEach(function(ep) {
-            ep.groupKey = i; ep.groupType = "tour"; ep.isTourMain = ep === t.main;
-            if (ep.isTourMain) ep.pillLabel = t.name;
-            ordered.push(ep);
-          });
-          return { number: i, type: "tour", label: t.name, episodes: list };
-        });
-        prog.episodes = ordered;
-        prog.mode = "recurring";
-      }
     });
 
     return programs;
@@ -1211,11 +1194,6 @@ module.exports = function(eleventyConfig) {
   // «مكتبة العروض»: every section the shows are linked to (the dashboard's «اسم البرنامج»),
   // the most recently created section first, each with its shows newest first. Nostalgia series have their
   // own section and are left out; scheduled (future) shows are not listed yet.
-  // Programs whose shows come as tours, not a weekly show (owner, 2026-10-06): NJPW runs «Road To X» nights that
-  // build to one big event X, and multi-night events like the G1. Their library page shows one group per tour.
-  const TOUR_PROGRAMS = ["njpw"];
-  const TOUR_PREFIX = { njpw: "عرض ان جيه بي دبليو" };
-  const { tourGroups } = require("./lib/tours.cjs");
   const buildLibrary = function(collectionApi) {
     const now = Date.now();
     return buildProgramsGrouped(collectionApi, ["content/shows/*.md"])
@@ -1246,7 +1224,6 @@ module.exports = function(eleventyConfig) {
           "stardom": "عرض ستار دوم",
           "reality-of-wrestling": "عرض رياليتي اوف ريسلينج",
           "revpro-anniversary-shows": "عرض ريف برو انفيرسري شو",
-          "njpw": "عرض ان جيه بي دبليو",
         };
         const names = shows.map(function(x) { return cleanHead(x.headline); }).filter(function(n) { return /[\u0600-\u06FF]/.test(n); });
         const freq = {}; names.forEach(function(n) { freq[n] = (freq[n] || 0) + 1; });
@@ -1281,8 +1258,7 @@ module.exports = function(eleventyConfig) {
           "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
         };
-        const tours = TOUR_PROGRAMS.indexOf(p.slug) !== -1 ? tourGroups(shows, AR_NAMES[p.slug] || arName) : null;
-        return { slug: p.slug, name: p.name, tours: tours, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
+        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded };
       })
       .filter(function(p) { return p.count > 0; })
       // Newest section first: a section created today tops the library.
@@ -1295,16 +1271,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("libraryPages", function(collectionApi) {
     const pages = [];
     buildLibrary(collectionApi).forEach(function(prog) {
-      // a program shown as tours is one page: a tour is never cut across two pages
-      const size = prog.tours ? Math.max(1, prog.shows.length) : LIBRARY_PAGE_SIZE;
-      const total = Math.max(1, Math.ceil(prog.shows.length / size));
+      const total = Math.max(1, Math.ceil(prog.shows.length / LIBRARY_PAGE_SIZE));
       const href = function(n) { return "/library/" + prog.slug + "/" + (n > 1 ? n + "/" : ""); };
       for (let i = 0; i < total; i++) {
         pages.push({
           prog: prog,
           pageNumber: i + 1,
           totalPages: total,
-          items: prog.shows.slice(i * size, (i + 1) * size),
+          items: prog.shows.slice(i * LIBRARY_PAGE_SIZE, (i + 1) * LIBRARY_PAGE_SIZE),
           href: href(i + 1),
           prev: i > 0 ? href(i) : null,
           next: i + 1 < total ? href(i + 2) : null,

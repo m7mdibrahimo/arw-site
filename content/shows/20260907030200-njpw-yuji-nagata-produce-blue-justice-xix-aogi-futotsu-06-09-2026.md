@@ -1,10 +1,10 @@
 ---
 federation: NJPW
 title: NJPW Yuji Nagata Produce Blue Justice XIX Aogi Futotsu 06.09.2026
-headline: عرض ان جيه بي دبليو بلو جاستس 19 06.09.2026 مترجم
+headline: عرض ان جيه بي دبليو 06.09.2026 مترجم
 program_name: NJPW
 is_annual: false
-description: عرض ان جيه بي دبليو بلو جاستس 19 مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض ان جيه بي دبليو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-09-06
 date: 2026-09-07T06:02:00.000+03:00
 duration: 02:15:06

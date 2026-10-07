@@ -3492,40 +3492,6 @@ test('«تعلقت على» and broken «authority figure» / «WWE Manager» tr
   assert.equal(applyCorrections('مع تارا ريد وأل سابيينزا'), 'مع تارا ريد وآل سابينزا');
 });
 
-test('NJPW library groups its shows by tour: the big event with its «Road To» shows (INCIDENTS #309)', async () => {
-  const { tourGroups } = (await import('../lib/tours.cjs')).default;
-  const show = (title: string, headline: string, date: string) => ({ title, headline, eventDate: date, timestamp: Date.parse(date) });
-  const shows = [
-    show('NJPW Destruction in Kobe (2026)', 'عرض ان جيه بي دبليو ديستروكشن ان كوبي 27.09.2026 مترجم', '2026-09-27'),
-    ...['05', '09', '10', '13', '19', '21', '22', '25'].map(d => show(`NJPW Road To Destruction ${d}.09.2026`, `عرض ان جيه بي دبليو رود تو ديستروكشن ${d}.09.2026 مترجم`, `2026-09-${d}`)),
-    show('NJPW Yuji Nagata Produce Blue Justice XIX Aogi Futotsu 06.09.2026', 'عرض ان جيه بي دبليو بلو جاستس 19 06.09.2026 مترجم', '2026-09-06'),
-    ...['08', '09', '11', '12', '13', '15', '16'].map(d => show(`NJPW G1 Climax 36 ${d}.08.2026`, `عرض ان جيه بي دبليو جي وان كلايمكس 36 ${d}.08.2026 مترجم`, `2026-08-${d}`)),
-  ];
-  const tours = tourGroups(shows, 'عرض ان جيه بي دبليو');
-  assert.deepEqual(tours.map((t: any) => [t.name, t.count, t.range]), [
-    ['ديستروكشن ان كوبي', 9, '5 – 27 سبتمبر 2026'],
-    ['بلو جاستس 19', 1, '6 سبتمبر 2026'],
-    ['جي وان كلايمكس 36', 7, '8 – 16 أغسطس 2026'],
-  ]);
-  // the big event first, then the tour newest first; G1 nights carry no night number
-  assert.deepEqual(tours[0].cards.slice(0, 2).map((c: any) => c.tag), ['العرض الكبير', 'الطريق إلى العرض']);
-  assert.equal(tours[0].cards[1].item.eventDate, '2026-09-25');
-  assert.ok(tours[2].cards.every((c: any) => c.tag === ''));
-  assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /\{% for c in tour\.cards %\}/);
-  // the show page's list: one tab per tour, the big event's pill named after it
-  const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
-  assert.match(tpl, /\{% elif season\.type == "tour" %\}\{\{ season\.label \}\}/);
-  assert.match(tpl, /\{% if ep\.isTourMain %\} ep-pill-main\{% endif %\}/);
-  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
-  assert.match(cfg, /prog\.seasons = tourGroups\(prog\.episodes, TOUR_PREFIX\[prog\.slug\] \|\| ""\)\.reverse\(\)/);
-  // every NJPW show is named after its event, not just the federation and the date
-  for (const f of fs.readdirSync('content/shows').filter(x => x.endsWith('.md'))) {
-    const t = fs.readFileSync('content/shows/' + f, 'utf-8');
-    if (!/^program_name:\s*NJPW\s*$/m.test(t)) continue;
-    assert.doesNotMatch(t, /^headline: عرض ان جيه بي دبليو \d/m, f);
-  }
-});
-
 test('the show reels are linked into the build, not copied byte for byte (INCIDENTS #310)', () => {
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.doesNotMatch(cfg, /addPassthroughCopy\(\{\s*"dist\/videos"/);
