@@ -119,9 +119,9 @@
    "firstSeen": "2026-10-06T14:36:02.667Z",
    "lastmod": "2026-10-07",
    "pinged": "2026-10-07T14:37:44.896Z",
-   "inspected": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T20:51:26.139Z",
    "verdict": "NEUTRAL",
-   "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
+   "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL."
   },
   "https://arab-wrestling.com/library/stardom/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2307,27 +2307,46 @@
   "https://arab-wrestling.com/library/njpw-road-to-king-of-pro-wrestling-2026/": {
    "firstSeen": "2026-10-07T14:17:27.956Z",
    "lastmod": "2026-10-07",
-   "pinged": "2026-10-07T14:17:27.956Z"
+   "pinged": "2026-10-07T14:17:27.956Z",
+   "inspected": "2026-10-07T20:51:26.139Z",
+   "verdict": "NEUTRAL",
+   "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
   "https://arab-wrestling.com/shows/njpw-road-to-king-of-pro-wrestling-06-10-2026/": {
    "firstSeen": "2026-10-07T14:17:27.956Z",
    "lastmod": "2026-10-07",
-   "pinged": "2026-10-07T14:17:27.956Z"
+   "pinged": "2026-10-07T14:17:27.956Z",
+   "inspected": "2026-10-07T20:51:26.139Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-07T20:51:26.139Z"
   },
   "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/": {
    "firstSeen": "2026-10-07T14:37:44.896Z",
    "lastmod": "2026-10-07",
-   "pinged": "2026-10-07T14:37:44.896Z"
+   "pinged": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T20:51:26.139Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-07T20:51:26.139Z"
   },
   "https://arab-wrestling.com/shows/wwe-nxt-06-10-2026/": {
    "firstSeen": "2026-10-07T14:37:44.896Z",
    "lastmod": "2026-10-07",
-   "pinged": "2026-10-07T14:37:44.896Z"
+   "pinged": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T20:51:26.139Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-07T20:51:26.139Z"
   },
   "https://arab-wrestling.com/shows/tna-xplosion-02-10-2026/": {
    "firstSeen": "2026-10-07T14:37:44.896Z",
    "lastmod": "2026-10-07",
-   "pinged": "2026-10-07T14:37:44.896Z"
+   "pinged": "2026-10-07T14:37:44.896Z",
+   "inspected": "2026-10-07T20:51:26.139Z",
+   "verdict": "PASS",
+   "coverage": "تم إرسال الصفحة وتمت فهرستها",
+   "indexedAt": "2026-10-07T20:51:26.139Z"
   }
  },
  "sitemapPinged": "2026-10-07T14:37:44.896Z"
