@@ -14,3 +14,5 @@ en_tags:
 image: /content/images/o55iktut2fbnyu8g.jpg
 ---
 Kofi shared his thoughts on AEW Grand Slam France following his match against Bandido. During the latest episode of AEW Dynamite, Kofi challenged Bandido for the ROH World Championship. Although he came up short in the championship bout, Kofi expressed great enthusiasm about performing in France for the first time since September 2025. In an Instagram post reflecting on the event, Kofi praised his opponent and the overall experience. "You were incredible as always, but this time out was even more heartwarming. I came up short, but I’ll be damned if I say I didn’t have fun. I do know one thing tho: That @bandidowrestler is special…And strong af!" Kofi wrote.
+
+https://www.instagram.com/p/DeNZ_-9GPXD/

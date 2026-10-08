@@ -19,3 +19,5 @@ AEW World Trios Champion Swerve Strickland recently discussed how he and the AEW
 > "How I was dealing with it was just like communicating, not staying quiet about it you know? I don't mean like talking on social media, [I mean] talking with your people, your peers, your friends and everything. Opening up, let them know how you're feeling about those things, about like what you're feeling internally you know? Open up, express those things, let it out with your friends."
 
 Strickland recalled his very first memory of watching Pac face the late Brodie Lee in 2011, a match that deeply inspired him and later helped Lee secure his WWE contract. The AEW World Trios Champion also looked back fondly on sharing the ring with Pac in the Trios Roulette Royal at AEW All In London 2026, describing that shared moment as a memory he will always cherish.
+
+https://www.youtube.com/watch?v=Hd-hnS3Qz-Y
