@@ -225,24 +225,3 @@
     }
   })();
 
-  // Show / recap / nostalgia pages on a phone: the Arabic title in the details card stays on one line. A long one is
-  // made just small enough to fit (never under 10px; a title too long even for that goes on two lines at 15px), a short one keeps its size.
-  (function(){
-    var t = document.querySelector('.post-wrap.is-watch .post-meta-bar h2.pm-title');
-    if(!t || !window.matchMedia) return;
-    var phone = window.matchMedia('(max-width:768px)'), MIN = 10;
-    function fit(){
-      t.style.removeProperty('font-size'); t.classList.remove('pm-wrap');
-      if(!phone.matches || !t.clientWidth) return;
-      var size = parseFloat(getComputedStyle(t).fontSize), room = t.clientWidth;
-      if(t.scrollWidth <= room) return;
-      size = Math.max(MIN, Math.floor(size * room / t.scrollWidth * 2) / 2);
-      t.style.setProperty('font-size', size + 'px', 'important');
-      while(t.scrollWidth > t.clientWidth && size > MIN){ size -= .5; t.style.setProperty('font-size', size + 'px', 'important'); }
-      if(t.scrollWidth > t.clientWidth){ t.style.setProperty('font-size', '15px', 'important'); t.classList.add('pm-wrap'); }
-    }
-    fit();
-    if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    var w = window.innerWidth;
-    window.addEventListener('resize', function(){ if(window.innerWidth !== w){ w = window.innerWidth; fit(); } });
-  })();
