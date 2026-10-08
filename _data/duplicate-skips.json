@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2266160/vince-russo-parts-ways-juggalo-championship-wrestling/": {
-    "matchedFile": "20260923044345-فينس-روسو-يغادر-اتحاد-jcw-بعد-اعترافه-بعدم-سعادته.md",
-    "reason": "manual audit 2026-09-24: same story as earlier article",
-    "at": "2026-09-24T06:15:52.510Z"
-  },
   "https://www.fightful.com/wrestling/mjf-kayla-becker-and-david-arquette-feature-in-first-trailer-for-stranglehold/": {
     "matchedFile": "20260923182113-نظرة-أولى-على-ام-جيه-اف-في-فيلم-الإثارة-المنتظر-stranglehold.md",
     "reason": "manual audit 2026-09-24: same story as earlier article",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261008212429-عرض-aew-collision-يحقق-أكثر-من-400-ألف-مشاهد.md",
     "reason": "الخبر الجديد يغطي نفس أرقام مشاهدات عرض AEW Collision بتاريخ 3 أكتوبر 2026 المذكورة في الخبر رقم 1، ولا يقدم تطوراً جديداً بل مجرد إعادة سرد لنفس البيانات.",
     "at": "2026-10-08T19:02:24.370Z"
+  },
+  "https://www.ringsidenews.com/us-embassy-issues-new-saudi-arabia-security-alert-weeks-before-wwe-crown-jewel/": {
+    "matchedFile": "20261008212519-السفارة-الأمريكية-في-الرياض-تصدر-تحذيرا-أمنيا-جديدا-للمواطنين-الأمريكيين-وتدعوهم-لتوخي-الحيطة.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التحذير الأمني الصادر عن السفارة الأمريكية، والتفاصيل المضافة حول قلق نجوم WWE وخطط الاتحاد البديلة تعتبر تكهنات أو تفاصيل إضافية حول نفس الحدث الأمني ولا تشكل تطوراً رسمياً جديداً يغير جوهر الخبر المنشور.",
+    "at": "2026-10-08T20:17:40.632Z"
   }
 }
