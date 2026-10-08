@@ -1884,6 +1884,18 @@
     "renderedAt": 1791398451170
   },
   {
+    "videoUrl": "/videos/reel-20261008044322-cmll-martes-populares-06-10-20.mp4",
+    "filename": "reel-20261008044322-cmll-martes-populares-06-10-20.mp4",
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 06.10.2026 مترجم",
+    "secondaryTitle": "CMLL Martes Populares 06.10.2026",
+    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261008044322-cmll-martes-populares-06-10-20",
+    "kind": "show",
+    "slug": "20261008044322-cmll-martes-populares-06-10-20",
+    "image": "/content/images/3dcnih8db6iq8deq.jpg",
+    "renderedAt": 1791424124568
+  },
+  {
     "videoUrl": "/videos/reel-20261008044130-cmll-lunes-clasico-05-10-2026.mp4",
     "filename": "reel-20261008044130-cmll-lunes-clasico-05-10-2026.mp4",
     "title": "عرض سي ام ال ال لونيس كلاسيكو 05.10.2026 مترجم",
@@ -1893,6 +1905,6 @@
     "kind": "show",
     "slug": "20261008044130-cmll-lunes-clasico-05-10-2026",
     "image": "/content/images/7nseryye9yhjyfeo.jpg",
-    "renderedAt": 1791423893180
+    "renderedAt": 1791424221603
   }
 ]
