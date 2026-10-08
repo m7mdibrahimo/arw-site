@@ -525,6 +525,20 @@ const AGE_TENS: Record<string, number> = { عشرين: 20, ثلاثين: 30, أ�
  * Body only (titles keep counts in words): an age or a span of years written out becomes digits —
  * «البالغ من العمر سبعين عاما» ← «70 عاما». The copy editor was told and left it (INCIDENTS #202).
  */
+/**
+ * An age in the Arabic body that the source never states: Dawn Marie «تقترب من عامها السادس
+ * والستين» when the source said 56 (INCIDENTS #341). Returns the numbers to block on.
+ */
+export function ageNotInSource(body: string, source: string): string[] {
+  const text = String(body || "").replace(/https?:\/\/\S+/g, " ");
+  const found: string[] = [];
+  const re = /الـ\s?(\d{2})\s+(?:من\s+(?:عمره|عمرها|العمر)|عامه|عامها)|(?:عامه|عامها)\s+الـ\s?(\d{2})|(?:البالغ|البالغة)\s+من\s+العمر\s+(\d{2})\s+عاما/g;
+  for (const m of text.matchAll(re)) {
+    const n = m[1] || m[2] || m[3];
+    if (!new RegExp(`(?<!\\d)${n}(?!\\d)`).test(source) && !found.includes(n)) found.push(n);
+  }
+  return found;
+}
 export function spelledAgesToDigits(body: string): string {
   return String(body || "").replace(/(?<![\u0600-\u06FF])(?:(واحدا|ثلاثا|أربعا|خمسا|ستا|سبعا|ثمانيا|تسعا|واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g,
     (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`)
@@ -532,8 +546,11 @@ export function spelledAgesToDigits(body: string): string {
     .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(مائة|مئة|مائتي|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة)\s+(قدم|أقدام|متر|أمتار|ميل|كيلومتر|دولار|رطل|كيلوغرام|مشجع|متفرج)(?![\u0600-\u06FF])/g,
       (_m, h: string, w: string) => `${HUNDREDS[h]} ${w}`)
     // An age as an ordinal: «سيكون في الثالثة والأربعين من عمره» ← «في الـ43 من عمره» (INCIDENTS #239)
-    .replace(/(?<![\u0600-\u06FF])(?:ال)?(الحادية|الثانية|الثالثة|الرابعة|الخامسة|السادسة|السابعة|الثامنة|التاسعة|الحادي|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع)\s+و(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(من\s+(?:عمره|عمرها|العمر))(?![\u0600-\u06FF])/g,
+    .replace(/(?<![\u0600-\u06FF])(?:ال)?(الحادية|الثانية|الثالثة|الرابعة|الخامسة|السادسة|السابعة|الثامنة|التاسعة|الحادي|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع)\s+و(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(من\s+(?:عمره|عمرها|العمر)|عامه|عامها)(?![\u0600-\u06FF])/g,
       (_m, u: string, t: string, w: string) => `الـ${ORD_UNITS[u.replace(/^ال/, "")] + AGE_TENS[t]} ${w}`)
+    // «عامها السادس والستين» ← «عامها الـ66» (INCIDENTS #341)
+    .replace(/(?<![\u0600-\u06FF])(عامه|عامها)\s+(?:ال)?(الحادية|الثانية|الثالثة|الرابعة|الخامسة|السادسة|السابعة|الثامنة|التاسعة|الحادي|الثاني|الثالث|الرابع|الخامس|السادس|السابع|الثامن|التاسع)\s+و(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)(?![\u0600-\u06FF])/g,
+      (_m, w: string, u: string, t: string) => `${w} الـ${ORD_UNITS[u.replace(/^ال/, "")] + AGE_TENS[t]}`)
     // …and round thousands: «أكثر من ألفي تذكرة» ← «2000 تذكرة» (INCIDENTS #238)
     // Never after a number: «899 ألف مشاهد» became «899 1000 مشاهد» (INCIDENTS #244)
     .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(ألف|ألفي|ألفين)\s+(تذكرة|مشجع|متفرج|مشاهد|دولار|قدم|متر|ميل)(?![\u0600-\u06FF])/g,

@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, type NewsFile } from "./news-qa";
+import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4368,6 +4368,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result"].includes(i.code));
+  // An age the source never gives is an invented number (INCIDENTS #341).
+  const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
+  if (badAges.length) {
+    blocking.push({ code: "age_not_in_source", severity: "error", field: "body", message: `سن في المتن غير موجود في المصدر: ${badAges.join("، ")}`, excerpt: badAges.join(" ") });
+    lastPostRetryable = true;
+  }
   // A results report must report results (INCIDENTS #53: a SmackDown «results» article
   // was a match card with every winner line removed).
   if (isShowResultsArticle(rawTitle, plainText) && !/الفائز|الفائزة|الفائزون|الفائزتان|الفائزان/.test(draft.body)) {

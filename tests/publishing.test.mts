@@ -3958,3 +3958,11 @@ test('each new show page: every query people use, and the ones where it is not i
   // a query used 3 times or more, below the first 3, is work for the round; one seen twice is noise
   assert.deepEqual(m.weakQueries(by[page]).map((x: any) => x.q), ['raw 6/10/2026']);
 });
+
+test('ageNotInSource: an age the source never states is flagged (Dawn Marie 66 vs 56)', async () => {
+  const { ageNotInSource, spelledAgesToDigits } = await import('../scripts/news-qa');
+  const body = spelledAgesToDigits('بينما تقترب من عامها السادس والستين');
+  assert.equal(body, 'بينما تقترب من عامها الـ66');
+  assert.deepEqual(ageNotInSource(body, 'as she approaches 56 years old'), ['66']);
+  assert.deepEqual(ageNotInSource(body, 'she turns 66'), []);
+});
