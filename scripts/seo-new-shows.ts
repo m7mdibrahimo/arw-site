@@ -5,6 +5,9 @@
 //   2. from 6 hours on, until Google has it → URL Inspection; still not indexed after 72 hours → a problem
 //   3. once indexed → its clicks, impressions and position from the daily report, and a problem when it is
 //      still below the first results after five days
+//   4. every hour, what people search when Google shows each new page — every query, its position, impressions
+//      and clicks (INCIDENTS #365) — and a problem for each query people use where the page isn't in the first 3,
+//      so the monitoring round knows exactly which words to work on, show by show
 // Only search engines see any of this — nothing on the page changes (the owner's rule).
 //   npx tsx scripts/seo-new-shows.ts      (GSC_SERVICE_ACCOUNT for steps 1–2 on Google; IndexNow needs nothing)
 // Writes seo/new-shows.json (state) and seo/new-shows.md (what to fix), read by the monitoring rounds.
@@ -22,7 +25,8 @@ const READ_SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
 const H = 3600_000;
 const INSPECT_PER_RUN = 40;
 
-interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string }
+export interface QueryStat { q: string; clicks: number; impressions: number; position: number }
+interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string; queries?: QueryStat[]; queriesAt?: string }
 interface State { pages: Record<string, Page>; sitemapPinged?: string }
 
 /** Watch pages: one show, recap or nostalgia episode, and a program's library page. */
@@ -40,6 +44,24 @@ export function parseSitemap(xml: string): { loc: string; lastmod: string }[] {
     if (loc) out.push({ loc, lastmod });
   }
   return out;
+}
+
+/** Search Console rows (dimensions page, query) → each tracked page's queries, most seen first, at most `max` */
+export function queriesByPage(rows: { keys: string[]; clicks: number; impressions: number; position: number }[], pages: string[], max = 15): Record<string, QueryStat[]> {
+  const want = new Set(pages);
+  const out: Record<string, QueryStat[]> = {};
+  for (const r of rows || []) {
+    const [page, q] = r.keys || [];
+    if (!want.has(page) || !q) continue;
+    (out[page] ||= []).push({ q, clicks: r.clicks || 0, impressions: r.impressions || 0, position: Math.round((r.position || 0) * 10) / 10 });
+  }
+  for (const k of Object.keys(out)) out[k] = out[k].sort((a, b) => b.impressions - a.impressions || a.position - b.position).slice(0, max);
+  return out;
+}
+
+/** The queries people really use (seen `minImpressions` times or more) where the page is not in the first 3 */
+export function weakQueries(queries: QueryStat[] = [], minImpressions = 3): QueryStat[] {
+  return queries.filter(x => x.impressions >= minImpressions && x.position > 3);
 }
 
 /** Pages to send now: new ones, and known ones whose lastmod moved. The first run only sends the last 3 days. */
@@ -135,6 +157,21 @@ async function main() {
     }
   }
 
+  // 4. what people search when Google shows each page of the last 14 days (the last 7 days, fresh data included)
+  const tracked = Object.entries(state.pages).filter(([, p]) => p.pinged && p.pinged !== "before tracking" && now - Date.parse(p.firstSeen) <= 14 * 24 * H).map(([u]) => u);
+  if (site && readToken && tracked.length) {
+    try {
+      const day = (d: number) => new Date(now - d * 24 * H).toISOString().slice(0, 10);
+      const d = await api(readToken, `https://searchconsole.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site)}/searchAnalytics/query`, {
+        startDate: day(7), endDate: day(0), dimensions: ["page", "query"], rowLimit: 5000, dataState: "all",
+        dimensionFilterGroups: [{ filters: [{ dimension: "page", operator: "includingRegex", expression: "/(shows|recaps|nostalgia|library)/" }] }],
+      });
+      const byPage = queriesByPage(d.rows || [], tracked);
+      for (const u of tracked) { state.pages[u].queries = byPage[u] || []; state.pages[u].queriesAt = new Date(now).toISOString(); }
+      console.log(`[SEO] queries for ${Object.keys(byPage).length}/${tracked.length} page(s)`);
+    } catch (e: any) { console.log(`[SEO] queries: ${e.message}`); }
+  }
+
   // 3. report
   let perf: Record<string, { clicks: number; impressions: number; position: number }> = {};
   try {
@@ -150,6 +187,7 @@ async function main() {
     if (!p.indexedAt && age >= 72 && p.inspected) problems.push(`- مش متفهرسة بعد ${Math.round(age)} ساعة: ${path_(u)} — ${p.coverage || p.verdict || "؟"}`);
     const pf = perf[u];
     if (p.indexedAt && age >= 5 * 24 && pf && pf.impressions >= 30 && pf.position > 3) problems.push(`- متفهرسة بس ترتيبها ${pf.position.toFixed(1)} (${pf.impressions} ظهور): ${path_(u)} — حسّن العنوان والوصف والبيانات المنظمة`);
+    for (const w of weakQueries(p.queries)) problems.push(`- «${w.q}» ترتيبها ${w.position.toFixed(1)} (${w.impressions} ظهور، ${w.clicks} نقرة): ${path_(u)} — خليها في أول ٣`);
   }
   const lines = [
     `# الصفحات الجديدة في البحث`,
@@ -166,6 +204,12 @@ async function main() {
       const pf = perf[u];
       return `| ${path_(u)} | ${p.firstSeen.slice(0, 16).replace("T", " ")} | ${(p.pinged || "").slice(0, 16).replace("T", " ")} | ${p.indexedAt ? "متفهرسة" : p.coverage || (p.inspected ? p.verdict : "لسه")} | ${pf ? pf.clicks : "—"} | ${pf ? pf.impressions : "—"} | ${pf ? pf.position.toFixed(1) : "—"} |`;
     }),
+    ``,
+    `## الناس بتدوّر بإيه على كل صفحة جديدة (آخر ٧ أيام)`,
+    ...recent.filter(([, p]) => p.queries && p.queries.length).slice(0, 40).flatMap(([u, p]) => [
+      ``, `### ${path_(u)}`, `| البحث | الترتيب | ظهور | نقرات |`, `|---|---|---|---|`,
+      ...p.queries!.map(x => `| ${x.q} | ${x.position.toFixed(1)} | ${x.impressions} | ${x.clicks} |`),
+    ]),
     ``,
   ];
   fs.mkdirSync(OUT, { recursive: true });

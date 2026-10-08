@@ -3941,3 +3941,20 @@ test('the Worker sees a new Ringside News / Wrestling Inc story from the newest 
   assert.equal(newestFeedItem('<rss><item><title>B</title><link>https://site/b/</link></item></rss>'), 'https://site/b/'); // no guid: the link
   assert.equal(newestFeedItem('<html>blocked</html>'), '');
 });
+
+test('each new show page: every query people use, and the ones where it is not in the first 3 (INCIDENTS #365)', async () => {
+  const m = await import('../scripts/seo-new-shows.ts');
+  const page = 'https://arab-wrestling.com/shows/raw-06-10-2026/';
+  const rows = [
+    { keys: [page, 'عرض الرو 06.10.2026 مترجم'], clicks: 4, impressions: 40, position: 1.4 },
+    { keys: [page, 'raw 6/10/2026'], clicks: 0, impressions: 12, position: 7.26 },
+    { keys: [page, 'رو مترجم'], clicks: 0, impressions: 2, position: 9 },
+    { keys: ['https://arab-wrestling.com/shows/old/', 'x'], clicks: 1, impressions: 99, position: 1 },
+  ];
+  const by = m.queriesByPage(rows, [page]);
+  assert.deepEqual(Object.keys(by), [page]); // only the tracked pages
+  assert.deepEqual(by[page].map((x: any) => x.q), ['عرض الرو 06.10.2026 مترجم', 'raw 6/10/2026', 'رو مترجم']); // most seen first
+  assert.equal(by[page][1].position, 7.3);
+  // a query used 3 times or more, below the first 3, is work for the round; one seen twice is noise
+  assert.deepEqual(m.weakQueries(by[page]).map((x: any) => x.q), ['raw 6/10/2026']);
+});
