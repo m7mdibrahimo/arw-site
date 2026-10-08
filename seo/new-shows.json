@@ -1999,9 +1999,9 @@
    "firstSeen": "2026-10-06T17:38:32.011Z",
    "lastmod": "2026-10-06",
    "pinged": "2026-10-06T17:59:09.444Z",
-   "inspected": "2026-10-07T18:51:34.256Z",
+   "inspected": "2026-10-08T01:50:50.521Z",
    "verdict": "NEUTRAL",
-   "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
+   "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL."
   },
   "https://arab-wrestling.com/nostalgia/2026-موني-ان-ذا-بانك-2010/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
@@ -2075,7 +2075,7 @@
    "firstSeen": "2026-10-07T12:49:15.159Z",
    "lastmod": "2026-08-17",
    "pinged": "2026-10-07T13:09:45.479Z",
-   "inspected": "2026-10-07T18:51:34.256Z",
+   "inspected": "2026-10-08T01:50:50.521Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
@@ -2169,16 +2169,16 @@
   },
   "https://arab-wrestling.com/library/cmll-lunes-clasico/": {
    "firstSeen": "2026-10-07T13:29:59.183Z",
-   "lastmod": "2026-09-30",
-   "pinged": "2026-10-07T13:29:59.183Z",
+   "lastmod": "2026-10-08",
+   "pinged": "2026-10-08T01:50:50.521Z",
    "inspected": "2026-10-07T19:51:23.911Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
   },
   "https://arab-wrestling.com/library/cmll-martes-populares/": {
    "firstSeen": "2026-10-07T13:29:59.183Z",
-   "lastmod": "2026-09-24",
-   "pinged": "2026-10-07T13:29:59.183Z",
+   "lastmod": "2026-10-08",
+   "pinged": "2026-10-08T01:50:50.521Z",
    "inspected": "2026-10-07T19:51:23.911Z",
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL."
@@ -2306,8 +2306,8 @@
   },
   "https://arab-wrestling.com/library/njpw-road-to-king-of-pro-wrestling-2026/": {
    "firstSeen": "2026-10-07T14:17:27.956Z",
-   "lastmod": "2026-10-07",
-   "pinged": "2026-10-07T14:17:27.956Z",
+   "lastmod": "2026-10-08",
+   "pinged": "2026-10-08T01:50:50.521Z",
    "inspected": "2026-10-07T20:51:26.139Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن"
@@ -2347,7 +2347,22 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T20:51:26.139Z"
+  },
+  "https://arab-wrestling.com/shows/njpw-road-to-king-of-pro-wrestling-07-10-2026/": {
+   "firstSeen": "2026-10-08T01:50:50.521Z",
+   "lastmod": "2026-10-08",
+   "pinged": "2026-10-08T01:50:50.521Z"
+  },
+  "https://arab-wrestling.com/shows/cmll-martes-populares-06-10-2026/": {
+   "firstSeen": "2026-10-08T01:50:50.521Z",
+   "lastmod": "2026-10-08",
+   "pinged": "2026-10-08T01:50:50.521Z"
+  },
+  "https://arab-wrestling.com/shows/cmll-lunes-clasico-05-10-2026/": {
+   "firstSeen": "2026-10-08T01:50:50.521Z",
+   "lastmod": "2026-10-08",
+   "pinged": "2026-10-08T01:50:50.521Z"
   }
  },
- "sitemapPinged": "2026-10-08T00:23:45.017Z"
+ "sitemapPinged": "2026-10-08T01:50:50.521Z"
 }
