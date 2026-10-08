@@ -261,13 +261,15 @@ module.exports = function(eleventyConfig) {
     }
     throw last;
   };
-  const fetchLiveImages = async () => {
+  // `skip`: names not to bring back — the resized copies of /content/images pictures, made on request by arw-media now
+  // (INCIDENTS #369); restoring them kept ~7,500 files in the deployment for nothing.
+  const fetchLiveImages = async (skip = new Set()) => {
     const started = Date.now();
     const list = await fetchLiveJson("img-cache.json");
     fs.mkdirSync("_site/img", { recursive: true });
     const have = new Set(fs.readdirSync("_site/img"));
     // (not the panel's retired 160px copies — 3,000 files the deployment can't hold, INCIDENTS #368)
-    const todo = (Array.isArray(list) ? list : []).filter(f => typeof f === "string" && IMG_RE.test(f) && !/-160\.webp$/.test(f) && !have.has(f));
+    const todo = (Array.isArray(list) ? list : []).filter(f => typeof f === "string" && IMG_RE.test(f) && !/-160\.webp$/.test(f) && !skip.has(f) && !have.has(f));
     let ok = 0, next = 0;
     const worker = async () => {
       while (next < todo.length) {
@@ -311,14 +313,18 @@ module.exports = function(eleventyConfig) {
   const BUILD_T = {};
   eleventyConfig.on("eleventy.before", async () => {
     BUILD_T.before = Date.now();
-    try { console.log(`[img-cache] restored ${process.env.CF_PAGES ? await fetchLiveImages() : syncDir(IMG_CACHE, "_site/img")} resized images`); }
-    catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
+    // the map first: its /content/images entries are the copies arw-media makes on request now, never restored or kept
+    const skip = new Set();
     try {
       const live = await fetchLiveJson("img-map.json");
-      for (const k of Object.keys(live || {})) if (/\|160webp$/.test(k)) delete live[k]; // retired (INCIDENTS #368)
+      for (const [k, v] of Object.entries(live || {})) {
+        if (/\|160webp$/.test(k) || k.startsWith("/content/images/")) { skip.add(String(v).split("/img/").pop()); delete live[k]; } // INCIDENTS #368, #369
+      }
       if (live && typeof live === "object") Object.assign(IMG_MAP, live);
-      console.log(`[img-map] ${Object.keys(IMG_MAP).length} resized pictures known`);
+      console.log(`[img-map] ${Object.keys(IMG_MAP).length} resized pictures known (${skip.size} made on request now)`);
     } catch (e) { console.log(`[img-map] skipped: ${e.message}`); }
+    try { console.log(`[img-cache] restored ${process.env.CF_PAGES ? await fetchLiveImages(skip) : syncDir(IMG_CACHE, "_site/img")} resized images`); }
+    catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
     BUILD_T.restored = Date.now();
   });
   // /build.json: which commits this deployment contains, so the panel can say «ظهر على الموقع ✓»
@@ -789,6 +795,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("wrapSpoilers", wrapSpoilers);
 
   // ضغط الصور تلقائيًا ومنع حدوث أخطاء أو اختفاء للصور
+  // The site's own pictures at the size a page needs, made on request by the arw-media worker from the one original in
+  // R2 (owner's idea, INCIDENTS #369): «/content/images/a.jpg?w=800». No resized file in the deployment any more — the
+  // ~7,500 of them took it past Cloudflare Pages' 20,000-file limit (INCIDENTS #368) — and no second copy in storage.
+  const SIZED_RE = /^\/content\/images\/[^?#]+\.(?:jpe?g|png|webp)$/i;
+  const sizedUrl = (rel, w) => `${encodeURI(String(rel).normalize("NFC"))}?w=${w}`;
   const optImgShortcode = async function(src, fallback) {
     const defaultFallback = "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg";
     let input = (src && typeof src === "string" && src.trim()) ? src.trim() : (fallback || defaultFallback);
@@ -809,6 +820,7 @@ module.exports = function(eleventyConfig) {
         decoded = decodeURIComponent(cleanInput);
       } catch (e) {}
 
+      if (SIZED_RE.test(decoded)) return sizedUrl(decoded, 800);
       // already resized by an earlier build: no original needed
       const known = mapped(decoded, "800jpeg");
       if (known && !fs.existsSync("." + decoded)) return known;
@@ -908,6 +920,7 @@ module.exports = function(eleventyConfig) {
     try { rel = decodeURIComponent(rel); } catch (e) {}
     let file = "." + rel;
     if (!/^\.\/(content|images)\//.test(file)) return "";
+    if (SIZED_RE.test(rel)) return sizedUrl(rel, 480); // made on request (INCIDENTS #369)
     // a picture already made by an earlier build is used as it is, original or not (INCIDENTS #330)
     const ready = mapped(rel, "480webp");
     if (ready) return ready;
@@ -933,7 +946,7 @@ module.exports = function(eleventyConfig) {
     if (!input || /^https?:\/\//i.test(input)) return "";
     let rel = input.startsWith("/") ? input : "/" + input;
     try { rel = decodeURIComponent(rel); } catch (e) {}
-    return mapped(rel, "480webp");
+    return SIZED_RE.test(rel) ? sizedUrl(rel, 160) : mapped(rel, "480webp"); // 160px, made on request (INCIDENTS #369)
   });
   // a card's picture: the 480px WebP (~20–40 KB) — sharp on a phone's card too, which is about 255 points wide —
   // or the original when there is none (INCIDENTS #330)

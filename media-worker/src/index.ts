@@ -2,7 +2,14 @@
 // addresses, so the Pages build no longer carries ~800 MB of them (INCIDENTS #312). A file comes from R2; the first
 // request for a file R2 doesn't have yet takes it from the repo (the bots and the panel keep committing there) and
 // stores it in R2 for every request after.
+import { widthFor } from "./sizes";
+import LEGACY from "./legacy-img.json";
 export interface Env { MEDIA?: R2Bucket; REPO_RAW: string; GITHUB_OWNER: string; GITHUB_REPO: string }
+
+// The resized copies the build used to make (/img/<hash>-<width>.<ext>, INCIDENTS #369): Google, shares and old pages
+// still ask for them. Each name → its original and width, so they are served by the same resizing as «?w=».
+const LEGACY_IMG = LEGACY as unknown as Record<string, [string, number]>;
+const RESIZED_CACHE = "public, max-age=2592000, stale-while-revalidate=86400";
 
 const TYPES: Record<string, string> = {
   jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp", gif: "image/gif", avif: "image/avif", svg: "image/svg+xml",
@@ -61,7 +68,8 @@ async function upload(req: Request, env: Env): Promise<Response> {
 
 /** Reels are needed only while they're posted to the social networks (which keep their own copy): R2 keeps them
  *  30 days, so the bucket stays inside its free 10 GB for good (pictures grow ~2 GB a year, reels ~5 GB). */
-export const REEL_DAYS = 30;
+// (not exported: the Workers runtime refuses a module whose exports aren't handlers or functions — INCIDENTS #369)
+const REEL_DAYS = 30;
 async function pruneReels(env: Env): Promise<number> {
   if (!env.MEDIA) return 0;
   const cut = Date.now() - REEL_DAYS * 86400_000;
@@ -75,6 +83,44 @@ async function pruneReels(env: Env): Promise<number> {
   return gone;
 }
 
+/** The original, from R2 or (first time) the repo — the same two places as a plain request */
+async function original(key: string, env: Env, ctx: ExecutionContext): Promise<{ buf: ArrayBuffer; type: string } | null> {
+  if (env.MEDIA) {
+    const obj = await env.MEDIA.get(key);
+    if (obj) return { buf: await obj.arrayBuffer(), type: obj.httpMetadata?.contentType || typeOf(key) };
+  }
+  const res = await fetch(`${env.REPO_RAW.replace(/\/$/, "")}/${key.split("/").map(encodeURIComponent).join("/")}`, { cache: "no-store" });
+  if (!res.ok) return null;
+  const buf = await res.arrayBuffer();
+  if (env.MEDIA) ctx.waitUntil(env.MEDIA.put(key, buf, { httpMetadata: { contentType: typeOf(key), cacheControl: CACHE } }));
+  return { buf, type: typeOf(key) };
+}
+
+/** One picture at one width, as WebP, kept in the edge cache (never in R2). If resizing fails the original is sent,
+ *  so a picture is never missing. */
+async function serveSized(req: Request, env: Env, ctx: ExecutionContext, key: string, width: number): Promise<Response> {
+  const cache = (globalThis as any).caches?.default as Cache | undefined;
+  const cacheKey = new Request(`${new URL(req.url).origin}/${key}?w=${width}`, { method: "GET" });
+  if (cache) {
+    const hit = await cache.match(cacheKey);
+    if (hit) return req.method === "HEAD" ? new Response(null, hit) : hit;
+  }
+  const src = await original(key, env, ctx);
+  if (!src) return new Response("Not found", { status: 404, headers: { "Cache-Control": "public, max-age=60" } });
+  let res: Response;
+  try {
+    // (loaded only when a size is asked for: the codecs are WebAssembly, and the module stays importable in tests)
+    const { resizedWebp } = await import("./resize");
+    const webp = await resizedWebp(src.buf, src.type, width);
+    res = new Response(webp, { status: 200, headers: headersFor(key, { "Content-Type": "image/webp", "Cache-Control": RESIZED_CACHE, "Content-Length": String(webp.byteLength), "X-Resized": String(width) }) });
+  } catch (e: any) {
+    console.log(`[media] resize ${key} @${width}: ${e?.message || e}`);
+    return new Response(req.method === "HEAD" ? null : src.buf, { status: 200, headers: headersFor(key, { "Content-Type": src.type, "Cache-Control": "public, max-age=3600", "X-Resized": "failed" }) });
+  }
+  if (cache) ctx.waitUntil(cache.put(cacheKey, res.clone()));
+  return req.method === "HEAD" ? new Response(null, res) : res;
+}
+
 export default {
   async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
     ctx.waitUntil(pruneReels(env).then(n => console.log(`[media] ${n} old reels removed`)));
@@ -85,7 +131,24 @@ export default {
       return upload(req, env);
     }
     if (req.method !== "GET" && req.method !== "HEAD") return new Response("Method not allowed", { status: 405 });
-    const key = repoPathOf(new URL(req.url).pathname);
+    const url = new URL(req.url);
+    // a picture at a size: «/content/images/a.jpg?w=480», or an old «/img/<name>» copy
+    let sized: { key: string; width: number } | null = null;
+    if (url.pathname.startsWith("/img/")) {
+      let name = url.pathname.slice(5);
+      try { name = decodeURIComponent(name); } catch {}
+      const hit = LEGACY_IMG[name];
+      const k = hit && repoPathOf(hit[0]);
+      // a name this list doesn't know: whatever the site itself has at that address (Pages, behind this route)
+      if (!k) return fetch(req);
+      sized = { key: k, width: widthFor(String(hit[1]))! };
+    } else {
+      const w = widthFor(url.searchParams.get("w"));
+      const k = repoPathOf(url.pathname);
+      if (w && k && k.startsWith("content/images/") && /\.(jpe?g|png|webp)$/i.test(k)) sized = { key: k, width: w };
+    }
+    if (sized) return serveSized(req, env, ctx, sized.key, sized.width);
+    const key = repoPathOf(url.pathname);
     if (!key) return new Response("Not found", { status: 404 });
 
     // 0. the edge cache: a file once served stays near the visitor for a day, so R2 is read rarely (its free tier

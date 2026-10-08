@@ -12,7 +12,14 @@ routes = [
   { pattern = "arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
   { pattern = "www.arab-wrestling.com/content/images/*", zone_name = "arab-wrestling.com" },
   { pattern = "www.arab-wrestling.com/videos/*", zone_name = "arab-wrestling.com" },
+  # the build's old resized copies, now made on request from the original (INCIDENTS #369)
+  { pattern = "arab-wrestling.com/img/*", zone_name = "arab-wrestling.com" },
+  { pattern = "www.arab-wrestling.com/img/*", zone_name = "arab-wrestling.com" },
 ]
+
+# resizing a picture takes some CPU (decode, resize, WebP); each size is then served from the edge cache
+[limits]
+cpu_ms = 10000
 
 # once a day: reels older than 30 days leave R2 (src/index.ts pruneReels)
 [triggers]

@@ -33,3 +33,6 @@ videos/**/assets/
 # A file R2 refuses is still committed with «git add -f» by scripts/media-store.ts.
 content/images/
 dist/videos/*.mp4
+
+# wrangler's local dev state
+media-worker/.wrangler/

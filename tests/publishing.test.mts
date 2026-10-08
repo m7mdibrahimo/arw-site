@@ -3723,7 +3723,7 @@ test('the site builds from a «site» branch without the original pictures and r
   assert.ok(!/cacheTtl: 86400/.test(src) && /fetch\(src, \{ cache: "no-store" \}\)/.test(src));
   // uploads only with a GitHub token that can write to the repo; reels leave R2 after 30 days (free tier for good)
   assert.match(src, /collaborators\?per_page=1/);
-  assert.match(src, /export const REEL_DAYS = 30;/);
+  assert.match(src, /\nconst REEL_DAYS = 30;/); // not exported: the Workers runtime refuses non-handler exports (INCIDENTS #369)
   // the build reuses resized pictures without their originals, and fetches an original only for a new picture
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   assert.match(cfg, /const known = mapped\(decoded, "800jpeg"\);/);
@@ -3975,4 +3975,19 @@ test('checkArticle blocks the misspellings «مبنا» and «التمرينا»
   const { checkArticle } = await import('../scripts/news-qa');
   const issues = checkArticle('تشاد غيبل يكشف عن صداقة غير متوقعة مع سي ام بانك', 'قال مبنا أن العلاقة قوية. غير طريقته في التمرينا اليومية.');
   assert.ok(issues.filter(i => i.code === 'known_wrong').length >= 2);
+});
+
+test('a picture at the size a page asks for: a few fixed widths, made on request from the one original (INCIDENTS #369)', async () => {
+  const { widthFor } = await import('../media-worker/src/sizes.ts');
+  assert.equal(widthFor('480'), 480);
+  assert.equal(widthFor('500'), 640); // the next size up
+  assert.equal(widthFor('99999'), 1200); // never larger than the largest
+  assert.equal(widthFor(''), null);
+  assert.equal(widthFor('abc'), null);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  // the site's own pictures are asked at a size, never resized into files of the deployment
+  assert.match(cfg, /if \(SIZED_RE\.test\(decoded\)\) return sizedUrl\(decoded, 800\);/);
+  assert.match(cfg, /if \(SIZED_RE\.test\(rel\)\) return sizedUrl\(rel, 480\);/);
+  const toml = fs.readFileSync('media-worker/wrangler.toml', 'utf-8');
+  assert.match(toml, /pattern = "arab-wrestling\.com\/img\/\*"/); // the old resized copies' addresses keep working
 });

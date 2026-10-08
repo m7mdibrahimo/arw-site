@@ -102,7 +102,8 @@ test('the 4400+ original images are hard-linked into the site, not copied byte b
 test('host builds reuse already-resized images from the live site (only new ones are resized)', () => {
   const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
   assert.match(cfg, /_site\/img-cache\.json/);
-  assert.match(cfg, /process\.env\.CF_PAGES \? await fetchLiveImages\(\)/);
+  // (minus the copies arw-media makes on request now, INCIDENTS #369)
+  assert.match(cfg, /process\.env\.CF_PAGES \? await fetchLiveImages\(skip\)/);
   // Never keep a half-downloaded or non-image response: eleventy-img would skip it forever.
   assert.match(cfg, /startsWith\("image\/"\)/);
   assert.match(cfg, /fs\.renameSync\(tmp/);

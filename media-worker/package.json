@@ -1,0 +1,14 @@
+{
+  "name": "arw-media",
+  "private": true,
+  "description": "Serves the site's pictures and reels from R2; resizes a picture on request (?w=)",
+  "dependencies": {
+    "@jsquash/jpeg": "1.6.0",
+    "@jsquash/png": "3.1.1",
+    "@jsquash/resize": "2.1.1",
+    "@jsquash/webp": "1.5.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}
