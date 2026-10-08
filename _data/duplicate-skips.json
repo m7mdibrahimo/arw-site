@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/details-on-the-aew-status-of-kip-sabian-and-penelope-ford/": {
-    "matchedFile": "20260923030337-استمرار-ثنائي-aew-كيب-سابيان-وبينيلوبي-فورد-لسنوات-قادمة-بعد-تجديد-عقودهما.md",
-    "reason": "manual audit 2026-09-24: same story as earlier article",
-    "at": "2026-09-24T06:15:52.509Z"
-  },
   "https://www.fightful.com/wrestling/contract-update-on-anthony-bowens-and-max-caster/": {
     "matchedFile": "20260923195829-عقود-ثنائي-aew-على-وشك-الانتهاء-دون-محادثات-لتجديدها-حتى-الآن.md",
     "reason": "manual audit 2026-09-24: same story as earlier article",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261008192957-ردود-الفعل-الكواليسية-على-المواجهة-الكلامية-بين-رومان-رينز-وال-ايه-نايت-في-عرض-wwe-raw-يوم-5-أكتوبر.md",
     "reason": "الخبر الجديد يعيد سرد تفاصيل المواجهة الكلامية بين رومان رينز وال ايه نايت في عرض WWE Raw وردود الفعل الكواليسية وإشادة طاقم الإنتاج والأداء العاطفي لرينز، وهي نفس تفاصيل الخبر المنشور تماماً.",
     "at": "2026-10-08T18:54:04.726Z"
+  },
+  "https://www.ringsidenews.com/chris-jericho-adds-kairi-rock-n-wrestling-rager-sea-cruise/": {
+    "matchedFile": "20261008213832-الإعلان-عن-مشاركة-كايري-ساني-في-عرض-rock-n-wrestling-rager-at-sea-الخاص-بكريس-جيريكو.md",
+    "reason": "الخبر الجديد يتناول نفس الإعلان عن مشاركة كايري ساني في رحلة كريس جيريكو البحرية، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
+    "at": "2026-10-08T18:56:22.038Z"
   }
 }
