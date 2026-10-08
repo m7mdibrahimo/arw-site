@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/mjf-kayla-becker-and-david-arquette-feature-in-first-trailer-for-stranglehold/": {
-    "matchedFile": "20260923182113-نظرة-أولى-على-ام-جيه-اف-في-فيلم-الإثارة-المنتظر-stranglehold.md",
-    "reason": "manual audit 2026-09-24: same story as earlier article",
-    "at": "2026-09-24T06:15:52.511Z"
-  },
   "https://www.wrestlinginc.com/2267310/aew-tbs-title-open-challenge-announced-all-out/": {
     "matchedFile": "20260924061525-بيرسيفوني-تعلن-عن-تحدي-مفتوح-على-بطولة-تي-بي-إس-في-عرض-aew-all-out.md",
     "reason": "manual audit 2026-09-24: same story as earlier article",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261008212519-السفارة-الأمريكية-في-الرياض-تصدر-تحذيرا-أمنيا-جديدا-للمواطنين-الأمريكيين-وتدعوهم-لتوخي-الحيطة.md",
     "reason": "الخبر الجديد يعيد سرد نفس التحذير الأمني الصادر عن السفارة الأمريكية، والتفاصيل المضافة حول قلق نجوم WWE وخطط الاتحاد البديلة تعتبر تكهنات أو تفاصيل إضافية حول نفس الحدث الأمني ولا تشكل تطوراً رسمياً جديداً يغير جوهر الخبر المنشور.",
     "at": "2026-10-08T20:17:40.632Z"
+  },
+  "https://www.wrestlinginc.com/2281698/wwe-kairi-chris-jericho-rock-wrestling-rager-sea-cruise-aew/": {
+    "matchedFile": "20261008213832-الإعلان-عن-مشاركة-كايري-ساني-في-عرض-rock-n-wrestling-rager-at-sea-الخاص-بكريس-جيريكو.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة الإعلان عن مشاركة كايري في رحلة كريس جيريكو البحرية، ولا يقدم تطوراً جديداً جوهرياً بل مجرد تكهنات حول مستقبلها مع AEW.",
+    "at": "2026-10-08T20:24:56.095Z"
   }
 }
