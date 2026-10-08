@@ -2531,7 +2531,9 @@ export async function runWatcherPoll(env: Env): Promise<void> {
 
     if (canDoTg && takeSlot()) {
       const verify = await verifyLiveOnSite(env, { url: item.url, image: item.image });
-      if (!verify.ok) continue; // not fully live yet — try again next minute
+      // Nothing was sent: give the slot back, or two stories whose page/image isn't readable yet
+      // (oldest first, every tick) use both slots and starve every newer story (INCIDENTS #378).
+      if (!verify.ok) { platformAttempts = Math.max(0, platformAttempts - 1); continue; } // not fully live yet — try again next minute
 
       const collection = item.kind === "show" ? "shows" : item.kind === "recap" ? "recaps" : "news";
       const isShowResults = isResultsArticle(item.title);

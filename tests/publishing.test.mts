@@ -4056,3 +4056,8 @@ test('an English quote block inside an Arabic story is blocked, translated ones 
   assert.ok(!codes('خبر عادي.\n\n> "كانت الليلة آخر نزال لي في WWE EVOLVE على Tubi"').includes('english_quote'));
   assert.ok(!codes('خبر عادي عن WWE Money In The Bank Ladder Match هذا الأسبوع.').includes('english_quote'));
 });
+
+test('watcher gives the slot back when a story is not readable yet, so it cannot starve newer ones (#378)', () => {
+  const src = fs.readFileSync(path.join(process.cwd(), 'worker/src/index.ts'), 'utf8');
+  assert.match(src, /if \(!verify\.ok\) \{ platformAttempts = Math\.max\(0, platformAttempts - 1\); continue; \}/);
+});
