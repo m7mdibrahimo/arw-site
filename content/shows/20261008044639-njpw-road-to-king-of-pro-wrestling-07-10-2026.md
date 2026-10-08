@@ -20,6 +20,7 @@ servers:
   - url: https://fembed.co/embed/knZd7j_O-BBl8
   - url: https://uqload.vc/embed-8nua8crm74de.html
 downloads_medium: |-
+  https://hgcloud.to/pyks6kd3f95d
   https://1cloudfile.com/2cgpC
   https://1fichier.com/?i9czi4qnyzk70r51ec42
   https://gofile.io/d/You7Z5vR
