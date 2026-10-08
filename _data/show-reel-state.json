@@ -3218,18 +3218,42 @@
     "publishedAt": 1791424030321,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال لونيس كلاسيكو 05.10.2026 مترجم",
-    "lastAttempt": 1791424043757,
+    "lastAttempt": 1791424964788,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261008044322-cmll-martes-populares-06-10-2026": {
+    "publishedAt": 1791424993578,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 06.10.2026 مترجم",
+    "lastAttempt": 1791425003885,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261008044639-njpw-road-to-king-of-pro-wrestling-07-10-2026": {
+    "publishedAt": 1791425030402,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو رود تو كينج اوف برو ريسلنج 07.10.2026 مترجم",
+    "lastAttempt": 1791425041487,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
