@@ -2256,7 +2256,10 @@ test('a card set more than a week out names the day instead of «القادم» 
 });
 
 test('the site watchdog checks pages, bots and platforms every minute and keeps a problem open until it is fixed (INCIDENTS #158)', async t => {
-  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth, deployLag } = await import('../worker/src/health');
+  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth, deployLag, onlyBookkeeping } = await import('../worker/src/health');
+  assert.equal(onlyBookkeeping([{ filename: 'watcher-state.json' }, { filename: 'seo/new-shows.json' }]), true, 'bookkeeping-only changes are not a stale deploy');
+  assert.equal(onlyBookkeeping([{ filename: 'watcher-state.json' }, { filename: 'content/news/x.md' }]), false);
+  assert.equal(onlyBookkeeping([]), false);
   const nowMs = Date.parse('2026-10-08T14:00:00Z');
   assert.equal(deployLag(nowMs / 1000 - 3600, nowMs) > 0, true, 'a live build an hour behind main is a problem');
   assert.equal(deployLag(nowMs / 1000 - 600, nowMs), 0);

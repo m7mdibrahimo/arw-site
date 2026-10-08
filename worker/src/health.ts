@@ -45,6 +45,13 @@ export function deployLag(buildCommitTimeSec: number, mainHeadMs: number, maxMs 
   return lag > maxMs ? lag : 0;
 }
 
+/** Files whose change makes no visible difference on the site (same list as .github/workflows/site-branch.yml, which skips the rebuild for them). */
+const INVISIBLE = /^(_data\/publish-state\.json|_data\/deliveries\/.*|worker\/.*|media-worker\/.*|seo\/.*|reports\/.*|editorial\/.*|content\/images\/.*|dist\/videos\/.*|watcher-state\.json|watcher-outcomes\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data\/duplicate-skips\.json|\.github\/.*)$/;
+/** True when every changed file is bookkeeping, so the live site being "behind" main is expected (INCIDENTS #379). */
+export function onlyBookkeeping(files: any[] | undefined | null): boolean {
+  return Array.isArray(files) && files.length > 0 && files.length < 300 && files.every(f => INVISIBLE.test(String(f?.filename || "")));
+}
+
 export function failedWorkflows(runs: any[]): { name: string; at: number; url: string }[] {
   const latest = new Map<string, any>();
   for (const r of runs) if (r?.status === "completed" && !latest.has(r.name)) latest.set(r.name, r);
@@ -145,7 +152,14 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
       const head: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commits/main`, {
         headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
       }).then(r => (r.ok ? r.json() : null)).catch(() => null);
-      const lag = deployLag(Number(build?.commitTime), Date.parse(head?.commit?.committer?.date || ""));
+      let lag = deployLag(Number(build?.commitTime), Date.parse(head?.commit?.committer?.date || ""));
+      if (lag && build?.commit) {
+        // the bots push bookkeeping to main all the time and site-branch.yml rightly doesn't rebuild for it
+        const cmp: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/compare/${build.commit}...main`, {
+          headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+        }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+        if (onlyBookkeeping(cmp?.files)) lag = 0;
+      }
       problems = mergeProblems(problems, lag ? [{ key: "deploy", code: "deploy_stale", title: "الموقع واقف على نسخة قديمة — بناء Cloudflare بيفشل أو متعطل", detail: `آخر نسخة ظاهرة أقدم من آخر تعديل بـ ${Math.round(lag / 60000)} دقيقة` }] : [], ["deploy_stale"], now);
       const lastAt = newest ? Date.parse(newest.published_at || newest.date) || 0 : 0;
       const quiet = lastAt && now - lastAt > 6 * 3600_000;
