@@ -138,7 +138,9 @@ const isPicture = (key: string) => /^content\/images\/.+\.(jpe?g|png|webp)$/i.te
  *  twice. A few per hour keeps each run well inside the Worker's CPU time. */
 const COMPRESS_PER_RUN = 5;
 const BIG_PICTURE_BYTES = 150 * 1024; // the same line as ORIGINAL_MAX_BYTES in resize.ts
-async function compressStored(env: Env, perRun = COMPRESS_PER_RUN, report: string[] = []): Promise<number> {
+// `again`: also the big ones a run already looked at — for the pictures a failing codec left untouched; only those still
+// larger than 1280×720 are redone (INCIDENTS #372)
+async function compressStored(env: Env, perRun = COMPRESS_PER_RUN, report: string[] = [], again = false): Promise<number> {
   if (!env.MEDIA) return 0;
   let cursor: string | undefined, done = 0;
   do {
@@ -146,15 +148,19 @@ async function compressStored(env: Env, perRun = COMPRESS_PER_RUN, report: strin
     for (const o of page.objects) {
       if (done >= perRun) return done;
       // only the big ones, each once (a small one is never read or rewritten)
-      if (!isPicture(o.key) || o.size <= BIG_PICTURE_BYTES || o.customMetadata?.checked === "1") continue;
+      const meta = o.customMetadata || {};
+      if (!isPicture(o.key) || o.size <= BIG_PICTURE_BYTES || Number(meta.tries || 0) >= 3) continue;
+      if (meta.checked === "1" && !(again && meta.redone !== "1")) continue;
       const obj = await env.MEDIA.get(o.key);
       if (!obj) continue;
       const buf = await obj.arrayBuffer();
       const type = obj.httpMetadata?.contentType || typeOf(o.key);
-      let small: ArrayBuffer | null = null;
-      try { const { compressOriginal } = await import("./resize"); small = await compressOriginal(buf, type); }
-      catch (e: any) { console.log(`[media] compress ${o.key}: ${e?.message || e}`); report.push(`${o.key}: failed — ${e?.message || e}`); }
-      await env.MEDIA.put(o.key, small || buf, { httpMetadata: { contentType: small ? "image/jpeg" : type, cacheControl: CACHE }, customMetadata: { checked: "1" } });
+      let small: ArrayBuffer | null = null, failed = false;
+      try { const { compressOriginal } = await import("./resize"); small = await compressOriginal(buf, type, meta.checked === "1"); }
+      catch (e: any) { failed = true; console.log(`[media] compress ${o.key}: ${e?.message || e}`); report.push(`${o.key}: failed — ${e?.message || e}`); }
+      // a failure is tried again next run, three times at most; a success is never looked at again
+      const next: Record<string, string> = failed ? { tries: String(Number(meta.tries || 0) + 1) } : { checked: "1", ...(meta.checked === "1" ? { redone: "1" } : {}) };
+      await env.MEDIA.put(o.key, small || buf, { httpMetadata: { contentType: small ? "image/jpeg" : type, cacheControl: CACHE }, customMetadata: next });
       done++;
       if (small) console.log(`[media] ${o.key}: ${buf.byteLength} → ${small.byteLength} bytes`);
       report.push(`${o.key}: ${buf.byteLength} → ${small ? small.byteLength : "kept"}`);
@@ -177,7 +183,7 @@ export default {
       if (!(await canWriteRepo(req.headers.get("Authorization"), env))) return new Response("forbidden", { status: 403 });
       const n = Math.min(20, Math.max(1, parseInt(new URL(req.url).searchParams.get("n") || "5", 10) || 5));
       const report: string[] = [];
-      try { const done = await compressStored(env, n, report); return new Response(JSON.stringify({ ok: true, done, report }), { headers: { "Content-Type": "application/json" } }); }
+      try { const done = await compressStored(env, n, report, new URL(req.url).searchParams.get("again") === "1"); return new Response(JSON.stringify({ ok: true, done, report }), { headers: { "Content-Type": "application/json" } }); }
       catch (e: any) { return new Response(JSON.stringify({ ok: false, error: String(e?.stack || e), report }), { status: 500, headers: { "Content-Type": "application/json" } }); }
     }
     if (new URL(req.url).pathname.startsWith("/upload/")) {

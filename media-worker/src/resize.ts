@@ -7,7 +7,7 @@ import decodePng, { init as initPngDec } from "@jsquash/png/decode";
 import decodeWebp, { init as initWebpDec } from "@jsquash/webp/decode";
 import encodeWebp, { init as initWebpEnc } from "@jsquash/webp/encode";
 import encodeJpeg, { init as initJpegEnc } from "@jsquash/jpeg/encode";
-import resize, { initResize } from "@jsquash/resize";
+import { downscale } from "./downscale";
 // @ts-ignore — wasm modules bundled by wrangler
 import JPEG_DEC from "@jsquash/jpeg/codec/dec/mozjpeg_dec.wasm";
 // @ts-ignore
@@ -16,8 +16,6 @@ import PNG_DEC from "@jsquash/png/codec/pkg/squoosh_png_bg.wasm";
 import WEBP_DEC from "@jsquash/webp/codec/dec/webp_dec.wasm";
 // @ts-ignore
 import WEBP_ENC from "@jsquash/webp/codec/enc/webp_enc_simd.wasm";
-// @ts-ignore
-import RESIZE from "@jsquash/resize/lib/resize/pkg/squoosh_resize_bg.wasm";
 // @ts-ignore
 import JPEG_ENC from "@jsquash/jpeg/codec/enc/mozjpeg_enc.wasm";
 
@@ -32,8 +30,22 @@ if (!(globalThis as any).ImageData) {
   };
 }
 
+// The JPEG and WebP codecs (C, Emscripten) can be started again; the PNG decoder (Rust) can't, so it starts once.
+// A codec that traps — out of memory on a big picture — stays broken in this Worker until restarted: «fresh» starts
+// them again, and the picture is tried once more (INCIDENTS #372).
 let ready: Promise<unknown> | null = null;
-const setup = () => (ready ||= Promise.all([initJpegDec(JPEG_DEC), initPngDec(PNG_DEC), initWebpDec(WEBP_DEC), initWebpEnc(WEBP_ENC), initResize(RESIZE), initJpegEnc(JPEG_ENC)]));
+let pngReady: Promise<unknown> | null = null;
+const setup = (fresh = false) => {
+  if (fresh) ready = null;
+  pngReady ||= initPngDec(PNG_DEC);
+  return (ready ||= Promise.all([initJpegDec(JPEG_DEC), initWebpDec(WEBP_DEC), initWebpEnc(WEBP_ENC), initJpegEnc(JPEG_ENC), pngReady]));
+};
+async function withCodecs<T>(fn: () => Promise<T>): Promise<T> {
+  await setup();
+  try { return await fn(); }
+  catch { await setup(true); return await fn(); }
+}
+
 
 const decode = async (buf: ArrayBuffer, type: string): Promise<ImageData> => {
   const t = type.toLowerCase();
@@ -43,12 +55,12 @@ const decode = async (buf: ArrayBuffer, type: string): Promise<ImageData> => {
 
 /** The original's bytes → WebP at most `width` wide, proportions kept (a narrower original is only re-encoded). */
 export async function resizedWebp(buf: ArrayBuffer, type: string, width: number, quality = 76): Promise<ArrayBuffer> {
-  await setup();
-  const img = await decode(buf, type);
-  const w = Math.min(width, img.width);
-  const h = Math.max(1, Math.round((img.height * w) / img.width));
-  const out = w < img.width ? await resize(img, { width: w, height: h, method: "lanczos3" }) : img;
-  return encodeWebp(out, { quality });
+  return withCodecs(async () => {
+    const img = await decode(buf, type);
+    const w = Math.min(width, img.width);
+    const h = Math.max(1, Math.round((img.height * w) / img.width));
+    return encodeWebp(downscale(img, w, h), { quality });
+  });
 }
 
 /** How a stored original is kept small (owner's request, INCIDENTS #372 — the pictures' R2 store is 10 GB, «300 KB
@@ -64,14 +76,18 @@ const LOWER_QUALITIES = [68, 64];
 
 /** The original's bytes → a smaller JPEG, or null when it is already small enough / would not get smaller.
  *  Transparent pixels (a PNG logo, a screenshot) go on white, as JPEG has no transparency. */
-export async function compressOriginal(buf: ArrayBuffer, type: string): Promise<ArrayBuffer | null> {
-  await setup();
+/** `oversizeOnly`: only a picture still larger than 1280×720 — never a JPEG this already made, as encoding a JPEG
+ *  again loses a little each time. */
+export async function compressOriginal(buf: ArrayBuffer, type: string, oversizeOnly = false): Promise<ArrayBuffer | null> {
+  return withCodecs(() => compressOnce(buf, type, oversizeOnly));
+}
+async function compressOnce(buf: ArrayBuffer, type: string, oversizeOnly: boolean): Promise<ArrayBuffer | null> {
   let img = await decode(buf, type);
   const scale = Math.min(1, ORIGINAL_MAX_W / img.width, ORIGINAL_MAX_H / img.height);
-  if (buf.byteLength <= ORIGINAL_MAX_BYTES && scale === 1) return null;
+  if (scale === 1 && (oversizeOnly || buf.byteLength <= ORIGINAL_MAX_BYTES)) return null;
   if (scale < 1) {
     const w = Math.max(1, Math.round(img.width * scale)), h = Math.max(1, Math.round(img.height * scale));
-    img = await resize(img, { width: w, height: h, method: "lanczos3" });
+    img = downscale(img, w, h);
   }
   const d = img.data;
   for (let i = 0; i < d.length; i += 4) {

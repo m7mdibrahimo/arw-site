@@ -4001,3 +4001,19 @@ test('a medical outcome is new news, never a copy of the surgery story (INCIDENT
   assert.equal(newMedicalOutcome({ title: 'جيم روس يتعافى' }, { title: 'جيم روس يتعافى بعد الجراحة', body: '' }), null); // the outcome was already out
   assert.equal(newMedicalOutcome({ title: 'كودي رودز يتعافى من خسارته' }, { title: 'كودي رودز يخسر اللقب', body: 'خسر في النزال.' }), null); // not medical
 });
+
+test('pictures are shrunk by exact area averaging, never enlarged (INCIDENTS #372)', async () => {
+  const { downscale } = await import('../media-worker/src/downscale.ts');
+  // 4×2 picture: left half black, right half white → 2×1: one black pixel, one white
+  const data = new Uint8ClampedArray(4 * 2 * 4);
+  for (let y = 0; y < 2; y++) for (let x = 0; x < 4; x++) { const p = (y * 4 + x) * 4, v = x < 2 ? 0 : 255; data[p] = data[p + 1] = data[p + 2] = v; data[p + 3] = 255; }
+  const out = downscale({ width: 4, height: 2, data }, 2, 1);
+  assert.deepEqual([out.width, out.height], [2, 1]);
+  assert.deepEqual([...out.data], [0, 0, 0, 255, 255, 255, 255, 255]);
+  // 3 → 2 columns: the middle pixel is shared half and half
+  const d3 = new Uint8ClampedArray([0, 0, 0, 255, 90, 90, 90, 255, 180, 180, 180, 255]);
+  const o3 = downscale({ width: 3, height: 1, data: d3 }, 2, 1);
+  assert.deepEqual([...o3.data], [30, 30, 30, 255, 150, 150, 150, 255]);
+  const same = { width: 2, height: 2, data: new Uint8ClampedArray(16) };
+  assert.equal(downscale(same, 4, 4), same); // never enlarged
+});
