@@ -39,3 +39,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: npx tsx scripts/media-store.ts prune-reels
+      # Big pictures stored before uploads were compressed, made small in place (INCIDENTS #372). arw-media does it every
+      # hour itself; this is the second path, in case its own schedule misses a run.
+      - name: Compress big stored pictures
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          for i in 1 2 3; do
+            curl -fsS -m 170 -X POST -H "Authorization: Bearer $GITHUB_TOKEN" "https://arw-media.m7mdibrahimpc.workers.dev/compress-stored?n=10" || true
+            echo
+          done

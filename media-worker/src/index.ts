@@ -138,13 +138,13 @@ const isPicture = (key: string) => /^content\/images\/.+\.(jpe?g|png|webp)$/i.te
  *  twice. A few per hour keeps each run well inside the Worker's CPU time. */
 const COMPRESS_PER_RUN = 5;
 const BIG_PICTURE_BYTES = 150 * 1024; // the same line as ORIGINAL_MAX_BYTES in resize.ts
-async function compressStored(env: Env): Promise<number> {
+async function compressStored(env: Env, perRun = COMPRESS_PER_RUN, report: string[] = []): Promise<number> {
   if (!env.MEDIA) return 0;
   let cursor: string | undefined, done = 0;
   do {
     const page = await env.MEDIA.list({ prefix: "content/images/", cursor, limit: 1000, include: ["customMetadata"] } as R2ListOptions);
     for (const o of page.objects) {
-      if (done >= COMPRESS_PER_RUN) return done;
+      if (done >= perRun) return done;
       // only the big ones, each once (a small one is never read or rewritten)
       if (!isPicture(o.key) || o.size <= BIG_PICTURE_BYTES || o.customMetadata?.checked === "1") continue;
       const obj = await env.MEDIA.get(o.key);
@@ -153,10 +153,11 @@ async function compressStored(env: Env): Promise<number> {
       const type = obj.httpMetadata?.contentType || typeOf(o.key);
       let small: ArrayBuffer | null = null;
       try { const { compressOriginal } = await import("./resize"); small = await compressOriginal(buf, type); }
-      catch (e: any) { console.log(`[media] compress ${o.key}: ${e?.message || e}`); }
+      catch (e: any) { console.log(`[media] compress ${o.key}: ${e?.message || e}`); report.push(`${o.key}: failed — ${e?.message || e}`); }
       await env.MEDIA.put(o.key, small || buf, { httpMetadata: { contentType: small ? "image/jpeg" : type, cacheControl: CACHE }, customMetadata: { checked: "1" } });
       done++;
       if (small) console.log(`[media] ${o.key}: ${buf.byteLength} → ${small.byteLength} bytes`);
+      report.push(`${o.key}: ${buf.byteLength} → ${small ? small.byteLength : "kept"}`);
     }
     cursor = page.truncated ? page.cursor : undefined;
   } while (cursor);
@@ -170,6 +171,15 @@ export default {
     if (new Date(event.scheduledTime).getUTCHours() === 3) ctx.waitUntil(pruneReels(env).then(n => console.log(`[media] ${n} old reels removed`)));
   },
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    // POST /compress-stored?n=10 — the hourly job on demand (same GitHub-token check as uploads): what it did, so a
+    // failing run can be seen, and the backlog of big pictures can be cleared faster (INCIDENTS #372)
+    if (new URL(req.url).pathname === "/compress-stored" && req.method === "POST") {
+      if (!(await canWriteRepo(req.headers.get("Authorization"), env))) return new Response("forbidden", { status: 403 });
+      const n = Math.min(20, Math.max(1, parseInt(new URL(req.url).searchParams.get("n") || "5", 10) || 5));
+      const report: string[] = [];
+      try { const done = await compressStored(env, n, report); return new Response(JSON.stringify({ ok: true, done, report }), { headers: { "Content-Type": "application/json" } }); }
+      catch (e: any) { return new Response(JSON.stringify({ ok: false, error: String(e?.stack || e), report }), { status: 500, headers: { "Content-Type": "application/json" } }); }
+    }
     if (new URL(req.url).pathname.startsWith("/upload/")) {
       if (req.method !== "PUT" && req.method !== "DELETE") return new Response("Method not allowed", { status: 405 });
       return upload(req, env);

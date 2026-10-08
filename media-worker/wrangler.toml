@@ -34,4 +34,6 @@ GITHUB_REPO = "arw-site"
 binding = "MEDIA"
 bucket_name = "arw-media"
 
-
+# keep the Worker's logs (Workers Logs), so a failed hourly run can be read afterwards (INCIDENTS #372)
+[observability]
+enabled = true
