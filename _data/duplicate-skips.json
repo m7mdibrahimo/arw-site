@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-9-22/": {
-    "matchedFile": "20260922094400-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-nxt-الليلة-والنزالات-المؤكدة.md",
-    "reason": "manual audit 2026-09-24: same story as earlier article",
-    "at": "2026-09-24T06:15:52.506Z"
-  },
   "https://www.ringsidenews.com/leyton-buzzard-unsure-if-hell-wrestle-again-acl-replacement-surgery/": {
     "matchedFile": "20260922000505-ليتون-بازارد-يكشف-عن-خضوعه-لجراحة-الرباط-الصليبي-ولا-يعلم-ما-إذا-كان-للمصارعة-مكان-في-مستقبله.md",
     "reason": "manual audit 2026-09-24: same story as earlier article",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261008203605-نسب-مشاهدة-عرض-tna-impact-تنخفض-لأقل-من-200-ألف-مشاهد.md",
     "reason": "الخبر الجديد يغطي نفس نسب مشاهدة عرض TNA iMPACT بتاريخ 1 أكتوبر 2026 ونفس تفاصيل التقييمات والأعداد التي تم نشرها بالفعل في الخبر رقم [0].",
     "at": "2026-10-08T17:50:18.346Z"
+  },
+  "https://www.fightful.com/wrestling/creative-favorites-for-2026-wwe-money-in-the-bank/": {
+    "matchedFile": "20261008204443-كواليس-wwe-تكشف-عن-الأسماء-المفضلة-لدى-فريق-الإبداع-للفوز-بنزالات-موني-إن-ذا-بانك.md",
+    "reason": "الخبر الجديد مكرر لنفس تقرير كواليس الأسماء المفضلة لدى فريق الإبداع لنزالات موني إن ذا بانك المنشور في الخبر [0]",
+    "at": "2026-10-08T17:54:17.833Z"
   }
 }
