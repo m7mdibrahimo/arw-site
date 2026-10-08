@@ -9,15 +9,26 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
   X-XSS-Protection: 1; mode=block
 
+# Always checked with the server (fresh news on every visit), but without no-store:
+# no-store made browsers re-download the whole homepage on «back» (no back/forward cache).
 /
-  Cache-Control: no-cache, no-store, must-revalidate
-  Pragma: no-cache
-  Expires: 0
+  Cache-Control: no-cache, must-revalidate
 
 /index.html
-  Cache-Control: no-cache, no-store, must-revalidate
-  Pragma: no-cache
-  Expires: 0
+  Cache-Control: no-cache, must-revalidate
+
+# Site icons: every page asks for them; links carry ?v=N, so bump N when the icon changes.
+/favicon.svg
+  Cache-Control: public, max-age=2592000
+
+/favicon.png
+  Cache-Control: public, max-age=2592000
+
+/favicon.ico
+  Cache-Control: public, max-age=2592000
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=2592000
 
 /admin/*
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet

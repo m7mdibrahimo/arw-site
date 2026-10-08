@@ -4031,3 +4031,19 @@ test('Shorty G is never translated as «القصير»', async () => {
   assert.equal(applyCorrections('فترة أدائه بشخصية القصير'), 'فترة أدائه بشخصية شورتي جي');
   assert.equal(applyCorrections('تلك شخصية القصير'), 'تلك شخصية شورتي جي');
 });
+
+test('pages stay light: small site icons, lazy homepage thumbnails, slider pictures on demand, fonts not render-blocking', () => {
+  // the icons every page asks for were the full 1024px logo (~1.8 MB per visit)
+  assert.ok(fs.statSync('favicon.png').size < 40_000);
+  assert.ok(fs.statSync('favicon.svg').size < 20_000);
+  const home = fs.readFileSync('index.njk', 'utf8');
+  // background-image thumbnails never lazy-load: every card picture downloaded on page open
+  assert.doesNotMatch(home, /class="(?:show|news)-thumb[^"]*" style="background-image/);
+  assert.match(home, /<img class="thumb-img" src="\{% optImg item\.data\.image, '\/favicon\.png\?v=3' %\}"[^>]*loading="lazy"/);
+  assert.match(home, /\{% if loop\.index0 < 2 %\}src\{% else %\}data-src\{% endif %\}/);
+  assert.match(home, /function loadSlideImg\(i\)/);
+  assert.doesNotMatch(home, /url\('https:\/\/i\.ibb\.co/);
+  for (const f of ['index.njk', '_includes/post-layout.njk', 'pages/news.njk']) {
+    assert.doesNotMatch(fs.readFileSync(f, 'utf8'), /<link href="https:\/\/fonts\.googleapis\.com[^"]+" rel="stylesheet">/, f);
+  }
+});

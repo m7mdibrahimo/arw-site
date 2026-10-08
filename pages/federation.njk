@@ -15,8 +15,8 @@ permalink: "{{ fedPage.permalink }}"
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
-<link rel="icon" type="image/png" href="/favicon.png?v=2">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+<link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <title>مصارعة {{ fed.code }}: عروض وأخبار {{ fed.code }} مترجمة بالعربية{% if fedPage.pageNumber > 1 %} - صفحة {{ fedPage.pageNumber }}{% endif %} | عرب راسلنج</title>
 <meta name="description" content="مصارعة {{ fed.code }} بالعربي: شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.{% if fedPage.pageNumber > 1 %} صفحة {{ fedPage.pageNumber }}.{% endif %}">
@@ -34,7 +34,7 @@ permalink: "{{ fedPage.permalink }}"
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap"></noscript>
 <style>
   :root{
     --bg: #faf7f0; --card: #ffffff; --ink: #1e2530; --muted: #6c7383; --line: #ece6d8;
@@ -363,7 +363,7 @@ permalink: "{{ fedPage.permalink }}"
 {% for item in fedPage.items %}
   <a class="{% if item.kind == 'news' %}news-card{% else %}show-card{% endif %} reveal" href="{{ item.url | cleanUrl }}">
     {% if item.kind == 'news' %}
-    <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}"><img class="thumb-img" src="{% optImg item.data.image, '/assets/logo.png' %}" alt="{{ item.data.title }}" loading="lazy" width="450" height="160"></div>
+    <div class="news-thumb{% if item.data.breaking %} breaking{% endif %}"><img class="thumb-img" src="{% optImg item.data.image, '/favicon.png?v=3' %}" alt="{{ item.data.title }}" loading="lazy" width="450" height="160"></div>
     <div class="news-body">
       <span class="kind-badge kind-news">خبر</span>{% if fed.code %}<span class="cat cat-{{ fed.code | lower }}">{{ fed.code }}</span>{% endif %}
       <h3>{{ item.data.title }}</h3>
