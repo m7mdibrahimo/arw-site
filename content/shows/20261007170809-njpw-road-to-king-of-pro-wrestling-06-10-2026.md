@@ -1,7 +1,7 @@
 ---
 show_type: عرض
 federation: NJPW
-title: NJPW Road To King Of Pro Wrestling 06.10.2026
+title: NJPW Road To King Of Pro Wrestling Day 1 06.10.2026
 headline: عرض ان جيه بي دبليو رود تو كينج اوف برو ريسلنج 06.10.2026 مترجم
 program_name: NJPW Road To King Of Pro Wrestling 2026
 description: عرض ان جيه بي دبليو رود تو كينج اوف برو ريسلنج مترجم بالكامل مع جميع النزالات والأحداث.
