@@ -1,5 +1,15 @@
 [
   {
+    "id": 4930416891,
+    "link": "https://www.wrestlinginc.com/2281264/tna-thursday-night-impact-october-8-2026-results/",
+    "date": "Thu, 08 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-08T21:00:00.000Z",
+    "title": {
+      "rendered": "TNA Thursday Night Impact Results 10/8/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-results-10826-w-live-updates/l-intro-1791476004.jpg"
+  },
+  {
     "id": 3621149221,
     "link": "https://www.wrestlinginc.com/2281698/wwe-kairi-chris-jericho-rock-wrestling-rager-sea-cruise-aew/",
     "date": "Thu, 08 Oct 2026 20:18:07 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Bully Ray Lays Out 'Great Storytelling' Opportunity For WWE Money In The Bank"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/bully-ray-lays-out-great-storytelling-opportunity-for-wwe-money-in-the-bank/l-intro-1791409855.jpg"
-  },
-  {
-    "id": 4064437046,
-    "link": "https://www.wrestlinginc.com/2280623/wwe-nxt-kendal-grey-therapy-vignettes-backstage-report/",
-    "date": "Wed, 07 Oct 2026 20:34:19 +0000",
-    "date_gmt": "2026-10-07T20:34:19.000Z",
-    "title": {
-      "rendered": "Backstage Report On Kendal Grey's WWE NXT Therapy Vignettes"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-kendal-greys-wwe-nxt-therapy-vignettes/l-intro-1791405076.jpg"
   }
 ]
