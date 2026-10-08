@@ -3966,3 +3966,9 @@ test('ageNotInSource: an age the source never states is flagged (Dawn Marie 66 v
   assert.deepEqual(ageNotInSource(body, 'as she approaches 56 years old'), ['66']);
   assert.deepEqual(ageNotInSource(body, 'she turns 66'), []);
 });
+
+test('checkArticle blocks the misspellings «مبنا» and «التمرينا» (INCIDENTS #342)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const issues = checkArticle('تشاد غيبل يكشف عن صداقة غير متوقعة مع سي ام بانك', 'قال مبنا أن العلاقة قوية. غير طريقته في التمرينا اليومية.');
+  assert.ok(issues.filter(i => i.code === 'known_wrong').length >= 2);
+});
