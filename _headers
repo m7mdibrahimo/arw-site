@@ -32,7 +32,20 @@
 
 /admin/*
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet
+
+# The panel page is always fresh; its code and style live in a folder named after the build
+# (/admin/<build>/...), so a new build is a new address and the old files can be kept a year.
+/admin/
   Cache-Control: no-cache, must-revalidate, max-age=0
+
+/admin/index.html
+  Cache-Control: no-cache, must-revalidate, max-age=0
+
+/admin/manifest.webmanifest
+  Cache-Control: no-cache, must-revalidate, max-age=0
+
+/admin/:build/*
+  Cache-Control: public, max-age=31536000, immutable
 
 /studio-data.json
   Cache-Control: no-cache, must-revalidate, max-age=0

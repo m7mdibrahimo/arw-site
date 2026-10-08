@@ -395,13 +395,22 @@ module.exports = function(eleventyConfig) {
     if (!Array.isArray(pinned)) return pinned;
     const norm = (u) => { let x = String(u || ""); try { x = decodeURIComponent(x); } catch (e) {} return x.replace(/index\.html$/, "").replace(/\/?$/, "/"); };
     const byUrl = new Map((all || []).map((p) => [norm(p.url), p]));
+    // A renamed show/story moves to a new address (its URL comes from the title) and the pinned copy keeps the
+    // old one, which is now only a redirect page — so the slider kept the old English name (AEW Dynamite renamed
+    // «AEW Dynamite Grand Slam France», owner 2026-10-08). The old address is the file name's slug: match that too.
+    const fileKey = (p) => {
+      const m = String(p.inputPath || "").match(/content\/(shows|recaps|news|nostalgia)\/(?:[^/]+\/)*([^/]+)\.md$/);
+      return m ? norm(`/${m[1]}/${m[2].replace(/^\d{14}-/, "").replace(/^\d{4}-\d{2}-\d{2}-/, "")}/`) : "";
+    };
+    const byFile = new Map((all || []).filter((p) => p.url && fileKey(p)).map((p) => [fileKey(p), p]));
     return pinned.map((item) => {
-      const page = byUrl.get(norm(item.url));
+      const page = byUrl.get(norm(item.url)) || byFile.get(norm(item.url));
       if (!page) return item;
       const d = page.data || {};
       const isShow = item.kind === "show" || item.kind === "recap" || /\/(shows|recaps|nostalgia)\//.test(page.url);
       return {
         ...item,
+        url: page.url,
         title: (isShow ? d.headline || d.title : d.title) || item.title,
         subtitle: isShow ? d.title || item.subtitle : item.subtitle,
         image: d.image || item.image,
@@ -2030,8 +2039,15 @@ module.exports = function(eleventyConfig) {
   // serving yesterday's panel after an update. The page itself (pages/studio.njk) is never cached.
   const STUDIO_VERSION = String(process.env.CF_PAGES_COMMIT_SHA || Date.now().toString(36)).slice(0, 10);
   eleventyConfig.addGlobalData("studioVersion", STUDIO_VERSION);
-  eleventyConfig.addPassthroughCopy({ "studio/js": `admin/${STUDIO_VERSION}/js` });
-  eleventyConfig.addPassthroughCopy({ "studio/vendor": `admin/${STUDIO_VERSION}/vendor` });
+  // The panel's ~90 modules (its own files + the yaml and marked libraries) loaded one import after another, each a
+  // round trip: they go out as one minified file instead (owner 2026-10-08: «the panel must be very light too»).
+  eleventyConfig.on("eleventy.after", async () => {
+    await require("esbuild").build({
+      entryPoints: ["studio/js/app.js"],
+      outfile: `_site/admin/${STUDIO_VERSION}/js/app.js`,
+      bundle: true, format: "esm", minify: true, target: "es2020", legalComments: "none", logLevel: "warning",
+    });
+  });
   eleventyConfig.addPassthroughCopy({ "studio/studio.css": `admin/${STUDIO_VERSION}/studio.css` });
   eleventyConfig.addPassthroughCopy({ "studio/manifest.webmanifest": "admin/manifest.webmanifest" });
   eleventyConfig.addPassthroughCopy({"_data/pinned.json": "data/pinned.json"});

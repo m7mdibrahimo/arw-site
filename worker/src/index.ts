@@ -2829,12 +2829,22 @@ export async function freshPinnedItems(env: Pick<Env, "SITE_ORIGIN">, items: any
   const index: any[] = await fetch(cacheBust(`${env.SITE_ORIGIN}/search-index.json`)).then((r): Promise<any> => (r.ok ? r.json() : Promise.resolve([]))).catch(() => []);
   const norm = (u: any) => { let x = String(u || ""); try { x = decodeURIComponent(x); } catch { /* keep */ } return x.replace(/index\.html$/, "").replace(/\/?$/, "/"); };
   const byUrl = new Map((Array.isArray(index) ? index : []).map((p: any) => [norm(p.url), p]));
+  // A renamed show/story moves to a new address (its URL comes from the title) and the pinned copy keeps the old
+  // one, now only a redirect: the panel kept the old English name and saving the list wrote the old copy back
+  // (AEW Dynamite → «AEW Dynamite Grand Slam France», 2026-10-08). The old address is the file name's slug, as in
+  // freshPinned on the site.
+  const fileKey = (p: any) => {
+    const m = String(p.inputPath || "").match(/content\/(shows|recaps|news|nostalgia)\/(?:[^/]+\/)*([^/]+)\.md$/);
+    return m ? norm(`/${m[1]}/${m[2].replace(/^\d{14}-/, "").replace(/^\d{4}-\d{2}-\d{2}-/, "")}/`) : "";
+  };
+  const byFile = new Map((Array.isArray(index) ? index : []).filter((p: any) => p.url && fileKey(p)).map((p: any) => [fileKey(p), p]));
   return items.map((item) => {
-    const page: any = byUrl.get(norm(item.url));
+    const page: any = byUrl.get(norm(item.url)) || byFile.get(norm(item.url));
     if (!page) return item;
     const isShow = item.kind === "show" || item.kind === "recap" || /^\/(shows|recaps|nostalgia)\//.test(norm(page.url));
     return {
       ...item,
+      url: page.url,
       title: (isShow ? page.headline || page.title : page.title) || item.title,
       subtitle: isShow ? page.title || item.subtitle : item.subtitle,
       image: page.image || item.image,

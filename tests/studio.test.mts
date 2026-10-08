@@ -309,6 +309,33 @@ test('the panel\'s pinned list shows each item as it is now, not the copy taken 
   assert.match(src, /items: await freshPinnedItems\(env, f \? JSON\.parse\(f\.content\) : \[\]\)/);
 });
 
+test('a pinned show renamed after pinning still shows its new English name, in the panel and on the site', async () => {
+  // «AEW Dynamite 06.10.2026» renamed «AEW Dynamite Grand Slam France 06.10.2026» moved to a new address; the pinned
+  // copy kept the old one (now a redirect page) so both the slider and the panel kept the old name (owner 2026-10-08)
+  const { freshPinnedItems } = await import('../worker/src/index');
+  globalThis.fetch = (async () => new Response(JSON.stringify([
+    { url: '/shows/aew-dynamite-grand-slam-france-06-10-2026/', inputPath: './content/shows/20261007172320-aew-dynamite-06-10-2026.md', title: 'AEW Dynamite Grand Slam France 06.10.2026', headline: 'عرض ديناميت 06.10.2026 مترجم', federation: 'AEW' },
+  ]), { status: 200 })) as any;
+  try {
+    const [item] = await freshPinnedItems({ SITE_ORIGIN: 'https://site.test' }, [{ url: '/shows/aew-dynamite-06-10-2026/', title: 'عرض ديناميت 06.10.2026 مترجم', subtitle: 'AEW Dynamite 06.10.2026', kind: 'show' }]);
+    assert.equal(item.subtitle, 'AEW Dynamite Grand Slam France 06.10.2026');
+    assert.equal(item.url, '/shows/aew-dynamite-grand-slam-france-06-10-2026/', 'saving the list writes the new address');
+  } finally { globalThis.fetch = realFetch; }
+  // the site's slider (freshPinned) matches the file name's slug the same way
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /byUrl\.get\(norm\(item\.url\)\) \|\| byFile\.get\(norm\(item\.url\)\)/);
+});
+
+test('the panel loads as one bundled file, its code cached by build folder', () => {
+  // ~90 modules (own files + yaml + marked) loaded one import after another (owner 2026-10-08: «the panel must be light too»)
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /entryPoints: \["studio\/js\/app\.js"\],\s*outfile: `_site\/admin\/\$\{STUDIO_VERSION\}\/js\/app\.js`/);
+  assert.doesNotMatch(cfg, /addPassthroughCopy\(\{ "studio\/js"/);
+  const headers = fs.readFileSync('_headers', 'utf8');
+  assert.match(headers, /\/admin\/:build\/\*\n\s+Cache-Control: public, max-age=31536000, immutable/);
+  assert.match(headers, /\/admin\/\n\s+Cache-Control: no-cache/);
+});
+
 test('the panel\'s Arabic headings have room: no tight line-height or negative letter-spacing', () => {
   // «المثبت في الرئيسية» sat on the line under it and on «الرئيسية» above it: 48px Arabic at
   // line-height 1.15 with -.5px letter-spacing (INCIDENTS #121)

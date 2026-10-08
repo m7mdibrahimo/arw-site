@@ -15,8 +15,9 @@ eleventyExcludeFromCollections: true
   <link rel="manifest" href="/admin/manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap"></noscript>
   <link rel="stylesheet" href="/admin/{{ studioVersion }}/studio.css">
+  <link rel="modulepreload" href="/admin/{{ studioVersion }}/js/app.js">
   <script>
     // Saved theme before the first paint (no light flash)
     try { document.documentElement.dataset.theme = localStorage.getItem('arw_studio_theme') || 'light'; } catch (e) {}
