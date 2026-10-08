@@ -1,5 +1,15 @@
 [
   {
+    "id": 2627588211,
+    "link": "https://www.wrestlinginc.com/2280887/aew-young-bucks-mourn-pac/",
+    "date": "Thu, 08 Oct 2026 14:30:00 +0000",
+    "date_gmt": "2026-10-08T14:30:00.000Z",
+    "title": {
+      "rendered": "AEW's Young Bucks Mourn PAC"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-young-bucks-mourn-pac/l-intro-1791451214.jpg"
+  },
+  {
     "id": 3100970932,
     "link": "https://www.wrestlinginc.com/2280866/wwe-hofer-jim-ross-gives-thoughts-possible-mitb-winner/",
     "date": "Thu, 08 Oct 2026 14:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Chris Jericho Comments On Possible WWE Hall Of Fame Induction"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-chris-jericho-comments-on-possible-wwe-hall-of-fame-induction/l-intro-1791372896.jpg"
-  },
-  {
-    "id": 1239958937,
-    "link": "https://www.wrestlinginc.com/2279745/wwe-kevin-nash-roman-reigns-seth-rollins-lose-interest-wrestling/",
-    "date": "Wed, 07 Oct 2026 14:30:00 +0000",
-    "date_gmt": "2026-10-07T14:30:00.000Z",
-    "title": {
-      "rendered": "Kevin Nash Identifies Recent WWE Match That Made Him Lose Interest In Wrestling"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-nash-identifies-recent-wwe-match-that-made-him-lose-interest-in-wrestling/l-intro-1791371063.jpg"
   }
 ]
