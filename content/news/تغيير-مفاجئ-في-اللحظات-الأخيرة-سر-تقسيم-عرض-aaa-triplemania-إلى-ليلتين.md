@@ -7,7 +7,6 @@ tags:
   - اتحاد AAA
   - أخبار المصارعة
   - Lucha Libre AAA
-  - ""
 image: /content/images/pzo8spp269gblb3w.jpg
 layout: post-layout.njk
 ---
