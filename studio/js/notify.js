@@ -36,6 +36,7 @@ export function notify(ev) {
   const id = ev.commit ? `c:${ev.commit}` : `e:${at}:${Math.random().toString(36).slice(2, 7)}`;
   saveLocal([{ ...ev, id, at, status: ev.commit ? 'pending' : 'done' }, ...localItems().filter(n => n.id !== id)]);
   refresh();
+  if (ev.commit && !settleTimer) settleTimer = setTimeout(settlePending, 15_000);
 }
 /** A commit reached the live site: its event becomes «… وظهر على الموقع» and counts as new again. */
 function markLive(commit) {
@@ -154,9 +155,28 @@ async function load() {
 }
 
 /** Wire the bell into the top bar (called after the shell renders). */
+// A notification still «جاري الظهور على الموقع» is settled from /build.json itself, whatever the save tracking
+// remembers: the live build is of a commit made after the save, so the save is in it (INCIDENTS #367). Checked when
+// the panel opens and every 15 seconds while one is waiting.
+let settleTimer = null;
+async function settlePending() {
+  settleTimer = null;
+  const waiting = localItems().filter(n => n.status === 'pending' && n.commit);
+  if (!waiting.length) return;
+  try {
+    const b = await fetch(`/build.json?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
+    if (b) {
+      const live = (n) => (b.recent || []).includes(n.commit) || b.commit === n.commit || (b.commitTime && b.commitTime * 1000 > n.at + 5000);
+      for (const n of waiting.filter(live)) markLive(n.commit);
+    }
+  } catch {}
+  if (localItems().some(n => n.status === 'pending' && n.commit)) settleTimer = setTimeout(settlePending, 15_000);
+}
+
 export function setupBell() {
   const btn = $('#bell-btn'), pop = $('#bell-pop');
   if (!btn || !pop) return;
+  if (!settleTimer) settlePending();
   // First time on this device: only the last hour counts as new
   if (read(SEEN_KEY, null) == null) write(SEEN_KEY, Date.now() - 3600_000);
   btn.addEventListener('click', (e) => {

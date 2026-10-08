@@ -213,7 +213,9 @@ export function addPending(item) {
 // ── «ظهر على الموقع ✓» ─────────────────────────────────────────────────────
 // After a save the site rebuilds on its own; /build.json says which commits the live copy has.
 const LIVE_KEY = 'arw_studio_live';
-function liveList() { try { return JSON.parse(localStorage.getItem(LIVE_KEY) || '[]').filter(x => Date.now() - x.at < 60 * 60_000); } catch { return []; } }
+// (a day, not an hour: a save followed after an hour — the panel closed meanwhile, a slow build — was forgotten and its
+// notification said «جاري الظهور على الموقع» for good, INCIDENTS #367)
+function liveList() { try { return JSON.parse(localStorage.getItem(LIVE_KEY) || '[]').filter(x => Date.now() - x.at < 24 * 3600_000); } catch { return []; } }
 function setLive(list) { try { localStorage.setItem(LIVE_KEY, JSON.stringify(list.slice(0, 20))); } catch {} }
 let liveTimer = null;
 export function trackLive({ commit, committedAt, title, removed = false, slug = '' }) {

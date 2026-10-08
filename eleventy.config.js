@@ -246,9 +246,24 @@ module.exports = function(eleventyConfig) {
     }
     return n;
   };
+  // The live site's two lists (which resized pictures exist, and for which original): fetched with 30 s and three
+  // tries. One slow answer within 10 s used to start a build with an empty map — every picture resized again from its
+  // original in R2 (the build went from ~40 s to ~300 s) and the map it saved lost every panel thumbnail (INCIDENTS #367).
+  const fetchLiveJson = async (name) => {
+    let last;
+    for (let i = 0; i < 3; i++) {
+      try {
+        const r = await fetch(`${LIVE}/${name}?_=${Date.now()}`, { signal: AbortSignal.timeout(30000) });
+        if (r.ok) return await r.json();
+        last = new Error(`HTTP ${r.status}`);
+      } catch (e) { last = e; }
+      await new Promise(res => setTimeout(res, 2000 * (i + 1)));
+    }
+    throw last;
+  };
   const fetchLiveImages = async () => {
     const started = Date.now();
-    const list = await fetch(`${LIVE}/img-cache.json?_=${Date.now()}`, { signal: AbortSignal.timeout(10000) }).then(r => (r.ok ? r.json() : []));
+    const list = await fetchLiveJson("img-cache.json");
     fs.mkdirSync("_site/img", { recursive: true });
     const have = new Set(fs.readdirSync("_site/img"));
     const todo = (Array.isArray(list) ? list : []).filter(f => typeof f === "string" && IMG_RE.test(f) && !have.has(f));
@@ -277,6 +292,7 @@ module.exports = function(eleventyConfig) {
   // reuses it without the original; an original no build has resized yet is fetched once, to the same path, so its
   // resized file gets the same name it always had.
   const IMG_MAP = {};
+  let makeLaterMinis = async () => {}; // set with the «miniOf» filter below
   const MEDIA_ORIGIN = process.env.ARW_MEDIA_ORIGIN || LIVE;
   const mapKey = (rel, kind) => `${String(rel).normalize("NFC")}|${kind}`;
   const mapped = (rel, kind) => { const u = IMG_MAP[mapKey(rel, kind)]; return u && fs.existsSync("_site" + u) ? u : ""; };
@@ -298,7 +314,7 @@ module.exports = function(eleventyConfig) {
     try { console.log(`[img-cache] restored ${process.env.CF_PAGES ? await fetchLiveImages() : syncDir(IMG_CACHE, "_site/img")} resized images`); }
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
     try {
-      const live = await fetch(`${LIVE}/img-map.json?_=${Date.now()}`, { signal: AbortSignal.timeout(10000) }).then(r => (r.ok ? r.json() : {}));
+      const live = await fetchLiveJson("img-map.json");
       if (live && typeof live === "object") Object.assign(IMG_MAP, live);
       console.log(`[img-map] ${Object.keys(IMG_MAP).length} resized pictures known`);
     } catch (e) { console.log(`[img-map] skipped: ${e.message}`); }
@@ -323,7 +339,8 @@ module.exports = function(eleventyConfig) {
       fs.writeFileSync("_site/build.json", JSON.stringify({ commit, commitTime, recent, builtAt: new Date().toISOString(), timing }));
     } catch (e) { console.log(`[build.json] skipped: ${e.message}`); }
   });
-  eleventyConfig.on("eleventy.after", () => {
+  eleventyConfig.on("eleventy.after", async () => {
+    try { await makeLaterMinis(); } catch (e) { console.log(`[mini] skipped: ${e.message}`); }
     try {
       const files = fs.existsSync("_site/img") ? fs.readdirSync("_site/img").filter(f => IMG_RE.test(f)) : [];
       fs.writeFileSync("_site/img-cache.json", JSON.stringify(files));
@@ -919,7 +936,7 @@ module.exports = function(eleventyConfig) {
     const ready = mapped(rel, "160webp");
     if (ready) return ready;
     // from the smallest copy an earlier build made (480px card, else 800px article picture), else the original here
-    const made = mapped(rel, "480webp") || mapped(rel, "800jpeg");
+    const made = mapped(rel, "480webp") || mapped(rel, "800jpeg") || (fs.existsSync("." + rel) ? "" : await optThumb(rel));
     const file = made ? "_site" + made : (fs.existsSync("." + rel) ? "." + rel : "");
     if (!file) return "";
     try {
@@ -930,6 +947,25 @@ module.exports = function(eleventyConfig) {
     } catch (e) { return ""; }
   };
   eleventyConfig.addNunjucksAsyncShortcode("optMini", optMini);
+  // The same for the panel's data files, without waiting: each of their ~3,000 rows awaited its own shortcode and
+  // search-index.json alone took 13 s to render. The copy an earlier build made, or "" — and the pictures still
+  // without one get theirs at the end of this build, for the next one (INCIDENTS #367).
+  const MINI_LATER = new Set();
+  eleventyConfig.addFilter("miniOf", function(src) {
+    const input = (src && typeof src === "string") ? src.trim().replace(/^https?:\/\/(?:www\.)?arab-wrestling\.com(?=\/)/i, "") : "";
+    if (!input || /^https?:\/\//i.test(input)) return "";
+    let rel = input.startsWith("/") ? input : "/" + input;
+    try { rel = decodeURIComponent(rel); } catch (e) {}
+    const ready = mapped(rel, "160webp");
+    if (!ready && /^\/(content|images)\//.test(rel)) MINI_LATER.add(rel);
+    return ready;
+  });
+  // (called first thing by the hook that saves img-cache.json / img-map.json, so they list these too)
+  makeLaterMinis = async () => {
+    let n = 0;
+    for (const rel of MINI_LATER) { if (await optMini(rel)) n++; }
+    if (MINI_LATER.size) console.log(`[mini] ${n}/${MINI_LATER.size} panel thumbnails made for the next build`);
+  };
   // a card's picture: the 480px WebP (~20–40 KB) — sharp on a phone's card too, which is about 255 points wide —
   // or the original when there is none (INCIDENTS #330)
   eleventyConfig.addNunjucksAsyncShortcode("optCard", async function(src) { return (await optThumb(src)) || String(src || ""); });
