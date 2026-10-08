@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/contract-update-on-anthony-bowens-and-max-caster/": {
-    "matchedFile": "20260923195829-عقود-ثنائي-aew-على-وشك-الانتهاء-دون-محادثات-لتجديدها-حتى-الآن.md",
-    "reason": "manual audit 2026-09-24: same story as earlier article",
-    "at": "2026-09-24T06:15:52.510Z"
-  },
   "https://www.wrestlinginc.com/2266160/vince-russo-parts-ways-juggalo-championship-wrestling/": {
     "matchedFile": "20260923044345-فينس-روسو-يغادر-اتحاد-jcw-بعد-اعترافه-بعدم-سعادته.md",
     "reason": "manual audit 2026-09-24: same story as earlier article",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261008213832-الإعلان-عن-مشاركة-كايري-ساني-في-عرض-rock-n-wrestling-rager-at-sea-الخاص-بكريس-جيريكو.md",
     "reason": "الخبر الجديد يتناول نفس الإعلان عن مشاركة كايري ساني في رحلة كريس جيريكو البحرية، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
     "at": "2026-10-08T18:56:22.038Z"
+  },
+  "https://www.ringsidenews.com/aew-collision-viewership-sees-drop-october-3-2026/": {
+    "matchedFile": "20261008212429-عرض-aew-collision-يحقق-أكثر-من-400-ألف-مشاهد.md",
+    "reason": "الخبر الجديد يغطي نفس أرقام مشاهدات عرض AEW Collision بتاريخ 3 أكتوبر 2026 المذكورة في الخبر رقم 1، ولا يقدم تطوراً جديداً بل مجرد إعادة سرد لنفس البيانات.",
+    "at": "2026-10-08T19:02:24.370Z"
   }
 }
