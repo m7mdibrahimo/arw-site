@@ -4047,3 +4047,12 @@ test('pages stay light: small site icons, lazy homepage thumbnails, slider pictu
     assert.doesNotMatch(fs.readFileSync(f, 'utf8'), /<link href="https:\/\/fonts\.googleapis\.com[^"]+" rel="stylesheet">/, f);
   }
 });
+
+test('an English quote block inside an Arabic story is blocked, translated ones and short names pass', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const codes = (body: string) => checkArticle('عنوان واضح', body, []).map((i: any) => i.code);
+  assert.ok(codes('خبر عادي.\n\n> Tonight was my final match on WWE EVOLVE. I am grateful it was against you').includes('english_quote'));
+  assert.ok(codes('خبر عادي.\n\n> "Sure. I\'ve had coaches my whole life, with أندرتيكر in AAA and more"').includes('english_quote'));
+  assert.ok(!codes('خبر عادي.\n\n> "كانت الليلة آخر نزال لي في WWE EVOLVE على Tubi"').includes('english_quote'));
+  assert.ok(!codes('خبر عادي عن WWE Money In The Bank Ladder Match هذا الأسبوع.').includes('english_quote'));
+});

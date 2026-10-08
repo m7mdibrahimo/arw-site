@@ -4410,7 +4410,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft = { ...draft, title: vinceIsRusso(draft.title, plainText), body: vinceIsRusso(draft.body, plainText), tags: [...new Set(draft.tags.map(t => vinceIsRusso(t, plainText)))] };
   if (blocking.length) {
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
-    if (blocking.some(i => ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners"].includes(i.code))) lastPostRetryable = true;
+    if (blocking.some(i => ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners", "english_quote"].includes(i.code))) lastPostRetryable = true;
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
     noteOutcome(postUrl, `المراجعة رفضته: ${blocking.map(i => i.message).join("، ")}`, lastPostRetryable);
     return false;

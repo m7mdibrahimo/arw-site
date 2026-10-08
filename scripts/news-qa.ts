@@ -84,6 +84,10 @@ const RULES: Rule[] = [
   // A quote run into the narration with no «»: «وأضاف: أنا سعيد بأن لدي هذا المقطع…» — the reader can't
   // tell where his words stop and ours start, and the writer then pinned his dream on Copeland (INCIDENTS #349).
   { code: "unquoted_quote", severity: "error", re: /(?<![؀-ۿ])(?:و?(?:أضاف|أضافت|قال|قالت|تابع|تابعت)|قائلا|قائلة|مضيفا|مضيفة)\s*:\s*(?:أنا|إنني|إني|لقد|نحن|كنت|شعرت|أعتقد|أعرف|لا أعرف|أنا سعيد)(?![؀-ۿ])/g, message: "اقتباس من غير علامات «» بعد «وأضاف:» — حط كلام الشخص بين «»", fields: ["body"] },
+  // A quote block left in English inside the Arabic story — the wife's three paragraphs about Jeff Cannonball,
+  // Chad Gable's whole answer (half of it with Arabic words dropped in the middle), West's tweet (INCIDENTS #376).
+  // 6 English words in a row inside a «> » line; names, show titles and hashtags are shorter than that.
+  { code: "english_quote", severity: "error", re: /^>[^\n]*?(?<![A-Za-z'’])(?:[A-Za-z][A-Za-z'’]+[\s,.;:!?—-]+){6,}[A-Za-z][A-Za-z'’]+/gm, message: "اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي", fields: ["body"] },
   { code: "game_terms", severity: "error", re: /مجريات اللعب|المباراة الكروية|الشوط (?:الأول|الثاني)|أرض الملعب/g, message: "تعبير رياضي غير مناسب للمصارعة (المعتمد: مجريات النزال)" },
   // A word the model broke in two scripts: «شخصية أك uma الشهيرة» (Akuma — INCIDENTS #143). Latin names in
   // the text are capitalised (WWE, SiriusXM); a short lowercase fragment glued after Arabic is a broken word.
