@@ -1,5 +1,35 @@
 [
   {
+    "id": 332271,
+    "link": "https://www.fightful.com/wrestling/nic-nemeth-im-23-years-in-and-im-in-better-shape-than-most-people-who-are-23-years-old/",
+    "date": "2026-10-08T12:00:00",
+    "date_gmt": "2026-10-08T16:00:00",
+    "title": {
+      "rendered": "Nic Nemeth: I&#8217;m 23 Years In And I&#8217;m In Better Shape Than Most People Who Are 23 Years Old"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07200907/maxresdefault-43.jpg"
+  },
+  {
+    "id": 332737,
+    "link": "https://www.fightful.com/wrestling/titus-oneil-signs-with-stoked-sports-entertainment/",
+    "date": "2026-10-08T11:58:32",
+    "date_gmt": "2026-10-08T15:58:32",
+    "title": {
+      "rendered": "Titus O&#8217;Neil Signs With Stoked Sports &amp; Entertainment"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/11/17204954/titus_1.jpg"
+  },
+  {
+    "id": 332738,
+    "link": "https://www.fightful.com/wrestling/strong-openweight-tag-titles-to-be-defended-at-njpw-x-cmll-lucha-kingdom/",
+    "date": "2026-10-08T11:54:20",
+    "date_gmt": "2026-10-08T15:54:20",
+    "title": {
+      "rendered": "STRONG Openweight Tag Titles To Be Defended At NJPW x CMLL Lucha Kingdom"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08115356/CMLL___-1.jpg"
+  },
+  {
     "id": 332739,
     "link": "https://www.fightful.com/wrestling/jeff-cannonball-passes-away/",
     "date": "2026-10-08T11:41:06",
@@ -268,35 +298,5 @@
       "rendered": "Cody Rhodes: Next Level Pay In WWE Is Now Comparable With Sports"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/31174419/HJrS5KLWgAIVdwg-e1784896461289.jpg"
-  },
-  {
-    "id": 332720,
-    "link": "https://www.fightful.com/wrestling/roman-reigns-sends-words-of-encouragement-to-young-fan-who-is-experiencing-bullying/",
-    "date": "2026-10-07T16:10:30",
-    "date_gmt": "2026-10-07T20:10:30",
-    "title": {
-      "rendered": "Roman Reigns Sends Words Of Encouragement To Young Fan Who Is Experiencing Bullying"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/05121255/001_RAW_08032026CN_118850-e1785946401633.jpg"
-  },
-  {
-    "id": 332444,
-    "link": "https://www.fightful.com/wrestling/john-cena-talks-his-wife-being-present-on-set-for-helicopter-stunt-in-matchbox-movie/",
-    "date": "2026-10-07T16:00:00",
-    "date_gmt": "2026-10-07T20:00:00",
-    "title": {
-      "rendered": "John Cena Talks His Wife Being Present On Set For Helicopter Stunt In Matchbox Movie"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/06133012/maxresdefault-28.jpg"
-  },
-  {
-    "id": 332645,
-    "link": "https://www.fightful.com/wrestling/john-cena-to-star-in-the-family-disappears/",
-    "date": "2026-10-07T15:49:18",
-    "date_gmt": "2026-10-07T19:49:18",
-    "title": {
-      "rendered": "John Cena To Star In &#8216;The Family Disappears&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/17174510/Screenshot-248-e1781732721555.png"
   }
 ]
