@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/two-new-matches-added-september-23-aew-dynamite-collision-special/": {
-    "matchedFile": "20260923051655-إضافة-نزال-على-بطولة-tbs-ونزال-يشارك-فيه-ويلي-أسبراي-إلى-عرضي-aew-dynamite-و-aew-collision.md",
-    "reason": "manual audit 2026-09-24: same story as earlier article",
-    "at": "2026-09-24T06:15:52.508Z"
-  },
   "https://www.ringsidenews.com/gable-steveson-breaks-silence-12-second-ufc-331-knockout-pre-fight-allegations/": {
     "matchedFile": "20260923030214-غيبل-ستيفينسون-ينفي-مزاعم-اغتصاب-تعود-لعام-2019-ويصدر-بيانا-بشأن-خسارته-بالضربة-القاضية.md",
     "reason": "manual audit 2026-09-24: same story as earlier article",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261008184656-وفاة-المصارع-المستقل-جيف-كانونبال-بعد-صراع-مع-مرض-التصلب-الجانبي-الضموري.md",
     "reason": "الخبر الجديد يغطي نفس واقعة وفاة المصارع جيف كانونبول وتفاصيلها الأساسية التي تم تناولها بالفعل في الخبر المنشور.",
     "at": "2026-10-08T18:13:55.097Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-smackdown-10-2-viewership-slightly-drops-demo-holds/": {
+    "matchedFile": "20261008211148-انخفاض-طفيف-في-نسبة-مشاهدة-عرض-wwe-smackdown-يوم-2-أكتوبر-2026.md",
+    "reason": "الخبر الجديد يغطي نفس نسب مشاهدات عرض WWE SmackDown بتاريخ 2 أكتوبر بنفس الأرقام والتفاصيل (1.250 مليون مشاهد وتصنيف 0.27).",
+    "at": "2026-10-08T18:17:11.707Z"
   }
 }
