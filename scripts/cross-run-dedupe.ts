@@ -13,7 +13,7 @@ import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
 import matter from "gray-matter";
-import { findDuplicateCandidates, duplicatePrompt, parseDuplicateAnswer, newSubject, recordDuplicate } from "./editorial";
+import { findDuplicateCandidates, duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, recordDuplicate } from "./editorial";
 import type { NewsFile } from "./news-qa";
 
 const NEWS_DIR = path.join(process.cwd(), "content", "news");
@@ -39,7 +39,7 @@ export async function crossRunDuplicates(ours: NewsFile[], arrived: NewsFile[], 
     const parsed = parseDuplicateAnswer(answer, candidates);
     const matched = parsed && candidates.find(c => c.file === parsed.file);
     // A story about someone the other one never mentions is its own story (INCIDENTS #150)
-    const verdict = matched && newSubject(mine, matched) ? null : parsed;
+    const verdict = matched && (newSubject(mine, matched) || newMedicalOutcome(mine, matched)) ? null : parsed;
     if (verdict) hits.push({ file: mine.file, matchedFile: verdict.file, reason: verdict.reason || "نفس الخبر نزل من بوت تاني في نفس الوقت" });
     else if (!answer && sameLink) hits.push({ file: mine.file, matchedFile: sameLink.file, reason: "نفس المنشور المضمّن في خبر نزل من بوت تاني في نفس الوقت" });
   }

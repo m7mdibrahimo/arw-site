@@ -8,7 +8,7 @@ import matter from "gray-matter";
 import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
-  duplicatePrompt, parseDuplicateAnswer, newSubject, isKnownDuplicate, recordDuplicate, logProofEdits,
+  duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
   type ArticleDraft, type ProofEdit,
 } from "./editorial";
 
@@ -4318,7 +4318,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
       try { matchedSource = String(matter(fs.readFileSync(path.join(NEWS_DIR, verdict ? verdict.file : ""), "utf-8")).data.source_url || ""); } catch {}
       const matchedSlug = matchedSource.replace(/[?#].*$/, "").replace(/\/+$/, "").split("/").pop() || "";
       const matchedNews = verdict ? recentNews.find(n => n.file === verdict.file) : undefined;
-      const subject = matchedNews ? newSubject(draft, matchedNews) : null;
+      const subject = matchedNews ? newSubject(draft, matchedNews) || newMedicalOutcome(draft, matchedNews) : null;
       if (verdict && matchedSlug && clearlyDifferentStories(rawTitle, matchedSlug)) {
         console.log(`[Watcher] ↪️ Gemini called #${postId} a duplicate of ${verdict.file}, but they are different kinds of story / different people — publishing.`);
       } else if (verdict && subject) {

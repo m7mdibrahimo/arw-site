@@ -3991,3 +3991,13 @@ test('a picture at the size a page asks for: a few fixed widths, made on request
   const toml = fs.readFileSync('media-worker/wrangler.toml', 'utf-8');
   assert.match(toml, /pattern = "arab-wrestling\.com\/img\/\*"/); // the old resized copies' addresses keep working
 });
+
+test('a medical outcome is new news, never a copy of the surgery story (INCIDENTS #371)', async () => {
+  const { newMedicalOutcome } = await import('../scripts/editorial.ts');
+  const surgery = { title: 'جيم روس يخضع لجراحة ثانية', body: 'خضع جيم روس لعملية جراحية ثانية في المستشفى.' };
+  assert.ok(newMedicalOutcome({ title: 'جيم روس يتعافى بعد نجاح جراحته الثانية' }, surgery));
+  assert.ok(newMedicalOutcome({ title: 'جيم روس يغادر المستشفى' }, surgery));
+  assert.equal(newMedicalOutcome({ title: 'جيم روس يخضع لجراحة ثانية في الورك' }, surgery), null); // no outcome: same story
+  assert.equal(newMedicalOutcome({ title: 'جيم روس يتعافى' }, { title: 'جيم روس يتعافى بعد الجراحة', body: '' }), null); // the outcome was already out
+  assert.equal(newMedicalOutcome({ title: 'كودي رودز يتعافى من خسارته' }, { title: 'كودي رودز يخسر اللقب', body: 'خسر في النزال.' }), null); // not medical
+});

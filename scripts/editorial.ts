@@ -298,7 +298,7 @@ ${list}
   - تأبين أو تصريح من شخص مش مذكور في الخبر المنشور (باتيستا أو كيماليتو يرثي، والمنشور هو خبر الوفاة أو رثاء ذا روك).
   - كواليس أو سبب أو خطة وراء مشهد (ليه اتعمل مشهد الدهس، والمنشور هو المشهد نفسه).
   - معلومة جديدة عن شخص (WWE كانت عايزاه مدير عام، والمنشور هو خبر وفاته).
-  - تحديث طبي أو قضائي جديد (نتيجة فحص، جلسة، حذف حساب)، والمنشور هو الإصابة أو القضية نفسها.
+  - تحديث طبي أو قضائي جديد (نتيجة فحص، جلسة، حذف حساب)، والمنشور هو الإصابة أو القضية نفسها. مثال: «جيم روس يتعافى بعد نجاح جراحته الثانية» والمنشور «جيم روس يخضع لجراحة ثانية» = ليس تكراراً.
   - رد صاحب الشأن نفسه على الخبر (المتهم يرد على القضية، المصارع ينفي الشائعة)، والمنشور هو القضية أو الشائعة من غير رده.
   - صاحب الواقعة نفسه يحكي في مقابلة أو بودكاست إزاي أو ليه عملها، حتى لو الخبر بيعيد سرد الواقعة في أوله (رين سنكلير تحكي في بودكاست إزاي خططت للتسلل للباتل رويال متنكرة، والمنشور هو النزال نفسه).
 - نفس الإعلان أو نفس التصريح أو نفس الواقعة من مصدر آخر = تكرار.
@@ -332,6 +332,20 @@ export function newSubject(draft: ArticleDraft, matched: { title: string; body: 
     if (draft.title.includes(t) && words.length && words.every(missing)) return t;
   }
   return null;
+}
+
+/**
+ * A medical outcome after a story about the surgery or injury itself: «جيم روس يتعافى بعد نجاح
+ * جراحته الثانية» is not «جيم روس يخضع لجراحة ثانية», yet the same-story check called it «an update
+ * on the same surgery» (INCIDENTS #371). The outcome word in the new title, absent from the published
+ * title, overrules a «duplicate».
+ */
+export function newMedicalOutcome(draft: { title: string }, matched: { title: string; body: string }): string | null {
+  const outcome = /يتعافى|يتعافي|تتعافى|تعافي|التعافي|نجاح\s+(?:ال)?(?:عملية|جراحة)|نجحت|ناجحة|يغادر\s+المستشفى|تغادر\s+المستشفى|خروج\S*\s+من\s+المستشفى|يعود\s+(?:إلى|الى)\s+(?:المنزل|منزله)|وفاة|توفي/;
+  const medical = /جراحة|عملية|المستشفى|إصابة|أزمة\s+صحية|الدماغ|العلاج/;
+  const hit = draft.title.match(outcome);
+  if (!hit || outcome.test(matched.title)) return null;
+  return medical.test(`${matched.title}\n${matched.body}`) ? hit[0] : null;
 }
 
 export function parseDuplicateAnswer(raw: string | null, candidates: NewsFile[]): { file: string; reason: string } | null {
