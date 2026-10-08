@@ -2,6 +2,16 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "بشخصية القصير",
+   "right": "بشخصية شورتي جي",
+   "note": "Shorty G اتترجمت «القصير» — اسم الشخصية بيتكتب بالحروف العربية مش بيتترجم — INCIDENTS #375"
+  },
+  {
+   "wrong": "شخصية القصير",
+   "right": "شخصية شورتي جي",
+   "note": "نفس اللي فوق — INCIDENTS #375"
+  },
+  {
    "wrong": "(?:إغلاق|غلق|إقفال)\\s+(?:عرض\\s+)?(?:Forbidden\\s+Door|فوربيدن\\s+دور)",
    "right": "إقفال «الباب المحرم»",
    "regex": true,

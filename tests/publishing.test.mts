@@ -4017,3 +4017,9 @@ test('pictures are shrunk by exact area averaging, never enlarged (INCIDENTS #37
   const same = { width: 2, height: 2, data: new Uint8ClampedArray(16) };
   assert.equal(downscale(same, 4, 4), same); // never enlarged
 });
+
+test('Shorty G is never translated as «القصير»', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('فترة أدائه بشخصية القصير'), 'فترة أدائه بشخصية شورتي جي');
+  assert.equal(applyCorrections('تلك شخصية القصير'), 'تلك شخصية شورتي جي');
+});
