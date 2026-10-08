@@ -224,3 +224,22 @@ test('a promotion\'s pages in English: the older stories out, the rest put back 
   assert.match(ar3, /class="theme-toggle lang-switch" href="\/en\/federation\/wwe\/"/);
   assert.doesNotMatch(ar3, /<link[^>]*hreflang="en"/);
 });
+
+test('the English sitemap lists only English pages really written, each with its Arabic page\'s lastmod (INCIDENTS #366)', () => {
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-sitemap-'));
+  fs.writeFileSync(path.join(site, 'index.html'), page('عرب راسلنج', '<p>الأخبار</p>'));
+  fs.mkdirSync(path.join(site, 'shows', 'raw-06-10-2026'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'shows', 'raw-06-10-2026', 'index.html'), page('عرض الرو', '<p>عرض</p>'));
+  // a renamed show's old address: only a redirect page, never an English copy
+  fs.mkdirSync(path.join(site, 'shows', 'raw-old'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'shows', 'raw-old', 'index.html'), '<!doctype html><html lang="ar"><head><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/shows/raw-06-10-2026/"></head><body><a href="/shows/raw-06-10-2026/">x</a></body></html>');
+  fs.writeFileSync(path.join(site, 'sitemap.xml'), '<urlset><url><loc>https://arab-wrestling.com/shows/raw-06-10-2026/</loc><lastmod>2026-10-07</lastmod></url></urlset>');
+  mirror.buildEnglish(site, { content: {} });
+  const sm = fs.readFileSync(path.join(site, 'en', 'sitemap.xml'), 'utf8');
+  assert.match(sm, /<loc>https:\/\/arab-wrestling\.com\/en\/shows\/raw-06-10-2026\/<\/loc><lastmod>2026-10-07<\/lastmod>/);
+  assert.doesNotMatch(sm, /raw-old/);
+  for (const loc of sm.match(/<loc>[^<]+<\/loc>/g) || []) {
+    const p = loc.replace(/<\/?loc>/g, '').replace('https://arab-wrestling.com', '');
+    assert.ok(fs.existsSync(path.join(site, decodeURI(p), 'index.html')), p); // no 404 sent to Google
+  }
+});

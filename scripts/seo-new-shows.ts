@@ -26,7 +26,7 @@ const H = 3600_000;
 const INSPECT_PER_RUN = 40;
 
 export interface QueryStat { q: string; clicks: number; impressions: number; position: number }
-interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string; queries?: QueryStat[]; queriesAt?: string }
+interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string; queries?: QueryStat[]; queriesAt?: string; googleCanonical?: string; crawledAt?: string }
 interface State { pages: Record<string, Page>; sitemapPinged?: string }
 
 /** Watch pages: one show, recap or nostalgia episode, and a program's library page. */
@@ -152,6 +152,10 @@ async function main() {
         p.inspected = new Date(now).toISOString();
         p.verdict = r.verdict || "";
         p.coverage = r.coverageState || "";
+        // the page Google chose as the original, when it isn't this one: why «Duplicate, Google chose a different
+        // canonical» happens, page by page (INCIDENTS #366)
+        p.googleCanonical = r.googleCanonical && r.googleCanonical !== u ? r.googleCanonical : "";
+        p.crawledAt = r.lastCrawlTime || p.crawledAt || "";
         if (r.verdict === "PASS") p.indexedAt = p.indexedAt || new Date(now).toISOString();
       } catch (e: any) { console.log(`[SEO] inspect ${path_(u)}: ${e.message}`); }
     }
@@ -184,7 +188,8 @@ async function main() {
   const problems: string[] = [];
   for (const [u, p] of recent) {
     const age = (now - Date.parse(p.firstSeen)) / H;
-    if (!p.indexedAt && age >= 72 && p.inspected) problems.push(`- مش متفهرسة بعد ${Math.round(age)} ساعة: ${path_(u)} — ${p.coverage || p.verdict || "؟"}`);
+    if (!p.indexedAt && age >= 72 && p.inspected) problems.push(`- مش متفهرسة بعد ${Math.round(age)} ساعة: ${path_(u)} — ${p.coverage || p.verdict || "؟"}${p.crawledAt ? ` (آخر زحف ${p.crawledAt.slice(0, 16).replace("T", " ")})` : " (جوجل لسه مازارهاش)"}`);
+    if (p.googleCanonical) problems.push(`- جوجل اختار صفحة تانية أصل ليها: ${path_(u)} ← ${path_(p.googleCanonical)} — خلّي الصفحتين مختلفين بوضوح أو وحّدهم`);
     const pf = perf[u];
     if (p.indexedAt && age >= 5 * 24 && pf && pf.impressions >= 30 && pf.position > 3) problems.push(`- متفهرسة بس ترتيبها ${pf.position.toFixed(1)} (${pf.impressions} ظهور): ${path_(u)} — حسّن العنوان والوصف والبيانات المنظمة`);
     for (const w of weakQueries(p.queries)) problems.push(`- «${w.q}» ترتيبها ${w.position.toFixed(1)} (${w.impressions} ظهور، ${w.clicks} نقرة): ${path_(u)} — خليها في أول ٣`);
