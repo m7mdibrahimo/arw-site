@@ -1,10 +1,11 @@
 // Cover images: resized and compressed in the browser before upload (a 6 MB poster
 // becomes ~250 KB), named like the existing files (16 random letters/digits).
 
-// 1280px: the site shows a cover at 800px at most and shares it at 1200 (og:image); 1600 only took a third more of
+// 1200px: the site shows a cover at 800px at most and shares it at 1200 (og:image); 1600 only took a third more of
 // the pictures' 10 GB store for pixels nobody saw (INCIDENTS #362). Still JPEG: Instagram takes nothing else.
-const MAX_W = 1280;
-const QUALITY = 0.86;
+const MAX_W = 1280;   // inside 1280×720, the same box arw-media keeps (INCIDENTS #372)
+const MAX_H = 720;
+const QUALITY = 0.78;
 
 export function randomName(len = 16) {
   const abc = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -29,7 +30,7 @@ export async function prepareImage(file) {
   const url = URL.createObjectURL(file);
   try {
     const img = await loadImage(url);
-    const scale = Math.min(1, MAX_W / img.naturalWidth);
+    const scale = Math.min(1, MAX_W / img.naturalWidth, MAX_H / img.naturalHeight);
     const w = Math.round(img.naturalWidth * scale), h = Math.round(img.naturalHeight * scale);
     const canvas = document.createElement('canvas');
     canvas.width = w; canvas.height = h;

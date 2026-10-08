@@ -136,8 +136,8 @@ const isPicture = (key: string) => /^content\/images\/.+\.(jpe?g|png|webp)$/i.te
 /** The pictures stored before uploads were compressed (INCIDENTS #372): each hour a few of the big ones are made small
  *  in place — same address, so nothing on the site changes — and every picture checked is marked so it is never read
  *  twice. A few per hour keeps each run well inside the Worker's CPU time. */
-const COMPRESS_PER_RUN = 3;
-const BIG_PICTURE_BYTES = 300 * 1024; // the same line as ORIGINAL_MAX_BYTES in resize.ts
+const COMPRESS_PER_RUN = 5;
+const BIG_PICTURE_BYTES = 150 * 1024; // the same line as ORIGINAL_MAX_BYTES in resize.ts
 async function compressStored(env: Env): Promise<number> {
   if (!env.MEDIA) return 0;
   let cursor: string | undefined, done = 0;

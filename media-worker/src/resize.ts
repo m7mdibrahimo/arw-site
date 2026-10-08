@@ -51,28 +51,34 @@ export async function resizedWebp(buf: ArrayBuffer, type: string, width: number,
   return encodeWebp(out, { quality });
 }
 
-/** How a stored original is kept small (owner's request, INCIDENTS #372 — the pictures' R2 store is 10 GB): at most
- *  1600 px wide (sharp on any screen the site has; pages ask smaller sizes anyway) and JPEG at quality 80. JPEG because
- *  Instagram and Facebook take nothing else for the posts that share these pictures. */
-export const ORIGINAL_MAX_W = 1600;
-export const ORIGINAL_QUALITY = 80;
-export const ORIGINAL_MAX_BYTES = 300 * 1024;
+/** How a stored original is kept small (owner's request, INCIDENTS #372 — the pictures' R2 store is 10 GB, «300 KB
+ *  is still big», «at most 1280×720»): it fits inside 1280×720, proportions kept (the site never shows a picture wider
+ *  than 800; a tall poster is held by its height), and is JPEG of 150 KB or less: quality 72, then 68, then 64 while
+ *  still over 150 KB — at 1280×720, side by side at full size, 82, 72 and 68 can't be told apart, even on a poster
+ *  full of fine texture and lettering (2026-10-08). JPEG because Instagram and Facebook take nothing else for the posts that share these pictures. */
+export const ORIGINAL_MAX_W = 1280;
+export const ORIGINAL_MAX_H = 720;
+export const ORIGINAL_QUALITY = 72;
+export const ORIGINAL_MAX_BYTES = 150 * 1024;
+const LOWER_QUALITIES = [68, 64];
 
 /** The original's bytes → a smaller JPEG, or null when it is already small enough / would not get smaller.
  *  Transparent pixels (a PNG logo, a screenshot) go on white, as JPEG has no transparency. */
 export async function compressOriginal(buf: ArrayBuffer, type: string): Promise<ArrayBuffer | null> {
   await setup();
   let img = await decode(buf, type);
-  if (buf.byteLength <= ORIGINAL_MAX_BYTES && img.width <= ORIGINAL_MAX_W) return null;
-  if (img.width > ORIGINAL_MAX_W) {
-    const h = Math.max(1, Math.round((img.height * ORIGINAL_MAX_W) / img.width));
-    img = await resize(img, { width: ORIGINAL_MAX_W, height: h, method: "lanczos3" });
+  const scale = Math.min(1, ORIGINAL_MAX_W / img.width, ORIGINAL_MAX_H / img.height);
+  if (buf.byteLength <= ORIGINAL_MAX_BYTES && scale === 1) return null;
+  if (scale < 1) {
+    const w = Math.max(1, Math.round(img.width * scale)), h = Math.max(1, Math.round(img.height * scale));
+    img = await resize(img, { width: w, height: h, method: "lanczos3" });
   }
   const d = img.data;
   for (let i = 0; i < d.length; i += 4) {
     const a = d[i + 3];
     if (a < 255) { const k = a / 255; d[i] = d[i] * k + 255 * (1 - k); d[i + 1] = d[i + 1] * k + 255 * (1 - k); d[i + 2] = d[i + 2] * k + 255 * (1 - k); d[i + 3] = 255; }
   }
-  const out = await encodeJpeg(img, { quality: ORIGINAL_QUALITY });
+  let out = await encodeJpeg(img, { quality: ORIGINAL_QUALITY });
+  for (const q of LOWER_QUALITIES) { if (out.byteLength <= ORIGINAL_MAX_BYTES) break; out = await encodeJpeg(img, { quality: q }); }
   return out.byteLength < buf.byteLength ? out : null;
 }

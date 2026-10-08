@@ -147,8 +147,8 @@ function cleanImageUrl(rawUrl: string): string {
 // The story's cover stays JPEG (Instagram takes JPEG only, and it is the picture shared everywhere); the pictures from
 // the source's text are WebP — only ever shown on the page (INCIDENTS #362: the pictures' 10 GB store)
 type ImageOut = { format: "jpeg" | "webp"; width: number; quality: number };
-const COVER_IMAGE: ImageOut = { format: "jpeg", width: 1200, quality: 82 };
-const GALLERY_IMAGE: ImageOut = { format: "webp", width: 1000, quality: 78 };
+const COVER_IMAGE: ImageOut = { format: "jpeg", width: 1280, quality: 72 }; // inside 1280×720, mozjpeg 72: the same to the eye as 82 (INCIDENTS #372)
+const GALLERY_IMAGE: ImageOut = { format: "webp", width: 1280, quality: 78 };
 async function downloadAndOptimizeImage(imageUrl: string, out: ImageOut = COVER_IMAGE): Promise<string | null> {
   try {
     const sanitizedUrl = cleanImageUrl(imageUrl);
@@ -175,7 +175,7 @@ async function downloadAndOptimizeImage(imageUrl: string, out: ImageOut = COVER_
     // ~15% smaller, the same to the eye) or WebP
     const img = sharp(buffer)
       .rotate()
-      .resize({ width: out.width, withoutEnlargement: true })
+      .resize({ width: out.width, height: 720, fit: "inside", withoutEnlargement: true })
       .flatten({ background: "#ffffff" });
     await (out.format === "webp" ? img.webp({ quality: out.quality, effort: 5 }) : img.jpeg({ quality: out.quality, mozjpeg: true })).toFile(targetPath);
 
