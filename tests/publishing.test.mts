@@ -1741,6 +1741,14 @@ test('whatever happened ON a show that aired in the last 24h is a spoiler — a 
   // «at the same event» must name the show, not point back to the wrong one (INCIDENTS #281)
   const styleGuide = (await import('node:fs')).readFileSync(new URL('../editorial/style-guide.md', import.meta.url), 'utf8');
   assert.match(styleGuide, /at the same event \/ on the same show ← اكتب اسم العرض صراحة/);
+  // Every article and title, from every source, is written in very simple white fusha (owner request 2026-10-08)
+  assert.match(styleGuide, /## 0\. أسلوب الكتابة — فصحى بيضاء مبسطة جدا/);
+  assert.match(styleGuide, /في خضم \/ في غمار ← وسط \/ خلال/);
+  assert.match(styleGuide, /\*\*العنوان بنفس الأسلوب تماما\*\*/);
+  const { editorialGuideForPrompt, proofreadPrompt } = await import('../scripts/editorial');
+  assert.match(editorialGuideForPrompt(), /فصحى بيضاء مبسطة جدا/);
+  assert.match(proofreadPrompt({ title: 'x', body: 'y', tags: [] }, 'x', 'y', '', []), /كلمة ثقيلة أو قديمة أو أدبية لها بديل يومي أسهل/);
+  assert.doesNotMatch(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /بليغة|بلاغة الأسلوب|رشيقة/);
 
   // «28 سبتمبر» at 01:00 UTC on the 29th is not «over 24 hours ago» (the model said it was)
   const now = Date.parse('2026-09-29T01:00:00Z');
@@ -4022,4 +4030,20 @@ test('Shorty G is never translated as «القصير»', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('فترة أدائه بشخصية القصير'), 'فترة أدائه بشخصية شورتي جي');
   assert.equal(applyCorrections('تلك شخصية القصير'), 'تلك شخصية شورتي جي');
+});
+
+test('pages stay light: small site icons, lazy homepage thumbnails, slider pictures on demand, fonts not render-blocking', () => {
+  // the icons every page asks for were the full 1024px logo (~1.8 MB per visit)
+  assert.ok(fs.statSync('favicon.png').size < 40_000);
+  assert.ok(fs.statSync('favicon.svg').size < 20_000);
+  const home = fs.readFileSync('index.njk', 'utf8');
+  // background-image thumbnails never lazy-load: every card picture downloaded on page open
+  assert.doesNotMatch(home, /class="(?:show|news)-thumb[^"]*" style="background-image/);
+  assert.match(home, /<img class="thumb-img" src="\{% optImg item\.data\.image, '\/favicon\.png\?v=3' %\}"[^>]*loading="lazy"/);
+  assert.match(home, /\{% if loop\.index0 < 2 %\}src\{% else %\}data-src\{% endif %\}/);
+  assert.match(home, /function loadSlideImg\(i\)/);
+  assert.doesNotMatch(home, /url\('https:\/\/i\.ibb\.co/);
+  for (const f of ['index.njk', '_includes/post-layout.njk', 'pages/news.njk']) {
+    assert.doesNotMatch(fs.readFileSync(f, 'utf8'), /<link href="https:\/\/fonts\.googleapis\.com[^"]+" rel="stylesheet">/, f);
+  }
 });
