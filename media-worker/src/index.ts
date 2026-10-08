@@ -59,11 +59,21 @@ async function upload(req: Request, env: Env): Promise<Response> {
   if (!key) return json({ ok: false, error: "bad path" }, 400);
   if (!(await canWriteRepo(req.headers.get("Authorization"), env))) return json({ ok: false, error: "forbidden" }, 403);
   if (req.method === "DELETE") { await env.MEDIA.delete(key); return json({ ok: true, key, deleted: true }); }
-  const body = await req.arrayBuffer();
+  let body = await req.arrayBuffer();
   if (!body.byteLength || body.byteLength > 95 * 1024 * 1024) return json({ ok: false, error: "empty or too big" }, 400);
   if (url.searchParams.get("replace") !== "1" && (await env.MEDIA.head(key))) return json({ ok: true, key, existed: true });
-  await env.MEDIA.put(key, body, { httpMetadata: { contentType: typeOf(key), cacheControl: CACHE } });
-  return json({ ok: true, key, bytes: body.byteLength });
+  // a big picture is stored small, whoever sends it (INCIDENTS #372)
+  let contentType = typeOf(key);
+  const before = body.byteLength;
+  if (isPicture(key)) {
+    try {
+      const { compressOriginal } = await import("./resize");
+      const small = await compressOriginal(body, contentType);
+      if (small) { body = small; contentType = "image/jpeg"; }
+    } catch (e: any) { console.log(`[media] compress ${key}: ${e?.message || e}`); }
+  }
+  await env.MEDIA.put(key, body, { httpMetadata: { contentType, cacheControl: CACHE }, customMetadata: { checked: "1" } });
+  return json({ ok: true, key, bytes: body.byteLength, ...(before !== body.byteLength ? { compressedFrom: before } : {}) });
 }
 
 /** Reels are needed only while they're posted to the social networks (which keep their own copy): R2 keeps them
@@ -121,9 +131,43 @@ async function serveSized(req: Request, env: Env, ctx: ExecutionContext, key: st
   return req.method === "HEAD" ? new Response(null, res) : res;
 }
 
+const isPicture = (key: string) => /^content\/images\/.+\.(jpe?g|png|webp)$/i.test(key);
+
+/** The pictures stored before uploads were compressed (INCIDENTS #372): each hour a few of the big ones are made small
+ *  in place — same address, so nothing on the site changes — and every picture checked is marked so it is never read
+ *  twice. A few per hour keeps each run well inside the Worker's CPU time. */
+const COMPRESS_PER_RUN = 3;
+const BIG_PICTURE_BYTES = 300 * 1024; // the same line as ORIGINAL_MAX_BYTES in resize.ts
+async function compressStored(env: Env): Promise<number> {
+  if (!env.MEDIA) return 0;
+  let cursor: string | undefined, done = 0;
+  do {
+    const page = await env.MEDIA.list({ prefix: "content/images/", cursor, limit: 1000, include: ["customMetadata"] } as R2ListOptions);
+    for (const o of page.objects) {
+      if (done >= COMPRESS_PER_RUN) return done;
+      // only the big ones, each once (a small one is never read or rewritten)
+      if (!isPicture(o.key) || o.size <= BIG_PICTURE_BYTES || o.customMetadata?.checked === "1") continue;
+      const obj = await env.MEDIA.get(o.key);
+      if (!obj) continue;
+      const buf = await obj.arrayBuffer();
+      const type = obj.httpMetadata?.contentType || typeOf(o.key);
+      let small: ArrayBuffer | null = null;
+      try { const { compressOriginal } = await import("./resize"); small = await compressOriginal(buf, type); }
+      catch (e: any) { console.log(`[media] compress ${o.key}: ${e?.message || e}`); }
+      await env.MEDIA.put(o.key, small || buf, { httpMetadata: { contentType: small ? "image/jpeg" : type, cacheControl: CACHE }, customMetadata: { checked: "1" } });
+      done++;
+      if (small) console.log(`[media] ${o.key}: ${buf.byteLength} → ${small.byteLength} bytes`);
+    }
+    cursor = page.truncated ? page.cursor : undefined;
+  } while (cursor);
+  return done;
+}
+
 export default {
-  async scheduled(_event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
-    ctx.waitUntil(pruneReels(env).then(n => console.log(`[media] ${n} old reels removed`)));
+  async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
+    // hourly: a few big stored pictures made small; once a day (03:17 UTC): reels older than 30 days removed
+    ctx.waitUntil(compressStored(env).then(n => n && console.log(`[media] ${n} stored pictures made smaller`)));
+    if (new Date(event.scheduledTime).getUTCHours() === 3) ctx.waitUntil(pruneReels(env).then(n => console.log(`[media] ${n} old reels removed`)));
   },
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     if (new URL(req.url).pathname.startsWith("/upload/")) {

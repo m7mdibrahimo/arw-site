@@ -3717,7 +3717,7 @@ test('the site builds from a «site» branch without the original pictures and r
   // the bots upload through the workers.dev address, which wrangler turns off when routes are set (INCIDENTS #313)
   assert.ok(/^workers_dev = true$/m.test(toml) && toml.search(/^workers_dev/m) < firstTable);
   assert.match(fs.readFileSync('scripts/media-store.ts', 'utf-8'), /workers\.dev/);
-  assert.match(toml, /^\[triggers\]\ncrons = \["17 3 \* \* \*"\]/m);
+  assert.match(toml, /^\[triggers\]\ncrons = \["17 \* \* \* \*"\]/m); // hourly: big pictures made small; 03:17 UTC: reel cleanup (INCIDENTS #372)
   const src = fs.readFileSync('media-worker/src/index.ts', 'utf-8');
   // the repo fallback is never cached at the edge: a cached copy refilled R2 with every deleted reel (INCIDENTS #313)
   assert.ok(!/cacheTtl: 86400/.test(src) && /fetch\(src, \{ cache: "no-store" \}\)/.test(src));
