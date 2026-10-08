@@ -266,7 +266,8 @@ module.exports = function(eleventyConfig) {
     const list = await fetchLiveJson("img-cache.json");
     fs.mkdirSync("_site/img", { recursive: true });
     const have = new Set(fs.readdirSync("_site/img"));
-    const todo = (Array.isArray(list) ? list : []).filter(f => typeof f === "string" && IMG_RE.test(f) && !have.has(f));
+    // (not the panel's retired 160px copies — 3,000 files the deployment can't hold, INCIDENTS #368)
+    const todo = (Array.isArray(list) ? list : []).filter(f => typeof f === "string" && IMG_RE.test(f) && !/-160\.webp$/.test(f) && !have.has(f));
     let ok = 0, next = 0;
     const worker = async () => {
       while (next < todo.length) {
@@ -292,7 +293,6 @@ module.exports = function(eleventyConfig) {
   // reuses it without the original; an original no build has resized yet is fetched once, to the same path, so its
   // resized file gets the same name it always had.
   const IMG_MAP = {};
-  let makeLaterMinis = async () => {}; // set with the «miniOf» filter below
   const MEDIA_ORIGIN = process.env.ARW_MEDIA_ORIGIN || LIVE;
   const mapKey = (rel, kind) => `${String(rel).normalize("NFC")}|${kind}`;
   const mapped = (rel, kind) => { const u = IMG_MAP[mapKey(rel, kind)]; return u && fs.existsSync("_site" + u) ? u : ""; };
@@ -315,6 +315,7 @@ module.exports = function(eleventyConfig) {
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
     try {
       const live = await fetchLiveJson("img-map.json");
+      for (const k of Object.keys(live || {})) if (/\|160webp$/.test(k)) delete live[k]; // retired (INCIDENTS #368)
       if (live && typeof live === "object") Object.assign(IMG_MAP, live);
       console.log(`[img-map] ${Object.keys(IMG_MAP).length} resized pictures known`);
     } catch (e) { console.log(`[img-map] skipped: ${e.message}`); }
@@ -340,7 +341,6 @@ module.exports = function(eleventyConfig) {
     } catch (e) { console.log(`[build.json] skipped: ${e.message}`); }
   });
   eleventyConfig.on("eleventy.after", async () => {
-    try { await makeLaterMinis(); } catch (e) { console.log(`[mini] skipped: ${e.message}`); }
     try {
       const files = fs.existsSync("_site/img") ? fs.readdirSync("_site/img").filter(f => IMG_RE.test(f)) : [];
       fs.writeFileSync("_site/img-cache.json", JSON.stringify(files));
@@ -924,48 +924,17 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addNunjucksAsyncShortcode("optThumb", optThumb);
   // The panel's lists show each picture in a 50–58px square, and loaded the original or the 800px copy for it (70–400 KB
-  // each, 15+ a page). This is a 160px WebP (~3–6 KB), made from the card's 480px copy when there is one — no original
-  // fetched, a few milliseconds each (INCIDENTS #362). "" when there is neither: the panel shows the picture it has.
-  const optMini = async function(src) {
-    // (the site's own address written in full is the same picture)
-    const input = (src && typeof src === "string") ? src.trim().replace(/^https?:\/\/(?:www\.)?arab-wrestling\.com(?=\/)/i, "") : "";
-    if (!input || /^https?:\/\//i.test(input)) return "";
-    let rel = input.startsWith("/") ? input : "/" + input;
-    try { rel = decodeURIComponent(rel); } catch (e) {}
-    if (!/^\/(content|images)\//.test(rel)) return "";
-    const ready = mapped(rel, "160webp");
-    if (ready) return ready;
-    // from the smallest copy an earlier build made (480px card, else 800px article picture), else the original here
-    const made = mapped(rel, "480webp") || mapped(rel, "800jpeg") || (fs.existsSync("." + rel) ? "" : await optThumb(rel));
-    const file = made ? "_site" + made : (fs.existsSync("." + rel) ? "." + rel : "");
-    if (!file) return "";
-    try {
-      const meta = await Image(file, { widths: [160], formats: ["webp"], outputDir: "_site/img/", urlPath: "/img/", sharpWebpOptions: { quality: 70 } });
-      const w = meta && meta.webp && meta.webp[0];
-      if (w && w.url) IMG_MAP[mapKey(rel, "160webp")] = w.url;
-      return w && w.url ? w.url : "";
-    } catch (e) { return ""; }
-  };
-  eleventyConfig.addNunjucksAsyncShortcode("optMini", optMini);
-  // The same for the panel's data files, without waiting: each of their ~3,000 rows awaited its own shortcode and
-  // search-index.json alone took 13 s to render. The copy an earlier build made, or "" — and the pictures still
-  // without one get theirs at the end of this build, for the next one (INCIDENTS #367).
-  const MINI_LATER = new Set();
+  // each, 15+ a page — INCIDENTS #362). Their thumbnail is the card's 480px WebP the site already has (~16 KB), taken from
+  // the map without waiting (one awaited shortcode per row made search-index.json take 13 s). No picture of its own:
+  // a 160px copy of every picture added ~3,000 files and took the deployment past Cloudflare Pages' 20,000-file limit,
+  // so builds failed (INCIDENTS #368). "" when there is none yet: the panel shows the picture it has.
   eleventyConfig.addFilter("miniOf", function(src) {
     const input = (src && typeof src === "string") ? src.trim().replace(/^https?:\/\/(?:www\.)?arab-wrestling\.com(?=\/)/i, "") : "";
     if (!input || /^https?:\/\//i.test(input)) return "";
     let rel = input.startsWith("/") ? input : "/" + input;
     try { rel = decodeURIComponent(rel); } catch (e) {}
-    const ready = mapped(rel, "160webp");
-    if (!ready && /^\/(content|images)\//.test(rel)) MINI_LATER.add(rel);
-    return ready;
+    return mapped(rel, "480webp");
   });
-  // (called first thing by the hook that saves img-cache.json / img-map.json, so they list these too)
-  makeLaterMinis = async () => {
-    let n = 0;
-    for (const rel of MINI_LATER) { if (await optMini(rel)) n++; }
-    if (MINI_LATER.size) console.log(`[mini] ${n}/${MINI_LATER.size} panel thumbnails made for the next build`);
-  };
   // a card's picture: the 480px WebP (~20–40 KB) — sharp on a phone's card too, which is about 255 points wide —
   // or the original when there is none (INCIDENTS #330)
   eleventyConfig.addNunjucksAsyncShortcode("optCard", async function(src) { return (await optThumb(src)) || String(src || ""); });
@@ -2147,6 +2116,23 @@ module.exports = function(eleventyConfig) {
       leftovers.slice(0, 20).forEach(function(x) { console.log(`[en] still Arabic (${x[1]} pages): ${x[0].slice(0, 120)}`); });
       fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS }));
     } catch (e) { console.log(`[en] skipped: ${e.stack}`); }
+  });
+
+  // Cloudflare Pages refuses a deployment of more than 20,000 files — the build «succeeds» and the deploy fails, so the
+  // site silently stays on its last version (INCIDENTS #368). Counted last, after every page, picture and redirect
+  // page is written: in /build.json for the watchdog and the monitoring round, and loudly in the log near the limit.
+  const PAGES_FILE_LIMIT = 20000;
+  eleventyConfig.on("eleventy.after", () => {
+    try {
+      let files = 0;
+      const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) e.isDirectory() ? walk(path.join(d, e.name)) : files++; };
+      walk("_site");
+      const b = JSON.parse(fs.readFileSync("_site/build.json", "utf8"));
+      b.files = files; b.fileLimit = PAGES_FILE_LIMIT;
+      fs.writeFileSync("_site/build.json", JSON.stringify(b));
+      const msg = `[files] ${files} files in the deployment (Cloudflare Pages allows ${PAGES_FILE_LIMIT})`;
+      console.log(files > PAGES_FILE_LIMIT * 0.9 ? `${msg} — ⚠️ NEAR THE LIMIT: cut files before the deploy fails` : msg);
+    } catch (e) { console.log(`[files] count skipped: ${e.message}`); }
   });
 
   return {
