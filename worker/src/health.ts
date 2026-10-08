@@ -37,6 +37,14 @@ export async function checkPage(url: string, fetcher: typeof fetch = fetch): Pro
 }
 
 /** Workflows whose latest finished run failed (one line per workflow). */
+/** The live site is behind when the commit in /build.json is older than the newest one on main by more than `maxMs`.
+ *  The bots push to main every few minutes, so a long gap means Cloudflare builds are failing or stuck (INCIDENTS #368). */
+export function deployLag(buildCommitTimeSec: number, mainHeadMs: number, maxMs = 40 * 60_000): number {
+  if (!buildCommitTimeSec || !mainHeadMs) return 0;
+  const lag = mainHeadMs - buildCommitTimeSec * 1000;
+  return lag > maxMs ? lag : 0;
+}
+
 export function failedWorkflows(runs: any[]): { name: string; at: number; url: string }[] {
   const latest = new Map<string, any>();
   for (const r of runs) if (r?.status === "completed" && !latest.has(r.name)) latest.set(r.name, r);
@@ -133,6 +141,12 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
         const failed = failedWorkflows(runs.workflow_runs).map(f => ({ key: `ci:${f.name}`, code: "ci_failed", title: `تشغيل «${f.name}» فشل`, detail: f.url }));
         problems = mergeProblems(problems, failed, ["ci_failed"], now);
       }
+      const build: any = await fetch(bust(`${origin}/build.json`)).then(r => (r.ok ? r.json() : null)).catch(() => null);
+      const head: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commits/main`, {
+        headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+      }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+      const lag = deployLag(Number(build?.commitTime), Date.parse(head?.commit?.committer?.date || ""));
+      problems = mergeProblems(problems, lag ? [{ key: "deploy", code: "deploy_stale", title: "الموقع واقف على نسخة قديمة — بناء Cloudflare بيفشل أو متعطل", detail: `آخر نسخة ظاهرة أقدم من آخر تعديل بـ ${Math.round(lag / 60000)} دقيقة` }] : [], ["deploy_stale"], now);
       const lastAt = newest ? Date.parse(newest.published_at || newest.date) || 0 : 0;
       const quiet = lastAt && now - lastAt > 6 * 3600_000;
       problems = mergeProblems(problems, quiet ? [{ key: "stale", code: "news_stale", title: "مفيش خبر جديد نزل من أكتر من ٦ ساعات", detail: `آخر خبر: ${String(newest?.title || "").slice(0, 100)}` }] : [], ["news_stale"], now);

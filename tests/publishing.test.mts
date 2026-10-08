@@ -2248,7 +2248,11 @@ test('a card set more than a week out names the day instead of «القادم» 
 });
 
 test('the site watchdog checks pages, bots and platforms every minute and keeps a problem open until it is fixed (INCIDENTS #158)', async t => {
-  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth } = await import('../worker/src/health');
+  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth, deployLag } = await import('../worker/src/health');
+  const nowMs = Date.parse('2026-10-08T14:00:00Z');
+  assert.equal(deployLag(nowMs / 1000 - 3600, nowMs) > 0, true, 'a live build an hour behind main is a problem');
+  assert.equal(deployLag(nowMs / 1000 - 600, nowMs), 0);
+  assert.equal(deployLag(0, nowMs), 0);
   const now = Date.parse('2026-09-30T12:00:00Z');
   // latest finished run per workflow decides
   assert.deepEqual(failedWorkflows([
