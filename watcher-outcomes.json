@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2281264/tna-thursday-night-impact-october-8-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-08T21:45:49.395Z"
+ },
  "https://www.fightful.com/wrestling/liv-morgan-is-happy-in-judgment-day-but-thinks-they-are-stagnant-right-now": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T21:33:00.687Z"
- },
- "https://www.wrestlinginc.com/2281264/tna-thursday-night-impact-october-8-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-08T21:25:41.878Z"
  },
  "https://www.fightful.com/wrestling/full-lineup-for-njpw-king-of-pro-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
