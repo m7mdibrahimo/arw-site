@@ -46,3 +46,5 @@ Addressing online criticism and fan hostility, Rhodes stated that he is currentl
 > "So for me, if it helps you to chase me, if it helps you to make fun, if it helps you, I genuinely think there’s no wrong way to be a fan. Go for it. Go for it."
 
 > "It doesn’t always feel right. It doesn’t always feel nice. Um, but if anyone can handle it, I was raised in the business to be able to handle it. I can handle it."
+
+https://www.youtube.com/watch?v=xpo0VD1odmI

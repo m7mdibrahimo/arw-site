@@ -1,5 +1,5 @@
 // Home, in the site's own layout: hero, quick numbers, then simple sections.
-import { api, siteData, pendingSaves, getUser, IS_LOCAL } from '../api.js';
+import { api, siteData, pendingSaves, getUser, IS_LOCAL, mini } from '../api.js';
 import { COLLECTIONS } from '../schema.js';
 import { html, mount, $, icon, timeAgo, fmtDate, num, can } from '../ui.js';
 import { renderAnalytics } from './analytics.js';
@@ -21,7 +21,7 @@ export function showCard(s, collection = 'shows') {
   const edit = `#/edit/${collection}/${encodeURIComponent(s.slug)}`;
   const future = Date.parse(s.date) > Date.now();
   return html`<article class="tile ${s.pending ? 'is-pending' : ''}">
-    <a class="tile-img" href="${edit}">${s.image ? html`<img src="${s.image}" alt="" loading="lazy">` : html`<span>${icon('image')}</span>`}
+    <a class="tile-img" href="${edit}">${s.image ? html`<img src="${mini(s)}" alt="" loading="lazy">` : html`<span>${icon('image')}</span>`}
       ${s.pending ? html`<em class="flag flag-sky">جاري النشر</em>` : future ? html`<em class="flag flag-sky">مجدول</em>` : s.maintenance ? html`<em class="flag flag-gold">تحت التعديل</em>` : ''}</a>
     <div class="tile-body">
       <a href="${edit}" class="tile-title">${s.title}</a>
@@ -111,7 +111,7 @@ export async function renderDashboard(page) {
           <header class="panel-head"><h2>آخر العروض</h2><a class="link" href="#/list/shows">الكل</a></header>
           <div class="rows">${shows.slice(0, 7).map(s => html`
             <a class="row" href="#/edit/shows/${encodeURIComponent(s.slug)}">
-              <span class="row-img">${s.image ? html`<img src="${s.image}" alt="" loading="lazy">` : ''}</span>
+              <span class="row-img">${s.image ? html`<img src="${mini(s)}" alt="" loading="lazy">` : ''}</span>
               <span class="row-main"><b>${s.headline || s.title}</b><small>${s.federation} · ${timeAgo(s.date)}${Date.parse(s.date) > Date.now() ? ' · مجدول' : ''}</small></span>
               <span class="row-go">${icon('edit')}</span>
             </a>`)}</div>
@@ -137,7 +137,7 @@ export async function renderDashboard(page) {
     const st = items[n.url] || {};
     const edit = editHref(n) || n.url;
     return html`<a class="row" href="${edit}">
-      <span class="row-img">${n.image ? html`<img src="${n.image}" alt="" loading="lazy">` : ''}</span>
+      <span class="row-img">${n.image ? html`<img src="${mini(n)}" alt="" loading="lazy">` : ''}</span>
       <span class="row-main"><b>${n.title}</b><small>${timeAgo(n.date)} · ${n.source_id ? 'تلقائي' : 'يدوي'}${n.single_match_result ? ' · محجوب عن المنصات' : ''}</small></span>
       <span class="plat-dots">${PLATFORMS.map(p => html`<i class="${st[p.key] ? 'on' : ''}" style="--c:${p.color}" title="${p.name}">${icon(p.icon)}</i>`)}</span>
     </a>`;

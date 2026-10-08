@@ -22,3 +22,5 @@ Rhodes laughed off a joking question about whether people in WWE even like him b
 > "But like the current kind of locker room, I’m always on the bus. I typically wait a long time before I go in. Yeah, so I’m a little siloed up. I shouldn’t be."
 
 Rhodes pushed back against the idea that his behavior makes him a diva, noting that he simply prefers to stay out of the way if his presence is not required. Aside from his backstage routine, Rhodes also spoke about his growing Hollywood career, specifically his upcoming role as Guile in the Street Fighter movie. He noted that the locker room is supportive of his acting pursuits and is actually excited about the project, especially since three different wrestlers were cast in the film.
+
+https://www.youtube.com/watch?v=VfnxmJGeEZg

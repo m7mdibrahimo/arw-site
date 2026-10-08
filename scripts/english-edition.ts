@@ -24,6 +24,7 @@ export interface EnglishInput {
   arabicBody: string;
   federation: string;
   image: string;
+  gallery?: string[];      // the source article's own pictures in its text, as the Arabic story shows them
   date: string;            // the Arabic story's date (ISO)
   filePrefix: string;      // the Arabic file's «20261007224918» prefix
 }
@@ -39,13 +40,20 @@ export function outletOf(url: string): string {
 
 /** Words in a story's text, its embed lines left out (the English edition is as long as the Arabic one, INCIDENTS #355) */
 export function wordCount(body: string): number {
-  return String(body || "").replace(/<https?:\/\/[^>\s]+>/g, " ").split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+  return String(body || "").split("\n").filter((l) => !isEmbedLine(l)).join("\n").replace(/<https?:\/\/[^>\s]+>/g, " ").split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 }
 
-/** The lines that are only a link (<https://…>): embeds the site turns into a video or a post, kept as they are */
-export function embedLines(body: string): string[] {
-  return String(body || "").split("\n").map((l) => l.trim()).filter((l) => /^<https?:\/\/[^>\s]+>$/.test(l));
+/** A line that is only a link — «https://x.com/…/status/…» as the bots write it, or «<https://…>»: the site turns it
+ *  into the post or video itself. (Only the «<…>» form was recognised, and the bots write the bare one: no English story
+ *  ever got the Arabic story's posts and videos, INCIDENTS #359.) */
+export function isEmbedLine(line: string): boolean {
+  return /^(?:<https?:\/\/[^>\s]+>|https?:\/\/\S+)$/.test(String(line || "").trim());
 }
+/** The embed lines of a story, kept as they are */
+export function embedLines(body: string): string[] {
+  return String(body || "").split("\n").map((l) => l.trim()).filter(isEmbedLine);
+}
+const linkOf = (line: string) => line.trim().replace(/^<|>$/g, "");
 
 /** How every English story is written: the separate request below and the joint one (jointEnglishRules) share them */
 export function englishStyleRules(sourceUrl: string): string {
@@ -126,6 +134,7 @@ export function englishSlug(title: string): string {
 }
 
 const yaml = (v: unknown) => JSON.stringify(v);
+const galleryYaml = (g?: string[]) => (g && g.length ? ["gallery:", ...g.map((x) => `  - ${x}`)] : []);
 /** The edition's file (an existing one for the same source story is replaced) */
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
   fs.mkdirSync(dir, { recursive: true });
@@ -135,9 +144,9 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   if (fs.readdirSync(dir).some((f) => f.endsWith(`-${slug}.md`) && (!existing || path.join(dir, f) !== existing))) slug = `${slug}-${i.sourceId}`;
   const body = e.body.replace(/\r/g, "").replace(/\n{3,}/g, "\n\n").trim();
   // the embeds the Arabic story has and the English one left out go at its end
-  const missing = embedLines(i.arabicBody).filter((l) => !body.includes(l));
+  const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
   const finalBody = missing.length ? `${body}\n\n${missing.join("\n\n")}` : body;
-  const lead = body.split("\n").find((l) => l.trim() && !/^\s*>/.test(l) && !/^<https?:/.test(l.trim())) || "";
+  const lead = body.split("\n").find((l) => l.trim() && !/^\s*>/.test(l) && !isEmbedLine(l)) || "";
   const description = lead.length > 158 ? lead.slice(0, lead.lastIndexOf(" ", 155)) + "…" : lead;
   const file = path.join(dir, `${i.filePrefix}-${slug}.md`);
   const fm = [
@@ -152,6 +161,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
     `en_tags:`,
     ...[...new Set((e.tags || []).map((t) => String(t).trim()).filter((t) => t && !AR.test(t)))].slice(0, 6).map((t) => `  - ${yaml(t)}`),
     `image: ${i.image}`,
+    ...galleryYaml(i.gallery),
     "---",
     finalBody,
     "",
@@ -190,6 +200,37 @@ export async function writeEnglishEdition(i: EnglishInput, ask: Ask, dir = NEWS_
     return file;
   }
   return null;
+}
+
+/** Every English story carries what its Arabic story shows besides the text: the posts and videos (embed lines) and the
+ *  source's pictures (gallery). Run with each bot run, no request: it brings the stories written before this up to
+ *  date, and keeps up when an Arabic story gains a video later (INCIDENTS #359). Returns how many stories changed. */
+export function syncEnglishFromArabic(dir = NEWS_EN_DIR, newsDir = NEWS_DIR): number {
+  if (!fs.existsSync(dir) || !fs.existsSync(newsDir)) return 0;
+  const arabic = new Map<string, { body: string; gallery: string[] }>();
+  for (const f of fs.readdirSync(newsDir).filter((x) => x.endsWith(".md") && x >= "20261007")) {
+    try {
+      const m = matter(fs.readFileSync(path.join(newsDir, f), "utf-8"));
+      if (m.data.source_id != null) arabic.set(String(m.data.source_id), { body: m.content, gallery: Array.isArray(m.data.gallery) ? m.data.gallery.map(String) : [] });
+    } catch {}
+  }
+  let changed = 0;
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
+    const p = path.join(dir, f);
+    const raw = fs.readFileSync(p, "utf-8");
+    const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+    const id = m && (m[1].match(/^source_id:\s*(\S+)\s*$/m) || [])[1];
+    const ar = id ? arabic.get(id) : undefined;
+    if (!m || !ar) continue;
+    let [fm, body] = [m[1], m[2].replace(/\s+$/, "")];
+    const missing = embedLines(ar.body).filter((l) => !body.includes(linkOf(l)));
+    if (missing.length) body = `${body}\n\n${missing.join("\n\n")}`;
+    const fmNoGallery = fm.replace(/^gallery:\n(?:  - .*\n?)*/m, "").replace(/\n$/, "");
+    const fmNew = ar.gallery.length ? fmNoGallery.replace(/^(image:.*)$/m, (l) => [l, ...galleryYaml(ar.gallery)].join("\n")) : fmNoGallery;
+    const out = `---\n${fmNew}\n---\n${body}\n`;
+    if (out !== raw) { fs.writeFileSync(p, out, "utf-8"); changed++; console.log(`[English] 🔗 ${f}: ${missing.length} post(s)/video(s), ${ar.gallery.length} picture(s) from its Arabic story`); }
+  }
+  return changed;
 }
 
 /** Two English editions of one story (two bots wrote it at once, INCIDENTS #355): the first by file name stays — the
@@ -236,6 +277,7 @@ export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unk
 export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string) => Promise<{ title: string; text: string } | null>, limit = 4, outlets?: string[]): Promise<number> {
   if (!fs.existsSync(NEWS_DIR)) return 0;
   dedupeEnglishEditions();
+  syncEnglishFromArabic();
   const since = Math.max(Date.now() - 24 * 3600_000, new Date(ENGLISH_NEWS_SINCE).getTime());
   const todo = fs.readdirSync(NEWS_DIR).filter((f) => f.endsWith(".md")).sort().reverse().map((f) => path.join(NEWS_DIR, f))
     .map((p) => { try { const m = matter(fs.readFileSync(p, "utf-8")); return { p, d: m.data as any, body: m.content }; } catch { return null; } })
@@ -249,7 +291,7 @@ export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string
     const file = await writeEnglishEdition({
       sourceTitle: src.title, sourceText: src.text, sourceUrl: String(x.d.source_url), sourceId: x.d.source_id,
       arabicTitle: String(x.d.title || ""), arabicBody: x.body, federation: String(x.d.federation || "WWE"),
-      image: String(x.d.image || ""), date: new Date(x.d.date).toISOString(), filePrefix: prefix,
+      image: String(x.d.image || ""), gallery: Array.isArray(x.d.gallery) ? x.d.gallery.map(String) : [], date: new Date(x.d.date).toISOString(), filePrefix: prefix,
     }, ask);
     if (file) done++;
   }

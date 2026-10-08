@@ -6,12 +6,12 @@ import os from 'node:os';
 import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
-import worker, { runWatcherPoll } from '../worker/src/index';
+import worker, { runWatcherPoll, newestFeedItem } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix, headUnheadedMatches, applyCorrections } from '../scripts/news-qa';
-import { sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming } from '../scripts/fightful-watcher';
+import { extractBodyImages, extractEmbeds, sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -3903,4 +3903,41 @@ test('Kevin Owens on PAC: one speaker, two genders — «مشيرا … موضح
   assert.ok(!checkArticle('كيفن أوينز يؤكد أن باك هو أفضل مصارع عمل معه', 'قال ناش ذلك، موضحا أنه لا يملك معلومات مؤكدة حول الأمر.', []).some(i => i.code === 'mixed_haal_gender'));
   assert.equal(applyCorrections('ووصفها بأنها قطعة تنظيمية مميزة.'), 'ووصفها بأنها نموذج مميز في كتابة القصص.');
   assert.equal(applyCorrections('مدى إعجاب حب زملائه له'), 'مدى حب زملائه له وإعجابهم به');
+});
+
+test('the source\'s own pictures in its text: not the cover again, not a logo, avatar, ad, icon or a post\'s preview (INCIDENTS #359)', () => {
+  const u = 'https://www.ringsidenews.com/wp-content/uploads/2026/10/fishman';
+  const ringside = `<img width="800" height="500" src="${u}-01.jpg?x71178" class="attachment-post-thumbnail">`
+    + `<p>Text</p><img decoding="async" width="600" height="449" src="${u}-37.jpg?x71178" alt="An iconic moment">`
+    + `<img width="518" height="1024" src="${u}-55-518x1024.jpg?x71178" srcset="${u}-55-518x1024.jpg 518w, ${u}-55.jpg 1036w">`
+    + `<img src="https://secure.gravatar.com/avatar/x.jpg"><img width="40" height="40" src="${u}-tiny.jpg">`
+    + `<img src="https://example.com/ads/banner.jpg"><img src="https://i.ytimg.com/vi/abc/hqdefault.jpg">`
+    + `<blockquote class="twitter-tweet"><img src="https://pbs.twimg.com/media/x.jpg"></blockquote>`;
+  assert.deepEqual(extractBodyImages(ringside, `${u}-01.jpg?x71178`), [`${u}-37.jpg?x71178`, `${u}-55.jpg`]);
+  // the same picture in another size is the same picture
+  assert.deepEqual(extractBodyImages(`<img src="${u}-01-300x200.jpg">`, `${u}-01.jpg`), []);
+  assert.equal(extractBodyImages(Array.from({ length: 9 }, (_, i) => `<img src="${u}-${i}.jpg">`).join('')).length, 4);
+});
+
+test('posts and videos are found the way each source writes them', () => {
+  const html = '<blockquote class="twitter-tweet"><a href="https://twitter.com/WWE/status/111?ref_src=twsrc%5Etfw">x</a></blockquote>'
+    + '<iframe src="https://www.youtube.com/embed/abcdefghijk"></iframe>'
+    + '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/AbC_1/?utm=1"></blockquote>'
+    + '<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@wwe/video/999"></blockquote>'
+    + '<a href="https://x.com/wwe/status/111">same tweet again</a>';
+  assert.deepEqual(extractEmbeds(html), ['https://www.youtube.com/watch?v=abcdefghijk', 'https://x.com/WWE/status/111', 'https://www.instagram.com/p/AbC_1/', 'https://www.tiktok.com/@wwe/video/999']);
+  // Facebook: the embed frame's encoded address, the SDK's data-href, a plain post link — never a page link
+  const fb = '<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FWWE%2Fposts%2Fpfbid0abc123&amp;show_text=true"></iframe>'
+    + '<div class="fb-video" data-href="https://www.facebook.com/AEW/videos/123456/"></div>'
+    + '<p>Follow <a href="https://www.facebook.com/WWE">WWE on Facebook</a></p>'
+    + '<a href="https://m.facebook.com/reel/987654">reel</a>';
+  assert.deepEqual(extractEmbeds(fb), ['https://www.facebook.com/WWE/posts/pfbid0abc123', 'https://www.facebook.com/AEW/videos/123456', 'https://www.facebook.com/reel/987654']);
+});
+
+test('the Worker sees a new Ringside News / Wrestling Inc story from the newest item of the feed (INCIDENTS #361)', () => {
+  const feed = (guid: string) => `<rss><channel><title>x</title><link>https://site/</link><item><title>A</title><link>https://site/a/</link><guid isPermaLink="false">${guid}</guid></item><item><guid>old</guid></item></channel></rss>`;
+  assert.equal(newestFeedItem(feed('https://www.ringsidenews.com/?p=802252254')), 'https://www.ringsidenews.com/?p=802252254');
+  assert.equal(newestFeedItem(feed('<![CDATA[ abc-123 ]]>')), 'abc-123');
+  assert.equal(newestFeedItem('<rss><item><title>B</title><link>https://site/b/</link></item></rss>'), 'https://site/b/'); // no guid: the link
+  assert.equal(newestFeedItem('<html>blocked</html>'), '');
 });

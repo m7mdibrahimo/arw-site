@@ -906,6 +906,30 @@ module.exports = function(eleventyConfig) {
     } catch (e) { return ""; }
   };
   eleventyConfig.addNunjucksAsyncShortcode("optThumb", optThumb);
+  // The panel's lists show each picture in a 50–58px square, and loaded the original or the 800px copy for it (70–400 KB
+  // each, 15+ a page). This is a 160px WebP (~3–6 KB), made from the card's 480px copy when there is one — no original
+  // fetched, a few milliseconds each (INCIDENTS #362). "" when there is neither: the panel shows the picture it has.
+  const optMini = async function(src) {
+    // (the site's own address written in full is the same picture)
+    const input = (src && typeof src === "string") ? src.trim().replace(/^https?:\/\/(?:www\.)?arab-wrestling\.com(?=\/)/i, "") : "";
+    if (!input || /^https?:\/\//i.test(input)) return "";
+    let rel = input.startsWith("/") ? input : "/" + input;
+    try { rel = decodeURIComponent(rel); } catch (e) {}
+    if (!/^\/(content|images)\//.test(rel)) return "";
+    const ready = mapped(rel, "160webp");
+    if (ready) return ready;
+    // from the smallest copy an earlier build made (480px card, else 800px article picture), else the original here
+    const made = mapped(rel, "480webp") || mapped(rel, "800jpeg");
+    const file = made ? "_site" + made : (fs.existsSync("." + rel) ? "." + rel : "");
+    if (!file) return "";
+    try {
+      const meta = await Image(file, { widths: [160], formats: ["webp"], outputDir: "_site/img/", urlPath: "/img/", sharpWebpOptions: { quality: 70 } });
+      const w = meta && meta.webp && meta.webp[0];
+      if (w && w.url) IMG_MAP[mapKey(rel, "160webp")] = w.url;
+      return w && w.url ? w.url : "";
+    } catch (e) { return ""; }
+  };
+  eleventyConfig.addNunjucksAsyncShortcode("optMini", optMini);
   // a card's picture: the 480px WebP (~20–40 KB) — sharp on a phone's card too, which is about 255 points wide —
   // or the original when there is none (INCIDENTS #330)
   eleventyConfig.addNunjucksAsyncShortcode("optCard", async function(src) { return (await optThumb(src)) || String(src || ""); });

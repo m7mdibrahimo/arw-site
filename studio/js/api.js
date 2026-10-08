@@ -167,9 +167,35 @@ export async function siteData(name, maxAgeMs = 60_000) {
   const res = await fetch(`/${name}?t=${Date.now()}`, { cache: 'no-store' });
   const data = res.ok ? await res.json() : [];
   cache[name] = { at: Date.now(), data };
+  if (Array.isArray(data)) learnMinis(data);
   return data;
 }
 export function dropSiteCache() { cache = {}; }
+
+// The lists' small pictures (INCIDENTS #362): each picture is shown in a 50–58px square, and the panel loaded the
+// original (70–400 KB) for it. The build makes a 160px copy (~3–6 KB) of every picture the site's data lists
+// («thumb»); it is learned here from those files, by picture and by page, so a row built from any source — the
+// site's data, the held stories, the tools — shows the small one. A picture the build hasn't made one for yet (a save
+// still being published) is shown as it is.
+const MINI = new Map();
+const miniKey = (u) => {
+  let s = String(u || '');
+  try { s = decodeURI(s); } catch {}
+  return s.replace(/^https?:\/\/(?:www\.)?arab-wrestling\.com/i, '').replace(/[?#].*$/, '').normalize('NFC');
+};
+function learnMinis(list) {
+  for (const i of list) {
+    if (!i || !i.thumb) continue;
+    if (i.image) MINI.set(miniKey(i.image), i.thumb);
+    if (i.url) MINI.set(miniKey(i.url), i.thumb);
+  }
+}
+/** The small copy of a list item's picture (an item, or a picture's address); the picture itself when there is none */
+export function mini(x) {
+  if (!x) return '';
+  if (typeof x === 'object') return x.thumb || MINI.get(miniKey(x.image)) || (x.url && MINI.get(miniKey(x.url))) || x.image || '';
+  return MINI.get(miniKey(x)) || x;
+}
 
 // Saved here but not built into the site yet — shown as «جاري النشر» until the build catches up.
 const PENDING_KEY = 'arw_studio_pending';

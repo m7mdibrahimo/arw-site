@@ -19,3 +19,7 @@ According to Fightful, UFC Middleweight Champion Sean Strickland is unhappy with
 > "I gotta be honest unless things change with the UFC Im kinda over it. McGregor makes 30 million to fight for 30 second and they dont want to pay us a fraction of it. Contemplating just going to 205 knocking out my contract and scrapping with @jakepaul. That sounds fun. Its just hard McGregor 30 million. Some lame boxer 15 million. The thought of just giving up my belt going to 205 and speed running my contract to fight Jake and make what these guys are making sounds pretty damn appealing"
 
 Strickland captured the UFC Middleweight Title via a split decision at UFC 328. He was previously lined up to defend his championship against Nassourdine Imavov in December, but the bout has not been finalized yet due to an ongoing financial dispute between the titleholder and the promotion.
+
+https://x.com/SStricklandMMA/status/2107946336758997347
+
+https://www.youtube.com/watch?v=ulb2G3nsmfU

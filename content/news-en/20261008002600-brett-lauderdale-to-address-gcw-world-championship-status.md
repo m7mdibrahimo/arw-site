@@ -18,3 +18,5 @@ Game Changer Wrestling announced that promoter Brett Lauderdale will address the
 During a title defense against John Jeffrey at GCW Score on September 26, Sawyer walked out of the match following an apparent knee injury. Visibly frustrated at the time, Sawyer mentioned that he expected to be sidelined for months before later stating he would be okay and maintaining future bookings, including TNA Bound For Glory on Sunday. Meanwhile, former champion Atticus Cogar criticized Sawyer for his recent absences from the promotion's events.
 
 Fightful will provide coverage of GCW Fight Club on Sunday.
+
+https://x.com/GCWrestling_/status/2107933780551815294

@@ -22,3 +22,5 @@ According to Ringside News, Bryan Alvarez reported on Wrestling Observer Live on
 > "I have heard… whatever’s going on with Mason Rook, I have been told could be pretty serious. I’ve been told he could be out a long time — could be a very long time. No one seems to be really talking about what the issue is. Whatever it is, it’s a real issue, and he could be out for a long time."
 
 Neither WWE nor Rook has disclosed the specific nature of the medical problem. Until an official update is provided, his return to NXT remains uncertain.
+
+https://www.youtube.com/watch?v=xL6hzF7Y5yE

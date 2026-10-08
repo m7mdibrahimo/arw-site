@@ -1,5 +1,5 @@
 // Content lists: filters, search, cards/rows, quick actions.
-import { content, siteData, pendingSaves, dropSiteCache, trackLive, getUser } from '../api.js';
+import { content, siteData, pendingSaves, dropSiteCache, trackLive, getUser, mini } from '../api.js';
 import { notify } from '../notify.js';
 import { COLLECTIONS, FEDERATIONS } from '../schema.js';
 import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, can, sectionOf } from '../ui.js';
@@ -16,7 +16,7 @@ async function loadItems(collection) {
   let items;
   if (collection === 'news') {
     items = index.filter(i => folderOf(i.inputPath) === 'news').map(i => ({
-      slug: slugFromPath(i.inputPath), title: i.title, image: i.image, date: i.date, url: i.url, federation: i.federation,
+      slug: slugFromPath(i.inputPath), title: i.title, image: i.image, thumb: i.thumb, date: i.date, url: i.url, federation: i.federation,
       auto: !!i.source_id, held: !!i.single_match_result, tags: i.tags || [],
     }));
   } else {
@@ -99,7 +99,7 @@ export async function renderList(page, collection, pageNum = 1) {
       ? [timeAgo(i.date), i.federation, i.pending ? 'جاري النشر' : i.auto ? 'تلقائي' : 'يدوي', i.held ? 'محجوب عن المنصات' : '']
       : [timeAgo(i.date), i.federation, i.sub, i.pending ? 'جاري النشر' : future(i) ? 'مجدول' : '', i.maintenance ? 'تحت التعديل' : '', missing(i) ? '⚠ ناقص حاجة' : ''];
     mount(box, html`${shown.map(i => html`<div class="row">
-      <a class="row-img" href="${editUrl(i)}">${i.image ? html`<img src="${i.image}" alt="" loading="lazy">` : ''}</a>
+      <a class="row-img" href="${editUrl(i)}">${i.image ? html`<img src="${mini(i)}" alt="" loading="lazy">` : ''}</a>
       <a class="row-main" href="${editUrl(i)}"><b>${i.title}</b><small>${meta(i).filter(Boolean).join(' · ')}</small></a>
       <span class="row-actions">
         ${i.url ? html`<a class="icon-btn sm" href="${i.url}" target="_blank" title="فتح على الموقع">${icon('eye')}</a>` : ''}

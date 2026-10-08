@@ -1,5 +1,5 @@
 // Studio shell: session check, sidebar, top bar, global search and routing.
-import { api, getToken, getUser, clearSession, updateUser, siteData, watchLive, IS_LOCAL } from './api.js';
+import { api, getToken, getUser, clearSession, updateUser, siteData, watchLive, IS_LOCAL, mini } from './api.js';
 import { COLLECTIONS } from './schema.js';
 import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce, avatarInner, can } from './ui.js';
 import { renderLogin } from './views/auth.js';
@@ -124,7 +124,7 @@ function setupSearch() {
   const draw = () => {
     if (!results.length) { box.innerHTML = `<div class="empty-sm">مفيش نتايج</div>`; return; }
     box.innerHTML = results.map((r, i) => `<a href="#/edit/${r.collection}/${encodeURIComponent(r.slug)}" class="sr ${i === sel ? 'active' : ''}">
-      ${r.image ? `<img src="${esc(r.image)}" alt="" loading="lazy">` : `<span class="sr-noimg"></span>`}
+      ${r.image ? `<img src="${esc(mini(r))}" alt="" loading="lazy">` : `<span class="sr-noimg"></span>`}
       <span><b>${esc(r.title)}</b><small><i style="--c:${COLLECTIONS[r.collection].color}">${esc(COLLECTIONS[r.collection].singular)}</i> ${esc(r.sub || '')}</small></span></a>`).join('');
   };
   const run = debounce(async () => {

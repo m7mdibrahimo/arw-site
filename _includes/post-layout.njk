@@ -475,6 +475,14 @@
 
     <div class="post-body">
       {{ content | autoLinkWrestlingStars | autoEmbedSocials | safe }}
+      {%- if gallery and gallery.length %}
+      {# the source article's own pictures (INCIDENTS #359), under the story #}
+      <div class="post-gallery">
+        {%- for pic in gallery %}
+        <img src="{{ pic }}" alt="{{ title }}" loading="lazy" decoding="async">
+        {%- endfor %}
+      </div>
+      {%- endif %}
 
     </div>
 

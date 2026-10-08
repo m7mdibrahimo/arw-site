@@ -23,3 +23,5 @@ Coachman argued that not everyone is suited for WWE's highest tier and suggested
 > "Bro, this is the top of the game, top of the business. Jade — she hasn’t been there since day one. They signed her more because of how she looks. She looks like a superhero."
 
 Back in March, Cargill addressed earlier critics who questioned her wrestling ability by noting she had already captured championships across multiple companies and achieved success both inside and outside the ring. Despite ongoing debates about her in-ring skills, Cargill remains one of the most heavily discussed female wrestlers on the current roster.
+
+https://www.youtube.com/watch?v=WZh-2I1evbs

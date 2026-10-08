@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, type EnglishInput } from '../scripts/english-edition.ts';
+import { checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -80,4 +80,32 @@ test('the English edition is asked to be as long as the Arabic one', () => {
   const arabicBody = Array(150).fill('كلمة').join(' ') + '\n\n<https://www.youtube.com/watch?v=abc>';
   assert.equal(wordCount(arabicBody), 150);
   assert.match(englishPrompt({ ...input, arabicBody }), /about 150 words \(never more than 180\)/);
+});
+
+test('the Arabic story\'s posts and videos — bare links, as the bots write them — and its pictures reach the English one (INCIDENTS #359)', () => {
+  const arabicBody = 'كشف كودي رودز...\n\nhttps://www.youtube.com/watch?v=abc\n\nhttps://x.com/CodyRhodes/status/123\n\n<https://www.instagram.com/p/XyZ/>\n';
+  assert.deepEqual(embedLines(arabicBody), ['https://www.youtube.com/watch?v=abc', 'https://x.com/CodyRhodes/status/123', '<https://www.instagram.com/p/XyZ/>']);
+  assert.equal(wordCount(arabicBody), 3); // the links are no words
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-'));
+  const file = saveEnglishEdition({ ...good, body: good.body + '\n\nhttps://x.com/CodyRhodes/status/123' }, { ...input, arabicBody, gallery: ['/content/images/g1.jpg', '/content/images/g2.jpg'] }, dir);
+  const m = matter(fs.readFileSync(file, 'utf8'));
+  assert.deepEqual(m.data.gallery, ['/content/images/g1.jpg', '/content/images/g2.jpg']);
+  assert.equal(m.content.match(/x\.com\/CodyRhodes\/status\/123/g)!.length, 1); // already there: not added twice
+  assert.match(m.content, /^https:\/\/www\.youtube\.com\/watch\?v=abc$/m);
+  assert.match(m.content, /^<https:\/\/www\.instagram\.com\/p\/XyZ\/>$/m);
+  assert.doesNotMatch(m.data.description, /https?:/);
+});
+
+test('English stories written before catch up with their Arabic story\'s posts, videos and pictures, without a request', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'sync-'));
+  const en = path.join(root, 'news-en'), ar = path.join(root, 'news');
+  fs.mkdirSync(en); fs.mkdirSync(ar);
+  const enFile = saveEnglishEdition(good, { ...input, arabicBody: 'نص' }, en); // written when the Arabic story had nothing
+  fs.writeFileSync(path.join(ar, '20261008005539-x.md'), '---\ntitle: "خبر"\nsource_id: 802252223\nimage: /content/images/b.jpg\ngallery:\n  - /content/images/g1.jpg\n---\nنص\n\nhttps://x.com/a/status/1\n\nhttps://www.youtube.com/watch?v=abcdefghijk\n');
+  assert.equal(syncEnglishFromArabic(en, ar), 1);
+  const m = matter(fs.readFileSync(enFile, 'utf8'));
+  assert.deepEqual(m.data.gallery, ['/content/images/g1.jpg']);
+  assert.equal(m.data.image, '/content/images/b.jpg');
+  assert.match(m.content, /\n\nhttps:\/\/x\.com\/a\/status\/1\n\nhttps:\/\/www\.youtube\.com\/watch\?v=abcdefghijk\n$/);
+  assert.equal(syncEnglishFromArabic(en, ar), 0); // up to date: untouched
 });

@@ -1,7 +1,9 @@
 // Cover images: resized and compressed in the browser before upload (a 6 MB poster
 // becomes ~250 KB), named like the existing files (16 random letters/digits).
 
-const MAX_W = 1600;
+// 1280px: the site shows a cover at 800px at most and shares it at 1200 (og:image); 1600 only took a third more of
+// the pictures' 10 GB store for pixels nobody saw (INCIDENTS #362). Still JPEG: Instagram takes nothing else.
+const MAX_W = 1280;
 const QUALITY = 0.86;
 
 export function randomName(len = 16) {

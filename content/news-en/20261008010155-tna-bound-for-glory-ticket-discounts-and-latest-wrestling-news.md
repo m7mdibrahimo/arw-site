@@ -24,3 +24,19 @@ In other news, Rusev is seeking a wrestler to spar with in Los Angeles. Session 
 LaBron Kozone has been booked for Crimson City Fights in January, and 1 Called Manders will square off against Casanova Valentine at NHB 102 on October 24. Meanwhile, WWE star Tiffany Stratton is featured on the latest episode of Small Business Superstars.
 
 On the corporate side, TKO plans to release its third-quarter financial results on November 4. GCW has also announced multiple lineup changes for its Fight Club card.
+
+https://www.youtube.com/watch?v=Cbl-XT98afg
+
+https://www.youtube.com/watch?v=thFhXlqtnHo
+
+https://www.youtube.com/watch?v=44hI2nYNM9o
+
+https://www.youtube.com/watch?v=qp9FOb6y86g
+
+https://x.com/justmaggielee/status/2107859311384834475
+
+https://x.com/PWRevolver/status/2107945448753582300
+
+https://x.com/ShotziTCB/status/2107927811834941937
+
+https://x.com/PRODUCENYC/status/2107910604929273954

@@ -85,22 +85,32 @@ export function parseRingsideNewsFeed(xml: string): RsnFeedItem[] {
 }
 
 async function fetchRingsideNewsFeed(): Promise<RsnFeedItem[]> {
-  const res = await fetch(FEED_URL, {
-    signal: AbortSignal.timeout(15000),
-    headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" },
-  });
-  if (!res.ok) throw new Error(`Failed to fetch Ringside News feed: HTTP ${res.status}`);
-  return parseRingsideNewsFeed(await res.text());
+  // Three tries: one failed fetch (a timeout, a 5xx from the site) failed the whole run and raised the panel's alarm
+  // (INCIDENTS #360)
+  let last: unknown;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (attempt) await new Promise((r) => setTimeout(r, attempt * 5000));
+    try {
+      const res = await fetch(FEED_URL, {
+        signal: AbortSignal.timeout(15000),
+        headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36" },
+      });
+      if (res.ok) return parseRingsideNewsFeed(await res.text());
+      last = new Error(`Failed to fetch Ringside News feed: HTTP ${res.status}`);
+    } catch (e) { last = e; }
+    console.warn(`[RSN Watcher] Feed try ${attempt + 1}/3 failed: ${(last as any)?.message || last}`);
+  }
+  throw last;
 }
 
-function loadState(): { processedIds: number[]; lastChecked: string } {
+function loadState(): { processedIds: number[]; lastChecked: string; feedFailures?: number } {
   try {
     if (fs.existsSync(STATE_FILE)) return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8"));
   } catch (e) {}
   return { processedIds: [], lastChecked: "" };
 }
 
-function saveState(state: { processedIds: number[]; lastChecked: string }) {
+function saveState(state: { processedIds: number[]; lastChecked: string; feedFailures?: number }) {
   fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2), "utf-8");
 }
 
@@ -188,7 +198,21 @@ export async function processRingsideNewsUrl(url: string): Promise<boolean> {
 
 export async function runRingsideNewsWatcher(options: { dryRun?: boolean; maxPerRun?: number } = {}): Promise<void> {
   const state = loadState();
-  const items = await fetchRingsideNewsFeed();
+  // The feed down for one run is the site's hiccup, not ours: the next run (minutes away) tries again. Three runs in a
+  // row (about an hour) is a real problem: then the run fails and the panel says so (INCIDENTS #360).
+  let items: Awaited<ReturnType<typeof fetchRingsideNewsFeed>>;
+  try {
+    items = await fetchRingsideNewsFeed();
+    if (state.feedFailures) { state.feedFailures = 0; saveState(state); }
+  } catch (e) {
+    state.feedFailures = (state.feedFailures || 0) + 1;
+    saveState(state);
+    if (state.feedFailures < 3) {
+      console.warn(`[RSN Watcher] ⏭️ Ringside News feed unavailable (${state.feedFailures} run(s) in a row) — trying again next run.`);
+      return;
+    }
+    throw e;
+  }
   console.log(`[RSN Watcher] Fetched ${items.length} items from Ringside News.`);
 
   // Same purpose as fightful-watcher.ts's watcher-feed.json: lets

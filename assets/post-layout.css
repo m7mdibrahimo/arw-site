@@ -598,6 +598,8 @@
   .post-body p{ margin-bottom:18px; }
   .post-body hr{ border:none; border-top:1px dashed var(--line); margin:24px 0; }
   .post-body img{ max-width:100%; border-radius:12px; margin:16px 0; box-shadow:0 8px 20px -8px rgba(0,0,0,0.2); }
+  /* the source's own pictures, under the story (INCIDENTS #359) */
+  .post-gallery img{ display:block; height:auto; max-height:80vh; margin:16px auto; }
   
   /* Social Media Auto-Embeds - Instant Reservation & Zero Layout Shift */
   .post-body .social-embed-box {

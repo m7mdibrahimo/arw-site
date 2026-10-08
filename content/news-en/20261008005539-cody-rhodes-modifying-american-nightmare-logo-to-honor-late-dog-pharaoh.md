@@ -20,3 +20,5 @@ During an appearance on the Flagrant podcast, Rhodes explained that while his ph
 > "I’m about to change—not change the logo because we can’t change the tattoo—but for the first time ever, the way the American Nightmare, exactly this logo which is on everything we do, I’m going to—it’s going to be a wolf skull that’s turned with the wings out to the side because I just lost my husky Pharaoh after almost 16 years."
 
 Pharaoh was a notable presence throughout Rhodes' career, frequently appearing at events and connecting with fans over the years. This upcoming change ensures that his memory will endure on every piece of American Nightmare merchandise moving forward.
+
+https://www.youtube.com/watch?v=VfnxmJGeEZg

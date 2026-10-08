@@ -19,3 +19,5 @@ Conan Lycan has officially joined the WWE ID program, according to Fightful. Dur
 Lycan began his professional wrestling career in late 2018. Before this signing, he competed in dark matches for WWE NXT and appeared on TNA Xplosion in 2024. His independent experience includes stints with ETU, Limitless, and CSW, where he held the Heavyweight Championship three times.
 
 As part of the WWE ID program, talent is featured regularly on WWE EVOLVE, which airs every Wednesday. This partnership provides a platform for developing wrestlers to gain exposure under the WWE banner.
+
+https://x.com/Fightful/status/2108003611267752222

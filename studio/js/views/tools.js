@@ -1,6 +1,6 @@
 // Publishing tools — what the old /admin/ pages did, inside the panel:
 // social posting, news sources, the home slider's pinned items and show reels.
-import { tools, siteData, trackLive } from '../api.js';
+import { tools, siteData, trackLive, mini } from '../api.js';
 import { notify } from '../notify.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, esc } from '../ui.js';
 
@@ -45,7 +45,7 @@ export async function renderSocialTool(page) {
     const list = visible();
     mount($('#list'), list.length ? html`${list.map(i => html`<div class="row tool-row ${selected.has(i.url) ? 'is-sel' : ''}">
       <label class="row-check"><input type="checkbox" data-sel="${i.url}" ${selected.has(i.url) ? 'checked' : ''}></label>
-      <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${img(i.image)}" alt="" loading="lazy">` : ''}</a>
+      <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${img(mini(i))}" alt="" loading="lazy">` : ''}</a>
       <a class="row-main" href="${i.url}" target="_blank"><b>${i.headline || i.title}</b>
         <small>${KIND[i.kind] || ''} · ${timeAgo(i.date)}${status[i.url]?.held ? ' · محجوب عن المنصات (حرق)' : ''}</small></a>
       <span class="row-actions">${dots(i.url)}<button class="btn btn-sm" data-pub="${i.url}">${icon('send')} نشر</button></span>
@@ -183,7 +183,7 @@ export async function renderPinnedTool(page) {
     $('#count').textContent = num(items.length);
     mount($('#pinned'), items.length ? html`${items.map((it, n) => html`<div class="row pin-row" data-row="${n}">
       <span class="pin-rank">${num(n + 1)}</span>
-      <span class="row-img">${it.image ? html`<img src="${img(it.image)}" alt="">` : ''}</span>
+      <span class="row-img">${it.image ? html`<img src="${img(mini(it))}" alt="">` : ''}</span>
       <span class="row-main"><b>${it.title}</b><small><bdi dir="ltr">${it.subtitle || ''}</bdi> · ${it.federation || ''} · ${it.kindLabel || KIND[it.kind] || ''}</small>
         <label class="pin-badge">الشارة <input class="input" data-badge="${n}" value="${it.badge || ''}" maxlength="30"></label></span>
       <span class="row-actions">
@@ -288,7 +288,7 @@ export async function renderPinnedTool(page) {
     const have = new Set(items.map(i => i.url));
     const list = index.filter(i => (!kind || i.kind === kind) && (!q || normalizeArabic(`${i.headline || ''} ${i.title}`).includes(q))).slice(0, 15);
     mount($('#avail'), html`${list.map(i => html`<div class="row">
-      <span class="row-img">${i.image ? html`<img src="${img(i.image)}" alt="" loading="lazy">` : ''}</span>
+      <span class="row-img">${i.image ? html`<img src="${img(mini(i))}" alt="" loading="lazy">` : ''}</span>
       <span class="row-main"><b>${i.headline || i.title}</b><small>${KIND[i.kind] || ''} · ${i.federation || ''} · ${timeAgo(i.date)}</small></span>
       <span class="row-actions">${have.has(i.url) ? html`<span class="tag tag-auto">مثبت</span>` : html`<button class="btn btn-sm" data-pin="${i.url}">${icon('pin')} ثبّت</button>`}</span>
     </div>`)}`);
@@ -346,7 +346,7 @@ export async function renderReelsTool(page) {
     ${header('الريلز', 'فيديوهات العروض القصيرة: بتتعمل وتتنشر تلقائي لكل عرض جديد. من هنا تشوفها وتنشرها أو تعمل واحد جديد.')}
     ${missing.length ? html`<section class="panel"><header class="panel-head"><h2>${icon('film')} عروض لسه ملهاش ريل</h2></header>
       <div class="rows">${missing.map(s => html`<div class="row">
-        <span class="row-img">${s.image ? html`<img src="${img(s.image)}" alt="" loading="lazy">` : ''}</span>
+        <span class="row-img">${s.image ? html`<img src="${img(mini(s))}" alt="" loading="lazy">` : ''}</span>
         <span class="row-main"><b>${s.headline || s.title}</b><small>${s.federation} · ${timeAgo(s.date)}</small></span>
         <span class="row-actions" id="mk-${s.slug}"><button class="btn btn-sm btn-primary" data-make="${s.slug}">${icon('film')} اعمل ريل</button></span>
       </div>`)}</div></section>` : ''}
@@ -357,7 +357,7 @@ export async function renderReelsTool(page) {
     mount($('#vids'), html`${videos.slice(0, shown).map((v, n) => {
       const st = stateOf(v), show = bySlug.get(v.cleanSlug);
       return html`<div class="row reel-row">
-        <button class="row-img reel-thumb" data-play="${n}" title="تشغيل">${show && show.image ? html`<img src="${img(show.image)}" alt="" loading="lazy">` : ''}<i>${icon('film')}</i></button>
+        <button class="row-img reel-thumb" data-play="${n}" title="تشغيل">${show && show.image ? html`<img src="${img(mini(show))}" alt="" loading="lazy">` : ''}<i>${icon('film')}</i></button>
         <span class="row-main"><b>${(show && (show.headline || show.title)) || st.title || v.cleanSlug}</b>
           <small>${timeAgo(v.mtime)} · ${num(Math.round((v.size || 0) / 1048576))} ميجا${st.needsReview ? ' · محتاج مراجعة' : ''}</small></span>
         <span class="row-actions"><span class="plat-dots">${plats.map(p => html`<i class="${st[p.key] ? 'on' : ''}" style="--c:${p.color}" title="${p.name}: ${st[p.key] ? 'اتنشر' : 'لسه'}">${icon(p.icon)}</i>`)}</span>

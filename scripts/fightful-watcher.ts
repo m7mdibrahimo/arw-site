@@ -1,5 +1,5 @@
 import fs from "fs";
-import { writeEnglishEdition, catchUpEnglishEditions, jointEnglishRules, saveJointEnglishEdition } from "./english-edition";
+import { writeEnglishEdition, catchUpEnglishEditions, jointEnglishRules, saveJointEnglishEdition, dedupeEnglishEditions, syncEnglishFromArabic } from "./english-edition";
 import path from "path";
 import crypto from "crypto";
 import { execFileSync } from "child_process";
@@ -122,13 +122,13 @@ function saveState(state: WatcherState) {
 }
 
 // Generate random safe filename
-function generateRandomImageName(): string {
+function generateRandomImageName(ext = "jpg"): string {
   const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
   let result = "";
   for (let i = 0; i < 16; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  return result + ".jpg";
+  return `${result}.${ext}`;
 }
 
 // Clean image URL by stripping tracking parameters (UTM, Facebook, Google query params)
@@ -144,7 +144,12 @@ function cleanImageUrl(rawUrl: string): string {
 }
 
 // Download and optimize image using Sharp
-async function downloadAndOptimizeImage(imageUrl: string): Promise<string | null> {
+// The story's cover stays JPEG (Instagram takes JPEG only, and it is the picture shared everywhere); the pictures from
+// the source's text are WebP — only ever shown on the page (INCIDENTS #362: the pictures' 10 GB store)
+type ImageOut = { format: "jpeg" | "webp"; width: number; quality: number };
+const COVER_IMAGE: ImageOut = { format: "jpeg", width: 1200, quality: 82 };
+const GALLERY_IMAGE: ImageOut = { format: "webp", width: 1000, quality: 78 };
+async function downloadAndOptimizeImage(imageUrl: string, out: ImageOut = COVER_IMAGE): Promise<string | null> {
   try {
     const sanitizedUrl = cleanImageUrl(imageUrl);
     console.log(`[Watcher] Downloading image: ${sanitizedUrl}`);
@@ -163,16 +168,16 @@ async function downloadAndOptimizeImage(imageUrl: string): Promise<string | null
     const arrayBuffer = await res.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const randomName = generateRandomImageName();
+    const randomName = generateRandomImageName(out.format === "webp" ? "webp" : "jpg");
     const targetPath = path.join(IMAGES_DIR, randomName);
 
-    // Compress with Sharp: auto-orient, max width 1200px, flatten transparency to white background, quality 85, mozjpeg
-    await sharp(buffer)
+    // Compress with Sharp: auto-orient, max width, flatten transparency to white background; mozjpeg at 82 (85 before:
+    // ~15% smaller, the same to the eye) or WebP
+    const img = sharp(buffer)
       .rotate()
-      .resize({ width: 1200, withoutEnlargement: true })
-      .flatten({ background: "#ffffff" })
-      .jpeg({ quality: 85, mozjpeg: true })
-      .toFile(targetPath);
+      .resize({ width: out.width, withoutEnlargement: true })
+      .flatten({ background: "#ffffff" });
+    await (out.format === "webp" ? img.webp({ quality: out.quality, effort: 5 }) : img.jpeg({ quality: out.quality, mozjpeg: true })).toFile(targetPath);
 
     console.log(`[Watcher] Saved optimized image to /content/images/${randomName}`);
     return `/content/images/${randomName}`;
@@ -210,7 +215,7 @@ async function getYouTubeThumbnailUrl(videoId: string): Promise<string | null> {
 // Extract media embed clean links (YouTube, Twitter/X, Instagram) from raw HTML
 export const MAX_SOCIAL_EMBEDS = 4;
 
-function extractEmbeds(html: string): string[] {
+export function extractEmbeds(html: string): string[] {
   const links: string[] = [];
   const seenUrls = new Set<string>();
 
@@ -266,7 +271,58 @@ function extractEmbeds(html: string): string[] {
     }
   }
 
+  // 5. Facebook posts, videos and reels (INCIDENTS #359): the embed frame carries the post's address encoded
+  //    («facebook.com/plugins/post.php?href=…»), the SDK's «fb-post» its data-href. Only a post — never a page or
+  //    profile link from the article's text.
+  const fbPost = /^https?:\/\/(?:www\.|m\.)?facebook\.com\/(?:[^\/\s"'<>?]+\/(?:posts|videos)\/[A-Za-z0-9.]+|reel\/\d+|watch\/?\?v=\d+|share\/[prv]\/[A-Za-z0-9]+|permalink\.php\?story_fbid=\d+&id=\d+)/i;
+  const fbCandidates: string[] = [];
+  for (const m of html.matchAll(/facebook\.com\/plugins\/(?:post|video)\.php\?[^"'\s>]*?href=([^&"'\s>]+)/gi)) {
+    try { fbCandidates.push(decodeURIComponent(m[1].replace(/&amp;/g, "&"))); } catch {}
+  }
+  for (const m of html.matchAll(/class=["'][^"']*\bfb-(?:post|video)\b[^"']*["'][^>]*data-href=["']([^"']+)["']|data-href=["']([^"']+)["'][^>]*class=["'][^"']*\bfb-(?:post|video)\b/gi)) fbCandidates.push((m[1] || m[2]).replace(/&amp;/g, "&"));
+  for (const m of html.matchAll(/https?:\/\/(?:www\.|m\.)?facebook\.com\/[^"'\s<>]+/gi)) fbCandidates.push(m[0].replace(/&amp;/g, "&"));
+  for (const raw of fbCandidates) {
+    const m = raw.match(fbPost);
+    if (!m) continue;
+    const cleanUrl = m[0].replace(/^https?:\/\/(?:www\.|m\.)?/i, "https://www.");
+    const key = `fb:${cleanUrl.toLowerCase()}`;
+    if (!seenUrls.has(key)) {
+      seenUrls.add(key);
+      links.push(cleanUrl);
+    }
+  }
+
   return links;
+}
+
+/** The pictures in a source article's own text — not its main picture (the story's cover), and not a logo, avatar,
+ *  ad, icon, emoji or a video's thumbnail — at most `max`, the largest version of each. The owner wants them in the story
+ *  (INCIDENTS #359): Ringside News and Wrestling Inc often carry two or three. */
+export const MAX_BODY_IMAGES = 4;
+export function extractBodyImages(html: string, featuredUrl = "", max = MAX_BODY_IMAGES): string[] {
+  const keyOf = (u: string) => String(u || "").replace(/[?#].*$/, "").replace(/-\d{2,4}x\d{2,4}(?=\.\w+$)/, "").replace(/-scaled(?=\.\w+$)/, "").replace(/^https?:\/\/(?:www\.)?/i, "").toLowerCase();
+  const seen = new Set<string>(featuredUrl ? [keyOf(featuredUrl)] : []);
+  const out: string[] = [];
+  // never a picture inside an embedded post (a tweet's or Instagram's own preview)
+  const text = String(html || "").replace(/<blockquote\b[^>]*class="[^"]*(?:twitter-tweet|instagram-media|tiktok-embed)[^"]*"[\s\S]*?<\/blockquote>/gi, "");
+  for (const tag of text.match(/<img\b[^>]*>/gi) || []) {
+    const attr = (n: string) => (tag.match(new RegExp(`\\s${n}\\s*=\\s*["']([^"']*)["']`, "i")) || [])[1] || "";
+    const largest = (set: string) => set.split(",").map((c) => c.trim().split(/\s+/)).map(([u, w]) => ({ u, w: parseInt(w) || 0 })).sort((a, b) => b.w - a.w)[0]?.u || "";
+    let url = largest(attr("data-srcset") || attr("srcset")) || attr("data-src") || attr("data-lazy-src") || attr("src");
+    url = url.replace(/&amp;/g, "&").trim();
+    if (!/^https?:\/\//i.test(url)) continue;
+    const w = parseInt(attr("width")) || 0, h = parseInt(attr("height")) || 0;
+    if ((w && w < 250) || (h && h < 150)) continue;
+    if (/\.(?:svg|gif)(?:[?#]|$)/i.test(url)) continue;
+    // (the address and class only: an alt text says «iconic», a WordPress address has «uploads/»)
+    if (/(?:avatar|gravatar|emoji|logo|(?<![a-z])icons?(?![a-z])|sprite|pixel|spacer|1x1|placeholder|doubleclick|googlesyndication|(?<![a-z])ads?(?![a-z])|ytimg\.com|wp-smiley|(?<![a-z])author)/i.test(url + " " + attr("class"))) continue;
+    const key = keyOf(url);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(url);
+    if (out.length >= max) break;
+  }
+  return out;
 }
 
 // Clean HTML to text for AI prompt
@@ -1844,6 +1900,7 @@ let geminiBlocked = false;
 /** English editions the last day's stories still lack (INCIDENTS #354): the source page fetched again, a few a run.
  *  Only this bot's own outlet's stories (INCIDENTS #355); Fightful's bot also takes the ones from anywhere else. */
 export async function englishCatchUp(outlets: string[] = ["Fightful", ""], limit = 2): Promise<number> {
+  try { dedupeEnglishEditions(); syncEnglishFromArabic(); } catch (e: any) { console.warn("[English] sync skipped:", e?.message || e); } // no request: always
   if (geminiQuotaExhausted() || newsBotsPaused()) return 0;
   return catchUpEnglishEditions(queryGemini, async (url) => {
     const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (compatible; ArabWrestlingBot/1.0)" }, signal: AbortSignal.timeout(20000) }).catch(() => null);
@@ -4365,6 +4422,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const targetFilePath = path.join(NEWS_DIR, targetFileName);
 
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
+  // The source's own pictures in its text (INCIDENTS #359): shown under the story, Arabic and English, never in the
+  // text itself (the social posts, the copy editor and every check read the text). One that doesn't download is left out.
+  const gallery: string[] = [];
+  for (const url of extractBodyImages(contentHtml, imageUrl || "")) {
+    const local = await downloadAndOptimizeImage(url, GALLERY_IMAGE);
+    if (local && local !== localImagePath) gallery.push(local);
+  }
+  if (gallery.length) console.log(`[Watcher] 🖼️ ${gallery.length} picture(s) from the source's text: ${gallery.join(", ")}`);
   // The social shield's second opinion, on the finished text (full results reports go out with
   // a fixed text, so they need none).
   // A leaks report («… Spoilers From 9/26 Taping») is a results report too: it goes out with the
@@ -4386,7 +4451,7 @@ source_url: ${JSON.stringify(postUrl)}
 single_match_result: ${isSingleMatch}${socialYaml}${isShowResultsArticle(rawTitle, plainText) ? `\nsource_title: ${JSON.stringify(rawTitle)}\nsource_results: ${countResultLines(plainText)}` : ""}
 tags:
 ${tagsYaml}
-image: ${localImagePath}
+image: ${localImagePath}${gallery.length ? `\ngallery:\n${gallery.map(g => `  - ${g}`).join("\n")}` : ""}
 layout: post-layout.njk
 ---
 ${finalBody}
@@ -4423,7 +4488,7 @@ ${finalBody}
     const enInput = {
       sourceTitle: rawTitle, sourceText: plainText, sourceUrl: postUrl, sourceId: postId,
       arabicTitle: rewritten.title, arabicBody: finalBody, federation: rewritten.federation || "WWE",
-      image: localImagePath, date: new Date(iso).toISOString(), filePrefix: prefix,
+      image: localImagePath, gallery, date: new Date(iso).toISOString(), filePrefix: prefix,
     };
     if (!saveJointEnglishEdition(rewritten, enInput) && !geminiQuotaExhausted()) await writeEnglishEdition(enInput, queryGemini);
   } catch (e: any) { console.warn("[English] skipped:", e?.message || e); }

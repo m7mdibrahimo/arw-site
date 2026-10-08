@@ -3763,6 +3763,7 @@ export default {
     ctx.waitUntil(Promise.all([
       minute === 15 ? runVideoRetentionCleanup(env) : minute === 45 ? runPublishStateCleanup(env) : runWatcherPoll(env),
       runNewsWatcherCron(env),
+      runFeedWatchCron(env),
       runScheduleBackstopCron(env),
       // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)
       runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state),
@@ -3846,6 +3847,56 @@ async function runNewsWatcherCron(env: Env): Promise<void> {
   } catch (err: any) {
     console.error("[Worker] Error in news watcher trigger:", err.message);
   }
+}
+
+// Ringside News and Wrestling Inc, like Fightful above (INCIDENTS #361): their bots ran only every 20 minutes, so a
+// story waited up to 20 minutes before a bot even saw it (half the time over 11 for Ringside, 18 for Wrestling Inc).
+// Each minute the newest item of each RSS feed is read; the moment it changes, that source's bot is started. The
+// 20-minute backstop below stays for anything missed, and shares the same «last started» time, so it never runs
+// twice for one story. Two minutes at least between two starts of one bot.
+const FEED_WATCHES = [
+  { feed: "https://www.ringsidenews.com/feed/", workflow: "ringsidenews-watcher.yml", kvSeen: "last_seen_ringsidenews_guid", kvTrigger: "last_ringsidenews_trigger_ts" },
+  { feed: "https://www.wrestlinginc.com/feed/", workflow: "wrestlinginc-watcher.yml", kvSeen: "last_seen_wrestlinginc_guid", kvTrigger: "last_wrestlinginc_trigger_ts" },
+];
+
+/** The newest story of an RSS feed: its guid (or link), read without parsing the whole feed */
+export function newestFeedItem(xml: string): string {
+  const item = String(xml || "").match(/<item\b[\s\S]*?<\/item>/i)?.[0] || "";
+  const pick = (tag: string) => (item.match(new RegExp(`<${tag}\\b[^>]*>\\s*(?:<!\\[CDATA\\[)?\\s*([^<\\]]+?)\\s*(?:\\]\\]>)?\\s*<\\/${tag}>`, "i")) || [])[1] || "";
+  return pick("guid") || pick("link");
+}
+
+async function runFeedWatchCron(env: Env): Promise<void> {
+  if (!env.PUSH_KV) return;
+  await Promise.all(FEED_WATCHES.map(async (w) => {
+    try {
+      const res = await fetch(w.feed, {
+        headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36", Accept: "application/rss+xml, application/xml" },
+        cf: { cacheTtl: 0 },
+      } as RequestInit);
+      if (!res.ok) return; // the feed is down: next minute
+      const newest = newestFeedItem(await res.text());
+      if (!newest) return;
+      const seen = await env.PUSH_KV!.get(w.kvSeen);
+      if (seen === newest) return;
+      if (!seen) { await env.PUSH_KV!.put(w.kvSeen, newest); return; } // first look: nothing to compare with yet
+      const now = Date.now();
+      const last = Number((await env.PUSH_KV!.get(w.kvTrigger)) || 0) || 0;
+      if (now - last < 2 * 60 * 1000) return; // started a moment ago: this story is seen again next minute
+      try {
+        const { state } = await githubReadWatcherState(env);
+        if (state && state.enabled === false) return; // the news bots are paused from the panel
+      } catch (e) {}
+      const r = await githubTriggerWorkflowByFile(env, w.workflow);
+      if (r.ok) {
+        console.log(`[Worker] ⚡ New story in ${w.feed} — started ${w.workflow}`);
+        await env.PUSH_KV!.put(w.kvTrigger, String(now));
+        await env.PUSH_KV!.put(w.kvSeen, newest);
+      }
+    } catch (err: any) {
+      console.error(`[Worker] Feed watch ${w.feed}:`, err?.message || err);
+    }
+  }));
 }
 
 // GitHub's native `schedule:` cron trigger is documented as best-effort and

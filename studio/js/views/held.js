@@ -1,7 +1,7 @@
 // Stories the spoiler shield kept off social (results, returns, debuts): the owner reads each
 // one and either publishes it to the platforms or keeps it off. The site itself always has them.
 // Shown on the home page under the latest shows and news, in the same compact rows.
-import { api } from '../api.js';
+import { api, mini } from '../api.js';
 import { notify } from '../notify.js';
 import { html, mount, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
@@ -22,7 +22,7 @@ export async function renderHeld(el, { all = false } = {}) {
   el.hidden = false;
 
   const row = (i) => html`<div class="row held-row ${i.releasedAt || i.dismissedAt ? 'is-done' : ''}">
-    <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${i.image}" alt="" loading="lazy">` : ''}</a>
+    <a class="row-img" href="${i.url}" target="_blank">${i.image ? html`<img src="${mini(i)}" alt="" loading="lazy">` : ''}</a>
     <a class="row-main" href="${i.url}" target="_blank" title="افتح الخبر على الموقع"><b>${i.title}</b>
       <small>${i.why === 'flag' || i.why === 'old' ? html`<span class="clean-tag">${why(i)}</span>` : why(i)} · ${i.releasedAt ? `نشرته ${timeAgo(i.releasedAt)}` : i.dismissedAt ? `سبته ${timeAgo(i.dismissedAt)}` : `${timeAgo(i.at)} · هيتنشر لوحده بعد ${Math.max(1, Math.ceil((12 * 3600_000 - (Date.now() - i.at)) / 3600_000))} ساعة`}</small></a>
     <span class="row-actions">${i.releasedAt
