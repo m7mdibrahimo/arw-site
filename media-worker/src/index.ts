@@ -173,7 +173,11 @@ async function compressStored(env: Env, perRun = COMPRESS_PER_RUN, report: strin
 export default {
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
     // hourly: a few big stored pictures made small; once a day (03:17 UTC): reels older than 30 days removed
-    ctx.waitUntil(compressStored(env).then(n => n && console.log(`[media] ${n} stored pictures made smaller`)));
+    // (status/compress.json: when the hourly job last ran and what it did — read by the monitoring round)
+    ctx.waitUntil(compressStored(env).then(async (n) => {
+      if (n) console.log(`[media] ${n} stored pictures made smaller`);
+      await env.MEDIA?.put("status/compress.json", JSON.stringify({ at: new Date().toISOString(), done: n }), { httpMetadata: { contentType: "application/json" } });
+    }).catch((e) => console.log(`[media] hourly compress failed: ${e?.stack || e}`)));
     if (new Date(event.scheduledTime).getUTCHours() === 3) ctx.waitUntil(pruneReels(env).then(n => console.log(`[media] ${n} old reels removed`)));
   },
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {

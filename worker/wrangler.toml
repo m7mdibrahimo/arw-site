@@ -28,6 +28,11 @@ id = "f687ea6ee7b2461fb349405215cf8a32"
 binding = "MEDIA"
 bucket_name = "arw-media"
 
+# arw-media itself: the panel's pictures go through its upload, compressed like every other picture (INCIDENTS #374)
+[[services]]
+binding = "MEDIA_SVC"
+service = "arw-media"
+
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
 INSTAGRAM_AUTO_ENABLED = "true"
