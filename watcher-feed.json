@@ -1,5 +1,15 @@
 [
   {
+    "id": 332769,
+    "link": "https://www.fightful.com/wrestling/roman-reigns-vs-la-knight-is-planned-to-main-event-wwe-money-in-the-bank/",
+    "date": "2026-10-08T13:25:09",
+    "date_gmt": "2026-10-08T17:25:09",
+    "title": {
+      "rendered": "Roman Reigns vs. LA Knight Is Planned To Main Event WWE Money In The Bank"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/16213921/20260914_MITB26_RomanLA_16x9_Date.jpg"
+  },
+  {
     "id": 332767,
     "link": "https://www.fightful.com/wrestling/there-is-a-feeling-in-wwe-creative-that-the-audience-is-waiting-on-enzo-amore/",
     "date": "2026-10-08T13:16:17",
@@ -288,15 +298,5 @@
       "rendered": "Nic Nemeth Talks Defending TNA World Title Outside Of The Company, &#8216;There&#8217;s A Responsibility That You Have As Champ&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07200829/maxresdefault-42.jpg"
-  },
-  {
-    "id": 332669,
-    "link": "https://www.fightful.com/mma/sean-strickland-unless-things-change-with-ufc-im-kind-of-over-it/",
-    "date": "2026-10-07T18:26:19",
-    "date_gmt": "2026-10-07T22:26:19",
-    "title": {
-      "rendered": "Sean Strickland: Unless Things Change With UFC, I&#8217;m Kind Of Over It"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07182621/maxresdefault-41.jpg"
   }
 ]
