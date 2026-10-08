@@ -1739,7 +1739,7 @@ test('whatever happened ON a show that aired in the last 24h is a spoiler — a 
   assert.match(dp, /تفصيلة صغيرة زيادة على نفس الإعلان/);
   assert.match(dp, /جدول أو بطاقة نزالات نفس العرض الجاي من مصدرين = تكرار/);
   // «at the same event» must name the show, not point back to the wrong one (INCIDENTS #281)
-  const styleGuide = (await import('node:fs')).readFileSync(new URL('../editorial/style-guide.md', import.meta.url), 'utf8');
+  const styleGuide = (await import('node:fs')).readFileSync(path.join(process.cwd(), 'editorial/style-guide.md'), 'utf8');
   assert.match(styleGuide, /at the same event \/ on the same show ← اكتب اسم العرض صراحة/);
   // Every article and title, from every source, is written in very simple white fusha (owner request 2026-10-08)
   assert.match(styleGuide, /## 0\. أسلوب الكتابة — فصحى بيضاء مبسطة جدا/);
@@ -4063,4 +4063,9 @@ test('an English quote block inside an Arabic story is blocked, translated ones 
 test('watcher gives the slot back when a story is not readable yet, so it cannot starve newer ones (#378)', () => {
   const src = fs.readFileSync(path.join(process.cwd(), 'worker/src/index.ts'), 'utf8');
   assert.match(src, /if \(!verify\.ok\) \{ platformAttempts = Math\.max\(0, platformAttempts - 1\); continue; \}/);
+});
+
+test('style guide tells Gemini to keep venue names as in the source and not repeat the city', () => {
+  const g = fs.readFileSync(path.join(process.cwd(), 'editorial/style-guide.md'), 'utf8');
+  assert.match(g, /اسم المكان كما في المصدر ومرة واحدة/);
 });
