@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2281264/tna-thursday-night-impact-october-8-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-08T22:37:04.097Z"
+ },
  "https://www.fightful.com/wrestling/nxt-draws-more-viewers-than-aew-grand-slam-paris-aew-wins-the-demo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T22:35:48.730Z"
- },
- "https://www.wrestlinginc.com/2281264/tna-thursday-night-impact-october-8-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-08T22:22:04.894Z"
  },
  "https://www.fightful.com/wrestling/john-cena-agreed-to-do-matchbox-the-movie-without-reading-a-script": {
   "reason": "مكرر مع خبر نزل قبل كده",
