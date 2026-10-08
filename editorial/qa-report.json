@@ -1,5 +1,5 @@
 {
-  "scanned": 274,
+  "scanned": 278,
   "articles": [
     {
       "file": "20261006035915-برايان-كيج-آرون-رودجرز-كان-يتحدث-عن-المصارعة-علانية-في-المدرسة-الثانوية-بينما-كان-الآخرون-يخفون-شغفهم.md",
@@ -41,15 +41,22 @@
       ]
     },
     {
-      "file": "20261007020424-نتائج-تسجيلات-عرض-aew-collision-grand-slam-france-6-أكتوبر-2026.md",
-      "title": "نتائج عرض AEW Collision Grand Slam France (6 أكتوبر 2026): فوز فريق ديث رايدرز في الحدث الرئيسي",
+      "file": "20261008210817-مايفن-يصدر-بيانا-يعتذر-فيه-عن-توقيت-فيديو-إنزو-أموري-ويؤكد-أنه-سجل-في-2025.md",
+      "title": "مايفن يصدر بيانا يعتذر فيه عن توقيت فيديو إنزو أموري ويؤكد أنه سجل في 2025",
       "issues": [
         {
-          "code": "show_wrong_day",
+          "code": "english_quote",
           "severity": "error",
           "field": "body",
-          "message": "تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-          "excerpt": "AEW Collision Grand Slam France يوم 6 أكتوبر"
+          "message": "اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
+          "excerpt": "ما أكده مايفن في بيانه. > Hey guys, I wanted to address the Enzo Amore video. First, we want to apologize to Enzo and any fans who were upset or hurt by the timing of our latest upload. Nothing malicious was intended, but looking back, we fully understand why the timing bothered some people. Moving forward, we'll make sure we're more mindful about our content and when we release it. وأوضح مايفن أن اللقاء"
+        },
+        {
+          "code": "english_sentence",
+          "severity": "warning",
+          "field": "body",
+          "message": "جملة إنجليزية كاملة داخل النص",
+          "excerpt": "First, we want to apologize to Enzo and any fans who were upset or hurt by the t"
         }
       ]
     }
@@ -77,7 +84,7 @@
       "a": "20261004023100-نتائج-عرض-aew-collision-3-أكتوبر-2026-أبرز-اللحظات-والمحطات-الرئيسية.md",
       "b": "20261007020424-نتائج-تسجيلات-عرض-aew-collision-grand-slam-france-6-أكتوبر-2026.md",
       "reason": "title 0.47 body 0.22 tags 1",
-      "score": 0.32
+      "score": 0.31585326953748005
     },
     {
       "a": "20261003232541-إضافة-نزال-كي-سي-نافارو-ضد-فابيان-أيتشنر-إلى-عرض-tna-impact-القادم-ليوم-8-أكتوبر.md",
@@ -104,24 +111,6 @@
       "score": 0.25214285714285717
     },
     {
-      "a": "20261004185717-نتائج-عرض-pro-wrestling-noah-4-أكتوبر-2026-نهائي-بطولة-n-1-victory-وتتويج-أبطال-جدد.md",
-      "b": "20261005170803-فريق-تي-إم-دي-كيه-يتحدى-على-بطولة-ghc-للفرق-وتحديد-خمس-مواجهات-أخرى-على-الألقاب-في-عرض-pro-wrestling-noah-wrestle-odyssey-ii.md",
-      "reason": "title 0.17 body 0.28 tags 2",
-      "score": 0.23508771929824562
-    },
-    {
-      "a": "20261003174915-الكشف-عن-جدول-نزالات-العرض-الختامي-لبطولة-pro-wrestling-noah-n-1-victory-لعام-2026.md",
-      "b": "20261005170803-فريق-تي-إم-دي-كيه-يتحدى-على-بطولة-ghc-للفرق-وتحديد-خمس-مواجهات-أخرى-على-الألقاب-في-عرض-pro-wrestling-noah-wrestle-odyssey-ii.md",
-      "reason": "title 0.13 body 0.24 tags 2",
-      "score": 0.19265734265734263
-    },
-    {
-      "a": "20261003192608-رومان-رينز-نجم-wwe-نعاني-جميعا-من-اضطراب-تشوه-الجسم-بدرجة-ما.md",
-      "b": "20261005210619-رومان-رينز-يوضح-كيف-استعد-لتجسيد-دور-أكونا-في-فيلم-street-fighter.md",
-      "reason": "title 0.11 body 0.23 tags 3",
-      "score": 0.1817938420348059
-    },
-    {
       "a": "20261004183547-الإعلان-عن-نزالات-وفقرات-متعددة-لعرض-wwe-raw-القادم.md",
       "b": "20261006023100-نتائج-عرض-wwe-raw-5-أكتوبر-2026-أبرز-اللحظات-والأحداث-الكبرى.md",
       "reason": "title 0.06 body 0.24 tags 5",
@@ -138,13 +127,13 @@
     {
       "a": "مصارعة حرة",
       "b": "مصارعة حية",
-      "countA": 139,
+      "countA": 143,
       "countB": 1
     },
     {
       "a": "مصارعة حرة",
       "b": "مصارعة الحرة",
-      "countA": 139,
+      "countA": 143,
       "countB": 1
     },
     {
@@ -162,13 +151,13 @@
     {
       "a": "برايان كيج",
       "b": "برايان كيث",
-      "countA": 7,
+      "countA": 8,
       "countB": 4
     },
     {
       "a": "تريك ويليامز",
       "b": "تريسي ويليامز",
-      "countA": 29,
+      "countA": 31,
       "countB": 1
     },
     {
@@ -263,8 +252,14 @@
     },
     {
       "a": "نسب المشاهدة",
+      "b": "نسبة المشاهدة",
+      "countA": 13,
+      "countB": 1
+    },
+    {
+      "a": "نسب المشاهدة",
       "b": "نسب المشاهدات",
-      "countA": 12,
+      "countA": 13,
       "countB": 5
     },
     {
@@ -276,19 +271,19 @@
     {
       "a": "نيك نيميث",
       "b": "نيكي نيميث",
-      "countA": 30,
+      "countA": 31,
       "countB": 1
     },
     {
       "a": "كاي لي راي",
       "b": "سكايلر راي",
-      "countA": 5,
+      "countA": 6,
       "countB": 1
     },
     {
       "a": "كاي لي راي",
       "b": "سكايلا راي",
-      "countA": 5,
+      "countA": 6,
       "countB": 1
     },
     {
@@ -343,7 +338,7 @@
       "a": "بيغ كاس",
       "b": "بيج كاس",
       "countA": 3,
-      "countB": 6
+      "countB": 7
     },
     {
       "a": "عاليا ميستيريو",
@@ -403,7 +398,7 @@
       "a": "ال ال ايه نايت",
       "b": "ال ايه نايت",
       "countA": 1,
-      "countB": 31
+      "countB": 34
     },
     {
       "a": "بطولة السيدات",
@@ -672,7 +667,7 @@
     {
       "a": "براين دانيلسون",
       "b": "بريان دانيلسون",
-      "countA": 15,
+      "countA": 16,
       "countB": 1
     },
     {
@@ -746,12 +741,6 @@
       "b": "كيلي كيلي",
       "countA": 1,
       "countB": 2
-    },
-    {
-      "a": "هانغمان آدم بيدج",
-      "b": "هانغمان ادم بيج",
-      "countA": 3,
-      "countB": 1
     },
     {
       "a": "تدريبات المصارعة",
