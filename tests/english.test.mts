@@ -78,6 +78,7 @@ test('the Arabic site is untouched apart from the language button, and a second 
   assert.equal(after.match(/lang-switch/g)!.length, 1);
   assert.match(after, /hreflang="en" href="https:\/\/arab-wrestling\.com\/en\/"/);
   assert.match(after, /arw-lang=en/); // English chosen before: the Arabic page opens in English
+  assert.match(after, /document\.prerendering[\s\S]*prerenderingchange/); // …decided when shown, never while prerendered
   // a news story has no English copy: its button goes to the English home, and it never redirects
   const s2 = fs.readFileSync(path.join(site, 'news', 'x', 'index.html'), 'utf8');
   assert.match(s2, /class="theme-toggle lang-switch" href="\/en\/"/);

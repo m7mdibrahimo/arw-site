@@ -37,29 +37,57 @@ export function outletOf(url: string): string {
   return "";
 }
 
+/** Words in a story's text, its embed lines left out (the English edition is as long as the Arabic one, INCIDENTS #355) */
+export function wordCount(body: string): number {
+  return String(body || "").replace(/<https?:\/\/[^>\s]+>/g, " ").split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+}
+
 /** The lines that are only a link (<https://…>): embeds the site turns into a video or a post, kept as they are */
 export function embedLines(body: string): string[] {
   return String(body || "").split("\n").map((l) => l.trim()).filter((l) => /^<https?:\/\/[^>\s]+>$/.test(l));
 }
 
-export function englishPrompt(i: EnglishInput): string {
-  const outlet = outletOf(i.sourceUrl);
-  const embeds = embedLines(i.arabicBody);
-  return `You write for the English edition of Arab Wrestling, a professional-wrestling news site.
-Write one news story in English from the SOURCE below. Return JSON only: {"title": "...", "body": "...", "tags": ["..."]}.
-
-Rules:
-- Facts come only from the SOURCE. Cover the same story and the same facts as the published Arabic version (given for scope only; never translate from it). Never add facts, opinions, rumors or speculation that the source doesn't have.
-- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
+/** How every English story is written: the separate request below and the joint one (jointEnglishRules) share them */
+export function englishStyleRules(sourceUrl: string): string {
+  const outlet = outletOf(sourceUrl);
+  return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
 - Headline: Title Case, clear and specific, under 90 characters, no clickbait, no emoji, no all caps.
 - Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one.
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
-- No markdown headings (#), no bold, no lists with bullets, no links in the text.${embeds.length ? `
+- No markdown headings (#), no bold, no lists with bullets, no links in the text.
+- Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
+}
+
+/** The English edition inside the Arabic story's own request (owner's request, INCIDENTS #356): one request writes the
+ *  story in English from the source FIRST (en_title, en_body, en_tags — the first keys of the JSON, so it is written
+ *  first), then the Arabic story is that same English story in Arabic. The English one goes to the English site as
+ *  written: no second request for it. */
+export function jointEnglishRules(sourceUrl: string): string {
+  return `
+ENGLISH EDITION — WRITE IT FIRST (the English rules; they apply to en_title, en_body and en_tags only):
+Step 1: rewrite the source as one English news story: en_title, en_body, en_tags. Facts only from the source, nothing added.
+${englishStyleRules(sourceUrl)}
+- Length: the same length the Arabic rules set for this story (the Arabic and English bodies have about the same number of words).
+- en_tags: 3 to 6 English tags (people, promotion, show or event).
+Step 2: title, body_markdown and tags are the Arabic version of exactly that English story: the same facts in the same order and the same length, written by every Arabic rule above (where the two differ, e.g. naming the outlet, the Arabic follows the Arabic rules).
+`;
+}
+
+export function englishPrompt(i: EnglishInput): string {
+  const outlet = outletOf(i.sourceUrl);
+  const embeds = embedLines(i.arabicBody);
+  const words = wordCount(i.arabicBody);
+  return `You write for the English edition of Arab Wrestling, a professional-wrestling news site.
+Write one news story in English from the SOURCE below. Return JSON only: {"title": "...", "body": "...", "tags": ["..."]}.
+
+Rules:
+- Facts come only from the SOURCE. Cover the same story and the same facts as the published Arabic version (given for scope only; never translate from it). Never add facts, opinions, rumors or speculation that the source doesn't have.
+${englishStyleRules(i.sourceUrl)}
+- Length: the same as the Arabic version, about ${words} words${words > 60 ? ` (never more than ${Math.round(words * 1.2)})` : ""}: keep only what the Arabic version keeps. A results report still lists every result.${embeds.length ? `
 - Put each of these lines in the body exactly as written, on its own line, where it fits the story (they become videos/posts on the page):
 ${embeds.join("\n")}` : ""}
-- Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
 - tags: 3 to 6 English tags (people, promotion, show or event).
 
 SOURCE HEADLINE: ${i.sourceTitle}
@@ -164,14 +192,55 @@ export async function writeEnglishEdition(i: EnglishInput, ask: Ask, dir = NEWS_
   return null;
 }
 
+/** Two English editions of one story (two bots wrote it at once, INCIDENTS #355): the first by file name stays — the
+ *  one the build keeps too — the others go, each address sent to it. Returns how many went. */
+export function dedupeEnglishEditions(dir = NEWS_EN_DIR, redirectsFile = path.join(process.cwd(), "_redirects")): number {
+  if (!fs.existsSync(dir)) return 0;
+  const kept = new Map<string, string>(); // source id → slug
+  let removed = 0;
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md")).sort()) {
+    const p = path.join(dir, f);
+    let d: any;
+    try { d = matter(fs.readFileSync(p, "utf-8")).data; } catch { continue; }
+    if (d.source_id == null) continue;
+    const slug = String(d.slug || f.replace(/^\d{14}-|\.md$/g, ""));
+    const keep = kept.get(String(d.source_id));
+    if (!keep) { kept.set(String(d.source_id), slug); continue; }
+    fs.rmSync(p, { force: true });
+    removed++;
+    console.log(`[English] 🗑️ ${f}: a second English edition of story ${d.source_id} — /en/news/${keep}/ stays`);
+    if (slug !== keep && fs.existsSync(redirectsFile)) {
+      const rule = `/en/news/${slug}/* /en/news/${keep}/ 301!`;
+      if (!fs.readFileSync(redirectsFile, "utf-8").includes(`/en/news/${slug}/`)) fs.appendFileSync(redirectsFile, `\n${rule}\n`, "utf-8");
+    }
+  }
+  return removed;
+}
+
+/** The English story the Arabic story's own request wrote (jointEnglishRules): checked like any other, then saved as
+ *  written. null when there is none or it doesn't pass: the caller then asks for one on its own (writeEnglishEdition). */
+export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unknown; en_tags?: unknown } | null | undefined, i: EnglishInput, dir = NEWS_EN_DIR): string | null {
+  if (new Date(i.date).getTime() < new Date(ENGLISH_NEWS_SINCE).getTime()) return null;
+  if (!raw || typeof raw.en_title !== "string" || typeof raw.en_body !== "string") return null;
+  const e: EnglishEdition = { title: raw.en_title.replace(/\s+/g, " ").trim(), body: raw.en_body, tags: Array.isArray(raw.en_tags) ? raw.en_tags.map(String) : [] };
+  const issues = checkEnglish(e, i);
+  if (issues.length) { console.warn(`[English] ✋ ${i.sourceId} (written with the Arabic): ${issues.join(", ")} — asking for it on its own`); return null; }
+  const file = saveEnglishEdition(e, i, dir);
+  console.log(`[English] ✅ ${path.basename(file)} (written with the Arabic: no extra request)`);
+  return file;
+}
+
 /** The last day's Arabic stories with no English edition yet (Gemini was out, a check failed): tried again from the
- *  source, at most `limit` a run. */
-export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string) => Promise<{ title: string; text: string } | null>, limit = 4): Promise<number> {
+ *  source, at most `limit` a run. Each bot catches up only its own outlet's stories (`outlets`; "" = none of the three):
+ *  the three bots run at the same time, and two of them catching up the same story wrote it twice (INCIDENTS #355). */
+export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string) => Promise<{ title: string; text: string } | null>, limit = 4, outlets?: string[]): Promise<number> {
   if (!fs.existsSync(NEWS_DIR)) return 0;
+  dedupeEnglishEditions();
   const since = Math.max(Date.now() - 24 * 3600_000, new Date(ENGLISH_NEWS_SINCE).getTime());
   const todo = fs.readdirSync(NEWS_DIR).filter((f) => f.endsWith(".md")).sort().reverse().map((f) => path.join(NEWS_DIR, f))
     .map((p) => { try { const m = matter(fs.readFileSync(p, "utf-8")); return { p, d: m.data as any, body: m.content }; } catch { return null; } })
-    .filter((x): x is { p: string; d: any; body: string } => !!x && x.d.source_id != null && !!x.d.source_url && new Date(x.d.date).getTime() >= since && !findEnglishEdition(x.d.source_id));
+    .filter((x): x is { p: string; d: any; body: string } => !!x && x.d.source_id != null && !!x.d.source_url && new Date(x.d.date).getTime() >= since
+      && (!outlets || outlets.includes(outletOf(String(x.d.source_url)))) && !findEnglishEdition(x.d.source_id));
   let done = 0;
   for (const x of todo.slice(0, limit)) {
     const src = await fetchSource(String(x.d.source_url)).catch(() => null);

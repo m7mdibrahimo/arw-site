@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, type EnglishInput } from '../scripts/english-edition.ts';
+import { checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -60,4 +60,24 @@ test('writing: retried once, never saved when it doesn\'t pass, never for a stor
   const replies = ['not json', '```json\n' + JSON.stringify(good) + '\n```'];
   const file = await writeEnglishEdition(input, async () => replies.shift()!, dir);
   assert.ok(file && fs.existsSync(file));
+});
+
+test('two bots writing the same story at once: the second edition goes, its address sent to the first (INCIDENTS #355)', () => {
+  const a = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-a-'));
+  const b = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-b-'));
+  const first = saveEnglishEdition({ ...good, title: 'Cody Rhodes Modifying American Nightmare Logo to Honor Late Dog Pharaoh' }, input, a);
+  const second = saveEnglishEdition({ ...good, title: 'Cody Rhodes Updating American Nightmare Logo to Honor Pharaoh' }, input, b);
+  fs.copyFileSync(second, path.join(a, path.basename(second))); // what the two bots' commits left on main
+  const red = path.join(b, '_redirects');
+  fs.writeFileSync(red, '/old/* /new/ 301!\n');
+  assert.equal(dedupeEnglishEditions(a, red), 1);
+  assert.deepEqual(fs.readdirSync(a), [path.basename(first)]);
+  assert.match(fs.readFileSync(red, 'utf8'), /^\/en\/news\/cody-rhodes-updating-american-nightmare-logo-to-honor-pharaoh\/\* \/en\/news\/cody-rhodes-modifying-american-nightmare-logo-to-honor-late-dog-pharaoh\/ 301!$/m);
+  assert.equal(dedupeEnglishEditions(a, red), 0); // nothing left to do
+});
+
+test('the English edition is asked to be as long as the Arabic one', () => {
+  const arabicBody = Array(150).fill('كلمة').join(' ') + '\n\n<https://www.youtube.com/watch?v=abc>';
+  assert.equal(wordCount(arabicBody), 150);
+  assert.match(englishPrompt({ ...input, arabicBody }), /about 150 words \(never more than 180\)/);
 });

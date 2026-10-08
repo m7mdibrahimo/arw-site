@@ -300,7 +300,7 @@ export async function runWrestlingIncWatcher(options: { dryRun?: boolean; maxPer
   state.lastChecked = new Date().toISOString();
   saveState(state);
   deduplicateNewsFiles();
-  if (!options.dryRun) await englishCatchUp(); // English editions an earlier run could not write (INCIDENTS #354)
+  if (!options.dryRun) await englishCatchUp(["Wrestling Inc"]); // English editions an earlier run could not write (INCIDENTS #354)
   console.log(`[WI Watcher] Done. Published ${processedCount} new article(s).`);
 }
 

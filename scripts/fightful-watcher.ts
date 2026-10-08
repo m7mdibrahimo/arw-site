@@ -1,5 +1,5 @@
 import fs from "fs";
-import { writeEnglishEdition, catchUpEnglishEditions } from "./english-edition";
+import { writeEnglishEdition, catchUpEnglishEditions, jointEnglishRules, saveJointEnglishEdition } from "./english-edition";
 import path from "path";
 import crypto from "crypto";
 import { execFileSync } from "child_process";
@@ -295,6 +295,10 @@ interface RewrittenArticle {
   federation: string;
   tags: string[];
   body_markdown: string;
+  // the English edition, written first in the same request (INCIDENTS #356)
+  en_title?: string;
+  en_body?: string;
+  en_tags?: string[];
 }
 
 // Remove all Arabic diacritics / tashkeel (fat-ha, damma, kasra, tanween, sukun, shadda, dagger alif, tatweel)
@@ -1837,8 +1841,9 @@ let geminiBlocked = false;
 /** True once this run can no longer reach Gemini (every key out of quota, or the
  *  daily safety cap hit). A processPost() failure after this point says nothing
  *  about the article, so callers must NOT mark it processed (INCIDENTS #37). */
-/** English editions the last day's stories still lack (INCIDENTS #354): the source page fetched again, a few a run */
-export async function englishCatchUp(limit = 2): Promise<number> {
+/** English editions the last day's stories still lack (INCIDENTS #354): the source page fetched again, a few a run.
+ *  Only this bot's own outlet's stories (INCIDENTS #355); Fightful's bot also takes the ones from anywhere else. */
+export async function englishCatchUp(outlets: string[] = ["Fightful", ""], limit = 2): Promise<number> {
   if (geminiQuotaExhausted() || newsBotsPaused()) return 0;
   return catchUpEnglishEditions(queryGemini, async (url) => {
     const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (compatible; ArabWrestlingBot/1.0)" }, signal: AbortSignal.timeout(20000) }).catch(() => null);
@@ -1847,7 +1852,7 @@ export async function englishCatchUp(limit = 2): Promise<number> {
     const title = (html.match(/<meta[^>]+property="og:title"[^>]+content="([^"]+)"/i) || html.match(/<title>([^<]+)<\/title>/i) || [])[1] || "";
     const main = (html.match(/<article[\s\S]*?<\/article>/i) || html.match(/<div[^>]+class="[^"]*(?:entry-content|article-content|post-content)[^"]*"[\s\S]*?<\/div>\s*<\/div>/i) || [html])[0];
     return { title: title.replace(/&amp;/g, "&").replace(/&#8217;|&#039;/g, "'"), text: htmlToPlainText(main) };
-  }, limit).catch((e) => { console.warn("[English] catch-up skipped:", e?.message || e); return 0; });
+  }, limit, outlets).catch((e) => { console.warn("[English] catch-up skipped:", e?.message || e); return 0; });
 }
 
 export function geminiQuotaExhausted(): boolean {
@@ -1858,7 +1863,7 @@ function isDailyQuotaError(body: string): boolean {
   return /per.?day|PerDay|daily|RESOURCE_EXHAUSTED[\s\S]*(?:Day|day)/.test(body);
 }
 
-export async function queryGemini(prompt: string, jsonMode: boolean = true, temperature: number = 0.6): Promise<string | null> {
+export async function queryGemini(prompt: string, jsonMode: boolean = true, temperature: number = 0.6, maxOutputTokens: number = 2500): Promise<string | null> {
   const state = loadState();
 
   // Circuit breaker sized to the number of keys (each key: 500 requests/day).
@@ -1884,7 +1889,7 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
             contents: [{ parts: [{ text: prompt }] }],
             generationConfig: {
               temperature,
-              maxOutputTokens: 2500,
+              maxOutputTokens,
               ...(jsonMode ? { responseMimeType: "application/json" } : {}),
             },
           }),
@@ -1941,7 +1946,7 @@ export async function queryGemini(prompt: string, jsonMode: boolean = true, temp
               contents: [{ parts: [{ text: prompt }] }],
               generationConfig: {
                 temperature,
-                maxOutputTokens: 2500,
+                maxOutputTokens,
                 thinkingConfig: { thinkingBudget: 0 },
                 ...(jsonMode ? { responseMimeType: "application/json" } : {}),
               },
@@ -2933,7 +2938,8 @@ async function rewriteWithGemini(
   plainText: string,
   categories: string[],
   postDate?: string,
-  isUpdate: boolean = false
+  isUpdate: boolean = false,
+  sourceUrl: string = ""
 ): Promise<RewrittenArticle | null> {
   // 100% Bulletproof detection: Differentiates Full Show Results from Single News articles
   const isResultsPost = isShowResultsArticle(originalTitle, plainText);
@@ -2997,9 +3003,12 @@ ${namesGlossaryHint}
 العنوان: ${originalTitle}
 المحتوى:
 ${plainText}
-
+${jointEnglishRules(sourceUrl)}
 أخرج النتيجة حصراً بتنسيق JSON:
 {
+  "en_title": "...",
+  "en_body": "...",
+  "en_tags": ["..."],
   "title": "...",
   "federation": "...",
   "tags": ["..."],
@@ -3163,9 +3172,12 @@ ${namesGlossaryHint}
 تاريخ الحدث: ${arabicDate}
 النص:
 ${plainText.slice(0, isListOrReviewArticle(originalTitle) ? 16000 : 8000)}
-
+${jointEnglishRules(sourceUrl)}
 أخرج النتيجة بتنسيق JSON حصراً:
 {
+  "en_title": "The English headline (written first)",
+  "en_body": "The English story (written first)...",
+  "en_tags": ["English tag 1", "English tag 2", "English tag 3"],
   "title": "العنوان المباشر والواضح جداً المطابق لمعنى عنوان Fightful بدقة بدون غموض...",
   "federation": "WWE",
   "tags": ["وسم 1", "وسم 2", "وسم 3", "وسم 4", "وسم 5"],
@@ -3173,7 +3185,8 @@ ${plainText.slice(0, isListOrReviewArticle(originalTitle) ? 16000 : 8000)}
 }
 `;
 
-  const text = await queryGemini(prompt, true);
+  // (both versions in one answer: room for the two of them)
+  const text = await queryGemini(prompt, true, 0.6, 6000);
   if (!text) return null;
 
   try {
@@ -4073,7 +4086,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   // 2. Rewrite with Gemini AI
   console.log(`[Watcher] Calling Gemini for Arabic rewriting & title crafting...`);
-  const rewritten = await rewriteWithGemini(rawTitle, plainText, terms, sourceDate, isUpdate);
+  const rewritten = await rewriteWithGemini(rawTitle, plainText, terms, sourceDate, isUpdate, postUrl);
   if (!rewritten || !rewritten.title || !rewritten.body_markdown) {
     console.error(`[Watcher] Failed to rewrite post #${postId} with Gemini.`);
     noteOutcome(postUrl, "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني", true);
@@ -4402,17 +4415,18 @@ ${finalBody}
   }
   logProofEdits(targetFileName, proofEdits);
 
-  // The English edition for the English site (INCIDENTS #354): from the same English source, in our own words. It
-  // never holds the Arabic story up; one that doesn't come out is tried again by englishCatchUp on a later run.
-  if (!geminiQuotaExhausted()) {
-    try {
-      await writeEnglishEdition({
-        sourceTitle: rawTitle, sourceText: plainText, sourceUrl: postUrl, sourceId: postId,
-        arabicTitle: rewritten.title, arabicBody: finalBody, federation: rewritten.federation || "WWE",
-        image: localImagePath, date: new Date(iso).toISOString(), filePrefix: prefix,
-      }, queryGemini);
-    } catch (e: any) { console.warn("[English] skipped:", e?.message || e); }
-  }
+  // The English edition for the English site (INCIDENTS #354, #356): the same request wrote it first and the Arabic
+  // story from it, so it is saved as written, with no request of its own. Only when it is missing or fails its checks
+  // is it asked for separately. It never holds the Arabic story up; one that doesn't come out is tried again by
+  // englishCatchUp on a later run.
+  try {
+    const enInput = {
+      sourceTitle: rawTitle, sourceText: plainText, sourceUrl: postUrl, sourceId: postId,
+      arabicTitle: rewritten.title, arabicBody: finalBody, federation: rewritten.federation || "WWE",
+      image: localImagePath, date: new Date(iso).toISOString(), filePrefix: prefix,
+    };
+    if (!saveJointEnglishEdition(rewritten, enInput) && !geminiQuotaExhausted()) await writeEnglishEdition(enInput, queryGemini);
+  } catch (e: any) { console.warn("[English] skipped:", e?.message || e); }
 
   // Optional background auto-reel generation if enabled
   if (process.env.AUTO_GENERATE_REEL === "true") {

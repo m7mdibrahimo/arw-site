@@ -1377,7 +1377,9 @@ module.exports = function(eleventyConfig) {
       const d = i.data;
       return { src: i.url, en: i.url.replace(/^\/en-src\//, "/en/"), ar: arBySource[String(d.source_id)] || "", title: d.title, date: new Date(d.date || i.date).toISOString(),
         image: d.image || "", federation: d.federation || "", description: d.description || "" };
-    }).filter(function(x) { return x.ar && x.title; }).sort(function(a, b) { return b.date.localeCompare(a.date); });
+    }).filter(function(x) { return x.ar && x.title; }).sort(function(a, b) { return b.date.localeCompare(a.date) || a.src.localeCompare(b.src); })
+      // one English story per Arabic story: two bots once wrote the same one at the same moment (INCIDENTS #355)
+      .filter(function(x, n, all) { return all.findIndex(function(y) { return y.ar === x.ar; }) === n; });
     return [];
   });
   // One entry per page of a program's shows (20 per page, like «عروض المصارعة»):
