@@ -4142,3 +4142,12 @@ test('«اختارث» is corrected to «اختارت» and no story has it (#38
     assert.ok(!/اختارث/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
   }
 });
+
+test('«بخن حماس» is corrected to «بكل حماس» and no story has it (#390)', () => {
+  const c = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8')).corrections;
+  assert.ok(c.find((x: any) => x.wrong === 'بخن حماس' && x.right === 'بكل حماس'));
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    assert.ok(!/بخن حماس/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
+  }
+});
