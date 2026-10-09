@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2268552/aew-collision-viewership-ratings-report-september-19-2026/": {
-    "matchedFile": "20260924192049-انخفاض-نسب-مشاهدة-والتقييم-الديموغرافي-لعرض-aew-collision-في-19-سبتمبر.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T15:46:14.597Z"
-  },
-  "https://www.fightful.com/wrestling/six-woman-tag-added-to-9-25-wwe-smackdown/": {
-    "matchedFile": "20260925102356-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-smackdown-الليلة.md",
-    "reason": "الخبر الجديد يغطي نفس عرض سماكداون وتفاصيل المباريات المعلنة مسبقاً في الخبر رقم 0، حيث يعتبر تكراراً لنفس الحدث.",
-    "at": "2026-09-25T15:54:20.521Z"
-  },
   "https://www.ringsidenews.com/new-match-confirmed-september-25-2026-wwe-smackdown/": {
     "matchedFile": "20260925102356-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-smackdown-الليلة.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261009110830-دليل-مشاهدة-وموعد-عرض-wwe-smackdown-الليلة.md",
     "reason": "الخبر الجديد يتحدث عن تفاصيل إضافية (ترتيب النزالات) لنفس عرض SmackDown المذكور في الخبر المنشور، ولا يعتبر تطوراً جوهرياً يمنع اعتباره تكراراً وفقاً للقواعد.",
     "at": "2026-10-09T21:11:47.869Z"
+  },
+  "https://www.fightful.com/uncategorized/seth-rollins-says-becky-lynch-had-a-fractured-vertebrae-that-kept-her-sidelined/": {
+    "matchedFile": "20261009232101-بيكي-لينش-تعود-للمنافسة-بعد-تعافيها-من-كسر-في-فقرات-الظهر.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تصريحات سيث رولينز حول إصابة بيكي لينش بكسر في فقرات الظهر وتفاصيل غيابها التي تم تغطيتها بالكامل في الخبر رقم 0.",
+    "at": "2026-10-09T21:13:19.347Z"
+  },
+  "https://www.fightful.com/wrestling/la-knight-says-he-was-miserable-a-lot-of-times-and-came-to-wwe-shows-ready-to-fight-everything-and-everybody/": {
+    "matchedFile": "20261009211004-ال-ايه-نايت-يتحدث-عن-علاقته-بكواليس-العمل-مع-تريبل-إتش.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها ال ايه نايت حول حواره مع تريبل إتش بعد عرض موني إن ذا بانك 2025، وهي نفس الواقعة المذكورة في الخبر رقم 0.",
+    "at": "2026-10-09T21:13:42.477Z"
   }
 }
