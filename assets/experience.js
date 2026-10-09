@@ -90,25 +90,25 @@
       });
     }, { passive: true });
 
-    // 5. The theme switches in a circle growing from the button
+    // 5. The theme switches with a soft flash (owner 2026-10-09, instead of the circle from the button): a veil in the
+    //    new theme's colour fades in, the theme changes under it, and it fades away. Plain animations, so it works in
+    //    every browser (the circle needed View Transitions, which older iPhones don't have).
     var toggle = document.getElementById('arwThemeToggle');
-    if (toggle && document.startViewTransition && !reduce) {
+    if (toggle && !reduce && document.documentElement.animate) {
+      var busy = false;
       toggle.addEventListener('click', function (e) {
         if (e.xpReplay) return;
         e.stopImmediatePropagation(); e.preventDefault();
-        var r = toggle.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
-        var end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-        document.documentElement.style.viewTransitionName = 'xp-theme';
-        var vt = document.startViewTransition(function () {
+        if (busy) return; busy = true;
+        var toDark = !document.documentElement.classList.contains('arw-dark');
+        var veil = document.createElement('div');
+        veil.className = 'xp-theme-flash' + (toDark ? ' to-dark' : ' to-light');
+        document.body.appendChild(veil);
+        var done = function () { veil.remove(); busy = false; };
+        veil.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 170, easing: 'ease-out', fill: 'forwards' }).finished.then(function () {
           var ev = new MouseEvent('click', { bubbles: true, cancelable: true }); ev.xpReplay = true; toggle.dispatchEvent(ev);
-        });
-        vt.ready.then(function () {
-          document.documentElement.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + end + 'px at ' + x + 'px ' + y + 'px)'] },
-            { duration: 650, easing: 'cubic-bezier(.16,1,.3,1)', pseudoElement: '::view-transition-new(xp-theme)' });
-        }).catch(function () {});
-        // a skipped transition (another one started, the tab hid) rejects these: nothing to report
-        if (vt.updateCallbackDone) vt.updateCallbackDone.catch(function () {});
-        vt.finished.catch(function () {}).then(function () { document.documentElement.style.viewTransitionName = ''; });
+          return veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 380, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }).finished;
+        }).then(done, done);
       }, true);
     }
   }

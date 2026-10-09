@@ -27,6 +27,21 @@ function applyTheme(t) {
   try { localStorage.setItem('arw_studio_theme', t); } catch {}
 }
 applyTheme((() => { try { return localStorage.getItem('arw_studio_theme') || 'light'; } catch { return 'light'; } })());
+/** Switching by hand: a soft flash, like the site (owner 2026-10-09) — a veil in the new theme's colour fades in, the
+ *  theme changes under it, and it fades away. Straight switch when the device asks for less motion. */
+let themeBusy = false;
+function switchTheme(t, then) {
+  const veil = document.createElement('div');
+  if (themeBusy) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !veil.animate) { applyTheme(t); then(); return; }
+  themeBusy = true;
+  veil.className = `theme-flash to-${t}`;
+  document.body.appendChild(veil);
+  const done = () => { veil.remove(); themeBusy = false; };
+  veil.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 170, easing: 'ease-out', fill: 'forwards' }).finished
+    .then(() => { applyTheme(t); then(); return veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 380, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }).finished; })
+    .then(done, done);
+}
 
 // ── Shell: the site's header ───────────────────────────────────────────────
 function renderShell(user) {
@@ -87,7 +102,7 @@ function renderShell(user) {
   });
   document.addEventListener('click', () => $$('.menu-pop').forEach(p => p.hidden = true));
   const setThemeIcon = () => { $('#theme-btn').innerHTML = icon(document.documentElement.dataset.theme === 'dark' ? 'sun' : 'moon').__raw; };
-  $('#theme-btn').onclick = () => { applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'); setThemeIcon(); };
+  $('#theme-btn').onclick = () => switchTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', setThemeIcon);
   setThemeIcon();
   $('#logout-btn').onclick = async () => {
     try { await api.logout(); } catch {}

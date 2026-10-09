@@ -113,8 +113,10 @@ body.arw-has-bottom-nav .xp-top {
   bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
-/* Circular theme switch from the button */
-::view-transition-old(xp-theme), ::view-transition-new(xp-theme) { animation: none; mix-blend-mode: normal; }
+/* Soft flash when the theme switches (experience.js): a veil in the new theme's colour, with a faint glow */
+.xp-theme-flash { position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; opacity: 0; }
+.xp-theme-flash.to-dark { background: radial-gradient(circle at 50% 40%, #1b2029 0%, #0d0f13 70%); }
+.xp-theme-flash.to-light { background: radial-gradient(circle at 50% 40%, #ffffff 0%, #faf7f0 70%); }
 
 @media (prefers-reduced-motion: reduce) {
   .xp-top, .xp-badge.new { transition: none !important; animation: none !important; }
