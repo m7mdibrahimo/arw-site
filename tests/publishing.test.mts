@@ -4094,3 +4094,8 @@ test('Trey Miguel and Elayna Black have one spelling each and variants are auto-
   assert.ok(t && new RegExp(t.wrong).test('تري ميغيل') && new RegExp(t.wrong).test('تري ميجيل'));
   assert.ok(c.some((x: any) => x.wrong === 'إلينا بلاك' && x.right === 'إيلينا بلاك'));
 });
+
+test('English names are fixed before an English story is saved (#385)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('M By Elegance beat Elayna Black'), 'Ash By Elegance beat Elayna Black');
+});

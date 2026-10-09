@@ -28,7 +28,7 @@ What we hated:
 
 What we loved:
 - The eight-man tag match with Call Your Shot Gauntlet implications featured fantastic heel work and engaging dynamics, particularly from Joe Alonzo and Trey Miguel.
-- The Knockouts Television Championship match between M By Elegance and Elayna Black delivered simple yet effective storytelling with another time-limit draw.
+- The Knockouts Television Championship match between Ash By Elegance and Elayna Black delivered simple yet effective storytelling with another time-limit draw.
 - Shayna Baszler is officially heading to TNA to team with Zoey Serrano, which will be a tremendous addition to the Knockouts division.
 
 https://x.com/ThisIsTNA/status/2108371802439209285

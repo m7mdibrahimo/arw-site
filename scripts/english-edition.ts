@@ -136,7 +136,16 @@ export function englishSlug(title: string): string {
 const yaml = (v: unknown) => JSON.stringify(v);
 const galleryYaml = (g?: string[]) => (g && g.length ? ["gallery:", ...g.map((x) => `  - ${x}`)] : []);
 /** The edition's file (an existing one for the same source story is replaced) */
+/** Wrong→right spellings fixed in every English story before it is saved (INCIDENTS #385) */
+export const ENGLISH_FIXES: [RegExp, string][] = [
+  [/\bM By Elegance\b/g, "Ash By Elegance"],
+];
+export function fixEnglishNames(text: string): string {
+  return ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), text);
+}
+
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
+  e = { ...e, title: fixEnglishNames(e.title), body: fixEnglishNames(e.body) };
   fs.mkdirSync(dir, { recursive: true });
   let slug = englishSlug(e.title) || `story-${i.sourceId}`;
   const existing = findEnglishEdition(i.sourceId, dir);
