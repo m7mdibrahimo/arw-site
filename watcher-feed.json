@@ -1,5 +1,25 @@
 [
   {
+    "id": 332831,
+    "link": "https://www.fightful.com/wrestling/roh-tv-results-10-8/",
+    "date": "2026-10-08T22:30:00",
+    "date_gmt": "2026-10-09T02:30:00",
+    "title": {
+      "rendered": "ROH TV Results (10/8)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08204528/HUHY6ghWQAA2y12.jpeg"
+  },
+  {
+    "id": 332838,
+    "link": "https://www.fightful.com/wrestling/zoey-serrano-shayna-baszler-to-challenge-for-tna-knockouts-world-tag-team-titles-at-bound-for-glory/",
+    "date": "2026-10-08T22:28:43",
+    "date_gmt": "2026-10-09T02:28:43",
+    "title": {
+      "rendered": "Zoey Serrano &amp; Shayna Baszler To Challenge For TNA Knockouts World Tag Team Titles At Bound For Glory"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08214624/Screenshot-2026-10-08-at-21.37.25-2.png"
+  },
+  {
     "id": 332836,
     "link": "https://www.fightful.com/wrestling/moose-issues-open-challenge-for-tna-bound-for-glory/",
     "date": "2026-10-08T21:23:25",
@@ -278,25 +298,5 @@
       "rendered": "Nic Nemeth: I&#8217;m 23 Years In And I&#8217;m In Better Shape Than Most People Who Are 23 Years Old"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07200907/maxresdefault-43.jpg"
-  },
-  {
-    "id": 332737,
-    "link": "https://www.fightful.com/wrestling/titus-oneil-signs-with-stoked-sports-entertainment/",
-    "date": "2026-10-08T11:58:32",
-    "date_gmt": "2026-10-08T15:58:32",
-    "title": {
-      "rendered": "Titus O&#8217;Neil Signs With Stoked Sports &amp; Entertainment"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/11/17204954/titus_1.jpg"
-  },
-  {
-    "id": 332738,
-    "link": "https://www.fightful.com/wrestling/strong-openweight-tag-titles-to-be-defended-at-njpw-x-cmll-lucha-kingdom/",
-    "date": "2026-10-08T11:54:20",
-    "date_gmt": "2026-10-08T15:54:20",
-    "title": {
-      "rendered": "STRONG Openweight Tag Titles To Be Defended At NJPW x CMLL Lucha Kingdom"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08115356/CMLL___-1.jpg"
   }
 ]
