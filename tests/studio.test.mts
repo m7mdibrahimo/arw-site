@@ -532,3 +532,13 @@ test('nostalgia series are listed newest-added first: every series records when 
   assert.match(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /else S\.data\.added_at = isoLocal\(\)/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /return \(b\.createdAt \|\| 0\) - \(a\.createdAt \|\| 0\)/);
 });
+
+test('the panel lists its choices newest first: series by when they were added, show sections by their first episode', () => {
+  // owner 2026-10-09: a new series or section sits at the top, not somewhere in alphabetical order
+  assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /"added_at": \{\{ \(item\.data\.added_at or ""\) \| jsonify \| safe \}\}/);
+  const editor = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(editor, /series: studioData\.filter\(d => d\.collection === 'nostalgia_series'\)\.sort\(\(a, b\) => \(Date\.parse\(b\.added_at\) \|\| 0\) - \(Date\.parse\(a\.added_at\) \|\| 0\)\)/);
+  assert.match(editor, /programs: newestSections\(/);
+  assert.doesNotMatch(editor, /map\(d => d\.program_name\)\)\]\.sort\(\)/);
+  assert.match(fs.readFileSync('studio/js/views/list.js', 'utf8'), /date: d\.added_at \|\| d\.date/);
+});

@@ -20,7 +20,8 @@ async function loadItems(collection) {
       auto: !!i.source_id, held: !!i.single_match_result, tags: i.tags || [],
     }));
   } else {
-    items = data.filter(d => d.collection === collection).map(d => ({ ...d, title: d.headline || d.title, sub: d.headline ? d.title : '' }));
+    // a series' «date» is only the build time: it is listed by when it was added (newest first, owner 2026-10-09)
+    items = data.filter(d => d.collection === collection).map(d => ({ ...d, date: d.added_at || d.date, title: d.headline || d.title, sub: d.headline ? d.title : '' }));
   }
   // Saved here but not built yet
   for (const p of pendingSaves().filter(p => p.collection === collection)) {

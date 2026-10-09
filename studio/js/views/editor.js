@@ -74,6 +74,16 @@ function libFedHint() {
   if (picked) return `قسم جديد «${prog}» هيتعمل جوه ${libFedLabel(picked)} في مكتبة العروض.`;
   return 'قسم جديد: اختار الاتحاد اللي يتحط فيه، أو سيبه «تلقائي» والموقع هيحدده من الاسم.';
 }
+/** The sections (program names) newest first, by when each one's first episode was added — a new section sits at
+ *  the top of the list instead of somewhere in alphabetical order (owner 2026-10-09). */
+function newestSections(items) {
+  const first = new Map();
+  for (const d of items) {
+    const t = Date.parse(d.date) || 0;
+    if (!first.has(d.program_name) || t < first.get(d.program_name)) first.set(d.program_name, t);
+  }
+  return [...first.keys()].sort((a, b) => first.get(b) - first.get(a) || a.localeCompare(b));
+}
 function sectionsCount(n) { return n === 1 ? 'قسم واحد' : n === 2 ? 'قسمين' : n % 100 >= 3 && n % 100 <= 10 ? `${n} أقسام` : `${n} قسم`; }
 function programWithLibrary() {
   const shown = libFedShown();
@@ -267,8 +277,9 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
   S = {
     collection, slug, data: {}, body: '', keys: [], gap: true, eol: true, sha: null, images: [], dirty: false,
     auto: { headline: !slug, title: !slug, description: !slug }, template: null,
-    programs: [...new Set(studioData.filter(d => d.collection === collection && d.program_name).map(d => d.program_name))].sort(),
-    series: studioData.filter(d => d.collection === 'nostalgia_series'),
+    programs: newestSections(studioData.filter(d => d.collection === collection && d.program_name)),
+    // newest-added series first, so a new one sits at the top of the list (owner 2026-10-09)
+    series: studioData.filter(d => d.collection === 'nostalgia_series').sort((a, b) => (Date.parse(b.added_at) || 0) - (Date.parse(a.added_at) || 0)),
     nostalgiaItems: studioData.filter(d => d.collection === 'nostalgia'),
     tagSuggestions: [...new Set(studioData.flatMap(d => d.tags || []).concat(index.slice(0, 400).flatMap(i => i.tags || [])))].slice(0, 400),
     url: null,
