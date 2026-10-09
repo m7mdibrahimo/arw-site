@@ -4181,3 +4181,8 @@ test('doubled quote marks around «» are blocked (INCIDENTS #394)', () => {
   const good = checkArticle('داربي ألين يشارك صورة من مون بلان', 'نشر الصورة معلقا عليها بقوله: «من الجيد العودة إلى الجبال مجددا».' + pad);
   assert.ok(!good.some(i => i.code === 'doubled_quote_marks'));
 });
+
+test('podcast name Flagrant is never transliterated (INCIDENTS #395)', () => {
+  assert.equal(applyCorrections('خلال استضافته في بودكاست فاغرانانت بأنه'), 'خلال استضافته في بودكاست Flagrant بأنه');
+  assert.equal(applyCorrections('بودكاست Flagrant'), 'بودكاست Flagrant');
+});
