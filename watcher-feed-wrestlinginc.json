@@ -1,5 +1,15 @@
 [
   {
+    "id": 4460494485,
+    "link": "https://www.wrestlinginc.com/2282889/wwe-nxt-viewership-ratings-report-october-6-2026/",
+    "date": "Fri, 09 Oct 2026 22:29:53 +0000",
+    "date_gmt": "2026-10-09T22:29:53.000Z",
+    "title": {
+      "rendered": "WWE NXT Viewership & Ratings Report, 10/6/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-1062026/l-intro-1791584909.jpg"
+  },
+  {
     "id": 2334324861,
     "link": "https://www.wrestlinginc.com/2282834/indie-marcus-mathers-wwe-id-program-departure/",
     "date": "Fri, 09 Oct 2026 21:35:25 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE Smackdown Viewership & Ratings Report: 10/2/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-1022026/l-intro-1791540018.jpg"
-  },
-  {
-    "id": 3533946765,
-    "link": "https://www.wrestlinginc.com/2282156/wwe-id-program-laynie-luck-former-womens-champion/",
-    "date": "Fri, 09 Oct 2026 14:17:16 +0000",
-    "date_gmt": "2026-10-09T14:17:16.000Z",
-    "title": {
-      "rendered": "Backstage News On WWE ID Program Status Of Former Women's Champion Laynie Luck"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-id-program-laynie-luck-former-womens-champion/l-intro-1791580217.jpg"
   }
 ]
