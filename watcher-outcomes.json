@@ -1,43 +1,48 @@
 {
- "https://www.fightful.com/wrestling/jacy-jayne-i-feel-like-chase-u-helped-me-find-myself": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-09T14:29:16.126Z"
+ "https://www.fightful.com/wrestling/notice-of-appearance-filed-in-ludwig-kaiser-case": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-09T14:40:13.087Z"
  },
  "https://www.fightful.com/wrestling/liv-morgan-if-i-started-in-nxt-now-i-dont-think-i-would-make-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:58.195Z"
+  "at": "2026-10-09T14:39:53.152Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-9-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:58.032Z"
+  "at": "2026-10-09T14:39:52.944Z"
  },
  "https://www.fightful.com/wrestling/zoey-serrano-shayna-baszler-to-challenge-for-tna-knockouts-world-tag-team-titles-at-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:57.835Z"
+  "at": "2026-10-09T14:39:52.693Z"
  },
  "https://www.fightful.com/wrestling/nxt-draws-more-viewers-than-aew-grand-slam-paris-aew-wins-the-demo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:57.505Z"
+  "at": "2026-10-09T14:39:52.273Z"
  },
  "https://www.fightful.com/wrestling/liv-morgan-is-happy-in-judgment-day-but-thinks-they-are-stagnant-right-now": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:57.417Z"
+  "at": "2026-10-09T14:39:52.160Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-2-viewership-slightly-drops-demo-holds": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:57.012Z"
+  "at": "2026-10-09T14:39:51.649Z"
  },
  "https://www.fightful.com/wrestling/creative-favorites-for-2026-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-09T14:28:56.846Z"
+  "at": "2026-10-09T14:39:51.436Z"
+ },
+ "https://www.fightful.com/wrestling/jacy-jayne-i-feel-like-chase-u-helped-me-find-myself": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-09T14:29:16.126Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-vs-la-knight-is-planned-to-main-event-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
