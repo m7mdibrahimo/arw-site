@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-09T21:59:00.410Z"
+ },
  "https://www.fightful.com/wrestling/la-knight-says-he-was-miserable-a-lot-of-times-and-came-to-wwe-shows-ready-to-fight-everything-and-everybody": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-09T21:57:34.307Z"
- },
- "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-09T21:43:45.822Z"
  },
  "https://www.fightful.com/wrestling/liv-morgan-if-i-started-in-nxt-now-i-dont-think-i-would-make-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
