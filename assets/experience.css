@@ -113,11 +113,14 @@ body.arw-has-bottom-nav .xp-top {
   bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
-/* Switching the theme (experience.js adds html.theme-anim for 0.45s): every colour of the page eases into the other
-   theme's at once, like getartcraft.com — nothing covers the page */
-html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
-  transition: background-color .4s ease, color .4s ease, border-color .4s ease, outline-color .4s ease, fill .4s ease, stroke .4s ease, box-shadow .4s ease, text-decoration-color .4s ease !important;
+/* Switching the theme (experience.js): one cross-fade of the whole page, old picture into new, all at once */
+html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(root) {
+  animation-duration: .45s; animation-timing-function: cubic-bezier(.4, 0, .2, 1); mix-blend-mode: normal;
 }
+/* the old picture stays as it is under the new one, which fades in on top: no dimming halfway */
+html.theme-vt::view-transition-old(root) { animation: none; }
+html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
+@keyframes theme-vt-in { from { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
   .xp-top, .xp-badge.new { transition: none !important; animation: none !important; }

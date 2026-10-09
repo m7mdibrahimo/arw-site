@@ -90,15 +90,24 @@
       });
     }, { passive: true });
 
-    // 5. The theme switches by easing every colour of the page into the other theme's (owner 2026-10-09, like
-    //    getartcraft.com): for 0.4s every background, text and border colour transitions; nothing covers the page.
+    // 5. The theme switches as ONE cross-fade of the whole page (owner 2026-10-09). Easing every element's colours on
+    //    its own looked like a wave: a parent's text colour reaches its children a frame later, gradients can't ease
+    //    and jumped. Here the browser takes a picture of the page, switches the theme under it in one go, and fades
+    //    the old picture into the new one everywhere at the same moment. Without View Transitions: a straight switch.
     var toggle = document.getElementById('arwThemeToggle');
-    if (toggle && !reduce) {
-      var root = document.documentElement, animTimer = null;
-      toggle.addEventListener('click', function () {
-        root.classList.add('theme-anim');
-        clearTimeout(animTimer);
-        animTimer = setTimeout(function () { root.classList.remove('theme-anim'); }, 450);
+    if (toggle && !reduce && document.startViewTransition) {
+      var root = document.documentElement;
+      toggle.addEventListener('click', function (e) {
+        if (e.xpReplay) return;
+        e.stopImmediatePropagation(); e.preventDefault();
+        root.classList.add('theme-vt');
+        var vt = document.startViewTransition(function () {
+          var ev = new MouseEvent('click', { bubbles: true, cancelable: true }); ev.xpReplay = true; toggle.dispatchEvent(ev);
+        });
+        // a skipped transition (another one started, the tab hid) rejects these: nothing to report
+        if (vt.ready) vt.ready.catch(function () {});
+        if (vt.updateCallbackDone) vt.updateCallbackDone.catch(function () {});
+        vt.finished.catch(function () {}).then(function () { root.classList.remove('theme-vt'); });
       }, true);
     }
   }

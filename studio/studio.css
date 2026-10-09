@@ -692,7 +692,11 @@ body.pin-carrying, body.pin-carrying * { cursor: grabbing !important; user-selec
 .bell-empty p { margin-top: 8px; font-weight: 800; }
 @media (max-width: 560px) { .bell-pop { position: fixed; top: 64px; left: 12px; right: 12px; width: auto; } }
 
-/* Switching the theme (app.js switchTheme adds html.theme-anim for 0.45s): every colour eases into the other theme's */
-html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
-  transition: background-color .4s ease, color .4s ease, border-color .4s ease, outline-color .4s ease, fill .4s ease, stroke .4s ease, box-shadow .4s ease, text-decoration-color .4s ease !important;
+/* Switching the theme (app.js switchTheme): one cross-fade of the whole panel, old picture into new, all at once */
+html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(root) {
+  animation-duration: .45s; animation-timing-function: cubic-bezier(.4, 0, .2, 1); mix-blend-mode: normal;
 }
+/* the old picture stays as it is under the new one, which fades in on top: no dimming halfway */
+html.theme-vt::view-transition-old(root) { animation: none; }
+html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
+@keyframes theme-vt-in { from { opacity: 0; } }
