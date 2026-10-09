@@ -1,5 +1,15 @@
 [
   {
+    "id": 1047750543,
+    "link": "https://www.wrestlinginc.com/2281987/wwe-smackdown-viewership-ratings-october-2-2026/",
+    "date": "Fri, 09 Oct 2026 14:30:00 +0000",
+    "date_gmt": "2026-10-09T14:30:00.000Z",
+    "title": {
+      "rendered": "WWE Smackdown Viewership & Ratings Report: 10/2/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-1022026/l-intro-1791540018.jpg"
+  },
+  {
     "id": 3533946765,
     "link": "https://www.wrestlinginc.com/2282156/wwe-id-program-laynie-luck-former-womens-champion/",
     "date": "Fri, 09 Oct 2026 14:17:16 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On WWE Creative Favorites To Win Money In The Bank Ladder Matches"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-creative-favorites-to-win-money-in-the-bank-ladder-matches/l-intro-1791481383.jpg"
-  },
-  {
-    "id": 2180112405,
-    "link": "https://www.wrestlinginc.com/2281316/wwe-money-in-the-bank-2026-jacy-jayne-feeling-first-match/",
-    "date": "Thu, 08 Oct 2026 16:42:38 +0000",
-    "date_gmt": "2026-10-08T16:42:38.000Z",
-    "title": {
-      "rendered": "WWE's Jacy Jayne Shares How She's Feeling Ahead Of Her First Money In The Bank Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-jacy-jayne-shares-how-shes-feeling-ahead-of-her-first-money-in-the-bank-match/l-intro-1791477659.jpg"
   }
 ]
