@@ -4173,3 +4173,11 @@ test('dual forms (مثنى) are blocked (INCIDENTS #393)', async () => {
   assert.ok(codes('عنوان عربي كامل للخبر هنا', 'الثنائي، اللذان اشتهرا بالشخصية واصلا العمل.' + filler).includes('dual_form'));
   assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'يجب المضي قدما في الخطة والثنائي واصل العمل.' + filler).includes('dual_form'));
 });
+
+test('doubled quote marks around «» are blocked (INCIDENTS #394)', () => {
+  const pad = ' وهذا نص إضافي طويل لتجاوز الحد الأدنى لطول الخبر في المدقق الآلي.'.repeat(5);
+  const bad = checkArticle('داربي ألين يشارك صورة من مون بلان', 'نشر الصورة معلقا عليها بقوله: "«من الجيد العودة إلى الجبال مجددا»".' + pad);
+  assert.ok(bad.some(i => i.code === 'doubled_quote_marks'));
+  const good = checkArticle('داربي ألين يشارك صورة من مون بلان', 'نشر الصورة معلقا عليها بقوله: «من الجيد العودة إلى الجبال مجددا».' + pad);
+  assert.ok(!good.some(i => i.code === 'doubled_quote_marks'));
+});
