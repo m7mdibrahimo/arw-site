@@ -692,7 +692,9 @@ body.pin-carrying, body.pin-carrying * { cursor: grabbing !important; user-selec
 .bell-empty p { margin-top: 8px; font-weight: 800; }
 @media (max-width: 560px) { .bell-pop { position: fixed; top: 64px; left: 12px; right: 12px; width: auto; } }
 
-/* Switching the theme (app.js switchTheme): one cross-fade of the whole panel, old picture into new, all at once */
+/* Switching the theme (app.js switchTheme): no element eases on its own during the switch … */
+html.theme-switching, html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after { transition: none !important; }
+/* … and one cross-fade of the whole panel, old picture into new, all at once */
 html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(root) {
   animation-duration: .45s; animation-timing-function: cubic-bezier(.4, 0, .2, 1); mix-blend-mode: normal;
 }

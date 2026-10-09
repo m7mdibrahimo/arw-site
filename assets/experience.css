@@ -113,7 +113,9 @@ body.arw-has-bottom-nav .xp-top {
   bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
-/* Switching the theme (experience.js): one cross-fade of the whole page, old picture into new, all at once */
+/* Switching the theme (experience.js): no element eases on its own (they finished one by one after the fade) … */
+html.theme-switching, html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after { transition: none !important; }
+/* … and one cross-fade of the whole page, old picture into new, all at once */
 html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(root) {
   animation-duration: .45s; animation-timing-function: cubic-bezier(.4, 0, .2, 1); mix-blend-mode: normal;
 }
