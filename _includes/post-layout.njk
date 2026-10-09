@@ -384,7 +384,7 @@
       </button>
     {% endif %}
 
-    {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high, downloads_light) %}
+    {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high, downloads_light, downloads_multi) %}
     {% if dlGroups.light.length or dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
     <div class="download-links reveal" id="downloads">
       <h3>روابط التحميل</h3>
@@ -589,7 +589,7 @@
     </div>
     <div class="dl-modal-body">
       {% for item in items %}
-      {% set dlMq = item.url | isMultiQuality %}
+      {% set dlMq = item.multi or (item.url | isMultiQuality) %}
       <a class="dl-site-card{% if dlMq %} is-mq{% endif %}" data-dl="{{ item.url | obfuscateUrl }}" href="#" target="_blank" rel="noopener noreferrer nofollow">
         <img class="dl-site-logo" src="{{ item.logo or ('https://www.google.com/s2/favicons?domain=' + item.host + '&sz=64') }}" alt="{{ item.site }}" loading="lazy" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='https://www.google.com/s2/favicons?domain={{ item.host }}&sz=64';}else{this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230d9488%22 stroke-width=%222%22><path d=%22M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4%22/><polyline points=%227 10 12 15 17 10%22/><line x1=%2212%22 y1=%2215%22 x2=%2212%22 y2=%223%22/></svg>';}">
         <span class="dl-site-info">

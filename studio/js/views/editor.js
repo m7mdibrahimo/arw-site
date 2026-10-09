@@ -200,6 +200,9 @@ const F = {
   downloads: () => {
     const qs = [['downloads_light', 'خفيفة 360p'], ['downloads_low', 'منخفضة 480p'], ['downloads_medium', 'متوسطة 720p'], ['downloads_high', 'عالية 1080p']];
     return html`<div class="field">
+      <div class="dl-col dl-multi"><label for="f-downloads_multi">متعدد الجودات <em id="cnt-downloads_multi">${textToLines(S.data.downloads_multi).length} رابط</em></label>
+        <small class="hint">رابط فيه كل الجودات: بيظهر لوحده أول رابط فوق كل جودة على الموقع، من غير ما تكرره تحت كل جودة.</small>
+        <textarea class="input mono" id="f-downloads_multi" data-k="downloads_multi" rows="3" dir="ltr">${S.data.downloads_multi || ''}</textarea></div>
       <div class="dl-grid">${qs.map(([k, l]) => html`<div class="dl-col"><label for="f-${k}">${l} <em id="cnt-${k}">${textToLines(S.data[k]).length} رابط</em></label>
         <textarea class="input mono" id="f-${k}" data-k="${k}" rows="6" dir="ltr">${S.data[k] || ''}</textarea></div>`)}</div>
       ${S.data.downloads ? html`<div class="field"><label for="f-downloads">روابط بالنظام القديم</label><textarea class="input mono" id="f-downloads" data-k="downloads" rows="4" dir="ltr">${S.data.downloads}</textarea></div>` : ''}
