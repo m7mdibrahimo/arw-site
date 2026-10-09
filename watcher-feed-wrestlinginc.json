@@ -1,5 +1,15 @@
 [
   {
+    "id": 2408252300,
+    "link": "https://www.wrestlinginc.com/2282604/aew-dynamite-collision-winter-is-coming-2026-mexico/",
+    "date": "Fri, 09 Oct 2026 18:48:15 +0000",
+    "date_gmt": "2026-10-09T18:48:15.000Z",
+    "title": {
+      "rendered": "AEW Announces Dates For Winter Is Coming Editions Of Dynamite & Collision From Mexico"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-announces-dates-for-winter-is-coming-editions-of-dynamite-collision-from-mexico/l-intro-1791570967.jpg"
+  },
+  {
     "id": 3608597843,
     "link": "https://www.wrestlinginc.com/2282550/enzo-amore-wwe-status-reunion-big-cass/",
     "date": "Fri, 09 Oct 2026 18:18:16 +0000",
@@ -188,15 +198,5 @@
       "rendered": "M By Elegance Retains TNA KO TV Title With Time Limit Draw Against Elayna Black"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/m-by-elegance-retains-tna-ko-tv-title-with-time-limit-draw-against-elayna-black/l-intro-1791513417.jpg"
-  },
-  {
-    "id": 2030957769,
-    "link": "https://www.wrestlinginc.com/2281876/tna-bound-for-glory-2026-joe-alonzo-earns-advantage-call-your-shot-gauntlet/",
-    "date": "Fri, 09 Oct 2026 02:22:17 +0000",
-    "date_gmt": "2026-10-09T02:22:17.000Z",
-    "title": {
-      "rendered": "Joe Alonzo Earns Advantage In Call Your Shot Gauntlet Match At TNA Bound For Glory"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-bound-for-glory-2026-joe-alonzo-earns-advantage-call-your-shot-gauntlet/l-intro-1791514120.jpg"
   }
 ]
