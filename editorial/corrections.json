@@ -5740,6 +5740,17 @@
    "right": "آلي",
    "regex": true,
    "note": "Allie (TNA) بتتكتب «آلي» في كل الأخبار، مرة اتكتبت «ألي» — INCIDENTS #383"
+  },
+  {
+   "wrong": "تري (ميجيل|ميغيل)",
+   "right": "تراي ميجيل",
+   "regex": true,
+   "note": "Trey Miguel اتكتب «تري ميجيل» و«تراي ميجيل» — INCIDENTS #384"
+  },
+  {
+   "wrong": "إلينا بلاك",
+   "right": "إيلينا بلاك",
+   "note": "Elayna Black اتكتبت بشكلين — INCIDENTS #384"
   }
  ]
 }

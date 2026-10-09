@@ -22,7 +22,7 @@ layout: post-layout.njk
 البطاقة المحدثة لمواجهات عرض TNA iMPACT (27 أغسطس 2026):
 
 * نهائي بطولة التلفزيون للسيدات (TNA Knockouts TV Championship Final): آش باي إليغانس ضد جادا ستون.
-* نزال فرق: جيسون هوتش وتري ميغيل ضد مصطفى علي وإيجنت زيرو.
+* نزال فرق: جيسون هوتش وتراي ميجيل ضد مصطفى علي وإيجنت زيرو.
 * نزال فردي للرجال: إيلايجا ضد بير برونسون.
 
 <https://x.com/ThisIsTNA/status/2091922003074699515?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2091922003074699515%7Ctwgr%5E6bbcf5281801b76d69b7685c2bf2167c4dec2e96%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fbear-برونسون-vs-إلياس-added-to-8-27-tna-impact%2F>

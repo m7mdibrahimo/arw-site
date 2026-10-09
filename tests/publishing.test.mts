@@ -4084,3 +4084,13 @@ test('Allie has one spelling «آلي» and «ألي وكيرا هوجان» is 
   const r = c.find((x: any) => x.right === 'آلي');
   assert.ok(r && new RegExp(r.wrong).test('ألي وكيرا هوجان') && !new RegExp(r.wrong).test('ألي كاتش'));
 });
+
+test('Trey Miguel and Elayna Black have one spelling each and variants are auto-corrected (#384)', () => {
+  const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts/wrestler-names.json'), 'utf8'));
+  assert.equal(names['Trey Miguel'], 'تراي ميجيل');
+  assert.equal(names['Elayna Black'], 'إيلينا بلاك');
+  const c = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8')).corrections;
+  const t = c.find((x: any) => x.right === 'تراي ميجيل');
+  assert.ok(t && new RegExp(t.wrong).test('تري ميغيل') && new RegExp(t.wrong).test('تري ميجيل'));
+  assert.ok(c.some((x: any) => x.wrong === 'إلينا بلاك' && x.right === 'إيلينا بلاك'));
+});
