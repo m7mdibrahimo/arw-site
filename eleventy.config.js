@@ -129,11 +129,10 @@ function extractUrls(text) {
 // بياخد مصفوفة downloads (بأي صيغة من الصيغ القديمة) + نصوص الصناديق الجديدة الصريحة من اللوحة
 // (downloadsLow/downloadsMedium/downloadsHigh - كل واحد نص فيه رابط أو أكتر، كل رابط في سطر)
 // ويرجعهم مقسمين لـ 3 مجموعات جاهزة للعرض، مع تعرف تلقائي على اسم ولوجو كل موقع
-function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downloadsHigh, downloadsLight) {
+function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downloadsHigh, downloadsLight, downloadsMulti) {
   const groups = { light: [], low: [], medium: [], high: [] };
 
-  function pushItem(quality, url, hintText) {
-    if (!url) return;
+  function itemFor(url) {
     const host = hostFromUrl(url);
     const parts = host.split(".");
     const rootHost = parts.length > 2 ? parts.slice(-2).join(".") : host;
@@ -145,7 +144,12 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     if (!logo) {
       logo = `https://www.google.com/s2/favicons?domain=${host}&sz=64`;
     }
-    const item = { url: url, site: site, host: host, logo: logo };
+    return { url: url, site: site, host: host, logo: logo };
+  }
+
+  function pushItem(quality, url, hintText) {
+    if (!url) return;
+    const item = itemFor(url);
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
     if (detected === "light") {
@@ -183,6 +187,16 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     }
   });
 
+  // «متعدد الجودات» (owner 2026-10-09): links that hold every quality, added once in the panel and shown first, on
+  // their own, at the top of every quality's list — instead of being pasted under each quality. «خفيفة» gets them only
+  // when it has links of its own, like the links without a quality above.
+  const multi = extractUrls(downloadsMulti).slice(0, 15).map(function (u) { return Object.assign(itemFor(u), { multi: true }); });
+  if (multi.length) {
+    ["light", "low", "medium", "high"].forEach(function (k) {
+      if (k === "light" && !groups.light.length) return;
+      groups[k] = multi.concat(groups[k].filter(function (i) { return !multi.some(function (m) { return m.url === i.url; }); }));
+    });
+  }
   return groups;
 }
 

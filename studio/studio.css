@@ -347,6 +347,10 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .paste-box { border: 2px dashed var(--cream-2); border-radius: 20px; padding: 10px; background: var(--card); }
 .paste-box textarea { border: 0; background: none; padding: 4px; }
 .dl-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+/* «متعدد الجودات»: one box across the top, set apart from the four qualities under it */
+.dl-multi { margin-bottom: 12px; border: 1.5px solid color-mix(in srgb, var(--yellow) 55%, transparent); }
+.dl-col.dl-multi label em { background: var(--yellow); color: #141414; }
+.dl-multi .hint { margin: -2px 2px 2px; }
 .dl-col { display: flex; flex-direction: column; gap: 6px; background: var(--card); border-radius: 20px; padding: 12px; }
 .dl-col label { font-weight: 800; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; }
 .dl-col label em { font-style: normal; background: var(--coral); color: #fff; border-radius: 999px; padding: 0 10px; font-size: 12px; font-weight: 800; }

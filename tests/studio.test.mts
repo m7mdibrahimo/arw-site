@@ -566,10 +566,10 @@ test('a fourth download quality, «خفيفة» 360p: in the panel and on the si
   const editor = fs.readFileSync('studio/js/views/editor.js', 'utf8');
   assert.match(editor, /\['downloads_light', 'خفيفة 360p'\], \['downloads_low', 'منخفضة 480p'\]/);
   assert.doesNotMatch(editor, /dl-paste|لصق ذكي/);
-  assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'servers', 'downloads_light', 'downloads_low'/);
-  assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /"downloads": \[\{\{ \(item\.data\.downloads_light or ""\)/);
+  assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'downloads_light', 'downloads_low', 'downloads_medium', 'downloads_high'/);
+  assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /\{\{ \(item\.data\.downloads_light or ""\) \| string \| length \}\}, \{\{ \(item\.data\.downloads_low or ""\)/);
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
-  assert.match(layout, /groupDownloadsByQuality\(downloads_low, downloads_medium, downloads_high, downloads_light\)/);
+  assert.match(layout, /groupDownloadsByQuality\(downloads_low, downloads_medium, downloads_high, downloads_light[,)]/);
   assert.ok(layout.indexOf('data-tier="light"') < layout.indexOf('data-tier="low"'), 'the light button comes first');
   const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
   const start = cfg.indexOf('function detectQuality'), end = cfg.indexOf('function extractUrls');
@@ -590,4 +590,24 @@ test('switching light/dark eases every colour into the other theme, on the site 
   assert.match(app, /\$\('#theme-btn'\)\.onclick = \(\) => switchTheme\(/);
   assert.match(app, /document\.documentElement\.classList\.add\('theme-anim'\)/);
   assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-anim \*::after/);
+});
+
+test('«متعدد الجودات»: links added once in the panel show first, on their own, at the top of every quality', () => {
+  // owner 2026-10-09: a fifth box instead of pasting a multi-quality link under each quality
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  const a = cfg.indexOf('const KNOWN_HOST_NAMES'), b = cfg.indexOf('function groupDownloadsByQuality');
+  const c = cfg.indexOf('  return groups;\n}\n', b) + '  return groups;\n}\n'.length;
+  const group = new Function(cfg.slice(a, c) + '\nreturn groupDownloadsByQuality;')();
+  const urls = (r: any) => Object.fromEntries(Object.entries(r).map(([k, v]: any) => [k, v.map((i: any) => (i.multi ? '*' : '') + i.url)]));
+  assert.deepEqual(urls(group([], 'https://a.com/1', 'https://b.com/2\nhttps://m.com/x', 'https://c.com/3', '', 'https://m.com/x\nhttps://n.com/y')), {
+    light: [], low: ['*https://m.com/x', '*https://n.com/y', 'https://a.com/1'],
+    medium: ['*https://m.com/x', '*https://n.com/y', 'https://b.com/2'], high: ['*https://m.com/x', '*https://n.com/y', 'https://c.com/3'],
+  });
+  assert.deepEqual(urls(group([], '', '', '', 'https://d.com/360', 'https://m.com/x')).light, ['*https://m.com/x', 'https://d.com/360']);
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /groupDownloadsByQuality\(downloads_low, downloads_medium, downloads_high, downloads_light, downloads_multi\)/);
+  assert.match(layout, /\{% set dlMq = item\.multi or \(item\.url \| isMultiQuality\) %\}/);
+  assert.match(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /data-k="downloads_multi"/);
+  assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'servers', 'downloads_multi', 'downloads_light'/);
+  assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /"downloads": \[\{\{ \(item\.data\.downloads_multi or ""\)/);
 });
