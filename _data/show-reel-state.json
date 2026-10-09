@@ -3275,15 +3275,41 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض مين ايفنت 08.10.2026 مترجم",
-    "lastAttempt": 1791560385338,
+    "lastAttempt": 1791561239906,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261009183813-roh-on-honorclub-08-10-2026": {
+    "publishedAt": 1791561274993,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ار او اتش اون اونر كلوب 08.10.2026 مترجم",
+    "lastAttempt": 1791561287541,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story"
+      "instagram_reel"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261009184507-tna-impact-08-10-2026": {
+    "publishedAt": 1791561313571,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه امباكت 08.10.2026 مترجم",
+    "lastAttempt": 1791561323244,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
