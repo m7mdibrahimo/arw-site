@@ -76,13 +76,27 @@ function libFedHint() {
 }
 /** The sections (program names) newest first, by when each one's first episode was added — a new section sits at
  *  the top of the list instead of somewhere in alphabetical order (owner 2026-10-09). */
-function newestSections(items) {
+function firstEpisodeTimes(items) {
   const first = new Map();
   for (const d of items) {
     const t = Date.parse(d.date) || 0;
     if (!first.has(d.program_name) || t < first.get(d.program_name)) first.set(d.program_name, t);
   }
+  return first;
+}
+function newestSections(items) {
+  const first = firstEpisodeTimes(items);
   return [...first.keys()].sort((a, b) => first.get(b) - first.get(a) || a.localeCompare(b));
+}
+/** The library's federations newest first too: a federation by when the first episode of any of its sections was
+ *  added. One with no episode yet keeps its place at the end (owner 2026-10-09). */
+function newestLibFeds(lib, items) {
+  const first = firstEpisodeTimes(items), added = new Map();
+  for (const [name, key] of Object.entries(lib.programs || {})) {
+    const t = first.get(name);
+    if (t && (!added.has(key) || t < added.get(key))) added.set(key, t);
+  }
+  return { ...lib, federations: [...lib.federations].sort((a, b) => (added.get(b.key) || 0) - (added.get(a.key) || 0)) };
 }
 function sectionsCount(n) { return n === 1 ? 'قسم واحد' : n === 2 ? 'قسمين' : n % 100 >= 3 && n % 100 <= 10 ? `${n} أقسام` : `${n} قسم`; }
 function programWithLibrary() {
@@ -283,7 +297,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
     nostalgiaItems: studioData.filter(d => d.collection === 'nostalgia'),
     tagSuggestions: [...new Set(studioData.flatMap(d => d.tags || []).concat(index.slice(0, 400).flatMap(i => i.tags || [])))].slice(0, 400),
     url: null,
-    lib: lib && Array.isArray(lib.federations) ? lib : { federations: [], programs: {} },
+    lib: lib && Array.isArray(lib.federations) ? newestLibFeds(lib, studioData.filter(d => d.collection === 'shows' && d.program_name)) : { federations: [], programs: {} },
   };
 
   if (slug) {

@@ -539,6 +539,7 @@ test('the panel lists its choices newest first: series by when they were added, 
   const editor = fs.readFileSync('studio/js/views/editor.js', 'utf8');
   assert.match(editor, /series: studioData\.filter\(d => d\.collection === 'nostalgia_series'\)\.sort\(\(a, b\) => \(Date\.parse\(b\.added_at\) \|\| 0\) - \(Date\.parse\(a\.added_at\) \|\| 0\)\)/);
   assert.match(editor, /programs: newestSections\(/);
+  assert.match(editor, /lib: lib && Array\.isArray\(lib\.federations\) \? newestLibFeds\(lib, /);
   assert.doesNotMatch(editor, /map\(d => d\.program_name\)\)\]\.sort\(\)/);
   assert.match(fs.readFileSync('studio/js/views/list.js', 'utf8'), /date: d\.added_at \|\| d\.date/);
 });
