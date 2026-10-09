@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/jbl-admits-even-he-doesnt-know-how-fans-will-watch-wwe-x-aaa-worlds-collide/": {
-    "matchedFile": "20260925022401-جي-بي-إل-يوضح-أن-المعلقين-لن-يتواجدوا-في-عرض-aaa-worlds-collide-وأنه-سيتم-تسجيل-التعليق-لاحقا.md",
-    "reason": "الخبر الجديد يكرر نفس التصريحات والمعلومات الموجودة في الخبر المنشورة مسبقاً بشأن تعليق جي بي إل على عرض AAA Worlds Collide وتسجيل التعليق لاحقاً وعدم معرفته بطريقة البث.",
-    "at": "2026-09-25T07:21:30.747Z"
-  },
   "https://www.ringsidenews.com/masha-slamovich-makes-mlw-debut-controversial-tna-exit/": {
     "matchedFile": "20260925033616-ماشا-سلاموفيتش-تظهر-للمرة-الأولى-في-اتحاد-mlw.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261009110830-دليل-مشاهدة-وموعد-عرض-wwe-smackdown-الليلة.md",
     "reason": "الخبر الجديد يغطي نفس تفاصيل ومباريات وجدول عرض سماكداون لنفس اليوم والتي تم نشرها مسبقاً في الخبر رقم 0.",
     "at": "2026-10-09T12:03:00.775Z"
+  },
+  "https://www.wrestlinginc.com/2281954/wwe-tna-bound-for-glory-2026-shayna-baszler-zoey-serrano-knockouts-tag-title-match/": {
+    "matchedFile": "20261009053002-الكشف-عن-شينا-باسلر-النجمة-السابقة-في-wwe-كشريكة-لزوي-سيرانو-في-عرض-bound-for-glory.md",
+    "reason": "الخبر الجديد يعبر عن نفس الحدث والإعلان الخاص بمشاركة شينا باسلر في نزال ألقاب الفرق في عرض TNA Bound For Glory بجانب زوي سيرانو، وهو نفس محتوى الخبر المنشور مسبقاً.",
+    "at": "2026-10-09T13:03:55.342Z"
   }
 }
