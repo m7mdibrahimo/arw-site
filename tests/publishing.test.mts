@@ -4069,3 +4069,10 @@ test('style guide tells Gemini to keep venue names as in the source and not repe
   const g = fs.readFileSync(path.join(process.cwd(), 'editorial/style-guide.md'), 'utf8');
   assert.match(g, /اسم المكان كما في المصدر ومرة واحدة/);
 });
+
+test('dual forms are banned in the style guide and Kiera Hogan has one spelling (#382)', () => {
+  const g = fs.readFileSync(path.join(process.cwd(), 'editorial/style-guide.md'), 'utf8');
+  assert.match(g, /لا مثنى أبدا/);
+  const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts/wrestler-names.json'), 'utf8'));
+  assert.equal(names['Kiera Hogan'], 'كيرا هوجان');
+});
