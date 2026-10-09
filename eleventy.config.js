@@ -91,9 +91,11 @@ function siteNameFromHost(host) {
   return base.charAt(0).toUpperCase() + base.slice(1);
 }
 
-// بيحدد الجودة (منخفضة/متوسطة/عالية) بناءً على نص الـ label أو رقم الجودة الموجود جوه الرابط نفسه
+// بيحدد الجودة (خفيفة/منخفضة/متوسطة/عالية) بناءً على نص الـ label أو رقم الجودة الموجود جوه الرابط نفسه
+// «خفيفة» = 360p، أصغر ملف وأقل استهلاك للباقة (owner 2026-10-09)
 function detectQuality(text) {
   const t = (text || "").toLowerCase();
+  if (t.includes("خفيفة") || /(?:^|[^0-9])360p?(?:[^0-9]|$)/.test(t)) return "light";
   if (t.includes("منخفضة") || t.includes("480")) return "low";
   if (t.includes("متوسطة") || t.includes("720")) return "medium";
   if (t.includes("عالية") || t.includes("1080") || t.includes("4k") || t.includes("2160")) return "high";
@@ -127,8 +129,8 @@ function extractUrls(text) {
 // بياخد مصفوفة downloads (بأي صيغة من الصيغ القديمة) + نصوص الصناديق الجديدة الصريحة من اللوحة
 // (downloadsLow/downloadsMedium/downloadsHigh - كل واحد نص فيه رابط أو أكتر، كل رابط في سطر)
 // ويرجعهم مقسمين لـ 3 مجموعات جاهزة للعرض، مع تعرف تلقائي على اسم ولوجو كل موقع
-function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downloadsHigh) {
-  const groups = { low: [], medium: [], high: [] };
+function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downloadsHigh, downloadsLight) {
+  const groups = { light: [], low: [], medium: [], high: [] };
 
   function pushItem(quality, url, hintText) {
     if (!url) return;
@@ -146,7 +148,9 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
     const item = { url: url, site: site, host: host, logo: logo };
     const detected = quality || detectQuality(hintText) || detectQuality(url);
 
-    if (detected === "low") {
+    if (detected === "light") {
+      groups.light.push(item);
+    } else if (detected === "low") {
       groups.low.push(item);
     } else if (detected === "medium") {
       groups.medium.push(item);
@@ -154,7 +158,7 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
       groups.high.push(item);
     } else {
       // لو الرابط مش محدد له جودة (زي روابط "تحميل متعدد" اللي فيها كل الجودات)
-      // نعرضه في الثلاث خانات لأنه صالح لأي جودة يختارها الزائر
+      // نعرضه في الثلاث خانات لأنه صالح لأي جودة يختارها الزائر (مش في «خفيفة»: بتظهر بس لما تتضاف روابطها صراحة)
       groups.low.push(item);
       groups.medium.push(item);
       groups.high.push(item);
@@ -162,6 +166,7 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
   }
 
   // الصناديق الجديدة الصريحة من اللوحة (نص فيه رابط أو أكتر، الموقع هيتعرف على كل رابط لوحده تلقائيًا)
+  extractUrls(downloadsLight).slice(0, 15).forEach(function (u) { pushItem("light", u); });
   extractUrls(downloadsLow).slice(0, 15).forEach(function (u) { pushItem("low", u); });
   extractUrls(downloadsMedium).slice(0, 15).forEach(function (u) { pushItem("medium", u); });
   extractUrls(downloadsHigh).slice(0, 15).forEach(function (u) { pushItem("high", u); });

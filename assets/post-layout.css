@@ -543,9 +543,11 @@
   .quality-icon svg{ width:20px; height:20px; }
   .quality-label{ font-weight:800; font-size:15px; color:var(--ink); position:relative; z-index:1; }
   .quality-sub{ font-size:12px; color:var(--muted); font-weight:600; position:relative; z-index:1; }
+  .quality-btn[data-tier="light"] .quality-icon{ background:var(--nostalgia); }
   .quality-btn[data-tier="low"] .quality-icon{ background:var(--gold); }
   .quality-btn[data-tier="medium"] .quality-icon{ background:var(--violet); }
   .quality-btn[data-tier="high"] .quality-icon{ background:var(--teal); }
+  .quality-btn[data-tier="light"]:hover{ border-color:var(--nostalgia); box-shadow:0 12px 28px -10px rgba(2,132,199,0.35); }
   .quality-btn[data-tier="low"]:hover{ border-color:var(--gold); box-shadow:0 12px 28px -10px rgba(242,165,60,0.35); }
   .quality-btn[data-tier="medium"]:hover{ border-color:var(--violet); box-shadow:0 12px 28px -10px rgba(124,110,232,0.35); }
 
@@ -553,6 +555,8 @@
   @media (max-width:640px){
     .quality-grid{ display:flex; flex-wrap:wrap; justify-content:center; }
     .quality-grid .quality-btn{ flex:0 1 calc(50% - 7px); }
+    /* four qualities (360p added, owner 2026-10-09): two rows of two, not four squeezed buttons */
+    .quality-grid:has(> .quality-btn:nth-child(4)){ display:grid !important; grid-template-columns:repeat(2, 1fr) !important; }
   }
 
   /* ==== الـ Modal الخاص بروابط التحميل ==== */

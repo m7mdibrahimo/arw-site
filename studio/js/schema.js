@@ -8,7 +8,7 @@ export const FEDERATIONS = ['WWE', 'AEW', 'NJPW', 'TNA', 'ROH', 'MMA', 'INDIE'];
 export const COLLECTIONS = {
   shows: {
     label: 'العروض', singular: 'عرض', icon: 'show', color: '#7c6cf2', folder: 'content/shows', urlBase: '/shows/',
-    order: ['show_type', 'federation', 'title', 'headline', 'card_title', 'program_name', 'library_federation', 'season_number', 'episode_number', 'maintenance', 'maintenance_note', 'description', 'event_date', 'date', 'duration', 'tags', 'image', 'servers', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
+    order: ['show_type', 'federation', 'title', 'headline', 'card_title', 'program_name', 'library_federation', 'season_number', 'episode_number', 'maintenance', 'maintenance_note', 'description', 'event_date', 'date', 'duration', 'tags', 'image', 'servers', 'downloads_light', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
     defaults: { show_type: 'عرض', layout: 'post-layout.njk' },
     required: ['federation', 'title', 'duration', 'image'],
   },
@@ -26,7 +26,7 @@ export const COLLECTIONS = {
   },
   nostalgia: {
     label: 'حلقات النوستالجيا', singular: 'حلقة نوستالجيا', icon: 'nostalgia', color: '#38bdf8', folder: 'content/nostalgia', urlBase: '/nostalgia/',
-    order: ['nostalgia_series', 'series_type', 'nostalgia_order', 'nostalgia_main', 'title', 'headline', 'tags', 'image', 'event_date', 'date', 'duration', 'servers', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
+    order: ['nostalgia_series', 'series_type', 'nostalgia_order', 'nostalgia_main', 'title', 'headline', 'tags', 'image', 'event_date', 'date', 'duration', 'servers', 'downloads_light', 'downloads_low', 'downloads_medium', 'downloads_high', 'body', 'layout'],
     defaults: { layout: 'post-layout.njk', tags: ['WWE', 'نوستالجيا'], nostalgia_order: 1 },
     required: ['nostalgia_series', 'title', 'image'],
   },
@@ -106,18 +106,6 @@ export function serializeFile(collection, data, body, originalKeys = [], gap = t
 export function extractUrls(text) {
   const found = String(text || '').match(/https?:\/\/[^\s"'<>]+/g) || [];
   return [...new Set(found.map(u => u.replace(/[),.;]+$/, '')))];
-}
-/** Pasted download links split by quality: 480/720/1080 in the link, else the chosen default. */
-export function splitDownloadsByQuality(text, fallback = 'downloads_medium') {
-  const out = { downloads_low: [], downloads_medium: [], downloads_high: [] };
-  for (const url of extractUrls(text)) {
-    const u = url.toLowerCase();
-    if (/(?:^|[^0-9])(?:1080p?|fhd|fullhd)(?:[^0-9]|$)/.test(u)) out.downloads_high.push(url);
-    else if (/(?:^|[^0-9])(?:720p?|hd)(?:[^0-9]|$)/.test(u)) out.downloads_medium.push(url);
-    else if (/(?:^|[^0-9])(?:480p?|360p?|sd)(?:[^0-9]|$)/.test(u)) out.downloads_low.push(url);
-    else out[fallback].push(url);
-  }
-  return out;
 }
 export const linesToText = (arr) => arr.join('\n');
 export const textToLines = (t) => String(t || '').split(/\n+/).map(s => s.trim()).filter(Boolean);
@@ -215,7 +203,7 @@ export function checklist(collection, data) {
   if (collection === 'shows') need('program_name', 'اسم البرنامج');
   if (['shows', 'nostalgia'].includes(collection)) {
     need('duration', 'مدة العرض');
-    items.push({ ok: ['downloads_low', 'downloads_medium', 'downloads_high'].some(k => has(k)), label: 'روابط تحميل', required: false });
+    items.push({ ok: ['downloads_light', 'downloads_low', 'downloads_medium', 'downloads_high'].some(k => has(k)), label: 'روابط تحميل', required: false });
   }
   if (collection === 'news') items.push({ ok: String(data.body || '').trim().length > 40, label: 'نص الخبر', required: false });
   return items;

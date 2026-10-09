@@ -384,11 +384,18 @@
       </button>
     {% endif %}
 
-    {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high) %}
-    {% if dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
+    {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high, downloads_light) %}
+    {% if dlGroups.light.length or dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
     <div class="download-links reveal" id="downloads">
       <h3>روابط التحميل</h3>
       <div class="quality-grid">
+        {% if dlGroups.light.length %}
+        <button type="button" class="quality-btn" data-tier="light" data-modal="dlModalLight">
+          <span class="quality-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+          <span class="quality-label">جودة خفيفة</span>
+          <span class="quality-sub">360p</span>
+        </button>
+        {% endif %}
         {% if dlGroups.low.length %}
         <button type="button" class="quality-btn" data-tier="low" data-modal="dlModalLow">
           <span class="quality-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
@@ -597,6 +604,7 @@
 </div>
 {% endmacro %}
 
+{% if dlGroups.light.length %}{{ dlModal("dlModalLight", "روابط التحميل - جودة خفيفة (360p)", "360p", dlGroups.light) }}{% endif %}
 {% if dlGroups.low.length %}{{ dlModal("dlModalLow", "روابط التحميل - جودة منخفضة (480p)", "480p", dlGroups.low) }}{% endif %}
 {% if dlGroups.medium.length %}{{ dlModal("dlModalMedium", "روابط التحميل - جودة متوسطة (720p)", "720p", dlGroups.medium) }}{% endif %}
 {% if dlGroups.high.length %}{{ dlModal("dlModalHigh", "روابط التحميل - جودة عالية (1080p)", "1080p", dlGroups.high) }}{% endif %}
