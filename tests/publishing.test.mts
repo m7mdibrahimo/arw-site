@@ -4122,3 +4122,14 @@ test('Louisiana, «وقتها» and the wine company have fixed spellings and no
     assert.ok(!/لزيانا|وقتتها|شركة المضارب/.test(t), f);
   }
 });
+
+test('«تأكيد ولاءه» is corrected to «تأكيد ولائه» and the Bagwell story names Randy Savage (#388)', () => {
+  const c = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8')).corrections;
+  assert.ok(c.find((x: any) => x.wrong === 'تأكيد ولاءه' && x.right === 'تأكيد ولائه'));
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    const t = fs.readFileSync(path.join(dir, f), 'utf8');
+    assert.ok(!/تأكيد ولاءه/.test(t), f);
+    if (f.startsWith('20261009120512-')) assert.ok(!/راندي أورتن/.test(t), f);
+  }
+});
