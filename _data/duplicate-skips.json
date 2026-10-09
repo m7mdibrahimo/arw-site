@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/masha-slamovich-makes-mlw-debut-controversial-tna-exit/": {
-    "matchedFile": "20260925033616-ماشا-سلاموفيتش-تظهر-للمرة-الأولى-في-اتحاد-mlw.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T07:21:30.809Z"
-  },
   "https://www.ringsidenews.com/tna-brings-back-call-your-shot-gauntlet-bound-glory-2026/": {
     "matchedFile": "20260925042622-نزال-كول-يور-شوت-جونتلت-يقام-في-عرض-tna-bound-for-glory.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261009053002-الكشف-عن-شينا-باسلر-النجمة-السابقة-في-wwe-كشريكة-لزوي-سيرانو-في-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يعبر عن نفس الحدث والإعلان الخاص بمشاركة شينا باسلر في نزال ألقاب الفرق في عرض TNA Bound For Glory بجانب زوي سيرانو، وهو نفس محتوى الخبر المنشور مسبقاً.",
     "at": "2026-10-09T13:03:55.342Z"
+  },
+  "https://www.fightful.com/wrestling/liv-morgan-if-i-started-in-nxt-now-i-dont-think-i-would-make-the-cut/": {
+    "matchedFile": "20261008183658-ليف-مورغان-تعترف-باحتمال-عدم-نجاحها-في-wwe-لو-بدأت-مسيرتها-اليوم.md",
+    "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلت بها ليف مورغان في برنامج Hot Ones بشأن صعوبة البداية في NXT حالياً ونفس التفاصيل المتعلقة بعشقها للاتحاد منذ الصغر، وهو مطابق للخبر المنشور برقم 0.",
+    "at": "2026-10-09T13:17:05.223Z"
   }
 }
