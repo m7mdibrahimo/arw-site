@@ -4151,3 +4151,8 @@ test('«بخن حماس» is corrected to «بكل حماس» and no story has i
     assert.ok(!/بخن حماس/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
   }
 });
+
+test('«التأثير المؤثر» and dual verbs after «الثنائي» are auto-corrected (#391)', () => {
+  assert.equal(applyCorrections('لمشاهدة فيديو التأثير المؤثر'), 'لمشاهدة فيديو التكريم المؤثر');
+  assert.equal(applyCorrections('أن الثنائي سيشاركان في عرض'), 'أن الثنائي سيشارك في عرض');
+});
