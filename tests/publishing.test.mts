@@ -4110,3 +4110,15 @@ test('a server\'s own fullscreen never goes black: no page-to-page view transiti
   assert.match(player, /root\.classList\.toggle\('arw-fs', !!fs\)/);
   assert.match(fs.readFileSync('assets/post-layout.css', 'utf8'), /html\.arw-fs body \*:not\(iframe\):not\(video\)\{ transform:none !important; filter:none !important; backdrop-filter:none !important/);
 });
+
+test('Louisiana, «وقتها» and the wine company have fixed spellings and no story keeps the wrong ones (#387)', () => {
+  const c = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8')).corrections;
+  for (const [wrong, right] of [['لزيانا', 'لويزيانا'], ['وقتتها', 'وقتها'], ['شركة المضارب', 'شركة النبيذ']]) {
+    assert.ok(c.find((x: any) => x.wrong === wrong && x.right === right), wrong);
+  }
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    const t = fs.readFileSync(path.join(dir, f), 'utf8');
+    assert.ok(!/لزيانا|وقتتها|شركة المضارب/.test(t), f);
+  }
+});

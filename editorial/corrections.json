@@ -5751,6 +5751,21 @@
    "wrong": "إلينا بلاك",
    "right": "إيلينا بلاك",
    "note": "Elayna Black اتكتبت بشكلين — INCIDENTS #384"
+  },
+  {
+   "wrong": "لزيانا",
+   "right": "لويزيانا",
+   "note": "Louisiana اتكتبت «لزيانا» — INCIDENTS #387"
+  },
+  {
+   "wrong": "وقتتها",
+   "right": "وقتها",
+   "note": "غلطة إملائية «وقتتها» — INCIDENTS #387"
+  },
+  {
+   "wrong": "شركة المضارب",
+   "right": "شركة النبيذ",
+   "note": "wine company اتترجمت «المضارب» — INCIDENTS #387"
   }
  ]
 }
