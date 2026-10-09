@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-09T21:07:43.373Z"
+ },
  "https://www.fightful.com/wrestling/la-knight-says-wwe-money-in-the-bank-match-against-roman-reigns-feels-do-or-die-for-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-09T21:03:57.764Z"
- },
- "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-09T21:02:41.955Z"
  },
  "https://www.fightful.com/wrestling/zoey-serrano-shayna-baszler-to-challenge-for-tna-knockouts-world-tag-team-titles-at-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
