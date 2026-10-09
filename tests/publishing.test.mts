@@ -4076,3 +4076,11 @@ test('dual forms are banned in the style guide and Kiera Hogan has one spelling 
   const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts/wrestler-names.json'), 'utf8'));
   assert.equal(names['Kiera Hogan'], 'كيرا هوجان');
 });
+
+test('Allie has one spelling «آلي» and «ألي وكيرا هوجان» is auto-corrected (#383)', () => {
+  const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts/wrestler-names.json'), 'utf8'));
+  assert.equal(names['Allie'], 'آلي');
+  const c = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8')).corrections;
+  const r = c.find((x: any) => x.right === 'آلي');
+  assert.ok(r && new RegExp(r.wrong).test('ألي وكيرا هوجان') && !new RegExp(r.wrong).test('ألي كاتش'));
+});
