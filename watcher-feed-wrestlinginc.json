@@ -1,5 +1,15 @@
 [
   {
+    "id": 2736608601,
+    "link": "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results/",
+    "date": "Fri, 09 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-09T21:00:00.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Results 10/9/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-10926-w-live-updates/l-intro-1791577904.jpg"
+  },
+  {
     "id": 2436632880,
     "link": "https://www.wrestlinginc.com/2282786/wwe-money-in-the-bank-2026-draws-duds-roman-reigns-la-knight-mitb/",
     "date": "Fri, 09 Oct 2026 20:54:41 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Former WWE Star Shayna Baszler To Wrestle Tag Title Match At TNA Bound For Glory 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-shayna-baszler-to-wrestle-tag-title-match-at-tna-bound-for-glory-2026/l-intro-1791529756.jpg"
-  },
-  {
-    "id": 3330778825,
-    "link": "https://www.wrestlinginc.com/2276864/aew-jeff-jarrett-arena-mexico-cmll-93/",
-    "date": "Fri, 09 Oct 2026 12:30:00 +0000",
-    "date_gmt": "2026-10-09T12:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Jeff Jarrett Reflects On Working Arena Mexico For CMLL 93 Aniversario"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jeff-jarrett-reflects-on-working-arena-mexico-for-cmll-93-aniversario/l-intro-1791171005.jpg"
   }
 ]

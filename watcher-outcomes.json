@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-09T21:02:41.955Z"
+ },
  "https://www.fightful.com/wrestling/seth-rollins-says-he-wouldnt-be-surprised-if-la-knight-lost-to-roman-reigns-in-30-seconds-at-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
