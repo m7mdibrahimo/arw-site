@@ -4156,3 +4156,11 @@ test('«التأثير المؤثر» and dual verbs after «الثنائي» ar
   assert.equal(applyCorrections('لمشاهدة فيديو التأثير المؤثر'), 'لمشاهدة فيديو التكريم المؤثر');
   assert.equal(applyCorrections('أن الثنائي سيشاركان في عرض'), 'أن الثنائي سيشارك في عرض');
 });
+
+test('«حركة إثبات تحت الذراع» is corrected to «حركة بايل درايفر» and no story has it (#392)', () => {
+  assert.equal(applyCorrections('تلقيه حركة إثبات تحت الذراع خلال نزالهما'), 'تلقيه حركة بايل درايفر خلال نزالهما');
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    assert.ok(!/حركة إثبات تحت الذراع/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
+  }
+});
