@@ -3,7 +3,7 @@ import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../
 import { notify } from '../notify.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
-  extractUrls, splitDownloadsByQuality, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode, dropStaleTemplateTags, nextEpisodeTitle, nextNostalgiaOrder,
+  extractUrls, textToLines, nextHeadline, descriptionFromHeadline, hostName, checklist, syncEpisodeCode, dropStaleTemplateTags, nextEpisodeTitle, nextNostalgiaOrder,
 } from '../schema.js';
 import { prepareImage, prepareImageFromUrl, kb } from '../image.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc, can, sectionOf } from '../ui.js';
@@ -198,13 +198,8 @@ const F = {
     <div class="paste-box"><textarea class="input" id="servers-paste" rows="2" dir="ltr" placeholder="الصق رابط أو أكتر هنا (كل رابط في سطر) وهيتضافوا لوحدهم"></textarea></div>
     <small class="hint">اسم كل سيرفر بيتكتب لوحده على الموقع (سيرفر ١، سيرفر ٢…). رتّبهم بالأسهم.</small></div>`,
   downloads: () => {
-    const qs = [['downloads_low', 'منخفضة 480p'], ['downloads_medium', 'متوسطة 720p'], ['downloads_high', 'عالية 1080p']];
+    const qs = [['downloads_light', 'خفيفة 360p'], ['downloads_low', 'منخفضة 480p'], ['downloads_medium', 'متوسطة 720p'], ['downloads_high', 'عالية 1080p']];
     return html`<div class="field">
-      <div class="paste-box smart"><label for="dl-paste">${icon('wand')} لصق ذكي</label>
-        <textarea class="input" id="dl-paste" rows="3" dir="ltr" placeholder="الصق كل روابط التحميل مرة واحدة — الروابط اللي فيها 480 أو 720 أو 1080 هتروح للجودة بتاعتها، والباقي للجودة المختارة تحت"></textarea>
-        <div class="paste-foot"><span class="muted small">الروابط اللي من غير جودة تروح لـ:</span>
-          <div class="seg seg-sm" id="dl-default">${qs.map(([k, l], i) => html`<button type="button" data-v="${k}" class="${i === 1 ? 'on' : ''}">${l.split(' ')[0]}</button>`)}</div>
-          <button type="button" class="btn btn-soft btn-sm" id="dl-apply">وزّع الروابط</button></div></div>
       <div class="dl-grid">${qs.map(([k, l]) => html`<div class="dl-col"><label for="f-${k}">${l} <em id="cnt-${k}">${textToLines(S.data[k]).length} رابط</em></label>
         <textarea class="input mono" id="f-${k}" data-k="${k}" rows="6" dir="ltr">${S.data[k] || ''}</textarea></div>`)}</div>
       ${S.data.downloads ? html`<div class="field"><label for="f-downloads">روابط بالنظام القديم</label><textarea class="input mono" id="f-downloads" data-k="downloads" rows="4" dir="ltr">${S.data.downloads}</textarea></div>` : ''}
@@ -468,7 +463,7 @@ function bindAll() {
   }));
 
   bindHelpers();
-  bindServers(); bindDownloads(); bindImage(); bindTags(); bindDate(); bindBody();
+  bindServers(); bindImage(); bindTags(); bindDate(); bindBody();
   if (S.collection === 'shows') bindLibFed(form);
   if (S.collection === 'news') titleHint();
 
@@ -540,7 +535,7 @@ function rerenderSection(id) {
     S.data[seg.dataset.seg] = b.dataset.v; $$('button', seg).forEach(x => x.classList.toggle('on', x === b)); markDirty();
   }));
   bindHelpers();
-  bindServers(); bindDownloads(); bindImage(); bindTags(); bindDate(); bindBody();
+  bindServers(); bindImage(); bindTags(); bindDate(); bindBody();
   refreshSide();
 }
 
@@ -590,30 +585,6 @@ function bindServers() {
   paste.onpaste = () => setTimeout(take, 0);
   paste.onblur = take;
   paste.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); take(); } };
-}
-
-// Downloads
-function bindDownloads() {
-  const apply = $('#dl-apply'); if (!apply) return;
-  let fallback = 'downloads_medium';
-  $$('#dl-default button').forEach(b => b.onclick = () => { fallback = b.dataset.v; $$('#dl-default button').forEach(x => x.classList.toggle('on', x === b)); });
-  apply.onclick = () => {
-    const text = $('#dl-paste').value;
-    const split = splitDownloadsByQuality(text, fallback);
-    let total = 0;
-    for (const [k, urls] of Object.entries(split)) {
-      if (!urls.length) continue;
-      const cur = textToLines(S.data[k]);
-      const merged = [...cur, ...urls.filter(u => !cur.includes(u))];
-      total += merged.length - cur.length;
-      S.data[k] = merged.join('\n');
-      setVal(`#f-${k}`, S.data[k]);
-      $(`#cnt-${k}`).textContent = `${merged.length} رابط`;
-    }
-    $('#dl-paste').value = '';
-    toast(total ? `اتوزّع ${total} رابط على الجودات` : 'مفيش روابط جديدة', total ? 'ok' : 'info');
-    markDirty();
-  };
 }
 
 // Cover image

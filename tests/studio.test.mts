@@ -560,3 +560,21 @@ test('the panel lists its choices newest first: series by when they were added, 
   assert.doesNotMatch(editor, /map\(d => d\.program_name\)\)\]\.sort\(\)/);
   assert.match(fs.readFileSync('studio/js/views/list.js', 'utf8'), /date: d\.added_at \|\| d\.date/);
 });
+
+test('a fourth download quality, «خفيفة» 360p: in the panel and on the site, smallest first; no smart-paste box', async () => {
+  // owner 2026-10-09: 360p added next to 480/720/1080; the «لصق ذكي» box removed from the panel
+  const editor = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(editor, /\['downloads_light', 'خفيفة 360p'\], \['downloads_low', 'منخفضة 480p'\]/);
+  assert.doesNotMatch(editor, /dl-paste|لصق ذكي/);
+  assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'servers', 'downloads_light', 'downloads_low'/);
+  assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /"downloads": \[\{\{ \(item\.data\.downloads_light or ""\)/);
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /groupDownloadsByQuality\(downloads_low, downloads_medium, downloads_high, downloads_light\)/);
+  assert.ok(layout.indexOf('data-tier="light"') < layout.indexOf('data-tier="low"'), 'the light button comes first');
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  const start = cfg.indexOf('function detectQuality'), end = cfg.indexOf('function extractUrls');
+  const detectQuality = new Function(cfg.slice(start, end) + '\nreturn detectQuality;')();
+  assert.equal(detectQuality('https://host.com/raw-360p.mp4'), 'light');
+  assert.equal(detectQuality('https://host.com/raw-480p.mp4'), 'low');
+  assert.equal(detectQuality('https://host.com/file/1360588'), null, 'a 360 inside a longer number is not a quality');
+});
