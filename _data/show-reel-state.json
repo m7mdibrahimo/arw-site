@@ -3290,12 +3290,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 08.10.2026 مترجم",
-    "lastAttempt": 1791561287541,
+    "lastAttempt": 1791564679385,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
