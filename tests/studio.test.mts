@@ -579,17 +579,20 @@ test('a fourth download quality, «خفيفة» 360p: in the panel and on the si
   assert.equal(detectQuality('https://host.com/file/1360588'), null, 'a 360 inside a longer number is not a quality');
 });
 
-test('switching light/dark eases every colour into the other theme, on the site and in the panel', () => {
-  // owner 2026-10-09: like getartcraft.com — no flash, no circle: every colour transitions for 0.4s
+test('switching light/dark is one cross-fade of the whole page, on the site and in the panel', () => {
+  // owner 2026-10-09: easing each element's colours looked like a wave (a parent's colour reaches its children a frame
+  // later, gradients jump) — the whole page now fades from a picture of the old theme into the new one at once
   const xp = fs.readFileSync('assets/experience.js', 'utf8');
-  assert.match(xp, /root\.classList\.add\('theme-anim'\)/);
-  assert.doesNotMatch(xp, /xp-theme-flash|clipPath: \['circle/);
-  assert.match(fs.readFileSync('assets/experience.css', 'utf8'), /html\.theme-anim \*::after \{\s*transition: background-color \.4s ease, color \.4s ease/);
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009b/);
+  assert.match(xp, /document\.startViewTransition\(function \(\) \{/);
+  assert.doesNotMatch(xp, /theme-anim|xp-theme-flash|clipPath: \['circle/);
+  const css = fs.readFileSync('assets/experience.css', 'utf8');
+  assert.match(css, /html\.theme-vt::view-transition-old\(root\) \{ animation: none; \}/);
+  assert.doesNotMatch(css, /html\.theme-anim \*/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009c/);
   const app = fs.readFileSync('studio/js/app.js', 'utf8');
   assert.match(app, /\$\('#theme-btn'\)\.onclick = \(\) => switchTheme\(/);
-  assert.match(app, /document\.documentElement\.classList\.add\('theme-anim'\)/);
-  assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-anim \*::after/);
+  assert.match(app, /document\.startViewTransition\(\(\) => \{ applyTheme\(t\); then\(\); \}\)/);
+  assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-vt::view-transition-new\(root\)/);
 });
 
 test('«متعدد الجودات»: links added once in the panel show first, on their own, at the top of every quality', () => {

@@ -27,16 +27,15 @@ function applyTheme(t) {
   try { localStorage.setItem('arw_studio_theme', t); } catch {}
 }
 applyTheme((() => { try { return localStorage.getItem('arw_studio_theme') || 'light'; } catch { return 'light'; } })());
-/** Switching by hand: every colour eases into the other theme's for 0.4s, like the site (owner 2026-10-09).
- *  Straight switch when the device asks for less motion. */
-let themeAnimTimer = null;
+/** Switching by hand: one cross-fade of the whole panel, like the site (owner 2026-10-09) — the browser fades a picture
+ *  of the old theme into the new one everywhere at once. Straight switch without View Transitions or with less motion. */
 function switchTheme(t, then) {
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.classList.add('theme-anim');
-    clearTimeout(themeAnimTimer);
-    themeAnimTimer = setTimeout(() => document.documentElement.classList.remove('theme-anim'), 450);
-  }
-  applyTheme(t); then();
+  const root = document.documentElement;
+  if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) { applyTheme(t); then(); return; }
+  root.classList.add('theme-vt');
+  const vt = document.startViewTransition(() => { applyTheme(t); then(); });
+  vt.ready.catch(() => {});
+  vt.finished.catch(() => {}).then(() => root.classList.remove('theme-vt'));
 }
 
 // ── Shell: the site's header ───────────────────────────────────────────────
