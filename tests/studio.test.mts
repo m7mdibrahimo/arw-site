@@ -579,14 +579,15 @@ test('a fourth download quality, «خفيفة» 360p: in the panel and on the si
   assert.equal(detectQuality('https://host.com/file/1360588'), null, 'a 360 inside a longer number is not a quality');
 });
 
-test('switching light/dark is a soft flash, on the site and in the panel', () => {
-  // owner 2026-10-09: «زي الوميض … وميض ناعم», instead of the circle growing from the button
+test('switching light/dark eases every colour into the other theme, on the site and in the panel', () => {
+  // owner 2026-10-09: like getartcraft.com — no flash, no circle: every colour transitions for 0.4s
   const xp = fs.readFileSync('assets/experience.js', 'utf8');
-  assert.match(xp, /veil\.className = 'xp-theme-flash'/);
-  assert.doesNotMatch(xp, /clipPath: \['circle/);
-  assert.match(fs.readFileSync('assets/experience.css', 'utf8'), /\.xp-theme-flash\.to-dark/);
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009a/);
+  assert.match(xp, /root\.classList\.add\('theme-anim'\)/);
+  assert.doesNotMatch(xp, /xp-theme-flash|clipPath: \['circle/);
+  assert.match(fs.readFileSync('assets/experience.css', 'utf8'), /html\.theme-anim \*::after \{\s*transition: background-color \.4s ease, color \.4s ease/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009b/);
   const app = fs.readFileSync('studio/js/app.js', 'utf8');
   assert.match(app, /\$\('#theme-btn'\)\.onclick = \(\) => switchTheme\(/);
-  assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /\.theme-flash\.to-dark/);
+  assert.match(app, /document\.documentElement\.classList\.add\('theme-anim'\)/);
+  assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-anim \*::after/);
 });
