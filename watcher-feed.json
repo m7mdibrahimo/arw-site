@@ -1,5 +1,15 @@
 [
   {
+    "id": 332874,
+    "link": "https://www.fightful.com/wrestling/aew-winter-is-coming-to-take-place-in-mexico/",
+    "date": "2026-10-09T13:18:55",
+    "date_gmt": "2026-10-09T17:18:55",
+    "title": {
+      "rendered": "AEW Winter Is Coming To Take Place In Mexico"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09131802/ph-hp.jpg.avif"
+  },
+  {
     "id": 332700,
     "link": "https://www.fightful.com/wrestling/cody-rhodes-a-cody-lie-has-to-be-rooted-in-truth-you-just-wanna-put-a-little-sauce-on-it/",
     "date": "2026-10-09T13:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Cody Rhodes: Promos Have Become Rap Battles Now"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/31174419/HJrS5KLWgAIVdwg-e1784896461289.jpg"
-  },
-  {
-    "id": 332798,
-    "link": "https://www.fightful.com/wrestling/laynie-luck-not-having-wwe-id-deal-renewed/",
-    "date": "2026-10-08T15:25:45",
-    "date_gmt": "2026-10-08T19:25:45",
-    "title": {
-      "rendered": "Laynie Luck Not Having WWE ID Deal Renewed"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/17210803/G6AG_XIXgAIPjAe.jpeg"
   }
 ]
