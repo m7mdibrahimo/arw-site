@@ -3295,7 +3295,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261009184507-tna-impact-08-10-2026": {
     "publishedAt": 1791561313571,
