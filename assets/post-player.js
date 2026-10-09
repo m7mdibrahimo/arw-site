@@ -376,3 +376,16 @@
       if (srvRows[n - 1] && !srvRows[n - 1].classList.contains('active')) { e.preventDefault(); srvRows[n - 1].click(); }
     }
   });
+
+  // ==== A server's own fullscreen button (owner 2026-10-09: black screen, only the sound, until a reload) ====
+  // While a player is fullscreen the page under it drops every effect that makes the browser composite it in
+  // layers (fade-in transforms, blurred glass bars, filters): those layers are what blacked out the video.
+  (function(){
+    var root = document.documentElement;
+    function sync(){
+      var fs = document.fullscreenElement || document.webkitFullscreenElement || null;
+      root.classList.toggle('arw-fs', !!fs);
+    }
+    document.addEventListener('fullscreenchange', sync);
+    document.addEventListener('webkitfullscreenchange', sync);
+  })();

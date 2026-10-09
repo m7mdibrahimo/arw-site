@@ -4099,3 +4099,14 @@ test('English names are fixed before an English story is saved (#385)', async ()
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
   assert.equal(fixEnglishNames('M By Elegance beat Elayna Black'), 'Ash By Elegance beat Elayna Black');
 });
+
+test('a server\'s own fullscreen never goes black: no page-to-page view transition, no layer effects under a fullscreen player (INCIDENTS #386)', () => {
+  const motion = fs.readFileSync('assets/motion.css', 'utf8');
+  assert.match(motion, /^@view-transition \{ navigation: none; \}/m);
+  assert.doesNotMatch(motion, /navigation: auto|view-transition-name/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /motion\.css\?v=20261009/);
+  const player = fs.readFileSync('assets/post-player.js', 'utf8');
+  assert.match(player, /document\.addEventListener\('fullscreenchange', sync\)/);
+  assert.match(player, /root\.classList\.toggle\('arw-fs', !!fs\)/);
+  assert.match(fs.readFileSync('assets/post-layout.css', 'utf8'), /html\.arw-fs body \*:not\(iframe\):not\(video\)\{ transform:none !important; filter:none !important; backdrop-filter:none !important/);
+});

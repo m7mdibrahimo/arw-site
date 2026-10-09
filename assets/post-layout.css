@@ -1138,3 +1138,7 @@
     .post-wrap.is-watch .post-meta-bar > :not(h2){ display:none !important; }
     .post-wrap.is-watch .post-meta-bar h2.pm-title{ margin:0 !important; padding:0; border:0; font-size:14.5px !important; line-height:1.3 !important; text-align:center !important; }
   }
+
+/* A server's own fullscreen (post-player.js adds html.arw-fs): the page under it keeps no layer effects, which
+   blacked out the video with only its sound playing (owner 2026-10-09) */
+html.arw-fs body *:not(iframe):not(video){ transform:none !important; filter:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; will-change:auto !important; animation-play-state:paused !important; }
