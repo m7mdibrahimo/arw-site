@@ -766,7 +766,8 @@
     "httpsarab-wrestlingcomnostalgiawwe-raw-12-07-2010": 1791508744209,
     "httpsarab-wrestlingcomnostalgiawwe-smackdown-16-07-2010": 1791509044308,
     "httpsarab-wrestlingcomnostalgiawwe-money-in-the-bank-2010": 1791509283918,
-    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351
+    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351,
+    "httpsarab-wrestlingcomnewsموس-يطلق-تحديا-مفتوحا-لعرض-bound-for-glory": 1791509881476
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsالكشف-عن-ترشيحات-ونسب-الفوز-لمواجهات-ufc-332-بين-سيلفا-وكونغ-بدعم-من-mybookie": 1790901661164,
@@ -1536,7 +1537,8 @@
     "httpsarab-wrestlingcomnostalgiawwe-raw-12-07-2010": 1791508753360,
     "httpsarab-wrestlingcomnostalgiawwe-smackdown-16-07-2010": 1791509056780,
     "httpsarab-wrestlingcomnostalgiawwe-money-in-the-bank-2010": 1791509292311,
-    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351
+    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351,
+    "httpsarab-wrestlingcomnewsموس-يطلق-تحديا-مفتوحا-لعرض-bound-for-glory": 1791509881476
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsكيني-أوميغا-وآخرون-يجرون-ترتيبات-خاصة-لضمان-إقامة-عرض-aew-التكريمي-لـباك": 1790898901629,
@@ -1979,7 +1981,8 @@
     "httpsarab-wrestlingcomnostalgiawwe-raw-28-06-2010": 1791508038368,
     "httpsarab-wrestlingcomnostalgiawwe-smackdown-09-07-2010": 1791508697507,
     "httpsarab-wrestlingcomnostalgiawwe-money-in-the-bank-2010": 1791509357778,
-    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351
+    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351,
+    "httpsarab-wrestlingcomnewsموس-يطلق-تحديا-مفتوحا-لعرض-bound-for-glory": 1791509881476
   },
   "x": {
     "https___arab-wrestling_com_news_bde-____-____-____-____-__-tna-_____-_____-__-____-_____-x-division-__-___-bound-for-glory_": 1790904040206,
@@ -2086,7 +2089,8 @@
     "httpsarab-wrestlingcomnewsاتحاد-wwe-يقرر-عدم-تجديد-عقد-لايني-لاك-ضمن-برنامج-wwe-id": 1791490328329,
     "https___arab-wrestling_com_news_____-___-_____-__-_____-___-______-_____-___-__-___-jcw-lunacy_": 1791502285585,
     "httpsarab-wrestlingcomnewsرينغ-رات-تغادر-مع-فاساد-بعد-انهيار-ستيفن-فلو-في-عرض-jcw-lunacy": 1791502501408,
-    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351
+    "httpsarab-wrestlingcomnewsبطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory": 1791509641351,
+    "httpsarab-wrestlingcomnewsموس-يطلق-تحديا-مفتوحا-لعرض-bound-for-glory": 1791509881476
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -3137,6 +3141,15 @@
       "reason": "show",
       "why": "ai",
       "note": "الخبر يكشف عن تحدي تم توجيهه خلال عرض TNA iMPACT الذي أقيم منذ أقل من 6 ساعات، مما يجعله حرقاً لمتابعي العرض."
+    },
+    "httpsarab-wrestlingcomnewsموس-يطلق-تحديا-مفتوحا-لعرض-bound-for-glory": {
+      "at": 1791509881476,
+      "title": "موس يطلق تحديا مفتوحا لعرض Bound for Glory",
+      "url": "/news/موس-يطلق-تحديا-مفتوحا-لعرض-bound-for-glory/",
+      "image": "/content/images/r84qd0lw6jmz2cks.jpg?w=800",
+      "reason": "show",
+      "why": "ai",
+      "note": "الخبر يكشف عن تحدي تم الإعلان عنه خلال عرض TNA iMPACT الذي أقيم يوم 8 أكتوبر، وهو عرض يقع ضمن فترة الـ 6 ساعات الأخيرة."
     }
   },
   "byFile": {
