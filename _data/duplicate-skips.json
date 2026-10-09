@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/drew-mcintyre-fuels-wwe-return-speculation-new-ring-training-footage/": {
-    "matchedFile": "20260925195305-درو-ماكنتاير-يعود-إلى-التدريبات-داخل-الحلبة.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T16:56:13.727Z"
-  },
   "https://www.ringsidenews.com/seth-rollins-returning-good-morning-football-during-wwe-tv-hiatus/": {
     "matchedFile": "20260924222138-عودة-سيث-رولينز-إلى-شاشات-wwe-قيد-الإعداد.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261009231711-ماركوس-ماذرز-يعلن-رحيله-عن-برنامج-wwe-id.md",
     "reason": "الخبر الجديد يتناول نفس إعلان رحيل ماركوس ماذرز عن برنامج WWE ID الذي تم تغطيته بالفعل في الخبر رقم 0، ولا يحتوي على تطور جديد جوهري.",
     "at": "2026-10-09T21:39:51.715Z"
+  },
+  "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-october-9-2026-full-match-card-backstage-notes-revealed/": {
+    "matchedFile": "20261009110830-دليل-مشاهدة-وموعد-عرض-wwe-smackdown-الليلة.md",
+    "reason": "الخبر الجديد يغطي نفس جدول نزالات عرض SmackDown الليلة الذي تم تغطيته بالفعل في الخبر رقم 0، مع إضافة تفاصيل ثانوية لا تشكل تطوراً جوهرياً.",
+    "at": "2026-10-09T21:51:13.494Z"
   }
 }
