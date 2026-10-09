@@ -1,5 +1,15 @@
 [
   {
+    "id": 332888,
+    "link": "https://www.fightful.com/wrestling/sesame-street-releases-video-of-john-cena-elmo/",
+    "date": "2026-10-09T16:26:05",
+    "date_gmt": "2026-10-09T20:26:05",
+    "title": {
+      "rendered": "Sesame Street Releases Video Of John Cena &amp; Elmo"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09145512/Screenshot-523.png"
+  },
+  {
     "id": 332913,
     "link": "https://www.fightful.com/wrestling/marcus-mathers-announces-departure-from-wwe-id-program/",
     "date": "2026-10-09T16:17:11",
@@ -288,15 +298,5 @@
       "rendered": "WWE Main Event Results (10/8): Shinsuke Nakamura vs. The Miz"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08203324/maxresdefault-49.jpg"
-  },
-  {
-    "id": 332831,
-    "link": "https://www.fightful.com/wrestling/roh-tv-results-10-8/",
-    "date": "2026-10-08T22:30:00",
-    "date_gmt": "2026-10-09T02:30:00",
-    "title": {
-      "rendered": "ROH TV Results (10/8)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08204528/HUHY6ghWQAA2y12.jpeg"
   }
 ]
