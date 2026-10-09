@@ -688,7 +688,7 @@ body.pin-carrying, body.pin-carrying * { cursor: grabbing !important; user-selec
 .bell-empty p { margin-top: 8px; font-weight: 800; }
 @media (max-width: 560px) { .bell-pop { position: fixed; top: 64px; left: 12px; right: 12px; width: auto; } }
 
-/* Soft flash when the theme switches (app.js switchTheme) */
-.theme-flash { position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; opacity: 0; }
-.theme-flash.to-dark { background: radial-gradient(circle at 50% 40%, #1d1d1d 0%, #111111 70%); }
-.theme-flash.to-light { background: radial-gradient(circle at 50% 40%, #ffffff 0%, #fffdf8 70%); }
+/* Switching the theme (app.js switchTheme adds html.theme-anim for 0.45s): every colour eases into the other theme's */
+html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .4s ease, color .4s ease, border-color .4s ease, outline-color .4s ease, fill .4s ease, stroke .4s ease, box-shadow .4s ease, text-decoration-color .4s ease !important;
+}

@@ -90,25 +90,15 @@
       });
     }, { passive: true });
 
-    // 5. The theme switches with a soft flash (owner 2026-10-09, instead of the circle from the button): a veil in the
-    //    new theme's colour fades in, the theme changes under it, and it fades away. Plain animations, so it works in
-    //    every browser (the circle needed View Transitions, which older iPhones don't have).
+    // 5. The theme switches by easing every colour of the page into the other theme's (owner 2026-10-09, like
+    //    getartcraft.com): for 0.4s every background, text and border colour transitions; nothing covers the page.
     var toggle = document.getElementById('arwThemeToggle');
-    if (toggle && !reduce && document.documentElement.animate) {
-      var busy = false;
-      toggle.addEventListener('click', function (e) {
-        if (e.xpReplay) return;
-        e.stopImmediatePropagation(); e.preventDefault();
-        if (busy) return; busy = true;
-        var toDark = !document.documentElement.classList.contains('arw-dark');
-        var veil = document.createElement('div');
-        veil.className = 'xp-theme-flash' + (toDark ? ' to-dark' : ' to-light');
-        document.body.appendChild(veil);
-        var done = function () { veil.remove(); busy = false; };
-        veil.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 170, easing: 'ease-out', fill: 'forwards' }).finished.then(function () {
-          var ev = new MouseEvent('click', { bubbles: true, cancelable: true }); ev.xpReplay = true; toggle.dispatchEvent(ev);
-          return veil.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 380, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' }).finished;
-        }).then(done, done);
+    if (toggle && !reduce) {
+      var root = document.documentElement, animTimer = null;
+      toggle.addEventListener('click', function () {
+        root.classList.add('theme-anim');
+        clearTimeout(animTimer);
+        animTimer = setTimeout(function () { root.classList.remove('theme-anim'); }, 450);
       }, true);
     }
   }
