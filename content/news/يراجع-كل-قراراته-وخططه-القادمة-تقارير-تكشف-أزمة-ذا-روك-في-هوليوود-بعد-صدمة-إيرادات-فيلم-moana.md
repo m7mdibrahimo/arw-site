@@ -7,7 +7,7 @@ tags:
   - The Rock
   - Dwayne Johnson
   - Moana
-  - اخبار السينما
+  - أخبار السينما
   - أخبار المصارعة
 image: /content/images/uor8owhzke0k2ps4.jpg
 layout: post-layout.njk
