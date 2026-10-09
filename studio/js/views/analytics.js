@@ -25,9 +25,37 @@ export function pageLabel(path) {
   if ((m = p.match(/^\/tag\/([^/]+)\/(?:(\d+)\/)?$/))) return `وسم «${m[1].replace(/-/g, ' ')}»${m[2] ? ` (صفحة ${m[2]})` : ''}`;
   if ((m = p.match(/^\/library\/([^/]+)\/$/))) return `مكتبة: ${m[1].replace(/-/g, ' ')}`;
   if ((m = p.match(/^\/nostalgia\/([^/]+)\/$/))) return `سلسلة نوستالجيا: ${m[1].replace(/-/g, ' ')}`;
-  if ((m = p.match(/^\/(news|shows|recaps)\/([^/]+)\/$/))) return m[2].replace(/-/g, ' ');
+  // a story or show not in the index (renamed long ago or deleted): never its English address (the owner, 2026-10-09)
+  if ((m = p.match(/^\/(news|shows|recaps)\/([^/]+)\/$/))) return /[\u0600-\u06FF]/.test(m[2]) ? m[2].replace(/-/g, ' ') : { news: 'صفحة خبر قديمة', shows: 'صفحة عرض قديمة', recaps: 'صفحة ملخص قديمة' }[m[1]];
   return p.replace(/^\/|\/$/g, '');
 }
+const slashed = (u) => { let x = String(u || '/'); try { x = decodeURIComponent(x); } catch {} return x.replace(/\/?$/, '/'); };
+/** The site's pages by address — and by their old address too: a renamed show moves to a new one (its URL comes from
+ *  the title) while readers keep arriving at the old one, the file name's slug («aew dynamite 06 10 2026» showed in
+ *  English after «AEW Dynamite» became «AEW Dynamite Grand Slam France», the owner 2026-10-09). */
+function pageFinder(index) {
+  const byUrl = new Map(), byFile = new Map();
+  for (const i of index || []) {
+    if (!i.url) continue;
+    byUrl.set(slashed(i.url), i);
+    const f = String(i.inputPath || '').match(/content\/(shows|recaps|news)\/(?:[^/]+\/)*([^/]+)\.md$/);
+    if (f) byFile.set(slashed(`/${f[1]}/${f[2].replace(/^\d{14}-/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')}/`), i);
+  }
+  return (path) => byUrl.get(slashed(path)) || byFile.get(slashed(path)) || null;
+}
+/** Top pages with the views of a page's old and new address added together, each under its Arabic title. */
+function mergeTopPages(pages, find) {
+  const rows = new Map();
+  for (const p of pages || []) {
+    const item = find(p.path);
+    const key = item ? slashed(item.url) : slashed(p.path);
+    const row = rows.get(key) || { path: item ? item.url : p.path, views: 0, title: item ? (item.headline || item.title) : pageLabel(p.path) };
+    row.views += Number(p.views) || 0;
+    rows.set(key, row);
+  }
+  return [...rows.values()].sort((a, b) => b.views - a.views);
+}
+const topRows = (rows) => rows.slice(0, 6).map((p, i) => html`<a class="row row-rank" href="${p.path}" target="_blank"><span class="rank">${i + 1}</span><span class="row-main"><b>${p.title}</b></span><span class="muted">${num(p.views)} مشاهدة</span></a>`);
 const pct = (a, b) => (!b ? null : Math.round(((a - b) / b) * 100));
 const shortDay = (d) => new Date(`${d}T12:00:00Z`).toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'short' });
 
@@ -89,15 +117,12 @@ export async function renderAnalytics(el) {
     </div>
   </section>
   ${(data.topPages || []).length ? html`<section class="panel" id="a-pages"><header class="panel-head"><h2>أكتر الصفحات مشاهدة في آخر 24 ساعة</h2><span class="muted small">${data.stale ? 'آخر بيانات متاحة' : 'بتتحدّث كل 10 دقايق'}</span></header>
-    <div class="rows">${data.topPages.slice(0, 6).map((p, i) => html`<a class="row row-rank" href="${p.path}" target="_blank"><span class="rank">${i + 1}</span><span class="row-main"><b data-path="${p.path}">${pageLabel(p.path)}</b></span><span class="muted">${num(p.views)} مشاهدة</span></a>`)}</div></section>` : ''}`);
-  // Show each page's title instead of its address (from the site's own index)
+    <div class="rows" id="a-pages-rows">${topRows(mergeTopPages(data.topPages, () => null))}</div></section>` : ''}`);
+  // Each page under its Arabic title (from the site's own index), old and new addresses of a renamed show as one row
   if ((data.topPages || []).length) {
     siteData('search-index.json').then(index => {
-      const byUrl = new Map(index.map(i => [decodeURIComponent(i.url || '').replace(/\/?$/, '/'), i.headline || i.title]));
-      document.querySelectorAll('#a-pages [data-path]').forEach(b => {
-        const key = decodeURIComponent(b.dataset.path).replace(/\/?$/, '/');
-        if (byUrl.get(key)) b.textContent = byUrl.get(key);
-      });
+      const box = $('#a-pages-rows');
+      if (box) mount(box, html`${topRows(mergeTopPages(data.topPages, pageFinder(index)))}`);
     }).catch(() => {});
   }
   const draw = () => {

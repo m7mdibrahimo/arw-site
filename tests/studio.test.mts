@@ -414,6 +414,23 @@ test('the most-viewed pages list names every page in words', async () => {
   assert.equal(pageLabel('/tag/%D8%A8%D8%A7%D9%83/'), 'وسم «باك»');
   assert.equal(pageLabel('/'), 'الصفحة الرئيسية');
   assert.equal(pageLabel('/search/'), 'صفحة البحث');
+  // a show page not in the index is never named by its English address (the owner, 2026-10-09)
+  assert.equal(pageLabel('/shows/aew-dynamite-06-10-2026/'), 'صفحة عرض قديمة');
+});
+
+test('a renamed show\'s old address is counted under its Arabic title, together with its new address', () => {
+  // «aew dynamite 06 10 2026» showed in English after the show became «AEW Dynamite Grand Slam France» (owner 2026-10-09)
+  const src = fs.readFileSync('studio/js/views/analytics.js', 'utf8');
+  const code = src.slice(src.indexOf('const SECTION_PAGES'), src.indexOf('const topRows ='));
+  const { pageFinder, mergeTopPages } = new Function(code.replace('export function pageLabel', 'function pageLabel') + '\nreturn { pageFinder, mergeTopPages };')();
+  const find = pageFinder([{ url: '/shows/aew-dynamite-grand-slam-france-06-10-2026/', inputPath: './content/shows/20261007172320-aew-dynamite-06-10-2026.md', title: 'AEW Dynamite Grand Slam France 06.10.2026', headline: 'عرض ديناميت 06.10.2026 مترجم' }]);
+  const rows = mergeTopPages([
+    { path: '/', views: 2529 },
+    { path: '/shows/aew-dynamite-06-10-2026/', views: 779 },
+    { path: '/shows/aew-dynamite-grand-slam-france-06-10-2026/', views: 300 },
+  ], find);
+  assert.deepEqual(rows.map(r => [r.title, r.views]), [['الصفحة الرئيسية', 2529], ['عرض ديناميت 06.10.2026 مترجم', 1079]]);
+  assert.equal(rows[1].path, '/shows/aew-dynamite-grand-slam-france-06-10-2026/');
 });
 
 test('the owner\'s word fixes in the panel are logged with the save and learned as permanent corrections', async () => {
