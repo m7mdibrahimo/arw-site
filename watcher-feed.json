@@ -1,5 +1,15 @@
 [
   {
+    "id": 332828,
+    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-10-8-shinsuke-nakamura-vs-the-miz/",
+    "date": "2026-10-08T23:30:00",
+    "date_gmt": "2026-10-09T03:30:00",
+    "title": {
+      "rendered": "WWE Main Event Results (10/8): Shinsuke Nakamura vs. The Miz"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08203324/maxresdefault-49.jpg"
+  },
+  {
     "id": 332831,
     "link": "https://www.fightful.com/wrestling/roh-tv-results-10-8/",
     "date": "2026-10-08T22:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Chad Gable Reacts To Praise From Seth Rollins: &#8220;People Like Seth, They Don’t Blow Smoke&#8221;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/03012323/Screenshot-214-e1783056226610.png"
-  },
-  {
-    "id": 332271,
-    "link": "https://www.fightful.com/wrestling/nic-nemeth-im-23-years-in-and-im-in-better-shape-than-most-people-who-are-23-years-old/",
-    "date": "2026-10-08T12:00:00",
-    "date_gmt": "2026-10-08T16:00:00",
-    "title": {
-      "rendered": "Nic Nemeth: I&#8217;m 23 Years In And I&#8217;m In Better Shape Than Most People Who Are 23 Years Old"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07200907/maxresdefault-43.jpg"
   }
 ]
