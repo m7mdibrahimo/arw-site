@@ -1,5 +1,15 @@
 [
   {
+    "id": 2436632880,
+    "link": "https://www.wrestlinginc.com/2282786/wwe-money-in-the-bank-2026-draws-duds-roman-reigns-la-knight-mitb/",
+    "date": "Fri, 09 Oct 2026 20:54:41 +0000",
+    "date_gmt": "2026-10-09T20:54:41.000Z",
+    "title": {
+      "rendered": "WWE Money In The Bank 2026: Draws & Duds"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-money-in-the-bank-2026-draws-duds/l-intro-1791579071.jpg"
+  },
+  {
     "id": 2242695321,
     "link": "https://www.wrestlinginc.com/2282725/tna-bound-for-glory-2026-hall-of-fame-inductors/",
     "date": "Fri, 09 Oct 2026 20:11:54 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Jeff Jarrett Reflects On Working Arena Mexico For CMLL 93 Aniversario"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jeff-jarrett-reflects-on-working-arena-mexico-for-cmll-93-aniversario/l-intro-1791171005.jpg"
-  },
-  {
-    "id": 1016214620,
-    "link": "https://www.wrestlinginc.com/2281914/tna-impact-october-8-2026-hated-loved-opinion-review/",
-    "date": "Fri, 09 Oct 2026 04:00:43 +0000",
-    "date_gmt": "2026-10-09T04:00:43.000Z",
-    "title": {
-      "rendered": "TNA Impact 10/8/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-1082026-3-things-we-hated-3-things-we-loved/l-intro-1791516509.jpg"
   }
 ]
