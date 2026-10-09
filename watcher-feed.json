@@ -1,5 +1,15 @@
 [
   {
+    "id": 332826,
+    "link": "https://www.fightful.com/wrestling/tna-impact-results-10-8-hardys-vs-nemeths/",
+    "date": "2026-10-08T20:16:00",
+    "date_gmt": "2026-10-09T00:16:00",
+    "title": {
+      "rendered": "TNA iMPACT! Results (10/8): Hardys vs. Nemeths"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07183455/62972dae3b6ff52ce4e6d9207f407e16-2.jpg"
+  },
+  {
     "id": 332823,
     "link": "https://www.fightful.com/wrestling/roman-reigns-takes-couples-challenge-with-gangtster-granny/",
     "date": "2026-10-08T20:03:29",
@@ -288,15 +298,5 @@
       "rendered": "Cody Rhodes: Dominik Mysterio &#038; Solo Sikoa Have A Kinship With Everyone In The Locker Room"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/08/03224923/Screenshot-2093.png"
-  },
-  {
-    "id": 332728,
-    "link": "https://www.fightful.com/mma/ufc-and-cleveland-clinic-renew-partnership-ufc-to-provide-1-million-contribution-to-fund-professional-athletes-brain-health-study/",
-    "date": "2026-10-08T10:12:58",
-    "date_gmt": "2026-10-08T14:12:58",
-    "title": {
-      "rendered": "UFC And Cleveland Clinic Renew Partnership, UFC to Provide $1 Million Contribution To Fund Professional Athletes Brain Health Study"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/04/05031939/ufc-logo-640x370.jpg"
   }
 ]
