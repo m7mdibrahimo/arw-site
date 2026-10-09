@@ -1,5 +1,15 @@
 [
   {
+    "id": 332863,
+    "link": "https://www.fightful.com/wrestling/hijo-de-fishman-out-on-bail/",
+    "date": "2026-10-09T11:54:04",
+    "date_gmt": "2026-10-09T15:54:04",
+    "title": {
+      "rendered": "Hijo de Fishman Out On Bail"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07201921/Screenshot-2026-10-07-at-8.18.47-PM.png"
+  },
+  {
     "id": 332758,
     "link": "https://www.fightful.com/wrestling/karl-fredericks-says-upcoming-produce-match-with-gabe-kidd-is-his-most-important-match-since-leaving-njpw/",
     "date": "2026-10-09T11:00:00",
@@ -288,15 +298,5 @@
       "rendered": "WWE SmackDown (10/2) Viewership Slightly Drops, Demo Holds"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25192008/smackdown_6.jpg"
-  },
-  {
-    "id": 332590,
-    "link": "https://www.fightful.com/wrestling/dann-read-pro-wrestling-eve-does-better-when-kay-lee-ray-is-with-us/",
-    "date": "2026-10-08T14:00:00",
-    "date_gmt": "2026-10-08T18:00:00",
-    "title": {
-      "rendered": "Dann Read: Pro Wrestling EVE Does Better When Kay Lee Ray Is With Us"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07084005/maxresdefault-35.jpg"
   }
 ]
