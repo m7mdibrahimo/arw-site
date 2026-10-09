@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2268530/wwe-money-in-the-bank-seth-rollins-cm-punk/": {
-    "matchedFile": "20260924222138-عودة-سيث-رولينز-إلى-شاشات-wwe-قيد-الإعداد.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T14:06:14.649Z"
-  },
   "https://www.wrestlinginc.com/2268783/tna-bound-for-glory-2026-xia-brookside-indi-hartwell-made-official/": {
     "matchedFile": "20260925051124-إندي-هارتويل-تتحدى-كسيا-بروكسايد-على-بطولة-tna-العالمية-للسيدات-في-عرض-tna-bound-for-glory.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261009002558-عرض-aew-dynamite-يشهد-انخفاضا-كبيرا-في-نسب-المشاهدة-يوم-6-أكتوبر-2026.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (نتائج مشاهدات عرض AEW Dynamite بتاريخ 6 أكتوبر 2026) وبنفس الأرقام المذكورة في الخبر المنشور مسبقاً.",
     "at": "2026-10-09T19:36:29.290Z"
+  },
+  "https://www.fightful.com/wrestling/seth-rollins-says-he-wouldnt-be-surprised-if-la-knight-lost-to-roman-reigns-in-30-seconds-at-wwe-money-in-the-bank/": {
+    "matchedFile": "20261009184637-سيث-رولينز-رومان-رينز-قادر-على-القضاء-على-ال-ايه-نايت-في-ثلاثين-ثانية.md",
+    "reason": "الخبر الجديد يتناول نفس تصريح سيث رولينز حول توقعاته لنزال رومان رينز وال ايه نايت في عرض موني إن ذا بانك، وهو نفس المحتوى المذكور في الخبر رقم 0.",
+    "at": "2026-10-09T19:55:04.011Z"
   }
 }
