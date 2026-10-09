@@ -4133,3 +4133,12 @@ test('«تأكيد ولاءه» is corrected to «تأكيد ولائه» and th
     if (f.startsWith('20261009120512-')) assert.ok(!/راندي أورتن/.test(t), f);
   }
 });
+
+test('«اختارث» is corrected to «اختارت» and no story has it (#389)', () => {
+  const c = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8')).corrections;
+  assert.ok(c.find((x: any) => x.wrong === 'اختارث' && x.right === 'اختارت'));
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    assert.ok(!/اختارث/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
+  }
+});
