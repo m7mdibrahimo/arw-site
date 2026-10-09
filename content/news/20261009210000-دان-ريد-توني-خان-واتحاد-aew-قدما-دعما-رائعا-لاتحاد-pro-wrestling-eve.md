@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "دان ريد: توني خان واتحاد AEW قدما دعما رائعا لاتحاد Pro Wrestling EVE"
+title: "دان ريد: توني خان واتحاد AEW قدموا دعما رائعا لاتحاد Pro Wrestling EVE"
+permalink: "/news/دان-ريد-توني-خان-واتحاد-aew-قدما-دعما-رائعا-لاتحاد-pro-wrestling-eve/index.html"
 date: 2026-10-09T21:00:00.000+03:00
 published_at: 2026-10-09T18:10:30.942Z
 source_id: 332592

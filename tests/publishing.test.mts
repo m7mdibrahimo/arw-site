@@ -4164,3 +4164,12 @@ test('«حركة إثبات تحت الذراع» is corrected to «حركة ب�
     assert.ok(!/حركة إثبات تحت الذراع/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
   }
 });
+
+test('dual forms (مثنى) are blocked (INCIDENTS #393)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const codes = (title: string, body: string) => checkArticle(title, body, []).map(i => i.code);
+  const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
+  assert.ok(codes('دان ريد: توني خان واتحاد AEW قدما دعما رائعا لاتحاد EVE', filler).includes('dual_form'));
+  assert.ok(codes('عنوان عربي كامل للخبر هنا', 'الثنائي، اللذان اشتهرا بالشخصية واصلا العمل.' + filler).includes('dual_form'));
+  assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'يجب المضي قدما في الخطة والثنائي واصل العمل.' + filler).includes('dual_form'));
+});
