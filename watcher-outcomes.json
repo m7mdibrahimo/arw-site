@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2281914/tna-impact-october-8-2026-hated-loved-opinion-review": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-09T04:22:17.015Z"
+ },
  "https://www.fightful.com/wrestling/zoey-serrano-shayna-baszler-to-challenge-for-tna-knockouts-world-tag-team-titles-at-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-09T04:15:00.183Z"
- },
- "https://www.wrestlinginc.com/2281914/tna-impact-october-8-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-09T04:03:09.483Z"
  },
  "https://www.fightful.com/wrestling/titus-oneil-signs-with-stoked-sports-entertainment": {
   "reason": "مكرر مع خبر نزل قبل كده",
