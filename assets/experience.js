@@ -90,24 +90,34 @@
       });
     }, { passive: true });
 
-    // 5. The theme switches as ONE cross-fade of the whole page (owner 2026-10-09). Easing every element's colours on
-    //    its own looked like a wave: a parent's text colour reaches its children a frame later, gradients can't ease
-    //    and jumped. Here the browser takes a picture of the page, switches the theme under it in one go, and fades
-    //    the old picture into the new one everywhere at the same moment. Without View Transitions: a straight switch.
+    // 5. The theme switches as ONE cross-fade of the whole page (owner 2026-10-09).
+    //    • Every element's own colour transition is switched off for the switch (html.theme-switching): 222 cards,
+    //      buttons and bars on the home page kept easing to their new colours one by one AFTER the page had faded,
+    //      each at its own speed — the «part by part» the owner saw.
+    //    • The browser takes a picture of the page, the theme changes under it in one go, and the new picture fades in
+    //      over the old one everywhere at the same moment. Without View Transitions: the same clean switch, no fade.
     var toggle = document.getElementById('arwThemeToggle');
-    if (toggle && !reduce && document.startViewTransition) {
-      var root = document.documentElement;
+    if (toggle) {
+      var root = document.documentElement, busy = false;
+      var flip = function () {
+        var ev = new MouseEvent('click', { bubbles: true, cancelable: true }); ev.xpReplay = true; toggle.dispatchEvent(ev);
+        void getComputedStyle(document.body).backgroundColor; // the new colours, all at once, with no transitions
+      };
+      var settle = function () {
+        requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.remove('theme-switching', 'theme-vt'); busy = false; }); });
+      };
       toggle.addEventListener('click', function (e) {
         if (e.xpReplay) return;
         e.stopImmediatePropagation(); e.preventDefault();
+        if (busy) return; busy = true;
+        root.classList.add('theme-switching');
+        if (!document.startViewTransition || reduce) { flip(); settle(); return; }
         root.classList.add('theme-vt');
-        var vt = document.startViewTransition(function () {
-          var ev = new MouseEvent('click', { bubbles: true, cancelable: true }); ev.xpReplay = true; toggle.dispatchEvent(ev);
-        });
+        var vt = document.startViewTransition(flip);
         // a skipped transition (another one started, the tab hid) rejects these: nothing to report
         if (vt.ready) vt.ready.catch(function () {});
         if (vt.updateCallbackDone) vt.updateCallbackDone.catch(function () {});
-        vt.finished.catch(function () {}).then(function () { root.classList.remove('theme-vt'); });
+        vt.finished.catch(function () {}).then(settle);
       }, true);
     }
   }

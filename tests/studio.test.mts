@@ -583,15 +583,20 @@ test('switching light/dark is one cross-fade of the whole page, on the site and 
   // owner 2026-10-09: easing each element's colours looked like a wave (a parent's colour reaches its children a frame
   // later, gradients jump) — the whole page now fades from a picture of the old theme into the new one at once
   const xp = fs.readFileSync('assets/experience.js', 'utf8');
-  assert.match(xp, /document\.startViewTransition\(function \(\) \{/);
+  assert.match(xp, /var vt = document\.startViewTransition\(flip\);/);
+  // no element eases on its own during the switch: 222 of them finished one by one after the fade (owner 2026-10-09)
+  assert.match(xp, /root\.classList\.add\('theme-switching'\)/);
+  assert.match(fs.readFileSync('assets/experience.css', 'utf8'), /html\.theme-switching \*::after \{ transition: none !important; \}/);
+  assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-switching \*::after \{ transition: none !important; \}/);
   assert.doesNotMatch(xp, /theme-anim|xp-theme-flash|clipPath: \['circle/);
   const css = fs.readFileSync('assets/experience.css', 'utf8');
   assert.match(css, /html\.theme-vt::view-transition-old\(root\) \{ animation: none; \}/);
   assert.doesNotMatch(css, /html\.theme-anim \*/);
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009c/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009d/);
   const app = fs.readFileSync('studio/js/app.js', 'utf8');
   assert.match(app, /\$\('#theme-btn'\)\.onclick = \(\) => switchTheme\(/);
-  assert.match(app, /document\.startViewTransition\(\(\) => \{ applyTheme\(t\); then\(\); \}\)/);
+  assert.match(app, /const vt = document\.startViewTransition\(flip\);/);
+  assert.match(app, /root\.classList\.add\('theme-switching'\)/);
   assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-vt::view-transition-new\(root\)/);
 });
 

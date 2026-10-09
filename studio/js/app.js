@@ -27,15 +27,19 @@ function applyTheme(t) {
   try { localStorage.setItem('arw_studio_theme', t); } catch {}
 }
 applyTheme((() => { try { return localStorage.getItem('arw_studio_theme') || 'light'; } catch { return 'light'; } })());
-/** Switching by hand: one cross-fade of the whole panel, like the site (owner 2026-10-09) — the browser fades a picture
- *  of the old theme into the new one everywhere at once. Straight switch without View Transitions or with less motion. */
+/** Switching by hand, like the site (owner 2026-10-09): no element eases on its own during the switch (they finished
+ *  one by one after the fade), and the browser fades a picture of the old theme into the new one everywhere at once.
+ *  A straight, clean switch without View Transitions or with less motion. */
 function switchTheme(t, then) {
   const root = document.documentElement;
-  if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) { applyTheme(t); then(); return; }
+  const flip = () => { applyTheme(t); then(); void getComputedStyle(document.body).backgroundColor; };
+  const settle = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching', 'theme-vt')));
+  root.classList.add('theme-switching');
+  if (!document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) { flip(); settle(); return; }
   root.classList.add('theme-vt');
-  const vt = document.startViewTransition(() => { applyTheme(t); then(); });
+  const vt = document.startViewTransition(flip);
   vt.ready.catch(() => {});
-  vt.finished.catch(() => {}).then(() => root.classList.remove('theme-vt'));
+  vt.finished.catch(() => {}).then(settle);
 }
 
 // ── Shell: the site's header ───────────────────────────────────────────────
