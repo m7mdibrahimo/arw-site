@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/who-took-responsiblity-botched-sami-zayn-vs-kevin-owens-finish/": {
-    "matchedFile": "20260924214709-وصف-نهاية-نزال-سامي-زين-وكيفن-أوينز-في-عرض-wwe-smackdown-بأنها-كارثة-مطلقة.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T15:16:10.809Z"
-  },
   "https://www.wrestlinginc.com/2268883/triple-h-dragon-lee-wwe-raw-mexico-city-need-you-here-long-term/": {
     "matchedFile": "20260924203530-تريبل-إتش-يخاطب-دراغون-لي-أنا-بحاجة-إليك-هنا-على-المدى-الطويل-في-ظل-غموض-عقده-مع-wwe.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261009231304-ميكي-جيمس-حكما-خاصا-لنزال-بطولة-tna-العالمية-للسيدات-في-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يتناول نفس الإعلان عن دور ميكي جيمس كحكم خاص في نزال بطولة Knockouts في عرض Bound for Glory، وهي نفس المعلومة المذكورة في الخبر المنشور.",
     "at": "2026-10-09T20:50:08.043Z"
+  },
+  "https://www.fightful.com/wrestling/la-knight-says-wwe-money-in-the-bank-match-against-roman-reigns-feels-do-or-die-for-him/": {
+    "matchedFile": "20261009152316-ال-ايه-نايت-إن-لم-أفز-في-عرض-موني-إن-ذا-بانك-فإلى-أين-أذهب-بعد-ذلك.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها ال ايه نايت حول أهمية نزال موني إن ذا بانك ومصير مسيرته المهنية، وهي نفس النقاط الجوهرية المغطاة في الخبر رقم 1.",
+    "at": "2026-10-09T20:52:36.257Z"
   }
 }
