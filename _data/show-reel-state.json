@@ -3269,5 +3269,22 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "mediaDeleted": true
+  },
+  "20261009181521-wwe-main-event-08-10-2026": {
+    "publishedAt": 1791560333061,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض مين ايفنت 08.10.2026 مترجم",
+    "lastAttempt": 1791560385338,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
