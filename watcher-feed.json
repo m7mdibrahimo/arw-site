@@ -1,5 +1,25 @@
 [
   {
+    "id": 332865,
+    "link": "https://www.fightful.com/wrestling/john-cena-recalls-eating-a-burger-that-hornswoggle-puked-on/",
+    "date": "2026-10-09T12:14:04",
+    "date_gmt": "2026-10-09T16:14:04",
+    "title": {
+      "rendered": "John Cena Recalls Eating A Burger That Hornswoggle Puked On"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
+  },
+  {
+    "id": 332864,
+    "link": "https://www.fightful.com/wrestling/1995-wwf-backstage-tape-to-be-released/",
+    "date": "2026-10-09T12:13:36",
+    "date_gmt": "2026-10-09T16:13:36",
+    "title": {
+      "rendered": "1995 WWF Backstage Tape To Be Released"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09120643/Screenshot-2026-10-09-at-11.46.16-AM.png"
+  },
+  {
     "id": 332283,
     "link": "https://www.fightful.com/wrestling/nic-nemeth-pitched-vince-mcmahon-on-the-idea-of-a-manufactured-return-because-he-couldnt-get-a-day-off/",
     "date": "2026-10-09T12:00:00",
@@ -278,25 +298,5 @@
       "rendered": "U.S. Embassy Riyadh Issues New Security Alert Reminding U.S. Citizens To &#8216;Exercise Heightened Vigilance&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08142437/images-19.jpg"
-  },
-  {
-    "id": 332786,
-    "link": "https://www.fightful.com/wrestling/aew-collision-viewership-october-3/",
-    "date": "2026-10-08T14:24:29",
-    "date_gmt": "2026-10-08T18:24:29",
-    "title": {
-      "rendered": "AEW Collision (10/3) Draws Over 400,000 Viewers"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04215146/01-aew-collision-new-logo-2024-696x421-1.jpg"
-  },
-  {
-    "id": 332777,
-    "link": "https://www.fightful.com/wrestling/maven-issues-statement-apologizing-for-timing-of-enzo-amore-video-confirms-it-was-filmed-in-2025/",
-    "date": "2026-10-08T14:08:17",
-    "date_gmt": "2026-10-08T18:08:17",
-    "title": {
-      "rendered": "Maven Issues Statement Apologizing For Timing Of Enzo Amore Video, Confirms It Was Filmed In 2025"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/12/27230453/maven-1280x720-1_1.jpg"
   }
 ]
