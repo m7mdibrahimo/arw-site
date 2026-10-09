@@ -3281,7 +3281,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261009183813-roh-on-honorclub-08-10-2026": {
     "publishedAt": 1791561274993,
