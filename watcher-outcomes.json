@@ -7,32 +7,32 @@
  "https://www.fightful.com/wrestling/wwe-money-in-the-bank-results-10-10-2026-two-mitb-ladder-matches-roman-reigns-vs-la-knight-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-10T21:32:38.395Z"
+  "at": "2026-10-10T21:44:07.497Z"
+ },
+ "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-10T21:43:14.241Z"
+ },
+ "https://www.fightful.com/wrestling/chelsea-green-i-actually-stay-worried-wwe-is-going-to-just-take-the-womens-title-off-me-at-any-given-moment": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-10T21:43:14.002Z"
+ },
+ "https://www.fightful.com/wrestling/la-knight-explains-that-he-wasnt-complaining-when-he-called-roman-reigns-the-most-manufactured-industry-plant-in-the-business": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-10T21:43:13.657Z"
+ },
+ "https://www.fightful.com/wrestling/bronson-reed-says-hes-told-austin-theory-to-stay-as-safe-as-possible-to-avoid-suffering-an-injury-due-to-the-visions-curse": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-10T21:43:13.155Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026": {
   "reason": "المراجعة رفضته: المتن (315 حرف) أطول بكثير من المصدر (49 حرف) — حشو",
   "retry": false,
   "at": "2026-10-10T21:32:38.213Z"
- },
- "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T21:32:21.134Z"
- },
- "https://www.fightful.com/wrestling/chelsea-green-i-actually-stay-worried-wwe-is-going-to-just-take-the-womens-title-off-me-at-any-given-moment": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T21:32:20.904Z"
- },
- "https://www.fightful.com/wrestling/la-knight-explains-that-he-wasnt-complaining-when-he-called-roman-reigns-the-most-manufactured-industry-plant-in-the-business": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T21:32:20.576Z"
- },
- "https://www.fightful.com/wrestling/bronson-reed-says-hes-told-austin-theory-to-stay-as-safe-as-possible-to-avoid-suffering-an-injury-due-to-the-visions-curse": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T21:32:20.096Z"
  },
  "https://www.fightful.com/wrestling/john-cena-wont-pitch-working-on-a-movie-with-the-rock-to-the-rock-but-hes-all-in-if-theres-an-opportunity-to-work-with-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
