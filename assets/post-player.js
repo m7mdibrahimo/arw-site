@@ -380,11 +380,22 @@
   // ==== A server's own fullscreen button (owner 2026-10-09: black screen, only the sound, until a reload) ====
   // While a player is fullscreen the page under it drops every effect that makes the browser composite it in
   // layers (fade-in transforms, blurred glass bars, filters): those layers are what blacked out the video.
+  // It came back (2026-10-10): every box around the player — its rounded, clipped frame and the deck's
+  // «container-type» (which adds layout containment) — is also cleared while it is fullscreen (.arw-fs-path), and the
+  // player is pushed onto a fresh layer once it is up, so the browser redraws it instead of showing a black surface.
   (function(){
     var root = document.documentElement;
+    function clearPath(){
+      Array.prototype.forEach.call(document.querySelectorAll('.arw-fs-path'), function(el){ el.classList.remove('arw-fs-path'); });
+    }
     function sync(){
       var fs = document.fullscreenElement || document.webkitFullscreenElement || null;
+      clearPath();
       root.classList.toggle('arw-fs', !!fs);
+      if (!fs) return;
+      for (var el = fs.parentElement; el && el !== document.documentElement; el = el.parentElement) el.classList.add('arw-fs-path');
+      fs.classList.add('arw-fs-nudge');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ fs.classList.remove('arw-fs-nudge'); }); });
     }
     document.addEventListener('fullscreenchange', sync);
     document.addEventListener('webkitfullscreenchange', sync);
