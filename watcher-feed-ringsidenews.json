@@ -1,5 +1,15 @@
 [
   {
+    "id": 802253146,
+    "link": "https://www.ringsidenews.com/nic-nemeth-considered-faking-injury-get-away-wwe/",
+    "date": "Sat, 10 Oct 2026 12:19:25 +0000",
+    "date_gmt": "2026-10-10T12:19:25.000Z",
+    "title": {
+      "rendered": "Nic Nemeth Considered Faking an Injury to Get Away From WWE"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/nic-nemeth-considered-faking-an-injury-to-get-away-from-wwe-54.jpg?x15321"
+  },
+  {
     "id": 802253157,
     "link": "https://www.ringsidenews.com/liv-morgan-nearly-landed-major-role-street-fighter-movie/",
     "date": "Sat, 10 Oct 2026 12:15:27 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Spoiler: Closing Match for October 9, 2026 WWE SmackDown"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/spoiler-title-match-set-to-take-place-on-june-12-wwe-smackdown-59.jpg?x15321"
-  },
-  {
-    "id": 802252874,
-    "link": "https://www.ringsidenews.com/spoiler-opening-match-october-9-2026-wwe-smackdown/",
-    "date": "Fri, 09 Oct 2026 21:10:31 +0000",
-    "date_gmt": "2026-10-09T21:10:31.000Z",
-    "title": {
-      "rendered": "Spoiler: Opening Match for October 9, 2026 WWE SmackDown"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/07/spoiler-unadvertised-match-revealed-for-july-24-wwe-smackdown-50.jpg?x15321"
   }
 ]
