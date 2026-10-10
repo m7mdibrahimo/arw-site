@@ -9,7 +9,7 @@ tags:
   - جايسي جاين
   - زوي ستارك
   - آيفي نايل
-  - فاتال انفلونس
+  - فايتال إنفلوينس
   - Lainey Reid
   - Fallon Henley
   - Jacy Jayne
