@@ -1,58 +1,58 @@
 {
- "https://www.fightful.com/wrestling/cody-rhodes-to-honor-pharaoh-with-a-new-american-nightmare-logo": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T03:38:22.224Z"
- },
  "https://www.fightful.com/wrestling/alexa-bliss-tatum-paxley-become-wwe-womens-tag-team-champions-on-10-9-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:46.786Z"
+  "at": "2026-10-10T03:48:47.599Z"
  },
  "https://www.fightful.com/wrestling/watch-hog-salvation-full-live-show": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (250 حرف) أطول بكثير من المصدر (30 حرف) — حشو",
+  "reason": "المراجعة رفضته: المتن (302 حرف) أطول بكثير من المصدر (30 حرف) — حشو",
   "retry": false,
-  "at": "2026-10-10T03:37:46.597Z"
+  "at": "2026-10-10T03:48:47.400Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-9-2026-all-mitb-participants-appear-fatal-influence-vs-charlotte-flair-tatum-paxley-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:32.487Z"
+  "at": "2026-10-10T03:48:35.955Z"
  },
  "https://www.fightful.com/wrestling/2-cold-scorpio-sentenced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:32.345Z"
+  "at": "2026-10-10T03:48:35.807Z"
  },
  "https://www.fightful.com/wrestling/la-knight-says-he-was-miserable-a-lot-of-times-and-came-to-wwe-shows-ready-to-fight-everything-and-everybody": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:32.157Z"
+  "at": "2026-10-10T03:48:35.611Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-says-becky-lynch-had-a-fractured-vertebrae-that-kept-her-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:32.009Z"
+  "at": "2026-10-10T03:48:35.458Z"
  },
  "https://www.fightful.com/wrestling/la-knight-says-wwe-money-in-the-bank-match-against-roman-reigns-feels-do-or-die-for-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:31.858Z"
+  "at": "2026-10-10T03:48:35.304Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-says-he-wouldnt-be-surprised-if-la-knight-lost-to-roman-reigns-in-30-seconds-at-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:31.594Z"
+  "at": "2026-10-10T03:48:35.018Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-wants-to-end-cm-punks-career-at-wwe-money-in-the-bank-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:31.494Z"
+  "at": "2026-10-10T03:48:34.912Z"
  },
  "https://www.fightful.com/wrestling/aew-winter-is-coming-to-take-place-in-mexico": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T03:37:31.084Z"
+  "at": "2026-10-10T03:48:34.493Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-to-honor-pharaoh-with-a-new-american-nightmare-logo": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-10T03:38:22.224Z"
  },
  "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
