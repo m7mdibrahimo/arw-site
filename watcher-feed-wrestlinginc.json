@@ -1,5 +1,15 @@
 [
   {
+    "id": 3885080983,
+    "link": "https://www.wrestlinginc.com/2279534/wwe-drave-maverick-24-7-title-good-old-days/",
+    "date": "Sat, 10 Oct 2026 18:30:00 +0000",
+    "date_gmt": "2026-10-10T18:30:00.000Z",
+    "title": {
+      "rendered": "WWE's Drake Maverick Views 24/7 Title Era As 'The Good Old Days'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-drake-maverick-views-247-title-era-as-the-good-old-days/l-intro-1791324752.jpg"
+  },
+  {
     "id": 1394816380,
     "link": "https://www.wrestlinginc.com/2283104/aew-tnt-champion-darby-allin-mont-blanc-mountains-everest/",
     "date": "Sat, 10 Oct 2026 18:10:19 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Juice Robinson Recalls Deciding To Leave WWE Developmental System In 2014"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-juice-robinson-recalls-deciding-to-leave-wwe-developmental-system-in-2014/l-intro-1791213526.jpg"
-  },
-  {
-    "id": 1482406305,
-    "link": "https://www.wrestlinginc.com/2282937/aew-world-champion-will-ospreay-opens-up-pac-tribute-move/",
-    "date": "Sat, 10 Oct 2026 00:34:58 +0000",
-    "date_gmt": "2026-10-10T00:34:58.000Z",
-    "title": {
-      "rendered": "AEW World Champion Will Ospreay Opens Up About PAC Tribute Move"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-world-champion-will-ospreay-opens-up-about-pac-tribute-move/l-intro-1791592380.jpg"
   }
 ]
