@@ -1,5 +1,15 @@
 [
   {
+    "id": 3664501892,
+    "link": "https://www.wrestlinginc.com/2279769/wwe-finn-balor-sami-zayn-underappreciated-mic-skills/",
+    "date": "Sat, 10 Oct 2026 20:00:00 +0000",
+    "date_gmt": "2026-10-10T20:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Finn Balor Says Sami Zayn Is 'Underappreciated' In One Specific Way"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-finn-balor-says-sami-zayn-is-underappreciated-in-one-specific-way/l-intro-1791375330.jpg"
+  },
+  {
     "id": 1800557625,
     "link": "https://www.wrestlinginc.com/2279667/wwe-tna-aj-styles-prime/",
     "date": "Sat, 10 Oct 2026 19:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE SmackDown 10/9/2026: 3 Things We Hated And 3 Things We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-1092026-3-things-we-hated-and-3-things-we-loved/l-intro-1791609927.jpg"
-  },
-  {
-    "id": 1981474749,
-    "link": "https://www.wrestlinginc.com/2282960/aew-collision-viewership-ratings-october-3-2026/",
-    "date": "Sat, 10 Oct 2026 03:33:41 +0000",
-    "date_gmt": "2026-10-10T03:33:41.000Z",
-    "title": {
-      "rendered": "AEW Collision Viewership & Ratings Report: 10/3/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-viewership-ratings-report-1032026/l-intro-1791603124.jpg"
   }
 ]
