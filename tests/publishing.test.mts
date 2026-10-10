@@ -4229,3 +4229,15 @@ test('tag «مصارعة الحرة» is corrected and kept out of stories (#399
     assert.ok(!/^ {2}- مصارعة الحرة$/m.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
   }
 });
+
+test('«ريك ويليامز» is corrected and a repeated bullet is blocked (#400)', () => {
+  assert.equal(applyCorrections('مواجهة بين برون بريكر وريك ويليامز'), 'مواجهة بين برون بريكر وتريك ويليامز');
+  assert.equal(applyCorrections('تريك ويليامز'), 'تريك ويليامز');
+  const line = '- مواجهة الكلام بين سي ام بانك وكيفن أوينز: افتتح الثنائي العرض باعتلاء السلالم وتبادل الكلمات الساخنة حول فرصهما في الفوز بالحقيبة.';
+  const issues = checkArticle('عرض WWE SmackDown ثلاثة أمور كرهناها وثلاثة أحببناها', `${line}\n\n${line.replace('وتبادل', 'تبادل')}\n\nنص آخر.`, []);
+  assert.ok(issues.some(i => i.code === 'duplicate_paragraph'));
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    assert.ok(!/ريك ويليامز/.test(fs.readFileSync(path.join(dir, f), 'utf8').replace(/تريك ويليامز/g, '')), f);
+  }
+});

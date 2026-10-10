@@ -245,6 +245,15 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     }
   }
 
+  // The same paragraph/bullet twice (a Gemini list slip: INCIDENTS #400). Compared without «و», spaces and punctuation.
+  const lineKeys = new Set<string>();
+  for (const line of stripNonProse(body || "").split(/\n+/)) {
+    const key = line.replace(/[^\u0621-\u064Aa-zA-Z0-9]/g, "").replace(/و/g, "");
+    if (key.length < 60) continue;
+    if (lineKeys.has(key)) { issues.push({ code: "duplicate_paragraph", severity: "error", field: "body", message: "نفس الفقرة/النقطة مكررة مرتين", excerpt: line.slice(0, 80) }); break; }
+    lineKeys.add(key);
+  }
+
   // A weekly show on a date that isn't its day: «AEW Dynamite يوم الثامن والعشرين من سبتمبر»
   // (a Monday) — the tribute Dynamite was the 30th; the writer made the date up (INCIDENTS #151).
   const wrongDay = showOnWrongWeekday(body || "");
