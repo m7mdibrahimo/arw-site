@@ -1,5 +1,25 @@
 [
   {
+    "id": 2663541974,
+    "link": "https://www.wrestlinginc.com/2283069/wwe-id-program-original-blans-womens-championship-brooke-havok/",
+    "date": "Sat, 10 Oct 2026 16:30:01 +0000",
+    "date_gmt": "2026-10-10T16:30:01.000Z",
+    "title": {
+      "rendered": "Backstage News On WWE ID Program, Original Plans For Women's Championship"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-id-program-original-plans-for-womens-championship/l-intro-1791649456.jpg"
+  },
+  {
+    "id": 2492094548,
+    "link": "https://www.wrestlinginc.com/2279280/aew-chris-jericho-thought-process-factions-solo-run/",
+    "date": "Sat, 10 Oct 2026 16:30:00 +0000",
+    "date_gmt": "2026-10-10T16:30:00.000Z",
+    "title": {
+      "rendered": "Chris Jericho Explains Thought Process Behind His AEW Factions & Current Solo Run"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/chris-jericho-explains-thought-process-behind-his-aew-factions-current-solo-run/l-intro-1791313367.jpg"
+  },
+  {
     "id": 2595205015,
     "link": "https://www.wrestlinginc.com/2279168/wwe-wcw-booker-t-shockmaster-perspective-incident/",
     "date": "Sat, 10 Oct 2026 16:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Indie Star Marcus Mathers Announces Departure From WWE ID Program"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/indie-star-marcus-mathers-announces-departure-from-wwe-id-program/l-intro-1791581659.jpg"
-  },
-  {
-    "id": 4119367255,
-    "link": "https://www.wrestlinginc.com/2282822/tna-bound-for-glory-moose-open-challenge-aew-max-caster/",
-    "date": "Fri, 09 Oct 2026 21:16:15 +0000",
-    "date_gmt": "2026-10-09T21:16:15.000Z",
-    "title": {
-      "rendered": "Former AEW Star Accepts Moose's Open Challenge For TNA Bound For Glory 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-aew-star-accepts-mooses-open-challenge-for-tna-bound-for-glory-2026/l-intro-1791580439.jpg"
-  },
-  {
-    "id": 2529286154,
-    "link": "https://www.wrestlinginc.com/2282805/wwe-mickie-james-tna-special-guest-referee-bound-for-glory-2026/",
-    "date": "Fri, 09 Oct 2026 21:03:29 +0000",
-    "date_gmt": "2026-10-09T21:03:29.000Z",
-    "title": {
-      "rendered": "Ex-WWE Star Mickie James Returning To TNA For Special Role At Bound For Glory 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ex-wwe-star-mickie-james-returning-to-tna-for-special-role-at-bound-for-glory-2026/l-intro-1791579737.jpg"
   }
 ]
