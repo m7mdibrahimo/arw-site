@@ -1,5 +1,15 @@
 [
   {
+    "id": 333073,
+    "link": "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026/",
+    "date": "2026-10-10T15:45:00",
+    "date_gmt": "2026-10-10T19:45:00",
+    "title": {
+      "rendered": "Watch: Countdown to WWE Money in the Bank: Oct. 10, 2026"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10151804/maxresdefault-59.jpg"
+  },
+  {
     "id": 333076,
     "link": "https://www.fightful.com/wrestling/xelina-says-some-fans-werent-smart-enough-to-keep-up-with-her-character-work-in-wwe/",
     "date": "2026-10-10T15:33:42",
@@ -288,15 +298,5 @@
       "rendered": "Kidd Bandit To Come Out Of Retirement For One Night To Face Nyla Rose At T4T Wrestling: Wild Card"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09232000/HT9XG8rbkAAuTCa-1.jpg"
-  },
-  {
-    "id": 332996,
-    "link": "https://www.fightful.com/wrestling/at-least-five-wrestlers-from-recent-wwe-tryouts-were-offered-wwe-id-deals/",
-    "date": "2026-10-09T23:04:43",
-    "date_gmt": "2026-10-10T03:04:43",
-    "title": {
-      "rendered": "At Least Five Wrestlers From Recent WWE Tryouts Were Offered WWE ID Deals"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09224447/WWE-ID-logo-1024x576-1-678x381-1.jpg"
   }
 ]
