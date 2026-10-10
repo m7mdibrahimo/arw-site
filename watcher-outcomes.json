@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2281848/wwe-money-in-the-bank-2026-results": {
+  "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
+  "retry": true,
+  "at": "2026-10-10T19:05:27.724Z"
+ },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
