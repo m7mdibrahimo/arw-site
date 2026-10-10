@@ -1,5 +1,15 @@
 [
   {
+    "id": 2595205015,
+    "link": "https://www.wrestlinginc.com/2279168/wwe-wcw-booker-t-shockmaster-perspective-incident/",
+    "date": "Sat, 10 Oct 2026 16:00:00 +0000",
+    "date_gmt": "2026-10-10T16:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Booker T Shares His Perspective Of The Shockmaster Incident In WCW"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-booker-t-shares-his-perspective-of-the-shockmaster-incident-in-wcw/l-intro-1791310162.jpg"
+  },
+  {
     "id": 3517532477,
     "link": "https://www.wrestlinginc.com/2279115/wwe-dennis-haskins-saved-by-the-bell-general-manager/",
     "date": "Sat, 10 Oct 2026 15:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Ex-WWE Star Mickie James Returning To TNA For Special Role At Bound For Glory 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/ex-wwe-star-mickie-james-returning-to-tna-for-special-role-at-bound-for-glory-2026/l-intro-1791579737.jpg"
-  },
-  {
-    "id": 2736608601,
-    "link": "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results/",
-    "date": "Fri, 09 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-09T21:00:00.000Z",
-    "title": {
-      "rendered": "WWE SmackDown Results 10/9/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-october-9-2026-results/l-intro-1791597720.jpg"
   }
 ]
