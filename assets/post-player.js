@@ -386,7 +386,7 @@
   (function(){
     var root = document.documentElement;
     function clearPath(){
-      Array.prototype.forEach.call(document.querySelectorAll('.arw-fs-path'), function(el){ el.classList.remove('arw-fs-path'); });
+      Array.prototype.forEach.call(document.querySelectorAll('.arw-fs-path, .arw-fs-el'), function(el){ el.classList.remove('arw-fs-path', 'arw-fs-el'); });
     }
     function sync(){
       var fs = document.fullscreenElement || document.webkitFullscreenElement || null;
@@ -394,7 +394,9 @@
       root.classList.toggle('arw-fs', !!fs);
       if (!fs) return;
       for (var el = fs.parentElement; el && el !== document.documentElement; el = el.parentElement) el.classList.add('arw-fs-path');
-      fs.classList.add('arw-fs-nudge');
+      // the rest of the page is hidden while the player is fullscreen (2026-10-10, still black in Chrome on a Mac): the
+      // browser has nothing to draw but the player
+      fs.classList.add('arw-fs-el', 'arw-fs-nudge');
       requestAnimationFrame(function(){ requestAnimationFrame(function(){ fs.classList.remove('arw-fs-nudge'); }); });
     }
     document.addEventListener('fullscreenchange', sync);
