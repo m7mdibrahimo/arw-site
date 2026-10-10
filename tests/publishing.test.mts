@@ -4258,3 +4258,9 @@ test('dual noun «اتحادي X وY» is corrected and blocked (INCIDENTS #402)
   assert.equal(applyCorrections('مع واتحادي AAA'), 'مع واتحاد AAA');
   assert.ok(checkArticle('بوكر تي يتذكر بدايته بين اتحادي WCW وWWE', 'x'.repeat(300)).some(i => i.code === 'dual_form'));
 });
+
+test('«حركة الحركات» (meaningless doubling) is corrected automatically', () => {
+  // INCIDENTS #403: Booker T story said «تقليد حركة الحركات».
+  const { corrections } = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8'));
+  assert.ok(corrections.some((c: any) => c.wrong === 'حركة الحركات' && c.right === 'الحركات'));
+});
