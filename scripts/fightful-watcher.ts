@@ -4449,6 +4449,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   const slug = keptPermalink ? keptPermalink.replace(/^\/news\/|\/index\.html$/g, "") : generateSlug(rewritten.title);
   const targetFileName = keptPermalink && oldFileName ? oldFileName : `${prefix}-${slug}.md`;
+  const targetFilePath = path.join(NEWS_DIR, targetFileName);
 
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   // The source's own pictures in its text (INCIDENTS #359): shown under the story, Arabic and English, never in the
