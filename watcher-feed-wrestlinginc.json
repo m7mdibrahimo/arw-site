@@ -1,5 +1,15 @@
 [
   {
+    "id": 1968146919,
+    "link": "https://www.wrestlinginc.com/2279077/wwe-wcw-booker-t-commentary-origins/",
+    "date": "Sat, 10 Oct 2026 15:00:00 +0000",
+    "date_gmt": "2026-10-10T15:00:00.000Z",
+    "title": {
+      "rendered": "Booker T Looks Back On Commentary Origins In WCW & WWE"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/booker-t-looks-back-on-commentary-origins-in-wcw-wwe/l-intro-1791307237.jpg"
+  },
+  {
     "id": 2652024427,
     "link": "https://www.wrestlinginc.com/2278985/aew-chris-jericho-jon-moxley-pac-recruited/",
     "date": "Sat, 10 Oct 2026 14:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE Money In The Bank 2026: Draws & Duds"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-money-in-the-bank-2026-draws-duds/l-intro-1791579071.jpg"
-  },
-  {
-    "id": 2242695321,
-    "link": "https://www.wrestlinginc.com/2282725/tna-bound-for-glory-2026-hall-of-fame-inductors/",
-    "date": "Fri, 09 Oct 2026 20:11:54 +0000",
-    "date_gmt": "2026-10-09T20:11:54.000Z",
-    "title": {
-      "rendered": "TNA Announces Hall Of Fame Inductors For Bound For Glory 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-announces-hall-of-fame-inductors-for-bound-for-glory-2026/l-intro-1791576639.jpg"
   }
 ]
