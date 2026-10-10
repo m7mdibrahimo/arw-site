@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-10T00:41:39.629Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-9-2026-all-mitb-participants-appear-fatal-influence-vs-charlotte-flair-tatum-paxley-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-10T00:31:52.911Z"
- },
- "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T00:25:43.570Z"
  },
  "https://www.fightful.com/?p=332925": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
