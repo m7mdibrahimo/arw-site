@@ -4252,3 +4252,9 @@ test('a fullscreen player has nothing around it that can black it out: frame, de
   assert.match(css, /html\.arw-fs \.arw-fs-path\{ overflow:visible !important; border-radius:0 !important; box-shadow:none !important; contain:none !important; container-type:normal !important;/);
   assert.match(css, /iframe:fullscreen, video:fullscreen\{ border-radius:0 !important; transform:none !important;/);
 });
+
+test('dual noun «اتحادي X وY» is corrected and blocked (INCIDENTS #402)', () => {
+  assert.equal(applyCorrections('بين اتحادي WCW وWWE وفي اتحاد AEW'), 'بين اتحاد WCW وWWE وفي اتحاد AEW');
+  assert.equal(applyCorrections('مع واتحادي AAA'), 'مع واتحاد AAA');
+  assert.ok(checkArticle('بوكر تي يتذكر بدايته بين اتحادي WCW وWWE', 'x'.repeat(300)).some(i => i.code === 'dual_form'));
+});

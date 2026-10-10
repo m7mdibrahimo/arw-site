@@ -14,7 +14,7 @@ tags:
 image: /content/images/foixbve8nnfihetc.jpg
 layout: post-layout.njk
 ---
-أعلنت منصة البث الرياضي العالمية DAZN عن إتمام صفقة استحواذها الرسمية على شركة EverPass Media، وهي منصة التوزيع التجاري التي تأسست بشراكة بين الذراع الاستثماري لرابطة دوري كرة القدم الأمريكية (NFL 32 Equity) وشركة *RedBird Capital Partners*، وتضم مجموعة TKO Group Holdings (المالكة لاتحادي WWE وUFC) كأحد كبار المستثمرين فيها.
+أعلنت منصة البث الرياضي العالمية DAZN عن إتمام صفقة استحواذها الرسمية على شركة EverPass Media، وهي منصة التوزيع التجاري التي تأسست بشراكة بين الذراع الاستثماري لرابطة دوري كرة القدم الأمريكية (NFL 32 Equity) وشركة *RedBird Capital Partners*، وتضم مجموعة TKO Group Holdings (المالكة لاتحاد WWE وUFC) كأحد كبار المستثمرين فيها.
 
 وبموجب بنود هذا الاستحواذ، ستتحول كل من مجموعة TKO، وصندوق استثمار رابطة NFL، وشركة RedBird إلى مساهمين بحصص أقلية (Minority Shareholders) في الكيان المندمج الجديد بين DAZN وEverPass.
 
