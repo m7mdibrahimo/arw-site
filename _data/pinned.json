@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-09-10-2026/",
+    "title": "عرض سماك داون 09.10.2026 مترجم",
+    "subtitle": "WWE Smackdown 09.10.2026",
+    "image": "/content/images/dbs32voaupebsrcc.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/roh-on-honorclub-08-10-2026/",
     "title": "عرض ار او اتش اون اونر كلوب 08.10.2026 مترجم",
     "subtitle": "ROH on HonorClub 08.10.2026",
@@ -75,28 +86,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض يو اف سي 332 مين كارد مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-02-10-2026/",
-    "title": "عرض سماك داون 02.10.2026 مترجم",
-    "subtitle": "WWE Smackdown 02.10.2026",
-    "image": "/content/images/e97m38jbg7nzzika.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-30-09-2026/",
-    "title": "عرض ديناميت 30.09.2026 مترجم",
-    "subtitle": "AEW Dynamite 30.09.2026",
-    "image": "/content/images/d3znaep7usmqwk7z.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/aaa-worlds-collide-2026/",
