@@ -1,5 +1,15 @@
 [
   {
+    "id": 1800557625,
+    "link": "https://www.wrestlinginc.com/2279667/wwe-tna-aj-styles-prime/",
+    "date": "Sat, 10 Oct 2026 19:30:00 +0000",
+    "date_gmt": "2026-10-10T19:30:00.000Z",
+    "title": {
+      "rendered": "AJ Styles Says He Was In His Prime In WWE As Opposed To TNA"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aj-styles-says-he-was-in-his-prime-in-wwe-as-opposed-to-tna/l-intro-1791352481.jpg"
+  },
+  {
     "id": 4308107330,
     "link": "https://www.wrestlinginc.com/2281848/wwe-money-in-the-bank-2026-results/",
     "date": "Sat, 10 Oct 2026 19:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Collision Viewership & Ratings Report: 10/3/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-viewership-ratings-report-1032026/l-intro-1791603124.jpg"
-  },
-  {
-    "id": 2236827628,
-    "link": "https://www.wrestlinginc.com/2282948/wwe-smackdown-alexa-bliss-tatum-paxley-womens-tag-titles-fatal-influence/",
-    "date": "Sat, 10 Oct 2026 01:55:38 +0000",
-    "date_gmt": "2026-10-10T01:55:38.000Z",
-    "title": {
-      "rendered": "Alexa Bliss & Tatum Paxley Win WWE Women's Tag Titles On SmackDown"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/alexa-bliss-tatum-paxley-win-wwe-womens-tag-titles-on-smackdown/l-intro-1791597271.jpg"
   }
 ]
