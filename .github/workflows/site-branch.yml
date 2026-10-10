@@ -101,11 +101,23 @@ jobs:
           if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
             PREV=$(api "$BASE/commits/$SITE" | jq -r .message | sed -n 's/^site-of: \([0-9a-f]\{40\}\).*/\1/p' | head -1)
           fi
-          if [ "$PREV" = "$MAIN" ]; then echo "site is already at $MAIN"; exit 0; fi
+          # Cloudflare's build of the last «site» commit failed (it can die in under a second): the site would stay on the
+          # older version for good, because nothing visible changes to trigger another build. Point «site» at a new commit
+          # with the same tree to make Cloudflare build again. Once per failure: a commit already marked as a retry is not
+          # retried again (a build that fails twice needs a person, and /health reports it) (INCIDENTS #398).
+          RETRY=0
+          if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
+            SMSG=$(api "$BASE/commits/$SITE" | jq -r .message)
+            if ! grep -q 'site-retry' <<<"$SMSG" && api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?check_name=Cloudflare%20Pages" | jq -e '[.check_runs[] | select(.status == "completed" and .conclusion == "failure")] | length > 0' > /dev/null; then
+              RETRY=1; echo "Cloudflare's build of $SITE failed: building it again"
+              if [ "$PREV" = "$MAIN" ] || [ -z "$PREV" ]; then PREV=""; fi
+            fi
+          fi
+          if [ "$PREV" = "$MAIN" ] && [ "$RETRY" = "0" ]; then echo "site is already at $MAIN"; exit 0; fi
 
           # Nothing a visitor sees changed since the last site commit (the bots' bookkeeping, delivery records,
           # reports, pictures and reels served by arw-media): no rebuild. The next real change carries these too.
-          if [ -n "$PREV" ]; then
+          if [ -n "$PREV" ] && [ "$RETRY" = "0" ]; then
             api "https://api.github.com/repos/$REPO/compare/$PREV...$MAIN" > cmp.json
             TOTAL=$(jq '.files | length' cmp.json)
             VISIBLE=$(jq -r '.files[].filename' cmp.json | grep -cvE '^(_data/publish-state\.json|_data/deliveries/.*|worker/.*|media-worker/.*|seo/.*|reports/.*|editorial/.*|content/images/.*|dist/videos/.*|watcher-state\.json|watcher-outcomes\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data/duplicate-skips\.json|\.github/.*)$' || true)
@@ -128,6 +140,7 @@ jobs:
           api "$BASE/trees/$TREE?recursive=1" | jq -e '[.tree[].path | select(startswith("content/images/") or startswith("dist/videos/"))] | length == 0' > /dev/null
           # a visible change always builds: the skip markers of the newest commit don't apply to the ones under it
           MSG=$(jq -r .message c.json | sed -E 's/\[(skip ci|ci skip|skip-ci|CF-Pages-Skip)\]//Ig')
+          [ "$RETRY" = "1" ] && MSG="$MSG [site-retry]"
           COMMIT=$(jq -n --arg m "$MSG"$'\n\n'"site-of: $MAIN $CT" --arg t "$TREE" --arg p "$MAIN" '{message:$m, tree:$t, parents:[$p]}' | api -X POST "$BASE/commits" -d @- | jq -r .sha)
           if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
             jq -n --arg s "$COMMIT" '{sha:$s, force:true}' | api -X PATCH "$BASE/refs/heads/site" -d @- > /dev/null

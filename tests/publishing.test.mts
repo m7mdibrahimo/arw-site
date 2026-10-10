@@ -4195,3 +4195,20 @@ test('podcast name Flagrant is never transliterated (INCIDENTS #395)', () => {
 test('«سيعود أرباح» is corrected to «ستعود أرباح» (INCIDENTS #397)', () => {
   assert.equal(applyCorrections('وسيعود أرباح العرض لصالح الصندوق'), 'وستعود أرباح العرض لصالح الصندوق');
 });
+
+test('a new story whose title another story already uses is detected before it is written (INCIDENTS #398)', async () => {
+  const { newsSlugTakenByOther } = await import('../scripts/fightful-watcher.ts');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'slug-'));
+  fs.writeFileSync(path.join(dir, '1-a.md'), '---\ntitle: "عرض WWE SmackDown: ثلاثة أمور"\nsource_id: 111\n---\nx');
+  fs.writeFileSync(path.join(dir, '2-b.md'), '---\ntitle: "خبر تاني"\npermalink: "/news/رابط-قديم/index.html"\nsource_id: 222\n---\nx');
+  assert.equal(newsSlugTakenByOther('عرض-wwe-smackdown-ثلاثة-أمور', '999', dir), true);
+  assert.equal(newsSlugTakenByOther('عرض-wwe-smackdown-ثلاثة-أمور', '111', dir), false, 'the same story rewritten is not a clash');
+  assert.equal(newsSlugTakenByOther('رابط-قديم', '999', dir), true, 'a pinned permalink counts');
+  assert.equal(newsSlugTakenByOther('عنوان-جديد', '999', dir), false);
+});
+
+test('site-branch.yml builds again when Cloudflare failed the last site commit (INCIDENTS #398)', () => {
+  const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
+  assert.match(wf, /site-retry/);
+  assert.match(wf, /conclusion == "failure"/);
+});

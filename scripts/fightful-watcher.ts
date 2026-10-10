@@ -3325,6 +3325,24 @@ function arabicSlug(str: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+// Another story already served at this address (INCIDENTS #398: the weekly «three things we hated and loved» title came
+// twice, two files wrote the same page and Cloudflare refused the whole build). Same source_id = the same story being rewritten.
+export function newsSlugTakenByOther(slug: string, postId: string, newsDir: string = NEWS_DIR): boolean {
+  if (!slug || !fs.existsSync(newsDir)) return false;
+  for (const f of fs.readdirSync(newsDir)) {
+    if (!f.endsWith(".md")) continue;
+    let head = "";
+    try { head = fs.readFileSync(path.join(newsDir, f), "utf-8").slice(0, 3000); } catch { continue; }
+    const sid = head.match(/^source_id:\s*["']?([^"'\r\n]+?)["']?\s*$/m)?.[1];
+    if (sid && String(sid) === String(postId)) continue;
+    const perm = head.match(/^permalink:\s*["']?([^"'\r\n]+?)["']?\s*$/m)?.[1];
+    const title = head.match(/^title:\s*["']?(.+?)["']?\s*$/m)?.[1];
+    const theirs = perm ? perm.replace(/^\/news\/|\/index\.html$/g, "") : arabicSlug(title || "");
+    if (theirs === slug) return true;
+  }
+  return false;
+}
+
 // Generate clean Arabic slug from title
 function generateSlug(title: string): string {
   return arabicSlug(title) || title
@@ -4423,9 +4441,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 
+  // A title another story already uses (the weekly «three things we hated and loved» came twice) gets its date, so two
+  // stories never share a title or write the same page and break the build (INCIDENTS #398)
+  if (!keptPermalink && newsSlugTakenByOther(generateSlug(rewritten.title), String(postId))) {
+    rewritten.title = `${rewritten.title} (${Number(iso.slice(8, 10))} ${AR_MONTH_NAMES[Number(iso.slice(5, 7)) - 1]})`;
+    console.log(`[Watcher] 🔗 Title already used by another story — date added: ${rewritten.title}`);
+  }
   const slug = keptPermalink ? keptPermalink.replace(/^\/news\/|\/index\.html$/g, "") : generateSlug(rewritten.title);
   const targetFileName = keptPermalink && oldFileName ? oldFileName : `${prefix}-${slug}.md`;
-  const targetFilePath = path.join(NEWS_DIR, targetFileName);
 
   const tagsYaml = rewritten.tags.map(t => `  - ${t}`).join("\n");
   // The source's own pictures in its text (INCIDENTS #359): shown under the story, Arabic and English, never in the
