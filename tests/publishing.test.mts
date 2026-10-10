@@ -4291,3 +4291,8 @@ test('dual «أجريتا» and «…تيهما» are blocked as dual forms (INC
   assert.ok(codes('عنوان عربي كامل للخبر هنا', 'التغييرات التي أجريتاها على شخصيتيهما.' + filler).includes('dual_form'));
   assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'التغييرات التي أجرتها كل واحدة منهما على شخصيتها.' + filler).includes('dual_form'));
 });
+
+test('«بـال ايه نايت» (glued prefix before an «ال» name) is corrected', () => {
+  // 2026-10-10: «التي تجمعه بـال ايه نايت» reached the site.
+  assert.equal(applyCorrections('المواجهة التي تجمعه بـال ايه نايت'), 'المواجهة التي تجمعه مع ال ايه نايت');
+});

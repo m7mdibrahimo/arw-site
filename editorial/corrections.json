@@ -5849,6 +5849,11 @@
    "wrong": "ذا WWE Main Event",
    "right": "ذا مين إيفنت",
    "note": "The Mane Event (فريق في HOG) اتفهم غلط «WWE Main Event» — اسم الفريق بيتكتب بالعربي ذا مين إيفنت — INCIDENTS #405"
+  },
+  {
+   "wrong": "بـال ايه نايت",
+   "right": "مع ال ايه نايت",
+   "note": "Gemini لزّق «بـ» (بتطويل) في اسم بيبدأ بـ«ال» فطلع «بـال ايه نايت» — INCIDENTS #407"
   }
  ]
 }
