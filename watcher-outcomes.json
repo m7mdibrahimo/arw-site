@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-money-bank-results-highlights-key-moments-october-10-2026": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-10T21:16:31.551Z"
+ },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026": {
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (199 حرف) أطول بكثير من المصدر (49 حرف) — حشو",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T21:10:12.432Z"
- },
- "https://www.ringsidenews.com/wwe-money-bank-results-highlights-key-moments-october-10-2026": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-10T21:01:13.427Z"
  },
  "https://www.ringsidenews.com/first-look-wwe-money-bank-stage-setup-smoothie-king-center": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
