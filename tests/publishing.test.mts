@@ -4241,3 +4241,12 @@ test('«ريك ويليامز» is corrected and a repeated bullet is blocked (#
     assert.ok(!/ريك ويليامز/.test(fs.readFileSync(path.join(dir, f), 'utf8').replace(/تريك ويليامز/g, '')), f);
   }
 });
+
+test('a fullscreen player has nothing around it that can black it out: frame, deck and every box up to the page are cleared (INCIDENTS #386, again 2026-10-10)', () => {
+  const player = fs.readFileSync('assets/post-player.js', 'utf8');
+  assert.match(player, /for \(var el = fs\.parentElement; el && el !== document\.documentElement; el = el\.parentElement\) el\.classList\.add\('arw-fs-path'\);/);
+  assert.match(player, /fs\.classList\.add\('arw-fs-nudge'\)/);
+  const css = fs.readFileSync('assets/post-layout.css', 'utf8');
+  assert.match(css, /html\.arw-fs \.arw-fs-path\{ overflow:visible !important; border-radius:0 !important; box-shadow:none !important; contain:none !important; container-type:normal !important;/);
+  assert.match(css, /iframe:fullscreen, video:fullscreen\{ border-radius:0 !important; transform:none !important;/);
+});
