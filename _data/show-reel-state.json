@@ -3323,6 +3323,7 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   }
 }
