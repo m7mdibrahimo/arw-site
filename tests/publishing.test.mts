@@ -4274,3 +4274,12 @@ test('a match heading or a quote glued to the end of a paragraph starts its own 
   const once = splitGluedBlocks('a. **المواجهة الأولى: x**');
   assert.equal(splitGluedBlocks(once), once);
 });
+
+test('«فريدريك» alone is corrected to «فريدريكس» (#405)', () => {
+  assert.equal(applyCorrections('عبر فريدريك عن أسفه'), 'عبر فريدريكس عن أسفه');
+  assert.equal(applyCorrections('كارل فريدريكس'), 'كارل فريدريكس');
+});
+
+test('«ذا WWE Main Event» (فريق The Mane Event) is corrected (#405)', () => {
+  assert.equal(applyCorrections('تغلب فريق ذا WWE Main Event على فريق آخر'), 'تغلب فريق ذا مين إيفنت على فريق آخر');
+});
