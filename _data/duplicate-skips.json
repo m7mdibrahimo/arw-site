@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269645/wwe-smackdown-september-25-us-championship-steel-cage-match-money-in-the-bank-qualifiers-more/": {
-    "matchedFile": "20260925102356-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-smackdown-الليلة.md",
-    "reason": "الخبر الجديد يغطي نتائج ونفس مباريات عرض WWE SmackDown بتاريخ 25 سبتمبر 2026 والذي تم نشر دليل مشاهدته وتفاصيله مسبقاً في الخبر رقم 0.",
-    "at": "2026-09-25T23:03:00.751Z"
-  },
   "https://www.ringsidenews.com/mexican-wrestling-legend-babe-face-passes-away-79/": {
     "matchedFile": "20260926015621-وفاة-المصارع-المخضرم-خوسيه-جوادالوبي-فوينتيس-أوتشوا-المعروف-بلقب-بابي-فيس-عن-عمر-ناهز-79-عاما.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261010161329-تشيلسي-غرين-تعيش-في-خوف-مستمر-من-سحب-اتحاد-wwe-لقب-السيدات-منها.md",
     "reason": "الخبر الجديد يتناول نفس التصريحات التي أدلت بها تشيلسي غرين في نفس المقابلة (برنامج جيريمي جاكوبويتز) والتي تم تغطيتها بالفعل في الخبر رقم 0.",
     "at": "2026-10-10T16:48:57.190Z"
+  },
+  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas/": {
+    "matchedFile": "20261010185422-عرض-wwe-crown-jewel-يواجه-مخاوف-أمنية-جديدة-بعد-هجوم-مطار-الرياض.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة الهجوم على مطار الملك خالد الدولي والتحذير الأمني الصادر عن السفارة الأمريكية، وهي تفاصيل تم تغطيتها بالفعل في الخبر رقم 2.",
+    "at": "2026-10-10T17:43:05.323Z"
   }
 }
