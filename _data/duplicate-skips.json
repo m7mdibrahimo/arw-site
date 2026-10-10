@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/xelina-says-she-very-much-was-miserable-towards-the-end-of-her-wwe-run/": {
-    "matchedFile": "20260925193107-زيلينا-فيغا-تعترف-بأنها-كانت-تعيسة-للغاية-نحو-نهاية-مسيرتها-في-wwe.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T19:05:51.420Z"
-  },
   "https://www.ringsidenews.com/spoiler-opening-match-september-25-2026-wwe-smackdown-revealed/": {
     "matchedFile": "20260925102356-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-smackdown-الليلة.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261010023100-نتائج-عرض-wwe-smackdown-9-أكتوبر-2026-عودة-سي-ام-بانك-وأبرز-أحداث-العرض.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
     "at": "2026-10-10T02:07:40.322Z"
+  },
+  "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results/": {
+    "matchedFile": "20261010023100-نتائج-عرض-wwe-smackdown-9-أكتوبر-2026-عودة-سي-ام-بانك-وأبرز-أحداث-العرض.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-10-10T02:16:42.497Z"
   }
 }
