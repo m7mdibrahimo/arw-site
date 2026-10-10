@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/spoiler-opening-match-september-25-2026-wwe-smackdown-revealed/": {
-    "matchedFile": "20260925102356-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-smackdown-الليلة.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T19:23:12.654Z"
-  },
   "https://www.wrestlinginc.com/2269308/aew-dax-harwood-ftr-almost-undeniable-home-tag-team-wrestling/": {
     "matchedFile": "20260925164632-داكس-هاروود-أعتقد-أنه-يكاد-لا-يمكن-إنكار-أن-aew-هي-موطن-مصارعة-الفرق.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261010023100-نتائج-عرض-wwe-smackdown-9-أكتوبر-2026-عودة-سي-ام-بانك-وأبرز-أحداث-العرض.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
     "at": "2026-10-10T02:16:42.497Z"
+  },
+  "https://www.wrestlinginc.com/2282972/wwe-money-in-the-bank-2026-predictions-winners/": {
+    "matchedFile": "20261009235441-عرض-wwe-موني-إن-ذا-بانك-2026-النزالات-الجاذبة-والمخيبة.md",
+    "reason": "الخبر الجديد يعيد تجميع نفس تفاصيل وتوقعات النزالات لعرض موني إن ذا بانك 2026 الصادرة عن موقع Wrestling Inc. والمذكورة في الخبر المنشور رقم 0.",
+    "at": "2026-10-10T10:06:00.526Z"
   }
 }
