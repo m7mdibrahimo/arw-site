@@ -1,5 +1,15 @@
 [
   {
+    "id": 1725813469,
+    "link": "https://www.wrestlinginc.com/2279471/tna-steve-maclin-departure-spinning-wheels/",
+    "date": "Sat, 10 Oct 2026 17:00:00 +0000",
+    "date_gmt": "2026-10-10T17:00:00.000Z",
+    "title": {
+      "rendered": "Steve Maclin Details TNA Departure: 'I Was Just Spinning The Wheels'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/steve-maclin-details-tna-departure-i-was-just-spinning-the-wheels/l-intro-1791320467.jpg"
+  },
+  {
     "id": 2663541974,
     "link": "https://www.wrestlinginc.com/2283069/wwe-id-program-original-blans-womens-championship-brooke-havok/",
     "date": "Sat, 10 Oct 2026 16:30:01 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Viewership & Ratings Report, 10/6/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-1062026/l-intro-1791584909.jpg"
-  },
-  {
-    "id": 2334324861,
-    "link": "https://www.wrestlinginc.com/2282834/indie-marcus-mathers-wwe-id-program-departure/",
-    "date": "Fri, 09 Oct 2026 21:35:25 +0000",
-    "date_gmt": "2026-10-09T21:35:25.000Z",
-    "title": {
-      "rendered": "Indie Star Marcus Mathers Announces Departure From WWE ID Program"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/indie-star-marcus-mathers-announces-departure-from-wwe-id-program/l-intro-1791581659.jpg"
   }
 ]
