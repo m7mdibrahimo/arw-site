@@ -8,7 +8,7 @@ tags:
   - TKO
   - Las Vegas
   - Lawrence Epstein
-  - اخبار UFC
+  - أخبار UFC
   - أخبار المصارعة
 image: /content/images/cehqzaz1o4ejod5s.jpg
 layout: post-layout.njk
