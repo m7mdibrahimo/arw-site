@@ -4172,6 +4172,11 @@ test('dual forms (مثنى) are blocked (INCIDENTS #393)', async () => {
   assert.ok(codes('دان ريد: توني خان واتحاد AEW قدما دعما رائعا لاتحاد EVE', filler).includes('dual_form'));
   assert.ok(codes('عنوان عربي كامل للخبر هنا', 'الثنائي، اللذان اشتهرا بالشخصية واصلا العمل.' + filler).includes('dual_form'));
   assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'يجب المضي قدما في الخطة والثنائي واصل العمل.' + filler).includes('dual_form'));
+  // more dual forms found later (INCIDENTS #396)
+  assert.ok(codes('أليكسا بليس وتايتوم باكسلي تفوزان ببطولة WWE للفرق للسيدات', filler).includes('dual_form'));
+  assert.ok(codes('عنوان عربي كامل للخبر هنا', 'هزمتا حاملتي اللقب لتتوجا بطلتين جديدتين.' + filler).includes('dual_form'));
+  assert.ok(codes('نيك وراين يحتفظان بألقاب الفرق في عرض TNA', filler).includes('dual_form'));
+  assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'الفريق يحتفظ بالحزام وتحتفظ بطلة العالم بلقبها.' + filler).includes('dual_form'));
 });
 
 test('doubled quote marks around «» are blocked (INCIDENTS #394)', () => {

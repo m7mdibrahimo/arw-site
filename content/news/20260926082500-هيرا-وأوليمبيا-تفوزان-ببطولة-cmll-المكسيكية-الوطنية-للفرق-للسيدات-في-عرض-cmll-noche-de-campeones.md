@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "هيرا وأوليمبيا تفوزان ببطولة CMLL المكسيكية الوطنية للفرق للسيدات في عرض CMLL Noche de Campeones"
+title: "فوز هيرا وأوليمبيا ببطولة CMLL المكسيكية الوطنية للفرق للسيدات في عرض CMLL Noche de Campeones"
+permalink: "/news/20260926082500-هيرا-وأوليمبيا-تفوزان-ببطولة-cmll-المكسيكية-الوطنية-للفرق-للسيدات-في-عرض-cmll-noche-de-campeones/index.html"
 date: 2026-09-26T08:25:00.000+03:00
 published_at: 2026-09-26T05:28:51.968Z
 source_id: 330544
