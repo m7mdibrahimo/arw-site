@@ -1,43 +1,53 @@
 {
- "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T01:58:42.119Z"
+ "https://www.fightful.com/wrestling/alexa-bliss-tatum-paxley-become-wwe-womens-tag-team-champions-on-10-9-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-10T02:07:49.765Z"
+ },
+ "https://www.fightful.com/wrestling/watch-hog-salvation-full-live-show": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-10-10T02:07:49.616Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-9-2026-all-mitb-participants-appear-fatal-influence-vs-charlotte-flair-tatum-paxley-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T01:57:28.831Z"
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-10T02:07:40.320Z"
  },
  "https://www.fightful.com/wrestling/la-knight-says-he-was-miserable-a-lot-of-times-and-came-to-wwe-shows-ready-to-fight-everything-and-everybody": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T01:57:28.694Z"
+  "at": "2026-10-10T02:07:36.419Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-says-becky-lynch-had-a-fractured-vertebrae-that-kept-her-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T01:57:28.591Z"
+  "at": "2026-10-10T02:07:36.304Z"
  },
  "https://www.fightful.com/wrestling/la-knight-says-wwe-money-in-the-bank-match-against-roman-reigns-feels-do-or-die-for-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T01:57:28.491Z"
+  "at": "2026-10-10T02:07:36.185Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-says-he-wouldnt-be-surprised-if-la-knight-lost-to-roman-reigns-in-30-seconds-at-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T01:57:28.311Z"
+  "at": "2026-10-10T02:07:35.964Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-wants-to-end-cm-punks-career-at-wwe-money-in-the-bank-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T01:57:28.241Z"
+  "at": "2026-10-10T02:07:35.881Z"
  },
  "https://www.fightful.com/wrestling/aew-winter-is-coming-to-take-place-in-mexico": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T01:57:27.975Z"
+  "at": "2026-10-10T02:07:35.567Z"
+ },
+ "https://www.wrestlinginc.com/2282762/wwe-smackdown-october-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-10T01:58:42.119Z"
  },
  "https://www.fightful.com/wrestling/max-caster-to-face-moose-at-tna-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",

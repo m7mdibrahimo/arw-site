@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269233/wwe-wrestlemania-43-saudi-arabia-full-steam-ahead-plans/": {
-    "matchedFile": "20260925191906-wwe-تمضي-قدما-في-خطط-إقامة-عرض-wrestlemania-43-في-السعودية-رغم-مخاوف-السفر.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-25T18:25:52.337Z"
-  },
-  "https://www.ringsidenews.com/kairi-sane-still-not-signed-aew-all-out-appearance-ruled-out/": {
-    "matchedFile": "20260925213346-آخر-المستجدات-حول-محادثات-كايري-مع-اتحاد-aew.md",
-    "reason": "الخبر الجديد يتناول نفس تفاصيل مفاوضات كايري ساني مع AEW وعدم توقيع عقد واستبعاد ظهورها في عرض All Out، وهي نفس المعلومة الواردة في الخبر رقم 0 من مصدر آخر.",
-    "at": "2026-09-25T18:55:59.523Z"
-  },
   "https://www.fightful.com/wrestling/xelina-says-she-very-much-was-miserable-towards-the-end-of-her-wwe-run/": {
     "matchedFile": "20260925193107-زيلينا-فيغا-تعترف-بأنها-كانت-تعيسة-للغاية-نحو-نهاية-مسيرتها-في-wwe.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261010044605-أليكسا-بليس-وتايتوم-باكسلي-تفوزان-ببطولة-wwe-للفرق-للسيدات-في-عرض-wwe-smackdown.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة النزال والحدث الذي تم نشره بالفعل في الخبر رقم 0، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
     "at": "2026-10-10T01:57:30.181Z"
+  },
+  "https://www.fightful.com/wrestling/2-cold-scorpio-sentenced/": {
+    "matchedFile": "20261010011629-الحكم-بسجن-نجم-wwe-السابق-تو-كولد-سكاربيو-ست-سنوات-في-قضية-اعتداء.md",
+    "reason": "الخبر الجديد يتناول نفس واقعة الحكم القضائي على تو كولد سكاربيو التي تم تغطيتها بالفعل في الخبر رقم 0، ولا يقدم تطوراً جديداً جوهرياً.",
+    "at": "2026-10-10T02:07:40.166Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-9-2026-all-mitb-participants-appear-fatal-influence-vs-charlotte-flair-tatum-paxley-more/": {
+    "matchedFile": "20261010023100-نتائج-عرض-wwe-smackdown-9-أكتوبر-2026-عودة-سي-ام-بانك-وأبرز-أحداث-العرض.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-10-10T02:07:40.322Z"
   }
 }
