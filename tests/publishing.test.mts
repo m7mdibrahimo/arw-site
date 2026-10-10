@@ -4296,3 +4296,8 @@ test('«بـال ايه نايت» (glued prefix before an «ال» name) is cor
   // 2026-10-10: «التي تجمعه بـال ايه نايت» reached the site.
   assert.equal(applyCorrections('المواجهة التي تجمعه بـال ايه نايت'), 'المواجهة التي تجمعه مع ال ايه نايت');
 });
+
+test('«السالة» typo is corrected to «الصالة»', () => {
+  // 2026-10-11: «في محيط السالة» reached the site.
+  assert.equal(applyCorrections('الشجار في محيط السالة'), 'الشجار في محيط الصالة');
+});
