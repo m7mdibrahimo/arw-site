@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/wwe-money-bank-results-highlights-key-moments-october-10-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T20:14:52.367Z"
- },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026": {
-  "reason": "المراجعة رفضته: المتن (370 حرف) أطول بكثير من المصدر (49 حرف) — حشو",
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (270 حرف) أطول بكثير من المصدر (49 حرف) — حشو",
   "retry": false,
-  "at": "2026-10-10T20:14:24.146Z"
+  "at": "2026-10-10T20:24:50.313Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T20:14:04.726Z"
+  "at": "2026-10-10T20:24:26.544Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-i-actually-stay-worried-wwe-is-going-to-just-take-the-womens-title-off-me-at-any-given-moment": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T20:14:04.488Z"
+  "at": "2026-10-10T20:24:26.383Z"
  },
  "https://www.fightful.com/wrestling/la-knight-explains-that-he-wasnt-complaining-when-he-called-roman-reigns-the-most-manufactured-industry-plant-in-the-business": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T20:14:04.152Z"
+  "at": "2026-10-10T20:24:26.157Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-says-hes-told-austin-theory-to-stay-as-safe-as-possible-to-avoid-suffering-an-injury-due-to-the-visions-curse": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T20:14:03.648Z"
+  "at": "2026-10-10T20:24:25.822Z"
  },
  "https://www.fightful.com/wrestling/john-cena-wont-pitch-working-on-a-movie-with-the-rock-to-the-rock-but-hes-all-in-if-theres-an-opportunity-to-work-with-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T20:14:03.400Z"
+  "at": "2026-10-10T20:24:25.659Z"
  },
  "https://www.fightful.com/wrestling/wwe-money-in-the-bank-2026-preview-start-time-how-to-watch-location-10-10": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T20:14:03.204Z"
+  "at": "2026-10-10T20:24:25.528Z"
+ },
+ "https://www.ringsidenews.com/wwe-money-bank-results-highlights-key-moments-october-10-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-10T20:14:52.367Z"
  },
  "https://www.ringsidenews.com/first-look-wwe-money-bank-stage-setup-smoothie-king-center": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
