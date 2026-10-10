@@ -602,8 +602,21 @@ export function dropRepeatedClause(line: string, minWords = 7): string {
   return line;
 }
 
+/**
+ * A block the writer glued onto the end of a paragraph: «…(9:18). **المواجهة الثالثة…**» (CMLL Viernes
+ * Espectacular) and «…قال: > "…"» (Booker T, Lash Legend) rendered as plain text with a stray «>» or «**».
+ * A match heading or a quote marker always starts its own paragraph (INCIDENTS #404).
+ */
+export function splitGluedBlocks(text: string): string {
+  if (!text) return text;
+  return text
+    .replace(/([.!؟?)”"»:])[ \t]+(\*\*(?:المواجهة|الحدث الرئيسي)\s)/g, "$1\n\n$2")
+    .replace(/([^\n>])[ \t]+> (?=["«“])/g, "$1\n\n> ");
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
+  text = splitGluedBlocks(text);
   text = repairMixedTitles(text);
   // An instruction the writer echoed into the text: «خلال إضافة علامات التنصيص وعلامة الاستفهام كما في
   // المصدر، استرجع شيفاني…» went live (INCIDENTS #254) — the clause goes, the sentence stays

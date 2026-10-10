@@ -8,6 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { splitGluedBlocks } from "./news-qa";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
 const NEWS_DIR = path.join(process.cwd(), "content", "news");
@@ -151,7 +152,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   const existing = findEnglishEdition(i.sourceId, dir);
   // another story already has this address: the source id keeps it unique
   if (fs.readdirSync(dir).some((f) => f.endsWith(`-${slug}.md`) && (!existing || path.join(dir, f) !== existing))) slug = `${slug}-${i.sourceId}`;
-  const body = e.body.replace(/\r/g, "").replace(/\n{3,}/g, "\n\n").trim();
+  const body = splitGluedBlocks(e.body.replace(/\r/g, "")).replace(/\n{3,}/g, "\n\n").trim();
   // the embeds the Arabic story has and the English one left out go at its end
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
   const finalBody = missing.length ? `${body}\n\n${missing.join("\n\n")}` : body;

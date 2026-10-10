@@ -4264,3 +4264,13 @@ test('«حركة الحركات» (meaningless doubling) is corrected automatica
   const { corrections } = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'editorial/corrections.json'), 'utf8'));
   assert.ok(corrections.some((c: any) => c.wrong === 'حركة الحركات' && c.right === 'الحركات'));
 });
+
+test('a match heading or a quote glued to the end of a paragraph starts its own paragraph (INCIDENTS #404)', async () => {
+  const { splitGluedBlocks } = await import('../scripts/news-qa');
+  assert.equal(splitGluedBlocks('يفوز على فريق (9:18). **المواجهة الثالثة: نزال**'), 'يفوز على فريق (9:18).\n\n**المواجهة الثالثة: نزال**');
+  assert.equal(splitGluedBlocks('He said: > "I remember it"'), 'He said:\n\n> "I remember it"');
+  assert.equal(splitGluedBlocks('- **الحدث الرئيسي المثير:** نص'), '- **الحدث الرئيسي المثير:** نص');
+  assert.equal(autoFix('فاز. **المواجهة الأولى: أ**'), 'فاز.\n\n**المواجهة الأولى: أ**');
+  const once = splitGluedBlocks('a. **المواجهة الأولى: x**');
+  assert.equal(splitGluedBlocks(once), once);
+});
