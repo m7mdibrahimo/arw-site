@@ -1145,6 +1145,10 @@ html.arw-fs body *:not(iframe):not(video){ transform:none !important; filter:non
 /* every box around the fullscreen player (post-player.js): no clipping, rounded mask, shadow, containment or fading —
    the rounded, clipped frame and the deck's container-type were left in place the first time and it came back */
 html.arw-fs .arw-fs-path{ overflow:visible !important; border-radius:0 !important; box-shadow:none !important; contain:none !important; container-type:normal !important; isolation:auto !important; opacity:1 !important; transition:none !important; }
+/* nothing else of the page is drawn while a player is fullscreen (still black in Chrome on a Mac, 2026-10-10): every
+   element that is not the player or a box around it is hidden, and comes back when fullscreen ends */
+html.arw-fs body *:not(.arw-fs-path):not(.arw-fs-el){ visibility:hidden !important; }
+html.arw-fs .arw-fs-el{ visibility:visible !important; }
 /* the player itself: a plain black full screen, nothing on it */
 iframe:fullscreen, video:fullscreen{ border-radius:0 !important; transform:none !important; filter:none !important; opacity:1 !important; clip-path:none !important; background:#000 !important; }
 iframe:-webkit-full-screen, video:-webkit-full-screen{ border-radius:0 !important; transform:none !important; filter:none !important; opacity:1 !important; background:#000 !important; }
