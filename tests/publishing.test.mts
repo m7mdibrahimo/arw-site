@@ -4191,3 +4191,7 @@ test('podcast name Flagrant is never transliterated (INCIDENTS #395)', () => {
   assert.equal(applyCorrections('خلال استضافته في بودكاست فاغرانانت بأنه'), 'خلال استضافته في بودكاست Flagrant بأنه');
   assert.equal(applyCorrections('بودكاست Flagrant'), 'بودكاست Flagrant');
 });
+
+test('«سيعود أرباح» is corrected to «ستعود أرباح» (INCIDENTS #397)', () => {
+  assert.equal(applyCorrections('وسيعود أرباح العرض لصالح الصندوق'), 'وستعود أرباح العرض لصالح الصندوق');
+});
