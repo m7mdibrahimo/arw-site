@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Results: October 9, 2026"
 slug: "wwe-smackdown-results-october-9-2026"
-description: "The October 9, 2026, episode of WWE SmackDown emanated live from The Cajundome in Lafayette, Louisiana, serving as the final stop before Money in the Bank.…"
+description: "The October 9, 2026, episode of WWE SmackDown emanated live from The Cajundome in Lafayette, Louisiana, as the final stop before WWE Money in the Bank. The…"
 federation: WWE
 date: 2026-10-10T00:51:44.000Z
 source_id: 802252670
@@ -11,16 +11,8 @@ en_tags:
   - "WWE SmackDown"
   - "CM Punk"
   - "Cody Rhodes"
-  - "Sami Zayn"
+  - "Alexa Bliss"
   - "Money in the Bank"
-image: /content/images/ezhqa2gtw682r9ta.jpg
+image: /content/images/6h8zcignlbriu6lg.jpg
 ---
-The October 9, 2026, episode of WWE SmackDown emanated live from The Cajundome in Lafayette, Louisiana, serving as the final stop before Money in the Bank. The broadcast featured a major return from CM Punk and a series of high-stakes confrontations involving the participants of the upcoming ladder matches. 
-
-CM Punk opened the show, reflecting on his history with the Money in the Bank ladder match and expressing his desire to become a three-time winner. He was soon interrupted by Kevin Owens, leading to a heated exchange regarding their shared goal. Undisputed WWE Champion Sami Zayn eventually joined them, mocking both men for their past failures to dethrone him.
-
-In the opening contest, Tiffany Stratton, Jacy Jayne and Lash Legend defeated Sol Ruca, Lola Vice and Roxanne Perez in a 6-woman tag team match after Legend hit a Lash Extension on Ruca. Following the match, Legend attacked Stratton. Backstage, Charlotte Flair was pulled from her scheduled title match due to an attack by Jade Cargill, B-Fab and Michin, leading Nick Aldis to replace her with Alexa Bliss to team with Tatum Paxley.
-
-In non-title action, MFT (Tama Tonga and Talla Tonga) defeated The War Raiders (Erik and Ivar) after hitting the Brothers' Keeper. Post-match, Shinsuke Nakamura and Kyoki engaged in a brawl with the winners. Later, Cody Rhodes confronted The Miz and Kit Wilson, leading to a physical altercation before Nick Aldis intervened to separate Rhodes and Randy Orton.
-
-The singles match between Danhausen and GUNTHER ended in a no contest after Finn Bálor interfered and attacked The Ring General. In the main event, Fatal Influence (Fallon Henley and Lainey Reid) defended their WWE Women’s Tag Team Championship against Alexa Bliss and Tatum Paxley.
+The October 9, 2026, episode of WWE SmackDown emanated live from The Cajundome in Lafayette, Louisiana, as the final stop before WWE Money in the Bank. The show kicked off with CM Punk making his return to address the upcoming Men's Money in the Bank Ladder Match, leading to verbal confrontations with Kevin Owens and Undisputed WWE Champion Sami Zayn. In the opening match, Tiffany Stratton, Jacy Jayne, and Lash Legend defeated Sol Ruca, Lola Vice, and Roxanne Perez in a 6-woman tag team match, followed by Lash Legend laying out Stratton after the bell. Backstage, Charlotte Flair was attacked by Jade Cargill, B-Fab, and Michin, leaving her unable to compete and forcing Alexa Bliss to replace her in the upcoming title match. In tag team action, MFT defeated The War Raiders in a non-title match before Shinsuke Nakamura and Kyoki made the save. Cody Rhodes interrupted a confrontation involving The Miz and Kit Wilson, sending them out of the ring before demanding a face-to-face meeting with Randy Orton. Damian Priest engaged in a heated exchange with Axiom and Nathan Frazer before a brawl broke out with R-Truth. GUNTHER faced Danhausen in a singles match that ended in a no contest after Finn Balor interfered and attacked the ring general. In the women's division, Alexa Bliss and Tatum Paxley defeated Fatal Influence to capture the WWE Women's Tag Team Championship. In the main event, Trick Williams faced Bron Breakker in a singles match that ended in a disqualification after Austin Theory interfered, triggering a chaotic post-match brawl involving multiple Money in the Bank ladder match participants as the broadcast went off the air.
