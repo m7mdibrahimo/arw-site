@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-money-bank-results-highlights-key-moments-october-10-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-10T19:45:01.980Z"
+ },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T19:42:12.945Z"
- },
- "https://www.ringsidenews.com/wwe-money-bank-results-highlights-key-moments-october-10-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T19:40:01.599Z"
  },
  "https://www.wrestlinginc.com/2281848/wwe-money-in-the-bank-2026-results": {
   "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
