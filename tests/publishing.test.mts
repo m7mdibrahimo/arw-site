@@ -4283,3 +4283,11 @@ test('«فريدريك» alone is corrected to «فريدريكس» (#405)', () 
 test('«ذا WWE Main Event» (فريق The Mane Event) is corrected (#405)', () => {
   assert.equal(applyCorrections('تغلب فريق ذا WWE Main Event على فريق آخر'), 'تغلب فريق ذا مين إيفنت على فريق آخر');
 });
+
+test('dual «أجريتا» and «…تيهما» are blocked as dual forms (INCIDENTS #406)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const codes = (title: string, body: string) => checkArticle(title, body, []).map(i => i.code);
+  const filler = ' وقال المصارع إن الحدث كان رائعا للجميع وإن الجمهور استمتع كثيرا بكل ما شاهده في تلك الليلة الطويلة.'.repeat(4);
+  assert.ok(codes('عنوان عربي كامل للخبر هنا', 'التغييرات التي أجريتاها على شخصيتيهما.' + filler).includes('dual_form'));
+  assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'التغييرات التي أجرتها كل واحدة منهما على شخصيتها.' + filler).includes('dual_form'));
+});
