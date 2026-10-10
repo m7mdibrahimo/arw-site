@@ -4212,3 +4212,20 @@ test('site-branch.yml builds again when Cloudflare failed the last site commit (
   assert.match(wf, /site-retry/);
   assert.match(wf, /conclusion == "failure"/);
 });
+
+test('«ب» glued to a number is corrected to «بـ» and no story has it (#399)', () => {
+  assert.equal(applyCorrections('مقارنة ب339 ألف مشاهد'), 'مقارنة بـ339 ألف مشاهد');
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    assert.ok(!/(?<=\s)ب\d/.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
+  }
+});
+
+test('tag «مصارعة الحرة» is corrected and kept out of stories (#399)', () => {
+  assert.equal(applyCorrections('مصارعة الحرة'), 'المصارعة');
+  assert.equal(applyCorrections('أخبار المصارعة الحرة'), applyCorrections('أخبار المصارعة الحرة'));
+  const dir = path.join(process.cwd(), 'content/news');
+  for (const f of fs.readdirSync(dir)) {
+    assert.ok(!/^ {2}- مصارعة الحرة$/m.test(fs.readFileSync(path.join(dir, f), 'utf8')), f);
+  }
+});
