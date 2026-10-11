@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageTitle = headline or title %}
-{% if page.inputPath and "content/shows" in page.inputPath %}{% set showSeoData = showSeo(headline, title, program_name, event_date, page.url, collections.library, description) %}{% set pageTitle = showSeoData.title %}{% set description = showSeoData.description %}{% endif %}
+{% set ownDescription = description %}{% if page.inputPath and "content/shows" in page.inputPath %}{% set showSeoData = showSeo(headline, title, program_name, event_date, page.url, collections.library, description) %}{% set pageTitle = showSeoData.title %}{% set description = showSeoData.description %}{% endif %}
 {% if page.inputPath and "content/recaps" in page.inputPath and not nostalgia_series %}{% set recapSeoData = recapSeo(headline, title, program_name, event_date, description) %}{% set pageTitle = recapSeoData.title %}{% set description = recapSeoData.description %}{% endif %}
 {% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
 {% set isNews = (kind == 'news') or (page.inputPath and ("content/news" in page.inputPath)) or (page.url and page.url.startsWith('/news/')) %}
@@ -489,6 +489,26 @@
           {% endif %}
         </div>
       {% endif %}
+    {% endif %}
+
+    {% if isShow and not isNostalgiaItem and page.url.startsWith('/shows/') %}
+    {% set about = showAboutFor(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections.news) %}
+    {% if about %}
+    {# «عن العرض»: what the page is, in words (owner 2026-10-11, INCIDENTS #435) #}
+    <section class="show-about reveal" aria-labelledby="show-about-h">
+      <h2 id="show-about-h">{{ about.heading }}</h2>
+      {% for p in about.paragraphs %}<p>{{ p }}</p>{% endfor %}
+      <dl class="show-facts">
+        {% for f in about.facts %}<div><dt>{{ f[0] }}</dt><dd>{{ f[1] }}</dd></div>{% endfor %}
+      </dl>
+      {% if about.results %}
+      <a class="show-results" href="{{ about.results.url | cleanUrl }}">
+        <span><b>نتائج العرض كاملة</b><small>تنبيه: تكشف نتائج النزالات</small></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      {% endif %}
+    </section>
+    {% endif %}
     {% endif %}
 
     <div class="post-body">

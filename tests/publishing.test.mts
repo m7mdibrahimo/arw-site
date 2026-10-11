@@ -4415,3 +4415,23 @@ test('seo-new-shows: a page that left the live sitemap is not listed as a proble
   const src = fs.readFileSync(path.join(process.cwd(), "scripts/seo-new-shows.ts"), 'utf-8');
   assert.match(src, /const recent = Object\.entries\(state\.pages\)\s*\.filter\(\(\[u, p\]\) => lastmodOf\.has\(u\)/);
 });
+
+test('every show page says in words what it is: «عن العرض» with true facts and its results story', async () => {
+  // The site at the top of Google has ~800 words about each show; ours had none (owner 2026-10-11 — INCIDENTS #435)
+  const { showAbout, findResults, durationWords } = (await import('../lib/show-about.cjs')).default;
+  assert.equal(durationWords('01:35:55'), 'ساعة و35 دقيقة');
+  assert.equal(durationWords('03:16:49'), '3 ساعات و16 دقيقة');
+  assert.equal(durationWords('02:02:00'), 'ساعتان ودقيقتان');
+  const news = [{ url: '/news/r/', data: { title: 'نتائج عرض WWE SmackDown (9 أكتوبر 2026): أبرز الأحداث' } }, { url: '/news/x/', data: { title: 'خبر عن WWE SmackDown (9 أكتوبر 2026)' } }];
+  const results = findResults(news, 'WWE Smackdown', '9 أكتوبر 2026');
+  assert.equal(results.url, '/news/r/');
+  const a = showAbout({ name: 'عرض سماك داون', dot: '09.10.2026', programName: 'WWE Smackdown', federation: 'WWE', eventDate: '2026-10-09', day: '9 أكتوبر 2026', duration: '01:35:55', servers: 6, qualities: ['360p', '1080p'], description: 'عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.', results });
+  assert.equal(a.heading, 'عن عرض سماك داون 09.10.2026 كامل مترجم');
+  assert.equal(a.paragraphs.length, 1, 'the generic description is not repeated');
+  assert.match(a.paragraphs[0], /الذي أقيم يوم الجمعة 9 أكتوبر 2026 مترجمًا إلى العربية كاملًا، ومدته ساعة و35 دقيقة\. شاهد العرض أونلاين عبر 6 سيرفرات، أو حمّله بجودة ⁨360p⁩ و⁨1080p⁩\.$/);
+  assert.deepEqual(a.facts.map((f: string[]) => f[0]), ['الاتحاد', 'البرنامج', 'تاريخ العرض', 'المدة', 'المشاهدة', 'التحميل']);
+  // the layout puts it on show pages, from the show's own description (not the search one)
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(layout, /showAboutFor\(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections\.news\)/);
+  assert.match(layout, /تنبيه: تكشف نتائج النزالات/);
+});

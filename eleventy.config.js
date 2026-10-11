@@ -1673,6 +1673,29 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").recapSeoText({ headline, title, programName, eventDate, day, description });
   });
 
+  // «عن العرض» on every show page (owner 2026-10-11, INCIDENTS #435): true sentences and facts from the show's own
+  // fields, and its results story when the bots wrote one. Results stories are found once per build by their date.
+  let resultsIndex = null, resultsFor = null;
+  eleventyConfig.addNunjucksGlobal("showAboutFor", function(headline, title, programName, eventDate, duration, servers, dlGroups, federation, description, news) {
+    const { showNameParts } = require("./lib/show-seo.cjs");
+    const { showAbout, findResults } = require("./lib/show-about.cjs");
+    const { arName, dot } = showNameParts(headline, title, eventDate);
+    const day = eventDate ? formatDate(eventDate) : "";
+    if (resultsFor !== news) {
+      resultsFor = news; resultsIndex = new Map();
+      for (const item of news || []) {
+        const t = String((item.data && item.data.title) || "");
+        if (!t.includes("نتائج")) continue;
+        const m = t.match(/\d{1,2} [\u0600-\u06FF]+ \d{4}/);
+        if (m) { if (!resultsIndex.has(m[0])) resultsIndex.set(m[0], []); resultsIndex.get(m[0]).push(item); }
+      }
+    }
+    const results = findResults(resultsIndex.get(day) || [], programName, day);
+    const g = dlGroups || {};
+    const qualities = [["light", "360p"], ["low", "480p"], ["medium", "720p"], ["high", "1080p"]].filter(([k]) => g[k] && g[k].length).map(([, v]) => v);
+    return showAbout({ name: arName, dot, programName, federation, eventDate, day, duration, servers: Array.isArray(servers) ? servers.length : 0, qualities, description, results });
+  });
+
   // ===== نوستالجيا: بيجمع أي عرض/ملخص مكتوب فيه "nostalgia_series" في مجموعة (سلسلة) واحدة =====
   // مفيش محتاج مجلد جديد أو Content type جديد: أي عرض عادي في content/shows أو content/recaps
   // ضيف عليه الحقول التالية في الـ frontmatter بيتحول تلقائيًا لجزء من مسلسل نوستالجيا:
