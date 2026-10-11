@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/penta-answers-if-he-plans-to-have-a-custom-money-in-the-bank-briefcase": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T20:55:33.898Z"
+ },
+ "https://www.fightful.com/wrestling/penta-says-he-doesnt-want-to-cash-in-money-in-the-bank-too-soon": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T20:55:33.753Z"
+ },
+ "https://www.fightful.com/wrestling/carmella-reacts-to-tiffany-stratton-calling-herself-the-first-ever-two-time-womens-money-in-the-bank-winner": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T20:55:33.576Z"
+ },
+ "https://www.fightful.com/wrestling/mini-vikingo-challenging-rey-fenix-for-aaa-world-cruiserweight-title-at-heroes-inmortales": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T20:55:33.374Z"
+ },
+ "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T20:55:33.165Z"
+ },
+ "https://www.fightful.com/wrestling/triple-h-the-thing-that-stuck-out-at-wwe-money-in-the-bank-was-youth": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T20:55:32.981Z"
+ },
  "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,36 +38,6 @@
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
   "at": "2026-10-11T20:45:35.025Z"
- },
- "https://www.fightful.com/wrestling/penta-answers-if-he-plans-to-have-a-custom-money-in-the-bank-briefcase": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:44:46.800Z"
- },
- "https://www.fightful.com/wrestling/penta-says-he-doesnt-want-to-cash-in-money-in-the-bank-too-soon": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:44:46.595Z"
- },
- "https://www.fightful.com/wrestling/carmella-reacts-to-tiffany-stratton-calling-herself-the-first-ever-two-time-womens-money-in-the-bank-winner": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:44:46.349Z"
- },
- "https://www.fightful.com/wrestling/mini-vikingo-challenging-rey-fenix-for-aaa-world-cruiserweight-title-at-heroes-inmortales": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:44:46.067Z"
- },
- "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:44:45.778Z"
- },
- "https://www.fightful.com/wrestling/triple-h-the-thing-that-stuck-out-at-wwe-money-in-the-bank-was-youth": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:44:45.518Z"
  },
  "https://www.fightful.com/wrestling/jevon-evans-sent-crashing-through-ambulance-roof-during-mens-money-in-the-bank-ladder-match": {
   "reason": "مكرر مع خبر نزل قبل كده",

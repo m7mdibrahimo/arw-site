@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269917/aew-all-out-2026-andrade-el-idolo-defeats-pac-national-title/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T00:48:08.760Z"
-  },
   "https://www.fightful.com/wrestling/aew-all-out-results-9-26-2026-will-ospreay-vs-jon-moxley-ladder-match-thekla-persephone-andrade-more/": {
     "matchedFile": "20260927010000-نتائج-عرض-aew-all-out-26-سبتمبر-2026-عدة-نزالات-كبرى-على-الألقاب-ونزالان-لتحديد-المنافسين-الأولين.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW All Out (26 سبتمبر 2026) والنزالات الافتتاحية التي تم نشرها مسبقاً في الخبر رقم [0].",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (تكريم أميزينج ريد في قاعة المشاهير وإعلانه المشاركة في نزال X Division) الذي تم ذكره بالفعل في تقرير نتائج عرض Bound for Glory المنشور.",
     "at": "2026-10-11T20:46:00.053Z"
+  },
+  "https://www.fightful.com/wrestling/watch-2026-tna-hall-of-fame-live-and-free-at-4pm-et-on-october-11th/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "الخبر الجديد يعلن عن بث حفل قاعة مشاهير TNA الذي تم تغطيته بالفعل ضمن تقرير نتائج عرض Bound for Glory المنشور في الخبر رقم 0.",
+    "at": "2026-10-11T20:56:02.890Z"
   }
 }
