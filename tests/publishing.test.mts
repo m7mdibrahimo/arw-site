@@ -4410,3 +4410,8 @@ test('recap pages get a searchable title and description with program, date and 
   const own = recapSeoText({ headline: 'ملخص عرض الرو', title: 'x', programName: 'WWE RAW', eventDate: '2026-10-05', day: '5 أكتوبر 2026', description: 'وصف خاص بالمحرر.' });
   assert.equal(own.description, 'وصف خاص بالمحرر.');
 });
+
+test('seo-new-shows: a page that left the live sitemap is not listed as a problem (INCIDENTS #433)', () => {
+  const src = fs.readFileSync(path.join(process.cwd(), "scripts/seo-new-shows.ts"), 'utf-8');
+  assert.match(src, /const recent = Object\.entries\(state\.pages\)\s*\.filter\(\(\[u, p\]\) => lastmodOf\.has\(u\)/);
+});

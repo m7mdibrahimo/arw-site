@@ -213,8 +213,10 @@ async function main() {
     const rep = JSON.parse(fs.readFileSync(path.join(OUT, "search-console.json"), "utf-8"));
     for (const r of rep.pages || []) perf[r.keys[0]] = { clicks: r.clicks, impressions: r.impressions, position: r.position };
   } catch {}
+  // a page that left the live sitemap (redirected or removed on purpose) is no longer something Google must index —
+  // listing it kept «مش متفهرسة» problems on /library/cmll/ etc. after they became redirects (INCIDENTS #433)
   const recent = Object.entries(state.pages)
-    .filter(([, p]) => p.pinged && p.pinged !== "before tracking" && now - Date.parse(p.firstSeen) <= 14 * 24 * H)
+    .filter(([u, p]) => lastmodOf.has(u) && p.pinged && p.pinged !== "before tracking" && now - Date.parse(p.firstSeen) <= 14 * 24 * H)
     .sort((a, b) => Date.parse(b[1].firstSeen) - Date.parse(a[1].firstSeen));
   const problems: string[] = [];
   for (const [u, p] of recent) {
