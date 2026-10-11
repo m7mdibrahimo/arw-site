@@ -330,9 +330,9 @@
               </span>
               <span class="action-text">تحديث المشغل</span>
             </button>
-            <button type="button" class="player-action-btn player-cinema-btn" id="playerCinemaBtn" title="تفعيل وضع السينما وإعتام الإضاءة (اختصار: T)" aria-label="وضع السينما">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
-              <span>وضع السينما</span>
+            <button type="button" class="player-action-btn player-fs-btn" id="playerFsBtn" title="مشاهدة الفيديو بملء الشاشة (اختصار: F)" aria-label="ملء الشاشة">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              <span>ملء الشاشة</span>
             </button>
           </div>
         </div>
@@ -377,11 +377,6 @@
         <p class="wd-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span><b>تنبيه:</b> سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية يُنصح بتحميل العرض.</span></p>
         {% endif %}
       </section>
-      <div class="cinema-backdrop" id="cinemaBackdrop"></div>
-      <button type="button" class="cinema-exit-float" id="cinemaExitFloat" aria-label="إلغاء وضع السينما">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        <span>إلغاء وضع السينما (Esc)</span>
-      </button>
     {% endif %}
 
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high, downloads_light, downloads_multi) %}

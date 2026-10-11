@@ -323,37 +323,108 @@
     reloadBtn.addEventListener('click', reloadCurrentServer);
   }
 
-  // Cinema / Theater Mode Handler
-  var cinemaBackdrop = document.getElementById('cinemaBackdrop');
-  var cinemaExitFloat = document.getElementById('cinemaExitFloat');
-  var cinemaBtn = document.getElementById('playerCinemaBtn');
-
-  function toggleCinemaMode(forceState) {
-    var shouldActivate = (typeof forceState === 'boolean') ? forceState : !document.body.classList.contains('cinema-mode-active');
-    document.body.classList.toggle('cinema-mode-active', shouldActivate);
-    if (cinemaBtn) {
-      cinemaBtn.classList.toggle('is-active', shouldActivate);
-      var text = cinemaBtn.querySelector('span');
-      if (text) text.textContent = shouldActivate ? 'إلغاء السينما' : 'وضع السينما';
+  // ==== Fullscreen (owner 2026-10-10: «وضع السينما» replaced by «ملء الشاشة», and turning the device sideways) ====
+  // A server's own fullscreen button runs inside its iframe, and browsers treat that differently on every device: black
+  // with only the sound in Chrome on a Mac, nothing at all on a tablet — while the same link on its own page works.
+  // «ملء الشاشة» is the site's: the player box (video inside) fills the screen through the page itself, the way the
+  // server's own page does it. Where the browser has no fullscreen for an element (iPhone) the box fills the screen
+  // by itself (.arw-pfs) with an × to leave; turning a phone or tablet sideways while a video plays does the same.
+  // While anything is fullscreen the page under it keeps no layer effects and is hidden (.arw-fs-path / .arw-fs-el):
+  // the server's own button stays and is covered by that too (black screen, INCIDENTS #386).
+  var playerFs = (function(){
+    var root = document.documentElement;
+    var box = embedBox;
+    var fsBtn = document.getElementById('playerFsBtn');
+    var pseudo = null; // 'button' | 'rotate' while the box fills the screen by itself
+    function realFs(){ return document.fullscreenElement || document.webkitFullscreenElement || null; }
+    function clearPath(){
+      Array.prototype.forEach.call(document.querySelectorAll('.arw-fs-path, .arw-fs-el'), function(el){ el.classList.remove('arw-fs-path', 'arw-fs-el'); });
     }
-    if (shouldActivate) {
-      // the whole box in view under the sticky header (centered when it fits, its top edge when it doesn't)
-      var container = document.getElementById('watchDeck') || embedBox;
-      if (container) {
-        var hdr = document.querySelector('header');
-        var off = (hdr ? hdr.getBoundingClientRect().height : 0) + 12;
-        var rect = container.getBoundingClientRect();
-        var room = window.innerHeight - off;
-        window.scrollTo({ top: window.scrollY + rect.top - off - Math.max(0, (room - rect.height) / 2), behavior: 'smooth' });
-      }
+    function markPage(fs){
+      clearPath();
+      root.classList.toggle('arw-fs', !!fs);
+      if (!fs) return;
+      for (var el = fs.parentElement; el && el !== document.documentElement; el = el.parentElement) el.classList.add('arw-fs-path');
+      fs.classList.add('arw-fs-el', 'arw-fs-nudge');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ fs.classList.remove('arw-fs-nudge'); }); });
     }
-  }
+    function lockLandscape(){ try { if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(function(){}); } catch(e){} }
+    function unlockOrientation(){ try { if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch(e){} }
+    function sync(){
+      var fs = realFs();
+      markPage(fs || (pseudo ? box : null));
+      if (!fs) unlockOrientation();
+      if (fsBtn) fsBtn.setAttribute('aria-pressed', fs === box || pseudo ? 'true' : 'false');
+    }
+    document.addEventListener('fullscreenchange', sync);
+    document.addEventListener('webkitfullscreenchange', sync);
 
-  if (cinemaBtn) cinemaBtn.addEventListener('click', function(){ toggleCinemaMode(); });
-  if (cinemaBackdrop) cinemaBackdrop.addEventListener('click', function(){ toggleCinemaMode(false); });
-  if (cinemaExitFloat) cinemaExitFloat.addEventListener('click', function(){ toggleCinemaMode(false); });
+    var exitBtn = null;
+    if (box) {
+      exitBtn = document.createElement('button');
+      exitBtn.type = 'button';
+      exitBtn.className = 'pfs-exit';
+      exitBtn.setAttribute('aria-label', 'الخروج من ملء الشاشة');
+      exitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      exitBtn.addEventListener('click', function(){
+        var fs = realFs();
+        if (fs) (document.exitFullscreen || document.webkitExitFullscreen).call(document); else exitPseudo();
+      });
+      box.appendChild(exitBtn);
+    }
+    function enterPseudo(kind){
+      if (!box || pseudo) return;
+      pseudo = kind;
+      box.classList.add('arw-pfs');
+      root.classList.add('arw-pfs-on');
+      // the phone's back button leaves it, like any full-screen view
+      if (kind === 'button') { try { history.pushState({ arwPfs: 1 }, ''); } catch(e){} }
+      sync();
+    }
+    function exitPseudo(fromHistory){
+      if (!pseudo) return;
+      var kind = pseudo;
+      pseudo = null;
+      box.classList.remove('arw-pfs');
+      root.classList.remove('arw-pfs-on');
+      sync();
+      if (kind === 'button' && !fromHistory) { try { if (history.state && history.state.arwPfs) history.back(); } catch(e){} }
+    }
+    window.addEventListener('popstate', function(){ if (pseudo === 'button') exitPseudo(true); });
+    function canRealFs(){
+      return !!(box && (box.requestFullscreen || box.webkitRequestFullscreen) && (document.fullscreenEnabled || document.webkitFullscreenEnabled));
+    }
+    function toggle(){
+      if (!box) return;
+      var fs = realFs();
+      if (fs) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+      if (pseudo) { exitPseudo(); return; }
+      // nothing playing yet: the button starts it, then fills the screen
+      if (watchDeck && watchDeck.classList.contains('is-idle') && typeof startPlayback === 'function') startPlayback();
+      if (!canRealFs()) { enterPseudo('button'); return; }
+      var req;
+      try { req = box.requestFullscreen ? box.requestFullscreen({ navigationUI: 'hide' }) : box.webkitRequestFullscreen(); }
+      catch(e){ enterPseudo('button'); return; }
+      if (req && req.then) req.then(lockLandscape, function(){ enterPseudo('button'); });
+      else lockLandscape();
+    }
+    if (fsBtn) fsBtn.addEventListener('click', toggle);
 
-  // Keyboard Shortcuts (T: Cinema, R: Reload, Esc: Exit Cinema)
+    // Turning a phone or tablet sideways while a video plays fills the screen; turning it back returns it
+    var coarse = window.matchMedia ? matchMedia('(pointer: coarse)') : null;
+    var land = window.matchMedia ? matchMedia('(orientation: landscape)') : null;
+    function playing(){ return !!(box && box.querySelector('iframe, video') && !(watchDeck && watchDeck.classList.contains('is-idle'))); }
+    function onRotate(){
+      if (!coarse || !coarse.matches || realFs()) return;
+      if (land.matches) { if (playing() && !pseudo) enterPseudo('rotate'); }
+      else if (pseudo === 'rotate') exitPseudo();
+    }
+    if (land) { if (land.addEventListener) land.addEventListener('change', onRotate); else if (land.addListener) land.addListener(onRotate); }
+
+    return { toggle: toggle, exit: function(){ exitPseudo(); }, active: function(){ return !!pseudo; } };
+  })();
+
+  // Keyboard Shortcuts (F: full screen, R: reload, Esc: leave the site's own full screen)
   document.addEventListener('keydown', function(e){
     var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) return;
@@ -361,12 +432,10 @@
 
     var key = e.key;
     if (key === 'Escape') {
-      if (document.body.classList.contains('cinema-mode-active')) {
-        toggleCinemaMode(false);
-      }
-    } else if (key === 't' || key === 'T' || key === 'ف') {
+      if (playerFs.active()) playerFs.exit();
+    } else if (key === 'f' || key === 'F' || key === 'ب') {
       e.preventDefault();
-      toggleCinemaMode();
+      playerFs.toggle();
     } else if (key === 'r' || key === 'R' || key === 'ق') {
       e.preventDefault();
       reloadCurrentServer();
@@ -377,28 +446,3 @@
     }
   });
 
-  // ==== A server's own fullscreen button (owner 2026-10-09: black screen, only the sound, until a reload) ====
-  // While a player is fullscreen the page under it drops every effect that makes the browser composite it in
-  // layers (fade-in transforms, blurred glass bars, filters): those layers are what blacked out the video.
-  // It came back (2026-10-10): every box around the player — its rounded, clipped frame and the deck's
-  // «container-type» (which adds layout containment) — is also cleared while it is fullscreen (.arw-fs-path), and the
-  // player is pushed onto a fresh layer once it is up, so the browser redraws it instead of showing a black surface.
-  (function(){
-    var root = document.documentElement;
-    function clearPath(){
-      Array.prototype.forEach.call(document.querySelectorAll('.arw-fs-path, .arw-fs-el'), function(el){ el.classList.remove('arw-fs-path', 'arw-fs-el'); });
-    }
-    function sync(){
-      var fs = document.fullscreenElement || document.webkitFullscreenElement || null;
-      clearPath();
-      root.classList.toggle('arw-fs', !!fs);
-      if (!fs) return;
-      for (var el = fs.parentElement; el && el !== document.documentElement; el = el.parentElement) el.classList.add('arw-fs-path');
-      // the rest of the page is hidden while the player is fullscreen (2026-10-10, still black in Chrome on a Mac): the
-      // browser has nothing to draw but the player
-      fs.classList.add('arw-fs-el', 'arw-fs-nudge');
-      requestAnimationFrame(function(){ requestAnimationFrame(function(){ fs.classList.remove('arw-fs-nudge'); }); });
-    }
-    document.addEventListener('fullscreenchange', sync);
-    document.addEventListener('webkitfullscreenchange', sync);
-  })();

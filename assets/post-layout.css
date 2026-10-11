@@ -226,11 +226,6 @@
   .wd-poster:focus-visible{ outline:none; }
   .wd-poster:focus-visible .wd-play{ outline:3px solid var(--teal); outline-offset:3px; }
   .watch-deck:not(.is-idle) .wd-poster{ opacity:0; visibility:hidden; pointer-events:none; }
-  /* a transform on .post-wrap (the fade-in) traps the «fixed» dark backdrop inside the 820px text column and the box
-     under it; in cinema mode it is dropped at once, with no transition (a 0.45s slide made a black block first) */
-  body.cinema-mode-active .post-wrap{ transform:none !important; transition:none !important; will-change:auto !important; }
-  body.cinema-mode-active header, body.cinema-mode-active .arw-bottom-nav{ opacity:.1; pointer-events:none; transition:opacity .35s ease; }
-  body.cinema-mode-active .watch-deck{ position:relative; z-index:9999; box-shadow:0 0 70px rgba(47,208,204,.28), 0 24px 70px rgba(0,0,0,.9); }
 
   /* narrow box (phone): the player on top and the six servers under it, three to a row, like the download cards */
   @container (max-width:600px){
@@ -244,7 +239,7 @@
     .srv-mq{ font-size:10.5px; }
     .srv-row.active{ border-color:var(--teal); }
     .srv-row.active::before{ display:none; }
-    .watch-deck .wd-acts .action-text, .watch-deck .wd-acts .player-cinema-btn > span{ display:none; }
+    .watch-deck .wd-acts .action-text, .watch-deck .wd-acts .player-fs-btn > span{ display:none; }
     .watch-deck .wd-acts .player-action-btn{ padding:8px !important; }
     .watch-deck .wd-acts .player-action-btn svg{ width:17px; height:17px; }
     .wd-note{ font-size:12.5px; }
@@ -416,67 +411,6 @@
     color:#04201d;
   }
 
-  /* ═══ Cinema / Theater Mode ═══ */
-  .cinema-backdrop{
-    position:fixed;
-    inset:0;
-    background:rgba(5, 7, 10, 0.95);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    z-index:9998;
-    opacity:0;
-    visibility:hidden;
-    transition:opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
-    pointer-events:none;
-  }
-  body.cinema-mode-active .cinema-backdrop{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-  }
-  body.cinema-mode-active .video-embed-container{
-    position:relative !important;
-    z-index:9999 !important;
-  }
-  body.cinema-mode-active .video-embed{
-    box-shadow:0 0 60px rgba(47, 199, 184, 0.35), 0 24px 70px rgba(0,0,0,0.9) !important;
-    border-color:rgba(47, 199, 184, 0.45) !important;
-  }
-  body.cinema-mode-active .player-toolbar{
-    position:relative !important;
-    z-index:9999 !important;
-  }
-  .cinema-exit-float{
-    position:fixed;
-    top:calc(16px + env(safe-area-inset-top, 0px));
-    inset-inline-start:16px;
-    z-index:10000;
-    display:inline-flex;
-    align-items:center;
-    gap:7px;
-    padding:8px 16px;
-    border-radius:999px;
-    background:rgba(20, 24, 30, 0.9);
-    color:#fff;
-    border:1px solid rgba(255, 255, 255, 0.18);
-    font:700 12.5px 'Tajawal', sans-serif;
-    cursor:pointer;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(-10px);
-    transition:all 0.25s ease;
-    box-shadow:0 8px 24px rgba(0, 0, 0, 0.5);
-  }
-  body.cinema-mode-active .cinema-exit-float{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
-  }
-  .cinema-exit-float:hover{
-    background:#c73b2c;
-    border-color:#c73b2c;
-    transform:translateY(-2px);
-  }
 
   @media (max-width:640px){
     .player-toolbar{ gap:10px; }
@@ -1147,10 +1081,25 @@ html.arw-fs body *:not(iframe):not(video){ transform:none !important; filter:non
 html.arw-fs .arw-fs-path{ overflow:visible !important; border-radius:0 !important; box-shadow:none !important; contain:none !important; container-type:normal !important; isolation:auto !important; opacity:1 !important; transition:none !important; }
 /* nothing else of the page is drawn while a player is fullscreen (still black in Chrome on a Mac, 2026-10-10): every
    element that is not the player or a box around it is hidden, and comes back when fullscreen ends */
-html.arw-fs body *:not(.arw-fs-path):not(.arw-fs-el){ visibility:hidden !important; }
+html.arw-fs body *:not(.arw-fs-path):not(.arw-fs-el):not(.arw-fs-el *){ visibility:hidden !important; }
 html.arw-fs .arw-fs-el{ visibility:visible !important; }
 /* the player itself: a plain black full screen, nothing on it */
 iframe:fullscreen, video:fullscreen{ border-radius:0 !important; transform:none !important; filter:none !important; opacity:1 !important; clip-path:none !important; background:#000 !important; }
 iframe:-webkit-full-screen, video:-webkit-full-screen{ border-radius:0 !important; transform:none !important; filter:none !important; opacity:1 !important; background:#000 !important; }
 /* once it is up, the player goes onto a fresh layer for two frames, so the browser draws it anew */
 .arw-fs-nudge{ will-change:transform; }
+
+/* The site's own fullscreen (post-player.js, «ملء الشاشة» and turning a phone/tablet sideways, owner 2026-10-10): the
+   player box fills the screen with the video in it. Where the browser has real fullscreen for it, that is used; where
+   it doesn't (iPhone) or on turning the device, the box fills the screen by itself (.arw-pfs), with an × to leave. */
+html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
+.video-embed.arw-pfs{ position:fixed !important; inset:0 !important; width:100vw !important; height:100vh !important; height:100dvh !important; max-width:none !important; max-height:none !important; aspect-ratio:auto !important; padding:0 !important; margin:0 !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; z-index:2147483000 !important; background:#000 !important; }
+.video-embed.arw-pfs iframe, .video-embed.arw-pfs video{ position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; }
+.pfs-exit{ display:none; }
+.video-embed.arw-pfs .pfs-exit{ display:flex; position:absolute; top:calc(10px + env(safe-area-inset-top, 0px)); left:calc(10px + env(safe-area-inset-left, 0px)); z-index:10; width:40px; height:40px; border-radius:50%; border:0; padding:0; align-items:center; justify-content:center; background:rgba(0,0,0,.55); color:#fff; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.video-embed.arw-pfs .pfs-exit svg{ width:18px; height:18px; }
+/* in the browser's own full screen the × shows on touch screens (no Esc key there); a computer leaves with Esc */
+@media (pointer: coarse){
+  .video-embed:fullscreen .pfs-exit{ display:flex; position:absolute; top:calc(10px + env(safe-area-inset-top, 0px)); left:calc(10px + env(safe-area-inset-left, 0px)); z-index:10; width:40px; height:40px; border-radius:50%; border:0; padding:0; align-items:center; justify-content:center; background:rgba(0,0,0,.55); color:#fff; cursor:pointer; }
+  .video-embed:fullscreen .pfs-exit svg{ width:18px; height:18px; }
+}

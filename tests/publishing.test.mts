@@ -3557,8 +3557,8 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   // the player script follows the new rows, not the old tabs
   assert.doesNotMatch(layout, /querySelectorAll\('\.server-tab'\)/);
   assert.match(layout, /var srvRows = Array\.from\(document\.querySelectorAll\('\.srv-row'\)\);/);
-  // cinema mode covers the whole screen
-  assert.match(layout, /body\.cinema-mode-active \.post-wrap\{ transform:none !important; transition:none !important;/);
+  // «وضع السينما» is gone: «ملء الشاشة» took its place (owner 2026-10-10)
+  assert.doesNotMatch(layout, /cinema/i);
   assert.match(layout, /\.reveal\.is-visible\{ opacity:1; transform:none;/);
   // no colloquial words in the box
   const deck = layout.slice(layout.indexOf('<section class="watch-deck'), layout.indexOf('</section>', layout.indexOf('<section class="watch-deck')));
@@ -4247,7 +4247,7 @@ test('a fullscreen player has nothing around it that can black it out: frame, de
   assert.match(player, /for \(var el = fs\.parentElement; el && el !== document\.documentElement; el = el\.parentElement\) el\.classList\.add\('arw-fs-path'\);/);
   assert.match(player, /fs\.classList\.add\('arw-fs-el', 'arw-fs-nudge'\)/);
   // the rest of the page is hidden while a player is fullscreen (still black in Chrome on a Mac)
-  assert.match(fs.readFileSync('assets/post-layout.css', 'utf8'), /html\.arw-fs body \*:not\(\.arw-fs-path\):not\(\.arw-fs-el\)\{ visibility:hidden !important; \}/);
+  assert.match(fs.readFileSync('assets/post-layout.css', 'utf8'), /html\.arw-fs body \*:not\(\.arw-fs-path\):not\(\.arw-fs-el\):not\(\.arw-fs-el \*\)\{ visibility:hidden !important; \}/);
   const css = fs.readFileSync('assets/post-layout.css', 'utf8');
   assert.match(css, /html\.arw-fs \.arw-fs-path\{ overflow:visible !important; border-radius:0 !important; box-shadow:none !important; contain:none !important; container-type:normal !important;/);
   assert.match(css, /iframe:fullscreen, video:fullscreen\{ border-radius:0 !important; transform:none !important;/);
@@ -4300,4 +4300,24 @@ test('«بـال ايه نايت» (glued prefix before an «ال» name) is cor
 test('«السالة» typo is corrected to «الصالة»', () => {
   // 2026-10-11: «في محيط السالة» reached the site.
   assert.equal(applyCorrections('الشجار في محيط السالة'), 'الشجار في محيط الصالة');
+});
+
+test('«ملء الشاشة» replaces «وضع السينما»: the site fills the screen with the player on every device, and turning a phone/tablet sideways does too', () => {
+  // owner 2026-10-10: a server's own fullscreen button was black on a Mac and did nothing on a tablet
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /<button type="button" class="player-action-btn player-fs-btn" id="playerFsBtn"/);
+  assert.match(layout, /<span>ملء الشاشة<\/span>/);
+  assert.doesNotMatch(layout, /cinema|وضع السينما/i);
+  const player = fs.readFileSync('assets/post-player.js', 'utf8');
+  assert.doesNotMatch(player, /cinema/i);
+  assert.match(player, /box\.requestFullscreen \? box\.requestFullscreen\(\{ navigationUI: 'hide' \}\) : box\.webkitRequestFullscreen\(\)/);
+  assert.match(player, /if \(!canRealFs\(\)\) \{ enterPseudo\('button'\); return; \}/);
+  assert.match(player, /if \(land\.matches\) \{ if \(playing\(\) && !pseudo\) enterPseudo\('rotate'\); \}/);
+  assert.match(player, /key === 'f' \|\| key === 'F' \|\| key === 'ب'/);
+  const css = fs.readFileSync('assets/post-layout.css', 'utf8');
+  assert.doesNotMatch(css, /cinema/);
+  assert.match(css, /\.video-embed\.arw-pfs\{ position:fixed !important; inset:0 !important;/);
+  // the × leaves the browser's own full screen too, on touch screens
+  assert.match(css, /@media \(pointer: coarse\)\{\n  \.video-embed:fullscreen \.pfs-exit\{ display:flex;/);
+  assert.match(player, /if \(fs\) \(document\.exitFullscreen \|\| document\.webkitExitFullscreen\)\.call\(document\); else exitPseudo\(\);/);
 });
