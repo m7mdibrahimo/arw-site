@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/joseph-sawyer-addresses-knee-injury-scare-gcw-just-days-tna-debut/": {
-    "matchedFile": "20260927044128-جوزيف-ساير-يغادر-نزالا-في-عرض-gcw-مصابا-ويؤكد-غيابه-لعدة-أشهر.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-27T02:13:22.239Z"
-  },
   "https://www.fightful.com/wrestling/steven-borden-conscious-responsive-following-injury-at-aew-all-out/": {
     "matchedFile": "20260927050714-توني-سكيافوني-يكشف-مستجدات-الحالة-الصحية-لـستيفن-بوردن-بعد-إيقاف-نزاله-في-عرض-aew-all-out.md",
     "reason": "الخبر الجديد يكرر تفاصيل الحالة الصحية لستيفن بوردن بعد نقله للمستشفى من عرض AEW All Out والتي تم تغطيتها بالفعل في خبر سابق.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012011429-فرانكي-كازاريان-يفوز-بنزال-call-your-shot-gauntlet-في-عرض-tna-bound-for-glory-2026.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (فوز فرانكي كازاريان بنزال Call Your Shot Gauntlet في عرض Bound For Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-11T22:40:56.582Z"
+  },
+  "https://www.ringsidenews.com/jason-hotch-pins-mustafa-ali-win-tna-international-championship-bound-glory-2026/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "الخبر الجديد يتناول نتيجة نزال بطولة TNA الدولية في عرض Bound for Glory 2026، وهي نتيجة تم ذكرها بالفعل ضمن تقرير نتائج العرض الشامل في الخبر رقم 2.",
+    "at": "2026-10-11T22:42:41.473Z"
   }
 }
