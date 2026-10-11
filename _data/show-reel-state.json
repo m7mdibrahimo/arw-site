@@ -3414,15 +3414,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ام ال دبليو فيوجن 10.10.2026 مترجم",
-    "lastAttempt": 1791745688282,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791746618532,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -3433,7 +3429,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 10.10.2026 مترجم",
-    "lastAttempt": 1791745689192,
+    "lastAttempt": 1791746619818,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
