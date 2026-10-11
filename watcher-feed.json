@@ -1,5 +1,15 @@
 [
   {
+    "id": 333215,
+    "link": "https://www.fightful.com/mma/ufc-fight-night-allen-vs-duncan-results-10-10/",
+    "date": "2026-10-10T22:59:53",
+    "date_gmt": "2026-10-11T02:59:53",
+    "title": {
+      "rendered": "UFC Fight Night: Allen vs. Duncan Results (10/10)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08184047/maxresdefault-48.jpg"
+  },
+  {
     "id": 333220,
     "link": "https://www.fightful.com/wrestling/aaa-world-tag-team-title-defense-la-catalina-to-appear-on-10-17-aaa-on-fox/",
     "date": "2026-10-10T22:48:24",
@@ -288,15 +298,5 @@
       "rendered": "Roman Reigns Partners With StockX To Auction Street Fighter Movie-Worn Pieces And Autographed Air Jordan 12 Retro &#8216;Bloodline&#8217; Sneaker"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10155951/Roman-Reigns-Akuma.jpg"
-  },
-  {
-    "id": 333073,
-    "link": "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026/",
-    "date": "2026-10-10T15:45:00",
-    "date_gmt": "2026-10-10T19:45:00",
-    "title": {
-      "rendered": "Watch: Countdown to WWE Money in the Bank: Oct. 10, 2026"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10151804/maxresdefault-59.jpg"
   }
 ]
