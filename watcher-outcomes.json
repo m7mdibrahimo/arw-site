@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T21:13:39.007Z"
+ },
  "https://www.fightful.com/wrestling/tna-bound-for-glory-results-10-11-leon-slater-vs-nic-nemeth-hardys-vs-syx": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T20:55:32.981Z"
- },
- "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T20:53:45.781Z"
  },
  "https://www.fightful.com/wrestling/jevon-evans-sent-crashing-through-ambulance-roof-during-mens-money-in-the-bank-ladder-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
