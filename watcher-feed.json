@@ -1,5 +1,25 @@
 [
   {
+    "id": 333147,
+    "link": "https://www.fightful.com/wrestling/watch-money-in-the-bank-post-show-oct-10-2026/",
+    "date": "2026-10-10T20:23:51",
+    "date_gmt": "2026-10-11T00:23:51",
+    "title": {
+      "rendered": "Watch: Money in the Bank Post-Show: Oct. 10, 2026"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10202354/maxresdefault-60.jpg"
+  },
+  {
+    "id": 333144,
+    "link": "https://www.fightful.com/wrestling/liv-morgan-wins-womens-world-title-at-wwe-money-in-the-bank/",
+    "date": "2026-10-10T20:21:22",
+    "date_gmt": "2026-10-11T00:21:22",
+    "title": {
+      "rendered": "Liv Morgan Wins Women’s World Title At WWE Money In The Bank"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10202017/HUTxaMwXAAA2fIT.jpg"
+  },
+  {
     "id": 333137,
     "link": "https://www.fightful.com/wrestling/oba-femi-scores-victory-over-bronson-reed-at-wwe-money-in-the-bank/",
     "date": "2026-10-10T19:49:31",
@@ -278,25 +298,5 @@
       "rendered": "Michael Cole Says His Knowledge Of Match Finishes Is &#8216;Fifty-Fifty&#8217;, Names Matches He Wasn&#8217;t Aware Of Results Ahead Of Time"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/10/27214038/michael_cole_0.jpg"
-  },
-  {
-    "id": 35386,
-    "link": "https://www.fightful.com/wrestling/updated-all-elite-roster/",
-    "date": "2026-10-10T10:16:00",
-    "date_gmt": "2026-10-10T14:16:00",
-    "title": {
-      "rendered": "Full AEW Roster"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/11114236/6.png"
-  },
-  {
-    "id": 333032,
-    "link": "https://www.fightful.com/wrestling/njpw-road-to-king-of-pro-wrestling-results-10-10-will-ospreay-makes-surprise-appearance/",
-    "date": "2026-10-10T10:12:21",
-    "date_gmt": "2026-10-10T14:12:21",
-    "title": {
-      "rendered": "NJPW Road To King Of Pro-Wrestling Results (10/10): Will Ospreay Makes Surprise Appearance"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10101152/Screenshot-2026-10-10-at-10.07.50-AM.png"
   }
 ]
