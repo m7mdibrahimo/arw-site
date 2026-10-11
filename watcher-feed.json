@@ -1,11 +1,21 @@
 [
   {
+    "id": 333230,
+    "link": "https://www.fightful.com/wrestling/tiffany-stratton-asked-streamer-cinna-for-help-during-womens-wwe-money-in-the-bank-ladder-match/",
+    "date": "2026-10-11T09:10:39",
+    "date_gmt": "2026-10-11T13:10:39",
+    "title": {
+      "rendered": "Tiffany Stratton Asked Streamer Cinna For Help During Women&#8217;s WWE Money In The Bank Ladder Match"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11082948/Screenshot-2026-10-11-132929.png"
+  },
+  {
     "id": 333229,
-    "link": "https://www.fightful.com/wrestling/logan-paul-these-female-wrestler-on-some-other-shit/",
+    "link": "https://www.fightful.com/wrestling/logan-paul-these-female-wrestlers-on-some-other-shit/",
     "date": "2026-10-11T08:51:31",
     "date_gmt": "2026-10-11T12:51:31",
     "title": {
-      "rendered": "Logan Paul: These Female Wrestler On Some Other Shit"
+      "rendered": "Logan Paul: These Female Wrestlers On Some Other Shit"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11085134/maxresdefault-62.jpg"
   },
@@ -288,15 +298,5 @@
       "rendered": "Triple H Says Roman Reigns Demanded To Start 2026 WWE Money In The Bank PLE"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09212048/HUO1Fh9WwAAO2kj.jpg"
-  },
-  {
-    "id": 333100,
-    "link": "https://www.fightful.com/wrestling/aew-and-wwe-internal-reaction-to-tuesday-head-to-head-ratings/",
-    "date": "2026-10-10T17:22:45",
-    "date_gmt": "2026-10-10T21:22:45",
-    "title": {
-      "rendered": "AEW And WWE Internal Reaction To Tuesday Head-To-Head Ratings"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/21194002/NXT-AEW.jpg"
   }
 ]
