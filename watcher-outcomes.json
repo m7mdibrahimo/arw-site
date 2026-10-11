@@ -1,53 +1,58 @@
 {
- "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-10-2026": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+ "https://www.fightful.com/wrestling/jevon-evans-sent-crashing-through-ambulance-roof-during-mens-money-in-the-bank-ladder-match": {
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:38.765Z"
+  "at": "2026-10-11T02:01:12.745Z"
+ },
+ "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-10-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T02:01:12.585Z"
  },
  "https://www.fightful.com/wrestling/penta-wins-2026-mens-money-in-the-bank-ladder-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:12.517Z"
+  "at": "2026-10-11T02:00:51.822Z"
  },
  "https://www.fightful.com/wrestling/watch-money-in-the-bank-post-show-oct-10-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:12.301Z"
+  "at": "2026-10-11T02:00:51.642Z"
  },
  "https://www.fightful.com/wrestling/liv-morgan-wins-womens-world-title-at-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:12.124Z"
+  "at": "2026-10-11T02:00:51.496Z"
  },
  "https://www.fightful.com/wrestling/house-of-glory-provides-update-on-vic-vendetta-after-scary-landing-at-hog-salvation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:11.909Z"
+  "at": "2026-10-11T02:00:51.293Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-2026-womens-money-in-the-bank-becomes-first-women-to-win-it-twice": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:11.728Z"
+  "at": "2026-10-11T02:00:51.135Z"
  },
  "https://www.fightful.com/wrestling/aew-and-wwe-internal-reaction-to-tuesday-head-to-head-ratings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:11.472Z"
+  "at": "2026-10-11T02:00:50.913Z"
  },
  "https://www.fightful.com/wrestling/wwe-money-in-the-bank-results-10-10-2026-two-mitb-ladder-matches-roman-reigns-vs-la-knight-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:11.252Z"
+  "at": "2026-10-11T02:00:50.727Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:11.032Z"
+  "at": "2026-10-11T02:00:50.549Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T01:50:10.756Z"
+  "at": "2026-10-11T02:00:50.321Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-i-actually-stay-worried-wwe-is-going-to-just-take-the-womens-title-off-me-at-any-given-moment": {
   "reason": "مكرر مع خبر نزل قبل كده",
