@@ -1668,6 +1668,11 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases });
   });
 
+  eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description) {
+    const day = eventDate ? formatDate(eventDate) : "";
+    return require("./lib/show-seo.cjs").recapSeoText({ headline, title, programName, eventDate, day, description });
+  });
+
   // ===== نوستالجيا: بيجمع أي عرض/ملخص مكتوب فيه "nostalgia_series" في مجموعة (سلسلة) واحدة =====
   // مفيش محتاج مجلد جديد أو Content type جديد: أي عرض عادي في content/shows أو content/recaps
   // ضيف عليه الحقول التالية في الـ frontmatter بيتحول تلقائيًا لجزء من مسلسل نوستالجيا:

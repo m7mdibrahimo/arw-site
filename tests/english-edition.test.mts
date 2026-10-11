@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, type EnglishInput } from '../scripts/english-edition.ts';
+import { englishStyleRules, checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -109,4 +109,8 @@ test('English stories written before catch up with their Arabic story\'s posts, 
   assert.equal(m.data.image, '/content/images/b.jpg');
   assert.match(m.content, /\n\nhttps:\/\/x\.com\/a\/status\/1\n\nhttps:\/\/www\.youtube\.com\/watch\?v=abcdefghijk\n$/);
   assert.equal(syncEnglishFromArabic(en, ar), 0); // up to date: untouched
+});
+
+test("English rules tell Gemini not to call a past event upcoming (INCIDENTS #432)", () => {
+  assert.match(englishStyleRules("https://x.com/a"), /upcoming/);
 });

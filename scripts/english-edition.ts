@@ -65,6 +65,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one.
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
+- Do not call something "upcoming" or "set to" if its date has already passed relative to today (a film that is out, a show that aired): use the past tense or "new".
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
 }

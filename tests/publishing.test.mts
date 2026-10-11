@@ -4399,3 +4399,14 @@ test('library program pages: no spelling list in the description, short title', 
   assert.ok(!/pageTitle:[^\n]*كل عروض/.test(src.split('\n').filter(l => l.includes('pageTitle:'))[0].split('{% else %}')[0]));
   assert.ok(src.includes('"alternateName"'));
 });
+
+test('recap pages get a searchable title and description with program, date and مترجم (INCIDENTS #432)', async () => {
+  const { createRequire } = await import('node:module');
+  const { recapSeoText } = createRequire(import.meta.url)('../lib/show-seo.cjs');
+  const r = recapSeoText({ headline: 'ملخص عرض سماك داون 09.10.2026 مترجم', title: 'WWE Smackdown Highlights 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', description: 'ملخص عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.' });
+  assert.equal(r.title, 'ملخص عرض سماك داون 09.10.2026 مترجم — WWE Smackdown');
+  assert.match(r.description, /WWE Smackdown Highlights October 9, 2026/);
+  assert.doesNotMatch(r.description, /بالكامل مع جميع/);
+  const own = recapSeoText({ headline: 'ملخص عرض الرو', title: 'x', programName: 'WWE RAW', eventDate: '2026-10-05', day: '5 أكتوبر 2026', description: 'وصف خاص بالمحرر.' });
+  assert.equal(own.description, 'وصف خاص بالمحرر.');
+});
