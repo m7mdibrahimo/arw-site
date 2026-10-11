@@ -4353,3 +4353,14 @@ test('a WebP picture passes the social check whatever its size bytes, and social
   assert.equal(socialImage('/img/abc-800.jpeg'), '/img/abc-800.jpeg');
   assert.equal(socialImage(undefined), '');
 });
+
+test('the watchdog flags a show stuck off social, and drops a story once its posting window has closed', async () => {
+  // The Money in the Bank show waited an hour and nothing said so; a 03:41 story stayed «stuck» all day (INCIDENTS #421)
+  const { stuckOnSocial } = await import('../worker/src/health');
+  const now = Date.parse('2026-10-11T12:00:00Z');
+  const key = (it: any) => it.url.split('/')[2];
+  const show = [{ url: '/shows/mitb/', title: 'موني', kind: 'show', date: '2026-10-11T10:06:00Z' }];
+  assert.deepEqual(stuckOnSocial(show, { telegram: {}, facebook: {}, instagram: { z: now } }, key, now), [{ title: 'موني', missing: ['تيليجرام', 'فيسبوك'] }]);
+  const old = [{ url: '/news/femi/', title: 'فيمي', published_at: '2026-10-11T03:41:00Z' }];
+  assert.deepEqual(stuckOnSocial(old, { telegram: {}, facebook: {}, instagram: {} }, key, now), []);
+});

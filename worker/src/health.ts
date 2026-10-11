@@ -71,7 +71,9 @@ export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => stri
   const waiting: { title: string; missing: string[]; from: number }[] = [];
   for (const it of items) {
     const pub = Date.parse(it?.published_at || it?.date || "") || 0;
-    if (!pub || (it.kind || "news") !== "news") continue;
+    // Shows and recaps too: the WWE Money in the Bank show sat off social for an hour and nothing said so (INCIDENTS #421)
+    const kind = it.kind || "news";
+    if (!pub || !["news", "show", "recap"].includes(kind)) continue;
     // A story whose title (and URL) was edited after posting is found by its file, like the poster does —
     // Tony Khan's «Being The Elite» story was called «not on Telegram» after a title fix (INCIDENTS #237)
     const f = fileOf(it);
@@ -79,14 +81,16 @@ export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => stri
     const h = state?.held?.[key];
     if (h && !h.releasedAt) continue;
     const from = Math.max(pub, Number(h?.releasedAt) || 0);
-    if (now - from > 12 * 3600_000) continue;
+    // Only while the poster can still send it — 3 hours for a story, 12 for a show or recap (runWatcherPoll's windows).
+    // Past that it is never coming, and the alert only made the hourly round think the Worker needed a redeploy.
+    const window = (kind === "news" ? 3 : 12) * 3600_000;
+    if (now - from > window) continue;
     const missing = PLATFORMS.filter(p => !Number(state?.[p]?.[key]));
     // Today's Instagram posts are rationed by importance (#162): a story its priority keeps off
     // Instagram isn't waiting for it.
     // The worker tries Instagram for 3 hours after a story could go out (12 for a show); past that
     // it is never coming, by design, and not «stuck» (INCIDENTS #190).
-    const igWindow = (it.kind === "show" ? 12 : 3) * 3600_000;
-    const due = missing.filter(p => p !== "instagram" || (igAllows(it.social_priority) && now - from < igWindow));
+    const due = missing.filter(p => p !== "instagram" || kind !== "news" || igAllows(it.social_priority));
     if (due.length) waiting.push({ title: String(it.title || "").slice(0, 120), missing: due, from });
   }
   // Instagram takes a limited number of posts a day, so the site sends it the newest stories first
