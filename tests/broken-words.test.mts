@@ -41,3 +41,9 @@ test('team «ذا مين إيفنت» is not rewritten to WWE Main Event', () =>
 test('The Vision is always «ذا فيجن»', () => {
   assert.equal(applyCorrections('هجوم فريق ذا فيشن على ريد'), 'هجوم فريق ذا فيجن على ريد');
 });
+
+// INCIDENTS #413: «زميليه» is a dual form (and Gemini named the wrong podcast).
+test('«زميليه» is corrected to the plural', () => {
+  assert.equal(applyCorrections('إلى جانب زميليه لانس آرتشر'), 'إلى جانب زملائه لانس آرتشر');
+  assert.equal(applyCorrections('انتقد لزميليه في الاتحاد'), 'انتقد لزملائه في الاتحاد');
+});
