@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/cm-punk-involvement-at-wwe-worlds-collide-was-discussed-from-very-early-on-in-the-planning-stages-of-the-event/": {
-    "matchedFile": "20260926150522-دليل-عرض-wwe-x-aaa-worlds-collide-النزالات-المؤكدة-وموعد-الانطلاق-وكيفية-المشاهدة.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-26T19:19:14.109Z"
-  },
   "https://www.fightful.com/wrestling/steven-borden-i-spent-my-whole-life-running-from-wrestling-but-it-eventually-caught-up-to-me/": {
     "matchedFile": "20260926171006-ستينغ-حاول-إقناع-ستيفن-بوردن-بالعدول-عن-دخول-مجال-المصارعة-الحرة.md",
     "reason": "الخبر الجديد يتطابق مع الخبر [0] في تغطية نفس التصريحات التي أدلى بها ستيفن بوردن في برنامج Close Up مع رينيه باكيت حول هروبه من المصارعة وتأثره باعتزال والده.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011113000-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-tna-bound-for-glory-الليلة.md",
     "reason": "الخبر الجديد يعرض تفاصيل وجدول نزالات عرض TNA Bound for Glory الليلة نفسه الذي تم تغطيته بشكل شبه مطابقة في الخبر رقم 0، حيث يتضمن نفس المباريات والمشاركين دون أي تطور جديد حقيقي.",
     "at": "2026-10-11T11:37:00.224Z"
+  },
+  "https://www.ringsidenews.com/ricochet-gives-jevon-evans-major-props-their-ugly-2025-social-media-feud/": {
+    "matchedFile": "20261011153225-ريكوشيه-يؤكد-صراحة-أنه-أصبح-معجبا-بالمصارع-جيفون-إيفانز.md",
+    "reason": "الخبر الجديد يعالج نفس الحدث والتصريحات الخاصة بإشادة ريكوشيه بجيفون إيفانز بعد عرض موني إن ذا بانك وخلافهما السابق، وهو مطابق تماما للخبر المنشور برقم 0.",
+    "at": "2026-10-11T12:44:53.088Z"
   }
 }
