@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269933/aew-all-out-2026-stopped-referee-injury-steven-borden/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T01:26:29.429Z"
-  },
   "https://www.wrestlinginc.com/2269941/aew-all-out-2026-dani-luna-debut-loses-tbs-title-open-challenge-persephone/": {
     "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يغطي نتائج عرض TNA Bound for Glory 2026، وتحديداً فوز زوي سيرانو وشينا باسلر ببطولة الفرق للسيدات، وهو حدث من نفس العرض المدرج بالفعل ضمن تقرير نتائج العرض الشامل في الخبر رقم 1.",
     "at": "2026-10-11T21:36:55.356Z"
+  },
+  "https://www.wrestlinginc.com/2283317/amazing-red-wins-tna-x-division-title-hour-after-hof-induction/": {
+    "matchedFile": "20261012001651-أميزينغ-ريد-يفوز-ببطولة-tna-x-division-في-عرض-tna-bound-for-glory-2026.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث تماماً (فوز أميزينغ ريد ببطولة TNA X-Division بعد تكريمه في قاعة المشاهير بعرض Bound for Glory) وقد تم تغطيته بشكل مسبق في الخبر رقم 0 ورقم 1.",
+    "at": "2026-10-11T21:40:43.163Z"
   }
 }

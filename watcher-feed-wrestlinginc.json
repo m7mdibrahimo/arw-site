@@ -1,5 +1,25 @@
 [
   {
+    "id": 1107012421,
+    "link": "https://www.wrestlinginc.com/2283317/amazing-red-wins-tna-x-division-title-hour-after-hof-induction/",
+    "date": "Sun, 11 Oct 2026 21:33:55 +0000",
+    "date_gmt": "2026-10-11T21:33:55.000Z",
+    "title": {
+      "rendered": "Amazing Red Wins TNA X-Division Title An Hour After HOF Induction"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-wins-tna-x-division-title-an-hour-after-hof-induction/l-intro-1791754356.jpg"
+  },
+  {
+    "id": 4310279911,
+    "link": "https://www.wrestlinginc.com/2282706/wwe-nattie-wants-more-bloodsport-josh-barnett/",
+    "date": "Sun, 11 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-11T21:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Nattie Wants To Do More With Bloodsport's Josh Barnett"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-nattie-wants-to-do-more-with-bloodsports-josh-barnett/l-intro-1791575597.jpg"
+  },
+  {
     "id": 1607488743,
     "link": "https://www.wrestlinginc.com/2282671/wwe-nxt-jacy-jayne-mandy-rose-learning/",
     "date": "Sun, 11 Oct 2026 20:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE's LA Knight Recalls Living With Jon Moxley"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-la-knight-recalls-living-with-jon-moxley/l-intro-1791393544.jpg"
-  },
-  {
-    "id": 4078699125,
-    "link": "https://www.wrestlinginc.com/2280187/aew-steven-borden-walked-away-successful-career-pursue-wrestling/",
-    "date": "Sun, 11 Oct 2026 12:30:00 +0000",
-    "date_gmt": "2026-10-11T12:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Steven Borden Walked Away From Successful Career To Pursue Pro Wrestling"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-steven-borden-walked-away-from-successful-career-to-pursue-pro-wrestling/l-intro-1791390939.jpg"
-  },
-  {
-    "id": 3477218756,
-    "link": "https://www.wrestlinginc.com/2280149/aew-brian-cage-steven-spielberg-disclosure-day-working/",
-    "date": "Sun, 11 Oct 2026 03:59:00 +0000",
-    "date_gmt": "2026-10-11T03:59:00.000Z",
-    "title": {
-      "rendered": "AEW's Brian Cage Details Working With Steven Spielberg On Disclosure Day"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-brian-cage-details-working-with-steven-spielberg-on-disclosure-day/l-intro-1791389974.jpg"
   }
 ]
