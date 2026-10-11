@@ -4339,3 +4339,17 @@ test('no published Arabic title ends with a lone apostrophe', async () => {
   });
   assert.deepEqual(bad, []);
 });
+
+test('a WebP picture passes the social check whatever its size bytes, and social gets the stored original', async () => {
+  // The Money in the Bank show's picture: «RIFF», size e6 b2 00 00, «WEBP» — read as text it failed, the show never
+  // reached social (owner 2026-10-11 — INCIDENTS #418)
+  const { isValidImageBuffer, socialImage } = await import('../worker/src/index');
+  const webp = new Uint8Array(200);
+  webp.set([0x52, 0x49, 0x46, 0x46, 0xe6, 0xb2, 0x00, 0x00, 0x57, 0x45, 0x42, 0x50]);
+  assert.equal(isValidImageBuffer(webp.buffer), true);
+  const bad = new Uint8Array(200); bad.set([0x52, 0x49, 0x46, 0x46, 0xe6, 0xb2, 0x00, 0x00, 0x41, 0x56, 0x49, 0x20]);
+  assert.equal(isValidImageBuffer(bad.buffer), false);
+  assert.equal(socialImage('/content/images/b9g3iiyhwdmanci3.jpg?w=800'), '/content/images/b9g3iiyhwdmanci3.jpg');
+  assert.equal(socialImage('/img/abc-800.jpeg'), '/img/abc-800.jpeg');
+  assert.equal(socialImage(undefined), '');
+});

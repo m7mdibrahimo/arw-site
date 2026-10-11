@@ -248,16 +248,25 @@ function escapeTelegramHtml(str: string): string {
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function isValidImageBuffer(buffer: ArrayBuffer): boolean {
+export function isValidImageBuffer(buffer: ArrayBuffer): boolean {
   if (!buffer || buffer.byteLength < 100) return false;
   const buf = new Uint8Array(buffer.slice(0, 12));
   const hex = Array.from(buf.slice(0, 8)).map((b) => b.toString(16).padStart(2, "0")).join("");
   if (hex.startsWith("ffd8")) return true; // JPG
   if (hex.startsWith("89504e47")) return true; // PNG
-  const asString = new TextDecoder().decode(buf);
-  if (asString.startsWith("RIFF") && asString.slice(8, 12) === "WEBP") return true;
+  // WebP: «RIFF», the size (4 raw bytes), «WEBP» — read as bytes. Decoded as text, a size byte that isn't valid
+  // UTF-8 collapsed and shifted «WEBP» out of place: about one picture in ten failed, and its story or show never
+  // reached social (the WWE Money in the Bank show, 2026-10-11 — INCIDENTS #418).
+  const ascii = (from: number, to: number) => String.fromCharCode(...buf.slice(from, to));
+  if (ascii(0, 4) === "RIFF" && ascii(8, 12) === "WEBP") return true;
   if (hex.startsWith("47494638")) return true; // GIF
   return false;
+}
+
+/** The picture a social post carries: the stored original (a JPEG, at most 1280×720), not the site's «?w=800» WebP
+ *  preview — Facebook and Telegram get the sharper picture in the format every platform takes (INCIDENTS #418). */
+export function socialImage(image: string | undefined): string {
+  return String(image || "").replace(/^(\/content\/images\/[^?#]+)\?w=\d+$/, "$1");
 }
 
 function cacheBust(url: string): string {
@@ -2258,6 +2267,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     return;
   }
   if (!items.length) return;
+  items = items.map((it: any) => (it && it.image ? { ...it, image: socialImage(it.image) } : it));
 
   const minDate = env.WATCHER_MIN_DATE ? new Date(env.WATCHER_MIN_DATE).getTime() : 0;
 
