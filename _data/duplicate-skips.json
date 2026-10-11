@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269906/aew-all-out-tailgate-brawl-jack-perry-sisters-sin-bang-bang-gang/": {
-    "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T00:28:06.698Z"
-  },
   "https://www.fightful.com/wrestling/andrade-el-idolo-scores-win-over-pac-to-retain-aew-national-title-at-all-out/": {
     "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011001105-درو-ماكنتاير-ورويس-كيز-وبوكر-تي-وجو-هندري-وآخرون-يظهرون-في-إعلان-فيلم-agent-of-shadows.md",
     "reason": "الخبر الجديد يعالج نفس الحدث الخاص بالإعلان عن المسلسل القصير Agent of Shadows ومشاركة نجوم WWE فيه، وهو نفس الخبر المنشور مسبقاً مع إضافة تفاصيل بسيطة مثل موعد العرض وقصة المسلسل.",
     "at": "2026-10-11T18:20:40.720Z"
+  },
+  "https://www.wrestlinginc.com/2283303/more-clockwork-carnage-qualifiers-set-aew-dynamite/": {
+    "matchedFile": "20261011040132-الإعلان-عن-عدة-مواجهات-تأهيلية-لنزال-كلوك-وورك-كارناج-في-عرض-aew-dynamite.md",
+    "reason": "الخبر الجديد يعيد نفس تفاصيل الإعلان عن المواجهات التأهيلية لنزال كلوك وورك كارناج في عروض AEW القادمة وتحديد المشاركين الذين ضمنوا تأهلهم مسبقاً، وهو نفس محتوى الخبر المنشور سابقاً.",
+    "at": "2026-10-11T19:57:33.786Z"
   }
 }
