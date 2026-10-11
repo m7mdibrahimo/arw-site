@@ -256,6 +256,19 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     lineKeys.add(key);
   }
 
+  // A result block whose prose says one wrestler won while the «الفائز» line names the other
+  // (INCIDENTS #437: «حسم سوسا النتيجة» above «الفائز: إدي إدواردز»).
+  for (const block of (body || "").split(/\n(?=\*\*المواجهة)/)) {
+    const win = block.match(/الفائز(?:ة)?:\*{0,2}\s*([^\n]+)/);
+    const said = block.match(/(?<![ء-ي])(?:حسم|حسمت|يحسم|تحسم|فاز|فازت)\s+([ء-ي]+(?:\s+[ء-ي]+)?)\s+(?:النتيجة|النزال|المواجهة)/);
+    if (!win || !said) continue;
+    const names = said[1].split(/\s+/).filter((w) => w.length > 2);
+    if (names.length && !names.some((w) => win[1].includes(w.replace(/^ال/, "")))) {
+      issues.push({ code: "winner_contradiction", severity: "error", field: "body", message: "النص بيقول فاز واحد وسطر «الفائز» بيقول التاني — راجع النتيجة من المصدر", excerpt: said[0] });
+      break;
+    }
+  }
+
   // A weekly show on a date that isn't its day: «AEW Dynamite يوم الثامن والعشرين من سبتمبر»
   // (a Monday) — the tribute Dynamite was the 30th; the writer made the date up (INCIDENTS #151).
   const wrongDay = showOnWrongWeekday(body || "");

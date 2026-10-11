@@ -86,3 +86,11 @@ test('Danhausen split is corrected and «قدما عندما» is not a dual for
 test('«مواجهة فرق مختلطة ثمانية» is corrected', () => {
   assert.equal(applyCorrections('شهد العرض مواجهة فرق مختلطة ثمانية بين فريقين'), 'شهد العرض نزال فرق مختلط ثماني الأفراد بين فريقين');
 });
+
+test("winner_contradiction: prose winner differs from the «الفائز» line", async () => {
+  const { checkArticle } = await import("../scripts/news-qa.ts");
+  const bad = "مقدمة\n\n**المواجهة الأولى: نزال فردي**\n\nتواجه ريكي سوسا وإدي إدواردز قبل أن يحسم سوسا النتيجة لصالحه.\n\n🏆 **الفائز:** إدي إدواردز";
+  const ok = bad.replace("يحسم سوسا", "يحسم إدواردز");
+  assert.ok(checkArticle("عنوان تجريبي طويل بما يكفي للفحص هنا", bad).some((i) => i.code === "winner_contradiction"));
+  assert.ok(!checkArticle("عنوان تجريبي طويل بما يكفي للفحص هنا", ok).some((i) => i.code === "winner_contradiction"));
+});
