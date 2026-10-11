@@ -1,14 +1,4 @@
 {
-  "https://www.ringsidenews.com/steven-borden-taken-hospital-aew-all-out-match-stoppage/": {
-    "matchedFile": "20260927035310-إيقاف-نزال-ستيفن-بوردن-في-عرض-aew-all-out-بعد-اصطدام-في-الرأس-مع-كيفن-نايت.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T01:53:19.839Z"
-  },
-  "https://www.wrestlinginc.com/2269955/aew-all-out-2026-kazuchika-okada-retains-international-title-tommaso-ciampa/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T02:06:15.407Z"
-  },
   "https://www.ringsidenews.com/joseph-sawyer-addresses-knee-injury-scare-gcw-just-days-tna-debut/": {
     "matchedFile": "20260927044128-جوزيف-ساير-يغادر-نزالا-في-عرض-gcw-مصابا-ويؤكد-غيابه-لعدة-أشهر.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261012011429-فرانكي-كازاريان-يفوز-بنزال-call-your-shot-gauntlet-في-عرض-tna-bound-for-glory-2026.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال Call Your Shot Gauntlet وفوز فرانكي كازاريان في عرض TNA Bound for Glory المذكور في الخبر المنشور مسبقاً.",
     "at": "2026-10-11T22:27:47.626Z"
+  },
+  "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-10-11T22:40:38.269Z"
+  },
+  "https://www.wrestlinginc.com/2283326/frankie-kazarian-wins-another-tna-call-your-shot-gauntlet/": {
+    "matchedFile": "20261012011429-فرانكي-كازاريان-يفوز-بنزال-call-your-shot-gauntlet-في-عرض-tna-bound-for-glory-2026.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (فوز فرانكي كازاريان بنزال Call Your Shot Gauntlet في عرض Bound For Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-10-11T22:40:56.582Z"
   }
 }
