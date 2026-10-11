@@ -1,5 +1,15 @@
 [
   {
+    "id": 333267,
+    "link": "https://www.fightful.com/wrestling/tommaso-ciampa-and-charles-mason-kiss-then-fight/",
+    "date": "2026-10-11T12:24:24",
+    "date_gmt": "2026-10-11T16:24:24",
+    "title": {
+      "rendered": "Tommaso Ciampa And Charles Mason Kiss (Then Fight)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11122355/Screenshot-2026-10-11-at-12.19.19-PM.png"
+  },
+  {
     "id": 333265,
     "link": "https://www.fightful.com/wrestling/liv-morgan-appearance-rey-mysterio-vs-big-cass-added-to-10-12-wwe-raw/",
     "date": "2026-10-11T12:19:11",
@@ -288,15 +298,5 @@
       "rendered": "Penta Wins 2026 Men&#8217;s Money In The Bank Ladder Match"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10212533/HUT9nuHWoAERVwZ-e1791681950127.jpg"
-  },
-  {
-    "id": 333157,
-    "link": "https://www.fightful.com/wrestling/multiple-clockwork-carnage-qualifiers-set-for-aew-dynamite/",
-    "date": "2026-10-10T21:01:32",
-    "date_gmt": "2026-10-11T01:01:32",
-    "title": {
-      "rendered": "Multiple Clockwork Carnage Qualifiers Set For AEW Dynamite"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10210109/HUT5F9eWoAA1ifs.jpeg"
   }
 ]
