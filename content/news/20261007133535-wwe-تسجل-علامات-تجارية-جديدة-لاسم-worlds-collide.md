@@ -16,7 +16,7 @@ tags:
   - WWE Trademarks
   - Worlds Collide
   - AAA
-  - المصارعة الحرة
+  - المصارعة
 image: /content/images/b3cp1agzv3kgpntk.jpg
 layout: post-layout.njk
 ---

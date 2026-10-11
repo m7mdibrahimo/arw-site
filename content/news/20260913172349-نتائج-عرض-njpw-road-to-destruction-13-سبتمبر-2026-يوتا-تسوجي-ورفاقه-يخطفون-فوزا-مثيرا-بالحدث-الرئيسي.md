@@ -8,7 +8,7 @@ source_url: "https://www.fightful.com/wrestling/njpw-road-to-destruction-results
 tags:
   - NJPW
   - NJPW Road To Destruction
-  - المصارعة الحرة
+  - المصارعة
   - يويا أويمورا
   - جيف كوب
   - توشي ماكابي

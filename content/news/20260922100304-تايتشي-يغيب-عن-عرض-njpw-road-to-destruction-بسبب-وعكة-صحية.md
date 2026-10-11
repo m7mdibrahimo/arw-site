@@ -9,7 +9,7 @@ tags:
   - NJPW
   - NJPW Road To Destruction
   - تايتشي
-  - المصارعة الحرة
+  - المصارعة
   - عروض المصارعة
 image: /content/images/bequrzvgrn25nr57.jpg
 layout: post-layout.njk

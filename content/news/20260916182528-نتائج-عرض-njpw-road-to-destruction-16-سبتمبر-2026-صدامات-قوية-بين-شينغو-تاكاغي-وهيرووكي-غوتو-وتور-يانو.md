@@ -12,7 +12,7 @@ tags:
   - شينغو تاكاغي
   - زك إمباير
   - هاوس أوف تورتشر
-  - المصارعة الحرة
+  - المصارعة
   - أخبار المصارعة
 image: /content/images/sefg94xerus5itc5.jpg
 layout: post-layout.njk
