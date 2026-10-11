@@ -27,3 +27,17 @@ test('hamza and number-agreement slips are corrected', () => {
   assert.equal(applyCorrections('الفعالية التي اقيمت في نيو أورليانز'), 'الفعالية التي أقيمت في نيو أورليانز');
   assert.match(applyCorrections('مواجهة مدتها خمسة عشر دقيقة'), /خمس عشرة دقيقة/);
 });
+
+// INCIDENTS #412: the Mane Event team name must survive, and «اسم AEW في» is not a film title.
+test('team «ذا مين إيفنت» is not rewritten to WWE Main Event', () => {
+  assert.equal(applyCorrections('تغلب فريق ذا مين إيفنت على خصومه'), 'تغلب فريق ذا مين إيفنت على خصومه');
+  assert.match(applyCorrections('عرض مين إيفنت الليلة'), /WWE Main Event/);
+  const body = 'أكد أنه كان يتوقع ذكر اسم AEW في ذلك الوقت وفريق ذا مين إيفنت فاز.';
+  const codes = checkArticle('عنوان عربي كامل للخبر هنا', body, []).map(i => i.code);
+  assert.ok(!codes.includes('mixed_caps_title') && !codes.includes('known_wrong'));
+});
+
+// INCIDENTS #412: The Vision was written both «ذا فيشن» and «ذا فيجن».
+test('The Vision is always «ذا فيجن»', () => {
+  assert.equal(applyCorrections('هجوم فريق ذا فيشن على ريد'), 'هجوم فريق ذا فيجن على ريد');
+});
