@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/andrade-el-idolo-scores-win-over-pac-to-retain-aew-national-title-at-all-out/": {
-    "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T00:38:13.093Z"
-  },
   "https://www.wrestlinginc.com/2269917/aew-all-out-2026-andrade-el-idolo-defeats-pac-national-title/": {
     "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011040132-الإعلان-عن-عدة-مواجهات-تأهيلية-لنزال-كلوك-وورك-كارناج-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يعيد نفس تفاصيل الإعلان عن المواجهات التأهيلية لنزال كلوك وورك كارناج في عروض AEW القادمة وتحديد المشاركين الذين ضمنوا تأهلهم مسبقاً، وهو نفس محتوى الخبر المنشور سابقاً.",
     "at": "2026-10-11T19:57:33.786Z"
+  },
+  "https://www.ringsidenews.com/amazing-red-enters-tna-hall-fame-shocks-fans-bound-glory-match-announcement/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (تكريم أميزينج ريد في قاعة المشاهير وإعلانه المشاركة في نزال X Division) الذي تم ذكره بالفعل في تقرير نتائج عرض Bound for Glory المنشور.",
+    "at": "2026-10-11T20:46:00.053Z"
   }
 }
