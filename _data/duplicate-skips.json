@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/young-bucks-win-aew-world-tag-team-titles-wild-ladder-match-all-out/": {
-    "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T03:51:25.502Z"
-  },
   "https://www.ringsidenews.com/wwe-worlds-collide-spoiler-results-september-30-2026/": {
     "matchedFile": "20260927064116-نتائج-عرض-wwe-x-aaa-worlds-collide-26-سبتمبر-2026-مواجهات-كبرى-بقيادة-سي-ام-بانك-وري-ميستيريو-ودومينيك-ميستيريو.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرض WWE Worlds Collide (26-27 سبتمبر 2026) والتي تم نشرها بالفعل في الخبر رقم 0 بنفس التفاصيل والنتائج.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يغطي نتيجة نزال ضمن عرض TNA Bound for Glory 2026، وهو حدث تم تغطيته بالفعل في تقرير النتائج الشامل (الخبر رقم 1) الذي تضمن نتائج النزالات.",
     "at": "2026-10-11T23:26:57.661Z"
+  },
+  "https://www.fightful.com/wrestling/erick-redbeard-helps-syx-defeat-the-hardys-at-tna-bound-for-glory/": {
+    "matchedFile": "20261012023417-إريك-ريدبيرد-يظهر-لأول-مرة-في-عرض-tna-bound-for-glory-ويساعد-فريق-syx-على-هزيمة-ذا-هارديز.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (فوز فريق syX على ذا هارديز بتدخل إريك ريدبيرد في عرض TNA Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-10-11T23:48:21.200Z"
   }
 }

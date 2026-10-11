@@ -1,5 +1,25 @@
 [
   {
+    "id": 333346,
+    "link": "https://www.fightful.com/wrestling/erick-redbeard-helps-syx-defeat-the-hardys-at-tna-bound-for-glory/",
+    "date": "2026-10-11T19:43:14",
+    "date_gmt": "2026-10-11T23:43:14",
+    "title": {
+      "rendered": "Erick Redbeard Helps Syx Defeat The Hardys At TNA Bound For Glory"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11194052/HUYw8ygXsAAOB3d-scaled.jpg"
+  },
+  {
+    "id": 333343,
+    "link": "https://www.fightful.com/wrestling/joseph-sawyer-to-defend-gcw-title-against-atticus-cogar-on-november-7/",
+    "date": "2026-10-11T19:36:35",
+    "date_gmt": "2026-10-11T23:36:35",
+    "title": {
+      "rendered": "Joseph Sawyer To Defend GCW Title Against Atticus Cogar On November 7"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11193616/Screenshot-2026-10-11-at-7.24.37-PM.png"
+  },
+  {
     "id": 333338,
     "link": "https://www.fightful.com/wrestling/moose-def-max-caster-at-tna-bound-for-glory-2026/",
     "date": "2026-10-11T19:23:27",
@@ -115,7 +135,7 @@
     "date": "2026-10-11T16:20:51",
     "date_gmt": "2026-10-11T20:20:51",
     "title": {
-      "rendered": "Amazing Red Enters TNA Hall Of Fame, To Compete At TNA Bound For Glory"
+      "rendered": "Amazing Red Enters TNA Hall Of Fame, Will Compete At TNA Bound For Glory"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11165710/HUYCxHDWgAAy0oi.jpeg"
   },
@@ -278,25 +298,5 @@
       "rendered": "Gia Miller To Miss TNA Bound For Glory, &#8216;My Health Took A Nose Dive Overnight&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/06151027/Screenshot-521.png"
-  },
-  {
-    "id": 333234,
-    "link": "https://www.fightful.com/wrestling/penta-says-he-tried-to-use-joker-gear-in-wwe-before-wwe-money-in-the-bank-was-told-for-some-reason-he-couldnt/",
-    "date": "2026-10-11T10:19:40",
-    "date_gmt": "2026-10-11T14:19:40",
-    "title": {
-      "rendered": "Penta Says He Tried To Use Joker Gear In WWE Before WWE Money In The Bank, Was Told &#8216;For Some Reason&#8217; He Couldn&#8217;t"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11090029/Penta.jpg"
-  },
-  {
-    "id": 333233,
-    "link": "https://www.fightful.com/wrestling/carmella-reacts-to-tiffany-stratton-calling-herself-the-first-ever-two-time-womens-money-in-the-bank-winner/",
-    "date": "2026-10-11T09:35:00",
-    "date_gmt": "2026-10-11T13:35:00",
-    "title": {
-      "rendered": "Carmella Reacts To Tiffany Stratton Calling Herself The First Ever Two Time Women&#8217;s Money In The Bank Winner"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2018/03/27201624/carmella_1.jpg"
   }
 ]
