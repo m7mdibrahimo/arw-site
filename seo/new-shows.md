@@ -1,22 +1,22 @@
 # الصفحات الجديدة في البحث
 
-آخر تحديث: 2026-10-11T14:53:34.458Z · آخر إرسال لخريطة الموقع لجوجل: 2026-10-11T13:17:14.354Z · إشعار جوجل المباشر: 2026-10-11T14:53:34.458Z (0 صفحة، فشل)
+آخر تحديث: 2026-10-11T15:03:41.642Z · آخر إرسال لخريطة الموقع لجوجل: 2026-10-11T13:17:14.354Z · إشعار جوجل المباشر: 2026-10-11T15:03:41.642Z (0 صفحة، فشل)
 
 ## مشاكل لازم تتصلح
-- إشعار جوجل المباشر (Indexing API) فشل 2026-10-11T14:53:34.458Z: 403 https://indexing.googleapis.com/v3/urlNotifications:publish: "Web Search Indexing API has not been used in project 97147834019 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/indexing.googleapis.com/overview?project=97147834019 then retry. If you en — فعّل «Web Search Indexing API» لمشروع حساب الخدمة وخليه «مالك» (Owner) في Search Console
+- إشعار جوجل المباشر (Indexing API) فشل 2026-10-11T15:03:41.642Z: 403 https://indexing.googleapis.com/v3/urlNotifications:publish: "Web Search Indexing API has not been used in project 97147834019 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/indexing.googleapis.com/overview?project=97147834019 then retry. If you en — فعّل «Web Search Indexing API» لمشروع حساب الخدمة وخليه «مالك» (Owner) في Search Console
 - «اكس مترجم» ترتيبها 9.5 (4 ظهور، 0 نقرة): /shows/wwe-nxt-06-10-2026/ — خليها في أول ٣
 - «اكس ان اكس اكس مترجم» ترتيبها 48.3 (4 ظهور، 1 نقرة): /shows/wwe-nxt-06-10-2026/ — خليها في أول ٣
 - «اكس اكس ان اكس» ترتيبها 81.7 (3 ظهور، 0 نقرة): /shows/wwe-nxt-06-10-2026/ — خليها في أول ٣
-- مش متفهرسة بعد 97 ساعة: /library/cmll-noche-de-campeones/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-aniversario/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-tarde-mexicana/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-martes-de-glamour/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-mr-and-miss/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-arena-coliseo-de-guadalajara/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-lunes-clasico/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /library/cmll-martes-populares/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /shows/cmll-noche-de-campeones-2026/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
-- مش متفهرسة بعد 97 ساعة: /shows/cmll-93-aniversario-2026/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-noche-de-campeones/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-aniversario/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-tarde-mexicana/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-martes-de-glamour/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-mr-and-miss/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-arena-coliseo-de-guadalajara/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-lunes-clasico/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /library/cmll-martes-populares/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /shows/cmll-noche-de-campeones-2026/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
+- مش متفهرسة بعد 98 ساعة: /shows/cmll-93-aniversario-2026/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
 - مش متفهرسة بعد 98 ساعة: /library/cmll-domingo-familiar/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
 - مش متفهرسة بعد 98 ساعة: /library/cmll-sabados-de-coliseo/ — تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن (جوجل لسه مازارهاش)
 - مش متفهرسة بعد 98 ساعة: /library/cmll-viernes-espectacular/ — لم يتعرّف محرّك بحث Google على عنوان URL. (جوجل لسه مازارهاش)
