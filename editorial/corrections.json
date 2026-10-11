@@ -5950,6 +5950,11 @@
    "right": "دانهاوزن",
    "regex": true,
    "note": "اسم Danhausen اتقسم نص عربي ونص إنجليزي — INCIDENTS #430"
+  },
+  {
+   "wrong": "مواجهة فرق مختلطة ثمانية",
+   "right": "نزال فرق مختلط ثماني الأفراد",
+   "note": "ترجمة حرفية لـ eight-person mixed tag — INCIDENTS #431"
   }
  ]
 }

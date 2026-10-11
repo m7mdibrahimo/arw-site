@@ -81,3 +81,8 @@ test('Danhausen split is corrected and «قدما عندما» is not a dual for
   assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', body).some((i) => i.code === 'dual_form'));
   assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'AEW قدما دعما رائعا ' + 'كلام '.repeat(80)).some((i) => i.code === 'dual_form'));
 });
+
+// INCIDENTS #431: «مواجهة فرق مختلطة ثمانية» (literal eight-person mixed tag).
+test('«مواجهة فرق مختلطة ثمانية» is corrected', () => {
+  assert.equal(applyCorrections('شهد العرض مواجهة فرق مختلطة ثمانية بين فريقين'), 'شهد العرض نزال فرق مختلط ثماني الأفراد بين فريقين');
+});
