@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T22:24:41.364Z"
+ },
  "https://www.fightful.com/wrestling/shayna-baszler-zoey-serrano-capture-knockouts-world-tag-team-titles-at-tna-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T22:16:44.342Z"
- },
- "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T22:05:40.091Z"
  },
  "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time": {
   "reason": "مكرر مع خبر نزل قبل كده",
