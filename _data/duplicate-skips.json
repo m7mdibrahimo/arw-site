@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/steven-borden-conscious-responsive-following-injury-at-aew-all-out/": {
-    "matchedFile": "20260927050714-توني-سكيافوني-يكشف-مستجدات-الحالة-الصحية-لـستيفن-بوردن-بعد-إيقاف-نزاله-في-عرض-aew-all-out.md",
-    "reason": "الخبر الجديد يكرر تفاصيل الحالة الصحية لستيفن بوردن بعد نقله للمستشفى من عرض AEW All Out والتي تم تغطيتها بالفعل في خبر سابق.",
-    "at": "2026-09-27T02:16:41.901Z"
-  },
   "https://www.wrestlinginc.com/2269962/aew-all-out-2026-brawling-birds-divine-dominion-retain-womens-tag-titles/": {
     "matchedFile": "20260927051352-فريق-the-brawling-birds-يحتفظ-ببطولة-aew-العالمية-للفرق-للسيدات-ضد-فريق-ديفاين-دومينيون-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يتناول نتيجة نزال بطولة TNA الدولية في عرض Bound for Glory 2026، وهي نتيجة تم ذكرها بالفعل ضمن تقرير نتائج العرض الشامل في الخبر رقم 2.",
     "at": "2026-10-11T22:42:41.473Z"
+  },
+  "https://www.fightful.com/wrestling/jason-hotch-regains-tna-international-championship-at-bound-for-glory/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "الخبر الجديد يغطي نتيجة نزال على البطولة الدولية لاتحاد TNA في عرض Bound for Glory، وهي نفس النتيجة والتفاصيل التي وردت ضمن تقرير النتائج الكامل للعرض في الخبر المنشور رقم 4.",
+    "at": "2026-10-11T22:50:07.613Z"
   }
 }
