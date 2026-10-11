@@ -3360,7 +3360,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 06.10.2026 مترجم",
-    "lastAttempt": 1791722206756,
+    "lastAttempt": 1791723065795,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -3377,9 +3377,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 09.10.2026 مترجم",
-    "lastAttempt": 1791717886269,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791723066563,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
