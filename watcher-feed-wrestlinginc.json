@@ -1,5 +1,15 @@
 [
   {
+    "id": 1607488743,
+    "link": "https://www.wrestlinginc.com/2282671/wwe-nxt-jacy-jayne-mandy-rose-learning/",
+    "date": "Sun, 11 Oct 2026 20:30:00 +0000",
+    "date_gmt": "2026-10-11T20:30:00.000Z",
+    "title": {
+      "rendered": "Jacy Jayne Recalls Learning From Mandy Rose In WWE NXT"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jacy-jayne-recalls-learning-from-mandy-rose-in-wwe-nxt/l-intro-1791574017.jpg"
+  },
+  {
     "id": 3363542057,
     "link": "https://www.wrestlinginc.com/2282447/wwe-summerslam-seth-rollins-roman-reigns-core-moment-career/",
     "date": "Sun, 11 Oct 2026 20:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Brian Cage Details Working With Steven Spielberg On Disclosure Day"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-brian-cage-details-working-with-steven-spielberg-on-disclosure-day/l-intro-1791389974.jpg"
-  },
-  {
-    "id": 2744243464,
-    "link": "https://www.wrestlinginc.com/2283160/wwe-money-in-the-bank-2026-hated-loved-opinion-review/",
-    "date": "Sun, 11 Oct 2026 02:11:40 +0000",
-    "date_gmt": "2026-10-11T02:11:40.000Z",
-    "title": {
-      "rendered": "WWE Money In The Bank 2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-money-in-the-bank-2026-3-things-we-hated-3-things-we-loved/l-intro-1791683317.jpg"
   }
 ]
