@@ -1,5 +1,15 @@
 [
   {
+    "id": 3145079811,
+    "link": "https://www.wrestlinginc.com/2283291/wwe-agent-of-shadows-drew-mcintyre-micro-drama-first-footage/",
+    "date": "Sun, 11 Oct 2026 18:16:09 +0000",
+    "date_gmt": "2026-10-11T18:16:09.000Z",
+    "title": {
+      "rendered": "WWE Reveals First Footage Of Micro-Drama Agent Of Shadows, Starring Drew McIntyre"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reveals-first-footage-of-micro-drama-agent-of-shadows-starring-drew-mcintyre/l-intro-1791742342.jpg"
+  },
+  {
     "id": 1641319203,
     "link": "https://www.wrestlinginc.com/2281335/wwe-njpw-aj-styles-bullet-club-leader-didnt-want/",
     "date": "Sun, 11 Oct 2026 17:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Steph De Lander Shares Thoughts On Departing TNA For ROH"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/steph-de-lander-shares-thoughts-on-departing-tna-for-roh/l-intro-1791388326.jpg"
-  },
-  {
-    "id": 1898756426,
-    "link": "https://www.wrestlinginc.com/2282966/aew-collision-october-10-2026-results/",
-    "date": "Sat, 10 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-10T21:00:00.000Z",
-    "title": {
-      "rendered": "AEW Collision Results 10/10/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-october-10-2026-results/l-intro-1791685853.jpg"
   }
 ]

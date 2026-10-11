@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/harley-cameron-reveals-knee-injury-during-aew-all-out-buy-performance/": {
-    "matchedFile": "20260927025050-هارلي-كاميرون-تكشف-عن-تعرضها-لإصابة-في-الركبة.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T00:15:11.083Z"
-  },
   "https://www.wrestlinginc.com/2269906/aew-all-out-tailgate-brawl-jack-perry-sisters-sin-bang-bang-gang/": {
     "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011191911-ظهور-ليف-مورغان-ونزال-ري-ميستيريو-ضد-بيج-كاس-في-عرض-wwe-raw-القادم.md",
     "reason": "الخبر الجديد يعرض نفس جدول نزالات وفعاليات عرض WWE RAW القادم الذي تم الإعلان عنه بالفعل في الخبر المنشور رقم 0 مع تطابق التفاصيل والمواجهات.",
     "at": "2026-10-11T17:24:21.102Z"
+  },
+  "https://www.wrestlinginc.com/2283291/wwe-agent-of-shadows-drew-mcintyre-micro-drama-first-footage/": {
+    "matchedFile": "20261011001105-درو-ماكنتاير-ورويس-كيز-وبوكر-تي-وجو-هندري-وآخرون-يظهرون-في-إعلان-فيلم-agent-of-shadows.md",
+    "reason": "الخبر الجديد يعالج نفس الحدث الخاص بالإعلان عن المسلسل القصير Agent of Shadows ومشاركة نجوم WWE فيه، وهو نفس الخبر المنشور مسبقاً مع إضافة تفاصيل بسيطة مثل موعد العرض وقصة المسلسل.",
+    "at": "2026-10-11T18:20:40.720Z"
   }
 }
