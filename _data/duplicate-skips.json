@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/seth-rollins-ill-come-back-when-the-time-is-right/": {
-    "matchedFile": "20260925195643-سيث-رولينز-يعود-إلى-برنامج-good-morning-football-على-شبكة-nfl-network.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-26T15:27:31.998Z"
-  },
   "https://www.ringsidenews.com/emanuel-details-private-conversations-that-led-vince-mcmahons-wwe-exit/": {
     "matchedFile": "20260926000506-مذكرة-أري-إيمانويل-الجديدة-تفصل-مغادرات-فينس-مكمان-لـ-wwe-في-أعقاب-تقارير-وول-ستريت-جورنال.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011043910-رومان-رينز-عن-ال-ايه-نايت-يجب-أن-أمنحه-احترامه-لكنه-اصطدم-بمنافس-أفضل.md",
     "reason": "الخبر الجديد يعيد نفس تصريحات رومان رينز مع كاثي كيلي عقب عرض موني إن ذا بانك 2026 والتي نُشرت بالفعل في الخبر رقم 0.",
     "at": "2026-10-11T01:47:52.577Z"
+  },
+  "https://www.fightful.com/wrestling/jevon-evans-sent-crashing-through-ambulance-roof-during-mens-money-in-the-bank-ladder-match/": {
+    "matchedFile": "20261011041404-بينتا-يفوز-بنزال-السلالم-للرجال-في-عرض-wwe-موني-إن-ذا-بانك-2026.md",
+    "reason": "الخبر الجديد يكرر تفاصيل سقوط جيفون إيفانز واختراقه لسقف سيارة الإسعاف في نزال موني إن ذا بانك، وهي نفس الواقعة المذكورة بالتفصيل في الخبر رقم 0.",
+    "at": "2026-10-11T01:50:45.639Z"
   }
 }
