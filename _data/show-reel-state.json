@@ -3421,7 +3421,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261011200727-ufc-fight-night-290-allen-vs-duncan": {
     "publishedAt": 1791738814843,
