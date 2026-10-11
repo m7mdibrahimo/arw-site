@@ -1,5 +1,25 @@
 [
   {
+    "id": 333325,
+    "link": "https://www.fightful.com/wrestling/wwe-announces-australia-live-tour/",
+    "date": "2026-10-11T19:06:33",
+    "date_gmt": "2026-10-11T23:06:33",
+    "title": {
+      "rendered": "WWE Announces Australia Live Tour"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11190617/CS-067447_LVE_Australia__New_Zealand_Live_Tour_EDIT_1920x1080.jpg"
+  },
+  {
+    "id": 333330,
+    "link": "https://www.fightful.com/wrestling/indi-hartwell-wins-tna-knockouts-world-title-at-tna-bound-for-glory/",
+    "date": "2026-10-11T19:03:14",
+    "date_gmt": "2026-10-11T23:03:14",
+    "title": {
+      "rendered": "Indi Hartwell Wins TNA Knockouts World Title At TNA Bound For Glory"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11185956/HUYnuVOXwAAu75h-scaled.jpg"
+  },
+  {
     "id": 333326,
     "link": "https://www.fightful.com/wrestling/jason-hotch-regains-tna-international-championship-at-bound-for-glory/",
     "date": "2026-10-11T18:43:15",
@@ -278,25 +298,5 @@
       "rendered": "Logan Paul: These Female Wrestlers On Some Other Shit"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11085134/maxresdefault-62.jpg"
-  },
-  {
-    "id": 333228,
-    "link": "https://www.fightful.com/wrestling/ricochet-im-honestly-a-jevon-evans-fan/",
-    "date": "2026-10-11T08:32:25",
-    "date_gmt": "2026-10-11T12:32:25",
-    "title": {
-      "rendered": "Ricochet: I&#8217;m Honestly A Je&#8217;Von Evans Fan"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/10152411/mixcollage-17-feb-2026-01-23-pm-9311.jpg"
-  },
-  {
-    "id": 333105,
-    "link": "https://www.fightful.com/wrestling/tna-bound-for-glory-2026-preview-start-time-how-to-watch-10-11/",
-    "date": "2026-10-11T04:30:00",
-    "date_gmt": "2026-10-11T08:30:00",
-    "title": {
-      "rendered": "TNA Bound For Glory 2026 Preview, Start Time, How To Watch (10/11)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24211905/a39ca895d41feccbccb5d6e83330b3a1-1-1.jpg"
   }
 ]

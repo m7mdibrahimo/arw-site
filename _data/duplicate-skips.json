@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269969/aew-all-out-2026-swerve-strickland-new-level-retain-world-trios-titles/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T03:06:18.920Z"
-  },
   "https://www.ringsidenews.com/thekla-beats-willow-nightingale-sisters-sin-interference-aew-all-out/": {
     "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261010150000-دليل-مشاهدة-وتفاصيل-عرض-aew-collision-في-فرنسا.md",
     "reason": "الخبر الجديد يعيد تكرار تفاصيل النزالات التي تم الإعلان عنها لعرض WrestleDream والتي تم نشر تفاصيلها مسبقاً في دليل مشاهدة العرض والنزالات المؤكدة فيه.",
     "at": "2026-10-11T22:52:12.022Z"
+  },
+  "https://www.fightful.com/wrestling/indi-hartwell-wins-tna-knockouts-world-title-at-tna-bound-for-glory/": {
+    "matchedFile": "20261012015555-إندي-هارتويل-تهزم-كسيا-بروكسايد-وتتوج-ببطولة-tna-العالمية-للسيدات-في-عرض-bound-for-glory.md",
+    "reason": "الخبر الجديد يغطي نفس نتيجة النزال والحدث الرئيسي (فوز إندي هارتويل بلقب TNA للسيدات في عرض Bound for Glory) الذي تم نشره بالفعل.",
+    "at": "2026-10-11T23:10:42.965Z"
   }
 }
