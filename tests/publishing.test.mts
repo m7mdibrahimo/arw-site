@@ -1597,7 +1597,7 @@ test('«ة» glued to the next word gets its space back', () => {
 });
 
 test('a held story goes out on its own 18 hours after the hold — unless the owner chose «سيبه»', async t => {
-  // Owner's rule, 2026-09-29; 12 hours since 2026-09-30 (INCIDENTS #157); 6 hours since 2026-10-02 (#215); 18 hours since 2026-10-11 (#421)
+  // Owner's rule, 2026-09-29; 12 hours since 2026-09-30 (INCIDENTS #157); 6 hours since 2026-10-02 (#215); 18 hours since 2026-10-11 (#422)
   const database = ledger();
   const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
   const items = [
@@ -4352,4 +4352,15 @@ test('a WebP picture passes the social check whatever its size bytes, and social
   assert.equal(socialImage('/content/images/b9g3iiyhwdmanci3.jpg?w=800'), '/content/images/b9g3iiyhwdmanci3.jpg');
   assert.equal(socialImage('/img/abc-800.jpeg'), '/img/abc-800.jpeg');
   assert.equal(socialImage(undefined), '');
+});
+
+test('the watchdog flags a show stuck off social, and drops a story once its posting window has closed', async () => {
+  // The Money in the Bank show waited an hour and nothing said so; a 03:41 story stayed «stuck» all day (INCIDENTS #421)
+  const { stuckOnSocial } = await import('../worker/src/health');
+  const now = Date.parse('2026-10-11T12:00:00Z');
+  const key = (it: any) => it.url.split('/')[2];
+  const show = [{ url: '/shows/mitb/', title: 'موني', kind: 'show', date: '2026-10-11T10:06:00Z' }];
+  assert.deepEqual(stuckOnSocial(show, { telegram: {}, facebook: {}, instagram: { z: now } }, key, now), [{ title: 'موني', missing: ['تيليجرام', 'فيسبوك'] }]);
+  const old = [{ url: '/news/femi/', title: 'فيمي', published_at: '2026-10-11T03:41:00Z' }];
+  assert.deepEqual(stuckOnSocial(old, { telegram: {}, facebook: {}, instagram: {} }, key, now), []);
 });

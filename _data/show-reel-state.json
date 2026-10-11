@@ -3358,15 +3358,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 06.10.2026 مترجم",
-    "lastAttempt": 1791723065795,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791723939167,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -3394,7 +3390,37 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 10.10.2026 مترجم",
-    "lastAttempt": 1791717928537,
+    "lastAttempt": 1791723941761,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261011154305-aew-collision-grand-slam-france-10-10-2026": {
+    "publishedAt": 1791723966320,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض كوليجن 10.10.2026 مترجم",
+    "lastAttempt": 1791723975820,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261011154806-mlw-fusion-10-10-2026": {
+    "publishedAt": 1791724010472,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال دبليو فيوجن 10.10.2026 مترجم",
+    "lastAttempt": 1791724019922,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
