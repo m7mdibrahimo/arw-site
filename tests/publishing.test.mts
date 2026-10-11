@@ -1596,19 +1596,19 @@ test('«ة» glued to the next word gets its space back', () => {
   assert.equal(autoFix('المصارعة الحرة وجماعة'), 'المصارعة الحرة وجماعة', 'correct text untouched');
 });
 
-test('a held story goes out on its own 12 hours after the hold — unless the owner chose «سيبه»', async t => {
-  // Owner's rule, 2026-09-29; 12 hours since 2026-09-30 (INCIDENTS #157); 6 hours since 2026-10-02 (#215)
+test('a held story goes out on its own 18 hours after the hold — unless the owner chose «سيبه»', async t => {
+  // Owner's rule, 2026-09-29; 12 hours since 2026-09-30 (INCIDENTS #157); 6 hours since 2026-10-02 (#215); 18 hours since 2026-10-11 (#422)
   const database = ledger();
   const hours = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
   const items = [
-    { url: '/news/held-25h/', title: 'فلان يهزم علان في عرض RAW', description: 'تفاصيل', kind: 'news', date: hours(13), published_at: hours(13) },
-    { url: '/news/held-10h/', title: 'فلان يهزم علان في عرض NXT', description: 'تفاصيل', kind: 'news', date: hours(10), published_at: hours(10) },
+    { url: '/news/held-25h/', title: 'فلان يهزم علان في عرض RAW', description: 'تفاصيل', kind: 'news', date: hours(19), published_at: hours(19) },
+    { url: '/news/held-10h/', title: 'فلان يهزم علان في عرض NXT', description: 'تفاصيل', kind: 'news', date: hours(16), published_at: hours(16) },
     { url: '/news/kept-off/', title: 'فلان يهزم علان في عرض SmackDown', description: 'تفاصيل', kind: 'news', date: hours(25), published_at: hours(25) },
   ];
   const stamp = (h: number) => Date.now() - h * 3600_000;
   const keys = { a: 'httpssitetestnewsheld-25h', b: 'httpssitetestnewsheld-10h', c: 'httpssitetestnewskept-off' };
   const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {}, held: {} };
-  for (const [k, h] of [[keys.a, 13], [keys.b, 10], [keys.c, 25]] as [string, number][]) {
+  for (const [k, h] of [[keys.a, 19], [keys.b, 16], [keys.c, 25]] as [string, number][]) {
     for (const p of ['telegram', 'facebook', 'instagram', 'x']) state[p][k] = stamp(h);
     state.held[k] = { at: stamp(h), title: 'فلان يهزم علان في عرض RAW', url: '/news/x/', reason: 'result', why: 'title' };
   }
@@ -1624,10 +1624,10 @@ test('a held story goes out on its own 12 hours after the hold — unless the ow
   });
   for (let i = 0; i < 3; i++) await runWatcherPoll({ ...env, GITHUB_REPO: 'repo-24h', SITE_ORIGIN: 'https://site.test', GITHUB_STATE_PATH: '_data/publish-state.json' } as any);
   const after = JSON.parse(Buffer.from(database.records.get(file)!.content, 'base64').toString());
-  assert.ok(after.held[keys.a].releasedAt && after.released[keys.a], 'held 13h ago: released');
-  assert.equal(after.held[keys.a].by, 'تلقائي بعد ١٢ ساعة');
+  assert.ok(after.held[keys.a].releasedAt && after.released[keys.a], 'held 19h ago: released');
+  assert.equal(after.held[keys.a].by, 'تلقائي بعد ١٨ ساعة');
   assert.ok(opened.some(p => p.startsWith('/news/held-25h')), 'and on its way to the platforms');
-  assert.ok(!after.held[keys.b].releasedAt, 'held 10h ago: still held');
+  assert.ok(!after.held[keys.b].releasedAt, 'held 16h ago (past the old 12h): still held');
   assert.ok(!after.held[keys.c].releasedAt, 'the owner kept it off: stays off');
 });
 
