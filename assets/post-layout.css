@@ -1105,9 +1105,10 @@ html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
 }
 
 /* «عن العرض» (INCIDENTS #435): the show's facts in words, in the download card's style */
-.show-about{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin-bottom:28px; box-shadow:0 6px 20px -10px rgba(0,0,0,0.08); }
+.show-about{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; margin-top:28px; margin-bottom:28px; box-shadow:0 6px 20px -10px rgba(0,0,0,0.08); }
 .show-about h2{ font-size:17px; line-height:1.5; margin:0 0 10px; }
 .show-about p{ font-size:15px; line-height:1.9; color:var(--ink-2, var(--ink)); margin:0 0 14px; }
+@media (max-width:640px){ .show-about{ padding:16px; border-radius:16px; margin-top:22px; } }
 .show-facts{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; margin:0; }
 @media (max-width:560px){ .show-facts{ grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 .show-facts > div{ background:var(--teal-soft); border-radius:12px; padding:10px 12px; min-width:0; }
