@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jim-cornette-accuses-kane-selling-his-soul-donald-trump-support": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T17:02:11.917Z"
+ },
  "https://www.fightful.com/wrestling/penta-answers-if-he-plans-to-have-a-custom-money-in-the-bank-briefcase": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
