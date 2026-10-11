@@ -1,43 +1,48 @@
 {
- "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T21:32:42.434Z"
+ "https://www.fightful.com/wrestling/amazing-red-wins-tna-x-division-title-at-tna-bound-for-glory": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T21:35:38.868Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-enters-tna-hall-of-fame-to-compete-at-tna-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:09.488Z"
+  "at": "2026-10-11T21:35:38.692Z"
  },
  "https://www.fightful.com/wrestling/tna-bound-for-glory-results-10-11-leon-slater-vs-nic-nemeth-hardys-vs-syx": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:09.322Z"
+  "at": "2026-10-11T21:35:38.550Z"
  },
  "https://www.fightful.com/wrestling/watch-2026-tna-hall-of-fame-live-and-free-at-4pm-et-on-october-11th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:09.158Z"
+  "at": "2026-10-11T21:35:38.453Z"
  },
  "https://www.fightful.com/wrestling/penta-answers-if-he-plans-to-have-a-custom-money-in-the-bank-briefcase": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:08.548Z"
+  "at": "2026-10-11T21:35:37.938Z"
  },
  "https://www.fightful.com/wrestling/penta-says-he-doesnt-want-to-cash-in-money-in-the-bank-too-soon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:08.341Z"
+  "at": "2026-10-11T21:35:37.758Z"
  },
  "https://www.fightful.com/wrestling/carmella-reacts-to-tiffany-stratton-calling-herself-the-first-ever-two-time-womens-money-in-the-bank-winner": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:08.086Z"
+  "at": "2026-10-11T21:35:37.541Z"
  },
  "https://www.fightful.com/wrestling/mini-vikingo-challenging-rey-fenix-for-aaa-world-cruiserweight-title-at-heroes-inmortales": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:25:07.801Z"
+  "at": "2026-10-11T21:35:37.293Z"
+ },
+ "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T21:32:42.434Z"
  },
  "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time": {
   "reason": "مكرر مع خبر نزل قبل كده",
