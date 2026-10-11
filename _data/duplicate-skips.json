@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/thekla-beats-willow-nightingale-sisters-sin-interference-aew-all-out/": {
-    "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T03:11:31.084Z"
-  },
   "https://www.ringsidenews.com/aew-teases-wardlows-return-all-out/": {
     "matchedFile": "20260927064333-بث-مقطع-ترويجي-للمصارع-واردلو-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012015555-إندي-هارتويل-تهزم-كسيا-بروكسايد-وتتوج-ببطولة-tna-العالمية-للسيدات-في-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة النزال والحدث الرئيسي (فوز إندي هارتويل بلقب TNA للسيدات في عرض Bound for Glory) الذي تم نشره بالفعل.",
     "at": "2026-10-11T23:10:42.965Z"
+  },
+  "https://www.wrestlinginc.com/2283332/indi-hartwell-dethrones-xia-brookside-tna-bound-glory-2026/": {
+    "matchedFile": "20261012015555-إندي-هارتويل-تهزم-كسيا-بروكسايد-وتتوج-ببطولة-tna-العالمية-للسيدات-في-عرض-bound-for-glory.md",
+    "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة TNA Knockouts في عرض Bound For Glory 2026 الذي تم تغطيته بالفعل في الخبر المنشور.",
+    "at": "2026-10-11T23:16:42.941Z"
   }
 }
