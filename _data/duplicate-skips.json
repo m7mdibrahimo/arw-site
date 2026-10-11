@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/dani-luna-answers-persephones-tbs-title-open-challenge-aew-all-out/": {
-    "matchedFile": "20260925202150-كشف-هوية-المنافسة-الغامضة-لنجمة-بيرسيفوني-في-عرض-aew-all-out.md",
-    "reason": "الخبر الجديد يعالج نفس الحدث المتعلق بظهور داني لونا لتلبية التحدي المفتوح لبيرسيفوني على بطولة TBS في عرض AEW All Out، وهو نفس الموضوع المغطى في الخبر رقم 0 وإن اختلف المصدر والتفاصيل الإضافية.",
-    "at": "2026-09-27T01:14:46.854Z"
-  },
   "https://www.wrestlinginc.com/2269933/aew-all-out-2026-stopped-referee-injury-steven-borden/": {
     "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012001651-أميزينغ-ريد-يفوز-ببطولة-tna-x-division-في-عرض-tna-bound-for-glory-2026.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (فوز أميزينغ ريد بلقب X Division في عرض Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-11T21:25:23.919Z"
+  },
+  "https://www.ringsidenews.com/zoey-serrano-shayna-baszler-win-tna-knockouts-tag-team-titles-bound-glory-2026/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "الخبر الجديد يغطي نتائج عرض TNA Bound for Glory 2026، وتحديداً فوز زوي سيرانو وشينا باسلر ببطولة الفرق للسيدات، وهو حدث من نفس العرض المدرج بالفعل ضمن تقرير نتائج العرض الشامل في الخبر رقم 1.",
+    "at": "2026-10-11T21:36:55.356Z"
   }
 }
