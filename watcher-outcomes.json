@@ -7,42 +7,47 @@
  "https://www.fightful.com/wrestling/amazing-red-wins-tna-x-division-title-at-tna-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:38.868Z"
+  "at": "2026-10-11T21:45:53.361Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-enters-tna-hall-of-fame-to-compete-at-tna-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:38.692Z"
+  "at": "2026-10-11T21:45:53.162Z"
  },
  "https://www.fightful.com/wrestling/tna-bound-for-glory-results-10-11-leon-slater-vs-nic-nemeth-hardys-vs-syx": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:38.550Z"
+  "at": "2026-10-11T21:45:53.000Z"
  },
  "https://www.fightful.com/wrestling/watch-2026-tna-hall-of-fame-live-and-free-at-4pm-et-on-october-11th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:38.453Z"
+  "at": "2026-10-11T21:45:52.888Z"
  },
  "https://www.fightful.com/wrestling/penta-answers-if-he-plans-to-have-a-custom-money-in-the-bank-briefcase": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:37.938Z"
+  "at": "2026-10-11T21:45:52.288Z"
  },
  "https://www.fightful.com/wrestling/penta-says-he-doesnt-want-to-cash-in-money-in-the-bank-too-soon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:37.758Z"
+  "at": "2026-10-11T21:45:52.075Z"
  },
  "https://www.fightful.com/wrestling/carmella-reacts-to-tiffany-stratton-calling-herself-the-first-ever-two-time-womens-money-in-the-bank-winner": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:37.541Z"
+  "at": "2026-10-11T21:45:51.826Z"
  },
  "https://www.fightful.com/wrestling/mini-vikingo-challenging-rey-fenix-for-aaa-world-cruiserweight-title-at-heroes-inmortales": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T21:35:37.293Z"
+  "at": "2026-10-11T21:45:51.537Z"
+ },
+ "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T21:39:39.972Z"
  },
  "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time": {
   "reason": "مكرر مع خبر نزل قبل كده",
