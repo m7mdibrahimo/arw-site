@@ -3347,13 +3347,56 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض موني ان ذا بانك 10.10.2026 مترجم",
-    "lastAttempt": 1791716938929,
+    "lastAttempt": 1791717804598,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261011140515-cmll-martes-de-glamour-06-10-2026": {
+    "publishedAt": 1791717832258,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 06.10.2026 مترجم",
+    "lastAttempt": 1791717845227,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261011140726-cmll-viernes-espectacular-09-10-2026": {
+    "publishedAt": 1791717875983,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 09.10.2026 مترجم",
+    "lastAttempt": 1791717886269,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261011141003-lucha-libre-aaa-10-10-2026": {
+    "publishedAt": 1791717917330,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايه ايه ايه 10.10.2026 مترجم",
+    "lastAttempt": 1791717928537,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
