@@ -1,48 +1,53 @@
 {
+ "https://www.wrestlinginc.com/2282966/aew-collision-october-10-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-10T23:56:37.617Z"
+ },
+ "https://www.fightful.com/wrestling/house-of-glory-provides-update-on-vic-vendetta-after-scary-landing-at-hog-salvation": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-10T23:54:44.372Z"
+ },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-2026-womens-money-in-the-bank-becomes-first-women-to-win-it-twice": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T23:42:50.829Z"
+  "at": "2026-10-10T23:54:44.253Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-results-10-10-chris-jericho-young-bucks-compete": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-10T23:42:50.736Z"
+  "at": "2026-10-10T23:54:44.173Z"
  },
  "https://www.fightful.com/wrestling/aew-and-wwe-internal-reaction-to-tuesday-head-to-head-ratings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T23:42:50.570Z"
+  "at": "2026-10-10T23:54:44.030Z"
  },
  "https://www.fightful.com/wrestling/wwe-money-in-the-bank-results-10-10-2026-two-mitb-ladder-matches-roman-reigns-vs-la-knight-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-10T23:42:50.352Z"
+  "at": "2026-10-10T23:54:43.882Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T23:42:50.187Z"
+  "at": "2026-10-10T23:54:43.741Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T23:42:49.977Z"
+  "at": "2026-10-10T23:54:43.564Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-i-actually-stay-worried-wwe-is-going-to-just-take-the-womens-title-off-me-at-any-given-moment": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T23:42:49.761Z"
+  "at": "2026-10-10T23:54:43.379Z"
  },
  "https://www.fightful.com/wrestling/la-knight-explains-that-he-wasnt-complaining-when-he-called-roman-reigns-the-most-manufactured-industry-plant-in-the-business": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-10T23:42:49.458Z"
- },
- "https://www.wrestlinginc.com/2282966/aew-collision-october-10-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T23:34:50.305Z"
+  "at": "2026-10-10T23:54:43.124Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-says-hes-told-austin-theory-to-stay-as-safe-as-possible-to-avoid-suffering-an-injury-due-to-the-visions-curse": {
   "reason": "مكرر مع خبر نزل قبل كده",
