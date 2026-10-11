@@ -3374,9 +3374,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 09.10.2026 مترجم",
-    "lastAttempt": 1791729169587,
+    "lastAttempt": 1791729969751,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
@@ -3425,9 +3425,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 10.10.2026 مترجم",
-    "lastAttempt": 1791724019922,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791729970634,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
