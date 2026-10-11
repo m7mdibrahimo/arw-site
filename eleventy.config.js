@@ -1662,8 +1662,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description) {
     const day = eventDate ? formatDate(eventDate) : "";
     const isLatest = (library || []).some(p => p.latest && p.latest.url === url);
+    const owner = (library || []).find(p => (p.shows || []).some(s => s.url === url));
+    const aliases = owner && owner.aliases ? owner.aliases : [];
     // The dotted date people search with («عرض الرو 05.10.2026 مترجم») joins the title (INCIDENTS #296).
-    return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description });
+    return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases });
   });
 
   // ===== نوستالجيا: بيجمع أي عرض/ملخص مكتوب فيه "nostalgia_series" في مجموعة (سلسلة) واحدة =====

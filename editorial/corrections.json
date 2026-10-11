@@ -5924,6 +5924,16 @@
    "wrong": "Call Your Shot Gauntlet غاونتلي",
    "right": "Call Your Shot Gauntlet",
    "note": "الاسم الإنجليزي اتكرر بالعربي بعده — INCIDENTS #415"
+  },
+  {
+   "wrong": "يقدمكن",
+   "right": "يقدمن",
+   "note": "فعل جمع المؤنث اتكتب «يقدمكن» — INCIDENTS #422"
+  },
+  {
+   "wrong": "الحكمة جيسيكا",
+   "right": "الحكم جيسيكا",
+   "note": "referee = الحكم مش «الحكمة» (الحكمة = wisdom) — INCIDENTS #422"
   }
  ]
 }

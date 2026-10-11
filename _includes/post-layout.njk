@@ -16,7 +16,7 @@
 {% set isNews = (kind == 'news') or (page.inputPath and ("content/news" in page.inputPath)) or (page.url and page.url.startsWith('/news/')) %}
 <title>{{ pageTitle }} | عرب راسلنج</title>
 {% set baseDesc = description or (content | striptags | truncate(155)) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
-{% set metaDesc = baseDesc | truncate(160) %}
+{% set metaDesc = baseDesc | truncate(320) %}
 <meta name="description" content="{{ metaDesc }}">
 {% if tags and tags.length %}
 <meta name="keywords" content="{{ tags | join(', ') }}">

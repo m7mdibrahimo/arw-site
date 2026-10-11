@@ -3300,7 +3300,7 @@ test('program pages are in the sitemap and show pages get search-worded titles (
   assert.match(fs.readFileSync('pages/sitemap.njk', 'utf-8'), /for prog in collections\.library/);
   assert.match(layoutSource(), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
-  assert.match(cfg, /showSeoText\(\{ headline, title, programName, eventDate, day, isLatest, description \}\)/);
+  assert.match(cfg, /showSeoText\(\{ headline, title, programName, eventDate, day, isLatest, description, aliases \}\)/);
   assert.match(fs.readFileSync('_redirects', 'utf-8'), /^\/raw\/\* \/library\/wwe-raw\/ 301!$/m);
 });
 
@@ -3309,7 +3309,9 @@ test('a show page title carries the dotted date people search with, only in the 
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
   assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 مترجم (5 أكتوبر 2026) — WWE RAW');
-  assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل بتاريخ 5 أكتوبر 2026 (WWE RAW October 5, 2026) بجودة عالية مع كل النزالات، مشاهدة وتحميل على عرب راسلنج.');
+  assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين بتاريخ 5 أكتوبر 2026 (WWE RAW October 5, 2026 — 5/10/2026) بجودة عالية مع كل النزالات، مشاهدة وتحميل على عرب راسلنج.');
+  // the program's other spellings join the description (INCIDENTS #422)
+  assert.match(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا: راو، RAW\.$/);
   assert.equal(showSeoText({ ...raw, isLatest: false }).title, 'عرض الرو 05.10.2026 مترجم (5 أكتوبر 2026) — WWE RAW');
   // no date in the name: it comes from the show's date
   assert.equal(showSeoText({ ...raw, headline: 'عرض الرو مترجم', isLatest: false }).title, 'عرض الرو 05.10.2026 مترجم (5 أكتوبر 2026) — WWE RAW');

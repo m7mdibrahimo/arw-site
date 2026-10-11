@@ -11,7 +11,7 @@ test('known broken words are corrected automatically', () => {
 
 test('broken_word is a publish-blocking code in the Fightful pipeline', () => {
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
-  assert.match(src, /"broken_word", "glued_latin_arabic", "detached_prefix"\]\.includes/);
+  assert.match(src, /"broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix"\]\.includes/);
   const issues = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'تفادى محاولة حركة مونس ault من ريد ' + 'كلام '.repeat(80));
   assert.ok(issues.some(i => i.code === 'broken_word'));
 });
@@ -58,4 +58,12 @@ test('glossary spells Mecha Wolf as «ميكا وولف»', async () => {
   const { readFileSync } = await import('node:fs');
   const names = JSON.parse(readFileSync(new URL('../scripts/wrestler-names.json', import.meta.url), 'utf8'));
   assert.equal(names['Mecha Wolf'], 'ميكا وولف');
+});
+
+// INCIDENTS #422: «يقدمكن» and «الحكمة جيسيكا كار» (referee) reached the site.
+test('feminine-plural «يقدمكن» is blocked and referee «الحكمة» is corrected', () => {
+  assert.equal(applyCorrections('هؤلاء المصارعات يقدمكن مستويات'), 'هؤلاء المصارعات يقدمن مستويات');
+  assert.equal(applyCorrections('طردهما الحكمة جيسيكا كار'), 'طردهما الحكم جيسيكا كار');
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'المصارعات يقدمكن مستويات ' + 'كلام '.repeat(80), []).some(i => i.code === 'fem_plural_kn'));
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /"fem_plural_kn"/);
 });
