@@ -31,4 +31,5 @@ downloads_medium: |-
   https://pixeldrain.com/u/WEmno8Q1
   https://uqload.vc/wpcam7blucnr.html
 layout: post-layout.njk
+card_title: name
 ---
