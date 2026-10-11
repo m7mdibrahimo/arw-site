@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-11T20:53:45.781Z"
+ },
  "https://www.fightful.com/wrestling/watch-2026-tna-hall-of-fame-live-and-free-at-4pm-et-on-october-11th": {
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-11T20:37:17.893Z"
- },
- "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T20:33:34.939Z"
  },
  "https://www.fightful.com/wrestling/penta-wins-2026-mens-money-in-the-bank-ladder-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
