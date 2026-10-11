@@ -22,6 +22,17 @@
     "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
+    "url": "/shows/ufc-fight-night-290-allen-vs-duncan/",
+    "title": "عرض يو اف سي فايت نايت 10.10.2026 مترجم",
+    "subtitle": "UFC Fight Night 290: Allen vs. Duncan",
+    "image": "/content/images/lvau1v49glxs7ipj.jpg?w=800",
+    "federation": "MMA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-09-10-2026/",
     "title": "عرض سماك داون 09.10.2026 مترجم",
     "subtitle": "WWE Smackdown 09.10.2026",
@@ -86,17 +97,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/ufc-332-silva-vs-wang-main-card/",
-    "title": "عرض يو اف سي 332 مين كارد مترجم",
-    "subtitle": "UFC 332: Silva vs Wang (Main Card)",
-    "image": "/content/images/zrxiqosmbsfpbzq7.jpg?w=800",
-    "federation": "MMA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض يو اف سي 332 مين كارد مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/mlp-mayhem-30-09-2026/",
