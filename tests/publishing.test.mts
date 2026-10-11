@@ -4390,3 +4390,12 @@ test('a new show, recap or nostalgia page goes straight to Google, not only thro
     'https://arab-wrestling.com/news/x/',
   ]), ['https://arab-wrestling.com/shows/wwe-money-in-the-bank-2026/', 'https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/']);
 });
+
+// INCIDENTS #429: the library page of a program had the same stuffing as the show pages had (#428): a long title and
+// a description ending in «ويعرف أيضا: …». The other spellings stay in the structured data only.
+test('library program pages: no spelling list in the description, short title', () => {
+  const src = fs.readFileSync('pages/library-program.njk', 'utf8');
+  assert.ok(!src.includes('ويعرف أيضا'));
+  assert.ok(!/pageTitle:[^\n]*كل عروض/.test(src.split('\n').filter(l => l.includes('pageTitle:'))[0].split('{% else %}')[0]));
+  assert.ok(src.includes('"alternateName"'));
+});

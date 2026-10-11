@@ -67,3 +67,9 @@ test('feminine-plural «يقدمكن» is blocked and referee «الحكمة» i
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'المصارعات يقدمكن مستويات ' + 'كلام '.repeat(80), []).some(i => i.code === 'fem_plural_kn'));
   assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /"fem_plural_kn"/);
 });
+
+// INCIDENTS #429: «لهكته» (typo for لهجته) and the filler «يسخر ساخرا».
+test('«لهكته» and «يسخر ساخرا» are corrected', () => {
+  assert.equal(applyCorrections('بسبب لهكته الفرنسية'), 'بسبب لهجته الفرنسية');
+  assert.equal(applyCorrections('جون سينا يوضح ويسخر ساخرا'), 'جون سينا يوضح ويسخر');
+});
