@@ -3393,7 +3393,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261011154305-aew-collision-grand-slam-france-10-10-2026": {
     "publishedAt": 1791723966320,
@@ -3415,12 +3416,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 10.10.2026 مترجم",
-    "lastAttempt": 1791740528708,
+    "lastAttempt": 1791743948837,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
