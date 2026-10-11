@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "عودة ولم شمل كتيبة يونايتد إمباير!.. ويل أوسبراي يستدعي رفاقه لمواجهة ثلاثية طاحنة ضد The Don Callis Family في AEW Dynamite القادم'"
+title: "عودة ولم شمل كتيبة يونايتد إمباير!.. ويل أوسبراي يستدعي رفاقه لمواجهة ثلاثية طاحنة ضد The Don Callis Family في AEW Dynamite القادم"
 permalink: "/news/عودة-ولم-شمل-كتيبة-يونايتد-إمباير-ويل-أوسبري-يستدعي-رفاقه-لمواجهة-ثلاثية-طاحنة-ضد-the-don-callis-family-في-aew-dynamite-القادم/index.html"
 date: 2026-08-16T07:21:00.000+03:00
 tags:

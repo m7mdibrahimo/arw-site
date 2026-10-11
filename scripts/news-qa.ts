@@ -387,6 +387,8 @@ export function tonightInTitle(title: string, now = Date.now()): string {
  * (بتوقيت أمريكا): ثلاثة أمور كرهناها…» (INCIDENTS #122). The body keeps it.
  */
 export function dropTimezoneFromTitle(title: string): string {
+  // A lone apostrophe glued to the start/end of a headline: «…عرض Heatwave 2026'» (62 August stories, INCIDENTS #414)
+  if ((title.match(/'/g) || []).length === 1) title = title.replace(/^\s*'|'\s*$/, "");
   return title
     // «عرض WWE NXT/2026»: a year glued to a show name by a slash (INCIDENTS #268)
     .replace(/([A-Za-z])\/20\d\d\b/g, "$1")

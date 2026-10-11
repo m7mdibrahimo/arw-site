@@ -1,6 +1,6 @@
 ---
 federation: TNA
-title: "تفعيل الخيار C رسميا!.. ليون سلاتر يخسر لقب X-Division لتحدي نيك نيميث في Bound for Glory'"
+title: "تفعيل الخيار C رسميا!.. ليون سلاتر يخسر لقب X-Division لتحدي نيك نيميث في Bound for Glory"
 permalink: "/news/تفعيل-الخيار-c-رسميا-ليون-سلاتر-يتنازل-عن-لقب-ال-x-division-لتحدي-نيك-نيميث-في-bound-for-glory/index.html"
 date: 2026-08-24T05:03:00.000+03:00
 tags:

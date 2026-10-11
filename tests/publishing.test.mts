@@ -4321,3 +4321,18 @@ test('«ملء الشاشة» replaces «وضع السينما»: the site fills
   assert.match(css, /@media \(pointer: coarse\)\{\n  \.video-embed:fullscreen \.pfs-exit\{ display:flex;/);
   assert.match(player, /if \(fs\) \(document\.exitFullscreen \|\| document\.webkitExitFullscreen\)\.call\(document\); else exitPseudo\(\);/);
 });
+
+test('dropTimezoneFromTitle removes a lone apostrophe glued to the headline edge (INCIDENTS #414)', async () => {
+  const { dropTimezoneFromTitle } = await import('../scripts/news-qa');
+  assert.equal(dropTimezoneFromTitle("نزال ثلاثي مدمر.. عرض Heatwave 2026'"), 'نزال ثلاثي مدمر.. عرض Heatwave 2026');
+  assert.equal(dropTimezoneFromTitle("Roman's return"), "Roman's return");
+});
+
+test('no published Arabic title ends with a lone apostrophe', async () => {
+  const fs = await import('node:fs');
+  const bad = fs.readdirSync('content/news').filter((f) => f.endsWith('.md')).filter((f) => {
+    const t = fs.readFileSync('content/news/' + f, 'utf8').split('\n').slice(0, 14).find((l) => l.startsWith('title:')) || '';
+    return (t.match(/'/g) || []).length % 2 === 1 && /[^"\\]'"$/.test(t.trim());
+  });
+  assert.deepEqual(bad, []);
+});
