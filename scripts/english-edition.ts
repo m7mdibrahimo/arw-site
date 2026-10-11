@@ -61,7 +61,7 @@ export function englishStyleRules(sourceUrl: string): string {
   const outlet = outletOf(sourceUrl);
   return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
-- Headline: Title Case, clear and specific, under 90 characters, no clickbait, no emoji, no all caps.
+- Headline: Title Case, clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct, never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
 - Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one.
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
@@ -118,6 +118,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (/\b(as an ai|language model|arab wrestling|translated|translation)\b/i.test(title + "\n" + body)) issues.push("meta text");
   if (/^#{1,6}\s/m.test(body) || /\*\*/.test(body)) issues.push("markdown formatting");
   if (/[\u{1F300}-\u{1FAFF}]/u.test(title)) issues.push("emoji in title");
+  // a curse word or a quoted slang line as the headline (INCIDENTS #425: «These Female Wrestler On Some Other Shit»)
+  if (/\b(shit\w*|fuck\w*|bitch\w*|asshole|bullshit|damn|dick|pussy)\b/i.test(title)) issues.push("profanity in title");
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");

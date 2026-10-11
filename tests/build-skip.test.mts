@@ -132,3 +132,17 @@ test('show and recap cards show the date the item was added, not the date it air
   }
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf8'), /\{\{ \(rItem\.date or rItem\.data\.date\) \| date\("YYYY\/MM\/DD"\) \}\}/);
 });
+
+test('show pages carry VideoObject structured data in the head, with duration and dates (INCIDENTS #427)', () => {
+  const layout = fs.readFileSync(path.join(process.cwd(), '_includes/post-layout.njk'), 'utf8');
+  assert.ok(/"@type": "VideoObject"/.test(layout));
+  assert.ok(/"duration": "\{\{ duration \| isoDuration \}\}"/.test(layout));
+  assert.ok(layout.includes("{% if duration and (page.url.startsWith('/shows/')"));
+});
+
+test('library program pages that Google knows and that no longer exist redirect to where their content lives (INCIDENTS #426)', () => {
+  const red = fs.readFileSync(path.join(process.cwd(), '_redirects'), 'utf8');
+  for (const [from, to] of [['/library/njpw/', '/federation/njpw/'], ['/library/roh/', '/federation/roh/'], ['/library/cmll/', '/federation/indie/']]) {
+    assert.ok(red.split('\n').some(l => l.trim().startsWith(`${from} ${to} 301`)), from);
+  }
+});

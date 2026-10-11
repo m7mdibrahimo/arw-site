@@ -23,6 +23,7 @@ const good = {
 test('an English edition that reads like the source, has Arabic, or talks about itself is held back', () => {
   assert.deepEqual(checkEnglish(good, input), []);
   assert.ok(checkEnglish({ ...good, body: good.body + ' كودي' }, input).includes('Arabic letters'));
+  assert.ok(checkEnglish({ ...good, title: 'Logan Paul: These Female Wrestler On Some Other Shit' }, input).includes('profanity in title'));
   assert.ok(checkEnglish({ ...good, body: good.body + '\n\nThis story was translated for Arab Wrestling.' }, input).includes('meta text'));
   assert.ok(checkEnglish({ ...good, body: 'The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. ' + good.body }, input).includes('copied from the source'));
   // a direct quote may repeat the source word for word

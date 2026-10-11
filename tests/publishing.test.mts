@@ -4167,6 +4167,16 @@ test('«حركة إثبات تحت الذراع» is corrected to «حركة ب�
   }
 });
 
+test('dual nouns «النجمان / حياتهما / طريقيهما» are flagged (INCIDENTS #424)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const codes = (body: string) => checkArticle('عنوان عربي كامل للخبر هنا', body, []).map(i => i.code);
+  const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
+  assert.ok(codes('يواصل النجمان تألقهما.' + filler).includes('dual_form'));
+  assert.ok(codes('بدأ الثنائي حياتهما المهنية معا.' + filler).includes('dual_form'));
+  assert.ok(codes('نجحا في شق طريقيهما نحو القمة.' + filler).includes('dual_form'));
+  assert.ok(!codes('يواصل النجوم تألقهم.' + filler).includes('dual_form'));
+});
+
 test('dual forms (مثنى) are blocked (INCIDENTS #393)', async () => {
   const { checkArticle } = await import('../scripts/news-qa');
   const codes = (title: string, body: string) => checkArticle(title, body, []).map(i => i.code);

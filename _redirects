@@ -635,3 +635,6 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /tag/مستحقات-المصارعة-الحرة/* /tag/مستحقات-المصارعة/:splat 301!
 /tag/سوق-المصارعة-الحرة/* /tag/سوق-المصارعة/:splat 301!
 /tag/دوريات-المصارعة-الحرة/* /tag/دوريات-المصارعة/:splat 301!
+/library/njpw/ /federation/njpw/ 301!
+/library/roh/ /federation/roh/ 301!
+/library/cmll/ /federation/indie/ 301!

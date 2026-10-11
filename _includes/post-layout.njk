@@ -104,6 +104,21 @@
         "@id": "{{ pageUrl }}"
       }
     },
+    {#- every show, recap and nostalgia episode is a video: VideoObject in the head only, with its length and the dates it is searched by (INCIDENTS #427) -#}
+    {% if duration and (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') or page.url.startsWith('/nostalgia/')) and (duration | isoDuration) %}
+    {
+      "@type": "VideoObject",
+      "name": "{{ pageTitle | escape }}",
+      "description": "{{ (description or baseDesc) | escape }}",
+      "thumbnailUrl": ["{{ schemaImage }}"],
+      "uploadDate": {{ page.date | jsonify | safe }},
+      "duration": "{{ duration | isoDuration }}",
+      {% if eventDate or event_date %}"datePublished": {{ (eventDate or event_date) | jsonify | safe }},{% endif %}
+      "inLanguage": "ar",
+      "mainEntityOfPage": { "@id": "{{ pageUrl }}" },
+      "publisher": { "@type": "Organization", "name": "عرب راسلنج", "url": "https://arab-wrestling.com/" }
+    },
+    {% endif %}
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
