@@ -3407,7 +3407,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261011154806-mlw-fusion-10-10-2026": {
     "publishedAt": 1791724010472,
