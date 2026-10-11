@@ -22,12 +22,13 @@ const OUT = path.join(process.cwd(), "seo");
 const STATE = path.join(OUT, "new-shows.json");
 const WRITE_SCOPE = "https://www.googleapis.com/auth/webmasters";
 const READ_SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
+const INDEXING_SCOPE = "https://www.googleapis.com/auth/indexing";
 const H = 3600_000;
 const INSPECT_PER_RUN = 40;
 
 export interface QueryStat { q: string; clicks: number; impressions: number; position: number }
-interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string; queries?: QueryStat[]; queriesAt?: string; googleCanonical?: string; crawledAt?: string }
-interface State { pages: Record<string, Page>; sitemapPinged?: string }
+interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string; queries?: QueryStat[]; queriesAt?: string; googleCanonical?: string; crawledAt?: string; directAt?: string }
+interface State { pages: Record<string, Page>; sitemapPinged?: string; indexingApi?: { at: string; sent: number; error?: string } }
 
 /** Watch pages: one show, recap or nostalgia episode, and a program's library page. */
 export function isWatchUrl(u: string): boolean {
@@ -97,6 +98,24 @@ async function indexNow(urls: string[]): Promise<string> {
   return `${r.status} ${r.statusText || ""}`.trim();
 }
 
+/** Pages worth a direct notice to Google: a show, a recap, a nostalgia episode — the pages people search for the hour
+ *  they come out. The sitemap alone left a show out of Google for hours while other sites were already there (owner
+ *  2026-10-11, INCIDENTS #428). Library and other pages keep the sitemap. */
+export function indexingCandidates(urls: string[]): string[] {
+  return urls.filter(u => /^https:\/\/arab-wrestling\.com\/(?:shows|recaps|nostalgia)\/[^/]+\/$/.test(u)).slice(0, 50);
+}
+
+/** Google's Indexing API: «this URL is new or changed, crawl it». Failure (API not enabled for the service account's
+ *  project, or the account isn't an owner of the property) is logged in the report and the sitemap still goes. */
+async function notifyGoogle(token: string, urls: string[]): Promise<{ ok: number; error?: string }> {
+  let ok = 0;
+  for (const u of urls) {
+    try { await api(token, "https://indexing.googleapis.com/v3/urlNotifications:publish", { url: u, type: "URL_UPDATED" }); ok++; }
+    catch (e: any) { return { ok, error: String(e?.message || e).slice(0, 300) }; }
+  }
+  return { ok };
+}
+
 const path_ = (u: string) => { try { return decodeURI(u.replace(ORIGIN, "")); } catch { return u.replace(ORIGIN, ""); } };
 
 async function main() {
@@ -119,6 +138,7 @@ async function main() {
 
   const raw = process.env.GSC_SERVICE_ACCOUNT;
   let site = "", readToken = "", writeToken = "";
+  let directSent: string[] = [];
   if (raw) {
     const sa = JSON.parse(raw);
     readToken = await accessToken(sa, READ_SCOPE);
@@ -130,12 +150,23 @@ async function main() {
       state.sitemapPinged = new Date(now).toISOString();
       console.log("[SEO] sitemap resubmitted to Google");
     }
+    // New pages, and pages from the last 3 days Google still doesn't have that never got the direct notice
+    const waiting = Object.entries(state.pages).filter(([u, p]) => !p.indexedAt && !p.directAt && lastmodOf.has(u)
+      && now - Date.parse(p.firstSeen) < 72 * H).map(([u]) => u);
+    const direct = indexingCandidates([...new Set([...ready, ...waiting])]);
+    if (site && direct.length) {
+      const res = await accessToken(sa, INDEXING_SCOPE).then(t => notifyGoogle(t, direct)).catch((e: any) => ({ ok: 0, error: String(e?.message || e).slice(0, 300) }));
+      state.indexingApi = { at: new Date(now).toISOString(), sent: res.ok, ...(res.error ? { error: res.error } : {}) };
+      directSent = direct.slice(0, res.ok);
+      console.log(`[SEO] Google Indexing API: ${res.ok}/${direct.length} sent${res.error ? ` — ${res.error}` : ""}`);
+    }
   } else console.log("[SEO] GSC_SERVICE_ACCOUNT is not set — Google steps skipped");
 
   for (const u of ready) {
     const p = state.pages[u];
     state.pages[u] = { ...(p || { firstSeen: new Date(now).toISOString() }), lastmod: lastmodOf.get(u) || "", pinged: new Date(now).toISOString() };
   }
+  for (const u of directSent) if (state.pages[u]) state.pages[u].directAt = new Date(now).toISOString();
 
   // 2. ask Google about pages it may not have yet
   if (site && readToken) {
@@ -194,10 +225,11 @@ async function main() {
     if (p.indexedAt && age >= 5 * 24 && pf && pf.impressions >= 30 && pf.position > 3) problems.push(`- متفهرسة بس ترتيبها ${pf.position.toFixed(1)} (${pf.impressions} ظهور): ${path_(u)} — حسّن العنوان والوصف والبيانات المنظمة`);
     for (const w of weakQueries(p.queries)) problems.push(`- «${w.q}» ترتيبها ${w.position.toFixed(1)} (${w.impressions} ظهور، ${w.clicks} نقرة): ${path_(u)} — خليها في أول ٣`);
   }
+  if (state.indexingApi?.error) problems.unshift(`- إشعار جوجل المباشر (Indexing API) فشل ${state.indexingApi.at}: ${state.indexingApi.error} — فعّل «Web Search Indexing API» لمشروع حساب الخدمة وخليه «مالك» (Owner) في Search Console`);
   const lines = [
     `# الصفحات الجديدة في البحث`,
     ``,
-    `آخر تحديث: ${new Date(now).toISOString()} · آخر إرسال لخريطة الموقع لجوجل: ${state.sitemapPinged || "—"}`,
+    `آخر تحديث: ${new Date(now).toISOString()} · آخر إرسال لخريطة الموقع لجوجل: ${state.sitemapPinged || "—"} · إشعار جوجل المباشر: ${state.indexingApi ? `${state.indexingApi.at} (${state.indexingApi.sent} صفحة${state.indexingApi.error ? "، فشل" : ""})` : "—"}`,
     ``,
     `## مشاكل لازم تتصلح`,
     problems.length ? problems.join("\n") : "- مفيش",
