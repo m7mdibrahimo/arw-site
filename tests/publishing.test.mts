@@ -4170,6 +4170,9 @@ test('dual forms (مثنى) are blocked (INCIDENTS #393)', async () => {
   const codes = (title: string, body: string) => checkArticle(title, body, []).map(i => i.code);
   const filler = ' وهذا نص إضافي طويل بما يكفي لتجاوز حد الطول الأدنى للنص.'.repeat(6);
   assert.ok(codes('دان ريد: توني خان واتحاد AEW قدما دعما رائعا لاتحاد EVE', filler).includes('dual_form'));
+  assert.ok(codes('عنوان عربي كامل للخبر هنا', 'تدافع بطلتا الفرق عن اللقب أمام الغريمات.' + filler).includes('dual_form'));
+  assert.ok(codes('عنوان عربي كامل للخبر هنا', 'أعلن بطلا العالم للفرق عن التحدي.' + filler).includes('dual_form'));
+  assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'توج بطلا للعالم للمرة الثانية.' + filler).includes('dual_form'));
   assert.ok(codes('عنوان عربي كامل للخبر هنا', 'الثنائي، اللذان اشتهرا بالشخصية واصلا العمل.' + filler).includes('dual_form'));
   assert.ok(!codes('عنوان عربي كامل للخبر هنا', 'يجب المضي قدما في الخطة والثنائي واصل العمل.' + filler).includes('dual_form'));
   // more dual forms found later (INCIDENTS #396)
