@@ -5,8 +5,8 @@ pagination:
   alias: lp
 permalink: "{{ lp.href }}index.html"
 eleventyComputed:
-  pageTitle: "{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير مترجم ({{ lp.prog.latest.eventDate | date }}) — {{ lp.prog.name }}{% else %}{{ lp.prog.name }} مترجم — كل العروض{% if lp.pageNumber > 1 %} - صفحة {{ lp.pageNumber }}{% endif %}{% endif %}"
-  pageDesc: "{% if lp.prog.arName and lp.pageNumber == 1 %}شاهد {{ lp.prog.arName }} الأخير مترجم بالعربي ({{ lp.prog.latest.eventDate | date }}) بجودة عالية مع نتائجه كاملة، مشاهدة أونلاين وتحميل، وكل عروض {{ lp.prog.name }} المترجمة من الأحدث للأقدم على عرب راسلنج.{% else %}جميع عروض {{ lp.prog.name }} المترجمة بالعربية مرتبة من الأحدث للأقدم على عرب راسلنج.{% endif %}"
+  pageTitle: "{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير كامل مترجم ({{ lp.prog.latest.eventDate | date }}) — {{ lp.prog.name }}{% else %}{{ lp.prog.name }} مترجم — كل العروض{% if lp.pageNumber > 1 %} - صفحة {{ lp.pageNumber }}{% endif %}{% endif %}"
+  pageDesc: "{% if lp.prog.arName and lp.pageNumber == 1 %}مشاهدة وتحميل {{ lp.prog.arName }} الاخير كامل ومترجم بالعربي ({{ lp.prog.latest.eventDate | date }}) أونلاين بجودة عالية مع نتائجه كاملة، وكل عروض {{ lp.prog.name }} المترجمة من الأحدث للأقدم على عرب راسلنج.{% else %}جميع عروض {{ lp.prog.name }} المترجمة بالعربية مرتبة من الأحدث للأقدم على عرب راسلنج.{% endif %}"
 ---
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
