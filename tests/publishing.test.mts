@@ -3308,16 +3308,16 @@ test('a show page title carries the dotted date people search with, only in the 
   const { showSeoText } = (await import('../lib/show-seo.cjs')).default;
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
-  assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 مترجم — WWE RAW');
+  assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 كامل مترجم — WWE RAW');
   assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل وبجودة عالية، بتاريخ 5 أكتوبر 2026 (WWE RAW October 5, 2026)، مع كل النزالات وروابط المشاهدة والتحميل.');
   // the program's other spellings stay in the structured data, never as a list in the description (INCIDENTS #428)
   assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا|راو/);
   // one date in the title, short enough for Google to show whole (INCIDENTS #428)
   assert.ok(latest.title.length + ' | عرب راسلنج'.length <= 70, latest.title);
   assert.ok(latest.description.length <= 180, latest.description);
-  assert.equal(showSeoText({ ...raw, isLatest: false }).title, 'عرض الرو 05.10.2026 مترجم — WWE RAW');
+  assert.equal(showSeoText({ ...raw, isLatest: false }).title, 'عرض الرو 05.10.2026 كامل مترجم — WWE RAW');
   // no date in the name: it comes from the show's date
-  assert.equal(showSeoText({ ...raw, headline: 'عرض الرو مترجم', isLatest: false }).title, 'عرض الرو 05.10.2026 مترجم — WWE RAW');
+  assert.equal(showSeoText({ ...raw, headline: 'عرض الرو مترجم', isLatest: false }).title, 'عرض الرو 05.10.2026 كامل مترجم — WWE RAW');
   // a written description is kept
   assert.equal(showSeoText({ ...raw, description: 'وصف خاص', isLatest: true }).description, 'وصف خاص');
   // nothing on the page itself changes: the heading still strips the date
