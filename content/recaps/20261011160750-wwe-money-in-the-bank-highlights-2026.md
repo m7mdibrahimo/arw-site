@@ -4,8 +4,8 @@ title: WWE Money in the Bank Highlights (2026)
 program_name: WWE Money in the Bank
 event_date: 2026-10-10
 date: 2026-10-11T16:00:29.000+03:00
-headline: ملخص عرض موني ان ذا بانك 10.10.2026 مترجم
-description: ملخص عرض موني ان ذا بانك مترجم بالكامل مع جميع النزالات والأحداث.
+headline: ملخص عرض موني ان ذا بانك 10.10.2026
+description: ملخص عرض موني ان ذا بانك بالكامل مع جميع النزالات والأحداث.
 tags:
   - WWE
   - ملخص
