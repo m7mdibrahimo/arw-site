@@ -105,3 +105,9 @@ test('INCIDENTS #438: mixed-script words and noun duals are blocked', () => {
   assert.ok(codes('وستشهد مواجهتين على اللقب.').includes('dual_noun'));
   assert.ok(!codes('إضافة نزالات جديدة للفرق إلى العرض.').includes('dual_noun'));
 });
+
+// INCIDENTS #439: «ايه جيه ستايلز» (AJ without the hamza) reached five stories.
+test('INCIDENTS #439: AJ names always get the hamza', () => {
+  assert.match(applyCorrections('نجل المصارع ايه جيه ستايلز'), /إيه جيه ستايلز/);
+  assert.match(applyCorrections('بين تراي ميجيل وايه جيه ستايلز'), /وإيه جيه ستايلز/);
+});
