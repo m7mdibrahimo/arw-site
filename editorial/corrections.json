@@ -5944,6 +5944,12 @@
    "wrong": "يسخر ساخرا",
    "right": "يسخر",
    "note": "حشو: «يسخر ساخرا» — INCIDENTS #429"
+  },
+  {
+   "wrong": "دان\\s*[Hh]ausen",
+   "right": "دانهاوزن",
+   "regex": true,
+   "note": "اسم Danhausen اتقسم نص عربي ونص إنجليزي — INCIDENTS #430"
   }
  ]
 }

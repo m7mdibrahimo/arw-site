@@ -73,3 +73,11 @@ test('«لهكته» and «يسخر ساخرا» are corrected', () => {
   assert.equal(applyCorrections('بسبب لهكته الفرنسية'), 'بسبب لهجته الفرنسية');
   assert.equal(applyCorrections('جون سينا يوضح ويسخر ساخرا'), 'جون سينا يوضح ويسخر');
 });
+
+// INCIDENTS #430: «دان hausen» (Danhausen split) blocked/leaked, and «قدما عندما» wrongly flagged as a dual verb.
+test('Danhausen split is corrected and «قدما عندما» is not a dual form', () => {
+  assert.equal(applyCorrections('انتهى نزال دان hausen ضد غونتر'), 'انتهى نزال دانهاوزن ضد غونتر');
+  const body = 'دفع المنافسة قدما عندما كانت العروض هادئة. ' + 'كلام '.repeat(80);
+  assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', body).some((i) => i.code === 'dual_form'));
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'AEW قدما دعما رائعا ' + 'كلام '.repeat(80)).some((i) => i.code === 'dual_form'));
+});
