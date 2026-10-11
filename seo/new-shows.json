@@ -123,7 +123,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -141,13 +141,13 @@
    "firstSeen": "2026-10-06T14:36:02.667Z",
    "lastmod": "2026-10-08",
    "pinged": "2026-10-08T14:50:25.167Z",
-   "inspected": "2026-10-10T19:41:39.429Z",
+   "inspected": "2026-10-11T02:41:17.756Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "googleCanonical": "",
    "crawledAt": "",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/njpw/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -157,7 +157,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/hog/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -169,7 +169,7 @@
    "googleCanonical": "",
    "crawledAt": "",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/wwe-smackdown/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -183,7 +183,19 @@
    "indexedAt": "2026-10-10T11:44:25.732Z",
    "queries": [
     {
+     "q": "عرض سماك داون الاخير مترجم",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 7
+    },
+    {
      "q": "smackdown مترجم",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 8
+    },
+    {
+     "q": "سماك داون الاخير مترجم",
      "clicks": 0,
      "impressions": 1,
      "position": 8
@@ -207,7 +219,7 @@
      "position": 12
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/mlp-mayhem/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -224,7 +236,7 @@
    "googleCanonical": "",
    "crawledAt": "",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/tna-impact/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -236,8 +248,15 @@
    "googleCanonical": "",
    "crawledAt": "2026-10-09T12:24:18Z",
    "indexedAt": "2026-10-09T15:48:14.968Z",
-   "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queries": [
+    {
+     "q": "تي إن إيه",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 10
+    }
+   ],
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/roh/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -247,7 +266,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/aew-dynamite/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -261,17 +280,17 @@
     {
      "q": "عرض aew dynamite الأخير",
      "clicks": 0,
-     "impressions": 4,
+     "impressions": 6,
      "position": 5.8
     },
     {
      "q": "aew مترجم",
      "clicks": 0,
-     "impressions": 4,
-     "position": 15.8
+     "impressions": 5,
+     "position": 14.6
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/wwe-nxt/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -282,7 +301,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T14:37:44.896Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-02-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -1823,11 +1842,11 @@
    "firstSeen": "2026-10-06T14:36:02.667Z",
    "lastmod": "2026-10-04",
    "pinged": "2026-10-06T14:36:02.667Z",
-   "inspected": "2026-10-10T19:41:39.429Z",
+   "inspected": "2026-10-11T02:41:17.756Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -1839,7 +1858,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -1852,7 +1871,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-08T06:37:28.597Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/lucha-libre-aaa/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -1862,7 +1881,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -1874,7 +1893,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/ufc/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -1884,7 +1903,7 @@
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL.",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -1897,7 +1916,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/gcw/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -1907,7 +1926,7 @@
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL.",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -1923,7 +1942,7 @@
     {
      "q": "عرض الرو الاخير مترجم",
      "clicks": 0,
-     "impressions": 26,
+     "impressions": 36,
      "position": 8.6
     },
     {
@@ -1935,26 +1954,38 @@
     {
      "q": "تحميل عرض الرو الاخير",
      "clicks": 0,
-     "impressions": 8,
-     "position": 10.3
-    },
-    {
-     "q": "عرض الرو مترجم",
-     "clicks": 0,
-     "impressions": 6,
-     "position": 9.7
+     "impressions": 9,
+     "position": 10.2
     },
     {
      "q": "عرض الرو الاخير",
      "clicks": 0,
-     "impressions": 5,
-     "position": 7.2
+     "impressions": 8,
+     "position": 11.8
+    },
+    {
+     "q": "عرض الرو مترجم",
+     "clicks": 0,
+     "impressions": 7,
+     "position": 9.4
     },
     {
      "q": "عرض الرو الأخير مترجم",
      "clicks": 0,
      "impressions": 4,
      "position": 6.8
+    },
+    {
+     "q": "عرض الرو الاخير مترجم عربي",
+     "clicks": 0,
+     "impressions": 4,
+     "position": 7.8
+    },
+    {
+     "q": "عرض الرو الاخير كامل ومترجم",
+     "clicks": 0,
+     "impressions": 4,
+     "position": 8
     },
     {
      "q": "wwe raw مترجم",
@@ -1969,22 +2000,10 @@
      "position": 7
     },
     {
-     "q": "عرض الرو الاخير كامل ومترجم",
-     "clicks": 0,
-     "impressions": 3,
-     "position": 7.3
-    },
-    {
      "q": "عرض raw مترجم",
      "clicks": 1,
      "impressions": 2,
      "position": 6
-    },
-    {
-     "q": "عرض الرو الاخير مترجم عربي",
-     "clicks": 0,
-     "impressions": 2,
-     "position": 7
     },
     {
      "q": "تحميل عرض الرو الاخير مترجم",
@@ -2011,7 +2030,7 @@
      "position": 10
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-كلاش-اوف-تشامبيونز-2019/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2022,7 +2041,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-تي-ال-سي-2013/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2033,7 +2052,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-اكستريم-رولز-2012/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2044,7 +2063,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-برنامج-دبليو-دبليو-اف-تف-انف-الموسم-الثاني/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2055,7 +2074,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-برنامج-دبليو-دبليو-اي-تف-انف-الموسم-الاول/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2066,7 +2085,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/nostalgia/2026-باد-بلود-1997/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2077,7 +2096,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2091,38 +2110,56 @@
     {
      "q": "عرض الرو الاخير",
      "clicks": 3,
-     "impressions": 27,
-     "position": 7.5
+     "impressions": 33,
+     "position": 7.9
     },
     {
      "q": "عرض الرو الاخير مترجم",
      "clicks": 0,
-     "impressions": 18,
+     "impressions": 24,
      "position": 8.2
     },
     {
      "q": "عرض الرو",
      "clicks": 0,
-     "impressions": 9,
+     "impressions": 13,
      "position": 6.2
     },
     {
      "q": "تحميل عرض الرو",
+     "clicks": 1,
+     "impressions": 11,
+     "position": 6.6
+    },
+    {
+     "q": "عرض الرو الاخير 2026",
+     "clicks": 1,
+     "impressions": 9,
+     "position": 3.4
+    },
+    {
+     "q": "عرض الرو مترجم",
      "clicks": 0,
      "impressions": 9,
      "position": 6.9
     },
     {
-     "q": "عرض الرو الاخير 2026",
-     "clicks": 1,
-     "impressions": 7,
-     "position": 3.3
+     "q": "wwe raw مترجم",
+     "clicks": 0,
+     "impressions": 8,
+     "position": 6.6
     },
     {
-     "q": "عرض الرو مترجم",
+     "q": "دبليو دبليو إي راو 5 أكتوبر 2026",
      "clicks": 0,
      "impressions": 5,
-     "position": 5.6
+     "position": 7.6
+    },
+    {
+     "q": "رو",
+     "clicks": 0,
+     "impressions": 5,
+     "position": 8.4
     },
     {
      "q": "الرو",
@@ -2131,10 +2168,22 @@
      "position": 11.8
     },
     {
-     "q": "wwe raw مترجم",
+     "q": "مشاهدة عرض الرو الاخير كامل ومترجم",
+     "clicks": 1,
+     "impressions": 3,
+     "position": 3
+    },
+    {
+     "q": "raw مترجم",
      "clicks": 0,
-     "impressions": 4,
-     "position": 6.5
+     "impressions": 3,
+     "position": 3.3
+    },
+    {
+     "q": "عرض الرو كامل",
+     "clicks": 1,
+     "impressions": 3,
+     "position": 4.7
     },
     {
      "q": "عرض الرو الأخير مترجم",
@@ -2143,43 +2192,13 @@
      "position": 7
     },
     {
-     "q": "تحميل عرض الرو الاخير",
-     "clicks": 0,
-     "impressions": 3,
-     "position": 8
-    },
-    {
-     "q": "raw مترجم",
-     "clicks": 0,
-     "impressions": 2,
-     "position": 2.5
-    },
-    {
-     "q": "مشاهدة عرض الرو الاخير",
-     "clicks": 1,
-     "impressions": 2,
-     "position": 4
-    },
-    {
-     "q": "دبليو دبليو إي راو 5 أكتوبر 2026",
-     "clicks": 0,
-     "impressions": 2,
-     "position": 6.5
-    },
-    {
-     "q": "عرض الرو الأخير مترجم كامل",
-     "clicks": 0,
-     "impressions": 2,
-     "position": 7
-    },
-    {
      "q": "اخر عرض الرو",
      "clicks": 2,
-     "impressions": 2,
-     "position": 7.5
+     "impressions": 3,
+     "position": 7.7
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/recaps/wwe-raw-highlights-28-09-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2190,7 +2209,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/cmll-domingo-familiar-04-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2201,7 +2220,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-03-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2212,7 +2231,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/nwa-powerrr-03-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2223,7 +2242,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/gcw-the-last-frontier-the-sequel-03-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2234,7 +2253,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/ufc-332-silva-vs-wang-main-card/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2245,7 +2264,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/ufc-332-silva-vs-wang-prelims/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2256,7 +2275,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/ufc-332-silva-vs-wang-early-prelims/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2267,7 +2286,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/mlp-northern-rising-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2278,7 +2297,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/lucha-libre-aaa-03-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2289,7 +2308,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/mlw-fusion-03-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2300,7 +2319,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/mlp-countdown-northern-rising-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2311,7 +2330,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/cmll-viernes-espectacular-02-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2322,7 +2341,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T21:00:48.114Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/aew-collision-03-10-2026/": {
    "firstSeen": "2026-10-06T14:36:02.667Z",
@@ -2340,7 +2359,7 @@
      "position": 9
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/revpro/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
@@ -2350,7 +2369,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2363,7 +2382,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T23:58:57.961Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/revpro-14-year-anniversary-show/": {
    "firstSeen": "2026-10-06T17:38:32.011Z",
@@ -2374,7 +2393,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-06T23:58:57.961Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/roh-05-10-2026/": {
    "firstSeen": "2026-10-06T17:59:09.444Z",
@@ -2385,7 +2404,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T00:06:11.934Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/revpro-live-in-london-112/": {
    "firstSeen": "2026-10-06T17:59:09.444Z",
@@ -2396,7 +2415,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T00:06:11.934Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/njpw-yuji-nagata-produce-blue-justice-xix-aogi-futotsu-2026/": {
    "firstSeen": "2026-10-06T18:52:30.572Z",
@@ -2406,7 +2425,7 @@
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL.",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/njpw-destruction-in-kobe-2026/": {
    "firstSeen": "2026-10-06T18:52:30.572Z",
@@ -2416,7 +2435,7 @@
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL.",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/njpw-g1-climax-36-2026/": {
    "firstSeen": "2026-10-06T18:52:30.572Z",
@@ -2426,7 +2445,7 @@
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL.",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/library/njpw-road-to-destruction-2026/": {
    "firstSeen": "2026-10-07T09:09:20.220Z",
@@ -2436,7 +2455,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2448,7 +2467,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2460,7 +2479,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2472,7 +2491,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2484,7 +2503,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2496,7 +2515,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2508,7 +2527,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2520,7 +2539,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2532,7 +2551,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2544,7 +2563,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2556,7 +2575,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2568,7 +2587,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2580,7 +2599,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2592,7 +2611,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2604,7 +2623,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2616,7 +2635,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2628,7 +2647,7 @@
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": ""
   },
@@ -2640,7 +2659,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:13Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2653,7 +2672,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:14Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2667,7 +2686,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T19:51:23.911Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/roh-on-honorclub-01-10-2026/": {
    "firstSeen": "2026-10-07T13:50:24.255Z",
@@ -2677,7 +2696,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:12Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2690,7 +2709,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:04Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2703,7 +2722,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:15Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2716,7 +2735,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:11Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2729,7 +2748,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:12Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2742,7 +2761,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:14Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2755,7 +2774,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:09Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2768,7 +2787,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:06Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2781,7 +2800,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:15Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2794,7 +2813,7 @@
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:10Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2814,7 +2833,7 @@
      "position": 60
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "googleCanonical": "",
    "crawledAt": "2026-10-08T03:06:08Z",
    "indexedAt": "2026-10-08T09:05:10.096Z"
@@ -2829,13 +2848,19 @@
    "indexedAt": "2026-10-07T20:51:26.139Z",
    "queries": [
     {
+     "q": "موقع عرب نوك",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 62
+    },
+    {
      "q": "موقع شاهد برو",
      "clicks": 0,
      "impressions": 1,
      "position": 72
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/": {
    "firstSeen": "2026-10-07T14:37:44.896Z",
@@ -2846,7 +2871,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T20:51:26.139Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/wwe-nxt-06-10-2026/": {
    "firstSeen": "2026-10-07T14:37:44.896Z",
@@ -2857,6 +2882,12 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-07T20:51:26.139Z",
    "queries": [
+    {
+     "q": "اكس مترجم",
+     "clicks": 0,
+     "impressions": 4,
+     "position": 9.5
+    },
     {
      "q": "اكس ان اكس اكس مترجم",
      "clicks": 1,
@@ -2870,16 +2901,34 @@
      "position": 81.7
     },
     {
+     "q": "عرب اكس",
+     "clicks": 0,
+     "impressions": 2,
+     "position": 10
+    },
+    {
+     "q": "السينما للجميع مصارعه حره",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 7
+    },
+    {
      "q": "عرب أكس",
      "clicks": 0,
      "impressions": 1,
      "position": 10
     },
     {
-     "q": "عرب اكس",
+     "q": "عروض المصارعة مترجم",
      "clicks": 0,
      "impressions": 1,
-     "position": 11
+     "position": 18
+    },
+    {
+     "q": "اكس ان اكس اكس",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 119
     },
     {
      "q": "اكس ان اكس ان",
@@ -2888,7 +2937,7 @@
      "position": 136
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/tna-xplosion-02-10-2026/": {
    "firstSeen": "2026-10-07T14:37:44.896Z",
@@ -2902,11 +2951,11 @@
     {
      "q": "تي إن إيه",
      "clicks": 0,
-     "impressions": 1,
-     "position": 8
+     "impressions": 2,
+     "position": 7.5
     }
    ],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/njpw-road-to-king-of-pro-wrestling-07-10-2026/": {
    "firstSeen": "2026-10-08T01:50:50.521Z",
@@ -2917,7 +2966,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-08T07:51:03.936Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/cmll-martes-populares-06-10-2026/": {
    "firstSeen": "2026-10-08T01:50:50.521Z",
@@ -2928,7 +2977,7 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-08T07:51:03.936Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/cmll-lunes-clasico-05-10-2026/": {
    "firstSeen": "2026-10-08T01:50:50.521Z",
@@ -2939,14 +2988,14 @@
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
    "indexedAt": "2026-10-08T07:51:03.936Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   },
   "https://arab-wrestling.com/shows/njpw-road-to-king-of-pro-wrestling-day-2-07-10-2026/": {
    "firstSeen": "2026-10-08T08:50:42.166Z",
    "lastmod": "2026-10-08",
    "pinged": "2026-10-08T08:50:42.166Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-08T15:50:25.494Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -2959,7 +3008,7 @@
    "lastmod": "2026-10-07",
    "pinged": "2026-10-08T08:50:42.166Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-08T15:50:25.494Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -2972,7 +3021,7 @@
    "lastmod": "2026-10-07",
    "pinged": "2026-10-08T13:11:37.532Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-08T19:50:23.039Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -2985,7 +3034,7 @@
    "lastmod": "2026-10-08",
    "pinged": "2026-10-08T14:50:25.167Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-08T21:50:16.741Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -2998,7 +3047,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:11:22.676Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3011,7 +3060,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:11:22.676Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3024,7 +3073,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:11:22.676Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3037,7 +3086,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:11:22.676Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3050,7 +3099,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:11:22.676Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3063,7 +3112,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:34:04.696Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3076,7 +3125,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:34:04.696Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3089,7 +3138,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:34:04.696Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3102,7 +3151,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T01:34:04.696Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T07:50:17.388Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3115,7 +3164,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T15:24:47.154Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T21:46:16.329Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3128,7 +3177,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T15:48:14.968Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T22:46:20.151Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3141,7 +3190,7 @@
    "lastmod": "2026-10-09",
    "pinged": "2026-10-09T15:48:14.968Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-09T22:46:20.151Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3154,7 +3203,7 @@
    "lastmod": "2026-10-10",
    "pinged": "2026-10-10T11:29:11.357Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-10T17:42:39.311Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3167,7 +3216,7 @@
    "lastmod": "2026-10-10",
    "pinged": "2026-10-10T11:29:11.357Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-10T17:42:39.311Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3180,7 +3229,7 @@
    "lastmod": "2026-10-10",
    "pinged": "2026-10-10T11:44:25.732Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z",
+   "queriesAt": "2026-10-11T02:41:17.756Z",
    "inspected": "2026-10-10T17:59:40.992Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -3193,7 +3242,7 @@
    "lastmod": "2026-10-10",
    "pinged": "2026-10-10T23:20:50.135Z",
    "queries": [],
-   "queriesAt": "2026-10-11T01:41:29.739Z"
+   "queriesAt": "2026-10-11T02:41:17.756Z"
   }
  },
  "sitemapPinged": "2026-10-11T00:39:03.016Z"
