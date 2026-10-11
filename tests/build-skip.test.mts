@@ -109,3 +109,17 @@ test('host builds reuse already-resized images from the live site (only new ones
   assert.match(cfg, /fs\.renameSync\(tmp/);
   assert.match(fs.readFileSync('_headers', 'utf8'), /\/img-cache\.json\n\s+Cache-Control: no-cache/);
 });
+
+test('the home slider shows each picture as it was uploaded, with no size', () => {
+  // owner 2026-10-11: «شيل منها الابعاد خالص» (INCIDENTS #419)
+  const home = fs.readFileSync('index.njk', 'utf8');
+  const img = home.match(/<img [^>]*class="spotlight-bg-img"[^>]*>/)![0];
+  assert.match(img, /\| fullImg\(/);
+  assert.doesNotMatch(img, /optImg|optThumb|\?w=/);
+  const config = fs.readFileSync('eleventy.config.js', 'utf8');
+  const code = config.slice(config.indexOf('addFilter("fullImg", ') + 'addFilter("fullImg", '.length, config.indexOf('});', config.indexOf('addFilter("fullImg"')) + 1);
+  const fullImg = new Function(`return ${code}`)();
+  assert.equal(fullImg('/content/images/q9ns2lelhx8t3w00.jpg?w=800'), '/content/images/q9ns2lelhx8t3w00.jpg');
+  assert.equal(fullImg('', '/content/images/jtct9rkqmcshcyh6.jpg'), '/content/images/jtct9rkqmcshcyh6.jpg');
+  assert.equal(fullImg('https://i.ibb.co/x.jpg'), 'https://i.ibb.co/x.jpg');
+});

@@ -938,6 +938,15 @@ module.exports = function(eleventyConfig) {
   };
 
   eleventyConfig.addNunjucksAsyncShortcode("optImg", optImgShortcode);
+  // The home slider shows each picture exactly as it was uploaded: the stored original, no «?w=» size (owner 2026-10-11,
+  // INCIDENTS #419). Originals are already kept within 1280×720 and about 150 KB by arw-media (INCIDENTS #372).
+  eleventyConfig.addFilter("fullImg", (src, fallback) => {
+    const input = (typeof src === "string" && src.trim()) || fallback || "";
+    if (!input || /^https?:\/\//.test(input)) return input;
+    let rel = input.startsWith("/") ? input : "/" + input;
+    try { rel = decodeURIComponent(rel); } catch {}
+    return encodeURI(rel.replace(/\?w=\d+$/, "").normalize("NFC"));
+  });
   // A small card picture (480px WebP, ~30 KB) for lists built in the browser. «الأكثر مشاهدة» showed
   // each page's og:image — the original upload, 350 KB and more — so its ten cards loaded long after
   // everything else (INCIDENTS #285). Pages carry it as <meta name="arw-thumb"> (a name with «:» never matched in the worker's HTMLRewriter).

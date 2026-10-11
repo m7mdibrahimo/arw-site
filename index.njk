@@ -1318,7 +1318,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
     <!-- Full-Bleed Background Image (Anchored Left) -->
     <div class="spotlight-bg-wrap">
       {# slides are stacked, so «lazy» loaded all of them at once: from the third on, the picture loads when its turn comes (loadSlideImg) #}
-      <img {% if loop.index0 < 2 %}src{% else %}data-src{% endif %}="{% optImg item.image, '/content/images/jtct9rkqmcshcyh6.jpg' %}" alt="{{ item.title }}" {% if loop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async" class="spotlight-bg-img" />
+      <img {% if loop.index0 < 2 %}src{% else %}data-src{% endif %}="{{ item.image | fullImg('/content/images/jtct9rkqmcshcyh6.jpg') }}" alt="{{ item.title }}" {% if loop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async" class="spotlight-bg-img" />
       <div class="spotlight-gradient-overlay"></div>
     </div>
     
