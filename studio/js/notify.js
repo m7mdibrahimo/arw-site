@@ -38,11 +38,19 @@ export function notify(ev) {
   refresh();
   if (ev.commit && !settleTimer) settleTimer = setTimeout(settlePending, 15_000);
 }
-/** A commit reached the live site: its event becomes «… وظهر على الموقع» and counts as new again. */
+/** A commit reached the live site: its event becomes «… وظهر على الموقع» and counts as new again — only when it went
+ *  live while the panel was watching. A save found live hours later (the panel was closed meanwhile) keeps its own
+ *  time and stays read: before, a 3 a.m. edit showed up at 1 p.m. as a new «منذ 1 دقيقة» notification (INCIDENTS #417). */
+export const FRESH_MS = 30 * 60_000;
+export function settleItem(n, now = Date.now()) {
+  n.status = 'live';
+  if (now - n.at < FRESH_MS) n.at = now;
+  return n;
+}
 function markLive(commit) {
   const list = localItems();
   let changed = false;
-  for (const n of list) if (n.commit === commit && n.status === 'pending') { n.status = 'live'; n.at = Date.now(); changed = true; }
+  for (const n of list) if (n.commit === commit && n.status === 'pending') { settleItem(n); changed = true; }
   if (changed) { saveLocal(list.sort((a, b) => b.at - a.at)); refresh(); }
 }
 window.addEventListener('studio:live', (e) => { for (const d of e.detail || []) if (d.commit) markLive(d.commit); });

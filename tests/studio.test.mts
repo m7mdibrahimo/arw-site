@@ -619,3 +619,17 @@ test('«متعدد الجودات»: links added once in the panel show first, o
   assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'servers', 'downloads_multi', 'downloads_light'/);
   assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /"downloads": \[\{\{ \(item\.data\.downloads_multi or ""\)/);
 });
+
+test('a save found live hours later keeps its own time in the bell', () => {
+  // A 3 a.m. edit, the panel opened at 1 p.m.: it showed as a new «منذ 1 دقيقة» notification (owner 2026-10-11 — INCIDENTS #417)
+  const src = fs.readFileSync('studio/js/notify.js', 'utf8');
+  const code = src.slice(src.indexOf('export const FRESH_MS'), src.indexOf('function markLive'));
+  const settleItem = new Function(code.replace(/export /g, '') + '\nreturn settleItem;')();
+  const now = Date.parse('2026-10-11T10:05:00Z');
+  const old = settleItem({ at: Date.parse('2026-10-11T00:18:00Z'), status: 'pending' }, now);
+  assert.equal(old.status, 'live');
+  assert.equal(old.at, Date.parse('2026-10-11T00:18:00Z'));
+  const fresh = settleItem({ at: now - 3 * 60_000, status: 'pending' }, now);
+  assert.equal(fresh.at, now, 'live while watching: counts as new');
+  assert.match(fs.readFileSync('studio/js/app.js', 'utf8'), /studio:live[\s\S]{0,300}Date\.now\(\) - d\.committedAt < 30 \* 60_000\) toast/);
+});

@@ -240,7 +240,8 @@ function enter(user) {
 }
 // A save became visible on the live site
 window.addEventListener('studio:live', (e) => {
-  for (const d of e.detail) toast(d.removed ? `«${d.title}» اختفى من الموقع ✓` : `«${d.title}» ظهر على الموقع ✓`, 'ok', 7000);
+  // Only a save from the last half hour: one found live after the panel was closed for hours is old news (INCIDENTS #417)
+  for (const d of e.detail) if (!d.committedAt || Date.now() - d.committedAt < 30 * 60_000) toast(d.removed ? `«${d.title}» اختفى من الموقع ✓` : `«${d.title}» ظهر على الموقع ✓`, 'ok', 7000);
 });
 start();
 
