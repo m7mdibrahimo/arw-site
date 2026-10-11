@@ -2518,5 +2518,29 @@
     "slug": "20261007172320-aew-dynamite-06-10-2026",
     "image": "/content/images/j4af5j790b47u5e1.jpg",
     "renderedAt": 1791727853299
+  },
+  {
+    "videoUrl": "/videos/reel-20261011200727-ufc-fight-night-290-allen-vs-d.mp4",
+    "filename": "reel-20261011200727-ufc-fight-night-290-allen-vs-d.mp4",
+    "title": "عرض يو اف سي فايت نايت 10.10.2026 مترجم",
+    "secondaryTitle": "UFC Fight Night 290: Allen vs. Duncan",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261011200727-ufc-fight-night-290-allen-vs-d",
+    "kind": "show",
+    "slug": "20261011200727-ufc-fight-night-290-allen-vs-d",
+    "image": "/content/images/lvau1v49glxs7ipj.jpg",
+    "renderedAt": 1791738604860
+  },
+  {
+    "videoUrl": "/videos/reel-20261008164537-wwe-evolve-07-10-2026.mp4",
+    "filename": "reel-20261008164537-wwe-evolve-07-10-2026.mp4",
+    "title": "عرض ايفولف 07.10.2026 مترجم",
+    "secondaryTitle": "WWE Evolve 07.10.2026",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261008164537-wwe-evolve-07-10-2026",
+    "kind": "show",
+    "slug": "20261008164537-wwe-evolve-07-10-2026",
+    "image": "/content/images/a2ljw682xzft8gxu.jpg",
+    "renderedAt": 1791738676337
   }
 ]
