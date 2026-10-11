@@ -47,3 +47,15 @@ test('«زميليه» is corrected to the plural', () => {
   assert.equal(applyCorrections('إلى جانب زميليه لانس آرتشر'), 'إلى جانب زملائه لانس آرتشر');
   assert.equal(applyCorrections('انتقد لزميليه في الاتحاد'), 'انتقد لزملائه في الاتحاد');
 });
+
+// INCIDENTS #415: the English match name was repeated in Arabic letters right after it.
+test('«Call Your Shot Gauntlet غاونتلي» loses the duplicate transliteration', () => {
+  assert.equal(applyCorrections('بنزال Call Your Shot Gauntlet غاونتلي، ونزال'), 'بنزال Call Your Shot Gauntlet، ونزال');
+});
+
+// INCIDENTS #415: Mecha Wolf was written «ميشا وولف»; glossary now fixes the spelling.
+test('glossary spells Mecha Wolf as «ميكا وولف»', async () => {
+  const { readFileSync } = await import('node:fs');
+  const names = JSON.parse(readFileSync(new URL('../scripts/wrestler-names.json', import.meta.url), 'utf8'));
+  assert.equal(names['Mecha Wolf'], 'ميكا وولف');
+});
