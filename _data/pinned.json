@@ -3,12 +3,23 @@
     "url": "/shows/wwe-money-in-the-bank-2026/",
     "title": "عرض موني ان ذا بانك 10.10.2026 مترجم",
     "subtitle": "WWE Money in the Bank (2026)",
-    "image": "/content/images/b9g3iiyhwdmanci3.jpg?w=800",
+    "image": "/content/images/q9ns2lelhx8t3w00.jpg?w=800",
     "federation": "WWE",
     "kind": "show",
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض موني ان ذا بانك مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aew-collision-grand-slam-france-10-10-2026/",
+    "title": "عرض كوليجن 10.10.2026 مترجم",
+    "subtitle": "AEW Collision Grand Slam France 10.10.2026",
+    "image": "/content/images/otcp6a0qjgikvzrg.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/wwe-smackdown-09-10-2026/",
@@ -77,17 +88,6 @@
     "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
-    "url": "/shows/aew-collision-03-10-2026/",
-    "title": "عرض كوليجن 03.10.2026 مترجم",
-    "subtitle": "AEW Collision 03.10.2026",
-    "image": "/content/images/4ffuvg6zu944iix7.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
     "url": "/shows/ufc-332-silva-vs-wang-main-card/",
     "title": "عرض يو اف سي 332 مين كارد مترجم",
     "subtitle": "UFC 332: Silva vs Wang (Main Card)",
@@ -97,17 +97,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض يو اف سي 332 مين كارد مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aaa-worlds-collide-2026/",
-    "title": "عرض ايه ايه ايه وورلدز كوليد 30.09.2026 مترجم",
-    "subtitle": "AAA Worlds Collide (2026)",
-    "image": "/content/images/s57awl84ejeui87w.jpg?w=800",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه وورلدز كوليد مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/mlp-mayhem-30-09-2026/",
