@@ -3386,15 +3386,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ايه ايه ايه 10.10.2026 مترجم",
-    "lastAttempt": 1791735313392,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791736242689,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -3422,7 +3418,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 10.10.2026 مترجم",
-    "lastAttempt": 1791729970634,
+    "lastAttempt": 1791736243799,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
