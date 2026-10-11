@@ -243,3 +243,14 @@ test('the English sitemap lists only English pages really written, each with its
     assert.ok(fs.existsSync(path.join(site, decodeURI(p), 'index.html')), p); // no 404 sent to Google
   }
 });
+
+test('INCIDENTS #438: the «عن العرض» section of a show page is translated', () => {
+  const t = mirror.makeTranslator(dict, { 'عرض ديناميت 06.10.2026 مترجم': 'AEW Dynamite 06.10.2026' });
+  const out = (s: string) => t(s);
+  assert.equal(out('عن عرض ديناميت 06.10.2026 كامل مترجم'), 'About AEW Dynamite 06.10.2026: Full Show with Arabic Subtitles');
+  assert.equal(out('عن عرض لا يعرفه القاموس 06.10.2026 كامل مترجم'), 'About This Show: Full Show with Arabic Subtitles');
+  for (const s of ['ساعتان و22 دقيقة', 'أونلاين عبر 6 سيرفرات', '⁨480p⁩ و⁨720p⁩', 'الاتحاد', 'تاريخ العرض', 'المشاهدة', 'التحميل', 'نتائج العرض كاملة']) assert.ok(!AR.test(out(s)), s);
+  assert.equal(out('ساعتان و22 دقيقة'), '2 hr 22 min');
+  const p = out('يقدّم عرب راسلنج عرض ديناميت (AEW Dynamite) الذي أقيم يوم الأربعاء 7 أكتوبر 2026 مترجمًا إلى العربية كاملًا، ومدته ساعة و35 دقيقة. شاهد العرض أونلاين عبر 4 سيرفرات، أو حمّله بجودة ⁨480p⁩ و⁨720p⁩.');
+  assert.ok(!AR.test(p), p);
+});

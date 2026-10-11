@@ -94,3 +94,14 @@ test("winner_contradiction: prose winner differs from the «الفائز» line"
   assert.ok(checkArticle("عنوان تجريبي طويل بما يكفي للفحص هنا", bad).some((i) => i.code === "winner_contradiction"));
   assert.ok(!checkArticle("عنوان تجريبي طويل بما يكفي للفحص هنا", ok).some((i) => i.code === "winner_contradiction"));
 });
+
+test('INCIDENTS #438: mixed-script words and noun duals are blocked', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(codes('ودفاع يOH عن بطولة IWGP للوزن الخفيف.').includes('mixed_script_word'));
+  assert.ok(codes('أنبوند كو (يوتو آيس وديكي نagai).').includes('mixed_script_word'));
+  assert.ok(!codes('عرض AEW وCollision وبـWWE والـNXT وبAEW.').includes('mixed_script_word'));
+  assert.ok(codes('إضافة نزالين للفرق إلى العرض.').includes('dual_noun'));
+  assert.ok(codes('وستشهد مواجهتين على اللقب.').includes('dual_noun'));
+  assert.ok(!codes('إضافة نزالات جديدة للفرق إلى العرض.').includes('dual_noun'));
+});
