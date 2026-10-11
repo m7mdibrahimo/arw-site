@@ -1,53 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-results-10-10-chris-jericho-young-bucks-compete": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-11T02:12:52.905Z"
+ },
+ "https://www.fightful.com/wrestling/triple-h-the-thing-that-stuck-out-at-wwe-money-in-the-bank-was-youth": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-11T02:11:57.351Z"
+ },
  "https://www.fightful.com/wrestling/jevon-evans-sent-crashing-through-ambulance-roof-during-mens-money-in-the-bank-ladder-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:01:12.745Z"
+  "at": "2026-10-11T02:11:57.185Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-10-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T02:01:12.585Z"
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-10-11T02:11:57.018Z"
  },
  "https://www.fightful.com/wrestling/penta-wins-2026-mens-money-in-the-bank-ladder-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:51.822Z"
+  "at": "2026-10-11T02:10:51.030Z"
  },
  "https://www.fightful.com/wrestling/watch-money-in-the-bank-post-show-oct-10-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:51.642Z"
+  "at": "2026-10-11T02:10:50.835Z"
  },
  "https://www.fightful.com/wrestling/liv-morgan-wins-womens-world-title-at-wwe-money-in-the-bank": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:51.496Z"
+  "at": "2026-10-11T02:10:50.681Z"
  },
  "https://www.fightful.com/wrestling/house-of-glory-provides-update-on-vic-vendetta-after-scary-landing-at-hog-salvation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:51.293Z"
+  "at": "2026-10-11T02:10:50.488Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-2026-womens-money-in-the-bank-becomes-first-women-to-win-it-twice": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:51.135Z"
+  "at": "2026-10-11T02:10:50.324Z"
  },
  "https://www.fightful.com/wrestling/aew-and-wwe-internal-reaction-to-tuesday-head-to-head-ratings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:50.913Z"
+  "at": "2026-10-11T02:10:50.091Z"
  },
  "https://www.fightful.com/wrestling/wwe-money-in-the-bank-results-10-10-2026-two-mitb-ladder-matches-roman-reigns-vs-la-knight-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:50.727Z"
+  "at": "2026-10-11T02:10:49.891Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-money-in-the-bank-oct-10-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-11T02:00:50.549Z"
+  "at": "2026-10-11T02:10:49.699Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-security-alert-following-attacks-on-king-khalid-international-airport-strongly-recommends-all-u-s-citizens-to-avoid-the-airport-and-surrounding-areas": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -63,11 +73,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T01:29:45.610Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-results-10-10-chris-jericho-young-bucks-compete": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-11T01:20:17.383Z"
  },
  "https://www.wrestlinginc.com/2282966/aew-collision-october-10-2026-results": {
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
