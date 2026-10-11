@@ -4385,7 +4385,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft.tags = canonicalTags(dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags)));
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
-    .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result", "broken_word", "glued_latin_arabic"].includes(i.code));
+    .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result", "broken_word", "glued_latin_arabic", "detached_prefix"].includes(i.code));
   // An age the source never gives is an invented number (INCIDENTS #341).
   const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
   if (badAges.length) {
