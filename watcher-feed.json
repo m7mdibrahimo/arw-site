@@ -1,5 +1,15 @@
 [
   {
+    "id": 333157,
+    "link": "https://www.fightful.com/wrestling/multiple-clockwork-carnage-qualifiers-set-for-aew-dynamite/",
+    "date": "2026-10-10T21:01:32",
+    "date_gmt": "2026-10-11T01:01:32",
+    "title": {
+      "rendered": "Multiple Clockwork Carnage Qualifiers Set For AEW Dynamite"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/10210109/HUT5F9eWoAA1ifs.jpeg"
+  },
+  {
     "id": 333154,
     "link": "https://www.fightful.com/wrestling/mike-bailey-qualifies-for-clockwork-carnage-at-aew-wrestledream/",
     "date": "2026-10-10T20:55:04",
@@ -288,15 +298,5 @@
       "rendered": "Damian Lillard Ranks 90s WWE Superstars, Calls Steve Austin The GOAT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/31213320/Screenshot-2025-10-31-at-9.23.36-PM.png"
-  },
-  {
-    "id": 333029,
-    "link": "https://www.fightful.com/wrestling/la-knight-says-he-will-be-louisiana-knight-for-wwe-money-in-the-bank-weekend/",
-    "date": "2026-10-10T10:52:32",
-    "date_gmt": "2026-10-10T14:52:32",
-    "title": {
-      "rendered": "LA Knight Says He Will Be &#8216;Louisiana Knight&#8217; For WWE Money In The Bank Weekend"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15063607/maxresdefault-76.jpg"
   }
 ]
