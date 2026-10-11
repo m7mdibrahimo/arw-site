@@ -123,3 +123,12 @@ test('the home slider shows each picture as it was uploaded, with no size', () =
   assert.equal(fullImg('', '/content/images/jtct9rkqmcshcyh6.jpg'), '/content/images/jtct9rkqmcshcyh6.jpg');
   assert.equal(fullImg('https://i.ibb.co/x.jpg'), 'https://i.ibb.co/x.jpg');
 });
+
+test('show and recap cards show the date the item was added, not the date it aired', () => {
+  // owner 2026-10-11: «التاريخ ال يتكتب تاريخ اضافة الموضوع وليس تاريخ الفديو نفسه» (INCIDENTS #420)
+  for (const f of ['index.njk', 'pages/shows.njk', 'pages/recaps.njk', 'pages/library-program.njk']) {
+    const src = fs.readFileSync(f, 'utf8');
+    for (const foot of src.match(/<div class="foot"><span>\{\{[^}]*\}\}<\/span>/g) || []) assert.doesNotMatch(foot, /event_?[dD]ate \||event_date or/, `${f}: ${foot}`);
+  }
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf8'), /\{\{ \(rItem\.date or rItem\.data\.date\) \| date\("YYYY\/MM\/DD"\) \}\}/);
+});

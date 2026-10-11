@@ -354,7 +354,7 @@ permalink: "/recaps/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber +
     <span class="kind-badge kind-recap">ملخص</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}
     <h3>{{ item.data.headline or item.data.title }}</h3>
     {% if item.data.description %}<p class="desc">{{ item.data.description }}</p>{% endif %}
-    <div class="foot"><span>{{ (item.data.event_date or item.date) | date }}</span></div>
+    <div class="foot"><span>{{ item.date | date }}</span></div>
   </div>
 </a>
 {% endfor %}

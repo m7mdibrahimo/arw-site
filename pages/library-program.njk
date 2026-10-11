@@ -411,7 +411,7 @@ eleventyComputed:
   <div class="show-body">
     <span class="kind-badge {% if item.showType == 'برنامج' %}kind-program{% else %}kind-show{% endif %}">{{ item.showType or "عرض" }}</span>{% if item.federation %}<span class="cat cat-{{ item.federation | lower }}">{{ item.federation }}</span>{% endif %}
     <h3>{{ item.headline or item.title }}</h3>
-    <div class="foot"><span>{{ item.eventDate | date }}</span>{% if item.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.duration }}</span>{% endif %}</div>
+    <div class="foot"><span>{{ (item.addedDate or item.eventDate) | date }}</span>{% if item.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.duration }}</span>{% endif %}</div>
   </div>
 </a>
 {% endfor %}

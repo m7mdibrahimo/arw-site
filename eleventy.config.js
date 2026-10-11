@@ -1273,6 +1273,8 @@ module.exports = function(eleventyConfig) {
         // the federation the panel files the section under in «مكتبة العروض» (empty = by the section's name)
         libraryFederation: String((item.data && item.data.library_federation) || "").trim(),
         eventDate: (item.data && (item.data.event_date || item.data.date)) || null,
+        // the card shows when the show was added to the site, not when it aired (owner 2026-10-11, INCIDENTS #420)
+        addedDate: item.date || (item.data && item.data.date) || null,
         duration: (item.data && item.data.duration) || "",
         showType: (item.data && item.data.show_type) || ""
       });
