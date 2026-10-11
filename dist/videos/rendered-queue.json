@@ -2448,16 +2448,16 @@
     "renderedAt": 1791717765681
   },
   {
-    "videoUrl": "/videos/reel-20261011154305-aew-collision-grand-slam-franc.mp4",
-    "filename": "reel-20261011154305-aew-collision-grand-slam-franc.mp4",
-    "title": "عرض كوليجن 10.10.2026 مترجم",
-    "secondaryTitle": "AEW Collision Grand Slam France 10.10.2026",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261011154305-aew-collision-grand-slam-franc",
+    "videoUrl": "/videos/reel-20261011154806-mlw-fusion-10-10-2026.mp4",
+    "filename": "reel-20261011154806-mlw-fusion-10-10-2026.mp4",
+    "title": "عرض ام ال دبليو فيوجن 10.10.2026 مترجم",
+    "secondaryTitle": "MLW Fusion 10.10.2026",
+    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261011154806-mlw-fusion-10-10-2026",
     "kind": "show",
-    "slug": "20261011154305-aew-collision-grand-slam-franc",
-    "image": "/content/images/otcp6a0qjgikvzrg.jpg",
-    "renderedAt": 1791722776618
+    "slug": "20261011154806-mlw-fusion-10-10-2026",
+    "image": "/content/images/ha8f0ydcuvs87qr8.jpg",
+    "renderedAt": 1791723254410
   },
   {
     "videoUrl": "/videos/reel-20260927104500-aew-all-out-2026.mp4",
@@ -2469,7 +2469,7 @@
     "kind": "show",
     "slug": "20260927104500-aew-all-out-2026",
     "image": "/content/images/4stbd0j9f6nrxzaa.jpg",
-    "renderedAt": 1791722872668
+    "renderedAt": 1791723340163
   },
   {
     "videoUrl": "/videos/reel-20260927115400-aew-all-out-tailgate-brawl-202.mp4",
@@ -2481,7 +2481,7 @@
     "kind": "show",
     "slug": "20260927115400-aew-all-out-tailgate-brawl-202",
     "image": "/content/images/xw1bb72gl44ae1wy.jpg",
-    "renderedAt": 1791722967844
+    "renderedAt": 1791723424537
   },
   {
     "videoUrl": "/videos/reel-20260928042700-mlw-fightland-19-09-2026.mp4",
@@ -2493,6 +2493,18 @@
     "kind": "show",
     "slug": "20260928042700-mlw-fightland-19-09-2026",
     "image": "/content/images/afqvjz8srj0ub4w6.jpg",
-    "renderedAt": 1791723063630
+    "renderedAt": 1791723508839
+  },
+  {
+    "videoUrl": "/videos/reel-20261011154305-aew-collision-grand-slam-franc.mp4",
+    "filename": "reel-20261011154305-aew-collision-grand-slam-franc.mp4",
+    "title": "عرض كوليجن 10.10.2026 مترجم",
+    "secondaryTitle": "AEW Collision Grand Slam France 10.10.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261011154305-aew-collision-grand-slam-franc",
+    "kind": "show",
+    "slug": "20261011154305-aew-collision-grand-slam-franc",
+    "image": "/content/images/otcp6a0qjgikvzrg.jpg",
+    "renderedAt": 1791723592800
   }
 ]
