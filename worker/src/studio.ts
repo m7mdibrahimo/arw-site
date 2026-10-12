@@ -16,6 +16,8 @@
 // - Writes are limited to the content folders and content/images.
 import { authorizeAdmin } from './delivery';
 
+import { siteAnalytics, pageTotals } from './analytics';
+
 export interface StudioEnv {
   GITHUB_OWNER: string; GITHUB_REPO: string; GITHUB_BRANCH: string; GITHUB_TOKEN: string;
   PUSH_KV: KVNamespace;
@@ -23,6 +25,8 @@ export interface StudioEnv {
   MEDIA?: R2Bucket;
   /** The arw-media worker: a picture stored through its upload is compressed there (inside 1280×720, ≤150 KB). */
   MEDIA_SVC?: Fetcher;
+  /** D1 «arw-analytics»: the site's own statistics, people only (INCIDENTS #457). */
+  ANALYTICS?: D1Database;
   /** Only in worker/.dev.vars for `wrangler dev` on this computer — never in wrangler.toml. */
   STUDIO_DEV?: string;
 }
@@ -566,8 +570,30 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     await env.PUSH_KV.delete(ANALYTICS_KEY); await env.PUSH_KV.delete(ANALYTICS_CACHE_KEY);
     return json({ success: true });
   }
+  // Each page's real views since the counter has records, for the lists (owner 2026-10-12, INCIDENTS #457)
+  if (route === 'analytics/views' && request.method === 'GET') {
+    if (!env.ANALYTICS) return json({ success: true, since: null, views: {} });
+    const cached = (await env.PUSH_KV.get('studio:views:cache', 'json')) as any;
+    if (cached && Date.now() - cached.at < 5 * 60_000) return json({ success: true, ...cached.data });
+    const data = await pageTotals(env);
+    await env.PUSH_KV.put('studio:views:cache', JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
+    return json({ success: true, ...data });
+  }
   if (route === 'analytics' && request.method === 'GET') {
     if (!can(me, 'stats')) return deny();
+    // People only, from the site's own counter (INCIDENTS #457); Cloudflare's zone numbers only where it doesn't exist
+    if (env.ANALYTICS) {
+      const cachedSite = (await env.PUSH_KV.get('studio:analytics:site', 'json')) as any;
+      if (cachedSite && Date.now() - cachedSite.at < 5 * 60_000) return json({ success: true, configured: true, ...cachedSite.data });
+      try {
+        const data = await siteAnalytics(env, 30);
+        await env.PUSH_KV.put('studio:analytics:site', JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
+        return json({ success: true, configured: true, ...data });
+      } catch (e: any) {
+        if (cachedSite) return json({ success: true, configured: true, stale: true, ...cachedSite.data });
+        return json({ success: false, configured: true, error: `تعذر جلب الإحصائيات: ${e.message}` }, 502);
+      }
+    }
     const cfg = (await env.PUSH_KV.get(ANALYTICS_KEY, 'json')) as { token: string; zoneId: string } | null;
     if (!cfg) return json({ success: true, configured: false, canConfigure: ownerOnly });
     const cached = (await env.PUSH_KV.get(ANALYTICS_CACHE_KEY, 'json')) as any;

@@ -33,6 +33,13 @@ bucket_name = "arw-media"
 binding = "MEDIA_SVC"
 service = "arw-media"
 
+# The site's own statistics, people only (INCIDENTS #457): views from real browsers (assets/v.js → POST /v)
+[[d1_databases]]
+binding = "ANALYTICS"
+database_name = "arw-analytics"
+database_id = "53665425-5615-4581-b0dc-0bb697576970"
+migrations_dir = "migrations"
+
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
 INSTAGRAM_AUTO_ENABLED = "true"

@@ -34,6 +34,7 @@ import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, 
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
+import { recordView, pruneAnalytics } from "./analytics";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -88,6 +89,8 @@ export interface Env {
 
   // KV binding
   PUSH_KV: KVNamespace;
+  /** D1 «arw-analytics»: the site's own statistics, people only (INCIDENTS #457). */
+  ANALYTICS?: D1Database;
 }
 
 const GRAPH_API_VERSION = "v21.0";
@@ -3047,6 +3050,8 @@ export default {
       }
       // What the watchdog found — problem titles only, nothing private (INCIDENTS #158)
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
+      // One view from a real browser on the site (assets/v.js) — the panel's statistics, people only (INCIDENTS #457)
+      if (path === "/v") return recordView(request, env);
       if (path === "/top10" && request.method === "GET") return top10Response(env, url.searchParams.get("range") || "day");
       if (path === "/health" && request.method === "GET") {
         const h = await siteHealth(env);
@@ -3784,6 +3789,8 @@ export default {
     const minute = new Date(_controller.scheduledTime).getUTCMinutes();
     ctx.waitUntil(Promise.all([
       minute === 15 ? runVideoRetentionCleanup(env) : minute === 45 ? runPublishStateCleanup(env) : runWatcherPoll(env),
+      // hourly statistics rows live 3 days, visitor rows 45 (INCIDENTS #457)
+      minute === 50 && new Date(_controller.scheduledTime).getUTCHours() === 1 ? pruneAnalytics(env) : Promise.resolve(),
       runNewsWatcherCron(env),
       runFeedWatchCron(env),
       runScheduleBackstopCron(env),

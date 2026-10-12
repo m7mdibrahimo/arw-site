@@ -1,4 +1,6 @@
-// Visitor statistics at the top of the home page (Cloudflare's analytics for the site).
+// Visitor statistics at the top of the home page — people only, from the site's own counter (INCIDENTS #457).
+// Days before the counter started come from Cloudflare's records with every bot left out: views only, and visitors
+// show «—» for those days rather than a number that wasn't measured.
 import { api, siteData, getUser } from '../api.js';
 import { html, mount, $, $$, icon, toast, num, esc } from '../ui.js';
 
@@ -65,6 +67,7 @@ function chart(daily, key) {
   const max = Math.max(1, ...vals);
   const bw = W / Math.max(1, daily.length);
   return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="رسم بياني">` + daily.map((d, i) => {
+    if (d[key] == null) return ''; // not measured that day: no bar rather than a made-up one
     const h = Math.max(4, Math.round(((d[key] || 0) / max) * (H - 4)));
     const x = W - (i + 1) * bw + bw * 0.18; // newest on the left, reading right to left
     return `<rect class="${i === daily.length - 1 ? 'now' : ''}" x="${x.toFixed(1)}" y="${H - h}" width="${(bw * 0.64).toFixed(1)}" height="${h}" rx="6"><title>${esc(shortDay(d.date))}: ${num(d[key])}</title></rect>`;
@@ -89,10 +92,12 @@ export async function renderAnalytics(el) {
   const yesterday = daily[daily.length - 2] || { visitors: 0, views: 0 };
   const last7 = daily.slice(-7), prev7 = daily.slice(-14, -7);
   const sum = (arr, k) => arr.reduce((a, d) => a + (d[k] || 0), 0);
+  const measured = (arr, k) => arr.length > 0 && arr.every(d => d[k] != null);
+  const since = data.visitorsSince ? shortDay(data.visitorsSince) : '';
   const kpis = [
     { label: 'زوار النهارده', value: today.visitors, delta: pct(today.visitors, yesterday.visitors), note: 'مقارنة بامبارح' },
     { label: 'مشاهدات النهارده', value: today.views, delta: pct(today.views, yesterday.views), note: 'مقارنة بامبارح' },
-    { label: 'زوار آخر 7 أيام', value: sum(last7, 'visitors'), delta: pct(sum(last7, 'visitors'), sum(prev7, 'visitors')), note: 'مقارنة بالأسبوع اللي قبله' },
+    { label: 'زوار آخر 7 أيام', value: sum(last7, 'visitors'), delta: measured(last7, 'visitors') && measured(prev7, 'visitors') ? pct(sum(last7, 'visitors'), sum(prev7, 'visitors')) : null, note: 'مقارنة بالأسبوع اللي قبله' },
     { label: 'مشاهدات آخر 30 يوم', value: sum(daily, 'views'), delta: null, note: `${num(sum(daily, 'visitors'))} زائر` },
   ];
   let range = 30, metric = 'visitors';
@@ -109,13 +114,14 @@ export async function renderAnalytics(el) {
       <em id="a-peak"></em>
       <div id="a-svg" class="a-svg"></div>
     </div>
-    <div class="blk blk-yellow"><small>زوار النهارده لحد دلوقتي</small><b>${num(today.visitors)}</b><em>امبارح كله: ${num(yesterday.visitors)}</em></div>
+    <div class="blk blk-yellow"><small>زوار النهارده لحد دلوقتي</small><b>${num(today.visitors)}</b><em>امبارح كله: ${yesterday.visitors == null ? '— (لسه ماكانش بيتعد)' : num(yesterday.visitors)}</em></div>
     <div class="blk blk-coral"><small>مشاهدات النهارده لحد دلوقتي</small><b>${k(today.views)}</b><em>امبارح كله: ${k(yesterday.views)}</em></div>
-    <div class="blk blk-ink"><small>زوار آخر 7 أيام</small><b>${k(sum(last7, 'visitors'))}</b>${delta(kpis[2].delta, 'عن الأسبوع اللي فات')}</div>
-    <div class="blk blk-cream"><small>أكتر الدول</small>
+    <div class="blk blk-ink"><small>زوار آخر 7 أيام</small><b>${k(sum(last7, 'visitors'))}</b>${measured(last7, 'visitors') ? delta(kpis[2].delta, 'عن الأسبوع اللي فات') : html`<em>من ${since} بس (بداية عدّ الزوار)</em>`}</div>
+    <div class="blk blk-cream"><small>أكتر الدول (مشاهدات آخر 7 أيام)</small>
       ${top.length ? html`<b class="b-sm">${countryName(top[0].code)} ${Math.round(top[0].requests / tot * 100)}%</b><em>${top.slice(1).map(c => `${countryName(c.code)} ${Math.round(c.requests / tot * 100)}%`).join(' · ')}</em>` : html`<b class="b-sm">—</b>`}
     </div>
   </section>
+  <p class="muted small a-note">الأرقام دي للناس بس: محركات البحث وبرامج الذكاء الاصطناعي وروبوتات الموقع نفسه مش محسوبة.</p>
   ${(data.topPages || []).length ? html`<section class="panel" id="a-pages"><header class="panel-head"><h2>أكتر الصفحات مشاهدة في آخر 24 ساعة</h2><span class="muted small">${data.stale ? 'آخر بيانات متاحة' : 'بتتحدّث كل 10 دقايق'}</span></header>
     <div class="rows" id="a-pages-rows">${topRows(mergeTopPages(data.topPages, () => null))}</div></section>` : ''}`);
   // Each page under its Arabic title (from the site's own index), old and new addresses of a renamed show as one row
@@ -130,8 +136,9 @@ export async function renderAnalytics(el) {
     $('#a-svg').innerHTML = chart(slice, metric);
     $('#a-range-label').textContent = String(range);
     $('#a-total').textContent = k(sum(slice, metric));
-    const peak = slice.reduce((m, d) => (d[metric] > (m ? m[metric] : -1) ? d : m), null);
-    $('#a-peak').textContent = peak ? `أعلى يوم: ${num(peak[metric])} (${shortDay(peak.date)})` : '';
+    const peak = slice.reduce((m, d) => (d[metric] != null && d[metric] > (m ? m[metric] : -1) ? d : m), null);
+    const partial = metric === 'visitors' && !measured(slice, 'visitors') && since ? ` · الزوار بيتعدّوا من ${since}` : '';
+    $('#a-peak').textContent = (peak ? `أعلى يوم: ${num(peak[metric])} (${shortDay(peak.date)})` : '') + partial;
   };
   draw();
   $$('#a-range button').forEach(b => b.onclick = () => { range = +b.dataset.v; $$('#a-range button').forEach(x => x.classList.toggle('on', x === b)); draw(); });

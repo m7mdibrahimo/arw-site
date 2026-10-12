@@ -4,7 +4,9 @@
 // than from the 2 MB search index, so the Worker stays well inside its CPU budget. The list is kept
 // in KV for 30 minutes; the home page reads it from /top10 and hides the section when it is empty.
 
-interface Top10Env { PUSH_KV?: KVNamespace; SITE_ORIGIN: string }
+import { topWatchPages } from "./analytics";
+
+interface Top10Env { PUSH_KV?: KVNamespace; SITE_ORIGIN: string; ANALYTICS?: D1Database }
 export interface Top10Item { url: string; title: string; image: string; kind: "show" | "recap" | "nostalgia"; views: number }
 
 const CONFIG_KEY = "studio:analytics:config";
@@ -80,11 +82,15 @@ async function pageCard(origin: string, path: string): Promise<{ title: string; 
 }
 
 export async function buildTop10(env: Top10Env, range: "day" | "week"): Promise<Top10Item[]> {
-  const cfg = env.PUSH_KV ? ((await env.PUSH_KV.get(CONFIG_KEY, "json")) as { token: string; zoneId: string } | null) : null;
-  if (!cfg) return [];
   let rows: { path: string; views: number }[] = [];
-  try { rows = await topPaths(cfg.token, cfg.zoneId, range === "week" ? 24 * 7 : 24); }
-  catch { if (range === "week") rows = await topPaths(cfg.token, cfg.zoneId, 24).catch(() => []); } // plans that only keep a day
+  // People only, from the site's own counter (INCIDENTS #457): crawlers made pages «most viewed» that nobody watched
+  if (env.ANALYTICS && env.PUSH_KV) rows = await topWatchPages(env as any, range === "week" ? 7 : 1).catch(() => []);
+  if (!rows.length) {
+    const cfg = env.PUSH_KV ? ((await env.PUSH_KV.get(CONFIG_KEY, "json")) as { token: string; zoneId: string } | null) : null;
+    if (!cfg) return [];
+    try { rows = await topPaths(cfg.token, cfg.zoneId, range === "week" ? 24 * 7 : 24); }
+    catch { if (range === "week") rows = await topPaths(cfg.token, cfg.zoneId, 24).catch(() => []); } // plans that only keep a day
+  }
   const ranked = rankPages(rows, 14);
   const cards = await Promise.all(ranked.map(r => pageCard(env.SITE_ORIGIN, r.path)));
   const out: Top10Item[] = [];

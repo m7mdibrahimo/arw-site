@@ -1,11 +1,28 @@
 // Content lists: filters, search, cards/rows, quick actions.
-import { content, siteData, pendingSaves, dropSiteCache, trackLive, getUser, mini } from '../api.js';
+import { api, content, siteData, pendingSaves, dropSiteCache, trackLive, getUser, mini } from '../api.js';
 import { notify } from '../notify.js';
 import { COLLECTIONS, FEDERATIONS } from '../schema.js';
 import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, can, sectionOf } from '../ui.js';
 
 const PAGE = 15; // the owner's choice: numbered pages of 15, each its own address (#/list/shows/2)
 const state = {}; // per collection: { q, fed, page, filter }
+
+// Each item's real views — people only, from the site's own counter (owner 2026-10-12, INCIDENTS #457). The Arabic page
+// and its English copy («/en/…») are one item. Loaded once every 5 minutes, never holding the list back.
+let viewsCache = null;
+const pathKey = (u) => { let p = String(u || ''); try { p = decodeURIComponent(p); } catch {} p = p.split(/[?#]/)[0].normalize('NFC'); return p.endsWith('/') ? p : `${p}/`; };
+async function pageViews() {
+  if (viewsCache && Date.now() - viewsCache.at < 5 * 60_000) return viewsCache.data;
+  const data = await api.pageViews().catch(() => null);
+  if (data) viewsCache = { at: Date.now(), data };
+  return data;
+}
+export function viewsOf(views, url) {
+  if (!views || !url) return null;
+  const p = pathKey(url);
+  return (views[p] || 0) + (views[`/en${p}`] || 0);
+}
+const sinceText = (d) => d ? new Date(`${d}T12:00:00Z`).toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
 function slugFromPath(p) { const m = String(p || '').match(/\/([^/]+)\.md$/); return m ? m[1] : ''; }
 function folderOf(p) { const m = String(p || '').match(/content\/([^/]+)\//); return m ? m[1] : ''; }
@@ -69,6 +86,8 @@ export async function renderList(page, collection, pageNum = 1) {
   `);
 
   let items = await loadItems(collection);
+  let views = null, viewsSince = '';
+  pageViews().then(d => { if (d && d.views) { views = d.views; viewsSince = sinceText(d.since); draw(); } });
   const now = Date.now();
   const missing = (i) => collection !== 'news' && (!i.image || (['shows', 'recaps', 'nostalgia'].includes(collection) && !i.servers) || (['shows', 'nostalgia'].includes(collection) && !(i.downloads || []).some(Boolean)) || (collection !== 'nostalgia_series' && !i.sub && collection !== 'nostalgia'));
 
@@ -103,6 +122,7 @@ export async function renderList(page, collection, pageNum = 1) {
       <a class="row-img" href="${editUrl(i)}">${i.image ? html`<img src="${mini(i)}" alt="" loading="lazy">` : ''}</a>
       <a class="row-main" href="${editUrl(i)}"><b>${i.title}</b><small>${meta(i).filter(Boolean).join(' · ')}</small></a>
       <span class="row-actions">
+        ${views && i.url && !i.pending ? html`<span class="views-pill" title="${`مشاهدات حقيقية من الناس بس (من غير محركات البحث والروبوتات)${viewsSince ? ` من ${viewsSince}` : ''}`}">${icon('chart')}<b>${num(viewsOf(views, i.url))}</b><small>مشاهدة</small></span>` : ''}
         ${i.url ? html`<a class="icon-btn sm" href="${i.url}" target="_blank" title="فتح على الموقع">${icon('eye')}</a>` : ''}
         ${canNext && can(getUser(), `${sectionOf(collection)}.create`) ? html`<a class="icon-btn sm" href="#/new/${collection}/${encodeURIComponent(i.slug)}" title="حلقة جديدة بنفس البيانات">${icon('copy')}</a>` : ''}
         <a class="icon-btn sm" href="${editUrl(i)}" title="تعديل">${icon('edit')}</a>

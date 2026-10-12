@@ -1,0 +1,9 @@
+-- The site's own statistics, people only (INCIDENTS #457). See worker/src/analytics.ts.
+CREATE TABLE IF NOT EXISTS page_daily (day TEXT NOT NULL, path TEXT NOT NULL, views INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (day, path));
+CREATE TABLE IF NOT EXISTS page_total (path TEXT PRIMARY KEY, views INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS page_hourly (hour TEXT NOT NULL, path TEXT NOT NULL, views INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (hour, path));
+CREATE TABLE IF NOT EXISTS day_views (day TEXT PRIMARY KEY, views INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS hour_views (hour TEXT PRIMARY KEY, views INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE IF NOT EXISTS country_daily (day TEXT NOT NULL, country TEXT NOT NULL, views INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (day, country));
+CREATE TABLE IF NOT EXISTS visitor_daily (day TEXT NOT NULL, vhash TEXT NOT NULL, country TEXT, PRIMARY KEY (day, vhash));
+CREATE TABLE IF NOT EXISTS visitor_hourly (hour TEXT NOT NULL, vhash TEXT NOT NULL, PRIMARY KEY (hour, vhash));

@@ -250,6 +250,12 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 .row-go { color: var(--muted); }
 .row:hover .row-go { color: var(--coral); }
 .row-actions { display: flex; gap: 6px; }
+/* an item's real views, next to its actions (INCIDENTS #457) */
+.row-actions { align-items: center; }
+.views-pill { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; margin-inline-end: 6px; border-radius: 999px; background: var(--cream); color: var(--ink); font-size: 13px; white-space: nowrap; }
+.views-pill svg { width: 15px; height: 15px; color: var(--teal, #2fb5b0); flex-shrink: 0; }
+.views-pill b { font-weight: 800; font-variant-numeric: tabular-nums; }
+.views-pill small { color: var(--muted); font-size: 11.5px; font-weight: 600; }
 .row-rank { grid-template-columns: 40px 1fr auto; }
 .rank { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--yellow); font-weight: 900; }
 .plat-dots { display: flex; gap: 4px; }
