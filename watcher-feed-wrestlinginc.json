@@ -1,5 +1,15 @@
 [
   {
+    "id": 1004567509,
+    "link": "https://www.wrestlinginc.com/2283429/wwe-john-cena-new-comedy-david-harbour/",
+    "date": "Mon, 12 Oct 2026 14:00:00 +0000",
+    "date_gmt": "2026-10-12T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE's John Cena Reportedly Set To Star In New Comedy Film Alongside David Harbour"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-john-cena-reportedly-set-to-star-in-new-comedy-film-alongside-david-harbour/l-intro-1791788748.jpg"
+  },
+  {
     "id": 4574618739,
     "link": "https://www.wrestlinginc.com/2283410/wwe-producer-tj-wilson-2014-match-pac-saved-job-aew-neville/",
     "date": "Mon, 12 Oct 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "More Clockwork Carnage Qualifiers Set For AEW Dynamite"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/more-clockwork-carnage-qualifiers-set-for-aew-dynamite/l-intro-1791748240.jpg"
-  },
-  {
-    "id": 4375944551,
-    "link": "https://www.wrestlinginc.com/2283301/tna-bound-for-glory-2026-results/",
-    "date": "Sun, 11 Oct 2026 19:44:03 +0000",
-    "date_gmt": "2026-10-11T19:44:03.000Z",
-    "title": {
-      "rendered": "TNA Bound For Glory 2026 Results W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-bound-for-glory-2026-results/l-intro-1791764614.jpg"
   }
 ]
