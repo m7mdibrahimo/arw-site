@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/will-ospreay-assassins-creed-entrance-worked-on-for-over-a-month/": {
-    "matchedFile": "20260928002812-كيف-تم-تنفيذ-دخول-ويل-أوسبراي-المستوحى-من-لعبة-assassins-creed-في-عرض-aew-all-out.md",
-    "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
-    "at": "2026-09-27T23:39:22.395Z"
-  },
   "https://www.ringsidenews.com/chris-jericho-nails-vikings-prediction-before-buccaneers-game/": {
     "matchedFile": "20260928025153-كريس-جيريكو-يتوقع-بنجاح-نتيجة-مباراة-فريق-مينيسوتا-فايكنجز.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012223823-نجم-wwe-سابق-كان-الخيار-الأول-لاتحاد-tna-للمشاركة-في-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يغطي نفس واقعة طرد ماكس كاستر من TNA بسبب تصريحاته، وهي معلومة تم ذكرها بالفعل في الخبر رقم 2.",
     "at": "2026-10-12T23:16:43.563Z"
+  },
+  "https://www.wrestlinginc.com/2284829/wwe-id-program-departure-sam-holloway/": {
+    "matchedFile": "20261012200428-موهبة-أصلية-أخرى-من-برنامج-wwe-id-تعلن-رحيلها-رسميا.md",
+    "reason": "الخبر الجديد يتناول نفس واقعة رحيل المصارع سام هولواي عن برنامج WWE ID التي تم تغطيتها بالفعل في الخبر رقم 0.",
+    "at": "2026-10-12T23:52:56.083Z"
   }
 }
