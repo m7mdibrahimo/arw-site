@@ -3465,5 +3465,24 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "mediaDeleted": true
+  },
+  "20261012185006-tna-bound-for-glory-2026": {
+    "publishedAt": 1791821848115,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه باوند فور غلوري 11.10.2026 مترجم",
+    "lastAttempt": 1791821867459,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
