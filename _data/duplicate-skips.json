@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/mma/raoni-barcelos-is-fine-after-scary-stoppage-at-ufc-fight-night/": {
-    "matchedFile": "20260927054433-نتائج-عرض-ufc-fight-night-راؤول-روزاس-جونيور-ضد-راوني-بارسيلوس-26-سبتمبر-2026.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T04:07:20.917Z"
-  },
   "https://www.ringsidenews.com/sunil-singh-shares-positive-recovery-update-terrifying-collapsed-lung-injury/": {
     "matchedFile": "20260927065254-سونيل-سينغ-يقدم-تحديثا-صحيا-بعد-معاناته-من-انهيار-رئوي-ويؤكد-أنا-على-الطريق-الصحيح-للتعافي.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
     "reason": "الخبر الجديد يعبر عن نفس الحدث تماماً (فوز ليون سلاتر ببطولة العالم لـ TNA على حساب نيك نيميث في عرض Bound for Glory) وهو مغطى بالكامل في الخبر المنشور.",
     "at": "2026-10-12T00:28:39.498Z"
+  },
+  "https://www.ringsidenews.com/leon-slaters-five-year-old-world-title-prediction-comes-true-tna-bound-glory/": {
+    "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
+    "reason": "الخبر الجديد يركز على نفس واقعة فوز ليون سلاتر باللقب في عرض TNA Bound for Glory، وتفصيلة التغريدة القديمة تعتبر معلومة إضافية حول نفس الحدث وليست تطوراً جوهرياً يغير من طبيعة الخبر المنشور مسبقاً.",
+    "at": "2026-10-12T04:55:11.906Z"
   }
 }
