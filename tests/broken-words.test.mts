@@ -11,7 +11,7 @@ test('known broken words are corrected automatically', () => {
 
 test('broken_word is a publish-blocking code in the Fightful pipeline', () => {
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
-  assert.match(src, /"broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix"\]\.includes/);
+  assert.match(src, /"broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits"\]\.includes/);
   const issues = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'تفادى محاولة حركة مونس ault من ريد ' + 'كلام '.repeat(80));
   assert.ok(issues.some(i => i.code === 'broken_word'));
 });
@@ -152,4 +152,11 @@ test('corrections fix rap-line wording and verb agreement', () => {
   const out = applyCorrections('بسبب بيته الشعري المسيء، وتنطفئ الأضواء ويظهر رسالة مصورة');
   assert.match(out, /مقطعه الغنائي المسيء/);
   assert.match(out, /وتظهر رسالة مصورة/);
+});
+
+// INCIDENTS #456: «أنفقت أكثر من أحد عشر 1000 دولار» — a number word glued to digits.
+test('number word followed by digits blocks publishing', () => {
+  const body = 'أنفقت أكثر من أحد عشر 1000 دولار على الأحذية. ' + 'كلام '.repeat(80);
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', body).some(i => i.code === 'number_word_digits'));
+  assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'دفع 2400 دولار وفاز في 3 نزالات ' + 'كلام '.repeat(80)).some(i => i.code === 'number_word_digits'));
 });
