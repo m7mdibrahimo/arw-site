@@ -1,5 +1,15 @@
 [
   {
+    "id": 333504,
+    "link": "https://www.fightful.com/wrestling/the-good-brothers-added-to-ghc-tag-team-title-match-at-noah-wrestle-odyssey-ii/",
+    "date": "2026-10-12T11:28:42",
+    "date_gmt": "2026-10-12T15:28:42",
+    "title": {
+      "rendered": "The Good Brothers Added To GHC Tag Team Title Match At NOAH Wrestle Odyssey II"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/26062200/noalogo.jpeg"
+  },
+  {
     "id": 333505,
     "link": "https://www.fightful.com/wrestling/natalie-satterley-remembers-her-late-husband-ben-satterley-pac/",
     "date": "2026-10-12T11:23:59",
@@ -288,15 +298,5 @@
       "rendered": "WWE Announces Australia Live Tour"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11190617/CS-067447_LVE_Australia__New_Zealand_Live_Tour_EDIT_1920x1080.jpg"
-  },
-  {
-    "id": 333330,
-    "link": "https://www.fightful.com/wrestling/indi-hartwell-wins-tna-knockouts-world-title-at-tna-bound-for-glory/",
-    "date": "2026-10-11T19:03:14",
-    "date_gmt": "2026-10-11T23:03:14",
-    "title": {
-      "rendered": "Indi Hartwell Wins TNA Knockouts World Title At TNA Bound For Glory"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11185956/HUYnuVOXwAAu75h-scaled.jpg"
   }
 ]
