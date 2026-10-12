@@ -4476,3 +4476,7 @@ test('«لـذا روك» keeps a space and «بـبطولة» loses its tatweel
   const { autoFix } = await import('../scripts/news-qa');
   assert.equal(autoFix('التعليقات الأخيرة لـذا روك وفاز بـبطولة العالم ولـبطولة أخرى'), 'التعليقات الأخيرة لـ ذا روك وفاز ببطولة العالم ولبطولة أخرى');
 });
+
+test('«بـأو خان» becomes Great-O-Khan, not the conjunction «أو»', () => {
+  assert.equal(autoFix('بالإطاحة بـأو خان، مما'), 'بالإطاحة بغريت أو خان، مما');
+});

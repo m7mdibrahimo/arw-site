@@ -730,6 +730,8 @@ export function autoFix(text: string): string {
     // prefix before «ذا» and drop the tatweel before the plain word «بطولة» (INCIDENTS #449)
     .replace(new RegExp(`(?<![${AR}])(و?[لب])ـذا(?=\\s)`, "g"), "$1ـ ذا")
     .replace(new RegExp(`(?<![${AR}])(و?[لب])ـ(?=بطول)`, "g"), "$1")
+    // «بـأو خان» is Great-O-Khan with the first word dropped: «أو» alone is the conjunction «or»
+    .replace(new RegExp(`(?<![${AR}])(و?[لب])ـأو\\s+خان`, "g"), "$1غريت أو خان")
     // "مؤقـتا" / "رسميـا" → "مؤقتا" / "رسميا": a tatweel inside a word is debris; only a joined
     // prefix keeps it («بـ» / «لـ» / «الـ» / «وبـ»…) (INCIDENTS #318)
     .replace(new RegExp(`(?<![${AR}])([${AR}]+)ـ(?=[${AR}])`, "g"), (m, w) => TATWEEL_PREFIXES.has(w) ? m : w)
