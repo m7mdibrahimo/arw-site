@@ -4471,3 +4471,8 @@ test('program library description carries «<اسم> <السنة> مترجم» (
   assert.match(page, /pageDesc: "[^"]*arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /addFilter\("yearOf"/);
 });
+
+test('«لـذا روك» keeps a space and «بـبطولة» loses its tatweel (INCIDENTS #449)', async () => {
+  const { autoFix } = await import('../scripts/news-qa');
+  assert.equal(autoFix('التعليقات الأخيرة لـذا روك وفاز بـبطولة العالم ولـبطولة أخرى'), 'التعليقات الأخيرة لـ ذا روك وفاز ببطولة العالم ولبطولة أخرى');
+});

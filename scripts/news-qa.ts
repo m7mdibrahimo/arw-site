@@ -726,6 +726,10 @@ export function autoFix(text: string): string {
     .replace(new RegExp(`(^|[\\s(«"])([لب])\\s+(?=[${AR}])`, "gm"), "$1$2ـ")
     .replace(/(^|[\s(«"])([لب])\s+(?=[*«"]?[A-Za-z0-9"«])/gm, "$1$2ـ ")
     .replace(new RegExp(`(?<=[${AR}.،!؟"»)*]\\s)و\\s+(?=[${AR}])`, "g"), "و")
+    // «لـذا روك» reads as the word «لذا» (therefore) and «بـبطولة» as a typo: keep a space after the
+    // prefix before «ذا» and drop the tatweel before the plain word «بطولة» (INCIDENTS #449)
+    .replace(new RegExp(`(?<![${AR}])(و?[لب])ـذا(?=\\s)`, "g"), "$1ـ ذا")
+    .replace(new RegExp(`(?<![${AR}])(و?[لب])ـ(?=بطول)`, "g"), "$1")
     // "مؤقـتا" / "رسميـا" → "مؤقتا" / "رسميا": a tatweel inside a word is debris; only a joined
     // prefix keeps it («بـ» / «لـ» / «الـ» / «وبـ»…) (INCIDENTS #318)
     .replace(new RegExp(`(?<![${AR}])([${AR}]+)ـ(?=[${AR}])`, "g"), (m, w) => TATWEEL_PREFIXES.has(w) ? m : w)
