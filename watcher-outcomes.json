@@ -1,28 +1,28 @@
 {
- "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-12T23:10:01.248Z"
- },
  "https://www.fightful.com/wrestling/drew-mcintyre-cast-in-disney-animated-movie-hexed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:04:23.038Z"
+  "at": "2026-10-12T23:14:13.425Z"
  },
  "https://www.fightful.com/wrestling/max-casters-line-about-riyadh-at-tna-bound-for-glory-was-not-scripted-or-approved": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:04:22.869Z"
+  "at": "2026-10-12T23:14:13.301Z"
  },
  "https://www.fightful.com/wrestling/sam-hardway-holloway-announces-departure-from-wwe-id-program": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:04:22.375Z"
+  "at": "2026-10-12T23:14:12.961Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-there-was-never-any-heat-with-travis-scott-id-like-to-see-him-back-doing-something-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:04:22.065Z"
+  "at": "2026-10-12T23:14:12.748Z"
+ },
+ "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-12T23:10:01.248Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-discloses-thumb-injury-i-have-no-feeling-now": {
   "reason": "مكرر مع خبر نزل قبل كده",
