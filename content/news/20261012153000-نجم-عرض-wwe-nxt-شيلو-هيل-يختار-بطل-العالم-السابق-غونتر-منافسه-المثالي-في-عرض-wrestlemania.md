@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "نجم عرض WWE NXT شيلو هيل يختار بطل العالم السابق غونتر منافسه المثالي في عرض WrestleMania"
+title: "نجم عرض WWE NXT شايلو هيل يختار بطل العالم السابق غونتر منافسه المثالي في عرض WrestleMania"
+permalink: "/news/نجم-عرض-wwe-nxt-شيلو-هيل-يختار-بطل-العالم-السابق-غونتر-منافسه-المثالي-في-عرض-wrestlemania/index.html"
 date: 2026-10-12T15:30:00.000+03:00
 published_at: 2026-10-12T12:35:11.384Z
 source_id: 2411017372
