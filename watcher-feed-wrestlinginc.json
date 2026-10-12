@@ -1,5 +1,15 @@
 [
   {
+    "id": 3064823140,
+    "link": "https://www.wrestlinginc.com/2283994/aew-njpw-kenny-omega-jon-moxley-returns-set/",
+    "date": "Mon, 12 Oct 2026 16:04:31 +0000",
+    "date_gmt": "2026-10-12T16:04:31.000Z",
+    "title": {
+      "rendered": "AEW's Kenny Omega & Jon Moxley Set For NJPW In-Ring Returns"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-kenny-omega-jon-moxley-set-for-njpw-in-ring-returns/l-intro-1791820919.jpg"
+  },
+  {
     "id": 3327267111,
     "link": "https://www.wrestlinginc.com/2283959/hijo-de-fishman-gerardo-pineda-family-restitution-agreement/",
     "date": "Mon, 12 Oct 2026 15:48:29 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Amazing Red Wins TNA X-Division Title An Hour After HOF Induction"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-wins-tna-x-division-title-an-hour-after-hof-induction/l-intro-1791754356.jpg"
-  },
-  {
-    "id": 4310279911,
-    "link": "https://www.wrestlinginc.com/2282706/wwe-nattie-wants-more-bloodsport-josh-barnett/",
-    "date": "Sun, 11 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-11T21:00:00.000Z",
-    "title": {
-      "rendered": "WWE's Nattie Wants To Do More With Bloodsport's Josh Barnett"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-nattie-wants-to-do-more-with-bloodsports-josh-barnett/l-intro-1791575597.jpg"
   }
 ]
