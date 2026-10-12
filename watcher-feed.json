@@ -1,5 +1,15 @@
 [
   {
+    "id": 333414,
+    "link": "https://www.fightful.com/wrestling/taichi-challenging-gabe-kidd-for-iwgp-global-heavyweight-title-at-njpw-power-struggle/",
+    "date": "2026-10-12T05:45:49",
+    "date_gmt": "2026-10-12T09:45:49",
+    "title": {
+      "rendered": "Taichi Challenging Gabe Kidd For IWGP Global Heavyweight Title At NJPW Power Struggle"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12054433/844557194_1399691055651757_8073778643703551218_n.jpg"
+  },
+  {
     "id": 333392,
     "link": "https://www.fightful.com/wrestling/unbound-co-defeats-united-empire-for-never-openweight-6-man-tag-team-titles-at-njpw-king-of-pro-wrestling/",
     "date": "2026-10-12T04:40:45",
@@ -288,15 +298,5 @@
       "rendered": "Tommaso Ciampa And Charles Mason Kiss (Then Fight)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11122355/Screenshot-2026-10-11-at-12.19.19-PM.png"
-  },
-  {
-    "id": 333265,
-    "link": "https://www.fightful.com/wrestling/liv-morgan-appearance-rey-mysterio-vs-big-cass-added-to-10-12-wwe-raw/",
-    "date": "2026-10-11T12:19:11",
-    "date_gmt": "2026-10-11T16:19:11",
-    "title": {
-      "rendered": "Liv Morgan Appearance, Rey Mysterio vs. Big Cass Added To 10/12 WWE Raw"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
   }
 ]
