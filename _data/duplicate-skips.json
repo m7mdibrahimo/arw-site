@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/will-ospreay-drops-f-bombs-wwe-running-worlds-collide-against-aew-all-out/": {
-    "matchedFile": "20260927064116-نتائج-عرض-wwe-x-aaa-worlds-collide-26-سبتمبر-2026-مواجهات-كبرى-بقيادة-سي-ام-بانك-وري-ميستيريو-ودومينيك-ميستيريو.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T05:32:16.646Z"
-  },
   "https://www.fightful.com/wrestling/will-ospreay-to-defend-aew-world-title-against-kazuchika-okada-at-grand-slam-france/": {
     "matchedFile": "20260927082933-ويل-أوسبراي-يتحدى-كازوتشيكا-أوكادا-لنزال-في-عرض-grand-slam-باريس.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012141151-فريق-ذا-كابوكي-واريورز-يجتمع-مجددا-بعد-مغادرة-كايلي-لاتحاد-wwe.md",
     "reason": "الخبر الجديد يعالج نفس الحدث تماماً (اجتماع أسوكا وزميلتها في قناة يوتيوب للاحتفال بعيد الميلاد وتبادل الهدايا باستخدام نفس رابط الفيديو)، على الرغم من اختلاف اسم المصارعة (كاتي ساني بدلاً من كايري/كايلي) بسبب خطأ في ترجمة أو كتابة الاسم بالخبر الجديد.",
     "at": "2026-10-12T11:20:35.806Z"
+  },
+  "https://www.fightful.com/wrestling/kenny-omega-proposes-three-way-match-for-njpw-power-struggle/": {
+    "matchedFile": "20261012140732-كيني-أوميغا-يظهر-في-عرض-njpw-king-of-pro-wrestling-ويهاجم-يوتا-تسوجي.md",
+    "reason": "الخبر الجديد يمثل متابعة وتحديثا لنفس الحدث الذي ظهر فيه كيني أوميغا في عرض NJPW King of Pro-Wrestling وهاجم يوتا تسوجي، ويشمل تصريحاته الجديدة في الكواليس حول اقتراح نزال ثلاثي في عرض باور ستراجل.",
+    "at": "2026-10-12T11:31:21.180Z"
   }
 }
