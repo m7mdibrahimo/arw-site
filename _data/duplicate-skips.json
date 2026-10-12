@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/swerve-strickland-comments-on-wwe-x-aaa-worlds-collide-and-aew-all-out-taking-place-on-the-same-night/": {
-    "matchedFile": "20260927064116-نتائج-عرض-wwe-x-aaa-worlds-collide-26-سبتمبر-2026-مواجهات-كبرى-بقيادة-سي-ام-بانك-وري-ميستيريو-ودومينيك-ميستيريو.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T20:12:03.750Z"
-  },
   "https://www.wrestlinginc.com/2270197/aew-all-out-2026-biggest-winners-losers-opinion-review/": {
     "matchedFile": "20260927010000-نتائج-عرض-aew-all-out-26-سبتمبر-2026-عدة-نزالات-كبرى-على-الألقاب-ونزالان-لتحديد-المنافسين-الأولين.md",
     "reason": "الخبر الجديد يغطي نتائج عرض AEW All Out 2026 وأبرز الرابحين والخاسرين فيه، وهو نفس الحدث والنتائج التي تم تناولها بالفعل في الخبر رقم 3.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261011191911-ظهور-ليف-مورغان-ونزال-ري-ميستيريو-ضد-بيج-كاس-في-عرض-wwe-raw-القادم.md",
     "reason": "الخبر الجديد يغطي نفس قائمة نزالات وتفاصيل عرض WWE RAW القادم التي تم نشرها بالفعل في الخبر رقم 1، ولا يحتوي على أي تطورات جديدة جوهرية.",
     "at": "2026-10-12T20:03:28.817Z"
+  },
+  "https://www.wrestlinginc.com/2284641/tna-bound-for-glory-2026-max-caster-severs-ties-controversial-freestyle-debut/": {
+    "matchedFile": "20261012223823-نجم-wwe-سابق-كان-الخيار-الأول-لاتحاد-tna-للمشاركة-في-عرض-bound-for-glory.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة إنهاء التعاون مع ماكس كاستر بسبب فقرة الراب، وهي معلومة تم ذكرها بالفعل في الخبر رقم 1.",
+    "at": "2026-10-12T20:19:53.782Z"
   }
 }
