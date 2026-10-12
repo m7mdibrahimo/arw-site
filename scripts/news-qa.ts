@@ -42,6 +42,8 @@ export function applyCorrections(text: string, corrections = loadCorrections()):
     out = out.replace(correctionRegex(c), (_m, prefix = "") =>
       // "بـWWE SmackDown": a joined preposition before an English name takes a tatweel
       prefix && /^[A-Za-z]/.test(c.right) && !prefix.endsWith("و") ? `${prefix}ـ${c.right}` : `${prefix}${c.right}`);
+    // a rule that deletes a phrase leaves a double space behind
+    if (!c.right) out = out.replace(/(\S) {2,}(?=\S)/g, "$1 ");
   }
   return out;
 }
