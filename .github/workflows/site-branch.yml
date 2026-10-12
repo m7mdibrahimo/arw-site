@@ -65,7 +65,7 @@ jobs:
           BUSY_MAX: '300'
         run: |
           set -uo pipefail
-          api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
+          api() { curl -fsS --retry 4 --retry-delay 3 --retry-all-errors -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
           BASE="https://api.github.com/repos/$REPO/git"
           SITE=$(api "$BASE/ref/heads/site" | jq -r .object.sha) || exit 0
           api "$BASE/commits/$SITE" > s.json || exit 0
@@ -85,6 +85,8 @@ jobs:
             fi
             sleep 5
           done
+      # Every GitHub API call retries 4 times: one call that GitHub answered with an error for a moment failed the whole
+      # run and emailed the owner «Run failed», though the next run a minute later went through (INCIDENTS #455).
       # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
       # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
       - name: Point «site» at the latest main, without pictures and reels
@@ -93,7 +95,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          api() { curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
+          api() { curl -fsS --retry 4 --retry-delay 3 --retry-all-errors -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "$@"; }
           BASE="https://api.github.com/repos/$REPO/git"
           MAIN=$(api "$BASE/ref/heads/main" | jq -r .object.sha)
           SITE=$(api "$BASE/ref/heads/site" 2>/dev/null | jq -r .object.sha || true)

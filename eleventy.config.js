@@ -1677,6 +1677,7 @@ module.exports = function(eleventyConfig) {
 
   // «عن العرض» on every show page (owner 2026-10-11, INCIDENTS #435): true sentences and facts from the show's own
   // fields, and its results story when the bots wrote one. Results stories are found once per build by their date.
+  eleventyConfig.addFilter("videoEmbedUrl", (servers) => require("./lib/show-about.cjs").videoEmbedUrl(servers));
   let resultsIndex = null, resultsFor = null;
   eleventyConfig.addNunjucksGlobal("showAboutFor", function(headline, title, programName, eventDate, duration, servers, dlGroups, federation, description, news) {
     const { showNameParts } = require("./lib/show-seo.cjs");
@@ -2153,8 +2154,9 @@ module.exports = function(eleventyConfig) {
     }
     if (fs.existsSync("_redirects")) {
       const { toPagesRedirects, renamedArticleRedirects, writeRedirectPages } = require("./lib/redirects.cjs");
-      const tooLong = [];
-      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", renamedArticleRedirects(), tooLong));
+      const tooLong = [], dropped = [];
+      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", renamedArticleRedirects(), tooLong, dropped));
+      for (const [from, to] of dropped) console.warn(`[redirects] skipped ${from} → ${to}: it would send a live page to a missing one (INCIDENTS #455)`);
       writeRedirectPages(tooLong, "_site"); // over-long Arabic redirects (INCIDENTS #200)
       writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
       writeRedirectPages(require("./lib/redirects.cjs").contentFolderAddresses(), "_site"); // «/content/<section>/<file>/» addresses (INCIDENTS #284)

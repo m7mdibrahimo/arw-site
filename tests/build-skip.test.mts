@@ -137,7 +137,7 @@ test('show pages carry VideoObject structured data in the head, with duration an
   const layout = fs.readFileSync(path.join(process.cwd(), '_includes/post-layout.njk'), 'utf8');
   assert.ok(/"@type": "VideoObject"/.test(layout));
   assert.ok(/"duration": "\{\{ duration \| isoDuration \}\}"/.test(layout));
-  assert.ok(layout.includes("{% if duration and (page.url.startsWith('/shows/')"));
+  assert.ok(layout.includes("{% if ldEmbed and duration and (page.url.startsWith('/shows/')"));
 });
 
 test('library program pages that Google knows and that no longer exist redirect to where their content lives (INCIDENTS #426)', () => {

@@ -1912,7 +1912,7 @@ test('a news story whose title was edited keeps its first URL alive: the build r
   } finally {
     fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(site, { recursive: true, force: true });
   }
-  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\), tooLong\)/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\), tooLong, dropped\)/);
 });
 
 test('no «\\b» next to an Arabic letter in scripts/ or worker/src/ — JS «\\b» only knows ASCII, so the rule is silently dead', async () => {
@@ -4485,4 +4485,28 @@ test('library home links the newest programs directly, with an English label (IN
   const page = fs.readFileSync('pages/library.njk', 'utf-8');
   assert.match(page, /class="lib-recent[^"]*"[\s\S]{0,400}loop\.index0 < 16[\s\S]{0,200}href="\/library\/\{\{ p\.slug \}\}\/"/);
   assert.match(fs.readFileSync('lib/i18n/en.cjs', 'utf-8'), /"أحدث الأقسام المضافة": "Recently Added Sections"/);
+});
+
+test('a live page never redirects to a missing one, every video has its address, the site workflow retries GitHub', async () => {
+  // Search Console mails (owner 2026-10-12 — INCIDENTS #455): a 404 in the sitemap, «يجب تحديد contentUrl أو embedUrl»,
+  // and «Run failed: Site Branch» from one GitHub API call that failed for a moment
+  const os = await import('node:os'); const path = await import('node:path');
+  const { toPagesRedirects } = (await import('../lib/redirects.cjs')).default;
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'site-'));
+  fs.mkdirSync(path.join(site, 'shows/gcw-20-years-of-bad-boy-06-08-2026'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'shows/gcw-20-years-of-bad-boy-06-08-2026/index.html'), '');
+  fs.mkdirSync(path.join(site, 'shows/new-name'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'shows/new-name/index.html'), '');
+  const dropped: string[][] = [];
+  const out = toPagesRedirects('/shows/gcw-20-years-of-bad-boy-06-08-2026/* /shows/gcw-20-years-of-bad-boy-2026/:splat 301!\n/shows/old-name/* /shows/new-name/:splat 301!\n', site, [], [], dropped);
+  assert.doesNotMatch(out, /bad-boy/);
+  assert.match(out, /^\/shows\/old-name\/ \/shows\/new-name\/ 301$/m);
+  assert.deepEqual(dropped.map(d => d[0]), ['/shows/gcw-20-years-of-bad-boy-06-08-2026/*']);
+  const { videoEmbedUrl } = (await import('../lib/show-about.cjs')).default;
+  assert.equal(videoEmbedUrl([{ url: 'https://ok.ru/video/17615786740320' }, { url: 'https://vidmoly.org/embed-x.html' }]), 'https://ok.ru/videoembed/17615786740320');
+  assert.equal(videoEmbedUrl([{ url: 'https://hgcloud.to/abc' }, { url: 'https://vidmoly.org/embed-x.html' }]), 'https://vidmoly.org/embed-x.html');
+  assert.equal(videoEmbedUrl([]), '');
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf-8'), /"embedUrl": \{\{ ldEmbed \| jsonify \| safe \}\}/);
+  const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
+  assert.equal((wf.match(/api\(\) \{ curl -fsS --retry 4 --retry-delay 3 --retry-all-errors /g) || []).length, 2);
 });
