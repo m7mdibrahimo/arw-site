@@ -1422,10 +1422,10 @@ module.exports = function(eleventyConfig) {
           : "عروض " + arName + " مترجمة";
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
-          "wwe-raw": ["رو", "الرو", "راو", "WWE Raw", "Monday Night Raw"],
-          "wwe-smackdown": ["سماك داون", "سماكداون", "سماك دون", "سمك داون", "سماك دوان", "سماك داون الأخير", "WWE SmackDown", "Friday Night SmackDown"],
+          "wwe-raw": ["رو", "الرو", "راو", "عرض رو", "الرو الاخير", "الرو مترجم", "WWE Raw", "WWE RAW مترجم", "Monday Night Raw"],
+          "wwe-smackdown": ["سماك داون", "سماكداون", "سماك دون", "سمك داون", "سماك دوان", "سماك داون الأخير", "عرض سماك داون", "عرض سماك داون مترجم", "WWE SmackDown", "Friday Night SmackDown"],
           "wwe-nxt": ["إن إكس تي", "ان اكس تي", "ان إكس تي", "إن اكس تي", "اكس تي", "اكس ان اكس", "ان اكس", "NXT", "WWE NXT"],
-          "aew-dynamite": ["ديناميت", "دايناميت", "داينامايت", "AEW Dynamite", "ايه اي دبليو ديناميت"],
+          "aew-dynamite": ["ديناميت", "دايناميت", "داينامايت", "عرض ديناميت", "AEW Dynamite", "AEW مترجم", "ايه اي دبليو", "ايه اي دبليو ديناميت"],
           "aew-collision": ["كوليجن", "كوليجين", "كولجن", "كوليشن", "AEW Collision"],
           "tna-impact": ["إمباكت", "امباكت", "TNA iMPACT", "تي ان ايه امباكت"],
           "wwe-main-event": ["مين إيفنت", "مين ايفنت", "WWE Main Event"],

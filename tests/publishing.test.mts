@@ -4459,3 +4459,9 @@ test('show description says «موعد العرض» and MITB has alternate spell
   const cfg = (await import('node:fs')).readFileSync(new URL('../eleventy.config.js', import.meta.url), 'utf8');
   assert.match(cfg, /"wwe-money-in-the-bank": \[[^\]]*MITB/);
 });
+
+test("show pages carry the program's other names on the VideoObject too (INCIDENTS #446)", () => {
+  const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
+  const video = layout.slice(layout.indexOf('"@type": "VideoObject"'));
+  assert.match(video.slice(0, 900), /"alternateName":.*ldAbout\.aliases/);
+});

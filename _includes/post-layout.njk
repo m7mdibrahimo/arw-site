@@ -116,6 +116,8 @@
       "duration": "{{ duration | isoDuration }}",
       {% if eventDate or event_date %}"datePublished": {{ (eventDate or event_date) | jsonify | safe }},{% endif %}
       "inLanguage": "ar",
+      {#- the other ways people write the program's name, on the video itself too (INCIDENTS #446) -#}
+      {% if ldAbout and (ldAbout.arName or ldAbout.aliases.length) %}"alternateName": [{% for a in ([ldAbout.arName] if ldAbout.arName else []).concat(ldAbout.aliases) %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}],{% endif %}
       "mainEntityOfPage": { "@id": "{{ pageUrl }}" },
       "publisher": { "@type": "Organization", "name": "عرب راسلنج", "url": "https://arab-wrestling.com/" }
     },
