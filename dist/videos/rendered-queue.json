@@ -2798,14 +2798,14 @@
   {
     "videoUrl": "/videos/reel-20261012185006-tna-bound-for-glory-2026.mp4",
     "filename": "reel-20261012185006-tna-bound-for-glory-2026.mp4",
-    "title": "عرض تي ان ايه باوند فور جلوري 11.10.2026 مترجم",
+    "title": "عرض تي ان ايه باوند فور غلوري 11.10.2026 مترجم",
     "secondaryTitle": "TNA Bound For Glory (2026)",
     "description": "عرض تي ان ايه باوند فور جلوري مترجم بالكامل مع جميع النزالات والأحداث.",
     "postUrl": "/shows/20261012185006-tna-bound-for-glory-2026",
     "kind": "show",
     "slug": "20261012185006-tna-bound-for-glory-2026",
     "image": "/content/images/cd6c5iwbmswelacy.jpg",
-    "renderedAt": 1791820394757
+    "renderedAt": 1791821255593
   },
   {
     "videoUrl": "/videos/reel-20260927051700-cmll-noche-de-campeones-25-09-.mp4",
@@ -2817,7 +2817,7 @@
     "kind": "show",
     "slug": "20260927051700-cmll-noche-de-campeones-25-09-",
     "image": "/content/images/8rj4s4k5kpoh3q2v.jpg",
-    "renderedAt": 1791820477849
+    "renderedAt": 1791821350817
   },
   {
     "videoUrl": "/videos/reel-20260927052200-gcw-rock-bottom-2026.mp4",
@@ -2829,7 +2829,7 @@
     "kind": "show",
     "slug": "20260927052200-gcw-rock-bottom-2026",
     "image": "/content/images/4bfga47a0e9w6j0m.jpg",
-    "renderedAt": 1791820564025
+    "renderedAt": 1791821446188
   },
   {
     "videoUrl": "/videos/reel-20260927053700-lucha-libre-aaa-19-09-2026.mp4",
@@ -2841,7 +2841,7 @@
     "kind": "show",
     "slug": "20260927053700-lucha-libre-aaa-19-09-2026",
     "image": "/content/images/lkevgv9eahch8ohs.jpg",
-    "renderedAt": 1791820647967
+    "renderedAt": 1791821541786
   },
   {
     "videoUrl": "/videos/reel-20260927094300-ufc-fight-night-289-rosas-jr-v.mp4",
@@ -2853,7 +2853,7 @@
     "kind": "show",
     "slug": "20260927094300-ufc-fight-night-289-rosas-jr-v",
     "image": "/content/images/tp327u5m38fcpjtd.jpg",
-    "renderedAt": 1791820730423
+    "renderedAt": 1791821635789
   },
   {
     "videoUrl": "/videos/reel-20260927170600-gcw-the-score-2026.mp4",
@@ -2865,7 +2865,7 @@
     "kind": "show",
     "slug": "20260927170600-gcw-the-score-2026",
     "image": "/content/images/x8m2foyiussqbc7o.jpg",
-    "renderedAt": 1791820810075
+    "renderedAt": 1791821727768
   },
   {
     "videoUrl": "/videos/reel-20260929130409-wwe-raw-28-09-2026.mp4",
@@ -2877,7 +2877,7 @@
     "kind": "show",
     "slug": "20260929130409-wwe-raw-28-09-2026",
     "image": "/content/images/qewchyxui5nm6d3m.jpg",
-    "renderedAt": 1791820892028
+    "renderedAt": 1791821821726
   },
   {
     "videoUrl": "/videos/reel-20260930132546-wwe-nxt-29-09-2026.mp4",
@@ -2889,7 +2889,7 @@
     "kind": "show",
     "slug": "20260930132546-wwe-nxt-29-09-2026",
     "image": "/content/images/qultpltsjy7kplny.jpg",
-    "renderedAt": 1791820971642
+    "renderedAt": 1791821913439
   },
   {
     "videoUrl": "/videos/reel-20260930152731-cmll-domingo-familiar-27-09-20.mp4",
@@ -2901,6 +2901,18 @@
     "kind": "show",
     "slug": "20260930152731-cmll-domingo-familiar-27-09-20",
     "image": "/content/images/uy20pbsieciwkj3z.jpg",
-    "renderedAt": 1791821055578
+    "renderedAt": 1791822009811
+  },
+  {
+    "videoUrl": "/videos/reel-20261012185241-cmll-domingo-familiar-11-10-20.mp4",
+    "filename": "reel-20261012185241-cmll-domingo-familiar-11-10-20.mp4",
+    "title": "عرض سي ام ال ال دومينغو فاميليار 11.10.2026 مترجم",
+    "secondaryTitle": "CMLL Domingo Familiar 11.10.2026",
+    "description": "عرض سي ام ال ال دومينغو فاميليار مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261012185241-cmll-domingo-familiar-11-10-20",
+    "kind": "show",
+    "slug": "20261012185241-cmll-domingo-familiar-11-10-20",
+    "image": "/content/images/k0tkebbxnfdb8ulm.jpg",
+    "renderedAt": 1791822104585
   }
 ]
