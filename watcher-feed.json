@@ -1,5 +1,15 @@
 [
   {
+    "id": 333456,
+    "link": "https://www.fightful.com/wrestling/leon-slater-speaks-after-tna-title-win-accomplishes-goal-five-years-early/",
+    "date": "2026-10-12T06:42:11",
+    "date_gmt": "2026-10-12T10:42:11",
+    "title": {
+      "rendered": "Leon Slater Speaks After TNA Title Win, Accomplishes Goal Five Years Early"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12063725/Screenshot-2026-10-12-at-6.37.11-AM.png"
+  },
+  {
     "id": 333414,
     "link": "https://www.fightful.com/wrestling/taichi-challenging-gabe-kidd-for-iwgp-global-heavyweight-title-at-njpw-power-struggle/",
     "date": "2026-10-12T05:45:49",
@@ -288,15 +298,5 @@
       "rendered": "Nic Nemeth Says Vince McMahon Told Him He Was Only Holding WWE World Heavyweight Title For A Few Weeks So Alberto Del Rio Could Get Heated Up Again"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/28190206/HL76FpBWkAAo3x7.jpeg"
-  },
-  {
-    "id": 333267,
-    "link": "https://www.fightful.com/wrestling/tommaso-ciampa-and-charles-mason-kiss-then-fight/",
-    "date": "2026-10-11T12:24:24",
-    "date_gmt": "2026-10-11T16:24:24",
-    "title": {
-      "rendered": "Tommaso Ciampa And Charles Mason Kiss (Then Fight)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11122355/Screenshot-2026-10-11-at-12.19.19-PM.png"
   }
 ]

@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/cm-punk-brings-back-this-fire-burns-wwe-x-aaa-worlds-collide/": {
-    "matchedFile": "20260927062755-سي-ام-بانك-يدخل-على-أنغام-this-fire-burns-في-عرض-wwe-x-aaa-worlds-collide.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T05:10:01.931Z"
-  },
   "https://www.ringsidenews.com/tony-khan-gives-positive-update-steven-borden-aew-all-out/": {
     "matchedFile": "20260926170000-توني-خان-عرض-aew-all-out-يشبه-متجر-موكا-جو-من-مسلسل-curb-your-enthusiasm.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012113731-ويل-أوسبراي-وكالوم-نيومان-ينافسان-على-بطولة-iwgp-للفرق-في-عرض-njpw-باور-ستراجل.md",
     "reason": "الخبر الجديد يعيد سرد نفس أحداث عرض King of Pro-Wrestling والمشاجرة بين أوسبراي ونيومان وتحدي بطولة IWGP للفرق والتي تم تغطيتها بالفعل في الخبر [0].",
     "at": "2026-10-12T09:45:02.818Z"
+  },
+  "https://www.fightful.com/wrestling/leon-slater-speaks-after-tna-title-win-accomplishes-goal-five-years-early/": {
+    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
+    "reason": "الخبر الجديد يغطي تفاصيل فوز ليون سلاتر بلقب TNA وتصريحاته بعد النزال، وهو نفس الحدث والنتائج المغطاة في تقرير نتائج عرض TNA Bound for Glory المنشور مسبقاً.",
+    "at": "2026-10-12T10:48:13.575Z"
   }
 }
