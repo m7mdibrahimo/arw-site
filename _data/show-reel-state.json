@@ -3477,7 +3477,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261012185241-cmll-domingo-familiar-11-10-2026": {
     "publishedAt": 1791822789733,
@@ -3497,15 +3498,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض جي سي دبليو فايت كلوب ذا ارت اوف وور جيمز الليلة الاولى 10.10.2026 مترجم",
-    "lastAttempt": 1791829924475,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791830854821,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
