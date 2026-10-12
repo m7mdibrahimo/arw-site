@@ -146,3 +146,10 @@ test('a scrubbed source name never stays as «منصة *تقارير صحفية*
   assert.doesNotMatch(out, /(?:منصة|موقع|شبكة)\s+\*?تقارير صحفية/);
   assert.match(out, /حديثة أن النجم وقع/);
 });
+
+// INCIDENTS #448: «بيته الشعري» for a rap line, «ويظهر رسالة» with a feminine subject.
+test('corrections fix rap-line wording and verb agreement', () => {
+  const out = applyCorrections('بسبب بيته الشعري المسيء، وتنطفئ الأضواء ويظهر رسالة مصورة');
+  assert.match(out, /مقطعه الغنائي المسيء/);
+  assert.match(out, /وتظهر رسالة مصورة/);
+});
