@@ -1,7 +1,18 @@
 [
   {
+    "url": "/shows/njpw-king-of-pro-wrestling-2026/",
+    "title": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج 12.10.2026 مترجم",
+    "subtitle": "NJPW King Of Pro Wrestling (2026)",
+    "image": "/content/images/egl6fddqyo9ar2g3.jpg?w=800",
+    "federation": "NJPW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/tna-bound-for-glory-2026/",
-    "title": "عرض تي ان ايه باوند فور جلوري 11.10.2026 مترجم",
+    "title": "عرض تي ان ايه باوند فور غلوري 11.10.2026 مترجم",
     "subtitle": "TNA Bound For Glory (2026)",
     "image": "/content/images/cd6c5iwbmswelacy.jpg?w=800",
     "federation": "TNA",
