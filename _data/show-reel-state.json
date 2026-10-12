@@ -3512,15 +3512,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض جي سي دبليو فايت كلوب الليلة الثانية 11.10.2026 مترجم",
-    "lastAttempt": 1791836251481,
-    "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791837132547,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
