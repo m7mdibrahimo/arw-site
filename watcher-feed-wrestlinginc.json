@@ -1,5 +1,15 @@
 [
   {
+    "id": 4277044440,
+    "link": "https://www.wrestlinginc.com/2284013/wwe-womens-world-title-changes-backstage-report/",
+    "date": "Mon, 12 Oct 2026 16:17:27 +0000",
+    "date_gmt": "2026-10-12T16:17:27.000Z",
+    "title": {
+      "rendered": "Backstage Report On Recent WWE Women's World Title Changes"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-recent-wwe-womens-world-title-changes/l-intro-1791821718.jpg"
+  },
+  {
     "id": 3064823140,
     "link": "https://www.wrestlinginc.com/2283994/aew-njpw-kenny-omega-jon-moxley-returns-set/",
     "date": "Mon, 12 Oct 2026 16:04:31 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Shayna Baszler Wins KO Tag Titles In TNA Debut"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/shayna-baszler-wins-ko-tag-titles-in-tna-debut/l-intro-1791754829.jpg"
-  },
-  {
-    "id": 1107012421,
-    "link": "https://www.wrestlinginc.com/2283317/amazing-red-wins-tna-x-division-title-hour-after-hof-induction/",
-    "date": "Sun, 11 Oct 2026 21:33:55 +0000",
-    "date_gmt": "2026-10-11T21:33:55.000Z",
-    "title": {
-      "rendered": "Amazing Red Wins TNA X-Division Title An Hour After HOF Induction"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-wins-tna-x-division-title-an-hour-after-hof-induction/l-intro-1791754356.jpg"
   }
 ]
