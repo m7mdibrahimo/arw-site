@@ -34,4 +34,5 @@ downloads_medium: |-
   https://pixeldrain.com/u/xUkjZqww
   https://uqload.vc/t6mwve7ni6il.html
 layout: post-layout.njk
+card_title: name
 ---
