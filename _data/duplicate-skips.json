@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/identity-woman-choked-out-marina-shafir-aew-all-out/": {
-    "matchedFile": "20260927033206-مارينا-شافير-تخنق-امرأة-خلال-لقطة-السيلفي-الخاصة-بأندرادي-في-عرض-aew-all-out.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T04:51:59.422Z"
-  },
   "https://www.ringsidenews.com/cm-punk-brings-back-this-fire-burns-wwe-x-aaa-worlds-collide/": {
     "matchedFile": "20260927062755-سي-ام-بانك-يدخل-على-أنغام-this-fire-burns-في-عرض-wwe-x-aaa-worlds-collide.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261010171221-نتائج-عرض-njpw-road-to-king-of-pro-wrestling-10-أكتوبر-2026-ظهور-مفاجئ-لويل-أوسبراي.md",
     "reason": "الخبر الجديد يغطي نتائج عرض NJPW King of Pro-Wrestling ونزالاته، وهو نفس الحدث والنتائج المتعلقة بالعرض.",
     "at": "2026-10-12T08:06:37.066Z"
+  },
+  "https://www.ringsidenews.com/will-ospreay-callum-newman-nearly-come-blows-njpw-title-loss/": {
+    "matchedFile": "20261012113731-ويل-أوسبراي-وكالوم-نيومان-ينافسان-على-بطولة-iwgp-للفرق-في-عرض-njpw-باور-ستراجل.md",
+    "reason": "الخبر الجديد يعيد سرد نفس أحداث عرض King of Pro-Wrestling والمشاجرة بين أوسبراي ونيومان وتحدي بطولة IWGP للفرق والتي تم تغطيتها بالفعل في الخبر [0].",
+    "at": "2026-10-12T09:45:02.818Z"
   }
 }
