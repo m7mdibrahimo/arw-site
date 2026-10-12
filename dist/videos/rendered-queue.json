@@ -2998,5 +2998,89 @@
     "slug": "20261009181521-wwe-main-event-08-10-2026",
     "image": "/content/images/6l3tqmxrhzu34u99.jpg",
     "renderedAt": 1791825992748
+  },
+  {
+    "videoUrl": "/videos/reel-20261013000605-njpw-king-of-pro-wrestling-202.mp4",
+    "filename": "reel-20261013000605-njpw-king-of-pro-wrestling-202.mp4",
+    "title": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج 12.10.2026 مترجم",
+    "secondaryTitle": "NJPW King Of Pro Wrestling (2026)",
+    "description": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261013000605-njpw-king-of-pro-wrestling-202",
+    "kind": "show",
+    "slug": "20261013000605-njpw-king-of-pro-wrestling-202",
+    "image": "/content/images/egl6fddqyo9ar2g3.jpg",
+    "renderedAt": 1791839350370
+  },
+  {
+    "videoUrl": "/videos/reel-20260924115800-aew-collision-23-09-2026.mp4",
+    "filename": "reel-20260924115800-aew-collision-23-09-2026.mp4",
+    "title": "عرض كوليجن 23.09.2026 مترجم",
+    "secondaryTitle": "AEW Collision 23.09.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924115800-aew-collision-23-09-2026",
+    "kind": "show",
+    "slug": "20260924115800-aew-collision-23-09-2026",
+    "image": "/content/images/gf0rzx3ry5wqa78r.jpg",
+    "renderedAt": 1791839443518
+  },
+  {
+    "videoUrl": "/videos/reel-20260924201500-mlp-mayhem-23-09-2026.mp4",
+    "filename": "reel-20260924201500-mlp-mayhem-23-09-2026.mp4",
+    "title": "عرض ام ال بي 23.09.2026 مترجم",
+    "secondaryTitle": "MLP Mayhem 23.09.2026",
+    "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924201500-mlp-mayhem-23-09-2026",
+    "kind": "show",
+    "slug": "20260924201500-mlp-mayhem-23-09-2026",
+    "image": "/content/images/4kipum1hzd6pykrl.jpg",
+    "renderedAt": 1791839536258
+  },
+  {
+    "videoUrl": "/videos/reel-20260924201800-wwe-evolve-23-09-2026.mp4",
+    "filename": "reel-20260924201800-wwe-evolve-23-09-2026.mp4",
+    "title": "عرض ايفولف 23.09.2026 مترجم",
+    "secondaryTitle": "WWE Evolve 23.09.2026",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924201800-wwe-evolve-23-09-2026",
+    "kind": "show",
+    "slug": "20260924201800-wwe-evolve-23-09-2026",
+    "image": "/content/images/csrrxdziyj3q2hdz.jpg",
+    "renderedAt": 1791839630182
+  },
+  {
+    "videoUrl": "/videos/reel-20260925083500-wwe-main-event-24-09-2026.mp4",
+    "filename": "reel-20260925083500-wwe-main-event-24-09-2026.mp4",
+    "title": "عرض مين ايفنت 24.09.2026 مترجم",
+    "secondaryTitle": "WWE Main Event 24.09.2026",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260925083500-wwe-main-event-24-09-2026",
+    "kind": "show",
+    "slug": "20260925083500-wwe-main-event-24-09-2026",
+    "image": "/content/images/dpwjgjhr05jh0akx.jpg",
+    "renderedAt": 1791839722409
+  },
+  {
+    "videoUrl": "/videos/reel-20260925093300-tna-impact-24-09-2026.mp4",
+    "filename": "reel-20260925093300-tna-impact-24-09-2026.mp4",
+    "title": "عرض تي ان ايه امباكت 24.09.2026 مترجم",
+    "secondaryTitle": "TNA iMPACT 24.09.2026",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260925093300-tna-impact-24-09-2026",
+    "kind": "show",
+    "slug": "20260925093300-tna-impact-24-09-2026",
+    "image": "/content/images/ns9b5vt8q6sg5ag1.jpg",
+    "renderedAt": 1791839817219
+  },
+  {
+    "videoUrl": "/videos/reel-20260925100800-roh-24-09-2026.mp4",
+    "filename": "reel-20260925100800-roh-24-09-2026.mp4",
+    "title": "عرض ار او اتش اون اونر كلوب 24.09.2026 مترجم",
+    "secondaryTitle": "ROH on HonorClub 24.09.2026",
+    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260925100800-roh-24-09-2026",
+    "kind": "show",
+    "slug": "20260925100800-roh-24-09-2026",
+    "image": "/content/images/jumvbajygd3plbfm.jpg",
+    "renderedAt": 1791839910154
   }
 ]
