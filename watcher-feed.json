@@ -1,5 +1,15 @@
 [
   {
+    "id": 333499,
+    "link": "https://www.fightful.com/wrestling/anna-jay-gives-update-on-shoulder-injury/",
+    "date": "2026-10-12T10:30:54",
+    "date_gmt": "2026-10-12T14:30:54",
+    "title": {
+      "rendered": "Anna Jay Gives Update On Shoulder Injury"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/08/27215943/anna_jay_aew_2_1.jpg"
+  },
+  {
     "id": 333498,
     "link": "https://www.fightful.com/wrestling/steve-maclin-suffered-a-broken-fibula-ten-weeks-before-match-with-adam-copeland/",
     "date": "2026-10-12T10:17:08",
@@ -288,15 +298,5 @@
       "rendered": "Frankie Kazarian Wins Third Call Your Shot Gauntlet At TNA Bound For Glory"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11181638/HUYeJu9W4AAl99a.jpg"
-  },
-  {
-    "id": 333312,
-    "link": "https://www.fightful.com/wrestling/gcw-fight-club-night-one-results-10-10-the-art-of-wargames/",
-    "date": "2026-10-11T17:52:30",
-    "date_gmt": "2026-10-11T21:52:30",
-    "title": {
-      "rendered": "GCW Fight Club Night One Results (10/10): The Art Of WarGames"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11175202/HUNcNDgWgAAClMK-1.jpg.webp"
   }
 ]
