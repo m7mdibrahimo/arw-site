@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-12T21:34:27.604Z"
+ },
  "https://www.fightful.com/wrestling/drew-mcintyre-cast-in-disney-animated-movie-hexed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,11 +28,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T21:24:23.593Z"
- },
- "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-12T21:15:17.317Z"
  },
  "https://www.fightful.com/wrestling/anna-jay-gives-update-on-shoulder-injury": {
   "reason": "مكرر مع خبر نزل قبل كده",
