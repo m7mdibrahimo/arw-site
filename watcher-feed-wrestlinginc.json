@@ -1,5 +1,15 @@
 [
   {
+    "id": 3263749283,
+    "link": "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results/",
+    "date": "Mon, 12 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-12T21:00:00.000Z",
+    "title": {
+      "rendered": "WWE Raw Results 10/12/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-101226-w-live-updates/l-intro-1791825924.jpg"
+  },
+  {
     "id": 2701307736,
     "link": "https://www.wrestlinginc.com/2284641/tna-bound-for-glory-2026-max-caster-severs-ties-controversial-freestyle-debut/",
     "date": "Mon, 12 Oct 2026 20:14:46 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE Money In The Bank 2026: Biggest Winners & Losers"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-money-in-the-bank-2026-biggest-winners-losers/l-intro-1791778149.jpg"
-  },
-  {
-    "id": 4240304026,
-    "link": "https://www.wrestlinginc.com/2282757/roh-supercard-honor-2026-zayda-steel-main-event-kid-candy-store/",
-    "date": "Mon, 12 Oct 2026 03:59:00 +0000",
-    "date_gmt": "2026-10-12T03:59:00.000Z",
-    "title": {
-      "rendered": "Zayda Steel On First ROH PPV Main Event: 'I Was A Kid In A Candy Store'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/zayda-steel-on-first-roh-ppv-main-event-i-was-a-kid-in-a-candy-store/l-intro-1791577794.jpg"
   }
 ]
