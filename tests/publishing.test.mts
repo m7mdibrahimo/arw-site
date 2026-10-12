@@ -3579,7 +3579,7 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   // the wider column is for show, recap and nostalgia pages only; news and the rest of the site keep their sizes
   assert.match(layout, /\.post-wrap\{ max-width:820px; margin:0 auto; padding:48px 24px 80px; \}/);
   assert.match(layout, /\.post-wrap\.is-watch\{ max-width:1040px; \}/);
-  assert.match(layout, /\{% if not isNews and \(page\.url\.startsWith\('\/shows\/'\) or page\.url\.startsWith\('\/recaps\/'\) or isNostalgiaItem\) %\} is-watch\{% endif %\}/);
+  assert.match(layout, /\{% set isWatchPage = not isNews and \(page\.url\.startsWith\('\/shows\/'\) or page\.url\.startsWith\('\/recaps\/'\) or isNostalgiaItem\) %\}/);
   for (const f of ['index.njk', ...fs.readdirSync('pages').filter(x => x.endsWith('.njk')).map(x => `pages/${x}`)]) {
     assert.doesNotMatch(fs.readFileSync(f, 'utf-8'), /\.wrap\{ max-width:(?!1180px)/, f);
   }

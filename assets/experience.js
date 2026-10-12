@@ -16,7 +16,15 @@
       var s = document.createElement('script');
       s.type = 'speculationrules';
       // (never the language button: it changes the remembered language on click, after a prerender has already run)
-      s.textContent = JSON.stringify({ prerender: [{ where: { and: [{ href_matches: '/*' }, { not: { href_matches: '/admin/*' } }, { not: { selector_matches: '.lang-switch' } }] }, eagerness: 'moderate' }] });
+      // A show, recap or nostalgia page (it has a player) is only fetched ahead, never prepared in the background: an
+      // outside player in a page Chrome had prepared ahead showed a black picture with sound in full screen until the
+      // page was reloaded (owner 2026-10-13, INCIDENTS #467). It still opens fast, and loads like a normal visit.
+      var WATCH = [{ href_matches: '/shows/:slug/' }, { href_matches: '/recaps/:slug/' }, { href_matches: '/nostalgia/:slug/' },
+        { href_matches: '/en/shows/:slug/' }, { href_matches: '/en/recaps/:slug/' }, { href_matches: '/en/nostalgia/:slug/' }];
+      s.textContent = JSON.stringify({
+        prerender: [{ where: { and: [{ href_matches: '/*' }, { not: { href_matches: '/admin/*' } }, { not: { selector_matches: '.lang-switch' } }, { not: { or: WATCH } }] }, eagerness: 'moderate' }],
+        prefetch: [{ where: { or: WATCH }, eagerness: 'moderate' }],
+      });
       document.head.appendChild(s);
     } else {
       var done = {};

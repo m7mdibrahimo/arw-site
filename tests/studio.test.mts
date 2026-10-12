@@ -592,7 +592,7 @@ test('switching light/dark is one cross-fade of the whole page, on the site and 
   const css = fs.readFileSync('assets/experience.css', 'utf8');
   assert.match(css, /html\.theme-vt::view-transition-old\(root\) \{ animation: none; \}/);
   assert.doesNotMatch(css, /html\.theme-anim \*/);
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261009d/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261013a/);
   const app = fs.readFileSync('studio/js/app.js', 'utf8');
   assert.match(app, /\$\('#theme-btn'\)\.onclick = \(\) => switchTheme\(/);
   assert.match(app, /const vt = document\.startViewTransition\(flip\);/);

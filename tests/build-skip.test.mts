@@ -146,3 +146,14 @@ test('library program pages that Google knows and that no longer exist redirect 
     assert.ok(red.split('\n').some(l => l.trim().startsWith(`${from} ${to} 301`)), from);
   }
 });
+
+test('a page with a player is never prepared in the background, and nothing around the player moves or fades', () => {
+  // Full screen showed a black picture with sound on the first open from a link, fine after a reload (owner 2026-10-13, INCIDENTS #467)
+  const exp = fs.readFileSync('assets/experience.js', 'utf8');
+  assert.match(exp, /\{ not: \{ or: WATCH \} \}/);
+  assert.match(exp, /prefetch: \[\{ where: \{ or: WATCH \}/);
+  for (const p of ['/shows/:slug/', '/recaps/:slug/', '/nostalgia/:slug/']) assert.ok(exp.includes(`href_matches: '${p}'`), p);
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /<div class="post-wrap\{% if isWatchPage %\} is-watch\{% else %\} reveal\{% endif %\}">/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261013a/);
+});

@@ -266,7 +266,10 @@
 </div>
 {% endmacro %}
 <main>
-  <div class="post-wrap reveal{% if not isNews and (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') or isNostalgiaItem) %} is-watch{% endif %}">
+  {#- A page with a player never slides or fades in: an outside player (ok.ru, vidmoly…) under a box that moves or fades
+      showed a black picture with sound in full screen (owner 2026-10-13, INCIDENTS #467) -#}
+  {% set isWatchPage = not isNews and (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') or isNostalgiaItem) %}
+  <div class="post-wrap{% if isWatchPage %} is-watch{% else %} reveal{% endif %}">
     {% if isNostalgiaItem %}
     <a class="back-link" href="/nostalgia/{% if nostalgia_series %}{{ nostalgia_series }}/{% endif %}">→ {% if nostalgia_series %}{% if series_type == 'program' or (nav and (nav.program.isProgram or nav.program.seriesType == 'program')) or (program_name and 'حلقات' in program_name) %}رجوع لمسار البرنامج{% else %}رجوع لمسار السلسلة{% endif %}{% else %}رجوع لقسم نوستالجيا{% endif %}</a>
     {% else %}
