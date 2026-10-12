@@ -1,5 +1,5 @@
 ---
-title: "Cody Rhodes Doesn't Think He'll Ever Win The United States Championship"
+title: "Cody Rhodes Doesn't Think He'll Ever Win the United States Championship"
 slug: "cody-rhodes-doesnt-think-hell-ever-win-the-united-states-championship"
 description: "During a recent interview on Flagrant, Cody Rhodes discussed the accomplishments that have eluded him in WWE, noting that while he still has a chance to…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "LA Knight Adopts Louisiana Knight Persona for WWE Money In The Bank"
+title: "LA Knight Adopts Louisiana Knight Persona for WWE Money in the Bank"
 slug: "la-knight-adopts-louisiana-knight-persona-for-wwe-money-in-the-bank"
 description: "LA Knight announced he will briefly adopt the nickname Louisiana Knight during the WWE Money In The Bank weekend. The moniker originated from a previous…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "Chris Jericho Says He Recruited Jon Moxley & PAC For AEW"
+title: "Chris Jericho Says He Recruited Jon Moxley & PAC for AEW"
 slug: "chris-jericho-says-he-recruited-jon-moxley-pac-for-aew"
 description: "In a recent interview with TMZ Sports Inside the Ring, Chris Jericho discussed the early days of AEW and revealed that he personally helped recruit Jon…"
 federation: AEW

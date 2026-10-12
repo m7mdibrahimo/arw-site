@@ -1,5 +1,5 @@
 ---
-title: "MLP Northern Rising To Air As Three-Part Special On TSN And More"
+title: "MLP Northern Rising to Air as Three-Part Special on TSN and More"
 slug: "mlp-northern-rising-to-air-as-three-part-special-on-tsn-and-more"
 description: "Maple Leaf Pro Wrestling announced that their sold-out MLP Northern Rising event will be broadcast as a three-part television special. The series begins…"
 federation: INDIE

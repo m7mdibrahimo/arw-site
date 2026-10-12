@@ -1,5 +1,5 @@
 ---
-title: "GCW Fight Club Night One Results (October 10): The Art Of War Games"
+title: "GCW Fight Club Night One Results (October 10): The Art of War Games"
 slug: "gcw-fight-club-night-one-results-october-10-the-art-of-war-games"
 description: "Game Changer Wrestling hosted its GCW Fight Club Night One event on October 10 at The Showboat in Atlantic City, New Jersey. The event was broadcast on…"
 federation: INDIE

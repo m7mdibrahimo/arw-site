@@ -1,5 +1,5 @@
 ---
-title: "Cody Rhodes And Randy Orton Segment, Two Matches Added To WWE SmackDown"
+title: "Cody Rhodes and Randy Orton Segment, Two Matches Added to WWE SmackDown"
 slug: "cody-rhodes-and-randy-orton-segment-two-matches-added-to-wwe-smackdown"
 description: "According to Fightful, a segment featuring Cody Rhodes and Randy Orton along with two matches has been added to the upcoming episode of WWE SmackDown."
 federation: WWE

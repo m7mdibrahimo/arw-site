@@ -1,5 +1,5 @@
 ---
-title: "NJPW King Of Pro-Wrestling 2026 Preview, Start Time, How To Watch, Location"
+title: "NJPW King of Pro-Wrestling 2026 Preview, Start Time, How to Watch, Location"
 slug: "njpw-king-of-pro-wrestling-2026-preview-start-time-how-to-watch-location"
 description: "NJPW King of Pro-Wrestling 2026 takes place on October 12, 2026, at Ryogoku Sumo Hall in Ryogoku, Japan, starting at 3 AM ET, and will stream live on NJPW…"
 federation: NJPW

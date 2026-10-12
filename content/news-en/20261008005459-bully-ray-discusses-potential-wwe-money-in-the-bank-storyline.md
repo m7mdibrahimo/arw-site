@@ -1,5 +1,5 @@
 ---
-title: "Bully Ray Discusses Potential WWE Money In The Bank Storyline"
+title: "Bully Ray Discusses Potential WWE Money in the Bank Storyline"
 slug: "bully-ray-discusses-potential-wwe-money-in-the-bank-storyline"
 description: "According to Wrestling Inc., wrestling veteran Bully Ray recently shared his thoughts on a potential storyline involving Judgment Day stablemates Liv…"
 federation: WWE

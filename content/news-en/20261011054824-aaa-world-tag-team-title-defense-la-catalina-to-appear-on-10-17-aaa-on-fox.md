@@ -1,5 +1,5 @@
 ---
-title: "AAA World Tag Team Title Defense, La Catalina To Appear On 10/17 AAA On FOX"
+title: "AAA World Tag Team Title Defense, La Catalina to Appear on 10/17 AAA on FOX"
 slug: "aaa-world-tag-team-title-defense-la-catalina-to-appear-on-10-17-aaa-on-fox"
 description: "The AAA World Tag Team Titles will be defended on the upcoming episode of Lucha Libre AAA on FOX. During the broadcast, it was announced that the Wagner…"
 federation: INDIE

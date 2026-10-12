@@ -1,5 +1,5 @@
 ---
-title: "Oba Femi Recalls Promo To Paul Heyman And Warns Roman Reigns"
+title: "Oba Femi Recalls Promo to Paul Heyman and Warns Roman Reigns"
 slug: "oba-femi-recalls-promo-to-paul-heyman-and-warns-roman-reigns"
 description: "Oba Femi knew he would exceed expectations in WWE. Following his victory over Bronson Reed despite interference at Money in the Bank, Femi reflected on his…"
 federation: WWE

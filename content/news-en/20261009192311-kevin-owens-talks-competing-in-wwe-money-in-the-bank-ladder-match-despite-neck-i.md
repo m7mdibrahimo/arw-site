@@ -1,5 +1,5 @@
 ---
-title: "Kevin Owens Talks Competing In WWE Money In The Bank Ladder Match Despite Neck Injury"
+title: "Kevin Owens Talks Competing in WWE Money in the Bank Ladder Match Despite Neck Injury"
 slug: "kevin-owens-talks-competing-in-wwe-money-in-the-bank-ladder-match-despite-neck-i"
 description: "Kevin Owens recently opened up about his upcoming participation in the WWE Money in the Bank ladder match, addressing concerns surrounding his past neck…"
 federation: WWE

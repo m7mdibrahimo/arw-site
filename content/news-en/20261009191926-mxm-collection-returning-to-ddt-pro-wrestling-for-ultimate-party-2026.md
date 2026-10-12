@@ -1,5 +1,5 @@
 ---
-title: "MxM Collection Returning To DDT Pro-Wrestling For Ultimate Party 2026"
+title: "MxM Collection Returning to DDT Pro-Wrestling for Ultimate Party 2026"
 slug: "mxm-collection-returning-to-ddt-pro-wrestling-for-ultimate-party-2026"
 description: "MxM Collection is set to make a return to DDT Pro-Wrestling. The duo consisting of Mansoor and Mason Madden will compete at the upcoming Ultimate Party…"
 federation: INDIE

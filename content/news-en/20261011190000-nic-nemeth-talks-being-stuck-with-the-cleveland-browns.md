@@ -1,5 +1,5 @@
 ---
-title: "Nic Nemeth Talks Being Stuck With The Cleveland Browns"
+title: "Nic Nemeth Talks Being Stuck With the Cleveland Browns"
 slug: "nic-nemeth-talks-being-stuck-with-the-cleveland-browns"
 description: "Nic Nemeth recently discussed his lifelong fandom for the Cleveland Browns, comparing it to a family heirloom that he cannot escape. Speaking in an…"
 federation: INDIE

@@ -1,5 +1,5 @@
 ---
-title: "Maven Issues Statement Apologizing For Timing Of Enzo Amore Video, Confirms It Was Filmed In 2025"
+title: "Maven Issues Statement Apologizing for Timing of Enzo Amore Video, Confirms It Was Filmed in 2025"
 slug: "maven-issues-statement-apologizing-for-timing-of-enzo-amore-video-confirms-it-wa"
 description: "Maven has issued a formal apology regarding the timing of his recent YouTube video featuring Enzo Amore. The video, which included comments from Amore…"
 federation: INDIE

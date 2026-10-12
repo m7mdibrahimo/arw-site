@@ -1,5 +1,5 @@
 ---
-title: "Jim Cornette Says Vince Russo Doesn’t Deserve Credit For Creating The Rock"
+title: "Jim Cornette Says Vince Russo Doesn’t Deserve Credit for Creating the Rock"
 slug: "jim-cornette-says-vince-russo-doesnt-deserve-credit-for-creating-the-rock"
 description: "Jim Cornette recently addressed comments made by Vince Russo regarding the creation of The Rock, stating that Russo does not deserve credit for the…"
 federation: WWE

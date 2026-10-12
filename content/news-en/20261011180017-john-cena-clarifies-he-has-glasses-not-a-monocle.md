@@ -1,5 +1,5 @@
 ---
-title: "John Cena Clarifies He Has Glasses, Not A Monocle"
+title: "John Cena Clarifies He Has Glasses, Not a Monocle"
 slug: "john-cena-clarifies-he-has-glasses-not-a-monocle"
 description: "John Cena recently cleared up any confusion regarding his eyewear during an appearance on Slice Joint, part of First We Feast. While reading a cue card,…"
 federation: WWE

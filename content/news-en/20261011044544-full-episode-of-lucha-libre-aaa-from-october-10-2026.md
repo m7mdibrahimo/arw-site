@@ -1,5 +1,5 @@
 ---
-title: "Full Episode Of Lucha Libre AAA From October 10, 2026"
+title: "Full Episode of Lucha Libre AAA From October 10, 2026"
 slug: "full-episode-of-lucha-libre-aaa-from-october-10-2026"
 description: "Fans can now watch the complete Lucha Libre AAA event from October 10, 2026, featuring top promotion stars."
 federation: INDIE

@@ -1,5 +1,5 @@
 ---
-title: "Jacy Jayne Discusses Feelings Ahead Of First Money In The Bank Match"
+title: "Jacy Jayne Discusses Feelings Ahead of First Money in the Bank Match"
 slug: "jacy-jayne-discusses-feelings-ahead-of-first-money-in-the-bank-match"
 description: "WWE Women's United States Champion Jacy Jayne recently discussed her upcoming appearance in her first Women's Money in the Bank match at Saturday's Money…"
 federation: WWE

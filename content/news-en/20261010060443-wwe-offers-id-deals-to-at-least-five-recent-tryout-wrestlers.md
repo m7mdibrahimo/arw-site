@@ -1,5 +1,5 @@
 ---
-title: "WWE Offers ID Deals To At Least Five Recent Tryout Wrestlers"
+title: "WWE Offers ID Deals to at Least Five Recent Tryout Wrestlers"
 slug: "wwe-offers-id-deals-to-at-least-five-recent-tryout-wrestlers"
 description: "According to Fightful, at least five participants from recent WWE tryouts received offers for WWE ID deals, though full contracts have not been announced yet."
 federation: WWE

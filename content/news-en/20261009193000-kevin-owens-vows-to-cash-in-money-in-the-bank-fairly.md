@@ -1,5 +1,5 @@
 ---
-title: "Kevin Owens Vows To Cash In Money In The Bank Fairly"
+title: "Kevin Owens Vows to Cash in Money in the Bank Fairly"
 slug: "kevin-owens-vows-to-cash-in-money-in-the-bank-fairly"
 description: "Kevin Owens recently shared his plans to win the men's Money in the Bank briefcase and secure a world title opportunity fairly. He joins a ladder match…"
 federation: WWE

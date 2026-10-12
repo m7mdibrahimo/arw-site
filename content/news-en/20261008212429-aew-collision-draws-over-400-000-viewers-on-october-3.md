@@ -1,5 +1,5 @@
 ---
-title: "AEW Collision Draws Over 400,000 Viewers On October 3"
+title: "AEW Collision Draws Over 400,000 Viewers on October 3"
 slug: "aew-collision-draws-over-400-000-viewers-on-october-3"
 description: "AEW Collision viewership for October 3 reached 415,000 viewers on TNT, according to Wrestlenomics. This represents an increase from the 337,000 viewers the…"
 federation: AEW

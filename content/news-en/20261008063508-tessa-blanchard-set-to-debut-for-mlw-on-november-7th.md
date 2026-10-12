@@ -1,5 +1,5 @@
 ---
-title: "Tessa Blanchard Set To Debut For MLW On November 7th"
+title: "Tessa Blanchard Set to Debut for MLW on November 7th"
 slug: "tessa-blanchard-set-to-debut-for-mlw-on-november-7th"
 description: "Tessa Blanchard is officially heading to MLW. During a sit-down interview on the October 7th episode of CMLL Informa, it was confirmed that Blanchard will…"
 federation: INDIE

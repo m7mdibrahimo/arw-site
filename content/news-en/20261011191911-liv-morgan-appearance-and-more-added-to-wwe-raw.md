@@ -1,5 +1,5 @@
 ---
-title: "Liv Morgan Appearance And More Added To WWE Raw"
+title: "Liv Morgan Appearance and More Added to WWE Raw"
 slug: "liv-morgan-appearance-and-more-added-to-wwe-raw"
 description: "New matches and appearances have been added to the upcoming episode of WWE Raw by general manager Adam Pearce. Newly crowned Women's World Champion Liv…"
 federation: WWE

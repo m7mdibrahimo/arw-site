@@ -1,5 +1,5 @@
 ---
-title: "Chad Gable States That Competing In AAA 'Taught Me A Lot About Myself'"
+title: "Chad Gable States That Competing in AAA 'Taught Me a Lot About Myself'"
 slug: "chad-gable-states-that-competing-in-aaa-taught-me-a-lot-about-myself"
 description: "WWE Intercontinental Champion Chad Gable recently reflected on his run in AAA, which began when he performed as the original El Grande Americano character…"
 federation: WWE

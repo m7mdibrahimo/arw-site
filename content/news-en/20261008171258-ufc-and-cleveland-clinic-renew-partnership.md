@@ -1,5 +1,5 @@
 ---
-title: "UFC And Cleveland Clinic Renew Partnership"
+title: "UFC and Cleveland Clinic Renew Partnership"
 slug: "ufc-and-cleveland-clinic-renew-partnership"
 description: "UFC and the Cleveland Clinic have announced a multiyear extension of their partnership, with UFC providing a one million dollar contribution to support the…"
 federation: WWE

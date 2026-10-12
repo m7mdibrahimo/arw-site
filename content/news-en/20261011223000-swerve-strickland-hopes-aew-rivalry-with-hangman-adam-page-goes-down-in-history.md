@@ -1,5 +1,5 @@
 ---
-title: "Swerve Strickland Hopes AEW Rivalry With Hangman Adam Page Goes Down In History"
+title: "Swerve Strickland Hopes AEW Rivalry With Hangman Adam Page Goes Down in History"
 slug: "swerve-strickland-hopes-aew-rivalry-with-hangman-adam-page-goes-down-in-history"
 description: "Swerve Strickland has expressed his desire for his intense storyline with Hangman Adam Page to be remembered among the greatest feuds in wrestling history.…"
 federation: AEW

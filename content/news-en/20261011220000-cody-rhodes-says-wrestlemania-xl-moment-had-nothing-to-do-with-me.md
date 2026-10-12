@@ -1,5 +1,5 @@
 ---
-title: "Cody Rhodes Says WrestleMania XL Moment Had Nothing To Do With Me"
+title: "Cody Rhodes Says WrestleMania XL Moment Had Nothing to Do With Me"
 slug: "cody-rhodes-says-wrestlemania-xl-moment-had-nothing-to-do-with-me"
 description: "During a recent appearance on the Flagrant podcast, Cody Rhodes reflected on his historic victory at WWE WrestleMania XL against Roman Reigns. Rhodes…"
 federation: WWE

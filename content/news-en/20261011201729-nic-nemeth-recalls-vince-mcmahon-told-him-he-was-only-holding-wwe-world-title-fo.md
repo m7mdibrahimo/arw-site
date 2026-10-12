@@ -1,5 +1,5 @@
 ---
-title: "Nic Nemeth Recalls Vince McMahon Told Him He Was Only Holding WWE World Title For Alberto Del Rio"
+title: "Nic Nemeth Recalls Vince McMahon Told Him He Was Only Holding WWE World Title for Alberto Del Rio"
 slug: "nic-nemeth-recalls-vince-mcmahon-told-him-he-was-only-holding-wwe-world-title-fo"
 description: "Nic Nemeth recently compared his current run as TNA World Champion to his previous world title reigns in WWE. During an interview with TVInsider ahead of…"
 federation: WWE

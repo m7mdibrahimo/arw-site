@@ -1,5 +1,5 @@
 ---
-title: "Finn Balor Says Sami Zayn Is 'Underappreciated' On The Microphone"
+title: "Finn Balor Says Sami Zayn Is 'Underappreciated' on the Microphone"
 slug: "finn-balor-says-sami-zayn-is-underappreciated-on-the-microphone"
 description: "Finn Balor believes that Sami Zayn's promo skills are often overlooked despite his long-standing reputation for excellence. During an interview on…"
 federation: WWE

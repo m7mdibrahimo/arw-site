@@ -1,5 +1,5 @@
 ---
-title: "Josh Alexander Reflects On Wrestling Bryan Danielson On AEW PAC Tribute Show"
+title: "Josh Alexander Reflects on Wrestling Bryan Danielson on AEW PAC Tribute Show"
 slug: "josh-alexander-reflects-on-wrestling-bryan-danielson-on-aew-pac-tribute-show"
 description: "Josh Alexander opened up about participating in the emotional tribute show dedicated to Pac on AEW Dynamite and sharing the ring with Bryan Danielson.…"
 federation: AEW

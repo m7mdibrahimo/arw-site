@@ -1,5 +1,5 @@
 ---
-title: "Britt Baker Teased For CMLL Arena Mexico Appearance"
+title: "Britt Baker Teased for CMLL Arena Mexico Appearance"
 slug: "britt-baker-teased-for-cmll-arena-mexico-appearance"
 description: "Britt Baker is heading to CMLL. CMLL released a video featuring the reigning CMLL World Women's and AEW TBS Champion Persephone, who teased that her ally…"
 federation: INDIE

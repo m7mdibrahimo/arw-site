@@ -1,5 +1,5 @@
 ---
-title: "Drake Maverick Recalls WWE 24/7 Title Era As 'The Good Old Days'"
+title: "Drake Maverick Recalls WWE 24/7 Title Era as 'the Good Old Days'"
 slug: "drake-maverick-recalls-wwe-24-7-title-era-as-the-good-old-days"
 description: "Former WWE star Drake Maverick recently reflected on his time in the 24/7 Championship division, describing the chaotic backstage era as a highlight of his…"
 federation: WWE

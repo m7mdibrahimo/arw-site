@@ -1,5 +1,5 @@
 ---
-title: "Brawling Birds Officially Members Of United Empire"
+title: "Brawling Birds Officially Members of United Empire"
 slug: "brawling-birds-officially-members-of-united-empire"
 description: "The United Empire has officially welcomed two new members to its ranks. During their entrance at AEW Collision Grand Slam: France, it was announced that…"
 federation: AEW

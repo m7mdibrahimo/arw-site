@@ -1,5 +1,5 @@
 ---
-title: "Matt Hardy Explains Why TNA Is A Better Fit Than AEW"
+title: "Matt Hardy Explains Why TNA Is a Better Fit Than AEW"
 slug: "matt-hardy-explains-why-tna-is-a-better-fit-than-aew"
 description: "Matt Hardy recently explained why TNA is a better fit for him and Jeff Hardy compared to their previous run in AEW. Speaking on his podcast, Matt noted…"
 federation: TNA

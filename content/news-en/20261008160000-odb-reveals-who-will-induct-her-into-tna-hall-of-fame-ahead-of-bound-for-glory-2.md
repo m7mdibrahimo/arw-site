@@ -1,5 +1,5 @@
 ---
-title: "ODB Reveals Who Will Induct Her Into TNA Hall Of Fame Ahead Of Bound for Glory 2026"
+title: "ODB Reveals Who Will Induct Her Into TNA Hall of Fame Ahead of Bound for Glory 2026"
 slug: "odb-reveals-who-will-induct-her-into-tna-hall-of-fame-ahead-of-bound-for-glory-2"
 description: "ODB has revealed the three notable figures who will induct her into the TNA Hall of Fame this weekend ahead of Bound for Glory. The veteran star, who…"
 federation: TNA

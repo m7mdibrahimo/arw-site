@@ -1,5 +1,5 @@
 ---
-title: "Xelina Says Some Fans Weren't Smart Enough For Her WWE Character"
+title: "Xelina Says Some Fans Weren't Smart Enough for Her WWE Character"
 slug: "xelina-says-some-fans-werent-smart-enough-for-her-wwe-character"
 description: "Xelina believes that some fans were not smart enough to keep up with her character work during her time in WWE. During an episode of the ZELVX and CHARLIE…"
 federation: WWE

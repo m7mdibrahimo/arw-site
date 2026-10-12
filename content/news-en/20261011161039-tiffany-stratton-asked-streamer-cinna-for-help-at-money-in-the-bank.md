@@ -1,5 +1,5 @@
 ---
-title: "Tiffany Stratton Asked Streamer Cinna For Help At Money In The Bank"
+title: "Tiffany Stratton Asked Streamer Cinna for Help at Money in the Bank"
 slug: "tiffany-stratton-asked-streamer-cinna-for-help-at-money-in-the-bank"
 description: "Tiffany Stratton sought assistance from online streamer Cinna during the women's ladder match at WWE Money in the Bank on Saturday. Six rising stars…"
 federation: WWE

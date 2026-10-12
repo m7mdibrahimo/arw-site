@@ -4440,3 +4440,13 @@ test('English fixes keep "for" lowercase in Bound for Glory and spell Syx right 
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
   assert.equal(fixEnglishNames('TNA Bound For Glory: syX wins'), 'TNA Bound for Glory: Syx wins');
 });
+
+test("English headlines get one consistent Title Case (INCIDENTS #443)", async () => {
+  const { normalizeEnglishTitle } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("Cody Rhodes Recalls Barking At Solo Sikoa Over Tag Match Plan"), "Cody Rhodes Recalls Barking at Solo Sikoa Over Tag Match Plan");
+  assert.equal(normalizeEnglishTitle("Bully Ray Discusses WWE Money In The Bank Storyline"), "Bully Ray Discusses WWE Money in the Bank Storyline");
+  assert.equal(normalizeEnglishTitle("Jason Hotch Wins TNA International Championship In Wild 4-Way"), "Jason Hotch Wins TNA International Championship in Wild 4-Way");
+  assert.equal(normalizeEnglishTitle("Chad Gable Comments On New Project He's Working On"), "Chad Gable Comments on New Project He's Working On");
+  assert.equal(normalizeEnglishTitle("Tessa Blanchard Set To Debut On November 7th"), "Tessa Blanchard Set to Debut on November 7th");
+  assert.equal(normalizeEnglishTitle("Hijo de Fishman Detained"), "Hijo de Fishman Detained");
+});

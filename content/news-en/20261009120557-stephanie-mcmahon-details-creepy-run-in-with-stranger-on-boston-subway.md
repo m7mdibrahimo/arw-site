@@ -1,5 +1,5 @@
 ---
-title: "Stephanie McMahon Details Creepy Run-In With Stranger On Boston Subway"
+title: "Stephanie McMahon Details Creepy Run-In With Stranger on Boston Subway"
 slug: "stephanie-mcmahon-details-creepy-run-in-with-stranger-on-boston-subway"
 description: "Stephanie McMahon recently shared a disturbing public transit experience on her What's Your Story? podcast. She recalled riding a crowded subway train in…"
 federation: WWE

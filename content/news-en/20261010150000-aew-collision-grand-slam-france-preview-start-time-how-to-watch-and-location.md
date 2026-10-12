@@ -1,5 +1,5 @@
 ---
-title: "AEW Collision Grand Slam France Preview, Start Time, How To Watch, And Location"
+title: "AEW Collision Grand Slam France Preview, Start Time, How to Watch, and Location"
 slug: "aew-collision-grand-slam-france-preview-start-time-how-to-watch-and-location"
 description: "AEW Collision Grand Slam France takes place on October 10, 2026, at the Adidas Arena in Paris, France, starting at 8 p.m. ET on TNT and HBO Max. The match…"
 federation: AEW

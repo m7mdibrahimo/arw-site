@@ -1,5 +1,5 @@
 ---
-title: "1995 WWF Backstage Tape To Be Released"
+title: "1995 WWF Backstage Tape to Be Released"
 slug: "1995-wwf-backstage-tape-to-be-released"
 description: "Unreleased footage from 1995 is finally seeing the light of day. Joe Dombrowski of Pro Wrestling Library announced that a long-rumored videotape filmed by…"
 federation: WWE

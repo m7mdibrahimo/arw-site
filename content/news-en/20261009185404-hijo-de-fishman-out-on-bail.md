@@ -1,5 +1,5 @@
 ---
-title: "Hijo de Fishman Out On Bail"
+title: "Hijo de Fishman Out on Bail"
 slug: "hijo-de-fishman-out-on-bail"
 description: "Hijo de Fishman has been released on bail following his arrest earlier this week. El Patrón Espectáculos CEO Edgar Sandoval and the law firm Magallan Reyes…"
 federation: INDIE

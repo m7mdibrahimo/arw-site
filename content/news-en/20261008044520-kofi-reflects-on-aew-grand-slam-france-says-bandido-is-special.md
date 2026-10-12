@@ -1,5 +1,5 @@
 ---
-title: "Kofi Reflects On AEW Grand Slam France, Says Bandido Is Special"
+title: "Kofi Reflects on AEW Grand Slam France, Says Bandido Is Special"
 slug: "kofi-reflects-on-aew-grand-slam-france-says-bandido-is-special"
 description: "Kofi shared his thoughts on AEW Grand Slam France following his match against Bandido. During the latest episode of AEW Dynamite, Kofi challenged Bandido…"
 federation: AEW

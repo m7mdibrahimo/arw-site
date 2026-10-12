@@ -1,5 +1,5 @@
 ---
-title: "Lady Leigh Reflects On Her WWE Release"
+title: "Lady Leigh Reflects on Her WWE Release"
 slug: "lady-leigh-reflects-on-her-wwe-release"
 description: "Lady Leigh has opened up about her departure from WWE one year after being released from the company. On October 10, 2025, while competing for the Evolve…"
 federation: WWE

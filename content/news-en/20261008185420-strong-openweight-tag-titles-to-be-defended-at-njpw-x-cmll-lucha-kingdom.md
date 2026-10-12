@@ -1,5 +1,5 @@
 ---
-title: "STRONG Openweight Tag Titles To Be Defended At NJPW x CMLL Lucha Kingdom"
+title: "STRONG Openweight Tag Titles to Be Defended at NJPW x CMLL Lucha Kingdom"
 slug: "strong-openweight-tag-titles-to-be-defended-at-njpw-x-cmll-lucha-kingdom"
 description: "The STRONG Openweight Tag Team Championships will be defended at NJPW x CMLL Lucha Kingdom on November 16 at Arena Mexico. Current champions Los Hermanos…"
 federation: NJPW

@@ -1,5 +1,5 @@
 ---
-title: "LA Knight: If I Don't Win At Money In The Bank, Where Do I Go From There?"
+title: "LA Knight: If I Don't Win at Money in the Bank, Where Do I Go From There?"
 slug: "la-knight-if-i-dont-win-at-money-in-the-bank-where-do-i-go-from-there"
 description: "LA Knight admitted that he is unsure where his career will head if he fails to capture the world title at the upcoming WWE Money In The Bank event. This…"
 federation: WWE

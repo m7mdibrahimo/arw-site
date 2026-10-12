@@ -1,5 +1,5 @@
 ---
-title: "Roman Reigns On LA Knight: I Gotta Give Him His Respect"
+title: "Roman Reigns on LA Knight: I Gotta Give Him His Respect"
 slug: "roman-reigns-on-la-knight-i-gotta-give-him-his-respect"
 description: "Roman Reigns commented on his World Heavyweight Title defense against LA Knight at Money in the Bank, where he successfully retained his belt. Following…"
 federation: WWE

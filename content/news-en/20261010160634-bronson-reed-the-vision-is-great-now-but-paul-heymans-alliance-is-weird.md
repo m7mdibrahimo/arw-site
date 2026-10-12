@@ -1,5 +1,5 @@
 ---
-title: "Bronson Reed: The Vision Is Great Now, But Paul Heyman's Alliance Is Weird"
+title: "Bronson Reed: The Vision Is Great Now, but Paul Heyman's Alliance Is Weird"
 slug: "bronson-reed-the-vision-is-great-now-but-paul-heymans-alliance-is-weird"
 description: "Bronson Reed discussed the current state of The Vision, sharing his love for the faction's current iteration while calling Paul Heyman's involvement unusual."
 federation: WWE

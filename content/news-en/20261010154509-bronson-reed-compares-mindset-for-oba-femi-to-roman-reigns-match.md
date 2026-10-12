@@ -1,5 +1,5 @@
 ---
-title: "Bronson Reed Compares Mindset For Oba Femi To Roman Reigns Match"
+title: "Bronson Reed Compares Mindset for Oba Femi to Roman Reigns Match"
 slug: "bronson-reed-compares-mindset-for-oba-femi-to-roman-reigns-match"
 description: "Bronson Reed says that he has the exact same mindset heading into his upcoming bout with Oba Femi that he had before facing Roman Reigns. Reed and Femi are…"
 federation: WWE

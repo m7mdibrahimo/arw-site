@@ -1,5 +1,5 @@
 ---
-title: "WWE HOFer Jim Ross Shares Thoughts On Potential MITB Winner"
+title: "WWE HOFer Jim Ross Shares Thoughts on Potential MITB Winner"
 slug: "wwe-hofer-jim-ross-shares-thoughts-on-potential-mitb-winner"
 description: "WWE Hall of Famer Jim Ross recently shared his predictions for the upcoming men's Money in the Bank ladder match. Speaking on his Grilling JR podcast, Ross…"
 federation: WWE

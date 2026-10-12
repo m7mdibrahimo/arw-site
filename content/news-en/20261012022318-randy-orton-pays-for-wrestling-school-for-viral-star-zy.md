@@ -1,5 +1,5 @@
 ---
-title: "Randy Orton Pays For Wrestling School For Viral Star Zy"
+title: "Randy Orton Pays for Wrestling School for Viral Star Zy"
 slug: "randy-orton-pays-for-wrestling-school-for-viral-star-zy"
 description: "Randy Orton has shown his support for an aspiring wrestler. Fans may recognize Zy from his viral \"Be Like\" videos on Instagram, where he imitates legendary…"
 federation: WWE

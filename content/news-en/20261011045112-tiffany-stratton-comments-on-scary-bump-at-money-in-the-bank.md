@@ -1,5 +1,5 @@
 ---
-title: "Tiffany Stratton Comments On Scary Bump At Money In The Bank"
+title: "Tiffany Stratton Comments on Scary Bump at Money in the Bank"
 slug: "tiffany-stratton-comments-on-scary-bump-at-money-in-the-bank"
 description: "Tiffany Stratton reflected on the dangerous landing she experienced during the Women's Money in the Bank ladder match. Stratton made history by becoming…"
 federation: WWE

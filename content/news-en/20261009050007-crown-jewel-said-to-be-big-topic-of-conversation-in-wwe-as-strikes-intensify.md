@@ -1,5 +1,5 @@
 ---
-title: "Crown Jewel Said To Be 'Big Topic Of Conversation' In WWE As Strikes Intensify"
+title: "Crown Jewel Said to Be 'Big Topic of Conversation' in WWE as Strikes Intensify"
 slug: "crown-jewel-said-to-be-big-topic-of-conversation-in-wwe-as-strikes-intensify"
 description: "WWE Crown Jewel 2026 is scheduled to take place on November 7 at the Riyadh Seasonal Stadium in Saudi Arabia, but internal discussions are reportedly…"
 federation: WWE

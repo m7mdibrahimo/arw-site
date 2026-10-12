@@ -1,5 +1,5 @@
 ---
-title: "Roman Reigns Partners With StockX For Charity Auction"
+title: "Roman Reigns Partners With StockX for Charity Auction"
 slug: "roman-reigns-partners-with-stockx-for-charity-auction"
 description: "Roman Reigns has teamed up with StockX to auction off several items, including pieces worn in the upcoming Street Fighter movie and a pair of autographed…"
 federation: WWE

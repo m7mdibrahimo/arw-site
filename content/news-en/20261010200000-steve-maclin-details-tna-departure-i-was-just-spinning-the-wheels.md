@@ -1,5 +1,5 @@
 ---
-title: "Steve Maclin Details TNA Departure: 'I Was Just Spinning The Wheels'"
+title: "Steve Maclin Details TNA Departure: 'I Was Just Spinning the Wheels'"
 slug: "steve-maclin-details-tna-departure-i-was-just-spinning-the-wheels"
 description: "Steve Maclin recently opened up about his decision to leave TNA after five years, citing significant creative differences. Despite winning the TNA…"
 federation: TNA

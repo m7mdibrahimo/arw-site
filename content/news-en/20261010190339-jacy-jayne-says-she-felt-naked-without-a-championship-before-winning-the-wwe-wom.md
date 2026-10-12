@@ -1,5 +1,5 @@
 ---
-title: "Jacy Jayne Says She 'Felt Naked' Without A Championship Before Winning The WWE Women's US Title"
+title: "Jacy Jayne Says She 'Felt Naked' Without a Championship Before Winning the WWE Women's US Title"
 slug: "jacy-jayne-says-she-felt-naked-without-a-championship-before-winning-the-wwe-wom"
 description: "Jacy Jayne recently discussed her experience since joining the WWE main roster as part of Fatal Influence. Jayne admitted that she felt a sense of…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "Sesame Street Releases Video Featuring John Cena And Elmo"
+title: "Sesame Street Releases Video Featuring John Cena and Elmo"
 slug: "sesame-street-releases-video-featuring-john-cena-and-elmo"
 description: "Sesame Street has released a new video featuring 17-time WWE World Champion John Cena and Elmo. The official Sesame Street social media account shared the…"
 federation: WWE

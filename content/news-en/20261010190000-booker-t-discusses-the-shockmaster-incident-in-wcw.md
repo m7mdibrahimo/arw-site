@@ -1,5 +1,5 @@
 ---
-title: "Booker T Discusses The Shockmaster Incident In WCW"
+title: "Booker T Discusses the Shockmaster Incident in WCW"
 slug: "booker-t-discusses-the-shockmaster-incident-in-wcw"
 description: "WWE Hall of Famer Booker T recently reflected on the infamous 1993 WCW incident involving The Shockmaster. Appearing on \"Insight with Chris Van Vliet,\"…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "WWE Money In The Bank 2026: 3 Things We Hated & 3 Things We Loved"
+title: "WWE Money in the Bank 2026: 3 Things We Hated & 3 Things We Loved"
 slug: "wwe-money-in-the-bank-2026-3-things-we-hated-3-things-we-loved"
 description: "WWE Money In The Bank 2026 brought a mix of highs and lows, featuring thrilling ladder action, a shocking ambulance return by Je'Von Evans, and some…"
 federation: WWE

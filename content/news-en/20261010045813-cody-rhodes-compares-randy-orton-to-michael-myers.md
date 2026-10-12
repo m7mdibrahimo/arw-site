@@ -1,5 +1,5 @@
 ---
-title: "Cody Rhodes Compares Randy Orton To Michael Myers"
+title: "Cody Rhodes Compares Randy Orton to Michael Myers"
 slug: "cody-rhodes-compares-randy-orton-to-michael-myers"
 description: "During the latest episode of WWE SmackDown, Cody Rhodes interrupted a segment featuring The Miz and Kit Wilson. Rhodes took the opportunity to address…"
 federation: WWE

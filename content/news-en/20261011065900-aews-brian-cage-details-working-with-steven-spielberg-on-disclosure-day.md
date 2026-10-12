@@ -1,5 +1,5 @@
 ---
-title: "AEW's Brian Cage Details Working With Steven Spielberg On Disclosure Day"
+title: "AEW's Brian Cage Details Working With Steven Spielberg on Disclosure Day"
 slug: "aews-brian-cage-details-working-with-steven-spielberg-on-disclosure-day"
 description: "AEW star Brian Cage recently discussed his experience working on Steven Spielberg's Disclosure Day, which was released earlier this year. Cage appeared in…"
 federation: AEW

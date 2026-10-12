@@ -1,5 +1,5 @@
 ---
-title: "Nattie Neidhart Wants To Collaborate With Josh Barnett On Future Bloodsport Events"
+title: "Nattie Neidhart Wants to Collaborate With Josh Barnett on Future Bloodsport Events"
 slug: "nattie-neidhart-wants-to-collaborate-with-josh-barnett-on-future-bloodsport-even"
 description: "Since making her debut as a fighter in Josh Barnett's hybrid Bloodsport event in April 2025, Nattie Neidhart has developed a significant passion for the…"
 federation: WWE

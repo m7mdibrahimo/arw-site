@@ -1,5 +1,5 @@
 ---
-title: "Kevin Owens Added To 10/17 WWE NXT Live Event"
+title: "Kevin Owens Added to 10/17 WWE NXT Live Event"
 slug: "kevin-owens-added-to-10-17-wwe-nxt-live-event"
 description: "Kevin Owens is scheduled to appear at a WWE NXT live event on October 17. The show will be held at the Slush Puppie Centre in Gatineau, Quebec, Canada.…"
 federation: WWE

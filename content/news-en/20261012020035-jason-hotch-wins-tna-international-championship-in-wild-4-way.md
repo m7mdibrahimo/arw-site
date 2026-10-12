@@ -1,5 +1,5 @@
 ---
-title: "Jason Hotch Wins TNA International Championship In Wild 4-Way"
+title: "Jason Hotch Wins TNA International Championship in Wild 4-Way"
 slug: "jason-hotch-wins-tna-international-championship-in-wild-4-way"
 description: "Jason Hotch captured the TNA International Championship at TNA Bound for Glory 2026, defeating Mustafa Ali, Special Agent Zero, and John Skyler in a…"
 federation: TNA

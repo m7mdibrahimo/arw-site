@@ -1,5 +1,5 @@
 ---
-title: "Latest Update On Investigation Into Death Of Former AEW & WWE Star Pac"
+title: "Latest Update on Investigation Into Death of Former AEW & WWE Star Pac"
 slug: "latest-update-on-investigation-into-death-of-former-aew-wwe-star-pac"
 description: "According to the latest update from Dave Meltzer in the Wrestling Observer Newsletter, the cause of death for Benjamin Satterley, known as Pac in AEW and…"
 federation: AEW

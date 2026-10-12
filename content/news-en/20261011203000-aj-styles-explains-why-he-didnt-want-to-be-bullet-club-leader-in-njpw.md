@@ -1,5 +1,5 @@
 ---
-title: "AJ Styles Explains Why He Didn't Want To Be Bullet Club Leader In NJPW"
+title: "AJ Styles Explains Why He Didn't Want to Be Bullet Club Leader in NJPW"
 slug: "aj-styles-explains-why-he-didnt-want-to-be-bullet-club-leader-in-njpw"
 description: "During a recent appearance on Cody Rhodes' podcast, AJ Styles discussed his time in NJPW and explained why he never wanted to be considered the leader of…"
 federation: NJPW

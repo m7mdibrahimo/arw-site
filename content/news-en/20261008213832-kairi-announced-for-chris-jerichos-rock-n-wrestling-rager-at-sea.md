@@ -1,5 +1,5 @@
 ---
-title: "KAIRI Announced For Chris Jericho's Rock N Wrestling Rager At Sea"
+title: "KAIRI Announced for Chris Jericho's Rock N Wrestling Rager at Sea"
 slug: "kairi-announced-for-chris-jerichos-rock-n-wrestling-rager-at-sea"
 description: "KAIRI is the latest star confirmed for the upcoming Rock N Wrestling Rager At Sea: Seventh Cruise of a Seventh Cruise. Chris Jericho officially announced…"
 federation: AEW

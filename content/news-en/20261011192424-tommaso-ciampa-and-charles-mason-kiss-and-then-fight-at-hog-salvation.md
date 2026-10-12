@@ -1,5 +1,5 @@
 ---
-title: "Tommaso Ciampa And Charles Mason Kiss And Then Fight At HOG Salvation"
+title: "Tommaso Ciampa and Charles Mason Kiss and Then Fight at HOG Salvation"
 slug: "tommaso-ciampa-and-charles-mason-kiss-and-then-fight-at-hog-salvation"
 description: "Tommaso Ciampa and Charles Mason shared a surprising moment before engaging in a violent confrontation at HOG Salvation. Making a rare independent…"
 federation: INDIE

@@ -1,5 +1,5 @@
 ---
-title: "Gia Miller To Miss TNA Bound for Glory Due To Health Issues"
+title: "Gia Miller to Miss TNA Bound for Glory Due to Health Issues"
 slug: "gia-miller-to-miss-tna-bound-for-glory-due-to-health-issues"
 description: "TNA Wrestling ring announcer Gia Miller will miss the upcoming TNA Bound for Glory event. Although she managed to travel to Tampa, Florida for the show, a…"
 federation: TNA

@@ -1,5 +1,5 @@
 ---
-title: "Triple H Says Roman Reigns Demanded To Open 2026 WWE Money In The Bank"
+title: "Triple H Says Roman Reigns Demanded to Open 2026 WWE Money in the Bank"
 slug: "triple-h-says-roman-reigns-demanded-to-open-2026-wwe-money-in-the-bank"
 description: "WWE Chief Content Officer Paul 'Triple H' Levesque revealed that Roman Reigns was the one who requested to start the 2026 WWE Money in the Bank event.…"
 federation: WWE

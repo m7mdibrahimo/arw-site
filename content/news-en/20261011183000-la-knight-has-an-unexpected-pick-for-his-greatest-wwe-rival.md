@@ -1,5 +1,5 @@
 ---
-title: "LA Knight Has An Unexpected Pick For His Greatest WWE Rival"
+title: "LA Knight Has an Unexpected Pick for His Greatest WWE Rival"
 slug: "la-knight-has-an-unexpected-pick-for-his-greatest-wwe-rival"
 description: "LA Knight has reflected on his time in WWE and named the opponents who stand out the most in his career. In an interview with Sporf, Knight pointed to Solo…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "Liv Morgan Nearly Landed Major Role In Street Fighter Movie"
+title: "Liv Morgan Nearly Landed Major Role in Street Fighter Movie"
 slug: "liv-morgan-nearly-landed-major-role-in-street-fighter-movie"
 description: "Liv Morgan was reportedly close to securing a major role in the upcoming Street Fighter movie before her shoulder injury changed her plans. According to a…"
 federation: WWE

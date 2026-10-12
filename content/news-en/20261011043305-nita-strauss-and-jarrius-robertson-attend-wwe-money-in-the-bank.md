@@ -1,5 +1,5 @@
 ---
-title: "Nita Strauss and Jarrius Robertson Attend WWE Money In The Bank"
+title: "Nita Strauss and Jarrius Robertson Attend WWE Money in the Bank"
 slug: "nita-strauss-and-jarrius-robertson-attend-wwe-money-in-the-bank"
 description: "Guitarist Nita Strauss and Jarrius Robertson attended the WWE Money in the Bank Premium Live Event at the Smoothie King Center in New Orleans, Louisiana,…"
 federation: WWE

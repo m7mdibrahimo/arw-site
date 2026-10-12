@@ -1,5 +1,5 @@
 ---
-title: "Mickie James To Serve As Guest Referee For Knockouts Title Bout At TNA Bound for Glory"
+title: "Mickie James to Serve as Guest Referee for Knockouts Title Bout at TNA Bound for Glory"
 slug: "mickie-james-to-serve-as-guest-referee-for-knockouts-title-bout-at-tna-bound-for"
 description: "Mickie James has been named the special guest referee for the Knockouts Championship match at TNA Bound for Glory. TNA President Carlos Silva confirmed…"
 federation: TNA

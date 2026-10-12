@@ -1,5 +1,5 @@
 ---
-title: "Roman Reigns Reacts To WWE Money In The Bank Victory"
+title: "Roman Reigns Reacts to WWE Money in the Bank Victory"
 slug: "roman-reigns-reacts-to-wwe-money-in-the-bank-victory"
 description: "Roman Reigns reacted to his victory at WWE Money In The Bank by declaring himself the greatest of all time. At WWE Money In The Bank, Reigns defended his…"
 federation: WWE

@@ -1553,7 +1553,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <nav class="footer-legal-links" aria-label="آخر العروض الأسبوعية" style="margin:14px 0 0; font-size:13px;">
 {%- set weekly = ["wwe-raw", "wwe-smackdown", "wwe-nxt", "aew-dynamite", "aew-collision", "tna-impact"] -%}
 {%- for prog in collections.library -%}{%- if prog.slug in weekly and prog.arName %}
-<a href="/library/{{ prog.slug }}/" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.arName }} الأخير مترجم</a>{% if not loop.last %} · {% endif %}
+<a href="/library/{{ prog.slug }}/" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.arName }} الأخير مترجم</a>{% if prog.latest and prog.latest.url %} · <a href="{{ prog.latest.url }}" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.arName }} الأخير كامل</a>{% endif %}{% if not loop.last %} · {% endif %}
 {%- endif -%}{%- endfor %}
 </nav>
 <div class="footer-legal-links" style="margin:14px 0 10px; font-size:13px;">

@@ -1,5 +1,5 @@
 ---
-title: "Matt Hardy Reacts To Arrival Of Syx In TNA, Teases More Members"
+title: "Matt Hardy Reacts to Arrival of Syx in TNA, Teases More Members"
 slug: "matt-hardy-reacts-to-arrival-of-syx-in-tna-teases-more-members"
 description: "Matt Hardy recently discussed the debut of former Wyatt Sicks members Samuel Shaw and Joseph Sawyer in TNA Wrestling, following their attack on The Hardys…"
 federation: TNA

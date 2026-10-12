@@ -1,5 +1,5 @@
 ---
-title: "Mike Bailey Pulls Back Curtain On Emotional AEW Tribute To PAC"
+title: "Mike Bailey Pulls Back Curtain on Emotional AEW Tribute to PAC"
 slug: "mike-bailey-pulls-back-curtain-on-emotional-aew-tribute-to-pac"
 description: "Mike Bailey recently reflected on the emotional AEW Dynamite tribute event dedicated to the late PAC, discussing the backstage atmosphere and the touching…"
 federation: AEW

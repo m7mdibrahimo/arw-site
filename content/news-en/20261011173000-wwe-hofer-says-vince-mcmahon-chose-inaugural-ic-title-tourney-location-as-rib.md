@@ -1,5 +1,5 @@
 ---
-title: "WWE HOFer Says Vince McMahon Chose Inaugural IC Title Tourney Location As Rib"
+title: "WWE HOFer Says Vince McMahon Chose Inaugural IC Title Tourney Location as Rib"
 slug: "wwe-hofer-says-vince-mcmahon-chose-inaugural-ic-title-tourney-location-as-rib"
 description: "John 'Bradshaw' Layfield revealed on an episode of \"Something To Wrestle\" that Vince McMahon chose Rio De Janeiro as the location for the fictional 1979…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "Triple H Praises LA Knight Following WWE Money In The Bank"
+title: "Triple H Praises LA Knight Following WWE Money in the Bank"
 slug: "triple-h-praises-la-knight-following-wwe-money-in-the-bank"
 description: "Triple H spoke highly of LA Knight following his performance at WWE Money In The Bank. Knight challenged Roman Reigns for the WWE World Heavyweight Title…"
 federation: WWE

@@ -1,5 +1,5 @@
 ---
-title: "UFC Fight Night: Allen vs. Duncan Odds Courtesy Of MyBookie"
+title: "UFC Fight Night: Allen vs. Duncan Odds Courtesy of MyBookie"
 slug: "ufc-fight-night-allen-vs-duncan-odds-courtesy-of-mybookie"
 description: "UFC Fight Night: Allen vs. Duncan is set for Saturday, October 10, at the UFC APEX in Las Vegas, Nevada. The event will be broadcast on Paramount+.…"
 federation: MMA

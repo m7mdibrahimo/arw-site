@@ -1,5 +1,5 @@
 ---
-title: "Earl Hebner's Daughter Katie Hebner Training To Be A Wrestler Again"
+title: "Earl Hebner's Daughter Katie Hebner Training to Be a Wrestler Again"
 slug: "earl-hebners-daughter-katie-hebner-training-to-be-a-wrestler-again"
 description: "Katie Hebner is currently training to return to the wrestling ring. Gail Kim recently revealed on social media that Katie, who is the daughter of famous…"
 federation: TNA

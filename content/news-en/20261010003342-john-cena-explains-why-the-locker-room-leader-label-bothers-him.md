@@ -1,5 +1,5 @@
 ---
-title: "John Cena Explains Why The ‘Locker Room Leader’ Label Bothers Him"
+title: "John Cena Explains Why the ‘Locker Room Leader’ Label Bothers Him"
 slug: "john-cena-explains-why-the-locker-room-leader-label-bothers-him"
 description: "John Cena says he never viewed himself as a locker room leader during his lengthy tenure as the face of WWE. Speaking on The Sam Roberts Show, the 17-time…"
 federation: WWE

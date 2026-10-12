@@ -1,5 +1,5 @@
 ---
-title: "FKA Zelina Vega Thinks Her WWE Work Was Ahead Of Its Time"
+title: "FKA Zelina Vega Thinks Her WWE Work Was Ahead of Its Time"
 slug: "fka-zelina-vega-thinks-her-wwe-work-was-ahead-of-its-time"
 description: "Former WWE Superstar Zelina Vega, now known as Xelina, believes her character work and physical presentation in WWE were ahead of their time. Known for…"
 federation: WWE

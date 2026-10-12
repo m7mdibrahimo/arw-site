@@ -1,5 +1,5 @@
 ---
-title: "Val Venis Claims the Leftist IWC Gave Up On Nyla Rose"
+title: "Val Venis Claims the Leftist IWC Gave Up on Nyla Rose"
 slug: "val-venis-claims-the-leftist-iwc-gave-up-on-nyla-rose"
 description: "Val Venis recently returned to social media to target Nyla Rose once again, claiming that the online wrestling community has abandoned her. In a post on…"
 federation: AEW

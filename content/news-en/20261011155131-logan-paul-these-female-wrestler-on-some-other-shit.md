@@ -1,5 +1,5 @@
 ---
-title: "Logan Paul Praises WWE Women's Roster After Money In The Bank"
+title: "Logan Paul Praises WWE Women's Roster After Money in the Bank"
 slug: "logan-paul-these-female-wrestler-on-some-other-shit"
 description: "Logan Paul took to social media following WWE Money In The Bank to praise the performances of the women's roster. At the event, six competitors featured in…"
 federation: WWE

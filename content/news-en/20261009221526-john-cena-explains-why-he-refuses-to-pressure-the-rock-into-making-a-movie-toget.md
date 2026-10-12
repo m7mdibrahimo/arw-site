@@ -1,5 +1,5 @@
 ---
-title: "John Cena Explains Why He Refuses to Pressure The Rock Into Making a Movie Together"
+title: "John Cena Explains Why He Refuses to Pressure the Rock Into Making a Movie Together"
 slug: "john-cena-explains-why-he-refuses-to-pressure-the-rock-into-making-a-movie-toget"
 description: "John Cena is open to starring in a movie with The Rock, but he has no interest in pressuring Dwayne Johnson to make it happen. During an appearance on…"
 federation: WWE

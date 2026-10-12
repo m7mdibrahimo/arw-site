@@ -1,5 +1,5 @@
 ---
-title: "Drako Starx Reflects On His WWE Release"
+title: "Drako Starx Reflects on His WWE Release"
 slug: "drako-starx-reflects-on-his-wwe-release"
 description: "Drako Starx reflected on his departure from WWE a full year after his contract was terminated on October 10. Starx took to social media to share a photo of…"
 federation: WWE

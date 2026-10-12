@@ -1,5 +1,5 @@
 ---
-title: "Shayna Baszler Wins TNA Knockouts World Tag Team Titles In Debut"
+title: "Shayna Baszler Wins TNA Knockouts World Tag Team Titles in Debut"
 slug: "shayna-baszler-wins-tna-knockouts-world-tag-team-titles-in-debut"
 description: "Shayna Baszler made her TNA debut at TNA Bound for Glory 2026 alongside her former WWE stablemate Zoey Serrano, formerly known as Zoey Stark. The duo made…"
 federation: TNA

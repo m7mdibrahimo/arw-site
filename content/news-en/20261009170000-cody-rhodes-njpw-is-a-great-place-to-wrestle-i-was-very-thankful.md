@@ -1,5 +1,5 @@
 ---
-title: "Cody Rhodes: NJPW Is A Great Place To Wrestle, I Was Very Thankful"
+title: "Cody Rhodes: NJPW Is a Great Place to Wrestle, I Was Very Thankful"
 slug: "cody-rhodes-njpw-is-a-great-place-to-wrestle-i-was-very-thankful"
 description: "During a recent appearance on the Flagrant podcast, Cody Rhodes praised NJPW and discussed its top stars. When asked about Hirooki Goto, Rhodes called him…"
 federation: NJPW

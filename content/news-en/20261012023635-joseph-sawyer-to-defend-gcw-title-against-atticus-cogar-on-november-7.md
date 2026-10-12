@@ -1,5 +1,5 @@
 ---
-title: "Joseph Sawyer To Defend GCW Title Against Atticus Cogar On November 7"
+title: "Joseph Sawyer to Defend GCW Title Against Atticus Cogar on November 7"
 slug: "joseph-sawyer-to-defend-gcw-title-against-atticus-cogar-on-november-7"
 description: "Joseph Sawyer remains the GCW World Champion. During GCW Fight, promoter Brett Lauderdale suggested stripping Sawyer of the title, but Sawyer appeared on…"
 federation: INDIE

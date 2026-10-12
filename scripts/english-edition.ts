@@ -62,7 +62,7 @@ export function englishStyleRules(sourceUrl: string): string {
   return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
 - Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza".
-- Headline: Title Case, clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct, never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
+- Headline: Title Case with the small words (a, an, the, and, but, or, for, at, by, in, of, on, to, as, vs) in lowercase unless first or last (the code enforces this), clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct, never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
 - Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one.
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
@@ -148,12 +148,29 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bBound For Glory\b/g, "Bound for Glory"],
   [/\bsyX\b/g, "Syx"],
 ];
+const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
+/** One consistent Title Case: small words lowercase (first, last and after a colon stay capital); a word with its own capitals (AEW, McIntyre, iMPACT) is never touched (INCIDENTS #443) */
+export function normalizeEnglishTitle(title: string): string {
+  const words = String(title).trim().split(/\s+/);
+  return words.map((w, i) => {
+    const bare = w.replace(/^[^A-Za-z]+|[^A-Za-z.]+$/g, "");
+    if (!bare) return w;
+    const prev = words[i - 1] || "";
+    const edge = i === 0 || i === words.length - 1 || /[:\-–—]$/.test(prev);
+    const lower = bare.toLowerCase();
+    if (SMALL_WORDS.has(lower) && /^[A-Za-z.]+$/.test(bare) && (bare === lower || bare === lower[0].toUpperCase() + lower.slice(1))) {
+      const want = edge ? lower[0].toUpperCase() + lower.slice(1) : lower;
+      return w.replace(bare, want);
+    }
+    return w;
+  }).join(" ");
+}
 export function fixEnglishNames(text: string): string {
   return ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), text);
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
-  e = { ...e, title: fixEnglishNames(e.title), body: fixEnglishNames(e.body) };
+  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixEnglishNames(e.body) };
   fs.mkdirSync(dir, { recursive: true });
   let slug = englishSlug(e.title) || `story-${i.sourceId}`;
   const existing = findEnglishEdition(i.sourceId, dir);

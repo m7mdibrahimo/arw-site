@@ -1,5 +1,5 @@
 ---
-title: "Bron Breakker Vs. Trick Williams Ends In A DQ, The Vision Takes Out Money In The Bank Ladder Match Competitors"
+title: "Bron Breakker vs. Trick Williams Ends in a DQ, the Vision Takes Out Money in the Bank Ladder Match Competitors"
 slug: "bron-breakker-vs-trick-williams-ends-in-a-dq-the-vision-takes-out-money-in-the-b"
 description: "Bron Breakker and Trick Williams faced off in the main event of the October 9 episode of WWE SmackDown, which ended in a disqualification. Earlier in the…"
 federation: WWE
