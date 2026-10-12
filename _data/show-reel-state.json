@@ -3519,7 +3519,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261013000605-njpw-king-of-pro-wrestling-2026": {
     "publishedAt": 1791840619338,
