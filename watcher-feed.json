@@ -1,5 +1,15 @@
 [
   {
+    "id": 333522,
+    "link": "https://www.fightful.com/wrestling/kyle-fletcher-writes-pac-forever-on-love-lock-bridge-in-paris/",
+    "date": "2026-10-12T13:40:36",
+    "date_gmt": "2026-10-12T17:40:36",
+    "title": {
+      "rendered": "Kyle Fletcher Writes &#8216;PAC Forever&#8217; On Love Lock Bridge In Paris"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12131745/Screenshot-2026-10-12-181341.png"
+  },
+  {
     "id": 333527,
     "link": "https://www.fightful.com/wrestling/sam-hardway-holloway-announces-departure-from-wwe-id-program/",
     "date": "2026-10-12T13:24:49",
@@ -288,15 +298,5 @@
       "rendered": "Will Ospreay And Callum Newman To Challenge For IWGP Tag Titles At NJPW Power Struggle"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12043616/Screenshot-2026-10-12-at-4.32.17-AM.png"
-  },
-  {
-    "id": 333385,
-    "link": "https://www.fightful.com/wrestling/hiroshi-tanahashi-announces-tanahashi-jam-2-for-november-19/",
-    "date": "2026-10-12T04:02:55",
-    "date_gmt": "2026-10-12T08:02:55",
-    "title": {
-      "rendered": "Hiroshi Tanahashi Announces Tanahashi Jam 2 For November 19"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12040222/Screenshot-2026-10-12-at-3.57.19-AM.png"
   }
 ]
