@@ -139,3 +139,10 @@ test('english_title_name does not flag «Championship Wrestling» promotion name
   assert.ok(!codes('حيث تصارع لصالح اتحادات مثل Juggalo Championship Wrestling وغيرها').includes('english_title_name'));
   assert.ok(codes('وفاز ببطولة World Heavyweight Championship أمس').includes('english_title_name'));
 });
+
+// INCIDENTS #445: a scrubbed source left «من منصة *تقارير صحفية*» in the story.
+test('a scrubbed source name never stays as «منصة *تقارير صحفية*»', () => {
+  const out = applyCorrections('كشفت تقارير صحفية حديثة من منصة *تقارير صحفية* أن النجم وقع، وقال موقع تقارير صحفية كذلك');
+  assert.doesNotMatch(out, /(?:منصة|موقع|شبكة)\s+\*?تقارير صحفية/);
+  assert.match(out, /حديثة أن النجم وقع/);
+});
