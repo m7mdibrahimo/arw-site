@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269999/aew-all-out-2026-will-ospreay-jon-moxley-world-title-main-event/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T04:46:35.774Z"
-  },
   "https://www.ringsidenews.com/identity-woman-choked-out-marina-shafir-aew-all-out/": {
     "matchedFile": "20260927033206-مارينا-شافير-تخنق-امرأة-خلال-لقطة-السيلفي-الخاصة-بأندرادي-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012073536-لماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب.md",
     "reason": "الخبر الجديد يعيد تدوير نفس المعلومات والكواليس الموجودة في الخبر المنشور رقم [0] حول مراقبة اتحاد TNA لبن بيشوب منذ العام الماضي وموقف تومي دريمر المتحفظ من محتواه على وسائل التواصل الاجتماعي.",
     "at": "2026-10-12T07:03:52.323Z"
+  },
+  "https://www.fightful.com/wrestling/njpw-king-of-pro-wrestling-results-10-12-five-title-bouts/": {
+    "matchedFile": "20261010171221-نتائج-عرض-njpw-road-to-king-of-pro-wrestling-10-أكتوبر-2026-ظهور-مفاجئ-لويل-أوسبراي.md",
+    "reason": "الخبر الجديد يغطي نتائج عرض NJPW King of Pro-Wrestling ونزالاته، وهو نفس الحدث والنتائج المتعلقة بالعرض.",
+    "at": "2026-10-12T08:06:37.066Z"
   }
 }
