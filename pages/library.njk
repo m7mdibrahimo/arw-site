@@ -489,6 +489,12 @@ eleventyComputed:
   {% endfor %}
   {% endif %}
   </div>
+  {% if not promo %}
+  <nav class="lib-recent reveal" aria-label="أحدث الأقسام المضافة" style="margin:28px 0 8px;">
+    <h2 style="font-size:1.05rem;color:var(--gold);margin:0 0 10px;">أحدث الأقسام المضافة</h2>
+    <p style="display:flex;flex-wrap:wrap;gap:8px;margin:0;">{% for p in lib %}{% if loop.index0 < 16 %}<a href="/library/{{ p.slug }}/" style="padding:6px 12px;border:1px solid var(--border,#2a2f3a);border-radius:999px;font-size:.88rem;"><bdi>{{ p.name }}</bdi></a>{% endif %}{% endfor %}</p>
+  </nav>
+  {% endif %}
   <p class="lib-empty" id="libEmpty">{% if promo %}لا توجد أقسام مطابقة.{% else %}لا يوجد اتحاد أو عرض مطابق.{% endif %}</p>
   {% if promo %}<div class="reveal lib-back"><a href="/library/" class="lib-all-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v14"/><path d="M9 19V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v12"/><path d="m15 6.5 2.9-.8a1 1 0 0 1 1.2.7l3 11.4a1 1 0 0 1-.7 1.2l-2.9.8"/><path d="M3 19h18"/></svg><span>كل الاتحادات</span></a></div>{% endif %}
 </div></section>
