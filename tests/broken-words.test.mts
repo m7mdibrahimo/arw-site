@@ -173,3 +173,28 @@ test('mixed_script_word and name_not_in_source block publishing', async () => {
   assert.deepEqual(wrestlerNotInSource('تجنب إل هيخو ديل فيكينجو الاتهامات. وافق إل هيخو ديل فيكينجو على الدفع.', source, gl), ['El Hijo del Vikingo']);
   assert.deepEqual(wrestlerNotInSource('تجنب إل هيخو ديل فيكينجو الاتهامات. وافق إل هيخو ديل فيكينجو على الدفع.', source + ' Vikingo', gl), []);
 });
+
+test('dual forms the first list missed are caught, «تدخلا» (a noun) is not (INCIDENTS #463)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa.ts');
+  const codes = (body: string) => checkArticle('عنوان واضح لخبر عن المصارعة', body).filter(i => i.code === 'dual_form').length;
+  for (const bad of ['عاد الثنائي ليقحما نفسيهما في المنافسة', 'يتساءل الجميع هل سيرتديان ملابس متشابهة', 'خاضا تلك المواجهة في يوليو', 'وبعد مواجهتهما الثنائية في العرض', 'وأعلنتا أنهما ستواجهان خصما', 'كلاهما يريد اللقب'])
+    assert.ok(codes(bad + ' ' + 'كلمات كثيرة '.repeat(30)) > 0, bad);
+  assert.equal(codes('شهد النزال تدخلا لاحقا من شينسوكي ناكامورا ' + 'كلمات كثيرة '.repeat(30)), 0);
+});
+
+test('a glossary wrestler named once whose name is nowhere in the source is blocked (INCIDENTS #463)', async () => {
+  const { wrestlerNotInSource } = await import('../scripts/news-qa.ts');
+  const gl = { 'Yoshiki Inamura': 'يوشيكي إينامورا', 'Yuki Iino': 'يوكي إيينو', 'Manabu Soya': 'مانابو سويا' };
+  const source = 'GHC Tag Team Championship Three-Way Tag Team Match: Manabu Soya & Yuki Iino (c) vs. T.M.D.K. '.repeat(4);
+  assert.deepEqual(wrestlerNotInSource('ضد حامل اللقب فريق يوشيكي إينامورا ومانابو سويا', source, gl), ['Yoshiki Inamura']);
+  assert.deepEqual(wrestlerNotInSource('ضد حامل اللقب فريق يوكي إيينو ومانابو سويا', source, gl), []);
+});
+
+test('dual pronouns «-هما» become plural; agreeing words are left alone; no published story keeps one (INCIDENTS #463)', async () => {
+  const { dualPronounsToPlural, loadNews } = await import('../scripts/news-qa.ts');
+  assert.equal(dualPronounsToPlural('علاقتهما وبينهما ومنهما وعليهما ولديهما'), 'علاقتهم وبينهم ومنهم وعليهم ولديهم');
+  for (const keep of ['مهما كانت النتيجة', 'وهما يتنافسان', 'لأنهما', 'أنهما مرتبطان', 'كلاهما', 'لقبيهما'])
+    assert.equal(dualPronounsToPlural(keep), keep);
+  const left = loadNews().filter(n => dualPronounsToPlural(n.body) !== n.body).map(n => n.file);
+  assert.deepEqual(left, []);
+});

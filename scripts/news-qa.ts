@@ -131,7 +131,7 @@ const RULES: Rule[] = [
   { code: "mixed_script_word", severity: "error", re: /(?<![ء-ي])(?!(?:و|ب|ل|ك|ف|ال|لل|وال|بال|كال|فال|وب|ول|وبال|ولل|فب|فل|وس|س)\u0640?(?=[A-Za-z]))[ء-ي]+(?=[A-Za-z])/g, message: "حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي", fields: ["title", "body"] },
   // Noun duals the verb-dual check above does not see: «إضافة نزالين»، «مواجهتين» (INCIDENTS #438)
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:ال)?(?:نزال(?:ين|ان)|مواجهت(?:ين|ان)|لقب(?:ين|ان)|حدث(?:ين|ان)|عرض(?:ين|ان)|مباراتين|مباراتان|بطولت(?:ين|ان)|ظهور(?:ين|ان)|فريق(?:ين)|أخ(?:وين|وان)|شقيق(?:ين|ان)|طاولت(?:ين|ان)|جولت(?:ين|ان))(?![ء-ي])/g, message: "اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)", fields: ["title", "body"] },
-  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:اللذان|اللذين|اللتان|اللتين|قاما|واصلا|فازا|حققا|(?:ي|ت|سي|ست)(?:واجه|شارك|ستعد|خوض|نضم|لتق|ظهر|تنافس)ان|قدما(?=\s+(?:دعم|(?!عندما|بعدما|حينما|بينما|مثلما|كلما|ربما|حيثما|طالما)[ء-ي]+ا\s))|(?:ي|ت)(?:فوز|حتفظ|هزم|تغلب|نجح|تعاون|دخل|عود|علن|حصل|خسر|تأهل|نتصر|ستعيد|دافع|توج)ان|(?:ل)?(?:ت)?(?:احتفظ|تغلب|هزم|نجح|تعاون|توج|دخل|عاد|تعمد)(?:ا|تا)|(?:فازتا|حققتا|واصلتا)|(?:ال|ب)?بطلت(?:ين|ان)|بطلتا(?=\s)|بطلا\s+(?:العالم|الفرق|الزوجي)|حاملت(?:ي|ا)\s+(?:ال|لقب)|(?:[بلوفك]|وب|ول|فب|فل)?اتحادي(?=\s)|أجريتا|أجرتا|[ء-ي]{2,}تيهما|(?:و|ف)?(?:عرفا|كشفا|شاركا|أكدا|هزما|خسرا|دخلا|عادا|نجحا|حصلا|وصلا)(?=\s)|(?:ال)?(?:نجمان|ثنائيان|مصارعان|فريقان|خصمان|بطلان|طريقيهما)|حياتهما)(?![ء-ي])/g, message: "صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم", fields: ["title", "body"] },
+  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:اللذان|اللذين|اللتان|اللتين|قاما|واصلا|فازا|حققا|(?:ي|ت|سي|ست)(?:واجه|شارك|ستعد|خوض|نضم|لتق|ظهر|تنافس)ان|قدما(?=\s+(?:دعم|(?!عندما|بعدما|حينما|بينما|مثلما|كلما|ربما|حيثما|طالما)[ء-ي]+ا\s))|(?:ي|ت)(?:فوز|حتفظ|هزم|تغلب|نجح|تعاون|دخل|عود|علن|حصل|خسر|تأهل|نتصر|ستعيد|دافع|توج)ان|(?:ل)?(?!تدخلا)(?:ت)?(?:احتفظ|تغلب|هزم|نجح|تعاون|توج|دخل|عاد|تعمد)(?:ا|تا)|(?:فازتا|حققتا|واصلتا)|(?:ال|ب)?بطلت(?:ين|ان)|بطلتا(?=\s)|بطلا\s+(?:العالم|الفرق|الزوجي)|حاملت(?:ي|ا)\s+(?:ال|لقب)|(?:[بلوفك]|وب|ول|فب|فل)?اتحادي(?=\s)|أجريتا|أجرتا|[ء-ي]{2,}تيهما|(?:و|ف)?(?:عرفا|كشفا|شاركا|أكدا|هزما|خسرا|دخلا|عادا|نجحا|حصلا|وصلا)(?=\s)|(?:ال)?(?:نجمان|ثنائيان|مصارعان|فريقان|خصمان|بطلان|طريقيهما)|حياتهما|خاضا|ارتديا|(?:ي|س)?يرتديان|ليقحما|نفسيهما|مواجهتهما|أنهما|كلاهما|كليهما|كلتاهما|[ء-ي]{3,}تهما)(?![ء-ي])/g, message: "صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم", fields: ["title", "body"] },
   // Feminine-plural verb glued to «كن» — «يقدمكن» for «يقدمن» (INCIDENTS #422)
   { code: "fem_plural_kn", severity: "error", re: /(?<![ء-ي])[يت](?:قدم|شارك|ظهر|حقق|واجه|قدّم|عمل|لعب|فز|خسر)كن(?![ء-ي])/g, message: "فعل جمع المؤنث غلط («يقدمكن» الصح «يقدمن»)", fields: ["title", "body"] },
   { code: "missing_hamza", severity: "error", re: /(?<![\u0621-\u064A])[وف]?(?:الى|الي)(?![\u0621-\u064A])/g, message: "«الى/الي» بلا همزة — «إلى» (حرف الجر) أو «إليّ» حسب المعنى (حصل: «للوصول الي» والمقصود «إليّ»)", fields: ["title", "body"] },
@@ -641,9 +641,26 @@ export function splitGluedBlocks(text: string): string {
     .replace(/([^\n>])[ \t]+> (?=["«“])/g, "$1\n\n> ");
 }
 
+/**
+ * The dual pronoun «-هما» is never written (style guide: no dual at all): «علاقتهما» → «علاقتهم», «بينهما» → «بينهم».
+ * About a quarter of the stories carried it (INCIDENTS #463). Words whose verb or predicate must agree with the dual
+ * («أنهما ستواجهان», «وهما», «كلاهما») and dual nouns («لقبيهما») are left to the dual_form check and the editor.
+ */
+const DUAL_PRONOUN_KEEP = /^(?:[وفبلك]?(?:مهما|هما)|[وفبلك]?(?:أنهما|إنهما|لكنهما|كأنهما)|ولكنهما|كلاهما|كليهما|كلتاهما|كلتيهما|وكلاهما)$/;
+const DUAL_PRONOUN_PREP = /^[وف]?(?:عل|إل|ف|لد)يهما$/;
+export function dualPronounsToPlural(text: string): string {
+  if (!text) return text;
+  return text.replace(/(?<![ء-ي])[ء-ي]{2,}هما(?![ء-ي])/g, (w) => {
+    if (DUAL_PRONOUN_KEEP.test(w)) return w;
+    if (/يهما$/.test(w) && !DUAL_PRONOUN_PREP.test(w)) return w;
+    return w.slice(0, -1);
+  });
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   text = splitGluedBlocks(text);
+  text = dualPronounsToPlural(text);
   text = repairMixedTitles(text);
   // An instruction the writer echoed into the text: «خلال إضافة علامات التنصيص وعلامة الاستفهام كما في
   // المصدر، استرجع شيفاني…» went live (INCIDENTS #254) — the clause goes, the sentence stays
@@ -870,7 +887,10 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     for (let i = text.indexOf(ar); i !== -1 && hits < 2; i = text.indexOf(ar, i + ar.length)) {
       if (!/[ء-ي]/.test(text[i - 1] || "") && !/[ء-ي]/.test(text[i + ar.length] || "")) hits++;
     }
-    if (hits < 2) continue;
+    // One mention is enough when no word of the English name is in the source either: «يوشيكي إينامورا» stood for
+    // Yuki Iino in a NOAH story (the swap was never repeated), INCIDENTS #463
+    const anyWordInSource = words.some(w => src.includes(w.toLowerCase().slice(0, Math.max(4, w.length - 2))));
+    if (hits < 2 && !(hits === 1 && !anyWordInSource)) continue;
     found.push(en);
   }
   return found;

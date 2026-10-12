@@ -4532,3 +4532,13 @@ test('a special event description carries its full English name, not only the pr
   const w = showSeoText({ headline: 'عرض سماك داون 09.10.2026 مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE SmackDown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', isLatest: true });
   assert.match(w.description, /\(WWE SmackDown October 9, 2026\)/);
 });
+
+test('a yearly show\'s recap title carries the year once, like the show itself (INCIDENTS #463)', async () => {
+  const { createRequire } = await import('node:module');
+  const { recapSeoText } = createRequire(import.meta.url)('../lib/show-seo.cjs');
+  const r = recapSeoText({ headline: 'ملخص عرض موني ان ذا بانك 10.10.2026', title: 'WWE Money in the Bank Highlights (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', day: '10 أكتوبر 2026', description: 'ملخص عرض موني ان ذا بانك بالكامل مع جميع النزالات والأحداث.' });
+  assert.equal(r.title, 'ملخص عرض موني ان ذا بانك 2026 10.10.2026 مترجم — WWE Money in the Bank');
+  assert.ok(r.description.startsWith('شاهد ملخص عرض موني ان ذا بانك 2026 10.10.2026'));
+  const weekly = recapSeoText({ headline: 'ملخص الرو 05.10.2026', title: 'WWE Raw Highlights', programName: 'WWE Raw', eventDate: '2026-10-05', day: '5 أكتوبر 2026', description: '' });
+  assert.ok(!/2026 05\.10/.test(weekly.title));
+});

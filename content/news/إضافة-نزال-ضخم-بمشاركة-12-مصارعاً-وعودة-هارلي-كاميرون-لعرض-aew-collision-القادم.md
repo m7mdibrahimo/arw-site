@@ -30,6 +30,6 @@ layout: post-layout.njk
 * فقرات حوارية حاسمة:
 
  * ظهور وحديث مباشر من النجم كيفن نايت.
- * مواجهة كلامية أخيرة بين طرفي نهائي كأس التحدي القاري: جون موكسلي ونايجل ماكغينيس قبل صدامهما في ويمبلي.
+ * مواجهة كلامية أخيرة بين طرفي نهائي كأس التحدي القاري: جون موكسلي ونايجل ماكغينيس قبل صدامهم في ويمبلي.
 
 <https://x.com/AEW/status/2093145288793829843?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2093145288793829843%7Ctwgr%5Ef27676350200f6c0ce243fca3489801242e721ad%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2F12-man-tag-harley-كاميرون-return-added-to-8-29-aew-collision%2F>

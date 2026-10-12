@@ -17,6 +17,6 @@ layout: post-layout.njk
 
 * نهاية التكهنات: بعد أسابيع من الغموض والرسائل التحذيرية التي وجهها ناكامورا لأبطال الفرق The MFTs ملوحا بقدوم شريك غامض، ظهر الثنائي معا في مقطع فيديو رسمي خلال عرض WWE SmackDown.
 * شخصية واسم جديد: أعلن تاكاهاشي عن انطلاقته تحت الاسم المستعار "كيوكي" (Kyoki).
-* إطلاق تحالف Bakusai: أطلق الثنائي على فريقهما الجديد اسم "باكوساي" (Bakusai)، موجهين رسالة تحذيرية شديدة اللهجة ومباشرة لحاملي لقب بطولة WWE للفرق (WWE Tag Team Champions).
+* إطلاق تحالف Bakusai: أطلق الثنائي على فريقهم الجديد اسم "باكوساي" (Bakusai)، موجهين رسالة تحذيرية شديدة اللهجة ومباشرة لحاملي لقب بطولة WWE للفرق (WWE Tag Team Champions).
 
 <https://x.com/WWE/status/2090975763688280256?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090975763688280256%7Ctwgr%5E51e6d63e3028e867748e0baeaf31f2474bc93eae%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fhiromu-takahashi-makes-wwe-debut-as-kyoki-revealed-as-shinsuke-nakamuras-mystery-tag-team-partner%2F>
