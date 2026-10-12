@@ -4465,3 +4465,9 @@ test("show pages carry the program's other names on the VideoObject too (INCIDEN
   const video = layout.slice(layout.indexOf('"@type": "VideoObject"'));
   assert.match(video.slice(0, 900), /"alternateName":.*ldAbout\.aliases/);
 });
+
+test('program library description carries «<اسم> <السنة> مترجم» (INCIDENTS #447)', () => {
+  const page = fs.readFileSync('pages/library-program.njk', 'utf-8');
+  assert.match(page, /pageDesc: "[^"]*arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /addFilter\("yearOf"/);
+});

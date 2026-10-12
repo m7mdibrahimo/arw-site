@@ -639,6 +639,7 @@ module.exports = function(eleventyConfig) {
     return String(dateObj);
   };
   eleventyConfig.addFilter("date", formatDate);
+  eleventyConfig.addFilter("yearOf", function(d) { const t = new Date(d); return isNaN(t) ? "" : String(t.getUTCFullYear()); });
   eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
   eleventyConfig.addNunjucksFilter("date", formatDate);
 
