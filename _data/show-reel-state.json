@@ -3499,7 +3499,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو فايت كلوب ذا ارت اوف وور جيمز الليلة الاولى 10.10.2026 مترجم",
-    "lastAttempt": 1791829045833,
+    "lastAttempt": 1791829924475,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -3516,9 +3516,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو فايت كلوب الليلة الثانية 11.10.2026 مترجم",
-    "lastAttempt": 1791825493978,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791829925617,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
