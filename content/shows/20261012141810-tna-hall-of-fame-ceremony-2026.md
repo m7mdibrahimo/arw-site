@@ -4,7 +4,7 @@ federation: TNA
 title: TNA Hall of Fame Ceremony (2026)
 headline: عرض تي ان ايه هول اوف فيم سيرموني 11.10.2026 مترجم
 card_title: name
-program_name: TNA iMPACT
+program_name: TNA Hall of Fame Ceremony
 description: عرض تي ان ايه هول اوف فيم سيرموني مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-11
 date: 2026-10-12T14:13:12.000+03:00
