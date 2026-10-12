@@ -3483,12 +3483,16 @@
     "publishedAt": 1791822789733,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 11.10.2026 مترجم",
-    "lastAttempt": 1791822806396,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1791826362218,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
