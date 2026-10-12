@@ -305,7 +305,7 @@ export async function cfAnalytics(token: string, zoneId: string, days: number) {
   const since24 = new Date(now.getTime() - 24 * 3600_000);
   const main = await cfGraphql(token, `query($zone: String!, $since: Date!, $until: Date!, $s24: Time!, $u24: Time!) {
     viewer { zones(filter: { zoneTag: $zone }) {
-      days: httpRequests1dGroups(limit: 40, filter: { date_geq: $since, date_leq: $until }, orderBy: [date_ASC]) {
+      days: httpRequests1dGroups(limit: 400, filter: { date_geq: $since, date_leq: $until }, orderBy: [date_ASC]) {
         dimensions { date } sum { requests pageViews countryMap { clientCountryName requests } } uniq { uniques } }
       hours: httpRequests1hGroups(limit: 30, filter: { datetime_geq: $s24, datetime_lt: $u24 }, orderBy: [datetime_ASC]) {
         dimensions { datetime } sum { pageViews } uniq { uniques } }
@@ -570,11 +570,28 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     await env.PUSH_KV.delete(ANALYTICS_KEY); await env.PUSH_KV.delete(ANALYTICS_CACHE_KEY);
     return json({ success: true });
   }
+  // Cloudflare's own numbers (every request, bots and prefetches included), shown under the real ones in the layout
+  // the owner knows, with all their history (owner 2026-10-12: «عايز اشوف الارقام كلها قديم وجديد», INCIDENTS #459)
+  if (route === 'analytics/cloudflare' && request.method === 'GET') {
+    if (!can(me, 'stats')) return deny();
+    const cfg = (await env.PUSH_KV.get(ANALYTICS_KEY, 'json')) as { token: string; zoneId: string } | null;
+    if (!cfg) return json({ success: true, configured: false, canConfigure: ownerOnly });
+    const cached = (await env.PUSH_KV.get(ANALYTICS_CACHE_KEY, 'json')) as any;
+    if (cached && Date.now() - cached.at < 2 * 60_000) return json({ success: true, configured: true, ...cached.data });
+    try {
+      const data = await cfAnalytics(cfg.token, cfg.zoneId, 365) // the whole history Cloudflare keeps (a year at most);
+      await env.PUSH_KV.put(ANALYTICS_CACHE_KEY, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
+      return json({ success: true, configured: true, ...data });
+    } catch (e: any) {
+      if (cached) return json({ success: true, configured: true, stale: true, ...cached.data });
+      return json({ success: false, configured: true, error: `تعذر جلب أرقام كلاودفلير: ${e.message}` }, 502);
+    }
+  }
   // Each page's real views since the counter has records, for the lists (owner 2026-10-12, INCIDENTS #457)
   if (route === 'analytics/views' && request.method === 'GET') {
     if (!env.ANALYTICS) return json({ success: true, since: null, views: {} });
     const cached = (await env.PUSH_KV.get('studio:views:cache', 'json')) as any;
-    if (cached && Date.now() - cached.at < 5 * 60_000) return json({ success: true, ...cached.data });
+    if (cached && Date.now() - cached.at < 60_000) return json({ success: true, ...cached.data });
     const data = await pageTotals(env);
     await env.PUSH_KV.put('studio:views:cache', JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
     return json({ success: true, ...data });
@@ -584,9 +601,9 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     // People only, from the site's own counter (INCIDENTS #457); Cloudflare's zone numbers only where it doesn't exist
     if (env.ANALYTICS) {
       const cachedSite = (await env.PUSH_KV.get('studio:analytics:site', 'json')) as any;
-      if (cachedSite && Date.now() - cachedSite.at < 5 * 60_000) return json({ success: true, configured: true, ...cachedSite.data });
+      if (cachedSite && Date.now() - cachedSite.at < 60_000) return json({ success: true, configured: true, ...cachedSite.data });
       try {
-        const data = await siteAnalytics(env, 30);
+        const data = await siteAnalytics(env, 365);
         await env.PUSH_KV.put('studio:analytics:site', JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
         return json({ success: true, configured: true, ...data });
       } catch (e: any) {

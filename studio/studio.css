@@ -708,3 +708,12 @@ html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(roo
 html.theme-vt::view-transition-old(root) { animation: none; }
 html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 @keyframes theme-vt-in { from { opacity: 0; } }
+
+/* the real numbers and Cloudflare's, each under its own heading (INCIDENTS #458) */
+#a-cf { margin-top: 34px; }
+.a-board-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; }
+.a-board-head h2 { font-size: 20px; font-weight: 800; margin: 0; }
+.a-board-head .pill { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); }
+.a-board-head.is-cf .pill { background: var(--cream-2); color: var(--muted); }
+.a-board-head small { flex-basis: 100%; font-size: 12.5px; }
+.a-pages { margin-top: 18px; }
