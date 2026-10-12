@@ -403,7 +403,7 @@ export function tonightInTitle(title: string, now = Date.now()): string {
   const m = Number(us.find(p => p.type === "month")?.value) - 1, d = Number(us.find(p => p.type === "day")?.value);
   const re = new RegExp(`\\s*(?:يوم|ليلة|بتاريخ)?\\s*(?:(?:الأحد|الاثنين|الإثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)\\s+)?\\(?(\\d{1,2})\\s+(${months.join("|")})(?:\\s+\\d{4})?\\)?`, "g");
   // «WWE RAW ال 12 أكتوبر» (the date came after a stray «ال») must not become «ال الليلة» (INCIDENTS #466)
-  return title.replace(re, (all, day, month) => (+day === d && months.indexOf(month) === m ? " الليلة" : all)).replace(/(^|\s)ال\s+الليلة/g, "$1الليلة").replace(/\s{2,}/g, " ").trim();
+  return title.replace(re, (all, day, month, offset: number, whole: string) => (+day === d && months.indexOf(month) === m && !/(الأسبوع|الشهر|اليوم)\s*$/.test(whole.slice(0, offset)) ? " الليلة" : all)).replace(/(^|\s)ال\s+الليلة/g, "$1الليلة").replace(/\s{2,}/g, " ").trim();
 }
 
 /**

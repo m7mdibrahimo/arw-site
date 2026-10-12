@@ -206,3 +206,10 @@ test('«ال الليلة» never comes out of tonightInTitle and «ثمنية»
   assert.equal(tonightInTitle('الكشف عن عرض WWE RAW يوم 12 أكتوبر', us), 'الكشف عن عرض WWE RAW الليلة');
   assert.ok(!/ثمنية/.test(applyCorrections('رقم مئة وثمنية وثلاثين رطلا')));
 });
+
+test('a week/month date is not turned into «الليلة» (INCIDENTS #467)', async () => {
+  const { tonightInTitle } = await import('../scripts/news-qa');
+  const us = Date.parse('2026-10-12T23:00:00Z');
+  assert.equal(tonightInTitle('أبرز الفائزين والخاسرين لهذا الأسبوع 12 أكتوبر 2026', us), 'أبرز الفائزين والخاسرين لهذا الأسبوع 12 أكتوبر 2026');
+  assert.equal(tonightInTitle('الكشف عن خطط عرض WWE RAW يوم 12 أكتوبر', us), 'الكشف عن خطط عرض WWE RAW الليلة');
+});
