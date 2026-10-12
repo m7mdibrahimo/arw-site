@@ -4510,3 +4510,17 @@ test('a live page never redirects to a missing one, every video has its address,
   const wf = fs.readFileSync('.github/workflows/site-branch.yml', 'utf-8');
   assert.equal((wf.match(/api\(\) \{ curl -fsS --retry 4 --retry-delay 3 --retry-all-errors /g) || []).length, 2);
 });
+
+test('yearly event title carries its year once (round 2026-10-12: «عرض موني ان ذا بانك 2026»)', async () => {
+  const { showSeoText } = await import('../lib/show-seo.cjs');
+  const r = showSeoText({ headline: 'عرض موني ان ذا بانك 10.10.2026 مترجم', title: 'WWE Money in the Bank (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', day: '10 أكتوبر 2026', isLatest: true });
+  assert.match(r.title, /^عرض موني ان ذا بانك 2026 الأخير 10\.10\.2026 كامل مترجم/);
+  const w = showSeoText({ headline: 'عرض سماك داون 09.10.2026 مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', isLatest: true });
+  assert.doesNotMatch(w.title, /سماك داون 2026/);
+});
+
+test('doubled federation word in program_name does not reach the title («TNA TNA Bound For Glory»)', async () => {
+  const { showSeoText } = await import('../lib/show-seo.cjs');
+  const r = showSeoText({ headline: 'عرض تي ان ايه باوند فور غلوري 11.10.2026 مترجم', title: 'TNA Bound For Glory (2026)', programName: 'TNA TNA Bound For Glory', eventDate: '2026-10-11', day: '11 أكتوبر 2026', isLatest: true });
+  assert.doesNotMatch(r.title + r.description, /TNA TNA/);
+});
