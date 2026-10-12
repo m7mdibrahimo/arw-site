@@ -1,5 +1,15 @@
 [
   {
+    "id": 333400,
+    "link": "https://www.fightful.com/?p=333400",
+    "date": "2026-10-12T15:30:00",
+    "date_gmt": "2026-10-12T19:30:00",
+    "title": {
+      "rendered": "GCW Fight Club Night Two Results (10/11)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12050242/image-1.jpeg.webp?v=20261012090314"
+  },
+  {
     "id": 333545,
     "link": "https://www.fightful.com/wrestling/drew-mcintyre-cast-in-disney-animated-movie-hexed/",
     "date": "2026-10-12T15:19:52",
@@ -288,15 +298,5 @@
       "rendered": "Laynie Luck Addresses WWE ID Deal Not Being Renewed: &#8220;I Feel Like I Got Everything I Possibly Could Have Out Of That Program&#8221;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12034624/maxresdefault-69.jpg"
-  },
-  {
-    "id": 333317,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-12/",
-    "date": "2026-10-12T08:00:00",
-    "date_gmt": "2026-10-12T12:00:00",
-    "title": {
-      "rendered": "WWE Raw Preview, Start Time, How To Watch, Location (10/12)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
   }
 ]
