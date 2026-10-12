@@ -11,7 +11,7 @@ test('known broken words are corrected automatically', () => {
 
 test('broken_word is a publish-blocking code in the Fightful pipeline', () => {
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
-  assert.match(src, /"broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits"\]\.includes/);
+  assert.match(src, /"broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "mixed_script_word"\]\.includes/);
   const issues = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'تفادى محاولة حركة مونس ault من ريد ' + 'كلام '.repeat(80));
   assert.ok(issues.some(i => i.code === 'broken_word'));
 });
@@ -159,4 +159,17 @@ test('number word followed by digits blocks publishing', () => {
   const body = 'أنفقت أكثر من أحد عشر 1000 دولار على الأحذية. ' + 'كلام '.repeat(80);
   assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', body).some(i => i.code === 'number_word_digits'));
   assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'دفع 2400 دولار وفاز في 3 نزالات ' + 'كلام '.repeat(80)).some(i => i.code === 'number_word_digits'));
+});
+
+// INCIDENTS #461: «شingo تاكاغي» and a story that named El Hijo del Vikingo for what the source says about El Hijo de Fishman.
+test('mixed_script_word and name_not_in_source block publishing', async () => {
+  const { wrestlerNotInSource, checkArticle } = await import('../scripts/news-qa.ts');
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(src, /name_not_in_source/);
+  assert.match(src, /"mixed_script_word", "name_not_in_source"\]\.includes/);
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'بدأ العرض بنزال فاز فيه شingo تاكاغي ودايكي ' + 'كلام '.repeat(80)).some(i => i.code === 'mixed_script_word'));
+  const gl = { 'El Hijo del Vikingo': 'إل هيخو ديل فيكينجو' };
+  const source = 'El Hijo de Fishman has reached a financial restitution agreement with the family of late referee Gerardo Pineda. '.repeat(3);
+  assert.deepEqual(wrestlerNotInSource('تجنب إل هيخو ديل فيكينجو الاتهامات. وافق إل هيخو ديل فيكينجو على الدفع.', source, gl), ['El Hijo del Vikingo']);
+  assert.deepEqual(wrestlerNotInSource('تجنب إل هيخو ديل فيكينجو الاتهامات. وافق إل هيخو ديل فيكينجو على الدفع.', source + ' Vikingo', gl), []);
 });

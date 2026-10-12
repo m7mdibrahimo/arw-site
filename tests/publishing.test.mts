@@ -4524,3 +4524,11 @@ test('doubled federation word in program_name does not reach the title («TNA TN
   const r = showSeoText({ headline: 'عرض تي ان ايه باوند فور غلوري 11.10.2026 مترجم', title: 'TNA Bound For Glory (2026)', programName: 'TNA TNA Bound For Glory', eventDate: '2026-10-11', day: '11 أكتوبر 2026', isLatest: true });
   assert.doesNotMatch(r.title + r.description, /TNA TNA/);
 });
+
+test('a special event description carries its full English name, not only the program («GCW»)', async () => {
+  const { showSeoText } = await import('../lib/show-seo.cjs');
+  const r = showSeoText({ headline: 'عرض جي سي دبليو فايت كلوب ذا ارت اوف وور جيمز الليلة الاولى 10.10.2026 مترجم', title: 'GCW Fight Club The Art Of War Games Night One (2026)', programName: 'GCW', eventDate: '2026-10-10', day: '10 أكتوبر 2026', isLatest: false });
+  assert.match(r.description, /GCW Fight Club The Art Of War Games Night One October 10, 2026/);
+  const w = showSeoText({ headline: 'عرض سماك داون 09.10.2026 مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE SmackDown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', isLatest: true });
+  assert.match(w.description, /\(WWE SmackDown October 9, 2026\)/);
+});

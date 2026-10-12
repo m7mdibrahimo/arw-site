@@ -841,3 +841,34 @@ async function cli() {
   if (report.articles.some(a => a.issues.some(i => i.severity === "error")) || report.duplicates.length) process.exitCode = 1;
 }
 if (require.main === module) cli();
+
+/**
+ * A glossary wrestler the Arabic body talks about (twice or more) while the source never names him:
+ * the story about El Hijo de Fishman said «إل هيخو ديل فيكينغو» all through, so a living wrestler was
+ * named in a death (INCIDENTS #461). Returns the English names to block on. The name's last word must be
+ * missing from the source, so nicknames and partial names don't trip it.
+ */
+export function wrestlerNotInSource(body: string, source: string, glossary: Record<string, string>): string[] {
+  const text = String(body || "").replace(/https?:\/\/\S+/g, " ");
+  const src = String(source || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  if (src.length < 200) return [];
+  const found: string[] = [];
+  // Aliases share one Arabic name («Stephanie McHare» and «Stephanie Vaquer»): any alias in the source clears it.
+  const named = new Set<string>();
+  for (const [en, ar] of Object.entries(glossary)) {
+    const w = en.split(/\s+/).filter(x => /^[A-Za-z]{4,}$/.test(x)).pop();
+    if (w && src.includes(w.toLowerCase().slice(0, Math.max(4, w.length - 2)))) named.add(ar);
+  }
+  for (const [en, ar] of Object.entries(glossary)) {
+    if (named.has(ar)) continue;
+    const words = en.split(/\s+/).filter(w => /^[A-Za-z]{4,}$/.test(w));
+    if (words.length < 2 || ar.length < 8 || !/^[؀-ۿ ]+$/.test(ar)) continue;
+    let hits = 0;
+    for (let i = text.indexOf(ar); i !== -1 && hits < 2; i = text.indexOf(ar, i + ar.length)) {
+      if (!/[ء-ي]/.test(text[i - 1] || "") && !/[ء-ي]/.test(text[i + ar.length] || "")) hits++;
+    }
+    if (hits < 2) continue;
+    found.push(en);
+  }
+  return found;
+}
