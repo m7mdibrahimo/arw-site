@@ -123,3 +123,12 @@ test('INCIDENTS #440: Sawyer spelling, syX and more dual nouns', () => {
   assert.ok(codes('عبر الطاولتين المخصصتين.').includes('dual_noun'));
   assert.ok(!codes('عبر الطاولات المخصصة لهم.').includes('dual_noun'));
 });
+
+// INCIDENTS #442: «سايرز» (Sawyer as a plural) and dual verbs «عرفا / كشفا» reached the site.
+test('INCIDENTS #442: «سايرز» is corrected and dual verbs are blocked', () => {
+  assert.match(applyCorrections('سبق له العمل مع سايرز وشو'), /ساير وشو/);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('الذين عرفا سابقا باسم آخر').includes('dual_form'));
+  assert.ok(codes('حيث كشفا عن نفسيهما في العرض').includes('dual_form'));
+  assert.ok(!codes('وصل الخبر الساعة الثانية ظهرا بالتوقيت المحلي').includes('dual_form'));
+});
