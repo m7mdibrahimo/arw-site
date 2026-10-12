@@ -198,3 +198,11 @@ test('dual pronouns «-هما» become plural; agreeing words are left alone; no
   const left = loadNews().filter(n => dualPronounsToPlural(n.body) !== n.body).map(n => n.file);
   assert.deepEqual(left, []);
 });
+
+test('«ال الليلة» never comes out of tonightInTitle and «ثمنية» is corrected (INCIDENTS #466)', async () => {
+  const { tonightInTitle, applyCorrections } = await import('../scripts/news-qa');
+  const us = new Date('2026-10-12T20:00:00-04:00').getTime();
+  assert.equal(tonightInTitle('بينتا يفتتح عرض WWE RAW ال 12 أكتوبر وفقا للتقارير', us), 'بينتا يفتتح عرض WWE RAW الليلة وفقا للتقارير');
+  assert.equal(tonightInTitle('الكشف عن عرض WWE RAW يوم 12 أكتوبر', us), 'الكشف عن عرض WWE RAW الليلة');
+  assert.ok(!/ثمنية/.test(applyCorrections('رقم مئة وثمنية وثلاثين رطلا')));
+});

@@ -4463,7 +4463,8 @@ test('show description says «موعد العرض» and MITB has alternate spell
 test("show pages carry the program's other names on the VideoObject too (INCIDENTS #446)", () => {
   const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
   const video = layout.slice(layout.indexOf('"@type": "VideoObject"'));
-  assert.match(video.slice(0, 900), /"alternateName":.*ldAbout\.aliases/);
+  assert.match(video.slice(0, 1800), /ldAbout\.aliases/);
+  assert.match(video.slice(0, 1800), /"alternateName":.*ldNames/);
 });
 
 test('program library description carries «<اسم> <السنة> مترجم» (INCIDENTS #447)', () => {
@@ -4541,4 +4542,17 @@ test('a yearly show\'s recap title carries the year once, like the show itself (
   assert.ok(r.description.startsWith('شاهد ملخص عرض موني ان ذا بانك 2026 10.10.2026'));
   const weekly = recapSeoText({ headline: 'ملخص الرو 05.10.2026', title: 'WWE Raw Highlights', programName: 'WWE Raw', eventDate: '2026-10-05', day: '5 أكتوبر 2026', description: '' });
   assert.ok(!/2026 05\.10/.test(weekly.title));
+});
+
+test('episode date spellings and BroadcastEvent are in the VideoObject only (INCIDENTS #466)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = showNameForms({ headline: 'عرض الرو مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05' });
+  assert.ok(forms.includes('عرض الرو 5/10/2026'));
+  assert.ok(forms.includes('عرض الرو 5 أكتوبر 2026'));
+  assert.ok(forms.includes('WWE RAW October 5 2026'));
+  assert.ok(forms.includes('WWE RAW 10/5/2026'));
+  assert.deepEqual(showNameForms({ headline: 'x', title: 'y', programName: 'z', eventDate: '' }), []);
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /"publication": \{ "@type": "BroadcastEvent"[^\n]*"isLiveBroadcast": false/);
+  assert.match(layout, /showNameForms\(headline, title, program_name, event_date\)/);
 });

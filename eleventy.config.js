@@ -1423,8 +1423,8 @@ module.exports = function(eleventyConfig) {
           : "عروض " + arName + " مترجمة";
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
-          "wwe-raw": ["رو", "الرو", "راو", "عرض رو", "الرو الاخير", "الرو مترجم", "WWE Raw", "WWE RAW مترجم", "Monday Night Raw"],
-          "wwe-smackdown": ["سماك داون", "سماكداون", "سماك دون", "سمك داون", "سماك دوان", "سماك داون الأخير", "عرض سماك داون", "عرض سماك داون مترجم", "WWE SmackDown", "Friday Night SmackDown"],
+          "wwe-raw": ["دبليو دبليو إي راو", "دبليو دبليو اي رو", "رو", "الرو", "راو", "عرض رو", "الرو الاخير", "الرو مترجم", "WWE Raw", "WWE RAW مترجم", "Monday Night Raw"],
+          "wwe-smackdown": ["دبليو دبليو إي سماك داون", "سماك داون", "سماكداون", "سماك دون", "سمك داون", "سماك دوان", "سماك داون الأخير", "عرض سماك داون", "عرض سماك داون مترجم", "WWE SmackDown", "Friday Night SmackDown"],
           "wwe-nxt": ["إن إكس تي", "ان اكس تي", "ان إكس تي", "إن اكس تي", "اكس تي", "اكس ان اكس", "اكس ان اكس اكس", "اكس ان اكس تي", "اكس اكس ان اكس", "ان اكس", "ان اكس تي مترجم", "ان اكس تي الاخير", "NXT مترجم", "NXT", "WWE NXT"],
           "aew-dynamite": ["ديناميت", "دايناميت", "داينامايت", "عرض ديناميت", "AEW Dynamite", "AEW مترجم", "ايه اي دبليو", "ايه اي دبليو ديناميت"],
           "aew-collision": ["كوليجن", "كوليجين", "كولجن", "كوليشن", "AEW Collision"],
@@ -1668,6 +1668,11 @@ module.exports = function(eleventyConfig) {
     const aliases = owner && owner.aliases ? owner.aliases : [];
     // The dotted date people search with («عرض الرو 05.10.2026 مترجم») joins the title (INCIDENTS #296).
     return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases });
+  });
+
+  // The episode's own date spellings for the VideoObject alternateName (INCIDENTS #466)
+  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate) {
+    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate });
   });
 
   eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description) {

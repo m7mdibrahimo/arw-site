@@ -402,7 +402,8 @@ export function tonightInTitle(title: string, now = Date.now()): string {
   const us = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric" }).formatToParts(new Date(now));
   const m = Number(us.find(p => p.type === "month")?.value) - 1, d = Number(us.find(p => p.type === "day")?.value);
   const re = new RegExp(`\\s*(?:يوم|ليلة|بتاريخ)?\\s*(?:(?:الأحد|الاثنين|الإثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)\\s+)?\\(?(\\d{1,2})\\s+(${months.join("|")})(?:\\s+\\d{4})?\\)?`, "g");
-  return title.replace(re, (all, day, month) => (+day === d && months.indexOf(month) === m ? " الليلة" : all)).replace(/\s{2,}/g, " ").trim();
+  // «WWE RAW ال 12 أكتوبر» (the date came after a stray «ال») must not become «ال الليلة» (INCIDENTS #466)
+  return title.replace(re, (all, day, month) => (+day === d && months.indexOf(month) === m ? " الليلة" : all)).replace(/(^|\s)ال\s+الليلة/g, "$1الليلة").replace(/\s{2,}/g, " ").trim();
 }
 
 /**
