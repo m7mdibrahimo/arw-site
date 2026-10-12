@@ -2925,7 +2925,7 @@
     "kind": "show",
     "slug": "20261012195604-gcw-fight-club-the-art-of-war-",
     "image": "/content/images/1q6q9a0a17fwktup.jpg",
-    "renderedAt": 1791824362188
+    "renderedAt": 1791824765669
   },
   {
     "videoUrl": "/videos/reel-20261009183813-roh-on-honorclub-08-10-2026.mp4",
@@ -2937,7 +2937,7 @@
     "kind": "show",
     "slug": "20261009183813-roh-on-honorclub-08-10-2026",
     "image": "/content/images/6rldaw2xhlb08moq.jpg",
-    "renderedAt": 1791824461723
+    "renderedAt": 1791824860948
   },
   {
     "videoUrl": "/videos/reel-20261009184507-tna-impact-08-10-2026.mp4",
@@ -2949,6 +2949,18 @@
     "kind": "show",
     "slug": "20261009184507-tna-impact-08-10-2026",
     "image": "/content/images/dccsb8hggkp8jkhn.jpg",
-    "renderedAt": 1791824559812
+    "renderedAt": 1791824958381
+  },
+  {
+    "videoUrl": "/videos/reel-20261012195813-gcw-fight-club-night-two-2026.mp4",
+    "filename": "reel-20261012195813-gcw-fight-club-night-two-2026.mp4",
+    "title": "عرض جي سي دبليو فايت كلوب الليلة الثانية 11.10.2026 مترجم",
+    "secondaryTitle": "GCW Fight Club Night Two (2026)",
+    "description": "عرض جي سي دبليو فايت كلوب الليلة الثانية مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261012195813-gcw-fight-club-night-two-2026",
+    "kind": "show",
+    "slug": "20261012195813-gcw-fight-club-night-two-2026",
+    "image": "/content/images/j78evg0gkex6ooxz.jpg",
+    "renderedAt": 1791825051996
   }
 ]
