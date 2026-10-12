@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-worlds-collide-spoiler-results-september-30-2026/": {
-    "matchedFile": "20260927064116-نتائج-عرض-wwe-x-aaa-worlds-collide-26-سبتمبر-2026-مواجهات-كبرى-بقيادة-سي-ام-بانك-وري-ميستيريو-ودومينيك-ميستيريو.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج عرض WWE Worlds Collide (26-27 سبتمبر 2026) والتي تم نشرها بالفعل في الخبر رقم 0 بنفس التفاصيل والنتائج.",
-    "at": "2026-09-27T03:51:37.724Z"
-  },
   "https://www.wrestlinginc.com/2269980/aew-all-out-2026-young-bucks-ladder-match-four-time-tag-team-champions/": {
     "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012023417-إريك-ريدبيرد-يظهر-لأول-مرة-في-عرض-tna-bound-for-glory-ويساعد-فريق-syx-على-هزيمة-ذا-هارديز.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (فوز فريق syX على ذا هارديز بتدخل إريك ريدبيرد في عرض TNA Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-11T23:48:21.200Z"
+  },
+  "https://www.fightful.com/wrestling/leon-slater-becomes-tna-world-champion-at-bound-for-glory-2026/": {
+    "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (فوز ليون سلاتر بلقب TNA العالمي في عرض Bound for Glory 2026) الذي تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-10-12T00:18:49.562Z"
   }
 }
