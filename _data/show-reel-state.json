@@ -3491,5 +3491,37 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261012195604-gcw-fight-club-the-art-of-war-games-night-one-2026": {
+    "publishedAt": 1791825441002,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو فايت كلوب ذا ارت اوف وور جيمز الليلة الاولى 10.10.2026 مترجم",
+    "lastAttempt": 1791825458194,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261012195813-gcw-fight-club-night-two-2026": {
+    "publishedAt": 1791825483445,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو فايت كلوب الليلة الثانية 11.10.2026 مترجم",
+    "lastAttempt": 1791825493978,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
