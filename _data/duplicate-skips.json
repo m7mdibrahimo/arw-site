@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269980/aew-all-out-2026-young-bucks-ladder-match-four-time-tag-team-champions/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T04:06:11.468Z"
-  },
   "https://www.fightful.com/mma/raoni-barcelos-is-fine-after-scary-stoppage-at-ufc-fight-night/": {
     "matchedFile": "20260927054433-نتائج-عرض-ufc-fight-night-راؤول-روزاس-جونيور-ضد-راوني-بارسيلوس-26-سبتمبر-2026.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (فوز ليون سلاتر بلقب TNA العالمي في عرض Bound for Glory 2026) الذي تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-12T00:18:49.562Z"
+  },
+  "https://www.wrestlinginc.com/2283341/leon-slater-wins-tna-world-title-bound-glory-main-event/": {
+    "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
+    "reason": "الخبر الجديد يعبر عن نفس الحدث تماماً (فوز ليون سلاتر ببطولة العالم لـ TNA على حساب نيك نيميث في عرض Bound for Glory) وهو مغطى بالكامل في الخبر المنشور.",
+    "at": "2026-10-12T00:28:39.498Z"
   }
 }

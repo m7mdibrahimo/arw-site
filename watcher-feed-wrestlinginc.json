@@ -1,5 +1,15 @@
 [
   {
+    "id": 1180083749,
+    "link": "https://www.wrestlinginc.com/2283341/leon-slater-wins-tna-world-title-bound-glory-main-event/",
+    "date": "Mon, 12 Oct 2026 00:25:39 +0000",
+    "date_gmt": "2026-10-12T00:25:39.000Z",
+    "title": {
+      "rendered": "Leon Slater Wins TNA World Title In Bound For Glory Main Event"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/leon-slater-wins-tna-world-title-in-bound-for-glory-main-event/l-intro-1791764680.jpg"
+  },
+  {
     "id": 2831167814,
     "link": "https://www.wrestlinginc.com/2283337/fka-erik-rowan-surprise-aid-syx-tna-bound-glory-2026/",
     "date": "Sun, 11 Oct 2026 23:49:01 +0000",
@@ -117,7 +127,7 @@
     "title": {
       "rendered": "TNA Bound For Glory 2026 Results W/ Live Updates"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-bound-for-glory-2026-results-w-live-updates/l-intro-1791747690.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-bound-for-glory-2026-results/l-intro-1791764614.jpg"
   },
   {
     "id": 2067982145,
@@ -188,15 +198,5 @@
       "rendered": "AEW's Don Callis Explains What He Looks For In Faction Recruits"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-don-callis-explains-what-he-looks-for-in-faction-recruits/l-intro-1791471104.jpg"
-  },
-  {
-    "id": 4745158523,
-    "link": "https://www.wrestlinginc.com/2281351/wwe-legend-john-cena-fear-heights/",
-    "date": "Sun, 11 Oct 2026 16:30:00 +0000",
-    "date_gmt": "2026-10-11T16:30:00.000Z",
-    "title": {
-      "rendered": "WWE Legend John Cena Explains Fear Of Heights"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-legend-john-cena-explains-fear-of-heights/l-intro-1791477211.jpg"
   }
 ]
