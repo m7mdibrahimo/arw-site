@@ -1431,6 +1431,7 @@ module.exports = function(eleventyConfig) {
           "wwe-main-event": ["مين إيفنت", "مين ايفنت", "WWE Main Event"],
           "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve"],
+          "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
         };
         return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({

@@ -132,3 +132,10 @@ test('INCIDENTS #442: «سايرز» is corrected and dual verbs are blocked', (
   assert.ok(codes('حيث كشفا عن نفسيهما في العرض').includes('dual_form'));
   assert.ok(!codes('وصل الخبر الساعة الثانية ظهرا بالتوقيت المحلي').includes('dual_form'));
 });
+
+// Round 2026-10-12: «Juggalo Championship Wrestling» is a promotion name, not a title.
+test('english_title_name does not flag «Championship Wrestling» promotion names', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(!codes('حيث تصارع لصالح اتحادات مثل Juggalo Championship Wrestling وغيرها').includes('english_title_name'));
+  assert.ok(codes('وفاز ببطولة World Heavyweight Championship أمس').includes('english_title_name'));
+});

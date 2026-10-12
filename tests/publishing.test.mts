@@ -3309,7 +3309,7 @@ test('a show page title carries the dotted date people search with, only in the 
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
   assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 كامل مترجم — WWE RAW');
-  assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل وبجودة عالية، بتاريخ 5 أكتوبر 2026 (WWE RAW October 5, 2026)، مع كل النزالات وروابط المشاهدة والتحميل.');
+  assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل وبجودة عالية، موعد العرض 5 أكتوبر 2026 (WWE RAW October 5, 2026)، مع كل النزالات وروابط المشاهدة والتحميل.');
   // the program's other spellings stay in the structured data, never as a list in the description (INCIDENTS #428)
   assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا|راو/);
   // one date in the title, short enough for Google to show whole (INCIDENTS #428)
@@ -4449,4 +4449,13 @@ test("English headlines get one consistent Title Case (INCIDENTS #443)", async (
   assert.equal(normalizeEnglishTitle("Chad Gable Comments On New Project He's Working On"), "Chad Gable Comments on New Project He's Working On");
   assert.equal(normalizeEnglishTitle("Tessa Blanchard Set To Debut On November 7th"), "Tessa Blanchard Set to Debut on November 7th");
   assert.equal(normalizeEnglishTitle("Hijo de Fishman Detained"), "Hijo de Fishman Detained");
+});
+
+// Round 2026-10-12: «موعد عرض موني ان ذا بانك 2026» — the show description carries «موعد العرض», and the yearly event has its spellings.
+test('show description says «موعد العرض» and MITB has alternate spellings', async () => {
+  const { showSeoText } = await import('../lib/show-seo.cjs');
+  const r = showSeoText({ headline: 'عرض موني ان ذا بانك 10.10.2026 مترجم', title: 'WWE Money in the Bank 2026', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', day: '10 أكتوبر 2026', isLatest: true });
+  assert.match(r.description, /موعد العرض 10 أكتوبر 2026/);
+  const cfg = (await import('node:fs')).readFileSync(new URL('../eleventy.config.js', import.meta.url), 'utf8');
+  assert.match(cfg, /"wwe-money-in-the-bank": \[[^\]]*MITB/);
 });
