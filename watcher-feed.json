@@ -1,5 +1,15 @@
 [
   {
+    "id": 333503,
+    "link": "https://www.fightful.com/wrestling/cody-rhodes-cozy-rhodes-is-the-internal-name-that-wwe-has-for-when-i-am-not-in-a-suit/",
+    "date": "2026-10-12T11:37:56",
+    "date_gmt": "2026-10-12T15:37:56",
+    "title": {
+      "rendered": "Cody Rhodes: &#8216;Cozy Rhodes&#8217; Is The Internal Name That WWE Has For When I Am Not In A Suit"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19202509/maxresdefault-130.jpg"
+  },
+  {
     "id": 333504,
     "link": "https://www.fightful.com/wrestling/the-good-brothers-added-to-ghc-tag-team-title-match-at-noah-wrestle-odyssey-ii/",
     "date": "2026-10-12T11:28:42",
@@ -288,15 +298,5 @@
       "rendered": "Randy Orton Pays For Wrestling School For Viral Star Zy"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/03131959/intro-1733281889.jpg"
-  },
-  {
-    "id": 333325,
-    "link": "https://www.fightful.com/wrestling/wwe-announces-australia-live-tour/",
-    "date": "2026-10-11T19:06:33",
-    "date_gmt": "2026-10-11T23:06:33",
-    "title": {
-      "rendered": "WWE Announces Australia Live Tour"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11190617/CS-067447_LVE_Australia__New_Zealand_Live_Tour_EDIT_1920x1080.jpg"
   }
 ]
