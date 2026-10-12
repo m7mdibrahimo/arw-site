@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-12T23:27:27.111Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-12-2026-the-bloodline-vs-946-chad-gable-vs-rey-fenix-liv-morgan-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T23:14:12.748Z"
- },
- "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-12T23:10:01.248Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-discloses-thumb-injury-i-have-no-feeling-now": {
   "reason": "مكرر مع خبر نزل قبل كده",
