@@ -3491,7 +3491,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261012195604-gcw-fight-club-the-art-of-war-games-night-one-2026": {
     "publishedAt": 1791825441002,
@@ -3513,9 +3514,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو فايت كلوب الليلة الثانية 11.10.2026 مترجم",
-    "lastAttempt": 1791835320765,
+    "lastAttempt": 1791836251481,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
