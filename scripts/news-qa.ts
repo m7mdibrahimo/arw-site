@@ -9,6 +9,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { collapseRepeatedNames } from "../lib/names.cjs";
 
 export type Severity = "error" | "warning";
 export interface QaIssue { code: string; severity: Severity; field: "title" | "body" | "tags"; message: string; excerpt: string }
@@ -419,7 +420,9 @@ export function dropTimezoneFromTitle(title: string): string {
     // "Escapes <show> with the title" is a retention, not surviving a show: «داربي ألين ينجو من عرض
     // AEW Grand Slam: France ويحتفظ ببطولة TNT» (INCIDENTS #319)
     .replace(/(^|\s)([يت])نجو من (عرض .+?) و[يت]حتفظ (ب.+)$/, "$1$2حتفظ $4 في $3")
-    .replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim();
+    .replace(/\s*[(（]?\s*(?:ب|و)?توقيت\s+(?:أمريكا|امريكا|الولايات المتحدة|أمريكا الشمالية|الساحل الشرقي)\s*[)）]?/g, "").replace(/\s+([:،])/g, "$1").replace(/\s{2,}/g, " ").trim()
+    // never the same name twice in a row: «نتائج عرض WWE RAW WWE RAW» (INCIDENTS #462)
+    .replace(/^.*$/s, (t) => collapseRepeatedNames(t));
 }
 
 /**
@@ -845,7 +848,7 @@ if (require.main === module) cli();
 /**
  * A glossary wrestler the Arabic body talks about (twice or more) while the source never names him:
  * the story about El Hijo de Fishman said «إل هيخو ديل فيكينغو» all through, so a living wrestler was
- * named in a death (INCIDENTS #461). Returns the English names to block on. The name's last word must be
+ * named in a death (INCIDENTS #462). Returns the English names to block on. The name's last word must be
  * missing from the source, so nicknames and partial names don't trip it.
  */
 export function wrestlerNotInSource(body: string, source: string, glossary: Record<string, string>): string[] {

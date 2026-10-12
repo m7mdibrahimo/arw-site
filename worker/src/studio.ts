@@ -17,6 +17,25 @@
 import { authorizeAdmin } from './delivery';
 
 import { siteAnalytics, pageTotals } from './analytics';
+// @ts-ignore — plain JS shared with the panel (bundled by wrangler)
+import { collapseRepeatedNames, NAME_FIELDS } from '../../studio/js/names.js';
+
+/** The saved file's name fields never say the same thing twice in a row, whatever the client sent (INCIDENTS #462). */
+export function cleanNameFields(text: string): string {
+  const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!m) return text;
+  const keys = new RegExp(`^(${(NAME_FIELDS as string[]).join('|')}):([ \\t]*)(.*)$`);
+  const front = m[1].split('\n').map(line => {
+    const x = line.match(keys);
+    if (!x) return line;
+    let v = x[3];
+    const q = /^(["']).*\1\s*$/.test(v) ? v.trim()[0] : '';
+    if (q) v = v.trim().slice(1, -1);
+    const clean = collapseRepeatedNames(v);
+    return clean === v ? line : `${x[1]}:${x[2]}${q}${clean}${q}`;
+  }).join('\n');
+  return text.slice(0, m.index! + 4) + front + text.slice(m.index! + 4 + m[1].length);
+}
 
 export interface StudioEnv {
   GITHUB_OWNER: string; GITHUB_REPO: string; GITHUB_BRANCH: string; GITHUB_TOKEN: string;
@@ -640,6 +659,7 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     if (!body.create && body.sha && existing && existing.sha !== body.sha && !body.force) {
       return json({ success: false, conflict: true, current: existing, error: 'الموضوع اتعدّل من مكان تاني بعد ما فتحته.' }, 409);
     }
+    body.content = cleanNameFields(body.content);
     const changes: FileChange[] = [{ path: p, text: body.content }];
     // The owner's word fixes teach the writer (INCIDENTS #148): logged with the save, promoted to
     // editorial/corrections.json by scripts/learn-corrections.ts on its next run.

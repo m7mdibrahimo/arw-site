@@ -1,4 +1,5 @@
 // Add / edit any content: sectioned form, live preview, checklist, smart helpers.
+import { collapseRepeatedNames, NAME_FIELDS } from '../names.js';
 import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../api.js';
 import { notify } from '../notify.js';
 import {
@@ -418,6 +419,16 @@ function setVal(id, v) { const el = $(id); if (el && el.value !== v) el.value = 
 
 function bindAll() {
   const form = $('#ed-form');
+  // Leaving a name field cleans a repeated word or phrase at once, so the owner sees what will be saved (INCIDENTS #462)
+  form.addEventListener('focusout', (e) => {
+    const el = e.target, k = el && el.dataset && el.dataset.k;
+    if (!k || !NAME_FIELDS.includes(k) || typeof el.value !== 'string') return;
+    const clean = collapseRepeatedNames(el.value);
+    if (clean === el.value) return;
+    el.value = clean;
+    S.data[k] = clean;
+    markDirty();
+  });
   // Plain inputs
   form.addEventListener('input', (e) => {
     const el = e.target;
@@ -777,6 +788,8 @@ async function save({ thenNew = false, force = false } = {}) {
   if (S.data.episode_number !== undefined && S.data.episode_number !== '') {
     for (const k of ['title', 'headline']) if (S.data[k]) S.data[k] = syncEpisodeCode(S.data[k], S.data.season_number, S.data.episode_number);
   }
+  // A name never says the same thing twice in a row («TNA TNA Bound For Glory», INCIDENTS #462)
+  for (const k of NAME_FIELDS) if (typeof S.data[k] === 'string') S.data[k] = collapseRepeatedNames(S.data[k]);
   // Another programme than the one filled from: its tags go (INCIDENTS #192)
   if (S.template && S.data.tags) S.data.tags = dropStaleTemplateTags(S.data.tags, S.template, S.data);
   const slug = S.slug || newFileSlug(S.collection, S.data);
