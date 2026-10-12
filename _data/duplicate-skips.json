@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2269987/aew-all-out-2026-wardlow-return-tease-tnt/": {
-    "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T04:26:21.295Z"
-  },
   "https://www.fightful.com/wrestling/will-ospreay-scores-win-over-jon-moxley-to-retain-aew-world-championship-at-all-out/": {
     "matchedFile": "20260927024152-فريق-sisters-of-sin-يحقق-الفوز-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
     "reason": "الخبر الجديد عبارة عن تصريحات لليون سلاتر بعد فوزه بالبطولة في نفس الحدث، لكنه يعتبر امتداداً لنفس الحدث الرئيسي (الفوز بالبطولة في عرض TNA Bound for Glory) ولا يمثل تطوراً إخبارياً مستقلاً كافياً لمنع اعتباره جزءاً من تغطية نفس الحدث.",
     "at": "2026-10-12T05:38:25.967Z"
+  },
+  "https://www.ringsidenews.com/wwe-raw-preview-october-12-2026-confirmed-matches-start-time-how-watch/": {
+    "matchedFile": "20261011191911-ظهور-ليف-مورغان-ونزال-ري-ميستيريو-ضد-بيج-كاس-في-عرض-wwe-raw-القادم.md",
+    "reason": "الخبر الجديد يغطي نفس عرض WWE RAW ونفس قائمة النزالات والتفاصيل التي تم الإعلان عنها مسبقاً في الخبر رقم 2.",
+    "at": "2026-10-12T06:54:36.442Z"
   }
 }
