@@ -13,6 +13,7 @@ tags:
   - GCW
   - جي سي دبليو
   - INDIE
+  - GCW Fight Club
 image: /content/images/1q6q9a0a17fwktup.jpg
 servers:
   - url: https://ok.ru/video/17619921406560
