@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/tony-khan-was-surprised-that-wwe-was-surprised-aew-all-out-sold-so-well-weve-sold-out-this-arena-many-times/": {
-    "matchedFile": "20260926170000-توني-خان-عرض-aew-all-out-يشبه-متجر-موكا-جو-من-مسلسل-curb-your-enthusiasm.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T05:47:08.374Z"
-  },
   "https://www.ringsidenews.com/tony-khan-reacts-reports-claiming-wwe-surprised-aew-all-out-sold-out/": {
     "matchedFile": "20260926170000-توني-خان-عرض-aew-all-out-يشبه-متجر-موكا-جو-من-مسلسل-curb-your-enthusiasm.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012140732-كيني-أوميغا-يظهر-في-عرض-njpw-king-of-pro-wrestling-ويهاجم-يوتا-تسوجي.md",
     "reason": "الخبر الجديد يتحدث عن نفس الحدث والتفاصيل الخاصة بظهور كيني أوميغا ومهاجمته ليوتا تسوجي في عرض NJPW King of Pro-Wrestling 2026 وهو نفس الخبر المنشور مسبقاً.",
     "at": "2026-10-12T11:35:08.799Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-12/": {
+    "matchedFile": "20261011191911-ظهور-ليف-مورغان-ونزال-ري-ميستيريو-ضد-بيج-كاس-في-عرض-wwe-raw-القادم.md",
+    "reason": "الخبر الجديد يعرض نفس جدول نزالات وتفاصيل عرض WWE RAW القادم وتفاصيله التي سبق نشرها في الخبر رقم 2، مع إضافة تفاصيل بسيطة (مثل اسم القاعة) لا تعتبر تطوراً جديداً.",
+    "at": "2026-10-12T12:08:35.920Z"
   }
 }
