@@ -1,6 +1,7 @@
 ---
 federation: TNA
-title: "ثنائي Sinner and Saint يتحدثان عن طلب رحيلهما عن TNA ويعتبرانها الخطوة الأفضل لهما"
+title: "ثنائي Sinner and Saint يتحدثان عن طلب رحيلهم عن TNA ويعتبرانها الخطوة الأفضل لهما"
+permalink: "/news/ثنائي-sinner-and-saint-يتحدثان-عن-طلب-رحيلهما-عن-tna-ويعتبرانها-الخطوة-الأفضل-لهما/index.html"
 date: 2026-09-30T20:06:24.000+03:00
 published_at: 2026-09-30T17:09:58.132Z
 source_id: 331332
