@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/cm-punk-reflects-on-wwe-x-aaa-worlds-collide/": {
-    "matchedFile": "20260927062755-سي-ام-بانك-يدخل-على-أنغام-this-fire-burns-في-عرض-wwe-x-aaa-worlds-collide.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T14:47:12.229Z"
-  },
   "https://www.wrestlinginc.com/2270097/wwe-worlds-collide-2026-not-broadcast-live/": {
     "matchedFile": "20260926205240-قرار-wwe-بعدم-بث-عرض-worlds-collide-مباشرة-جاء-بهدف-التأثير-على-مبيعات-تذاكر-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012073536-لماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب.md",
     "reason": "الخبر الجديد يكرر نفس تفاصيل كواليس الظهور الأول لبن بيشوب في TNA Bound for Glory وموقف تومي دريمر ومحتواه على وسائل التواصل الاجتماعي الموجودة بالفعل في الخبر المنشور [0].",
     "at": "2026-10-12T15:49:13.202Z"
+  },
+  "https://www.fightful.com/wrestling/nikki-bella-discloses-thumb-injury-i-have-no-feeling-now/": {
+    "matchedFile": "20261012115904-نيكي-بيلا-تفقد-الإحساس-تماما-في-إبهامها-بسبب-إصابة-سابقة-في-المصارعة.md",
+    "reason": "الخبر الجديد يكرر نفس تفاصيل إصابة إبهام نيكي بيلا وتصريحاتها عنها في برنامج The Nikki & Brie Show والتي نشرت بالفعل في الخبر السابق.",
+    "at": "2026-10-12T15:52:48.689Z"
   }
 }
