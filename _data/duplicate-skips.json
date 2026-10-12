@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/sunil-singh-shares-positive-recovery-update-terrifying-collapsed-lung-injury/": {
-    "matchedFile": "20260927065254-سونيل-سينغ-يقدم-تحديثا-صحيا-بعد-معاناته-من-انهيار-رئوي-ويؤكد-أنا-على-الطريق-الصحيح-للتعافي.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T04:11:25.724Z"
-  },
   "https://www.wrestlinginc.com/2269987/aew-all-out-2026-wardlow-return-tease-tnt/": {
     "matchedFile": "20260926130000-توقعات-عرض-aew-all-out-2026-موقع-wrestling-inc-يختار-الفائزين.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
     "reason": "الخبر الجديد يركز على نفس واقعة فوز ليون سلاتر باللقب في عرض TNA Bound for Glory، وتفصيلة التغريدة القديمة تعتبر معلومة إضافية حول نفس الحدث وليست تطوراً جوهرياً يغير من طبيعة الخبر المنشور مسبقاً.",
     "at": "2026-10-12T04:55:11.906Z"
+  },
+  "https://www.ringsidenews.com/leon-slater-delivers-emotional-off-air-message-winning-tna-world-championship/": {
+    "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
+    "reason": "الخبر الجديد عبارة عن تصريحات لليون سلاتر بعد فوزه بالبطولة في نفس الحدث، لكنه يعتبر امتداداً لنفس الحدث الرئيسي (الفوز بالبطولة في عرض TNA Bound for Glory) ولا يمثل تطوراً إخبارياً مستقلاً كافياً لمنع اعتباره جزءاً من تغطية نفس الحدث.",
+    "at": "2026-10-12T05:38:25.967Z"
   }
 }
