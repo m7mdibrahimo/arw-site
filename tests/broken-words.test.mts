@@ -111,3 +111,15 @@ test('INCIDENTS #439: AJ names always get the hamza', () => {
   assert.match(applyCorrections('نجل المصارع ايه جيه ستايلز'), /إيه جيه ستايلز/);
   assert.match(applyCorrections('بين تراي ميجيل وايه جيه ستايلز'), /وإيه جيه ستايلز/);
 });
+
+// INCIDENTS #440: «سوير» for Sawyer, «syX» glued into Arabic, «الأخوين/الطاولتين» (dual) reached a story.
+test('INCIDENTS #440: Sawyer spelling, syX and more dual nouns', () => {
+  assert.match(applyCorrections('منح فريق سيكس المكون من سوير وصامويل شو'), /ساير وصامويل/);
+  assert.match(applyCorrections('سوير ريك يفوز'), /سوير ريك/);
+  assert.match(applyCorrections('ويساعد فريق syX على الفوز'), /فريق سيكس/);
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(codes('لمهاجمة الأخوين مات وجيف هاردي.').includes('dual_noun'));
+  assert.ok(codes('عبر الطاولتين المخصصتين.').includes('dual_noun'));
+  assert.ok(!codes('عبر الطاولات المخصصة لهم.').includes('dual_noun'));
+});

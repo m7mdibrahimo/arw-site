@@ -11,7 +11,7 @@ en_tags:
   - "Konnan"
   - "Cruz Montana"
   - "Hall of Fame"
-  - "Bound For Glory"
+  - "Bound for Glory"
 image: /content/images/form4ne2trt4o90o.jpg
 ---
-TNA Wrestling has revealed the list of inductors for the 2026 Hall of Fame ceremony, which is scheduled to take place on October 11 at the Yuengling Center in Tampa, Florida. The event will precede the Bound For Glory pay-per-view. Konnan will be inducted by NXT star Cruz Montana. Meanwhile, Amazing Red will be inducted by Frankie Kazarian. ODB is set to be inducted by Al Snow and Traci Brooks, with the presentation handled by Earl Hebner. The ceremony begins at 4 p.m. EST, followed by Bound For Glory at 4:30 p.m. EST.
+TNA Wrestling has revealed the list of inductors for the 2026 Hall of Fame ceremony, which is scheduled to take place on October 11 at the Yuengling Center in Tampa, Florida. The event will precede the Bound for Glory pay-per-view. Konnan will be inducted by NXT star Cruz Montana. Meanwhile, Amazing Red will be inducted by Frankie Kazarian. ODB is set to be inducted by Al Snow and Traci Brooks, with the presentation handled by Earl Hebner. The ceremony begins at 4 p.m. EST, followed by Bound for Glory at 4:30 p.m. EST.

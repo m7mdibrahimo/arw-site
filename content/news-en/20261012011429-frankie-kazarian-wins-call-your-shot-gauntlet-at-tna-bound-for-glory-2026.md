@@ -1,7 +1,7 @@
 ---
-title: "Frankie Kazarian Wins Call Your Shot Gauntlet at TNA Bound For Glory 2026"
+title: "Frankie Kazarian Wins Call Your Shot Gauntlet at TNA Bound for Glory 2026"
 slug: "frankie-kazarian-wins-call-your-shot-gauntlet-at-tna-bound-for-glory-2026"
-description: "Frankie Kazarian won the Call Your Shot Gauntlet match at TNA Bound For Glory on October 11, 2026, securing a significant future opportunity. The chaotic…"
+description: "Frankie Kazarian won the Call Your Shot Gauntlet match at TNA Bound for Glory on October 11, 2026, securing a significant future opportunity. The chaotic…"
 federation: TNA
 date: 2026-10-11T22:14:29.000Z
 source_id: 802253824
@@ -9,11 +9,11 @@ source_url: "https://www.ringsidenews.com/frankie-kazarian-wins-call-your-shot-g
 en_tags:
   - "Frankie Kazarian"
   - "TNA"
-  - "Bound For Glory"
+  - "Bound for Glory"
   - "Trey Miguel"
 image: /content/images/ou1yjgpkjw5kqo5v.jpg
 ---
-Frankie Kazarian won the Call Your Shot Gauntlet match at TNA Bound For Glory on October 11, 2026, securing a significant future opportunity. The chaotic battle featured numerous entrants, including Trey Miguel, AJ Styles, Bear Bronson, and many others who entered the ring to trade strikes and eliminations. 
+Frankie Kazarian won the Call Your Shot Gauntlet match at TNA Bound for Glory on October 11, 2026, securing a significant future opportunity. The chaotic battle featured numerous entrants, including Trey Miguel, AJ Styles, Bear Bronson, and many others who entered the ring to trade strikes and eliminations. 
 
 In the final stages, AJ Francis eliminated Elayna Black, while Frankie Kazarian eliminated Elijah. The final four participants were Styles, Miguel, Kazarian, and Francis. After Miguel eliminated Francis and Styles was removed from the equation, the match became a one-on-one contest between Kazarian and Miguel. Kazarian ultimately pinned Miguel to secure the victory. This win provides Kazarian with a major career opportunity as he looks toward his future in TNA.
 

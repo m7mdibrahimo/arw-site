@@ -10,12 +10,12 @@ en_tags:
   - "Brett Lauderdale"
   - "Joseph Sawyer"
   - "GCW"
-  - "TNA Bound For Glory"
+  - "TNA Bound for Glory"
 image: /content/images/gad6fwff52ptu226.jpg
 ---
 Game Changer Wrestling announced that promoter Brett Lauderdale will address the current status of the GCW World Title at GCW Fight Club on Sunday, October 11, according to Fightful. Joseph Sawyer currently holds the championship, but he has been absent from recent company events, such as their show in Alaska.
 
-During a title defense against John Jeffrey at GCW Score on September 26, Sawyer walked out of the match following an apparent knee injury. Visibly frustrated at the time, Sawyer mentioned that he expected to be sidelined for months before later stating he would be okay and maintaining future bookings, including TNA Bound For Glory on Sunday. Meanwhile, former champion Atticus Cogar criticized Sawyer for his recent absences from the promotion's events.
+During a title defense against John Jeffrey at GCW Score on September 26, Sawyer walked out of the match following an apparent knee injury. Visibly frustrated at the time, Sawyer mentioned that he expected to be sidelined for months before later stating he would be okay and maintaining future bookings, including TNA Bound for Glory on Sunday. Meanwhile, former champion Atticus Cogar criticized Sawyer for his recent absences from the promotion's events.
 
 Fightful will provide coverage of GCW Fight Club on Sunday.
 

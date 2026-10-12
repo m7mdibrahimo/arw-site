@@ -1,7 +1,7 @@
 ---
-title: "TNA Bound For Glory Ticket Discounts and Latest Wrestling News"
+title: "TNA Bound for Glory Ticket Discounts and Latest Wrestling News"
 slug: "tna-bound-for-glory-ticket-discounts-and-latest-wrestling-news"
-description: "According to Fightful, fans can secure a fifty percent discount on tickets for the upcoming TNA Bound For Glory event. The update also highlights the full…"
+description: "According to Fightful, fans can secure a fifty percent discount on tickets for the upcoming TNA Bound for Glory event. The update also highlights the full…"
 federation: TNA
 date: 2026-10-07T22:01:55.000Z
 source_id: 332665
@@ -15,7 +15,7 @@ en_tags:
   - "GCW"
 image: /content/images/622wqeletrr3d4sz.jpg
 ---
-According to Fightful, fans can secure a fifty percent discount on tickets for the upcoming TNA Bound For Glory event. The update also highlights the full recap for the October 6 episode of WWE NXT.
+According to Fightful, fans can secure a fifty percent discount on tickets for the upcoming TNA Bound for Glory event. The update also highlights the full recap for the October 6 episode of WWE NXT.
 
 Several independent wrestling announcements were made, including Zachary Wentz and Trey Miguel signing with Wrestling REVOLVER for the upcoming Jerry Lynn Invitational tournament. Additionally, Priscilla Kelly is scheduled to face Slade at Shotzi's upcoming horror drive-in show, while Hyan will host meet-and-greets at PRODUCE Vol. 5.
 

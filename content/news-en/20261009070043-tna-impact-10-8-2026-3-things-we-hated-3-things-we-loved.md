@@ -1,7 +1,7 @@
 ---
 title: "TNA Impact 10/8/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "tna-impact-10-8-2026-3-things-we-hated-3-things-we-loved"
-description: "The final edition of TNA Impact before TNA Bound For Glory featured multiple title matches, high-stakes gauntlet qualifying action, and major news…"
+description: "The final edition of TNA Impact before TNA Bound for Glory featured multiple title matches, high-stakes gauntlet qualifying action, and major news…"
 federation: TNA
 date: 2026-10-09T04:00:43.000Z
 source_id: 1016214620
@@ -19,7 +19,7 @@ gallery:
   - /content/images/vfxvdsjzo6d56e9u.webp
   - /content/images/u3p1yb0jlyup5s4x.webp
 ---
-The final edition of TNA Impact before TNA Bound For Glory featured multiple title matches, high-stakes gauntlet qualifying action, and major news regarding Shayna Baszler joining the promotion. Wrestling Inc. breaks down three things we hated and three things we loved from the show.
+The final edition of TNA Impact before TNA Bound for Glory featured multiple title matches, high-stakes gauntlet qualifying action, and major news regarding Shayna Baszler joining the promotion. Wrestling Inc. breaks down three things we hated and three things we loved from the show.
 
 What we hated:
 - The backstage segment between Zoey Serrano, Allie, and Kiera Hogan felt like an unnecessary detour before their tag team match announcement, though the eventual match setup is intriguing.

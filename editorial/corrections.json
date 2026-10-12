@@ -3138,6 +3138,17 @@
    "note": "Boeing Center at Tech Port"
   },
   {
+   "wrong": "(?<![ء-ي])سوير(?![ء-ي])(?!\\s+ريك)",
+   "right": "ساير",
+   "regex": true,
+   "note": "Sawyer (جوزيف ساير) بدون «ريك» = ساير، مش سوير"
+  },
+  {
+   "wrong": "syX",
+   "right": "سيكس",
+   "note": "فريق Syx = سيكس (مش حروف إنجليزي في نص عربي)"
+  },
+  {
    "wrong": "جوزيف سوير",
    "right": "جوزيف ساير",
    "note": "اسم مصارع (Joseph Sawyer)"

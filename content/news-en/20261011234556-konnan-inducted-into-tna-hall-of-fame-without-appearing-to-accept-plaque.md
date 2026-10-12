@@ -9,11 +9,11 @@ source_url: "https://www.ringsidenews.com/konnan-inducted-tna-hall-fame-never-sh
 en_tags:
   - "TNA"
   - "Konnan"
-  - "TNA Bound For Glory"
+  - "TNA Bound for Glory"
   - "TNA Hall of Fame"
 image: /content/images/cv7yumie5s0z95ou.jpg
 ---
-Konnan was officially inducted into the TNA Hall of Fame on October 11, 2026, during a ceremony held in Tampa, Florida. The event, which took place just before the TNA Bound For Glory show, featured Cruz Montana handling the induction duties. Montana delivered a heartfelt tribute, emphasizing the massive influence Konnan has had on professional wrestling and the lucha libre scene in the United States. He credited Konnan for creating opportunities for legendary names, noting,
+Konnan was officially inducted into the TNA Hall of Fame on October 11, 2026, during a ceremony held in Tampa, Florida. The event, which took place just before the TNA Bound for Glory show, featured Cruz Montana handling the induction duties. Montana delivered a heartfelt tribute, emphasizing the massive influence Konnan has had on professional wrestling and the lucha libre scene in the United States. He credited Konnan for creating opportunities for legendary names, noting,
 
 > "Without Konnan there is no Rey Mysterio, there is no Juventud Guerrera and there is no Psychosis."
 

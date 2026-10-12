@@ -61,6 +61,7 @@ export function englishStyleRules(sourceUrl: string): string {
   const outlet = outletOf(sourceUrl);
   return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
+- Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza".
 - Headline: Title Case, clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct, never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
 - Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one.
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.

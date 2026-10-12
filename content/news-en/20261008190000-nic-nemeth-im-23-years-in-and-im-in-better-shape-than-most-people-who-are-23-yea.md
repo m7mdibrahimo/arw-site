@@ -10,7 +10,7 @@ en_tags:
   - "Nic Nemeth"
   - "Leon Slater"
   - "TNA"
-  - "Bound For Glory"
+  - "Bound for Glory"
   - "TNA World Championship"
 image: /content/images/n57qbk5bn3yxiz4h.jpg
 ---

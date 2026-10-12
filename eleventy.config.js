@@ -1423,10 +1423,10 @@ module.exports = function(eleventyConfig) {
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
           "wwe-raw": ["رو", "الرو", "راو", "WWE Raw", "Monday Night Raw"],
-          "wwe-smackdown": ["سماك داون", "سماكداون", "سماك دون", "WWE SmackDown", "Friday Night SmackDown"],
-          "wwe-nxt": ["إن إكس تي", "ان اكس تي", "WWE NXT"],
-          "aew-dynamite": ["ديناميت", "دايناميت", "AEW Dynamite"],
-          "aew-collision": ["كوليجن", "كوليجين", "AEW Collision"],
+          "wwe-smackdown": ["سماك داون", "سماكداون", "سماك دون", "سمك داون", "سماك دوان", "WWE SmackDown", "Friday Night SmackDown"],
+          "wwe-nxt": ["إن إكس تي", "ان اكس تي", "ان إكس تي", "إن اكس تي", "اكس تي", "NXT", "WWE NXT"],
+          "aew-dynamite": ["ديناميت", "دايناميت", "داينامايت", "AEW Dynamite", "ايه اي دبليو ديناميت"],
+          "aew-collision": ["كوليجن", "كوليجين", "كولجن", "كوليشن", "AEW Collision"],
           "tna-impact": ["إمباكت", "امباكت", "TNA iMPACT", "تي ان ايه امباكت"],
           "wwe-main-event": ["مين إيفنت", "مين ايفنت", "WWE Main Event"],
           "roh": ["رينغ أوف أونر", "ار او اتش", "ROH TV"],

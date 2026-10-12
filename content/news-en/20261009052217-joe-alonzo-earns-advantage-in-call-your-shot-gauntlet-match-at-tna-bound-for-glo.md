@@ -1,5 +1,5 @@
 ---
-title: "Joe Alonzo Earns Advantage In Call Your Shot Gauntlet Match At TNA Bound For Glory"
+title: "Joe Alonzo Earns Advantage In Call Your Shot Gauntlet Match At TNA Bound for Glory"
 slug: "joe-alonzo-earns-advantage-in-call-your-shot-gauntlet-match-at-tna-bound-for-glo"
 description: "On the go-home episode of TNA iMPACT, Joe Alonzo secured the final entry spot in the upcoming Call Your Shot Gauntlet match at TNA Bound for Glory. By…"
 federation: TNA
