@@ -3484,15 +3484,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال دومينغو فاميليار 11.10.2026 مترجم",
-    "lastAttempt": 1791827211214,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1791828167605,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -3503,7 +3499,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو فايت كلوب ذا ارت اوف وور جيمز الليلة الاولى 10.10.2026 مترجم",
-    "lastAttempt": 1791827212347,
+    "lastAttempt": 1791828169393,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
