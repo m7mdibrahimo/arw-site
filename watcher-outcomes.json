@@ -1,18 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/wwe-raw-results-10-12-2026-the-bloodline-vs-946-chad-gable-vs-rey-fenix-liv-morgan-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-12T23:25:25.828Z"
+ },
+ "https://www.fightful.com/wrestling/tna-wrestling-releases-statement-regarding-max-caster-rap-at-bound-for-glory": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-12T23:25:25.722Z"
+ },
  "https://www.fightful.com/wrestling/drew-mcintyre-cast-in-disney-animated-movie-hexed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:14:13.425Z"
+  "at": "2026-10-12T23:25:24.922Z"
  },
  "https://www.fightful.com/wrestling/max-casters-line-about-riyadh-at-tna-bound-for-glory-was-not-scripted-or-approved": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:14:13.301Z"
+  "at": "2026-10-12T23:25:24.757Z"
  },
  "https://www.fightful.com/wrestling/sam-hardway-holloway-announces-departure-from-wwe-id-program": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-12T23:14:12.961Z"
+  "at": "2026-10-12T23:25:24.287Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-there-was-never-any-heat-with-travis-scott-id-like-to-see-him-back-doing-something-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
