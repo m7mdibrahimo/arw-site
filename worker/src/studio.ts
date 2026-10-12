@@ -570,23 +570,6 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     await env.PUSH_KV.delete(ANALYTICS_KEY); await env.PUSH_KV.delete(ANALYTICS_CACHE_KEY);
     return json({ success: true });
   }
-  // Cloudflare's own numbers (every request, bots and prefetches included), shown under the real ones in the layout
-  // the owner knows, with all their history (owner 2026-10-12: «عايز اشوف الارقام كلها قديم وجديد», INCIDENTS #459)
-  if (route === 'analytics/cloudflare' && request.method === 'GET') {
-    if (!can(me, 'stats')) return deny();
-    const cfg = (await env.PUSH_KV.get(ANALYTICS_KEY, 'json')) as { token: string; zoneId: string } | null;
-    if (!cfg) return json({ success: true, configured: false, canConfigure: ownerOnly });
-    const cached = (await env.PUSH_KV.get(ANALYTICS_CACHE_KEY, 'json')) as any;
-    if (cached && Date.now() - cached.at < 2 * 60_000) return json({ success: true, configured: true, ...cached.data });
-    try {
-      const data = await cfAnalytics(cfg.token, cfg.zoneId, 365) // the whole history Cloudflare keeps (a year at most);
-      await env.PUSH_KV.put(ANALYTICS_CACHE_KEY, JSON.stringify({ at: Date.now(), data }), { expirationTtl: 3600 });
-      return json({ success: true, configured: true, ...data });
-    } catch (e: any) {
-      if (cached) return json({ success: true, configured: true, stale: true, ...cached.data });
-      return json({ success: false, configured: true, error: `تعذر جلب أرقام كلاودفلير: ${e.message}` }, 502);
-    }
-  }
   // Each page's real views since the counter has records, for the lists (owner 2026-10-12, INCIDENTS #457)
   if (route === 'analytics/views' && request.method === 'GET') {
     if (!env.ANALYTICS) return json({ success: true, since: null, views: {} });

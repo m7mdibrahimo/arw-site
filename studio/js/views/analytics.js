@@ -65,7 +65,7 @@ function chart(daily, key) {
   const W = 1000, H = 200;
   const vals = daily.map(d => d[key] || 0);
   const max = Math.max(1, ...vals);
-  const bw = W / Math.max(1, daily.length);
+  const bw = W / Math.max(14, daily.length); // at least 14 slots: one counted day is one bar, not the whole chart
   return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="رسم بياني">` + daily.map((d, i) => {
     if (d[key] == null) return ''; // not measured that day: no bar rather than a made-up one
     const h = Math.max(4, Math.round(((d[key] || 0) / max) * (H - 4)));
@@ -74,64 +74,56 @@ function chart(daily, key) {
   }).join('') + '</svg>';
 }
 
-// Both sets of numbers, each in its own place (owner 2026-10-12: «عايز اشوف الارقام كلها قديم وجديد وكل حاجة في مكانها
-// وبيتحدث علطول»): the real ones on top (people only, the site's own counter), Cloudflare's below in the layout the owner
-// knows, with all its history, marked as counting every request. Both refresh every minute while the panel is open.
+// One set of numbers, the real ones (owner 2026-10-12: «عايز حاجة واحدة بس احترافية وحقيقة … والمحدث ودايما يكون محدث
+// للارقام الحقيقية وبس», INCIDENTS #460): people only, from the site's own counter, refreshed every minute while the
+// panel is open. A day the counter didn't see shows «—», never a number that wasn't measured.
 const REFRESH_MS = 60_000;
-const boards = { real: { range: 30, metric: 'visitors' }, cf: { range: 30, metric: 'visitors' } };
+const st = { range: 30, metric: 'visitors' };
 let refreshTimer = null;
 
 export async function renderAnalytics(el) {
   mount(el, html`<div class="skel-lines" style="height:260px"></div>`);
-  const [real, cf] = await Promise.all([api.analytics().catch(e => ({ error: e.message })), api.cloudflareAnalytics().catch(e => ({ error: e.message }))]);
-  if (real.error && cf.error) {
-    mount(el, html`<div class="panel"><div class="panel-head"><h2>${icon('chart')} إحصائيات الموقع</h2></div><p class="panel-pad muted">${real.error}</p></div>`);
+  let data;
+  try { data = await api.analytics(); } catch (e) {
+    mount(el, html`<div class="panel"><div class="panel-head"><h2>${icon('chart')} إحصائيات الموقع</h2></div><p class="panel-pad muted">${e.message}</p></div>`);
     return;
   }
-  mount(el, html`<div id="a-real"></div><div id="a-cf"></div>`);
-  if (!real.error) board($('#a-real', el), real, 'real');
-  if (cf.configured === false) {
-    if ((getUser() || {}).role === 'owner') renderSetup($('#a-cf', el), () => renderAnalytics(el));
-  } else if (!cf.error) board($('#a-cf', el), cf, 'cf');
+  if (!data.configured) {
+    if ((getUser() || {}).role !== 'owner') return mount(el, html`<div class="panel"><div class="panel-head"><h2>${icon('chart')} إحصائيات الموقع</h2></div><p class="panel-pad muted">الإحصائيات لسه مش متوصلة. صاحب الموقع بس اللي يقدر يوصلها.</p></div>`);
+    return renderSetup(el);
+  }
+  board(el, data);
   if (refreshTimer) clearInterval(refreshTimer);
   refreshTimer = setInterval(async () => {
     if (!el.isConnected) { clearInterval(refreshTimer); refreshTimer = null; return; }
     if (document.hidden) return;
-    const [r, c] = await Promise.all([api.analytics().catch(() => null), api.cloudflareAnalytics().catch(() => null)]);
-    if (r && !r.error && $('#a-real', el)) board($('#a-real', el), r, 'real');
-    if (c && c.configured !== false && !c.error && $('#a-cf', el)) board($('#a-cf', el), c, 'cf');
+    const fresh = await api.analytics().catch(() => null);
+    if (fresh && fresh.configured && !fresh.error) board(el, fresh);
   }, REFRESH_MS);
 }
 
-function board(box, data, kind) {
-  const st = boards[kind];
-  const isReal = kind === 'real';
+function board(box, data) {
   const q = (sel) => box.querySelector(sel);
   const all = data.daily || [];
-  // the whole history starts at the first day with any number (Cloudflare keeps the site from 8 August 2026)
-  const first = all.findIndex(d => (d.views || 0) > 0 || (d.visitors || 0) > 0);
-  const daily = first > 0 ? all.slice(first) : all;
-  const today = daily[daily.length - 1] || { visitors: 0, views: 0 };
-  const yesterday = daily[daily.length - 2] || { visitors: 0, views: 0 };
-  const last7 = daily.slice(-7), prev7 = daily.slice(-14, -7);
+  const at = (i) => all[all.length - 1 - i] || { visitors: null, views: null };
+  const today = at(0), yesterday = at(1);
+  const last7 = all.slice(-7), prev7 = all.slice(-14, -7);
   const sum = (arr, k) => arr.reduce((a, d) => a + (d[k] || 0), 0);
   const measured = (arr, k) => arr.length > 0 && arr.every(d => d[k] != null);
   const since = data.since ? shortDay(data.since) : '';
+  // the chart starts on the counter's first day; «الكل» is everything since then
+  const first = all.findIndex(d => d.views != null);
+  const counted = first >= 0 ? all.slice(first) : [];
   const k = (n) => n == null ? '—' : n >= 100000 ? `${(n / 1000).toFixed(0)}K` : n >= 10000 ? `${(n / 1000).toFixed(1)}K` : num(n);
-  const delta = (d, note) => d == null ? html`<em>${note}</em>` : html`<em>${d >= 0 ? '▲' : '▼'} ${Math.abs(d)}% ${note}</em>`;
-  const weekDelta = measured(last7, 'visitors') && measured(prev7, 'visitors') ? pct(sum(last7, 'visitors'), sum(prev7, 'visitors')) : null;
-  const was = (v, f) => v == null ? '— (لسه ماكانش بيتعد)' : f(v);
+  const was = (v, f) => v == null ? '—' : f(v);
+  const weekNote = measured(last7, 'visitors') && measured(prev7, 'visitors')
+    ? (() => { const d = pct(sum(last7, 'visitors'), sum(prev7, 'visitors')); return d == null ? html`<em>عن الأسبوع اللي فات</em>` : html`<em>${d >= 0 ? '▲' : '▼'} ${Math.abs(d)}% عن الأسبوع اللي فات</em>`; })()
+    : html`<em>${since ? `من ${since}` : ''}</em>`;
   const tot = (data.topCountries || []).reduce((a, c) => a + c.requests, 0) || 1;
   const top = (data.topCountries || []).slice(0, 4);
-  const pagesId = `a-pages-rows-${kind}`;
-  mount(box, html`<header class="a-board-head ${isReal ? 'is-real' : 'is-cf'}">
-      <h2>${isReal ? 'الأرقام الحقيقية' : 'أرقام كلاودفلير'}</h2>
-      <span class="pill">${isReal ? `ناس بس${since ? ` · من ${since}` : ''}` : 'كل الطلبات · تقريبية'}</span>
-      <small class="muted">${isReal ? 'محركات البحث وبرامج الذكاء الاصطناعي وروبوتات الموقع والصفحات اللي المتصفح بيجهّزها لوحده مش محسوبة.' : 'بتعد البرامج الآلية والصفحات اللي المتصفح بيجهّزها من غير ما حد يفتحها، فهي أعلى من الحقيقة.'}</small>
-    </header>
-    <section class="a-grid">
+  mount(box, html`<section class="a-grid">
     <div class="blk blk-teal a-main">
-      <div class="a-main-head"><small><span class="a-metric-label">${st.metric === 'visitors' ? 'زوار' : 'مشاهدات'}</span> <span class="a-range-label"></span></small>
+      <div class="a-main-head"><small><span class="a-metric-label"></span> <span class="a-range-label"></span></small>
         <div class="a-toggles"><span class="mini-seg a-metric"><button type="button" class="${st.metric === 'visitors' ? 'on' : ''}" data-v="visitors">زوار</button><button type="button" class="${st.metric === 'views' ? 'on' : ''}" data-v="views">مشاهدات</button></span>
         <span class="mini-seg a-range">${[7, 14, 30, 0].map(n => html`<button type="button" class="${st.range === n ? 'on' : ''}" data-v="${n}">${n ? n : 'الكل'}</button>`)}</span></div></div>
       <b class="a-total"></b>
@@ -140,29 +132,28 @@ function board(box, data, kind) {
     </div>
     <div class="blk blk-yellow"><small>زوار النهارده لحد دلوقتي</small><b>${k(today.visitors)}</b><em>امبارح كله: ${was(yesterday.visitors, num)}</em></div>
     <div class="blk blk-coral"><small>مشاهدات النهارده لحد دلوقتي</small><b>${k(today.views)}</b><em>امبارح كله: ${was(yesterday.views, k)}</em></div>
-    <div class="blk blk-ink"><small>زوار آخر 7 أيام</small><b>${k(sum(last7, 'visitors'))}</b>${measured(last7, 'visitors') ? delta(weekDelta, 'عن الأسبوع اللي فات') : html`<em>من ${since} بس (بداية العدّ الحقيقي)</em>`}</div>
-    <div class="blk blk-cream"><small>أكتر الدول${isReal ? ' (مشاهدات آخر 7 أيام)' : ''}</small>
+    <div class="blk blk-ink"><small>زوار آخر 7 أيام</small><b>${k(sum(last7, 'visitors'))}</b>${weekNote}</div>
+    <div class="blk blk-cream"><small>أكتر الدول</small>
       ${top.length ? html`<b class="b-sm">${countryName(top[0].code)} ${Math.round(top[0].requests / tot * 100)}%</b><em>${top.slice(1).map(c => `${countryName(c.code)} ${Math.round(c.requests / tot * 100)}%`).join(' · ')}</em>` : html`<b class="b-sm">—</b>`}
     </div>
   </section>
-  ${(data.topPages || []).length ? html`<section class="panel a-pages"><header class="panel-head"><h2>أكتر الصفحات مشاهدة في آخر 24 ساعة</h2><span class="muted small">${data.stale ? 'آخر بيانات متاحة' : 'بتتحدّث كل دقيقة'}</span></header>
-    <div class="rows" id="${pagesId}">${topRows(mergeTopPages(data.topPages, () => null))}</div></section>` : ''}`);
-  // Each page under its Arabic title (from the site's own index), old and new addresses of a renamed show as one row
+  <p class="muted small a-note">أرقام حقيقية للناس بس${since ? ` من ${since}` : ''} · بتتحدّث كل دقيقة. محركات البحث والروبوتات والصفحات اللي المتصفح بيجهّزها لوحده مش محسوبة.</p>
+  ${(data.topPages || []).length ? html`<section class="panel a-pages"><header class="panel-head"><h2>أكتر الصفحات مشاهدة في آخر 24 ساعة</h2><span class="muted small">بتتحدّث كل دقيقة</span></header>
+    <div class="rows a-pages-rows">${topRows(mergeTopPages(data.topPages, () => null))}</div></section>` : ''}`);
   if ((data.topPages || []).length) {
     siteData('search-index.json').then(index => {
-      const rows = q(`#${pagesId}`);
+      const rows = q('.a-pages-rows');
       if (rows) mount(rows, html`${topRows(mergeTopPages(data.topPages, pageFinder(index)))}`);
     }).catch(() => {});
   }
   const draw = () => {
-    const slice = st.range ? daily.slice(-st.range) : daily;
+    const slice = st.range ? all.slice(-st.range) : counted;
     q('.a-svg').innerHTML = chart(slice, st.metric);
-    q('.a-range-label').textContent = st.range ? `آخر ${num(st.range)} يوم` : `من ${shortDay(daily[0] ? daily[0].date : '')} (${num(daily.length)} يوم)`;
     q('.a-metric-label').textContent = st.metric === 'visitors' ? 'زوار' : 'مشاهدات';
+    q('.a-range-label').textContent = st.range ? `آخر ${num(st.range)} يوم` : `من ${since || '—'}`;
     q('.a-total').textContent = k(sum(slice, st.metric));
     const peak = slice.reduce((m, d) => (d[st.metric] != null && d[st.metric] > (m ? m[st.metric] : -1) ? d : m), null);
-    const partial = !measured(slice, st.metric) && since ? ` · العدّ الحقيقي بدأ ${since}` : '';
-    q('.a-peak').textContent = (peak ? `أعلى يوم: ${num(peak[st.metric])} (${shortDay(peak.date)})` : '') + partial;
+    q('.a-peak').textContent = peak ? `أعلى يوم: ${num(peak[st.metric])} (${shortDay(peak.date)})` : '';
   };
   draw();
   box.querySelectorAll('.a-range button').forEach(b => b.onclick = () => { st.range = +b.dataset.v; box.querySelectorAll('.a-range button').forEach(x => x.classList.toggle('on', x === b)); draw(); });

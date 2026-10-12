@@ -74,14 +74,12 @@ test('every page loads the counter, which waits until a person really sees the p
   assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /if \(path === "\/v"\) return recordView\(request, env\);/);
 });
 
-test('the panel shows the real numbers and Cloudflare\'s, each in its place, refreshed every minute, with all their history', () => {
-  // owner 2026-10-12: «عايز اشوف الارقام كلها قديم وجديد وكل حاجة في مكانها وبيتحدث علطول» (INCIDENTS #459)
+test('the panel shows one set of numbers, the real ones, refreshed every minute, with all their history', () => {
+  // owner 2026-10-12: «عايز حاجة واحدة بس احترافية وحقيقة … ودايما يكون محدث للارقام الحقيقية وبس» (INCIDENTS #460)
   const view = fs.readFileSync('studio/js/views/analytics.js', 'utf8');
-  assert.match(view, /<div id="a-real"><\/div><div id="a-cf"><\/div>/);
+  assert.doesNotMatch(view, /cloudflareAnalytics|a-cf/);
   assert.match(view, /const REFRESH_MS = 60_000;/);
   assert.match(view, /\[7, 14, 30, 0\]/);
-  const studio = fs.readFileSync('worker/src/studio.ts', 'utf8');
-  assert.match(studio, /route === 'analytics\/cloudflare'/);
-  assert.match(studio, /cfAnalytics\(cfg\.token, cfg\.zoneId, 365\)/);
-  assert.match(studio, /httpRequests1dGroups\(limit: 400,/);
+  assert.match(view, /Math\.max\(14, daily\.length\)/);
+  assert.doesNotMatch(fs.readFileSync('worker/src/studio.ts', 'utf8'), /route === 'analytics\/cloudflare'/);
 });

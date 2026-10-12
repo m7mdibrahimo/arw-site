@@ -97,8 +97,6 @@ export const api = {
   saveAvatar: (image) => call('/api/studio/avatar', { method: 'POST', body: { image } }),
   overview: (urls) => call('/api/studio/overview', { method: 'POST', body: { urls } }),
   analytics: () => call('/api/studio/analytics'),
-  // Cloudflare's own numbers (every request), shown below the real ones (INCIDENTS #459)
-  cloudflareAnalytics: () => call('/api/studio/analytics/cloudflare'),
   // every page's real views since the counter has records (INCIDENTS #457)
   pageViews: () => call('/api/studio/analytics/views'),
   connectAnalytics: (b) => call('/api/studio/analytics/config', { method: 'POST', body: b }),
