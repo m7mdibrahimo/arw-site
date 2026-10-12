@@ -3505,7 +3505,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261012195813-gcw-fight-club-night-two-2026": {
     "publishedAt": 1791825483445,
