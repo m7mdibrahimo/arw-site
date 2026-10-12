@@ -1,7 +1,7 @@
 ---
-title: "TNA Bound For Glory Results: Leon Slater Wins World Title"
+title: "TNA Bound for Glory Results: Leon Slater Wins World Title"
 slug: "tna-bound-for-glory-results-leon-slater-wins-world-title"
-description: "TNA Bound For Glory took place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event featured the induction of Amazing Red, Konnan, and…"
+description: "TNA Bound for Glory took place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event featured the induction of Amazing Red, Konnan, and…"
 federation: TNA
 date: 2026-10-11T20:44:51.000Z
 source_id: 802253624
@@ -13,7 +13,7 @@ en_tags:
   - "Nic Nemeth"
 image: /content/images/xwp21nv4a25bpn8o.jpg
 ---
-TNA Bound For Glory took place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event featured the induction of Amazing Red, Konnan, and ODB into the TNA Hall of Fame. In the main event, Leon Slater defeated Nic Nemeth to capture the TNA World Championship.
+TNA Bound for Glory took place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event featured the induction of Amazing Red, Konnan, and ODB into the TNA Hall of Fame. In the main event, Leon Slater defeated Nic Nemeth to capture the TNA World Championship.
 
 Results:
 Ricky Sosa def. Eddie Edwards

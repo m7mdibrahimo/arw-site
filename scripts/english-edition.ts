@@ -144,6 +144,9 @@ const galleryYaml = (g?: string[]) => (g && g.length ? ["gallery:", ...g.map((x)
 /** Wrong→right spellings fixed in every English story before it is saved (INCIDENTS #385) */
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
+  // Title Case capitalised the small word of an event name (INCIDENTS #441)
+  [/\bBound For Glory\b/g, "Bound for Glory"],
+  [/\bsyX\b/g, "Syx"],
 ];
 export function fixEnglishNames(text: string): string {
   return ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), text);

@@ -4435,3 +4435,8 @@ test('every show page says in words what it is: «عن العرض» with true fa
   assert.match(layout, /showAboutFor\(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections\.news\)/);
   assert.match(layout, /تنبيه: تكشف نتائج النزالات/);
 });
+
+test('English fixes keep "for" lowercase in Bound for Glory and spell Syx right (INCIDENTS #441)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('TNA Bound For Glory: syX wins'), 'TNA Bound for Glory: Syx wins');
+});
