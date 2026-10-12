@@ -1,6 +1,6 @@
 // Visitor statistics at the top of the home page — people only, from the site's own counter (INCIDENTS #457).
-// Days before the counter started come from Cloudflare's records with every bot left out: views only, and visitors
-// show «—» for those days rather than a number that wasn't measured.
+// Days before the counter started (12 Oct 2026) show «—»: Cloudflare counted pages the browser fetched ahead of a
+// click as views, 5–6 times the real number, so nothing from it is shown as a measurement.
 import { api, siteData, getUser } from '../api.js';
 import { html, mount, $, $$, icon, toast, num, esc } from '../ui.js';
 
@@ -115,8 +115,8 @@ export async function renderAnalytics(el) {
       <div id="a-svg" class="a-svg"></div>
     </div>
     <div class="blk blk-yellow"><small>زوار النهارده لحد دلوقتي</small><b>${num(today.visitors)}</b><em>امبارح كله: ${yesterday.visitors == null ? '— (لسه ماكانش بيتعد)' : num(yesterday.visitors)}</em></div>
-    <div class="blk blk-coral"><small>مشاهدات النهارده لحد دلوقتي</small><b>${k(today.views)}</b><em>امبارح كله: ${k(yesterday.views)}</em></div>
-    <div class="blk blk-ink"><small>زوار آخر 7 أيام</small><b>${k(sum(last7, 'visitors'))}</b>${measured(last7, 'visitors') ? delta(kpis[2].delta, 'عن الأسبوع اللي فات') : html`<em>من ${since} بس (بداية عدّ الزوار)</em>`}</div>
+    <div class="blk blk-coral"><small>مشاهدات النهارده لحد دلوقتي</small><b>${k(today.views)}</b><em>امبارح كله: ${yesterday.views == null ? '— (لسه ماكانش بيتعد)' : k(yesterday.views)}</em></div>
+    <div class="blk blk-ink"><small>زوار آخر 7 أيام</small><b>${k(sum(last7, 'visitors'))}</b>${measured(last7, 'visitors') ? delta(kpis[2].delta, 'عن الأسبوع اللي فات') : html`<em>من ${since} بس (بداية العدّ الحقيقي)</em>`}</div>
     <div class="blk blk-cream"><small>أكتر الدول (مشاهدات آخر 7 أيام)</small>
       ${top.length ? html`<b class="b-sm">${countryName(top[0].code)} ${Math.round(top[0].requests / tot * 100)}%</b><em>${top.slice(1).map(c => `${countryName(c.code)} ${Math.round(c.requests / tot * 100)}%`).join(' · ')}</em>` : html`<b class="b-sm">—</b>`}
     </div>
@@ -137,7 +137,7 @@ export async function renderAnalytics(el) {
     $('#a-range-label').textContent = String(range);
     $('#a-total').textContent = k(sum(slice, metric));
     const peak = slice.reduce((m, d) => (d[metric] != null && d[metric] > (m ? m[metric] : -1) ? d : m), null);
-    const partial = metric === 'visitors' && !measured(slice, 'visitors') && since ? ` · الزوار بيتعدّوا من ${since}` : '';
+    const partial = !measured(slice, metric) && since ? ` · العدّ الحقيقي بدأ ${since}` : '';
     $('#a-peak').textContent = (peak ? `أعلى يوم: ${num(peak[metric])} (${shortDay(peak.date)})` : '') + partial;
   };
   draw();

@@ -49,16 +49,17 @@ test('page addresses are counted the way the site writes them', () => {
   assert.equal(cairo(Date.parse('2026-10-12T22:30:00Z')).day, '2026-10-13');
 });
 
-test('days before people were counted show no visitors rather than a wrong number', async () => {
+test('days before the counter started show no number rather than a wrong one', async () => {
   const rows: Record<string, any[]> = {
-    day_views: [{ day: '2026-10-11', views: 50000 }, { day: '2026-10-12', views: 20000 }],
+    day_views: [{ day: '2026-10-12', views: 20000 }],
     visitor_daily_by_day: [{ day: '2026-10-12', n: 3000 }],
     min: [{ d: '2026-10-12' }],
   };
   const db: any = { prepare: (sql: string) => ({ sql, bind() { return this; } }), batch: async (list: any[]) => list.map((s: any) =>
-    ({ results: /FROM day_views/.test(s.sql) ? rows.day_views : /MIN\(day\)/.test(s.sql) ? rows.min : /FROM visitor_daily WHERE/.test(s.sql) ? rows.visitor_daily_by_day : [] })) };
+    ({ results: /MIN\(day\)/.test(s.sql) ? rows.min : /FROM day_views/.test(s.sql) ? rows.day_views : /FROM visitor_daily WHERE/.test(s.sql) ? rows.visitor_daily_by_day : [] })) };
   const a = await siteAnalytics({ ANALYTICS: db, PUSH_KV: kv() as any }, 3, Date.parse('2026-10-12T12:00:00Z'));
-  assert.deepEqual(a.daily.map(d => [d.date, d.views, d.visitors]), [['2026-10-10', 0, null], ['2026-10-11', 50000, null], ['2026-10-12', 20000, 3000]]);
+  // a day the counter didn't see: «—» for views and visitors alike
+  assert.deepEqual(a.daily.map(d => [d.date, d.views, d.visitors]), [['2026-10-10', null, null], ['2026-10-11', null, null], ['2026-10-12', 20000, 3000]]);
   assert.equal(a.visitorsSince, '2026-10-12');
 });
 

@@ -6,8 +6,10 @@
 //   day_views / hour_views / country_daily  — views per day, per hour, per country and day
 //   visitor_daily / visitor_hourly          — one row per visitor and day (or hour): an anonymous hash of the
 //                                              address, browser and day, never stored as is (no cookie)
-// Days and hours are Cairo time, the owner's. Days before the counter started were filled from Cloudflare's own
-// records with every bot left out (scripts/analytics-backfill.ts): views only — people weren't counted then.
+// Days and hours are Cairo time, the owner's. Nothing before the counter started (2026-10-12 18:49 Cairo) is shown:
+// Cloudflare's records can't tell a page a person saw from one the browser fetched ahead in case it is clicked
+// (prefetch/prerender) — with every bot left out they still read 5–6 times the real views (one visitor «opened» the
+// same show 15 times in 15 minutes). A day the counter didn't see shows «—», never a number that wasn't measured.
 
 export interface AnalyticsEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace }
 
@@ -100,26 +102,28 @@ export async function siteAnalytics(env: AnalyticsEnv, days = 30, now = Date.now
     db.prepare("SELECT hour, COUNT(*) AS n FROM visitor_hourly WHERE hour >= ?1 GROUP BY hour").bind(h24),
     db.prepare("SELECT country, SUM(views) AS v FROM country_daily WHERE day >= ?1 GROUP BY country ORDER BY v DESC LIMIT 8").bind(from7),
     db.prepare("SELECT path, SUM(views) AS v FROM page_hourly WHERE hour >= ?1 GROUP BY path ORDER BY v DESC LIMIT 12").bind(h24),
-    db.prepare("SELECT MIN(day) AS d FROM visitor_daily"),
+    db.prepare("SELECT MIN(day) AS d FROM day_views"),
   ]) as any[];
   const vByDay = new Map<string, number>((views.results || []).map((r: any) => [r.day, r.views]));
   const pByDay = new Map<string, number>((people.results || []).map((r: any) => [r.day, r.n]));
-  const visitorsSince: string | null = start.results?.[0]?.d || null;
+  const since: string | null = start.results?.[0]?.d || null;
   const daily = [];
   for (let i = days - 1; i >= 0; i--) {
     const day = daysBack(now, i);
-    // before the counter started, people weren't counted: no number rather than a wrong one
-    daily.push({ date: day, views: vByDay.get(day) || 0, visitors: visitorsSince && day >= visitorsSince ? pByDay.get(day) || 0 : null });
+    // before the counter started nothing was measured: no number rather than a wrong one
+    const seen = !!since && day >= since;
+    daily.push({ date: day, views: seen ? vByDay.get(day) || 0 : null, visitors: seen ? pByDay.get(day) || 0 : null });
   }
   const hvByHour = new Map<string, number>((hViews.results || []).map((r: any) => [r.hour, r.views]));
   const hpByHour = new Map<string, number>((hPeople.results || []).map((r: any) => [r.hour, r.n]));
   const hourly = [];
   for (let i = 23; i >= 0; i--) {
     const hour = cairo(now - i * 3600_000).hour;
-    hourly.push({ at: hour, views: hvByHour.get(hour) || 0, visitors: hpByHour.get(hour) ?? null });
+    const seen = !!since && hour.slice(0, 10) >= since;
+    hourly.push({ at: hour, views: seen ? hvByHour.get(hour) || 0 : null, visitors: seen ? hpByHour.get(hour) || 0 : null });
   }
   return {
-    daily, hourly, visitorsSince,
+    daily, hourly, visitorsSince: since, since,
     topCountries: (countries.results || []).map((r: any) => ({ code: r.country, requests: r.v })),
     topPages: (pages.results || []).map((r: any) => ({ path: r.path, views: r.v })),
     source: "site", updatedAt: now,
