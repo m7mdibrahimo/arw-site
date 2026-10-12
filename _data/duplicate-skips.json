@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/will-ospreay-to-defend-aew-world-title-against-kazuchika-okada-at-grand-slam-france/": {
-    "matchedFile": "20260927082933-ويل-أوسبراي-يتحدى-كازوتشيكا-أوكادا-لنزال-في-عرض-grand-slam-باريس.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-27T05:47:08.251Z"
-  },
   "https://www.fightful.com/wrestling/tony-khan-was-surprised-that-wwe-was-surprised-aew-all-out-sold-so-well-weve-sold-out-this-arena-many-times/": {
     "matchedFile": "20260926170000-توني-خان-عرض-aew-all-out-يشبه-متجر-موكا-جو-من-مسلسل-curb-your-enthusiasm.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012140732-كيني-أوميغا-يظهر-في-عرض-njpw-king-of-pro-wrestling-ويهاجم-يوتا-تسوجي.md",
     "reason": "الخبر الجديد يمثل متابعة وتحديثا لنفس الحدث الذي ظهر فيه كيني أوميغا في عرض NJPW King of Pro-Wrestling وهاجم يوتا تسوجي، ويشمل تصريحاته الجديدة في الكواليس حول اقتراح نزال ثلاثي في عرض باور ستراجل.",
     "at": "2026-10-12T11:31:21.180Z"
+  },
+  "https://www.ringsidenews.com/kenny-omega-attacks-yota-tsuji-njpw-king-pro-wrestling-2026-calls-his-shot-iwgp-world-title/": {
+    "matchedFile": "20261012140732-كيني-أوميغا-يظهر-في-عرض-njpw-king-of-pro-wrestling-ويهاجم-يوتا-تسوجي.md",
+    "reason": "الخبر الجديد يتحدث عن نفس الحدث والتفاصيل الخاصة بظهور كيني أوميغا ومهاجمته ليوتا تسوجي في عرض NJPW King of Pro-Wrestling 2026 وهو نفس الخبر المنشور مسبقاً.",
+    "at": "2026-10-12T11:35:08.799Z"
   }
 }
