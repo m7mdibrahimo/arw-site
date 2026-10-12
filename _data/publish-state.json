@@ -708,7 +708,8 @@
     "https___arab-wrestling_com_news____-tna-bound-for-glory-2026-_____-____-_______-______-_________": 1791775869691,
     "httpsarab-wrestlingcomnewsعرض-tna-bound-for-glory-2026-ثلاثة-أمور-كرهناها-وثلاثة-أحببناها": 1791776031317,
     "httpsarab-wrestlingcomnewsزايدا-ستيل-تتحدث-عن-الحدث-الرئيسي-الأول-في-عروض-roh-كنت-طفلة-في-متجر-حلوى": 1791777893750,
-    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380
+    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380,
+    "httpsarab-wrestlingcomnewsلماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب": 1791780109242
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsتقرير-نسب-المشاهدة-وأعداد-المتابعين-لعرض-aew-dynamite-2026": 1791169139032,
@@ -1423,7 +1424,8 @@
     "https___arab-wrestling_com_news____-tna-bound-for-glory-2026-_____-____-_______-______-_________": 1791775869691,
     "httpsarab-wrestlingcomnewsعرض-tna-bound-for-glory-2026-ثلاثة-أمور-كرهناها-وثلاثة-أحببناها": 1791776042666,
     "httpsarab-wrestlingcomnewsزايدا-ستيل-تتحدث-عن-الحدث-الرئيسي-الأول-في-عروض-roh-كنت-طفلة-في-متجر-حلوى": 1791777904691,
-    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380
+    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380,
+    "httpsarab-wrestlingcomnewsلماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب": 1791780109242
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsرومان-رينز-يصف-علاقته-بمرشديه-في-wwe-جون-سينا-وذا-روك": 1791173885386,
@@ -1867,7 +1869,8 @@
     "httpsarab-wrestlingcomshowscmll-sabados-de-coliseo-10-10-2026": 1791774677541,
     "https___arab-wrestling_com_news____-tna-bound-for-glory-2026-_____-____-_______-______-_________": 1791775869691,
     "httpsarab-wrestlingcomnewsعرض-tna-bound-for-glory-2026-ثلاثة-أمور-كرهناها-وثلاثة-أحببناها": 1791776530016,
-    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380
+    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380,
+    "httpsarab-wrestlingcomnewsلماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب": 1791780109242
   },
   "x": {
     "https___arab-wrestling_com_news____-____-____-__-_____-_______-___-______-___-wwe_": 1791198755043,
@@ -1988,7 +1991,8 @@
     "https___arab-wrestling_com_news_____-_____-____-___-_____-_____-____-______-__-___-tna-bound-for-glory_": 1791763562476,
     "httpsarab-wrestlingcomnewsليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory": 1791763728676,
     "https___arab-wrestling_com_news____-tna-bound-for-glory-2026-_____-____-_______-______-_________": 1791775869691,
-    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380
+    "https___arab-wrestling_com_news______-____-_____-tna-_____-___-_______-__-__-______": 1791779893380,
+    "httpsarab-wrestlingcomnewsلماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب": 1791780109242
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -3104,6 +3108,15 @@
       "reason": "result",
       "why": "title",
       "note": "المنشور يكشف نتيجة نزال بطولة العالم في عرض TNA Bound for Glory الذي أقيم في آخر 6 ساعات."
+    },
+    "httpsarab-wrestlingcomnewsلماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب": {
+      "at": 1791780109242,
+      "title": "لماذا تأخر اتحاد TNA طويلا قبل التعاقد مع بن بيشوب؟",
+      "url": "/news/لماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب/",
+      "image": "/content/images/fwxvvvsiopfbal9m.jpg",
+      "reason": "return",
+      "why": "ai",
+      "note": "الخبر يكشف عن ظهور مفاجئ للمصارع بن بيشوب في عرض Bound for Glory الذي أقيم يوم 11 أكتوبر، أي منذ أقل من 6 ساعات."
     }
   },
   "byFile": {
