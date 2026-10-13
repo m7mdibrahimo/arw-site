@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/ricochet-defends-spot-that-led-to-steven-borden-injury-no-one-is-at-fault-here/": {
-    "matchedFile": "20260928175807-ريكوشيه-يدافع-عن-ستيفن-بوردن-بعد-إصابته-المرعبة-في-عرض-aew-all-out.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-28T16:05:04.526Z"
-  },
   "https://www.fightful.com/wrestling/even-more-wrestling-personalities-remember-pac-benjamin-satterley/": {
     "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012153000-لايني-لاك-تعلق-على-عدم-تجديد-عقدها-مع-wwe-id-أشعر-أنني-حصلت-على-كل-ما-يمكنني-تحقيقه-من-البرنامج.md",
     "reason": "الخبر الجديد يعيد سرد نفس التصريحات حول رحلة لايني لاك مع اللقب وعدم تجديد عقدها، وهي تفاصيل تم تغطيتها بالفعل في الخبر رقم 3.",
     "at": "2026-10-13T16:18:09.875Z"
+  },
+  "https://www.wrestlinginc.com/2285478/tna-bound-for-glory-2026-wwe-sheamus-wanted-debut/": {
+    "matchedFile": "20261012223823-نجم-wwe-سابق-كان-الخيار-الأول-لاتحاد-tna-للمشاركة-في-عرض-bound-for-glory.md",
+    "reason": "الخبر الجديد يكرر نفس التفاصيل الموجودة في الخبر رقم 0 حول كون شيماس الخيار الأول لاتحاد TNA لعرض Bound for Glory وما تبع ذلك من أحداث.",
+    "at": "2026-10-13T16:37:40.914Z"
   }
 }
