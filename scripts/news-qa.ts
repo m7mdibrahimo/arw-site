@@ -120,6 +120,10 @@ const RULES: Rule[] = [
   { code: "vague_filler", severity: "error", re: /(?:ت|ي)خوض(?:ان)?\s+(?:[ء-ي]+\s+){0,3}خطوات(?:ها|ه|هما)\s+(?:القادمة|المقبلة|التالية)/g, message: "جملة حشو مبهمة مكان واقعة — اكتب اللي قاله المصدر بالظبط (حصل: «تخوض داكوتا كاي خطواتها القادمة» والمصدر: آخر نزال لها في أبريل)", fields: ["title", "body"] },
   // The reporter's name is scrubbed to «تقارير صحفية» but his first-person «he asked / he checked» stays — «أكدت تقارير صحفية مطلعة أنه تحرى عن وضع هوليداي» (INCIDENTS #333)
   { code: "scrubbed_reporter_pronoun", severity: "error", re: /تقارير\s+صحفية(?:\s+مطلعة)?\s+(?:ب?[أإا]نه|ب?[أإا]نها)\s+(?:تحرى|تحرّى|سأل|استفسر|تواصل|تحقق|علم|اطلع|اتصل|تحدث)/g, message: "اسم الصحفي اتشال وفضل ضميره («تقارير صحفية أنه تحرى») — الجملة مش مفهومة، اكتب الواقعة من غير ضمير الصحفي (مثلا: «وبحسب تقارير صحفية مطلعة، فإن...»)", fields: ["title", "body"] },
+  // The scrubbed reporter placeholder stuck after a job word — «مع الصحفي تقارير صحفية مطلعة» (INCIDENTS #498)
+  { code: "scrubbed_reporter_role", severity: "error", re: /(?:الصحفي|الصحفية|المراسل|المراسلة|الكاتب|المحلل)\s+تقارير\s+صحفية/g, message: "اسم الصحفي اتشال وفضلت كلمة «الصحفي» قبل «تقارير صحفية» — اكتب «تقارير صحفية مطلعة» من غير «الصحفي»", fields: ["title", "body"] },
+  // American football: a touchdown is «تاتشداون», never «هدف» (INCIDENTS #498)
+  { code: "touchdown_as_goal", severity: "error", re: /(?:بتسجيل|سجل|سجلت|بإحراز|أحرز|أحرزت)\s+(?:هدفين|هدفا|أهداف\w*|هدفه|هدفيه)\s+(?:خلال|في|ضد)\s+مواجهة\s+فريقه/g, message: "touchdown في الكرة الأمريكية يتكتب «تاتشداون» مش «هدف»", fields: ["title", "body"] },
   // A multi-word name listed twice in a row — «ويل أوسبراي وهينيرا وغريت أو خان وغريت أو خان» (INCIDENTS #294)
   { code: "doubled_name", severity: "error", re: /(?:(?<![ء-ي])|(?<=(?<![ء-ي])و))((?:[ء-ي]+\s+){1,3}[ء-ي]+)\s+و\1(?![ء-ي])(?!\s*(?:الثاني|الثانية|جونيور|جونير|سينيور|الابن|II|2)(?![ء-ي]))/g, message: "اسم مكتوب مرتين ورا بعض — اكتب أعضاء الفريق زي المصدر (حصل: «غريت أو خان وغريت أو خان»)", fields: ["title", "body"] },
   // «خلال عرض WWE RAW في عرض WWE RAW بتاريخ 21 سبتمبر» — the show named twice in one breath (INCIDENTS #299)

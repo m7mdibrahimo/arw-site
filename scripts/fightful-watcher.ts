@@ -609,6 +609,8 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("شون\\s*روس\\s*ساب"), "تقارير صحفية مطلعة")
     .replace(arWord("شون\\s*روس"), "تقارير صحفية")
     .replace(/Fightful\s*Select/gi, "تقارير صحفية")
+    // The name was scrubbed but the job word before it stayed — «مع الصحفي تقارير صحفية مطلعة» (INCIDENTS #498)
+    .replace(/(?:الصحفي|الصحفية|المراسل|المراسلة|الكاتب|المحلل)\s+(تقارير\s+صحفية)/g, "$1")
     .replace(/موقع\s*\*?Fightful\*?/gi, "تقارير صحفية")
     .replace(/شبكة\s*\*?Fightful\*?/gi, "تقارير صحفية")
     .replace(/منصة\s*\*?Fightful\*?/gi, "تقارير صحفية")

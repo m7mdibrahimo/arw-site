@@ -4697,3 +4697,12 @@ test('nostalgia episodes get the same search title and description as shows (INC
   assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf8'), /"content\/shows" in page\.inputPath or "content\/nostalgia" in page\.inputPath\) %}\{% set showSeoData/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /startsWith\("\/nostalgia\/"\) && \/\^\[A-Za-z\]\/\.test\(String\(title/);
 });
+
+test('scrubbed reporter name after a job word and touchdown-as-goal are flagged (INCIDENTS #498)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa');
+  const t = 'عنوان عربي كامل للخبر هنا';
+  assert.ok(checkArticle(t, 'تحدثت نايلا روز عن تفاعلاتها الأخيرة مع الصحفي تقارير صحفية مطلعة وعن حياتها اليومية.').some(i => i.code === 'scrubbed_reporter_role'));
+  assert.ok(!checkArticle(t, 'وبحسب تقارير صحفية مطلعة، فإن الخطة لن تتغير في الأسابيع القادمة.').some(i => i.code === 'scrubbed_reporter_role'));
+  assert.ok(checkArticle(t, 'نجح جامار تشيس في إلغاء الغرامات بسبب احتفاله بتسجيل هدفين خلال مواجهة فريقه ضد هيوستن.').some(i => i.code === 'touchdown_as_goal'));
+  assert.ok(!checkArticle(t, 'نجح جامار تشيس في إلغاء الغرامات بسبب احتفاله بتسجيل تاتشداونين خلال مواجهة فريقه ضد هيوستن.').some(i => i.code === 'touchdown_as_goal'));
+});
