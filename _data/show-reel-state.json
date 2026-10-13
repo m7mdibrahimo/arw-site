@@ -3535,5 +3535,24 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "mediaDeleted": true
+  },
+  "20261013151655-wwe-raw-12-10-2026": {
+    "publishedAt": 1791894677778,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض الرو 12.10.2026 مترجم",
+    "lastAttempt": 1791894693715,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
