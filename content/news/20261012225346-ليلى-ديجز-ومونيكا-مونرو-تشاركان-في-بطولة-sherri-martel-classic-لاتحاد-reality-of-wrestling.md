@@ -1,6 +1,7 @@
 ---
+permalink: "/news/ليلى-ديجز-ومونيكا-مونرو-تشاركان-في-بطولة-sherri-martel-classic-لاتحاد-reality-of-wrestling/index.html"
 federation: WWE
-title: "ليلى ديجز ومونيكا مونرو تشاركان في بطولة Sherri Martel Classic لاتحاد Reality of Wrestling"
+title: "مشاركة ليلى ديجز ومونيكا مونرو في بطولة Sherri Martel Classic لاتحاد Reality of Wrestling"
 date: 2026-10-12T22:53:46.000+03:00
 published_at: 2026-10-12T19:54:20.300Z
 source_id: 333549

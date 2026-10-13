@@ -406,7 +406,7 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
       <div class="era-decade-head"><span class="era-decade-range">{{ d.start }} – {{ d.end }}</span><span class="era-decade-count">{% if d.years.length == 1 %}سنة واحدة{% elif d.years.length == 2 %}سنتان{% else %}{{ d.years.length }} سنوات{% endif %}</span></div>
       <div class="era-decade-years">
       {% for y in d.years %}
-        <button type="button" class="era-year{% if y.isCurrent %} is-new{% endif %}" role="radio" aria-checked="false" data-year="{{ y.year }}" title="{% if y.count == 1 %}سلسلة واحدة{% elif y.count == 2 %}سلسلتان{% elif y.count <= 10 %}{{ y.count }} سلاسل{% else %}{{ y.count }} سلسلة{% endif %}">
+        <button type="button" class="era-year{% if y.isCurrent %} is-new{% endif %}" role="radio" aria-checked="false" data-year="{{ y.year }}" title="{% if y.count == 1 %}سلسلة واحدة{% elif y.count <= 10 %}{{ y.count }} سلاسل{% else %}{{ y.count }} سلسلة{% endif %}">
           <span class="era-year-num">{{ y.year }}</span>
           <span class="era-year-meta">{{ y.count }}</span>
         </button>

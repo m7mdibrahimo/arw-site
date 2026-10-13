@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { applyCorrections, checkArticle } from '../scripts/news-qa';
+import { applyCorrections, checkArticle, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
 
 // INCIDENTS #409: «حركة مونس ault» and «في صعد القمة» reached the site.
 test('known broken words are corrected automatically', () => {
@@ -11,7 +11,8 @@ test('known broken words are corrected automatically', () => {
 
 test('broken_word is a publish-blocking code in the Fightful pipeline', () => {
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
-  assert.match(src, /"broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "mixed_script_word"\]\.includes/);
+  assert.match(src, /BLOCKING_QA_CODES\.includes\(i\.code\)/);
+  for (const c of ['broken_word', 'fem_plural_kn', 'glued_latin_arabic', 'detached_prefix', 'number_word_digits', 'mixed_script_word']) assert.ok(BLOCKING_QA_CODES.includes(c), c);
   const issues = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'تفادى محاولة حركة مونس ault من ريد ' + 'كلام '.repeat(80));
   assert.ok(issues.some(i => i.code === 'broken_word'));
 });
@@ -65,7 +66,7 @@ test('feminine-plural «يقدمكن» is blocked and referee «الحكمة» i
   assert.equal(applyCorrections('هؤلاء المصارعات يقدمكن مستويات'), 'هؤلاء المصارعات يقدمن مستويات');
   assert.equal(applyCorrections('طردهما الحكمة جيسيكا كار'), 'طردهما الحكم جيسيكا كار');
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', 'المصارعات يقدمكن مستويات ' + 'كلام '.repeat(80), []).some(i => i.code === 'fem_plural_kn'));
-  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /"fem_plural_kn"/);
+  assert.ok(BLOCKING_QA_CODES.includes('fem_plural_kn'));
 });
 
 // INCIDENTS #429: «لهكته» (typo for لهجته) and the filler «يسخر ساخرا».
@@ -166,7 +167,8 @@ test('mixed_script_word and name_not_in_source block publishing', async () => {
   const { wrestlerNotInSource, checkArticle } = await import('../scripts/news-qa.ts');
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /name_not_in_source/);
-  assert.match(src, /"mixed_script_word", "name_not_in_source"\]\.includes/);
+  assert.match(src, /RETRYABLE_QA_CODES\.includes\(i\.code\)/);
+  assert.ok(RETRYABLE_QA_CODES.includes('mixed_script_word') && RETRYABLE_QA_CODES.includes('name_not_in_source'));
   assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'بدأ العرض بنزال فاز فيه شingo تاكاغي ودايكي ' + 'كلام '.repeat(80)).some(i => i.code === 'mixed_script_word'));
   const gl = { 'El Hijo del Vikingo': 'إل هيخو ديل فيكينجو' };
   const source = 'El Hijo de Fishman has reached a financial restitution agreement with the family of late referee Gerardo Pineda. '.repeat(3);

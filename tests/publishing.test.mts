@@ -4569,3 +4569,22 @@ test('ROH aliases are keyed by the real library slugs (the old «roh» key match
   assert.match(cfg, /"roh-specials": \[/);
   assert.doesNotMatch(cfg, /\n\s+"roh": \[/);
 });
+
+// INCIDENTS #471: recaps carry the episode's date spellings on their VideoObject too
+test('recap pages carry the episode name forms on the VideoObject (INCIDENTS #471)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.ok(layout.includes("{% if page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') %}{% set ldNames = ldNames.concat(showNameForms("));
+});
+
+// INCIDENTS #471: dual forms / dual nouns / English title names stop a story (they reached the site in ~4% of stories)
+test('dual forms and dual nouns block publishing', async () => {
+  const { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, checkArticle } = await import('../scripts/news-qa.ts');
+  for (const c of ['dual_noun', 'dual_form']) {
+    assert.ok(BLOCKING_QA_CODES.includes(c), c);
+    assert.ok(RETRYABLE_QA_CODES.includes(c), c);
+  }
+  const codes = checkArticle('فريق الأخوين نيميث يتأهل', 'خاض الفريق نزالين ضمن العروض، وأكد أنهما يمتلكان فرصة كبيرة.', []).map(i => i.code);
+  assert.ok(codes.includes('dual_noun') && codes.includes('dual_form'));
+  const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(src, /\.filter\(i => BLOCKING_QA_CODES\.includes\(i\.code\)\)/);
+});

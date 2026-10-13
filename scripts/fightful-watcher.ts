@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4385,7 +4385,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft.tags = canonicalTags(dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags)));
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
-    .filter(i => ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "mixed_script_word"].includes(i.code));
+    .filter(i => BLOCKING_QA_CODES.includes(i.code));
   // An age the source never gives is an invented number (INCIDENTS #341).
   // A wrestler the source never names but the story keeps naming is a swapped name (INCIDENTS #461).
   for (const en of wrestlerNotInSource(draft.body, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP)) {
@@ -4432,7 +4432,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft = { ...draft, title: vinceIsRusso(draft.title, plainText), body: vinceIsRusso(draft.body, plainText), tags: [...new Set(draft.tags.map(t => vinceIsRusso(t, plainText)))] };
   if (blocking.length) {
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
-    if (blocking.some(i => ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source"].includes(i.code))) lastPostRetryable = true;
+    if (blocking.some(i => RETRYABLE_QA_CODES.includes(i.code))) lastPostRetryable = true;
     console.error(`[Watcher] 🛑 Refusing to publish post #${postId}: ${blocking.map(i => `${i.message} «${i.excerpt}»`).join(" | ")}`);
     noteOutcome(postUrl, `المراجعة رفضته: ${blocking.map(i => i.message).join("، ")}`, lastPostRetryable);
     return false;

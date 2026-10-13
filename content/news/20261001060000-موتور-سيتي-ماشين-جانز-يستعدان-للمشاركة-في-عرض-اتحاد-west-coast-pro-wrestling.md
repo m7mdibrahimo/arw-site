@@ -1,6 +1,7 @@
 ---
+permalink: "/news/موتور-سيتي-ماشين-جانز-يستعدان-للمشاركة-في-عرض-اتحاد-west-coast-pro-wrestling/index.html"
 federation: AEW
-title: "موتور سيتي ماشين جانز يستعدان للمشاركة في عرض اتحاد West Coast Pro Wrestling"
+title: "يستعد فريق موتور سيتي ماشين جانز للمشاركة في عرض اتحاد West Coast Pro Wrestling"
 date: 2026-10-01T06:00:00.000+03:00
 published_at: 2026-10-01T03:02:42.259Z
 source_id: 331402
