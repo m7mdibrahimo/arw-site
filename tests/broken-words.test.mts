@@ -247,3 +247,10 @@ test('corrections fix Lady Metal and Fuego spellings', () => {
   assert.match(out, /وليدي ميتال/);
   assert.match(out, /وفويغو/);
 });
+
+test('corrections fix verb agreement and a misspelt word (INCIDENTS #493)', () => {
+  const out = applyCorrections('كشف التقارير أن السبب، بعد أمضائه خمس سنوات، في نزال استعراضي تقام يوم 17');
+  assert.match(out, /كشفت تقارير أن/);
+  assert.match(out, /قضائه/);
+  assert.match(out, /نزال استعراضي يقام/);
+});
