@@ -1,18 +1,18 @@
 {
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-10-10-2026-templario-blue-panther-star-jr-vs-yutani-hermanos-chavez-more": {
-  "reason": "المراجعة رفضته: حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-13T14:42:51.371Z"
+  "at": "2026-10-13T14:49:38.522Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-vs-oleg-boltin-vs-kenny-omega-made-official-jon-moxley-wheeler-yuta-added-to-njpw-power-struggle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T14:39:10.006Z"
+  "at": "2026-10-13T14:47:50.721Z"
  },
  "https://www.fightful.com/wrestling/carmelo-hayes-returns-on-wwe-raw-joins-the-946": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T14:39:09.585Z"
+  "at": "2026-10-13T14:47:50.263Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-appears-on-wwe-raw-set-to-face-liv-morgan-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
