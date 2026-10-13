@@ -1674,6 +1674,21 @@ module.exports = function(eleventyConfig) {
     const prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
     return prog ? { slug: prog.slug, name: prog.name, arName: prog.arName || "", aliases: prog.aliases || [] } : null;
   });
+  // Other Arabic spellings of a program for its library page description (سماكداون / سماك داون / الرو / راو):
+  // people type them without spaces or with a different transliteration. Head only — nothing visible (INCIDENTS #477)
+  eleventyConfig.addNunjucksGlobal("libAltNames", function(prog) {
+    const own = String((prog && prog.arName) || "").trim();
+    const seen = new Set([own]);
+    const out = [];
+    for (const a of (prog && prog.aliases) || []) {
+      const n = String(a || "").trim();
+      if (!n || seen.has(n) || !/[\u0600-\u06FF]/.test(n) || /[A-Za-z0-9]|مترجم|الاخير|الأخير/.test(n)) continue;
+      seen.add(n);
+      out.push(n);
+      if (out.length >= 4) break;
+    }
+    return out.join("، ");
+  });
   // Search titles for a show page, worded the way people search. «عرض الرو 28.09.2026 مترجم» became
   // «عرض الرو الأخير مترجم (28 سبتمبر 2026) — WWE RAW» on the program's newest show, and every show
   // got its own description instead of one sentence shared by all of them (INCIDENTS #275).
