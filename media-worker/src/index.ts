@@ -3,8 +3,9 @@
 // request for a file R2 doesn't have yet takes it from the repo (the bots and the panel keep committing there) and
 // stores it in R2 for every request after.
 import { widthFor } from "./sizes";
+import { backupMedia } from "./backup";
 import LEGACY from "./legacy-img.json";
-export interface Env { MEDIA?: R2Bucket; REPO_RAW: string; GITHUB_OWNER: string; GITHUB_REPO: string }
+export interface Env { MEDIA?: R2Bucket; MEDIA_BACKUP?: R2Bucket; REPO_RAW: string; GITHUB_OWNER: string; GITHUB_REPO: string }
 
 // The resized copies the build used to make (/img/<hash>-<width>.<ext>, INCIDENTS #369): Google, shares and old pages
 // still ask for them. Each name → its original and width, so they are served by the same resizing as «?w=».
@@ -179,6 +180,12 @@ export default {
       await env.MEDIA?.put("status/compress.json", JSON.stringify({ at: new Date().toISOString(), done: n }), { httpMetadata: { contentType: "application/json" } });
     }).catch((e) => console.log(`[media] hourly compress failed: ${e?.stack || e}`)));
     if (new Date(event.scheduledTime).getUTCHours() === 3) ctx.waitUntil(pruneReels(env).then(n => console.log(`[media] ${n} old reels removed`)));
+    // hourly: new and changed pictures copied to «arw-media-backup», which never deletes (INCIDENTS #483);
+    // status/backup.json says when it last ran and how many are still waiting
+    ctx.waitUntil(backupMedia(env).then(async (r) => {
+      if (r.copied) console.log(`[media] backup: ${r.copied} copied, ${r.waiting} waiting, ${r.total} in all`);
+      await env.MEDIA?.put("status/backup.json", JSON.stringify({ at: new Date().toISOString(), ...r }), { httpMetadata: { contentType: "application/json" } });
+    }).catch((e) => console.log(`[media] backup failed: ${e?.stack || e}`)));
   },
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     // POST /compress-stored?n=10 — the hourly job on demand (same GitHub-token check as uploads): what it did, so a

@@ -34,6 +34,11 @@ GITHUB_REPO = "arw-site"
 binding = "MEDIA"
 bucket_name = "arw-media"
 
+# A second copy of the pictures, never deleted from (INCIDENTS #483)
+[[r2_buckets]]
+binding = "MEDIA_BACKUP"
+bucket_name = "arw-media-backup"
+
 # keep the Worker's logs (Workers Logs), so a failed hourly run can be read afterwards (INCIDENTS #372)
 [observability]
 enabled = true
