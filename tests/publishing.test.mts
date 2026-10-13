@@ -4483,9 +4483,10 @@ test('«بـأو خان» becomes Great-O-Khan, not the conjunction «أو»', (
   assert.equal(autoFix('بالإطاحة بـأو خان، مما'), 'بالإطاحة بغريت أو خان، مما');
 });
 
-test('library home links the newest programs directly, with an English label (INCIDENTS #452)', () => {
+test('library home links EVERY program directly (not only the newest 16), with an English label (INCIDENTS #452, #478)', () => {
   const page = fs.readFileSync('pages/library.njk', 'utf-8');
-  assert.match(page, /class="lib-recent[^"]*"[\s\S]{0,400}loop\.index0 < 16[\s\S]{0,200}href="\/library\/\{\{ p\.slug \}\}\/"/);
+  assert.match(page, /class="lib-recent[^"]*"[\s\S]{0,400}\{% for p in lib %\}<a href="\/library\/\{\{ p\.slug \}\}\/"/);
+  assert.doesNotMatch(page.match(/class="lib-recent[\s\S]{0,700}/)[0], /loop\.index0 </);
   assert.match(fs.readFileSync('lib/i18n/en.cjs', 'utf-8'), /"أحدث الأقسام المضافة": "Recently Added Sections"/);
 });
 
