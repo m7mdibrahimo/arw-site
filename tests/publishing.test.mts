@@ -4622,3 +4622,14 @@ test('INCIDENTS #473: every nostalgia series has its English name and descriptio
   }
   assert.deepEqual(missing, []);
 });
+
+test('a main-event show is never filed under its "Road To" tour program (INCIDENTS #474)', () => {
+  const dir = path.join(process.cwd(), 'content/shows');
+  const bad = fs.readdirSync(dir).filter((f) => f.endsWith('.md')).filter((f) => {
+    const head = fs.readFileSync(path.join(dir, f), 'utf8').split('---')[1] || '';
+    const title = (head.match(/^title:\s*(.*)$/m) || [])[1] || '';
+    const program = (head.match(/^program_name:\s*(.*)$/m) || [])[1] || '';
+    return /King Of Pro Wrestling/i.test(title) && !/road to/i.test(title) && /road to/i.test(program);
+  });
+  assert.deepEqual(bad, []);
+});

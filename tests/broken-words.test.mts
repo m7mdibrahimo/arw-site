@@ -131,6 +131,7 @@ test('INCIDENTS #442: «سايرز» is corrected and dual verbs are blocked', (
   const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
   assert.ok(codes('الذين عرفا سابقا باسم آخر').includes('dual_form'));
   assert.ok(codes('حيث كشفا عن نفسيهما في العرض').includes('dual_form'));
+  assert.ok(codes('قدم الثنائي نزالا قويا واستغل كليكما الوقت').includes('dual_form'));
   assert.ok(!codes('وصل الخبر الساعة الثانية ظهرا بالتوقيت المحلي').includes('dual_form'));
 });
 

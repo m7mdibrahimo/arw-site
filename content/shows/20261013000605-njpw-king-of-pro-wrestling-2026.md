@@ -4,7 +4,7 @@ federation: NJPW
 title: NJPW King Of Pro Wrestling (2026)
 headline: عرض ان جيه بي دبليو كينج اوف برو ريسلنج 12.10.2026 مترجم
 card_title: name
-program_name: NJPW Road To King Of Pro Wrestling 2026
+program_name: NJPW King Of Pro Wrestling 2026
 description: عرض ان جيه بي دبليو كينج اوف برو ريسلنج مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-12
 date: 2026-10-13T00:02:15.000+03:00
