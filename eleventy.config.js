@@ -1672,8 +1672,8 @@ module.exports = function(eleventyConfig) {
   });
 
   // The episode's own date spellings for the VideoObject alternateName (INCIDENTS #466)
-  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate) {
-    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate });
+  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow) {
+    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow });
   });
 
   eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description) {

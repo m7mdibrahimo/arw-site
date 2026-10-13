@@ -4554,7 +4554,16 @@ test('episode date spellings and BroadcastEvent are in the VideoObject only (INC
   assert.deepEqual(showNameForms({ headline: 'x', title: 'y', programName: 'z', eventDate: '' }), []);
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
   assert.match(layout, /"publication": \{ "@type": "BroadcastEvent"[^\n]*"isLiveBroadcast": false/);
-  assert.match(layout, /showNameForms\(headline, title, program_name, event_date\)/);
+  assert.match(layout, /showNameForms\(headline, title, program_name, event_date, ldNames/);
+});
+
+test('show pages carry the program aliases with the date and the words visitors add (INCIDENTS #472)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const aliases = ['عرض الرو', 'دبليو دبليو إي راو', 'الرو', 'WWE Raw', 'الرو مترجم'];
+  const forms = showNameForms({ headline: 'عرض الرو مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: true });
+  for (const f of ['دبليو دبليو إي راو 5 أكتوبر 2026', 'عرض الرو مترجم', 'عرض الرو الاخير مترجم', 'تحميل عرض الرو', 'مشاهدة عرض الرو', 'اخر عرض الرو']) assert.ok(forms.includes(f), f);
+  const recap = showNameForms({ headline: 'ملخص الرو مترجم', title: 'WWE RAW Highlights 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: false });
+  assert.ok(!recap.includes('تحميل عرض الرو'));
 });
 
 // INCIDENTS #469: spellings people search for ROH, TNA Impact, Main Event and Evolve are alternate names of their library pages

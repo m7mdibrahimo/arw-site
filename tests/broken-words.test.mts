@@ -230,3 +230,12 @@ test('a quote marker in the middle of a sentence moves to its own line; «يوت
   const left = loadNews().filter(n => /^[^>\n][^\n]*?[:：،][ \t]+>[ \t]+\S/m.test(n.body) || /يوتوتا/.test(n.body)).map(n => n.file);
   assert.deepEqual(left, []);
 });
+
+test('India Sioux is always «إنديا سيوكس», in the rules, the glossary and every story (INCIDENTS #472)', async () => {
+  const { applyCorrections, loadNews } = await import('../scripts/news-qa.ts');
+  assert.equal(applyCorrections('تحدثت إنديا سيو وإنديا سيوك وإنديا سيوكس'), 'تحدثت إنديا سيوكس وإنديا سيوكس وإنديا سيوكس');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['India Sioux'], 'إنديا سيوكس');
+  const bad = loadNews().filter(n => /إنديا\s+سيو(?![ء-ي])|سيوك(?![ء-ي])/.test(n.title + n.body)).map(n => n.file);
+  assert.deepEqual(bad, []);
+});

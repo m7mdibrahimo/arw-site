@@ -123,7 +123,7 @@
       {#- the other ways people write the program's name, on the video itself too (INCIDENTS #446) -#}
       {#- + this episode's own date spellings («عرض الرو 5/10/2026», «WWE RAW October 5 2026»), and the broadcast itself as a non-live BroadcastEvent (INCIDENTS #466) -#}
       {% set ldNames = ([ldAbout.arName] if (ldAbout and ldAbout.arName) else []).concat(ldAbout.aliases if ldAbout else []) %}
-      {% if page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') %}{% set ldNames = ldNames.concat(showNameForms(headline, title, program_name, event_date)) %}{% endif %}
+      {% if page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') %}{% set ldNames = ldNames.concat(showNameForms(headline, title, program_name, event_date, ldNames, page.url.startsWith('/shows/'))) %}{% endif %}
       {% if ldNames.length %}"alternateName": [{% for a in ldNames %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}],{% endif %}
       {% if (eventDate or event_date) and page.url.startsWith('/shows/') %}"publication": { "@type": "BroadcastEvent", "name": "{{ pageTitle | escape }}", "isLiveBroadcast": false, "startDate": {{ (eventDate or event_date) | jsonify | safe }} },{% endif %}
       "mainEntityOfPage": { "@id": "{{ pageUrl }}" },
