@@ -2695,7 +2695,7 @@ test('ages written out in the body become digits before publishing; titles keep 
   assert.equal(spelledAgesToDigits('عن عمر يناهز ثلاثة وأربعين عاما'), 'عن عمر يناهز 43 عاما');
   assert.equal(spelledAgesToDigits('عن عمر يناهز الأربعين عاما'), 'عن عمر يناهز 40 عاما');
   assert.equal(spelledAgesToDigits('أقيم يوم الثلاثين من سبتمبر'), 'أقيم يوم الثلاثين من سبتمبر');
-  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /body: spelledAgesToDigits\(fixText\(draft\.body\)\)/);
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /body: spelledAgesToDigits\(spelledMoneyToDigits\(fixText\(draft\.body\)\)\)/);
 });
 
 test('the writer is told «make the show» means taking part, not staging it (INCIDENTS #203)', () => {
@@ -4684,4 +4684,16 @@ test('English title: a lowercase ordinary word is capitalised, name particles st
   assert.equal(normalizeEnglishTitle("Anthony Bowens Shares Memories: I am Thankful for His Friendship"), "Anthony Bowens Shares Memories: I Am Thankful for His Friendship");
   assert.equal(normalizeEnglishTitle("Karmen Petrovic Discusses Joining Perros del Mal on October 17th"), "Karmen Petrovic Discusses Joining Perros del Mal on October 17th");
   assert.equal(normalizeEnglishTitle("Rhodes Says he is Ready"), "Rhodes Says He Is Ready");
+});
+
+test('a price written in words becomes digits (INCIDENTS #495)', async () => {
+  const { spelledMoneyToDigits } = await import('../scripts/news-qa');
+  assert.equal(spelledMoneyToDigits('مقابل ستة وعشرين دولارا وتسعة وتسعين سنتا، أو دولار واحد وتسعة وتسعين سنتا'), 'مقابل 26.99 دولار، أو 1.99 دولار');
+  assert.equal(spelledMoneyToDigits('بخمسة دولارات'), 'بخمسة دولارات');
+  assert.match(fs.readFileSync('scripts/fightful-watcher.ts', 'utf8'), /spelledMoneyToDigits\(fixText\(draft\.body\)\)\)/);
+});
+
+test('nostalgia episodes get the same search title and description as shows (INCIDENTS #496)', () => {
+  assert.match(fs.readFileSync('_includes/post-layout.njk', 'utf8'), /"content\/shows" in page\.inputPath or "content\/nostalgia" in page\.inputPath\) %}\{% set showSeoData/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /startsWith\("\/nostalgia\/"\) && \/\^\[A-Za-z\]\/\.test\(String\(title/);
 });

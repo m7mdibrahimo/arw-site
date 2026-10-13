@@ -1697,6 +1697,8 @@ module.exports = function(eleventyConfig) {
     const isLatest = (library || []).some(p => p.latest && p.latest.url === url);
     const owner = (library || []).find(p => (p.shows || []).some(s => s.url === url));
     const aliases = owner && owner.aliases ? owner.aliases : [];
+    // Nostalgia episodes carry an Arabic series name as program_name: the English name is the front-matter title without its year («WWE Money in the Bank (2010)»), INCIDENTS #495.
+    if (String(url || "").startsWith("/nostalgia/") && /^[A-Za-z]/.test(String(title || ""))) programName = String(title).replace(/\s*\(\s*\d{4}\s*\)\s*$/, "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{4}\s*$/, "").trim();
     // The dotted date people search with («عرض الرو 05.10.2026 مترجم») joins the title (INCIDENTS #296).
     return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases });
   });

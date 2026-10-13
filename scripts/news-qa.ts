@@ -611,6 +611,27 @@ export function spelledAgesToDigits(body: string): string {
     .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(ألف|ألفي|ألفين)\s+(تذكرة|مشجع|متفرج|مشاهد|دولار|قدم|متر|ميل)(?![\u0600-\u06FF])/g,
       (_m, k: string, w: string) => `${k === "ألف" ? 1000 : 2000} ${w}`);
 }
+/**
+ * A price written out in words becomes digits: «ستة وعشرين دولارا وتسعة وتسعين سنتا» ← «26.99 دولار»,
+ * «دولار واحد وتسعة وتسعين سنتا» ← «1.99 دولار». Amounts stay numerals (style guide); the writer spelled
+ * both parts of a Prime Video price (INCIDENTS #495).
+ */
+export function spelledMoneyToDigits(body: string): string {
+  const U = "(?:واحدا|اثنين|ثلاثة|ثلاثا|أربعة|أربعا|خمسة|خمسا|ستة|ستا|سبعة|سبعا|ثمانية|ثمانيا|تسعة|تسعا)";
+  const T = "(?:عشرة|عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)";
+  const NUM = `(?:${U}\\s+و${T}|${T}|${U})`;
+  const val = (w: string): number => {
+    let n = 0;
+    for (const x of w.trim().split(/\s+و?/).filter(Boolean)) n += AGE_UNITS[x] ?? AGE_TENS[x] ?? (x === "عشرة" ? 10 : 0);
+    return n;
+  };
+  const re = new RegExp(`(?<![\\u0600-\\u06FF])(?:(${NUM})\\s+دولارا?|دولار\\s+واحد)\\s+و(${NUM})\\s+سنتا(?![\\u0621-\\u064A])`, "g");
+  return String(body || "").replace(re, (m, d: string | undefined, c: string) => {
+    const dollars = d ? val(d) : 1;
+    const cents = val(c);
+    return dollars && cents && cents < 100 ? `${dollars}.${String(cents).padStart(2, "0")} دولار` : m;
+  });
+}
 const ORD_UNITS: Record<string, number> = { حادية: 1, ثانية: 2, ثالثة: 3, رابعة: 4, خامسة: 5, سادسة: 6, سابعة: 7, ثامنة: 8, تاسعة: 9, حادي: 1, ثاني: 2, ثالث: 3, رابع: 4, خامس: 5, سادس: 6, سابع: 7, ثامن: 8, تاسع: 9 };
 const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائتي: 200, مائتين: 200, ثلاثمائة: 300, أربعمائة: 400, خمسمائة: 500, ستمائة: 600, سبعمائة: 700, ثمانمائة: 800, تسعمائة: 900 };
 
