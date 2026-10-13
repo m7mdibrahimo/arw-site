@@ -240,3 +240,10 @@ test('India Sioux is always «إنديا سيوكس», in the rules, the glossar
   const bad = loadNews().filter(n => /إنديا\s+سيو(?![ء-ي])|سيوك(?![ء-ي])/.test(n.title + n.body)).map(n => n.file);
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #482: «وادي ميتال» (Lady Metal with a glued waw) and «فيغو» (Fuego) in a CMLL results story.
+test('corrections fix Lady Metal and Fuego spellings', () => {
+  const out = applyCorrections('أستوريث وادي ميتال وديابيليتا روخا وفولكانو وفيغو');
+  assert.match(out, /وليدي ميتال/);
+  assert.match(out, /وفويغو/);
+});
