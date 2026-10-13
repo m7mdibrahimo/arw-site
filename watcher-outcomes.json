@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/two-more-wwe-id-talent-exit-developmental-program": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-13T16:51:31.664Z"
+ },
  "https://www.fightful.com/wrestling/kevin-knight-shares-that-he-spent-the-night-in-hospital-with-steven-borden-after-injury-at-aew-all-out": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
