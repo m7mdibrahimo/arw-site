@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/india-sioux-says-she-wants-to-find-the-perfect-partner-to-compete-for-the-tag-team-championships-in-cmll": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-10-13T02:08:50.307Z"
+ },
  "https://www.fightful.com/wrestling/chelsea-green-appears-on-wwe-raw-set-to-face-liv-morgan-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:58:25.380Z"
+  "at": "2026-10-13T02:08:34.433Z"
  },
  "https://www.fightful.com/wrestling/jevon-evans-wwe-raw-333586": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:58:25.196Z"
+  "at": "2026-10-13T02:08:34.267Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-12-2026-the-bloodline-vs-946-chad-gable-vs-rey-fenix-liv-morgan-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-13T01:58:24.862Z"
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-13T02:08:33.961Z"
  },
  "https://www.fightful.com/wrestling/tna-wrestling-releases-statement-regarding-max-caster-rap-at-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:58:24.739Z"
+  "at": "2026-10-13T02:08:33.794Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-cast-in-disney-animated-movie-hexed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:58:23.816Z"
+  "at": "2026-10-13T02:08:32.954Z"
  },
  "https://www.fightful.com/wrestling/max-casters-line-about-riyadh-at-tna-bound-for-glory-was-not-scripted-or-approved": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:58:23.627Z"
+  "at": "2026-10-13T02:08:32.783Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-12-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
