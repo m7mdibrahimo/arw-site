@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-raw-12-10-2026/",
+    "title": "عرض الرو 12.10.2026 مترجم",
+    "subtitle": "WWE RAW 12.10.2026",
+    "image": "/content/images/faemffd4e1jw2s0p.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/njpw-king-of-pro-wrestling-2026/",
     "title": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج 12.10.2026 مترجم",
     "subtitle": "NJPW King Of Pro Wrestling (2026)",
@@ -108,17 +119,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-05-10-2026/",
-    "title": "عرض الرو 05.10.2026 مترجم",
-    "subtitle": "WWE RAW 05.10.2026",
-    "image": "/content/images/b18z5fj659jab63j.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/mlp-mayhem-30-09-2026/",
