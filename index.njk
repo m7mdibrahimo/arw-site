@@ -1556,6 +1556,16 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <a href="/library/{{ prog.slug }}/" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.arName }} الأخير مترجم</a>{% if prog.latest and prog.latest.url %} · <a href="{{ prog.latest.url }}" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.arName }} الأخير كامل</a>{% endif %}{% if not loop.last %} · {% endif %}
 {%- endif -%}{%- endfor %}
 </nav>
+{# The big shows of the last two weeks (Money in the Bank, Bound for Glory, King of Pro Wrestling…) are searched by name
+   («عرض موني ان ذا بانك 2026», «مشاهدة عرض …») but the home page only listed the 8 newest shows, so a special event
+   dropped off it in a day: one plain link per program whose latest show is under 14 days old, worded with the show's own
+   headline (INCIDENTS #480) #}
+<nav class="footer-legal-links" aria-label="أحدث العروض الخاصة" style="margin:10px 0 0; font-size:13px;">
+{%- set specialCount = 0 -%}
+{%- for prog in collections.library -%}{%- if prog.slug not in weekly and prog.latest and prog.latest.url and prog.latest.headline and specialCount < 12 and prog.latestIsRecent -%}{%- set specialCount = specialCount + 1 %}
+<a href="{{ prog.latest.url }}" style="color:var(--muted); margin:0 6px; text-decoration:none;">{{ prog.latest.headline }}</a>
+{%- endif -%}{%- endfor %}
+</nav>
 <div class="footer-legal-links" style="margin:14px 0 10px; font-size:13px;">
 <a href="/about/" style="color:var(--muted); margin:0 6px; text-decoration:none;">من نحن</a> ·
     <a href="/privacy/" style="color:var(--muted); margin:0 6px; text-decoration:none;">سياسة الخصوصية</a> ·

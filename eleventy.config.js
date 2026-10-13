@@ -1450,7 +1450,7 @@ module.exports = function(eleventyConfig) {
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve", "عرض ايفولف مترجم", "عرض ايفولف الاخير", "WWE Evolve مترجم", "دبليو دبليو اي ايفولف"],
           "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
         };
-        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, latestIsRecent: !!(shows[0] && now - shows[0].timestamp < 14 * 86400000), firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
             chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };

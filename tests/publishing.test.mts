@@ -4490,6 +4490,15 @@ test('library home links EVERY program directly (not only the newest 16), with a
   assert.match(fs.readFileSync('lib/i18n/en.cjs', 'utf-8'), /"أحدث الأقسام المضافة": "Recently Added Sections"/);
 });
 
+test('the home page keeps one link per recent special event, worded with the show headline (INCIDENTS #480)', () => {
+  const home = fs.readFileSync('index.njk', 'utf-8');
+  const block = home.match(/aria-label="أحدث العروض الخاصة"[\s\S]{0,900}/)?.[0] || '';
+  assert.match(block, /prog\.slug not in weekly/);
+  assert.match(block, /prog\.latestIsRecent/);
+  assert.match(block, /\{\{ prog\.latest\.headline \}\}/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /latestIsRecent: !!\(shows\[0\] && now - shows\[0\]\.timestamp < 14 \* 86400000\)/);
+});
+
 test('a live page never redirects to a missing one, every video has its address, the site workflow retries GitHub', async () => {
   // Search Console mails (owner 2026-10-12 — INCIDENTS #455): a 404 in the sitemap, «يجب تحديد contentUrl أو embedUrl»,
   // and «Run failed: Site Branch» from one GitHub API call that failed for a moment
