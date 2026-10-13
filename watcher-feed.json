@@ -1,7 +1,27 @@
 [
   {
+    "id": 333665,
+    "link": "https://www.fightful.com/wrestling/roman-reigns-says-triple-h-would-be-the-boss-hes-had-thats-most-equipped-for-a-street-fighter-type-of-fight/",
+    "date": "2026-10-13T09:02:51",
+    "date_gmt": "2026-10-13T13:02:51",
+    "title": {
+      "rendered": "Roman Reigns Says Triple H Would Be The Boss He&#8217;s Had That&#8217;s Most Equipped For &#8216;A Street Fighter Type Of Fight&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/29225722/Screenshot-2369.png"
+  },
+  {
+    "id": 333437,
+    "link": "https://www.fightful.com/wrestling/deonna-purrazzo-explains-the-most-difficult-part-of-having-to-step-away-from-the-ring-due-to-her-roh-injury/",
+    "date": "2026-10-13T09:00:00",
+    "date_gmt": "2026-10-13T13:00:00",
+    "title": {
+      "rendered": "Deonna Purrazzo Explains The Most Difficult Part Of Having To Step Away From The Ring Due To Her ROH Injury"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/18135158/Screenshot-240-e1784397142695.png"
+  },
+  {
     "id": 333663,
-    "link": "https://www.fightful.com/?p=333663",
+    "link": "https://www.fightful.com/wrestling/roman-reigns-video-games-have-been-a-positive-replacement-for-some-of-the-other-extracurricular-activities-wrestlers-would-do/",
     "date": "2026-10-13T08:46:00",
     "date_gmt": "2026-10-13T12:46:00",
     "title": {
@@ -278,25 +298,5 @@
       "rendered": "Penta Debuts Custom Money In The Bank Briefcase On WWE Raw"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12202045/HUeCY3zWQAABNcp.jpg"
-  },
-  {
-    "id": 333422,
-    "link": "https://www.fightful.com/wrestling/india-sioux-details-her-experience-working-at-mitos-del-ring/",
-    "date": "2026-10-12T20:00:00",
-    "date_gmt": "2026-10-13T00:00:00",
-    "title": {
-      "rendered": "India Sioux Details Her Experience Working At Mitos del Ring"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12054758/maxresdefault-73.jpg"
-  },
-  {
-    "id": 333579,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-results-10-12-2026-the-bloodline-vs-946-chad-gable-vs-rey-fenix-liv-morgan-more/",
-    "date": "2026-10-12T19:25:00",
-    "date_gmt": "2026-10-12T23:25:00",
-    "title": {
-      "rendered": "WWE Raw Results (10/12/2026): The Bloodline vs. 946, Chad Gable vs. Rey Fenix, Liv Morgan, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12192029/WWE-Raw.jpg"
   }
 ]
