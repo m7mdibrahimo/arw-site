@@ -217,7 +217,7 @@ async function main() {
   } finally { b.stop(); }
   const next = nextState(prev, results);
   const changed = JSON.stringify(prev.broken || []) !== JSON.stringify(next.broken)
-    || results.some(r => (prev.links[r.url]?.strikes || 0) !== next.links[r.url].strikes);
+    || results.some(r => !prev.links[r.url] || (prev.links[r.url]?.strikes || 0) !== next.links[r.url].strikes); // a link seen for the first time is recorded too, so every new show has its servers in the file (INCIDENTS #494)
   if (changed) fs.writeFileSync(OUT, JSON.stringify(next, null, 1) + "\n");
   const summary = [`# Playback check ${next.checkedAt}`, ``, `${results.length} links on ${pages.length} pages: ${results.filter(r => r.status === "ok").length} play, ${results.filter(r => r.status === "broken").length} broken, ${results.filter(r => r.status === "unknown").length} unknown`, ``, `Hidden from the site (broken twice in a row):`, ...(next.broken.length ? next.broken.map(u => `- ${u} on ${decodeURI(next.links[u].page.replace(ORIGIN, ""))} — ${next.links[u].reason}`) : ["- none"])].join("\n");
   console.log("\n" + summary);

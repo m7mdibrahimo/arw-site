@@ -628,3 +628,7 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /library/cmll/ /federation/indie/ 301!
 /library/tna-tna-bound-for-glory/* /library/tna-bound-for-glory/:splat 301!
 /tag/هاوس-أوف-جلوري/* /tag/هاوس-أوف-غلوري/:splat 301!
+
+/en/news/wwe-smackdown-viewership-sees-slight-decline-while-key-demo-remains-steady/* /en/news/wwe-smackdown-viewership-sees-slight-drop-on-october-2-2026/ 301!
+
+/en/news/two-more-wwe-id-talent-exit-developmental-program/* /en/news/cappuccino-jones-and-santi-rivera-no-longer-with-wwe-id-program/ 301!

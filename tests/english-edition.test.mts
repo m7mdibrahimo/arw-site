@@ -114,3 +114,23 @@ test('English stories written before catch up with their Arabic story\'s posts, 
 test("English rules tell Gemini not to call a past event upcoming (INCIDENTS #432)", () => {
   assert.match(englishStyleRules("https://x.com/a"), /upcoming/);
 });
+
+test('an English edition whose Arabic story was skipped as a duplicate is removed, its address sent to the story it duplicates (INCIDENTS #494)', async () => {
+  const { pruneDuplicateOrphanEnglish } = await import('../scripts/english-edition.ts');
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'orphan-'));
+  const en = path.join(root, 'en'), ar = path.join(root, 'ar');
+  fs.mkdirSync(en); fs.mkdirSync(ar);
+  const fm = (id: number, url: string, extra = '') => `---\ntitle: "T"\nsource_id: ${id}\nsource_url: "${url}"\n${extra}---\nbody\n`;
+  fs.writeFileSync(path.join(ar, '20261013192723-a.md'), fm(1, 'https://f.com/a/'));
+  fs.writeFileSync(path.join(en, '20261013192723-first-story.md'), fm(1, 'https://f.com/a/', 'slug: "first-story"\n'));
+  fs.writeFileSync(path.join(en, '20261013194547-second-story.md'), fm(2, 'https://r.com/b/', 'slug: "second-story"\n'));
+  fs.writeFileSync(path.join(en, '20261013194600-kept.md'), fm(3, 'https://r.com/c/', 'slug: "kept"\n'));
+  const skips = path.join(root, 'skips.json');
+  fs.writeFileSync(skips, JSON.stringify({ 'https://r.com/b/': { matchedFile: '20261013192723-a.md' } }));
+  const red = path.join(root, '_redirects');
+  fs.writeFileSync(red, '/old/* /new/ 301!\n');
+  assert.equal(pruneDuplicateOrphanEnglish(en, ar, skips, red), 1);
+  assert.deepEqual(fs.readdirSync(en).sort(), ['20261013192723-first-story.md', '20261013194600-kept.md']);
+  assert.match(fs.readFileSync(red, 'utf8'), /^\/en\/news\/second-story\/\* \/en\/news\/first-story\/ 301!$/m);
+  assert.equal(pruneDuplicateOrphanEnglish(en, ar, skips, red), 0);
+});

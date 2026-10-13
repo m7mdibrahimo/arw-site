@@ -296,6 +296,41 @@ export function dedupeEnglishEditions(dir = NEWS_EN_DIR, redirectsFile = path.jo
   return removed;
 }
 
+/** An English edition whose Arabic story was judged a duplicate of an older one (its source URL is in
+ *  _data/duplicate-skips.json) and never published: the English twin goes, its address sent to the English edition of
+ *  the story it duplicates (or /en/news/). Two orphans stayed live this way (INCIDENTS #494). Returns how many went. */
+export function pruneDuplicateOrphanEnglish(dir = NEWS_EN_DIR, newsDir = NEWS_DIR, skipsFile = path.join(process.cwd(), "_data", "duplicate-skips.json"), redirectsFile = path.join(process.cwd(), "_redirects")): number {
+  if (!fs.existsSync(dir) || !fs.existsSync(newsDir) || !fs.existsSync(skipsFile)) return 0;
+  let skips: Record<string, { matchedFile?: string }> = {};
+  try { skips = JSON.parse(fs.readFileSync(skipsFile, "utf-8")); } catch { return 0; }
+  const arabicIds = new Set<string>();
+  const idOfFile = new Map<string, string>();
+  for (const f of fs.readdirSync(newsDir).filter((x) => x.endsWith(".md"))) {
+    try { const d = matter(fs.readFileSync(path.join(newsDir, f), "utf-8")).data; if (d.source_id != null) { arabicIds.add(String(d.source_id)); idOfFile.set(f, String(d.source_id)); } } catch {}
+  }
+  const slugOfId = new Map<string, string>();
+  const english = fs.readdirSync(dir).filter((x) => x.endsWith(".md")).map((f) => {
+    try { const d = matter(fs.readFileSync(path.join(dir, f), "utf-8")).data; return { f, d }; } catch { return null; }
+  }).filter((x): x is { f: string; d: any } => !!x && x.d.source_id != null);
+  for (const { f, d } of english) slugOfId.set(String(d.source_id), String(d.slug || f.replace(/^\d{14}-|\.md$/g, "")));
+  let removed = 0;
+  for (const { f, d } of english) {
+    if (arabicIds.has(String(d.source_id))) continue;
+    const url = String(d.source_url || "");
+    const skip = skips[url] || skips[url.replace(/\/+$/, "") + "/"];
+    if (!skip) continue;
+    const slug = String(d.slug || f.replace(/^\d{14}-|\.md$/g, ""));
+    const target = slugOfId.get(idOfFile.get(String(skip.matchedFile || "")) || "");
+    fs.rmSync(path.join(dir, f), { force: true });
+    removed++;
+    console.log(`[English] 🗑️ ${f}: its Arabic story was skipped as a duplicate — no English edition without an Arabic one`);
+    if (fs.existsSync(redirectsFile) && !fs.readFileSync(redirectsFile, "utf-8").includes(`/en/news/${slug}/`)) {
+      fs.appendFileSync(redirectsFile, `\n/en/news/${slug}/* ${target && target !== slug ? `/en/news/${target}/` : "/en/news/"} 301!\n`, "utf-8");
+    }
+  }
+  return removed;
+}
+
 /** The English story the Arabic story's own request wrote (jointEnglishRules): checked like any other, then saved as
  *  written. null when there is none or it doesn't pass: the caller then asks for one on its own (writeEnglishEdition). */
 export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unknown; en_tags?: unknown } | null | undefined, i: EnglishInput, dir = NEWS_EN_DIR): string | null {
@@ -315,6 +350,7 @@ export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unk
 export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string) => Promise<{ title: string; text: string } | null>, limit = 4, outlets?: string[]): Promise<number> {
   if (!fs.existsSync(NEWS_DIR)) return 0;
   dedupeEnglishEditions();
+  pruneDuplicateOrphanEnglish();
   syncEnglishFromArabic();
   const since = Math.max(Date.now() - 24 * 3600_000, new Date(ENGLISH_NEWS_SINCE).getTime());
   const todo = fs.readdirSync(NEWS_DIR).filter((f) => f.endsWith(".md")).sort().reverse().map((f) => path.join(NEWS_DIR, f))

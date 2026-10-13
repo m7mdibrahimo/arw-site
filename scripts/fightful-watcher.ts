@@ -1,5 +1,5 @@
 import fs from "fs";
-import { writeEnglishEdition, catchUpEnglishEditions, jointEnglishRules, saveJointEnglishEdition, dedupeEnglishEditions, syncEnglishFromArabic } from "./english-edition";
+import { writeEnglishEdition, catchUpEnglishEditions, jointEnglishRules, saveJointEnglishEdition, dedupeEnglishEditions, syncEnglishFromArabic, pruneDuplicateOrphanEnglish } from "./english-edition";
 import path from "path";
 import crypto from "crypto";
 import { execFileSync } from "child_process";
@@ -1900,7 +1900,7 @@ let geminiBlocked = false;
 /** English editions the last day's stories still lack (INCIDENTS #354): the source page fetched again, a few a run.
  *  Only this bot's own outlet's stories (INCIDENTS #355); Fightful's bot also takes the ones from anywhere else. */
 export async function englishCatchUp(outlets: string[] = ["Fightful", ""], limit = 2): Promise<number> {
-  try { dedupeEnglishEditions(); syncEnglishFromArabic(); } catch (e: any) { console.warn("[English] sync skipped:", e?.message || e); } // no request: always
+  try { dedupeEnglishEditions(); pruneDuplicateOrphanEnglish(); syncEnglishFromArabic(); } catch (e: any) { console.warn("[English] sync skipped:", e?.message || e); } // no request: always
   if (geminiQuotaExhausted() || newsBotsPaused()) return 0;
   return catchUpEnglishEditions(queryGemini, async (url) => {
     const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0 (compatible; ArabWrestlingBot/1.0)" }, signal: AbortSignal.timeout(20000) }).catch(() => null);
