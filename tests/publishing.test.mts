@@ -4667,3 +4667,9 @@ test('an editor note left as a paragraph is removed and blocks publishing (INCID
   assert.ok(issues.some(i => i.code === 'editor_note'));
   assert.ok(BLOCKING_QA_CODES.includes('editor_note'));
 });
+
+test('INCIDENTS #486: Purrazzo spelling, NFL translation and «they lost me» are corrected automatically', () => {
+  assert.equal(applyCorrections('ديونا بوراتزو'), 'ديونا بورازو');
+  assert.equal(applyCorrections('مباريات الدوري الأمريكي للمحترفين'), 'مباريات دوري كرة القدم الأمريكية (NFL)');
+  assert.equal(applyCorrections('لكنهم فقدوا منطقي في تلك الليلة'), 'لكنهم فقدوني في تلك الليلة');
+});
