@@ -17,7 +17,7 @@ Drew McIntyre explained that WWE's creative process under Triple H is a collabor
 
 > These days, it is very much a collaboration and has been for a few years now—with myself personally anyway, and generally across the board.
 
-McNtyre emphasized that authenticity is vital because fans can instantly tell if a performer does not believe in what they are saying. If a segment falls flat with twenty thousand fans in attendance, he is willing to take a different direction and deal with any backstage feedback later.
+McIntyre emphasized that authenticity is vital because fans can instantly tell if a performer does not believe in what they are saying. If a segment falls flat with twenty thousand fans in attendance, he is willing to take a different direction and deal with any backstage feedback later.
 
 > But when I am out there, if the 20,000 people are not digging what I am saying, I will listen and I will take a different direction. And sometimes it is the opposite of what we talked about because it did not feel right out there.
 

@@ -254,3 +254,13 @@ test('corrections fix verb agreement and a misspelt word (INCIDENTS #493)', () =
   assert.match(out, /قضائه/);
   assert.match(out, /نزال استعراضي يقام/);
 });
+
+test('INCIDENTS #499: prefixed number word before digits, dropped alef after ال, touchdown dual', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('يعتمد على ردود فعل لعشرين 1000 متفرج في الصالة.').includes('number_word_digits'));
+  assert.ok(!codes('يعتمد على ردود فعل لعشرين ألف متفرج في الصالة.').includes('number_word_digits'));
+  assert.ok(codes('الصدق والقتناع بما يقوله المصارع أساس النجاح.').includes('dropped_alef'));
+  assert.ok(!codes('الصدق والاقتناع بما يقوله المصارع أساس النجاح.').includes('dropped_alef'));
+  assert.ok(codes('احتفاله بتسجيل تاتشداونين خلال المواجهة.').includes('dual_noun'));
+  assert.ok(BLOCKING_QA_CODES.includes('dropped_alef'));
+});
