@@ -1,33 +1,33 @@
 {
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-12-2026": {
-  "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
-  "retry": true,
-  "at": "2026-10-13T01:04:57.569Z"
- },
  "https://www.fightful.com/wrestling/jevon-evans-wwe-raw-333586": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:04:33.115Z"
+  "at": "2026-10-13T01:15:15.305Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-12-2026-the-bloodline-vs-946-chad-gable-vs-rey-fenix-liv-morgan-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-13T01:04:32.807Z"
+  "at": "2026-10-13T01:15:15.041Z"
  },
  "https://www.fightful.com/wrestling/tna-wrestling-releases-statement-regarding-max-caster-rap-at-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:04:32.692Z"
+  "at": "2026-10-13T01:15:14.944Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-cast-in-disney-animated-movie-hexed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:04:31.843Z"
+  "at": "2026-10-13T01:15:14.218Z"
  },
  "https://www.fightful.com/wrestling/max-casters-line-about-riyadh-at-tna-bound-for-glory-was-not-scripted-or-approved": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T01:04:31.673Z"
+  "at": "2026-10-13T01:15:14.091Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-12-2026": {
+  "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
+  "retry": true,
+  "at": "2026-10-13T01:04:57.569Z"
  },
  "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",

@@ -1,5 +1,15 @@
 [
   {
+    "id": 333595,
+    "link": "https://www.fightful.com/wrestling/chelsea-green-appears-on-wwe-raw-set-to-face-liv-morgan-at-wwe-crown-jewel/",
+    "date": "2026-10-12T21:07:43",
+    "date_gmt": "2026-10-13T01:07:43",
+    "title": {
+      "rendered": "Chelsea Green Appears On WWE Raw, Set To Face Liv Morgan At WWE Crown Jewel"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12210543/HUeMN3PXAAApIBv.jpg"
+  },
+  {
     "id": 333586,
     "link": "https://www.fightful.com/wrestling/jevon-evans-wwe-raw-333586/",
     "date": "2026-10-12T20:39:19",
@@ -288,15 +298,5 @@
       "rendered": "Former WWE Prospect Details Encounter With Triple H That Got Him Blackballed From WWE"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/11/29225722/Screenshot-2369.png"
-  },
-  {
-    "id": 333522,
-    "link": "https://www.fightful.com/wrestling/kyle-fletcher-writes-pac-forever-on-love-lock-bridge-in-paris/",
-    "date": "2026-10-12T13:40:36",
-    "date_gmt": "2026-10-12T17:40:36",
-    "title": {
-      "rendered": "Kyle Fletcher Writes &#8216;PAC Forever&#8217; On Love Lock Bridge In Paris"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12131745/Screenshot-2026-10-12-181341.png"
   }
 ]

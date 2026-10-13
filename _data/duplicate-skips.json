@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/triple-h-reacts-wwe-sign-guy-rick-achberger-his-death/": {
-    "matchedFile": "20260927233614-وفاة-ريك-أتشبيرغر-المعروف-باسم-wwe-sign-guy-في-عالم-المصارعة-الحرة.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-28T00:41:47.992Z"
-  },
   "https://www.fightful.com/wrestling/the-bloodline-to-address-royce-keys-la-knight-to-speak-on-roman-reigns-more-added-to-9-28-wwe-raw/": {
     "matchedFile": "20260928034407-تأكيد-إقامة-عدة-مواجهات-وفقرات-جديدة-في-عرض-wwe-raw.md",
     "reason": "نفس الأسماء ونص متداخل مع خبر منشور حديثاً (بعد الترجمة)",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261013032058-برون-بريكر-يهاجم-جيفون-إيفانز-المصاب-بحركة-سبير-في-عرض-wwe-raw.md",
     "reason": "الخبر الجديد يغطي نفس واقعة ظهور جيفون إيفانز المصاب في عرض RAW وتعرضه لضربة سبير من برون بريكر، وهي نفس تفاصيل الخبر رقم 0.",
     "at": "2026-10-13T00:48:07.174Z"
+  },
+  "https://www.fightful.com/wrestling/chelsea-green-appears-on-wwe-raw-set-to-face-liv-morgan-at-wwe-crown-jewel/": {
+    "matchedFile": "20261013000000-نتائج-عرض-wwe-raw-12-أكتوبر-2026-ري-ميستيريو-ضد-بيج-كاس-وروكسان-بيريز-ضد-تشيلسي-غرين.md",
+    "reason": "الخبر الجديد يغطي نفس أحداث عرض RAW التي تم ذكرها بالفعل في تقرير النتائج رقم 0، بما في ذلك مواجهة روكسان بيريز وتشيلسي غرين وتدخلات ذا جادجمنت داي.",
+    "at": "2026-10-13T01:15:24.786Z"
   }
 }
