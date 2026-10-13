@@ -1,28 +1,33 @@
 {
- "https://www.fightful.com/wrestling/anthony-bowens-looks-back-on-aew-singles-run-says-he-was-supposed-to-turn-heel": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-13T12:32:30.330Z"
+ "https://www.fightful.com/wrestling/yota-tsuji-vs-oleg-boltin-vs-kenny-omega-made-official-jon-moxley-wheeler-yuta-added-to-njpw-power-struggle": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T12:46:33.735Z"
  },
  "https://www.fightful.com/wrestling/carmelo-hayes-returns-on-wwe-raw-joins-the-946": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T12:16:26.369Z"
+  "at": "2026-10-13T12:46:33.420Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-appears-on-wwe-raw-set-to-face-liv-morgan-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T12:16:26.023Z"
+  "at": "2026-10-13T12:46:33.182Z"
  },
  "https://www.fightful.com/wrestling/jevon-evans-wwe-raw-333586": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T12:16:25.849Z"
+  "at": "2026-10-13T12:46:33.062Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-12-2026-the-bloodline-vs-946-chad-gable-vs-rey-fenix-liv-morgan-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-13T12:16:25.538Z"
+  "at": "2026-10-13T12:46:32.839Z"
+ },
+ "https://www.fightful.com/wrestling/anthony-bowens-looks-back-on-aew-singles-run-says-he-was-supposed-to-turn-heel": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-13T12:32:30.330Z"
  },
  "https://www.fightful.com/wrestling/tna-wrestling-releases-statement-regarding-max-caster-rap-at-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
