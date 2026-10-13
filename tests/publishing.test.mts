@@ -1,3 +1,4 @@
+import { createRequire } from 'node:module';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execSync } from 'node:child_process';
@@ -4596,4 +4597,28 @@ test('dual forms and dual nouns block publishing', async () => {
   assert.ok(codes.includes('dual_noun') && codes.includes('dual_form'));
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /\.filter\(i => BLOCKING_QA_CODES\.includes\(i\.code\)\)/);
+});
+
+test('INCIDENTS #473: a learned correction may never produce a dual form, and «عضوي فريق» is a blocked dual', async () => {
+  const { rightIsDual } = await import('../scripts/learn-corrections');
+  const { checkArticle } = await import('../scripts/news-qa');
+  assert.equal(rightIsDual('لصالحهما'), true);
+  assert.equal(rightIsDual('سيث رولينز'), false);
+  const codes = checkArticle('عنوان تجريبي للخبر', 'واجهت عضوي فريق ذا نيو ليفل في النزال الرئيسي الليلة الماضية بشكل قوي جدا.'.repeat(4)).map(i => i.code);
+  assert.ok(codes.includes('dual_noun'));
+  const corrections = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf8')).corrections as { right: string; note?: string }[];
+  assert.deepEqual(corrections.filter(c => /تعلّمها/.test(c.note || '') && rightIsDual(c.right)).map(c => c.right), []);
+});
+
+test('INCIDENTS #473: every nostalgia series has its English name and description in lib/i18n/series-en.cjs', async () => {
+  const en = createRequire(import.meta.url)('../lib/i18n/series-en.cjs') as Record<string, string>;
+  const missing: string[] = [];
+  for (const f of fs.readdirSync('content/nostalgia-series').filter(f => f.endsWith('.md'))) {
+    const { default: matter } = await import('gray-matter');
+    const fm = matter(fs.readFileSync(path.join('content/nostalgia-series', f), 'utf8')).data;
+    const title = String(fm.title || '').trim(), desc = String(fm.description || '').trim().replace(/\s+/g, ' ');
+    if (title && !en[title]) missing.push(`title: ${title}`);
+    if (desc && !en[desc]) missing.push(`description: ${desc.slice(0, 40)}`);
+  }
+  assert.deepEqual(missing, []);
 });

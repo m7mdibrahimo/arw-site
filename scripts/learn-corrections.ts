@@ -7,6 +7,12 @@
 //   npx tsx scripts/learn-corrections.ts [--dry-run] [--min 3]
 import fs from "fs";
 import path from "path";
+import { checkArticle } from "./news-qa";
+
+/** A rule whose «right» side is itself a banned dual form (لصالحهما، كلاهما…) must never be learned (INCIDENTS #473). */
+export function rightIsDual(right: string): boolean {
+  return checkArticle("عنوان تجريبي للخبر", right).some(i => i.code === "dual_form" || i.code === "dual_noun");
+}
 
 
 const ARABIC_PHRASE = /^[ء-يـ]+(?: [ء-يـ]+){0,3}$/;
@@ -64,6 +70,7 @@ export function learnCorrections(minArticles = 3, dryRun = false): { wrong: stri
     if (targets.get(wrong)!.size > 1) continue;    // editor isn't consistent about it — not a rule
     if (known.has(wrong) || canonical.has(wrong)) continue; // already handled, or would undo an approved spelling
     if (known.has(right)) continue;                 // would create a correction loop
+    if (rightIsDual(right)) continue;               // the site never uses dual forms
     learned.push({ wrong, right, articles: files.size });
   }
   if (learned.length && !dryRun) {
