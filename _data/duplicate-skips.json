@@ -1,14 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/john-cena-sting-young-bucks-more-pay-tribute-to-pac-benjamin-satterley/": {
-    "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-28T19:12:15.319Z"
-  },
-  "https://www.wrestlinginc.com/2271112/wwe-x-pac-sean-waltman-lowest-moments-substance-abuse-struggles/": {
-    "matchedFile": "20260926233000-أسطورة-wwe-إكس-باك-يتلقى-المساعدة-في-أزمات-إدمان-المخدرات-من-تريبل-إتش-وفينس-مكمان.md",
-    "reason": "الخبران يتناولان نفس المقابلة في بودكاست ذا أندرتيكر، حيث يروي إكس باك تفاصيل معاناته مع الإدمان ورحلة تعافيه، والخبر الجديد يعتبر إعادة صياغة لتفاصيل سبق ذكرها في الخبر المنشور.",
-    "at": "2026-09-28T19:22:59.307Z"
-  },
   "https://www.ringsidenews.com/triple-h-made-sure-wwe-sign-guy-rick-achberger-never-buy-another-ticket/": {
     "matchedFile": "20260927233614-وفاة-ريك-أتشبيرغر-المعروف-باسم-wwe-sign-guy-في-عالم-المصارعة-الحرة.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261013201130-درو-ماكنتاير-قضاء-قرابة-ثلاثة-أشهر-تحت-إشراف-راسل-كرو-كان-تجربة-مذهلة.md",
     "reason": "الخبر الجديد يعيد سرد تفاصيل مشاركة درو ماكنتاير في فيلم Highlander وتجربته مع راسل كرو، وهي نفس المعلومات التي غطاها الخبر رقم 1 بشكل مفصل.",
     "at": "2026-10-13T18:04:48.393Z"
+  },
+  "https://www.fightful.com/wrestling/tna-reached-out-to-sheamus-about-possibly-working-bound-for-glory/": {
+    "matchedFile": "20261012223823-نجم-wwe-سابق-كان-الخيار-الأول-لاتحاد-tna-للمشاركة-في-عرض-bound-for-glory.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تفاصيل محاولات TNA للتعاقد مع شيماس للمشاركة في عرض Bound for Glory، وهي معلومة تم تناولها بالفعل في الخبر رقم 0.",
+    "at": "2026-10-13T18:10:33.670Z"
+  },
+  "https://www.fightful.com/wrestling/cappuccino-jones-confirms-wwe-id-departure/": {
+    "matchedFile": "20261013192723-تقرير-كابوتشينو-جونز-وسانتي-ريفيرا-يغادران-برنامج-wwe-id.md",
+    "reason": "الخبر الجديد يؤكد مغادرة كابوتشينو جونز لبرنامج WWE ID، وهو نفس الحدث والخبر المنشور بالفعل في الخبر رقم 0.",
+    "at": "2026-10-13T18:12:33.398Z"
   }
 }
