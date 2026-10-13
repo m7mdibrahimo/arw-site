@@ -1,4 +1,44 @@
 {
+ "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-13T23:58:52.533Z"
+ },
+ "https://www.fightful.com/wrestling/chad-gable-reflects-on-wwe-raw-match-with-rey-fenix-i-felt-alive": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:51.994Z"
+ },
+ "https://www.fightful.com/wrestling/cappuccino-jones-confirms-wwe-id-departure": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:51.600Z"
+ },
+ "https://www.fightful.com/wrestling/drew-mcintyre-says-working-on-highlander-really-filled-him-with-confidence": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:51.408Z"
+ },
+ "https://www.fightful.com/wrestling/tna-reached-out-to-sheamus-about-possibly-working-bound-for-glory": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:51.166Z"
+ },
+ "https://www.fightful.com/wrestling/amazing-red-speaks-about-going-into-tna-hall-of-fame-winning-x-division-title-on-same-night": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:50.868Z"
+ },
+ "https://www.fightful.com/wrestling/laynie-luck-recounts-wwe-id-womens-title-win-everything-just-kind-of-worked-out-in-my-favor": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:50.636Z"
+ },
+ "https://www.fightful.com/wrestling/carmelo-hayes-comments-on-joining-946-the-reports-of-my-demise-have-been-greatly-exaggerated": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-13T23:58:50.452Z"
+ },
  "https://www.wrestlinginc.com/2284897/wwe-nxt-october-13-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,46 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-13T23:51:51.659Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-13T23:47:37.070Z"
- },
- "https://www.fightful.com/wrestling/chad-gable-reflects-on-wwe-raw-match-with-rey-fenix-i-felt-alive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:36.730Z"
- },
- "https://www.fightful.com/wrestling/cappuccino-jones-confirms-wwe-id-departure": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:36.482Z"
- },
- "https://www.fightful.com/wrestling/drew-mcintyre-says-working-on-highlander-really-filled-him-with-confidence": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:36.361Z"
- },
- "https://www.fightful.com/wrestling/tna-reached-out-to-sheamus-about-possibly-working-bound-for-glory": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:36.199Z"
- },
- "https://www.fightful.com/wrestling/amazing-red-speaks-about-going-into-tna-hall-of-fame-winning-x-division-title-on-same-night": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:36.001Z"
- },
- "https://www.fightful.com/wrestling/laynie-luck-recounts-wwe-id-womens-title-win-everything-just-kind-of-worked-out-in-my-favor": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:35.846Z"
- },
- "https://www.fightful.com/wrestling/carmelo-hayes-comments-on-joining-946-the-reports-of-my-demise-have-been-greatly-exaggerated": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T23:47:35.724Z"
  },
  "https://www.wrestlinginc.com/2285981/wwe-raw-viewership-ratings-report-october-5-2026": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-05)",
