@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2271070/aew-wwe-wbd-warner-bros-discovery-content-deal-highlights-partner/": {
-    "matchedFile": "20260928154912-wwe-توقع-اتفاقية-لعرض-ملخصات-نزالاتها-مع-منصة-bleacher-report.md",
-    "reason": "الخبران يتحدثان عن نفس الاتفاقية والشراكة بين WWE ومنصة Bleacher Report بنفس التفاصيل الجوهرية وتاريخ البدء.",
-    "at": "2026-09-28T19:02:40.565Z"
-  },
-  "https://www.wrestlinginc.com/2271106/wwe-aaa-worlds-collide-cm-punk-magical-night-chicago/": {
-    "matchedFile": "20260927062755-سي-ام-بانك-يدخل-على-أنغام-this-fire-burns-في-عرض-wwe-x-aaa-worlds-collide.md",
-    "reason": "الخبر الجديد يكرر تفاصيل مشاركة سي ام بانك في عرض Worlds Collide، دخوله بأغنية This Fire Burns، وتحالفه مع ري ميستيريو، وهي معلومات تم تغطيتها بالكامل في الأخبار المنشورة مسبقاً.",
-    "at": "2026-09-28T19:03:20.584Z"
-  },
   "https://www.fightful.com/wrestling/john-cena-sting-young-bucks-more-pay-tribute-to-pac-benjamin-satterley/": {
     "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261013160829-درو-ماكنتاير-أركز-حاليا-على-هوليوود-لكنني-جاهز-للعودة-إلى-الحلبة-دائما.md",
     "reason": "الخبر الجديد يروي تفاصيل وقوف تريبل إتش ونيك خان بجانب درو ماكنتاير وموافقتهما على غيابه للعمل في هوليوود مع راسل كرو، وهو امتداد وتفصيل لنفس موضوع غيابه للتركيز على التمثيل ودعم الإدارة المذكورين بالفعل في الخبر رقم 0.",
     "at": "2026-10-13T17:40:59.711Z"
+  },
+  "https://www.fightful.com/wrestling/amazing-red-speaks-about-going-into-tna-hall-of-fame-winning-x-division-title-on-same-night/": {
+    "matchedFile": "20261012001651-أميزينغ-ريد-يفوز-ببطولة-tna-x-division-في-عرض-tna-bound-for-glory-2026.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (فوز أميزينج ريد بلقب X Division وتكريمه في قاعة المشاهير في عرض Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0، وتصريحات ريد تعتبر تفاصيل إضافية حول نفس الواقعة وليست تطوراً جديداً.",
+    "at": "2026-10-13T17:51:35.894Z"
+  },
+  "https://www.fightful.com/wrestling/drew-mcintyre-says-working-on-highlander-really-filled-him-with-confidence/": {
+    "matchedFile": "20261013201130-درو-ماكنتاير-قضاء-قرابة-ثلاثة-أشهر-تحت-إشراف-راسل-كرو-كان-تجربة-مذهلة.md",
+    "reason": "الخبر الجديد يعيد سرد تفاصيل مشاركة درو ماكنتاير في فيلم Highlander وتجربته مع راسل كرو، وهي نفس المعلومات التي غطاها الخبر رقم 1 بشكل مفصل.",
+    "at": "2026-10-13T18:04:48.393Z"
   }
 }
