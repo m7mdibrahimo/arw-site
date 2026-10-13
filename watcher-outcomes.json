@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2285553/wwe-crown-jewel-2026-triple-h-saudi-arabia-official-poster": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-13T17:28:12.423Z"
+ },
  "https://www.fightful.com/wrestling/laynie-luck-recounts-wwe-id-womens-title-win-everything-just-kind-of-worked-out-in-my-favor": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -8,11 +13,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-13T17:10:44.359Z"
- },
- "https://www.wrestlinginc.com/2285553/wwe-crown-jewel-2026-triple-h-saudi-arabia-official-poster": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-13T17:09:39.483Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-vs-oleg-boltin-vs-kenny-omega-made-official-jon-moxley-wheeler-yuta-added-to-njpw-power-struggle": {
   "reason": "مكرر مع خبر نزل قبل كده",
