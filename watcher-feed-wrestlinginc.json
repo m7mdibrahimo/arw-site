@@ -1,5 +1,25 @@
 [
   {
+    "id": 2124453634,
+    "link": "https://www.wrestlinginc.com/2285553/wwe-crown-jewel-2026-triple-h-saudi-arabia-official-poster/",
+    "date": "Tue, 13 Oct 2026 17:03:12 +0000",
+    "date_gmt": "2026-10-13T17:03:12.000Z",
+    "title": {
+      "rendered": "Triple H Shares Official Poster For WWE Crown Jewel In Riyadh, Saudi Arabia"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/triple-h-shares-official-poster-for-wwe-crown-jewel-in-riyadh-saudi-arabia/l-intro-1791910745.jpg"
+  },
+  {
+    "id": 3348671439,
+    "link": "https://www.wrestlinginc.com/2285545/wwe-raw-carmelo-hayes-946-first-comment-demise-exaggerated/",
+    "date": "Tue, 13 Oct 2026 17:01:05 +0000",
+    "date_gmt": "2026-10-13T17:01:05.000Z",
+    "title": {
+      "rendered": "Carmelo Hayes Makes First Comment After Joining 946 On WWE Raw"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/carmelo-hayes-makes-first-comment-after-joining-946-on-wwe-raw/l-intro-1791910756.jpg"
+  },
+  {
     "id": 1315648189,
     "link": "https://www.wrestlinginc.com/2285478/tna-bound-for-glory-2026-wwe-sheamus-wanted-debut/",
     "date": "Tue, 13 Oct 2026 16:28:35 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Eric Bischoff Contrasts AEW's Tony Khan With Former WWE CEO Vince McMahon"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/eric-bischoff-aew-tony-khan-wwe-ceo-vince-mcmahon/l-intro-1791905918.jpg"
-  },
-  {
-    "id": 975350426,
-    "link": "https://www.wrestlinginc.com/2284829/wwe-id-program-departure-sam-holloway/",
-    "date": "Mon, 12 Oct 2026 23:49:53 +0000",
-    "date_gmt": "2026-10-12T23:49:53.000Z",
-    "title": {
-      "rendered": "Another Indie Star Announces Departure From WWE ID Program"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/another-indie-star-announces-departure-from-wwe-id-program/l-intro-1791848942.jpg"
-  },
-  {
-    "id": 4951595288,
-    "link": "https://www.wrestlinginc.com/2284826/tna-max-caster-controversial-bound-for-glory-2026-debut/",
-    "date": "Mon, 12 Oct 2026 23:29:07 +0000",
-    "date_gmt": "2026-10-12T23:29:07.000Z",
-    "title": {
-      "rendered": "TNA Releases Statement On Max Caster Following Controversial Bound For Glory Debut"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-releases-statement-on-max-caster-following-controversial-bound-for-glory-debut/l-intro-1791847668.jpg"
   }
 ]
