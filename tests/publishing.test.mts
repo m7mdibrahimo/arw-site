@@ -4643,3 +4643,17 @@ test('a main-event show is never filed under its "Road To" tour program (INCIDEN
   });
   assert.deepEqual(bad, []);
 });
+
+test('a refused or expiring GitHub key is a watchdog problem, and the panel says so in words', async () => {
+  // The key expired at 05:00 UTC on 2026-10-13: saves showed «GitHub 401», social posting stopped, /health said fine (INCIDENTS #481)
+  const { githubKeyProblems } = await import('../worker/src/health');
+  const now = Date.parse('2026-10-13T12:00:00Z');
+  assert.equal(githubKeyProblems(401, null, now)[0].code, 'github_key');
+  assert.match(githubKeyProblems(401, null, now)[0].title, /انتهى أو اتلغى/);
+  assert.match(githubKeyProblems(200, '2026-10-20 05:00:00 UTC', now)[0].title, /هينتهي خلال 7 أيام/);
+  assert.deepEqual(githubKeyProblems(200, '2027-06-01 05:00:00 UTC', now), []);
+  assert.deepEqual(githubKeyProblems(200, null, now), []);
+  const { GITHUB_KEY_REFUSED } = await import('../worker/src/studio');
+  assert.match(GITHUB_KEY_REFUSED, /من غير تاريخ انتهاء/);
+  assert.match(fs.readFileSync('worker/src/studio.ts', 'utf-8'), /const msg = status === 401 \? GITHUB_KEY_REFUSED/);
+});

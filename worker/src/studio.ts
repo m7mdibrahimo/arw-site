@@ -220,9 +220,16 @@ async function gh(env: StudioEnv, path: string, init: RequestInit = {}): Promise
     },
   });
 }
+/** A refused key in the owner's words instead of «GitHub 401» (INCIDENTS #481): saving, social posting and every bot
+ *  stop with it, and only the owner can make a new one. */
+export const GITHUB_KEY_REFUSED = 'مفتاح جيت هاب اللي اللوحة بتحفظ بيه انتهى أو اتلغى، فالحفظ والنشر على السوشيال واقفين. اعمل مفتاح جديد من غير تاريخ انتهاء وحطه في إعدادات خادم اللوحة على كلاودفلير (GITHUB_TOKEN).';
+function ghError(status: number, text: string): Error {
+  const msg = status === 401 ? GITHUB_KEY_REFUSED : `GitHub ${status}: ${text.slice(0, 200)}`;
+  return Object.assign(new Error(msg), { status });
+}
 async function ghJson(env: StudioEnv, path: string, init: RequestInit = {}): Promise<any> {
   const r = await gh(env, path, init);
-  if (!r.ok) throw Object.assign(new Error(`GitHub ${r.status}: ${(await r.text()).slice(0, 200)}`), { status: r.status });
+  if (!r.ok) throw ghError(r.status, await r.text());
   return r.json();
 }
 function utf8FromB64(s: string): string { return new TextDecoder().decode(unb64(s.replace(/\n/g, ''))); }
@@ -230,7 +237,7 @@ function utf8FromB64(s: string): string { return new TextDecoder().decode(unb64(
 export async function readRepoFile(env: StudioEnv, path: string): Promise<{ content: string; sha: string } | null> {
   const r = await gh(env, `/contents/${path.split('/').map(encodeURIComponent).join('/')}?ref=${env.GITHUB_BRANCH}`);
   if (r.status === 404) return null;
-  if (!r.ok) throw new Error(`GitHub ${r.status}`);
+  if (!r.ok) throw ghError(r.status, '');
   const d: any = await r.json();
   if (d.content) return { content: utf8FromB64(d.content), sha: d.sha };
   const blob = await ghJson(env, `/git/blobs/${d.sha}`);
@@ -285,7 +292,7 @@ export async function commitFiles(env: StudioEnv, changes: FileChange[], message
     const commit = await ghJson(env, '/git/commits', { method: 'POST', body: JSON.stringify({ message, tree: tree.sha, parents: [head] }) });
     const upd = await gh(env, `/git/refs/heads/${env.GITHUB_BRANCH}`, { method: 'PATCH', body: JSON.stringify({ sha: commit.sha, force: false }) });
     if (upd.ok) return commit.sha;
-    if (upd.status !== 422 && upd.status !== 409) throw new Error(`GitHub ${upd.status}: ${(await upd.text()).slice(0, 200)}`);
+    if (upd.status !== 422 && upd.status !== 409) throw ghError(upd.status, await upd.text());
     await new Promise(r => setTimeout(r, 400 * (attempt + 1)));
   }
   throw new Error('الموقع مشغول بتحديثات تلقائية كتير في نفس اللحظة. جرّب الحفظ تاني بعد ثواني.');

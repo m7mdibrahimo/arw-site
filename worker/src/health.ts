@@ -67,6 +67,21 @@ const PLATFORM_AR: Record<string, string> = { telegram: "تيليجرام", face
  * is the later of publishing and the release from a hold: seven NXT stories the owner released
  * together were called stuck on Instagram eight minutes later (INCIDENTS #158).
  */
+/**
+ * The GitHub key the panel's server uses for every save, social post and bot trigger. It expired at 05:00 UTC on
+ * 2026-10-13 and everything stopped quietly — the panel only said «GitHub 401» and /health said all was fine
+ * (INCIDENTS #481). A refused key is a problem at once; a key GitHub says expires within 14 days is one too.
+ */
+export function githubKeyProblems(status: number, expiration: string | null, now = Date.now()): { key: string; code: string; title: string; detail: string }[] {
+  if (status === 401) return [{ key: "github_key", code: "github_key", title: "مفتاح جيت هاب انتهى أو اتلغى: الحفظ من اللوحة والنشر على السوشيال واقفين", detail: "اعمل مفتاح جديد من غير تاريخ انتهاء وحطه في إعدادات خادم اللوحة على كلاودفلير باسم GITHUB_TOKEN" }];
+  const at = expiration ? Date.parse(expiration.replace(" UTC", "Z").replace(" ", "T")) : NaN;
+  if (Number.isFinite(at) && at - now < 14 * 86400_000) {
+    const days = Math.max(0, Math.ceil((at - now) / 86400_000));
+    return [{ key: "github_key", code: "github_key", title: `مفتاح جيت هاب هينتهي ${days <= 1 ? "خلال يوم" : `خلال ${days} أيام`}: بعدها الحفظ من اللوحة والنشر على السوشيال هيقفوا`, detail: "اعمل مفتاح جديد من غير تاريخ انتهاء وحطه مكانه في إعدادات خادم اللوحة على كلاودفلير (GITHUB_TOKEN)" }];
+  }
+  return [];
+}
+
 export function stuckOnSocial(items: any[], state: any, keyOf: (it: any) => string, now = Date.now(), igAllows: (priority: unknown) => boolean = () => true, fileOf: (it: any) => string = () => ""): { title: string; missing: string[] }[] {
   const waiting: { title: string; missing: string[]; from: number }[] = [];
   for (const it of items) {
@@ -145,9 +160,12 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
 
     // ── every five minutes: bots, freshness, platforms ──
     if (minute % 5 === 0) {
-      const runs = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/runs?per_page=40`, {
+      const runsRes = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/actions/runs?per_page=40`, {
         headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
-      }).then(r => (r.ok ? r.json() : null)).catch(() => null) as any;
+      }).catch(() => null);
+      // The key every save and social post goes through: refused, or expiring within two weeks (INCIDENTS #481)
+      if (runsRes) problems = mergeProblems(problems, githubKeyProblems(runsRes.status, runsRes.headers.get("github-authentication-token-expiration"), now), ["github_key"], now);
+      const runs = runsRes && runsRes.ok ? await runsRes.json().catch(() => null) as any : null;
       if (runs?.workflow_runs) {
         const failed = failedWorkflows(runs.workflow_runs).map(f => ({ key: `ci:${f.name}`, code: "ci_failed", title: `تشغيل «${f.name}» فشل`, detail: f.url }));
         problems = mergeProblems(problems, failed, ["ci_failed"], now);
