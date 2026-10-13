@@ -16,3 +16,14 @@ test("corrections never contradict the names glossary", () => {
   assert.deepEqual(bad, []);
   assert.equal(glossary["KAIRI"], "كايري");
 });
+
+// INCIDENTS #489: «كانيلس» reached two stories while the glossary spelling is «كانيليس».
+test("Kanellis is spelled as the glossary says, in the glossary, the corrections and every story", () => {
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Maria Kanellis"], "ماريا كانيليس");
+  assert.equal(glossary["Mike Kanellis"], "مايك كانيليس");
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "كانيلس" && c.right === "كانيليس"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "").includes("كانيلس"));
+  assert.deepEqual(bad, []);
+});

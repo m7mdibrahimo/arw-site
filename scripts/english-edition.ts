@@ -149,6 +149,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bsyX\b/g, "Syx"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
+/** Words that are never small in a Title Case headline when left lowercase: «I am Thankful» → «I Am Thankful» (INCIDENTS #489) */
+const ALWAYS_CAPITAL = new Set(["am", "is", "are", "was", "were", "be", "been", "it", "its", "he", "she", "we", "they", "you", "i", "his", "her", "my", "our", "your", "their", "if", "than", "that", "this", "not", "has", "have", "had", "will", "would", "can", "could", "should", "do", "does", "did"]);
 /** One consistent Title Case: small words lowercase (first, last and after a colon stay capital); a word with its own capitals (AEW, McIntyre, iMPACT) is never touched (INCIDENTS #443) */
 export function normalizeEnglishTitle(title: string): string {
   const words = String(title).trim().split(/\s+/);
@@ -162,6 +164,8 @@ export function normalizeEnglishTitle(title: string): string {
       const want = edge ? lower[0].toUpperCase() + lower.slice(1) : lower;
       return w.replace(bare, want);
     }
+    // a lowercase word that is not a small word is capitalised: «I am Thankful» (INCIDENTS #489)
+    if (bare === lower && /^[a-z]+$/.test(bare) && ALWAYS_CAPITAL.has(lower)) return w.replace(bare, lower[0].toUpperCase() + lower.slice(1));
     return w;
   }).join(" ");
 }

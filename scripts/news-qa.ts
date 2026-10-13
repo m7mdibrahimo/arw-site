@@ -673,6 +673,9 @@ export function autoFix(text: string): string {
   if (!text) return text;
   text = splitGluedBlocks(text);
   text = dualPronounsToPlural(text);
+  // A straight quote glued to the «» pair: > "«أنا حتى لا أعرف…»" went live in the Russo story (INCIDENTS #489) — the
+  // «» stays, the extra marks go
+  text = text.replace(/["“”]+(\*{0,2})«/g, "$1«").replace(/»(\*{0,2})["“”]+/g, "»$1");
   // A quote marker written in the middle of a sentence («وقال بيشوف: > نعم…») shows as a literal «>» — the quote goes
   // on its own line (INCIDENTS #470)
   text = text.replace(/^([^>\n][^\n]*?[:：،])[ \t]+>[ \t]+(?=\S)/gm, "$1\n\n> ");

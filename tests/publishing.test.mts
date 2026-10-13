@@ -4673,3 +4673,15 @@ test('INCIDENTS #486: Purrazzo spelling, NFL translation and «they lost me» ar
   assert.equal(applyCorrections('مباريات الدوري الأمريكي للمحترفين'), 'مباريات دوري كرة القدم الأمريكية (NFL)');
   assert.equal(applyCorrections('لكنهم فقدوا منطقي في تلك الليلة'), 'لكنهم فقدوني في تلك الليلة');
 });
+
+test('autoFix strips straight quote marks glued to «» (INCIDENTS #489)', () => {
+  assert.equal(autoFix('> "«أنا لا أعرف.»"'), '> «أنا لا أعرف.»');
+  assert.equal(autoFix('قال: "«من الجيد»" ومضى'), 'قال: «من الجيد» ومضى');
+});
+
+test('English title: a lowercase ordinary word is capitalised, name particles stay (INCIDENTS #489)', async () => {
+  const { normalizeEnglishTitle } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("Anthony Bowens Shares Memories: I am Thankful for His Friendship"), "Anthony Bowens Shares Memories: I Am Thankful for His Friendship");
+  assert.equal(normalizeEnglishTitle("Karmen Petrovic Discusses Joining Perros del Mal on October 17th"), "Karmen Petrovic Discusses Joining Perros del Mal on October 17th");
+  assert.equal(normalizeEnglishTitle("Rhodes Says he is Ready"), "Rhodes Says He Is Ready");
+});

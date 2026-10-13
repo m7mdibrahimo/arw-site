@@ -1,5 +1,5 @@
 ---
-title: "Anthony Bowens Shares Memories of Benjamin Satterley (PAC): I am Thankful for His Friendship"
+title: "Anthony Bowens Shares Memories of Benjamin Satterley (PAC): I Am Thankful for His Friendship"
 slug: "anthony-bowens-shares-memories-of-benjamin-satterley-pac-i-am-thankful-for-his-f"
 description: "Anthony Bowens recently opened up about his memories of the late Benjamin Satterley, also known as PAC. While speaking with Michael Fairman, Bowens…"
 federation: AEW
