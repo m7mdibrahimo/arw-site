@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-13T00:15:17.042Z"
+ },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-12-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-13T00:06:20.071Z"
- },
- "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-12T23:55:24.824Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-there-was-never-any-heat-with-travis-scott-id-like-to-see-him-back-doing-something-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
