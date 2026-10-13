@@ -563,14 +563,18 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   transform: scale(1);
   transform-origin: center 30%;
 }
-/* The slow zoom on every slide, the whole time it is shown (owner 2026-10-13, INCIDENTS #488): a transition did almost
-   all of its movement in the first second, under the cross-fade, so only the first slide seemed to move. An animation
-   restarts each time a slide becomes active and moves evenly for as long as the slide stays (6.5 s + the fade). */
-@keyframes spotlight-ken-burns { from { transform: scale(1); } to { transform: scale(1.08); } }
-.spotlight-slide.active .spotlight-bg-img {
-  animation: spotlight-ken-burns 7.5s cubic-bezier(0.25, 0.1, 0.25, 1) both;
-}
-@media (prefers-reduced-motion: reduce) { .spotlight-slide.active .spotlight-bg-img { animation: none; } }
+/* The slow zoom (owner 2026-10-13, INCIDENTS #485, #489): it lasts exactly as long as the slide is shown (6.5 s, the
+   autoplay's DURATION), stops where it is while the slide fades out instead of jumping back, pauses with the slider
+   (hover, drag), and takes turns: one slide moves in, the next moves out, on a soft ease-in-out curve. */
+@keyframes spotlight-zoom-in { from { transform: scale(1); } to { transform: scale(1.08); } }
+@keyframes spotlight-zoom-out { from { transform: scale(1.08); } to { transform: scale(1); } }
+.spotlight-slide.active .spotlight-bg-img,
+.spotlight-slide.leaving .spotlight-bg-img { animation: spotlight-zoom-in 6.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) both; }
+.spotlight-slide[data-zoom="out"].active .spotlight-bg-img,
+.spotlight-slide[data-zoom="out"].leaving .spotlight-bg-img { animation-name: spotlight-zoom-out; }
+.spotlight-slide.leaving .spotlight-bg-img,
+#spotlightHero.is-paused .spotlight-slide.active .spotlight-bg-img { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .spotlight-slide.active .spotlight-bg-img, .spotlight-slide.leaving .spotlight-bg-img { animation: none; } }
 
 /* Floating Play Icon for Shows */
 .spotlight-play-float {
@@ -1349,7 +1353,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <div class="spotlight-viewport" id="spotlightViewport">
   {% for item in slides %}
   {% set fedLower = (item.federation or "wwe") | lower %}
-  <div class="spotlight-slide {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" data-fed="{{ fedLower }}">
+  <div class="spotlight-slide {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}" data-fed="{{ fedLower }}" data-zoom="{{ 'out' if loop.index0 % 2 else 'in' }}">
     <!-- Full-Bleed Background Image (Anchored Left) -->
     <div class="spotlight-bg-wrap">
       {# slides are stacked, so «lazy» loaded all of them at once: from the third on, the picture loads when its turn comes (loadSlideImg) #}
@@ -1714,6 +1718,10 @@ header.classList.remove('header-hidden');
   let startTime = Date.now();
   let animFrame = null;
   let isPaused = false;
+  // Pausing keeps the time already shown (the bar and the zoom carry on from where they stopped, INCIDENTS #489)
+  let pausedAt = 0;
+  function pauseAuto() { if (isPaused) return; isPaused = true; pausedAt = Date.now(); hero.classList.add('is-paused'); }
+  function resumeAuto() { if (!isPaused) return; isPaused = false; startTime += Date.now() - pausedAt; hero.classList.remove('is-paused'); }
 
   function loadSlideImg(i) {
     const img = slides[(i + total) % total].querySelector('img[data-src]');
@@ -1726,9 +1734,16 @@ header.classList.remove('header-hidden');
     loadSlideImg(currentIndex + 1);
     loadSlideImg(currentIndex - 1);
 
+    // the slide going away keeps its zoom frozen while it fades (no jump back)
     slides.forEach((s, i) => {
+      if (s.classList.contains('active') && i !== currentIndex) {
+        s.classList.add('leaving');
+        setTimeout(() => s.classList.remove('leaving'), 800);
+      }
+      if (i === currentIndex) s.classList.remove('leaving');
       s.classList.toggle('active', i === currentIndex);
     });
+    if (isPaused) pausedAt = Date.now();
 
     barSegs.forEach((bar, i) => {
       const isActive = (i === currentIndex);
@@ -1790,8 +1805,8 @@ header.classList.remove('header-hidden');
     });
   }
 
-  hero.addEventListener('mouseenter', () => { isPaused = true; });
-  hero.addEventListener('mouseleave', () => { isPaused = false; startTime = Date.now(); });
+  hero.addEventListener('mouseenter', pauseAuto);
+  hero.addEventListener('mouseleave', resumeAuto);
 
   // Mobile-aware Touch & Mouse Swipe Handling
   // Prevents opening links or blocking page scroll when scrolling down on phone
@@ -1818,7 +1833,7 @@ header.classList.remove('header-hidden');
     isHorizontalSwipe = false;
     isVerticalScroll = false;
     isClickBlocked = false;
-    isPaused = true;
+    pauseAuto();
     startX = e.clientX;
     startY = e.clientY;
     moveX = 0;
@@ -1865,8 +1880,8 @@ header.classList.remove('header-hidden');
     if (!isPointerDown) return;
     isPointerDown = false;
     hero.classList.remove('is-dragging');
-    isPaused = false;
-    startTime = Date.now();
+    // a mouse still over the slider keeps it paused (hover); a finger lifted lets it carry on
+    if (!(e && e.pointerType === 'mouse' && hero.matches(':hover'))) resumeAuto();
 
     const elapsed = Date.now() - pointerDownTime;
     const absX = Math.abs(moveX);

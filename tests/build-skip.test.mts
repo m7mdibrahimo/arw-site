@@ -174,7 +174,13 @@ test('the home slider is one piece: the picture melts into a blurred copy of its
 test('every slide gets the slow zoom for as long as it is shown, not only the first', () => {
   // owner 2026-10-13: the RAW slide's slow zoom on every picture (INCIDENTS #488)
   const home = fs.readFileSync('index.njk', 'utf8');
-  assert.match(home, /@keyframes spotlight-ken-burns \{ from \{ transform: scale\(1\); \} to \{ transform: scale\(1\.08\); \} \}/);
-  assert.match(home, /\.spotlight-slide\.active \.spotlight-bg-img \{\n  animation: spotlight-ken-burns 7\.5s/);
+  // owner 2026-10-13 again: the zoom lasts the slide's time, freezes as it fades, and takes turns in and out (INCIDENTS #489)
+  assert.match(home, /@keyframes spotlight-zoom-in \{ from \{ transform: scale\(1\); \} to \{ transform: scale\(1\.08\); \} \}/);
+  assert.match(home, /@keyframes spotlight-zoom-out \{ from \{ transform: scale\(1\.08\); \} to \{ transform: scale\(1\); \} \}/);
+  assert.match(home, /animation: spotlight-zoom-in 6\.5s/);
+  assert.match(home, /const DURATION = 6500;/);
+  assert.match(home, /data-zoom="\{\{ 'out' if loop\.index0 % 2 else 'in' \}\}"/);
+  assert.match(home, /\.spotlight-slide\.leaving \.spotlight-bg-img,\n#spotlightHero\.is-paused \.spotlight-slide\.active \.spotlight-bg-img \{ animation-play-state: paused; \}/);
+  assert.match(home, /hero\.addEventListener\('mouseenter', pauseAuto\);/);
   assert.doesNotMatch(home, /transition: transform 7s cubic-bezier\(0\.1, 0\.9, 0\.2, 1\)/);
 });
