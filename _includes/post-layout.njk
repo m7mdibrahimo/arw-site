@@ -567,6 +567,13 @@
     {% endif %}
     {% endif %}
 
+    {% set companion = page.url | companionPage(program_name, event_date, collections.allContent) %}
+    {% if companion %}
+    <nav class="news-pn reveal" aria-label="نفس العرض">
+      <a class="news-pn-item news-pn-prev" href="{{ companion.url }}"><span class="news-pn-label">{% if page.url.startsWith('/shows/') %}ملخص نفس العرض{% else %}العرض كامل ومترجم{% endif %}</span><span class="news-pn-title">{{ companion.data.headline or companion.data.title }}</span></a>
+    </nav>
+    {% endif %}
+
     {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4, program_name, event_date or page.date) %}
     {% if relatedPosts and relatedPosts.length %}
     <section class="related-posts-section reveal" aria-label="ذات صلة">

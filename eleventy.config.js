@@ -1106,6 +1106,21 @@ module.exports = function(eleventyConfig) {
 
     return best.map(s => s.item);
   };
+  // The same episode as a show and as a recap (same program, same event day) link to each other: a plain navigation link,
+  // so the full show and its highlights are found from one another and Google sees them as two different pages (INCIDENTS #475).
+  const companionPage = function(currentUrl, programName, eventDate, allContent) {
+    if (!Array.isArray(allContent) || !programName || !eventDate) return null;
+    const isShow = /^\/shows\//.test(currentUrl || "");
+    if (!isShow && !/^\/recaps\//.test(currentUrl || "")) return null;
+    const day = (v) => { const d = v instanceof Date ? v : new Date(v); return isNaN(d.getTime()) ? "" : d.toISOString().slice(0, 10); };
+    const wantDay = day(eventDate);
+    const prog = String(programName).trim().toLowerCase();
+    if (!wantDay) return null;
+    return allContent.find((it) => it && it.url && it.url.startsWith(isShow ? "/recaps/" : "/shows/") && it.data
+      && String(it.data.program_name || "").trim().toLowerCase() === prog && day(it.data.event_date) === wantDay) || null;
+  };
+  eleventyConfig.addFilter("companionPage", companionPage);
+  eleventyConfig.addNunjucksFilter("companionPage", companionPage);
   eleventyConfig.addFilter("getRelatedPosts", getRelatedPosts);
   eleventyConfig.addNunjucksFilter("getRelatedPosts", getRelatedPosts);
 
