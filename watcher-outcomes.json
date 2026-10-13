@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2284897/wwe-nxt-october-13-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-13T21:40:15.590Z"
+ },
  "https://www.fightful.com/wrestling/chad-gable-reflects-on-wwe-raw-match-with-rey-fenix-i-felt-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-13T21:37:26.458Z"
- },
- "https://www.wrestlinginc.com/2284897/wwe-nxt-october-13-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-13T21:24:15.865Z"
  },
  "https://www.wrestlinginc.com/2285981/wwe-raw-viewership-ratings-report-october-5-2026": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-05)",
