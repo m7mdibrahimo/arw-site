@@ -662,6 +662,9 @@ export function autoFix(text: string): string {
   if (!text) return text;
   text = splitGluedBlocks(text);
   text = dualPronounsToPlural(text);
+  // A quote marker written in the middle of a sentence («وقال بيشوف: > نعم…») shows as a literal «>» — the quote goes
+  // on its own line (INCIDENTS #470)
+  text = text.replace(/^([^>\n][^\n]*?[:：،])[ \t]+>[ \t]+(?=\S)/gm, "$1\n\n> ");
   text = repairMixedTitles(text);
   // An instruction the writer echoed into the text: «خلال إضافة علامات التنصيص وعلامة الاستفهام كما في
   // المصدر، استرجع شيفاني…» went live (INCIDENTS #254) — the clause goes, the sentence stays

@@ -55,10 +55,22 @@ eleventyComputed:
     "@type": "ItemList",
     "itemListElement": [
       {% for item in lp.items %}
-      { "@type": "ListItem", "position": {{ loop.index }}, "url": "https://arab-wrestling.com{{ item.url | cleanUrl }}" }{% if not loop.last %},{% endif %}
+      { "@type": "ListItem", "position": {{ loop.index }}, "url": "https://arab-wrestling.com{{ item.url | cleanUrl }}"{% set liName = item.headline or item.title %}{% if liName %}, "name": "{{ liName | escape }}"{% endif %} }{% if not loop.last %},{% endif %}
       {% endfor %}
     ]
   }
+}
+</script>
+{#- the path Home > Library > program, for search engines only (INCIDENTS #470) -#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://arab-wrestling.com/" },
+    { "@type": "ListItem", "position": 2, "name": "مكتبة العروض", "item": "https://arab-wrestling.com/library/" },
+    { "@type": "ListItem", "position": 3, "name": "{{ (lp.prog.arLibTitle or lp.prog.arName or lp.prog.name) | escape }}", "item": "https://arab-wrestling.com{{ page.url | cleanUrl }}" }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

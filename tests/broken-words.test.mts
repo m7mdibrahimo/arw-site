@@ -219,3 +219,12 @@ test('feminine «بطولة … الكلاسيكية» takes a feminine verb', (
   assert.equal(applyCorrections('بطولة جون سينا الكلاسيكية لن يكون جزءا من العرض'), 'بطولة جون سينا الكلاسيكية لن تكون جزءا من العرض');
   assert.equal(applyCorrections('بطولة سينا الكلاسيكية لن يقام في العرض'), 'بطولة سينا الكلاسيكية لن تقام في العرض');
 });
+
+test('a quote marker in the middle of a sentence moves to its own line; «يوتوتا» is corrected; no story keeps either (INCIDENTS #470)', async () => {
+  const { autoFix, applyCorrections, loadNews } = await import('../scripts/news-qa.ts');
+  assert.equal(autoFix('وقال بيشوف في هذا الصدد: > نعم، أعتقد ذلك.'), 'وقال بيشوف في هذا الصدد:\n\n> نعم، أعتقد ذلك.');
+  assert.equal(autoFix('> اقتباس عادي'), '> اقتباس عادي');
+  assert.ok(!/يوتوتا/.test(applyCorrections('يوتوتا تسوجي')));
+  const left = loadNews().filter(n => /^[^>\n][^\n]*?[:：،][ \t]+>[ \t]+\S/m.test(n.body) || /يوتوتا/.test(n.body)).map(n => n.file);
+  assert.deepEqual(left, []);
+});
