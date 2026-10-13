@@ -4556,3 +4556,16 @@ test('episode date spellings and BroadcastEvent are in the VideoObject only (INC
   assert.match(layout, /"publication": \{ "@type": "BroadcastEvent"[^\n]*"isLiveBroadcast": false/);
   assert.match(layout, /showNameForms\(headline, title, program_name, event_date\)/);
 });
+
+// INCIDENTS #469: spellings people search for ROH, TNA Impact, Main Event and Evolve are alternate names of their library pages
+test('library aliases cover the common spellings of ROH / Impact / Main Event / Evolve', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  for (const a of ['"روه"', '"عرض ار او اتش الاخير"', '"عرض امباكت مترجم"', '"عرض مين ايفنت مترجم"', '"عرض ايفولف مترجم"']) assert.ok(cfg.includes(a), a);
+});
+
+test('ROH aliases are keyed by the real library slugs (the old «roh» key matched nothing)', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /"roh-on-honorclub": \[/);
+  assert.match(cfg, /"roh-specials": \[/);
+  assert.doesNotMatch(cfg, /\n\s+"roh": \[/);
+});

@@ -213,3 +213,9 @@ test('a week/month date is not turned into «الليلة» (INCIDENTS #467)', a
   assert.equal(tonightInTitle('أبرز الفائزين والخاسرين لهذا الأسبوع 12 أكتوبر 2026', us), 'أبرز الفائزين والخاسرين لهذا الأسبوع 12 أكتوبر 2026');
   assert.equal(tonightInTitle('الكشف عن خطط عرض WWE RAW يوم 12 أكتوبر', us), 'الكشف عن خطط عرض WWE RAW الليلة');
 });
+
+// INCIDENTS #469: «بطولة جون سينا الكلاسيكية لن يكون/لن يقام» (verb did not agree with the feminine noun)
+test('feminine «بطولة … الكلاسيكية» takes a feminine verb', () => {
+  assert.equal(applyCorrections('بطولة جون سينا الكلاسيكية لن يكون جزءا من العرض'), 'بطولة جون سينا الكلاسيكية لن تكون جزءا من العرض');
+  assert.equal(applyCorrections('بطولة سينا الكلاسيكية لن يقام في العرض'), 'بطولة سينا الكلاسيكية لن تقام في العرض');
+});
