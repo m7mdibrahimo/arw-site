@@ -561,11 +561,16 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   object-fit: cover;
   object-position: center 25%;
   transform: scale(1);
-  transition: transform 7s cubic-bezier(0.1, 0.9, 0.2, 1);
+  transform-origin: center 30%;
 }
+/* The slow zoom on every slide, the whole time it is shown (owner 2026-10-13, INCIDENTS #488): a transition did almost
+   all of its movement in the first second, under the cross-fade, so only the first slide seemed to move. An animation
+   restarts each time a slide becomes active and moves evenly for as long as the slide stays (6.5 s + the fade). */
+@keyframes spotlight-ken-burns { from { transform: scale(1); } to { transform: scale(1.08); } }
 .spotlight-slide.active .spotlight-bg-img {
-  transform: scale(1.045);
+  animation: spotlight-ken-burns 7.5s cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
+@media (prefers-reduced-motion: reduce) { .spotlight-slide.active .spotlight-bg-img { animation: none; } }
 
 /* Floating Play Icon for Shows */
 .spotlight-play-float {

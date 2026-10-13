@@ -170,3 +170,11 @@ test('the home slider is one piece: the picture melts into a blurred copy of its
   const en = path.join(process.cwd(), '_site/en/index.html');
   if (fs.existsSync(en)) assert.match(fs.readFileSync(en, 'utf8'), /mask-image: linear-gradient\(to left, #000 calc\(100% - var\(--melt\)\)/);
 });
+
+test('every slide gets the slow zoom for as long as it is shown, not only the first', () => {
+  // owner 2026-10-13: the RAW slide's slow zoom on every picture (INCIDENTS #488)
+  const home = fs.readFileSync('index.njk', 'utf8');
+  assert.match(home, /@keyframes spotlight-ken-burns \{ from \{ transform: scale\(1\); \} to \{ transform: scale\(1\.08\); \} \}/);
+  assert.match(home, /\.spotlight-slide\.active \.spotlight-bg-img \{\n  animation: spotlight-ken-burns 7\.5s/);
+  assert.doesNotMatch(home, /transition: transform 7s cubic-bezier\(0\.1, 0\.9, 0\.2, 1\)/);
+});
