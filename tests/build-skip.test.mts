@@ -160,3 +160,13 @@ test('a page with a player is never prepared in the background, and nothing arou
   assert.match(layout, /<div class="post-wrap\{% if isWatchPage %\} is-watch\{% else %\} reveal\{% endif %\}">/);
   assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261013a/);
 });
+
+test('the home slider is one piece: the picture melts into a blurred copy of itself, mirrored on the English pages', () => {
+  // owner 2026-10-13 — «الصورة والخلفية قطعة واحدة», option 3 (INCIDENTS #484)
+  const home = fs.readFileSync('index.njk', 'utf8');
+  assert.match(home, /<div class="spotlight-amb" style="background-image:url\('\{\{ ambSrc \}\}'\)"><\/div>/);
+  assert.match(home, /--melt: 55%;/);
+  assert.match(home, /\.spotlight-slide\[data-fed="wwe"\] \{ --fed-glow:/);
+  const en = path.join(process.cwd(), '_site/en/index.html');
+  if (fs.existsSync(en)) assert.match(fs.readFileSync(en, 'utf8'), /mask-image: linear-gradient\(to left, #000 calc\(100% - var\(--melt\)\)/);
+});

@@ -615,6 +615,36 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   z-index: 1;
 }
 
+/* One piece (owner 2026-10-13, INCIDENTS #484): no edge anywhere. Behind the picture, the same picture blurred into its
+   own colours; the picture melts into it over its half nearest the text, on an eased curve; over the text side a soft
+   shade and a faint glow in the promotion's colour. Wide screens only: phones keep the picture above the text.
+   The English pages get all of it mirrored (rtlcss in lib/i18n/mirror.cjs). */
+.spotlight-amb { display: none; }
+.spotlight-slide { --fed-glow: rgba(255, 255, 255, 0.06); }
+.spotlight-slide[data-fed="wwe"] { --fed-glow: rgba(214, 40, 57, 0.16); }
+.spotlight-slide[data-fed="aew"] { --fed-glow: rgba(245, 183, 0, 0.15); }
+.spotlight-slide[data-fed="tna"] { --fed-glow: rgba(40, 140, 255, 0.16); }
+.spotlight-slide[data-fed="roh"] { --fed-glow: rgba(200, 30, 45, 0.15); }
+.spotlight-slide[data-fed="njpw"] { --fed-glow: rgba(232, 232, 240, 0.10); }
+.spotlight-slide[data-fed="mma"] { --fed-glow: rgba(225, 29, 72, 0.15); }
+.spotlight-slide[data-fed="indie"] { --fed-glow: rgba(24, 179, 177, 0.14); }
+@media (min-width: 861px) {
+  .spotlight-container, html.arw-dark .spotlight-container { border-color: transparent; }
+  .spotlight-amb { display: block; position: absolute; inset: -30%; background-size: cover; background-position: center 30%; filter: blur(70px) saturate(1.25) brightness(0.42); transform: scaleX(1.3); transform-origin: left center; }
+  .spotlight-bg-img {
+    --melt: 55%;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - var(--melt)), rgba(0,0,0,.9) calc(100% - var(--melt) * .82), rgba(0,0,0,.72) calc(100% - var(--melt) * .62), rgba(0,0,0,.48) calc(100% - var(--melt) * .42), rgba(0,0,0,.24) calc(100% - var(--melt) * .22), rgba(0,0,0,.08) calc(100% - var(--melt) * .08), transparent 100%);
+    mask-image: linear-gradient(to right, #000 calc(100% - var(--melt)), rgba(0,0,0,.9) calc(100% - var(--melt) * .82), rgba(0,0,0,.72) calc(100% - var(--melt) * .62), rgba(0,0,0,.48) calc(100% - var(--melt) * .42), rgba(0,0,0,.24) calc(100% - var(--melt) * .22), rgba(0,0,0,.08) calc(100% - var(--melt) * .08), transparent 100%);
+  }
+  .spotlight-gradient-overlay {
+    background:
+      radial-gradient(55% 90% at right center, var(--fed-glow), transparent 70%),
+      linear-gradient(to right, transparent 58%, rgba(13, 19, 31, 0.28) 72%, rgba(13, 19, 31, 0.5) 100%),
+      linear-gradient(to top, rgba(13, 19, 31, 0.5) 0%, transparent 30%);
+  }
+  .spotlight-title { text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55); }
+}
+
 /* Slide Content on the RIGHT (RTL) */
 .spotlight-content {
   position: relative;
@@ -1318,6 +1348,9 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
     <!-- Full-Bleed Background Image (Anchored Left) -->
     <div class="spotlight-bg-wrap">
       {# slides are stacked, so «lazy» loaded all of them at once: from the third on, the picture loads when its turn comes (loadSlideImg) #}
+      {#- the same picture, tiny and blurred: the backdrop the picture melts into (INCIDENTS #484) -#}
+      {% set ambSrc = (item.image | miniOf) or (item.image | fullImg('/content/images/jtct9rkqmcshcyh6.jpg')) %}
+      <div class="spotlight-amb" style="background-image:url('{{ ambSrc }}')"></div>
       <img {% if loop.index0 < 2 %}src{% else %}data-src{% endif %}="{{ item.image | fullImg('/content/images/jtct9rkqmcshcyh6.jpg') }}" alt="{{ item.title }}" {% if loop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async" class="spotlight-bg-img" />
       <div class="spotlight-gradient-overlay"></div>
     </div>
