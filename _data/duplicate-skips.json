@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/triple-h-honors-pac-emotional-tribute-his-passing/": {
-    "matchedFile": "20260928112101-إيليا-دراغونوف-يوجه-رسالة-تحية-مؤثرة-إلى-باك-بعد-وفاته.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-28T14:32:23.476Z"
-  },
   "https://www.fightful.com/wrestling/ricochet-defends-spot-that-led-to-steven-borden-injury-no-one-is-at-fault-here/": {
     "matchedFile": "20260928175807-ريكوشيه-يدافع-عن-ستيفن-بوردن-بعد-إصابته-المرعبة-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012190431-كيني-أوميغا-وجون-موكسلي-يستعدان-للعودة-إلى-حلبات-njpw.md",
     "reason": "الخبر الجديد يعتبر تحديثاً تفصيلياً لنفس الحدث (إعلان نزالات عرض Power Struggle) الذي تم ذكره في الخبر السابق، حيث أن تفاصيل النزالات المحددة لا تشكل تطوراً جوهرياً جديداً يغير من طبيعة الخبر المنشور مسبقاً.",
     "at": "2026-10-13T15:58:38.558Z"
+  },
+  "https://www.fightful.com/wrestling/laynie-luck-recounts-wwe-id-womens-title-win-everything-just-kind-of-worked-out-in-my-favor/": {
+    "matchedFile": "20261012153000-لايني-لاك-تعلق-على-عدم-تجديد-عقدها-مع-wwe-id-أشعر-أنني-حصلت-على-كل-ما-يمكنني-تحقيقه-من-البرنامج.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات حول رحلة لايني لاك مع اللقب وعدم تجديد عقدها، وهي تفاصيل تم تغطيتها بالفعل في الخبر رقم 3.",
+    "at": "2026-10-13T16:18:09.875Z"
   }
 }
