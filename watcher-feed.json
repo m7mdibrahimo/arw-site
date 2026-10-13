@@ -1,5 +1,15 @@
 [
   {
+    "id": 333627,
+    "link": "https://www.fightful.com/wrestling/richard-adonis-joins-wwe-id-program/",
+    "date": "2026-10-13T00:03:15",
+    "date_gmt": "2026-10-13T04:03:15",
+    "title": {
+      "rendered": "Richard Adonis Joins WWE ID Program"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12235612/HUes141WcAAyKdV-e1791863800629.jpg"
+  },
+  {
     "id": 333625,
     "link": "https://www.fightful.com/wrestling/anthony-bowens-i-currently-have-a-slightly-torn-meniscus-in-my-right-knee/",
     "date": "2026-10-12T23:49:37",
@@ -288,15 +298,5 @@
       "rendered": "India Sioux Explains Why Winning The CMLL National Women’s Championship &#8216;Meant A Lot&#8217; To Her"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12054311/maxresdefault-72.jpg"
-  },
-  {
-    "id": 333549,
-    "link": "https://www.fightful.com/wrestling/layla-diggs-monica-monroe-set-for-reality-of-wrestlings-sherri-martel-classic/",
-    "date": "2026-10-12T15:53:46",
-    "date_gmt": "2026-10-12T19:53:46",
-    "title": {
-      "rendered": "Layla Diggs, Monica Monroe Set For Reality Of Wrestling&#8217;s Sherri Martel Classic"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12153216/Screenshot-527.png"
   }
 ]
