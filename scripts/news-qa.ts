@@ -109,6 +109,7 @@ const RULES: Rule[] = [
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
   // Not blocking (ai_leak is): the copy editor removes it — «خلال إضافة علامات التنصيص… كما في المصدر» (INCIDENTS #254)
   { code: "echoed_instruction", severity: "error", re: /علامات التنصيص|كما (?:في|ورد في) المصدر/g, message: "تعليمات للكاتب اتنقلت جوه النص — احذفها", fields: ["title", "body"] },
+  { code: "editor_note", severity: "error", re: /(?:^|\n)[ \t]*(?:تبسيط|تعديل|تصحيح|حذف|إضافة|تغيير|تحسين|توحيد|ضبط)\s+[^\n]{0,80}(?:لتتوافق|ليتوافق|لتطابق|بما يتوافق|معيار|الفصحى|دون زيادات|عبارة الختم|الصياغة المعتمدة)[^\n]*/g, message: "ملاحظة المحرر لنفسه اتكتبت كفقرة في الخبر — احذفها", fields: ["body"] },
   { code: "empty_brackets", severity: "error", re: /\(\s*\)|\[\s*\]|«\s*»|""/g, message: "أقواس أو علامات تنصيص فاضية" },
   { code: "english_jargon", severity: "error", re: new RegExp(`[${AR}]\\s+(?:segment|promo|promoter|heel|babyface|face turn|heel turn|feud|spot|push|booking|booker|squash|botch|kayfabe|go-home|angle|storyline|run-in|pop|heat|tag team|finisher|jobber|mic skills|main event|midcard|house show)\\b|(?<!عرض|TNA)\\s+impact\\s+(?=ال)|\\b(?:segment|promo|heel|babyface|feud|booking|squash|botch|kayfabe|go-home|storyline)\\s+[${AR}]`, "gi"), message: "مصطلح مصارعة إنجليزي داخل جملة عربية (مثل segment ← فقرة، promo ← خطاب/حوار)", fields: ["title", "body"] },
   { code: "english_title_name", severity: "error", re: new RegExp(`[${AR}]\\s+(?:[A-Z][A-Za-z']+\\s+){0,4}(?:Championships?(?!\\s+Wrestling)|Titles?)\\b`, "g"), message: "اسم لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...). أسماء الدورات (Cup/Classic/Tournament) تبقى بالإنجليزي", fields: ["title", "body"] },
@@ -212,9 +213,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "mixed_script_word", "dual_noun", "dual_form"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "mixed_script_word", "dual_noun", "dual_form"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -679,6 +680,9 @@ export function autoFix(text: string): string {
   // An instruction the writer echoed into the text: «خلال إضافة علامات التنصيص وعلامة الاستفهام كما في
   // المصدر، استرجع شيفاني…» went live (INCIDENTS #254) — the clause goes, the sentence stays
   text = text.replace(/(?:^|(?<=[\n.،]\s?))(?:خلال|مع|بعد|عبر)\s+إضافة\s+علامات\s+التنصيص[^،.\n]*(?:كما\s+(?:في|ورد\s+في)\s+المصدر)?[،,]\s*/g, "");
+  // The editor's note to itself as its own paragraph: «تبسيط عبارة الختم لتتوافق مع معيار الفصحى البيضاء البسيطة ودون
+  // زيادات» ended the Bowens/PAC story (INCIDENTS #485) — the whole line goes, the editor_note check blocks the rest
+  text = text.replace(/(?:^|\n)[ \t]*(?:تبسيط|تعديل|تصحيح|حذف|إضافة|تغيير|تحسين|توحيد|ضبط)\s+[^\n]{0,80}(?:لتتوافق|ليتوافق|لتطابق|بما يتوافق|معيار|الفصحى|دون زيادات|عبارة الختم|الصياغة المعتمدة)[^\n]*[ \t]*(?=\n|$)/g, "");
   // An editor's note to itself left in the text: «(المصدر يشير إلى أنه اختار AEW بدلا من WWE NXT، وليس أنه
   // انتقل فعليا…)» went live in the David Finlay story (INCIDENTS #251)
   // «(مع تصحيح اسم المصارع إلى تايران تاكي)» went live in the NXT pre-show story (INCIDENTS #321)

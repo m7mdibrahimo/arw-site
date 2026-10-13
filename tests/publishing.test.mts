@@ -4657,3 +4657,13 @@ test('a refused or expiring GitHub key is a watchdog problem, and the panel says
   assert.match(GITHUB_KEY_REFUSED, /من غير تاريخ انتهاء/);
   assert.match(fs.readFileSync('worker/src/studio.ts', 'utf-8'), /const msg = status === 401 \? GITHUB_KEY_REFUSED/);
 });
+
+test('an editor note left as a paragraph is removed and blocks publishing (INCIDENTS #485)', async () => {
+  const note = 'تبسيط عبارة الختم لتتوافق مع معيار الفصحى البيضاء البسيطة ودون زيادات';
+  const body = 'تحدث المصارع عن ذكرياته مع زميله خلال لقاء طويل.\n\n' + note;
+  assert.equal(autoFix(body).includes('تبسيط'), false);
+  const { checkArticle, BLOCKING_QA_CODES } = await import('../scripts/news-qa');
+  const issues = checkArticle('عنوان عربي كامل للخبر هنا', body, []);
+  assert.ok(issues.some(i => i.code === 'editor_note'));
+  assert.ok(BLOCKING_QA_CODES.includes('editor_note'));
+});
