@@ -1,5 +1,25 @@
 [
   {
+    "id": 333780,
+    "link": "https://www.fightful.com/wrestling/kenny-omega-aiming-to-win-iwgp-heavyweight-title-at-tokyo-dome/",
+    "date": "2026-10-13T19:16:05",
+    "date_gmt": "2026-10-13T23:16:05",
+    "title": {
+      "rendered": "Kenny Omega Aiming To Win IWGP Heavyweight Title At Tokyo Dome"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13191048/Untitled-Design-18.jpg"
+  },
+  {
+    "id": 333775,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more/",
+    "date": "2026-10-13T19:15:00",
+    "date_gmt": "2026-10-13T23:15:00",
+    "title": {
+      "rendered": "WWE NXT Results (10/13/2026): Wren Sinclair Appears, Tony D&#8217;Angelo vs. Myles Borne, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13183209/image-419.png"
+  },
+  {
     "id": 333774,
     "link": "https://www.fightful.com/wrestling/kali-armstrong-challenging-la-catalina-for-aaa-reina-de-reinas-title-on-10-13-wwe-nxt/",
     "date": "2026-10-13T18:17:17",
@@ -278,25 +298,5 @@
       "rendered": "Maria Kanellis Credits Nigel McGuinness For Being First Person To Suggest That Mike Bennett Go By &#8216;Mike Kanellis&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13105526/Untitled-Design-15.jpg"
-  },
-  {
-    "id": 333681,
-    "link": "https://www.fightful.com/wrestling/cody-rhodes-talks-stunt-work-in-street-fighter-having-to-be-thought-the-right-things-to-do/",
-    "date": "2026-10-13T10:30:30",
-    "date_gmt": "2026-10-13T14:30:30",
-    "title": {
-      "rendered": "Cody Rhodes Talks Stunt Work In Street Fighter, Having To Be Thought &#8216;The Right Things To Do&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/09214052/HUO2NTBbUAAIKoS.jpg"
-  },
-  {
-    "id": 333645,
-    "link": "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-10-10-2026-templario-blue-panther-star-jr-vs-yutani-hermanos-chavez-more/",
-    "date": "2026-10-13T10:30:00",
-    "date_gmt": "2026-10-13T14:30:00",
-    "title": {
-      "rendered": "CMLL Sábado De Coliseo Results (10/10/2026): Templario, Blue Panther &amp; Star Jr. vs. Yutani &amp; Hermanos Chávez, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13014226/image-418.png"
   }
 ]
