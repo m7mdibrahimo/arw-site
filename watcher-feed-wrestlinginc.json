@@ -1,5 +1,15 @@
 [
   {
+    "id": 4407385999,
+    "link": "https://www.wrestlinginc.com/2284867/wwe-raw-chelsea-green-liv-morgan-roxanne-perez-judgment-day/",
+    "date": "Tue, 13 Oct 2026 01:37:25 +0000",
+    "date_gmt": "2026-10-13T01:37:25.000Z",
+    "title": {
+      "rendered": "Chelsea Green Confronts Liv Morgan, Takes Loss To Roxanne Perez On WWE Raw"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/chelsea-green-confronts-liv-morgan-takes-loss-to-roxanne-perez-on-wwe-raw/l-intro-1791855323.jpg"
+  },
+  {
     "id": 919746479,
     "link": "https://www.wrestlinginc.com/2283116/eric-bischoff-aew-tony-khan-wwe-ceo-vince-mcmahon/",
     "date": "Tue, 13 Oct 2026 01:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Report On Recent WWE Women's World Title Changes"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-recent-wwe-womens-world-title-changes/l-intro-1791821718.jpg"
-  },
-  {
-    "id": 3064823140,
-    "link": "https://www.wrestlinginc.com/2283994/aew-njpw-kenny-omega-jon-moxley-returns-set/",
-    "date": "Mon, 12 Oct 2026 16:04:31 +0000",
-    "date_gmt": "2026-10-12T16:04:31.000Z",
-    "title": {
-      "rendered": "AEW's Kenny Omega & Jon Moxley Set For NJPW In-Ring Returns"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-kenny-omega-jon-moxley-set-for-njpw-in-ring-returns/l-intro-1791820919.jpg"
   }
 ]
