@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/even-more-wrestling-personalities-remember-pac-benjamin-satterley/": {
-    "matchedFile": "20260928041622-وفاة-المصارع-باك-المعروف-باسم-بينجامين-ساتيرلي-عن-عمر-يناهز-أربعين-عاما.md",
-    "reason": "تشابه العنوان مع خبر منشور حديثاً",
-    "at": "2026-09-28T16:14:55.996Z"
-  },
   "https://www.wrestlinginc.com/2270876/aew-all-out-2026-ricochet-steven-borden-reacts-injury-no-one-at-fault/": {
     "matchedFile": "20260928175807-ريكوشيه-يدافع-عن-ستيفن-بوردن-بعد-إصابته-المرعبة-في-عرض-aew-all-out.md",
     "reason": "تشابه العنوان مع خبر منشور حديثاً",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261012223823-نجم-wwe-سابق-كان-الخيار-الأول-لاتحاد-tna-للمشاركة-في-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يكرر نفس التفاصيل الموجودة في الخبر رقم 0 حول كون شيماس الخيار الأول لاتحاد TNA لعرض Bound for Glory وما تبع ذلك من أحداث.",
     "at": "2026-10-13T16:37:40.914Z"
+  },
+  "https://www.ringsidenews.com/why-carmelo-hayes-kept-off-wwe-television/": {
+    "matchedFile": "20261013161220-كارميلو-هايز-ينضم-إلى-فريق-ذا-946-في-عرض-wwe-raw.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تفاصيل انضمام كارميلو هايز لفريق ذا 946 وسبب غيابه عن الشاشات التي تم تغطيتها بالفعل في الخبر رقم 0.",
+    "at": "2026-10-13T16:43:57.169Z"
   }
 }
