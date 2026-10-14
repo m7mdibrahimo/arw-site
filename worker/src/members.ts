@@ -183,7 +183,7 @@ async function sendVerify(env: MembersEnv, db: D1Database, m: Member, now: numbe
   const t = await mailToken(db, m.id, "verify", 72, now);
   return sendMail(env, m.email, "فعّل حسابك في عرب راسلنج", mailHtml(`أهلًا بك يا ${esc(m.display || m.username)} 👋`, [
     "سعداء بانضمامك إلى عرب راسلنج.",
-    "بقيت خطوة واحدة: اضغط على الزر لتفعيل حسابك، وبعدها تدخل مباشرة وتحصل على العلامة الزرقاء وكل مميزات العضوية.",
+    "بقيت خطوة واحدة: اضغط على الزر لتفعيل حسابك، وبعدها تدخل مباشرة وتستفيد من كل مميزات العضوية.",
     "الرابط صالح لمدة 3 أيام. إن لم تنشئ هذا الحساب، تجاهل هذه الرسالة.",
   ], { text: "تفعيل الحساب", href: `${SITE}/account/?verify=${t}` }));
 }
@@ -263,8 +263,9 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const { salt, hash, iterations } = await hashPassword(password);
     const code = recoveryCode();
     const country = String((request as any).cf?.country || "").slice(0, 2).toUpperCase();
-    const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, recovery, display, created, last_seen, ip, country)
-      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?1, ?8, ?8, ?9, ?10) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country).first<Member>();
+    // no blue badge to begin with: the owner gives it (owner 2026-10-14: «تشيل موضوع ان اي حد يسجل ياخد العلامة الزرقاء»)
+    const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, recovery, display, created, last_seen, ip, country, badge)
+      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?1, ?8, ?8, ?9, ?10, 0) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country).first<Member>();
     if (!ins) return reply({ ok: false, error: "تعذّر إنشاء الحساب، حاول مرة أخرى." }, 500);
     await count(env.PUSH_KV, `su:${ip}`, 3600);
     const mailed = await sendVerify(env, db, ins, now).catch(() => false);

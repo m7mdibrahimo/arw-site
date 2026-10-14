@@ -150,7 +150,7 @@
     var v = $('[data-view="welcome"]');
     waitingFor = creds || null; waitingMail = email || '';
     $('.acct-code', v).textContent = code;
-    $('.acct-welcome-tx', v).textContent = creds ? 'تم إنشاء حسابك. احفظ كود الاسترجاع أولًا، ثم فعّل حسابك من بريدك.' : mailed ? 'تم إنشاء حسابك وحصلت على العلامة الزرقاء.' : 'تم إنشاء حسابك وحصلت على العلامة الزرقاء.';
+    $('.acct-welcome-tx', v).textContent = creds ? 'تم إنشاء حسابك. احفظ كود الاسترجاع أولًا، ثم فعّل حسابك من بريدك.' : 'تم إنشاء حسابك.';
     var check = $('.acct-saved', v), go = $('[data-go="profile"]', v);
     go.textContent = creds ? 'متابعة' : 'متابعة إلى حسابي';
     check.checked = false; go.disabled = true;
@@ -381,7 +381,7 @@
         history.replaceState(null, '', location.pathname);
         if (d.ok && d.token) signedIn(d);
         else if (d.ok && session) { session.member.verified = true; save(session); }
-        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلًا بك في عرب راسلنج. حسابك جاهز، وحصلت على العلامة الزرقاء وكل مميزات العضوية.' : (d.error && !EN ? d.error : 'رابط التفعيل غير صالح.'));
+        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلًا بك في عرب راسلنج. حسابك جاهز، ويمكنك الآن الاستفادة من كل مميزات العضوية.' : (d.error && !EN ? d.error : 'رابط التفعيل غير صالح.'));
       });
       return;
     }

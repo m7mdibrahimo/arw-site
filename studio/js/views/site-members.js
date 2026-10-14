@@ -79,7 +79,7 @@ export async function renderSiteMembers(page) {
     <div class="wrap page-in">
       <div class="page-title">
         <div><h1>الأعضاء</h1>
-          <p class="muted">كل اللي عملوا حساب على الموقع · العضو بيعلّق باسمه وصورته وجنبه العلامة الزرقاء · دوس على أي عضو تشوف كل تفاصيله</p></div>
+          <p class="muted">كل اللي عملوا حساب على الموقع · العضو بيعلّق باسمه وصورته · العلامة الزرقاء إنت اللي بتديها · دوس على أي عضو تشوف كل تفاصيله</p></div>
         <button class="btn" id="mb-export">${icon('download')}تصدير Excel</button>
       </div>
       ${getUser()?.role === 'owner' ? html`<section class="card mb-off" id="mb-off"></section>` : ''}

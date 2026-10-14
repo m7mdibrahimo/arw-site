@@ -155,7 +155,7 @@
   function showRoom() { app.setAttribute('data-view', 'room'); document.body.classList.add('cm-in-room'); }
   function showRooms() {
     app.setAttribute('data-view', 'rooms'); document.body.classList.remove('cm-in-room');
-    if (window.matchMedia('(max-width: 820px)').matches) { close(); current = null; $$('.cm-room').forEach(function (b) { b.classList.remove('is-on'); }); document.title = 'مجتمع المصارعة | عرب راسلنج'; }
+    if (window.matchMedia('(max-width: 1150px)').matches) { close(); current = null; $$('.cm-room').forEach(function (b) { b.classList.remove('is-on'); }); document.title = 'مجتمع المصارعة | عرب راسلنج'; }
   }
   function gate(on) {
     $('.cm-gate').hidden = !on;
@@ -959,7 +959,7 @@
     var r = location.hash.slice(1);
     if (ROOMS[r]) open(r, false); else showRooms();
   });
-  window.addEventListener('resize', function () { if (!window.matchMedia('(max-width: 820px)').matches) document.body.classList.remove('cm-in-room'); else if (app.getAttribute('data-view') === 'room') document.body.classList.add('cm-in-room'); });
+  window.addEventListener('resize', function () { if (!window.matchMedia('(max-width: 1150px)').matches) document.body.classList.remove('cm-in-room'); else if (app.getAttribute('data-view') === 'room') document.body.classList.add('cm-in-room'); });
 
   // ── the start ────────────────────────────────────────────────────────────
   // the room fills the screen under the site's header
@@ -968,5 +968,5 @@
   summaries();
   var first = location.hash.slice(1);
   if (ROOMS[first]) open(first, false);
-  else if (!window.matchMedia('(max-width: 820px)').matches) open('general', false);
+  else if (!window.matchMedia('(max-width: 1150px)').matches) open('general', false);
 })();

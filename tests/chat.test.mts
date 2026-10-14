@@ -179,7 +179,7 @@ test('members only: a ticket needs a session; the socket needs a fresh ticket fr
   const token = await member(e);
   const t: any = await (await chat(e, '/chat/ticket', { method: 'POST', headers: { Authorization: `Bearer ${token}` } })).json();
   assert.match(t.ticket, /^[a-f0-9]{48}$/);
-  assert.equal(t.me.badge, 'blue');
+  assert.equal(t.me.badge, ''); // a new member has no blue badge until the owner gives it
   const who = JSON.parse(e.PUSH_KV.m.get(`chat:t:${t.ticket}`));
   assert.equal(who.user, 'kareem_10');
   // no room binding here: the socket can't open, but the checks before it run
