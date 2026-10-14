@@ -574,6 +574,8 @@
     </nav>
     {% endif %}
 
+    {% include "comments.njk" %}
+
     {% set relatedPosts = page.url | getRelatedPosts(tags, federation, collections.allContent, 4, program_name, event_date or page.date) %}
     {% if relatedPosts and relatedPosts.length %}
     <section class="related-posts-section reveal" aria-label="ذات صلة">
@@ -707,6 +709,7 @@
 <script src="{{ asset('/assets/post-player.js') }}"></script>
 <script src="{{ asset('/assets/post-theme.js') }}"></script>
 <script src="/assets/features.js?v=20261005f" defer></script>
+<script src="{{ asset('/assets/comments.js') }}" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

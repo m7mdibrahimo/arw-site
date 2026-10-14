@@ -4,6 +4,7 @@ import { COLLECTIONS } from '../schema.js';
 import { html, mount, $, icon, timeAgo, fmtDate, num, can } from '../ui.js';
 import { renderAnalytics } from './analytics.js';
 import { renderHeld } from './held.js';
+import { renderCommentsBox } from './comments.js';
 
 const PLATFORMS = [
   { key: 'telegram', name: 'تيليجرام', icon: 'telegram', color: '#24a1de' },
@@ -106,6 +107,8 @@ export async function renderDashboard(page) {
           </a>`)}
       </div>
 
+      ${can(user, 'comments') ? html`<section class="panel cm-box" id="cm-box" hidden></section>` : ''}
+
       <div class="cols">
         ${can(user, 'shows.view') ? html`<section class="panel">
           <header class="panel-head"><h2>آخر العروض</h2><a class="link" href="#/list/shows">الكل</a></header>
@@ -131,6 +134,7 @@ export async function renderDashboard(page) {
   `);
 
   if ($('#held')) renderHeld($('#held'));
+  if ($('#cm-box')) renderCommentsBox($('#cm-box'));
   if ($('#analytics')) renderAnalytics($('#analytics'));
   const latest = news.slice(0, 6);
   const drawNews = (items = {}) => $('#latest-news') && mount($('#latest-news'), html`${latest.map(n => {
