@@ -1,4 +1,59 @@
 {
+ "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:53.952Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-14T23:40:53.833Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:53.555Z"
+ },
+ "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:53.431Z"
+ },
+ "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:53.310Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:53.127Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-deadmans-tour": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:52.972Z"
+ },
+ "https://www.fightful.com/wrestling/royce-keys-speaks-about-carmelo-hayes-joining-946-everyone-in-this-group-is-handpicked": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:52.674Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-explains-why-doing-wwe-house-shows-no-longer-makes-sense-for-him": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:52.519Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-reacts-to-conrad-thompson-calling-him-overrated": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:52.394Z"
+ },
+ "https://www.fightful.com/wrestling/shotzi-blackheart-signs-with-tna-wrestling": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T23:40:52.170Z"
+ },
  "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,56 +63,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-14T23:32:55.641Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-14T23:31:06.206Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:05.856Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:05.704Z"
- },
- "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:05.552Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:05.317Z"
- },
- "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-deadmans-tour": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:05.124Z"
- },
- "https://www.fightful.com/wrestling/royce-keys-speaks-about-carmelo-hayes-joining-946-everyone-in-this-group-is-handpicked": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:04.757Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-explains-why-doing-wwe-house-shows-no-longer-makes-sense-for-him": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:04.557Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-reacts-to-conrad-thompson-calling-him-overrated": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:04.403Z"
- },
- "https://www.fightful.com/wrestling/shotzi-blackheart-signs-with-tna-wrestling": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T23:31:04.120Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-says-he-cant-stand-cm-punk-but-its-magic-for-the-audience-when-they-work-together": {
   "reason": "مكرر مع خبر نزل قبل كده",
