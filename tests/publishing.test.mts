@@ -4490,13 +4490,14 @@ test('library home links EVERY program directly (not only the newest 16), with a
   assert.match(fs.readFileSync('lib/i18n/en.cjs', 'utf-8'), /"أحدث الأقسام المضافة": "Recently Added Sections"/);
 });
 
-test('the home page keeps one link per recent special event, worded with the show headline (INCIDENTS #480)', () => {
-  const home = fs.readFileSync('index.njk', 'utf-8');
-  const block = home.match(/aria-label="أحدث العروض الخاصة"[\s\S]{0,900}/)?.[0] || '';
-  assert.match(block, /prog\.slug not in weekly/);
-  assert.match(block, /prog\.latestIsRecent/);
-  assert.match(block, /\{\{ prog\.latest\.headline \}\}/);
-  assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /latestIsRecent: !!\(shows\[0\] && now - shows\[0\]\.timestamp < 14 \* 86400000\)/);
+test('the footer holds only the sections and the site pages — no lists of search-worded show links (owner 2026-10-14, INCIDENTS #501)', () => {
+  // «ايه الحاجات الزحمة دي كلها»: #274 and #480 put two rows of show links worded for Google under the footer menu.
+  // Search wording stays in the head (title, description, structured data); the footer is for people.
+  for (const f of ['index.njk', '_includes/post-layout.njk']) {
+    const footer = fs.readFileSync(f, 'utf-8').split('<footer>')[1] || '';
+    assert.doesNotMatch(footer, /collections\.library|الأخير مترجم|الأخير كامل|prog\.latest/, f);
+    assert.equal((footer.match(/<nav /g) || []).length, 1, f);
+  }
 });
 
 test('a live page never redirects to a missing one, every video has its address, the site workflow retries GitHub', async () => {
