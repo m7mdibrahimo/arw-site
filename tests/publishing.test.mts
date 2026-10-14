@@ -4716,3 +4716,13 @@ test('a quote missing its « or » is blocked and a blockquote missing « is rep
   assert.ok(!good.some(i => i.code === 'unbalanced_guillemets'));
   assert.equal(autoFix('> لم يكن ينبغي لهذا الموقف أن يحدث أبدا».'), '> «لم يكن ينبغي لهذا الموقف أن يحدث أبدا».');
 });
+
+test('Google is pointed at the four sections the owner wants under the site name, each with its own breadcrumb (owner 2026-10-14, INCIDENTS #502)', () => {
+  // «عايز ال يكتب اسم الموقع يظهر كدا في جوجل الاقسام»: عروض المصارعة، مكتبة العروض، الأخبار، نوستالجيا
+  const home = fs.readFileSync('index.njk', 'utf-8');
+  const nav = [...home.matchAll(/"@type": "SiteNavigationElement",\s*"position": \d+,\s*"name": "([^"]+)"/g)].map(m => m[1]);
+  assert.deepEqual(nav, ['عروض المصارعة', 'مكتبة العروض', 'الأخبار', 'نوستالجيا']);
+  for (const [f, name] of [['shows', 'عروض المصارعة'], ['library', 'مكتبة العروض'], ['news', 'الأخبار'], ['nostalgia', 'نوستالجيا']]) {
+    assert.match(fs.readFileSync(`pages/${f}.njk`, 'utf-8'), new RegExp(`"breadcrumb": \\{ "@type": "BreadcrumbList"[^\\n]*"position": 2, "name": "${name}", "item": "https://arab-wrestling.com/${f}/"`), f);
+  }
+});
