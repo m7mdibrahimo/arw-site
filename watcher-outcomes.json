@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2283305/wwe-matt-hardy-jeff-edge-christian-d-generation-x-pitched-super-faction": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-14T02:06:24.566Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-14T02:00:53.147Z"
- },
- "https://www.wrestlinginc.com/2283305/wwe-matt-hardy-jeff-edge-christian-d-generation-x-pitched-super-faction": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-14T01:54:23.707Z"
  },
  "https://www.fightful.com/wrestling/carmelo-hayes-comments-on-joining-946-the-reports-of-my-demise-have-been-greatly-exaggerated": {
   "reason": "مكرر مع خبر نزل قبل كده",
