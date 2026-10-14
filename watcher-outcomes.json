@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/roman-reigns-names-his-wrestling-mount-rushmore": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-14T13:22:43.730Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
