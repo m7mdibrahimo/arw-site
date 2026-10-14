@@ -4,20 +4,20 @@
   "ar": "رومان رينز",
   "en": "Roman Reigns",
   "fed": "WWE",
-  "owner": "WWE",
-  "license": "",
-  "source": "https://www.wwe.com/superstars/roman-reigns",
-  "year": "2026"
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Roman_Reigns_RR25_(1)_(headshot).jpg",
+  "year": "2025"
  },
  {
   "slug": "cody-rhodes",
   "ar": "كودي رودز",
   "en": "Cody Rhodes",
   "fed": "WWE",
-  "owner": "WWE",
-  "license": "",
-  "source": "https://www.wwe.com/superstars/cody-rhodes",
-  "year": "2026"
+  "owner": "Pfc. Alexis Fischer",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Cody_Rhodes_Fort_Bragg_Army_250_Birthday_Celebration_(6).jpg",
+  "year": "2025"
  },
  {
   "slug": "seth-rollins",
@@ -124,9 +124,9 @@
   "ar": "ليف مورغان",
   "en": "Liv Morgan",
   "fed": "WWE",
-  "owner": "WWE",
-  "license": "",
-  "source": "https://www.wwe.com/superstars/liv-morgan",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Big_E,_Liv_Morgan_%26_Tyler_Breeze_(1)_(cropped_2).jpg",
   "year": "2024"
  },
  {
