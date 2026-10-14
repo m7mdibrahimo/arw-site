@@ -276,3 +276,19 @@ test('corrections fix ضآلة, مشيرا إلى and performing arts (INCIDENTS
   assert.match(out, /مشيرا إلى/);
   assert.match(out, /الفنون الأدائية/);
 });
+
+test('dual: past/present dual verbs and «ليلتين» are caught (INCIDENTS #540)', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' ' + 'كلام '.repeat(80)).map((i) => i.code);
+  assert.ok(codes('كوفي وأوستن كريد ظهرا للمرة الأولى في AEW.').includes('dual_form'));
+  assert.ok(codes('حيث تحالفا مع سويرف ستريكلاند.').includes('dual_form'));
+  assert.ok(codes('الثنائي يتأهلان إلى النهائي.').includes('dual_form'));
+  assert.ok(codes('على مدى ليلتين في ملعب أليجيانت.').includes('dual_noun'));
+  assert.ok(!codes('يبدأ العرض الساعة 2 ظهرا في لاس فيغاس.').includes('dual_form'));
+  assert.ok(!codes('ظهر كوفي للمرة الأولى في AEW وتحالف مع سويرف.').includes('dual_form'));
+});
+
+test('dual: «تنافسا قويا» / «تحالفا جديدا» are nouns, not dual verbs', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' ' + 'كلام '.repeat(80)).map((i) => i.code);
+  assert.ok(!codes('شهد النزال تنافسا قويا وتحالفا جديدا بين الفريقين.').includes('dual_form'));
+  assert.ok(codes('الاثنان تنافسا على اللقب.').includes('dual_form'));
+});
