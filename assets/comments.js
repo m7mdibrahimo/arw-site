@@ -91,6 +91,7 @@
     var who = document.createElement('b');
     who.className = 'arw-cm-who';
     who.textContent = c.official ? OFFICIAL : c.name;
+    who.dir = 'auto'; // an English name on the Arabic page (and an Arabic one on the English page) reads its own way
     meta.appendChild(who);
     if (c.official) {
       var badge = document.createElement('span');
@@ -107,6 +108,7 @@
     var text = document.createElement('p');
     text.className = 'arw-cm-text-out';
     text.textContent = c.text;
+    text.dir = 'auto';
     body.appendChild(meta);
     body.appendChild(text);
     el.appendChild(av);

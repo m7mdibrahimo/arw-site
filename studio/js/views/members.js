@@ -34,6 +34,7 @@ const ACTION_TEXT = {
   'content.create': 'أضاف', 'content.update': 'عدّل', 'content.delete': 'حذف',
   password: 'غيّر كلمة السر بتاعته', 'analytics.connect': 'ربط الإحصائيات', 'analytics.disconnect': 'فصل الإحصائيات',
   'comments.delete': 'حذف تعليقات زوار',
+  'comments.reply': 'رد على تعليق باسم الموقع',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };
 
