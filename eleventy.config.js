@@ -1452,9 +1452,12 @@ module.exports = function(eleventyConfig) {
           "roh-on-honorclub": ["رينغ أوف أونر", "رينج اوف اونر", "ار او اتش", "روه", "ROH TV", "ROH مترجم", "ROH Wrestling", "ROH on HonorClub", "Ring of Honor مترجم", "عرض ار او اتش مترجم", "عرض ار او اتش الاخير", "عرض ROH الاخير مترجم", "عرض رينغ اوف اونر مترجم"],
           "roh-specials": ["رينغ أوف أونر", "رينج اوف اونر", "ار او اتش", "روه", "ROH TV", "ROH مترجم", "ROH Wrestling", "ROH Specials", "ROH Special", "Ring of Honor مترجم", "عرض ار او اتش مترجم", "عرض ار او اتش الاخير", "عرض ROH الاخير مترجم", "عرض رينغ اوف اونر مترجم"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve", "عرض ايفولف مترجم", "عرض ايفولف الاخير", "WWE Evolve مترجم", "دبليو دبليو اي ايفولف"],
+          "nwa-powerrr": ["ان دبليو ايه باور", "ان دبليو ايه", "باور", "ان دبليو ايه باورر", "NWA Powerrr", "NWA Power", "NWA Powerrr مترجم", "NWA مترجم"],
+          "mlw-fusion": ["ام ال دبليو فيوجن", "ام ال دبليو", "فيوجن", "فيوزن", "MLW Fusion", "MLW Fusion مترجم", "MLW مترجم"],
+          "cmll-lunes-clasico": ["سي ام ال ال", "سي إم إل إل", "لونيس كلاسيكو", "لونس كلاسيكو", "لوتشا ليبري", "CMLL", "CMLL Lunes Clasico", "CMLL Lunes Clasico مترجم", "CMLL مترجم"],
           "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
         };
-        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || [], arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : []), arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
             chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };

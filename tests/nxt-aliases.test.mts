@@ -16,3 +16,8 @@ test("doubled_name ignores name + same name Jr", () => {
   assert.ok(!checkArticle("عنوان عربي كامل للخبر هنا", body, []).some((i) => i.code === "doubled_name"));
   assert.ok(checkArticle("عنوان عربي كامل للخبر هنا", "فريق من ويل أوسبراي وغريت أو خان وغريت أو خان في نزال.", []).some((i) => i.code === "doubled_name"));
 });
+
+test("NWA Powerrr, MLW Fusion and CMLL weekly programs carry the spellings visitors use (INCIDENTS #549)", () => {
+  const cfg = readFileSync(new URL("../eleventy.config.js", import.meta.url), "utf8");
+  for (const q of ['"nwa-powerrr": [', '"ان دبليو ايه باور"', '"mlw-fusion": [', '"ام ال دبليو فيوجن"', '"cmll-lunes-clasico": [', '"لونيس كلاسيكو"', '/^cmll-/.test(p.slug)']) assert.ok(cfg.includes(q), q);
+});
