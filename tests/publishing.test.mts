@@ -945,6 +945,8 @@ test('same event or same wording is not the same story', () => {
   assert.ok(clearlyDifferentStories('CM Punk Qualifies For Men’s Money In The Bank On 9/25 WWE SmackDown', 'lash-legend-qualifies-for-womens-money-in-the-bank-on-9-25-wwe-smackdown'));
   assert.ok(!clearlyDifferentStories('Gable Steveson Denies 2019 Rape Allegation, Issues Statement On KO Loss', 'gable-steveson-breaks-silence-12-second-ufc-331-knockout-pre-fight-allegations'));
   assert.ok(!clearlyDifferentStories('Trick Williams Beats Baron Corbin In WWE SmackDown Steel Cage Match', 'trick-williams-retains-us-title-steel-cage-smackdown'));
+  // INCIDENTS #507: the slug drops the apostrophe the title keeps — still one man, not «different people»
+  assert.ok(!clearlyDifferentStories("Tony D'Angelo Seeks To Regain WWE NXT Title At Halloween Havoc", 'tony-dangelo-challenging-grayson-waller-for-nxt-championship-at-halloween-havoc'));
 });
 
 test('a draft that dropped its hamzas is blocked, names and N-1 are not', () => {
@@ -4688,6 +4690,11 @@ test('INCIDENTS #486: Purrazzo spelling, NFL translation and «they lost me» ar
 test('autoFix strips straight quote marks glued to «» (INCIDENTS #489)', () => {
   assert.equal(autoFix('> "«أنا لا أعرف.»"'), '> «أنا لا أعرف.»');
   assert.equal(autoFix('قال: "«من الجيد»" ومضى'), 'قال: «من الجيد» ومضى');
+});
+
+test('autoFix keeps one copy of the same bracketed members written twice (INCIDENTS #507)', () => {
+  assert.equal(autoFix('فريق ذا كريد برذرز (جوليوس كريد وبروتوس كريد) (جوليوس كريد وبروتوس كريد) ضد فريق هانك وتانك'), 'فريق ذا كريد برذرز (جوليوس كريد وبروتوس كريد) ضد فريق هانك وتانك');
+  assert.equal(autoFix('فريق (أ وب) ضد فريق (ج ود)'), 'فريق (أ وب) ضد فريق (ج ود)');
 });
 
 test('English title: a lowercase ordinary word is capitalised, name particles stay (INCIDENTS #489)', async () => {

@@ -3149,6 +3149,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
 3. **متن المقال (أمين 100% لوقائع المصدر، سريع، شيق، مركز، وبدون حشو أو تهويل)**:
    - **قاعدة الأمانة الخبرية التامة (100% Factual Fidelity)**:
      - انقل جميع الوقائع، الأسماء، النزالات، والأحداث الواردة في النص الإنجليزي بأمانة تامة ودقة متناهية دون زيادة أحداث من عندك أو حذف تفاصيل هامة.
+     - **البطل والمتحدي كما في المصدر**: «X defending the title against Y» أو «X (c) vs. Y» يعني X هو البطل وY هو المتحدي. ممنوع تبدّلهم (حصل فعليا: «Grayson Waller defending the NXT Championship against Tony D'Angelo» اتكتب «البطل توني دي أنجيلو والمتحدي غرايسون والر»).
      - الصيغة تكون فصحى بيضاء مبسطة جدا وسلسة وممتعة (جمل قصيرة وكلمات يومية سهلة)، وليست ترجمة حرفية ركيكة.
 ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم (List / Review)**: عنوان المصدر يعد القارئ بعدد من النقاط (مثل "3 Things We Hated & 3 We Loved" أو "5 Takeaways")، لذلك يجب أن يغطي المتن **كل نقطة منها بالترتيب** حتى لا يَعِد العنوان بما لا يقدمه الخبر:
      - فقرة افتتاحية قصيرة (سطرين) تذكر الحدث.
@@ -3650,9 +3651,12 @@ function personNames(): string[] {
   } catch { personNamesCache = []; }
   return personNamesCache;
 }
+// A URL slug drops the apostrophe («tony-dangelo») that the title keeps («Tony D'Angelo»), so both
+// sides are compared without it — or one man reads as two and a copy passes as «different people» (INCIDENTS #507).
 function peopleIn(text: string): Set<string> {
-  const t = " " + (text || "").toLowerCase().replace(/[-_]/g, " ").replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ") + " ";
-  return new Set(personNames().filter(n => t.includes(" " + n + " ")));
+  const bare = (x: string) => x.replace(/['’‘]/g, "");
+  const t = " " + bare((text || "").toLowerCase()).replace(/[-_]/g, " ").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ") + " ";
+  return new Set(personNames().filter(n => t.includes(" " + bare(n) + " ")).map(bare));
 }
 /** Different kinds of article, or clearly different people («CM Punk qualifies…» vs
  *  «Lash Legend qualifies…»), or men's vs women's: never the same story. */

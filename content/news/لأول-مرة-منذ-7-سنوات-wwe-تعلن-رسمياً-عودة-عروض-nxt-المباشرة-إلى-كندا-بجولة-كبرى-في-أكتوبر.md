@@ -31,7 +31,7 @@ layout: post-layout.njk
 * بطلة أمريكا الشمالية للسيدات لـ NXT: زاريا
 * فريق Vanity Project
 * كروز مونتانا (Cruz Montana)
-* ناراكو بيرث رايت (Naraku BirthRight)
+* ناراكو بيرثرايت (Naraku BirthRight)
 * شايلو هيل
 * كيلاني جوردان
 * جايدا باركر

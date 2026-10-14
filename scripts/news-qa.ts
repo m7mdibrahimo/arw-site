@@ -727,6 +727,9 @@ export function autoFix(text: string): string {
   text = text.replace(/^(\*\*(?:المواجهة|الحدث الرئيسي|النزال)[^\n*]*?):\s*[^\n*:]*?(?:ينهزم|يهزم|تهزم|تنهزم|يفوز|تفوز|يتغلب|تتغلب|ينتصر|تنتصر|يسقط|تسقط)[^\n*]*\*\*$/gm, "$1**");
   // A word cut after «الأ» and its rest glued to the next one: «بالأ اتحادات» ← «بالاتحادات» (INCIDENTS #195)
   text = text.replace(/(?<![\u0600-\u06FF])([بلوفك]?)الأ ا(?=[\u0600-\u06FF]{2,})/g, "$1الا");
+  // The same members in brackets twice: «ذا كريد برذرز (جوليوس كريد وبروتوس كريد) (جوليوس كريد وبروتوس كريد)»
+  // went live in the 20/10 NXT card story (INCIDENTS #507) — one copy stays
+  text = text.replace(/(\([^()\n]{2,120}\))(?:[ \t]*\1)+/g, "$1");
   // HTML line breaks written into the markdown body («<br><br>**المواجهة الأولى…»)
   text = text.replace(/<br\s*\/?>/gi, "\n").replace(/\n{3,}/g, "\n\n");
   const urls: string[] = [];
