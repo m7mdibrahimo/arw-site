@@ -1,6 +1,6 @@
 [
   {"slug": "roman-reigns", "ar": "رومان رينز", "en": "Roman Reigns", "fed": "WWE", "page": "https://www.wwe.com/superstars/roman-reigns", "wiki": "Roman_Reigns"},
-  {"slug": "cody-rhodes", "ar": "كودي رودز", "en": "Cody Rhodes", "fed": "WWE", "page": "https://www.wwe.com/superstars/cody-rhodes", "wiki": "Cody_Rhodes"},
+  {"slug": "cody-rhodes", "ar": "كودي رودز", "en": "Cody Rhodes", "fed": "WWE", "page": "https://www.wwe.com/superstars/cody-rhodes", "wiki": "Cody_Rhodes", "pick": 5},
   {"slug": "seth-rollins", "ar": "سيث رولينز", "en": "Seth Rollins", "fed": "WWE", "page": "https://www.wwe.com/superstars/seth-rollins"},
   {"slug": "cm-punk", "ar": "سي ام بانك", "en": "CM Punk", "fed": "WWE", "page": "https://www.wwe.com/superstars/cmpunk"},
   {"slug": "john-cena", "ar": "جون سينا", "en": "John Cena", "fed": "WWE", "page": "https://www.wwe.com/superstars/john-cena"},

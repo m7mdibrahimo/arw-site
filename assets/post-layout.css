@@ -1137,7 +1137,7 @@ html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
 .arw-cm-note{ flex:1 1 200px; font-size:12.5px; font-weight:600; color:var(--muted); display:inline-flex; align-items:center; gap:7px; }
 .arw-cm-note.is-ok{ color:var(--teal); }
 .arw-cm-note.is-bad{ color:var(--coral); }
-.arw-cm-len{ font-size:12px; font-weight:700; color:var(--muted); font-variant-numeric:tabular-nums; direction:ltr; }
+.arw-cm-len{ font-size:12px; font-weight:700; color:var(--muted); font-variant-numeric:tabular-nums; /*rtl:ignore*/ direction:ltr; }
 .arw-cm-len.is-near{ color:var(--coral); }
 .arw-cm-send{ display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; padding:0 22px; border:0; border-radius:12px; background:var(--teal); color:#fff; font:800 14.5px 'Cairo',sans-serif; cursor:pointer; transition:transform .2s cubic-bezier(0.16,1,0.3,1), box-shadow .2s ease, opacity .2s ease; }
 .arw-cm-send:hover{ transform:translateY(-2px); box-shadow:0 10px 22px -10px rgba(14,149,148,.6); }
@@ -1157,6 +1157,7 @@ html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
 .arw-cm-pick-img{ position:absolute; inset:0; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center; }
 .arw-cm-pick-img img{ width:100%; height:100%; object-fit:cover; display:block; }
 .arw-cm-pick-badge{ position:absolute; bottom:-2px; inset-inline-start:-2px; width:18px; height:18px; border-radius:50%; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; border:2px solid var(--card); }
+.arw-cm-picker[hidden]{ display:none; }
 .arw-cm-picker{ padding:14px; border-radius:14px; border:1px solid var(--line); background:var(--bg); display:flex; flex-direction:column; gap:12px; }
 .arw-cm-picker-top{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .arw-cm-upload{ position:relative; display:inline-flex; align-items:center; gap:7px; height:38px; padding:0 14px; border-radius:10px; background:var(--teal); color:#fff; font:800 13px 'Cairo',sans-serif; cursor:pointer; }
