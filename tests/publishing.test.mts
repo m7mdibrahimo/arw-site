@@ -4514,11 +4514,9 @@ test('«بـأو خان» becomes Great-O-Khan, not the conjunction «أو»', (
   assert.equal(autoFix('بالإطاحة بـأو خان، مما'), 'بالإطاحة بغريت أو خان، مما');
 });
 
-test('library home links EVERY program directly (not only the newest 16), with an English label (INCIDENTS #452, #478)', () => {
+test('the library home has no list of every program at its foot (owner 2026-10-14: its first links were what Google put under the site)', () => {
   const page = fs.readFileSync('pages/library.njk', 'utf-8');
-  assert.match(page, /class="lib-recent[^"]*"[\s\S]{0,400}\{% for p in lib %\}<a href="\/library\/\{\{ p\.slug \}\}\/"/);
-  assert.doesNotMatch(page.match(/class="lib-recent[\s\S]{0,700}/)[0], /loop\.index0 </);
-  assert.match(fs.readFileSync('lib/i18n/en.cjs', 'utf-8'), /"أحدث الأقسام المضافة": "Recently Added Sections"/);
+  assert.doesNotMatch(page, /lib-recent|أحدث الأقسام المضافة/);
 });
 
 test('the footer holds only the sections and the site pages — no lists of search-worded show links (owner 2026-10-14, INCIDENTS #501)', () => {
