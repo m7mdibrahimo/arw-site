@@ -1,0 +1,22 @@
+name: Comment Avatars (find)
+
+# Prints where each wrestler's official picture is (scripts/avatars/discover.mjs), for choosing them. Changes nothing.
+on:
+  push:
+    paths:
+      - 'scripts/avatars/discover.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/avatars/discover.mjs
