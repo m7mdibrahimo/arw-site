@@ -456,38 +456,28 @@
   "fed": "AEW",
   "owner": "All Elite Wrestling",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Samoa_Joe_with_AEW_World_title_DYNAMITE_2024_01_10_035_(cropped).jpg",
-  "year": "2024"
+  "source": "https://commons.wikimedia.org/wiki/File:Samoa_Joe,_2022_(cropped).jpg",
+  "year": "2022"
  },
  {
   "slug": "adam-cole",
   "ar": "آدم كول",
   "en": "Adam Cole",
   "fed": "AEW",
-  "owner": "Surflou",
-  "license": "CC0",
-  "source": "https://commons.wikimedia.org/wiki/File:SoCalVal_interviews_Adam_Cole_inside_the_ring_at_For_the_Love_of_Wrestling_2023.jpg",
-  "year": "2023"
+  "owner": "Ralph Arvesen",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Cole_2022-03-23_(AEW_Wrestling,_Dynamite,_HEB_Center,_Cedar_Park).jpg",
+  "year": "2022"
  },
  {
   "slug": "konosuke-takeshita",
   "ar": "كونوسوكي تاكيشيتا",
   "en": "Konosuke Takeshita",
   "fed": "AEW",
-  "owner": "結牙",
+  "owner": "All Elite Wrestling",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:KONOSUKE_TAKESHITA,2026%E5%B9%B48%E6%9C%8816%E6%97%A5%E6%92%AE%E5%BD%B1.jpg",
-  "year": "2026"
- },
- {
-  "slug": "kyle-fletcher",
-  "ar": "كايل فليتشر",
-  "en": "Kyle Fletcher",
-  "fed": "AEW",
-  "owner": "House of Glory Wrestling",
-  "license": "CC BY 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Kyle_Fletcher.jpg",
-  "year": "2026"
+  "source": "https://commons.wikimedia.org/wiki/File:Konosuke_Takeshita_Forbidden_Door_2024_06_30_008_(headshot).jpg",
+  "year": "2024"
  },
  {
   "slug": "christian-cage",
@@ -504,10 +494,10 @@
   "ar": "ريكوشيه",
   "en": "Ricochet",
   "fed": "AEW",
-  "owner": "KMcWrestling Photography",
+  "owner": "All Elite Wrestling",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Ricochet_and_The_Demand_(cropped)_(2).jpg",
-  "year": "2026"
+  "source": "https://commons.wikimedia.org/wiki/File:Ricochet_ALL_IN_2024_08_25_127_(headshot).jpg",
+  "year": "2024"
  },
  {
   "slug": "jamie-hayter",
@@ -520,64 +510,34 @@
   "year": "2023"
  },
  {
-  "slug": "matt-jackson",
-  "ar": "مات جاكسون",
-  "en": "Matt Jackson",
-  "fed": "AEW",
-  "owner": "Adam Marantz",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:The_Young_Bucks_in_July_2021.jpg",
-  "year": "2021"
- },
- {
-  "slug": "nick-jackson",
-  "ar": "نيك جاكسون",
-  "en": "Nick Jackson",
-  "fed": "AEW",
-  "owner": "Adam Marantz",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:The_Young_Bucks_in_July_2021.jpg",
-  "year": "2021"
- },
- {
-  "slug": "thunder-rosa",
-  "ar": "ثاندر روزا",
-  "en": "Thunder Rosa",
-  "fed": "AEW",
-  "owner": "Carter Sterling",
-  "license": "CC BY-SA 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Thunder_Rosa,_June_2022_(cropped).jpg",
-  "year": "2022"
- },
- {
   "slug": "hiroshi-tanahashi",
   "ar": "هيروشي تاناهاشي",
   "en": "Hiroshi Tanahashi",
   "fed": "NJPW",
-  "owner": "ハイエナジー",
+  "owner": "Yuzunet",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:20231104-tanahashi.jpg",
-  "year": "2023"
+  "source": "https://commons.wikimedia.org/wiki/File:20221030tana1_(cropped).jpg",
+  "year": "2022"
  },
  {
   "slug": "tetsuya-naito",
   "ar": "تيتسويا نايتو",
   "en": "Tetsuya Naito",
   "fed": "NJPW",
-  "owner": "Ian D'Andrea from Philadelphia, PA",
-  "license": "CC BY-SA 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Tetsuya_Naito_(52828929289).jpg",
-  "year": "2023"
+  "owner": "Takumiofoxy",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tetsuya_naito_2018.jpg",
+  "year": "2018"
  },
  {
   "slug": "zack-sabre-jr",
   "ar": "زاك سيبر جونيور",
   "en": "Zack Sabre Jr.",
   "fed": "NJPW",
-  "owner": "結牙",
-  "license": "CC BY 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Zack_Sabre_Jr._20260105.jpg",
-  "year": "2026"
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zack_Sabre_Jr,_June_2022.jpg",
+  "year": "2022"
  },
  {
   "slug": "shingo-takagi",
@@ -624,9 +584,9 @@
   "ar": "جيب كيد",
   "en": "Gabe Kidd",
   "fed": "NJPW",
-  "owner": "ハイエナジー",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:%E3%82%B2%E3%82%A4%E3%83%96%E3%83%BB%E3%82%AD%E3%83%83%E3%83%8920241104_(cropped).png",
+  "owner": "結牙",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gabe_Kidd_with_the_Strong_Openweight_Championship.jpg",
   "year": "2024"
  },
  {
@@ -654,10 +614,10 @@
   "ar": "مات ريدل",
   "en": "Matt Riddle",
   "fed": "MLW",
-  "owner": "Noon Plastic",
-  "license": "CC BY 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:WWE_Live_Road_To_WrestleMania,_Toronto,_2022_197_(cropped).jpg",
-  "year": "2022"
+  "owner": "Endlessdan",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Matt_Riddle_August_2017.jpg",
+  "year": "2017"
  },
  {
   "slug": "satoshi-kojima",
@@ -676,7 +636,7 @@
   "fed": "MLW",
   "owner": "Shared Account",
   "license": "CC BY-SA 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Dijak_chokeslambackbreaker.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Chris_Dijak_Axxess_2018_crop.jpg",
   "year": "2018"
  },
  {
@@ -688,16 +648,6 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Mads_Krugger.jpg",
   "year": "2024"
- },
- {
-  "slug": "tom-lawlor",
-  "ar": "توم لولر",
-  "en": "Tom Lawlor",
-  "fed": "MLW",
-  "owner": "F4WOnline",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:FILTHY.jpg",
-  "year": "2021"
  },
  {
   "slug": "davey-boy-smith-jr",
@@ -734,9 +684,9 @@
   "ar": "أليكس بيريرا",
   "en": "Alex Pereira",
   "fed": "UFC",
-  "owner": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
+  "owner": "The White House",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748623)_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Alex_Pereira_in_the_Oval_Office_(while_President_Donald_J._Trump_is_holding_a_meeting_with_UFC_fighters).jpg",
   "year": "2026"
  },
  {
@@ -744,9 +694,9 @@
   "ar": "إيليا توبوريا",
   "en": "Ilia Topuria",
   "fed": "UFC",
-  "owner": "The White House",
+  "owner": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250,_the_mixed_martial_arts_event_produced_by_the_Ultimate_Fighting_Championship,_Sunday,_June_14,_2026,_in_the_Grand_Foyer_of_the_White_House_-_68_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748627)(cropped).jpg",
   "year": "2026"
  },
  {
@@ -770,16 +720,6 @@
   "year": "2022"
  },
  {
-  "slug": "khamzat-chimaev",
-  "ar": "خمزات تشيماييف",
-  "en": "Khamzat Chimaev",
-  "fed": "UFC",
-  "owner": "Adam Tunniev",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:ADAM_SHAMSIEV_AND_KHAMZAT_CHIMAEV.jpg",
-  "year": "2023"
- },
- {
   "slug": "merab-dvalishvili",
   "ar": "ميراب دفاليشفيلي",
   "en": "Merab Dvalishvili",
@@ -794,10 +734,10 @@
   "ar": "ماكس هولواي",
   "en": "Max Holloway",
   "fed": "UFC",
-  "owner": "Chairman of the Joint Chiefs of Staff from Washington D.C, United States",
+  "owner": "Cpl. Samantha Sanchez",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:Max_Holloway,_2018.jpg",
-  "year": "2018"
+  "source": "https://commons.wikimedia.org/wiki/File:Blue_Angels%27_VIP_Rider_Max_Holloway_(1)_(cropped).jpg",
+  "year": "2022"
  },
  {
   "slug": "charles-oliveira",
@@ -836,7 +776,7 @@
   "fed": "UFC",
   "owner": "Inaquout",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Belal_Muhammad_UFC.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Belal_Muhammad_UFC_(cropped).jpg",
   "year": "2023"
  },
  {
