@@ -1,5 +1,15 @@
 [
  {
+  "slug": "seth-rollins",
+  "ar": "سيث رولينز",
+  "en": "Seth Rollins",
+  "fed": "WWE",
+  "owner": "HHH Pedrigree",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Breakker_vs_Rollins_(cropped-2).jpg",
+  "year": "2026"
+ },
+ {
   "slug": "cm-punk",
   "ar": "سي ام بانك",
   "en": "CM Punk",
@@ -117,6 +127,36 @@
   "owner": "結牙",
   "license": "CC BY 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Zack_Sabre_Jr._20260105.jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "alex-pereira",
+  "ar": "أليكس بيريرا",
+  "en": "Alex Pereira",
+  "fed": "UFC",
+  "owner": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748623)_(cropped).jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "ilia-topuria",
+  "ar": "إيليا توبوريا",
+  "en": "Ilia Topuria",
+  "fed": "UFC",
+  "owner": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748627)(cropped).jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "justin-gaethje",
+  "ar": "جاستن غايتجي",
+  "en": "Justin Gaethje",
+  "fed": "UFC",
+  "owner": "Gatorfan252525",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Justin_Gaethje_meeting_with_the_Florida_Gators_football_team_in_August_2026.jpg",
   "year": "2026"
  }
 ]
