@@ -1,5 +1,15 @@
 [
   {
+    "id": 3929934582,
+    "link": "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results/",
+    "date": "Wed, 14 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-14T21:00:00.000Z",
+    "title": {
+      "rendered": "AEW Dynamite And Collision Results 10/14/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-and-collision-results-101426-w-live-updates/l-intro-1791946443.jpg"
+  },
+  {
     "id": 3389315454,
     "link": "https://www.wrestlinginc.com/2287093/wwe-shotzi-blackheart-withdraws-cmll-tour-family-tragedy/",
     "date": "Wed, 14 Oct 2026 20:58:24 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Noam Dar, Romeo Moreno, Tag Champions Advance In WWE NXT Dusty Rhodes Tag Team Classic"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/noam-dar-romeo-moreno-tag-champions-advance-in-wwe-nxt-dusty-rhodes-tag-team-classic/l-intro-1791943071.jpg"
-  },
-  {
-    "id": 998681841,
-    "link": "https://www.wrestlinginc.com/2286175/aaa-reina-de-reinas-champion-la-catalina-bests-wwe-nxt-kali-armstrong-retain-title/",
-    "date": "Wed, 14 Oct 2026 01:28:12 +0000",
-    "date_gmt": "2026-10-14T01:28:12.000Z",
-    "title": {
-      "rendered": "AAA Reina De Reinas Champion La Catalina Bests WWE NXT's Kali Armstrong To Retain Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aaa-reina-de-reinas-champion-la-catalina-bests-wwe-nxts-kali-armstrong-to-retain-title/l-intro-1791941243.jpg"
   }
 ]
