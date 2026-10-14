@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { handleComments, studioComments, studioDeleteComments, commentNotifications, commentPath, cleanText, HAS_LINK, ensureTable } from '../worker/src/comments';
+import { handleComments, studioComments, studioDeleteComments, studioReplyComment, commentNotifications, commentPath, cleanText, HAS_LINK, ensureTable, isReservedName } from '../worker/src/comments';
 
 /** D1's interface over node:sqlite: prepare().bind().all()/first()/run(), and batch() */
 function d1() {
@@ -105,4 +105,33 @@ test('the table is made once, and only once', async () => {
   await ensureTable(db as any);
   await ensureTable(db as any);
   assert.ok(db.raw.prepare("SELECT name FROM sqlite_master WHERE name = 'comments'").get());
+});
+
+test('the site answers as «عرب راسلنج»: under the comment, never counted, never in the bell, gone with the comment', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const c = await post(env, { p: STORY, name: 'يوسف', text: 'إمتى الملخص؟', title: 'خبر' });
+  const r = await studioReplyComment(env, c.body.id, 'خلال ساعة إن شاء الله');
+  assert.equal(r.success, true);
+  // a reply to the reply answers the same comment
+  const again = await studioReplyComment(env, (r as any).item.id, 'نزل الملخص ✓');
+  assert.equal((again as any).item.parent, c.body.id);
+  const { items } = await get(env, STORY);
+  const own = items.filter((x: any) => x.official);
+  assert.equal(own.length, 2);
+  assert.equal(own[0].name, 'عرب راسلنج');
+  assert.equal(own[0].parent, c.body.id);
+  const s = await studioComments(env);
+  assert.equal(s.counts.total, 1);
+  assert.equal((await commentNotifications(env, Date.now() - 3600_000)).length, 1);
+  assert.equal((await studioReplyComment(env, 9999, 'x')).success, false);
+  await studioDeleteComments(env, [c.body.id]);
+  assert.equal((await get(env, STORY)).items.length, 0);
+});
+
+test('no visitor can comment as the site', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  for (const [i, name] of ['عرب راسلنج', 'عـرب رسلنج', 'Arab Wrestling', 'ARAB-WRESTLING'].entries()) {
+    assert.equal((await post(env, { p: STORY, name, text: `تعليق ${i}` }, { ...PERSON, 'CF-Connecting-IP': `9.9.9.${i}` })).status, 400, name);
+  }
+  for (const name of ['محمد عرب', 'Arabi', 'راسل']) assert.ok(!isReservedName(name), name);
 });

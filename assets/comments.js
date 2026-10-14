@@ -66,14 +66,18 @@
   }
 
   // ── the list ─────────────────────────────────────────────────────────────
+  // the site's own replies (written in the panel): its logo, its name and the blue verified badge
+  var OFFICIAL = EN ? 'Arab Wrestling' : 'عرب راسلنج';
+  var LOGO = EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png';
+  var BADGE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
   function item(c) {
     var el = document.createElement('article');
-    el.className = 'arw-cm';
+    el.className = 'arw-cm' + (c.official ? ' is-official' : '') + (c.parent ? ' is-reply' : '');
     var av = document.createElement('span');
     av.className = 'arw-cm-av';
     av.setAttribute('aria-hidden', 'true');
     av.style.setProperty('--c', colorOf(c.name));
-    var src = picSrc(c.pic);
+    var src = c.official ? LOGO : picSrc(c.pic);
     if (src) {
       var im = document.createElement('img');
       im.src = src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = 40; im.height = 40;
@@ -86,12 +90,19 @@
     meta.className = 'arw-cm-meta';
     var who = document.createElement('b');
     who.className = 'arw-cm-who';
-    who.textContent = c.name;
+    who.textContent = c.official ? OFFICIAL : c.name;
+    meta.appendChild(who);
+    if (c.official) {
+      var badge = document.createElement('span');
+      badge.className = 'arw-cm-badge';
+      badge.title = 'حساب رسمي موثّق';
+      badge.innerHTML = BADGE;
+      meta.appendChild(badge);
+    }
     var when = document.createElement('time');
     when.className = 'arw-cm-when';
     when.dateTime = new Date(c.at).toISOString();
     when.textContent = ago(c.at);
-    meta.appendChild(who);
     meta.appendChild(when);
     var text = document.createElement('p');
     text.className = 'arw-cm-text-out';
@@ -106,24 +117,32 @@
   var shown = [];
   function draw(all) {
     list.textContent = '';
-    var n = all ? shown.length : Math.min(FIRST, shown.length);
-    for (var i = 0; i < n; i++) list.appendChild(item(shown[i]));
-    if (!all && shown.length > FIRST) {
+    // a comment, then the site's replies to it (oldest first), the newest comments on top
+    var tops = shown.filter(function (c) { return !c.parent; });
+    var replies = {};
+    shown.filter(function (c) { return c.parent; }).sort(function (a, b) { return a.at - b.at; })
+      .forEach(function (c) { (replies[c.parent] = replies[c.parent] || []).push(c); });
+    var n = all ? tops.length : Math.min(FIRST, tops.length);
+    for (var i = 0; i < n; i++) {
+      list.appendChild(item(tops[i]));
+      (replies[tops[i].id] || []).forEach(function (r) { list.appendChild(item(r)); });
+    }
+    if (!all && tops.length > FIRST) {
       var more = document.createElement('button');
       more.type = 'button';
       more.className = 'arw-cm-more';
-      more.textContent = fill('عرض كل التعليقات ({n})', shown.length);
+      more.textContent = fill('عرض كل التعليقات ({n})', tops.length);
       more.onclick = function () { draw(true); };
       list.appendChild(more);
     }
-    if (!shown.length) {
+    if (!tops.length) {
       var empty = document.createElement('p');
       empty.className = 'arw-cm-empty';
       empty.textContent = 'لا توجد تعليقات بعد، كن أول من يعلّق.';
       list.appendChild(empty);
     }
-    countEl.hidden = !shown.length;
-    countEl.textContent = shown.length ? countText(shown.length) : '';
+    countEl.hidden = !tops.length;
+    countEl.textContent = tops.length ? countText(tops.length) : '';
   }
 
   var loaded = false;

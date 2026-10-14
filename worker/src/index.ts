@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handleComments, studioComments, studioDeleteComments, commentNotifications } from "./comments";
+import { handleComments, studioComments, studioDeleteComments, studioReplyComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -3058,6 +3058,14 @@ export default {
       if (path === "/api/studio/comments" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف التعليقات." }, 403);
         return json(await studioComments(env as any));
+      }
+      if (path === "/api/studio/comments/reply" && request.method === "POST") {
+        if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك ترد على التعليقات." }, 403);
+        const body: any = await request.json().catch(() => ({}));
+        const r = await studioReplyComment(env as any, body.id, body.text);
+        const who = await studioUser(request, env as any);
+        if (who && r.success) await studioAudit(env as any, who.user, "comments.reply", { title: (r as any).item?.title || "" }).catch(() => {});
+        return json(r, r.success ? 200 : 400);
       }
       if (path === "/api/studio/comments/delete" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك تحذف التعليقات." }, 403);

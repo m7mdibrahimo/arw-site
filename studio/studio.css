@@ -748,6 +748,18 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .cm-mini small { color: var(--muted); font-size: 12px; font-weight: 700; }
 .cm-mini span.is-new { background: var(--yellow); }
 .cm-mini span.is-new small, .cm-mini span.is-new b { color: #141414; }
+.cm-answered { display: inline-flex; align-items: center; gap: 3px; font-style: normal; font-size: 11.5px; font-weight: 900; color: var(--teal); }
+.cm-answered svg { width: 13px; height: 13px; }
+.cm-reply-btn svg { width: 15px; height: 15px; }
+.cm-reply { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: start; margin-top: 10px; padding: 10px 12px; border-radius: 18px; background: var(--teal-soft); }
+.cm-reply .cm-text { margin: 2px 0 0; font-size: 14px; }
+.cm-av.cm-av-sm { width: 34px; height: 34px; background: #0e7d7c; }
+.cm-badge { display: inline-flex; margin-inline-start: -6px; }
+.cm-reply-form { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; margin-top: 10px; }
+.cm-reply-form[hidden] { display: none; }
+.cm-reply-form textarea { width: 100%; min-height: 64px; resize: vertical; border: 2px solid var(--line); border-radius: 16px; padding: 10px 12px; font: inherit; background: var(--input); color: var(--ink); }
+.cm-reply-form textarea:focus { outline: none; border-color: var(--teal); }
+.cm-reply-actions { grid-column: 2; display: flex; gap: 8px; }
 .tab .tab-count { background: var(--coral); color: #fff; font-size: 11px; font-weight: 900; border-radius: 999px; padding: 0 7px; line-height: 1.8; margin-inline-start: 2px; }
 @media (max-width: 980px) { .cm-box .rows { grid-template-columns: 1fr; } }
 @media (max-width: 760px) {

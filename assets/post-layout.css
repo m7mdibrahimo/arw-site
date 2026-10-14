@@ -1184,6 +1184,12 @@ html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
 .arw-cm-when{ font-size:12px; font-weight:600; color:var(--muted); }
 .arw-cm-pending{ font-size:11px; font-weight:800; color:#b45309; background:var(--gold-soft); padding:2px 9px; border-radius:999px; }
 html.arw-dark .arw-cm-pending{ color:var(--gold); }
+.arw-cm.is-reply{ margin-inline-start:40px; margin-top:-4px; position:relative; }
+.arw-cm.is-reply::before{ content:""; position:absolute; inset-inline-start:-22px; top:-12px; width:14px; height:34px; border-inline-start:2px solid var(--line); border-bottom:2px solid var(--line); border-end-start-radius:12px; }
+.arw-cm.is-official{ background:linear-gradient(0deg, var(--teal-soft), var(--teal-soft)), var(--card); border-color:color-mix(in srgb, var(--teal) 28%, var(--line)); }
+.arw-cm.is-official .arw-cm-av{ background:#0e7d7c; }
+.arw-cm-badge{ display:inline-flex; align-self:center; margin-inline-start:-4px; }
+.arw-cm-badge svg{ display:block; }
 .arw-cm-text-out{ margin:0; font-size:15px; line-height:1.85; color:var(--ink); white-space:pre-line; overflow-wrap:anywhere; }
 .arw-cm-empty{ margin:0; padding:22px 16px; border-radius:16px; border:1px dashed var(--line); text-align:center; font-size:14px; font-weight:600; color:var(--muted); }
 .arw-cm-more{ align-self:center; height:40px; padding:0 20px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--ink); font:700 13.5px 'Tajawal',sans-serif; cursor:pointer; transition:border-color .2s ease, color .2s ease; }
@@ -1196,6 +1202,8 @@ html.arw-dark .arw-cm-pending{ color:var(--gold); }
   .arw-cm-send{ flex:1; }
   .arw-cm{ padding:13px; gap:10px; }
   .arw-cm-av{ flex-basis:36px; width:36px; height:36px; font-size:15px; }
+  .arw-cm.is-reply{ margin-inline-start:24px; }
+  .arw-cm.is-reply::before{ inset-inline-start:-16px; width:10px; }
   .arw-cm-grid{ grid-template-columns:repeat(4, 1fr); }
   .arw-cm-or{ flex-basis:100%; order:3; }
 }

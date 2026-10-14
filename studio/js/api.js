@@ -110,6 +110,8 @@ export const api = {
   // Visitors' comments (owner 2026-10-14): the list (newest first) and delete
   comments: () => call('/api/studio/comments'),
   commentAction: (action, ids) => call(`/api/studio/comments/${action}`, { method: 'POST', body: { ids } }),
+  // the site's own reply, as «عرب راسلنج» with the blue badge
+  commentReply: (id, text) => call('/api/studio/comments/reply', { method: 'POST', body: { id: Number(id), text } }),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────

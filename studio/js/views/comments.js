@@ -1,8 +1,9 @@
 // Visitors' comments (owner 2026-10-14): every comment left under a show, a recap or a story. A comment is on the site
 // the moment it is sent (owner: «عايزها تتنشر علطول»); here the owner reads them all and deletes what shouldn't stay.
 // The comments since the owner last looked are marked «جديد» and counted on the tab; each new one also reaches the bell.
+// The owner answers as the site itself («عرب راسلنج», its logo, the blue badge): «رد» under a comment, published at once.
 import { api, siteData } from '../api.js';
-import { html, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
+import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
 
 const KIND = { news: ['خبر', '#ff5a36'], shows: ['عرض', '#0e9594'], recaps: ['ملخص', '#d98b12'], nostalgia: ['نوستالجيا', '#2b8fd6'] };
 const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c', '#2f9e5b'];
@@ -29,39 +30,89 @@ async function topics() {
 }
 const topicOf = (map, c) => map.get(pathKey(c.path)) || { title: c.title || pathKey(c.path), kind: /^\/news\//.test(c.path) ? 'news' : '', url: c.path };
 
-function row(c, t, seen, { compact = false } = {}) {
+const BADGE = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="width:15px;height:15px"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
+
+/** The site's own reply under a comment, as it shows on the site */
+function replyRow(r) {
+  return html`<div class="cm-reply">
+    <span class="cm-av cm-av-sm" aria-hidden="true"><img src="/assets/brand-logo.png?v=2" alt=""></span>
+    <div class="cm-main">
+      <div class="cm-meta"><b>عرب راسلنج</b><span class="cm-badge" title="الحساب الرسمي الموثّق">${raw(BADGE)}</span><span class="muted">${timeAgo(r.at)}</span></div>
+      <p class="cm-text">${r.text}</p>
+    </div>
+    <button class="icon-btn sm cm-del" data-delete="${r.id}" title="احذف الرد">${icon('trash')}</button>
+  </div>`;
+}
+
+function row(c, t, seen, replies = [], { compact = false } = {}) {
   const kind = KIND[t.kind];
   const fresh = c.at > seen;
   return html`<article class="cm-row ${fresh ? 'is-new' : ''} ${compact ? 'is-compact' : ''}" data-id="${c.id}">
     <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${picSrc(c.pic) ? html`<img src="${picSrc(c.pic)}" alt="" loading="lazy">` : initial(c.name)}</span>
     <div class="cm-main">
-      <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}</div>
+      <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}${replies.length ? html`<em class="cm-answered">${icon('check')}رديت</em>` : ''}</div>
       <p class="cm-text">${c.text}</p>
       <a class="cm-topic" href="${t.url}#comments" target="_blank" rel="noopener" title="افتح التعليق على الموقع">
         ${kind ? html`<i style="--c:${kind[1]}">${kind[0]}</i>` : ''}<span>${t.title}</span></a>
+      ${compact ? '' : html`${replies.map(replyRow)}
+      <form class="cm-reply-form" data-reply-form="${c.id}" hidden>
+        <span class="cm-av cm-av-sm" aria-hidden="true"><img src="/assets/brand-logo.png?v=2" alt=""></span>
+        <textarea rows="2" maxlength="1000" placeholder="اكتب ردك باسم عرب راسلنج…"></textarea>
+        <div class="cm-reply-actions"><button class="btn btn-sm btn-primary" type="submit">${icon('send')}انشر الرد</button><button class="btn btn-sm" type="button" data-cancel>إلغاء</button></div>
+      </form>`}
     </div>
     <div class="cm-actions">
+      <button class="btn btn-sm cm-reply-btn" data-reply="${c.id}" title="رد باسم عرب راسلنج">${icon('comment')}<span>رد</span></button>
       <a class="icon-btn sm" href="${t.url}#comments" target="_blank" rel="noopener" title="افتح على الموقع">${icon('eye')}</a>
       <button class="icon-btn sm cm-del" data-delete="${c.id}" title="احذف التعليق من الموقع">${icon('trash')}</button>
     </div>
   </article>`;
 }
 
-/** The delete buttons inside `el`; `again()` draws the page or the box afresh */
+/** The delete and reply buttons inside `el`; `again()` draws the page or the box afresh */
 function wire(el, items, again) {
   $$('[data-delete]', el).forEach(b => b.onclick = async () => {
     const c = items.find(x => String(x.id) === b.dataset.delete);
+    const own = !!c.official;
     const ok = await dialog({
-      title: 'حذف التعليق',
-      body: html`<div class="post-preview"><b>${c.name}</b><p>${c.text.length > 220 ? `${c.text.slice(0, 220)}…` : c.text}</p></div>
-        <p class="muted small">التعليق هيختفي من الموقع على طول، ومش هينفع يرجع.</p>`,
-      confirm: 'احذفه', danger: true,
+      title: own ? 'حذف الرد' : 'حذف التعليق',
+      body: html`<div class="post-preview"><b>${own ? 'عرب راسلنج' : c.name}</b><p>${c.text.length > 220 ? `${c.text.slice(0, 220)}…` : c.text}</p></div>
+        <p class="muted small">${own ? 'الرد هيختفي من الموقع على طول.' : 'التعليق هيختفي من الموقع على طول، ومعاه ردودك عليه. ومش هينفع يرجع.'}</p>`,
+      confirm: 'احذف', danger: true,
     });
     if (!ok) return;
     b.disabled = true;
     try { await api.commentAction('delete', [c.id]); toast('اتحذف من الموقع ✓'); again(); }
     catch (e) { toast(e.message, 'error'); b.disabled = false; }
   });
+  $$('[data-reply]', el).forEach(b => b.onclick = () => {
+    const form = $(`[data-reply-form="${b.dataset.reply}"]`, el);
+    if (!form) { location.hash = '#/comments'; return; } // the home page's box: answer on the comments page
+    form.hidden = !form.hidden;
+    if (!form.hidden) form.querySelector('textarea').focus();
+  });
+  $$('[data-reply-form]', el).forEach(form => {
+    form.querySelector('[data-cancel]').onclick = () => { form.hidden = true; };
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const ta = form.querySelector('textarea'), btn = form.querySelector('[type=submit]');
+      if (!ta.value.trim()) { ta.focus(); return; }
+      btn.disabled = true;
+      try { await api.commentReply(form.dataset.replyForm, ta.value); toast('ردك اتنشر على الموقع ✓'); again(); }
+      catch (err) { toast(err.message, 'error'); btn.disabled = false; }
+    };
+  });
+}
+
+/** The visitors' comments, each with the site's replies to it */
+function thread(items) {
+  const tops = items.filter(c => !c.parent && !c.official);
+  const replies = new Map();
+  for (const r of items.filter(c => c.parent).sort((a, b) => a.at - b.at)) {
+    if (!replies.has(r.parent)) replies.set(r.parent, []);
+    replies.get(r.parent).push(r);
+  }
+  return { tops, replies };
 }
 
 /** The number of new comments on the «التعليقات» tab in the top bar */
@@ -72,7 +123,7 @@ export function showNew(n) {
   el.textContent = n ? (n > 99 ? '99+' : num(n)) : '';
 }
 export async function refreshNew() {
-  try { const seen = seenAt(); showNew(((await api.comments()).items || []).filter(c => c.at > seen).length); } catch {}
+  try { const seen = seenAt(); showNew(((await api.comments()).items || []).filter(c => !c.official && c.at > seen).length); } catch {}
 }
 
 const FILTERS = [['', 'الكل'], ['new', 'الجديدة'], ['news', 'على الأخبار'], ['shows', 'على العروض والملخصات']];
@@ -84,7 +135,8 @@ export async function renderComments(page) {
   const items = data.items || [];
   const counts = data.counts || {};
   const seen = seenAt();
-  const fresh = items.filter(c => c.at > seen).length;
+  const { tops, replies } = thread(items);
+  const fresh = tops.filter(c => c.at > seen).length;
   // opened: these are seen now (they stay marked «جديد» on this visit)
   markSeen();
   showNew(0);
@@ -99,7 +151,7 @@ export async function renderComments(page) {
         <div class="${fresh ? 'is-new' : ''}"><small>جديدة</small><b>${num(fresh)}</b></div>
         <div><small>النهارده</small><b>${num(counts.today || 0)}</b></div>
         <div><small>آخر 7 أيام</small><b>${num(counts.week || 0)}</b></div>
-        <div><small>كل التعليقات</small><b>${num(counts.total || items.length)}</b></div>
+        <div><small>كل التعليقات</small><b>${num(counts.total || tops.length)}</b></div>
       </div>
       <div class="filterbar">
         <div class="search search-wide">${icon('search')}<input id="cm-q" placeholder="ابحث بالاسم أو الكلام أو الموضوع…" value="${state.q}"></div>
@@ -110,14 +162,14 @@ export async function renderComments(page) {
 
   const draw = () => {
     const q = normalizeArabic(state.q);
-    const shown = items.filter(c => {
+    const shown = tops.filter(c => {
       const t = topicOf(map, c);
       if (state.filter === 'new' && !(c.at > seen)) return false;
       if (state.filter === 'news' && t.kind !== 'news') return false;
       if (state.filter === 'shows' && !['shows', 'recaps', 'nostalgia'].includes(t.kind)) return false;
       return !q || normalizeArabic(`${c.name} ${c.text} ${t.title}`).includes(q);
     });
-    mount($('#cm-list'), shown.length ? html`${shown.map(c => row(c, topicOf(map, c), seen))}`
+    mount($('#cm-list'), shown.length ? html`${shown.map(c => row(c, topicOf(map, c), seen, replies.get(c.id) || []))}`
       : html`<div class="empty-sm cm-empty">${icon('comment')}<span>${state.q ? 'مفيش تعليقات بالكلام ده' : state.filter === 'new' ? 'مفيش تعليقات جديدة' : 'لسه محدش علّق'}</span></div>`);
     wire($('#cm-list'), items, () => renderComments(page));
   };
@@ -134,7 +186,8 @@ export async function renderCommentsBox(el) {
   const items = data.items || [];
   const counts = data.counts || {};
   const seen = seenAt();
-  const fresh = items.filter(c => c.at > seen).length;
+  const { tops, replies } = thread(items);
+  const fresh = tops.filter(c => c.at > seen).length;
   showNew(fresh);
   el.hidden = false;
   mount(el, html`
@@ -142,10 +195,10 @@ export async function renderCommentsBox(el) {
       <div class="cm-mini">
         <span class="${fresh ? 'is-new' : ''}"><b>${num(fresh)}</b><small>جديدة</small></span>
         <span><b>${num(counts.today || 0)}</b><small>النهارده</small></span>
-        <span><b>${num(counts.total || items.length)}</b><small>الإجمالي</small></span>
+        <span><b>${num(counts.total || tops.length)}</b><small>الإجمالي</small></span>
         <a class="link" href="#/comments">الكل</a>
       </div></header>
-    ${items.length ? html`<div class="rows">${items.slice(0, 4).map(c => row(c, topicOf(map, c), seen, { compact: true }))}</div>`
+    ${tops.length ? html`<div class="rows">${tops.slice(0, 4).map(c => row(c, topicOf(map, c), seen, replies.get(c.id) || [], { compact: true }))}</div>`
       : html`<p class="muted small">لسه محدش علّق. أول تعليق هيظهر هنا وفي الإشعارات.</p>`}`);
   wire(el, items, () => renderCommentsBox(el));
 }

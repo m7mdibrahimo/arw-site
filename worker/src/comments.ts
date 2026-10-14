@@ -7,7 +7,13 @@
 //   POST /comments                   {p, title, name, text, pic, website, t} → published at once
 //   GET  /comments/pic/<id>.webp     a visitor's own picture (R2 «arw-media», comments/<id>.webp)
 //   GET  /api/studio/comments        the panel: every comment, with the day's, week's and total counts
-//   POST /api/studio/comments/delete {ids}
+//   POST /api/studio/comments/delete {ids}           (a comment's replies go with it)
+//   POST /api/studio/comments/reply  {id, text}      the site's own answer, as «عرب راسلنج» with the blue badge
+//
+// The site's own account (owner 2026-10-14: «عضوية ارد بيها علي المتابعيين بصورة الموقع وفي علامة توثيق»): a reply
+// written in the panel is kept with official = 1 and parent = the comment it answers; the page shows it under that
+// comment with the site's logo, the name («عرب راسلنج», «Arab Wrestling» on the English pages) and the verified badge.
+// No visitor can take that name.
 //
 // Published at once, so the guards are here: only from the site's own pages, never from a bot or a form filled in
 // under 2 seconds (or with the hidden field filled), no links, no 5th comment in 10 minutes or 31st in a day from the
@@ -30,7 +36,12 @@ export function ensureTable(db: D1Database): Promise<unknown> {
     db.prepare("CREATE INDEX IF NOT EXISTS comments_path ON comments (path, deleted, at)"),
     db.prepare("CREATE INDEX IF NOT EXISTS comments_at ON comments (deleted, at)"),
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
-  ]).catch((e) => { ready.delete(db); throw e; }));
+  ]).then(async () => {
+    // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
+    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0"]) {
+      await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
+    }
+  }).catch((e) => { ready.delete(db); throw e; }));
   return p;
 }
 
@@ -48,6 +59,13 @@ export function cleanText(raw: unknown, max: number, lines = false): string {
   s = lines ? s.replace(/[ \t]+/g, " ").replace(/ *\n */g, "\n").replace(/\n{3,}/g, "\n\n") : s.replace(/\s+/g, " ");
   return s.trim().slice(0, max);
 }
+/** The site's own name, in either language and its usual spellings: a visitor can't comment under it */
+export const OFFICIAL_NAME = "عرب راسلنج";
+export function isReservedName(name: string): boolean {
+  const k = String(name).toLowerCase().normalize("NFKD").replace(/[\u064B-\u065F\u0670\u0640]/g, "")
+    .replace(/[أإآٱ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").replace(/[^a-z\u0621-\u064A]/g, "");
+  return /عربر[ايو]*س[ل]+[ي]*ن[جغك]|arabwrest|arabwrasl/.test(k);
+}
 export const HAS_LINK = /(?:https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|net|org|io|xyz|ru|me|tv|link|site|online|shop|info|biz)\b|t\.me\/|wa\.me\/)/i;
 
 /** The picture as kept: «w:<slug>» (a wrestler's from /assets/avatars/), or nothing; an upload is stored apart */
@@ -62,8 +80,8 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at });
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number };
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -82,7 +100,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (request.method === "GET") {
     const path = commentPath(url.searchParams.get("p"));
     if (!path) return reply({ items: [] });
-    const rows = await db.prepare("SELECT id, name, text, pic, at FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 300").bind(path).all<Row>();
+    const rows = await db.prepare("SELECT id, name, text, pic, at, parent, official FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 400").bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }
   if (request.method !== "POST") return reply({ ok: false, error: "not allowed" }, 405);
@@ -103,6 +121,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (name.length < 2) return reply({ ok: false, error: "اكتب اسمك أولًا." }, 400);
   if (text.length < 2) return reply({ ok: false, error: "اكتب تعليقك أولًا." }, 400);
   if (HAS_LINK.test(text) || HAS_LINK.test(name)) return reply({ ok: false, error: "الروابط غير مسموح بها في التعليقات." }, 400);
+  if (isReservedName(name)) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
   const title = cleanText(b.title, 200);
   const { day } = cairo(now);
   const who = await visitor(env, request, day);
@@ -144,10 +163,11 @@ export async function studioComments(env: CommentsEnv, now = Date.now()) {
   await ensureTable(db);
   const { day } = cairo(now);
   const [rows, today, week, total] = await db.batch([
-    db.prepare("SELECT id, path, title, name, text, pic, at FROM comments WHERE deleted = 0 ORDER BY at DESC LIMIT 1000"),
-    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND day = ?1").bind(day),
-    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND at > ?1").bind(now - 7 * 86_400_000),
-    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0"),
+    db.prepare("SELECT id, path, title, name, text, pic, at, parent, official FROM comments WHERE deleted = 0 ORDER BY at DESC LIMIT 1500"),
+    // the numbers are the visitors' comments; the site's own replies aren't counted
+    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0 AND day = ?1").bind(day),
+    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0 AND at > ?1").bind(now - 7 * 86_400_000),
+    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0"),
   ]) as any[];
   return {
     success: true,
@@ -164,18 +184,34 @@ export async function studioDeleteComments(env: CommentsEnv, ids: unknown): Prom
   const list = (Array.isArray(ids) ? ids : []).map(Number).filter(n => Number.isInteger(n) && n > 0).slice(0, 200);
   if (!list.length) return 0;
   const q = list.map((_, i) => `?${i + 1}`).join(",");
-  const res = await db.prepare(`UPDATE comments SET deleted = 1 WHERE id IN (${q}) AND deleted = 0`).bind(...list).run();
+  const res = await db.prepare(`UPDATE comments SET deleted = 1 WHERE (id IN (${q}) OR parent IN (${q})) AND deleted = 0`).bind(...list).run();
   if (env.MEDIA) await Promise.all(list.map(id => env.MEDIA!.delete(`comments/${id}.webp`).catch(() => null)));
   return res.meta?.changes || 0;
 }
 
-/** The bell: comments of the last hours, as notifications */
+/** The site's own reply to a comment (a reply to a reply answers the same comment): published at once */
+export async function studioReplyComment(env: CommentsEnv, id: unknown, rawText: unknown, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "التعليقات مش متاحة دلوقتي." };
+  await ensureTable(db);
+  const text = cleanText(rawText, 1000, true);
+  if (text.length < 1) return { success: false, error: "اكتب الرد الأول." };
+  const target = await db.prepare("SELECT id, path, title, parent FROM comments WHERE id = ?1 AND deleted = 0").bind(Number(id) || 0).first<Row>();
+  if (!target) return { success: false, error: "التعليق ده اتحذف أو مش موجود." };
+  const parent = target.parent || target.id;
+  const { day } = cairo(now);
+  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, parent, official) VALUES (?1, ?2, ?3, ?4, 'official', ?5, ?6, 'official', '', ?7, 1) RETURNING id")
+    .bind(target.path, target.title, OFFICIAL_NAME, text, now, day, parent).first<{ id: number }>();
+  return { success: true, item: { id: ins?.id || 0, name: OFFICIAL_NAME, text, pic: "official", at: now, parent, official: true, path: target.path, title: target.title } };
+}
+
+/** The bell: visitors' comments of the last hours, as notifications */
 export async function commentNotifications(env: CommentsEnv, sinceMs: number): Promise<any[]> {
   const db = env.ANALYTICS;
   if (!db) return [];
   try {
     await ensureTable(db);
-    const rows = await db.prepare("SELECT id, path, title, name, text, at FROM comments WHERE deleted = 0 AND at > ?1 ORDER BY at DESC LIMIT 40").bind(sinceMs).all<Row>();
+    const rows = await db.prepare("SELECT id, path, title, name, text, at FROM comments WHERE deleted = 0 AND official = 0 AND at > ?1 ORDER BY at DESC LIMIT 40").bind(sinceMs).all<Row>();
     return (rows.results || []).map(r => ({ id: `comment:${r.id}`, type: "comment", at: r.at, name: r.name, text: r.text.slice(0, 160), title: r.title, url: r.path }));
   } catch { return []; }
 }
