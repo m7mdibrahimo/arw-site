@@ -1,28 +1,33 @@
 {
+ "https://www.ringsidenews.com/roman-reigns-names-his-wrestling-mount-rushmore": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-14T13:22:43.730Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T12:25:44.011Z"
+  "at": "2026-10-14T13:22:27.075Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-reflects-on-wwe-raw-match-with-rey-fenix-i-felt-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T12:25:43.511Z"
+  "at": "2026-10-14T13:22:26.528Z"
  },
  "https://www.fightful.com/wrestling/cappuccino-jones-confirms-wwe-id-departure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T12:25:43.145Z"
+  "at": "2026-10-14T13:22:26.129Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-says-working-on-highlander-really-filled-him-with-confidence": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T12:25:42.965Z"
+  "at": "2026-10-14T13:22:25.923Z"
  },
  "https://www.fightful.com/wrestling/tna-reached-out-to-sheamus-about-possibly-working-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T12:25:42.734Z"
+  "at": "2026-10-14T12:57:12.388Z"
  },
  "https://www.fightful.com/wrestling/cmll-martes-de-arena-mexico-results-10-13-2026-mascara-dorada-vs-zandokan-jr-infernales-keyra-more": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
