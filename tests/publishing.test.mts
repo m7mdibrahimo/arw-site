@@ -957,6 +957,13 @@ test('a draft that dropped its hamzas is blocked, names and N-1 are not', () => 
   assert.ok(!ok.some(i => i.code === 'hamza_dropped'));
 });
 
+test('INCIDENTS #542: three dropped hamzas (اقدم، اقل، اثار) block, «باي» and «باول» do not', () => {
+  const bad = checkArticle('متجر WWE يسحب قميص تريك ويليامز بعد غضب الجمهور', 'اقدم المتجر على سحب القميص بعد اقل من يوم، مما اثار غضبا واسعا بين الجماهير في كل مكان.', []);
+  assert.ok(bad.some(i => i.code === 'hamza_dropped'));
+  const ok = checkArticle('آش باي إليغانس تحتفظ بالبطولة', 'قالت آش باي إليغانس إن باي باي وباول سيحضران، وباي أيضا.', []);
+  assert.ok(!ok.some(i => i.code === 'hamza_dropped'));
+});
+
 test('a pre-show match card is not a results report', () => {
   // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
   // and was published as results with «الفائز: قيد الانتظار».
