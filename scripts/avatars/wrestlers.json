@@ -1,6 +1,6 @@
 [
-  {"slug": "roman-reigns", "ar": "رومان رينز", "en": "Roman Reigns", "fed": "WWE", "page": "https://www.wwe.com/superstars/roman-reigns", "zoom": 0.66},
-  {"slug": "cody-rhodes", "ar": "كودي رودز", "en": "Cody Rhodes", "fed": "WWE", "page": "https://www.wwe.com/superstars/cody-rhodes", "zoom": 0.66},
+  {"slug": "roman-reigns", "ar": "رومان رينز", "en": "Roman Reigns", "fed": "WWE", "page": "https://www.wwe.com/superstars/roman-reigns", "wiki": "Roman_Reigns"},
+  {"slug": "cody-rhodes", "ar": "كودي رودز", "en": "Cody Rhodes", "fed": "WWE", "page": "https://www.wwe.com/superstars/cody-rhodes", "wiki": "Cody_Rhodes"},
   {"slug": "seth-rollins", "ar": "سيث رولينز", "en": "Seth Rollins", "fed": "WWE", "page": "https://www.wwe.com/superstars/seth-rollins"},
   {"slug": "cm-punk", "ar": "سي ام بانك", "en": "CM Punk", "fed": "WWE", "page": "https://www.wwe.com/superstars/cmpunk"},
   {"slug": "john-cena", "ar": "جون سينا", "en": "John Cena", "fed": "WWE", "page": "https://www.wwe.com/superstars/john-cena"},
@@ -11,7 +11,7 @@
   {"slug": "jey-uso", "ar": "جاي أوسو", "en": "Jey Uso", "fed": "WWE", "page": "https://www.wwe.com/superstars/jey-uso"},
   {"slug": "brock-lesnar", "ar": "بروك ليسنر", "en": "Brock Lesnar", "fed": "WWE", "page": "https://www.wwe.com/superstars/brock-lesnar"},
   {"slug": "rhea-ripley", "ar": "ريا ريبلي", "en": "Rhea Ripley", "fed": "WWE", "page": "https://www.wwe.com/superstars/rhea-ripley"},
-  {"slug": "liv-morgan", "ar": "ليف مورغان", "en": "Liv Morgan", "fed": "WWE", "page": "https://www.wwe.com/superstars/liv-morgan", "zoom": 0.66},
+  {"slug": "liv-morgan", "ar": "ليف مورغان", "en": "Liv Morgan", "fed": "WWE", "page": "https://www.wwe.com/superstars/liv-morgan", "wiki": "Liv_Morgan"},
   {"slug": "becky-lynch", "ar": "بيكي لينش", "en": "Becky Lynch", "fed": "WWE", "page": "https://www.wwe.com/superstars/becky-lynch"},
   {"slug": "bianca-belair", "ar": "بيانكا بيلير", "en": "Bianca Belair", "fed": "WWE", "page": "https://www.wwe.com/superstars/bianca-belair"},
   {"slug": "kenny-omega", "ar": "كيني أوميغا", "en": "Kenny Omega", "fed": "AEW", "wiki": "Kenny_Omega", "pick": 7},

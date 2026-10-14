@@ -80,7 +80,7 @@ for it in items:
         thumb.thumbnail((180, 180))
         debug.append((it['slug'], k, c.get('year', ''), c is chosen[0], thumb))
     c, img, f = chosen
-    if it['fed'] != 'WWE' or img.getextrema()[3][0] == 255:  # no transparency: take the background away
+    if img.getextrema()[3][0] == 255:  # no transparency (a photo, not a cut-out): take the background away
         img = remove(img, session=session, post_process_mask=True)
     if f is None:
         f = main_face(faces(img), img.size)

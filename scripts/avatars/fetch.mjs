@@ -100,7 +100,8 @@ fs.mkdirSync(RAW, { recursive: true });
 const out = [];
 for (const w of list) {
   try {
-    const candidates = w.fed === 'WWE' ? await wwe(w) : await commons(w);
+    // (a WWE profile where the belt sits by the face: their free photos instead, «wiki» in wrestlers.json)
+    const candidates = w.wiki ? await commons(w) : await wwe(w);
     if (!candidates.length) throw new Error('nothing downloaded');
     out.push({ ...w, candidates });
     console.log(`✓ ${w.slug}: ${candidates.map((c) => c.year || '?').join(' ')}`);
