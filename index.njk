@@ -1281,7 +1281,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-shadow:inset 0 0 0 1px rgba(134,239,172,.22); }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261005g">
+<link rel="stylesheet" href="/assets/features.css?v=20261014a">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body>
@@ -1293,10 +1293,12 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <button aria-label="بحث" type="submit"><svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></button>
 </form>
 <ul id="navMenu">
-<li><a class="navlink active" href="/">الرئيسية</a></li>
 <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
-<li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
-<li><a class="navlink" href="/recaps/">ملخصات العروض</a></li>
+<li class="nav-dropdown nav-shows"><a class="navlink" href="/shows/" aria-haspopup="true">عروض المصارعة<svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+  <ul class="dropdown-menu" aria-label="عروض المصارعة">
+    <li><a class="drop-item drop-shows" href="/shows/"><span class="drop-dot"></span>كل العروض</a></li>
+    <li><a class="drop-item drop-recaps" href="/recaps/"><span class="drop-dot"></span>ملخصات العروض</a></li>
+  </ul></li>
 <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
 <li class="utility-row">
 <button aria-label="المفضلة وقائمة المشاهدة لاحقاً" class="theme-toggle bookmarks-btn" id="arwBookmarksBtn" type="button" title="المفضلة والمشاهدة لاحقاً">
@@ -1651,7 +1653,7 @@ if(a && a.href && a.origin === location.origin) prefetch(a.href);
 }, { passive: true });
 })();
 </script>
-<script src="/assets/features.js?v=20261005f" defer></script>
+<script src="/assets/features.js?v=20261014a" defer></script>
 <script src="/assets/top10.js?v=7" defer></script>
 <script>
 (function(){

@@ -153,7 +153,7 @@
             var targetRight = spanRect ? spanRect.right : (brandRect.right - 50);
             targetRight = Math.min(targetRight, (window.innerWidth || document.documentElement.clientWidth) - 12);
 
-            // Left edge: middle of 'الرئيسية' link
+            // Left edge: middle of the menu's first link («مكتبة العروض»; «الرئيسية» left the menu on 2026-10-14)
             var targetLeft = homeRect ? (homeRect.left + homeRect.width / 2) : (formRect.left - 60);
             targetLeft = Math.max(targetLeft, 12);
 

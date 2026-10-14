@@ -50,9 +50,8 @@ function renderShell(user) {
     <header class="topbar">
       <div class="topbar-in">
         <button class="icon-btn only-mobile" id="menu-btn" aria-label="القائمة">${icon('menu')}</button>
-        <a class="brand" href="#/"><img src="/assets/brand-logo.png?v=2" alt=""><span><b>لوحة التحكم</b><small>عرب راسلنج</small></span></a>
+        <a class="brand" href="#/" title="رئيسية اللوحة" aria-label="لوحة التحكم — الرئيسية"><img src="/assets/brand-logo.png?v=2" alt=""><span><b>لوحة التحكم</b><small>عرب راسلنج</small></span></a>
         <nav class="tabs" id="nav">
-          <a class="tab" href="#/" data-nav="#/">${icon('home')}الرئيسية</a>
           ${[['shows', 'العروض'], ['recaps', 'الملخصات'], ['news', 'الأخبار'], ['nostalgia', 'نوستالجيا']].filter(([c]) => can(user, `${c}.view`)).map(([c, l]) => html`<a class="tab" href="#/list/${c}" data-nav="#/list/${c}">${icon(COLLECTIONS[c].icon)}${l}</a>`)}
           ${can(user, 'comments') ? html`<a class="tab" href="#/comments" data-nav="#/comments">${icon('comment')}التعليقات<span class="tab-count" id="cm-count" hidden></span></a>` : ''}
           ${can(user, 'tools') ? html`<div class="menu" id="tools-menu">

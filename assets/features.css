@@ -847,3 +847,13 @@ html body header.header-hidden {
 /* The line under the name is for computers only (owner's choice): hidden on tablets and phones. */
 @media (max-width:1180px){.brand-tag{display:none}}
 @media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (max-height: 500px){.brand.brand-lockup{gap:9px}.brand-mark{width:34px;height:34px;border-radius:11px}.brand-mark img{border-radius:9px}.brand-name{font-size:19px}}
+
+/* «عروض المصارعة» in the header opens a small menu: all the shows, and the highlights (owner 2026-10-14: «ضم كمان
+   خانة ملخصات العروض في عروض المصارعة بحيث انها تكون خيار تحته»). «الرئيسية» left the menu: the logo goes home. */
+#navMenu .nav-shows > a.navlink{ display:inline-flex; align-items:center; gap:6px; }
+#navMenu .nav-caret{ flex-shrink:0; opacity:.7; transition:transform .22s cubic-bezier(.16,1,.3,1); }
+#navMenu .nav-shows:hover .nav-caret, #navMenu .nav-shows:focus-within .nav-caret{ transform:rotate(180deg); opacity:1; }
+.drop-shows .drop-dot{ background:var(--teal, #0e9594); }
+.drop-shows:hover, .drop-shows.active{ background:rgba(14,149,148,.12) !important; color:var(--teal, #0e9594) !important; border-color:rgba(14,149,148,.25) !important; }
+.drop-recaps .drop-dot{ background:var(--violet, #7c6ee8); }
+.drop-recaps:hover, .drop-recaps.active{ background:rgba(124,110,232,.12) !important; color:var(--violet, #7c6ee8) !important; border-color:rgba(124,110,232,.25) !important; }
