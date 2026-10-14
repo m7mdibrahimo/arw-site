@@ -8,6 +8,8 @@
 //   - its file name has the star's name, and no one else's («and», «vs», «&», «with»), or
 //   - it's in the star's own category and its description names them (photos named by a code, like the White House's).
 //   Looked for in every file that depicts the star (search), and in the star's category and its «2026» sub-categories.
+//   A photo whose name says another year (e.g. «SummerSlam 2025») is never one from 2026, whatever its date says.
+//   «skip» (the reason) leaves a star out, «reject» (file names) leaves a photo out: what was seen wrong on the sheets.
 //   The date is the one the photo was taken; the upload's only when the file has none (an old photo uploaded in 2026
 //   carries its own date, so it isn't taken for one from 2026).
 // Step 2 (cutout.py): the first with one clear, close face is cut round it; a star without one is left out.
@@ -109,6 +111,8 @@ async function photos2026(w) {
       const license = strip(m.LicenseShortName && m.LicenseShortName.value);
       const taken = m.DateTimeOriginal ? strip(m.DateTimeOriginal.value) : String(ii.timestamp || '');
       if (!FREE.test(license) || !taken.includes(YEAR)) continue;
+      if ((pg.title.match(/\b(19|20)\d\d/g) || []).some((y) => y !== YEAR)) continue;
+      if ((w.reject || []).includes(pg.title)) continue;
       keep.push({ id: pg.pageid, title: pg.title, about: plain(strip(m.ImageDescription && m.ImageDescription.value)), url: ii.thumburl || ii.url, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, taken });
     }
     if (!keep.length) continue;
@@ -118,7 +122,8 @@ async function photos2026(w) {
       const depicts = (((sd.entities || {})['M' + k.id] || {}).statements || {}).P180 || [];
       const ids = depicts.map((d) => d.mainsnak && d.mainsnak.datavalue && d.mainsnak.datavalue.value.id).filter(Boolean);
       const name = plain(k.title.replace(/^File:/, '').replace(/\.\w+$/, ''));
-      const byDepicts = qid && ids.includes(qid) && ids.length <= 2;
+      // two people in it: only when its name doesn't say there's another (a «Breakker vs Rollins» is Breakker's face too)
+      const byDepicts = qid && ids.includes(qid) && (ids.length === 1 || (ids.length === 2 && !OTHERS.test(k.title.replace(/^File:/, ''))));
       const byName = names(w).some((n) => ` ${name} `.includes(` ${n} `)) && !OTHERS.test(k.title.replace(/^File:/, '')) && ids.filter((x) => x !== qid).length <= 1;
       const byAbout = inCat.has(k.title) && names(w).some((n) => ` ${k.about} `.includes(` ${n} `));
       if (byDepicts || byName || byAbout) found.push({ ...k, why: byDepicts ? 'depicts' : byName ? 'name' : 'description' });
@@ -138,6 +143,7 @@ async function photos2026(w) {
 fs.mkdirSync(RAW, { recursive: true });
 const out = [];
 for (const w of list) {
+  if (w.skip) { console.log(`✗ ${w.slug}: left out (${w.skip})`); continue; }
   try {
     const candidates = await photos2026(w);
     if (candidates.length) out.push({ ...w, candidates });
