@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2286867/aew-wrestledream-2026-draws-duds-clockwork-carnage-will-ospreay-new-level-bandido": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-14T18:18:17.232Z"
+ },
  "https://www.fightful.com/wrestling/royce-keys-speaks-about-carmelo-hayes-joining-946-everyone-in-this-group-is-handpicked": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
