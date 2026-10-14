@@ -500,16 +500,6 @@
   "year": "2024"
  },
  {
-  "slug": "jamie-hayter",
-  "ar": "جيمي هايتر",
-  "en": "Jamie Hayter",
-  "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Jamie_Hayter,_March_2023_(cropped).jpg",
-  "year": "2023"
- },
- {
   "slug": "hiroshi-tanahashi",
   "ar": "هيروشي تاناهاشي",
   "en": "Hiroshi Tanahashi",
@@ -714,10 +704,10 @@
   "ar": "حبيب نورمحمدوف",
   "en": "Khabib Nurmagomedov",
   "fed": "UFC",
-  "owner": "Airotcivss",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Khabib_nurmagomedov.jpg",
-  "year": "2022"
+  "owner": "Администрация Президента РФ",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:%D0%A5%D0%B0%D0%B1%D0%B8%D0%B1_%D0%9D%D1%83%D1%80%D0%BC%D0%B0%D0%B3%D0%BE%D0%BC%D0%B5%D0%B4%D0%BE%D0%B2-2._12.9.2019_(cropped).jpg",
+  "year": "2019"
  },
  {
   "slug": "merab-dvalishvili",
@@ -748,16 +738,6 @@
   "license": "Public domain",
   "source": "https://commons.wikimedia.org/wiki/File:Charles_Oliveira_UFC_(51605147518).jpg",
   "year": "2021"
- },
- {
-  "slug": "israel-adesanya",
-  "ar": "إسرائيل أديسانيا",
-  "en": "Israel Adesanya",
-  "fed": "UFC",
-  "owner": "MMMAnytt",
-  "license": "CC BY 3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Israel_Adesanya_at_UFC_230.jpg",
-  "year": "2018"
  },
  {
   "slug": "dricus-du-plessis",
