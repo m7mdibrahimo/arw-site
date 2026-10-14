@@ -47,7 +47,7 @@ async function wwe(w) {
 async function commons(w) {
   const sum = await wm(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(w.wiki)}`);
   const parts = String((sum.originalimage && sum.originalimage.source) || '').split('?')[0].split('/');
-  const lead = decodeURIComponent(parts.includes('thumb') ? parts[parts.length - 2] : parts[parts.length - 1]);
+  const lead = decodeURIComponent(parts.includes('thumb') ? parts[parts.length - 2] : parts[parts.length - 1]).replace(/_/g, ' ');
   const files = new Set(lead ? [lead] : []);
   if (lead) {
     const c = await wm(`${API}action=query&prop=categories&clshow=!hidden&cllimit=50&titles=${encodeURIComponent('File:' + lead)}`);
@@ -73,13 +73,15 @@ async function commons(w) {
       if (!ii) continue;
       const m = ii.extmetadata || {};
       const license = strip(m.LicenseShortName && m.LicenseShortName.value);
-      if (!FREE.test(license) || Math.min(ii.width, ii.height) < 600) continue;
+      if (!FREE.test(license) || Math.min(ii.width, ii.height) < 500) continue;
       const date = strip(m.DateTimeOriginal && m.DateTimeOriginal.value) || ii.timestamp;
       found.push({ title: pg.title, url: ii.thumburl || ii.url, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, date, year: (String(date).match(/20\d\d/) || [])[0] || '' });
     }
   }
   found.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-  const pick = found.filter((f) => Number(f.year) >= 2023).slice(0, 7);
+  // the newest from 2023 on; when there are none, the newest there are
+  let pick = found.filter((f) => Number(f.year) >= 2023).slice(0, 7);
+  if (!pick.length) pick = found.slice(0, 7);
   const leadInfo = found.find((f) => f.title === 'File:' + lead);
   if (leadInfo && !pick.includes(leadInfo)) pick.push(leadInfo);
   if (!pick.length) throw new Error('no free photo found');
