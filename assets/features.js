@@ -778,7 +778,7 @@
   }
   function memberAvatar(m) {
     var pic = String(m.pic || '');
-    var src = /^w:[a-z0-9-]+$/.test(pic) ? '/avatars/' + pic.slice(2) + '.webp' : /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic) ? pic : '';
+    var src = pic === 'official' ? (document.documentElement.lang === 'en' ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') : /^w:[a-z0-9-]+$/.test(pic) ? '/avatars/' + pic.slice(2) + '.webp' : /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic) ? pic : '';
     var letter = (String(m.display || m.username).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
     return src ? '<img src="' + src + '" alt="">' : '<b>' + letter.replace(/[<>&"]/g, '') + '</b>';
   }

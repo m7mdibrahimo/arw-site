@@ -83,6 +83,7 @@
   // «data:» picture its writer just chose
   function picSrc(pic) {
     pic = String(pic || '');
+    if (pic === 'official') return LOGO;
     if (/^w:[a-z0-9-]+$/.test(pic)) return AVATARS + pic.slice(2) + '.webp' + AV;
     if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic)) return pic;
     if (/^data:image\/(webp|jpeg|png);base64,/.test(pic)) return pic;
@@ -90,7 +91,7 @@
   }
 
   // ── the list ─────────────────────────────────────────────────────────────
-  // the site's own replies (written in the panel): its logo, its name and the blue verified badge
+  // the site's own replies (written in the panel, or by its account on the site): its logo, its name and the gold badge
   var OFFICIAL = EN ? 'Arab Wrestling' : 'عرب راسلنج';
   var LOGO = EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png';
   // the site's heart on a comment, as YouTube's: the site's picture with a small red heart under it
@@ -328,11 +329,11 @@
   nameIn.value = store.get(NAME, '') || '';
   if (member) {
     // the member's name and picture, as their account has them (changed on /account/)
-    nameIn.value = member.member.display || member.member.username;
+    nameIn.value = member.member.official ? OFFICIAL : (member.member.display || member.member.username);
     nameIn.readOnly = true;
     nameIn.classList.add('is-member');
-    pick.title = 'غيّر صورتك من صفحة حسابك';
-    pic = member.member.pic || '';
+    pick.title = member.member.official ? 'الحساب الرسمي لعرب راسلنج' : 'غيّر صورتك من صفحة حسابك';
+    pic = member.member.official ? 'official' : (member.member.pic || '');
     showPic();
   } else {
     // a visitor: the way to keep their name
@@ -382,7 +383,7 @@
         if (d.name) name = d.name;
         // a picture the worker kept: its address from now on, not the picture itself
         if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
-        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '' });
+        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official });
         textIn.value = '';
         count();
         say('تم نشر تعليقك، شكرًا لك!', 'ok');
@@ -437,7 +438,7 @@
           if (!member) store.set(NAME, name);
           if (d.name) name = d.name;
           if (d.pic && /^https:/.test(d.pic) && !member) setPic(d.pic);
-          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '' });
+          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official });
           replyForm = null;
           draw(expanded);
           var mine = document.getElementById('c-' + d.id);

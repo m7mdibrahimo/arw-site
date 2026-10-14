@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handleMembers, studioMembers, studioBanMember, studioMemberDetail } from "./members";
+import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -3064,6 +3064,15 @@ export default {
       if (path === "/api/studio/members" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف الأعضاء." }, 403);
         return json(await studioMembers(env as any));
+      }
+      // The site's own account on the site (gold badge, comments as «عرب راسلنج»): the owner only
+      if (path === "/api/studio/members/official" && (request.method === "GET" || request.method === "POST")) {
+        const who = await studioUser(request, env as any);
+        if (!who || who.user.mustChange || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
+        const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : null;
+        const r = await studioOfficialAccount(env as any, body);
+        if (body && r.success) await studioAudit(env as any, who.user, "members.official", { id: (r as any).account?.id || 0 }).catch(() => {});
+        return json(r, r.success ? 200 : 400);
       }
       const memberDetail = path.match(/^\/api\/studio\/members\/(\d+)$/);
       if (memberDetail && request.method === "GET") {

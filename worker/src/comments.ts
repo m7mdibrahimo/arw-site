@@ -169,12 +169,14 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (String(b.website || "") !== "" || !(Number(b.t) >= 2000)) return reply({ ok: true, id: 0, status: "published" });
   // a member comments as themselves: their name and picture, kept with their account
   const member = await memberOf(request, env as any, now);
-  const name = member ? (member.display || member.username) : cleanText(b.name, 40);
+  // the site's own account, signed in on the site: its comments are the site's, as the panel's replies (official = 1)
+  const official = !!(member as any)?.official;
+  const name = official ? OFFICIAL_NAME : member ? (member.display || member.username) : cleanText(b.name, 40);
   const text = cleanText(b.text, 1000, true);
   if (name.length < 2) return reply({ ok: false, error: "اكتب اسمك أولًا." }, 400);
   if (text.length < 2) return reply({ ok: false, error: "اكتب تعليقك أولًا." }, 400);
   if (HAS_LINK.test(text) || HAS_LINK.test(name)) return reply({ ok: false, error: "الروابط غير مسموح بها في التعليقات." }, 400);
-  if (isReservedName(name)) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
+  if (isReservedName(name) && !official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
   // a visitor can't take a member's name
   if (!member) {
     await ensureMembers(db);
@@ -197,11 +199,11 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE vhash = ?1 AND at > ?2").bind(who, now - 86_400_000),
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE path = ?1 AND text = ?2 AND parent = ?3 AND deleted = 0").bind(path, text, parent),
   ]) as any[];
-  if ((recent.results?.[0]?.n || 0) >= 4) return reply({ ok: false, error: "أرسلت تعليقات كثيرة الآن، انتظر قليلًا ثم حاول مرة أخرى." }, 429);
-  if ((today.results?.[0]?.n || 0) >= 30) return reply({ ok: false, error: "وصلت إلى الحد اليومي للتعليقات، شكرًا لك." }, 429);
+  if (!official && (recent.results?.[0]?.n || 0) >= 4) return reply({ ok: false, error: "أرسلت تعليقات كثيرة الآن، انتظر قليلًا ثم حاول مرة أخرى." }, 429);
+  if (!official && (today.results?.[0]?.n || 0) >= 30) return reply({ ok: false, error: "وصلت إلى الحد اليومي للتعليقات، شكرًا لك." }, 429);
   if ((same.results?.[0]?.n || 0) > 0) return reply({ ok: false, error: "هذا التعليق منشور بالفعل." }, 409);
 
-  const chosen = member ? member.pic : String(b.pic || "");
+  const chosen = official ? "" : member ? member.pic : String(b.pic || "");
   const wrestler = WRESTLER_PIC.test(chosen) || (member && /^https:\/\//.test(chosen)) ? chosen : "";
   const upload = !wrestler && !member && env.MEDIA ? chosen.match(UPLOAD) : null;
   let bytes: Uint8Array | null = null;
@@ -213,8 +215,8 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   // the visitor's address, for the panel only (owner 2026-10-14: «عايز كمان يبان ip بتاع المتابع ال معلق في اللوحة»):
   // never in what the page gets (out())
   const ip = String(request.headers.get("CF-Connecting-IP") || "").slice(0, 45);
-  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip, parent, reply_to, owner, member) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14) RETURNING id")
-    .bind(path, title, name, text, wrestler, now, day, who, country, ip, parent, target ? target.id : 0, owner, member ? member.id : 0).first<{ id: number }>();
+  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip, parent, reply_to, owner, member, official) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15) RETURNING id")
+    .bind(path, title, name, text, official ? "official" : wrestler, now, day, who, country, ip, parent, target ? target.id : 0, owner, member ? member.id : 0, official ? 1 : 0).first<{ id: number }>();
   const id = ins?.id || 0;
   let picOut = wrestler;
   if (bytes && id) {
@@ -226,7 +228,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   }
   // whoever wrote what this answers is told (not someone answering themselves)
   if (target?.owner && target.owner !== owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
-  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "" });
+  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official });
 }
 
 // ── the panel ──────────────────────────────────────────────────────────────

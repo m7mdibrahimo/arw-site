@@ -361,6 +361,12 @@ permalink: "/account/index.html"
 .acct-me-user{ margin:2px 0 0; color:var(--muted); font-weight:700; text-align:end; direction:ltr; unicode-bidi:plaintext; }
 .acct-me-since{ margin:2px 0 0; color:var(--muted); font-size:13.5px; }
 .acct-badge{ flex:0 0 auto; align-self:flex-start; display:inline-flex; align-items:center; gap:5px; padding:5px 12px 5px 10px; border-radius:999px; background:rgba(29,155,240,.1); color:#1d9bf0; font:900 12.5px 'Cairo',sans-serif; }
+.is-official .acct-badge{ background:rgba(224,154,18,.13); color:#b5780a; }
+.is-official .acct-badge path:first-child{ fill:#eaa51c; }
+html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
+.is-official .acct-av-edit{ display:none; }
+.is-official [data-open="pics"]{ cursor:default; }
+.is-official input[name="display"]{ opacity:.7; }
 .acct-perk-blue i{ background:rgba(29,155,240,.1) !important; border-color:rgba(29,155,240,.25) !important; }
 .acct-verify{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 14px; border-radius:14px; background:var(--gold-soft); font-size:14px; font-weight:700; }
 .acct-pics{ display:flex; flex-direction:column; gap:12px; padding:14px; border-radius:16px; border:1px solid var(--line); background:var(--bg); }

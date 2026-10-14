@@ -204,6 +204,7 @@
   function initial(n) { return (String(n).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase(); }
   function picSrc(pic) {
     pic = String(pic || '');
+    if (pic === 'official') return EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png';
     if (/^w:[a-z0-9-]+$/.test(pic)) return '/avatars/' + pic.slice(2) + '.webp' + AV;
     if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic)) return pic;
     return '';
@@ -221,8 +222,14 @@
     $('.acct-me-user', v).textContent = '@' + m.username;
     $('.acct-me-since', v).textContent = since(m.created);
     $('.acct-verify', v).hidden = !!m.verified || !mailOn;
+    // the site's own account: the gold badge; its name and picture stay as the site's
+    v.classList.toggle('is-official', !!m.official);
+    $('.acct-badge span', v).textContent = m.official ? 'الحساب الرسمي' : 'حساب موثّق';
+    $('.acct-badge', v).title = m.official ? 'الحساب الرسمي لعرب راسلنج' : 'حساب موثّق في عرب راسلنج';
+    $('[data-open="pics"]', v).disabled = !!m.official;
     var f = forms.profile;
     f.elements.display.value = m.display || '';
+    f.elements.display.readOnly = !!m.official;
     f.elements.fav_star.value = m.fav_star || '';
     f.elements.bio.value = m.bio || '';
     $$('[data-chips="fav_fed"] button', f).forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-v') === m.fav_fed); });

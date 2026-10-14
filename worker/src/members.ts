@@ -22,7 +22,7 @@
 // Mail goes through Resend when the worker has RESEND_API_KEY (the owner adds it in Cloudflare); without it, sign-up
 // works the same and the recovery code is the way back in.
 import { hashPassword, verifyPassword } from "./studio";
-import { ensureTable as ensureComments, isReservedName, WRESTLER_PIC } from "./comments";
+import { ensureTable as ensureComments, isReservedName, WRESTLER_PIC, OFFICIAL_NAME } from "./comments";
 
 export interface MembersEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; RESEND_API_KEY?: string }
 
@@ -46,7 +46,10 @@ export function ensureMembers(db: D1Database): Promise<unknown> {
     db.prepare("CREATE TABLE IF NOT EXISTS member_sessions (token TEXT PRIMARY KEY, member INTEGER NOT NULL, created INTEGER NOT NULL, expires INTEGER NOT NULL, ua TEXT NOT NULL DEFAULT '')"),
     db.prepare("CREATE INDEX IF NOT EXISTS member_sessions_member ON member_sessions (member)"),
     db.prepare("CREATE TABLE IF NOT EXISTS member_tokens (token TEXT PRIMARY KEY, member INTEGER NOT NULL, kind TEXT NOT NULL, expires INTEGER NOT NULL)"),
-  ]).catch((e) => { ready.delete(db); throw e; }));
+  ])
+    // the site's own account (owner 2026-10-14: «اعملي عضوية بتاعتي … موثقة العلامة الذهبي»): added to older tables
+    .then(() => db.prepare("ALTER TABLE members ADD COLUMN official INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
+    .catch((e) => { ready.delete(db); throw e; }));
   return p;
 }
 
@@ -62,10 +65,11 @@ const randomToken = () => b64url(crypto.getRandomValues(new Uint8Array(32)));
 export const latinDigits = (s: string) => String(s || "").replace(/[٠-٩]/g, d => String(d.charCodeAt(0) - 0x660)).replace(/[۰-۹]/g, d => String(d.charCodeAt(0) - 0x6f0));
 
 /** A username: 3–20 letters (Arabic or Latin), digits, «_» or «.», starting with a letter */
-export function usernameProblem(u: string): string | null {
+export function usernameProblem(u: string, official = false): string | null {
   if (u.length < 3) return "اسم المستخدم قصير، اكتب 3 حروف على الأقل.";
   if (u.length > 20) return "اسم المستخدم طويل، 20 حرفًا على الأكثر.";
   if (!/^[A-Za-zء-ي][A-Za-z0-9ء-ي٠-٩_.]*$/.test(u)) return "اسم المستخدم يبدأ بحرف، ويكون من حروف وأرقام فقط (ومسموح بـ _ و .).";
+  if (official) return null;
   if (isReservedName(u) || /^(admin|administrator|moderator|support|root|arw|arabwrestling|staff|team|official|system)$/i.test(u) || /^(مدير|المدير|الإدارة|الادارة|ادمن|أدمن|الدعم)$/.test(u)) return "هذا الاسم غير متاح، اختر اسمًا آخر.";
   return null;
 }
@@ -79,9 +83,9 @@ export function passwordProblem(p: string, username = ""): string | null {
 export const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[A-Za-z]{2,24}$/;
 const ukeyOf = (u: string) => u.normalize("NFKC").toLowerCase();
 
-type Member = { id: number; username: string; email: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number };
+type Member = { id: number; username: string; email: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number; official?: number };
 /** What the member's own pages see (never the hashes) */
-const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, display: m.display || m.username, pic: m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created });
+const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created, official: !!m.official });
 
 // ── rate limits (KV counters with their own expiry) ───────────────────────────
 async function tooMany(kv: KVNamespace, key: string, max: number, _windowSec: number): Promise<boolean> {
@@ -321,11 +325,11 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path.startsWith("/u/") && request.method === "GET") {
     const u = decodeURIComponent(path.slice(3)).trim();
-    const m = await db.prepare("SELECT id, username, display, pic, fav_fed, fav_star, bio, created FROM members WHERE ukey = ?1 AND banned = 0").bind(ukeyOf(u)).first<any>();
+    const m = await db.prepare("SELECT id, username, display, pic, fav_fed, fav_star, bio, created, official FROM members WHERE ukey = ?1 AND banned = 0").bind(ukeyOf(u)).first<any>();
     if (!m) return reply({ ok: false, error: "لا يوجد عضو بهذا الاسم." }, 404);
     await ensureComments(db);
     const c = await db.prepare("SELECT COUNT(*) AS n FROM comments WHERE member = ?1 AND deleted = 0").bind(m.id).first<{ n: number }>();
-    return reply({ ok: true, member: { username: m.username, display: m.display || m.username, pic: m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
+    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
   }
 
   // ── the member's own ──
@@ -341,9 +345,10 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   }
 
   if (path === "/profile" && request.method === "POST") {
+    if (me.official) { body.display = me.display; body.pic = me.pic; }
     const display = String(body.display ?? me.display).normalize("NFC").replace(/\s+/g, " ").trim().slice(0, 30);
     if (display.length < 2) return reply({ ok: false, error: "الاسم الظاهر حرفان على الأقل." }, 400);
-    if (isReservedName(display)) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
+    if (isReservedName(display) && !me.official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
     const pic = String(body.pic ?? me.pic);
     const okPic = pic === "" || WRESTLER_PIC.test(pic) || /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic);
     const fav_fed = /^(WWE|AEW|NJPW|TNA|ROH|MLP|MLW|CMLL|AAA|UFC|STARDOM|NOAH|)$/.test(String(body.fav_fed ?? me.fav_fed)) ? String(body.fav_fed ?? me.fav_fed) : me.fav_fed;
@@ -395,7 +400,7 @@ export async function studioMembers(env: MembersEnv, now = Date.now()) {
   await ensureMembers(db);
   await ensureComments(db);
   const [rows, total, week, active] = await db.batch([
-    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip,
+    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official,
       (SELECT COUNT(*) FROM comments c WHERE c.member = m.id AND c.deleted = 0) AS comments FROM members m ORDER BY m.created DESC LIMIT 2000`),
     db.prepare("SELECT COUNT(*) AS n FROM members"),
     db.prepare("SELECT COUNT(*) AS n FROM members WHERE created > ?1").bind(now - 7 * DAY),
@@ -410,7 +415,7 @@ export async function studioMemberDetail(env: MembersEnv, id: unknown, now = Dat
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
   await ensureMembers(db);
   await ensureComments(db);
-  const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country
+  const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country, official
     FROM members WHERE id = ?1`).bind(Number(id) || 0).first<any>();
   if (!m) return { success: false, error: "العضو ده مش موجود." };
   const [comments, sessions, hearts] = await db.batch([
@@ -420,11 +425,46 @@ export async function studioMemberDetail(env: MembersEnv, id: unknown, now = Dat
   ]) as any[];
   return { success: true, member: m, comments: comments.results || [], sessions: sessions.results || [], hearts: hearts.results?.[0]?.n || 0 };
 }
+/** The site's own account (owner 2026-10-14: «اعملي عضوية بتاعتي … موثقة العلامة الذهبي … زي ال انت عاملهالي في اللوحة»):
+ *  a member that signs in on the site like any other, but shows as «عرب راسلنج» with the logo and the gold badge, and
+ *  its comments are the site's own (official = 1), exactly as the panel's replies. Made and changed by the owner only. */
+export async function studioOfficialAccount(env: MembersEnv, body: any = null, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
+  await ensureMembers(db);
+  const cur = await db.prepare("SELECT * FROM members WHERE official = 1 ORDER BY id LIMIT 1").first<Member>();
+  const view = (m: Member | null) => m ? { id: m.id, username: m.username, email: m.email, created: m.created, last_seen: m.last_seen } : null;
+  if (!body) return { success: true, account: view(cur) };
+  const username = String(body.username ?? cur?.username ?? "").normalize("NFC").trim();
+  const email = String(body.email ?? cur?.email ?? "").trim().toLowerCase();
+  const password = String(body.password || "");
+  const bad = usernameProblem(username, true) || (!EMAIL.test(email) ? "اكتب إيميل صحيح." : null) || (password || !cur ? passwordProblem(password, username) : null);
+  if (bad) return { success: false, error: bad };
+  const taken = await db.prepare("SELECT ukey = ?1 AS u, email = ?2 AS e FROM members WHERE (ukey = ?1 OR email = ?2) AND id != ?3 LIMIT 1").bind(ukeyOf(username), email, cur?.id || 0).first<{ u: number; e: number }>();
+  if (taken?.u) return { success: false, error: "اسم المستخدم ده مستخدم لعضو تاني." };
+  if (taken?.e) return { success: false, error: "الإيميل ده عليه حساب عضو تاني." };
+  if (!cur) {
+    const { salt, hash, iterations } = await hashPassword(password);
+    const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, display, pic, verified, official, created, last_seen)
+      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, 'official', 1, 1, ?8, 0) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, OFFICIAL_NAME, now).first<Member>();
+    return { success: true, account: view(ins), created: true };
+  }
+  const steps = [db.prepare("UPDATE members SET username = ?1, ukey = ?2, email = ?3, display = ?4, pic = 'official', verified = 1, banned = 0 WHERE id = ?5").bind(username, ukeyOf(username), email, OFFICIAL_NAME, cur.id)];
+  if (password) {
+    const { salt, hash, iterations } = await hashPassword(password);
+    steps.push(db.prepare("UPDATE members SET salt = ?1, hash = ?2, iterations = ?3 WHERE id = ?4").bind(salt, hash, iterations, cur.id));
+    // a new password: out of the account everywhere
+    steps.push(db.prepare("DELETE FROM member_sessions WHERE member = ?1").bind(cur.id));
+  }
+  await db.batch(steps);
+  const m = await db.prepare("SELECT * FROM members WHERE id = ?1").bind(cur.id).first<Member>();
+  return { success: true, account: view(m) };
+}
 export async function studioBanMember(env: MembersEnv, id: unknown, on: unknown) {
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
   await ensureMembers(db);
-  const r = await db.prepare("UPDATE members SET banned = ?1 WHERE id = ?2").bind(on ? 1 : 0, Number(id) || 0).run();
+  const r = await db.prepare("UPDATE members SET banned = ?1 WHERE id = ?2 AND official = 0").bind(on ? 1 : 0, Number(id) || 0).run();
   if (!r.meta?.changes) return { success: false, error: "العضو ده مش موجود." };
   if (on) await db.prepare("DELETE FROM member_sessions WHERE member = ?1").bind(Number(id)).run();
   return { success: true };

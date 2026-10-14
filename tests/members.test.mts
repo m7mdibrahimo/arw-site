@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember, studioMemberDetail } from '../worker/src/members';
+import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
 
 function d1() {
@@ -163,4 +163,38 @@ test('with the site\'s mail key: a confirmation mail at sign-up, and «forgot my
     assert.equal((await call(e, '/reset', { token: reset, password: 'dynamite88' })).status, 400);
     assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'dynamite77' })).status, 200);
   } finally { globalThis.fetch = real; }
+});
+
+test('the site\'s own account: made from the panel, signs in on the site, comments as «عرب راسلنج» (official, gold), can\'t be renamed or stopped', async () => {
+  const e = env();
+  e.MEDIA = null;
+  assert.equal((await studioOfficialAccount(e)).account, null);
+  // a name members can't take is fine here, a weak password isn't
+  assert.equal((await studioOfficialAccount(e, { username: 'ArabWrestling', email: 'contact@arab-wrestling.com', password: 'short' })).success, false);
+  const made: any = await studioOfficialAccount(e, { username: 'ArabWrestling', email: 'Contact@Arab-Wrestling.com', password: 'ringside2026' });
+  assert.equal(made.success, true);
+  assert.equal(made.account.email, 'contact@arab-wrestling.com');
+  const s = await call(e, '/login', { login: 'arabwrestling', password: 'ringside2026' });
+  assert.equal(s.status, 200);
+  assert.equal(s.body.member.official, true);
+  assert.equal(s.body.member.display, 'عرب راسلنج');
+  assert.equal(s.body.member.pic, 'official');
+  // its name and picture stay
+  assert.equal((await call(e, '/profile', { display: 'محمد', pic: 'w:cm-punk', bio: 'صاحب الموقع' }, s.body.token)).body.member.display, 'عرب راسلنج');
+  const STORY = '/news/خبر/';
+  const headers = { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json', Authorization: `Bearer ${s.body.token}` };
+  const r = await handleComments(new Request('https://w.example/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', name: 'x', text: 'أهلًا بكم في عرب راسلنج' }), headers }), e, new URL('https://w.example/comments')).then((x) => x.json() as any);
+  assert.equal(r.ok, true);
+  assert.equal(r.official, true);
+  const list = await handleComments(new Request(`https://w.example/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w.example/comments?p=${encodeURIComponent(STORY)}`)).then((x) => x.json() as any);
+  assert.equal(list.items[0].official, true);
+  assert.equal(list.items[0].name, 'عرب راسلنج');
+  // a second one isn't made: the same account is changed (a new password signs it out everywhere)
+  const again: any = await studioOfficialAccount(e, { password: 'mainevent2027' });
+  assert.equal(again.account.id, made.account.id);
+  assert.equal((await call(e, '/me', undefined, s.body.token)).status, 401);
+  assert.equal((await call(e, '/login', { login: 'contact@arab-wrestling.com', password: 'mainevent2027' })).status, 200);
+  assert.equal((await studioBanMember(e, made.account.id, true)).success, false);
+  // members still can't take the name
+  assert.ok(usernameProblem('ArabWrestling'));
 });

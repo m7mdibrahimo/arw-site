@@ -117,6 +117,8 @@ export const api = {
   siteMembers: () => call('/api/studio/members'),
   siteMemberBan: (id, on) => call('/api/studio/members/ban', { method: 'POST', body: { id: Number(id), on: !!on } }),
   siteMember: (id) => call(`/api/studio/members/${Number(id)}`),
+  siteOfficial: () => call('/api/studio/members/official'),
+  siteOfficialSave: (body) => call('/api/studio/members/official', { method: 'POST', body }),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────
