@@ -84,6 +84,8 @@ const RULES: Rule[] = [
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },
+  // A quote opened with no «, or closed with no »: "> لم يكن ينبغي… مناسبا»." — one half of the pair was dropped (INCIDENTS #500)
+  { code: "unbalanced_guillemets", severity: "error", re: /^[^«»\n]*[«»][^«»\n]*$/gm, message: "علامة اقتباس « أو » من غير زوجها — افتح وقفّل الاقتباس", fields: ["body"] },
   // Straight quote marks glued to the «» pair: «معلقا عليها بقوله: "«من الجيد العودة»"» — the reader sees doubled marks.
   { code: "doubled_quote_marks", severity: "error", re: /["“”]\*?«|»\*?["“”]/g, message: "علامة تنصيص \" ملزوقة في «» (حصل: \"«من الجيد»\") — استخدم «» بس", fields: ["body"] },
   // A quote run into the narration with no «»: «وأضاف: أنا سعيد بأن لدي هذا المقطع…» — the reader can't
@@ -791,6 +793,8 @@ export function autoFix(text: string): string {
     // "NXTبطولة" / "عرضMLP" → add the missing space
     .replace(new RegExp(`([A-Za-z])([${AR}])`, "g"), "$1 $2")
     .replace(new RegExp(`([${AR}]{2})([A-Za-z])`, "g"), "$1 $2")
+    // «> كلام…»: a blockquote that lost its opening « (INCIDENTS #500)
+    .replace(/^(>[ \t]*)([^«»\n]+»)/gm, "$1«$2")
     // "ل زينا" → "لـزينا", "ل *NXT" → "لـ *NXT", "و سامي" → "وسامي"
     .replace(new RegExp(`(^|[\\s(«"])([لب])\\s+(?=[${AR}])`, "gm"), "$1$2ـ")
     .replace(/(^|[\s(«"])([لب])\s+(?=[*«"]?[A-Za-z0-9"«])/gm, "$1$2ـ ")

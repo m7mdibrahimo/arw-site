@@ -4706,3 +4706,12 @@ test('scrubbed reporter name after a job word and touchdown-as-goal are flagged 
   assert.ok(checkArticle(t, 'نجح جامار تشيس في إلغاء الغرامات بسبب احتفاله بتسجيل هدفين خلال مواجهة فريقه ضد هيوستن.').some(i => i.code === 'touchdown_as_goal'));
   assert.ok(!checkArticle(t, 'نجح جامار تشيس في إلغاء الغرامات بسبب احتفاله بتسجيل تاتشداونين خلال مواجهة فريقه ضد هيوستن.').some(i => i.code === 'touchdown_as_goal'));
 });
+
+test('a quote missing its « or » is blocked and a blockquote missing « is repaired (INCIDENTS #500)', () => {
+  const pad = ' وهذا نص إضافي طويل لتجاوز الحد الأدنى لطول الخبر في المدقق الآلي.'.repeat(5);
+  const bad = checkArticle('جوناثان كوتشمان يتحدث عن مقطع ماكس كاستر', '> لم يكن ينبغي لهذا الموقف أن يحدث أبدا».' + pad);
+  assert.ok(bad.some(i => i.code === 'unbalanced_guillemets'));
+  const good = checkArticle('جوناثان كوتشمان يتحدث عن مقطع ماكس كاستر', '> «لم يكن ينبغي لهذا الموقف أن يحدث أبدا».' + pad);
+  assert.ok(!good.some(i => i.code === 'unbalanced_guillemets'));
+  assert.equal(autoFix('> لم يكن ينبغي لهذا الموقف أن يحدث أبدا».'), '> «لم يكن ينبغي لهذا الموقف أن يحدث أبدا».');
+});
