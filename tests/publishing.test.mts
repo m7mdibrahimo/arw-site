@@ -4604,7 +4604,7 @@ test('show pages carry the program aliases with the date and the words visitors 
   const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
   const aliases = ['عرض الرو', 'دبليو دبليو إي راو', 'الرو', 'WWE Raw', 'الرو مترجم'];
   const forms = showNameForms({ headline: 'عرض الرو مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: true });
-  for (const f of ['دبليو دبليو إي راو 5 أكتوبر 2026', 'عرض الرو مترجم', 'عرض الرو الاخير مترجم', 'تحميل عرض الرو', 'مشاهدة عرض الرو', 'اخر عرض الرو']) assert.ok(forms.includes(f), f);
+  for (const f of ['دبليو دبليو إي راو 5 أكتوبر 2026', 'عرض الرو مترجم', 'عرض الرو الاخير مترجم', 'تحميل عرض الرو', 'مشاهدة عرض الرو', 'اخر عرض الرو', 'عرض الرو الاخير مترجم كامل', 'مشاهدة عرض الرو الاخير مترجم']) assert.ok(forms.includes(f), f);
   const recap = showNameForms({ headline: 'ملخص الرو مترجم', title: 'WWE RAW Highlights 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: false });
   assert.ok(!recap.includes('تحميل عرض الرو'));
 });
@@ -4849,4 +4849,11 @@ test('a yearly show whose year is only in the title brackets still gets the «ع
   for (const q of ['عرض موني ان ذا بانك 2026', 'تحميل عرض موني ان ذا بانك 2026', 'مشاهدة عرض موني ان ذا بانك 2026', 'عرض موني ان ذا بانك 2026 مترجم']) assert.ok(forms.includes(q), q);
   const weekly = showNameForms({ headline: 'عرض الرو 12.10.2026 مترجم', title: 'WWE RAW (12/10/2026)', programName: 'WWE RAW', eventDate: '2026-10-12', aliases: ['عرض الرو'], isShow: true });
   assert.ok(!weekly.includes('عرض الرو 2026'));
+});
+
+// INCIDENTS #519: «تأثيرا كبير» (accusative noun, adjective without its alif) is corrected in every story
+test('accusative noun + adjective gets its alif (INCIDENTS #519)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa.ts');
+  assert.equal(applyCorrections('ويمتلك تأثيرا كبير على القصص'), 'ويمتلك تأثيرا كبيرا على القصص');
+  assert.equal(applyCorrections('تأثيرا كبيرا'), 'تأثيرا كبيرا');
 });
