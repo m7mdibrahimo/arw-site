@@ -112,6 +112,7 @@ export const api = {
   commentAction: (action, ids) => call(`/api/studio/comments/${action}`, { method: 'POST', body: { ids } }),
   // the site's own reply, as «عرب راسلنج» with the blue badge
   commentReply: (id, text) => call('/api/studio/comments/reply', { method: 'POST', body: { id: Number(id), text } }),
+  commentHeart: (id, on) => call('/api/studio/comments/heart', { method: 'POST', body: { id: Number(id), on: !!on } }),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────

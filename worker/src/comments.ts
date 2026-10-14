@@ -38,7 +38,7 @@ export function ensureTable(db: D1Database): Promise<unknown> {
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
   ]).then(async () => {
     // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
-    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0"]) {
+    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0"]) {
       await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
     }
   }).catch((e) => { ready.delete(db); throw e; }));
@@ -80,8 +80,8 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official });
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number };
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -100,7 +100,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (request.method === "GET") {
     const path = commentPath(url.searchParams.get("p"));
     if (!path) return reply({ items: [] });
-    const rows = await db.prepare("SELECT id, name, text, pic, at, parent, official FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 400").bind(path).all<Row>();
+    const rows = await db.prepare("SELECT id, name, text, pic, at, parent, official, hearted FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 400").bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }
   if (request.method !== "POST") return reply({ ok: false, error: "not allowed" }, 405);
@@ -163,7 +163,7 @@ export async function studioComments(env: CommentsEnv, now = Date.now()) {
   await ensureTable(db);
   const { day } = cairo(now);
   const [rows, today, week, total] = await db.batch([
-    db.prepare("SELECT id, path, title, name, text, pic, at, parent, official FROM comments WHERE deleted = 0 ORDER BY at DESC LIMIT 1500"),
+    db.prepare("SELECT id, path, title, name, text, pic, at, parent, official, hearted FROM comments WHERE deleted = 0 ORDER BY at DESC LIMIT 1500"),
     // the numbers are the visitors' comments; the site's own replies aren't counted
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0 AND day = ?1").bind(day),
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0 AND at > ?1").bind(now - 7 * 86_400_000),
@@ -203,6 +203,17 @@ export async function studioReplyComment(env: CommentsEnv, id: unknown, rawText:
   const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, parent, official) VALUES (?1, ?2, ?3, ?4, 'official', ?5, ?6, 'official', '', ?7, 1) RETURNING id")
     .bind(target.path, target.title, OFFICIAL_NAME, text, now, day, parent).first<{ id: number }>();
   return { success: true, item: { id: ins?.id || 0, name: OFFICIAL_NAME, text, pic: "official", at: now, parent, official: true, path: target.path, title: target.title } };
+}
+
+/** The site's heart on a visitor's comment (owner 2026-10-14, like YouTube's: «زر اعجاب… اعمله عليه قلب ويبان عنده»):
+ *  on, or off again. Only a visitor's comment: the site doesn't heart its own replies */
+export async function studioHeartComment(env: CommentsEnv, id: unknown, on: unknown) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "التعليقات مش متاحة دلوقتي." };
+  await ensureTable(db);
+  const r = await db.prepare("UPDATE comments SET hearted = ?1 WHERE id = ?2 AND deleted = 0 AND official = 0").bind(on ? 1 : 0, Number(id) || 0).run();
+  if (!r.meta?.changes) return { success: false, error: "التعليق ده اتحذف أو مش موجود." };
+  return { success: true, hearted: !!on };
 }
 
 /** The bell: visitors' comments of the last hours, as notifications */

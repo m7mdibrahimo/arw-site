@@ -34,6 +34,14 @@ const topicOf = (map, c) => map.get(pathKey(c.path)) || { title: c.title || path
 
 const BADGE = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" style="width:15px;height:15px"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
 
+// The site's heart on a comment, as YouTube's: an empty heart to give it, the site's picture with a small red heart once given
+const HEART_O = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.6-6.7l.8.8.8-.8a4.7 4.7 0 0 1 6.6 6.7z"/></svg>';
+const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#e8264b" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.6-6.7l.8.8.8-.8a4.7 4.7 0 0 1 6.6 6.7z"/></svg>';
+const heartFace = (on) => on
+  ? html`<span class="cm-hearted"><img src="/assets/brand-logo.png?v=2" alt="">${raw(HEART)}</span>`
+  : raw(HEART_O);
+const heartTitle = (on) => (on ? 'شيل القلب' : 'اعمل قلب: هيظهر للمتابع إن عرب راسلنج عجبه تعليقه');
+
 /** The site's own reply under a comment, as it shows on the site */
 function replyRow(r) {
   return html`<div class="cm-reply">
@@ -50,7 +58,7 @@ function row(c, t, seen, replies = [], { compact = false } = {}) {
   const kind = KIND[t.kind];
   const fresh = c.at > seen;
   return html`<article class="cm-row ${fresh ? 'is-new' : ''} ${compact ? 'is-compact' : ''}" data-id="${c.id}">
-    <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${picSrc(c.pic) ? html`<img src="${picSrc(c.pic)}" alt="" loading="lazy">` : initial(c.name)}</span>
+    <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${picSrc(c.pic) ? html`<img src="${picSrc(c.pic)}" alt="" loading="lazy" data-i="${initial(c.name)}">` : initial(c.name)}</span>
     <div class="cm-main">
       <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}${replies.length ? html`<em class="cm-answered">${icon('check')}رديت</em>` : ''}</div>
       <p class="cm-text">${c.text}</p>
@@ -64,6 +72,7 @@ function row(c, t, seen, replies = [], { compact = false } = {}) {
       </form>`}
     </div>
     <div class="cm-actions">
+      <button class="icon-btn sm cm-heart ${c.hearted ? 'is-on' : ''}" data-heart="${c.id}" aria-pressed="${c.hearted ? 'true' : 'false'}" title="${heartTitle(c.hearted)}">${heartFace(c.hearted)}</button>
       <button class="btn btn-sm cm-reply-btn" data-reply="${c.id}" title="رد باسم عرب راسلنج">${icon('comment')}<span>رد</span></button>
       <a class="icon-btn sm" href="${t.url}#comments" target="_blank" rel="noopener" title="افتح على الموقع">${icon('eye')}</a>
       <button class="icon-btn sm cm-del" data-delete="${c.id}" title="احذف التعليق من الموقع">${icon('trash')}</button>
@@ -73,6 +82,11 @@ function row(c, t, seen, replies = [], { compact = false } = {}) {
 
 /** The delete and reply buttons inside `el`; `again()` draws the page or the box afresh */
 function wire(el, items, again) {
+  // a picture that's gone (a star taken off the list, a deleted upload): the name's first letter, as on the site
+  $$('.cm-av img[data-i]', el).forEach(img => {
+    const fall = () => img.replaceWith(document.createTextNode(img.dataset.i));
+    if (img.complete && !img.naturalWidth) fall(); else img.addEventListener('error', fall, { once: true });
+  });
   $$('[data-delete]', el).forEach(b => b.onclick = async () => {
     const c = items.find(x => String(x.id) === b.dataset.delete);
     const own = !!c.official;
@@ -86,6 +100,17 @@ function wire(el, items, again) {
     b.disabled = true;
     try { await api.commentAction('delete', [c.id]); toast('اتحذف من الموقع ✓'); again(); }
     catch (e) { toast(e.message, 'error'); b.disabled = false; }
+  });
+  // the heart: on or off at once on the button, then kept by the worker (back as it was if that fails)
+  $$('[data-heart]', el).forEach(b => b.onclick = async () => {
+    const c = items.find(x => String(x.id) === b.dataset.heart);
+    const on = !c.hearted;
+    const show = (v) => { c.hearted = v; b.classList.toggle('is-on', v); b.setAttribute('aria-pressed', String(v)); b.title = heartTitle(v); mount(b, heartFace(v)); };
+    show(on);
+    b.disabled = true;
+    try { await api.commentHeart(c.id, on); if (on) toast('اتعمل قلب على التعليق ❤'); }
+    catch (e) { show(!on); toast(e.message, 'error'); }
+    finally { b.disabled = false; }
   });
   $$('[data-reply]', el).forEach(b => b.onclick = () => {
     const form = $(`[data-reply-form="${b.dataset.reply}"]`, el);

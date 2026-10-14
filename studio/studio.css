@@ -751,6 +751,13 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .cm-answered { display: inline-flex; align-items: center; gap: 3px; font-style: normal; font-size: 11.5px; font-weight: 900; color: var(--teal); }
 .cm-answered svg { width: 13px; height: 13px; }
 .cm-reply-btn svg { width: 15px; height: 15px; }
+/* the site's heart on a comment (as YouTube's): an empty heart, then the site's picture with a small red heart */
+.cm-heart { color: var(--muted); }
+.cm-heart:hover { color: #e8264b; }
+.cm-hearted { position: relative; display: inline-flex; width: 24px; height: 24px; }
+.cm-hearted img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+.cm-hearted svg { position: absolute; inset-block-end: -4px; inset-inline-end: -5px; width: 14px; height: 14px; }
+.cm-heart.is-on { background: color-mix(in srgb, #e8264b 10%, transparent); }
 .cm-reply { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: start; margin-top: 10px; padding: 10px 12px; border-radius: 18px; background: var(--teal-soft); }
 .cm-reply .cm-text { margin: 2px 0 0; font-size: 14px; }
 .cm-av.cm-av-sm { width: 34px; height: 34px; background: #0e7d7c; }

@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { handleComments, studioComments, studioDeleteComments, studioReplyComment, commentNotifications, commentPath, cleanText, HAS_LINK, ensureTable, isReservedName } from '../worker/src/comments';
+import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications, commentPath, cleanText, HAS_LINK, ensureTable, isReservedName } from '../worker/src/comments';
 
 /** D1's interface over node:sqlite: prepare().bind().all()/first()/run(), and batch() */
 function d1() {
@@ -134,4 +134,18 @@ test('no visitor can comment as the site', async () => {
     assert.equal((await post(env, { p: STORY, name, text: `تعليق ${i}` }, { ...PERSON, 'CF-Connecting-IP': `9.9.9.${i}` })).status, 400, name);
   }
   for (const name of ['محمد عرب', 'Arabi', 'راسل']) assert.ok(!isReservedName(name), name);
+});
+
+test('the site\'s heart on a comment shows on the page, comes off again, and never goes on its own reply', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const c = await post(env, { p: STORY, name: 'يوسف', text: 'تحليل ممتاز', title: 'خبر' });
+  assert.equal((await get(env, STORY)).items[0].hearted, false);
+  assert.equal((await studioHeartComment(env, c.body.id, true)).success, true);
+  assert.equal((await get(env, STORY)).items[0].hearted, true);
+  assert.equal((await studioComments(env)).items[0].hearted, true);
+  await studioHeartComment(env, c.body.id, false);
+  assert.equal((await get(env, STORY)).items[0].hearted, false);
+  const r: any = await studioReplyComment(env, c.body.id, 'شكرًا');
+  assert.equal((await studioHeartComment(env, r.item.id, true)).success, false);
+  assert.equal((await studioHeartComment(env, 9999, true)).success, false);
 });

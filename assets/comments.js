@@ -71,6 +71,8 @@
   // the site's own replies (written in the panel): its logo, its name and the blue verified badge
   var OFFICIAL = EN ? 'Arab Wrestling' : 'عرب راسلنج';
   var LOGO = EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png';
+  // the site's heart on a comment, as YouTube's: the site's picture with a small red heart under it
+  var HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#e8264b" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" d="M12 20.3 4.6 13a4.7 4.7 0 0 1 6.6-6.7l.8.8.8-.8a4.7 4.7 0 0 1 6.6 6.7z"/></svg>';
   var BADGE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
   function item(c) {
     var el = document.createElement('article');
@@ -113,6 +115,15 @@
     text.dir = 'auto';
     body.appendChild(meta);
     body.appendChild(text);
+    if (c.hearted && !c.official) {
+      var liked = document.createElement('span');
+      liked.className = 'arw-cm-liked';
+      liked.title = 'أعجب عرب راسلنج بهذا التعليق';
+      liked.setAttribute('role', 'img');
+      liked.setAttribute('aria-label', 'أعجب عرب راسلنج بهذا التعليق');
+      liked.innerHTML = '<img src="' + LOGO + '" alt="" width="22" height="22">' + HEART;
+      body.appendChild(liked);
+    }
     el.appendChild(av);
     el.appendChild(body);
     return el;
