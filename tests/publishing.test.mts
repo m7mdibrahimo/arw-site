@@ -2149,6 +2149,11 @@ test('Dusty Classic semifinal names have one spelling (INCIDENTS #506)', async (
   assert.equal(names['Cruz Montana'], 'كروز مونتانا');
 });
 
+test('dual of «نزال» is «نزالين», never «نزاتين» (INCIDENTS #509)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('خاضت نزاتين في عام واحد'), 'خاضت نزالين في عام واحد');
+});
+
 test('Kendal Grey is always «كيندال غراي» — never «غري» or «جراي» (INCIDENTS #159)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('قصة كيندال غري مع كيندال جراي'), 'قصة كيندال غراي مع كيندال غراي');
