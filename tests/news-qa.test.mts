@@ -12,6 +12,9 @@ test("a sentence ending on «وقال.» and the duals «الاثنتين» / «
   const body = "تحدث رويس كيز عن انضمام هايز، مشيرا إلى أن هايز يمتلك جانبا عدوانيا لم يره الجمهور بعد، وقال.\n\nنص آخر طويل بما يكفي.";
   assert.ok(checkArticle("رويس كيز يتحدث عن هايز", body).some((i) => i.code === "dangling_speech"));
   assert.ok(!checkArticle("رويس كيز يتحدث عن هايز", "وقال كيز إن الفريق قوي جدا.").some((i) => i.code === "dangling_speech"));
+  // a colon before a blockquote is a normal way to introduce a quote, not a lost quote
+  assert.ok(!checkArticle("رويس كيز يتحدث عن هايز", "وفي مقابلة، سئل رينز عن المخرج، حيث قال:\n\n> لا أعرف حقا.\n\nنص آخر.").some((i) => i.code === "dangling_speech"));
+  assert.ok(checkArticle("رويس كيز يتحدث عن هايز", "وفي مقابلة، سئل رينز عن المخرج، حيث قال:\n\nنص آخر طويل.").some((i) => i.code === "dangling_speech"));
   assert.ok(checkArticle("عنوان", "المواجهة بين الاثنتين مهمة.").some((i) => i.code === "dual_noun"));
   assert.ok(checkArticle("عنوان", "ليلتا العرض كانتا ممتازتين.").some((i) => i.code === "dual_noun"));
   assert.ok(!checkArticle("عنوان", "في يوم الاثنين أقيم العرض.").some((i) => i.code === "dual_noun"));

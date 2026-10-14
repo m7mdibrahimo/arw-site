@@ -2119,6 +2119,7 @@ test('a weekly show dated to a day it does not air on is flagged, and one tweet 
   const { showOnWrongWeekday, checkArticle } = await import('../scripts/news-qa');
   assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي يقام يوم الثامن والعشرين من سبتمبر', 2026), 'AEW Dynamite الذي يقام يوم الثامن والعشرين من سبتمبر');
   assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي يقام يوم الثلاثين من سبتمبر', 2026), null);
+  assert.equal(showOnWrongWeekday('عرض WWE RAW في مدينة غلاسكو يوم 18 يناير 2027', 2026), null); // a year in the text decides the weekday
   assert.equal(showOnWrongWeekday('عرض WWE RAW يوم 28 سبتمبر', 2026), null);
   assert.equal(showOnWrongWeekday('عرض WWE NXT Live يوم 18 سبتمبر', 2026), null);
   assert.ok(checkArticle('x', 'يستعد الاتحاد لعرض AEW Dynamite يوم 28 سبتمبر المقبل.', []).some(i => i.code === 'show_wrong_day') || new Date().getUTCFullYear() !== 2026);
