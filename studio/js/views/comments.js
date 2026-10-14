@@ -42,6 +42,17 @@ const heartFace = (on) => on
   : raw(HEART_O);
 const heartTitle = (on) => (on ? 'شيل القلب' : 'اعمل قلب: هيظهر للمتابع إن عرب راسلنج عجبه تعليقه');
 
+// Where a comment came from (the panel only): the country's flag and name, and the visitor's address, copied on a click
+const REGION = (() => { try { return new Intl.DisplayNames(['ar'], { type: 'region' }); } catch { return null; } })();
+const flagOf = (cc) => (/^[A-Z]{2}$/.test(cc) ? String.fromCodePoint(...[...cc].map(ch => 0x1f1e6 + ch.charCodeAt(0) - 65)) : '');
+const countryName = (cc) => { try { return (REGION && /^[A-Z]{2}$/.test(cc) && REGION.of(cc)) || ''; } catch { return ''; } };
+function whereFrom(c) {
+  if (!c.ip && !c.country) return '';
+  const name = countryName(c.country);
+  return html`<span class="cm-where" title="${name ? `${name} · ` : ''}${c.ip ? 'اضغط لنسخ عنوان IP' : 'عنوان IP بيتسجّل للتعليقات الجديدة بس'}">
+    ${flagOf(c.country) ? html`<i aria-hidden="true">${flagOf(c.country)}</i>` : ''}${c.ip ? html`<button type="button" class="cm-ip" data-ip="${c.ip}" dir="ltr">${c.ip}</button>` : html`<span>${name}</span>`}</span>`;
+}
+
 /** The site's own reply under a comment, as it shows on the site */
 function replyRow(r) {
   return html`<div class="cm-reply">
@@ -60,7 +71,7 @@ function row(c, t, seen, replies = [], { compact = false } = {}) {
   return html`<article class="cm-row ${fresh ? 'is-new' : ''} ${compact ? 'is-compact' : ''}" data-id="${c.id}">
     <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${picSrc(c.pic) ? html`<img src="${picSrc(c.pic)}" alt="" loading="lazy" data-i="${initial(c.name)}">` : initial(c.name)}</span>
     <div class="cm-main">
-      <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}${replies.length ? html`<em class="cm-answered">${icon('check')}رديت</em>` : ''}</div>
+      <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}${replies.length ? html`<em class="cm-answered">${icon('check')}رديت</em>` : ''}${whereFrom(c)}</div>
       <p class="cm-text">${c.text}</p>
       <a class="cm-topic" href="${t.url}#comments" target="_blank" rel="noopener" title="افتح التعليق على الموقع">
         ${kind ? html`<i style="--c:${kind[1]}">${kind[0]}</i>` : ''}<span>${t.title}</span></a>
@@ -100,6 +111,9 @@ function wire(el, items, again) {
     b.disabled = true;
     try { await api.commentAction('delete', [c.id]); toast('اتحذف من الموقع ✓'); again(); }
     catch (e) { toast(e.message, 'error'); b.disabled = false; }
+  });
+  $$('[data-ip]', el).forEach(b => b.onclick = async () => {
+    try { await navigator.clipboard.writeText(b.dataset.ip); toast('اتنسخ عنوان IP ✓'); } catch { toast(b.dataset.ip); }
   });
   // the heart: on or off at once on the button, then kept by the worker (back as it was if that fails)
   $$('[data-heart]', el).forEach(b => b.onclick = async () => {

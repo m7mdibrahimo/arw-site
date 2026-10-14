@@ -38,7 +38,7 @@ export function ensureTable(db: D1Database): Promise<unknown> {
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
   ]).then(async () => {
     // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
-    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0"]) {
+    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''"]) {
       await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
     }
   }).catch((e) => { ready.delete(db); throw e; }));
@@ -80,7 +80,7 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number };
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string };
 const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted });
 
 /** /comments and /comments/pic/<id>.webp */
@@ -142,8 +142,11 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     if (bytes && (bytes.length < 200 || bytes.length > 80_000)) bytes = null; // the page sends a 160px square: a few kB
   }
   const country = String((request as any).cf?.country || "").slice(0, 2).toUpperCase();
-  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9) RETURNING id")
-    .bind(path, title, name, text, wrestler, now, day, who, country).first<{ id: number }>();
+  // the visitor's address, for the panel only (owner 2026-10-14: «عايز كمان يبان ip بتاع المتابع ال معلق في اللوحة»):
+  // never in what the page gets (out())
+  const ip = String(request.headers.get("CF-Connecting-IP") || "").slice(0, 45);
+  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) RETURNING id")
+    .bind(path, title, name, text, wrestler, now, day, who, country, ip).first<{ id: number }>();
   const id = ins?.id || 0;
   let picOut = wrestler;
   if (bytes && id) {
@@ -163,7 +166,7 @@ export async function studioComments(env: CommentsEnv, now = Date.now()) {
   await ensureTable(db);
   const { day } = cairo(now);
   const [rows, today, week, total] = await db.batch([
-    db.prepare("SELECT id, path, title, name, text, pic, at, parent, official, hearted FROM comments WHERE deleted = 0 ORDER BY at DESC LIMIT 1500"),
+    db.prepare("SELECT id, path, title, name, text, pic, at, parent, official, hearted, ip, country FROM comments WHERE deleted = 0 ORDER BY at DESC LIMIT 1500"),
     // the numbers are the visitors' comments; the site's own replies aren't counted
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0 AND day = ?1").bind(day),
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE deleted = 0 AND official = 0 AND at > ?1").bind(now - 7 * 86_400_000),
@@ -171,7 +174,7 @@ export async function studioComments(env: CommentsEnv, now = Date.now()) {
   ]) as any[];
   return {
     success: true,
-    items: (rows.results || []).map((r: Row) => ({ ...out(r), path: r.path, title: r.title })),
+    items: (rows.results || []).map((r: Row) => ({ ...out(r), path: r.path, title: r.title, ip: r.ip || "", country: r.country || "" })),
     counts: { today: today.results?.[0]?.n || 0, week: week.results?.[0]?.n || 0, total: total.results?.[0]?.n || 0 },
   };
 }

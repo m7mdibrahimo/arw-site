@@ -149,3 +149,13 @@ test('the site\'s heart on a comment shows on the page, comes off again, and nev
   assert.equal((await studioHeartComment(env, r.item.id, true)).success, false);
   assert.equal((await studioHeartComment(env, 9999, true)).success, false);
 });
+
+test('the panel sees who commented from where (address and country); the page never does', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  await post(env, { p: STORY, name: 'سارة', text: 'تعليق' }, { ...PERSON, 'CF-Connecting-IP': '197.32.10.5' });
+  const s = await studioComments(env);
+  assert.equal(s.items[0].ip, '197.32.10.5');
+  const page = (await get(env, STORY)).items[0];
+  assert.equal(page.ip, undefined);
+  assert.equal(page.country, undefined);
+});
