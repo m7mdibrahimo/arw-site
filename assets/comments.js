@@ -212,7 +212,14 @@
     pick.setAttribute('aria-expanded', String(open));
     if (!open || stars) return;
     stars = [];
-    fetch(AVATARS + 'credits.json').then(function (r) { return r.json(); }).then(function (l) { stars = l; drawStars(); drawCredits(); }).catch(function () {});
+    fetch(AVATARS + 'credits.json').then(function (r) { return r.json(); }).then(function (l) {
+      stars = l;
+      // a promotion with no picture yet: no tab; the first tab that has some is the one open
+      var tabs = Array.prototype.slice.call(box.querySelectorAll('.arw-cm-fed'));
+      tabs.forEach(function (t) { t.hidden = !l.some(function (w) { return w.fed === t.getAttribute('data-fed'); }); });
+      if (!l.some(function (w) { return w.fed === fed; })) { var first = tabs.filter(function (t) { return !t.hidden; })[0]; if (first) first.click(); }
+      drawStars(); drawCredits();
+    }).catch(function () {});
   }
   pick.addEventListener('click', function () { openPicker(picker.hidden); });
   Array.prototype.forEach.call(box.querySelectorAll('.arw-cm-fed'), function (b) {

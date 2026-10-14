@@ -1168,6 +1168,7 @@ html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
 .arw-cm-none:hover{ color:var(--coral); border-color:var(--coral); }
 .arw-cm-feds{ display:flex; gap:6px; flex-wrap:wrap; }
 .arw-cm-fed{ height:32px; padding:0 16px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink); font:900 12.5px 'Cairo',sans-serif; letter-spacing:.3px; cursor:pointer; }
+.arw-cm-fed[hidden]{ display:none; }
 .arw-cm-fed.is-on{ background:var(--ink); color:var(--card); border-color:var(--ink); }
 .arw-cm-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(78px, 1fr)); gap:10px 8px; }
 .arw-cm-star{ display:flex; flex-direction:column; align-items:center; gap:6px; padding:4px 2px; border:0; background:none; cursor:pointer; color:var(--ink); }
