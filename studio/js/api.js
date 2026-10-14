@@ -116,6 +116,7 @@ export const api = {
   // the site's members (worker/src/members.ts)
   siteMembers: () => call('/api/studio/members'),
   siteMemberBan: (id, on) => call('/api/studio/members/ban', { method: 'POST', body: { id: Number(id), on: !!on } }),
+  siteMember: (id) => call(`/api/studio/members/${Number(id)}`),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────

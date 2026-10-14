@@ -360,7 +360,8 @@ permalink: "/account/index.html"
 .acct-me-name{ margin:0; font:900 24px/1.3 'Cairo',sans-serif; color:var(--ink); overflow-wrap:anywhere; }
 .acct-me-user{ margin:2px 0 0; color:var(--muted); font-weight:700; text-align:end; direction:ltr; unicode-bidi:plaintext; }
 .acct-me-since{ margin:2px 0 0; color:var(--muted); font-size:13.5px; }
-.acct-badge{ flex:0 0 auto; align-self:flex-start; padding:5px 12px; border-radius:999px; background:var(--teal-soft); color:var(--teal); font:900 12.5px 'Cairo',sans-serif; }
+.acct-badge{ flex:0 0 auto; align-self:flex-start; display:inline-flex; align-items:center; gap:5px; padding:5px 12px 5px 10px; border-radius:999px; background:rgba(29,155,240,.1); color:#1d9bf0; font:900 12.5px 'Cairo',sans-serif; }
+.acct-perk-blue i{ background:rgba(29,155,240,.1) !important; border-color:rgba(29,155,240,.25) !important; }
 .acct-verify{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 14px; border-radius:14px; background:var(--gold-soft); font-size:14px; font-weight:700; }
 .acct-pics{ display:flex; flex-direction:column; gap:12px; padding:14px; border-radius:16px; border:1px solid var(--line); background:var(--bg); }
 .acct-feds{ display:flex; gap:6px; flex-wrap:wrap; }
@@ -441,7 +442,7 @@ permalink: "/account/index.html"
       <div class="acct-view" data-view="auth" hidden>
         <div class="acct-head">
           <h1 class="acct-title">حسابك في عرب راسلنج</h1>
-          <p class="acct-sub">ادخل بحسابك، أو أنشئ حسابًا جديدًا في أقل من دقيقة.</p>
+          <p class="acct-sub">ادخل بحسابك، أو أنشئ حسابًا جديدًا في أقل من دقيقة، واحصل على العلامة الزرقاء.</p>
         </div>
         <div class="acct-tabs" role="tablist">
           <button type="button" role="tab" class="acct-tab is-on" data-tab="in" aria-selected="true">تسجيل الدخول</button>
@@ -538,7 +539,7 @@ permalink: "/account/index.html"
             <p class="acct-me-user" dir="ltr"></p>
             <p class="acct-me-since"></p>
           </div>
-          <span class="acct-badge" title="عضو في عرب راسلنج">عضو</span>
+          <span class="acct-badge" title="حساب موثّق في عرب راسلنج"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>حساب موثّق</span></span>
         </div>
         <div class="acct-verify" hidden>
           <span>أكّد بريدك لتستطيع استرجاع حسابك به.</span>
@@ -601,6 +602,7 @@ permalink: "/account/index.html"
       <img class="acct-perks-logo" src="/assets/brand-logo.png?v=2" alt="" width="54" height="54">
       <h2>العضوية مجانية، وفيها الكثير</h2>
       <ul>
+        <li class="acct-perk-blue"><i aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg></i><span><b>العلامة الزرقاء بجانب اسمك</b>كل عضو يحصل على علامة التوثيق الزرقاء، فيعرف الجميع أن التعليق منك أنت.</span></li>
         <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></i><span><b>إشعار أول ما ينزل عرضك</b>تابِع الرو أو داينامايت أو أي قسم تحبه.</span></li>
         <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg></i><span><b>اسمك محفوظ لك</b>تعلّق باسمك وصورتك، ولا أحد يستطيع أن يكتب باسمك.</span></li>
         <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></i><span><b>مفضلتك معك أينما كنت</b>على الموبايل والكمبيوتر.</span></li>

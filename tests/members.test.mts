@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember } from '../worker/src/members';
+import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember, studioMemberDetail } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
 
 function d1() {
@@ -127,6 +127,14 @@ test('a member comments as themselves (name, picture, badge); no visitor can use
   // the panel sees them; a stopped member is signed out and can't come back
   const panel = await studioMembers(e);
   assert.equal(panel.items[0].comments, 1);
+  // everything about one member, for the panel's members page
+  const one: any = await studioMemberDetail(e, s.body.member.id);
+  assert.equal(one.member.email, 'kareem@example.com');
+  assert.equal(one.member.country, '');
+  assert.equal(one.comments[0].text, 'تعليقي كعضو');
+  assert.equal(one.sessions.length, 1);
+  assert.equal(one.member.hash, undefined);
+  assert.equal((await studioMemberDetail(e, 999)).success, false);
   await studioBanMember(e, s.body.member.id, true);
   assert.equal((await call(e, '/me', undefined, s.body.token)).status, 401);
   assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' })).status, 403);

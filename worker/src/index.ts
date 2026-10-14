@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handleMembers, studioMembers, studioBanMember } from "./members";
+import { handleMembers, studioMembers, studioBanMember, studioMemberDetail } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -3064,6 +3064,12 @@ export default {
       if (path === "/api/studio/members" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف الأعضاء." }, 403);
         return json(await studioMembers(env as any));
+      }
+      const memberDetail = path.match(/^\/api\/studio\/members\/(\d+)$/);
+      if (memberDetail && request.method === "GET") {
+        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف الأعضاء." }, 403);
+        const r = await studioMemberDetail(env as any, memberDetail[1]);
+        return json(r, r.success ? 200 : 404);
       }
       if (path === "/api/studio/members/ban" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك توقف الأعضاء." }, 403);

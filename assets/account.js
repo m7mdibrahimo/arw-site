@@ -144,7 +144,7 @@
   function welcome(code, mailed) {
     var v = $('[data-view="welcome"]');
     $('.acct-code', v).textContent = code;
-    $('.acct-welcome-tx', v).textContent = mailed ? 'تم إنشاء حسابك، وأرسلنا رسالة تأكيد إلى بريدك.' : 'تم إنشاء حسابك.';
+    $('.acct-welcome-tx', v).textContent = mailed ? 'تم إنشاء حسابك وحصلت على العلامة الزرقاء، وأرسلنا رسالة تأكيد إلى بريدك.' : 'تم إنشاء حسابك وحصلت على العلامة الزرقاء.';
     var check = $('.acct-saved', v), go = $('[data-go="profile"]', v);
     check.checked = false; go.disabled = true;
     check.onchange = function () { go.disabled = !check.checked; };

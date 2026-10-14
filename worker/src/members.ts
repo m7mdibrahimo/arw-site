@@ -403,6 +403,23 @@ export async function studioMembers(env: MembersEnv, now = Date.now()) {
   ]) as any[];
   return { success: true, items: rows.results || [], counts: { total: total.results?.[0]?.n || (rows.results || []).length, week: week.results?.[0]?.n || 0, active: active.results?.[0]?.n || 0 } };
 }
+/** One member, everything the panel may know (never the password's hash or the recovery code): their details, their
+ *  comments, the devices they're signed in on */
+export async function studioMemberDetail(env: MembersEnv, id: unknown, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
+  await ensureMembers(db);
+  await ensureComments(db);
+  const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country
+    FROM members WHERE id = ?1`).bind(Number(id) || 0).first<any>();
+  if (!m) return { success: false, error: "العضو ده مش موجود." };
+  const [comments, sessions, hearts] = await db.batch([
+    db.prepare("SELECT id, path, title, text, at, parent, hearted, deleted FROM comments WHERE member = ?1 ORDER BY at DESC LIMIT 200").bind(m.id),
+    db.prepare("SELECT created, expires, ua FROM member_sessions WHERE member = ?1 AND expires > ?2 ORDER BY created DESC LIMIT 20").bind(m.id, now),
+    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE member = ?1 AND hearted = 1 AND deleted = 0").bind(m.id),
+  ]) as any[];
+  return { success: true, member: m, comments: comments.results || [], sessions: sessions.results || [], hearts: hearts.results?.[0]?.n || 0 };
+}
 export async function studioBanMember(env: MembersEnv, id: unknown, on: unknown) {
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
