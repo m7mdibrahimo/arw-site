@@ -2,6 +2,16 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "أمرسترونغ",
+   "right": "أرمسترونغ",
+   "note": "Armstrong اتكتب «أمرسترونغ» (الميم قبل الراء) في خبر «ثلاثة أمور كرهناها» عن إن إكس تي — INCIDENTS #511"
+  },
+  {
+   "wrong": "ليواصلا مغامرتهم",
+   "right": "ليواصلا مغامرتهما",
+   "note": "الفعل مثنى والضمير جمع، في خبر «ثلاثة أمور كرهناها» عن إن إكس تي — INCIDENTS #511"
+  },
+  {
    "wrong": "نزاتين",
    "right": "نزالين",
    "note": "مثنى «نزال» اتكتب «نزاتين» في خبر انتهاء عقد شوتزي بلاك هارت — INCIDENTS #509"
