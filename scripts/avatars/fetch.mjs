@@ -5,7 +5,8 @@
 //   tmp/avatars/list.json. A photo counts only when it is surely of that star (a star's Commons category also holds
 //   photos of the people they fought or stood with; a first run put other wrestlers' faces on stars' names):
 //   - Commons says it depicts the star (structured data, P180) and no more than one other thing, or
-//   - its file name has the star's name, and no one else's («and», «vs», «&», «with»).
+//   - its file name has the star's name, and no one else's («and», «vs», «&», «with»), or
+//   - it's in the star's own category and its description names them (photos named by a code, like the White House's).
 //   Looked for in every file that depicts the star (search), and in the star's category and its «2026» sub-categories.
 //   The date is the one the photo was taken; the upload's only when the file has none (an old photo uploaded in 2026
 //   carries its own date, so it isn't taken for one from 2026).
@@ -74,6 +75,7 @@ async function photos2026(w) {
   const { qid, cat } = await who(w);
   if (!qid && !cat) throw new Error('not found on Wikipedia/Commons');
   const files = new Set();
+  const inCat = new Set();
   if (qid) {
     let off = 0;
     for (let k = 0, tries = 0; k < 3 && tries < 3; k++) {
@@ -89,8 +91,8 @@ async function photos2026(w) {
     const members = async (title) => (await wm(`${API}action=query&list=categorymembers&cmtype=file|subcat&cmsort=timestamp&cmdir=desc&cmlimit=200&cmtitle=${encodeURIComponent(title)}`)).query.categorymembers;
     try {
       for (const m of await members(cat)) {
-        if (m.ns === 6) files.add(m.title);
-        else if (m.ns === 14 && m.title.includes(YEAR)) for (const f of await members(m.title)) if (f.ns === 6) files.add(f.title);
+        if (m.ns === 6) { files.add(m.title); inCat.add(m.title); }
+        else if (m.ns === 14 && m.title.includes(YEAR)) for (const f of await members(m.title)) if (f.ns === 6) { files.add(f.title); inCat.add(f.title); }
       }
     } catch (e) { console.log(`  ${w.slug}: ${cat}: ${e.message}`); }
   }
@@ -107,7 +109,7 @@ async function photos2026(w) {
       const license = strip(m.LicenseShortName && m.LicenseShortName.value);
       const taken = m.DateTimeOriginal ? strip(m.DateTimeOriginal.value) : String(ii.timestamp || '');
       if (!FREE.test(license) || !taken.includes(YEAR)) continue;
-      keep.push({ id: pg.pageid, title: pg.title, url: ii.thumburl || ii.url, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, taken });
+      keep.push({ id: pg.pageid, title: pg.title, about: plain(strip(m.ImageDescription && m.ImageDescription.value)), url: ii.thumburl || ii.url, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, taken });
     }
     if (!keep.length) continue;
     // who's in it: Commons' «depicts»
@@ -118,7 +120,8 @@ async function photos2026(w) {
       const name = plain(k.title.replace(/^File:/, '').replace(/\.\w+$/, ''));
       const byDepicts = qid && ids.includes(qid) && ids.length <= 2;
       const byName = names(w).some((n) => ` ${name} `.includes(` ${n} `)) && !OTHERS.test(k.title.replace(/^File:/, '')) && ids.filter((x) => x !== qid).length <= 1;
-      if (byDepicts || byName) found.push({ ...k, why: byDepicts ? 'depicts' : 'name' });
+      const byAbout = inCat.has(k.title) && names(w).some((n) => ` ${k.about} `.includes(` ${n} `));
+      if (byDepicts || byName || byAbout) found.push({ ...k, why: byDepicts ? 'depicts' : byName ? 'name' : 'description' });
     }
   }
   found.sort((a, b) => String(b.taken).localeCompare(String(a.taken)));

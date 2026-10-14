@@ -39,7 +39,7 @@ def main_face(found, size):
     if not good:
         return None
     first = max(good, key=lambda f: f[2])
-    if first[4] < 0.85 or first[2] < min(size) * 0.06 or first[2] < 56:
+    if first[4] < 0.85 or first[2] < min(size) * 0.06 or first[2] < 64:
         return None
     if any(g is not first and g[2] >= first[2] * 0.6 for g in good):
         return None
@@ -54,14 +54,14 @@ def load(path):
 
 
 def frame(img, f):
-    """The square round the face: the face half its width (a belt on the shoulder stays out), its centre a little above the middle; kept inside
+    """The square round the face: the face and hair only, as the owner asked («تقصها علي وشهم بالظبط»: no belt, no shoulders), its centre a little above the middle; kept inside
     the photo (moved, then made smaller when the photo is too tight)"""
     x, y, w, h = f[:4]
-    side = max(w, h) * 2.0
+    side = max(w, h) * 1.6
     side = min(side, img.size[0], img.size[1])
-    cx, cy = x + w / 2, y + h / 2 + h * 0.08
+    cx, cy = x + w / 2, y + h * 0.45
     left = min(max(0, cx - side / 2), img.size[0] - side)
-    top = min(max(0, cy - side * 0.46), img.size[1] - side)
+    top = min(max(0, cy - side * 0.5), img.size[1] - side)
     return img.crop((round(left), round(top), round(left + side), round(top + side))).resize((SIZE, SIZE), Image.LANCZOS)
 
 
