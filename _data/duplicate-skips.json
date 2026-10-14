@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/tony-khan-announces-pac-tribute-show-september-30-aew-dynamite/": {
-    "matchedFile": "20260929002144-عرض-aew-dynamite-يخصص-لتقديم-تكريم-خاص-للمصارع-باك.md",
-    "reason": "الخبر الجديد يتناول نفس الإعلان الرسمي من توني خان بشأن تخصيص عرض AEW Dynamite لتكريم المصارع باك، وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-09-29T01:26:19.925Z"
-  },
   "https://www.ringsidenews.com/tony-khan-says-wrestlers-have-choice-about-performing-pacs-death/": {
     "matchedFile": "20260929002144-عرض-aew-dynamite-يخصص-لتقديم-تكريم-خاص-للمصارع-باك.md",
     "reason": "الخبر الجديد يكرر تصريحات توني خان حول طوعية مشاركة المصارعين في العروض تكريماً لباك، وهي معلومة تم ذكرها بالفعل في الخبر رقم 1.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261013235942-لماذا-تعاقد-اتحاد-wwe-مع-نيكرو-بوتشر-ضمن-عقود-الأساطير.md",
     "reason": "الخبر الجديد يكرر نفس تفاصيل تعاقد WWE مع Necro Butcher ضمن عقود الأساطير وإضافته لألعاب الفيديو بناءً على توصية نيك خان وتأثرًا برد الفعل على New Jack.",
     "at": "2026-10-14T13:33:05.152Z"
+  },
+  "https://www.fightful.com/uncategorized/netlfix-edits-la-knights-middle-finger-out-of-wwe-money-in-the-bank-2026-replay/": {
+    "matchedFile": "20261014155527-منصة-نتفليكس-تحذف-حركة-ال-ايه-نايت-الموجهة-لرومان-رينز-في-إعادة-عرض-wwe-موني-إن-ذا-بانك.md",
+    "reason": "الخبر الجديد يغطي نفس الواقعة בדיוק وهي قيام منصة نتفليكس بحذف حركة LA Knight الموجهة لرومان رينز خلال إعادة عرض Money In The Bank، وهو نفس الخبر المنشور مسبقاً برقم 0.",
+    "at": "2026-10-14T14:04:19.507Z"
   }
 }
