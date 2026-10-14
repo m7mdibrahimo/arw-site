@@ -710,7 +710,8 @@
       '<a href="/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
       '<a href="/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
       '<a class="more-tg" href="https://t.me/arab_wrestling" target="_blank" rel="noopener">' + ICONS.tg + 'قناة التليجرام</a>' +
-      '<a class="more-support" href="/support/" style="grid-column:1/-1; justify-content:center;">' + ICONS.heart + 'ادعم الموقع</a>' +
+      // «العضوية المميزة» (pages/premium.njk) took «ادعم الموقع»'s place; hidden for a member who has it
+      '<a class="more-support premium-btn" href="/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
       '</div>';
     sheet.querySelector('.arw-more-acct b').textContent = mem ? (mem.display || mem.username) : 'حسابك في عرب راسلنج';
     sheet.querySelector('.arw-more-acct small').textContent = mem ? 'صفحتك وإعداداتك' : 'ادخل أو أنشئ حسابًا مجانيًا';
@@ -798,6 +799,33 @@
     util.insertBefore(a, util.querySelector('.bookmarks-btn') || util.firstChild);
   }
 
+  // a member who already has «العضوية المميزة» (or the site's own account) doesn't see the button for it
+  // «العضوية المميزة» leaves the header once the member has it. What the browser knows is read again from the worker
+  // every 20 minutes, so a membership paid for on another device (or one that ended) shows here too.
+  function initPremiumButton() {
+    function apply(m) {
+      var on = !!(m && (m.official || Number(m.premium) > Date.now()));
+      var st = document.getElementById('arw-prem-hide');
+      if (on && !st) { st = document.createElement('style'); st.id = 'arw-prem-hide'; st.textContent = '.premium-btn{display:none !important}'; document.head.appendChild(st); }
+      else if (!on && st) st.remove();
+    }
+    apply(memberNow());
+    var s = null, at = 0;
+    try { s = JSON.parse(localStorage.getItem('arw-member') || 'null'); at = Number(localStorage.getItem('arw-member-at')) || 0; } catch (e) {}
+    if (!s || !s.token || Date.now() - at < 20 * 60000) return;
+    try { localStorage.setItem('arw-member-at', String(Date.now())); } catch (e) {}
+    fetch('https://arw-site-bot.m7mdibrahimpc.workers.dev/members/me', { headers: { Authorization: 'Bearer ' + s.token }, credentials: 'omit' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok || !d.member) return;
+        var cur = JSON.parse(localStorage.getItem('arw-member') || 'null');
+        if (!cur || cur.token !== s.token) return;
+        cur.member = d.member;
+        localStorage.setItem('arw-member', JSON.stringify(cur));
+        apply(d.member);
+      }).catch(function () {});
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
@@ -805,6 +833,7 @@
     initMobileChrome();
     initCommentReplies();
     initAccountButton();
+    initPremiumButton();
   }
 
   if (document.readyState === 'loading') {

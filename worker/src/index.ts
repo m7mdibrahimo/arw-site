@@ -35,6 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia } from "./premium";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, chatKick } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember } from "./members";
@@ -100,6 +101,10 @@ export interface Env {
   ANALYTICS?: D1Database;
   /** «مجتمع المصارعة»: a Durable Object per chat room (worker/src/chat.ts, wrangler.toml [[durable_objects.bindings]]) */
   CHAT?: DurableObjectNamespace;
+  /** «العضوية المميزة» (worker/src/premium.ts): Fawaterk's API key (invoices, and asking whether one was paid) and its
+   *  vendor key (the webhook's hashKey). Set by the owner in Cloudflare; without them the fixed payment links are used. */
+  FAWATERK_API_KEY?: string;
+  FAWATERK_VENDOR_KEY?: string;
 }
 
 const GRAPH_API_VERSION = "v21.0";
@@ -3065,6 +3070,32 @@ export default {
       if (path === "/comments" || path.startsWith("/comments/")) return handleComments(request, env as any, url);
       // The site's members: sign-up with a captcha, sign-in, profile, recovery (worker/src/members.ts)
       if (path === "/members" || path.startsWith("/members/")) return handleMembers(request, env as any, url);
+      // «العضوية المميزة»: Fawaterk checkout, its webhook, the member's requests (worker/src/premium.ts)
+      if (path.startsWith("/premium/")) return handlePremium(request, env as any, url);
+      // a show's premium links, from its editor (whoever may edit that section)
+      if (path === "/api/studio/premium/media") {
+        const k = request.method === "POST" ? null : url.searchParams.get("k");
+        const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : null;
+        const key = String((body && body.k) || k || "");
+        const sec = key.split("/")[0];
+        if (!["shows", "recaps", "nostalgia"].includes(sec) || !(await studioAuthorized(request, env, `${sec}.edit`))) return json({ success: false, denied: true, error: "مش مسموحلك تعدّل روابط المميزين." }, 403);
+        const r = await studioPremiumMedia(env as any, key, body);
+        return json(r, r.success ? 200 : 400);
+      }
+      if (path.startsWith("/api/studio/premium")) {
+        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف العضوية المميزة." }, 403);
+        const who = await studioUser(request, env as any);
+        if (path === "/api/studio/premium" && request.method === "GET") return json(await studioPremium(env as any));
+        const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
+        if (path === "/api/studio/premium/grant" && request.method === "POST") {
+          if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
+          const r = await studioPremiumGrant(env as any, body.id, body.days, who.user.username);
+          if (r.success) await studioAudit(env as any, who.user, Number(body.days) > 0 ? "premium.grant" : "premium.revoke", { id: Number(body.id) || 0, days: Number(body.days) || 0 }).catch(() => {});
+          return json(r, r.success ? 200 : 400);
+        }
+        if (path === "/api/studio/premium/request" && request.method === "POST") { const r = await studioPremiumRequest(env as any, body); return json(r, r.success ? 200 : 400); }
+        return json({ success: false, error: "not found" }, 404);
+      }
       // «مجتمع المصارعة»: a chat room per promotion, members only (worker/src/chat.ts)
       if (path.startsWith("/chat/")) return handleChat(request, env as any, url);
       if (path.startsWith("/api/studio/chat")) {

@@ -52,6 +52,9 @@ export function ensureMembers(db: D1Database): Promise<unknown> {
     // the blue badge: every member gets it, the owner can take it away or give it back (owner 2026-10-14: «ادي العلامة
     // الزرقاء التوثيق لاي حد او اشيله من عند اي حد»)
     .then(() => db.prepare("ALTER TABLE members ADD COLUMN badge INTEGER NOT NULL DEFAULT 1").run().catch(() => null))
+    // «العضوية المميزة» (worker/src/premium.ts): until when, and since when
+    .then(() => db.prepare("ALTER TABLE members ADD COLUMN premium_until INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
+    .then(() => db.prepare("ALTER TABLE members ADD COLUMN premium_since INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
     .catch((e) => { ready.delete(db); throw e; }));
   return p;
 }
@@ -86,9 +89,12 @@ export function passwordProblem(p: string, username = ""): string | null {
 export const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[A-Za-z]{2,24}$/;
 const ukeyOf = (u: string) => u.normalize("NFKC").toLowerCase();
 
-type Member = { id: number; username: string; email: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number; official?: number; badge?: number };
+type Member = { id: number; username: string; email: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number; official?: number; badge?: number; premium_until?: number };
 /** What the member's own pages see (never the hashes) */
-const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created, official: !!m.official, blue: !m.official && m.badge !== 0 });
+const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created, official: !!m.official,
+  // a premium member has the blue badge while it lasts (owner 2026-10-14: «هياخد علامة التوثيق الزرقاء»)
+  // the site's own account has every privilege, premium included, always (owner 2026-10-14: «ليا عضويتي ليها كل الامتيازات»)
+  premium: m.official ? 4102444800000 : Number(m.premium_until) > Date.now() ? Number(m.premium_until) : 0, blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()) });
 
 // ── rate limits (KV counters with their own expiry) ───────────────────────────
 async function tooMany(kv: KVNamespace, key: string, max: number, _windowSec: number): Promise<boolean> {
@@ -365,11 +371,11 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path.startsWith("/u/") && request.method === "GET") {
     const u = decodeURIComponent(path.slice(3)).trim();
-    const m = await db.prepare("SELECT id, username, display, pic, fav_fed, fav_star, bio, created, official, badge FROM members WHERE ukey = ?1 AND banned = 0").bind(ukeyOf(u)).first<any>();
+    const m = await db.prepare("SELECT id, username, display, pic, fav_fed, fav_star, bio, created, official, badge, premium_until FROM members WHERE ukey = ?1 AND banned = 0").bind(ukeyOf(u)).first<any>();
     if (!m) return reply({ ok: false, error: "لا يوجد عضو بهذا الاسم." }, 404);
     await ensureComments(db);
     const c = await db.prepare("SELECT COUNT(*) AS n FROM comments WHERE member = ?1 AND deleted = 0").bind(m.id).first<{ n: number }>();
-    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, blue: !m.official && m.badge !== 0, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
+    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, premium: Number(m.premium_until) > Date.now(), blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()), fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
   }
 
   // ── the member's own ──
@@ -440,7 +446,7 @@ export async function studioMembers(env: MembersEnv, now = Date.now()) {
   await ensureMembers(db);
   await ensureComments(db);
   const [rows, total, week, active] = await db.batch([
-    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge,
+    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge, m.premium_until,
       (SELECT COUNT(*) FROM comments c WHERE c.member = m.id AND c.deleted = 0) AS comments FROM members m ORDER BY m.created DESC LIMIT 2000`),
     db.prepare("SELECT COUNT(*) AS n FROM members"),
     db.prepare("SELECT COUNT(*) AS n FROM members WHERE created > ?1").bind(now - 7 * DAY),
@@ -455,7 +461,7 @@ export async function studioMemberDetail(env: MembersEnv, id: unknown, now = Dat
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
   await ensureMembers(db);
   await ensureComments(db);
-  const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country, official, badge
+  const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country, official, badge, premium_until, premium_since
     FROM members WHERE id = ?1`).bind(Number(id) || 0).first<any>();
   if (!m) return { success: false, error: "العضو ده مش موجود." };
   const [comments, sessions, hearts] = await db.batch([

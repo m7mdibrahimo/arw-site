@@ -897,3 +897,30 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .cy-mute-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .cy-mute-opts label { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: var(--cream); font-weight: 800; cursor: pointer; }
 @media (max-width: 720px) { .cy-item { grid-template-columns: 36px minmax(0, 1fr); } .cy-item .cm-actions { grid-column: 1 / -1; justify-content: flex-start; } .cy-item.is-report { grid-template-columns: 1fr; } }
+
+/* «العضوية المميزة» (studio/js/views/premium.js) */
+.pr-btn { background: linear-gradient(135deg, #ffd25a, #e09a12); color: #3b2600; }
+.pr-btn svg { width: 16px; height: 16px; }
+.mb-head-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.pr-tag { display: inline-flex; align-items: center; gap: 3px; }
+.pr-tag svg { width: 11px; height: 11px; }
+.pr-alert { display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; border-radius: 18px; background: var(--yellow-soft); line-height: 1.8; }
+.pr-alert > svg { flex: none; width: 22px; height: 22px; color: var(--amber); margin-top: 3px; }
+.pr-req.is-done, .pr-req.is-declined { opacity: .7; }
+.pr-req-text { font-weight: 700; }
+.pr-states { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pr-states label { cursor: pointer; }
+.pr-states input { position: absolute; opacity: 0; pointer-events: none; }
+.pr-states span { display: inline-flex; padding: 4px 12px; border-radius: 999px; background: var(--cream); font-weight: 800; font-size: 12.5px; color: var(--muted); }
+.pr-states input:checked + span { background: var(--ink); color: var(--on-ink); }
+.pr-req-edit { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; margin-top: 8px; }
+.pr-req-edit .input { height: 40px; font-size: 13.5px; }
+.pr-amt { font-weight: 900; color: var(--green); white-space: nowrap; }
+.pr-pay { grid-template-columns: minmax(0, 1fr) auto; }
+@media (max-width: 720px) { .pr-req-edit { grid-template-columns: 1fr; } }
+.pr-field textarea { font-size: 13px; }
+.pr-hint { display: flex; gap: 8px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: var(--yellow-soft); line-height: 1.8; }
+.pr-hint > svg { flex: none; width: 18px; height: 18px; margin-top: 4px; color: var(--amber); }
+.pr-state { color: var(--teal); font-weight: 700; }
+.pr-early { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; padding: 12px; border: 1px dashed var(--line); border-radius: 14px; }
+.pr-early-btns { display: flex; flex-wrap: wrap; gap: 6px; }

@@ -7,6 +7,7 @@ import { renderDashboard } from './views/dashboard.js';
 import { renderComments, refreshNew } from './views/comments.js';
 import { renderSiteMembers, renderSiteMember } from './views/site-members.js';
 import { renderCommunity } from './views/community.js';
+import { renderPremium } from './views/premium.js';
 import { renderList } from './views/list.js';
 import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js';
 import { setupBell } from './notify.js';
@@ -195,6 +196,7 @@ async function route() {
     if (parts[0] === 'new' && COLLECTIONS[parts[1]]) return can(user, `${sec(parts[1])}.create`) ? await renderEditor(page, parts[1], null, { from: parts[2] || null }) : noAccess();
     if (parts[0] === 'edit' && COLLECTIONS[parts[1]] && parts[2]) return can(user, `${sec(parts[1])}.view`) ? await renderEditor(page, parts[1], parts.slice(2).join('/')) : noAccess();
     if (parts[0] === 'comments') return can(user, 'comments') ? await renderComments(page) : noAccess();
+    if (parts[0] === 'premium') return can(user, 'members') ? await renderPremium(page) : noAccess();
     if (parts[0] === 'community') return can(user, 'community') ? await renderCommunity(page) : noAccess();
     if (parts[0] === 'site-members') return can(user, 'members') ? await (parts[1] ? renderSiteMember(page, parts[1]) : renderSiteMembers(page)) : noAccess();
     if (parts[0] === 'settings') return await renderSettings(page);

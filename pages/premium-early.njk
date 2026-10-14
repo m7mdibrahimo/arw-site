@@ -1,0 +1,15 @@
+---
+permalink: "/premium/early.json"
+eleventyExcludeFromCollections: true
+---
+{#- «متاح الآن قبل الجميع» on /premium/ (owner 2026-10-14): shows, recaps and nostalgia dated later. Names and pictures
+    only: their links are not in their pages until their time (_includes/post-layout.njk, assets/premium.js). -#}
+{%- set sep = joiner(",") -%}
+[
+{%- for item in collections.all -%}
+{%- if (item.inputPath | contentKey) and item.data.servers and item.data.servers.length and (item.date | isFuture) -%}
+{{ sep() }}
+{ "t": {{ (item.data.headline or item.data.title or "") | jsonify | safe }}, "u": {{ (item.url | cleanUrl) | jsonify | safe }}, "img": {{ (item.data.image | miniOf) | jsonify | safe }}, "pub": {{ item.date.getTime() }} }
+{%- endif -%}
+{%- endfor %}
+]

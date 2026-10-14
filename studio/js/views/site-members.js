@@ -15,6 +15,8 @@ const date = (ms) => new Date(ms).toLocaleDateString('ar-EG-u-nu-latn', { day: '
 const BLUE = '<svg class="mb-blue" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
 const GOLD = '<svg class="mb-blue mb-gold" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><defs><linearGradient id="arwGoldM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd25a"/><stop offset="1" stop-color="#e09a12"/></linearGradient></defs><path fill="url(#arwGoldM)" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
 const OFFICIAL_NAME = 'عرب راسلنج';
+const CROWN = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
+const isPrem = (m) => Number(m.premium_until) > Date.now();
 /** A member as the site shows them: the site's own account is «عرب راسلنج», its logo and the gold badge */
 const shownName = (m) => (m.official ? OFFICIAL_NAME : m.display || m.username);
 const badgeOf = (m) => raw(m.official ? GOLD : m.badge === 0 ? '' : BLUE);
@@ -54,7 +56,7 @@ function row(m) {
     <a class="mb-open" href="#/site-members/${m.id}" aria-label="تفاصيل ${shownName(m)}"></a>
     <span class="cm-av" style="--c:${colorOf(shownName(m))}" aria-hidden="true">${picSrc(pic) ? html`<img src="${picSrc(pic)}" alt="" loading="lazy">` : initial(shownName(m))}</span>
     <div class="mb-main">
-      <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${m.official ? '' : m.verified ? html`<em class="mb-ok" title="فعّل حسابه من بريده">${icon('check')}متفعّل</em>` : html`<em class="mb-wait" title="لسه مضغطش رابط التفعيل اللي في بريده">مش متفعّل</em>`}</div>
+      <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${isPrem(m) ? html`<em class="mb-gold-tag pr-tag">${raw(CROWN)}مميز</em>` : ''}${m.official ? '' : m.verified ? html`<em class="mb-ok" title="فعّل حسابه من بريده">${icon('check')}متفعّل</em>` : html`<em class="mb-wait" title="لسه مضغطش رابط التفعيل اللي في بريده">مش متفعّل</em>`}</div>
       <div class="mb-facts">
         <span dir="ltr">${m.email}</span>
         <span>انضم ${date(m.created)}</span>
@@ -80,7 +82,7 @@ export async function renderSiteMembers(page) {
       <div class="page-title">
         <div><h1>الأعضاء</h1>
           <p class="muted">كل اللي عملوا حساب على الموقع · العضو بيعلّق باسمه وصورته · العلامة الزرقاء إنت اللي بتديها · دوس على أي عضو تشوف كل تفاصيله</p></div>
-        <button class="btn" id="mb-export">${icon('download')}تصدير Excel</button>
+        <div class="mb-head-btns"><a class="btn pr-btn" href="#/premium">${raw(CROWN)}العضوية المميزة</a><button class="btn" id="mb-export">${icon('download')}تصدير Excel</button></div>
       </div>
       ${getUser()?.role === 'owner' ? html`<section class="card mb-off" id="mb-off"></section>` : ''}
       <div class="cm-stats">
@@ -155,7 +157,7 @@ export async function renderSiteMember(page, id) {
           <p class="muted"><span dir="ltr">@${m.username}</span></p>
           <p>${m.official ? html`<em class="mb-gold-tag">الحساب الرسمي للموقع</em>` : m.banned ? html`<em class="mb-flag">موقوف</em>` : html`<em class="mb-ok">${icon('check')}حساب شغال</em>`}</p>
         </div>
-        ${m.official ? '' : html`<div class="mb-card-acts">${badgeBtn(m, '')}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
+        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<button class="btn pr-btn" data-prem="30">${raw(CROWN)}${isPrem(m) ? 'زوّد شهر مميز' : 'ادّيله شهر مميز'}</button>${isPrem(m) ? html`<button class="btn btn-ghost" data-prem="0">شيل العضوية المميزة</button>` : ''}` : ''}${badgeBtn(m, '')}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
       </section>
       <div class="mb-facts-grid">
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}
@@ -168,6 +170,7 @@ export async function renderSiteMember(page, id) {
         ${fact('النجم المفضل', m.fav_star)}
         ${fact('التعليقات', num(d.comments.filter(c => !c.deleted).length))}
         ${fact('قلوب من الموقع', num(d.hearts || 0))}
+        ${m.official ? '' : fact('العضوية المميزة', isPrem(m) ? `لحد ${dateTime(m.premium_until)}` : 'مش مشترك')}
       </div>
       ${m.bio ? html`<section class="panel mb-sec"><h2>النبذة</h2><p>${m.bio}</p></section>` : ''}
       <section class="panel mb-sec"><h2>الأجهزة اللي داخل منها (${num(d.sessions.length)})</h2>
@@ -179,6 +182,12 @@ export async function renderSiteMember(page, id) {
           : html`<p class="muted">لسه ماعلّقش.</p>`}
       </section>
     </div>`);
+  $$('[data-prem]', page).forEach(b => b.onclick = async () => {
+    const days = Number(b.dataset.prem);
+    const ok = await dialog({ title: days ? `عضوية مميزة لـ ${name}` : `شيل العضوية المميزة من ${name}`, body: html`<p class="muted small">${days ? 'هيتزوّد 30 يوم على عضويته (لو مشترك، بتتزوّد على اللي فاضل). استخدمها لو دفع قبل ما الدفع التلقائي يتوصّل، أو هدية.' : 'العضوية هتخلص دلوقتي.'}</p>`, confirm: days ? 'فعّلها' : 'شيلها', danger: !days });
+    if (!ok) return;
+    try { await api.premiumGrant(m.id, days); toast(days ? 'اتفعّلت ✓' : 'اتشالت ✓'); renderSiteMember(page, id); } catch (e) { toast(e.message, 'error'); }
+  });
   const vb = $('#mb-verify', page);
   if (vb) vb.onclick = async () => {
     const ok = await dialog({ title: `تفعيل حساب ${name}`, body: html`<p class="muted small">الحساب هيتفتح من غير ما يضغط رابط التفعيل اللي في بريده. استخدمها لو الرسالة موصلتلوش.</p>`, confirm: 'فعّله' });

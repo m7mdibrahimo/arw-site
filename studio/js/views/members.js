@@ -38,6 +38,7 @@ const ACTION_TEXT = {
   'comments.delete': 'حذف تعليقات زوار',
   'comments.reply': 'رد على تعليق باسم الموقع',
   'members.ban': 'وقّف عضو في الموقع', 'members.unban': 'رجّع عضو في الموقع',
+  'premium.grant': 'فعّل عضوية مميزة بإيده', 'premium.revoke': 'شال عضوية مميزة',
   'community.delete': 'مسح رسالة في المجتمع', 'community.mute': 'وقّف عضو عن الكتابة في المجتمع', 'community.unmute': 'رجّع عضو يكتب في المجتمع',
   'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو العلامة الزرقاء', 'members.unbadge': 'شال العلامة الزرقاء من عضو', 'members.official': 'عدّل الحساب الرسمي على الموقع',
 };

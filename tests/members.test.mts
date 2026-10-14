@@ -111,6 +111,7 @@ test('the profile: a name to show, a picture from the stars, a favourite promoti
 test('a member comments as themselves (name, picture, badge); no visitor can use their name; a stopped member can\'t sign in', async () => {
   const e = env();
   e.MEDIA = null;
+  e.COMMENTS_OPEN = '1'; // visitors' comments, for the impersonation check
   const s = await signup(e);
   await call(e, '/profile', { display: 'كريم', pic: 'w:cm-punk' }, s.body.token);
   const STORY = '/news/خبر/';
@@ -263,4 +264,29 @@ test('the blue badge: a new member starts without it; the owner gives it and tak
   const off: any = await studioOfficialAccount(e, { username: 'ArabWrestling', email: 'contact@arab-wrestling.com', password: 'ringside2026' });
   assert.equal((await studioBadgeMember(e, off.account.id, true)).success, false);
   assert.equal((await studioBadgeMember(e, 999, true)).success, false);
+});
+
+test('comments are the members\' only; the site\'s own account hearts or removes any comment from the page', async () => {
+  const e = env();
+  e.MEDIA = null;
+  const STORY = '/news/خبر/';
+  const headers = { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json' };
+  const post = (body: any, token = '') => handleComments(new Request('https://w.example/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', name: 'زائر', ...body }), headers: { ...headers, ...(token ? { Authorization: `Bearer ${token}` } : {}) } }), e, new URL('https://w.example/comments')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
+  const v = await post({ text: 'تعليق زائر' });
+  assert.equal(v.status, 401);
+  assert.equal(v.body.signedOut, true);
+  const s = await signup(e);
+  const c = await post({ text: 'تعليق عضو' }, s.body.token);
+  assert.equal(c.status, 200);
+  const mod = (body: any, token: string) => handleComments(new Request('https://w.example/comments/mod', { method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }), e, new URL('https://w.example/comments/mod')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
+  // a member can't
+  assert.equal((await mod({ op: 'delete', id: c.body.id }, s.body.token)).status, 403);
+  await studioOfficialAccount(e, { username: 'ArabWrestling', email: 'contact@arab-wrestling.com', password: 'ringside2026' });
+  const off = await call(e, '/login', { login: 'arabwrestling', password: 'ringside2026' }, '', '8.8.4.4');
+  assert.equal(off.body.member.premium > Date.now(), true); // every privilege, premium included
+  assert.equal((await mod({ op: 'heart', id: c.body.id }, off.body.token)).body.ok, true);
+  const list = async () => (await handleComments(new Request(`https://w.example/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w.example/comments?p=${encodeURIComponent(STORY)}`)).then((x) => x.json() as any)).items;
+  assert.equal((await list())[0].hearted, true);
+  assert.equal((await mod({ op: 'delete', id: c.body.id }, off.body.token)).body.ok, true);
+  assert.equal((await list()).length, 0);
 });

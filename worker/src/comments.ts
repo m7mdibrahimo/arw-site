@@ -27,7 +27,9 @@ import { BOT_UA, cairo, fromSite, pagePath } from "./analytics";
 import { notifyOwner, ownerOf, savePush, validEndpoint, vapidKeys } from "./comment-push";
 import { ensureMembers, memberOf } from "./members";
 
-export interface CommentsEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket }
+export interface CommentsEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket;
+  /** "1": visitors may comment too. Comments are the members' only (owner 2026-10-14: «التعليق … لازم يكون مسجل في الموقع فقط») */
+  COMMENTS_OPEN?: string }
 
 export const PIC_ORIGIN = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
@@ -90,8 +92,8 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string; mname?: string; mbadge?: number };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "", blue: !!r.mname && !r.official && r.mbadge !== 0 });
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string; mname?: string; mbadge?: number; mprem?: number };
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "", blue: !!r.mname && !r.official && (r.mbadge !== 0 || Number(r.mprem) > Date.now()), prem: !!r.mname && !r.official && Number(r.mprem) > Date.now() });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -105,6 +107,16 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   // the push: the site's public key, and a browser's address for a visitor
   if (url.pathname === "/comments/push-key" && request.method === "GET") {
     return reply({ key: (await vapidKeys(env.PUSH_KV)).pub }, 200, { "Cache-Control": "public, max-age=3600" });
+  }
+  // the site's own account, signed in on the site, does on the page what the panel does: a heart, or the comment gone
+  // (owner 2026-10-14: «ليا الصلاحية اني اعمل اي حاجة بعضويتي سواء في الموقع او في اللوحة»)
+  if (url.pathname === "/comments/mod" && request.method === "POST") {
+    const m: any = await memberOf(request, env as any, now);
+    if (!m?.official) return reply({ ok: false, error: "هذا لحساب الموقع الرسمي فقط." }, 403);
+    const b: any = await request.json().catch(() => ({}));
+    if (b.op === "delete") return reply({ ok: (await studioDeleteComments(env, [b.id])) > 0 });
+    if (b.op === "heart" || b.op === "unheart") { const r: any = await studioHeartComment(env, b.id, b.op === "heart", now); return reply({ ok: !!r.success, error: r.error }); }
+    return reply({ ok: false, error: "not found" }, 404);
   }
   if (url.pathname === "/comments/push" && request.method === "POST") {
     const b: any = await request.json().catch(() => ({}));
@@ -150,7 +162,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     if (!path) return reply({ items: [] });
     // a member's comment: their username too, for the «عضو» badge and the link to their page
     await ensureMembers(db);
-    const rows = await db.prepare(`SELECT c.id, c.name, c.text, c.pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname, m.badge AS mbadge
+    const rows = await db.prepare(`SELECT c.id, c.name, c.text, c.pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname, m.badge AS mbadge, m.premium_until AS mprem
       FROM comments c LEFT JOIN members m ON m.id = c.member AND c.member > 0 WHERE c.path = ?1 AND c.deleted = 0 ORDER BY c.at DESC LIMIT 400`).bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }
@@ -169,6 +181,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (String(b.website || "") !== "" || !(Number(b.t) >= 2000)) return reply({ ok: true, id: 0, status: "published" });
   // a member comments as themselves: their name and picture, kept with their account
   const member = await memberOf(request, env as any, now);
+  if (!member && env.COMMENTS_OPEN !== "1") return reply({ ok: false, signedOut: true, error: "التعليق للأعضاء فقط. سجّل دخولك أو أنشئ حسابًا مجانيًا لتعلّق." }, 401);
   // the site's own account, signed in on the site: its comments are the site's, as the panel's replies (official = 1)
   const official = !!(member as any)?.official;
   const name = official ? OFFICIAL_NAME : member ? (member.display || member.username) : cleanText(b.name, 40);
@@ -228,7 +241,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   }
   // whoever wrote what this answers is told (not someone answering themselves)
   if (target?.owner && target.owner !== owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
-  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official, blue: !!member && !official && (member as any).badge !== 0 });
+  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official, blue: !!member && !official && ((member as any).badge !== 0 || Number((member as any).premium_until) > now), prem: !!member && !official && Number((member as any).premium_until) > now });
 }
 
 // ── the panel ──────────────────────────────────────────────────────────────

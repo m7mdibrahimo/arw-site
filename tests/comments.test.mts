@@ -27,7 +27,7 @@ const get = (env: any, p: string) => handleComments(new Request(`https://w.examp
 const STORY = '/news/سيث-رولينز-يتحدث/';
 
 test('a comment is on the page at once, newest first, with its picture', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   assert.equal((await post(env, { p: STORY, name: 'أحمد', text: 'كلام مؤثر جدًا.', pic: 'w:cody-rhodes', title: 'سيث رولينز يتحدث' })).body.status, 'published');
   await post(env, { p: STORY, name: '  محمود   الشريف ', text: 'سطر أول\n\n\n\nسطر ثاني' }, { ...PERSON, 'CF-Connecting-IP': '41.9.9.9' });
   const { items } = await get(env, STORY);
@@ -39,7 +39,7 @@ test('a comment is on the page at once, newest first, with its picture', async (
 });
 
 test('a visitor\'s own picture is kept apart and served by the worker', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const png = Buffer.alloc(600, 7).toString('base64');
   const r = await post(env, { p: STORY, name: 'سارة', text: 'صورة', pic: `data:image/webp;base64,${png}` });
   assert.match(r.body.pic, /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/);
@@ -54,7 +54,7 @@ test('a visitor\'s own picture is kept apart and served by the worker', async ()
 });
 
 test('the guards: bots, other sites, links, the hidden field, too fast, too many, twice', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   assert.equal((await post(env, { p: STORY, name: 'بوت', text: 'x x' }, { ...PERSON, 'User-Agent': 'curl/8.5' })).status, 403);
   assert.equal((await post(env, { p: STORY, name: 'آخر', text: 'x x' }, { ...PERSON, Origin: 'https://spam.example' })).status, 403);
   assert.equal((await post(env, { p: STORY, name: 'سبام', text: 'ادخل على www.casino.com الآن' })).status, 400);
@@ -74,7 +74,7 @@ test('the guards: bots, other sites, links, the hidden field, too fast, too many
 });
 
 test('the panel: every comment with its counts, delete takes it off the site and its picture with it, the bell hears of it', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const png = Buffer.alloc(600, 7).toString('base64');
   const a = await post(env, { p: STORY, name: 'أحمد', text: 'أول', title: 'سيث رولينز يتحدث', pic: `data:image/webp;base64,${png}` });
   await post(env, { p: '/shows/wwe-raw-12-10-2026/', name: 'يوسف', text: 'عرض رائع' }, { ...PERSON, 'CF-Connecting-IP': '7.7.7.7' });
@@ -109,7 +109,7 @@ test('the table is made once, and only once', async () => {
 });
 
 test('the site answers as «عرب راسلنج»: under the comment, never counted, never in the bell, gone with the comment', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const c = await post(env, { p: STORY, name: 'يوسف', text: 'إمتى الملخص؟', title: 'خبر' });
   const r = await studioReplyComment(env, c.body.id, 'خلال ساعة إن شاء الله');
   assert.equal(r.success, true);
@@ -130,7 +130,7 @@ test('the site answers as «عرب راسلنج»: under the comment, never coun
 });
 
 test('no visitor can comment as the site', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   for (const [i, name] of ['عرب راسلنج', 'عـرب رسلنج', 'Arab Wrestling', 'ARAB-WRESTLING'].entries()) {
     assert.equal((await post(env, { p: STORY, name, text: `تعليق ${i}` }, { ...PERSON, 'CF-Connecting-IP': `9.9.9.${i}` })).status, 400, name);
   }
@@ -138,7 +138,7 @@ test('no visitor can comment as the site', async () => {
 });
 
 test('the site\'s heart on a comment shows on the page, comes off again, and never goes on its own reply', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const c = await post(env, { p: STORY, name: 'يوسف', text: 'تحليل ممتاز', title: 'خبر' });
   assert.equal((await get(env, STORY)).items[0].hearted, false);
   assert.equal((await studioHeartComment(env, c.body.id, true)).success, true);
@@ -152,7 +152,7 @@ test('the site\'s heart on a comment shows on the page, comes off again, and nev
 });
 
 test('the panel sees who commented from where (address and country); the page never does', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   await post(env, { p: STORY, name: 'سارة', text: 'تعليق' }, { ...PERSON, 'CF-Connecting-IP': '197.32.10.5' });
   const s = await studioComments(env);
   assert.equal(s.items[0].ip, '197.32.10.5');
@@ -165,7 +165,7 @@ const inbox = (env: any, k: string, since = 0) => handleComments(new Request('ht
 const KEY_A = 'a'.repeat(32), KEY_B = 'b'.repeat(32);
 
 test('visitors answer each other: under the same comment, «@» to a reply, and the one answered finds it in their inbox', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const top = await post(env, { p: STORY, name: 'سارة', text: 'رأيي إن رولينز أفضل', k: KEY_A });
   const ans = await post(env, { p: STORY, name: 'كريم', text: 'لا طبعًا', parent: top.body.id, k: KEY_B }, { ...PERSON, 'CF-Connecting-IP': '5.6.7.8' });
   assert.equal(ans.status, 200);
@@ -189,7 +189,7 @@ test('visitors answer each other: under the same comment, «@» to a reply, and 
 });
 
 test('the site\'s answer reaches the visitor\'s inbox as «عرب راسلنج»', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const c = await post(env, { p: STORY, name: 'سارة', text: 'سؤال؟', k: KEY_A });
   await studioReplyComment(env, c.body.id, 'أهلًا يا سارة');
   const a = await inbox(env, KEY_A);
@@ -198,7 +198,7 @@ test('the site\'s answer reaches the visitor\'s inbox as «عرب راسلنج»
 });
 
 test('push: the site\'s key is made once, a browser\'s address is kept only from a push service, and an answer wakes it', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const k1 = await vapidKeys(env.PUSH_KV), k2 = await vapidKeys(env.PUSH_KV);
   assert.equal(k1.pub, k2.pub);
   assert.equal(Buffer.from(k1.pub.replace(/-/g, '+').replace(/_/g, '/'), 'base64').length, 65);
@@ -225,7 +225,7 @@ test('push: the site\'s key is made once, a browser\'s address is kept only from
 });
 
 test('the site\'s heart reaches the visitor\'s inbox once («أعجب عرب راسلنج بتعليقك»), and wakes their phone', async () => {
-  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2(), COMMENTS_OPEN: '1' };
   const c = await post(env, { p: STORY, name: 'سارة', text: 'تحليل رائع', k: KEY_A });
   await studioHeartComment(env, c.body.id, true);
   let a = await inbox(env, KEY_A);

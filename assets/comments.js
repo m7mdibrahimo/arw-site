@@ -100,6 +100,7 @@
   // العلامة الزرقاء … وخليني انا علامة ذهبي»)
   var BADGE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><defs><linearGradient id="arwGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd25a"/><stop offset="1" stop-color="#e09a12"/></linearGradient></defs><path fill="url(#arwGold)" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
   var BLUE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
+  var CROWN = '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   var USER = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>';
   function item(c) {
     var el = document.createElement('article');
@@ -125,6 +126,10 @@
     who.textContent = c.official ? OFFICIAL : c.name;
     who.dir = 'auto'; // an English name on the Arabic page (and an Arabic one on the English page) reads its own way
     meta.appendChild(who);
+    if (c.prem) {
+      // «العضوية المميزة» (pages/premium.njk): a golden name and the crown
+      who.classList.add('is-prem');
+    }
     if (c.member && !c.official && c.blue !== false) {
       var mb = document.createElement('span');
       mb.className = 'arw-cm-member';
@@ -133,6 +138,15 @@
       mb.setAttribute('aria-label', 'عضو موثّق في عرب راسلنج');
       mb.innerHTML = BLUE;
       meta.appendChild(mb);
+    }
+    if (c.prem && !c.official) {
+      var pr = document.createElement('a');
+      pr.className = 'arw-cm-prem';
+      pr.href = '/premium/';
+      pr.title = 'عضو مميز في عرب راسلنج';
+      pr.innerHTML = CROWN;
+      pr.appendChild(document.createTextNode('مميز'));
+      meta.appendChild(pr);
     }
     if (c.official) {
       var badge = document.createElement('span');
@@ -172,6 +186,18 @@
       acts.appendChild(rb);
     }
     body.appendChild(acts);
+    if (member && member.member.official && c.id && !c.official) {
+      // the site's own account: a heart, or the comment gone, right here
+      var hb = document.createElement('button');
+      hb.type = 'button'; hb.className = 'arw-cm-mod';
+      hb.textContent = c.hearted ? '💔 إزالة القلب' : '❤️ قلب';
+      hb.onclick = function () { mod(c, c.hearted ? 'unheart' : 'heart'); };
+      var db = document.createElement('button');
+      db.type = 'button'; db.className = 'arw-cm-mod is-del';
+      db.textContent = 'حذف';
+      db.onclick = function () { if (window.confirm('حذف هذا التعليق نهائيًا؟')) mod(c, 'delete'); };
+      acts.appendChild(hb); acts.appendChild(db);
+    }
     if (c.hearted && !c.official) {
       var liked = document.createElement('span');
       liked.className = 'arw-cm-liked';
@@ -184,6 +210,17 @@
     el.appendChild(av);
     el.appendChild(body);
     return el;
+  }
+
+  function mod(c, op) {
+    fetch(API + '/mod', { method: 'POST', headers: headers(), body: JSON.stringify({ id: c.id, op: op }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) return;
+        if (op === 'delete') shown = shown.filter(function (x) { return x.id !== c.id && x.parent !== c.id; });
+        else c.hearted = op === 'heart';
+        draw(expanded);
+      }).catch(function () {});
   }
 
   var shown = [], expanded = false;
@@ -337,13 +374,18 @@
     pic = member.member.official ? 'official' : (member.member.pic || '');
     showPic();
   } else {
-    // a visitor: the way to keep their name
-    var join = document.createElement('a');
-    join.className = 'arw-cm-join';
-    join.href = (EN ? '/en/account/' : '/account/') + '?new&back=' + encodeURIComponent(location.pathname + '#comments');
-    join.innerHTML = USER;
-    join.appendChild(document.createTextNode(' احفظ اسمك بحساب مجاني'));
-    note.parentNode.insertBefore(join, note.nextSibling);
+    // a visitor: comments are the members' (owner 2026-10-14: «التعليق … لازم يكون مسجل في الموقع فقط»)
+    form.hidden = true;
+    var back = encodeURIComponent(location.pathname + '#comments');
+    var acct = EN ? '/en/account/' : '/account/';
+    var gate = document.createElement('div');
+    gate.className = 'arw-cm-gate';
+    gate.innerHTML = '<span class="arw-cm-gate-ic">' + USER + '</span><div class="arw-cm-gate-tx"><b></b><p></p></div><div class="arw-cm-gate-btns"><a class="arw-cm-gate-join"></a><a class="arw-cm-gate-in"></a></div>';
+    gate.querySelector('b').textContent = 'سجّل دخولك لتكتب تعليقًا';
+    gate.querySelector('p').textContent = 'التعليق والرد للأعضاء. الحساب مجاني ويستغرق أقل من دقيقة.';
+    var gj = gate.querySelector('.arw-cm-gate-join'); gj.href = acct + '?new&back=' + back; gj.textContent = 'أنشئ حسابًا مجانيًا';
+    var gi = gate.querySelector('.arw-cm-gate-in'); gi.href = acct + '?back=' + back; gi.textContent = 'تسجيل الدخول';
+    form.parentNode.insertBefore(gate, form);
   }
   function count() {
     var n = textIn.value.length;
@@ -384,7 +426,7 @@
         if (d.name) name = d.name;
         // a picture the worker kept: its address from now on, not the picture itself
         if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
-        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official, blue: d.blue });
+        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official, blue: d.blue, prem: !!d.prem });
         textIn.value = '';
         count();
         say('تم نشر تعليقك، شكرًا لك!', 'ok');
@@ -402,6 +444,7 @@
   // a small form right under the comment: the name the visitor already wrote (or a field for it), the answer, «رد»
   var replyForm = null;
   function openReply(c, el) {
+    if (!member) { var g = box.querySelector('.arw-cm-gate'); if (g) { g.scrollIntoView({ behavior: 'smooth', block: 'center' }); g.classList.remove('is-flash'); void g.offsetWidth; g.classList.add('is-flash'); } return; }
     if (replyForm) { var was = replyForm.target; replyForm.el.remove(); replyForm = null; if (was === c.id) return; }
     var who = c.official ? OFFICIAL : c.name;
     var saved = member ? (member.member.display || member.member.username) : (store.get(NAME, '') || '');
@@ -439,7 +482,7 @@
           if (!member) store.set(NAME, name);
           if (d.name) name = d.name;
           if (d.pic && /^https:/.test(d.pic) && !member) setPic(d.pic);
-          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official, blue: d.blue });
+          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official, blue: d.blue, prem: !!d.prem });
           replyForm = null;
           draw(expanded);
           var mine = document.getElementById('c-' + d.id);

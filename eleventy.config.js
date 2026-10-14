@@ -471,6 +471,10 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addNunjucksFilter("toEmbedUrl", toEmbedUrl);
   eleventyConfig.addFilter("obfuscateUrl", obfuscateUrl);
+  // «العرض قبل الجميع» (premium, owner 2026-10-14): a show dated later is built without its links; premium members get
+  // them from the worker now, everyone else when its time comes (worker/src/premium.ts, assets/post-player.js)
+  eleventyConfig.addFilter("isFuture", function(d) { const t = d instanceof Date ? d.getTime() : Date.parse(d); return !!t && t > Date.now() + 120000; });
+  eleventyConfig.addFilter("contentKey", function(p) { const m = String(p || "").match(/content\/((?:shows|recaps|nostalgia)\/[^/]+)\.md$/); return m ? m[1] : ""; });
   eleventyConfig.addNunjucksFilter("obfuscateUrl", obfuscateUrl);
 
   const cleanUrl = function(url) {

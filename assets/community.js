@@ -73,7 +73,9 @@
     else { a.textContent = initial(p.name); a.style.setProperty('--c', colorOf(p.name)); }
     return a;
   }
-  function badge(b) { return b === 'gold' ? GOLD : b === 'blue' ? BLUE : ''; }
+  var CROWN = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
+  // the site's account: gold; «العضوية المميزة»: the blue badge and the crown (pages/premium.njk); a member given it: blue
+  function badge(b) { return b === 'gold' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function clock(ms) { var d = new Date(ms); var h = d.getHours(); return (h % 12 || 12) + ':' + pad(d.getMinutes()) + (h < 12 ? ' ص' : ' م'); }
   function dayKey(ms) { var d = new Date(ms); return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
@@ -432,6 +434,7 @@
     if (isCont) row.classList.add('is-cont');
     if (mine) row.classList.add('is-mine');
     if (m.badge === 'gold') row.classList.add('is-gold');
+    if (m.badge === 'premium') row.classList.add('is-prem');
     if (m.att && (m.att.kind === 'image' || m.att.kind === 'video')) row.classList.add('is-media');
     if (me && me.user && !mine && m.text && new RegExp('@' + (me.user || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\w.])', 'i').test(m.text)) row.classList.add('mentions-me');
     row.appendChild(avatar(m));
@@ -442,6 +445,7 @@
       nm.style.setProperty('--nh', hueOf(m.user || m.name));
       nm.appendChild(el('span', null, m.name));
       if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : 'عضو موثّق'; nm.appendChild(bg.firstChild); }
+      if (m.badge === 'premium') { var pc = el('a', 'cm-prem'); pc.href = '/premium/'; pc.title = 'عضو مميز'; pc.innerHTML = CROWN; pc.appendChild(document.createTextNode('مميز')); nm.appendChild(pc); }
       bub.appendChild(nm);
     }
     if (m.del) {
@@ -566,6 +570,7 @@
     if (me && me.mod) items.push(['pin', pinned && pinned.id === m.id ? 'إلغاء التثبيت' : 'تثبيت الرسالة', function () { wsSend({ t: 'pin', id: pinned && pinned.id === m.id ? 0 : m.id }); }]);
     if (mine || (me && me.mod)) items.push(['trash', 'حذف الرسالة', function () { confirmDelete(m); }, 'is-danger']);
     if (!mine) items.push(['flag', 'إبلاغ عن الرسالة', function () { report(m); }, 'is-danger']);
+    if (me && me.mod && !mine && m.badge !== 'gold') items.push(['flag', 'إيقاف ' + m.name + ' عن الكتابة', function () { muteFromRoom(m); }, 'is-danger']);
     items.forEach(function (it) {
       var b = el('button', it[3] || null); b.type = 'button'; b.innerHTML = IC[it[0]] || '';
       b.appendChild(document.createTextNode(it[1]));
@@ -598,6 +603,25 @@
     var fin = function () { mo.hidden = true; card.innerHTML = keep; bindRules(); };
     card.querySelector('[data-ok]').onclick = function () { var w = card.querySelector('input:checked'); var why = w ? w.value : ''; fin(); if (!wsSend({ t: 'report', id: m.id, why: why })) toast('لا يوجد اتصال الآن.'); };
     card.querySelector('[data-no]').onclick = fin;
+  }
+  // the site's own account: a member stopped from writing in every room, from here
+  function muteFromRoom(m) {
+    var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
+    card.innerHTML = '<h2></h2><p>لن يستطيع الكتابة في أي غرفة حتى تنتهي المدة، ويمكنه القراءة.</p><div class="cm-report-opts">' +
+      [[1, 'ساعة'], [24, 'يوم'], [168, 'أسبوع'], [720, 'شهر'], [8760, 'سنة']].map(function (o, i) { return '<label><input type="radio" name="h" value="' + o[0] + '"' + (i === 1 ? ' checked' : '') + '> ' + o[1] + '</label>'; }).join('') +
+      '</div><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">أوقفه</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
+    card.querySelector('h2').textContent = 'إيقاف ' + m.name + ' عن الكتابة';
+    mo.hidden = false;
+    var fin = function () { mo.hidden = true; card.innerHTML = keep; bindRules(); };
+    card.querySelector('[data-no]').onclick = fin;
+    card.querySelector('[data-ok]').onclick = function () {
+      var h = Number((card.querySelector('input:checked') || {}).value || 24);
+      fin();
+      var s = session();
+      fetch(API + '/chat/mod/mute', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (s ? s.token : '') }, body: JSON.stringify({ uid: m.uid, hours: h }) })
+        .then(function (r) { return r.json(); }).then(function (d) { toast(d.ok ? 'تم إيقافه عن الكتابة ✓' : (d.error || 'تعذّر ذلك.')); })
+        .catch(function () { toast('تعذّر الاتصال.'); });
+    };
   }
   function rules() { $('.cm-modal').hidden = false; }
   function bindRules() { var b = $('[data-act="rules-ok"]'); if (b) b.onclick = function () { $('.cm-modal').hidden = true; store('arw-cm-rules', 1); input.focus(); }; }

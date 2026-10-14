@@ -232,6 +232,7 @@
 
   // Mount initial video player on client load
   var embedBox = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
+  // the rows are read again whenever servers are added (a premium member's own servers, an early show's links)
   var srvRows = Array.from(document.querySelectorAll('.srv-row'));
   function markServer(btn) {
     srvRows.forEach(function(b){ var on = b === btn; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
@@ -251,8 +252,10 @@
   if (posterBtn) posterBtn.addEventListener('click', startPlayback);
 
   // Server tabs switcher
-  srvRows.forEach(function(btn, idx){
-    btn.addEventListener('click', function(){
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.srv-row');
+    if (!btn) return;
+    (function(){
       markServer(btn);
       var rawEnc = (btn.dataset.srv || '').trim();
       var box = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
@@ -263,7 +266,7 @@
       if (rawSrc) {
         mountVideo(box, rawSrc, srvLabel);
       }
-    });
+    })();
   });
 
   // Next Server Switcher (Loops seamlessly across all available servers)
@@ -276,14 +279,10 @@
   }
 
   var loaderNextBtn = document.getElementById('loaderNextSrvBtn');
+  function labelNextBtn() { if (loaderNextBtn) loaderNextBtn.textContent = srvRows.length <= 1 ? 'إعادة تحديث المشغل ↻' : 'تجربة سيرفر آخر ⏭'; }
   if (loaderNextBtn) {
-    var allTabs = srvRows;
-    if (allTabs.length <= 1) {
-      loaderNextBtn.textContent = 'إعادة تحديث المشغل ↻';
-      loaderNextBtn.addEventListener('click', function(){ reloadCurrentServer(); });
-    } else {
-      loaderNextBtn.addEventListener('click', switchToNextServer);
-    }
+    labelNextBtn();
+    loaderNextBtn.addEventListener('click', function(){ if (srvRows.length <= 1) reloadCurrentServer(); else switchToNextServer(); });
   }
 
   // Reload current server button
@@ -446,3 +445,195 @@
     }
   });
 
+
+  // ==== «العضوية المميزة» on a show page (owner 2026-10-14) ====
+  // A premium member's own servers (no ads) and downloads come from the worker, never from the page; everyone else sees a
+  // line saying they exist. A show dated later is built without its links (_includes/post-layout.njk): a premium member
+  // gets them now, everyone else when its time comes, before the site's next build. The worker: worker/src/premium.ts.
+  (function(){
+    var deck = document.getElementById('watchDeck');
+    var pk = deck && deck.getAttribute('data-pk');
+    if (!pk) return;
+    var API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/premium/';
+    var HOME = document.documentElement.lang === 'en' ? '/en' : '';
+    var CROWN = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
+    var DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+    var session = null;
+    try { session = JSON.parse(localStorage.getItem('arw-member') || 'null'); } catch (e) {}
+    var token = session && session.token || '';
+    var known = session && session.member || null;
+    var thinksPremium = !!(known && (known.official || known.premium > Date.now()));
+    function get(what) {
+      return fetch(API + what + '?k=' + encodeURIComponent(pk), { headers: token ? { Authorization: 'Bearer ' + token } : {}, credentials: 'omit' })
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ d.status = r.status; return d; }); });
+    }
+    function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+    function enc(u) { try { return btoa(u).split('').reverse().join(''); } catch (e) { return ''; } }
+    function host(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+    // a server with its own quality menu (eleventy.config.js MULTI_QUALITY_RE)
+    function multi(u) { return /(^|\.)(ok\.ru|hgcloud\.[a-z]+|streamhg\.[a-z]+|shgcloud\.[a-z]+|hgplayer\.[a-z]+|hgstream\.[a-z]+|hanerix\.com)$/i.test(host(toEmbedUrl(u))); }
+    function clean(list) { return (list || []).filter(function(u){ return /^https?:\/\/\S+$/.test(String(u || '')); }); }
+
+    // ── servers: added as rows of the list (a premium member's first, marked with the crown) ──
+    function row(code, name, num, sub, prem) {
+      var b = el('button', 'srv-row' + (prem ? ' is-prem' : ''));
+      b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false');
+      b.dataset.srv = code; b.setAttribute('data-srv-name', name);
+      b.innerHTML = '<span class="srv-num">' + (prem ? CROWN : num) + '</span><span class="srv-name"><b></b>' + (sub ? '<span class="srv-mq"></span>' : '') + '</span>'
+        + '<span class="srv-state"><span class="s-ready">جاهز</span><span class="s-load">جارٍ التشغيل</span><span class="s-on">يعمل الآن</span></span>';
+      b.querySelector('b').textContent = name;
+      if (sub) b.querySelector('.srv-mq').textContent = sub;
+      return b;
+    }
+    function addServers(list, prem) {
+      list = clean(list);
+      if (!list.length) return 0;
+      var body = deck.querySelector('.wd-body'), box = document.getElementById('videoEmbedBox');
+      var tabs = document.getElementById('serverTabs');
+      if (!tabs) {
+        var side = el('div', 'wd-side');
+        tabs = el('div', 'wd-list'); tabs.id = 'serverTabs';
+        tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'سيرفرات المشاهدة');
+        side.appendChild(tabs); body.insertBefore(side, body.firstChild);
+        // the page's one server becomes the first row of the list
+        if (box && box.dataset.initSrv) tabs.appendChild(row(box.dataset.initSrv, 'سيرفر 1', '1', '', false));
+      }
+      var have = tabs.querySelectorAll('.srv-row:not(.is-prem)').length, frag = document.createDocumentFragment();
+      list.forEach(function(u, i){
+        var code = enc(u);
+        if (!code) return;
+        if (prem) frag.appendChild(row(code, list.length > 1 ? 'سيرفر مميز ' + (i + 1) : 'سيرفر مميز', '', 'بدون إعلانات', true));
+        else {
+          var r = row(code, 'سيرفر ' + (have + i + 1), String(have + i + 1), multi(u) ? 'متعدد الجودات' : '', false);
+          if (multi(u)) { r.classList.add('is-mq'); r.dataset.mq = '1'; }
+          frag.appendChild(r);
+        }
+      });
+      if (prem) tabs.insertBefore(frag, tabs.firstChild); else tabs.appendChild(frag);
+      srvRows = Array.from(document.querySelectorAll('.srv-row'));
+      deck.classList.toggle('is-single', srvRows.length < 2);
+      if (box && !box.dataset.initSrv && srvRows[0]) box.dataset.initSrv = srvRows[0].dataset.srv;
+      labelNextBtn();
+      // not playing yet: the poster's play button starts the first row (a premium server when there is one)
+      if (!currentActiveServerSrc && srvRows[0]) markServer(srvRows[0]);
+      return list.length;
+    }
+
+    // ── downloads: one more card in «روابط التحميل», opening its own list ──
+    function addDownloads(list, prem) {
+      list = clean(list);
+      if (!list.length) return;
+      var wrap = document.getElementById('downloads');
+      if (!wrap) {
+        wrap = el('div', 'download-links', '<h3>روابط التحميل</h3><div class="quality-grid"></div>');
+        wrap.id = 'downloads';
+        deck.parentNode.insertBefore(wrap, deck.nextSibling);
+      }
+      var grid = wrap.querySelector('.quality-grid'), id = prem ? 'dlModalPrem' : 'dlModalEarly';
+      var btn = el('button', 'quality-btn' + (prem ? ' is-prem' : ''), '<span class="quality-icon">' + (prem ? CROWN : DL) + '</span><span class="quality-label"></span><span class="quality-sub"></span>');
+      btn.type = 'button'; btn.setAttribute('data-tier', prem ? 'prem' : 'high');
+      btn.querySelector('.quality-label').textContent = prem ? 'تحميل مميز' : 'تحميل العرض';
+      btn.querySelector('.quality-sub').textContent = prem ? 'روابط مباشرة بلا إعلانات' : 'كل الجودات';
+      if (prem) grid.insertBefore(btn, grid.firstChild); else grid.appendChild(btn);
+      var modal = el('div', 'dl-modal-backdrop');
+      modal.id = id;
+      modal.innerHTML = '<div class="dl-modal" role="dialog" aria-modal="true"><div class="dl-modal-head"><h4></h4><button type="button" class="dl-modal-close" aria-label="إغلاق"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="dl-modal-body"></div></div>';
+      var title = prem ? 'روابط التحميل المميزة' : 'روابط التحميل';
+      modal.querySelector('h4').textContent = title;
+      modal.querySelector('.dl-modal').setAttribute('aria-label', title);
+      var listEl = modal.querySelector('.dl-modal-body');
+      list.forEach(function(u){
+        var h = host(u), a = el('a', 'dl-site-card' + (prem ? ' is-prem' : ''));
+        a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer nofollow'; a.dataset.ready = '1';
+        a.innerHTML = '<img class="dl-site-logo" alt="" loading="lazy"><span class="dl-site-info"><span class="dl-site-name"></span><span class="dl-site-quality"></span></span><svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+        a.querySelector('img').src = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(h) + '&sz=64';
+        a.querySelector('.dl-site-name').textContent = h || 'رابط التحميل';
+        a.querySelector('.dl-site-quality').textContent = prem ? 'رابط خاص بالأعضاء المميزين' : 'اضغط هنا للتحميل';
+        listEl.appendChild(a);
+      });
+      document.body.appendChild(modal);
+      function close() { modal.classList.remove('open'); document.body.classList.remove('dl-modal-lock'); }
+      btn.addEventListener('click', function(){ modal.classList.add('open'); document.body.classList.add('dl-modal-lock'); });
+      modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+      modal.querySelector('.dl-modal-close').addEventListener('click', close);
+    }
+
+    // ── for everyone else: what this show has for premium members ──
+    function promo(servers, downloads) {
+      if (!servers && !downloads) return;
+      var what = servers && downloads ? 'سيرفر خاص بلا إعلانات وروابط تحميل مباشرة' : servers ? 'سيرفر خاص بلا إعلانات' : 'روابط تحميل مباشرة بلا إعلانات';
+      var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small>متاحة لهذا العرض للأعضاء المميزين، مع وصول العروض الجديدة قبل الجميع</small></span><span class="wd-prem-go">اشترك</span>');
+      a.href = HOME + '/premium/';
+      a.querySelector('b').textContent = what;
+      var note = deck.querySelector('.wd-note');
+      deck.insertBefore(a, note || null);
+    }
+
+    // ── a show dated later: the lock, its countdown, and the links when they're open ──
+    var lock = document.getElementById('wdLock');
+    var pub = Number(deck.getAttribute('data-pub')) || 0;
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    // the time left: a clock up to two days, then the days
+    function left(ms) {
+      var s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), d = Math.floor(s / 86400);
+      if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يومًا');
+      return pad(h) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
+    }
+    function unlock(d) {
+      var n = addServers(d.servers, false);
+      addDownloads(d.downloads, false);
+      if (!n && !clean(d.downloads).length) return false;
+      if (lock) lock.remove();
+      deck.classList.remove('is-locked');
+      if (d.premium && pub > Date.now()) {
+        var h = deck.querySelector('.wd-head h3');
+        if (h && !h.querySelector('.wd-early')) h.appendChild(el('span', 'wd-early', CROWN + '<span>قبل الجميع</span>'));
+      }
+      return true;
+    }
+    function lockSay(title, sub) {
+      if (!lock) return;
+      if (title) lock.querySelector('.wd-lock-t').textContent = title;
+      if (sub != null) lock.querySelector('.wd-lock-s').textContent = sub;
+    }
+    function countdown() {
+      var c = document.getElementById('wdCount');
+      var tries = 0;
+      (function tick() {
+        if (!lock || !lock.isConnected) return;
+        var ms = pub - Date.now();
+        if (ms > 0) { if (c) c.textContent = left(ms); setTimeout(tick, 1000); return; }
+        lockSay('العرض متاح للجميع الآن', 'لحظات ويظهر المشغّل…');
+        get('early').then(function(d){
+          if (d.ok && unlock(d)) return;
+          if (++tries < 10) setTimeout(tick, 30000); else lockSay(null, 'حدّث الصفحة بعد دقيقة.');
+        }).catch(function(){ if (++tries < 10) setTimeout(tick, 30000); });
+      })();
+    }
+
+    function extras() {
+      return get('media').then(function(d){
+        if (!d.ok) return;
+        if (d.links) { addServers(d.links.servers, true); addDownloads(d.links.downloads, true); }
+        else promo(d.servers, d.downloads);
+      }).catch(function(){});
+    }
+
+    if (!lock) { extras(); return; }
+    var c0 = document.getElementById('wdCount');
+    if (c0 && pub > Date.now()) c0.textContent = left(pub - Date.now());
+    if (token) { var signIn = lock.querySelector('.wd-lock-in'); if (signIn) signIn.remove(); }
+    if (token && thinksPremium) lockSay('جارٍ تجهيز العرض لك…', '');
+    if (token || pub <= Date.now()) {
+      get('early').then(function(d){
+        if (d.ok && unlock(d)) { extras(); return; }
+        if (d.status === 403) {
+          lockSay('العرض متاح الآن للأعضاء المميزين', null);
+          var s = lock.querySelector('.wd-lock-s');
+          if (s && !document.getElementById('wdCount')) { s.textContent = 'ويُتاح للجميع بعد '; var c = el('span', 'wd-count'); c.id = 'wdCount'; s.appendChild(c); }
+          countdown();
+        } else lockSay('تعذّر تجهيز العرض الآن', 'حدّث الصفحة بعد قليل.');
+        extras();
+      }).catch(function(){ lockSay('تعذّر الاتصال', 'حدّث الصفحة بعد قليل.'); });
+    } else { countdown(); extras(); }
+  })();

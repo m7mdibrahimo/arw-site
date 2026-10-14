@@ -45,7 +45,7 @@ const VOICE_TYPES: Record<string, string> = { "audio/webm": "webm", "audio/ogg":
 const MEDIA_PREFIX = `${PIC_ORIGIN}/chat/media/`;
 const REACTION = /^(?:\p{Extended_Pictographic}|\p{Regional_Indicator}|[‍️⃣#*0-9]|\p{Emoji_Modifier}){1,12}$/u;
 
-export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "blue" | ""; mod: boolean; mute: number };
+export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "blue" | "premium" | ""; mod: boolean; mute: number };
 export type Att = { kind: "image" | "voice" | "file" | "video"; url: string; name?: string; size?: number; mime?: string; w?: number; h?: number; dur?: number; wave?: number[] };
 export type Msg = {
   id: number; uid: number; user: string; name: string; pic: string; badge: string; text: string; att: Att | null;
@@ -320,7 +320,8 @@ async function whoFor(env: ChatEnv, request: Request): Promise<Who | null> {
   const mute = await env.ANALYTICS.prepare("SELECT chat_mute FROM members WHERE id = ?1").bind(m.id).first<{ chat_mute: number }>();
   return {
     uid: m.id, user: m.username, name: m.official ? MOD_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic,
-    badge: m.official ? "gold" : m.badge === 0 ? "" : "blue", mod: !!m.official, mute: Number(mute?.chat_mute || 0),
+    // the site's account: gold; a premium member: «premium» (the blue badge and a name that stands out); else blue if given
+    badge: m.official ? "gold" : Number(m.premium_until) > Date.now() ? "premium" : m.badge === 0 ? "" : "blue", mod: !!m.official, mute: Number(mute?.chat_mute || 0),
   };
 }
 
@@ -359,6 +360,15 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     }));
   }
 
+  // the site's own account, from inside a room: a member stopped from writing (as the panel does)
+  if (path === "/chat/mod/mute" && request.method === "POST") {
+    const who = await whoFor(env, request);
+    if (!who?.mod) return reply({ ok: false, error: "هذا لحساب الموقع الرسمي فقط." }, 403);
+    const b: any = await request.json().catch(() => ({}));
+    const r = await studioChatMute(env, b.uid, b.hours);
+    return reply({ ok: r.success, error: (r as any).error, until: (r as any).until }, r.success ? 200 : 400);
+  }
+
   if (path === "/chat/upload" && request.method === "POST") {
     const who = await whoFor(env, request);
     if (!who) return reply({ ok: false, signedOut: true, error: "سجّل دخولك أولًا." }, 401);
@@ -367,13 +377,15 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     const kind = url.searchParams.get("kind");
     if (!isRoom(room) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذّر الرفع." }, 400);
     const count = Number(await env.PUSH_KV.get(`chat:up:${who.uid}`) || 0);
-    if (count >= 40) return reply({ ok: false, error: "رفعت ملفات كثيرة، حاول بعد ساعة." }, 429);
+    // a premium member sends more, and bigger files
+    const prem = who.badge === "premium" || who.mod;
+    if (count >= (prem ? 100 : 40)) return reply({ ok: false, error: "رفعت ملفات كثيرة، حاول بعد ساعة." }, 429);
     const type = String(request.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
     const fileName = (() => { try { return decodeURIComponent(request.headers.get("X-File-Name") || ""); } catch { return ""; } })().replace(/[\\/\u0000-\u001f]/g, "").slice(0, 120);
     let ext = "", ctype = "", max = 0;
     if (kind === "image") { ext = IMAGE_TYPES[type] || ""; ctype = type; max = LIMITS.image; }
     else if (kind === "voice") { ext = VOICE_TYPES[type] || ""; ctype = type; max = LIMITS.voice; }
-    else { ext = (fileName.match(/\.([a-z0-9]{1,5})$/i)?.[1] || "").toLowerCase(); ctype = FILE_TYPES[ext] || ""; max = LIMITS.file; if (!ctype) ext = ""; }
+    else { ext = (fileName.match(/\.([a-z0-9]{1,5})$/i)?.[1] || "").toLowerCase(); ctype = FILE_TYPES[ext] || ""; max = prem ? LIMITS.file * 2 : LIMITS.file; if (!ctype) ext = ""; }
     if (!ext) return reply({ ok: false, error: kind === "file" ? "هذا النوع من الملفات غير مسموح. المسموح: PDF وWord وExcel وPowerPoint وZIP والفيديو والصوت." : "نوع الملف غير مدعوم." }, 415);
     const len = Number(request.headers.get("Content-Length") || 0);
     if (len > max) return reply({ ok: false, error: `الملف كبير، الحد الأقصى ${Math.round(max / 1024 / 1024)} ميجابايت.` }, 413);

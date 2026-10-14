@@ -27,6 +27,9 @@
 
 {% set schemaImage = (image | absUrl) if image else 'https://arab-wrestling.com/assets/logo.png' %}
 {% set isVideoContent = (servers and servers.length) and not isNews %}
+{#- «العرض قبل الجميع»: dated later = built without its links; premium members get them now (assets/post-player.js) -#}
+{% set pk = page.inputPath | contentKey %}
+{% set earlyLock = pk and isVideoContent and (page.date | isFuture) %}
 {% set pageUrl = 'https://arab-wrestling.com' + (page.url | cleanUrl) %}
 
 <!-- Open Graph / Facebook -->
@@ -107,7 +110,7 @@
     },
     {#- every show, recap and nostalgia episode is a video: VideoObject in the head only, with its length and the dates it is searched by (INCIDENTS #427) -#}
     {#- Google needs the video's own address (embedUrl); a page without a server has no VideoObject (INCIDENTS #455) -#}
-    {% set ldEmbed = servers | videoEmbedUrl %}
+    {% set ldEmbed = '' if earlyLock else (servers | videoEmbedUrl) %}
     {#- duration is only recommended by Google; most recaps have none and so had no VideoObject at all (INCIDENTS #471) -#}
     {% if ldEmbed and (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') or page.url.startsWith('/nostalgia/')) %}
     {
@@ -185,7 +188,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="{{ asset('/assets/post-layout.css') }}">
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261014g">
+<link rel="stylesheet" href="/assets/features.css?v=20261014h">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body class="post-layout">
@@ -213,7 +216,7 @@
           <svg class="icon-moon" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79Z" fill="currentColor"/></svg>
           <svg class="icon-sun" fill="none" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="currentColor" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg>
         </button>
-        <a class="navlink support-btn" href="/support/"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-6.716-4.35-9.428-8.06C.688 10.2 1.2 6.6 4.1 4.9c2.3-1.35 5.1-.7 6.6 1.2.5.6.9 1.3 1.3 2 .4-.7.8-1.4 1.3-2 1.5-1.9 4.3-2.55 6.6-1.2 2.9 1.7 3.412 5.3 1.528 8.04C18.716 16.65 12 21 12 21Z"/></svg><span>ادعم الموقع</span></a>
+        <a class="navlink support-btn premium-btn" href="/premium/"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>العضوية المميزة</span></a>
       </li>
     </ul>
   </nav>
@@ -349,12 +352,13 @@
     {% endif %}
 
     {% if servers and servers.length %}
+      {% if earlyLock %}{% set servers = [] %}{% set firstEmbedUrl = '' %}{% else %}
       {% set servers = servers | playableServers(videoHosts, videoLinks) %}
       {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
-      {% set firstMq = firstEmbedUrl | isMultiQuality %}
+      {% endif %}
       {#- «غرفة التحكم»: one card at the column width, like the download box — the servers on the right, the player
           on the left (owner, 2026-10-06) -#}
-      <section class="watch-deck is-idle{% if servers.length < 2 %} is-single{% endif %}" id="watchDeck" aria-label="المشاهدة أونلاين">
+      <section class="watch-deck is-idle{% if servers.length < 2 %} is-single{% endif %}{% if earlyLock %} is-locked{% endif %}" id="watchDeck" aria-label="المشاهدة أونلاين"{% if pk %} data-pk="{{ pk }}"{% endif %}{% if earlyLock %} data-pub="{{ page.date.getTime() }}"{% endif %}>
         <div class="wd-head">
           <h3>المشاهدة أونلاين</h3>
           <div class="player-actions wd-acts">
@@ -386,12 +390,23 @@
           </div>
           {% endif %}
           <div class="video-embed-container">
-            <div class="video-embed" id="videoEmbedBox" data-init-srv="{{ firstEmbedUrl | obfuscateUrl }}">
+            <div class="video-embed" id="videoEmbedBox"{% if firstEmbedUrl %} data-init-srv="{{ firstEmbedUrl | obfuscateUrl }}"{% endif %}>
               {#- the show's picture waits with a play button; nothing loads from the servers until it's pressed -#}
               <button type="button" class="wd-poster" id="wdPoster" aria-label="تشغيل الفيديو">
                 {% if image %}<img src="{% optImg image, '' %}" alt="{{ (headline or title) | escape }}" decoding="async" fetchpriority="high">{% endif %}
                 <span class="wd-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.6v14.8a1 1 0 0 0 1.52.85l12.1-7.4a1 1 0 0 0 0-1.7L8.52 3.75A1 1 0 0 0 7 4.6Z"/></svg></span>
               </button>
+              {% if earlyLock %}
+              <div class="wd-lock" id="wdLock">
+                <span class="wd-lock-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+                <b class="wd-lock-t">العرض متاح الآن للأعضاء المميزين</b>
+                <span class="wd-lock-s">ويُتاح للجميع بعد <span class="wd-count" id="wdCount">وقت قصير</span></span>
+                <span class="wd-lock-acts">
+                  <a class="wd-lock-btn" href="/premium/">اشترك وشاهد الآن</a>
+                  <a class="wd-lock-in" href="/account/?back={{ (page.url | cleanUrl) | urlencode }}">لديك عضوية؟ سجّل دخولك</a>
+                </span>
+              </div>
+              {% endif %}
               <div class="video-loader is-hidden" id="videoLoader">
                 <div class="video-loader-spinner"></div>
                 <div class="video-loader-status" id="videoLoaderStatus">جاري الاتصال بالسيرفر وتشغيل الفيديو...</div>
@@ -413,7 +428,9 @@
       </section>
     {% endif %}
 
+    {% if earlyLock %}{% set dlGroups = { light: [], low: [], medium: [], high: [] } %}{% else %}
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high, downloads_light, downloads_multi) %}
+    {% endif %}
     {% if dlGroups.light.length or dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
     <div class="download-links reveal" id="downloads">
       <h3>روابط التحميل</h3>
@@ -709,7 +726,7 @@
 </script>
 <script src="{{ asset('/assets/post-player.js') }}"></script>
 <script src="{{ asset('/assets/post-theme.js') }}"></script>
-<script src="/assets/features.js?v=20261014g" defer></script>
+<script src="/assets/features.js?v=20261014h" defer></script>
 <script src="{{ asset('/assets/comments.js') }}" defer></script>
 <script>
 (function(){

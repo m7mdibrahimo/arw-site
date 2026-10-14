@@ -1,6 +1,6 @@
 // Add / edit any content: sectioned form, live preview, checklist, smart helpers.
 import { collapseRepeatedNames, NAME_FIELDS } from '../names.js';
-import { content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../api.js';
+import { api, content, siteData, addPending, trackLive, IS_LOCAL, getUser } from '../api.js';
 import { notify } from '../notify.js';
 import {
   COLLECTIONS, FEDERATIONS, parseFile, serializeFile, newFileSlug, isoLocal, dateOnly, toDate,
@@ -21,11 +21,13 @@ const SECTIONS = {
     { id: 'basics', title: 'البيانات الأساسية', icon: 'show', fields: ['program', 'federation', 'title', 'event_date', 'headline', 'card_title', 'show_type', 'numbering'] },
     { id: 'watch', title: 'سيرفرات المشاهدة', icon: 'eye', fields: ['servers'] },
     { id: 'downloads', title: 'روابط التحميل', icon: 'upload', fields: ['downloads'] },
+    { id: 'premium', title: 'للأعضاء المميزين', icon: 'lock', fields: ['premium'] },
     { id: 'cover', title: 'الغلاف والتفاصيل', icon: 'image', fields: ['image', 'description', 'tags', 'duration', 'date', 'maintenance', 'body'] },
   ],
   recaps: [
     { id: 'basics', title: 'البيانات الأساسية', icon: 'recap', fields: ['program', 'federation', 'title', 'event_date', 'headline'] },
     { id: 'watch', title: 'سيرفرات المشاهدة', icon: 'eye', fields: ['servers'] },
+    { id: 'premium', title: 'للأعضاء المميزين', icon: 'lock', fields: ['premium'] },
     { id: 'cover', title: 'الغلاف والتفاصيل', icon: 'image', fields: ['image', 'description', 'tags', 'date', 'body'] },
   ],
   news: [
@@ -37,6 +39,7 @@ const SECTIONS = {
     { id: 'info', title: 'بيانات الحلقة', icon: 'nostalgia', fields: ['title', 'headline', 'event_date', 'duration'] },
     { id: 'watch', title: 'سيرفرات المشاهدة', icon: 'eye', fields: ['servers'] },
     { id: 'downloads', title: 'روابط التحميل', icon: 'upload', fields: ['downloads'] },
+    { id: 'premium', title: 'للأعضاء المميزين', icon: 'lock', fields: ['premium'] },
     { id: 'cover', title: 'الغلاف والتفاصيل', icon: 'image', fields: ['image', 'tags', 'date', 'body'] },
   ],
   nostalgia_series: [
@@ -193,6 +196,15 @@ const F = {
       </div>
       <small class="hint">للبرامج المرقّمة بس (زي WWE LFG). العروض الأسبوعية سيبها فاضية والموقع هيستخدم التاريخ.</small>
     </div></details>`,
+  premium: () => html`<div class="field pr-field">
+    <p class="hint pr-hint">${icon('lock')}<span>الروابط دي <b>مش بتتحفظ في ملف العرض ولا بتظهر في الصفحة</b>: بتتحفظ على السيرفر، ومحدش بيشوفها غير الأعضاء المميزين وهو فاتح الصفحة. اللي مش مشترك بيشوف سطر «سيرفرات خاصة للأعضاء المميزين» وزرار اشتراك.</span></p>
+    <label for="f-prem-servers">سيرفرات مشاهدة مميزة <em>كل رابط إمبيد في سطر</em></label>
+    <textarea class="input mono" id="f-prem-servers" rows="3" dir="ltr" placeholder="https://...">${S.premium ? S.premium.servers : ''}</textarea>
+    <label for="f-prem-dl">روابط تحميل مميزة <em>كل رابط في سطر</em></label>
+    <textarea class="input mono" id="f-prem-dl" rows="3" dir="ltr" placeholder="https://...">${S.premium ? S.premium.downloads : ''}</textarea>
+    <div class="pr-early"><b>العرض قبل الجميع</b><span class="muted small">المميزين يشغّلوه دلوقتي، والباقيين يشوفوا عدّاد لحد ما يتنشر للكل:</span>
+      <div class="pr-early-btns">${[[1, 'ساعة'], [2, 'ساعتين'], [3, '3 ساعات'], [6, '6 ساعات']].map(([h, l]) => html`<button type="button" class="btn btn-sm btn-soft" data-early="${h}">للكل بعد ${l}</button>`)}</div></div>
+    <small class="hint pr-state" id="pr-state">${S.premium && S.premium.loading ? 'بيحمّل الروابط المحفوظة…' : ''}</small></div>`,
   servers: () => html`<div class="field">
     <div class="list-head"><label>روابط المشاهدة (الإمبيد) <em>${(S.data.servers || []).length} سيرفر</em></label></div>
     <div class="servers" id="servers">${(S.data.servers || []).map((s, i) => serverRow(s.url, i))}</div>
@@ -330,6 +342,8 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
 
   const sections = SECTIONS[collection];
   const isNew = !slug;
+  // «للأعضاء المميزين»: what's saved on the worker for this one
+  S.premium = { servers: '', downloads: '', dirty: false, loading: !isNew && ['shows', 'recaps', 'nostalgia'].includes(collection) };
   // What this account may do here (the server checks the same thing on every save)
   const me = getUser(), sec = sectionOf(collection);
   const mayCreate = can(me, `${sec}.create`), mayDelete = can(me, `${sec}.delete`);
@@ -477,7 +491,7 @@ function bindAll() {
   }));
 
   bindHelpers();
-  bindServers(); bindImage(); bindTags(); bindDate(); bindBody();
+  bindServers(); bindImage(); bindTags(); bindDate(); bindBody(); bindPremium();
   if (S.collection === 'shows') bindLibFed(form);
   if (S.collection === 'news') titleHint();
 
@@ -549,7 +563,7 @@ function rerenderSection(id) {
     S.data[seg.dataset.seg] = b.dataset.v; $$('button', seg).forEach(x => x.classList.toggle('on', x === b)); markDirty();
   }));
   bindHelpers();
-  bindServers(); bindImage(); bindTags(); bindDate(); bindBody();
+  bindServers(); bindImage(); bindTags(); bindDate(); bindBody(); bindPremium();
   refreshSide();
 }
 
@@ -567,6 +581,34 @@ function titleHint() {
   if (/(^|\s)([3-9]|10)\s+[؀-ۿ]/.test(t)) warn.push('اكتب الأعداد بالحروف (ثلاثة أمور مش 3 أمور) عشان متتعكسش');
   el.textContent = warn.length ? `⚠️ ${warn.join(' · ')}` : `${t.length} حرف`;
   el.classList.toggle('warn', !!warn.length);
+}
+
+// «للأعضاء المميزين»: loaded from the worker and saved there after the file itself (worker/src/premium.ts)
+const premiumKey = (slug) => `${S.collection}/${slug}`;
+const premLines = (t) => String(t || '').split(/\s+/).map(x => x.trim()).filter(x => /^https?:\/\//.test(x));
+function bindPremium() {
+  const sv = $('#f-prem-servers'), dl = $('#f-prem-dl');
+  if (!sv || !dl) return;
+  const onInput = () => { S.premium.servers = sv.value; S.premium.downloads = dl.value; S.premium.dirty = true; markDirty(); };
+  sv.oninput = onInput; dl.oninput = onInput;
+  // «العرض قبل الجميع»: the publish time moved forward; the page is built without links till then (_includes/post-layout.njk)
+  $$('[data-early]').forEach(b => { b.onclick = () => {
+    const t = new Date(Date.now() + Number(b.dataset.early) * 3600e3);
+    S.data.date = isoLocal(t);
+    const d = $('#f-date');
+    if (d) { d.value = new Date(t.getTime() - t.getTimezoneOffset() * 60000).toISOString().slice(0, 16); d.dispatchEvent(new Event('input')); } else markDirty();
+    toast(`اتظبط: المميزين دلوقتي، والكل ${fmtDate(t, true)}. احفظ عشان يتنشر.`);
+  }; });
+  if (S.premium.loading && S.slug && !S.premium.asked) {
+    S.premium.asked = true;
+    const key = premiumKey(S.slug);
+    api.premiumMedia(key).then(r => {
+      if (!S || S.slug === undefined || premiumKey(S.slug) !== key) return;
+      S.premium.loading = false;
+      if (!S.premium.dirty) { S.premium.servers = (r.servers || []).join('\n'); S.premium.downloads = (r.downloads || []).join('\n'); sv.value = S.premium.servers; dl.value = S.premium.downloads; }
+      const st = $('#pr-state'); if (st) st.textContent = (r.servers || []).length || (r.downloads || []).length ? `محفوظ: ${(r.servers || []).length} سيرفر و${(r.downloads || []).length} رابط تحميل` : '';
+    }).catch(() => { S.premium.loading = false; const st = $('#pr-state'); if (st) st.textContent = 'تعذّر تحميل روابط المميزين، اتأكد من الاتصال.'; });
+  }
 }
 
 // Servers
@@ -688,7 +730,7 @@ function bindDate() {
     const t = new Date(d.value);
     const h = $('#date-hint');
     if (!h) return;
-    if (t > new Date(Date.now() + 60000)) { h.innerHTML = `${icon('clock').__raw} مجدول: هيظهر على الموقع ${esc(fmtDate(t, true))}`; h.className = 'hint sched'; }
+    if (t > new Date(Date.now() + 60000)) { h.innerHTML = `${icon('clock').__raw} مجدول: هيظهر على الموقع ${esc(fmtDate(t, true))}${['shows', 'recaps', 'nostalgia'].includes(S.collection) ? ' · الأعضاء المميزين بيشغّلوه من دلوقتي' : ''}`; h.className = 'hint sched'; }
     else { h.textContent = ''; h.className = 'hint'; }
   };
   d.oninput = () => { const t = new Date(d.value); if (!isNaN(t)) { S.data.date = isoLocal(t); hint(); markDirty(); } };
@@ -802,6 +844,10 @@ async function save({ thenNew = false, force = false } = {}) {
     for (const i of S.images) localPreviews[i.publicPath] = i.previewUrl;
     S.images = [];
     S.dirty = false;
+    if (S.premium && S.premium.dirty) {
+      try { await api.premiumMediaSave(premiumKey(slug), premLines(S.premium.servers), premLines(S.premium.downloads)); S.premium.dirty = false; }
+      catch (e) { toast(`العرض اتحفظ، بس روابط المميزين لأ: ${e.message}`, 'error', 7000); }
+    }
     addPending({ collection: S.collection, slug, title: S.data.headline || S.data.title, image: S.data.image, federation: S.data.federation });
     trackLive({ commit: r.commit, committedAt: r.committedAt, title: S.data.headline || S.data.title || slug, slug });
     notify({ type: create ? 'create' : 'edit', collection: S.collection, slug, title: S.data.headline || S.data.title || slug, commit: r.commit });
