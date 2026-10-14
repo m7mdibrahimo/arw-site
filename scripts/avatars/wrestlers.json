@@ -26,7 +26,7 @@
   {"slug": "logan-paul", "ar": "لوغان بول", "en": "Logan Paul", "fed": "WWE", "wiki": "Logan_Paul"},
   {"slug": "oba-femi", "ar": "أوبا فيمي", "en": "Oba Femi", "fed": "WWE", "wiki": "Oba_Femi"},
   {"slug": "charlotte-flair", "ar": "شارلوت فلير", "en": "Charlotte Flair", "fed": "WWE", "wiki": "Charlotte_Flair"},
-  {"slug": "tiffany-stratton", "ar": "تيفاني ستراتون", "en": "Tiffany Stratton", "fed": "WWE", "wiki": "Tiffany_Stratton", "skip": "her 2026 photos on Commons are far or blurry"},
+  {"slug": "tiffany-stratton", "ar": "تيفاني ستراتون", "en": "Tiffany Stratton", "fed": "WWE", "wiki": "Tiffany_Stratton", "reject": ["File:Tiffany as US Champion.jpg"]},
   {"slug": "iyo-sky", "ar": "ايو سكاي", "en": "IYO SKY", "fed": "WWE", "wiki": "Iyo_Sky"},
   {"slug": "jade-cargill", "ar": "جايد كارجيل", "en": "Jade Cargill", "fed": "WWE", "wiki": "Jade_Cargill"},
   {"slug": "kenny-omega", "ar": "كيني أوميغا", "en": "Kenny Omega", "fed": "AEW", "wiki": "Kenny_Omega"},

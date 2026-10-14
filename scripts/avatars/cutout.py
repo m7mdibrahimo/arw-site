@@ -86,13 +86,13 @@ for it in items:
         thumb.thumbnail((180, 180))
         debug.append((it['slug'], k, chosen is not None and c is chosen[0], thumb))
     if chosen is None or chosen[2] is None:
-        print(f"✗ {it['slug']}: no 2026 photo with one clear, close face")
+        print(f"✗ {it['slug']}: no 2025–2026 photo with one clear, close face")
         continue
     c, img, f = chosen
     out = frame(img, f)
     out.save(os.path.join(OUT, it['slug'] + '.webp'), 'WEBP', quality=86, method=6)
     credits.append({**{k: it.get(k, '') for k in ('slug', 'ar', 'en', 'fed')}, **{k: c.get(k, '') for k in ('owner', 'license', 'source', 'year')}})
-    sheet.append((it['en'], it['fed'], out))
+    sheet.append((it['en'], f"{it['fed']} {c.get('year', '')}", out))
     print(f"✓ {it['slug']} ({os.path.basename(c['file'])})")
 
 json.dump(credits, open(os.path.join(OUT, 'credits.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)

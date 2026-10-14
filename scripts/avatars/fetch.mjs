@@ -1,4 +1,4 @@
-// The wrestlers' pictures a visitor can pick for a comment (owner 2026-10-14): real photos taken in 2026 only, the face
+// The wrestlers' pictures a visitor can pick for a comment (owner 2026-10-14): real photos taken in 2026 (or 2025, owner's later word), the face
 // clear, cut square round it («تجيب صور ليهم حديثة ووشهم واضح فيها وتقصها علي وشهم بالظبط ولكن احدث صور 2026 فقط»).
 // Free photos from Wikimedia Commons (their authors and licences are kept and shown under the pictures).
 // Step 1 (this file): each star's photos taken in 2026, newest first, downloaded to tmp/avatars/raw/ and listed in
@@ -18,7 +18,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const RAW = 'tmp/avatars/raw';
-const YEAR = '2026';
+// 2026 first; 2025 for a star with no clear 2026 photo (owner 2026-10-14: «لو عايز تحط 2025 مع 2026 عادي»)
+const YEARS = ['2026', '2025'];
+const yearOf = (s) => YEARS.find((y) => String(s).includes(y)) || '';
 const MAX = 12; // candidates downloaded per star
 const list = JSON.parse(fs.readFileSync('scripts/avatars/wrestlers.json', 'utf8'));
 // Wikimedia asks for a name and a way to reach whoever asks, and no hurry (it answered 429 to a faster run)
@@ -95,7 +97,7 @@ async function photos2026(w) {
     try {
       for (const m of await members(cat)) {
         if (m.ns === 6) { files.add(m.title); inCat.add(m.title); }
-        else if (m.ns === 14 && m.title.includes(YEAR)) for (const f of await members(m.title)) if (f.ns === 6) { files.add(f.title); inCat.add(f.title); }
+        else if (m.ns === 14 && YEARS.some((y) => m.title.includes(y))) for (const f of await members(m.title)) if (f.ns === 6) { files.add(f.title); inCat.add(f.title); }
       }
     } catch (e) { console.log(`  ${w.slug}: ${cat}: ${e.message}`); }
   }
@@ -111,8 +113,8 @@ async function photos2026(w) {
       const m = ii.extmetadata || {};
       const license = strip(m.LicenseShortName && m.LicenseShortName.value);
       const taken = m.DateTimeOriginal ? strip(m.DateTimeOriginal.value) : String(ii.timestamp || '');
-      if (!FREE.test(license) || !taken.includes(YEAR)) continue;
-      if ((pg.title.match(/\b(19|20)\d\d/g) || []).some((y) => y !== YEAR)) continue;
+      if (!FREE.test(license) || !yearOf(taken)) continue;
+      if ((pg.title.match(/\b(19|20)\d\d/g) || []).some((y) => !YEARS.includes(y))) continue;
       if ((w.reject || []).includes(pg.title)) continue;
       keep.push({ id: pg.pageid, title: pg.title, about: plain(strip(m.ImageDescription && m.ImageDescription.value)), url: ii.thumburl || ii.url, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, taken });
     }
@@ -130,12 +132,13 @@ async function photos2026(w) {
       if (byDepicts || byName || byAbout) found.push({ ...k, why: byDepicts ? 'depicts' : byName ? 'name' : 'description' });
     }
   }
-  found.sort((a, b) => String(b.taken).localeCompare(String(a.taken)));
-  console.log(`  ${w.slug}: ${qid || '-'} ${cat || '-'}, ${all.length} files, ${found.length} of them from ${YEAR}`);
+  // 2026's first, then 2025's (the dates are written many ways, so by their year, the order Commons gave within it)
+  found.sort((a, b) => Number(yearOf(b.taken)) - Number(yearOf(a.taken)));
+  console.log(`  ${w.slug}: ${qid || '-'} ${cat || '-'}, ${all.length} files, ${found.length} of them from ${YEARS.join('/')}`);
   const got = [];
   for (const [k, f] of found.slice(0, MAX).entries()) {
     const file = path.join(RAW, `${w.slug}-${k}${path.extname(f.url.split('?')[0]).toLowerCase() || '.jpg'}`);
-    try { fs.writeFileSync(file, await wm(f.url, false)); got.push({ file, owner: f.owner, license: f.license, source: f.source, year: YEAR, title: f.title, why: f.why }); }
+    try { fs.writeFileSync(file, await wm(f.url, false)); got.push({ file, owner: f.owner, license: f.license, source: f.source, year: yearOf(f.taken), title: f.title, why: f.why }); }
     catch (e) { console.log(`  ${w.slug}: ${e.message}`); }
   }
   return got;
@@ -148,9 +151,9 @@ for (const w of list) {
   try {
     const candidates = await photos2026(w);
     if (candidates.length) out.push({ ...w, candidates });
-    console.log(`${candidates.length ? '✓' : '✗'} ${w.slug}: ${candidates.length} photos from ${YEAR}`);
+    console.log(`${candidates.length ? '✓' : '✗'} ${w.slug}: ${candidates.length} photos from ${YEARS.join('/')}`);
   } catch (e) { console.log(`✗ ${w.slug}: ${e.message}`); }
 }
 fs.writeFileSync('tmp/avatars/list.json', JSON.stringify(out, null, 1));
-console.log(`${out.length} of ${list.length} stars have photos from ${YEAR}`);
+console.log(`${out.length} of ${list.length} stars have photos from ${YEARS.join('/')}`);
 if (!out.length) process.exit(1);
