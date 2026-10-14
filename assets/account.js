@@ -225,6 +225,7 @@
     // the site's own account: the gold badge; its name and picture stay as the site's
     v.classList.toggle('is-official', !!m.official);
     $('.acct-badge span', v).textContent = m.official ? 'الحساب الرسمي' : 'حساب موثّق';
+    $('.acct-badge', v).hidden = !m.official && m.blue === false;
     $('.acct-badge', v).title = m.official ? 'الحساب الرسمي لعرب راسلنج' : 'حساب موثّق في عرب راسلنج';
     $('[data-open="pics"]', v).disabled = !!m.official;
     var f = forms.profile;

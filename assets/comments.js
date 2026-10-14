@@ -124,7 +124,7 @@
     who.textContent = c.official ? OFFICIAL : c.name;
     who.dir = 'auto'; // an English name on the Arabic page (and an Arabic one on the English page) reads its own way
     meta.appendChild(who);
-    if (c.member && !c.official) {
+    if (c.member && !c.official && c.blue !== false) {
       var mb = document.createElement('span');
       mb.className = 'arw-cm-member';
       mb.title = 'عضو موثّق في عرب راسلنج';
@@ -383,7 +383,7 @@
         if (d.name) name = d.name;
         // a picture the worker kept: its address from now on, not the picture itself
         if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
-        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official });
+        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official, blue: d.blue });
         textIn.value = '';
         count();
         say('تم نشر تعليقك، شكرًا لك!', 'ok');
@@ -438,7 +438,7 @@
           if (!member) store.set(NAME, name);
           if (d.name) name = d.name;
           if (d.pic && /^https:/.test(d.pic) && !member) setPic(d.pic);
-          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official });
+          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official, blue: d.blue });
           replyForm = null;
           draw(expanded);
           var mine = document.getElementById('c-' + d.id);

@@ -836,7 +836,7 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 @media (max-width: 720px) {
   .mb-card { grid-template-columns: 64px 1fr; padding: 16px; }
   .mb-av, .panel .mb-av { width: 64px; height: 64px; font-size: 24px; }
-  .mb-card #mb-ban { grid-column: 1 / -1; justify-self: start; }
+
   .mb-card-tx h1 { font-size: 21px; }
   .mb-facts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -856,3 +856,9 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .mb-gold-tag { font-style: normal; font-size: 12px; font-weight: 900; color: #a86d05; background: color-mix(in srgb, #e09a12 15%, transparent); padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
 [data-theme="dark"] .mb-gold-tag { color: #f2bd4b; }
 .mb-row.is-official { background: color-mix(in srgb, #ffd25a 12%, var(--cream)); }
+/* the blue badge, given or taken by the owner */
+.mb-badge-btn svg { width: 16px; height: 16px; flex: none; }
+.mb-badge-btn:not(.is-on) svg { filter: grayscale(1); opacity: .45; }
+.mb-row .cm-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.mb-card-acts { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 720px) { .mb-card .mb-card-acts { grid-column: 1 / -1; justify-content: flex-start; } }

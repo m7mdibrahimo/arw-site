@@ -90,8 +90,8 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string; mname?: string };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "" });
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string; mname?: string; mbadge?: number };
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "", blue: !!r.mname && !r.official && r.mbadge !== 0 });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -150,7 +150,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     if (!path) return reply({ items: [] });
     // a member's comment: their username too, for the «عضو» badge and the link to their page
     await ensureMembers(db);
-    const rows = await db.prepare(`SELECT c.id, c.name, c.text, c.pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname
+    const rows = await db.prepare(`SELECT c.id, c.name, c.text, c.pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname, m.badge AS mbadge
       FROM comments c LEFT JOIN members m ON m.id = c.member AND c.member > 0 WHERE c.path = ?1 AND c.deleted = 0 ORDER BY c.at DESC LIMIT 400`).bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }
@@ -228,7 +228,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   }
   // whoever wrote what this answers is told (not someone answering themselves)
   if (target?.owner && target.owner !== owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
-  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official });
+  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official, blue: !!member && !official && (member as any).badge !== 0 });
 }
 
 // ── the panel ──────────────────────────────────────────────────────────────

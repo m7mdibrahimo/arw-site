@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
-import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount } from '../worker/src/members';
+import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
 
 function d1() {
@@ -197,4 +197,28 @@ test('the site\'s own account: made from the panel, signs in on the site, commen
   assert.equal((await studioBanMember(e, made.account.id, true)).success, false);
   // members still can't take the name
   assert.ok(usernameProblem('ArabWrestling'));
+});
+
+test('the blue badge: every member has it, the owner takes it away and gives it back (on the site and on the account)', async () => {
+  const e = env();
+  e.MEDIA = null;
+  const s = await signup(e);
+  assert.equal(s.body.member.blue, true);
+  const STORY = '/news/خبر/';
+  const headers = { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json', Authorization: `Bearer ${s.body.token}` };
+  const posted = await handleComments(new Request('https://w.example/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', name: 'x', text: 'تعليق' }), headers }), e, new URL('https://w.example/comments')).then((x) => x.json() as any);
+  assert.equal(posted.blue, true);
+  const list = async () => (await handleComments(new Request(`https://w.example/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w.example/comments?p=${encodeURIComponent(STORY)}`)).then((x) => x.json() as any)).items[0];
+  assert.equal((await list()).blue, true);
+  assert.equal((await studioBadgeMember(e, s.body.member.id, false)).success, true);
+  assert.equal((await list()).blue, false);
+  assert.equal((await list()).member, 'kareem_10');
+  assert.equal((await call(e, '/me', undefined, s.body.token)).body.member.blue, false);
+  assert.equal((await studioMemberDetail(e, s.body.member.id) as any).member.badge, 0);
+  await studioBadgeMember(e, s.body.member.id, true);
+  assert.equal((await list()).blue, true);
+  // the site's own account keeps its gold one, never the blue
+  const off: any = await studioOfficialAccount(e, { username: 'ArabWrestling', email: 'contact@arab-wrestling.com', password: 'ringside2026' });
+  assert.equal((await studioBadgeMember(e, off.account.id, true)).success, false);
+  assert.equal((await studioBadgeMember(e, 999, true)).success, false);
 });

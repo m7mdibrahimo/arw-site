@@ -17,7 +17,10 @@ const GOLD = '<svg class="mb-blue mb-gold" viewBox="0 0 24 24" width="15" height
 const OFFICIAL_NAME = 'عرب راسلنج';
 /** A member as the site shows them: the site's own account is «عرب راسلنج», its logo and the gold badge */
 const shownName = (m) => (m.official ? OFFICIAL_NAME : m.display || m.username);
-const badgeOf = (m) => raw(m.official ? GOLD : BLUE);
+const badgeOf = (m) => raw(m.official ? GOLD : m.badge === 0 ? '' : BLUE);
+const isOwner = () => getUser()?.role === 'owner';
+/** The owner gives the blue badge or takes it away (owner 2026-10-14: «ادي العلامة الزرقاء التوثيق لاي حد او اشيله») */
+const badgeBtn = (m, cls = 'btn-sm') => (isOwner() && !m.official ? html`<button class="btn ${cls} mb-badge-btn ${m.badge === 0 ? '' : 'is-on'}" data-badge="${m.id}" title="${m.badge === 0 ? 'ادّيله العلامة الزرقاء' : 'شيل العلامة الزرقاء'}">${raw(BLUE)}${m.badge === 0 ? 'ادّيله العلامة' : 'شيل العلامة'}</button>` : '');
 const FED_NAME = { WWE: 'WWE', AEW: 'AEW', NJPW: 'NJPW', TNA: 'TNA', ROH: 'ROH', MLP: 'MLP', CMLL: 'CMLL', UFC: 'UFC' };
 const REGION = (() => { try { return new Intl.DisplayNames(['ar'], { type: 'region' }); } catch { return null; } })();
 const countryName = (cc) => { try { return (REGION && /^[A-Z]{2}$/.test(cc || '') && REGION.of(cc)) || ''; } catch { return ''; } };
@@ -61,7 +64,7 @@ function row(m) {
       </div>
     </div>
     <div class="cm-actions">
-      ${m.official ? html`<em class="mb-gold-tag">حسابك الرسمي</em>` : html`<button class="btn btn-sm ${m.banned ? '' : 'btn-danger-soft'}" data-ban="${m.id}" data-on="${m.banned ? '0' : '1'}">${m.banned ? 'رجّعه' : 'وقّفه'}</button>`}
+      ${m.official ? html`<em class="mb-gold-tag">حسابك الرسمي</em>` : html`${badgeBtn(m)}<button class="btn btn-sm ${m.banned ? '' : 'btn-danger-soft'}" data-ban="${m.id}" data-on="${m.banned ? '0' : '1'}">${m.banned ? 'رجّعه' : 'وقّفه'}</button>`}
     </div>
   </article>`;
 }
@@ -117,6 +120,15 @@ export async function renderSiteMembers(page) {
       catch (e) { toast(e.message, 'error'); b.disabled = false; }
     });
   };
+  $('#mb-list').addEventListener('click', async (e) => {
+    const b = e.target.closest('[data-badge]');
+    if (!b) return;
+    const m = items.find(x => String(x.id) === b.dataset.badge);
+    const on = m.badge === 0;
+    b.disabled = true;
+    try { await api.siteMemberBadge(m.id, on); m.badge = on ? 1 : 0; toast(on ? 'خد العلامة الزرقاء ✓' : 'اتشالت العلامة الزرقاء ✓'); draw(); }
+    catch (err) { toast(err.message, 'error'); b.disabled = false; }
+  });
   draw();
   if ($('#mb-off')) officialCard($('#mb-off'));
   $('#mb-export').onclick = () => exportCsv(items);
@@ -143,7 +155,7 @@ export async function renderSiteMember(page, id) {
           <p class="muted"><span dir="ltr">@${m.username}</span></p>
           <p>${m.official ? html`<em class="mb-gold-tag">الحساب الرسمي للموقع</em>` : m.banned ? html`<em class="mb-flag">موقوف</em>` : html`<em class="mb-ok">${icon('check')}حساب شغال</em>`}</p>
         </div>
-        ${m.official ? '' : html`<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button>`}
+        ${m.official ? '' : html`<div class="mb-card-acts">${badgeBtn(m, '')}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
       </section>
       <div class="mb-facts-grid">
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}
@@ -167,6 +179,13 @@ export async function renderSiteMember(page, id) {
           : html`<p class="muted">لسه ماعلّقش.</p>`}
       </section>
     </div>`);
+  const bb = $('[data-badge]', page);
+  if (bb) bb.onclick = async () => {
+    const on = m.badge === 0;
+    bb.disabled = true;
+    try { await api.siteMemberBadge(m.id, on); toast(on ? 'خد العلامة الزرقاء ✓' : 'اتشالت العلامة الزرقاء ✓'); renderSiteMember(page, id); }
+    catch (e) { toast(e.message, 'error'); bb.disabled = false; }
+  };
   if ($('#mb-ban')) $('#mb-ban').onclick = async () => {
     const on = !m.banned;
     const ok = await dialog({ title: on ? `توقيف ${name}` : `رجوع ${name}`, body: html`<p class="muted small">${on ? 'هيخرج من حسابه على كل الأجهزة، ومش هيقدر يدخل ولا يعلّق باسمه لحد ما ترجّعه.' : 'هيقدر يدخل حسابه ويعلّق تاني.'}</p>`, confirm: on ? 'وقّفه' : 'رجّعه', danger: on });
