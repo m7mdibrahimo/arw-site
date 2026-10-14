@@ -264,3 +264,8 @@ test('INCIDENTS #499: prefixed number word before digits, dropped alef after ا�
   assert.ok(codes('احتفاله بتسجيل تاتشداونين خلال المواجهة.').includes('dual_noun'));
   assert.ok(BLOCKING_QA_CODES.includes('dropped_alef'));
 });
+
+// INCIDENTS #521: «كللا من» (doubled lam) reached the Rashmore story.
+test('«كللا» is corrected to «كلا»', () => {
+  assert.equal(applyCorrections('واختار رينز كللا من هالك هوجان'), 'واختار رينز كلا من هالك هوجان');
+});
