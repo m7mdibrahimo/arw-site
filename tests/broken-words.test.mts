@@ -302,3 +302,8 @@ test('dual «اتحادا X وY» is blocked; «درام غيت» and «تواج
   assert.match(applyCorrections('نظم اتحاد درام غيت'), /دراغون غيت/);
   assert.match(applyCorrections('خلال فترة تواجهم في الجامعة'), /تواجدهم/);
 });
+
+test('«WWE العالمية للفرق للسيدات» becomes «WWE للفرق للسيدات» (INCIDENTS #550)', () => {
+  assert.equal(applyCorrections('بطلات WWE العالمية للفرق للسيدات'), 'بطلات WWE للفرق للسيدات');
+  assert.match(applyCorrections('بطولة AEW العالمية للفرق للسيدات'), /AEW العالمية للفرق للسيدات/);
+});

@@ -4884,3 +4884,10 @@ test("a one-off program's library page title leads with the year, as visitors se
   const tpl = readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
   assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\)\s*%\}\{\{ lp\.prog\.arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم كامل/);
 });
+
+test('weekly shows carry the generic «عروض المصارعة الحرة مترجم» in their structured-data names (INCIDENTS #550)', async () => {
+  const { createRequire } = await import('node:module');
+  const s = createRequire(import.meta.url)('../lib/show-seo.cjs');
+  const f = s.showNameForms({ headline: 'عرض الرو 12.10.2026 مترجم', title: 'WWE RAW 12.10.2026', programName: 'WWE RAW', eventDate: '2026-10-12', aliases: ['عرض الرو', 'الرو'], isShow: true, archive: false });
+  assert.ok(f.includes('عروض المصارعة الحرة مترجم'));
+});
