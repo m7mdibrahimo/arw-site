@@ -17,9 +17,8 @@ items = json.load(open('tmp/avatars/list.json', encoding='utf8'))
 net = cv2.dnn.readNetFromCaffe('tmp/avatars/deploy.prototxt', 'tmp/avatars/face.caffemodel')
 
 
-def faces(img):
-    """Every face: (x, y, w, h, confidence), most sure first"""
-    rgb = np.array(img)
+def detect(rgb, ox=0, oy=0):
+    """The detector on one picture (it sees it shrunk to 300×300), boxes in the whole photo's pixels"""
     H, W = rgb.shape[:2]
     blob = cv2.dnn.blobFromImage(cv2.resize(cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR), (300, 300)), 1.0, (300, 300), (104.0, 177.0, 123.0))
     net.setInput(blob)
@@ -29,8 +28,36 @@ def faces(img):
         if conf < 0.5:
             continue
         x1, y1, x2, y2 = (d[3:7] * np.array([W, H, W, H])).astype(int)
-        found.append((int(x1), int(y1), int(x2 - x1), int(y2 - y1), conf))
-    return sorted(found, key=lambda f: -f[4])
+        found.append((int(x1) + ox, int(y1) + oy, int(x2 - x1), int(y2 - y1), conf))
+    return found
+
+
+def overlap(a, b):
+    ix = max(0, min(a[0] + a[2], b[0] + b[2]) - max(a[0], b[0]))
+    iy = max(0, min(a[1] + a[3], b[1] + b[3]) - max(a[1], b[1]))
+    inter = ix * iy
+    return inter / float(min(a[2] * a[3], b[2] * b[3]) or 1)
+
+
+def faces(img):
+    """Every face: (x, y, w, h, confidence), most sure first. The whole photo, then its parts (halves and thirds,
+    overlapping): a face far from the camera is too small for the detector in the whole photo, not in a part of it"""
+    rgb = np.array(img)
+    H, W = rgb.shape[:2]
+    found = detect(rgb)
+    for n in (2, 3):
+        tw, th = int(W / n * 1.5), int(H / n * 1.5)
+        for i in range(n):
+            for j in range(n):
+                x0 = min(max(0, int(W * i / n - tw * 0.17)), max(0, W - tw))
+                y0 = min(max(0, int(H * j / n - th * 0.17)), max(0, H - th))
+                found += detect(rgb[y0:y0 + th, x0:x0 + tw], x0, y0)
+    # the same face seen in several parts: kept once, the surest
+    out = []
+    for f in sorted(found, key=lambda f: -f[4]):
+        if f[2] > 4 and f[3] > 4 and all(overlap(f, g) < 0.5 for g in out):
+            out.append(f)
+    return out
 
 
 def main_face(found, size):
@@ -39,7 +66,8 @@ def main_face(found, size):
     if not good:
         return None
     first = max(good, key=lambda f: f[2])
-    if first[4] < 0.85 or first[2] < min(size) * 0.06 or first[2] < 64:
+    # enough pixels for a sharp picture (the photo is used at full size, so a face far away can still be big enough)
+    if first[4] < 0.85 or first[2] < 80:
         return None
     if any(g is not first and g[2] >= first[2] * 0.6 for g in good):
         return None
@@ -48,8 +76,9 @@ def main_face(found, size):
 
 def load(path):
     img = ImageOps.exif_transpose(Image.open(path)).convert('RGB')
-    if img.size[0] > 1600:
-        img = img.resize((1600, round(img.size[1] * 1600 / img.size[0])), Image.LANCZOS)
+    if max(img.size) > 3200:
+        k = 3200 / max(img.size)
+        img = img.resize((round(img.size[0] * k), round(img.size[1] * k)), Image.LANCZOS)
     return img
 
 

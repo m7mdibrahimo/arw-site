@@ -105,7 +105,7 @@ async function photos2026(w) {
   const found = [];
   for (let i = 0; i < all.length; i += 40) {
     const batch = all.slice(i, i + 40);
-    const info = await wm(`${API}action=query&prop=imageinfo&iiprop=url|size|extmetadata|timestamp&iiurlwidth=1600&titles=${encodeURIComponent(batch.join('|'))}`);
+    const info = await wm(`${API}action=query&prop=imageinfo&iiprop=url|size|extmetadata|timestamp&iiurlwidth=3200&titles=${encodeURIComponent(batch.join('|'))}`);
     const keep = [];
     for (const pg of Object.values(info.query.pages)) {
       const ii = (pg.imageinfo || [])[0];
