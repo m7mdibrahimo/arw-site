@@ -35,6 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
+import { handleMembers, studioMembers, studioBanMember } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -90,6 +91,9 @@ export interface Env {
 
   // KV binding
   PUSH_KV: KVNamespace;
+  // Mail to the members (worker/src/members.ts): a Resend key, set by the owner in Cloudflare (Variables and Secrets).
+  // Without it, sign-up works the same and a recovery code is the way back into an account.
+  RESEND_API_KEY?: string;
   /** D1 «arw-analytics»: the site's own statistics, people only (INCIDENTS #457). */
   ANALYTICS?: D1Database;
 }
@@ -3055,6 +3059,20 @@ export default {
       if (path === "/v") return recordView(request, env);
       // Visitors' comments: a page's comments, a new one or a reply, a visitor's picture, their inbox and push (worker/src/comments.ts)
       if (path === "/comments" || path.startsWith("/comments/")) return handleComments(request, env as any, url);
+      // The site's members: sign-up with a captcha, sign-in, profile, recovery (worker/src/members.ts)
+      if (path === "/members" || path.startsWith("/members/")) return handleMembers(request, env as any, url);
+      if (path === "/api/studio/members" && request.method === "GET") {
+        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف الأعضاء." }, 403);
+        return json(await studioMembers(env as any));
+      }
+      if (path === "/api/studio/members/ban" && request.method === "POST") {
+        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك توقف الأعضاء." }, 403);
+        const body: any = await request.json().catch(() => ({}));
+        const r = await studioBanMember(env as any, body.id, body.on);
+        const who = await studioUser(request, env as any);
+        if (who && r.success) await studioAudit(env as any, who.user, body.on ? "members.ban" : "members.unban", { id: Number(body.id) || 0 }).catch(() => {});
+        return json(r, r.success ? 200 : 400);
+      }
       if (path === "/api/studio/comments" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف التعليقات." }, 403);
         return json(await studioComments(env as any));

@@ -20,6 +20,7 @@ const EXTRAS = [
   { id: 'status', label: 'حالة الموقع', text: 'النشر على المنصات ومصادر الأخبار' },
   { id: 'tools', label: 'أدوات النشر', text: 'النشر اليدوي على المنصات، سحب الأخبار، المثبت، الريلز', risky: true },
   { id: 'comments', label: 'التعليقات', text: 'قراءة تعليقات الزوار وحذفها' },
+  { id: 'members', label: 'أعضاء الموقع', text: 'قائمة اللي عملوا حساب على الموقع، وتوقيفهم' },
 ];
 const all = (acts) => SECTIONS.flatMap(s => acts.map(a => `${s.id}.${a}`));
 const PRESETS = [
@@ -35,6 +36,7 @@ const ACTION_TEXT = {
   password: 'غيّر كلمة السر بتاعته', 'analytics.connect': 'ربط الإحصائيات', 'analytics.disconnect': 'فصل الإحصائيات',
   'comments.delete': 'حذف تعليقات زوار',
   'comments.reply': 'رد على تعليق باسم الموقع',
+  'members.ban': 'وقّف عضو في الموقع', 'members.unban': 'رجّع عضو في الموقع',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };
 

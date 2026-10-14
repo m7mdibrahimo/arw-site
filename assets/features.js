@@ -699,7 +699,10 @@
     sheet.className = 'arw-more-sheet';
     sheet.setAttribute('role', 'dialog');
     sheet.setAttribute('aria-label', 'المزيد من الأقسام');
-    sheet.innerHTML = '<div class="arw-more-grip"></div><div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
+    var mem = memberNow();
+    sheet.innerHTML = '<div class="arw-more-grip"></div>' +
+      '<a class="arw-more-acct" href="' + (document.documentElement.lang === 'en' ? '/en/account/' : '/account/') + '"><span class="arw-more-acct-av">' + (mem ? memberAvatar(mem) : USER_IC) + '</span><span><b></b><small></small></span><i aria-hidden="true">‹</i></a>' +
+      '<div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
       '<a href="/library/">' + ICONS.library + 'مكتبة العروض</a>' +
       '<a href="/federations/">' + ICONS.feds + 'الاتحادات</a>' +
       '<a href="/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
@@ -707,6 +710,8 @@
       '<a class="more-tg" href="https://t.me/arab_wrestling" target="_blank" rel="noopener">' + ICONS.tg + 'قناة التليجرام</a>' +
       '<a class="more-support" href="/support/" style="grid-column:1/-1; justify-content:center;">' + ICONS.heart + 'ادعم الموقع</a>' +
       '</div>';
+    sheet.querySelector('.arw-more-acct b').textContent = mem ? (mem.display || mem.username) : 'حسابك في عرب راسلنج';
+    sheet.querySelector('.arw-more-acct small').textContent = mem ? 'صفحتك وإعداداتك' : 'ادخل أو أنشئ حسابًا مجانيًا';
     document.body.appendChild(overlay);
     document.body.appendChild(sheet);
     var moreBtn = nav.querySelector('.arw-more-btn');
@@ -766,12 +771,38 @@
       .catch(function () {});
   }
 
+  // The member's way in (owner 2026-10-14: the site's accounts, /account/): a button in the header on computers (the
+  // member's picture once signed in), and the first line of the phones' «المزيد» sheet.
+  function memberNow() {
+    try { var s = JSON.parse(localStorage.getItem('arw-member') || 'null'); return s && s.token && s.member ? s.member : null; } catch (e) { return null; }
+  }
+  function memberAvatar(m) {
+    var pic = String(m.pic || '');
+    var src = /^w:[a-z0-9-]+$/.test(pic) ? '/avatars/' + pic.slice(2) + '.webp' : /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic) ? pic : '';
+    var letter = (String(m.display || m.username).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
+    return src ? '<img src="' + src + '" alt="">' : '<b>' + letter.replace(/[<>&"]/g, '') + '</b>';
+  }
+  var USER_IC = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>';
+  function initAccountButton() {
+    var util = document.querySelector('header #navMenu li.utility-row');
+    if (!util || util.querySelector('.arw-acct-btn')) return;
+    var m = memberNow();
+    var a = document.createElement('a');
+    a.className = 'theme-toggle arw-acct-btn' + (m ? ' is-in' : '');
+    a.href = document.documentElement.lang === 'en' ? '/en/account/' : '/account/';
+    a.setAttribute('aria-label', m ? 'حسابك' : 'تسجيل الدخول');
+    a.title = m ? (m.display || m.username) : 'تسجيل الدخول أو إنشاء حساب';
+    a.innerHTML = m ? memberAvatar(m) : USER_IC;
+    util.insertBefore(a, util.querySelector('.bookmarks-btn') || util.firstChild);
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
     initShare();
     initMobileChrome();
     initCommentReplies();
+    initAccountButton();
   }
 
   if (document.readyState === 'loading') {

@@ -113,6 +113,9 @@ export const api = {
   // the site's own reply, as «عرب راسلنج» with the blue badge
   commentReply: (id, text) => call('/api/studio/comments/reply', { method: 'POST', body: { id: Number(id), text } }),
   commentHeart: (id, on) => call('/api/studio/comments/heart', { method: 'POST', body: { id: Number(id), on: !!on } }),
+  // the site's members (worker/src/members.ts)
+  siteMembers: () => call('/api/studio/members'),
+  siteMemberBan: (id, on) => call('/api/studio/members/ban', { method: 'POST', body: { id: Number(id), on: !!on } }),
 };
 
 // ── Content ────────────────────────────────────────────────────────────────

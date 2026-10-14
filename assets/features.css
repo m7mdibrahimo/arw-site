@@ -870,3 +870,20 @@ body.arw-has-bottom-nav .arw-reply-toast{ bottom:calc(76px + env(safe-area-inset
 .arw-rt-text{ font-size:13px; color:var(--muted, #6b6b6b); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .arw-rt-x{ flex:0 0 auto; border:0; background:none; color:var(--muted, #6b6b6b); padding:4px; border-radius:8px; cursor:pointer; }
 .arw-rt-x:hover{ color:var(--ink, #141414); }
+
+/* The member's button (assets/features.js): in the header on computers, the first line of the phones' «المزيد» */
+#navMenu .arw-acct-btn{ display:inline-flex; align-items:center; justify-content:center; overflow:hidden; text-decoration:none; }
+#navMenu .arw-acct-btn.is-in{ padding:0; border:2px solid var(--teal, #0e9594); }
+#navMenu .arw-acct-btn img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
+#navMenu .arw-acct-btn b{ font:900 15px 'Cairo',sans-serif; color:var(--teal, #0e9594); }
+@media (max-width: 768px), (orientation: landscape) and (max-height: 550px), (max-height: 500px){
+  html body header #navMenu .arw-acct-btn{ display:none !important; }
+}
+.arw-more-acct{ display:flex; align-items:center; gap:12px; margin:4px 0 14px; padding:12px 14px; border-radius:16px; background:var(--teal-soft, #e3f5f3); color:var(--ink, #1e2530); text-decoration:none; }
+.arw-more-acct-av{ flex:0 0 44px; width:44px; height:44px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center; background:var(--card, #fff); color:var(--teal, #0e9594); }
+.arw-more-acct-av img{ width:100%; height:100%; object-fit:cover; }
+.arw-more-acct-av b{ font:900 18px 'Cairo',sans-serif; }
+.arw-more-acct > span:nth-child(2){ flex:1; min-width:0; display:flex; flex-direction:column; gap:1px; }
+.arw-more-acct > span:nth-child(2) b{ font:900 15px 'Cairo',sans-serif; }
+.arw-more-acct small{ font-size:12.5px; color:var(--muted, #6c7383); }
+.arw-more-acct i{ font-style:normal; font-size:22px; color:var(--teal, #0e9594); }

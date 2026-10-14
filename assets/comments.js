@@ -27,6 +27,10 @@
   var lenEl = box.querySelector('.arw-cm-len');
   var send = box.querySelector('.arw-cm-send');
   var shownAt = Date.now();
+  // a member of the site (assets/account.js keeps the session): comments under their own name and picture
+  var member = null;
+  try { var ms = JSON.parse(localStorage.getItem('arw-member') || 'null'); if (ms && ms.token && ms.member) member = ms; } catch (e) {}
+  function headers() { var h = { 'Content-Type': 'application/json' }; if (member) h.Authorization = 'Bearer ' + member.token; return h; }
   var FIRST = 10;
   var NOTE = note.textContent;
   var NAME = 'arw-cm-name';
@@ -116,6 +120,13 @@
     who.textContent = c.official ? OFFICIAL : c.name;
     who.dir = 'auto'; // an English name on the Arabic page (and an Arabic one on the English page) reads its own way
     meta.appendChild(who);
+    if (c.member && !c.official) {
+      var mb = document.createElement('span');
+      mb.className = 'arw-cm-member';
+      mb.textContent = 'عضو';
+      mb.title = 'عضو مسجّل في عرب راسلنج';
+      meta.appendChild(mb);
+    }
     if (c.official) {
       var badge = document.createElement('span');
       badge.className = 'arw-cm-badge';
@@ -275,7 +286,7 @@
       drawStars();
     }).catch(function () {});
   }
-  pick.addEventListener('click', function () { openPicker(picker.hidden); });
+  pick.addEventListener('click', function () { if (member) { location.href = EN ? '/en/account/' : '/account/'; return; } openPicker(picker.hidden); });
   Array.prototype.forEach.call(box.querySelectorAll('.arw-cm-fed'), function (b) {
     b.addEventListener('click', function () {
       fed = b.getAttribute('data-fed');
@@ -310,6 +321,22 @@
 
   // ── the form ─────────────────────────────────────────────────────────────
   nameIn.value = store.get(NAME, '') || '';
+  if (member) {
+    // the member's name and picture, as their account has them (changed on /account/)
+    nameIn.value = member.member.display || member.member.username;
+    nameIn.readOnly = true;
+    nameIn.classList.add('is-member');
+    pick.title = 'غيّر صورتك من صفحة حسابك';
+    pic = member.member.pic || '';
+    showPic();
+  } else {
+    // a visitor: the way to keep their name
+    var join = document.createElement('a');
+    join.className = 'arw-cm-join';
+    join.href = (EN ? '/en/account/' : '/account/') + '?new&back=' + encodeURIComponent(location.pathname + '#comments');
+    join.textContent = 'احجز اسمك بحساب مجاني';
+    note.parentNode.insertBefore(join, note.nextSibling);
+  }
   function count() {
     var n = textIn.value.length;
     lenEl.textContent = n + ' / 1000';
@@ -340,15 +367,16 @@
     var h1 = document.querySelector('h1');
     fetch(API, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: headers(),
       body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: form.website.value, t: Date.now() - shownAt, k: myKey() })
     })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
       .then(function (d) {
-        store.set(NAME, name);
+        if (!member) store.set(NAME, name);
+        if (d.name) name = d.name;
         // a picture the worker kept: its address from now on, not the picture itself
         if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
-        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now() });
+        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '' });
         textIn.value = '';
         count();
         say('تم نشر تعليقك، شكرًا لك!', 'ok');
@@ -368,7 +396,7 @@
   function openReply(c, el) {
     if (replyForm) { var was = replyForm.target; replyForm.el.remove(); replyForm = null; if (was === c.id) return; }
     var who = c.official ? OFFICIAL : c.name;
-    var saved = store.get(NAME, '') || '';
+    var saved = member ? (member.member.display || member.member.username) : (store.get(NAME, '') || '');
     var f = document.createElement('form');
     f.className = 'arw-cm-rform';
     f.noValidate = true;
@@ -395,14 +423,15 @@
       var h1 = document.querySelector('h1');
       fetch(API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: headers(),
         body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: '', t: Math.max(Date.now() - opened, Date.now() - shownAt), k: myKey(), parent: c.id })
       })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
         .then(function (d) {
-          store.set(NAME, name);
-          if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
-          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id });
+          if (!member) store.set(NAME, name);
+          if (d.name) name = d.name;
+          if (d.pic && /^https:/.test(d.pic) && !member) setPic(d.pic);
+          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '' });
           replyForm = null;
           draw(expanded);
           var mine = document.getElementById('c-' + d.id);

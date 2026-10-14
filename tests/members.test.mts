@@ -1,0 +1,158 @@
+// The site's members (owner 2026-10-14): sign-up with a captcha, sign-in, profile, recovery, and comments as a member.
+// Run against a real SQLite database standing in for D1 (as tests/comments.test.mts).
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { DatabaseSync } from 'node:sqlite';
+import { handleMembers, captchaSvg, usernameProblem, passwordProblem, latinDigits, studioMembers, studioBanMember } from '../worker/src/members';
+import { handleComments } from '../worker/src/comments';
+
+function d1() {
+  const db = new DatabaseSync(':memory:');
+  const stmt = (sql: string, args: unknown[] = []): any => ({
+    sql, args,
+    bind: (...a: unknown[]) => stmt(sql, a),
+    all: async () => ({ results: db.prepare(sql).all(...(args as any[])) }),
+    first: async () => db.prepare(sql).get(...(args as any[])) ?? null,
+    run: async () => { const r = db.prepare(sql).run(...(args as any[])); return { meta: { changes: Number(r.changes) } }; },
+  });
+  return { prepare: (sql: string) => stmt(sql), batch: async (list: any[]) => { const out = []; for (const s of list) out.push(/^\s*(select)/i.test(s.sql) ? await s.all() : await s.run()); return out; }, raw: db };
+}
+const kv = () => { const m = new Map<string, string>(); return { m, get: async (k: string) => m.get(k) ?? null, put: async (k: string, v: string) => { m.set(k, v); }, delete: async (k: string) => { m.delete(k); } }; };
+const env = (): any => ({ ANALYTICS: d1(), PUSH_KV: kv() });
+const call = async (e: any, path: string, body?: any, token = '', ip = '41.1.2.3') => {
+  const r = await handleMembers(new Request(`https://w.example/members${path}`, { method: body ? 'POST' : 'GET', body: body ? JSON.stringify(body) : undefined, headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': ip, ...(token ? { Authorization: `Bearer ${token}` } : {}) } }), e, new URL(`https://w.example/members${path}`));
+  return { status: r.status, body: await r.json() as any };
+};
+/** A captcha, answered right (read back from the store, as the test can) */
+const solved = async (e: any) => { const c = (await call(e, '/captcha')).body; return { id: c.id, answer: e.PUSH_KV.m.get(`members:cap:${c.id}`) }; };
+const signup = async (e: any, over: any = {}, ip?: string) => call(e, '/signup', { username: 'kareem_10', email: 'Kareem@Example.com', password: 'raw2026night', captcha: await solved(e), ...over }, '', ip);
+
+test('the captcha: four digits drawn as strokes (no text to read), one try, Arabic digits accepted', async () => {
+  const svg = captchaSvg('2795');
+  assert.doesNotMatch(svg, /<text|2795/);
+  assert.equal((svg.match(/<polyline/g) || []).length, 4);
+  assert.equal(latinDigits('٢٧٩٥'), '2795');
+  const e = env();
+  const c = await solved(e);
+  const wrong = await call(e, '/signup', { username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: { id: c.id, answer: '0000' } });
+  assert.equal(wrong.body.captcha, true);
+  // the same picture can't be tried again, even with the right answer
+  assert.equal((await call(e, '/signup', { username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: c })).body.captcha, true);
+  const arabic = await solved(e);
+  arabic.answer = arabic.answer.replace(/\d/g, (d: string) => String.fromCharCode(0x660 + Number(d)));
+  assert.equal((await call(e, '/signup', { username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: arabic })).status, 200);
+});
+
+test('usernames and passwords: plain rules, said simply', () => {
+  assert.equal(usernameProblem('كريم_الشريف'), null);
+  assert.equal(usernameProblem('Kareem.10'), null);
+  assert.ok(usernameProblem('ab'));
+  assert.ok(usernameProblem('1abc'));
+  assert.ok(usernameProblem('عرب راسلنج'));
+  assert.ok(usernameProblem('admin'));
+  assert.ok(passwordProblem('short1'));
+  assert.ok(passwordProblem('onlyletters'));
+  assert.ok(passwordProblem('kareem123', 'kareem'));
+  assert.equal(passwordProblem('raw2026night'), null);
+});
+
+test('sign-up gives a session and a recovery code; the name and the e-mail are each taken once', async () => {
+  const e = env();
+  const r = await signup(e);
+  assert.equal(r.status, 200);
+  assert.match(r.body.token, /^m_/);
+  assert.match(r.body.recovery, /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/);
+  assert.equal(r.body.member.email, 'kareem@example.com');
+  assert.equal(r.body.mailed, false);
+  // never the password, its hash, or the code kept
+  const row: any = e.ANALYTICS.raw.prepare('SELECT * FROM members').get();
+  assert.notEqual(row.hash, 'raw2026night');
+  assert.ok(!JSON.stringify(row).includes(r.body.recovery));
+  assert.equal((await signup(e, { email: 'other@example.com' }, '9.9.9.9')).body.field, 'username');
+  assert.equal((await signup(e, { username: 'KAREEM_10', email: 'x@y.co' }, '9.9.9.8')).body.field, 'username');
+  assert.equal((await signup(e, { username: 'someone' }, '9.9.9.7')).body.field, 'email');
+  assert.equal((await call(e, '/me', undefined, r.body.token)).body.member.username, 'kareem_10');
+});
+
+test('sign-in by name or e-mail; wrong passwords are counted and stopped', async () => {
+  const e = env();
+  await signup(e);
+  assert.equal((await call(e, '/login', { login: 'KAREEM_10', password: 'raw2026night' })).status, 200);
+  assert.equal((await call(e, '/login', { login: 'kareem@example.com', password: 'raw2026night' })).status, 200);
+  for (let i = 0; i < 8; i++) assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'nope1234' }, '', `5.5.5.${i}`)).status, 401);
+  // the account is held a while, even with the right password from elsewhere
+  assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' }, '', '6.6.6.6')).status, 429);
+});
+
+test('the recovery code sets a new password, signs the other devices out, and is replaced', async () => {
+  const e = env();
+  const s = await signup(e);
+  const r = await call(e, '/recover', { login: 'kareem_10', code: s.body.recovery.toLowerCase().replace(/-/g, ' '), password: 'smackdown99' });
+  assert.equal(r.status, 200);
+  assert.notEqual(r.body.recovery, s.body.recovery);
+  assert.equal((await call(e, '/me', undefined, s.body.token)).status, 401);
+  assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'smackdown99' })).status, 200);
+  assert.equal((await call(e, '/recover', { login: 'kareem_10', code: s.body.recovery, password: 'another123' })).status, 400);
+});
+
+test('the profile: a name to show, a picture from the stars, a favourite promotion', async () => {
+  const e = env();
+  const s = await signup(e);
+  const p = await call(e, '/profile', { display: 'كريم', pic: 'w:cm-punk', fav_fed: 'AEW', fav_star: 'Will Ospreay', bio: 'من مصر' }, s.body.token);
+  assert.equal(p.body.member.display, 'كريم');
+  assert.equal(p.body.member.pic, 'w:cm-punk');
+  assert.equal((await call(e, '/profile', { pic: 'https://evil.example/x.png' }, s.body.token)).body.member.pic, 'w:cm-punk');
+  assert.equal((await call(e, '/profile', { display: 'عرب راسلنج' }, s.body.token)).status, 400);
+  const pub = await call(e, '/u/KAREEM_10');
+  assert.equal(pub.body.member.display, 'كريم');
+  assert.equal(pub.body.member.email, undefined);
+});
+
+test('a member comments as themselves (name, picture, badge); no visitor can use their name; a stopped member can\'t sign in', async () => {
+  const e = env();
+  e.MEDIA = null;
+  const s = await signup(e);
+  await call(e, '/profile', { display: 'كريم', pic: 'w:cm-punk' }, s.body.token);
+  const STORY = '/news/خبر/';
+  const headers = { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json' };
+  const post = (body: any, extra: any = {}) => handleComments(new Request('https://w.example/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', ...body }), headers: { ...headers, ...extra } }), e, new URL('https://w.example/comments')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
+  const mine = await post({ name: 'أي اسم', text: 'تعليقي كعضو' }, { Authorization: `Bearer ${s.body.token}` });
+  assert.equal(mine.body.name, 'كريم');
+  assert.equal(mine.body.member, 'kareem_10');
+  const list = await handleComments(new Request(`https://w.example/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w.example/comments?p=${encodeURIComponent(STORY)}`)).then((r) => r.json() as any);
+  assert.equal(list.items[0].member, 'kareem_10');
+  assert.equal(list.items[0].pic, 'w:cm-punk');
+  assert.equal((await post({ name: 'كريم', text: 'انتحال' }, { 'CF-Connecting-IP': '7.7.7.7' })).body.member, true);
+  assert.equal((await post({ name: 'Kareem_10', text: 'انتحال 2' }, { 'CF-Connecting-IP': '7.7.7.8' })).status, 400);
+  // the panel sees them; a stopped member is signed out and can't come back
+  const panel = await studioMembers(e);
+  assert.equal(panel.items[0].comments, 1);
+  await studioBanMember(e, s.body.member.id, true);
+  assert.equal((await call(e, '/me', undefined, s.body.token)).status, 401);
+  assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' })).status, 403);
+});
+
+test('with the site\'s mail key: a confirmation mail at sign-up, and «forgot my password» sends a link that works once', async () => {
+  const e = env();
+  e.RESEND_API_KEY = 're_test';
+  const sent: any[] = [];
+  const real = globalThis.fetch;
+  globalThis.fetch = (async (url: any, init: any) => { sent.push({ url: String(url), body: JSON.parse(init.body) }); return new Response('{}', { status: 200 }); }) as any;
+  try {
+    const s = await signup(e);
+    assert.equal(s.body.mailed, true);
+    assert.equal(sent[0].url, 'https://api.resend.com/emails');
+    assert.deepEqual(sent[0].body.to, ['kareem@example.com']);
+    const verify = sent[0].body.html.match(/verify=([A-Za-z0-9_-]+)/)[1];
+    assert.equal((await call(e, '/verify', { token: verify })).status, 200);
+    assert.equal((await call(e, '/me', undefined, s.body.token)).body.member.verified, true);
+    // the same answer for an address with no account
+    assert.equal((await call(e, '/forgot', { email: 'nobody@example.com' })).status, 200);
+    assert.equal(sent.length, 1);
+    await call(e, '/forgot', { email: 'KAREEM@example.com' });
+    const reset = sent[1].body.html.match(/reset=([A-Za-z0-9_-]+)/)[1];
+    assert.equal((await call(e, '/reset', { token: reset, password: 'dynamite77' })).status, 200);
+    assert.equal((await call(e, '/reset', { token: reset, password: 'dynamite88' })).status, 400);
+    assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'dynamite77' })).status, 200);
+  } finally { globalThis.fetch = real; }
+});

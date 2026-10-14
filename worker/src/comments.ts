@@ -25,11 +25,12 @@
 // same visitor, no same comment twice on a page, a picture only from the site's list or a small square image.
 import { BOT_UA, cairo, fromSite, pagePath } from "./analytics";
 import { notifyOwner, ownerOf, savePush, validEndpoint, vapidKeys } from "./comment-push";
+import { ensureMembers, memberOf } from "./members";
 
 export interface CommentsEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket }
 
 export const PIC_ORIGIN = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
-const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type" };
+const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
 const reply = (body: unknown, status = 200, extra: Record<string, string> = {}) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...CORS, ...extra } });
 
@@ -44,7 +45,7 @@ export function ensureTable(db: D1Database): Promise<unknown> {
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
   ]).then(async () => {
     // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
-    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''", "hearted_at INTEGER NOT NULL DEFAULT 0"]) {
+    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''", "hearted_at INTEGER NOT NULL DEFAULT 0", "member INTEGER NOT NULL DEFAULT 0"]) {
       await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
     }
     // the answers to a visitor's comments, found fast
@@ -89,8 +90,8 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0 });
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string; mname?: string };
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "" });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -147,7 +148,10 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (request.method === "GET") {
     const path = commentPath(url.searchParams.get("p"));
     if (!path) return reply({ items: [] });
-    const rows = await db.prepare("SELECT id, name, text, pic, at, parent, official, hearted, reply_to FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 400").bind(path).all<Row>();
+    // a member's comment: their username too, for the «عضو» badge and the link to their page
+    await ensureMembers(db);
+    const rows = await db.prepare(`SELECT c.id, c.name, c.text, c.pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname
+      FROM comments c LEFT JOIN members m ON m.id = c.member AND c.member > 0 WHERE c.path = ?1 AND c.deleted = 0 ORDER BY c.at DESC LIMIT 400`).bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }
   if (request.method !== "POST") return reply({ ok: false, error: "not allowed" }, 405);
@@ -163,12 +167,20 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (!path) return reply({ ok: false, error: "تعذّر إرسال التعليق." }, 400);
   // a bot: the field people never see is filled, or the form was sent faster than anyone can type
   if (String(b.website || "") !== "" || !(Number(b.t) >= 2000)) return reply({ ok: true, id: 0, status: "published" });
-  const name = cleanText(b.name, 40);
+  // a member comments as themselves: their name and picture, kept with their account
+  const member = await memberOf(request, env as any, now);
+  const name = member ? (member.display || member.username) : cleanText(b.name, 40);
   const text = cleanText(b.text, 1000, true);
   if (name.length < 2) return reply({ ok: false, error: "اكتب اسمك أولًا." }, 400);
   if (text.length < 2) return reply({ ok: false, error: "اكتب تعليقك أولًا." }, 400);
   if (HAS_LINK.test(text) || HAS_LINK.test(name)) return reply({ ok: false, error: "الروابط غير مسموح بها في التعليقات." }, 400);
   if (isReservedName(name)) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
+  // a visitor can't take a member's name
+  if (!member) {
+    await ensureMembers(db);
+    const k = name.normalize("NFKC").toLowerCase();
+    if (await db.prepare("SELECT 1 FROM members WHERE ukey = ?1 OR lower(display) = ?1 LIMIT 1").bind(k).first()) return reply({ ok: false, error: "هذا الاسم لعضو مسجّل في الموقع. سجّل دخولك إن كان حسابك، أو اختر اسمًا آخر.", member: true }, 400);
+  }
   const title = cleanText(b.title, 200);
   // an answer to a comment or to a reply: on the same page, under the same comment (the thread), told to whoever wrote it
   let target: Row | null = null;
@@ -189,8 +201,9 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if ((today.results?.[0]?.n || 0) >= 30) return reply({ ok: false, error: "وصلت إلى الحد اليومي للتعليقات، شكرًا لك." }, 429);
   if ((same.results?.[0]?.n || 0) > 0) return reply({ ok: false, error: "هذا التعليق منشور بالفعل." }, 409);
 
-  const wrestler = WRESTLER_PIC.test(String(b.pic || "")) ? String(b.pic) : "";
-  const upload = !wrestler && env.MEDIA ? String(b.pic || "").match(UPLOAD) : null;
+  const chosen = member ? member.pic : String(b.pic || "");
+  const wrestler = WRESTLER_PIC.test(chosen) || (member && /^https:\/\//.test(chosen)) ? chosen : "";
+  const upload = !wrestler && !member && env.MEDIA ? chosen.match(UPLOAD) : null;
   let bytes: Uint8Array | null = null;
   if (upload) {
     try { bytes = Uint8Array.from(atob(upload[2]), c => c.charCodeAt(0)); } catch { bytes = null; }
@@ -200,8 +213,8 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   // the visitor's address, for the panel only (owner 2026-10-14: «عايز كمان يبان ip بتاع المتابع ال معلق في اللوحة»):
   // never in what the page gets (out())
   const ip = String(request.headers.get("CF-Connecting-IP") || "").slice(0, 45);
-  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip, parent, reply_to, owner) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13) RETURNING id")
-    .bind(path, title, name, text, wrestler, now, day, who, country, ip, parent, target ? target.id : 0, owner).first<{ id: number }>();
+  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip, parent, reply_to, owner, member) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14) RETURNING id")
+    .bind(path, title, name, text, wrestler, now, day, who, country, ip, parent, target ? target.id : 0, owner, member ? member.id : 0).first<{ id: number }>();
   const id = ins?.id || 0;
   let picOut = wrestler;
   if (bytes && id) {
@@ -213,7 +226,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   }
   // whoever wrote what this answers is told (not someone answering themselves)
   if (target?.owner && target.owner !== owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
-  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0 });
+  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "" });
 }
 
 // ── the panel ──────────────────────────────────────────────────────────────

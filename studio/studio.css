@@ -782,3 +782,15 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
   .cm-av, .panel .cm-av { width: 40px; height: 40px; font-size: 16px; }
   .cm-actions { grid-column: 2; justify-content: flex-start; }
 }
+
+/* the site's members (studio/js/views/site-members.js) */
+.mb-row { display: grid; grid-template-columns: 46px 1fr auto; gap: 14px; align-items: center; padding: 14px 16px; background: var(--cream); border-radius: 22px; }
+.mb-row.is-banned { opacity: .62; }
+.mb-main { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.mb-user { color: var(--muted); font-size: 13px; font-weight: 700; }
+.mb-flag { font-style: normal; font-size: 11.5px; font-weight: 900; color: #c73b2c; background: color-mix(in srgb, #c73b2c 12%, transparent); padding: 2px 8px; border-radius: 99px; }
+.mb-ok { font-style: normal; display: inline-flex; align-items: center; gap: 3px; font-size: 11.5px; font-weight: 800; color: var(--teal); }
+.mb-ok svg { width: 13px; height: 13px; }
+.mb-facts { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--muted); }
+.btn-danger-soft { color: #c73b2c; }
+@media (max-width: 720px) { .mb-row { grid-template-columns: 40px 1fr; } .mb-row .cm-actions { grid-column: 2; } }
