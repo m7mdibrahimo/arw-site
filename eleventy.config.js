@@ -1704,8 +1704,8 @@ module.exports = function(eleventyConfig) {
   });
 
   // The episode's own date spellings for the VideoObject alternateName (INCIDENTS #466)
-  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow) {
-    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow });
+  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow, archive) {
+    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow, archive });
   });
 
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)

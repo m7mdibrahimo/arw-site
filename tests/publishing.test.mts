@@ -2154,7 +2154,7 @@ test('dual of «نزال» is «نزالين», never «نزاتين» (INCIDENT
   assert.equal(applyCorrections('خاضت نزاتين في عام واحد'), 'خاضت نزالين في عام واحد');
 });
 
-test('Armstrong is «أرمسترونغ», never «أمرسترونغ»; «ليواصلا مغامرتهما» keeps the dual (INCIDENTS #511)', async () => {
+test('Armstrong is «أرمسترونغ», never «أمرسترونغ»; «ليواصلا مغامرتهما» keeps the dual (INCIDENTS #512)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('ظهور كالي أمرسترونغ'), 'ظهور كالي أرمسترونغ');
   assert.equal(applyCorrections('ليواصلا مغامرتهم بنجاح'), 'ليواصلا مغامرتهما بنجاح');
@@ -4795,4 +4795,16 @@ test('autoFix turns «(c)» into البطل/البطلة; spelled years and «م
   assert.equal(spelledAgesToDigits('لأكثر من مئتي يوم، في عام ألفين وتسعة عشر'), 'لأكثر من 200 يوم، في عام 2019');
   const c = applyCorrections('خاضت نزاتين، فريق ذا فانيتي بروجيكت');
   assert.ok(!/نزاتين|ذا فانيتي/.test(c), c);
+});
+
+test('showNameForms: a program\'s short English alias carries the date, and a nostalgia special is searched with its year (INCIDENTS #512)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const roh = showNameForms({ headline: 'عرض ار او اتش سبيشال 05.10.2026 مترجم', title: 'ROH Special 05.10.2026', programName: 'ROH Specials', eventDate: '2026-10-05', aliases: ['ROH TV', 'ROH Wrestling', 'ROH Special', 'عرض ار او اتش مترجم'], isShow: true });
+  assert.ok(roh.includes('ROH Wrestling October 5 2026'));
+  assert.ok(!roh.some((f: string) => /^ROH TV /.test(f)));
+  const nost = showNameForms({ headline: 'عرض موني ان ذا بانك 22.07.2010 مترجم', title: 'WWE Money in the Bank (2010)', programName: 'WWE Money in the Bank', eventDate: '2010-07-22', aliases: [], isShow: true, archive: true });
+  for (const f of ['تحميل عرض موني ان ذا بانك 2010', 'عرض موني ان ذا بانك 2010 مترجم', 'WWE Money in the Bank July 22 2010', 'تحميل عرض Money in the Bank 2010']) assert.ok(nost.includes(f), f);
+  assert.ok(!nost.some((f: string) => /الاخير/.test(f)), 'an archive episode is never «the latest»');
+  const layout = (await import('node:fs')).readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /startsWith\('\/nostalgia\/'\) and series_type == 'shows'/);
 });
