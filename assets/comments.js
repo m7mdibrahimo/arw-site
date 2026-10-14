@@ -2,14 +2,14 @@
 // they are sent (the owner reads them in the panel, and deletes what shouldn't stay). The comments come from the site's
 // worker (worker/src/comments.ts) when the section nears the screen: one request, only for those who scroll that far.
 // A comment can carry a picture: the visitor's own (cut to a small square here, before it is sent) or a wrestler's
-// from /assets/avatars/ (scripts/avatars/). Every sentence is one whole string, «{n}» where a number goes, so the
+// from /avatars/ (scripts/avatars/). Every sentence is one whole string, «{n}» where a number goes, so the
 // English copy of this file (lib/i18n/mirror.cjs) says it in English word order.
 (function () {
   'use strict';
   var box = document.getElementById('comments');
   if (!box) return;
   var API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/comments';
-  var AVATARS = '/assets/avatars/';
+  var AVATARS = '/avatars/';
   var EN = document.documentElement.lang === 'en';
   var page = box.getAttribute('data-page') || location.pathname;
   var form = box.querySelector('.arw-cm-form');

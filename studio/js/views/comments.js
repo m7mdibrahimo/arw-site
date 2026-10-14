@@ -9,7 +9,7 @@ const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c'
 const colorOf = (name) => { let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return COLORS[h % COLORS.length]; };
 const initial = (name) => (String(name).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['؟'])[0].toUpperCase();
 // a comment's picture: «w:<slug>» a wrestler's from the site, or the address of the visitor's own
-const picSrc = (pic) => { pic = String(pic || ''); return /^w:[a-z0-9-]+$/.test(pic) ? `/assets/avatars/${pic.slice(2)}.webp` : /^https:\/\//.test(pic) ? pic : ''; };
+const picSrc = (pic) => { pic = String(pic || ''); return /^w:[a-z0-9-]+$/.test(pic) ? `/avatars/${pic.slice(2)}.webp` : /^https:\/\//.test(pic) ? pic : ''; };
 const pathKey = (u) => { let p = String(u || ''); try { p = decodeURIComponent(p); } catch {} p = p.split(/[?#]/)[0].normalize('NFC'); return p.endsWith('/') ? p : `${p}/`; };
 
 // When the owner last opened the comments page on this device: what came after is «جديد»

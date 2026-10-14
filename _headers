@@ -73,9 +73,9 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Content-Type-Options: nosniff
 
-# The wrestlers' pictures for comments keep their names when they are made again (scripts/avatars/): a day, not a year
-/assets/avatars/*
-  ! Cache-Control
+# The wrestlers' pictures for comments keep their names when they are made again (scripts/avatars/): a day, not a
+# year. Served at /avatars/, outside /assets/* (two rules on one path add their Cache-Control up, «!» didn't undo it)
+/avatars/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=86400
   X-Content-Type-Options: nosniff
 

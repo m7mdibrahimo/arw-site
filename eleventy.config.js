@@ -2177,6 +2177,8 @@ module.exports = function(eleventyConfig) {
     }
   });
   eleventyConfig.addPassthroughCopy("assets");
+  // the wrestlers' pictures for comments (scripts/avatars/) at /avatars/: their own cache rule in _headers, a day
+  eleventyConfig.addPassthroughCopy({ "assets/avatars": "avatars" });
   eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("googlee6fae402f63eee54.html");
