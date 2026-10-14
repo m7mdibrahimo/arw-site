@@ -3,28 +3,25 @@
 import fs from 'node:fs';
 const list = JSON.parse(fs.readFileSync('scripts/avatars/wrestlers.json', 'utf8'));
 const UA = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36', 'Accept-Language': 'en-US,en;q=0.9' };
-const get = async (u) => { try { const r = await fetch(u, { headers: UA, redirect: 'follow' }); return { status: r.status, url: r.url, html: r.ok ? await r.text() : '' }; } catch (e) { return { status: 0, html: '', url: u, err: e.message }; } };
-const imgs = (html) => [...new Set([...html.matchAll(/(?:src|data-src|srcset|content|href)="([^"]+\.(?:jpe?g|png|webp)[^"\s]*)/gi)].map((m) => m[1]))];
-for (const w of list.filter((x) => x.fed === 'WWE')) {
-  const r = await get(`https://www.wwe.com/superstars/${w.slug}`);
-  const og = (r.html.match(/property="og:image" content="([^"]+)"/) || [])[1];
-  console.log(`\n=== ${w.slug} ${r.status} ${r.url}\nog: ${og}`);
-  for (const u of imgs(r.html).filter((u) => /talent|superstar|profile|headshot|bio/i.test(u)).slice(0, 8)) console.log('  ' + u);
+const get = async (u) => { try { const r = await fetch(u, { headers: UA, redirect: 'follow' }); return { status: r.status, url: r.url, html: r.ok ? await r.text() : '' }; } catch (e) { return { status: 0, html: '', url: u }; } };
+for (const s of ['cm-punk', 'punk', 'cmpunk', 'c-m-punk']) {
+  const r = await get(`https://www.wwe.com/superstars/${s}`);
+  const p = (r.html.match(/\/f\/styles\/talent_champion_xl\/public\/[^"\s,]+/) || [])[0];
+  console.log(`WWE ${s} ${r.status} ${p || ''}`);
 }
-for (const u of ['https://www.allelitewrestling.com/roster', 'https://www.allelitewrestling.com/aew-roster', 'https://www.allelitewrestling.com/']) {
-  const r = await get(u);
-  console.log(`\n=== AEW ${u} ${r.status} ${r.url} (${r.html.length} bytes)`);
-  const links = [...new Set([...r.html.matchAll(/href="([^"]*(?:roster|wrestler|talent)[^"]*)"/gi)].map((m) => m[1]))];
-  console.log('links: ' + links.slice(0, 60).join(' '));
-  for (const i of imgs(r.html).slice(0, 60)) console.log('  ' + i);
-}
+const r = await get('https://www.allelitewrestling.com/aew-roster');
+const h = r.html;
+console.log('AEW roster', r.status, h.length);
 for (const w of list.filter((x) => x.fed === 'AEW')) {
-  for (const u of [`https://www.allelitewrestling.com/roster/${w.slug}`, `https://www.allelitewrestling.com/${w.slug}`]) {
-    const r = await get(u);
-    if (!r.html) { console.log(`--- ${w.slug} ${u} ${r.status}`); continue; }
-    const og = (r.html.match(/property="og:image" content="([^"]+)"/) || [])[1];
-    console.log(`=== ${w.slug} ${u} ${r.status} og: ${og}`);
-    for (const i of imgs(r.html).slice(0, 10)) console.log('  ' + i);
-    break;
-  }
+  const names = [w.en, w.en.toUpperCase(), w.en.replace('Hangman ', ''), w.en.replace('é', 'e')];
+  let at = -1, used = '';
+  for (const n of names) { at = h.indexOf(n); if (at >= 0) { used = n; break; } }
+  if (at < 0) { console.log(`AEW ${w.slug}: name not found`); continue; }
+  const around = h.slice(Math.max(0, at - 6000), at + 6000);
+  const imgs = [...around.matchAll(/https:\/\/static\.wixstatic\.com\/media\/[^"\s)]+?~mv2\.(?:png|jpe?g|webp)/g)].map((m) => ({ u: m[0], d: Math.abs(m.index - 6000) }));
+  imgs.sort((a, b) => a.d - b.d);
+  console.log(`AEW ${w.slug} («${used}» ×${h.split(used).length - 1}):`);
+  for (const i of [...new Map(imgs.map((x) => [x.u, x])).values()].slice(0, 4)) console.log(`   ${i.d} ${i.u}`);
+  const alt = [...h.matchAll(new RegExp(`alt="([^"]*${used.split(' ').pop()}[^"]*)"`, 'gi'))].slice(0, 3).map((m) => m[1]);
+  if (alt.length) console.log('   alt: ' + alt.join(' | '));
 }
