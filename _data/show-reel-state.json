@@ -3575,7 +3575,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261014174915-nwa-powerrr-10-10-2026": {
     "publishedAt": 1791990772904,
