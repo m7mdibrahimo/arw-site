@@ -100,7 +100,7 @@ const RULES: Rule[] = [
   // the text are capitalised (WWE, SiriusXM); a short lowercase fragment glued after Arabic is a broken word.
   // A big number written out in words is where the model gets the number wrong: «ألفا وخمسمائة وواحدا
   // وخمسين دولارا وفلسين» for $1,501.51 (INCIDENTS #188). Amounts and years stay in digits.
-  { code: "spelled_number", severity: "error", re: /(?<![\u0600-\u06FF])(?:ألفين|ألفا|ألف)\s+و(?:مائة|مئة|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة|ستة|سبعة|خمسة|أربعة|ثلاثة|اثنين|واحد|عشرين|ثلاثين)|(?<![\u0600-\u06FF])(?:فلسين|فلسا|سنتا|سنتات)(?![\u0600-\u06FF])|(?<![\u0600-\u06FF])(?:(?:واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(?:عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(?:عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g, message: "رقم كبير أو سنة أو سن أو مبلغ مكتوب بالحروف — يتكتب بالأرقام زي المصدر", fields: ["body"] },
+  { code: "spelled_number", severity: "error", re: /(?<![\u0600-\u06FF])(?:ألفين|ألفا|ألف)\s+و(?:مائة|مئة|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة|ستة|سبعة|خمسة|أربعة|ثلاثة|تسعة|ثمانية|اثنين|واحد|عشرة|عشرين|ثلاثين|أحد|اثني)|(?<![\u0600-\u06FF])(?:مئتي|مائتي)\s+(?:يوم|أسبوع|شهر|مرة)|(?<![\u0600-\u06FF])(?:فلسين|فلسا|سنتا|سنتات)(?![\u0600-\u06FF])|(?<![\u0600-\u06FF])(?:(?:واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(?:عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(?:عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g, message: "رقم كبير أو سنة أو سن أو مبلغ مكتوب بالحروف — يتكتب بالأرقام زي المصدر", fields: ["body"] },
   // \u00AB\u0641\u064A \u0627\u0644\u062A synergies \u0627\u0644\u0633\u0646\u0648\u064A\u0629\u00BB \u2014 a 9-letter fragment slipped past the old {2,8} limit (INCIDENTS #303)
   { code: "number_word_digits", severity: "error", re: /(?<![\u0621-\u064A])[لبوفك]?(?:أحد عشر|إحدى عشرة|اثنا عشر|اثني عشر|اثنتا عشرة|ثلاثة عشر|أربعة عشر|خمسة عشر|ستة عشر|سبعة عشر|ثمانية عشر|تسعة عشر|عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين|مئة|مائة|عشرة|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة) \d/g, message: "كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة", fields: ["title", "body"] },
   // alif wasl dropped after «ال»: «القتناع» ← «الاقتناع» (the writer glued ال to a word that starts with a hidden alif) — INCIDENTS #499
@@ -617,7 +617,16 @@ export function spelledAgesToDigits(body: string): string {
     // …and round thousands: «أكثر من ألفي تذكرة» ← «2000 تذكرة» (INCIDENTS #238)
     // Never after a number: «899 ألف مشاهد» became «899 1000 مشاهد» (INCIDENTS #244)
     .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(ألف|ألفي|ألفين)\s+(تذكرة|مشجع|متفرج|مشاهد|دولار|قدم|متر|ميل)(?![\u0600-\u06FF])/g,
-      (_m, k: string, w: string) => `${k === "ألف" ? 1000 : 2000} ${w}`);
+      (_m, k: string, w: string) => `${k === "ألف" ? 1000 : 2000} ${w}`)
+    // Round hundreds before a span of time or a count: «لأكثر من مئتي يوم» ← «200 يوم» (INCIDENTS #508)
+    .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(مئتي|مئتين|مائة|مئة|مائتي|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة)\s+(يوم|يوما|أسبوع|أسبوعا|شهر|شهرا|مرة|مباراة|نزال)(?![\u0621-\u064A])/g,
+      (_m, h: string, w: string) => `${h.startsWith("مئتي") || h.startsWith("مئتين") ? 200 : HUNDREDS[h] ?? 100} ${w}`)
+    // A year written out: «في عام ألفين وتسعة عشر» ← «في عام 2019» (INCIDENTS #508)
+    .replace(/(?<![\u0600-\u06FF])ألفين\s+و(?:(واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثة\s+عشر|أربعة\s+عشر|خمسة\s+عشر|ستة\s+عشر|سبعة\s+عشر|ثمانية\s+عشر|تسعة\s+عشر|أحد\s+عشر|اثني\s+عشر|عشرة|واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)(?![\u0621-\u064A])/g,
+      (_m, u: string | undefined, t: string) => {
+        const teens: Record<string, number> = { "أحد عشر": 11, "اثني عشر": 12, "ثلاثة عشر": 13, "أربعة عشر": 14, "خمسة عشر": 15, "ستة عشر": 16, "سبعة عشر": 17, "ثمانية عشر": 18, "تسعة عشر": 19, عشرة: 10, عشرين: 20, واحد: 1, اثنين: 2, ثلاثة: 3, أربعة: 4, خمسة: 5, ستة: 6, سبعة: 7, ثمانية: 8, تسعة: 9 };
+        return String(2000 + (teens[t.replace(/\s+/g, " ")] ?? 0) + (u ? AGE_UNITS[u] : 0));
+      });
 }
 /**
  * A price written out in words becomes digits: «ستة وعشرين دولارا وتسعة وتسعين سنتا» ← «26.99 دولار»,
@@ -702,6 +711,9 @@ export function autoFix(text: string): string {
   if (!text) return text;
   text = splitGluedBlocks(text);
   text = dualPronounsToPlural(text);
+  // A match card copied from the source keeps «(c)» for the champion: «كيلاني جوردان (c) ضد رين سنكلير» went live (INCIDENTS #508)
+  text = text.replace(/(^[^\n]*\n(?:[^\n]*\n){0,2}?)?([^\n]*?)\s*\(c\)/gim, (m: string, prev: string | undefined, line: string) =>
+    `${prev || ""}${line} (${/للسيدات|السيدات|للنساء/.test((prev || "") + line) ? "البطلة" : "البطل"})`);
   // A straight quote glued to the «» pair: > "«أنا حتى لا أعرف…»" went live in the Russo story (INCIDENTS #489) — the
   // «» stays, the extra marks go
   text = text.replace(/["“”]+(\*{0,2})«/g, "$1«").replace(/»(\*{0,2})["“”]+/g, "»$1");

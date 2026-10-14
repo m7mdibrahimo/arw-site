@@ -4768,3 +4768,25 @@ test('weekly program library pages carry the «الاخير مترجم» forms (
   const yearly = libraryNameForms({ arName: 'عرض موني ان ذا بانك', name: 'WWE Money in the Bank', aliases: [], year: '2026', count: 1 });
   assert.ok(!yearly.some((f: string) => f.includes('الاخير')));
 });
+
+// INCIDENTS #508: a weekly episode is searched without «عرض» / «ال» and by the English program name
+test('weekly show pages carry «الرو الاخير», «رو مترجم», «wwe raw مترجم» as alternate names; yearly shows do not get the weekly forms', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const aliases = ['عرض الرو', 'دبليو دبليو إي راو', 'الرو'];
+  const forms = showNameForms({ headline: 'عرض الرو مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: true });
+  for (const f of ['الرو الاخير', 'رو مترجم', 'عرض رو الاخير', 'اخر رو', 'WWE RAW مترجم', 'WWE RAW الاخير مترجم']) assert.ok(forms.includes(f), f);
+  const yearly = showNameForms({ headline: 'عرض موني ان ذا بانك 2026 مترجم', title: 'WWE Money in the Bank 2026', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: ['عرض موني ان ذا بانك'], isShow: true });
+  assert.ok(!yearly.includes('WWE Money in the Bank الاخير'));
+});
+
+// INCIDENTS #508: «(c)» card marks, spelled-out years/hundreds, and the new wrong→right corrections
+test('autoFix turns «(c)» into البطل/البطلة; spelled years and «مئتي يوم» become digits; corrections cover «نزاتين»', async () => {
+  const { autoFix, spelledAgesToDigits, applyCorrections } = await import('../scripts/news-qa.ts');
+  const fixed = autoFix('**بطولة NXT للسيدات**\nكيلاني جوردان (c) ضد رين سنكلير\n\n**بطولة NXT**\nغرايسون والر (c) ضد توني دي أنجيلو');
+  assert.match(fixed, /كيلاني جوردان \(البطلة\) ضد/);
+  assert.match(fixed, /غرايسون والر \(البطل\) ضد/);
+  assert.ok(!/\(c\)/.test(fixed));
+  assert.equal(spelledAgesToDigits('لأكثر من مئتي يوم، في عام ألفين وتسعة عشر'), 'لأكثر من 200 يوم، في عام 2019');
+  const c = applyCorrections('خاضت نزاتين، فريق ذا فانيتي بروجيكت');
+  assert.ok(!/نزاتين|ذا فانيتي/.test(c), c);
+});
