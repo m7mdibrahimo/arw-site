@@ -1,0 +1,37 @@
+name: Comment Avatars
+
+# The wrestlers' pictures a visitor can pick for a comment (scripts/avatars/fetch.mjs): fetched where Wikipedia can be
+# reached, and committed to the branch that asked for them. Runs when the list or the script changes, or by hand.
+on:
+  push:
+    paths:
+      - 'scripts/avatars/**'
+      - '.github/workflows/avatars.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: avatars-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --no-audit --no-fund sharp@0.35.3
+      - run: node scripts/avatars/fetch.mjs
+      - name: Commit the pictures
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "ARW Avatars Bot"
+          git add assets/avatars
+          git diff --cached --quiet && exit 0
+          git commit -m "chore(avatars): wrestlers' pictures for comments [skip ci]"
+          for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && break; sleep 5; done

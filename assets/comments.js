@@ -175,12 +175,19 @@
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
       .then(function (d) {
         store.set(NAME, name);
-        var all = store.get(MINE, {});
-        (all[page] = all[page] || []).unshift({ id: d.id, name: name, text: text, at: Date.now() });
-        store.set(MINE, all);
+        var mineNow = { id: d.id, name: name, text: text, at: Date.now() };
+        if (d.status === 'published') {
+          // published right away: it is everyone's now, at the top of the list
+          shown.unshift(mineNow);
+          say('تم نشر تعليقك، شكرًا لك!', 'ok');
+        } else {
+          var all = store.get(MINE, {});
+          (all[page] = all[page] || []).unshift(mineNow);
+          store.set(MINE, all);
+          say('شكرًا لك! سيظهر تعليقك للجميع بعد مراجعته.', 'ok');
+        }
         textIn.value = '';
         count();
-        say('شكرًا لك! سيظهر تعليقك للجميع بعد مراجعته.', 'ok');
         loaded = true;
         draw(false);
       })
