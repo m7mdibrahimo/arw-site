@@ -1,5 +1,25 @@
 [
   {
+    "id": 333863,
+    "link": "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-survive-the-ride/",
+    "date": "2026-10-14T12:51:34",
+    "date_gmt": "2026-10-14T16:51:34",
+    "title": {
+      "rendered": "WWE Files To Trademark &#8216;WWE: Survive The Ride&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/18132421/WWE-Logo-1536x1024-1-e1752859487683.jpeg"
+  },
+  {
+    "id": 333846,
+    "link": "https://www.fightful.com/wrestling/kofi-believes-that-without-mustafa-ali-getting-hurt-there-would-have-been-no-kofimania/",
+    "date": "2026-10-14T12:46:16",
+    "date_gmt": "2026-10-14T16:46:16",
+    "title": {
+      "rendered": "Kofi Believes That Without Mustafa Ali Getting Hurt, There Would Have Been No KofiMania"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14124619/maxresdefault-90.jpg"
+  },
+  {
     "id": 333861,
     "link": "https://www.fightful.com/wrestling/russell-wilson-shares-that-he-charlotte-flair-had-a-class-together-at-north-carolina-state-university/",
     "date": "2026-10-14T12:39:27",
@@ -278,25 +298,5 @@
       "rendered": "Ja&#8217;Marr Chase Successfully Appeals Fines For &#8220;People&#8217;s Elbow&#8221; Touchdown Celebration"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13163534/Screenshot-337-e1791923750404.png"
-  },
-  {
-    "id": 333761,
-    "link": "https://www.fightful.com/wrestling/drew-mcintyre-speaks-on-the-passing-of-pac-says-he-was-an-amazing-talent-and-person/",
-    "date": "2026-10-13T16:11:36",
-    "date_gmt": "2026-10-13T20:11:36",
-    "title": {
-      "rendered": "Drew McIntyre Speaks On The Passing Of PAC, Says He Was An Amazing Talent And Person"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/10/07075430/drew_mcintyre_11.jpg"
-  },
-  {
-    "id": 333760,
-    "link": "https://www.fightful.com/wrestling/nyla-rose-gets-special-deal-on-taquitos/",
-    "date": "2026-10-13T16:01:21",
-    "date_gmt": "2026-10-13T20:01:21",
-    "title": {
-      "rendered": "Nyla Rose Gets Special Deal On Taquitos"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/19144407/maxresdefault-127.jpg"
   }
 ]
