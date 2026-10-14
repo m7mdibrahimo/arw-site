@@ -4822,3 +4822,14 @@ test('NXT episodes carry the common Arabic spellings of NXT in the VideoObject n
   const forms = showNameForms({ headline: 'عرض ان اكس تي 06.10.2026 مترجم', title: 'WWE NXT 06.10.2026', programName: 'WWE NXT', eventDate: '2026-10-06', aliases: ['عرض ان اكس تي'], isShow: true });
   for (const f of ['عرض ان اكس اكس مترجم', 'اكس ان تي مترجم', 'عرض اكس ان اكس مترجم', 'ان اكس تي 06.10.2026 مترجم']) assert.ok(forms.includes(f), f);
 });
+
+// INCIDENTS #515: a recap carries «ملخص/نتائج …» and «<English> highlights» names; a weekly library page carries its newest episode's date
+test('recap and weekly library structured-data names cover recap wording and the newest episode date', async () => {
+  const { showNameForms, libraryNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const recap = showNameForms({ headline: 'ملخص عرض موني ان ذا بانك 10.10.2026', title: 'WWE Money in the Bank Highlights (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: [], isShow: false });
+  for (const f of ['ملخص موني ان ذا بانك 2026', 'نتائج موني ان ذا بانك 2026', 'WWE Money in the Bank 2026 highlights', 'WWE Money in the Bank 2026 مترجم']) assert.ok(recap.includes(f), f);
+  assert.ok(!recap.includes('تحميل عرض موني ان ذا بانك'));
+  const lib = libraryNameForms({ arName: 'عرض دايناميت', name: 'AEW Dynamite', aliases: [], year: '2026', count: 30, latest: '2026-10-07' });
+  for (const f of ['عرض دايناميت 7/10/2026', 'عرض AEW Dynamite 7 أكتوبر 2026', 'AEW Dynamite October 7 2026']) assert.ok(lib.includes(f), f);
+  assert.ok(!libraryNameForms({ arName: 'عرض س', name: 'X Y', count: 2, latest: '2026-10-07' }).some((f) => /7\/10\/2026/.test(f)));
+});
