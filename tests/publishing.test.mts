@@ -2160,6 +2160,14 @@ test('Armstrong is «أرمسترونغ», never «أمرسترونغ»; «لي�
   assert.equal(applyCorrections('ليواصلا مغامرتهم بنجاح'), 'ليواصل الثنائي مغامرته بنجاح');
 });
 
+test('Los Atrapasueños is one spelling «أتراباسونيوس» everywhere (INCIDENTS #513)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('فريق أتراسويوس وفريق أتراباسويوس وأتراباسويغن'), 'فريق أتراباسونيوس وفريق أتراباسونيوس وأتراباسونيوس');
+  for (const f of fs.readdirSync('content/news').filter(n => n.endsWith('.md'))) {
+    assert.doesNotMatch(fs.readFileSync(`content/news/${f}`, 'utf8'), /أتراسويوس|أتراباسويوس|أتراباسويغن/, f);
+  }
+});
+
 test('Kendal Grey is always «كيندال غراي» — never «غري» or «جراي» (INCIDENTS #159)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('قصة كيندال غري مع كيندال جراي'), 'قصة كيندال غراي مع كيندال غراي');
