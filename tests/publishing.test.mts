@@ -4737,3 +4737,12 @@ test('yearly shows and their library pages carry year + spelling variants in str
   for (const f of ['مشاهدة عرض موني ان ذا بانك 2026', 'مشاهده عرض موني ان ذا بانك 2026', 'تحميل عرض Money in the Bank', 'WWE Money in the Bank 2026 مترجم', 'دبليو دبليو إي موني إن ذا بانك']) assert.ok(lib.includes(f), f);
   assert.ok(fs.readFileSync('pages/library-program.njk', 'utf8').includes('libraryNameForms(lp.prog'));
 });
+
+// INCIDENTS #505: a weekly program's library page is searched as «عرض الرو الاخير مترجم» — its structured data carries those forms, a yearly show's does not
+test('weekly program library pages carry the «الاخير مترجم» forms (INCIDENTS #505)', async () => {
+  const { libraryNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const weekly = libraryNameForms({ arName: 'عرض الرو', name: 'WWE RAW', aliases: [], year: '2026', count: 30 });
+  for (const f of ['عرض الرو الاخير مترجم', 'عرض الرو الأخير مترجم', 'عرض الرو الاخير مترجم عربي', 'عرض الرو الاخير كامل ومترجم', 'تحميل عرض الرو الاخير', 'مشاهدة عرض الرو الاخير مترجم', 'اخر عرض الرو', 'عرض الرو مترجم']) assert.ok(weekly.includes(f), f);
+  const yearly = libraryNameForms({ arName: 'عرض موني ان ذا بانك', name: 'WWE Money in the Bank', aliases: [], year: '2026', count: 1 });
+  assert.ok(!yearly.some((f: string) => f.includes('الاخير')));
+});
