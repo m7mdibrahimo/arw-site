@@ -8,6 +8,8 @@ const KIND = { news: ['خبر', '#ff5a36'], shows: ['عرض', '#0e9594'], recaps
 const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c', '#2f9e5b'];
 const colorOf = (name) => { let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return COLORS[h % COLORS.length]; };
 const initial = (name) => (String(name).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['؟'])[0].toUpperCase();
+// a comment's picture: «w:<slug>» a wrestler's from the site, or the address of the visitor's own
+const picSrc = (pic) => { pic = String(pic || ''); return /^w:[a-z0-9-]+$/.test(pic) ? `/assets/avatars/${pic.slice(2)}.webp` : /^https:\/\//.test(pic) ? pic : ''; };
 const pathKey = (u) => { let p = String(u || ''); try { p = decodeURIComponent(p); } catch {} p = p.split(/[?#]/)[0].normalize('NFC'); return p.endsWith('/') ? p : `${p}/`; };
 
 // When the owner last opened the comments page on this device: what came after is «جديد»
@@ -31,7 +33,7 @@ function row(c, t, seen, { compact = false } = {}) {
   const kind = KIND[t.kind];
   const fresh = c.at > seen;
   return html`<article class="cm-row ${fresh ? 'is-new' : ''} ${compact ? 'is-compact' : ''}" data-id="${c.id}">
-    <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${initial(c.name)}</span>
+    <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${picSrc(c.pic) ? html`<img src="${picSrc(c.pic)}" alt="" loading="lazy">` : initial(c.name)}</span>
     <div class="cm-main">
       <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}</div>
       <p class="cm-text">${c.text}</p>

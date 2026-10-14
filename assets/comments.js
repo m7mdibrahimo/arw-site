@@ -1,7 +1,8 @@
 // Visitors' comments (owner 2026-10-14): a name and a comment under every show, recap and story, on the site the moment
 // they are sent (the owner reads them in the panel and deletes what shouldn't stay). The comments come from the site's
 // worker when the section nears the screen (one request only for those who scroll that far). A comment can carry a
-// picture: the visitor's own (cut to a small square here, before it is sent) or a wrestler's from /assets/avatars/.
+// picture: the visitor's own (cut to a small square here, before it is sent) or a wrestler's official one from
+// /assets/avatars/ (scripts/avatars/fetch.mjs).
 (function () {
   'use strict';
   var box = document.getElementById('comments');
@@ -195,16 +196,6 @@
     fetch(AVATARS + 'credits.json').then(function (r) { return r.json(); }).then(function (list) {
       stars = list;
       drawStars();
-      var ul = box.querySelector('.arw-cm-credits ul');
-      list.forEach(function (w) {
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = w.source; a.target = '_blank'; a.rel = 'noopener nofollow';
-        a.textContent = w.ar;
-        li.appendChild(a);
-        li.appendChild(document.createTextNode(': ' + w.author + ' · ' + w.license));
-        ul.appendChild(li);
-      });
     }).catch(function () { stars = []; });
   }
   pick.addEventListener('click', function () { openPicker(picker.hidden); });

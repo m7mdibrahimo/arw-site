@@ -90,6 +90,8 @@ export function describe(n) {
     case 'held': return { ico: 'shield', tone: 'yellow', title: `تم حجب ${q(n.title)} عن السوشيال`, detail: `السبب: ${HELD[n.reason] || 'حرق'} · بيتنشر لوحده بعد ١٢ ساعة`, chip: null, href: '#/' };
     case 'released': return { ico: 'check', tone: 'teal', title: `تم فك حجب ${q(n.title)}`, detail: n.by ? `بواسطة ${n.by}` : 'بعد ١٢ ساعة من الحجب', chip: null, href: '#/' };
     case 'review': return { ico: 'alert', tone: 'coral', title: `النشر على ${PLATFORM[n.platform] || n.platform} محتاج مراجعة`, detail: q(n.title), chip: null, href: '#/tools/social' };
+    // a visitor's comment (worker: /api/studio/notifications): on the site already
+    case 'comment': return { ico: 'comment', tone: 'teal', title: `تعليق جديد من ${n.name || 'زائر'} على ${q(n.title)}`, detail: String(n.text || '').length > 110 ? `${String(n.text).slice(0, 110)}…` : String(n.text || ''), chip: null, href: '#/comments' };
     case 'reel-site': return { ico: 'show', tone: 'coral', title: `تم نشر ريل ${q(n.title)}`, detail: (n.done || []).map(d => REEL[d] || d).join(' · '), chip: null, href: '#/tools/reels' };
     default: return { ico: 'check', tone: 'ink', title: n.title || '', detail: n.detail || '', chip: null, href: '' };
   }

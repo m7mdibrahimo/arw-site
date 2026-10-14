@@ -1174,10 +1174,7 @@ html.arw-pfs-on, html.arw-pfs-on body{ overflow:hidden !important; }
 .arw-cm-star span{ font:700 11.5px/1.3 'Tajawal',sans-serif; text-align:center; }
 .arw-cm-star:hover img{ transform:scale(1.07); }
 .arw-cm-star[aria-selected="true"] img{ border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft); }
-.arw-cm-credits{ font-size:11.5px; color:var(--muted); }
-.arw-cm-credits summary{ cursor:pointer; font-weight:700; width:max-content; }
-.arw-cm-credits ul{ margin:8px 0 0; padding-inline-start:18px; display:grid; gap:3px; line-height:1.6; }
-.arw-cm-credits a{ color:var(--teal); }
+.arw-cm-credits{ margin:0; font-size:11.5px; font-weight:600; color:var(--muted); }
 .arw-cm-body{ flex:1; min-width:0; }
 .arw-cm-meta{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom:4px; }
 .arw-cm-who{ font-family:'Cairo',sans-serif; font-size:14.5px; font-weight:800; color:var(--ink); overflow-wrap:anywhere; }

@@ -107,8 +107,8 @@ export const api = {
   audit: () => call('/api/studio/audit'),
   held: () => call('/api/studio/held'),
   heldAction: (action, item) => call(`/api/studio/held/${action}`, { method: 'POST', body: { url: item.url, title: item.title, image: item.image } }),
-  // Visitors' comments (owner 2026-10-14): the list, and approve / delete (one, or every waiting one)
-  comments: (status = 'all') => call(`/api/studio/comments?status=${status}`),
+  // Visitors' comments (owner 2026-10-14): the list (newest first) and delete
+  comments: () => call('/api/studio/comments'),
   commentAction: (action, ids) => call(`/api/studio/comments/${action}`, { method: 'POST', body: { ids } }),
 };
 

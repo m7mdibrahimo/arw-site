@@ -4,7 +4,7 @@ import { COLLECTIONS } from './schema.js';
 import { html, mount, $, $$, icon, toast, dialog, esc, normalizeArabic, debounce, avatarInner, can } from './ui.js';
 import { renderLogin } from './views/auth.js';
 import { renderDashboard } from './views/dashboard.js';
-import { renderComments, refreshWaiting } from './views/comments.js';
+import { renderComments, refreshNew } from './views/comments.js';
 import { renderList } from './views/list.js';
 import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js';
 import { setupBell } from './notify.js';
@@ -239,7 +239,7 @@ function enter(user) {
   document.body.classList.add('in-app');
   renderShell(user);
   route();
-  if (can(user, 'comments')) refreshWaiting();
+  if (can(user, 'comments')) refreshNew();
   watchLive();
 }
 // A save became visible on the live site
