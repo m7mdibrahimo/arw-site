@@ -1,5 +1,15 @@
 [
   {
+    "id": 333902,
+    "link": "https://www.fightful.com/wrestling/cauliflower-chase-brown-passes-away/",
+    "date": "2026-10-14T15:51:42",
+    "date_gmt": "2026-10-14T19:51:42",
+    "title": {
+      "rendered": "&#8216;Cauliflower&#8217; Chase Brown Passes Away"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14154336/Screenshot-536.png"
+  },
+  {
     "id": 333887,
     "link": "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does/",
     "date": "2026-10-14T15:27:49",
@@ -288,15 +298,5 @@
       "rendered": "Report: Shotzi Blackheart&#8217;s MLW Contract Expired"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13224849/Shotzi-in-MLW-again-e1791946145980.jpeg"
-  },
-  {
-    "id": 333799,
-    "link": "https://www.fightful.com/wrestling/danhausen-hosting-2026-nxt-halloween-havoc-ple/",
-    "date": "2026-10-13T22:38:55",
-    "date_gmt": "2026-10-14T02:38:55",
-    "title": {
-      "rendered": "Danhausen Hosting 2026 NXT Halloween Havoc PLE"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13223532/HUjnMb3WUAArU2m-e1791945363304.jpg"
   }
 ]
