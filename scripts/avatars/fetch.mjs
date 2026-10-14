@@ -49,9 +49,12 @@ async function avatar(w, buf) {
     const side = Math.round(Math.min(info.width, info.height) * (w.zoom ?? 0.62));
     const left = Math.max(0, Math.min(info.width - side, Math.round(info.width * (w.x ?? 0.5) - side / 2)));
     const pad = Math.round(side * 0.06);
-    const head = await sharp(data).extract({ left, top: 0, width: side, height: Math.min(side - pad, info.height) })
-      .extend({ top: pad, background: { r: 0, g: 0, b: 0, alpha: 0 } }).resize(SIZE, SIZE, { fit: 'cover', position: 'top' }).png().toBuffer();
-    return sharp(background(w.fed)).composite([{ input: head }]).webp({ quality: 84 }).toBuffer();
+    // (one pipeline each: sharp resizes before it extends, whatever order they are written in)
+    const cut = await sharp(data).extract({ left, top: 0, width: side, height: Math.min(side - pad, info.height) })
+      .extend({ top: pad, bottom: Math.max(0, side - pad - info.height), background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+    const head = await sharp(cut).resize(SIZE, SIZE, { fit: 'cover', position: 'top' }).png().toBuffer();
+    const back = await sharp(background(w.fed)).resize(SIZE, SIZE).png().toBuffer();
+    return sharp(back).composite([{ input: head }]).webp({ quality: 84 }).toBuffer();
   }
   // a photo: a square from the top middle
   const side = Math.round(Math.min(meta.width, meta.height) * (w.zoom ?? 1));
