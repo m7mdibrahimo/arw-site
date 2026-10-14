@@ -118,6 +118,7 @@ export const api = {
   siteMemberBan: (id, on) => call('/api/studio/members/ban', { method: 'POST', body: { id: Number(id), on: !!on } }),
   siteMember: (id) => call(`/api/studio/members/${Number(id)}`),
   siteOfficial: () => call('/api/studio/members/official'),
+  siteMemberVerify: (id) => call('/api/studio/members/verify', { method: 'POST', body: { id: Number(id) } }),
   siteMemberBadge: (id, on) => call('/api/studio/members/badge', { method: 'POST', body: { id: Number(id), on: !!on } }),
   siteOfficialSave: (body) => call('/api/studio/members/official', { method: 'POST', body }),
 };

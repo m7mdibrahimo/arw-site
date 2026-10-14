@@ -34,7 +34,7 @@ function device(ua) {
 }
 /** Every member in a file Excel opens (UTF-8 with its mark, so Arabic reads right) */
 function exportCsv(items) {
-  const cols = [['id', 'رقم'], ['username', 'اسم المستخدم'], ['display', 'الاسم الظاهر'], ['email', 'البريد'], ['verified', 'البريد متأكد'], ['created', 'تاريخ التسجيل'], ['last_seen', 'آخر ظهور'], ['comments', 'التعليقات'], ['country', 'البلد'], ['ip', 'IP'], ['banned', 'موقوف']];
+  const cols = [['id', 'رقم'], ['username', 'اسم المستخدم'], ['display', 'الاسم الظاهر'], ['email', 'البريد'], ['verified', 'متفعّل'], ['created', 'تاريخ التسجيل'], ['last_seen', 'آخر ظهور'], ['comments', 'التعليقات'], ['country', 'البلد'], ['ip', 'IP'], ['banned', 'موقوف']];
   const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
   const rows = items.map(m => cols.map(([k]) => cell(k === 'created' || k === 'last_seen' ? (m[k] ? new Date(m[k]).toISOString().replace('T', ' ').slice(0, 16) : '') : k === 'verified' || k === 'banned' ? (m[k] ? 'نعم' : 'لا') : m[k])).join(','));
   const csv = '\ufeff' + [cols.map(([, l]) => cell(l)).join(','), ...rows].join('\r\n');
@@ -54,7 +54,7 @@ function row(m) {
     <a class="mb-open" href="#/site-members/${m.id}" aria-label="تفاصيل ${shownName(m)}"></a>
     <span class="cm-av" style="--c:${colorOf(shownName(m))}" aria-hidden="true">${picSrc(pic) ? html`<img src="${picSrc(pic)}" alt="" loading="lazy">` : initial(shownName(m))}</span>
     <div class="mb-main">
-      <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${m.verified ? html`<em class="mb-ok" title="البريد متأكد">${icon('check')}البريد</em>` : ''}</div>
+      <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${m.official ? '' : m.verified ? html`<em class="mb-ok" title="فعّل حسابه من بريده">${icon('check')}متفعّل</em>` : html`<em class="mb-wait" title="لسه مضغطش رابط التفعيل اللي في بريده">مش متفعّل</em>`}</div>
       <div class="mb-facts">
         <span dir="ltr">${m.email}</span>
         <span>انضم ${date(m.created)}</span>
@@ -159,7 +159,7 @@ export async function renderSiteMember(page, id) {
       </section>
       <div class="mb-facts-grid">
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}
-        ${fact('البريد متأكد؟', m.verified ? 'أيوه' : 'لسه')}
+        ${fact('الحساب متفعّل؟', m.verified ? 'أيوه، من بريده' : html`<span class="mb-wait">لسه</span> <button class="btn btn-sm" id="mb-verify">فعّله بإيدك</button>`)}
         ${fact('اتسجل', dateTime(m.created))}
         ${fact('آخر ظهور', m.last_seen ? `${timeAgo(m.last_seen)} · ${dateTime(m.last_seen)}` : '')}
         ${fact('البلد', m.country ? `${flagOf(m.country)} ${countryName(m.country)}` : '')}
@@ -179,6 +179,13 @@ export async function renderSiteMember(page, id) {
           : html`<p class="muted">لسه ماعلّقش.</p>`}
       </section>
     </div>`);
+  const vb = $('#mb-verify', page);
+  if (vb) vb.onclick = async () => {
+    const ok = await dialog({ title: `تفعيل حساب ${name}`, body: html`<p class="muted small">الحساب هيتفتح من غير ما يضغط رابط التفعيل اللي في بريده. استخدمها لو الرسالة موصلتلوش.</p>`, confirm: 'فعّله' });
+    if (!ok) return;
+    try { await api.siteMemberVerify(m.id); toast('اتفعّل ✓'); renderSiteMember(page, id); }
+    catch (e) { toast(e.message, 'error'); }
+  };
   const bb = $('[data-badge]', page);
   if (bb) bb.onclick = async () => {
     const on = m.badge === 0;

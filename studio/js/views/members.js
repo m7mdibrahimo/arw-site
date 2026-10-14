@@ -37,6 +37,7 @@ const ACTION_TEXT = {
   'comments.delete': 'حذف تعليقات زوار',
   'comments.reply': 'رد على تعليق باسم الموقع',
   'members.ban': 'وقّف عضو في الموقع', 'members.unban': 'رجّع عضو في الموقع',
+  'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو العلامة الزرقاء', 'members.unbadge': 'شال العلامة الزرقاء من عضو', 'members.official': 'عدّل الحساب الرسمي على الموقع',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };
 

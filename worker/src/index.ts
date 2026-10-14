@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember } from "./members";
+import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -3072,6 +3072,14 @@ export default {
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : null;
         const r = await studioOfficialAccount(env as any, body);
         if (body && r.success) await studioAudit(env as any, who.user, "members.official", { id: (r as any).account?.id || 0 }).catch(() => {});
+        return json(r, r.success ? 200 : 400);
+      }
+      if (path === "/api/studio/members/verify" && request.method === "POST") {
+        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تفعّل الأعضاء." }, 403);
+        const body: any = await request.json().catch(() => ({}));
+        const r = await studioVerifyMember(env as any, body.id);
+        const who = await studioUser(request, env as any);
+        if (who && r.success) await studioAudit(env as any, who.user, "members.verify", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }
       // The blue badge on a member, given or taken away: the owner only

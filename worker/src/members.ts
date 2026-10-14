@@ -181,10 +181,11 @@ async function mailToken(db: D1Database, member: number, kind: "verify" | "reset
 async function sendVerify(env: MembersEnv, db: D1Database, m: Member, now: number) {
   if (!env.RESEND_API_KEY) return false;
   const t = await mailToken(db, m.id, "verify", 72, now);
-  return sendMail(env, m.email, "أكّد بريدك في عرب راسلنج", mailHtml(`أهلًا بك يا ${esc(m.display || m.username)} 👋`, [
+  return sendMail(env, m.email, "فعّل حسابك في عرب راسلنج", mailHtml(`أهلًا بك يا ${esc(m.display || m.username)} 👋`, [
     "سعداء بانضمامك إلى عرب راسلنج.",
-    "بقيت خطوة صغيرة: أكّد بريدك بالضغط على الزر، وبعدها يمكنك استرجاع حسابك به إذا نسيت كلمة المرور.",
-  ], { text: "تأكيد البريد", href: `${SITE}/account/?verify=${t}` }));
+    "بقيت خطوة واحدة: اضغط على الزر لتفعيل حسابك، وبعدها تدخل مباشرة وتحصل على العلامة الزرقاء وكل مميزات العضوية.",
+    "الرابط صالح لمدة 3 أيام. إن لم تنشئ هذا الحساب، تجاهل هذه الرسالة.",
+  ], { text: "تفعيل الحساب", href: `${SITE}/account/?verify=${t}` }));
 }
 const esc = (s: string) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
 
@@ -201,10 +202,27 @@ export async function memberOf(request: Request, env: MembersEnv, now = Date.now
   const t = (request.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
   if (!db || !/^m_[A-Za-z0-9_-]{40,60}$/.test(t)) return null;
   await ensureMembers(db);
-  const m = await db.prepare("SELECT m.* FROM member_sessions s JOIN members m ON m.id = s.member WHERE s.token = ?1 AND s.expires > ?2 AND m.banned = 0").bind(await sha(t), now).first<Member>();
+  // with mail on, an account works only once its e-mail is confirmed (owner 2026-10-14: «التفعيل ده اجباري وليس اختياري»)
+  const m = await db.prepare("SELECT m.* FROM member_sessions s JOIN members m ON m.id = s.member WHERE s.token = ?1 AND s.expires > ?2 AND m.banned = 0 AND (m.verified = 1 OR ?3 = 0)").bind(await sha(t), now, mustVerify(env) ? 1 : 0).first<Member>();
   if (m && now - (m.last_seen || 0) > 3_600_000) await db.prepare("UPDATE members SET last_seen = ?1 WHERE id = ?2").bind(now, m.id).run();
   return m || null;
 }
+/** Activation by e-mail is required whenever the site can send mail (without the key, nobody could ever get in) */
+const mustVerify = (env: MembersEnv) => !!env.RESEND_API_KEY;
+/** k•••@gmail.com: enough for the member to recognise their own address */
+const maskEmail = (e: string) => e.replace(/^(.)([^@]*)(@.*)$/, (_, a, b, c) => a + "•".repeat(Math.min(Math.max(b.length, 2), 6)) + c);
+/** The activation mail again (at most 3 an hour for one account) */
+async function resendVerify(env: MembersEnv, db: D1Database, m: Member, now: number): Promise<boolean> {
+  if (await tooMany(env.PUSH_KV, `va:${m.id}`, 3, 3600)) return false;
+  await count(env.PUSH_KV, `va:${m.id}`, 3600);
+  return sendVerify(env, db, m, now).catch(() => false);
+}
+const pendingReply = (m: Member, sent: boolean, extra: Record<string, unknown> = {}) => reply({
+  ok: false, unverified: true, email: maskEmail(m.email), sent,
+  error: sent ? "حسابك لم يُفعّل بعد. أرسلنا رابط التفعيل إلى بريدك، افتح الرسالة واضغط «تفعيل الحساب»." : "حسابك لم يُفعّل بعد. افتح رسالة التفعيل في بريدك واضغط «تفعيل الحساب».",
+  ...extra,
+}, 403);
+
 /** A recovery code: 3 groups of 4 (letters and digits that can't be mistaken) */
 function recoveryCode(): string {
   const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -235,6 +253,10 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const bad = usernameProblem(username) || (!EMAIL.test(email) ? "اكتب بريدًا إلكترونيًا صحيحًا." : null) || passwordProblem(password, username);
     if (bad) return reply({ ok: false, error: bad }, 400);
     if (!(await checkCaptcha(env.PUSH_KV, body.captcha))) return reply({ ok: false, error: "رمز التحقق غير صحيح، جرّب الرمز الجديد.", captcha: true }, 400);
+    // an account never activated (a mistyped address…) gives its name and address back after a day
+    await ensureComments(db);
+    await db.prepare(`DELETE FROM members WHERE (ukey = ?1 OR email = ?2) AND verified = 0 AND official = 0 AND created < ?3
+      AND NOT EXISTS (SELECT 1 FROM comments c WHERE c.member = members.id)`).bind(ukeyOf(username), email, now - DAY).run();
     const taken = await db.prepare("SELECT ukey = ?1 AS u, email = ?2 AS e FROM members WHERE ukey = ?1 OR email = ?2 LIMIT 1").bind(ukeyOf(username), email).first<{ u: number; e: number }>();
     if (taken?.u) return reply({ ok: false, error: "اسم المستخدم مستخدم من قبل، اختر اسمًا آخر.", field: "username" }, 409);
     if (taken?.e) return reply({ ok: false, error: "هذا البريد له حساب بالفعل، سجّل دخولك.", field: "email" }, 409);
@@ -245,8 +267,13 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?1, ?8, ?8, ?9, ?10) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country).first<Member>();
     if (!ins) return reply({ ok: false, error: "تعذّر إنشاء الحساب، حاول مرة أخرى." }, 500);
     await count(env.PUSH_KV, `su:${ip}`, 3600);
-    const token = await startSession(db, ins.id, request, now);
     const mailed = await sendVerify(env, db, ins, now).catch(() => false);
+    // the account opens from the link in the mail
+    if (mustVerify(env)) {
+      await count(env.PUSH_KV, `va:${ins.id}`, 3600);
+      return reply({ ok: true, pending: true, email: ins.email, recovery: code, mailed });
+    }
+    const token = await startSession(db, ins.id, request, now);
     return reply({ ok: true, token, member: mine(ins), recovery: code, mailed });
   }
 
@@ -260,6 +287,8 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
       return reply({ ok: false, error: "اسم المستخدم أو كلمة المرور غير صحيحة." }, 401);
     }
     if (m.banned) return reply({ ok: false, error: "هذا الحساب موقوف. للاستفسار راسلنا من صفحة تواصل معنا." }, 403);
+    // not activated yet: the link again (the right password asks for it), no session
+    if (mustVerify(env) && !m.verified) return pendingReply(m, await resendVerify(env, db, m, now));
     const token = await startSession(db, m.id, request, now);
     await db.prepare("UPDATE members SET last_seen = ?1 WHERE id = ?2").bind(now, m.id).run();
     return reply({ ok: true, token, member: mine(m) });
@@ -280,6 +309,10 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
       db.prepare("UPDATE members SET salt = ?1, hash = ?2, iterations = ?3, recovery = ?4 WHERE id = ?5").bind(salt, hash, iterations, await sha(cleanCode(code)), m!.id),
       db.prepare("DELETE FROM member_sessions WHERE member = ?1").bind(m!.id),
     ]);
+    if (mustVerify(env) && !m!.verified) {
+      const sent = await resendVerify(env, db, m!, now);
+      return reply({ ok: true, pending: true, email: maskEmail(m!.email), recovery: code, mailed: sent });
+    }
     const token = await startSession(db, m!.id, request, now);
     return reply({ ok: true, token, member: mine(m!), recovery: code });
   }
@@ -318,12 +351,15 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path === "/verify" && request.method === "POST") {
     const row = await db.prepare("SELECT member, expires FROM member_tokens WHERE token = ?1 AND kind = 'verify'").bind(await sha(String(body.token || ""))).first<{ member: number; expires: number }>();
-    if (!row || row.expires < now) return reply({ ok: false, error: "رابط التأكيد انتهت صلاحيته، اطلب رابطًا جديدًا من صفحة حسابك." }, 400);
+    if (!row || row.expires < now) return reply({ ok: false, error: "رابط التفعيل انتهت صلاحيته. سجّل دخولك وسنرسل لك رابطًا جديدًا." }, 400);
     await db.batch([
-      db.prepare("UPDATE members SET verified = 1 WHERE id = ?1").bind(row.member),
+      db.prepare("UPDATE members SET verified = 1, last_seen = ?2 WHERE id = ?1").bind(row.member, now),
       db.prepare("DELETE FROM member_tokens WHERE member = ?1 AND kind = 'verify'").bind(row.member),
     ]);
-    return reply({ ok: true });
+    // the link opens the account: signed in on this device
+    const m = await db.prepare("SELECT * FROM members WHERE id = ?1 AND banned = 0").bind(row.member).first<Member>();
+    if (!m) return reply({ ok: true });
+    return reply({ ok: true, token: await startSession(db, m.id, request, now), member: mine(m) });
   }
 
   if (path.startsWith("/u/") && request.method === "GET") {
@@ -470,6 +506,16 @@ export async function studioBadgeMember(env: MembersEnv, id: unknown, on: unknow
   await ensureMembers(db);
   const r = await db.prepare("UPDATE members SET badge = ?1 WHERE id = ?2 AND official = 0").bind(on ? 1 : 0, Number(id) || 0).run();
   if (!r.meta?.changes) return { success: false, error: "العضو ده مش موجود." };
+  return { success: true };
+}
+/** The panel activates an account by hand (a member whose mail never came) */
+export async function studioVerifyMember(env: MembersEnv, id: unknown) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
+  await ensureMembers(db);
+  const r = await db.prepare("UPDATE members SET verified = 1 WHERE id = ?1").bind(Number(id) || 0).run();
+  if (!r.meta?.changes) return { success: false, error: "العضو ده مش موجود." };
+  await db.prepare("DELETE FROM member_tokens WHERE member = ?1 AND kind = 'verify'").bind(Number(id)).run();
   return { success: true };
 }
 export async function studioBanMember(env: MembersEnv, id: unknown, on: unknown) {

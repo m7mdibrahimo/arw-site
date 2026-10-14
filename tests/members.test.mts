@@ -140,7 +140,7 @@ test('a member comments as themselves (name, picture, badge); no visitor can use
   assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' })).status, 403);
 });
 
-test('with the site\'s mail key: a confirmation mail at sign-up, and «forgot my password» sends a link that works once', async () => {
+test('with the site\'s mail key: activation by e-mail is required, the link opens the account; «forgot my password» sends a link that works once', async () => {
   const e = env();
   e.RESEND_API_KEY = 're_test';
   const sent: any[] = [];
@@ -148,20 +148,62 @@ test('with the site\'s mail key: a confirmation mail at sign-up, and «forgot my
   globalThis.fetch = (async (url: any, init: any) => { sent.push({ url: String(url), body: JSON.parse(init.body) }); return new Response('{}', { status: 200 }); }) as any;
   try {
     const s = await signup(e);
-    assert.equal(s.body.mailed, true);
+    assert.equal(s.status, 200);
+    assert.equal(s.body.pending, true);
+    assert.equal(s.body.token, undefined);
+    assert.match(s.body.recovery, /^[A-Z0-9]{4}-/);
     assert.equal(sent[0].url, 'https://api.resend.com/emails');
     assert.deepEqual(sent[0].body.to, ['kareem@example.com']);
-    const verify = sent[0].body.html.match(/verify=([A-Za-z0-9_-]+)/)[1];
-    assert.equal((await call(e, '/verify', { token: verify })).status, 200);
-    assert.equal((await call(e, '/me', undefined, s.body.token)).body.member.verified, true);
+    assert.match(sent[0].body.subject, /فعّل حسابك/);
+    // no way in before the link: the right password only sends the link again
+    const early = await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' });
+    assert.equal(early.status, 403);
+    assert.equal(early.body.unverified, true);
+    assert.equal(early.body.sent, true);
+    assert.match(early.body.email, /^k•+@example\.com$/);
+    assert.equal(sent.length, 2);
+    // a wrong password learns nothing
+    assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'nope1234' })).body.unverified, undefined);
+    const verify = sent[1].body.html.match(/verify=([A-Za-z0-9_-]+)/)[1];
+    const v = await call(e, '/verify', { token: verify });
+    assert.equal(v.status, 200);
+    assert.match(v.body.token, /^m_/);
+    assert.equal((await call(e, '/me', undefined, v.body.token)).body.member.verified, true);
+    assert.equal((await call(e, '/verify', { token: verify })).status, 400);
+    assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' })).status, 200);
     // the same answer for an address with no account
+    const before = sent.length;
     assert.equal((await call(e, '/forgot', { email: 'nobody@example.com' })).status, 200);
-    assert.equal(sent.length, 1);
+    assert.equal(sent.length, before);
     await call(e, '/forgot', { email: 'KAREEM@example.com' });
-    const reset = sent[1].body.html.match(/reset=([A-Za-z0-9_-]+)/)[1];
+    const reset = sent[before].body.html.match(/reset=([A-Za-z0-9_-]+)/)[1];
     assert.equal((await call(e, '/reset', { token: reset, password: 'dynamite77' })).status, 200);
     assert.equal((await call(e, '/reset', { token: reset, password: 'dynamite88' })).status, 400);
     assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'dynamite77' })).status, 200);
+  } finally { globalThis.fetch = real; }
+});
+
+test('activation: a session from before it is not signed in; the link mail at most 3 an hour; a name never activated is free again after a day', async () => {
+  const e = env();
+  const real = globalThis.fetch;
+  let mails = 0;
+  globalThis.fetch = (async () => { mails++; return new Response('{}', { status: 200 }); }) as any;
+  try {
+    // signed up before mail was on: a session, not activated
+    const old = await signup(e);
+    assert.match(old.body.token, /^m_/);
+    e.RESEND_API_KEY = 're_test';
+    assert.equal((await call(e, '/me', undefined, old.body.token)).status, 401);
+    for (let i = 0; i < 3; i++) assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' })).body.sent, true);
+    assert.equal((await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' })).body.sent, false);
+    assert.equal(mails, 3);
+    // a typo in the address: the name comes back a day later (not before)
+    const t0 = Date.now();
+    const u2 = { username: 'sara22', email: 'sara@exmaple.com', password: 'abc12345' };
+    assert.equal((await handleMembers(new Request('https://w.example/members/signup', { method: 'POST', body: JSON.stringify({ ...u2, captcha: await solved(e) }), headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': '8.8.8.1' } }), e, new URL('https://w.example/members/signup'), t0)).status, 200);
+    const again = async (at: number, ip: string) => (await handleMembers(new Request('https://w.example/members/signup', { method: 'POST', body: JSON.stringify({ ...u2, email: 'sara@example.com', captcha: await solved(e) }), headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': ip } }), e, new URL('https://w.example/members/signup'), at)).status;
+    assert.equal(await again(t0 + 3600e3, '8.8.8.2'), 409);
+    assert.equal(await again(t0 + 25 * 3600e3, '8.8.8.3'), 200);
   } finally { globalThis.fetch = real; }
 });
 

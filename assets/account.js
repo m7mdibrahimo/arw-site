@@ -72,7 +72,7 @@
     b.addEventListener('click', function () {
       var to = b.getAttribute('data-go');
       if (to === 'home') { history.replaceState(null, '', location.pathname); start(); return; }
-      if (to === 'profile') { drawProfile(); show('profile'); return; }
+      if (to === 'profile') { if (waitingFor) { pending(waitingFor, waitingMail, true); return; } drawProfile(); show('profile'); return; }
       show(to);
     });
   });
@@ -114,6 +114,7 @@
     busy(f, true); say(f, 'لحظة…');
     api('/login', { login: val(f, 'login'), password: f.elements.password.value }).then(function (d) {
       busy(f, false);
+      if (d.unverified) { say(f, ''); pending({ login: val(f, 'login'), password: f.elements.password.value }, d.email, d.sent); f.reset(); return; }
       if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر الدخول، تأكد من البيانات.', 'bad'); return; }
       signedIn(d); say(f, ''); f.reset();
       done();
@@ -136,20 +137,46 @@
         captcha();
         return;
       }
-      signedIn(d); f.reset(); say(f, '');
+      f.reset(); say(f, '');
+      if (d.pending) { welcome(d.recovery, false, { login: u, password: p }, d.email); return; }
+      signedIn(d);
       welcome(d.recovery, d.mailed);
     }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); captcha(); });
   });
 
-  function welcome(code, mailed) {
+  // waitingFor: an account that opens from the mail (the sign-in, kept in memory only to send the link again)
+  var waitingFor = null, waitingMail = '';
+  function welcome(code, mailed, creds, email) {
     var v = $('[data-view="welcome"]');
+    waitingFor = creds || null; waitingMail = email || '';
     $('.acct-code', v).textContent = code;
-    $('.acct-welcome-tx', v).textContent = mailed ? 'تم إنشاء حسابك وحصلت على العلامة الزرقاء، وأرسلنا رسالة تأكيد إلى بريدك.' : 'تم إنشاء حسابك وحصلت على العلامة الزرقاء.';
+    $('.acct-welcome-tx', v).textContent = creds ? 'تم إنشاء حسابك. احفظ كود الاسترجاع أولًا، ثم فعّل حسابك من بريدك.' : mailed ? 'تم إنشاء حسابك وحصلت على العلامة الزرقاء.' : 'تم إنشاء حسابك وحصلت على العلامة الزرقاء.';
     var check = $('.acct-saved', v), go = $('[data-go="profile"]', v);
+    go.textContent = creds ? 'متابعة' : 'متابعة إلى حسابي';
     check.checked = false; go.disabled = true;
     check.onchange = function () { go.disabled = !check.checked; };
     show('welcome');
   }
+  function pending(creds, email, sent) {
+    waitingFor = creds; waitingMail = email || waitingMail;
+    var v = $('[data-view="pending"]');
+    $('.acct-pending-mail', v).textContent = waitingMail;
+    var m = $('.acct-pending-msg', v);
+    m.textContent = sent === false ? 'أرسلنا الرابط قبل قليل، افتح بريدك. يمكنك طلب رابط جديد بعد قليل.' : '';
+    m.className = 'acct-msg acct-pending-msg';
+    show('pending');
+  }
+  $('[data-act="resend"]').addEventListener('click', function () {
+    var b = this, m = $('.acct-pending-msg');
+    if (!waitingFor) { show('auth'); return; }
+    b.disabled = true; m.textContent = 'لحظة…'; m.className = 'acct-msg acct-pending-msg';
+    api('/login', waitingFor).then(function (d) {
+      b.disabled = false;
+      if (d.ok) { signedIn(d); waitingFor = null; done(); return; }
+      m.textContent = d.sent ? 'أرسلنا رابطًا جديدًا ✓ افتح بريدك.' : d.unverified ? 'أرسلنا الرابط قبل قليل. انتظر دقائق ثم حاول مرة أخرى.' : (d.error && !EN ? d.error : 'تعذّر الإرسال، حاول مرة أخرى.');
+      m.className = 'acct-msg acct-pending-msg ' + (d.sent ? 'is-ok' : 'is-bad');
+    }).catch(function () { b.disabled = false; m.textContent = 'تعذّر الاتصال، حاول مرة أخرى.'; m.className = 'acct-msg acct-pending-msg is-bad'; });
+  });
   $('.acct-copy').addEventListener('click', function () {
     var b = this, code = $('.acct-code').textContent;
     var ok = function () { b.textContent = 'تم النسخ ✓'; setTimeout(function () { b.textContent = 'نسخ'; }, 1800); };
@@ -177,7 +204,10 @@
     api('/recover', { login: val(f, 'login'), code: val(f, 'code'), password: f.elements.password.value }).then(function (d) {
       busy(f, false);
       if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر التغيير، تأكد من البيانات.', 'bad'); return; }
-      signedIn(d); f.reset();
+      var creds = { login: val(f, 'login'), password: f.elements.password.value };
+      f.reset();
+      if (d.pending) { welcome(d.recovery, false, creds, d.email); $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، ثم فعّل حسابك من بريدك.'; return; }
+      signedIn(d);
       // the old code is used up: a new one, once
       welcome(d.recovery, false);
       $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، والقديم لم يعد يعمل.';
@@ -349,8 +379,9 @@
     if (q.get('verify')) {
       api('/verify', { token: q.get('verify') }).then(function (d) {
         history.replaceState(null, '', location.pathname);
-        if (d.ok && session) { session.member.verified = true; save(session); }
-        note(d.ok ? 'تم تأكيد بريدك ✓' : 'الرابط لا يعمل', d.ok ? 'شكرًا لك، أصبح بإمكانك استرجاع حسابك ببريدك.' : (d.error && !EN ? d.error : 'رابط التأكيد غير صالح.'));
+        if (d.ok && d.token) signedIn(d);
+        else if (d.ok && session) { session.member.verified = true; save(session); }
+        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلًا بك في عرب راسلنج. حسابك جاهز، وحصلت على العلامة الزرقاء وكل مميزات العضوية.' : (d.error && !EN ? d.error : 'رابط التفعيل غير صالح.'));
       });
       return;
     }
