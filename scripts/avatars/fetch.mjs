@@ -56,10 +56,10 @@ async function avatar(w, buf) {
     const back = await sharp(background(w.fed)).resize(SIZE, SIZE).png().toBuffer();
     return sharp(back).composite([{ input: head }]).webp({ quality: 84 }).toBuffer();
   }
-  // a photo: a square from the top middle
-  const side = Math.round(Math.min(meta.width, meta.height) * (w.zoom ?? 1));
+  // a photo (AEW's roster cards: the wrestler from the knees up): a closer square round the head, top middle
+  const side = Math.round(Math.min(meta.width, meta.height) * (w.zoom ?? 0.5));
   const left = Math.round(Math.max(0, Math.min(meta.width - side, meta.width * (w.x ?? 0.5) - side / 2)));
-  const top = Math.round(Math.max(0, Math.min(meta.height - side, meta.height * (w.y ?? 0))));
+  const top = Math.round(Math.max(0, Math.min(meta.height - side, meta.height * (w.y ?? 0.03))));
   return img.extract({ left, top, width: side, height: side }).resize(SIZE, SIZE).webp({ quality: 84 }).toBuffer();
 }
 

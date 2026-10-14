@@ -14,7 +14,7 @@
   {"slug": "liv-morgan", "ar": "ليف مورغان", "en": "Liv Morgan", "fed": "WWE", "page": "https://www.wwe.com/superstars/liv-morgan"},
   {"slug": "becky-lynch", "ar": "بيكي لينش", "en": "Becky Lynch", "fed": "WWE", "page": "https://www.wwe.com/superstars/becky-lynch"},
   {"slug": "bianca-belair", "ar": "بيانكا بيلير", "en": "Bianca Belair", "fed": "WWE", "page": "https://www.wwe.com/superstars/bianca-belair"},
-  {"slug": "kenny-omega", "ar": "كيني أوميغا", "en": "Kenny Omega", "fed": "AEW", "page": "https://www.allelitewrestling.com/aew-roster", "alt": "KENNY OMEGA"},
+  {"slug": "kenny-omega", "ar": "كيني أوميغا", "en": "Kenny Omega", "fed": "AEW", "page": "https://www.allelitewrestling.com/aew-roster", "alt": "KENNY OMEGA", "x": 0.56},
   {"slug": "jon-moxley", "ar": "جون موكسلي", "en": "Jon Moxley", "fed": "AEW", "page": "https://www.allelitewrestling.com/aew-roster", "alt": "JON MOXLEY"},
   {"slug": "mjf", "ar": "ام جيه اف", "en": "MJF", "fed": "AEW", "page": "https://www.allelitewrestling.com/aew-roster", "alt": "MJF"},
   {"slug": "will-ospreay", "ar": "ويل أوسبراي", "en": "Will Ospreay", "fed": "AEW", "page": "https://www.allelitewrestling.com/aew-roster", "alt": "WILL OSPREAY"},
