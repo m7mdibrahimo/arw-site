@@ -5,8 +5,9 @@
   "en": "Roman Reigns",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/roman-reigns"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/roman-reigns",
+  "year": "2026"
  },
  {
   "slug": "cody-rhodes",
@@ -14,8 +15,9 @@
   "en": "Cody Rhodes",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/cody-rhodes"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/cody-rhodes",
+  "year": "2026"
  },
  {
   "slug": "seth-rollins",
@@ -23,8 +25,9 @@
   "en": "Seth Rollins",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/seth-rollins"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/seth-rollins",
+  "year": "2026"
  },
  {
   "slug": "cm-punk",
@@ -32,8 +35,9 @@
   "en": "CM Punk",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/cmpunk"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/cmpunk",
+  "year": "2026"
  },
  {
   "slug": "john-cena",
@@ -41,8 +45,9 @@
   "en": "John Cena",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2025",
-  "source": "https://www.wwe.com/superstars/john-cena"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/john-cena",
+  "year": "2025"
  },
  {
   "slug": "randy-orton",
@@ -50,8 +55,9 @@
   "en": "Randy Orton",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2024",
-  "source": "https://www.wwe.com/superstars/randy-orton"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/randy-orton",
+  "year": "2024"
  },
  {
   "slug": "gunther",
@@ -59,8 +65,9 @@
   "en": "Gunther",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/gunther"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/gunther",
+  "year": "2026"
  },
  {
   "slug": "drew-mcintyre",
@@ -68,8 +75,9 @@
   "en": "Drew McIntyre",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2021",
-  "source": "https://www.wwe.com/superstars/drew-mcintyre"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/drew-mcintyre",
+  "year": "2021"
  },
  {
   "slug": "la-knight",
@@ -77,8 +85,9 @@
   "en": "LA Knight",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/la-knight"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/la-knight",
+  "year": "2026"
  },
  {
   "slug": "jey-uso",
@@ -86,8 +95,9 @@
   "en": "Jey Uso",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/jey-uso"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/jey-uso",
+  "year": "2026"
  },
  {
   "slug": "brock-lesnar",
@@ -95,8 +105,9 @@
   "en": "Brock Lesnar",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2025",
-  "source": "https://www.wwe.com/superstars/brock-lesnar"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/brock-lesnar",
+  "year": "2025"
  },
  {
   "slug": "rhea-ripley",
@@ -104,8 +115,9 @@
   "en": "Rhea Ripley",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/rhea-ripley"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/rhea-ripley",
+  "year": "2026"
  },
  {
   "slug": "liv-morgan",
@@ -113,8 +125,9 @@
   "en": "Liv Morgan",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2024",
-  "source": "https://www.wwe.com/superstars/liv-morgan"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/liv-morgan",
+  "year": "2024"
  },
  {
   "slug": "becky-lynch",
@@ -122,8 +135,9 @@
   "en": "Becky Lynch",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2026",
-  "source": "https://www.wwe.com/superstars/becky-lynch"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/becky-lynch",
+  "year": "2026"
  },
  {
   "slug": "bianca-belair",
@@ -131,142 +145,158 @@
   "en": "Bianca Belair",
   "fed": "WWE",
   "owner": "WWE",
-  "year": "2024",
-  "source": "https://www.wwe.com/superstars/bianca-belair"
+  "license": "",
+  "source": "https://www.wwe.com/superstars/bianca-belair",
+  "year": "2024"
  },
  {
   "slug": "kenny-omega",
   "ar": "كيني أوميغا",
   "en": "Kenny Omega",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Crisco 1492",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay_v_Kenny_Omega,_AEW_Forbidden_Door_2023,_2023-06-25_18.jpg",
+  "year": "2023"
  },
  {
   "slug": "jon-moxley",
   "ar": "جون موكسلي",
   "en": "Jon Moxley",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "West Smith",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jon_Moxley_Oct_2021.jpg",
+  "year": "2021"
  },
  {
   "slug": "mjf",
   "ar": "ام جيه اف",
   "en": "MJF",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "McPhail",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay_as_International_Champion_(cropped).jpg",
+  "year": "2024"
  },
  {
   "slug": "will-ospreay",
   "ar": "ويل أوسبراي",
   "en": "Will Ospreay",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "zuko1312",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:AEW_Dynamite_Grand_Slam_2024_51.jpg",
+  "year": "2024"
  },
  {
   "slug": "swerve-strickland",
   "ar": "سويرف ستريكلاند",
   "en": "Swerve Strickland",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Super Festivals",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Swerve_Strickland_Photo_Op_GalaxyCon_Rchmond_2025.jpg",
+  "year": "2025"
  },
  {
   "slug": "hangman-adam-page",
   "ar": "هانغمان آدم بيج",
   "en": "Hangman Adam Page",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "KMcWrestling Photography",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brodido_and_Hangman_(cropped).jpg",
+  "year": "2026"
  },
  {
   "slug": "kazuchika-okada",
   "ar": "كازوتشيكا أوكادا",
   "en": "Kazuchika Okada",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "ハイエナジー",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2023.11.04-okada_(cropped).jpg",
+  "year": "2023"
  },
  {
   "slug": "adam-copeland",
   "ar": "آدم كوبلاند",
   "en": "Adam Copeland",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Gage Skidmore",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Copeland_by_Gage_Skidmore.jpg",
+  "year": "2024"
  },
  {
   "slug": "chris-jericho",
   "ar": "كريس جيريكو",
   "en": "Chris Jericho",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "John Manard",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chris_Jericho_GalaxyCon_Raleigh_July,_25,_2026_681.jpg",
+  "year": "2026"
  },
  {
   "slug": "bryan-danielson",
   "ar": "براين دانيلسون",
   "en": "Bryan Danielson",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Ralph Arvesen",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bryan_Danielson_2022-03-23_(3x4_cropped).jpg",
+  "year": "2022"
  },
  {
   "slug": "darby-allin",
   "ar": "داربي ألين",
   "en": "Darby Allin",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "KMcWrestling Photography",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Darby_Allin_AEW_(cropped).jpg",
+  "year": "2026"
  },
  {
   "slug": "orange-cassidy",
   "ar": "أورانج كاسيدي",
   "en": "Orange Cassidy",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Super Festivals",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Orange_Cassidy_Photo_Op_Nightmare_Weekend_Chicago_2025.jpg",
+  "year": "2025"
  },
  {
   "slug": "mercedes-mone",
   "ar": "مرسيدس موني",
   "en": "Mercedes Moné",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Sceptre",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mercedes_Mone_vs._Kanji.jpg",
+  "year": "2025"
  },
  {
   "slug": "toni-storm",
   "ar": "توني ستورم",
   "en": "Toni Storm",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "KMcWrestling Photography",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Toni_Storm_-_September_11_2025_(Airdate_September_13).jpg",
+  "year": "2025"
  },
  {
   "slug": "kris-statlander",
   "ar": "كريس ستاتلاندر",
   "en": "Kris Statlander",
   "fed": "AEW",
-  "owner": "All Elite Wrestling",
-  "year": "",
-  "source": "https://www.allelitewrestling.com/aew-roster"
+  "owner": "Super Festivals",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kris_Statlander,_July_2022_(cropped).jpg",
+  "year": "2022"
  }
 ]
