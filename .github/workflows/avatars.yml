@@ -5,6 +5,9 @@ name: Comment Avatars
 # change, or by hand.
 on:
   push:
+    # never by itself on main: the pictures are made and checked on a working branch, then merged
+    branches-ignore:
+      - main
     paths:
       - 'scripts/avatars/wrestlers.json'
       - 'scripts/avatars/fetch.mjs'
