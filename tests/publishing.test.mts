@@ -2154,10 +2154,10 @@ test('dual of «نزال» is «نزالين», never «نزاتين» (INCIDENT
   assert.equal(applyCorrections('خاضت نزاتين في عام واحد'), 'خاضت نزالين في عام واحد');
 });
 
-test('Armstrong is «أرمسترونغ», never «أمرسترونغ»; «ليواصلا مغامرتهما» keeps the dual (INCIDENTS #512)', async () => {
+test('Armstrong is «أرمسترونغ», never «أمرسترونغ»; «ليواصلا مغامرتهما» never takes the dual (INCIDENTS #512)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('ظهور كالي أمرسترونغ'), 'ظهور كالي أرمسترونغ');
-  assert.equal(applyCorrections('ليواصلا مغامرتهم بنجاح'), 'ليواصلا مغامرتهما بنجاح');
+  assert.equal(applyCorrections('ليواصلا مغامرتهم بنجاح'), 'ليواصل الثنائي مغامرته بنجاح');
 });
 
 test('Kendal Grey is always «كيندال غراي» — never «غري» or «جراي» (INCIDENTS #159)', async () => {
