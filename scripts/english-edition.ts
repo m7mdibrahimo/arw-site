@@ -130,6 +130,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim())).join(" ").toLowerCase().replace(/[“”"]/g, '"');
   const words = prosLines.replace(/"[^"]*"/g, " ").split(/\s+/).filter(Boolean);
   for (let k = 0; k + 14 <= words.length; k++) { if (src.includes(words.slice(k, k + 14).join(" "))) { issues.push("copied from the source"); break; } }
+  // a number the source never says (INCIDENTS #516: «150 to 200 matches» became «150 and 250»)
+  const srcDigits = i.sourceText.replace(/(\d),(?=\d{3})/g, "$1");
+  const odd = (body.replace(/(\d),(?=\d{3})/g, "$1").match(/(?<![\d.$])\d{3,4}(?![\d.])/g) || []).filter((n) => !/^(19|20)\d\d$/.test(n) && !srcDigits.includes(n));
+  if (odd.length) issues.push(`number not in source: ${odd[0]}`);
   return issues;
 }
 

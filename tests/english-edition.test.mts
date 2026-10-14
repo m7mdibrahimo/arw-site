@@ -134,3 +134,10 @@ test('an English edition whose Arabic story was skipped as a duplicate is remove
   assert.match(fs.readFileSync(red, 'utf8'), /^\/en\/news\/second-story\/\* \/en\/news\/first-story\/ 301!$/m);
   assert.equal(pruneDuplicateOrphanEnglish(en, ar, skips, red), 0);
 });
+
+test('a number the source never says blocks the English edition (INCIDENTS #516)', () => {
+  const src = { ...input, sourceText: input.sourceText + ' He wrestled 150 to 200 matches a year, about 1,200 in total.' };
+  const ok = { ...good, body: good.body + ' He worked 150 to 200 matches a year, about 1,200 in total, since 2012.' };
+  assert.deepEqual(checkEnglish(ok, src), []);
+  assert.ok(checkEnglish({ ...ok, body: ok.body.replace('200 matches', '250 matches') }, src).some((x) => x.startsWith('number not in source')));
+});
