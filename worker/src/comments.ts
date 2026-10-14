@@ -44,7 +44,7 @@ export function ensureTable(db: D1Database): Promise<unknown> {
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
   ]).then(async () => {
     // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
-    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''"]) {
+    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''", "hearted_at INTEGER NOT NULL DEFAULT 0"]) {
       await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
     }
     // the answers to a visitor's comments, found fast
@@ -124,13 +124,24 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     const owner = await ownerOf(b.k);
     if (!owner) return reply({ items: [] });
     const since = Math.max(Number(b.since) || 0, now - 30 * 86_400_000);
-    const rows = await db.prepare(`SELECT r.id, r.name, r.text, r.pic, r.at, r.path, r.title, r.official, r.parent, c.text AS mine
-      FROM comments r JOIN comments c ON r.reply_to = c.id
-      WHERE c.owner = ?1 AND c.deleted = 0 AND r.deleted = 0 AND r.owner != ?1 AND r.at > ?2 ORDER BY r.at DESC LIMIT 20`).bind(owner, since).all<any>();
-    return reply({ items: (rows.results || []).map((r: any) => ({
-      id: r.id, name: r.official ? OFFICIAL_NAME : r.name, official: !!r.official, pic: r.official ? "" : r.pic, at: r.at,
-      text: String(r.text).slice(0, 160), mine: String(r.mine || "").slice(0, 80), title: r.title, url: `${r.path}#c-${r.id}`,
-    })) }, 200, { "Cache-Control": "no-store" });
+    const [rows, hearts] = await db.batch([
+      db.prepare(`SELECT r.id, r.name, r.text, r.pic, r.at, r.path, r.title, r.official, r.parent, c.text AS mine
+        FROM comments r JOIN comments c ON r.reply_to = c.id
+        WHERE c.owner = ?1 AND c.deleted = 0 AND r.deleted = 0 AND r.owner != ?1 AND r.at > ?2 ORDER BY r.at DESC LIMIT 20`).bind(owner, since),
+      // the site's heart on one of theirs (owner 2026-10-14: «لو انا عملت هارت علي تعليق يجيلو اشعار»)
+      db.prepare("SELECT id, text, path, title, hearted_at FROM comments WHERE owner = ?1 AND deleted = 0 AND hearted = 1 AND hearted_at > ?2 ORDER BY hearted_at DESC LIMIT 10").bind(owner, since),
+    ]) as any[];
+    const items = [
+      ...(rows.results || []).map((r: any) => ({
+        kind: "reply", id: r.id, name: r.official ? OFFICIAL_NAME : r.name, official: !!r.official, pic: r.official ? "" : r.pic, at: r.at,
+        text: String(r.text).slice(0, 160), mine: String(r.mine || "").slice(0, 80), title: r.title, url: `${r.path}#c-${r.id}`,
+      })),
+      ...(hearts.results || []).map((c: any) => ({
+        kind: "heart", id: c.id, name: OFFICIAL_NAME, official: true, pic: "", at: c.hearted_at,
+        text: String(c.text).slice(0, 160), mine: String(c.text).slice(0, 80), title: c.title, url: `${c.path}#c-${c.id}`,
+      })),
+    ].sort((a, b) => b.at - a.at);
+    return reply({ items }, 200, { "Cache-Control": "no-store" });
   }
 
   if (request.method === "GET") {
@@ -258,12 +269,16 @@ export async function studioReplyComment(env: CommentsEnv, id: unknown, rawText:
 
 /** The site's heart on a visitor's comment (owner 2026-10-14, like YouTube's: «زر اعجاب… اعمله عليه قلب ويبان عنده»):
  *  on, or off again. Only a visitor's comment: the site doesn't heart its own replies */
-export async function studioHeartComment(env: CommentsEnv, id: unknown, on: unknown) {
+export async function studioHeartComment(env: CommentsEnv, id: unknown, on: unknown, now = Date.now()) {
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "التعليقات مش متاحة دلوقتي." };
   await ensureTable(db);
-  const r = await db.prepare("UPDATE comments SET hearted = ?1 WHERE id = ?2 AND deleted = 0 AND official = 0").bind(on ? 1 : 0, Number(id) || 0).run();
-  if (!r.meta?.changes) return { success: false, error: "التعليق ده اتحذف أو مش موجود." };
+  const c = await db.prepare("SELECT id, owner, hearted_at FROM comments WHERE id = ?1 AND deleted = 0 AND official = 0").bind(Number(id) || 0).first<Row & { hearted_at: number }>();
+  if (!c) return { success: false, error: "التعليق ده اتحذف أو مش موجود." };
+  // the visitor is told the first time only («أعجب عرب راسلنج بتعليقك»): a heart taken off and given again says nothing new
+  const first = !!on && !c.hearted_at;
+  await db.prepare("UPDATE comments SET hearted = ?1, hearted_at = CASE WHEN ?2 THEN ?3 ELSE hearted_at END WHERE id = ?4").bind(on ? 1 : 0, first ? 1 : 0, now, c.id).run();
+  if (first && c.owner) await notifyOwner(env.PUSH_KV, c.owner).catch(() => 0);
   return { success: true, hearted: !!on };
 }
 

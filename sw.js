@@ -61,9 +61,10 @@ function commentReplies() {
         return cmSet('since', Math.max.apply(null, items.map(function (i) { return i.at; }))).then(function () {
           return Promise.all(items.slice(0, 3).map(function (it) {
             var who = it.official ? (en ? 'Arab Wrestling' : 'عرب راسلنج') : it.name;
-            return self.registration.showNotification(en ? who + ' replied to your comment' : who + ' رد على تعليقك', {
+            var title = it.kind === 'heart' ? (en ? 'Arab Wrestling liked your comment ❤️' : 'أعجب عرب راسلنج بتعليقك ❤️') : (en ? who + ' replied to your comment' : who + ' رد على تعليقك');
+            return self.registration.showNotification(title, {
               body: it.text, icon: it.official ? (en ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') : '/favicon.png', badge: '/favicon.png',
-              dir: en ? 'ltr' : 'rtl', lang: en ? 'en' : 'ar', tag: 'cm-' + it.id, data: { url: it.url }
+              dir: en ? 'ltr' : 'rtl', lang: en ? 'en' : 'ar', tag: 'cm-' + (it.kind || 'reply') + '-' + it.id, data: { url: it.url }
             });
           })).then(function () { return true; });
         });
@@ -200,7 +201,7 @@ self.addEventListener('push', function(event) {
   event.waitUntil(cmGet('k').then(function (key) {
     if (!key) return checkNewContentSW();
     return commentReplies().then(function (shown) {
-      if (!shown) return self.registration.showNotification('عرب راسلنج', { body: 'لديك رد جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
+      if (!shown) return self.registration.showNotification('عرب راسلنج', { body: 'لديك تنبيه جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
     });
   }));
 });

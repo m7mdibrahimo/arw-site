@@ -223,3 +223,23 @@ test('push: the site\'s key is made once, a browser\'s address is kept only from
   assert.equal(await notifyOwner(env.PUSH_KV, await ownerOf(KEY_A), gone), 0);
   assert.equal(await notifyOwner(env.PUSH_KV, await ownerOf(KEY_A), fake), 0);
 });
+
+test('the site\'s heart reaches the visitor\'s inbox once («أعجب عرب راسلنج بتعليقك»), and wakes their phone', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const c = await post(env, { p: STORY, name: 'سارة', text: 'تحليل رائع', k: KEY_A });
+  await studioHeartComment(env, c.body.id, true);
+  let a = await inbox(env, KEY_A);
+  assert.equal(a.items.length, 1);
+  assert.equal(a.items[0].kind, 'heart');
+  assert.equal(a.items[0].name, 'عرب راسلنج');
+  assert.match(a.items[0].url, new RegExp(`#c-${c.body.id}$`));
+  // off and on again: nothing new to say
+  const at = a.items[0].at;
+  await studioHeartComment(env, c.body.id, false);
+  assert.equal((await inbox(env, KEY_A)).items.length, 0);
+  await studioHeartComment(env, c.body.id, true);
+  a = await inbox(env, KEY_A);
+  assert.equal(a.items.length, 1);
+  assert.equal(a.items[0].at, at);
+  assert.equal((await inbox(env, KEY_A, at)).items.length, 0);
+});

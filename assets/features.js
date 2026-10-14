@@ -750,9 +750,10 @@
         var av = card.querySelector('.arw-rt-av');
         if (first.official) av.innerHTML = '<img src="' + (EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') + '" alt="">';
         else av.textContent = (String(first.name).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
+        // a reply, or the site's heart on their comment («أعجب عرب راسلنج بتعليقك»)
         card.querySelector('b').textContent = items.length > 1
-          ? (items.length === 2 ? 'ردّان جديدان على تعليقاتك' : (items.length <= 10 ? '{n} ردود جديدة على تعليقاتك' : '{n} ردًا جديدًا على تعليقاتك').replace('{n}', items.length))
-          : '{n} رد على تعليقك'.replace('{n}', who);
+          ? (items.length === 2 ? 'تنبيهان جديدان على تعليقاتك' : (items.length <= 10 ? '{n} تنبيهات جديدة على تعليقاتك' : '{n} تنبيهًا جديدًا على تعليقاتك').replace('{n}', items.length))
+          : first.kind === 'heart' ? 'أعجب عرب راسلنج بتعليقك ❤️' : '{n} رد على تعليقك'.replace('{n}', who);
         card.querySelector('.arw-rt-text').textContent = first.text;
         card.querySelector('.arw-rt-text').dir = 'auto';
         var x = card.querySelector('.arw-rt-x');
