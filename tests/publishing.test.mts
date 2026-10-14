@@ -2137,6 +2137,16 @@ test('names from the NXT Dusty Classic coverage, and the same-story rules for re
   assert.match(p, /تقرير نتائج كامل فيه نفس النزال = تكرار/);
 });
 
+test('Dusty Classic semifinal names have one spelling (INCIDENTS #506)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('فوز فريق فانيتي بروجكت'), 'فوز فريق فانيتي بروجيكت');
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Noam Dar'], 'نوام دار');
+  assert.equal(names['Romeo Moreno'], 'روميو مورينو');
+  assert.equal(names['The Vanity Project'], 'فانيتي بروجيكت');
+  assert.equal(names['Cruz Montana'], 'كروز مونتانا');
+});
+
 test('Kendal Grey is always «كيندال غراي» — never «غري» or «جراي» (INCIDENTS #159)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('قصة كيندال غري مع كيندال جراي'), 'قصة كيندال غراي مع كيندال غراي');
