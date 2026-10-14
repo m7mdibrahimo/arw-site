@@ -1,5 +1,35 @@
 [
  {
+  "slug": "cm-punk",
+  "ar": "سي ام بانك",
+  "en": "CM Punk",
+  "fed": "WWE",
+  "owner": "Kevin Paul",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:CM_Punk_as_Undisputed_WWE_Champion.jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "rhea-ripley",
+  "ar": "ريا ريبلي",
+  "en": "Rhea Ripley",
+  "fed": "WWE",
+  "owner": "Nyssaslaythat",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rhea_Ripley_SummerSlam_2025.jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "liv-morgan",
+  "ar": "ليف مورغان",
+  "en": "Liv Morgan",
+  "fed": "WWE",
+  "owner": "UKinUSA",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Liv_Morgan_at_Greater_Together_2026.jpg",
+  "year": "2026"
+ },
+ {
   "slug": "bron-breakker",
   "ar": "برون بريكر",
   "en": "Bron Breakker",
@@ -7,6 +37,36 @@
   "owner": "HHH Pedrigree",
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Bron_Breakker_2026_(cropped).jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "kevin-owens",
+  "ar": "كيفن أوينز",
+  "en": "Kevin Owens",
+  "fed": "WWE",
+  "owner": "Kevin Paul",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kevin_Owens_at_IGN_Live_2026.jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "tiffany-stratton",
+  "ar": "تيفاني ستراتون",
+  "en": "Tiffany Stratton",
+  "fed": "WWE",
+  "owner": "HHH Pedrigree",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tiffany_as_US_Champion.jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "mjf",
+  "ar": "ام جيه اف",
+  "en": "MJF",
+  "fed": "AEW",
+  "owner": "House of Glory Wrestling",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:MJF_AEW_World_Champion.png",
   "year": "2026"
  },
  {
@@ -40,16 +100,6 @@
   "year": "2026"
  },
  {
-  "slug": "ricochet",
-  "ar": "ريكوشيه",
-  "en": "Ricochet",
-  "fed": "AEW",
-  "owner": "KMcWrestling Photography",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Ricochet_and_The_Demand_(cropped)_(2).jpg",
-  "year": "2026"
- },
- {
   "slug": "kyle-fletcher",
   "ar": "كايل فليتشر",
   "en": "Kyle Fletcher",
@@ -67,46 +117,6 @@
   "owner": "結牙",
   "license": "CC BY 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Zack_Sabre_Jr._20260105.jpg",
-  "year": "2026"
- },
- {
-  "slug": "jake-lee",
-  "ar": "جيك لي",
-  "en": "Jake Lee",
-  "fed": "NJPW",
-  "owner": "Pug8310",
-  "license": "CC0",
-  "source": "https://commons.wikimedia.org/wiki/File:%E3%82%B8%E3%82%A7%E3%82%A4%E3%82%AF%E3%83%BB%E3%83%AA%E3%83%BC_(cropped).jpg",
-  "year": "2026"
- },
- {
-  "slug": "alex-pereira",
-  "ar": "أليكس بيريرا",
-  "en": "Alex Pereira",
-  "fed": "UFC",
-  "owner": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
-  "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748623)_(cropped).jpg",
-  "year": "2026"
- },
- {
-  "slug": "ilia-topuria",
-  "ar": "إيليا توبوريا",
-  "en": "Ilia Topuria",
-  "fed": "UFC",
-  "owner": "The White House",
-  "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250,_the_mixed_martial_arts_event_produced_by_the_Ultimate_Fighting_Championship,_Sunday,_June_14,_2026,_in_the_Grand_Foyer_of_the_White_House_-_68_(cropped).jpg",
-  "year": "2026"
- },
- {
-  "slug": "justin-gaethje",
-  "ar": "جاستن غايتجي",
-  "en": "Justin Gaethje",
-  "fed": "UFC",
-  "owner": "The White House",
-  "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:Justin_Gaethje_in_the_Oval_Office_(while_President_Donald_J._Trump_is_holding_a_meeting_with_UFC_fighters).jpg",
   "year": "2026"
  }
 ]
