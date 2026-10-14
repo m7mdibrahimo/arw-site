@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-14T00:42:12.436Z",
+ "checkedAt": "2026-10-14T02:13:41.367Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -3866,53 +3866,149 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-14T00:42:12.436Z"
+   "checked": "2026-10-14T01:55:23.340Z"
   },
   "https://vidmoly.org/embed-10dcj9jzajjo.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-12-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-14T00:42:12.436Z",
-   "lastOk": "2026-10-14T00:42:12.436Z"
+   "checked": "2026-10-14T01:55:23.340Z",
+   "lastOk": "2026-10-14T01:55:23.340Z"
   },
   "https://ok.ru/videoembed/17635311880800": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-12-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-14T00:42:12.436Z"
+   "checked": "2026-10-14T01:55:23.340Z"
   },
   "https://hgcloud.to/e/95lgd9jp91bt": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-12-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-14T00:42:12.436Z",
+   "checked": "2026-10-14T01:55:23.340Z",
    "since": "2026-10-14T00:42:12.436Z"
   },
   "https://fembed.co/embed/y3_5-YH0NewsF": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-12-10-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-14T00:42:12.436Z",
-   "lastOk": "2026-10-14T00:42:12.436Z"
+   "checked": "2026-10-14T01:55:23.340Z",
+   "lastOk": "2026-10-14T01:55:23.340Z"
   },
   "https://uqload.vc/embed-jdn3jnnxmo9f.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-12-10-2026/",
    "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-14T01:55:23.340Z",
+   "lastOk": "2026-10-14T01:55:23.340Z"
+  },
+  "https://vidtube.one/embed-yht7kl1g0mxt.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-12-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-14T02:12:43.366Z",
+   "lastOk": "2026-10-14T02:12:43.366Z"
+  },
+  "https://vidmoly.org/embed-0lqe1bqznp16.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-12-10-2026/",
+   "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-14T00:42:12.436Z",
-   "lastOk": "2026-10-14T00:42:12.436Z"
+   "checked": "2026-10-14T02:12:43.366Z",
+   "lastOk": "2026-10-14T02:12:43.366Z"
+  },
+  "https://ok.ru/videoembed/17635926936160": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-12-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-14T02:12:43.366Z"
+  },
+  "https://hgcloud.to/e/3r44pyl6vi00": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-12-10-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 2,
+   "checked": "2026-10-14T02:12:43.366Z",
+   "since": "2026-10-14T02:12:43.366Z"
+  },
+  "https://fembed.co/embed/0nP_5-z3ofv0X": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-12-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-14T02:12:43.366Z",
+   "lastOk": "2026-10-14T02:12:43.366Z"
+  },
+  "https://hgcloud.to/e/d5q448ntvr7c": {
+   "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 2,
+   "checked": "2026-10-14T02:13:41.367Z",
+   "since": "2026-10-14T02:13:41.367Z"
+  },
+  "https://uqload.vc/embed-4bp1wzpnfnnw.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-12-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-14T02:12:43.366Z",
+   "lastOk": "2026-10-14T02:12:43.366Z"
+  },
+  "https://ok.ru/videoembed/17635927001696": {
+   "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-14T02:13:41.367Z"
+  },
+  "https://uqload.vc/embed-sz3k4oc90czy.html": {
+   "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-14T02:13:41.367Z",
+   "lastOk": "2026-10-14T02:13:41.367Z"
+  },
+  "https://vidmoly.org/embed-k8pfpnwvywy3.html": {
+   "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-14T02:13:41.367Z",
+   "lastOk": "2026-10-14T02:13:41.367Z"
+  },
+  "https://vidtube.one/embed-745ujds3oyao.html": {
+   "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-14T02:13:41.367Z",
+   "lastOk": "2026-10-14T02:13:41.367Z"
+  },
+  "https://fembed.co/embed/CMs-2OMAQX_pu": {
+   "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-14T02:13:41.367Z",
+   "lastOk": "2026-10-14T02:13:41.367Z"
   }
  },
  "broken": [
   "https://hgcloud.to/e/1s6j34m110f6",
+  "https://hgcloud.to/e/3r44pyl6vi00",
   "https://hgcloud.to/e/814moty0mp4b",
   "https://hgcloud.to/e/95lgd9jp91bt",
   "https://hgcloud.to/e/9zm394ycsf3u",
+  "https://hgcloud.to/e/d5q448ntvr7c",
   "https://hgcloud.to/e/prvr3g1he70p",
   "https://hgcloud.to/e/pyks6kd3f95d",
   "https://hgcloud.to/e/sgbf693fuisc"
