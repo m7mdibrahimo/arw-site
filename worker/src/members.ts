@@ -126,7 +126,7 @@ export function captchaSvg(answer: string): string {
     const sx = rnd(2.0, 2.3), sy = rnd(2.2, 2.5);
     const x0 = 20 + i * 34 + rnd(-3, 3), y0 = 11 + rnd(-3, 3), rot = rnd(-16, 16);
     const pts = GLYPHS[d].map(([x, y]) => `${(x0 + x * sx + rnd(-0.5, 0.5)).toFixed(1)},${(y0 + y * sy + rnd(-0.5, 0.5)).toFixed(1)}`).join(" ");
-    out += `<polyline points="${pts}" fill="none" stroke="${inks[Math.floor(Math.random() * 2) ? 0 : 1]}" stroke-width="${rnd(3, 3.8).toFixed(1)}" stroke-linecap="round" stroke-linejoin="round" transform="rotate(${rot.toFixed(1)} ${x0 + 11} ${y0 + 18})"/>`;
+    out += `<polyline points="${pts}" fill="none" stroke="${inks[Math.floor(Math.random() * 2) ? 0 : 1]}" stroke-width="${rnd(3, 3.8).toFixed(1)}" stroke-linecap="round" stroke-linejoin="round" transform="rotate(${rot.toFixed(1)} ${(x0 + 11).toFixed(1)} ${(y0 + 18).toFixed(1)})"/>`;
   });
   return out + "</svg>";
 }

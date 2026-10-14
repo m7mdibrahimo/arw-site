@@ -80,7 +80,7 @@ interface SessionRecord { id: string; userId?: string; createdAt: number; lastSe
 // ── Permissions ────────────────────────────────────────────────────────────
 export const PERM_SECTIONS = ['shows', 'recaps', 'news', 'nostalgia'] as const;
 export const PERM_ACTIONS = ['view', 'create', 'edit', 'delete'] as const;
-export const EXTRA_PERMS = ['stats', 'status', 'tools', 'comments', 'members'] as const;
+export const EXTRA_PERMS = ['stats', 'status', 'tools', 'comments', 'members', 'community'] as const;
 export const ALL_PERMS: string[] = [...PERM_SECTIONS.flatMap(s => PERM_ACTIONS.map(a => `${s}.${a}`)), ...EXTRA_PERMS];
 const sectionOf = (collection: string) => (collection === 'nostalgia_series' ? 'nostalgia' : collection);
 export function can(user: Pick<StudioUser, 'role' | 'perms'>, perm: string): boolean {

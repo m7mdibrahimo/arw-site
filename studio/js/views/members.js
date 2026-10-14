@@ -21,6 +21,7 @@ const EXTRAS = [
   { id: 'tools', label: 'أدوات النشر', text: 'النشر اليدوي على المنصات، سحب الأخبار، المثبت، الريلز', risky: true },
   { id: 'comments', label: 'التعليقات', text: 'قراءة تعليقات الزوار وحذفها' },
   { id: 'members', label: 'أعضاء الموقع', text: 'قائمة اللي عملوا حساب على الموقع، وتوقيفهم' },
+  { id: 'community', label: 'المجتمع', text: 'غرف الدردشة: مسح الرسائل، البلاغات، وإيقاف الأعضاء عن الكتابة' },
 ];
 const all = (acts) => SECTIONS.flatMap(s => acts.map(a => `${s.id}.${a}`));
 const PRESETS = [
@@ -37,6 +38,7 @@ const ACTION_TEXT = {
   'comments.delete': 'حذف تعليقات زوار',
   'comments.reply': 'رد على تعليق باسم الموقع',
   'members.ban': 'وقّف عضو في الموقع', 'members.unban': 'رجّع عضو في الموقع',
+  'community.delete': 'مسح رسالة في المجتمع', 'community.mute': 'وقّف عضو عن الكتابة في المجتمع', 'community.unmute': 'رجّع عضو يكتب في المجتمع',
   'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو العلامة الزرقاء', 'members.unbadge': 'شال العلامة الزرقاء من عضو', 'members.official': 'عدّل الحساب الرسمي على الموقع',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };

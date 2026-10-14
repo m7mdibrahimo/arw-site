@@ -680,7 +680,7 @@
       : /^\/(shows)\//.test(path) ? 'shows'
       : /^\/news\//.test(path) ? 'news'
       : /^\/nostalgia\//.test(path) ? 'nostalgia'
-      : /^\/(federations?|recaps|apps|support|library)\//.test(path) ? 'more' : '';
+      : /^\/(federations?|recaps|apps|support|library|community)\//.test(path) ? 'more' : '';
     var items = [
       ['home', '/', 'الرئيسية'], ['shows', '/shows/', 'العروض'], ['news', '/news/', 'الأخبار'], ['nostalgia', '/nostalgia/', 'نوستالجيا']
     ];
@@ -702,6 +702,8 @@
     var mem = memberNow();
     sheet.innerHTML = '<div class="arw-more-grip"></div>' +
       '<a class="arw-more-acct" href="' + (document.documentElement.lang === 'en' ? '/en/account/' : '/account/') + '"><span class="arw-more-acct-av">' + (mem ? memberAvatar(mem) : USER_IC) + '</span><span><b></b><small></small></span><i aria-hidden="true">‹</i></a>' +
+      // «مجتمع المصارعة» (pages/community.njk)
+      '<a class="arw-more-cm" href="/community/"><span class="arw-more-cm-ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span><span><b><span class="nav-live"></span>مجتمع المصارعة</b><small>دردش مع محبي اتحادك مباشرة</small></span><i aria-hidden="true">‹</i></a>' +
       '<div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
       '<a href="/library/">' + ICONS.library + 'مكتبة العروض</a>' +
       '<a href="/federations/">' + ICONS.feds + 'الاتحادات</a>' +

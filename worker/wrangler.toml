@@ -33,6 +33,15 @@ bucket_name = "arw-media"
 binding = "MEDIA_SVC"
 service = "arw-media"
 
+# «مجتمع المصارعة» (worker/src/chat.ts): a Durable Object per chat room, its messages in its own SQLite
+[[durable_objects.bindings]]
+name = "CHAT"
+class_name = "ChatRoom"
+
+[[migrations]]
+tag = "v1-chat-rooms"
+new_sqlite_classes = ["ChatRoom"]
+
 # The site's own statistics, people only (INCIDENTS #457): views from real browsers (assets/v.js → POST /v)
 [[d1_databases]]
 binding = "ANALYTICS"

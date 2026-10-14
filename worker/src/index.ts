@@ -35,6 +35,8 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
+import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, chatKick } from "./chat";
+export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
@@ -96,6 +98,8 @@ export interface Env {
   RESEND_API_KEY?: string;
   /** D1 «arw-analytics»: the site's own statistics, people only (INCIDENTS #457). */
   ANALYTICS?: D1Database;
+  /** «مجتمع المصارعة»: a Durable Object per chat room (worker/src/chat.ts, wrangler.toml [[durable_objects.bindings]]) */
+  CHAT?: DurableObjectNamespace;
 }
 
 const GRAPH_API_VERSION = "v21.0";
@@ -3061,6 +3065,22 @@ export default {
       if (path === "/comments" || path.startsWith("/comments/")) return handleComments(request, env as any, url);
       // The site's members: sign-up with a captcha, sign-in, profile, recovery (worker/src/members.ts)
       if (path === "/members" || path.startsWith("/members/")) return handleMembers(request, env as any, url);
+      // «مجتمع المصارعة»: a chat room per promotion, members only (worker/src/chat.ts)
+      if (path.startsWith("/chat/")) return handleChat(request, env as any, url);
+      if (path.startsWith("/api/studio/chat")) {
+        if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير المجتمع." }, 403);
+        const who = await studioUser(request, env as any);
+        if (path === "/api/studio/chat" && request.method === "GET") return json(await studioChat(env as any));
+        const room = path.match(/^\/api\/studio\/chat\/room\/([a-z]+)$/);
+        if (room && request.method === "GET") { const r = await studioChatRoom(env as any, room[1], Number(url.searchParams.get("before")) || 0); return json(r, r.success ? 200 : 404); }
+        const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
+        let r: any = null;
+        if (path === "/api/studio/chat/delete") { r = await studioChatDelete(env as any, body.room, body.id); if (who && r.success) await studioAudit(env as any, who.user, "community.delete", { room: String(body.room), id: Number(body.id) || 0 }).catch(() => {}); }
+        else if (path === "/api/studio/chat/mute") { r = await studioChatMute(env as any, body.uid, body.hours); if (who && r.success) await studioAudit(env as any, who.user, Number(body.hours) ? "community.mute" : "community.unmute", { id: Number(body.uid) || 0, hours: Number(body.hours) || 0 }).catch(() => {}); }
+        else if (path === "/api/studio/chat/dismiss") r = await studioChatDismiss(env as any, body.id);
+        if (r) return json(r, r.success ? 200 : 400);
+        return json({ success: false, error: "not found" }, 404);
+      }
       if (path === "/api/studio/members" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف الأعضاء." }, 403);
         return json(await studioMembers(env as any));
@@ -3101,6 +3121,7 @@ export default {
         if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك توقف الأعضاء." }, 403);
         const body: any = await request.json().catch(() => ({}));
         const r = await studioBanMember(env as any, body.id, body.on);
+        if (r.success && body.on) await chatKick(env as any, body.id).catch(() => {});
         const who = await studioUser(request, env as any);
         if (who && r.success) await studioAudit(env as any, who.user, body.on ? "members.ban" : "members.unban", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);

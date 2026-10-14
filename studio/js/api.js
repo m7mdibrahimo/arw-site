@@ -119,6 +119,11 @@ export const api = {
   siteMember: (id) => call(`/api/studio/members/${Number(id)}`),
   siteOfficial: () => call('/api/studio/members/official'),
   siteMemberVerify: (id) => call('/api/studio/members/verify', { method: 'POST', body: { id: Number(id) } }),
+  chat: () => call('/api/studio/chat'),
+  chatRoom: (room) => call(`/api/studio/chat/room/${encodeURIComponent(room)}`),
+  chatDelete: (room, id) => call('/api/studio/chat/delete', { method: 'POST', body: { room, id: Number(id) } }),
+  chatMute: (uid, hours) => call('/api/studio/chat/mute', { method: 'POST', body: { uid: Number(uid), hours: Number(hours) } }),
+  chatDismiss: (id) => call('/api/studio/chat/dismiss', { method: 'POST', body: { id: Number(id) } }),
   siteMemberBadge: (id, on) => call('/api/studio/members/badge', { method: 'POST', body: { id: Number(id), on: !!on } }),
   siteOfficialSave: (body) => call('/api/studio/members/official', { method: 'POST', body }),
 };

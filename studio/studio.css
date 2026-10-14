@@ -455,7 +455,7 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 /* The tabs grew (التعليقات، الأعضاء): on laptop widths the top bar tightens so nothing runs off the screen */
-@media (max-width: 1560px) {
+@media (max-width: 1680px) {
   .topbar-in { gap: 18px; padding: 0 28px; }
   .tabs { gap: 18px; }
   .search { width: 150px; }
@@ -472,8 +472,8 @@ kbd { font-family: inherit; font-size: 11px; background: var(--cream); border-ra
   .a-main { grid-column: 1 / -1; grid-row: auto; min-height: 280px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
-/* Between tablet and wide screens the tabs don't fit next to search (1240px since the comments and members tabs): fold them into the menu button */
-@media (max-width: 1240px) {
+/* Between tablet and wide screens the tabs don't fit next to search (1300px since the comments, members and community tabs): fold them into the menu button */
+@media (max-width: 1300px) {
   .topbar-in { gap: 16px; }
   .only-mobile { display: inline-grid; }
   .tabs { display: none; position: absolute; top: var(--head); inset-inline: 12px; background: var(--card); border-radius: 24px; flex-direction: column; align-items: stretch; gap: 2px; padding: 10px; box-shadow: 0 24px 50px -16px rgba(0,0,0,.3); }
@@ -865,3 +865,35 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .mb-wait { font-style: normal; font-size: 11.5px; font-weight: 900; color: var(--amber); background: color-mix(in srgb, var(--amber) 14%, transparent); padding: 2px 8px; border-radius: 99px; }
 .mb-fact .mb-wait { font-size: 13px; }
 .mb-fact #mb-verify { margin-top: 4px; align-self: flex-start; }
+
+/* «المجتمع» (studio/js/views/community.js): the rooms, the reports, a room's latest messages */
+.cy-rooms { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.cy-room { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border: 2px solid transparent; border-radius: 18px; background: var(--cream); color: var(--ink); font: inherit; text-align: start; cursor: pointer; }
+.cy-room:hover { border-color: var(--line); }
+.cy-room.is-on { border-color: var(--teal); background: var(--teal-soft); }
+.cy-mark { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 14px; background: linear-gradient(135deg, hsl(var(--h) 60% 50%), hsl(var(--h) 62% 31%)); color: #fff; font-weight: 900; font-size: 11.5px; overflow: hidden; flex: none; }
+.cy-mark img { width: 100%; height: 100%; object-fit: cover; }
+.cy-sec h2 .cy-mark { width: 32px; height: 32px; border-radius: 10px; font-size: 9.5px; }
+.cy-room-tx { min-width: 0; display: flex; flex-direction: column; }
+.cy-room-tx b { font-size: 14.5px; }
+.cy-room-tx small { color: var(--muted); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cy-room-n { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; font-size: 11.5px; font-weight: 800; }
+.cy-room-n em { font-style: normal; color: var(--green); }
+.cy-room-n i { font-style: normal; color: var(--muted); }
+.wrap > .panel.cy-sec { margin: 0; }
+.cy-sec h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 19px; }
+.cy-sec h2 > svg { width: 22px; height: 22px; }
+.cy-list { display: flex; flex-direction: column; gap: 8px; }
+.cy-item { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 12px 14px; border-radius: 18px; background: var(--card); }
+.cy-item.is-report { grid-template-columns: minmax(0, 1fr) auto; border-inline-start: 4px solid var(--coral); }
+.cy-item.is-del { opacity: .55; }
+.cy-item .cm-av { width: 40px; height: 40px; font-size: 15px; }
+.cy-item-main { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.cy-item-main p { margin: 0; line-height: 1.7; overflow-wrap: anywhere; white-space: pre-line; }
+.cy-item .cm-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cy-item .cm-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.cy-img { max-width: 160px; max-height: 120px; border-radius: 10px; margin-top: 6px; object-fit: cover; }
+.cm-stats .is-alert { background: var(--coral-soft); }
+.cy-mute-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.cy-mute-opts label { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: var(--cream); font-weight: 800; cursor: pointer; }
+@media (max-width: 720px) { .cy-item { grid-template-columns: 36px minmax(0, 1fr); } .cy-item .cm-actions { grid-column: 1 / -1; justify-content: flex-start; } .cy-item.is-report { grid-template-columns: 1fr; } }

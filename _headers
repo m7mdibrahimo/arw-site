@@ -1,12 +1,14 @@
 # Cloudflare Pages Security & Encryption Headers
 # Multi-layered protection against clickjacking, MIME sniffing, XSS, and data interception
 
+# microphone=(self): «مجتمع المصارعة»'s voice notes (pages/community.njk) record on the site's own pages; frames from
+# anywhere else (players, ads) still can't.
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Permissions-Policy: camera=(), microphone=(self), geolocation=(), payment=(), usb=(), interest-cohort=()
   X-XSS-Protection: 1; mode=block
 
 # Always checked with the server (fresh news on every visit), but without no-store:
