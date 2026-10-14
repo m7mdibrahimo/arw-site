@@ -10,10 +10,34 @@
   </div>
 
   <form class="arw-cm-form" novalidate>
-    <label class="arw-cm-field">
-      <span class="arw-cm-label">الاسم</span>
-      <input class="arw-cm-name" name="name" type="text" maxlength="40" autocomplete="nickname" placeholder="اكتب اسمك" required>
-    </label>
+    <div class="arw-cm-who-row">
+      <button class="arw-cm-pick" type="button" aria-expanded="false" aria-controls="arw-cm-picker" title="اختر صورتك">
+        <span class="arw-cm-pick-img" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+        <span class="arw-cm-pick-badge" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        <span class="arw-sr">اختر صورتك</span>
+      </button>
+      <label class="arw-cm-field arw-cm-name-field">
+        <span class="arw-cm-label">الاسم</span>
+        <input class="arw-cm-name" name="name" type="text" maxlength="40" autocomplete="nickname" placeholder="اكتب اسمك" required>
+      </label>
+    </div>
+    <div class="arw-cm-picker" id="arw-cm-picker" hidden>
+      <div class="arw-cm-picker-top">
+        <label class="arw-cm-upload">
+          <input type="file" accept="image/*" class="arw-cm-file">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <span>ارفع صورتك</span>
+        </label>
+        <span class="arw-cm-or">أو اختر نجمك المفضل</span>
+        <button class="arw-cm-none" type="button">بدون صورة</button>
+      </div>
+      <div class="arw-cm-feds" role="tablist">
+        <button type="button" role="tab" class="arw-cm-fed is-on" data-fed="WWE" aria-selected="true">WWE</button>
+        <button type="button" role="tab" class="arw-cm-fed" data-fed="AEW" aria-selected="false">AEW</button>
+      </div>
+      <div class="arw-cm-grid" role="listbox" aria-label="صور النجوم"></div>
+      <details class="arw-cm-credits"><summary>حقوق الصور</summary><ul></ul></details>
+    </div>
     <label class="arw-cm-field">
       <span class="arw-cm-label">التعليق</span>
       <textarea class="arw-cm-text" name="text" rows="4" maxlength="1000" placeholder="{% if isNews %}ما رأيك في هذا الخبر؟{% else %}ما رأيك في هذا العرض؟{% endif %}" required></textarea>
@@ -21,7 +45,7 @@
     {#- a field people never see: a form that fills it is a spam bot -#}
     <input class="arw-cm-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="arw-cm-foot">
-      <span class="arw-cm-note" aria-live="polite">يظهر تعليقك بعد مراجعته.</span>
+      <span class="arw-cm-note" aria-live="polite">يُنشر تعليقك فورًا، فاحرص على احترام الآخرين.</span>
       <span class="arw-cm-len" aria-hidden="true">0 / 1000</span>
       <button class="arw-cm-send" type="submit">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>

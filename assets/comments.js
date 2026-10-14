@@ -1,6 +1,7 @@
-// Visitors' comments (owner 2026-10-14): a name and a comment under every show, recap and story. The comments come
-// from the site's worker when the section nears the screen (one request only for those who scroll that far); a new
-// comment waits for the owner's approval in the panel, and its writer sees it right away, marked as waiting.
+// Visitors' comments (owner 2026-10-14): a name and a comment under every show, recap and story, on the site the moment
+// they are sent (the owner reads them in the panel and deletes what shouldn't stay). The comments come from the site's
+// worker when the section nears the screen (one request only for those who scroll that far). A comment can carry a
+// picture: the visitor's own (cut to a small square here, before it is sent) or a wrestler's from /assets/avatars/.
 (function () {
   'use strict';
   var box = document.getElementById('comments');
@@ -20,6 +21,8 @@
   var NOTE = note.textContent;
   var MINE = 'arw-cm-mine';
   var NAME = 'arw-cm-name';
+  var PIC = 'arw-cm-pic';
+  var AVATARS = '/assets/avatars/';
 
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
@@ -61,7 +64,13 @@
     av.className = 'arw-cm-av';
     av.setAttribute('aria-hidden', 'true');
     av.style.setProperty('--c', colorOf(c.name));
-    av.textContent = initial(c.name);
+    var src = picSrc(c.pic);
+    if (src) {
+      var im = document.createElement('img');
+      im.src = src; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = 40; im.height = 40;
+      im.onerror = function () { av.textContent = initial(c.name); };
+      av.appendChild(im);
+    } else av.textContent = initial(c.name);
     var body = document.createElement('div');
     body.className = 'arw-cm-body';
     var meta = document.createElement('div');
@@ -138,6 +147,99 @@
   } else load();
   if (location.hash === '#comments') load();
 
+  // ── the picture ──────────────────────────────────────────────────────────
+  // a comment's «pic»: «w:<slug>» a wrestler's, an https address (a visitor's own, stored by the worker), or a
+  // «data:» picture (the writer's own, before it is sent)
+  function picSrc(pic) {
+    pic = String(pic || '');
+    if (/^w:[a-z0-9-]+$/.test(pic)) return AVATARS + pic.slice(2) + '.webp';
+    if (/^(https:\/\/|data:image\/(webp|jpeg|png);base64,)/.test(pic)) return pic;
+    return '';
+  }
+  var pick = box.querySelector('.arw-cm-pick');
+  var pickImg = box.querySelector('.arw-cm-pick-img');
+  var picker = box.querySelector('.arw-cm-picker');
+  var grid = box.querySelector('.arw-cm-grid');
+  var fileIn = box.querySelector('.arw-cm-file');
+  var EMPTY = pickImg.innerHTML;
+  var pic = store.get(PIC, '') || '';
+  var stars = null, fed = 'WWE';
+  function showPic() {
+    var src = picSrc(pic);
+    pickImg.innerHTML = src ? '<img alt="" width="56" height="56">' : EMPTY;
+    if (src) pickImg.firstChild.src = src;
+    pick.classList.toggle('has-pic', !!src);
+    if (grid) Array.prototype.forEach.call(grid.children, function (b) { b.setAttribute('aria-selected', String('w:' + b.getAttribute('data-slug') === pic)); });
+  }
+  function setPic(p) { pic = p; store.set(PIC, p); showPic(); }
+  function drawStars() {
+    grid.textContent = '';
+    stars.filter(function (w) { return w.fed === fed; }).forEach(function (w) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'arw-cm-star';
+      b.setAttribute('role', 'option');
+      b.setAttribute('data-slug', w.slug);
+      b.setAttribute('aria-selected', String('w:' + w.slug === pic));
+      b.innerHTML = '<img alt="" width="64" height="64" loading="lazy"><span></span>';
+      b.firstChild.src = AVATARS + w.slug + '.webp';
+      b.lastChild.textContent = w.ar;
+      b.onclick = function () { setPic('w:' + w.slug); openPicker(false); };
+      grid.appendChild(b);
+    });
+  }
+  function openPicker(open) {
+    picker.hidden = !open;
+    pick.setAttribute('aria-expanded', String(open));
+    if (!open || stars) return;
+    fetch(AVATARS + 'credits.json').then(function (r) { return r.json(); }).then(function (list) {
+      stars = list;
+      drawStars();
+      var ul = box.querySelector('.arw-cm-credits ul');
+      list.forEach(function (w) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = w.source; a.target = '_blank'; a.rel = 'noopener nofollow';
+        a.textContent = w.ar;
+        li.appendChild(a);
+        li.appendChild(document.createTextNode(': ' + w.author + ' · ' + w.license));
+        ul.appendChild(li);
+      });
+    }).catch(function () { stars = []; });
+  }
+  pick.addEventListener('click', function () { openPicker(picker.hidden); });
+  box.querySelectorAll('.arw-cm-fed').forEach(function (b) {
+    b.addEventListener('click', function () {
+      fed = b.getAttribute('data-fed');
+      box.querySelectorAll('.arw-cm-fed').forEach(function (x) { x.classList.toggle('is-on', x === b); x.setAttribute('aria-selected', String(x === b)); });
+      if (stars) drawStars();
+    });
+  });
+  box.querySelector('.arw-cm-none').addEventListener('click', function () { setPic(''); openPicker(false); });
+  // a visitor's own picture: cut to a 160px square round its middle here, so only a few kilobytes are sent
+  fileIn.addEventListener('change', function () {
+    var f = fileIn.files && fileIn.files[0];
+    fileIn.value = '';
+    if (!f || !/^image\//.test(f.type)) return;
+    if (f.size > 15 * 1024 * 1024) { say('الصورة كبيرة جدًا، اختر صورة أصغر.', 'bad'); return; }
+    var img = new Image();
+    var url = URL.createObjectURL(f);
+    img.onload = function () {
+      var side = Math.min(img.naturalWidth, img.naturalHeight);
+      var c = document.createElement('canvas');
+      c.width = c.height = 160;
+      c.getContext('2d').drawImage(img, (img.naturalWidth - side) / 2, Math.max(0, (img.naturalHeight - side) / 2.6), side, side, 0, 0, 160, 160);
+      URL.revokeObjectURL(url);
+      var out = c.toDataURL('image/webp', 0.82);
+      if (!/^data:image\/webp/.test(out)) out = c.toDataURL('image/jpeg', 0.85);
+      setPic(out);
+      openPicker(false);
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); say('تعذّر فتح هذه الصورة، جرّب صورة أخرى.', 'bad'); };
+    img.src = url;
+  });
+  showPic();
+
   // ── the form ─────────────────────────────────────────────────────────────
   nameIn.value = store.get(NAME, '') || '';
   function count() {
@@ -170,12 +272,12 @@
     fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ p: page, name: name, text: text, website: form.website.value, t: Date.now() - shownAt })
+      body: JSON.stringify({ p: page, title: (document.querySelector('h1') || {}).textContent || '', name: name, text: text, pic: pic, website: form.website.value, t: Date.now() - shownAt })
     })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
       .then(function (d) {
         store.set(NAME, name);
-        var mineNow = { id: d.id, name: name, text: text, at: Date.now() };
+        var mineNow = { id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now() };
         if (d.status === 'published') {
           // published right away: it is everyone's now, at the top of the list
           shown.unshift(mineNow);

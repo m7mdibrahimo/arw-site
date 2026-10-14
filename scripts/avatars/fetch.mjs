@@ -18,7 +18,9 @@ for (const w of list) {
   try {
     const sum = await (await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(w.wiki)}`, { headers: UA })).json();
     const src = w.file ? null : sum.originalimage && sum.originalimage.source;
-    const file = w.file || decodeURIComponent(String(src || '').split('/').pop());
+    // …/commons/a/ab/File.jpg or …/commons/thumb/a/ab/File.jpg/3840px-File.jpg, with a «?utm_…» tail
+    const parts = String(src || '').split('?')[0].split('/');
+    const file = w.file || decodeURIComponent(parts.includes('thumb') ? parts[parts.length - 2] : parts[parts.length - 1]);
     if (!file) { console.log(`✗ ${w.slug}: no picture on the page`); continue; }
     const info = await (await fetch(`https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=900&titles=${encodeURIComponent('File:' + file)}`, { headers: UA })).json();
     const page = Object.values(info.query.pages)[0];
@@ -42,5 +44,6 @@ for (const w of list) {
     console.log(`✓ ${w.slug}: ${file} (${license}, ${width}×${height})`);
   } catch (e) { console.log(`✗ ${w.slug}: ${e.message}`); }
 }
+if (credits.length < list.length / 2) { console.log(`only ${credits.length} of ${list.length}: nothing saved`); process.exit(1); }
 fs.writeFileSync(path.join(OUT, 'credits.json'), JSON.stringify(credits, null, 1) + '\n');
 console.log(`${credits.length} of ${list.length} pictures`);
