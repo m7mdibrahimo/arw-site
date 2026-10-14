@@ -292,3 +292,12 @@ test('dual: «تنافسا قويا» / «تحالفا جديدا» are nouns, n
   assert.ok(!codes('شهد النزال تنافسا قويا وتحالفا جديدا بين الفريقين.').includes('dual_form'));
   assert.ok(codes('الاثنان تنافسا على اللقب.').includes('dual_form'));
 });
+
+// INCIDENTS #541: «نظم اتحادا ريف برو ودرام غيت» (dual noun) and «درام غيت» / «تواجهم» reached the site.
+test('dual «اتحادا X وY» is blocked; «درام غيت» and «تواجهم» are corrected (INCIDENTS #541)', () => {
+  const body = 'كلام '.repeat(80);
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'نظم اتحادا ريف برو ودراغون غيت تحية ' + body).some(i => i.code === 'dual_form'));
+  assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'شكل اتحادا قويا ' + body).some(i => i.code === 'dual_form'));
+  assert.match(applyCorrections('نظم اتحاد درام غيت'), /دراغون غيت/);
+  assert.match(applyCorrections('خلال فترة تواجهم في الجامعة'), /تواجدهم/);
+});

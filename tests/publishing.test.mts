@@ -4864,3 +4864,9 @@ test('hamza spellings of a show name are in the structured data (INCIDENTS #535)
   const w = showNameForms({ headline: 'عرض سماك داون مترجم', title: 'WWE Smackdown 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', aliases: ['عرض سماك داون'], isShow: true });
   assert.ok(w.includes('عرض سماك داون الأخير مترجم'));
 });
+
+test('the episode VideoObject names its program (isPartOf) and has a WatchAction (INCIDENTS #541)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /"isPartOf": \{ "@type": "TVSeries"/);
+  assert.match(layout, /"potentialAction": \{ "@type": "WatchAction", "target": "\{\{ pageUrl \}\}" \}/);
+});
