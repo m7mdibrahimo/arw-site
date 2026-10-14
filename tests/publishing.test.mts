@@ -4833,3 +4833,20 @@ test('recap and weekly library structured-data names cover recap wording and the
   for (const f of ['عرض دايناميت 7/10/2026', 'عرض AEW Dynamite 7 أكتوبر 2026', 'AEW Dynamite October 7 2026']) assert.ok(lib.includes(f), f);
   assert.ok(!libraryNameForms({ arName: 'عرض س', name: 'X Y', count: 2, latest: '2026-10-07' }).some((f) => /7\/10\/2026/.test(f)));
 });
+
+test('«تصفيية» is spelled «تصفية», and no published story keeps it (INCIDENTS #517)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('تقام مواجهات تصفيية أخرى'), 'تقام مواجهات تصفية أخرى');
+  const { readdirSync, readFileSync } = await import('node:fs');
+  for (const f of readdirSync('content/news').filter(n => n.endsWith('.md'))) {
+    assert.ok(!readFileSync(`content/news/${f}`, 'utf8').includes('تصفيية'), f);
+  }
+});
+
+test('a yearly show whose year is only in the title brackets still gets the «عرض … 2026» search forms (INCIDENTS #517)', async () => {
+  const { showNameForms } = await import('../lib/show-seo.cjs');
+  const forms = showNameForms({ headline: 'عرض موني ان ذا بانك 10.10.2026 مترجم', title: 'WWE Money in the Bank (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: ['عرض موني ان ذا بانك', 'موني ان ذا بانك 2026'], isShow: true });
+  for (const q of ['عرض موني ان ذا بانك 2026', 'تحميل عرض موني ان ذا بانك 2026', 'مشاهدة عرض موني ان ذا بانك 2026', 'عرض موني ان ذا بانك 2026 مترجم']) assert.ok(forms.includes(q), q);
+  const weekly = showNameForms({ headline: 'عرض الرو 12.10.2026 مترجم', title: 'WWE RAW (12/10/2026)', programName: 'WWE RAW', eventDate: '2026-10-12', aliases: ['عرض الرو'], isShow: true });
+  assert.ok(!weekly.includes('عرض الرو 2026'));
+});
