@@ -1,0 +1,272 @@
+[
+ {
+  "slug": "roman-reigns",
+  "ar": "رومان رينز",
+  "en": "Roman Reigns",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/roman-reigns"
+ },
+ {
+  "slug": "cody-rhodes",
+  "ar": "كودي رودز",
+  "en": "Cody Rhodes",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/cody-rhodes"
+ },
+ {
+  "slug": "seth-rollins",
+  "ar": "سيث رولينز",
+  "en": "Seth Rollins",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/seth-rollins"
+ },
+ {
+  "slug": "cm-punk",
+  "ar": "سي ام بانك",
+  "en": "CM Punk",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/cmpunk"
+ },
+ {
+  "slug": "john-cena",
+  "ar": "جون سينا",
+  "en": "John Cena",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2025",
+  "source": "https://www.wwe.com/superstars/john-cena"
+ },
+ {
+  "slug": "randy-orton",
+  "ar": "راندي أورتن",
+  "en": "Randy Orton",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2024",
+  "source": "https://www.wwe.com/superstars/randy-orton"
+ },
+ {
+  "slug": "gunther",
+  "ar": "غونتر",
+  "en": "Gunther",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/gunther"
+ },
+ {
+  "slug": "drew-mcintyre",
+  "ar": "درو ماكنتاير",
+  "en": "Drew McIntyre",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2021",
+  "source": "https://www.wwe.com/superstars/drew-mcintyre"
+ },
+ {
+  "slug": "la-knight",
+  "ar": "ال ايه نايت",
+  "en": "LA Knight",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/la-knight"
+ },
+ {
+  "slug": "jey-uso",
+  "ar": "جاي أوسو",
+  "en": "Jey Uso",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/jey-uso"
+ },
+ {
+  "slug": "brock-lesnar",
+  "ar": "بروك ليسنر",
+  "en": "Brock Lesnar",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2025",
+  "source": "https://www.wwe.com/superstars/brock-lesnar"
+ },
+ {
+  "slug": "rhea-ripley",
+  "ar": "ريا ريبلي",
+  "en": "Rhea Ripley",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/rhea-ripley"
+ },
+ {
+  "slug": "liv-morgan",
+  "ar": "ليف مورغان",
+  "en": "Liv Morgan",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2024",
+  "source": "https://www.wwe.com/superstars/liv-morgan"
+ },
+ {
+  "slug": "becky-lynch",
+  "ar": "بيكي لينش",
+  "en": "Becky Lynch",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2026",
+  "source": "https://www.wwe.com/superstars/becky-lynch"
+ },
+ {
+  "slug": "bianca-belair",
+  "ar": "بيانكا بيلير",
+  "en": "Bianca Belair",
+  "fed": "WWE",
+  "owner": "WWE",
+  "year": "2024",
+  "source": "https://www.wwe.com/superstars/bianca-belair"
+ },
+ {
+  "slug": "kenny-omega",
+  "ar": "كيني أوميغا",
+  "en": "Kenny Omega",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "jon-moxley",
+  "ar": "جون موكسلي",
+  "en": "Jon Moxley",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "mjf",
+  "ar": "ام جيه اف",
+  "en": "MJF",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "will-ospreay",
+  "ar": "ويل أوسبراي",
+  "en": "Will Ospreay",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "swerve-strickland",
+  "ar": "سويرف ستريكلاند",
+  "en": "Swerve Strickland",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "hangman-adam-page",
+  "ar": "هانغمان آدم بيج",
+  "en": "Hangman Adam Page",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "kazuchika-okada",
+  "ar": "كازوتشيكا أوكادا",
+  "en": "Kazuchika Okada",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "adam-copeland",
+  "ar": "آدم كوبلاند",
+  "en": "Adam Copeland",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "chris-jericho",
+  "ar": "كريس جيريكو",
+  "en": "Chris Jericho",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "bryan-danielson",
+  "ar": "براين دانيلسون",
+  "en": "Bryan Danielson",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "darby-allin",
+  "ar": "داربي ألين",
+  "en": "Darby Allin",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "orange-cassidy",
+  "ar": "أورانج كاسيدي",
+  "en": "Orange Cassidy",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "mercedes-mone",
+  "ar": "مرسيدس موني",
+  "en": "Mercedes Moné",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "toni-storm",
+  "ar": "توني ستورم",
+  "en": "Toni Storm",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ },
+ {
+  "slug": "kris-statlander",
+  "ar": "كريس ستاتلاندر",
+  "en": "Kris Statlander",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "year": "",
+  "source": "https://www.allelitewrestling.com/aew-roster"
+ }
+]
