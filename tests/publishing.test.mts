@@ -4726,3 +4726,14 @@ test('Google is pointed at the four sections the owner wants under the site name
     assert.match(fs.readFileSync(`pages/${f}.njk`, 'utf-8'), new RegExp(`"breadcrumb": \\{ "@type": "BreadcrumbList"[^\\n]*"position": 2, "name": "${name}", "item": "https://arab-wrestling.com/${f}/"`), f);
   }
 });
+
+// INCIDENTS #503: a yearly show / its library page carry the year, «مشاهده», the English name and the federation in Arabic letters
+test('yearly shows and their library pages carry year + spelling variants in structured data (INCIDENTS #503)', async () => {
+  const { showNameForms, libraryNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const aliases = ['عرض موني ان ذا بانك', 'موني إن ذا بانك', 'MITB'];
+  const forms = showNameForms({ headline: 'عرض موني ان ذا بانك 2026 الأخير 10.10.2026 مترجم', title: 'WWE Money in the Bank 2026', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases, isShow: true });
+  for (const f of ['مشاهده عرض موني ان ذا بانك', 'تحميل عرض موني ان ذا بانك 2026', 'تحميل عرض Money in the Bank 2026', 'Money in the Bank 2026 مترجم', 'دبليو دبليو إي موني إن ذا بانك']) assert.ok(forms.includes(f), f);
+  const lib = libraryNameForms({ arName: 'عرض موني ان ذا بانك', name: 'WWE Money in the Bank', aliases, year: '2026' });
+  for (const f of ['مشاهدة عرض موني ان ذا بانك 2026', 'مشاهده عرض موني ان ذا بانك 2026', 'تحميل عرض Money in the Bank', 'WWE Money in the Bank 2026 مترجم', 'دبليو دبليو إي موني إن ذا بانك']) assert.ok(lib.includes(f), f);
+  assert.ok(fs.readFileSync('pages/library-program.njk', 'utf8').includes('libraryNameForms(lp.prog'));
+});

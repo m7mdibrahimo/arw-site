@@ -1708,6 +1708,11 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow });
   });
 
+  // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
+  eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
+    return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year });
+  });
+
   eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description) {
     const day = eventDate ? formatDate(eventDate) : "";
     return require("./lib/show-seo.cjs").recapSeoText({ headline, title, programName, eventDate, day, description });
