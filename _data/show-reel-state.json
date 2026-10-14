@@ -3569,14 +3569,27 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ان اكس تي 13.10.2026 مترجم",
-    "lastAttempt": 1791989884362,
+    "lastAttempt": 1791990748383,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261014174915-nwa-powerrr-10-10-2026": {
+    "publishedAt": 1791990772904,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان دبليو ايه باور 10.10.2026 مترجم",
+    "lastAttempt": 1791990786250,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
     "needsReview": false

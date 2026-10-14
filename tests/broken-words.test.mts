@@ -269,3 +269,10 @@ test('INCIDENTS #499: prefixed number word before digits, dropped alef after ا�
 test('«كللا» is corrected to «كلا»', () => {
   assert.equal(applyCorrections('واختار رينز كللا من هالك هوجان'), 'واختار رينز كلا من هالك هوجان');
 });
+
+test('corrections fix ضآلة, مشيرا إلى and performing arts (INCIDENTS #525)', () => {
+  const out = applyCorrections('رغم ضئالة حجمه، مشير إلى زميله، في مجالات الفنون الأدبية');
+  assert.match(out, /ضآلة/);
+  assert.match(out, /مشيرا إلى/);
+  assert.match(out, /الفنون الأدائية/);
+});
