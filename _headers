@@ -73,6 +73,12 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Content-Type-Options: nosniff
 
+# The wrestlers' pictures for comments keep their names when they are made again (scripts/avatars/): a day, not a year
+/assets/avatars/*
+  ! Cache-Control
+  Cache-Control: public, max-age=86400, stale-while-revalidate=86400
+  X-Content-Type-Options: nosniff
+
 /en/assets/*
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff

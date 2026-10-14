@@ -12,8 +12,8 @@ SIZE = 256
 OUT = 'assets/avatars'
 items = json.load(open('tmp/avatars/list.json', encoding='utf8'))
 session = new_session('isnet-general-use')
-cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-alt = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
+# OpenCV's face detector (a small neural network, downloaded by the workflow): sure of a face, and of its size
+net = cv2.dnn.readNetFromCaffe('tmp/avatars/deploy.prototxt', 'tmp/avatars/face.caffemodel')
 COLOURS = {'WWE': ((226, 65, 47), (70, 16, 12)), 'AEW': ((214, 168, 52), (52, 38, 8))}
 
 def background(fed):
@@ -24,23 +24,29 @@ def background(fed):
     return Image.fromarray(np.uint8(rgb)).convert('RGBA')
 
 def faces(rgba):
-    rgb = Image.alpha_composite(Image.new('RGBA', rgba.size, (128, 128, 128, 255)), rgba).convert('RGB')
-    grey = cv2.cvtColor(np.array(rgb), cv2.COLOR_RGB2GRAY)
-    w = rgba.size[0]
-    for c in (cascade, alt):
-        found = c.detectMultiScale(grey, scaleFactor=1.08, minNeighbors=6, minSize=(int(w * 0.06),) * 2)
-        if len(found):
-            return [tuple(int(v) for v in f) for f in found]
-    return []
+    """Every face: (x, y, w, h, confidence), most sure first"""
+    rgb = np.array(Image.alpha_composite(Image.new('RGBA', rgba.size, (128, 128, 128, 255)), rgba).convert('RGB'))
+    H, W = rgb.shape[:2]
+    blob = cv2.dnn.blobFromImage(cv2.resize(cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR), (300, 300)), 1.0, (300, 300), (104.0, 177.0, 123.0))
+    net.setInput(blob)
+    found = []
+    for d in net.forward()[0, 0]:
+        conf = float(d[2])
+        if conf < 0.5:
+            continue
+        x1, y1, x2, y2 = (d[3:7] * np.array([W, H, W, H])).astype(int)
+        found.append((int(x1), int(y1), int(x2 - x1), int(y2 - y1), conf))
+    return sorted(found, key=lambda f: -f[4])
 
-def main_face(found):
-    """The wrestler's face: the biggest; None when another face is nearly as big (a photo with a fan)"""
-    if not found:
+def main_face(found, size):
+    """The wrestler's face: sure, big enough, and alone (a photo with a fan has two)"""
+    good = [f for f in found if f[4] >= 0.6 and f[2] >= min(size) * 0.06]
+    if not good or good[0][4] < 0.85:
         return None
-    big = sorted(found, key=lambda f: -f[2])
-    if len(big) > 1 and big[1][2] >= big[0][2] * 0.55:
+    first = max(good, key=lambda f: f[2])
+    if any(g is not first and g[2] >= first[2] * 0.6 for g in good):
         return None
-    return big[0]
+    return first
 
 def load(path):
     img = Image.open(path).convert('RGBA')
@@ -49,39 +55,63 @@ def load(path):
     return img
 
 credits, sheet = [], []
+debug = []
 for it in items:
-    chosen = None
-    for c in it['candidates']:  # newest first: the first with one clear face, big enough
+    # every candidate looked at (they all go on the review sheet); the newest with one sure face is used, unless
+    # «pick» in wrestlers.json names one
+    seen = []
+    for k, c in enumerate(it['candidates']):
         img = load(c['file'])
-        f = main_face(faces(img))
-        if f is not None and f[2] >= min(img.size) * 0.08:
-            chosen = (c, img, f)
-            break
+        found = faces(img)
+        seen.append((c, img, main_face(found, img.size), found))
+    if 'pick' in it:
+        c, img, f, found = seen[it['pick']]
+        chosen = (c, img, f or (found[0] if found else None))
+    else:
+        chosen = next(((c, img, f) for c, img, f, _ in seen if f is not None), None)
     if chosen is None:  # none: the last one (the Wikipedia page's photo, or WWE's only one), framed by its figure
-        c = it['candidates'][-1]
-        chosen = (c, load(c['file']), None)
+        c, img, _, _ = seen[-1]
+        chosen = (c, img, None)
+    for k, (c, img, f, found) in enumerate(seen):
+        thumb = img.copy().convert('RGB')
+        draw = ImageDraw.Draw(thumb)
+        for g in found[:4]:
+            draw.rectangle((g[0], g[1], g[0] + g[2], g[1] + g[3]), outline=(0, 200, 0) if f and g[:4] == f[:4] else (230, 0, 0), width=max(3, img.size[0] // 150))
+        thumb.thumbnail((180, 180))
+        debug.append((it['slug'], k, c.get('year', ''), c is chosen[0], thumb))
     c, img, f = chosen
     if it['fed'] != 'WWE' or img.getextrema()[3][0] == 255:  # no transparency: take the background away
         img = remove(img, session=session, post_process_mask=True)
-        if f is None:
-            f = main_face(faces(img))
+    if f is None:
+        f = main_face(faces(img), img.size)
     box = img.getbbox()
     if f is not None:
-        x, y, w, h = f
-        side = h * 2.75 * it.get('zoom', 1)
-        cx, top = x + w / 2 + it.get('dx', 0) * w, y + h / 2 - side * 0.43
+        x, y, w, h = f[:4]
+        side = max(w, h) * 2.45 * it.get('zoom', 1)
+        cx, top = x + w / 2 + it.get('dx', 0) * w, y + h / 2 - side * 0.46
         how = 'face'
     else:  # no face found: the head is at the top middle of the figure
         bw = box[2] - box[0]
-        side = bw * 0.55 * it.get('zoom', 1)
+        side = bw * 0.5 * it.get('zoom', 1)
         cx, top = (box[0] + box[2]) / 2, box[1] - side * 0.08
         how = 'figure'
     crop = img.crop((round(cx - side / 2), round(top), round(cx + side / 2), round(top + side))).resize((SIZE, SIZE), Image.LANCZOS)
     out = Image.alpha_composite(background(it['fed']), crop).convert('RGB')
     out.save(os.path.join(OUT, it['slug'] + '.webp'), 'WEBP', quality=86, method=6)
-    credits.append({**{k: it.get(k, '') for k in ('slug', 'ar', 'en', 'fed')}, **{k: c.get(k, '') for k in ('owner', 'license', 'source', 'year')}})
+    credits.append({**{k2: it.get(k2, '') for k2 in ('slug', 'ar', 'en', 'fed')}, **{k2: c.get(k2, '') for k2 in ('owner', 'license', 'source', 'year')}})
     sheet.append(out)
     print(f"✓ {it['slug']} ({how}, {c.get('year') or '?'}, {os.path.basename(c['file'])})")
+
+# every candidate, its faces (green: the one used), for choosing by hand («pick» in wrestlers.json)
+cols = 8
+dsheet = Image.new('RGB', (cols * 190, -(-len(debug) // cols) * 210), 'white')
+dd = ImageDraw.Draw(dsheet)
+for i, (slug, k, year, used, t) in enumerate(debug):
+    x, y = (i % cols) * 190, (i // cols) * 210
+    dsheet.paste(t, (x + 5, y + 5))
+    dd.text((x + 5, y + 190), f"{slug} #{k} {year}", fill=(0, 128, 0) if used else (0, 0, 0))
+os.makedirs('scripts/avatars/review', exist_ok=True)
+dsheet.save('scripts/avatars/review/candidates.jpg', quality=80)
 
 json.dump(credits, open(os.path.join(OUT, 'credits.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 cols = 10
