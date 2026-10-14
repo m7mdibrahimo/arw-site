@@ -12,7 +12,7 @@ tags:
   - تراي ميجيل
   - مصطفى علي
   - إيدي إدواردز
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/trl8inr72cdvawt7.jpg
 layout: post-layout.njk
 ---

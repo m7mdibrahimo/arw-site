@@ -10,7 +10,7 @@ tags:
   - TNA
   - Operation HOPE
   - مبادرات خيرية
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/xd3k0xy28xtombrq.jpg
 layout: post-layout.njk
 ---

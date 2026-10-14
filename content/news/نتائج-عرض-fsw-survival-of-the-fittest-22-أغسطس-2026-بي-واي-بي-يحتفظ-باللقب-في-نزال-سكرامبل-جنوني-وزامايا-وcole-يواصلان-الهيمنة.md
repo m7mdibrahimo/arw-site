@@ -8,7 +8,7 @@ tags:
   - Survival of the Fittest
   - داني لايملايت
   - زامايا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/p9wozh7vxn7ra6i4.jpg
 layout: post-layout.njk
 ---

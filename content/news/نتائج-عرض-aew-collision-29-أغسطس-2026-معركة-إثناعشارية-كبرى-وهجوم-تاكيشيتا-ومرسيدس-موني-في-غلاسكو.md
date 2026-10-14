@@ -7,7 +7,7 @@ tags:
   - AEW Collision
   - مرسيدس موني
   - هانغمان بيدج
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/7lzepv4nqqoc37n5.jpg
 layout: post-layout.njk
 ---

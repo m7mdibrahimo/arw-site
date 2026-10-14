@@ -8,7 +8,7 @@ tags:
   - نتائج Wrestling Open
   - أليك برايس
   - جوردان أوليفر
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/2p37zzxkyst49zhq.jpg
 layout: post-layout.njk
 ---

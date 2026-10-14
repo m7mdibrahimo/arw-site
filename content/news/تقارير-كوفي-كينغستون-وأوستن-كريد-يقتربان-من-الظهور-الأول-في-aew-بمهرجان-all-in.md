@@ -10,7 +10,7 @@ tags:
   - كوفي كينغستون
   - أوستن كريد
   - إكزافييه وودز
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/3hlggz6ltj0gn9bo.jpg
 layout: post-layout.njk
 ---

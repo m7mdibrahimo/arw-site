@@ -10,7 +10,7 @@ tags:
   - كونوسوكي تاكيشيتا
   - مينورو سوزوكي
   - ريوسوكي تاغوتشي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/6aibsh84cp6ang1n.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - نيكي ستورم
   - ستيف ماكلين
   - شوتزي بلاك هارت
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/93kp1lr8io2bvs2s.jpg
 layout: post-layout.njk
 ---

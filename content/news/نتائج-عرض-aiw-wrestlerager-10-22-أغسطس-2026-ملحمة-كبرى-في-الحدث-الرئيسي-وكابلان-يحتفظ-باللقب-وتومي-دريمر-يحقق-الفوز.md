@@ -8,7 +8,7 @@ tags:
   - تومي دريمر
   - توم لولور
   - كابلان
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/g8bnpoxs59tifsm5.jpg
 layout: post-layout.njk
 ---

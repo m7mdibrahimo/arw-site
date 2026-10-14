@@ -11,7 +11,7 @@ tags:
   - كايل أورايلي
   - نايجل ماكغينيس
   - ويلو نايتينغيل
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/mz2pezts5bv0dczz.jpg
 layout: post-layout.njk
 ---

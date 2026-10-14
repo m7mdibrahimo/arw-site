@@ -9,7 +9,7 @@ tags:
   - ليون سلاتر
   - زوي ستارك
   - إندي هارتويل
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/p15m3vrveenp93yy.jpg
 layout: post-layout.njk
 ---

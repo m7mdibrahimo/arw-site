@@ -12,7 +12,7 @@ tags:
   - كوماندر
   - نايجل ماكغينيس
   - Death Before Dishonor
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/4bsb5tmkg5ykt50d.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - روهيت راجو
   - فابيان آيشنر
   - Bound for Glory
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/8kwlcv0l167ylpl2.jpg
 layout: post-layout.njk
 ---

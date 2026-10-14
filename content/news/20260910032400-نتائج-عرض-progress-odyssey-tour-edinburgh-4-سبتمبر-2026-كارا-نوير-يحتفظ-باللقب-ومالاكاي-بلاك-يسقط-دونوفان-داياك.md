@@ -8,7 +8,7 @@ tags:
   - كارا نوير
   - مالاكاي بلاك
   - ليو راش
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/i1cxf6hu2qr0n4oi.jpg
 layout: post-layout.njk
 ---

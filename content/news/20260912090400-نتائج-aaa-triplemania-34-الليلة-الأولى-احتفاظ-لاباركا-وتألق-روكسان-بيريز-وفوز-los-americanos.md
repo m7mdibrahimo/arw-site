@@ -9,7 +9,7 @@ tags:
   - روكسان بيريز
   - لا باركا
   - اللوتشا ليبري
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/9vyreoarguzl2skr.jpg
 layout: post-layout.njk
 ---

@@ -7,7 +7,7 @@ tags:
   - Killer Kross
   - كيلر كروس
   - مات ريدل
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/hckoekxxg16f41ov.jpg
 layout: post-layout.njk
 ---

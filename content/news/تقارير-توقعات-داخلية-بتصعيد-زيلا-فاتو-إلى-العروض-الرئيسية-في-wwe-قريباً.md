@@ -9,7 +9,7 @@ tags:
   - WWE NXT
   - ذا بلودلاين
   - WWE RAW
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/t7v5rw7kzw6i4srv.jpg
 layout: post-layout.njk
 ---

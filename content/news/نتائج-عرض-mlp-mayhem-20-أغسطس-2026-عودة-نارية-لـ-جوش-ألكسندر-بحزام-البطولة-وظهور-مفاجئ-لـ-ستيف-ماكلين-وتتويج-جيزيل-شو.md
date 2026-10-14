@@ -13,7 +13,7 @@ tags:
   - جاي ليثال
   - ستيف ماكلين
   - PCO
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/1joq0ougc9ww6n7r.jpg
 layout: post-layout.njk
 ---

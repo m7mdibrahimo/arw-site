@@ -12,7 +12,7 @@ tags:
   - كايل فليتشر
   - ماسكارا دورادا
   - ثاندر روزا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/m1y6kfrnj43iqwne.jpg
 layout: post-layout.njk
 ---

@@ -12,7 +12,7 @@ tags:
   - NJPW برو رسلينغ
   - هاوس أوف تورتشر
   - يونايتد إمباير
-  - مصارعة حرة
+  - مصارعة
   - أخبار المصارعة
 image: /content/images/5obzm51clm180wf3.jpg
 layout: post-layout.njk

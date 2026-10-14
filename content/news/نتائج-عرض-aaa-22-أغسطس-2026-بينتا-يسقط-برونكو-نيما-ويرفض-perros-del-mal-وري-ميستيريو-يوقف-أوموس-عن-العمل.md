@@ -7,7 +7,7 @@ tags:
   - بينتا
   - ري ميستيريو
   - أوموس
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/amh1bgly275s3cbx.jpg
 layout: post-layout.njk
 ---

@@ -9,7 +9,7 @@ tags:
   - ري ميستيريو
   - دومينيك ميستيريو
   - War Raiders
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/8cekxf4al9vpn8wa.jpg
 layout: post-layout.njk
 ---

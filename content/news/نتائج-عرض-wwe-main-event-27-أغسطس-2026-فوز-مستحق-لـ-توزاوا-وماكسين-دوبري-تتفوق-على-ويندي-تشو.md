@@ -9,7 +9,7 @@ tags:
   - أكيرا توزاوا
   - ماكسين دوبري
   - ويندي تشو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/cz11dt6zh65tgd0s.jpg
 layout: post-layout.njk
 ---

@@ -12,7 +12,7 @@ tags:
   - ام جيه اف
   - كيفن نايت
   - جون موكسلي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/bl2grlhl500p6rcw.jpg
 layout: post-layout.njk
 ---

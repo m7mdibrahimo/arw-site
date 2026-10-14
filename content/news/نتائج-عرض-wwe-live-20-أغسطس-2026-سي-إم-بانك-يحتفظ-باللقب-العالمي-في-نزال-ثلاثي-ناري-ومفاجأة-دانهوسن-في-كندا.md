@@ -13,7 +13,7 @@ tags:
   - كيفن أوينز
   - تشاد غيبل
   - دانهاوزن
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/wsbcj83kyp9vgxn5.jpg
 layout: post-layout.njk
 ---

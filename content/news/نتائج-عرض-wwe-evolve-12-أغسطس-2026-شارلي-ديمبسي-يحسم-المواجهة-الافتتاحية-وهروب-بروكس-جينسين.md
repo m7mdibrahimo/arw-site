@@ -11,7 +11,7 @@ tags:
   - نيكيتا ليونز
   - ثيا هيل
   - أخبار المصارعة
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/knume3fhqcfsns9c.jpg
 layout: post-layout.njk
 ---

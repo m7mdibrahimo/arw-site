@@ -9,7 +9,7 @@ tags:
   - GCW No Signal in the Hills
   - فيبريس
   - جوزيف ساير
-  - مصارعة حرة
+  - مصارعة
   - أخبار المصارعة
 image: /content/images/vgphtq4tfbrhxivt.jpg
 layout: post-layout.njk

@@ -7,7 +7,7 @@ tags:
   - FTR
   - كونور ميلز
   - ويل أوسبراي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/cjw0lk1wx9wnzmqr.jpg
 layout: post-layout.njk
 ---

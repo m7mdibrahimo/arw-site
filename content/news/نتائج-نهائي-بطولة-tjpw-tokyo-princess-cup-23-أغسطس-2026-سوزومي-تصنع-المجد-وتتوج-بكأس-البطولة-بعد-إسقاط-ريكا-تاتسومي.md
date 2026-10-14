@@ -8,7 +8,7 @@ tags:
   - Tokyo Princess Cup
   - سوزومي
   - ريكا تاتسومي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/q799o95946u69x7w.jpg
 layout: post-layout.njk
 ---

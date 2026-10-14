@@ -14,7 +14,7 @@ tags:
   - ليو راش
   - هوك
   - سكاي بلو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/jnun38ch8vb3ppni.jpg
 layout: post-layout.njk
 ---

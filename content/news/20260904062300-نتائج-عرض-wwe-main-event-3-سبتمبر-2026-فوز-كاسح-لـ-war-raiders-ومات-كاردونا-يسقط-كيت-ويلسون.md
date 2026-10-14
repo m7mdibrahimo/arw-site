@@ -8,7 +8,7 @@ tags:
   - WWE Main Event
   - War Raiders
   - مات كاردونا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/ghjkvmogwtgdaqfj.jpg
 layout: post-layout.njk
 ---

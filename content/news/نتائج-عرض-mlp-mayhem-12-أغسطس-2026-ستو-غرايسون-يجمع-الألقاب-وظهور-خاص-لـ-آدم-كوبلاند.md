@@ -10,7 +10,7 @@ tags:
   - راينو
   - ماسكارا دورادا
   - نتائج MLP
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/223nmck5ihbhk8hn.jpg
 layout: post-layout.njk
 ---

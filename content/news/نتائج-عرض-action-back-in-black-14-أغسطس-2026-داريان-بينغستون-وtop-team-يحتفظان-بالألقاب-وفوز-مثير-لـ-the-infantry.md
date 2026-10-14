@@ -10,7 +10,7 @@ tags:
   - The Infantry
   - توب تيم
   - بوبي فلاكو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/mvq947phs6c4wt0s.jpg
 layout: post-layout.njk
 ---

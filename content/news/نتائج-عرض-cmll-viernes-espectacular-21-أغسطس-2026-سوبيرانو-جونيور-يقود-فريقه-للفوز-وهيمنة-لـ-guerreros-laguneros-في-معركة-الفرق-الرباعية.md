@@ -7,7 +7,7 @@ tags:
   - Viernes Espectacular
   - سوبيرانو جونيور
   - أولتيمو غيريرو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/ae2wq70jfpw61ize.jpg
 layout: post-layout.njk
 ---

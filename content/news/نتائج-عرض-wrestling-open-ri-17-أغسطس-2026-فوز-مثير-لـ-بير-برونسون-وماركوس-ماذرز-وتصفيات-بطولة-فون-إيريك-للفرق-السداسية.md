@@ -10,7 +10,7 @@ tags:
   - بير برونسون
   - ماركوس ماذرز
   - برايس دونوفان
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/p715let1vnbc159b.jpg
 layout: post-layout.njk
 ---

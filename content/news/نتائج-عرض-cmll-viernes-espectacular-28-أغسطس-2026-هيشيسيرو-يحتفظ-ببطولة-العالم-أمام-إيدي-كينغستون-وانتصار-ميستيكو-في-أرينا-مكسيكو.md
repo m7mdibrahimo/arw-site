@@ -7,7 +7,7 @@ tags:
   - CMLL
   - ميستيكو
   - إيدي كينغستون
-  - مصارعة حرة
+  - مصارعة
   - اللوتشا ليبري
 image: /content/images/k8kmyf1yhu48kv3l.jpg
 layout: post-layout.njk

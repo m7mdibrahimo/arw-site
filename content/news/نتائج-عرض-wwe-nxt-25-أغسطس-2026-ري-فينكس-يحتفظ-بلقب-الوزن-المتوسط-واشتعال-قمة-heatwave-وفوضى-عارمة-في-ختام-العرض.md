@@ -10,7 +10,7 @@ tags:
   - زاريا
   - زيلا فاتو
   - غرايسون والر
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/q6tyel75n8bx8ozh.jpg
 layout: post-layout.njk
 ---

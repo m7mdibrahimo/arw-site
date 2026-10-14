@@ -9,7 +9,7 @@ tags:
   - زيلا فاتو
   - غرايسون والر
   - NXT Heatwave
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/hqdnzydwiae3_xv.jpg
 layout: post-layout.njk
 ---

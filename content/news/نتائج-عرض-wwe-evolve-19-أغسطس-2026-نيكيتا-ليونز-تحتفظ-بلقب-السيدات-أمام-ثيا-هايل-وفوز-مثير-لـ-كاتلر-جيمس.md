@@ -11,7 +11,7 @@ tags:
   - ثيا هيل
   - كاتلر جيمس
   - سام هولواي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/rohr8da0ug3zet9i.jpg
 layout: post-layout.njk
 ---

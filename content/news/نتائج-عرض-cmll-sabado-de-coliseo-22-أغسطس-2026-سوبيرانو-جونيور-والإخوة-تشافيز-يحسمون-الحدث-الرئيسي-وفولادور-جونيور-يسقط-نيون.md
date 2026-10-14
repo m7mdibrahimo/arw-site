@@ -7,7 +7,7 @@ tags:
   - Sábado De Coliseo
   - فولادور جونيور
   - سوبيرانو جونيور
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/1a3rf0iwnqozw3gy.jpg
 layout: post-layout.njk
 ---

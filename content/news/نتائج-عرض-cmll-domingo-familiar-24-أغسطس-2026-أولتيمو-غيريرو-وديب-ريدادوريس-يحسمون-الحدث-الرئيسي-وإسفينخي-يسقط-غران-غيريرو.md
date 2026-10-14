@@ -8,7 +8,7 @@ tags:
   - Domingo Familiar
   - فولادور جونيور
   - أولتيمو غيريرو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/iy5g0mfjn14c31ic.jpg
 layout: post-layout.njk
 ---

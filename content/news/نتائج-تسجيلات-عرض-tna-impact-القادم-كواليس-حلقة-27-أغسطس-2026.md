@@ -11,7 +11,7 @@ tags:
   - فابيان آيشنر
   - روهيت راجو
   - تسريبات المصارعة
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/kj64o2mq2d0mpcq1.jpg
 layout: post-layout.njk
 ---

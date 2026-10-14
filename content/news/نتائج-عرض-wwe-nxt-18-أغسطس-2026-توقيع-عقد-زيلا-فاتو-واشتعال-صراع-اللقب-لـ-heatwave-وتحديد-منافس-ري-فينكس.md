@@ -14,7 +14,7 @@ tags:
   - ري فينيكس
   - ليكسيس كينغ
   - ناتاليا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/3arxiumufnqofe55.jpg
 layout: post-layout.njk
 ---

@@ -7,7 +7,7 @@ tags:
   - مايرون ريد
   - سولومون توبو
   - شازا ماكينزي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/0l2yw272srzxd3y0.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - نتائج RevPro
   - مايكل أوكو
   - لوك جاكوبس
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/1zjq09pq26rabxap.jpg
 layout: post-layout.njk
 ---

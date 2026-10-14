@@ -9,7 +9,7 @@ tags:
   - جون موكسلي
   - نايجل ماكغينيس
   - ويل أوسبراي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/f8f6uvfqhewb4sgg.jpg
 layout: post-layout.njk
 ---

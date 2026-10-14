@@ -7,7 +7,7 @@ tags:
   - NXT Live
   - زاريا
   - كيلاني جوردان
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/txibdbcnvepnuw4m.jpg
 layout: post-layout.njk
 ---

@@ -10,7 +10,7 @@ tags:
   - Raw
   - بيرث
   - عروض المصارعة 2026
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/eqg1qd5wqcsvbo7s.jpg
 layout: post-layout.njk
 ---

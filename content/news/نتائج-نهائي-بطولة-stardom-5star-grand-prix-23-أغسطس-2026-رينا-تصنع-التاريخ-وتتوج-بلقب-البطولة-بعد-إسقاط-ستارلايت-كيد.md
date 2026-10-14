@@ -7,7 +7,7 @@ tags:
   - 5STAR Grand Prix
   - رينا
   - ستارلايت كيد
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/ydaocqfidky11nnh.jpg
 layout: post-layout.njk
 ---

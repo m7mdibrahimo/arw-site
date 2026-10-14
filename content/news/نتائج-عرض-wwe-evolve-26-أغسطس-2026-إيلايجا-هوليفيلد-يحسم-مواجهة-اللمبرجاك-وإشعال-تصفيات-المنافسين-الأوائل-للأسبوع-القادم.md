@@ -8,7 +8,7 @@ tags:
   - WWE EVOLVE
   - إيلايجا هوليفيلد
   - بروكس جنسن
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/4dvf43yk8kn83sxc.jpg
 layout: post-layout.njk
 ---

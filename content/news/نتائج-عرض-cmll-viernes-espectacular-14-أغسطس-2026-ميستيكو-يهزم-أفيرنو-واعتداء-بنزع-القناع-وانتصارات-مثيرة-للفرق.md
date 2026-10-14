@@ -11,7 +11,7 @@ tags:
   - تيسا بلانشارد
   - زاندوكان جونيور
   - أرينا المكسيك
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/pfyo8g608un559xl.jpg
 layout: post-layout.njk
 ---

@@ -14,7 +14,7 @@ tags:
   - ميستيكو
   - ماسكارا دورادا
   - لي موريارتي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/zw58iummoj0v38ja.jpg
 layout: post-layout.njk
 ---

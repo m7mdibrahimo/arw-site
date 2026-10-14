@@ -13,7 +13,7 @@ tags:
   - مصطفى علي
   - إيلايجا
   - سيدريك ألكسندر
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/9a67w6hh972wswys.jpg
 layout: post-layout.njk
 ---

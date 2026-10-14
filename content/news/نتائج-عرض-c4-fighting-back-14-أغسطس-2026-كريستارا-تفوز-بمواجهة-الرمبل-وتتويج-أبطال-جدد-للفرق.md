@@ -11,7 +11,7 @@ tags:
   - أورتيز
   - دالتون كاسل
   - كريستارا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/zoac5rhvhhb9od3r.jpg
 layout: post-layout.njk
 ---

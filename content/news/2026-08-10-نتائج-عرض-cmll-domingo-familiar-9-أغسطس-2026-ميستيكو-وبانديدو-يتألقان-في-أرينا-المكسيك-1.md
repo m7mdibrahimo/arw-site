@@ -9,7 +9,7 @@ tags:
   - بانديدو
   - برايان كيج
   - هيتشيسيرو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/r6kcgzsciqilkw55.jpg
 layout: post-layout.njk
 ---

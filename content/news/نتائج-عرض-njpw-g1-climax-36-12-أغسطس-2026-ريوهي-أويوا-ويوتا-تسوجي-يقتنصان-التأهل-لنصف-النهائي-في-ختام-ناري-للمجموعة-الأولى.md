@@ -11,7 +11,7 @@ tags:
   - ريوهي أويوا
   - كونوسوكي تاكيشيتا
   - سانادا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/rgtnces5ftaaeqjo.jpg
 layout: post-layout.njk
 ---

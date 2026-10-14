@@ -7,7 +7,7 @@ tags:
   - ساري
   - تاكومي إيروها
   - ناتسوبوي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/mg7d07tdi5gvdz8c.jpg
 layout: post-layout.njk
 ---

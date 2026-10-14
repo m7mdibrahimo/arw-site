@@ -11,7 +11,7 @@ tags:
   - دونوفان ديجاك
   - راينو
   - أيدن أغرو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/zcccke0l4g6o472m.jpg
 layout: post-layout.njk
 ---

@@ -8,7 +8,7 @@ tags:
   - أليك برايس
   - جوردان أوليفر
   - بير برونسون
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/hrda8ifpxewe069y.jpg
 layout: post-layout.njk
 ---

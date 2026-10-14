@@ -14,7 +14,7 @@ tags:
   - غونتر
   - بارون كوربين
   - جايسي جاين
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/snscwoh9z5ak4g1h.jpg
 layout: post-layout.njk
 ---

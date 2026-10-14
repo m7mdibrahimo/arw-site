@@ -13,7 +13,7 @@ tags:
   - نايجل ماكغينيس
   - ويلو نايتينغيل
   - هيتشيسيرو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/547y02b9j7vntlx2.jpg
 layout: post-layout.njk
 ---

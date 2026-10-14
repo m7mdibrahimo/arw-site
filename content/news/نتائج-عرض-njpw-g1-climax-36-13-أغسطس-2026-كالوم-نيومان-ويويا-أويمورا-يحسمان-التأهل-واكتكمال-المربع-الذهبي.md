@@ -11,7 +11,7 @@ tags:
   - يويا أويمورا
   - يوتا تسوجي
   - ريوهي أويوا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/19i6wsn5g13qiu27.jpg
 layout: post-layout.njk
 ---

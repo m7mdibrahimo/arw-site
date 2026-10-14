@@ -11,7 +11,7 @@ tags:
   - تيسا بلانشارد
   - هيتشيسيرو
   - أرينا المكسيك
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/2febtmsejpjm6j31.jpg
 layout: post-layout.njk
 ---

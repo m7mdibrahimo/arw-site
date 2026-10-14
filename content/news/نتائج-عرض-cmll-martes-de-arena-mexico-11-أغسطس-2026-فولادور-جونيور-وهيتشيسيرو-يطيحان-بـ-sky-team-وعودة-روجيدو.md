@@ -10,7 +10,7 @@ tags:
   - هيتشيسيرو
   - ماسكارا دورادا
   - أتلانتيس
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/u3yymc7591cy384l.jpg
 layout: post-layout.njk
 ---

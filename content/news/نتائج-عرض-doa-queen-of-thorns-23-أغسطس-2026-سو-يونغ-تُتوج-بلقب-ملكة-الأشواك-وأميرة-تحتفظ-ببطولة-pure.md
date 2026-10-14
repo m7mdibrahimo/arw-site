@@ -8,7 +8,7 @@ tags:
   - سو يونغ
   - Su Yung
   - مصارعة سيدات
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/fjwkoe8dqe5es5cn.jpg
 layout: post-layout.njk
 ---

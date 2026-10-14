@@ -7,7 +7,7 @@ tags:
   - NXT Live
   - كيندال غراي
   - مايلز بورن
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/r12k0xog24thdp3o.jpg
 layout: post-layout.njk
 ---

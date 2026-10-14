@@ -12,7 +12,7 @@ tags:
   - نييبلا روخا
   - تمبلاريو
   - أرينا كوليسيو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/ud00hwfkh2w7oc0d.jpg
 layout: post-layout.njk
 ---

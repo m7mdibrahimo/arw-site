@@ -9,7 +9,7 @@ tags:
   - أكشن أندريتي
   - جوس روبنسون
   - إيس أوستن
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/p9sorbl5a7intwgc.jpg
 layout: post-layout.njk
 ---

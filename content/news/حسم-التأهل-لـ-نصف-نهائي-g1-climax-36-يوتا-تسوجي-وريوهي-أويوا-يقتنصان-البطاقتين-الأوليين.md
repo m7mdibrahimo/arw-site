@@ -10,7 +10,7 @@ tags:
   - ريوهي أويوا
   - كونوسوكي تاكيشيتا
   - نتائج المصارعة
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/li8wzf28op7ii56l.jpg
 layout: post-layout.njk
 ---

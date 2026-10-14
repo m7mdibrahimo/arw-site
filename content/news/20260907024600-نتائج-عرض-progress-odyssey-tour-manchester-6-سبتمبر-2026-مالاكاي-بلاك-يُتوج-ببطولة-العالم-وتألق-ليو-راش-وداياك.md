@@ -7,7 +7,7 @@ tags:
   - مالاكاي بلاك
   - ليو راش
   - كاي لي راي
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/lxioa4zo25c0xlj4.jpg
 layout: post-layout.njk
 ---

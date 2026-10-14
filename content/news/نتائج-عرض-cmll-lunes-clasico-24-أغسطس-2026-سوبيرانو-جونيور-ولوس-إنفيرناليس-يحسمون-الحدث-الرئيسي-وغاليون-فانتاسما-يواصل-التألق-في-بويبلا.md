@@ -8,7 +8,7 @@ tags:
   - سوبيرانو جونيور
   - فليب غوردون
   - ماسكارا دورادا
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/6gvzi7vt972m15i9.jpg
 layout: post-layout.njk
 ---

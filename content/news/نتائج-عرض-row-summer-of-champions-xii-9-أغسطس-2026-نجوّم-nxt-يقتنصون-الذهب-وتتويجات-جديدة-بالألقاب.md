@@ -11,7 +11,7 @@ tags:
   - WWE NXT
   - بيغ لوثر
   - ماكس كاستيلانوس
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/imjp3tq8cpbc5rx0.jpg
 layout: post-layout.njk
 ---

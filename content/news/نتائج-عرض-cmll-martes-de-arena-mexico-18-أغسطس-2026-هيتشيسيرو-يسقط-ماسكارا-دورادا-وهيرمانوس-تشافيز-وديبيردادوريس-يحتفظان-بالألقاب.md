@@ -12,7 +12,7 @@ tags:
   - أتلانتيس
   - بلو بانثر
   - أرينا مكسيكو
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/b7mjmr62k0jsvuqz.jpg
 layout: post-layout.njk
 ---

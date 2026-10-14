@@ -14,7 +14,7 @@ tags:
   - نايجل ماكغينيس
   - مايا وورلد
   - ام جيه اف
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/ccrq0lieuhnktmcd.jpg
 layout: post-layout.njk
 ---

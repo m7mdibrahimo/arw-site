@@ -9,7 +9,7 @@ tags:
   - زوي ستارك
   - Zoey Stark
   - إندي هارتويل
-  - مصارعة حرة
+  - مصارعة
   - انتقالات المصارعة
 image: /content/images/kgvdjdnhnvt3dgpr.jpg
 layout: post-layout.njk

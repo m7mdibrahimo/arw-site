@@ -4,13 +4,13 @@ title: "نتائج عرض MLW Blood & Thunder (8 أغسطس 2026): كيلر كر
 date: 2026-08-10T03:24:00.000+03:00
 tags:
   - MLW
-  - MLW Blood & Thunder
+  - "MLW Blood & Thunder"
   - نتائج MLW
   - كيلر كروس
   - ساتوشي كوجيما
   - جو كوفي
   - ليدي فروست
-  - مصارعة حرة
+  - مصارعة
 image: /content/images/10v8n5jjgwahqa01.jpg
 layout: post-layout.njk
 ---
