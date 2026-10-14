@@ -4,10 +4,20 @@
   "ar": "رومان رينز",
   "en": "Roman Reigns",
   "fed": "WWE",
-  "owner": "Diego Serrano",
-  "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Roman_Reigns_RR25_(1).jpg",
-  "year": "2025"
+  "owner": "Miguel Discart from Bruxelles, Belgique",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:WWE_Live_2016-09-07_21-38-48_ILCE-6300_2090_DxO_(30993300151).jpg",
+  "year": "2090"
+ },
+ {
+  "slug": "cody-rhodes",
+  "ar": "كودي رودز",
+  "en": "Cody Rhodes",
+  "fed": "WWE",
+  "owner": "Mechanical Elephant",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Cody_Rhodes_with_his_Undisputed_Championship_(Birmingham_UK,_April_2024)_(3)_(cropped).jpg",
+  "year": "2024"
  },
  {
   "slug": "seth-rollins",
@@ -40,13 +50,43 @@
   "year": "2025"
  },
  {
+  "slug": "randy-orton",
+  "ar": "راندي أورتن",
+  "en": "Randy Orton",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Randy_Orton_RR24_(slightly_cropped).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "gunther",
+  "ar": "غونتر",
+  "en": "Gunther",
+  "fed": "WWE",
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gunther_2024_(cropped).jpg",
+  "year": "2024"
+ },
+ {
   "slug": "drew-mcintyre",
   "ar": "درو ماكنتاير",
   "en": "Drew McIntyre",
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Drew_McIntyre_RR25_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Drew_McIntyre,_WrestleMania_XL_(cropped).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "la-knight",
+  "ar": "ال ايه نايت",
+  "en": "LA Knight",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:LA_Knight_RR25.jpg",
   "year": "2025"
  },
  {
@@ -60,6 +100,16 @@
   "year": "2025"
  },
  {
+  "slug": "brock-lesnar",
+  "ar": "بروك ليسنر",
+  "en": "Brock Lesnar",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brock_Lesnar_At_SummerSlam_2023.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "rhea-ripley",
   "ar": "ريا ريبلي",
   "en": "Rhea Ripley",
@@ -67,7 +117,7 @@
   "owner": "Nyssaslaythat",
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:Rhea_Ripley_SummerSlam_2025.jpg",
-  "year": "2026"
+  "year": "2025"
  },
  {
   "slug": "liv-morgan",
@@ -78,6 +128,16 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Liv_Morgan_at_Greater_Together_2026.jpg",
   "year": "2026"
+ },
+ {
+  "slug": "becky-lynch",
+  "ar": "بيكي لينش",
+  "en": "Becky Lynch",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Becky_Lynch_RR24.jpg",
+  "year": "2024"
  },
  {
   "slug": "bianca-belair",
@@ -100,14 +160,44 @@
   "year": "2026"
  },
  {
+  "slug": "dominik-mysterio",
+  "ar": "دومينيك ميستيريو",
+  "en": "Dominik Mysterio",
+  "fed": "WWE",
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dominik_Mysterio_2024.jpg",
+  "year": "2024"
+ },
+ {
   "slug": "jacob-fatu",
   "ar": "جاكوب فاتو",
   "en": "Jacob Fatu",
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Jacob_Fatu_RR25.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Jacob_Fatu_RR25_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "solo-sikoa",
+  "ar": "سولو سيكوا",
+  "en": "Solo Sikoa",
+  "fed": "WWE",
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Solo_Sikoa_2024_(cropped).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "sami-zayn",
+  "ar": "سامي زين",
+  "en": "Sami Zayn",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sami_Zayn,_April_2024.jpg",
+  "year": "2024"
  },
  {
   "slug": "kevin-owens",
@@ -118,6 +208,16 @@
   "license": "CC BY 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Kevin_Owens_at_IGN_Live_2026.jpg",
   "year": "2026"
+ },
+ {
+  "slug": "penta",
+  "ar": "بنتا",
+  "en": "Penta",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Penta_RR25_(cropped).jpg",
+  "year": "2025"
  },
  {
   "slug": "aj-styles",
@@ -140,14 +240,44 @@
   "year": "2025"
  },
  {
+  "slug": "logan-paul",
+  "ar": "لوغان بول",
+  "en": "Logan Paul",
+  "fed": "WWE",
+  "owner": "diegofernandophotography",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Logan_Paul,_WrestleMania_XL_in_2024_3.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "oba-femi",
+  "ar": "أوبا فيمي",
+  "en": "Oba Femi",
+  "fed": "WWE",
+  "owner": "Jonathan Rivera",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Oba_Femi_2024.jpg",
+  "year": "2024"
+ },
+ {
   "slug": "charlotte-flair",
   "ar": "شارلوت فلير",
   "en": "Charlotte Flair",
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Charlotte_Flair_RR25.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Charlotte_Flair_RR25_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "tiffany-stratton",
+  "ar": "تيفاني ستراتون",
+  "en": "Tiffany Stratton",
+  "fed": "WWE",
+  "owner": "HHH Pedrigree",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tiffany_as_US_Champion_(cropped).jpg",
+  "year": "2026"
  },
  {
   "slug": "iyo-sky",
@@ -160,24 +290,144 @@
   "year": "2025"
  },
  {
+  "slug": "jade-cargill",
+  "ar": "جايد كارجيل",
+  "en": "Jade Cargill",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jade_Cargill_RR24_(2).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "the-rock",
+  "ar": "ذا روك",
+  "en": "The Rock",
+  "fed": "WWE",
+  "owner": "SWinxy",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Guests_at_the_2026_Met_Gala_102.jpg",
+  "year": "2026"
+ },
+ {
+  "slug": "triple-h",
+  "ar": "تريبل إتش",
+  "en": "Triple H",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Triple_H,_April_2024.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "the-miz",
+  "ar": "ذا ميز",
+  "en": "The Miz",
+  "fed": "WWE",
+  "owner": "All-Pro Reels from District of Columbia, USA",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dsc_9291_41630931340_o_(50120855703).jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "damian-priest",
+  "ar": "داميان بريست",
+  "en": "Damian Priest",
+  "fed": "WWE",
+  "owner": "TaurusEmerald",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Damien_Priest_Las_Vegas_Fall_20925.jpg",
+  "year": "2025"
+ },
+ {
+  "slug": "jimmy-uso",
+  "ar": "جيمي أوسو",
+  "en": "Jimmy Uso",
+  "fed": "WWE",
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jimmy_Uso_2024_(cropped).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "sheamus",
+  "ar": "شيمس",
+  "en": "Sheamus",
+  "fed": "WWE",
+  "owner": "Zach Catanzareti Photo",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Sheamus_(49562239306).jpg",
+  "year": "2020"
+ },
+ {
+  "slug": "bronson-reed",
+  "ar": "برونسون ريد",
+  "en": "Bronson Reed",
+  "fed": "WWE",
+  "owner": "House of Glory Wrestling",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bronson_Reed_2022.jpg",
+  "year": "2022"
+ },
+ {
+  "slug": "chad-gable",
+  "ar": "تشاد غيبل",
+  "en": "Chad Gable",
+  "fed": "WWE",
+  "owner": "Miguel Discart",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chad_Gable_NXT_tag_team_champion_Takeover_Dallas_2016.jpg",
+  "year": "2016"
+ },
+ {
   "slug": "carmelo-hayes",
   "ar": "كارميلو هايز",
   "en": "Carmelo Hayes",
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Carmelo_Hayes_RR25_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Carmelo_Hayes_RR25.jpg",
   "year": "2025"
+ },
+ {
+  "slug": "trick-williams",
+  "ar": "تريك ويليامز",
+  "en": "Trick Williams",
+  "fed": "WWE",
+  "owner": "Front Office Sports",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Trick_Williams_FOS_2026_version_3_(cropped).png",
+  "year": "2026"
  },
  {
   "slug": "joe-hendry",
   "ar": "جو هندري",
   "en": "Joe Hendry",
   "fed": "WWE",
-  "owner": "Diego Serrano",
-  "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Joe_Hendry_RR25_(cropped).jpg",
+  "owner": "TzarN64",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Joe_Hendry_WWE_Royal_Rumble.jpg",
   "year": "2025"
+ },
+ {
+  "slug": "rusev",
+  "ar": "روسيف",
+  "en": "Rusev",
+  "fed": "WWE",
+  "owner": "Adam Marantz/All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:WMC_AEWMIRO-CHAMP.jpg",
+  "year": "2021"
+ },
+ {
+  "slug": "aleister-black",
+  "ar": "أليستر بلاك",
+  "en": "Aleister Black",
+  "fed": "WWE",
+  "owner": "McPhail",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:House_of_Black,_Acclaimed,_and_Billy_Gunn.jpg",
+  "year": "2023"
  },
  {
   "slug": "bayley",
@@ -188,6 +438,16 @@
   "license": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Bayley_RR25_(2).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "asuka",
+  "ar": "أسوكا",
+  "en": "Asuka",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Asuka,_WrestleMania_XL_2024_(cropped).jpg",
+  "year": "2024"
  },
  {
   "slug": "alexa-bliss",
@@ -216,7 +476,7 @@
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Chelsea_Green_RR25_(1)_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Chelsea_Green_RR25_(2).jpg",
   "year": "2025"
  },
  {
@@ -226,8 +486,18 @@
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Lyra_Valkyria_RR25.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Lyra_Valkyria_RR25_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "stephanie-vaquer",
+  "ar": "ستيفاني فاكير",
+  "en": "Stephanie Vaquer",
+  "fed": "WWE",
+  "owner": "J O Y F U L 🐻 V I O L E N C E",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Stephanie_Vaquer,_April_2024_2.jpg",
+  "year": "2024"
  },
  {
   "slug": "giulia",
@@ -236,7 +506,7 @@
   "fed": "WWE",
   "owner": "Diego Serrano",
   "license": "CC BY 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Giulia_RR25_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Giulia_RR25.jpg",
   "year": "2025"
  },
  {
@@ -250,6 +520,36 @@
   "year": "2025"
  },
  {
+  "slug": "naomi",
+  "ar": "نايومي",
+  "en": "Naomi",
+  "fed": "WWE",
+  "owner": "InFlamester20",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Naomi_-_2019-01-20_-_01.jpg",
+  "year": "2019"
+ },
+ {
+  "slug": "kenny-omega",
+  "ar": "كيني أوميغا",
+  "en": "Kenny Omega",
+  "fed": "AEW",
+  "owner": "Crisco 1492",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay_v_Kenny_Omega,_AEW_Forbidden_Door_2023,_2023-06-25_03.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "jon-moxley",
+  "ar": "جون موكسلي",
+  "en": "Jon Moxley",
+  "fed": "AEW",
+  "owner": "zuko1312",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jon_Moxley_International_Champion.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "mjf",
   "ar": "ام جيه اف",
   "en": "MJF",
@@ -258,6 +558,16 @@
   "license": "CC BY 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:MJF_AEW_World_Champion.png",
   "year": "2026"
+ },
+ {
+  "slug": "will-ospreay",
+  "ar": "ويل أوسبراي",
+  "en": "Will Ospreay",
+  "fed": "AEW",
+  "owner": "JJ Williams, Digital media staff at Wrestling Observer Newsletter",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay,_AEW_Revolution_2024.jpg",
+  "year": "2024"
  },
  {
   "slug": "swerve-strickland",
@@ -270,6 +580,16 @@
   "year": "2025"
  },
  {
+  "slug": "hangman-adam-page",
+  "ar": "هانغمان آدم بيج",
+  "en": "Hangman Adam Page",
+  "fed": "AEW",
+  "owner": "Super Festivals from Ft. Lauderdale, USA",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Page_Photo_Op_GalaxyCon_Richmond_2023.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "kazuchika-okada",
   "ar": "كازوتشيكا أوكادا",
   "en": "Kazuchika Okada",
@@ -280,14 +600,34 @@
   "year": "2025"
  },
  {
+  "slug": "adam-copeland",
+  "ar": "آدم كوبلاند",
+  "en": "Adam Copeland",
+  "fed": "AEW",
+  "owner": "Gage Skidmore",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Copeland_by_Gage_Skidmore.jpg",
+  "year": "2024"
+ },
+ {
   "slug": "chris-jericho",
   "ar": "كريس جيريكو",
   "en": "Chris Jericho",
   "fed": "AEW",
-  "owner": "John Manard",
-  "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Chris_Jericho_GalaxyCon_Raleigh_July,_25,_2026_681.jpg",
-  "year": "2026"
+  "owner": "Miguel Discart from Bruxelles, Belgique",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:WWE_Live_2016-09-07_21-38-48_ILCE-6300_2090_DxO_(30993300151).jpg",
+  "year": "2090"
+ },
+ {
+  "slug": "bryan-danielson",
+  "ar": "براين دانيلسون",
+  "en": "Bryan Danielson",
+  "fed": "AEW",
+  "owner": "zuko1312",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bryan_Danielson,_AEW_Champ_Sept_2024_(cropped).jpg",
+  "year": "2024"
  },
  {
   "slug": "darby-allin",
@@ -310,6 +650,56 @@
   "year": "2025"
  },
  {
+  "slug": "mercedes-mone",
+  "ar": "مرسيدس موني",
+  "en": "Mercedes Moné",
+  "fed": "AEW",
+  "owner": "Sceptre",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mercedes_Mone_vs._Kanji.jpg",
+  "year": "2025"
+ },
+ {
+  "slug": "toni-storm",
+  "ar": "توني ستورم",
+  "en": "Toni Storm",
+  "fed": "AEW",
+  "owner": "J O Y F U L 🐻 V I O L E N C E",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Toni_Storm_in_April_2024_(cropped).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "kris-statlander",
+  "ar": "كريس ستاتلاندر",
+  "en": "Kris Statlander",
+  "fed": "AEW",
+  "owner": "Super Festivals",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kris_Statlander_2022.jpg",
+  "year": "2022"
+ },
+ {
+  "slug": "samoa-joe",
+  "ar": "ساموا جو",
+  "en": "Samoa Joe",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Samoa_Joe_with_AEW_World_title_DYNAMITE_2024_01_10_035.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "adam-cole",
+  "ar": "آدم كول",
+  "en": "Adam Cole",
+  "fed": "AEW",
+  "owner": "McPhail",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:MJF_and_Adam_Cole_as_ROH_World_Tag_Team_Champions.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "konosuke-takeshita",
   "ar": "كونوسوكي تاكيشيتا",
   "en": "Konosuke Takeshita",
@@ -330,6 +720,16 @@
   "year": "2025"
  },
  {
+  "slug": "ricochet",
+  "ar": "ريكوشيه",
+  "en": "Ricochet",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ricochet_ALL_IN_2024_08_25_107.jpg",
+  "year": "2024"
+ },
+ {
   "slug": "kyle-fletcher",
   "ar": "كايل فليتشر",
   "en": "Kyle Fletcher",
@@ -340,14 +740,104 @@
   "year": "2026"
  },
  {
+  "slug": "matt-jackson",
+  "ar": "مات جاكسون",
+  "en": "Matt Jackson",
+  "fed": "AEW",
+  "owner": "https://www.flickr.com/people/troyteague/",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Young_Bucks_sharpshooter.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "nick-jackson",
+  "ar": "نيك جاكسون",
+  "en": "Nick Jackson",
+  "fed": "AEW",
+  "owner": "https://www.flickr.com/people/troyteague/",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Young_Bucks_sharpshooter.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "thunder-rosa",
+  "ar": "ثاندر روزا",
+  "en": "Thunder Rosa",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:All_Elite_Wrestling_Women%27s_World_Champion_-_Thunder_Rosa.jpg",
+  "year": "2022"
+ },
+ {
+  "slug": "jay-white",
+  "ar": "جاي وايت",
+  "en": "Jay White",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jay_White_-_AEW_Dynamite_-_2023-04-26050.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "eddie-kingston",
+  "ar": "إيدي كينغستون",
+  "en": "Eddie Kingston",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Eddie_Kingston_Worlds_End_2023_12_30_004.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "brody-king",
   "ar": "برودي كينغ",
   "en": "Brody King",
   "fed": "AEW",
   "owner": "KMcWrestling Photography",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Brodido_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Brodido_(close_crop).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "bandido",
+  "ar": "بانديدو",
+  "en": "Bandido",
+  "fed": "AEW",
+  "owner": "KMcWrestling Photography",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brodido_(close_crop).jpg",
+  "year": "2025"
+ },
+ {
+  "slug": "bobby-lashley",
+  "ar": "بوبي لاشلي",
+  "en": "Bobby Lashley",
+  "fed": "AEW",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bobby_Lashley,_WrestleMania_XL_2024_(cropped).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "shelton-benjamin",
+  "ar": "شيلتون بنجامين",
+  "en": "Shelton Benjamin",
+  "fed": "AEW",
+  "owner": "Steve Wright Jr. from Conway",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Shelton_Benjamin_ROH_World_Tag_Team_Champion.jpg",
+  "year": "2011"
+ },
+ {
+  "slug": "hook",
+  "ar": "هوك",
+  "en": "Hook",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hook,_2022_(headshot).jpg",
+  "year": "2022"
  },
  {
   "slug": "mike-bailey",
@@ -366,7 +856,7 @@
   "fed": "AEW",
   "owner": "KMcWrestling Photography",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Kevin_Knight_AEW_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Kevin_Knight_AEW.jpg",
   "year": "2026"
  },
  {
@@ -380,14 +870,64 @@
   "year": "2025"
  },
  {
+  "slug": "willow-nightingale",
+  "ar": "ويلو نايتينغيل",
+  "en": "Willow Nightingale",
+  "fed": "AEW",
+  "owner": "Crisco 1492",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Toni_Storm_v_Willow_Nightingale,_AEW_Forbidden_Door_2023,_2023-06-25_03.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "harley-cameron",
+  "ar": "هارلي كاميرون",
+  "en": "Harley Cameron",
+  "fed": "AEW",
+  "owner": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Harley_Cameron_DYNAMITE_2024_01_03_043.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "powerhouse-hobbs",
+  "ar": "باورهاوس هوبز",
+  "en": "Powerhouse Hobbs",
+  "fed": "AEW",
+  "owner": "West Smith",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_%22Powerhouse%22_Hobbs,_2022.jpg",
+  "year": "2022"
+ },
+ {
   "slug": "mark-briscoe",
   "ar": "مارك بريسكو",
   "en": "Mark Briscoe",
   "fed": "AEW",
   "owner": "KMcWrestling Photography",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Mark_Briscoe_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Mark_Briscoe.jpg",
   "year": "2026"
+ },
+ {
+  "slug": "wheeler-yuta",
+  "ar": "ويلر يوتا",
+  "en": "Wheeler Yuta",
+  "fed": "AEW",
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Wheeler_Yuta,_June_2022.jpg",
+  "year": "2022"
+ },
+ {
+  "slug": "daniel-garcia",
+  "ar": "دانيال غارسيا",
+  "en": "Daniel Garcia",
+  "fed": "AEW",
+  "owner": "House of Glory Wrestling",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Daniel_Garcia,_May_2024_03_(cropped).jpg",
+  "year": "2024"
  },
  {
   "slug": "mark-davis",
@@ -400,14 +940,44 @@
   "year": "2026"
  },
  {
+  "slug": "jack-perry",
+  "ar": "جاك بيري",
+  "en": "Jack Perry",
+  "fed": "AEW",
+  "owner": "McPhail",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jack_Perry_as_AEW_TNT_Champion_(cropped2).jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "jeff-jarrett",
+  "ar": "جيف جاريت",
+  "en": "Jeff Jarrett",
+  "fed": "AEW",
+  "owner": "McPhail",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jeff_Jarrett_at_All_In_2023.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "skye-blue",
   "ar": "سكاي بلو",
   "en": "Skye Blue",
   "fed": "AEW",
   "owner": "KMcWrestling Photography",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Skye_Blue_ROH_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Skye_Blue_ROH.jpg",
   "year": "2026"
+ },
+ {
+  "slug": "thekla",
+  "ar": "ثيكلا",
+  "en": "Thekla",
+  "fed": "AEW",
+  "owner": "J O Y F U L 🐻 V I O L E N C E",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Thekla_in_April_2025.jpg",
+  "year": "2025"
  },
  {
   "slug": "mina-shirakawa",
@@ -420,6 +990,16 @@
   "year": "2025"
  },
  {
+  "slug": "megan-bayne",
+  "ar": "ميغان باين",
+  "en": "Megan Bayne",
+  "fed": "AEW",
+  "owner": "Earl Gardner",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Megan_Bayne,_September_2024.jpg",
+  "year": "2024"
+ },
+ {
   "slug": "queen-aminata",
   "ar": "كوين أميناتا",
   "en": "Queen Aminata",
@@ -428,6 +1008,26 @@
   "license": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Queen_Aminata_in_April_2025_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "hiroshi-tanahashi",
+  "ar": "هيروشي تاناهاشي",
+  "en": "Hiroshi Tanahashi",
+  "fed": "NJPW",
+  "owner": "Crisco 1492",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:MJF_v_Hiroshi_Tanahashi,_AEW_Forbidden_Door_2023,_2023-06-25_03.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "tetsuya-naito",
+  "ar": "تيتسويا نايتو",
+  "en": "Tetsuya Naito",
+  "fed": "NJPW",
+  "owner": "Ian D'Andrea from Philadelphia, PA",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tetsuya_Naito_(52828929289).jpg",
+  "year": "2023"
  },
  {
   "slug": "zack-sabre-jr",
@@ -440,14 +1040,74 @@
   "year": "2026"
  },
  {
+  "slug": "shingo-takagi",
+  "ar": "شينغو تاكاغي",
+  "en": "Shingo Takagi",
+  "fed": "NJPW",
+  "owner": "Hirondon",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:SHINGO_TAKAGI_2020.02.20.jpg",
+  "year": "2020"
+ },
+ {
   "slug": "yota-tsuji",
   "ar": "يوتا تسوجي",
   "en": "Yota Tsuji",
   "fed": "NJPW",
   "owner": "結牙",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Yota_Tsuji_20250105.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Yota_Tsuji_20250105_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "hiromu-takahashi",
+  "ar": "هيرومو تاكاهاشي",
+  "en": "Hiromu Takahashi",
+  "fed": "NJPW",
+  "owner": "Ian D'Andrea from Philadelphia, PA",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hiromu_Takahashi_(52829149410).jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "hirooki-goto",
+  "ar": "هيروكي غوتو",
+  "en": "Hirooki Goto",
+  "fed": "NJPW",
+  "owner": "ゾーヒョー",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Hirooki_Goto_2024.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "gabe-kidd",
+  "ar": "جيب كيد",
+  "en": "Gabe Kidd",
+  "fed": "NJPW",
+  "owner": "結牙",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gabe_Kidd_with_the_Strong_Openweight_Championship.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "shota-umino",
+  "ar": "شوتا أومينو",
+  "en": "Shota Umino",
+  "fed": "NJPW",
+  "owner": "結牙",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Shota_Umino_20250317.jpg",
+  "year": "2025"
+ },
+ {
+  "slug": "jake-lee",
+  "ar": "جيك لي",
+  "en": "Jake Lee",
+  "fed": "NJPW",
+  "owner": "Pug8310",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:%E3%82%B8%E3%82%A7%E3%82%A4%E3%82%AF%E3%83%BB%E3%83%AA%E3%83%BC.jpg",
+  "year": "2026"
  },
  {
   "slug": "great-o-khan",
@@ -466,7 +1126,7 @@
   "fed": "NJPW",
   "owner": "結牙",
   "license": "CC BY 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Ryohei_Oiwa_20260105_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Ryohei_Oiwa_20260105.jpg",
   "year": "2026"
  },
  {
@@ -480,6 +1140,36 @@
   "year": "2026"
  },
  {
+  "slug": "toru-yano",
+  "ar": "تورو يانو",
+  "en": "Toru Yano",
+  "fed": "NJPW",
+  "owner": "Bject",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Seibu_Dome_Wrestle_Grand_Slam_IMG_4835.jpg",
+  "year": "2021"
+ },
+ {
+  "slug": "david-finlay",
+  "ar": "ديفيد فينلي",
+  "en": "David Finlay",
+  "fed": "NJPW",
+  "owner": "Busaikuknee777",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:David_Finlay_Bullet_Club.png",
+  "year": "2023"
+ },
+ {
+  "slug": "evil",
+  "ar": "إيفل",
+  "en": "Evil",
+  "fed": "NJPW",
+  "owner": "ゾーヒョー",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:EVIL_(wrestler)_Nov_2021.jpg",
+  "year": "2021"
+ },
+ {
   "slug": "sanada",
   "ar": "سانادا",
   "en": "Sanada",
@@ -488,6 +1178,16 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:SANADA_2025.jpg",
   "year": "2025"
+ },
+ {
+  "slug": "taiji-ishimori",
+  "ar": "تايجي إيشيموري",
+  "en": "Taiji Ishimori",
+  "fed": "NJPW",
+  "owner": "ハイエナジー",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ishimori20191103.jpg",
+  "year": "2019"
  },
  {
   "slug": "kosei-fujita",
@@ -506,7 +1206,7 @@
   "fed": "NJPW",
   "owner": "結牙",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Boltin_Oleg_20260816_(cropped).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Boltin_Oleg_20260816.jpg",
   "year": "2026"
  },
  {
@@ -530,6 +1230,26 @@
   "year": "2026"
  },
  {
+  "slug": "kushida",
+  "ar": "كوشيدا",
+  "en": "Kushida",
+  "fed": "NJPW",
+  "owner": "ゾーヒョー",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:KUSHIDA_2017.jpg",
+  "year": "2017"
+ },
+ {
+  "slug": "yoshi-hashi",
+  "ar": "يوشي هاشي",
+  "en": "Yoshi-Hashi",
+  "fed": "NJPW",
+  "owner": "ゾーヒョー",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:YOSHI-HASHI_2023.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "ren-narita",
   "ar": "رين ناريتا",
   "en": "Ren Narita",
@@ -538,6 +1258,56 @@
   "license": "CC0",
   "source": "https://commons.wikimedia.org/wiki/File:Ren_Narita_2025.jpg",
   "year": "2025"
+ },
+ {
+  "slug": "satoshi-kojima",
+  "ar": "ساتوشي كوجيما",
+  "en": "Satoshi Kojima",
+  "fed": "NJPW",
+  "owner": "Yuzunet",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:20230122cozy1.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "ryusuke-taguchi",
+  "ar": "ريوسوكي تاغوتشي",
+  "en": "Ryusuke Taguchi",
+  "fed": "NJPW",
+  "owner": "ゾーヒョー",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ryusuke_Taguchi_2018.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "josh-alexander",
+  "ar": "جوش ألكسندر",
+  "en": "Josh Alexander",
+  "fed": "MLP",
+  "owner": "Brandon Oliver",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Josh_Alexander.jpg",
+  "year": "2019"
+ },
+ {
+  "slug": "priscilla-kelly",
+  "ar": "بريسيلا كيلي",
+  "en": "Priscilla Kelly",
+  "fed": "MLP",
+  "owner": "Tabercil",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Priscilla_Kelly_at_the_Summit_2019.jpg",
+  "year": "2019"
+ },
+ {
+  "slug": "stu-grayson",
+  "ar": "ستو غرايسون",
+  "en": "Stu Grayson",
+  "fed": "MLP",
+  "owner": "grenwail",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Stu_Greyson_Oct_2019_(cropped).jpg",
+  "year": "2019"
  },
  {
   "slug": "gisele-shaw",
@@ -550,6 +1320,46 @@
   "year": "2025"
  },
  {
+  "slug": "karl-anderson",
+  "ar": "كارل أندرسون",
+  "en": "Karl Anderson",
+  "fed": "MLP",
+  "owner": "Miguel Discart from Bruxelles, Belgique",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:WWE_Live,_Li%C3%A8ge,_May_12,_2017_2017-05-12_22-25-15_ILCE-6500_DSC05531_DxO_(35157977905).jpg",
+  "year": "2017"
+ },
+ {
+  "slug": "doc-gallows",
+  "ar": "دوك غالوز",
+  "en": "Doc Gallows",
+  "fed": "MLP",
+  "owner": "Miguel Discart from Bruxelles, Belgique",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:WWE_Live,_Li%C3%A8ge,_May_12,_2017_2017-05-12_22-34-10_ILCE-6500_DSC05667_DxO_(35157978085).jpg",
+  "year": "2017"
+ },
+ {
+  "slug": "zack-gibson",
+  "ar": "زاك جيبسون",
+  "en": "Zack Gibson",
+  "fed": "MLP",
+  "owner": "Miguel Discart",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Zack_Gibson_2018.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "james-drake",
+  "ar": "جيمس دريك",
+  "en": "James Drake",
+  "fed": "MLP",
+  "owner": "John Manard",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:UK_Tag_Team_Champion_James_Drake.jpg",
+  "year": "2019"
+ },
+ {
   "slug": "steve-maclin",
   "ar": "ستيف ماكلين",
   "en": "Steve Maclin",
@@ -560,13 +1370,53 @@
   "year": "2026"
  },
  {
+  "slug": "rhino",
+  "ar": "رينو",
+  "en": "Rhino",
+  "fed": "MLP",
+  "owner": "JBZA2003",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rhyno_At_Raw_2017.jpg",
+  "year": "2017"
+ },
+ {
+  "slug": "jonathan-gresham",
+  "ar": "جوناثان غريشام",
+  "en": "Jonathan Gresham",
+  "fed": "MLP",
+  "owner": "Mabelkind3281",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gresham_ROH_2020.jpg",
+  "year": "2020"
+ },
+ {
+  "slug": "johnny-tv",
+  "ar": "جوني تي في",
+  "en": "Johnny TV",
+  "fed": "MLP",
+  "owner": "Tabercil",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Johnny_Impact_Alpha_1_alt.jpg",
+  "year": "2019"
+ },
+ {
+  "slug": "jody-threat",
+  "ar": "جودي ثريت",
+  "en": "Jody Threat",
+  "fed": "MLP",
+  "owner": "grenwail",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jody_Threat,_October_2019.jpg",
+  "year": "2019"
+ },
+ {
   "slug": "ace-austin",
   "ar": "إيس أوستن",
   "en": "Ace Austin",
   "fed": "MLP",
   "owner": "KMcWrestling Photography",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Ace_Austin.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Ace_Austin_(cropped).jpg",
   "year": "2026"
  },
  {
@@ -580,6 +1430,26 @@
   "year": "2026"
  },
  {
+  "slug": "pco",
+  "ar": "بي سي أو",
+  "en": "PCO",
+  "fed": "MLP",
+  "owner": "Tabercil",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:PCO_2018_(cropped).jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "evil-uno",
+  "ar": "إيفل أونو",
+  "en": "Evil Uno",
+  "fed": "MLP",
+  "owner": "grenwail",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Uno_and_Greyson_Oct_2019_(cropped).jpg",
+  "year": "2019"
+ },
+ {
   "slug": "tjp",
   "ar": "تي جيه بي",
   "en": "TJP",
@@ -588,6 +1458,16 @@
   "license": "CC BY 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:TJP_20250317.jpg",
   "year": "2025"
+ },
+ {
+  "slug": "shotzi-blackheart",
+  "ar": "شوتزي بلاك هارت",
+  "en": "Shotzi Blackheart",
+  "fed": "MLP",
+  "owner": "Tabercil",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Shotzi_Blackheart_at_the_Summit_2019.jpg",
+  "year": "2019"
  },
  {
   "slug": "dani-luna",
@@ -610,13 +1490,23 @@
   "year": "2025"
  },
  {
+  "slug": "jon-jones",
+  "ar": "جون جونز",
+  "en": "Jon Jones",
+  "fed": "UFC",
+  "owner": "K.O. Artist Sports",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jon_Jones_being_interviewed.png",
+  "year": "2017"
+ },
+ {
   "slug": "ilia-topuria",
   "ar": "إيليا توبوريا",
   "en": "Ilia Topuria",
   "fed": "UFC",
   "owner": "U.S. Army photo by Sgt. 1st Class Brittany Primavera",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Press_Conference_(9747960).jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_Ceremonial_Weigh_In_(9748627)(cropped).jpg",
   "year": "2026"
  },
  {
@@ -630,6 +1520,16 @@
   "year": "2025"
  },
  {
+  "slug": "khabib-nurmagomedov",
+  "ar": "حبيب نورمحمدوف",
+  "en": "Khabib Nurmagomedov",
+  "fed": "UFC",
+  "owner": "Airotcivss",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Khabib_nurmagomedov_interview_2022_ufc_hall_of_fame.jpg",
+  "year": "2022"
+ },
+ {
   "slug": "merab-dvalishvili",
   "ar": "ميراب دفاليشفيلي",
   "en": "Merab Dvalishvili",
@@ -638,6 +1538,46 @@
   "license": "Public domain",
   "source": "https://commons.wikimedia.org/wiki/File:Merab_Dvalishvili_at_UFC_316_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "max-holloway",
+  "ar": "ماكس هولواي",
+  "en": "Max Holloway",
+  "fed": "UFC",
+  "owner": "Cpl. Samantha Sanchez",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Blue_Angels%27_VIP_Rider_Max_Holloway_(1).jpg",
+  "year": "2022"
+ },
+ {
+  "slug": "charles-oliveira",
+  "ar": "تشارلز أوليفيرا",
+  "en": "Charles Oliveira",
+  "fed": "UFC",
+  "owner": "Jose Carlos Silva e Silva",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Charles_Oliveira_do_Bronxs_Champs.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "dricus-du-plessis",
+  "ar": "دريكوس دو بليسيس",
+  "en": "Dricus du Plessis",
+  "fed": "UFC",
+  "owner": "Philippe3017",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:IMG-Dricus-Duplessis.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "belal-muhammad",
+  "ar": "بلال محمد",
+  "en": "Belal Muhammad",
+  "fed": "UFC",
+  "owner": "Inaquout",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Belal_Muhammad_UFC.jpg",
+  "year": "2023"
  },
  {
   "slug": "justin-gaethje",
@@ -650,14 +1590,164 @@
   "year": "2026"
  },
  {
+  "slug": "israel-adesanya",
+  "ar": "إسرائيل أديسانيا",
+  "en": "Israel Adesanya",
+  "fed": "UFC",
+  "owner": "MMMAnytt",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Israel_Adesanya_at_UFC_230.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "alexander-volkanovski",
+  "ar": "ألكسندر فولكانوفسكي",
+  "en": "Alexander Volkanovski",
+  "fed": "UFC",
+  "owner": "MMAnytt",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Alexander_Volkanovski_at_UFC_232.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "ciryl-gane",
+  "ar": "سيريل غان",
+  "en": "Ciryl Gane",
+  "fed": "UFC",
+  "owner": "MHSC TV - Montpellier Hérault Sport Club",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ciryl_Gane_en_visite_au_centre_d%27entra%C3%AEnement_du_MHSC.jpg",
+  "year": "2022"
+ },
+ {
+  "slug": "arman-tsarukyan",
+  "ar": "أرمان تساروكيان",
+  "en": "Arman Tsarukyan",
+  "fed": "UFC",
+  "owner": "inFocus media",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Arman_Tsarukyan_2019.jpg",
+  "year": "2019"
+ },
+ {
+  "slug": "colby-covington",
+  "ar": "كولبي كوفينغتون",
+  "en": "Colby Covington",
+  "fed": "UFC",
+  "owner": "Gage Skidmore from Surprise, AZ, United States of America",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Colby_Covington_(53064466757).jpg",
+  "year": "2023"
+ },
+ {
   "slug": "kayla-harrison",
   "ar": "كايلا هاريسون",
   "en": "Kayla Harrison",
   "fed": "UFC",
-  "owner": "The White House",
-  "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_congratulates_Kayla_Harrison_after_her_victory_during_UFC_316_(54577590406)_(cropped).jpg",
-  "year": "2025"
+  "owner": "Fernando Frazao/Agência Brasil",
+  "license": "CC BY 3.0 br",
+  "source": "https://commons.wikimedia.org/wiki/File:Kayla_Harrison_-_Rio_2016.jpg",
+  "year": "2016"
+ },
+ {
+  "slug": "kamaru-usman",
+  "ar": "كامارو عثمان",
+  "en": "Kamaru Usman",
+  "fed": "UFC",
+  "owner": "MMAnytt",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:KamaruUsmanPress2018.png",
+  "year": "2018"
+ },
+ {
+  "slug": "leon-edwards",
+  "ar": "ليون إدواردز",
+  "en": "Leon Edwards",
+  "fed": "UFC",
+  "owner": "James English",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Leon_Edwards_2021.png",
+  "year": "2021"
+ },
+ {
+  "slug": "paddy-pimblett",
+  "ar": "بادي بيمبليت",
+  "en": "Paddy Pimblett",
+  "fed": "UFC",
+  "owner": "James English",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:UFC_Star_Paddy_The_Baddy_Pimblett_tells_his_story.jpg",
+  "year": "2021"
+ },
+ {
+  "slug": "dustin-poirier",
+  "ar": "داستن بوارييه",
+  "en": "Dustin Poirier",
+  "fed": "UFC",
+  "owner": "Poatanfan24",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dustin_poirier_2024.jpg",
+  "year": "2024"
+ },
+ {
+  "slug": "michael-chandler",
+  "ar": "مايكل تشاندلر",
+  "en": "Michael Chandler",
+  "fed": "UFC",
+  "owner": "Gage Skidmore",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:MichaelChandler0523.jpg",
+  "year": "2023"
+ },
+ {
+  "slug": "magomed-ankalaev",
+  "ar": "ماغوميد أنكالاييف",
+  "en": "Magomed Ankalaev",
+  "fed": "UFC",
+  "owner": "MMAnytt",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Magomed_Ankalaev_at_UFC_Fight_Night_136_in_Moscow,_Russia.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "valentina-shevchenko",
+  "ar": "فالنتينا شيفتشينكو",
+  "en": "Valentina Shevchenko",
+  "fed": "UFC",
+  "owner": "MMAnytt.se",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Valentina_Shevchenko.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "bo-nickal",
+  "ar": "بو نيكال",
+  "en": "Bo Nickal",
+  "fed": "UFC",
+  "owner": "Chamatkar Sandhu",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bo_Nickal_2024.png",
+  "year": "2024"
+ },
+ {
+  "slug": "umar-nurmagomedov",
+  "ar": "عمر نورمحمدوف",
+  "en": "Umar Nurmagomedov",
+  "fed": "UFC",
+  "owner": "Новости ННТ",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:UmarNurmagomedov.png",
+  "year": "2022"
+ },
+ {
+  "slug": "jiri-prochazka",
+  "ar": "يجي بروهازكا",
+  "en": "Jiří Procházka",
+  "fed": "UFC",
+  "owner": "Show Jana Krause",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:JiriProchazka2022.png",
+  "year": "2022"
  },
  {
   "slug": "alexandre-pantoja",
@@ -666,7 +1756,57 @@
   "fed": "UFC",
   "owner": "Sexto Round",
   "license": "CC BY 3.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Pantoja_2025.jpg",
-  "year": "2025"
+  "source": "https://commons.wikimedia.org/wiki/File:Alexandre_Pantoja.png",
+  "year": "2023"
+ },
+ {
+  "slug": "brandon-moreno",
+  "ar": "براندون مورينو",
+  "en": "Brandon Moreno",
+  "fed": "UFC",
+  "owner": "EKapp42",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brandon_Moreno_with_the_UFC_Flyweight_Championship_belt_at_UFC_290.png",
+  "year": "2023"
+ },
+ {
+  "slug": "petr-yan",
+  "ar": "بيتر يان",
+  "en": "Petr Yan",
+  "fed": "UFC",
+  "owner": "MMAnytt",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:PetrYan.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "aljamain-sterling",
+  "ar": "ألجامين ستيرلينغ",
+  "en": "Aljamain Sterling",
+  "fed": "UFC",
+  "owner": "MMAnytt",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Alijamain_Sterling_at_UFC_228.jpg",
+  "year": "2018"
+ },
+ {
+  "slug": "rose-namajunas",
+  "ar": "روز ناماجوناس",
+  "en": "Rose Namajunas",
+  "fed": "UFC",
+  "owner": "Andy Grahn",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rose_Namajunas.jpg",
+  "year": "2012"
+ },
+ {
+  "slug": "julianna-pena",
+  "ar": "جوليانا بينيا",
+  "en": "Julianna Peña",
+  "fed": "UFC",
+  "owner": "MMAnytt",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ceremonial_weigh_ins_-_Amanda_Nunes_vs_Julianna_Pe%C3%B1a_UFC_269_-_YouTube_-_0_23_(cropped).jpg",
+  "year": "2021"
  }
 ]
