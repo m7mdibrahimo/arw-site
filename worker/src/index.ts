@@ -3053,8 +3053,8 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // One view from a real browser on the site (assets/v.js) — the panel's statistics, people only (INCIDENTS #457)
       if (path === "/v") return recordView(request, env);
-      // Visitors' comments: a page's comments, a new one, a visitor's picture (worker/src/comments.ts)
-      if (path === "/comments" || path.startsWith("/comments/pic/")) return handleComments(request, env as any, url);
+      // Visitors' comments: a page's comments, a new one or a reply, a visitor's picture, their inbox and push (worker/src/comments.ts)
+      if (path === "/comments" || path.startsWith("/comments/")) return handleComments(request, env as any, url);
       if (path === "/api/studio/comments" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف التعليقات." }, 403);
         return json(await studioComments(env as any));

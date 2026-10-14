@@ -3,6 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
+import { pushOnce, notifyOwner, ownerOf, vapidKeys } from '../worker/src/comment-push';
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications, commentPath, cleanText, HAS_LINK, ensureTable, isReservedName } from '../worker/src/comments';
 
 /** D1's interface over node:sqlite: prepare().bind().all()/first()/run(), and batch() */
@@ -17,7 +18,7 @@ function d1() {
   });
   return { prepare: (sql: string) => stmt(sql), batch: async (list: any[]) => Promise.all(list.map((s) => (/^\s*(select)/i.test(s.sql) ? s.all() : s.run()))), raw: db };
 }
-const kv = () => { const m = new Map<string, string>(); return { get: async (k: string) => m.get(k) ?? null, put: async (k: string, v: string) => { m.set(k, v); } }; };
+const kv = () => { const m = new Map<string, string>(); return { get: async (k: string) => m.get(k) ?? null, put: async (k: string, v: string) => { m.set(k, v); }, delete: async (k: string) => { m.delete(k); } }; };
 const r2 = () => { const m = new Map<string, Uint8Array>(); return { m, put: async (k: string, v: Uint8Array) => { m.set(k, v); }, get: async (k: string) => (m.has(k) ? { body: m.get(k), httpMetadata: { contentType: 'image/webp' } } : null), delete: async (k: string) => { m.delete(k); } }; };
 const PERSON = { 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Safari/604.1', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json' };
 const post = (env: any, body: any, headers: Record<string, string> = PERSON, now = Date.now()) =>
@@ -158,4 +159,67 @@ test('the panel sees who commented from where (address and country); the page ne
   const page = (await get(env, STORY)).items[0];
   assert.equal(page.ip, undefined);
   assert.equal(page.country, undefined);
+});
+
+const inbox = (env: any, k: string, since = 0) => handleComments(new Request('https://w.example/comments/inbox', { method: 'POST', body: JSON.stringify({ k, since }), headers: { 'Content-Type': 'application/json' } }), env, new URL('https://w.example/comments/inbox')).then((r) => r.json() as any);
+const KEY_A = 'a'.repeat(32), KEY_B = 'b'.repeat(32);
+
+test('visitors answer each other: under the same comment, «@» to a reply, and the one answered finds it in their inbox', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const top = await post(env, { p: STORY, name: 'سارة', text: 'رأيي إن رولينز أفضل', k: KEY_A });
+  const ans = await post(env, { p: STORY, name: 'كريم', text: 'لا طبعًا', parent: top.body.id, k: KEY_B }, { ...PERSON, 'CF-Connecting-IP': '5.6.7.8' });
+  assert.equal(ans.status, 200);
+  assert.equal(ans.body.parent, top.body.id);
+  // an answer to the answer: still under the comment on top, answering Karim
+  const again = await post(env, { p: STORY, name: 'سارة', text: 'ليه؟', parent: ans.body.id, k: KEY_A });
+  assert.equal(again.body.parent, top.body.id);
+  assert.equal(again.body.reply_to, ans.body.id);
+  const items = (await get(env, STORY)).items;
+  assert.equal(items.find((x: any) => x.id === again.body.id).reply_to, ans.body.id);
+  // Sara's inbox: Karim's answer (not her own); Karim's: Sara's answer to him
+  const a = await inbox(env, KEY_A);
+  assert.deepEqual(a.items.map((x: any) => x.name), ['كريم']);
+  assert.match(a.items[0].url, new RegExp(`#c-${ans.body.id}$`));
+  assert.deepEqual((await inbox(env, KEY_B)).items.map((x: any) => x.name), ['سارة']);
+  // since: nothing new
+  assert.equal((await inbox(env, KEY_A, Date.now() + 1000)).items.length, 0);
+  // no inbox without a proper key, no answer to another page's comment
+  assert.equal((await inbox(env, 'short')).items.length, 0);
+  assert.equal((await post(env, { p: '/news/خبر-آخر/', name: 'كريم', text: 'رد تايه', parent: top.body.id, k: KEY_B }, { ...PERSON, 'CF-Connecting-IP': '5.6.7.9' })).status, 404);
+});
+
+test('the site\'s answer reaches the visitor\'s inbox as «عرب راسلنج»', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const c = await post(env, { p: STORY, name: 'سارة', text: 'سؤال؟', k: KEY_A });
+  await studioReplyComment(env, c.body.id, 'أهلًا يا سارة');
+  const a = await inbox(env, KEY_A);
+  assert.equal(a.items[0].name, 'عرب راسلنج');
+  assert.equal(a.items[0].official, true);
+});
+
+test('push: the site\'s key is made once, a browser\'s address is kept only from a push service, and an answer wakes it', async () => {
+  const env: any = { ANALYTICS: d1(), PUSH_KV: kv(), MEDIA: r2() };
+  const k1 = await vapidKeys(env.PUSH_KV), k2 = await vapidKeys(env.PUSH_KV);
+  assert.equal(k1.pub, k2.pub);
+  assert.equal(Buffer.from(k1.pub.replace(/-/g, '+').replace(/_/g, '/'), 'base64').length, 65);
+  const sub = (endpoint: string) => handleComments(new Request('https://w.example/comments/push', { method: 'POST', body: JSON.stringify({ k: KEY_A, endpoint }), headers: { 'Content-Type': 'application/json' } }), env, new URL('https://w.example/comments/push'));
+  assert.equal((await sub('https://evil.example/x')).status, 400);
+  assert.equal((await sub('https://fcm.googleapis.com/fcm/send/abc')).status, 200);
+  // the push itself: an empty POST signed with the site's key (ES256 JWT for the push service's origin)
+  const calls: any[] = [];
+  const fake: any = async (url: string, init: any) => { calls.push({ url, init }); return new Response(null, { status: 201 }); };
+  assert.equal(await notifyOwner(env.PUSH_KV, await ownerOf(KEY_A), fake), 1);
+  assert.equal(calls[0].url, 'https://fcm.googleapis.com/fcm/send/abc');
+  const auth = calls[0].init.headers.Authorization as string;
+  const [, jwt, pub] = auth.match(/^vapid t=([^,]+), k=(.+)$/)!;
+  assert.equal(pub, k1.pub);
+  const claims = JSON.parse(Buffer.from(jwt.split('.')[1], 'base64url').toString());
+  assert.equal(claims.aud, 'https://fcm.googleapis.com');
+  const key = await crypto.subtle.importKey('raw', Buffer.from(pub, 'base64url'), { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']);
+  const [h, p, sig] = jwt.split('.');
+  assert.ok(await crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, key, Buffer.from(sig, 'base64url'), new TextEncoder().encode(`${h}.${p}`)));
+  // a browser that's gone (410): forgotten
+  const gone: any = async () => new Response(null, { status: 410 });
+  assert.equal(await notifyOwner(env.PUSH_KV, await ownerOf(KEY_A), gone), 0);
+  assert.equal(await notifyOwner(env.PUSH_KV, await ownerOf(KEY_A), fake), 0);
 });

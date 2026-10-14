@@ -857,3 +857,16 @@ html body header.header-hidden {
 .drop-shows:hover, .drop-shows.active{ background:rgba(14,149,148,.12) !important; color:var(--teal, #0e9594) !important; border-color:rgba(14,149,148,.25) !important; }
 .drop-recaps .drop-dot{ background:var(--violet, #7c6ee8); }
 .drop-recaps:hover, .drop-recaps.active{ background:rgba(124,110,232,.12) !important; color:var(--violet, #7c6ee8) !important; border-color:rgba(124,110,232,.25) !important; }
+
+/* An answer to the visitor's comment, on any page (assets/features.js): a card at the bottom, above the phones' menu */
+.arw-reply-toast{ position:fixed; z-index:9995; bottom:20px; right:20px; width:min(380px, calc(100vw - 32px)); display:flex; align-items:flex-start; gap:6px; padding:12px; border-radius:16px; background:var(--card, #fff); color:var(--ink, #141414); border:1px solid var(--line, #ece6d8); box-shadow:0 18px 40px -14px rgba(0,0,0,.35); opacity:0; transform:translateY(14px); transition:opacity .3s ease, transform .3s cubic-bezier(.16,1,.3,1); }
+.arw-reply-toast.is-in{ opacity:1; transform:none; }
+body.arw-has-bottom-nav .arw-reply-toast{ bottom:calc(76px + env(safe-area-inset-bottom, 0px)); right:16px; }
+.arw-rt-link{ flex:1; min-width:0; display:flex; align-items:center; gap:10px; color:inherit; text-decoration:none; }
+.arw-rt-av{ flex:0 0 40px; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; overflow:hidden; background:var(--teal, #0e9594); color:#fff; font-weight:900; font-size:16px; }
+.arw-rt-av img{ width:100%; height:100%; object-fit:cover; }
+.arw-rt-body{ min-width:0; display:flex; flex-direction:column; gap:2px; }
+.arw-rt-body b{ font-size:14px; font-weight:900; }
+.arw-rt-text{ font-size:13px; color:var(--muted, #6b6b6b); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.arw-rt-x{ flex:0 0 auto; border:0; background:none; color:var(--muted, #6b6b6b); padding:4px; border-radius:8px; cursor:pointer; }
+.arw-rt-x:hover{ color:var(--ink, #141414); }

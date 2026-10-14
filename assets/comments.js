@@ -4,6 +4,10 @@
 // A comment can carry a picture: the visitor's own (cut to a small square here, before it is sent) or a wrestler's
 // from /avatars/ (scripts/avatars/). Every sentence is one whole string, «{n}» where a number goes, so the
 // English copy of this file (lib/i18n/mirror.cjs) says it in English word order.
+// Visitors answer each other too («رد» under every comment), and whoever is answered is told (owner 2026-10-14): this
+// browser's secret key (made here, kept in localStorage) goes with each comment, so the worker knows whose it is
+// without an account; assets/features.js shows the answers on any page, and sw.js as a notification if they allowed it
+// (worker/src/comment-push.ts).
 (function () {
   'use strict';
   var box = document.getElementById('comments');
@@ -27,12 +31,26 @@
   var NOTE = note.textContent;
   var NAME = 'arw-cm-name';
   var PIC = 'arw-cm-pic';
+  var KEY = 'arw-cm-key', SEEN = 'arw-cm-seen', PUSHED = 'arw-cm-push';
 
   var store = {
     get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
   function fill(s, n) { return s.replace('{n}', n); }
+  // this browser's secret key: the answers to its comments are asked for with it (only its hash is kept with them)
+  function myKey() {
+    var k = store.get(KEY, '');
+    if (!/^[A-Za-z0-9_-]{20,64}$/.test(k)) {
+      var a = new Uint8Array(24);
+      (window.crypto || window.msCrypto).getRandomValues(a);
+      k = btoa(String.fromCharCode.apply(null, a)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      store.set(KEY, k);
+    }
+    // answers are counted from the first comment on
+    if (!store.get(SEEN, 0)) store.set(SEEN, Date.now());
+    return k;
+  }
 
   // ── words ────────────────────────────────────────────────────────────────
   function countText(n) {
@@ -77,6 +95,7 @@
   function item(c) {
     var el = document.createElement('article');
     el.className = 'arw-cm' + (c.official ? ' is-official' : '') + (c.parent ? ' is-reply' : '');
+    el.id = 'c-' + c.id;
     var av = document.createElement('span');
     av.className = 'arw-cm-av';
     av.setAttribute('aria-hidden', 'true');
@@ -111,10 +130,30 @@
     meta.appendChild(when);
     var text = document.createElement('p');
     text.className = 'arw-cm-text-out';
-    text.textContent = c.text;
     text.dir = 'auto';
+    // an answer to a reply (not to the comment on top): «@name» first, as YouTube writes it
+    var to = c.reply_to && c.reply_to !== c.parent ? byId(c.reply_to) : null;
+    if (to) {
+      var at = document.createElement('span');
+      at.className = 'arw-cm-to';
+      at.textContent = '@' + (to.official ? OFFICIAL : to.name);
+      text.appendChild(at);
+      text.appendChild(document.createTextNode(' '));
+    }
+    text.appendChild(document.createTextNode(c.text));
     body.appendChild(meta);
     body.appendChild(text);
+    var acts = document.createElement('div');
+    acts.className = 'arw-cm-acts';
+    if (c.id) {
+      var rb = document.createElement('button');
+      rb.type = 'button';
+      rb.className = 'arw-cm-reply-btn';
+      rb.textContent = 'رد';
+      rb.onclick = function () { openReply(c, el); };
+      acts.appendChild(rb);
+    }
+    body.appendChild(acts);
     if (c.hearted && !c.official) {
       var liked = document.createElement('span');
       liked.className = 'arw-cm-liked';
@@ -122,15 +161,17 @@
       liked.setAttribute('role', 'img');
       liked.setAttribute('aria-label', 'أعجب عرب راسلنج بهذا التعليق');
       liked.innerHTML = '<img src="' + LOGO + '" alt="" width="22" height="22">' + HEART;
-      body.appendChild(liked);
+      acts.appendChild(liked);
     }
     el.appendChild(av);
     el.appendChild(body);
     return el;
   }
 
-  var shown = [];
+  var shown = [], expanded = false;
+  function byId(id) { for (var i = 0; i < shown.length; i++) if (shown[i].id === id) return shown[i]; return null; }
   function draw(all) {
+    expanded = !!all;
     list.textContent = '';
     // a comment, then the site's replies to it (oldest first), the newest comments on top
     var tops = shown.filter(function (c) { return !c.parent; });
@@ -166,14 +207,25 @@
     loaded = true;
     fetch(API + '?p=' + encodeURIComponent(page), { credentials: 'omit' })
       .then(function (r) { return r.ok ? r.json() : { items: [] }; })
-      .then(function (d) { shown = (d && d.items) || []; draw(false); })
+      .then(function (d) { shown = (d && d.items) || []; draw(false); jump(); })
       .catch(function () { draw(false); });
+  }
+  // opened from a notification («…#c-123»): that comment, shown and lit up
+  function jump() {
+    var m = location.hash.match(/^#c-(\d+)$/);
+    if (!m) return;
+    var el = document.getElementById('c-' + m[1]);
+    if (!el && !expanded) { draw(true); el = document.getElementById('c-' + m[1]); }
+    if (!el) return;
+    el.scrollIntoView({ block: 'center' });
+    el.classList.add('is-flash');
+    setTimeout(function () { el.classList.remove('is-flash'); }, 2600);
   }
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); } }, { rootMargin: '600px 0px' });
     io.observe(box);
   } else load();
-  if (location.hash === '#comments') load();
+  if (location.hash === '#comments' || /^#c-\d+$/.test(location.hash)) load();
 
   // ── the picture ──────────────────────────────────────────────────────────
   var pick = box.querySelector('.arw-cm-pick');
@@ -302,7 +354,7 @@
     fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: form.website.value, t: Date.now() - shownAt })
+      body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: form.website.value, t: Date.now() - shownAt, k: myKey() })
     })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
       .then(function (d) {
@@ -314,11 +366,119 @@
         count();
         say('تم نشر تعليقك، شكرًا لك!', 'ok');
         loaded = true;
-        draw(false);
+        draw(expanded);
+        offerPush(form);
       })
       // the worker's own words (in Arabic) say why; on the English pages, a general line
       .catch(function (err) { say(err && err.message && !EN ? err.message : 'تعذّر نشر التعليق، حاول مرة أخرى.', 'bad'); })
       .then(function () { send.disabled = false; });
   });
   [nameIn, textIn].forEach(function (el) { el.addEventListener('input', function () { if (note.classList.contains('is-bad') || note.classList.contains('is-ok')) say(NOTE); }); });
+
+  // ── an answer to a comment ───────────────────────────────────────────────
+  // a small form right under the comment: the name the visitor already wrote (or a field for it), the answer, «رد»
+  var replyForm = null;
+  function openReply(c, el) {
+    if (replyForm) { var was = replyForm.target; replyForm.el.remove(); replyForm = null; if (was === c.id) return; }
+    var who = c.official ? OFFICIAL : c.name;
+    var saved = store.get(NAME, '') || '';
+    var f = document.createElement('form');
+    f.className = 'arw-cm-rform';
+    f.noValidate = true;
+    f.innerHTML = '<input class="arw-cm-rname" maxlength="40" autocomplete="nickname"><textarea class="arw-cm-rtext" rows="2" maxlength="1000"></textarea>' +
+      '<div class="arw-cm-rbar"><span class="arw-cm-rnote" role="status" aria-live="polite"></span><button type="button" class="arw-cm-rcancel"></button><button type="submit" class="arw-cm-rsend"></button></div>';
+    var rn = f.querySelector('.arw-cm-rname'), rt = f.querySelector('.arw-cm-rtext'), rnote = f.querySelector('.arw-cm-rnote'), rs = f.querySelector('.arw-cm-rsend');
+    rn.placeholder = 'اسمك';
+    rn.value = saved;
+    rn.hidden = !!saved;
+    rt.placeholder = fill('ردك على {n}…', who);
+    f.querySelector('.arw-cm-rcancel').textContent = 'إلغاء';
+    rs.textContent = 'رد';
+    if (saved) rnote.textContent = fill('باسم {n}', saved);
+    f.querySelector('.arw-cm-rcancel').onclick = function () { f.remove(); replyForm = null; };
+    var opened = Date.now();
+    f.onsubmit = function (e) {
+      e.preventDefault();
+      var name = rn.value.replace(/\s+/g, ' ').trim();
+      var text = rt.value.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+      if (name.length < 2) { rn.hidden = false; rn.focus(); rnote.textContent = 'اكتب اسمك أولًا.'; return; }
+      if (text.length < 2) { rt.focus(); rnote.textContent = 'اكتب ردك أولًا.'; return; }
+      rs.disabled = true;
+      rnote.textContent = 'جارٍ النشر…';
+      var h1 = document.querySelector('h1');
+      fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: '', t: Math.max(Date.now() - opened, Date.now() - shownAt), k: myKey(), parent: c.id })
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
+        .then(function (d) {
+          store.set(NAME, name);
+          if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
+          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id });
+          replyForm = null;
+          draw(expanded);
+          var mine = document.getElementById('c-' + d.id);
+          if (mine) { mine.classList.add('is-flash'); offerPush(mine); }
+        })
+        .catch(function (err) { rnote.textContent = err && err.message && !EN ? err.message : 'تعذّر نشر الرد، حاول مرة أخرى.'; rs.disabled = false; });
+    };
+    el.parentNode.insertBefore(f, el.nextSibling);
+    replyForm = { el: f, target: c.id };
+    (saved ? rt : rn).focus();
+  }
+
+  // ── told when someone answers ────────────────────────────────────────────
+  // after a comment or an answer: a line offering a notification on this phone or computer when someone answers.
+  // Only where the browser can (not iPhones' Safari outside an installed app), never asked twice.
+  function canPush() {
+    try { return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window && Notification.permission !== 'denied' && !store.get(PUSHED, false); }
+    catch (e) { return false; }
+  }
+  function b64key(s) {
+    var b = atob(s.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((s.length + 3) % 4));
+    var a = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i);
+    return a;
+  }
+  function offerPush(after) {
+    if (!canPush() || box.querySelector('.arw-cm-alert')) return;
+    var card = document.createElement('div');
+    card.className = 'arw-cm-alert';
+    card.innerHTML = '<span class="arw-cm-alert-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>' +
+      '<span class="arw-cm-alert-tx"></span><button type="button" class="arw-cm-alert-on"></button><button type="button" class="arw-cm-alert-no"></button>';
+    card.querySelector('.arw-cm-alert-tx').textContent = 'يوصلك إشعار لما حد يرد عليك؟';
+    var on = card.querySelector('.arw-cm-alert-on'), no = card.querySelector('.arw-cm-alert-no');
+    on.textContent = 'فعّل الإشعارات';
+    no.textContent = 'مش دلوقتي';
+    no.onclick = function () { store.set(PUSHED, 'no'); card.remove(); };
+    on.onclick = function () {
+      on.disabled = true;
+      var k = myKey();
+      navigator.serviceWorker.register('/sw.js')
+        .then(function () { return Notification.requestPermission(); })
+        .then(function (p) { if (p !== 'granted') throw new Error('denied'); return navigator.serviceWorker.ready; })
+        .then(function (reg) {
+          // the key goes to the service worker too: it asks for the answers when a push wakes it
+          if (reg.active) reg.active.postMessage({ type: 'ARW_CM_KEY', k: k, since: store.get(SEEN, Date.now()), en: EN });
+          return fetch(API + '/push-key').then(function (r) { return r.json(); }).then(function (d) {
+            return reg.pushManager.getSubscription().then(function (sub) { return sub || reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64key(d.key) }); });
+          });
+        })
+        .then(function (sub) { return fetch(API + '/push', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ k: k, endpoint: sub.endpoint }) }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error('');
+          store.set(PUSHED, true);
+          card.querySelector('.arw-cm-alert-tx').textContent = 'تمام، هيوصلك إشعار لما حد يرد عليك.';
+          on.remove(); no.remove();
+          setTimeout(function () { card.remove(); }, 4000);
+        })
+        .catch(function (e) {
+          if (e && e.message === 'denied') { store.set(PUSHED, 'no'); card.remove(); return; }
+          on.disabled = false;
+          card.querySelector('.arw-cm-alert-tx').textContent = 'تعذّر تفعيل الإشعارات، جرّب مرة أخرى.';
+        });
+    };
+    after.parentNode.insertBefore(card, after.nextSibling);
+  }
 })();

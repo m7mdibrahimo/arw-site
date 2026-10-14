@@ -9,6 +9,11 @@
 //   GET  /api/studio/comments        the panel: every comment, with the day's, week's and total counts
 //   POST /api/studio/comments/delete {ids}           (a comment's replies go with it)
 //   POST /api/studio/comments/reply  {id, text}      the site's own answer, as «عرب راسلنج» with the blue badge
+//   POST /comments/inbox             {k, since}      the answers to this visitor's comments (worker/src/comment-push.ts)
+//   GET  /comments/push-key, POST /comments/push      a push to the visitor's phone when someone answers them
+//
+// Visitors answer each other too (owner 2026-10-14): a reply has parent = the comment it's under (the thread) and
+// reply_to = the comment or reply it answers; whoever wrote that one is told (on the site, and by a push if they asked).
 //
 // The site's own account (owner 2026-10-14: «عضوية ارد بيها علي المتابعيين بصورة الموقع وفي علامة توثيق»): a reply
 // written in the panel is kept with official = 1 and parent = the comment it answers; the page shows it under that
@@ -19,6 +24,7 @@
 // under 2 seconds (or with the hidden field filled), no links, no 5th comment in 10 minutes or 31st in a day from the
 // same visitor, no same comment twice on a page, a picture only from the site's list or a small square image.
 import { BOT_UA, cairo, fromSite, pagePath } from "./analytics";
+import { notifyOwner, ownerOf, savePush, validEndpoint, vapidKeys } from "./comment-push";
 
 export interface CommentsEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket }
 
@@ -38,9 +44,12 @@ export function ensureTable(db: D1Database): Promise<unknown> {
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
   ]).then(async () => {
     // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
-    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''"]) {
+    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''"]) {
       await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
     }
+    // the answers to a visitor's comments, found fast
+    await db.prepare("CREATE INDEX IF NOT EXISTS comments_owner ON comments (owner)").run().catch(() => null);
+    await db.prepare("CREATE INDEX IF NOT EXISTS comments_reply ON comments (reply_to, at)").run().catch(() => null);
   }).catch((e) => { ready.delete(db); throw e; }));
   return p;
 }
@@ -80,8 +89,8 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted });
+type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string };
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0 });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -92,15 +101,42 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     if (!obj) return new Response("not found", { status: 404, headers: CORS });
     return new Response(obj.body, { headers: { "Content-Type": obj.httpMetadata?.contentType || "image/webp", "Cache-Control": "public, max-age=31536000, immutable", ...CORS } });
   }
-  if (url.pathname !== "/comments") return reply({ ok: false, error: "not found" }, 404);
+  // the push: the site's public key, and a browser's address for a visitor
+  if (url.pathname === "/comments/push-key" && request.method === "GET") {
+    return reply({ key: (await vapidKeys(env.PUSH_KV)).pub }, 200, { "Cache-Control": "public, max-age=3600" });
+  }
+  if (url.pathname === "/comments/push" && request.method === "POST") {
+    const b: any = await request.json().catch(() => ({}));
+    const owner = await ownerOf(b.k), endpoint = validEndpoint(b.endpoint);
+    if (!owner || !endpoint) return reply({ ok: false }, 400);
+    await savePush(env.PUSH_KV, owner, endpoint);
+    return reply({ ok: true });
+  }
+  if (!["/comments", "/comments/inbox"].includes(url.pathname)) return reply({ ok: false, error: "not found" }, 404);
   const db = env.ANALYTICS;
   if (!db) return reply({ ok: false, error: "التعليقات غير متاحة الآن." }, 503);
   await ensureTable(db);
 
+  // the answers to a visitor's comments since they last looked (theirs to them aside)
+  if (url.pathname === "/comments/inbox") {
+    if (request.method !== "POST") return reply({ ok: false, error: "not allowed" }, 405);
+    const b: any = await request.json().catch(() => ({}));
+    const owner = await ownerOf(b.k);
+    if (!owner) return reply({ items: [] });
+    const since = Math.max(Number(b.since) || 0, now - 30 * 86_400_000);
+    const rows = await db.prepare(`SELECT r.id, r.name, r.text, r.pic, r.at, r.path, r.title, r.official, r.parent, c.text AS mine
+      FROM comments r JOIN comments c ON r.reply_to = c.id
+      WHERE c.owner = ?1 AND c.deleted = 0 AND r.deleted = 0 AND r.owner != ?1 AND r.at > ?2 ORDER BY r.at DESC LIMIT 20`).bind(owner, since).all<any>();
+    return reply({ items: (rows.results || []).map((r: any) => ({
+      id: r.id, name: r.official ? OFFICIAL_NAME : r.name, official: !!r.official, pic: r.official ? "" : r.pic, at: r.at,
+      text: String(r.text).slice(0, 160), mine: String(r.mine || "").slice(0, 80), title: r.title, url: `${r.path}#c-${r.id}`,
+    })) }, 200, { "Cache-Control": "no-store" });
+  }
+
   if (request.method === "GET") {
     const path = commentPath(url.searchParams.get("p"));
     if (!path) return reply({ items: [] });
-    const rows = await db.prepare("SELECT id, name, text, pic, at, parent, official, hearted FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 400").bind(path).all<Row>();
+    const rows = await db.prepare("SELECT id, name, text, pic, at, parent, official, hearted, reply_to FROM comments WHERE path = ?1 AND deleted = 0 ORDER BY at DESC LIMIT 400").bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }
   if (request.method !== "POST") return reply({ ok: false, error: "not allowed" }, 405);
@@ -123,12 +159,20 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   if (HAS_LINK.test(text) || HAS_LINK.test(name)) return reply({ ok: false, error: "الروابط غير مسموح بها في التعليقات." }, 400);
   if (isReservedName(name)) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
   const title = cleanText(b.title, 200);
+  // an answer to a comment or to a reply: on the same page, under the same comment (the thread), told to whoever wrote it
+  let target: Row | null = null;
+  if (b.parent) {
+    target = await db.prepare("SELECT id, path, parent, owner FROM comments WHERE id = ?1 AND deleted = 0").bind(Number(b.parent) || 0).first<Row>();
+    if (!target || target.path !== path) return reply({ ok: false, error: "التعليق ده اتحذف، مش هينفع ترد عليه." }, 404);
+  }
+  const parent = target ? (target.parent || target.id) : 0;
+  const owner = await ownerOf(b.k);
   const { day } = cairo(now);
   const who = await visitor(env, request, day);
   const [recent, today, same] = await db.batch([
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE vhash = ?1 AND at > ?2").bind(who, now - 10 * 60_000),
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE vhash = ?1 AND at > ?2").bind(who, now - 86_400_000),
-    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE path = ?1 AND text = ?2 AND deleted = 0").bind(path, text),
+    db.prepare("SELECT COUNT(*) AS n FROM comments WHERE path = ?1 AND text = ?2 AND parent = ?3 AND deleted = 0").bind(path, text, parent),
   ]) as any[];
   if ((recent.results?.[0]?.n || 0) >= 4) return reply({ ok: false, error: "أرسلت تعليقات كثيرة الآن، انتظر قليلًا ثم حاول مرة أخرى." }, 429);
   if ((today.results?.[0]?.n || 0) >= 30) return reply({ ok: false, error: "وصلت إلى الحد اليومي للتعليقات، شكرًا لك." }, 429);
@@ -145,8 +189,8 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   // the visitor's address, for the panel only (owner 2026-10-14: «عايز كمان يبان ip بتاع المتابع ال معلق في اللوحة»):
   // never in what the page gets (out())
   const ip = String(request.headers.get("CF-Connecting-IP") || "").slice(0, 45);
-  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10) RETURNING id")
-    .bind(path, title, name, text, wrestler, now, day, who, country, ip).first<{ id: number }>();
+  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, ip, parent, reply_to, owner) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13) RETURNING id")
+    .bind(path, title, name, text, wrestler, now, day, who, country, ip, parent, target ? target.id : 0, owner).first<{ id: number }>();
   const id = ins?.id || 0;
   let picOut = wrestler;
   if (bytes && id) {
@@ -156,7 +200,9 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
       await db.prepare("UPDATE comments SET pic = ?1 WHERE id = ?2").bind(picOut, id).run();
     } catch { picOut = ""; }
   }
-  return reply({ ok: true, id, status: "published", pic: picOut });
+  // whoever wrote what this answers is told (not someone answering themselves)
+  if (target?.owner && target.owner !== owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
+  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0 });
 }
 
 // ── the panel ──────────────────────────────────────────────────────────────
@@ -199,12 +245,14 @@ export async function studioReplyComment(env: CommentsEnv, id: unknown, rawText:
   await ensureTable(db);
   const text = cleanText(rawText, 1000, true);
   if (text.length < 1) return { success: false, error: "اكتب الرد الأول." };
-  const target = await db.prepare("SELECT id, path, title, parent FROM comments WHERE id = ?1 AND deleted = 0").bind(Number(id) || 0).first<Row>();
+  const target = await db.prepare("SELECT id, path, title, parent, owner FROM comments WHERE id = ?1 AND deleted = 0").bind(Number(id) || 0).first<Row>();
   if (!target) return { success: false, error: "التعليق ده اتحذف أو مش موجود." };
   const parent = target.parent || target.id;
   const { day } = cairo(now);
-  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, parent, official) VALUES (?1, ?2, ?3, ?4, 'official', ?5, ?6, 'official', '', ?7, 1) RETURNING id")
-    .bind(target.path, target.title, OFFICIAL_NAME, text, now, day, parent).first<{ id: number }>();
+  const ins = await db.prepare("INSERT INTO comments (path, title, name, text, pic, at, day, vhash, country, parent, official, reply_to) VALUES (?1, ?2, ?3, ?4, 'official', ?5, ?6, 'official', '', ?7, 1, ?8) RETURNING id")
+    .bind(target.path, target.title, OFFICIAL_NAME, text, now, day, parent, target.id).first<{ id: number }>();
+  // the visitor is told: «عرب راسلنج رد على تعليقك»
+  if (target.owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
   return { success: true, item: { id: ins?.id || 0, name: OFFICIAL_NAME, text, pic: "official", at: now, parent, official: true, path: target.path, title: target.title } };
 }
 

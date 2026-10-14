@@ -1196,6 +1196,33 @@ html.arw-dark .arw-cm-pending{ color:var(--gold); }
 .arw-cm-liked{ position:relative; display:inline-flex; margin-top:8px; width:22px; height:22px; cursor:default; }
 .arw-cm-liked img{ width:22px; height:22px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 1px var(--line); }
 .arw-cm-liked svg{ position:absolute; bottom:-4px; left:-5px; width:13px; height:13px; }
+/* answering a comment (owner 2026-10-14: visitors answer each other, as on YouTube): «رد» under it, a small form */
+.arw-cm-acts{ display:flex; align-items:center; gap:14px; margin-top:6px; }
+.arw-cm-acts:empty{ display:none; }
+.arw-cm-acts .arw-cm-liked{ margin-top:0; }
+.arw-cm-reply-btn{ border:0; background:none; padding:4px 2px; font-family:inherit; font-weight:800; font-size:13px; line-height:1; color:var(--muted); cursor:pointer; border-radius:6px; }
+.arw-cm-reply-btn:hover{ color:var(--teal); }
+.arw-cm-to{ color:var(--teal); font-weight:800; }
+.arw-cm-rform{ display:flex; flex-direction:column; gap:8px; margin:-4px 0 0; margin-inline-start:52px; padding:12px; border-radius:14px; background:var(--card); border:1px solid var(--teal); box-shadow:0 0 0 3px var(--teal-soft); }
+.arw-cm-rform input, .arw-cm-rform textarea{ width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--ink); font-family:inherit; font-weight:500; font-size:14.5px; line-height:1.7; padding:8px 12px; resize:vertical; }
+.arw-cm-rform input:focus, .arw-cm-rform textarea:focus{ outline:none; border-color:var(--teal); }
+.arw-cm-rbar{ display:flex; align-items:center; gap:8px; }
+.arw-cm-rnote{ flex:1; min-width:0; font-size:12.5px; color:var(--muted); }
+.arw-cm-rcancel, .arw-cm-rsend{ border:0; border-radius:999px; padding:8px 16px; font-family:inherit; font-weight:800; font-size:13.5px; line-height:1; cursor:pointer; }
+.arw-cm-rcancel{ background:transparent; color:var(--muted); }
+.arw-cm-rsend{ background:var(--teal); color:#fff; }
+.arw-cm-rsend:disabled{ opacity:.6; cursor:default; }
+/* the comment a notification opened, lit up for a moment */
+.arw-cm.is-flash{ animation:arw-cm-flash 2.4s ease-out; }
+@keyframes arw-cm-flash{ 0%,30%{ box-shadow:0 0 0 3px var(--teal); } 100%{ box-shadow:0 0 0 0 transparent; } }
+/* «يوصلك إشعار لما حد يرد عليك؟» */
+.arw-cm-alert{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px; padding:12px 14px; border-radius:14px; background:var(--teal-soft); color:var(--ink); font-size:14px; font-weight:700; }
+.arw-cm-alert-ic{ display:inline-flex; color:var(--teal); }
+.arw-cm-alert-tx{ flex:1; min-width:160px; }
+.arw-cm-alert-on, .arw-cm-alert-no{ border:0; border-radius:999px; padding:8px 14px; font-family:inherit; font-weight:800; font-size:13px; line-height:1; cursor:pointer; }
+.arw-cm-alert-on{ background:var(--teal); color:#fff; }
+.arw-cm-alert-no{ background:transparent; color:var(--muted); }
+@media (max-width:640px){ .arw-cm-rform{ margin-inline-start:24px; } }
 .arw-cm-empty{ margin:0; padding:22px 16px; border-radius:16px; border:1px dashed var(--line); text-align:center; font-size:14px; font-weight:600; color:var(--muted); }
 .arw-cm-more{ align-self:center; height:40px; padding:0 20px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--ink); font:700 13.5px 'Tajawal',sans-serif; cursor:pointer; transition:border-color .2s ease, color .2s ease; }
 .arw-cm-more:hover{ border-color:var(--teal); color:var(--teal); }

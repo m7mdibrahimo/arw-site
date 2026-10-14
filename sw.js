@@ -1,4 +1,4 @@
-// Service Worker for Arab Wrestling Notifications (Shows & Recaps ONLY)
+// Service Worker for Arab Wrestling Notifications (Shows & Recaps, and answers to a visitor's comments)
 
 self.addEventListener('install', function (event) {
   self.skipWaiting();
@@ -26,6 +26,51 @@ self.addEventListener('notificationclick', function (event) {
     })
   );
 });
+
+// ── answers to the visitor's comments (owner 2026-10-14: «يجي تنبيه للمتابع لما … حد يرد عليه») ──
+// The comments' worker wakes this with an empty push (worker/src/comment-push.ts); the visitor's key (given by
+// assets/comments.js when they allowed notifications) asks it what the answers are.
+var CM_API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/comments';
+function cmDB() {
+  return new Promise(function (resolve, reject) {
+    var req = indexedDB.open('arw_comments', 1);
+    req.onupgradeneeded = function (e) { e.target.result.createObjectStore('kv'); };
+    req.onsuccess = function (e) { resolve(e.target.result); };
+    req.onerror = reject;
+  });
+}
+function cmGet(k) {
+  return cmDB().then(function (db) {
+    return new Promise(function (resolve) { var r = db.transaction('kv', 'readonly').objectStore('kv').get(k); r.onsuccess = function () { resolve(r.result); }; r.onerror = function () { resolve(undefined); }; });
+  }).catch(function () { return undefined; });
+}
+function cmSet(k, v) {
+  return cmDB().then(function (db) {
+    return new Promise(function (resolve) { var tx = db.transaction('kv', 'readwrite'); tx.objectStore('kv').put(v, k); tx.oncomplete = resolve; tx.onerror = resolve; });
+  }).catch(function () {});
+}
+function commentReplies() {
+  return Promise.all([cmGet('k'), cmGet('since'), cmGet('en')]).then(function (v) {
+    var key = v[0], since = v[1] || 0, en = !!v[2];
+    if (!key) return false;
+    return fetch(CM_API + '/inbox', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ k: key, since: since }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var items = (d && d.items) || [];
+        if (!items.length) return false;
+        return cmSet('since', Math.max.apply(null, items.map(function (i) { return i.at; }))).then(function () {
+          return Promise.all(items.slice(0, 3).map(function (it) {
+            var who = it.official ? (en ? 'Arab Wrestling' : 'عرب راسلنج') : it.name;
+            return self.registration.showNotification(en ? who + ' replied to your comment' : who + ' رد على تعليقك', {
+              body: it.text, icon: it.official ? (en ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') : '/favicon.png', badge: '/favicon.png',
+              dir: en ? 'ltr' : 'rtl', lang: en ? 'en' : 'ar', tag: 'cm-' + it.id, data: { url: it.url }
+            });
+          })).then(function () { return true; });
+        });
+      })
+      .catch(function () { return false; });
+  });
+}
 
 // Helper for IndexedDB storage inside Service Worker
 function openDB() {
@@ -151,7 +196,13 @@ self.addEventListener('push', function(event) {
       console.warn('Error parsing push data, falling back to fetch:', e);
     }
   }
-  event.waitUntil(checkNewContentSW());
+  // an empty push: the comments' worker (someone answered this visitor); a push must always show something
+  event.waitUntil(cmGet('k').then(function (key) {
+    if (!key) return checkNewContentSW();
+    return commentReplies().then(function (shown) {
+      if (!shown) return self.registration.showNotification('عرب راسلنج', { body: 'في رد جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
+    });
+  }));
 });
 
 // Message handler from client
@@ -160,6 +211,9 @@ self.addEventListener('message', function(event) {
     if (Array.isArray(event.data.urls)) {
       event.data.urls.forEach(function(u) { saveSeenUrlToIDB(u); });
     }
+  } else if (event.data && event.data.type === 'ARW_CM_KEY' && /^[A-Za-z0-9_-]{20,64}$/.test(event.data.k || '')) {
+    // the visitor allowed notifications: their key, and the time from which answers are new
+    event.waitUntil(Promise.all([cmSet('k', event.data.k), cmGet('since').then(function (s) { return s ? 0 : cmSet('since', Number(event.data.since) || Date.now()); }), cmSet('en', !!event.data.en)]));
   } else if (event.data && event.data.type === 'CHECK_NEW_CONTENT') {
     event.waitUntil(checkNewContentSW());
   }

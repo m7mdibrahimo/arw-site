@@ -723,11 +723,54 @@
     sheet.addEventListener('touchend', function (e) { if (startY !== null && e.changedTouches[0].clientY - startY > 60) setMore(false); startY = null; });
   }
 
+  // Answers to the visitor's comments, on any page (owner 2026-10-14: «يجي تنبيه للمتابع لما … حد يرد عليه»): the key
+  // assets/comments.js made when they commented asks the comments' worker what came since they last looked; a card
+  // at the bottom says who answered, and opens the answer. At most one ask every 2 minutes.
+  function initCommentReplies() {
+    var key, since;
+    try { key = JSON.parse(localStorage.getItem('arw-cm-key') || '""'); since = Number(JSON.parse(localStorage.getItem('arw-cm-seen') || '0')) || 0; } catch (e) { return; }
+    if (!/^[A-Za-z0-9_-]{20,64}$/.test(key || '')) return;
+    try { if (Date.now() - Number(sessionStorage.getItem('arw-cm-asked') || 0) < 120000) return; sessionStorage.setItem('arw-cm-asked', String(Date.now())); } catch (e) {}
+    var EN = document.documentElement.lang === 'en';
+    fetch('https://arw-site-bot.m7mdibrahimpc.workers.dev/comments/inbox', { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'omit', body: JSON.stringify({ k: key, since: since }) })
+      .then(function (r) { return r.ok ? r.json() : { items: [] }; })
+      .then(function (d) {
+        var items = (d && d.items) || [];
+        if (!items.length || document.querySelector('.arw-reply-toast')) return;
+        var first = items[0];
+        var newest = Math.max.apply(null, items.map(function (i) { return i.at; }));
+        var seen = function () { try { localStorage.setItem('arw-cm-seen', JSON.stringify(newest)); } catch (e) {} };
+        var who = first.official ? (EN ? 'Arab Wrestling' : 'عرب راسلنج') : first.name;
+        var card = document.createElement('div');
+        card.className = 'arw-reply-toast';
+        card.setAttribute('role', 'status');
+        card.innerHTML = '<a class="arw-rt-link"><span class="arw-rt-av" aria-hidden="true"></span><span class="arw-rt-body"><b></b><span class="arw-rt-text"></span></span></a><button type="button" class="arw-rt-x"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+        var link = card.querySelector('.arw-rt-link');
+        link.href = first.url;
+        var av = card.querySelector('.arw-rt-av');
+        if (first.official) av.innerHTML = '<img src="' + (EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') + '" alt="">';
+        else av.textContent = (String(first.name).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
+        card.querySelector('b').textContent = items.length > 1
+          ? (items.length === 2 ? 'ردّان جديدان على تعليقاتك' : (items.length <= 10 ? '{n} ردود جديدة على تعليقاتك' : '{n} ردًا جديدًا على تعليقاتك').replace('{n}', items.length))
+          : '{n} رد على تعليقك'.replace('{n}', who);
+        card.querySelector('.arw-rt-text').textContent = first.text;
+        card.querySelector('.arw-rt-text').dir = 'auto';
+        var x = card.querySelector('.arw-rt-x');
+        x.setAttribute('aria-label', 'إغلاق');
+        link.addEventListener('click', seen);
+        x.addEventListener('click', function () { seen(); card.classList.remove('is-in'); setTimeout(function () { card.remove(); }, 300); });
+        document.body.appendChild(card);
+        requestAnimationFrame(function () { card.classList.add('is-in'); });
+      })
+      .catch(function () {});
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
     initShare();
     initMobileChrome();
+    initCommentReplies();
   }
 
   if (document.readyState === 'loading') {

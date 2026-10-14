@@ -53,15 +53,18 @@ function whereFrom(c) {
     ${flagOf(c.country) ? html`<i aria-hidden="true">${flagOf(c.country)}</i>` : ''}${c.ip ? html`<button type="button" class="cm-ip" data-ip="${c.ip}" dir="ltr">${c.ip}</button>` : html`<span>${name}</span>`}</span>`;
 }
 
-/** The site's own reply under a comment, as it shows on the site */
+/** A reply under a comment, as it shows on the site: the site's own (logo, name, badge) or a visitor's */
 function replyRow(r) {
-  return html`<div class="cm-reply">
-    <span class="cm-av cm-av-sm" aria-hidden="true"><img src="/assets/brand-logo.png?v=2" alt=""></span>
+  const own = !!r.official;
+  return html`<div class="cm-reply ${own ? '' : 'is-visitor'}">
+    ${own ? html`<span class="cm-av cm-av-sm" aria-hidden="true"><img src="/assets/brand-logo.png?v=2" alt=""></span>`
+      : html`<span class="cm-av cm-av-sm" style="--c:${colorOf(r.name)}" aria-hidden="true">${picSrc(r.pic) ? html`<img src="${picSrc(r.pic)}" alt="" loading="lazy" data-i="${initial(r.name)}">` : initial(r.name)}</span>`}
     <div class="cm-main">
-      <div class="cm-meta"><b>عرب راسلنج</b><span class="cm-badge" title="الحساب الرسمي الموثّق">${raw(BADGE)}</span><span class="muted">${timeAgo(r.at)}</span></div>
+      <div class="cm-meta">${own ? html`<b>عرب راسلنج</b><span class="cm-badge" title="الحساب الرسمي الموثّق">${raw(BADGE)}</span>` : html`<b>${r.name}</b>`}<span class="muted">${timeAgo(r.at)}</span>${own ? '' : whereFrom(r)}</div>
       <p class="cm-text">${r.text}</p>
     </div>
-    <button class="icon-btn sm cm-del" data-delete="${r.id}" title="احذف الرد">${icon('trash')}</button>
+    ${own ? '' : html`<button class="icon-btn sm cm-heart ${r.hearted ? 'is-on' : ''}" data-heart="${r.id}" aria-pressed="${r.hearted ? 'true' : 'false'}" title="${heartTitle(r.hearted)}">${heartFace(r.hearted)}</button>`}
+    <button class="icon-btn sm cm-del" data-delete="${r.id}" title="${own ? 'احذف الرد' : 'احذف رد المتابع'}">${icon('trash')}</button>
   </div>`;
 }
 
@@ -71,7 +74,7 @@ function row(c, t, seen, replies = [], { compact = false } = {}) {
   return html`<article class="cm-row ${fresh ? 'is-new' : ''} ${compact ? 'is-compact' : ''}" data-id="${c.id}">
     <span class="cm-av" style="--c:${colorOf(c.name)}" aria-hidden="true">${picSrc(c.pic) ? html`<img src="${picSrc(c.pic)}" alt="" loading="lazy" data-i="${initial(c.name)}">` : initial(c.name)}</span>
     <div class="cm-main">
-      <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}${replies.length ? html`<em class="cm-answered">${icon('check')}رديت</em>` : ''}${whereFrom(c)}</div>
+      <div class="cm-meta"><b>${c.name}</b><span class="muted">${timeAgo(c.at)}</span>${fresh ? html`<em class="cm-flag">جديد</em>` : ''}${replies.some(r => r.official) ? html`<em class="cm-answered">${icon('check')}رديت</em>` : ''}${whereFrom(c)}</div>
       <p class="cm-text">${c.text}</p>
       <a class="cm-topic" href="${t.url}#comments" target="_blank" rel="noopener" title="افتح التعليق على الموقع">
         ${kind ? html`<i style="--c:${kind[1]}">${kind[0]}</i>` : ''}<span>${t.title}</span></a>
@@ -100,11 +103,11 @@ function wire(el, items, again) {
   });
   $$('[data-delete]', el).forEach(b => b.onclick = async () => {
     const c = items.find(x => String(x.id) === b.dataset.delete);
-    const own = !!c.official;
+    const own = !!c.official, isReply = !!c.parent;
     const ok = await dialog({
-      title: own ? 'حذف الرد' : 'حذف التعليق',
+      title: own || isReply ? 'حذف الرد' : 'حذف التعليق',
       body: html`<div class="post-preview"><b>${own ? 'عرب راسلنج' : c.name}</b><p>${c.text.length > 220 ? `${c.text.slice(0, 220)}…` : c.text}</p></div>
-        <p class="muted small">${own ? 'الرد هيختفي من الموقع على طول.' : 'التعليق هيختفي من الموقع على طول، ومعاه ردودك عليه. ومش هينفع يرجع.'}</p>`,
+        <p class="muted small">${own || isReply ? 'الرد هيختفي من الموقع على طول.' : 'التعليق هيختفي من الموقع على طول، ومعاه الردود اللي تحته. ومش هينفع يرجع.'}</p>`,
       confirm: 'احذف', danger: true,
     });
     if (!ok) return;
