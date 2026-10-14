@@ -119,7 +119,8 @@ async function photos2026(w) {
       const license = strip(m.LicenseShortName && m.LicenseShortName.value);
       // the year it was taken: the one in its name when it says one (a «SummerSlam 2025» is from 2025, whatever its date
       // says), else the camera's, else the upload's
-      const named = (pg.title.match(/\b(?:19|20)\d\d\b/g) || []).sort().pop();
+      // (a real year only: a camera's file number like «…_2090_DxO» isn't one)
+      const named = (pg.title.match(/\b(?:19|20)\d\d\b/g) || []).filter((y) => y >= '1990' && y <= String(new Date().getFullYear())).sort().pop();
       const taken = named || yearOf(m.DateTimeOriginal ? strip(m.DateTimeOriginal.value) : String(ii.timestamp || ''));
       if (!FREE.test(license) || !taken) continue;
       if ((w.reject || []).includes(pg.title)) continue;
