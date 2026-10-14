@@ -1,5 +1,6 @@
-{#- Visitors' comments under a show, a recap, a story (owner 2026-10-14). Two fields only: a name and the comment.
-    The list is filled by /assets/comments.js from the site's worker when the section comes near the screen. -#}
+{#- Visitors' comments under a show, a recap, a story (owner 2026-10-14). Two fields only: a name and the comment,
+    and a picture to go with them (the visitor's own, or a wrestler's). Published at once; the list is filled by
+    /assets/comments.js from the site's worker (worker/src/comments.ts) when the section comes near the screen. -#}
 <section class="arw-comments reveal" id="comments" aria-labelledby="arw-comments-title" data-page="{{ page.url }}">
   <div class="related-posts-head arw-comments-head">
     <h3 class="related-posts-title" id="arw-comments-title">
@@ -36,7 +37,7 @@
         <button type="button" role="tab" class="arw-cm-fed" data-fed="AEW" aria-selected="false">AEW</button>
       </div>
       <div class="arw-cm-grid" role="listbox" aria-label="صور النجوم"></div>
-      <p class="arw-cm-credits">صور النجوم الرسمية من WWE وAEW.</p>
+      <details class="arw-cm-credits"><summary>حقوق الصور</summary><ul></ul></details>
     </div>
     <label class="arw-cm-field">
       <span class="arw-cm-label">التعليق</span>

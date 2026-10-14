@@ -35,6 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
+import { handleComments, studioComments, studioDeleteComments, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
 export interface Env {
@@ -3052,6 +3053,20 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // One view from a real browser on the site (assets/v.js) — the panel's statistics, people only (INCIDENTS #457)
       if (path === "/v") return recordView(request, env);
+      // Visitors' comments: a page's comments, a new one, a visitor's picture (worker/src/comments.ts)
+      if (path === "/comments" || path.startsWith("/comments/pic/")) return handleComments(request, env as any, url);
+      if (path === "/api/studio/comments" && request.method === "GET") {
+        if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف التعليقات." }, 403);
+        return json(await studioComments(env as any));
+      }
+      if (path === "/api/studio/comments/delete" && request.method === "POST") {
+        if (!(await studioAuthorized(request, env, "comments"))) return json({ success: false, denied: true, error: "مش مسموحلك تحذف التعليقات." }, 403);
+        const body: any = await request.json().catch(() => ({}));
+        const removed = await studioDeleteComments(env as any, body.ids);
+        const who = await studioUser(request, env as any);
+        if (who && removed) await studioAudit(env as any, who.user, "comments.delete", { count: removed }).catch(() => {});
+        return json({ success: true, removed });
+      }
       if (path === "/top10" && request.method === "GET") return top10Response(env, url.searchParams.get("range") || "day");
       if (path === "/health" && request.method === "GET") {
         const h = await siteHealth(env);
@@ -3059,7 +3074,12 @@ export default {
       }
       if (path === "/api/studio/notifications" && request.method === "GET") {
         if (!(await studioUser(request, env as any))) return json({ success: false, auth: false, error: "انتهت الجلسة. سجّل الدخول من جديد." }, 401);
-        return json(await studioNotifications(env, await studioAuthorized(request, env, "tools")));
+        const n = await studioNotifications(env, await studioAuthorized(request, env, "tools"));
+        // a visitor's new comment, for those who read the comments
+        if (await studioAuthorized(request, env, "comments")) {
+          n.items = [...n.items, ...(await commentNotifications(env as any, Date.now() - NOTIFY_WINDOW_MS))].sort((a, b) => b.at - a.at).slice(0, 120);
+        }
+        return json(n);
       }
       if (path === "/api/studio/held" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);

@@ -19,6 +19,7 @@ const EXTRAS = [
   { id: 'stats', label: 'إحصائيات الزوار', text: 'الأرقام والصفحات الأكثر زيارة في الرئيسية' },
   { id: 'status', label: 'حالة الموقع', text: 'النشر على المنصات ومصادر الأخبار' },
   { id: 'tools', label: 'أدوات النشر', text: 'النشر اليدوي على المنصات، سحب الأخبار، المثبت، الريلز', risky: true },
+  { id: 'comments', label: 'التعليقات', text: 'قراءة تعليقات الزوار وحذفها' },
 ];
 const all = (acts) => SECTIONS.flatMap(s => acts.map(a => `${s.id}.${a}`));
 const PRESETS = [
@@ -32,6 +33,7 @@ const ACTION_TEXT = {
   'member.disable': 'وقّف', 'member.enable': 'رجّع', 'member.logout': 'عمل خروج لأجهزة', 'member.delete': 'حذف العضو',
   'content.create': 'أضاف', 'content.update': 'عدّل', 'content.delete': 'حذف',
   password: 'غيّر كلمة السر بتاعته', 'analytics.connect': 'ربط الإحصائيات', 'analytics.disconnect': 'فصل الإحصائيات',
+  'comments.delete': 'حذف تعليقات زوار',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };
 
