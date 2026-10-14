@@ -50,7 +50,7 @@
     if (d === 1) return 'أمس';
     if (d === 2) return 'منذ يومين';
     if (d < 7) return fill('منذ {n} أيام', d);
-    return new Date(ms).toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' });
+    return new Date(ms).toLocaleDateString(EN ? 'en-US' : 'ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' });
   }
   var COLORS = ['#0e9594', '#ff6f59', '#e0962a', '#7c6ee8', '#0284c7', '#c73b2c', '#2f9e5b'];
   function colorOf(name) { var h = 0; for (var i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0; return COLORS[h % COLORS.length]; }
@@ -184,7 +184,7 @@
     });
     Object.keys(groups).forEach(function (k) {
       var li = document.createElement('li');
-      li.textContent = groups[k].join(EN ? ', ' : '، ') + ': ' + k;
+      li.textContent = groups[k].join(EN ? ', ' : '\u060C ') + ': ' + k;
       credits.appendChild(li);
     });
   }
