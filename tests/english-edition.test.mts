@@ -141,3 +141,9 @@ test('a number the source never says blocks the English edition (INCIDENTS #516)
   assert.deepEqual(checkEnglish(ok, src), []);
   assert.ok(checkEnglish({ ...ok, body: ok.body.replace('200 matches', '250 matches') }, src).some((x) => x.startsWith('number not in source')));
 });
+
+test("a contraction glued to the next word in a headline gets its space (INCIDENTS #535: «He'sStill»)", async () => {
+  const { normalizeEnglishTitle } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("David Finlay Details Aspects of AEW He'sStill Adjusting To"), "David Finlay Details Aspects of AEW He's Still Adjusting To");
+  assert.equal(normalizeEnglishTitle("CM Punk Isn't Done"), "CM Punk Isn't Done");
+});

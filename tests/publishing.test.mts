@@ -3341,7 +3341,7 @@ test('a show page title carries the dotted date people search with, only in the 
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
   assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 كامل مترجم — WWE RAW');
-  assert.equal(latest.description, 'شاهد عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين وبجودة عالية، موعد العرض 5 أكتوبر 2026 (WWE RAW October 5, 2026)، مع كل النزالات وروابط المشاهدة والتحميل.');
+  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين وبجودة عالية، موعد العرض 5 أكتوبر 2026 (WWE RAW October 5, 2026)، مع كل النزالات وروابط المشاهدة والتحميل.');
   // the program's other spellings stay in the structured data, never as a list in the description (INCIDENTS #428)
   assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا|راو/);
   // one date in the title, short enough for Google to show whole (INCIDENTS #428)
@@ -4854,4 +4854,13 @@ test('accusative noun + adjective gets its alif (INCIDENTS #519)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa.ts');
   assert.equal(applyCorrections('ويمتلك تأثيرا كبير على القصص'), 'ويمتلك تأثيرا كبيرا على القصص');
   assert.equal(applyCorrections('تأثيرا كبيرا'), 'تأثيرا كبيرا');
+});
+
+test('hamza spellings of a show name are in the structured data (INCIDENTS #535)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = showNameForms({ headline: 'عرض موني ان ذا بانك 2026 مترجم', title: 'WWE Money in the Bank (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: ['موني ان ذا بانك', 'عرض موني ان ذا بانك'], isShow: true });
+  assert.ok(forms.includes('دبليو دبليو إي موني إن ذا بانك'));
+  assert.ok(forms.includes('عرض موني إن ذا بانك 2026'));
+  const w = showNameForms({ headline: 'عرض سماك داون مترجم', title: 'WWE Smackdown 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', aliases: ['عرض سماك داون'], isShow: true });
+  assert.ok(w.includes('عرض سماك داون الأخير مترجم'));
 });

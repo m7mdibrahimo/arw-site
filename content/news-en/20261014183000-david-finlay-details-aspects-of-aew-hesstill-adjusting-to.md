@@ -1,5 +1,5 @@
 ---
-title: "David Finlay Details Aspects of AEW He'sStill Adjusting To"
+title: "David Finlay Details Aspects of AEW He's Still Adjusting To"
 slug: "david-finlay-details-aspects-of-aew-hesstill-adjusting-to"
 description: "David Finlay has opened up about the various adjustments he has had to make since transitioning from NJPW to AEW earlier this year. After spending over a…"
 federation: AEW

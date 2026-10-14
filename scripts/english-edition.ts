@@ -157,7 +157,8 @@ const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for",
 const ALWAYS_CAPITAL = new Set(["am", "is", "are", "was", "were", "be", "been", "it", "its", "he", "she", "we", "they", "you", "i", "his", "her", "my", "our", "your", "their", "if", "than", "that", "this", "not", "has", "have", "had", "will", "would", "can", "could", "should", "do", "does", "did"]);
 /** One consistent Title Case: small words lowercase (first, last and after a colon stay capital); a word with its own capitals (AEW, McIntyre, iMPACT) is never touched (INCIDENTS #443) */
 export function normalizeEnglishTitle(title: string): string {
-  const words = String(title).trim().split(/\s+/);
+  // a contraction glued to the next word: «He'sStill» → «He's Still» (INCIDENTS #535)
+  const words = String(title).trim().replace(/([A-Za-z]['’](?:s|t|re|ve|ll|d|m))(?=[A-Z][a-z])/g, "$1 ").split(/\s+/);
   return words.map((w, i) => {
     const bare = w.replace(/^[^A-Za-z]+|[^A-Za-z.]+$/g, "");
     if (!bare) return w;
