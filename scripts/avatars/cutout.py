@@ -115,7 +115,7 @@ for it in items:
         thumb.thumbnail((180, 180))
         debug.append((it['slug'], k, chosen is not None and c is chosen[0], thumb))
     if chosen is None or chosen[2] is None:
-        print(f"✗ {it['slug']}: no 2025–2026 photo with one clear, close face")
+        print(f"✗ {it['slug']}: no photo with one clear, close face")
         continue
     c, img, f = chosen
     out = frame(img, f)
