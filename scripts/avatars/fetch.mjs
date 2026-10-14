@@ -7,7 +7,8 @@
 //   - Commons says it depicts the star (structured data, P180) and no more than one other thing, or
 //   - its file name has the star's name, and no one else's («and», «vs», «&», «with»).
 //   Looked for in every file that depicts the star (search), and in the star's category and its «2026» sub-categories.
-//   The date is the one the photo was taken (never the upload's: an old photo uploaded in 2026 isn't one from 2026).
+//   The date is the one the photo was taken; the upload's only when the file has none (an old photo uploaded in 2026
+//   carries its own date, so it isn't taken for one from 2026).
 // Step 2 (cutout.py): the first with one clear, close face is cut round it; a star without one is left out.
 // Run by .github/workflows/avatars.yml (Wikimedia can't be reached from everywhere).
 import fs from 'node:fs';
@@ -48,7 +49,7 @@ async function who(w) {
   let qid = w.wiki && await page(w.wiki.replace(/_/g, ' '));
   if (!qid) {
     const s = await wm(`${WP}action=query&list=search&srlimit=1&srsearch=${encodeURIComponent(`${w.en} ${w.fed === 'UFC' ? 'fighter' : 'wrestler'}`)}`);
-    const hit = s.query.search[0];
+    const hit = ((s.query && s.query.search) || [])[0];
     if (hit) qid = await page(hit.title);
   }
   let cat = w.category || null;
@@ -75,8 +76,10 @@ async function photos2026(w) {
   const files = new Set();
   if (qid) {
     let off = 0;
-    for (let k = 0; k < 3; k++) {
+    for (let k = 0, tries = 0; k < 3 && tries < 3; k++) {
       const s = await wm(`${API}action=query&list=search&srnamespace=6&srlimit=100&sroffset=${off}&srsearch=${encodeURIComponent('haswbstatement:P180=' + qid)}`);
+      // the search sometimes answers with an error (too busy): asked again
+      if (!s.query) { tries++; k--; await wait(4000); continue; }
       s.query.search.forEach((x) => files.add(x.title));
       if (!s.continue) break;
       off = s.continue.sroffset;
@@ -95,14 +98,14 @@ async function photos2026(w) {
   const found = [];
   for (let i = 0; i < all.length; i += 40) {
     const batch = all.slice(i, i + 40);
-    const info = await wm(`${API}action=query&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1600&titles=${encodeURIComponent(batch.join('|'))}`);
+    const info = await wm(`${API}action=query&prop=imageinfo&iiprop=url|size|extmetadata|timestamp&iiurlwidth=1600&titles=${encodeURIComponent(batch.join('|'))}`);
     const keep = [];
     for (const pg of Object.values(info.query.pages)) {
       const ii = (pg.imageinfo || [])[0];
       if (!ii || Math.min(ii.width, ii.height) < 500) continue;
       const m = ii.extmetadata || {};
       const license = strip(m.LicenseShortName && m.LicenseShortName.value);
-      const taken = strip(m.DateTimeOriginal && m.DateTimeOriginal.value);
+      const taken = m.DateTimeOriginal ? strip(m.DateTimeOriginal.value) : String(ii.timestamp || '');
       if (!FREE.test(license) || !taken.includes(YEAR)) continue;
       keep.push({ id: pg.pageid, title: pg.title, url: ii.thumburl || ii.url, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, taken });
     }

@@ -54,10 +54,10 @@ def load(path):
 
 
 def frame(img, f):
-    """The square round the face: the face a third of its width, its centre a little above the middle; kept inside
+    """The square round the face: the face half its width (a belt on the shoulder stays out), its centre a little above the middle; kept inside
     the photo (moved, then made smaller when the photo is too tight)"""
     x, y, w, h = f[:4]
-    side = max(w, h) * 2.3
+    side = max(w, h) * 2.0
     side = min(side, img.size[0], img.size[1])
     cx, cy = x + w / 2, y + h / 2 + h * 0.08
     left = min(max(0, cx - side / 2), img.size[0] - side)
