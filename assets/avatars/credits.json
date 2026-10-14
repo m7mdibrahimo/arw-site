@@ -1,0 +1,302 @@
+[
+ {
+  "slug": "roman-reigns",
+  "ar": "رومان رينز",
+  "en": "Roman Reigns",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Roman_Reigns_RR25_(1)_(headshot).jpg"
+ },
+ {
+  "slug": "cody-rhodes",
+  "ar": "كودي رودز",
+  "en": "Cody Rhodes",
+  "fed": "WWE",
+  "author": "Sgt. Gianna Elle Sulger",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Cody_Rhodes_Fort_Bragg_Army_250_Birthday_Celebration_(headshot).jpg"
+ },
+ {
+  "slug": "seth-rollins",
+  "ar": "سيث رولينز",
+  "en": "Seth Rollins",
+  "fed": "WWE",
+  "author": "Super Festivals",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Seth_Rollins_July_2019.jpg"
+ },
+ {
+  "slug": "cm-punk",
+  "ar": "سي ام بانك",
+  "en": "CM Punk",
+  "fed": "WWE",
+  "author": "Kevin Paul",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:CM_Punk_at_San_Diego_Comic_Con_2026.jpg"
+ },
+ {
+  "slug": "john-cena",
+  "ar": "جون سينا",
+  "en": "John Cena",
+  "fed": "WWE",
+  "author": "Gage Skidmore",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:John_Cena_by_Gage_Skidmore.jpg"
+ },
+ {
+  "slug": "randy-orton",
+  "ar": "راندي أورتن",
+  "en": "Randy Orton",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Randy_Orton_RR24_(cropped).jpg"
+ },
+ {
+  "slug": "gunther",
+  "ar": "غونتر",
+  "en": "Gunther",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gunther_August_2024_(headshot).jpg"
+ },
+ {
+  "slug": "drew-mcintyre",
+  "ar": "درو ماكنتاير",
+  "en": "Drew McIntyre",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Drew_McIntyre,_WrestleMania_XL_(cropped).jpg"
+ },
+ {
+  "slug": "la-knight",
+  "ar": "ال ايه نايت",
+  "en": "LA Knight",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:LA_Knight_RR24_(2)_(headshot).jpg"
+ },
+ {
+  "slug": "jey-uso",
+  "ar": "جاي أوسو",
+  "en": "Jey Uso",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jey_Uso_RR25_(1)_(cropped).jpg"
+ },
+ {
+  "slug": "brock-lesnar",
+  "ar": "بروك ليسنر",
+  "en": "Brock Lesnar",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Brock_Lesnar_At_SummerSlam_2023_(cropped).jpg"
+ },
+ {
+  "slug": "rhea-ripley",
+  "ar": "ريا ريبلي",
+  "en": "Rhea Ripley",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Rhea_Ripley,_April_2024_(cropped)_(cropped).jpg"
+ },
+ {
+  "slug": "liv-morgan",
+  "ar": "ليف مورغان",
+  "en": "Liv Morgan",
+  "fed": "WWE",
+  "author": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Big_E,_Liv_Morgan_%26_Tyler_Breeze_(1)_(cropped_2).jpg"
+ },
+ {
+  "slug": "becky-lynch",
+  "ar": "بيكي لينش",
+  "en": "Becky Lynch",
+  "fed": "WWE",
+  "author": "PaulLim11",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Becky_Lynch_at_Vulture_Festival_2024_03_(cropped).jpg"
+ },
+ {
+  "slug": "bianca-belair",
+  "ar": "بيانكا بيلير",
+  "en": "Bianca Belair",
+  "fed": "WWE",
+  "author": "US Air Force / Jason Wilkinson",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "source": "https://commons.wikimedia.org/wiki/File:Bianca_Belair_Texas_2023.jpg"
+ },
+ {
+  "slug": "kenny-omega",
+  "ar": "كيني أوميغا",
+  "en": "Kenny Omega",
+  "fed": "AEW",
+  "author": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:All_Elite_Wrestling_Executive_Vice_President_-_Kenny_Omega_(headshot).jpg"
+ },
+ {
+  "slug": "jon-moxley",
+  "ar": "جون موكسلي",
+  "en": "Jon Moxley",
+  "fed": "AEW",
+  "author": "West Smith",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Jon_Moxley_Oct_2021.jpg"
+ },
+ {
+  "slug": "mjf",
+  "ar": "ام جيه اف",
+  "en": "MJF",
+  "fed": "AEW",
+  "author": "Super Festivals",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Maxwell_Jacob_Friedman,_July_2024_04.jpg"
+ },
+ {
+  "slug": "will-ospreay",
+  "ar": "ويل أوسبراي",
+  "en": "Will Ospreay",
+  "fed": "AEW",
+  "author": "JJ Williams, Digital media staff at Wrestling Observer Newsletter",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay,_AEW_Revolution_2024_(cropped).jpg"
+ },
+ {
+  "slug": "swerve-strickland",
+  "ar": "سويرف ستريكلاند",
+  "en": "Swerve Strickland",
+  "fed": "AEW",
+  "author": "West Smith",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Swerve_Strickland,_Feb_2022_(cropped).jpg"
+ },
+ {
+  "slug": "hangman-adam-page",
+  "ar": "هانغمان آدم بيج",
+  "en": "Hangman Adam Page",
+  "fed": "AEW",
+  "author": "Super Festivals",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Page,_July_2022_2_(headshot).jpg"
+ },
+ {
+  "slug": "kazuchika-okada",
+  "ar": "كازوتشيكا أوكادا",
+  "en": "Kazuchika Okada",
+  "fed": "AEW",
+  "author": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kazuchika_Okada_-_03-07-2024_EDIT-12.jpg"
+ },
+ {
+  "slug": "adam-copeland",
+  "ar": "آدم كوبلاند",
+  "en": "Adam Copeland",
+  "fed": "AEW",
+  "author": "Gage Skidmore",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Copeland_by_Gage_Skidmore.jpg"
+ },
+ {
+  "slug": "chris-jericho",
+  "ar": "كريس جيريكو",
+  "en": "Chris Jericho",
+  "fed": "AEW",
+  "author": "John Manard",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chris_Jericho_GalaxyCon_Raleigh_July,_25,_2026_681.jpg"
+ },
+ {
+  "slug": "bryan-danielson",
+  "ar": "براين دانيلسون",
+  "en": "Bryan Danielson",
+  "fed": "AEW",
+  "author": "Ralph Arvesen",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bryan_Danielson_2022-03-23_(3x4_cropped).jpg"
+ },
+ {
+  "slug": "darby-allin",
+  "ar": "داربي ألين",
+  "en": "Darby Allin",
+  "fed": "AEW",
+  "author": "Super Festivals",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Darby_Allin_Photo_Op_GalaxyCon_Raleigh_2025.jpg"
+ },
+ {
+  "slug": "orange-cassidy",
+  "ar": "أورانج كاسيدي",
+  "en": "Orange Cassidy",
+  "fed": "AEW",
+  "author": "Super Festivals",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Orange_Cassidy_Photo_Op_Nightmare_Weekend_Chicago_2025.jpg"
+ },
+ {
+  "slug": "mercedes-mone",
+  "ar": "مرسيدس موني",
+  "en": "Mercedes Moné",
+  "fed": "AEW",
+  "author": "All Elite Wrestling",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Mercedes_Mon%C3%A9_Dynamite_2024_03_13_094.jpg"
+ },
+ {
+  "slug": "toni-storm",
+  "ar": "توني ستورم",
+  "en": "Toni Storm",
+  "fed": "AEW",
+  "author": "J O Y F U L 🐻 V I O L E N C E",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Toni_Storm_in_April_2024_(cropped).jpg"
+ },
+ {
+  "slug": "kris-statlander",
+  "ar": "كريس ستاتلاندر",
+  "en": "Kris Statlander",
+  "fed": "AEW",
+  "author": "Super Festivals from Ft. Lauderdale, USA",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Kris_Statlander_Photo_Op_GalaxyCon_Richmond_2022_(cropped).jpg"
+ }
+]
