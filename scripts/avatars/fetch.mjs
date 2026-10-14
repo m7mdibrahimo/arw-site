@@ -45,6 +45,19 @@ async function wwe(w) {
 /** AEW: the newest free photos of the wrestler on Commons (their category and its 2023–2026 sub-categories), the
  *  Wikipedia page's own photo last; cutout.py takes the newest with one clear face looking at the camera */
 async function commons(w) {
+  // a photo already chosen (from a review sheet): that one file, so a new upload on Commons never changes it
+  if (w.file) {
+    const info = await wm(`${API}action=query&prop=imageinfo&iiprop=url|extmetadata|timestamp&iiurlwidth=1600&titles=${encodeURIComponent('File:' + w.file)}`);
+    const ii = (Object.values(info.query.pages)[0].imageinfo || [])[0];
+    if (!ii) throw new Error(`${w.file} is not on Commons`);
+    const m = ii.extmetadata || {};
+    const license = strip(m.LicenseShortName && m.LicenseShortName.value);
+    if (!FREE.test(license)) throw new Error(`${w.file}: licence «${license}»`);
+    const date = strip(m.DateTimeOriginal && m.DateTimeOriginal.value) || ii.timestamp;
+    const file = path.join(RAW, `${w.slug}-0${path.extname((ii.thumburl || ii.url).split('?')[0]).toLowerCase() || '.jpg'}`);
+    fs.writeFileSync(file, await wm(ii.thumburl || ii.url, false));
+    return [{ file, owner: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, source: ii.descriptionurl, year: (String(date).match(/20\d\d/) || [])[0] || '' }];
+  }
   const sum = await wm(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(w.wiki)}`);
   const parts = String((sum.originalimage && sum.originalimage.source) || '').split('?')[0].split('/');
   const lead = decodeURIComponent(parts.includes('thumb') ? parts[parts.length - 2] : parts[parts.length - 1]).replace(/_/g, ' ');
@@ -100,12 +113,14 @@ fs.mkdirSync(RAW, { recursive: true });
 const out = [];
 for (const w of list) {
   try {
-    // (a WWE profile where the belt sits by the face: their free photos instead, «wiki» in wrestlers.json)
-    const candidates = w.wiki ? await commons(w) : await wwe(w);
+    // (a WWE profile where the belt sits by the face: their free photos instead, «wiki» or «file» in wrestlers.json)
+    const candidates = w.wiki || w.file ? await commons(w) : await wwe(w);
     if (!candidates.length) throw new Error('nothing downloaded');
     out.push({ ...w, candidates });
     console.log(`✓ ${w.slug}: ${candidates.map((c) => c.year || '?').join(' ')}`);
   } catch (e) { console.log(`✗ ${w.slug}: ${e.message}`); }
 }
 fs.writeFileSync('tmp/avatars/list.json', JSON.stringify(out, null, 1));
-if (out.length < list.length) { console.log(`${list.length - out.length} missing`); process.exit(1); }
+// a star with no usable photo is left out (and named above); most missing means something is wrong: stop
+if (out.length < list.length) console.log(`${list.length - out.length} missing: ${list.filter((w) => !out.some((o) => o.slug === w.slug)).map((w) => w.slug).join(', ')}`);
+if (out.length < list.length * 0.8) process.exit(1);

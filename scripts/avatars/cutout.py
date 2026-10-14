@@ -14,7 +14,9 @@ items = json.load(open('tmp/avatars/list.json', encoding='utf8'))
 session = new_session('isnet-general-use')
 # OpenCV's face detector (a small neural network, downloaded by the workflow): sure of a face, and of its size
 net = cv2.dnn.readNetFromCaffe('tmp/avatars/deploy.prototxt', 'tmp/avatars/face.caffemodel')
-COLOURS = {'WWE': ((226, 65, 47), (70, 16, 12)), 'AEW': ((214, 168, 52), (52, 38, 8))}
+# each promotion's colour: WWE red, AEW gold, NJPW blue, MLW purple, UFC charcoal — all fading to dark the same way
+COLOURS = {'WWE': ((226, 65, 47), (70, 16, 12)), 'AEW': ((214, 168, 52), (52, 38, 8)), 'NJPW': ((46, 98, 214), (10, 22, 60)),
+           'MLW': ((128, 78, 214), (34, 16, 64)), 'UFC': ((104, 110, 120), (16, 17, 20))}
 
 def background(fed):
     inner, outer = COLOURS[fed]
