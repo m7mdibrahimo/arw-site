@@ -10,6 +10,8 @@
   if (!box) return;
   var API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/comments';
   var AVATARS = '/avatars/';
+  // the pictures' version (_includes/comments.njk): /avatars/ is kept a day by browsers, and a new set has to show at once
+  var AV = box.getAttribute('data-avatars') ? '?v=' + box.getAttribute('data-avatars') : '';
   var EN = document.documentElement.lang === 'en';
   var page = box.getAttribute('data-page') || location.pathname;
   var form = box.querySelector('.arw-cm-form');
@@ -59,7 +61,7 @@
   // «data:» picture its writer just chose
   function picSrc(pic) {
     pic = String(pic || '');
-    if (/^w:[a-z0-9-]+$/.test(pic)) return AVATARS + pic.slice(2) + '.webp';
+    if (/^w:[a-z0-9-]+$/.test(pic)) return AVATARS + pic.slice(2) + '.webp' + AV;
     if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic)) return pic;
     if (/^data:image\/(webp|jpeg|png);base64,/.test(pic)) return pic;
     return '';
@@ -191,7 +193,7 @@
       b.setAttribute('data-slug', w.slug);
       b.setAttribute('aria-selected', String('w:' + w.slug === pic));
       b.innerHTML = '<img alt="" width="64" height="64" loading="lazy"><span></span>';
-      b.firstChild.src = AVATARS + w.slug + '.webp';
+      b.firstChild.src = AVATARS + w.slug + '.webp' + AV;
       b.lastChild.textContent = EN ? w.en : w.ar;
       b.onclick = function () { setPic('w:' + w.slug); openPicker(false); };
       grid.appendChild(b);
@@ -214,7 +216,7 @@
     pick.setAttribute('aria-expanded', String(open));
     if (!open || stars) return;
     stars = [];
-    fetch(AVATARS + 'credits.json').then(function (r) { return r.json(); }).then(function (l) {
+    fetch(AVATARS + 'credits.json' + AV).then(function (r) { return r.json(); }).then(function (l) {
       stars = l;
       // a promotion with no picture yet: no tab; the first tab that has some is the one open
       var tabs = Array.prototype.slice.call(box.querySelectorAll('.arw-cm-fed'));

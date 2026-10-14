@@ -49,11 +49,12 @@ async function who(w) {
     const p = Object.values(q.query.pages)[0] || {};
     return p.pageprops && p.pageprops.wikibase_item;
   };
-  let qid = w.wiki && await page(w.wiki.replace(/_/g, ' '));
+  let qid = w.wiki ? await page(w.wiki.replace(/_/g, ' ')) : null;
   if (!qid) {
     const s = await wm(`${WP}action=query&list=search&srlimit=1&srsearch=${encodeURIComponent(`${w.en} ${w.fed === 'UFC' ? 'fighter' : 'wrestler'}`)}`);
     const hit = ((s.query && s.query.search) || [])[0];
-    if (hit) qid = await page(hit.title);
+    // only a page about them: its name has theirs (a search can bring their promotion's page first)
+    if (hit && plain(hit.title).includes(plain(w.en).split(' ').pop())) qid = await page(hit.title);
   }
   let cat = w.category || null;
   if (qid && !cat) {
