@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'Page path, e.g. /shows/aew-dynamite-06-10-2026/'
+        description: 'Page path, e.g. /shows/aew-dynamite-06-10-2026/ (or a full https address)'
         required: true
         default: '/'
       grep:
@@ -28,7 +28,7 @@ jobs:
           G: ${{ inputs.grep }}
         run: |
           set -u
-          U="https://arab-wrestling.com${P}"
+          case "$P" in https://*) U="$P";; *) U="https://arab-wrestling.com${P}";; esac
           echo "== headers for $U"; curl -sS -D - -o page.html -A "Mozilla/5.0 (live-check)" "$U" | grep -iE '^(HTTP|cache-control|cf-cache-status|age|etag|last-modified|cdn-cache-control|cloudflare-cdn-cache-control|x-served-by|content-type):'
           echo "== stylesheets and scripts it points to"; grep -oE '(href|src)="/(en/)?assets/[^"]+"' page.html | sort -u
           echo "== build"; curl -sS "https://arab-wrestling.com/build.json?_=$(date +%s)" | head -c 300; echo
