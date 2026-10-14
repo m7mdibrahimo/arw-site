@@ -45,7 +45,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: avatars-sheet
-          path: tmp/avatars/sheet.png
+          path: scripts/avatars/review/
       - name: Commit the pictures
         run: |
           git config user.email "action@github.com"

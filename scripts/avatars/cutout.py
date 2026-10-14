@@ -3,7 +3,9 @@ face (owner 2026-10-14: «تقصها علي وشهم بالظبط»), the photo 
 The face is found by OpenCV's face detector; the newest photo with one clear, close face is used (none: the star is
 left out). Every face gets the same framing: the same size, at the same height.
 Writes assets/avatars/<slug>.webp and assets/avatars/credits.json; every candidate goes on a review sheet
-(scripts/avatars/review/candidates.jpg), the one used in green; «pick» in wrestlers.json chooses another by hand."""
+(scripts/avatars/review/candidates.jpg), the one used in green; «pick» in wrestlers.json chooses another by hand.
+Every picture made goes on a second sheet with the star's name (scripts/avatars/review/chosen.jpg), to check each face
+is the star's."""
 import json, os
 import cv2
 import numpy as np
@@ -37,9 +39,9 @@ def main_face(found, size):
     if not good:
         return None
     first = max(good, key=lambda f: f[2])
-    if first[4] < 0.9 or first[2] < min(size) * 0.09 or first[2] < 70:
+    if first[4] < 0.85 or first[2] < min(size) * 0.06 or first[2] < 56:
         return None
-    if any(g is not first and g[2] >= first[2] * 0.5 for g in good):
+    if any(g is not first and g[2] >= first[2] * 0.6 for g in good):
         return None
     return first
 
@@ -90,7 +92,7 @@ for it in items:
     out = frame(img, f)
     out.save(os.path.join(OUT, it['slug'] + '.webp'), 'WEBP', quality=86, method=6)
     credits.append({**{k: it.get(k, '') for k in ('slug', 'ar', 'en', 'fed')}, **{k: c.get(k, '') for k in ('owner', 'license', 'source', 'year')}})
-    sheet.append(out)
+    sheet.append((it['en'], it['fed'], out))
     print(f"✓ {it['slug']} ({os.path.basename(c['file'])})")
 
 json.dump(credits, open(os.path.join(OUT, 'credits.json'), 'w', encoding='utf8'), ensure_ascii=False, indent=1)
@@ -105,3 +107,12 @@ for i, (slug, k, used, t) in enumerate(debug):
     dd.text((x + 5, y + 190), f"{slug} #{k}", fill=(0, 128, 0) if used else (0, 0, 0))
 os.makedirs('scripts/avatars/review', exist_ok=True)
 dsheet.save('scripts/avatars/review/candidates.jpg', quality=78)
+
+cols = 10
+csheet = Image.new('RGB', (cols * 150, max(1, -(-len(sheet) // cols)) * 170), 'white')
+cd = ImageDraw.Draw(csheet)
+for i, (name, fed, im) in enumerate(sheet):
+    x, y = (i % cols) * 150, (i // cols) * 170
+    csheet.paste(im.resize((140, 140), Image.LANCZOS), (x + 5, y + 5))
+    cd.text((x + 5, y + 150), f"{name} ({fed})", fill=(0, 0, 0))
+csheet.save('scripts/avatars/review/chosen.jpg', quality=82)
