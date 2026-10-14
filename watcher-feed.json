@@ -1,5 +1,15 @@
 [
   {
+    "id": 333882,
+    "link": "https://www.fightful.com/wrestling/mai-sakurai-opens-up-about-her-decision-to-leave-marigold-says-she-wont-be-back-anytime-soon/",
+    "date": "2026-10-14T14:41:01",
+    "date_gmt": "2026-10-14T18:41:01",
+    "title": {
+      "rendered": "Mai Sakurai Opens Up About Her Decision To Leave Marigold, Says She Won&#8217;t Be Back Anytime Soon"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/03123238/HTrsTH8boAAgU7C-scaled-e1791045205982.jpg"
+  },
+  {
     "id": 333879,
     "link": "https://www.fightful.com/wrestling/royce-keys-thinks-jaida-parker-can-be-modern-day-sherri-martel/",
     "date": "2026-10-14T14:17:40",
@@ -28,6 +38,16 @@
       "rendered": "Jeff Cannonball Action Figures In The Works, All Proceeds Will Go To His Family"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/08114022/untitled_design_57.jpg"
+  },
+  {
+    "id": 66498,
+    "link": "https://www.fightful.com/wrestling/tna-wrestling-roster/",
+    "date": "2026-10-14T13:37:00",
+    "date_gmt": "2026-10-14T17:37:00",
+    "title": {
+      "rendered": "Full TNA Wrestling Roster"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/11124348/Resources3.png"
   },
   {
     "id": 333874,
@@ -278,25 +298,5 @@
       "rendered": "Noam Dar &amp; Romeo Moreno vs. Vanity Project Set For Semifinals Of NXT Dusty Rhodes Tag Team Classic"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15214321/Untitled-Design-14.jpg"
-  },
-  {
-    "id": 333791,
-    "link": "https://www.fightful.com/wrestling/kendal-grey-cleared-for-in-ring-action/",
-    "date": "2026-10-13T21:21:01",
-    "date_gmt": "2026-10-14T01:21:01",
-    "title": {
-      "rendered": "Kendal Grey Cleared For In-Ring Action"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13211954/HUjb4QmWwAATUN6-e1791940816103.jpg"
-  },
-  {
-    "id": 333787,
-    "link": "https://www.fightful.com/wrestling/syx-vs-the-righteous-in-tables-match-added-to-10-15-tna-impact/",
-    "date": "2026-10-13T20:15:10",
-    "date_gmt": "2026-10-14T00:15:10",
-    "title": {
-      "rendered": "Syx vs. The Righteous In Tables Match Added To 10/15 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/24222142/Screenshot-480.png"
   }
 ]
