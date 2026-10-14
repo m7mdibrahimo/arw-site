@@ -1,28 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T20:18:04.298Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-deadmans-tour": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T20:18:04.106Z"
+ },
+ "https://www.fightful.com/wrestling/royce-keys-speaks-about-carmelo-hayes-joining-946-everyone-in-this-group-is-handpicked": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T20:18:03.739Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-explains-why-doing-wwe-house-shows-no-longer-makes-sense-for-him": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T20:18:03.547Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-reacts-to-conrad-thompson-calling-him-overrated": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-14T20:18:03.396Z"
+ },
  "https://www.fightful.com/wrestling/shotzi-blackheart-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T16:56:58.282Z"
+  "at": "2026-10-14T20:18:03.120Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-says-he-cant-stand-cm-punk-but-its-magic-for-the-audience-when-they-work-together": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T16:56:58.153Z"
+  "at": "2026-10-14T20:18:02.975Z"
  },
  "https://www.fightful.com/uncategorized/shotzi-blackheart-withdraws-from-cmll-womens-grand-prix-due-to-personal-matters": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T16:56:57.982Z"
+  "at": "2026-10-14T20:18:02.778Z"
  },
  "https://www.fightful.com/uncategorized/netlfix-edits-la-knights-middle-finger-out-of-wwe-money-in-the-bank-2026-replay": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T16:56:57.775Z"
+  "at": "2026-10-14T20:18:02.540Z"
+ },
+ "https://www.fightful.com/wrestling/mai-sakurai-opens-up-about-her-decision-to-leave-marigold-says-she-wont-be-back-anytime-soon": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-14T18:47:33.591Z"
+ },
+ "https://www.wrestlinginc.com/2286867/aew-wrestledream-2026-draws-duds-clockwork-carnage-will-ospreay-new-level-bandido": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-14T18:18:17.232Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T16:56:57.126Z"
+  "at": "2026-10-14T17:55:24.532Z"
  },
  "https://www.fightful.com/wrestling/kofi-says-the-new-levels-impending-aew-all-in-debut-was-the-worst-kept-secret-on-the-internet": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",

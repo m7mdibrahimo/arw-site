@@ -126,6 +126,9 @@
       {% if page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') %}{% set ldNames = ldNames.concat(showNameForms(headline, title, program_name, event_date, ldNames, page.url.startsWith('/shows/'))) %}{% elif page.url.startsWith('/nostalgia/') and series_type == 'shows' %}{#- a nostalgia special (Money in the Bank 2010) is searched like a new one: «تحميل عرض money in the bank», its date and year (INCIDENTS #512) -#}{% set ldNames = ldNames.concat(showNameForms(headline, title, title | replace(r/\s*\(.*\)\s*$/, ''), event_date, [], true, true)) %}{% endif %}
       {% if ldNames.length %}"alternateName": [{% for a in ldNames %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}],{% endif %}
       {% if (eventDate or event_date) and page.url.startsWith('/shows/') %}"publication": { "@type": "BroadcastEvent", "name": "{{ pageTitle | escape }}", "isLiveBroadcast": false, "startDate": {{ (eventDate or event_date) | jsonify | safe }} },{% endif %}
+      {#- the episode belongs to its program's library page and is watched on this page: the link between an episode and its program, and the WatchAction Google reads for «مشاهدة …» searches (INCIDENTS #541) -#}
+      {% if ldAbout %}"isPartOf": { "@type": "TVSeries", "name": "{{ ldAbout.name | escape }}", "url": "https://arab-wrestling.com/library/{{ ldAbout.slug }}/" },{% endif %}
+      "potentialAction": { "@type": "WatchAction", "target": "{{ pageUrl }}" },
       "mainEntityOfPage": { "@id": "{{ pageUrl }}" },
       "publisher": { "@type": "Organization", "name": "عرب راسلنج", "url": "https://arab-wrestling.com/" }
     },

@@ -15,6 +15,5 @@ image: /content/images/tqdsjm62a9x79uvk.jpg
 ---
 Kofi praised Tony Khan's passion for professional wrestling, describing it as contagious and infectious while highlighting the positive vibe among AEW talent. He explained that working under the current leadership motivates him to consistently deliver his absolute best performance.
 
-> "Yeah, well, about 22, almost 22 years in totality. But, like, yeah, it's just, it's different and in a good way."
 
 https://www.youtube.com/watch?v=LKH_iYGN9S0

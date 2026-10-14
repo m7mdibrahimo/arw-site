@@ -957,6 +957,13 @@ test('a draft that dropped its hamzas is blocked, names and N-1 are not', () => 
   assert.ok(!ok.some(i => i.code === 'hamza_dropped'));
 });
 
+test('INCIDENTS #542: three dropped hamzas (اقدم، اقل، اثار) block, «باي» and «باول» do not', () => {
+  const bad = checkArticle('متجر WWE يسحب قميص تريك ويليامز بعد غضب الجمهور', 'اقدم المتجر على سحب القميص بعد اقل من يوم، مما اثار غضبا واسعا بين الجماهير في كل مكان.', []);
+  assert.ok(bad.some(i => i.code === 'hamza_dropped'));
+  const ok = checkArticle('آش باي إليغانس تحتفظ بالبطولة', 'قالت آش باي إليغانس إن باي باي وباول سيحضران، وباي أيضا.', []);
+  assert.ok(!ok.some(i => i.code === 'hamza_dropped'));
+});
+
 test('a pre-show match card is not a results report', () => {
   // INCIDENTS #53: Ringside's live SmackDown page listed «X vs. Y» before the show
   // and was published as results with «الفائز: قيد الانتظار».
@@ -2112,6 +2119,7 @@ test('a weekly show dated to a day it does not air on is flagged, and one tweet 
   const { showOnWrongWeekday, checkArticle } = await import('../scripts/news-qa');
   assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي يقام يوم الثامن والعشرين من سبتمبر', 2026), 'AEW Dynamite الذي يقام يوم الثامن والعشرين من سبتمبر');
   assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي يقام يوم الثلاثين من سبتمبر', 2026), null);
+  assert.equal(showOnWrongWeekday('عرض WWE RAW في مدينة غلاسكو يوم 18 يناير 2027', 2026), null); // a year in the text decides the weekday
   assert.equal(showOnWrongWeekday('عرض WWE RAW يوم 28 سبتمبر', 2026), null);
   assert.equal(showOnWrongWeekday('عرض WWE NXT Live يوم 18 سبتمبر', 2026), null);
   assert.ok(checkArticle('x', 'يستعد الاتحاد لعرض AEW Dynamite يوم 28 سبتمبر المقبل.', []).some(i => i.code === 'show_wrong_day') || new Date().getUTCFullYear() !== 2026);
@@ -4863,4 +4871,10 @@ test('hamza spellings of a show name are in the structured data (INCIDENTS #535)
   assert.ok(forms.includes('عرض موني إن ذا بانك 2026'));
   const w = showNameForms({ headline: 'عرض سماك داون مترجم', title: 'WWE Smackdown 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', aliases: ['عرض سماك داون'], isShow: true });
   assert.ok(w.includes('عرض سماك داون الأخير مترجم'));
+});
+
+test('the episode VideoObject names its program (isPartOf) and has a WatchAction (INCIDENTS #541)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /"isPartOf": \{ "@type": "TVSeries"/);
+  assert.match(layout, /"potentialAction": \{ "@type": "WatchAction", "target": "\{\{ pageUrl \}\}" \}/);
 });
