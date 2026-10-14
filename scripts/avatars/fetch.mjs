@@ -22,7 +22,7 @@ for (const w of list) {
     const parts = String(src || '').split('?')[0].split('/');
     const file = w.file || decodeURIComponent(parts.includes('thumb') ? parts[parts.length - 2] : parts[parts.length - 1]);
     if (!file) { console.log(`✗ ${w.slug}: no picture on the page`); continue; }
-    const info = await (await fetch(`https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=900&titles=${encodeURIComponent('File:' + file)}`, { headers: UA })).json();
+    const info = await (await fetch(`https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=1400&titles=${encodeURIComponent('File:' + file)}`, { headers: UA })).json();
     const page = Object.values(info.query.pages)[0];
     const ii = page.imageinfo && page.imageinfo[0];
     if (!ii) { console.log(`✗ ${w.slug}: ${file} is not on Commons`); continue; }
@@ -34,10 +34,17 @@ for (const w of list) {
     const { width, height } = await img.metadata();
     // a portrait: the square from the top, where the face is (w.top moves it down, as a share of the height);
     // a wide picture: the square round what stands out
+    // w.crop {x, y, size}: a closer square inside that one, where the face is (shares of its side)
     let cut;
     if (height >= width) {
-      const top = Math.round(Math.min(height - width, height * (w.top ?? 0.04)));
-      cut = img.extract({ left: 0, top, width, height: width }).resize(256, 256);
+      let side = width, left = 0, top = Math.round(Math.min(height - width, height * (w.top ?? 0.04)));
+      if (w.crop) {
+        const s2 = Math.round(side * w.crop.size);
+        left = Math.max(0, Math.min(width - s2, Math.round(left + side * w.crop.x - s2 / 2)));
+        top = Math.max(0, Math.min(height - s2, Math.round(top + side * w.crop.y - s2 / 2)));
+        side = s2;
+      }
+      cut = img.extract({ left, top, width: side, height: side }).resize(256, 256);
     } else cut = img.resize(256, 256, { fit: 'cover', position: sharp.strategy.attention });
     await cut.webp({ quality: 82 }).toFile(path.join(OUT, `${w.slug}.webp`));
     credits.push({ slug: w.slug, ar: w.ar, en: w.en, fed: w.fed, author: strip(m.Artist && m.Artist.value) || 'Wikimedia Commons', license, licenseUrl: strip(m.LicenseUrl && m.LicenseUrl.value), source: ii.descriptionurl });
