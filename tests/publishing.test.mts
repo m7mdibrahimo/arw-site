@@ -4878,3 +4878,9 @@ test('the episode VideoObject names its program (isPartOf) and has a WatchAction
   assert.match(layout, /"isPartOf": \{ "@type": "TVSeries"/);
   assert.match(layout, /"potentialAction": \{ "@type": "WatchAction", "target": "\{\{ pageUrl \}\}" \}/);
 });
+
+test("a one-off program's library page title leads with the year, as visitors search it (INCIDENTS #547)", async () => {
+  const { readFileSync } = await import("node:fs");
+  const tpl = readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
+  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\)\s*%\}\{\{ lp\.prog\.arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم كامل/);
+});
