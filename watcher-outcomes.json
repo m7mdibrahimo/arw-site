@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-14T23:18:21.420Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-14T23:11:16.545Z"
- },
- "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-14T22:58:53.520Z"
  },
  "https://www.wrestlinginc.com/2287150/wwe-cody-rhodes-rock-dwayne-johnson-most-complicated-male-relationship": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
