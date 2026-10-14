@@ -4816,3 +4816,9 @@ test('showNameForms: a program\'s short English alias carries the date, and a no
   const layout = (await import('node:fs')).readFileSync('_includes/post-layout.njk', 'utf8');
   assert.match(layout, /startsWith\('\/nostalgia\/'\) and series_type == 'shows'/);
 });
+
+test('NXT episodes carry the common Arabic spellings of NXT in the VideoObject names (INCIDENTS #514)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = showNameForms({ headline: 'عرض ان اكس تي 06.10.2026 مترجم', title: 'WWE NXT 06.10.2026', programName: 'WWE NXT', eventDate: '2026-10-06', aliases: ['عرض ان اكس تي'], isShow: true });
+  for (const f of ['عرض ان اكس اكس مترجم', 'اكس ان تي مترجم', 'عرض اكس ان اكس مترجم', 'ان اكس تي 06.10.2026 مترجم']) assert.ok(forms.includes(f), f);
+});
