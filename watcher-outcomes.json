@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-13-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-14T00:11:57.244Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-14T00:04:43.650Z"
- },
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-13-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-13T23:51:51.659Z"
  },
  "https://www.wrestlinginc.com/2285981/wwe-raw-viewership-ratings-report-october-5-2026": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-05)",
