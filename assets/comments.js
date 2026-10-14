@@ -447,10 +447,10 @@
     card.className = 'arw-cm-alert';
     card.innerHTML = '<span class="arw-cm-alert-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span>' +
       '<span class="arw-cm-alert-tx"></span><button type="button" class="arw-cm-alert-on"></button><button type="button" class="arw-cm-alert-no"></button>';
-    card.querySelector('.arw-cm-alert-tx').textContent = 'يوصلك إشعار لما حد يرد عليك؟';
+    card.querySelector('.arw-cm-alert-tx').textContent = 'هل تريد أن يصلك إشعار عند الرد على تعليقك؟';
     var on = card.querySelector('.arw-cm-alert-on'), no = card.querySelector('.arw-cm-alert-no');
     on.textContent = 'فعّل الإشعارات';
-    no.textContent = 'مش دلوقتي';
+    no.textContent = 'ليس الآن';
     no.onclick = function () { store.set(PUSHED, 'no'); card.remove(); };
     on.onclick = function () {
       on.disabled = true;
@@ -469,14 +469,14 @@
         .then(function (r) {
           if (!r.ok) throw new Error('');
           store.set(PUSHED, true);
-          card.querySelector('.arw-cm-alert-tx').textContent = 'تمام، هيوصلك إشعار لما حد يرد عليك.';
+          card.querySelector('.arw-cm-alert-tx').textContent = 'تم التفعيل، سيصلك إشعار عند الرد على تعليقك.';
           on.remove(); no.remove();
           setTimeout(function () { card.remove(); }, 4000);
         })
         .catch(function (e) {
           if (e && e.message === 'denied') { store.set(PUSHED, 'no'); card.remove(); return; }
           on.disabled = false;
-          card.querySelector('.arw-cm-alert-tx').textContent = 'تعذّر تفعيل الإشعارات، جرّب مرة أخرى.';
+          card.querySelector('.arw-cm-alert-tx').textContent = 'تعذّر تفعيل الإشعارات، حاول مرة أخرى.';
         });
     };
     after.parentNode.insertBefore(card, after.nextSibling);

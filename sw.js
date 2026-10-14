@@ -200,7 +200,7 @@ self.addEventListener('push', function(event) {
   event.waitUntil(cmGet('k').then(function (key) {
     if (!key) return checkNewContentSW();
     return commentReplies().then(function (shown) {
-      if (!shown) return self.registration.showNotification('عرب راسلنج', { body: 'في رد جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
+      if (!shown) return self.registration.showNotification('عرب راسلنج', { body: 'لديك رد جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
     });
   }));
 });

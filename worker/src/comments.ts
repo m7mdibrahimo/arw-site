@@ -163,7 +163,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   let target: Row | null = null;
   if (b.parent) {
     target = await db.prepare("SELECT id, path, parent, owner FROM comments WHERE id = ?1 AND deleted = 0").bind(Number(b.parent) || 0).first<Row>();
-    if (!target || target.path !== path) return reply({ ok: false, error: "التعليق ده اتحذف، مش هينفع ترد عليه." }, 404);
+    if (!target || target.path !== path) return reply({ ok: false, error: "هذا التعليق محذوف، ولا يمكن الرد عليه." }, 404);
   }
   const parent = target ? (target.parent || target.id) : 0;
   const owner = await ownerOf(b.k);
