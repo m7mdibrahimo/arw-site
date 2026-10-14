@@ -1,43 +1,43 @@
 {
- "https://www.wrestlinginc.com/2283305/wwe-matt-hardy-jeff-edge-christian-d-generation-x-pitched-super-faction": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-14T01:54:23.707Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-13-2026-wren-sinclair-appears-tony-dangelo-vs-myles-borne-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:40.828Z"
+  "at": "2026-10-14T02:00:54.908Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-reflects-on-wwe-raw-match-with-rey-fenix-i-felt-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:40.463Z"
+  "at": "2026-10-14T02:00:54.408Z"
  },
  "https://www.fightful.com/wrestling/cappuccino-jones-confirms-wwe-id-departure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:40.201Z"
+  "at": "2026-10-14T02:00:54.043Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-says-working-on-highlander-really-filled-him-with-confidence": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:40.073Z"
+  "at": "2026-10-14T02:00:53.866Z"
  },
  "https://www.fightful.com/wrestling/tna-reached-out-to-sheamus-about-possibly-working-bound-for-glory": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:39.911Z"
+  "at": "2026-10-14T02:00:53.640Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-speaks-about-going-into-tna-hall-of-fame-winning-x-division-title-on-same-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:39.710Z"
+  "at": "2026-10-14T02:00:53.365Z"
  },
  "https://www.fightful.com/wrestling/laynie-luck-recounts-wwe-id-womens-title-win-everything-just-kind-of-worked-out-in-my-favor": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-14T01:49:39.551Z"
+  "at": "2026-10-14T02:00:53.147Z"
+ },
+ "https://www.wrestlinginc.com/2283305/wwe-matt-hardy-jeff-edge-christian-d-generation-x-pitched-super-faction": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-14T01:54:23.707Z"
  },
  "https://www.fightful.com/wrestling/carmelo-hayes-comments-on-joining-946-the-reports-of-my-demise-have-been-greatly-exaggerated": {
   "reason": "مكرر مع خبر نزل قبل كده",
