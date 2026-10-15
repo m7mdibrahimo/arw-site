@@ -521,3 +521,46 @@ test('the owner turns paid memberships on by hand (owner 2026-10-15): with Fawat
     assert.equal((await call(e, '/premium/trial', {}, s.token)).status, 410);
   } finally { f.restore(); }
 });
+
+test('the owner edits anything of a member: username, e-mail, password and picture, with the same rules as the member', async () => {
+  const { studioEditMember } = await import('../worker/src/members');
+  const e = env();
+  const files = new Map<string, any>();
+  e.MEDIA = { put: async (k: string, v: any) => { files.set(k, v); }, delete: async (k: string) => { files.delete(k); }, get: async (k: string) => files.get(k) ?? null };
+  const s = await member(e);
+  const other = await member(e, 'samir_22');
+  const login = async (who: string, password: string) => (await (await handleMembers(new Request('https://w/members/login', { method: 'POST', body: JSON.stringify({ login: who, password }), headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': '9.9.9.9' } }), e, new URL('https://w/members/login'))).json() as any);
+  // someone else's name or address, or a bad one, is refused and nothing changes
+  assert.equal((await studioEditMember(e, s.member.id, { username: 'Samir_22' })).success, false);
+  assert.equal((await studioEditMember(e, s.member.id, { email: 'samir_22@example.com' })).success, false);
+  assert.equal((await studioEditMember(e, s.member.id, { username: '1abc' })).success, false);
+  assert.equal((await studioEditMember(e, s.member.id, { email: 'not-mail' })).success, false);
+  assert.equal((await studioEditMember(e, s.member.id, { password: 'short' })).success, false);
+  assert.equal((await studioEditMember(e, s.member.id, { image: 'data:image/png;base64,AAAA' })).success, false);
+  assert.equal((await me(e, s.token)).username, 'kareem_10');
+  // a picture: a real one is kept in the member's folder
+  const webp = new Uint8Array(400); webp.set([0x52, 0x49, 0x46, 0x46, 0, 0, 0, 0, 0x57, 0x45, 0x42, 0x50]);
+  const image = 'data:image/webp;base64,' + Buffer.from(webp).toString('base64');
+  const r1: any = await studioEditMember(e, s.member.id, { image });
+  assert.equal(r1.success, true);
+  const pic = (await me(e, s.token)).pic;
+  assert.match(pic, new RegExp(`/members/pic/${s.member.id}/[a-f0-9]{16}\\.webp$`));
+  assert.equal(files.size, 1);
+  // username and e-mail: the member stays signed in while the password is unchanged… until the e-mail changes
+  const r2: any = await studioEditMember(e, s.member.id, { username: 'kareem_new', email: 'New@Example.com' });
+  assert.deepEqual([r2.success, r2.changed.username, r2.changed.email], [true, true, true]);
+  assert.equal(await me(e, s.token), undefined);
+  // a new password: signs in with it under the new name and the new address, never with the old one
+  const r3: any = await studioEditMember(e, s.member.id, { password: 'fresh2026pass' });
+  assert.equal(r3.changed.password, true);
+  assert.equal((await login('kareem_10', 'raw2026night')).ok, false);
+  assert.equal((await login('kareem_new', 'raw2026night')).ok, false);
+  const ok = await login('new@example.com', 'fresh2026pass');
+  assert.equal(ok.ok, true);
+  assert.deepEqual([ok.member.username, ok.member.email, ok.member.pic], ['kareem_new', 'new@example.com', pic]);
+  // the picture taken off: the file goes too
+  assert.equal((await studioEditMember(e, s.member.id, { pic: '' })).success, true);
+  assert.equal(files.size, 0);
+  // the other member is untouched
+  assert.equal((await me(e, other.token)).username, 'samir_22');
+});

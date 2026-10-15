@@ -809,6 +809,7 @@
     }
     moreBtn.addEventListener('click', function () { setMore(!document.documentElement.classList.contains('arw-more-open')); });
     overlay.addEventListener('click', function () { setMore(false); });
+    sheet.addEventListener('click', function (ev) { inPage(ev, function () { setMore(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMore(false); });
     // Swipe the sheet down to close it.
     var startY = null;
@@ -933,6 +934,20 @@
     if (!s || !s.token) return done();
     fetch('https://arw-site-bot.m7mdibrahimpc.workers.dev/members/logout', { method: 'POST', headers: { Authorization: 'Bearer ' + s.token, 'Content-Type': 'application/json' }, body: '{}', credentials: 'omit' }).catch(function () {}).then(done);
   }
+  // A link to another part of the page already open (the account page's «الإعدادات», «قائمتي», «اشتراكي»): the menu
+  // closes and the page changes in place, where the member stands, never a reload (owner 2026-10-15: «المفروض يحدث
+  // مكانه ويفضل مكان ما انا واقف»)
+  function inPage(e, done) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    if (a.origin !== location.origin || a.pathname !== location.pathname) return;
+    done();
+    // «حسابي» (no #) on the account page: its first tab, in place too
+    if (!a.hash && !/\/account\/$/.test(a.pathname)) return;
+    e.preventDefault();
+    history.replaceState(history.state, '', location.pathname + a.hash);
+    try { window.dispatchEvent(new HashChangeEvent('hashchange')); } catch (x) { location.hash = a.hash; }
+  }
   function accountMenu(btn) {
     var EN = document.documentElement.lang === 'en', HOME = EN ? '/en' : '';
     var pop = null;
@@ -1035,6 +1050,7 @@
       if (pop) { close(); return; }
       pop = build();
       if (!pop) { location.href = btn.href; return; }
+      pop.addEventListener('click', function (ev) { inPage(ev, close); });
       document.body.appendChild(pop);
       place();
       btn.setAttribute('aria-expanded', 'true');

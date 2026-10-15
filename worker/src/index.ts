@@ -3188,13 +3188,13 @@ export default {
         if (who && r.success) await studioAudit(env as any, who.user, "members.verify", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }
-      // A member's name, bio and picture corrected: the owner only
+      // Anything of a member (name, username, e-mail, password, picture, about): the owner only
       if (path === "/api/studio/members/edit" && request.method === "POST") {
         const who = await studioUser(request, env as any);
         if (!who || who.user.mustChange || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
         const body: any = await request.json().catch(() => ({}));
         const r = await studioEditMember(env as any, body.id, body);
-        if (r.success) await studioAudit(env as any, who.user, "members.edit", { id: Number(body.id) || 0 }).catch(() => {});
+        if (r.success) await studioAudit(env as any, who.user, "members.edit", { id: Number(body.id) || 0, ...((r as any).changed || {}) }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }
       if (path === "/api/studio/members/badge" && request.method === "POST") {

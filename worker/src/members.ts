@@ -103,6 +103,29 @@ const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, d
   // the gold badge the owner gives by hand (owner 2026-10-15: «احط علامة توثيق ذهبي … لاي حد»)
   gold: !m.official && m.badge === 2 });
 
+// ── a member's own picture: a data: URL of at most 250 KB that really is the picture it says ──────────────────
+type PicBytes = { bytes: Uint8Array; ext: "webp" | "jpg" | "png" };
+function picBytes(image: unknown): PicBytes | { error: string; status: 400 | 413 } {
+  const d = String(image || "").match(/^data:image\/(webp|jpeg|png);base64,([A-Za-z0-9+/=]+)$/);
+  let bytes: Uint8Array | null = null;
+  try { bytes = d ? Uint8Array.from(atob(d[2]), c => c.charCodeAt(0)) : null; } catch { bytes = null; }
+  if (!d || !bytes || bytes.length < 200) return { error: "تعذر قراءة الصورة، جرب صورة أخرى.", status: 400 };
+  if (bytes.length > 250_000) return { error: "الصورة كبيرة جدا، جرب صورة أخرى.", status: 413 };
+  // the file is what it says it is
+  const head = Array.from(bytes.slice(0, 12));
+  const isWebp = head[0] === 0x52 && head[1] === 0x49 && head[2] === 0x46 && head[3] === 0x46 && head[8] === 0x57 && head[9] === 0x45 && head[10] === 0x42 && head[11] === 0x50;
+  const isJpeg = head[0] === 0xff && head[1] === 0xd8 && head[2] === 0xff;
+  const isPng = head[0] === 0x89 && head[1] === 0x50 && head[2] === 0x4e && head[3] === 0x47;
+  const ext = d[1] === "webp" && isWebp ? "webp" : d[1] === "jpeg" && isJpeg ? "jpg" : d[1] === "png" && isPng ? "png" : "";
+  if (!ext) return { error: "تعذر قراءة الصورة، جرب صورة أخرى.", status: 400 };
+  return { bytes, ext };
+}
+async function putPic(media: R2Bucket, id: number, p: PicBytes): Promise<string> {
+  const name = Array.from(crypto.getRandomValues(new Uint8Array(8)), b => b.toString(16).padStart(2, "0")).join("");
+  await media.put(`members/${id}/${name}.${p.ext}`, p.bytes, { httpMetadata: { contentType: p.ext === "jpg" ? "image/jpeg" : `image/${p.ext}` } });
+  return `https://arw-site-bot.m7mdibrahimpc.workers.dev/members/pic/${id}/${name}.${p.ext}`;
+}
+
 // ── rate limits (KV counters with their own expiry) ───────────────────────────
 async function tooMany(kv: KVNamespace, key: string, max: number, _windowSec: number): Promise<boolean> {
   const n = Number((await kv.get(`members:rl:${key}`)) || 0);
@@ -432,22 +455,10 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (me.official) return reply({ ok: false, error: "صورة الحساب الرسمي هي شعار الموقع." }, 400);
     if (!env.MEDIA) return reply({ ok: false, error: "رفع الصور غير متاح الآن." }, 503);
     if (await tooMany(env.PUSH_KV, `pic:${me.id}`, 10, 3600)) return reply({ ok: false, error: "غيرت صورتك كثيرا، حاول بعد ساعة." }, 429);
-    const d = String(body.image || "").match(/^data:image\/(webp|jpeg|png);base64,([A-Za-z0-9+/=]+)$/);
-    let bytes: Uint8Array | null = null;
-    try { bytes = d ? Uint8Array.from(atob(d[2]), c => c.charCodeAt(0)) : null; } catch { bytes = null; }
-    if (!d || !bytes || bytes.length < 200) return reply({ ok: false, error: "تعذر قراءة الصورة، جرب صورة أخرى." }, 400);
-    if (bytes.length > 250_000) return reply({ ok: false, error: "الصورة كبيرة جدا، جرب صورة أخرى." }, 413);
-    // the file is what it says it is
-    const head = Array.from(bytes.slice(0, 12));
-    const isWebp = head[0] === 0x52 && head[1] === 0x49 && head[2] === 0x46 && head[3] === 0x46 && head[8] === 0x57 && head[9] === 0x45 && head[10] === 0x42 && head[11] === 0x50;
-    const isJpeg = head[0] === 0xff && head[1] === 0xd8 && head[2] === 0xff;
-    const isPng = head[0] === 0x89 && head[1] === 0x50 && head[2] === 0x4e && head[3] === 0x47;
-    const ext = d[1] === "webp" && isWebp ? "webp" : d[1] === "jpeg" && isJpeg ? "jpg" : d[1] === "png" && isPng ? "png" : "";
-    if (!ext) return reply({ ok: false, error: "تعذر قراءة الصورة، جرب صورة أخرى." }, 400);
+    const pic = picBytes(body.image);
+    if ("error" in pic) return reply({ ok: false, error: pic.error }, pic.status);
     await count(env.PUSH_KV, `pic:${me.id}`, 3600);
-    const name = Array.from(crypto.getRandomValues(new Uint8Array(8)), b => b.toString(16).padStart(2, "0")).join("");
-    await env.MEDIA.put(`members/${me.id}/${name}.${ext}`, bytes, { httpMetadata: { contentType: ext === "jpg" ? "image/jpeg" : `image/${ext}` } });
-    const url2 = `https://arw-site-bot.m7mdibrahimpc.workers.dev/members/pic/${me.id}/${name}.${ext}`;
+    const url2 = await putPic(env.MEDIA, me.id, pic);
     const old = picKey(me.pic);
     await db.prepare("UPDATE members SET pic = ?1 WHERE id = ?2").bind(url2, me.id).run();
     if (old) await env.MEDIA.delete(old).catch(() => {});
@@ -667,6 +678,8 @@ export async function resetAutoBadges(env: MembersEnv, ownerGiven: number[]): Pr
 }
 
 export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
+  // everything of a member, by the owner only (owner 2026-10-15: «اعدل اي حاجة للاعضاء المتابعين اسمه صورته اي حاجة
+  // ايميله باورده»): the shown name, the username, the e-mail, a new password, the picture, the about, the favourites
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
   await ensureMembers(db);
@@ -676,8 +689,43 @@ export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
   if (display.length < 2) return { success: false, error: "الاسم الظاهر حرفين على الأقل." };
   const bio = b.bio === undefined ? m.bio : String(b.bio).replace(/\s+/g, " ").trim().slice(0, 160);
   const fav_star = b.fav_star === undefined ? m.fav_star : String(b.fav_star).replace(/\s+/g, " ").trim().slice(0, 40);
-  const pic = b.pic === "" ? "" : m.pic;
-  await db.prepare("UPDATE members SET display = ?1, bio = ?2, fav_star = ?3, pic = ?4 WHERE id = ?5").bind(display, bio, fav_star, pic, m.id).run();
+  const fav_fed = b.fav_fed !== undefined && /^(WWE|AEW|NJPW|TNA|ROH|MLP|MLW|CMLL|AAA|UFC|STARDOM|NOAH|)$/.test(String(b.fav_fed)) ? String(b.fav_fed) : m.fav_fed;
+  // the username: the same rules as signing up, and nobody else's
+  let username = m.username;
+  if (b.username !== undefined && String(b.username).normalize("NFC").trim() !== m.username) {
+    username = String(b.username).normalize("NFC").trim();
+    const bad = usernameProblem(username);
+    if (bad) return { success: false, error: bad };
+    if (await db.prepare("SELECT id FROM members WHERE ukey = ?1 AND id != ?2").bind(ukeyOf(username), m.id).first()) return { success: false, error: "اسم المستخدم ده مع عضو تاني." };
+  }
+  // the e-mail: set at once and counted as confirmed (the owner checked it)
+  let email = m.email;
+  if (b.email !== undefined && String(b.email).trim().toLowerCase() !== m.email) {
+    email = String(b.email).trim().toLowerCase();
+    if (!EMAIL.test(email)) return { success: false, error: "اكتب بريد صحيح." };
+    if (await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(email, m.id).first()) return { success: false, error: "البريد ده مع عضو تاني." };
+  }
+  // a new password: the member is signed out everywhere and signs in with it
+  const password = b.password === undefined || b.password === "" ? "" : String(b.password);
+  if (password) { const bad = passwordProblem(password, username); if (bad) return { success: false, error: bad }; }
+  // the picture: a new one (the same checks as the member's own upload), none, or as it is
+  let pic = m.pic;
+  if (b.image) {
+    if (!env.MEDIA) return { success: false, error: "رفع الصور مش متاح دلوقتي." };
+    const p = picBytes(b.image);
+    if ("error" in p) return { success: false, error: p.error };
+    pic = await putPic(env.MEDIA, m.id, p);
+  } else if (b.pic === "") pic = "";
+  const steps = [db.prepare("UPDATE members SET display = ?1, bio = ?2, fav_star = ?3, pic = ?4, fav_fed = ?5, username = ?6, ukey = ?7, email = ?8, verified = CASE WHEN ?9 THEN 1 ELSE verified END WHERE id = ?10")
+    .bind(display, bio, fav_star, pic, fav_fed, username, ukeyOf(username), email, email !== m.email ? 1 : 0, m.id)];
+  if (password) {
+    const { salt, hash, iterations } = await hashPassword(password);
+    steps.push(db.prepare("UPDATE members SET salt = ?1, hash = ?2, iterations = ?3 WHERE id = ?4").bind(salt, hash, iterations, m.id));
+  }
+  if (password || email !== m.email || b.signout) steps.push(db.prepare("DELETE FROM member_sessions WHERE member = ?1").bind(m.id));
+  // a reset link or a new-address link sent before this stops working
+  if (password || email !== m.email) steps.push(db.prepare("DELETE FROM member_tokens WHERE member = ?1").bind(m.id));
+  await db.batch(steps);
   if (pic !== m.pic && picKey(m.pic) && env.MEDIA) await env.MEDIA.delete(picKey(m.pic)).catch(() => {});
-  return { success: true };
+  return { success: true, changed: { username: username !== m.username, email: email !== m.email, password: !!password, pic: pic !== m.pic } };
 }
