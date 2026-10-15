@@ -1,0 +1,118 @@
+name: Promo — post the site's promo video to its social accounts
+
+# ═══════════════════════════════════════════════════════
+#  نشر فيديو دعائي للموقع (طلب صاحب الموقع 2026-10-15):
+#  الفيديو في promo/<file> على الفرع اللي بيتشغل منه، والنص في promo/caption.txt.
+#  بيرفع الفيديو لتخزين الموقع (/videos/<file>)، وبعدين بينشره مرة واحدة على:
+#    - صفحة فيسبوك (فيديو عادي، ويتثبت)
+#    - إنستجرام (ريل في الصفحة الرئيسية)
+#    - قناة تليجرام (ويتثبت)
+#  التشغيل بإيد صاحب الموقع بس (workflow_dispatch). نفس الفيديو مبيتنشرش مرتين (worker/src/promo.ts).
+# ═══════════════════════════════════════════════════════
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "اسم الفيديو في مجلد promo/ (مثال: arab-wrestling-promo.mp4)"
+        required: true
+        default: "arab-wrestling-promo.mp4"
+      platforms:
+        description: "المنصات، مفصولة بفاصلة"
+        required: true
+        default: "facebook,telegram,instagram"
+      pin:
+        description: "تثبيت المنشور"
+        type: boolean
+        default: true
+
+concurrency:
+  group: promo-publish
+  cancel-in-progress: false
+
+# write: the worker and the media store accept only a token that can write to the repo (authorizeAdmin)
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      FILE: ${{ inputs.file }}
+      PLATFORMS: ${{ inputs.platforms }}
+      PIN: ${{ inputs.pin }}
+      GITHUB_TOKEN: ${{ github.token }}
+      WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
+      MEDIA_API: "https://arw-media.m7mdibrahimpc.workers.dev"
+      SITE_ORIGIN: "https://arab-wrestling.com"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check the video and caption
+        run: |
+          echo "$FILE" | grep -Eq '^[a-z0-9][a-z0-9-]{2,60}\.mp4$' || { echo "::error::bad file name"; exit 1; }
+          test -s "promo/$FILE" || { echo "::error::promo/$FILE is missing"; exit 1; }
+          test -s promo/caption.txt || { echo "::error::promo/caption.txt is missing"; exit 1; }
+          ls -la promo/
+          command -v ffprobe >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null; }
+          ffprobe -v error -show_entries stream=width,height -show_entries format=duration -of json "promo/$FILE" | tee probe.json
+
+      - name: Upload the video to the site's media storage
+        run: |
+          SIZE=$(stat -c %s "promo/$FILE")
+          for i in 1 2 3 4; do
+            curl -sS --max-time 300 -X PUT --data-binary @"promo/$FILE" \
+              -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: video/mp4" \
+              "$MEDIA_API/upload/videos/$FILE" -o up.json || true
+            cat up.json; echo
+            if jq -e '.ok == true' up.json >/dev/null 2>&1; then break; fi
+            sleep $((10 * i))
+          done
+          jq -e '.ok == true' up.json >/dev/null || { echo "::error::upload failed"; exit 1; }
+          for i in $(seq 1 20); do
+            LEN=$(curl -sSI "$SITE_ORIGIN/videos/$FILE" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-length"{print $2}')
+            echo "on the site: ${LEN:-nothing} bytes (file: $SIZE)"
+            [ "$LEN" = "$SIZE" ] && break
+            sleep 15
+          done
+          [ "$LEN" = "$SIZE" ] || { echo "::error::the site does not serve the uploaded video"; exit 1; }
+
+      - name: Post (and pin)
+        run: |
+          W=$(jq -r '.streams[0].width // 0' probe.json); H=$(jq -r '.streams[0].height // 0' probe.json); D=$(jq -r '.format.duration // 0' probe.json)
+          FAILED=0
+          for P in $(echo "$PLATFORMS" | tr ',' ' '); do
+            echo "── $P ──"
+            OK=false
+            for i in $(seq 1 8); do
+              jq -n --arg file "$FILE" --arg platform "$P" --rawfile caption promo/caption.txt --arg title "عرب راسلنج — المصارعة الحرة بالعربي" \
+                --argjson pin "$PIN" --argjson w "$W" --argjson h "$H" --argjson d "$D" \
+                '{file:$file, platform:$platform, caption:$caption, title:$title, pin:$pin, width:$w, height:$h, duration:$d}' > body.json
+              curl -sS --max-time 600 -X POST "$WORKER_API/api/videos/publish-promo" \
+                -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" --data @body.json -o res.json || true
+              cat res.json; echo
+              if jq -e '.success == true' res.json >/dev/null 2>&1; then OK=true; break; fi
+              # Instagram still encoding, or its spacing between posts: the same post is picked up again
+              if jq -e '.post.status == "processing" or .post.status == "rate_limited"' res.json >/dev/null 2>&1; then sleep 330; continue; fi
+              break
+            done
+            # the pin waits for Facebook to finish the video: asked again (the post itself is never sent twice)
+            for i in $(seq 1 6); do
+              [ "$OK" = true ] && jq -e '.pin.status == "processing"' res.json >/dev/null 2>&1 || break
+              sleep 60
+              curl -sS --max-time 600 -X POST "$WORKER_API/api/videos/publish-promo" \
+                -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" --data @body.json -o res.json || true
+              cat res.json; echo
+            done
+            if [ "$OK" = true ]; then
+              echo "✅ $P posted"
+              if [ "$PIN" = "true" ]; then jq -r 'if .pin == null then "pin: —" elif .pin.ok then "📌 pinned" else "pin: " + (.pin.error // "not pinned") end' res.json; fi
+            else
+              echo "::warning::$P was not posted"; FAILED=1
+            fi
+          done
+          exit $FAILED
