@@ -169,7 +169,7 @@
       v.addEventListener('canplay', function(){ if (seq === mountSeq) setLoader(false); });
       v.addEventListener('error', function(){
         if (seq !== mountSeq) return;
-        if (loaderStatus) loaderStatus.textContent = 'هذا السيرفر لا يعمل حاليًا، جرّب سيرفرًا آخر';
+        if (loaderStatus) loaderStatus.textContent = 'هذا السيرفر لا يعمل حاليا، جرب سيرفرا آخر';
         if (loaderFallback) loaderFallback.style.display = 'flex';
       });
 
@@ -207,7 +207,7 @@
       // The loader stays until the player has really loaded: hosts like StreamHG load a «Loading…» page
       // first and then move to their mirror, so every load restarts a short settle wait, and the loader
       // goes only when no new page came for that long (and never before ~1.2s, so it doesn't flicker).
-      // No load at all = the server is down: the loader stays with «جرّب سيرفر تاني» (INCIDENTS #277).
+      // No load at all = the server is down: the loader stays with «جرب سيرفر تاني» (INCIDENTS #277).
       var multiStep = /hgcloud\.|streamhg|vidmoly\.|uqload\./i.test(src);
       var SETTLE_MS = multiStep ? 2400 : 1800;
       var settleTimer = null, loads = 0;
@@ -480,7 +480,7 @@
       b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false');
       b.dataset.srv = code; b.setAttribute('data-srv-name', name);
       b.innerHTML = '<span class="srv-num">' + (prem ? CROWN : num) + '</span><span class="srv-name"><b></b>' + (sub ? '<span class="srv-mq"></span>' : '') + '</span>'
-        + '<span class="srv-state"><span class="s-ready">جاهز</span><span class="s-load">جارٍ التشغيل</span><span class="s-on">يعمل الآن</span></span>';
+        + '<span class="srv-state"><span class="s-ready">جاهز</span><span class="s-load">جار التشغيل</span><span class="s-on">يعمل الآن</span></span>';
       b.querySelector('b').textContent = name;
       if (sub) b.querySelector('.srv-mq').textContent = sub;
       return b;
@@ -533,7 +533,7 @@
       var btn = el('button', 'quality-btn' + (prem ? ' is-prem' : ''), '<span class="quality-icon">' + (prem ? CROWN : DL) + '</span><span class="quality-label"></span><span class="quality-sub"></span>');
       btn.type = 'button'; btn.setAttribute('data-tier', prem ? 'prem' : 'high');
       btn.querySelector('.quality-label').textContent = prem ? 'تحميل مميز' : 'تحميل العرض';
-      btn.querySelector('.quality-sub').textContent = prem ? 'روابط مباشرة بلا إعلانات' : 'كل الجودات';
+      btn.querySelector('.quality-sub').textContent = prem ? 'روابط مباشرة بدون إعلانات' : 'كل الجودات';
       if (prem) grid.insertBefore(btn, grid.firstChild); else grid.appendChild(btn);
       var modal = el('div', 'dl-modal-backdrop');
       modal.id = id;
@@ -561,8 +561,8 @@
     // ── for everyone else: what this show has for premium members ──
     function promo(servers, downloads) {
       if (!servers && !downloads) return;
-      var what = servers && downloads ? 'سيرفر خاص بلا إعلانات وروابط تحميل مباشرة' : servers ? 'سيرفر خاص بلا إعلانات' : 'روابط تحميل مباشرة بلا إعلانات';
-      var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small>متاحة لهذا العرض للأعضاء المميزين، مع وصول العروض الجديدة قبل الجميع</small></span><span class="wd-prem-go">اشترك</span>');
+      var what = servers && downloads ? 'سيرفر خاص بدون إعلانات وروابط تحميل مباشرة' : servers ? 'سيرفر خاص بدون إعلانات' : 'روابط تحميل مباشرة بدون إعلانات';
+      var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small>متاح في هذا العرض للأعضاء المميزين فقط، ومعه العروض الجديدة قبل الجميع</small></span><span class="wd-prem-go">اشترك</span>');
       a.href = HOME + '/premium/';
       a.querySelector('b').textContent = what;
       var note = deck.querySelector('.wd-note');
@@ -576,7 +576,7 @@
     // the time left: a clock up to two days, then the days
     function left(ms) {
       var s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), d = Math.floor(s / 86400);
-      if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يومًا');
+      if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يوما');
       return pad(h) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
     }
     function unlock(d) {
@@ -603,10 +603,10 @@
         if (!lock || !lock.isConnected) return;
         var ms = pub - Date.now();
         if (ms > 0) { if (c) c.textContent = left(ms); setTimeout(tick, 1000); return; }
-        lockSay('العرض متاح للجميع الآن', 'لحظات ويظهر المشغّل…');
+        lockSay('العرض متاح للجميع الآن', 'لحظات ويظهر المشغل…');
         get('early').then(function(d){
           if (d.ok && unlock(d)) return;
-          if (++tries < 10) setTimeout(tick, 30000); else lockSay(null, 'حدّث الصفحة بعد دقيقة.');
+          if (++tries < 10) setTimeout(tick, 30000); else lockSay(null, 'أعد تحميل الصفحة بعد دقيقة.');
         }).catch(function(){ if (++tries < 10) setTimeout(tick, 30000); });
       })();
     }
@@ -623,17 +623,17 @@
     var c0 = document.getElementById('wdCount');
     if (c0 && pub > Date.now()) c0.textContent = left(pub - Date.now());
     if (token) { var signIn = lock.querySelector('.wd-lock-in'); if (signIn) signIn.remove(); }
-    if (token && thinksPremium) lockSay('جارٍ تجهيز العرض لك…', '');
+    if (token && thinksPremium) lockSay('جار تجهيز العرض لك…', '');
     if (token || pub <= Date.now()) {
       get('early').then(function(d){
         if (d.ok && unlock(d)) { extras(); return; }
         if (d.status === 403) {
           lockSay('العرض متاح الآن للأعضاء المميزين', null);
           var s = lock.querySelector('.wd-lock-s');
-          if (s && !document.getElementById('wdCount')) { s.textContent = 'ويُتاح للجميع بعد '; var c = el('span', 'wd-count'); c.id = 'wdCount'; s.appendChild(c); }
+          if (s && !document.getElementById('wdCount')) { s.textContent = 'ويتاح للجميع بعد '; var c = el('span', 'wd-count'); c.id = 'wdCount'; s.appendChild(c); }
           countdown();
-        } else lockSay('تعذّر تجهيز العرض الآن', 'حدّث الصفحة بعد قليل.');
+        } else lockSay('تعذر تجهيز العرض الآن', 'أعد تحميل الصفحة بعد قليل.');
         extras();
-      }).catch(function(){ lockSay('تعذّر الاتصال', 'حدّث الصفحة بعد قليل.'); });
+      }).catch(function(){ lockSay('تعذر الاتصال', 'أعد تحميل الصفحة بعد قليل.'); });
     } else { countdown(); extras(); }
   })();

@@ -7,10 +7,10 @@
   if (!root) return;
   var API = root.getAttribute('data-api');
   var EN = document.documentElement.lang === 'en', HOME = EN ? '/en' : '';
-  var PRICES = { EGP: [50, 'جنيهًا'], USD: [1, 'دولار'] };
+  var PRICES = { EGP: [50, 'جنيه'], USD: [1, 'دولار'] };
   var MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
   var KINDS = { nostalgia: 'نوستالجيا', series: 'سلسلة', show: 'عرض قديم', other: 'طلب آخر' };
-  var STATES = { 'new': 'جديد', working: 'قيد الترجمة', done: 'تمت', declined: 'تعذّر' };
+  var STATES = { 'new': 'جديد', working: 'قيد الترجمة', done: 'تمت', declined: 'تعذر' };
   function $(s, el) { return (el || root).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || root).querySelectorAll(s)); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -54,17 +54,17 @@
     st.textContent = '';
     if (member && member.official) {
       st.hidden = false;
-      st.appendChild(document.createTextNode('حسابك الرسمي: كل المميزات مفعّلة دائمًا.'));
+      st.appendChild(document.createTextNode('حسابك الرسمي: كل المميزات مفعلة دائما.'));
     } else if (until) {
       st.hidden = false;
       st.appendChild(document.createTextNode('أنت عضو مميز حتى '));
       st.appendChild(el('b', null, date(until)));
       var n = daysLeft(until);
-      st.appendChild(document.createTextNode(' (المتبقي: ' + n + (n >= 3 && n <= 10 ? ' أيام' : n > 10 ? ' يومًا' : ' يوم') + ')'));
-      btn.textContent = 'جدّد شهرًا إضافيًا';
+      st.appendChild(document.createTextNode(' (المتبقي: ' + n + (n >= 3 && n <= 10 ? ' أيام' : n > 10 ? ' يوما' : ' يوم') + ')'));
+      btn.textContent = 'جدد شهرا إضافيا';
     } else {
       st.hidden = true;
-      btn.textContent = member ? 'اشترك الآن' : 'أنشئ حسابًا مجانيًا واشترك';
+      btn.textContent = member ? 'اشترك الآن' : 'أنشئ حسابا مجانيا واشترك';
     }
     var req = $('.pm-req');
     req.hidden = !(until || (member && member.official));
@@ -93,24 +93,24 @@
     api('/premium/checkout', { currency: cur, en: EN }).then(function (d) {
       b.disabled = false;
       if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/#subscribe'); return; }
-      if (!d.ok || !d.url) { flash('bad', d.error || 'تعذّر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
+      if (!d.ok || !d.url) { flash('bad', d.error || 'تعذر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
       if (d.manual) { $('.pm-manual').hidden = false; window.open(d.url, '_blank', 'noopener'); return; }
       location.href = d.url;
-    }).catch(function () { b.disabled = false; flash('bad', 'تعذّر الاتصال، حاول مرة أخرى.'); });
+    }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
   });
 
   // back from Fawaterk: asked again until the membership is on
   function waitForPayment(maxMs, every) {
     var before = member && member.premium || 0, t0 = Date.now();
-    flash('wait', 'جارٍ تأكيد الدفع وتفعيل عضويتك…', true);
+    flash('wait', 'جار تأكيد الدفع وتفعيل عضويتك…', true);
     (function tick() {
       api('/premium/check', {}).then(function (d) {
         if (d.ok && d.premium && d.premium > before) {
-          flash('ok', '🎉 تم تفعيل عضويتك المميزة حتى ' + date(d.premium) + '. أهلًا بك!');
+          flash('ok', '🎉 تم تفعيل عضويتك المميزة حتى ' + date(d.premium) + '. أهلا بك!');
           refresh();
           return;
         }
-        if (Date.now() - t0 > maxMs) { flash('bad', 'لم يصلنا تأكيد الدفع بعد. حدّث الصفحة بعد دقيقة، وإن لم تتفعل عضويتك راسلنا من «تواصل معنا».'); return; }
+        if (Date.now() - t0 > maxMs) { flash('bad', 'لم يصلنا تأكيد الدفع بعد. أعد تحميل الصفحة بعد دقيقة، وإن لم تتفعل عضويتك راسلنا من «تواصل معنا».'); return; }
         setTimeout(tick, every);
       }).catch(function () { setTimeout(tick, every); });
     })();
@@ -146,18 +146,18 @@
     btn.disabled = true; msg.className = 'pm-req-msg'; msg.textContent = 'لحظة…';
     api('/premium/requests', { kind: (form.querySelector('input[name=kind]:checked') || {}).value || 'other', text: text }).then(function (d) {
       btn.disabled = false;
-      if (!d.ok) { msg.className = 'pm-req-msg is-bad'; msg.textContent = d.error || 'تعذّر الإرسال.'; return; }
+      if (!d.ok) { msg.className = 'pm-req-msg is-bad'; msg.textContent = d.error || 'تعذر الإرسال.'; return; }
       form.elements.text.value = '';
       msg.className = 'pm-req-msg is-ok'; msg.textContent = 'وصل طلبك ✓ ستجد حالته هنا.';
       requests();
-    }).catch(function () { btn.disabled = false; msg.className = 'pm-req-msg is-bad'; msg.textContent = 'تعذّر الاتصال، حاول مرة أخرى.'; });
+    }).catch(function () { btn.disabled = false; msg.className = 'pm-req-msg is-bad'; msg.textContent = 'تعذر الاتصال، حاول مرة أخرى.'; });
   });
 
   // «متاح الآن قبل الجميع»: shows dated later (/premium/early.json), with the time left until everyone gets them
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function left(ms) {
     var s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), d = Math.floor(s / 86400);
-    if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يومًا');
+    if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يوما');
     return pad(h) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
   }
   function early() {
@@ -201,8 +201,8 @@
   var q = new URLSearchParams(location.search);
   refresh().then(function () {
     if (q.get('paid') !== null && session) waitForPayment(120000, 3000);
-    else if (q.get('pending') !== null && session) { flash('wait', 'الدفع قيد التنفيذ. ستتفعل عضويتك تلقائيًا فور إتمامه.', true); waitForPayment(15 * 60000, 10000); }
-    else if (q.get('failed') !== null) flash('bad', 'لم تكتمل عملية الدفع، ولم يُخصم منك شيء. يمكنك المحاولة مرة أخرى.');
+    else if (q.get('pending') !== null && session) { flash('wait', 'الدفع قيد التنفيذ. ستتفعل عضويتك تلقائيا فور إتمامه.', true); waitForPayment(15 * 60000, 10000); }
+    else if (q.get('failed') !== null) flash('bad', 'لم تكتمل عملية الدفع، ولم يخصم منك شيء. يمكنك المحاولة مرة أخرى.');
     if (q.get('paid') !== null || q.get('pending') !== null || q.get('failed') !== null) history.replaceState(null, '', location.pathname + location.hash);
   });
 })();

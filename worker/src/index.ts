@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia } from "./premium";
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, chatKick } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember } from "./members";
@@ -105,6 +105,8 @@ export interface Env {
    *  vendor key (the webhook's hashKey). Set by the owner in Cloudflare; without them the fixed payment links are used. */
   FAWATERK_API_KEY?: string;
   FAWATERK_VENDOR_KEY?: string;
+  FAWATERK_CLIENT_ID?: string;
+  FAWATERK_CLIENT_SECRET?: string;
 }
 
 const GRAPH_API_VERSION = "v21.0";
@@ -3195,6 +3197,10 @@ export default {
         // a visitor's new comment, for those who read the comments
         if (await studioAuthorized(request, env, "comments")) {
           n.items = [...n.items, ...(await commentNotifications(env as any, Date.now() - NOTIFY_WINDOW_MS))].sort((a, b) => b.at - a.at).slice(0, 120);
+        }
+        // a new subscriber or translation request (العضوية المميزة), for those who see the members
+        if (await studioAuthorized(request, env, "members")) {
+          n.items = [...n.items, ...(await premiumNotifications(env as any, Date.now() - NOTIFY_WINDOW_MS))].sort((a, b) => b.at - a.at).slice(0, 120);
         }
         return json(n);
       }

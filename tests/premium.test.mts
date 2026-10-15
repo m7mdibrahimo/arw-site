@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHmac } from 'node:crypto';
 import { handleMembers } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, PLANS } from '../worker/src/premium';
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS } from '../worker/src/premium';
 
 function d1() {
   const db = new DatabaseSync(':memory:');
@@ -226,5 +226,91 @@ test('a show before its time: a premium member gets its links now, everyone else
     assert.equal((await call(e, '/premium/early?k=shows/nothing')).status, 404);
     assert.equal((await call(e, '/premium/early?k=shows/nothing')).status, 404);
     assert.equal(reads, 2);
+  } finally { globalThis.fetch = real; }
+});
+
+test('Fawaterk by its OAuth client: a token asked once and kept, a refused one asked again; the panel sees the site as live', async () => {
+  const e = env({ FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
+  const s = await member(e);
+  const real = globalThis.fetch;
+  let tokens = 0, refuseNext = false;
+  const auths: string[] = [];
+  globalThis.fetch = (async (url: any, init: any) => {
+    const u = String(url);
+    if (u.endsWith('/oauth/token')) {
+      const b = new URLSearchParams(init.body);
+      assert.equal(b.get('grant_type'), 'client_credentials');
+      assert.equal(b.get('client_id'), 'cid');
+      tokens++;
+      return new Response(JSON.stringify({ token_type: 'Bearer', expires_in: 3600, access_token: `tok${tokens}` }));
+    }
+    if (u.endsWith('/createInvoiceLink')) {
+      auths.push(init.headers.Authorization);
+      if (refuseNext) { refuseNext = false; return new Response('{"message":"Unauthenticated."}', { status: 401 }); }
+      return new Response(JSON.stringify({ status: 'success', data: { url: 'https://app.fawaterk.com/link/1', invoiceId: 1, invoiceKey: 'k1' } }));
+    }
+    return new Response('{}', { status: 404 });
+  }) as any;
+  try {
+    assert.equal((await call(e, '/premium/checkout', { currency: 'EGP' }, s.token)).body.url, 'https://app.fawaterk.com/link/1');
+    assert.equal((await call(e, '/premium/checkout', { currency: 'EGP' }, s.token)).body.url, 'https://app.fawaterk.com/link/1');
+    assert.equal(tokens, 1); // kept between calls
+    refuseNext = true;
+    assert.equal((await call(e, '/premium/checkout', { currency: 'USD' }, s.token)).body.url, 'https://app.fawaterk.com/link/1');
+    assert.equal(tokens, 2); // refused: a new one
+    assert.deepEqual(auths, ['Bearer tok1', 'Bearer tok1', 'Bearer tok1', 'Bearer tok2']);
+    assert.equal((await studioPremium(e) as any).live, true);
+  } finally { globalThis.fetch = real; }
+  // Fawaterk down: the member still gets a way to pay (the fixed link)
+  const e2 = env({ FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
+  const s2 = await member(e2);
+  globalThis.fetch = (async () => new Response('down', { status: 500 })) as any;
+  try { const r = await call(e2, '/premium/checkout', { currency: 'USD' }, s2.token); assert.equal(r.body.manual, true); assert.equal(r.body.url, PLANS.USD.link); }
+  finally { globalThis.fetch = real; }
+});
+
+test('the panel\'s bell: a new subscriber and a new translation request', async () => {
+  const e = env();
+  const s = await member(e);
+  const t0 = Date.now();
+  await studioPremiumGrant(e, s.member.id, 30, 'mohamed');
+  await call(e, '/premium/requests', { kind: 'series', text: 'سلسلة عروض الأتيتيود كاملة' }, s.token);
+  const n = await premiumNotifications(e, t0 - 1000);
+  const pay = n.find((x: any) => x.type === 'premium-pay'), req = n.find((x: any) => x.type === 'premium-req');
+  assert.equal(pay.by, 'mohamed');
+  assert.equal(pay.name, s.member.display);
+  assert.equal(req.text, 'سلسلة عروض الأتيتيود كاملة');
+  assert.equal((await premiumNotifications(e, Date.now() + 1000)).length, 0);
+});
+
+test('changing the e-mail: the password first; with mail on, only once the new address confirms it', async () => {
+  // mail off: at once
+  const e = env();
+  const s = await member(e);
+  const post = (ee: any, path: string, body: any, token = '') => handleMembers(new Request(`https://w/members${path}`, { method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) } }), ee, new URL(`https://w/members${path}`)).then(async (r) => ({ status: r.status, body: await r.json() as any }));
+  assert.equal((await post(e, '/email', { email: 'new@example.com', current: 'wrong' }, s.token)).status, 400);
+  assert.equal((await post(e, '/email', { email: 'not-an-email', current: 'raw2026night' }, s.token)).status, 400);
+  const o = await member(e, 'other_one');
+  assert.equal((await post(e, '/email', { email: 'other_one@example.com', current: 'raw2026night' }, s.token)).status, 409);
+  const ok = await post(e, '/email', { email: 'new@example.com', current: 'raw2026night' }, s.token);
+  assert.equal(ok.body.member.email, 'new@example.com');
+  assert.ok(o.token);
+  // mail on: a link to the new address; the old one stays until it is pressed
+  const sent: any[] = [];
+  const real = globalThis.fetch;
+  globalThis.fetch = (async (url: any, init: any) => { if (String(url).includes('resend.com')) { sent.push(JSON.parse(init.body)); return new Response('{}'); } return new Response('{}', { status: 404 }); }) as any;
+  try {
+    const base = env();
+    const s2 = await member(base, 'mail_on'); // signed up before mail was on (with it, sign-up waits for activation)
+    const e2 = { ...base, RESEND_API_KEY: 're_test' };
+    await e2.ANALYTICS.prepare('UPDATE members SET verified = 1').run();
+    const r = await post(e2, '/email', { email: 'fresh@example.com', current: 'raw2026night' }, s2.token);
+    assert.equal(r.body.pending, true);
+    const mail = sent.find((m) => m.to[0] === 'fresh@example.com');
+    const token = mail.html.match(/\?email=([A-Za-z0-9_-]+)/)[1];
+    assert.equal((await me(e2, s2.token)).email, 'mail_on@example.com');
+    assert.equal((await post(e2, '/email-confirm', { token })).body.ok, true);
+    assert.equal((await me(e2, s2.token)).email, 'fresh@example.com');
+    assert.equal((await post(e2, '/email-confirm', { token })).status, 400); // once
   } finally { globalThis.fetch = real; }
 });

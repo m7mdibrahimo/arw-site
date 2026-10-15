@@ -15,7 +15,7 @@ const render = require('dom-serializer').default;
 const AR = /[؀-ۿ]/;
 
 const HEADER = '<header><nav class="nav"><a class="brand" href="/">عرب راسلنج</a><ul id="navMenu"><li><a class="navlink" href="/">الرئيسية</a></li><li><a class="navlink" href="/library/">مكتبة العروض</a></li><li class="utility-row"><button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">x</button></li></ul></nav></header>';
-const page = (head: string, body: string) => `<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head>\n<meta charset="UTF-8">\n<title>${head}</title>\n<meta name="description" content="آخر أخبار المصارعة الحرة بالعربية: انتقالات، إصابات، وقرارات WWE وAEW وTNA أولاً بأول.">\n<img alt="" src="/x.png" />\n</head>\n<body>\n${HEADER}\n${body}\n</body>\n</html>\n`;
+const page = (head: string, body: string) => `<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head>\n<meta charset="UTF-8">\n<title>${head}</title>\n<meta name="description" content="آخر أخبار المصارعة الحرة بالعربية: انتقالات، إصابات، وقرارات WWE وAEW وTNA أولاً بأول.">\n<img alt="" src="/x.png" />\n</head>\n<body>\n${HEADER}\n${body}\n<footer>© 2026</footer>\n</body>\n</html>\n`;
 const tr = mirror.makeTranslator(dict, {
   'عرض ديناميت 06.10.2026 مترجم': 'AEW Dynamite 06.10.2026',
   'عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث.': 'The complete AEW Dynamite show, with every match and moment.',
@@ -73,7 +73,7 @@ test('the Arabic site is untouched apart from the language button, and a second 
   fs.writeFileSync(path.join(site, 'news', 'x', 'index.html'), story);
   for (let i = 0; i < 2; i++) mirror.buildEnglish(site, { content: {} });
   const after = fs.readFileSync(path.join(site, 'index.html'), 'utf8');
-  const strip = (s: string) => s.replace(/<a data-i18n[^>]*>[\s\S]*?<\/a>/g, '').replace(/<script data-i18n>[\s\S]*?<\/script>/g, '').replace(/<link data-i18n[^>]*>/g, '');
+  const strip = (s: string) => s.replace(/<div data-i18n class="lang-foot"[\s\S]*?<\/a><\/div>/g, '').replace(/<a data-i18n[^>]*>[\s\S]*?<\/a>/g, '').replace(/<script data-i18n>[\s\S]*?<\/script>/g, '').replace(/<link data-i18n[^>]*>/g, '');
   assert.equal(strip(after), ar); // byte for byte (alt="" and «/>» kept as the build wrote them)
   assert.equal(after.match(/lang-switch/g)!.length, 1);
   assert.match(after, /hreflang="en" href="https:\/\/arab-wrestling\.com\/en\/"/);
@@ -81,11 +81,11 @@ test('the Arabic site is untouched apart from the language button, and a second 
   assert.match(after, /document\.prerendering[\s\S]*prerenderingchange/); // …decided when shown, never while prerendered
   // a news story has no English copy: its button goes to the English home, and it never redirects
   const s2 = fs.readFileSync(path.join(site, 'news', 'x', 'index.html'), 'utf8');
-  assert.match(s2, /class="theme-toggle lang-switch" href="\/en\/"/);
+  assert.match(s2, /class="lang-switch" href="\/en\/"/);
   assert.doesNotMatch(s2, /location\.replace/);
   assert.ok(fs.existsSync(path.join(site, 'en', 'index.html')));
   assert.ok(!fs.existsSync(path.join(site, 'en', 'news', 'x', 'index.html')));
-  assert.match(fs.readFileSync(path.join(site, 'en', 'index.html'), 'utf8'), /class="theme-toggle lang-switch" href="\/"[^>]*lang="ar"/);
+  assert.match(fs.readFileSync(path.join(site, 'en', 'index.html'), 'utf8'), /class="lang-switch" href="\/"[^>]*lang="ar"/);
 });
 
 test('one Arabic text for many shows gets a general English one, never one show\'s name', () => {
@@ -141,12 +141,12 @@ test('English news: the list, the story, the cards and the language buttons', ()
   const s = read('en/news/cody-logo');
   assert.match(s, /<h1>Cody Rhodes Changing His Logo<\/h1>/);
   assert.match(s, /<a class="related-card" href="\/en\/news\/aew-story\/">[\s\S]*An AEW Story/);
-  assert.match(s, /class="theme-toggle lang-switch" href="\/news\/%D8%AE%D8%A8%D8%B1-%D8%A3\/"|class="theme-toggle lang-switch" href="\/news\/خبر-أ\/"/);
+  assert.match(s, /class="lang-switch" href="\/news\/%D8%AE%D8%A8%D8%B1-%D8%A3\/"|class="lang-switch" href="\/news\/خبر-أ\/"/);
   assert.match(s, /hreflang="en" href="https:\/\/arab-wrestling\.com\/en\/news\/cody-logo\/"/);
   assert.doesNotMatch(s, /en-src/i);
   assert.doesNotMatch(noButton(s), AR);
   // the Arabic story points to its English one; one with none points to the English home
-  assert.match(read('news/خبر-أ'), /class="theme-toggle lang-switch" href="\/en\/news\/cody-logo\/"/);
+  assert.match(read('news/خبر-أ'), /class="lang-switch" href="\/en\/news\/cody-logo\/"/);
   assert.match(read('news/خبر-أ'), /hreflang="en" href="https:\/\/arab-wrestling\.com\/en\/news\/cody-logo\/"/);
   // the English home's news cards are the English stories
   const home = read('en');
@@ -221,7 +221,7 @@ test('a promotion\'s pages in English: the older stories out, the rest put back 
   assert.match(one, /<a href="\/en\/federation\/wwe\/2\/" class="page-link next"/);
   // the third Arabic page: its button goes to the English list, with no English twin declared
   const ar3 = read('federation/wwe/3');
-  assert.match(ar3, /class="theme-toggle lang-switch" href="\/en\/federation\/wwe\/"/);
+  assert.match(ar3, /class="lang-switch" href="\/en\/federation\/wwe\/"/);
   assert.doesNotMatch(ar3, /<link[^>]*hreflang="en"/);
 });
 

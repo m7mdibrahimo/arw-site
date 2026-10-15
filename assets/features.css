@@ -896,3 +896,81 @@ body.arw-has-bottom-nav .arw-reply-toast{ bottom:calc(76px + env(safe-area-inset
 .arw-more-cm i{ margin-inline-start:auto; font-style:normal; font-size:22px; opacity:.8; }
 /* the header's links are larger from 1581px: with «مجتمع المصارعة» they need a little more than 1440px */
 @media (min-width: 1581px) { .nav { max-width: 1560px !important; } }
+
+/* The member's menu (assets/features.js accountMenu): opens under the header's picture */
+.arw-am{ position:fixed; z-index:2000; width:300px; max-width:calc(100vw - 16px); padding:10px; border-radius:18px; background:var(--card, #fff); color:var(--ink, #1e2530); border:1px solid var(--line, #ece6d8); box-shadow:0 22px 50px -18px rgba(0,0,0,.35); font-family:'Tajawal',sans-serif; animation:arw-am-in .16s ease-out; }
+@keyframes arw-am-in{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:none; } }
+.arw-am a, .arw-am button{ color:inherit; text-decoration:none; font:inherit; }
+.arw-am-me{ display:flex; align-items:center; gap:12px; padding:8px; border-radius:14px; }
+.arw-am-me:hover{ background:var(--bg, #faf7f0); }
+.arw-am-av{ flex:0 0 46px; width:46px; height:46px; border-radius:50%; overflow:hidden; display:flex; align-items:center; justify-content:center; background:var(--teal-soft, #e3f5f3); color:var(--teal, #0e9594); border:2px solid var(--teal, #0e9594); }
+.arw-am.is-prem .arw-am-av, .arw-am.is-official .arw-am-av{ border-color:#e09a12; }
+.arw-am-av img{ width:100%; height:100%; object-fit:cover; }
+.arw-am-av b{ font:900 18px 'Cairo',sans-serif; }
+.arw-am-who{ display:flex; flex-direction:column; min-width:0; line-height:1.4; }
+.arw-am-who b{ font:800 15.5px 'Cairo',sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.arw-am.is-prem .arw-am-who b{ color:#c77c00; }
+html.arw-dark .arw-am.is-prem .arw-am-who b{ color:#ffd25a; }
+.arw-am-who small{ color:var(--muted, #6b7280); font-size:12.5px; text-align:right; }
+.arw-am-status{ display:flex; align-items:center; gap:6px; margin:2px 8px 8px; padding:6px 10px; border-radius:10px; background:var(--bg, #faf7f0); color:var(--muted, #6b7280); font:700 12.5px 'Cairo',sans-serif; }
+.arw-am.is-prem .arw-am-status, .arw-am.is-official .arw-am-status{ background:linear-gradient(135deg, rgba(255,210,90,.22), rgba(224,154,18,.12)); color:#a86400; }
+html.arw-dark .arw-am.is-prem .arw-am-status, html.arw-dark .arw-am.is-official .arw-am-status{ color:#ffd25a; }
+.arw-am-status svg{ width:14px; height:14px; }
+.arw-am-up{ display:flex; align-items:center; gap:10px; margin:0 0 8px; padding:11px 12px; border-radius:14px; background:linear-gradient(135deg, #2a2112, #1e2530); color:#fff !important; }
+.arw-am-up:hover{ filter:brightness(1.08); }
+.arw-am-up-ic{ flex:none; width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; }
+.arw-am-up b{ display:block; font:800 14px 'Cairo',sans-serif; color:#ffd25a; }
+.arw-am-up small{ display:block; font-size:12px; color:rgba(255,255,255,.78); line-height:1.5; }
+.arw-am-list{ display:flex; flex-direction:column; padding-top:6px; border-top:1px solid var(--line, #ece6d8); }
+.arw-am-list a, .arw-am-out{ display:flex; align-items:center; gap:10px; padding:10px 10px; border-radius:12px; font:700 14.5px 'Cairo',sans-serif !important; }
+.arw-am-list a:hover, .arw-am-list a:focus-visible, .arw-am-out:hover{ background:var(--bg, #faf7f0); outline:none; }
+.arw-am-list svg, .arw-am-out svg{ flex:none; color:var(--muted, #6b7280); }
+.arw-am-out{ width:100%; margin-top:4px; border:0; border-top:1px solid var(--line, #ece6d8); border-radius:0 0 12px 12px; background:none; cursor:pointer; color:var(--coral, #e5484d) !important; }
+.arw-am-out svg{ color:inherit; }
+/* the phones' «المزيد»: settings and signing out under the member's name */
+.arw-more-acct-links{ display:flex; gap:8px; margin:-6px 0 14px; }
+.arw-more-acct-links a, .arw-more-acct-links button{ flex:1; display:flex; align-items:center; justify-content:center; height:40px; border-radius:12px; border:1px solid var(--line, #ece6d8); background:var(--card, #fff); color:var(--ink, #1e2530); font:700 13.5px 'Cairo',sans-serif; text-decoration:none; cursor:pointer; }
+.arw-more-acct-links button{ color:var(--coral, #e5484d); }
+
+/* The site's language, at the very bottom of every page (lib/i18n/mirror.cjs langButton; owner 2026-10-15) */
+.lang-foot{ display:flex; align-items:center; gap:4px; width:fit-content; margin:18px auto 6px; padding:4px; border-radius:999px; border:1px solid var(--line, #ece6d8); background:var(--card, #fff); box-shadow:0 6px 18px -14px rgba(0,0,0,.4); }
+.lang-foot > svg{ flex:none; width:16px; height:16px; margin:0 8px; color:var(--muted, #6b7280); }
+.lang-foot a, .lang-foot-on{ display:inline-flex; align-items:center; height:32px; padding:0 14px; border-radius:999px; font:800 13.5px 'Cairo',system-ui,sans-serif; text-decoration:none !important; transition:background .2s ease, color .2s ease; }
+.lang-foot a{ color:var(--muted, #6b7280) !important; }
+.lang-foot a:hover{ color:var(--ink, #1e2530) !important; background:var(--bg, #faf7f0); }
+.lang-foot-on{ background:var(--teal, #0e9594); color:#fff; }
+.lang-foot [lang="en"]{ font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif; letter-spacing:.02em; }
+.lang-foot > i{ display:none; }
+
+/* The gentle invitation (assets/features.js initJoinNudge): slides in, stays a few seconds, goes */
+.arw-nudge{ position:fixed; z-index:1500; left:20px; bottom:20px; width:min(400px, calc(100vw - 24px)); display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:12px; padding:14px 14px 16px; border-radius:18px; overflow:hidden; background:var(--card, #fff); color:var(--ink, #1e2530); border:1px solid var(--line, #ece6d8); box-shadow:0 24px 50px -20px rgba(0,0,0,.45); font-family:'Tajawal',sans-serif; opacity:0; transform:translateY(16px) scale(.98); transition:opacity .35s ease, transform .35s cubic-bezier(.2,.9,.3,1.2); pointer-events:none; }
+.arw-nudge.is-in{ opacity:1; transform:none; pointer-events:auto; }
+.arw-nudge-ic{ width:42px; height:42px; border-radius:13px; display:grid; place-items:center; background:var(--teal-soft, #e3f5f3); color:var(--teal, #0e9594); }
+.arw-nudge.is-prem .arw-nudge-ic{ background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; }
+.arw-nudge-tx{ display:flex; flex-direction:column; gap:2px; line-height:1.5; }
+.arw-nudge-tx b{ font:800 14.5px 'Cairo',sans-serif; }
+.arw-nudge.is-prem .arw-nudge-tx b{ color:#b5780a; }
+html.arw-dark .arw-nudge.is-prem .arw-nudge-tx b{ color:#ffd25a; }
+.arw-nudge-tx small{ font-size:12.5px; color:var(--muted, #6b7280); }
+.arw-nudge-go{ grid-column:2 / 4; justify-self:start; display:inline-flex; align-items:center; height:34px; padding:0 16px; border-radius:999px; background:var(--teal, #0e9594); color:#fff !important; font:800 13px 'Cairo',sans-serif; text-decoration:none !important; }
+.arw-nudge.is-prem .arw-nudge-go{ background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600 !important; }
+.arw-nudge-x{ grid-column:3; grid-row:1; align-self:start; width:26px; height:26px; border:0; border-radius:8px; background:none; color:var(--muted, #6b7280); font-size:13px; cursor:pointer; }
+.arw-nudge-x:hover{ background:var(--bg, #faf7f0); color:var(--ink, #1e2530); }
+.arw-nudge-bar{ position:absolute; inset-inline:0; bottom:0; height:3px; background:var(--teal, #0e9594); transform-origin:right; transform:scaleX(1); }
+.arw-nudge.is-prem .arw-nudge-bar{ background:#e09a12; }
+.arw-nudge.is-run .arw-nudge-bar{ transform:scaleX(0); transition:transform var(--d, 9000ms) linear; }
+html[dir="ltr"] .arw-nudge{ left:auto; right:20px; }
+html[dir="ltr"] .arw-nudge-bar{ transform-origin:left; }
+@media (max-width: 768px){ .arw-nudge, html[dir="ltr"] .arw-nudge{ left:12px; right:12px; width:auto; bottom:calc(76px + env(safe-area-inset-bottom, 0px)); } }
+@media (prefers-reduced-motion: reduce){ .arw-nudge{ transition:opacity .2s ease; transform:none; } }
+
+/* A subscriber's picture (assets/features.js crowned): a gold ring, and a crown at the bottom of it */
+#navMenu .arw-acct-btn.is-in, .arw-more-acct-av, .arw-am-av{ position:relative; overflow:visible !important; }
+.arw-acct-in{ display:flex; align-items:center; justify-content:center; width:100%; height:100%; border-radius:50%; overflow:hidden; }
+.arw-acct-in img{ width:100%; height:100%; object-fit:cover; }
+#navMenu .arw-acct-btn.is-crown, .arw-more-acct-av.is-crown, .arw-am-av.is-crown{ border:2px solid #e09a12 !important; box-shadow:0 0 0 3px rgba(242,165,60,.22), 0 4px 14px -4px rgba(224,154,18,.7); }
+.arw-crown{ position:absolute; left:50%; bottom:-7px; transform:translateX(-50%); width:18px; height:14px; border-radius:7px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; box-shadow:0 0 0 2px var(--card, #fff), 0 2px 6px rgba(0,0,0,.25); pointer-events:none; }
+html.arw-dark .arw-crown{ box-shadow:0 0 0 2px #14171c, 0 2px 6px rgba(0,0,0,.4); }
+.arw-crown svg{ width:11px !important; height:11px !important; display:block; }
+.arw-am-av .arw-crown, .arw-more-acct-av .arw-crown{ width:20px; height:15px; bottom:-8px; }
+html.arw-nudge-on .xp-top{ opacity:0 !important; pointer-events:none !important; }

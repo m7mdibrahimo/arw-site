@@ -60,7 +60,7 @@
   function countText(n) {
     if (n === 1) return 'تعليق واحد';
     if (n === 2) return 'تعليقان';
-    return fill(n <= 10 ? '{n} تعليقات' : '{n} تعليقًا', n);
+    return fill(n <= 10 ? '{n} تعليقات' : '{n} تعليقا', n);
   }
   function ago(ms) {
     var s = Math.max(0, (Date.now() - ms) / 1000), m = Math.floor(s / 60), h = Math.floor(m / 60), d = Math.floor(h / 24);
@@ -133,9 +133,9 @@
     if (c.member && !c.official && c.blue !== false) {
       var mb = document.createElement('span');
       mb.className = 'arw-cm-member';
-      mb.title = 'عضو موثّق في عرب راسلنج';
+      mb.title = 'عضو موثق في عرب راسلنج';
       mb.setAttribute('role', 'img');
-      mb.setAttribute('aria-label', 'عضو موثّق في عرب راسلنج');
+      mb.setAttribute('aria-label', 'عضو موثق في عرب راسلنج');
       mb.innerHTML = BLUE;
       meta.appendChild(mb);
     }
@@ -151,7 +151,7 @@
     if (c.official) {
       var badge = document.createElement('span');
       badge.className = 'arw-cm-badge';
-      badge.title = 'حساب رسمي موثّق';
+      badge.title = 'حساب رسمي موثق';
       badge.innerHTML = BADGE;
       meta.appendChild(badge);
     }
@@ -195,7 +195,7 @@
       var db = document.createElement('button');
       db.type = 'button'; db.className = 'arw-cm-mod is-del';
       db.textContent = 'حذف';
-      db.onclick = function () { if (window.confirm('حذف هذا التعليق نهائيًا؟')) mod(c, 'delete'); };
+      db.onclick = function () { if (window.confirm('حذف هذا التعليق نهائيا؟')) mod(c, 'delete'); };
       acts.appendChild(hb); acts.appendChild(db);
     }
     if (c.hearted && !c.official) {
@@ -249,7 +249,7 @@
     if (!tops.length) {
       var empty = document.createElement('p');
       empty.className = 'arw-cm-empty';
-      empty.textContent = 'لا توجد تعليقات بعد، كن أول من يعلّق.';
+      empty.textContent = 'لا توجد تعليقات بعد، كن أول من يعلق.';
       list.appendChild(empty);
     }
     countEl.hidden = !tops.length;
@@ -344,7 +344,7 @@
     var f = fileIn.files && fileIn.files[0];
     fileIn.value = '';
     if (!f || !/^image\//.test(f.type)) return;
-    if (f.size > 20 * 1024 * 1024) { say('الصورة كبيرة جدًا، اختر صورة أصغر.', 'bad'); return; }
+    if (f.size > 20 * 1024 * 1024) { say('الصورة كبيرة جدا، اختر صورة أصغر.', 'bad'); return; }
     var img = new Image();
     var url = URL.createObjectURL(f);
     img.onload = function () {
@@ -358,7 +358,7 @@
       setPic(out);
       openPicker(false);
     };
-    img.onerror = function () { URL.revokeObjectURL(url); say('تعذّر فتح هذه الصورة، جرّب صورة أخرى.', 'bad'); };
+    img.onerror = function () { URL.revokeObjectURL(url); say('تعذر فتح هذه الصورة، جرب صورة أخرى.', 'bad'); };
     img.src = url;
   });
   showPic();
@@ -370,7 +370,7 @@
     nameIn.value = member.member.official ? OFFICIAL : (member.member.display || member.member.username);
     nameIn.readOnly = true;
     nameIn.classList.add('is-member');
-    pick.title = member.member.official ? 'الحساب الرسمي لعرب راسلنج' : 'غيّر صورتك من صفحة حسابك';
+    pick.title = member.member.official ? 'الحساب الرسمي لعرب راسلنج' : 'غير صورتك من صفحة حسابك';
     pic = member.member.official ? 'official' : (member.member.pic || '');
     showPic();
   } else {
@@ -381,9 +381,9 @@
     var gate = document.createElement('div');
     gate.className = 'arw-cm-gate';
     gate.innerHTML = '<span class="arw-cm-gate-ic">' + USER + '</span><div class="arw-cm-gate-tx"><b></b><p></p></div><div class="arw-cm-gate-btns"><a class="arw-cm-gate-join"></a><a class="arw-cm-gate-in"></a></div>';
-    gate.querySelector('b').textContent = 'سجّل دخولك لتكتب تعليقًا';
+    gate.querySelector('b').textContent = 'سجل دخولك لتكتب تعليقا';
     gate.querySelector('p').textContent = 'التعليق والرد للأعضاء. الحساب مجاني ويستغرق أقل من دقيقة.';
-    var gj = gate.querySelector('.arw-cm-gate-join'); gj.href = acct + '?new&back=' + back; gj.textContent = 'أنشئ حسابًا مجانيًا';
+    var gj = gate.querySelector('.arw-cm-gate-join'); gj.href = acct + '?new&back=' + back; gj.textContent = 'أنشئ حسابا مجانيا';
     var gi = gate.querySelector('.arw-cm-gate-in'); gi.href = acct + '?back=' + back; gi.textContent = 'تسجيل الدخول';
     form.parentNode.insertBefore(gate, form);
   }
@@ -407,13 +407,13 @@
     nameIn.value = name;
     if (name.length < 2 || text.length < 2) {
       form.classList.add('is-wrong');
-      say(name.length < 2 ? 'اكتب اسمك أولًا.' : 'اكتب تعليقك أولًا.', 'bad');
+      say(name.length < 2 ? 'اكتب اسمك أولا.' : 'اكتب تعليقك أولا.', 'bad');
       (name.length < 2 ? nameIn : textIn).focus();
       return;
     }
     form.classList.remove('is-wrong');
     send.disabled = true;
-    say('جارٍ النشر…');
+    say('جار النشر…');
     var h1 = document.querySelector('h1');
     fetch(API, {
       method: 'POST',
@@ -429,13 +429,13 @@
         shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official, blue: d.blue, prem: !!d.prem });
         textIn.value = '';
         count();
-        say('تم نشر تعليقك، شكرًا لك!', 'ok');
+        say('تم نشر تعليقك، شكرا لك!', 'ok');
         loaded = true;
         draw(expanded);
         offerPush(form);
       })
       // the worker's own words (in Arabic) say why; on the English pages, a general line
-      .catch(function (err) { say(err && err.message && !EN ? err.message : 'تعذّر نشر التعليق، حاول مرة أخرى.', 'bad'); })
+      .catch(function (err) { say(err && err.message && !EN ? err.message : 'تعذر نشر التعليق، حاول مرة أخرى.', 'bad'); })
       .then(function () { send.disabled = false; });
   });
   [nameIn, textIn].forEach(function (el) { el.addEventListener('input', function () { if (note.classList.contains('is-bad') || note.classList.contains('is-ok')) say(NOTE); }); });
@@ -467,10 +467,10 @@
       e.preventDefault();
       var name = rn.value.replace(/\s+/g, ' ').trim();
       var text = rt.value.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
-      if (name.length < 2) { rn.hidden = false; rn.focus(); rnote.textContent = 'اكتب اسمك أولًا.'; return; }
-      if (text.length < 2) { rt.focus(); rnote.textContent = 'اكتب ردك أولًا.'; return; }
+      if (name.length < 2) { rn.hidden = false; rn.focus(); rnote.textContent = 'اكتب اسمك أولا.'; return; }
+      if (text.length < 2) { rt.focus(); rnote.textContent = 'اكتب ردك أولا.'; return; }
       rs.disabled = true;
-      rnote.textContent = 'جارٍ النشر…';
+      rnote.textContent = 'جار النشر…';
       var h1 = document.querySelector('h1');
       fetch(API, {
         method: 'POST',
@@ -488,7 +488,7 @@
           var mine = document.getElementById('c-' + d.id);
           if (mine) { mine.classList.add('is-flash'); offerPush(mine); }
         })
-        .catch(function (err) { rnote.textContent = err && err.message && !EN ? err.message : 'تعذّر نشر الرد، حاول مرة أخرى.'; rs.disabled = false; });
+        .catch(function (err) { rnote.textContent = err && err.message && !EN ? err.message : 'تعذر نشر الرد، حاول مرة أخرى.'; rs.disabled = false; });
     };
     el.parentNode.insertBefore(f, el.nextSibling);
     replyForm = { el: f, target: c.id };
@@ -516,7 +516,7 @@
       '<span class="arw-cm-alert-tx"></span><button type="button" class="arw-cm-alert-on"></button><button type="button" class="arw-cm-alert-no"></button>';
     card.querySelector('.arw-cm-alert-tx').textContent = 'هل تريد أن يصلك إشعار عند الرد على تعليقك؟';
     var on = card.querySelector('.arw-cm-alert-on'), no = card.querySelector('.arw-cm-alert-no');
-    on.textContent = 'فعّل الإشعارات';
+    on.textContent = 'فعل الإشعارات';
     no.textContent = 'ليس الآن';
     no.onclick = function () { store.set(PUSHED, 'no'); card.remove(); };
     on.onclick = function () {
@@ -543,7 +543,7 @@
         .catch(function (e) {
           if (e && e.message === 'denied') { store.set(PUSHED, 'no'); card.remove(); return; }
           on.disabled = false;
-          card.querySelector('.arw-cm-alert-tx').textContent = 'تعذّر تفعيل الإشعارات، حاول مرة أخرى.';
+          card.querySelector('.arw-cm-alert-tx').textContent = 'تعذر تفعيل الإشعارات، حاول مرة أخرى.';
         });
     };
     after.parentNode.insertBefore(card, after.nextSibling);

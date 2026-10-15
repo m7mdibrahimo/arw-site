@@ -275,13 +275,13 @@ permalink: "/account/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261014h">
+<link rel="stylesheet" href="/assets/features.css?v=20261015a">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>حسابك | عرب راسلنج</title>
 <link rel="canonical" href="https://arab-wrestling.com/account/">
 <meta name="robots" content="noindex, follow">
-<meta name="description" content="أنشئ حسابك المجاني في عرب راسلنج: تابِع أقسامك المفضلة، وعلّق باسمك وصورتك، واحتفظ بمفضلتك على كل أجهزتك.">
+<meta name="description" content="أنشئ حسابك المجاني في عرب راسلنج: تابع أقسامك المفضلة، وعلق باسمك وصورتك، واحتفظ بمفضلتك على كل أجهزتك.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arab-wrestling.com/account/">
 <meta property="og:title" content="حسابك | عرب راسلنج">
@@ -294,7 +294,47 @@ permalink: "/account/index.html"
 .acct-page{ display:block; max-width:1060px; margin:0 auto; padding:36px 20px 80px; }
 .acct-shell{ display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:24px; align-items:start; }
 .acct-card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:30px 30px 26px; box-shadow:0 10px 30px -18px rgba(0,0,0,.18); min-height:420px; }
-.acct-view[hidden], .acct-form[hidden], .acct-pics[hidden], .acct-verify[hidden]{ display:none !important; }
+.acct-view[hidden], .acct-form[hidden], .acct-pics[hidden], .acct-verify[hidden], .acct-pane[hidden], .acct-plan[hidden], .acct-getblue[hidden]{ display:none !important; }
+/* «حسابي» and «الإعدادات» (owner 2026-10-15) */
+.acct-ptabs{ display:flex; gap:4px; border-bottom:1px solid var(--line); }
+.acct-ptab{ position:relative; height:46px; padding:0 18px; border:0; background:none; color:var(--muted); font:800 15px 'Cairo',sans-serif; cursor:pointer; }
+.acct-ptab.is-on{ color:var(--ink); }
+.acct-ptab.is-on::after{ content:""; position:absolute; inset-inline:12px; bottom:-1px; height:3px; border-radius:3px 3px 0 0; background:var(--teal); }
+.acct-pane{ display:flex; flex-direction:column; gap:16px; }
+/* the membership card */
+.acct-plan{ display:flex; flex-direction:column; gap:14px; padding:20px; border-radius:18px; border:1px solid rgba(224,154,18,.4); background:linear-gradient(150deg, rgba(255,210,90,.16), rgba(224,154,18,.05) 55%, var(--card)); }
+.acct-plan-free{ background:linear-gradient(150deg, #2a2112, #1e2530 70%); border-color:#3a2e14; color:#fff; }
+.acct-plan-top{ display:flex; align-items:center; gap:12px; }
+.acct-plan-ic{ flex:none; width:46px; height:46px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; box-shadow:0 10px 22px -10px rgba(224,154,18,.8); }
+.acct-plan-ic svg{ width:22px; height:22px; }
+.acct-plan h2{ margin:0; font:900 19px/1.4 'Cairo',sans-serif; color:inherit; }
+.acct-plan-free h2{ color:#ffd25a; }
+.acct-plan-top p{ margin:2px 0 0; font-size:14px; color:var(--muted); }
+.acct-plan-free .acct-plan-top p{ color:rgba(255,255,255,.75); }
+.acct-plan-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px 16px; }
+.acct-plan-list li{ position:relative; padding-inline-start:24px; font-size:13.5px; line-height:1.7; color:rgba(255,255,255,.78); }
+.acct-plan-list li::before{ content:"✓"; position:absolute; inset-inline-start:0; top:0; width:18px; height:18px; margin-top:3px; border-radius:50%; display:grid; place-items:center; font-size:11px; font-weight:900; background:rgba(255,210,90,.18); color:#ffd25a; }
+.acct-plan-list b{ display:block; color:#fff; font:800 14px 'Cairo',sans-serif; }
+.acct-plan-foot{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-top:12px; border-top:1px solid rgba(255,255,255,.1); }
+.acct-plan-price{ margin:0; font-size:14px; color:rgba(255,255,255,.8); }
+.acct-plan-price b{ color:#ffd25a; font:900 17px 'Cairo',sans-serif; }
+.acct-plan-acts{ display:flex; gap:8px; flex-wrap:wrap; }
+.acct-plan-btn{ display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 22px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 14.5px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 10px 22px -12px rgba(224,154,18,.9); }
+.acct-plan-btn:hover{ filter:brightness(1.06); }
+.acct-plan-btn svg{ width:17px; height:17px; }
+.acct-plan-btn-soft{ background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:none; }
+.acct-quick{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
+.acct-quick a{ display:flex; flex-direction:column; gap:2px; padding:14px 16px; border-radius:14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); text-decoration:none; transition:border-color .2s ease; }
+.acct-quick a:hover{ border-color:var(--teal); }
+.acct-quick b{ font:800 15px 'Cairo',sans-serif; }
+.acct-quick small{ color:var(--muted); font-size:13px; }
+.acct-getblue{ display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; border:1px dashed rgba(29,155,240,.5); color:#1d9bf0; background:rgba(29,155,240,.07); font:800 13px 'Cairo',sans-serif; text-decoration:none; white-space:nowrap; }
+.acct-getblue:hover{ background:rgba(29,155,240,.14); }
+.acct-cur-mail{ margin:0; font-size:14px; color:var(--muted); }
+.acct-cur-mail b{ color:var(--ink); }
+.acct-picsec .acct-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.acct-hint{ color:var(--muted); font-size:13px; }
+@media (max-width:560px){ .acct-plan-list, .acct-quick{ grid-template-columns:minmax(0,1fr); } .acct-plan-foot .acct-plan-btn{ width:100%; justify-content:center; } .acct-plan-acts .acct-plan-btn{ flex:1; justify-content:center; } }
 .acct-view{ display:flex; flex-direction:column; gap:16px; }
 .acct-head{ display:flex; flex-direction:column; gap:6px; }
 .acct-title{ margin:0; font:900 26px/1.35 'Cairo',sans-serif; color:var(--ink); }
@@ -370,6 +410,10 @@ permalink: "/account/index.html"
 .is-official .acct-badge path:first-child{ fill:#eaa51c; }
 html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
 .is-official .acct-av-edit{ display:none; }
+/* a subscriber's picture: gold ring and crown (as the header's, assets/features.css) */
+.is-prem .acct-av-lg, .is-official .acct-av-lg{ box-shadow:0 0 0 3px #e09a12, 0 0 0 7px rgba(242,165,60,.2) !important; }
+.is-prem .acct-av-lg::after, .is-official .acct-av-lg::after{ content:""; position:absolute; left:50%; bottom:-9px; transform:translateX(-50%); width:28px; height:20px; border-radius:10px; background:#e09a12 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233b2600' d='M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z'/%3E%3C/svg%3E") center/15px no-repeat; box-shadow:0 0 0 3px var(--card); }
+.is-prem .acct-av-edit, .is-official .acct-av-edit{ display:none; }
 .is-prem .acct-badge{ background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; }
 .is-prem .acct-badge path:first-child{ fill:#fff; }
 .is-prem .acct-badge path:last-child{ fill:#e09a12; }
@@ -434,7 +478,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
         </ul></li>
       <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink nav-community" href="/community/">مجتمع المصارعة</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
       <li class="utility-row">
-        <button aria-label="المفضلة وقائمة المشاهدة لاحقاً" class="theme-toggle bookmarks-btn" id="arwBookmarksBtn" type="button" title="المفضلة والمشاهدة لاحقاً">
+        <button aria-label="المفضلة وقائمة المشاهدة لاحقا" class="theme-toggle bookmarks-btn" id="arwBookmarksBtn" type="button" title="المفضلة والمشاهدة لاحقا">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
           <span class="bookmark-badge" id="arwBookmarkBadge" style="display:none;">0</span>
         </button>
@@ -456,7 +500,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
       <div class="acct-view" data-view="auth" hidden>
         <div class="acct-head">
           <h1 class="acct-title">حسابك في عرب راسلنج</h1>
-          <p class="acct-sub">ادخل بحسابك، أو أنشئ حسابًا جديدًا في أقل من دقيقة.</p>
+          <p class="acct-sub">ادخل بحسابك، أو أنشئ حسابا جديدا في أقل من دقيقة.</p>
         </div>
         <div class="acct-tabs" role="tablist">
           <button type="button" role="tab" class="acct-tab is-on" data-tab="in" aria-selected="true">تسجيل الدخول</button>
@@ -476,7 +520,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
         <form class="acct-form" data-form="up" novalidate hidden>
           <label class="acct-field"><span>اسم المستخدم</span>
             <input name="username" autocomplete="username" maxlength="20" required dir="auto">
-            <small>من 3 إلى 20 حرفًا، يبدأ بحرف. يظهر مع تعليقاتك.</small></label>
+            <small>من 3 إلى 20 حرفا، يبدأ بحرف. يظهر مع تعليقاتك.</small></label>
           <label class="acct-field"><span>البريد الإلكتروني</span>
             <input name="email" type="email" autocomplete="email" required dir="ltr"></label>
           <label class="acct-field"><span>كلمة المرور</span>
@@ -498,7 +542,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
       <!-- the recovery code, once, right after sign-up -->
       <div class="acct-view" data-view="welcome" hidden>
         <div class="acct-done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h1 class="acct-title">أهلًا بك في عرب راسلنج</h1>
+        <h1 class="acct-title">أهلا بك في عرب راسلنج</h1>
         <p class="acct-sub acct-welcome-tx">تم إنشاء حسابك.</p>
         <div class="acct-code-box">
           <b>كود الاسترجاع</b>
@@ -518,7 +562,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           <button type="button" role="tab" class="acct-tab" data-tab="code" aria-selected="false">بكود الاسترجاع</button>
         </div>
         <form class="acct-form" data-form="mail" novalidate>
-          <p class="acct-sub">اكتب بريدك، وسنرسل لك رابطًا لتغيير كلمة المرور.</p>
+          <p class="acct-sub">اكتب بريدك، وسنرسل لك رابطا لتغيير كلمة المرور.</p>
           <label class="acct-field"><span>البريد الإلكتروني</span><input name="email" type="email" autocomplete="email" required dir="ltr"></label>
           <p class="acct-msg" role="status"></p>
           <button class="acct-btn" type="submit">أرسل الرابط</button>
@@ -553,18 +597,84 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
             <p class="acct-me-user" dir="ltr"></p>
             <p class="acct-me-since"></p>
           </div>
-          <span class="acct-badge" title="حساب موثّق في عرب راسلنج"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>حساب موثّق</span></span>
+          <span class="acct-badge" title="حساب موثق في عرب راسلنج"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>حساب موثق</span></span>
+          <a class="acct-getblue" href="/premium/" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>احصل على العلامة الزرقاء</span></a>
         </div>
-        <div class="acct-verify" hidden>
-          <span>أكّد بريدك لتستطيع استرجاع حسابك به.</span>
-          <button type="button" class="acct-link" data-act="verify-again">أرسل رسالة التأكيد</button>
+        <div class="acct-ptabs" role="tablist" aria-label="حسابك">
+          <button type="button" role="tab" class="acct-ptab is-on" data-ptab="home" aria-selected="true">حسابي</button>
+          <button type="button" role="tab" class="acct-ptab" data-ptab="settings" aria-selected="false">الإعدادات</button>
         </div>
 
+        <div class="acct-pane" data-pane="home">
+          <div class="acct-verify" hidden>
+            <span>أكد بريدك لتستطيع استرجاع حسابك به.</span>
+            <button type="button" class="acct-link" data-act="verify-again">أرسل رسالة التأكيد</button>
+          </div>
+
+          <!-- the membership: the site's own account, a premium member, or what premium gives (assets/account.js plan()) -->
+          <section class="acct-plan acct-plan-free" data-plan="free" hidden>
+            <div class="acct-plan-top">
+              <span class="acct-plan-ic"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+              <div><h2>العضوية المميزة</h2><p>كل ما تحبه في الموقع، بشكل أسرع وأفضل.</p></div>
+            </div>
+            <ul class="acct-plan-list">
+              <li><b>العروض قبل الجميع</b> تشاهد العرض الجديد قبل نشره للكل بساعات.</li>
+              <li><b>سيرفرات خاصة بدون إعلانات</b> مشاهدة وتحميل أسرع وبدون نوافذ مزعجة.</li>
+              <li><b>العلامة الزرقاء</b> بجانب اسمك في التعليقات والمجتمع.</li>
+              <li><b>اسمك باللون الذهبي</b> مع شارة «مميز» في كل مكان.</li>
+              <li><b>اطلب أي عرض</b> ونترجمه لك.</li>
+            </ul>
+            <div class="acct-plan-foot">
+              <p class="acct-plan-price"><b>50 جنيه</b> أو <b>1 دولار</b> في الشهر</p>
+              <a class="acct-plan-btn" href="/premium/#subscribe"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>اشترك الآن</span></a>
+            </div>
+          </section>
+          <section class="acct-plan acct-plan-on" data-plan="premium" hidden>
+            <div class="acct-plan-top">
+              <span class="acct-plan-ic"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+              <div><h2>أنت عضو مميز</h2><p class="acct-plan-until"></p></div>
+            </div>
+            <div class="acct-plan-acts">
+              <a class="acct-plan-btn" href="/premium/#subscribe"><span>جدد الاشتراك</span></a>
+              <a class="acct-plan-btn acct-plan-btn-soft" href="/premium/#requests"><span>اطلب عرض نترجمه لك</span></a>
+            </div>
+          </section>
+          <section class="acct-plan acct-plan-on" data-plan="official" hidden>
+            <div class="acct-plan-top">
+              <span class="acct-plan-ic"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+              <div><h2>الحساب الرسمي للموقع</h2><p>كل المميزات مفعلة لحسابك دائما.</p></div>
+            </div>
+            <div class="acct-plan-acts">
+              <a class="acct-plan-btn" href="/admin/"><span>لوحة التحكم</span></a>
+              <a class="acct-plan-btn acct-plan-btn-soft" href="/premium/"><span>صفحة العضوية المميزة</span></a>
+            </div>
+          </section>
+
+          <div class="acct-quick">
+            <a href="/community/"><b>مجتمع المصارعة</b><small>دردش مع محبي اتحادك</small></a>
+            <a href="#settings" data-goto="settings"><b>الإعدادات</b><small>الاسم والصورة والبريد وكلمة المرور</small></a>
+          </div>
+
+          <div class="acct-sec acct-soon">
+            <h2>قريبا في حسابك</h2>
+            <ul>
+              <li><b>تابع أقسامك</b> واعرف أول ما ينزل عرض جديد مترجم.</li>
+              <li><b>المفضلة وشاهد لاحقا</b> على كل أجهزتك.</li>
+              <li><b>توقعات العروض الكبرى</b> وترتيب أفضل المتوقعين.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="acct-pane" data-pane="settings" hidden>
+          <div class="acct-sec acct-picsec">
+            <h2>صورتك</h2>
+            <div class="acct-row"><button type="button" class="acct-btn acct-btn-soft" data-open="pics">غير صورتك</button><small class="acct-hint">اختر صورة نجمك المفضل.</small></div>
         <div class="acct-pics" hidden>
           <div class="acct-feds" role="tablist"></div>
           <div class="acct-grid" role="listbox" aria-label="صور النجوم"></div>
           <button type="button" class="acct-link" data-pic="">بدون صورة</button>
         </div>
+          </div>
 
         <form class="acct-form acct-sec" data-form="profile" novalidate>
           <h2>ملفك</h2>
@@ -579,14 +689,15 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           <button class="acct-btn" type="submit">حفظ</button>
         </form>
 
-        <div class="acct-sec acct-soon">
-          <h2>قريبًا في حسابك</h2>
-          <ul>
-            <li><b>تابِع أقسامك</b> واعرف أول ما ينزل عرض جديد مترجم.</li>
-            <li><b>المفضلة وشاهد لاحقًا</b> على كل أجهزتك.</li>
-            <li><b>توقعات العروض الكبرى</b> وترتيب أفضل المتوقعين.</li>
-          </ul>
-        </div>
+          <form class="acct-form acct-sec" data-form="email" novalidate>
+            <h2>البريد الإلكتروني</h2>
+            <p class="acct-cur-mail">بريدك الحالي: <b dir="ltr"></b></p>
+            <label class="acct-field"><span>البريد الجديد</span><input name="email" type="email" autocomplete="email" dir="ltr" required></label>
+            <label class="acct-field"><span>كلمة المرور الحالية</span>
+              <span class="acct-pass"><input name="current" type="password" autocomplete="current-password" required><button type="button" class="acct-eye" aria-label="إظهار كلمة المرور"></button></span></label>
+            <p class="acct-msg" role="status"></p>
+            <button class="acct-btn acct-btn-soft" type="submit">غير البريد</button>
+          </form>
 
         <form class="acct-form acct-sec" data-form="password" novalidate>
           <h2>الأمان</h2>
@@ -601,13 +712,14 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           </div>
         </form>
 
-        <button type="button" class="acct-out" data-act="logout">تسجيل الخروج</button>
+          <button type="button" class="acct-out" data-act="logout">تسجيل الخروج</button>
+        </div>
       </div>
 
       <!-- waiting for the activation link (owner 2026-10-14: «لازم المتابع يفعل حسابه بتاكيده علي الايميل … التفعيل ده اجباري») -->
       <div class="acct-view" data-view="pending" hidden>
         <div class="acct-done-ic acct-mail-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></div>
-        <h1 class="acct-title">فعّل حسابك من بريدك</h1>
+        <h1 class="acct-title">فعل حسابك من بريدك</h1>
         <p class="acct-sub">أرسلنا رابط التفعيل إلى <b class="acct-pending-mail" dir="ltr"></b>. افتح الرسالة واضغط <b>«تفعيل الحساب»</b>، وستدخل حسابك مباشرة.</p>
         <ul class="acct-steps">
           <li>لن يعمل الحساب قبل التفعيل.</li>
@@ -632,10 +744,10 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
       <h2>العضوية مجانية، وفيها الكثير</h2>
       <ul>
         <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v4l-4-4H9a2 2 0 0 1-2-2v-1"/><path d="M14 4H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2v4l4-4h3a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></i><span><b>مجتمع المصارعة</b>غرف دردشة مباشرة لمحبي كل اتحاد، للأعضاء فقط.</span></li>
-        <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></i><span><b>إشعار أول ما ينزل عرضك</b>تابِع الرو أو داينامايت أو أي قسم تحبه.</span></li>
-        <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg></i><span><b>اسمك محفوظ لك</b>تعلّق باسمك وصورتك، ولا أحد يستطيع أن يكتب باسمك.</span></li>
+        <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></i><span><b>إشعار أول ما ينزل عرضك</b>تابع الرو أو داينامايت أو أي قسم تحبه.</span></li>
+        <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg></i><span><b>اسمك محفوظ لك</b>تعلق باسمك وصورتك، ولا أحد يستطيع أن يكتب باسمك.</span></li>
         <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></i><span><b>مفضلتك معك أينما كنت</b>على الموبايل والكمبيوتر.</span></li>
-        <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></i><span><b>توقعات العروض الكبرى</b>توقّع الفائزين، ونافس على الصدارة.</span></li>
+        <li><i aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></i><span><b>توقعات العروض الكبرى</b>توقع الفائزين، ونافس على الصدارة.</span></li>
       </ul>
     </aside>
   </div>
@@ -722,7 +834,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
     });
   }
 </script>
-<script src="/assets/features.js?v=20261014h" defer></script>
+<script src="/assets/features.js?v=20261015a" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

@@ -95,7 +95,7 @@
     if (/[A-Za-zء-ي]/.test(p) && /[0-9٠-٩]/.test(p)) s++;
     if (/[^A-Za-z0-9ء-ي٠-٩]/.test(p)) s++;
     var bar = $('.acct-meter i'), tx = $('.acct-meter-tx');
-    var steps = [['8%', 'var(--coral)', '8 حروف على الأقل، فيها حروف وأرقام.'], ['30%', 'var(--coral)', 'ضعيفة'], ['55%', 'var(--gold)', 'متوسطة'], ['80%', 'var(--teal)', 'جيدة'], ['100%', 'var(--teal)', 'قوية جدًا']];
+    var steps = [['8%', 'var(--coral)', '8 حروف على الأقل، فيها حروف وأرقام.'], ['30%', 'var(--coral)', 'ضعيفة'], ['55%', 'var(--gold)', 'متوسطة'], ['80%', 'var(--teal)', 'جيدة'], ['100%', 'var(--teal)', 'قوية جدا']];
     var st = p ? steps[Math.min(4, s)] : steps[0];
     bar.style.width = p ? st[0] : '0';
     bar.style.background = st[1];
@@ -115,10 +115,10 @@
     api('/login', { login: val(f, 'login'), password: f.elements.password.value }).then(function (d) {
       busy(f, false);
       if (d.unverified) { say(f, ''); pending({ login: val(f, 'login'), password: f.elements.password.value }, d.email, d.sent); f.reset(); return; }
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر الدخول، تأكد من البيانات.', 'bad'); return; }
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الدخول، تأكد من البيانات.', 'bad'); return; }
       signedIn(d); say(f, ''); f.reset();
       done();
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); });
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
 
   forms.up.addEventListener('submit', function (e) {
@@ -132,7 +132,7 @@
     api('/signup', { username: u, email: m, password: p, captcha: { id: capId, answer: c }, website: f.elements.website.value }).then(function (d) {
       busy(f, false);
       if (!d.ok) {
-        say(f, d.error && !EN ? d.error : 'تعذّر إنشاء الحساب، حاول مرة أخرى.', 'bad');
+        say(f, d.error && !EN ? d.error : 'تعذر إنشاء الحساب، حاول مرة أخرى.', 'bad');
         if (d.field && f.elements[d.field]) { f.elements[d.field].classList.add('is-bad'); f.elements[d.field].focus(); }
         captcha();
         return;
@@ -141,7 +141,7 @@
       if (d.pending) { welcome(d.recovery, false, { login: u, password: p }, d.email); return; }
       signedIn(d);
       welcome(d.recovery, d.mailed);
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); captcha(); });
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); captcha(); });
   });
 
   // waitingFor: an account that opens from the mail (the sign-in, kept in memory only to send the link again)
@@ -150,7 +150,7 @@
     var v = $('[data-view="welcome"]');
     waitingFor = creds || null; waitingMail = email || '';
     $('.acct-code', v).textContent = code;
-    $('.acct-welcome-tx', v).textContent = creds ? 'تم إنشاء حسابك. احفظ كود الاسترجاع أولًا، ثم فعّل حسابك من بريدك.' : 'تم إنشاء حسابك.';
+    $('.acct-welcome-tx', v).textContent = creds ? 'تم إنشاء حسابك. احفظ كود الاسترجاع أولا، ثم فعل حسابك من بريدك.' : 'تم إنشاء حسابك.';
     var check = $('.acct-saved', v), go = $('[data-go="profile"]', v);
     go.textContent = creds ? 'متابعة' : 'متابعة إلى حسابي';
     check.checked = false; go.disabled = true;
@@ -173,9 +173,9 @@
     api('/login', waitingFor).then(function (d) {
       b.disabled = false;
       if (d.ok) { signedIn(d); waitingFor = null; done(); return; }
-      m.textContent = d.sent ? 'أرسلنا رابطًا جديدًا ✓ افتح بريدك.' : d.unverified ? 'أرسلنا الرابط قبل قليل. انتظر دقائق ثم حاول مرة أخرى.' : (d.error && !EN ? d.error : 'تعذّر الإرسال، حاول مرة أخرى.');
+      m.textContent = d.sent ? 'أرسلنا رابطا جديدا ✓ افتح بريدك.' : d.unverified ? 'أرسلنا الرابط قبل قليل. انتظر دقائق ثم حاول مرة أخرى.' : (d.error && !EN ? d.error : 'تعذر الإرسال، حاول مرة أخرى.');
       m.className = 'acct-msg acct-pending-msg ' + (d.sent ? 'is-ok' : 'is-bad');
-    }).catch(function () { b.disabled = false; m.textContent = 'تعذّر الاتصال، حاول مرة أخرى.'; m.className = 'acct-msg acct-pending-msg is-bad'; });
+    }).catch(function () { b.disabled = false; m.textContent = 'تعذر الاتصال، حاول مرة أخرى.'; m.className = 'acct-msg acct-pending-msg is-bad'; });
   });
   $('.acct-copy').addEventListener('click', function () {
     var b = this, code = $('.acct-code').textContent;
@@ -191,9 +191,9 @@
     api('/forgot', { email: val(f, 'email') }).then(function (d) {
       busy(f, false);
       if (d.nomail) { say(f, 'الاسترجاع بالبريد غير متاح الآن، استخدم كود الاسترجاع.', 'bad'); $('[data-view="forgot"] [data-tab="code"]').click(); return; }
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر الإرسال، حاول مرة أخرى.', 'bad'); return; }
-      say(f, 'إن كان لهذا البريد حساب، ستصلك رسالة خلال دقائق. افحص البريد غير المرغوب أيضًا.', 'ok');
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); });
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الإرسال، حاول مرة أخرى.', 'bad'); return; }
+      say(f, 'إن كان لهذا البريد حساب، ستصلك رسالة خلال دقائق. افحص البريد غير المرغوب أيضا.', 'ok');
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
 
   forms.code.addEventListener('submit', function (e) {
@@ -203,15 +203,15 @@
     busy(f, true); say(f, 'لحظة…');
     api('/recover', { login: val(f, 'login'), code: val(f, 'code'), password: f.elements.password.value }).then(function (d) {
       busy(f, false);
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر التغيير، تأكد من البيانات.', 'bad'); return; }
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر التغيير، تأكد من البيانات.', 'bad'); return; }
       var creds = { login: val(f, 'login'), password: f.elements.password.value };
       f.reset();
-      if (d.pending) { welcome(d.recovery, false, creds, d.email); $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، ثم فعّل حسابك من بريدك.'; return; }
+      if (d.pending) { welcome(d.recovery, false, creds, d.email); $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، ثم فعل حسابك من بريدك.'; return; }
       signedIn(d);
       // the old code is used up: a new one, once
       welcome(d.recovery, false);
       $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، والقديم لم يعد يعمل.';
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); });
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
 
   forms.reset.addEventListener('submit', function (e) {
@@ -221,11 +221,11 @@
     busy(f, true); say(f, 'لحظة…');
     api('/reset', { token: t, password: f.elements.password.value }).then(function (d) {
       busy(f, false);
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر الحفظ، حاول مرة أخرى.', 'bad'); return; }
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الحفظ، حاول مرة أخرى.', 'bad'); return; }
       signedIn(d);
       history.replaceState(null, '', location.pathname);
       done();
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); });
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
 
   // ── the member's page ────────────────────────────────────────────────────
@@ -256,10 +256,14 @@
     v.classList.toggle('is-official', !!m.official);
     var prem = !m.official && Number(m.premium) > Date.now();
     v.classList.toggle('is-prem', prem);
-    $('.acct-badge span', v).textContent = m.official ? 'الحساب الرسمي' : prem ? 'عضو مميز' : 'حساب موثّق';
+    $('.acct-badge span', v).textContent = m.official ? 'الحساب الرسمي' : prem ? 'عضو مميز' : 'حساب موثق';
     $('.acct-badge', v).hidden = !m.official && m.blue === false && !(Number(m.premium) > Date.now());
-    $('.acct-badge', v).title = m.official ? 'الحساب الرسمي لعرب راسلنج' : 'حساب موثّق في عرب راسلنج';
-    $('[data-open="pics"]', v).disabled = !!m.official;
+    $('.acct-badge', v).title = m.official ? 'الحساب الرسمي لعرب راسلنج' : 'حساب موثق في عرب راسلنج';
+    $$('[data-open="pics"]', v).forEach(function (b) { b.disabled = !!m.official; });
+    // no blue badge yet: how to get it (owner 2026-10-15: «شارة علامة التوثيق لو هو عايز يحصل عليها يشترك»)
+    $('.acct-getblue', v).hidden = !!m.official || !$('.acct-badge', v).hidden;
+    plan(m);
+    $('.acct-cur-mail b', v).textContent = m.email || '';
     var f = forms.profile;
     f.elements.display.value = m.display || '';
     f.elements.display.readOnly = !!m.official;
@@ -267,6 +271,27 @@
     f.elements.bio.value = m.bio || '';
     $$('[data-chips="fav_fed"] button', f).forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-v') === m.fav_fed); });
   }
+  // the membership card: the site's own account, a premium member (until when), or what premium gives
+  function plan(m) {
+    var prem = !m.official && Number(m.premium) > Date.now();
+    var kind = m.official ? 'official' : prem ? 'premium' : 'free';
+    $$('[data-plan]').forEach(function (c) { c.hidden = c.getAttribute('data-plan') !== kind; });
+    if (prem) {
+      var d = new Date(Number(m.premium)), left = Math.max(0, Math.ceil((Number(m.premium) - Date.now()) / 864e5));
+      $('.acct-plan-until').textContent = 'عضويتك سارية حتى ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' · المتبقي: ' + left + ' يوم';
+    }
+  }
+  // «حسابي» and «الإعدادات» (/account/#settings opens the second, also from the header's menu)
+  function tab(name) {
+    $$('.acct-ptab').forEach(function (t) { var on = t.getAttribute('data-ptab') === name; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', String(on)); });
+    $$('.acct-pane').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== name; });
+    var want = name === 'settings' ? '#settings' : '';
+    if (location.hash !== want) history.replaceState(null, '', location.pathname + location.search + want);
+  }
+  $$('.acct-ptab').forEach(function (t) { t.addEventListener('click', function () { tab(t.getAttribute('data-ptab')); }); });
+  $$('[data-goto]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); tab(a.getAttribute('data-goto')); window.scrollTo({ top: 0, behavior: 'smooth' }); }); });
+  window.addEventListener('hashchange', function () { if (session) tab(location.hash === '#settings' ? 'settings' : 'home'); });
+
   $$('[data-chips="fav_fed"] button').forEach(function (b) {
     b.addEventListener('click', function () {
       var on = !b.classList.contains('is-on');
@@ -281,11 +306,11 @@
     api('/profile', { display: val(f, 'display'), fav_fed: on ? on.getAttribute('data-v') : '', fav_star: val(f, 'fav_star'), bio: val(f, 'bio') }, true).then(function (d) {
       busy(f, false);
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر الحفظ.', 'bad'); return; }
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الحفظ.', 'bad'); return; }
       session.member = d.member; save(session); drawProfile();
       say(f, 'تم الحفظ ✓', 'ok');
       setTimeout(function () { say(f, ''); }, 2500);
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); });
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
 
   // the picture: one of the stars (the same list as the comments' pictures)
@@ -313,9 +338,12 @@
       $('.acct-pics').hidden = true;
     });
   }
-  $('[data-open="pics"]').addEventListener('click', function () {
+  function openPics() {
+    if (session && session.member.official) return;
+    tab('settings');
     var box = $('.acct-pics');
     box.hidden = !box.hidden;
+    if (!box.hidden) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
     if (box.hidden || stars) return;
     fetch('/avatars/credits.json' + AV).then(function (r) { return r.json(); }).then(function (l) {
       stars = l;
@@ -331,7 +359,8 @@
         if (!i || f === session.member.fav_fed) b.click();
       });
     }).catch(function () {});
-  });
+  }
+  $$('[data-open="pics"]').forEach(function (b) { b.addEventListener('click', openPics); });
   $('[data-pic=""]').addEventListener('click', function () { setPic(''); });
 
   forms.password.addEventListener('submit', function (e) {
@@ -341,16 +370,31 @@
     api('/password', { current: f.elements.current.value, password: f.elements.password.value }, true).then(function (d) {
       busy(f, false);
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر التغيير.', 'bad'); return; }
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر التغيير.', 'bad'); return; }
       f.reset(); say(f, 'تم تغيير كلمة المرور، وخرجنا من حسابك على الأجهزة الأخرى.', 'ok');
-    }).catch(function () { busy(f, false); say(f, 'تعذّر الاتصال، حاول مرة أخرى.', 'bad'); });
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
+  });
+  forms.email.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = this;
+    if (!val(f, 'email') || !f.elements.current.value) { say(f, 'اكتب البريد الجديد وكلمة المرور الحالية.', 'bad'); return; }
+    busy(f, true); say(f, 'لحظة…');
+    api('/email', { email: val(f, 'email'), current: f.elements.current.value }, true).then(function (d) {
+      busy(f, false);
+      if (d.signedOut) return out();
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر تغيير البريد.', 'bad'); return; }
+      f.reset();
+      if (d.pending) { say(f, 'أرسلنا رابط التأكيد إلى ' + d.email + '. افتح الرسالة واضغط «تأكيد البريد الجديد».', 'ok'); return; }
+      session.member = d.member; save(session); drawProfile();
+      say(f, 'تم تغيير البريد ✓', 'ok');
+    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
   $('[data-act="recovery"]').addEventListener('click', function () {
     var f = forms.password;
-    if (!f.elements.current.value) { f.elements.current.focus(); say(f, 'اكتب كلمة المرور الحالية أولًا.', 'bad'); return; }
+    if (!f.elements.current.value) { f.elements.current.focus(); say(f, 'اكتب كلمة المرور الحالية أولا.', 'bad'); return; }
     api('/recovery', { current: f.elements.current.value }, true).then(function (d) {
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذّر ذلك.', 'bad'); return; }
+      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر ذلك.', 'bad'); return; }
       f.reset();
       welcome(d.recovery, false);
       $('.acct-welcome-tx').textContent = 'هذا كود الاسترجاع الجديد، والقديم لم يعد يعمل.';
@@ -360,7 +404,7 @@
   $('[data-act="verify-again"]').addEventListener('click', function () {
     var b = this;
     b.disabled = true;
-    api('/verify-again', {}, true).then(function (d) { b.textContent = d.ok ? 'أرسلنا الرسالة ✓' : (d.error && !EN ? d.error : 'تعذّر الإرسال.'); });
+    api('/verify-again', {}, true).then(function (d) { b.textContent = d.ok ? 'أرسلنا الرسالة ✓' : (d.error && !EN ? d.error : 'تعذر الإرسال.'); });
   });
   $('[data-act="logout"]').addEventListener('click', function () {
     api('/logout', {}, true).catch(function () {}).then(out);
@@ -370,7 +414,7 @@
   function done() {
     var back = new URLSearchParams(location.search).get('back') || '';
     if (/^\/(?!\/)/.test(back)) { location.href = back; return; }
-    drawProfile(); show('profile');
+    drawProfile(); show('profile'); tab(location.hash === '#settings' ? 'settings' : 'home');
   }
 
   // ── the start ────────────────────────────────────────────────────────────
@@ -383,19 +427,27 @@
         history.replaceState(null, '', location.pathname);
         if (d.ok && d.token) signedIn(d);
         else if (d.ok && session) { session.member.verified = true; save(session); }
-        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلًا بك في عرب راسلنج. حسابك جاهز، ويمكنك الآن الاستفادة من كل مميزات العضوية.' : (d.error && !EN ? d.error : 'رابط التفعيل غير صالح.'));
+        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلا بك في عرب راسلنج. حسابك جاهز، ويمكنك الآن الاستفادة من كل مميزات العضوية.' : (d.error && !EN ? d.error : 'رابط التفعيل غير صالح.'));
       });
       return;
     }
     if (q.get('reset')) { show('reset'); return; }
+    if (q.get('email')) {
+      api('/email-confirm', { token: q.get('email') }).then(function (d) {
+        history.replaceState(null, '', location.pathname);
+        if (d.ok && session) { session.member.email = d.email; save(session); }
+        note(d.ok ? 'تم تأكيد بريدك الجديد ✓' : 'الرابط لا يعمل', d.ok ? 'بريد حسابك الآن: ' + d.email : (d.error && !EN ? d.error : 'رابط التأكيد غير صالح.'));
+      });
+      return;
+    }
     if (!session) { show('auth'); if (q.get('new') !== null) $('[data-view="auth"] [data-tab="up"]').click(); return; }
     // the session still good? (and the member as they are now)
     api('/me', null, true).then(function (d) {
       if (!d.ok) { out(); return; }
       mailOn = !!d.mail;
       session.member = d.member; save(session);
-      drawProfile(); show('profile');
-    }).catch(function () { drawProfile(); show('profile'); });
+      drawProfile(); show('profile'); tab(location.hash === '#settings' ? 'settings' : 'home');
+    }).catch(function () { drawProfile(); show('profile'); tab(location.hash === '#settings' ? 'settings' : 'home'); });
   }
   start();
 })();

@@ -8,7 +8,7 @@
 //   3. POST /premium/webhook                   Fawaterk tells the worker (its hashKey checked), and the worker asks Fawaterk
 //      POST /premium/check                     again (getInvoiceData); the page asks too, so a late webhook doesn't matter
 //   4. 30 days are added (to what's left, when renewing). Each invoice counts once.
-// With no FAWATERK_API_KEY yet, the owner's two fixed Fawaterk links are used and the panel turns the membership on.
+// With no Fawaterk key yet (FAWATERK_API_KEY, or FAWATERK_CLIENT_ID + FAWATERK_CLIENT_SECRET), the owner's two fixed Fawaterk links are used and the panel turns the membership on.
 //
 //   GET  /premium/requests      the member's own requests        POST /premium/requests {kind, text}
 // The panel (worker/src/index.ts): GET /api/studio/premium, POST /api/studio/premium/grant {id, days},
@@ -16,7 +16,7 @@
 import { memberOf, ensureMembers } from "./members";
 import { readRepoFile } from "./studio";
 
-export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; FAWATERK_API_KEY?: string; FAWATERK_VENDOR_KEY?: string; RESEND_API_KEY?: string;
+export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; FAWATERK_API_KEY?: string; FAWATERK_VENDOR_KEY?: string; FAWATERK_CLIENT_ID?: string; FAWATERK_CLIENT_SECRET?: string; RESEND_API_KEY?: string;
   GITHUB_OWNER?: string; GITHUB_REPO?: string; GITHUB_BRANCH?: string; GITHUB_TOKEN?: string }
 
 export const PLANS = { EGP: { price: 50, link: "https://app.fawaterk.com/invoices/item/16781/alaadoy-almmyz-gny-msry" }, USD: { price: 1, link: "https://app.fawaterk.com/invoices/item/16782/alaadoy-almmyz-dolar-amryky" } } as const;
@@ -71,11 +71,44 @@ export async function validHash(env: PremiumEnv, b: any): Promise<boolean> {
   for (const key of [env.FAWATERK_VENDOR_KEY, env.FAWATERK_API_KEY]) if (key && (await hmac(key, text)) === got) return true;
   return false;
 }
+/** Fawaterk's API key: a fixed token (FAWATERK_API_KEY), or one asked for with the OAuth client the owner made in
+ *  Fawaterk («التكامل البرمجي» → «بيانات اعتماد عميل OAuth»), kept in KV until shortly before it ends */
+export const fawaterkLive = (env: PremiumEnv) => !!(env.FAWATERK_API_KEY || (env.FAWATERK_CLIENT_ID && env.FAWATERK_CLIENT_SECRET));
+export async function fawaterkToken(env: PremiumEnv, fresh = false): Promise<string> {
+  if (env.FAWATERK_API_KEY) return env.FAWATERK_API_KEY;
+  if (!env.FAWATERK_CLIENT_ID || !env.FAWATERK_CLIENT_SECRET) return "";
+  const KEY = "pm:fawaterk:token";
+  if (!fresh) { const t = await env.PUSH_KV.get(KEY); if (t) return t; }
+  try {
+    const r = await fetch("https://app.fawaterk.com/oauth/token", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" },
+      body: new URLSearchParams({ grant_type: "client_credentials", client_id: env.FAWATERK_CLIENT_ID, client_secret: env.FAWATERK_CLIENT_SECRET, scope: "" }).toString(),
+    });
+    const d: any = await r.json().catch(() => null);
+    const token = String(d?.access_token || d?.data?.access_token || "");
+    if (!r.ok || !token) return "";
+    const life = Number(d?.expires_in || d?.data?.expires_in) || 3600;
+    await env.PUSH_KV.put(KEY, token, { expirationTtl: Math.max(60, Math.min(life - 300, 30 * 86400)) });
+    return token;
+  } catch { return ""; }
+}
+/** A call to Fawaterk's API with its token; a refused token is asked for again once */
+async function fawaterk(env: PremiumEnv, path: string, init: RequestInit = {}): Promise<Response | null> {
+  for (const fresh of [false, true]) {
+    const token = await fawaterkToken(env, fresh);
+    if (!token) return null;
+    const r = await fetch(`${FAWATERK}${path}`, { ...init, headers: { ...(init.headers as any || {}), Authorization: `Bearer ${token}`, Accept: "application/json" } }).catch(() => null);
+    if (!r || r.status !== 401 || env.FAWATERK_API_KEY) return r;
+  }
+  return null;
+}
 /** Is this invoice paid? Fawaterk itself says (its answer, not the webhook's word) */
 export async function invoicePaid(env: PremiumEnv, invoiceId: string): Promise<{ paid: boolean; method?: string; reference?: string } | null> {
-  if (!env.FAWATERK_API_KEY || !invoiceId) return null;
+  if (!fawaterkLive(env) || !invoiceId) return null;
   try {
-    const r = await fetch(`${FAWATERK}/getInvoiceData/${encodeURIComponent(invoiceId)}`, { headers: { Authorization: `Bearer ${env.FAWATERK_API_KEY}`, Accept: "application/json" } });
+    const r = await fawaterk(env, `/getInvoiceData/${encodeURIComponent(invoiceId)}`);
+    if (!r) return null;
     const d: any = await r.json().catch(() => null);
     const x = d?.data || {};
     const paid = x.paid === 1 || x.paid === true || x.paid === "1" || /^paid$/i.test(String(x.status_text || x.invoice_status || x.status || ""));
@@ -173,13 +206,13 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     const currency = String(body.currency || "EGP").toUpperCase() === "USD" ? "USD" : "EGP";
     const plan = PLANS[currency];
     const back = `${SITE}${body.en ? "/en" : ""}/premium/`; // back to the page in the member's language
-    if (!env.FAWATERK_API_KEY) return reply({ ok: true, url: plan.link, manual: true });
+    if (!fawaterkLive(env)) return reply({ ok: true, url: plan.link, manual: true });
     const open = await db.prepare("SELECT COUNT(*) AS n FROM premium_payments WHERE member = ?1 AND created > ?2").bind(me.id, now - 3_600_000).first<{ n: number }>();
     if ((open?.n || 0) >= 8) return reply({ ok: false, error: "طلبات دفع كثيرة، حاول بعد قليل." }, 429);
     const name = String(me.display || me.username).trim().split(/\s+/);
-    const res = await fetch(`${FAWATERK}/createInvoiceLink`, {
+    const res = await fawaterk(env, "/createInvoiceLink", {
       method: "POST",
-      headers: { Authorization: `Bearer ${env.FAWATERK_API_KEY}`, "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         cartTotal: String(plan.price), currency,
         customer: { first_name: name[0] || me.username, last_name: name.slice(1).join(" ") || "Member", email: me.email },
@@ -187,10 +220,11 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
         cartItems: [{ name: currency === "USD" ? "Arab Wrestling Premium (1 month)" : "العضوية المميزة - عرب راسلنج (شهر)", price: String(plan.price), quantity: "1" }],
         payLoad: JSON.stringify({ member: me.id }),
       }),
-    }).catch(() => null);
+    });
     const d: any = res ? await res.json().catch(() => null) : null;
     const inv = d?.data || {};
-    if (!res || !res.ok || d?.status !== "success" || !inv.url) return reply({ ok: false, error: "تعذّر فتح صفحة الدفع الآن، حاول بعد قليل." }, 502);
+    // Fawaterk refused or didn't answer: the fixed link, so the member can still pay (the panel turns it on)
+    if (!res || !res.ok || d?.status !== "success" || !inv.url) { console.log(`[premium] createInvoiceLink ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`); return reply({ ok: true, url: plan.link, manual: true }); }
     await db.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created) VALUES (?1, ?2, ?3, ?4, ?5, ?6)")
       .bind(me.id, String(inv.invoiceId ?? inv.invoice_id ?? ""), String(inv.invoiceKey ?? inv.invoice_key ?? ""), currency, plan.price, now).run();
     return reply({ ok: true, url: String(inv.url) });
@@ -237,7 +271,23 @@ export async function studioPremium(env: PremiumEnv, now = Date.now()) {
     db.prepare(`SELECT r.*, m.username, m.display, m.pic, m.premium_until FROM premium_requests r LEFT JOIN members m ON m.id = r.member ORDER BY CASE r.status WHEN 'new' THEN 0 WHEN 'working' THEN 1 ELSE 2 END, r.id DESC LIMIT 300`),
     db.prepare("SELECT currency, SUM(amount) AS total, COUNT(*) AS n FROM premium_payments WHERE status = 'paid' AND paid_at > ?1 AND granted_by = '' GROUP BY currency").bind(month),
   ]) as any[];
-  return { success: true, members: members.results || [], payments: payments.results || [], requests: requests.results || [], month: sums.results || [], live: !!env.FAWATERK_API_KEY };
+  return { success: true, members: members.results || [], payments: payments.results || [], requests: requests.results || [], month: sums.results || [], live: fawaterkLive(env) };
+}
+/** The panel's bell: a new subscriber (paid, or given by hand) and a new translation request */
+export async function premiumNotifications(env: PremiumEnv, sinceMs: number): Promise<any[]> {
+  const db = env.ANALYTICS;
+  if (!db) return [];
+  try {
+    await ensurePremium(db);
+    const [pays, reqs] = await Promise.all([
+      db.prepare("SELECT p.id, p.member, p.amount, p.currency, p.paid_at, p.days, p.granted_by, m.username, m.display FROM premium_payments p LEFT JOIN members m ON m.id = p.member WHERE p.status = 'paid' AND p.paid_at > ?1 ORDER BY p.paid_at DESC LIMIT 30").bind(sinceMs).all<any>(),
+      db.prepare("SELECT r.id, r.member, r.kind, r.text, r.created, m.username, m.display FROM premium_requests r LEFT JOIN members m ON m.id = r.member WHERE r.created > ?1 ORDER BY r.created DESC LIMIT 30").bind(sinceMs).all<any>(),
+    ]);
+    return [
+      ...(pays.results || []).map(p => ({ id: `premium-pay:${p.id}`, type: "premium-pay", at: p.paid_at, member: p.member, name: p.display || p.username || "", amount: p.amount, currency: p.currency, days: p.days, by: p.granted_by || "" })),
+      ...(reqs.results || []).map(r => ({ id: `premium-req:${r.id}`, type: "premium-req", at: r.created, member: r.member, name: r.display || r.username || "", kind: r.kind, text: String(r.text || "").slice(0, 160) })),
+    ];
+  } catch { return []; }
 }
 /** The editor's «للأعضاء المميزين»: a show's premium servers and downloads */
 export async function studioPremiumMedia(env: PremiumEnv, key: unknown, body: any = null, now = Date.now()) {

@@ -369,6 +369,18 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     return reply({ ok: true, token: await startSession(db, m.id, request, now), member: mine(m) });
   }
 
+  // a new e-mail address, confirmed from the new inbox (the link may open on any device, so no session is needed)
+  if (path === "/email-confirm" && request.method === "POST") {
+    const key = `members:email:${await sha(String(body.token || ""))}`;
+    const want: any = JSON.parse(await env.PUSH_KV.get(key) || "null");
+    if (!want) return reply({ ok: false, error: "رابط تأكيد البريد انتهت صلاحيته. غيّر البريد مرة أخرى من الإعدادات." }, 400);
+    const taken = await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(want.email, want.member).first();
+    if (taken) { await env.PUSH_KV.delete(key); return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409); }
+    await db.prepare("UPDATE members SET email = ?1, verified = 1 WHERE id = ?2").bind(want.email, want.member).run();
+    await env.PUSH_KV.delete(key);
+    return reply({ ok: true, email: want.email });
+  }
+
   if (path.startsWith("/u/") && request.method === "GET") {
     const u = decodeURIComponent(path.slice(3)).trim();
     const m = await db.prepare("SELECT id, username, display, pic, fav_fed, fav_star, bio, created, official, badge, premium_until FROM members WHERE ukey = ?1 AND banned = 0").bind(ukeyOf(u)).first<any>();
@@ -426,6 +438,30 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const code = recoveryCode();
     await db.prepare("UPDATE members SET recovery = ?1 WHERE id = ?2").bind(await sha(cleanCode(code)), me.id).run();
     return reply({ ok: true, recovery: code });
+  }
+
+  // changing the e-mail: the password first; with mail on, the new address gets a link and the old one stays until then
+  if (path === "/email" && request.method === "POST") {
+    if (!(await verifyPassword(String(body.current || ""), me))) return reply({ ok: false, error: "كلمة المرور الحالية غير صحيحة." }, 400);
+    const email = String(body.email || "").trim().toLowerCase();
+    if (!EMAIL.test(email)) return reply({ ok: false, error: "اكتب بريدًا صحيحًا." }, 400);
+    if (email === me.email) return reply({ ok: false, error: "هذا هو بريدك الحالي." }, 400);
+    if (await db.prepare("SELECT id FROM members WHERE email = ?1").bind(email).first()) return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409);
+    if (!mustVerify(env)) {
+      await db.prepare("UPDATE members SET email = ?1 WHERE id = ?2").bind(email, me.id).run();
+      const m = await db.prepare("SELECT * FROM members WHERE id = ?1").bind(me.id).first<Member>();
+      return reply({ ok: true, member: mine(m!) });
+    }
+    if (await tooMany(env.PUSH_KV, `em:${me.id}`, 3, 3600)) return reply({ ok: false, error: "طلبات كثيرة، حاول بعد ساعة." }, 429);
+    await count(env.PUSH_KV, `em:${me.id}`, 3600);
+    const t = randomToken();
+    await env.PUSH_KV.put(`members:email:${await sha(t)}`, JSON.stringify({ member: me.id, email }), { expirationTtl: 86400 });
+    const sent = await sendMail(env, email, "أكّد بريدك الجديد في عرب راسلنج", mailHtml(`أهلًا يا ${esc(me.display || me.username)}`, [
+      "طلبت تغيير بريد حسابك في عرب راسلنج إلى هذا البريد.",
+      "اضغط على الزر لتأكيد البريد الجديد. بريدك القديم يبقى كما هو حتى تضغط.",
+      "الرابط صالح لمدة يوم واحد. إن لم تطلب هذا، تجاهل الرسالة.",
+    ], { text: "تأكيد البريد الجديد", href: `${SITE}/account/?email=${t}` }));
+    return sent ? reply({ ok: true, pending: true, email: maskEmail(email) }) : reply({ ok: false, error: "إرسال البريد غير متاح الآن، حاول بعد قليل." }, 503);
   }
 
   if (path === "/verify-again" && request.method === "POST") {

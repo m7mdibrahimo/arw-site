@@ -1,7 +1,7 @@
 /**
  * Arab Wrestling - Client Enhancements
  * 1. Instant Live Search Dropdown
- * 2. Watch Later / Bookmarks (المفضلة وقائمة المشاهدة لاحقاً)
+ * 2. Watch Later / Bookmarks (المفضلة وقائمة المشاهدة لاحقا)
  * 3. Interactive Spoiler Blocker (كشف/إخفاء الفائزين)
  */
 (function() {
@@ -332,7 +332,7 @@
   }
 
   /* ==========================================================================
-     2. Watch Later / Bookmarks (المفضلة وقائمة المشاهدة لاحقاً)
+     2. Watch Later / Bookmarks (المفضلة وقائمة المشاهدة لاحقا)
      ========================================================================== */
   var BOOKMARKS_KEY = 'arw_bookmarks';
 
@@ -413,12 +413,12 @@
 
     if (bookmarked) {
       btn.classList.add('bookmarked');
-      btn.setAttribute('title', 'إزالة من المفضلة والمشاهدة لاحقاً');
+      btn.setAttribute('title', 'إزالة من المفضلة والمشاهدة لاحقا');
       if (textEl) textEl.textContent = 'محفوظ في المفضلة';
     } else {
       btn.classList.remove('bookmarked');
-      btn.setAttribute('title', 'حفظ للمشاهدة لاحقاً في المفضلة');
-      if (textEl) textEl.textContent = 'حفظ للمشاهدة لاحقاً';
+      btn.setAttribute('title', 'حفظ للمشاهدة لاحقا في المفضلة');
+      if (textEl) textEl.textContent = 'حفظ للمشاهدة لاحقا';
     }
   }
 
@@ -435,7 +435,7 @@
     if (!list.length) {
       drawerBody.innerHTML = '<div class="bookmarks-empty">' +
         '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
-        '<p>قائمة المشاهدة لاحقاً فارغة حالياً.<br>اضغط على زر <strong>«حفظ للمشاهدة لاحقاً»</strong> في أي عرض أو خبر للرجوع إليه هنا في أي وقت!</p>' +
+        '<p>قائمة المشاهدة لاحقا فارغة حاليا.<br>اضغط على زر <strong>«حفظ للمشاهدة لاحقا»</strong> في أي عرض أو خبر للرجوع إليه هنا في أي وقت!</p>' +
       '</div>';
       return;
     }
@@ -484,8 +484,8 @@
       bmBtn.className = 'theme-toggle bookmarks-btn';
       bmBtn.id = 'arwBookmarksBtn';
       bmBtn.setAttribute('type', 'button');
-      bmBtn.setAttribute('aria-label', 'المفضلة وقائمة المشاهدة لاحقاً');
-      bmBtn.setAttribute('title', 'المفضلة والمشاهدة لاحقاً');
+      bmBtn.setAttribute('aria-label', 'المفضلة وقائمة المشاهدة لاحقا');
+      bmBtn.setAttribute('title', 'المفضلة والمشاهدة لاحقا');
       bmBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
         '<span class="bookmark-badge" id="arwBookmarkBadge" style="display:none;">0</span>';
       utilityRow.insertBefore(bmBtn, utilityRow.firstChild);
@@ -502,12 +502,12 @@
       drawer.id = 'arwBookmarksDrawer';
       drawer.setAttribute('role', 'dialog');
       drawer.setAttribute('aria-modal', 'true');
-      drawer.setAttribute('aria-label', 'المفضلة وقائمة المشاهدة لاحقاً');
+      drawer.setAttribute('aria-label', 'المفضلة وقائمة المشاهدة لاحقا');
 
       drawer.innerHTML = '<div class="bookmarks-drawer-head">' +
         '<div class="bookmarks-drawer-title">' +
           '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>' +
-          '<span>المفضلة والمشاهدة لاحقاً</span>' +
+          '<span>المفضلة والمشاهدة لاحقا</span>' +
         '</div>' +
         '<button class="bookmarks-drawer-close" id="arwBookmarksClose" type="button" aria-label="إغلاق">' +
           '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>' +
@@ -701,7 +701,7 @@
     sheet.setAttribute('aria-label', 'المزيد من الأقسام');
     var mem = memberNow();
     sheet.innerHTML = '<div class="arw-more-grip"></div>' +
-      '<a class="arw-more-acct" href="' + (document.documentElement.lang === 'en' ? '/en/account/' : '/account/') + '"><span class="arw-more-acct-av">' + (mem ? memberAvatar(mem) : USER_IC) + '</span><span><b></b><small></small></span><i aria-hidden="true">‹</i></a>' +
+      '<a class="arw-more-acct" href="' + (document.documentElement.lang === 'en' ? '/en/account/' : '/account/') + '"><span class="arw-more-acct-av">' + (mem ? '<span class="arw-acct-in">' + memberAvatar(mem) + '</span>' : USER_IC) + '</span><span><b></b><small></small></span><i aria-hidden="true">‹</i></a>' +
       // «مجتمع المصارعة» (pages/community.njk)
       '<a class="arw-more-cm" href="/community/"><span class="arw-more-cm-ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span><span><b>مجتمع المصارعة</b><small>دردش مع محبي اتحادك مباشرة</small></span><i aria-hidden="true">‹</i></a>' +
       '<div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
@@ -709,12 +709,20 @@
       '<a href="/federations/">' + ICONS.feds + 'الاتحادات</a>' +
       '<a href="/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
       '<a href="/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
-      '<a class="more-tg" href="https://t.me/arab_wrestling" target="_blank" rel="noopener">' + ICONS.tg + 'قناة التليجرام</a>' +
       // «العضوية المميزة» (pages/premium.njk) took «ادعم الموقع»'s place; hidden for a member who has it
       '<a class="more-support premium-btn" href="/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
       '</div>';
-    sheet.querySelector('.arw-more-acct b').textContent = mem ? (mem.display || mem.username) : 'حسابك في عرب راسلنج';
-    sheet.querySelector('.arw-more-acct small').textContent = mem ? 'صفحتك وإعداداتك' : 'ادخل أو أنشئ حسابًا مجانيًا';
+    sheet.querySelector('.arw-more-acct > span:not(.arw-more-acct-av) b').textContent = mem ? (mem.display || mem.username) : 'حسابك في عرب راسلنج';
+    sheet.querySelector('.arw-more-acct > span:not(.arw-more-acct-av) small').textContent = mem ? (mem.official ? 'الحساب الرسمي' : Number(mem.premium) > Date.now() ? 'عضو مميز' : 'حسابي') : 'ادخل أو أنشئ حساب مجاني';
+    crowned(sheet.querySelector('.arw-more-acct-av'), mem);
+    if (mem) {
+      // the member's own links, under their name: settings and signing out (the menu of the computers' header)
+      var links = document.createElement('div');
+      links.className = 'arw-more-acct-links';
+      links.innerHTML = '<a href="' + (document.documentElement.lang === 'en' ? '/en' : '') + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
+      links.querySelector('button').addEventListener('click', signOut);
+      sheet.querySelector('.arw-more-acct').insertAdjacentElement('afterend', links);
+    }
     document.body.appendChild(overlay);
     document.body.appendChild(sheet);
     var moreBtn = nav.querySelector('.arw-more-btn');
@@ -760,7 +768,7 @@
         else av.textContent = (String(first.name).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
         // a reply, or the site's heart on their comment («أعجب عرب راسلنج بتعليقك»)
         card.querySelector('b').textContent = items.length > 1
-          ? (items.length === 2 ? 'تنبيهان جديدان على تعليقاتك' : (items.length <= 10 ? '{n} تنبيهات جديدة على تعليقاتك' : '{n} تنبيهًا جديدًا على تعليقاتك').replace('{n}', items.length))
+          ? (items.length === 2 ? 'تنبيهان جديدان على تعليقاتك' : (items.length <= 10 ? '{n} تنبيهات جديدة على تعليقاتك' : '{n} تنبيها جديدا على تعليقاتك').replace('{n}', items.length))
           : first.kind === 'heart' ? 'أعجب عرب راسلنج بتعليقك ❤️' : '{n} رد على تعليقك'.replace('{n}', who);
         card.querySelector('.arw-rt-text').textContent = first.text;
         card.querySelector('.arw-rt-text').dir = 'auto';
@@ -795,8 +803,108 @@
     a.href = document.documentElement.lang === 'en' ? '/en/account/' : '/account/';
     a.setAttribute('aria-label', m ? 'حسابك' : 'تسجيل الدخول');
     a.title = m ? (m.display || m.username) : 'تسجيل الدخول أو إنشاء حساب';
-    a.innerHTML = m ? memberAvatar(m) : USER_IC;
+    a.innerHTML = m ? '<span class="arw-acct-in">' + memberAvatar(m) + '</span>' : USER_IC;
+    crowned(a, m);
     util.insertBefore(a, util.querySelector('.bookmarks-btn') || util.firstChild);
+    if (m) accountMenu(a);
+  }
+
+  // A subscriber's picture: a gold ring and a crown under it (owner 2026-10-15: «دايرة دهبي حواليه … ايقونة تاج»);
+  // the site's own account too. Used in the header, its menu and the phones' «المزيد».
+  function isPremium(m) { return !!(m && (m.official || Number(m.premium) > Date.now())); }
+  function crowned(el, m) {
+    if (!el) return;
+    var on = isPremium(m);
+    el.classList.toggle('is-crown', on);
+    var c = el.querySelector(':scope > .arw-crown');
+    if (on && !c) { c = document.createElement('i'); c.className = 'arw-crown'; c.setAttribute('aria-hidden', 'true'); c.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/></svg>'; el.appendChild(c); }
+    else if (!on && c) c.remove();
+  }
+
+  // The member's menu (owner 2026-10-15: «لما اضغط علي العضوية يظهر قائمة … قائمتي والاعدادات»): who they are, their
+  // membership (or what «العضوية المميزة» gives, for those without it), their account, settings, the community, out.
+  var CROWN_IC = '<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
+  var MENU_IC = {
+    me: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+    settings: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+    chat: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>',
+    saved: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
+    panel: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
+    out: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>'
+  };
+  var AR_MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+  function signOut() {
+    var s = null;
+    try { s = JSON.parse(localStorage.getItem('arw-member') || 'null'); } catch (e) {}
+    var done = function () { try { localStorage.removeItem('arw-member'); localStorage.removeItem('arw-member-at'); } catch (e) {} location.reload(); };
+    if (!s || !s.token) return done();
+    fetch('https://arw-site-bot.m7mdibrahimpc.workers.dev/members/logout', { method: 'POST', headers: { Authorization: 'Bearer ' + s.token, 'Content-Type': 'application/json' }, body: '{}', credentials: 'omit' }).catch(function () {}).then(done);
+  }
+  function accountMenu(btn) {
+    var EN = document.documentElement.lang === 'en', HOME = EN ? '/en' : '';
+    var pop = null;
+    function build() {
+      var m = memberNow();
+      if (!m) return null;
+      var prem = !m.official && Number(m.premium) > Date.now();
+      var el = document.createElement('div');
+      el.className = 'arw-am' + (prem ? ' is-prem' : '') + (m.official ? ' is-official' : '');
+      el.setAttribute('role', 'menu');
+      var until = prem ? new Date(Number(m.premium)) : null;
+      var status = m.official ? 'الحساب الرسمي' : prem ? 'عضو مميز حتى ' + until.getDate() + ' ' + AR_MONTHS[until.getMonth()] : 'حساب مجاني';
+      el.innerHTML =
+        '<a class="arw-am-me" href="' + HOME + '/account/" role="menuitem"><span class="arw-am-av"><span class="arw-acct-in">' + memberAvatar(m) + '</span></span><span class="arw-am-who"><b></b><small dir="ltr"></small></span></a>' +
+        '<div class="arw-am-status">' + (m.official || prem ? CROWN_IC : '') + '<span></span></div>' +
+        (m.official || prem ? '' :
+          '<a class="arw-am-up" href="/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، والعلامة الزرقاء</small></span></a>') +
+        '<nav class="arw-am-list">' +
+          '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
+          '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
+          (prem ? '<a href="/premium/" role="menuitem">' + CROWN_IC + '<span>عضويتي المميزة</span></a>' : '') +
+          '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
+          (m.official ? '<a href="/admin/" role="menuitem">' + MENU_IC.panel + '<span>لوحة التحكم</span></a>' : '') +
+        '</nav>' +
+        '<button type="button" class="arw-am-out" role="menuitem">' + MENU_IC.out + '<span>تسجيل الخروج</span></button>';
+      el.querySelector('.arw-am-who b').textContent = m.display || m.username;
+      el.querySelector('.arw-am-who small').textContent = '@' + m.username;
+      el.querySelector('.arw-am-status span').textContent = status;
+      el.querySelector('.arw-am-out').addEventListener('click', signOut);
+      crowned(el.querySelector('.arw-am-av'), m);
+      return el;
+    }
+    function place() {
+      var r = btn.getBoundingClientRect(), w = pop.offsetWidth;
+      var left = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+      pop.style.top = (r.bottom + 10) + 'px';
+      pop.style.left = left + 'px';
+    }
+    function close() {
+      if (!pop) return;
+      pop.remove(); pop = null;
+      btn.setAttribute('aria-expanded', 'false');
+      document.removeEventListener('click', outside, true);
+      window.removeEventListener('resize', close);
+      window.removeEventListener('scroll', place, true);
+    }
+    function outside(e) { if (pop && !pop.contains(e.target) && !btn.contains(e.target)) close(); }
+    btn.setAttribute('aria-haspopup', 'menu');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.addEventListener('click', function (e) {
+      // a modified click still opens the page itself
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      e.preventDefault();
+      if (pop) { close(); return; }
+      pop = build();
+      if (!pop) { location.href = btn.href; return; }
+      document.body.appendChild(pop);
+      place();
+      btn.setAttribute('aria-expanded', 'true');
+      setTimeout(function () { document.addEventListener('click', outside, true); }, 0);
+      window.addEventListener('resize', close);
+      window.addEventListener('scroll', place, true);
+      var first = pop.querySelector('a'); if (first) first.focus({ preventScroll: true });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pop) { close(); btn.focus(); } });
   }
 
   // a member who already has «العضوية المميزة» (or the site's own account) doesn't see the button for it
@@ -808,6 +916,8 @@
       var st = document.getElementById('arw-prem-hide');
       if (on && !st) { st = document.createElement('style'); st.id = 'arw-prem-hide'; st.textContent = '.premium-btn{display:none !important}'; document.head.appendChild(st); }
       else if (!on && st) st.remove();
+      crowned(document.querySelector('#navMenu .arw-acct-btn.is-in'), m);
+      crowned(document.querySelector('.arw-more-acct-av'), m);
     }
     apply(memberNow());
     var s = null, at = 0;
@@ -826,6 +936,69 @@
       }).catch(function () {});
   }
 
+  // A gentle invitation (owner 2026-10-15: «اشعار او تنبيه … بيظهر ثواني ويختفي عن الاشتراك والانضمام»): a small card
+  // that slides in once, stays ~9 seconds and goes. A visitor is asked to join (free), a member without «العضوية المميزة»
+  // is shown one of its perks. Never on the account, premium, community or panel pages, never while a show is playing,
+  // at most once a day, and three days of rest after the ✕.
+  function initJoinNudge() {
+    var EN = document.documentElement.lang === 'en', HOME = EN ? '/en' : '';
+    var path = location.pathname.replace(/^\/en(?=\/)/, '');
+    if (/^\/(account|premium|community|admin|studio)\//.test(path)) return;
+    var m = memberNow();
+    if (m && (m.official || Number(m.premium) > Date.now())) return;
+    var now = Date.now(), seen = 0, rest = 0;
+    try { seen = Number(localStorage.getItem('arw-nudge-at')) || 0; rest = Number(localStorage.getItem('arw-nudge-rest')) || 0; } catch (e) { return; }
+    if (now - seen < 864e5 || now < rest) return;
+    var CROWN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
+    var JOIN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M19 8v6M16 11h6"/></svg>';
+    var offers = m ? [
+      ['العروض الجديدة قبل الجميع', 'مع العضوية المميزة تشاهد العرض قبل نشره للكل بساعات.', 'اعرف أكثر', '/premium/'],
+      ['شاهد بدون إعلانات', 'سيرفرات خاصة للأعضاء المميزين: أسرع وبدون نوافذ مزعجة.', 'اعرف أكثر', '/premium/'],
+      ['احصل على العلامة الزرقاء', 'وثق حسابك واجعل اسمك ذهبيا في التعليقات والمجتمع.', 'اشترك الآن', '/premium/'],
+      ['اطلب أي عرض ونترجمه لك', 'الأعضاء المميزون يطلبون العروض القديمة والسلاسل، ونحن نترجمها.', 'اعرف أكثر', '/premium/']
+    ] : [
+      ['انضم إلى عرب راسلنج مجانا', 'علق باسمك، ودردش مع محبي المصارعة في مجتمع المصارعة.', 'أنشئ حسابك', HOME + '/account/?new'],
+      ['مجتمع المصارعة في انتظارك', 'غرف دردشة مباشرة لكل اتحاد. أنشئ حسابك المجاني وادخل الآن.', 'أنشئ حسابك', HOME + '/account/?new']
+    ];
+    var o = offers[Math.floor(now / 864e5) % offers.length];
+    var shown = false;
+    function playing() { var d = document.getElementById('watchDeck'); return !!(d && !d.classList.contains('is-idle')); }
+    function busy() { return playing() || document.documentElement.classList.contains('arw-more-open') || document.body.classList.contains('dl-modal-lock') || document.querySelector('.arw-am'); }
+    function show() {
+      if (shown || document.hidden) return;
+      if (busy()) { setTimeout(show, 15000); return; }
+      shown = true;
+      try { localStorage.setItem('arw-nudge-at', String(Date.now())); } catch (e) {}
+      var el = document.createElement('aside');
+      el.className = 'arw-nudge' + (m ? ' is-prem' : '');
+      el.setAttribute('role', 'status');
+      el.innerHTML = '<span class="arw-nudge-ic">' + (m ? CROWN : JOIN) + '</span><span class="arw-nudge-tx"><b></b><small></small></span><a class="arw-nudge-go"></a><button type="button" class="arw-nudge-x" aria-label="إغلاق">✕</button><i class="arw-nudge-bar" aria-hidden="true"></i>';
+      el.querySelector('b').textContent = o[0];
+      el.querySelector('small').textContent = o[1];
+      el.querySelector('.arw-nudge-go').textContent = o[2];
+      el.querySelector('.arw-nudge-go').href = o[3];
+      document.body.appendChild(el);
+      requestAnimationFrame(function () { el.classList.add('is-in'); document.documentElement.classList.add('arw-nudge-on'); });
+      var t = null, left = 9000, started = 0;
+      function go() { el.classList.remove('is-in'); document.documentElement.classList.remove('arw-nudge-on'); setTimeout(function () { el.remove(); }, 400); }
+      function run() { started = Date.now(); el.style.setProperty('--d', left + 'ms'); el.classList.add('is-run'); t = setTimeout(go, left); }
+      function hold() { clearTimeout(t); left = Math.max(1500, left - (Date.now() - started)); el.classList.remove('is-run'); }
+      el.addEventListener('mouseenter', hold); el.addEventListener('mouseleave', run);
+      el.addEventListener('touchstart', hold, { passive: true }); el.addEventListener('touchend', run);
+      el.querySelector('.arw-nudge-x').addEventListener('click', function () {
+        try { localStorage.setItem('arw-nudge-rest', String(Date.now() + 3 * 864e5)); } catch (e) {}
+        clearTimeout(t); go();
+      });
+      setTimeout(run, 50);
+    }
+    // after the visitor has looked around: 25 seconds on the page, or half of it read
+    var timer = setTimeout(show, 25000);
+    window.addEventListener('scroll', function onScroll() {
+      var h = document.documentElement.scrollHeight - innerHeight;
+      if (h > 400 && scrollY / h > 0.5) { window.removeEventListener('scroll', onScroll); clearTimeout(timer); setTimeout(show, 1200); }
+    }, { passive: true });
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
@@ -834,6 +1007,7 @@
     initCommentReplies();
     initAccountButton();
     initPremiumButton();
+    initJoinNudge();
   }
 
   if (document.readyState === 'loading') {

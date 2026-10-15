@@ -184,7 +184,7 @@
     var s = session(), room = current;
     if (!s || !room) return;
     clearTimeout(retryT);
-    if (!msgs.length) conn('جارٍ الاتصال…');
+    if (!msgs.length) conn('جار الاتصال…');
     fetch(API + '/chat/ticket', { method: 'POST', headers: { Authorization: 'Bearer ' + s.token }, credentials: 'omit' })
       .then(function (r) { return r.json().then(function (d) { d.status = r.status; return d; }); })
       .then(function (d) {
@@ -200,10 +200,10 @@
           if (ws !== sock) return;
           ws = null;
           if (e.code === 4003) { toast('تم إيقاف حسابك.'); gate(true); return; }
-          if (current === room) { conn('انقطع الاتصال، جارٍ إعادة المحاولة…'); retryT = setTimeout(connect, Math.min(15000, 1000 * Math.pow(2, retry++))); }
+          if (current === room) { conn('انقطع الاتصال، جار إعادة المحاولة…'); retryT = setTimeout(connect, Math.min(15000, 1000 * Math.pow(2, retry++))); }
         };
       })
-      .catch(function () { if (current !== room) return; conn('تعذّر الاتصال، جارٍ إعادة المحاولة…'); retryT = setTimeout(connect, Math.min(15000, 1000 * Math.pow(2, retry++))); });
+      .catch(function () { if (current !== room) return; conn('تعذر الاتصال، جار إعادة المحاولة…'); retryT = setTimeout(connect, Math.min(15000, 1000 * Math.pow(2, retry++))); });
   }
   function wsSend(o) { if (ws && ws.readyState === 1) { ws.send(JSON.stringify(o)); return true; } return false; }
 
@@ -253,11 +253,11 @@
       return;
     }
     if (d.t === 'muted') { mutedUntil = d.until || 0; setMuted(); return; }
-    if (d.t === 'reported') { toast('شكرًا لك، وصل بلاغك وسيراجعه فريق الموقع.'); return; }
+    if (d.t === 'reported') { toast('شكرا لك، وصل بلاغك وسيراجعه فريق الموقع.'); return; }
     if (d.t === 'error') {
       if (d.nonce && pending[d.nonce]) { var f = pending[d.nonce]; f.payload = null; if (f.el) { f.el.classList.remove('is-pending'); f.el.classList.add('is-failed'); } delete pending[d.nonce]; }
       if (d.code === 'muted') { mutedUntil = d.until || 0; setMuted(); }
-      toast(d.error || 'تعذّر الإرسال.');
+      toast(d.error || 'تعذر الإرسال.');
     }
   }
   function markSeen() {
@@ -278,7 +278,7 @@
     var names = Object.keys(typing).map(function (k) { return typing[k].name; });
     if (names.length) return;
     var n = people.length || (ROOMS[current] && ROOMS[current].online) || 0;
-    st.textContent = n ? plural(n, 'متصل واحد الآن', 'اثنان متصلان الآن', 'متصلين الآن', 'متصلًا الآن') : ROOMS[current] ? ROOMS[current].about : '';
+    st.textContent = n ? plural(n, 'متصل واحد الآن', 'اثنان متصلان الآن', 'متصلين الآن', 'متصلا الآن') : ROOMS[current] ? ROOMS[current].about : '';
     st.classList.toggle('is-live', !!n);
     $('.cm-people-n').textContent = n ? String(n) : '';
   }
@@ -414,7 +414,7 @@
     }
     btn.addEventListener('click', function () {
       var au = ensure();
-      if (au.paused) { if (playing && playing !== au) playing.pause(); playing = au; au.play().catch(function () { toast('تعذّر تشغيل الرسالة الصوتية.'); }); }
+      if (au.paused) { if (playing && playing !== au) playing.pause(); playing = au; au.play().catch(function () { toast('تعذر تشغيل الرسالة الصوتية.'); }); }
       else au.pause();
     });
     wave.addEventListener('click', function (e) {
@@ -444,7 +444,7 @@
       var nm = el('div', 'cm-name');
       nm.style.setProperty('--nh', hueOf(m.user || m.name));
       nm.appendChild(el('span', null, m.name));
-      if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : 'عضو موثّق'; nm.appendChild(bg.firstChild); }
+      if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : 'عضو موثق'; nm.appendChild(bg.firstChild); }
       if (m.badge === 'premium') { var pc = el('a', 'cm-prem'); pc.href = '/premium/'; pc.title = 'عضو مميز'; pc.innerHTML = CROWN; pc.appendChild(document.createTextNode('مميز')); nm.appendChild(pc); }
       bub.appendChild(nm);
     }
@@ -588,7 +588,7 @@
   }
   function confirmDelete(m) {
     var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
-    card.innerHTML = '<h2>حذف الرسالة؟</h2><p>ستُحذف الرسالة عند الجميع، ولا يمكن التراجع.</p><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">احذف</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
+    card.innerHTML = '<h2>حذف الرسالة؟</h2><p>ستحذف الرسالة عند الجميع، ولا يمكن التراجع.</p><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">احذف</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
     mo.hidden = false;
     var fin = function () { mo.hidden = true; card.innerHTML = keep; bindRules(); };
     card.querySelector('[data-ok]').onclick = function () { fin(); if (!wsSend({ t: 'del', id: m.id })) toast('لا يوجد اتصال الآن.'); };
@@ -596,7 +596,7 @@
   }
   function report(m) {
     var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
-    card.innerHTML = '<h2>إبلاغ عن الرسالة</h2><p>لماذا تبلّغ عن هذه الرسالة؟</p><div class="cm-report-opts">' +
+    card.innerHTML = '<h2>إبلاغ عن الرسالة</h2><p>لماذا تبلغ عن هذه الرسالة؟</p><div class="cm-report-opts">' +
       ['إساءة أو سب', 'حرق نتائج بلا تحذير', 'إعلان أو رابط مشبوه', 'سبب آخر'].map(function (w, i) { return '<label><input type="radio" name="why" value="' + w + '"' + (i ? '' : ' checked') + '> ' + w + '</label>'; }).join('') +
       '</div><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok>إرسال البلاغ</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
     mo.hidden = false;
@@ -619,8 +619,8 @@
       fin();
       var s = session();
       fetch(API + '/chat/mod/mute', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (s ? s.token : '') }, body: JSON.stringify({ uid: m.uid, hours: h }) })
-        .then(function (r) { return r.json(); }).then(function (d) { toast(d.ok ? 'تم إيقافه عن الكتابة ✓' : (d.error || 'تعذّر ذلك.')); })
-        .catch(function () { toast('تعذّر الاتصال.'); });
+        .then(function (r) { return r.json(); }).then(function (d) { toast(d.ok ? 'تم إيقافه عن الكتابة ✓' : (d.error || 'تعذر ذلك.')); })
+        .catch(function () { toast('تعذر الاتصال.'); });
     };
   }
   function rules() { $('.cm-modal').hidden = false; }
@@ -648,7 +648,7 @@
       row.classList.remove('is-flash'); void row.offsetWidth; row.classList.add('is-flash');
       return;
     }
-    if (done || !msgs.length) return toast('الرسالة قديمة جدًا أو محذوفة.');
+    if (done || !msgs.length) return toast('الرسالة قديمة جدا أو محذوفة.');
     wantJump = id; more();
   }
   function more() {
@@ -726,7 +726,7 @@
       var sys = $('.cm-sys', list); if (sys) sys.remove();
       list.appendChild(row);
       pending[nonce] = { el: row, payload: payload };
-      if (!wsSend(payload)) { conn('انقطع الاتصال، ستُرسل الرسالة عند عودته…'); if (!ws) connect(); }
+      if (!wsSend(payload)) { conn('انقطع الاتصال، سترسل الرسالة عند عودته…'); if (!ws) connect(); }
     });
     input.value = ''; autosize(); cancelReply(); clearAttached();
     if (spoiler) toggleSpoiler(false);
@@ -738,7 +738,7 @@
     var b = $('[data-act="spoiler"]'); b.setAttribute('aria-pressed', String(spoiler));
     $('.cm-input').classList.toggle('is-spoiler', spoiler);
     input.placeholder = spoiler ? 'رسالة مخفية خلف تحذير «حرق نتائج»…' : 'اكتب رسالتك…';
-    if (spoiler) toast('ستُخفى رسالتك خلف تحذير «حرق نتائج»');
+    if (spoiler) toast('ستخفى رسالتك خلف تحذير «حرق نتائج»');
   }
 
   // attachments: a picture is made smaller in the browser before it goes up
@@ -753,7 +753,7 @@
       if (a.preview) { var i = new Image(); i.src = a.preview; i.alt = ''; it.appendChild(i); }
       var tx = el('span', 'cm-file-tx');
       tx.appendChild(el('b', null, a.name));
-      tx.appendChild(el('small', null, a.failed ? 'تعذّر الرفع' : a.att ? 'جاهز ✓' : 'جارٍ الرفع… ' + (a.pct || 0) + '%'));
+      tx.appendChild(el('small', null, a.failed ? 'تعذر الرفع' : a.att ? 'جاهز ✓' : 'جار الرفع… ' + (a.pct || 0) + '%'));
       it.appendChild(tx);
       var x = el('button', 'cm-att-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'إزالة');
       x.addEventListener('click', function () { if (a.xhr) a.xhr.abort(); attached.splice(attached.indexOf(a), 1); drawAttached(); updateSendBtn(); });
@@ -772,8 +772,8 @@
       x.setRequestHeader('Content-Type', blob.type || 'application/octet-stream');
       if (name) x.setRequestHeader('X-File-Name', encodeURIComponent(name));
       x.upload.onprogress = function (e) { if (a && e.lengthComputable) { a.pct = Math.round(e.loaded / e.total * 100); drawAttached(); } };
-      x.onload = function () { var d = {}; try { d = JSON.parse(x.responseText); } catch (e) {} if (x.status === 200 && d.ok) resolve(d.att); else reject(new Error(d.error || 'تعذّر الرفع.')); };
-      x.onerror = function () { reject(new Error('تعذّر الرفع، تحقق من الاتصال.')); };
+      x.onload = function () { var d = {}; try { d = JSON.parse(x.responseText); } catch (e) {} if (x.status === 200 && d.ok) resolve(d.att); else reject(new Error(d.error || 'تعذر الرفع.')); };
+      x.onerror = function () { reject(new Error('تعذر الرفع، تحقق من الاتصال.')); };
       x.send(blob);
     });
   }
@@ -801,14 +801,14 @@
       if (r.blob.size > 8 * 1024 * 1024) throw new Error('الصورة كبيرة، الحد الأقصى 8 ميجابايت.');
       return upload('image', r.blob, file.name, a).then(function (att) { if (r.w) { att.w = r.w; att.h = r.h; } return att; });
     }).then(function (att) { a.att = att; a.xhr = null; drawAttached(); })
-      .catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذّر رفع الصورة.'); });
+      .catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذر رفع الصورة.'); });
   }
   function addFile(file) {
     if (file.size > 15 * 1024 * 1024) return toast('الملف كبير، الحد الأقصى 15 ميجابايت.');
     var a = { name: file.name, pct: 0 };
     attached.push(a); drawAttached();
     upload('file', file, file.name, a).then(function (att) { a.att = att; a.xhr = null; drawAttached(); })
-      .catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذّر رفع الملف.'); });
+      .catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذر رفع الملف.'); });
   }
   $('.cm-file-img').addEventListener('change', function () { Array.prototype.forEach.call(this.files, addImage); this.value = ''; });
   $('.cm-file-any').addEventListener('change', function () { var f = this.files[0]; this.value = ''; if (f) addFile(f); });
@@ -860,14 +860,14 @@
     var r = stopRecording(false);
     if (!r) return;
     var dur = (Date.now() - r.t0) / 1000;
-    if (dur < 1) return toast('التسجيل قصير جدًا.');
+    if (dur < 1) return toast('التسجيل قصير جدا.');
     // the wave: 40 bars from what was heard
     var wave = [], n = 40, L = r.levels;
     for (var i = 0; i < n; i++) { var a = Math.floor(i * L.length / n), b = Math.max(a + 1, Math.floor((i + 1) * L.length / n)), mx = 0; for (var j = a; j < b && j < L.length; j++) mx = Math.max(mx, L[j]); wave.push(Math.round(Math.min(1, mx) * 100)); }
     setTimeout(function () {
       var type = (r.mr.mimeType || 'audio/webm').split(';')[0];
       var blob = new Blob(r.chunks, { type: type });
-      if (blob.size > 4 * 1024 * 1024) return toast('الرسالة الصوتية طويلة جدًا.');
+      if (blob.size > 4 * 1024 * 1024) return toast('الرسالة الصوتية طويلة جدا.');
       var a = { name: 'رسالة صوتية ' + mmss(dur), pct: 0 };
       attached.push(a); drawAttached();
       upload('voice', blob, '', a).then(function (att) {
@@ -878,7 +878,7 @@
         input.value = ''; attached = [{ name: a.name, att: att }];
         send();
         input.value = keep; attached = others; drawAttached(); autosize(); updateSendBtn();
-      }).catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذّر إرسال الرسالة الصوتية.'); });
+      }).catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذر إرسال الرسالة الصوتية.'); });
     }, 300);
   }
 

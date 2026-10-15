@@ -3597,7 +3597,8 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   assert.match(layout, /\.wd-list\{ position:absolute; inset:0;/);
   assert.match(layout, /\.srv-row\{ position:relative; flex:1 1 0; min-height:44px;/);
   // the owner's notice, word for word, inside the box; the old separate notice is gone
-  assert.ok(layout.includes('<b>تنبيه:</b> سيرفرات المشاهدة تُعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية'));
+  // (no tashkeel since 2026-10-15: «كل نحو وتشكيل وانا مش عايز كدا خالص»)
+  assert.ok(layout.includes('<b>تنبيه:</b> سيرفرات المشاهدة تعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية'));
   assert.doesNotMatch(layout, /class="quality-notice"/);
   // the player script follows the new rows, not the old tabs
   assert.doesNotMatch(layout, /querySelectorAll\('\.server-tab'\)/);
