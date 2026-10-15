@@ -21,7 +21,7 @@ const isPrem = (m) => Number(m.premium_until) > Date.now();
 const shownName = (m) => (m.official ? OFFICIAL_NAME : m.display || m.username);
 const badgeOf = (m) => raw(m.official || m.badge === 2 ? GOLD : m.badge === 0 ? '' : BLUE);
 const isOwner = () => getUser()?.role === 'owner';
-/** The owner gives the blue badge or takes it away (owner 2026-10-14: «ادي العلامة الزرقاء التوثيق لاي حد او اشيله») */
+/** The owner gives the verification badge or takes it away (owner 2026-10-14: «ادي العلامة الزرقاء التوثيق لاي حد او اشيله») */
 // …and the gold one too, for anyone (owner 2026-10-15: «احط علامة توثيق ذهبي كمان او اشيلها لاي حد»): three choices
 const BADGES = [[0, 'من غير', ''], [1, 'أزرق', BLUE], [2, 'ذهبي', GOLD]];
 const badgeBtn = (m, cls = 'btn-sm') => (isOwner() && !m.official ? html`<span class="mb-badge-seg ${cls === 'btn-sm' ? 'is-sm' : ''}" role="group" aria-label="التوثيق">${BADGES.map(([lv, label, ic]) => html`<button type="button" class="${(m.badge ?? 1) === lv ? 'is-on' : ''}" data-badge="${m.id}" data-level="${lv}" title="${lv === 0 ? 'من غير توثيق' : `توثيق ${label}`}">${ic ? raw(ic) : ''}${label}</button>`)}</span>` : '');
@@ -40,7 +40,8 @@ function device(ua) {
 /** Every member in a file Excel opens (UTF-8 with its mark, so Arabic reads right) */
 function exportCsv(items) {
   const cols = [['id', 'رقم'], ['username', 'اسم المستخدم'], ['display', 'الاسم الظاهر'], ['email', 'البريد'], ['verified', 'متفعّل'], ['created', 'تاريخ التسجيل'], ['last_seen', 'آخر ظهور'], ['comments', 'التعليقات'], ['country', 'البلد'], ['ip', 'IP'], ['banned', 'موقوف']];
-  const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  // a name that starts like a formula stays text in Excel
+  const cell = (v) => { const s = String(v ?? ''); return `"${(/^[=+\-@\t\r]/.test(s) ? "'" + s : s).replace(/"/g, '""')}"`; };
   const rows = items.map(m => cols.map(([k]) => cell(k === 'created' || k === 'last_seen' ? (m[k] ? new Date(m[k]).toISOString().replace('T', ' ').slice(0, 16) : '') : k === 'verified' || k === 'banned' ? (m[k] ? 'نعم' : 'لا') : m[k])).join(','));
   const csv = '\ufeff' + [cols.map(([, l]) => cell(l)).join(','), ...rows].join('\r\n');
   const a = document.createElement('a');
@@ -84,7 +85,7 @@ export async function renderSiteMembers(page) {
     <div class="wrap page-in">
       <div class="page-title">
         <div><h1>الأعضاء</h1>
-          <p class="muted">كل اللي عملوا حساب على الموقع · العضو بيعلّق باسمه وصورته · العلامة الزرقاء إنت اللي بتديها · دوس على أي عضو تشوف كل تفاصيله</p></div>
+          <p class="muted">كل اللي عملوا حساب على الموقع · العضو بيعلّق باسمه وصورته · علامة التوثيق إنت اللي بتديها · دوس على أي عضو تشوف كل تفاصيله</p></div>
         <div class="mb-head-btns"><a class="btn pr-btn" href="#/premium">${raw(CROWN)}العضوية المميزة</a><button class="btn" id="mb-export">${icon('download')}تصدير Excel</button></div>
       </div>
       ${getUser()?.role === 'owner' ? html`<section class="card mb-off" id="mb-off"></section>` : ''}
@@ -92,7 +93,7 @@ export async function renderSiteMembers(page) {
         <div><small>كل الأعضاء</small><b>${num(counts.total || items.length)}</b></div>
         <div class="${counts.week ? 'is-new' : ''}"><small>جداد آخر 7 أيام</small><b>${num(counts.week || 0)}</b></div>
         <div><small>نشطين آخر 7 أيام</small><b>${num(counts.active || 0)}</b></div>
-        <div><small>موقوفين</small><b>${num(items.filter(m => m.banned).length)}</b></div>
+        <div><small>موقوفين</small><b id="mb-banned-n">${num(items.filter(m => m.banned).length)}</b></div>
       </div>
       <div class="filterbar">
         <div class="search search-wide">${icon('search')}<input id="mb-q" placeholder="ابحث بالاسم أو اسم المستخدم أو البريد…" value="${state.q}"></div>
@@ -109,6 +110,7 @@ export async function renderSiteMembers(page) {
       if (state.filter === 'banned' && !m.banned) return false;
       return !q || normalizeArabic(`${m.display} ${m.username} ${m.email}`).includes(q);
     });
+    if ($('#mb-banned-n')) $('#mb-banned-n').textContent = num(items.filter(m => m.banned).length);
     mount($('#mb-list'), shown.length ? html`${shown.map(row)}`
       : html`<div class="empty"><p class="muted">${items.length ? 'مفيش أعضاء بالشكل ده.' : 'لسه محدش عمل حساب على الموقع.'}</p></div>`);
     $$('[data-ban]', $('#mb-list')).forEach(b => b.onclick = async () => {
@@ -161,7 +163,7 @@ export async function renderSiteMember(page, id) {
           <p class="muted"><span dir="ltr">@${m.username}</span></p>
           <p>${m.official ? html`<em class="mb-gold-tag">الحساب الرسمي للموقع</em>` : m.banned ? html`<em class="mb-flag">موقوف</em>` : html`<em class="mb-ok">${icon('check')}حساب شغال</em>`}</p>
         </div>
-        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<button class="btn pr-btn" data-prem="30">${raw(CROWN)}${isPrem(m) ? 'زوّد شهر مميز' : 'ادّيله شهر مميز'}</button>${isPrem(m) ? html`<button class="btn btn-ghost" data-prem="0">شيل العضوية المميزة</button>` : ''}` : ''}${badgeBtn(m, '')}<button class="btn btn-ghost" id="mb-edit">${icon('edit')}عدّل بياناته</button><button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
+        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<button class="btn pr-btn" data-prem="30">${raw(CROWN)}${isPrem(m) ? 'زوّد شهر مميز' : 'ادّيله شهر مميز'}</button>${isPrem(m) ? html`<button class="btn btn-ghost" data-prem="0">شيل العضوية المميزة</button>` : ''}` : ''}${badgeBtn(m, '')}${isOwner() ? html`<button class="btn btn-ghost" id="mb-edit">${icon('edit')}عدّل بياناته</button>` : ''}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
       </section>
       <div class="mb-facts-grid">
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}

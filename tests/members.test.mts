@@ -290,3 +290,29 @@ test('comments are the members\' only; the site\'s own account hearts or removes
   assert.equal((await mod({ op: 'delete', id: c.body.id }, off.body.token)).body.ok, true);
   assert.equal((await list()).length, 0);
 });
+
+test('without mail, no account is ever freed for someone else: a day-old name and address stay their owner\'s', async () => {
+  const e = env();
+  const first = await signup(e);
+  assert.equal(first.status, 200);
+  e.ANALYTICS.raw.prepare('UPDATE members SET created = ? WHERE username = ?').run(Date.now() - 3 * 86400e3, 'kareem_10');
+  const again = await signup(e, { email: 'other@example.com' }, '41.9.9.9');
+  assert.equal(again.status, 409);
+  const byMail = await signup(e, { username: 'someone_else' }, '41.9.9.8');
+  assert.equal(byMail.status, 409);
+  assert.equal((e.ANALYTICS.raw.prepare('SELECT COUNT(*) n FROM members').get() as any).n, 1);
+  // a bad address in a member's link is a plain «no one by that name», never a crash
+  assert.equal((await call(e, '/u/%E0')).status, 404);
+});
+
+test('the panel: the site\'s members list never takes the team list\'s address; a page\'s click handler ends with the page', async () => {
+  const { readFileSync } = await import('node:fs');
+  const idx = readFileSync(new URL('../worker/src/index.ts', import.meta.url), 'utf8');
+  const api = readFileSync(new URL('../studio/js/api.js', import.meta.url), 'utf8');
+  const app = readFileSync(new URL('../studio/js/app.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(idx, /path === "\/api\/studio\/members" &&/);
+  assert.match(idx, /path === "\/api\/studio\/site-members" && request\.method === "GET"/);
+  assert.match(api, /members: \(\) => call\('\/api\/studio\/members'\)/);
+  assert.match(api, /siteMembers: \(\) => call\('\/api\/studio\/site-members'\)/);
+  assert.match(app, /page\.onclick = null;/);
+});

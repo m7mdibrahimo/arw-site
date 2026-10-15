@@ -40,7 +40,7 @@ const ACTION_TEXT = {
   'members.ban': 'وقّف عضو في الموقع', 'members.unban': 'رجّع عضو في الموقع',
   'premium.grant': 'فعّل عضوية مميزة بإيده', 'premium.revoke': 'شال عضوية مميزة',
   'community.delete': 'مسح رسالة في المجتمع', 'community.mute': 'وقّف عضو عن الكتابة في المجتمع', 'community.unmute': 'رجّع عضو يكتب في المجتمع',
-  'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو العلامة الزرقاء', 'members.unbadge': 'شال العلامة الزرقاء من عضو', 'members.official': 'عدّل الحساب الرسمي على الموقع',
+  'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو علامة التوثيق', 'members.unbadge': 'شال علامة التوثيق من عضو', 'members.edit': 'عدّل بيانات عضو في الموقع', 'community.rooms': 'عدّل غرف المجتمع', 'members.official': 'عدّل الحساب الرسمي على الموقع',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };
 

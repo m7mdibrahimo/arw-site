@@ -1,7 +1,7 @@
 // «مجتمع المصارعة» in the panel (owner 2026-10-14): the rooms (who's in them now, how much was said today), what the
 // members reported, the latest messages of any room (delete, stop the writer), and who can't write now.
 // The rooms themselves: worker/src/chat.ts.
-import { api } from '../api.js';
+import { api, getUser } from '../api.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
 // the rooms as the worker has them now (the owner names, colours, hides and closes them below: «الغرف»)
@@ -44,7 +44,7 @@ export async function renderCommunity(page) {
       <div class="page-title">
         <div><h1>المجتمع</h1>
           <p class="muted">غرف الدردشة على الموقع · الأعضاء بس اللي بيكتبوا · تقدر تمسح أي رسالة وتوقف أي حد عن الكتابة. ولو دخلت بحسابك الرسمي على الموقع تقدر تثبّت رسالة وتمسح من جوه الغرفة.</p></div>
-        <div class="cy-head-acts"><button class="btn" id="cy-edit-rooms">${icon('edit')}الغرف</button><a class="btn" href="/community/" target="_blank" rel="noopener">${icon('globe')}افتح المجتمع</a></div>
+        <div class="cy-head-acts">${getUser()?.role === 'owner' ? html`<button class="btn" id="cy-edit-rooms">${icon('edit')}الغرف</button>` : ''}<a class="btn" href="/community/" target="_blank" rel="noopener">${icon('globe')}افتح المجتمع</a></div>
       </div>
       <div class="cm-stats">
         <div class="${online ? 'is-new' : ''}"><small>متصلين دلوقتي</small><b>${num(online)}</b></div>
@@ -93,7 +93,7 @@ export async function renderCommunity(page) {
   };
   loadRoom();
 
-  $('#cy-edit-rooms').onclick = () => renderRoomsEditor(page);
+  if ($('#cy-edit-rooms')) $('#cy-edit-rooms').onclick = () => renderRoomsEditor(page);
   page.onclick = async (e) => {
     const b = e.target.closest('button');
     if (!b) return;
@@ -159,7 +159,7 @@ async function renderRoomsEditor(page) {
       if (inp.dataset.k === 'hue') m.style.setProperty('--h', inp.value); else if (!m.querySelector('img')) m.textContent = inp.value;
     });
     $('#ry-back').onclick = () => renderCommunity(page);
-    $('#ry-add').onclick = () => { read(); list.push({ id: `room${list.length + 1}`, name: '', about: '', mark: 'NEW', hue: Math.floor(Math.random() * 360), isNew: true }); draw(); const last = $$('.ry-room', page).pop(); last.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('[data-k="name"]', last).focus(); };
+    $('#ry-add').onclick = () => { read(); let n = list.length + 1; while (list.some(x => x.id === `room${n}`)) n++; list.push({ id: `room${n}`, name: '', about: '', mark: 'NEW', hue: Math.floor(Math.random() * 360), isNew: true }); draw(); const last = $$('.ry-room', page).pop(); last.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('[data-k="name"]', last).focus(); };
     page.onclick = async (e) => {
       const b = e.target.closest('[data-up],[data-down],[data-remove]');
       if (!b) return;
@@ -176,9 +176,10 @@ async function renderRoomsEditor(page) {
     };
     $('#ry-save').onclick = async (e) => {
       read();
-      e.target.disabled = true;
+      const btn = e.currentTarget;
+      btn.disabled = true;
       try { const r = await api.chatRoomsSave(list.map(({ isNew, online, today, lastId, last, ...x }) => x)); list = r.rooms.map(x => ({ ...x, isNew: false })); toast('اتحفظت الغرف ✓ هتظهر على الموقع خلال دقيقة'); draw(); }
-      catch (err) { toast(err.message, 'error'); e.target.disabled = false; }
+      catch (err) { toast(err.message, 'error'); btn.disabled = false; }
     };
   };
   draw();

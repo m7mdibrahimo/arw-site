@@ -76,7 +76,7 @@ const VOICE_TYPES: Record<string, string> = { "audio/webm": "webm", "audio/ogg":
 const MEDIA_PREFIX = `${PIC_ORIGIN}/chat/media/`;
 const REACTION = /^(?:\p{Extended_Pictographic}|\p{Regional_Indicator}|[‍️⃣#*0-9]|\p{Emoji_Modifier}){1,12}$/u;
 
-export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "vgold" | "blue" | "premium" | ""; mod: boolean; mute: number; ro?: boolean };
+export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "vgold" | "blue" | "premium" | ""; mod: boolean; mute: number; ro?: boolean; prem?: boolean };
 export type Att = { kind: "image" | "voice" | "file" | "video"; url: string; name?: string; size?: number; mime?: string; w?: number; h?: number; dur?: number; wave?: number[] };
 export type Msg = {
   id: number; uid: number; user: string; name: string; pic: string; badge: string; text: string; att: Att | null;
@@ -372,9 +372,17 @@ export async function chatRebadge(env: ChatEnv, uid: unknown) {
 /** Every ten minutes: members whose subscription just ran out lose its look in the rooms too */
 export async function chatExpirySweep(env: ChatEnv, now = Date.now()) {
   if (!env.CHAT || !env.ANALYTICS) return;
-  const rows = await env.ANALYTICS.prepare("SELECT id FROM members WHERE premium_until > ?1 AND premium_until <= ?2 LIMIT 50")
-    .bind(now - 11 * 60_000, now).all<{ id: number }>().catch(() => null);
-  for (const r of rows?.results || []) await chatRebadge(env, r.id).catch(() => {});
+  // from where the last sweep stopped (a missed tick is caught up), at most a day back
+  const KEY = "chat:sweep:at";
+  let from = Math.max(Number(await env.PUSH_KV.get(KEY).catch(() => null)) || now - 11 * 60_000, now - 86_400_000);
+  for (let round = 0; round < 10; round++) {
+    const rows = (await env.ANALYTICS.prepare("SELECT id, premium_until FROM members WHERE premium_until > ?1 AND premium_until <= ?2 ORDER BY premium_until LIMIT 50")
+      .bind(from, now).all<{ id: number; premium_until: number }>().catch(() => null))?.results || [];
+    for (const r of rows) await chatRebadge(env, r.id).catch(() => {});
+    if (rows.length < 50) { from = now; break; }
+    from = Number(rows[rows.length - 1].premium_until);
+  }
+  await env.PUSH_KV.put(KEY, String(from)).catch(() => {});
 }
 
 /** The member as the room shows them */
@@ -386,7 +394,7 @@ async function whoFor(env: ChatEnv, request: Request): Promise<Who | null> {
   return {
     uid: m.id, user: m.username, name: m.official ? MOD_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic,
     // the site's account: gold; a premium member: «premium» (the blue badge and a name that stands out); else blue if given
-    badge: chatBadgeOf(m), mod: !!m.official, mute: Number(mute?.chat_mute || 0),
+    badge: chatBadgeOf(m), mod: !!m.official, mute: Number(mute?.chat_mute || 0), prem: Number(m.premium_until) > Date.now(),
   };
 }
 
@@ -450,7 +458,7 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     if (!rinfo || (rinfo.closed && !who.mod) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذّر الرفع." }, 400);
     const count = Number(await env.PUSH_KV.get(`chat:up:${who.uid}`) || 0);
     // a premium member sends more, and bigger files
-    const prem = who.badge === "premium" || who.mod;
+    const prem = who.prem || who.badge === "premium" || who.mod;
     if (count >= (prem ? 100 : 40)) return reply({ ok: false, error: "رفعت ملفات كثيرة، حاول بعد ساعة." }, 429);
     const type = String(request.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
     const fileName = (() => { try { return decodeURIComponent(request.headers.get("X-File-Name") || ""); } catch { return ""; } })().replace(/[\\/\u0000-\u001f]/g, "").slice(0, 120);
@@ -474,7 +482,7 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
 
   if (path.startsWith("/chat/media/chat/") && (request.method === "GET" || request.method === "HEAD")) {
     const key = path.slice("/chat/media/".length);
-    if (!/^chat\/[a-z]+\/\d{6}\/[a-f0-9]{24}\.[a-z0-9]{1,5}$/.test(key) || !env.MEDIA) return new Response("not found", { status: 404 });
+    if (!/^chat\/[a-z][a-z0-9]{1,23}\/\d{6}\/[a-f0-9]{24}\.[a-z0-9]{1,5}$/.test(key) || !env.MEDIA) return new Response("not found", { status: 404 });
     const obj: any = await env.MEDIA.get(key, { range: request.headers, onlyIf: request.headers } as any);
     if (!obj) return new Response("not found", { status: 404 });
     const ctype = String(obj.httpMetadata?.contentType || "application/octet-stream");

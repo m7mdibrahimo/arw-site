@@ -105,7 +105,8 @@ async function tooMany(kv: KVNamespace, key: string, max: number, _windowSec: nu
 }
 async function count(kv: KVNamespace, key: string, windowSec: number) {
   const n = Number((await kv.get(`members:rl:${key}`)) || 0);
-  await kv.put(`members:rl:${key}`, String(n + 1), { expirationTtl: Math.max(60, windowSec) });
+  // KV takes one write a second per key: a burst still counts once, never fails the request
+  await kv.put(`members:rl:${key}`, String(n + 1), { expirationTtl: Math.max(60, windowSec) }).catch(() => {});
 }
 
 // ── the captcha ──────────────────────────────────────────────────────────────
@@ -263,8 +264,10 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (!(await checkCaptcha(env.PUSH_KV, body.captcha))) return reply({ ok: false, error: "رمز التحقق غير صحيح، جرّب الرمز الجديد.", captcha: true }, 400);
     // an account never activated (a mistyped address…) gives its name and address back after a day
     await ensureComments(db);
-    await db.prepare(`DELETE FROM members WHERE (ukey = ?1 OR email = ?2) AND verified = 0 AND official = 0 AND created < ?3
-      AND NOT EXISTS (SELECT 1 FROM comments c WHERE c.member = members.id)`).bind(ukeyOf(username), email, now - DAY).run();
+    // (only while activation is required: without mail no account is ever activated, so none may be taken over;
+    // and never an account that has paid or been given the membership)
+    if (mustVerify(env)) await db.prepare(`DELETE FROM members WHERE (ukey = ?1 OR email = ?2) AND verified = 0 AND official = 0 AND created < ?3
+      AND premium_until = 0 AND NOT EXISTS (SELECT 1 FROM comments c WHERE c.member = members.id)`).bind(ukeyOf(username), email, now - DAY).run();
     const taken = await db.prepare("SELECT ukey = ?1 AS u, email = ?2 AS e FROM members WHERE ukey = ?1 OR email = ?2 LIMIT 1").bind(ukeyOf(username), email).first<{ u: number; e: number }>();
     if (taken?.u) return reply({ ok: false, error: "اسم المستخدم مستخدم من قبل، اختر اسمًا آخر.", field: "username" }, 409);
     if (taken?.e) return reply({ ok: false, error: "هذا البريد له حساب بالفعل، سجّل دخولك.", field: "email" }, 409);
@@ -331,6 +334,10 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (!env.RESEND_API_KEY) return reply({ ok: false, error: "استرجاع الحساب بالبريد غير متاح الآن، استخدم كود الاسترجاع.", nomail: true }, 503);
     if (await tooMany(env.PUSH_KV, `fg:${ip}`, 5, 3600)) return reply({ ok: false, error: "طلبات كثيرة، حاول بعد ساعة." }, 429);
     await count(env.PUSH_KV, `fg:${ip}`, 3600);
+    // and per address, whoever asks: an inbox is never flooded, nor its link replaced over and over
+    const fa = `fga:${(await sha(email)).slice(0, 24)}`;
+    if (await tooMany(env.PUSH_KV, fa, 3, 3600)) return reply({ ok: true });
+    await count(env.PUSH_KV, fa, 3600);
     const m = EMAIL.test(email) ? await db.prepare("SELECT * FROM members WHERE email = ?1 AND banned = 0").bind(email).first<Member>() : null;
     if (m) {
       const t = await mailToken(db, m.id, "reset", 2, now);
@@ -384,7 +391,8 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   }
 
   if (path.startsWith("/u/") && request.method === "GET") {
-    const u = decodeURIComponent(path.slice(3)).trim();
+    let u = "";
+    try { u = decodeURIComponent(path.slice(3)).trim(); } catch { return reply({ ok: false, error: "لا يوجد عضو بهذا الاسم." }, 404); }
     const m = await db.prepare("SELECT id, username, display, pic, fav_fed, fav_star, bio, created, official, badge, premium_until FROM members WHERE ukey = ?1 AND banned = 0").bind(ukeyOf(u)).first<any>();
     if (!m) return reply({ ok: false, error: "لا يوجد عضو بهذا الاسم." }, 404);
     await ensureComments(db);
@@ -448,6 +456,8 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const email = String(body.email || "").trim().toLowerCase();
     if (!EMAIL.test(email)) return reply({ ok: false, error: "اكتب بريدًا صحيحًا." }, 400);
     if (email === me.email) return reply({ ok: false, error: "هذا هو بريدك الحالي." }, 400);
+    if (await tooMany(env.PUSH_KV, `emq:${me.id}`, 10, 3600)) return reply({ ok: false, error: "طلبات كثيرة، حاول بعد ساعة." }, 429);
+    await count(env.PUSH_KV, `emq:${me.id}`, 3600);
     if (await db.prepare("SELECT id FROM members WHERE email = ?1").bind(email).first()) return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409);
     if (!mustVerify(env)) {
       await db.prepare("UPDATE members SET email = ?1 WHERE id = ?2").bind(email, me.id).run();

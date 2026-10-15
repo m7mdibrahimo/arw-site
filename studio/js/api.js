@@ -114,7 +114,7 @@ export const api = {
   commentReply: (id, text) => call('/api/studio/comments/reply', { method: 'POST', body: { id: Number(id), text } }),
   commentHeart: (id, on) => call('/api/studio/comments/heart', { method: 'POST', body: { id: Number(id), on: !!on } }),
   // the site's members (worker/src/members.ts)
-  siteMembers: () => call('/api/studio/members'),
+  siteMembers: () => call('/api/studio/site-members'),
   siteMemberBan: (id, on) => call('/api/studio/members/ban', { method: 'POST', body: { id: Number(id), on: !!on } }),
   siteMember: (id) => call(`/api/studio/members/${Number(id)}`),
   siteOfficial: () => call('/api/studio/members/official'),

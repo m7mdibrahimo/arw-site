@@ -860,7 +860,7 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .mb-badge-btn svg { width: 16px; height: 16px; flex: none; }
 .mb-badge-btn:not(.is-on) svg { filter: grayscale(1); opacity: .45; }
 .mb-badge-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 99px; background: var(--cream); border: 1px solid var(--line); }
-.mb-badge-seg button { display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 12px; border: 0; border-radius: 99px; background: none; color: var(--muted); font: 800 13px inherit; font-family: inherit; cursor: pointer; }
+.mb-badge-seg button { display: inline-flex; align-items: center; gap: 4px; height: 32px; padding: 0 12px; border: 0; border-radius: 99px; background: none; color: var(--muted); font-family: inherit; font-weight: 800; font-size: 13px; cursor: pointer; }
 .mb-badge-seg.is-sm button { height: 28px; padding: 0 9px; font-size: 12px; }
 .mb-badge-seg button svg { width: 15px; height: 15px; }
 .mb-badge-seg button.is-on { background: var(--card); color: var(--ink); box-shadow: 0 1px 4px rgba(0,0,0,.12); }

@@ -319,7 +319,7 @@ permalink: "/account/index.html"
 .acct-plan-price{ margin:0; font-size:14px; color:rgba(255,255,255,.8); }
 .acct-plan-price b{ color:#ffd25a; font:900 17px 'Cairo',sans-serif; }
 .acct-plan-acts{ display:flex; gap:8px; flex-wrap:wrap; }
-.acct-plan-btn, .acct-ms a.acct-plan-btn{ display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 22px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 14.5px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 10px 22px -12px rgba(224,154,18,.9); }
+.acct-plan-btn, .acct-ms a.acct-plan-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap; height:44px; padding:0 22px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 14.5px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 10px 22px -12px rgba(224,154,18,.9); }
 .acct-plan-btn:hover{ filter:brightness(1.06); }
 .acct-plan-btn svg{ width:17px; height:17px; }
 .acct-plan-btn-soft, .acct-ms a.acct-plan-btn-soft{ background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:none; }
@@ -356,17 +356,23 @@ html.arw-dark .acct-ms[data-state="soon"] .acct-sub-note{ color:#ff9f6e; }
 .acct-ms h2{ margin:0; font:900 19px/1.4 'Cairo',sans-serif; color:var(--ink); }
 @media (max-width:560px){ .acct-ms .acct-plan-acts{ flex-direction:column; } .acct-ms .acct-plan-btn{ justify-content:center; } .acct-sub-grid b{ font-size:15px; } .acct-sub-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); } .acct-sub-grid > div:last-child{ grid-column:1 / -1; } .acct-pay{ grid-template-columns:minmax(0,1fr) auto; } .acct-pay > :nth-child(2), .acct-pay > :nth-child(3){ grid-column:1; } }
 .acct-quick{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
-.acct-quick a{ display:flex; flex-direction:column; gap:2px; padding:14px 16px; border-radius:14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); text-decoration:none; transition:border-color .2s ease; }
+.acct-quick a{ display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); text-decoration:none; transition:border-color .2s ease; }
 .acct-quick a:hover{ border-color:var(--teal); }
 .acct-quick b{ font:800 15px 'Cairo',sans-serif; }
 .acct-quick small{ color:var(--muted); font-size:13px; }
+.acct-quick a > span{ display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
+.acct-quick-ic{ flex:0 0 40px; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:color-mix(in srgb, var(--teal) 14%, transparent); color:var(--teal); }
+.acct-quick-ic svg{ width:20px; height:20px; }
+.acct-quick-go{ flex:0 0 auto; width:18px; height:18px; color:var(--muted); }
+.acct-quick a:hover .acct-quick-go{ color:var(--teal); }
+html[dir="ltr"] .acct-quick-go{ transform:scaleX(-1); }
 .acct-getblue{ display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; border:1px dashed rgba(29,155,240,.5); color:#1d9bf0; background:rgba(29,155,240,.07); font:800 13px 'Cairo',sans-serif; text-decoration:none; white-space:nowrap; }
 .acct-getblue:hover{ background:rgba(29,155,240,.14); }
 .acct-cur-mail{ margin:0; font-size:14px; color:var(--muted); }
 .acct-cur-mail b{ color:var(--ink); }
 .acct-picsec .acct-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 .acct-hint{ color:var(--muted); font-size:13px; }
-@media (max-width:560px){ .acct-plan-list, .acct-quick{ grid-template-columns:minmax(0,1fr); } .acct-plan-foot .acct-plan-btn{ width:100%; justify-content:center; } .acct-plan-acts .acct-plan-btn{ flex:1; justify-content:center; } }
+@media (max-width:560px){ .acct-plan-list, .acct-quick{ grid-template-columns:minmax(0,1fr); } .acct-plan-foot .acct-plan-btn{ width:100%; justify-content:center; } .acct-plan-acts{ flex-direction:column; } .acct-plan-acts .acct-plan-btn{ width:100%; } }
 .acct-view{ display:flex; flex-direction:column; gap:16px; }
 .acct-head{ display:flex; flex-direction:column; gap:6px; }
 .acct-title{ margin:0; font:900 26px/1.35 'Cairo',sans-serif; color:var(--ink); }
@@ -697,8 +703,8 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           </section>
 
           <div class="acct-quick">
-            <a href="/community/"><b>مجتمع المصارعة</b><small>دردش مع محبي اتحادك</small></a>
-            <a href="#settings" data-goto="settings"><b>الإعدادات</b><small>الاسم والصورة والبريد وكلمة المرور</small></a>
+            <a href="/community/"><span class="acct-quick-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14.5h4.5"/></svg></span><span><b>مجتمع المصارعة</b><small>دردش مع محبي اتحادك</small></span><svg class="acct-quick-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
+            <a href="#settings" data-goto="settings"><span class="acct-quick-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span><span><b>الإعدادات</b><small>الاسم والصورة والبريد وكلمة المرور</small></span><svg class="acct-quick-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
           </div>
 
           <div class="acct-sec acct-soon">

@@ -3069,18 +3069,19 @@ export default {
       // One view from a real browser on the site (assets/v.js) — the panel's statistics, people only (INCIDENTS #457)
       if (path === "/v") return recordView(request, env);
       // Visitors' comments: a page's comments, a new one or a reply, a visitor's picture, their inbox and push (worker/src/comments.ts)
-      if (path === "/comments" || path.startsWith("/comments/")) return handleComments(request, env as any, url);
+      if (path === "/comments" || path.startsWith("/comments/")) return await handleComments(request, env as any, url);
       // The site's members: sign-up with a captcha, sign-in, profile, recovery (worker/src/members.ts)
-      if (path === "/members" || path.startsWith("/members/")) return handleMembers(request, env as any, url);
+      if (path === "/members" || path.startsWith("/members/")) return await handleMembers(request, env as any, url);
       // «العضوية المميزة»: Fawaterk checkout, its webhook, the member's requests (worker/src/premium.ts)
-      if (path.startsWith("/premium/")) return handlePremium(request, env as any, url);
+      if (path.startsWith("/premium/")) return await handlePremium(request, env as any, url);
       // a show's premium links, from its editor (whoever may edit that section)
       if (path === "/api/studio/premium/media") {
         const k = request.method === "POST" ? null : url.searchParams.get("k");
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : null;
         const key = String((body && body.k) || k || "");
         const sec = key.split("/")[0];
-        if (!["shows", "recaps", "nostalgia"].includes(sec) || !(await studioAuthorized(request, env, `${sec}.edit`))) return json({ success: false, denied: true, error: "مش مسموحلك تعدّل روابط المميزين." }, 403);
+        // a show is saved by whoever may edit it, or by its creator on the first save
+        if (!["shows", "recaps", "nostalgia"].includes(sec) || !((await studioAuthorized(request, env, `${sec}.edit`)) || (request.method === "POST" && (await studioAuthorized(request, env, `${sec}.create`))))) return json({ success: false, denied: true, error: "مش مسموحلك تعدّل روابط المميزين." }, 403);
         const r = await studioPremiumMedia(env as any, key, body);
         return json(r, r.success ? 200 : 400);
       }
@@ -3100,7 +3101,7 @@ export default {
         return json({ success: false, error: "not found" }, 404);
       }
       // «مجتمع المصارعة»: a chat room per promotion, members only (worker/src/chat.ts)
-      if (path.startsWith("/chat/")) return handleChat(request, env as any, url);
+      if (path.startsWith("/chat/")) return await handleChat(request, env as any, url);
       if (path.startsWith("/api/studio/chat")) {
         if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير المجتمع." }, 403);
         const who = await studioUser(request, env as any);
@@ -3113,11 +3114,11 @@ export default {
         if (path === "/api/studio/chat/delete") { r = await studioChatDelete(env as any, body.room, body.id); if (who && r.success) await studioAudit(env as any, who.user, "community.delete", { room: String(body.room), id: Number(body.id) || 0 }).catch(() => {}); }
         else if (path === "/api/studio/chat/mute") { r = await studioChatMute(env as any, body.uid, body.hours); if (who && r.success) await studioAudit(env as any, who.user, Number(body.hours) ? "community.mute" : "community.unmute", { id: Number(body.uid) || 0, hours: Number(body.hours) || 0 }).catch(() => {}); }
         else if (path === "/api/studio/chat/dismiss") r = await studioChatDismiss(env as any, body.id);
-        else if (path === "/api/studio/chat/rooms") { r = await studioChatRooms(env as any, body); if (who && r.success) await studioAudit(env as any, who.user, "community.rooms", { count: (r.rooms || []).length }).catch(() => {}); }
+        else if (path === "/api/studio/chat/rooms") { if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403); r = await studioChatRooms(env as any, body); if (who && r.success) await studioAudit(env as any, who.user, "community.rooms", { count: (r.rooms || []).length }).catch(() => {}); }
         if (r) return json(r, r.success ? 200 : 400);
         return json({ success: false, error: "not found" }, 404);
       }
-      if (path === "/api/studio/members" && request.method === "GET") {
+      if (path === "/api/studio/site-members" && request.method === "GET") {
         if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف الأعضاء." }, 403);
         return json(await studioMembers(env as any));
       }
@@ -3138,13 +3139,13 @@ export default {
         if (who && r.success) await studioAudit(env as any, who.user, "members.verify", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }
-      // The blue badge on a member, given or taken away: the owner only
+      // A member's name, bio and picture corrected: the owner only
       if (path === "/api/studio/members/edit" && request.method === "POST") {
-        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تعدّل الأعضاء." }, 403);
+        const who = await studioUser(request, env as any);
+        if (!who || who.user.mustChange || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
         const body: any = await request.json().catch(() => ({}));
         const r = await studioEditMember(env as any, body.id, body);
-        const who = await studioUser(request, env as any);
-        if (who && r.success) await studioAudit(env as any, who.user, "members.edit", { id: Number(body.id) || 0 }).catch(() => {});
+        if (r.success) await studioAudit(env as any, who.user, "members.edit", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }
       if (path === "/api/studio/members/badge" && request.method === "POST") {

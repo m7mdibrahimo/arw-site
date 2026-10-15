@@ -51,12 +51,10 @@ export const premiumOf = (m: any, now = Date.now()) => (m?.official ? 4102444800
 /** Days added to a member (renewing adds to what's left), once per payment */
 export async function grant(db: D1Database, member: number, days: number, now = Date.now()) {
   await ensurePremium(db);
-  const m = await db.prepare("SELECT premium_until, premium_since FROM members WHERE id = ?1").bind(member).first<{ premium_until: number; premium_since: number }>();
-  if (!m) return 0;
-  const from = Math.max(now, Number(m.premium_until) || 0);
-  const until = from + days * DAY;
-  await db.prepare("UPDATE members SET premium_until = ?1, premium_since = CASE WHEN premium_until > ?2 THEN premium_since ELSE ?2 END WHERE id = ?3").bind(until, now, member).run();
-  return until;
+  // one statement: two payments settled at the same moment both count (SET reads the row as it was)
+  const r = await db.prepare(`UPDATE members SET premium_since = CASE WHEN premium_until > ?1 THEN premium_since ELSE ?1 END,
+    premium_until = MAX(premium_until, ?1) + ?2 WHERE id = ?3 RETURNING premium_until`).bind(now, days * DAY, member).first<{ premium_until: number }>();
+  return r ? Number(r.premium_until) : 0;
 }
 
 // ── Fawaterk ────────────────────────────────────────────────────────────────
@@ -121,7 +119,8 @@ async function settle(db: D1Database, pay: any, how: { method?: string; referenc
   const r = await db.prepare("UPDATE premium_payments SET status = 'paid', paid_at = ?1, method = ?2, reference = ?3 WHERE id = ?4 AND status != 'paid'")
     .bind(now, String(how.method || "").slice(0, 40), String(how.reference || "").slice(0, 60), pay.id).run();
   if (!r.meta?.changes) return 0; // already counted
-  return grant(db, pay.member, Number(pay.days) || DAYS, now);
+  try { return await grant(db, pay.member, Number(pay.days) || DAYS, now); }
+  catch (e) { await db.prepare("UPDATE premium_payments SET status = 'pending' WHERE id = ?1").bind(pay.id).run().catch(() => {}); throw e; } // counted next time
 }
 
 // ── a show for premium members: its own servers, and the whole show before its time ──
@@ -249,7 +248,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
       const asked = await invoicePaid(env, pay.invoice_id);
       if (asked?.paid) { await settle(db, pay, asked, now); await chatRebadge(env as any, pay.member).catch(() => {}); }
     }
-    const m: any = await db.prepare("SELECT premium_until FROM members WHERE id = ?1").bind(me.id).first();
+    const m: any = await db.prepare("SELECT premium_until, official FROM members WHERE id = ?1").bind(me.id).first();
     return reply({ ok: true, premium: premiumOf(m, now) });
   }
 
@@ -325,8 +324,9 @@ export async function studioPremiumGrant(env: PremiumEnv, id: unknown, days: unk
   const m = await db.prepare("SELECT id FROM members WHERE id = ?1").bind(member).first();
   if (!m) return { success: false, error: "العضو ده مش موجود." };
   if (d <= 0) { await db.prepare("UPDATE members SET premium_until = 0 WHERE id = ?1").bind(member).run(); return { success: true, until: 0 }; }
-  const until = await grant(db, member, Math.min(d, 3650), now);
-  await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 0, 'paid', ?2, ?2, ?3, ?4)").bind(member, now, d, who.slice(0, 40) || "panel").run();
+  const capped = Math.min(d, 3650);
+  const until = await grant(db, member, capped, now);
+  await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 0, 'paid', ?2, ?2, ?3, ?4)").bind(member, now, capped, who.slice(0, 40) || "panel").run();
   return { success: true, until };
 }
 export async function studioPremiumRequest(env: PremiumEnv, b: any, now = Date.now()) {

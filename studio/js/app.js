@@ -178,6 +178,7 @@ async function route() {
   window.onbeforeunload = null; // a tool page's «unsaved changes» guard ends with the page
   const page = $('#page');
   if (!page) return;
+  page.onclick = null; // a view's click handler ends with its page (it must never act on the next view's buttons)
   const hash = location.hash || '#/';
   document.body.classList.remove('nav-open');
   $$('.tab[data-nav]').forEach(a => {
