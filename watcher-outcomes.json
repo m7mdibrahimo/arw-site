@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T20:22:21.305Z"
+ },
  "https://www.fightful.com/wrestling/xelina-details-how-cody-rhodes-saved-10-minutes-for-her-giulias-match-on-wwe-smackdown": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T20:14:14.421Z"
- },
- "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T20:02:49.433Z"
  },
  "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
   "reason": "مكرر مع خبر نزل قبل كده",
