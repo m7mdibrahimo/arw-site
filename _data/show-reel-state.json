@@ -3597,15 +3597,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض تي ان ايه اكسبلوجن 09.10.2026 مترجم",
-    "lastAttempt": 1792039464732,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792040330671,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -3616,9 +3612,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 13.10.2026 مترجم",
-    "lastAttempt": 1792036907709,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792040332215,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
