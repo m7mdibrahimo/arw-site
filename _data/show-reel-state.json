@@ -3631,7 +3631,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261015174619-aew-collision-14-10-2026": {
     "publishedAt": 1792077461279,
@@ -3667,15 +3668,15 @@
     "publishedAt": 1792077541014,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض مين ايفنت 14.10.2026 مترجم",
-    "lastAttempt": 1792083750568,
+    "lastAttempt": 1792087353163,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
