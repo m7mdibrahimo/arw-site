@@ -3603,7 +3603,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261015063601-cmll-martes-populares-13-10-2026": {
     "publishedAt": 1792036895891,
