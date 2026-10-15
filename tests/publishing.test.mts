@@ -4915,3 +4915,10 @@ test("the newest episode's visible H1 says «الأخير» like its title (INCI
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.equal((layout.match(/latestH1\(showSeoData and showSeoData\.isLatest\)/g) || []).length, 2);
 });
+
+// INCIDENTS #566: a one-event library page (Money in the Bank 2026) is searched with its year, not «الاخير»
+test("the library description of a yearly one-event program says the year and download/watch", () => {
+  const t = fs.readFileSync("pages/library-program.njk", "utf-8");
+  assert.ok(/مشاهدة وتحميل \{\{ lp\.prog\.arName \}\}\{% if lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}/.test(t));
+  assert.ok(t.includes("تحميل ومشاهدة"));
+});

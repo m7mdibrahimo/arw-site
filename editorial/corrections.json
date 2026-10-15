@@ -2,6 +2,16 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "موجو بروكس",
+   "right": "موجو بروكز",
+   "note": "الكوميدي Mojo Brookzz كُتب «بروكس» في خبر وبروكز في آخر — الاسم في القاموس الآن — INCIDENTS #566"
+  },
+  {
+   "wrong": "سيكوند موسمه الأخير",
+   "right": "سيكون موسمه الأخير",
+   "note": "second انتقلت للعربية بحروفها بدل «سيكون» في خبر اعتزال كوبلاند — INCIDENTS #566"
+  },
+  {
    "wrong": "بطلة AEW العالميتان للفرق للسيدات",
    "right": "إحدى حاملات لقب AEW العالمي للفرق للسيدات",
    "note": "المثنى «العالميتان» لصفة مفرد في خبر إصابة جيمي هايتر؛ الاسم المعتمد في القاموس كان «بطلتا AEW العالميتان» (مثنى ممنوع) فاتغير — INCIDENTS #559"
