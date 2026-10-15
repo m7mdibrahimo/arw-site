@@ -73,17 +73,17 @@ export const latinDigits = (s: string) => String(s || "").replace(/[٠-٩]/g, d 
 /** A username: 3–20 letters (Arabic or Latin), digits, «_» or «.», starting with a letter */
 export function usernameProblem(u: string, official = false): string | null {
   if (u.length < 3) return "اسم المستخدم قصير، اكتب 3 حروف على الأقل.";
-  if (u.length > 20) return "اسم المستخدم طويل، 20 حرفًا على الأكثر.";
+  if (u.length > 20) return "اسم المستخدم طويل، 20 حرفا على الأكثر.";
   if (!/^[A-Za-zء-ي][A-Za-z0-9ء-ي٠-٩_.]*$/.test(u)) return "اسم المستخدم يبدأ بحرف، ويكون من حروف وأرقام فقط (ومسموح بـ _ و .).";
   if (official) return null;
-  if (isReservedName(u) || /^(admin|administrator|moderator|support|root|arw|arabwrestling|staff|team|official|system)$/i.test(u) || /^(مدير|المدير|الإدارة|الادارة|ادمن|أدمن|الدعم)$/.test(u)) return "هذا الاسم غير متاح، اختر اسمًا آخر.";
+  if (isReservedName(u) || /^(admin|administrator|moderator|support|root|arw|arabwrestling|staff|team|official|system)$/i.test(u) || /^(مدير|المدير|الإدارة|الادارة|ادمن|أدمن|الدعم)$/.test(u)) return "هذا الاسم غير متاح، اختر اسما آخر.";
   return null;
 }
 export function passwordProblem(p: string, username = ""): string | null {
   if (typeof p !== "string" || p.length < 8) return "كلمة المرور 8 حروف على الأقل.";
-  if (p.length > 200) return "كلمة المرور طويلة جدًا.";
+  if (p.length > 200) return "كلمة المرور طويلة جدا.";
   if (!/[A-Za-zء-ي]/.test(p) || !/[0-9٠-٩]/.test(p)) return "اجعل كلمة المرور فيها حروف وأرقام.";
-  if (username && p.toLowerCase().includes(username.toLowerCase())) return "لا تجعل اسم المستخدم جزءًا من كلمة المرور.";
+  if (username && p.toLowerCase().includes(username.toLowerCase())) return "لا تجعل اسم المستخدم جزءا من كلمة المرور.";
   return null;
 }
 export const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[A-Za-z]{2,24}$/;
@@ -165,7 +165,7 @@ export function mailHtml(title: string, lines: string[], button?: { text: string
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:520px;background:#ffffff;border:1px solid #ece6d8;border-radius:18px;overflow:hidden">
 <tr><td style="background:#0e9594;padding:22px 26px;text-align:right"><img src="${SITE}/assets/brand-logo.png" width="44" height="44" alt="" style="vertical-align:middle;border-radius:10px"> <span style="color:#ffffff;font-weight:800;font-size:20px;vertical-align:middle;margin-right:8px">عرب راسلنج</span></td></tr>
 <tr><td style="padding:30px 28px 10px;text-align:right"><h1 style="margin:0 0 16px;font-size:21px;color:#1e2530">${title}</h1>${p}${b}${after}</td></tr>
-<tr><td style="padding:18px 28px 26px;border-top:1px solid #f1ece0;text-align:right;font-size:13px;color:#8a8f9b;line-height:1.8">وصلتك هذه الرسالة لأن عنوان بريدك استُخدم في موقع <a href="${SITE}" style="color:#0e9594;text-decoration:none">عرب راسلنج</a>. إن لم تكن أنت، تجاهلها.</td></tr>
+<tr><td style="padding:18px 28px 26px;border-top:1px solid #f1ece0;text-align:right;font-size:13px;color:#8a8f9b;line-height:1.8">وصلتك هذه الرسالة لأن عنوان بريدك استخدم في موقع <a href="${SITE}" style="color:#0e9594;text-decoration:none">عرب راسلنج</a>. إن لم تكن أنت، تجاهلها.</td></tr>
 </table></td></tr></table></body></html>`;
 }
 export async function sendMail(env: MembersEnv, to: string, subject: string, html: string, f: typeof fetch = fetch): Promise<boolean> {
@@ -190,7 +190,7 @@ async function mailToken(db: D1Database, member: number, kind: "verify" | "reset
 async function sendVerify(env: MembersEnv, db: D1Database, m: Member, now: number) {
   if (!env.RESEND_API_KEY) return false;
   const t = await mailToken(db, m.id, "verify", 72, now);
-  return sendMail(env, m.email, "فعّل حسابك في عرب راسلنج", mailHtml(`أهلًا بك يا ${esc(m.display || m.username)} 👋`, [
+  return sendMail(env, m.email, "فعل حسابك في عرب راسلنج", mailHtml(`أهلا بك يا ${esc(m.display || m.username)} 👋`, [
     "سعداء بانضمامك إلى عرب راسلنج.",
     "بقيت خطوة واحدة: اضغط على الزر لتفعيل حسابك، وبعدها تدخل مباشرة وتستفيد من كل مميزات العضوية.",
     "الرابط صالح لمدة 3 أيام. إن لم تنشئ هذا الحساب، تجاهل هذه الرسالة.",
@@ -228,7 +228,7 @@ async function resendVerify(env: MembersEnv, db: D1Database, m: Member, now: num
 }
 const pendingReply = (m: Member, sent: boolean, extra: Record<string, unknown> = {}) => reply({
   ok: false, unverified: true, email: maskEmail(m.email), sent,
-  error: sent ? "حسابك لم يُفعّل بعد. أرسلنا رابط التفعيل إلى بريدك، افتح الرسالة واضغط «تفعيل الحساب»." : "حسابك لم يُفعّل بعد. افتح رسالة التفعيل في بريدك واضغط «تفعيل الحساب».",
+  error: sent ? "حسابك لم يفعل بعد. أرسلنا رابط التفعيل إلى بريدك، افتح الرسالة واضغط «تفعيل الحساب»." : "حسابك لم يفعل بعد. افتح رسالة التفعيل في بريدك واضغط «تفعيل الحساب».",
   ...extra,
 }, 403);
 
@@ -254,14 +254,14 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   if (path === "/captcha" && request.method === "GET") return reply(await newCaptcha(env.PUSH_KV));
 
   if (path === "/signup" && request.method === "POST") {
-    if (String(body.website || "")) return reply({ ok: false, error: "تعذّر إنشاء الحساب." }, 400);
+    if (String(body.website || "")) return reply({ ok: false, error: "تعذر إنشاء الحساب." }, 400);
     if (await tooMany(env.PUSH_KV, `su:${ip}`, 5, 3600)) return reply({ ok: false, error: "أنشأت حسابات كثيرة من هذا الجهاز، حاول بعد ساعة." }, 429);
     const username = String(body.username || "").normalize("NFC").trim();
     const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
-    const bad = usernameProblem(username) || (!EMAIL.test(email) ? "اكتب بريدًا إلكترونيًا صحيحًا." : null) || passwordProblem(password, username);
+    const bad = usernameProblem(username) || (!EMAIL.test(email) ? "اكتب بريدا إلكترونيا صحيحا." : null) || passwordProblem(password, username);
     if (bad) return reply({ ok: false, error: bad }, 400);
-    if (!(await checkCaptcha(env.PUSH_KV, body.captcha))) return reply({ ok: false, error: "رمز التحقق غير صحيح، جرّب الرمز الجديد.", captcha: true }, 400);
+    if (!(await checkCaptcha(env.PUSH_KV, body.captcha))) return reply({ ok: false, error: "رمز التحقق غير صحيح، جرب الرمز الجديد.", captcha: true }, 400);
     // an account never activated (a mistyped address…) gives its name and address back after a day
     await ensureComments(db);
     // (only while activation is required: without mail no account is ever activated, so none may be taken over;
@@ -269,15 +269,15 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (mustVerify(env)) await db.prepare(`DELETE FROM members WHERE (ukey = ?1 OR email = ?2) AND verified = 0 AND official = 0 AND created < ?3
       AND premium_until = 0 AND NOT EXISTS (SELECT 1 FROM comments c WHERE c.member = members.id)`).bind(ukeyOf(username), email, now - DAY).run();
     const taken = await db.prepare("SELECT ukey = ?1 AS u, email = ?2 AS e FROM members WHERE ukey = ?1 OR email = ?2 LIMIT 1").bind(ukeyOf(username), email).first<{ u: number; e: number }>();
-    if (taken?.u) return reply({ ok: false, error: "اسم المستخدم مستخدم من قبل، اختر اسمًا آخر.", field: "username" }, 409);
-    if (taken?.e) return reply({ ok: false, error: "هذا البريد له حساب بالفعل، سجّل دخولك.", field: "email" }, 409);
+    if (taken?.u) return reply({ ok: false, error: "اسم المستخدم مستخدم من قبل، اختر اسما آخر.", field: "username" }, 409);
+    if (taken?.e) return reply({ ok: false, error: "هذا البريد له حساب بالفعل، سجل دخولك.", field: "email" }, 409);
     const { salt, hash, iterations } = await hashPassword(password);
     const code = recoveryCode();
     const country = String((request as any).cf?.country || "").slice(0, 2).toUpperCase();
     // no blue badge to begin with: the owner gives it (owner 2026-10-14: «تشيل موضوع ان اي حد يسجل ياخد العلامة الزرقاء»)
     const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, recovery, display, created, last_seen, ip, country, badge)
       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?1, ?8, ?8, ?9, ?10, 0) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country).first<Member>();
-    if (!ins) return reply({ ok: false, error: "تعذّر إنشاء الحساب، حاول مرة أخرى." }, 500);
+    if (!ins) return reply({ ok: false, error: "تعذر إنشاء الحساب، حاول مرة أخرى." }, 500);
     await count(env.PUSH_KV, `su:${ip}`, 3600);
     const mailed = await sendVerify(env, db, ins, now).catch(() => false);
     // the account opens from the link in the mail
@@ -352,7 +352,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path === "/reset" && request.method === "POST") {
     const row = await db.prepare("SELECT t.member, t.expires, m.username FROM member_tokens t JOIN members m ON m.id = t.member WHERE t.token = ?1 AND t.kind = 'reset'").bind(await sha(String(body.token || ""))).first<{ member: number; expires: number; username: string }>();
-    if (!row || row.expires < now) return reply({ ok: false, error: "الرابط انتهت صلاحيته، اطلب رابطًا جديدًا." }, 400);
+    if (!row || row.expires < now) return reply({ ok: false, error: "الرابط انتهت صلاحيته، اطلب رابطا جديدا." }, 400);
     const bad = passwordProblem(String(body.password || ""), row.username);
     if (bad) return reply({ ok: false, error: bad }, 400);
     const { salt, hash, iterations } = await hashPassword(String(body.password));
@@ -367,7 +367,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path === "/verify" && request.method === "POST") {
     const row = await db.prepare("SELECT member, expires FROM member_tokens WHERE token = ?1 AND kind = 'verify'").bind(await sha(String(body.token || ""))).first<{ member: number; expires: number }>();
-    if (!row || row.expires < now) return reply({ ok: false, error: "رابط التفعيل انتهت صلاحيته. سجّل دخولك وسنرسل لك رابطًا جديدًا." }, 400);
+    if (!row || row.expires < now) return reply({ ok: false, error: "رابط التفعيل انتهت صلاحيته. سجل دخولك وسنرسل لك رابطا جديدا." }, 400);
     await db.batch([
       db.prepare("UPDATE members SET verified = 1, last_seen = ?2 WHERE id = ?1").bind(row.member, now),
       db.prepare("DELETE FROM member_tokens WHERE member = ?1 AND kind = 'verify'").bind(row.member),
@@ -382,7 +382,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   if (path === "/email-confirm" && request.method === "POST") {
     const key = `members:email:${await sha(String(body.token || ""))}`;
     const want: any = JSON.parse(await env.PUSH_KV.get(key) || "null");
-    if (!want) return reply({ ok: false, error: "رابط تأكيد البريد انتهت صلاحيته. غيّر البريد مرة أخرى من الإعدادات." }, 400);
+    if (!want) return reply({ ok: false, error: "رابط تأكيد البريد انتهت صلاحيته. غير البريد مرة أخرى من الإعدادات." }, 400);
     const taken = await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(want.email, want.member).first();
     if (taken) { await env.PUSH_KV.delete(key); return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409); }
     await db.prepare("UPDATE members SET email = ?1, verified = 1 WHERE id = ?2").bind(want.email, want.member).run();
@@ -402,7 +402,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   // ── the member's own ──
   const me = await memberOf(request, env, now);
-  if (!me) return reply({ ok: false, error: "سجّل دخولك أولًا.", signedOut: true }, 401);
+  if (!me) return reply({ ok: false, error: "سجل دخولك أولا.", signedOut: true }, 401);
 
   if (path === "/me" && request.method === "GET") return reply({ ok: true, member: mine(me), mail: !!env.RESEND_API_KEY });
 
@@ -416,7 +416,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (me.official) { body.display = me.display; body.pic = me.pic; }
     const display = String(body.display ?? me.display).normalize("NFC").replace(/\s+/g, " ").trim().slice(0, 30);
     if (display.length < 2) return reply({ ok: false, error: "الاسم الظاهر حرفان على الأقل." }, 400);
-    if (isReservedName(display) && !me.official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
+    if (isReservedName(display) && !me.official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسما آخر." }, 400);
     const pic = String(body.pic ?? me.pic);
     const okPic = pic === "" || WRESTLER_PIC.test(pic) || /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic);
     const fav_fed = /^(WWE|AEW|NJPW|TNA|ROH|MLP|MLW|CMLL|AAA|UFC|STARDOM|NOAH|)$/.test(String(body.fav_fed ?? me.fav_fed)) ? String(body.fav_fed ?? me.fav_fed) : me.fav_fed;
@@ -454,7 +454,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   if (path === "/email" && request.method === "POST") {
     if (!(await verifyPassword(String(body.current || ""), me))) return reply({ ok: false, error: "كلمة المرور الحالية غير صحيحة." }, 400);
     const email = String(body.email || "").trim().toLowerCase();
-    if (!EMAIL.test(email)) return reply({ ok: false, error: "اكتب بريدًا صحيحًا." }, 400);
+    if (!EMAIL.test(email)) return reply({ ok: false, error: "اكتب بريدا صحيحا." }, 400);
     if (email === me.email) return reply({ ok: false, error: "هذا هو بريدك الحالي." }, 400);
     if (await tooMany(env.PUSH_KV, `emq:${me.id}`, 10, 3600)) return reply({ ok: false, error: "طلبات كثيرة، حاول بعد ساعة." }, 429);
     await count(env.PUSH_KV, `emq:${me.id}`, 3600);
@@ -468,7 +468,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     await count(env.PUSH_KV, `em:${me.id}`, 3600);
     const t = randomToken();
     await env.PUSH_KV.put(`members:email:${await sha(t)}`, JSON.stringify({ member: me.id, email }), { expirationTtl: 86400 });
-    const sent = await sendMail(env, email, "أكّد بريدك الجديد في عرب راسلنج", mailHtml(`أهلًا يا ${esc(me.display || me.username)}`, [
+    const sent = await sendMail(env, email, "أكد بريدك الجديد في عرب راسلنج", mailHtml(`أهلا يا ${esc(me.display || me.username)}`, [
       "طلبت تغيير بريد حسابك في عرب راسلنج إلى هذا البريد.",
       "اضغط على الزر لتأكيد البريد الجديد. بريدك القديم يبقى كما هو حتى تضغط.",
       "الرابط صالح لمدة يوم واحد. إن لم تطلب هذا، تجاهل الرسالة.",
@@ -478,7 +478,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path === "/verify-again" && request.method === "POST") {
     if (me.verified) return reply({ ok: true, already: true });
-    if (await tooMany(env.PUSH_KV, `va:${me.id}`, 3, 3600)) return reply({ ok: false, error: "أرسلنا رسائل كثيرة، انتظر قليلًا." }, 429);
+    if (await tooMany(env.PUSH_KV, `va:${me.id}`, 3, 3600)) return reply({ ok: false, error: "أرسلنا رسائل كثيرة، انتظر قليلا." }, 429);
     await count(env.PUSH_KV, `va:${me.id}`, 3600);
     const sent = await sendVerify(env, db, me, now);
     return sent ? reply({ ok: true }) : reply({ ok: false, error: "إرسال البريد غير متاح الآن." }, 503);

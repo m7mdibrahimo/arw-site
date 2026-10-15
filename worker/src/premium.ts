@@ -192,7 +192,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     let links: any = known;
     if (!links) {
       let file: { content: string } | null;
-      try { file = await readRepoFile(env as any, `content/${k}.md`); } catch { return reply({ ok: false, error: "تعذّر التحميل، حاول بعد قليل." }, 503); }
+      try { file = await readRepoFile(env as any, `content/${k}.md`); } catch { return reply({ ok: false, error: "تعذر التحميل، حاول بعد قليل." }, 503); }
       links = file ? showLinks(file.content) : { missing: true };
       await env.PUSH_KV.put(cacheKey, JSON.stringify(links), { expirationTtl: 120 });
     }
@@ -201,7 +201,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     return reply({ ok: true, premium, servers: links.servers, downloads: links.downloads, pub: links.date });
   }
 
-  if (!me) return reply({ ok: false, signedOut: true, error: "سجّل دخولك أولًا." }, 401);
+  if (!me) return reply({ ok: false, signedOut: true, error: "سجل دخولك أولا." }, 401);
 
   // «اشتراكي» on the member's page: since when, until when, and every payment (owner 2026-10-15)
   if (path === "/premium/mine" && request.method === "GET") {

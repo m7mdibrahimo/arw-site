@@ -6,6 +6,8 @@
  */
 (function() {
   'use strict';
+  // the English edition's own pages for links this script builds (the mirror only rewrites the page's HTML)
+  var LP = document.documentElement.lang === 'en' ? '/en' : '';
 
   /* ==========================================================================
      Arabic String Normalizer
@@ -229,7 +231,7 @@
 
           if (!topMatches.length) {
             dropdown.innerHTML = '<div class="instant-search-empty">لم يتم العثور على نتائج مطابقة لـ "' + escapeHtml(trimmed) + '"</div>' +
-              '<div class="instant-search-footer"><a class="instant-search-all-btn" href="/search/?q=' + encodeURIComponent(trimmed) + '">البحث الشامل في الموقع &larr;</a></div>';
+              '<div class="instant-search-footer"><a class="instant-search-all-btn" href="' + LP + '/search/?q=' + encodeURIComponent(trimmed) + '">البحث الشامل في الموقع &larr;</a></div>';
             updateDropdownPosition();
             return;
           }
@@ -263,7 +265,7 @@
             '</li>';
           });
           html += '</ul>';
-          html += '<div class="instant-search-footer"><a class="instant-search-all-btn" href="/search/?q=' + encodeURIComponent(trimmed) + '">عرض جميع النتائج (' + matches.length + ') &larr;</a></div>';
+          html += '<div class="instant-search-footer"><a class="instant-search-all-btn" href="' + LP + '/search/?q=' + encodeURIComponent(trimmed) + '">عرض جميع النتائج (' + matches.length + ') &larr;</a></div>';
           dropdown.innerHTML = html;
           updateDropdownPosition();
           selectedIndex = -1;
@@ -705,12 +707,12 @@
       // «مجتمع المصارعة» (pages/community.njk)
       '<a class="arw-more-cm" href="/community/"><span class="arw-more-cm-ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></span><span><b>مجتمع المصارعة</b><small>دردش مع محبي اتحادك مباشرة</small></span><i aria-hidden="true">‹</i></a>' +
       '<div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
-      '<a href="/library/">' + ICONS.library + 'مكتبة العروض</a>' +
-      '<a href="/federations/">' + ICONS.feds + 'الاتحادات</a>' +
-      '<a href="/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
-      '<a href="/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
+      '<a href="' + LP + '/library/">' + ICONS.library + 'مكتبة العروض</a>' +
+      '<a href="' + LP + '/federations/">' + ICONS.feds + 'الاتحادات</a>' +
+      '<a href="' + LP + '/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
+      '<a href="' + LP + '/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
       // «العضوية المميزة» (pages/premium.njk) took «ادعم الموقع»'s place; hidden for a member who has it
-      '<a class="more-support premium-btn" href="/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
+      '<a class="more-support premium-btn" href="' + LP + '/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
       '</div>';
     sheet.querySelector('.arw-more-acct > span:not(.arw-more-acct-av) b').textContent = mem ? (mem.display || mem.username) : 'حسابك في عرب راسلنج';
     sheet.querySelector('.arw-more-acct > span:not(.arw-more-acct-av) small').textContent = mem ? (mem.official ? 'الحساب الرسمي' : Number(mem.premium) > Date.now() ? 'عضو مميز' : 'حسابي') : 'ادخل أو أنشئ حساب مجاني';
@@ -900,7 +902,7 @@
         '<a class="arw-am-me" href="' + HOME + '/account/" role="menuitem"><span class="arw-am-av"><span class="arw-acct-in">' + memberAvatar(m) + '</span></span><span class="arw-am-who"><b></b><small dir="ltr"></small></span></a>' +
         '<div class="arw-am-status">' + (m.official || prem ? CROWN_IC : '') + '<span></span></div>' +
         (m.official || prem ? '' :
-          '<a class="arw-am-up" href="/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، وتوثيق حسابك</small></span></a>') +
+          '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، وتوثيق حسابك</small></span></a>') +
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
@@ -961,6 +963,7 @@
     function apply(m) {
       var on = !!(m && (m.official || Number(m.premium) > Date.now()));
       var st = document.getElementById('arw-prem-hide');
+      document.documentElement.classList.toggle('arw-is-prem', on);
       if (on && !st) { st = document.createElement('style'); st.id = 'arw-prem-hide'; st.textContent = '.premium-btn{display:none !important}'; document.head.appendChild(st); }
       else if (!on && st) st.remove();
       crowned(document.querySelector('#navMenu .arw-acct-btn.is-in'), m);
@@ -999,10 +1002,10 @@
     var CROWN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
     var JOIN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M19 8v6M16 11h6"/></svg>';
     var offers = m ? [
-      ['العروض الجديدة قبل الجميع', 'مع العضوية المميزة تشاهد العرض قبل نشره للكل بساعات.', 'اعرف أكثر', '/premium/'],
-      ['شاهد بدون إعلانات', 'سيرفرات خاصة للأعضاء المميزين: أسرع وبدون نوافذ مزعجة.', 'اعرف أكثر', '/premium/'],
-      ['وثق حسابك', 'علامة التوثيق بجانب اسمك، واسمك باللون الذهبي في التعليقات والمجتمع.', 'اشترك الآن', '/premium/'],
-      ['اطلب أي عرض ونترجمه لك', 'الأعضاء المميزون يطلبون العروض القديمة والسلاسل، ونحن نترجمها.', 'اعرف أكثر', '/premium/']
+      ['العروض الجديدة قبل الجميع', 'مع العضوية المميزة تشاهد العرض قبل نشره للكل بساعات.', 'اعرف أكثر', HOME + '/premium/'],
+      ['شاهد بدون إعلانات', 'سيرفرات خاصة للأعضاء المميزين: أسرع وبدون نوافذ مزعجة.', 'اعرف أكثر', HOME + '/premium/'],
+      ['وثق حسابك', 'علامة التوثيق بجانب اسمك، واسمك باللون الذهبي في التعليقات والمجتمع.', 'اشترك الآن', HOME + '/premium/'],
+      ['اطلب أي عرض ونترجمه لك', 'الأعضاء المميزون يطلبون العروض القديمة والسلاسل، ونحن نترجمها.', 'اعرف أكثر', HOME + '/premium/']
     ] : [
       ['انضم إلى عرب راسلنج مجانا', 'علق باسمك، ودردش مع محبي المصارعة في مجتمع المصارعة.', 'أنشئ حسابك', HOME + '/account/?new'],
       ['مجتمع المصارعة في انتظارك', 'غرف دردشة مباشرة لكل اتحاد. أنشئ حسابك المجاني وادخل الآن.', 'أنشئ حسابك', HOME + '/account/?new']

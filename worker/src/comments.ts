@@ -170,31 +170,31 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
 
   // ── a new comment ──
   const ua = request.headers.get("User-Agent") || "";
-  if (!ua || BOT_UA.test(ua) || !fromSite(request.headers.get("Origin"), request.headers.get("Referer"))) return reply({ ok: false, error: "تعذّر إرسال التعليق." }, 403);
+  if (!ua || BOT_UA.test(ua) || !fromSite(request.headers.get("Origin"), request.headers.get("Referer"))) return reply({ ok: false, error: "تعذر إرسال التعليق." }, 403);
   const raw = await request.text();
-  if (raw.length > 120_000) return reply({ ok: false, error: "الصورة كبيرة جدًا، اختر صورة أصغر." }, 413);
+  if (raw.length > 120_000) return reply({ ok: false, error: "الصورة كبيرة جدا، اختر صورة أصغر." }, 413);
   let b: any;
-  try { b = JSON.parse(raw); } catch { return reply({ ok: false, error: "تعذّر إرسال التعليق." }, 400); }
+  try { b = JSON.parse(raw); } catch { return reply({ ok: false, error: "تعذر إرسال التعليق." }, 400); }
   const path = commentPath(b?.p);
-  if (!path) return reply({ ok: false, error: "تعذّر إرسال التعليق." }, 400);
+  if (!path) return reply({ ok: false, error: "تعذر إرسال التعليق." }, 400);
   // a bot: the field people never see is filled, or the form was sent faster than anyone can type
   if (String(b.website || "") !== "" || !(Number(b.t) >= 2000)) return reply({ ok: true, id: 0, status: "published" });
   // a member comments as themselves: their name and picture, kept with their account
   const member = await memberOf(request, env as any, now);
-  if (!member && env.COMMENTS_OPEN !== "1") return reply({ ok: false, signedOut: true, error: "التعليق للأعضاء فقط. سجّل دخولك أو أنشئ حسابًا مجانيًا لتعلّق." }, 401);
+  if (!member && env.COMMENTS_OPEN !== "1") return reply({ ok: false, signedOut: true, error: "التعليق للأعضاء فقط. سجل دخولك أو أنشئ حسابا مجانيا لتعلق." }, 401);
   // the site's own account, signed in on the site: its comments are the site's, as the panel's replies (official = 1)
   const official = !!(member as any)?.official;
   const name = official ? OFFICIAL_NAME : member ? (member.display || member.username) : cleanText(b.name, 40);
   const text = cleanText(b.text, 1000, true);
-  if (name.length < 2) return reply({ ok: false, error: "اكتب اسمك أولًا." }, 400);
-  if (text.length < 2) return reply({ ok: false, error: "اكتب تعليقك أولًا." }, 400);
+  if (name.length < 2) return reply({ ok: false, error: "اكتب اسمك أولا." }, 400);
+  if (text.length < 2) return reply({ ok: false, error: "اكتب تعليقك أولا." }, 400);
   if (HAS_LINK.test(text) || HAS_LINK.test(name)) return reply({ ok: false, error: "الروابط غير مسموح بها في التعليقات." }, 400);
-  if (isReservedName(name) && !official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسمًا آخر." }, 400);
+  if (isReservedName(name) && !official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسما آخر." }, 400);
   // a visitor can't take a member's name
   if (!member) {
     await ensureMembers(db);
     const k = name.normalize("NFKC").toLowerCase();
-    if (await db.prepare("SELECT 1 FROM members WHERE ukey = ?1 OR lower(display) = ?1 LIMIT 1").bind(k).first()) return reply({ ok: false, error: "هذا الاسم لعضو مسجّل في الموقع. سجّل دخولك إن كان حسابك، أو اختر اسمًا آخر.", member: true }, 400);
+    if (await db.prepare("SELECT 1 FROM members WHERE ukey = ?1 OR lower(display) = ?1 LIMIT 1").bind(k).first()) return reply({ ok: false, error: "هذا الاسم لعضو مسجل في الموقع. سجل دخولك إن كان حسابك، أو اختر اسما آخر.", member: true }, 400);
   }
   const title = cleanText(b.title, 200);
   // an answer to a comment or to a reply: on the same page, under the same comment (the thread), told to whoever wrote it
@@ -212,8 +212,8 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE vhash = ?1 AND at > ?2").bind(who, now - 86_400_000),
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE path = ?1 AND text = ?2 AND parent = ?3 AND deleted = 0").bind(path, text, parent),
   ]) as any[];
-  if (!official && (recent.results?.[0]?.n || 0) >= 4) return reply({ ok: false, error: "أرسلت تعليقات كثيرة الآن، انتظر قليلًا ثم حاول مرة أخرى." }, 429);
-  if (!official && (today.results?.[0]?.n || 0) >= 30) return reply({ ok: false, error: "وصلت إلى الحد اليومي للتعليقات، شكرًا لك." }, 429);
+  if (!official && (recent.results?.[0]?.n || 0) >= 4) return reply({ ok: false, error: "أرسلت تعليقات كثيرة الآن، انتظر قليلا ثم حاول مرة أخرى." }, 429);
+  if (!official && (today.results?.[0]?.n || 0) >= 30) return reply({ ok: false, error: "وصلت إلى الحد اليومي للتعليقات، شكرا لك." }, 429);
   if ((same.results?.[0]?.n || 0) > 0) return reply({ ok: false, error: "هذا التعليق منشور بالفعل." }, 409);
 
   const chosen = official ? "" : member ? member.pic : String(b.pic || "");

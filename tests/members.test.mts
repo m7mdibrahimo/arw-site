@@ -155,7 +155,7 @@ test('with the site\'s mail key: activation by e-mail is required, the link open
     assert.match(s.body.recovery, /^[A-Z0-9]{4}-/);
     assert.equal(sent[0].url, 'https://api.resend.com/emails');
     assert.deepEqual(sent[0].body.to, ['kareem@example.com']);
-    assert.match(sent[0].body.subject, /فعّل حسابك/);
+    assert.match(sent[0].body.subject, /فعل حسابك/);
     // no way in before the link: the right password only sends the link again
     const early = await call(e, '/login', { login: 'kareem_10', password: 'raw2026night' });
     assert.equal(early.status, 403);

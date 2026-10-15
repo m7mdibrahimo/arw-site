@@ -26,7 +26,7 @@
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { d.status = r.status; return d; }); });
   }
   function signedIn(d) {
-    session = { token: d.token, member: d.member };
+    session = { token: d.token, member: d.member }; subLoaded = false;
     save(session);
   }
 
@@ -480,7 +480,7 @@
   $('[data-act="logout"]').addEventListener('click', function () {
     api('/logout', {}, true).catch(function () {}).then(out);
   });
-  function out() { save(null); session = null; show('auth'); }
+  function out() { save(null); session = null; subLoaded = false; show('auth'); }
   // after signing in: back to the page they came from (?back=…), or their page
   function done() {
     var back = new URLSearchParams(location.search).get('back') || '';

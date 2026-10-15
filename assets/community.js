@@ -76,7 +76,8 @@
   var CROWN = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   // the site's account: gold; «العضوية المميزة»: the blue badge and the crown (pages/premium.njk); a member given it: blue
   // gold: the site's account, or a member the owner gave the gold badge (vgold); blue: verified or premium
-  function badge(b) { return b === 'gold' || b === 'vgold' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
+  function badge(b) { return b === 'gold' || b === 'vgold' || b === 'gprem' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
+  function isPrem(b) { return b === 'premium' || b === 'gprem'; }
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function clock(ms) { var d = new Date(ms); var h = d.getHours(); return (h % 12 || 12) + ':' + pad(d.getMinutes()) + (h < 12 ? ' ص' : ' م'); }
   function dayKey(ms) { var d = new Date(ms); return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
@@ -102,6 +103,7 @@
   // the list as the owner keeps it (the panel's «الغرف»): new rooms added, names and colours updated, hidden ones gone,
   // the owner's order kept. The page was built with the first list; /chat/rooms is the one in force.
   var nav = $('.cm-rooms');
+  var want = location.hash.slice(1);
   function syncRooms(list) {
     if (!list || !list.length) return;
     var keep = {};
@@ -123,6 +125,9 @@
     });
     Object.keys(ROOMS).forEach(function (id) { if (!keep[id]) { ROOMS[id].btn.remove(); delete ROOMS[id]; if (current === id) showRooms(); } });
     if (current && ROOMS[current]) { $('.cm-head-name').textContent = ROOMS[current].name; setMuted(); }
+    // a link to a room the page didn't know yet (added from the panel) opens it once the list arrives
+    if (want && ROOMS[want] && current !== want) open(want, false);
+    want = '';
   }
 
   // ── the rooms' list: who's in each, the last message ─────────────────────
@@ -157,6 +162,7 @@
   var current = null, ws = null, me = null, msgs = [], byId = {}, done = false, loadingMore = false, pinned = null, people = [], typing = {}, retry = 0, retryT, pingT, mutedUntil = 0, replyTo = null, spoiler = false;
   var pending = {}; // nonce → element
   function open(room, push) {
+    want = '';
     if (!ROOMS[room]) return;
     if (current === room && ws && ws.readyState <= 1) { showRoom(); return; }
     close();
@@ -463,7 +469,7 @@
     if (isCont) row.classList.add('is-cont');
     if (mine) row.classList.add('is-mine');
     if (m.badge === 'gold') row.classList.add('is-gold');
-    if (m.badge === 'premium') row.classList.add('is-prem');
+    if (isPrem(m.badge)) row.classList.add('is-prem');
     if (m.att && (m.att.kind === 'image' || m.att.kind === 'video')) row.classList.add('is-media');
     if (me && me.user && !mine && m.text && new RegExp('@' + (me.user || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\w.])', 'i').test(m.text)) row.classList.add('mentions-me');
     row.appendChild(avatar(m));
@@ -473,8 +479,8 @@
       var nm = el('div', 'cm-name');
       nm.style.setProperty('--nh', hueOf(m.user || m.name));
       nm.appendChild(el('span', null, m.name));
-      if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : m.badge === 'vgold' ? 'عضو موثق بالعلامة الذهبية' : 'عضو موثق'; nm.appendChild(bg.firstChild); }
-      if (m.badge === 'premium') { var pc = el('a', 'cm-prem'); pc.href = '/premium/'; pc.title = 'عضو مميز'; pc.innerHTML = CROWN; pc.appendChild(document.createTextNode('مميز')); nm.appendChild(pc); }
+      if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : m.badge === 'vgold' || m.badge === 'gprem' ? 'عضو موثق بالعلامة الذهبية' : 'عضو موثق'; nm.appendChild(bg.firstChild); }
+      if (isPrem(m.badge)) { var pc = el('a', 'cm-prem'); pc.href = (document.documentElement.lang === 'en' ? '/en' : '') + '/premium/'; pc.title = 'عضو مميز'; pc.innerHTML = CROWN; pc.appendChild(document.createTextNode('مميز')); nm.appendChild(pc); }
       bub.appendChild(nm);
     }
     if (m.del) {
@@ -1023,6 +1029,6 @@
   fit(); window.addEventListener('resize', fit);
   summaries();
   var first = location.hash.slice(1);
-  if (ROOMS[first]) open(first, false);
+  if (ROOMS[first]) { want = ''; open(first, false); }
   else if (!window.matchMedia('(max-width: 1150px)').matches) open('general', false);
 })();

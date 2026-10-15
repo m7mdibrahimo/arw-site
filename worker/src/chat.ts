@@ -76,7 +76,7 @@ const VOICE_TYPES: Record<string, string> = { "audio/webm": "webm", "audio/ogg":
 const MEDIA_PREFIX = `${PIC_ORIGIN}/chat/media/`;
 const REACTION = /^(?:\p{Extended_Pictographic}|\p{Regional_Indicator}|[‍️⃣#*0-9]|\p{Emoji_Modifier}){1,12}$/u;
 
-export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "vgold" | "blue" | "premium" | ""; mod: boolean; mute: number; ro?: boolean; prem?: boolean };
+export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "vgold" | "gprem" | "blue" | "premium" | ""; mod: boolean; mute: number; ro?: boolean; prem?: boolean };
 export type Att = { kind: "image" | "voice" | "file" | "video"; url: string; name?: string; size?: number; mime?: string; w?: number; h?: number; dur?: number; wave?: number[] };
 export type Msg = {
   id: number; uid: number; user: string; name: string; pic: string; badge: string; text: string; att: Att | null;
@@ -257,10 +257,10 @@ export class ChatRoom {
         if (muted) return this.send(ws, { t: "error", code: "muted", until: muted, nonce: b.nonce, error: "لا يمكنك الكتابة في المجتمع الآن." });
         // at most 6 messages in 10 seconds
         const times = (this.recent.get(me.uid) || []).filter(t => now - t < 10_000);
-        if (times.length >= 6) return this.send(ws, { t: "error", code: "slow", nonce: b.nonce, error: "أرسلت رسائل كثيرة بسرعة، انتظر ثوانيَ قليلة." });
+        if (times.length >= 6) return this.send(ws, { t: "error", code: "slow", nonce: b.nonce, error: "أرسلت رسائل كثيرة بسرعة، انتظر ثواني قليلة." });
         const text = cleanChatText(b.text);
         const att = cleanAtt(b.att, room);
-        if (!text && !att) return this.send(ws, { t: "error", code: "empty", nonce: b.nonce, error: "اكتب رسالتك أولًا." });
+        if (!text && !att) return this.send(ws, { t: "error", code: "empty", nonce: b.nonce, error: "اكتب رسالتك أولا." });
         let rep: Msg["reply"] = null;
         if (b.reply) {
           const o = this.get(Number(b.reply));
@@ -357,7 +357,7 @@ const rnd = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.
 
 /** A member's mark in the rooms, as their account is now: the site's (gold), the owner's gold, premium, blue, or none */
 export const chatBadgeOf = (m: any, now = Date.now()): Who["badge"] =>
-  m.official ? "gold" : m.badge === 2 ? "vgold" : Number(m.premium_until) > now ? "premium" : m.badge === 0 ? "" : "blue";
+  m.official ? "gold" : m.badge === 2 ? (Number(m.premium_until) > now ? "gprem" : "vgold") : Number(m.premium_until) > now ? "premium" : m.badge === 0 ? "" : "blue";
 /** Every room shows a member as they are now (owner 2026-10-15: «لو الاشتراك خلص … هتختفي الحاجات دي ولو اشترك تاني هترجع»):
  *  after a payment, a badge given or taken, a membership that ended */
 export async function chatRebadge(env: ChatEnv, uid: unknown) {
@@ -414,7 +414,7 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
 
   if (path === "/chat/ticket" && request.method === "POST") {
     const who = await whoFor(env, request);
-    if (!who) return reply({ ok: false, signedOut: true, error: "سجّل دخولك لتنضم إلى المجتمع." }, 401);
+    if (!who) return reply({ ok: false, signedOut: true, error: "سجل دخولك لتنضم إلى المجتمع." }, 401);
     const ticket = rnd() + rnd();
     await env.PUSH_KV.put(`chat:t:${ticket}`, JSON.stringify(who), { expirationTtl: 60 });
     return reply({ ok: true, ticket, me: { uid: who.uid, name: who.name, pic: who.pic, badge: who.badge, mod: who.mod } });
@@ -450,15 +450,15 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
 
   if (path === "/chat/upload" && request.method === "POST") {
     const who = await whoFor(env, request);
-    if (!who) return reply({ ok: false, signedOut: true, error: "سجّل دخولك أولًا." }, 401);
+    if (!who) return reply({ ok: false, signedOut: true, error: "سجل دخولك أولا." }, 401);
     if (who.mute > Date.now()) return reply({ ok: false, error: "لا يمكنك الإرسال في المجتمع الآن." }, 403);
     const room = url.searchParams.get("room");
     const kind = url.searchParams.get("kind");
     const rinfo = await roomOf(env, room, who.mod);
-    if (!rinfo || (rinfo.closed && !who.mod) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذّر الرفع." }, 400);
+    if (!rinfo || (rinfo.closed && !who.mod) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذر الرفع." }, 400);
     const count = Number(await env.PUSH_KV.get(`chat:up:${who.uid}`) || 0);
     // a premium member sends more, and bigger files
-    const prem = who.prem || who.badge === "premium" || who.mod;
+    const prem = who.prem || who.badge === "premium" || who.badge === "gprem" || who.mod;
     if (count >= (prem ? 100 : 40)) return reply({ ok: false, error: "رفعت ملفات كثيرة، حاول بعد ساعة." }, 429);
     const type = String(request.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
     const fileName = (() => { try { return decodeURIComponent(request.headers.get("X-File-Name") || ""); } catch { return ""; } })().replace(/[\\/\u0000-\u001f]/g, "").slice(0, 120);
