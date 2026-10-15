@@ -27,3 +27,10 @@ test("dual verbs «يعرفان / الاثنان» and a bold heading line openi
   assert.ok(checkArticle(t, "**المواجهة الأولى: نزال فرق للسيدات**\n\nأعلن اتحاد AEW عن نزال جديد.").some((i) => i.code === "stray_heading"));
   assert.ok(!checkArticle(t, "أعلن اتحاد AEW عن نزال جديد في **عرض كبير** قريبا.").some((i) => i.code === "stray_heading"));
 });
+
+test("the names glossary has no dual-form champion titles (INCIDENTS #559)", async () => {
+  const fs = await import("node:fs");
+  const names = JSON.parse(fs.readFileSync(new URL("../scripts/wrestler-names.json", import.meta.url), "utf8")) as Record<string, string>;
+  const dual = Object.entries(names).filter(([, v]) => /(?:بطلتا|بطلا|العالميتان|العالميان)(?![ء-ي])/.test(String(v)));
+  assert.deepEqual(dual, []);
+});
