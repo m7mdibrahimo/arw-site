@@ -3640,7 +3640,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض كوليجن 14.10.2026 مترجم",
-    "lastAttempt": 1792081940798,
+    "lastAttempt": 1792082799567,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -3657,9 +3657,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايفولف 14.10.2026 مترجم",
-    "lastAttempt": 1792077515882,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792082800900,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
