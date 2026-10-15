@@ -1,5 +1,25 @@
 [
   {
+    "id": 334054,
+    "link": "https://www.fightful.com/wrestling/full-match-card-set-for-pro-wrestling-noahs-wrestle-odyssey-ii/",
+    "date": "2026-10-15T10:39:45",
+    "date_gmt": "2026-10-15T14:39:45",
+    "title": {
+      "rendered": "Full Match Card Set For Pro Wrestling NOAH&#8217;s Wrestle Odyssey II"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/15102904/HTw1S02a0AAdAfC.jpg"
+  },
+  {
+    "id": 334053,
+    "link": "https://www.fightful.com/wrestling/tanea-brooks-rebel-becomes-first-honorary-member-of-i-am-als-board-of-directors/",
+    "date": "2026-10-15T10:36:06",
+    "date_gmt": "2026-10-15T14:36:06",
+    "title": {
+      "rendered": "Tanea Brooks (Rebel) Becomes First Honorary Member Of I Am ALS Board Of Directors"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12102707/Untitled-Design-10.jpg"
+  },
+  {
     "id": 334050,
     "link": "https://www.fightful.com/wrestling/cody-rhodes-claims-tko-ceo-ari-emanuel-didnt-know-who-he-was-until-wwe-wrestlemania-40/",
     "date": "2026-10-15T10:07:54",
@@ -278,25 +298,5 @@
       "rendered": "Jon Moxley Suffers Rare Pinfall Loss On 10/14 AEW Dynamite"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14204034/HUoY923W0AAxOjq-e1792024855896.jpg"
-  },
-  {
-    "id": 333950,
-    "link": "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website/",
-    "date": "2026-10-14T19:29:18",
-    "date_gmt": "2026-10-14T23:29:18",
-    "title": {
-      "rendered": "Law Firm Investigating Potential Privacy Violation By WWE&#8217;s Official Website"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/18132421/WWE-Logo-1536x1024-1-e1752859487683.jpeg"
-  },
-  {
-    "id": 333927,
-    "link": "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more/",
-    "date": "2026-10-14T19:15:00",
-    "date_gmt": "2026-10-14T23:15:00",
-    "title": {
-      "rendered": "AEW Dynamite Results (10/14/2026): Will Ospreay &amp; Andrade in Tag Action, Clockwork Carnage Qualifiers, Mercedes Mone, Dani Luna, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11170948/HUX3CNOXwAABmQO.jpeg"
   }
 ]
