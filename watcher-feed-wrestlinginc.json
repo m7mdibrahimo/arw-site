@@ -1,5 +1,15 @@
 [
   {
+    "id": 1592613369,
+    "link": "https://www.wrestlinginc.com/2287254/wwe-id-program-departures-cappuchino-jones-santi-rivera/",
+    "date": "Thu, 15 Oct 2026 13:30:00 +0000",
+    "date_gmt": "2026-10-15T13:30:00.000Z",
+    "title": {
+      "rendered": "Two More Indie Talents Gone From WWE ID Program"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/two-more-indie-talents-gone-from-wwe-id-program/l-intro-1792043376.jpg"
+  },
+  {
     "id": 4966829954,
     "link": "https://www.wrestlinginc.com/2287251/wwe-roman-reigns-responds-conrad-thompson-overrated/",
     "date": "Thu, 15 Oct 2026 13:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE's Cody Rhodes Thought Street Fighter Offer Was A Joke"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-cody-rhodes-thought-street-fighter-offer-was-a-joke/l-intro-1791999086.jpg"
-  },
-  {
-    "id": 5042081245,
-    "link": "https://www.wrestlinginc.com/2286757/wwe-becky-lynch-finn-balor-william-regal-fellow-uk-pac-aew-neville/",
-    "date": "Wed, 14 Oct 2026 17:00:18 +0000",
-    "date_gmt": "2026-10-14T17:00:18.000Z",
-    "title": {
-      "rendered": "WWE Stars Becky Lynch, Finn Balor & William Regal Remember Fellow UK Talent Pac"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-stars-becky-lynch-finn-balor-william-regal-remember-fellow-uk-talent-pac/l-intro-1791997104.jpg"
   }
 ]

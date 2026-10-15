@@ -1,48 +1,53 @@
 {
- "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13": {
-  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Agent Zero، تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-15T13:11:42.376Z"
- },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:22.933Z"
+  "at": "2026-10-15T13:43:06.601Z"
  },
  "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:22.501Z"
+  "at": "2026-10-15T13:43:06.172Z"
  },
  "https://www.fightful.com/wrestling/333979-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:22.170Z"
+  "at": "2026-10-15T13:43:05.843Z"
  },
  "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:21.890Z"
+  "at": "2026-10-15T13:43:05.564Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:21.660Z"
+  "at": "2026-10-15T13:43:05.332Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:21.476Z"
+  "at": "2026-10-15T13:43:05.146Z"
  },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:21.242Z"
+  "at": "2026-10-15T13:43:04.911Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T13:12:21.046Z"
+  "at": "2026-10-15T13:43:04.718Z"
+ },
+ "https://www.wrestlinginc.com/2287254/wwe-id-program-departures-cappuchino-jones-santi-rivera": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T13:32:28.566Z"
+ },
+ "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13": {
+  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Agent Zero، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-15T13:11:42.376Z"
  },
  "https://www.fightful.com/wrestling/shinsuke-nakamura-keiji-muto-talk-show-scheduled-for-october-19th": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
