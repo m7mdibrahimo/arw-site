@@ -27,7 +27,10 @@ export interface ChatEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?:
  *  owner: «حتى لو انا حبيت اضيف ساحة او كروب او اعدل في اسماء ال موجود») and the page follows /chat/rooms. */
 export type RoomInfo = { id: string; name: string; about: string; mark: string; hue: number; hidden?: boolean; closed?: boolean;
   /** its own background (the owner's, from the panel): the picture, how blurred (px) and how veiled (%) behind the messages */
-  bg?: string; bgBlur?: number; bgDim?: number };
+  bg?: string; bgBlur?: number; bgDim?: number;
+  /** a secret room (owner 2026-10-15: «غرفة خاصة … سرية … انا بس ال اقدر اضيف ناس»): seen and opened only by the site's
+   *  account and the members the owner adds (their ids), invisible to everyone else, its link refused to them */
+  secret?: boolean; members?: number[] };
 export const DEFAULT_ROOMS: RoomInfo[] = [
   { id: "general", name: "الساحة العامة", about: "كل محبي المصارعة في مكان واحد", mark: "ARW", hue: 177 },
   { id: "wwe", name: "متابعين اتحاد WWE", about: "رو وسماك داون وNXT والعروض الكبرى", mark: "WWE", hue: 4 },
@@ -75,11 +78,14 @@ export async function roomList(env: ChatEnv, fresh = false): Promise<RoomInfo[]>
   roomsCache = { at: Date.now(), list };
   return list;
 }
-/** A room people can open (a hidden one only for the site's account) */
-async function roomOf(env: ChatEnv, r: unknown, mod = false): Promise<RoomInfo | null> {
+/** May this member open the room? A hidden one: the site's account only; a secret one: it and the members added */
+export const roomOpenTo = (room: RoomInfo, who: { mod?: boolean; uid?: number } | null) =>
+  !!who?.mod || (!room.hidden && (!room.secret || (!!who && (room.members || []).includes(Number(who.uid)))));
+/** A room people can open */
+async function roomOf(env: ChatEnv, r: unknown, who: { mod?: boolean; uid?: number } | null = null): Promise<RoomInfo | null> {
   if (typeof r !== "string" || !ROOM_ID.test(r)) return null;
   const room = (await roomList(env)).find(x => x.id === r);
-  return room && (!room.hidden || mod) ? room : null;
+  return room && roomOpenTo(room, who) ? room : null;
 }
 const isRoom = (r: unknown): r is RoomId => typeof r === "string" && ROOM_ID.test(r);
 
@@ -273,6 +279,13 @@ export class ChatRoom {
       this.sql.exec("UPDATE msgs SET badge = ? WHERE uid = ?", badge, uid);
       for (const w of this.socks()) { const p = this.who(w); if (p?.uid === uid) { p.badge = badge as Who["badge"]; w.serializeAttachment(p); } }
       this.broadcast({ t: "badge", uid, badge });
+      this.presence();
+      return { ok: true };
+    }
+    // a secret room's members changed (or it became secret): whoever isn't one of them any more leaves at once
+    if (b.op === "only") {
+      const keep = new Set((Array.isArray(b.uids) ? b.uids : []).map(Number));
+      for (const w of this.socks()) { const p = this.who(w); if (p && !p.mod && !keep.has(p.uid)) { this.send(w, { t: "error", code: "gone", error: "هذه المجموعة لم تعد متاحة لك." }); try { w.close(4004, "gone"); } catch { /* gone */ } } }
       this.presence();
       return { ok: true };
     }
@@ -485,13 +498,17 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
   const path = url.pathname;
 
   if (path === "/chat/rooms" && request.method === "GET") {
-    const list = (await roomList(env)).filter(r => !r.hidden);
-    const info = (r: RoomInfo) => ({ id: r.id, name: r.name, about: r.about, mark: r.mark, hue: r.hue, closed: !!r.closed, ...(r.bg ? { bg: r.bg, bgBlur: r.bgBlur ?? BG_BLUR, bgDim: r.bgDim ?? BG_DIM } : {}) });
+    const all = await roomList(env);
+    // a secret room is listed only to the site's account and its members (a signed-in page asks with its session);
+    // that answer is theirs alone, never kept by a cache
+    const mine = all.some(r => r.secret && !r.hidden) && request.headers.get("Authorization") ? await whoFor(env, request).catch(() => null) : null;
+    const list = all.filter(r => !r.hidden && (!r.secret || (mine && roomOpenTo(r, mine))));
+    const info = (r: RoomInfo) => ({ id: r.id, name: r.name, about: r.about, mark: r.mark, hue: r.hue, closed: !!r.closed, ...(r.secret ? { secret: true } : {}), ...(r.bg ? { bg: r.bg, bgBlur: r.bgBlur ?? BG_BLUR, bgDim: r.bgDim ?? BG_DIM } : {}) });
     if (!env.CHAT) return reply({ rooms: list.map(r => ({ ...info(r), online: 0, today: 0, lastId: 0, last: null })) });
     const rooms = await Promise.all(list.map(async r => {
       try { return { ...info(r), ...(await (await roomCall(env, r.id, "/summary")).json() as any) }; } catch { return { ...info(r), online: 0, today: 0, lastId: 0, last: null }; }
     }));
-    return reply({ rooms }, 200, { "Cache-Control": "public, max-age=5" });
+    return reply({ rooms }, 200, { "Cache-Control": mine ? "private, no-store" : "public, max-age=5" });
   }
 
   if (path === "/chat/ticket" && request.method === "POST") {
@@ -513,7 +530,7 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     if (!raw) return new Response("ticket expired", { status: 401 });
     await env.PUSH_KV.delete(`chat:t:${ticket}`);
     const who0: Who = JSON.parse(raw);
-    const room = await roomOf(env, ws[1], who0.mod);
+    const room = await roomOf(env, ws[1], who0);
     if (!room) return new Response("no such room", { status: 404 });
     if (room.closed && !who0.mod) raw = JSON.stringify({ ...who0, ro: true });
     const since = Math.max(0, Math.floor(Number(url.searchParams.get("since")) || 0));
@@ -539,7 +556,7 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     if (who.mute > Date.now()) return reply({ ok: false, error: "لا يمكنك الإرسال في المجتمع الآن." }, 403);
     const room = url.searchParams.get("room");
     const kind = url.searchParams.get("kind");
-    const rinfo = await roomOf(env, room, who.mod);
+    const rinfo = await roomOf(env, room, who);
     if (!rinfo || (rinfo.closed && !who.mod) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذر الرفع." }, 400);
     const count = Number(await env.PUSH_KV.get(`chat:up:${who.uid}`) || 0);
     // a premium member sends more, and bigger files
@@ -728,10 +745,13 @@ export async function studioChatRooms(env: ChatEnv, body: any = null) {
     const num = (v: unknown, lo: number, hi: number, d: number) => { const n = Math.round(Number(v)); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, n)) : d; };
     out.push({ id, name, about: String(r.about || "").replace(/\s+/g, " ").trim().slice(0, 90), mark: String(r.mark || name).replace(/\s+/g, "").slice(0, 6) || id.slice(0, 4).toUpperCase(),
       hue: Math.max(0, Math.min(360, Math.round(Number(r.hue) || 0))), ...(r.hidden ? { hidden: true } : {}), ...(r.closed ? { closed: true } : {}),
-      ...(bg ? { bg, bgBlur: num(r.bgBlur, 0, 30, BG_BLUR), bgDim: num(r.bgDim, 0, 90, BG_DIM) } : {}) });
+      ...(bg ? { bg, bgBlur: num(r.bgBlur, 0, 30, BG_BLUR), bgDim: num(r.bgDim, 0, 90, BG_DIM) } : {}),
+      ...(r.secret ? { secret: true, members: [...new Set((Array.isArray(r.members) ? r.members : []).map((x: unknown) => Math.floor(Number(x))).filter((x: number) => x > 0))].slice(0, 500) as number[] } : {}) });
   }
-  if (!out.some(r => !r.hidden)) return { success: false, error: "لازم تفضل مجموعة واحدة على الأقل ظاهرة." };
+  if (!out.some(r => !r.hidden && !r.secret)) return { success: false, error: "لازم تفضل مجموعة واحدة على الأقل ظاهرة للكل." };
   await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(out));
   roomsCache = { at: Date.now(), list: out };
+  // a secret room: anyone in it now who isn't one of its members leaves at once
+  if (env.CHAT) await Promise.all(out.filter(r => r.secret).map(r => roomCall(env, r.id, "/admin", { method: "POST", body: JSON.stringify({ op: "only", uids: r.members || [] }) }).catch(() => null)));
   return { success: true, rooms: out };
 }
