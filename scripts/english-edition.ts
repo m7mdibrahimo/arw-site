@@ -155,6 +155,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
 /** Words that are never small in a Title Case headline when left lowercase: «I am Thankful» → «I Am Thankful» (INCIDENTS #489) */
 const ALWAYS_CAPITAL = new Set(["am", "is", "are", "was", "were", "be", "been", "it", "its", "he", "she", "we", "they", "you", "i", "his", "her", "my", "our", "your", "their", "if", "than", "that", "this", "not", "has", "have", "had", "will", "would", "can", "could", "should", "do", "does", "did"]);
+/** «the» is part of these names, so a headline keeps it capital: «With the Rock» → «With The Rock» (INCIDENTS #551) */
+const THE_NAMES = /\bthe (Rock|Miz|Undertaker|Bloodline|Usos|Judgment Day|Street Profits|Young Bucks|Elite|Acclaimed|Shield|946|Hardys|Righteous|Wyatt Family|Brood)\b/g;
 /** One consistent Title Case: small words lowercase (first, last and after a colon stay capital); a word with its own capitals (AEW, McIntyre, iMPACT) is never touched (INCIDENTS #443) */
 export function normalizeEnglishTitle(title: string): string {
   // a contraction glued to the next word: «He'sStill» → «He's Still» (INCIDENTS #535)
@@ -172,7 +174,7 @@ export function normalizeEnglishTitle(title: string): string {
     // a lowercase word that is not a small word is capitalised: «I am Thankful» (INCIDENTS #489)
     if (bare === lower && /^[a-z]+$/.test(bare) && ALWAYS_CAPITAL.has(lower)) return w.replace(bare, lower[0].toUpperCase() + lower.slice(1));
     return w;
-  }).join(" ");
+  }).join(" ").replace(THE_NAMES, "The $1");
 }
 export function fixEnglishNames(text: string): string {
   return ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), text);

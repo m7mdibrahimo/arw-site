@@ -1,5 +1,5 @@
 ---
-title: "John Cena Explains Why He Won't Pitch the Rock on Hollywood Team-Up"
+title: "John Cena Explains Why He Won't Pitch The Rock on Hollywood Team-Up"
 slug: "john-cena-explains-why-he-wont-pitch-the-rock-on-hollywood-team-up"
 description: "John Cena recently discussed his relationship with Dwayne \"The Rock\" Johnson and explained why he would never pressure him to collaborate on a Hollywood…"
 federation: WWE

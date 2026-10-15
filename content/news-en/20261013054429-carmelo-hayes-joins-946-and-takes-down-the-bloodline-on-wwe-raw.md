@@ -1,5 +1,5 @@
 ---
-title: "Carmelo Hayes Joins 946 and Takes Down the Bloodline on WWE Raw"
+title: "Carmelo Hayes Joins 946 and Takes Down The Bloodline on WWE Raw"
 slug: "carmelo-hayes-joins-946-and-takes-down-the-bloodline-on-wwe-raw"
 description: "Carmelo Hayes officially joined the 946 during the main event of WWE Raw, helping the faction take down the Usos and Solo Sikoa in a chaotic brawl. The…"
 federation: WWE

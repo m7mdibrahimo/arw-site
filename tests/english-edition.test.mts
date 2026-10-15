@@ -147,3 +147,9 @@ test("a contraction glued to the next word in a headline gets its space (INCIDEN
   assert.equal(normalizeEnglishTitle("David Finlay Details Aspects of AEW He'sStill Adjusting To"), "David Finlay Details Aspects of AEW He's Still Adjusting To");
   assert.equal(normalizeEnglishTitle("CM Punk Isn't Done"), "CM Punk Isn't Done");
 });
+
+test('«the Rock» keeps its capital T in a headline (INCIDENTS #551)', async () => {
+  const { normalizeEnglishTitle } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("Cody Rhodes Calls Relationship With the Rock Complicated"), "Cody Rhodes Calls Relationship With The Rock Complicated");
+  assert.equal(normalizeEnglishTitle("John Cena Will Not Pitch the Rock on a Team-Up"), "John Cena Will Not Pitch The Rock on a Team-Up");
+});
