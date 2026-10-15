@@ -17,7 +17,11 @@
 
   // ── the session ──────────────────────────────────────────────────────────
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
-  function save(s) { try { if (s) localStorage.setItem(KEY, JSON.stringify(s)); else localStorage.removeItem(KEY); } catch (e) {} }
+  function save(s) {
+    try { if (s) localStorage.setItem(KEY, JSON.stringify(s)); else localStorage.removeItem(KEY); } catch (e) {}
+    // the header follows at once (a new picture or name, signed in or out)
+    try { window.dispatchEvent(new CustomEvent('arw-member')); } catch (e) {}
+  }
   var session = load();
   function api(path, body, auth) {
     var h = { 'Content-Type': 'application/json' };
@@ -236,7 +240,7 @@
     pic = String(pic || '');
     if (pic === 'official') return EN ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png';
     if (/^w:[a-z0-9-]+$/.test(pic)) return '/avatars/' + pic.slice(2) + '.webp' + AV;
-    if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic)) return pic;
+    if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/(comments\/pic\/\d+\.webp|members\/pic\/\d+\/[a-f0-9]{16}\.(webp|jpg|png))$/.test(pic)) return pic;
     return '';
   }
   function avatar(el, m) {
@@ -433,6 +437,41 @@
   }
   $$('[data-open="pics"]').forEach(function (b) { b.addEventListener('click', openPics); });
   $('[data-pic=""]').addEventListener('click', function () { setPic(''); });
+  // their own picture (owner 2026-10-15: «المتابع يقدر يحط صورته او صورة من عنده»): the middle square, 400px, sent
+  // as WebP (JPEG where the browser can't make WebP); the worker checks it is a real picture and keeps it
+  var upFile = $('.acct-up-file'), upNote = $('.acct-up-note'), upBtn = $('.acct-up');
+  function upSay(t, bad) { upNote.textContent = t; upNote.classList.toggle('is-bad', !!bad); }
+  upFile.addEventListener('change', function () {
+    var f = upFile.files && upFile.files[0];
+    upFile.value = '';
+    if (!f) return;
+    if (!/^image\//.test(f.type)) return upSay('اختر صورة (JPG أو PNG أو WebP).', true);
+    if (f.size > 25e6) return upSay('الصورة كبيرة جدا، اختر صورة أصغر.', true);
+    upBtn.classList.add('is-busy'); upSay('لحظة، نجهز صورتك…');
+    var url = URL.createObjectURL(f), img = new Image();
+    img.onload = function () {
+      URL.revokeObjectURL(url);
+      var s = Math.min(img.naturalWidth, img.naturalHeight), size = Math.min(400, s);
+      if (!s) { upBtn.classList.remove('is-busy'); return upSay('تعذر فتح هذه الصورة، جرب صورة أخرى.', true); }
+      var c = document.createElement('canvas'); c.width = c.height = size;
+      var x = c.getContext('2d');
+      x.fillStyle = '#fff'; x.fillRect(0, 0, size, size);
+      x.drawImage(img, (img.naturalWidth - s) / 2, (img.naturalHeight - s) / 2, s, s, 0, 0, size, size);
+      var data = c.toDataURL('image/webp', 0.86);
+      if (data.indexOf('data:image/webp') !== 0) data = c.toDataURL('image/jpeg', 0.86);
+      upSay('جار رفع صورتك…');
+      api('/pic', { image: data }, true).then(function (d) {
+        upBtn.classList.remove('is-busy');
+        if (d.signedOut) return out();
+        if (!d.ok) return upSay(d.error || 'تعذر رفع الصورة، حاول مرة أخرى.', true);
+        session.member = d.member; save(session); drawProfile();
+        upSay('');
+        $('.acct-pics').hidden = true;
+      }).catch(function () { upBtn.classList.remove('is-busy'); upSay('تعذر رفع الصورة، تأكد من الاتصال وحاول مرة أخرى.', true); });
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); upBtn.classList.remove('is-busy'); upSay('تعذر فتح هذه الصورة، جرب صورة أخرى.', true); };
+    img.src = url;
+  });
 
   forms.password.addEventListener('submit', function (e) {
     e.preventDefault();

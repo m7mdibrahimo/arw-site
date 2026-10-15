@@ -316,3 +316,41 @@ test('the panel: the site\'s members list never takes the team list\'s address; 
   assert.match(api, /siteMembers: \(\) => call\('\/api\/studio\/site-members'\)/);
   assert.match(app, /page\.onclick = null;/);
 });
+
+test('a member\'s own picture: a real image only, theirs only, the old one removed, and their comments show the new one', async () => {
+  const e = env();
+  const store = new Map<string, Uint8Array>();
+  e.MEDIA = { put: async (k: string, v: Uint8Array) => { store.set(k, v); }, get: async (k: string) => store.has(k) ? { body: store.get(k), httpMetadata: {} } : null, delete: async (k: string) => { store.delete(k); } };
+  const s = (await signup(e)).body;
+  const png = new Uint8Array(600); png.set([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  const b64 = (u: Uint8Array) => Buffer.from(u).toString('base64');
+  // a file that only says it's a picture is refused
+  const fake = new Uint8Array(600); fake.set([0x3c, 0x73, 0x76, 0x67]);
+  assert.equal((await call(e, '/pic', { image: 'data:image/png;base64,' + b64(fake) }, s.token)).status, 400);
+  assert.equal((await call(e, '/pic', { image: 'data:image/svg+xml;base64,' + b64(fake) }, s.token)).status, 400);
+  const up = await call(e, '/pic', { image: 'data:image/png;base64,' + b64(png) }, s.token);
+  assert.equal(up.status, 200);
+  const first = up.body.member.pic;
+  assert.match(first, /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/members\/pic\/\d+\/[a-f0-9]{16}\.png$/);
+  assert.equal(store.size, 1);
+  // served to anyone, kept for good
+  const key = first.replace('https://arw-site-bot.m7mdibrahimpc.workers.dev/members', '');
+  const got = await handleMembers(new Request('https://w.example/members' + key), e, new URL('https://w.example/members' + key));
+  assert.equal(got.status, 200);
+  assert.equal(got.headers.get('Content-Type'), 'image/png');
+  // a comment, then a new picture: the old file goes, the comment shows the new one
+  const STORY = '/news/صورة/';
+  await handleComments(new Request('https://w/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', name: 'x', text: 'تعليق بصورتي' }), headers: { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json', Authorization: `Bearer ${s.token}` } }), e, new URL('https://w/comments'));
+  const second = (await call(e, '/pic', { image: 'data:image/png;base64,' + b64(png) }, s.token)).body.member.pic;
+  assert.notEqual(second, first);
+  assert.equal(store.size, 1);
+  const list: any = await handleComments(new Request(`https://w/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w/comments?p=${encodeURIComponent(STORY)}`)).then((x) => x.json());
+  assert.equal(list.items[0].pic, second);
+  // another member can't take this picture as theirs
+  const other = (await signup(e, { username: 'sara22', email: 'sara@example.com' }, '41.7.7.7')).body;
+  const steal = await call(e, '/profile', { pic: second }, other.token);
+  assert.equal(steal.body.member.pic, '');
+  // a star's picture instead: the upload goes too
+  await call(e, '/profile', { pic: 'w:cody-rhodes' }, s.token);
+  assert.equal(store.size, 0);
+});

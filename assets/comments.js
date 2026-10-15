@@ -85,7 +85,7 @@
     pic = String(pic || '');
     if (pic === 'official') return LOGO;
     if (/^w:[a-z0-9-]+$/.test(pic)) return AVATARS + pic.slice(2) + '.webp' + AV;
-    if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic)) return pic;
+    if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/(comments\/pic\/\d+\.webp|members\/pic\/\d+\/[a-f0-9]{16}\.(webp|jpg|png))$/.test(pic)) return pic;
     if (/^data:image\/(webp|jpeg|png);base64,/.test(pic)) return pic;
     return '';
   }

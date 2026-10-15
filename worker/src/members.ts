@@ -24,7 +24,11 @@
 import { hashPassword, verifyPassword } from "./studio";
 import { ensureTable as ensureComments, isReservedName, WRESTLER_PIC, OFFICIAL_NAME } from "./comments";
 
-export interface MembersEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; RESEND_API_KEY?: string }
+export interface MembersEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; RESEND_API_KEY?: string; MEDIA?: R2Bucket }
+
+/** A member's own picture, uploaded from their device (owner 2026-10-15): R2 «members/<id>/<16 hex>.webp» */
+export const MEMBER_PIC = /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/members\/pic\/(\d+)\/([a-f0-9]{16})\.(webp|jpg|png)$/;
+const picKey = (url: string) => { const m = url.match(MEMBER_PIC); return m ? `members/${m[1]}/${m[2]}.${m[3]}` : ""; };
 
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
 const reply = (body: unknown, status = 200, extra: Record<string, string> = {}) =>
@@ -248,6 +252,13 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   if (!db) return reply({ ok: false, error: "الحسابات غير متاحة الآن." }, 503);
   await ensureMembers(db);
   const path = url.pathname.replace(/^\/members/, "") || "/";
+  // a member's own picture, for anyone (each upload its own address, so it's kept for good)
+  const own = path.match(/^\/pic\/(\d+)\/([a-f0-9]{16})\.(webp|jpg|png)$/);
+  if (own && request.method === "GET") {
+    const obj = env.MEDIA ? await env.MEDIA.get(`members/${own[1]}/${own[2]}.${own[3]}`) : null;
+    if (!obj) return new Response("not found", { status: 404, headers: CORS });
+    return new Response(obj.body, { headers: { "Content-Type": own[3] === "jpg" ? "image/jpeg" : `image/${own[3]}`, "Cache-Control": "public, max-age=31536000, immutable", "X-Content-Type-Options": "nosniff", ...CORS } });
+  }
   const ip = String(request.headers.get("CF-Connecting-IP") || "");
   const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
 
@@ -412,18 +423,49 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     return reply({ ok: true });
   }
 
+  // their own picture from their device: the page sends a square of at most 400px; the old upload goes
+  if (path === "/pic" && request.method === "POST") {
+    if (me.official) return reply({ ok: false, error: "صورة الحساب الرسمي هي شعار الموقع." }, 400);
+    if (!env.MEDIA) return reply({ ok: false, error: "رفع الصور غير متاح الآن." }, 503);
+    if (await tooMany(env.PUSH_KV, `pic:${me.id}`, 10, 3600)) return reply({ ok: false, error: "غيرت صورتك كثيرا، حاول بعد ساعة." }, 429);
+    const d = String(body.image || "").match(/^data:image\/(webp|jpeg|png);base64,([A-Za-z0-9+/=]+)$/);
+    let bytes: Uint8Array | null = null;
+    try { bytes = d ? Uint8Array.from(atob(d[2]), c => c.charCodeAt(0)) : null; } catch { bytes = null; }
+    if (!d || !bytes || bytes.length < 200) return reply({ ok: false, error: "تعذر قراءة الصورة، جرب صورة أخرى." }, 400);
+    if (bytes.length > 250_000) return reply({ ok: false, error: "الصورة كبيرة جدا، جرب صورة أخرى." }, 413);
+    // the file is what it says it is
+    const head = Array.from(bytes.slice(0, 12));
+    const isWebp = head[0] === 0x52 && head[1] === 0x49 && head[2] === 0x46 && head[3] === 0x46 && head[8] === 0x57 && head[9] === 0x45 && head[10] === 0x42 && head[11] === 0x50;
+    const isJpeg = head[0] === 0xff && head[1] === 0xd8 && head[2] === 0xff;
+    const isPng = head[0] === 0x89 && head[1] === 0x50 && head[2] === 0x4e && head[3] === 0x47;
+    const ext = d[1] === "webp" && isWebp ? "webp" : d[1] === "jpeg" && isJpeg ? "jpg" : d[1] === "png" && isPng ? "png" : "";
+    if (!ext) return reply({ ok: false, error: "تعذر قراءة الصورة، جرب صورة أخرى." }, 400);
+    await count(env.PUSH_KV, `pic:${me.id}`, 3600);
+    const name = Array.from(crypto.getRandomValues(new Uint8Array(8)), b => b.toString(16).padStart(2, "0")).join("");
+    await env.MEDIA.put(`members/${me.id}/${name}.${ext}`, bytes, { httpMetadata: { contentType: ext === "jpg" ? "image/jpeg" : `image/${ext}` } });
+    const url2 = `https://arw-site-bot.m7mdibrahimpc.workers.dev/members/pic/${me.id}/${name}.${ext}`;
+    const old = picKey(me.pic);
+    await db.prepare("UPDATE members SET pic = ?1 WHERE id = ?2").bind(url2, me.id).run();
+    if (old) await env.MEDIA.delete(old).catch(() => {});
+    const m = await db.prepare("SELECT * FROM members WHERE id = ?1").bind(me.id).first<Member>();
+    return reply({ ok: true, member: mine(m!) });
+  }
+
   if (path === "/profile" && request.method === "POST") {
     if (me.official) { body.display = me.display; body.pic = me.pic; }
     const display = String(body.display ?? me.display).normalize("NFC").replace(/\s+/g, " ").trim().slice(0, 30);
     if (display.length < 2) return reply({ ok: false, error: "الاسم الظاهر حرفان على الأقل." }, 400);
     if (isReservedName(display) && !me.official) return reply({ ok: false, error: "هذا الاسم خاص بالحساب الرسمي للموقع، اختر اسما آخر." }, 400);
     const pic = String(body.pic ?? me.pic);
-    const okPic = pic === "" || WRESTLER_PIC.test(pic) || /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic);
+    // a star's picture, nothing, or the member's own upload (theirs only)
+    const okPic = pic === "" || WRESTLER_PIC.test(pic) || /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic) || (MEMBER_PIC.test(pic) && pic.match(MEMBER_PIC)![1] === String(me.id));
     const fav_fed = /^(WWE|AEW|NJPW|TNA|ROH|MLP|MLW|CMLL|AAA|UFC|STARDOM|NOAH|)$/.test(String(body.fav_fed ?? me.fav_fed)) ? String(body.fav_fed ?? me.fav_fed) : me.fav_fed;
     const fav_star = String(body.fav_star ?? me.fav_star).replace(/\s+/g, " ").trim().slice(0, 40);
     const bio = String(body.bio ?? me.bio).replace(/\s+/g, " ").trim().slice(0, 160);
     await db.prepare("UPDATE members SET display = ?1, pic = ?2, fav_fed = ?3, fav_star = ?4, bio = ?5 WHERE id = ?6")
       .bind(display, okPic ? pic : me.pic, fav_fed, fav_star, bio, me.id).run();
+    // an own picture left behind goes from the store
+    if (okPic && pic !== me.pic && picKey(me.pic) && env.MEDIA) await env.MEDIA.delete(picKey(me.pic)).catch(() => {});
     const m = await db.prepare("SELECT * FROM members WHERE id = ?1").bind(me.id).first<Member>();
     return reply({ ok: true, member: mine(m!) });
   }
@@ -599,5 +641,6 @@ export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
   const fav_star = b.fav_star === undefined ? m.fav_star : String(b.fav_star).replace(/\s+/g, " ").trim().slice(0, 40);
   const pic = b.pic === "" ? "" : m.pic;
   await db.prepare("UPDATE members SET display = ?1, bio = ?2, fav_star = ?3, pic = ?4 WHERE id = ?5").bind(display, bio, fav_star, pic, m.id).run();
+  if (pic !== m.pic && picKey(m.pic) && env.MEDIA) await env.MEDIA.delete(picKey(m.pic)).catch(() => {});
   return { success: true };
 }

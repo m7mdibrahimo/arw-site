@@ -162,7 +162,9 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
     if (!path) return reply({ items: [] });
     // a member's comment: their username too, for the «عضو» badge and the link to their page
     await ensureMembers(db);
-    const rows = await db.prepare(`SELECT c.id, c.name, c.text, c.pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname, m.badge AS mbadge, m.premium_until AS mprem
+    // a member's comments show them as they are now: their name and picture as their account has them
+    const rows = await db.prepare(`SELECT c.id, CASE WHEN m.id IS NOT NULL AND c.official = 0 THEN COALESCE(NULLIF(m.display, ''), m.username) ELSE c.name END AS name, c.text,
+      CASE WHEN m.id IS NOT NULL AND c.official = 0 THEN m.pic ELSE c.pic END AS pic, c.at, c.parent, c.official, c.hearted, c.reply_to, m.username AS mname, m.badge AS mbadge, m.premium_until AS mprem
       FROM comments c LEFT JOIN members m ON m.id = c.member AND c.member > 0 WHERE c.path = ?1 AND c.deleted = 0 ORDER BY c.at DESC LIMIT 400`).bind(path).all<Row>();
     return reply({ items: (rows.results || []).map(out) }, 200, { "Cache-Control": "no-store" });
   }

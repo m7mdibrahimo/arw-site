@@ -63,7 +63,7 @@
     p = String(p || '');
     if (p === 'official') return LOGO;
     if (/^w:[a-z0-9-]+$/.test(p)) return '/avatars/' + p.slice(2) + '.webp' + AV;
-    if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(p)) return p;
+    if (/^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/(comments\/pic\/\d+\.webp|members\/pic\/\d+\/[a-f0-9]{16}\.(webp|jpg|png))$/.test(p)) return p;
     return '';
   }
   function avatar(p) {

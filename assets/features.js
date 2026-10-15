@@ -792,7 +792,7 @@
   }
   function memberAvatar(m) {
     var pic = String(m.pic || '');
-    var src = pic === 'official' ? (document.documentElement.lang === 'en' ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') : /^w:[a-z0-9-]+$/.test(pic) ? '/avatars/' + pic.slice(2) + '.webp' : /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/comments\/pic\/\d+\.webp$/.test(pic) ? pic : '';
+    var src = pic === 'official' ? (document.documentElement.lang === 'en' ? '/assets/brand-logo-en.png' : '/assets/brand-logo.png') : /^w:[a-z0-9-]+$/.test(pic) ? '/avatars/' + pic.slice(2) + '.webp' : /^https:\/\/arw-site-bot\.m7mdibrahimpc\.workers\.dev\/(comments\/pic\/\d+\.webp|members\/pic\/\d+\/[a-f0-9]{16}\.(webp|jpg|png))$/.test(pic) ? pic : '';
     var letter = (String(m.display || m.username).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
     return src ? '<img src="' + src + '" alt="">' : '<b>' + letter.replace(/[<>&"]/g, '') + '</b>';
   }
@@ -812,6 +812,17 @@
     // the night mode and the saved list live in this menu now (owner 2026-10-15), for members and visitors alike
     accountMenu(a);
     document.documentElement.classList.add('arw-am-on');
+    // the account page saved a change: the picture, the name and the crown follow without a reload
+    window.addEventListener('arw-member', function () {
+      var m2 = memberNow();
+      a.classList.toggle('is-in', !!m2);
+      a.setAttribute('aria-label', m2 ? 'حسابك' : 'تسجيل الدخول');
+      a.title = m2 ? (m2.display || m2.username) : 'تسجيل الدخول أو إنشاء حساب';
+      a.innerHTML = m2 ? '<span class="arw-acct-in">' + memberAvatar(m2) + '</span>' : USER_IC;
+      crowned(a, m2);
+      document.documentElement.classList.toggle('arw-in', !!m2);
+      document.documentElement.classList.toggle('arw-is-prem', isPremium(m2));
+    });
   }
 
   // A subscriber's picture: a gold ring and a crown under it (owner 2026-10-15: «دايرة دهبي حواليه … ايقونة تاج»);
