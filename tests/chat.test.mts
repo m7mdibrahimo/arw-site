@@ -400,27 +400,7 @@ test('the message tools as Messenger and iOS: ☺ ↩ ⋮ beside it, a long pres
   const fs = require('node:fs');
   const js = fs.readFileSync('assets/community.js', 'utf8'), css = fs.readFileSync('assets/community.css', 'utf8'), page = fs.readFileSync('pages/community.njk', 'utf8');
   // a pointer: three tools by the side, the reactions and the options float by the message
-  assert.match(js, /\['smile', 'تفاعل', reactPop\], \['reply', 'رد'/);
-  assert.match(js, /acts\.push\(\['more', 'المزيد', menuPop\]\)/);
-  assert.match(css, /\.cm-tools\{ position:absolute; top:50%; inset-inline-start:calc\(100% \+ 4px\)/);
-  assert.match(css, /calc\(100% - 112px\)/, 'room for the tools beside the widest message, no sideways scroll');
-  // a finger: the long press opens the lifted message (no bottom sheet any more), a swipe toward the middle answers
-  assert.match(js, /lp = setTimeout\(function \(\) \{ lp = null; fired = true;[^}]*focusMenu\(m, row\); \}, 420\)/);
-  assert.match(js, /var sign = \(RTL \? -1 : 1\) \* \(mine \? -1 : 1\)/);
-  assert.match(js, /if \(armed\) startReply\(m\)/);
-  assert.doesNotMatch(js + css + page, /cm-sheet/);
-  // the options fit the screen: moved up or down, a long message clipped
-  assert.match(js, /var top = Math\.min\(Math\.max\(br\.top, vTop \+ barH\), vBot - menuH - h\)/);
-  // the tail: the last message of a run, from its bottom corner
-  assert.match(css, /\.cm-msg:not\(:has\(\+ \.cm-msg\.is-cont\)\):not\(\.is-big\):not\(\.is-sticker\) \.cm-bubble::before\{ content:""; position:absolute; bottom:-1px;/);
-  assert.doesNotMatch(css, /\.cm-bubble::before\{[^}]*top:-1px/);
-});
-
-test('the message tools as Messenger and iOS: ☺ ↩ ⋮ beside it, a long press lifts it, a swipe answers, the tail at the bottom of the last of a run', () => {
-  const fs = require('node:fs');
-  const js = fs.readFileSync('assets/community.js', 'utf8'), css = fs.readFileSync('assets/community.css', 'utf8'), page = fs.readFileSync('pages/community.njk', 'utf8');
-  // a pointer: three tools by the side, the reactions and the options float by the message
-  assert.match(js, /\['smile', 'تفاعل', reactPop\], \['reply', 'رد'/);
+  assert.match(js, /\['smile', 'تفاعل', reactPop\], \['reply', 'ردّ'/);
   assert.match(js, /acts\.push\(\['more', 'المزيد', menuPop\]\)/);
   assert.match(css, /\.cm-tools\{ position:absolute; top:50%; inset-inline-start:calc\(100% \+ 4px\)/);
   assert.match(css, /calc\(100% - 112px\)/, 'room for the tools beside the widest message, no sideways scroll');
@@ -450,4 +430,29 @@ test('answers as Messenger (no side stripe) and bubbles as WhatsApp (small corne
   assert.match(css, /--cm-r:9px;/);
   assert.match(css, /\.cm-msg\.is-text \.cm-meta\{ position:absolute;/);
   assert.match(css, /\.cm-msg\.is-text \.cm-text::after\{ content:""; display:inline-block; width:var\(--cm-mw, 50px\)/);
+});
+
+test('a setup left pending by a request that was cut off never blocks the next ones (the community stuck on «جار الاتصال…»)', async () => {
+  const { once } = await import('../worker/src/once');
+  const db = {};
+  // the first request's setup never settles (it was cut off)
+  once(db, 'x', () => new Promise(() => {}));
+  let runs = 0;
+  // the next one runs it itself and goes on; once done, nobody runs it again
+  await once(db, 'x', async () => { runs++; });
+  await once(db, 'x', async () => { runs++; });
+  assert.equal(runs, 1);
+  // every table setup goes through it: no promise shared between requests is left
+  const fs = require('node:fs');
+  for (const f of ['chat', 'follows', 'predict', 'saved', 'watch']) assert.doesNotMatch(fs.readFileSync(`worker/src/${f}.ts`, 'utf8'), /new WeakMap<D1Database, Promise/, f);
+});
+
+test('no «unread» outside a room (owner 2026-10-15): no bold room, no dot or count, no «رسائل جديدة» line, no count in the title; the page in English too', () => {
+  const fs = require('node:fs');
+  const js = fs.readFileSync('assets/community.js', 'utf8');
+  assert.doesNotMatch(js, /classList\.toggle\('has-new'/);
+  assert.doesNotMatch(js, /'رسائل جديدة'/);
+  assert.doesNotMatch(js, /unreadTitle\(1\)/);
+  assert.match(fs.readFileSync('lib/i18n/mirror.cjs', 'utf8'), /\|history\|community\)\\\//);
+  assert.match(fs.readFileSync('assets/en.js', 'utf8'), /\.arw-comments,\.cm-page/);
 });

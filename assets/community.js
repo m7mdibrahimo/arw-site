@@ -101,7 +101,8 @@
   function badge(b) { return b === 'gold' || b === 'vgold' || b === 'gprem' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
   function isPrem(b) { return b === 'premium' || b === 'gprem'; }
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
-  function clock(ms) { var d = new Date(ms); var h = d.getHours(); return (h % 12 || 12) + ':' + pad(d.getMinutes()) + (h < 12 ? ' ص' : ' م'); }
+  // «2:17 م» (the English page: «2:17 PM», lib/i18n/mirror.cjs turns the language)
+  function clock(ms) { return new Date(ms).toLocaleTimeString('ar-EG', { hour: 'numeric', minute: '2-digit', numberingSystem: 'latn' }); }
   function dayKey(ms) { var d = new Date(ms); return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
   function dayLabel(ms) {
     var d = new Date(ms), now = new Date();
@@ -111,12 +112,15 @@
     if (ms >= t0 - 6 * 864e5) return DAYS[d.getDay()];
     return d.getDate() + ' ' + MONTHS[d.getMonth()] + (d.getFullYear() !== now.getFullYear() ? ' ' + d.getFullYear() : '');
   }
+  var AND = ' و ', EN = document.documentElement.lang === 'en';
+  // the owner's rooms come from the worker in Arabic: their English on the English page when there is one (server-en)
+  function roomWord(t) { return EN && t && window.arwMsg ? window.arwMsg(t) || t : t; }
   function size(b) { b = Number(b) || 0; return b > 1048576 ? (b / 1048576).toFixed(1) + ' ميجا' : Math.max(1, Math.round(b / 1024)) + ' كيلو'; }
   function mmss(s) { s = Math.max(0, Math.round(s || 0)); return Math.floor(s / 60) + ':' + pad(s % 60); }
   function plural(n, one, two, few, many) { return n === 1 ? one : n === 2 ? two : n <= 10 ? n + ' ' + few : n + ' ' + many; }
   // what a message holds, in a word (the rooms' list, a quote, the pinned bar)
   function kindLabel(k) { return k === 'image' ? '📷 صورة' : k === 'voice' ? '🎤 رسالة صوتية' : k === 'sticker' ? '🌟 ملصق' : k === 'gif' ? '🎞️ GIF' : k === 'video' ? '🎬 فيديو' : '📎 ملف'; }
-  function typingText(names) { return names.length === 1 ? names[0] + ' يكتب…' : names.length === 2 ? names[0] + ' و' + names[1] + ' يكتبان…' : names.length + ' يكتبون الآن…'; }
+  function typingText(names) { return names.length === 1 ? names[0] + ' يكتب…' : names.length === 2 ? names[0] + AND + names[1] + ' يكتبان…' : names.length + ' يكتبون الآن…'; }
 
   // ── who's here ───────────────────────────────────────────────────────────
   function session() { var s = store('arw-member'); return s && s.token ? s : null; }
@@ -141,7 +145,7 @@
         b.innerHTML = '<span class="cm-mark" aria-hidden="true"></span><span class="cm-room-tx"><b></b><small class="cm-room-last"></small></span><span class="cm-room-meta"><em class="cm-room-on" hidden></em><i class="cm-room-new" hidden></i></span>';
         R = ROOMS[s.id] = { id: s.id, btn: b };
       }
-      R.name = s.name || R.name; R.about = s.about || ''; R.hue = s.hue; R.closed = !!s.closed;
+      R.name = roomWord(s.name) || R.name; R.about = roomWord(s.about) || ''; R.hue = s.hue; R.closed = !!s.closed;
       if (s.id !== 'general') { R.mark = s.mark; $('.cm-mark', R.btn).textContent = s.mark; } else R.mark = $('.cm-mark', R.btn).innerHTML;
       R.btn.style.setProperty('--h', s.hue);
       $('b', R.btn).textContent = R.name;
@@ -186,14 +190,8 @@
         on.hidden = !s.online; on.textContent = s.online ? String(s.online) : '';
         R.last = s.last ? (s.last.name + ': ' + (s.last.spoiler ? 'رسالة مخفية (حرق نتائج)' : s.last.kind && s.last.kind !== 'text' ? kindLabel(s.last.kind) + (s.last.text ? ' ' + s.last.text : '') : s.last.text)) : R.about;
         roomLine(R);
-        // how many came since it was last read (a dot for a room never opened)
-        var fresh = s.lastId > (seen[s.id] || 0) && current !== s.id && session();
-        R.btn.classList.toggle('has-new', !!fresh);
-        var nb = $('.cm-room-new', R.btn);
-        nb.hidden = !fresh;
-        var unread = fresh && seen[s.id] ? s.lastId - seen[s.id] : 0;
-        nb.textContent = unread ? (unread > 99 ? '99+' : String(unread)) : '';
-        nb.classList.toggle('is-n', !!unread);
+        // no «unread» outside a room (owner 2026-10-15: «مش عايز موضوع الرساله من بره غير مقروءه … الرسايل تتبعت عادي»):
+        // no bold room, no green dot or count, just its last message
         if (current === s.id) setStatus();
       });
       var t = $('.cm-total');
@@ -213,7 +211,7 @@
   var current = null, ws = null, me = null, msgs = [], byId = {}, done = false, loadingMore = false, pinned = null, people = [], typing = {}, retry = 0, retryT, pingT, pongT, mutedUntil = 0, replyTo = null, editing = null, spoiler = false;
   var pending = {}; // nonce → {el, payload, ghost, sentAt, failed}
   var cache = {}; // room → what it showed (going back to a room shows it at once, then adds what's new)
-  var firstHello = true, unreadFrom = 0, connecting = false;
+  var firstHello = true, connecting = false;
   function open(room, push) {
     want = '';
     if (!ROOMS[room]) return;
@@ -234,7 +232,6 @@
     var c = cache[room];
     msgs = c ? c.msgs.slice() : []; byId = {}; msgs.forEach(function (m) { byId[m.id] = m; });
     done = c ? c.done : false; pinned = null; people = []; typing = {}; replyTo = null; pending = {}; firstHello = true;
-    unreadFrom = seen[room] || 0;
     list.textContent = ''; $('.cm-more').hidden = true; $('.cm-pinned').hidden = true; $('.cm-jump').hidden = true;
     cancelReply(); clearAttached(); renderTyping(); setStatus('');
     if (c) { renderAll(); setPinned(c.pinned); toBottom(); }
@@ -337,12 +334,8 @@
       byId = {}; msgs.forEach(function (m) { byId[m.id] = m; });
       $('.cm-more').hidden = done;
       renderAll(); setPinned(d.pinned);
-      if (firstHello) {
-        // the first new message since the last visit, under «رسائل جديدة»; else the bottom
-        var line = $('.cm-unread', list);
-        if (line) requestAnimationFrame(function () { scroller.scrollTop = Math.max(0, line.offsetTop - 70); nearBottomBefore = nearBottom(); });
-        else toBottom();
-      } else if (wasBottom) toBottom();
+      // a room opens at its latest message
+      if (firstHello || wasBottom) toBottom();
       else scroller.scrollTop = scroller.scrollHeight - keep;
       firstHello = false;
       markSeen(); renderStack();
@@ -366,7 +359,6 @@
       var mine = me && m.uid === me.uid;
       if (!mine) ding('in');
       if (mine || near) toBottom(true); else bumpJump();
-      if (!mine && document.hidden && !roomMuted(current)) unreadTitle(1);
       // a long evening in one room: the oldest messages leave the page (they come back with «رسائل أقدم»)
       if (msgs.length > 600 && near) { msgs.splice(0, 200); byId = {}; msgs.forEach(function (x) { byId[x.id] = x; }); done = false; renderAll(); toBottom(); }
       markSeen();
@@ -497,12 +489,11 @@
   function cont(m, prev) { return prev && !prev.del && !m.del && prev.uid === m.uid && m.at - prev.at < 5 * 60e3 && dayKey(m.at) === dayKey(prev.at); }
   function renderAll() {
     list.textContent = '';
-    var frag = document.createDocumentFragment(), prev = null, lined = false;
+    var frag = document.createDocumentFragment(), prev = null;
     msgs.forEach(function (m) {
       if (!prev || dayKey(prev.at) !== dayKey(m.at)) frag.appendChild(el('div', 'cm-day', dayLabel(m.at)));
       // «رسائل جديدة»: where the last visit stopped
-      if (!lined && unreadFrom && m.id > unreadFrom && !(me && m.uid === me.uid) && prev) { frag.appendChild(el('div', 'cm-unread', 'رسائل جديدة')); lined = true; }
-      frag.appendChild(buildMsg(m, cont(m, prev) && !(lined && prev.id <= unreadFrom)));
+      frag.appendChild(buildMsg(m, cont(m, prev)));
       prev = m;
     });
     list.appendChild(frag);
@@ -675,7 +666,7 @@
     if (!mine && !isCont) {
       var nm = el('div', 'cm-name');
       nm.style.setProperty('--nh', hueOf(m.user || m.name));
-      nm.appendChild(el('span', null, m.name));
+      var nmt = el('span', null, m.name); nmt.dir = 'auto'; nm.appendChild(nmt);
       if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : m.badge === 'vgold' || m.badge === 'gprem' ? 'عضو موثق بالعلامة الذهبية' : 'عضو موثق'; nm.appendChild(bg.firstChild); }
       if (isPrem(m.badge)) { var pc = el('a', 'cm-prem'); pc.href = (document.documentElement.lang === 'en' ? '/en' : '') + '/premium/'; pc.title = 'عضو مميز'; pc.innerHTML = CROWN; pc.appendChild(document.createTextNode('مميز')); nm.appendChild(pc); }
       bub.appendChild(nm);
@@ -753,7 +744,7 @@
       if (m.pop === k) b.classList.add('is-pop');
       b.appendChild(el('span', null, k));
       if (m.reacts[k].length > 1 || !mineR) b.appendChild(document.createTextNode(String(m.reacts[k].length)));
-      b.title = mineR ? 'أنت' + (m.reacts[k].length > 1 ? ' و' + (m.reacts[k].length - 1) + ' آخرون' : '') : m.reacts[k].length + ' تفاعل';
+      b.title = mineR ? 'أنت' + (m.reacts[k].length > 1 ? ' و' + (m.reacts[k].length - 1) + ' آخرون' : '') : m.reacts[k].length + ' تفاعلات';
       b.addEventListener('click', function () { react(m, k); });
       box.appendChild(b);
     });
@@ -779,13 +770,13 @@
   // the site's account edits any message, any time (and no «معدلة» shows), and deletes any for good
   function canEdit(m) { return !!(me && (m.uid === me.uid || me.mod) && typeof m.id === 'number' && !m.del && (me.mod || Date.now() - m.at < WINDOW) && (m.text || (m.att && m.att.kind !== 'sticker' && m.att.kind !== 'voice' && m.att.kind !== 'gif'))); }
   function canDelete(m) { return !!(me && typeof m.id === 'number' && (me.mod || (!m.del && m.uid === me.uid && Date.now() - m.at < WINDOW))); }
-  // a message's tools (owner 2026-10-15: «زي الماسنجر»). A pointer: ☺ ↩ ⋮ by the message's side on hover; ☺ floats the
+  // the tools of a message (owner 2026-10-15: «زي الماسنجر»). A pointer: ☺ ↩ ⋮ by its side on hover; ☺ floats the
   // reactions over it, ⋮ the options. A finger: a long press lifts the message (iOS), a swipe toward the middle answers it.
   var RTL = getComputedStyle(root).direction === 'rtl';
   function addTools(row, m, mine) {
     if (!TOUCH) {
       var tools = el('div', 'cm-tools');
-      var acts = m.del ? [] : [['smile', 'تفاعل', reactPop], ['reply', 'رد', function () { startReply(m); }]];
+      var acts = m.del ? [] : [['smile', 'تفاعل', reactPop], ['reply', 'ردّ', function () { startReply(m); }]];
       acts.push(['more', 'المزيد', menuPop]);
       acts.forEach(function (t) {
         var b = el('button'); b.type = 'button'; b.innerHTML = IC[t[0]]; b.setAttribute('aria-label', t[1]); b.title = t[1];
@@ -843,7 +834,7 @@
   // what can be done with a message: answering first, then copy, edit, pin; what can't be taken back after a line
   function actionsFor(m) {
     var mine = me && m.uid === me.uid, items = [], danger = [];
-    if (!m.del) items.push(['reply', 'رد', function () { startReply(m); }]);
+    if (!m.del) items.push(['reply', 'ردّ', function () { startReply(m); }]);
     if (m.text && !m.del) items.push(['copy', 'نسخ النص', function () { copy(m.text); }]);
     // mine for 6 hours (a picture's words too); the site's account any message
     if (canEdit(m)) items.push(['edit', 'تعديل الرسالة', function () { startEdit(m); }]);
@@ -1023,7 +1014,7 @@
   function muteFromRoom(m) {
     var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
     card.innerHTML = '<h2></h2><p>لن يستطيع الكتابة في أي مجموعة حتى تنتهي المدة، ويمكنه القراءة.</p><div class="cm-report-opts">' +
-      [[1, 'ساعة'], [24, 'يوم'], [168, 'أسبوع'], [720, 'شهر'], [8760, 'سنة']].map(function (o, i) { return '<label><input type="radio" name="h" value="' + o[0] + '"' + (i === 1 ? ' checked' : '') + '> ' + o[1] + '</label>'; }).join('') +
+      [[1, 'ساعة واحدة'], [24, 'يوم واحد'], [168, 'أسبوع واحد'], [720, 'شهر واحد'], [8760, 'سنة واحدة']].map(function (o, i) { return '<label><input type="radio" name="h" value="' + o[0] + '"' + (i === 1 ? ' checked' : '') + '> ' + o[1] + '</label>'; }).join('') +
       '</div><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">أوقفه</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
     card.querySelector('h2').textContent = 'إيقاف ' + m.name + ' عن الكتابة';
     mo.hidden = false;
