@@ -3624,18 +3624,55 @@
     "publishedAt": 1792076525215,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ديناميت 14.10.2026 مترجم",
-    "lastAttempt": 1792076544844,
+    "lastAttempt": 1792077437006,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261015174619-aew-collision-14-10-2026": {
+    "publishedAt": 1792077461279,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض كوليجن 14.10.2026 مترجم",
+    "lastAttempt": 1792077474881,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261015174830-wwe-evolve-14-10-2026": {
+    "publishedAt": 1792077503946,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايفولف 14.10.2026 مترجم",
+    "lastAttempt": 1792077515882,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261015175039-wwe-main-event-14-10-2026": {
+    "publishedAt": 1792077541014,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض مين ايفنت 14.10.2026 مترجم",
+    "lastAttempt": 1792077553257,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
