@@ -4612,6 +4612,8 @@ test('episode date spellings and BroadcastEvent are in the VideoObject only (INC
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
   assert.match(layout, /"publication": \{ "@type": "BroadcastEvent"[^\n]*"isLiveBroadcast": false/);
   assert.match(layout, /showNameForms\(headline, title, program_name, event_date, ldNames/);
+  // a nostalgia special (Money in the Bank 2010) is a broadcast too, like a new show (INCIDENTS #605)
+  assert.match(layout, /page\.url\.startsWith\('\/nostalgia\/'\) and series_type == 'shows'\)\) %\}"publication": \{ "@type": "BroadcastEvent"/);
 });
 
 test('show pages carry the program aliases with the date and the words visitors add (INCIDENTS #472)', async () => {
