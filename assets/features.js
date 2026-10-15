@@ -11,7 +11,7 @@
   // the worker's messages in English on the English pages (lib/i18n/server-en.cjs → /assets/server-en.js); a message
   // with a number in it is matched by its shape; one not known yet gives '' (the page shows its own English words)
   if (LP) {
-    var sx = document.createElement('script'); sx.src = '/assets/server-en.js?v=20261015a'; sx.async = true; document.head.appendChild(sx);
+    var sx = document.createElement('script'); sx.src = '/assets/server-en.js?v=20261015b'; sx.async = true; document.head.appendChild(sx);
   }
   window.arwMsg = function (t) {
     t = String(t || '').trim();

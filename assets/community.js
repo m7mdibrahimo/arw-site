@@ -126,7 +126,7 @@
   function session() { var s = store('arw-member'); return s && s.token ? s : null; }
   var ROOMS = {};
   $$('.cm-room').forEach(function (b) {
-    ROOMS[b.getAttribute('data-room')] = { id: b.getAttribute('data-room'), btn: b, name: $('b', b).textContent, about: $('.cm-room-last', b).textContent, hue: b.style.getPropertyValue('--h'), mark: $('.cm-mark', b).innerHTML };
+    ROOMS[b.getAttribute('data-room')] = { id: b.getAttribute('data-room'), btn: b, name: $('b', b).textContent, about: $('.cm-room-last', b).textContent, hue: b.style.getPropertyValue('--h'), mark: $('.cm-mark', b).innerHTML, built: true };
   });
   var seen = store('arw-cm-seen') || {};
   // the list as the owner keeps it (the panel's «الغرف»): new rooms added, names and colours updated, hidden ones gone,
@@ -145,7 +145,10 @@
         b.innerHTML = '<span class="cm-mark" aria-hidden="true"></span><span class="cm-room-tx"><b></b><small class="cm-room-last"></small></span><span class="cm-room-meta"><em class="cm-room-on" hidden></em><i class="cm-room-new" hidden></i></span>';
         R = ROOMS[s.id] = { id: s.id, btn: b };
       }
-      R.name = roomWord(s.name) || R.name; R.about = roomWord(s.about) || ''; R.hue = s.hue; R.closed = !!s.closed;
+      // the English page keeps the English names it was built with (the worker sends the Arabic ones, owner 2026-10-15:
+      // «الاسماء دي مترجمتش في النسخة الانجليزي»); a room added later shows its English when there is one
+      if (!(EN && R.built)) { R.name = roomWord(s.name) || R.name; R.about = roomWord(s.about) || ''; }
+      R.hue = s.hue; R.closed = !!s.closed;
       if (s.id !== 'general') { R.mark = s.mark; $('.cm-mark', R.btn).textContent = s.mark; } else R.mark = $('.cm-mark', R.btn).innerHTML;
       R.btn.style.setProperty('--h', s.hue);
       $('b', R.btn).textContent = R.name;
