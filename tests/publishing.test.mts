@@ -734,6 +734,8 @@ test('the 100 dynamic redirects keep room for wildcard rules that can only be dy
   for (const l of ['/studio/* /admin/ 301', '/raw/* /library/wwe-raw/ 301', '/smackdown/* /library/wwe-smackdown/ 301']) assert.ok(out.includes(l), l);
   // a splat that didn't fit still redirects, as static rules
   assert.ok(out.includes('/tag/o104/ /tag/t104/ 301') && out.includes('/tag/o104 /tag/t104/ 301'));
+  // …and so do its numbered pages, which Google holds too («/tag/مصارعة-حرة/7/» answered 404, INCIDENTS #570)
+  assert.ok(out.includes('/tag/o104/2/ /tag/t104/2/ 301'));
 });
 
 test('news QA auto-fixes defects that reached production and leaves legit text alone', async () => {
