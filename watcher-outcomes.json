@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/maria-kanellis-says-vince-mcmahon-may-have-stopped-her-going-wwe-nxt": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T16:39:24.917Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -13,11 +18,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T16:28:52.235Z"
- },
- "https://www.ringsidenews.com/maria-kanellis-says-vince-mcmahon-may-have-stopped-her-going-wwe-nxt": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T16:19:22.880Z"
  },
  "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
