@@ -37,7 +37,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     env:
       FILE: ${{ inputs.file }}
       PLATFORMS: ${{ inputs.platforms }}
@@ -88,7 +88,7 @@ jobs:
           for P in $(echo "$PLATFORMS" | tr ',' ' '); do
             echo "── $P ──"
             OK=false
-            for i in $(seq 1 8); do
+            for i in $(seq 1 14); do
               jq -n --arg file "$FILE" --arg platform "$P" --rawfile caption promo/caption.txt --arg title "عرب راسلنج — المصارعة الحرة بالعربي" \
                 --argjson pin "$PIN" --argjson w "$W" --argjson h "$H" --argjson d "$D" \
                 '{file:$file, platform:$platform, caption:$caption, title:$title, pin:$pin, width:$w, height:$h, duration:$d}' > body.json
@@ -97,7 +97,12 @@ jobs:
               cat res.json; echo
               if jq -e '.success == true' res.json >/dev/null 2>&1; then OK=true; break; fi
               # Instagram still encoding, or its spacing between posts: the same post is picked up again
-              if jq -e '.post.status == "processing" or .post.status == "rate_limited"' res.json >/dev/null 2>&1; then sleep 330; continue; fi
+              # (the site's own news posts take Instagram's slot too: wait to the second the gap opens, not a fixed time)
+            if jq -e '.post.status == "processing" or .post.status == "rate_limited"' res.json >/dev/null 2>&1; then
+              RA=$(jq -r '.post.retryAt // 0' res.json | cut -d. -f1); NOW=$(date +%s%3N)
+              WAIT=$(( (RA - NOW) / 1000 + 2 )); [ "$WAIT" -lt 20 ] && WAIT=20; [ "$WAIT" -gt 900 ] && WAIT=900
+              echo "waiting ${WAIT}s"; sleep "$WAIT"; continue
+            fi
               break
             done
             # the pin waits for Facebook to finish the video: asked again (the post itself is never sent twice)
