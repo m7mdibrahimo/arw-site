@@ -3654,12 +3654,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايفولف 14.10.2026 مترجم",
-    "lastAttempt": 1792085506798,
+    "lastAttempt": 1792089095824,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false
