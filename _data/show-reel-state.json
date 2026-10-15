@@ -3659,7 +3659,8 @@
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "mediaDeleted": true
   },
   "20261015175039-wwe-main-event-14-10-2026": {
     "publishedAt": 1792077541014,
