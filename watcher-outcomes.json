@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/maria-kanellis-says-vince-mcmahon-may-have-stopped-her-going-wwe-nxt": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T15:11:20.219Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T15:08:02.194Z"
- },
- "https://www.ringsidenews.com/maria-kanellis-says-vince-mcmahon-may-have-stopped-her-going-wwe-nxt": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T14:45:56.022Z"
  },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
