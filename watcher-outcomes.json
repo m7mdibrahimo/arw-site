@@ -1,48 +1,48 @@
 {
- "https://www.fightful.com/wrestling/shinsuke-nakamura-keiji-muto-talk-show-scheduled-for-october-19th": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T12:40:42.968Z"
- },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:09.863Z"
+  "at": "2026-10-15T12:51:20.415Z"
  },
  "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:09.442Z"
+  "at": "2026-10-15T12:51:19.992Z"
  },
  "https://www.fightful.com/wrestling/333979-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:09.118Z"
+  "at": "2026-10-15T12:51:19.668Z"
  },
  "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:08.843Z"
+  "at": "2026-10-15T12:51:19.394Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:08.616Z"
+  "at": "2026-10-15T12:51:19.169Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:08.432Z"
+  "at": "2026-10-15T12:51:18.990Z"
  },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:08.203Z"
+  "at": "2026-10-15T12:51:18.763Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T12:40:08.013Z"
+  "at": "2026-10-15T12:51:18.575Z"
+ },
+ "https://www.fightful.com/wrestling/shinsuke-nakamura-keiji-muto-talk-show-scheduled-for-october-19th": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T12:40:42.968Z"
  },
  "https://www.fightful.com/wrestling/big-damo-announces-tommy-end-xelina-are-off-progress-show-due-to-personal-issue": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
