@@ -1,5 +1,25 @@
 [
   {
+    "id": 334059,
+    "link": "https://www.fightful.com/wrestling/john-cena-performs-my-time-is-now-during-media-appearance/",
+    "date": "2026-10-15T11:21:01",
+    "date_gmt": "2026-10-15T15:21:01",
+    "title": {
+      "rendered": "John Cena Performs &#8216;My Time Is Now&#8217; During Media Appearance"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
+  },
+  {
+    "id": 334058,
+    "link": "https://www.fightful.com/wrestling/kevin-knight-nobody-got-into-this-business-to-be-a-heel-or-babyface/",
+    "date": "2026-10-15T11:14:13",
+    "date_gmt": "2026-10-15T15:14:13",
+    "title": {
+      "rendered": "Kevin Knight: Nobody Got Into This Business To Be A Heel Or Babyface"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/21150929/intro-1744226727.jpg"
+  },
+  {
     "id": 334054,
     "link": "https://www.fightful.com/wrestling/full-match-card-set-for-pro-wrestling-noahs-wrestle-odyssey-ii/",
     "date": "2026-10-15T10:39:45",
@@ -278,25 +298,5 @@
       "rendered": "PRODUCE Wrestling To Honor Ms. Sandra Gray On November 27th"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14211540/Screenshot-539.png"
-  },
-  {
-    "id": 333957,
-    "link": "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling/",
-    "date": "2026-10-14T20:57:45",
-    "date_gmt": "2026-10-15T00:57:45",
-    "title": {
-      "rendered": "Adam Copeland: 2027 Will Be My Last Year In Professional Wrestling"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04003604/HTwZiBlXsAAxHtF.jpeg"
-  },
-  {
-    "id": 333956,
-    "link": "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out/",
-    "date": "2026-10-14T20:49:25",
-    "date_gmt": "2026-10-15T00:49:25",
-    "title": {
-      "rendered": "Adam Copeland Says Christian Cage Suffered Broken Ribs And Punctured Lung At AEW All Out"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/08/24131929/Edge-and-Christian-2025-x-Adam-Copeland-and-Christian-Cage-x-Cope-x-Cage-AEW-2025.jpg"
   }
 ]
