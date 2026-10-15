@@ -1074,3 +1074,6 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .ry-find-hit { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 8px 10px; border: 0; border-radius: 10px; background: transparent; color: var(--ink); font-family: inherit; text-align: start; cursor: pointer; }
 .ry-find-hit:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
 .ry-find-hit small { color: var(--muted); font-size: 12px; }
+
+/* «التوقعات»: each match's poster in the list */
+.pd-card-mimg { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; object-position: center 15%; align-self: center; flex: none; }

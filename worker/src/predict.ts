@@ -15,13 +15,19 @@ const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS } });
 
 export function ensurePredict(db: D1Database): Promise<void> {
-  return once(db, "predict", () => db.batch([
-    db.prepare("CREATE TABLE IF NOT EXISTS pred_events (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', starts INTEGER NOT NULL, image TEXT NOT NULL DEFAULT '', status TEXT NOT NULL DEFAULT 'draft', created INTEGER NOT NULL, done_at INTEGER NOT NULL DEFAULT 0)"),
-    db.prepare("CREATE TABLE IF NOT EXISTS pred_matches (id INTEGER PRIMARY KEY AUTOINCREMENT, event INTEGER NOT NULL, ord INTEGER NOT NULL DEFAULT 0, title TEXT NOT NULL, options TEXT NOT NULL, points INTEGER NOT NULL DEFAULT 1, winner TEXT NOT NULL DEFAULT '')"),
-    db.prepare("CREATE INDEX IF NOT EXISTS pred_matches_event ON pred_matches (event, ord)"),
-    db.prepare("CREATE TABLE IF NOT EXISTS pred_picks (member INTEGER NOT NULL, match INTEGER NOT NULL, pick TEXT NOT NULL, at INTEGER NOT NULL, PRIMARY KEY (member, match))"),
-    db.prepare("CREATE INDEX IF NOT EXISTS pred_picks_match ON pred_picks (match)"),
-  ]));
+  return once(db, "predict", async () => {
+    await db.batch([
+      db.prepare("CREATE TABLE IF NOT EXISTS pred_events (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', starts INTEGER NOT NULL, image TEXT NOT NULL DEFAULT '', status TEXT NOT NULL DEFAULT 'draft', created INTEGER NOT NULL, done_at INTEGER NOT NULL DEFAULT 0)"),
+      db.prepare("CREATE TABLE IF NOT EXISTS pred_matches (id INTEGER PRIMARY KEY AUTOINCREMENT, event INTEGER NOT NULL, ord INTEGER NOT NULL DEFAULT 0, title TEXT NOT NULL, options TEXT NOT NULL, points INTEGER NOT NULL DEFAULT 1, winner TEXT NOT NULL DEFAULT '')"),
+      db.prepare("CREATE INDEX IF NOT EXISTS pred_matches_event ON pred_matches (event, ord)"),
+      db.prepare("CREATE TABLE IF NOT EXISTS pred_picks (member INTEGER NOT NULL, match INTEGER NOT NULL, pick TEXT NOT NULL, at INTEGER NOT NULL, PRIMARY KEY (member, match))"),
+      db.prepare("CREATE INDEX IF NOT EXISTS pred_picks_match ON pred_picks (match)"),
+      // the cards put up from the code (worker/src/predict-seed.ts): what's been put up once, never twice
+      db.prepare("CREATE TABLE IF NOT EXISTS pred_seeds (key TEXT PRIMARY KEY, event INTEGER NOT NULL DEFAULT 0, at INTEGER NOT NULL)"),
+    ]);
+    // each match's own poster, and a line under its name (the title at stake, the stipulation)
+    for (const col of ["image", "note"]) await db.prepare(`ALTER TABLE pred_matches ADD COLUMN ${col} TEXT NOT NULL DEFAULT ''`).run().catch(() => null);
+  });
 }
 
 const clean = (s: unknown, n: number) => String(s ?? "").replace(/\s+/g, " ").trim().slice(0, n);
@@ -60,7 +66,8 @@ export async function handlePredict(request: Request, env: MembersEnv, url: URL,
   if (path === "/" && request.method === "GET") {
     const me = await memberOf(request, env, now);
     // what's open, and what finished in the last 60 days
-    const events = (await db.prepare("SELECT * FROM pred_events WHERE status IN ('open', 'done') AND (status = 'open' OR done_at > ?1) ORDER BY starts DESC LIMIT 12").bind(now - 60 * 86_400_000).all<any>()).results || [];
+    // the soonest open card first, then the finished ones, newest first
+    const events = (await db.prepare("SELECT * FROM pred_events WHERE status IN ('open', 'done') AND (status = 'open' OR done_at > ?1) ORDER BY CASE WHEN status = 'open' THEN 0 ELSE 1 END, CASE WHEN status = 'open' THEN starts ELSE -starts END LIMIT 12").bind(now - 60 * 86_400_000).all<any>()).results || [];
     const ids = events.map(e => e.id);
     const matches = ids.length ? (await db.prepare(`SELECT * FROM pred_matches WHERE event IN (${ids.map(() => "?").join(",")}) ORDER BY event, ord, id`).bind(...ids).all<any>()).results || [] : [];
     const mids = matches.map(m => m.id);
@@ -72,7 +79,7 @@ export async function handlePredict(request: Request, env: MembersEnv, url: URL,
       const locked = e.status === "done" || now >= e.starts;
       const ms = matches.filter(m => m.event === e.id).map(m => {
         const c = counts.filter(x => x.match === m.id), total = c.reduce((s, x) => s + x.n, 0);
-        return { id: m.id, title: m.title, options: opts(m.options), points: m.points, winner: e.status === "done" ? m.winner : "",
+        return { id: m.id, title: m.title, note: m.note || "", image: IMAGE.test(m.image || "") ? m.image : "", options: opts(m.options), points: m.points, winner: e.status === "done" ? m.winner : "",
           // what everyone picked shows once the picks are closed (no following the crowd before)
           share: locked ? Object.fromEntries(c.map(x => [x.pick, total ? Math.round((x.n * 100) / total) : 0])) : null, total, mine: myPick.get(m.id) || "" };
       });
@@ -122,6 +129,8 @@ export async function studioPredictSave(env: MembersEnv, b: any, now = Date.now(
   const status = ["draft", "open", "done"].includes(b.status) ? b.status : "draft";
   const matches = (Array.isArray(b.matches) ? b.matches : []).slice(0, 20).map((m: any, i: number) => ({
     id: Number(m.id) || 0, ord: i, title: clean(m.title, 160), points: Math.min(Math.max(Math.round(Number(m.points) || 1), 1), 5),
+    // left out (an older panel): kept as they are
+    note: m.note === undefined ? null : clean(m.note, 160), image: m.image === undefined ? null : (IMAGE.test(clean(m.image, 400)) ? clean(m.image, 400) : ""),
     options: [...new Set((Array.isArray(m.options) ? m.options : []).map((o: unknown) => clean(o, 60)).filter(Boolean))].slice(0, 8) as string[],
   }));
   if (!matches.length) return { success: false, error: "ضيف نزال واحد على الأقل." };
@@ -142,14 +151,14 @@ export async function studioPredictSave(env: MembersEnv, b: any, now = Date.now(
     if (m.id) {
       const ex = await db.prepare("SELECT id FROM pred_matches WHERE id = ?1 AND event = ?2").bind(m.id, id).first();
       if (ex) {
-        await db.prepare("UPDATE pred_matches SET ord = ?1, title = ?2, options = ?3, points = ?4 WHERE id = ?5").bind(m.ord, m.title, JSON.stringify(m.options), m.points, m.id).run();
+        await db.prepare("UPDATE pred_matches SET ord = ?1, title = ?2, options = ?3, points = ?4, note = COALESCE(?6, note), image = COALESCE(?7, image) WHERE id = ?5").bind(m.ord, m.title, JSON.stringify(m.options), m.points, m.id, m.note, m.image).run();
         // a pick for a name that's gone no longer counts
         await db.prepare(`DELETE FROM pred_picks WHERE match = ?1 AND pick NOT IN (${m.options.map(() => "?").join(",")})`).bind(m.id, ...m.options).run();
         keep.push(m.id);
         continue;
       }
     }
-    const r = await db.prepare("INSERT INTO pred_matches (event, ord, title, options, points) VALUES (?1, ?2, ?3, ?4, ?5) RETURNING id").bind(id, m.ord, m.title, JSON.stringify(m.options), m.points).first<{ id: number }>();
+    const r = await db.prepare("INSERT INTO pred_matches (event, ord, title, options, points, note, image) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7) RETURNING id").bind(id, m.ord, m.title, JSON.stringify(m.options), m.points, m.note || "", m.image || "").first<{ id: number }>();
     if (r) keep.push(r.id);
   }
   const gone = ((await db.prepare("SELECT id FROM pred_matches WHERE event = ?1").bind(id).all<{ id: number }>()).results || []).map(r => r.id).filter(x => !keep.includes(x));

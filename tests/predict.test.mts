@@ -91,3 +91,43 @@ test('editing a card keeps the picks of names that stay, and drops the ones whos
   const now = (await call(e, '/predict', undefined, a)).body.events[0].matches;
   assert.deepEqual(now.map((m: any) => m.mine), ['أ', '']);
 });
+
+test('the cards from the code go up once each, a later match joins its card, and what the owner deletes stays deleted', async () => {
+  const { seedPredictions, PRED_SEEDS } = await import('../worker/src/predict-seed');
+  const e: any = { ANALYTICS: d1(), PUSH_KV: kv() };
+  const now = Date.UTC(2026, 9, 15, 12);
+  assert.equal(await seedPredictions(e.ANALYTICS, PRED_SEEDS, now), 2);
+  assert.equal(await seedPredictions(e.ANALYTICS, PRED_SEEDS, now), 0);
+  const r = await call(e, '/predict', undefined, '', now);
+  // the soonest open card first: WrestleDream (17 October) before Crown Jewel (7 November)
+  assert.deepEqual(r.body.events.map((x: any) => x.title_en), ['AEW WrestleDream 2026', 'WWE Crown Jewel 2026']);
+  const wd = r.body.events[0];
+  assert.equal(wd.starts, Date.UTC(2026, 9, 17, 23));
+  assert.equal(wd.matches.length, 10);
+  assert.equal(wd.matches[0].options.length, 8);
+  assert.equal(wd.matches[0].points, 3);
+  assert.match(wd.matches[0].image, /^\/assets\/predictions\/aew-wrestledream-2026-clockwork\.jpg$/);
+  assert.match(wd.matches[1].note, /بطولة AEW العالمية للسيدات/);
+  // every name in Arabic (the federations and the shows' own names stay as they are)
+  for (const ev of r.body.events) for (const m of ev.matches) for (const o of m.options) assert.match(o, /^[؀-ۿ ]+$/, o);
+  // every poster is in the repo
+  const fs = await import('node:fs');
+  for (const s of PRED_SEEDS) for (const img of [s.image, ...s.matches.map(m => m.image)]) assert.ok(fs.existsSync('.' + img), img);
+  // a match added to the code later joins its card, once
+  const more = PRED_SEEDS.map(s => s.key === 'wwe-crown-jewel-2026' ? { ...s, matches: [...s.matches, { key: 'extra', title: 'كودي رودز ضد جون سينا', note: '', options: ['كودي رودز', 'جون سينا'], points: 1, image: '' }] } : s);
+  await seedPredictions(e.ANALYTICS, more, now); await seedPredictions(e.ANALYTICS, more, now);
+  const cj = (await call(e, '/predict', undefined, '', now)).body.events[1];
+  assert.deepEqual(cj.matches.map((m: any) => m.title), ['رومان رينز ضد سامي زين', 'تشيلسي غرين ضد ليف مورغان', 'كودي رودز ضد جون سينا']);
+  // the owner's edits keep each match's poster and line unless the panel changes them
+  const list = (await studioPredict(e)).events.find((x: any) => x.id === cj.id);
+  await studioPredictSave(e, { ...list, matches: list.matches.map((m: any) => ({ id: m.id, title: m.title, options: m.options, points: m.points })) });
+  const kept = (await studioPredict(e)).events.find((x: any) => x.id === cj.id);
+  assert.equal(kept.matches[0].image, '/assets/predictions/wwe-crown-jewel-2026-reigns-zayn.jpg');
+  await studioPredictSave(e, { ...kept, matches: kept.matches.map((m: any, i: number) => ({ ...m, note: i ? m.note : 'سطر جديد', image: i ? m.image : 'javascript:x' })) });
+  const changed = (await studioPredict(e)).events.find((x: any) => x.id === cj.id);
+  assert.deepEqual([changed.matches[0].note, changed.matches[0].image], ['سطر جديد', '']);
+  // deleted by the owner: never back
+  await studioPredictDelete(e, cj.id);
+  assert.equal(await seedPredictions(e.ANALYTICS, more, now), 0);
+  assert.equal((await call(e, '/predict', undefined, '', now)).body.events.length, 1);
+});

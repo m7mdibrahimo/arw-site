@@ -41,6 +41,8 @@ import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete } from "./predict";
+import { seedPredictions } from "./predict-seed";
+import { once } from "./once";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
@@ -3061,6 +3063,11 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
+/** The prediction cards put up from the code (worker/src/predict-seed.ts): once per running copy of the worker */
+async function seedPredict(env: Env): Promise<void> {
+  const db = (env as any).ANALYTICS as D1Database | undefined;
+  if (db) await once(db, "predict-seed", () => seedPredictions(db)).catch((e: any) => console.log("[predict] seed:", e?.message || e));
+}
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
     status,
@@ -3098,11 +3105,15 @@ export default {
       // «تابع المشاهدة» and «سجل المشاهدة» (worker/src/watch.ts)
       if (path === "/watch") return await handleWatch(request, env as any, url);
       // «توقعات العروض الكبرى»: members pick the winners, the owner enters the results (worker/src/predict.ts)
-      if (path === "/predict" || path.startsWith("/predict/")) return await handlePredict(request, env as any, url);
+      if (path === "/predict" || path.startsWith("/predict/")) {
+        // the cards put up from the code (worker/src/predict-seed.ts), once per running copy of the worker
+        await seedPredict(env);
+        return await handlePredict(request, env as any, url);
+      }
       if (path.startsWith("/api/studio/predict")) {
         if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير التوقعات." }, 403);
         const who = await studioUser(request, env as any);
-        if (path === "/api/studio/predict" && request.method === "GET") return json(await studioPredict(env as any));
+        if (path === "/api/studio/predict" && request.method === "GET") { await seedPredict(env); return json(await studioPredict(env as any)); }
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
         let r: any = null;
         if (path === "/api/studio/predict/save" && request.method === "POST") r = await studioPredictSave(env as any, body);
