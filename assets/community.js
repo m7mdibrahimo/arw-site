@@ -76,6 +76,9 @@
   var CROWN = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   // the site's account: gold; «العضوية المميزة»: the blue badge and the crown (pages/premium.njk); a member given it: blue
   // gold: the site's account, or a member the owner gave the gold badge (vgold); blue: verified or premium
+  // a message from the worker, in English on the English pages (lib/i18n/server-en.cjs through assets/features.js)
+  function srv(t) { if (!t) return ''; if (document.documentElement.lang !== 'en') return t; return (window.arwMsg && window.arwMsg(t)) || ''; }
+
   function badge(b) { return b === 'gold' || b === 'vgold' || b === 'gprem' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
   function isPrem(b) { return b === 'premium' || b === 'gprem'; }
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
@@ -223,7 +226,7 @@
       .then(function (d) {
         if (room !== current) return;
         if (d.status === 401) { gate(true); conn(''); return; }
-        if (!d.ok) throw new Error(d.error || '');
+        if (!d.ok) throw new Error(srv(d.error) || '');
         var sock = new WebSocket(WS + '/chat/ws/' + room + '?ticket=' + d.ticket);
         ws = sock;
         sock.onopen = function () { retry = 0; conn(''); clearInterval(pingT); pingT = setInterval(function () { if (sock.readyState === 1) sock.send('ping'); }, 25000); };
@@ -292,7 +295,7 @@
       if (d.nonce && pending[d.nonce]) { var f = pending[d.nonce]; f.payload = null; if (f.el) { f.el.classList.remove('is-pending'); f.el.classList.add('is-failed'); } delete pending[d.nonce]; }
       if (d.code === 'muted') { mutedUntil = d.until || 0; setMuted(); }
       if (d.code === 'readonly' && ROOMS[current]) { ROOMS[current].closed = true; setMuted(); }
-      toast(d.error || 'تعذر الإرسال.');
+      toast(srv(d.error) || 'تعذر الإرسال.');
     }
   }
   function markSeen() {
@@ -654,7 +657,7 @@
       fin();
       var s = session();
       fetch(API + '/chat/mod/mute', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (s ? s.token : '') }, body: JSON.stringify({ uid: m.uid, hours: h }) })
-        .then(function (r) { return r.json(); }).then(function (d) { toast(d.ok ? 'تم إيقافه عن الكتابة ✓' : (d.error || 'تعذر ذلك.')); })
+        .then(function (r) { return r.json(); }).then(function (d) { toast(d.ok ? 'تم إيقافه عن الكتابة ✓' : (srv(d.error) || 'تعذر ذلك.')); })
         .catch(function () { toast('تعذر الاتصال.'); });
     };
   }
@@ -810,7 +813,7 @@
       x.setRequestHeader('Content-Type', blob.type || 'application/octet-stream');
       if (name) x.setRequestHeader('X-File-Name', encodeURIComponent(name));
       x.upload.onprogress = function (e) { if (a && e.lengthComputable) { a.pct = Math.round(e.loaded / e.total * 100); drawAttached(); } };
-      x.onload = function () { var d = {}; try { d = JSON.parse(x.responseText); } catch (e) {} if (x.status === 200 && d.ok) resolve(d.att); else reject(new Error(d.error || 'تعذر الرفع.')); };
+      x.onload = function () { var d = {}; try { d = JSON.parse(x.responseText); } catch (e) {} if (x.status === 200 && d.ok) resolve(d.att); else reject(new Error(srv(d.error) || 'تعذر الرفع.')); };
       x.onerror = function () { reject(new Error('تعذر الرفع، تحقق من الاتصال.')); };
       x.send(blob);
     });

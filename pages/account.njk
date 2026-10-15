@@ -275,7 +275,7 @@ permalink: "/account/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015e">
+<link rel="stylesheet" href="/assets/features.css?v=20261015f">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>حسابك | عرب راسلنج</title>
@@ -360,7 +360,7 @@ html.arw-dark .acct-ms[data-state="soon"] .acct-sub-note{ color:#ff9f6e; }
 .acct-quick a:hover{ border-color:var(--teal); }
 .acct-quick b{ font:800 15px 'Cairo',sans-serif; }
 .acct-quick small{ color:var(--muted); font-size:13px; }
-.acct-quick a > span{ display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
+.acct-quick a > span:not(.acct-quick-ic){ display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
 .acct-quick-ic{ flex:0 0 40px; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:color-mix(in srgb, var(--teal) 14%, transparent); color:var(--teal); }
 .acct-quick-ic svg{ width:20px; height:20px; }
 .acct-quick-go{ flex:0 0 auto; width:18px; height:18px; color:var(--muted); }
@@ -992,7 +992,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015e" defer></script>
+<script src="/assets/features.js?v=20261015f" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

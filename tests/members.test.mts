@@ -354,3 +354,26 @@ test('a member\'s own picture: a real image only, theirs only, the old one remov
   await call(e, '/profile', { pic: 'w:cody-rhodes' }, s.token);
   assert.equal(store.size, 0);
 });
+
+test('once: the blue badge every early member got goes; the owner\'s own and the gold ones stay; never twice', async () => {
+  const { resetAutoBadges } = await import('../worker/src/members');
+  const e = env();
+  const a = (await signup(e, { username: 'early_one', email: 'e1@example.com' }, '41.1.1.1')).body;
+  const b = (await signup(e, { username: 'early_two', email: 'e2@example.com' }, '41.1.1.2')).body;
+  const c = (await signup(e, { username: 'gold_one', email: 'e3@example.com' }, '41.1.1.3')).body;
+  const db = e.ANALYTICS.raw;
+  const idOf = (u: string) => (db.prepare('SELECT id FROM members WHERE username = ?').get(u) as any).id;
+  db.prepare('UPDATE members SET badge = 1').run();
+  db.prepare('UPDATE members SET badge = 2 WHERE username = ?').run('gold_one');
+  const changed = await resetAutoBadges(e, [idOf('early_two')]);
+  assert.deepEqual(changed, [idOf('early_one')]);
+  const badge = (u: string) => (db.prepare('SELECT badge FROM members WHERE username = ?').get(u) as any).badge;
+  assert.deepEqual([badge('early_one'), badge('early_two'), badge('gold_one')], [0, 1, 2]);
+  assert.equal((await call(e, '/me', undefined, a.token)).body.member.blue, false);
+  assert.equal((await call(e, '/me', undefined, b.token)).body.member.blue, true);
+  assert.equal((await call(e, '/me', undefined, c.token)).body.member.gold, true);
+  // done once: a badge given afterwards is never taken
+  db.prepare('UPDATE members SET badge = 1 WHERE username = ?').run('early_one');
+  assert.equal(await resetAutoBadges(e, []), null);
+  assert.equal(badge('early_one'), 1);
+});

@@ -17,6 +17,9 @@
 
   // ── the session ──────────────────────────────────────────────────────────
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
+  // a message from the worker, in English on the English pages (lib/i18n/server-en.cjs through assets/features.js)
+  function srv(t) { if (!t) return ''; if (document.documentElement.lang !== 'en') return t; return (window.arwMsg && window.arwMsg(t)) || ''; }
+
   function save(s) {
     try { if (s) localStorage.setItem(KEY, JSON.stringify(s)); else localStorage.removeItem(KEY); } catch (e) {}
     // the header follows at once (a new picture or name, signed in or out)
@@ -119,7 +122,7 @@
     api('/login', { login: val(f, 'login'), password: f.elements.password.value }).then(function (d) {
       busy(f, false);
       if (d.unverified) { say(f, ''); pending({ login: val(f, 'login'), password: f.elements.password.value }, d.email, d.sent); f.reset(); return; }
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الدخول، تأكد من البيانات.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر الدخول، تأكد من البيانات.', 'bad'); return; }
       signedIn(d); say(f, ''); f.reset();
       done();
     }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
@@ -136,7 +139,7 @@
     api('/signup', { username: u, email: m, password: p, captcha: { id: capId, answer: c }, website: f.elements.website.value }).then(function (d) {
       busy(f, false);
       if (!d.ok) {
-        say(f, d.error && !EN ? d.error : 'تعذر إنشاء الحساب، حاول مرة أخرى.', 'bad');
+        say(f, srv(d.error) || 'تعذر إنشاء الحساب، حاول مرة أخرى.', 'bad');
         if (d.field && f.elements[d.field]) { f.elements[d.field].classList.add('is-bad'); f.elements[d.field].focus(); }
         captcha();
         return;
@@ -177,7 +180,7 @@
     api('/login', waitingFor).then(function (d) {
       b.disabled = false;
       if (d.ok) { signedIn(d); waitingFor = null; done(); return; }
-      m.textContent = d.sent ? 'أرسلنا رابطا جديدا ✓ افتح بريدك.' : d.unverified ? 'أرسلنا الرابط قبل قليل. انتظر دقائق ثم حاول مرة أخرى.' : (d.error && !EN ? d.error : 'تعذر الإرسال، حاول مرة أخرى.');
+      m.textContent = d.sent ? 'أرسلنا رابطا جديدا ✓ افتح بريدك.' : d.unverified ? 'أرسلنا الرابط قبل قليل. انتظر دقائق ثم حاول مرة أخرى.' : (srv(d.error) || 'تعذر الإرسال، حاول مرة أخرى.');
       m.className = 'acct-msg acct-pending-msg ' + (d.sent ? 'is-ok' : 'is-bad');
     }).catch(function () { b.disabled = false; m.textContent = 'تعذر الاتصال، حاول مرة أخرى.'; m.className = 'acct-msg acct-pending-msg is-bad'; });
   });
@@ -195,7 +198,7 @@
     api('/forgot', { email: val(f, 'email') }).then(function (d) {
       busy(f, false);
       if (d.nomail) { say(f, 'الاسترجاع بالبريد غير متاح الآن، استخدم كود الاسترجاع.', 'bad'); $('[data-view="forgot"] [data-tab="code"]').click(); return; }
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الإرسال، حاول مرة أخرى.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر الإرسال، حاول مرة أخرى.', 'bad'); return; }
       say(f, 'إن كان لهذا البريد حساب، ستصلك رسالة خلال دقائق. افحص البريد غير المرغوب أيضا.', 'ok');
     }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
@@ -207,7 +210,7 @@
     busy(f, true); say(f, 'لحظة…');
     api('/recover', { login: val(f, 'login'), code: val(f, 'code'), password: f.elements.password.value }).then(function (d) {
       busy(f, false);
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر التغيير، تأكد من البيانات.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر التغيير، تأكد من البيانات.', 'bad'); return; }
       var creds = { login: val(f, 'login'), password: f.elements.password.value };
       f.reset();
       if (d.pending) { welcome(d.recovery, false, creds, d.email); $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، ثم فعل حسابك من بريدك.'; return; }
@@ -225,7 +228,7 @@
     busy(f, true); say(f, 'لحظة…');
     api('/reset', { token: t, password: f.elements.password.value }).then(function (d) {
       busy(f, false);
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الحفظ، حاول مرة أخرى.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر الحفظ، حاول مرة أخرى.', 'bad'); return; }
       signedIn(d);
       history.replaceState(null, '', location.pathname);
       done();
@@ -437,7 +440,7 @@
     api('/profile', { display: val(f, 'display'), fav_fed: on ? on.getAttribute('data-v') : '', fav_star: val(f, 'fav_star'), bio: val(f, 'bio') }, true).then(function (d) {
       busy(f, false);
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر الحفظ.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر الحفظ.', 'bad'); return; }
       session.member = d.member; save(session); drawProfile();
       say(f, 'تم الحفظ ✓', 'ok');
       setTimeout(function () { say(f, ''); }, 2500);
@@ -519,7 +522,7 @@
       api('/pic', { image: data }, true).then(function (d) {
         upBtn.classList.remove('is-busy');
         if (d.signedOut) return out();
-        if (!d.ok) return upSay(d.error || 'تعذر رفع الصورة، حاول مرة أخرى.', true);
+        if (!d.ok) return upSay(srv(d.error) || 'تعذر رفع الصورة، حاول مرة أخرى.', true);
         session.member = d.member; save(session); drawProfile();
         upSay('');
         $('.acct-pics').hidden = true;
@@ -536,7 +539,7 @@
     api('/password', { current: f.elements.current.value, password: f.elements.password.value }, true).then(function (d) {
       busy(f, false);
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر التغيير.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر التغيير.', 'bad'); return; }
       f.reset(); say(f, 'تم تغيير كلمة المرور، وخرجنا من حسابك على الأجهزة الأخرى.', 'ok');
     }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
@@ -548,7 +551,7 @@
     api('/email', { email: val(f, 'email'), current: f.elements.current.value }, true).then(function (d) {
       busy(f, false);
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر تغيير البريد.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر تغيير البريد.', 'bad'); return; }
       f.reset();
       if (d.pending) { say(f, 'أرسلنا رابط التأكيد إلى ' + d.email + '. افتح الرسالة واضغط «تأكيد البريد الجديد».', 'ok'); return; }
       session.member = d.member; save(session); drawProfile();
@@ -560,7 +563,7 @@
     if (!f.elements.current.value) { f.elements.current.focus(); say(f, 'اكتب كلمة المرور الحالية أولا.', 'bad'); return; }
     api('/recovery', { current: f.elements.current.value }, true).then(function (d) {
       if (d.signedOut) return out();
-      if (!d.ok) { say(f, d.error && !EN ? d.error : 'تعذر ذلك.', 'bad'); return; }
+      if (!d.ok) { say(f, srv(d.error) || 'تعذر ذلك.', 'bad'); return; }
       f.reset();
       welcome(d.recovery, false);
       $('.acct-welcome-tx').textContent = 'هذا كود الاسترجاع الجديد، والقديم لم يعد يعمل.';
@@ -570,7 +573,7 @@
   $('[data-act="verify-again"]').addEventListener('click', function () {
     var b = this;
     b.disabled = true;
-    api('/verify-again', {}, true).then(function (d) { b.textContent = d.ok ? 'أرسلنا الرسالة ✓' : (d.error && !EN ? d.error : 'تعذر الإرسال.'); });
+    api('/verify-again', {}, true).then(function (d) { b.textContent = d.ok ? 'أرسلنا الرسالة ✓' : (srv(d.error) || 'تعذر الإرسال.'); });
   });
   $('[data-act="logout"]').addEventListener('click', function () {
     api('/logout', {}, true).catch(function () {}).then(out);
@@ -593,7 +596,7 @@
         history.replaceState(null, '', location.pathname);
         if (d.ok && d.token) signedIn(d);
         else if (d.ok && session) { session.member.verified = true; save(session); }
-        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلا بك في عرب راسلنج. حسابك جاهز، ويمكنك الآن الاستفادة من كل مميزات العضوية.' : (d.error && !EN ? d.error : 'رابط التفعيل غير صالح.'));
+        note(d.ok ? 'تم تفعيل حسابك ✓' : 'الرابط لا يعمل', d.ok ? 'أهلا بك في عرب راسلنج. حسابك جاهز، ويمكنك الآن الاستفادة من كل مميزات العضوية.' : (srv(d.error) || 'رابط التفعيل غير صالح.'));
       });
       return;
     }
@@ -602,7 +605,7 @@
       api('/email-confirm', { token: q.get('email') }).then(function (d) {
         history.replaceState(null, '', location.pathname);
         if (d.ok && session) { session.member.email = d.email; save(session); }
-        note(d.ok ? 'تم تأكيد بريدك الجديد ✓' : 'الرابط لا يعمل', d.ok ? 'بريد حسابك الآن: ' + d.email : (d.error && !EN ? d.error : 'رابط التأكيد غير صالح.'));
+        note(d.ok ? 'تم تأكيد بريدك الجديد ✓' : 'الرابط لا يعمل', d.ok ? 'بريد حسابك الآن: ' + d.email : (srv(d.error) || 'رابط التأكيد غير صالح.'));
       });
       return;
     }

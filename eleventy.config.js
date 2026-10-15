@@ -346,6 +346,14 @@ module.exports = function(eleventyConfig) {
     catch (e) { console.log(`[img-cache] restore skipped: ${e.message}`); }
     BUILD_T.restored = Date.now();
   });
+  // /assets/server-en.js: the worker's messages in English, for the English edition (lib/i18n/server-en.cjs)
+  eleventyConfig.on("eleventy.after", () => {
+    try {
+      const map = require("./lib/i18n/server-en.cjs");
+      fs.mkdirSync("_site/assets", { recursive: true });
+      fs.writeFileSync("_site/assets/server-en.js", "window.ARW_EN_MSG=" + JSON.stringify(map) + ";");
+    } catch (e) { console.log(`[server-en.js] skipped: ${e.message}`); }
+  });
   // /build.json: which commits this deployment contains, so the panel can say «ظهر على الموقع ✓»
   // the moment a save is really live instead of guessing a delay.
   eleventyConfig.on("eleventy.after", () => {

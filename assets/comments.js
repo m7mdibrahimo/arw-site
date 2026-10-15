@@ -28,6 +28,9 @@
   var send = box.querySelector('.arw-cm-send');
   var shownAt = Date.now();
   // a member of the site (assets/account.js keeps the session): comments under their own name and picture
+  // a message from the worker, in English on the English pages (lib/i18n/server-en.cjs through assets/features.js)
+  function srv(t) { if (!t) return ''; if (document.documentElement.lang !== 'en') return t; return (window.arwMsg && window.arwMsg(t)) || ''; }
+
   var member = null;
   try { var ms = JSON.parse(localStorage.getItem('arw-member') || 'null'); if (ms && ms.token && ms.member) member = ms; } catch (e) {}
   function headers() { var h = { 'Content-Type': 'application/json' }; if (member) h.Authorization = 'Bearer ' + member.token; return h; }
@@ -422,7 +425,7 @@
       headers: headers(),
       body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: form.website.value, t: Date.now() - shownAt, k: myKey() })
     })
-      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(srv(d.error) || ''); return d; }); })
       .then(function (d) {
         if (!member) store.set(NAME, name);
         if (d.name) name = d.name;
@@ -479,7 +482,7 @@
         headers: headers(),
         body: JSON.stringify({ p: page, title: h1 ? h1.textContent.trim() : document.title, name: name, text: text, pic: pic, website: '', t: Math.max(Date.now() - opened, Date.now() - shownAt), k: myKey(), parent: c.id })
       })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(d.error || ''); return d; }); })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok || !d.ok) throw new Error(srv(d.error) || ''); return d; }); })
         .then(function (d) {
           if (!member) store.set(NAME, name);
           if (d.name) name = d.name;

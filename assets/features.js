@@ -8,6 +8,19 @@
   'use strict';
   // the English edition's own pages for links this script builds (the mirror only rewrites the page's HTML)
   var LP = document.documentElement.lang === 'en' ? '/en' : '';
+  // the worker's messages in English on the English pages (lib/i18n/server-en.cjs → /assets/server-en.js); a message
+  // with a number in it is matched by its shape; one not known yet gives '' (the page shows its own English words)
+  if (LP) {
+    var sx = document.createElement('script'); sx.src = '/assets/server-en.js?v=20261015a'; sx.async = true; document.head.appendChild(sx);
+  }
+  window.arwMsg = function (t) {
+    t = String(t || '').trim();
+    var map = window.ARW_EN_MSG || {};
+    if (map[t]) return map[t];
+    var m = t.match(/^الملف كبير، الحد الأقصى (\d+) ميجابايت\.$/); if (m) return 'The file is too large, the limit is ' + m[1] + ' MB.';
+    m = t.match(/^يمكنك متابعة (\d+) برنامجا واتحادا على الأكثر\.$/); if (m) return 'You can follow at most ' + m[1] + ' programs and promotions.';
+    return '';
+  };
 
   /* ==========================================================================
      Arabic String Normalizer
@@ -1157,7 +1170,8 @@
       var c2 = followCache() || { list: [] };
       c2.list = on ? c2.list.filter(function (x) { return x !== id; }) : [id].concat(c2.list);
       followSave(c2); drawFollowButtons();
-      followToast((e && e.message) || 'تعذرت المتابعة، حاول مرة أخرى.');
+      var em = e && e.message ? (LP ? window.arwMsg(e.message) : e.message) : '';
+      followToast(em || 'تعذرت المتابعة، حاول مرة أخرى.');
     });
   }
   function refreshFollows(force) {

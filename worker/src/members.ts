@@ -629,6 +629,25 @@ export async function studioBanMember(env: MembersEnv, id: unknown, on: unknown)
 
 /** The owner corrects a member's page: the name shown, the line about them, their favourites, or takes the picture off
  *  (owner 2026-10-15: «يكون ليا تحكم في كل حاجة تخص الاعضاء») */
+/** Once (owner 2026-10-15: «اعمل ال انت شايفه صح»): the blue badge every member got on signing up before
+ *  2026-10-14 goes; the owner's own (from the panel's history) and the gold ones stay; a live subscription shows it anyway.
+ *  Returns the members changed (their rooms are told), or null when it was done before. */
+export async function resetAutoBadges(env: MembersEnv, ownerGiven: number[]): Promise<number[] | null> {
+  const db = env.ANALYTICS;
+  if (!db) return null;
+  const FLAG = "members:badge-reset:v1";
+  if (await env.PUSH_KV.get(FLAG)) return null;
+  await ensureMembers(db);
+  const keep = ownerGiven.filter(n => Number.isInteger(n) && n > 0);
+  const rows = ((await db.prepare(`SELECT id FROM members WHERE badge = 1 AND official = 0${keep.length ? ` AND id NOT IN (${keep.map(() => "?").join(",")})` : ""}`).bind(...keep).all<{ id: number }>()).results || []).map(r => r.id);
+  for (let i = 0; i < rows.length; i += 50) {
+    const part = rows.slice(i, i + 50);
+    await db.prepare(`UPDATE members SET badge = 0 WHERE id IN (${part.map(() => "?").join(",")})`).bind(...part).run();
+  }
+  await env.PUSH_KV.put(FLAG, JSON.stringify({ at: Date.now(), changed: rows.length, kept: keep }));
+  return rows;
+}
+
 export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };

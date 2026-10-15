@@ -13,6 +13,9 @@
   var STATES = { 'new': 'جديد', working: 'قيد الترجمة', done: 'تمت', declined: 'تعذر' };
   function $(s, el) { return (el || root).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || root).querySelectorAll(s)); }
+  // a message from the worker, in English on the English pages (lib/i18n/server-en.cjs through assets/features.js)
+  function srv(t) { if (!t) return ''; if (document.documentElement.lang !== 'en') return t; return (window.arwMsg && window.arwMsg(t)) || ''; }
+
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function load() { try { var s = JSON.parse(localStorage.getItem('arw-member') || 'null'); return s && s.token ? s : null; } catch (e) { return null; } }
   function save(s) { try { localStorage.setItem('arw-member', JSON.stringify(s)); } catch (e) {} }
@@ -93,7 +96,7 @@
     api('/premium/checkout', { currency: cur, en: EN }).then(function (d) {
       b.disabled = false;
       if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/#subscribe'); return; }
-      if (!d.ok || !d.url) { flash('bad', d.error || 'تعذر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
+      if (!d.ok || !d.url) { flash('bad', srv(d.error) || 'تعذر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
       if (d.manual) { $('.pm-manual').hidden = false; window.open(d.url, '_blank', 'noopener'); return; }
       location.href = d.url;
     }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
@@ -146,7 +149,7 @@
     btn.disabled = true; msg.className = 'pm-req-msg'; msg.textContent = 'لحظة…';
     api('/premium/requests', { kind: (form.querySelector('input[name=kind]:checked') || {}).value || 'other', text: text }).then(function (d) {
       btn.disabled = false;
-      if (!d.ok) { msg.className = 'pm-req-msg is-bad'; msg.textContent = d.error || 'تعذر الإرسال.'; return; }
+      if (!d.ok) { msg.className = 'pm-req-msg is-bad'; msg.textContent = srv(d.error) || 'تعذر الإرسال.'; return; }
       form.elements.text.value = '';
       msg.className = 'pm-req-msg is-ok'; msg.textContent = 'وصل طلبك ✓ ستجد حالته هنا.';
       requests();

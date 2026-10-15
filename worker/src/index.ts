@@ -30,7 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
-import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit } from "./studio";
+import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit, auditLog } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
@@ -39,7 +39,7 @@ import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest,
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
-import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember } from "./members";
+import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -3953,6 +3953,8 @@ export default {
       runNewsWatcherCron(env),
       runFeedWatchCron(env),
       runScheduleBackstopCron(env),
+      // once: the automatic blue badge of the first members goes, the owner's own stay (worker/src/members.ts)
+      minute % 10 === 7 ? oneTimeBadgeReset(env).catch(() => {}) : Promise.resolve(),
       // followers told of each new full show: their inbox, then their devices
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
@@ -3964,6 +3966,16 @@ export default {
     ]));
   },
 } satisfies ExportedHandler<Env>;
+
+/** The badges the owner gave by hand (the latest panel action for each member is «members.badge») stay */
+async function oneTimeBadgeReset(env: Env): Promise<void> {
+  const log = await auditLog(env as any);
+  const last = new Map<number, string>();
+  for (const e of log) { const id = Number(e && e.id) || 0; if (id && /^members\.(un)?badge$/.test(String(e.action)) && !last.has(id)) last.set(id, e.action); }
+  const keep = [...last].filter(([, a]) => a === "members.badge").map(([id]) => id);
+  const changed = await resetAutoBadges(env as any, keep);
+  for (const id of (changed || []).slice(0, 60)) await chatRebadge(env as any, id).catch(() => {});
+}
 
 // Ultra-responsive Fightful watcher trigger:
 // Cloudflare crons fire every minute with 100% uptime.
