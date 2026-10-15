@@ -151,6 +151,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // Title Case capitalised the small word of an event name (INCIDENTS #441)
   [/\bBound For Glory\b/g, "Bound for Glory"],
   [/\bsyX\b/g, "Syx"],
+  // the 2026 film is «Street Fighter»; the source dropped the «er» (INCIDENTS #589)
+  [/\bStreet Fight (movie|film)\b/g, "Street Fighter $1"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
 /** Words that are never small in a Title Case headline when left lowercase: «I am Thankful» → «I Am Thankful» (INCIDENTS #489) */

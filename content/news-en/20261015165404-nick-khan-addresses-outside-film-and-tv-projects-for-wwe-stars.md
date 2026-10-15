@@ -14,7 +14,7 @@ en_tags:
   - "Crown Jewel"
 image: /content/images/fpiz42vzur8l0vvg.jpg
 ---
-WWE President Nick Khan recently discussed how outside projects bring added notoriety to the company during a feature published by The New York Times. The piece featured comments from Khan, Cody Rhodes, and Roman Reigns, who are currently starring in the new Street Fight movie and conducting a media tour. Khan noted that both wrestlers earned the right to pursue external opportunities with the backing of WWE.
+WWE President Nick Khan recently discussed how outside projects bring added notoriety to the company during a feature published by The New York Times. The piece featured comments from Khan, Cody Rhodes, and Roman Reigns, who are currently starring in the new Street Fighter movie and conducting a media tour. Khan noted that both wrestlers earned the right to pursue external opportunities with the backing of WWE.
 
 > "If past is prologue, the bigger that these guys can become outside of the W.W.E., the bigger they become inside W.W.E. — that’s good for everybody," Khan said.
 

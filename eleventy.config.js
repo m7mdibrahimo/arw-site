@@ -1095,8 +1095,16 @@ module.exports = function(eleventyConfig) {
     const n = tagCounts.get(t) || 0;
     return n > 300 ? 2 : n > 60 ? 4 : 6;
   };
+  // the news items of a collection, found once: every page scans only them, not every show, recap and page (build time, INCIDENTS #589)
+  const newsOnly = new WeakMap();
+  const newsOf = (allContent) => {
+    let list = newsOnly.get(allContent);
+    if (!list) { list = allContent.filter((it) => it && it.url && /^\/news\//.test(it.url)); newsOnly.set(allContent, list); }
+    return list;
+  };
   const getRelatedPosts = function(currentUrl, tags, federation, allContent, limit, excludeProgram, refDate) {
     if (!allContent || !Array.isArray(allContent)) return [];
+    const pool = newsOf(allContent);
     const maxItems = (typeof limit === "number" && limit > 0) ? limit : 4;
     const normUrl = (currentUrl || "").replace(/\/+$/, "");
     const currentTags = Array.isArray(tags)
@@ -1108,9 +1116,8 @@ module.exports = function(eleventyConfig) {
 
     const best = [];
     const better = (a, b) => a.score !== b.score ? a.score > b.score : a.gap !== b.gap ? a.gap < b.gap : a.time !== b.time ? a.time > b.time : a.idx < b.idx;
-    for (let idx = 0; idx < allContent.length; idx++) {
-      const item = allContent[idx];
-      if (!item || !item.url || !/^\/news\//.test(item.url)) continue;
+    for (let idx = 0; idx < pool.length; idx++) {
+      const item = pool[idx];
       const info = infoOf(item);
       if (info.url === normUrl) continue;
 

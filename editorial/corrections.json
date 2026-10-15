@@ -6490,6 +6490,16 @@
    "wrong": "لـ لعرض",
    "right": "لعرض",
    "note": "حرف الجر لـ مكرر قبل «لعرض» (استعدادا لـ لعرض) — INCIDENTS #581"
+  },
+  {
+   "wrong": "فيلم Street Fight ",
+   "right": "فيلم Street Fighter ",
+   "note": "اسم فيلم 2026 «Street Fighter» والمصدر كتبه ناقص — INCIDENTS #589"
+  },
+  {
+   "wrong": "فيلم Street Fight الجديد",
+   "right": "فيلم Street Fighter الجديد",
+   "note": "اسم الفيلم — INCIDENTS #589"
   }
  ]
 }

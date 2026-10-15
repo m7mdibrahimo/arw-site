@@ -22,3 +22,11 @@ test("Kaitlyn spelling and the doubled «لـ» are corrected", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /كايتلين|لـ لعرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad.filter(f => f.startsWith("2026101")), []);
 });
+
+test("Street Fight movie → Street Fighter in Arabic and English (INCIDENTS #589)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بطولة فيلم Street Fight الجديد"), "بطولة فيلم Street Fighter الجديد");
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("the new Street Fight movie"), "the new Street Fighter movie");
+  assert.equal(fixEnglishNames("Street Fighter movie"), "Street Fighter movie");
+});
