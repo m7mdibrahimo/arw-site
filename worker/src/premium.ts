@@ -39,18 +39,21 @@ export const LINKS: Record<OfferId, { EGP: string; USD: string }> = {
 export const TRIAL_DAYS = 3;
 /** A member may try the membership free once: never premium before, never paid (an invoice left unpaid doesn't count),
  *  not the site's account */
-export async function trialOpen(db: D1Database, m: any): Promise<boolean> {
-  if (!m || m.official || Number(m.premium_until) > 0) return false;
-  const any = await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 AND status = 'paid' LIMIT 1").bind(m.id).first();
-  return !any;
+// No free trial any more (owner 2026-10-15: «شيل موضوع الاشتراك المجاني لمدة 3 ايام … كله مدفوع»): never open
+export async function trialOpen(_db: D1Database, _m: any): Promise<boolean> { return false; }
+/** Memberships that came from the old free trial alone (nothing paid or given by hand): ended (owner 2026-10-15: «ولو في
+ *  اشترك بالتجربة المجانية شيله»). Their history keeps the trial. Each member's rooms show them as they are now. */
+export async function endTrials(env: PremiumEnv, now = Date.now()): Promise<number> {
+  const db = env.ANALYTICS;
+  if (!db) return 0;
+  await ensurePremium(db);
+  const ended = (await db.prepare(`UPDATE members SET premium_until = 0 WHERE premium_until > ?1 AND official = 0
+    AND EXISTS (SELECT 1 FROM premium_payments p WHERE p.member = members.id AND p.status = 'paid' AND p.granted_by = 'trial')
+    AND NOT EXISTS (SELECT 1 FROM premium_payments p WHERE p.member = members.id AND p.status = 'paid' AND p.granted_by != 'trial')
+    RETURNING id`).bind(now).all<{ id: number }>()).results || [];
+  for (const m of ended) await chatRebadge(env as any, m.id).catch(() => {});
+  return ended.length;
 }
-/** The address a free trial is counted on: an IPv6 one by its /64 (a phone's changes within it all the time) */
-export const trialIpKey = (ip: string) => {
-  ip = String(ip || "").trim().toLowerCase();
-  if (!ip) return "";
-  if (ip.includes(":")) { const full = ip.includes("::") ? (() => { const [a, b] = ip.split("::"); const l = a ? a.split(":") : [], r = b ? b.split(":") : []; return [...l, ...Array(8 - l.length - r.length).fill("0"), ...r]; })() : ip.split(":"); return full.slice(0, 4).map(x => x.replace(/^0+(?=.)/, "")).join(":") + "::/64"; }
-  return ip.slice(0, 45);
-};
 const DAY = 86_400_000;
 const FAWATERK = "https://app.fawaterk.com/api/v2";
 const SITE = "https://arab-wrestling.com";
@@ -110,7 +113,7 @@ export async function validHash(env: PremiumEnv, b: any): Promise<boolean> {
 /** A paid membership turns on by itself only when the owner switches it on (PREMIUM_AUTO = "1") and Fawaterk's key is
  *  there. Off by default (owner 2026-10-15: «افضل خاجة ان انا ال افعل الاشتراك ب ايديا للناس عشان ممكن الناس تعمل
  *  ثغرات»): the member pays on the plan's fixed link and sends the owner their email, the owner turns it on in the panel
- *  (views/premium.js). The free trial is the site's own and stays automatic. */
+ *  (views/premium.js). There's no free trial (endTrials). */
 export const fawaterkLive = (env: PremiumEnv) => env.PREMIUM_AUTO === "1" && !!(env.FAWATERK_API_KEY || (env.FAWATERK_CLIENT_ID && env.FAWATERK_CLIENT_SECRET));
 export async function fawaterkToken(env: PremiumEnv, fresh = false): Promise<string> {
   if (env.FAWATERK_API_KEY) return env.FAWATERK_API_KEY;
@@ -294,21 +297,9 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
 
   // three days free, once (never premium, never paid); a device or network tries it once a month
   if (path === "/premium/trial" && request.method === "POST") {
-    await ensurePremium(db);
-    if (!(await trialOpen(db, me))) return reply({ ok: false, error: "التجربة المجانية متاحة مرة واحدة فقط للأعضاء الجدد." }, 400);
-    const ip = trialIpKey(request.headers.get("CF-Connecting-IP") || "");
-    const ipKey = `pm:trial:ip:${ip}`;
-    if (ip && (await env.PUSH_KV.get(ipKey))) return reply({ ok: false, error: "التجربة المجانية استخدمت من هذا الجهاز من قبل." }, 429);
-    // only from «never premium» to 3 days, in one step: two taps at once can't give 6 days
-    const got: any = await db.prepare("UPDATE members SET premium_since = ?3, premium_until = ?2 WHERE id = ?1 AND premium_until = 0 AND official = 0 RETURNING premium_until").bind(me.id, now + TRIAL_DAYS * DAY, now).first();
-    if (!got) return reply({ ok: false, error: "التجربة المجانية متاحة مرة واحدة فقط للأعضاء الجدد." }, 400);
-    const until = Number(got.premium_until);
-    await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 0, 'paid', ?2, ?2, ?3, 'trial')").bind(me.id, now, TRIAL_DAYS).run();
-    if (ip) await env.PUSH_KV.put(ipKey, "1", { expirationTtl: 30 * 86400 }).catch(() => {});
-    await chatRebadge(env as any, me.id).catch(() => {});
-    return reply({ ok: true, until, trial: true });
+    // no free trial any more: every membership is paid
+    return reply({ ok: false, error: "لا توجد تجربة مجانية، العضوية المميزة بالاشتراك فقط." }, 410);
   }
-
   if (path === "/premium/check" && request.method === "POST") {
     // back from Fawaterk: the member's recent invoices, asked again
     const rows = (await db.prepare("SELECT * FROM premium_payments WHERE member = ?1 AND status = 'pending' AND created > ?2 ORDER BY id DESC LIMIT 5").bind(me.id, now - 3 * DAY).all<any>()).results || [];
@@ -343,6 +334,7 @@ export async function studioPremium(env: PremiumEnv, now = Date.now()) {
   const db = env.ANALYTICS;
   if (!db) return { success: true, members: [], payments: [], requests: [], live: false };
   await ensurePremium(db);
+  await endTrials(env, now).catch(() => 0);
   const month = now - 30 * DAY;
   const [members, payments, requests, sums] = await db.batch([
     db.prepare(`SELECT m.id, m.username, m.display, m.pic, m.email, m.premium_until, m.premium_since, ${PREMIUM_BY} FROM members m WHERE m.premium_until > ?1 ORDER BY m.premium_until ASC`).bind(now),
@@ -450,6 +442,7 @@ export async function runPremiumReminders(env: PremiumEnv, now = Date.now()) {
   if (!db) return 0;
   await ensurePremium(db);
   await sweepPending(env, now).catch(() => 0);
+  await endTrials(env, now).catch(() => 0);
   const { ensureFollows } = await import("./follows");
   await ensureFollows(db);
   // members not told yet (the reminder's link is its key in the inbox); a 3-day trial is reminded on its last day only

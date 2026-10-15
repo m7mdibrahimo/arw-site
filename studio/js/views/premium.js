@@ -101,7 +101,7 @@ export async function renderPremium(page) {
           <p class="muted">50 جنيه أو 1 دولار في الشهر · ${d.live ? 'بتتفعّل لوحدها أول ما فواتيرك تأكد إن المتابع دفع' : 'إنت اللي بتفعّلها بإيدك بعد ما المتابع يدفع'} · كل تجديد بيزوّد على اللي فاضل</p></div>
         <a class="btn" href="/premium/" target="_blank" rel="noopener">${icon('globe')}افتح صفحة العضوية</a>
       </div>
-      ${d.live ? '' : html`<div class="alert pr-alert">${icon('alert')}<div><b>التفعيل يدوي، بإيدك إنت بس.</b> زرار الاشتراك في الموقع بيفتح لينكات الدفع بتاعتك على فواتيرك (شهر، 3 شهور، سنة)، والمتابع بيبعتلك الإيميل بتاعه على فيسبوك أو إنستجرام، وإنت بتفعّله من هنا تحت بعد ما تتأكد إن الفلوس وصلت. التجربة المجانية (3 أيام) بس اللي بتتفعّل لوحدها.</div></div>`}
+      ${d.live ? '' : html`<div class="alert pr-alert">${icon('alert')}<div><b>التفعيل يدوي، بإيدك إنت بس.</b> زرار الاشتراك في الموقع بيفتح لينكات الدفع بتاعتك على فواتيرك (شهر، 3 شهور، سنة)، والمتابع بيبعتلك سكرين شوت الدفع والإيميل بتاعه على فيسبوك أو إنستجرام، وإنت بتفعّله من هنا تحت بعد ما تتأكد إن الفلوس وصلت. مفيش تجربة مجانية.</div></div>`}
       ${getUser()?.role === 'owner' ? html`<section class="panel cy-sec pg-card"><h2>${raw(CROWN)} فعّل الاشتراك لمتابع بإيدك</h2>
         <p class="muted small">لما المتابع يدفع ويبعتلك على فيسبوك أو إنستجرام، اكتب الإيميل اللي عامل بيه حسابه على الموقع (أو اسم المستخدم بتاعه)، واختار المدة اللي إنت عايزها.</p>
         <form class="pg-find" id="pg-find"><input class="input" id="pg-q" dir="ltr" placeholder="example@gmail.com" autocomplete="off" spellcheck="false" aria-label="إيميل المتابع أو اسم المستخدم"><button class="btn btn-primary">${icon('search')}دوّر</button></form>

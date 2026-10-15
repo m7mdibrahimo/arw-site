@@ -439,31 +439,32 @@ test('longer plans: 3 months or a year, cheaper a month, the right days credited
   }
 });
 
-test('three days free, once: a new member only, never again, never after paying; one per device a month', async () => {
+test('no free trial (owner 2026-10-15: «مفيش اشتراك مجاني خالص»): never offered, refused, and memberships from the old trial ended; paid and given ones stay', async () => {
+  const { endTrials } = await import('../worker/src/premium');
   const e = env();
-  const s = await member(e, 'trial_one');
-  assert.equal((await me(e, s.token)).trial, true);
-  assert.equal((await call(e, '/premium/mine', undefined, s.token)).body.trial, true);
-  const req = (token: string, ip: string) => handlePremium(new Request('https://w/premium/trial', { method: 'POST', body: '{}', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, 'CF-Connecting-IP': ip } }), e, new URL('https://w/premium/trial')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
-  const t = await req(s.token, '41.5.5.5');
-  assert.equal(t.body.ok, true);
-  assert.ok(Math.abs(t.body.until - (Date.now() + 3 * 864e5)) < 10000);
-  const m = await me(e, s.token);
-  assert.ok(m.premium > Date.now());
-  assert.equal(m.trial, false);
-  // not twice
-  assert.equal((await req(s.token, '41.5.5.6')).status, 400);
-  // another account from the same device: no
-  const s2 = await member(e, 'trial_two');
-  assert.equal((await req(s2.token, '41.5.5.5')).status, 429);
-  // someone who already paid: no
-  const s3 = await member(e, 'paid_before');
-  await studioPremiumGrant(e, s3.member.id, 30);
-  assert.equal((await me(e, s3.token)).trial, false);
-  assert.equal((await req(s3.token, '41.5.5.7')).status, 400);
-  // the history shows it as a trial
-  const pays = (await call(e, '/premium/mine', undefined, s.token)).body.payments;
-  assert.deepEqual([pays[0].trial, pays[0].gift, pays[0].days], [true, false, 3]);
+  const db = e.ANALYTICS.raw;
+  const s = await member(e, 'no_trial');
+  assert.equal((await me(e, s.token)).trial, false);
+  assert.equal((await call(e, '/premium/mine', undefined, s.token)).body.trial, false);
+  const r = await call(e, '/premium/trial', {}, s.token);
+  assert.equal(r.status, 410);
+  assert.equal((await me(e, s.token)).premium, 0);
+  // members who took the old trial: one with the trial only, one who paid after it, one given days by the owner after it
+  const now = Date.now();
+  const only = await member(e, 'trial_only'), paid = await member(e, 'trial_then_paid'), gift = await member(e, 'trial_then_gift');
+  for (const m of [only, paid, gift]) {
+    db.prepare('UPDATE members SET premium_until = ? WHERE id = ?').run(now + 2 * 864e5, m.member.id);
+    db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?, 'EGP', 0, 'paid', ?, ?, 3, 'trial')").run(m.member.id, now - 864e5, now - 864e5);
+  }
+  db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?, 'EGP', 50, 'paid', ?, ?, 30, '')").run(paid.member.id, now, now);
+  await studioPremiumGrant(e, gift.member.id, 10, 'mohamed');
+  assert.equal(await endTrials(e, now), 1);
+  assert.equal((await me(e, only.token)).premium, 0);
+  assert.ok((await me(e, paid.token)).premium > now);
+  assert.ok((await me(e, gift.token)).premium > now);
+  // the history still shows the trial
+  const pays = (await call(e, '/premium/mine', undefined, only.token)).body.payments;
+  assert.equal(pays[0].trial, true);
 });
 
 test('a membership about to end and one that just ended: the member is told once each', async () => {
@@ -483,33 +484,6 @@ test('a membership about to end and one that just ended: the member is told once
   assert.match(inbox()[1].title, /انتهت عضويتك/);
   await runPremiumReminders(e, now + 2 * 864e5 + 7200e3);
   assert.equal(inbox().length, 2);
-});
-
-test('the trial (review fixes): an unpaid invoice doesn\'t block it, two taps at once give 3 days not 6, an IPv6 phone is one device, reminded on its last day only', async () => {
-  const { trialIpKey } = await import('../worker/src/premium');
-  const e = env();
-  const db = e.ANALYTICS.raw;
-  const s = await member(e, 'left_checkout');
-  // an invoice opened and left unpaid
-  await call(e, '/premium/mine', undefined, s.token);
-  db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, days) VALUES (?, 'EGP', 50, 'pending', ?, 30)").run(s.member.id, Date.now());
-  assert.equal((await me(e, s.token)).trial, true);
-  const req = (ip: string) => handlePremium(new Request('https://w/premium/trial', { method: 'POST', body: '{}', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${s.token}`, 'CF-Connecting-IP': ip } }), e, new URL('https://w/premium/trial')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
-  const [a, b] = await Promise.all([req('2001:db8:1:2::10'), req('2001:db8:1:2::11')]);
-  assert.deepEqual([a.status, b.status].sort(), [200, 400]);
-  const until = Number((db.prepare('SELECT premium_until FROM members WHERE id = ?').get(s.member.id) as any).premium_until);
-  assert.ok(Math.abs(until - (Date.now() + 3 * 864e5)) < 10000, 'three days, not six');
-  // the /64 of an IPv6 address is the device
-  assert.equal(trialIpKey('2001:db8:1:2:aaaa:bbbb:cccc:dddd'), trialIpKey('2001:0db8:1:2::1'));
-  assert.equal(trialIpKey('41.5.5.5'), '41.5.5.5');
-  const s2 = await member(e, 'same_phone');
-  const r2 = await handlePremium(new Request('https://w/premium/trial', { method: 'POST', body: '{}', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${s2.token}`, 'CF-Connecting-IP': '2001:db8:1:2:ffff::1' } }), e, new URL('https://w/premium/trial'));
-  assert.equal(r2.status, 429);
-  // reminders: not in the trial's first hours, yes on its last day, once
-  const now = Date.now();
-  assert.equal(await runPremiumReminders(e, now + 3600e3), 0);
-  assert.equal(await runPremiumReminders(e, until - 20 * 3600e3), 1);
-  assert.equal(await runPremiumReminders(e, until - 19 * 3600e3), 0);
 });
 
 test('the owner turns a membership on by hand: the member found by email or username, any number of days', async () => {
@@ -543,7 +517,7 @@ test('the owner turns paid memberships on by hand (owner 2026-10-15): with Fawat
     assert.match(r.body.url, /invoices\/item\/16788\//);
     assert.equal(f.made.length, 0, 'no invoice of the site\'s own');
     assert.equal((await studioPremium(e)).live, false);
-    // the free trial is still the site's own, automatic
-    assert.ok((await call(e, '/premium/trial', {}, s.token)).body.until > Date.now());
+    // and no free trial
+    assert.equal((await call(e, '/premium/trial', {}, s.token)).status, 410);
   } finally { f.restore(); }
 });

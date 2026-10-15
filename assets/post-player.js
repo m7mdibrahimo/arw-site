@@ -564,13 +564,10 @@
     function promo(servers, downloads) {
       if (!servers && !downloads) return;
       var what = servers && downloads ? 'سيرفر خاص بدون إعلانات وروابط تحميل مباشرة' : servers ? 'سيرفر خاص بدون إعلانات' : 'روابط تحميل مباشرة بدون إعلانات';
-      // a visitor, or a member who never had it: three days free (worker/src/premium.ts /premium/trial)
-      var mem = null; try { var ms = JSON.parse(localStorage.getItem('arw-member') || 'null'); mem = ms && ms.member; } catch (e) {}
-      var trial = !mem || mem.trial === true;
       var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small></small></span><span class="wd-prem-go"></span>');
-      a.querySelector('small').textContent = trial ? 'متاح في هذا العرض للأعضاء المميزين. جربه 3 أيام مجانا، بدون بطاقة.' : 'متاح في هذا العرض للأعضاء المميزين فقط، ومعه العروض الجديدة قبل الجميع';
-      a.querySelector('.wd-prem-go').textContent = trial ? 'جربه مجانا' : 'اشترك';
-      a.href = HOME + '/premium/' + (trial ? '?trial=1' : '');
+      a.querySelector('small').textContent = 'متاح في هذا العرض للأعضاء المميزين فقط، ومعه العروض الجديدة قبل الجميع';
+      a.querySelector('.wd-prem-go').textContent = 'اشترك';
+      a.href = HOME + '/premium/';
       a.querySelector('b').textContent = what;
       var note = deck.querySelector('.wd-note');
       deck.insertBefore(a, note || null);

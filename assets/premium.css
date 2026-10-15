@@ -59,8 +59,7 @@ html.arw-dark .pm-flash.is-ok{ color:#4ade80; }
 .pm-btn:hover{ transform:translateY(-2px); box-shadow:0 20px 34px -14px var(--pm-gold); }
 .pm-btn:disabled{ filter:grayscale(.4); opacity:.7; transform:none; cursor:default; }
 .pm-btn-sm{ width:auto; height:44px; padding:0 22px; font-size:15px; }
-.pm-plan-note, .pm-manual{ margin:12px 0 0; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.7; }
-.pm-manual{ color:var(--pm-gold-ink); font-weight:700; }
+.pm-plan-note{ margin:12px 0 0; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.7; }
 .pm-compare{ border-radius:24px; background:var(--card); border:1px solid var(--line); overflow-x:auto; }
 .pm-compare table{ width:100%; border-collapse:collapse; font-size:15px; }
 .pm-compare th, .pm-compare td{ padding:15px 16px; border-bottom:1px solid var(--line); text-align:center; }
@@ -136,12 +135,9 @@ html.arw-dark .pm-flash.is-ok{ color:#4ade80; }
 .pm-early-tx small{ color:var(--muted); font-weight:600; font-size:13px; }
 .pm-early-left{ display:inline-block; direction:ltr; unicode-bidi:isolate; font-weight:800; color:var(--pm-gold); font-variant-numeric:tabular-nums; }
 
-/* the plans, the free trial, the questions (owner 2026-10-15) */
+/* the plans and the questions (owner 2026-10-15) */
 .pm-hero-acts{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
 .pm-hero-acts .pm-btn{ width:auto; padding:0 26px; }
-.pm-trial-btn{ background:linear-gradient(135deg, #14b8a6, #0e9594) !important; color:#fff !important; box-shadow:0 14px 28px -14px rgba(14,149,148,.9) !important; }
-.pm-trial-btn[hidden], .pm-trial-note[hidden]{ display:none !important; }
-.pm-trial-note{ margin:10px 0 0; color:var(--muted); font-size:13.5px; }
 .pm-plans{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px; margin:16px 0 6px; }
 .pm-plan-opt{ position:relative; display:flex; flex-direction:column; align-items:center; gap:2px; padding:14px 6px 10px; border-radius:14px; border:2px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer; font-family:'Cairo',sans-serif; transition:border-color .15s ease, transform .15s ease; }
 .pm-plan-opt:hover{ transform:translateY(-2px); }
@@ -162,3 +158,15 @@ html.arw-dark .pm-flash.is-ok{ color:#4ade80; }
 .pm-faq details[open] summary::after{ transform:rotate(45deg); }
 .pm-faq details p{ margin:0 0 16px; color:var(--muted); line-height:1.9; }
 @media (max-width:560px){ .pm-hero-acts .pm-btn{ width:100%; } .pm-plans{ gap:6px; } .pm-po-price i{ font-size:17px; } }
+
+/* after paying (owner 2026-10-15: «لازم ياخد سكرين شوت ويبعتلي علي رسايل صفحة الفيسبوك او انستجرام ويبعت ايميل ال مسجل
+   بيه»): the three steps under the button, lit up when Fawaterk opens */
+.pm-how{ margin:16px 0 0; padding:14px 16px; border-radius:16px; background:var(--pm-gold-soft); border:1px solid color-mix(in srgb, var(--pm-gold) 35%, transparent); text-align:start; }
+.pm-how-t{ display:block; margin-bottom:6px; font:900 15px 'Cairo',sans-serif; color:var(--pm-gold-ink); }
+.pm-how ol{ margin:0; padding-inline-start:20px; color:var(--ink); font-size:14px; line-height:1.9; }
+.pm-how-acts{ display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+.pm-how-acts a{ flex:1 1 120px; display:inline-flex; align-items:center; justify-content:center; padding:9px 14px; border-radius:999px; color:#fff; font:800 14px 'Cairo',sans-serif; text-decoration:none; }
+.pm-how-fb{ background:#1877f2; }
+.pm-how-ig{ background:linear-gradient(45deg, #f09433, #dc2743 55%, #bc1888); }
+.pm-how.is-hi{ animation:pm-how-hi 1.6s ease; }
+@keyframes pm-how-hi{ 0%,40%{ box-shadow:0 0 0 4px color-mix(in srgb, var(--pm-gold) 55%, transparent); } 100%{ box-shadow:none; } }
