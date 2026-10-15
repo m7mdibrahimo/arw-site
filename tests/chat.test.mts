@@ -426,6 +426,9 @@ test('answers as Messenger (no side stripe) and bubbles as WhatsApp (small corne
   assert.match(js, /'رد عليك' : 'رد على ' \+ m\.reply\.name/);
   assert.doesNotMatch(css, /\.cm-quote\{[^}]*border-inline-start/);
   assert.doesNotMatch(css, /\.cm-replying\{[^}]*border-inline-start/);
+  // the bar's words go in their own place, never into the icon beside them
+  assert.doesNotMatch(js, /\$\('span', r\)/);
+  assert.match(js, /\$\('\.cm-replying-tx span', r\)\.textContent = m\.spoiler/);
   // WhatsApp's corners and the time on the last line
   assert.match(css, /--cm-r:9px;/);
   assert.match(css, /\.cm-msg\.is-text \.cm-meta\{ position:absolute;/);
