@@ -175,6 +175,8 @@ export class ChatRoom {
     let me: Who;
     try { me = JSON.parse(decodeURIComponent(request.headers.get("X-Chat-User") || "")); } catch { return new Response("no member", { status: 401 }); }
     if (me.mute && me.mute > now) this.setMeta(`mute:${me.uid}`, String(me.mute));
+    // their earlier messages show them as they are now (a membership that ended, a new name or picture)
+    this.sql.exec("UPDATE msgs SET badge = ?, name = ?, pic = ? WHERE uid = ? AND (badge != ? OR name != ? OR pic != ?)", me.badge, me.name, me.pic, me.uid, me.badge, me.name, me.pic);
     const pair = new (globalThis as any).WebSocketPair();
     const [client, server] = Object.values(pair) as [WebSocket, Sock];
     this.state.acceptWebSocket(server, [`u${me.uid}`]);
@@ -208,6 +210,14 @@ export class ChatRoom {
       const until = Number(b.until) || 0;
       this.setMeta(`mute:${uid}`, until > now ? String(until) : null);
       for (const w of this.socks()) { const p = this.who(w); if (p?.uid === uid) { p.mute = until; w.serializeAttachment(p); this.send(w, { t: "muted", until: until > now ? until : 0 }); } }
+      return { ok: true };
+    }
+    if (b.op === "badge") {
+      const uid = Number(b.uid) || 0, badge = String(b.badge || "");
+      this.sql.exec("UPDATE msgs SET badge = ? WHERE uid = ?", badge, uid);
+      for (const w of this.socks()) { const p = this.who(w); if (p?.uid === uid) { p.badge = badge as Who["badge"]; w.serializeAttachment(p); } }
+      this.broadcast({ t: "badge", uid, badge });
+      this.presence();
       return { ok: true };
     }
     if (b.op === "kick") {
@@ -345,6 +355,28 @@ const roomCall = (env: ChatEnv, room: RoomId, path: string, init: RequestInit = 
 const fromSite = (origin: string | null) => !origin || /^https:\/\/(www\.)?arab-wrestling\.com$/.test(origin) || /^http:\/\/localhost(:\d+)?$/.test(origin);
 const rnd = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, "0")).join("");
 
+/** A member's mark in the rooms, as their account is now: the site's (gold), the owner's gold, premium, blue, or none */
+export const chatBadgeOf = (m: any, now = Date.now()): Who["badge"] =>
+  m.official ? "gold" : m.badge === 2 ? "vgold" : Number(m.premium_until) > now ? "premium" : m.badge === 0 ? "" : "blue";
+/** Every room shows a member as they are now (owner 2026-10-15: «لو الاشتراك خلص … هتختفي الحاجات دي ولو اشترك تاني هترجع»):
+ *  after a payment, a badge given or taken, a membership that ended */
+export async function chatRebadge(env: ChatEnv, uid: unknown) {
+  const id = Number(uid) || 0;
+  if (!env.CHAT || !env.ANALYTICS || !id) return;
+  const m: any = await env.ANALYTICS.prepare("SELECT id, official, badge, premium_until FROM members WHERE id = ?1").bind(id).first().catch(() => null);
+  if (!m) return;
+  const badge = chatBadgeOf(m);
+  await Promise.all((await roomList(env)).map(r => roomCall(env, r.id, "/admin", { method: "POST", body: JSON.stringify({ op: "badge", uid: id, badge }) }).catch(() => null)));
+}
+
+/** Every ten minutes: members whose subscription just ran out lose its look in the rooms too */
+export async function chatExpirySweep(env: ChatEnv, now = Date.now()) {
+  if (!env.CHAT || !env.ANALYTICS) return;
+  const rows = await env.ANALYTICS.prepare("SELECT id FROM members WHERE premium_until > ?1 AND premium_until <= ?2 LIMIT 50")
+    .bind(now - 11 * 60_000, now).all<{ id: number }>().catch(() => null);
+  for (const r of rows?.results || []) await chatRebadge(env, r.id).catch(() => {});
+}
+
 /** The member as the room shows them */
 async function whoFor(env: ChatEnv, request: Request): Promise<Who | null> {
   const m: any = await memberOf(request, env as any);
@@ -354,7 +386,7 @@ async function whoFor(env: ChatEnv, request: Request): Promise<Who | null> {
   return {
     uid: m.id, user: m.username, name: m.official ? MOD_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic,
     // the site's account: gold; a premium member: «premium» (the blue badge and a name that stands out); else blue if given
-    badge: m.official ? "gold" : m.badge === 2 ? "vgold" : Number(m.premium_until) > Date.now() ? "premium" : m.badge === 0 ? "" : "blue", mod: !!m.official, mute: Number(mute?.chat_mute || 0),
+    badge: chatBadgeOf(m), mod: !!m.official, mute: Number(mute?.chat_mute || 0),
   };
 }
 

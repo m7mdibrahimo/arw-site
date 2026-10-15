@@ -13,6 +13,7 @@
 //   GET  /premium/requests      the member's own requests        POST /premium/requests {kind, text}
 // The panel (worker/src/index.ts): GET /api/studio/premium, POST /api/studio/premium/grant {id, days},
 //   POST /api/studio/premium/request {id, status, reply, link}
+import { chatRebadge } from "./chat";
 import { memberOf, ensureMembers } from "./members";
 import { readRepoFile } from "./studio";
 
@@ -165,6 +166,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     const paid = asked ? asked.paid : signed && /^paid$/i.test(String(body.invoice_status || ""));
     if (!paid) return reply({ ok: true, paid: false });
     await settle(db, pay, { method: asked?.method || body.payment_method, reference: asked?.reference || body.referenceNumber }, now);
+    await chatRebadge(env as any, pay.member).catch(() => {});
     return reply({ ok: true, paid: true });
   }
 
@@ -245,7 +247,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     const rows = (await db.prepare("SELECT * FROM premium_payments WHERE member = ?1 AND status = 'pending' AND created > ?2 ORDER BY id DESC LIMIT 5").bind(me.id, now - 3 * DAY).all<any>()).results || [];
     for (const pay of rows) {
       const asked = await invoicePaid(env, pay.invoice_id);
-      if (asked?.paid) await settle(db, pay, asked, now);
+      if (asked?.paid) { await settle(db, pay, asked, now); await chatRebadge(env as any, pay.member).catch(() => {}); }
     }
     const m: any = await db.prepare("SELECT premium_until FROM members WHERE id = ?1").bind(me.id).first();
     return reply({ ok: true, premium: premiumOf(m, now) });

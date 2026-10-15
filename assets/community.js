@@ -266,6 +266,7 @@
     if (d.t === 'react') { var x = byId[d.id]; if (x) { x.reacts = d.reacts; refreshReacts(x); } return; }
     if (d.t === 'del') { var y = byId[d.id]; if (y) { y.del = true; y.text = ''; y.att = null; y.reacts = {}; replaceMsg(y); } return; }
     if (d.t === 'pin') { setPinned(d.m); return; }
+    if (d.t === 'badge') { var hit = false; msgs.forEach(function (x) { if (x.uid === d.uid && x.badge !== d.badge) { x.badge = d.badge; hit = true; } }); if (me && me.uid === d.uid) me.badge = d.badge; if (hit) { var keep = scroller.scrollHeight - scroller.scrollTop; renderAll(); scroller.scrollTop = scroller.scrollHeight - keep; } return; }
     if (d.t === 'typing') { typing[d.uid] = { name: d.name, until: Date.now() + 4000 }; renderTyping(); return; }
     if (d.t === 'presence') { people = d.people || []; setStatus(); renderStack(); return; }
     if (d.t === 'more') {

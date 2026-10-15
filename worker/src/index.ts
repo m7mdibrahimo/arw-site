@@ -36,7 +36,7 @@ import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
-import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick } from "./chat";
+import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
@@ -3092,6 +3092,7 @@ export default {
         if (path === "/api/studio/premium/grant" && request.method === "POST") {
           if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
           const r = await studioPremiumGrant(env as any, body.id, body.days, who.user.username);
+          if (r.success) await chatRebadge(env as any, body.id).catch(() => {});
           if (r.success) await studioAudit(env as any, who.user, Number(body.days) > 0 ? "premium.grant" : "premium.revoke", { id: Number(body.id) || 0, days: Number(body.days) || 0 }).catch(() => {});
           return json(r, r.success ? 200 : 400);
         }
@@ -3151,6 +3152,7 @@ export default {
         if (!who || who.user.mustChange || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
         const body: any = await request.json().catch(() => ({}));
         const r = await studioBadgeMember(env as any, body.id, body.on, body.level);
+        if (r.success) await chatRebadge(env as any, body.id).catch(() => {});
         if (r.success) await studioAudit(env as any, who.user, body.on ? "members.badge" : "members.unbadge", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }
@@ -3947,6 +3949,8 @@ export default {
       runNewsWatcherCron(env),
       runFeedWatchCron(env),
       runScheduleBackstopCron(env),
+      // a subscription that just ended drops its look in the community rooms too
+      minute % 10 === 0 ? chatExpirySweep(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)
       runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state),
         async () => { const b = await instagramBudget(env); return (p: unknown) => instagramAllowedFor(p, b.used, b.cap); },

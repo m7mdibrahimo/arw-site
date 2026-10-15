@@ -351,3 +351,25 @@ test('the owner\'s badges: none, blue or gold for any member; a member\'s page c
   const after = await me(e, s.token);
   assert.deepEqual([after.display, after.bio, after.pic], ['كريم المصري', 'نبذة جديدة', '']);
 });
+
+test('a subscription that ran out: the ten-minute sweep tells every room, grants and badge changes tell them at once', async () => {
+  const { chatExpirySweep, chatRebadge } = await import('../worker/src/chat');
+  const sent: any[] = [];
+  const CHAT = { idFromName: (n: string) => n, get: (room: string) => ({ fetch: async (_u: string, init: any) => { sent.push({ room, ...JSON.parse(init.body) }); return new Response('{"ok":true}'); } }) };
+  const e = env({ CHAT });
+  const a = await member(e, 'ended_sub');
+  const b = await member(e, 'still_on');
+  const now = Date.now();
+  const db = e.ANALYTICS.raw;
+  const idOf = (u: string) => (db.prepare('SELECT id FROM members WHERE username = ?').get(u) as any).id;
+  db.prepare('UPDATE members SET premium_until = ?, badge = 0 WHERE id = ?').run(now - 3 * 60e3, idOf('ended_sub'));
+  db.prepare('UPDATE members SET premium_until = ?, badge = 0 WHERE id = ?').run(now + 20 * 86400e3, idOf('still_on'));
+  await chatExpirySweep(e, now);
+  assert.ok(sent.length > 0);
+  assert.ok(sent.every(x => x.op === 'badge' && x.uid === idOf('ended_sub') && x.badge === ''));
+  assert.equal(new Set(sent.map(x => x.room)).size, sent.length);
+  sent.length = 0;
+  await chatRebadge(e, idOf('still_on'));
+  assert.ok(sent.length > 0 && sent.every(x => x.badge === 'premium'));
+  assert.ok(a.token && b.token);
+});

@@ -5,7 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { createRequire } from 'node:module';
-import { ChatRoom, ROOMS, cleanAtt, cleanChatText, handleChat, type Who } from '../worker/src/chat';
+import { ChatRoom, ROOMS, cleanAtt, cleanChatText, handleChat, chatBadgeOf, type Who } from '../worker/src/chat';
 import { handleMembers } from '../worker/src/members';
 
 const require = createRequire(import.meta.url);
@@ -235,4 +235,29 @@ test('the owner\'s rooms: added, renamed, hidden and closed from the panel; the 
   const o = join({ uid: 9, name: 'عرب راسلنج', badge: 'gold', mod: true });
   await o.say({ t: 'send', text: 'إعلان', nonce: 'n2' });
   assert.ok(o.last('msg') || o.last('sent') || !o.last('error'));
+});
+
+test('a subscription that ends or comes back changes the member\'s look in the rooms, old messages included', async () => {
+  const now = Date.now();
+  // how a member shows: the site's account, an owner-given gold, a live subscription, an owner-given blue, nothing
+  assert.equal(chatBadgeOf({ official: 1, badge: 0, premium_until: 0 }, now), 'gold');
+  assert.equal(chatBadgeOf({ official: 0, badge: 2, premium_until: 0 }, now), 'vgold');
+  assert.equal(chatBadgeOf({ official: 0, badge: 0, premium_until: now + 60e3 }, now), 'premium');
+  assert.equal(chatBadgeOf({ official: 0, badge: 0, premium_until: now - 60e3 }, now), '');
+  assert.equal(chatBadgeOf({ official: 0, badge: 1, premium_until: now - 60e3 }, now), 'blue');
+  const { r, join, db } = room();
+  const a = join({ uid: 7, name: 'مشترك', badge: 'premium' });
+  const b = join({ uid: 8, name: 'سارة', badge: '' });
+  await a.say({ t: 'send', text: 'أول رسالة' });
+  assert.equal(b.last('msg').m.badge, 'premium');
+  // the subscription ran out: the stored messages, the open sockets and everyone watching follow
+  await r.admin({ op: 'badge', uid: 7, badge: '' });
+  assert.equal((db.prepare('SELECT badge FROM msgs WHERE uid = 7').get() as any).badge, '');
+  assert.deepEqual(b.last('badge'), { t: 'badge', uid: 7, badge: '' });
+  await a.say({ t: 'send', text: 'بعد ما خلص' });
+  assert.equal(b.last('msg').m.badge, '');
+  // subscribed again: it all comes back
+  await r.admin({ op: 'badge', uid: 7, badge: 'premium' });
+  assert.ok((db.prepare('SELECT badge FROM msgs WHERE uid = 7').all() as any[]).every(x => x.badge === 'premium'));
+  assert.equal(b.last('badge').badge, 'premium');
 });
