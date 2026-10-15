@@ -314,3 +314,18 @@ test('changing the e-mail: the password first; with mail on, only once the new a
     assert.equal((await post(e2, '/email-confirm', { token })).status, 400); // once
   } finally { globalThis.fetch = real; }
 });
+
+test('«اشتراكي»: since when, until when, and the payments (a gift from the panel too); others never see them', async () => {
+  const e = env();
+  const s = await member(e);
+  const o = await member(e, 'someone_else');
+  assert.equal((await call(e, '/premium/mine')).status, 401);
+  let d = (await call(e, '/premium/mine', undefined, s.token)).body;
+  assert.deepEqual([d.until, d.payments.length, d.official], [0, 0, false]);
+  await studioPremiumGrant(e, s.member.id, 30, 'mohamed');
+  d = (await call(e, '/premium/mine', undefined, s.token)).body;
+  assert.ok(d.until > Date.now() && d.since > 0);
+  assert.equal(d.payments.length, 1);
+  assert.deepEqual([d.payments[0].paid, d.payments[0].gift, d.payments[0].days], [true, true, 30]);
+  assert.equal((await call(e, '/premium/mine', undefined, o.token)).body.payments.length, 0);
+});

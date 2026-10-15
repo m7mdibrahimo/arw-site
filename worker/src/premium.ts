@@ -202,6 +202,16 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
 
   if (!me) return reply({ ok: false, signedOut: true, error: "سجّل دخولك أولًا." }, 401);
 
+  // «اشتراكي» on the member's page: since when, until when, and every payment (owner 2026-10-15)
+  if (path === "/premium/mine" && request.method === "GET") {
+    const pays = await db.prepare("SELECT id, currency, amount, status, method, reference, created, paid_at, days, granted_by FROM premium_payments WHERE member = ?1 ORDER BY COALESCE(paid_at, created) DESC LIMIT 60").bind(me.id).all<any>();
+    const items = (pays.results || []).filter((p: any) => p.status === "paid" || now - p.created < 3 * 86_400_000).map((p: any) => ({
+      at: p.paid_at || p.created, paid: p.status === "paid", currency: p.currency, amount: p.granted_by ? 0 : p.amount,
+      method: p.method || "", reference: p.reference || "", days: Number(p.days) || DAYS, gift: !!p.granted_by,
+    }));
+    return reply({ ok: true, official: !!me.official, until: premiumOf(me, now), since: Number(me.premium_since) || 0, days: DAYS, plans: { EGP: PLANS.EGP.price, USD: PLANS.USD.price }, payments: items });
+  }
+
   if (path === "/premium/checkout" && request.method === "POST") {
     const currency = String(body.currency || "EGP").toUpperCase() === "USD" ? "USD" : "EGP";
     const plan = PLANS[currency];

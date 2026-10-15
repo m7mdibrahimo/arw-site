@@ -319,10 +319,42 @@ permalink: "/account/index.html"
 .acct-plan-price{ margin:0; font-size:14px; color:rgba(255,255,255,.8); }
 .acct-plan-price b{ color:#ffd25a; font:900 17px 'Cairo',sans-serif; }
 .acct-plan-acts{ display:flex; gap:8px; flex-wrap:wrap; }
-.acct-plan-btn{ display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 22px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 14.5px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 10px 22px -12px rgba(224,154,18,.9); }
+.acct-plan-btn, .acct-ms a.acct-plan-btn{ display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 22px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 14.5px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 10px 22px -12px rgba(224,154,18,.9); }
 .acct-plan-btn:hover{ filter:brightness(1.06); }
 .acct-plan-btn svg{ width:17px; height:17px; }
-.acct-plan-btn-soft{ background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:none; }
+.acct-plan-btn-soft, .acct-ms a.acct-plan-btn-soft{ background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:none; }
+/* «اشتراكي» */
+.acct-ms{ display:flex; flex-direction:column; gap:14px; padding:20px; border-radius:18px; border:1px solid rgba(224,154,18,.4); background:linear-gradient(150deg, rgba(255,210,90,.16), rgba(224,154,18,.05) 55%, var(--card)); }
+.acct-ms[data-state="none"], .acct-ms[data-state="ended"]{ background:linear-gradient(150deg, #2a2112, #1e2530 70%); border-color:#3a2e14; color:#fff; }
+.acct-ms[data-state="none"] h2, .acct-ms[data-state="ended"] h2{ color:#ffd25a !important; }
+.acct-ms[data-state="none"] .acct-sub-note, .acct-ms[data-state="ended"] .acct-sub-note{ color:rgba(255,255,255,.78); }
+.acct-ms[data-state="soon"] .acct-sub-note{ color:#c2410c; font-weight:800; }
+html.arw-dark .acct-ms[data-state="soon"] .acct-sub-note{ color:#ff9f6e; }
+.acct-sub-note{ margin:2px 0 0; font-size:14px; color:var(--muted); }
+.acct-sub-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; }
+.acct-sub-grid > div{ display:flex; flex-direction:column; gap:2px; padding:12px 14px; border-radius:14px; background:var(--card); border:1px solid var(--line); }
+.acct-sub-grid small{ color:var(--muted); font-size:12.5px; }
+.acct-sub-grid b{ font:900 16px 'Cairo',sans-serif; color:var(--ink); font-variant-numeric:tabular-nums; }
+.acct-sub-bar{ height:8px; border-radius:99px; background:rgba(224,154,18,.18); overflow:hidden; }
+.acct-sub-bar i{ display:block; height:100%; border-radius:99px; background:linear-gradient(90deg, #ffd25a, #e09a12); }
+.acct-sub-grid[hidden], .acct-sub-bar[hidden], .acct-plan-btn[hidden], .acct-pays-empty[hidden]{ display:none !important; }
+.acct-pays{ display:flex; flex-direction:column; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+.acct-pays:empty{ display:none; }
+.acct-pay{ display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr) auto; align-items:center; gap:10px; padding:12px 14px; border-bottom:1px solid var(--line); font-size:14px; }
+.acct-pay:last-child{ border-bottom:0; }
+.acct-pay b{ font:800 14.5px 'Cairo',sans-serif; color:var(--ink); }
+.acct-pay small{ display:block; color:var(--muted); font-size:12.5px; }
+.acct-pay-st{ padding:3px 10px; border-radius:99px; font:800 12px 'Cairo',sans-serif; background:rgba(47,158,91,.12); color:#2f9e5b; white-space:nowrap; }
+.acct-pay-st.is-wait{ background:rgba(224,154,18,.14); color:#b5780a; }
+.acct-pays-empty{ margin:0; color:var(--muted); font-size:14px; }
+.acct-howto ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
+.acct-howto li{ position:relative; padding-inline-start:22px; font-size:14px; line-height:1.8; color:var(--muted); }
+.acct-howto li::before{ content:""; position:absolute; inset-inline-start:4px; top:10px; width:8px; height:8px; border-radius:50%; background:#e09a12; }
+.acct-howto li b{ color:var(--ink); }
+.acct-howto-help{ margin:4px 0 0; font-size:13.5px; color:var(--muted); }
+.acct-howto-help a{ color:var(--teal); font-weight:800; text-decoration:none; }
+.acct-ms h2{ margin:0; font:900 19px/1.4 'Cairo',sans-serif; color:var(--ink); }
+@media (max-width:560px){ .acct-ms .acct-plan-acts{ flex-direction:column; } .acct-ms .acct-plan-btn{ justify-content:center; } .acct-sub-grid b{ font-size:15px; } .acct-sub-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); } .acct-sub-grid > div:last-child{ grid-column:1 / -1; } .acct-pay{ grid-template-columns:minmax(0,1fr) auto; } .acct-pay > :nth-child(2), .acct-pay > :nth-child(3){ grid-column:1; } }
 .acct-quick{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
 .acct-quick a{ display:flex; flex-direction:column; gap:2px; padding:14px 16px; border-radius:14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); text-decoration:none; transition:border-color .2s ease; }
 .acct-quick a:hover{ border-color:var(--teal); }
@@ -401,11 +433,19 @@ permalink: "/account/index.html"
 .acct-av-in img{ width:100%; height:100%; object-fit:cover; }
 .acct-av-edit{ position:absolute; bottom:0; inset-inline-start:0; width:28px; height:28px; border-radius:50%; background:var(--card); color:var(--ink); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,.12); }
 .acct-me-tx{ flex:1; min-width:0; }
-.acct-me-name{ margin:0; font:900 24px/1.3 'Cairo',sans-serif; color:var(--ink); overflow-wrap:anywhere; }
+.acct-me-name{ margin:0; min-width:0; font:900 24px/1.3 'Cairo',sans-serif; color:var(--ink); overflow-wrap:anywhere; }
 .acct-me-user{ margin:2px 0 0; color:var(--muted); font-weight:700; text-align:end; direction:ltr; unicode-bidi:plaintext; }
 .acct-me-since{ margin:2px 0 0; color:var(--muted); font-size:13.5px; }
 .acct-badge{ flex:0 0 auto; align-self:flex-start; display:inline-flex; align-items:center; gap:5px; padding:5px 12px 5px 10px; border-radius:999px; background:rgba(29,155,240,.1); color:#1d9bf0; font:900 12.5px 'Cairo',sans-serif; }
 .acct-badge[hidden]{ display:none; }
+/* the badge right after the name (owner 2026-10-15: «العلامة … جنب الاسم بالظبط»): the mark only, its words for screen readers */
+.acct-me-h{ display:flex; align-items:center; gap:8px; margin:0; flex-wrap:wrap; }
+.acct-me-h .acct-badge{ align-self:center; padding:0; background:none !important; box-shadow:none; }
+.acct-me-h .acct-badge svg{ width:24px; height:24px; }
+.acct-me-h .acct-badge span{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.is-prem .acct-me-h .acct-badge path:first-child{ fill:#1d9bf0 !important; }
+.is-prem .acct-me-h .acct-badge path:last-child{ fill:#fff !important; }
+.acct-me-tx .acct-getblue{ margin-top:8px; }
 .is-official .acct-badge{ background:rgba(224,154,18,.13); color:#b5780a; }
 .is-official .acct-badge path:first-child{ fill:#eaa51c; }
 html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
@@ -593,15 +633,17 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
         <div class="acct-me">
           <button type="button" class="acct-av acct-av-lg" data-open="pics" aria-label="تغيير الصورة"><span class="acct-av-in"></span><i class="acct-av-edit" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></i></button>
           <div class="acct-me-tx">
-            <h1 class="acct-me-name"></h1>
+            <h1 class="acct-me-h"><span class="acct-me-name"></span><span class="acct-badge" title="حساب موثق في عرب راسلنج"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>حساب موثق</span></span></h1>
             <p class="acct-me-user" dir="ltr"></p>
             <p class="acct-me-since"></p>
+            <a class="acct-getblue" href="/premium/" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>احصل على العلامة الزرقاء</span></a>
           </div>
-          <span class="acct-badge" title="حساب موثق في عرب راسلنج"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>حساب موثق</span></span>
-          <a class="acct-getblue" href="/premium/" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>احصل على العلامة الزرقاء</span></a>
+
+
         </div>
         <div class="acct-ptabs" role="tablist" aria-label="حسابك">
           <button type="button" role="tab" class="acct-ptab is-on" data-ptab="home" aria-selected="true">حسابي</button>
+          <button type="button" role="tab" class="acct-ptab" data-ptab="sub" aria-selected="false">اشتراكي</button>
           <button type="button" role="tab" class="acct-ptab" data-ptab="settings" aria-selected="false">الإعدادات</button>
         </div>
 
@@ -662,6 +704,43 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
               <li><b>المفضلة وشاهد لاحقا</b> على كل أجهزتك.</li>
               <li><b>توقعات العروض الكبرى</b> وترتيب أفضل المتوقعين.</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- «اشتراكي» (owner 2026-10-15): since when, until when, every payment, and how to renew (assets/account.js sub()) -->
+        <div class="acct-pane" data-pane="sub" hidden>
+          <section class="acct-ms" data-state="loading">
+            <div class="acct-plan-top">
+              <span class="acct-plan-ic"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+              <div><h2 class="acct-sub-title">لحظة…</h2><p class="acct-sub-note"></p></div>
+            </div>
+            <div class="acct-sub-grid" hidden>
+              <div><small>بدأ في</small><b data-k="since">—</b></div>
+              <div><small data-k="until-label">ينتهي في</small><b data-k="until">—</b></div>
+              <div><small>الأيام المتبقية</small><b data-k="left">—</b></div>
+            </div>
+            <div class="acct-sub-bar" hidden><i></i></div>
+            <div class="acct-plan-acts">
+              <a class="acct-plan-btn" href="/premium/#subscribe" data-k="go" hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>اشترك الآن</span></a>
+              <a class="acct-plan-btn acct-plan-btn-soft" href="/premium/#requests" data-k="req" hidden><span>اطلب عرض نترجمه لك</span></a>
+            </div>
+          </section>
+
+          <div class="acct-sec">
+            <h2>سجل الدفع</h2>
+            <div class="acct-pays" role="table" aria-label="سجل الدفع"></div>
+            <p class="acct-pays-empty" hidden>لا توجد مدفوعات حتى الآن.</p>
+          </div>
+
+          <div class="acct-sec acct-howto">
+            <h2>كيف يعمل الاشتراك؟</h2>
+            <ul>
+              <li><b>شهري وبدون تجديد تلقائي.</b> لن يخصم منك أي مبلغ بدون علمك.</li>
+              <li><b>جدد في أي وقت.</b> كل تجديد يضيف شهرا كاملا إلى المدة المتبقية، فلا تخسر أي يوم.</li>
+              <li><b>تفعيل فوري.</b> تتفعل العضوية بعد الدفع مباشرة، وتظهر الدفعة هنا في سجل الدفع.</li>
+              <li><b>تذكير قبل الانتهاء.</b> قبل انتهاء عضويتك بـ 5 أيام يظهر لك تنبيه هنا لتجددها.</li>
+            </ul>
+            <p class="acct-howto-help">عندك مشكلة في الدفع؟ راسلنا من صفحة <a href="/contact/">تواصل معنا</a> ومعك رقم العملية.</p>
           </div>
         </div>
 

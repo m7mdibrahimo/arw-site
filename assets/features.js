@@ -719,7 +719,8 @@
       // the member's own links, under their name: settings and signing out (the menu of the computers' header)
       var links = document.createElement('div');
       links.className = 'arw-more-acct-links';
-      links.innerHTML = '<a href="' + (document.documentElement.lang === 'en' ? '/en' : '') + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
+      var H = document.documentElement.lang === 'en' ? '/en' : '';
+      links.innerHTML = (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
       links.querySelector('button').addEventListener('click', signOut);
       sheet.querySelector('.arw-more-acct').insertAdjacentElement('afterend', links);
     }
@@ -806,7 +807,9 @@
     a.innerHTML = m ? '<span class="arw-acct-in">' + memberAvatar(m) + '</span>' : USER_IC;
     crowned(a, m);
     util.insertBefore(a, util.querySelector('.bookmarks-btn') || util.firstChild);
-    if (m) accountMenu(a);
+    // the night mode and the saved list live in this menu now (owner 2026-10-15), for members and visitors alike
+    accountMenu(a);
+    document.documentElement.classList.add('arw-am-on');
   }
 
   // A subscriber's picture: a gold ring and a crown under it (owner 2026-10-15: «دايرة دهبي حواليه … ايقونة تاج»);
@@ -828,6 +831,7 @@
     me: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
     settings: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
     chat: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>',
+    moon: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
     saved: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
     panel: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
     out: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>'
@@ -843,9 +847,49 @@
   function accountMenu(btn) {
     var EN = document.documentElement.lang === 'en', HOME = EN ? '/en' : '';
     var pop = null;
+    // the two tools that used to sit in the header: the night mode (a switch) and the saved list (with its count)
+    function tools() {
+      var dark = document.documentElement.classList.contains('arw-dark');
+      var badge = document.getElementById('arwBookmarkBadge');
+      var n = badge && badge.style.display !== 'none' ? (Number(badge.textContent) || 0) : 0;
+      return '<div class="arw-am-tools">' +
+        '<button type="button" class="arw-am-tool" data-tool="theme" role="menuitemcheckbox" aria-checked="' + dark + '">' + MENU_IC.moon + '<span>الوضع الليلي</span><i class="arw-am-switch' + (dark ? ' is-on' : '') + '" aria-hidden="true"></i></button>' +
+        '<button type="button" class="arw-am-tool" data-tool="saved" role="menuitem">' + MENU_IC.saved + '<span>المفضلة</span>' + (n ? '<b class="arw-am-count">' + n + '</b>' : '') + '</button>' +
+      '</div>';
+    }
+    function wireTools(el) {
+      var t = el.querySelector('[data-tool="theme"]');
+      t.addEventListener('click', function () {
+        var btn = document.getElementById('arwThemeToggle'), root = document.documentElement;
+        if (!btn) return;
+        // the switch moves at once, then follows the page's real theme (the page fades over a moment)
+        var show = function (dark) { t.setAttribute('aria-checked', String(dark)); t.querySelector('.arw-am-switch').classList.toggle('is-on', dark); };
+        show(!root.classList.contains('arw-dark'));
+        var mo = new MutationObserver(function () { show(root.classList.contains('arw-dark')); });
+        mo.observe(root, { attributes: true, attributeFilter: ['class'] });
+        setTimeout(function () { mo.disconnect(); show(root.classList.contains('arw-dark')); }, 1500);
+        btn.click();
+      });
+      el.querySelector('[data-tool="saved"]').addEventListener('click', function () {
+        close();
+        var btn = document.getElementById('arwBookmarksBtn');
+        if (btn) btn.click();
+      });
+    }
     function build() {
       var m = memberNow();
-      if (!m) return null;
+      if (!m) {
+        // a visitor: signing in or up, then the same tools
+        var v = document.createElement('div');
+        v.className = 'arw-am';
+        v.setAttribute('role', 'menu');
+        v.innerHTML =
+          '<div class="arw-am-guest"><span class="arw-am-av">' + USER_IC + '</span><span class="arw-am-who"><b>حسابك في عرب راسلنج</b><small>مجاني، ويستغرق أقل من دقيقة</small></span></div>' +
+          '<div class="arw-am-cta"><a href="' + HOME + '/account/?new" role="menuitem">أنشئ حساب</a><a href="' + HOME + '/account/" role="menuitem">تسجيل الدخول</a></div>' +
+          tools();
+        wireTools(v);
+        return v;
+      }
       var prem = !m.official && Number(m.premium) > Date.now();
       var el = document.createElement('div');
       el.className = 'arw-am' + (prem ? ' is-prem' : '') + (m.official ? ' is-official' : '');
@@ -860,15 +904,17 @@
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
-          (prem ? '<a href="/premium/" role="menuitem">' + CROWN_IC + '<span>عضويتي المميزة</span></a>' : '') +
+          (m.official ? '' : '<a href="' + HOME + '/account/#subscription" role="menuitem">' + CROWN_IC + '<span>اشتراكي</span></a>') +
           '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
           (m.official ? '<a href="/admin/" role="menuitem">' + MENU_IC.panel + '<span>لوحة التحكم</span></a>' : '') +
         '</nav>' +
+        tools() +
         '<button type="button" class="arw-am-out" role="menuitem">' + MENU_IC.out + '<span>تسجيل الخروج</span></button>';
       el.querySelector('.arw-am-who b').textContent = m.display || m.username;
       el.querySelector('.arw-am-who small').textContent = '@' + m.username;
       el.querySelector('.arw-am-status span').textContent = status;
       el.querySelector('.arw-am-out').addEventListener('click', signOut);
+      wireTools(el);
       crowned(el.querySelector('.arw-am-av'), m);
       return el;
     }
@@ -886,7 +932,8 @@
       window.removeEventListener('resize', close);
       window.removeEventListener('scroll', place, true);
     }
-    function outside(e) { if (pop && !pop.contains(e.target) && !btn.contains(e.target)) close(); }
+    // a person's click outside closes it; the clicks the menu itself sends (night mode) don't
+    function outside(e) { if (e.isTrusted && pop && !pop.contains(e.target) && !btn.contains(e.target)) close(); }
     btn.setAttribute('aria-haspopup', 'menu');
     btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', function (e) {

@@ -285,12 +285,82 @@
   function tab(name) {
     $$('.acct-ptab').forEach(function (t) { var on = t.getAttribute('data-ptab') === name; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', String(on)); });
     $$('.acct-pane').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== name; });
-    var want = name === 'settings' ? '#settings' : '';
+    var want = name === 'settings' ? '#settings' : name === 'sub' ? '#subscription' : '';
     if (location.hash !== want) history.replaceState(null, '', location.pathname + location.search + want);
+    if (name === 'sub') sub();
+  }
+  function hashTab() { return location.hash === '#settings' ? 'settings' : location.hash === '#subscription' ? 'sub' : 'home'; }
+
+  // «اشتراكي» (owner 2026-10-15: «تفاصيل الاشتراك … ابتدا امتي وهينتهي امتي والسجل الدفع … زر اعادة الاشتراك»)
+  var subLoaded = false;
+  function day(ms) { var d = new Date(ms); return d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear(); }
+  function subFail(t) { subLoaded = false; $('.acct-sub-title').textContent = t; $('.acct-sub-note').textContent = 'أعد تحميل الصفحة بعد قليل.'; }
+  function sub() {
+    if (subLoaded || !session) return;
+    subLoaded = true;
+    var box = $('.acct-ms');
+    fetch(API.replace(/\/members$/, '/premium/mine'), { headers: { Authorization: 'Bearer ' + session.token }, credentials: 'omit' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { subFail('تعذر تحميل اشتراكك'); return; }
+        var now = Date.now(), until = Number(d.until) || 0, paid = (d.payments || []).filter(function (p) { return p.paid; });
+        var left = until ? Math.max(0, Math.ceil((until - now) / 864e5)) : 0;
+        var state = d.official ? 'official' : until > now ? (left <= 5 ? 'soon' : 'on') : paid.length ? 'ended' : 'none';
+        box.setAttribute('data-state', state);
+        var T = {
+          official: ['الحساب الرسمي للموقع', 'كل المميزات مفعلة لحسابك دائما.'],
+          on: ['أنت عضو مميز', 'عضويتك مفعلة، وكل المميزات متاحة لك.'],
+          soon: ['عضويتك تنتهي قريبا', 'باقي ' + left + (left === 1 ? ' يوم' : left === 2 ? ' يومان' : ' أيام') + ' فقط. جددها الآن حتى لا تتوقف المميزات.'],
+          ended: ['انتهت عضويتك المميزة', 'جدد اشتراكك الآن وارجع لكل المميزات.'],
+          none: ['أنت لست مشتركا بعد', 'اشترك وشاهد العروض قبل الجميع، وبدون إعلانات، مع العلامة الزرقاء.']
+        }[state];
+        $('.acct-sub-title').textContent = T[0];
+        $('.acct-sub-note').textContent = T[1];
+        var grid = $('.acct-sub-grid'), bar = $('.acct-sub-bar');
+        grid.hidden = state === 'official' || state === 'none';
+        bar.hidden = !(state === 'on' || state === 'soon');
+        if (!grid.hidden) {
+          var since = Number(d.since) || (paid.length ? paid[paid.length - 1].at : 0);
+          var last = paid.length ? paid[0] : null;
+          $('[data-k="since"]').textContent = since ? day(since) : '—';
+          $('[data-k="until-label"]').textContent = state === 'ended' ? 'انتهى في' : 'ينتهي في';
+          $('[data-k="until"]').textContent = until ? day(until) : last ? day(last.at + last.days * 864e5) : '—';
+          $('[data-k="left"]').textContent = state === 'ended' ? '0' : String(left);
+          $('.acct-sub-bar i').style.width = Math.min(100, Math.round(left / (d.days || 30) * 100)) + '%';
+        }
+        var go = $('[data-k="go"]');
+        go.hidden = state === 'official';
+        go.querySelector('span').textContent = state === 'none' ? 'اشترك الآن' : state === 'ended' ? 'أعد الاشتراك' : 'جدد الاشتراك (شهر إضافي)';
+        $('[data-k="req"]').hidden = !(state === 'on' || state === 'soon' || state === 'official');
+        var list = $('.acct-pays');
+        list.textContent = '';
+        (d.payments || []).forEach(function (p) {
+          var row = document.createElement('div');
+          row.className = 'acct-pay';
+          row.setAttribute('role', 'row');
+          [
+            [day(p.at), p.reference ? 'رقم العملية ' + p.reference : ''],
+            [p.gift ? 'هدية من الموقع' : p.currency === 'USD' ? p.amount + ' دولار' : p.amount + ' جنيه', p.method || ''],
+            ['+' + p.days + ' يوم', 'مدة العضوية']
+          ].forEach(function (c) {
+            var cell = document.createElement('div'); cell.setAttribute('role', 'cell');
+            var b = document.createElement('b'); b.textContent = c[0]; cell.appendChild(b);
+            if (c[1]) { var sm = document.createElement('small'); sm.textContent = c[1]; cell.appendChild(sm); }
+            row.appendChild(cell);
+          });
+          var st = document.createElement('span');
+          st.className = 'acct-pay-st' + (p.paid ? '' : ' is-wait');
+          st.textContent = p.paid ? 'تم الدفع' : 'لم يكتمل';
+          row.appendChild(st);
+          list.appendChild(row);
+        });
+        $('.acct-pays-empty').hidden = !!(d.payments || []).length;
+      })
+      .catch(function () { subFail('تعذر الاتصال'); });
   }
   $$('.acct-ptab').forEach(function (t) { t.addEventListener('click', function () { tab(t.getAttribute('data-ptab')); }); });
   $$('[data-goto]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); tab(a.getAttribute('data-goto')); window.scrollTo({ top: 0, behavior: 'smooth' }); }); });
-  window.addEventListener('hashchange', function () { if (session) tab(location.hash === '#settings' ? 'settings' : 'home'); });
+  window.addEventListener('hashchange', function () { if (session) tab(hashTab()); });
 
   $$('[data-chips="fav_fed"] button').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -414,7 +484,7 @@
   function done() {
     var back = new URLSearchParams(location.search).get('back') || '';
     if (/^\/(?!\/)/.test(back)) { location.href = back; return; }
-    drawProfile(); show('profile'); tab(location.hash === '#settings' ? 'settings' : 'home');
+    drawProfile(); show('profile'); tab(hashTab());
   }
 
   // ── the start ────────────────────────────────────────────────────────────
@@ -446,8 +516,8 @@
       if (!d.ok) { out(); return; }
       mailOn = !!d.mail;
       session.member = d.member; save(session);
-      drawProfile(); show('profile'); tab(location.hash === '#settings' ? 'settings' : 'home');
-    }).catch(function () { drawProfile(); show('profile'); tab(location.hash === '#settings' ? 'settings' : 'home'); });
+      drawProfile(); show('profile'); tab(hashTab());
+    }).catch(function () { drawProfile(); show('profile'); tab(hashTab()); });
   }
   start();
 })();
