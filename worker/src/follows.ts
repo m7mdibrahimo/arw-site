@@ -14,6 +14,7 @@
 //   POST /follow/push            {endpoint} → {pk}                      (member) this device is told too
 //   POST /follow/unpush          {endpoint}                             (member)
 //   POST /follow/peek            {pk, since} → {items}                  the service worker, woken by a push
+import { once } from "./once";
 import { memberOf, type MembersEnv } from "./members";
 import { vapidKeys, validEndpoint, pushOnce } from "./comment-push";
 
@@ -30,23 +31,17 @@ const PROGRAM_KEY = /^[\p{L}\p{N}][\p{L}\p{N}-]{0,79}$/u;
 const FED_KEY = /^[a-z0-9][a-z0-9-]{1,19}$/;
 export const followKeyOk = (kind: string, key: string) => kind === "program" ? PROGRAM_KEY.test(key) : kind === "fed" ? FED_KEY.test(key) : false;
 
-const ready = new WeakMap<D1Database, Promise<unknown>>();
-export function ensureFollows(db: D1Database): Promise<unknown> {
-  let p = ready.get(db);
-  if (!p) {
-    p = db.batch([
-      db.prepare("CREATE TABLE IF NOT EXISTS member_follows (member INTEGER NOT NULL, kind TEXT NOT NULL, key TEXT NOT NULL, label TEXT NOT NULL DEFAULT '', created INTEGER NOT NULL, PRIMARY KEY (member, kind, key))"),
-      db.prepare("CREATE INDEX IF NOT EXISTS member_follows_key ON member_follows (kind, key)"),
-      db.prepare("CREATE TABLE IF NOT EXISTS member_inbox (id INTEGER PRIMARY KEY AUTOINCREMENT, member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', program TEXT NOT NULL DEFAULT '', fed TEXT NOT NULL DEFAULT '', at INTEGER NOT NULL, read INTEGER NOT NULL DEFAULT 0, pushed INTEGER NOT NULL DEFAULT 0)"),
-      db.prepare("CREATE INDEX IF NOT EXISTS member_inbox_member ON member_inbox (member, id)"),
-      db.prepare("CREATE UNIQUE INDEX IF NOT EXISTS member_inbox_once ON member_inbox (member, url)"),
-      db.prepare("CREATE TABLE IF NOT EXISTS member_push (endpoint TEXT PRIMARY KEY, member INTEGER NOT NULL, pk TEXT NOT NULL, created INTEGER NOT NULL)"),
-      db.prepare("CREATE INDEX IF NOT EXISTS member_push_member ON member_push (member)"),
-      db.prepare("CREATE INDEX IF NOT EXISTS member_push_pk ON member_push (pk)"),
-    ]).catch((e) => { ready.delete(db); throw e; });
-    ready.set(db, p);
-  }
-  return p;
+export function ensureFollows(db: D1Database): Promise<void> {
+  return once(db, "follows", () => db.batch([
+    db.prepare("CREATE TABLE IF NOT EXISTS member_follows (member INTEGER NOT NULL, kind TEXT NOT NULL, key TEXT NOT NULL, label TEXT NOT NULL DEFAULT '', created INTEGER NOT NULL, PRIMARY KEY (member, kind, key))"),
+    db.prepare("CREATE INDEX IF NOT EXISTS member_follows_key ON member_follows (kind, key)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS member_inbox (id INTEGER PRIMARY KEY AUTOINCREMENT, member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', program TEXT NOT NULL DEFAULT '', fed TEXT NOT NULL DEFAULT '', at INTEGER NOT NULL, read INTEGER NOT NULL DEFAULT 0, pushed INTEGER NOT NULL DEFAULT 0)"),
+    db.prepare("CREATE INDEX IF NOT EXISTS member_inbox_member ON member_inbox (member, id)"),
+    db.prepare("CREATE UNIQUE INDEX IF NOT EXISTS member_inbox_once ON member_inbox (member, url)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS member_push (endpoint TEXT PRIMARY KEY, member INTEGER NOT NULL, pk TEXT NOT NULL, created INTEGER NOT NULL)"),
+    db.prepare("CREATE INDEX IF NOT EXISTS member_push_member ON member_push (member)"),
+    db.prepare("CREATE INDEX IF NOT EXISTS member_push_pk ON member_push (pk)"),
+  ]));
 }
 
 const unreadOf = async (db: D1Database, member: number) =>

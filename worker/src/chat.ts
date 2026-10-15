@@ -16,6 +16,7 @@
 //   POST /api/studio/chat/delete     {room, id}
 //   POST /api/studio/chat/mute       {uid, hours} (0 = speak again)
 //   POST /api/studio/chat/dismiss    {id} a report looked at
+import { once } from "./once";
 import { memberOf, ensureMembers } from "./members";
 import { OFFICIAL_NAME, PIC_ORIGIN } from "./comments";
 
@@ -418,16 +419,13 @@ export class ChatRoom {
 }
 
 // ── reports (D1) ─────────────────────────────────────────────────────────────
-const reportsReady = new WeakMap<D1Database, Promise<unknown>>();
-export function ensureReports(db: D1Database) {
-  let p = reportsReady.get(db);
-  if (!p) reportsReady.set(db, p = ensureMembers(db).then(() => db.batch([
+export function ensureReports(db: D1Database): Promise<void> {
+  // remembered only once it worked (./once): a ticket waited for ever on one left pending by a request cut off
+  return once(db, "chat-reports", () => ensureMembers(db).then(() => db.batch([
     db.prepare(`CREATE TABLE IF NOT EXISTS chat_reports (id INTEGER PRIMARY KEY AUTOINCREMENT, room TEXT NOT NULL, msg INTEGER NOT NULL, uid INTEGER NOT NULL,
       name TEXT NOT NULL, text TEXT NOT NULL, kind TEXT NOT NULL, reporter INTEGER NOT NULL, reporter_name TEXT NOT NULL, why TEXT NOT NULL DEFAULT '',
       at INTEGER NOT NULL, done INTEGER NOT NULL DEFAULT 0, UNIQUE (room, msg, reporter))`),
-  ])).then(() => db.prepare("ALTER TABLE members ADD COLUMN chat_mute INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
-    .catch((e) => { reportsReady.delete(db); throw e; }));
-  return p;
+  ])).then(() => db.prepare("ALTER TABLE members ADD COLUMN chat_mute INTEGER NOT NULL DEFAULT 0").run().catch(() => null)));
 }
 
 // ── the worker's side ────────────────────────────────────────────────────────

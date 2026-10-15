@@ -10,6 +10,7 @@
 //   POST /watch {op: "hide", url}           out of «تابع المشاهدة» (still in the history)
 //   POST /watch {op: "remove", url}         out of the history
 //   POST /watch {op: "clear"}               the whole history gone
+import { once } from "./once";
 import { memberOf, type MembersEnv } from "./members";
 
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
@@ -43,17 +44,11 @@ export function cleanWatch(x: any) {
   };
 }
 
-const ready = new WeakMap<D1Database, Promise<unknown>>();
-function ensureWatch(db: D1Database) {
-  let p = ready.get(db);
-  if (!p) {
-    p = db.batch([
-      db.prepare("CREATE TABLE IF NOT EXISTS member_watch (member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', kind TEXT NOT NULL DEFAULT 'show', fed TEXT NOT NULL DEFAULT '', duration INTEGER NOT NULL DEFAULT 0, watched INTEGER NOT NULL DEFAULT 0, first INTEGER NOT NULL, last INTEGER NOT NULL, views INTEGER NOT NULL DEFAULT 1, hidden INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (member, url))"),
-      db.prepare("CREATE INDEX IF NOT EXISTS member_watch_last ON member_watch (member, last)"),
-    ]).catch((e) => { ready.delete(db); throw e; });
-    ready.set(db, p);
-  }
-  return p;
+function ensureWatch(db: D1Database): Promise<void> {
+  return once(db, "watch", () => db.batch([
+    db.prepare("CREATE TABLE IF NOT EXISTS member_watch (member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', kind TEXT NOT NULL DEFAULT 'show', fed TEXT NOT NULL DEFAULT '', duration INTEGER NOT NULL DEFAULT 0, watched INTEGER NOT NULL DEFAULT 0, first INTEGER NOT NULL, last INTEGER NOT NULL, views INTEGER NOT NULL DEFAULT 1, hidden INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (member, url))"),
+    db.prepare("CREATE INDEX IF NOT EXISTS member_watch_last ON member_watch (member, last)"),
+  ]));
 }
 const out = (r: any) => ({ url: r.url, title: r.title, image: r.image, kind: r.kind, fed: r.fed, duration: r.duration, watched: r.watched, first: r.first, last: r.last, views: r.views, done: r.duration > 0 && r.watched >= r.duration * 0.9 });
 

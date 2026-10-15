@@ -6,6 +6,7 @@
 //   POST /saved {op: "add", item}      {items}                  (member)
 //   POST /saved {op: "remove", url}    {items}                  (member)
 //   POST /saved {op: "merge", items}   {items}                  (member) a device's own list, the first time it signs in
+import { once } from "./once";
 import { memberOf, type MembersEnv } from "./members";
 
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
@@ -18,17 +19,11 @@ const PATH = /^\/(?:en\/)?(?:shows|recaps|news|nostalgia|news-en)\/[^\s"'<>\\]{1
 const IMAGE = /^(?:\/[^\s"'<>\\]{1,400}|https:\/\/[^\s"'<>\\]{1,400})$/;
 const KINDS = ["show", "recap", "news"];
 
-const ready = new WeakMap<D1Database, Promise<unknown>>();
-function ensureSaved(db: D1Database) {
-  let p = ready.get(db);
-  if (!p) {
-    p = db.batch([
-      db.prepare("CREATE TABLE IF NOT EXISTS member_saved (member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', kind TEXT NOT NULL DEFAULT '', fed TEXT NOT NULL DEFAULT '', added INTEGER NOT NULL, PRIMARY KEY (member, url))"),
-      db.prepare("CREATE INDEX IF NOT EXISTS member_saved_added ON member_saved (member, added)"),
-    ]).catch((e) => { ready.delete(db); throw e; });
-    ready.set(db, p);
-  }
-  return p;
+function ensureSaved(db: D1Database): Promise<void> {
+  return once(db, "saved", () => db.batch([
+    db.prepare("CREATE TABLE IF NOT EXISTS member_saved (member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', kind TEXT NOT NULL DEFAULT '', fed TEXT NOT NULL DEFAULT '', added INTEGER NOT NULL, PRIMARY KEY (member, url))"),
+    db.prepare("CREATE INDEX IF NOT EXISTS member_saved_added ON member_saved (member, added)"),
+  ]));
 }
 
 /** One saved item as kept: a known page, its title, picture, kind and promotion (or null) */

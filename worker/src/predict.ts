@@ -6,6 +6,7 @@
 //   GET  /predict                       {events, leaders, me?}       anyone (a member also gets their picks and rank)
 //   POST /predict/pick {match, pick}    {ok}                         a member, until the show starts
 //   panel (worker/src/index.ts): studioPredict (list), studioPredictSave, studioPredictResult, studioPredictDelete
+import { once } from "./once";
 import { memberOf, type MembersEnv } from "./members";
 import { ensureFollows } from "./follows";
 
@@ -13,20 +14,14 @@ const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods
 const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS } });
 
-const ready = new WeakMap<D1Database, Promise<unknown>>();
-export function ensurePredict(db: D1Database) {
-  let p = ready.get(db);
-  if (!p) {
-    p = db.batch([
-      db.prepare("CREATE TABLE IF NOT EXISTS pred_events (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', starts INTEGER NOT NULL, image TEXT NOT NULL DEFAULT '', status TEXT NOT NULL DEFAULT 'draft', created INTEGER NOT NULL, done_at INTEGER NOT NULL DEFAULT 0)"),
-      db.prepare("CREATE TABLE IF NOT EXISTS pred_matches (id INTEGER PRIMARY KEY AUTOINCREMENT, event INTEGER NOT NULL, ord INTEGER NOT NULL DEFAULT 0, title TEXT NOT NULL, options TEXT NOT NULL, points INTEGER NOT NULL DEFAULT 1, winner TEXT NOT NULL DEFAULT '')"),
-      db.prepare("CREATE INDEX IF NOT EXISTS pred_matches_event ON pred_matches (event, ord)"),
-      db.prepare("CREATE TABLE IF NOT EXISTS pred_picks (member INTEGER NOT NULL, match INTEGER NOT NULL, pick TEXT NOT NULL, at INTEGER NOT NULL, PRIMARY KEY (member, match))"),
-      db.prepare("CREATE INDEX IF NOT EXISTS pred_picks_match ON pred_picks (match)"),
-    ]).catch((e) => { ready.delete(db); throw e; });
-    ready.set(db, p);
-  }
-  return p;
+export function ensurePredict(db: D1Database): Promise<void> {
+  return once(db, "predict", () => db.batch([
+    db.prepare("CREATE TABLE IF NOT EXISTS pred_events (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', starts INTEGER NOT NULL, image TEXT NOT NULL DEFAULT '', status TEXT NOT NULL DEFAULT 'draft', created INTEGER NOT NULL, done_at INTEGER NOT NULL DEFAULT 0)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS pred_matches (id INTEGER PRIMARY KEY AUTOINCREMENT, event INTEGER NOT NULL, ord INTEGER NOT NULL DEFAULT 0, title TEXT NOT NULL, options TEXT NOT NULL, points INTEGER NOT NULL DEFAULT 1, winner TEXT NOT NULL DEFAULT '')"),
+    db.prepare("CREATE INDEX IF NOT EXISTS pred_matches_event ON pred_matches (event, ord)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS pred_picks (member INTEGER NOT NULL, match INTEGER NOT NULL, pick TEXT NOT NULL, at INTEGER NOT NULL, PRIMARY KEY (member, match))"),
+    db.prepare("CREATE INDEX IF NOT EXISTS pred_picks_match ON pred_picks (match)"),
+  ]));
 }
 
 const clean = (s: unknown, n: number) => String(s ?? "").replace(/\s+/g, " ").trim().slice(0, n);
