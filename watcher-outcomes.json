@@ -1,53 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/celeste-bonin-kaitlyn-i-dont-really-want-to-get-back-in-the-ring": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-15T11:46:34.798Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T11:46:12.104Z"
+ },
  "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:24.198Z"
+  "at": "2026-10-15T11:46:11.681Z"
  },
  "https://www.fightful.com/wrestling/333979-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:23.913Z"
+  "at": "2026-10-15T11:46:11.357Z"
  },
  "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:23.673Z"
+  "at": "2026-10-15T11:46:11.076Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:23.469Z"
+  "at": "2026-10-15T11:46:10.844Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:23.312Z"
+  "at": "2026-10-15T11:46:10.667Z"
  },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:23.113Z"
+  "at": "2026-10-15T11:46:10.440Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:22.956Z"
+  "at": "2026-10-15T11:46:10.262Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:22.551Z"
+  "at": "2026-10-15T11:46:09.846Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:22.391Z"
+  "at": "2026-10-15T11:46:09.669Z"
  },
  "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T11:34:22.229Z"
+  "at": "2026-10-15T11:46:09.485Z"
  },
  "https://www.ringsidenews.com/mick-foley-says-wrestlers-dont-need-wrestlemania-have-wrestlemania-moment": {
   "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
