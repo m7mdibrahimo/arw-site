@@ -178,7 +178,7 @@ export function normalizeEnglishTitle(title: string): string {
     return w;
   }).join(" ").replace(THE_NAMES, "The $1");
 }
-/** A word said twice in a row by the writer («With With His Own Money», «Kevin Kevin Owens») is collapsed to one (INCIDENTS #588).
+/** A word said twice in a row by the writer («With With His Own Money», «Kevin Kevin Owens») is collapsed to one (INCIDENTS #590).
  *  Quotes (a «> » line or text inside quotation marks) are the speaker's own words and stay; ring names that ARE a double stay. */
 const LEGIT_EN_DOUBLES = new Set(["shay", "bang", "kelly", "boom", "pago", "bye", "ha", "blah", "no", "so", "very", "had", "that", "can", "hee", "ho", "la", "na", "ra", "ya", "yeah", "wow", "oh"]);
 const REPEATED_EN_WORD = /\b([A-Za-z][A-Za-z']+)(\s+)\1\b/gi;
