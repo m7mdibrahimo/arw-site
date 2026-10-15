@@ -55,3 +55,12 @@ test("dual_form: «تزوجا» is blocked, but the name «بي جي فازا» 
   assert.ok(codes("تمت خطبة الثنائي ثم تزوجا رسميا في جامايكا خلال يونيو 2026 وسط حضور كبير من الأصدقاء والعائلة.").includes("dual_form"));
   assert.ok(!codes("وطلب بي جي فازا منها أن تجرب ذلك معه في الأسبوع القادم بعد انتهاء النزال الرئيسي في العرض.").includes("dual_form"));
 });
+
+test("«ى» for «ي» in nisba words and a dropped show name are blocked (INCIDENTS #594)", () => {
+  const codes = (b: string) => checkArticle("عنوان واضح للاختبار", b, []).map((i) => i.code);
+  assert.ok(codes("سيناقش الثنائى مسيرتهم العالمية وماضي ومستقبل المصارعة مع تلقي أسئلة الجماهير المتابعة.").includes("alif_maqsura_ya"));
+  assert.ok(codes("عن نزالهم التاريخى السابق في الاتحاد وكواليس تروى لأول مرة للجمهور المتابع.").includes("alif_maqsura_ya"));
+  assert.ok(!codes("سيناقش الثنائي مسيرتهم العالمية وأعلى مستوى وصلوا إليه في الاتحاد.").includes("alif_maqsura_ya"));
+  assert.ok(codes("أوضحت كيتلين خلال استضافتها في برنامج أن المخطط الأصلي كان يقضي بخروجها مبكرا من النزال.").includes("dropped_show_name"));
+  assert.ok(!codes("أوضحت كيتلين خلال استضافتها في برنامج Insight مع كريس فان فليت أن المخطط الأصلي كان خروجها مبكرا.").includes("dropped_show_name"));
+});
