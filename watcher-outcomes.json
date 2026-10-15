@@ -1,73 +1,78 @@
 {
+ "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T01:27:03.878Z"
+ },
+ "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:17.830Z"
+ },
  "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T01:16:05.436Z"
+  "at": "2026-10-15T01:26:17.649Z"
  },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T01:16:05.208Z"
+  "at": "2026-10-15T01:26:17.421Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:03.968Z"
+ },
+ "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:03.789Z"
+ },
+ "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:03.611Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:03.334Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-deadmans-tour": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:03.106Z"
+ },
+ "https://www.fightful.com/wrestling/royce-keys-speaks-about-carmelo-hayes-joining-946-everyone-in-this-group-is-handpicked": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:02.668Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-explains-why-doing-wwe-house-shows-no-longer-makes-sense-for-him": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:02.429Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-reacts-to-conrad-thompson-calling-him-overrated": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-15T01:26:02.243Z"
+ },
+ "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-15T01:23:45.755Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-15T01:16:05.021Z"
  },
- "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:39.326Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:39.146Z"
- },
- "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:38.966Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:38.686Z"
- },
- "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-deadmans-tour": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:38.459Z"
- },
- "https://www.fightful.com/wrestling/royce-keys-speaks-about-carmelo-hayes-joining-946-everyone-in-this-group-is-handpicked": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:38.027Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-explains-why-doing-wwe-house-shows-no-longer-makes-sense-for-him": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:37.798Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-reacts-to-conrad-thompson-calling-him-overrated": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T01:15:37.611Z"
- },
  "https://www.wrestlinginc.com/2284042/wwe-jevon-evans-jacob-fatu-connection": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-15T01:04:17.988Z"
- },
- "https://www.wrestlinginc.com/2284042/wwe-jevon-evans-jacob-fatu-connection": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T01:04:17.988Z"
- },
- "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-15T00:56:03.071Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
