@@ -34,16 +34,34 @@
     pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 3h6l-1 7 4 3v2H6v-2l4-3z"/></svg>',
     play: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>',
     pause: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
-    swipe: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9 19 14l-5 5"/><path d="M19 14H9a5 5 0 0 1-5-5V5"/></svg>'
+    swipe: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9 19 14l-5 5"/><path d="M19 14H9a5 5 0 0 1-5-5V5"/></svg>',
+    edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
+    // a message of mine: waiting, sent, not sent (WhatsApp's marks)
+    clock: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+    check: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
+    alert: '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 7v6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.4" fill="#fff"/></svg>'
   };
-  var EMOJI = [
-    ['😀', 'وجوه', '😀😃😄😁😆😅🤣😂🙂😉😊😇🥰😍🤩😘😋😛😜🤪😝🤑🤗🤭🤫🤔🤐🤨😐😑😶😏😒🙄😬😌😔😪🤤😴😷🤒🤕🤢🤮🥵🥶🥴😵🤯🤠🥳😎🤓🧐😕😟🙁😮😯😲😳🥺😦😧😨😰😥😢😭😱😖😣😞😓😩😫🥱😤😡😠🤬😈👿💀☠️💩🤡👹👺👻👽🤖'],
-    ['👍', 'الأيدي', '👋🤚✋🖖👌🤌🤏✌️🤞🤟🤘🤙👈👉👆👇☝️👍👎✊👊🤛🤜👏🙌👐🤲🤝🙏💪🦾🫡🫶👀🧠🫵'],
-    ['🤼', 'المصارعة', '🤼🏆🥇🥈🥉🏅🎖️👑🔔🎤🎙️🔥💥⚡💫⭐🌟✨🎉🎊🎆🏟️📺🎬🎥📣🥊🥋🏋️💯🆕🔝⏰🗓️🎟️💰💎🐐🦁🐍🦅🐺🦂🆚'],
-    ['❤️', 'قلوب', '❤️🧡💛💚💙💜🖤🤍🤎💔❣️💕💞💓💗💖💘💝'],
-    ['🇪🇬', 'أعلام', '🇪🇬🇸🇦🇦🇪🇰🇼🇶🇦🇧🇭🇴🇲🇯🇴🇱🇧🇸🇾🇮🇶🇵🇸🇾🇪🇱🇾🇹🇳🇩🇿🇲🇦🇸🇩🇲🇷🇺🇸🇯🇵🇲🇽🇬🇧🇨🇦'],
-    ['✅', 'رموز', '✅❌⭕❗❓‼️⁉️💤💢💬💭🗯️🔴🟢🔵⚫⚪🎯📌📍🔗']
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // the picker: the site's own row first (always there), then every emoji there is (assets/emoji-data.json, loaded the
+  // first time the picker opens: ١٨٥٠ in nine groups, with Arabic and English words to search by)
+  var WRESTLING = '🤼🏆🥇🥈🥉🏅🎖️👑🔔🎤🎙️🔥💥⚡💫⭐🌟✨🎉🎊🏟️📺🎬📣🥊🥋🏋️💯🆕🔝⏰🗓️🎟️💰💎🐐🦁🐍🦅🐺🦂🆚💪👊👏🙌🤝🙏👀😱🤯😤🤬😂😭🥶🫡';
+  var CAT_ICONS = ['😀', '👋', '🐻', '🍔', '⚽', '✈️', '💡', '🔣', '🏁'];
+  var TONES = ['', '🏻', '🏼', '🏽', '🏾', '🏿'];
+  // stickers (owner 2026-10-15: «استيكرات … ملصقات»): the site's own, drawn here (no file to load), and animated emoji
+  // (Google's Noto, free to use: https://googlefonts.github.io/noto-emoji-animation/)
+  var ARW = [
+    ['three', '1.. 2.. 3!', '🔔', 4], ['tapout', 'تاب أوت!', '✋', 24], ['champ', 'بطل جديد', '🏆', 42], ['fire', 'ماتش خرافي', '🔥', 12],
+    ['five', '5 نجوم', '⭐', 45], ['yes', 'نعم! نعم! نعم!', '☝️', 120], ['goat', 'الأفضل', '🐐', 177], ['return', 'عودة أسطورية', '💥', 20],
+    ['belt', 'الحزام لنا', '🥇', 38], ['deserve', 'يستحق', '👏', 150], ['robbed', 'ظلم!', '😤', 0], ['heel', 'خيانة!', '🗡️', 350],
+    ['what', 'مستحيل!', '😱', 270], ['crazy', 'غير طبيعي', '🤯', 330], ['who', 'من هذا؟!', '😳', 300], ['botch', 'بوتش', '😬', 200],
+    ['boo', 'بووو', '👎', 8], ['lol', 'هههههه', '😂', 50], ['ready', 'جاهز للعرض', '📺', 212], ['here', 'نحن هنا', '🙋', 100],
+    ['thanks', 'شكرا', '🙏', 160], ['luck', 'حظا أوفر', '😅', 190], ['morning', 'صباح المصارعة', '☀️', 40], ['night', 'تصبحون على خير', '🌙', 230]
   ];
+  var ARW_BY = {}; ARW.forEach(function (x, i) { ARW_BY[x[0]] = { t: x[1], e: x[2], h: x[3], i: i }; });
+  var NOTO = '1f600 1f603 1f604 1f601 1f606 1f605 1f923 1f602 1f642 1f609 1f60a 1f607 1f970 1f60d 1f929 1f618 1f60b 1f61b 1f61c 1f92a 1f911 1f917 1f92d 1f92b 1f914 1f910 1f928 1f610 1f611 1f636 1f60f 1f612 1f644 1f62c 1f60c 1f614 1f62a 1f924 1f634 1f637 1f912 1f915 1f922 1f92e 1f975 1f976 1f974 1f635 1f92f 1f920 1f973 1f60e 1f913 1f9d0 1f615 1f61f 1f641 1f62e 1f62f 1f632 1f633 1f97a 1f626 1f627 1f628 1f630 1f625 1f622 1f62d 1f631 1f616 1f623 1f61e 1f613 1f629 1f62b 1f971 1f624 1f621 1f620 1f92c 1f608 1f47f 1f480 1f4a9 1f921 1f47b 1f47d 1f916 1f63a 1f648 1f649 1f64a 1f4af 1f4a5 1f4ab 1f525 26a1 2728 1f389 1f38a 1f3c6 1f947 1f514 1f451 1f4aa 1f44f 1f64c 1f44d 1f44e 1f44a 270a 1f91d 1f64f 1f44b 1f91e 270c 1f918 1f44c 1fae1 1faf6 1f440 2764 1f9e1 1f49b 1f49a 1f499 1f49c 1f5a4 1f90d 1f494 2764_200d_1f525 1f498 1f339 1f410 1f981 1f40d 1f985 1f43a 1f982 1f422 1f680 23f0 1f48e 1f37f 2615 1f382 1f31f 2b50 1f308 2744 1f4a3 1f3af 1f3b2 1f3c1 1f6a8 26a0 274c 2705 2753 2757 1f192 1f195'.split(' ');
+  function notoChar(code) { return String.fromCodePoint.apply(null, code.split('_').map(function (h) { return parseInt(h, 16); })); }
+  function notoSrc(code) { return 'https://fonts.gstatic.com/s/e/notoemoji/latest/' + code + '/512.webp'; }
+  var GIF_TAGS = [['مصارعة', 'wrestling'], ['احتفال', 'celebrate'], ['ضحك', 'lol'], ['صدمة', 'shocked'], ['تصفيق', 'applause'], ['فوز', 'winner'], ['غضب', 'angry'], ['حزن', 'sad'], ['رقص', 'dance'], ['نعم', 'yes'], ['لا', 'no'], ['شكرا', 'thank you']];
   var SEG = window.Intl && Intl.Segmenter ? new Intl.Segmenter('ar', { granularity: 'grapheme' }) : null;
   function graphemes(s) { if (SEG) return Array.from(SEG.segment(s), function (x) { return x.segment; }); return Array.from(s); }
 
@@ -95,6 +113,9 @@
   function size(b) { b = Number(b) || 0; return b > 1048576 ? (b / 1048576).toFixed(1) + ' ميجا' : Math.max(1, Math.round(b / 1024)) + ' كيلو'; }
   function mmss(s) { s = Math.max(0, Math.round(s || 0)); return Math.floor(s / 60) + ':' + pad(s % 60); }
   function plural(n, one, two, few, many) { return n === 1 ? one : n === 2 ? two : n <= 10 ? n + ' ' + few : n + ' ' + many; }
+  // what a message holds, in a word (the rooms' list, a quote, the pinned bar)
+  function kindLabel(k) { return k === 'image' ? '📷 صورة' : k === 'voice' ? '🎤 رسالة صوتية' : k === 'sticker' ? '🌟 ملصق' : k === 'gif' ? '🎞️ GIF' : k === 'video' ? '🎬 فيديو' : '📎 ملف'; }
+  function typingText(names) { return names.length === 1 ? names[0] + ' يكتب…' : names.length === 2 ? names[0] + ' و' + names[1] + ' يكتبان…' : names.length + ' يكتبون الآن…'; }
 
   // ── who's here ───────────────────────────────────────────────────────────
   function session() { var s = store('arw-member'); return s && s.token ? s : null; }
@@ -134,6 +155,20 @@
   }
 
   // ── the rooms' list: who's in each, the last message ─────────────────────
+  // what was being written in each room stays there (WhatsApp's «مسودة»)
+  var drafts = store('arw-cm-drafts') || {}, draftT;
+  function saveDraft() {
+    if (!current || editing) return;
+    var v = input.value;
+    if (v.trim()) drafts[current] = v.slice(0, 2000); else delete drafts[current];
+    clearTimeout(draftT); draftT = setTimeout(function () { store('arw-cm-drafts', drafts); }, 400);
+  }
+  function roomLine(R) {
+    var last = $('.cm-room-last', R.btn), d = current !== R.id && drafts[R.id];
+    last.textContent = '';
+    if (d) { last.appendChild(el('span', 'cm-draft', 'مسودة: ')); last.appendChild(document.createTextNode(d.replace(/\s+/g, ' '))); }
+    else last.textContent = R.last || R.about || '';
+  }
   var summaryT;
   function summaries() {
     clearTimeout(summaryT);
@@ -148,27 +183,42 @@
         R.online = s.online || 0;
         var on = $('.cm-room-on', R.btn);
         on.hidden = !s.online; on.textContent = s.online ? String(s.online) : '';
-        var last = $('.cm-room-last', R.btn);
-        last.textContent = s.last ? (s.last.name + ': ' + (s.last.spoiler ? 'رسالة مخفية (حرق نتائج)' : s.last.kind === 'image' ? '📷 صورة' : s.last.kind === 'voice' ? '🎤 رسالة صوتية' : s.last.kind === 'file' || s.last.kind === 'video' ? '📎 ملف' : s.last.text)) : R.about;
+        R.last = s.last ? (s.last.name + ': ' + (s.last.spoiler ? 'رسالة مخفية (حرق نتائج)' : s.last.kind && s.last.kind !== 'text' ? kindLabel(s.last.kind) + (s.last.text ? ' ' + s.last.text : '') : s.last.text)) : R.about;
+        roomLine(R);
+        // how many came since it was last read (a dot for a room never opened)
         var fresh = s.lastId > (seen[s.id] || 0) && current !== s.id && session();
         R.btn.classList.toggle('has-new', !!fresh);
-        $('.cm-room-new', R.btn).hidden = !fresh;
+        var nb = $('.cm-room-new', R.btn);
+        nb.hidden = !fresh;
+        var unread = fresh && seen[s.id] ? s.lastId - seen[s.id] : 0;
+        nb.textContent = unread ? (unread > 99 ? '99+' : String(unread)) : '';
+        nb.classList.toggle('is-n', !!unread);
         if (current === s.id) setStatus();
       });
       var t = $('.cm-total');
       t.hidden = !total; $('.cm-total-n').textContent = total;
     }).catch(function () {}).then(function () { summaryT = setTimeout(summaries, 20000); });
   }
-  document.addEventListener('visibilitychange', function () { if (!document.hidden) { summaries(); unreadTitle(0); if (current && (!ws || ws.readyState > 1)) connect(); } });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { stopTyping(); return; }
+    summaries(); unreadTitle(0); markSeen();
+    if (current) { if (!ws || ws.readyState > 1) { retry = 0; connect(); } else probe(); }
+  });
+  // the phone lost and found the network: back at once, not after the next try
+  window.addEventListener('online', function () { if (current && (!ws || ws.readyState > 1)) { retry = 0; connect(); } else if (ws) probe(); });
+  window.addEventListener('offline', function () { if (current) conn('لا يوجد اتصال بالإنترنت، سترسل رسائلك عند عودته…'); });
 
   // ── one room ─────────────────────────────────────────────────────────────
-  var current = null, ws = null, me = null, msgs = [], byId = {}, done = false, loadingMore = false, pinned = null, people = [], typing = {}, retry = 0, retryT, pingT, mutedUntil = 0, replyTo = null, spoiler = false;
-  var pending = {}; // nonce → element
+  var current = null, ws = null, me = null, msgs = [], byId = {}, done = false, loadingMore = false, pinned = null, people = [], typing = {}, retry = 0, retryT, pingT, pongT, mutedUntil = 0, replyTo = null, editing = null, spoiler = false;
+  var pending = {}; // nonce → {el, payload, ghost, sentAt, failed}
+  var cache = {}; // room → what it showed (going back to a room shows it at once, then adds what's new)
+  var firstHello = true, unreadFrom = 0, connecting = false;
   function open(room, push) {
     want = '';
     if (!ROOMS[room]) return;
     if (current === room && ws && ws.readyState <= 1) { showRoom(); return; }
     close();
+    if (current && current !== room) { cancelEdit(); input.value = ''; }
     current = room;
     var R = ROOMS[room];
     $$('.cm-room').forEach(function (b) { b.classList.toggle('is-on', b === R.btn); });
@@ -178,11 +228,18 @@
     var mark = $('.cm-head-mark');
     mark.innerHTML = R.mark; mark.style.setProperty('--h', R.hue); mark.classList.toggle('cm-mark-logo', room === 'general');
     $('.cm-head-name').textContent = R.name;
-    msgs = []; byId = {}; done = false; pinned = null; people = []; typing = {}; replyTo = null; pending = {};
+    var c = cache[room];
+    msgs = c ? c.msgs.slice() : []; byId = {}; msgs.forEach(function (m) { byId[m.id] = m; });
+    done = c ? c.done : false; pinned = null; people = []; typing = {}; replyTo = null; pending = {}; firstHello = true;
+    unreadFrom = seen[room] || 0;
     list.textContent = ''; $('.cm-more').hidden = true; $('.cm-pinned').hidden = true; $('.cm-jump').hidden = true;
     cancelReply(); clearAttached(); renderTyping(); setStatus('');
+    if (c) { renderAll(); setPinned(c.pinned); toBottom(); }
+    // what was being written here before
+    input.value = drafts[room] || ''; autosize(); updateSendBtn(); roomLine(R);
     showRoom();
     if (push !== false && location.hash !== '#' + room) history.pushState({ room: room }, '', '#' + room);
+    drawSound();
     document.title = R.name + ' | مجتمع المصارعة';
     if (!session()) { gate(true); return; }
     gate(false);
@@ -206,7 +263,10 @@
     }
   }
   function close() {
-    clearTimeout(retryT); clearInterval(pingT);
+    clearTimeout(retryT); clearInterval(pingT); clearTimeout(pongT); connecting = false;
+    stopTyping();
+    if (current && msgs.length) cache[current] = { msgs: msgs.slice(-120), done: done && msgs.length <= 120, pinned: pinned };
+    if (current && ROOMS[current]) { var was = current; setTimeout(function () { if (ROOMS[was]) roomLine(ROOMS[was]); }, 0); }
     if (ws) { ws.onclose = null; try { ws.close(1000); } catch (e) {} ws = null; }
     stopRecording(true);
   }
@@ -216,68 +276,113 @@
     if (!c) { c = el('div', 'cm-conn'); chat.appendChild(c); }
     c.textContent = text;
   }
+  // the next try: sooner at first, at most 15 seconds, never all at the same moment
+  function later() { var d = Math.min(15000, 800 * Math.pow(2, retry++)) * (0.7 + Math.random() * 0.6); clearTimeout(retryT); retryT = setTimeout(connect, d); }
+  function lastId() { for (var i = msgs.length - 1; i >= 0; i--) if (typeof msgs[i].id === 'number') return msgs[i].id; return 0; }
   function connect() {
     var s = session(), room = current;
-    if (!s || !room) return;
+    if (!s || !room || connecting) return;
     clearTimeout(retryT);
+    connecting = true;
     if (!msgs.length) conn('جار الاتصال…');
     fetch(API + '/chat/ticket', { method: 'POST', headers: { Authorization: 'Bearer ' + s.token }, credentials: 'omit' })
       .then(function (r) { return r.json().then(function (d) { d.status = r.status; return d; }); })
       .then(function (d) {
+        connecting = false;
         if (room !== current) return;
         if (d.status === 401) { gate(true); conn(''); return; }
         if (!d.ok) throw new Error(srv(d.error) || '');
-        var sock = new WebSocket(WS + '/chat/ws/' + room + '?ticket=' + d.ticket);
+        if (ws) { ws.onclose = null; try { ws.close(1000); } catch (x) {} }
+        // coming back: the room sends what came after the last message here, the page keeps its place
+        var since = lastId();
+        var sock = new WebSocket(WS + '/chat/ws/' + room + '?ticket=' + d.ticket + (since ? '&since=' + since : ''));
         ws = sock;
-        sock.onopen = function () { retry = 0; conn(''); clearInterval(pingT); pingT = setInterval(function () { if (sock.readyState === 1) sock.send('ping'); }, 25000); };
-        sock.onmessage = function (e) { if (e.data === 'pong') return; var m; try { m = JSON.parse(e.data); } catch (x) { return; } handle(m); };
+        sock.onopen = function () { retry = 0; conn(''); clearInterval(pingT); pingT = setInterval(probe, 20000); };
+        sock.onmessage = function (e) { alive(); if (e.data === 'pong') return; var m; try { m = JSON.parse(e.data); } catch (x) { return; } handle(m); };
         sock.onclose = function (e) {
-          clearInterval(pingT);
+          clearInterval(pingT); clearTimeout(pongT);
           if (ws !== sock) return;
           ws = null;
           if (e.code === 4003) { toast('تم إيقاف حسابك.'); gate(true); return; }
-          if (current === room) { conn('انقطع الاتصال، جار إعادة المحاولة…'); retryT = setTimeout(connect, Math.min(15000, 1000 * Math.pow(2, retry++))); }
+          if (current === room) { conn(navigator.onLine === false ? 'لا يوجد اتصال بالإنترنت، سترسل رسائلك عند عودته…' : 'انقطع الاتصال، جار إعادة الاتصال…'); later(); }
         };
       })
-      .catch(function () { if (current !== room) return; conn('تعذر الاتصال، جار إعادة المحاولة…'); retryT = setTimeout(connect, Math.min(15000, 1000 * Math.pow(2, retry++))); });
+      .catch(function () { connecting = false; if (current !== room) return; conn('تعذر الاتصال، جار إعادة المحاولة…'); later(); });
   }
-  function wsSend(o) { if (ws && ws.readyState === 1) { ws.send(JSON.stringify(o)); return true; } return false; }
+  // a socket that went quiet without closing (a phone that slept, a network that changed): asked, and dropped if it
+  // doesn't answer within 8 seconds, so a new one opens at once
+  function probe() {
+    if (!ws || ws.readyState !== 1) return;
+    try { ws.send('ping'); } catch (e) { return; }
+    clearTimeout(pongT);
+    var sock = ws;
+    pongT = setTimeout(function () { if (ws === sock) { try { sock.close(4000); } catch (e) {} sock.onclose({ code: 4000 }); } }, 8000);
+  }
+  function alive() { clearTimeout(pongT); }
+  function wsSend(o) { if (ws && ws.readyState === 1) { try { ws.send(JSON.stringify(o)); return true; } catch (e) {} } return false; }
 
   // ── what the room says ───────────────────────────────────────────────────
   function handle(d) {
     if (d.t === 'hello') {
       me = d.me; mutedUntil = d.me.muted || 0; setMuted();
-      var atBottom = true;
-      msgs = []; byId = {}; list.textContent = '';
-      (d.msgs || []).forEach(function (m) { msgs.push(m); byId[m.id] = m; });
-      done = !!d.done; $('.cm-more').hidden = done;
+      var got = d.msgs || [], wasBottom = nearBottom(), keep = scroller.scrollHeight - scroller.scrollTop;
+      // coming back (or back to a room seen before): only what's new is added, and the reader stays where they were
+      if (d.since && msgs.length && got.length && got[0].id <= d.since) {
+        msgs = msgs.filter(function (m) { return m.id < got[0].id; }).concat(got);
+      } else { msgs = got.slice(); done = !!d.done; }
+      byId = {}; msgs.forEach(function (m) { byId[m.id] = m; });
+      $('.cm-more').hidden = done;
       renderAll(); setPinned(d.pinned);
-      if (atBottom) toBottom();
-      markSeen();
-      // what was written while away (a reconnect): sent again
-      Object.keys(pending).forEach(function (n) { var p = pending[n]; if (p.payload) wsSend(p.payload); });
+      if (firstHello) {
+        // the first new message since the last visit, under «رسائل جديدة»; else the bottom
+        var line = $('.cm-unread', list);
+        if (line) requestAnimationFrame(function () { scroller.scrollTop = Math.max(0, line.offsetTop - 70); nearBottomBefore = nearBottom(); });
+        else toBottom();
+      } else if (wasBottom) toBottom();
+      else scroller.scrollTop = scroller.scrollHeight - keep;
+      firstHello = false;
+      markSeen(); renderStack();
+      // what was written while away: sent again (the room knows each by its nonce, so nothing comes twice)
+      Object.keys(pending).forEach(function (n) { var p = pending[n]; if (p.payload && !p.failed) push(p); });
       return;
     }
     if (d.t === 'msg') {
       var m = d.m;
-      if (byId[m.id]) return;
+      var p = d.nonce && pending[d.nonce];
+      if (p) delete pending[d.nonce];
+      if (byId[m.id]) { if (p && p.el && p.el.parentNode) p.el.remove(); return; }
       var near = nearBottom();
-      if (d.nonce && pending[d.nonce]) { var p = pending[d.nonce]; if (p.el && p.el.parentNode) p.el.remove(); delete pending[d.nonce]; }
-      msgs.push(m); byId[m.id] = m;
-      appendMsg(m);
-      delete typing[m.uid]; renderTyping();
+      // in order (a message can come back after one sent later)
+      var at = msgs.length; while (at > 0 && msgs[at - 1].id > m.id) at--;
+      msgs.splice(at, 0, m); byId[m.id] = m;
+      // mine: the grey copy becomes the message, where it is
+      if (p && p.el && p.el.parentNode) p.el.replaceWith(buildMsg(m, cont(m, msgs[at - 1])));
+      else appendMsg(m);
+      delete typing[m.uid]; renderTyping(); setStatus();
       var mine = me && m.uid === me.uid;
+      if (!mine) ding('in');
       if (mine || near) toBottom(true); else bumpJump();
-      if (!mine && document.hidden) unreadTitle(1);
+      if (!mine && document.hidden && !roomMuted(current)) unreadTitle(1);
+      // a long evening in one room: the oldest messages leave the page (they come back with «رسائل أقدم»)
+      if (msgs.length > 600 && near) { msgs.splice(0, 200); byId = {}; msgs.forEach(function (x) { byId[x.id] = x; }); done = false; renderAll(); toBottom(); }
       markSeen();
+      return;
+    }
+    if (d.t === 'edit') {
+      var ed = byId[d.id];
+      if (ed) { ed.text = d.text; ed.edited = d.edited; replaceMsg(ed); if (pinned && pinned.id === ed.id) setPinned(ed); }
       return;
     }
     if (d.t === 'react') { var x = byId[d.id]; if (x) { x.reacts = d.reacts; refreshReacts(x); } return; }
     if (d.t === 'del') { var y = byId[d.id]; if (y) { y.del = true; y.text = ''; y.att = null; y.reacts = {}; replaceMsg(y); } return; }
     if (d.t === 'pin') { setPinned(d.m); return; }
     if (d.t === 'badge') { var hit = false; msgs.forEach(function (x) { if (x.uid === d.uid && x.badge !== d.badge) { x.badge = d.badge; hit = true; } }); if (me && me.uid === d.uid) me.badge = d.badge; if (hit) { var keep = scroller.scrollHeight - scroller.scrollTop; renderAll(); scroller.scrollTop = scroller.scrollHeight - keep; } return; }
-    if (d.t === 'typing') { typing[d.uid] = { name: d.name, until: Date.now() + 4000 }; renderTyping(); return; }
-    if (d.t === 'presence') { people = d.people || []; setStatus(); renderStack(); return; }
+    if (d.t === 'typing') {
+      if (d.stop) delete typing[d.uid];
+      else typing[d.uid] = { name: d.name, pic: d.pic, until: Date.now() + 6000 };
+      renderTyping(); return;
+    }
+    if (d.t === 'presence') { people = d.people || []; Object.keys(typing).forEach(function (k) { if (!people.some(function (p) { return String(p.uid) === k; })) delete typing[k]; }); setStatus(); renderStack(); renderTyping(); return; }
     if (d.t === 'more') {
       loadingMore = false;
       var before = scroller.scrollHeight - scroller.scrollTop;
@@ -292,15 +397,17 @@
     if (d.t === 'muted') { mutedUntil = d.until || 0; setMuted(); return; }
     if (d.t === 'reported') { toast('شكرا لك، وصل بلاغك وسيراجعه فريق الموقع.'); return; }
     if (d.t === 'error') {
-      if (d.nonce && pending[d.nonce]) { var f = pending[d.nonce]; f.payload = null; if (f.el) { f.el.classList.remove('is-pending'); f.el.classList.add('is-failed'); } delete pending[d.nonce]; }
+      // not sent: «too fast» can be tried again with a tap; the rest can't
+      if (d.nonce && pending[d.nonce]) failed(pending[d.nonce], d.code === 'slow');
       if (d.code === 'muted') { mutedUntil = d.until || 0; setMuted(); }
       if (d.code === 'readonly' && ROOMS[current]) { ROOMS[current].closed = true; setMuted(); }
       toast(srv(d.error) || 'تعذر الإرسال.');
     }
   }
   function markSeen() {
-    if (!current || !msgs.length || document.hidden) return;
-    seen[current] = msgs[msgs.length - 1].id; store('arw-cm-seen', seen);
+    if (!current || !msgs.length || document.hidden || !nearBottom()) return;
+    var id = lastId();
+    if (id > (seen[current] || 0)) { seen[current] = id; store('arw-cm-seen', seen); }
   }
   var titleN = 0, baseTitle = document.title;
   function unreadTitle(n) {
@@ -312,13 +419,15 @@
   // ── status line, people ──────────────────────────────────────────────────
   function setStatus(text) {
     var st = $('.cm-head-status');
-    if (text != null && text !== undefined && arguments.length) { st.textContent = text; st.classList.remove('is-live'); return; }
-    var names = Object.keys(typing).map(function (k) { return typing[k].name; });
-    if (names.length) return;
+    if (text != null && text !== undefined && arguments.length) { st.textContent = text; st.classList.remove('is-live', 'is-typing'); return; }
     var n = people.length || (ROOMS[current] && ROOMS[current].online) || 0;
+    $('.cm-people-n').textContent = n ? String(n) : '';
+    // someone writing: their name in the header, as WhatsApp does
+    var names = Object.keys(typing).map(function (k) { return typing[k].name; });
+    st.classList.toggle('is-typing', !!names.length);
+    if (names.length) { st.textContent = typingText(names); st.classList.remove('is-live'); return; }
     st.textContent = n ? plural(n, 'متصل واحد الآن', 'اثنان متصلان الآن', 'متصلين الآن', 'متصلا الآن') : ROOMS[current] ? ROOMS[current].about : '';
     st.classList.toggle('is-live', !!n);
-    $('.cm-people-n').textContent = n ? String(n) : '';
   }
   function renderStack() {
     var s = $('.cm-stack');
@@ -328,42 +437,61 @@
     var l = $('.cm-people-list');
     l.textContent = '';
     people.forEach(function (p) {
-      var row = el('div', 'cm-person');
+      var row = el('div', 'cm-person' + (typing[p.uid] ? ' is-typing' : ''));
       row.appendChild(avatar(p));
-      var n = el('span', null, p.name);
-      row.appendChild(n);
-      if (p.badge) { var b = el('span'); b.innerHTML = badge(p.badge); row.appendChild(b); }
+      var tx = el('span', 'cm-person-tx');
+      var n = el('b', null, p.name);
+      if (p.badge) { var b = el('span'); b.innerHTML = badge(p.badge); n.appendChild(b.firstChild); }
+      tx.appendChild(n);
+      tx.appendChild(el('small', null, typing[p.uid] ? 'يكتب…' : p.user ? '@' + p.user : ''));
+      row.appendChild(tx);
       l.appendChild(row);
     });
   }
-  var typingT;
+  // «فلان يكتب…» (owner 2026-10-15): their picture and name over the box, the dots moving; the header says it too
+  var typingT, typingSig = '';
   function renderTyping() {
     var now = Date.now();
     Object.keys(typing).forEach(function (k) { if (typing[k].until < now) delete typing[k]; });
-    var names = Object.keys(typing).map(function (k) { return typing[k].name; });
+    var keys = Object.keys(typing), names = keys.map(function (k) { return typing[k].name; });
+    var sig = keys.join(',');
+    clearTimeout(typingT);
+    if (keys.length) typingT = setTimeout(renderTyping, 1000);
+    if (sig === typingSig) return;
+    typingSig = sig;
     var box = $('.cm-typing');
     box.textContent = '';
-    if (names.length) {
+    box.classList.toggle('is-on', !!keys.length);
+    if (keys.length) {
+      var avs = el('span', 'cm-typing-avs');
+      keys.slice(0, 3).forEach(function (k) { avs.appendChild(avatar({ name: typing[k].name, pic: typing[k].pic })); });
+      box.appendChild(avs);
+      var bub = el('span', 'cm-typing-bub');
+      bub.appendChild(el('span', 'cm-typing-tx', typingText(names)));
       var dots = el('i'); dots.innerHTML = '<b></b><b></b><b></b>';
-      box.appendChild(dots);
-      box.appendChild(document.createTextNode(names.length === 1 ? names[0] + ' يكتب…' : names.length === 2 ? names[0] + ' و' + names[1] + ' يكتبان…' : names.length + ' يكتبون الآن…'));
+      bub.appendChild(dots);
+      box.appendChild(bub);
     }
-    clearTimeout(typingT);
-    if (names.length) typingT = setTimeout(renderTyping, 1500);
+    setStatus();
+    if (!$('.cm-people-pop').hidden) renderStack();
   }
 
   // ── the messages ─────────────────────────────────────────────────────────
   function cont(m, prev) { return prev && !prev.del && !m.del && prev.uid === m.uid && m.at - prev.at < 5 * 60e3 && dayKey(m.at) === dayKey(prev.at); }
   function renderAll() {
     list.textContent = '';
-    var frag = document.createDocumentFragment(), prev = null;
+    var frag = document.createDocumentFragment(), prev = null, lined = false;
     msgs.forEach(function (m) {
       if (!prev || dayKey(prev.at) !== dayKey(m.at)) frag.appendChild(el('div', 'cm-day', dayLabel(m.at)));
-      frag.appendChild(buildMsg(m, cont(m, prev)));
+      // «رسائل جديدة»: where the last visit stopped
+      if (!lined && unreadFrom && m.id > unreadFrom && !(me && m.uid === me.uid) && prev) { frag.appendChild(el('div', 'cm-unread', 'رسائل جديدة')); lined = true; }
+      frag.appendChild(buildMsg(m, cont(m, prev) && !(lined && prev.id <= unreadFrom)));
       prev = m;
     });
     list.appendChild(frag);
-    if (!msgs.length) list.appendChild(el('div', 'cm-sys', 'لا رسائل بعد. كن أول من يكتب هنا 👋'));
+    if (!msgs.length && !Object.keys(pending).length) list.appendChild(el('div', 'cm-sys', 'لا رسائل بعد. كن أول من يكتب هنا 👋'));
+    // mine still on their way stay at the end
+    Object.keys(pending).forEach(function (n) { if (pending[n].el) list.appendChild(pending[n].el); });
   }
   function appendMsg(m) {
     var i = msgs.indexOf(m), prev = msgs[i - 1];
@@ -401,7 +529,45 @@
     if (last < t.length) p.appendChild(document.createTextNode(t.slice(last)));
     return p;
   }
+  // a sticker: the site's own (drawn here) or an animated emoji (its still self until the picture comes)
+  function stickerNode(id) {
+    var box = el('div', 'cm-stk');
+    if (id.indexOf('noto:') === 0) {
+      var code = id.slice(5), ch = '';
+      try { ch = notoChar(code); } catch (e) {}
+      box.classList.add('cm-stk-noto');
+      var f = el('span', 'cm-stk-ch', ch); box.appendChild(f);
+      var i = new Image(); i.alt = ch; i.width = 140; i.height = 140; i.loading = 'lazy'; i.decoding = 'async'; i.src = notoSrc(code);
+      i.onload = function () { box.classList.add('is-ready'); };
+      i.onerror = function () { i.remove(); };
+      box.appendChild(i);
+      return box;
+    }
+    var s = ARW_BY[id.slice(4)];
+    if (!s) { box.appendChild(el('span', 'cm-stk-ch', '🌟')); return box; }
+    box.classList.add('cm-stk-arw', s.i % 2 ? 'is-r' : 'is-l');
+    box.style.setProperty('--sh', s.h);
+    box.appendChild(el('span', 'cm-stk-e', s.e));
+    box.appendChild(el('b', null, s.t));
+    box.setAttribute('role', 'img'); box.setAttribute('aria-label', 'ملصق: ' + s.t);
+    return box;
+  }
+  // a GIF: a short looping video, playing only while it's on screen
+  var gifSeen = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { var v = e.target; if (e.isIntersecting && !REDUCED) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); });
+  }, { threshold: 0.3 }) : null;
+  function gifNode(a) {
+    var v = document.createElement('video');
+    v.className = 'cm-gif'; v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.loop = true; v.playsInline = true; v.setAttribute('playsinline', '');
+    v.preload = 'metadata'; if (a.still) v.poster = a.still; v.src = a.url; v.setAttribute('aria-label', 'صورة GIF');
+    if (a.w && a.h) v.style.aspectRatio = a.w + ' / ' + a.h;
+    if (gifSeen) gifSeen.observe(v); else if (!REDUCED) v.autoplay = true;
+    v.addEventListener('click', function () { if (v.paused) v.play().catch(function () {}); else v.pause(); });
+    return v;
+  }
   function attNode(a, m) {
+    if (a.kind === 'sticker') return stickerNode(a.id || '');
+    if (a.kind === 'gif') return gifNode(a);
     if (a.kind === 'image') {
       var b = el('button', 'cm-img'); b.type = 'button'; b.setAttribute('aria-label', 'فتح الصورة');
       var img = new Image(); img.alt = 'صورة من ' + m.name; img.loading = 'lazy'; img.decoding = 'async'; img.src = a.url;
@@ -473,7 +639,8 @@
     if (mine) row.classList.add('is-mine');
     if (m.badge === 'gold') row.classList.add('is-gold');
     if (isPrem(m.badge)) row.classList.add('is-prem');
-    if (m.att && (m.att.kind === 'image' || m.att.kind === 'video')) row.classList.add('is-media');
+    if (m.att && (m.att.kind === 'image' || m.att.kind === 'video' || m.att.kind === 'gif')) row.classList.add('is-media');
+    if (m.att && m.att.kind === 'sticker' && !m.text) row.classList.add('is-sticker');
     if (me && me.user && !mine && m.text && new RegExp('@' + (me.user || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\w.])', 'i').test(m.text)) row.classList.add('mentions-me');
     row.appendChild(avatar(m));
     var bw = el('div', 'cm-bwrap');
@@ -487,12 +654,15 @@
       bub.appendChild(nm);
     }
     if (m.del) {
-      bub.appendChild(el('p', 'cm-deleted', mine ? 'حذفت هذه الرسالة' : 'تم حذف هذه الرسالة'));
+      // deleted: it stays in its place, saying so (as WhatsApp and Messenger)
+      var dl = el('p', 'cm-deleted'); dl.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg>';
+      dl.appendChild(document.createTextNode(mine ? 'حذفت هذه الرسالة' : 'تم حذف هذه الرسالة'));
+      bub.appendChild(dl);
     } else {
       if (m.reply) {
         var q = el('button', 'cm-quote'); q.type = 'button';
         q.appendChild(el('b', null, m.reply.name));
-        q.appendChild(el('span', null, m.reply.text || (m.reply.kind === 'image' ? '📷 صورة' : m.reply.kind === 'voice' ? '🎤 رسالة صوتية' : m.reply.kind === 'text' ? 'رسالة مخفية (حرق نتائج)' : '📎 ملف')));
+        q.appendChild(el('span', null, m.reply.text || (m.reply.kind === 'text' ? 'رسالة مخفية (حرق نتائج)' : kindLabel(m.reply.kind))));
         q.addEventListener('click', function () { jumpTo(m.reply.id); });
         bub.appendChild(q);
       }
@@ -515,7 +685,11 @@
       }
       bub.appendChild(body);
     }
-    var meta = el('div', 'cm-meta', clock(m.at));
+    var meta = el('div', 'cm-meta');
+    if (m.edited && !m.del) meta.appendChild(el('span', 'cm-edited', 'معدلة'));
+    meta.appendChild(el('span', null, clock(m.at)));
+    // mine: 🕓 on its way, ✓ sent, ! not sent (a tap sends it again)
+    if (mine && !m.del) { var tk = el('span', 'cm-tick'); tk.innerHTML = m.pending ? IC.clock : IC.check; tk.setAttribute('aria-label', m.pending ? 'جار الإرسال' : 'تم الإرسال'); meta.appendChild(tk); }
     bub.appendChild(meta);
     bw.appendChild(bub);
     var rx = el('div', 'cm-reacts');
@@ -542,11 +716,23 @@
   }
   function refreshReacts(m) { var row = list.querySelector('[data-id="' + m.id + '"]'); if (row) fillReacts($('.cm-reacts', row), m); }
   function react(m, e) {
+    if (typeof m.id !== 'number') return;
     if (!wsSend({ t: 'react', id: m.id, e: e })) return toast('لا يوجد اتصال الآن.');
+    // shown at once, as the room will (one a person; the same again takes it back)
+    if (me) {
+      var r = {}, had = '';
+      Object.keys(m.reacts || {}).forEach(function (k) { var l = m.reacts[k].filter(function (u) { if (u === me.uid) had = k; return u !== me.uid; }); if (l.length) r[k] = l; });
+      if (had !== e) (r[e] = r[e] || []).push(me.uid);
+      m.reacts = r; refreshReacts(m);
+    }
     // the picked one stays first in the picker's «recent»
     var rec = store('arw-cm-recent') || []; rec = [e].concat(rec.filter(function (x) { return x !== e; })).slice(0, 24); store('arw-cm-recent', rec);
   }
 
+  // mine can be edited or deleted for 6 hours after sending (owner 2026-10-15); the site's account deletes any, any time
+  var WINDOW = 6 * 36e5;
+  function canEdit(m) { return !!(me && m.uid === me.uid && typeof m.id === 'number' && !m.del && Date.now() - m.at < WINDOW && (m.text || (m.att && m.att.kind !== 'sticker' && m.att.kind !== 'voice' && m.att.kind !== 'gif'))); }
+  function canDelete(m) { return !!(me && typeof m.id === 'number' && !m.del && (me.mod || (m.uid === me.uid && Date.now() - m.at < WINDOW))); }
   // a message's tools: hover (a pointer), long press and swipe (a finger)
   function addTools(row, m, mine) {
     if (!TOUCH) {
@@ -554,7 +740,11 @@
       var quick = el('div', 'cm-quick');
       QUICK.slice(0, 3).forEach(function (e) { var b = el('button', null, e); b.type = 'button'; b.setAttribute('aria-label', 'تفاعل ' + e); b.addEventListener('click', function () { react(m, e); }); quick.appendChild(b); });
       tools.appendChild(quick);
-      [['smile', 'تفاعل', function () { sheet(m); }], ['reply', 'رد', function () { startReply(m); }], ['more', 'المزيد', function () { sheet(m); }]].forEach(function (t) {
+      var acts = [['smile', 'تفاعل', function () { sheet(m); }], ['reply', 'رد', function () { startReply(m); }]];
+      if (canEdit(m)) acts.push(['edit', 'تعديل', function () { startEdit(m); }]);
+      if (mine && canDelete(m)) acts.push(['trash', 'حذف', function () { confirmDelete(m); }]);
+      acts.push(['more', 'المزيد', function () { sheet(m); }]);
+      acts.forEach(function (t) {
         var b = el('button'); b.type = 'button'; b.innerHTML = IC[t[0]]; b.setAttribute('aria-label', t[1]); b.title = t[1]; b.addEventListener('click', t[2]); tools.appendChild(b);
       });
       $('.cm-bubble', row).appendChild(tools);
@@ -605,8 +795,10 @@
     var mine = me && m.uid === me.uid;
     var items = [['reply', 'رد', function () { startReply(m); }]];
     if (m.text) items.push(['copy', 'نسخ النص', function () { copy(m.text); }]);
+    // mine, for a quarter of an hour (a picture's words too), as WhatsApp
+    if (canEdit(m)) items.push(['edit', 'تعديل الرسالة', function () { startEdit(m); }]);
     if (me && me.mod) items.push(['pin', pinned && pinned.id === m.id ? 'إلغاء التثبيت' : 'تثبيت الرسالة', function () { wsSend({ t: 'pin', id: pinned && pinned.id === m.id ? 0 : m.id }); }]);
-    if (mine || (me && me.mod)) items.push(['trash', 'حذف الرسالة', function () { confirmDelete(m); }, 'is-danger']);
+    if (canDelete(m)) items.push(['trash', 'حذف الرسالة', function () { confirmDelete(m); }, 'is-danger']);
     if (!mine) items.push(['flag', 'إبلاغ عن الرسالة', function () { report(m); }, 'is-danger']);
     if (me && me.mod && !mine && m.badge !== 'gold') items.push(['flag', 'إيقاف ' + m.name + ' عن الكتابة', function () { muteFromRoom(m); }, 'is-danger']);
     items.forEach(function (it) {
@@ -645,7 +837,7 @@
   // the site's own account: a member stopped from writing in every room, from here
   function muteFromRoom(m) {
     var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
-    card.innerHTML = '<h2></h2><p>لن يستطيع الكتابة في أي غرفة حتى تنتهي المدة، ويمكنه القراءة.</p><div class="cm-report-opts">' +
+    card.innerHTML = '<h2></h2><p>لن يستطيع الكتابة في أي مجموعة حتى تنتهي المدة، ويمكنه القراءة.</p><div class="cm-report-opts">' +
       [[1, 'ساعة'], [24, 'يوم'], [168, 'أسبوع'], [720, 'شهر'], [8760, 'سنة']].map(function (o, i) { return '<label><input type="radio" name="h" value="' + o[0] + '"' + (i === 1 ? ' checked' : '') + '> ' + o[1] + '</label>'; }).join('') +
       '</div><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">أوقفه</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
     card.querySelector('h2').textContent = 'إيقاف ' + m.name + ' عن الكتابة';
@@ -675,7 +867,7 @@
     var tx = $('.cm-pinned-tx');
     tx.textContent = '';
     tx.appendChild(el('b', null, pinned.name));
-    tx.appendChild(document.createTextNode(pinned.spoiler ? 'رسالة مخفية (حرق نتائج)' : pinned.text || (pinned.att ? '📎 مرفق' : '')));
+    tx.appendChild(document.createTextNode(pinned.spoiler ? 'رسالة مخفية (حرق نتائج)' : pinned.text || (pinned.att ? kindLabel(pinned.att.kind) : '')));
     $('.cm-pinned-x').hidden = !(me && me.mod);
   }
   var wantJump = 0;
@@ -713,13 +905,32 @@
 
   // ── writing ──────────────────────────────────────────────────────────────
   function startReply(m) {
+    if (typeof m.id !== 'number') return;
+    if (editing) cancelEdit();
     replyTo = m;
-    var r = $('.cm-replying'); r.hidden = false;
+    var r = $('.cm-replying'); r.hidden = false; r.classList.remove('is-edit');
     $('b', r).textContent = 'رد على ' + m.name;
-    $('span', r).textContent = m.spoiler ? 'رسالة مخفية (حرق نتائج)' : m.text || (m.att ? (m.att.kind === 'image' ? '📷 صورة' : m.att.kind === 'voice' ? '🎤 رسالة صوتية' : '📎 ملف') : '');
+    $('span', r).textContent = m.spoiler ? 'رسالة مخفية (حرق نتائج)' : m.text || (m.att ? kindLabel(m.att.kind) : '');
     input.focus();
   }
-  function cancelReply() { replyTo = null; $('.cm-replying').hidden = true; }
+  function cancelReply() { replyTo = null; if (!editing) $('.cm-replying').hidden = true; }
+  // editing one of mine: its words in the box, «تعديل الرسالة» over it; what was being written comes back after
+  var draftBeforeEdit = '';
+  function startEdit(m) {
+    cancelReply();
+    editing = m; draftBeforeEdit = input.value;
+    var r = $('.cm-replying'); r.hidden = false; r.classList.add('is-edit');
+    $('b', r).textContent = 'تعديل الرسالة';
+    $('span', r).textContent = m.text || kindLabel(m.att && m.att.kind);
+    input.value = m.text || ''; autosize(); updateSendBtn();
+    input.focus(); input.setSelectionRange(input.value.length, input.value.length);
+  }
+  function cancelEdit() {
+    if (!editing) return;
+    editing = null;
+    var r = $('.cm-replying'); r.hidden = true; r.classList.remove('is-edit');
+    input.value = draftBeforeEdit; draftBeforeEdit = ''; autosize(); updateSendBtn();
+  }
   function autosize() { input.style.height = 'auto'; input.style.height = Math.min(150, input.scrollHeight) + 'px'; }
   function canSend() { return !!(input.value.trim() || attached.length); }
   function updateSendBtn() {
@@ -728,15 +939,69 @@
     sendBtn.setAttribute('aria-label', s ? 'إرسال' : 'تسجيل رسالة صوتية');
     compose.classList.toggle('is-typing', !!input.value.trim());
   }
-  var lastTyping = 0;
+  // «يكتب»: said every 2.5 seconds while writing, taken back when the box empties, the message goes, or 5 quiet seconds pass
+  var lastTyping = 0, typingStopT;
+  function stopTyping() { clearTimeout(typingStopT); if (lastTyping) { lastTyping = 0; wsSend({ t: 'typing', stop: true }); } }
   input.addEventListener('input', function () {
-    autosize(); updateSendBtn();
-    if (input.value.trim() && Date.now() - lastTyping > 2500) { lastTyping = Date.now(); wsSend({ t: 'typing' }); }
+    autosize(); updateSendBtn(); saveDraft(); mentionCheck();
+    if (!input.value.trim() || editing) return stopTyping();
+    if (Date.now() - lastTyping > 2500 && wsSend({ t: 'typing' })) lastTyping = Date.now();
+    clearTimeout(typingStopT); typingStopT = setTimeout(stopTyping, 5000);
   });
+  input.addEventListener('blur', function () { setTimeout(function () { if (document.activeElement !== input) stopTyping(); }, 200); });
+  input.addEventListener('focus', function () { if (TOUCH && !$('.cm-emoji-pop').hidden) closePops(); });
   input.addEventListener('keydown', function (e) {
+    if (mentionKey(e)) return;
     if (e.key === 'Enter' && !e.shiftKey && !TOUCH && !e.isComposing) { e.preventDefault(); send(); }
-    if (e.key === 'Escape') cancelReply();
+    if (e.key === 'Escape') { if (editing) cancelEdit(); else cancelReply(); }
+    // ↑ in an empty box: edit my last message (as Discord)
+    if (e.key === 'ArrowUp' && !input.value && !TOUCH && me) {
+      for (var i = msgs.length - 1; i >= 0 && i > msgs.length - 30; i--) { var x = msgs[i]; if (x.uid === me.uid && x.text && canEdit(x)) { e.preventDefault(); startEdit(x); break; } }
+    }
   });
+
+  // @: the people here (and who wrote lately), to pick from
+  var mention = null; // {from, items, at}
+  function mentionCheck() {
+    var pop = $('.cm-mention-pop'), pos = input.selectionStart || 0, before = input.value.slice(0, pos);
+    var mt = before.match(/(^|\s)@([A-Za-z0-9_.ء-ي]{0,20})$/);
+    if (!mt || !me) { mention = null; pop.hidden = true; return; }
+    var q = mt[2].toLowerCase(), seenU = {}, list = [];
+    var add = function (p) { if (!p || !p.user || p.uid === me.uid || seenU[p.uid]) return; seenU[p.uid] = 1; list.push({ uid: p.uid, user: p.user, name: p.name, pic: p.pic, badge: p.badge }); };
+    people.forEach(add);
+    for (var i = msgs.length - 1; i >= 0 && list.length < 60; i--) add(msgs[i]);
+    list = list.filter(function (p) { return !q || p.user.toLowerCase().indexOf(q) === 0 || String(p.name).toLowerCase().indexOf(q) >= 0; }).slice(0, 6);
+    if (!list.length) { mention = null; pop.hidden = true; return; }
+    mention = { from: pos - mt[2].length - 1, items: list, at: 0 };
+    drawMention();
+  }
+  function drawMention() {
+    var pop = $('.cm-mention-pop');
+    pop.textContent = '';
+    mention.items.forEach(function (p, i) {
+      var b = el('button', 'cm-mention-row' + (i === mention.at ? ' is-on' : '')); b.type = 'button';
+      b.appendChild(avatar(p));
+      var tx = el('span', 'cm-person-tx'); tx.appendChild(el('b', null, p.name)); tx.appendChild(el('small', null, '@' + p.user)); b.appendChild(tx);
+      b.addEventListener('mousedown', function (e) { e.preventDefault(); pickMention(i); });
+      pop.appendChild(b);
+    });
+    pop.hidden = false;
+  }
+  function pickMention(i) {
+    var p = mention && mention.items[i]; if (!p) return;
+    var pos = input.selectionStart || 0, t = '@' + p.user + ' ';
+    input.value = input.value.slice(0, mention.from) + t + input.value.slice(pos);
+    var c = mention.from + t.length; input.setSelectionRange(c, c);
+    mention = null; $('.cm-mention-pop').hidden = true;
+    autosize(); updateSendBtn(); saveDraft(); input.focus();
+  }
+  function mentionKey(e) {
+    if (!mention) return false;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); mention.at = (mention.at + (e.key === 'ArrowDown' ? 1 : mention.items.length - 1)) % mention.items.length; drawMention(); return true; }
+    if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); pickMention(mention.at); return true; }
+    if (e.key === 'Escape') { mention = null; $('.cm-mention-pop').hidden = true; return true; }
+    return false;
+  }
   input.addEventListener('paste', function (e) {
     var files = Array.prototype.filter.call((e.clipboardData && e.clipboardData.files) || [], function (f) { return /^image\//.test(f.type); });
     if (files.length) { e.preventDefault(); files.forEach(addImage); }
@@ -747,33 +1012,78 @@
     var muted = mutedUntil > Date.now(), ro = readOnly(), on = muted || ro;
     compose.classList.toggle('is-muted', on);
     var b = $('.cm-muted'); b.hidden = !on;
-    if (ro) b.textContent = 'هذه الغرفة للقراءة فقط، والكتابة فيها لفريق الموقع.';
+    if (ro) b.textContent = 'هذه المجموعة للقراءة فقط، والكتابة فيها لفريق الموقع.';
     else if (muted) { var d = new Date(mutedUntil); b.textContent = 'لا يمكنك الكتابة في المجتمع حتى ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + clock(mutedUntil) + '.'; }
   }
   var nonceN = 0;
   function send() {
     if (mutedUntil > Date.now() || readOnly()) return setMuted();
     var text = input.value.trim();
+    if (editing) return sendEdit(text);
     var ready = attached.filter(function (a) { return a.att; });
     if (attached.some(function (a) { return !a.att && !a.failed; })) return toast('انتظر حتى يكتمل رفع المرفق.');
     if (!text && !ready.length) return;
-    var items = ready.length ? ready.map(function (a, i) { return { text: i === ready.length - 1 ? text : '', att: a.att }; }) : [{ text: text, att: null }];
-    items.forEach(function (it) {
-      var nonce = 'n' + Date.now().toString(36) + (nonceN++);
-      var payload = { t: 'send', text: it.text, att: it.att, reply: replyTo ? replyTo.id : 0, spoiler: spoiler, nonce: nonce };
-      var ghost = { id: 'p' + nonce, uid: me ? me.uid : 0, user: '', name: me ? me.name : '', pic: '', badge: '', text: it.text, att: it.att, reply: replyTo ? { id: replyTo.id, name: replyTo.name, text: replyTo.text.slice(0, 140), kind: replyTo.att ? replyTo.att.kind : 'text' } : null, spoiler: spoiler, reacts: {}, at: Date.now() };
-      var row = buildMsg(ghost, cont(ghost, msgs[msgs.length - 1]));
-      row.classList.add('is-pending');
-      var sys = $('.cm-sys', list); if (sys) sys.remove();
-      list.appendChild(row);
-      pending[nonce] = { el: row, payload: payload };
-      if (!wsSend(payload)) { conn('انقطع الاتصال، سترسل الرسالة عند عودته…'); if (!ws) connect(); }
-    });
-    input.value = ''; autosize(); cancelReply(); clearAttached();
+    if (ready.length) ready.forEach(function (a, i) { dispatch(i === ready.length - 1 ? text : '', a.att); });
+    else dispatch(text, null);
+    input.value = ''; autosize(); cancelReply(); clearAttached(); saveDraft(); stopTyping();
+    mention = null; $('.cm-mention-pop').hidden = true;
     if (spoiler) toggleSpoiler(false);
-    updateSendBtn(); toBottom(true);
+    updateSendBtn();
     if (!TOUCH) input.focus();
   }
+  function sendEdit(text) {
+    var m = editing;
+    if (!text && !m.att) return toast('اكتب رسالتك أولا.');
+    if (text !== m.text) {
+      if (!wsSend({ t: 'edit', id: m.id, text: text })) return toast('لا يوجد اتصال الآن.');
+      m.text = text; m.edited = Date.now(); replaceMsg(m);
+    }
+    draftBeforeEdit = drafts[current] || '';
+    cancelEdit();
+  }
+  // a message on its way: shown at once (grey, 🕓), the room's copy takes its place when it arrives
+  function dispatch(text, att) {
+    if (mutedUntil > Date.now() || readOnly()) return setMuted();
+    var nonce = 'n' + Date.now().toString(36) + (nonceN++) + Math.random().toString(36).slice(2, 6);
+    var payload = { t: 'send', text: text, att: att, reply: replyTo ? replyTo.id : 0, spoiler: spoiler, nonce: nonce };
+    var ghost = { id: 'p' + nonce, uid: me ? me.uid : 0, user: '', name: me ? me.name : '', pic: '', badge: '', text: text, att: att, reply: replyTo ? { id: replyTo.id, name: replyTo.name, text: (replyTo.text || '').slice(0, 140), kind: replyTo.att ? replyTo.att.kind : 'text' } : null, spoiler: spoiler, reacts: {}, at: Date.now(), pending: true };
+    var sys = $('.cm-sys', list); if (sys) sys.remove();
+    var days = list.querySelectorAll('.cm-day'), lastDay = days[days.length - 1];
+    if (!lastDay || lastDay.textContent !== dayLabel(ghost.at)) list.appendChild(el('div', 'cm-day', dayLabel(ghost.at)));
+    var ks = Object.keys(pending), prev = ks.length ? pending[ks[ks.length - 1]].ghost : msgs[msgs.length - 1];
+    var row = buildMsg(ghost, cont(ghost, prev));
+    row.classList.add('is-pending');
+    row.setAttribute('data-nonce', nonce);
+    list.appendChild(row);
+    var p = pending[nonce] = { el: row, payload: payload, ghost: ghost, sentAt: 0, failed: false };
+    if (!push(p)) { conn(navigator.onLine === false ? 'لا يوجد اتصال بالإنترنت، سترسل رسائلك عند عودته…' : 'انقطع الاتصال، سترسل الرسالة عند عودته…'); if (!ws && !connecting) { retry = 0; connect(); } }
+    ding('out');
+    toBottom(true);
+  }
+  function push(p) { if (wsSend(p.payload)) { p.sentAt = Date.now(); return true; } return false; }
+  function failed(p, canRetry) {
+    p.failed = true;
+    if (!canRetry) p.payload = null;
+    var row = p.el; if (!row) return;
+    row.classList.remove('is-pending'); row.classList.add('is-failed');
+    var tk = $('.cm-tick', row); if (tk) { tk.innerHTML = IC.alert; tk.setAttribute('aria-label', 'لم ترسل'); }
+    row.title = canRetry ? 'لم ترسل الرسالة، اضغط لإعادة الإرسال' : 'لم ترسل الرسالة';
+  }
+  // a tap on a message that didn't go: again
+  list.addEventListener('click', function (e) {
+    var row = e.target.closest('.cm-msg.is-failed'); if (!row) return;
+    var p = pending[row.getAttribute('data-nonce')]; if (!p) return;
+    if (!p.payload) { row.remove(); delete pending[row.getAttribute('data-nonce')]; return; }
+    p.failed = false; row.classList.remove('is-failed'); row.classList.add('is-pending'); row.title = '';
+    var tk = $('.cm-tick', row); if (tk) tk.innerHTML = IC.clock;
+    if (!push(p) && !ws && !connecting) { retry = 0; connect(); }
+  });
+  // one sent but not heard back in 15 seconds on an open socket: the socket is checked, the message shows «!»
+  setInterval(function () {
+    var now = Date.now(), late = false;
+    Object.keys(pending).forEach(function (n) { var p = pending[n]; if (!p.failed && p.sentAt && now - p.sentAt > 15000) { failed(p, true); late = true; } });
+    if (late) probe();
+  }, 3000);
   function toggleSpoiler(on) {
     spoiler = on == null ? !spoiler : on;
     var b = $('[data-act="spoiler"]'); b.setAttribute('aria-pressed', String(spoiler));
@@ -915,74 +1225,231 @@
         att.dur = Math.round(dur); att.wave = wave;
         attached.splice(attached.indexOf(a), 1); drawAttached();
         // sent at once, as a voice note is (what was being written and attached stays)
-        var keep = input.value, others = attached;
-        input.value = ''; attached = [{ name: a.name, att: att }];
-        send();
-        input.value = keep; attached = others; drawAttached(); autosize(); updateSendBtn();
+        dispatch('', att); cancelReply();
       }).catch(function (e) { a.failed = true; drawAttached(); toast(e.message || 'تعذر إرسال الرسالة الصوتية.'); });
     }, 300);
   }
 
-  // the emoji picker (for writing, or for a reaction)
-  var emojiCb = null, emojiTab = 0;
+  // ── the picker (owner 2026-10-15: «ايموجي كتير جدا … بكل انواعها … استيكرات … ملصقات … gif») ──────────────
+  // Three parts: every emoji (search in Arabic or English, skin tones), stickers, GIFs. On a computer it floats over the
+  // box; on a phone it takes the keyboard's place under the box, as WhatsApp. For a reaction: the emoji only.
+  var pk = $('.cm-emoji-pop'), emojiCb = null, pane = store('arw-cm-pane') || 'emoji', tone = Number(store('arw-cm-tone')) || 0;
+  var emojiData = null, emojiLoading = null, recentDirty = true;
+  var EMOJI_URL = root.getAttribute('data-emoji') || '/assets/emoji-data.json';
+  function loadEmoji() {
+    if (emojiData) return Promise.resolve(emojiData);
+    if (!emojiLoading) emojiLoading = fetch(EMOJI_URL).then(function (r) { if (!r.ok) throw new Error(); return r.json(); }).then(function (d) { emojiData = d; return d; }).catch(function (e) { emojiLoading = null; throw e; });
+    return emojiLoading;
+  }
+  function toned(e) { if (!tone) return e; var c = Array.from(e), rest = c.slice(1); if (rest[0] === '️') rest.shift(); return c[0] + TONES[tone] + rest.join(''); }
+  function norm(t) { return String(t).toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/[ً-ْـ]/g, ''); }
+  function emojiBtns(rows) {
+    return rows.map(function (r) { var e = r[0], sk = r[2] ? 1 : 0; return '<button type="button" data-e="' + e + '"' + (sk ? ' data-s="1"' : '') + '>' + (sk ? toned(e) : e) + '</button>'; }).join('');
+  }
+  function recentRows() { return (store('arw-cm-recent') || []).map(function (e) { return [e]; }); }
   function drawEmoji() {
-    var tabs = $('.cm-emoji-tabs'), grid = $('.cm-emoji-grid');
-    var rec = store('arw-cm-recent') || [];
-    var cats = (rec.length ? [['🕘', 'الأخيرة', rec.join('')]] : []).concat(EMOJI);
-    if (emojiTab >= cats.length) emojiTab = 0;
+    var grid = $('.cm-emoji-grid'), tabs = $('.cm-emoji-tabs');
+    var cats = [];
+    var rec = recentRows();
+    if (rec.length) cats.push(['🕘', 'الأخيرة', rec]);
+    cats.push(['🤼', 'المصارعة', graphemes(WRESTLING).map(function (e) { return [e]; })]);
+    (emojiData || []).forEach(function (c, i) { cats.push([CAT_ICONS[i] || '•', c[0], c[1]]); });
+    var html = '';
+    cats.forEach(function (c, i) { html += '<section data-cat="' + i + '"><b>' + c[1] + '</b><div class="cm-eg">' + emojiBtns(c[2]) + '</div></section>'; });
+    if (!emojiData) html += '<div class="cm-pk-wait"><span></span></div>';
+    grid.innerHTML = html + '<section class="cm-eg-results" hidden><b>نتائج البحث</b><div class="cm-eg"></div></section>';
     tabs.textContent = '';
     cats.forEach(function (c, i) {
-      var b = el('button', i === emojiTab ? 'is-on' : null, c[0]); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', c[1]); b.title = c[1];
-      b.addEventListener('click', function () { emojiTab = i; drawEmoji(); });
+      var b = el('button', i === 0 ? 'is-on' : null, c[0]); b.type = 'button'; b.setAttribute('aria-label', c[1]); b.title = c[1];
+      b.addEventListener('click', function () { var sec = grid.querySelector('[data-cat="' + i + '"]'); if (sec) grid.scrollTop = sec.offsetTop - grid.offsetTop; });
       tabs.appendChild(b);
     });
-    grid.textContent = '';
-    var c = cats[emojiTab];
-    grid.appendChild(el('b', null, c[1]));
-    graphemes(c[2]).forEach(function (e) {
-      if (!e.trim()) return;
-      var b = el('button', null, e); b.type = 'button';
-      b.addEventListener('click', function () {
-        var r = store('arw-cm-recent') || []; r = [e].concat(r.filter(function (x) { return x !== e; })).slice(0, 24); store('arw-cm-recent', r);
-        if (emojiCb) { var cb = emojiCb; closePops(); cb(e); return; }
-        insert(e);
-      });
-      grid.appendChild(b);
-    });
+    $('.cm-tone').textContent = toned('👋');
+    recentDirty = false;
+    if (!emojiData) loadEmoji().then(function () { if (!pk.hidden) { var q = $('.cm-pk-pane[data-pane="emoji"] input').value; drawEmoji(); if (q) emojiSearch(q); } }).catch(function () { var w = $('.cm-pk-wait', grid); if (w) w.textContent = 'تعذر تحميل كل الإيموجي، تحقق من الاتصال.'; });
+  }
+  function emojiSearch(q) {
+    var grid = $('.cm-emoji-grid'), res = $('.cm-eg-results', grid);
+    q = norm(q.trim());
+    grid.classList.toggle('is-search', !!q);
+    res.hidden = !q;
+    if (!q) return;
+    // the name itself first (its first words), then a whole word, then the start of a word, then anywhere
+    var hits = [], seenE = {}, n = 0;
+    (emojiData || []).forEach(function (c) { c[1].forEach(function (r) {
+      if (seenE[r[0]]) return;
+      if (r[3] == null) r[3] = ' ' + norm(r[1]) + ' ';
+      var at = r[3].indexOf(q); if (at < 0) return;
+      seenE[r[0]] = 1;
+      var whole = r[3].indexOf(' ' + q + ' ') >= 0, start = r[3].indexOf(' ' + q) >= 0;
+      hits.push([at === 1 && whole ? 0 : at === 1 ? 1 : whole ? 2 : start ? 3 : 4, n++, r]);
+    }); });
+    hits.sort(function (x, y) { return x[0] - y[0] || x[1] - y[1]; });
+    var out = hits.slice(0, 160).map(function (h) { return h[2]; });
+    var box = $('.cm-eg', res);
+    box.innerHTML = out.length ? emojiBtns(out) : '';
+    $('b', res).textContent = out.length ? 'نتائج البحث' : emojiData ? 'لا توجد نتائج، جرب كلمة أخرى' : 'جار التحميل…';
     grid.scrollTop = 0;
   }
+  $('.cm-emoji-grid').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-e]'); if (!b) return;
+    var ch = b.getAttribute('data-e'); if (b.hasAttribute('data-s')) ch = toned(ch);
+    var r = store('arw-cm-recent') || []; r = [ch].concat(r.filter(function (x) { return x !== ch; })).slice(0, 36); store('arw-cm-recent', r); recentDirty = true;
+    if (emojiCb) { var cb = emojiCb; closePops(); cb(ch); return; }
+    insert(ch);
+  });
+  // the tab of the group being looked at
+  $('.cm-emoji-grid').addEventListener('scroll', function () {
+    var grid = this, secs = grid.querySelectorAll('section[data-cat]'), on = 0;
+    for (var i = 0; i < secs.length; i++) if (secs[i].offsetTop - grid.offsetTop <= grid.scrollTop + 12) on = i;
+    $$('.cm-emoji-tabs button').forEach(function (b, i) { b.classList.toggle('is-on', i === on); });
+  }, { passive: true });
+  var searchT;
+  $('.cm-pk-pane[data-pane="emoji"] input').addEventListener('input', function () { var v = this.value; clearTimeout(searchT); searchT = setTimeout(function () { if (!emojiData && v.trim()) loadEmoji().then(function () { emojiSearch(v); }, function () {}); emojiSearch(v); }, 120); });
+  $('.cm-tone').addEventListener('click', function () {
+    tone = (tone + 1) % TONES.length; store('arw-cm-tone', tone);
+    this.textContent = toned('👋');
+    $$('.cm-emoji-grid button[data-s]').forEach(function (b) { b.textContent = toned(b.getAttribute('data-e')); });
+  });
+
+  // stickers: the site's pack and the animated ones, the last used first
+  var stkPack = 'arw';
+  function drawStickers() {
+    var grid = $('.cm-stk-grid');
+    grid.textContent = '';
+    var rec = (store('arw-cm-stk') || []).filter(function (id) { return /^(arw:[a-z0-9-]+|noto:[0-9a-f_]+)$/.test(id); });
+    var ids = stkPack === 'arw' ? ARW.map(function (x) { return 'arw:' + x[0]; }) : NOTO.map(function (c) { return 'noto:' + c; });
+    var add = function (title, list) {
+      if (!list.length) return;
+      grid.appendChild(el('b', 'cm-stk-title', title));
+      var box = el('div', 'cm-stk-list' + (stkPack === 'noto' && title !== 'الأخيرة' ? ' is-noto' : ''));
+      list.forEach(function (id) {
+        var b = el('button', 'cm-stk-pick'); b.type = 'button'; b.setAttribute('data-stk', id);
+        if (id.indexOf('noto:') === 0) { var ch = ''; try { ch = notoChar(id.slice(5)); } catch (e) {} b.appendChild(el('span', 'cm-stk-ch', ch)); b.setAttribute('aria-label', 'ملصق ' + ch); }
+        else { b.appendChild(stickerNode(id)); b.setAttribute('aria-label', 'ملصق ' + ((ARW_BY[id.slice(4)] || {}).t || '')); }
+        box.appendChild(b);
+      });
+      grid.appendChild(box);
+    };
+    add('الأخيرة', rec.slice(0, 8));
+    add(stkPack === 'arw' ? 'ملصقات عرب راسلنج' : 'ملصقات متحركة', ids);
+    $$('.cm-stk-tabs button').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-pack') === stkPack); });
+  }
+  $('.cm-stk-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-pack]'); if (!b) return; stkPack = b.getAttribute('data-pack'); drawStickers(); $('.cm-stk-grid').scrollTop = 0; });
+  $('.cm-stk-grid').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-stk]'); if (!b) return;
+    var id = b.getAttribute('data-stk');
+    var r = store('arw-cm-stk') || []; r = [id].concat(r.filter(function (x) { return x !== id; })).slice(0, 16); store('arw-cm-stk', r);
+    closePops();
+    dispatch('', { kind: 'sticker', id: id }); cancelReply();
+  });
+
+  // GIFs: wrestling ones first, then whatever is searched for
+  var gifQ = null, gifNext = '', gifBusy = false, gifSeq = 0;
+  function gifLoad(q, more) {
+    var s = session(); if (!s) return;
+    if (more && (!gifNext || gifBusy)) return;
+    var grid = $('.cm-gif-grid'), seq = ++gifSeq;
+    if (!more) { gifQ = q; gifNext = ''; grid.textContent = ''; grid.appendChild(el('div', 'cm-pk-wait')).appendChild(el('span')); }
+    gifBusy = true;
+    fetch(API + '/chat/gif?q=' + encodeURIComponent(q) + (more ? '&pos=' + encodeURIComponent(gifNext) : ''), { headers: { Authorization: 'Bearer ' + s.token }, credentials: 'omit' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        gifBusy = false;
+        if (seq !== gifSeq) return;
+        var w = $('.cm-pk-wait', grid); if (w) w.remove();
+        if (!d.ok) {
+          grid.appendChild(el('p', 'cm-gif-note', d.setup ? 'البحث عن صور GIF سيتوفر قريبا. يمكنك الآن إرسال صورة GIF من جهازك بزر الإرفاق 📎.' : (srv(d.error) || 'تعذر تحميل صور GIF.')));
+          return;
+        }
+        $('.cm-gif-by').textContent = d.by ? 'صور GIF بواسطة ' + d.by : '';
+        gifNext = d.next || '';
+        if (!more && !(d.items || []).length) grid.appendChild(el('p', 'cm-gif-note', 'لا توجد نتائج، جرب كلمة أخرى.'));
+        (d.items || []).forEach(function (g) {
+          var b = el('button', 'cm-gif-pick'); b.type = 'button'; b.setAttribute('aria-label', 'إرسال صورة GIF');
+          b.style.aspectRatio = (g.w || 1) + ' / ' + (g.h || 1);
+          var v = gifNode({ url: g.url, still: g.still, w: g.w, h: g.h }); v.preload = 'none'; v.removeAttribute('aria-label');
+          b.appendChild(v);
+          b.addEventListener('click', function () { closePops(); dispatch('', { kind: 'gif', url: g.url, still: g.still, w: g.w, h: g.h }); cancelReply(); });
+          grid.appendChild(b);
+        });
+      })
+      .catch(function () { gifBusy = false; if (seq !== gifSeq) return; var w = $('.cm-pk-wait', grid); if (w) w.remove(); if (!more) grid.appendChild(el('p', 'cm-gif-note', 'تعذر تحميل صور GIF، تحقق من الاتصال.')); });
+  }
+  (function () {
+    var chips = $('.cm-gif-chips');
+    GIF_TAGS.forEach(function (t) { var b = el('button', null, t[0]); b.type = 'button'; b.setAttribute('data-q', t[1]); chips.appendChild(b); });
+    chips.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-q]'); if (!b) return;
+      $$('button', chips).forEach(function (x) { x.classList.toggle('is-on', x === b); });
+      $('.cm-pk-pane[data-pane="gif"] input').value = '';
+      gifLoad(b.getAttribute('data-q'));
+    });
+  })();
+  var gifT;
+  $('.cm-pk-pane[data-pane="gif"] input').addEventListener('input', function () {
+    var v = this.value.trim(); clearTimeout(gifT);
+    gifT = setTimeout(function () { $$('.cm-gif-chips button').forEach(function (x) { x.classList.remove('is-on'); }); gifLoad(v || 'wrestling'); }, 450);
+  });
+  $('.cm-gif-grid').addEventListener('scroll', function () { if (this.scrollTop + this.clientHeight > this.scrollHeight - 300) gifLoad(gifQ, true); }, { passive: true });
+
+  function showPane(p) {
+    pane = p;
+    $$('.cm-pk-tabs [data-pane]').forEach(function (b) { var on = b.getAttribute('data-pane') === p; b.classList.toggle('is-on', on); b.setAttribute('aria-selected', String(on)); });
+    $$('.cm-pk-pane').forEach(function (x) { x.hidden = x.getAttribute('data-pane') !== p; });
+    if (p === 'emoji' && (recentDirty || !$('.cm-emoji-grid section'))) drawEmoji();
+    if (p === 'stickers') drawStickers();
+    if (p === 'gif' && gifQ === null) { var c = $('.cm-gif-chips button'); if (c) c.classList.add('is-on'); gifLoad('wrestling'); }
+  }
+  $('.cm-pk-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-pane]'); if (!b) return; showPane(b.getAttribute('data-pane')); store('arw-cm-pane', pane); });
+
   function insert(t) {
     var s = input.selectionStart == null ? input.value.length : input.selectionStart, e = input.selectionEnd == null ? s : input.selectionEnd;
     input.value = input.value.slice(0, s) + t + input.value.slice(e);
     var p = s + t.length;
     input.setSelectionRange(p, p);
-    autosize(); updateSendBtn();
+    autosize(); updateSendBtn(); saveDraft();
     if (!TOUCH) input.focus();
   }
-  function place(pop, anchor) {
-    var r = anchor.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight, vw = window.innerWidth;
-    var top = r.top - ph - 10;
-    if (top < 8) top = Math.min(window.innerHeight - ph - 8, r.bottom + 10);
+  // a floating card by its button (above it if there's room, else below); it follows the button if the page scrolls
+  var placed = null;
+  function place(pop, anchor, below) {
+    placed = { pop: pop, anchor: anchor, below: !!below };
+    var r = anchor.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight, vw = window.innerWidth, vh = window.innerHeight;
+    var top = below ? r.bottom + 8 : r.top - ph - 10;
+    if (!below && top < 8) top = r.bottom + 10;
+    top = Math.max(8, Math.min(vh - ph - 8, top));
     var left = Math.min(vw - pw - 8, Math.max(8, r.right - pw));
     pop.style.top = top + 'px'; pop.style.left = left + 'px';
   }
+  function replace() { if (placed && !placed.pop.hidden && !placed.pop.classList.contains('is-dock')) place(placed.pop, placed.anchor, placed.below); }
+  window.addEventListener('scroll', replace, { passive: true });
+  window.addEventListener('resize', replace);
+  function docked() { return window.matchMedia('(max-width: 1150px)').matches; }
   function openEmoji(cb, centered) {
     closePops();
     emojiCb = cb || null;
-    var pop = $('.cm-emoji-pop'); pop.hidden = false; drawEmoji();
-    var anchor = centered ? $('.cm-compose .cm-input') : $('[data-act="emoji"]');
-    place(pop, anchor);
+    var dock = docked(), stay = nearBottom();
+    pk.classList.toggle('is-dock', dock); pk.classList.toggle('is-react', !!cb);
+    if (dock && pk.parentNode !== chat) chat.appendChild(pk);
+    else if (!dock && pk.parentNode !== root) root.appendChild(pk);
+    pk.style.top = pk.style.left = '';
+    pk.hidden = false;
+    showPane(cb ? 'emoji' : pane);
+    if (dock) { if (TOUCH) input.blur(); if (stay) requestAnimationFrame(function () { scroller.scrollTop = scroller.scrollHeight; }); }
+    else place(pk, centered ? $('.cm-compose .cm-input') : $('[data-act="emoji"]'));
     if (!cb) $('[data-act="emoji"]').setAttribute('aria-expanded', 'true');
   }
   function closePops() {
     $$('.cm-pop').forEach(function (p) { p.hidden = true; });
     $$('[aria-expanded="true"]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
     emojiCb = null;
+    $$('.cm-gif-grid video').forEach(function (v) { v.pause(); });
   }
   document.addEventListener('click', function (e) {
     // a button the picker just drew again is no longer in the page: not a click outside
     if (!document.contains(e.target)) return;
-    if (!e.target.closest('.cm-pop, [data-act="emoji"], [data-act="attach"], [data-act="people"], .cm-sheet')) closePops();
+    if (!e.target.closest('.cm-pop, [data-act="emoji"], [data-act="attach"], [data-act="people"], [data-act="mute"], .cm-sheet')) closePops();
   });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
@@ -1003,7 +1470,8 @@
     if (b.classList.contains('cm-room')) { open(b.getAttribute('data-room')); return; }
     var act = b.getAttribute('data-act');
     if (act === 'back') { if (history.state && history.state.room) history.back(); else { showRooms(); history.replaceState(null, '', location.pathname); } }
-    else if (act === 'emoji') { if ($('.cm-emoji-pop').hidden) openEmoji(); else closePops(); }
+    else if (act === 'emoji') { if (pk.hidden || emojiCb) openEmoji(); else { closePops(); if (TOUCH) input.focus(); } }
+    else if (act === 'mute') { var mp = $('.cm-mute-pop'); var wm = mp.hidden; closePops(); if (wm) { drawMute(); mp.hidden = false; place(mp, b, true); b.setAttribute('aria-expanded', 'true'); } }
     else if (act === 'attach') { var p = $('.cm-attach-pop'); var was = p.hidden; closePops(); if (was) { p.hidden = false; place(p, b); b.setAttribute('aria-expanded', 'true'); } }
     else if (act === 'pick-img') { closePops(); $('.cm-file-img').click(); }
     else if (act === 'pick-file') { closePops(); $('.cm-file-any').click(); }
@@ -1011,12 +1479,12 @@
     else if (act === 'mic') { if (canSend()) send(); else startRecording(); }
     else if (act === 'rec-cancel') stopRecording(true);
     else if (act === 'rec-send') finishRecording();
-    else if (act === 'cancel-reply') cancelReply();
+    else if (act === 'cancel-reply') { if (editing) cancelEdit(); else cancelReply(); }
     else if (act === 'more') more();
     else if (act === 'jump') toBottom(true);
     else if (act === 'jump-pin') { if (pinned) jumpTo(pinned.id); }
     else if (act === 'unpin') wsSend({ t: 'pin', id: 0 });
-    else if (act === 'people') { var pp = $('.cm-people-pop'); var w = pp.hidden; closePops(); if (w && people.length) { pp.hidden = false; place(pp, b); pp.style.top = (b.getBoundingClientRect().bottom + 8) + 'px'; b.setAttribute('aria-expanded', 'true'); } }
+    else if (act === 'people') { var pp = $('.cm-people-pop'); var w = pp.hidden; closePops(); if (w && people.length) { pp.hidden = false; place(pp, b, true); b.setAttribute('aria-expanded', 'true'); } }
     else if (act === 'rules') { e.preventDefault(); rules(); }
     else if (act === 'close-viewer') closeViewer();
   });
@@ -1025,6 +1493,78 @@
     if (ROOMS[r]) open(r, false); else showRooms();
   });
   window.addEventListener('resize', function () { if (!window.matchMedia('(max-width: 1150px)').matches) document.body.classList.remove('cm-in-room'); else if (app.getAttribute('data-view') === 'room') document.body.classList.add('cm-in-room'); });
+
+  // ── sounds: a soft one for a message that comes, a lighter one for mine (made here, nothing to load) ──
+  var actx = null;
+  function soundOn() { var v = store('arw-cm-sound'); return v === null || v === undefined ? true : !!v; }
+  // a room muted (owner 2026-10-15: «ميوت لجروب … من دقايق لساعات لايام او للابد»): no sound, no count in the tab's title,
+  // its unread count greyed; until a time, or for good (-1)
+  var mutes = store('arw-cm-mute') || {};
+  function roomMuted(id) { var u = mutes[id]; return u === -1 || (u > Date.now()); }
+  function drawSound() {
+    var b = $('[data-act="mute"]'); if (!b) return;
+    var off = !soundOn() || (current && roomMuted(current));
+    b.classList.toggle('is-off', !!off);
+    b.setAttribute('aria-label', current && roomMuted(current) ? 'المجموعة مكتومة' : 'كتم المجموعة'); b.title = b.getAttribute('aria-label');
+    Object.keys(ROOMS).forEach(function (id) { ROOMS[id].btn.classList.toggle('is-muted', roomMuted(id)); });
+  }
+  function drawMute() {
+    var pop = $('.cm-mute-pop'), u = mutes[current], on = current && roomMuted(current);
+    var now = $('.cm-mute-now', pop);
+    now.hidden = !on;
+    if (on) now.textContent = u === -1 ? 'هذه المجموعة مكتومة دائما.' : 'مكتومة حتى ' + (dayKey(u) === dayKey(Date.now()) ? '' : new Date(u).getDate() + ' ' + MONTHS[new Date(u).getMonth()] + ' ') + clock(u) + '.';
+    $('.cm-mute-off', pop).hidden = !on;
+    $('input', pop).checked = soundOn();
+  }
+  $('.cm-mute-pop').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-mute]'); if (!b || !current) return;
+    var mins = Number(b.getAttribute('data-mute'));
+    if (!mins) delete mutes[current]; else mutes[current] = mins < 0 ? -1 : Date.now() + mins * 60e3;
+    store('arw-cm-mute', mutes); drawSound(); closePops();
+    toast(!mins ? 'تم إلغاء كتم المجموعة' : mins < 0 ? 'تم كتم المجموعة دائما' : 'تم كتم المجموعة لمدة ' + b.textContent);
+  });
+  $('.cm-mute-pop input').addEventListener('change', function () { store('arw-cm-sound', this.checked ? 1 : 0); drawSound(); if (this.checked) ding('in'); });
+  setInterval(drawSound, 60000);
+  // the browser lets a page make sound only after a tap: the sound is made ready on the first one
+  document.addEventListener('pointerdown', function () { if (!actx) { try { var C = window.AudioContext || window.webkitAudioContext; if (C) actx = new C(); } catch (e) {} } else if (actx.state === 'suspended') actx.resume().catch(function () {}); }, { passive: true });
+  function ding(kind) {
+    if (!actx || !soundOn() || document.hidden && kind === 'out' || kind === 'in' && current && roomMuted(current)) return;
+    try {
+      if (actx.state === 'suspended') actx.resume().catch(function () {});
+      var t = actx.currentTime, o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(kind === 'out' ? 520 : 880, t);
+      o.frequency.exponentialRampToValueAtTime(kind === 'out' ? 780 : 620, t + 0.12);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(kind === 'out' ? 0.035 : 0.07, t + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+      o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + 0.22);
+    } catch (e) {}
+  }
+  drawSound();
+
+  // a picture or a file dropped on the room (a computer)
+  var dropN = 0;
+  function hasFiles(e) { return e.dataTransfer && Array.prototype.indexOf.call(e.dataTransfer.types || [], 'Files') >= 0; }
+  chat.addEventListener('dragenter', function (e) { if (!hasFiles(e) || !current || !session() || compose.hidden) return; e.preventDefault(); dropN++; chat.classList.add('is-drop'); });
+  chat.addEventListener('dragover', function (e) { if (hasFiles(e) && chat.classList.contains('is-drop')) e.preventDefault(); });
+  chat.addEventListener('dragleave', function () { if (--dropN <= 0) { dropN = 0; chat.classList.remove('is-drop'); } });
+  chat.addEventListener('drop', function (e) {
+    if (!chat.classList.contains('is-drop')) return;
+    e.preventDefault(); dropN = 0; chat.classList.remove('is-drop');
+    if (mutedUntil > Date.now() || readOnly()) return setMuted();
+    Array.prototype.forEach.call(e.dataTransfer.files || [], function (f) { if (/^image\//.test(f.type)) addImage(f); else addFile(f); });
+  });
+
+  // a phone's keyboard: the room is as tall as what's left above it, the last message stays in sight
+  if (window.visualViewport) {
+    var vv = window.visualViewport, fitVV = function () {
+      root.style.setProperty('--vvh', Math.round(vv.height) + 'px');
+      root.style.setProperty('--vvt', Math.round(vv.offsetTop) + 'px');
+      if (nearBottomBefore) scroller.scrollTop = scroller.scrollHeight;
+    };
+    vv.addEventListener('resize', fitVV); vv.addEventListener('scroll', fitVV); fitVV();
+  }
 
   // ── the start ────────────────────────────────────────────────────────────
   // the room fills the screen under the site's header

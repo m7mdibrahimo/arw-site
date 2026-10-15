@@ -7,7 +7,7 @@ import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../u
 // the rooms as the worker has them now (the owner names, colours, hides and closes them below: «الغرف»)
 let ROOMS = {};
 const nameOf = (id) => (ROOMS[id] ? ROOMS[id][0] : id);
-const KIND = { image: '📷 صورة', voice: '🎤 رسالة صوتية', file: '📎 ملف', video: '🎬 فيديو' };
+const KIND = { image: '📷 صورة', voice: '🎤 رسالة صوتية', file: '📎 ملف', video: '🎬 فيديو', sticker: '🌟 ملصق', gif: '🎞️ GIF' };
 const AV = (import.meta.url.match(/\/admin\/([^/]+)\/js\//) || [])[1] || '';
 const picSrc = (pic) => { pic = String(pic || ''); return pic === 'official' ? '/assets/brand-logo.png' : /^w:[a-z0-9-]+$/.test(pic) ? `/avatars/${pic.slice(2)}.webp${AV ? `?v=${AV}` : ''}` : /^https:\/\//.test(pic) ? pic : ''; };
 const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c', '#2f9e5b'];
@@ -21,7 +21,7 @@ const state = { room: 'general' };
 async function mute(uid, name) {
   const pick = await dialog({
     title: `إيقاف ${name} عن الكتابة`,
-    body: html`<p class="muted small">مش هيقدر يكتب في أي غرفة لحد ما المدة تخلص. يقدر يقرا عادي.</p>
+    body: html`<p class="muted small">مش هيقدر يكتب في أي مجموعة لحد ما المدة تخلص. يقدر يقرا عادي.</p>
       <div class="cy-mute-opts">${[[1, 'ساعة'], [24, 'يوم'], [24 * 7, 'أسبوع'], [24 * 30, 'شهر'], [24 * 365, 'سنة']].map(([h, l], i) => html`<label><input type="radio" name="cy-h" value="${h}" ${i === 1 ? 'checked' : ''}> ${l}</label>`)}</div>`,
     confirm: 'أوقفه', danger: true,
   });
@@ -43,8 +43,8 @@ export async function renderCommunity(page) {
     <div class="wrap page-in">
       <div class="page-title">
         <div><h1>المجتمع</h1>
-          <p class="muted">غرف الدردشة على الموقع · الأعضاء بس اللي بيكتبوا · تقدر تمسح أي رسالة وتوقف أي حد عن الكتابة. ولو دخلت بحسابك الرسمي على الموقع تقدر تثبّت رسالة وتمسح من جوه الغرفة.</p></div>
-        <div class="cy-head-acts">${getUser()?.role === 'owner' ? html`<button class="btn" id="cy-edit-rooms">${icon('edit')}الغرف</button>` : ''}<a class="btn" href="/community/" target="_blank" rel="noopener">${icon('globe')}افتح المجتمع</a></div>
+          <p class="muted">مجموعات الدردشة على الموقع · الأعضاء بس اللي بيكتبوا · تقدر تمسح أي رسالة وتوقف أي حد عن الكتابة. ولو دخلت بحسابك الرسمي على الموقع تقدر تثبّت رسالة وتمسح من جوه المجموعة.</p></div>
+        <div class="cy-head-acts">${getUser()?.role === 'owner' ? html`<button class="btn" id="cy-edit-rooms">${icon('edit')}المجموعات</button>` : ''}<a class="btn" href="/community/" target="_blank" rel="noopener">${icon('globe')}افتح المجتمع</a></div>
       </div>
       <div class="cm-stats">
         <div class="${online ? 'is-new' : ''}"><small>متصلين دلوقتي</small><b>${num(online)}</b></div>
@@ -88,7 +88,7 @@ export async function renderCommunity(page) {
         ${m.del ? '' : html`<div class="cm-actions">
           <button class="btn btn-sm btn-danger-soft" data-del="${state.room}:${m.id}">امسح</button>
           ${m.badge === 'gold' ? '' : html`<button class="btn btn-sm" data-mute="${m.uid}" data-name="${m.name}">أوقفه</button><a class="btn btn-sm btn-ghost" href="#/site-members/${m.uid}">صفحته</a>`}
-        </div>`}</article>`)}` : html`<p class="muted">لسه مفيش رسائل في الغرفة دي.</p>`);
+        </div>`}</article>`)}` : html`<p class="muted">لسه مفيش رسائل في المجموعة دي.</p>`);
     } catch (e) { mount(box, html`<p class="muted">${e.message}</p>`); }
   };
   loadRoom();
@@ -100,7 +100,7 @@ export async function renderCommunity(page) {
     if (b.dataset.room) { state.room = b.dataset.room; renderCommunity(page); return; }
     if (b.dataset.del) {
       const [room, id] = b.dataset.del.split(':');
-      const ok = await dialog({ title: 'مسح الرسالة', body: html`<p class="muted small">هتختفي عند كل اللي في الغرفة على طول.</p>`, confirm: 'امسحها', danger: true });
+      const ok = await dialog({ title: 'مسح الرسالة', body: html`<p class="muted small">هتختفي عند كل اللي في المجموعة على طول.</p>`, confirm: 'امسحها', danger: true });
       if (!ok) return;
       b.disabled = true;
       try { await api.chatDelete(room, id); toast('اتمسحت ✓'); renderCommunity(page); } catch (err) { toast(err.message, 'error'); b.disabled = false; }
@@ -124,8 +124,8 @@ async function renderRoomsEditor(page) {
     mount(page, html`
       <div class="wrap page-in">
         <div class="page-title">
-          <div><h1>غرف المجتمع</h1><p class="muted">غيّر الاسم والوصف والعلامة واللون، ورتّب الغرف، أو ضيف غرفة جديدة. «مخفية» = مش بتظهر على الموقع. «للقراءة بس» = الأعضاء يقروا وإنت بس اللي تكتب.</p></div>
-          <div class="cy-head-acts"><button class="btn btn-ghost" id="ry-back">${icon('arrowRight')}رجوع</button><button class="btn btn-primary" id="ry-save">${icon('check')}احفظ الغرف</button></div>
+          <div><h1>مجموعات المجتمع</h1><p class="muted">غيّر الاسم والوصف والعلامة واللون، ورتّب المجموعات، أو ضيف مجموعة جديدة. «مخفية» = مش بتظهر على الموقع. «للقراءة بس» = الأعضاء يقروا وإنت بس اللي تكتب.</p></div>
+          <div class="cy-head-acts"><button class="btn btn-ghost" id="ry-back">${icon('arrowRight')}رجوع</button><button class="btn btn-primary" id="ry-save">${icon('check')}احفظ المجموعات</button></div>
         </div>
         <div class="ry-list">${list.map((r, i) => html`<article class="ry-room ${r.hidden ? 'is-hidden' : ''}" data-i="${i}">
           <div class="ry-mark" style="--h:${r.hue}">${r.id === 'general' ? html`<img src="/assets/brand-logo.png" alt="">` : r.mark}</div>
@@ -133,7 +133,7 @@ async function renderRoomsEditor(page) {
             <div class="ry-row">
               <label class="ry-f ry-name"><span>الاسم</span><input class="input" data-k="name" value="${r.name}" maxlength="40" dir="auto"></label>
               <label class="ry-f ry-markf"><span>العلامة</span><input class="input" data-k="mark" value="${r.mark}" maxlength="6" dir="ltr"></label>
-              <label class="ry-f ry-id"><span>الرابط</span><input class="input mono" data-k="id" value="${r.id}" maxlength="24" dir="ltr" ${r.isNew ? '' : 'readonly'} title="${r.isNew ? 'حروف إنجليزي صغيرة وأرقام' : 'رابط الغرفة مايتغيرش بعد ما تتعمل'}"></label>
+              <label class="ry-f ry-id"><span>الرابط</span><input class="input mono" data-k="id" value="${r.id}" maxlength="24" dir="ltr" ${r.isNew ? '' : 'readonly'} title="${r.isNew ? 'حروف إنجليزي صغيرة وأرقام' : 'رابط المجموعة مايتغيرش بعد ما تتعمل'}"></label>
             </div>
             <label class="ry-f"><span>الوصف</span><input class="input" data-k="about" value="${r.about}" maxlength="90" dir="auto"></label>
             <div class="ry-row ry-opts">
@@ -145,10 +145,10 @@ async function renderRoomsEditor(page) {
           <div class="ry-acts">
             <button class="btn btn-sm btn-ghost" data-up="${i}" ${i === 0 ? 'disabled' : ''} title="لفوق">▲</button>
             <button class="btn btn-sm btn-ghost" data-down="${i}" ${i === list.length - 1 ? 'disabled' : ''} title="لتحت">▼</button>
-            ${r.id === 'general' ? '' : html`<button class="btn btn-sm btn-danger-soft" data-remove="${i}" title="امسح الغرفة">${icon('trash')}</button>`}
+            ${r.id === 'general' ? '' : html`<button class="btn btn-sm btn-danger-soft" data-remove="${i}" title="امسح المجموعة">${icon('trash')}</button>`}
           </div>
         </article>`)}</div>
-        <button class="btn ry-add" id="ry-add">${icon('plus')}ضيف غرفة جديدة</button>
+        <button class="btn ry-add" id="ry-add">${icon('plus')}ضيف مجموعة جديدة</button>
       </div>`);
     const read = () => $$('.ry-room', page).forEach(el => {
       const r = list[Number(el.dataset.i)];
@@ -168,7 +168,7 @@ async function renderRoomsEditor(page) {
       else if (b.dataset.down) { const i = Number(b.dataset.down); [list[i + 1], list[i]] = [list[i], list[i + 1]]; }
       else {
         const r = list[Number(b.dataset.remove)];
-        const ok = await dialog({ title: `مسح «${r.name || r.id}»`, body: html`<p class="muted small">الغرفة هتختفي من الموقع. لو حبيت ترجّعها بعدين ضيفها بنفس الرابط (${r.id}) ورسايلها هترجع. لو عايز تخفيها بس، علّم «مخفية» بدل المسح.</p>`, confirm: 'امسحها', danger: true });
+        const ok = await dialog({ title: `مسح «${r.name || r.id}»`, body: html`<p class="muted small">المجموعة هتختفي من الموقع. لو حبيت ترجّعها بعدين ضيفها بنفس الرابط (${r.id}) ورسايلها هترجع. لو عايز تخفيها بس، علّم «مخفية» بدل المسح.</p>`, confirm: 'امسحها', danger: true });
         if (!ok) return;
         list.splice(Number(b.dataset.remove), 1);
       }
@@ -178,7 +178,7 @@ async function renderRoomsEditor(page) {
       read();
       const btn = e.currentTarget;
       btn.disabled = true;
-      try { const r = await api.chatRoomsSave(list.map(({ isNew, online, today, lastId, last, ...x }) => x)); list = r.rooms.map(x => ({ ...x, isNew: false })); toast('اتحفظت الغرف ✓ هتظهر على الموقع خلال دقيقة'); draw(); }
+      try { const r = await api.chatRoomsSave(list.map(({ isNew, online, today, lastId, last, ...x }) => x)); list = r.rooms.map(x => ({ ...x, isNew: false })); toast('اتحفظت المجموعات ✓ هتظهر على الموقع خلال دقيقة'); draw(); }
       catch (err) { toast(err.message, 'error'); btn.disabled = false; }
     };
   };

@@ -19,7 +19,7 @@
 import { memberOf, ensureMembers } from "./members";
 import { OFFICIAL_NAME, PIC_ORIGIN } from "./comments";
 
-export interface ChatEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket; CHAT?: DurableObjectNamespace; RESEND_API_KEY?: string }
+export interface ChatEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket; CHAT?: DurableObjectNamespace; RESEND_API_KEY?: string; GIPHY_API_KEY?: string; TENOR_API_KEY?: string }
 
 /** The rooms. The site's first list (_data/communityRooms.js, the page as built — tests/chat.test.mts keeps the two the
  *  same); since 2026-10-15 the owner adds, renames, hides, closes and orders them from the panel (KV «chat:rooms»,
@@ -27,16 +27,22 @@ export interface ChatEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?:
 export type RoomInfo = { id: string; name: string; about: string; mark: string; hue: number; hidden?: boolean; closed?: boolean };
 export const DEFAULT_ROOMS: RoomInfo[] = [
   { id: "general", name: "الساحة العامة", about: "كل محبي المصارعة في مكان واحد", mark: "ARW", hue: 177 },
-  { id: "wwe", name: "WWE", about: "رو وسماك داون وNXT والعروض الكبرى", mark: "WWE", hue: 4 },
-  { id: "aew", name: "AEW", about: "داينامايت وكوليجن والعروض الكبرى", mark: "AEW", hue: 42 },
-  { id: "njpw", name: "NJPW", about: "نيو جابان: ريسل كينغدم والجي وان كلايمكس", mark: "NJPW", hue: 212 },
-  { id: "tna", name: "TNA", about: "إمباكت والعروض الكبرى", mark: "TNA", hue: 262 },
-  { id: "roh", name: "ROH", about: "رينغ أوف أونر وعروضها", mark: "ROH", hue: 218 },
-  { id: "mma", name: "UFC والفنون القتالية", about: "النزالات والأحزمة وكل جديد القتال", mark: "UFC", hue: 24 },
-  { id: "indie", name: "الاتحادات المستقلة", about: "MLP وMLW وCMLL وغيرها", mark: "INDIE", hue: 166 },
-  { id: "nostalgia", name: "نوستالجيا", about: "ذكريات المصارعة القديمة وأجمل أيامها", mark: "90s", hue: 330 },
+  { id: "wwe", name: "متابعين اتحاد WWE", about: "رو وسماك داون وNXT والعروض الكبرى", mark: "WWE", hue: 4 },
+  { id: "aew", name: "متابعين اتحاد AEW", about: "داينامايت وكوليجن والعروض الكبرى", mark: "AEW", hue: 42 },
+  { id: "njpw", name: "متابعين اتحاد NJPW", about: "نيو جابان: ريسل كينغدم والجي وان كلايمكس", mark: "NJPW", hue: 212 },
+  { id: "tna", name: "متابعين اتحاد TNA", about: "إمباكت والعروض الكبرى", mark: "TNA", hue: 262 },
+  { id: "roh", name: "متابعين اتحاد ROH", about: "رينغ أوف أونر وعروضها", mark: "ROH", hue: 218 },
+  { id: "mma", name: "متابعين UFC والفنون القتالية", about: "النزالات والأحزمة وكل جديد القتال", mark: "UFC", hue: 24 },
+  { id: "indie", name: "متابعين الاتحادات المستقلة", about: "MLP وMLW وCMLL وغيرها", mark: "INDIE", hue: 166 },
+  { id: "nostalgia", name: "متابعين المصارعة القديمة", about: "ذكريات المصارعة القديمة وأجمل أيامها", mark: "90s", hue: 330 },
 ];
 export const ROOMS = DEFAULT_ROOMS.map(r => r.id);
+/** The rooms' first names → their names since 2026-10-15 */
+const RENAMED: Record<string, [string, string]> = {
+  wwe: ["WWE", "متابعين اتحاد WWE"], aew: ["AEW", "متابعين اتحاد AEW"], njpw: ["NJPW", "متابعين اتحاد NJPW"],
+  tna: ["TNA", "متابعين اتحاد TNA"], roh: ["ROH", "متابعين اتحاد ROH"], mma: ["UFC والفنون القتالية", "متابعين UFC والفنون القتالية"],
+  indie: ["الاتحادات المستقلة", "متابعين الاتحادات المستقلة"], nostalgia: ["نوستالجيا", "متابعين المصارعة القديمة"],
+};
 export type RoomId = string;
 const ROOM_ID = /^[a-z][a-z0-9]{1,23}$/;
 const ROOMS_KEY = "chat:rooms";
@@ -45,7 +51,20 @@ let roomsCache: { at: number; list: RoomInfo[] } | null = null;
 export async function roomList(env: ChatEnv, fresh = false): Promise<RoomInfo[]> {
   if (!fresh && roomsCache && Date.now() - roomsCache.at < 15_000) return roomsCache.list;
   let list: RoomInfo[] = DEFAULT_ROOMS;
-  try { const raw = await env.PUSH_KV.get(ROOMS_KEY); if (raw) { const l = JSON.parse(raw); if (Array.isArray(l) && l.length) list = l; } } catch {}
+  try {
+    const raw = await env.PUSH_KV.get(ROOMS_KEY);
+    if (raw) {
+      const l = JSON.parse(raw);
+      if (Array.isArray(l) && l.length) {
+        list = l;
+        // 2026-10-15 (owner: «خليها متابعين … متابعين WWE … متابعين المصارعة القديمة»): a room still under its first name
+        // takes the new one, once
+        let changed = false;
+        for (const r of list) { const to = RENAMED[r.id]; if (to && r.name === to[0]) { r.name = to[1]; changed = true; } }
+        if (changed) await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(list));
+      }
+    }
+  } catch {}
   roomsCache = { at: Date.now(), list };
   return list;
 }
@@ -74,13 +93,20 @@ const FILE_TYPES: Record<string, string> = {
 const IMAGE_TYPES: Record<string, string> = { "image/webp": "webp", "image/jpeg": "jpg", "image/png": "png", "image/gif": "gif" };
 const VOICE_TYPES: Record<string, string> = { "audio/webm": "webm", "audio/ogg": "ogg", "audio/mp4": "m4a", "audio/mpeg": "mp3", "audio/aac": "aac" };
 const MEDIA_PREFIX = `${PIC_ORIGIN}/chat/media/`;
+/** A sticker (owner 2026-10-15: «استيكرات … ملصقات»): the site's own pack (drawn by the page) or an animated Noto emoji */
+const STICKER = /^(?:arw:[a-z0-9-]{2,24}|noto:[0-9a-f]{4,5}(?:_[0-9a-f]{4,5}){0,7})$/;
+/** A GIF from the search (GIPHY or Tenor, through /chat/gif): their own media servers only */
+export const GIF_URL = /^https:\/\/(?:(?:media[0-4]?|i)\.giphy\.com\/media\/(?:[A-Za-z0-9_-][A-Za-z0-9._-]{0,199}\/){1,2}[A-Za-z0-9_-]{1,40}\.(?:mp4|webp|gif)|media\.tenor\.com\/[A-Za-z0-9_-]{1,80}\/[A-Za-z0-9_.-]{1,120}\.(?:mp4|webp|gif|png))$/;
+/** How long after sending a member can edit or delete their own message (owner 2026-10-15: «اقصي حاجة للتعديل … او الحذف
+ *  يكون 6 ساعات فقط»); the site's account deletes any message, any time */
+export const EDIT_WINDOW = 6 * 3_600_000;
 const REACTION = /^(?:\p{Extended_Pictographic}|\p{Regional_Indicator}|[‍️⃣#*0-9]|\p{Emoji_Modifier}){1,12}$/u;
 
 export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "vgold" | "gprem" | "blue" | "premium" | ""; mod: boolean; mute: number; ro?: boolean; prem?: boolean };
-export type Att = { kind: "image" | "voice" | "file" | "video"; url: string; name?: string; size?: number; mime?: string; w?: number; h?: number; dur?: number; wave?: number[] };
+export type Att = { kind: "image" | "voice" | "file" | "video" | "sticker" | "gif"; url?: string; id?: string; still?: string; name?: string; size?: number; mime?: string; w?: number; h?: number; dur?: number; wave?: number[] };
 export type Msg = {
   id: number; uid: number; user: string; name: string; pic: string; badge: string; text: string; att: Att | null;
-  reply: { id: number; name: string; text: string; kind: string } | null; spoiler: boolean; reacts: Record<string, number[]>; at: number; del?: boolean; nonce?: string;
+  reply: { id: number; name: string; text: string; kind: string } | null; spoiler: boolean; reacts: Record<string, number[]>; at: number; del?: boolean; edited?: number;
 };
 
 /** A message's text: trimmed, at most the limit, no more than two empty lines in a row */
@@ -92,10 +118,18 @@ export function cleanChatText(t: unknown): string {
 export function cleanAtt(a: any, room: string): Att | null {
   if (!a || typeof a !== "object") return null;
   const kind = a.kind;
+  if (kind === "sticker") { const id = String(a.id || ""); return STICKER.test(id) ? { kind, id } : null; }
+  const num = (v: unknown, max: number) => { const n = Math.round(Number(v)); return Number.isFinite(n) && n > 0 ? Math.min(n, max) : undefined; };
+  if (kind === "gif") {
+    const url = String(a.url || ""), still = String(a.still || "");
+    if (!GIF_URL.test(url)) return null;
+    const out: Att = { kind, url, w: num(a.w, 2000), h: num(a.h, 2000) };
+    if (GIF_URL.test(still)) out.still = still;
+    return out;
+  }
   if (!["image", "voice", "file", "video"].includes(kind)) return null;
   const url = String(a.url || "");
   if (!url.startsWith(`${MEDIA_PREFIX}chat/${room}/`) || !/^[A-Za-z0-9:/._-]+$/.test(url)) return null;
-  const num = (v: unknown, max: number) => { const n = Math.round(Number(v)); return Number.isFinite(n) && n > 0 ? Math.min(n, max) : undefined; };
   const out: Att = { kind, url };
   if (a.name) out.name = cleanChatText(a.name).replace(/\n/g, " ").slice(0, 120);
   out.size = num(a.size, 50 * 1024 * 1024);
@@ -125,6 +159,11 @@ export class ChatRoom {
       pic TEXT NOT NULL DEFAULT '', badge TEXT NOT NULL DEFAULT '', text TEXT NOT NULL DEFAULT '', att TEXT NOT NULL DEFAULT '', reply TEXT NOT NULL DEFAULT '',
       spoiler INTEGER NOT NULL DEFAULT 0, reacts TEXT NOT NULL DEFAULT '{}', at INTEGER NOT NULL, deleted INTEGER NOT NULL DEFAULT 0)`);
     this.sql.exec("CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT NOT NULL)");
+    // 2026-10-15: an edited message keeps when; a message sent again after a lost connection is known by its nonce
+    const cols = new Set(this.sql.exec("PRAGMA table_info(msgs)").toArray().map((c: any) => String(c.name)));
+    if (!cols.has("edited")) this.sql.exec("ALTER TABLE msgs ADD COLUMN edited INTEGER NOT NULL DEFAULT 0");
+    if (!cols.has("nonce")) this.sql.exec("ALTER TABLE msgs ADD COLUMN nonce TEXT NOT NULL DEFAULT ''");
+    this.sql.exec("CREATE INDEX IF NOT EXISTS msgs_uid ON msgs (uid, id)");
     try { state.setWebSocketAutoResponse?.(new (globalThis as any).WebSocketRequestResponsePair("ping", "pong")); } catch { /* tests */ }
   }
 
@@ -140,6 +179,7 @@ export class ChatRoom {
       id: Number(r.id), uid: Number(r.uid), user: String(r.user), name: String(r.name), pic: String(r.pic), badge: String(r.badge),
       text: del ? "" : String(r.text), att: del || !r.att ? null : JSON.parse(String(r.att)), reply: r.reply ? JSON.parse(String(r.reply)) : null,
       spoiler: !!r.spoiler, reacts: del ? {} : JSON.parse(String(r.reacts || "{}")), at: Number(r.at), ...(del ? { del: true } : {}),
+      ...(!del && Number(r.edited) ? { edited: Number(r.edited) } : {}),
     };
   }
   private get(id: number): Msg | null { const r = this.sql.exec("SELECT * FROM msgs WHERE id = ?", Number(id) || 0).toArray()[0]; return r ? this.row(r) : null; }
@@ -156,8 +196,8 @@ export class ChatRoom {
   private send(ws: WebSocket, data: unknown) { try { ws.send(JSON.stringify(data)); } catch { /* gone */ } }
   private broadcast(data: unknown, except?: WebSocket) { const s = JSON.stringify(data); for (const w of this.socks(except)) { try { w.send(s); } catch { /* gone */ } } }
   people(except?: WebSocket) {
-    const seen = new Map<number, { uid: number; name: string; pic: string; badge: string }>();
-    for (const w of this.socks(except)) { const p = this.who(w); if (p && !seen.has(p.uid)) seen.set(p.uid, { uid: p.uid, name: p.name, pic: p.pic, badge: p.badge }); }
+    const seen = new Map<number, { uid: number; user: string; name: string; pic: string; badge: string }>();
+    for (const w of this.socks(except)) { const p = this.who(w); if (p && !seen.has(p.uid)) seen.set(p.uid, { uid: p.uid, user: p.user, name: p.name, pic: p.pic, badge: p.badge }); }
     return [...seen.values()];
   }
   private presence(except?: WebSocket) { const p = this.people(except); this.broadcast({ t: "presence", online: p.length, people: p.slice(0, 60) }, except); }
@@ -181,14 +221,23 @@ export class ChatRoom {
     const [client, server] = Object.values(pair) as [WebSocket, Sock];
     this.state.acceptWebSocket(server, [`u${me.uid}`]);
     server.serializeAttachment(me);
-    const pin = Number(this.meta("pin") || 0);
-    const msgs = this.latest(LIMITS.history + 1);
-    this.send(server, {
-      t: "hello", room: this.meta("room") || room, me: { uid: me.uid, name: me.name, user: me.user, mod: me.mod, muted: this.mutedUntil(me.uid, now) },
-      msgs: msgs.slice(-LIMITS.history), pinned: pin ? this.get(pin) : null, done: msgs.length <= LIMITS.history,
-    });
+    this.send(server, this.hello(me, Number(request.headers.get("X-Chat-Since")) || 0, now, room));
     this.presence();
     return new Response(null, { status: 101, webSocket: client } as any);
+  }
+
+  /** What a socket gets first: who they are, the pinned message, the latest messages. Coming back after a lost
+   *  connection (since = the last message the page has), it gets everything after that too (up to 200), so the page
+   *  only adds what it missed and keeps where the reader was. */
+  hello(me: Who, since: number, now = Date.now(), room = "") {
+    const pin = Number(this.meta("pin") || 0);
+    const gap = since > 0 ? Number(this.sql.exec("SELECT COUNT(*) AS n FROM msgs WHERE id > ?", since).toArray()[0]?.n || 0) : 0;
+    const n = since > 0 ? Math.min(200, Math.max(LIMITS.history, gap + 10)) : LIMITS.history;
+    const msgs = this.latest(n + 1);
+    return {
+      t: "hello", room: this.meta("room") || room, me: { uid: me.uid, name: me.name, user: me.user, mod: me.mod, muted: this.mutedUntil(me.uid, now) },
+      msgs: msgs.slice(-n), pinned: pin ? this.get(pin) : null, done: msgs.length <= n, since,
+    };
   }
 
   summary(now = Date.now()) {
@@ -233,7 +282,7 @@ export class ChatRoom {
     const m = this.get(id);
     if (!m || m.del) return false;
     this.sql.exec("UPDATE msgs SET deleted = 1, text = '', att = '', reacts = '{}' WHERE id = ?", id);
-    if (m.att?.url && this.env.MEDIA) this.env.MEDIA.delete(m.att.url.slice(MEDIA_PREFIX.length)).catch?.(() => {});
+    if (m.att?.url?.startsWith(MEDIA_PREFIX) && this.env.MEDIA) this.env.MEDIA.delete(m.att.url.slice(MEDIA_PREFIX.length)).catch?.(() => {});
     if (Number(this.meta("pin") || 0) === id) { this.setMeta("pin", null); this.broadcast({ t: "pin", m: null }); }
     this.broadcast({ t: "del", id });
     return true;
@@ -252,7 +301,13 @@ export class ChatRoom {
     switch (b.t) {
       case "send": {
         // a room the owner closed: read only, except for the site's account
-        if (me.ro) return this.send(ws, { t: "error", code: "readonly", nonce: b.nonce, error: "هذه الغرفة للقراءة فقط." });
+        if (me.ro) return this.send(ws, { t: "error", code: "readonly", nonce: b.nonce, error: "هذه المجموعة للقراءة فقط." });
+        // sent again after a lost connection (the page didn't hear back): the one already saved, to this socket only
+        const nonce = typeof b.nonce === "string" && /^[A-Za-z0-9]{1,40}$/.test(b.nonce) ? b.nonce : "";
+        if (nonce) {
+          const had = this.sql.exec("SELECT * FROM msgs WHERE uid = ? AND nonce = ? ORDER BY id DESC LIMIT 1", me.uid, nonce).toArray()[0];
+          if (had) return this.send(ws, { t: "msg", m: this.row(had), nonce });
+        }
         const muted = this.mutedUntil(me.uid, now);
         if (muted) return this.send(ws, { t: "error", code: "muted", until: muted, nonce: b.nonce, error: "لا يمكنك الكتابة في المجتمع الآن." });
         // at most 6 messages in 10 seconds
@@ -267,11 +322,11 @@ export class ChatRoom {
           if (o && !o.del) rep = { id: o.id, name: o.name, text: o.spoiler ? "" : o.text.slice(0, 140), kind: o.att?.kind || "text" };
         }
         times.push(now); this.recent.set(me.uid, times);
-        const r = this.sql.exec(`INSERT INTO msgs (uid, user, name, pic, badge, text, att, reply, spoiler, at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
-          me.uid, me.user, me.name, me.pic, me.badge, text, att ? JSON.stringify(att) : "", rep ? JSON.stringify(rep) : "", b.spoiler ? 1 : 0, now).toArray()[0];
+        const r = this.sql.exec(`INSERT INTO msgs (uid, user, name, pic, badge, text, att, reply, spoiler, at, nonce) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
+          me.uid, me.user, me.name, me.pic, me.badge, text, att ? JSON.stringify(att) : "", rep ? JSON.stringify(rep) : "", b.spoiler ? 1 : 0, now, nonce).toArray()[0];
         const m = this.row(r);
         this.lastTyping.delete(me.uid);
-        this.broadcast({ t: "msg", m, nonce: typeof b.nonce === "string" ? b.nonce.slice(0, 40) : undefined });
+        this.broadcast({ t: "msg", m, nonce: nonce || undefined });
         // the room keeps its latest messages
         if (m.id % 200 === 0) this.sql.exec("DELETE FROM msgs WHERE id <= ?", m.id - LIMITS.keep);
         return;
@@ -295,7 +350,21 @@ export class ChatRoom {
         const m = this.get(Number(b.id));
         if (!m || m.del) return;
         if (m.uid !== me.uid && !me.mod) return;
+        if (!me.mod && now - m.at > EDIT_WINDOW) return this.send(ws, { t: "error", code: "del", error: "لا يمكن حذف الرسالة بعد مرور 6 ساعات على إرسالها." });
         this.remove(m.id, now);
+        return;
+      }
+      case "edit": {
+        // your own message, for 6 hours after sending it
+        const m = this.get(Number(b.id));
+        if (!m || m.del || m.uid !== me.uid) return;
+        if (now - m.at > EDIT_WINDOW) return this.send(ws, { t: "error", code: "edit", error: "لا يمكن تعديل الرسالة بعد مرور 6 ساعات على إرسالها." });
+        if (me.ro || this.mutedUntil(me.uid, now)) return this.send(ws, { t: "error", code: "edit", error: "لا يمكنك الكتابة في المجتمع الآن." });
+        const text = cleanChatText(b.text);
+        if (!text && !m.att) return this.send(ws, { t: "error", code: "edit", error: "اكتب رسالتك أولا." });
+        if (text === m.text) return;
+        this.sql.exec("UPDATE msgs SET text = ?, edited = ? WHERE id = ?", text, now, m.id);
+        this.broadcast({ t: "edit", id: m.id, text, edited: now });
         return;
       }
       case "pin": {
@@ -308,9 +377,11 @@ export class ChatRoom {
         return;
       }
       case "typing": {
+        // stopped (the box emptied, or left): the others take «يكتب» away at once
+        if (b.stop) { if (this.lastTyping.delete(me.uid)) this.broadcast({ t: "typing", uid: me.uid, stop: true }, ws); return; }
         if (now - (this.lastTyping.get(me.uid) || 0) < 2500) return;
         this.lastTyping.set(me.uid, now);
-        this.broadcast({ t: "typing", uid: me.uid, name: me.name }, ws);
+        this.broadcast({ t: "typing", uid: me.uid, name: me.name, pic: me.pic }, ws);
         return;
       }
       case "more": {
@@ -434,8 +505,9 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     const room = await roomOf(env, ws[1], who0.mod);
     if (!room) return new Response("no such room", { status: 404 });
     if (room.closed && !who0.mod) raw = JSON.stringify({ ...who0, ro: true });
+    const since = Math.max(0, Math.floor(Number(url.searchParams.get("since")) || 0));
     return stub(env, ws[1]).fetch(new Request(`https://chat/${ws[1]}/ws`, {
-      headers: { Upgrade: "websocket", "X-Chat-Room": ws[1], "X-Chat-User": encodeURIComponent(raw) },
+      headers: { Upgrade: "websocket", "X-Chat-Room": ws[1], "X-Chat-User": encodeURIComponent(raw), "X-Chat-Since": String(since) },
     }));
   }
 
@@ -447,6 +519,8 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     const r = await studioChatMute(env, b.uid, b.hours);
     return reply({ ok: r.success, error: (r as any).error, until: (r as any).until }, r.success ? 200 : 400);
   }
+
+  if (path === "/chat/gif" && request.method === "GET") return gifSearch(request, env, url);
 
   if (path === "/chat/upload" && request.method === "POST") {
     const who = await whoFor(env, request);
@@ -508,6 +582,40 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
   return reply({ ok: false, error: "not found" }, 404);
 }
 
+// ── GIFs (owner 2026-10-15: «gif») ────────────────────────────────────────────
+/** The GIF search: GIPHY (GIPHY_API_KEY) or Tenor (TENOR_API_KEY), members only, each page kept an hour at the edge.
+ *  No query: wrestling GIFs. Gives {ok, items: [{url (a looping mp4), still (a picture of it), w, h}], next}. */
+async function gifSearch(request: Request, env: ChatEnv, url: URL): Promise<Response> {
+  if (!env.GIPHY_API_KEY && !env.TENOR_API_KEY) return reply({ ok: false, setup: true, error: "البحث عن صور GIF غير متاح الآن." }, 503);
+  if (!(await memberOf(request, env as any))) return reply({ ok: false, signedOut: true, error: "سجل دخولك أولا." }, 401);
+  const q = (url.searchParams.get("q") || "").replace(/\s+/g, " ").trim().slice(0, 60) || "wrestling";
+  const pos = String(url.searchParams.get("pos") || "").replace(/[^A-Za-z0-9._-]/g, "").slice(0, 60);
+  const cache = (globalThis as any).caches?.default as Cache | undefined;
+  const key = new Request(`https://gif.cache/${env.GIPHY_API_KEY ? "g" : "t"}?q=${encodeURIComponent(q.toLowerCase())}&pos=${pos}`);
+  const hit = cache ? await cache.match(key).catch(() => undefined) : undefined;
+  if (hit) return reply(await hit.json());
+  const clean = (u: unknown) => String(u || "").split("?")[0];
+  let items: { url: string; still: string; w: number; h: number }[] = [], next = "";
+  try {
+    if (env.GIPHY_API_KEY) {
+      const off = Math.min(Number(pos) || 0, 4900);
+      const r = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${encodeURIComponent(env.GIPHY_API_KEY)}&q=${encodeURIComponent(q)}&limit=24&offset=${off}&rating=pg-13&lang=${/[\u0600-\u06ff]/.test(q) ? "ar" : "en"}`);
+      const d: any = await r.json();
+      items = (d.data || []).map((g: any) => { const f = g.images?.fixed_width || {}; return { url: clean(f.mp4), still: clean(g.images?.fixed_width_still?.url), w: Number(f.width) || 200, h: Number(f.height) || 200 }; });
+      const total = Number(d.pagination?.total_count || 0);
+      next = off + 24 < total ? String(off + 24) : "";
+    } else {
+      const r = await fetch(`https://tenor.googleapis.com/v2/search?key=${encodeURIComponent(env.TENOR_API_KEY!)}&client_key=arw&q=${encodeURIComponent(q)}&limit=24&contentfilter=medium&media_filter=tinymp4,tinygifpreview${pos ? `&pos=${encodeURIComponent(pos)}` : ""}`);
+      const d: any = await r.json();
+      items = (d.results || []).map((g: any) => { const f = g.media_formats?.tinymp4 || {}; return { url: clean(f.url), still: clean(g.media_formats?.tinygifpreview?.url), w: Number(f.dims?.[0]) || 200, h: Number(f.dims?.[1]) || 200 }; });
+      next = String(d.next || "");
+    }
+  } catch { return reply({ ok: false, error: "تعذر تحميل صور GIF، حاول مرة أخرى." }, 502); }
+  const body = { ok: true, by: env.GIPHY_API_KEY ? "GIPHY" : "Tenor", items: items.filter(i => GIF_URL.test(i.url)).map(i => ({ ...i, still: GIF_URL.test(i.still) ? i.still : "" })), next };
+  if (cache) await cache.put(key, new Response(JSON.stringify(body), { headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=3600" } })).catch(() => {});
+  return reply(body);
+}
+
 // ── the panel ────────────────────────────────────────────────────────────────
 export async function studioChat(env: ChatEnv, now = Date.now()) {
   const list = await roomList(env, true);
@@ -527,12 +635,12 @@ export async function studioChat(env: ChatEnv, now = Date.now()) {
   return { success: true, rooms, reports, muted };
 }
 export async function studioChatRoom(env: ChatEnv, room: unknown, before = 0) {
-  if (!isRoom(room) || !env.CHAT) return { success: false, error: "الغرفة دي مش موجودة." };
+  if (!isRoom(room) || !env.CHAT) return { success: false, error: "المجموعة دي مش موجودة." };
   const r: any = await (await roomCall(env, room, "/admin", { method: "POST", body: JSON.stringify({ op: "recent", n: 150, before }) })).json();
   return { success: true, msgs: r.msgs || [] };
 }
 export async function studioChatDelete(env: ChatEnv, room: unknown, id: unknown) {
-  if (!isRoom(room) || !env.CHAT) return { success: false, error: "الغرفة دي مش موجودة." };
+  if (!isRoom(room) || !env.CHAT) return { success: false, error: "المجموعة دي مش موجودة." };
   const r: any = await (await roomCall(env, room, "/admin", { method: "POST", body: JSON.stringify({ op: "delete", id: Number(id) || 0 }) })).json();
   if (env.ANALYTICS) { await ensureReports(env.ANALYTICS); await env.ANALYTICS.prepare("UPDATE chat_reports SET done = 1 WHERE room = ?1 AND msg = ?2").bind(room, Number(id) || 0).run(); }
   return r.ok ? { success: true } : { success: false, error: "الرسالة دي اتمسحت قبل كده." };
@@ -568,15 +676,15 @@ export async function studioChatRooms(env: ChatEnv, body: any = null) {
   const seen = new Set<string>(), out: RoomInfo[] = [];
   for (const r of list.slice(0, 40)) {
     const id = String(r?.id || "").trim().toLowerCase();
-    if (!ROOM_ID.test(id)) return { success: false, error: `اسم الغرفة في الرابط «${id || "فاضي"}» لازم يكون حروف إنجليزي صغيرة وأرقام (من 2 لـ 24).` };
-    if (seen.has(id)) return { success: false, error: `الغرفة «${id}» متكررة.` };
+    if (!ROOM_ID.test(id)) return { success: false, error: `اسم المجموعة في الرابط «${id || "فاضي"}» لازم يكون حروف إنجليزي صغيرة وأرقام (من 2 لـ 24).` };
+    if (seen.has(id)) return { success: false, error: `المجموعة «${id}» متكررة.` };
     seen.add(id);
     const name = String(r.name || "").replace(/\s+/g, " ").trim().slice(0, 40);
-    if (name.length < 2) return { success: false, error: `اكتب اسم للغرفة «${id}».` };
+    if (name.length < 2) return { success: false, error: `اكتب اسم للمجموعة «${id}».` };
     out.push({ id, name, about: String(r.about || "").replace(/\s+/g, " ").trim().slice(0, 90), mark: String(r.mark || name).replace(/\s+/g, "").slice(0, 6) || id.slice(0, 4).toUpperCase(),
       hue: Math.max(0, Math.min(360, Math.round(Number(r.hue) || 0))), ...(r.hidden ? { hidden: true } : {}), ...(r.closed ? { closed: true } : {}) });
   }
-  if (!out.some(r => !r.hidden)) return { success: false, error: "لازم تفضل غرفة واحدة على الأقل ظاهرة." };
+  if (!out.some(r => !r.hidden)) return { success: false, error: "لازم تفضل مجموعة واحدة على الأقل ظاهرة." };
   await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(out));
   roomsCache = { at: Date.now(), list: out };
   return { success: true, rooms: out };

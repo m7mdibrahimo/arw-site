@@ -8,7 +8,7 @@ permalink: "/community/index.html"
 {% include "adsense.njk" %}
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -281,11 +281,11 @@ permalink: "/community/index.html"
 <title>مجتمع المصارعة | عرب راسلنج</title>
 <link rel="canonical" href="https://arab-wrestling.com/community/">
 <meta name="robots" content="index, follow">
-<meta name="description" content="مجتمع المصارعة في عرب راسلنج: غرفة دردشة لمحبي كل اتحاد، WWE وAEW وNJPW وTNA وROH وغيرها. تكلم مع المتابعين مباشرة، وأرسل الصور والرسائل الصوتية والإيموجي.">
+<meta name="description" content="مجتمع المصارعة في عرب راسلنج: مجموعة دردشة لمتابعي كل اتحاد، WWE وAEW وNJPW وTNA وROH وغيرها. تكلم مع المتابعين مباشرة، وأرسل الصور والرسائل الصوتية والإيموجي.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arab-wrestling.com/community/">
 <meta property="og:title" content="مجتمع المصارعة | عرب راسلنج">
-<meta property="og:description" content="غرفة دردشة لمحبي كل اتحاد مصارعة. انضم مجانا وتكلم مع المتابعين مباشرة.">
+<meta property="og:description" content="مجموعة دردشة لمتابعي كل اتحاد مصارعة. انضم مجانا وتكلم مع المتابعين مباشرة.">
 <meta property="og:image" content="https://arab-wrestling.com/assets/logo.png">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
@@ -321,13 +321,13 @@ permalink: "/community/index.html"
     </ul>
   </nav>
 </header>
-<main class="cm-page" id="cm" data-api="https://arw-site-bot.m7mdibrahimpc.workers.dev" data-avatars="{{ asset('/assets/avatars/credits.json').split('?v=')[1] }}">
+<main class="cm-page" id="cm" data-api="https://arw-site-bot.m7mdibrahimpc.workers.dev" data-avatars="{{ asset('/assets/avatars/credits.json').split('?v=')[1] }}" data-emoji="{{ asset('/assets/emoji-data.json') }}">
   <div class="cm-app" data-view="rooms">
     <!-- the rooms -->
-    <aside class="cm-side" aria-label="غرف المجتمع">
+    <aside class="cm-side" aria-label="مجموعات المجتمع">
       <div class="cm-side-head">
         <h1 class="cm-title">مجتمع المصارعة</h1>
-        <p class="cm-sub">اختر غرفة اتحادك وتكلم مع محبي المصارعة مباشرة.</p>
+        <p class="cm-sub">اختر مجموعة متابعي اتحادك وتكلم معهم مباشرة.</p>
         <p class="cm-total" hidden><b class="cm-total-n">0</b> متصل الآن</p>
       </div>
       <nav class="cm-rooms">
@@ -347,12 +347,13 @@ permalink: "/community/index.html"
       <div class="cm-empty">
         <div class="cm-empty-art" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg></div>
         <h2>أهلا بك في مجتمع المصارعة</h2>
-        <p>اختر غرفة من القائمة وابدأ الكلام مع محبي اتحادك.</p>
+        <p>اختر مجموعة من القائمة وابدأ الكلام مع متابعي اتحادك.</p>
       </div>
       <div class="cm-head" hidden>
-        <button type="button" class="cm-back" data-act="back" aria-label="رجوع إلى الغرف"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+        <button type="button" class="cm-back" data-act="back" aria-label="رجوع إلى المجموعات"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
         <span class="cm-mark cm-head-mark" aria-hidden="true"></span>
         <div class="cm-head-tx"><b class="cm-head-name"></b><small class="cm-head-status"></small></div>
+        <button type="button" class="cm-ic cm-sound" data-act="mute" aria-expanded="false" aria-label="كتم المجموعة" title="كتم المجموعة"><svg class="cm-i-on" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg><svg class="cm-i-off" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.7 3A6 6 0 0 1 18 8a21 21 0 0 0 .6 5M17 17H3s3-2 3-9a4.7 4.7 0 0 1 .3-1.7"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0M2 2l20 20"/></svg></button>
         <button type="button" class="cm-people-btn" data-act="people" aria-label="المتصلون الآن"><span class="cm-stack"></span><span class="cm-people-n"></span></button>
       </div>
       <div class="cm-pinned" hidden><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 3h6l-1 7 4 3v2H6v-2l4-3z"/></svg><button type="button" class="cm-pinned-tx" data-act="jump-pin"></button><button type="button" class="cm-pinned-x" data-act="unpin" aria-label="إلغاء التثبيت" hidden>×</button></div>
@@ -365,6 +366,7 @@ permalink: "/community/index.html"
       <div class="cm-compose" hidden>
         <div class="cm-replying" hidden><div class="cm-replying-tx"><b></b><span></span></div><button type="button" data-act="cancel-reply" aria-label="إلغاء الرد">×</button></div>
         <div class="cm-attached" hidden></div>
+        <div class="cm-mention-pop" hidden role="listbox" aria-label="اذكر عضوا"></div>
         <div class="cm-row">
           <button type="button" class="cm-ic" data-act="emoji" aria-label="إيموجي" aria-expanded="false"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 14.5s1.5 2 4 2 4-2 4-2"/><path d="M9 9.5h.01M15 9.5h.01"/></svg></button>
           <button type="button" class="cm-ic" data-act="attach" aria-label="إرفاق صورة أو ملف" aria-expanded="false"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.4 11.6-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></button>
@@ -387,10 +389,10 @@ permalink: "/community/index.html"
         <div class="cm-gate-card">
           <div class="cm-gate-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
           <h2>المجتمع للأعضاء فقط</h2>
-          <p>أنشئ حسابك المجاني في أقل من دقيقة، وادخل غرف كل الاتحادات وتكلم مع محبي المصارعة مباشرة.</p>
+          <p>أنشئ حسابك المجاني في أقل من دقيقة، وادخل مجموعات متابعي كل الاتحادات وتكلم معهم مباشرة.</p>
           <ul>
-            <li>غرفة لكل اتحاد، وساحة عامة للجميع</li>
-            <li>صور ورسائل صوتية وإيموجي وتفاعلات</li>
+            <li>مجموعة لمتابعي كل اتحاد، وساحة عامة للجميع</li>
+            <li>صور ورسائل صوتية وملصقات وصور GIF وتفاعلات</li>
             <li>اسمك وصورتك محفوظان لك</li>
           </ul>
           <div class="cm-gate-btns"><a class="cm-btn" data-join href="/account/?new&back=/community/">أنشئ حسابا مجانيا</a><a class="cm-btn cm-btn-ghost" data-login href="/account/?back=/community/">تسجيل الدخول</a></div>
@@ -400,13 +402,43 @@ permalink: "/community/index.html"
   </div>
 
   <!-- floating pieces -->
-  <div class="cm-pop cm-emoji-pop" hidden role="dialog" aria-label="الإيموجي">
-    <div class="cm-emoji-tabs" role="tablist"></div>
-    <div class="cm-emoji-grid"></div>
+  <div class="cm-pop cm-emoji-pop" hidden role="dialog" aria-label="الإيموجي والملصقات وصور GIF">
+    <div class="cm-pk-tabs" role="tablist">
+      <button type="button" role="tab" data-pane="emoji" class="is-on" aria-selected="true">إيموجي</button>
+      <button type="button" role="tab" data-pane="stickers" aria-selected="false">ملصقات</button>
+      <button type="button" role="tab" data-pane="gif" aria-selected="false">GIF</button>
+    </div>
+    <div class="cm-pk-pane" data-pane="emoji">
+      <div class="cm-pk-search"><input type="search" placeholder="ابحث عن إيموجي" aria-label="ابحث عن إيموجي" dir="auto" autocomplete="off"><button type="button" class="cm-tone" aria-label="لون البشرة" title="لون البشرة">👋</button></div>
+      <div class="cm-emoji-tabs" role="tablist"></div>
+      <div class="cm-emoji-grid"></div>
+    </div>
+    <div class="cm-pk-pane" data-pane="stickers" hidden>
+      <div class="cm-stk-tabs"><button type="button" data-pack="arw" class="is-on">عرب راسلنج</button><button type="button" data-pack="noto">متحركة</button></div>
+      <div class="cm-stk-grid"></div>
+    </div>
+    <div class="cm-pk-pane" data-pane="gif" hidden>
+      <div class="cm-pk-search"><input type="search" placeholder="ابحث عن صور GIF" aria-label="ابحث عن صور GIF" dir="auto" autocomplete="off"></div>
+      <div class="cm-gif-chips"></div>
+      <div class="cm-gif-grid"></div>
+      <small class="cm-gif-by"></small>
+    </div>
   </div>
   <div class="cm-pop cm-attach-pop" hidden role="menu">
     <button type="button" role="menuitem" data-act="pick-img"><span class="cm-pop-ic" style="--c:#7c6ee8"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>صور</button>
     <button type="button" role="menuitem" data-act="pick-file"><span class="cm-pop-ic" style="--c:#0e9594"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg></span>ملف أو فيديو</button>
+  </div>
+  <div class="cm-pop cm-mute-pop" hidden role="menu" aria-label="كتم المجموعة">
+    <b class="cm-pop-title">كتم إشعارات هذه المجموعة</b>
+    <p class="cm-mute-now" hidden></p>
+    <button type="button" role="menuitem" data-mute="0" class="cm-mute-off" hidden>إلغاء الكتم</button>
+    <button type="button" role="menuitem" data-mute="15">15 دقيقة</button>
+    <button type="button" role="menuitem" data-mute="60">ساعة</button>
+    <button type="button" role="menuitem" data-mute="480">8 ساعات</button>
+    <button type="button" role="menuitem" data-mute="1440">يوم</button>
+    <button type="button" role="menuitem" data-mute="10080">أسبوع</button>
+    <button type="button" role="menuitem" data-mute="-1">للأبد</button>
+    <label class="cm-mute-sound"><input type="checkbox" checked> صوت الرسائل في كل المجموعات</label>
   </div>
   <div class="cm-pop cm-people-pop" hidden role="dialog" aria-label="المتصلون الآن"><b class="cm-pop-title">متصلون الآن</b><div class="cm-people-list"></div></div>
   <div class="cm-sheet" hidden role="dialog" aria-modal="true" aria-label="خيارات الرسالة">
@@ -424,7 +456,7 @@ permalink: "/community/index.html"
         <li><b>الاحترام أولا.</b> لا سب ولا إهانة ولا تعصب ضد أي متابع أو بلد.</li>
         <li><b>لا تحرق النتائج.</b> إن كتبت نتيجة عرض، اضغط زر <b>«حرق نتائج»</b> قبل الإرسال لتخفى رسالتك.</li>
         <li><b>لا إعلانات ولا روابط مشبوهة.</b> ولا روابط بث مقرصن.</li>
-        <li><b>كل غرفة لاتحادها.</b> وللكلام العام توجد «الساحة العامة».</li>
+        <li><b>كل مجموعة لاتحادها.</b> وللكلام العام توجد «الساحة العامة».</li>
         <li><b>بلغ عن أي إساءة.</b> من خيارات الرسالة، وفريق الموقع يراجع البلاغات.</li>
       </ol>
       <p class="cm-modal-note">مخالفة القواعد قد توقف الكتابة في المجتمع أو توقف الحساب.</p>

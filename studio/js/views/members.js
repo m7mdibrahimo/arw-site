@@ -21,7 +21,7 @@ const EXTRAS = [
   { id: 'tools', label: 'أدوات النشر', text: 'النشر اليدوي على المنصات، سحب الأخبار، المثبت، الريلز', risky: true },
   { id: 'comments', label: 'التعليقات', text: 'قراءة تعليقات الزوار وحذفها' },
   { id: 'members', label: 'أعضاء الموقع', text: 'قائمة اللي عملوا حساب على الموقع، وتوقيفهم' },
-  { id: 'community', label: 'المجتمع', text: 'غرف الدردشة: مسح الرسائل، البلاغات، وإيقاف الأعضاء عن الكتابة' },
+  { id: 'community', label: 'المجتمع', text: 'مجموعات الدردشة: مسح الرسائل، البلاغات، وإيقاف الأعضاء عن الكتابة' },
 ];
 const all = (acts) => SECTIONS.flatMap(s => acts.map(a => `${s.id}.${a}`));
 const PRESETS = [
@@ -40,7 +40,7 @@ const ACTION_TEXT = {
   'members.ban': 'وقّف عضو في الموقع', 'members.unban': 'رجّع عضو في الموقع',
   'premium.grant': 'فعّل عضوية مميزة بإيده', 'premium.revoke': 'شال عضوية مميزة',
   'community.delete': 'مسح رسالة في المجتمع', 'community.mute': 'وقّف عضو عن الكتابة في المجتمع', 'community.unmute': 'رجّع عضو يكتب في المجتمع',
-  'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو علامة التوثيق', 'members.unbadge': 'شال علامة التوثيق من عضو', 'members.edit': 'عدّل بيانات عضو في الموقع', 'community.rooms': 'عدّل غرف المجتمع', 'members.official': 'عدّل الحساب الرسمي على الموقع',
+  'members.verify': 'فعّل حساب عضو بإيده', 'members.badge': 'ادّى عضو علامة التوثيق', 'members.unbadge': 'شال علامة التوثيق من عضو', 'members.edit': 'عدّل بيانات عضو في الموقع', 'community.rooms': 'عدّل مجموعات المجتمع', 'members.official': 'عدّل الحساب الرسمي على الموقع',
 };
 const COLL_TEXT = { shows: 'عرض', recaps: 'ملخص', news: 'خبر', nostalgia: 'حلقة نوستالجيا', nostalgia_series: 'سلسلة نوستالجيا' };
 

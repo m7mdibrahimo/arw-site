@@ -261,3 +261,84 @@ test('a subscription that ends or comes back changes the member\'s look in the r
   assert.ok((db.prepare('SELECT badge FROM msgs WHERE uid = 7').all() as any[]).every(x => x.badge === 'premium'));
   assert.equal(b.last('badge').badge, 'premium');
 });
+
+test('smooth as WhatsApp: a message sent again after a lost connection is saved once; edits and deletes for 6 hours; «يكتب» stops at once; coming back gets what was missed', async () => {
+  const { r, join } = room();
+  const a = join({ uid: 1, name: 'كريم' });
+  const b = join({ uid: 2, name: 'سارة', user: 'sara22' });
+  await a.say({ t: 'send', text: 'هل وصلت؟', nonce: 'abc1' });
+  const first = a.last('msg').m;
+  const bGot = b.ws.got.filter((x: any) => x.t === 'msg').length;
+  await a.say({ t: 'send', text: 'هل وصلت؟', nonce: 'abc1' });
+  assert.equal(a.last('msg').m.id, first.id, 'the same message back');
+  assert.equal(a.last('msg').nonce, 'abc1');
+  assert.equal(b.ws.got.filter((x: any) => x.t === 'msg').length, bGot, 'the others don\'t see it twice');
+  assert.equal(r.latest().length, 1);
+  // edits: your own, within a quarter of an hour
+  await a.say({ t: 'edit', id: first.id, text: 'هل وصلت رسالتي؟' });
+  assert.equal(b.last('edit').text, 'هل وصلت رسالتي؟');
+  assert.ok(r.latest()[0].edited);
+  await b.say({ t: 'edit', id: first.id, text: 'لا' });
+  assert.equal(r.latest()[0].text, 'هل وصلت رسالتي؟', 'not someone else\'s');
+  // 5 hours on: still; after 6 hours: neither edit nor delete (the site's account still deletes)
+  (r as any).sql.exec('UPDATE msgs SET at = ? WHERE id = ?', Date.now() - 5 * 36e5, first.id);
+  await a.say({ t: 'edit', id: first.id, text: 'بعد خمس ساعات' });
+  assert.equal(b.last('edit').text, 'بعد خمس ساعات');
+  (r as any).sql.exec('UPDATE msgs SET at = ? WHERE id = ?', Date.now() - 6.1 * 36e5, first.id);
+  await a.say({ t: 'edit', id: first.id, text: 'متأخر' });
+  assert.equal(a.last('error').code, 'edit');
+  await a.say({ t: 'del', id: first.id });
+  assert.equal(a.last('error').code, 'del');
+  assert.equal(r.latest()[0].del, undefined);
+  // typing: who, with their picture; stopping takes it away at once
+  await b.say({ t: 'typing' });
+  assert.deepEqual(a.last('typing'), { t: 'typing', uid: 2, name: 'سارة', pic: '' });
+  await b.say({ t: 'typing', stop: true });
+  assert.deepEqual(a.last('typing'), { t: 'typing', uid: 2, stop: true });
+  // the people in the room carry their username (for @mentions)
+  assert.equal(r.people().find(p => p.uid === 2)!.user, 'sara22');
+  // coming back: everything after the last message the page had
+  for (let i = 0; i < 80; i++) { (r as any).recent.clear(); await b.say({ t: 'send', text: `رقم ${i}` }); }
+  const me = { uid: 1, user: 'kareem_10', name: 'كريم', pic: '', badge: '' as const, mod: false, mute: 0 };
+  const fresh = r.hello(me, 0);
+  assert.equal(fresh.msgs.length, 60);
+  const back = r.hello(me, first.id);
+  assert.equal(back.msgs[0].id <= first.id, true, 'nothing missed');
+  assert.equal(back.msgs.at(-1)!.id, r.latest().at(-1)!.id);
+});
+
+test('stickers and GIFs: the site\'s pack, animated emoji, and GIFs from GIPHY or Tenor only', async () => {
+  assert.deepEqual(cleanAtt({ kind: 'sticker', id: 'arw:three-count' }, 'wwe'), { kind: 'sticker', id: 'arw:three-count' });
+  assert.deepEqual(cleanAtt({ kind: 'sticker', id: 'noto:1f525' }, 'wwe'), { kind: 'sticker', id: 'noto:1f525' });
+  assert.deepEqual(cleanAtt({ kind: 'sticker', id: 'noto:1f468_200d_1f373' }, 'wwe'), { kind: 'sticker', id: 'noto:1f468_200d_1f373' });
+  assert.equal(cleanAtt({ kind: 'sticker', id: 'https://evil.example/x.png' }, 'wwe'), null);
+  const gif = 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjEx/3o7TKSjRrfIPjeiVyM/200w.mp4';
+  assert.deepEqual(cleanAtt({ kind: 'gif', url: gif, still: 'https://media2.giphy.com/media/3o7TKSjRrfIPjeiVyM/200w_s.gif', w: 200, h: 150 }, 'wwe'),
+    { kind: 'gif', url: gif, still: 'https://media2.giphy.com/media/3o7TKSjRrfIPjeiVyM/200w_s.gif', w: 200, h: 150 });
+  assert.ok(cleanAtt({ kind: 'gif', url: 'https://media.tenor.com/abc123XYZ/wrestling.mp4' }, 'wwe'));
+  assert.equal(cleanAtt({ kind: 'gif', url: 'https://evil.example/media/x/200w.mp4' }, 'wwe'), null);
+  assert.equal(cleanAtt({ kind: 'gif', url: 'https://media2.giphy.com.evil.example/media/x/200w.mp4' }, 'wwe'), null);
+  // a sticker is sent like any message
+  const { join } = room();
+  const a = join({ uid: 1 });
+  await a.say({ t: 'send', text: '', att: { kind: 'sticker', id: 'arw:goat' }, nonce: 'st1' });
+  assert.deepEqual(a.last('msg').m.att, { kind: 'sticker', id: 'arw:goat' });
+  // the search: none until a key is set; members only once it is
+  const e = memberEnv();
+  assert.equal((await chat(e, '/chat/gif?q=wwe')).status, 503);
+  e.GIPHY_API_KEY = 'k';
+  assert.equal((await chat(e, '/chat/gif?q=wwe')).status, 401);
+  const token = await member(e);
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async (u: string) => {
+    assert.match(String(u), /^https:\/\/api\.giphy\.com\/v1\/gifs\/search\?api_key=k&q=wwe&limit=24&offset=0/);
+    return new Response(JSON.stringify({ data: [
+      { images: { fixed_width: { mp4: 'https://media1.giphy.com/media/abcDEF/200w.mp4?cid=1&rid=200w.mp4', width: '200', height: '113' }, fixed_width_still: { url: 'https://media1.giphy.com/media/abcDEF/200w_s.gif?cid=1' } } },
+      { images: { fixed_width: { mp4: 'https://evil.example/x.mp4' } } },
+    ], pagination: { total_count: 100 } }));
+  }) as any;
+  try {
+    const d: any = await (await chat(e, '/chat/gif?q=wwe', { headers: { Authorization: `Bearer ${token}` } })).json();
+    assert.deepEqual(d, { ok: true, by: 'GIPHY', items: [{ url: 'https://media1.giphy.com/media/abcDEF/200w.mp4', still: 'https://media1.giphy.com/media/abcDEF/200w_s.gif', w: 200, h: 113 }], next: '24' });
+  } finally { globalThis.fetch = realFetch; }
+});
