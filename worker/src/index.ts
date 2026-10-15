@@ -394,6 +394,18 @@ export function socialKeyFor(urlKey: string, file: string, owners: Map<string, s
   return urlKey && file && owner && owner !== file ? `${urlKey}_${sanitizeKey(file)}` : urlKey;
 }
 
+/**
+ * A held story released after its address changed (the file got a pinned permalink while it was held): the hold,
+ * the release and the file record sit under the OLD address key, the feed now shows the new one. The poster read
+ * that as «already went out under an earlier address» and skipped it for good — the Roman Reigns 1316-day story
+ * sat released and unposted for over an hour (INCIDENTS #565). Released and not on any platform = still owed, under the old key.
+ */
+export function releasedKeyFor(key: string, recorded: string, state: any): string {
+  if (!recorded || recorded === key || !Number(state?.released?.[recorded])) return key;
+  const sent = ["telegram", "facebook", "instagram", "x"].some(p => Number(state?.[p]?.[recorded]));
+  return sent ? key : recorded;
+}
+
 // Why the shield held a story, in the panel's words: a return/debut, or a match outcome.
 function spoilerReason(title: string = ""): "result" | "return" {
   return /(?<![\u0600-\u06FF\w])(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|الظهور الأول|ظهوره الأول|ظهورها الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة)|\b(?:returns?|returned|comeback|debuts?|debuted|surprise (?:appearance|return))\b/i.test(title) ? "return" : "result";
@@ -2382,7 +2394,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     if (tooOld && !recentReleases.size) break;
     const urlKey = sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (item.url || "")));
     const file = contentFileId(item);
-    const key = socialKeyFor(urlKey, file, keyOwners);
+    const key = releasedKeyFor(socialKeyFor(urlKey, file, keyOwners), file ? state.byFile?.[file] || "" : "", state);
     if (!key || (tooOld && !recentReleases.has(key))) continue;
     const reachedSiteAt = item.published_at ? new Date(item.published_at).getTime() : ts;
     const releasedAt = Number((state as any).released?.[key]) || 0;

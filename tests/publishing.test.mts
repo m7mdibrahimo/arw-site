@@ -3366,7 +3366,7 @@ test('a show page title carries the dotted date people search with, only in the 
   // a written description is kept
   assert.equal(showSeoText({ ...raw, description: 'وصف خاص', isLatest: true }).description, 'وصف خاص');
   // nothing on the page itself changes: the heading still strips the date
-  assert.match(layoutSource(), /\{\{ headline \| arabicShowName \| stripDate \}\}/);
+  assert.match(layoutSource(), /\{\{ headline \| arabicShowName \| stripDate( \| latestH1\(showSeoData and showSeoData\.isLatest\))? \}\}/);
 });
 
 test('weekly roundups dated today are not tonight\'s show, and their fixes reach the model (INCIDENTS #277)', () => {
@@ -4896,4 +4896,22 @@ test('weekly shows carry the generic «عروض المصارعة الحرة مت
   const s = createRequire(import.meta.url)('../lib/show-seo.cjs');
   const f = s.showNameForms({ headline: 'عرض الرو 12.10.2026 مترجم', title: 'WWE RAW 12.10.2026', programName: 'WWE RAW', eventDate: '2026-10-12', aliases: ['عرض الرو', 'الرو'], isShow: true, archive: false });
   assert.ok(f.includes('عروض المصارعة الحرة مترجم'));
+});
+
+test('a held story released after its address changed is still posted, under its old key (INCIDENTS #565)', async () => {
+  const { releasedKeyFor } = await import('../worker/src/index');
+  const oldK = 'httpsarab-wrestlingcomnewsold', newK = 'httpsarab-wrestlingcomnews20261014154822-old';
+  const st: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, released: { [oldK]: 1 } };
+  assert.equal(releasedKeyFor(newK, oldK, st), oldK);
+  st.telegram[oldK] = 5; // already sent: stays «went out under an earlier address»
+  assert.equal(releasedKeyFor(newK, oldK, st), newK);
+  assert.equal(releasedKeyFor(newK, oldK, { telegram: {}, facebook: {}, instagram: {}, x: {}, released: {} }), newK);
+  assert.equal(releasedKeyFor(newK, '', st), newK);
+});
+
+test("the newest episode's visible H1 says «الأخير» like its title (INCIDENTS #565)", () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.match(cfg, /addNunjucksFilter\("latestH1"/);
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.equal((layout.match(/latestH1\(showSeoData and showSeoData\.isLatest\)/g) || []).length, 2);
 });

@@ -1723,6 +1723,12 @@ module.exports = function(eleventyConfig) {
     const m = n.match(/^(.*?)\s+(\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}.*)$/);
     return m && /[\u0600-\u06FF]/.test(m[1]) ? `${m[1]} الأخير ${m[2]}` : n;
   });
+  // The newest episode is searched as «عرض الرو الأخير مترجم»: its visible H1 says «الأخير» too, like its title (INCIDENTS #565)
+  eleventyConfig.addNunjucksFilter("latestH1", function(text, isLatest) {
+    const t = String(text || "").trim();
+    if (!isLatest || !t || /الأخير|الاخير/.test(t)) return t;
+    return /\sمترجم$/.test(t) ? t.replace(/\s(مترجم)$/, " الأخير $1") : t;
+  });
   eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description) {
     const day = eventDate ? formatDate(eventDate) : "";
     const isLatest = (library || []).some(p => p.latest && p.latest.url === url);
