@@ -153,3 +153,13 @@ test('«the Rock» keeps its capital T in a headline (INCIDENTS #551)', async ()
   assert.equal(normalizeEnglishTitle("Cody Rhodes Calls Relationship With the Rock Complicated"), "Cody Rhodes Calls Relationship With The Rock Complicated");
   assert.equal(normalizeEnglishTitle("John Cena Will Not Pitch the Rock on a Team-Up"), "John Cena Will Not Pitch The Rock on a Team-Up");
 });
+
+test('INCIDENTS #588: a word the writer repeated is collapsed; quotes and ring names stay', async () => {
+  const { collapseRepeatedEnglishWords, repeatedEnglishWords, fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('Bought With With His Own Money'), 'Bought With His Own Money');
+  assert.equal(collapseRepeatedEnglishWords('and Kevin Kevin Owens to secure'), 'and Kevin Owens to secure');
+  assert.equal(collapseRepeatedEnglishWords('on Club Shay Shay with Bang Bang'), 'on Club Shay Shay with Bang Bang');
+  assert.equal(collapseRepeatedEnglishWords('He said "kind of and and kind of" today'), 'He said "kind of and and kind of" today');
+  assert.equal(collapseRepeatedEnglishWords('> but every every year'), '> but every every year');
+  assert.deepEqual(repeatedEnglishWords('Kevin Kevin Owens and "and and"'), ['Kevin Kevin']);
+});
