@@ -397,7 +397,7 @@
     if (idx >= 0) {
       list.splice(idx, 1);
     } else {
-      list.unshift({
+      var added = {
         url: item.url,
         title: item.title,
         image: item.image,
@@ -405,9 +405,63 @@
         kindLabel: item.kindLabel || (item.kind === 'show' ? 'عرض' : (item.kind === 'recap' ? 'ملخص' : 'خبر')),
         fed: item.fed || '',
         addedAt: Date.now()
-      });
+      };
+      list.unshift(added);
     }
     saveBookmarks(list);
+    savedOp(idx >= 0 ? { op: 'remove', url: item.url } : { op: 'add', item: added });
+  }
+
+  // «المفضلة وشاهد لاحقا على كل أجهزتك» (owner 2026-10-15): a member's list lives with their account (worker/src/saved.ts).
+  // Each change is sent at once (kept to send again if the connection drops); the account's list then replaces this
+  // device's. The first time a device signs in, what it had saved is added to the account's.
+  var SAVED_API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/saved', SAVED_OPS = 'arw-saved-ops';
+  function savedMember() { try { var s = JSON.parse(localStorage.getItem('arw-member') || 'null'); return s && s.token && s.member ? s : null; } catch (e) { return null; } }
+  function savedOps(v) { try { if (v) localStorage.setItem(SAVED_OPS, JSON.stringify(v)); else return JSON.parse(localStorage.getItem(SAVED_OPS) || '[]'); } catch (e) { return []; } }
+  function savedCall(body) {
+    var s = savedMember();
+    return fetch(SAVED_API, { method: body ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + s.token }, body: body ? JSON.stringify(body) : undefined, credentials: 'omit' })
+      .then(function (r) { return r.json(); });
+  }
+  function savedTake(d) {
+    if (!d || !d.ok || !Array.isArray(d.items)) return;
+    var keep = d.items.map(function (x) { return { url: x.url, title: x.title, image: x.image, kind: x.kind, kindLabel: x.kind === 'show' ? 'عرض' : (x.kind === 'recap' ? 'ملخص' : 'خبر'), fed: x.fed, addedAt: x.addedAt }; });
+    saveBookmarks(keep);
+  }
+  var savedBusy = false;
+  function savedFlush() {
+    var s = savedMember();
+    if (!s || savedBusy) return Promise.resolve();
+    var ops = savedOps();
+    if (!ops.length) return Promise.resolve();
+    savedBusy = true;
+    var op = ops[0];
+    return savedCall(op).then(function (d) {
+      savedBusy = false;
+      if (d && (d.ok || d.error)) { var rest = savedOps().slice(1); savedOps(rest.length ? rest : []); if (!rest.length) try { localStorage.removeItem(SAVED_OPS); } catch (e) {} }
+      if (savedOps().length) return savedFlush();
+      savedTake(d);
+    }).catch(function () { savedBusy = false; });
+  }
+  function savedOp(op) {
+    if (!savedMember()) return;
+    var ops = savedOps(); ops.push(op); savedOps(ops.slice(-100));
+    savedFlush();
+  }
+  function initSavedSync() {
+    var s = savedMember();
+    if (!s) return;
+    var uid = s.member.username, mergedKey = 'arw-saved-merged:' + uid;
+    var merged = false, last = 0;
+    try { merged = !!localStorage.getItem(mergedKey); last = Number(sessionStorage.getItem('arw-saved-at')) || 0; } catch (e) {}
+    savedFlush().then(function () {
+      if (savedOps().length) return;
+      if (!merged) {
+        return savedCall({ op: 'merge', items: getBookmarks() }).then(function (d) { if (d && d.ok) { try { localStorage.setItem(mergedKey, '1'); sessionStorage.setItem('arw-saved-at', String(Date.now())); } catch (e) {} savedTake(d); } });
+      }
+      if (Date.now() - last < 120000) return;
+      return savedCall(null).then(function (d) { if (d && d.ok) { try { sessionStorage.setItem('arw-saved-at', String(Date.now())); } catch (e) {} savedTake(d); } });
+    }).catch(function () {});
   }
 
   function updateBookmarksBadge() {
@@ -457,6 +511,8 @@
 
     var html = '';
     list.forEach(function(it) {
+      if (!/^\/[^\s"'<>]*$/.test(String(it.url || ''))) return;
+      if (it.image && !/^(\/|https:\/\/)[^\s"'<>]*$/.test(String(it.image))) it.image = '';
       var badgeClass = it.kind === 'show' ? 'bookmark-badge-show' : (it.kind === 'recap' ? 'bookmark-badge-recap' : 'bookmark-badge-news');
       var kindLabel = it.kindLabel || (it.kind === 'show' ? 'عرض' : (it.kind === 'recap' ? 'ملخص' : 'خبر'));
       var thumb = it.image || 'https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg';
@@ -487,6 +543,7 @@
         var targetUrl = this.getAttribute('data-url');
         var cur = getBookmarks().filter(function(b) { return b.url !== targetUrl; });
         saveBookmarks(cur);
+        savedOp({ op: 'remove', url: targetUrl });
       });
     });
   }
@@ -1284,6 +1341,7 @@
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
+    initSavedSync();
     initShare();
     initMobileChrome();
     initCommentReplies();

@@ -37,6 +37,7 @@ import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
+import { handleSaved } from "./saved";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
@@ -3089,6 +3090,8 @@ export default {
       if (path.startsWith("/premium/")) return await handlePremium(request, env as any, url);
       // «المتابعة»: a member follows programs and promotions, and is told of each new full show (worker/src/follows.ts)
       if (path === "/follow" || path.startsWith("/follow/")) return await handleFollows(request, env as any, url);
+      // «المفضلة وشاهد لاحقا» kept with the member's account, the same on all their devices (worker/src/saved.ts)
+      if (path === "/saved") return await handleSaved(request, env as any, url);
       // a show's premium links, from its editor (whoever may edit that section)
       if (path === "/api/studio/premium/media") {
         const k = request.method === "POST" ? null : url.searchParams.get("k");
