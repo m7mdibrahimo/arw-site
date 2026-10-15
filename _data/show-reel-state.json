@@ -3619,5 +3619,24 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "mediaDeleted": true
+  },
+  "20261015173845-aew-dynamite-14-10-2026": {
+    "publishedAt": 1792076525215,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ديناميت 14.10.2026 مترجم",
+    "lastAttempt": 1792076544844,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
