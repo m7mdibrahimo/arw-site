@@ -437,3 +437,17 @@ test('the message tools as Messenger and iOS: ☺ ↩ ⋮ beside it, a long pres
   assert.match(css, /\.cm-msg\.is-cont\{ margin-top:7px; \}/);
   assert.doesNotMatch(css, /:has\(\+ \.cm-msg\.is-cont\) \.cm-bubble\{ border-end-(start|end)-radius:6px/, 'no squared corner joining two messages');
 });
+
+test('answers as Messenger (no side stripe) and bubbles as WhatsApp (small corners, the time at the end of the last line)', () => {
+  const fs = require('node:fs');
+  const js = fs.readFileSync('assets/community.js', 'utf8'), css = fs.readFileSync('assets/community.css', 'utf8');
+  // «↩ رد على فلان» over the answer, the quoted message a faded bubble outside it
+  assert.match(js, /bw\.appendChild\(cap\); bw\.appendChild\(q\);/);
+  assert.match(js, /'رد عليك' : 'رد على ' \+ m\.reply\.name/);
+  assert.doesNotMatch(css, /\.cm-quote\{[^}]*border-inline-start/);
+  assert.doesNotMatch(css, /\.cm-replying\{[^}]*border-inline-start/);
+  // WhatsApp's corners and the time on the last line
+  assert.match(css, /--cm-r:9px;/);
+  assert.match(css, /\.cm-msg\.is-text \.cm-meta\{ position:absolute;/);
+  assert.match(css, /\.cm-msg\.is-text \.cm-text::after\{ content:""; display:inline-block; width:var\(--cm-mw, 50px\)/);
+});

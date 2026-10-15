@@ -35,6 +35,7 @@
     play: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>',
     pause: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>',
     swipe: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9 19 14l-5 5"/><path d="M19 14H9a5 5 0 0 1-5-5V5"/></svg>',
+    replyCap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 9 5 14l5 5"/><path d="M5 14h10a5 5 0 0 0 5-5V5"/></svg>',
     edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',
     // a message of mine: waiting, sent, not sent (WhatsApp's marks)
     clock: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
@@ -685,19 +686,18 @@
       dl.appendChild(document.createTextNode(mine ? 'حذفت هذه الرسالة' : 'تم حذف هذه الرسالة'));
       bub.appendChild(dl);
     } else {
-      if (m.reply) {
-        var q = el('button', 'cm-quote'); q.type = 'button';
-        q.appendChild(el('b', null, m.reply.name));
-        q.appendChild(el('span', null, m.reply.text || (m.reply.kind === 'text' ? 'رسالة مخفية (حرق نتائج)' : kindLabel(m.reply.kind))));
-        q.addEventListener('click', function () { jumpTo(m.reply.id); });
-        bub.appendChild(q);
-      }
       var body = el('div', 'cm-body');
       if (m.att) body.appendChild(attNode(m.att, m));
       if (m.text) {
         var big = !m.att && onlyEmoji(m.text);
         var tn = textNode(m.text);
         if (big) { tn.classList.add('cm-big'); row.classList.add('is-big'); }
+        // words only, written the page's way: the time sits at the end of the last line when there's room (WhatsApp's)
+        else if (!m.att && !m.spoiler) {
+          var strong = m.text.match(/[A-Za-z\u00C0-\u024F\u0590-\u08FF]/);
+          if (!strong || /[\u0590-\u08FF]/.test(strong[0]) === RTL) row.classList.add('is-text');
+        }
+        if (m.edited && !m.del) row.classList.add('is-edited');
         body.appendChild(tn);
       }
       if (m.spoiler) {
@@ -717,6 +717,19 @@
     // mine: 🕓 on its way, ✓ sent, ! not sent (a tap sends it again)
     if (mine && !m.del) { var tk = el('span', 'cm-tick'); tk.innerHTML = m.pending ? IC.clock : IC.check; tk.setAttribute('aria-label', m.pending ? 'جار الإرسال' : 'تم الإرسال'); meta.appendChild(tk); }
     bub.appendChild(meta);
+    // an answer (owner 2026-10-15: «زي ماسنجر … من غير البرتاح الخضرا»): «↩ رد على فلان» over it, the message it answers
+    // as a faded bubble the answer sits on; a tap goes to it
+    if (m.reply && !m.del) {
+      var orig = byId[m.reply.id], toMe = !!(me && orig && orig.uid === me.uid);
+      var cap = el('div', 'cm-reply-cap'); cap.innerHTML = IC.replyCap;
+      cap.appendChild(document.createTextNode(mine ? (toMe ? 'رددت على نفسك' : 'رددت على ' + m.reply.name) : toMe ? 'رد عليك' : 'رد على ' + m.reply.name));
+      var q = el('button', 'cm-quote'); q.type = 'button'; q.setAttribute('aria-label', 'اذهب إلى الرسالة الأصلية');
+      var qt = el('span', null, m.reply.text || (m.reply.kind === 'text' ? 'رسالة مخفية (حرق نتائج)' : kindLabel(m.reply.kind))); qt.dir = 'auto';
+      q.appendChild(qt);
+      q.addEventListener('click', function () { jumpTo(m.reply.id); });
+      bw.appendChild(cap); bw.appendChild(q);
+      row.classList.add('has-quote');
+    }
     bw.appendChild(bub);
     var rx = el('div', 'cm-reacts');
     bw.appendChild(rx);
@@ -1081,7 +1094,8 @@
     if (editing) cancelEdit();
     replyTo = m;
     var r = $('.cm-replying'); r.hidden = false; r.classList.remove('is-edit');
-    $('b', r).textContent = 'رد على ' + m.name;
+    $('.cm-replying-ic', r).innerHTML = IC.replyCap;
+    $('b', r).textContent = me && m.uid === me.uid ? 'الرد على نفسك' : 'الرد على ' + m.name;
     $('span', r).textContent = m.spoiler ? 'رسالة مخفية (حرق نتائج)' : m.text || (m.att ? kindLabel(m.att.kind) : '');
     input.focus();
   }
@@ -1092,6 +1106,7 @@
     cancelReply();
     editing = m; draftBeforeEdit = input.value;
     var r = $('.cm-replying'); r.hidden = false; r.classList.add('is-edit');
+    $('.cm-replying-ic', r).innerHTML = IC.edit;
     $('b', r).textContent = me && m.uid !== me.uid ? 'تعديل رسالة ' + m.name : 'تعديل الرسالة';
     $('span', r).textContent = m.text || kindLabel(m.att && m.att.kind);
     input.value = m.text || ''; autosize(); updateSendBtn();

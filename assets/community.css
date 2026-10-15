@@ -1,6 +1,6 @@
 /* «مجتمع المصارعة» (pages/community.njk, assets/community.js): the site's own colours and type, a chat app's layout.
    Rooms on the right, the room on the left (one at a time on a phone). Light and dark (html.arw-dark). */
-.cm-body{ --cm-mine:#0e9594; --cm-mine-ink:#fff; --cm-bubble:var(--card); --cm-head-h:72px; --cm-r:18px;
+.cm-body{ --cm-mine:#0e9594; --cm-mine-ink:#fff; --cm-bubble:var(--card); --cm-head-h:72px; --cm-r:9px;
   /* the bubble's tail, pointing right or left (drawn in the bubble's own colour) */
   --cm-tail-r:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 13'%3E%3Cpath d='M0 13h8.3c1.3 0 2-1.5 1.2-2.6L2 0H0z'/%3E%3C/svg%3E");
   --cm-tail-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 13'%3E%3Cpath d='M10 13H1.7C.4 13-.3 11.5.5 10.4L8 0h2z'/%3E%3C/svg%3E"); }
@@ -96,7 +96,7 @@ html.arw-dark .cm-head-status.is-live{ color:#4ade80; }
 .cm-av.is-official{ background:#0f5f5e; }
 .cm-bwrap{ min-width:0; display:flex; flex-direction:column; align-items:flex-start; }
 .cm-msg.is-mine .cm-bwrap{ align-items:flex-end; }
-.cm-bubble{ position:relative; min-width:64px; max-width:100%; padding:8px 13px 6px; border-radius:var(--cm-r); background:var(--cm-bubble); color:var(--ink); box-shadow:0 1px 1px rgba(0,0,0,.08), 0 2px 10px -6px rgba(0,0,0,.18); border:1px solid transparent; }
+.cm-bubble{ position:relative; min-width:52px; max-width:100%; padding:6px 10px 5px; border-radius:var(--cm-r); background:var(--cm-bubble); color:var(--ink); box-shadow:0 1px 1px rgba(0,0,0,.08), 0 2px 10px -6px rgba(0,0,0,.18); border:1px solid transparent; }
 .cm-msg.is-mine .cm-bubble{ background:var(--cm-mine); color:var(--cm-mine-ink); border-color:transparent; }
 /* each message of a run stands on its own: round all round, a clear space between them (owner 2026-10-15: «لازم يكون في فاصل بين كل رسالة ورسالة») */
 .cm-msg.is-gold:not(.is-mine) .cm-bubble{ background:color-mix(in srgb, #ffd25a 15%, var(--card)); }
@@ -135,7 +135,7 @@ html.arw-dark .cm-name{ color:hsl(var(--nh, 177) 65% 66%); }
 .cm-msg.is-gold .cm-name{ color:#b5780a; }
 html.arw-dark .cm-msg.is-gold .cm-name{ color:#f2bd4b; }
 .cm-name svg{ width:15px; height:15px; flex:none; }
-.cm-text{ margin:0; font-size:15.5px; line-height:1.75; white-space:pre-wrap; overflow-wrap:anywhere; unicode-bidi:plaintext; }
+.cm-text{ margin:0; font-size:15px; line-height:1.65; white-space:pre-wrap; overflow-wrap:anywhere; unicode-bidi:plaintext; }
 .cm-text a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
 .cm-msg:not(.is-mine) .cm-text a{ color:var(--teal); }
 .cm-text .cm-mention{ font-weight:800; color:var(--teal); }
@@ -144,17 +144,32 @@ html.arw-dark .cm-msg.is-gold .cm-name{ color:#f2bd4b; }
 .cm-msg.is-big .cm-bubble{ background:transparent !important; box-shadow:none !important; border-color:transparent !important; padding:0 4px; }
 .cm-msg.is-big .cm-meta{ color:var(--muted) !important; }
 .cm-meta{ display:flex; justify-content:flex-end; align-items:center; gap:4px; margin-top:1px; font-size:11px; color:var(--muted); line-height:1.4; font-variant-numeric:tabular-nums; }
+/* WhatsApp's shape (owner 2026-10-15: «بالشكل زي بتاع واتساب»): small rounded corners, a snug bubble, and on a message of
+   words the time at the end of its last line when it fits (the line keeps it room), else under it */
+.cm-msg.is-text .cm-bubble{ padding-bottom:6px; }
+.cm-msg.is-text .cm-meta{ position:absolute; bottom:3px; inset-inline-end:9px; margin:0; }
+.cm-msg.is-text .cm-text::after{ content:""; display:inline-block; width:var(--cm-mw, 50px); height:1px; }
+.cm-msg.is-text.is-mine{ --cm-mw:68px; }
+.cm-msg.is-text.is-edited{ --cm-mw:88px; }
+.cm-msg.is-text.is-mine.is-edited{ --cm-mw:106px; }
+.cm-msg.is-text.is-failed .cm-meta{ position:static; margin-top:1px; }
+.cm-msg.is-text.is-failed .cm-text::after{ display:none; }
 .cm-msg.is-mine .cm-meta{ color:rgba(255,255,255,.78); }
 .cm-deleted{ display:flex; align-items:center; gap:6px; font-style:italic; color:var(--muted); font-size:14px; }
 .cm-deleted svg{ flex:none; opacity:.8; }
 .cm-msg.is-mine .cm-deleted{ color:rgba(255,255,255,.8); }
 
 /* a quote of what it answers */
-.cm-quote{ display:block; width:100%; margin:2px 0 6px; padding:6px 10px; border:0; border-inline-start:3px solid var(--teal); border-radius:10px; background:color-mix(in srgb, var(--teal) 9%, transparent); color:inherit; text-align:start; font:inherit; cursor:pointer; }
-.cm-msg.is-mine .cm-quote{ background:rgba(255,255,255,.16); border-inline-start-color:#fff; }
-.cm-quote b{ display:block; font:900 12.5px 'Cairo',sans-serif; color:var(--teal); }
-.cm-msg.is-mine .cm-quote b{ color:#fff; }
-.cm-quote span{ display:block; font-size:13px; opacity:.85; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:420px; }
+/* an answer, as Messenger shows it (owner 2026-10-15: «من غير البرتاح الخضرا … زي ماسنجر»): «↩ رد على فلان», then the
+   message it answers as a faded bubble, the answer sitting on its lower edge */
+.cm-reply-cap{ display:flex; align-items:center; gap:4px; margin:0 8px 3px; color:var(--muted); font:700 12px/1.4 'Cairo',sans-serif; max-width:100%; }
+.cm-reply-cap svg{ width:12px; height:12px; flex:none; }
+.cm-quote{ position:relative; display:block; max-width:min(100%, 420px); min-width:72px; margin:0 0 -10px; padding:7px 11px 16px; border:0; border-radius:var(--cm-r); background:color-mix(in srgb, var(--ink) 7%, var(--bg)); color:var(--muted); text-align:start; font:inherit; font-size:13.5px; line-height:1.55; cursor:pointer; transition:background .15s ease, transform .15s ease; }
+html.arw-dark .cm-quote{ background:color-mix(in srgb, #fff 9%, var(--bg)); }
+.cm-quote:hover{ background:color-mix(in srgb, var(--ink) 11%, var(--bg)); }
+.cm-quote:active{ transform:scale(.98); }
+.cm-quote span{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
+.cm-msg.has-quote .cm-bubble{ z-index:1; }
 
 /* a spoiler */
 .cm-spoiler{ position:relative; }
@@ -310,15 +325,18 @@ html.arw-dark .cm-focus-bg{ background:rgba(0,0,0,.55); }
 /* ── writing ─────────────────────────────────────────────────────────────── */
 .cm-compose{ position:relative; padding:8px 14px 14px; background:color-mix(in srgb, var(--card) 94%, transparent); border-top:1px solid var(--line); backdrop-filter:blur(10px); z-index:3; }
 .cm-compose[hidden]{ display:none; }
-.cm-replying, .cm-attached{ display:flex; align-items:center; gap:10px; margin:0 4px 8px; padding:8px 12px; border-radius:12px; background:var(--bg); border-inline-start:3px solid var(--teal); }
+.cm-attached{ display:flex; align-items:center; gap:10px; margin:0 4px 8px; padding:8px 12px; border-radius:12px; background:var(--bg); border-inline-start:3px solid var(--teal); }
+/* answering or editing (Messenger's): an icon, «الرد على فلان» and what it says, × to drop it; no side stripe */
+.cm-replying{ display:flex; align-items:center; gap:10px; margin:0 4px 8px; padding:7px 6px 7px 10px; border-radius:16px; background:color-mix(in srgb, var(--ink) 5%, transparent); }
+.cm-replying-ic{ width:30px; height:30px; flex:none; display:flex; align-items:center; justify-content:center; border-radius:50%; background:color-mix(in srgb, var(--ink) 8%, transparent); color:var(--ink); }
+.cm-replying-ic svg{ width:15px; height:15px; }
+.cm-replying.is-edit .cm-replying-ic{ background:color-mix(in srgb, var(--gold) 22%, transparent); color:#a86a06; }
+html.arw-dark .cm-replying.is-edit .cm-replying-ic{ color:var(--gold); }
 .cm-replying[hidden], .cm-attached[hidden]{ display:none; }
 .cm-replying-tx{ flex:1; min-width:0; }
-.cm-replying-tx b{ display:block; font:900 12.5px 'Cairo',sans-serif; color:var(--teal); }
-.cm-replying.is-edit{ border-inline-start-color:var(--gold); }
+.cm-replying-tx b{ display:block; font:800 13px 'Cairo',sans-serif; color:var(--ink); }
 .cm-replying{ animation:cm-rep-in .28s cubic-bezier(.2,.9,.3,1.15); }
 @keyframes cm-rep-in{ from{ opacity:0; transform:translateY(10px); } }
-.cm-replying.is-edit .cm-replying-tx b{ color:#c47f0c; }
-html.arw-dark .cm-replying.is-edit .cm-replying-tx b{ color:var(--gold); }
 /* @: who to mention */
 .cm-mention-pop{ position:absolute; bottom:100%; inset-inline:14px; z-index:9; display:flex; flex-direction:column; gap:2px; margin-bottom:6px; padding:6px; border-radius:16px; background:var(--card); border:1px solid var(--line); box-shadow:0 18px 40px -16px rgba(0,0,0,.4); max-width:360px; }
 .cm-mention-pop[hidden]{ display:none; }
