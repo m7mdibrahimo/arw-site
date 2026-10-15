@@ -24,11 +24,6 @@
   "retry": false,
   "at": "2026-10-15T18:41:10.896Z"
  },
- "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T18:25:47.846Z"
- },
  "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
