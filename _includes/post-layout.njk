@@ -78,7 +78,7 @@
       {% if federation %}"articleSection": "{{ federation }}",{% endif %}
       {% if tags and tags.length %}"keywords": "{{ tags | join(', ') | escape }}",{% endif %}
       {#- the show's program under every name people search it by — for search engines only, nothing on the page (owner) -#}
-      {% set ldAbout = libraryProgramOf(page.url, collections.library) if page.url.startsWith('/shows/') else null %}
+      {% set ldAbout = libraryProgramOf(page.url, collections.library, program_name) if (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/')) else null %}
       {% if ldAbout %}"about": { "@type": "TVSeries", "name": "{{ ldAbout.name | escape }}", "url": "https://arab-wrestling.com/library/{{ ldAbout.slug }}/"{% if ldAbout.arName or ldAbout.aliases.length %}, "alternateName": [{% for a in ([ldAbout.arName] if ldAbout.arName else []).concat(ldAbout.aliases) %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %} },{% endif %}
       "inLanguage": "ar",
       "isAccessibleForFree": "true",
@@ -154,7 +154,7 @@
           "item": "https://arab-wrestling.com{{ sectionUrl }}"
         },
         {% set ldFed = federation if (federation and not page.url.startsWith('/news/') and not isNostalgiaItem) else '' %}
-        {% set ldProg = libraryProgramOf(page.url, collections.library) if page.url.startsWith('/shows/') else null %}
+        {% set ldProg = libraryProgramOf(page.url, collections.library, program_name) if (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/')) else null %}
         {% set ldPos = 3 %}
         {% if ldFed %}{
           "@type": "ListItem",

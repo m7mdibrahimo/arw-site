@@ -1712,8 +1712,13 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
   // The show's own program page for the navigation path: الرئيسية › عروض المصارعة › WWE › WWE RAW (INCIDENTS #286)
-  eleventyConfig.addNunjucksGlobal("libraryProgramOf", function(url, library) {
-    const prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
+  eleventyConfig.addNunjucksGlobal("libraryProgramOf", function(url, library, programName) {
+    let prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
+    // A recap belongs to the program of the same name: it carries the same spellings in its structured data (INCIDENTS #578)
+    if (!prog && programName && String(url || "").startsWith("/recaps/")) {
+      const want = String(programName).trim().toLowerCase();
+      prog = (library || []).find(p => String(p.name || "").trim().toLowerCase() === want);
+    }
     return prog ? { slug: prog.slug, name: prog.name, arName: prog.arName || "", aliases: prog.aliases || [] } : null;
   });
   // Other Arabic spellings of a program for its library page description (سماكداون / سماك داون / الرو / راو):
