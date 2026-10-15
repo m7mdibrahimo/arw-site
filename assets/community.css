@@ -69,7 +69,7 @@ html.arw-dark .cm-head-status.is-live{ color:#4ade80; }
 .cm-pinned-tx{ flex:1; min-width:0; text-align:start; border:0; background:none; color:inherit; font:inherit; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:2px 0; }
 .cm-pinned-tx b{ font-family:'Cairo',sans-serif; margin-inline-end:6px; }
 .cm-pinned-x{ border:0; background:none; color:var(--muted); font-size:20px; line-height:1; cursor:pointer; padding:0 4px; }
-.cm-scroll{ flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:14px 18px 8px; scrollbar-width:thin; outline:none; }
+.cm-scroll{ flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; padding:14px 18px 8px; scrollbar-width:thin; outline:none; }
 .cm-more-wrap{ display:flex; justify-content:center; }
 .cm-more{ margin:4px auto 10px; padding:6px 16px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--muted); font:800 12.5px 'Cairo',sans-serif; cursor:pointer; }
 .cm-more:hover{ color:var(--teal); border-color:var(--teal); }
@@ -193,8 +193,9 @@ html.arw-dark .cm-stk-arw{ border-color:#232831; }
 .cm-reacts button span{ font-size:14px; }
 
 /* the message's own tools (a pointer) */
-.cm-tools{ position:absolute; top:-14px; inset-inline-end:-6px; display:flex; gap:2px; padding:3px; border-radius:999px; background:var(--card); border:1px solid var(--line); box-shadow:0 6px 18px -8px rgba(0,0,0,.3); opacity:0; pointer-events:none; transform:translateY(4px); transition:opacity .15s ease, transform .15s ease; z-index:4; }
-.cm-msg.is-mine .cm-tools{ inset-inline-end:auto; inset-inline-start:-6px; }
+.cm-tools{ position:absolute; top:-14px; inset-inline-start:-6px; display:flex; gap:2px; padding:3px; border-radius:999px; background:var(--card); border:1px solid var(--line); box-shadow:0 6px 18px -8px rgba(0,0,0,.3); opacity:0; pointer-events:none; transform:translateY(4px); transition:opacity .15s ease, transform .15s ease; z-index:4; }
+/* the tools open toward the middle of the room, never past its edge (owner 2026-10-15: «فوق وتحت وبس») */
+.cm-msg.is-mine .cm-tools{ inset-inline-start:auto; inset-inline-end:-6px; }
 @media (hover:hover){ .cm-msg:hover .cm-tools, .cm-msg:focus-within .cm-tools{ opacity:1; pointer-events:auto; transform:none; } }
 .cm-tools button{ width:30px; height:30px; border:0; border-radius:50%; background:transparent; color:var(--muted); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; }
 .cm-tools button:hover{ background:color-mix(in srgb, var(--ink) 7%, transparent); color:var(--ink); }
@@ -203,8 +204,8 @@ html.arw-dark .cm-stk-arw{ border-color:#232831; }
 .cm-quick button:hover{ transform:scale(1.25); background:transparent; }
 
 /* swipe to answer (a finger) */
-.cm-msg .cm-swipe-ic{ position:absolute; inset-inline-start:-34px; top:50%; transform:translateY(-50%) scale(.5); opacity:0; color:var(--teal); transition:opacity .1s ease; }
-.cm-msg.is-mine .cm-swipe-ic{ inset-inline-start:auto; inset-inline-end:-34px; }
+.cm-msg .cm-swipe-ic{ position:absolute; inset-inline-start:2px; top:50%; transform:translateY(-50%) scale(.5); opacity:0; color:var(--teal); transition:opacity .1s ease; pointer-events:none; }
+.cm-msg.is-mine .cm-swipe-ic{ inset-inline-start:auto; inset-inline-end:2px; }
 
 /* the jump down, the typing line */
 .cm-jump{ position:absolute; inset-inline-start:18px; bottom:92px; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 8px 20px -8px rgba(0,0,0,.35); z-index:5; }
@@ -502,3 +503,8 @@ html.arw-dark .cm-msg.is-prem .cm-name > span:first-child{ background-image:line
 .cm-mute-now{ margin:0 6px 6px; color:var(--coral); font-size:13px; font-weight:700; }
 .cm-mute-sound{ display:flex; align-items:center; gap:8px; margin-top:6px; padding:10px 8px 2px; border-top:1px solid var(--line); color:var(--muted); font-size:13.5px; font-weight:700; cursor:pointer; }
 .cm-mute-sound input{ width:17px; height:17px; accent-color:var(--teal); }
+
+/* a report: a reason to pick, words to write, or both */
+.cm-report-why{ width:100%; min-height:76px; margin:0 0 14px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:var(--bg); color:var(--ink); font:500 15px/1.6 'Tajawal',sans-serif; resize:vertical; outline:none; }
+.cm-report-why:focus{ border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft); }
+.cm-report-opts label{ padding:9px 12px; }

@@ -94,13 +94,18 @@ test('deleting: your own message, or any message by the site\'s account; pinning
   assert.equal(b.last('del').id, id);
   // a deleted pinned message is unpinned
   assert.equal(b.last('pin').m, null);
+  // the site's account takes it away for good (owner 2026-10-15)
   await b.say({ t: 'more', before: 999 });
-  const shown = b.last('more').msgs.find((m: any) => m.id === id);
+  assert.equal(b.last('more').msgs.find((m: any) => m.id === id), undefined);
+  // a member's own: «تم حذف» stays in its place
+  await b.say({ t: 'send', text: 'رسالة سارة' });
+  const sid = b.last('msg').m.id;
+  await b.say({ t: 'del', id: sid });
+  assert.equal(a.last('del').id, sid);
+  await b.say({ t: 'more', before: 999 });
+  const shown = b.last('more').msgs.find((m: any) => m.id === sid);
   assert.equal(shown.del, true);
   assert.equal(shown.text, '');
-  await b.say({ t: 'send', text: 'رسالة سارة' });
-  await b.say({ t: 'del', id: b.last('msg').m.id });
-  assert.equal(a.last('del').id, b.last('msg').m.id);
 });
 
 test('typing, presence and history pages', async () => {
@@ -341,4 +346,37 @@ test('stickers and GIFs: the site\'s pack, animated emoji, and GIFs from GIPHY o
     const d: any = await (await chat(e, '/chat/gif?q=wwe', { headers: { Authorization: `Bearer ${token}` } })).json();
     assert.deepEqual(d, { ok: true, by: 'GIPHY', items: [{ url: 'https://media1.giphy.com/media/abcDEF/200w.mp4', still: 'https://media1.giphy.com/media/abcDEF/200w_s.gif', w: 200, h: 113 }], next: '24' });
   } finally { globalThis.fetch = realFetch; }
+});
+
+test('the site\'s account: its delete takes a message away for good (quotes of it too), its edits show no «معدلة»', async () => {
+  const { r, join } = room();
+  const a = join({ uid: 1, name: 'كريم' });
+  const o = join({ uid: 9, name: 'عرب راسلنج', badge: 'gold', mod: true });
+  await a.say({ t: 'send', text: 'رسالة قديمة جدا', nonce: 'x1' });
+  const m = a.last('msg').m;
+  await a.say({ t: 'send', text: 'رد عليها', reply: m.id, nonce: 'x2' });
+  const reply = a.last('msg').m;
+  (r as any).sql.exec('UPDATE msgs SET at = ? WHERE id = ?', Date.now() - 30 * 36e5, m.id);
+  // edits a member's message, long after: no mark
+  await o.say({ t: 'edit', id: m.id, text: 'رسالة بعد التعديل' });
+  assert.deepEqual(a.last('edit'), { t: 'edit', id: m.id, text: 'رسالة بعد التعديل', edited: 0 });
+  assert.equal(r.latest()[0].edited, undefined);
+  // its own, too
+  await o.say({ t: 'send', text: 'إعلان', nonce: 'x3' });
+  const own = o.last('msg').m;
+  await o.say({ t: 'edit', id: own.id, text: 'إعلان مهم' });
+  assert.equal(a.last('edit').edited, 0);
+  // a member's own delete still shows «تم حذف»; the site's account can take even that away
+  await a.say({ t: 'del', id: reply.id });
+  assert.equal(r.latest().find(x => x.id === reply.id)!.del, true);
+  await o.say({ t: 'del', id: m.id });
+  assert.deepEqual(a.last('del'), { t: 'del', id: m.id, gone: true });
+  assert.equal(r.latest().some(x => x.id === m.id), false);
+  await o.say({ t: 'del', id: reply.id });
+  assert.equal(r.latest().some(x => x.id === reply.id), false);
+  // the panel's delete is for good too
+  await o.say({ t: 'send', text: 'ثالثة', nonce: 'x4' });
+  const third = o.last('msg').m;
+  assert.deepEqual(await r.admin({ op: 'delete', id: third.id }), { ok: true });
+  assert.equal(r.latest().some(x => x.id === third.id), false);
 });

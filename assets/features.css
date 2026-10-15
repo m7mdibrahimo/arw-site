@@ -1079,3 +1079,22 @@ html[dir="ltr"] .arw-cw-x{ left:auto; right:8px; }
 .arw-cw-card:hover .arw-cw-x, .arw-cw-x:focus-visible{ opacity:1; }
 @media (hover:none){ .arw-cw-x{ opacity:1; } }
 @media (max-width:560px){ .arw-cw-row{ grid-auto-columns:78%; gap:12px; } }
+
+/* ── speed (owner 2026-10-15: «الموقع كله يكون سريع وخفيف») ─────────────────────────────────────────────────────────────
+   Measured on a mid-range phone: the home page spent ~1s laying out and ~0.5s building layers, not running scripts.
+   1. A card waiting to fade in was its own layer the whole time (will-change), 50 of them on the home page: the browser
+      makes the layer by itself while it moves, and only then. 2. The desktop tilt asks for its layer only while tilting.
+   3. A phone doesn't blur what's behind a play button or a badge (each blur is drawn again on every scroll); their
+      backgrounds are already nearly solid. */
+.reveal.reveal-hidden, .reveal.is-visible{ will-change:auto !important; }
+.m-tilt{ will-change:auto !important; }
+.m-tilt.m-tilting{ will-change:transform !important; }
+@media (hover: none), (max-width: 900px){
+  .play-btn, .spotlight-nav-btn, .eyebrow, .spotlight-slide:not(.active) .spotlight-pill, .spotlight-slide:not(.active) .spotlight-play-float{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+  /* 4. a glow that never stops repaints the screen forever: on a phone it shines a few times, then rests */
+  .eyebrow{ animation-iteration-count:3 !important; }
+}
+/* 5. What's far down the page isn't laid out or drawn until the reader comes near it; its last size is kept, so the
+   page doesn't jump (the footer, the home page's lower rows, a show's or a story's related shows and comments) */
+footer, #full-shows.content, #recaps.content, #nostalgia-home.content, #news.content, .related-posts-section, #comments{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
+footer{ contain-intrinsic-size:auto 340px; }

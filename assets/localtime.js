@@ -31,9 +31,10 @@
   var label = EN ? (place ? place[1] + ' time' : 'your local time') : (place ? 'بتوقيت ' + place[0] : 'بتوقيتك المحلي');
 
   // what the clock reads in a zone at a moment
+  var fmts = {}; // one reader per zone (making one is the slow part)
   function parts(tz, t) {
     var o = {};
-    new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', weekday: 'short' })
+    (fmts[tz] = fmts[tz] || new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', weekday: 'short' }))
       .formatToParts(new Date(t)).forEach(function (p) { o[p.type] = p.value; });
     return o;
   }
@@ -51,7 +52,7 @@
   var KEYS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
   function say(t) {
     var p = parts(here, t), h = +p.hour % 24, m = String(+p.minute).padStart(2, '0'), d = WD[p.weekday];
-    if (EN) return new Intl.DateTimeFormat('en-GB', { timeZone: here, weekday: 'long', hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date(t));
+    if (EN) return (fmts.en = fmts.en || new Intl.DateTimeFormat('en-GB', { timeZone: here, weekday: 'long', hour: 'numeric', minute: '2-digit', hour12: true })).format(new Date(t));
     var part = h < 5 ? 'فجر' : h < 12 ? 'صباح' : h < 15 ? 'ظهر' : h < 18 ? 'عصر' : 'مساء';
     return ((h % 12) || 12) + ':' + m + ' ' + part + ' ' + DAYS[d];
   }

@@ -2331,6 +2331,26 @@ module.exports = function(eleventyConfig) {
     } catch (e) { console.log(`[files] count skipped: ${e.message}`); }
   });
 
+  // The site's own scripts and styles go out minified (owner 2026-10-15: «الموقع كله يكون سريع وخفيف»): about a quarter
+  // less to download and read on every page, the sources stay as they are. Each file is written beside and renamed over
+  // the copy (never changed in place, so a linked source can't be touched); one that fails to minify goes out as it was.
+  eleventyConfig.on("eleventy.after", async () => {
+    const es = require("esbuild"), dir = "_site/assets";
+    let saved = 0, n = 0;
+    for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
+      const loader = f.endsWith(".css") ? "css" : f.endsWith(".js") ? "js" : "";
+      if (!loader || f.endsWith(".min.js") || f.endsWith(".min.css")) continue;
+      const file = path.join(dir, f), src = fs.readFileSync(file, "utf8");
+      try {
+        const out = (await es.transform(src, { loader, minify: true, charset: "utf8", legalComments: "none", target: loader === "js" ? "es2017" : ["chrome80", "safari13", "firefox78"] })).code;
+        if (out.length >= src.length) continue;
+        fs.writeFileSync(file + ".min-tmp", out); fs.renameSync(file + ".min-tmp", file);
+        saved += src.length - out.length; n++;
+      } catch (e) { console.log(`[minify] ${f} left as it is: ${String(e.message).split("\n")[0]}`); }
+    }
+    console.log(`[minify] ${n} scripts and styles, ${Math.round(saved / 1024)} KB lighter`);
+  });
+
   return {
     dir: {
       input: ".",

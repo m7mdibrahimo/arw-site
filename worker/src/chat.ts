@@ -253,7 +253,7 @@ export class ChatRoom {
   /** What the worker asks of the room for the panel (delete, mute, kick, the latest messages) */
   async admin(b: any, now = Date.now()) {
     if (b.op === "recent") return { msgs: this.latest(Math.min(Number(b.n) || 100, 200), Number(b.before) || 0) };
-    if (b.op === "delete") return { ok: this.remove(Number(b.id), now) };
+    if (b.op === "delete") return { ok: this.remove(Number(b.id), now, true) };
     if (b.op === "mute") {
       const uid = Number(b.uid) || 0;
       const until = Number(b.until) || 0;
@@ -278,13 +278,18 @@ export class ChatRoom {
     return { ok: false };
   }
 
-  private remove(id: number, _now: number): boolean {
+  /** A member's own delete leaves «تم حذف هذه الرسالة» in its place; the site's account (here or from the panel) takes it
+   *  away as if it had never been written (owner 2026-10-15: «تتمسح نهائي اكنها مكنتش موجودة»), quotes of it too */
+  private remove(id: number, _now: number, gone = false): boolean {
     const m = this.get(id);
-    if (!m || m.del) return false;
-    this.sql.exec("UPDATE msgs SET deleted = 1, text = '', att = '', reacts = '{}' WHERE id = ?", id);
+    if (!m || (m.del && !gone)) return false;
+    if (gone) {
+      this.sql.exec("DELETE FROM msgs WHERE id = ?", id);
+      this.sql.exec("UPDATE msgs SET reply = '' WHERE reply LIKE ?", `{"id":${id},%`);
+    } else this.sql.exec("UPDATE msgs SET deleted = 1, text = '', att = '', reacts = '{}' WHERE id = ?", id);
     if (m.att?.url?.startsWith(MEDIA_PREFIX) && this.env.MEDIA) this.env.MEDIA.delete(m.att.url.slice(MEDIA_PREFIX.length)).catch?.(() => {});
     if (Number(this.meta("pin") || 0) === id) { this.setMeta("pin", null); this.broadcast({ t: "pin", m: null }); }
-    this.broadcast({ t: "del", id });
+    this.broadcast(gone ? { t: "del", id, gone: true } : { t: "del", id });
     return true;
   }
 
@@ -348,23 +353,25 @@ export class ChatRoom {
       }
       case "del": {
         const m = this.get(Number(b.id));
-        if (!m || m.del) return;
+        if (!m || (m.del && !me.mod)) return;
         if (m.uid !== me.uid && !me.mod) return;
         if (!me.mod && now - m.at > EDIT_WINDOW) return this.send(ws, { t: "error", code: "del", error: "لا يمكن حذف الرسالة بعد مرور 6 ساعات على إرسالها." });
-        this.remove(m.id, now);
+        this.remove(m.id, now, me.mod);
         return;
       }
       case "edit": {
-        // your own message, for 6 hours after sending it
+        // your own message, for 6 hours after sending it; the site's account edits any message, any time, and no
+        // «معدلة» shows for it (owner 2026-10-15)
         const m = this.get(Number(b.id));
-        if (!m || m.del || m.uid !== me.uid) return;
-        if (now - m.at > EDIT_WINDOW) return this.send(ws, { t: "error", code: "edit", error: "لا يمكن تعديل الرسالة بعد مرور 6 ساعات على إرسالها." });
-        if (me.ro || this.mutedUntil(me.uid, now)) return this.send(ws, { t: "error", code: "edit", error: "لا يمكنك الكتابة في المجتمع الآن." });
+        if (!m || m.del || (m.uid !== me.uid && !me.mod)) return;
+        if (!me.mod && now - m.at > EDIT_WINDOW) return this.send(ws, { t: "error", code: "edit", error: "لا يمكن تعديل الرسالة بعد مرور 6 ساعات على إرسالها." });
+        if (!me.mod && (me.ro || this.mutedUntil(me.uid, now))) return this.send(ws, { t: "error", code: "edit", error: "لا يمكنك الكتابة في المجتمع الآن." });
         const text = cleanChatText(b.text);
         if (!text && !m.att) return this.send(ws, { t: "error", code: "edit", error: "اكتب رسالتك أولا." });
         if (text === m.text) return;
-        this.sql.exec("UPDATE msgs SET text = ?, edited = ? WHERE id = ?", text, now, m.id);
-        this.broadcast({ t: "edit", id: m.id, text, edited: now });
+        const edited = me.mod ? Number(m.edited || 0) : now;
+        this.sql.exec("UPDATE msgs SET text = ?, edited = ? WHERE id = ?", text, edited, m.id);
+        this.broadcast({ t: "edit", id: m.id, text, edited });
         return;
       }
       case "pin": {
@@ -394,7 +401,7 @@ export class ChatRoom {
         if (!m || m.del || m.uid === me.uid || !this.env.ANALYTICS) return;
         await ensureReports(this.env.ANALYTICS);
         await this.env.ANALYTICS.prepare(`INSERT OR IGNORE INTO chat_reports (room, msg, uid, name, text, kind, reporter, reporter_name, why, at)
-          VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)`).bind(room, m.id, m.uid, m.name, m.text.slice(0, 500), m.att?.kind || "text", me.uid, me.name, cleanChatText(b.why).slice(0, 200), now).run();
+          VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)`).bind(room, m.id, m.uid, m.name, m.text.slice(0, 500), m.att?.kind || "text", me.uid, me.name, cleanChatText(b.why).replace(/\n+/g, " ").slice(0, 400), now).run();
         return this.send(ws, { t: "reported", id: m.id });
       }
     }

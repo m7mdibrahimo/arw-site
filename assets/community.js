@@ -243,7 +243,7 @@
     document.title = R.name + ' | مجتمع المصارعة';
     if (!session()) { gate(true); return; }
     gate(false);
-    compose.hidden = false;
+    compose.hidden = false; autosize();
     if (!store('arw-cm-rules')) rules();
     connect();
   }
@@ -374,7 +374,20 @@
       return;
     }
     if (d.t === 'react') { var x = byId[d.id]; if (x) { x.reacts = d.reacts; refreshReacts(x); } return; }
-    if (d.t === 'del') { var y = byId[d.id]; if (y) { y.del = true; y.text = ''; y.att = null; y.reacts = {}; replaceMsg(y); } return; }
+    if (d.t === 'del') {
+      var y = byId[d.id];
+      if (!y) return;
+      if (d.gone) {
+        // taken away by the site's account: as if it had never been written (and quotes of it go too)
+        var keepY = scroller.scrollHeight - scroller.scrollTop, atEnd = nearBottom();
+        msgs = msgs.filter(function (x) { return x !== y; }); delete byId[d.id];
+        msgs.forEach(function (x) { if (x.reply && x.reply.id === d.id) x.reply = null; });
+        renderAll();
+        if (atEnd) toBottom(); else scroller.scrollTop = scroller.scrollHeight - keepY;
+        return;
+      }
+      y.del = true; y.text = ''; y.att = null; y.reacts = {}; replaceMsg(y); return;
+    }
     if (d.t === 'pin') { setPinned(d.m); return; }
     if (d.t === 'badge') { var hit = false; msgs.forEach(function (x) { if (x.uid === d.uid && x.badge !== d.badge) { x.badge = d.badge; hit = true; } }); if (me && me.uid === d.uid) me.badge = d.badge; if (hit) { var keep = scroller.scrollHeight - scroller.scrollTop; renderAll(); scroller.scrollTop = scroller.scrollHeight - keep; } return; }
     if (d.t === 'typing') {
@@ -696,7 +709,7 @@
     bw.appendChild(rx);
     row.appendChild(bw);
     fillReacts(rx, m);
-    if (!m.del) addTools(row, m, mine);
+    if (!m.del || (me && me.mod)) addTools(row, m, mine);
     return row;
   }
   function fillReacts(box, m) {
@@ -731,8 +744,9 @@
 
   // mine can be edited or deleted for 6 hours after sending (owner 2026-10-15); the site's account deletes any, any time
   var WINDOW = 6 * 36e5;
-  function canEdit(m) { return !!(me && m.uid === me.uid && typeof m.id === 'number' && !m.del && Date.now() - m.at < WINDOW && (m.text || (m.att && m.att.kind !== 'sticker' && m.att.kind !== 'voice' && m.att.kind !== 'gif'))); }
-  function canDelete(m) { return !!(me && typeof m.id === 'number' && !m.del && (me.mod || (m.uid === me.uid && Date.now() - m.at < WINDOW))); }
+  // the site's account edits any message, any time (and no «معدلة» shows), and deletes any for good
+  function canEdit(m) { return !!(me && (m.uid === me.uid || me.mod) && typeof m.id === 'number' && !m.del && (me.mod || Date.now() - m.at < WINDOW) && (m.text || (m.att && m.att.kind !== 'sticker' && m.att.kind !== 'voice' && m.att.kind !== 'gif'))); }
+  function canDelete(m) { return !!(me && typeof m.id === 'number' && (me.mod || (!m.del && m.uid === me.uid && Date.now() - m.at < WINDOW))); }
   // a message's tools: hover (a pointer), long press and swipe (a finger)
   function addTools(row, m, mine) {
     if (!TOUCH) {
@@ -742,7 +756,7 @@
       tools.appendChild(quick);
       var acts = [['smile', 'تفاعل', function () { sheet(m); }], ['reply', 'رد', function () { startReply(m); }]];
       if (canEdit(m)) acts.push(['edit', 'تعديل', function () { startEdit(m); }]);
-      if (mine && canDelete(m)) acts.push(['trash', 'حذف', function () { confirmDelete(m); }]);
+      if (canDelete(m)) acts.push(['trash', 'حذف', function () { confirmDelete(m); }]);
       acts.push(['more', 'المزيد', function () { sheet(m); }]);
       acts.forEach(function (t) {
         var b = el('button'); b.type = 'button'; b.innerHTML = IC[t[0]]; b.setAttribute('aria-label', t[1]); b.title = t[1]; b.addEventListener('click', t[2]); tools.appendChild(b);
@@ -794,13 +808,16 @@
     bar.appendChild(more);
     var mine = me && m.uid === me.uid;
     var items = [['reply', 'رد', function () { startReply(m); }]];
-    if (m.text) items.push(['copy', 'نسخ النص', function () { copy(m.text); }]);
-    // mine, for a quarter of an hour (a picture's words too), as WhatsApp
+    bar.hidden = !!m.del;
+    // a deleted one (the site's account only gets here): taking it away for good is all there is to do
+    if (m.del) items = [];
+    if (m.text && !m.del) items.push(['copy', 'نسخ النص', function () { copy(m.text); }]);
+    // mine for 6 hours (a picture's words too); the site's account any message
     if (canEdit(m)) items.push(['edit', 'تعديل الرسالة', function () { startEdit(m); }]);
-    if (me && me.mod) items.push(['pin', pinned && pinned.id === m.id ? 'إلغاء التثبيت' : 'تثبيت الرسالة', function () { wsSend({ t: 'pin', id: pinned && pinned.id === m.id ? 0 : m.id }); }]);
+    if (me && me.mod && !m.del) items.push(['pin', pinned && pinned.id === m.id ? 'إلغاء التثبيت' : 'تثبيت الرسالة', function () { wsSend({ t: 'pin', id: pinned && pinned.id === m.id ? 0 : m.id }); }]);
     if (canDelete(m)) items.push(['trash', 'حذف الرسالة', function () { confirmDelete(m); }, 'is-danger']);
-    if (!mine) items.push(['flag', 'إبلاغ عن الرسالة', function () { report(m); }, 'is-danger']);
-    if (me && me.mod && !mine && m.badge !== 'gold') items.push(['flag', 'إيقاف ' + m.name + ' عن الكتابة', function () { muteFromRoom(m); }, 'is-danger']);
+    if (!mine && !m.del) items.push(['flag', 'إبلاغ عن الرسالة', function () { report(m); }, 'is-danger']);
+    if (me && me.mod && !mine && !m.del && m.badge !== 'gold') items.push(['flag', 'إيقاف ' + m.name + ' عن الكتابة', function () { muteFromRoom(m); }, 'is-danger']);
     items.forEach(function (it) {
       var b = el('button', it[3] || null); b.type = 'button'; b.innerHTML = IC[it[0]] || '';
       b.appendChild(document.createTextNode(it[1]));
@@ -818,20 +835,34 @@
   }
   function confirmDelete(m) {
     var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
-    card.innerHTML = '<h2>حذف الرسالة؟</h2><p>ستحذف الرسالة عند الجميع، ولا يمكن التراجع.</p><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">احذف</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
+    card.innerHTML = '<h2>حذف الرسالة؟</h2><p>' + (me && me.mod ? 'ستحذف الرسالة نهائيا عند الجميع كأنها لم تكتب، ولا يمكن التراجع.' : 'ستحذف الرسالة عند الجميع، ولا يمكن التراجع.') + '</p><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok style="background:var(--coral)">احذف</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
     mo.hidden = false;
     var fin = function () { mo.hidden = true; card.innerHTML = keep; bindRules(); };
     card.querySelector('[data-ok]').onclick = function () { fin(); if (!wsSend({ t: 'del', id: m.id })) toast('لا يوجد اتصال الآن.'); };
     card.querySelector('[data-no]').onclick = fin;
   }
+  // a report (owner 2026-10-15: «اسباب اختياريه … ممكن هو يكتب عادي ده او ده»): a reason picked, words written, or both
+  var REASONS = ['إساءة أو سب', 'عنصرية أو تعصب', 'حرق نتائج بلا تحذير', 'إعلان أو رابط مشبوه', 'محتوى غير لائق', 'انتحال شخصية'];
   function report(m) {
     var mo = $('.cm-modal'), card = $('.cm-modal-card', mo), keep = card.innerHTML;
-    card.innerHTML = '<h2>إبلاغ عن الرسالة</h2><p>لماذا تبلغ عن هذه الرسالة؟</p><div class="cm-report-opts">' +
-      ['إساءة أو سب', 'حرق نتائج بلا تحذير', 'إعلان أو رابط مشبوه', 'سبب آخر'].map(function (w, i) { return '<label><input type="radio" name="why" value="' + w + '"' + (i ? '' : ' checked') + '> ' + w + '</label>'; }).join('') +
-      '</div><div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok>إرسال البلاغ</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
+    card.innerHTML = '<h2>إبلاغ عن الرسالة</h2><p>اختر السبب، أو اكتبه بنفسك، أو الاثنين معا.</p><div class="cm-report-opts">' +
+      REASONS.map(function (w) { return '<label><input type="radio" name="why" value="' + w + '"> ' + w + '</label>'; }).join('') +
+      '</div><textarea class="cm-report-why" maxlength="300" placeholder="اكتب السبب أو أي تفاصيل تساعد فريق الموقع (اختياري)" aria-label="سبب البلاغ" dir="auto"></textarea>' +
+      '<div class="cm-modal-btns"><button type="button" class="cm-btn" data-ok>إرسال البلاغ</button><button type="button" class="cm-btn cm-btn-ghost" data-no>إلغاء</button></div>';
     mo.hidden = false;
     var fin = function () { mo.hidden = true; card.innerHTML = keep; bindRules(); };
-    card.querySelector('[data-ok]').onclick = function () { var w = card.querySelector('input:checked'); var why = w ? w.value : ''; fin(); if (!wsSend({ t: 'report', id: m.id, why: why })) toast('لا يوجد اتصال الآن.'); };
+    var ta = card.querySelector('.cm-report-why');
+    // a tap on the chosen one again un-chooses it
+    Array.prototype.forEach.call(card.querySelectorAll('input[name="why"]'), function (r) {
+      r.addEventListener('click', function () { if (r.dataset.was === '1') { r.checked = false; r.dataset.was = ''; } else { Array.prototype.forEach.call(card.querySelectorAll('input[name="why"]'), function (x) { x.dataset.was = ''; }); r.dataset.was = '1'; } });
+    });
+    card.querySelector('[data-ok]').onclick = function () {
+      var w = card.querySelector('input:checked'), words = ta.value.replace(/\s+/g, ' ').trim();
+      if (!w && !words) { toast('اختر سببا أو اكتبه.'); ta.focus(); return; }
+      var why = (w ? w.value : '') + (w && words ? ': ' : '') + words;
+      fin();
+      if (!wsSend({ t: 'report', id: m.id, why: why })) toast('لا يوجد اتصال الآن.');
+    };
     card.querySelector('[data-no]').onclick = fin;
   }
   // the site's own account: a member stopped from writing in every room, from here
@@ -905,7 +936,7 @@
 
   // ── writing ──────────────────────────────────────────────────────────────
   function startReply(m) {
-    if (typeof m.id !== 'number') return;
+    if (typeof m.id !== 'number' || m.del) return;
     if (editing) cancelEdit();
     replyTo = m;
     var r = $('.cm-replying'); r.hidden = false; r.classList.remove('is-edit');
@@ -920,7 +951,7 @@
     cancelReply();
     editing = m; draftBeforeEdit = input.value;
     var r = $('.cm-replying'); r.hidden = false; r.classList.add('is-edit');
-    $('b', r).textContent = 'تعديل الرسالة';
+    $('b', r).textContent = me && m.uid !== me.uid ? 'تعديل رسالة ' + m.name : 'تعديل الرسالة';
     $('span', r).textContent = m.text || kindLabel(m.att && m.att.kind);
     input.value = m.text || ''; autosize(); updateSendBtn();
     input.focus(); input.setSelectionRange(input.value.length, input.value.length);
@@ -931,7 +962,8 @@
     var r = $('.cm-replying'); r.hidden = true; r.classList.remove('is-edit');
     input.value = draftBeforeEdit; draftBeforeEdit = ''; autosize(); updateSendBtn();
   }
-  function autosize() { input.style.height = 'auto'; input.style.height = Math.min(150, input.scrollHeight) + 'px'; }
+  // as tall as what's written (not measured while the box is hidden, which would leave it a thin line)
+  function autosize() { input.style.height = 'auto'; var h = input.scrollHeight; input.style.height = h ? Math.min(150, h) + 'px' : ''; }
   function canSend() { return !!(input.value.trim() || attached.length); }
   function updateSendBtn() {
     var s = canSend();
@@ -1036,7 +1068,7 @@
     if (!text && !m.att) return toast('اكتب رسالتك أولا.');
     if (text !== m.text) {
       if (!wsSend({ t: 'edit', id: m.id, text: text })) return toast('لا يوجد اتصال الآن.');
-      m.text = text; m.edited = Date.now(); replaceMsg(m);
+      m.text = text; if (!me.mod) m.edited = Date.now(); replaceMsg(m);
     }
     draftBeforeEdit = drafts[current] || '';
     cancelEdit();
