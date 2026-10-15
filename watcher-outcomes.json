@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-15T12:55:44.937Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,

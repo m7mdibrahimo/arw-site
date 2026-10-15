@@ -1,5 +1,15 @@
 [
   {
+    "id": 802255358,
+    "link": "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13/",
+    "date": "Thu, 15 Oct 2026 12:53:04 +0000",
+    "date_gmt": "2026-10-15T12:53:04.000Z",
+    "title": {
+      "rendered": "TNA iMPACT Spoiler Taping Results from October 13"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2025/01/tna-impact-spoiler-results-from-january-23-taping-in-san-antonio-texas-37.jpg?x82455"
+  },
+  {
     "id": 802255355,
     "link": "https://www.ringsidenews.com/john-cena-still-pushing-wwe-bring-wrestlemania-london/",
     "date": "Thu, 15 Oct 2026 12:50:11 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Chris Jericho vs. Nick Wayne Rubber Match Set for AEW WrestleDream"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/chris-jericho-vs-nick-wayne-rubber-match-set-for-aew-wrestledream-23.jpg?x82455"
-  },
-  {
-    "id": 802255143,
-    "link": "https://www.ringsidenews.com/new-match-added-aew-wrestledream-during-1014-dynamite/",
-    "date": "Thu, 15 Oct 2026 02:19:41 +0000",
-    "date_gmt": "2026-10-15T02:19:41.000Z",
-    "title": {
-      "rendered": "New Match Added to AEW WrestleDream During 10/14 Dynamite"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2025/10/big-title-match-set-for-aew-wrestledream-28.jpg?x82455"
   }
 ]
