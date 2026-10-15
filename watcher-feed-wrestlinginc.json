@@ -1,5 +1,15 @@
 [
   {
+    "id": 3328852665,
+    "link": "https://www.wrestlinginc.com/2287206/kazuchika-okada-retains-aew-international-title-clockwork-carnage-qualifier/",
+    "date": "Thu, 15 Oct 2026 01:34:20 +0000",
+    "date_gmt": "2026-10-15T01:34:20.000Z",
+    "title": {
+      "rendered": "Kazuchika Okada Retains AEW International Title In Clockwork Carnage Qualifier"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kazuchika-okada-retains-aew-international-title-in-clockwork-carnage-qualifier/l-intro-1792028000.jpg"
+  },
+  {
     "id": 2386743969,
     "link": "https://www.wrestlinginc.com/2287205/mcmg-return-aew-challenge-ftr-best-5-series/",
     "date": "Thu, 15 Oct 2026 01:29:32 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Amazing Red Comments On Being Inducted Into TNA Hall Of Fame, Winning X-Division Title"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-comments-on-being-inducted-into-tna-hall-of-fame-winning-x-division-title/l-intro-1791969745.jpg"
-  },
-  {
-    "id": 2912754822,
-    "link": "https://www.wrestlinginc.com/2286256/penta-wwe-raw-world-title-roman-reigns-best-universe/",
-    "date": "Wed, 14 Oct 2026 14:00:00 +0000",
-    "date_gmt": "2026-10-14T14:00:00.000Z",
-    "title": {
-      "rendered": "Penta Comments On WWE Raw World Title Match, Calls Roman Reigns 'Best In The Universe'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/penta-comments-on-wwe-raw-world-title-match-calls-roman-reigns-best-in-the-universe/l-intro-1791965462.jpg"
   }
 ]
