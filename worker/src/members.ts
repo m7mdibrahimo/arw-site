@@ -408,7 +408,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (!m) return reply({ ok: false, error: "لا يوجد عضو بهذا الاسم." }, 404);
     await ensureComments(db);
     const c = await db.prepare("SELECT COUNT(*) AS n FROM comments WHERE member = ?1 AND deleted = 0").bind(m.id).first<{ n: number }>();
-    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, premium: Number(m.premium_until) > Date.now(), blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()), gold: !m.official && m.badge === 2, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
+    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, premium: !!m.official || Number(m.premium_until) > Date.now(), blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()), gold: !m.official && m.badge === 2, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
   }
 
   // ── the member's own ──
