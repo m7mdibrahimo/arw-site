@@ -1,5 +1,15 @@
 [
   {
+    "id": 3661961207,
+    "link": "https://www.wrestlinginc.com/2287805/wwe-united-front-amidst-crown-jewel-uncertainty/",
+    "date": "Thu, 15 Oct 2026 16:43:34 +0000",
+    "date_gmt": "2026-10-15T16:43:34.000Z",
+    "title": {
+      "rendered": "WWE Wants 'United Front' Amidst Crown Jewel Uncertainty"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-wants-united-front-amidst-crown-jewel-uncertainty/l-intro-1792082453.jpg"
+  },
+  {
     "id": 1649187159,
     "link": "https://www.wrestlinginc.com/2287754/roh-cauliflower-chase-brown-dead/",
     "date": "Thu, 15 Oct 2026 16:16:40 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Kenny Omega Eyeing NJPW Wrestle Kingdom Return: 'I'm Aiming For The Dome'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-kenny-omega-eyeing-njpw-wrestle-kingdom-return-im-aiming-for-the-dome/l-intro-1792015413.jpg"
-  },
-  {
-    "id": 2846277287,
-    "link": "https://www.wrestlinginc.com/2287128/ben-bishop-tna-bound-for-glory-2026-contract-signed/",
-    "date": "Wed, 14 Oct 2026 21:58:58 +0000",
-    "date_gmt": "2026-10-14T21:58:58.000Z",
-    "title": {
-      "rendered": "Backstage Update On TNA Status Of Ben Bishop Following Bound For Glory Debut"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-tna-status-of-ben-bishop-following-bound-for-glory-debut/l-intro-1792014877.jpg"
   }
 ]
