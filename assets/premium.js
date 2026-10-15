@@ -114,33 +114,9 @@
       b.disabled = false;
       if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/#subscribe'); return; }
       if (!d.ok || !d.url) { flash('bad', srv(d.error) || 'تعذر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
-      if (d.manual) { $('.pm-manual').hidden = false; window.open(d.url, '_blank', 'noopener'); return; }
+      // Fawaterk opens in a new tab; here, what to send after paying (the owner switches it on by hand)
+      if (d.manual) { window.open(d.url, '_blank', 'noopener'); var how = $('.pm-how'); if (how) { how.classList.remove('is-hi'); void how.offsetWidth; how.classList.add('is-hi'); how.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
       location.href = d.url;
-    }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
-  });
-
-  // three days free, once, for a member who never had it (worker/src/premium.ts /premium/trial)
-  var trialBtn = $('[data-act="trial"]'), trialNote = $('.pm-trial-note');
-  function showTrial(on) { trialBtn.hidden = !on; trialNote.hidden = !on; }
-  function trialState() {
-    if (!session) { showTrial(true); return; }
-    if (member && (member.official || member.premium > Date.now())) { showTrial(false); return; }
-    api('/premium/mine').then(function (d) { showTrial(!!(d && d.ok && d.trial)); }).catch(function () { showTrial(false); });
-  }
-  trialBtn.addEventListener('click', function () {
-    var b = this;
-    if (!session) { location.href = HOME + '/account/?new&back=' + encodeURIComponent(HOME + '/premium/?trial=1'); return; }
-    b.disabled = true;
-    api('/premium/trial', {}).then(function (d) {
-      b.disabled = false;
-      if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/?trial=1'); return; }
-      if (!d.ok) { flash('bad', srv(d.error) || 'تعذر بدء التجربة، حاول مرة أخرى.'); showTrial(false); return; }
-      showTrial(false);
-      // the member kept on this device: premium now, no more «جرب مجانا» in the menu
-      try { var sv = JSON.parse(localStorage.getItem('arw-member') || 'null'); if (sv && sv.member) { sv.member.trial = false; sv.member.premium = d.until; localStorage.setItem('arw-member', JSON.stringify(sv)); window.dispatchEvent(new Event('arw-member')); } } catch (e) {}
-      flash('ok', '🎉 بدأت تجربتك المجانية! كل المميزات مفعلة لك حتى ' + date(d.until) + '.');
-      refresh();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
   });
 
@@ -155,7 +131,7 @@
           refresh();
           return;
         }
-        if (Date.now() - t0 > maxMs) { flash('bad', 'لم يصلنا تأكيد الدفع بعد. أعد تحميل الصفحة بعد دقيقة، وإن لم تتفعل عضويتك راسلنا من «تواصل معنا».'); return; }
+        if (Date.now() - t0 > maxMs) { flash('bad', 'أرسل صورة إيصال الدفع والبريد المسجل في حسابك إلى صفحة عرب راسلنج على رسائل فيسبوك أو إنستجرام، وسنفعّل عضويتك.'); return; }
         setTimeout(tick, every);
       }).catch(function () { setTimeout(tick, every); });
     })();
@@ -246,11 +222,10 @@
   var q = new URLSearchParams(location.search);
   refresh().then(function () {
     if (q.get('paid') !== null && session) waitForPayment(120000, 3000);
-    else if (q.get('pending') !== null && session) { flash('wait', 'الدفع قيد التنفيذ. ستتفعل عضويتك تلقائيا فور إتمامه.', true); waitForPayment(15 * 60000, 10000); }
+    else if (q.get('pending') !== null && session) flash('wait', 'أرسل صورة إيصال الدفع والبريد المسجل في حسابك إلى صفحة عرب راسلنج على رسائل فيسبوك أو إنستجرام، وسنفعّل عضويتك.', true);
     else if (q.get('failed') !== null) flash('bad', 'لم تكتمل عملية الدفع، ولم يخصم منك شيء. يمكنك المحاولة مرة أخرى.');
     if (q.get('paid') !== null || q.get('pending') !== null || q.get('failed') !== null) history.replaceState(null, '', location.pathname + location.hash);
-    trialState();
-    // back from signing up for the trial: the button in view
-    if (q.get('trial') !== null) { history.replaceState(null, '', location.pathname); setTimeout(function () { if (!trialBtn.hidden) trialBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300); }
+    // an old «?trial=1» link: there's no free trial, the plans instead
+    if (q.get('trial') !== null) { history.replaceState(null, '', location.pathname); var sub = $('#subscribe'); if (sub) setTimeout(function () { sub.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300); }
   });
 })();

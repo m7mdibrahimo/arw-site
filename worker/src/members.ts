@@ -417,10 +417,8 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   if (!me) return reply({ ok: false, error: "سجل دخولك أولا.", signedOut: true }, 401);
 
   if (path === "/me" && request.method === "GET") {
-    // the free trial still open to them (worker/src/premium.ts /premium/trial): never premium, never paid
-    let trial = !me.official && !Number(me.premium_until);
-    if (trial) trial = !(await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 AND status = 'paid' LIMIT 1").bind(me.id).first().catch(() => null));
-    return reply({ ok: true, member: { ...mine(me), trial }, mail: !!env.RESEND_API_KEY });
+    // no free trial (owner 2026-10-15: «مفيش اشتراك مجاني خالص»): pages that read «trial» never offer one
+    return reply({ ok: true, member: { ...mine(me), trial: false }, mail: !!env.RESEND_API_KEY });
   }
 
   if (path === "/logout" && request.method === "POST") {
@@ -542,7 +540,10 @@ export async function studioMembers(env: MembersEnv, now = Date.now()) {
   await ensureMembers(db);
   await ensureComments(db);
   // the payments' table (each member's kind of membership); imported here, premium.ts imports this file
-  await (await import("./premium")).ensurePremium(db);
+  const premium = await import("./premium");
+  await premium.ensurePremium(db);
+  // memberships left from the old free trial end as soon as the owner opens the list
+  await premium.endTrials(env as any, now).catch(() => 0);
   const [rows, total, week, active] = await db.batch([
     // each member's comments counted in one pass over the comments (a count per member read them all once for each)
     db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge, m.premium_until, m.premium_since,

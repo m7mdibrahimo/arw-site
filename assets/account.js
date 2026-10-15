@@ -285,7 +285,6 @@
     var kind = m.official ? 'official' : prem ? 'premium' : 'free';
     $$('[data-plan]').forEach(function (c) { c.hidden = c.getAttribute('data-plan') !== kind; });
     // three days free, for a member who never had it
-    var tr = $('.acct-plan-trial'); if (tr) tr.hidden = !(kind === 'free' && m.trial === true);
     if (prem) {
       var d = new Date(Number(m.premium)), left = Math.max(0, Math.ceil((Number(m.premium) - Date.now()) / 864e5));
       $('.acct-plan-until').textContent = 'عضويتك سارية حتى ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear() + ' · المتبقي: ' + left + ' يوم';
