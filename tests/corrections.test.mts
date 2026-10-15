@@ -30,3 +30,12 @@ test("Street Fight movie → Street Fighter in Arabic and English (INCIDENTS #58
   assert.equal(fixEnglishNames("the new Street Fight movie"), "the new Street Fighter movie");
   assert.equal(fixEnglishNames("Street Fighter movie"), "Street Fighter movie");
 });
+
+test("the faction is «The 946» in English after a preposition (INCIDENTS #598)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("rivalry between 946 and The Bloodline"), "rivalry between The 946 and The Bloodline");
+  assert.equal(fixEnglishNames("Carmelo Hayes join 946"), "Carmelo Hayes join The 946");
+  assert.equal(fixEnglishNames("with The 946 now"), "with The 946 now");
+  const bad = fs.readdirSync("content/news-en").filter(f => /\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/i.test(fs.readFileSync(`content/news-en/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

@@ -21,4 +21,4 @@ During an interview with Complex, Keys dismissed a question about Reigns offerin
 
 https://www.instagram.com/p/Deer_jMuq9x/
 
-His remarks come amid an ongoing rivalry between 946 and The Bloodline, which recently saw Carmelo Hayes join 946. According to Ringside News, taking the shoes would not be unprecedented in WWE, as Bronson Reed previously took Reigns' footwear twice during their feud last year.
+His remarks come amid an ongoing rivalry between The 946 and The Bloodline, which recently saw Carmelo Hayes join The 946. According to Ringside News, taking the shoes would not be unprecedented in WWE, as Bronson Reed previously took Reigns' footwear twice during their feud last year.

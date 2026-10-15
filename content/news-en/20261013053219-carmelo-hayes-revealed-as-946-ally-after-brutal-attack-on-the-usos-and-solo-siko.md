@@ -14,9 +14,9 @@ en_tags:
   - "946"
 image: /content/images/5324lyqizo2jld7g.jpg
 ---
-During a chaotic six-man tag team match between The Usos and Solo Sikoa against the team of Bronco Nima, Lucien Price, and Royce Keys, Carmelo Hayes made a surprise appearance to align with 946. The match, which featured weapons and intense brawling, fell apart after Jaida removed the referee from the ring. As the fight spilled into the crowd, Hayes suddenly attacked Solo Sikoa from behind with a tire iron.
+During a chaotic six-man tag team match between The Usos and Solo Sikoa against the team of Bronco Nima, Lucien Price, and Royce Keys, Carmelo Hayes made a surprise appearance to align with The 946. The match, which featured weapons and intense brawling, fell apart after Jaida removed the referee from the ring. As the fight spilled into the crowd, Hayes suddenly attacked Solo Sikoa from behind with a tire iron.
 
-Hayes continued his assault on all three members of the opposing team, using a crowbar to dismantle Jimmy Uso, Jey Uso, and Solo Sikoa while Nima, Price, and Keys assisted him. The show concluded with Hayes standing tall alongside the members of 946, leaving their opponents incapacitated in and around the ring. It remains unclear if this attack marks the official start of a long-term partnership or if it is part of a larger, undisclosed plan.
+Hayes continued his assault on all three members of the opposing team, using a crowbar to dismantle Jimmy Uso, Jey Uso, and Solo Sikoa while Nima, Price, and Keys assisted him. The show concluded with Hayes standing tall alongside the members of The 946, leaving their opponents incapacitated in and around the ring. It remains unclear if this attack marks the official start of a long-term partnership or if it is part of a larger, undisclosed plan.
 
 https://x.com/WWE/status/2109831620777689499
 
