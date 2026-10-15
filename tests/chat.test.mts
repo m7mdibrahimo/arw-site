@@ -434,5 +434,6 @@ test('the message tools as Messenger and iOS: ☺ ↩ ⋮ beside it, a long pres
   // the tail: the last message of a run, from its bottom corner; a little space between the messages of a run
   assert.match(css, /\.cm-msg:not\(:has\(\+ \.cm-msg\.is-cont\)\):not\(\.is-big\):not\(\.is-sticker\) \.cm-bubble::before\{ content:""; position:absolute; bottom:-1px;/);
   assert.doesNotMatch(css, /\.cm-bubble::before\{[^}]*top:-1px/);
-  assert.match(css, /\.cm-msg\.is-cont\{ margin-top:4px; \}/);
+  assert.match(css, /\.cm-msg\.is-cont\{ margin-top:7px; \}/);
+  assert.doesNotMatch(css, /:has\(\+ \.cm-msg\.is-cont\) \.cm-bubble\{ border-end-(start|end)-radius:6px/, 'no squared corner joining two messages');
 });

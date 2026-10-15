@@ -84,7 +84,7 @@ html.arw-dark .cm-head-status.is-live{ color:#4ade80; }
 
 /* a message */
 .cm-msg{ position:relative; display:grid; grid-template-columns:38px minmax(0,auto); gap:10px; align-items:end; max-width:min(78%, 640px); margin-top:8px; align-self:flex-start; }
-.cm-msg.is-cont{ margin-top:4px; }
+.cm-msg.is-cont{ margin-top:7px; }
 .cm-msg.is-cont .cm-av{ visibility:hidden; }
 /* the picture by the last of a run, where the tail is (Messenger's); a browser without :has keeps it by the first */
 .cm-msg:has(+ .cm-msg.is-cont) > .cm-av{ visibility:hidden; }
@@ -98,11 +98,7 @@ html.arw-dark .cm-head-status.is-live{ color:#4ade80; }
 .cm-msg.is-mine .cm-bwrap{ align-items:flex-end; }
 .cm-bubble{ position:relative; min-width:64px; max-width:100%; padding:8px 13px 6px; border-radius:var(--cm-r); background:var(--cm-bubble); color:var(--ink); box-shadow:0 1px 1px rgba(0,0,0,.08), 0 2px 10px -6px rgba(0,0,0,.18); border:1px solid transparent; }
 .cm-msg.is-mine .cm-bubble{ background:var(--cm-mine); color:var(--cm-mine-ink); border-color:transparent; }
-/* a run reads as one: the corners where its messages meet are small */
-.cm-msg.is-cont .cm-bubble{ border-start-start-radius:6px; }
-.cm-msg:has(+ .cm-msg.is-cont) .cm-bubble{ border-end-start-radius:6px; }
-.cm-msg.is-mine.is-cont .cm-bubble{ border-start-start-radius:var(--cm-r); border-start-end-radius:6px; }
-.cm-msg.is-mine:has(+ .cm-msg.is-cont) .cm-bubble{ border-end-start-radius:var(--cm-r); border-end-end-radius:6px; }
+/* each message of a run stands on its own: round all round, a clear space between them (owner 2026-10-15: «لازم يكون في فاصل بين كل رسالة ورسالة») */
 .cm-msg.is-gold:not(.is-mine) .cm-bubble{ background:color-mix(in srgb, #ffd25a 15%, var(--card)); }
 /* the tail (owner 2026-10-15: «السهم ال بيكون جاي من الجنب … من تحت … من اخر رسالة»): from the bottom corner of the
    last message of a run, toward its side */
