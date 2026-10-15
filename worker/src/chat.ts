@@ -21,10 +21,41 @@ import { OFFICIAL_NAME, PIC_ORIGIN } from "./comments";
 
 export interface ChatEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?: R2Bucket; CHAT?: DurableObjectNamespace; RESEND_API_KEY?: string }
 
-/** The rooms. The page's copy (names, words, colours): _data/communityRooms.js — tests/chat.test.mts keeps the two the same */
-export const ROOMS = ["general", "wwe", "aew", "njpw", "tna", "roh", "mma", "indie", "nostalgia"] as const;
-export type RoomId = typeof ROOMS[number];
-const isRoom = (r: unknown): r is RoomId => typeof r === "string" && (ROOMS as readonly string[]).includes(r);
+/** The rooms. The site's first list (_data/communityRooms.js, the page as built — tests/chat.test.mts keeps the two the
+ *  same); since 2026-10-15 the owner adds, renames, hides, closes and orders them from the panel (KV «chat:rooms»,
+ *  owner: «حتى لو انا حبيت اضيف ساحة او كروب او اعدل في اسماء ال موجود») and the page follows /chat/rooms. */
+export type RoomInfo = { id: string; name: string; about: string; mark: string; hue: number; hidden?: boolean; closed?: boolean };
+export const DEFAULT_ROOMS: RoomInfo[] = [
+  { id: "general", name: "الساحة العامة", about: "كل محبي المصارعة في مكان واحد", mark: "ARW", hue: 177 },
+  { id: "wwe", name: "WWE", about: "رو وسماك داون وNXT والعروض الكبرى", mark: "WWE", hue: 4 },
+  { id: "aew", name: "AEW", about: "داينامايت وكوليجن والعروض الكبرى", mark: "AEW", hue: 42 },
+  { id: "njpw", name: "NJPW", about: "نيو جابان: ريسل كينغدم والجي وان كلايمكس", mark: "NJPW", hue: 212 },
+  { id: "tna", name: "TNA", about: "إمباكت والعروض الكبرى", mark: "TNA", hue: 262 },
+  { id: "roh", name: "ROH", about: "رينغ أوف أونر وعروضها", mark: "ROH", hue: 218 },
+  { id: "mma", name: "UFC والفنون القتالية", about: "النزالات والأحزمة وكل جديد القتال", mark: "UFC", hue: 24 },
+  { id: "indie", name: "الاتحادات المستقلة", about: "MLP وMLW وCMLL وغيرها", mark: "INDIE", hue: 166 },
+  { id: "nostalgia", name: "نوستالجيا", about: "ذكريات المصارعة القديمة وأجمل أيامها", mark: "90s", hue: 330 },
+];
+export const ROOMS = DEFAULT_ROOMS.map(r => r.id);
+export type RoomId = string;
+const ROOM_ID = /^[a-z][a-z0-9]{1,23}$/;
+const ROOMS_KEY = "chat:rooms";
+let roomsCache: { at: number; list: RoomInfo[] } | null = null;
+/** Every room, in the owner's order (hidden ones too) */
+export async function roomList(env: ChatEnv, fresh = false): Promise<RoomInfo[]> {
+  if (!fresh && roomsCache && Date.now() - roomsCache.at < 15_000) return roomsCache.list;
+  let list: RoomInfo[] = DEFAULT_ROOMS;
+  try { const raw = await env.PUSH_KV.get(ROOMS_KEY); if (raw) { const l = JSON.parse(raw); if (Array.isArray(l) && l.length) list = l; } } catch {}
+  roomsCache = { at: Date.now(), list };
+  return list;
+}
+/** A room people can open (a hidden one only for the site's account) */
+async function roomOf(env: ChatEnv, r: unknown, mod = false): Promise<RoomInfo | null> {
+  if (typeof r !== "string" || !ROOM_ID.test(r)) return null;
+  const room = (await roomList(env)).find(x => x.id === r);
+  return room && (!room.hidden || mod) ? room : null;
+}
+const isRoom = (r: unknown): r is RoomId => typeof r === "string" && ROOM_ID.test(r);
 
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization, X-File-Name" };
 const reply = (body: unknown, status = 200, extra: Record<string, string> = {}) =>
@@ -45,7 +76,7 @@ const VOICE_TYPES: Record<string, string> = { "audio/webm": "webm", "audio/ogg":
 const MEDIA_PREFIX = `${PIC_ORIGIN}/chat/media/`;
 const REACTION = /^(?:\p{Extended_Pictographic}|\p{Regional_Indicator}|[‍️⃣#*0-9]|\p{Emoji_Modifier}){1,12}$/u;
 
-export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "blue" | "premium" | ""; mod: boolean; mute: number };
+export type Who = { uid: number; user: string; name: string; pic: string; badge: "gold" | "vgold" | "blue" | "premium" | ""; mod: boolean; mute: number; ro?: boolean };
 export type Att = { kind: "image" | "voice" | "file" | "video"; url: string; name?: string; size?: number; mime?: string; w?: number; h?: number; dur?: number; wave?: number[] };
 export type Msg = {
   id: number; uid: number; user: string; name: string; pic: string; badge: string; text: string; att: Att | null;
@@ -210,6 +241,8 @@ export class ChatRoom {
     const room = this.meta("room") || "";
     switch (b.t) {
       case "send": {
+        // a room the owner closed: read only, except for the site's account
+        if (me.ro) return this.send(ws, { t: "error", code: "readonly", nonce: b.nonce, error: "هذه الغرفة للقراءة فقط." });
         const muted = this.mutedUntil(me.uid, now);
         if (muted) return this.send(ws, { t: "error", code: "muted", until: muted, nonce: b.nonce, error: "لا يمكنك الكتابة في المجتمع الآن." });
         // at most 6 messages in 10 seconds
@@ -321,7 +354,7 @@ async function whoFor(env: ChatEnv, request: Request): Promise<Who | null> {
   return {
     uid: m.id, user: m.username, name: m.official ? MOD_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic,
     // the site's account: gold; a premium member: «premium» (the blue badge and a name that stands out); else blue if given
-    badge: m.official ? "gold" : Number(m.premium_until) > Date.now() ? "premium" : m.badge === 0 ? "" : "blue", mod: !!m.official, mute: Number(mute?.chat_mute || 0),
+    badge: m.official ? "gold" : m.badge === 2 ? "vgold" : Number(m.premium_until) > Date.now() ? "premium" : m.badge === 0 ? "" : "blue", mod: !!m.official, mute: Number(mute?.chat_mute || 0),
   };
 }
 
@@ -330,9 +363,11 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
   const path = url.pathname;
 
   if (path === "/chat/rooms" && request.method === "GET") {
-    if (!env.CHAT) return reply({ rooms: ROOMS.map(id => ({ id, online: 0, today: 0, lastId: 0, last: null })) });
-    const rooms = await Promise.all(ROOMS.map(async id => {
-      try { return { id, ...(await (await roomCall(env, id, "/summary")).json() as any) }; } catch { return { id, online: 0, today: 0, lastId: 0, last: null }; }
+    const list = (await roomList(env)).filter(r => !r.hidden);
+    const info = (r: RoomInfo) => ({ id: r.id, name: r.name, about: r.about, mark: r.mark, hue: r.hue, closed: !!r.closed });
+    if (!env.CHAT) return reply({ rooms: list.map(r => ({ ...info(r), online: 0, today: 0, lastId: 0, last: null })) });
+    const rooms = await Promise.all(list.map(async r => {
+      try { return { ...info(r), ...(await (await roomCall(env, r.id, "/summary")).json() as any) }; } catch { return { ...info(r), online: 0, today: 0, lastId: 0, last: null }; }
     }));
     return reply({ rooms }, 200, { "Cache-Control": "public, max-age=5" });
   }
@@ -345,16 +380,20 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     return reply({ ok: true, ticket, me: { uid: who.uid, name: who.name, pic: who.pic, badge: who.badge, mod: who.mod } });
   }
 
-  const ws = path.match(/^\/chat\/ws\/([a-z]+)$/);
+  const ws = path.match(/^\/chat\/ws\/([a-z][a-z0-9]{1,23})$/);
   if (ws && request.method === "GET") {
-    if (!isRoom(ws[1]) || !env.CHAT) return new Response("no such room", { status: 404 });
+    if (!env.CHAT) return new Response("no such room", { status: 404 });
     if (request.headers.get("Upgrade") !== "websocket") return new Response("expected a websocket", { status: 426 });
     if (!fromSite(request.headers.get("Origin"))) return new Response("forbidden", { status: 403 });
     const ticket = String(url.searchParams.get("ticket") || "");
     if (!/^[a-f0-9]{48}$/.test(ticket)) return new Response("no ticket", { status: 401 });
-    const raw = await env.PUSH_KV.get(`chat:t:${ticket}`);
+    let raw = await env.PUSH_KV.get(`chat:t:${ticket}`);
     if (!raw) return new Response("ticket expired", { status: 401 });
     await env.PUSH_KV.delete(`chat:t:${ticket}`);
+    const who0: Who = JSON.parse(raw);
+    const room = await roomOf(env, ws[1], who0.mod);
+    if (!room) return new Response("no such room", { status: 404 });
+    if (room.closed && !who0.mod) raw = JSON.stringify({ ...who0, ro: true });
     return stub(env, ws[1]).fetch(new Request(`https://chat/${ws[1]}/ws`, {
       headers: { Upgrade: "websocket", "X-Chat-Room": ws[1], "X-Chat-User": encodeURIComponent(raw) },
     }));
@@ -375,7 +414,8 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
     if (who.mute > Date.now()) return reply({ ok: false, error: "لا يمكنك الإرسال في المجتمع الآن." }, 403);
     const room = url.searchParams.get("room");
     const kind = url.searchParams.get("kind");
-    if (!isRoom(room) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذّر الرفع." }, 400);
+    const rinfo = await roomOf(env, room, who.mod);
+    if (!rinfo || (rinfo.closed && !who.mod) || !["image", "voice", "file"].includes(String(kind)) || !env.MEDIA) return reply({ ok: false, error: "تعذّر الرفع." }, 400);
     const count = Number(await env.PUSH_KV.get(`chat:up:${who.uid}`) || 0);
     // a premium member sends more, and bigger files
     const prem = who.badge === "premium" || who.mod;
@@ -430,9 +470,10 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
 
 // ── the panel ────────────────────────────────────────────────────────────────
 export async function studioChat(env: ChatEnv, now = Date.now()) {
-  const rooms = env.CHAT ? await Promise.all(ROOMS.map(async id => {
-    try { return { id, ...(await (await roomCall(env, id, "/summary")).json() as any) }; } catch { return { id, online: 0, today: 0, lastId: 0, last: null }; }
-  })) : ROOMS.map(id => ({ id, online: 0, today: 0, lastId: 0, last: null }));
+  const list = await roomList(env, true);
+  const rooms = env.CHAT ? await Promise.all(list.map(async r => {
+    try { return { ...r, ...(await (await roomCall(env, r.id, "/summary")).json() as any) }; } catch { return { ...r, online: 0, today: 0, lastId: 0, last: null }; }
+  })) : list.map(r => ({ ...r, online: 0, today: 0, lastId: 0, last: null }));
   let reports: any[] = [], muted: any[] = [];
   if (env.ANALYTICS) {
     await ensureMembers(env.ANALYTICS);
@@ -465,17 +506,38 @@ export async function studioChatMute(env: ChatEnv, uid: unknown, hours: unknown,
   await ensureReports(env.ANALYTICS);
   const r = await env.ANALYTICS.prepare("UPDATE members SET chat_mute = ?1 WHERE id = ?2 AND official = 0").bind(until, id).run();
   if (!r.meta?.changes) return { success: false, error: "العضو ده مش موجود." };
-  if (env.CHAT) await Promise.all(ROOMS.map(room => roomCall(env, room, "/admin", { method: "POST", body: JSON.stringify({ op: "mute", uid: id, until }) }).catch(() => null)));
+  if (env.CHAT) await Promise.all((await roomList(env)).map(r => roomCall(env, r.id, "/admin", { method: "POST", body: JSON.stringify({ op: "mute", uid: id, until }) }).catch(() => null)));
   return { success: true, until };
 }
 /** A stopped member leaves every room at once */
 export async function chatKick(env: ChatEnv, uid: unknown) {
   if (!env.CHAT) return;
-  await Promise.all(ROOMS.map(room => roomCall(env, room, "/admin", { method: "POST", body: JSON.stringify({ op: "kick", uid: Number(uid) || 0 }) }).catch(() => null)));
+  await Promise.all((await roomList(env)).map(r => roomCall(env, r.id, "/admin", { method: "POST", body: JSON.stringify({ op: "kick", uid: Number(uid) || 0 }) }).catch(() => null)));
 }
 export async function studioChatDismiss(env: ChatEnv, id: unknown) {
   if (!env.ANALYTICS) return { success: false };
   await ensureReports(env.ANALYTICS);
   await env.ANALYTICS.prepare("UPDATE chat_reports SET done = 1 WHERE id = ?1").bind(Number(id) || 0).run();
   return { success: true };
+}
+
+/** The panel's «الغرف»: the whole list, saved as one (add, rename, describe, colour, order, hide, close for writing) */
+export async function studioChatRooms(env: ChatEnv, body: any = null) {
+  if (!body) return { success: true, rooms: await roomList(env, true), defaults: DEFAULT_ROOMS };
+  const list = Array.isArray(body.rooms) ? body.rooms : [];
+  const seen = new Set<string>(), out: RoomInfo[] = [];
+  for (const r of list.slice(0, 40)) {
+    const id = String(r?.id || "").trim().toLowerCase();
+    if (!ROOM_ID.test(id)) return { success: false, error: `اسم الغرفة في الرابط «${id || "فاضي"}» لازم يكون حروف إنجليزي صغيرة وأرقام (من 2 لـ 24).` };
+    if (seen.has(id)) return { success: false, error: `الغرفة «${id}» متكررة.` };
+    seen.add(id);
+    const name = String(r.name || "").replace(/\s+/g, " ").trim().slice(0, 40);
+    if (name.length < 2) return { success: false, error: `اكتب اسم للغرفة «${id}».` };
+    out.push({ id, name, about: String(r.about || "").replace(/\s+/g, " ").trim().slice(0, 90), mark: String(r.mark || name).replace(/\s+/g, "").slice(0, 6) || id.slice(0, 4).toUpperCase(),
+      hue: Math.max(0, Math.min(360, Math.round(Number(r.hue) || 0))), ...(r.hidden ? { hidden: true } : {}), ...(r.closed ? { closed: true } : {}) });
+  }
+  if (!out.some(r => !r.hidden)) return { success: false, error: "لازم تفضل غرفة واحدة على الأقل ظاهرة." };
+  await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(out));
+  roomsCache = { at: Date.now(), list: out };
+  return { success: true, rooms: out };
 }

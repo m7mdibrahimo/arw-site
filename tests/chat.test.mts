@@ -209,3 +209,30 @@ test('uploads: pictures, voice and allowed files only, kept in the room\'s folde
   const vid: any = await (await up('room=aew&kind=file', 'video/mp4', new Uint8Array(900), 'clip.mp4')).json();
   assert.equal(vid.att.kind, 'video');
 });
+
+test('the owner\'s rooms: added, renamed, hidden and closed from the panel; the page\'s list follows; a closed room is read only', async () => {
+  const { studioChatRooms } = await import('../worker/src/chat');
+  const e = memberEnv();
+  const now = await studioChatRooms(e);
+  assert.deepEqual(now.rooms.map((r: any) => r.id), [...ROOMS]);
+  const list = now.rooms.map((r: any) => r.id === 'wwe' ? { ...r, name: 'دبليو دبليو إي' } : r.id === 'roh' ? { ...r, hidden: true } : r.id === 'njpw' ? { ...r, closed: true } : r);
+  list.splice(1, 0, { id: 'aaa2', name: 'AAA والمكسيك', about: 'لوتشا ليبري', mark: 'AAA', hue: 120 });
+  assert.equal((await studioChatRooms(e, { rooms: [...list, { id: 'Bad Id', name: 'x' }] })).success, false);
+  assert.equal((await studioChatRooms(e, { rooms: [list[0], list[0]] })).success, false);
+  assert.equal((await studioChatRooms(e, { rooms: list.map((r: any) => ({ ...r, hidden: true })) })).success, false);
+  assert.equal((await studioChatRooms(e, { rooms: list })).success, true);
+  const pub: any = await (await chat(e, '/chat/rooms')).json();
+  const ids = pub.rooms.map((r: any) => r.id);
+  assert.equal(ids[1], 'aaa2');
+  assert.ok(!ids.includes('roh'));
+  assert.equal(pub.rooms.find((r: any) => r.id === 'wwe').name, 'دبليو دبليو إي');
+  assert.equal(pub.rooms.find((r: any) => r.id === 'njpw').closed, true);
+  // read only: a member can't write there, the site's account can
+  const { join } = room();
+  const a = join({ uid: 1, ro: true });
+  await a.say({ t: 'send', text: 'رسالة', nonce: 'n1' });
+  assert.equal(a.last('error').code, 'readonly');
+  const o = join({ uid: 9, name: 'عرب راسلنج', badge: 'gold', mod: true });
+  await o.say({ t: 'send', text: 'إعلان', nonce: 'n2' });
+  assert.ok(o.last('msg') || o.last('sent') || !o.last('error'));
+});

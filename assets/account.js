@@ -254,9 +254,10 @@
     $('.acct-verify', v).hidden = !!m.verified || !mailOn;
     // the site's own account: the gold badge; its name and picture stay as the site's
     v.classList.toggle('is-official', !!m.official);
+    v.classList.toggle('is-goldv', !!m.gold);
     var prem = !m.official && Number(m.premium) > Date.now();
     v.classList.toggle('is-prem', prem);
-    $('.acct-badge span', v).textContent = m.official ? 'الحساب الرسمي' : prem ? 'عضو مميز' : 'حساب موثق';
+    $('.acct-badge span', v).textContent = m.official ? 'الحساب الرسمي' : m.gold ? 'موثق بالعلامة الذهبية' : prem ? 'عضو مميز' : 'حساب موثق';
     $('.acct-badge', v).hidden = !m.official && m.blue === false && !(Number(m.premium) > Date.now());
     $('.acct-badge', v).title = m.official ? 'الحساب الرسمي لعرب راسلنج' : 'حساب موثق في عرب راسلنج';
     $$('[data-open="pics"]', v).forEach(function (b) { b.disabled = !!m.official; });
@@ -312,7 +313,7 @@
           on: ['أنت عضو مميز', 'عضويتك مفعلة، وكل المميزات متاحة لك.'],
           soon: ['عضويتك تنتهي قريبا', 'باقي ' + left + (left === 1 ? ' يوم' : left === 2 ? ' يومان' : ' أيام') + ' فقط. جددها الآن حتى لا تتوقف المميزات.'],
           ended: ['انتهت عضويتك المميزة', 'جدد اشتراكك الآن وارجع لكل المميزات.'],
-          none: ['أنت لست مشتركا بعد', 'اشترك وشاهد العروض قبل الجميع، وبدون إعلانات، مع العلامة الزرقاء.']
+          none: ['أنت لست مشتركا بعد', 'اشترك وشاهد العروض قبل الجميع، وبدون إعلانات، ووثق حسابك.']
         }[state];
         $('.acct-sub-title').textContent = T[0];
         $('.acct-sub-note').textContent = T[1];

@@ -94,7 +94,9 @@ type Member = { id: number; username: string; email: string; salt: string; hash:
 const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created, official: !!m.official,
   // a premium member has the blue badge while it lasts (owner 2026-10-14: «هياخد علامة التوثيق الزرقاء»)
   // the site's own account has every privilege, premium included, always (owner 2026-10-14: «ليا عضويتي ليها كل الامتيازات»)
-  premium: m.official ? 4102444800000 : Number(m.premium_until) > Date.now() ? Number(m.premium_until) : 0, blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()) });
+  premium: m.official ? 4102444800000 : Number(m.premium_until) > Date.now() ? Number(m.premium_until) : 0, blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()),
+  // the gold badge the owner gives by hand (owner 2026-10-15: «احط علامة توثيق ذهبي … لاي حد»)
+  gold: !m.official && m.badge === 2 });
 
 // ── rate limits (KV counters with their own expiry) ───────────────────────────
 async function tooMany(kv: KVNamespace, key: string, max: number, _windowSec: number): Promise<boolean> {
@@ -387,7 +389,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (!m) return reply({ ok: false, error: "لا يوجد عضو بهذا الاسم." }, 404);
     await ensureComments(db);
     const c = await db.prepare("SELECT COUNT(*) AS n FROM comments WHERE member = ?1 AND deleted = 0").bind(m.id).first<{ n: number }>();
-    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, premium: Number(m.premium_until) > Date.now(), blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()), fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
+    return reply({ ok: true, member: { username: m.username, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, official: !!m.official, premium: Number(m.premium_until) > Date.now(), blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()), gold: !m.official && m.badge === 2, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, created: m.created, comments: c?.n || 0 } });
   }
 
   // ── the member's own ──
@@ -543,11 +545,13 @@ export async function studioOfficialAccount(env: MembersEnv, body: any = null, n
   return { success: true, account: view(m) };
 }
 /** The blue badge on a member, on or off (the owner's call; the site's own account keeps its gold one) */
-export async function studioBadgeMember(env: MembersEnv, id: unknown, on: unknown) {
+/** The badge the owner gives or takes: 0 none, 1 blue, 2 gold (`on` is the old yes/no for the blue one) */
+export async function studioBadgeMember(env: MembersEnv, id: unknown, on: unknown, level?: unknown) {
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
   await ensureMembers(db);
-  const r = await db.prepare("UPDATE members SET badge = ?1 WHERE id = ?2 AND official = 0").bind(on ? 1 : 0, Number(id) || 0).run();
+  const lv = level === undefined || level === null ? (on ? 1 : 0) : Math.max(0, Math.min(2, Math.round(Number(level) || 0)));
+  const r = await db.prepare("UPDATE members SET badge = ?1 WHERE id = ?2 AND official = 0").bind(lv, Number(id) || 0).run();
   if (!r.meta?.changes) return { success: false, error: "العضو ده مش موجود." };
   return { success: true };
 }
@@ -568,5 +572,22 @@ export async function studioBanMember(env: MembersEnv, id: unknown, on: unknown)
   const r = await db.prepare("UPDATE members SET banned = ?1 WHERE id = ?2 AND official = 0").bind(on ? 1 : 0, Number(id) || 0).run();
   if (!r.meta?.changes) return { success: false, error: "العضو ده مش موجود." };
   if (on) await db.prepare("DELETE FROM member_sessions WHERE member = ?1").bind(Number(id)).run();
+  return { success: true };
+}
+
+/** The owner corrects a member's page: the name shown, the line about them, their favourites, or takes the picture off
+ *  (owner 2026-10-15: «يكون ليا تحكم في كل حاجة تخص الاعضاء») */
+export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
+  await ensureMembers(db);
+  const m: any = await db.prepare("SELECT * FROM members WHERE id = ?1 AND official = 0").bind(Number(id) || 0).first();
+  if (!m) return { success: false, error: "العضو ده مش موجود." };
+  const display = b.display === undefined ? m.display : String(b.display).normalize("NFC").replace(/\s+/g, " ").trim().slice(0, 30);
+  if (display.length < 2) return { success: false, error: "الاسم الظاهر حرفين على الأقل." };
+  const bio = b.bio === undefined ? m.bio : String(b.bio).replace(/\s+/g, " ").trim().slice(0, 160);
+  const fav_star = b.fav_star === undefined ? m.fav_star : String(b.fav_star).replace(/\s+/g, " ").trim().slice(0, 40);
+  const pic = b.pic === "" ? "" : m.pic;
+  await db.prepare("UPDATE members SET display = ?1, bio = ?2, fav_star = ?3, pic = ?4 WHERE id = ?5").bind(display, bio, fav_star, pic, m.id).run();
   return { success: true };
 }

@@ -36,9 +36,9 @@ import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
-import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, chatKick } from "./chat";
+import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick } from "./chat";
 export { ChatRoom } from "./chat";
-import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember } from "./members";
+import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -3104,13 +3104,15 @@ export default {
         if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير المجتمع." }, 403);
         const who = await studioUser(request, env as any);
         if (path === "/api/studio/chat" && request.method === "GET") return json(await studioChat(env as any));
-        const room = path.match(/^\/api\/studio\/chat\/room\/([a-z]+)$/);
+        if (path === "/api/studio/chat/rooms" && request.method === "GET") return json(await studioChatRooms(env as any));
+        const room = path.match(/^\/api\/studio\/chat\/room\/([a-z][a-z0-9]{1,23})$/);
         if (room && request.method === "GET") { const r = await studioChatRoom(env as any, room[1], Number(url.searchParams.get("before")) || 0); return json(r, r.success ? 200 : 404); }
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
         let r: any = null;
         if (path === "/api/studio/chat/delete") { r = await studioChatDelete(env as any, body.room, body.id); if (who && r.success) await studioAudit(env as any, who.user, "community.delete", { room: String(body.room), id: Number(body.id) || 0 }).catch(() => {}); }
         else if (path === "/api/studio/chat/mute") { r = await studioChatMute(env as any, body.uid, body.hours); if (who && r.success) await studioAudit(env as any, who.user, Number(body.hours) ? "community.mute" : "community.unmute", { id: Number(body.uid) || 0, hours: Number(body.hours) || 0 }).catch(() => {}); }
         else if (path === "/api/studio/chat/dismiss") r = await studioChatDismiss(env as any, body.id);
+        else if (path === "/api/studio/chat/rooms") { r = await studioChatRooms(env as any, body); if (who && r.success) await studioAudit(env as any, who.user, "community.rooms", { count: (r.rooms || []).length }).catch(() => {}); }
         if (r) return json(r, r.success ? 200 : 400);
         return json({ success: false, error: "not found" }, 404);
       }
@@ -3136,11 +3138,19 @@ export default {
         return json(r, r.success ? 200 : 400);
       }
       // The blue badge on a member, given or taken away: the owner only
+      if (path === "/api/studio/members/edit" && request.method === "POST") {
+        if (!(await studioAuthorized(request, env, "members"))) return json({ success: false, denied: true, error: "مش مسموحلك تعدّل الأعضاء." }, 403);
+        const body: any = await request.json().catch(() => ({}));
+        const r = await studioEditMember(env as any, body.id, body);
+        const who = await studioUser(request, env as any);
+        if (who && r.success) await studioAudit(env as any, who.user, "members.edit", { id: Number(body.id) || 0 }).catch(() => {});
+        return json(r, r.success ? 200 : 400);
+      }
       if (path === "/api/studio/members/badge" && request.method === "POST") {
         const who = await studioUser(request, env as any);
         if (!who || who.user.mustChange || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
         const body: any = await request.json().catch(() => ({}));
-        const r = await studioBadgeMember(env as any, body.id, body.on);
+        const r = await studioBadgeMember(env as any, body.id, body.on, body.level);
         if (r.success) await studioAudit(env as any, who.user, body.on ? "members.badge" : "members.unbadge", { id: Number(body.id) || 0 }).catch(() => {});
         return json(r, r.success ? 200 : 400);
       }

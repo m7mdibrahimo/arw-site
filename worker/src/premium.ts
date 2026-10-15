@@ -331,6 +331,14 @@ export async function studioPremiumRequest(env: PremiumEnv, b: any, now = Date.n
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "مش متاح دلوقتي." };
   await ensurePremium(db);
+  // the owner removes a request altogether, or corrects what it says (owner 2026-10-15: «امسح او اعمل اي حاجة في … الطلب»)
+  if (b.delete) {
+    const d = await db.prepare("DELETE FROM premium_requests WHERE id = ?1").bind(Number(b.id) || 0).run();
+    return d.meta?.changes ? { success: true, deleted: true } : { success: false, error: "الطلب ده مش موجود." };
+  }
+  if (typeof b.text === "string" && b.text.trim().length >= 2) {
+    await db.prepare("UPDATE premium_requests SET text = ?1 WHERE id = ?2").bind(b.text.replace(/\s+/g, " ").trim().slice(0, 500), Number(b.id) || 0).run();
+  }
   const status = ["new", "working", "done", "declined"].includes(b.status) ? b.status : "working";
   const link = /^\/[^\s]*$|^https:\/\/arab-wrestling\.com\/[^\s]*$/.test(String(b.link || "")) ? String(b.link) : "";
   const r = await db.prepare("UPDATE premium_requests SET status = ?1, reply = ?2, link = ?3, updated = ?4 WHERE id = ?5")

@@ -329,3 +329,25 @@ test('«اشتراكي»: since when, until when, and the payments (a gift from 
   assert.deepEqual([d.payments[0].paid, d.payments[0].gift, d.payments[0].days], [true, true, 30]);
   assert.equal((await call(e, '/premium/mine', undefined, o.token)).body.payments.length, 0);
 });
+
+test('the owner\'s badges: none, blue or gold for any member; a member\'s page corrected from the panel', async () => {
+  const { studioBadgeMember, studioEditMember } = await import('../worker/src/members');
+  const e = env();
+  e.MEDIA = null;
+  const s = await member(e);
+  assert.equal((await me(e, s.token)).blue, false);
+  await studioBadgeMember(e, s.member.id, true, 2);
+  const m = await me(e, s.token);
+  assert.deepEqual([m.gold, m.blue], [true, true]);
+  const STORY = '/news/خبر/';
+  await handleComments(new Request('https://w/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', name: 'x', text: 'تعليق ذهبي' }), headers: { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.3', 'Content-Type': 'application/json', Authorization: `Bearer ${s.token}` } }), e, new URL('https://w/comments'));
+  const list: any = await handleComments(new Request(`https://w/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w/comments?p=${encodeURIComponent(STORY)}`)).then((x) => x.json());
+  assert.equal(list.items[0].gold, true);
+  await studioBadgeMember(e, s.member.id, false, 0);
+  assert.deepEqual([(await me(e, s.token)).gold, (await me(e, s.token)).blue], [false, false]);
+  // the owner corrects the member's page
+  assert.equal((await studioEditMember(e, s.member.id, { display: 'ا' })).success, false);
+  assert.equal((await studioEditMember(e, s.member.id, { display: 'كريم المصري', bio: 'نبذة جديدة', pic: '' })).success, true);
+  const after = await me(e, s.token);
+  assert.deepEqual([after.display, after.bio, after.pic], ['كريم المصري', 'نبذة جديدة', '']);
+});

@@ -1,7 +1,7 @@
 // «العضوية المميزة» in the panel (owner 2026-10-14): who's subscribed and until when, what was paid, and the members'
 // translation requests (answered here, with a link to the show when it's up). The worker: worker/src/premium.ts.
 import { api } from '../api.js';
-import { html, mount, $, $$, icon, toast, timeAgo, num } from '../ui.js';
+import { html, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
 const KINDS = { nostalgia: 'نوستالجيا', series: 'سلسلة', show: 'عرض قديم', other: 'طلب تاني' };
 const STATES = [['new', 'جديد'], ['working', 'بنترجمه'], ['done', 'خلص'], ['declined', 'اتعذّر']];
@@ -39,12 +39,13 @@ export async function renderPremium(page) {
           ${av(r)}
           <div class="cy-item-main">
             <div class="cm-meta"><b>${r.display || r.username}</b><span class="muted small">${KINDS[r.kind] || ''} · ${timeAgo(r.created)}</span>${r.official ? html`<em class="pr-official">الحساب الرسمي</em>` : r.premium_until > Date.now() ? '' : html`<em class="mb-wait">العضوية خلصت</em>`}</div>
-            <p class="pr-req-text">${r.text}</p>
+            <textarea class="input pr-req-text" data-f="text" rows="2" dir="auto" aria-label="نص الطلب">${r.text}</textarea>
             <div class="pr-states">${STATES.map(([k, l]) => html`<label><input type="radio" name="st-${r.id}" value="${k}" ${r.status === k ? 'checked' : ''}><span>${l}</span></label>`)}</div>
             <div class="pr-req-edit">
               <input class="input" data-f="reply" placeholder="ردك على المتابع (اختياري)" value="${r.reply || ''}" dir="auto">
               <input class="input" data-f="link" placeholder="لينك العرض لما ينزل: /nostalgia/..." value="${r.link || ''}" dir="ltr">
               <button class="btn btn-sm btn-primary" data-save="${r.id}">احفظ</button>
+              <button class="btn btn-sm btn-danger-soft" data-del="${r.id}" title="امسح الطلب">${icon('trash')}امسح</button>
             </div>
           </div>
           <a class="btn btn-sm btn-ghost" href="#/site-members/${r.member}">صفحته</a>
@@ -68,6 +69,14 @@ export async function renderPremium(page) {
     </div>`);
 
   page.onclick = async (e) => {
+    const del = e.target.closest('[data-del]');
+    if (del) {
+      const ok = await dialog({ title: 'مسح الطلب', body: html`<p class="muted small">الطلب هيتمسح خالص، ومش هيظهر للمشترك تاني.</p>`, confirm: 'امسحه', danger: true });
+      if (!ok) return;
+      try { await api.premiumRequest({ id: Number(del.dataset.del), delete: true }); toast('اتمسح ✓'); renderPremium(page); }
+      catch (err) { toast(err.message, 'error'); }
+      return;
+    }
     const b = e.target.closest('[data-save]');
     if (!b) return;
     const card = b.closest('[data-req]');
@@ -75,7 +84,7 @@ export async function renderPremium(page) {
     const status = (card.querySelector(`input[name="st-${id}"]:checked`) || {}).value || 'working';
     b.disabled = true;
     try {
-      await api.premiumRequest({ id: Number(id), status, reply: $('[data-f="reply"]', card).value, link: $('[data-f="link"]', card).value.trim() });
+      await api.premiumRequest({ id: Number(id), status, text: $('[data-f="text"]', card).value, reply: $('[data-f="reply"]', card).value, link: $('[data-f="link"]', card).value.trim() });
       toast('اتحفظ ✓'); renderPremium(page);
     } catch (err) { toast(err.message, 'error'); b.disabled = false; }
   };

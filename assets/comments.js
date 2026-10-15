@@ -100,6 +100,8 @@
   // العلامة الزرقاء … وخليني انا علامة ذهبي»)
   var BADGE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><defs><linearGradient id="arwGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd25a"/><stop offset="1" stop-color="#e09a12"/></linearGradient></defs><path fill="url(#arwGold)" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
   var BLUE = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg>';
+  // the gold badge the owner gives by hand (owner 2026-10-15)
+  var GOLD = BLUE.replace('fill="#1d9bf0"', 'fill="url(#cmGoldV)"').replace('<path', '<defs><linearGradient id="cmGoldV" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd25a"/><stop offset="1" stop-color="#e09a12"/></linearGradient></defs><path');
   var CROWN = '<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   var USER = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>';
   function item(c) {
@@ -133,10 +135,10 @@
     if (c.member && !c.official && c.blue !== false) {
       var mb = document.createElement('span');
       mb.className = 'arw-cm-member';
-      mb.title = 'عضو موثق في عرب راسلنج';
+      mb.title = c.gold ? 'عضو موثق بالعلامة الذهبية' : 'عضو موثق في عرب راسلنج';
       mb.setAttribute('role', 'img');
-      mb.setAttribute('aria-label', 'عضو موثق في عرب راسلنج');
-      mb.innerHTML = BLUE;
+      mb.setAttribute('aria-label', mb.title);
+      mb.innerHTML = c.gold ? GOLD : BLUE;
       meta.appendChild(mb);
     }
     if (c.prem && !c.official) {
@@ -426,7 +428,7 @@
         if (d.name) name = d.name;
         // a picture the worker kept: its address from now on, not the picture itself
         if (d.pic && /^https:/.test(d.pic)) setPic(d.pic);
-        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official, blue: d.blue, prem: !!d.prem });
+        shown.unshift({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), member: d.member || '', official: !!d.official, blue: d.blue, gold: !!d.gold, prem: !!d.prem });
         textIn.value = '';
         count();
         say('تم نشر تعليقك، شكرا لك!', 'ok');
@@ -482,7 +484,7 @@
           if (!member) store.set(NAME, name);
           if (d.name) name = d.name;
           if (d.pic && /^https:/.test(d.pic) && !member) setPic(d.pic);
-          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official, blue: d.blue, prem: !!d.prem });
+          shown.push({ id: d.id, name: name, text: text, pic: d.pic || pic, at: Date.now(), parent: d.parent || c.parent || c.id, reply_to: d.reply_to || c.id, member: d.member || '', official: !!d.official, blue: d.blue, gold: !!d.gold, prem: !!d.prem });
           replyForm = null;
           draw(expanded);
           var mine = document.getElementById('c-' + d.id);

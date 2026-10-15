@@ -900,7 +900,7 @@
         '<a class="arw-am-me" href="' + HOME + '/account/" role="menuitem"><span class="arw-am-av"><span class="arw-acct-in">' + memberAvatar(m) + '</span></span><span class="arw-am-who"><b></b><small dir="ltr"></small></span></a>' +
         '<div class="arw-am-status">' + (m.official || prem ? CROWN_IC : '') + '<span></span></div>' +
         (m.official || prem ? '' :
-          '<a class="arw-am-up" href="/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، والعلامة الزرقاء</small></span></a>') +
+          '<a class="arw-am-up" href="/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، وتوثيق حسابك</small></span></a>') +
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
@@ -1001,7 +1001,7 @@
     var offers = m ? [
       ['العروض الجديدة قبل الجميع', 'مع العضوية المميزة تشاهد العرض قبل نشره للكل بساعات.', 'اعرف أكثر', '/premium/'],
       ['شاهد بدون إعلانات', 'سيرفرات خاصة للأعضاء المميزين: أسرع وبدون نوافذ مزعجة.', 'اعرف أكثر', '/premium/'],
-      ['احصل على العلامة الزرقاء', 'وثق حسابك واجعل اسمك ذهبيا في التعليقات والمجتمع.', 'اشترك الآن', '/premium/'],
+      ['وثق حسابك', 'علامة التوثيق بجانب اسمك، واسمك باللون الذهبي في التعليقات والمجتمع.', 'اشترك الآن', '/premium/'],
       ['اطلب أي عرض ونترجمه لك', 'الأعضاء المميزون يطلبون العروض القديمة والسلاسل، ونحن نترجمها.', 'اعرف أكثر', '/premium/']
     ] : [
       ['انضم إلى عرب راسلنج مجانا', 'علق باسمك، ودردش مع محبي المصارعة في مجتمع المصارعة.', 'أنشئ حسابك', HOME + '/account/?new'],

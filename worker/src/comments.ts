@@ -93,7 +93,7 @@ async function visitor(env: CommentsEnv, request: Request, day: string): Promise
 }
 
 type Row = { id: number; path: string; title: string; name: string; text: string; pic: string; at: number; parent: number; official: number; hearted?: number; ip?: string; country?: string; reply_to?: number; owner?: string; mname?: string; mbadge?: number; mprem?: number };
-const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "", blue: !!r.mname && !r.official && (r.mbadge !== 0 || Number(r.mprem) > Date.now()), prem: !!r.mname && !r.official && Number(r.mprem) > Date.now() });
+const out = (r: Row) => ({ id: r.id, name: r.name, text: r.text, pic: r.pic, at: r.at, parent: r.parent || 0, official: !!r.official, hearted: !!r.hearted, reply_to: r.reply_to || 0, member: r.mname || "", blue: !!r.mname && !r.official && (r.mbadge !== 0 || Number(r.mprem) > Date.now()), gold: !!r.mname && !r.official && r.mbadge === 2, prem: !!r.mname && !r.official && Number(r.mprem) > Date.now() });
 
 /** /comments and /comments/pic/<id>.webp */
 export async function handleComments(request: Request, env: CommentsEnv, url: URL, now = Date.now()): Promise<Response> {
@@ -241,7 +241,7 @@ export async function handleComments(request: Request, env: CommentsEnv, url: UR
   }
   // whoever wrote what this answers is told (not someone answering themselves)
   if (target?.owner && target.owner !== owner) await notifyOwner(env.PUSH_KV, target.owner).catch(() => 0);
-  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official, blue: !!member && !official && ((member as any).badge !== 0 || Number((member as any).premium_until) > now), prem: !!member && !official && Number((member as any).premium_until) > now });
+  return reply({ ok: true, id, status: "published", pic: picOut, parent, reply_to: target ? target.id : 0, name, member: member ? member.username : "", official, blue: !!member && !official && ((member as any).badge !== 0 || Number((member as any).premium_until) > now), gold: !!member && !official && (member as any).badge === 2, prem: !!member && !official && Number((member as any).premium_until) > now });
 }
 
 // ── the panel ──────────────────────────────────────────────────────────────

@@ -275,7 +275,7 @@ permalink: "/account/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015a">
+<link rel="stylesheet" href="/assets/features.css?v=20261015b">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>حسابك | عرب راسلنج</title>
@@ -415,6 +415,9 @@ html.arw-dark .acct-ms[data-state="soon"] .acct-sub-note{ color:#ff9f6e; }
 .acct-mail-ic{ background:rgba(29,155,240,.12); color:#1d9bf0; }
 .acct-steps{ margin:0; padding:0 18px 0 0; display:flex; flex-direction:column; gap:6px; color:var(--muted); font-size:14px; line-height:1.8; }
 .acct-btn-soft{ background:var(--teal-soft, rgba(14,149,148,.1)); color:var(--teal); }
+.acct-btn-ghost{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+.acct-btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+[data-form="password"] .acct-row .acct-btn{ flex:1 1 200px; }
 .acct-pending-mail{ color:var(--ink); }
 .acct-done-ic{ width:58px; height:58px; border-radius:50%; background:var(--teal-soft); color:var(--teal); display:flex; align-items:center; justify-content:center; }
 .acct-code-box{ padding:18px; border-radius:16px; background:var(--gold-soft); border:1px dashed var(--gold); display:flex; flex-direction:column; gap:8px; }
@@ -445,6 +448,7 @@ html.arw-dark .acct-ms[data-state="soon"] .acct-sub-note{ color:#ff9f6e; }
 .acct-me-h .acct-badge span{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .is-prem .acct-me-h .acct-badge path:first-child{ fill:#1d9bf0 !important; }
 .is-prem .acct-me-h .acct-badge path:last-child{ fill:#fff !important; }
+.is-goldv .acct-me-h .acct-badge path:first-child{ fill:#e09a12 !important; }
 .acct-me-tx .acct-getblue{ margin-top:8px; }
 .is-official .acct-badge{ background:rgba(224,154,18,.13); color:#b5780a; }
 .is-official .acct-badge path:first-child{ fill:#eaa51c; }
@@ -636,7 +640,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
             <h1 class="acct-me-h"><span class="acct-me-name"></span><span class="acct-badge" title="حساب موثق في عرب راسلنج"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>حساب موثق</span></span></h1>
             <p class="acct-me-user" dir="ltr"></p>
             <p class="acct-me-since"></p>
-            <a class="acct-getblue" href="/premium/" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>احصل على العلامة الزرقاء</span></a>
+            <a class="acct-getblue" href="/premium/" hidden><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.79 2.5 13.47 1.5 12 1.5s-2.79 1-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.98 3.47-.03.17-.04.35-.04.53 0 2.21 1.71 4 3.82 4 .47 0 .92-.09 1.34-.25.63 1.25 1.95 2.25 3.42 2.25s2.79-1 3.42-2.25c.42.16.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.18-.01-.36-.04-.53 1.18-.67 1.98-1.97 1.98-3.47z"/><path fill="#fff" d="M10.54 16.4 6.8 12.66l1.41-1.42 2.33 2.33 5.25-5.25 1.42 1.41z"/></svg><span>وثق حسابك</span></a>
           </div>
 
 
@@ -662,7 +666,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
             <ul class="acct-plan-list">
               <li><b>العروض قبل الجميع</b> تشاهد العرض الجديد قبل نشره للكل بساعات.</li>
               <li><b>سيرفرات خاصة بدون إعلانات</b> مشاهدة وتحميل أسرع وبدون نوافذ مزعجة.</li>
-              <li><b>العلامة الزرقاء</b> بجانب اسمك في التعليقات والمجتمع.</li>
+              <li><b>توثيق حسابك</b> بعلامة التوثيق بجانب اسمك.</li>
               <li><b>اسمك باللون الذهبي</b> مع شارة «مميز» في كل مكان.</li>
               <li><b>اطلب أي عرض</b> ونترجمه لك.</li>
             </ul>
@@ -787,7 +791,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           <p class="acct-msg" role="status"></p>
           <div class="acct-row">
             <button class="acct-btn acct-btn-soft" type="submit">تغيير كلمة المرور</button>
-            <button type="button" class="acct-link" data-act="recovery">كود استرجاع جديد</button>
+            <button type="button" class="acct-btn acct-btn-ghost" data-act="recovery">كود استرجاع جديد</button>
           </div>
         </form>
 
@@ -913,7 +917,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015a" defer></script>
+<script src="/assets/features.js?v=20261015b" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

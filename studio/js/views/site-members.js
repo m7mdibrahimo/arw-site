@@ -19,10 +19,13 @@ const CROWN = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColo
 const isPrem = (m) => Number(m.premium_until) > Date.now();
 /** A member as the site shows them: the site's own account is «عرب راسلنج», its logo and the gold badge */
 const shownName = (m) => (m.official ? OFFICIAL_NAME : m.display || m.username);
-const badgeOf = (m) => raw(m.official ? GOLD : m.badge === 0 ? '' : BLUE);
+const badgeOf = (m) => raw(m.official || m.badge === 2 ? GOLD : m.badge === 0 ? '' : BLUE);
 const isOwner = () => getUser()?.role === 'owner';
 /** The owner gives the blue badge or takes it away (owner 2026-10-14: «ادي العلامة الزرقاء التوثيق لاي حد او اشيله») */
-const badgeBtn = (m, cls = 'btn-sm') => (isOwner() && !m.official ? html`<button class="btn ${cls} mb-badge-btn ${m.badge === 0 ? '' : 'is-on'}" data-badge="${m.id}" title="${m.badge === 0 ? 'ادّيله العلامة الزرقاء' : 'شيل العلامة الزرقاء'}">${raw(BLUE)}${m.badge === 0 ? 'ادّيله العلامة' : 'شيل العلامة'}</button>` : '');
+// …and the gold one too, for anyone (owner 2026-10-15: «احط علامة توثيق ذهبي كمان او اشيلها لاي حد»): three choices
+const BADGES = [[0, 'من غير', ''], [1, 'أزرق', BLUE], [2, 'ذهبي', GOLD]];
+const badgeBtn = (m, cls = 'btn-sm') => (isOwner() && !m.official ? html`<span class="mb-badge-seg ${cls === 'btn-sm' ? 'is-sm' : ''}" role="group" aria-label="التوثيق">${BADGES.map(([lv, label, ic]) => html`<button type="button" class="${(m.badge ?? 1) === lv ? 'is-on' : ''}" data-badge="${m.id}" data-level="${lv}" title="${lv === 0 ? 'من غير توثيق' : `توثيق ${label}`}">${ic ? raw(ic) : ''}${label}</button>`)}</span>` : '');
+const BADGE_DONE = ['اتشال التوثيق ✓', 'خد التوثيق الأزرق ✓', 'خد التوثيق الذهبي ✓'];
 const FED_NAME = { WWE: 'WWE', AEW: 'AEW', NJPW: 'NJPW', TNA: 'TNA', ROH: 'ROH', MLP: 'MLP', CMLL: 'CMLL', UFC: 'UFC' };
 const REGION = (() => { try { return new Intl.DisplayNames(['ar'], { type: 'region' }); } catch { return null; } })();
 const countryName = (cc) => { try { return (REGION && /^[A-Z]{2}$/.test(cc || '') && REGION.of(cc)) || ''; } catch { return ''; } };
@@ -126,9 +129,10 @@ export async function renderSiteMembers(page) {
     const b = e.target.closest('[data-badge]');
     if (!b) return;
     const m = items.find(x => String(x.id) === b.dataset.badge);
-    const on = m.badge === 0;
+    const lv = Number(b.dataset.level);
+    if (lv === m.badge) return;
     b.disabled = true;
-    try { await api.siteMemberBadge(m.id, on); m.badge = on ? 1 : 0; toast(on ? 'خد العلامة الزرقاء ✓' : 'اتشالت العلامة الزرقاء ✓'); draw(); }
+    try { await api.siteMemberBadge(m.id, lv > 0, lv); m.badge = lv; toast(BADGE_DONE[lv]); draw(); }
     catch (err) { toast(err.message, 'error'); b.disabled = false; }
   });
   draw();
@@ -157,7 +161,7 @@ export async function renderSiteMember(page, id) {
           <p class="muted"><span dir="ltr">@${m.username}</span></p>
           <p>${m.official ? html`<em class="mb-gold-tag">الحساب الرسمي للموقع</em>` : m.banned ? html`<em class="mb-flag">موقوف</em>` : html`<em class="mb-ok">${icon('check')}حساب شغال</em>`}</p>
         </div>
-        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<button class="btn pr-btn" data-prem="30">${raw(CROWN)}${isPrem(m) ? 'زوّد شهر مميز' : 'ادّيله شهر مميز'}</button>${isPrem(m) ? html`<button class="btn btn-ghost" data-prem="0">شيل العضوية المميزة</button>` : ''}` : ''}${badgeBtn(m, '')}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
+        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<button class="btn pr-btn" data-prem="30">${raw(CROWN)}${isPrem(m) ? 'زوّد شهر مميز' : 'ادّيله شهر مميز'}</button>${isPrem(m) ? html`<button class="btn btn-ghost" data-prem="0">شيل العضوية المميزة</button>` : ''}` : ''}${badgeBtn(m, '')}<button class="btn btn-ghost" id="mb-edit">${icon('edit')}عدّل بياناته</button><button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
       </section>
       <div class="mb-facts-grid">
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}
@@ -195,12 +199,27 @@ export async function renderSiteMember(page, id) {
     try { await api.siteMemberVerify(m.id); toast('اتفعّل ✓'); renderSiteMember(page, id); }
     catch (e) { toast(e.message, 'error'); }
   };
-  const bb = $('[data-badge]', page);
-  if (bb) bb.onclick = async () => {
-    const on = m.badge === 0;
+  $$('[data-badge]', page).forEach(bb => bb.onclick = async () => {
+    const lv = Number(bb.dataset.level);
+    if (lv === m.badge) return;
     bb.disabled = true;
-    try { await api.siteMemberBadge(m.id, on); toast(on ? 'خد العلامة الزرقاء ✓' : 'اتشالت العلامة الزرقاء ✓'); renderSiteMember(page, id); }
+    try { await api.siteMemberBadge(m.id, lv > 0, lv); toast(BADGE_DONE[lv]); renderSiteMember(page, id); }
     catch (e) { toast(e.message, 'error'); bb.disabled = false; }
+  });
+  // the owner corrects what a member shows: name, about, favourite star, or takes the picture off
+  if ($('#mb-edit')) $('#mb-edit').onclick = async () => {
+    const box = html`<div class="mb-edit">
+      <label class="field"><span>الاسم الظاهر</span><input class="input" id="me-display" maxlength="30" value="${m.display || m.username}" dir="auto"></label>
+      <label class="field"><span>النبذة</span><textarea class="input" id="me-bio" rows="2" maxlength="160" dir="auto">${m.bio || ''}</textarea></label>
+      <label class="field"><span>النجم المفضل</span><input class="input" id="me-star" maxlength="40" value="${m.fav_star || ''}" dir="auto"></label>
+      ${m.pic ? html`<label class="mb-edit-pic"><input type="checkbox" id="me-pic"> شيل صورته</label>` : ''}
+    </div>`;
+    const ok = await dialog({ title: `تعديل بيانات ${name}`, body: box, confirm: 'احفظ' });
+    if (!ok) return;
+    const body = { display: $('#me-display').value, bio: $('#me-bio').value, fav_star: $('#me-star').value };
+    if ($('#me-pic') && $('#me-pic').checked) body.pic = '';
+    try { await api.siteMemberEdit(m.id, body); toast('اتحفظ ✓'); renderSiteMember(page, id); }
+    catch (e) { toast(e.message, 'error'); }
   };
   if ($('#mb-ban')) $('#mb-ban').onclick = async () => {
     const on = !m.banned;

@@ -75,7 +75,8 @@
   }
   var CROWN = '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   // the site's account: gold; «العضوية المميزة»: the blue badge and the crown (pages/premium.njk); a member given it: blue
-  function badge(b) { return b === 'gold' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
+  // gold: the site's account, or a member the owner gave the gold badge (vgold); blue: verified or premium
+  function badge(b) { return b === 'gold' || b === 'vgold' ? GOLD : b === 'blue' || b === 'premium' ? BLUE : ''; }
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function clock(ms) { var d = new Date(ms); var h = d.getHours(); return (h % 12 || 12) + ':' + pad(d.getMinutes()) + (h < 12 ? ' ص' : ' م'); }
   function dayKey(ms) { var d = new Date(ms); return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
@@ -98,6 +99,31 @@
     ROOMS[b.getAttribute('data-room')] = { id: b.getAttribute('data-room'), btn: b, name: $('b', b).textContent, about: $('.cm-room-last', b).textContent, hue: b.style.getPropertyValue('--h'), mark: $('.cm-mark', b).innerHTML };
   });
   var seen = store('arw-cm-seen') || {};
+  // the list as the owner keeps it (the panel's «الغرف»): new rooms added, names and colours updated, hidden ones gone,
+  // the owner's order kept. The page was built with the first list; /chat/rooms is the one in force.
+  var nav = $('.cm-rooms');
+  function syncRooms(list) {
+    if (!list || !list.length) return;
+    var keep = {};
+    list.forEach(function (s, i) {
+      keep[s.id] = 1;
+      var R = ROOMS[s.id];
+      if (!R) {
+        var b = el('button', 'cm-room');
+        b.type = 'button'; b.setAttribute('data-room', s.id);
+        b.innerHTML = '<span class="cm-mark" aria-hidden="true"></span><span class="cm-room-tx"><b></b><small class="cm-room-last"></small></span><span class="cm-room-meta"><em class="cm-room-on" hidden></em><i class="cm-room-new" hidden></i></span>';
+        R = ROOMS[s.id] = { id: s.id, btn: b };
+      }
+      R.name = s.name || R.name; R.about = s.about || ''; R.hue = s.hue; R.closed = !!s.closed;
+      if (s.id !== 'general') { R.mark = s.mark; $('.cm-mark', R.btn).textContent = s.mark; } else R.mark = $('.cm-mark', R.btn).innerHTML;
+      R.btn.style.setProperty('--h', s.hue);
+      $('b', R.btn).textContent = R.name;
+      R.btn.classList.toggle('is-closed', R.closed);
+      if (nav.children[i] !== R.btn) nav.insertBefore(R.btn, nav.children[i] || null);
+    });
+    Object.keys(ROOMS).forEach(function (id) { if (!keep[id]) { ROOMS[id].btn.remove(); delete ROOMS[id]; if (current === id) showRooms(); } });
+    if (current && ROOMS[current]) { $('.cm-head-name').textContent = ROOMS[current].name; setMuted(); }
+  }
 
   // ── the rooms' list: who's in each, the last message ─────────────────────
   var summaryT;
@@ -106,6 +132,7 @@
     if (document.hidden) { summaryT = setTimeout(summaries, 30000); return; }
     fetch(API + '/chat/rooms', { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (d) {
       var total = 0;
+      syncRooms(d.rooms);
       (d.rooms || []).forEach(function (s) {
         var R = ROOMS[s.id];
         if (!R) return;
@@ -257,6 +284,7 @@
     if (d.t === 'error') {
       if (d.nonce && pending[d.nonce]) { var f = pending[d.nonce]; f.payload = null; if (f.el) { f.el.classList.remove('is-pending'); f.el.classList.add('is-failed'); } delete pending[d.nonce]; }
       if (d.code === 'muted') { mutedUntil = d.until || 0; setMuted(); }
+      if (d.code === 'readonly' && ROOMS[current]) { ROOMS[current].closed = true; setMuted(); }
       toast(d.error || 'تعذر الإرسال.');
     }
   }
@@ -444,7 +472,7 @@
       var nm = el('div', 'cm-name');
       nm.style.setProperty('--nh', hueOf(m.user || m.name));
       nm.appendChild(el('span', null, m.name));
-      if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : 'عضو موثق'; nm.appendChild(bg.firstChild); }
+      if (m.badge) { var bg = el('span'); bg.innerHTML = badge(m.badge); bg.title = m.badge === 'gold' ? 'الحساب الرسمي لعرب راسلنج' : m.badge === 'vgold' ? 'عضو موثق بالعلامة الذهبية' : 'عضو موثق'; nm.appendChild(bg.firstChild); }
       if (m.badge === 'premium') { var pc = el('a', 'cm-prem'); pc.href = '/premium/'; pc.title = 'عضو مميز'; pc.innerHTML = CROWN; pc.appendChild(document.createTextNode('مميز')); nm.appendChild(pc); }
       bub.appendChild(nm);
     }
@@ -703,15 +731,18 @@
     var files = Array.prototype.filter.call((e.clipboardData && e.clipboardData.files) || [], function (f) { return /^image\//.test(f.type); });
     if (files.length) { e.preventDefault(); files.forEach(addImage); }
   });
+  // a room the owner closed for writing: read only (the site's account still writes)
+  function readOnly() { return !!(current && ROOMS[current] && ROOMS[current].closed && !(me && me.mod)); }
   function setMuted() {
-    var on = mutedUntil > Date.now();
+    var muted = mutedUntil > Date.now(), ro = readOnly(), on = muted || ro;
     compose.classList.toggle('is-muted', on);
     var b = $('.cm-muted'); b.hidden = !on;
-    if (on) { var d = new Date(mutedUntil); b.textContent = 'لا يمكنك الكتابة في المجتمع حتى ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + clock(mutedUntil) + '.'; }
+    if (ro) b.textContent = 'هذه الغرفة للقراءة فقط، والكتابة فيها لفريق الموقع.';
+    else if (muted) { var d = new Date(mutedUntil); b.textContent = 'لا يمكنك الكتابة في المجتمع حتى ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' ' + clock(mutedUntil) + '.'; }
   }
   var nonceN = 0;
   function send() {
-    if (mutedUntil > Date.now()) return setMuted();
+    if (mutedUntil > Date.now() || readOnly()) return setMuted();
     var text = input.value.trim();
     var ready = attached.filter(function (a) { return a.att; });
     if (attached.some(function (a) { return !a.att && !a.failed; })) return toast('انتظر حتى يكتمل رفع المرفق.');
