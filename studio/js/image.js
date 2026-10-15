@@ -23,6 +23,32 @@ function loadImage(src) {
   });
 }
 
+/** The site's standard for a picture (any kind the browser opens): inside 1280×720, JPEG at 0.78 → { blob, scale, w, h }.
+ *  Used for covers and for the community rooms' backgrounds (owner 2026-10-15: «بنفس معايير اضافة الصور في الموقع»). */
+export async function siteJpeg(file) {
+  if (!file || !/^image\//.test(file.type)) throw new Error('الملف ده مش صورة.');
+  if (file.size > 25 * 1024 * 1024) throw new Error('الصورة أكبر من 25 ميجا.');
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await loadImage(url);
+    const scale = Math.min(1, MAX_W / img.naturalWidth, MAX_H / img.naturalHeight);
+    const w = Math.round(img.naturalWidth * scale), h = Math.round(img.naturalHeight * scale);
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(img, 0, 0, w, h);
+    const blob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', QUALITY));
+    if (!blob) throw new Error('الصورة مش مقروءة');
+    // already small and not too big: the original JPEG (re-encoding would only grow it)
+    if (scale === 1 && /^image\/jpe?g$/.test(file.type) && file.size <= blob.size) return { blob: file, scale, w, h, kept: true };
+    return { blob, scale, w, h, kept: false };
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
 /** File/Blob → { path, base64, previewUrl, width, height, bytes } ready to commit */
 export async function prepareImage(file) {
   if (!file || !/^image\//.test(file.type)) throw new Error('الملف ده مش صورة.');

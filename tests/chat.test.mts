@@ -493,3 +493,32 @@ test('a room\'s background: the owner uploads a real picture, every member gets 
   assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /path === "\/api\/studio\/chat\/bg"[\s\S]{0,200}who\.user\.role !== "owner"/);
   assert.match(fs.readFileSync('assets/community.js', 'utf8'), /var BG_OK = new RegExp\(/);
 });
+
+test('a background all the way through (owner 2026-10-15: «تتاكد ان … الخلفيات بتتحط عادي»): uploaded, saved, sent to every member with the rooms, and served as a picture', async () => {
+  const { studioChatBg, studioChatRooms } = await import('../worker/src/chat');
+  const kvStore = new Map<string, any>(), r2Store = new Map<string, any>();
+  const kv: any = { get: async (k: string) => kvStore.get(k) ?? null, put: async (k: string, v: string) => { kvStore.set(k, v); }, delete: async (k: string) => { kvStore.delete(k); } };
+  const r2: any = {
+    put: async (k: string, b: Uint8Array, o: any) => { r2Store.set(k, { b, o }); },
+    get: async (k: string) => { const x = r2Store.get(k); return x ? { body: new Blob([x.b]).stream(), size: x.b.length, httpMetadata: x.o.httpMetadata, customMetadata: x.o.customMetadata, etag: 'e1' } : null; },
+  };
+  const env: any = { PUSH_KV: kv, MEDIA: r2 };
+  // a JPEG as the panel makes it (studio/js/image.js siteJpeg)
+  const jpg = new Uint8Array([0xff, 0xd8, 0xff, 0xe0, 0, 16, 0x4a, 0x46, 0x49, 0x46, 0, 1, 1, 2, 3, 4]);
+  const up: any = await studioChatBg(env, 'general', new Request('https://w/x', { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: jpg }));
+  assert.equal(up.success, true);
+  const rooms = (await studioChatRooms(env, null) as any).rooms.map((r: any) => (r.id === 'general' ? { ...r, bg: up.url, bgBlur: 14, bgDim: 55 } : r));
+  assert.equal((await studioChatRooms(env, { rooms }) as any).success, true);
+  // what every member's page gets
+  const list: any = await (await handleChat(new Request('https://w/chat/rooms'), env, new URL('https://w/chat/rooms'))).json();
+  const g = list.rooms.find((r: any) => r.id === 'general');
+  assert.deepEqual([g.bg, g.bgBlur, g.bgDim], [up.url, 14, 55]);
+  assert.equal(list.rooms.find((r: any) => r.id === 'wwe').bg, undefined);
+  // and the picture itself, from its address
+  const path = new URL(up.url).pathname;
+  const res = await handleChat(new Request('https://w' + path), env, new URL('https://w' + path));
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get('Content-Type'), 'image/jpeg');
+  assert.match(String(res.headers.get('Content-Disposition')), /^inline/);
+  assert.deepEqual(new Uint8Array(await res.arrayBuffer()), jpg);
+});

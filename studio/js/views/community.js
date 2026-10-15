@@ -3,6 +3,7 @@
 // The rooms themselves: worker/src/chat.ts.
 import { api, getUser } from '../api.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
+import { siteJpeg, kb } from '../image.js';
 
 // the rooms as the worker has them now (the owner names, colours, hides and closes them below: «الغرف»)
 let ROOMS = {};
@@ -124,31 +125,14 @@ function bgBlock(r, i) {
     <div class="ry-bg-ctl">
       <span class="ry-bg-t">خلفية المجموعة</span>
       <div class="ry-bg-btns">
-        <label class="btn btn-sm">${icon('upload')}${r.bg ? 'غيّر الصورة' : 'ضيف صورة'}<input type="file" accept="image/jpeg,image/png,image/webp" data-bg-file="${i}" hidden></label>
+        <label class="btn btn-sm">${icon('upload')}${r.bg ? 'غيّر الصورة' : 'ضيف صورة'}<input type="file" accept="image/*" data-bg-file="${i}" hidden></label>
         ${r.bg ? html`<button type="button" class="btn btn-sm btn-ghost" data-bg-off="${i}">${icon('trash')}شيلها</button>` : ''}
       </div>
       ${r.bg ? html`<label class="ry-bg-range"><span>الضبابية <output>${blur}</output></span><input type="range" min="0" max="30" data-k="bgBlur" value="${blur}"></label>
-      <label class="ry-bg-range"><span>التعتيم <output>${dim}%</output></span><input type="range" min="0" max="90" data-k="bgDim" value="${dim}"></label>` : html`<small class="muted">أي صورة بأي مقاس: بتتقص على مقاس الشات في الموبايل والكمبيوتر، وبتبان ضبابية وورا الرسايل في الوضعين.</small>`}
+      <label class="ry-bg-range"><span>التعتيم <output>${dim}%</output></span><input type="range" min="0" max="90" data-k="bgDim" value="${dim}"></label>` : html`<small class="muted">أي صورة بأي صيغة ومقاس: بتتحول JPG وبتصغر لحد 1280×720 زي صور الموقع، وبتتقص على مقاس الشات في الموبايل والكمبيوتر، وبتبان ضبابية ورا الرسايل في الوضعين.</small>`}
     </div>
   </div>`;
 }
-/** A picture made light before it goes up: at most 1920 px wide or high, WebP (or JPEG where WebP can't be made) */
-async function lighter(file) {
-  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) throw new Error('الصورة لازم تكون JPG أو PNG أو WebP.');
-  try {
-    const bmp = await createImageBitmap(file);
-    const k = Math.min(1, 1920 / Math.max(bmp.width, bmp.height));
-    const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
-    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
-    const out = await new Promise(res => c.toBlob(res, 'image/webp', 0.84));
-    if (out && out.type === 'image/webp') return out;
-    const jpg = await new Promise(res => c.toBlob(res, 'image/jpeg', 0.86));
-    if (jpg) return jpg;
-  } catch (e) {}
-  if (file.size > 6 * 1024 * 1024) throw new Error('الصورة كبيرة، أقصى حجم 6 ميجا.');
-  return file;
-}
-
 // «الغرف» (owner 2026-10-15: «اضيف ساحة او كروب او اعدل في اسماء ال موجود»): every room's name, words, short mark and
 // colour, its place in the list, hidden from the site, or closed for writing (only the site's account writes there).
 // Saved as one list (worker/src/chat.ts studioChatRooms); the site follows it within a minute.
@@ -208,10 +192,11 @@ async function renderRoomsEditor(page) {
       const i = Number(inp.dataset.bgFile), r = list[i], box = inp.closest('.ry-bg');
       box.classList.add('is-busy');
       try {
-        const blob = await lighter(f);
+        // the site's own standard for pictures (studio/js/image.js): any kind, inside 1280×720, JPEG, lighter
+        const { blob, w, h } = await siteJpeg(f);
         const { url } = await api.chatBg(r.id, blob);
         r.bg = url; if (r.bgBlur == null) r.bgBlur = 12; if (r.bgDim == null) r.bgDim = 50;
-        toast('اترفعت الخلفية ✓ دوس «احفظ المجموعات» عشان تظهر للمتابعين');
+        toast(`اترفعت الخلفية ✓ (${w}×${h} · ${kb(blob.size)}) دوس «احفظ المجموعات» عشان تظهر للمتابعين`);
         draw();
       } catch (err) { toast(err.message, 'error'); box.classList.remove('is-busy'); inp.value = ''; }
     });

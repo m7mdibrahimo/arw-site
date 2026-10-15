@@ -1034,8 +1034,10 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .ry-bg-msg { max-width: 78%; padding: 5px 10px; border-radius: 9px; font-size: 12.5px; box-shadow: 0 1px 1px rgba(0, 0, 0, .1); }
 .ry-bg-msg.is-in { align-self: flex-start; background: var(--card); color: var(--ink); }
 .ry-bg-msg.is-out { align-self: flex-end; background: #0e9594; color: #fff; }
-.ry-bg-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font-size: 12.5px; font-weight: 800; z-index: 1; pointer-events: none; }
-.ry-bg-empty svg { width: 16px; height: 16px; }
+/* no picture yet: the room as it looks today (the site's dotted backdrop), a small «من غير خلفية» in its corner */
+.ry-bg:not(.has-bg) .ry-bg-prev { background-color: var(--bg); background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1px, transparent 1.2px); background-size: 16px 16px; }
+.ry-bg-empty { position: absolute; top: 8px; inset-inline-start: 8px; display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--muted); font-size: 11.5px; font-weight: 800; z-index: 1; pointer-events: none; }
+.ry-bg-empty svg { width: 13px; height: 13px; }
 .ry-bg-ctl { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .ry-bg-t { font-size: 12px; font-weight: 800; color: var(--muted); }
 .ry-bg-btns { display: flex; gap: 8px; flex-wrap: wrap; }
