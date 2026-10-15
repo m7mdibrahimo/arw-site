@@ -2,32 +2,37 @@
  "https://www.fightful.com/wrestling/zach-gowen-retires-from-in-ring-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T21:25:00.627Z"
+  "at": "2026-10-15T22:28:00.710Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-doesnt-know-how-far-adam-copeland-will-wrestle-into-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T21:25:00.143Z"
+  "at": "2026-10-15T22:28:00.229Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-skydance-ceo-david-ellison-has-been-very-excited-positive-about-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T21:24:59.959Z"
+  "at": "2026-10-15T22:28:00.047Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-9-viewership-above-1-3-million-viewers-again-key-demo-rating-also-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T21:24:59.724Z"
+  "at": "2026-10-15T22:27:59.816Z"
  },
  "https://www.fightful.com/wrestling/report-vince-mcmahon-completes-one-year-probation-for-july-2025-car-crash": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T21:24:59.533Z"
+  "at": "2026-10-15T22:27:59.631Z"
+ },
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-15T22:25:07.868Z"
  },
  "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-15T21:12:07.879Z"
+  "at": "2026-10-15T22:25:07.692Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
