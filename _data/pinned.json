@@ -1,5 +1,49 @@
 [
   {
+    "url": "/shows/aew-dynamite-14-10-2026/",
+    "title": "عرض ديناميت 14.10.2026 مترجم",
+    "subtitle": "AEW Dynamite 14.10.2026",
+    "image": "/content/images/mowdq83f461od0wk.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aew-collision-14-10-2026/",
+    "title": "عرض كوليجن 14.10.2026 مترجم",
+    "subtitle": "AEW Collision 14.10.2026",
+    "image": "/content/images/vsd1is5p8q46tzs8.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-main-event-14-10-2026/",
+    "title": "عرض مين ايفنت 14.10.2026 مترجم",
+    "subtitle": "WWE Main Event 14.10.2026",
+    "image": "/content/images/44jmtagcis9r5s02.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-evolve-14-10-2026/",
+    "title": "عرض ايفولف 14.10.2026 مترجم",
+    "subtitle": "WWE Evolve 14.10.2026",
+    "image": "/content/images/v1z9la4e2rwkfcj5.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-13-10-2026/",
     "title": "عرض ان اكس تي 13.10.2026 مترجم",
     "subtitle": "WWE NXT 13.10.2026",
@@ -55,17 +99,6 @@
     "description": "عرض موني ان ذا بانك مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
-    "url": "/shows/aew-collision-grand-slam-france-10-10-2026/",
-    "title": "عرض كوليجن 10.10.2026 مترجم",
-    "subtitle": "AEW Collision Grand Slam France 10.10.2026",
-    "image": "/content/images/otcp6a0qjgikvzrg.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
     "url": "/shows/ufc-fight-night-290-allen-vs-duncan/",
     "title": "عرض يو اف سي فايت نايت 10.10.2026 مترجم",
     "subtitle": "UFC Fight Night 290: Allen vs. Duncan",
@@ -108,17 +141,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-grand-slam-france-06-10-2026/",
-    "title": "عرض ديناميت 06.10.2026 مترجم",
-    "subtitle": "AEW Dynamite Grand Slam France 06.10.2026",
-    "image": "/content/images/j4af5j790b47u5e1.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/mlp-mayhem-30-09-2026/",
