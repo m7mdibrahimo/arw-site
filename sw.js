@@ -93,7 +93,8 @@ function followNews() {
               tag: 'follow-' + it.url, renotify: false, data: { url: (en ? '/en' : '') + it.url }
             };
             if (it.image) opts.image = it.image;
-            return self.registration.showNotification(en ? 'New translated show 🔔' : 'عرض جديد مترجم 🔔' + (it.program ? ' | ' + it.program : ''), opts);
+            var pred = /^\/predictions\//.test(it.url);
+            return self.registration.showNotification(pred ? (en ? 'Your predictions results 🏆' : 'نتائج توقعاتك 🏆') : en ? 'New translated show 🔔' : 'عرض جديد مترجم 🔔' + (it.program ? ' | ' + it.program : ''), opts);
           })).then(function () { return true; });
         });
       })

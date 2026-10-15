@@ -38,6 +38,7 @@ import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
+import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete } from "./predict";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
@@ -3092,6 +3093,21 @@ export default {
       if (path === "/follow" || path.startsWith("/follow/")) return await handleFollows(request, env as any, url);
       // «المفضلة وشاهد لاحقا» kept with the member's account, the same on all their devices (worker/src/saved.ts)
       if (path === "/saved") return await handleSaved(request, env as any, url);
+      // «توقعات العروض الكبرى»: members pick the winners, the owner enters the results (worker/src/predict.ts)
+      if (path === "/predict" || path.startsWith("/predict/")) return await handlePredict(request, env as any, url);
+      if (path.startsWith("/api/studio/predict")) {
+        if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير التوقعات." }, 403);
+        const who = await studioUser(request, env as any);
+        if (path === "/api/studio/predict" && request.method === "GET") return json(await studioPredict(env as any));
+        const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
+        let r: any = null;
+        if (path === "/api/studio/predict/save" && request.method === "POST") r = await studioPredictSave(env as any, body);
+        else if (path === "/api/studio/predict/result" && request.method === "POST") r = await studioPredictResult(env as any, body);
+        else if (path === "/api/studio/predict/delete" && request.method === "POST") r = await studioPredictDelete(env as any, body.id);
+        if (!r) return json({ success: false, error: "not found" }, 404);
+        if (who && r.success) await studioAudit(env as any, who.user, path.endsWith("/save") ? "predict.save" : path.endsWith("/result") ? "predict.result" : "predict.delete", { id: Number(body.id || r.id) || 0 }).catch(() => {});
+        return json(r, r.success ? 200 : 400);
+      }
       // a show's premium links, from its editor (whoever may edit that section)
       if (path === "/api/studio/premium/media") {
         const k = request.method === "POST" ? null : url.searchParams.get("k");

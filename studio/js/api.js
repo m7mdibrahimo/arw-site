@@ -128,6 +128,11 @@ export const api = {
   chat: () => call('/api/studio/chat'),
   chatRooms: () => call('/api/studio/chat/rooms'),
   chatRoomsSave: (rooms) => call('/api/studio/chat/rooms', { method: 'POST', body: { rooms } }),
+  // «التوقعات» (worker/src/predict.ts)
+  predict: () => call('/api/studio/predict'),
+  predictSave: (ev) => call('/api/studio/predict/save', { method: 'POST', body: ev }),
+  predictResult: (id, winners, finish) => call('/api/studio/predict/result', { method: 'POST', body: { id: Number(id), winners, finish: !!finish } }),
+  predictDelete: (id) => call('/api/studio/predict/delete', { method: 'POST', body: { id: Number(id) } }),
   chatRoom: (room) => call(`/api/studio/chat/room/${encodeURIComponent(room)}`),
   chatDelete: (room, id) => call('/api/studio/chat/delete', { method: 'POST', body: { room, id: Number(id) } }),
   chatMute: (uid, hours) => call('/api/studio/chat/mute', { method: 'POST', body: { uid: Number(uid), hours: Number(hours) } }),

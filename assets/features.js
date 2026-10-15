@@ -792,7 +792,7 @@
       var links = document.createElement('div');
       links.className = 'arw-more-acct-links';
       var H = document.documentElement.lang === 'en' ? '/en' : '';
-      links.innerHTML = '<a href="' + H + '/account/#follows">متابعاتي</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
+      links.innerHTML = '<a href="' + H + '/account/#follows">متابعاتي</a><a href="' + H + '/predictions/">التوقعات</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
       links.querySelector('button').addEventListener('click', signOut);
       sheet.querySelector('.arw-more-acct').insertAdjacentElement('afterend', links);
     }
@@ -911,6 +911,7 @@
   // membership (or what «العضوية المميزة» gives, for those without it), their account, settings, the community, out.
   var CROWN_IC = '<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   var MENU_IC = {
+    trophy: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>',
     me: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
     settings: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
     chat: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg>',
@@ -990,6 +991,7 @@
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
           (m.official ? '' : '<a href="' + HOME + '/account/#subscription" role="menuitem">' + CROWN_IC + '<span>اشتراكي</span></a>') +
           '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
+          '<a href="' + LP + '/predictions/" role="menuitem">' + MENU_IC.trophy + '<span>التوقعات</span></a>' +
           (m.official ? '<a href="/admin/" role="menuitem">' + MENU_IC.panel + '<span>لوحة التحكم</span></a>' : '') +
         '</nav>' +
         tools() +
@@ -1308,7 +1310,8 @@
         a.href = (EN ? '/en' : '') + it.url;
         a.innerHTML = '<span class="arw-bell-img"></span><span class="arw-bell-tx"><small></small><b></b><time></time></span>';
         if (/^\/[^\s"'<>]*$/.test(it.image || '') || /^https:\/\/[^\s"'<>]+$/.test(it.image || '')) { var im = document.createElement('img'); im.onerror = function () { this.remove(); }; im.src = it.image; im.alt = ''; im.loading = 'lazy'; a.querySelector('.arw-bell-img').appendChild(im); }
-        a.querySelector('small').textContent = (EN ? 'New translated show' : 'عرض جديد مترجم') + (it.program ? ' · ' + it.program : '');
+        var isPred = /^\/predictions\//.test(it.url);
+        a.querySelector('small').textContent = isPred ? (EN ? 'Predictions results' : 'نتائج التوقعات') : (EN ? 'New translated show' : 'عرض جديد مترجم') + (it.program ? ' · ' + it.program : '');
         a.querySelector('b').textContent = EN ? (it.title_en || it.title) : it.title;
         a.querySelector('time').textContent = timeAgo(it.at);
         list.appendChild(a);

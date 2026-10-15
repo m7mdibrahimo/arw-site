@@ -275,7 +275,7 @@ permalink: "/account/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015h">
+<link rel="stylesheet" href="/assets/features.css?v=20261015i">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>حسابك | عرب راسلنج</title>
@@ -355,7 +355,7 @@ html.arw-dark .acct-ms[data-state="soon"] .acct-sub-note{ color:#ff9f6e; }
 .acct-howto-help a{ color:var(--teal); font-weight:800; text-decoration:none; }
 .acct-ms h2{ margin:0; font:900 19px/1.4 'Cairo',sans-serif; color:var(--ink); }
 @media (max-width:560px){ .acct-ms .acct-plan-acts{ flex-direction:column; } .acct-ms .acct-plan-btn{ justify-content:center; } .acct-sub-grid b{ font-size:15px; } .acct-sub-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); } .acct-sub-grid > div:last-child{ grid-column:1 / -1; } .acct-pay{ grid-template-columns:minmax(0,1fr) auto; } .acct-pay > :nth-child(2), .acct-pay > :nth-child(3){ grid-column:1; } }
-.acct-quick{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
+.acct-quick{ display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:10px; }
 .acct-quick a{ display:flex; align-items:center; gap:12px; padding:14px 16px; border-radius:14px; border:1px solid var(--line); background:var(--bg); color:var(--ink); text-decoration:none; transition:border-color .2s ease; }
 .acct-quick a:hover{ border-color:var(--teal); }
 .acct-quick b{ font:800 15px 'Cairo',sans-serif; }
@@ -511,10 +511,6 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
 .acct-grid span{ font-size:11.5px; font-weight:700; text-align:center; line-height:1.3; }
 .acct-sec{ padding-top:20px; border-top:1px solid var(--line); }
 .acct-sec h2{ margin:0; font:900 18px 'Cairo',sans-serif; color:var(--ink); }
-.acct-soon ul{ margin:10px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; }
-.acct-soon li{ position:relative; padding-inline-start:18px; color:var(--muted); font-size:14.5px; line-height:1.7; }
-.acct-soon li::before{ content:''; position:absolute; inset-inline-start:0; top:.7em; width:7px; height:7px; border-radius:50%; background:var(--gold); }
-.acct-soon b{ color:var(--ink); }
 .acct-out{ align-self:flex-start; margin-top:4px; border:0; background:none; color:var(--coral); font:800 14.5px 'Cairo',sans-serif; cursor:pointer; padding:6px 0; }
 /* the perks beside */
 .acct-perks{ position:sticky; top:96px; padding:26px 24px; border-radius:20px; background:linear-gradient(160deg, var(--teal-soft), var(--card) 70%); border:1px solid var(--line); }
@@ -731,6 +727,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           </section>
 
           <div class="acct-quick">
+            <a href="/predictions/"><span class="acct-quick-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span><span><b>التوقعات</b><small>توقع الفائزين ونافس على الصدارة</small></span><svg class="acct-quick-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
             <a href="/community/"><span class="acct-quick-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14.5h4.5"/></svg></span><span><b>مجتمع المصارعة</b><small>دردش مع محبي اتحادك</small></span><svg class="acct-quick-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
             <a href="#settings" data-goto="settings"><span class="acct-quick-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span><span><b>الإعدادات</b><small>الاسم والصورة والبريد وكلمة المرور</small></span><svg class="acct-quick-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
           </div>
@@ -769,12 +766,6 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
             </div>
           </section>
 
-          <div class="acct-sec acct-soon">
-            <h2>قريبا في حسابك</h2>
-            <ul>
-              <li><b>توقعات العروض الكبرى</b> وترتيب أفضل المتوقعين.</li>
-            </ul>
-          </div>
         </div>
 
         <!-- «اشتراكي» (owner 2026-10-15): since when, until when, every payment, and how to renew (assets/account.js sub()) -->
@@ -992,7 +983,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015h" defer></script>
+<script src="/assets/features.js?v=20261015i" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');
