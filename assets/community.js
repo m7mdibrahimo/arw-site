@@ -217,7 +217,7 @@
     want = '';
     if (!ROOMS[room]) return;
     if (current === room && ws && ws.readyState <= 1) { showRoom(); return; }
-    close();
+    close(); closeFloat(); closeFocus();
     // an edit or a reply started elsewhere never follows into this room
     cancelEdit(); cancelReply();
     if (current !== room) input.value = '';
@@ -251,7 +251,7 @@
   }
   function showRoom() { app.setAttribute('data-view', 'room'); document.body.classList.add('cm-in-room'); }
   function showRooms() {
-    app.setAttribute('data-view', 'rooms'); document.body.classList.remove('cm-in-room');
+    app.setAttribute('data-view', 'rooms'); document.body.classList.remove('cm-in-room'); closeFloat(); closeFocus();
     if (window.matchMedia('(max-width: 1150px)').matches) { close(); cancelEdit(); cancelReply(); current = null; $$('.cm-room').forEach(function (b) { b.classList.remove('is-on'); }); document.title = 'مجتمع المصارعة | عرب راسلنج'; }
   }
   function gate(on) {
@@ -360,7 +360,7 @@
       msgs.splice(at, 0, m); byId[m.id] = m;
       // mine: the grey copy becomes the message, where it is
       if (p && p.el && p.el.parentNode) p.el.replaceWith(buildMsg(m, cont(m, msgs[at - 1])));
-      else appendMsg(m);
+      else arrive(appendMsg(m));
       delete typing[m.uid]; renderTyping(); setStatus();
       var mine = me && m.uid === me.uid;
       if (!mine) ding('in');
@@ -515,7 +515,15 @@
     var sys = $('.cm-sys', list); if (sys) sys.remove();
     var before = list.querySelector('.cm-msg.is-pending, .cm-msg.is-failed');
     if (!prev || dayKey(prev.at) !== dayKey(m.at)) list.insertBefore(el('div', 'cm-day', dayLabel(m.at)), before);
-    list.insertBefore(buildMsg(m, cont(m, prev)), before);
+    var row = buildMsg(m, cont(m, prev));
+    list.insertBefore(row, before);
+    return row;
+  }
+  // one that comes while the room is open slides in (once: moved later, e.g. mine kept at the end, it doesn't again)
+  function arrive(row) {
+    if (REDUCED) return;
+    row.classList.add('is-new');
+    row.addEventListener('animationend', function (e) { if (e.animationName === 'cm-msg-in') row.classList.remove('is-new'); });
   }
   function replaceMsg(m) {
     var old = list.querySelector('[data-id="' + m.id + '"]');
@@ -718,6 +726,10 @@
     return row;
   }
   function fillReacts(box, m) {
+    // the same as shown (the room's echo of mine): left as it is, so a chip popping in isn't cut short
+    var sig = JSON.stringify(m.reacts || {}) + (me ? me.uid : '');
+    if (box.getAttribute('data-sig') === sig) return;
+    box.setAttribute('data-sig', sig);
     box.textContent = '';
     var keys = Object.keys(m.reacts || {});
     keys.sort(function (a, b) { return m.reacts[b].length - m.reacts[a].length; });
@@ -725,6 +737,7 @@
       var b = el('button'); b.type = 'button';
       var mineR = me && m.reacts[k].indexOf(me.uid) >= 0;
       if (mineR) b.classList.add('is-mine');
+      if (m.pop === k) b.classList.add('is-pop');
       b.appendChild(el('span', null, k));
       if (m.reacts[k].length > 1 || !mineR) b.appendChild(document.createTextNode(String(m.reacts[k].length)));
       b.title = mineR ? 'أنت' + (m.reacts[k].length > 1 ? ' و' + (m.reacts[k].length - 1) + ' آخرون' : '') : m.reacts[k].length + ' تفاعل';
@@ -741,7 +754,8 @@
       var r = {}, had = '';
       Object.keys(m.reacts || {}).forEach(function (k) { var l = m.reacts[k].filter(function (u) { if (u === me.uid) had = k; return u !== me.uid; }); if (l.length) r[k] = l; });
       if (had !== e) (r[e] = r[e] || []).push(me.uid);
-      m.reacts = r; refreshReacts(m);
+      m.reacts = r; m.pop = had !== e ? e : ''; refreshReacts(m);
+      setTimeout(function () { m.pop = ''; }, 600);
     }
     // the picked one stays first in the picker's «recent»
     var rec = store('arw-cm-recent') || []; rec = [e].concat(rec.filter(function (x) { return x !== e; })).slice(0, 24); store('arw-cm-recent', rec);
@@ -752,88 +766,210 @@
   // the site's account edits any message, any time (and no «معدلة» shows), and deletes any for good
   function canEdit(m) { return !!(me && (m.uid === me.uid || me.mod) && typeof m.id === 'number' && !m.del && (me.mod || Date.now() - m.at < WINDOW) && (m.text || (m.att && m.att.kind !== 'sticker' && m.att.kind !== 'voice' && m.att.kind !== 'gif'))); }
   function canDelete(m) { return !!(me && typeof m.id === 'number' && (me.mod || (!m.del && m.uid === me.uid && Date.now() - m.at < WINDOW))); }
-  // a message's tools: hover (a pointer), long press and swipe (a finger)
+  // a message's tools (owner 2026-10-15: «زي الماسنجر»). A pointer: ☺ ↩ ⋮ by the message's side on hover; ☺ floats the
+  // reactions over it, ⋮ the options. A finger: a long press lifts the message (iOS), a swipe toward the middle answers it.
+  var RTL = getComputedStyle(root).direction === 'rtl';
   function addTools(row, m, mine) {
     if (!TOUCH) {
       var tools = el('div', 'cm-tools');
-      var quick = el('div', 'cm-quick');
-      QUICK.slice(0, 3).forEach(function (e) { var b = el('button', null, e); b.type = 'button'; b.setAttribute('aria-label', 'تفاعل ' + e); b.addEventListener('click', function () { react(m, e); }); quick.appendChild(b); });
-      tools.appendChild(quick);
-      var acts = [['smile', 'تفاعل', function () { sheet(m); }], ['reply', 'رد', function () { startReply(m); }]];
-      if (canEdit(m)) acts.push(['edit', 'تعديل', function () { startEdit(m); }]);
-      if (canDelete(m)) acts.push(['trash', 'حذف', function () { confirmDelete(m); }]);
-      acts.push(['more', 'المزيد', function () { sheet(m); }]);
+      var acts = m.del ? [] : [['smile', 'تفاعل', reactPop], ['reply', 'رد', function () { startReply(m); }]];
+      acts.push(['more', 'المزيد', menuPop]);
       acts.forEach(function (t) {
-        var b = el('button'); b.type = 'button'; b.innerHTML = IC[t[0]]; b.setAttribute('aria-label', t[1]); b.title = t[1]; b.addEventListener('click', t[2]); tools.appendChild(b);
+        var b = el('button'); b.type = 'button'; b.innerHTML = IC[t[0]]; b.setAttribute('aria-label', t[1]); b.title = t[1];
+        b.addEventListener('click', function (e) { e.stopPropagation(); closePops(); t[2](m, row, b); });
+        tools.appendChild(b);
       });
       $('.cm-bubble', row).appendChild(tools);
       row.addEventListener('dblclick', function (e) { if (!e.target.closest('a, button, video, .cm-voice')) react(m, '❤️'); });
       return;
     }
-    var bub = $('.cm-bubble', row), t0 = 0, x0 = 0, y0 = 0, dx = 0, lp = null, swiping = false;
+    var bub = $('.cm-bubble', row), x0 = 0, y0 = 0, lp = null, pressT = null, swiping = false, armed = false, fired = false;
+    var canSwipe = !m.del && typeof m.id === 'number';
+    // toward the middle of the room: an incoming one away from its side, mine away from mine
+    var sign = (RTL ? -1 : 1) * (mine ? -1 : 1);
     var ic = el('span', 'cm-swipe-ic'); ic.innerHTML = IC.swipe; row.appendChild(ic);
+    function release() { clearTimeout(lp); clearTimeout(pressT); lp = pressT = null; row.classList.remove('is-pressing'); }
     bub.addEventListener('touchstart', function (e) {
-      var t = e.touches[0]; t0 = Date.now(); x0 = t.clientX; y0 = t.clientY; dx = 0; swiping = false;
-      lp = setTimeout(function () { lp = null; if (navigator.vibrate) navigator.vibrate(12); sheet(m); }, 430);
+      if (e.touches.length > 1) return release();
+      var t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; swiping = false; armed = false; fired = false;
+      // held: it sinks a little, then lifts out with the options
+      pressT = setTimeout(function () { row.classList.add('is-pressing'); }, 110);
+      lp = setTimeout(function () { lp = null; fired = true; if (navigator.vibrate) navigator.vibrate(10); focusMenu(m, row); }, 420);
     }, { passive: true });
     bub.addEventListener('touchmove', function (e) {
       var t = e.touches[0], mx = t.clientX - x0, my = t.clientY - y0;
-      if (lp && (Math.abs(mx) > 8 || Math.abs(my) > 8)) { clearTimeout(lp); lp = null; }
-      if (!swiping && Math.abs(mx) > 12 && Math.abs(mx) > Math.abs(my) * 1.4) swiping = true;
+      if ((lp || pressT) && (Math.abs(mx) > 8 || Math.abs(my) > 8)) release();
+      if (!canSwipe || fired) return;
+      if (!swiping && Math.abs(mx) > 10 && Math.abs(mx) > Math.abs(my) * 1.3) { swiping = true; row.classList.add('is-swiping'); }
       if (!swiping) return;
-      dx = Math.max(-90, Math.min(90, mx));
-      bub.style.transform = 'translateX(' + dx + 'px)';
-      ic.style.opacity = Math.min(1, Math.abs(dx) / 60);
-      ic.style.transform = 'translateY(-50%) scale(' + (0.5 + Math.min(0.5, Math.abs(dx) / 120)) + ')';
+      // past the point it pulls harder (a rubber band), as in WhatsApp
+      var d = Math.max(0, mx * sign);
+      d = Math.min(110, d < 64 ? d : 64 + (d - 64) * 0.3);
+      row.style.setProperty('--sx', (d * sign) + 'px');
+      var k = Math.min(1, d / 64);
+      ic.style.opacity = k; ic.style.transform = 'scale(' + (0.35 + 0.65 * k) + ')';
+      if (d >= 64 && !armed) { armed = true; ic.classList.add('is-armed'); if (navigator.vibrate) navigator.vibrate(8); }
+      else if (d < 54 && armed) { armed = false; ic.classList.remove('is-armed'); }
     }, { passive: true });
-    bub.addEventListener('touchend', function () {
-      if (lp) { clearTimeout(lp); lp = null; }
-      if (swiping && Math.abs(dx) > 60) { if (navigator.vibrate) navigator.vibrate(8); startReply(m); }
-      bub.style.transition = 'transform .2s ease'; bub.style.transform = ''; ic.style.opacity = 0;
-      setTimeout(function () { bub.style.transition = ''; }, 220);
-      swiping = false;
-    });
+    function end(e) {
+      // the long press opened the options: no tap after it
+      if (fired && e && e.cancelable) e.preventDefault();
+      release();
+      if (swiping) {
+        row.classList.remove('is-swiping'); row.style.setProperty('--sx', '0px');
+        ic.style.opacity = ''; ic.style.transform = ''; ic.classList.remove('is-armed');
+        if (armed) startReply(m);
+      }
+      swiping = false; armed = false;
+    }
+    bub.addEventListener('touchend', end);
+    bub.addEventListener('touchcancel', end);
     bub.addEventListener('contextmenu', function (e) { if (!e.target.closest('a, img, video')) e.preventDefault(); });
   }
 
-  // the options sheet: reactions on top, then what can be done
-  var sheetFor = null;
-  function sheet(m) {
-    sheetFor = m;
-    var s = $('.cm-sheet'), bar = $('.cm-react-bar', s), acts = $('.cm-sheet-acts', s);
-    bar.textContent = ''; acts.textContent = '';
-    var mineR = Object.keys(m.reacts || {}).filter(function (k) { return me && m.reacts[k].indexOf(me.uid) >= 0; })[0];
-    QUICK.forEach(function (e) {
-      var b = el('button', e === mineR ? 'is-mine' : null, e); b.type = 'button'; b.setAttribute('aria-label', 'تفاعل ' + e);
-      b.addEventListener('click', function () { react(m, e); closeSheet(); });
-      bar.appendChild(b);
-    });
-    var more = el('button', 'cm-react-more', '+'); more.type = 'button'; more.setAttribute('aria-label', 'إيموجي آخر');
-    more.addEventListener('click', function () { closeSheet(); openEmoji(function (e) { react(m, e); }, true); });
-    bar.appendChild(more);
-    var mine = me && m.uid === me.uid;
-    var items = [['reply', 'رد', function () { startReply(m); }]];
-    bar.hidden = !!m.del;
-    // a deleted one (the site's account only gets here): taking it away for good is all there is to do
-    if (m.del) items = [];
+  // what can be done with a message: answering first, then copy, edit, pin; what can't be taken back after a line
+  function actionsFor(m) {
+    var mine = me && m.uid === me.uid, items = [], danger = [];
+    if (!m.del) items.push(['reply', 'رد', function () { startReply(m); }]);
     if (m.text && !m.del) items.push(['copy', 'نسخ النص', function () { copy(m.text); }]);
     // mine for 6 hours (a picture's words too); the site's account any message
     if (canEdit(m)) items.push(['edit', 'تعديل الرسالة', function () { startEdit(m); }]);
     if (me && me.mod && !m.del) items.push(['pin', pinned && pinned.id === m.id ? 'إلغاء التثبيت' : 'تثبيت الرسالة', function () { wsSend({ t: 'pin', id: pinned && pinned.id === m.id ? 0 : m.id }); }]);
-    if (canDelete(m)) items.push(['trash', 'حذف الرسالة', function () { confirmDelete(m); }, 'is-danger']);
-    if (!mine && !m.del) items.push(['flag', 'إبلاغ عن الرسالة', function () { report(m); }, 'is-danger']);
-    if (me && me.mod && !mine && !m.del && m.badge !== 'gold') items.push(['flag', 'إيقاف ' + m.name + ' عن الكتابة', function () { muteFromRoom(m); }, 'is-danger']);
-    items.forEach(function (it) {
-      var b = el('button', it[3] || null); b.type = 'button'; b.innerHTML = IC[it[0]] || '';
-      b.appendChild(document.createTextNode(it[1]));
-      b.addEventListener('click', function () { closeSheet(); it[2](); });
-      acts.appendChild(b);
-    });
-    s.hidden = false;
-    setTimeout(function () { var f = $('button', bar); if (f && !TOUCH) f.focus(); }, 30);
+    // a deleted one (the site's account only gets here): taking it away for good is all there is to do
+    if (canDelete(m)) danger.push(['trash', 'حذف الرسالة', function () { confirmDelete(m); }, 'is-danger']);
+    if (!mine && !m.del) danger.push(['flag', 'إبلاغ عن الرسالة', function () { report(m); }, 'is-danger']);
+    if (me && me.mod && !mine && !m.del && m.badge !== 'gold') danger.push(['flag', 'إيقاف ' + m.name + ' عن الكتابة', function () { muteFromRoom(m); }, 'is-danger']);
+    if (items.length && danger.length) items.push(null);
+    return items.concat(danger);
   }
-  function closeSheet() { $('.cm-sheet').hidden = true; sheetFor = null; }
-  $('.cm-sheet').addEventListener('click', function (e) { if (e.target === this) closeSheet(); });
+  function menuNode(m, done) {
+    var box = el('div', 'cm-menu'); box.setAttribute('role', 'menu');
+    actionsFor(m).forEach(function (it) {
+      if (!it) { box.appendChild(el('i', 'cm-menu-sep')); return; }
+      var b = el('button', it[3] || null); b.type = 'button'; b.setAttribute('role', 'menuitem');
+      b.appendChild(el('span', null, it[1]));
+      var ic = el('span', 'cm-menu-ic'); ic.innerHTML = IC[it[0]] || ''; b.appendChild(ic);
+      // done first: an answer's box takes the focus (and the phone's keyboard) right after
+      b.addEventListener('click', function (e) { e.stopPropagation(); done(); it[2](); });
+      box.appendChild(b);
+    });
+    return box;
+  }
+  // the six (Messenger's), then «+» for any other
+  function reactBar(m, done) {
+    var bar = el('div', 'cm-rbar'); bar.setAttribute('role', 'toolbar'); bar.setAttribute('aria-label', 'تفاعل');
+    var mineR = me ? Object.keys(m.reacts || {}).filter(function (k) { return m.reacts[k].indexOf(me.uid) >= 0; })[0] : '';
+    QUICK.forEach(function (e, i) {
+      var b = el('button', e === mineR ? 'is-mine' : null, e); b.type = 'button'; b.setAttribute('aria-label', 'تفاعل ' + e); b.style.setProperty('--i', i);
+      b.addEventListener('click', function (ev) { ev.stopPropagation(); react(m, e); done(); });
+      bar.appendChild(b);
+    });
+    var plus = el('button', 'cm-rb-plus'); plus.type = 'button'; plus.setAttribute('aria-label', 'إيموجي آخر'); plus.style.setProperty('--i', QUICK.length);
+    plus.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+    plus.addEventListener('click', function (ev) { ev.stopPropagation(); done(); openEmoji(function (e) { react(m, e); }, true); });
+    bar.appendChild(plus);
+    return bar;
+  }
+
+  // a pointer: the reactions or the options float by the message; a click elsewhere, the message moving or Esc closes them
+  var float = null;
+  function closeFloat() {
+    if (!float) return;
+    var f = float; float = null;
+    f.row.classList.remove('is-active');
+    f.box.classList.add('is-out');
+    setTimeout(function () { f.box.remove(); }, 170);
+  }
+  function openFloat(kind, row, node, anchor, x, prefer) {
+    closeFloat();
+    var box = el('div', 'cm-float'); box.appendChild(node);
+    root.appendChild(box);
+    var w = box.offsetWidth, h = box.offsetHeight, vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    var b = scroller.getBoundingClientRect(), lo = Math.max(8, b.top + 6), hi = Math.min(vh - 8, b.bottom - 6);
+    var above = anchor.top - h - 8, below = anchor.bottom + 8;
+    var top = prefer === 'above' ? (above >= lo ? above : below) : (below + h <= hi ? below : above);
+    top = Math.max(8, Math.min(vh - h - 8, top));
+    var left = Math.max(8, Math.min(vw - w - 8, x - w / 2));
+    box.style.left = left + 'px'; box.style.top = top + 'px';
+    box.style.transformOrigin = Math.round(x - left) + 'px ' + (top < anchor.top ? '100%' : '0');
+    row.classList.add('is-active');
+    float = { kind: kind, box: box, row: row, y: row.getBoundingClientRect().top };
+  }
+  function reactPop(m, row, btn) {
+    if (float && float.kind === 'react' && float.row === row) return closeFloat();
+    var r = btn.getBoundingClientRect();
+    openFloat('react', row, reactBar(m, closeFloat), $('.cm-bubble', row).getBoundingClientRect(), r.left + r.width / 2, 'above');
+  }
+  function menuPop(m, row, btn) {
+    if (float && float.kind === 'menu' && float.row === row) return closeFloat();
+    var r = btn.getBoundingClientRect(), b = scroller.getBoundingClientRect();
+    openFloat('menu', row, menuNode(m, closeFloat), r, r.left + r.width / 2, r.top > (b.top + b.bottom) / 2 ? 'above' : 'below');
+  }
+  document.addEventListener('mousedown', function (e) { if (float && !float.box.contains(e.target) && !e.target.closest('.cm-tools')) closeFloat(); });
+  scroller.addEventListener('scroll', function () { if (float && (!float.row.isConnected || Math.abs(float.row.getBoundingClientRect().top - float.y) > 2)) closeFloat(); }, { passive: true });
+  window.addEventListener('resize', function () { closeFloat(); closeFocus(); });
+
+  // a finger: a long press lifts the message over the blurred room, the reactions over it, the options under it (iOS),
+  // moved up or down so all of it fits the screen
+  var focus = null;
+  function insets() {
+    var p = el('div'); p.style.cssText = 'position:fixed;top:0;visibility:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)';
+    document.body.appendChild(p); var cs = getComputedStyle(p), r = [parseFloat(cs.paddingTop) || 0, parseFloat(cs.paddingBottom) || 0]; p.remove(); return r;
+  }
+  function focusMenu(m, row) {
+    if (focus || !row.isConnected) return;
+    closeFloat(); closePops();
+    var bw = $('.cm-bwrap', row);
+    // measured as it stands, not sunk by the press
+    bw.style.transition = 'none'; row.classList.remove('is-pressing');
+    var rr = row.getBoundingClientRect(), br = bw.getBoundingClientRect();
+    bw.style.transition = '';
+    var mine = !!(me && m.uid === me.uid), right = RTL ? !mine : mine;
+    var ov = el('div', 'cm-focus'); ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'خيارات الرسالة');
+    var bg = el('div', 'cm-focus-bg'); ov.appendChild(bg);
+    var c = row.cloneNode(true);
+    $$('.cm-tools, .cm-swipe-ic', c).forEach(function (x) { x.remove(); });
+    c.classList.remove('is-pressing', 'is-swiping', 'is-new', 'is-flash', 'is-active');
+    c.classList.add('cm-focus-msg'); c.removeAttribute('data-id'); c.setAttribute('aria-hidden', 'true');
+    c.style.cssText = 'left:' + rr.left + 'px;top:' + rr.top + 'px;width:' + rr.width + 'px';
+    ov.appendChild(c);
+    var bar = m.del ? null : reactBar(m, function () { fillReacts($('.cm-reacts', c), m); closeFocus(); });
+    var menu = menuNode(m, closeFocus);
+    if (bar) ov.appendChild(bar);
+    if (menu.children.length) ov.appendChild(menu); else menu = null;
+    root.appendChild(ov);
+    var vv = window.visualViewport, ins = insets(), gap = 8;
+    var vTop = (vv ? vv.offsetTop : 0) + ins[0] + 12, vBot = (vv ? vv.offsetTop + vv.height : window.innerHeight) - ins[1] - 12;
+    var vw = document.documentElement.clientWidth;
+    var barH = bar ? bar.offsetHeight + gap : 0, menuH = menu ? menu.offsetHeight + gap : 0;
+    // a long message: as much of it as fits, fading out
+    var h = br.height, space = vBot - vTop - barH - menuH;
+    if (h > space) { h = Math.max(90, space); $('.cm-bwrap', c).style.maxHeight = h + 'px'; c.classList.add('is-clipped'); }
+    var top = Math.min(Math.max(br.top, vTop + barH), vBot - menuH - h);
+    var ox = right ? '100%' : '0';
+    function place(n, y, oy) {
+      var w = n.offsetWidth, x = right ? br.right - w : br.left;
+      n.style.left = Math.max(10, Math.min(vw - w - 10, x)) + 'px'; n.style.top = y + 'px';
+      n.style.transformOrigin = ox + ' ' + oy;
+    }
+    if (bar) place(bar, top - barH, '100%');
+    if (menu) place(menu, top + h + gap, '0');
+    c.style.transformOrigin = ox + ' 50%';
+    c.style.transform = 'scale(.95)';
+    row.style.visibility = 'hidden';
+    focus = { ov: ov, row: row, c: c, at: Date.now() };
+    void ov.offsetWidth;
+    ov.classList.add('is-open');
+    c.style.transform = 'translateY(' + (top - br.top) + 'px) scale(1)';
+    bg.addEventListener('click', function () { if (focus && Date.now() - focus.at > 350) closeFocus(); });
+    ov.addEventListener('touchmove', function (e) { if (!e.target.closest('.cm-menu')) e.preventDefault(); }, { passive: false });
+  }
+  function closeFocus() {
+    var f = focus; if (!f) return; focus = null;
+    f.ov.classList.remove('is-open'); f.ov.classList.add('is-closing');
+    f.c.style.transform = 'translateY(0) scale(1)';
+    setTimeout(function () { f.row.style.visibility = ''; f.ov.remove(); }, 320);
+  }
   function copy(t) {
     var ok = function () { toast('تم النسخ'); };
     if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function () {}); else ok();
@@ -1092,6 +1228,7 @@
     row.classList.add('is-pending');
     row.setAttribute('data-nonce', nonce);
     list.appendChild(row);
+    arrive(row);
     var p = pending[nonce] = { el: row, payload: payload, ghost: ghost, sentAt: 0, failed: false };
     if (!push(p)) { conn(navigator.onLine === false ? 'لا يوجد اتصال بالإنترنت، سترسل رسائلك عند عودته…' : 'انقطع الاتصال، سترسل الرسالة عند عودته…'); if (!ws && !connecting) { retry = 0; connect(); } }
     ding('out');
@@ -1486,12 +1623,13 @@
   document.addEventListener('click', function (e) {
     // a button the picker just drew again is no longer in the page: not a click outside
     if (!document.contains(e.target)) return;
-    if (!e.target.closest('.cm-pop, [data-act="emoji"], [data-act="attach"], [data-act="people"], [data-act="mute"], .cm-sheet')) closePops();
+    if (!e.target.closest('.cm-pop, [data-act="emoji"], [data-act="attach"], [data-act="people"], [data-act="mute"], .cm-float, .cm-focus')) closePops();
   });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     if (!$('.cm-viewer').hidden) return closeViewer();
-    if (!$('.cm-sheet').hidden) return closeSheet();
+    if (focus) return closeFocus();
+    if (float) return closeFloat();
     closePops();
   });
 
