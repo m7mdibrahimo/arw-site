@@ -133,6 +133,28 @@ function bgBlock(r, i) {
     </div>
   </div>`;
 }
+// Who sees a room (owner 2026-10-15: «تظهر ليا انا بس ولا لناس معينة ولا للكل»): everyone; some members, picked by name or
+// email (a secret room: nobody else sees it, its link refused to them, one taken out leaves at once); or the owner alone
+const visOf = (r) => (r.hidden ? 'me' : r.secret ? ((r.members || []).length ? 'some' : 'me') : 'all');
+const VIS = [['all', 'الكل'], ['some', 'ناس معينة'], ['me', 'أنا بس']];
+function toSave({ isNew, online, today, lastId, last, vis, hidden, secret, members, ...x }) {
+  if (vis === 'some') return { ...x, secret: true, members: members || [] };
+  if (vis === 'me') return { ...x, secret: true, members: [] };
+  return x;
+}
+function visBlock(r, i) {
+  const vis = r.vis || 'all';
+  return html`<div class="ry-vis">
+    <div class="ry-vis-head"><span class="ry-bg-t">مين يشوفها ويدخلها</span>
+      <span class="mb-badge-seg is-sm" role="group" aria-label="مين يشوفها">${VIS.map(([k, l]) => html`<button type="button" class="${vis === k ? 'is-on' : ''}" data-vis="${k}" data-i="${i}">${k === 'all' ? icon('globe') : k === 'some' ? icon('users') : icon('lock')}${l}</button>`)}</span></div>
+    ${vis === 'all' ? html`<small class="muted">ظاهرة لكل المتابعين.</small>`
+      : vis === 'me' ? html`<small class="muted">سرية: مش ظاهرة لأي حد غيرك (بحسابك الرسمي على الموقع)، ولو حد عرف رابطها مش هيقدر يفتحها.</small>`
+      : html`<small class="muted">سرية: بتظهر ليك وللأعضاء اللي هتضيفهم بس. اللي تشيله وهو جوه بيخرج على طول. ${r.closed ? 'وهي «للقراءة بس»: إنت بس اللي بتكتب فيها.' : 'وعلّم «للقراءة بس» تحت لو عايز تكون إنت بس اللي بيكتب.'}</small>
+        <div class="ry-people">${(r.members || []).map(id => html`<span class="ry-person" data-id="${id}"><b data-name="${id}">#${id}</b><button type="button" data-unadd="${id}" data-i="${i}" aria-label="شيله">×</button></span>`)}${(r.members || []).length ? '' : html`<small class="muted">لسه مفيش حد. ضيف من تحت، أو سيبها كده (هتبقى ليك بس).</small>`}</div>
+        <div class="ry-find"><input class="input" data-i="${i}" placeholder="ضيف عضو: اكتب اسمه أو اسم المستخدم أو الإيميل" autocomplete="off" dir="auto"><div class="ry-find-res" hidden></div></div>`}
+  </div>`;
+}
+
 // «الغرف» (owner 2026-10-15: «اضيف ساحة او كروب او اعدل في اسماء ال موجود»): every room's name, words, short mark and
 // colour, its place in the list, hidden from the site, or closed for writing (only the site's account writes there).
 // Saved as one list (worker/src/chat.ts studioChatRooms); the site follows it within a minute.
@@ -140,7 +162,10 @@ async function renderRoomsEditor(page) {
   mount(page, html`<div class="loading-page"><div class="spinner"></div></div>`);
   let list;
   try { list = (await api.chatRooms()).rooms || []; } catch (e) { toast(e.message, 'error'); renderCommunity(page); return; }
-  list = list.map(r => ({ ...r, isNew: false }));
+  list = list.map(r => ({ ...r, isNew: false, vis: visOf(r) }));
+  // the members, to add to a secret room (by name, username or email)
+  let people = [];
+  api.siteMembers().then(d => { people = (d.items || []).filter(m => !m.official && !m.banned); }).catch(() => {});
   const draw = () => {
     mount(page, html`
       <div class="wrap page-in">
@@ -157,10 +182,10 @@ async function renderRoomsEditor(page) {
               <label class="ry-f ry-id"><span>الرابط</span><input class="input mono" data-k="id" value="${r.id}" maxlength="24" dir="ltr" ${r.isNew ? '' : 'readonly'} title="${r.isNew ? 'حروف إنجليزي صغيرة وأرقام' : 'رابط المجموعة مايتغيرش بعد ما تتعمل'}"></label>
             </div>
             <label class="ry-f"><span>الوصف</span><input class="input" data-k="about" value="${r.about}" maxlength="90" dir="auto"></label>
+            ${r.id === 'general' ? '' : visBlock(r, i)}
             ${bgBlock(r, i)}
             <div class="ry-row ry-opts">
               <label class="ry-hue"><span>اللون</span><input type="range" min="0" max="360" data-k="hue" value="${r.hue}"></label>
-              <label class="ry-tog"><input type="checkbox" data-k="hidden" ${r.hidden ? 'checked' : ''}><span>مخفية</span></label>
               <label class="ry-tog"><input type="checkbox" data-k="closed" ${r.closed ? 'checked' : ''}><span>للقراءة بس</span></label>
             </div>
           </div>
@@ -201,6 +226,24 @@ async function renderRoomsEditor(page) {
       } catch (err) { toast(err.message, 'error'); box.classList.remove('is-busy'); inp.value = ''; }
     });
     $$('[data-bg-off]', page).forEach(b => b.onclick = () => { read(); const r = list[Number(b.dataset.bgOff)]; delete r.bg; delete r.bgBlur; delete r.bgDim; draw(); });
+    // who sees it: everyone, some members (picked here), or the owner alone
+    $$('[data-vis]', page).forEach(b => b.onclick = () => { read(); const r = list[Number(b.dataset.i)]; r.vis = b.dataset.vis; if (r.vis === 'some' && !r.members) r.members = []; draw(); });
+    $$('[data-unadd]', page).forEach(b => b.onclick = () => { read(); const r = list[Number(b.dataset.i)]; r.members = (r.members || []).filter(id => id !== Number(b.dataset.unadd)); draw(); });
+    $$('.ry-find input', page).forEach(inp => {
+      const i = Number(inp.dataset.i), r = list[i], box = inp.closest('.ry-find'), res = $('.ry-find-res', box);
+      const show = () => {
+        const q = inp.value.trim().toLowerCase().replace(/^@/, '');
+        if (q.length < 2) { res.hidden = true; return; }
+        const have = new Set(r.members || []);
+        const hits = people.filter(m => !have.has(m.id) && [m.display, m.username, m.email].some(x => String(x || '').toLowerCase().includes(q))).slice(0, 6);
+        mount(res, hits.length ? html`${hits.map(m => html`<button type="button" class="ry-find-hit" data-add="${m.id}"><b>${m.display || m.username}</b><small dir="ltr">@${m.username} · ${m.email}</small></button>`)}` : html`<p class="muted small">${people.length ? 'مفيش عضو بالاسم ده.' : 'جار تحميل الأعضاء…'}</p>`);
+        res.hidden = false;
+        $$('[data-add]', res).forEach(b => b.onmousedown = (e) => { e.preventDefault(); read(); r.members = [...(r.members || []), Number(b.dataset.add)]; draw(); const again = $(`.ry-find input[data-i="${i}"]`, page); if (again) again.focus(); });
+      };
+      inp.oninput = show; inp.onfocus = show; inp.onblur = () => setTimeout(() => { res.hidden = true; }, 150);
+    });
+    const names = () => $$('[data-name]', page).forEach(b => { const m = people.find(x => x.id === Number(b.dataset.name)); if (m) { b.textContent = m.display || m.username; b.title = `@${m.username} · ${m.email}`; } });
+    names(); if (!people.length) setTimeout(names, 1200);
     $('#ry-back').onclick = () => renderCommunity(page);
     $('#ry-add').onclick = () => { read(); let n = list.length + 1; while (list.some(x => x.id === `room${n}`)) n++; list.push({ id: `room${n}`, name: '', about: '', mark: 'NEW', hue: Math.floor(Math.random() * 360), isNew: true }); draw(); const last = $$('.ry-room', page).pop(); last.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('[data-k="name"]', last).focus(); };
     page.onclick = async (e) => {
@@ -221,7 +264,7 @@ async function renderRoomsEditor(page) {
       read();
       const btn = e.currentTarget;
       btn.disabled = true;
-      try { const r = await api.chatRoomsSave(list.map(({ isNew, online, today, lastId, last, ...x }) => x)); list = r.rooms.map(x => ({ ...x, isNew: false })); toast('اتحفظت المجموعات ✓ هتظهر على الموقع خلال دقيقة'); draw(); }
+      try { const r = await api.chatRoomsSave(list.map(toSave)); list = r.rooms.map(x => ({ ...x, isNew: false, vis: visOf(x) })); toast('اتحفظت المجموعات ✓ هتظهر على الموقع خلال دقيقة'); draw(); }
       catch (err) { toast(err.message, 'error'); btn.disabled = false; }
     };
   };

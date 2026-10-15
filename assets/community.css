@@ -609,3 +609,11 @@ html.arw-dark .cm-chat.has-bg{ --cm-veil:rgba(7,9,13,var(--cm-bg-dim, .45)); }
 .cm-chat.has-bg .cm-reply-cap, .cm-chat.has-bg .cm-sys{ width:fit-content; padding:2px 9px; border-radius:999px; background:color-mix(in srgb, var(--card) 70%, transparent); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
 .cm-chat.has-bg .cm-msg.is-mine .cm-reply-cap{ margin-inline-start:auto; }
 .cm-chat.has-bg .cm-msg.is-big .cm-meta, .cm-chat.has-bg .cm-msg.is-sticker .cm-meta{ width:fit-content; padding:1px 8px; border-radius:999px; background:color-mix(in srgb, var(--card) 70%, transparent); }
+
+/* a secret room (owner 2026-10-15: «غرفة خاصة … سرية»): a small gold lock on its mark, and by its name in the header —
+   seen only by those who may open it */
+.cm-room.is-secret .cm-mark{ position:relative; overflow:visible; }
+.cm-room.is-secret .cm-mark::after{ content:""; position:absolute; bottom:-4px; inset-inline-end:-4px; width:20px; height:20px; border-radius:50%; border:2px solid var(--card);
+  background:#e09a12 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/11px no-repeat; }
+.cm-head.is-secret .cm-head-name::after{ content:""; display:inline-block; width:16px; height:16px; margin-inline-start:6px; vertical-align:-2px; border-radius:50%;
+  background:#e09a12 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/9px no-repeat; }

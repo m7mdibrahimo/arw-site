@@ -522,3 +522,32 @@ test('a background all the way through (owner 2026-10-15: «تتاكد ان … 
   assert.match(String(res.headers.get('Content-Disposition')), /^inline/);
   assert.deepEqual(new Uint8Array(await res.arrayBuffer()), jpg);
 });
+
+test('a secret room (owner 2026-10-15): listed and opened only by the site\'s account and the members added; the others never see it; one taken out leaves at once', async () => {
+  const { roomOpenTo, studioChatRooms } = await import('../worker/src/chat');
+  const vip = { id: 'vip', name: 'غرفة خاصة', about: '', mark: 'VIP', hue: 40, secret: true, members: [7, 9] };
+  assert.equal(roomOpenTo(vip as any, { uid: 7 }), true);
+  assert.equal(roomOpenTo(vip as any, { uid: 8 }), false);
+  assert.equal(roomOpenTo(vip as any, null), false);
+  assert.equal(roomOpenTo(vip as any, { uid: 1, mod: true }), true);
+  assert.equal(roomOpenTo({ ...vip, members: [] } as any, { uid: 7 }), false, '«أنا بس»: the owner alone');
+  // saved: members cleaned (numbers, once, at most 500); and whoever is inside and not one of them is told to leave
+  const kvStore = new Map<string, any>();
+  const kv: any = { get: async (k: string) => kvStore.get(k) ?? null, put: async (k: string, v: string) => { kvStore.set(k, v); }, delete: async () => {} };
+  const calls: any[] = [];
+  const CHAT: any = { idFromName: (n: string) => n, get: (id: string) => ({ fetch: async (u: any, init: any) => { calls.push([id, String(u), init && init.body]); return Response.json({ online: 0, today: 0, lastId: 0, last: null }); } }) };
+  const env: any = { PUSH_KV: kv, CHAT };
+  const r: any = await studioChatRooms(env, { rooms: [{ id: 'general', name: 'الساحة العامة', hue: 177 }, { id: 'vip', name: 'غرفة خاصة', hue: 40, secret: true, members: [7, '9', 7, -1, 'x'] }] });
+  assert.equal(r.success, true);
+  assert.deepEqual(r.rooms[1].members, [7, 9]);
+  assert.ok(calls.some(c => c[0] === 'vip' && /\/admin$/.test(c[1]) && JSON.parse(c[2]).op === 'only' && JSON.parse(c[2]).uids.join() === '7,9'));
+  // a list with no room for everyone is refused
+  assert.equal((await studioChatRooms(env, { rooms: [{ id: 'vip', name: 'غرفة خاصة', hue: 40, secret: true, members: [] }] }) as any).success, false);
+  // the public list: no secret room, and kept by caches as before
+  const pub = await handleChat(new Request('https://w/chat/rooms'), env, new URL('https://w/chat/rooms'));
+  assert.deepEqual(((await pub.json()) as any).rooms.map((x: any) => x.id), ['general']);
+  assert.match(String(pub.headers.get('Cache-Control')), /public/);
+  // the room's socket refuses anyone not let in (no ticket here: refused before the room is even asked)
+  const ws = await handleChat(new Request('https://w/chat/ws/vip?ticket=' + 'a'.repeat(48), { headers: { Upgrade: 'websocket' } }), env, new URL('https://w/chat/ws/vip?ticket=' + 'a'.repeat(48)));
+  assert.notEqual(ws.status, 101);
+});

@@ -1046,3 +1046,20 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .ry-bg-range span { display: flex; justify-content: space-between; }
 .ry-bg-range input { width: 100%; max-width: 260px; accent-color: var(--teal); }
 @media (max-width: 640px) { .ry-bg { grid-template-columns: 1fr; } }
+
+/* who sees a room (views/community.js visBlock): everyone, some members, or the owner alone */
+.ry-vis { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: color-mix(in srgb, var(--ink) 2.5%, transparent); }
+.ry-vis-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.ry-vis .mb-badge-seg button svg { width: 14px; height: 14px; }
+.ry-vis .mb-badge-seg button.is-on { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+.ry-people { display: flex; flex-wrap: wrap; gap: 6px; }
+.ry-person { display: inline-flex; align-items: center; gap: 4px; padding: 3px 4px 3px 10px; border-radius: 99px; background: color-mix(in srgb, #e09a12 14%, var(--card)); border: 1px solid color-mix(in srgb, #e09a12 35%, transparent); font-size: 13px; }
+.ry-person b { font-weight: 800; }
+.ry-person button { width: 22px; height: 22px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 16px; line-height: 1; cursor: pointer; }
+.ry-person button:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--ink); }
+.ry-find { position: relative; max-width: 460px; }
+.ry-find-res { position: absolute; inset-inline: 0; top: calc(100% + 4px); z-index: 20; display: flex; flex-direction: column; gap: 2px; padding: 6px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 16px 36px -14px rgba(0, 0, 0, .35); }
+.ry-find-res[hidden] { display: none; }
+.ry-find-hit { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 8px 10px; border: 0; border-radius: 10px; background: transparent; color: var(--ink); font-family: inherit; text-align: start; cursor: pointer; }
+.ry-find-hit:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.ry-find-hit small { color: var(--muted); font-size: 12px; }

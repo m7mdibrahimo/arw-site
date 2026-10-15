@@ -172,10 +172,11 @@
       R.btn.style.setProperty('--h', s.hue);
       $('b', R.btn).textContent = R.name;
       R.btn.classList.toggle('is-closed', R.closed);
+      R.secret = !!s.secret; R.btn.classList.toggle('is-secret', R.secret);
       if (nav.children[i] !== R.btn) nav.insertBefore(R.btn, nav.children[i] || null);
     });
-    Object.keys(ROOMS).forEach(function (id) { if (!keep[id]) { ROOMS[id].btn.remove(); delete ROOMS[id]; if (current === id) showRooms(); } });
-    if (current && ROOMS[current]) { $('.cm-head-name').textContent = ROOMS[current].name; setMuted(); paintBg(); }
+    Object.keys(ROOMS).forEach(function (id) { if (!keep[id]) { ROOMS[id].btn.remove(); delete ROOMS[id]; if (current === id) leaveRoom(); } });
+    if (current && ROOMS[current]) { $('.cm-head-name').textContent = ROOMS[current].name; $('.cm-head').classList.toggle('is-secret', !!ROOMS[current].secret); setMuted(); paintBg(); }
     // a link to a room the page didn't know yet (added from the panel) opens it once the list arrives
     if (want && ROOMS[want] && current !== want) open(want, false);
     want = '';
@@ -200,7 +201,9 @@
   function summaries() {
     clearTimeout(summaryT);
     if (document.hidden) { summaryT = setTimeout(summaries, 30000); return; }
-    fetch(API + '/chat/rooms', { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (d) {
+    // signed in: the secret rooms this member was added to come with the list (worker/src/chat.ts roomOpenTo)
+    var sx = session();
+    fetch(API + '/chat/rooms', { credentials: 'omit', headers: sx ? { Authorization: 'Bearer ' + sx.token } : {} }).then(function (r) { return r.json(); }).then(function (d) {
       var total = 0;
       syncRooms(d.rooms);
       (d.rooms || []).forEach(function (s) {
@@ -250,6 +253,7 @@
     $('.cm-head').hidden = false;
     var mark = $('.cm-head-mark');
     mark.innerHTML = R.mark; mark.style.setProperty('--h', R.hue); mark.classList.toggle('cm-mark-logo', room === 'general');
+    $('.cm-head').classList.toggle('is-secret', !!R.secret);
     paintBg();
     $('.cm-head-name').textContent = R.name;
     var c = cache[room];
@@ -269,6 +273,16 @@
     compose.hidden = false; autosize();
     if (!store('arw-cm-rules')) rules();
     connect();
+  }
+  // a room this member may no longer open (a secret one they were taken out of): closed, back to the list
+  function leaveRoom() {
+    close(); cancelEdit(); cancelReply();
+    current = null;
+    chat.classList.remove('is-open', 'has-bg'); chat.removeAttribute('data-bg');
+    $('.cm-head').hidden = true; compose.hidden = true; list.textContent = '';
+    $$('.cm-room').forEach(function (b) { b.classList.remove('is-on'); });
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    showRooms();
   }
   function showRoom() { app.setAttribute('data-view', 'room'); document.body.classList.add('cm-in-room'); }
   function showRooms() {
@@ -328,6 +342,8 @@
           clearInterval(pingT); clearTimeout(pongT);
           ws = null;
           if (e.code === 4003) { toast('تم إيقاف حسابك.'); gate(true); return; }
+          // taken out of a secret room by the owner: out of it at once, and it leaves the list
+          if (e.code === 4004) { toast('هذه المجموعة لم تعد متاحة لك.'); if (current === room) leaveRoom(); summaries(); return; }
           if (current === room) { conn(navigator.onLine === false ? 'لا يوجد اتصال بالإنترنت، سترسل رسائلك عند عودته…' : 'انقطع الاتصال، جار إعادة الاتصال…'); later(); }
         };
       })
@@ -1777,5 +1793,7 @@
   summaries();
   var first = location.hash.slice(1);
   if (ROOMS[first]) { want = ''; open(first, false); }
-  else if (!window.matchMedia('(max-width: 1150px)').matches) open('general', false);
+  // a link to a room the page doesn't know yet (a secret one, one added from the panel): the main hall meanwhile, that
+  // room once the list says this member may open it
+  else if (!window.matchMedia('(max-width: 1150px)').matches) { var later = want; open('general', false); want = later; }
 })();
