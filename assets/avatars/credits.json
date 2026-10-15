@@ -4,10 +4,10 @@
   "ar": "رومان رينز",
   "en": "Roman Reigns",
   "fed": "WWE",
-  "owner": "Miguel Discart from Bruxelles, Belgique",
-  "license": "CC BY-SA 2.0",
-  "source": "https://commons.wikimedia.org/wiki/File:WWE_Live_2016-09-07_21-38-48_ILCE-6300_2090_DxO_(30993300151).jpg",
-  "year": "2016"
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Roman_Reigns_RR25_(1)_(headshot).jpg",
+  "year": "2025"
  },
  {
   "slug": "cody-rhodes",
@@ -270,6 +270,16 @@
   "year": "2025"
  },
  {
+  "slug": "tiffany-stratton",
+  "ar": "تيفاني ستراتون",
+  "en": "Tiffany Stratton",
+  "fed": "WWE",
+  "owner": "U.S. Army photo by Staff Sgt. Rene Rosas",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Army_250th_Birthday_Celebration_at_Fort_Bragg_(9104675).jpg",
+  "year": "2025"
+ },
+ {
   "slug": "iyo-sky",
   "ar": "ايو سكاي",
   "en": "IYO SKY",
@@ -288,6 +298,16 @@
   "license": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Jade_Cargill_RR24_(2).jpg",
   "year": "2024"
+ },
+ {
+  "slug": "the-rock",
+  "ar": "ذا روك",
+  "en": "The Rock",
+  "fed": "WWE",
+  "owner": "SWinxy",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Guests_at_the_2026_Met_Gala_092.jpg",
+  "year": "2026"
  },
  {
   "slug": "triple-h",
@@ -370,6 +390,16 @@
   "year": "2026"
  },
  {
+  "slug": "joe-hendry",
+  "ar": "جو هندري",
+  "en": "Joe Hendry",
+  "fed": "WWE",
+  "owner": "Diego Serrano",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Joe_Hendry_RR25_(cropped).jpg",
+  "year": "2025"
+ },
+ {
   "slug": "rusev",
   "ar": "روسيف",
   "en": "Rusev",
@@ -378,6 +408,16 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:WMC_AEWMIRO-CHAMP.jpg",
   "year": "2021"
+ },
+ {
+  "slug": "aleister-black",
+  "ar": "أليستر بلاك",
+  "en": "Aleister Black",
+  "fed": "WWE",
+  "owner": "Shared Account",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Andrade_Cien_Almas_performs_a_rope_hung_triangle_armbar_on_Aleister_Black.jpg",
+  "year": "2018"
  },
  {
   "slug": "bayley",
@@ -480,6 +520,16 @@
   "year": "2019"
  },
  {
+  "slug": "kenny-omega",
+  "ar": "كيني أوميغا",
+  "en": "Kenny Omega",
+  "fed": "AEW",
+  "owner": "Crisco 1492",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Will_Ospreay_v_Kenny_Omega,_AEW_Forbidden_Door_2023,_2023-06-25_05.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "jon-moxley",
   "ar": "جون موكسلي",
   "en": "Jon Moxley",
@@ -548,6 +598,16 @@
   "license": "CC BY-SA 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:Adam_Copeland_by_Gage_Skidmore.jpg",
   "year": "2024"
+ },
+ {
+  "slug": "chris-jericho",
+  "ar": "كريس جيريكو",
+  "en": "Chris Jericho",
+  "fed": "AEW",
+  "owner": "John Manard",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Chris_Jericho_GalaxyCon_Raleigh_July,_25,_2026_681.jpg",
+  "year": "2026"
  },
  {
   "slug": "bryan-danielson",
@@ -620,6 +680,16 @@
   "year": "2024"
  },
  {
+  "slug": "adam-cole",
+  "ar": "آدم كول",
+  "en": "Adam Cole",
+  "fed": "AEW",
+  "owner": "Carter Sterling",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Forbidden_Door_(AEW_x_NJPW)_(52293137215).jpg",
+  "year": "2022"
+ },
+ {
   "slug": "konosuke-takeshita",
   "ar": "كونوسوكي تاكيشيتا",
   "en": "Konosuke Takeshita",
@@ -660,6 +730,16 @@
   "year": "2026"
  },
  {
+  "slug": "nick-jackson",
+  "ar": "نيك جاكسون",
+  "en": "Nick Jackson",
+  "fed": "AEW",
+  "owner": "Al Pavangkanan from Van Nuys, USA",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Matt_and_Nick_Jackson.jpg",
+  "year": "2008"
+ },
+ {
   "slug": "thunder-rosa",
   "ar": "ثاندر روزا",
   "en": "Thunder Rosa",
@@ -698,6 +778,16 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Brodido_(close_crop).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "bandido",
+  "ar": "بانديدو",
+  "en": "Bandido",
+  "fed": "AEW",
+  "owner": "Photos N Effect from Germany",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bandido-Pace-Cobb_vs._Puma-Taurus-Invictus_16_Carat_Gold_2020_N3_(4).jpg",
+  "year": "2020"
  },
  {
   "slug": "bobby-lashley",
@@ -760,6 +850,16 @@
   "year": "2025"
  },
  {
+  "slug": "willow-nightingale",
+  "ar": "ويلو نايتينغيل",
+  "en": "Willow Nightingale",
+  "fed": "AEW",
+  "owner": "ZekeDane",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Willow_Nightingale,_Jan_2023_02.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "harley-cameron",
   "ar": "هارلي كاميرون",
   "en": "Harley Cameron",
@@ -820,6 +920,16 @@
   "year": "2026"
  },
  {
+  "slug": "jeff-jarrett",
+  "ar": "جيف جاريت",
+  "en": "Jeff Jarrett",
+  "fed": "AEW",
+  "owner": "McPhail",
+  "license": "CC0",
+  "source": "https://commons.wikimedia.org/wiki/File:Karen_Jarrett_and_Jeff_Jarrett,_2023.jpg",
+  "year": "2023"
+ },
+ {
   "slug": "skye-blue",
   "ar": "سكاي بلو",
   "en": "Skye Blue",
@@ -868,6 +978,16 @@
   "license": "CC BY 2.0",
   "source": "https://commons.wikimedia.org/wiki/File:Queen_Aminata_in_April_2025_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "hiroshi-tanahashi",
+  "ar": "هيروشي تاناهاشي",
+  "en": "Hiroshi Tanahashi",
+  "fed": "NJPW",
+  "owner": "Crisco 1492",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:MJF_v_Hiroshi_Tanahashi,_AEW_Forbidden_Door_2023,_2023-06-25_01.jpg",
+  "year": "2023"
  },
  {
   "slug": "tetsuya-naito",
@@ -970,6 +1090,16 @@
   "year": "2025"
  },
  {
+  "slug": "ryohei-oiwa",
+  "ar": "ريوهي أويوا",
+  "en": "Ryohei Oiwa",
+  "fed": "NJPW",
+  "owner": "結牙",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Ryohei_Oiwa_20260105_(cropped).jpg",
+  "year": "2026"
+ },
+ {
   "slug": "yuya-uemura",
   "ar": "يويا أويمورا",
   "en": "Yuya Uemura",
@@ -978,6 +1108,16 @@
   "license": "CC BY-SA 4.0",
   "source": "https://commons.wikimedia.org/wiki/File:Yuya_Uemura_20260816.jpg",
   "year": "2026"
+ },
+ {
+  "slug": "toru-yano",
+  "ar": "تورو يانو",
+  "en": "Toru Yano",
+  "fed": "NJPW",
+  "owner": "ゾーヒョー",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Toru_Yano_IWGP_Tag_Team_Champion.jpg",
+  "year": "2017"
  },
  {
   "slug": "david-finlay",
@@ -1160,6 +1300,16 @@
   "year": "2017"
  },
  {
+  "slug": "doc-gallows",
+  "ar": "دوك غالوز",
+  "en": "Doc Gallows",
+  "fed": "MLP",
+  "owner": "Miguel Discart from Bruxelles, Belgique",
+  "license": "CC BY-SA 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Gallows_WWE_Live,_Li%C3%A8ge,_May_12,_2017.jpg",
+  "year": "2017"
+ },
+ {
   "slug": "zack-gibson",
   "ar": "زاك جيبسون",
   "en": "Zack Gibson",
@@ -1260,6 +1410,16 @@
   "year": "2018"
  },
  {
+  "slug": "evil-uno",
+  "ar": "إيفل أونو",
+  "en": "Evil Uno",
+  "fed": "MLP",
+  "owner": "grenwail",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Uno_and_Greyson_Oct_2019_(3to4).jpg",
+  "year": "2019"
+ },
+ {
   "slug": "tjp",
   "ar": "تي جيه بي",
   "en": "TJP",
@@ -1348,6 +1508,16 @@
   "license": "Public domain",
   "source": "https://commons.wikimedia.org/wiki/File:Merab_Dvalishvili_at_UFC_316_(cropped).jpg",
   "year": "2025"
+ },
+ {
+  "slug": "max-holloway",
+  "ar": "ماكس هولواي",
+  "en": "Max Holloway",
+  "fed": "UFC",
+  "owner": "Cpl. Samantha Sanchez",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Blue_Angels%27_VIP_Rider_Max_Holloway_(1)_(cropped).jpg",
+  "year": "2022"
  },
  {
   "slug": "charles-oliveira",
@@ -1478,6 +1648,16 @@
   "license": "CC BY 3.0",
   "source": "https://commons.wikimedia.org/wiki/File:UFC_Star_Paddy_The_Baddy_Pimblett_tells_his_story.jpg",
   "year": "2021"
+ },
+ {
+  "slug": "dustin-poirier",
+  "ar": "داستن بوارييه",
+  "en": "Dustin Poirier",
+  "fed": "UFC",
+  "owner": "TLF Apparel",
+  "license": "CC BY 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Dustin_Poirier_stance.png",
+  "year": "2023"
  },
  {
   "slug": "michael-chandler",
