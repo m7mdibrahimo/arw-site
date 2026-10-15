@@ -617,3 +617,36 @@ html.arw-dark .cm-chat.has-bg{ --cm-veil:rgba(7,9,13,var(--cm-bg-dim, .45)); }
   background:#e09a12 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/11px no-repeat; }
 .cm-head.is-secret .cm-head-name::after{ content:""; display:inline-block; width:16px; height:16px; margin-inline-start:6px; vertical-align:-2px; border-radius:50%;
   background:#e09a12 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z'/%3E%3C/svg%3E") center/9px no-repeat; }
+
+/* ── a phone: the community is an app of its own (owner 2026-10-15: «اكني فتحت تطبيق … الشات وبس … ولما بطلع وانزل
+   بطلع وانزل في الشات بس»). The page itself never moves: the site's header, footer and bottom bar are gone, the
+   community fills what the screen shows (above the keyboard: --vvt/--vvh, assets/community.js), and only its lists
+   scroll. A long press is the message's menu, never a text selection; copying is in that menu. ── */
+.cm-home{ display:none; }
+@media (max-width:1150px){
+  html:has(> body.cm-body){ height:100%; overflow:hidden; overscroll-behavior:none; }
+  body.cm-body{ position:fixed; inset:0; width:100%; height:100%; overflow:hidden; overscroll-behavior:none; }
+  body.cm-body > header, body.cm-body > footer, body.cm-body .arw-bottom-nav, body.cm-body .mobile-bottom-nav, body.cm-body .bottom-nav,
+  body.cm-body .arw-more-sheet, body.cm-body .arw-more-overlay, body.cm-body .arw-reply-toast, body.cm-body .arw-follow-toast,
+  body.cm-body .arw-nudge, body.cm-body .m-progress, body.cm-body .xp-top{ display:none !important; }
+  .cm-page{ position:fixed; left:0; right:0; top:var(--vvt, 0px); height:var(--vvh, 100dvh); z-index:1200; display:flex; flex-direction:column; overflow:hidden; margin:0; padding:0; max-width:none; background:var(--bg);
+    -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  .cm-page textarea, .cm-page input, .cm-page [contenteditable]{ -webkit-user-select:text; user-select:text; -webkit-touch-callout:default; }
+  .cm-page img, .cm-page video{ -webkit-user-drag:none; }
+  .cm-app{ flex:1; min-height:0; height:auto; display:flex; flex-direction:column; }
+  /* the groups: the app's bar, then the list (it alone scrolls) */
+  .cm-side{ flex:1; min-height:0; max-width:none; margin:0; }
+  .cm-side-head{ display:grid; grid-template-columns:auto minmax(0,1fr); grid-template-areas:"home title" "home total"; align-items:center; column-gap:10px;
+    padding:calc(10px + env(safe-area-inset-top, 0px)) 12px 10px; background:var(--card); border-bottom:1px solid var(--line); }
+  .cm-home{ grid-area:home; display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; color:var(--ink); text-decoration:none; }
+  .cm-home:active{ background:color-mix(in srgb, var(--ink) 8%, transparent); }
+  html[dir="ltr"] .cm-home svg{ transform:scaleX(-1); }
+  .cm-title{ grid-area:title; font-size:19px; }
+  .cm-sub{ display:none; }
+  .cm-total{ grid-area:total; justify-self:start; margin-top:2px; }
+  .cm-rooms{ flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; padding:8px 10px 10px; }
+  .cm-rules-link{ margin:4px 18px calc(10px + env(safe-area-inset-bottom, 0px)); }
+  /* the room: the whole app, its messages alone scroll */
+  .cm-app[data-view="room"] .cm-chat{ position:relative; inset:auto; top:auto; height:auto; flex:1; min-height:0; z-index:auto; }
+  .cm-scroll, .cm-pop, .cm-emoji-pop, .cm-mention-pop{ overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+}

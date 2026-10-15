@@ -386,7 +386,9 @@ html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-
 #feds::after, #full-shows::after, #recaps::after, #nostalgia-home::after, #news::after{
   content:""; position:absolute; top:0; left:50%; transform:translate(-50%, -50%);
   width:9px; height:9px; border-radius:50%; pointer-events:none;
-  background:var(--sec); box-shadow:0 0 0 4px var(--top), 0 0 0 5px color-mix(in srgb, var(--sec) 30%, transparent);
+  /* a dot lit in the section's own colour: no ring painted in a background colour, which never matched both the band
+     above and the one below (owner 2026-10-15: «شكل الدائرة دي مش مظبوط خالص في الرئيسية») */
+  background:var(--sec); box-shadow:0 0 0 3px color-mix(in srgb, var(--sec) 22%, transparent), 0 0 12px 1px color-mix(in srgb, var(--sec) 45%, transparent);
 }
 .news-thumb.breaking::after{ content:"عاجل"; position:absolute; top:12px; right:12px; background:var(--coral); color:#fff; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; animation: floatSlow 2s ease-in-out infinite; box-shadow:0 4px 10px rgba(255,111,89,0.4); }
 /* real lazy <img> thumbnails instead of background-image (background images never lazy-load: every card picture downloaded on page open) */
@@ -1282,7 +1284,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
 <link rel="stylesheet" href="/assets/features.css?v=20261015m">
-<link rel="stylesheet" href="/assets/dark.css?v=20260926j">
+<link rel="stylesheet" href="/assets/dark.css?v=20261015a">
 </head>
 <body>
 <header>
