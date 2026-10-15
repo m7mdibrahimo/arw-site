@@ -1550,12 +1550,22 @@ module.exports = function(eleventyConfig) {
   const LIBRARY_PAGE_SIZE = 20;
   eleventyConfig.addCollection("libraryPages", function(collectionApi) {
     const pages = [];
-    buildLibrary(collectionApi).forEach(function(prog) {
+    const allProgs = buildLibrary(collectionApi);
+    // other sections of the same federation: a plain link row on every library page, so single-event sections (CMLL special nights...)
+    // get a link from their siblings and not only from the federation page (INCIDENTS #600)
+    const siblingsOf = function(prog) {
+      return allProgs.filter(function(p) { return p !== prog && p.promo.key === prog.promo.key; })
+        .sort(function(a, b) { return b.latest.timestamp - a.latest.timestamp; }).slice(0, 14)
+        .map(function(p) { return { name: p.name, arName: p.arName, href: "/library/" + p.slug + "/" }; });
+    };
+    allProgs.forEach(function(prog) {
+      const siblings = siblingsOf(prog);
       const total = Math.max(1, Math.ceil(prog.shows.length / LIBRARY_PAGE_SIZE));
       const href = function(n) { return "/library/" + prog.slug + "/" + (n > 1 ? n + "/" : ""); };
       for (let i = 0; i < total; i++) {
         pages.push({
           prog: prog,
+          siblings: siblings,
           pageNumber: i + 1,
           totalPages: total,
           items: prog.shows.slice(i * LIBRARY_PAGE_SIZE, (i + 1) * LIBRARY_PAGE_SIZE),

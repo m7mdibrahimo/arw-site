@@ -35,10 +35,20 @@ function correctionRegex(c: Correction): RegExp {
   return new RegExp(arBoundL + PREFIX + "(?:" + body + ")" + arBoundR, "g");
 }
 
+/** The source's HTML entities («&#8220;», «&amp;», «&quot;») turned into the real characters (INCIDENTS #600).
+ *  Only quotes, apostrophes, dashes, ellipsis, ampersand and non-breaking space: «&lt;»/«&gt;» stay (they may be real markup). */
+export function decodeHtmlEntities(text: string): string {
+  const named: Record<string, string> = { amp: "&", quot: '"', apos: "'", nbsp: " ", ldquo: "“", rdquo: "”", lsquo: "‘", rsquo: "’", ndash: "–", mdash: "—", hellip: "…" };
+  return String(text)
+    .replace(/&#(\d{2,5});/g, (m, n) => (+n === 60 || +n === 62 ? m : String.fromCodePoint(+n)))
+    .replace(/&#x([0-9a-f]{2,5});/gi, (m, n) => (parseInt(n, 16) === 60 || parseInt(n, 16) === 62 ? m : String.fromCodePoint(parseInt(n, 16))))
+    .replace(/&(amp|quot|apos|nbsp|ldquo|rdquo|lsquo|rsquo|ndash|mdash|hellip);/g, (_m, n) => named[n]);
+}
+
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = text;
+  let out = decodeHtmlEntities(text);
   for (const c of corrections) {
     out = out.replace(correctionRegex(c), (_m, prefix = "") =>
       // "بـWWE SmackDown": a joined preposition before an English name takes a tatweel
