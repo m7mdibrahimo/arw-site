@@ -651,6 +651,19 @@ module.exports = function(eleventyConfig) {
     return String(dateObj);
   };
   eleventyConfig.addFilter("date", formatDate);
+  // «بتوقيت بلدك» (owner 2026-10-15): a guide's weekly time («8:00 مساء الاثنين بتوقيت شرق أمريكا») as data the page turns
+  // into the visitor's own time (assets/localtime.js): «America/New_York|1|20:00»; empty when it has no clock time
+  const GUIDE_ZONES = [[/شرق أمريكا/, "America/New_York"], [/المكسيك/, "America/Mexico_City"], [/اليابان/, "Asia/Tokyo"]];
+  const GUIDE_DAYS = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+  eleventyConfig.addFilter("guideAt", function(w) {
+    if (!w || !w.time || !(w.day in GUIDE_DAYS)) return "";
+    const z = GUIDE_ZONES.find(([re]) => re.test(w.time));
+    const m = String(w.time).match(/(\d{1,2}):(\d{2})\s*(فجر|صباح|ظهر|عصر|مساء)/);
+    if (!z || !m) return "";
+    let h = Number(m[1]) % 12;
+    if (/عصر|مساء/.test(m[3]) || (m[3] === "ظهر" && h < 6)) h += 12;
+    return `${z[1]}|${GUIDE_DAYS[w.day]}|${String(h).padStart(2, "0")}:${m[2]}`;
+  });
   eleventyConfig.addFilter("yearOf", function(d) { const t = new Date(d); return isNaN(t) ? "" : String(t.getUTCFullYear()); });
   eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
   eleventyConfig.addNunjucksFilter("date", formatDate);

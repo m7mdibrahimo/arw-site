@@ -156,10 +156,10 @@
   <section class="fg-sec reveal" id="fg-week">
     <h2 class="fg-h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i>مواعيد العروض</h2>
     {% if weekDays %}
-    <p class="fg-sub">أسبوع <bdi>{{ f.mark }}</bdi> يوما بيوم، بتوقيت مكة المكرمة.</p>
-    <div class="fg-days">
+    <p class="fg-sub" id="fgWeekSub" data-mark="{{ f.mark }}">أسبوع <bdi>{{ f.mark }}</bdi> يوما بيوم، بتوقيت مكة المكرمة.</p>
+    <div class="fg-days" id="fgDays">
       {% for d in DAYS %}
-      <div class="fg-day{% for w in g.week %}{% if w.day == d[0] and not (loop.index0 and g.week[loop.index0 - 1].day == d[0]) %} has{% endif %}{% endfor %}"><span>{{ d[1] }}</span>{% for w in g.week %}{% if w.day == d[0] %}<em><bdi>{{ w.show }}</bdi></em>{% endif %}{% endfor %}</div>
+      <div class="fg-day{% for w in g.week %}{% if w.day == d[0] and not (loop.index0 and g.week[loop.index0 - 1].day == d[0]) %} has{% endif %}{% endfor %}" data-day="{{ d[0] }}"><span>{{ d[1] }}</span>{% for w in g.week %}{% if w.day == d[0] %}<em{% set at = w | guideAt %}{% if at %} data-at="{{ at }}"{% endif %}><bdi>{{ w.show }}</bdi></em>{% endif %}{% endfor %}</div>
       {% endfor %}
     </div>
     {% endif %}
@@ -172,7 +172,7 @@
         <dl class="fg-rows">
           {% if w.day %}{% for d in DAYS %}{% if d[0] == w.day %}<div><dt>اليوم</dt><dd>كل {{ d[1] }}</dd></div>{% endif %}{% endfor %}{% endif %}
           {% if w.time %}<div><dt>الموعد</dt><dd>{{ w.time }}</dd></div>{% endif %}
-          {% if w.mecca %}<div><dt>بتوقيت مكة</dt><dd class="mecca">{{ w.mecca }}</dd></div>{% endif %}
+          {% if w.mecca %}{% set at = w | guideAt %}<div><dt{% if at %} class="fg-local-dt"{% endif %}>بتوقيت مكة</dt><dd class="mecca"{% if at %} data-at="{{ at }}"{% endif %}>{{ w.mecca }}</dd></div>{% endif %}
           {% if w.length %}<div><dt>المدة</dt><dd>{{ w.length }}</dd></div>{% endif %}
           {% if w.channel %}<div><dt>يبث على</dt><dd><bdi>{{ w.channel }}</bdi></dd></div>{% endif %}
         </dl>
@@ -250,10 +250,11 @@
 
   <div class="fg-end reveal">
     <a href="{{ f.href }}" class="lib-all-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v14"/><path d="M9 19V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v12"/><path d="m15 6.5 2.9-.8a1 1 0 0 1 1.2.7l3 11.4a1 1 0 0 1-.7 1.2l-2.9.8"/><path d="M3 19h18"/></svg><span>شاهد عروض <bdi>{{ f.mark }}</bdi> مترجمة</span></a>
-    <small>راجعنا هذا الدليل في أكتوبر 2026. المواعيد بتوقيت مكة المكرمة وقد تتغير في المناسبات الخاصة، والعروض الكبرى قد يتغير موعدها من سنة لأخرى.</small>
+    <small id="fgTimesNote">راجعنا هذا الدليل في أكتوبر 2026. المواعيد بتوقيت مكة المكرمة وقد تتغير في المناسبات الخاصة، والعروض الكبرى قد يتغير موعدها من سنة لأخرى.</small>
   </div>
 
 </div></section>
+<script src="{{ asset('/assets/localtime.js') }}" defer></script>
 <script>
 (function(){
   var links = Array.prototype.slice.call(document.querySelectorAll('#fgToc a'));
