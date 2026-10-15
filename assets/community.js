@@ -1086,8 +1086,8 @@
     replyTo = m;
     var r = $('.cm-replying'); r.hidden = false; r.classList.remove('is-edit');
     $('.cm-replying-ic', r).innerHTML = IC.replyCap;
-    $('b', r).textContent = me && m.uid === me.uid ? 'الرد على نفسك' : 'الرد على ' + m.name;
-    $('span', r).textContent = m.spoiler ? 'رسالة مخفية (حرق نتائج)' : m.text || (m.att ? kindLabel(m.att.kind) : '');
+    $('.cm-replying-tx b', r).textContent = me && m.uid === me.uid ? 'الرد على نفسك' : 'الرد على ' + m.name;
+    $('.cm-replying-tx span', r).textContent = m.spoiler ? 'رسالة مخفية (حرق نتائج)' : m.text || (m.att ? kindLabel(m.att.kind) : '');
     input.focus();
   }
   function cancelReply() { replyTo = null; if (!editing) $('.cm-replying').hidden = true; }
@@ -1098,8 +1098,8 @@
     editing = m; draftBeforeEdit = input.value;
     var r = $('.cm-replying'); r.hidden = false; r.classList.add('is-edit');
     $('.cm-replying-ic', r).innerHTML = IC.edit;
-    $('b', r).textContent = me && m.uid !== me.uid ? 'تعديل رسالة ' + m.name : 'تعديل الرسالة';
-    $('span', r).textContent = m.text || kindLabel(m.att && m.att.kind);
+    $('.cm-replying-tx b', r).textContent = me && m.uid !== me.uid ? 'تعديل رسالة ' + m.name : 'تعديل الرسالة';
+    $('.cm-replying-tx span', r).textContent = m.text || kindLabel(m.att && m.att.kind);
     input.value = m.text || ''; autosize(); updateSendBtn();
     input.focus(); input.setSelectionRange(input.value.length, input.value.length);
   }
