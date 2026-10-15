@@ -140,7 +140,9 @@ const RULES: Rule[] = [
   // «تواجه كل من كراتوس روميو كيفيدو في نزال» — the «و» between the two names dropped (INCIDENTS #301)
   { code: "kol_min_no_waw", severity: "error", re: /كل\s+من\s+(?:(?!و)[ء-ي]+\s+){2,4}في\s+نزال/g, message: "«كل من» بعدها اسمين من غير «و» بينهم (حصل: «تواجه كل من كراتوس روميو كيفيدو» والصح «كراتوس وروميو كيفيدو»)", fields: ["title", "body"] },
   // «فى فيلم»، «الذى دفعه»، «لقاء صحفى» — ى مكان ي في آخر الكلمة (INCIDENTS #303)
-  { code: "alif_maqsura_ya", severity: "error", re: /(?<![ء-ي])(?:فى|الذى|التى|صحفى|عربى)(?![ء-ي])/g, message: "ى مكان ي (حصل: «فى WWE»، «الذى»، «صحفى») — الصح «في»، «الذي»، «صحفي»", fields: ["title", "body"] },
+  { code: "alif_maqsura_ya", severity: "error", re: /(?<![ء-ي])(?:فى|الذى|التى|صحفى|عربى|الثنائى|الثلاثى|الرباعى|التاريخى|الرسمى|حوارى|جوهرى|نارى|الدولى|المحلى|العالمى|الأسبوعى|الاسبوعى|الإعلامى|الاعلامى|الأمريكى|الامريكى|الشخصى|المهنى|الرئيسى|الحقيقى|النهائى)(?![ء-ي])/g, message: "ى مكان ي (حصل: «فى WWE»، «الذى»، «صحفى»، «الثنائى»، «التاريخى») — الصح «في»، «الذي»، «صحفي»، «الثنائي»، «التاريخي» (INCIDENTS #594)", fields: ["title", "body"] },
+  // «خلال استضافتها في برنامج أن المخطط…» — the show/podcast name was dropped and the sentence has no name after «برنامج» (INCIDENTS #594)
+  { code: "dropped_show_name", severity: "error", re: /(?<![ء-ي])(?:في|خلال|عبر|على)\s+(?:برنامج|بودكاست)\s+(?:أن|إن|حيث|التي|الذي)(?![ء-ي])/g, message: "«في برنامج» وبعدها مباشرة «أن/حيث» — اسم البرنامج اتشال (حصل: «استضافتها في برنامج أن المخطط»). اكتب اسم البرنامج من المصدر أو احذف «في برنامج»", fields: ["title", "body"] },
   // Latin letters glued to an Arabic stem that is not a prefix: «يOH» (for YOH), «نagai», «إيفيs» — a name half-transliterated (INCIDENTS #438)
   { code: "mixed_script_word", severity: "error", re: /(?<![ء-ي])(?!(?:و|ب|ل|ك|ف|ال|لل|وال|بال|كال|فال|وب|ول|وبال|ولل|فب|فل|وس|س)\u0640?(?=[A-Za-z]))[ء-ي]+(?=[A-Za-z])/g, message: "حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي", fields: ["title", "body"] },
   // Noun duals the verb-dual check above does not see: «إضافة نزالين»، «مواجهتين» (INCIDENTS #438)
