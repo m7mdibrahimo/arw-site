@@ -722,7 +722,7 @@
       var links = document.createElement('div');
       links.className = 'arw-more-acct-links';
       var H = document.documentElement.lang === 'en' ? '/en' : '';
-      links.innerHTML = (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
+      links.innerHTML = '<a href="' + H + '/account/#follows">متابعاتي</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
       links.querySelector('button').addEventListener('click', signOut);
       sheet.querySelector('.arw-more-acct').insertAdjacentElement('afterend', links);
     }

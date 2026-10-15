@@ -928,8 +928,8 @@ html.arw-dark .arw-am.is-prem .arw-am-status, html.arw-dark .arw-am.is-official 
 .arw-am-out{ width:100%; margin-top:4px; border:0; border-top:1px solid var(--line, #ece6d8); border-radius:0 0 12px 12px; background:none; cursor:pointer; color:var(--coral, #e5484d) !important; }
 .arw-am-out svg{ color:inherit; }
 /* the phones' «المزيد»: settings and signing out under the member's name */
-.arw-more-acct-links{ display:flex; gap:8px; margin:-6px 0 14px; }
-.arw-more-acct-links a, .arw-more-acct-links button{ flex:1; display:flex; align-items:center; justify-content:center; height:40px; border-radius:12px; border:1px solid var(--line, #ece6d8); background:var(--card, #fff); color:var(--ink, #1e2530); font:700 13.5px 'Cairo',sans-serif; text-decoration:none; cursor:pointer; }
+.arw-more-acct-links{ display:flex; flex-wrap:wrap; gap:8px; margin:-6px 0 14px; }
+.arw-more-acct-links a, .arw-more-acct-links button{ flex:1 1 calc(50% - 4px); display:flex; align-items:center; justify-content:center; height:40px; border-radius:12px; border:1px solid var(--line, #ece6d8); background:var(--card, #fff); color:var(--ink, #1e2530); font:700 13.5px 'Cairo',sans-serif; text-decoration:none; cursor:pointer; }
 .arw-more-acct-links button{ color:var(--coral, #e5484d); }
 
 /* The site's language, at the very bottom of every page (lib/i18n/mirror.cjs langButton; owner 2026-10-15) */
