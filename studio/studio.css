@@ -864,6 +864,7 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 @media (max-width: 720px) { .mb-card .mb-card-acts { grid-column: 1 / -1; justify-content: flex-start; } }
 .mb-wait { font-style: normal; font-size: 11.5px; font-weight: 900; color: var(--amber); background: color-mix(in srgb, var(--amber) 14%, transparent); padding: 2px 8px; border-radius: 99px; }
 .mb-fact .mb-wait { font-size: 13px; }
+.pr-official { font-style: normal; font-size: 11.5px; font-weight: 900; color: #3b2600; background: linear-gradient(135deg, #ffd25a, #e09a12); padding: 2px 8px; border-radius: 99px; }
 .mb-fact #mb-verify { margin-top: 4px; align-self: flex-start; }
 
 /* «المجتمع» (studio/js/views/community.js): the rooms, the reports, a room's latest messages */

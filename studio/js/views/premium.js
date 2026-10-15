@@ -38,7 +38,7 @@ export async function renderPremium(page) {
         ${(d.requests || []).length ? html`<div class="cy-list">${d.requests.map(r => html`<article class="cy-item pr-req is-${r.status}" data-req="${r.id}">
           ${av(r)}
           <div class="cy-item-main">
-            <div class="cm-meta"><b>${r.display || r.username}</b><span class="muted small">${KINDS[r.kind] || ''} · ${timeAgo(r.created)}</span>${r.premium_until > Date.now() ? '' : html`<em class="mb-wait">العضوية خلصت</em>`}</div>
+            <div class="cm-meta"><b>${r.display || r.username}</b><span class="muted small">${KINDS[r.kind] || ''} · ${timeAgo(r.created)}</span>${r.official ? html`<em class="pr-official">الحساب الرسمي</em>` : r.premium_until > Date.now() ? '' : html`<em class="mb-wait">العضوية خلصت</em>`}</div>
             <p class="pr-req-text">${r.text}</p>
             <div class="pr-states">${STATES.map(([k, l]) => html`<label><input type="radio" name="st-${r.id}" value="${k}" ${r.status === k ? 'checked' : ''}><span>${l}</span></label>`)}</div>
             <div class="pr-req-edit">

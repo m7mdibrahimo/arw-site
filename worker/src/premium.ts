@@ -268,7 +268,7 @@ export async function studioPremium(env: PremiumEnv, now = Date.now()) {
   const [members, payments, requests, sums] = await db.batch([
     db.prepare("SELECT id, username, display, pic, email, premium_until, premium_since FROM members WHERE premium_until > ?1 ORDER BY premium_until ASC").bind(now),
     db.prepare(`SELECT p.*, m.username, m.display FROM premium_payments p LEFT JOIN members m ON m.id = p.member WHERE p.status = 'paid' ORDER BY p.paid_at DESC LIMIT 200`),
-    db.prepare(`SELECT r.*, m.username, m.display, m.pic, m.premium_until FROM premium_requests r LEFT JOIN members m ON m.id = r.member ORDER BY CASE r.status WHEN 'new' THEN 0 WHEN 'working' THEN 1 ELSE 2 END, r.id DESC LIMIT 300`),
+    db.prepare(`SELECT r.*, m.username, m.display, m.pic, m.premium_until, m.official FROM premium_requests r LEFT JOIN members m ON m.id = r.member ORDER BY CASE r.status WHEN 'new' THEN 0 WHEN 'working' THEN 1 ELSE 2 END, r.id DESC LIMIT 300`),
     db.prepare("SELECT currency, SUM(amount) AS total, COUNT(*) AS n FROM premium_payments WHERE status = 'paid' AND paid_at > ?1 AND granted_by = '' GROUP BY currency").bind(month),
   ]) as any[];
   return { success: true, members: members.results || [], payments: payments.results || [], requests: requests.results || [], month: sums.results || [], live: fawaterkLive(env) };
