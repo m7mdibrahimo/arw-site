@@ -594,3 +594,18 @@ html.arw-dark .cm-msg.is-prem .cm-name > span:first-child{ background-image:line
 
 /* the tools of a pointer stand beside the widest message too, inside the room (never a sideways scroll: #577) */
 @media (hover:hover) and (pointer:fine){ .cm-msg{ max-width:min(78%, 640px, calc(100% - 112px)); } }
+
+/* a room's own background (owner 2026-10-15: «خلفية … ضبابية شوية … لايقة … موبيل او ويب … دارك مود او لايت مود»):
+   the owner's picture filling the room at any size (cover, centred), blurred and under a veil of the site's own colour
+   (light cream or night black, as much as the owner chose), so the messages always read; the header and the box turn
+   to frosted glass over it. assets/community.js paintBg, worker/src/chat.ts roomBg. */
+.cm-chat.has-bg{ isolation:isolate; overflow:hidden; background-image:none; --cm-veil:rgba(250,247,240,var(--cm-bg-dim, .45)); }
+html.arw-dark .cm-chat.has-bg{ --cm-veil:rgba(7,9,13,var(--cm-bg-dim, .45)); }
+.cm-chat.has-bg::before{ content:""; position:absolute; inset:calc(var(--cm-bg-blur, 12px) * -2.5 - 4px); z-index:-1; pointer-events:none;
+  background-color:var(--bg); background-image:linear-gradient(var(--cm-veil), var(--cm-veil)), var(--cm-bg, none); background-size:cover; background-position:center;
+  filter:blur(var(--cm-bg-blur, 12px)) saturate(1.15); transition:opacity .5s ease; }
+.cm-chat.has-bg .cm-head, .cm-chat.has-bg .cm-compose{ background:color-mix(in srgb, var(--card) 72%, transparent); -webkit-backdrop-filter:blur(18px) saturate(1.4); backdrop-filter:blur(18px) saturate(1.4); }
+/* the words that sit on the picture itself get a soft glass of their own */
+.cm-chat.has-bg .cm-reply-cap, .cm-chat.has-bg .cm-sys{ width:fit-content; padding:2px 9px; border-radius:999px; background:color-mix(in srgb, var(--card) 70%, transparent); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }
+.cm-chat.has-bg .cm-msg.is-mine .cm-reply-cap{ margin-inline-start:auto; }
+.cm-chat.has-bg .cm-msg.is-big .cm-meta, .cm-chat.has-bg .cm-msg.is-sticker .cm-meta{ width:fit-content; padding:1px 8px; border-radius:999px; background:color-mix(in srgb, var(--card) 70%, transparent); }

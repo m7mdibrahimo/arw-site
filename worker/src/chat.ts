@@ -25,7 +25,9 @@ export interface ChatEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; MEDIA?:
 /** The rooms. The site's first list (_data/communityRooms.js, the page as built — tests/chat.test.mts keeps the two the
  *  same); since 2026-10-15 the owner adds, renames, hides, closes and orders them from the panel (KV «chat:rooms»,
  *  owner: «حتى لو انا حبيت اضيف ساحة او كروب او اعدل في اسماء ال موجود») and the page follows /chat/rooms. */
-export type RoomInfo = { id: string; name: string; about: string; mark: string; hue: number; hidden?: boolean; closed?: boolean };
+export type RoomInfo = { id: string; name: string; about: string; mark: string; hue: number; hidden?: boolean; closed?: boolean;
+  /** its own background (the owner's, from the panel): the picture, how blurred (px) and how veiled (%) behind the messages */
+  bg?: string; bgBlur?: number; bgDim?: number };
 export const DEFAULT_ROOMS: RoomInfo[] = [
   { id: "general", name: "الساحة العامة", about: "كل محبي المصارعة في مكان واحد", mark: "ARW", hue: 177 },
   { id: "wwe", name: "متابعين اتحاد WWE", about: "رو وسماك داون وNXT والعروض الكبرى", mark: "WWE", hue: 4 },
@@ -484,7 +486,7 @@ export async function handleChat(request: Request, env: ChatEnv, url: URL): Prom
 
   if (path === "/chat/rooms" && request.method === "GET") {
     const list = (await roomList(env)).filter(r => !r.hidden);
-    const info = (r: RoomInfo) => ({ id: r.id, name: r.name, about: r.about, mark: r.mark, hue: r.hue, closed: !!r.closed });
+    const info = (r: RoomInfo) => ({ id: r.id, name: r.name, about: r.about, mark: r.mark, hue: r.hue, closed: !!r.closed, ...(r.bg ? { bg: r.bg, bgBlur: r.bgBlur ?? BG_BLUR, bgDim: r.bgDim ?? BG_DIM } : {}) });
     if (!env.CHAT) return reply({ rooms: list.map(r => ({ ...info(r), online: 0, today: 0, lastId: 0, last: null })) });
     const rooms = await Promise.all(list.map(async r => {
       try { return { ...info(r), ...(await (await roomCall(env, r.id, "/summary")).json() as any) }; } catch { return { ...info(r), online: 0, today: 0, lastId: 0, last: null }; }
@@ -684,6 +686,33 @@ export async function studioChatDismiss(env: ChatEnv, id: unknown) {
 }
 
 /** The panel's «الغرف»: the whole list, saved as one (add, rename, describe, colour, order, hide, close for writing) */
+// ── a room's background (owner 2026-10-15: «اضيف خلفية في الشات … ضبابية شوية … كل غرفة منفصلة … محدش يقدر يعملها غيري»)
+// The owner uploads it from the panel (only them: worker/src/index.ts), it's kept with the room's media and every member
+// sees it, blurred and veiled in the site's light or dark colour (assets/community.css «has-bg»), whatever the screen.
+export const BG_BLUR = 12, BG_DIM = 50;
+/** A background picture the panel uploaded (nothing else is ever put behind a room) */
+export function roomBg(u: unknown): string {
+  const v = String(u || "");
+  return v.startsWith(MEDIA_PREFIX) && /^chat\/[a-z][a-z0-9]{1,23}\/\d{6}\/[a-f0-9]{24}\.(webp|jpg|png)$/.test(v.slice(MEDIA_PREFIX.length)) ? v : "";
+}
+export async function studioChatBg(env: ChatEnv, room: unknown, request: Request) {
+  if (!isRoom(room)) return { success: false, error: "رابط المجموعة غلط." };
+  if (!env.MEDIA) return { success: false, error: "رفع الصور مش متاح دلوقتي." };
+  const type = String(request.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
+  const ext = ({ "image/webp": "webp", "image/jpeg": "jpg", "image/png": "png" } as Record<string, string>)[type];
+  if (!ext) return { success: false, error: "الصورة لازم تكون JPG أو PNG أو WebP." };
+  const body = new Uint8Array(await request.arrayBuffer());
+  if (!body.length || body.length > 6 * 1024 * 1024) return { success: false, error: "الصورة كبيرة، أقصى حجم 6 ميجا." };
+  // the picture's own first bytes, not just what the browser said
+  const head = Array.from(body.slice(0, 12));
+  const real = ext === "png" ? head[0] === 0x89 && head[1] === 0x50 : ext === "jpg" ? head[0] === 0xff && head[1] === 0xd8 : head[8] === 0x57 && head[9] === 0x45 && head[10] === 0x42 && head[11] === 0x50;
+  if (!real) return { success: false, error: "الملف ده مش صورة سليمة." };
+  const d = new Date();
+  const key = `chat/${room}/${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, "0")}/${rnd()}.${ext}`;
+  await env.MEDIA.put(key, body, { httpMetadata: { contentType: type }, customMetadata: { bg: "1" } });
+  return { success: true, url: MEDIA_PREFIX + key };
+}
+
 export async function studioChatRooms(env: ChatEnv, body: any = null) {
   if (!body) return { success: true, rooms: await roomList(env, true), defaults: DEFAULT_ROOMS };
   const list = Array.isArray(body.rooms) ? body.rooms : [];
@@ -695,8 +724,11 @@ export async function studioChatRooms(env: ChatEnv, body: any = null) {
     seen.add(id);
     const name = String(r.name || "").replace(/\s+/g, " ").trim().slice(0, 40);
     if (name.length < 2) return { success: false, error: `اكتب اسم للمجموعة «${id}».` };
+    const bg = roomBg(r.bg);
+    const num = (v: unknown, lo: number, hi: number, d: number) => { const n = Math.round(Number(v)); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, n)) : d; };
     out.push({ id, name, about: String(r.about || "").replace(/\s+/g, " ").trim().slice(0, 90), mark: String(r.mark || name).replace(/\s+/g, "").slice(0, 6) || id.slice(0, 4).toUpperCase(),
-      hue: Math.max(0, Math.min(360, Math.round(Number(r.hue) || 0))), ...(r.hidden ? { hidden: true } : {}), ...(r.closed ? { closed: true } : {}) });
+      hue: Math.max(0, Math.min(360, Math.round(Number(r.hue) || 0))), ...(r.hidden ? { hidden: true } : {}), ...(r.closed ? { closed: true } : {}),
+      ...(bg ? { bg, bgBlur: num(r.bgBlur, 0, 30, BG_BLUR), bgDim: num(r.bgDim, 0, 90, BG_DIM) } : {}) });
   }
   if (!out.some(r => !r.hidden)) return { success: false, error: "لازم تفضل مجموعة واحدة على الأقل ظاهرة." };
   await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(out));

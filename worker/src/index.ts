@@ -40,7 +40,7 @@ import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete } from "./predict";
-import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
+import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
@@ -3149,6 +3149,13 @@ export default {
         const who = await studioUser(request, env as any);
         if (path === "/api/studio/chat" && request.method === "GET") return json(await studioChat(env as any));
         if (path === "/api/studio/chat/rooms" && request.method === "GET") return json(await studioChatRooms(env as any));
+        // a room's background picture: the owner only (it's on every member's screen)
+        if (path === "/api/studio/chat/bg" && request.method === "POST") {
+          if (!who || who.user.mustChange || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
+          const r = await studioChatBg(env as any, url.searchParams.get("room"), request);
+          if (r.success) await studioAudit(env as any, who.user, "community.bg", { room: String(url.searchParams.get("room")) }).catch(() => {});
+          return json(r, r.success ? 200 : 400);
+        }
         const room = path.match(/^\/api\/studio\/chat\/room\/([a-z][a-z0-9]{1,23})$/);
         if (room && request.method === "GET") { const r = await studioChatRoom(env as any, room[1], Number(url.searchParams.get("before")) || 0); return json(r, r.success ? 200 : 404); }
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
