@@ -235,10 +235,10 @@
         {{ title }}
       {% else %}
         {% if headline %}
-          {{ headline | arabicShowName | stripDate }}
+          {{ headline | arabicShowName | stripDate | latestH1(showSeoData and showSeoData.isLatest) }}
         {% elif title %}
           {% if "عرض" in title or "تغطية" in title or "ملخص" in title or "برنامج" in title or "مسلسل" in title %}
-            {{ title | arabicShowName | stripDate }}
+            {{ title | arabicShowName | stripDate | latestH1(showSeoData and showSeoData.isLatest) }}
           {% else %}
             {{ show_type or "عرض" }} {{ title | arabicShowName | stripDate }} مترجم
           {% endif %}

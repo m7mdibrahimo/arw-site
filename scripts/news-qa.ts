@@ -79,6 +79,7 @@ try {
 const SHOW_WORDS = "(?:العرض|عرض|عروض|WWE|AEW|TNA|RAW|Raw|SmackDown|NXT|Dynamite|Collision|Rampage|iMPACT|EVOLVE)";
 
 const RULES: Rule[] = [
+  { code: "tatweel_before_arabic", severity: "error", re: /\u0640(?=[\u0621-\u064A])/g, message: "تطويل «ـ» قبل اسم عربي («لـرويس»، «بـتايتشي») — التطويل بيتكتب بس قبل الاسم الإنجليزي (بـWWE)", fields: ["title", "body", "tags"] },
   { code: "persian_letters", severity: "error", re: /[گکیپچژڤ]/g, message: "حروف فارسية بدل العربية" },
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة)" },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
@@ -229,7 +230,7 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
 export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch"];
 
@@ -842,6 +843,10 @@ export function autoFix(text: string): string {
   // "…which you can read here" link was dropped mid-sentence (INCIDENTS #93) — close it.
   out = out.split("\n").map(line => /^[ \t]*[-*#|>]/.test(line) || line.trim().length < 40 ? line
     : line.replace(/[،,][ \t]*$/, ".")).join("\n");
+  // The glossary turns «بـRoman Reigns» into «بـرومان رينز» and leaves the tatweel behind. A tatweel joins a
+  // preposition to an ENGLISH name only («بـWWE»); before an Arabic name it is a typo («لـرويس كيس»,
+  // «بـتايتشي» sat in ~200 stories — INCIDENTS #564)
+  out = out.replace(/\u0640+(?=[\u0621-\u064A])/g, "");
   return out.replace(/\u0000(\d+)\u0000/g, (_, i) => urls[Number(i)]);
 }
 

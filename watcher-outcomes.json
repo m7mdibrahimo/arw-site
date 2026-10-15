@@ -2,57 +2,62 @@
  "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:12.287Z"
+  "at": "2026-10-15T09:27:06.277Z"
  },
  "https://www.fightful.com/wrestling/333979-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:12.005Z"
+  "at": "2026-10-15T09:27:05.949Z"
  },
  "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:11.765Z"
+  "at": "2026-10-15T09:27:05.671Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:11.561Z"
+  "at": "2026-10-15T09:27:05.444Z"
  },
  "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:11.406Z"
+  "at": "2026-10-15T09:27:05.266Z"
  },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:11.208Z"
+  "at": "2026-10-15T09:27:05.040Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:11.049Z"
+  "at": "2026-10-15T09:27:04.861Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:10.697Z"
+  "at": "2026-10-15T09:27:04.445Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:10.540Z"
+  "at": "2026-10-15T09:27:04.265Z"
  },
  "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:10.384Z"
+  "at": "2026-10-15T09:27:04.080Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-15T06:40:10.135Z"
+  "at": "2026-10-15T09:27:03.791Z"
+ },
+ "https://www.wrestlinginc.com/2287280/aew-dynamite-collision-october-14-2026-3-things-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-15T08:04:05.469Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-wwe-deadmans-tour": {
   "reason": "مكرر مع خبر نزل قبل كده",
