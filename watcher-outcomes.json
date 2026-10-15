@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mick-foley-says-wrestlers-dont-need-wrestlemania-have-wrestlemania-moment": {
+  "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
+  "retry": false,
+  "at": "2026-10-15T11:02:06.859Z"
+ },
  "https://www.ringsidenews.com/identity-woman-who-took-selfie-andrade-october-14-aew-dynamite": {
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
   "retry": false,
