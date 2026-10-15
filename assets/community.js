@@ -6,6 +6,7 @@
 (function () {
   'use strict';
   var root = document.getElementById('cm');
+  if (root && document.documentElement.lang === 'en') { var hm = root.querySelector('.cm-home'); if (hm) { hm.href = '/en/'; hm.setAttribute('aria-label', 'Back to the site'); hm.title = 'Back to the site'; } }
   if (!root) return;
   var API = root.getAttribute('data-api');
   var WS = API.replace(/^http/, 'ws');
@@ -17,6 +18,13 @@
   var compose = root.querySelector('.cm-compose');
   var input = compose.querySelector('textarea');
   var sendBtn = compose.querySelector('[data-act="mic"]');
+  // a phone: sending keeps the keyboard up, as in WhatsApp (the tap never takes the focus from the box, and no click
+  // follows it; the microphone, with nothing written, works as before)
+  sendBtn.addEventListener('touchend', function (e) {
+    if (!e.cancelable || !canSend()) return;
+    e.preventDefault();
+    send();
+  }, { passive: false });
   var TOUCH = window.matchMedia('(hover: none)').matches;
   var LOGO = '/assets/brand-logo.png?v=2';
   var QUICK = ['❤️', '😂', '😮', '😢', '😡', '👍'];

@@ -57,7 +57,7 @@ html.arw-dark #feds::before, html.arw-dark #full-shows::before, html.arw-dark #r
   background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec) 70%, transparent) 50%, transparent) !important; opacity:.8;
 }
 html.arw-dark #feds::after, html.arw-dark #full-shows::after, html.arw-dark #recaps::after, html.arw-dark #nostalgia-home::after, html.arw-dark #news::after{
-  box-shadow:0 0 0 4px var(--bg), 0 0 18px 2px color-mix(in srgb, var(--sec) 70%, transparent) !important;
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--sec) 26%, transparent), 0 0 16px 2px color-mix(in srgb, var(--sec) 60%, transparent) !important;
 }
 
 /* Section titles: a gradient from the section colour to a lighter tint, softly lit. */
