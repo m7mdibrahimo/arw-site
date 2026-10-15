@@ -48,6 +48,30 @@
   }
   var BLUE = '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="#1d9bf0" d="M22.5 12.5c0-1.58-.88-2.95-2.15-3.6.15-.44.23-.92.23-1.4 0-2.21-1.71-4-3.82-4-.47 0-.92.08-1.34.25C14.82 2.42 13.53 1.5 12 1.5s-2.82.92-3.42 2.25c-.42-.17-.87-.25-1.34-.25-2.11 0-3.82 1.79-3.82 4 0 .48.08.96.23 1.4-1.27.65-2.15 2.02-2.15 3.6 0 1.5.8 2.8 1.97 3.48-.03.17-.04.35-.04.52 0 2.21 1.71 4 3.82 4 .47 0 .92-.08 1.34-.25.6 1.33 1.89 2.25 3.42 2.25s2.82-.92 3.42-2.25c.42.17.87.25 1.34.25 2.11 0 3.82-1.79 3.82-4 0-.17-.01-.35-.04-.52 1.17-.68 1.97-1.98 1.97-3.48z"/><path fill="#fff" d="M10.1 16.3 6.6 12.8l1.4-1.4 2.1 2.1 5-5 1.4 1.4z"/></svg>';
   var GOLD = BLUE.replace('#1d9bf0', '#e09a12');
+  // the wrestlers' pictures the site already has (assets/avatars/credits.json): an option's face when its name is one
+  var FACES = {};
+  fetch('/avatars/credits.json').then(function (r) { return r.json(); }).then(function (l) {
+    (l || []).forEach(function (w) { if (w && w.ar && w.slug) FACES[w.ar] = { slug: w.slug, en: w.en }; });
+    if (data) drawEvents();
+  }).catch(function () {});
+  function label(o) { return EN && FACES[o] && FACES[o].en ? FACES[o].en : o; }
+  function face(o) {
+    var a = el('span', 'pd-face'), f = FACES[o];
+    if (f) { var i = el('img'); i.src = '/avatars/' + f.slug + '.webp'; i.alt = ''; i.loading = 'lazy'; a.appendChild(i); }
+    else a.textContent = (String(o).trim().replace(/^(ال|ذا\s)(?=\S{2})/, '').match(/\S/) || ['?'])[0].toUpperCase();
+    return a;
+  }
+  function poster(src, title) {
+    var w = el('div', 'pd-lb'); w.setAttribute('role', 'dialog'); w.setAttribute('aria-label', title);
+    var i = el('img'); i.src = src; i.alt = title; w.appendChild(i);
+    var x = el('button', 'pd-lb-x', '×'); x.type = 'button'; x.setAttribute('aria-label', EN ? 'Close' : 'إغلاق'); w.appendChild(x);
+    var close = function () { w.classList.remove('is-on'); document.removeEventListener('keydown', key); setTimeout(function () { w.remove(); }, 200); };
+    var key = function (e) { if (e.key === 'Escape') close(); };
+    w.addEventListener('click', close);
+    document.addEventListener('keydown', key);
+    document.body.appendChild(w);
+    requestAnimationFrame(function () { w.classList.add('is-on'); });
+  }
   function leaderRow(p, small) {
     var li = el('li', 'pd-leader' + (p.rank <= 3 ? ' is-top is-' + p.rank : '') + (session && session.member.username === p.user ? ' is-me' : ''));
     li.appendChild(el('span', 'pd-rank', String(p.rank)));
@@ -97,24 +121,38 @@
       var meta = el('p', 'pd-when');
       meta.textContent = ev.status === 'done' ? when(ev.starts) : locked ? (EN ? 'The show has started, picks are closed.' : 'بدأ العرض، وأغلقت التوقعات. النتائج بعد نهايته.') : (EN ? 'Picks close in ' : 'تغلق التوقعات بعد ') + left(ev.starts) + ' · ' + when(ev.starts);
       head.appendChild(meta);
+      var total = ev.matches.reduce(function (t, m) { return t + (m.points || 1); }, 0);
+      head.appendChild(el('p', 'pd-ev-sum', EN ? ev.matches.length + ' matches · up to ' + total + ' points' : ar(ev.matches.length, 'نزال واحد', 'نزالان', 'نزالات', 'نزالا') + ' · حتى ' + pts(total)));
       card.appendChild(head);
       var list = el('ol', 'pd-matches');
       var mine = 0;
       ev.matches.forEach(function (m) {
         if (m.mine) mine++;
-        var li = el('li', 'pd-match');
+        var li = el('li', 'pd-match' + (m.image ? ' has-img' : ''));
+        // the match's own poster: the faces at a glance, the whole poster a tap away
+        if (m.image && /^(\/|https:\/\/)[^\s"'<>]*$/.test(m.image)) {
+          var pb = el('button', 'pd-m-poster'); pb.type = 'button'; pb.setAttribute('aria-label', EN ? 'Show the poster' : 'عرض البوستر');
+          var im = el('img'); im.src = m.image; im.alt = m.title; im.loading = 'lazy'; im.decoding = 'async'; pb.appendChild(im);
+          pb.addEventListener('click', function () { poster(m.image, m.title); });
+          li.appendChild(pb);
+        }
+        var body = el('div', 'pd-m-body');
         var top = el('div', 'pd-m-top');
         top.appendChild(el('b', null, m.title));
-        if (m.points > 1) top.appendChild(el('span', 'pd-m-pts', pts(m.points)));
-        li.appendChild(top);
-        var opts = el('div', 'pd-opts');
-        m.options.forEach(function (o) {
+        top.appendChild(el('span', 'pd-m-pts' + (m.points > 1 ? ' is-big' : ''), pts(m.points)));
+        body.appendChild(top);
+        if (m.note) body.appendChild(el('p', 'pd-m-note', m.note));
+        var duel = m.options.length === 2;
+        var opts = el('div', 'pd-opts' + (duel ? ' is-duel' : ''));
+        m.options.forEach(function (o, k) {
+          if (duel && k === 1) opts.appendChild(el('span', 'pd-vs', EN ? 'VS' : 'ضد'));
           var b = el('button', 'pd-opt');
           b.type = 'button';
           b.setAttribute('aria-pressed', String(m.mine === o));
           if (m.mine === o) b.classList.add('is-mine');
           if (m.winner) { if (o === m.winner) b.classList.add('is-win'); else if (m.mine === o) b.classList.add('is-wrong'); }
-          b.appendChild(el('span', 'pd-opt-name', o));
+          b.appendChild(face(o));
+          b.appendChild(el('span', 'pd-opt-name', label(o)));
           if (m.share) {
             var p = m.share[o] || 0;
             b.style.setProperty('--p', p + '%');
@@ -124,12 +162,19 @@
           else b.addEventListener('click', function () { pick(ev, m, o, b); });
           opts.appendChild(b);
         });
-        li.appendChild(opts);
-        if (m.winner && m.mine) li.appendChild(el('p', 'pd-m-res ' + (m.mine === m.winner ? 'is-ok' : 'is-no'), m.mine === m.winner ? (EN ? '✓ Right, +' + m.points : '✓ توقع صحيح، +' + pts(m.points)) : (EN ? '✗ Not this time' : '✗ لم يصب هذه المرة')));
+        body.appendChild(opts);
+        if (m.winner && m.mine) body.appendChild(el('p', 'pd-m-res ' + (m.mine === m.winner ? 'is-ok' : 'is-no'), m.mine === m.winner ? (EN ? '✓ Right, +' + m.points : '✓ توقع صحيح، +' + pts(m.points)) : (EN ? '✗ Not this time' : '✗ لم يصب هذه المرة')));
+        li.appendChild(body);
         list.appendChild(li);
       });
       card.appendChild(list);
-      if (!locked) card.appendChild(el('p', 'pd-progress', (EN ? 'Your picks: ' : 'توقعاتك: ') + mine + ' / ' + ev.matches.length + (mine === ev.matches.length ? (EN ? ' — all set ✓ you can change them until the show starts.' : ' — اكتملت ✓ تستطيع تغييرها حتى بداية العرض.') : '')));
+      if (!locked) {
+        var pr = el('div', 'pd-progress' + (mine === ev.matches.length ? ' is-full' : ''));
+        var bar = el('span', 'pd-bar'); var fill = el('i'); fill.style.width = Math.round(mine * 100 / Math.max(1, ev.matches.length)) + '%'; bar.appendChild(fill);
+        pr.appendChild(bar);
+        pr.appendChild(el('span', null, (EN ? 'Your picks: ' : 'توقعاتك: ') + mine + ' / ' + ev.matches.length + (mine === ev.matches.length ? (EN ? ' — all set ✓ you can change them until the show starts.' : ' — اكتملت ✓ يمكنك تغييرها حتى بداية العرض.') : '')));
+        card.appendChild(pr);
+      }
       if (ev.leaders && ev.leaders.length) {
         var lb = el('div', 'pd-ev-board');
         lb.appendChild(el('h3', null, 'الأفضل في هذا العرض'));

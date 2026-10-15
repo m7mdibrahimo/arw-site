@@ -30,7 +30,7 @@ export async function renderPredictions(page) {
             <button class="btn btn-danger-soft" data-del="${e.id}">${icon('trash')}</button>
           </div>
         </div>
-        <ol class="pd-card-ms">${e.matches.map(m => html`<li><b>${m.title}</b><span class="muted small">${m.options.join(' · ')}${m.points > 1 ? ` · ${m.points} نقط` : ''} · ${num(m.picks)} توقع</span>${m.winner ? html`<span class="pd-win">🏆 ${m.winner}</span>` : ''}</li>`)}</ol>
+        <ol class="pd-card-ms">${e.matches.map(m => html`<li>${m.image ? html`<img class="pd-card-mimg" src="${m.image}" alt="" loading="lazy">` : ''}<b>${m.title}</b>${m.note ? html`<span class="muted small">${m.note}</span>` : ''}<span class="muted small">${m.options.join(' · ')}${m.points > 1 ? ` · ${m.points} نقط` : ''} · ${num(m.picks)} توقع</span>${m.winner ? html`<span class="pd-win">🏆 ${m.winner}</span>` : ''}</li>`)}</ol>
       </article>`)}</div>` : html`<div class="empty"><h2>لسه مفيش توقعات</h2><p class="muted">دوس «عرض جديد» وضيف نزالات أول عرض كبير جاي.</p></div>`}
     </div>`);
   $('#pd-new').onclick = () => editor(page, null);
@@ -45,7 +45,7 @@ export async function renderPredictions(page) {
 }
 
 function editor(page, ev) {
-  const e = ev ? JSON.parse(JSON.stringify(ev)) : { title: '', title_en: '', starts: Date.now() + 2 * 864e5, image: '', status: 'open', matches: [{ title: '', options: ['', ''], points: 1 }] };
+  const e = ev ? JSON.parse(JSON.stringify(ev)) : { title: '', title_en: '', starts: Date.now() + 2 * 864e5, image: '', status: 'open', matches: [{ title: '', note: '', image: '', options: ['', ''], points: 1 }] };
   const draw = () => {
     mount(page, html`<div class="wrap page-in pd-ed">
       <div class="page-title"><div><h1>${ev ? 'تعديل التوقعات' : 'توقعات عرض جديد'}</h1><p class="muted">كل نزال ليه اسم، واختيارات للفايز (اتنين أو أكتر)، ونقط للتوقع الصح.</p></div>
@@ -62,18 +62,20 @@ function editor(page, ev) {
           <div class="pd-ed-m-top"><b>${i + 1}</b><input class="input" data-m="title" value="${m.title}" placeholder="مثلا: كودي رودز ضد جون سينا (بطولة WWE)" maxlength="160">
             <select class="input pd-pts" data-m="points" title="نقط التوقع الصح">${[1, 2, 3].map(p => html`<option value="${p}" ${Number(m.points) === p ? 'selected' : ''}>${p} ${p === 1 ? 'نقطة' : 'نقط'}</option>`)}</select>
             <button class="btn btn-ghost" data-mdel="${i}" title="شيل النزال">${icon('trash')}</button></div>
+          <input class="input" data-m="note" value="${m.note || ''}" placeholder="سطر تحته (اختياري): مثلا «على بطولة WWE · كودي البطل»" maxlength="160">
           <textarea class="input" data-m="options" rows="2" placeholder="الاختيارات: كل اسم في سطر">${m.options.join('\n')}</textarea>
+          <input class="input" dir="ltr" data-m="image" value="${m.image || ''}" placeholder="صورة النزال (رابط، اختياري): https://… أو /assets/…">
         </article>`)}</div>
         <button class="btn" id="pd-addm">${icon('plus')}ضيف نزال</button>
       </section>
     </div>`);
     $('#pd-back').onclick = () => renderPredictions(page);
-    $('#pd-addm').onclick = () => { read(); e.matches.push({ title: '', options: ['', ''], points: 1 }); draw(); };
+    $('#pd-addm').onclick = () => { read(); e.matches.push({ title: '', note: '', image: '', options: ['', ''], points: 1 }); draw(); };
     $$('[data-mdel]', page).forEach(b => b.onclick = () => { read(); e.matches.splice(Number(b.dataset.mdel), 1); draw(); });
     $('#pd-save').onclick = async (ev2) => {
       read();
       const btn = ev2.currentTarget; btn.disabled = true;
-      try { await api.predictSave({ ...e, matches: e.matches.map(m => ({ id: m.id || 0, title: m.title, options: m.options.filter(Boolean), points: m.points })) }); toast('اتحفظت ✓ هتظهر على الموقع حالا'); renderPredictions(page); }
+      try { await api.predictSave({ ...e, matches: e.matches.map(m => ({ id: m.id || 0, title: m.title, note: m.note || '', image: m.image || '', options: m.options.filter(Boolean), points: m.points })) }); toast('اتحفظت ✓ هتظهر على الموقع حالا'); renderPredictions(page); }
       catch (err) { toast(err.message, 'error'); btn.disabled = false; }
     };
   };
@@ -84,6 +86,8 @@ function editor(page, ev) {
       m.title = $('[data-m="title"]', el).value.trim();
       m.points = Number($('[data-m="points"]', el).value) || 1;
       m.options = $('[data-m="options"]', el).value.split(/\n|،|,/).map(x => x.trim()).filter(Boolean);
+      m.note = $('[data-m="note"]', el).value.trim();
+      m.image = $('[data-m="image"]', el).value.trim();
     });
   };
   draw();
