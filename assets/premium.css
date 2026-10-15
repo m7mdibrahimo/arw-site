@@ -31,6 +31,10 @@ html.arw-dark .pm-flash.is-ok{ color:#4ade80; }
 .pm-perks{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; }
 .pm-perk{ padding:20px 18px; border-radius:20px; background:var(--card); border:1px solid var(--line); transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, border-color .2s ease; }
 .pm-perk:hover{ transform:translateY(-4px); border-color:color-mix(in srgb, var(--c) 45%, var(--line)); box-shadow:0 18px 34px -22px var(--c); }
+.pm-perk-wide{ grid-column:1 / -1; display:flex; align-items:center; gap:18px; padding:22px 24px; background:linear-gradient(135deg, color-mix(in srgb, var(--c) 10%, var(--card)), var(--card) 60%); border-color:color-mix(in srgb, var(--c) 35%, var(--line)); }
+.pm-perk-wide .pm-perk-ic{ flex:none; width:58px; height:58px; margin:0; border-radius:18px; }
+.pm-perk-wide b{ font-size:18.5px; }
+@media (max-width:560px){ .pm-perk-wide{ align-items:flex-start; gap:14px; padding:18px; } .pm-perk-wide .pm-perk-ic{ width:48px; height:48px; } .pm-perk-wide b{ font-size:16.5px; } }
 .pm-perk-ic{ width:48px; height:48px; border-radius:15px; display:flex; align-items:center; justify-content:center; background:color-mix(in srgb, var(--c) 14%, transparent); color:var(--c); margin-bottom:12px; }
 .pm-perk b{ display:block; font:900 16.5px/1.4 'Cairo',sans-serif; color:var(--ink); margin-bottom:5px; }
 .pm-perk p{ margin:0; color:var(--muted); font-size:14px; line-height:1.75; }

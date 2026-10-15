@@ -1,11 +1,17 @@
 {# Applies the saved theme BEFORE the first paint (it used to run at the end of <body>,
    so dark-mode readers saw the light page flash on every load). Keep it first in <head>. #}
-<script>(function(){var t=null;try{t=localStorage.getItem('arw-theme');}catch(e){}if(t!=='dark'&&t!=='light'){try{var m=document.cookie.match(/(?:^|; )arw-theme=([^;]*)/);if(m)t=decodeURIComponent(m[1]);}catch(e){}}var d=document.documentElement;if(t==='dark')d.classList.add('arw-dark');d.classList.add('arw-am-on');try{var s=JSON.parse(localStorage.getItem('arw-member')||'null'),m=s&&s.token&&s.member;if(m)d.classList.add('arw-in');if(m&&(m.official||Number(m.premium)>Date.now()))d.classList.add('arw-is-prem');}catch(e){}})();</script>
+<script>(function(){var t=null;try{t=localStorage.getItem('arw-theme');}catch(e){}if(t!=='dark'&&t!=='light'){try{var m=document.cookie.match(/(?:^|; )arw-theme=([^;]*)/);if(m)t=decodeURIComponent(m[1]);}catch(e){}}var d=document.documentElement;if(t==='dark')d.classList.add('arw-dark');d.classList.add('arw-am-on');window.arwShowAds=function(){return !d.classList.contains('arw-is-prem');};try{var s=JSON.parse(localStorage.getItem('arw-member')||'null'),m=s&&s.token&&s.member;if(m)d.classList.add('arw-in');if(m&&(m.official||Number(m.premium)>Date.now()))d.classList.add('arw-is-prem');}catch(e){}})();</script>
+{# No ads for a member with «العضوية المميزة» (owner 2026-10-15: «مش هيكون عنده اعلانات … هيتصفح الموقع بدون اي اعلانات»):
+   any ad the site ever shows goes in an element with class «arw-ad» (or data-arw-ad), which is never shown to them,
+   and any ad script is loaded only when window.arwShowAds() says so. #}
+{%- if ads and ads.scripts and ads.scripts.length %}
+<script>if(window.arwShowAds()){[{% for a in ads.scripts %}{{ a | dump | safe }}{% if not loop.last %},{% endif %}{% endfor %}].forEach(function(a){var x=document.createElement('script');x.async=true;x.src=a.src;var t=a.attrs||{};for(var k in t)x.setAttribute(k,t[k]);document.head.appendChild(x);});}</script>
+{%- endif %}
 {# The header as it ends up, from the first paint (owner 2026-10-15: the old night-mode and saved-list buttons showed for a
    moment before the script moved them into the member's menu): they're hidden at once, the member's button has its place
    kept, and «العضوية المميزة» never shows to a member who already has it. #}
 <style>html.arw-dark,html.arw-dark body{background-color:#07090d;color-scheme:dark}
-html.arw-am-on header #navMenu #arwThemeToggle,html.arw-am-on header #navMenu #arwBookmarksBtn,html.arw-is-prem .premium-btn,html:not(.arw-in) .arw-cm-form{display:none!important}
+html.arw-am-on header #navMenu #arwThemeToggle,html.arw-am-on header #navMenu #arwBookmarksBtn,html.arw-is-prem .premium-btn,html.arw-is-prem .arw-ad,html.arw-is-prem [data-arw-ad],html.arw-is-prem ins.adsbygoogle,html.arw-is-prem .adsbygoogle,html.arw-is-prem [id^="div-gpt-ad"],html.arw-is-prem iframe[id^="google_ads"],html.arw-is-prem [data-ad-slot],html.arw-is-prem [data-ad-client],html:not(.arw-in) .arw-cm-form{display:none!important}
 html.arw-in .arw-follow-btn:not([data-ready]){visibility:hidden}
 html.arw-in.arw-am-on header #navMenu li.utility-row:not(:has(.arw-acct-btn))::before{width:78px;border:0;border-radius:0;background:radial-gradient(circle at 18px 50%,var(--card,#fff) 16.5px,var(--line,#e6e0d4) 17px,transparent 18px),radial-gradient(circle at calc(100% - 18px) 50%,var(--card,#fff) 16.5px,var(--line,#e6e0d4) 17px,transparent 18px)}
 html.arw-am-on header #navMenu li.utility-row:not(:has(.arw-acct-btn))::before{content:"";order:2;flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line,#e6e0d4);background:var(--card,#fff);box-sizing:border-box}

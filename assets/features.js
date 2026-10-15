@@ -926,7 +926,7 @@
         '<a class="arw-am-me" href="' + HOME + '/account/" role="menuitem"><span class="arw-am-av"><span class="arw-acct-in">' + memberAvatar(m) + '</span></span><span class="arw-am-who"><b></b><small dir="ltr"></small></span></a>' +
         '<div class="arw-am-status">' + (m.official || prem ? CROWN_IC : '') + '<span></span></div>' +
         (m.official || prem ? '' :
-          '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، وتوثيق حسابك</small></span></a>') +
+          '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، وتوثيق حسابك، وحماية من الإعلانات</small></span></a>') +
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
           '<a href="' + HOME + '/account/#follows" role="menuitem">' + BELL_IC + '<span>متابعاتي</span></a>' +
@@ -1028,7 +1028,7 @@
     var JOIN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M19 8v6M16 11h6"/></svg>';
     var offers = m ? [
       ['العروض الجديدة قبل الجميع', 'مع العضوية المميزة تشاهد العرض قبل نشره للكل بساعات.', 'اعرف أكثر', HOME + '/premium/'],
-      ['شاهد بدون إعلانات', 'سيرفرات خاصة للأعضاء المميزين: أسرع وبدون نوافذ مزعجة.', 'اعرف أكثر', HOME + '/premium/'],
+      ['حماية دائمة من الإعلانات', 'عندما نضيف إعلانات للموقع لاحقا، لن تظهر أبدا للأعضاء المميزين.', 'اعرف أكثر', HOME + '/premium/'],
       ['وثق حسابك', 'علامة التوثيق بجانب اسمك، واسمك باللون الذهبي في التعليقات والمجتمع.', 'اشترك الآن', HOME + '/premium/'],
       ['اطلب أي عرض ونترجمه لك', 'الأعضاء المميزون يطلبون العروض القديمة والسلاسل، ونحن نترجمها.', 'اعرف أكثر', HOME + '/premium/']
     ] : [
