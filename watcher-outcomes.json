@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-15T00:36:10.103Z"
+ },
  "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-15T00:30:54.715Z"
- },
- "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-15T00:15:56.360Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-says-he-cant-stand-cm-punk-but-its-magic-for-the-audience-when-they-work-together": {
   "reason": "مكرر مع خبر نزل قبل كده",
