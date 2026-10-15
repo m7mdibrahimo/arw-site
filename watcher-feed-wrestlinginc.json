@@ -1,5 +1,25 @@
 [
   {
+    "id": 2290620754,
+    "link": "https://www.wrestlinginc.com/2287229/darby-allin-retains-tnt-title-qualifies-clockwork-carnage-aew-collision-main-event/",
+    "date": "Thu, 15 Oct 2026 03:37:58 +0000",
+    "date_gmt": "2026-10-15T03:37:58.000Z",
+    "title": {
+      "rendered": "Darby Allin Retains TNT Title, Qualifies For Clockwork Carnage In AEW Collision Main Event"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/darby-allin-retains-tnt-title-qualifies-for-clockwork-carnage-in-aew-collision-main-event/l-intro-1792035387.jpg"
+  },
+  {
+    "id": 2622429992,
+    "link": "https://www.wrestlinginc.com/2287219/adam-copeland-more-fill-out-aew-wrestledream-clockwork-carnage/",
+    "date": "Thu, 15 Oct 2026 02:34:14 +0000",
+    "date_gmt": "2026-10-15T02:34:14.000Z",
+    "title": {
+      "rendered": "Adam Copeland And More Fill Out AEW WrestleDream Clockwork Carnage"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/adam-copeland-and-more-fill-out-aew-wrestledream-clockwork-carnage/l-intro-1792031566.jpg"
+  },
+  {
     "id": 3328852665,
     "link": "https://www.wrestlinginc.com/2287206/kazuchika-okada-retains-aew-international-title-clockwork-carnage-qualifier/",
     "date": "Thu, 15 Oct 2026 01:34:20 +0000",
@@ -77,7 +97,7 @@
     "title": {
       "rendered": "AEW Dynamite And Collision Results 10/14/26 W/ Live Updates"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-and-collision-results-101426-w-live-updates/l-intro-1791946443.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-collision-october-14-2026-results/l-intro-1792035059.jpg"
   },
   {
     "id": 3389315454,
@@ -178,25 +198,5 @@
       "rendered": "WWE's Roman Reigns Comments On Possibility Of Doing More Movies After Street Fighter"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-roman-reigns-comments-on-possibility-of-doing-more-movies-after-street-fighter/l-intro-1791976367.jpg"
-  },
-  {
-    "id": 4055264088,
-    "link": "https://www.wrestlinginc.com/2286499/aew-roh-final-battle-2026-december-4-boeing-center-san-antonio/",
-    "date": "Wed, 14 Oct 2026 14:42:28 +0000",
-    "date_gmt": "2026-10-14T14:42:28.000Z",
-    "title": {
-      "rendered": "AEW Reveals Date And Location For ROH Final Battle 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-reveals-date-and-location-for-roh-final-battle-2026/l-intro-1791988465.jpg"
-  },
-  {
-    "id": 1244285081,
-    "link": "https://www.wrestlinginc.com/2286278/amazing-red-tna-hall-of-fame-x-division-title-same-night-bound-for-glory/",
-    "date": "Wed, 14 Oct 2026 14:30:00 +0000",
-    "date_gmt": "2026-10-14T14:30:00.000Z",
-    "title": {
-      "rendered": "Amazing Red Comments On Being Inducted Into TNA Hall Of Fame, Winning X-Division Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-comments-on-being-inducted-into-tna-hall-of-fame-winning-x-division-title/l-intro-1791969745.jpg"
   }
 ]

@@ -11,7 +11,7 @@ import worker, { runWatcherPoll, newestFeedItem } from '../worker/src/index';
 import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
 import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
-import { checkArticle, autoFix, headUnheadedMatches, applyCorrections } from '../scripts/news-qa';
+import { checkArticle, autoFix, headUnheadedMatches, applyCorrections, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
 import { extractBodyImages, extractEmbeds, sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
@@ -2123,6 +2123,11 @@ test('a weekly show dated to a day it does not air on is flagged, and one tweet 
   assert.equal(showOnWrongWeekday('عرض WWE RAW يوم 28 سبتمبر', 2026), null);
   assert.equal(showOnWrongWeekday('عرض WWE NXT Live يوم 18 سبتمبر', 2026), null);
   assert.ok(checkArticle('x', 'يستعد الاتحاد لعرض AEW Dynamite يوم 28 سبتمبر المقبل.', []).some(i => i.code === 'show_wrong_day') || new Date().getUTCFullYear() !== 2026);
+  // INCIDENT #557: a wrong show date / weekday must block publishing and trigger the retry, not just warn.
+  assert.ok(BLOCKING_QA_CODES.includes('show_wrong_day') && RETRYABLE_QA_CODES.includes('show_wrong_day'));
+  assert.ok(BLOCKING_QA_CODES.includes('weekday_mismatch') && RETRYABLE_QA_CODES.includes('weekday_mismatch'));
+  assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي أقيم يوم 15 أكتوبر', 2026), 'AEW Dynamite الذي أقيم يوم 15 أكتوبر');
+  assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي أقيم يوم 14 أكتوبر', 2026), null);
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /const key = `x:\$\{tweetId\}`/);
 });

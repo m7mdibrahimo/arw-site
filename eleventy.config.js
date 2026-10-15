@@ -1699,6 +1699,16 @@ module.exports = function(eleventyConfig) {
   // Search titles for a show page, worded the way people search. «عرض الرو 28.09.2026 مترجم» became
   // «عرض الرو الأخير مترجم (28 سبتمبر 2026) — WWE RAW» on the program's newest show, and every show
   // got its own description instead of one sentence shared by all of them (INCIDENTS #275).
+  // The newest episode of a weekly program is searched as «عرض الرو الأخير مترجم»: its cards (image alt, link label) on the home
+  // page and the program's library page say «الأخير» next to the name, like its title does — attributes only, nothing visible.
+  eleventyConfig.addNunjucksFilter("latestCardName", function(name, url, library) {
+    const n = String(name || "");
+    if (!n || /الأخير|الاخير/.test(n)) return n;
+    const prog = (library || []).find(p => p.latest && p.latest.url === url);
+    if (!prog || (prog.count || 0) < 4) return n;
+    const m = n.match(/^(.*?)\s+(\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}.*)$/);
+    return m && /[\u0600-\u06FF]/.test(m[1]) ? `${m[1]} الأخير ${m[2]}` : n;
+  });
   eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description) {
     const day = eventDate ? formatDate(eventDate) : "";
     const isLatest = (library || []).some(p => p.latest && p.latest.url === url);

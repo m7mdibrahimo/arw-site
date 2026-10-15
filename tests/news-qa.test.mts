@@ -19,3 +19,18 @@ test("a sentence ending on «وقال.» and the duals «الاثنتين» / «
   assert.ok(checkArticle("عنوان", "ليلتا العرض كانتا ممتازتين.").some((i) => i.code === "dual_noun"));
   assert.ok(!checkArticle("عنوان", "في يوم الاثنين أقيم العرض.").some((i) => i.code === "dual_noun"));
 });
+
+test("dual verbs «يعرفان / الاثنان» and a bold heading line opening the story are blocked (INCIDENTS #558)", () => {
+  const t = "جيفون إيفانز يتحدث عن علاقته بجاكوب فاتو";
+  assert.ok(checkArticle(t, "بدأ الاثنان مسيرتهم في الاتحادات المستقلة ويعرفان حجم التعب المطلوب للوصول إلى القمة.").some((i) => i.code === "dual_form"));
+  assert.ok(!checkArticle(t, "بدأ كل منهم مسيرته في الاتحادات المستقلة ويعرف حجم التعب المطلوب للوصول إلى القمة.").some((i) => i.code === "dual_form"));
+  assert.ok(checkArticle(t, "**المواجهة الأولى: نزال فرق للسيدات**\n\nأعلن اتحاد AEW عن نزال جديد.").some((i) => i.code === "stray_heading"));
+  assert.ok(!checkArticle(t, "أعلن اتحاد AEW عن نزال جديد في **عرض كبير** قريبا.").some((i) => i.code === "stray_heading"));
+});
+
+test("the names glossary has no dual-form champion titles (INCIDENTS #559)", async () => {
+  const fs = await import("node:fs");
+  const names = JSON.parse(fs.readFileSync(new URL("../scripts/wrestler-names.json", import.meta.url), "utf8")) as Record<string, string>;
+  const dual = Object.entries(names).filter(([, v]) => /(?:بطلتا|بطلا|العالميتان|العالميان)(?![ء-ي])/.test(String(v)));
+  assert.deepEqual(dual, []);
+});
