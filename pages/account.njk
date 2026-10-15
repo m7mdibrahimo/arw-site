@@ -275,7 +275,7 @@ permalink: "/account/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015i">
+<link rel="stylesheet" href="/assets/features.css?v=20261015j">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>حسابك | عرب راسلنج</title>
@@ -471,7 +471,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
 .is-official input[name="display"]{ opacity:.7; }
 .acct-perk-blue i{ background:rgba(29,155,240,.1) !important; border-color:rgba(29,155,240,.25) !important; }
 .acct-verify{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 14px; border-radius:14px; background:var(--gold-soft); font-size:14px; font-weight:700; }
-/* «متابعاتك» */
+/* «قائمتي» */
 .acct-fl h3{ margin:18px 0 10px; font:800 14px 'Cairo',sans-serif; color:var(--muted); }
 .acct-fl-lead{ margin:0 0 14px; color:var(--muted); font-size:14px; line-height:1.8; }
 .acct-fl-mine{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
@@ -736,9 +736,9 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           {#- «المتابعة» (owner 2026-10-15): what the member follows, their device's notifications, and the usual picks -#}
           {% from "follow-btn.njk" import followBtn %}
           <section class="acct-sec acct-fl" id="follows">
-            <h2>متابعاتك</h2>
-            <p class="acct-fl-lead">تابع البرامج والاتحادات التي تحبها، ويصلك إشعار أول ما ينزل عرض جديد مترجم منها. تستطيع المتابعة أيضا من صفحة أي عرض أو برنامج أو اتحاد.</p>
-            <div class="acct-fl-mine" aria-live="polite"><p class="acct-fl-none">لم تتابع شيئا بعد. اختر من الاقتراحات بالأسفل.</p></div>
+            <h2>قائمتي</h2>
+            <p class="acct-fl-lead">البرامج والاتحادات التي تتابعها. أول ما ينزل عرض جديد مترجم لأي منها يصلك إشعار. أضف من الاقتراحات بالأسفل، أو بزر «تابع» في صفحة أي عرض أو برنامج أو اتحاد.</p>
+            <div class="acct-fl-mine" aria-live="polite"><p class="acct-fl-none">قائمتك فارغة. أضف برامجك واتحاداتك المفضلة من الاقتراحات بالأسفل.</p></div>
             <div class="acct-fl-push">
               <span class="acct-fl-push-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
               <span class="acct-fl-push-tx"><b>إشعارات على هذا الجهاز</b><small class="acct-fl-push-state">يصلك إشعار على هاتفك أو حاسوبك حتى والموقع مغلق.</small></span>
@@ -983,7 +983,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015i" defer></script>
+<script src="/assets/features.js?v=20261015j" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

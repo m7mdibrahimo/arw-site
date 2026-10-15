@@ -300,7 +300,7 @@
   }
   function hashTab() { return location.hash === '#settings' ? 'settings' : location.hash === '#subscription' ? 'sub' : 'home'; }
 
-  // «متابعاتك» (owner 2026-10-15): what they follow (each one a button: pressed again, it stops), their device's
+  // «قائمتي» (owner 2026-10-15): what they follow (each one a button: pressed again, it stops), their device's
   // notifications; the buttons themselves work in assets/features.js, here only the list is drawn
   var FOLLOW_API = API.replace(/\/members$/, '/follow'), flBusy = false;
   function drawPush() {
@@ -328,7 +328,7 @@
       if (!d || !d.ok) return;
       box.textContent = '';
       var list = d.follows || [];
-      if (!list.length) { var p = document.createElement('p'); p.className = 'acct-fl-none'; p.textContent = 'لم تتابع شيئا بعد. اختر من الاقتراحات بالأسفل.'; box.appendChild(p); }
+      if (!list.length) { var p = document.createElement('p'); p.className = 'acct-fl-none'; p.textContent = 'قائمتك فارغة. أضف برامجك واتحاداتك المفضلة من الاقتراحات بالأسفل.'; box.appendChild(p); }
       list.forEach(function (f) {
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'arw-follow-btn is-on';

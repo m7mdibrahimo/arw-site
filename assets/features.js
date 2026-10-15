@@ -792,7 +792,7 @@
       var links = document.createElement('div');
       links.className = 'arw-more-acct-links';
       var H = document.documentElement.lang === 'en' ? '/en' : '';
-      links.innerHTML = '<a href="' + H + '/account/#follows">متابعاتي</a><a href="' + H + '/predictions/">التوقعات</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
+      links.innerHTML = '<a href="' + H + '/account/#follows">قائمتي</a><a href="' + H + '/predictions/">التوقعات</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
       links.querySelector('button').addEventListener('click', signOut);
       sheet.querySelector('.arw-more-acct').insertAdjacentElement('afterend', links);
     }
@@ -987,7 +987,7 @@
           '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، وتوثيق حسابك، وحماية من الإعلانات</small></span></a>') +
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
-          '<a href="' + HOME + '/account/#follows" role="menuitem">' + BELL_IC + '<span>متابعاتي</span></a>' +
+          '<a href="' + HOME + '/account/#follows" role="menuitem">' + BELL_IC + '<span>قائمتي</span></a>' +
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
           (m.official ? '' : '<a href="' + HOME + '/account/#subscription" role="menuitem">' + CROWN_IC + '<span>اشتراكي</span></a>') +
           '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
@@ -1203,9 +1203,9 @@
   window.arwEnableFollowPush = enableFollowPush;
   function maybeAskPush() {
     var asked = 0; try { asked = Number(localStorage.getItem('arw-follow-asked')) || 0; } catch (e) {}
-    if (!window.Notification || Notification.permission !== 'default' || Date.now() - asked < 7 * 864e5) { followToast('تم. أول ما ينزل عرض جديد ستجده في الجرس أعلى الصفحة.'); return; }
+    if (!window.Notification || Notification.permission !== 'default' || Date.now() - asked < 7 * 864e5) { followToast('أضيف إلى قائمتك. أول ما ينزل له عرض جديد ستجده في الجرس أعلى الصفحة.'); return; }
     try { localStorage.setItem('arw-follow-asked', String(Date.now())); } catch (e) {}
-    followToast('تم. هل تريد أن يصلك إشعار على جهازك أيضا؟', 'فعل الإشعارات', enableFollowPush);
+    followToast('أضيف إلى قائمتك. هل تريد أن يصلك إشعار على جهازك أيضا؟', 'فعل الإشعارات', enableFollowPush);
   }
   function toggleFollow(b) {
     var kind = b.getAttribute('data-follow'), key = b.getAttribute('data-key'), label = b.getAttribute('data-label') || key;
@@ -1222,7 +1222,7 @@
       b.disabled = false;
       if (d.signedOut) { location.href = LP + '/account/?back=' + encodeURIComponent(location.pathname); return; }
       if (!d.ok) throw new Error(d.error || '');
-      if (on) maybeAskPush(); else followToast(document.documentElement.lang === 'en' ? 'Unfollowed ' + label + '.' : 'ألغيت متابعة ' + label + '.');
+      if (on) maybeAskPush(); else followToast(document.documentElement.lang === 'en' ? 'Removed ' + label + ' from your list.' : 'حذفت ' + label + ' من قائمتك.');
       try { window.dispatchEvent(new CustomEvent('arw-follows')); window.dispatchEvent(new CustomEvent('arw-follows-changed')); } catch (e) {}
     }).catch(function (e) {
       b.disabled = false;
@@ -1284,7 +1284,7 @@
     bellPop.className = 'arw-bell-pop';
     bellPop.setAttribute('role', 'dialog');
     bellPop.setAttribute('aria-label', 'الإشعارات');
-    bellPop.innerHTML = '<div class="arw-bell-head"><b>الإشعارات</b><a href="' + LP + '/account/#follows">إدارة المتابعة</a></div><div class="arw-bell-list"><div class="arw-bell-wait"><span></span></div></div>';
+    bellPop.innerHTML = '<div class="arw-bell-head"><b>الإشعارات</b><a href="' + LP + '/account/#follows">قائمتي</a></div><div class="arw-bell-list"><div class="arw-bell-wait"><span></span></div></div>';
     document.body.appendChild(bellPop);
     var r = bellBtn.getBoundingClientRect();
     bellPop.style.top = Math.round(r.bottom + 10) + 'px';
@@ -1299,8 +1299,8 @@
         var e = document.createElement('div'); e.className = 'arw-bell-empty';
         e.innerHTML = '<span class="arw-bell-empty-ic">' + BELL_IC + '</span><b></b><p></p><a></a>';
         e.querySelector('b').textContent = 'لا توجد إشعارات بعد';
-        e.querySelector('p').textContent = 'تابع برامجك واتحاداتك المفضلة، ويصلك إشعار هنا أول ما ينزل عرض جديد مترجم.';
-        var a = e.querySelector('a'); a.href = LP + '/account/#follows'; a.textContent = 'اختر ما تتابعه';
+        e.querySelector('p').textContent = 'أضف برامجك واتحاداتك المفضلة إلى قائمتك بزر «تابع»، ويصلك إشعار هنا أول ما ينزل لها عرض جديد مترجم.';
+        var a = e.querySelector('a'); a.href = LP + '/account/#follows'; a.textContent = 'أضف إلى قائمتي';
         list.appendChild(e);
         return;
       }
