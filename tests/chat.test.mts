@@ -395,3 +395,44 @@ test('GIFs: a refusal from GIPHY (too many searches, a wrong key) says so, and i
   } finally { globalThis.fetch = realFetch; }
   assert.equal(calls, 1);
 });
+
+test('the message tools as Messenger and iOS: ☺ ↩ ⋮ beside it, a long press lifts it, a swipe answers, the tail at the bottom of the last of a run', () => {
+  const fs = require('node:fs');
+  const js = fs.readFileSync('assets/community.js', 'utf8'), css = fs.readFileSync('assets/community.css', 'utf8'), page = fs.readFileSync('pages/community.njk', 'utf8');
+  // a pointer: three tools by the side, the reactions and the options float by the message
+  assert.match(js, /\['smile', 'تفاعل', reactPop\], \['reply', 'رد'/);
+  assert.match(js, /acts\.push\(\['more', 'المزيد', menuPop\]\)/);
+  assert.match(css, /\.cm-tools\{ position:absolute; top:50%; inset-inline-start:calc\(100% \+ 4px\)/);
+  assert.match(css, /calc\(100% - 112px\)/, 'room for the tools beside the widest message, no sideways scroll');
+  // a finger: the long press opens the lifted message (no bottom sheet any more), a swipe toward the middle answers
+  assert.match(js, /lp = setTimeout\(function \(\) \{ lp = null; fired = true;[^}]*focusMenu\(m, row\); \}, 420\)/);
+  assert.match(js, /var sign = \(RTL \? -1 : 1\) \* \(mine \? -1 : 1\)/);
+  assert.match(js, /if \(armed\) startReply\(m\)/);
+  assert.doesNotMatch(js + css + page, /cm-sheet/);
+  // the options fit the screen: moved up or down, a long message clipped
+  assert.match(js, /var top = Math\.min\(Math\.max\(br\.top, vTop \+ barH\), vBot - menuH - h\)/);
+  // the tail: the last message of a run, from its bottom corner
+  assert.match(css, /\.cm-msg:not\(:has\(\+ \.cm-msg\.is-cont\)\):not\(\.is-big\):not\(\.is-sticker\) \.cm-bubble::before\{ content:""; position:absolute; bottom:-1px;/);
+  assert.doesNotMatch(css, /\.cm-bubble::before\{[^}]*top:-1px/);
+});
+
+test('the message tools as Messenger and iOS: ☺ ↩ ⋮ beside it, a long press lifts it, a swipe answers, the tail at the bottom of the last of a run', () => {
+  const fs = require('node:fs');
+  const js = fs.readFileSync('assets/community.js', 'utf8'), css = fs.readFileSync('assets/community.css', 'utf8'), page = fs.readFileSync('pages/community.njk', 'utf8');
+  // a pointer: three tools by the side, the reactions and the options float by the message
+  assert.match(js, /\['smile', 'تفاعل', reactPop\], \['reply', 'رد'/);
+  assert.match(js, /acts\.push\(\['more', 'المزيد', menuPop\]\)/);
+  assert.match(css, /\.cm-tools\{ position:absolute; top:50%; inset-inline-start:calc\(100% \+ 4px\)/);
+  assert.match(css, /calc\(100% - 112px\)/, 'room for the tools beside the widest message, no sideways scroll');
+  // a finger: the long press opens the lifted message (no bottom sheet any more), a swipe toward the middle answers
+  assert.match(js, /lp = setTimeout\(function \(\) \{ lp = null; fired = true;[^}]*focusMenu\(m, row\); \}, 420\)/);
+  assert.match(js, /var sign = \(RTL \? -1 : 1\) \* \(mine \? -1 : 1\)/);
+  assert.match(js, /if \(armed\) startReply\(m\)/);
+  assert.doesNotMatch(js + css + page, /cm-sheet/);
+  // the options fit the screen: moved up or down, a long message clipped
+  assert.match(js, /var top = Math\.min\(Math\.max\(br\.top, vTop \+ barH\), vBot - menuH - h\)/);
+  // the tail: the last message of a run, from its bottom corner; a little space between the messages of a run
+  assert.match(css, /\.cm-msg:not\(:has\(\+ \.cm-msg\.is-cont\)\):not\(\.is-big\):not\(\.is-sticker\) \.cm-bubble::before\{ content:""; position:absolute; bottom:-1px;/);
+  assert.doesNotMatch(css, /\.cm-bubble::before\{[^}]*top:-1px/);
+  assert.match(css, /\.cm-msg\.is-cont\{ margin-top:4px; \}/);
+});
