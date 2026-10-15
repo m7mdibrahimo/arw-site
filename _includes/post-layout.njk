@@ -188,7 +188,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@300;400;500;700&display=swap"></noscript>
 <link rel="stylesheet" href="{{ asset('/assets/post-layout.css') }}">
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015c">
+<link rel="stylesheet" href="/assets/features.css?v=20261015d">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body class="post-layout">
@@ -256,6 +256,14 @@
         {% endif %}
       {% endif %}
     </h1>
+    {#- «المتابعة»: a full show's program and promotion, followed from the show itself (owner 2026-10-15) -#}
+    {% if page.inputPath and "content/shows" in page.inputPath and program_name %}
+    {% from "follow-btn.njk" import followBtn, fedLabelOf %}
+    <div class="arw-follow-row">
+      {{ followBtn("program", program_name | arabicSlug, program_name) }}
+      {% if federation %}{{ followBtn("fed", federation | lower, fedLabelOf(federation), true) }}{% endif %}
+    </div>
+    {% endif %}
   </div>
 </div>
 
@@ -726,7 +734,7 @@
 </script>
 <script src="{{ asset('/assets/post-player.js') }}"></script>
 <script src="{{ asset('/assets/post-theme.js') }}"></script>
-<script src="/assets/features.js?v=20261015c" defer></script>
+<script src="/assets/features.js?v=20261015d" defer></script>
 <script src="{{ asset('/assets/comments.js') }}" defer></script>
 <script>
 (function(){

@@ -1144,6 +1144,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("nostalgiaShows", function(collectionApi) {
     return collectionApi.getFilteredByGlob(["content/nostalgia/*.md", "content/nostalgia-series/*.md"]).filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a));
   });
+  // «المتابعة» (owner 2026-10-15): the newest full translated shows (content/shows only: no recaps, no news, no
+  // nostalgia), for the worker that tells each show's followers (pages/follow-feed.njk → /follow-feed.json)
+  eleventyConfig.addCollection("followFeed", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("content/shows/*.md").filter(isNotFuture).sort((a,b) => getItemTimestamp(b) - getItemTimestamp(a)).slice(0, 40);
+  });
   eleventyConfig.addCollection("allContent", function(collectionApi) {
     const shows = collectionApi.getFilteredByGlob(["content/shows/*.md", "content/nostalgia/*.md"]).filter(isNotFuture);
     shows.forEach(function(i){ i.kind = "show"; });

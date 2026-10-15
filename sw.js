@@ -73,6 +73,34 @@ function commentReplies() {
   });
 }
 
+// «المتابعة» (owner 2026-10-15): a new full show of a program or promotion the member follows. The page gave this
+// device its own key (ARW_FOLLOW_PK); with it the worker tells what's new, and nothing else of the member's.
+var FOLLOW_API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/follow';
+function followNews() {
+  return Promise.all([cmGet('fpk'), cmGet('fsince'), cmGet('fen')]).then(function (v) {
+    var pk = v[0], since = v[1] || 0, en = !!v[2];
+    if (!pk) return false;
+    return fetch(FOLLOW_API + '/peek', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pk: pk, since: since }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var items = (d && d.items) || [];
+        if (!items.length) return false;
+        return cmSet('fsince', Math.max.apply(null, items.map(function (i) { return i.at; }))).then(function () {
+          return Promise.all(items.slice(0, 3).map(function (it) {
+            var opts = {
+              body: en ? (it.title_en || it.title) : it.title,
+              icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: en ? 'ltr' : 'rtl', lang: en ? 'en' : 'ar',
+              tag: 'follow-' + it.url, renotify: false, data: { url: (en ? '/en' : '') + it.url }
+            };
+            if (it.image) opts.image = it.image;
+            return self.registration.showNotification(en ? 'New translated show 🔔' : 'عرض جديد مترجم 🔔' + (it.program ? ' | ' + it.program : ''), opts);
+          })).then(function () { return true; });
+        });
+      })
+      .catch(function () { return false; });
+  });
+}
+
 // Helper for IndexedDB storage inside Service Worker
 function openDB() {
   return new Promise(function(resolve, reject) {
@@ -198,10 +226,11 @@ self.addEventListener('push', function(event) {
     }
   }
   // an empty push: the comments' worker (someone answered this visitor); a push must always show something
-  event.waitUntil(cmGet('k').then(function (key) {
-    if (!key) return checkNewContentSW();
-    return commentReplies().then(function (shown) {
-      if (!shown) return self.registration.showNotification('عرب راسلنج', { body: 'لديك تنبيه جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
+  // (or a new show of what this member follows: both are asked, whichever has something shows it)
+  event.waitUntil(Promise.all([cmGet('k'), cmGet('fpk')]).then(function (v) {
+    if (!v[0] && !v[1]) return checkNewContentSW();
+    return Promise.all([v[0] ? commentReplies() : false, v[1] ? followNews() : false]).then(function (r) {
+      if (!r[0] && !r[1]) return self.registration.showNotification('عرب راسلنج', { body: v[1] && !v[0] ? 'عرض جديد مترجم مما تتابعه' : 'لديك تنبيه جديد على تعليقك', icon: '/assets/brand-logo.png', badge: '/favicon.png', dir: 'rtl', lang: 'ar', tag: 'cm-new', data: { url: '/' } });
     });
   }));
 });
@@ -215,6 +244,9 @@ self.addEventListener('message', function(event) {
   } else if (event.data && event.data.type === 'ARW_CM_KEY' && /^[A-Za-z0-9_-]{20,64}$/.test(event.data.k || '')) {
     // the visitor allowed notifications: their key, and the time from which answers are new
     event.waitUntil(Promise.all([cmSet('k', event.data.k), cmGet('since').then(function (s) { return s ? 0 : cmSet('since', Number(event.data.since) || Date.now()); }), cmSet('en', !!event.data.en)]));
+  } else if (event.data && event.data.type === 'ARW_FOLLOW_PK' && /^[A-Za-z0-9_-]{32}$/.test(event.data.pk || '')) {
+    // the member allowed notifications for what they follow: this device's key, and new from now on
+    event.waitUntil(Promise.all([cmSet('fpk', event.data.pk), cmGet('fsince').then(function (s) { return s ? 0 : cmSet('fsince', Date.now()); }), cmSet('fen', !!event.data.en)]));
   } else if (event.data && event.data.type === 'CHECK_NEW_CONTENT') {
     event.waitUntil(checkNewContentSW());
   }

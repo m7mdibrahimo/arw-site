@@ -36,6 +36,7 @@ import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
+import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember } from "./members";
@@ -3074,6 +3075,8 @@ export default {
       if (path === "/members" || path.startsWith("/members/")) return await handleMembers(request, env as any, url);
       // «العضوية المميزة»: Fawaterk checkout, its webhook, the member's requests (worker/src/premium.ts)
       if (path.startsWith("/premium/")) return await handlePremium(request, env as any, url);
+      // «المتابعة»: a member follows programs and promotions, and is told of each new full show (worker/src/follows.ts)
+      if (path === "/follow" || path.startsWith("/follow/")) return await handleFollows(request, env as any, url);
       // a show's premium links, from its editor (whoever may edit that section)
       if (path === "/api/studio/premium/media") {
         const k = request.method === "POST" ? null : url.searchParams.get("k");
@@ -3950,6 +3953,8 @@ export default {
       runNewsWatcherCron(env),
       runFeedWatchCron(env),
       runScheduleBackstopCron(env),
+      // followers told of each new full show: their inbox, then their devices
+      runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
       minute % 10 === 0 ? chatExpirySweep(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)

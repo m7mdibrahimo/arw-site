@@ -1,0 +1,12 @@
+{#- «المتابعة» (owner 2026-10-15): a button to follow a program (kind "program", key = its library address) or a whole
+    promotion (kind "fed", key = its page's address); assets/features.js gives it its state and its work. The words
+    are in the page so the button is there from the first paint (a member's state comes from the browser at once). -#}
+{% macro followBtn(kind, key, label, alt=false) %}
+{%- if key -%}
+<button type="button" class="arw-follow-btn{% if alt %} is-alt{% endif %}" data-follow="{{ kind }}" data-key="{{ key }}" data-label="{{ label }}" aria-pressed="false">
+  <svg class="arw-follow-ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+  <span class="arw-follow-tx">تابع</span> <bdi class="arw-follow-name">{{ label }}</bdi>
+</button>
+{%- endif -%}
+{% endmacro %}
+{%- macro fedLabelOf(code) -%}{{ "الاتحادات المستقلة" if (code | lower) == "indie" else ("رياضات القتال" if (code | lower) == "mma" else code) }}{%- endmacro -%}

@@ -336,7 +336,7 @@ eleventyComputed:
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015c">
+<link rel="stylesheet" href="/assets/features.css?v=20261015d">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 <style>
   /* ── مكتبة العروض ── */
@@ -411,6 +411,11 @@ eleventyComputed:
     <h1 class="hero-title"><bdi>{% if lp.prog.arLibTitle and lp.pageNumber == 1 %}{{ lp.prog.arLibTitle }}{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{{ lp.prog.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</span></h1>
     {#- one line under the title, the same on every program page (owner chose this wording, 2026-10-06) -#}
     <p>{% if lp.prog.arLibTitle %}شاهد أحدث {{ lp.prog.arLibTitle | replace(" مترجمة", "") }} مترجمة إلى العربية، وتصفّح أرشيف <bdi>{{ lp.prog.name }}</bdi> كاملًا من الأحدث إلى الأقدم.{% else %}تصفّح أرشيف عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة إلى العربية كاملًا من الأحدث إلى الأقدم.{% endif %}</p>
+    {% from "follow-btn.njk" import followBtn, fedLabelOf %}
+    <div class="arw-follow-row">
+      {{ followBtn("program", lp.prog.slug, lp.prog.name) }}
+      {% if lp.prog.federation and (lp.prog.federation | lower) in ["wwe", "aew", "njpw", "tna", "roh", "mma", "indie"] %}{{ followBtn("fed", lp.prog.federation | lower, fedLabelOf(lp.prog.federation), true) }}{% endif %}
+    </div>
   </div>
 </div>
 
@@ -526,7 +531,7 @@ eleventyComputed:
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015c" defer></script>
+<script src="/assets/features.js?v=20261015d" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

@@ -275,7 +275,7 @@ permalink: "/account/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015c">
+<link rel="stylesheet" href="/assets/features.css?v=20261015d">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>حسابك | عرب راسلنج</title>
@@ -471,6 +471,26 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
 .is-official input[name="display"]{ opacity:.7; }
 .acct-perk-blue i{ background:rgba(29,155,240,.1) !important; border-color:rgba(29,155,240,.25) !important; }
 .acct-verify{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 14px; border-radius:14px; background:var(--gold-soft); font-size:14px; font-weight:700; }
+/* «متابعاتك» */
+.acct-fl h3{ margin:18px 0 10px; font:800 14px 'Cairo',sans-serif; color:var(--muted); }
+.acct-fl-lead{ margin:0 0 14px; color:var(--muted); font-size:14px; line-height:1.8; }
+.acct-fl-mine{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.acct-fl-none{ margin:0; padding:12px 14px; border-radius:12px; background:var(--bg); color:var(--muted); font-size:13.5px; width:100%; }
+.acct-fl-sugg{ display:flex; flex-wrap:wrap; gap:8px; }
+.acct-fl .arw-follow-btn{ min-height:38px; padding:0 14px; background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:none; font-size:13.5px !important; -webkit-backdrop-filter:none; backdrop-filter:none; }
+.acct-fl .arw-follow-btn .arw-follow-ic{ color:var(--teal); }
+.acct-fl .arw-follow-btn:hover{ border-color:var(--teal); }
+.acct-fl .arw-follow-btn.is-on{ background:var(--teal); color:#fff; border-color:var(--teal); }
+.acct-fl .arw-follow-btn.is-on .arw-follow-ic{ color:#fff; }
+.acct-fl-mine .arw-follow-btn.is-on .arw-follow-tx{ display:none; }
+.acct-fl-mine .arw-follow-btn::after{ content:"×"; margin-inline-start:2px; font-size:18px; line-height:1; opacity:.85; }
+.acct-fl-push{ display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:14px; border:1px solid var(--line); background:var(--bg); flex-wrap:wrap; }
+.acct-fl-push-ic{ flex:none; width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:color-mix(in srgb, var(--teal) 14%, transparent); color:var(--teal); }
+.acct-fl-push-tx{ flex:1; min-width:180px; display:flex; flex-direction:column; gap:2px; }
+.acct-fl-push-tx b{ font:800 14.5px 'Cairo',sans-serif; }
+.acct-fl-push-tx small{ color:var(--muted); font-size:12.5px; line-height:1.6; }
+.acct-fl-push.is-on .acct-fl-push-state{ color:var(--teal); font-weight:700; }
+.acct-fl-push-btn[hidden]{ display:none !important; }
 .acct-up-row{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
 .acct-up{ position:relative; cursor:pointer; }
 .acct-up input{ position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; }
@@ -714,10 +734,43 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
             <a href="#settings" data-goto="settings"><span class="acct-quick-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span><span><b>الإعدادات</b><small>الاسم والصورة والبريد وكلمة المرور</small></span><svg class="acct-quick-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></a>
           </div>
 
+
+          {#- «المتابعة» (owner 2026-10-15): what the member follows, their device's notifications, and the usual picks -#}
+          {% from "follow-btn.njk" import followBtn %}
+          <section class="acct-sec acct-fl" id="follows">
+            <h2>متابعاتك</h2>
+            <p class="acct-fl-lead">تابع البرامج والاتحادات التي تحبها، ويصلك إشعار أول ما ينزل عرض جديد مترجم منها. تستطيع المتابعة أيضا من صفحة أي عرض أو برنامج أو اتحاد.</p>
+            <div class="acct-fl-mine" aria-live="polite"><p class="acct-fl-none">لم تتابع شيئا بعد. اختر من الاقتراحات بالأسفل.</p></div>
+            <div class="acct-fl-push">
+              <span class="acct-fl-push-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+              <span class="acct-fl-push-tx"><b>إشعارات على هذا الجهاز</b><small class="acct-fl-push-state">يصلك إشعار على هاتفك أو حاسوبك حتى والموقع مغلق.</small></span>
+              <button type="button" class="acct-btn acct-btn-soft acct-fl-push-btn">فعل الإشعارات</button>
+            </div>
+            <h3>اتحادات</h3>
+            <div class="acct-fl-sugg">
+              {{ followBtn("fed", "wwe", "WWE") }}
+              {{ followBtn("fed", "aew", "AEW") }}
+              {{ followBtn("fed", "njpw", "NJPW") }}
+              {{ followBtn("fed", "tna", "TNA") }}
+              {{ followBtn("fed", "roh", "ROH") }}
+              {{ followBtn("fed", "indie", "الاتحادات المستقلة") }}
+            </div>
+            <h3>برامج أسبوعية</h3>
+            <div class="acct-fl-sugg">
+              {{ followBtn("program", "wwe-raw", "WWE RAW") }}
+              {{ followBtn("program", "wwe-smackdown", "WWE Smackdown") }}
+              {{ followBtn("program", "wwe-nxt", "WWE NXT") }}
+              {{ followBtn("program", "aew-dynamite", "AEW Dynamite") }}
+              {{ followBtn("program", "aew-collision", "AEW Collision") }}
+              {{ followBtn("program", "tna-impact", "TNA iMPACT") }}
+              {{ followBtn("program", "roh-on-honorclub", "ROH on HonorClub") }}
+              {{ followBtn("program", "wwe-main-event", "WWE Main Event") }}
+            </div>
+          </section>
+
           <div class="acct-sec acct-soon">
             <h2>قريبا في حسابك</h2>
             <ul>
-              <li><b>تابع أقسامك</b> واعرف أول ما ينزل عرض جديد مترجم.</li>
               <li><b>المفضلة وشاهد لاحقا</b> على كل أجهزتك.</li>
               <li><b>توقعات العروض الكبرى</b> وترتيب أفضل المتوقعين.</li>
             </ul>
@@ -939,7 +992,7 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015c" defer></script>
+<script src="/assets/features.js?v=20261015d" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

@@ -290,11 +290,67 @@
   function tab(name) {
     $$('.acct-ptab').forEach(function (t) { var on = t.getAttribute('data-ptab') === name; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', String(on)); });
     $$('.acct-pane').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== name; });
-    var want = name === 'settings' ? '#settings' : name === 'sub' ? '#subscription' : '';
+    var want = name === 'settings' ? '#settings' : name === 'sub' ? '#subscription' : location.hash === '#follows' ? '#follows' : '';
     if (location.hash !== want) history.replaceState(null, '', location.pathname + location.search + want);
     if (name === 'sub') sub();
+    if (name === 'home') follows(location.hash === '#follows');
   }
   function hashTab() { return location.hash === '#settings' ? 'settings' : location.hash === '#subscription' ? 'sub' : 'home'; }
+
+  // «متابعاتك» (owner 2026-10-15): what they follow (each one a button: pressed again, it stops), their device's
+  // notifications; the buttons themselves work in assets/features.js, here only the list is drawn
+  var FOLLOW_API = API.replace(/\/members$/, '/follow'), flBusy = false;
+  function drawPush() {
+    var row = $('.acct-fl-push'), btn = $('.acct-fl-push-btn'), st = $('.acct-fl-push-state');
+    if (!row) return;
+    var pk = ''; try { pk = localStorage.getItem('arw-follow-pk') || ''; } catch (e) {}
+    var can = 'serviceWorker' in navigator && 'PushManager' in window && !!window.Notification;
+    var on = can && Notification.permission === 'granted' && !!pk;
+    row.classList.toggle('is-on', on);
+    btn.hidden = on || !can || (window.Notification && Notification.permission === 'denied');
+    st.textContent = !can ? 'متصفحك لا يدعم الإشعارات، ستجد العروض الجديدة في الجرس أعلى الصفحة.'
+      : on ? 'مفعلة على هذا الجهاز ✓'
+      : Notification.permission === 'denied' ? 'الإشعارات موقوفة لهذا الموقع من إعدادات المتصفح. فعلها من هناك ثم أعد تحميل الصفحة.'
+      : 'يصلك إشعار على هاتفك أو حاسوبك حتى والموقع مغلق.';
+  }
+  function follows(scroll) {
+    var box = $('.acct-fl-mine');
+    if (!box || !session) return;
+    drawPush();
+    if (scroll) setTimeout(function () { var s = $('#follows'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+    if (flBusy) return;
+    flBusy = true;
+    fetch(FOLLOW_API, { headers: { Authorization: 'Bearer ' + session.token }, credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (d) {
+      flBusy = false;
+      if (!d || !d.ok) return;
+      box.textContent = '';
+      var list = d.follows || [];
+      if (!list.length) { var p = document.createElement('p'); p.className = 'acct-fl-none'; p.textContent = 'لم تتابع شيئا بعد. اختر من الاقتراحات بالأسفل.'; box.appendChild(p); }
+      list.forEach(function (f) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'arw-follow-btn is-on';
+        b.setAttribute('data-follow', f.kind); b.setAttribute('data-key', f.key); b.setAttribute('data-label', f.label);
+        b.setAttribute('aria-pressed', 'true'); b.setAttribute('data-ready', '1'); b.title = 'اضغط لإلغاء المتابعة';
+        b.innerHTML = '<span class="arw-follow-ic"></span><span class="arw-follow-tx">تتابع</span> <bdi class="arw-follow-name"></bdi>';
+        b.querySelector('bdi').textContent = f.label;
+        box.appendChild(b);
+      });
+      // the browser's copy follows the server's (another device may have changed it)
+      try {
+        var c = JSON.parse(localStorage.getItem('arw-follows') || 'null') || {};
+        c.at = Date.now(); c.uid = session.member.username; c.list = list.map(function (f) { return f.kind + ':' + f.key; }); c.unread = d.unread || 0;
+        localStorage.setItem('arw-follows', JSON.stringify(c));
+        window.dispatchEvent(new CustomEvent('arw-follows'));
+      } catch (e) {}
+    }).catch(function () { flBusy = false; });
+  }
+  // a follow changed anywhere on the page: the list again (a moment later, once the worker has it)
+  window.addEventListener('arw-follows-changed', function () { setTimeout(function () { follows(false); }, 300); });
+  if ($('.acct-fl-push-btn')) $('.acct-fl-push-btn').addEventListener('click', function () {
+    if (!window.arwEnableFollowPush) return;
+    var b = this; b.disabled = true;
+    window.arwEnableFollowPush().then(function () { b.disabled = false; drawPush(); });
+  });
 
   // «اشتراكي» (owner 2026-10-15: «تفاصيل الاشتراك … ابتدا امتي وهينتهي امتي والسجل الدفع … زر اعادة الاشتراك»)
   var subLoaded = false;

@@ -304,7 +304,7 @@ permalink: "{{ fedPage.permalink }}"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015c">
+<link rel="stylesheet" href="/assets/features.css?v=20261015d">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body>
@@ -353,6 +353,8 @@ permalink: "{{ fedPage.permalink }}"
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">قسم {{ fed.code }}<span class="u">{{ fed.name }}</span></h1>
     <p>{% if fed.slug == "indie" or fed.code | lower == "indie" or fed.code | lower == "indies" %}أحدث عروض وملخصات وأخبار اتحادات INDIES.{% else %}أحدث عروض وملخصات وأخبار اتحاد {{ fed.code }}.{% endif %}</p>
+    {% from "follow-btn.njk" import followBtn, fedLabelOf %}
+    <div class="arw-follow-row">{{ followBtn("fed", fed.slug, fedLabelOf(fed.code)) }}</div>
   </div>
 </div>
 
@@ -485,7 +487,7 @@ permalink: "{{ fedPage.permalink }}"
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015c" defer></script>
+<script src="/assets/features.js?v=20261015d" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

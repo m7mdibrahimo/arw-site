@@ -916,6 +916,7 @@
           '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، بدون إعلانات، وتوثيق حسابك</small></span></a>') +
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
+          '<a href="' + HOME + '/account/#follows" role="menuitem">' + BELL_IC + '<span>متابعاتي</span></a>' +
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
           (m.official ? '' : '<a href="' + HOME + '/account/#subscription" role="menuitem">' + CROWN_IC + '<span>اشتراكي</span></a>') +
           '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
@@ -1060,6 +1061,212 @@
     }, { passive: true });
   }
 
+
+  // ── «المتابعة» (owner 2026-10-15) ─────────────────────────────────────────────────────────────────────────────
+  // A member follows a program or a whole promotion (the buttons the pages carry, _includes/follow-btn.njk) and is
+  // told of each new full translated show: in the bell next to their picture, and on their device if they allow it.
+  // What they follow is kept in the browser too, so the buttons show it from the first moment.
+  var FOLLOW_API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/follow';
+  var FOLLOW_KEY = 'arw-follows';
+  var BELL_IC = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
+  var CHECK_IC = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  function followSession() { try { var s = JSON.parse(localStorage.getItem('arw-member') || 'null'); return s && s.token && s.member ? s : null; } catch (e) { return null; } }
+  function followCache() { try { return JSON.parse(localStorage.getItem(FOLLOW_KEY) || 'null'); } catch (e) { return null; } }
+  function followSave(c) { try { localStorage.setItem(FOLLOW_KEY, JSON.stringify(c)); } catch (e) {} }
+  function followCall(path, body) {
+    var s = followSession();
+    return fetch(FOLLOW_API + path, { method: body ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (s ? s.token : '') }, body: body ? JSON.stringify(body) : undefined, credentials: 'omit' })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { d.status = r.status; return d; }); });
+  }
+  function isFollowing(kind, key) { var c = followCache(); return !!(c && c.list && c.list.indexOf(kind + ':' + key) > -1); }
+  function followToast(text, action, onAction) {
+    var old = document.querySelector('.arw-follow-toast'); if (old) old.remove();
+    var t = document.createElement('div');
+    t.className = 'arw-follow-toast'; t.setAttribute('role', 'status');
+    var sp = document.createElement('span'); sp.textContent = text; t.appendChild(sp);
+    if (action) { var b = document.createElement('button'); b.type = 'button'; b.textContent = action; b.onclick = function () { t.remove(); onAction(); }; t.appendChild(b); }
+    var x = document.createElement('button'); x.type = 'button'; x.className = 'arw-follow-toast-x'; x.setAttribute('aria-label', 'إغلاق'); x.textContent = '×'; x.onclick = function () { t.remove(); }; t.appendChild(x);
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('is-on'); });
+    setTimeout(function () { if (t.parentNode) { t.classList.remove('is-on'); setTimeout(function () { t.remove(); }, 300); } }, action ? 12000 : 4000);
+  }
+  function drawFollowButtons() {
+    document.querySelectorAll('.arw-follow-btn[data-follow]').forEach(function (b) {
+      var on = isFollowing(b.getAttribute('data-follow'), b.getAttribute('data-key'));
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', String(on));
+      b.querySelector('.arw-follow-tx').textContent = on ? 'تتابع' : 'تابع';
+      var ic = b.querySelector('.arw-follow-ic');
+      if (ic) ic.outerHTML = (on ? CHECK_IC : BELL_IC).replace('<svg ', '<svg class="arw-follow-ic" ');
+      b.title = on ? 'اضغط لإلغاء المتابعة' : 'يصلك إشعار أول ما ينزل عرض جديد مترجم';
+      b.setAttribute('data-ready', '1');
+    });
+  }
+  // the device too: the same push as the comments' answers (one key for the site), then the service worker knows
+  // this member's device key and reads the bell when a push wakes it (sw.js)
+  function enableFollowPush() {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window) || !window.Notification) { followToast('جهازك لا يدعم الإشعارات، ستجدها في الجرس أعلى الصفحة.'); return Promise.resolve(false); }
+    return Notification.requestPermission().then(function (p) {
+      if (p !== 'granted') { followToast('لم تفعل الإشعارات. ستجد العروض الجديدة في الجرس أعلى الصفحة.'); return false; }
+      return navigator.serviceWorker.register('/sw.js').then(function () { return navigator.serviceWorker.ready; }).then(function (reg) {
+        return reg.pushManager.getSubscription().then(function (sub) {
+          if (sub) return sub;
+          return fetch(FOLLOW_API + '/push-key', { credentials: 'omit' }).then(function (r) { return r.json(); }).then(function (d) {
+            var raw = atob(String(d.key).replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((String(d.key).length + 3) % 4)), key = new Uint8Array(raw.length);
+            for (var i = 0; i < raw.length; i++) key[i] = raw.charCodeAt(i);
+            return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
+          });
+        }).then(function (sub) {
+          return followCall('/push', { endpoint: sub.endpoint }).then(function (d) {
+            if (!d.ok) throw new Error(d.error || '');
+            try { localStorage.setItem('arw-follow-pk', d.pk); } catch (e) {}
+            if (reg.active) reg.active.postMessage({ type: 'ARW_FOLLOW_PK', pk: d.pk, en: document.documentElement.lang === 'en' });
+            followToast('تم. سيصلك إشعار على هذا الجهاز أول ما ينزل عرض جديد.');
+            return true;
+          });
+        });
+      });
+    }).catch(function () { followToast('تعذر تفعيل الإشعارات على هذا الجهاز، ستجدها في الجرس أعلى الصفحة.'); return false; });
+  }
+  window.arwEnableFollowPush = enableFollowPush;
+  function maybeAskPush() {
+    var asked = 0; try { asked = Number(localStorage.getItem('arw-follow-asked')) || 0; } catch (e) {}
+    if (!window.Notification || Notification.permission !== 'default' || Date.now() - asked < 7 * 864e5) { followToast('تم. أول ما ينزل عرض جديد ستجده في الجرس أعلى الصفحة.'); return; }
+    try { localStorage.setItem('arw-follow-asked', String(Date.now())); } catch (e) {}
+    followToast('تم. هل تريد أن يصلك إشعار على جهازك أيضا؟', 'فعل الإشعارات', enableFollowPush);
+  }
+  function toggleFollow(b) {
+    var kind = b.getAttribute('data-follow'), key = b.getAttribute('data-key'), label = b.getAttribute('data-label') || key;
+    if (!followSession()) {
+      location.href = LP + '/account/?new&back=' + encodeURIComponent(location.pathname + location.search);
+      return;
+    }
+    var c = followCache() || { at: 0, list: [], unread: 0 };
+    var id = kind + ':' + key, on = c.list.indexOf(id) < 0;
+    c.list = on ? [id].concat(c.list) : c.list.filter(function (x) { return x !== id; });
+    followSave(c); drawFollowButtons();
+    b.disabled = true;
+    followCall('', { kind: kind, key: key, label: label, on: on }).then(function (d) {
+      b.disabled = false;
+      if (d.signedOut) { location.href = LP + '/account/?back=' + encodeURIComponent(location.pathname); return; }
+      if (!d.ok) throw new Error(d.error || '');
+      if (on) maybeAskPush(); else followToast(document.documentElement.lang === 'en' ? 'Unfollowed ' + label + '.' : 'ألغيت متابعة ' + label + '.');
+      try { window.dispatchEvent(new CustomEvent('arw-follows')); window.dispatchEvent(new CustomEvent('arw-follows-changed')); } catch (e) {}
+    }).catch(function (e) {
+      b.disabled = false;
+      var c2 = followCache() || { list: [] };
+      c2.list = on ? c2.list.filter(function (x) { return x !== id; }) : [id].concat(c2.list);
+      followSave(c2); drawFollowButtons();
+      followToast((e && e.message) || 'تعذرت المتابعة، حاول مرة أخرى.');
+    });
+  }
+  function refreshFollows(force) {
+    var s = followSession(), c = followCache();
+    if (!s) return Promise.resolve(null);
+    if (!force && c && c.uid === s.member.username && Date.now() - (c.at || 0) < 120000) return Promise.resolve(c);
+    return followCall('').then(function (d) {
+      if (d.signedOut || !d.ok) return c;
+      var n = { at: Date.now(), uid: s.member.username, list: (d.follows || []).map(function (f) { return f.kind + ':' + f.key; }), labels: d.follows || [], unread: d.unread || 0 };
+      followSave(n); drawFollowButtons(); drawBellCount();
+      return n;
+    }).catch(function () { return c; });
+  }
+  function initFollow() {
+    var s = followSession(), c = followCache();
+    // another member signed in on this browser: their own list, not the last one's
+    if (c && s && c.uid !== s.member.username) { followSave(null); }
+    if (!s && c) followSave(null);
+    drawFollowButtons();
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('.arw-follow-btn[data-follow]');
+      if (b) { e.preventDefault(); toggleFollow(b); }
+    });
+    window.addEventListener('arw-follows', function () { drawFollowButtons(); });
+    if (s) { initBell(); refreshFollows(false); }
+  }
+
+  // the bell: the member's inbox (a new show of what they follow), next to their picture
+  var bellBtn = null, bellPop = null;
+  function drawBellCount() {
+    if (!bellBtn) return;
+    var c = followCache(), n = c ? Number(c.unread) || 0 : 0;
+    var b = bellBtn.querySelector('.arw-bell-n');
+    b.textContent = n > 9 ? '9+' : String(n);
+    b.hidden = !n;
+    bellBtn.setAttribute('aria-label', n ? (document.documentElement.lang === 'en' ? n + ' new notifications' : 'الإشعارات، ' + n + ' جديدة') : 'الإشعارات');
+  }
+  function timeAgo(t) {
+    var EN = document.documentElement.lang === 'en';
+    var m = Math.round((Date.now() - t) / 60000);
+    if (m < 1) return EN ? 'just now' : 'الآن';
+    if (m < 60) return EN ? m + ' min ago' : 'منذ ' + m + ' دقيقة';
+    var h = Math.round(m / 60); if (h < 24) return EN ? h + (h === 1 ? ' hour ago' : ' hours ago') : 'منذ ' + h + ' ساعة';
+    var d = Math.round(h / 24); return d === 1 ? (EN ? 'yesterday' : 'أمس') : EN ? d + ' days ago' : 'منذ ' + d + ' أيام';
+  }
+  function closeBell() { if (bellPop) { bellPop.remove(); bellPop = null; bellBtn.setAttribute('aria-expanded', 'false'); } }
+  function openBell() {
+    if (bellPop) return closeBell();
+    var EN = document.documentElement.lang === 'en';
+    bellPop = document.createElement('div');
+    bellPop.className = 'arw-bell-pop';
+    bellPop.setAttribute('role', 'dialog');
+    bellPop.setAttribute('aria-label', 'الإشعارات');
+    bellPop.innerHTML = '<div class="arw-bell-head"><b>الإشعارات</b><a href="' + LP + '/account/#follows">إدارة المتابعة</a></div><div class="arw-bell-list"><div class="arw-bell-wait"><span></span></div></div>';
+    document.body.appendChild(bellPop);
+    var r = bellBtn.getBoundingClientRect();
+    bellPop.style.top = Math.round(r.bottom + 10) + 'px';
+    if (window.innerWidth > 560) { var left = Math.max(12, Math.min(window.innerWidth - bellPop.offsetWidth - 12, r.left + r.width / 2 - bellPop.offsetWidth / 2)); bellPop.style.left = left + 'px'; }
+    bellBtn.setAttribute('aria-expanded', 'true');
+    var list = bellPop.querySelector('.arw-bell-list');
+    followCall('/inbox').then(function (d) {
+      if (!bellPop) return;
+      list.textContent = '';
+      var items = (d && d.items) || [];
+      if (!items.length) {
+        var e = document.createElement('div'); e.className = 'arw-bell-empty';
+        e.innerHTML = '<span class="arw-bell-empty-ic">' + BELL_IC + '</span><b></b><p></p><a></a>';
+        e.querySelector('b').textContent = 'لا توجد إشعارات بعد';
+        e.querySelector('p').textContent = 'تابع برامجك واتحاداتك المفضلة، ويصلك إشعار هنا أول ما ينزل عرض جديد مترجم.';
+        var a = e.querySelector('a'); a.href = LP + '/account/#follows'; a.textContent = 'اختر ما تتابعه';
+        list.appendChild(e);
+        return;
+      }
+      items.forEach(function (it) {
+        var a = document.createElement('a');
+        a.className = 'arw-bell-item' + (it.read ? '' : ' is-new');
+        a.href = (EN ? '/en' : '') + it.url;
+        a.innerHTML = '<span class="arw-bell-img"></span><span class="arw-bell-tx"><small></small><b></b><time></time></span>';
+        if (/^\/[^\s"'<>]*$/.test(it.image || '') || /^https:\/\/[^\s"'<>]+$/.test(it.image || '')) { var im = document.createElement('img'); im.onerror = function () { this.remove(); }; im.src = it.image; im.alt = ''; im.loading = 'lazy'; a.querySelector('.arw-bell-img').appendChild(im); }
+        a.querySelector('small').textContent = (EN ? 'New translated show' : 'عرض جديد مترجم') + (it.program ? ' · ' + it.program : '');
+        a.querySelector('b').textContent = EN ? (it.title_en || it.title) : it.title;
+        a.querySelector('time').textContent = timeAgo(it.at);
+        list.appendChild(a);
+      });
+      // seen: the count goes, what was new stays marked while the bell is open
+      if (d.unread) followCall('/read', { all: true }).then(function () { var c = followCache(); if (c) { c.unread = 0; followSave(c); } drawBellCount(); });
+    }).catch(function () { if (bellPop) list.innerHTML = '<p class="arw-bell-err">تعذر تحميل الإشعارات، حاول مرة أخرى.</p>'; });
+  }
+  function initBell() {
+    var util = document.querySelector('header #navMenu li.utility-row');
+    if (!util || util.querySelector('.arw-bell')) return;
+    bellBtn = document.createElement('button');
+    bellBtn.type = 'button';
+    bellBtn.className = 'theme-toggle arw-bell';
+    bellBtn.setAttribute('aria-haspopup', 'dialog');
+    bellBtn.setAttribute('aria-expanded', 'false');
+    bellBtn.innerHTML = BELL_IC + '<span class="arw-bell-n" hidden></span>';
+    var acct = util.querySelector('.arw-acct-btn');
+    util.insertBefore(bellBtn, acct || util.firstChild);
+    drawBellCount();
+    bellBtn.addEventListener('click', function (e) { e.stopPropagation(); openBell(); });
+    document.addEventListener('click', function (e) { if (bellPop && e.isTrusted && !bellPop.contains(e.target)) closeBell(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeBell(); });
+    window.addEventListener('resize', closeBell);
+    window.addEventListener('scroll', function () { if (bellPop && window.innerWidth > 560) closeBell(); }, { passive: true });
+    // a page left open: the count again every few minutes
+    setInterval(function () { if (!document.hidden) refreshFollows(true); }, 5 * 60000);
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
@@ -1067,6 +1274,7 @@
     initMobileChrome();
     initCommentReplies();
     initAccountButton();
+    initFollow();
     initPremiumButton();
     initJoinNudge();
   }
