@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13": {
+  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Agent Zero، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-15T13:11:42.376Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T13:12:21.046Z"
- },
- "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-15T12:55:44.937Z"
  },
  "https://www.fightful.com/wrestling/shinsuke-nakamura-keiji-muto-talk-show-scheduled-for-october-19th": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
