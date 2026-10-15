@@ -373,3 +373,26 @@ test('a subscription that ran out: the ten-minute sweep tells every room, grants
   assert.ok(sent.length > 0 && sent.every(x => x.badge === 'premium'));
   assert.ok(a.token && b.token);
 });
+
+test('the whole life of a membership: nothing on signing up, everything on subscribing, gone when it ends, back on renewing', async () => {
+  const e = env();
+  e.MEDIA = null;
+  const s = await member(e, 'life_cycle');
+  const id = s.member.id;
+  const db = e.ANALYTICS.raw;
+  const STORY = '/news/دورة/';
+  const comments = async () => (await handleComments(new Request(`https://w/comments?p=${encodeURIComponent(STORY)}`), e, new URL(`https://w/comments?p=${encodeURIComponent(STORY)}`)).then((x) => x.json()) as any).items[0];
+  const look = async () => { const m = await me(e, s.token); const c = await comments(); return { blue: m.blue, premium: Number(m.premium) > Date.now(), gold: m.gold, cBlue: !!c.blue, cPrem: !!c.prem, cGold: !!c.gold }; };
+  const NONE = { blue: false, premium: false, gold: false, cBlue: false, cPrem: false, cGold: false };
+  const ON = { blue: true, premium: true, gold: false, cBlue: true, cPrem: true, cGold: false };
+  await handleComments(new Request('https://w/comments', { method: 'POST', body: JSON.stringify({ p: STORY, t: 9000, website: '', name: 'x', text: 'أول تعليق ليا' }), headers: { 'User-Agent': 'Mozilla/5.0 Safari', Origin: 'https://arab-wrestling.com', 'CF-Connecting-IP': '41.1.2.9', 'Content-Type': 'application/json', Authorization: `Bearer ${s.token}` } }), e, new URL('https://w/comments'));
+  assert.deepEqual(await look(), NONE, 'a new member: no badge, no premium look');
+  await studioPremiumGrant(e, id, 30);
+  assert.deepEqual(await look(), ON, 'subscribed: the badge and the premium look, old comments included');
+  db.prepare('UPDATE members SET premium_until = ? WHERE id = ?').run(Date.now() - 1000, id);
+  assert.deepEqual(await look(), NONE, 'ended: all of it gone');
+  await studioPremiumGrant(e, id, 30);
+  assert.deepEqual(await look(), ON, 'renewed: all of it back');
+  const mine = (await call(e, '/premium/mine', undefined, s.token)).body;
+  assert.ok(mine.until > Date.now() + 29 * 86400e3 && mine.payments.length === 2);
+});
