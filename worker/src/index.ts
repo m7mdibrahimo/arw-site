@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
@@ -3135,6 +3135,11 @@ export default {
           return json(r, r.success ? 200 : 400);
         }
         if (path === "/api/studio/premium/request" && request.method === "POST") { const r = await studioPremiumRequest(env as any, body); return json(r, r.success ? 200 : 400); }
+        if (path === "/api/studio/premium/find" && request.method === "POST") {
+          if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
+          const r = await studioPremiumFind(env as any, body.q);
+          return json(r, r.success ? 200 : 404);
+        }
         return json({ success: false, error: "not found" }, 404);
       }
       // «مجتمع المصارعة»: a chat room per promotion, members only (worker/src/chat.ts)

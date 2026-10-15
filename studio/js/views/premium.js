@@ -1,7 +1,7 @@
 // «العضوية المميزة» in the panel (owner 2026-10-14): who's subscribed and until when, what was paid, and the members'
 // translation requests (answered here, with a link to the show when it's up). The worker: worker/src/premium.ts.
-import { api } from '../api.js';
-import { html, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
+import { api, getUser } from '../api.js';
+import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
 
 const KINDS = { nostalgia: 'نوستالجيا', series: 'سلسلة', show: 'عرض قديم', other: 'طلب تاني' };
 const STATES = [['new', 'جديد'], ['working', 'بنترجمه'], ['done', 'خلص'], ['declined', 'اتعذّر']];
@@ -12,6 +12,81 @@ const av = (m) => html`<span class="cm-av" style="--c:#e09a12" aria-hidden="true
 const date = (ms) => new Date(ms).toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' });
 const left = (ms) => Math.max(0, Math.ceil((ms - Date.now()) / 864e5));
 const money = (n, c) => (c === 'USD' ? `$${num(n)}` : `${num(n)} ج.م`);
+const CROWN = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
+const DAY = 864e5;
+/** What turned a membership on (owner 2026-10-15: «تجربة 3 ايام … ولا هدية من الموقع … ولا دافع»): the last one counted */
+export const premiumKind = (by) => (by == null ? '' : by === 'trial' ? 'تجربة مجانية' : by ? 'هدية من الموقع' : 'مدفوع');
+const KIND_CLS = { 'تجربة مجانية': 'is-trial', 'هدية من الموقع': 'is-gift', 'مدفوع': 'is-paid' };
+export const kindTag = (by) => { const k = premiumKind(by); return k ? html`<em class="pg-kind ${KIND_CLS[k]}">${k}</em>` : ''; };
+/** A member's history: each payment, trial and gift, and invoices opened and not paid */
+export function payHistory(list) {
+  if (!list || !list.length) return html`<p class="muted">مفيش أي اشتراك أو دفع لحد دلوقتي.</p>`;
+  return html`<div class="pg-hist">${list.map(p => {
+    const when = p.status === 'paid' ? p.paid_at : p.created;
+    const what = p.status !== 'paid' ? html`<b class="pg-wait">فتح فاتورة ${money(p.amount, p.currency)} ولسه مدفعش</b>`
+      : p.granted_by === 'trial' ? html`<b>${kindTag('trial')} ${num(p.days)} أيام</b>`
+      : p.granted_by ? html`<b>${kindTag(p.granted_by)} ${num(p.days)} يوم</b><small class="muted">فعّلها ${p.granted_by}</small>`
+      : html`<b>${kindTag('')} ${money(p.amount, p.currency)} · ${num(p.days)} يوم</b><small class="muted">${p.method ? `${p.method}` : 'فواتيرك'}${p.reference ? ` · رقم العملية ${p.reference}` : ''}${p.invoice_id ? ` · فاتورة ${p.invoice_id}` : ''}</small>`;
+    return html`<div class="pg-hist-row ${p.status !== 'paid' ? 'is-wait' : ''}"><span class="pg-hist-date">${date(when)}<small class="muted">${timeAgo(when)}</small></span><span class="pg-hist-what">${what}</span></div>`;
+  })}</div>`;
+}
+
+// The owner turns a membership on by hand, for as long as they like (owner 2026-10-15: «انا ال افعل الاشتراك ب ايديا …
+// وعايزك تديني الصلاحية الكاملة اني ادي الفترة ال انا عايزه للمتابع»): a ready period, any number of days, weeks, months
+// or years, or up to a day picked on the calendar. Added to what's left when they're already subscribed.
+const PERIODS = [[1, 'يوم'], [3, '3 أيام'], [7, 'أسبوع'], [30, 'شهر'], [90, '3 شهور'], [180, '6 شهور'], [365, 'سنة']];
+const UNITS = [[1, 'يوم'], [7, 'أسبوع'], [30, 'شهر'], [365, 'سنة']];
+const ymd = (ms) => { const d = new Date(ms); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+export function premiumPicker(box, m, onDone) {
+  const name = m.display || m.username;
+  const active = Number(m.premium_until) > Date.now();
+  const base = () => Math.max(Date.now(), Number(m.premium_until) || 0);
+  let days = 30;
+  mount(box, html`<div class="pg">
+    <p class="pg-now">${active ? html`${raw(CROWN)} مشترك ${kindTag(m.premium_by)} لحد <b>${date(m.premium_until)}</b> · فاضل ${num(left(m.premium_until))} يوم` : 'مش مشترك دلوقتي'}</p>
+    <div class="chips pg-chips">${PERIODS.map(([d, l]) => html`<button type="button" class="chip ${d === 30 ? 'active' : ''}" data-d="${d}">${l}</button>`)}</div>
+    <div class="pg-custom">
+      <label><span>أو مدة تانية</span><span class="pg-row"><input class="input" type="number" min="1" max="3650" inputmode="numeric" data-pg="n" placeholder="العدد"><select class="input" data-pg="u">${UNITS.map(([d, l]) => html`<option value="${d}">${l}</option>`)}</select></span></label>
+      <label><span>أو لحد يوم معيّن</span><input class="input" type="date" data-pg="date" min="${ymd(base() + DAY)}"></label>
+    </div>
+    <p class="pg-sum" data-pg="sum"></p>
+    <div class="pg-acts"><button type="button" class="btn pr-btn" data-pg="go">${raw(CROWN)}${active ? 'زوّد الاشتراك' : 'فعّل الاشتراك'}</button>${active ? html`<button type="button" class="btn btn-ghost" data-pg="off">شيل الاشتراك</button>` : ''}</div>
+  </div>`);
+  const q = (k) => $(`[data-pg="${k}"]`, box);
+  const sum = () => {
+    const ok = days >= 1 && days <= 3650;
+    q('go').disabled = !ok;
+    q('sum').innerHTML = '';
+    mount(q('sum'), ok ? html`هيبقى مشترك لحد <b>${date(base() + days * DAY)}</b> · ${num(days)} يوم${active ? ' زيادة على اللي فاضله' : ''}`
+      : html`<span class="pg-bad">${days > 3650 ? 'أقصى مدة 10 سنين.' : 'اختار مدة أو يوم بعد آخر يوم في اشتراكه.'}</span>`);
+  };
+  const chips = $$('.pg-chips .chip', box);
+  chips.forEach(c => c.onclick = () => { days = Number(c.dataset.d); chips.forEach(x => x.classList.toggle('active', x === c)); q('n').value = ''; q('date').value = ''; sum(); });
+  const custom = () => { const n = Math.round(Number(q('n').value) || 0); if (!n) return; days = n * Number(q('u').value); chips.forEach(x => x.classList.remove('active')); q('date').value = ''; sum(); };
+  q('n').oninput = custom; q('u').onchange = custom;
+  q('date').onchange = () => {
+    if (!q('date').value) return;
+    const [y, mo, d] = q('date').value.split('-').map(Number);
+    const end = new Date(y, mo - 1, d, 23, 59).getTime();
+    days = Math.ceil((end - base()) / DAY);
+    chips.forEach(x => x.classList.remove('active')); q('n').value = '';
+    sum();
+  };
+  q('go').onclick = async () => {
+    const until = base() + days * DAY;
+    const ok = await dialog({ title: `العضوية المميزة لـ ${name}`, body: html`<p>هيبقى مشترك لحد <b>${date(until)}</b> (${num(days)} يوم${active ? ' زيادة على اللي فاضله' : ''}).</p><p class="muted small">بياخد كل مميزات العضوية على طول، والعلامة الزرقاء، وبيوصله إشعار قبل ما تخلص.</p>`, confirm: 'فعّل' });
+    if (!ok) return;
+    q('go').disabled = true;
+    try { const r = await api.premiumGrant(m.id, days); toast(`اتفعّل لـ ${name} لحد ${date(r.until || until)} ✓`); onDone && onDone(); }
+    catch (e) { toast(e.message, 'error'); q('go').disabled = false; }
+  };
+  if (q('off')) q('off').onclick = async () => {
+    const ok = await dialog({ title: `شيل العضوية المميزة من ${name}`, body: html`<p class="muted small">العضوية هتخلص دلوقتي.</p>`, confirm: 'شيلها', danger: true });
+    if (!ok) return;
+    try { await api.premiumGrant(m.id, 0); toast('اتشالت ✓'); onDone && onDone(); } catch (e) { toast(e.message, 'error'); }
+  };
+  sum();
+}
 
 export async function renderPremium(page) {
   mount(page, html`<div class="loading-page"><div class="spinner"></div></div>`);
@@ -23,10 +98,14 @@ export async function renderPremium(page) {
     <div class="wrap page-in">
       <div class="page-title">
         <div><h1>العضوية المميزة</h1>
-          <p class="muted">50 جنيه أو 1 دولار في الشهر · بتتفعّل لوحدها أول ما المتابع يدفع على فواتيرك · كل تجديد بيزوّد شهر</p></div>
+          <p class="muted">50 جنيه أو 1 دولار في الشهر · ${d.live ? 'بتتفعّل لوحدها أول ما فواتيرك تأكد إن المتابع دفع' : 'إنت اللي بتفعّلها بإيدك بعد ما المتابع يدفع'} · كل تجديد بيزوّد على اللي فاضل</p></div>
         <a class="btn" href="/premium/" target="_blank" rel="noopener">${icon('globe')}افتح صفحة العضوية</a>
       </div>
-      ${d.live ? '' : html`<div class="alert pr-alert">${icon('alert')}<div><b>الدفع التلقائي لسه مش متوصّل.</b> لحد ما تحط مفتاح فواتيرك في كلاودفلير، زرار الاشتراك بيفتح لينكات الدفع الثابتة، وإنت بتفعّل العضوية بإيدك من صفحة العضو (الأعضاء ← العضو ← «ادّيله شهر مميز»).</div></div>`}
+      ${d.live ? '' : html`<div class="alert pr-alert">${icon('alert')}<div><b>التفعيل يدوي، بإيدك إنت بس.</b> زرار الاشتراك في الموقع بيفتح لينكات الدفع بتاعتك على فواتيرك (شهر، 3 شهور، سنة)، والمتابع بيبعتلك الإيميل بتاعه على فيسبوك أو إنستجرام، وإنت بتفعّله من هنا تحت بعد ما تتأكد إن الفلوس وصلت. التجربة المجانية (3 أيام) بس اللي بتتفعّل لوحدها.</div></div>`}
+      ${getUser()?.role === 'owner' ? html`<section class="panel cy-sec pg-card"><h2>${raw(CROWN)} فعّل الاشتراك لمتابع بإيدك</h2>
+        <p class="muted small">لما المتابع يدفع ويبعتلك على فيسبوك أو إنستجرام، اكتب الإيميل اللي عامل بيه حسابه على الموقع (أو اسم المستخدم بتاعه)، واختار المدة اللي إنت عايزها.</p>
+        <form class="pg-find" id="pg-find"><input class="input" id="pg-q" dir="ltr" placeholder="example@gmail.com" autocomplete="off" spellcheck="false" aria-label="إيميل المتابع أو اسم المستخدم"><button class="btn btn-primary">${icon('search')}دوّر</button></form>
+        <div id="pg-found"></div></section>` : ''}
       <div class="cm-stats">
         <div class="${(d.members || []).length ? 'is-new' : ''}"><small>مشتركين دلوقتي</small><b>${num((d.members || []).length)}</b></div>
         <div><small>دخل آخر 30 يوم (جنيه)</small><b>${money(month.EGP ? month.EGP.total : 0, 'EGP')}</b></div>
@@ -55,7 +134,7 @@ export async function renderPremium(page) {
       <section class="panel cy-sec"><h2>${icon('users')} المشتركين (${num((d.members || []).length)})</h2>
         ${(d.members || []).length ? html`<div class="cy-list">${d.members.map(m => html`<article class="cy-item">
           ${av(m)}
-          <div class="cy-item-main"><div class="cm-meta"><b>${m.display || m.username}</b><span class="muted small"><bdi dir="ltr">@${m.username}</bdi></span></div>
+          <div class="cy-item-main"><div class="cm-meta"><b>${m.display || m.username}</b><span class="muted small"><bdi dir="ltr">@${m.username}</bdi></span>${kindTag(m.premium_by)}</div>
             <small class="muted">لحد ${date(m.premium_until)} · فاضل ${num(left(m.premium_until))} يوم${m.premium_since ? ` · مشترك من ${date(m.premium_since)}` : ''}</small></div>
           <a class="btn btn-sm btn-ghost" href="#/site-members/${m.id}">صفحته</a></article>`)}</div>` : html`<p class="muted">لسه محدش اشترك.</p>`}
       </section>
@@ -68,6 +147,23 @@ export async function renderPremium(page) {
       </section>
     </div>`);
 
+  const find = $('#pg-find', page);
+  if (find) find.onsubmit = async (e) => {
+    e.preventDefault();
+    const box = $('#pg-found', page), btn = $('button', find);
+    btn.disabled = true;
+    try {
+      const { member: m } = await api.premiumFind($('#pg-q', page).value);
+      mount(box, html`<div class="pg-who">
+        ${av(m)}
+        <div><div class="cm-meta"><b>${m.display || m.username}</b><span class="muted small"><bdi dir="ltr">@${m.username}</bdi></span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${m.official ? html`<em class="pr-official">الحساب الرسمي</em>` : ''}</div>
+          <small class="muted"><bdi dir="ltr">${m.email}</bdi></small></div>
+        <a class="btn btn-sm btn-ghost" href="#/site-members/${m.id}">صفحته</a></div><div class="pg-box"></div>`);
+      if (m.official) mount($('.pg-box', box), html`<p class="muted">الحساب الرسمي ليه كل المميزات على طول.</p>`);
+      else premiumPicker($('.pg-box', box), m, () => renderPremium(page));
+    } catch (err) { mount(box, html`<p class="pg-bad">${err.message}</p>`); }
+    btn.disabled = false;
+  };
   page.onclick = async (e) => {
     const del = e.target.closest('[data-del]');
     if (del) {

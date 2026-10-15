@@ -38,10 +38,12 @@ const DAY = 86_400_000;
 const SESSION_DAYS = 90;
 
 // ── tables ──────────────────────────────────────────────────────────────────
-const ready = new WeakMap<D1Database, Promise<unknown>>();
-export function ensureMembers(db: D1Database): Promise<unknown> {
-  let p = ready.get(db);
-  if (!p) ready.set(db, p = db.batch([
+// remembered only once it worked: a promise left pending by a request that was cut off would never settle for the
+// next one, and the panel's «الأعضاء» spun for ever (owner 2026-10-15)
+const ready = new WeakSet<D1Database>();
+export async function ensureMembers(db: D1Database): Promise<void> {
+  if (ready.has(db)) return;
+  await db.batch([
     db.prepare(`CREATE TABLE IF NOT EXISTS members (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, ukey TEXT NOT NULL UNIQUE,
       email TEXT NOT NULL UNIQUE, salt TEXT NOT NULL, hash TEXT NOT NULL, iterations INTEGER NOT NULL, recovery TEXT NOT NULL DEFAULT '',
       display TEXT NOT NULL DEFAULT '', pic TEXT NOT NULL DEFAULT '', fav_fed TEXT NOT NULL DEFAULT '', fav_star TEXT NOT NULL DEFAULT '',
@@ -50,17 +52,16 @@ export function ensureMembers(db: D1Database): Promise<unknown> {
     db.prepare("CREATE TABLE IF NOT EXISTS member_sessions (token TEXT PRIMARY KEY, member INTEGER NOT NULL, created INTEGER NOT NULL, expires INTEGER NOT NULL, ua TEXT NOT NULL DEFAULT '')"),
     db.prepare("CREATE INDEX IF NOT EXISTS member_sessions_member ON member_sessions (member)"),
     db.prepare("CREATE TABLE IF NOT EXISTS member_tokens (token TEXT PRIMARY KEY, member INTEGER NOT NULL, kind TEXT NOT NULL, expires INTEGER NOT NULL)"),
-  ])
-    // the site's own account (owner 2026-10-14: «اعملي عضوية بتاعتي … موثقة العلامة الذهبي»): added to older tables
-    .then(() => db.prepare("ALTER TABLE members ADD COLUMN official INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
-    // the blue badge: every member gets it, the owner can take it away or give it back (owner 2026-10-14: «ادي العلامة
-    // الزرقاء التوثيق لاي حد او اشيله من عند اي حد»)
-    .then(() => db.prepare("ALTER TABLE members ADD COLUMN badge INTEGER NOT NULL DEFAULT 1").run().catch(() => null))
-    // «العضوية المميزة» (worker/src/premium.ts): until when, and since when
-    .then(() => db.prepare("ALTER TABLE members ADD COLUMN premium_until INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
-    .then(() => db.prepare("ALTER TABLE members ADD COLUMN premium_since INTEGER NOT NULL DEFAULT 0").run().catch(() => null))
-    .catch((e) => { ready.delete(db); throw e; }));
-  return p;
+  ]);
+  // the site's own account (owner 2026-10-14: «اعملي عضوية بتاعتي … موثقة العلامة الذهبي»): added to older tables
+  await db.prepare("ALTER TABLE members ADD COLUMN official INTEGER NOT NULL DEFAULT 0").run().catch(() => null);
+  // the blue badge: every member gets it, the owner can take it away or give it back (owner 2026-10-14: «ادي العلامة
+  // الزرقاء التوثيق لاي حد او اشيله من عند اي حد»)
+  await db.prepare("ALTER TABLE members ADD COLUMN badge INTEGER NOT NULL DEFAULT 1").run().catch(() => null);
+  // «العضوية المميزة» (worker/src/premium.ts): until when, and since when
+  await db.prepare("ALTER TABLE members ADD COLUMN premium_until INTEGER NOT NULL DEFAULT 0").run().catch(() => null);
+  await db.prepare("ALTER TABLE members ADD COLUMN premium_since INTEGER NOT NULL DEFAULT 0").run().catch(() => null);
+  ready.add(db);
 }
 
 // ── small helpers ─────────────────────────────────────────────────────────────
@@ -540,9 +541,15 @@ export async function studioMembers(env: MembersEnv, now = Date.now()) {
   if (!db) return { success: true, items: [], counts: { total: 0, week: 0, today: 0, active: 0 } };
   await ensureMembers(db);
   await ensureComments(db);
+  // the payments' table (each member's kind of membership); imported here, premium.ts imports this file
+  await (await import("./premium")).ensurePremium(db);
   const [rows, total, week, active] = await db.batch([
-    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge, m.premium_until,
-      (SELECT COUNT(*) FROM comments c WHERE c.member = m.id AND c.deleted = 0) AS comments FROM members m ORDER BY m.created DESC LIMIT 2000`),
+    // each member's comments counted in one pass over the comments (a count per member read them all once for each)
+    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge, m.premium_until, m.premium_since,
+      CASE WHEN m.premium_until > ?1 THEN (SELECT p.granted_by FROM premium_payments p WHERE p.member = m.id AND p.status = 'paid' ORDER BY p.paid_at DESC, p.id DESC LIMIT 1) END AS premium_by,
+      COALESCE(c.n, 0) AS comments FROM members m
+      LEFT JOIN (SELECT member, COUNT(*) AS n FROM comments WHERE member > 0 AND deleted = 0 GROUP BY member) c ON c.member = m.id
+      ORDER BY m.created DESC LIMIT 2000`).bind(now),
     db.prepare("SELECT COUNT(*) AS n FROM members"),
     db.prepare("SELECT COUNT(*) AS n FROM members WHERE created > ?1").bind(now - 7 * DAY),
     db.prepare("SELECT COUNT(*) AS n FROM members WHERE last_seen > ?1").bind(now - 7 * DAY),
@@ -559,12 +566,17 @@ export async function studioMemberDetail(env: MembersEnv, id: unknown, now = Dat
   const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country, official, badge, premium_until, premium_since
     FROM members WHERE id = ?1`).bind(Number(id) || 0).first<any>();
   if (!m) return { success: false, error: "العضو ده مش موجود." };
-  const [comments, sessions, hearts] = await db.batch([
+  await (await import("./premium")).ensurePremium(db);
+  const [comments, sessions, hearts, payments] = await db.batch([
     db.prepare("SELECT id, path, title, text, at, parent, hearted, deleted FROM comments WHERE member = ?1 ORDER BY at DESC LIMIT 200").bind(m.id),
     db.prepare("SELECT created, expires, ua FROM member_sessions WHERE member = ?1 AND expires > ?2 ORDER BY created DESC LIMIT 20").bind(m.id, now),
     db.prepare("SELECT COUNT(*) AS n FROM comments WHERE member = ?1 AND hearted = 1 AND deleted = 0").bind(m.id),
+    // every payment, trial and gift, and the invoices opened and not paid (owner 2026-10-15: «سجل الدفع بتاعه وكل حاجة»)
+    db.prepare("SELECT id, invoice_id, currency, amount, status, method, reference, created, paid_at, days, granted_by FROM premium_payments WHERE member = ?1 ORDER BY id DESC LIMIT 100").bind(m.id),
   ]) as any[];
-  return { success: true, member: m, comments: comments.results || [], sessions: sessions.results || [], hearts: hearts.results?.[0]?.n || 0 };
+  const pays = payments.results || [];
+  const last = pays.find((p: any) => p.status === "paid");
+  return { success: true, member: { ...m, premium_by: Number(m.premium_until) > now && last ? last.granted_by : null }, comments: comments.results || [], sessions: sessions.results || [], hearts: hearts.results?.[0]?.n || 0, payments: pays };
 }
 /** The site's own account (owner 2026-10-14: «اعملي عضوية بتاعتي … موثقة العلامة الذهبي … زي ال انت عاملهالي في اللوحة»):
  *  a member that signs in on the site like any other, but shows as «عرب راسلنج» with the logo and the gold badge, and
