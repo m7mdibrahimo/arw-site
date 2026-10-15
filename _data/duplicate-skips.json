@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2272849/wwe-nxt-womens-na-champion-zaria-thea-hail-retain-title/": {
-    "matchedFile": "20260929094603-دليل-مشاهدة-وتفاصيل-عرض-wwe-nxt-الليلة-المواجهات-المؤكدة-وموعد-الانطلاق.md",
-    "reason": "الخبر الجديد يغطي نتيجة نزال تم الإعلان عنه مسبقاً في جدول مواجهات عرض NXT المنشور بالخبر السابق، ويُعتبر الخبر القديم إعلاناً والجديد تغطية لنفس الحدث (النزال).",
-    "at": "2026-09-30T00:44:54.995Z"
-  },
-  "https://www.wrestlinginc.com/2271578/wwe-nxt-september-29-nxt-championship-womens-north-american-championship-on-line-more/": {
-    "matchedFile": "20260930023100-نتائج-عرض-wwe-nxt-29-سبتمبر-2026-زاريا-تدافع-عن-لقبها-ومفاجأة-في-تحدي-بطولة-nxt.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-09-30T01:04:51.000Z"
-  },
   "https://www.fightful.com/wrestling/wwe-nxt-results-9-29-2026-grayson-waller-defends-the-nxt-title-dusty-cup-continues-more/": {
     "matchedFile": "20260930023100-نتائج-عرض-wwe-nxt-29-سبتمبر-2026-زاريا-تدافع-عن-لقبها-ومفاجأة-في-تحدي-بطولة-nxt.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
     "reason": "الخبر الجديد يغطي نتيجة نزال تأهيلي في عرض AEW Collision الذي تم تغطية نتائجه بالفعل في الخبر رقم 0.",
     "at": "2026-10-15T03:42:43.135Z"
+  },
+  "https://www.ringsidenews.com/tony-khan-announces-jamie-hayter-sidelined-injury-aew-dynamitecollision/": {
+    "matchedFile": "20261015073515-توني-خان-يعلن-إصابة-جيمي-هايتر-ويأمل-عودتها-خلال-أسبوعين.md",
+    "reason": "الخبر الجديد يكرر إعلان توني خان عن إصابة جيمي هايتر وتوقع عودتها خلال أسبوعين بسبب إصابتها في نزال شيكاغو، وهو نفس المحتوى والمصدر المذكور في الخبر رقم 0.",
+    "at": "2026-10-15T11:24:16.896Z"
+  },
+  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas/": {
+    "matchedFile": "20261014125736-رومان-رينز-يندم-على-عدم-معارضة-فريق-الإبداع-في-wwe.md",
+    "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها رومان رينز في بودكاست Club Shay Shay بخصوص ندمه على عدم معارضة فريق الإبداع وعبارة Suffering Succotash، وهو مطابق للخبر المنشور برقم 3.",
+    "at": "2026-10-15T11:34:52.425Z"
   }
 }

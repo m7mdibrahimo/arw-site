@@ -4924,3 +4924,10 @@ test("the library description of a yearly one-event program says the year and do
   assert.ok(/مشاهدة وتحميل \{\{ lp\.prog\.arName \}\}\{% if lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}/.test(t));
   assert.ok(t.includes("تحميل ومشاهدة"));
 });
+
+// A show page's episode list links the program's newest episode as «… الأخير …» (title + alt), like the home page and the library page do
+test("the episode list on every show page names the newest episode with «الأخير» in its link title and image alt", () => {
+  const layout = fs.readFileSync("_includes/post-layout.njk", "utf-8");
+  assert.ok(layout.includes('title="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}"'));
+  assert.ok(layout.includes('alt="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}"'));
+});
