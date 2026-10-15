@@ -49,3 +49,14 @@ test("number words get their hamza and spelled-out dates are weekday-checked", a
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])ا(?:ربعة|ربعين)(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #609: Trump was called «الرئيس السابق» (he is the sitting president) in the Jim Cornette story.
+test("Trump is never «the former president» in Arabic stories (INCIDENTS #609)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("انتقادات للرئيس السابق دونالد ترامب"), "انتقادات للرئيس دونالد ترامب");
+  assert.equal(applyCorrections("قال الرئيس السابق دونالد ترامب"), "قال الرئيس دونالد ترامب");
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.ok(guide.includes("الرئيس الحالي لأمريكا"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الرئيس (الأمريكي )?السابق (دونالد )?ترامب/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
