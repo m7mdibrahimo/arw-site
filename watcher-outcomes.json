@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2287254/wwe-id-program-departures-cappuchino-jones-santi-rivera": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-15T13:32:28.566Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
