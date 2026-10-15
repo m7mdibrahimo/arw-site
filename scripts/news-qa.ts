@@ -227,9 +227,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "dual_noun", "dual_form", "dangling_speech"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "dual_noun", "dual_form", "dangling_speech", "show_wrong_day", "weekday_mismatch"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "show_wrong_day", "weekday_mismatch"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
