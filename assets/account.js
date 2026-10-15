@@ -424,8 +424,17 @@
       .catch(function () { subFail('تعذر الاتصال'); });
   }
   $$('.acct-ptab').forEach(function (t) { t.addEventListener('click', function () { tab(t.getAttribute('data-ptab')); }); });
-  $$('[data-goto]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); tab(a.getAttribute('data-goto')); window.scrollTo({ top: 0, behavior: 'smooth' }); }); });
-  window.addEventListener('hashchange', function () { if (session) tab(hashTab()); });
+  // another tab from a link or the header's menu: the page changes in place; it moves only when the tabs are out of
+  // sight, to just above them (owner 2026-10-15: «يحدث مكانه ويفضل مكان ما انا واقف»)
+  function toTabs() {
+    var bar = $('.acct-ptabs');
+    if (!bar || bar.offsetParent === null) return;
+    var r = bar.getBoundingClientRect();
+    if (r.top >= 0 && r.top < window.innerHeight * 0.6) return;
+    window.scrollTo({ top: Math.max(0, window.pageYOffset + r.top - 90), behavior: 'smooth' });
+  }
+  $$('[data-goto]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); tab(a.getAttribute('data-goto')); toTabs(); }); });
+  window.addEventListener('hashchange', function () { if (session && !$('[data-view="profile"]').hidden) { tab(hashTab()); toTabs(); } });
 
   $$('[data-chips="fav_fed"] button').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -501,36 +510,64 @@
   // as WebP (JPEG where the browser can't make WebP); the worker checks it is a real picture and keeps it
   var upFile = $('.acct-up-file'), upNote = $('.acct-up-note'), upBtn = $('.acct-up');
   function upSay(t, bad) { upNote.textContent = t; upNote.classList.toggle('is-bad', !!bad); }
+  // a phone's picture, whatever it is: a camera's 50 megapixels are read already made small (createImageBitmap), so the
+  // page never holds the full picture and a small phone doesn't close the tab; a file with no type is judged by its
+  // name; HEIC that this browser can't open says so (owner 2026-10-15: «بحاول اضيف صورة من علي الموبيل … مش بيضيف»)
+  var PIC_EXT = /\.(jpe?g|png|webp|gif|bmp|avif|heic|heif)$/i;
+  function readPic(f) {
+    function viaImg() {
+      return new Promise(function (ok, no) {
+        var url = URL.createObjectURL(f), img = new Image();
+        img.onload = function () { URL.revokeObjectURL(url); ok(img); };
+        img.onerror = function () { URL.revokeObjectURL(url); no(new Error('img')); };
+        img.src = url;
+      });
+    }
+    if (!window.createImageBitmap) return viaImg();
+    return createImageBitmap(f, { resizeWidth: 1000, resizeQuality: 'high', imageOrientation: 'from-image' })
+      .then(function (bm) { return bm.width && bm.height ? bm : viaImg(); }, viaImg);
+  }
+  function square(src) {
+    var w = src.naturalWidth || src.width, h = src.naturalHeight || src.height, s = Math.min(w, h), size = Math.min(400, s);
+    if (!s) return '';
+    var c = document.createElement('canvas'); c.width = c.height = size;
+    var x = c.getContext('2d');
+    x.fillStyle = '#fff'; x.fillRect(0, 0, size, size);
+    x.imageSmoothingQuality = 'high';
+    x.drawImage(src, (w - s) / 2, (h - s) / 2, s, s, 0, 0, size, size);
+    if (src.close) src.close();
+    var data = c.toDataURL('image/webp', 0.86);
+    if (data.indexOf('data:image/webp') !== 0) data = c.toDataURL('image/jpeg', 0.86);
+    c.width = c.height = 0;
+    return data;
+  }
   upFile.addEventListener('change', function () {
     var f = upFile.files && upFile.files[0];
-    upFile.value = '';
     if (!f) return;
-    if (!/^image\//.test(f.type)) return upSay('اختر صورة (JPG أو PNG أو WebP).', true);
-    if (f.size > 25e6) return upSay('الصورة كبيرة جدا، اختر صورة أصغر.', true);
+    if (!/^image\//.test(f.type) && !(f.type === '' || f.type === 'application/octet-stream') && !PIC_EXT.test(f.name || '')) { upFile.value = ''; return upSay('اختر صورة (JPG أو PNG أو WebP).', true); }
+    if (f.size > 40e6) { upFile.value = ''; return upSay('الصورة كبيرة جدا، اختر صورة أصغر.', true); }
+    var heic = /hei[cf]/i.test(f.type) || /\.hei[cf]$/i.test(f.name || '');
     upBtn.classList.add('is-busy'); upSay('لحظة، نجهز صورتك…');
-    var url = URL.createObjectURL(f), img = new Image();
-    img.onload = function () {
-      URL.revokeObjectURL(url);
-      var s = Math.min(img.naturalWidth, img.naturalHeight), size = Math.min(400, s);
-      if (!s) { upBtn.classList.remove('is-busy'); return upSay('تعذر فتح هذه الصورة، جرب صورة أخرى.', true); }
-      var c = document.createElement('canvas'); c.width = c.height = size;
-      var x = c.getContext('2d');
-      x.fillStyle = '#fff'; x.fillRect(0, 0, size, size);
-      x.drawImage(img, (img.naturalWidth - s) / 2, (img.naturalHeight - s) / 2, s, s, 0, 0, size, size);
-      var data = c.toDataURL('image/webp', 0.86);
-      if (data.indexOf('data:image/webp') !== 0) data = c.toDataURL('image/jpeg', 0.86);
+    function fail(t) { upFile.value = ''; upBtn.classList.remove('is-busy'); upSay(t, true); }
+    readPic(f).then(function (src) {
+      var data = square(src);
+      if (!data) return fail('تعذر فتح هذه الصورة، جرب صورة أخرى.');
       upSay('جار رفع صورتك…');
-      api('/pic', { image: data }, true).then(function (d) {
-        upBtn.classList.remove('is-busy');
-        if (d.signedOut) return out();
-        if (!d.ok) return upSay(srv(d.error) || 'تعذر رفع الصورة، حاول مرة أخرى.', true);
-        session.member = d.member; save(session); drawProfile();
-        upSay('');
-        $('.acct-pics').hidden = true;
-      }).catch(function () { upBtn.classList.remove('is-busy'); upSay('تعذر رفع الصورة، تأكد من الاتصال وحاول مرة أخرى.', true); });
-    };
-    img.onerror = function () { URL.revokeObjectURL(url); upBtn.classList.remove('is-busy'); upSay('تعذر فتح هذه الصورة، جرب صورة أخرى.', true); };
-    img.src = url;
+      // a phone's network that hangs: the button comes back after 30 seconds
+      var ctl = window.AbortController ? new AbortController() : null, timer = ctl && setTimeout(function () { ctl.abort(); }, 30000);
+      fetch(API + '/pic', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + session.token }, body: JSON.stringify({ image: data }), credentials: 'omit', signal: ctl ? ctl.signal : undefined })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (d) {
+          clearTimeout(timer); upFile.value = ''; upBtn.classList.remove('is-busy');
+          if (d.signedOut) return out();
+          if (!d.ok) return upSay(srv(d.error) || 'تعذر رفع الصورة، حاول مرة أخرى.', true);
+          session.member = d.member; save(session); drawProfile();
+          upSay('تم تغيير صورتك ✓');
+          setTimeout(function () { upSay(''); $('.acct-pics').hidden = true; }, 1400);
+        }).catch(function () { clearTimeout(timer); fail('تعذر رفع الصورة، تأكد من الاتصال وحاول مرة أخرى.'); });
+    }).catch(function () {
+      fail(heic ? 'متصفحك لا يفتح صور HEIC. اختر لقطة شاشة للصورة أو صورة JPG، أو غير صيغة الكاميرا إلى «الأكثر توافقا».' : 'تعذر فتح هذه الصورة، جرب صورة أخرى.');
+    });
   });
 
   forms.password.addEventListener('submit', function (e) {
@@ -611,6 +648,8 @@
       return;
     }
     if (!session) { show('auth'); if (q.get('new') !== null) $('[data-view="auth"] [data-tab="up"]').click(); return; }
+    // signed in already: «?new» or «?back=…» mean nothing now; gone from the address, the menu's links stay on this page
+    if (location.search) history.replaceState(null, '', location.pathname + location.hash);
     // the session still good? (and the member as they are now)
     api('/me', null, true).then(function (d) {
       if (!d.ok) { out(); return; }

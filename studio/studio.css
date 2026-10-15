@@ -962,6 +962,17 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .mb-edit .field { display: flex; flex-direction: column; gap: 4px; }
 .mb-edit .field span { font-size: 12.5px; font-weight: 800; color: var(--muted); }
 .mb-edit-pic { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 13.5px; }
+.mb-edit .field small { font-size: 11.5px; line-height: 1.6; }
+.mb-edit-pic-row { display: flex; align-items: center; gap: 14px; }
+.mb-edit-av { width: 64px; height: 64px; font-size: 26px; flex: none; overflow: hidden; }
+.mb-edit-av img { width: 100%; height: 100%; object-fit: cover; }
+.mb-edit-pic-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.mb-edit-pic-acts .btn { cursor: pointer; }
+.mb-edit-pic-acts small { flex-basis: 100%; }
+.mb-edit-pw { display: flex; gap: 8px; }
+.mb-edit-pw .input { flex: 1; min-width: 0; }
+.mb-newpass { font: 800 20px/1.4 ui-monospace, monospace; text-align: center; padding: 12px; border-radius: 12px; background: var(--card-2, rgba(0,0,0,.05)); user-select: all; word-break: break-all; }
+.modal .mb-edit { max-height: min(62vh, 560px); overflow-y: auto; padding-inline-end: 4px; }
 
 /* «التوقعات» (studio/js/views/predictions.js) */
 .pd-list { display: flex; flex-direction: column; gap: 14px; }

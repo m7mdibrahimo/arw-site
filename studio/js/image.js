@@ -49,6 +49,30 @@ export async function siteJpeg(file) {
   }
 }
 
+/** A member's picture, as the site's own account page makes it (assets/account.js): the middle square, at most
+ *  400px, WebP (JPEG where the browser can't make WebP), as a data: URL the worker checks (worker/src/members.ts) */
+export async function memberSquare(file) {
+  if (!file || !/^image\//.test(file.type)) throw new Error('الملف ده مش صورة.');
+  if (file.size > 40 * 1024 * 1024) throw new Error('الصورة أكبر من 40 ميجا.');
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await loadImage(url);
+    const w = img.naturalWidth, h = img.naturalHeight, s = Math.min(w, h), size = Math.min(400, s);
+    if (!s) throw new Error('الصورة مش مقروءة');
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const x = c.getContext('2d');
+    x.fillStyle = '#fff'; x.fillRect(0, 0, size, size);
+    x.imageSmoothingQuality = 'high';
+    x.drawImage(img, (w - s) / 2, (h - s) / 2, s, s, 0, 0, size, size);
+    let data = c.toDataURL('image/webp', 0.86);
+    if (!data.startsWith('data:image/webp')) data = c.toDataURL('image/jpeg', 0.86);
+    return data;
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
 /** File/Blob → { path, base64, previewUrl, width, height, bytes } ready to commit */
 export async function prepareImage(file) {
   if (!file || !/^image\//.test(file.type)) throw new Error('الملف ده مش صورة.');

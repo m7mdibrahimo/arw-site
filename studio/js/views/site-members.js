@@ -4,6 +4,7 @@
 import { api, getUser } from '../api.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
 import { premiumPicker, kindTag, payHistory } from './premium.js';
+import { memberSquare } from '../image.js';
 
 const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c', '#2f9e5b'];
 const colorOf = (name) => { let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return COLORS[h % COLORS.length]; };
@@ -210,20 +211,56 @@ export async function renderSiteMember(page, id) {
     try { await api.siteMemberBadge(m.id, lv > 0, lv); toast(BADGE_DONE[lv]); renderSiteMember(page, id); }
     catch (e) { toast(e.message, 'error'); bb.disabled = false; }
   });
-  // the owner corrects what a member shows: name, about, favourite star, or takes the picture off
+  // everything of a member, by the owner only (owner 2026-10-15: «اعدل اي حاجة للاعضاء المتابعين اسمه صورته اي حاجة
+  // ايميله باورده»): the shown name, the username, the e-mail, a new password, the picture, the about, the favourites
   if ($('#mb-edit')) $('#mb-edit').onclick = async () => {
     const box = html`<div class="mb-edit">
+      <div class="mb-edit-pic-row">
+        <span class="cm-av mb-edit-av" id="me-av" style="--c:${colorOf(name)}">${picSrc(m.pic) ? html`<img src="${picSrc(m.pic)}" alt="">` : initial(name)}</span>
+        <div class="mb-edit-pic-acts">
+          <label class="btn btn-sm">${icon('image')}ارفع صورة<input type="file" accept="image/*" id="me-file" hidden></label>
+          <button type="button" class="btn btn-sm btn-ghost" id="me-nopic" ${m.pic ? '' : 'hidden'}>شيل الصورة</button>
+          <small class="muted" id="me-pic-note"></small>
+        </div>
+      </div>
       <label class="field"><span>الاسم الظاهر</span><input class="input" id="me-display" maxlength="30" value="${m.display || m.username}" dir="auto"></label>
+      <label class="field"><span>اسم المستخدم</span><input class="input" id="me-user" maxlength="20" value="${m.username}" dir="ltr" autocomplete="off"><small class="muted">حروف وأرقام، يبدأ بحرف، ومسموح بـ _ و . — رابط صفحته بيتغير معاه.</small></label>
+      <label class="field"><span>البريد</span><input class="input" id="me-email" type="email" maxlength="254" value="${m.email || ''}" dir="ltr" autocomplete="off"><small class="muted">بيتغير على طول ويتحسب متأكد منه.</small></label>
+      <label class="field"><span>كلمة سر جديدة</span><div class="mb-edit-pw"><input class="input" id="me-pass" type="text" maxlength="200" dir="ltr" autocomplete="new-password" placeholder="سيبها فاضية لو مش هتغيرها"><button type="button" class="btn btn-sm btn-ghost" id="me-gen">اعمل واحدة</button></div><small class="muted">8 حروف على الأقل فيها حروف وأرقام. هيخرج من كل أجهزته ويدخل بيها.</small></label>
       <label class="field"><span>النبذة</span><textarea class="input" id="me-bio" rows="2" maxlength="160" dir="auto">${m.bio || ''}</textarea></label>
+      <label class="field"><span>الاتحاد المفضل</span><select class="input" id="me-fed"><option value="">—</option>${Object.keys(FED_NAME).map(k => html`<option value="${k}" ${m.fav_fed === k ? 'selected' : ''}>${FED_NAME[k]}</option>`)}</select></label>
       <label class="field"><span>النجم المفضل</span><input class="input" id="me-star" maxlength="40" value="${m.fav_star || ''}" dir="auto"></label>
-      ${m.pic ? html`<label class="mb-edit-pic"><input type="checkbox" id="me-pic"> شيل صورته</label>` : ''}
+      <label class="mb-edit-pic"><input type="checkbox" id="me-out"> اخرجه من كل الأجهزة</label>
     </div>`;
-    const ok = await dialog({ title: `تعديل بيانات ${name}`, body: box, confirm: 'احفظ' });
-    if (!ok) return;
-    const body = { display: $('#me-display').value, bio: $('#me-bio').value, fav_star: $('#me-star').value };
-    if ($('#me-pic') && $('#me-pic').checked) body.pic = '';
-    try { await api.siteMemberEdit(m.id, body); toast('اتحفظ ✓'); renderSiteMember(page, id); }
-    catch (e) { toast(e.message, 'error'); }
+    let image = '', nopic = false;
+    const asked = dialog({ title: `تعديل بيانات ${name}`, body: box, confirm: 'احفظ' });
+    // the dialog is on the page now: its picture buttons
+    const file = $('#me-file'), note = $('#me-pic-note'), av = $('#me-av'), np = $('#me-nopic');
+    file.onchange = async () => {
+      const f = file.files[0]; file.value = '';
+      if (!f) return;
+      note.textContent = 'لحظة…';
+      try {
+        image = await memberSquare(f); nopic = false;
+        av.innerHTML = ''; const im = document.createElement('img'); im.src = image; im.alt = ''; av.appendChild(im);
+        note.textContent = 'هتتحفظ لما تدوس احفظ'; np.hidden = false;
+      } catch (e) { note.textContent = e.message; }
+    };
+    np.onclick = () => { image = ''; nopic = true; av.textContent = initial(name); note.textContent = 'الصورة هتتشال لما تدوس احفظ'; np.hidden = true; };
+    $('#me-gen').onclick = () => { $('#me-pass').value = newPassword(); };
+    const vals = () => ({ display: $('#me-display').value, username: $('#me-user').value.trim(), email: $('#me-email').value.trim(), password: $('#me-pass').value, bio: $('#me-bio').value, fav_fed: $('#me-fed').value, fav_star: $('#me-star').value, signout: $('#me-out').checked });
+    // what was typed is read as the dialog closes (it leaves the page a moment later)
+    if (!(await asked)) return;
+    const body = vals();
+    if (!body.password) delete body.password;
+    if (image) body.image = image; else if (nopic) body.pic = '';
+    try {
+      const r = await api.siteMemberEdit(m.id, body);
+      toast('اتحفظ ✓');
+      if (body.password) await dialog({ title: 'كلمة السر الجديدة', body: html`<p class="muted small">ابعتهاله عشان يدخل بيها (خرج من كل أجهزته):</p><p class="mb-newpass" dir="ltr">${body.password}</p>`, confirm: 'تمام', cancel: '' });
+      else if (r && r.changed && r.changed.email) toast('البريد اتغير، وخرج من أجهزته عشان يدخل تاني');
+      renderSiteMember(page, id);
+    } catch (e) { toast(e.message, 'error'); }
   };
   if ($('#mb-ban')) $('#mb-ban').onclick = async () => {
     const on = !m.banned;
