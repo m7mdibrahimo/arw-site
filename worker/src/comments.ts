@@ -36,25 +36,27 @@ const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods
 const reply = (body: unknown, status = 200, extra: Record<string, string> = {}) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...CORS, ...extra } });
 
-const ready = new WeakMap<D1Database, Promise<unknown>>();
+const done = new WeakSet<D1Database>();
 /** The table, made once per worker instance (CREATE … IF NOT EXISTS: nothing happens when it is there) */
-export function ensureTable(db: D1Database): Promise<unknown> {
-  let p = ready.get(db);
-  if (!p) ready.set(db, p = db.batch([
+export async function ensureTable(db: D1Database): Promise<void> {
+  // remembered only once it worked (as ensureMembers: a pending one from a request cut off never settles)
+  if (done.has(db)) return;
+  await db.batch([
     db.prepare("CREATE TABLE IF NOT EXISTS comments (id INTEGER PRIMARY KEY AUTOINCREMENT, path TEXT NOT NULL, title TEXT NOT NULL DEFAULT '', name TEXT NOT NULL, text TEXT NOT NULL, pic TEXT NOT NULL DEFAULT '', at INTEGER NOT NULL, day TEXT NOT NULL, vhash TEXT NOT NULL DEFAULT '', country TEXT NOT NULL DEFAULT '', deleted INTEGER NOT NULL DEFAULT 0)"),
     db.prepare("CREATE INDEX IF NOT EXISTS comments_path ON comments (path, deleted, at)"),
     db.prepare("CREATE INDEX IF NOT EXISTS comments_at ON comments (deleted, at)"),
     db.prepare("CREATE INDEX IF NOT EXISTS comments_who ON comments (vhash, at)"),
-  ]).then(async () => {
-    // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
-    for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''", "hearted_at INTEGER NOT NULL DEFAULT 0", "member INTEGER NOT NULL DEFAULT 0"]) {
-      await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
-    }
-    // the answers to a visitor's comments, found fast
-    await db.prepare("CREATE INDEX IF NOT EXISTS comments_owner ON comments (owner)").run().catch(() => null);
-    await db.prepare("CREATE INDEX IF NOT EXISTS comments_reply ON comments (reply_to, at)").run().catch(() => null);
-  }).catch((e) => { ready.delete(db); throw e; }));
-  return p;
+  ]);
+  // the site's replies (added after the table was first made): an existing column makes ALTER fail, which is fine
+  for (const col of ["parent INTEGER NOT NULL DEFAULT 0", "official INTEGER NOT NULL DEFAULT 0", "hearted INTEGER NOT NULL DEFAULT 0", "ip TEXT NOT NULL DEFAULT ''", "reply_to INTEGER NOT NULL DEFAULT 0", "owner TEXT NOT NULL DEFAULT ''", "hearted_at INTEGER NOT NULL DEFAULT 0", "member INTEGER NOT NULL DEFAULT 0"]) {
+    await db.prepare(`ALTER TABLE comments ADD COLUMN ${col}`).run().catch(() => null);
+  }
+  // the answers to a visitor's comments, found fast
+  await db.prepare("CREATE INDEX IF NOT EXISTS comments_owner ON comments (owner)").run().catch(() => null);
+  await db.prepare("CREATE INDEX IF NOT EXISTS comments_reply ON comments (reply_to, at)").run().catch(() => null);
+  // a member's comments (their page in the panel, the members' list's counts)
+  await db.prepare("CREATE INDEX IF NOT EXISTS comments_member ON comments (member, deleted)").run().catch(() => null);
+  done.add(db);
 }
 
 /** The pages comments are under: a show, recap, nostalgia episode or story, Arabic or English */

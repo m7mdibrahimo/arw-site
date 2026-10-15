@@ -32,16 +32,16 @@ const call = async (e: any, path: string, body?: any, token = '', now?: number) 
 const me = async (e: any, token: string) => (await (await handleMembers(new Request('https://w/members/me', { headers: { Authorization: `Bearer ${token}` } }), e, new URL('https://w/members/me'))).json() as any).member;
 /** A stand-in Fawaterk: invoices it made, and which of them were paid */
 function fawaterk() {
-  const made: any[] = []; const paid = new Set<string>();
+  const made: any[] = []; const paid = new Set<string>(); const asked: Record<string, any> = {};
   const real = globalThis.fetch;
   globalThis.fetch = (async (url: any, init: any) => {
     const u = String(url);
     if (u.endsWith('/createInvoiceLink')) { const b = JSON.parse(init.body); const id = String(1000 + made.length); made.push({ id, b, auth: init.headers.Authorization }); return new Response(JSON.stringify({ status: 'success', data: { url: `https://app.fawaterk.com/link/${id}`, invoiceId: Number(id), invoiceKey: `k${id}` } })); }
     const g = u.match(/getInvoiceData\/(\d+)/);
-    if (g) return new Response(JSON.stringify({ status: 'success', data: { invoice_id: Number(g[1]), paid: paid.has(g[1]) ? 1 : 0, payment_method: 'Card', referenceNumber: 'R' + g[1] } }));
+    if (g) return new Response(JSON.stringify({ status: 'success', data: { invoice_id: Number(g[1]), paid: paid.has(g[1]) ? 1 : 0, payment_method: 'Card', referenceNumber: 'R' + g[1], ...(asked[g[1]] || {}) } }));
     return new Response('{}', { status: 404 });
   }) as any;
-  return { made, paid, restore: () => { globalThis.fetch = real; } };
+  return { made, paid, asked, restore: () => { globalThis.fetch = real; } };
 }
 
 test('without the Fawaterk key yet: the fixed links for each currency (the panel turns the membership on)', async () => {
@@ -56,7 +56,7 @@ test('without the Fawaterk key yet: the fixed links for each currency (the panel
 });
 
 test('a payment turns the membership on at once (the page asks Fawaterk), once per invoice, 30 days added to what is left', async () => {
-  const e = env({ FAWATERK_API_KEY: 'fk_test' });
+  const e = env({ PREMIUM_AUTO: '1', FAWATERK_API_KEY: 'fk_test' });
   const s = await member(e);
   const f = fawaterk();
   try {
@@ -88,8 +88,8 @@ test('a payment turns the membership on at once (the page asks Fawaterk), once p
   } finally { f.restore(); }
 });
 
-test('the webhook: signed by Fawaterk, then confirmed by asking Fawaterk; unknown or unpaid invoices change nothing', async () => {
-  const e = env({ FAWATERK_API_KEY: 'fk_test', FAWATERK_VENDOR_KEY: 'vendor_secret' });
+test('the webhook only says «go and ask»: paid when Fawaterk, asked, says paid in full in the right currency; unknown or unpaid invoices change nothing', async () => {
+  const e = env({ PREMIUM_AUTO: '1', FAWATERK_API_KEY: 'fk_test', FAWATERK_VENDOR_KEY: 'vendor_secret' });
   const s = await member(e);
   const f = fawaterk();
   try {
@@ -111,16 +111,28 @@ test('the webhook: signed by Fawaterk, then confirmed by asking Fawaterk; unknow
     assert.equal((await me(e, s.token)).premium, until);
     // an invoice the site never made
     assert.equal((await hook('9999')).body.unknown, true);
+    // «paid» for less than the plan's price, or in another currency: not paid (owner: «مليون في المية انه دفع»)
+    await call(e, '/premium/checkout', { currency: 'EGP' }, s.token);
+    f.paid.add('1001'); f.asked['1001'] = { total: 5, currency: 'EGP' };
+    assert.equal((await hook('1001')).body.paid, false);
+    f.asked['1001'] = { total: 50, currency: 'USD' };
+    assert.equal((await hook('1001')).body.paid, false);
+    assert.equal((await me(e, s.token)).premium, until);
+    // in full: counted; and the hourly sweep finds one the webhook missed
+    f.asked['1001'] = { total: 50, currency: 'EGP' };
+    const { sweepPending } = await import('../worker/src/premium');
+    assert.equal(await sweepPending(e), 1);
+    assert.ok((await me(e, s.token)).premium > until);
   } finally { f.restore(); }
-  // without the API key: the signature decides (a wrong key: nothing)
+  // without the API key nothing can ask Fawaterk: a webhook's word, even signed, never turns a membership on
   const e2 = env({ FAWATERK_VENDOR_KEY: 'vendor_secret' });
   const s2 = await member(e2);
   await studioPremium(e2); // the tables
   await e2.ANALYTICS.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created) VALUES (?1, '77', 'k77', 'EGP', 50, ?2)").bind(s2.member.id, Date.now()).run();
   const signed = (key: string) => { const b: any = { invoice_id: 77, invoice_key: 'k77', payment_method: 'Fawry', invoice_status: 'paid' }; b.hashKey = createHmac('sha256', key).update(`InvoiceId=77&InvoiceKey=k77&PaymentMethod=Fawry`).digest('hex'); return call(e2, '/premium/webhook', b); };
   assert.equal((await signed('wrong')).body.paid, false);
-  assert.equal((await signed('vendor_secret')).body.paid, true);
-  assert.ok((await me(e2, s2.token)).premium > Date.now());
+  assert.equal((await signed('vendor_secret')).body.paid, false);
+  assert.equal((await me(e2, s2.token)).premium, 0);
 });
 
 test('premium members ask for a show to be translated (3 open at most); the panel answers; the panel can give or take days', async () => {
@@ -230,7 +242,7 @@ test('a show before its time: a premium member gets its links now, everyone else
 });
 
 test('Fawaterk by its OAuth client: a token asked once and kept, a refused one asked again; the panel sees the site as live', async () => {
-  const e = env({ FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
+  const e = env({ PREMIUM_AUTO: '1', FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
   const s = await member(e);
   const real = globalThis.fetch;
   let tokens = 0, refuseNext = false;
@@ -262,7 +274,7 @@ test('Fawaterk by its OAuth client: a token asked once and kept, a refused one a
     assert.equal((await studioPremium(e) as any).live, true);
   } finally { globalThis.fetch = real; }
   // Fawaterk down: the member still gets a way to pay (the fixed link)
-  const e2 = env({ FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
+  const e2 = env({ PREMIUM_AUTO: '1', FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
   const s2 = await member(e2);
   globalThis.fetch = (async () => new Response('down', { status: 500 })) as any;
   try { const r = await call(e2, '/premium/checkout', { currency: 'USD' }, s2.token); assert.equal(r.body.manual, true); assert.equal(r.body.url, PLANS.USD.link); }
@@ -398,7 +410,7 @@ test('the whole life of a membership: nothing on signing up, everything on subsc
 });
 
 test('longer plans: 3 months or a year, cheaper a month, the right days credited', async () => {
-  const e = env({ FAWATERK_API_KEY: 'fk_test' });
+  const e = env({ PREMIUM_AUTO: '1', FAWATERK_API_KEY: 'fk_test' });
   const s = await member(e, 'year_fan');
   const f = fawaterk();
   try {
@@ -417,11 +429,14 @@ test('longer plans: 3 months or a year, cheaper a month, the right days credited
     await call(e, '/premium/checkout', { currency: 'EGP', plan: 'forever' }, s.token);
     assert.equal(f.made[2].b.cartTotal, '50');
   } finally { f.restore(); }
-  // without Fawaterk's key, only the month has a fixed link
+  // without Fawaterk's key, each plan opens its own fixed link (the owner's, 2026-10-15)
   const e2 = env();
   const s2 = await member(e2, 'no_key');
-  assert.equal((await call(e2, '/premium/checkout', { currency: 'EGP', plan: 'm3' }, s2.token)).status, 503);
-  assert.equal((await call(e2, '/premium/checkout', { currency: 'EGP', plan: 'm1' }, s2.token)).body.manual, true);
+  for (const [plan, cur, item] of [['m1', 'EGP', 16781], ['m1', 'USD', 16782], ['m3', 'EGP', 16788], ['m12', 'EGP', 16789], ['m3', 'USD', 16790], ['m12', 'USD', 16791]] as const) {
+    const r = await call(e2, '/premium/checkout', { currency: cur, plan }, s2.token);
+    assert.equal(r.body.manual, true);
+    assert.match(r.body.url, new RegExp(`^https://app\\.fawaterk\\.com/invoices/item/${item}/`), `${plan} ${cur}`);
+  }
 });
 
 test('three days free, once: a new member only, never again, never after paying; one per device a month', async () => {
@@ -495,4 +510,40 @@ test('the trial (review fixes): an unpaid invoice doesn\'t block it, two taps at
   assert.equal(await runPremiumReminders(e, now + 3600e3), 0);
   assert.equal(await runPremiumReminders(e, until - 20 * 3600e3), 1);
   assert.equal(await runPremiumReminders(e, until - 19 * 3600e3), 0);
+});
+
+test('the owner turns a membership on by hand: the member found by email or username, any number of days', async () => {
+  const { studioPremiumFind } = await import('../worker/src/premium');
+  const e = env();
+  const s = await member(e, 'paid_by_hand');
+  const row: any = await e.ANALYTICS.prepare("SELECT id, email FROM members WHERE username = 'paid_by_hand'").first();
+  // the email as the follower sends it on Messenger: other case, spaces, an invisible mark
+  const byMail = await studioPremiumFind(e as any, `  ${row.email.toUpperCase()}‎ `);
+  assert.equal(byMail.success, true);
+  assert.equal((byMail as any).member.id, row.id);
+  assert.equal(((await studioPremiumFind(e as any, '@Paid_By_Hand')) as any).member.id, row.id);
+  assert.equal((await studioPremiumFind(e as any, 'nobody@example.com')).success, false);
+  // 45 days, then 10 more on top of what's left
+  const t0 = Date.now();
+  const g1: any = await studioPremiumGrant(e as any, row.id, 45, 'owner', t0);
+  assert.ok(Math.abs(g1.until - (t0 + 45 * 864e5)) < 5000);
+  const g2: any = await studioPremiumGrant(e as any, row.id, 10, 'owner', t0);
+  assert.ok(Math.abs(g2.until - (t0 + 55 * 864e5)) < 5000);
+  assert.equal(((await studioPremiumFind(e as any, row.email)) as any).member.premium, true);
+  assert.ok(s.token);
+});
+
+test('the owner turns paid memberships on by hand (owner 2026-10-15): with Fawaterk\'s key but no PREMIUM_AUTO, the fixed links, and nothing turns on by itself', async () => {
+  const e = env({ FAWATERK_API_KEY: 'fk_test' });
+  const s = await member(e, 'by_hand_only');
+  const f = fawaterk();
+  try {
+    const r = await call(e, '/premium/checkout', { currency: 'EGP', plan: 'm3' }, s.token);
+    assert.equal(r.body.manual, true);
+    assert.match(r.body.url, /invoices\/item\/16788\//);
+    assert.equal(f.made.length, 0, 'no invoice of the site\'s own');
+    assert.equal((await studioPremium(e)).live, false);
+    // the free trial is still the site's own, automatic
+    assert.ok((await call(e, '/premium/trial', {}, s.token)).body.until > Date.now());
+  } finally { f.restore(); }
 });

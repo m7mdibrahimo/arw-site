@@ -40,11 +40,16 @@ async function call(path, { method = 'GET', body, auth = true } = {}) {
   const headers = { 'Content-Type': 'application/json' };
   if (auth && getToken()) headers.Authorization = `Bearer ${getToken()}`;
   let res;
+  // a page's data that doesn't come in 25 seconds: said so, with «تحديث», never a spinner for ever (owner 2026-10-15:
+  // «صفحة الاعضاء … عمالة تلف علي الفاضي»); a save takes as long as it takes
+  const ctl = method === 'GET' && typeof AbortController === 'function' ? new AbortController() : null;
+  const timer = ctl ? setTimeout(() => ctl.abort(), 25000) : 0;
   try {
-    res = await fetch(`${WORKER}${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    res = await fetch(`${WORKER}${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined, signal: ctl ? ctl.signal : undefined });
   } catch (e) {
+    if (ctl && ctl.signal.aborted) throw new ApiError('الخادم اتأخر في الرد. دوس «تحديث» وجرّب تاني.', 0);
     throw new ApiError(LOCAL ? 'الخادم المحلي للّوحة مش شغال.' : 'مفيش اتصال بالإنترنت أو الخادم مش بيرد.', 0);
-  }
+  } finally { clearTimeout(timer); }
   const data = await res.json().catch(() => ({}));
   if (res.status === 401 && data.auth === false) {
     clearSession();
@@ -123,6 +128,7 @@ export const api = {
   premium: () => call('/api/studio/premium'),
   premiumMedia: (key) => call(`/api/studio/premium/media?k=${encodeURIComponent(key)}`),
   premiumMediaSave: (key, servers, downloads) => call('/api/studio/premium/media', { method: 'POST', body: { k: key, servers, downloads } }),
+  premiumFind: (q) => call('/api/studio/premium/find', { method: 'POST', body: { q } }),
   premiumGrant: (id, days) => call('/api/studio/premium/grant', { method: 'POST', body: { id: Number(id), days: Number(days) } }),
   premiumRequest: (body) => call('/api/studio/premium/request', { method: 'POST', body }),
   chat: () => call('/api/studio/chat'),

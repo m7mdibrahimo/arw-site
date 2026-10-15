@@ -3,6 +3,7 @@
 // accounts themselves: worker/src/members.ts.
 import { api, getUser } from '../api.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
+import { premiumPicker, kindTag, payHistory } from './premium.js';
 
 const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c', '#2f9e5b'];
 const colorOf = (name) => { let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; return COLORS[h % COLORS.length]; };
@@ -60,7 +61,7 @@ function row(m) {
     <a class="mb-open" href="#/site-members/${m.id}" aria-label="تفاصيل ${shownName(m)}"></a>
     <span class="cm-av" style="--c:${colorOf(shownName(m))}" aria-hidden="true">${picSrc(pic) ? html`<img src="${picSrc(pic)}" alt="" loading="lazy">` : initial(shownName(m))}</span>
     <div class="mb-main">
-      <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${isPrem(m) ? html`<em class="mb-gold-tag pr-tag">${raw(CROWN)}مميز</em>` : ''}${m.official ? '' : m.verified ? html`<em class="mb-ok" title="فعّل حسابه من بريده">${icon('check')}متفعّل</em>` : html`<em class="mb-wait" title="لسه مضغطش رابط التفعيل اللي في بريده">مش متفعّل</em>`}</div>
+      <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${isPrem(m) ? html`<em class="mb-gold-tag pr-tag" title="${`لحد ${dateTime(m.premium_until)}`}">${raw(CROWN)}مميز</em>${kindTag(m.premium_by)}<em class="pg-until">لحد ${date(m.premium_until)}</em>` : ''}${m.official ? '' : m.verified ? html`<em class="mb-ok" title="فعّل حسابه من بريده">${icon('check')}متفعّل</em>` : html`<em class="mb-wait" title="لسه مضغطش رابط التفعيل اللي في بريده">مش متفعّل</em>`}</div>
       <div class="mb-facts">
         <span dir="ltr">${m.email}</span>
         <span>انضم ${date(m.created)}</span>
@@ -163,7 +164,7 @@ export async function renderSiteMember(page, id) {
           <p class="muted"><span dir="ltr">@${m.username}</span></p>
           <p>${m.official ? html`<em class="mb-gold-tag">الحساب الرسمي للموقع</em>` : m.banned ? html`<em class="mb-flag">موقوف</em>` : html`<em class="mb-ok">${icon('check')}حساب شغال</em>`}</p>
         </div>
-        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<button class="btn pr-btn" data-prem="30">${raw(CROWN)}${isPrem(m) ? 'زوّد شهر مميز' : 'ادّيله شهر مميز'}</button>${isPrem(m) ? html`<button class="btn btn-ghost" data-prem="0">شيل العضوية المميزة</button>` : ''}` : ''}${badgeBtn(m, '')}${isOwner() ? html`<button class="btn btn-ghost" id="mb-edit">${icon('edit')}عدّل بياناته</button>` : ''}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
+        ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<a class="btn pr-btn" href="#mb-prem" id="mb-prem-go">${raw(CROWN)}${isPrem(m) ? 'زوّد الاشتراك' : 'فعّل الاشتراك'}</a>` : ''}${badgeBtn(m, '')}${isOwner() ? html`<button class="btn btn-ghost" id="mb-edit">${icon('edit')}عدّل بياناته</button>` : ''}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
       </section>
       <div class="mb-facts-grid">
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}
@@ -176,8 +177,11 @@ export async function renderSiteMember(page, id) {
         ${fact('النجم المفضل', m.fav_star)}
         ${fact('التعليقات', num(d.comments.filter(c => !c.deleted).length))}
         ${fact('قلوب من الموقع', num(d.hearts || 0))}
-        ${m.official ? '' : fact('العضوية المميزة', isPrem(m) ? `لحد ${dateTime(m.premium_until)}` : 'مش مشترك')}
+        ${m.official ? '' : fact('العضوية المميزة', isPrem(m) ? html`${kindTag(m.premium_by)} لحد ${dateTime(m.premium_until)}` : 'مش مشترك')}
       </div>
+      ${!m.official ? html`<section class="panel mb-sec" id="mb-prem"><h2>${raw(CROWN)} العضوية المميزة</h2>
+        ${isOwner() ? html`<div id="mb-prem-box"></div>` : html`<p class="pg-now">${isPrem(m) ? html`مشترك ${kindTag(m.premium_by)} لحد <b>${dateTime(m.premium_until)}</b>` : 'مش مشترك دلوقتي'}</p>`}
+        <h3 class="pg-h3">سجل الاشتراك والدفع</h3>${payHistory(d.payments)}</section>` : ''}
       ${m.bio ? html`<section class="panel mb-sec"><h2>النبذة</h2><p>${m.bio}</p></section>` : ''}
       <section class="panel mb-sec"><h2>الأجهزة اللي داخل منها (${num(d.sessions.length)})</h2>
         ${d.sessions.length ? html`<ul class="mb-devices">${d.sessions.map(s => html`<li><b>${device(s.ua)}</b><span class="muted">من ${dateTime(s.created)}</span></li>`)}</ul>` : html`<p class="muted">مش داخل من أي جهاز دلوقتي.</p>`}
@@ -188,12 +192,10 @@ export async function renderSiteMember(page, id) {
           : html`<p class="muted">لسه ماعلّقش.</p>`}
       </section>
     </div>`);
-  $$('[data-prem]', page).forEach(b => b.onclick = async () => {
-    const days = Number(b.dataset.prem);
-    const ok = await dialog({ title: days ? `عضوية مميزة لـ ${name}` : `شيل العضوية المميزة من ${name}`, body: html`<p class="muted small">${days ? 'هيتزوّد 30 يوم على عضويته (لو مشترك، بتتزوّد على اللي فاضل). استخدمها لو دفع قبل ما الدفع التلقائي يتوصّل، أو هدية.' : 'العضوية هتخلص دلوقتي.'}</p>`, confirm: days ? 'فعّلها' : 'شيلها', danger: !days });
-    if (!ok) return;
-    try { await api.premiumGrant(m.id, days); toast(days ? 'اتفعّلت ✓' : 'اتشالت ✓'); renderSiteMember(page, id); } catch (e) { toast(e.message, 'error'); }
-  });
+  // any period the owner likes (views/premium.js)
+  if ($('#mb-prem-box', page)) premiumPicker($('#mb-prem-box', page), m, () => renderSiteMember(page, id));
+  const pg = $('#mb-prem-go', page);
+  if (pg) pg.onclick = (e) => { e.preventDefault(); $('#mb-prem', page).scrollIntoView({ behavior: 'smooth', block: 'center' }); };
   const vb = $('#mb-verify', page);
   if (vb) vb.onclick = async () => {
     const ok = await dialog({ title: `تفعيل حساب ${name}`, body: html`<p class="muted small">الحساب هيتفتح من غير ما يضغط رابط التفعيل اللي في بريده. استخدمها لو الرسالة موصلتلوش.</p>`, confirm: 'فعّله' });

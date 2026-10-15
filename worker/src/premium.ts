@@ -17,7 +17,7 @@ import { chatRebadge } from "./chat";
 import { memberOf, ensureMembers } from "./members";
 import { readRepoFile } from "./studio";
 
-export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; FAWATERK_API_KEY?: string; FAWATERK_VENDOR_KEY?: string; FAWATERK_CLIENT_ID?: string; FAWATERK_CLIENT_SECRET?: string; RESEND_API_KEY?: string;
+export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; PREMIUM_AUTO?: string; FAWATERK_API_KEY?: string; FAWATERK_VENDOR_KEY?: string; FAWATERK_CLIENT_ID?: string; FAWATERK_CLIENT_SECRET?: string; RESEND_API_KEY?: string;
   GITHUB_OWNER?: string; GITHUB_REPO?: string; GITHUB_BRANCH?: string; GITHUB_TOKEN?: string }
 
 export const PLANS = { EGP: { price: 50, link: "https://app.fawaterk.com/invoices/item/16781/alaadoy-almmyz-gny-msry" }, USD: { price: 1, link: "https://app.fawaterk.com/invoices/item/16782/alaadoy-almmyz-dolar-amryky" } } as const;
@@ -29,6 +29,13 @@ export const OFFERS = {
   m12: { days: 365, EGP: 450, USD: 9, ar: "سنة", en: "1 year" },
 } as const;
 export type OfferId = keyof typeof OFFERS;
+/** The owner's fixed Fawaterk links, one a plan and a currency (the 3 months and the year: owner 2026-10-15): used
+ *  while there's no Fawaterk key, or when Fawaterk won't make the member's own invoice; the panel turns those on */
+export const LINKS: Record<OfferId, { EGP: string; USD: string }> = {
+  m1: { EGP: PLANS.EGP.link, USD: PLANS.USD.link },
+  m3: { EGP: "https://app.fawaterk.com/invoices/item/16788/alaadoy-almmyz-3-shhor-gny-msry", USD: "https://app.fawaterk.com/invoices/item/16790/alaadoy-almmyz-3-shhor-dolar-amryky" },
+  m12: { EGP: "https://app.fawaterk.com/invoices/item/16789/alaadoy-almmyz-sn-gny-msry", USD: "https://app.fawaterk.com/invoices/item/16791/alaadoy-almmyz-sn-dolar-amryky" },
+};
 export const TRIAL_DAYS = 3;
 /** A member may try the membership free once: never premium before, never paid (an invoice left unpaid doesn't count),
  *  not the site's account */
@@ -50,23 +57,29 @@ const SITE = "https://arab-wrestling.com";
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
 const reply = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS } });
 
-const ready = new WeakMap<D1Database, Promise<unknown>>();
-export function ensurePremium(db: D1Database) {
-  let p = ready.get(db);
-  if (!p) ready.set(db, p = ensureMembers(db).then(() => db.batch([
+// remembered only once it worked (as ensureMembers: a pending one from a request cut off never settles)
+const ready = new WeakSet<D1Database>();
+export async function ensurePremium(db: D1Database): Promise<void> {
+  if (ready.has(db)) return;
+  await ensureMembers(db);
+  await db.batch([
     db.prepare(`CREATE TABLE IF NOT EXISTS premium_payments (id INTEGER PRIMARY KEY AUTOINCREMENT, member INTEGER NOT NULL, invoice_id TEXT NOT NULL DEFAULT '',
       invoice_key TEXT NOT NULL DEFAULT '', currency TEXT NOT NULL, amount REAL NOT NULL, status TEXT NOT NULL DEFAULT 'pending', method TEXT NOT NULL DEFAULT '',
       reference TEXT NOT NULL DEFAULT '', created INTEGER NOT NULL, paid_at INTEGER NOT NULL DEFAULT 0, days INTEGER NOT NULL DEFAULT ${DAYS}, granted_by TEXT NOT NULL DEFAULT '')`),
     db.prepare("CREATE INDEX IF NOT EXISTS premium_payments_invoice ON premium_payments (invoice_id)"),
+    // a member's history (the panel's member page, the kind of their membership)
+    db.prepare("CREATE INDEX IF NOT EXISTS premium_payments_member ON premium_payments (member, status, paid_at)"),
     // a show's own premium servers and downloads (never in its file, never in its page): «للأعضاء المميزين» in the editor
     db.prepare("CREATE TABLE IF NOT EXISTS premium_media (k TEXT PRIMARY KEY, servers TEXT NOT NULL DEFAULT '[]', downloads TEXT NOT NULL DEFAULT '[]', updated INTEGER NOT NULL)"),
     db.prepare(`CREATE TABLE IF NOT EXISTS premium_requests (id INTEGER PRIMARY KEY AUTOINCREMENT, member INTEGER NOT NULL, kind TEXT NOT NULL, text TEXT NOT NULL,
       status TEXT NOT NULL DEFAULT 'new', reply TEXT NOT NULL DEFAULT '', link TEXT NOT NULL DEFAULT '', created INTEGER NOT NULL, updated INTEGER NOT NULL)`),
-  ]))
-    .catch((e) => { ready.delete(db); throw e; }));
-  return p;
+  ]);
+  ready.add(db);
 }
 
+/** What turned a member's membership on last, for the panel (owner 2026-10-15: «تجربة 3 ايام … ولا هدية من الموقع …
+ *  ولا دافع»): «trial», a name (given by hand from the panel) or «» (paid on Fawaterk) */
+export const PREMIUM_BY = "(SELECT p.granted_by FROM premium_payments p WHERE p.member = m.id AND p.status = 'paid' ORDER BY p.paid_at DESC, p.id DESC LIMIT 1) AS premium_by";
 /** A member's membership, as their pages see it */
 export const premiumOf = (m: any, now = Date.now()) => (m?.official ? 4102444800000 : Number(m?.premium_until) > now ? Number(m.premium_until) : 0);
 
@@ -94,7 +107,11 @@ export async function validHash(env: PremiumEnv, b: any): Promise<boolean> {
 }
 /** Fawaterk's API key: a fixed token (FAWATERK_API_KEY), or one asked for with the OAuth client the owner made in
  *  Fawaterk («التكامل البرمجي» → «بيانات اعتماد عميل OAuth»), kept in KV until shortly before it ends */
-export const fawaterkLive = (env: PremiumEnv) => !!(env.FAWATERK_API_KEY || (env.FAWATERK_CLIENT_ID && env.FAWATERK_CLIENT_SECRET));
+/** A paid membership turns on by itself only when the owner switches it on (PREMIUM_AUTO = "1") and Fawaterk's key is
+ *  there. Off by default (owner 2026-10-15: «افضل خاجة ان انا ال افعل الاشتراك ب ايديا للناس عشان ممكن الناس تعمل
+ *  ثغرات»): the member pays on the plan's fixed link and sends the owner their email, the owner turns it on in the panel
+ *  (views/premium.js). The free trial is the site's own and stays automatic. */
+export const fawaterkLive = (env: PremiumEnv) => env.PREMIUM_AUTO === "1" && !!(env.FAWATERK_API_KEY || (env.FAWATERK_CLIENT_ID && env.FAWATERK_CLIENT_SECRET));
 export async function fawaterkToken(env: PremiumEnv, fresh = false): Promise<string> {
   if (env.FAWATERK_API_KEY) return env.FAWATERK_API_KEY;
   if (!env.FAWATERK_CLIENT_ID || !env.FAWATERK_CLIENT_SECRET) return "";
@@ -124,15 +141,21 @@ async function fawaterk(env: PremiumEnv, path: string, init: RequestInit = {}): 
   }
   return null;
 }
-/** Is this invoice paid? Fawaterk itself says (its answer, not the webhook's word) */
-export async function invoicePaid(env: PremiumEnv, invoiceId: string): Promise<{ paid: boolean; method?: string; reference?: string } | null> {
+/** Is this invoice paid? Fawaterk itself says (its answer, not the webhook's word); and paid in full, in the currency
+ *  the site asked for (owner 2026-10-15: «يتاكد مليون في الميه انه دفع») */
+export async function invoicePaid(env: PremiumEnv, invoiceId: string, expect?: { amount?: number; currency?: string }): Promise<{ paid: boolean; method?: string; reference?: string } | null> {
   if (!fawaterkLive(env) || !invoiceId) return null;
   try {
     const r = await fawaterk(env, `/getInvoiceData/${encodeURIComponent(invoiceId)}`);
     if (!r) return null;
     const d: any = await r.json().catch(() => null);
     const x = d?.data || {};
-    const paid = x.paid === 1 || x.paid === true || x.paid === "1" || /^paid$/i.test(String(x.status_text || x.invoice_status || x.status || ""));
+    let paid = x.paid === 1 || x.paid === true || x.paid === "1" || /^paid$/i.test(String(x.status_text || x.invoice_status || x.status || ""));
+    // what Fawaterk says was asked of the member: never less than the plan's price, never another currency
+    const total = Number(x.total ?? x.cart_total ?? x.cartTotal ?? x.invoice_total ?? NaN);
+    const cur = String(x.currency || "").toUpperCase();
+    if (expect && Number(expect.amount) > 0 && Number.isFinite(total) && total + 0.01 < Number(expect.amount)) paid = false;
+    if (expect && expect.currency && /^[A-Z]{3}$/.test(cur) && cur !== String(expect.currency).toUpperCase()) paid = false;
     return { paid, method: String(x.payment_method || x.paymentMethod || ""), reference: String(x.referenceNumber || x.reference_number || "") };
   } catch { return null; }
 }
@@ -181,12 +204,12 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
   if (path === "/premium/webhook" && request.method === "POST") {
     const pay: any = await db.prepare("SELECT * FROM premium_payments WHERE invoice_id = ?1 ORDER BY id DESC LIMIT 1").bind(String(body.invoice_id || "")).first();
     if (!pay) return reply({ ok: true, unknown: true });
-    const signed = await validHash(env, body);
-    const asked = await invoicePaid(env, pay.invoice_id);
-    // paid when Fawaterk says so when asked; without that, a signed «paid» is enough
-    const paid = asked ? asked.paid : signed && /^paid$/i.test(String(body.invoice_status || ""));
-    if (!paid) return reply({ ok: true, paid: false });
-    await settle(db, pay, { method: asked?.method || body.payment_method, reference: asked?.reference || body.referenceNumber }, now);
+    // the webhook only says «go and ask»: paid only when Fawaterk, asked by the site with its own key, says this very
+    // invoice is paid in full (a webhook's own word, even signed, never turns a membership on: its signature doesn't
+    // cover the status). Not answered now: asked again by the member's page and every hour (sweepPending).
+    const asked = await invoicePaid(env, pay.invoice_id, pay);
+    if (!asked?.paid) return reply({ ok: true, paid: false });
+    await settle(db, pay, { method: asked.method || body.payment_method, reference: asked.reference || body.referenceNumber }, now);
     await chatRebadge(env as any, pay.member).catch(() => {});
     return reply({ ok: true, paid: true });
   }
@@ -239,10 +262,10 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     const currency = String(body.currency || "EGP").toUpperCase() === "USD" ? "USD" : "EGP";
     const offerId: OfferId = (Object.keys(OFFERS) as OfferId[]).includes(body.plan) ? body.plan : "m1";
     const offer = OFFERS[offerId];
-    const plan = { price: offer[currency], link: PLANS[currency].link };
+    const plan = { price: offer[currency], link: LINKS[offerId][currency] };
     const back = `${SITE}${body.en ? "/en" : ""}/premium/`; // back to the page in the member's language
-    // the fixed links are a month's; a longer plan needs the member's own invoice
-    if (!fawaterkLive(env)) return offerId === "m1" ? reply({ ok: true, url: plan.link, manual: true }) : reply({ ok: false, error: "الدفع لهذه المدة غير متاح الآن، اختر الاشتراك الشهري أو حاول بعد قليل." }, 503);
+    // no key yet: the plan's fixed link (each plan has its own)
+    if (!fawaterkLive(env)) return reply({ ok: true, url: plan.link, manual: true });
     const open = await db.prepare("SELECT COUNT(*) AS n FROM premium_payments WHERE member = ?1 AND created > ?2").bind(me.id, now - 3_600_000).first<{ n: number }>();
     if ((open?.n || 0) >= 8) return reply({ ok: false, error: "طلبات دفع كثيرة، حاول بعد قليل." }, 429);
     const name = String(me.display || me.username).trim().split(/\s+/);
@@ -262,7 +285,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     // Fawaterk refused or didn't answer: the fixed link, so the member can still pay (the panel turns it on)
     if (!res || !res.ok || d?.status !== "success" || !inv.url) {
       console.log(`[premium] createInvoiceLink ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`);
-      return offerId === "m1" ? reply({ ok: true, url: plan.link, manual: true }) : reply({ ok: false, error: "تعذر فتح صفحة الدفع، حاول مرة أخرى." }, 502);
+      return reply({ ok: true, url: plan.link, manual: true });
     }
     await db.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created, days) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)")
       .bind(me.id, String(inv.invoiceId ?? inv.invoice_id ?? ""), String(inv.invoiceKey ?? inv.invoice_key ?? ""), currency, plan.price, now, offer.days).run();
@@ -290,7 +313,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     // back from Fawaterk: the member's recent invoices, asked again
     const rows = (await db.prepare("SELECT * FROM premium_payments WHERE member = ?1 AND status = 'pending' AND created > ?2 ORDER BY id DESC LIMIT 5").bind(me.id, now - 3 * DAY).all<any>()).results || [];
     for (const pay of rows) {
-      const asked = await invoicePaid(env, pay.invoice_id);
+      const asked = await invoicePaid(env, pay.invoice_id, pay);
       if (asked?.paid) { await settle(db, pay, asked, now); await chatRebadge(env as any, pay.member).catch(() => {}); }
     }
     const m: any = await db.prepare("SELECT premium_until, official FROM members WHERE id = ?1").bind(me.id).first();
@@ -322,7 +345,7 @@ export async function studioPremium(env: PremiumEnv, now = Date.now()) {
   await ensurePremium(db);
   const month = now - 30 * DAY;
   const [members, payments, requests, sums] = await db.batch([
-    db.prepare("SELECT id, username, display, pic, email, premium_until, premium_since FROM members WHERE premium_until > ?1 ORDER BY premium_until ASC").bind(now),
+    db.prepare(`SELECT m.id, m.username, m.display, m.pic, m.email, m.premium_until, m.premium_since, ${PREMIUM_BY} FROM members m WHERE m.premium_until > ?1 ORDER BY m.premium_until ASC`).bind(now),
     db.prepare(`SELECT p.*, m.username, m.display FROM premium_payments p LEFT JOIN members m ON m.id = p.member WHERE p.status = 'paid' ORDER BY p.paid_at DESC LIMIT 200`),
     db.prepare(`SELECT r.*, m.username, m.display, m.pic, m.premium_until, m.official FROM premium_requests r LEFT JOIN members m ON m.id = r.member ORDER BY CASE r.status WHEN 'new' THEN 0 WHEN 'working' THEN 1 ELSE 2 END, r.id DESC LIMIT 300`),
     db.prepare("SELECT currency, SUM(amount) AS total, COUNT(*) AS n FROM premium_payments WHERE status = 'paid' AND paid_at > ?1 AND granted_by = '' GROUP BY currency").bind(month),
@@ -360,6 +383,19 @@ export async function studioPremiumMedia(env: PremiumEnv, key: unknown, body: an
   const row: any = await db.prepare("SELECT servers, downloads FROM premium_media WHERE k = ?1").bind(k).first();
   return { success: true, servers: row ? JSON.parse(row.servers) : [], downloads: row ? JSON.parse(row.downloads) : [] };
 }
+/** The owner turns a membership on by hand (owner 2026-10-15: «لمجرد ما يدفعوا … يبعتوا الايميل ال هما مسجلين بيه»): the
+ *  member found by the email they signed up with, or their username (with or without «@») */
+export async function studioPremiumFind(env: PremiumEnv, q: unknown, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "مش متاح دلوقتي." };
+  await ensurePremium(db);
+  const s = String(q ?? "").normalize("NFKC").replace(/[\u200e\u200f\u202a-\u202e\s]/g, "").replace(/^@/, "").toLowerCase().slice(0, 254);
+  if (s.length < 3) return { success: false, error: "اكتب إيميل المتابع أو اسم المستخدم بتاعه." };
+  const m = await db.prepare(`SELECT id, username, display, email, pic, official, banned, verified, premium_until, premium_since FROM members
+    WHERE email = ?1 OR ukey = ?1 LIMIT 1`).bind(s).first<any>();
+  if (!m) return { success: false, error: s.includes("@") ? "مفيش عضو مسجّل بالإيميل ده. اتأكد إنه نفس الإيميل اللي عمل بيه الحساب." : "مفيش عضو باسم المستخدم ده." };
+  return { success: true, member: { ...m, premium: Number(m.premium_until) > now } };
+}
 /** The owner gives (or takes back) membership days by hand: a payment made before the automatic one was set up, a gift */
 export async function studioPremiumGrant(env: PremiumEnv, id: unknown, days: unknown, who = "", now = Date.now()) {
   const db = env.ANALYTICS;
@@ -395,10 +431,25 @@ export async function studioPremiumRequest(env: PremiumEnv, b: any, now = Date.n
 
 /** Hourly: «تنتهي عضويتك بعد 3 أيام» once before the end, «انتهت عضويتك» once after it, in the member's bell (and on
  *  their devices); each period's notice once (the address carries the end date). A gift or a trial is told too. */
+/** Hourly: the invoices of the last 3 days still waiting, asked of Fawaterk again (a webhook that came while Fawaterk
+ *  didn't answer, a member who closed the page before coming back) */
+export async function sweepPending(env: PremiumEnv, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db || !fawaterkLive(env)) return 0;
+  await ensurePremium(db);
+  const rows = (await db.prepare("SELECT * FROM premium_payments WHERE status = 'pending' AND invoice_id != '' AND created > ?1 ORDER BY id DESC LIMIT 20").bind(now - 3 * DAY).all<any>()).results || [];
+  let n = 0;
+  for (const pay of rows) {
+    const asked = await invoicePaid(env, pay.invoice_id, pay).catch(() => null);
+    if (asked?.paid && (await settle(db, pay, asked, now))) { n++; await chatRebadge(env as any, pay.member).catch(() => {}); }
+  }
+  return n;
+}
 export async function runPremiumReminders(env: PremiumEnv, now = Date.now()) {
   const db = env.ANALYTICS;
   if (!db) return 0;
   await ensurePremium(db);
+  await sweepPending(env, now).catch(() => 0);
   const { ensureFollows } = await import("./follows");
   await ensureFollows(db);
   // members not told yet (the reminder's link is its key in the inbox); a 3-day trial is reminded on its last day only
