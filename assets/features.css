@@ -1095,6 +1095,7 @@ html[dir="ltr"] .arw-cw-x{ left:auto; right:8px; }
   .eyebrow{ animation-iteration-count:3 !important; }
 }
 /* 5. What's far down the page isn't laid out or drawn until the reader comes near it; its last size is kept, so the
-   page doesn't jump (the footer, the home page's lower rows, a show's or a story's related shows and comments) */
-footer, #full-shows.content, #recaps.content, #nostalgia-home.content, #news.content, .related-posts-section, #comments{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
+   page doesn't jump (the footer, a show's or a story's related shows and comments; not the home page's rows, whose
+   dividing dot sits half outside them and would be cut) */
+footer, .related-posts-section, #comments{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
 footer{ contain-intrinsic-size:auto 340px; }

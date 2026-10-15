@@ -218,7 +218,9 @@
     if (!ROOMS[room]) return;
     if (current === room && ws && ws.readyState <= 1) { showRoom(); return; }
     close();
-    if (current && current !== room) { cancelEdit(); input.value = ''; }
+    // an edit or a reply started elsewhere never follows into this room
+    cancelEdit(); cancelReply();
+    if (current !== room) input.value = '';
     current = room;
     var R = ROOMS[room];
     $$('.cm-room').forEach(function (b) { b.classList.toggle('is-on', b === R.btn); });
@@ -250,7 +252,7 @@
   function showRoom() { app.setAttribute('data-view', 'room'); document.body.classList.add('cm-in-room'); }
   function showRooms() {
     app.setAttribute('data-view', 'rooms'); document.body.classList.remove('cm-in-room');
-    if (window.matchMedia('(max-width: 1150px)').matches) { close(); current = null; $$('.cm-room').forEach(function (b) { b.classList.remove('is-on'); }); document.title = 'مجتمع المصارعة | عرب راسلنج'; }
+    if (window.matchMedia('(max-width: 1150px)').matches) { close(); cancelEdit(); cancelReply(); current = null; $$('.cm-room').forEach(function (b) { b.classList.remove('is-on'); }); document.title = 'مجتمع المصارعة | عرب راسلنج'; }
   }
   function gate(on) {
     $('.cm-gate').hidden = !on;
@@ -300,8 +302,9 @@
         sock.onopen = function () { retry = 0; conn(''); clearInterval(pingT); pingT = setInterval(probe, 20000); };
         sock.onmessage = function (e) { alive(); if (e.data === 'pong') return; var m; try { m = JSON.parse(e.data); } catch (x) { return; } handle(m); };
         sock.onclose = function (e) {
-          clearInterval(pingT); clearTimeout(pongT);
+          // an old socket closing late must not stop the new one's checks
           if (ws !== sock) return;
+          clearInterval(pingT); clearTimeout(pongT);
           ws = null;
           if (e.code === 4003) { toast('تم إيقاف حسابك.'); gate(true); return; }
           if (current === room) { conn(navigator.onLine === false ? 'لا يوجد اتصال بالإنترنت، سترسل رسائلك عند عودته…' : 'انقطع الاتصال، جار إعادة الاتصال…'); later(); }
@@ -316,7 +319,7 @@
     try { ws.send('ping'); } catch (e) { return; }
     clearTimeout(pongT);
     var sock = ws;
-    pongT = setTimeout(function () { if (ws === sock) { try { sock.close(4000); } catch (e) {} sock.onclose({ code: 4000 }); } }, 8000);
+    pongT = setTimeout(function () { if (ws === sock) { var h = sock.onclose; sock.onclose = null; try { sock.close(4000); } catch (e) {} if (h) h.call(sock, { code: 4000 }); } }, 8000);
   }
   function alive() { clearTimeout(pongT); }
   function wsSend(o) { if (ws && ws.readyState === 1) { try { ws.send(JSON.stringify(o)); return true; } catch (e) {} } return false; }
@@ -506,11 +509,13 @@
     // mine still on their way stay at the end
     Object.keys(pending).forEach(function (n) { if (pending[n].el) list.appendChild(pending[n].el); });
   }
+  // a message that comes in while mine are still on their way goes above them, where it belongs
   function appendMsg(m) {
     var i = msgs.indexOf(m), prev = msgs[i - 1];
     var sys = $('.cm-sys', list); if (sys) sys.remove();
-    if (!prev || dayKey(prev.at) !== dayKey(m.at)) list.appendChild(el('div', 'cm-day', dayLabel(m.at)));
-    list.appendChild(buildMsg(m, cont(m, prev)));
+    var before = list.querySelector('.cm-msg.is-pending, .cm-msg.is-failed');
+    if (!prev || dayKey(prev.at) !== dayKey(m.at)) list.insertBefore(el('div', 'cm-day', dayLabel(m.at)), before);
+    list.insertBefore(buildMsg(m, cont(m, prev)), before);
   }
   function replaceMsg(m) {
     var old = list.querySelector('[data-id="' + m.id + '"]');

@@ -469,3 +469,30 @@ test('a membership about to end and one that just ended: the member is told once
   await runPremiumReminders(e, now + 2 * 864e5 + 7200e3);
   assert.equal(inbox().length, 2);
 });
+
+test('the trial (review fixes): an unpaid invoice doesn\'t block it, two taps at once give 3 days not 6, an IPv6 phone is one device, reminded on its last day only', async () => {
+  const { trialIpKey } = await import('../worker/src/premium');
+  const e = env();
+  const db = e.ANALYTICS.raw;
+  const s = await member(e, 'left_checkout');
+  // an invoice opened and left unpaid
+  await call(e, '/premium/mine', undefined, s.token);
+  db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, days) VALUES (?, 'EGP', 50, 'pending', ?, 30)").run(s.member.id, Date.now());
+  assert.equal((await me(e, s.token)).trial, true);
+  const req = (ip: string) => handlePremium(new Request('https://w/premium/trial', { method: 'POST', body: '{}', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${s.token}`, 'CF-Connecting-IP': ip } }), e, new URL('https://w/premium/trial')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
+  const [a, b] = await Promise.all([req('2001:db8:1:2::10'), req('2001:db8:1:2::11')]);
+  assert.deepEqual([a.status, b.status].sort(), [200, 400]);
+  const until = Number((db.prepare('SELECT premium_until FROM members WHERE id = ?').get(s.member.id) as any).premium_until);
+  assert.ok(Math.abs(until - (Date.now() + 3 * 864e5)) < 10000, 'three days, not six');
+  // the /64 of an IPv6 address is the device
+  assert.equal(trialIpKey('2001:db8:1:2:aaaa:bbbb:cccc:dddd'), trialIpKey('2001:0db8:1:2::1'));
+  assert.equal(trialIpKey('41.5.5.5'), '41.5.5.5');
+  const s2 = await member(e, 'same_phone');
+  const r2 = await handlePremium(new Request('https://w/premium/trial', { method: 'POST', body: '{}', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${s2.token}`, 'CF-Connecting-IP': '2001:db8:1:2:ffff::1' } }), e, new URL('https://w/premium/trial'));
+  assert.equal(r2.status, 429);
+  // reminders: not in the trial's first hours, yes on its last day, once
+  const now = Date.now();
+  assert.equal(await runPremiumReminders(e, now + 3600e3), 0);
+  assert.equal(await runPremiumReminders(e, until - 20 * 3600e3), 1);
+  assert.equal(await runPremiumReminders(e, until - 19 * 3600e3), 0);
+});

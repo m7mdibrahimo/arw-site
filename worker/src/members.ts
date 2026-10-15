@@ -418,7 +418,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
   if (path === "/me" && request.method === "GET") {
     // the free trial still open to them (worker/src/premium.ts /premium/trial): never premium, never paid
     let trial = !me.official && !Number(me.premium_until);
-    if (trial) trial = !(await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 LIMIT 1").bind(me.id).first().catch(() => null));
+    if (trial) trial = !(await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 AND status = 'paid' LIMIT 1").bind(me.id).first().catch(() => null));
     return reply({ ok: true, member: { ...mine(me), trial }, mail: !!env.RESEND_API_KEY });
   }
 

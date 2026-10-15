@@ -30,12 +30,20 @@ export const OFFERS = {
 } as const;
 export type OfferId = keyof typeof OFFERS;
 export const TRIAL_DAYS = 3;
-/** A member may try the membership free once: never premium before, never paid, not the site's account */
+/** A member may try the membership free once: never premium before, never paid (an invoice left unpaid doesn't count),
+ *  not the site's account */
 export async function trialOpen(db: D1Database, m: any): Promise<boolean> {
   if (!m || m.official || Number(m.premium_until) > 0) return false;
-  const any = await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 LIMIT 1").bind(m.id).first();
+  const any = await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 AND status = 'paid' LIMIT 1").bind(m.id).first();
   return !any;
 }
+/** The address a free trial is counted on: an IPv6 one by its /64 (a phone's changes within it all the time) */
+export const trialIpKey = (ip: string) => {
+  ip = String(ip || "").trim().toLowerCase();
+  if (!ip) return "";
+  if (ip.includes(":")) { const full = ip.includes("::") ? (() => { const [a, b] = ip.split("::"); const l = a ? a.split(":") : [], r = b ? b.split(":") : []; return [...l, ...Array(8 - l.length - r.length).fill("0"), ...r]; })() : ip.split(":"); return full.slice(0, 4).map(x => x.replace(/^0+(?=.)/, "")).join(":") + "::/64"; }
+  return ip.slice(0, 45);
+};
 const DAY = 86_400_000;
 const FAWATERK = "https://app.fawaterk.com/api/v2";
 const SITE = "https://arab-wrestling.com";
@@ -263,11 +271,15 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
 
   // three days free, once (never premium, never paid); a device or network tries it once a month
   if (path === "/premium/trial" && request.method === "POST") {
+    await ensurePremium(db);
     if (!(await trialOpen(db, me))) return reply({ ok: false, error: "التجربة المجانية متاحة مرة واحدة فقط للأعضاء الجدد." }, 400);
-    const ip = String(request.headers.get("CF-Connecting-IP") || "").slice(0, 45);
+    const ip = trialIpKey(request.headers.get("CF-Connecting-IP") || "");
     const ipKey = `pm:trial:ip:${ip}`;
     if (ip && (await env.PUSH_KV.get(ipKey))) return reply({ ok: false, error: "التجربة المجانية استخدمت من هذا الجهاز من قبل." }, 429);
-    const until = await grant(db, me.id, TRIAL_DAYS, now);
+    // only from «never premium» to 3 days, in one step: two taps at once can't give 6 days
+    const got: any = await db.prepare("UPDATE members SET premium_since = ?3, premium_until = ?2 WHERE id = ?1 AND premium_until = 0 AND official = 0 RETURNING premium_until").bind(me.id, now + TRIAL_DAYS * DAY, now).first();
+    if (!got) return reply({ ok: false, error: "التجربة المجانية متاحة مرة واحدة فقط للأعضاء الجدد." }, 400);
+    const until = Number(got.premium_until);
     await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 0, 'paid', ?2, ?2, ?3, 'trial')").bind(me.id, now, TRIAL_DAYS).run();
     if (ip) await env.PUSH_KV.put(ipKey, "1", { expirationTtl: 30 * 86400 }).catch(() => {});
     await chatRebadge(env as any, me.id).catch(() => {});
@@ -389,8 +401,12 @@ export async function runPremiumReminders(env: PremiumEnv, now = Date.now()) {
   await ensurePremium(db);
   const { ensureFollows } = await import("./follows");
   await ensureFollows(db);
-  const soon = (await db.prepare("SELECT id, premium_until FROM members WHERE official = 0 AND banned = 0 AND premium_until > ?1 AND premium_until <= ?2 LIMIT 200").bind(now, now + 3 * DAY).all<any>()).results || [];
-  const ended = (await db.prepare("SELECT id, premium_until FROM members WHERE official = 0 AND banned = 0 AND premium_until > ?1 AND premium_until <= ?2 LIMIT 200").bind(now - 2 * DAY, now).all<any>()).results || [];
+  // members not told yet (the reminder's link is its key in the inbox); a 3-day trial is reminded on its last day only
+  const notTold = (kind: string) => `NOT EXISTS (SELECT 1 FROM member_inbox i WHERE i.member = m.id AND i.url = '/premium/?${kind}=' || m.premium_until || '#subscribe')`;
+  const soon = ((await db.prepare(`SELECT m.id, m.premium_until, EXISTS (SELECT 1 FROM premium_payments p WHERE p.member = m.id AND p.granted_by = 'trial' AND p.paid_at > ?3) AS trial
+      FROM members m WHERE m.official = 0 AND m.banned = 0 AND m.premium_until > ?1 AND m.premium_until <= ?2 AND ${notTold("renew")} ORDER BY m.premium_until LIMIT 200`)
+    .bind(now, now + 3 * DAY, now - (TRIAL_DAYS + 1) * DAY).all<any>()).results || []).filter(m => !m.trial || m.premium_until - now <= DAY);
+  const ended = (await db.prepare(`SELECT m.id, m.premium_until FROM members m WHERE m.official = 0 AND m.banned = 0 AND m.premium_until > ?1 AND m.premium_until <= ?2 AND ${notTold("ended")} ORDER BY m.premium_until LIMIT 200`).bind(now - 2 * DAY, now).all<any>()).results || [];
   const rows = [
     ...soon.map(m => db.prepare("INSERT OR IGNORE INTO member_inbox (member, url, title, title_en, image, program, fed, at) VALUES (?1, ?2, ?3, ?4, '', 'العضوية المميزة', '', ?5)")
       .bind(m.id, `/premium/?renew=${m.premium_until}#subscribe`, `عضويتك المميزة تنتهي بعد ${Math.max(1, Math.ceil((m.premium_until - now) / DAY))} ${Math.ceil((m.premium_until - now) / DAY) === 1 ? "يوم" : "أيام"}. جددها الآن لتبقى مميزاتك.`, "Your Premium membership ends soon. Renew now to keep your perks.", now)),

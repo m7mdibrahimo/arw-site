@@ -59,9 +59,13 @@ export async function roomList(env: ChatEnv, fresh = false): Promise<RoomInfo[]>
         list = l;
         // 2026-10-15 (owner: «خليها متابعين … متابعين WWE … متابعين المصارعة القديمة»): a room still under its first name
         // takes the new one, once
-        let changed = false;
-        for (const r of list) { const to = RENAMED[r.id]; if (to && r.name === to[0]) { r.name = to[1]; changed = true; } }
-        if (changed) await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(list));
+        // once: a name the owner gives back later from the panel stays
+        if (!(await env.PUSH_KV.get("chat:rooms:renamed:v1"))) {
+          let changed = false;
+          for (const r of list) { const to = RENAMED[r.id]; if (to && r.name === to[0]) { r.name = to[1]; changed = true; } }
+          if (changed) await env.PUSH_KV.put(ROOMS_KEY, JSON.stringify(list));
+          await env.PUSH_KV.put("chat:rooms:renamed:v1", "1");
+        }
       }
     }
   } catch {}
@@ -607,13 +611,18 @@ async function gifSearch(request: Request, env: ChatEnv, url: URL): Promise<Resp
     if (env.GIPHY_API_KEY) {
       const off = Math.min(Number(pos) || 0, 4900);
       const r = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${encodeURIComponent(env.GIPHY_API_KEY)}&q=${encodeURIComponent(q)}&limit=24&offset=${off}&rating=pg-13&lang=${/[\u0600-\u06ff]/.test(q) ? "ar" : "en"}`);
+      // a refusal (too many searches this hour, a wrong key) is said as such, and not kept as «no results»
+      if (!r.ok) throw new Error(String(r.status));
       const d: any = await r.json();
+      if (!Array.isArray(d.data)) throw new Error("no data");
       items = (d.data || []).map((g: any) => { const f = g.images?.fixed_width || {}; return { url: clean(f.mp4), still: clean(g.images?.fixed_width_still?.url), w: Number(f.width) || 200, h: Number(f.height) || 200 }; });
       const total = Number(d.pagination?.total_count || 0);
       next = off + 24 < total ? String(off + 24) : "";
     } else {
       const r = await fetch(`https://tenor.googleapis.com/v2/search?key=${encodeURIComponent(env.TENOR_API_KEY!)}&client_key=arw&q=${encodeURIComponent(q)}&limit=24&contentfilter=medium&media_filter=tinymp4,tinygifpreview${pos ? `&pos=${encodeURIComponent(pos)}` : ""}`);
+      if (!r.ok) throw new Error(String(r.status));
       const d: any = await r.json();
+      if (!Array.isArray(d.results)) throw new Error("no data");
       items = (d.results || []).map((g: any) => { const f = g.media_formats?.tinymp4 || {}; return { url: clean(f.url), still: clean(g.media_formats?.tinygifpreview?.url), w: Number(f.dims?.[0]) || 200, h: Number(f.dims?.[1]) || 200 }; });
       next = String(d.next || "");
     }

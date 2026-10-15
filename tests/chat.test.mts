@@ -380,3 +380,18 @@ test('the site\'s account: its delete takes a message away for good (quotes of i
   assert.deepEqual(await r.admin({ op: 'delete', id: third.id }), { ok: true });
   assert.equal(r.latest().some(x => x.id === third.id), false);
 });
+
+test('GIFs: a refusal from GIPHY (too many searches, a wrong key) says so, and isn\'t kept as «no results»', async () => {
+  const e = memberEnv();
+  e.GIPHY_API_KEY = 'k';
+  const token = await member(e);
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => { calls++; return new Response('{"meta":{"status":429}}', { status: 429 }); }) as any;
+  try {
+    const r = await chat(e, '/chat/gif?q=wwe', { headers: { Authorization: `Bearer ${token}` } });
+    assert.equal(r.status, 502);
+    assert.equal(((await r.json()) as any).ok, false);
+  } finally { globalThis.fetch = realFetch; }
+  assert.equal(calls, 1);
+});

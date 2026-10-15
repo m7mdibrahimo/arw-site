@@ -136,6 +136,8 @@
       if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/?trial=1'); return; }
       if (!d.ok) { flash('bad', srv(d.error) || 'تعذر بدء التجربة، حاول مرة أخرى.'); showTrial(false); return; }
       showTrial(false);
+      // the member kept on this device: premium now, no more «جرب مجانا» in the menu
+      try { var sv = JSON.parse(localStorage.getItem('arw-member') || 'null'); if (sv && sv.member) { sv.member.trial = false; sv.member.premium = d.until; localStorage.setItem('arw-member', JSON.stringify(sv)); window.dispatchEvent(new Event('arw-member')); } } catch (e) {}
       flash('ok', '🎉 بدأت تجربتك المجانية! كل المميزات مفعلة لك حتى ' + date(d.until) + '.');
       refresh();
       window.scrollTo({ top: 0, behavior: 'smooth' });
