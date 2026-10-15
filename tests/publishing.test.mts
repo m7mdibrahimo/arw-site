@@ -4932,7 +4932,7 @@ test("the episode list on every show page names the newest episode with «الأ
   assert.ok(layout.includes('alt="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}"'));
 });
 
-test("the footer stays the site's own short menu: no program list or other links injected into it (owner 2026-10-15, INCIDENTS #600)", () => {
+test("the footer stays the site's own short menu: no program list or other links injected into it (owner 2026-10-15, INCIDENTS #601)", () => {
   // «شوف ايه ده … ياريت متتكررش تاني»: a build step had put 24 program links under the footer menu of every page
   const cfg = fs.readFileSync(path.join(process.cwd(), 'eleventy.config.js'), 'utf8');
   assert.doesNotMatch(cfg, /footer-programs/);

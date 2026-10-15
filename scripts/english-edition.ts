@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks } from "./news-qa";
+import { splitGluedBlocks, decodeHtmlEntities } from "./news-qa";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
 const NEWS_DIR = path.join(process.cwd(), "content", "news");
@@ -202,7 +202,7 @@ export function repeatedEnglishWords(text: string): string[] {
   return left;
 }
 export function fixEnglishNames(text: string): string {
-  return collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), text));
+  return collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

@@ -13,6 +13,6 @@ en_tags:
   - "Wrestlepalooza"
 image: /content/images/w3vg7c2rjedsagdx.jpg
 ---
-WWE star Rhea Ripley has been announced for a special pre-show event in Perth, Australia. The event is scheduled to take place on the same day as the WWE Wrestlepalooza Premium Live Event, which is set for December 12th, 2026, at the RAC Arena. According to On Location, Bronson Reed will also be appearing at this exclusive pre-show. &#8220;Two of Aussie’s biggest WWE names. One very exclusive pre-show. &#8221; Ripley has been sidelined since June and underwent knee surgery in August. She was previously the WWE Women's Champion before the company officially transitioned the title to Chelsea Green.
+WWE star Rhea Ripley has been announced for a special pre-show event in Perth, Australia. The event is scheduled to take place on the same day as the WWE Wrestlepalooza Premium Live Event, which is set for December 12th, 2026, at the RAC Arena. According to On Location, Bronson Reed will also be appearing at this exclusive pre-show. “Two of Aussie’s biggest WWE names. One very exclusive pre-show. ” Ripley has been sidelined since June and underwent knee surgery in August. She was previously the WWE Women's Champion before the company officially transitioned the title to Chelsea Green.
 
 https://x.com/onlocationexp/status/2110522903062249719
