@@ -459,3 +459,11 @@ test('no «unread» outside a room (owner 2026-10-15): no bold room, no dot or c
   assert.match(fs.readFileSync('lib/i18n/mirror.cjs', 'utf8'), /\|history\|community\)\\\//);
   assert.match(fs.readFileSync('assets/en.js', 'utf8'), /\.arw-comments,\.cm-page/);
 });
+
+test('the English page keeps its rooms\' English names (the worker sends the Arabic ones), named as English speakers would', () => {
+  const fs = require('node:fs');
+  const js = fs.readFileSync('assets/community.js', 'utf8');
+  assert.match(js, /if \(!\(EN && R\.built\)\) \{ R\.name = roomWord\(s\.name\)/);
+  const en = require('../lib/i18n/en.cjs').ui, srv = require('../lib/i18n/server-en.cjs');
+  for (const [ar, name] of [['الساحة العامة', 'The Main Arena'], ['متابعين اتحاد WWE', 'WWE Universe'], ['متابعين المصارعة القديمة', 'Wrestling Classics']]) { assert.equal(en[ar], name); assert.equal(srv[ar], name); }
+});

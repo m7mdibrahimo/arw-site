@@ -6059,3 +6059,27 @@
   - `repeatedEnglishWords` بتدي الباقي لو احتجناه في فحص.
 - **الاختبار:** `tests/english-edition.test.mts` — العنوان، والاسم المكرر، والاستثناءات.
 - **ملاحظة ترتيب البحث:** وصف صفحات العروض فيه حد ١٨٠ حرف، فإضافة اسم الاتحاد بالعربي («دبليو دبليو إي») للوصف بتعديه في أغلب الصفحات، فمتغيرتش. الاسم موجود في البيانات المنظمة (`alternateName`) لصفحة موني ان ذا بانك.
+
+## #591 — 2026-10-15: أسماء الغرف في صفحة المجتمع الإنجليزي كانت بترجع عربي، وبقت أسماء إنجليزي احترافية (طلب صاحب الموقع)
+
+- **اللي حصل:** الصفحة كانت بتتبني بأسماء إنجليزي، لكن كل 20 ثانية الأسماء العربي اللي جاية من الخادم بتتكتب فوقها.
+  - ترجمتها من `server-en.js` مكانتش بتلحق: الملف بيتحمّل بعد الصفحة، ونسخته القديمة متخزنة عند المتصفح برقم إصدار ثابت.
+- **الإصلاح:**
+  - الصفحة الإنجليزي بتحتفظ بالأسماء والأوصاف اللي اتبنت بيها (`built`).
+  - أي غرفة تتضاف بعدين بتاخد ترجمتها لو موجودة.
+  - رقم إصدار `server-en.js` اتغيّر عشان النسخة الجديدة تتحمّل.
+- **الأسماء الجديدة** (صاحب الموقع: «مش عايزه حرفية انا عايزها احترافية»):
+
+| الغرفة | الاسم | الوصف |
+|---|---|---|
+| الساحة العامة | The Main Arena | Every wrestling fan under one roof |
+| WWE | WWE Universe | Raw, SmackDown, NXT and every Premium Live Event |
+| AEW | AEW Fan Zone | Dynamite, Collision and every pay-per-view |
+| NJPW | New Japan Fan Zone | Wrestle Kingdom, the G1 Climax and more |
+| TNA | TNA Fan Zone | iMPACT! and every major event |
+| ROH | Ring of Honor Fan Zone | Every big night of Ring of Honor |
+| UFC | UFC & MMA Fight Night | Fights, titles and the latest in combat sports |
+| المستقلة | The Indie Scene | MLP, MLW, CMLL and beyond |
+| القديمة | Wrestling Classics | Iconic moments from wrestling's greatest eras |
+
+- **الاختبار:** `tests/chat.test.mts`. اتجرب في المتصفح: الأسماء بتفضل إنجليزي بعد ما بيانات الخادم توصل.
