@@ -6435,6 +6435,26 @@
    "wrong": "ديمان تو",
    "right": "ديمانتو",
    "note": "Danny Demanto اتكتب «ديمان تو» — INCIDENTS #542"
+  },
+  {
+   "wrong": "جايك دويل",
+   "right": "جيك دويل",
+   "note": "Jake Doyle — الاسم في القاموس «جيك» — INCIDENTS #553"
+  },
+  {
+   "wrong": "AEW العالمية للقارات",
+   "right": "AEW القارية",
+   "note": "AEW Continental Championship = «القارية» (القارات لـ WWE Intercontinental فقط) — INCIDENTS #553"
+  },
+  {
+   "wrong": "بطولة العالم للقارات",
+   "right": "بطولة القارات",
+   "note": "ترجمة حرفية خاطئة للقب — INCIDENTS #553"
+  },
+  {
+   "wrong": "تسببت نزال",
+   "right": "تسبب نزال",
+   "note": "«نزال» مذكر — INCIDENTS #553"
   }
  ]
 }

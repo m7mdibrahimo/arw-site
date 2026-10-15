@@ -316,3 +316,10 @@ test('feminine noun duals and «ترتبطان» are blocked (INCIDENTS #551)', 
   assert.ok(codes('عائلاتهم ترتبطان بروابط قديمة.').includes('dual_form'));
   assert.ok(!codes('قدمت النجمات عرضا قويا وترتبط العائلات بروابط قديمة.').some((c) => c === 'dual_noun' || c === 'dual_form'));
 });
+
+// INCIDENTS #553: «جايك دويل», «AEW العالمية للقارات», «تسببت نزال» reached the Moxley and Copeland stories.
+test('corrections fix Doyle spelling, AEW Continental title and نزال agreement (INCIDENTS #553)', () => {
+  assert.equal(applyCorrections('نجح جايك دويل في التثبيت'), 'نجح جيك دويل في التثبيت');
+  assert.equal(applyCorrections('بطولة AEW العالمية للقارات'), 'بطولة AEW القارية');
+  assert.equal(applyCorrections('حيث تسببت نزال الطاولات في كسر'), 'حيث تسبب نزال الطاولات في كسر');
+});
