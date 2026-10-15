@@ -6500,6 +6500,26 @@
    "wrong": "فيلم Street Fight الجديد",
    "right": "فيلم Street Fighter الجديد",
    "note": "اسم الفيلم — INCIDENTS #589"
+  },
+  {
+   "wrong": "اربعة",
+   "right": "أربعة",
+   "note": "همزة ساقطة من العدد — فيلم Street Fighter كُتب «اربعة وثلاثين» — INCIDENTS #599"
+  },
+  {
+   "wrong": "اربعين",
+   "right": "أربعين",
+   "note": "همزة ساقطة من العدد — فيلم Street Fighter كُتب «اربعة وثلاثين» — INCIDENTS #599"
+  },
+  {
+   "wrong": "اربع",
+   "right": "أربع",
+   "note": "همزة ساقطة من العدد — فيلم Street Fighter كُتب «اربعة وثلاثين» — INCIDENTS #599"
+  },
+  {
+   "wrong": "اربعمئة",
+   "right": "أربعمئة",
+   "note": "همزة ساقطة من العدد — فيلم Street Fighter كُتب «اربعة وثلاثين» — INCIDENTS #599"
   }
  ]
 }

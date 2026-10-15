@@ -204,7 +204,7 @@ function arabicDay(word: string): number | null {
 const AR_WEEKDAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
 /** «الثلاثاء الثلاثين من سبتمبر» when the 30th was a Wednesday (INCIDENTS #198): the excerpt, else null. */
 export function weekdayNotOnDate(text: string, year = new Date().getUTCFullYear()): string | null {
-  const re = new RegExp(`(${AR_WEEKDAYS.join("|")})،?\\s+(?:الموافق\\s+)?(\\d{1,2}|ال[\\u0600-\\u06FF]+(?: و[\\u0600-\\u06FF]+)?)\\s+(?:من\\s+)?(${AR_MONTHS.join("|")})(?:\\s+(\\d{4}))?`, "g");
+  const re = new RegExp(`(${AR_WEEKDAYS.join("|")})،?\\s+(?:الموافق\\s+)?(\\d{1,2}|ال[\\u0600-\\u06FF]+(?: (?!من )و?[\\u0600-\\u06FF]+)?)\\s+(?:من\\s+)?(${AR_MONTHS.join("|")})(?:\\s+(\\d{4}))?`, "g");
   for (const m of text.matchAll(re)) {
     const day = arabicDay(m[2]), month = AR_MONTHS.indexOf(m[3]);
     if (!day || day > 31 || month < 0) continue;

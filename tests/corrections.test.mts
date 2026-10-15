@@ -39,3 +39,13 @@ test("the faction is «The 946» in English after a preposition (INCIDENTS #598)
   const bad = fs.readdirSync("content/news-en").filter(f => /\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/i.test(fs.readFileSync(`content/news-en/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #599: «اربعة» (hamza dropped) and «الجمعة الخامس عشر من أكتوبر» (a Friday that is a Thursday) reached the Street Fighter story.
+test("number words get their hamza and spelled-out dates are weekday-checked", async () => {
+  const { applyCorrections, weekdayNotOnDate } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بلغ اربعة وثلاثين بالمئة"), "بلغ أربعة وثلاثين بالمئة");
+  assert.equal(weekdayNotOnDate("يوم الجمعة الخامس عشر من أكتوبر", 2026), "الجمعة الخامس عشر من أكتوبر");
+  assert.equal(weekdayNotOnDate("يوم الجمعة السادس عشر من أكتوبر", 2026), null);
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])ا(?:ربعة|ربعين)(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
