@@ -302,3 +302,17 @@ test('dual «اتحادا X وY» is blocked; «درام غيت» and «تواج
   assert.match(applyCorrections('نظم اتحاد درام غيت'), /دراغون غيت/);
   assert.match(applyCorrections('خلال فترة تواجهم في الجامعة'), /تواجدهم/);
 });
+
+test('«WWE العالمية للفرق للسيدات» becomes «WWE للفرق للسيدات» (INCIDENTS #550)', () => {
+  assert.equal(applyCorrections('بطلات WWE العالمية للفرق للسيدات'), 'بطلات WWE للفرق للسيدات');
+  assert.match(applyCorrections('بطولة AEW العالمية للفرق للسيدات'), /AEW العالمية للفرق للسيدات/);
+});
+
+// INCIDENTS #551: feminine duals «النجمتان / المصارعتين / البطلتان» and «ترتبطان / تستعدان» passed the checker in ~70 stories.
+test('feminine noun duals and «ترتبطان» are blocked (INCIDENTS #551)', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' ' + 'كلام '.repeat(80)).map((i) => i.code);
+  assert.ok(codes('قدمت النجمتان عرضا قويا.').includes('dual_noun'));
+  assert.ok(codes('بين المصارعتين ندية كبيرة.').includes('dual_noun'));
+  assert.ok(codes('عائلاتهم ترتبطان بروابط قديمة.').includes('dual_form'));
+  assert.ok(!codes('قدمت النجمات عرضا قويا وترتبط العائلات بروابط قديمة.').some((c) => c === 'dual_noun' || c === 'dual_form'));
+});

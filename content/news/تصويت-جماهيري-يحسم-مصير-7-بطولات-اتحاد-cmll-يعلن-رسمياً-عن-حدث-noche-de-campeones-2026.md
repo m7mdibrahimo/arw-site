@@ -35,7 +35,7 @@ layout: post-layout.njk
  * المرشحون للمنافسة: زاندوكان جونيور (Zandokan Jr.) | ديفونتو (Difunto) | فيغاس ديبريدادور (Vegas Depredador)
 * بطولة CMLL Mexican National لفرق السيدات:
 
- * البطلتان: سكادي وكيرا (Skadi & Kira)
+ * البطلات: سكادي وكيرا (Skadi & Kira)
  * الفرق المرشحة: Reinas Del Strong Style | فريق Valientes | فريق Infernales
 * بطولة CMLL Mexican National للفرق:
 

@@ -1,5 +1,5 @@
 ---
-title: "Syx vs. the Righteous in Tables Match Added to 10/15 TNA iMPACT"
+title: "Syx vs. The Righteous in Tables Match Added to 10/15 TNA iMPACT"
 slug: "syx-vs-the-righteous-in-tables-match-added-to-10-15-tna-impact"
 description: "A new Tables match has been added to the upcoming episode of TNA iMPACT following Bound for Glory. The show, which is being booked by Matt Hardy and Jeff…"
 federation: TNA

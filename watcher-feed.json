@@ -1,5 +1,85 @@
 [
   {
+    "id": 333953,
+    "link": "https://www.fightful.com/wrestling/jon-moxley-suffers-rare-pinfall-loss-on-10-14-aew-dynamite/",
+    "date": "2026-10-14T20:42:06",
+    "date_gmt": "2026-10-15T00:42:06",
+    "title": {
+      "rendered": "Jon Moxley Suffers Rare Pinfall Loss On 10/14 AEW Dynamite"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14204034/HUoY923W0AAxOjq-e1792024855896.jpg"
+  },
+  {
+    "id": 333950,
+    "link": "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website/",
+    "date": "2026-10-14T19:29:18",
+    "date_gmt": "2026-10-14T23:29:18",
+    "title": {
+      "rendered": "Law Firm Investigating Potential Privacy Violation By WWE&#8217;s Official Website"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/18132421/WWE-Logo-1536x1024-1-e1752859487683.jpeg"
+  },
+  {
+    "id": 333927,
+    "link": "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more/",
+    "date": "2026-10-14T19:15:00",
+    "date_gmt": "2026-10-14T23:15:00",
+    "title": {
+      "rendered": "AEW Dynamite Results (10/14/2026): Will Ospreay &amp; Andrade in Tag Action, Clockwork Carnage Qualifiers, Mercedes Mone, Dani Luna, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11170948/HUX3CNOXwAABmQO.jpeg"
+  },
+  {
+    "id": 333947,
+    "link": "https://www.fightful.com/wrestling/samoa-joe-names-queen-aminata-trish-adora-as-aew-wrestlers-that-people-need-to-pay-more-attention-to/",
+    "date": "2026-10-14T19:14:04",
+    "date_gmt": "2026-10-14T23:14:04",
+    "title": {
+      "rendered": "Samoa Joe Names Queen Aminata &amp; Trish Adora As AEW Wrestlers That People Need To Pay More Attention To"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14190657/l-intro-1703085185.jpg"
+  },
+  {
+    "id": 333945,
+    "link": "https://www.fightful.com/wrestling/tatum-paxley-would-love-to-interact-with-new-version-of-lyra-valkyria-feels-she-owes-so-much-of-her-career-to-nxt-storyline-with-valkyria/",
+    "date": "2026-10-14T18:47:43",
+    "date_gmt": "2026-10-14T22:47:43",
+    "title": {
+      "rendered": "Tatum Paxley Would Love To Interact With New Version Of Lyra Valkyria, Feels She Owes So Much Of Her Career To NXT Storyline With Valkyria"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/02/27210636/tatu_lyra2.jpg"
+  },
+  {
+    "id": 333941,
+    "link": "https://www.fightful.com/wrestling/tatum-paxley-credits-stardoms-suzu-suzuki-for-inspiring-cemetery-drive-finisher/",
+    "date": "2026-10-14T18:32:57",
+    "date_gmt": "2026-10-14T22:32:57",
+    "title": {
+      "rendered": "Tatum Paxley Credits STARDOM&#8217;s Suzu Suzuki For Inspiring &#8216;Cemetery Drive&#8217; Finisher"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14182326/Screenshot-538-e1792016637551.png"
+  },
+  {
+    "id": 333938,
+    "link": "https://www.fightful.com/wrestling/tatum-paxley-reflects-on-winning-wwe-womens-tag-team-titles-with-alexa-bliss/",
+    "date": "2026-10-14T18:20:11",
+    "date_gmt": "2026-10-14T22:20:11",
+    "title": {
+      "rendered": "Tatum Paxley Reflects On Winning WWE Women&#8217;s Tag Team Titles With Alexa Bliss"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14181034/085_SD_10092026RF_169183-e1792015860262.jpg"
+  },
+  {
+    "id": 333934,
+    "link": "https://www.fightful.com/wrestling/taipei-deathmatch-set-for-produce-vol-6-wwe-nxt-highlights-more-fight-size/",
+    "date": "2026-10-14T18:00:37",
+    "date_gmt": "2026-10-14T22:00:37",
+    "title": {
+      "rendered": "Taipei Deathmatch Set For PRODUCE Vol. 6, WWE NXT Highlights, More | Fight Size"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14173636/HUnBTz2WcAA0NF5-e1792013805702.jpg"
+  },
+  {
     "id": 333928,
     "link": "https://www.fightful.com/wrestling/mike-bailey-was-hesitant-to-join-another-group-in-aew-says-it-was-interesting-to-be-a-lone-wolf/",
     "date": "2026-10-14T17:00:36",
@@ -218,85 +298,5 @@
       "rendered": "Shotzi Blackheart Signs With TNA Wrestling"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13224849/Shotzi-in-MLW-again-e1791946145980.jpeg"
-  },
-  {
-    "id": 333847,
-    "link": "https://www.fightful.com/wrestling/kofi-says-the-new-levels-impending-aew-all-in-debut-was-the-worst-kept-secret-on-the-internet/",
-    "date": "2026-10-14T12:24:40",
-    "date_gmt": "2026-10-14T16:24:40",
-    "title": {
-      "rendered": "Kofi Says The New Level&#8217;s Impending AEW All In Debut &#8216;Was The Worst Kept Secret On The Internet&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/31182652/maxresdefault-251.jpg"
-  },
-  {
-    "id": 333853,
-    "link": "https://www.fightful.com/wrestling/drew-mcintyre-says-he-cant-stand-cm-punk-but-its-magic-for-the-audience-when-they-work-together/",
-    "date": "2026-10-14T12:21:45",
-    "date_gmt": "2026-10-14T16:21:45",
-    "title": {
-      "rendered": "Drew McIntyre Says He Can&#8217;t Stand CM Punk, But It&#8217;s &#8216;Magic For The Audience&#8217; When They Work Together"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/31230905/l-intro-1737425098.jpg"
-  },
-  {
-    "id": 333844,
-    "link": "https://www.fightful.com/wrestling/kofi-says-tony-khans-energy-for-pro-wrestling-is-so-contagious-and-infectious/",
-    "date": "2026-10-14T11:55:18",
-    "date_gmt": "2026-10-14T15:55:18",
-    "title": {
-      "rendered": "Kofi Says Tony Khan&#8217;s Energy For Pro Wrestling Is &#8216;So Contagious And Infectious&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/23172020/images-5-e1784841637410.jpg"
-  },
-  {
-    "id": 333848,
-    "link": "https://www.fightful.com/uncategorized/shotzi-blackheart-withdraws-from-cmll-womens-grand-prix-due-to-personal-matters/",
-    "date": "2026-10-14T11:48:50",
-    "date_gmt": "2026-10-14T15:48:50",
-    "title": {
-      "rendered": "Shotzi Blackheart Withdraws From CMLL Women&#8217;s Grand Prix Due To Personal Matters"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/12/27230727/shotzi_1.jpeg"
-  },
-  {
-    "id": 333834,
-    "link": "https://www.fightful.com/wrestling/bronson-reed-names-rey-mysterio-amongst-the-hardest-hitting-wrestlers-hes-been-in-the-ring-with/",
-    "date": "2026-10-14T10:32:45",
-    "date_gmt": "2026-10-14T14:32:45",
-    "title": {
-      "rendered": "Bronson Reed Names Rey Mysterio Amongst The Hardest Hitting Wrestlers He&#8217;s Been In The Ring With"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/11174808/052_WM42_04192026CM_64462-e1789163338736.jpg"
-  },
-  {
-    "id": 333831,
-    "link": "https://www.fightful.com/wrestling/bronson-reed-wants-to-compete-for-a-world-championship-at-wrestlemania-43-if-youre-in-this-business-you-always-want-to-be-top-dog/",
-    "date": "2026-10-14T10:13:10",
-    "date_gmt": "2026-10-14T14:13:10",
-    "title": {
-      "rendered": "Bronson Reed Wants To Compete For A World Championship At WrestleMania 43: If You&#8217;re In This Business, You Always Want To Be Top Dog"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/08085043/055_SDNME_09062026RW_11282-e1788871866175.jpg"
-  },
-  {
-    "id": 333839,
-    "link": "https://www.fightful.com/uncategorized/netlfix-edits-la-knights-middle-finger-out-of-wwe-money-in-the-bank-2026-replay/",
-    "date": "2026-10-14T09:54:06",
-    "date_gmt": "2026-10-14T13:54:06",
-    "title": {
-      "rendered": "Netlfix Edits LA Knight&#8217;s Middle Finger Out Of WWE Money In The Bank 2026 Replay"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/14093810/LA-Knight-3-scaled.jpg"
-  },
-  {
-    "id": 333829,
-    "link": "https://www.fightful.com/wrestling/bronson-reed-its-sort-of-become-almost-a-big-staple-of-my-career-the-fact-that-i-did-beat-roman-reigns/",
-    "date": "2026-10-14T09:32:06",
-    "date_gmt": "2026-10-14T13:32:06",
-    "title": {
-      "rendered": "Bronson Reed: It&#8217;s Sort Of Become Almost A Big Staple Of My Career, The Fact That I Did Beat Roman Reigns"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/10/11083853/Bronson-Reed.png"
   }
 ]
