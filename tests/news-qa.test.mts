@@ -49,3 +49,9 @@ test("no published Arabic story has a tatweel before an Arabic letter (INCIDENTS
   const bad = fs.readdirSync(dir).filter((f) => f.endsWith(".md") && /\u0640(?=[\u0621-\u064A])/.test(fs.readFileSync(new URL(f, dir), "utf8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("dual_form: «تزوجا» is blocked, but the name «بي جي فازا» (PJ Vasa) is not a dual verb (INCIDENTS #570)", () => {
+  const codes = (b: string) => checkArticle("عنوان واضح للاختبار", b, []).map((i) => i.code);
+  assert.ok(codes("تمت خطبة الثنائي ثم تزوجا رسميا في جامايكا خلال يونيو 2026 وسط حضور كبير من الأصدقاء والعائلة.").includes("dual_form"));
+  assert.ok(!codes("وطلب بي جي فازا منها أن تجرب ذلك معه في الأسبوع القادم بعد انتهاء النزال الرئيسي في العرض.").includes("dual_form"));
+});
