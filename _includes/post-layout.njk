@@ -506,9 +506,9 @@
           <div class="sx-list">
             {% for ep in nav.recent %}
             {% set isNow = nav.currentIndex > -1 and ep.url == nav.program.episodes[nav.currentIndex].url %}
-            <a href="{{ ep.url | cleanUrl }}" class="sx-card{% if isNow %} is-now{% endif %}{% if ep.named %} is-named{% endif %}" title="{{ ep.headline or ep.title }}"{% if isNow %} aria-current="page"{% endif %}>
+            <a href="{{ ep.url | cleanUrl }}" class="sx-card{% if isNow %} is-now{% endif %}{% if ep.named %} is-named{% endif %}" title="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}"{% if isNow %} aria-current="page"{% endif %}>
               <span class="sx-thumb">
-                {% if ep.image %}<img src="{% optCard ep.image %}" alt="{{ ep.headline or ep.title }}" loading="lazy" decoding="async" width="320" height="180">{% else %}<span class="sx-thumb-empty">عرب راسلنج</span>{% endif %}
+                {% if ep.image %}<img src="{% optCard ep.image %}" alt="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}" loading="lazy" decoding="async" width="320" height="180">{% else %}<span class="sx-thumb-empty">عرب راسلنج</span>{% endif %}
                 {% if isNow %}<span class="sx-now">{{ "تشاهدها الآن" if isProgram else "تشاهده الآن" }}</span>{% endif %}
               </span>
               <span class="sx-body">
