@@ -1511,25 +1511,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("library", buildLibrary);
   // The English site (lib/i18n/mirror.cjs, owner 2026-10-07): the content's own English words, kept for eleventy.after
   let I18N_CONTENT = {}, I18N_PAGES = {}, I18N_NEWS = [];
-  let FOOTER_PROGRAMS = [];
-  // One line of program links under the footer menu of every page: each program's library page is one click from the
-  // home page and from every show, so Google finds and re-crawls them (visible, ordinary links; no hidden text)
-  eleventyConfig.addTransform("footerProgramLinks", function(content, outputPath) {
-    if (!FOOTER_PROGRAMS.length || !outputPath || !outputPath.endsWith(".html") || outputPath.includes("/admin/") || outputPath.includes("/en/")) return content;
-    const at = content.indexOf("</nav>", content.indexOf('<nav class="footer-nav"'));
-    if (content.indexOf('<nav class="footer-nav"') === -1 || at === -1) return content;
-    const links = FOOTER_PROGRAMS.map(function(x) { return '<a href="/library/' + x.slug + '/">' + x.name + '</a>'; }).join("");
-    return content.slice(0, at + 6) + '<nav class="footer-nav footer-programs" aria-label="برامج المصارعة" style="font-size:13px;font-weight:600;gap:8px 14px;margin:6px 0 12px;opacity:.85" dir="ltr">' + links + '</nav>' + content.slice(at + 6);
-  });
+  // No program links (or any other list) in the footer of the pages: the owner removed them (2026-10-15: «ياريت
+  // متتكررش تاني»); the footer is the site's own menu only, guarded by tests/publishing.test.mts (INCIDENTS #601)
   eleventyConfig.addCollection("i18nContent", function(collectionApi) {
     const lib = buildLibrary(collectionApi);
     const c = require("./lib/i18n/content.cjs");
     I18N_CONTENT = c.buildContentMap({ library: lib });
-    // The most active programs, for the footer of every page (transform below, INCIDENTS #594): Google had not visited
-    // 20+ program pages in 8 days because they sat three clicks from the home page (home → /library/ → federation → program)
-    FOOTER_PROGRAMS = lib.filter(function(x) { return x.count >= 3 && /^[\x20-\x7E]+$/.test(x.name || ""); })
-      .sort(function(x, y) { return y.latest.timestamp - x.latest.timestamp; }).slice(0, 24)
-      .map(function(x) { return { slug: x.slug, name: x.name }; });
     // each page's own English <title> and description (a show's Arabic ones are cut at 160 letters, so no lookup finds them)
     I18N_PAGES = c.buildPageMap({ items: collectionApi.getAll().filter(function(i) { return /content\/(shows|recaps|nostalgia)\//.test(i.inputPath || ""); }), library: lib });
     // English news (content/news-en, INCIDENTS #354): each with its Arabic story, found by the source's id. One whose

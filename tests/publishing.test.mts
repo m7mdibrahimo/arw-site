@@ -4931,3 +4931,17 @@ test("the episode list on every show page names the newest episode with «الأ
   assert.ok(layout.includes('title="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}"'));
   assert.ok(layout.includes('alt="{{ (ep.headline or ep.title) | latestCardName(ep.url, collections.library) }}"'));
 });
+
+test("the footer stays the site's own short menu: no program list or other links injected into it (owner 2026-10-15, INCIDENTS #601)", () => {
+  // «شوف ايه ده … ياريت متتكررش تاني»: a build step had put 24 program links under the footer menu of every page
+  const cfg = fs.readFileSync(path.join(process.cwd(), 'eleventy.config.js'), 'utf8');
+  assert.doesNotMatch(cfg, /footer-programs/);
+  assert.doesNotMatch(cfg, /indexOf\(\s*['"]<nav class="footer-nav/);
+  assert.doesNotMatch(cfg, /addTransform\([^)]*\)?[\s\S]{0,600}?<\/footer>/);
+  const files = ['index.njk', 'support.njk', '_includes/post-layout.njk', ...fs.readdirSync('pages').filter(f => f.endsWith('.njk')).map(f => 'pages/' + f)];
+  for (const f of files) {
+    const src = fs.readFileSync(f, 'utf8');
+    assert.doesNotMatch(src, /footer-programs/, f);
+    for (const m of src.matchAll(/<nav class="footer-nav"[\s\S]*?<\/nav>/g)) assert.ok((m[0].match(/<a\s/g) || []).length <= 6, `${f}: the footer menu grew past its few links`);
+  }
+});
