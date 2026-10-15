@@ -3609,16 +3609,12 @@
     "publishedAt": 1792036895891,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
-    "instagram_story": false,
+    "instagram_reel": true,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 13.10.2026 مترجم",
-    "lastAttempt": 1792040332215,
-    "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_reel"
-    ],
+    "lastAttempt": 1792044668526,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
