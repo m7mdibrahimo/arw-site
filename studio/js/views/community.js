@@ -112,6 +112,43 @@ export async function renderCommunity(page) {
   };
 }
 
+// A room's background (owner 2026-10-15: «اضيف خلفية في الشات … ضبابية … كل غرفة منفصلة»): the picture, how blurred and
+// how veiled, and a preview of messages over it in the site's light and dark colours
+function bgBlock(r, i) {
+  const blur = r.bgBlur ?? 12, dim = r.bgDim ?? 50;
+  return html`<div class="ry-bg ${r.bg ? 'has-bg' : ''}">
+    <div class="ry-bg-prev" style="${r.bg ? `--bgurl:url('${r.bg}');` : ''}--blur:${blur}px;--dim:${dim / 100}">
+      <span class="ry-bg-msg is-in">أهلا بيكم في الغرفة 👋</span><span class="ry-bg-msg is-out">نورتوا 🔥</span>
+      ${r.bg ? '' : html`<span class="ry-bg-empty">${icon('image')}من غير خلفية</span>`}
+    </div>
+    <div class="ry-bg-ctl">
+      <span class="ry-bg-t">خلفية المجموعة</span>
+      <div class="ry-bg-btns">
+        <label class="btn btn-sm">${icon('upload')}${r.bg ? 'غيّر الصورة' : 'ضيف صورة'}<input type="file" accept="image/jpeg,image/png,image/webp" data-bg-file="${i}" hidden></label>
+        ${r.bg ? html`<button type="button" class="btn btn-sm btn-ghost" data-bg-off="${i}">${icon('trash')}شيلها</button>` : ''}
+      </div>
+      ${r.bg ? html`<label class="ry-bg-range"><span>الضبابية <output>${blur}</output></span><input type="range" min="0" max="30" data-k="bgBlur" value="${blur}"></label>
+      <label class="ry-bg-range"><span>التعتيم <output>${dim}%</output></span><input type="range" min="0" max="90" data-k="bgDim" value="${dim}"></label>` : html`<small class="muted">أي صورة بأي مقاس: بتتقص على مقاس الشات في الموبايل والكمبيوتر، وبتبان ضبابية وورا الرسايل في الوضعين.</small>`}
+    </div>
+  </div>`;
+}
+/** A picture made light before it goes up: at most 1920 px wide or high, WebP (or JPEG where WebP can't be made) */
+async function lighter(file) {
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) throw new Error('الصورة لازم تكون JPG أو PNG أو WebP.');
+  try {
+    const bmp = await createImageBitmap(file);
+    const k = Math.min(1, 1920 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    const out = await new Promise(res => c.toBlob(res, 'image/webp', 0.84));
+    if (out && out.type === 'image/webp') return out;
+    const jpg = await new Promise(res => c.toBlob(res, 'image/jpeg', 0.86));
+    if (jpg) return jpg;
+  } catch (e) {}
+  if (file.size > 6 * 1024 * 1024) throw new Error('الصورة كبيرة، أقصى حجم 6 ميجا.');
+  return file;
+}
+
 // «الغرف» (owner 2026-10-15: «اضيف ساحة او كروب او اعدل في اسماء ال موجود»): every room's name, words, short mark and
 // colour, its place in the list, hidden from the site, or closed for writing (only the site's account writes there).
 // Saved as one list (worker/src/chat.ts studioChatRooms); the site follows it within a minute.
@@ -136,6 +173,7 @@ async function renderRoomsEditor(page) {
               <label class="ry-f ry-id"><span>الرابط</span><input class="input mono" data-k="id" value="${r.id}" maxlength="24" dir="ltr" ${r.isNew ? '' : 'readonly'} title="${r.isNew ? 'حروف إنجليزي صغيرة وأرقام' : 'رابط المجموعة مايتغيرش بعد ما تتعمل'}"></label>
             </div>
             <label class="ry-f"><span>الوصف</span><input class="input" data-k="about" value="${r.about}" maxlength="90" dir="auto"></label>
+            ${bgBlock(r, i)}
             <div class="ry-row ry-opts">
               <label class="ry-hue"><span>اللون</span><input type="range" min="0" max="360" data-k="hue" value="${r.hue}"></label>
               <label class="ry-tog"><input type="checkbox" data-k="hidden" ${r.hidden ? 'checked' : ''}><span>مخفية</span></label>
@@ -152,12 +190,32 @@ async function renderRoomsEditor(page) {
       </div>`);
     const read = () => $$('.ry-room', page).forEach(el => {
       const r = list[Number(el.dataset.i)];
-      $$('[data-k]', el).forEach(inp => { const k = inp.dataset.k; r[k] = inp.type === 'checkbox' ? inp.checked : k === 'hue' ? Number(inp.value) : inp.value.trim(); });
+      $$('[data-k]', el).forEach(inp => { const k = inp.dataset.k; r[k] = inp.type === 'checkbox' ? inp.checked : k === 'hue' || k === 'bgBlur' || k === 'bgDim' ? Number(inp.value) : inp.value.trim(); });
     });
     $$('[data-k="hue"], [data-k="mark"]', page).forEach(inp => inp.oninput = () => {
       const el = inp.closest('.ry-room'), m = $('.ry-mark', el);
       if (inp.dataset.k === 'hue') m.style.setProperty('--h', inp.value); else if (!m.querySelector('img')) m.textContent = inp.value;
     });
+    // the background: blur and veil seen at once on the preview; a picture made lighter here, then uploaded
+    $$('[data-k="bgBlur"], [data-k="bgDim"]', page).forEach(inp => inp.oninput = () => {
+      const pv = $('.ry-bg-prev', inp.closest('.ry-room'));
+      if (inp.dataset.k === 'bgBlur') pv.style.setProperty('--blur', inp.value + 'px'); else pv.style.setProperty('--dim', inp.value / 100);
+      const out = inp.closest('label').querySelector('output'); if (out) out.textContent = inp.dataset.k === 'bgBlur' ? inp.value : inp.value + '%';
+    });
+    $$('[data-bg-file]', page).forEach(inp => inp.onchange = async () => {
+      const f = inp.files && inp.files[0]; if (!f) return;
+      read();
+      const i = Number(inp.dataset.bgFile), r = list[i], box = inp.closest('.ry-bg');
+      box.classList.add('is-busy');
+      try {
+        const blob = await lighter(f);
+        const { url } = await api.chatBg(r.id, blob);
+        r.bg = url; if (r.bgBlur == null) r.bgBlur = 12; if (r.bgDim == null) r.bgDim = 50;
+        toast('اترفعت الخلفية ✓ دوس «احفظ المجموعات» عشان تظهر للمتابعين');
+        draw();
+      } catch (err) { toast(err.message, 'error'); box.classList.remove('is-busy'); inp.value = ''; }
+    });
+    $$('[data-bg-off]', page).forEach(b => b.onclick = () => { read(); const r = list[Number(b.dataset.bgOff)]; delete r.bg; delete r.bgBlur; delete r.bgDim; draw(); });
     $('#ry-back').onclick = () => renderCommunity(page);
     $('#ry-add').onclick = () => { read(); let n = list.length + 1; while (list.some(x => x.id === `room${n}`)) n++; list.push({ id: `room${n}`, name: '', about: '', mark: 'NEW', hue: Math.floor(Math.random() * 360), isNew: true }); draw(); const last = $$('.ry-room', page).pop(); last.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('[data-k="name"]', last).focus(); };
     page.onclick = async (e) => {

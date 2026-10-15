@@ -115,6 +115,25 @@
   var AND = ' و ', EN = document.documentElement.lang === 'en';
   // the owner's rooms come from the worker in Arabic: their English on the English page when there is one (server-en)
   function roomWord(t) { return EN && t && window.arwMsg ? window.arwMsg(t) || t : t; }
+  // the room's own background (the owner's, from the panel: worker/src/chat.ts roomBg): blurred and veiled behind the
+  // messages in the site's light or dark colour (assets/community.css «has-bg»); only a picture the worker keeps
+  var BG_OK = new RegExp('^' + API.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '/chat/media/chat/[a-z][a-z0-9]{1,23}/\\d{6}/[a-f0-9]{24}\\.(webp|jpg|png)$');
+  function paintBg() {
+    var R = current && ROOMS[current], url = R && R.bg && BG_OK.test(R.bg) ? R.bg : '';
+    var num = function (v, d) { v = Number(v); return isFinite(v) ? v : d; };
+    if (url) {
+      chat.style.setProperty('--cm-bg-blur', Math.max(0, Math.min(30, num(R.bgBlur, 12))) + 'px');
+      chat.style.setProperty('--cm-bg-dim', Math.max(0, Math.min(90, num(R.bgDim, 50))) / 100);
+    }
+    if (chat.getAttribute('data-bg') === url) return;
+    chat.setAttribute('data-bg', url);
+    chat.classList.toggle('has-bg', !!url);
+    if (!url) { chat.style.removeProperty('--cm-bg'); return; }
+    // shown once the picture is here (no half-drawn picture over the room)
+    var img = new Image();
+    img.onload = function () { if (chat.getAttribute('data-bg') === url) chat.style.setProperty('--cm-bg', 'url("' + url + '")'); };
+    img.src = url;
+  }
   function size(b) { b = Number(b) || 0; return b > 1048576 ? (b / 1048576).toFixed(1) + ' ميجا' : Math.max(1, Math.round(b / 1024)) + ' كيلو'; }
   function mmss(s) { s = Math.max(0, Math.round(s || 0)); return Math.floor(s / 60) + ':' + pad(s % 60); }
   function plural(n, one, two, few, many) { return n === 1 ? one : n === 2 ? two : n <= 10 ? n + ' ' + few : n + ' ' + many; }
@@ -148,7 +167,7 @@
       // the English page keeps the English names it was built with (the worker sends the Arabic ones, owner 2026-10-15:
       // «الاسماء دي مترجمتش في النسخة الانجليزي»); a room added later shows its English when there is one
       if (!(EN && R.built)) { R.name = roomWord(s.name) || R.name; R.about = roomWord(s.about) || ''; }
-      R.hue = s.hue; R.closed = !!s.closed;
+      R.hue = s.hue; R.closed = !!s.closed; R.bg = s.bg || ''; R.bgBlur = s.bgBlur; R.bgDim = s.bgDim;
       if (s.id !== 'general') { R.mark = s.mark; $('.cm-mark', R.btn).textContent = s.mark; } else R.mark = $('.cm-mark', R.btn).innerHTML;
       R.btn.style.setProperty('--h', s.hue);
       $('b', R.btn).textContent = R.name;
@@ -156,7 +175,7 @@
       if (nav.children[i] !== R.btn) nav.insertBefore(R.btn, nav.children[i] || null);
     });
     Object.keys(ROOMS).forEach(function (id) { if (!keep[id]) { ROOMS[id].btn.remove(); delete ROOMS[id]; if (current === id) showRooms(); } });
-    if (current && ROOMS[current]) { $('.cm-head-name').textContent = ROOMS[current].name; setMuted(); }
+    if (current && ROOMS[current]) { $('.cm-head-name').textContent = ROOMS[current].name; setMuted(); paintBg(); }
     // a link to a room the page didn't know yet (added from the panel) opens it once the list arrives
     if (want && ROOMS[want] && current !== want) open(want, false);
     want = '';
@@ -231,6 +250,7 @@
     $('.cm-head').hidden = false;
     var mark = $('.cm-head-mark');
     mark.innerHTML = R.mark; mark.style.setProperty('--h', R.hue); mark.classList.toggle('cm-mark-logo', room === 'general');
+    paintBg();
     $('.cm-head-name').textContent = R.name;
     var c = cache[room];
     msgs = c ? c.msgs.slice() : []; byId = {}; msgs.forEach(function (m) { byId[m.id] = m; });

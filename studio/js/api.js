@@ -59,6 +59,16 @@ async function call(path, { method = 'GET', body, auth = true } = {}) {
   return data;
 }
 
+/** A picture sent as it is (not JSON): a room's background */
+async function upload(path, blob) {
+  let res;
+  try { res = await fetch(`${WORKER}${path}`, { method: 'POST', headers: { 'Content-Type': blob.type, Authorization: `Bearer ${getToken()}` }, body: blob }); }
+  catch (e) { throw new ApiError('مفيش اتصال بالإنترنت أو الخادم مش بيرد.', 0); }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.success === false) throw new ApiError(data.error || `خطأ ${res.status}`, res.status, data);
+  return data;
+}
+
 /** Like call(), but hands back a «didn't work» answer (success:false) instead of throwing —
  *  the publishing tools show each platform's own result. Network/permission errors still throw. */
 async function callResult(path, opts = {}) {
@@ -133,6 +143,7 @@ export const api = {
   premiumRequest: (body) => call('/api/studio/premium/request', { method: 'POST', body }),
   chat: () => call('/api/studio/chat'),
   chatRooms: () => call('/api/studio/chat/rooms'),
+  chatBg: (room, blob) => upload(`/api/studio/chat/bg?room=${encodeURIComponent(room)}`, blob),
   chatRoomsSave: (rooms) => call('/api/studio/chat/rooms', { method: 'POST', body: { rooms } }),
   // «التوقعات» (worker/src/predict.ts)
   predict: () => call('/api/studio/predict'),

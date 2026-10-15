@@ -1023,3 +1023,24 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .pg-hist-what b { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .pg-wait { color: var(--muted); }
 @media (max-width: 600px) { .pg-hist-row { flex-direction: column; align-items: flex-start; gap: 6px; } }
+
+/* a room's background (views/community.js bgBlock): the picture as the site shows it, messages over it */
+.ry-bg { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px; border-radius: 14px; border: 1px dashed var(--line); }
+.ry-bg.has-bg { border-style: solid; }
+.ry-bg.is-busy { opacity: .6; pointer-events: none; }
+.ry-bg-prev { position: relative; isolation: isolate; overflow: hidden; height: 132px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 10px; background: var(--bg); }
+.ry-bg-prev::before { content: ""; position: absolute; inset: calc(var(--blur, 12px) * -2.5); z-index: -1; background-image: linear-gradient(rgba(250, 247, 240, var(--dim, .45)), rgba(250, 247, 240, var(--dim, .45))), var(--bgurl, none); background-size: cover; background-position: center; filter: blur(var(--blur, 12px)) saturate(1.15); }
+[data-theme="dark"] .ry-bg-prev::before { background-image: linear-gradient(rgba(7, 9, 13, var(--dim, .45)), rgba(7, 9, 13, var(--dim, .45))), var(--bgurl, none); }
+.ry-bg-msg { max-width: 78%; padding: 5px 10px; border-radius: 9px; font-size: 12.5px; box-shadow: 0 1px 1px rgba(0, 0, 0, .1); }
+.ry-bg-msg.is-in { align-self: flex-start; background: var(--card); color: var(--ink); }
+.ry-bg-msg.is-out { align-self: flex-end; background: #0e9594; color: #fff; }
+.ry-bg-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font-size: 12.5px; font-weight: 800; z-index: 1; pointer-events: none; }
+.ry-bg-empty svg { width: 16px; height: 16px; }
+.ry-bg-ctl { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ry-bg-t { font-size: 12px; font-weight: 800; color: var(--muted); }
+.ry-bg-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.ry-bg-btns label.btn { cursor: pointer; }
+.ry-bg-range { display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 800; color: var(--muted); }
+.ry-bg-range span { display: flex; justify-content: space-between; }
+.ry-bg-range input { width: 100%; max-width: 260px; accent-color: var(--teal); }
+@media (max-width: 640px) { .ry-bg { grid-template-columns: 1fr; } }

@@ -467,3 +467,29 @@ test('the English page keeps its rooms\' English names (the worker sends the Ara
   const en = require('../lib/i18n/en.cjs').ui, srv = require('../lib/i18n/server-en.cjs');
   for (const [ar, name] of [['الساحة العامة', 'The Main Arena'], ['متابعين اتحاد WWE', 'WWE Universe'], ['متابعين المصارعة القديمة', 'Wrestling Classics']]) { assert.equal(en[ar], name); assert.equal(srv[ar], name); }
 });
+
+test('a room\'s background: the owner uploads a real picture, every member gets it with its blur and veil; nothing else is ever put behind a room', async () => {
+  const { roomBg, studioChatBg, studioChatRooms } = await import('../worker/src/chat');
+  const store = new Map<string, any>();
+  const kv: any = { get: async (k: string) => store.get(k) ?? null, put: async (k: string, v: string) => { store.set(k, v); }, delete: async (k: string) => { store.delete(k); } };
+  const r2: any = { puts: [] as any[], put: async (k: string, b: any, o: any) => { r2.puts.push({ k, o }); } };
+  const env: any = { PUSH_KV: kv, MEDIA: r2 };
+  const png = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 0, 1, 2, 3]);
+  const up = await studioChatBg(env, 'wwe', new Request('https://w/x', { method: 'POST', headers: { 'Content-Type': 'image/png' }, body: png }));
+  assert.equal(up.success, true);
+  assert.match((up as any).url, /\/chat\/media\/chat\/wwe\/\d{6}\/[a-f0-9]{24}\.png$/);
+  // a file that only says it's a picture, another kind, a wrong room: refused
+  assert.equal((await studioChatBg(env, 'wwe', new Request('https://w/x', { method: 'POST', headers: { 'Content-Type': 'image/png' }, body: new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) }))).success, false);
+  assert.equal((await studioChatBg(env, 'wwe', new Request('https://w/x', { method: 'POST', headers: { 'Content-Type': 'image/svg+xml' }, body: png }))).success, false);
+  assert.equal((await studioChatBg(env, '../x', new Request('https://w/x', { method: 'POST', headers: { 'Content-Type': 'image/png' }, body: png }))).success, false);
+  // saved with the rooms: kept with its blur and veil (held in range); an address from anywhere else is dropped
+  assert.equal(roomBg('https://evil.example/x.png'), '');
+  const saved: any = await studioChatRooms(env, { rooms: [{ id: 'general', name: 'الساحة العامة', hue: 177, bg: (up as any).url, bgBlur: 99, bgDim: -5 }, { id: 'wwe', name: 'WWE', hue: 4, bg: 'javascript:alert(1)' }] });
+  assert.equal(saved.success, true);
+  assert.deepEqual([saved.rooms[0].bg, saved.rooms[0].bgBlur, saved.rooms[0].bgDim], [(up as any).url, 30, 0]);
+  assert.equal(saved.rooms[1].bg, undefined);
+  // the owner only (the route), and the page paints only the worker's own pictures
+  const fs = require('node:fs');
+  assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /path === "\/api\/studio\/chat\/bg"[\s\S]{0,200}who\.user\.role !== "owner"/);
+  assert.match(fs.readFileSync('assets/community.js', 'utf8'), /var BG_OK = new RegExp\(/);
+});
