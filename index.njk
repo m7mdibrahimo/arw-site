@@ -1281,7 +1281,7 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-shadow:inset 0 0 0 1px rgba(134,239,172,.22); }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015j">
+<link rel="stylesheet" href="/assets/features.css?v=20261015k">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 </head>
 <body>
@@ -1421,6 +1421,15 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </div>
 </section>
 {% endif %}
+
+{#- «تابع المشاهدة» (owner 2026-10-15): a signed-in member's shows to go back to, filled by assets/features.js -#}
+<section class="content arw-cw" id="continue" hidden aria-labelledby="cw-t">
+<div class="wrap">
+<div class="section-head"><div class="head-text"><h2 id="cw-t" style="color:var(--teal);"><span class="dot" style="background:var(--teal)"></span>تابع المشاهدة</h2><p>أكمل من حيث توقفت</p></div></div>
+<div class="arw-cw-row"></div>
+<div style="text-align:center; margin-top:26px;"><a href="/history/" class="view-all">سجل المشاهدة كاملا ←</a></div>
+</div>
+</section>
 
 <section class="content" id="feds">
 <div class="wrap">
@@ -1649,7 +1658,7 @@ if(a && a.href && a.origin === location.origin) prefetch(a.href);
 }, { passive: true });
 })();
 </script>
-<script src="/assets/features.js?v=20261015j" defer></script>
+<script src="/assets/features.js?v=20261015k" defer></script>
 <script src="/assets/top10.js?v=7" defer></script>
 <script>
 (function(){

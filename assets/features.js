@@ -708,6 +708,8 @@
     library: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v14"/><path d="M9 19V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v12"/><path d="m15 6.5 2.9-.8a1 1 0 0 1 1.2.7l3 11.4a1 1 0 0 1-.7 1.2l-2.9.8"/><path d="M3 19h18"/></svg>',
     feds: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg>',
     recaps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>',
+    history: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>',
+    trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>',
     apps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>',
     heart: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-6.7-4.35-9.43-8.06C.69 10.2 1.2 6.6 4.1 4.9c2.3-1.35 5.1-.7 6.6 1.2.5.6.9 1.3 1.3 2 .4-.7.8-1.4 1.3-2 1.5-1.9 4.3-2.55 6.6-1.2 2.9 1.7 3.41 5.3 1.53 8.04C18.72 16.65 12 21 12 21Z"/></svg>',
     tg: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>',
@@ -780,6 +782,8 @@
       '<a href="' + LP + '/library/">' + ICONS.library + 'مكتبة العروض</a>' +
       '<a href="' + LP + '/federations/">' + ICONS.feds + 'الاتحادات</a>' +
       '<a href="' + LP + '/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
+      '<a href="' + LP + '/history/">' + ICONS.history + 'سجل المشاهدة</a>' +
+      '<a href="' + LP + '/predictions/">' + ICONS.trophy + 'التوقعات</a>' +
       '<a href="' + LP + '/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
       // «العضوية المميزة» (pages/premium.njk) took «ادعم الموقع»'s place; hidden for a member who has it
       '<a class="more-support premium-btn" href="' + LP + '/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
@@ -792,7 +796,7 @@
       var links = document.createElement('div');
       links.className = 'arw-more-acct-links';
       var H = document.documentElement.lang === 'en' ? '/en' : '';
-      links.innerHTML = '<a href="' + H + '/account/#follows">قائمتي</a><a href="' + H + '/predictions/">التوقعات</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
+      links.innerHTML = '<a href="' + H + '/account/#follows">قائمتي</a>' + (mem.official ? '' : '<a href="' + H + '/account/#subscription">اشتراكي</a>') + '<a href="' + H + '/account/#settings">الإعدادات</a><button type="button">تسجيل الخروج</button>';
       links.querySelector('button').addEventListener('click', signOut);
       sheet.querySelector('.arw-more-acct').insertAdjacentElement('afterend', links);
     }
@@ -911,6 +915,7 @@
   // membership (or what «العضوية المميزة» gives, for those without it), their account, settings, the community, out.
   var CROWN_IC = '<svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
   var MENU_IC = {
+    history: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>',
     trophy: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>',
     me: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
     settings: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
@@ -991,6 +996,7 @@
           '<a href="' + HOME + '/account/#settings" role="menuitem">' + MENU_IC.settings + '<span>الإعدادات</span></a>' +
           (m.official ? '' : '<a href="' + HOME + '/account/#subscription" role="menuitem">' + CROWN_IC + '<span>اشتراكي</span></a>') +
           '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
+          '<a href="' + LP + '/history/" role="menuitem">' + MENU_IC.history + '<span>سجل المشاهدة</span></a>' +
           '<a href="' + LP + '/predictions/" role="menuitem">' + MENU_IC.trophy + '<span>التوقعات</span></a>' +
           (m.official ? '<a href="/admin/" role="menuitem">' + MENU_IC.panel + '<span>لوحة التحكم</span></a>' : '') +
         '</nav>' +
@@ -1341,10 +1347,95 @@
     setInterval(function () { if (!document.hidden) refreshFollows(true); }, 5 * 60000);
   }
 
+
+  // ── «تابع المشاهدة» و«سجل المشاهدة» (owner 2026-10-15) ───────────────────────────────────────────────────────────
+  // A signed-in member who starts a show, a recap or a nostalgia episode has it kept with their account
+  // (worker/src/watch.ts), with about how long the page played; the home page offers to go back to it (#continue),
+  // and /history/ lists everything they watched.
+  var WATCH_API = 'https://arw-site-bot.m7mdibrahimpc.workers.dev/watch', CW_KEY = 'arw-cw';
+  function watchCall(q, body, keep) {
+    var s = savedMember();
+    if (!s) return Promise.resolve({});
+    return fetch(WATCH_API + (q || ''), { method: body ? 'POST' : 'GET', keepalive: !!keep, headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + s.token }, body: body ? JSON.stringify(body) : undefined, credentials: 'omit' })
+      .then(function (r) { return r.json(); }).catch(function () { return {}; });
+  }
+  function initWatchTrack() {
+    var btn = document.getElementById('arwPostBookmarkBtn');
+    if (!btn || !savedMember()) return;
+    var url = btn.getAttribute('data-url') || location.pathname;
+    if (!/^\/(shows|recaps|nostalgia)\//.test(url)) return;
+    var item = { url: url, title: btn.getAttribute('data-title') || document.title, image: btn.getAttribute('data-image') || '', fed: btn.getAttribute('data-fed') || '', duration: btn.getAttribute('data-duration') || '' };
+    var started = false, acc = 0;
+    function flush(keep) { if (!acc) return; var secs = acc; acc = 0; watchCall('', { op: 'tick', url: url, secs: secs }, keep); }
+    window.addEventListener('arw-watch-start', function () {
+      if (started) return;
+      started = true;
+      try { localStorage.removeItem(CW_KEY); } catch (e) {}
+      watchCall('', { op: 'start', item: item });
+      // the time the page plays while it's in front of them; sent every two minutes and when they leave
+      setInterval(function () { if (!document.hidden) { acc += 30; if (acc >= 120) flush(false); } }, 30000);
+      document.addEventListener('visibilitychange', function () { if (document.hidden) flush(true); });
+      window.addEventListener('pagehide', function () { flush(true); });
+    });
+  }
+  function watchKind(k) { return k === 'recap' ? 'ملخص' : k === 'nostalgia' ? 'نوستالجيا' : 'عرض'; }
+  function watchedLine(it) {
+    var EN = document.documentElement.lang === 'en';
+    var m = Math.round((it.watched || 0) / 60), d = Math.round((it.duration || 0) / 60);
+    if (!m) return EN ? 'Just started' : 'بدأت المشاهدة';
+    if (d) return EN ? m + ' of ' + d + ' min' : 'شاهدت ' + m + ' من ' + d + ' دقيقة';
+    return EN ? m + ' min watched' : 'شاهدت ' + m + ' دقيقة';
+  }
+  function initContinue() {
+    var sec = document.getElementById('continue');
+    if (!sec) return;
+    var s = savedMember();
+    var row = sec.querySelector('.arw-cw-row');
+    function draw(items) {
+      try { localStorage.setItem('arw-cw-n', String(items.length)); } catch (e) {}
+      sec.hidden = !items.length;
+      document.documentElement.classList.toggle('arw-has-cw', !!items.length);
+      row.textContent = '';
+      items.forEach(function (it) {
+        if (!/^\/(shows|recaps|nostalgia)\/[^\s"'<>]*$/.test(String(it.url || ''))) return;
+        var a = document.createElement('a');
+        a.className = 'arw-cw-card';
+        a.href = LP + it.url;
+        var pct = it.duration ? Math.min(100, Math.max(4, Math.round((it.watched / it.duration) * 100))) : 0;
+        a.innerHTML = '<span class="arw-cw-img"><span class="arw-cw-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span><i class="arw-cw-bar"><i></i></i></span><span class="arw-cw-tx"><small></small><b></b><em></em></span><button type="button" class="arw-cw-x" aria-label="إخفاء من تابع المشاهدة" title="إخفاء من تابع المشاهدة">×</button>';
+        if (it.image && /^(\/|https:\/\/)[^\s"'<>]*$/.test(it.image)) { var im = document.createElement('img'); im.src = it.image; im.alt = ''; im.loading = 'lazy'; im.onerror = function () { this.remove(); }; a.querySelector('.arw-cw-img').prepend(im); }
+        a.querySelector('.arw-cw-bar > i').style.width = (pct || 4) + '%';
+        if (!pct) a.querySelector('.arw-cw-bar').classList.add('is-unknown');
+        a.querySelector('small').textContent = watchKind(it.kind) + (it.fed ? ' · ' + it.fed : '');
+        a.querySelector('b').textContent = it.title || it.url;
+        a.querySelector('em').textContent = watchedLine(it);
+        a.querySelector('.arw-cw-x').addEventListener('click', function (e) {
+          e.preventDefault(); e.stopPropagation();
+          a.remove();
+          watchCall('', { op: 'hide', url: it.url });
+          var c = []; try { c = (JSON.parse(localStorage.getItem(CW_KEY) || '{}').items || []).filter(function (x) { return x.url !== it.url; }); localStorage.setItem(CW_KEY, JSON.stringify({ uid: s.member.username, at: Date.now(), items: c })); } catch (er) {}
+          if (!row.children.length) draw([]);
+        });
+        row.appendChild(a);
+      });
+    }
+    if (!s) { sec.hidden = true; try { localStorage.removeItem('arw-cw-n'); } catch (e) {} return; }
+    var cache = null; try { cache = JSON.parse(localStorage.getItem(CW_KEY) || 'null'); } catch (e) {}
+    if (cache && cache.uid === s.member.username) draw(cache.items || []);
+    if (cache && cache.uid === s.member.username && Date.now() - (cache.at || 0) < 60000) return;
+    watchCall('?continue=1').then(function (d) {
+      if (!d || !d.ok) { if (d && d.signedOut) draw([]); return; }
+      try { localStorage.setItem(CW_KEY, JSON.stringify({ uid: s.member.username, at: Date.now(), items: d.items })); } catch (e) {}
+      draw(d.items || []);
+    });
+  }
+
   function initFeatures() {
     initInstantSearch();
     initBookmarksUI();
     initSavedSync();
+    initWatchTrack();
+    initContinue();
     initShare();
     initMobileChrome();
     initCommentReplies();

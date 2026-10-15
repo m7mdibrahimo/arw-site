@@ -129,6 +129,8 @@
   function mountVideo(box, rawSrc, serverLabel) {
     if (!box || !rawSrc) return;
     if (watchDeck) watchDeck.classList.remove('is-idle');
+    // «تابع المشاهدة»: the member's account is told this show has started (assets/features.js)
+    if (!mountSeq) { try { window.dispatchEvent(new CustomEvent('arw-watch-start')); } catch (e) {} }
     var seq = ++mountSeq;
     var mountedAt = Date.now();
     currentActiveServerSrc = rawSrc;

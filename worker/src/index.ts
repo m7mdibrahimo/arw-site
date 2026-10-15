@@ -38,6 +38,7 @@ import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
+import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete } from "./predict";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
@@ -3093,6 +3094,8 @@ export default {
       if (path === "/follow" || path.startsWith("/follow/")) return await handleFollows(request, env as any, url);
       // «المفضلة وشاهد لاحقا» kept with the member's account, the same on all their devices (worker/src/saved.ts)
       if (path === "/saved") return await handleSaved(request, env as any, url);
+      // «تابع المشاهدة» and «سجل المشاهدة» (worker/src/watch.ts)
+      if (path === "/watch") return await handleWatch(request, env as any, url);
       // «توقعات العروض الكبرى»: members pick the winners, the owner enters the results (worker/src/predict.ts)
       if (path === "/predict" || path.startsWith("/predict/")) return await handlePredict(request, env as any, url);
       if (path.startsWith("/api/studio/predict")) {
