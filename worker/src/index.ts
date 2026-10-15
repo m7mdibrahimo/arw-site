@@ -30,6 +30,7 @@
  */
 
 import { deliverOnce, authorizeAdmin } from "./delivery";
+import { PROMO_FILE, PROMO_PLATFORMS, type PromoPlatform, promoCaption, promoFacebook, facebookPostOf, pinFacebook, promoTelegram, pinTelegram } from "./promo";
 import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit, auditLog } from "./studio";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
 import { runSiteHealthCheck, siteHealth } from "./health";
@@ -3889,6 +3890,52 @@ export default {
         } catch (e: any) {
           return json({ success: false, error: e.message }, 500);
         }
+      }
+
+      // The site's own promo video (owner 2026-10-15: «ارفعه وضيفه علي كل المنصات بتاعتي … ولو تثبتها»): one platform a
+      // request, posted once (deliverOnce), then pinned where the platform lets a page pin. The file must already be on
+      // the site at /videos/<file> (.github/workflows/promo-publish.yml puts it there). Admin only (the check above).
+      if (path === "/api/videos/publish-promo" && request.method === "POST") {
+        const body: any = await request.json().catch(() => ({}));
+        const file = String(body.file || "");
+        const platform = String(body.platform || "") as PromoPlatform;
+        if (!PROMO_FILE.test(file)) return json({ success: false, error: "اسم ملف الفيديو غير صالح." }, 400);
+        if (!(PROMO_PLATFORMS as readonly string[]).includes(platform)) return json({ success: false, error: "المنصة غير معروفة." }, 400);
+        const caption = promoCaption(body.caption, platform === "telegram" ? 1024 : 2200);
+        const title = promoCaption(body.title, 100);
+        if (!caption) return json({ success: false, error: "نص المنشور مطلوب." }, 400);
+        const videoUrl = `${env.SITE_ORIGIN}/videos/${file}`;
+        const head = await fetch(videoUrl, { method: "HEAD" }).catch(() => null);
+        if (!head || !head.ok || !/^video\//.test(head.headers.get("content-type") || "")) return json({ success: false, error: "الفيديو مش موجود على الموقع لسه." }, 409);
+        if (platform === "instagram") {
+          const wait = await instagramSpacingWait(env);
+          if (wait > 0) return json({ success: false, platform, post: { ok: false, status: "processing", retryAt: Date.now() + wait, error: "فاصل إلزامي بين منشورات إنستجرام؛ أعد المحاولة بعده." } });
+          if (!(await instagramRoomLeft(env, 0))) return json({ success: false, platform, post: { ok: false, status: "processing", error: "تم بلوغ الحد اليومي لمنشورات إنستجرام." } });
+        }
+        const token = platform === "telegram" ? "" : await getPageAccessToken(env);
+        const send = async () => {
+          if (platform === "facebook") return promoFacebook({ pageId: env.FACEBOOK_PAGE_ID, token, videoUrl, title, caption });
+          if (platform === "instagram") {
+            await markInstagramAction(env, "video");
+            return publishInstagramVideo({ accountId: env.INSTAGRAM_BUSINESS_ACCOUNT_ID, token, videoUrl, caption, story: false, kv: env.PUSH_KV });
+          }
+          return promoTelegram({ botToken: env.TELEGRAM_BOT_TOKEN, chatId: env.TELEGRAM_CHAT_ID, videoUrl, caption,
+            width: Number(body.width) || undefined, height: Number(body.height) || undefined, duration: Number(body.duration) || undefined });
+        };
+        const post = await deliverOnce(env, `promo:${platform}:${file}`, send, { retryMs: 30 * 60_000 });
+        let pin: any = undefined;
+        if (post.ok && body.pin && post.id) {
+          if (platform === "facebook") {
+            const postId = await facebookPostOf(post.id, env.FACEBOOK_PAGE_ID, token);
+            pin = postId ? await deliverOnce(env, `promo-pin:facebook:${file}`, () => pinFacebook({ postId, token }))
+              : { ok: false, status: "processing", error: "فيسبوك لسه بيجهز الفيديو؛ التثبيت يتعمل في المحاولة الجاية." };
+          } else if (platform === "telegram") {
+            pin = await deliverOnce(env, `promo-pin:telegram:${file}`, () => pinTelegram({ botToken: env.TELEGRAM_BOT_TOKEN, chatId: env.TELEGRAM_CHAT_ID, messageId: String(post.id) }));
+          } else {
+            pin = { ok: false, unsupported: true, error: "إنستجرام لا يسمح بتثبيت المنشورات من خارج التطبيق." };
+          }
+        }
+        return json({ success: !!post.ok, platform, videoUrl, post, ...(pin ? { pin } : {}) });
       }
 
       if (path === "/api/admin/clean-duplicate-social" && request.method === "POST") {
