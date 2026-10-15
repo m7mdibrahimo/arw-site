@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-15T01:23:45.755Z"
+ },
  "https://www.fightful.com/wrestling/adam-copeland-says-christian-cage-suffered-broken-ribs-and-punctured-lung-at-aew-all-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,16 +63,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-15T01:04:17.988Z"
- },
- "https://www.wrestlinginc.com/2284042/wwe-jevon-evans-jacob-fatu-connection": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T01:04:17.988Z"
- },
- "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-15T00:56:03.071Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
