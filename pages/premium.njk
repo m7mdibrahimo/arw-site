@@ -275,7 +275,7 @@ permalink: "/premium/index.html"
   .show-thumb::before, .news-thumb::before{ z-index:1; }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015k">
+<link rel="stylesheet" href="/assets/features.css?v=20261015l">
 <link rel="stylesheet" href="/assets/dark.css?v=20260926j">
 
 <title>العضوية المميزة | عرب راسلنج</title>
@@ -327,7 +327,11 @@ permalink: "/premium/index.html"
     <h1>شاهد قبل الجميع، وبدون إعلانات</h1>
     <p class="pm-lead">مع العضوية المميزة تصلك العروض أسرع، وتشاهدها بدون إعلانات، ويظهر اسمك بشكل مميز. والموقع يبقى مجانيا للجميع.</p>
     <p class="pm-price-line"><b>50 جنيه</b> أو <b>1 دولار</b> في الشهر فقط</p>
-    <a class="pm-btn pm-hero-btn" href="#subscribe">اشترك الآن</a>
+    <div class="pm-hero-acts">
+      <button type="button" class="pm-btn pm-trial-btn" data-act="trial" hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span>جرب 3 أيام مجانا</span></button>
+      <a class="pm-btn pm-hero-btn" href="#subscribe">اشترك الآن</a>
+    </div>
+    <p class="pm-trial-note" hidden>بدون بطاقة وبدون دفع. كل المميزات لمدة 3 أيام، مرة واحدة لكل عضو جديد.</p>
     <div class="pm-status" hidden></div>
     <div class="pm-flash" hidden role="status" aria-live="polite"></div>
   </section>
@@ -361,13 +365,19 @@ permalink: "/premium/index.html"
           <button type="button" role="radio" class="is-on" aria-checked="true" data-cur="EGP">جنيه مصري</button>
           <button type="button" role="radio" aria-checked="false" data-cur="USD">دولار أمريكي</button>
         </div>
-        <p class="pm-amount"><b class="pm-amount-n">50</b> <span class="pm-amount-c">جنيه</span> <small>/ في الشهر</small></p>
+        <div class="pm-plans" role="radiogroup" aria-label="المدة">
+          <button type="button" role="radio" aria-checked="true" class="pm-plan-opt is-on" data-plan="m1"><b>شهر</b><span class="pm-po-price"><i>50</i> <small>جنيه</small></span><em>الأكثر مرونة</em></button>
+          <button type="button" role="radio" aria-checked="false" class="pm-plan-opt" data-plan="m3"><b>3 شهور</b><span class="pm-po-price"><i>135</i> <small>جنيه</small></span><em>وفر 10%</em></button>
+          <button type="button" role="radio" aria-checked="false" class="pm-plan-opt is-best" data-plan="m12"><span class="pm-po-tag">الأوفر</span><b>سنة</b><span class="pm-po-price"><i>450</i> <small>جنيه</small></span><em>وفر 25%</em></button>
+        </div>
+        <p class="pm-amount"><b class="pm-amount-n">50</b> <span class="pm-amount-c">جنيه</span> <small class="pm-amount-for">/ شهر</small></p>
+        <p class="pm-per-month"></p>
       </div>
       <ul class="pm-plan-list">
         <li>كل المميزات من أول لحظة</li>
         <li>تتفعل تلقائيا بعد الدفع مباشرة</li>
         <li>بدون تجديد تلقائي، تجدد وقتما تريد</li>
-        <li>كل تجديد يضيف شهرا كاملا</li>
+        <li>كل تجديد يضاف إلى ما تبقى من عضويتك</li>
       </ul>
       <button type="button" class="pm-btn" data-act="subscribe"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>اشترك الآن</span></button>
       <p class="pm-plan-note">الدفع آمن عن طريق «فواتيرك»: فيزا، ماستركارد، ميزة، فوري، والمحافظ الإلكترونية.</p>
@@ -388,6 +398,16 @@ permalink: "/premium/index.html"
         </tbody>
       </table>
     </div>
+  </section>
+
+  <section class="pm-faq" aria-labelledby="pm-faq-t">
+    <h2 id="pm-faq-t" class="pm-h2">أسئلة شائعة</h2>
+    <details><summary>هل يتجدد الاشتراك تلقائيا؟</summary><p>لا. تدفع مرة واحدة للمدة التي تختارها، ولا يخصم منك شيء بعدها. وقبل انتهاء عضويتك بثلاثة أيام نذكرك لتجددها إن أردت.</p></details>
+    <details><summary>هل التجربة المجانية تحتاج بطاقة؟</summary><p>لا. ثلاثة أيام بكل المميزات بضغطة واحدة، بدون بطاقة وبدون دفع، مرة واحدة لكل عضو جديد. وبعدها تختار إن كنت تريد الاشتراك.</p></details>
+    <details><summary>متى تتفعل عضويتي بعد الدفع؟</summary><p>فورا وتلقائيا بعد إتمام الدفع، بدون انتظار.</p></details>
+    <details><summary>كيف أدفع؟</summary><p>عن طريق «فواتيرك» بأمان: فيزا، ماستركارد، ميزة، فوري، والمحافظ الإلكترونية.</p></details>
+    <details><summary>ماذا يحدث عند انتهاء العضوية؟</summary><p>يعود حسابك مجانيا كما كان، ويبقى كل شيء محفوظا: قائمتك وسجل مشاهدتك وتعليقاتك. وتعود كل المميزات فور التجديد.</p></details>
+    <details><summary>هل تعمل عضويتي على كل أجهزتي؟</summary><p>نعم. العضوية مرتبطة بحسابك، فتعمل على الهاتف والحاسوب وأي جهاز تسجل الدخول منه.</p></details>
   </section>
 
   <section class="pm-req" id="requests" hidden aria-labelledby="pm-req-t">
@@ -498,7 +518,7 @@ permalink: "/premium/index.html"
     });
   }
 </script>
-<script src="/assets/features.js?v=20261015k" defer></script>
+<script src="/assets/features.js?v=20261015l" defer></script>
 <script>
 (function(){
   var header = document.querySelector('header');

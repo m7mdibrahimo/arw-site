@@ -989,7 +989,8 @@
         '<a class="arw-am-me" href="' + HOME + '/account/" role="menuitem"><span class="arw-am-av"><span class="arw-acct-in">' + memberAvatar(m) + '</span></span><span class="arw-am-who"><b></b><small dir="ltr"></small></span></a>' +
         '<div class="arw-am-status">' + (m.official || prem ? CROWN_IC : '') + '<span></span></div>' +
         (m.official || prem ? '' :
-          '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، وتوثيق حسابك، وحماية من الإعلانات</small></span></a>') +
+          (m.trial ? '<a class="arw-am-up" href="' + LP + '/premium/?trial=1" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>جرب العضوية المميزة 3 أيام مجانا</b><small>بدون بطاقة: العروض قبل الجميع، وتوثيق حسابك، وسيرفرات خاصة</small></span></a>'
+            : '<a class="arw-am-up" href="' + LP + '/premium/" role="menuitem"><span class="arw-am-up-ic">' + CROWN_IC + '</span><span><b>اشترك في العضوية المميزة</b><small>العروض قبل الجميع، وتوثيق حسابك، وحماية من الإعلانات</small></span></a>')) +
         '<nav class="arw-am-list">' +
           '<a href="' + HOME + '/account/" role="menuitem">' + MENU_IC.me + '<span>حسابي</span></a>' +
           '<a href="' + HOME + '/account/#follows" role="menuitem">' + BELL_IC + '<span>قائمتي</span></a>' +
@@ -1091,7 +1092,10 @@
     if (now - seen < 864e5 || now < rest) return;
     var CROWN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>';
     var JOIN = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M19 8v6M16 11h6"/></svg>';
-    var offers = m ? [
+    var offers = m && m.trial ? [
+      ['جرب العضوية المميزة 3 أيام مجانا', 'بدون بطاقة وبدون دفع: العروض قبل الجميع، وسيرفرات خاصة، وتوثيق حسابك.', 'ابدأ التجربة', HOME + '/premium/?trial=1'],
+      ['العروض الجديدة قبل الجميع', 'جرب العضوية المميزة مجانا 3 أيام، وشاهد العرض قبل نشره للكل بساعات.', 'جربها مجانا', HOME + '/premium/?trial=1']
+    ] : m ? [
       ['العروض الجديدة قبل الجميع', 'مع العضوية المميزة تشاهد العرض قبل نشره للكل بساعات.', 'اعرف أكثر', HOME + '/premium/'],
       ['حماية دائمة من الإعلانات', 'عندما نضيف إعلانات للموقع لاحقا، لن تظهر أبدا للأعضاء المميزين.', 'اعرف أكثر', HOME + '/premium/'],
       ['وثق حسابك', 'علامة التوثيق بجانب اسمك، واسمك باللون الذهبي في التعليقات والمجتمع.', 'اشترك الآن', HOME + '/premium/'],

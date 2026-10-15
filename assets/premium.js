@@ -7,7 +7,10 @@
   if (!root) return;
   var API = root.getAttribute('data-api');
   var EN = document.documentElement.lang === 'en', HOME = EN ? '/en' : '';
-  var PRICES = { EGP: [50, 'جنيه'], USD: [1, 'دولار'] };
+  // the plans (worker/src/premium.ts OFFERS): a longer one costs less a month
+  var OFFERS = { m1: { EGP: 50, USD: 1, months: 1, for: 'شهر' }, m3: { EGP: 135, USD: 2.5, months: 3, for: '3 شهور' }, m12: { EGP: 450, USD: 9, months: 12, for: 'سنة كاملة' } };
+  var CUR = { EGP: 'جنيه', USD: 'دولار' };
+  var plan = 'm1';
   var MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
   var KINDS = { nostalgia: 'نوستالجيا', series: 'سلسلة', show: 'عرض قديم', other: 'طلب آخر' };
   var STATES = { 'new': 'جديد', working: 'قيد الترجمة', done: 'تمت', declined: 'تعذر' };
@@ -35,9 +38,23 @@
   function setCur(c) {
     cur = c;
     $$('.pm-cur button').forEach(function (b) { var on = b.getAttribute('data-cur') === c; b.classList.toggle('is-on', on); b.setAttribute('aria-checked', String(on)); });
-    $('.pm-amount-n').textContent = PRICES[c][0];
-    $('.pm-amount-c').textContent = PRICES[c][1];
+    drawPlan();
   }
+  function drawPlan() {
+    var o = OFFERS[plan];
+    $$('.pm-plan-opt').forEach(function (b) {
+      var p = OFFERS[b.getAttribute('data-plan')], on = b.getAttribute('data-plan') === plan;
+      b.classList.toggle('is-on', on); b.setAttribute('aria-checked', String(on));
+      $('.pm-po-price i', b).textContent = p[cur];
+      $('.pm-po-price small', b).textContent = CUR[cur];
+    });
+    $('.pm-amount-n').textContent = o[cur];
+    $('.pm-amount-c').textContent = CUR[cur];
+    $('.pm-amount-for').textContent = '/ ' + (EN ? (o.months === 1 ? 'month' : o.months === 3 ? '3 months' : 'full year') : o.for);
+    var per = Math.round((o[cur] / o.months) * 100) / 100;
+    $('.pm-per-month').textContent = o.months > 1 ? (EN ? 'That is ' + per + ' ' + (cur === 'USD' ? 'USD' : 'EGP') + ' a month' : 'يعني ' + per + ' ' + CUR[cur] + ' في الشهر بدلا من ' + OFFERS.m1[cur]) : '';
+  }
+  $$('.pm-plan-opt').forEach(function (b) { b.addEventListener('click', function () { plan = b.getAttribute('data-plan'); drawPlan(); }); });
   $$('.pm-cur button').forEach(function (b) { b.addEventListener('click', function () { setCur(b.getAttribute('data-cur')); }); });
   setCur(cur);
 
@@ -64,7 +81,7 @@
       st.appendChild(el('b', null, date(until)));
       var n = daysLeft(until);
       st.appendChild(document.createTextNode(' (المتبقي: ' + n + (n >= 3 && n <= 10 ? ' أيام' : n > 10 ? ' يوما' : ' يوم') + ')'));
-      btn.textContent = 'جدد شهرا إضافيا';
+      btn.textContent = 'جدد عضويتك';
     } else {
       st.hidden = true;
       btn.textContent = member ? 'اشترك الآن' : 'أنشئ حسابا مجانيا واشترك';
@@ -93,12 +110,35 @@
     var b = this;
     if (!session) { location.href = HOME + '/account/?new&back=' + encodeURIComponent(HOME + '/premium/#subscribe'); return; }
     b.disabled = true;
-    api('/premium/checkout', { currency: cur, en: EN }).then(function (d) {
+    api('/premium/checkout', { currency: cur, plan: plan, en: EN }).then(function (d) {
       b.disabled = false;
       if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/#subscribe'); return; }
       if (!d.ok || !d.url) { flash('bad', srv(d.error) || 'تعذر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
       if (d.manual) { $('.pm-manual').hidden = false; window.open(d.url, '_blank', 'noopener'); return; }
       location.href = d.url;
+    }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
+  });
+
+  // three days free, once, for a member who never had it (worker/src/premium.ts /premium/trial)
+  var trialBtn = $('[data-act="trial"]'), trialNote = $('.pm-trial-note');
+  function showTrial(on) { trialBtn.hidden = !on; trialNote.hidden = !on; }
+  function trialState() {
+    if (!session) { showTrial(true); return; }
+    if (member && (member.official || member.premium > Date.now())) { showTrial(false); return; }
+    api('/premium/mine').then(function (d) { showTrial(!!(d && d.ok && d.trial)); }).catch(function () { showTrial(false); });
+  }
+  trialBtn.addEventListener('click', function () {
+    var b = this;
+    if (!session) { location.href = HOME + '/account/?new&back=' + encodeURIComponent(HOME + '/premium/?trial=1'); return; }
+    b.disabled = true;
+    api('/premium/trial', {}).then(function (d) {
+      b.disabled = false;
+      if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/?trial=1'); return; }
+      if (!d.ok) { flash('bad', srv(d.error) || 'تعذر بدء التجربة، حاول مرة أخرى.'); showTrial(false); return; }
+      showTrial(false);
+      flash('ok', '🎉 بدأت تجربتك المجانية! كل المميزات مفعلة لك حتى ' + date(d.until) + '.');
+      refresh();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
   });
 
@@ -207,5 +247,8 @@
     else if (q.get('pending') !== null && session) { flash('wait', 'الدفع قيد التنفيذ. ستتفعل عضويتك تلقائيا فور إتمامه.', true); waitForPayment(15 * 60000, 10000); }
     else if (q.get('failed') !== null) flash('bad', 'لم تكتمل عملية الدفع، ولم يخصم منك شيء. يمكنك المحاولة مرة أخرى.');
     if (q.get('paid') !== null || q.get('pending') !== null || q.get('failed') !== null) history.replaceState(null, '', location.pathname + location.hash);
+    trialState();
+    // back from signing up for the trial: the button in view
+    if (q.get('trial') !== null) { history.replaceState(null, '', location.pathname); setTimeout(function () { if (!trialBtn.hidden) trialBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300); }
   });
 })();

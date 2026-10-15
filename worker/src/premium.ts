@@ -22,6 +22,20 @@ export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; FAWA
 
 export const PLANS = { EGP: { price: 50, link: "https://app.fawaterk.com/invoices/item/16781/alaadoy-almmyz-gny-msry" }, USD: { price: 1, link: "https://app.fawaterk.com/invoices/item/16782/alaadoy-almmyz-dolar-amryky" } } as const;
 export const DAYS = 30;
+// the plans (owner 2026-10-15: «اعمل اي حاجة تجبر … يشترك … ولو حبيت تعمل عروض اعمل»): longer is cheaper a month
+export const OFFERS = {
+  m1: { days: 30, EGP: 50, USD: 1, ar: "شهر", en: "1 month" },
+  m3: { days: 90, EGP: 135, USD: 2.5, ar: "3 شهور", en: "3 months" },
+  m12: { days: 365, EGP: 450, USD: 9, ar: "سنة", en: "1 year" },
+} as const;
+export type OfferId = keyof typeof OFFERS;
+export const TRIAL_DAYS = 3;
+/** A member may try the membership free once: never premium before, never paid, not the site's account */
+export async function trialOpen(db: D1Database, m: any): Promise<boolean> {
+  if (!m || m.official || Number(m.premium_until) > 0) return false;
+  const any = await db.prepare("SELECT 1 FROM premium_payments WHERE member = ?1 LIMIT 1").bind(m.id).first();
+  return !any;
+}
 const DAY = 86_400_000;
 const FAWATERK = "https://app.fawaterk.com/api/v2";
 const SITE = "https://arab-wrestling.com";
@@ -208,16 +222,19 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     const pays = await db.prepare("SELECT id, currency, amount, status, method, reference, created, paid_at, days, granted_by FROM premium_payments WHERE member = ?1 ORDER BY COALESCE(paid_at, created) DESC LIMIT 60").bind(me.id).all<any>();
     const items = (pays.results || []).filter((p: any) => p.status === "paid" || now - p.created < 3 * 86_400_000).map((p: any) => ({
       at: p.paid_at || p.created, paid: p.status === "paid", currency: p.currency, amount: p.granted_by ? 0 : p.amount,
-      method: p.method || "", reference: p.reference || "", days: Number(p.days) || DAYS, gift: !!p.granted_by,
+      method: p.method || "", reference: p.reference || "", days: Number(p.days) || DAYS, gift: !!p.granted_by && p.granted_by !== "trial", trial: p.granted_by === "trial",
     }));
-    return reply({ ok: true, official: !!me.official, until: premiumOf(me, now), since: Number(me.premium_since) || 0, days: DAYS, plans: { EGP: PLANS.EGP.price, USD: PLANS.USD.price }, payments: items });
+    return reply({ ok: true, official: !!me.official, until: premiumOf(me, now), since: Number(me.premium_since) || 0, days: DAYS, plans: { EGP: PLANS.EGP.price, USD: PLANS.USD.price }, offers: OFFERS, trial: await trialOpen(db, me), payments: items });
   }
 
   if (path === "/premium/checkout" && request.method === "POST") {
     const currency = String(body.currency || "EGP").toUpperCase() === "USD" ? "USD" : "EGP";
-    const plan = PLANS[currency];
+    const offerId: OfferId = (Object.keys(OFFERS) as OfferId[]).includes(body.plan) ? body.plan : "m1";
+    const offer = OFFERS[offerId];
+    const plan = { price: offer[currency], link: PLANS[currency].link };
     const back = `${SITE}${body.en ? "/en" : ""}/premium/`; // back to the page in the member's language
-    if (!fawaterkLive(env)) return reply({ ok: true, url: plan.link, manual: true });
+    // the fixed links are a month's; a longer plan needs the member's own invoice
+    if (!fawaterkLive(env)) return offerId === "m1" ? reply({ ok: true, url: plan.link, manual: true }) : reply({ ok: false, error: "الدفع لهذه المدة غير متاح الآن، اختر الاشتراك الشهري أو حاول بعد قليل." }, 503);
     const open = await db.prepare("SELECT COUNT(*) AS n FROM premium_payments WHERE member = ?1 AND created > ?2").bind(me.id, now - 3_600_000).first<{ n: number }>();
     if ((open?.n || 0) >= 8) return reply({ ok: false, error: "طلبات دفع كثيرة، حاول بعد قليل." }, 429);
     const name = String(me.display || me.username).trim().split(/\s+/);
@@ -228,17 +245,33 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
         cartTotal: String(plan.price), currency,
         customer: { first_name: name[0] || me.username, last_name: name.slice(1).join(" ") || "Member", email: me.email },
         redirectionUrls: { successUrl: `${back}?paid=1`, failUrl: `${back}?failed=1`, pendingUrl: `${back}?pending=1` },
-        cartItems: [{ name: currency === "USD" ? "Arab Wrestling Premium (1 month)" : "العضوية المميزة - عرب راسلنج (شهر)", price: String(plan.price), quantity: "1" }],
+        cartItems: [{ name: currency === "USD" ? `Arab Wrestling Premium (${offer.en})` : `العضوية المميزة - عرب راسلنج (${offer.ar})`, price: String(plan.price), quantity: "1" }],
         payLoad: JSON.stringify({ member: me.id }),
       }),
     });
     const d: any = res ? await res.json().catch(() => null) : null;
     const inv = d?.data || {};
     // Fawaterk refused or didn't answer: the fixed link, so the member can still pay (the panel turns it on)
-    if (!res || !res.ok || d?.status !== "success" || !inv.url) { console.log(`[premium] createInvoiceLink ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`); return reply({ ok: true, url: plan.link, manual: true }); }
-    await db.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created) VALUES (?1, ?2, ?3, ?4, ?5, ?6)")
-      .bind(me.id, String(inv.invoiceId ?? inv.invoice_id ?? ""), String(inv.invoiceKey ?? inv.invoice_key ?? ""), currency, plan.price, now).run();
+    if (!res || !res.ok || d?.status !== "success" || !inv.url) {
+      console.log(`[premium] createInvoiceLink ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`);
+      return offerId === "m1" ? reply({ ok: true, url: plan.link, manual: true }) : reply({ ok: false, error: "تعذر فتح صفحة الدفع، حاول مرة أخرى." }, 502);
+    }
+    await db.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created, days) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)")
+      .bind(me.id, String(inv.invoiceId ?? inv.invoice_id ?? ""), String(inv.invoiceKey ?? inv.invoice_key ?? ""), currency, plan.price, now, offer.days).run();
     return reply({ ok: true, url: String(inv.url) });
+  }
+
+  // three days free, once (never premium, never paid); a device or network tries it once a month
+  if (path === "/premium/trial" && request.method === "POST") {
+    if (!(await trialOpen(db, me))) return reply({ ok: false, error: "التجربة المجانية متاحة مرة واحدة فقط للأعضاء الجدد." }, 400);
+    const ip = String(request.headers.get("CF-Connecting-IP") || "").slice(0, 45);
+    const ipKey = `pm:trial:ip:${ip}`;
+    if (ip && (await env.PUSH_KV.get(ipKey))) return reply({ ok: false, error: "التجربة المجانية استخدمت من هذا الجهاز من قبل." }, 429);
+    const until = await grant(db, me.id, TRIAL_DAYS, now);
+    await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 0, 'paid', ?2, ?2, ?3, 'trial')").bind(me.id, now, TRIAL_DAYS).run();
+    if (ip) await env.PUSH_KV.put(ipKey, "1", { expirationTtl: 30 * 86400 }).catch(() => {});
+    await chatRebadge(env as any, me.id).catch(() => {});
+    return reply({ ok: true, until, trial: true });
   }
 
   if (path === "/premium/check" && request.method === "POST") {
@@ -346,4 +379,24 @@ export async function studioPremiumRequest(env: PremiumEnv, b: any, now = Date.n
   const r = await db.prepare("UPDATE premium_requests SET status = ?1, reply = ?2, link = ?3, updated = ?4 WHERE id = ?5")
     .bind(status, String(b.reply || "").trim().slice(0, 500), link, now, Number(b.id) || 0).run();
   return r.meta?.changes ? { success: true } : { success: false, error: "الطلب ده مش موجود." };
+}
+
+/** Hourly: «تنتهي عضويتك بعد 3 أيام» once before the end, «انتهت عضويتك» once after it, in the member's bell (and on
+ *  their devices); each period's notice once (the address carries the end date). A gift or a trial is told too. */
+export async function runPremiumReminders(env: PremiumEnv, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return 0;
+  await ensurePremium(db);
+  const { ensureFollows } = await import("./follows");
+  await ensureFollows(db);
+  const soon = (await db.prepare("SELECT id, premium_until FROM members WHERE official = 0 AND banned = 0 AND premium_until > ?1 AND premium_until <= ?2 LIMIT 200").bind(now, now + 3 * DAY).all<any>()).results || [];
+  const ended = (await db.prepare("SELECT id, premium_until FROM members WHERE official = 0 AND banned = 0 AND premium_until > ?1 AND premium_until <= ?2 LIMIT 200").bind(now - 2 * DAY, now).all<any>()).results || [];
+  const rows = [
+    ...soon.map(m => db.prepare("INSERT OR IGNORE INTO member_inbox (member, url, title, title_en, image, program, fed, at) VALUES (?1, ?2, ?3, ?4, '', 'العضوية المميزة', '', ?5)")
+      .bind(m.id, `/premium/?renew=${m.premium_until}#subscribe`, `عضويتك المميزة تنتهي بعد ${Math.max(1, Math.ceil((m.premium_until - now) / DAY))} ${Math.ceil((m.premium_until - now) / DAY) === 1 ? "يوم" : "أيام"}. جددها الآن لتبقى مميزاتك.`, "Your Premium membership ends soon. Renew now to keep your perks.", now)),
+    ...ended.map(m => db.prepare("INSERT OR IGNORE INTO member_inbox (member, url, title, title_en, image, program, fed, at) VALUES (?1, ?2, ?3, ?4, '', 'العضوية المميزة', '', ?5)")
+      .bind(m.id, `/premium/?ended=${m.premium_until}#subscribe`, "انتهت عضويتك المميزة. جددها لتعود لك العروض قبل الجميع والسيرفرات الخاصة وتوثيق حسابك.", "Your Premium membership has ended. Renew to get your perks back.", now)),
+  ];
+  for (let i = 0; i < rows.length; i += 50) await db.batch(rows.slice(i, i + 50));
+  return rows.length;
 }

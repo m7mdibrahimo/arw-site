@@ -63,8 +63,8 @@ export async function renderPremium(page) {
       <section class="panel cy-sec"><h2>${icon('check')} المدفوعات</h2>
         ${(d.payments || []).length ? html`<div class="cy-list">${d.payments.map(p => html`<article class="cy-item pr-pay">
           <div class="cy-item-main"><div class="cm-meta"><b>${p.display || p.username || `عضو ${p.member}`}</b><span class="muted small">${timeAgo(p.paid_at)}</span></div>
-            <small class="muted">${p.granted_by ? `اتفعّلت بإيد ${p.granted_by} · ${num(p.days)} يوم` : `${money(p.amount, p.currency)}${p.method ? ` · ${p.method}` : ''}${p.reference ? ` · رقم العملية ${p.reference}` : ''}`}</small></div>
-          <span class="pr-amt">${p.granted_by ? 'يدوي' : money(p.amount, p.currency)}</span></article>`)}</div>` : html`<p class="muted">لسه مفيش مدفوعات.</p>`}
+            <small class="muted">${p.granted_by === 'trial' ? `تجربة مجانية · ${num(p.days)} أيام` : p.granted_by ? `اتفعّلت بإيد ${p.granted_by} · ${num(p.days)} يوم` : `${money(p.amount, p.currency)}${p.method ? ` · ${p.method}` : ''}${p.reference ? ` · رقم العملية ${p.reference}` : ''}`}</small></div>
+          <span class="pr-amt">${p.granted_by === 'trial' ? 'تجربة' : p.granted_by ? 'يدوي' : money(p.amount, p.currency)}</span></article>`)}</div>` : html`<p class="muted">لسه مفيش مدفوعات.</p>`}
       </section>
     </div>`);
 

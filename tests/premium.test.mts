@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHmac } from 'node:crypto';
 import { handleMembers } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS } from '../worker/src/premium';
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS, OFFERS, runPremiumReminders } from '../worker/src/premium';
 
 function d1() {
   const db = new DatabaseSync(':memory:');
@@ -395,4 +395,77 @@ test('the whole life of a membership: nothing on signing up, everything on subsc
   assert.deepEqual(await look(), ON, 'renewed: all of it back');
   const mine = (await call(e, '/premium/mine', undefined, s.token)).body;
   assert.ok(mine.until > Date.now() + 29 * 86400e3 && mine.payments.length === 2);
+});
+
+test('longer plans: 3 months or a year, cheaper a month, the right days credited', async () => {
+  const e = env({ FAWATERK_API_KEY: 'fk_test' });
+  const s = await member(e, 'year_fan');
+  const f = fawaterk();
+  try {
+    await call(e, '/premium/checkout', { currency: 'EGP', plan: 'm12' }, s.token);
+    assert.equal(f.made[0].b.cartTotal, String(OFFERS.m12.EGP));
+    assert.match(f.made[0].b.cartItems[0].name, /سنة/);
+    f.paid.add('1000');
+    const t0 = Date.now();
+    const until = (await call(e, '/premium/check', {}, s.token, t0)).body.premium;
+    assert.ok(Math.abs(until - (t0 + 365 * 864e5)) < 5000);
+    await call(e, '/premium/checkout', { currency: 'USD', plan: 'm3' }, s.token);
+    assert.equal(f.made[1].b.cartTotal, '2.5');
+    f.paid.add('1001');
+    assert.ok(Math.abs((await call(e, '/premium/check', {}, s.token, t0 + 1000)).body.premium - (until + 90 * 864e5)) < 5000);
+    // an unknown plan is a month
+    await call(e, '/premium/checkout', { currency: 'EGP', plan: 'forever' }, s.token);
+    assert.equal(f.made[2].b.cartTotal, '50');
+  } finally { f.restore(); }
+  // without Fawaterk's key, only the month has a fixed link
+  const e2 = env();
+  const s2 = await member(e2, 'no_key');
+  assert.equal((await call(e2, '/premium/checkout', { currency: 'EGP', plan: 'm3' }, s2.token)).status, 503);
+  assert.equal((await call(e2, '/premium/checkout', { currency: 'EGP', plan: 'm1' }, s2.token)).body.manual, true);
+});
+
+test('three days free, once: a new member only, never again, never after paying; one per device a month', async () => {
+  const e = env();
+  const s = await member(e, 'trial_one');
+  assert.equal((await me(e, s.token)).trial, true);
+  assert.equal((await call(e, '/premium/mine', undefined, s.token)).body.trial, true);
+  const req = (token: string, ip: string) => handlePremium(new Request('https://w/premium/trial', { method: 'POST', body: '{}', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, 'CF-Connecting-IP': ip } }), e, new URL('https://w/premium/trial')).then(async (r) => ({ status: r.status, body: await r.json() as any }));
+  const t = await req(s.token, '41.5.5.5');
+  assert.equal(t.body.ok, true);
+  assert.ok(Math.abs(t.body.until - (Date.now() + 3 * 864e5)) < 10000);
+  const m = await me(e, s.token);
+  assert.ok(m.premium > Date.now());
+  assert.equal(m.trial, false);
+  // not twice
+  assert.equal((await req(s.token, '41.5.5.6')).status, 400);
+  // another account from the same device: no
+  const s2 = await member(e, 'trial_two');
+  assert.equal((await req(s2.token, '41.5.5.5')).status, 429);
+  // someone who already paid: no
+  const s3 = await member(e, 'paid_before');
+  await studioPremiumGrant(e, s3.member.id, 30);
+  assert.equal((await me(e, s3.token)).trial, false);
+  assert.equal((await req(s3.token, '41.5.5.7')).status, 400);
+  // the history shows it as a trial
+  const pays = (await call(e, '/premium/mine', undefined, s.token)).body.payments;
+  assert.deepEqual([pays[0].trial, pays[0].gift, pays[0].days], [true, false, 3]);
+});
+
+test('a membership about to end and one that just ended: the member is told once each', async () => {
+  const e = env();
+  const s = await member(e, 'renew_me');
+  const db = e.ANALYTICS.raw;
+  const now = Date.now();
+  db.prepare('UPDATE members SET premium_until = ? WHERE id = ?').run(now + 2 * 864e5, s.member.id);
+  assert.equal(await runPremiumReminders(e, now), 1);
+  await runPremiumReminders(e, now + 3600e3);
+  const inbox = () => db.prepare('SELECT title, url FROM member_inbox WHERE member = ?').all(s.member.id) as any[];
+  assert.equal(inbox().length, 1);
+  assert.match(inbox()[0].title, /تنتهي بعد 2 أيام|تنتهي بعد يوم/);
+  // the end passes
+  await runPremiumReminders(e, now + 2 * 864e5 + 3600e3);
+  assert.equal(inbox().length, 2);
+  assert.match(inbox()[1].title, /انتهت عضويتك/);
+  await runPremiumReminders(e, now + 2 * 864e5 + 7200e3);
+  assert.equal(inbox().length, 2);
 });

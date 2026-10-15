@@ -35,7 +35,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications } from "./premium";
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
@@ -3989,6 +3989,8 @@ export default {
       runScheduleBackstopCron(env),
       // once: the automatic blue badge of the first members goes, the owner's own stay (worker/src/members.ts)
       minute % 10 === 7 ? oneTimeBadgeReset(env).catch(() => {}) : Promise.resolve(),
+      // a membership about to end, or just ended: the member is told (worker/src/premium.ts)
+      minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // followers told of each new full show: their inbox, then their devices
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
