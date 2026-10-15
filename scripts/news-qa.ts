@@ -273,6 +273,22 @@ export function winnersNotInMatch(body: string): string[] {
   }
   return out;
 }
+/** «… فليتشر … سيتعاون مع كايل فليتشر»: a sentence where the partner after «يتعاون/يتحالف مع» carries the surname that already
+ *  appeared earlier in the same sentence — the source repeated the same name for both partners. Returns the excerpt, or null. */
+export function selfPartnered(text: string): string | null {
+  for (const sentence of stripNonProse(String(text)).split(/(?<=[.!؟?\n])/)) {
+    const m = new RegExp(`(?<![${AR}])(?:و|ف)?(?:س)?[يت](?:تعاون|تحالف|تحد|شارك|تشارك)\\s+مع\\s+([${AR}]+\\s+[${AR}]+)`).exec(sentence);
+    if (!m) continue;
+    // a relative shares the surname legitimately: «يتحد مع شقيقه رايان نيميث»
+    if (/^(?:شقيق|أخي|اخي|أخيه|اخيه|ابن|والد|زوج|عم|خال|قريب|إخوة|اخوة)/.test(m[1].trim())) continue;
+    const last = m[1].trim().split(/\s+/).pop()!.replace(/^ال/, "");
+    if (last.length < 4 || /^(?:فريق|اتحاد|بطولة|عرض|نزال|مباراة|منافس|لاعب|مصارع|الثنائي|الثلاثي)/.test(last)) continue;
+    const before = sentence.slice(0, m.index);
+    if (new RegExp(`(?<![${AR}])(?:[وفبلك]|ال)?${last}(?![${AR}])`).test(before)) return sentence.slice(Math.max(0, m.index - 20), m.index + m[0].length).trim();
+  }
+  return null;
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });
@@ -323,6 +339,10 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   if (wrongDay) issues.push({ code: "show_wrong_day", severity: "error", field: "body", message: "تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر", excerpt: wrongDay });
   const badWeekday = weekdayNotOnDate(`${title || ""}\n${body || ""}`);
   if (badWeekday) issues.push({ code: "weekday_mismatch", severity: "error", field: "body", message: "اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ", excerpt: badWeekday });
+
+  // A wrestler teamed with himself: «فليتشر … سيتعاون مع كايل فليتشر» (the source wrote «Fletcher will team with Fletcher» — INCIDENTS #602)
+  const selfPartner = selfPartnered(`${title || ""}\n${body || ""}`);
+  if (selfPartner) issues.push({ code: "self_partner", severity: "error", field: "body", message: "المصارع متعاون مع نفسه — اسم الشريك غلط أو مكرر، احذفه أو اكتب «شريكه»", excerpt: selfPartner });
 
   // Dropped hamzas across the text = a broken Gemini draft: retranslate it.
   // No «ف» prefix («روب فان دام»), and «ان» before a number is «N-1 Victory», not «أن».

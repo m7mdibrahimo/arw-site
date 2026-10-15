@@ -64,3 +64,20 @@ test("«ى» for «ي» in nisba words and a dropped show name are blocked (INCI
   assert.ok(codes("أوضحت كيتلين خلال استضافتها في برنامج أن المخطط الأصلي كان يقضي بخروجها مبكرا من النزال.").includes("dropped_show_name"));
   assert.ok(!codes("أوضحت كيتلين خلال استضافتها في برنامج Insight مع كريس فان فليت أن المخطط الأصلي كان خروجها مبكرا.").includes("dropped_show_name"));
 });
+
+test("a wrestler teaming with himself is blocked (INCIDENTS #602: «فليتشر … سيتعاون مع كايل فليتشر»)", () => {
+  const bad = "ويستعد فليتشر لخوض تحد جديد في عرض WrestleDream، حيث سيتعاون مع كايل فليتشر لمواجهة فريق ذا يانغ باكس.";
+  assert.ok(checkArticle("عنوان واضح للخبر هنا", bad).some((i) => i.code === "self_partner"));
+  const ok = "ويستعد فليتشر لخوض تحد جديد في عرض WrestleDream، حيث سيتعاون مع مارك ديفيس لمواجهة فريق ذا يانغ باكس.";
+  assert.ok(!checkArticle("عنوان واضح للخبر هنا", ok).some((i) => i.code === "self_partner"));
+  assert.ok(!checkArticle("عنوان واضح للخبر هنا", "يتعاون كوفي كينغستون مع أوستن كريد في الحلبة.").some((i) => i.code === "self_partner"));
+});
+
+test("«الحدف» is corrected to «الهدف» (INCIDENTS #602)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("لتحقيق هذا الحدف"), "لتحقيق هذا الهدف");
+});
+
+test("a relative with the same surname is not a self-partner (INCIDENTS #602)", () => {
+  assert.ok(!checkArticle("عنوان واضح للخبر هنا", "ويدافع نيك نيميث عن لقبه، قبل أن يتحد مع شقيقه رايان نيميث في النزال القادم.").some((i) => i.code === "self_partner"));
+});
