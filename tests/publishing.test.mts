@@ -741,7 +741,7 @@ test('news QA auto-fixes defects that reached production and leaves legit text a
   assert.equal(autoFix('لعروض WWE Liveة والمتلفزة'), 'لعروض WWE Live والمتلفزة');
   assert.equal(autoFix('بطلة سابقة ل *NXTبطولة السيدات*'), 'بطلة سابقة لـ *NXT بطولة السيدات*');
   assert.equal(autoFix('في عرض MLPعرض MLP Northern Rising'), 'في عرض MLP Northern Rising');
-  assert.equal(autoFix('ظهور خاص ل زينا ستيرلينج'), 'ظهور خاص لـزينا ستيرلينج');
+  assert.equal(autoFix('ظهور خاص ل زينا ستيرلينج'), 'ظهور خاص لزينا ستيرلينج');
   assert.equal(autoFix('التحکيم'), 'التحكيم');
   assert.equal(autoFix('فريق بانغ بانغ غانغ'), 'فريق بانغ بانغ غانغ');
   assert.equal(autoFix('فاز 3 و 4'), 'فاز 3 و 4');
@@ -3885,7 +3885,7 @@ test('a reel posted on Facebook and Instagram leaves R2; one still being posted 
 test('a stray tatweel inside a word is removed, joined prefixes keep it; «وون» and «اسطوانات» fixed (INCIDENTS #330)', async () => {
   const { autoFix, applyCorrections } = await import('../scripts/news-qa');
   assert.equal(autoFix('أبعده مؤقـتا عن الشاشة ولم يعلن رسميـا عن عودته'), 'أبعده مؤقتا عن الشاشة ولم يعلن رسميا عن عودته');
-  assert.equal(autoFix('أشاد بـرومان رينز ولـسامي زين وبـكودي'), 'أشاد بـرومان رينز ولـسامي زين وبـكودي');
+  assert.equal(autoFix('أشاد بـرومان رينز ولـسامي زين وبـكودي'), 'أشاد برومان رينز ولسامي زين وبكودي'); // INCIDENTS #564: a tatweel stays only before an English name
   assert.equal(applyCorrections('لمواجهة الثنائي ذا ميز وون جون موريسون'), 'لمواجهة الثنائي ذا ميز وجون موريسون');
   assert.equal(applyCorrections('الحاصل على عدة اسطوانات بلاتينية'), 'الحاصل على عدة أسطوانات بلاتينية');
 });

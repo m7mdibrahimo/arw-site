@@ -1453,7 +1453,7 @@ module.exports = function(eleventyConfig) {
           "aew-dynamite": ["ديناميت", "دايناميت", "داينامايت", "عرض ديناميت", "AEW Dynamite", "AEW مترجم", "ايه اي دبليو", "ايه اي دبليو ديناميت", "عرض AEW Dynamite الأخير", "عرض AEW الأخير", "عرض AEW مترجم", "AEW Dynamite مترجم", "ايه اي دبليو مترجم", "عرض ايه اي دبليو ديناميت الاخير"],
           "aew-collision": ["كوليجن", "كوليجين", "كولجن", "كوليشن", "AEW Collision", "AEW Collision مترجم", "عرض كوليجن مترجم", "عرض AEW Collision الأخير"],
           "tna-impact": ["إمباكت", "امباكت", "TNA iMPACT", "تي إن إيه", "تي ان ايه", "تي ان ايه امباكت", "عرض امباكت مترجم", "عرض امباكت الاخير", "عرض تي ان ايه الاخير", "TNA Impact مترجم", "TNA Wrestling مترجم"],
-          "wwe-main-event": ["مين إيفنت", "مين ايفنت", "WWE Main Event", "عرض مين ايفنت مترجم", "عرض مين ايفنت الاخير", "WWE Main Event مترجم"],
+          "wwe-main-event": ["مين إيفنت", "مين ايفنت", "ماين ايفنت", "ماين إيفنت", "عرض ماين ايفنت مترجم", "عرض ماين ايفنت الاخير", "WWE Main Event", "عرض مين ايفنت مترجم", "عرض مين ايفنت الاخير", "WWE Main Event مترجم"],
           "roh-on-honorclub": ["رينغ أوف أونر", "رينج اوف اونر", "ار او اتش", "روه", "ROH TV", "ROH مترجم", "ROH Wrestling", "ROH on HonorClub", "Ring of Honor مترجم", "عرض ار او اتش مترجم", "عرض ار او اتش الاخير", "عرض ROH الاخير مترجم", "عرض رينغ اوف اونر مترجم"],
           "roh-specials": ["رينغ أوف أونر", "رينج اوف اونر", "ار او اتش", "روه", "ROH TV", "ROH مترجم", "ROH Wrestling", "ROH Specials", "ROH Special", "Ring of Honor مترجم", "عرض ار او اتش مترجم", "عرض ار او اتش الاخير", "عرض ROH الاخير مترجم", "عرض رينغ اوف اونر مترجم"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve", "عرض ايفولف مترجم", "عرض ايفولف الاخير", "WWE Evolve مترجم", "دبليو دبليو اي ايفولف"],
@@ -1462,7 +1462,16 @@ module.exports = function(eleventyConfig) {
           "cmll-lunes-clasico": ["سي ام ال ال", "سي إم إل إل", "لونيس كلاسيكو", "لونس كلاسيكو", "لوتشا ليبري", "CMLL", "CMLL Lunes Clasico", "CMLL Lunes Clasico مترجم", "CMLL مترجم"],
           "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
         };
-        return { slug: p.slug, name: p.name, aliases: ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : []), arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+        // Every program also answers to «<the federation said in Arabic> <the program>» («دبليو دبليو إي موني إن ذا بانك»,
+        // 111 impressions at 10.4 on a show that had no such name), with «إن» and «ان» both (INCIDENTS #564)
+        const FED_SAID = { WWE: "دبليو دبليو إي", AEW: "ايه اي دبليو", TNA: "تي ان ايه", NJPW: "نيو جابان", ROH: "ار او اتش", MLW: "ام ال دبليو", NWA: "ان دبليو ايه", CMLL: "سي ام ال ال", AAA: "لوتشا ليبري اي اي اي" };
+        const baseAliases = ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : []);
+        const fedSaid = FED_SAID[String(federation || "").toUpperCase()] || "";
+        const programSaid = String(arName || "").replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
+        const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
+          ? [fedSaid + " " + programSaid].concat(/(^|\s)ان\s/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان\s/g, "$1إن ")] : []) : [];
+        const withGenerated = baseAliases.concat(generated.filter(function(g) { return baseAliases.indexOf(g) === -1; }));
+        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
             chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };

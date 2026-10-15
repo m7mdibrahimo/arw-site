@@ -34,3 +34,18 @@ test("the names glossary has no dual-form champion titles (INCIDENTS #559)", asy
   const dual = Object.entries(names).filter(([, v]) => /(?:بطلتا|بطلا|العالميتان|العالميان)(?![ء-ي])/.test(String(v)));
   assert.deepEqual(dual, []);
 });
+
+test("a tatweel before an ARABIC name is removed and blocked (INCIDENTS #564)", async () => {
+  const { autoFix } = await import("../scripts/news-qa.ts");
+  assert.equal(autoFix("إعلان ضخم لـبيكي لينش ورد بـتايتشي"), "إعلان ضخم لبيكي لينش ورد بتايتشي");
+  const t = "ساتوشي كوجيما مطالب بتحقيق شرط الوزن لمواجهة يوه في عرض NJPW الخاص بـتايتشي";
+  assert.ok(checkArticle(t, "نص الخبر هنا طويل بما يكفي.").some((i) => i.code === "tatweel_before_arabic" && i.field === "title"));
+  assert.ok(!checkArticle(t.replace("بـتايتشي", "بتايتشي"), "نص الخبر هنا.").some((i) => i.code === "tatweel_before_arabic"));
+});
+
+test("no published Arabic story has a tatweel before an Arabic letter (INCIDENTS #564)", async () => {
+  const fs = await import("node:fs");
+  const dir = new URL("../content/news/", import.meta.url);
+  const bad = fs.readdirSync(dir).filter((f) => f.endsWith(".md") && /\u0640(?=[\u0621-\u064A])/.test(fs.readFileSync(new URL(f, dir), "utf8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

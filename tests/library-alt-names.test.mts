@@ -8,3 +8,10 @@ test("library program descriptions carry the other Arabic spellings of the progr
   const cfg = fs.readFileSync("eleventy.config.js", "utf8");
   assert.match(cfg, /addNunjucksGlobal\("libAltNames"/);
 });
+
+test("every program also answers to «<federation in Arabic> <program>» and Main Event to «ماين ايفنت» (INCIDENTS #564)", () => {
+  const cfg = fs.readFileSync("eleventy.config.js", "utf8");
+  assert.match(cfg, /const FED_SAID = \{ WWE: "دبليو دبليو إي"/);
+  assert.match(cfg, /aliases: withGenerated/);
+  assert.match(cfg, /"wwe-main-event": \[[^\]]*"ماين ايفنت"/);
+});
