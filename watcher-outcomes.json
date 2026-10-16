@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T10:16:35.460Z"
- },
  "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:15.417Z"
+  "at": "2026-10-16T10:19:32.587Z"
  },
  "https://www.fightful.com/wrestling/aew-could-hold-adam-copelands-final-match-in-toronto": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:15.284Z"
+  "at": "2026-10-16T10:19:32.403Z"
  },
  "https://www.fightful.com/wrestling/cook-county-sherriffs-officer-files-lawsuit-against-wwe-montez-ford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:14.977Z"
+  "at": "2026-10-16T10:19:31.970Z"
  },
  "https://www.fightful.com/wrestling/zach-gowen-retires-from-in-ring-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:14.771Z"
+  "at": "2026-10-16T10:19:31.686Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-doesnt-know-how-far-adam-copeland-will-wrestle-into-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:14.417Z"
+  "at": "2026-10-16T10:19:31.205Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-skydance-ceo-david-ellison-has-been-very-excited-positive-about-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:14.282Z"
+  "at": "2026-10-16T10:19:31.020Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-9-viewership-above-1-3-million-viewers-again-key-demo-rating-also-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:14.110Z"
+  "at": "2026-10-16T10:19:30.782Z"
  },
  "https://www.fightful.com/wrestling/report-vince-mcmahon-completes-one-year-probation-for-july-2025-car-crash": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T10:09:13.972Z"
+  "at": "2026-10-16T10:19:30.595Z"
+ },
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T10:16:35.460Z"
  },
  "https://www.fightful.com/wrestling/2-out-of-3-falls-match-for-tna-international-title-avery-styles-vs-joe-alonzo-set-for-10-22-thursday-night-impact": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
