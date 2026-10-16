@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T22:50:20.989Z"
+ },
  "https://www.fightful.com/wrestling/shawn-spears-uses-perfect-10-theme-at-nxt-live": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T22:39:24.774Z"
- },
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T22:30:09.366Z"
  },
  "https://www.wrestlinginc.com/2289390/aew-wrestledream-2026-predictions-winners": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
