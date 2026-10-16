@@ -3694,5 +3694,24 @@
     ],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261016173752-tna-impact-15-10-2026": {
+    "publishedAt": 1792162101745,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه امباكت 15.10.2026 مترجم",
+    "lastAttempt": 1792162115839,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
