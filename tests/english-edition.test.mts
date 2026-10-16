@@ -163,3 +163,9 @@ test('INCIDENTS #590: a word the writer repeated is collapsed; quotes and ring n
   assert.equal(collapseRepeatedEnglishWords('> but every every year'), '> but every every year');
   assert.deepEqual(repeatedEnglishWords('Kevin Kevin Owens and "and and"'), ['Kevin Kevin']);
 });
+
+test("a small word inside a hyphenated compound stays lowercase (INCIDENTS #622)", async () => {
+  const { normalizeEnglishTitle } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("TNA Title 2-Out-Of-3 Falls Match Set for iMPACT"), "TNA Title 2-Out-of-3 Falls Match Set for iMPACT");
+  assert.equal(normalizeEnglishTitle("Face-To-Face Showdown"), "Face-to-Face Showdown");
+});

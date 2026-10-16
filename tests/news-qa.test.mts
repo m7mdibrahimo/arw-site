@@ -95,3 +95,9 @@ test("an English quote left untranslated in the Arabic story blocks publishing (
   assert.ok(checkArticle("جون سينا يتحدث عن اعتزاله", body).some((i) => i.code === "english_quote"));
   assert.ok(BLOCKING_QA_CODES.includes("english_quote"));
 });
+
+test("«العدواة» and the broken «ريكي سكر وصا» are corrected (INCIDENTS #622)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("العدواة المشتعلة"), "العداوة المشتعلة");
+  assert.equal(applyCorrections("ريكي سكر وصا وإلياس"), "ريكي سوسا وإلياس");
+});

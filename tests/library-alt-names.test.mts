@@ -15,3 +15,9 @@ test("every program also answers to «<federation in Arabic> <program>» and Mai
   assert.match(cfg, /aliases: withGenerated/);
   assert.match(cfg, /"wwe-main-event": \[[^\]]*"ماين ايفنت"/);
 });
+
+test("a library page title never repeats the year already in the program name (INCIDENTS #622)", async () => {
+  const fs = await import("node:fs");
+  const t = fs.readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
+  assert.match(t, /lp\.prog\.name \| string\)\.endsWith\(lp\.prog\.latest\.eventDate \| yearOf \| string\)/);
+});

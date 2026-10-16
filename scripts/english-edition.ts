@@ -179,7 +179,9 @@ export function normalizeEnglishTitle(title: string): string {
     // a lowercase word that is not a small word is capitalised: «I am Thankful» (INCIDENTS #489)
     if (bare === lower && /^[a-z]+$/.test(bare) && ALWAYS_CAPITAL.has(lower)) return w.replace(bare, lower[0].toUpperCase() + lower.slice(1));
     return w;
-  }).join(" ").replace(THE_NAMES, "The $1");
+  }).join(" ").replace(THE_NAMES, "The $1")
+    // a small word inside a hyphenated compound stays lowercase: «2-Out-Of-3 Falls» → «2-Out-of-3 Falls» (INCIDENTS #622)
+    .replace(/(?<=[A-Za-z0-9])-(Of|To|In|On|At|By|For|And|Or|The|As)(?=-[A-Za-z0-9])/g, (_m, w: string) => "-" + w.toLowerCase());
 }
 /** A word said twice in a row by the writer («With With His Own Money», «Kevin Kevin Owens») is collapsed to one (INCIDENTS #590).
  *  Quotes (a «> » line or text inside quotation marks) are the speaker's own words and stay; ring names that ARE a double stay. */
