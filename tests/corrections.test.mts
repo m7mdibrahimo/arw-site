@@ -85,3 +85,11 @@ test("«أداء» typo «أدياء» is corrected and absent from published st
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أدياء/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #631: «براد غيلمور» was split into «غيل مور» in the Jericho DeLorean story.
+test("«غيلمور» is never split into «غيل مور»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ليذكر غيل مور أن"), "ليذكر غيلمور أن");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غيل مور/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
