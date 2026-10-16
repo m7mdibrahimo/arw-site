@@ -1,8 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2288559/bully-ray-jevon-evans-wwe-mitb-money-in-the-bank-ladder-ambulance": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-16T15:04:50.596Z"
+ },
  "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-16T15:01:17.048Z"
+  "at": "2026-10-16T15:03:23.798Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-wwe-and-the-fans-need-me-i-dont-need-yall": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
