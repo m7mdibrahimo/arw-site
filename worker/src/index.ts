@@ -36,7 +36,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
@@ -3152,9 +3152,15 @@ export default {
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
         if (path === "/api/studio/premium/grant" && request.method === "POST") {
           if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
-          const r = await studioPremiumGrant(env as any, body.id, body.days, who.user.username);
+          const r = await studioPremiumGrant(env as any, body.id, body.days, who.user.username, Date.now(), body.pay);
           if (r.success) await chatRebadge(env as any, body.id).catch(() => {});
           if (r.success) await studioAudit(env as any, who.user, Number(body.days) > 0 ? "premium.grant" : "premium.revoke", { id: Number(body.id) || 0, days: Number(body.days) || 0 }).catch(() => {});
+          return json(r, r.success ? 200 : 400);
+        }
+        if (path === "/api/studio/premium/kind" && request.method === "POST") {
+          if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
+          const r = await studioPremiumKind(env as any, body.payId, body.pay, who.user.username);
+          if (r.success) await studioAudit(env as any, who.user, "premium.kind", { pay: Number(body.payId) || 0, kind: body.pay?.kind === "paid" ? "paid" : "gift" }).catch(() => {});
           return json(r, r.success ? 200 : 400);
         }
         if (path === "/api/studio/premium/request" && request.method === "POST") { const r = await studioPremiumRequest(env as any, body); return json(r, r.success ? 200 : 400); }

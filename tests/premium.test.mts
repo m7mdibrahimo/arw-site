@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHmac } from 'node:crypto';
 import { handleMembers } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS, OFFERS, runPremiumReminders } from '../worker/src/premium';
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS, OFFERS, runPremiumReminders } from '../worker/src/premium';
 
 function d1() {
   const db = new DatabaseSync(':memory:');
@@ -599,4 +599,41 @@ test('a show page comes with its premium line, and a Google Drive link plays and
   assert.match(config, /"drive\.google\.com": "\/assets\/hosts\/google-drive\.svg"/);
   assert.ok(fs.existsSync('assets/hosts/google-drive.svg'));
   assert.match(player, /'drive\.google\.com': \['Google Drive', '\/assets\/hosts\/google-drive\.svg'\]/);
+});
+
+test('a membership turned on by hand is told as paid or as a gift, and the member sees which (owner 2026-10-16)', async () => {
+  // «يكون في تفريق بين اني مديله العضوية او الاشتراك هدية من الموقع وبين ان هو دافع فا ميتكتبش عنده انه هدية من الموقع»
+  const e = env();
+  const s = await member(e);
+  await studioPremiumGrant(e, s.member.id, 30, 'mohamed', Date.now(), { kind: 'paid', amount: 50, currency: 'EGP', method: 'فودافون كاش', reference: '123' });
+  let pays = (await call(e, '/premium/mine', undefined, s.token)).body.payments;
+  assert.equal(pays[0].gift, false);
+  assert.equal(pays[0].amount, 50);
+  assert.equal(pays[0].method, 'فودافون كاش');
+  // the panel: «مدفوع», counted in the month's money
+  let p: any = await studioPremium(e);
+  assert.equal(p.members[0].premium_by, 'paid:mohamed');
+  assert.equal(p.month.find((x: any) => x.currency === 'EGP').total, 50);
+  // a gift stays a gift
+  await studioPremiumGrant(e, s.member.id, 7, 'mohamed', Date.now() + 1, { kind: 'gift' });
+  pays = (await call(e, '/premium/mine', undefined, s.token)).body.payments;
+  const gift = pays.find((x: any) => x.days === 7);
+  assert.equal(gift.gift, true);
+  assert.equal(gift.amount, 0);
+  // an old one told again: paid after all, with no amount → the member sees «اشتراك مدفوع», never «هدية»
+  p = await studioPremium(e);
+  const giftRow = p.payments.find((x: any) => x.days === 7);
+  assert.equal((await studioPremiumKind(e, giftRow.id, { kind: 'paid' })).success, true);
+  pays = (await call(e, '/premium/mine', undefined, s.token)).body.payments;
+  assert.equal(pays.find((x: any) => x.days === 7).gift, false);
+  // a trial or a Fawaterk payment can't be told again by hand
+  await e.ANALYTICS.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 50, 'paid', 1, 1, 30, '')").bind(s.member.id).run();
+  const online: any = await e.ANALYTICS.prepare("SELECT id FROM premium_payments WHERE granted_by = ''").first();
+  assert.equal((await studioPremiumKind(e, online.id, { kind: 'gift' })).success, false);
+  // the member's page writes «اشتراك مدفوع» for a paid one with no amount
+  const fs = await import('node:fs');
+  assert.match(fs.readFileSync('assets/account.js', 'utf-8'), /p\.gift \? 'هدية من الموقع' : !Number\(p\.amount\) \? 'اشتراك مدفوع'/);
+  const panel = fs.readFileSync('studio/js/views/premium.js', 'utf-8');
+  assert.match(panel, /data-kind="paid">دفع<\/button><button type="button" class="chip" data-kind="gift">هدية من الموقع/);
+  assert.match(panel, /q\('go'\)\.disabled = !ok \|\| !kind;/);
 });

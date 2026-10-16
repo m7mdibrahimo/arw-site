@@ -3,7 +3,7 @@
 // accounts themselves: worker/src/members.ts.
 import { api, getUser } from '../api.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
-import { premiumPicker, kindTag, payHistory } from './premium.js';
+import { premiumPicker, kindTag, payHistory, wirePayHistory } from './premium.js';
 import { memberSquare } from '../image.js';
 
 const COLORS = ['#0e9594', '#ff5a36', '#d98b12', '#7c6ee8', '#2b8fd6', '#c73b2c', '#2f9e5b'];
@@ -195,6 +195,7 @@ export async function renderSiteMember(page, id) {
     </div>`);
   // any period the owner likes (views/premium.js)
   if ($('#mb-prem-box', page)) premiumPicker($('#mb-prem-box', page), m, () => renderSiteMember(page, id));
+  if (isOwner() && $('#mb-prem', page)) wirePayHistory($('#mb-prem', page), () => renderSiteMember(page, id));
   const pg = $('#mb-prem-go', page);
   if (pg) pg.onclick = (e) => { e.preventDefault(); $('#mb-prem', page).scrollIntoView({ behavior: 'smooth', block: 'center' }); };
   const vb = $('#mb-verify', page);

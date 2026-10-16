@@ -373,7 +373,9 @@
           row.setAttribute('role', 'row');
           [
             [day(p.at), p.reference ? 'رقم العملية ' + p.reference : ''],
-            [p.trial ? 'تجربة مجانية' : p.gift ? 'هدية من الموقع' : p.currency === 'USD' ? p.amount + ' دولار' : p.amount + ' جنيه', p.method || ''],
+            // a membership paid to the site directly and turned on by hand has no amount when none was written: «paid»,
+            // never «a gift» (owner 2026-10-16)
+            [p.trial ? 'تجربة مجانية' : p.gift ? 'هدية من الموقع' : !Number(p.amount) ? 'اشتراك مدفوع' : p.currency === 'USD' ? p.amount + ' دولار' : p.amount + ' جنيه', p.method || ''],
             ['+' + p.days + ' يوم', 'مدة العضوية']
           ].forEach(function (c) {
             var cell = document.createElement('div'); cell.setAttribute('role', 'cell');

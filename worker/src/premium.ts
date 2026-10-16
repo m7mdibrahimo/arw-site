@@ -82,6 +82,11 @@ export async function ensurePremium(db: D1Database): Promise<void> {
 
 /** What turned a member's membership on last, for the panel (owner 2026-10-15: «تجربة 3 ايام … ولا هدية من الموقع …
  *  ولا دافع»): «trial», a name (given by hand from the panel) or «» (paid on Fawaterk) */
+/** granted_by on a payment: «trial», «» (paid on Fawaterk), «paid:<who>» (paid the owner directly and turned on by hand:
+ *  Vodafone Cash, InstaPay…), «<who>» (a gift from the site). Owner 2026-10-16: «يكون في تفريق بين اني مديله العضوية …
+ *  هدية من الموقع وبين ان هو دافع فا ميتكتبش عنده انه هدية من الموقع». */
+export const handPaid = (by: unknown) => /^paid:/.test(String(by || ""));
+export const isGift = (by: unknown) => !!by && by !== "trial" && !handPaid(by);
 export const PREMIUM_BY = "(SELECT p.granted_by FROM premium_payments p WHERE p.member = m.id AND p.status = 'paid' ORDER BY p.paid_at DESC, p.id DESC LIMIT 1) AS premium_by";
 /** A member's membership, as their pages see it */
 export const premiumOf = (m: any, now = Date.now()) => (m?.official ? 4102444800000 : Number(m?.premium_until) > now ? Number(m.premium_until) : 0);
@@ -274,8 +279,8 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
   if (path === "/premium/mine" && request.method === "GET") {
     const pays = await db.prepare("SELECT id, currency, amount, status, method, reference, created, paid_at, days, granted_by FROM premium_payments WHERE member = ?1 ORDER BY COALESCE(paid_at, created) DESC LIMIT 60").bind(me.id).all<any>();
     const items = (pays.results || []).filter((p: any) => p.status === "paid" || now - p.created < 3 * 86_400_000).map((p: any) => ({
-      at: p.paid_at || p.created, paid: p.status === "paid", currency: p.currency, amount: p.granted_by ? 0 : p.amount,
-      method: p.method || "", reference: p.reference || "", days: Number(p.days) || DAYS, gift: !!p.granted_by && p.granted_by !== "trial", trial: p.granted_by === "trial",
+      at: p.paid_at || p.created, paid: p.status === "paid", currency: p.currency, amount: isGift(p.granted_by) || p.granted_by === "trial" ? 0 : p.amount,
+      method: p.method || "", reference: p.reference || "", days: Number(p.days) || DAYS, gift: isGift(p.granted_by), trial: p.granted_by === "trial",
     }));
     return reply({ ok: true, official: !!me.official, until: premiumOf(me, now), since: Number(me.premium_since) || 0, days: DAYS, plans: { EGP: PLANS.EGP.price, USD: PLANS.USD.price }, offers: OFFERS, trial: await trialOpen(db, me), payments: items });
   }
@@ -359,7 +364,7 @@ export async function studioPremium(env: PremiumEnv, now = Date.now()) {
     db.prepare(`SELECT m.id, m.username, m.display, m.pic, m.email, m.premium_until, m.premium_since, ${PREMIUM_BY} FROM members m WHERE m.premium_until > ?1 ORDER BY m.premium_until ASC`).bind(now),
     db.prepare(`SELECT p.*, m.username, m.display FROM premium_payments p LEFT JOIN members m ON m.id = p.member WHERE p.status = 'paid' ORDER BY p.paid_at DESC LIMIT 200`),
     db.prepare(`SELECT r.*, m.username, m.display, m.pic, m.premium_until, m.official FROM premium_requests r LEFT JOIN members m ON m.id = r.member ORDER BY CASE r.status WHEN 'new' THEN 0 WHEN 'working' THEN 1 ELSE 2 END, r.id DESC LIMIT 300`),
-    db.prepare("SELECT currency, SUM(amount) AS total, COUNT(*) AS n FROM premium_payments WHERE status = 'paid' AND paid_at > ?1 AND granted_by = '' GROUP BY currency").bind(month),
+    db.prepare("SELECT currency, SUM(amount) AS total, COUNT(*) AS n FROM premium_payments WHERE status = 'paid' AND paid_at > ?1 AND (granted_by = '' OR granted_by LIKE 'paid:%') GROUP BY currency").bind(month),
   ]) as any[];
   return { success: true, members: members.results || [], payments: payments.results || [], requests: requests.results || [], month: sums.results || [], live: fawaterkLive(env) };
 }
@@ -408,7 +413,15 @@ export async function studioPremiumFind(env: PremiumEnv, q: unknown, now = Date.
   return { success: true, member: { ...m, premium: Number(m.premium_until) > now } };
 }
 /** The owner gives (or takes back) membership days by hand: a payment made before the automatic one was set up, a gift */
-export async function studioPremiumGrant(env: PremiumEnv, id: unknown, days: unknown, who = "", now = Date.now()) {
+/** How a membership turned on by hand is told: paid to the owner directly (what, how much, how) or a gift */
+function handKind(pay: any, who: string) {
+  const by = who.slice(0, 40) || "panel";
+  if (pay?.kind !== "paid") return { by, amount: 0, currency: "EGP", method: "", reference: "" };
+  const amount = Math.max(0, Math.min(100000, Math.round((Number(pay.amount) || 0) * 100) / 100));
+  return { by: `paid:${by}`.slice(0, 48), amount, currency: pay.currency === "USD" ? "USD" : "EGP",
+    method: String(pay.method || "").replace(/\s+/g, " ").trim().slice(0, 40), reference: String(pay.reference || "").trim().slice(0, 60) };
+}
+export async function studioPremiumGrant(env: PremiumEnv, id: unknown, days: unknown, who = "", now = Date.now(), pay: any = null) {
   const db = env.ANALYTICS;
   if (!db) return { success: false, error: "مش متاح دلوقتي." };
   await ensurePremium(db);
@@ -418,8 +431,22 @@ export async function studioPremiumGrant(env: PremiumEnv, id: unknown, days: unk
   if (d <= 0) { await db.prepare("UPDATE members SET premium_until = 0 WHERE id = ?1").bind(member).run(); return { success: true, until: 0 }; }
   const capped = Math.min(d, 3650);
   const until = await grant(db, member, capped, now);
-  await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by) VALUES (?1, 'EGP', 0, 'paid', ?2, ?2, ?3, ?4)").bind(member, now, capped, who.slice(0, 40) || "panel").run();
+  const k = handKind(pay, who);
+  await db.prepare("INSERT INTO premium_payments (member, currency, amount, status, created, paid_at, days, granted_by, method, reference) VALUES (?1, ?5, ?6, 'paid', ?2, ?2, ?3, ?4, ?7, ?8)")
+    .bind(member, now, capped, k.by, k.currency, k.amount, k.method, k.reference).run();
   return { success: true, until };
+}
+/** A membership turned on by hand, told again: it was paid after all, or it was a gift (the owner fixes an old one) */
+export async function studioPremiumKind(env: PremiumEnv, payId: unknown, pay: any, who = "") {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "مش متاح دلوقتي." };
+  await ensurePremium(db);
+  const row: any = await db.prepare("SELECT id, granted_by FROM premium_payments WHERE id = ?1 AND status = 'paid'").bind(Number(payId) || 0).first();
+  if (!row || !row.granted_by || row.granted_by === "trial") return { success: false, error: "ده مش اشتراك اتفعّل باليد." };
+  const k = handKind(pay, String(row.granted_by).replace(/^paid:/, "") || who);
+  await db.prepare("UPDATE premium_payments SET granted_by = ?1, amount = ?2, currency = ?3, method = ?4, reference = ?5 WHERE id = ?6")
+    .bind(k.by, k.amount, k.currency, k.method, k.reference, row.id).run();
+  return { success: true };
 }
 export async function studioPremiumRequest(env: PremiumEnv, b: any, now = Date.now()) {
   const db = env.ANALYTICS;
