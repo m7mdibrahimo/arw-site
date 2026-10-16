@@ -81,3 +81,10 @@ test("«الحدف» is corrected to «الهدف» (INCIDENTS #602)", async () 
 test("a relative with the same surname is not a self-partner (INCIDENTS #602)", () => {
   assert.ok(!checkArticle("عنوان واضح للخبر هنا", "ويدافع نيك نيميث عن لقبه، قبل أن يتحد مع شقيقه رايان نيميث في النزال القادم.").some((i) => i.code === "self_partner"));
 });
+
+test("an English quote left untranslated in the Arabic story blocks publishing (INCIDENTS #614: John Cena's blockquote)", async () => {
+  const { BLOCKING_QA_CODES } = await import("../scripts/news-qa.ts");
+  const body = "تحدث سينا عن اعتزاله.\n\n> When I retired from WWE, everybody's like, 'Man, you're doing it on your own terms.' I want to do it forever.\n\nنص آخر.";
+  assert.ok(checkArticle("جون سينا يتحدث عن اعتزاله", body).some((i) => i.code === "english_quote"));
+  assert.ok(BLOCKING_QA_CODES.includes("english_quote"));
+});
