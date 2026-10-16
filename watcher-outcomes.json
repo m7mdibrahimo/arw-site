@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/pacs-cause-death-revealed-sudden-passing-40": {
+  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
+  "retry": false,
+  "at": "2026-10-16T23:11:40.001Z"
+ },
  "https://www.fightful.com/wrestling/shawn-spears-uses-perfect-10-theme-at-nxt-live": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
