@@ -4620,7 +4620,7 @@ test('show pages carry the program aliases with the date and the words visitors 
   const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
   const aliases = ['عرض الرو', 'دبليو دبليو إي راو', 'الرو', 'WWE Raw', 'الرو مترجم'];
   const forms = showNameForms({ headline: 'عرض الرو مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: true });
-  for (const f of ['دبليو دبليو إي راو 5 أكتوبر 2026', 'عرض الرو مترجم', 'عرض الرو الاخير مترجم', 'تحميل عرض الرو', 'مشاهدة عرض الرو', 'اخر عرض الرو', 'عرض الرو الاخير مترجم كامل', 'مشاهدة عرض الرو الاخير مترجم']) assert.ok(forms.includes(f), f);
+  for (const f of ['دبليو دبليو إي راو 5 أكتوبر 2026', 'عرض الرو مترجم', 'عرض الرو الاخير مترجم', 'تحميل عرض الرو', 'مشاهدة عرض الرو', 'اخر عرض الرو', 'عرض الرو الاخير مترجم كامل', 'مشاهدة عرض الرو الاخير مترجم', 'تحميل عرض الرو الاخير مترجم', 'تحميل عرض الرو مترجم', 'مشاهدة عرض الرو مترجم']) assert.ok(forms.includes(f), f);
   const recap = showNameForms({ headline: 'ملخص الرو مترجم', title: 'WWE RAW Highlights 05.10.2026', programName: 'WWE RAW', eventDate: '2026-10-05', aliases, isShow: false });
   assert.ok(!recap.includes('تحميل عرض الرو'));
 });

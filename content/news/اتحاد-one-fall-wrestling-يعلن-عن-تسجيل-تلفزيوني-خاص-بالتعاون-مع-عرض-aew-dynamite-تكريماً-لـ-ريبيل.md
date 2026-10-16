@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: اتحاد One Fall Wrestling يعلن عن تسجيل تلفزيوني خاص بالتعاون مع عرض AEW Dynamite تكريماً لـ ريبيل
+title: اتحاد One Fall Wrestling يعلن عن تسجيل تلفزيوني خاص بالتعاون مع عرض AEW Dynamite تكريماً لريبيل
+permalink: "/news/اتحاد-one-fall-wrestling-يعلن-عن-تسجيل-تلفزيوني-خاص-بالتعاون-مع-عرض-aew-dynamite-تكريماً-لـ-ريبيل/index.html"
 date: 2026-08-11T22:51:00.000+03:00
 tags:
   - AEW

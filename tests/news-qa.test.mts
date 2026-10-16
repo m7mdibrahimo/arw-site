@@ -43,6 +43,13 @@ test("a tatweel before an ARABIC name is removed and blocked (INCIDENTS #564)", 
   assert.ok(!checkArticle(t.replace("بـتايتشي", "بتايتشي"), "نص الخبر هنا.").some((i) => i.code === "tatweel_before_arabic"));
 });
 
+test("a tatweel followed by a space before an Arabic name is fixed and blocked", async () => {
+  const { autoFix } = await import("../scripts/news-qa.ts");
+  assert.equal(autoFix("أطاحت بها وبـ إيجنت زيرو"), "أطاحت بها وبإيجنت زيرو");
+  assert.ok(checkArticle("عنوان", "نص الخبر وبـ إيجنت زيرو طويل بما يكفي.").some((i) => i.code === "tatweel_before_arabic"));
+  assert.ok(!checkArticle("عنوان", "نص الخبر لـ ذا روك طويل بما يكفي.").some((i) => i.code === "tatweel_before_arabic"));
+});
+
 test("no published Arabic story has a tatweel before an Arabic letter (INCIDENTS #564)", async () => {
   const fs = await import("node:fs");
   const dir = new URL("../content/news/", import.meta.url);

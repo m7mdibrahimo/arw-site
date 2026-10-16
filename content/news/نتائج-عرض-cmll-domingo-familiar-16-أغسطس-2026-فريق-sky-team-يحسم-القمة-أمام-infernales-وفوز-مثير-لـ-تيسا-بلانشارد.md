@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض CMLL Domingo Familiar (16 أغسطس 2026): فريق Sky Team يحسم القمة أمام Infernales وفوز مثير لـ تيسا بلانشارد"
+title: "نتائج عرض CMLL Domingo Familiar (16 أغسطس 2026): فريق Sky Team يحسم القمة أمام Infernales وفوز مثير لتيسا بلانشارد"
+permalink: "/news/نتائج-عرض-cmll-domingo-familiar-16-أغسطس-2026-فريق-sky-team-يحسم-القمة-أمام-infernales-وفوز-مثير-لـ-تيسا-بلانشارد/index.html"
 date: 2026-08-17T22:26:00.000+03:00
 tags:
   - CMLL

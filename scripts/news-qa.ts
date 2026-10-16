@@ -89,7 +89,7 @@ try {
 const SHOW_WORDS = "(?:العرض|عرض|عروض|WWE|AEW|TNA|RAW|Raw|SmackDown|NXT|Dynamite|Collision|Rampage|iMPACT|EVOLVE)";
 
 const RULES: Rule[] = [
-  { code: "tatweel_before_arabic", severity: "error", re: /\u0640(?=[\u0621-\u064A])/g, message: "تطويل «ـ» قبل اسم عربي («لـرويس»، «بـتايتشي») — التطويل بيتكتب بس قبل الاسم الإنجليزي (بـWWE)", fields: ["title", "body", "tags"] },
+  { code: "tatweel_before_arabic", severity: "error", re: /\u0640(?=[\u0621-\u064A])|\u0640 +(?!ذا(?![\u0621-\u064A]))(?=[\u0621-\u064A])/g, message: "تطويل «ـ» (أو «ـ » بعدها مسافة) قبل اسم عربي («لـرويس»، «بـتايتشي») — التطويل بيتكتب بس قبل الاسم الإنجليزي (بـWWE)", fields: ["title", "body", "tags"] },
   { code: "persian_letters", severity: "error", re: /[گکیپچژڤ]/g, message: "حروف فارسية بدل العربية" },
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة)" },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
@@ -879,6 +879,8 @@ export function autoFix(text: string): string {
   // preposition to an ENGLISH name only («بـWWE»); before an Arabic name it is a typo («لـرويس كيس»,
   // «بـتايتشي» sat in ~200 stories — INCIDENTS #564)
   out = out.replace(/\u0640+(?=[\u0621-\u064A])/g, "");
+  // «وبـ إيجنت زيرو» (tatweel + space before an Arabic name) → «وبإيجنت زيرو»; «لـ ذا روك» keeps its space (#449)
+  out = out.replace(/\u0640+ +(?!ذا(?![\u0621-\u064A]))(?=[\u0621-\u064A])/g, "");
   return out.replace(/\u0000(\d+)\u0000/g, (_, i) => urls[Number(i)]);
 }
 
