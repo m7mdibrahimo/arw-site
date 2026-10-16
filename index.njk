@@ -378,13 +378,15 @@ html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-
    with a small ringed dot in the middle — marks where each section starts without
    breaking the gradient. */
 #feds, #full-shows, #recaps, #nostalgia-home, #news{ position:relative; }
+/* the line and its dot sit inside their own section, 12px down: a dot hanging half above it was sometimes painted
+   only below the section's edge, a half circle (owner 2026-10-15: «النقطة المضيئة مش كاملة») */
 #feds::before, #full-shows::before, #recaps::before, #nostalgia-home::before, #news::before{
-  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  content:""; position:absolute; top:12px; left:50%; transform:translateX(-50%);
   width:min(760px, 78%); height:1px; pointer-events:none;
   background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec) 45%, var(--line)) 30%, color-mix(in srgb, var(--sec) 45%, var(--line)) 70%, transparent);
 }
 #feds::after, #full-shows::after, #recaps::after, #nostalgia-home::after, #news::after{
-  content:""; position:absolute; top:0; left:50%; transform:translate(-50%, -50%);
+  content:""; position:absolute; top:12.5px; left:50%; transform:translate(-50%, -50%);
   width:9px; height:9px; border-radius:50%; pointer-events:none;
   /* a dot lit in the section's own colour: no ring painted in a background colour, which never matched both the band
      above and the one below (owner 2026-10-15: «شكل الدائرة دي مش مظبوط خالص في الرئيسية») */
@@ -1284,7 +1286,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
 <link rel="stylesheet" href="/assets/features.css?v=20261015m">
-<link rel="stylesheet" href="/assets/dark.css?v=20261015a">
+<link rel="stylesheet" href="/assets/dark.css?v=20261016a">
 </head>
 <body>
 <header>
