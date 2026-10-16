@@ -1,6 +1,7 @@
 ---
 federation: NJPW
-title: "شون سكاي ووكر يهزم كونوسوكي تاكيشيتا ليظفر ببطولة NJPW التلفزيونية في عرض Destruction in Kobe"
+title: "شون سكاي ووكر يهزم كونوسوكي تاكيشيتا ليفوز ببطولة NJPW التلفزيونية في عرض Destruction in Kobe"
+permalink: "/news/شون-سكاي-ووكر-يهزم-كونوسوكي-تاكيشيتا-ليظفر-ببطولة-njpw-التلفزيونية-في-عرض-destruction-in-kobe/index.html"
 date: 2026-09-27T12:06:56.000+03:00
 published_at: 2026-09-27T09:08:28.681Z
 source_id: 330819

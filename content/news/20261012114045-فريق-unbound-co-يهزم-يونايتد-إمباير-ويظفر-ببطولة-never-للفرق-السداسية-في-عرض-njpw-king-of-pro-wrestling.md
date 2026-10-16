@@ -1,6 +1,7 @@
 ---
 federation: NJPW
-title: "فريق Unbound Co. يهزم يونايتد إمباير ويظفر ببطولة NEVER للفرق السداسية في عرض NJPW King Of Pro-Wrestling"
+title: "فريق Unbound Co. يهزم يونايتد إمباير ويفوز ببطولة NEVER للفرق السداسية في عرض NJPW King Of Pro-Wrestling"
+permalink: "/news/فريق-unbound-co-يهزم-يونايتد-إمباير-ويظفر-ببطولة-never-للفرق-السداسية-في-عرض-njpw-king-of-pro-wrestling/index.html"
 date: 2026-10-12T11:40:45.000+03:00
 published_at: 2026-10-12T08:49:19.879Z
 source_id: 333392
