@@ -294,6 +294,7 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /tag/دانهاوسن/* /tag/دانهاوزن/:splat 301
 /tag/دانهوسن/* /tag/دانهاوزن/:splat 301
 /tag/داينمايت/* /tag/aew-dynamite/:splat 301
+/tag/ديناميت/* /tag/داينامايت/:splat 301
 /tag/دراجون-لي/* /tag/دراغون-لي/:splat 301
 /tag/دربي-الين/* /tag/داربي-الين/:splat 301
 /tag/دومينيك-مستيريو/* /tag/دومينيك-ميستيريو/:splat 301
