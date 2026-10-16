@@ -4977,3 +4977,11 @@ test('the English news list fills only the stories list, never the page path —
   assert.ok(out.breadcrumb.itemListElement.every((x) => x.item && x.name));
   assert.deepEqual(out.mainEntity.itemListElement.map((x) => x.url), ['https://arab-wrestling.com/en/news/a/', 'https://arab-wrestling.com/en/news/b/']);
 });
+
+// INCIDENTS #625: a weekly episode is also searched with the year, «الجديد» and «اون لاين» («عرض سماك داون الأخير 2026»)
+test('weekly episode name forms carry the year, الجديد and اون لاين (INCIDENTS #625)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const aliases = ['عرض سماك داون', 'دبليو دبليو إي سماك داون'];
+  const forms = showNameForms({ headline: 'عرض سماك داون مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE SmackDown', eventDate: '2026-10-09', aliases, isShow: true });
+  for (const f of ['عرض سماك داون الاخير 2026', 'عرض سماك داون الأخير 2026', 'عرض سماك داون 2026 مترجم', 'عرض سماك داون الجديد', 'عرض سماك داون اون لاين']) assert.ok(forms.includes(f), f);
+});
