@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2275365/tna-impact-bound-for-glory-2026-bde-mr-elegance-earns-match-roll-up-win/": {
-    "matchedFile": "20261002041535-bde-يفوز-بأول-نزال-فردي-في-tna-ويحجز-مقعده-في-نزال-بطولة-x-division-في-عرض-bound-for-glory.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث تماماً (فوز المصارع BDE على مستر إليغانس بحركة دحرجة لتأهله إلى نزال بطولة X-Division في عرض Bound for Glory خلال عرض TNA Impact) وهو مغطى بالكامل في الخبر المنشور رقم 0.",
-    "at": "2026-10-02T02:01:29.879Z"
-  },
   "https://www.wrestlinginc.com/2275377/tna-bound-for-glory-2026-mustafa-ali-jason-hotch-john-skyler-special-agent-zero-defend-title/": {
     "matchedFile": "20261002050521-إضافة-نزال-رباعي-على-البطولة-الدولية-إلى-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يعيد نفس تفاصيل الإعلان عن النزال الرباعي لمصطفى علي ضد أعضاء فريق Order Four في عرض Bound for Glory وتفاصيل ما حدث في عرض TNA iMPACT وهي نفس تفاصيل الخبر المنشور برقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261015213751-أبرز-تصريحات-توني-خان-في-المؤتمر-الصحفي-الخاص-بعرض-aew-wrestledream-الليلة.md",
     "reason": "الخبر الجديد يعيد تدوير تصريحات توني خان في المؤتمر الصحفي لعرض WrestleDream والتي سبق نشرها بالكامل في الخبر [1] و[3]، والمتعلقة بإصابات جاي وايت وجيمي هايتر وكريستيان كيج وتغيير خطط عرض السيدات.",
     "at": "2026-10-16T17:38:40.870Z"
+  },
+  "https://www.ringsidenews.com/footage-shows-adam-copeland-heckled-fans-during-aew-retirement-announcement/": {
+    "matchedFile": "20261015034716-آدم-كوبلاند-يعلن-أن-2027-سيكون-عامه-الأخير-في-المصارعة-بعد-الكشف-عن-إصابات-خطيرة-تعرض-لها-في-عرض-aew-all-out.md",
+    "reason": "الخبر الجديد يعيد سرد إعلان آدم كوبلاند اعتزاله في 2027 وإصاباته في عرض All Out ونزال جوش ألكسندر، وهي نفس التفاصيل الأساسية للحدث المنشور في الخبر [2].",
+    "at": "2026-10-16T18:11:19.323Z"
   }
 }
