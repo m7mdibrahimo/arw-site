@@ -1,8 +1,8 @@
 {
- "https://www.fightful.com/wrestling/tna-impact-results-10-15-celebrating-the-hardys": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-16T16:32:25.897Z"
+  "at": "2026-10-16T16:48:23.597Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-paid-for-hip-surgery-for-psicosis": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -54,10 +54,10 @@
   "retry": false,
   "at": "2026-10-16T16:33:33.414Z"
  },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.fightful.com/wrestling/tna-impact-results-10-15-celebrating-the-hardys": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-16T16:29:27.850Z"
+  "at": "2026-10-16T16:32:25.897Z"
  },
  "https://www.fightful.com/wrestling/333937-mike-bailey-piggies": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
