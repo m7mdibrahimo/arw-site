@@ -4957,3 +4957,16 @@ test('«عرض» stays masculine: «عرض SmackDown الأخيرة» is fixed a
   assert.ok(BLOCKING_QA_CODES.includes('show_feminine_adjective'));
   assert.ok(checkArticle('حالة من الإحباط تحيط بغونتر في عرض WWE SmackDown', 'تسود حالة من الإحباط بشأن غونتر في عرض WWE SmackDown الأخيرة وبحسب التقارير الصحفية فإن التوجه الحالي للنجم أثار تساؤلات عديدة داخل الفريق الإبداعي.').some(i => i.code === 'show_feminine_adjective'));
 });
+
+test('the English news list fills only the stories list, never the page path — Google: «item/name missing» (INCIDENTS #624)', async () => {
+  const { fillNewsList } = (await import('../lib/i18n/mirror.cjs')).default;
+  const { parseDocument } = await import('htmlparser2');
+  const { default: render } = await import('dom-serializer');
+  const ld = { '@context': 'https://schema.org', '@type': 'CollectionPage', breadcrumb: { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://arab-wrestling.com/en/' }, { '@type': 'ListItem', position: 2, name: 'News', item: 'https://arab-wrestling.com/en/news/' }] }, mainEntity: { '@type': 'ItemList', itemListElement: [] } };
+  const doc = parseDocument(`<html><body><script type="application/ld+json">${JSON.stringify(ld)}</script></body></html>`);
+  fillNewsList(doc, [{ en: '/en/news/a/' }, { en: '/en/news/b/' }], 1, 1);
+  const out = JSON.parse(render(doc).match(/<script[^>]*>([\s\S]*?)<\/script>/)[1]);
+  assert.deepEqual(out.breadcrumb.itemListElement.map((x) => x.name), ['Home', 'News']);
+  assert.ok(out.breadcrumb.itemListElement.every((x) => x.item && x.name));
+  assert.deepEqual(out.mainEntity.itemListElement.map((x) => x.url), ['https://arab-wrestling.com/en/news/a/', 'https://arab-wrestling.com/en/news/b/']);
+});
