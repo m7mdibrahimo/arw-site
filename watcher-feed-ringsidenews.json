@@ -1,5 +1,25 @@
 [
   {
+    "id": 802255871,
+    "link": "https://www.ringsidenews.com/aew-dynamite-viewership-sees-massive-increase-october-14-2026/",
+    "date": "Fri, 16 Oct 2026 23:37:25 +0000",
+    "date_gmt": "2026-10-16T23:37:25.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Viewership Sees Massive Increase on October 14, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/AEW-Dynamite-Massive-Increase-1.jpg?x40493"
+  },
+  {
+    "id": 802255870,
+    "link": "https://www.ringsidenews.com/aew-collision-viewership-sees-massive-increase-october-14-2026/",
+    "date": "Fri, 16 Oct 2026 23:37:03 +0000",
+    "date_gmt": "2026-10-16T23:37:03.000Z",
+    "title": {
+      "rendered": "AEW Collision Viewership Sees Massive Increase on October 14, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/AEW-Collision-Massive-Increase.jpg?x40493"
+  },
+  {
     "id": 802255622,
     "link": "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-16-2026/",
     "date": "Fri, 16 Oct 2026 23:31:00 +0000",
@@ -128,25 +148,5 @@
       "rendered": "ROH Final Battle 2026 Date, Location and Venue Revealed"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/roh-final-battle-2026-date-location-and-venue-revealed-57.jpg?x40493"
-  },
-  {
-    "id": 802255795,
-    "link": "https://www.ringsidenews.com/cody-rhodes-addresses-rumors-hes-joining-mcu-marvel-meeting/",
-    "date": "Fri, 16 Oct 2026 19:02:38 +0000",
-    "date_gmt": "2026-10-16T19:02:38.000Z",
-    "title": {
-      "rendered": "Cody Rhodes Addresses Rumors He’s Joining the MCU After Marvel Meeting"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/cody-rhodes-addresses-rumors-hes-joining-the-mcu-after-marvel-meeting-48.jpg?x40493"
-  },
-  {
-    "id": 802255796,
-    "link": "https://www.ringsidenews.com/avery-styles-seen-walking-boot-following-tna-impact-tapings/",
-    "date": "Fri, 16 Oct 2026 18:54:58 +0000",
-    "date_gmt": "2026-10-16T18:54:58.000Z",
-    "title": {
-      "rendered": "Avery Styles Seen in Walking Boot Following TNA iMPACT Tapings"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/avery-styles-seen-in-walking-boot-following-tna-impact-tapings-30.jpg?x40493"
   }
 ]
