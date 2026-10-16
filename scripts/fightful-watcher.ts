@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -2308,7 +2308,7 @@ ${articleSummary.slice(0, 3000)}
 // Format markdown to ensure clean spacing between lines and match sections
 function formatResultsMarkdown(text: string): string {
   if (!text) return text;
-  return text
+  return noWinnerLines(text)
     // Ensure every match line has its own paragraph
     .replace(/(🏆\s*\*\*الفائز(?:ون|تان|ة)?:?\*\*)/g, "\n\n$1")
     .replace(/(\*\*تفاصيل النزال:\*\*)/g, "\n\n$1")
@@ -3038,7 +3038,8 @@ async function rewriteWithGemini(
      
      [جملة أو جملتان تنقلان ما ذكره المصدر عن هذه المواجهة فقط: الأطراف، اللقب إن وجد، وأي تفصيل مذكور في المصدر (تدخل، حركة الحسم، ما حدث بعدها). إذا كان المصدر يذكر النتيجة في سطر واحد فقط فاكتب جملة واحدة تذكر الطرفين واللقب — ممنوع اختراع مجريات أو حركات أو سيطرة أو تدخلات غير مذكورة]
      
-     🏆 **الفائز:** [اسم الفائز بالعربي، أو تفاصيل النتيجة كالإقصاء أو التعادل]
+     🏆 **الفائز:** [اسم الفائز بالعربي]
+     (لو النزال انتهى بتعادل أو بلا نتيجة أو لم يُذكر فائز: ممنوع سطر «الفائز»، اكتب بدله «🤝 **النتيجة:** تعادل بسبب انتهاء الوقت» أو «🤝 **النتيجة:** بلا نتيجة بسبب التدخل». وممنوع تضع كلمة «فوز» في العنوان لنزال بلا فائز.)
    - في الحدث الرئيسي (Main Event):
      ---
      **الحدث الرئيسي (Main Event): [طبيعة النزال]**

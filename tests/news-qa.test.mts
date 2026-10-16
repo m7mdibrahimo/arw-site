@@ -101,3 +101,22 @@ test("«العدواة» and the broken «ريكي سكر وصا» are corrected
   assert.equal(applyCorrections("العدواة المشتعلة"), "العداوة المشتعلة");
   assert.equal(applyCorrections("ريكي سكر وصا وإلياس"), "ريكي سوسا وإلياس");
 });
+
+test("a draw / no-contest is never a «🏆 الفائز» line (INCIDENTS #635: «الفائز: انتهى النزال بالتعادل»)", async () => {
+  const { noWinnerLines } = await import("../scripts/news-qa.ts");
+  const bad = "**الحدث الرئيسي**\n\nنزال.\n\n🏆 **الفائز:** انتهى النزال بالتعادل لانتهاء الوقت\n\n🏆 **الفائز:** لا يوجد (تعادل بالعد خارج الحلبة)\n\n🏆 **الفائز:** ديونا بورازو\n";
+  assert.ok(checkArticle("نتائج عرض ROH TV", bad + "x".repeat(300)).some((i) => i.code === "draw_as_winner"));
+  const fixed = noWinnerLines(bad);
+  assert.match(fixed, /🤝 \*\*النتيجة:\*\* انتهى النزال بالتعادل لانتهاء الوقت/);
+  assert.match(fixed, /🤝 \*\*النتيجة:\*\* تعادل بالعد خارج الحلبة/);
+  assert.match(fixed, /🏆 \*\*الفائز:\*\* ديونا بورازو/);
+  assert.ok(!checkArticle("نتائج عرض ROH TV", fixed + "x".repeat(300)).some((i) => i.code === "draw_as_winner"));
+  const { readdirSync, readFileSync } = await import("node:fs");
+  const left = readdirSync("content/news").filter((f) => f.endsWith(".md") && noWinnerLines(readFileSync(`content/news/${f}`, "utf-8")) !== readFileSync(`content/news/${f}`, "utf-8"));
+  assert.deepEqual(left, []);
+});
+
+test("«المصارعيم» and «حمل للقلب» are corrected (INCIDENTS #635)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("أكثر المصارعيم على فترتي حمل للقلب"), "أكثر المصارعين على فترتي حمل اللقب");
+});

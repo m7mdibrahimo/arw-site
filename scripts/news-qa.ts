@@ -135,6 +135,7 @@ const RULES: Rule[] = [
   { code: "english_title_name", severity: "error", re: new RegExp(`[${AR}]\\s+(?:[A-Z][A-Za-z']+\\s+){0,4}(?:Championships?(?!\\s+Wrestling)|Titles?)\\b`, "g"), message: "اسم لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...). أسماء الدورات (Cup/Classic/Tournament) تبقى بالإنجليزي", fields: ["title", "body"] },
   { code: "glossary_artifact", severity: "error", re: /بطلة? \((?:الاتحاد|العالمي|العالم|القارات|الأمريكي|أمريكا الشمالية|إن إكس تي|سبيد|الاتحاد للفرق|العالمي للفرق|إن إكس تي للفرق|إيفولف|إيفولف للفرق|دبليو دبليو إن)\)/g, message: "اسم بطولة مكسور من القاموس القديم مثل «بطل (الاتحاد)» — يُحذف أو يُكتب اسم البطولة الصحيح (بطولة WWE، بطولة العالم للوزن الثقيل...)", fields: ["title", "body"] },
   { code: "truncated_word", severity: "error", re: /(?<=^|\s)[ءآأؤإئاتثجحخدذرزسشصضطظعغقمنهةى](?=\s)/g, message: "حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)", fields: ["title", "body"] },
+  { code: "draw_as_winner", severity: "error", re: /الفائز(?:ة|ان|تان|ون|ين|ات)?:\*{0,2}\s*(?:انتهى|انتهت|انتهاء|لا\s+يوجد|لا\s+فائز|بلا\s|بدون\s|تعادل|التعادل|النزال\s+(?:انتهى|بلا))[^\n]*/g, message: "سطر «الفائز» فيه تعادل أو «بلا نتيجة» — اكتبه «🤝 **النتيجة:** …» (حصل: «الفائز: انتهى النزال بالتعادل»)", fields: ["body"] },
   { code: "vague_result", severity: "error", re: /الفائز(?:ة|ان|تان|ون|ين|ات)?:\*{0,2}\s*(?:تم\s+حسم|تحديد|حسم\s+النتيجة|غير\s+معروف|لم\s+يتم|لم\s+يحسم|قيد\s+الانتظار|بانتظار|سيتم|يحدد\s+لاحقا|انتهى\s+الحدث|انتهت\s+الأحداث|[^\n]{0,25}وسط\s+أجواء)[^\n]*/g, message: "سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)", fields: ["body"] },
   // Filler that stands in for a missing fact — «حيث تخوض داكوتا كاي خطواتها القادمة» when the source said «last wrestled in April» (INCIDENTS #293)
   { code: "vague_filler", severity: "error", re: /(?:ت|ي)خوض(?:ان)?\s+(?:[ء-ي]+\s+){0,3}خطوات(?:ها|ه|هما)\s+(?:القادمة|المقبلة|التالية)/g, message: "جملة حشو مبهمة مكان واقعة — اكتب اللي قاله المصدر بالظبط (حصل: «تخوض داكوتا كاي خطواتها القادمة» والمصدر: آخر نزال لها في أبريل)", fields: ["title", "body"] },
@@ -243,7 +244,7 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
 export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective"];
 
@@ -289,6 +290,25 @@ export function selfPartnered(text: string): string | null {
   }
   return null;
 }
+
+/**
+ * A match with no winner is not a «🏆 الفائز:» line. «🏆 الفائز: انتهى النزال بلا نتيجة» / «تعادل» /
+ * «لم يُعلن» read as a nonsense winner (INCIDENTS #635: ROH TV 15/10 — and 16 more results stories).
+ * Rewrites such a line to «🤝 **النتيجة:** …». A real winner line is left alone.
+ */
+export const NO_WINNER_VALUE = /^(?:انتهى|انتهت|انتهاء|لا\s+يوجد|لا\s+فائز|بلا\s|بدون\s|دون\s+(?:نتيجة|فائز)|لم\s|تعادل|التعادل|غير\s+(?:محدد|معروف|معلن)|النزال\s+(?:انتهى|انتهت|بلا))/;
+export function noWinnerLines(body: string): string {
+  return String(body || "").replace(/^([ \t]*(?:[*-][ \t]+)?)🏆[ \t]*\*{0,2}[ \t]*الفائز(?:ة|ان|تان|ون|ات)?[ \t]*:?[ \t]*\*{0,2}[ \t]*:?[ \t]*([^\n]+)$/gm, (all, lead, value) => {
+    const v = String(value).trim();
+    if (!NO_WINNER_VALUE.test(v)) return all;
+    let out = v.replace(/^لا\s+يوجد(?:\s+فائز)?\s*/, "").replace(/^\(\s*([^)]*?)\s*\)\s*$/, "$1").trim();
+    if (/^(?:لم\s+يُ?عل[نم]|لم\s+يتم|غير\s+(?:محدد|معروف|معلن))/.test(out)) out = "لم تُعلن النتيجة";
+    out = out.replace(/\s*\/\s*غير\s+محدد$/, "");
+    if (!out) out = "بدون فائز";
+    return `${lead}🤝 **النتيجة:** ${out}`;
+  });
+}
+
 
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
