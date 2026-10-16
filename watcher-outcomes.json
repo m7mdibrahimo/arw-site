@@ -7,42 +7,47 @@
  "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:31.416Z"
+  "at": "2026-10-16T09:18:27.492Z"
  },
  "https://www.fightful.com/wrestling/aew-could-hold-adam-copelands-final-match-in-toronto": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:31.257Z"
+  "at": "2026-10-16T09:18:27.310Z"
  },
  "https://www.fightful.com/wrestling/cook-county-sherriffs-officer-files-lawsuit-against-wwe-montez-ford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:30.884Z"
+  "at": "2026-10-16T09:18:26.873Z"
  },
  "https://www.fightful.com/wrestling/zach-gowen-retires-from-in-ring-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:30.637Z"
+  "at": "2026-10-16T09:18:26.584Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-doesnt-know-how-far-adam-copeland-will-wrestle-into-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:30.219Z"
+  "at": "2026-10-16T09:18:26.099Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-skydance-ceo-david-ellison-has-been-very-excited-positive-about-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:30.059Z"
+  "at": "2026-10-16T09:18:25.913Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-9-viewership-above-1-3-million-viewers-again-key-demo-rating-also-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:29.857Z"
+  "at": "2026-10-16T09:18:25.679Z"
  },
  "https://www.fightful.com/wrestling/report-vince-mcmahon-completes-one-year-probation-for-july-2025-car-crash": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T09:12:29.696Z"
+  "at": "2026-10-16T09:18:25.489Z"
+ },
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T09:16:26.141Z"
  },
  "https://www.fightful.com/wrestling/2-out-of-3-falls-match-for-tna-international-title-avery-styles-vs-joe-alonzo-set-for-10-22-thursday-night-impact": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
