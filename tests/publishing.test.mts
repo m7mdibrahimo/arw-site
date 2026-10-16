@@ -5005,3 +5005,18 @@ test('program name forms carry the joined SmackDown and the «راو» spellings
   const raw = showNameForms({ headline: 'عرض الرو 12.10.2026 مترجم', title: 'WWE Raw', programName: 'WWE Raw', eventDate: '2026-10-12', aliases: ['عرض الرو', 'الرو'], isShow: true });
   assert.ok(raw.includes('عرض الراو الاخير مترجم'));
 });
+
+test('INCIDENTS #641: a yearly show\'s recap carries the show\'s own query words, with the year once', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  for (const headline of ['ملخص عرض موني ان ذا بانك 2026 10.10.2026', 'ملخص عرض موني ان ذا بانك 10.10.2026']) {
+    const forms = showNameForms({ headline, title: 'WWE Money in the Bank 2026 Highlights', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: [], isShow: false });
+    for (const f of ['عرض موني ان ذا بانك 2026 مترجم', 'Money in the Bank 2026 مترجم', 'تحميل عرض Money in the Bank 2026']) assert.ok(forms.includes(f), f);
+    assert.ok(!forms.some((f: string) => /2026 2026/.test(f)));
+  }
+});
+
+test('INCIDENTS #641: NXT misspellings «اكس اكس ان» are in the show\'s structured data', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = showNameForms({ headline: 'عرض ان اكس تي مترجم', title: 'WWE NXT 13.10.2026', programName: 'WWE NXT', eventDate: '2026-10-13', aliases: ['عرض ان اكس تي'], isShow: true });
+  assert.ok(forms.includes('اكس اكس ان مترجم'));
+});

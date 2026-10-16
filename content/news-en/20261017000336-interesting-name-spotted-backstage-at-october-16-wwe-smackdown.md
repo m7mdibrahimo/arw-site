@@ -1,5 +1,5 @@
 ---
-title: "Interesting Name Spotted Backstage at October 16 WWE SmackDown"
+title: "The Boogeyman Spotted Backstage at October 16 WWE SmackDown"
 slug: "interesting-name-spotted-backstage-at-october-16-wwe-smackdown"
 description: "The Boogeyman has made a surprise appearance backstage at the October 16 episode of WWE SmackDown. The WWE legend visited the Golden 1 Center in…"
 federation: WWE

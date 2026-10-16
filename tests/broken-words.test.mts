@@ -334,3 +334,15 @@ test('dual date phrase «يومي 13 و14» and «تسجيلين» are blocked a
   assert.match(applyCorrections('قاعة مشاهير تروس/ثيز'), /جورج تراغوس\/ثيز/);
   assert.match(applyCorrections('قاعة مشاهير جورج تروس ولوي ثيز'), /جورج تراغوس ولوي ثيز/);
 });
+
+// INCIDENTS #641: «لحلقتين» (dual behind a ل prefix), «بWWE» and «هذا الجمعة» reached the site.
+test('INCIDENTS #641: prefixed duals and one-letter prefixes glued to Latin are blocked', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(codes('أقام الاتحاد تسجيلا لحلقتين متتاليتين.').includes('dual_noun'));
+  assert.ok(codes('وفاز بلقبين في ليلة واحدة.').includes('dual_noun'));
+  assert.ok(!codes('أقام الاتحاد تسجيلا لحلقات متتالية.').includes('dual_noun'));
+  assert.ok(codes('قراري في قمة مسيرتي بWWE كان صعبا.').includes('glued_latin_arabic'));
+  assert.ok(!codes('قراري في قمة مسيرتي في WWE كان صعبا.').includes('glued_latin_arabic'));
+  assert.match(applyCorrections('نزال هذا الجمعة'), /هذه الجمعة/);
+});
