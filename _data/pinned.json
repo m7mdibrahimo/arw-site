@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/tna-impact-15-10-2026/",
+    "title": "عرض تي ان ايه امباكت 15.10.2026 مترجم",
+    "subtitle": "TNA iMPACT 15.10.2026",
+    "image": "/content/images/yx7z9y8uyaqwbeii.jpg?w=800",
+    "federation": "TNA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/roh-on-honorclub-15-10-2026/",
+    "title": "عرض ار او اتش اون اونر كلوب 15.10.2026 مترجم",
+    "subtitle": "ROH on HonorClub 15.10.2026",
+    "image": "/content/images/57e4mmz3re8ad7bz.jpg?w=800",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-dynamite-14-10-2026/",
     "title": "عرض داينامايت 14.10.2026 مترجم",
     "subtitle": "AEW Dynamite 14.10.2026",
@@ -119,28 +141,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/roh-on-honorclub-08-10-2026/",
-    "title": "عرض ار او اتش اون اونر كلوب 08.10.2026 مترجم",
-    "subtitle": "ROH on HonorClub 08.10.2026",
-    "image": "/content/images/6rldaw2xhlb08moq.jpg?w=800",
-    "federation": "ROH",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/tna-impact-08-10-2026/",
-    "title": "عرض تي ان ايه امباكت 08.10.2026 مترجم",
-    "subtitle": "TNA iMPACT 08.10.2026",
-    "image": "/content/images/dccsb8hggkp8jkhn.jpg?w=800",
-    "federation": "TNA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/mlp-mayhem-30-09-2026/",
