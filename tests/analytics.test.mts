@@ -64,7 +64,7 @@ test('days before the counter started show no number rather than a wrong one', a
 });
 
 test('every page loads the counter, which waits until a person really sees the page', () => {
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /<script src="\/assets\/v\.js\?v=\d+" defer><\/script>/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /<script src="\/assets\/v\.js\?v=[0-9a-z]+" defer><\/script>/);
   const v = fs.readFileSync('assets/v.js', 'utf8');
   assert.match(v, /navigator\.webdriver/);
   assert.match(v, /document\.prerendering/);
