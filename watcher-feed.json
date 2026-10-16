@@ -1,5 +1,15 @@
 [
   {
+    "id": 334155,
+    "link": "https://www.fightful.com/wrestling/last-man-standing-match-for-mlw-world-heavyweight-title-set-for-saturday-night-superfight/",
+    "date": "2026-10-15T23:30:44",
+    "date_gmt": "2026-10-16T03:30:44",
+    "title": {
+      "rendered": "Last Man Standing Match For MLW World Heavyweight Title Set For Saturday Night SuperFight"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/15232336/unnamed.jpg"
+  },
+  {
     "id": 334152,
     "link": "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x/",
     "date": "2026-10-15T23:21:58",
@@ -288,15 +298,5 @@
       "rendered": "Kevin Knight: Nobody Got Into This Business To Be A Heel Or Babyface"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/21150929/intro-1744226727.jpg"
-  },
-  {
-    "id": 334054,
-    "link": "https://www.fightful.com/wrestling/full-match-card-set-for-pro-wrestling-noahs-wrestle-odyssey-ii/",
-    "date": "2026-10-15T10:39:45",
-    "date_gmt": "2026-10-15T14:39:45",
-    "title": {
-      "rendered": "Full Match Card Set For Pro Wrestling NOAH&#8217;s Wrestle Odyssey II"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/15102904/HTw1S02a0AAdAfC.jpg"
   }
 ]
