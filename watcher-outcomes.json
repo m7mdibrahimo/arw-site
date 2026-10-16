@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/wwe-montez-ford-sued-alleged-lap-dance-security-guard-during-raw": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-16T00:12:57.488Z"
+ },
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T00:05:39.296Z"
+ },
+ "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-16T00:05:39.164Z"
+ },
  "https://www.fightful.com/wrestling/zach-gowen-retires-from-in-ring-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,16 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T00:03:59.472Z"
- },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T00:05:39.296Z"
- },
- "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-16T00:05:39.164Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas": {
   "reason": "مكرر مع خبر نزل قبل كده",
