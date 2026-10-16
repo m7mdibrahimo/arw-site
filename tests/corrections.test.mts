@@ -68,3 +68,12 @@ test("«غير موفق فيها» is corrected and no story keeps it", () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("غير موفق فيها"));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #627: a single dropped hamza («الاصابة»، «اساسيا») slipped past hamza_dropped (needs 3), and «lives inside his own head» became «داخل عقده».
+test("single dropped hamzas and the «head» mistranslation are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("تلك الاصابة جزءا اساسيا من الاصابات"), "تلك الإصابة جزءا أساسيا من الإصابات");
+  assert.equal(applyCorrections("يعيش داخل عقده الخاص دون"), "يعيش داخل رأسه دون");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])[وفبلك]?(?:ال)?(?:اصابة|اصابات|اساسي|اساسيا|اساسية)(?![ء-ي])|يعيش داخل عقده/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
