@@ -377,3 +377,15 @@ test('once: the blue badge every early member got goes; the owner\'s own and the
   assert.equal(await resetAutoBadges(e, []), null);
   assert.equal(badge('early_one'), 1);
 });
+
+test('the account page asks for no recovery code: sign-up goes straight on, a forgotten password comes back by mail (owner 2026-10-16)', async () => {
+  // «في ناس كتير مش فاهمه ده ايه اصلا وبتوقف عن مرحلة التسجيل فا شيلها خالص»
+  const fs = await import('node:fs');
+  const page = fs.readFileSync('pages/account.njk', 'utf-8'), js = fs.readFileSync('assets/account.js', 'utf-8');
+  for (const gone of ['data-view="welcome"', 'data-form="code"', 'data-act="recovery"', 'كود الاسترجاع', 'كود استرجاع', 'acct-code']) {
+    assert.ok(!page.includes(gone), `account page: ${gone}`);
+  }
+  assert.ok(!/welcome\(|forms\.code|كود الاسترجاع|\/recover'/.test(js));
+  assert.match(js, /if \(d\.pending\) \{ pending\(\{ login: u, password: p \}, d\.email, true\); return; \}\n\s*signedIn\(d\);\n\s*done\(\);/);
+  assert.match(page, /data-form="mail"/);
+});

@@ -1,5 +1,5 @@
 // The members' page, /account/ (owner 2026-10-14: «نظام التسجيل للمتابعيين … يكون احترافي جدا»): sign in, sign up
-// (with the worker's captcha), the recovery code shown once, «forgot my password» (by mail, or by the code), the
+// (with the worker's captcha), «forgot my password» (by mail), the
 // member's own page (name, picture, favourites, password). The worker: worker/src/members.ts. The browser keeps the
 // session in localStorage «arw-member» ({token, member}); assets/features.js reads it for the header's button, and
 // assets/comments.js to comment as the member.
@@ -145,25 +145,16 @@
         return;
       }
       f.reset(); say(f, '');
-      if (d.pending) { welcome(d.recovery, false, { login: u, password: p }, d.email); return; }
+      // no recovery code to save any more (owner 2026-10-16: «في ناس كتير مش فاهمه ده ايه اصلا وبتوقف عن مرحلة
+      // التسجيل»): straight to «open your mail», or into the account. A forgotten password comes back by mail.
+      if (d.pending) { pending({ login: u, password: p }, d.email, true); return; }
       signedIn(d);
-      welcome(d.recovery, d.mailed);
+      done();
     }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); captcha(); });
   });
 
   // waitingFor: an account that opens from the mail (the sign-in, kept in memory only to send the link again)
   var waitingFor = null, waitingMail = '';
-  function welcome(code, mailed, creds, email) {
-    var v = $('[data-view="welcome"]');
-    waitingFor = creds || null; waitingMail = email || '';
-    $('.acct-code', v).textContent = code;
-    $('.acct-welcome-tx', v).textContent = creds ? 'تم إنشاء حسابك. احفظ كود الاسترجاع أولا، ثم فعل حسابك من بريدك.' : 'تم إنشاء حسابك.';
-    var check = $('.acct-saved', v), go = $('[data-go="profile"]', v);
-    go.textContent = creds ? 'متابعة' : 'متابعة إلى حسابي';
-    check.checked = false; go.disabled = true;
-    check.onchange = function () { go.disabled = !check.checked; };
-    show('welcome');
-  }
   function pending(creds, email, sent) {
     waitingFor = creds; waitingMail = email || waitingMail;
     var v = $('[data-view="pending"]');
@@ -184,11 +175,6 @@
       m.className = 'acct-msg acct-pending-msg ' + (d.sent ? 'is-ok' : 'is-bad');
     }).catch(function () { b.disabled = false; m.textContent = 'تعذر الاتصال، حاول مرة أخرى.'; m.className = 'acct-msg acct-pending-msg is-bad'; });
   });
-  $('.acct-copy').addEventListener('click', function () {
-    var b = this, code = $('.acct-code').textContent;
-    var ok = function () { b.textContent = 'تم النسخ ✓'; setTimeout(function () { b.textContent = 'نسخ'; }, 1800); };
-    if (navigator.clipboard) navigator.clipboard.writeText(code).then(ok, function () {}); else ok();
-  });
 
   forms.mail.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -197,27 +183,9 @@
     busy(f, true); say(f, 'لحظة…');
     api('/forgot', { email: val(f, 'email') }).then(function (d) {
       busy(f, false);
-      if (d.nomail) { say(f, 'الاسترجاع بالبريد غير متاح الآن، استخدم كود الاسترجاع.', 'bad'); $('[data-view="forgot"] [data-tab="code"]').click(); return; }
+      if (d.nomail) { say(f, 'الاسترجاع بالبريد غير متاح الآن، حاول بعد قليل أو تواصل معنا.', 'bad'); return; }
       if (!d.ok) { say(f, srv(d.error) || 'تعذر الإرسال، حاول مرة أخرى.', 'bad'); return; }
       say(f, 'إن كان لهذا البريد حساب، ستصلك رسالة خلال دقائق. افحص البريد غير المرغوب أيضا.', 'ok');
-    }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
-  });
-
-  forms.code.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var f = forms.code;
-    if (!val(f, 'login') || !val(f, 'code') || !f.elements.password.value) { say(f, 'أكمل كل الخانات.', 'bad'); return; }
-    busy(f, true); say(f, 'لحظة…');
-    api('/recover', { login: val(f, 'login'), code: val(f, 'code'), password: f.elements.password.value }).then(function (d) {
-      busy(f, false);
-      if (!d.ok) { say(f, srv(d.error) || 'تعذر التغيير، تأكد من البيانات.', 'bad'); return; }
-      var creds = { login: val(f, 'login'), password: f.elements.password.value };
-      f.reset();
-      if (d.pending) { welcome(d.recovery, false, creds, d.email); $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، ثم فعل حسابك من بريدك.'; return; }
-      signedIn(d);
-      // the old code is used up: a new one, once
-      welcome(d.recovery, false);
-      $('.acct-welcome-tx').textContent = 'تم تغيير كلمة المرور. هذا كود الاسترجاع الجديد، والقديم لم يعد يعمل.';
     }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
   });
 
@@ -595,18 +563,6 @@
       session.member = d.member; save(session); drawProfile();
       say(f, 'تم تغيير البريد ✓', 'ok');
     }).catch(function () { busy(f, false); say(f, 'تعذر الاتصال، حاول مرة أخرى.', 'bad'); });
-  });
-  $('[data-act="recovery"]').addEventListener('click', function () {
-    var f = forms.password;
-    if (!f.elements.current.value) { f.elements.current.focus(); say(f, 'اكتب كلمة المرور الحالية أولا.', 'bad'); return; }
-    api('/recovery', { current: f.elements.current.value }, true).then(function (d) {
-      if (d.signedOut) return out();
-      if (!d.ok) { say(f, srv(d.error) || 'تعذر ذلك.', 'bad'); return; }
-      f.reset();
-      welcome(d.recovery, false);
-      $('.acct-welcome-tx').textContent = 'هذا كود الاسترجاع الجديد، والقديم لم يعد يعمل.';
-      $('.acct-view[data-view="welcome"] .acct-title').textContent = 'كود استرجاع جديد';
-    });
   });
   $('[data-act="verify-again"]').addEventListener('click', function () {
     var b = this;

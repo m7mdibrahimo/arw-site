@@ -366,7 +366,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
 
   if (path === "/forgot" && request.method === "POST") {
     const email = String(body.email || "").trim().toLowerCase();
-    if (!env.RESEND_API_KEY) return reply({ ok: false, error: "استرجاع الحساب بالبريد غير متاح الآن، استخدم كود الاسترجاع.", nomail: true }, 503);
+    if (!env.RESEND_API_KEY) return reply({ ok: false, error: "استرجاع الحساب بالبريد غير متاح الآن، حاول بعد قليل أو تواصل معنا.", nomail: true }, 503);
     if (await tooMany(env.PUSH_KV, `fg:${ip}`, 5, 3600)) return reply({ ok: false, error: "طلبات كثيرة، حاول بعد ساعة." }, 429);
     await count(env.PUSH_KV, `fg:${ip}`, 3600);
     // and per address, whoever asks: an inbox is never flooded, nor its link replaced over and over

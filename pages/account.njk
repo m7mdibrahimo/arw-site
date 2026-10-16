@@ -417,7 +417,7 @@ html[dir="ltr"] .acct-quick-go{ transform:scaleX(-1); }
 .acct-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
 .acct-spin{ width:34px; height:34px; margin:120px auto; border-radius:50%; border:3px solid var(--line); border-top-color:var(--teal); animation:acct-spin 0.8s linear infinite; }
 @keyframes acct-spin{ to{ transform:rotate(360deg); } }
-/* welcome + recovery code */
+/* «open your mail» and the account's buttons */
 .acct-mail-ic{ background:rgba(29,155,240,.12); color:#1d9bf0; }
 .acct-steps{ margin:0; padding:0 18px 0 0; display:flex; flex-direction:column; gap:6px; color:var(--muted); font-size:14px; line-height:1.8; }
 .acct-btn-soft{ background:var(--teal-soft, rgba(14,149,148,.1)); color:var(--teal); }
@@ -426,14 +426,6 @@ html[dir="ltr"] .acct-quick-go{ transform:scaleX(-1); }
 [data-form="password"] .acct-row .acct-btn{ flex:1 1 200px; }
 .acct-pending-mail{ color:var(--ink); }
 .acct-done-ic{ width:58px; height:58px; border-radius:50%; background:var(--teal-soft); color:var(--teal); display:flex; align-items:center; justify-content:center; }
-.acct-code-box{ padding:18px; border-radius:16px; background:var(--gold-soft); border:1px dashed var(--gold); display:flex; flex-direction:column; gap:8px; }
-.acct-code-box b{ font:900 16px 'Cairo',sans-serif; color:var(--ink); }
-.acct-code-box p{ margin:0; font-size:14px; line-height:1.8; color:var(--ink); opacity:.85; }
-.acct-code-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-.acct-code{ font:800 22px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing:2px; color:var(--ink); background:var(--card); padding:12px 16px; border-radius:12px; border:1px solid var(--line); }
-.acct-copy{ height:44px; padding:0 18px; border-radius:12px; border:1px solid var(--line); background:var(--card); color:var(--ink); font:800 14px 'Cairo',sans-serif; cursor:pointer; }
-.acct-check{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; cursor:pointer; }
-.acct-check input{ width:20px; height:20px; accent-color:var(--teal); }
 /* the member's page */
 .acct-me{ display:flex; align-items:center; gap:16px; }
 .acct-av{ position:relative; flex:0 0 auto; width:56px; height:56px; padding:0; border:0; border-radius:50%; background:var(--teal); color:#fff; cursor:pointer; }
@@ -530,7 +522,6 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
   .acct-card{ padding:22px 18px; border-radius:18px; }
   .acct-title{ font-size:22px; }
   .acct-cap-img{ width:140px; height:50px; }
-  .acct-code{ font-size:18px; }
 }
 </style>
 </head>
@@ -612,41 +603,15 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
         </form>
       </div>
 
-      <!-- the recovery code, once, right after sign-up -->
-      <div class="acct-view" data-view="welcome" hidden>
-        <div class="acct-done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h1 class="acct-title">أهلا بك في عرب راسلنج</h1>
-        <p class="acct-sub acct-welcome-tx">تم إنشاء حسابك.</p>
-        <div class="acct-code-box">
-          <b>كود الاسترجاع</b>
-          <p>احفظ هذا الكود في مكان آمن. ستحتاجه إذا نسيت كلمة المرور، ولن يظهر مرة أخرى.</p>
-          <div class="acct-code-row"><code class="acct-code" dir="ltr"></code><button type="button" class="acct-copy">نسخ</button></div>
-        </div>
-        <label class="acct-check"><input type="checkbox" class="acct-saved"> حفظت الكود</label>
-        <button type="button" class="acct-btn" data-go="profile" disabled>متابعة إلى حسابي</button>
-      </div>
-
       <!-- forgot -->
       <div class="acct-view" data-view="forgot" hidden>
         <button type="button" class="acct-back" data-go="auth">→ رجوع</button>
         <h1 class="acct-title">استرجاع الحساب</h1>
-        <div class="acct-tabs" role="tablist">
-          <button type="button" role="tab" class="acct-tab is-on" data-tab="mail" aria-selected="true">بالبريد</button>
-          <button type="button" role="tab" class="acct-tab" data-tab="code" aria-selected="false">بكود الاسترجاع</button>
-        </div>
         <form class="acct-form" data-form="mail" novalidate>
           <p class="acct-sub">اكتب بريدك، وسنرسل لك رابطا لتغيير كلمة المرور.</p>
           <label class="acct-field"><span>البريد الإلكتروني</span><input name="email" type="email" autocomplete="email" required dir="ltr"></label>
           <p class="acct-msg" role="status"></p>
           <button class="acct-btn" type="submit">أرسل الرابط</button>
-        </form>
-        <form class="acct-form" data-form="code" novalidate hidden>
-          <label class="acct-field"><span>اسم المستخدم أو البريد</span><input name="login" autocomplete="username" required dir="auto"></label>
-          <label class="acct-field"><span>كود الاسترجاع</span><input name="code" autocomplete="off" required dir="ltr" placeholder="XXXX-XXXX-XXXX"></label>
-          <label class="acct-field"><span>كلمة المرور الجديدة</span>
-            <span class="acct-pass"><input name="password" type="password" autocomplete="new-password" required><button type="button" class="acct-eye" aria-label="إظهار كلمة المرور"></button></span></label>
-          <p class="acct-msg" role="status"></p>
-          <button class="acct-btn" type="submit">تغيير كلمة المرور</button>
         </form>
       </div>
 
@@ -858,7 +823,6 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
           <p class="acct-msg" role="status"></p>
           <div class="acct-row">
             <button class="acct-btn acct-btn-soft" type="submit">تغيير كلمة المرور</button>
-            <button type="button" class="acct-btn acct-btn-ghost" data-act="recovery">كود استرجاع جديد</button>
           </div>
         </form>
 
