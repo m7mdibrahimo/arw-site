@@ -77,3 +77,11 @@ test("single dropped hamzas and the «head» mistranslation are corrected", asyn
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])[وفبلك]?(?:ال)?(?:اصابة|اصابات|اساسي|اساسيا|اساسية)(?![ء-ي])|يعيش داخل عقده/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #629: «أديائها» (extra letter) reached the Drew McIntyre feet story.
+test("«أداء» typo «أدياء» is corrected and absent from published stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("توقف عن أديائها سابقا"), "توقف عن أدائها سابقا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أدياء/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
