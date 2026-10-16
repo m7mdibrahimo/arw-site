@@ -93,3 +93,12 @@ test("«غيلمور» is never split into «غيل مور»", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غيل مور/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #640: «إحدى عروض عرض WWE RAW» (wrong gender + doubled «عرض») reached the Naomi story.
+test("«إحدى عروض عرض» is corrected and absent from published stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("خلال إحدى عروض عرض WWE RAW في أغسطس"), "خلال أحد عروض WWE RAW في أغسطس");
+  assert.equal(applyCorrections("في إحدى عروض Collision"), "في أحد عروض Collision");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /إحدى\s+عروض|عروض\s+عرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
