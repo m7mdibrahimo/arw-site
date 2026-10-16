@@ -2373,6 +2373,10 @@ module.exports = function(eleventyConfig) {
       } catch (e) { console.log(`[minify] ${f} left as it is: ${String(e.message).split("\n")[0]}`); }
     }
     console.log(`[minify] ${n} scripts and styles, ${Math.round(saved / 1024)} KB lighter`);
+    // then each page links to its scripts and styles by names of their final content (lib/asset-names.cjs, INCIDENTS
+    // #617): here, after the minifying, so a name is always of the bytes that go out
+    const named = require("./lib/asset-names.cjs").nameAssetsByContent("_site");
+    console.log(`[assets] ${named.files} scripts and styles named by their content, on ${named.pages} pages`);
   });
 
   return {
