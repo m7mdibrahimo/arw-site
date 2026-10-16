@@ -323,3 +323,14 @@ test('corrections fix Doyle spelling, AEW Continental title and نزال agreeme
   assert.equal(applyCorrections('بطولة AEW العالمية للقارات'), 'بطولة AEW القارية');
   assert.equal(applyCorrections('حيث تسببت نزال الطاولات في كسر'), 'حيث تسبب نزال الطاولات في كسر');
 });
+
+test('dual date phrase «يومي 13 و14» and «تسجيلين» are blocked and corrected (INCIDENTS #637)', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(codes('أقام الاتحاد تسجيلين متتاليين.').includes('dual_noun'));
+  assert.ok(codes('العروض يومي 13 و14 أكتوبر.').includes('dual_noun'));
+  assert.ok(!codes('حديث يومي عن المصارعة.').includes('dual_noun'));
+  assert.match(applyCorrections('العروض يومي 13 و14 أكتوبر'), /العروض في 13 و14 أكتوبر/);
+  assert.match(applyCorrections('قاعة مشاهير تروس/ثيز'), /جورج تراغوس\/ثيز/);
+  assert.match(applyCorrections('قاعة مشاهير جورج تروس ولوي ثيز'), /جورج تراغوس ولوي ثيز/);
+});
