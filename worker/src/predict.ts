@@ -5,10 +5,20 @@
 //
 //   GET  /predict                       {events, leaders, me?}       anyone (a member also gets their picks and rank)
 //   POST /predict/pick {match, pick}    {ok}                         a member, until the show starts
-//   panel (worker/src/index.ts): studioPredict (list), studioPredictSave, studioPredictResult, studioPredictDelete
+//   panel (worker/src/index.ts): studioPredict (list), studioPredictSave, studioPredictResult, studioPredictDelete,
+//   studioPredictPrize (the show's prize, given by the owner's own hand)
+//
+// The prize (owner 2026-10-16: «ال يجمع اكبر نقط هياخد شهر مجاني اشتراك مدفوع»): the top of each show's ranking wins a
+// month of the paid membership. Nothing grants it by itself (owner: «انا ال افعل الاشتراك ب ايديا للناس عشان ممكن
+// الناس تعمل ثغرات»): once the results are out the panel shows the winner, and the owner gives the month with a button,
+// once per show (pred_events.prize_member remembers who got it).
 import { once } from "./once";
 import { memberOf, type MembersEnv } from "./members";
 import { ensureFollows } from "./follows";
+import { studioPremiumGrant } from "./premium";
+
+/** The show's prize: days of the paid membership for the top of its ranking */
+export const PRIZE_DAYS = 30;
 
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
 const reply = (body: unknown, status = 200) =>
@@ -27,6 +37,8 @@ export function ensurePredict(db: D1Database): Promise<void> {
     ]);
     // each match's own poster, and a line under its name (the title at stake, the stipulation)
     for (const col of ["image", "note"]) await db.prepare(`ALTER TABLE pred_matches ADD COLUMN ${col} TEXT NOT NULL DEFAULT ''`).run().catch(() => null);
+    // who was given the show's prize, and when (0: not given yet)
+    for (const col of ["prize_member", "prize_at"]) await db.prepare(`ALTER TABLE pred_events ADD COLUMN ${col} INTEGER NOT NULL DEFAULT 0`).run().catch(() => null);
   });
 }
 
@@ -56,6 +68,20 @@ async function withPeople(db: D1Database, list: { member: number }[]) {
   });
 }
 
+/** A finished show's prize winner: the one the owner gave it to, or else the top of its ranking who can win it (a
+ *  member in good standing with at least a point; the site's own account doesn't compete for its own prize) */
+async function champion(db: D1Database, e: any) {
+  const rows = await standings(db, e.id, 0);
+  const pool = e.prize_member ? rows.filter(r => r.member === e.prize_member) : rows.filter(r => r.points > 0);
+  if (!pool.length) return null;
+  const ids = pool.slice(0, 30).map(r => r.member);
+  const ok = new Set(((await db.prepare(`SELECT id FROM members WHERE id IN (${ids.map(() => "?").join(",")}) AND banned = 0 AND official = 0`).bind(...ids).all<any>()).results || []).map(m => m.id));
+  const top = pool.find(r => ok.has(r.member));
+  if (!top) return null;
+  const [p] = await withPeople(db, [top]);
+  return p ? { ...p, member: top.member, granted: !!e.prize_member, at: Number(e.prize_at) || 0 } : null;
+}
+
 export async function handlePredict(request: Request, env: MembersEnv, url: URL, now = Date.now()): Promise<Response> {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
   const db = env.ANALYTICS;
@@ -83,8 +109,11 @@ export async function handlePredict(request: Request, env: MembersEnv, url: URL,
           // what everyone picked shows once the picks are closed (no following the crowd before)
           share: locked ? Object.fromEntries(c.map(x => [x.pick, total ? Math.round((x.n * 100) / total) : 0])) : null, total, mine: myPick.get(m.id) || "" };
       });
+      const champ = e.status === "done" ? await champion(db, e) : null;
       out.push({ id: e.id, title: e.title, title_en: e.title_en, starts: e.starts, image: e.image, status: e.status, locked, matches: ms,
-        leaders: e.status === "done" ? await withPeople(db, await standings(db, e.id, 10)) : [] });
+        leaders: e.status === "done" ? await withPeople(db, await standings(db, e.id, 10)) : [],
+        // the show's prize, and (once the results are out) who wins it; the member's id stays in the panel
+        prize: { days: PRIZE_DAYS, winner: champ ? { user: champ.user, name: champ.name, pic: champ.pic, points: champ.points, right: champ.right, blue: champ.blue, gold: champ.gold, prem: champ.prem } : null, granted: !!champ?.granted } });
     }
     const all = await standings(db, 0, 0);
     const leaders = await withPeople(db, all.slice(0, 20));
@@ -115,7 +144,32 @@ export async function studioPredict(env: MembersEnv) {
   const events = (await db.prepare("SELECT * FROM pred_events ORDER BY starts DESC LIMIT 60").all<any>()).results || [];
   const matches = (await db.prepare("SELECT m.*, (SELECT COUNT(*) FROM pred_picks p WHERE p.match = m.id) AS picks FROM pred_matches m ORDER BY event, ord, id").all<any>()).results || [];
   const players = (await db.prepare("SELECT m.event AS event, COUNT(DISTINCT p.member) AS n FROM pred_picks p JOIN pred_matches m ON m.id = p.match GROUP BY m.event").all<any>()).results || [];
-  return { success: true, events: events.map(e => ({ ...e, players: players.find(p => p.event === e.id)?.n || 0, matches: matches.filter(m => m.event === e.id).map(m => ({ ...m, options: opts(m.options) })) })) };
+  const champs = new Map<number, any>();
+  for (const e of events) if (e.status === "done") champs.set(e.id, await champion(db, e));
+  return { success: true, prizeDays: PRIZE_DAYS, events: events.map(e => ({ ...e, champion: champs.get(e.id) || null, players: players.find(p => p.event === e.id)?.n || 0, matches: matches.filter(m => m.event === e.id).map(m => ({ ...m, options: opts(m.options) })) })) };
+}
+
+/** The owner gives the show's prize to its winner: once per show, only after the results are out. The show is claimed
+ *  before the month is given, so two taps never give it twice; a grant that fails lets the show go again. */
+export async function studioPredictPrize(env: MembersEnv, id: unknown, who = "", now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "مش متاح دلوقتي." };
+  await ensurePredict(db);
+  const e = await db.prepare("SELECT * FROM pred_events WHERE id = ?1").bind(Number(id) || 0).first<any>();
+  if (!e) return { success: false, error: "العرض ده مش موجود." };
+  if (e.status !== "done") return { success: false, error: "أعلن النتائج الأول، وبعدها ادي الجايزة للفايز." };
+  if (e.prize_member) return { success: false, error: "الجايزة اتدت قبل كده للعرض ده." };
+  const champ = await champion(db, e);
+  if (!champ) return { success: false, error: "مفيش فايز للعرض ده (محدش جاب نقط)." };
+  const claim = await db.prepare("UPDATE pred_events SET prize_member = ?1, prize_at = ?2 WHERE id = ?3 AND prize_member = 0").bind(champ.member, now, e.id).run();
+  if (!claim.meta?.changes) return { success: false, error: "الجايزة اتدت قبل كده للعرض ده." };
+  const g: any = await studioPremiumGrant(env as any, champ.member, PRIZE_DAYS, `prize:${who}`.slice(0, 40), now);
+  if (!g.success) { await db.prepare("UPDATE pred_events SET prize_member = 0, prize_at = 0 WHERE id = ?1").bind(e.id).run(); return g; }
+  await ensureFollows(db);
+  await db.prepare("INSERT OR IGNORE INTO member_inbox (member, url, title, title_en, image, program, fed, at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, '', ?7)")
+    .bind(champ.member, `/predictions/?prize=${e.id}#e${e.id}`, `مبروك! فزت بجائزة توقعات ${e.title}: شهر كامل في العضوية المميزة، وقد فُعّل لك الآن.`,
+      `Congratulations! You won the ${e.title_en || e.title} predictions prize: a month of Premium, active now.`, e.image || "", "التوقعات", now).run();
+  return { success: true, member: champ.member, name: champ.name, user: champ.user, until: g.until };
 }
 
 /** A card saved: its name, time, picture, state, and matches (a match already picked keeps its options' names) */

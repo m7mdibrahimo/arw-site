@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { handleMembers } from '../worker/src/members';
 import { handleFollows } from '../worker/src/follows';
-import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete } from '../worker/src/predict';
+import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize, PRIZE_DAYS } from '../worker/src/predict';
 
 function d1() {
   const db = new DatabaseSync(':memory:');
@@ -130,4 +130,56 @@ test('the cards from the code go up once each, a later match joins its card, and
   await studioPredictDelete(e, cj.id);
   assert.equal(await seedPredictions(e.ANALYTICS, more, now), 0);
   assert.equal((await call(e, '/predict', undefined, '', now)).body.events.length, 1);
+});
+
+test('the show\'s prize: the top of its ranking, given once and only by the owner\'s button, after the results', async () => {
+  const e: any = { ANALYTICS: d1(), PUSH_KV: kv() };
+  const a = await member(e, 'pick_master'), b = await member(e, 'second_best');
+  const saved = await studioPredictSave(e, { title: 'عرض WWE Crown Jewel 2026', title_en: 'WWE Crown Jewel 2026', starts: SHOW, status: 'open', matches: [
+    { title: 'رومان رينز ضد سامي زين', options: ['رومان رينز', 'سامي زين'], points: 2 },
+  ] });
+  const m = (await call(e, '/predict', undefined, a)).body.events[0].matches[0];
+  assert.deepEqual((await call(e, '/predict')).body.events[0].prize, { days: PRIZE_DAYS, winner: null, granted: false }, 'the prize shows before the show');
+  await call(e, '/predict/pick', { match: m.id, pick: 'سامي زين' }, a);
+  await call(e, '/predict/pick', { match: m.id, pick: 'رومان رينز' }, b);
+  // nothing is given before the results, nor by the results themselves
+  assert.equal((await studioPredictPrize(e, saved.id, 'owner')).success, false);
+  await studioPredictResult(e, { id: saved.id, winners: { [m.id]: 'سامي زين' }, finish: true });
+  const until = () => Number((e.ANALYTICS.raw.prepare("SELECT premium_until FROM members WHERE username = 'pick_master'").get() as any).premium_until);
+  assert.equal(until(), 0);
+  let ev = (await call(e, '/predict')).body.events[0];
+  assert.deepEqual([ev.prize.winner.user, ev.prize.winner.points, ev.prize.granted], ['pick_master', 2, false]);
+  assert.equal(ev.prize.winner.member, undefined, 'the member\'s id stays in the panel');
+  assert.equal((await studioPredict(e)).events![0].champion.user, 'pick_master');
+  // the owner's button: a month, once
+  const now = Date.now();
+  const r = await studioPredictPrize(e, saved.id, 'owner', now);
+  assert.equal(r.success, true);
+  assert.ok(Math.abs(until() - (now + PRIZE_DAYS * 86_400_000)) < 1000);
+  assert.equal((await studioPredictPrize(e, saved.id, 'owner')).success, false);
+  assert.ok(Math.abs(until() - (now + PRIZE_DAYS * 86_400_000)) < 1000, 'a second tap gives nothing');
+  const pay: any = e.ANALYTICS.raw.prepare("SELECT amount, days, granted_by FROM premium_payments").all();
+  assert.deepEqual(pay.map((x: any) => [x.amount, x.days, x.granted_by]), [[0, PRIZE_DAYS, 'prize:owner']]);
+  // the winner is told, and the page says it was given (and stays with them if the results are edited later)
+  const inbox = async (t: string) => (await (await handleFollows(new Request('https://w/follow/inbox', { headers: { Authorization: `Bearer ${t}` } }), e, new URL('https://w/follow/inbox'))).json() as any).items;
+  assert.ok((await inbox(a)).some((x: any) => /مبروك! فزت بجائزة توقعات/.test(x.title)));
+  assert.ok(!(await inbox(b)).some((x: any) => /مبروك/.test(x.title)));
+  await studioPredictResult(e, { id: saved.id, winners: { [m.id]: 'رومان رينز' }, finish: true });
+  ev = (await call(e, '/predict')).body.events[0];
+  assert.deepEqual([ev.prize.winner.user, ev.prize.granted], ['pick_master', true]);
+});
+
+test('no prize for a show nobody scored in, nor for the site\'s own account', async () => {
+  const e: any = { ANALYTICS: d1(), PUSH_KV: kv() };
+  const a = await member(e, 'site_owner'), b = await member(e, 'fan_two');
+  const saved = await studioPredictSave(e, { title: 'عرض', starts: SHOW, status: 'open', matches: [{ title: 'أ ضد ب', options: ['أ', 'ب'], points: 1 }] });
+  const m = (await call(e, '/predict', undefined, a)).body.events[0].matches[0];
+  await call(e, '/predict/pick', { match: m.id, pick: 'ب' }, a);
+  await call(e, '/predict/pick', { match: m.id, pick: 'ب' }, b);
+  await studioPredictResult(e, { id: saved.id, winners: { [m.id]: 'أ' }, finish: true });
+  assert.equal((await call(e, '/predict')).body.events[0].prize.winner, null);
+  assert.equal((await studioPredictPrize(e, saved.id, 'owner')).success, false);
+  await studioPredictResult(e, { id: saved.id, winners: { [m.id]: 'ب' }, finish: true });
+  e.ANALYTICS.raw.prepare("UPDATE members SET official = 1 WHERE username = 'site_owner'").run();
+  assert.equal((await call(e, '/predict')).body.events[0].prize.winner.user, 'fan_two');
 });
