@@ -1095,3 +1095,30 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 
 /* «التوقعات»: each match's poster in the list */
 .pd-card-mimg { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; object-position: center 15%; align-self: center; flex: none; }
+
+/* who picked what in a show (studio/js/views/predictions.js whoPicked) */
+.pd-who-tabs { margin: 0 0 14px; }
+.pd-who-ms { display: flex; flex-direction: column; gap: 14px; }
+.pd-who-m h2 { font-size: 16px; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+.pd-who-o { padding: 12px 0; }
+.pd-who-o + .pd-who-o { border-top: 1px solid var(--line); }
+.pd-who-oh { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.pd-who-o.is-win .pd-who-oh b { color: #1f8a4c; }
+.pd-who-o.is-lose { opacity: .78; }
+.pd-who-bar { height: 6px; border-radius: 99px; background: color-mix(in srgb, var(--ink) 8%, transparent); margin: 7px 0 10px; overflow: hidden; }
+.pd-who-bar i { display: block; height: 100%; border-radius: inherit; background: var(--teal, #0e9594); }
+.pd-who-o.is-win .pd-who-bar i { background: #2f9e5b; }
+.pd-who-ps { display: flex; flex-wrap: wrap; gap: 6px; }
+.pd-who-p { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; border-radius: 99px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); font-size: 13px; font-weight: 700; }
+.pd-who-p:hover { border-color: var(--teal, #0e9594); }
+.pd-who-p.is-prem span:last-child { color: #a86400; }
+.pd-who-av { width: 24px; height: 24px; border-radius: 50%; background: var(--teal, #0e9594); color: #fff; display: grid; place-items: center; font-size: 12px; font-weight: 900; overflow: hidden; flex: none; }
+.pd-who-av img { width: 100%; height: 100%; object-fit: cover; }
+.pd-who-tbl { overflow-x: auto; }
+.pd-who-tr { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(110px, 1fr); grid-template-columns: minmax(190px, 1.6fr); gap: 8px; align-items: center; padding: 8px 4px; min-width: max-content; }
+.pd-who-tr + .pd-who-tr { border-top: 1px solid var(--line); }
+.pd-who-tr.is-head { font-size: 12px; font-weight: 900; color: var(--muted); }
+.pd-who-tr [role="cell"] { font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+.pd-who-tr .is-ok { color: #1f8a4c; }
+.pd-who-tr .is-no { color: #c73b2c; text-decoration: line-through; opacity: .8; }
+.pd-who-rank { font-style: normal; font-weight: 900; color: var(--muted); min-width: 18px; }

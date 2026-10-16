@@ -40,7 +40,7 @@ import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, st
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
-import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
+import { handlePredict, studioPredict, studioPredictPicks, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
 import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
@@ -3117,6 +3117,8 @@ export default {
         if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير التوقعات." }, 403);
         const who = await studioUser(request, env as any);
         if (path === "/api/studio/predict" && request.method === "GET") { await seedPredict(env); return json(await studioPredict(env as any)); }
+        // who picked what in one show (owner 2026-10-17)
+        if (path === "/api/studio/predict/picks" && request.method === "GET") { const r: any = await studioPredictPicks(env as any, url.searchParams.get("id")); return json(r, r.success ? 200 : 404); }
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
         let r: any = null;
         // the show's prize is paid membership: given by the owner only, like any other month given by hand

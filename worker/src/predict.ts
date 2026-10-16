@@ -82,6 +82,25 @@ async function champion(db: D1Database, e: any) {
   return p ? { ...p, member: top.member, granted: !!e.prize_member, at: Number(e.prize_at) || 0 } : null;
 }
 
+/** Who picked what in the given shows: {match: {option: [person…]}}, earliest pick first. The panel and the site's own
+ *  account see it (owner 2026-10-17: «معنديش صلاحية اشوف مين ال توقع لا في اللوحة ولا في الموقع نفسه … اديني الصلاحية
+ *  دي كاملة»); a member never sees another member's picks. */
+async function picksOf(db: D1Database, eventIds: number[]) {
+  const out = new Map<number, Record<string, any[]>>();
+  if (!eventIds.length) return out;
+  const rows = (await db.prepare(`SELECT p.match AS match, p.pick AS pick, p.at AS at, mb.id AS member, mb.username, mb.display, mb.pic, mb.official, mb.badge, mb.premium_until
+    FROM pred_picks p JOIN pred_matches pm ON pm.id = p.match JOIN members mb ON mb.id = p.member
+    WHERE pm.event IN (${eventIds.map(() => "?").join(",")}) ORDER BY p.at ASC`).bind(...eventIds).all<any>()).results || [];
+  const now = Date.now();
+  for (const r of rows) {
+    const by = out.get(r.match) || {};
+    (by[r.pick] = by[r.pick] || []).push({ member: r.member, user: r.username, name: r.display || r.username, pic: r.official ? "official" : r.pic, at: r.at,
+      blue: !r.official && (r.badge !== 0 || Number(r.premium_until) > now), gold: !!r.official || r.badge === 2, prem: !r.official && Number(r.premium_until) > now });
+    out.set(r.match, by);
+  }
+  return out;
+}
+
 export async function handlePredict(request: Request, env: MembersEnv, url: URL, now = Date.now()): Promise<Response> {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
   const db = env.ANALYTICS;
@@ -100,6 +119,8 @@ export async function handlePredict(request: Request, env: MembersEnv, url: URL,
     const counts = mids.length ? (await db.prepare(`SELECT match, pick, COUNT(*) AS n FROM pred_picks WHERE match IN (${mids.map(() => "?").join(",")}) GROUP BY match, pick`).bind(...mids).all<any>()).results || [] : [];
     const mine = me && mids.length ? (await db.prepare(`SELECT match, pick FROM pred_picks WHERE member = ?1 AND match IN (${mids.map(() => "?").join(",")})`).bind(me.id, ...mids).all<any>()).results || [] : [];
     const myPick = new Map(mine.map(r => [r.match, r.pick]));
+    // the site's own account sees who picked what, open or closed
+    const who = me?.official ? await picksOf(db, ids) : null;
     const out = [];
     for (const e of events) {
       const locked = e.status === "done" || now >= e.starts;
@@ -107,7 +128,8 @@ export async function handlePredict(request: Request, env: MembersEnv, url: URL,
         const c = counts.filter(x => x.match === m.id), total = c.reduce((s, x) => s + x.n, 0);
         return { id: m.id, title: m.title, note: m.note || "", image: IMAGE.test(m.image || "") ? m.image : "", options: opts(m.options), points: m.points, winner: e.status === "done" ? m.winner : "",
           // what everyone picked shows once the picks are closed (no following the crowd before)
-          share: locked ? Object.fromEntries(c.map(x => [x.pick, total ? Math.round((x.n * 100) / total) : 0])) : null, total, mine: myPick.get(m.id) || "" };
+          share: locked ? Object.fromEntries(c.map(x => [x.pick, total ? Math.round((x.n * 100) / total) : 0])) : null, total, mine: myPick.get(m.id) || "",
+          ...(who ? { who: Object.fromEntries(Object.entries(who.get(m.id) || {}).map(([o, list]) => [o, list.map(({ member: _m, ...p }) => p)])) } : {}) };
       });
       const champ = e.status === "done" ? await champion(db, e) : null;
       out.push({ id: e.id, title: e.title, title_en: e.title_en, starts: e.starts, image: e.image, status: e.status, locked, matches: ms,
@@ -147,6 +169,29 @@ export async function studioPredict(env: MembersEnv) {
   const champs = new Map<number, any>();
   for (const e of events) if (e.status === "done") champs.set(e.id, await champion(db, e));
   return { success: true, prizeDays: PRIZE_DAYS, events: events.map(e => ({ ...e, champion: champs.get(e.id) || null, players: players.find(p => p.event === e.id)?.n || 0, matches: matches.filter(m => m.event === e.id).map(m => ({ ...m, options: opts(m.options) })) })) };
+}
+
+/** One show in the panel: who picked what in each match, and each member's whole card with their score so far */
+export async function studioPredictPicks(env: MembersEnv, id: unknown) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "مش متاح دلوقتي." };
+  await ensurePredict(db);
+  const e = await db.prepare("SELECT * FROM pred_events WHERE id = ?1").bind(Number(id) || 0).first<any>();
+  if (!e) return { success: false, error: "العرض ده مش موجود." };
+  const matches = ((await db.prepare("SELECT * FROM pred_matches WHERE event = ?1 ORDER BY ord, id").bind(e.id).all<any>()).results || []).map(m => ({ id: m.id, title: m.title, options: opts(m.options), points: m.points, winner: m.winner || "" }));
+  const by = await picksOf(db, [e.id]);
+  const people = new Map<number, any>();
+  for (const m of matches) {
+    for (const [o, list] of Object.entries(by.get(m.id) || {})) for (const p of list) {
+      const row = people.get(p.member) || { ...p, picks: {}, points: 0, right: 0, first: p.at, last: p.at };
+      row.picks[m.id] = o;
+      row.first = Math.min(row.first, p.at); row.last = Math.max(row.last, p.at);
+      if (m.winner && o === m.winner) { row.points += m.points; row.right++; }
+      people.set(p.member, row);
+    }
+  }
+  const members = [...people.values()].map(({ at: _a, ...r }) => r).sort((a, b) => b.points - a.points || b.right - a.right || a.first - b.first);
+  return { success: true, event: { id: e.id, title: e.title, status: e.status, starts: e.starts }, matches: matches.map(m => ({ ...m, by: by.get(m.id) || {} })), members };
 }
 
 /** The owner gives the show's prize to its winner: once per show, only after the results are out. The show is claimed

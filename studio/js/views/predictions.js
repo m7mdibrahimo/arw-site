@@ -25,6 +25,7 @@ export async function renderPredictions(page) {
         <div class="pd-card-head">
           <div><h2>${e.title}</h2><p class="muted small">${fmt(e.starts)} · ${STATES[e.status] || e.status} · ${num(e.matches.length)} نزال · ${num(e.players)} عضو اتوقع</p></div>
           <div class="pd-card-acts">
+            <button class="btn ${e.players ? 'btn-primary' : 'btn-ghost'}" data-who="${e.id}" ${e.players ? '' : 'disabled'}>${icon('users')}مين توقع إيه (${num(e.players)})</button>
             <button class="btn btn-ghost" data-edit="${e.id}">${icon('edit')}تعديل</button>
             <button class="btn ${e.status === 'done' ? 'btn-ghost' : 'pr-btn'}" data-result="${e.id}">${icon('trophy')}${e.status === 'done' ? 'عدّل النتائج' : 'النتائج'}</button>
             <button class="btn btn-danger-soft" data-del="${e.id}">${icon('trash')}</button>
@@ -37,6 +38,7 @@ export async function renderPredictions(page) {
   $('#pd-new').onclick = () => editor(page, null);
   $$('[data-edit]', page).forEach(b => b.onclick = () => editor(page, events.find(e => String(e.id) === b.dataset.edit)));
   $$('[data-result]', page).forEach(b => b.onclick = () => results(page, events.find(e => String(e.id) === b.dataset.result)));
+  $$('[data-who]', page).forEach(b => b.onclick = () => whoPicked(page, b.dataset.who));
   // the show's prize (paid membership): given by the owner's own tap, once (the worker refuses anyone else)
   $$('[data-prize]', page).forEach(b => b.onclick = async () => {
     const e = events.find(x => String(x.id) === b.dataset.prize), c = e.champion;
@@ -51,6 +53,42 @@ export async function renderPredictions(page) {
     if (!ok) return;
     try { await api.predictDelete(e.id); toast('اتمسحت ✓'); renderPredictions(page); } catch (err) { toast(err.message, 'error'); }
   });
+}
+
+// who picked what in one show (owner 2026-10-17: «اديني الصلاحية دي كاملة بتاعت التوقعات»): by match — each option with
+// the members who picked it — or by member — each one's whole card and score
+const AV = (import.meta.url.match(/\/admin\/([^/]+)\/js\//) || [])[1] || '';
+const picSrc = (pic) => { pic = String(pic || ''); return pic === 'official' ? '/assets/brand-logo.png' : /^w:[a-z0-9-]+$/.test(pic) ? `/avatars/${pic.slice(2)}.webp${AV ? `?v=${AV}` : ''}` : /^https:\/\//.test(pic) ? pic : ''; };
+const initial = (name) => (String(name).trim().replace(/^ال(?=\S{2})/, '').match(/\S/) || ['؟'])[0].toUpperCase();
+const person = (p) => html`<a class="pd-who-p ${p.prem ? 'is-prem' : ''}" href="#/site-members/${p.member}" title="@${p.user}"><span class="pd-who-av">${picSrc(p.pic) ? html`<img src="${picSrc(p.pic)}" alt="" loading="lazy">` : initial(p.name)}</span><span>${p.name}</span></a>`;
+async function whoPicked(page, id) {
+  mount(page, html`<div class="loading-page"><div class="spinner"></div></div>`);
+  let d;
+  try { d = await api.predictPicks(id); } catch (e) { toast(e.message, 'error'); renderPredictions(page); return; }
+  const done = d.event.status === 'done';
+  let view = 'match';
+  const draw = () => {
+    mount(page, html`<div class="wrap page-in pd-who">
+      <div class="page-title"><div><h1>مين توقع إيه · ${d.event.title}</h1><p class="muted">${num(d.members.length)} عضو اتوقع · ${fmt(d.event.starts)}${done ? ' · النتائج اتعلنت' : ''}</p></div>
+        <div class="mb-head-btns"><button class="btn btn-ghost" id="pd-back">${icon('arrowRight')}رجوع</button></div></div>
+      <div class="chips pd-who-tabs"><button type="button" class="chip ${view === 'match' ? 'active' : ''}" data-view="match">حسب النزال</button><button type="button" class="chip ${view === 'member' ? 'active' : ''}" data-view="member">حسب العضو</button></div>
+      ${view === 'match' ? html`<div class="pd-who-ms">${d.matches.map((m, k) => {
+        const total = Object.values(m.by).reduce((t, l) => t + l.length, 0);
+        return html`<section class="panel pd-who-m"><h2><span class="muted">${k + 1}.</span> ${m.title} <span class="muted small">${num(total)} توقع</span></h2>
+          ${m.options.map(o => { const list = m.by[o] || [], p = total ? Math.round(list.length * 100 / total) : 0;
+            return html`<div class="pd-who-o ${m.winner === o ? 'is-win' : m.winner ? 'is-lose' : ''}"><div class="pd-who-oh"><b>${m.winner === o ? '🏆 ' : ''}${o}</b><span class="muted small">${num(list.length)} · ${p}%</span></div>
+              <div class="pd-who-bar"><i style="width:${p}%"></i></div>
+              ${list.length ? html`<div class="pd-who-ps">${list.map(person)}</div>` : html`<p class="muted small">محدش اختاره.</p>`}</div>`; })}
+        </section>`; })}</div>`
+      : html`<section class="panel"><div class="pd-who-tbl" role="table">
+          <div class="pd-who-tr is-head" role="row"><span role="columnheader">العضو</span>${done ? html`<span role="columnheader">النقط</span>` : ''}${d.matches.map((m, k) => html`<span role="columnheader" title="${m.title}">${k + 1}</span>`)}</div>
+          ${d.members.map((p, i) => html`<div class="pd-who-tr" role="row"><span role="cell">${done ? html`<em class="pd-who-rank">${i + 1}</em>` : ''}${person(p)}</span>${done ? html`<span role="cell"><b>${num(p.points)}</b><small class="muted"> · ${num(p.right)} صح</small></span>` : ''}${d.matches.map(m => { const o = p.picks[m.id]; return html`<span role="cell" class="${o && m.winner ? (o === m.winner ? 'is-ok' : 'is-no') : ''}">${o || '—'}</span>`; })}</div>`)}
+        </div><p class="muted small">الأرقام فوق هي أرقام النزالات بالترتيب. ${done ? 'الأخضر توقع صح، والأحمر غلط.' : 'النقط بتظهر بعد ما تعلن النتائج.'}</p></section>`}
+    </div>`);
+    $('#pd-back').onclick = () => renderPredictions(page);
+    $$('[data-view]', page).forEach(b => b.onclick = () => { view = b.dataset.view; draw(); });
+  };
+  draw();
 }
 
 // who won the show's prize, and whether it's been given

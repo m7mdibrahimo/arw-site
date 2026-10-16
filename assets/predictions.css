@@ -221,3 +221,20 @@ html.arw-dark .is-open .pd-state{ color:#5eead4; }
   .pd-av.is-big{ width:50px; height:50px; } .pd-pod.is-1 .pd-av.is-big{ width:60px; height:60px; }
 }
 @media (prefers-reduced-motion: reduce){ .pd-opt, .pd-opt::before, .pd-toast, .pd-poster img, .pd-lb, .pd-bar i, .pd-match{ transition:none; } .pd-wait span, .is-open .pd-state::before{ animation:none; } }
+/* who picked what — the site's own account only (assets/predictions.js whoBox) */
+.pd-picks{ margin-top:12px; border:1px dashed color-mix(in srgb, var(--muted) 40%, transparent); border-radius:14px; padding:4px 12px; }
+.pd-picks > summary{ cursor:pointer; padding:8px 0; font:800 13.5px 'Cairo',sans-serif; color:var(--muted); list-style:none; }
+.pd-picks > summary::-webkit-details-marker{ display:none; }
+.pd-picks > summary::before{ content:"▸"; display:inline-block; margin-inline-end:6px; transition:transform .2s ease; }
+html[dir="rtl"] .pd-picks > summary::before{ content:"◂"; }
+.pd-picks[open] > summary::before{ transform:rotate(-90deg); }
+html[dir="rtl"] .pd-picks[open] > summary::before{ transform:rotate(90deg); }
+.pd-picks-o{ padding:8px 0 12px; }
+.pd-picks-o + .pd-picks-o{ border-top:1px solid var(--line); }
+.pd-picks-h{ display:block; font-size:13.5px; margin-bottom:8px; }
+.pd-picks-o.is-win .pd-picks-h{ color:#1f8a4c; }
+.pd-picks-ps{ display:flex; flex-wrap:wrap; gap:6px; }
+.pd-picks-p{ display:inline-flex; align-items:center; gap:6px; padding:3px 10px 3px 4px; border-radius:99px; border:1px solid var(--line); font-size:13px; }
+.pd-picks-p b{ display:inline-flex; align-items:center; gap:3px; font-weight:700; }
+.pd-av.is-xs{ width:24px; height:24px; font-size:11px; }
+.pd-picks-none{ color:var(--muted); }

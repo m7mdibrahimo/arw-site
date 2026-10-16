@@ -192,9 +192,36 @@
       opts.appendChild(b);
     });
     li.appendChild(opts);
+    if (m.who) li.appendChild(whoBox(m));
     paintOpts(li, m);
     if (m.winner && m.mine) li.appendChild(el('p', 'pd-m-res ' + (m.mine === m.winner ? 'is-ok' : 'is-no'), m.mine === m.winner ? (EN ? '✓ Right, +' + pts(m.points) : '✓ توقع صحيح، +' + pts(m.points)) : (EN ? '✗ Not this time' : '✗ لم يصب هذه المرة')));
     return li;
+  }
+
+  // the site's own account sees who picked what (worker/src/predict.ts picksOf; owner 2026-10-17): every option with
+  // the members who picked it, folded under the match
+  function whoBox(m) {
+    var all = 0;
+    m.options.forEach(function (o) { all += (m.who[o] || []).length; });
+    var d = el('details', 'pd-picks');
+    d.appendChild(el('summary', null, (EN ? 'Who picked what (' : 'من توقع ماذا (') + all + ')'));
+    m.options.forEach(function (o) {
+      var list = m.who[o] || [];
+      var g = el('div', 'pd-picks-o' + (m.winner === o ? ' is-win' : ''));
+      g.appendChild(el('b', 'pd-picks-h', o + ' · ' + list.length));
+      var ps = el('div', 'pd-picks-ps');
+      if (!list.length) ps.appendChild(el('small', 'pd-picks-none', EN ? 'Nobody' : 'لا أحد'));
+      list.forEach(function (p) {
+        var a = el('span', 'pd-picks-p');
+        a.title = '@' + p.user;
+        a.appendChild(avatar(p, 'is-xs'));
+        a.appendChild(nameLine(p));
+        ps.appendChild(a);
+      });
+      g.appendChild(ps);
+      d.appendChild(g);
+    });
+    return d;
   }
 
   // the show's prize: what it is before the results, who won it after

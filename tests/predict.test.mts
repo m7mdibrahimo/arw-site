@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { handleMembers } from '../worker/src/members';
 import { handleFollows } from '../worker/src/follows';
-import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize, PRIZE_DAYS } from '../worker/src/predict';
+import { handlePredict, studioPredict, studioPredictPicks, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize, PRIZE_DAYS } from '../worker/src/predict';
 
 function d1() {
   const db = new DatabaseSync(':memory:');
@@ -182,4 +182,38 @@ test('no prize for a show nobody scored in, nor for the site\'s own account', as
   await studioPredictResult(e, { id: saved.id, winners: { [m.id]: 'ب' }, finish: true });
   e.ANALYTICS.raw.prepare("UPDATE members SET official = 1 WHERE username = 'site_owner'").run();
   assert.equal((await call(e, '/predict')).body.events[0].prize.winner.user, 'fan_two');
+});
+
+test('who picked what: the panel sees every member\'s card, the site\'s own account sees it on the page, a member never does (owner 2026-10-17)', async () => {
+  // «معنديش صلاحية اشوف مين ال توقع لا في اللوحة ولا في الموقع نفسه من فضلك اديني الصلاحية دي كاملة»
+  const e: any = { ANALYTICS: d1(), PUSH_KV: kv() };
+  const site = await member(e, 'site_account'), a = await member(e, 'fan_one'), b = await member(e, 'fan_two');
+  e.ANALYTICS.raw.prepare("UPDATE members SET official = 1 WHERE username = 'site_account'").run();
+  const saved = await studioPredictSave(e, { title: 'كراون جول', starts: SHOW, status: 'open', matches: [
+    { title: 'أ ضد ب', options: ['أ', 'ب'], points: 2 }, { title: 'ج ضد د', options: ['ج', 'د'] }] });
+  const [m1, m2] = (await call(e, '/predict', undefined, a)).body.events[0].matches;
+  await call(e, '/predict/pick', { match: m1.id, pick: 'أ' }, a);
+  await call(e, '/predict/pick', { match: m2.id, pick: 'د' }, a);
+  await call(e, '/predict/pick', { match: m1.id, pick: 'ب' }, b);
+  // a member: only their own picks, never who picked what — even after the show starts
+  assert.equal((await call(e, '/predict', undefined, a)).body.events[0].matches[0].who, undefined);
+  assert.equal((await call(e, '/predict', undefined, b, SHOW + 1000)).body.events[0].matches[0].who, undefined);
+  // the site's own account: everyone, open already, no member numbers on the page
+  const seen = (await call(e, '/predict', undefined, site)).body.events[0].matches;
+  assert.deepEqual(seen[0].who['أ'].map((p: any) => p.user), ['fan_one']);
+  assert.deepEqual(seen[0].who['ب'].map((p: any) => p.user), ['fan_two']);
+  assert.equal(seen[0].who['أ'][0].member, undefined);
+  assert.deepEqual(seen[1].who, { 'د': seen[1].who['د'] });
+  // the panel: by match and by member, with the score once the results are out
+  let d: any = await studioPredictPicks(e, saved.id);
+  assert.equal(d.members.length, 2);
+  assert.equal(d.matches[0].by['أ'][0].user, 'fan_one');
+  await studioPredictResult(e, { id: saved.id, winners: { [m1.id]: 'أ', [m2.id]: 'ج' }, finish: true });
+  d = await studioPredictPicks(e, saved.id);
+  assert.equal(d.members[0].user, 'fan_one');
+  assert.equal(d.members[0].points, 2);
+  assert.equal(d.members[0].right, 1);
+  assert.deepEqual(d.members[0].picks, { [m1.id]: 'أ', [m2.id]: 'د' });
+  assert.equal(d.members[1].points, 0);
+  assert.equal((await studioPredictPicks(e, 999)).success, false);
 });
