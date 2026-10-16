@@ -48,9 +48,11 @@ html.arw-dark .show-card .desc, html.arw-dark .news-card p{ color:#8b94a3 !impor
    centre and fading into the black — replaces the flat light-mode tints. */
 html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-dark #nostalgia-home, html.arw-dark #news{
   background:
-    radial-gradient(ellipse 55% 340px at 50% 12px, color-mix(in srgb, var(--sec) 16%, transparent), transparent 72%),
-    radial-gradient(ellipse 90% 520px at 50% 12px, color-mix(in srgb, var(--sec) 6%, transparent), transparent 80%),
+    radial-gradient(ellipse 55% 340px at 50% 0, color-mix(in srgb, var(--sec) 16%, transparent), transparent 72%),
+    radial-gradient(ellipse 90% 520px at 50% 0, color-mix(in srgb, var(--sec) 6%, transparent), transparent 80%),
     var(--bg) !important;
+  /* the colour starts at the section's edge, not in its clear top border (index.njk, #613) */
+  background-clip:padding-box !important;
 }
 html.arw-dark #spotlight-wrap{ background:transparent !important; }
 html.arw-dark #feds::before, html.arw-dark #full-shows::before, html.arw-dark #recaps::before, html.arw-dark #nostalgia-home::before, html.arw-dark #news::before{
