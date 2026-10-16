@@ -17,3 +17,8 @@ test("no published story keeps a raw HTML entity", () => {
     assert.ok(!/&#\d+;|&(quot|amp|nbsp|rsquo|ldquo|rdquo);/.test(fs.readFileSync(`${dir}/${f}`, "utf8")), `${dir}/${f}`);
   }
 });
+
+test("the watcher stores source_title with entities decoded (INCIDENTS #626)", () => {
+  const src = fs.readFileSync("scripts/fightful-watcher.ts", "utf8");
+  assert.ok(src.includes("source_title: ${JSON.stringify(decodeHtmlEntities(rawTitle))}"));
+});

@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4488,7 +4488,7 @@ date: ${iso}
 published_at: ${publishedAt}
 source_id: ${postId}
 source_url: ${JSON.stringify(postUrl)}
-single_match_result: ${isSingleMatch}${socialYaml}${isShowResultsArticle(rawTitle, plainText) ? `\nsource_title: ${JSON.stringify(rawTitle)}\nsource_results: ${countResultLines(plainText)}` : ""}
+single_match_result: ${isSingleMatch}${socialYaml}${isShowResultsArticle(rawTitle, plainText) ? `\nsource_title: ${JSON.stringify(decodeHtmlEntities(rawTitle))}\nsource_results: ${countResultLines(plainText)}` : ""}
 tags:
 ${tagsYaml}
 image: ${localImagePath}${gallery.length ? `\ngallery:\n${gallery.map(g => `  - ${g}`).join("\n")}` : ""}
