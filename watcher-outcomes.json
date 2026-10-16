@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T03:16:08.914Z"
+ },
+ "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-16T03:16:08.713Z"
+ },
  "https://www.fightful.com/wrestling/aew-could-hold-adam-copelands-final-match-in-toronto": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,16 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T03:12:59.085Z"
- },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T03:01:30.178Z"
- },
- "https://www.wrestlinginc.com/2287928/swole-tna-announce-benefit-ibd-charity": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-16T03:01:29.954Z"
  },
  "https://www.ringsidenews.com/wwe-montez-ford-sued-alleged-lap-dance-security-guard-during-raw": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
