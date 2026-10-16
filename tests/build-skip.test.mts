@@ -158,7 +158,7 @@ test('a page with a player is never prepared in the background, and nothing arou
   for (const p of ['/shows/:slug/', '/recaps/:slug/', '/nostalgia/:slug/']) assert.ok(exp.includes(`href_matches: '${p}'`), p);
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
   assert.match(layout, /<div class="post-wrap\{% if isWatchPage %\} is-watch\{% else %\} reveal\{% endif %\}">/);
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261013a/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /experience\.js\?v=20261016a/);
 });
 
 test('the home slider is one piece: the picture melts into a blurred copy of itself, mirrored on the English pages', () => {
