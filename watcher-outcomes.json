@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T16:09:20.515Z"
+ },
  "https://www.fightful.com/wrestling/333937-mike-bailey-piggies": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T16:01:20.745Z"
- },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T15:53:20.023Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-doesnt-know-how-far-adam-copeland-will-wrestle-into-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
