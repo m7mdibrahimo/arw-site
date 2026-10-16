@@ -1,5 +1,15 @@
 [
   {
+    "id": 5079744216,
+    "link": "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results/",
+    "date": "Fri, 16 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-16T21:00:00.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Results 10/16/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-101626-w-live-updates/l-intro-1792118811.jpg"
+  },
+  {
     "id": 3757884367,
     "link": "https://www.wrestlinginc.com/2289284/wwe-tna-max-caster-sources-deny-involvement-exit/",
     "date": "Fri, 16 Oct 2026 20:30:02 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE Smackdown Viewership & Ratings Report: 10/9/26"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-10926/l-intro-1792134718.jpg"
-  },
-  {
-    "id": 3165078601,
-    "link": "https://www.wrestlinginc.com/2288506/wwe-crown-jewel-saudi-arabia-plans-latest-update/",
-    "date": "Fri, 16 Oct 2026 13:00:00 +0000",
-    "date_gmt": "2026-10-16T13:00:00.000Z",
-    "title": {
-      "rendered": "Latest Update On WWE's Plans For Holding Crown Jewel In Saudi Arabia"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/latest-update-on-wwes-plans-for-holding-crown-jewel-in-saudi-arabia/l-intro-1792130999.jpg"
   }
 ]
