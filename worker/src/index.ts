@@ -40,7 +40,7 @@ import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumFind, st
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
 import { handleSaved } from "./saved";
 import { handleWatch } from "./watch";
-import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete } from "./predict";
+import { handlePredict, studioPredict, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
 import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
@@ -3116,6 +3116,14 @@ export default {
         if (path === "/api/studio/predict" && request.method === "GET") { await seedPredict(env); return json(await studioPredict(env as any)); }
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
         let r: any = null;
+        // the show's prize is paid membership: given by the owner only, like any other month given by hand
+        if (path === "/api/studio/predict/prize" && request.method === "POST") {
+          if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403);
+          r = await studioPredictPrize(env as any, body.id, who.user.username);
+          if (r.success) await chatRebadge(env as any, r.member).catch(() => {});
+          if (r.success) await studioAudit(env as any, who.user, "predict.prize", { id: Number(body.id) || 0, member: r.member }).catch(() => {});
+          return json(r, r.success ? 200 : 400);
+        }
         if (path === "/api/studio/predict/save" && request.method === "POST") r = await studioPredictSave(env as any, body);
         else if (path === "/api/studio/predict/result" && request.method === "POST") r = await studioPredictResult(env as any, body);
         else if (path === "/api/studio/predict/delete" && request.method === "POST") r = await studioPredictDelete(env as any, body.id);

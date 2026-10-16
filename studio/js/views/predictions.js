@@ -30,18 +30,38 @@ export async function renderPredictions(page) {
             <button class="btn btn-danger-soft" data-del="${e.id}">${icon('trash')}</button>
           </div>
         </div>
+        ${e.status === 'done' ? prizeRow(e, d.prizeDays || 30) : ''}
         <ol class="pd-card-ms">${e.matches.map(m => html`<li>${m.image ? html`<img class="pd-card-mimg" src="${m.image}" alt="" loading="lazy">` : ''}<b>${m.title}</b>${m.note ? html`<span class="muted small">${m.note}</span>` : ''}<span class="muted small">${m.options.join(' · ')}${m.points > 1 ? ` · ${m.points} نقط` : ''} · ${num(m.picks)} توقع</span>${m.winner ? html`<span class="pd-win">🏆 ${m.winner}</span>` : ''}</li>`)}</ol>
       </article>`)}</div>` : html`<div class="empty"><h2>لسه مفيش توقعات</h2><p class="muted">دوس «عرض جديد» وضيف نزالات أول عرض كبير جاي.</p></div>`}
     </div>`);
   $('#pd-new').onclick = () => editor(page, null);
   $$('[data-edit]', page).forEach(b => b.onclick = () => editor(page, events.find(e => String(e.id) === b.dataset.edit)));
   $$('[data-result]', page).forEach(b => b.onclick = () => results(page, events.find(e => String(e.id) === b.dataset.result)));
+  // the show's prize (paid membership): given by the owner's own tap, once (the worker refuses anyone else)
+  $$('[data-prize]', page).forEach(b => b.onclick = async () => {
+    const e = events.find(x => String(x.id) === b.dataset.prize), c = e.champion;
+    const ok = await dialog({ title: `جايزة «${e.title}»`, body: html`<p class="muted small">هيتفعل لـ <b>${c.name}</b> (@${c.user}) شهر في العضوية المميزة (${num(d.prizeDays || 30)} يوم)، ويوصله إشعار بالمبروك. ده بيحصل مرة واحدة بس للعرض ده.</p>`, confirm: 'فعّل الجايزة' });
+    if (!ok) return;
+    b.disabled = true;
+    try { await api.predictPrize(e.id); toast(`اتفعلت ✓ ${c.name} بقى مميز لمدة شهر`); renderPredictions(page); } catch (err) { toast(err.message, 'error'); b.disabled = false; }
+  });
   $$('[data-del]', page).forEach(b => b.onclick = async () => {
     const e = events.find(x => String(x.id) === b.dataset.del);
     const ok = await dialog({ title: `مسح «${e.title}»`, body: html`<p class="muted small">التوقعات دي هتتمسح هي وكل توقعات الأعضاء فيها، ونقطها هتخرج من الترتيب.</p>`, confirm: 'امسحها', danger: true });
     if (!ok) return;
     try { await api.predictDelete(e.id); toast('اتمسحت ✓'); renderPredictions(page); } catch (err) { toast(err.message, 'error'); }
   });
+}
+
+// who won the show's prize, and whether it's been given
+function prizeRow(e, days) {
+  const c = e.champion;
+  if (!c) return html`<div class="pd-prize-row is-none">${icon('trophy')}<span class="muted small">جايزة العرض: مفيش فايز (محدش جاب نقط)</span></div>`;
+  return html`<div class="pd-prize-row ${c.granted ? 'is-given' : ''}">${icon('trophy')}
+    <span><b>الفايز بالجايزة: ${c.name}</b> <span class="muted small">@${c.user} · ${num(c.points)} نقطة · أصاب ${num(c.right)}</span></span>
+    ${c.granted ? html`<span class="pd-prize-done">✓ اتفعل له شهر مميز${c.at ? ` · ${fmt(c.at)}` : ''}</span>`
+      : html`<button class="btn btn-primary" data-prize="${e.id}">${icon('check')}فعّل له شهر مميز (${num(days)} يوم)</button>`}
+  </div>`;
 }
 
 function editor(page, ev) {
