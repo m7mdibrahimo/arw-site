@@ -4988,3 +4988,12 @@ test('weekly episode name forms carry the year, الجديد and اون لاين
   const forms = showNameForms({ headline: 'عرض سماك داون مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE SmackDown', eventDate: '2026-10-09', aliases, isShow: true });
   for (const f of ['عرض سماك داون الاخير 2026', 'عرض سماك داون الأخير 2026', 'عرض سماك داون 2026 مترجم', 'عرض سماك داون الجديد', 'عرض سماك داون اون لاين']) assert.ok(forms.includes(f), f);
 });
+
+// INCIDENTS #628: «سماكداون» joined and «الراو» are searched too — every form with the usual spelling gets the other one
+test('program name forms carry the joined SmackDown and the «راو» spellings (INCIDENTS #628)', async () => {
+  const { libraryNameForms, showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const lib = libraryNameForms({ arName: 'عرض سماك داون', name: 'WWE SmackDown', aliases: ['سماك داون'], count: 30, latest: '2026-10-09' });
+  assert.ok(lib.includes('عرض سماكداون الاخير مترجم'));
+  const raw = showNameForms({ headline: 'عرض الرو 12.10.2026 مترجم', title: 'WWE Raw', programName: 'WWE Raw', eventDate: '2026-10-12', aliases: ['عرض الرو', 'الرو'], isShow: true });
+  assert.ok(raw.includes('عرض الراو الاخير مترجم'));
+});
