@@ -184,3 +184,46 @@ test('every slide gets the slow zoom for as long as it is shown, not only the fi
   assert.match(home, /hero\.addEventListener\('mouseenter', pauseAuto\);/);
   assert.doesNotMatch(home, /transition: transform 7s cubic-bezier\(0\.1, 0\.9, 0\.2, 1\)/);
 });
+
+// Scripts and styles linked by names of their own content (lib/asset-names.cjs, INCIDENTS #617)
+test('every page links its scripts and styles by their content, so a changed file is always a new address', async () => {
+  const { nameAssetsByContent } = await import('../lib/asset-names.cjs');
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-site-'));
+  fs.mkdirSync(path.join(site, 'assets'), { recursive: true });
+  fs.mkdirSync(path.join(site, 'en', 'assets'), { recursive: true });
+  fs.mkdirSync(path.join(site, 'news', 'x'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'assets', 'features.css'), 'a{color:red}');
+  fs.writeFileSync(path.join(site, 'assets', 'features.js'), 'var a=1;');
+  fs.writeFileSync(path.join(site, 'en', 'assets', 'features.js'), 'var a=2;');
+  const page = '<link rel="stylesheet" href="/assets/features.css?v=20261015m"><script src="/assets/features.js?v=abc" defer></script>'
+    + '<script src="/en/assets/features.js?v=1"></script><script src="/assets/missing.js?v=2"></script><img src="/assets/logo.png"><script>var u="/assets/features.js";</script>'
+    + '<a href="/assets/../../etc/passwd.js">x</a>';
+  fs.writeFileSync(path.join(site, 'index.html'), page);
+  fs.writeFileSync(path.join(site, 'news', 'x', 'index.html'), page);
+  const r = nameAssetsByContent(site);
+  assert.deepEqual(r, { pages: 2, files: 3 });
+  const out = fs.readFileSync(path.join(site, 'news', 'x', 'index.html'), 'utf8');
+  const css = out.match(/href="(\/assets\/features\.[0-9a-f]{10}\.css)"/)![1];
+  const js = out.match(/src="(\/assets\/features\.[0-9a-f]{10}\.js)"/)![1];
+  const en = out.match(/src="(\/en\/assets\/features\.[0-9a-f]{10}\.js)"/)![1];
+  assert.equal(fs.readFileSync(path.join(site, css), 'utf8'), 'a{color:red}');
+  assert.equal(fs.readFileSync(path.join(site, en), 'utf8'), 'var a=2;');
+  assert.notEqual(js.replace('/assets/', ''), en.replace('/en/assets/', ''), 'two contents, two names');
+  assert.match(out, /src="\/assets\/missing\.js\?v=2"/, 'a link to no file stays as it was');
+  assert.match(out, /var u="\/assets\/features\.js";/, 'what a script loads by itself is left alone');
+  assert.match(out, /href="\/assets\/\.\.\/\.\.\/etc\/passwd\.js"/, 'nothing outside the site is read');
+  assert.ok(fs.existsSync(path.join(site, 'assets', 'features.css')), 'the plain file stays');
+  // a changed file: a new name, on the next build
+  fs.writeFileSync(path.join(site, 'assets', 'features.css'), 'a{color:blue}');
+  fs.writeFileSync(path.join(site, 'index.html'), page);
+  nameAssetsByContent(site);
+  assert.notEqual(fs.readFileSync(path.join(site, 'index.html'), 'utf8').match(/href="([^"]+\.css)"/)![1], css);
+  fs.rmSync(site, { recursive: true, force: true });
+});
+
+test('the content naming runs after the minifying, in the same step', () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  const minify = cfg.indexOf('console.log(`[minify]');
+  const naming = cfg.indexOf('nameAssetsByContent("_site")');
+  assert.ok(minify > 0 && naming > minify && naming - minify < 600);
+});
