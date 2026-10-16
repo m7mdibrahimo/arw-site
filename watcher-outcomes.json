@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T14:22:16.063Z"
- },
  "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:22.530Z"
+  "at": "2026-10-16T14:29:30.062Z"
  },
  "https://www.fightful.com/wrestling/aew-could-hold-adam-copelands-final-match-in-toronto": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:22.346Z"
+  "at": "2026-10-16T14:29:29.888Z"
  },
  "https://www.fightful.com/wrestling/cook-county-sherriffs-officer-files-lawsuit-against-wwe-montez-ford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:21.902Z"
+  "at": "2026-10-16T14:29:29.490Z"
  },
  "https://www.fightful.com/wrestling/zach-gowen-retires-from-in-ring-competition": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:21.613Z"
+  "at": "2026-10-16T14:29:29.229Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-doesnt-know-how-far-adam-copeland-will-wrestle-into-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:21.127Z"
+  "at": "2026-10-16T14:29:28.790Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-skydance-ceo-david-ellison-has-been-very-excited-positive-about-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:20.940Z"
+  "at": "2026-10-16T14:29:28.621Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-9-viewership-above-1-3-million-viewers-again-key-demo-rating-also-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:20.704Z"
+  "at": "2026-10-16T14:29:28.402Z"
  },
  "https://www.fightful.com/wrestling/report-vince-mcmahon-completes-one-year-probation-for-july-2025-car-crash": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-16T14:19:20.507Z"
+  "at": "2026-10-16T14:29:28.230Z"
+ },
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T14:22:16.063Z"
  },
  "https://www.ringsidenews.com/john-cena-reveals-why-staying-wwe-longer-would-have-unfair-his-wife": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
