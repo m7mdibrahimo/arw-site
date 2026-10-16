@@ -194,7 +194,8 @@ function groupDownloadsByQuality(downloads, downloadsLow, downloadsMedium, downl
   // «متعدد الجودات» (owner 2026-10-09): links that hold every quality, added once in the panel and shown first, on
   // their own, at the top of every quality's list — instead of being pasted under each quality. «خفيفة» gets them only
   // when it has links of its own, like the links without a quality above.
-  const multi = extractUrls(downloadsMulti).slice(0, 15).map(function (u) { return Object.assign(itemFor(u), { multi: true }); });
+  // StreamHG links pasted there hold one quality now (owner 2026-10-16): an ordinary card, «any quality» kept for its words
+  const multi = extractUrls(downloadsMulti).slice(0, 15).map(function (u) { const it = itemFor(u); return Object.assign(it, it.site === "StreamHG" ? { anyQuality: true } : { multi: true }); });
   if (multi.length) {
     ["light", "low", "medium", "high"].forEach(function (k) {
       if (k === "light" && !groups.light.length) return;
@@ -456,9 +457,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksFilter("slug", arabicSlug);
   eleventyConfig.addFilter("toEmbedUrl", toEmbedUrl);
   eleventyConfig.addFilter("playableServers", require("./lib/embed.cjs").playableServers);
-  // Servers that play the same video in several qualities (the viewer picks 1080/720/480 inside the player):
-  // OK.ru and StreamHG with its mirrors (INCIDENTS #288)
-  const MULTI_QUALITY_RE = /(^|\.)(ok\.ru|hgcloud\.[a-z]+|streamhg\.[a-z]+|shgcloud\.[a-z]+|hgplayer\.[a-z]+|hgstream\.[a-z]+|hanerix\.com)$/i;
+  // Servers that play the same video in several qualities (the viewer picks 1080/720/480 inside the player): OK.ru.
+  // StreamHG was one (INCIDENTS #288) until it stopped offering qualities (owner 2026-10-16: «مبقاش متعدد الجودات
+  // خلاص بقا عادي»); the premium server (Google Drive, assets/post-player.js) is the site's multi-quality server now.
+  const MULTI_QUALITY_RE = /(^|\.)ok\.ru$/i;
   // A count with its noun the way the owner writes it (2026-10-06): 1 «عرض واحد مترجم», 2 «عرضان مترجمان»,
   // 3–10 the plural «10 عروض مترجمة», 11 and up the singular «11 عرض مترجم» (by the last two digits: 103 «عروض»)
   eleventyConfig.addFilter("arCount", function(n, one, two, few, many) {

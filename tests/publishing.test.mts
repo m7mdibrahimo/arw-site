@@ -3485,18 +3485,26 @@ test('«الأكثر مشاهدة» shows the short Arabic name, not the search 
   assert.match(fs.readFileSync('worker/src/top10.ts', 'utf-8'), /if \(cardTitle\) title = decodeEntities\(cardTitle\)\.trim\(\);/);
 });
 
-test('OK.ru and StreamHG are marked «متعدد الجودات» on watch tabs and downloads (INCIDENTS #289)', () => {
+test('OK.ru is marked «متعدد الجودات»; StreamHG is an ordinary server now and the premium (Google Drive) server is the multi-quality one (INCIDENTS #289, owner 2026-10-16)', async () => {
+  // «شيل موضوع سيرفر StreamHG انه متعدد الجودات … السيرفر الخاص ال هو بتاع درايف هو ال متعدد الجودات وتحميل سريع ومباشر»
   const layout = layoutSource();
   assert.match(layout, /\(s\.url \| toEmbedUrl\) \| isMultiQuality/);
   assert.match(layout, /<span class="srv-mq">متعدد الجودات<\/span>/);
   assert.match(layout, /item\.url \| isMultiQuality/);
   assert.match(layout, /<span class="dl-mq-badge"><svg [^>]*>.*?<\/svg>متعدد الجودات<\/span>/);
-  assert.match(layout, /\{% if dlMq %\}اختر الجودة المناسبة لك\{% else %\}/);
+  assert.match(layout, /\{% if dlMq %\}اختر الجودة المناسبة لك\{% elif item\.anyQuality %\}اضغط هنا للتحميل\{% else %\}/);
   assert.match(layout, /html\.arw-dark \.dl-mq-badge\{/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
   const re = new RegExp(cfg.match(/MULTI_QUALITY_RE = \/(.+)\/i;/)![1], 'i');
-  for (const h of ['ok.ru', 'streamhg.com', 'hgcloud.to', 'hanerix.com']) assert.ok(re.test(h), h);
-  for (const h of ['vidoza.net', 'dood.to', 'mega.nz']) assert.ok(!re.test(h), h);
+  assert.ok(re.test('ok.ru'));
+  for (const h of ['streamhg.com', 'hgcloud.to', 'hanerix.com', 'vidoza.net', 'dood.to', 'mega.nz']) assert.ok(!re.test(h), h);
+  // a StreamHG link in the panel's «متعدد الجودات» box: an ordinary card that claims no quality
+  const groups = cfg.match(/const multi = extractUrls\(downloadsMulti\)[^\n]*/)![0];
+  assert.match(groups, /it\.site === "StreamHG" \? \{ anyQuality: true \} : \{ multi: true \}/);
+  const player = fs.readFileSync('assets/post-player.js', 'utf-8');
+  assert.match(player, /function multi\(u\) \{ return \/\(\^\|\\\.\)ok\\\.ru\$\/i/);
+  assert.match(player, /'متعدد الجودات · بدون إعلانات', true\);\n\s*p\.classList\.add\('is-mq'\); p\.dataset\.mq = '1';/);
+  assert.match(fs.readFileSync('pages/premium.njk', 'utf-8'), /<b>سيرفر خاص متعدد الجودات<\/b>/);
 });
 
 test('a story about Vince Russo never says «مكمان»; new names and spellings are learned (INCIDENTS #294)', async () => {

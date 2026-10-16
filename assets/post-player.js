@@ -477,7 +477,8 @@
     function enc(u) { try { return btoa(u).split('').reverse().join(''); } catch (e) { return ''; } }
     function host(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
     // a server with its own quality menu (eleventy.config.js MULTI_QUALITY_RE)
-    function multi(u) { return /(^|\.)(ok\.ru|hgcloud\.[a-z]+|streamhg\.[a-z]+|shgcloud\.[a-z]+|hgplayer\.[a-z]+|hgstream\.[a-z]+|hanerix\.com)$/i.test(host(toEmbedUrl(u))); }
+    // StreamHG no longer has qualities (owner 2026-10-16); the premium server (Google Drive) always has
+    function multi(u) { return /(^|\.)ok\.ru$/i.test(host(toEmbedUrl(u))); }
     // a download site's own name and logo, as the page's download cards show them (eleventy.config.js KNOWN_HOST_NAMES/LOGOS):
     // «Google Drive» with its logo, not «drive.google.com» with Google's (owner 2026-10-16)
     var SITES = { 'drive.google.com': ['Google Drive', '/assets/hosts/google-drive.svg'], 'docs.google.com': ['Google Drive', '/assets/hosts/google-drive.svg'],
@@ -517,7 +518,12 @@
       list.forEach(function(u, i){
         var code = enc(u);
         if (!code) return;
-        if (prem) frag.appendChild(row(code, list.length > 1 ? 'سيرفر مميز ' + (i + 1) : 'سيرفر مميز', '', 'بدون إعلانات', true));
+        if (prem) {
+          // the premium server: Google Drive's player, every quality in its settings, no ads
+          var p = row(code, list.length > 1 ? 'سيرفر مميز ' + (i + 1) : 'سيرفر مميز', '', 'متعدد الجودات · بدون إعلانات', true);
+          p.classList.add('is-mq'); p.dataset.mq = '1';
+          frag.appendChild(p);
+        }
         else {
           var r = row(code, 'سيرفر ' + (have + i + 1), String(have + i + 1), multi(u) ? 'متعدد الجودات' : '', false);
           if (multi(u)) { r.classList.add('is-mq'); r.dataset.mq = '1'; }
@@ -548,7 +554,7 @@
       var btn = el('button', 'quality-btn' + (prem ? ' is-prem' : ''), '<span class="quality-icon">' + (prem ? CROWN : DL) + '</span><span class="quality-label"></span><span class="quality-sub"></span>');
       btn.type = 'button'; btn.setAttribute('data-tier', prem ? 'prem' : 'high');
       btn.querySelector('.quality-label').textContent = prem ? 'تحميل مميز' : 'تحميل العرض';
-      btn.querySelector('.quality-sub').textContent = prem ? 'روابط مباشرة بدون إعلانات' : 'كل الجودات';
+      btn.querySelector('.quality-sub').textContent = prem ? 'مباشر وسريع بدون إعلانات' : 'كل الجودات';
       if (prem) grid.insertBefore(btn, grid.firstChild); else grid.appendChild(btn);
       var modal = el('div', 'dl-modal-backdrop');
       modal.id = id;
@@ -564,7 +570,7 @@
         a.querySelector('img').src = st.logo;
         a.querySelector('img').alt = st.name;
         a.querySelector('.dl-site-name').textContent = st.name || 'رابط التحميل';
-        a.querySelector('.dl-site-quality').textContent = prem ? 'رابط خاص بالأعضاء المميزين' : 'اضغط هنا للتحميل';
+        a.querySelector('.dl-site-quality').textContent = prem ? 'تحميل مباشر وسريع، بدون إعلانات' : 'اضغط هنا للتحميل';
         listEl.appendChild(a);
       });
       document.body.appendChild(modal);
@@ -578,7 +584,7 @@
     function promo(servers, downloads) {
       var built = document.getElementById('wdPrem');
       if (!servers && !downloads) { if (built) built.remove(); return; }
-      var what = servers && downloads ? 'سيرفر خاص بدون إعلانات وروابط تحميل مباشرة' : servers ? 'سيرفر خاص بدون إعلانات' : 'روابط تحميل مباشرة بدون إعلانات';
+      var what = servers && downloads ? 'سيرفر خاص متعدد الجودات وتحميل مباشر سريع' : servers ? 'سيرفر خاص متعدد الجودات بدون إعلانات' : 'تحميل مباشر وسريع بدون إعلانات';
       // the page came with it (built from the worker's counts): only its words may have changed since
       if (built) { built.querySelector('b').textContent = what; built.hidden = false; return; }
       var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small></small></span><span class="wd-prem-go"></span>');
