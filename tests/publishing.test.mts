@@ -4787,6 +4787,7 @@ test('yearly shows and their library pages carry year + spelling variants in str
   for (const f of ['مشاهده عرض موني ان ذا بانك', 'تحميل عرض موني ان ذا بانك 2026', 'تحميل عرض Money in the Bank 2026', 'Money in the Bank 2026 مترجم', 'دبليو دبليو إي موني إن ذا بانك']) assert.ok(forms.includes(f), f);
   const lib = libraryNameForms({ arName: 'عرض موني ان ذا بانك', name: 'WWE Money in the Bank', aliases, year: '2026' });
   for (const f of ['مشاهدة عرض موني ان ذا بانك 2026', 'مشاهده عرض موني ان ذا بانك 2026', 'تحميل عرض Money in the Bank', 'WWE Money in the Bank 2026 مترجم', 'دبليو دبليو إي موني إن ذا بانك']) assert.ok(lib.includes(f), f);
+  for (const f of ['تحميل عرض موني ان ذا بانك 2026 مترجم', 'مشاهدة عرض موني ان ذا بانك 2026 مترجم', 'مشاهدة عرض WWE Money in the Bank 2026']) assert.ok(lib.includes(f), f);
   assert.ok(fs.readFileSync('pages/library-program.njk', 'utf8').includes('libraryNameForms(lp.prog'));
 });
 
