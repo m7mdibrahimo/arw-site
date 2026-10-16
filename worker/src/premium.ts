@@ -195,6 +195,17 @@ export function showLinks(text: string): { servers: string[]; downloads: string[
   return { servers, downloads, date };
 }
 
+/** {k: [premium servers, premium downloads]} for every show that has any — counts only, never a link */
+export function premiumSummary(rows: { k: string; servers: string; downloads: string }[]): Record<string, [number, number]> {
+  const out: Record<string, [number, number]> = {};
+  for (const r of rows) {
+    let s = 0, d = 0;
+    try { s = JSON.parse(r.servers).length; d = JSON.parse(r.downloads).length; } catch { continue; }
+    if (s || d) out[r.k] = [s, d];
+  }
+  return out;
+}
+
 export async function handlePremium(request: Request, env: PremiumEnv, url: URL, now = Date.now()): Promise<Response> {
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
   const db = env.ANALYTICS;
@@ -215,6 +226,14 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     await settle(db, pay, { method: asked.method || body.payment_method, reference: asked.reference || body.referenceNumber }, now);
     await chatRebadge(env as any, pay.member).catch(() => {});
     return reply({ ok: true, paid: true });
+  }
+
+  // the build asks which shows have premium links, and how many — never the links: each show page then comes out with
+  // its premium line or rows already in it, instead of popping in after the page asked (owner 2026-10-16: «عايز … تكون
+  // ظاهرة علطول لانها بتاخد وقت علي ما بتظهر»)
+  if (path === "/premium/summary" && request.method === "GET") {
+    const rows: any = await db.prepare("SELECT k, servers, downloads FROM premium_media").all();
+    return new Response(JSON.stringify({ ok: true, media: premiumSummary(rows.results || []) }), { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=60", ...CORS } });
   }
 
   const me: any = await memberOf(request, env as any, now);

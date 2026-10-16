@@ -46,6 +46,9 @@ async function probe(url: string): Promise<"ok" | "dead" | "noEmbed"> {
   try {
     const res = await fetch(url, { redirect: "follow", headers: { "User-Agent": UA, Referer: "https://arab-wrestling.com/" }, signal: AbortSignal.timeout(25000) });
     await res.arrayBuffer().catch(() => null);
+    // A Google Drive file not shared with everyone sends the player to Google's sign-in (x-frame-options: DENY): that is
+    // that one file's sharing, never Google Drive as a host (INCIDENTS #630)
+    if (/^https:\/\/accounts\.google\.com\//.test(res.url)) return "ok";
     // A bot challenge (Cloudflare) answers our script, not a viewer's browser: it says nothing about the host
     if (res.headers.get("cf-mitigated") === "challenge" || (res.status === 403 && /cloudflare/i.test(res.headers.get("server") || ""))) return "ok";
     // The host's own server is down behind its CDN (Cloudflare 520–526, sg1.stackvid.com in Oct 2026) or failing

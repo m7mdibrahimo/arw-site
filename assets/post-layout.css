@@ -260,6 +260,7 @@
   .srv-row.is-prem.active{ background:rgba(242,165,60,.13); }
   .srv-row.is-prem.active::before{ background:#e09a12; }
   .wd-prem{ display:flex; align-items:center; gap:12px; margin:14px 0 0; padding:11px 14px; border-radius:12px; text-decoration:none; color:var(--ink); background:linear-gradient(135deg, rgba(255,210,90,.16), rgba(224,154,18,.08)); border:1px solid rgba(224,154,18,.35); transition:border-color .2s ease, background .2s ease; }
+  .wd-prem[hidden]{ display:none; }
   .wd-prem:hover{ border-color:#e09a12; background:linear-gradient(135deg, rgba(255,210,90,.26), rgba(224,154,18,.12)); }
   .wd-prem-ic{ flex:none; width:34px; height:34px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; }
   .wd-prem-ic svg{ width:17px; height:17px; }
@@ -574,6 +575,14 @@
   html.arw-dark .dl-site-card.is-mq{ background:linear-gradient(rgba(244,179,82,.06), rgba(244,179,82,.06)), var(--bg); border-color:rgba(244,179,82,.38); }
   html.arw-dark .dl-site-card.is-mq:hover{ border-color:rgba(244,179,82,.7); }
   html.arw-dark .dl-site-card.is-mq .dl-site-arrow{ color:#f4b352; }
+  /* a premium member's own download links (assets/post-player.js addDownloads): name over its line, in the premium gold */
+  .dl-site-card.is-prem{ order:-2; background:linear-gradient(rgba(242,165,60,.08), rgba(242,165,60,.08)), var(--bg); border:1.5px solid rgba(242,165,60,.55); }
+  .dl-site-card.is-prem:hover{ border-color:var(--gold); background:linear-gradient(rgba(242,165,60,.14), rgba(242,165,60,.14)), var(--bg); }
+  .dl-site-card.is-prem .dl-site-name{ display:block; }
+  .dl-site-card.is-prem .dl-site-quality{ display:block; margin-top:3px; color:#a86400; }
+  .dl-site-card.is-prem .dl-site-arrow{ color:#c27a12; }
+  html.arw-dark .dl-site-card.is-prem{ background:linear-gradient(rgba(244,179,82,.07), rgba(244,179,82,.07)), var(--bg); border-color:rgba(244,179,82,.4); }
+  html.arw-dark .dl-site-card.is-prem .dl-site-quality, html.arw-dark .dl-site-card.is-prem .dl-site-arrow{ color:#f4b352; }
   html.arw-dark .dl-mq-badge{ color:#f6c46f; background:rgba(244,179,82,.12); border-color:rgba(244,179,82,.35); }
   .dl-site-arrow{ width:18px; height:18px; color:var(--teal); flex-shrink:0; transition:transform 0.25s ease; }
   .dl-site-card:hover .dl-site-arrow{ transform:translateX(-3px); }

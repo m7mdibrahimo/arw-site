@@ -4,6 +4,8 @@ const path = require("path");
 
 // خريطة أسماء بعض مواقع التحميل الشائعة عشان تظهر بشكل احترافي بدل اسم الدومين الخام
 const KNOWN_HOST_NAMES = {
+  "drive.google.com": "Google Drive",
+  "docs.google.com": "Google Drive",
   "multiup.io": "MultiUp",
   "playmogo.com": "PlayMogo",
   "streamtape.com": "StreamTape",
@@ -41,6 +43,8 @@ const KNOWN_HOST_NAMES = {
 
 // لوجوهات مخصصة عالية الدقة لمواقع التحميل
 const KNOWN_HOST_LOGOS = {
+  "drive.google.com": "/assets/hosts/google-drive.svg",
+  "docs.google.com": "/assets/hosts/google-drive.svg",
   "uqload.vc": "/assets/hosts/uqload.png",
   "uqload.to": "/assets/hosts/uqload.png",
   "uqload.com": "/assets/hosts/uqload.png",

@@ -73,6 +73,8 @@
   function toEmbedUrl(raw) {
     if (!raw || typeof raw !== 'string') return '';
     var url = raw.trim();
+    // Google Drive's sharing link -> its player (lib/embed.cjs)
+    url = url.replace(/^https?:\/\/(?:drive|docs)\.google\.com\/(?:file\/(?:u\/\d+\/)?d\/|open\?(?:[^#]*&)?id=|uc\?(?:[^#]*&)?id=)([a-zA-Z0-9_-]{10,})(?:[\/?#&].*)?$/i, 'https://drive.google.com/file/d/$1/preview');
     url = url.replace(/^https?:\/\/(?:m\.)?ok\.ru\/video\/(\d+)/i, 'https://ok.ru/videoembed/$1');
     url = url.replace(/^https?:\/\/(vidtube\.[a-z]+)\/(?!embed-)([a-zA-Z0-9_-]+)(?:\.html)?$/i, 'https://$1/embed-$2.html');
     url = url.replace(/^https?:\/\/(uqload\.[a-z]+)\/(?!embed-)([a-zA-Z0-9_-]+)(?:\.html)?$/i, 'https://$1/embed-$2.html');
@@ -466,6 +468,8 @@
     var known = session && session.member || null;
     var thinksPremium = !!(known && (known.official || known.premium > Date.now()));
     function get(what) {
+      // the page asked already, while it was still loading (_includes/post-layout.njk, next to the premium line)
+      if (what === 'media' && window.__arwPrem) { var early = window.__arwPrem; window.__arwPrem = null; return early; }
       return fetch(API + what + '?k=' + encodeURIComponent(pk), { headers: token ? { Authorization: 'Bearer ' + token } : {}, credentials: 'omit' })
         .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ d.status = r.status; return d; }); });
     }
@@ -474,6 +478,15 @@
     function host(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
     // a server with its own quality menu (eleventy.config.js MULTI_QUALITY_RE)
     function multi(u) { return /(^|\.)(ok\.ru|hgcloud\.[a-z]+|streamhg\.[a-z]+|shgcloud\.[a-z]+|hgplayer\.[a-z]+|hgstream\.[a-z]+|hanerix\.com)$/i.test(host(toEmbedUrl(u))); }
+    // a download site's own name and logo, as the page's download cards show them (eleventy.config.js KNOWN_HOST_NAMES/LOGOS):
+    // «Google Drive» with its logo, not «drive.google.com» with Google's (owner 2026-10-16)
+    var SITES = { 'drive.google.com': ['Google Drive', '/assets/hosts/google-drive.svg'], 'docs.google.com': ['Google Drive', '/assets/hosts/google-drive.svg'],
+      'mega.nz': ['MEGA'], 'mediafire.com': ['MediaFire'], 'gofile.io': ['GoFile'], 'pixeldrain.com': ['PixelDrain'], '1fichier.com': ['1Fichier'],
+      'krakenfiles.com': ['KrakenFiles'], 'multiup.io': ['MultiUp'], 'uqload.vc': ['Uqload', '/assets/hosts/uqload.png'], 'uqload.to': ['Uqload', '/assets/hosts/uqload.png'] };
+    function siteOf(h) {
+      var k = SITES[h] || SITES[h.split('.').slice(-2).join('.')];
+      return { name: k ? k[0] : h, logo: k && k[1] ? k[1] : 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(h) + '&sz=64' };
+    }
     function clean(list) { return (list || []).filter(function(u){ return /^https?:\/\/\S+$/.test(String(u || '')); }); }
 
     // ── servers: added as rows of the list (a premium member's first, marked with the crown) ──
@@ -545,11 +558,12 @@
       modal.querySelector('.dl-modal').setAttribute('aria-label', title);
       var listEl = modal.querySelector('.dl-modal-body');
       list.forEach(function(u){
-        var h = host(u), a = el('a', 'dl-site-card' + (prem ? ' is-prem' : ''));
+        var h = host(u), st = siteOf(h), a = el('a', 'dl-site-card' + (prem ? ' is-prem' : ''));
         a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer nofollow'; a.dataset.ready = '1';
         a.innerHTML = '<img class="dl-site-logo" alt="" loading="lazy"><span class="dl-site-info"><span class="dl-site-name"></span><span class="dl-site-quality"></span></span><svg class="dl-site-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-        a.querySelector('img').src = 'https://www.google.com/s2/favicons?domain=' + encodeURIComponent(h) + '&sz=64';
-        a.querySelector('.dl-site-name').textContent = h || 'رابط التحميل';
+        a.querySelector('img').src = st.logo;
+        a.querySelector('img').alt = st.name;
+        a.querySelector('.dl-site-name').textContent = st.name || 'رابط التحميل';
         a.querySelector('.dl-site-quality').textContent = prem ? 'رابط خاص بالأعضاء المميزين' : 'اضغط هنا للتحميل';
         listEl.appendChild(a);
       });
@@ -562,8 +576,11 @@
 
     // ── for everyone else: what this show has for premium members ──
     function promo(servers, downloads) {
-      if (!servers && !downloads) return;
+      var built = document.getElementById('wdPrem');
+      if (!servers && !downloads) { if (built) built.remove(); return; }
       var what = servers && downloads ? 'سيرفر خاص بدون إعلانات وروابط تحميل مباشرة' : servers ? 'سيرفر خاص بدون إعلانات' : 'روابط تحميل مباشرة بدون إعلانات';
+      // the page came with it (built from the worker's counts): only its words may have changed since
+      if (built) { built.querySelector('b').textContent = what; built.hidden = false; return; }
       var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small></small></span><span class="wd-prem-go"></span>');
       a.querySelector('small').textContent = 'متاح في هذا العرض للأعضاء المميزين فقط، ومعه العروض الجديدة قبل الجميع';
       a.querySelector('.wd-prem-go').textContent = 'اشترك';
@@ -615,12 +632,45 @@
       })();
     }
 
+    // a premium member's links of the shows they opened, kept in their browser: the rows show at once on a second visit
+    var CACHE = 'arw-prem-links';
+    function cached() { try { return (JSON.parse(localStorage.getItem(CACHE) || '{}') || {})[pk] || null; } catch (e) { return null; } }
+    function keep(links) {
+      try {
+        var all = JSON.parse(localStorage.getItem(CACHE) || '{}') || {};
+        delete all[pk];
+        if (links) all[pk] = links;
+        var keys = Object.keys(all);
+        while (keys.length > 40) delete all[keys.shift()];
+        localStorage.setItem(CACHE, JSON.stringify(all));
+      } catch (e) {}
+    }
+    function dropPrem() {
+      document.querySelectorAll('.srv-row.is-prem, #downloads .quality-btn.is-prem, #dlModalPrem').forEach(function(x){ x.remove(); });
+      srvRows = Array.from(document.querySelectorAll('.srv-row'));
+    }
+    function showPrem(links) {
+      var b = document.getElementById('wdPrem');
+      if (b) b.remove();
+      addServers(links.servers, true); addDownloads(links.downloads, true);
+    }
     function extras() {
+      var shown = thinksPremium ? cached() : null;
+      if (shown) showPrem(shown);
       return get('media').then(function(d){
         if (!d.ok) return;
-        if (d.links) { addServers(d.links.servers, true); addDownloads(d.links.downloads, true); }
-        else promo(d.servers, d.downloads);
-      }).catch(function(){});
+        if (d.links) {
+          var same = shown && JSON.stringify(shown) === JSON.stringify(d.links);
+          keep(d.links);
+          if (same) return;
+          // a link changed since: the new ones, unless the member already plays one of the old ones
+          if (shown) { if (document.querySelector('.srv-row.is-prem.active')) return; dropPrem(); }
+          showPrem(d.links);
+        } else {
+          if (shown) { dropPrem(); keep(null); }
+          promo(d.servers, d.downloads);
+        }
+      }).catch(function(){ var b = document.getElementById('wdPrem'); if (b && !shown) b.hidden = false; });
     }
 
     if (!lock) { extras(); return; }

@@ -430,6 +430,13 @@
             </div>
           </div>
         </div>
+        {#- this show's premium line, in the page itself (_data/premiumMedia.js) instead of after the page asked the worker (owner
+            2026-10-16: «تكون ظاهرة علطول»). A premium member gets their own rows (assets/post-player.js), asked for right here -#}
+        {%- set pm = premiumMedia[pk] if pk else null -%}
+        {%- if pm %}
+        <a class="wd-prem" id="wdPrem" href="/premium/"><span class="wd-prem-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span><span class="wd-prem-tx"><b>{% if pm[0] and pm[1] %}سيرفر خاص بدون إعلانات وروابط تحميل مباشرة{% elif pm[0] %}سيرفر خاص بدون إعلانات{% else %}روابط تحميل مباشرة بدون إعلانات{% endif %}</b><small>متاح في هذا العرض للأعضاء المميزين فقط، ومعه العروض الجديدة قبل الجميع</small></span><span class="wd-prem-go">اشترك</span></a>
+        <script>(function(){try{var s=JSON.parse(localStorage.getItem('arw-member')||'null'),m=s&&s.member;if(!(s&&s.token&&m&&(m.official||m.premium>Date.now())))return;document.getElementById('wdPrem').hidden=true;window.__arwPrem=fetch('https://arw-site-bot.m7mdibrahimpc.workers.dev/premium/media?k='+encodeURIComponent({{ pk | dump | safe }}),{headers:{Authorization:'Bearer '+s.token},credentials:'omit'}).then(function(r){return r.json().catch(function(){return {};}).then(function(d){d.status=r.status;return d;});});}catch(e){}})();</script>
+        {%- endif %}
         {% if isShow %}
         <p class="wd-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span><b>تنبيه:</b> سيرفرات المشاهدة تعيد ترميز الفيديو مما يقلل من جودته؛ لمشاهدته بجودته الأصلية ينصح بتحميل العرض.</span></p>
         {% endif %}

@@ -564,3 +564,39 @@ test('the owner edits anything of a member: username, e-mail, password and pictu
   // the other member is untouched
   assert.equal((await me(e, other.token)).username, 'samir_22');
 });
+
+test('a show page comes with its premium line, and a Google Drive link plays and downloads as Google Drive (owner 2026-10-16, INCIDENTS #630)', async () => {
+  // «عايز … تكون ظاهرة علطول لانها بتاخد وقت علي ما بتظهر»: the build knows which shows have premium links (counts only)
+  const { premiumSummary } = await import('../worker/src/premium.ts');
+  assert.deepEqual(premiumSummary([
+    { k: 'shows/a', servers: '["https://x/1"]', downloads: '[]' },
+    { k: 'shows/b', servers: '[]', downloads: '[]' },
+    { k: 'shows/c', servers: 'not json', downloads: '[]' },
+    { k: 'shows/d', servers: '["u","v"]', downloads: '["w"]' },
+  ]), { 'shows/a': [1, 0], 'shows/d': [2, 1] });
+  const fs = await import('node:fs');
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  assert.match(layout, /set pm = premiumMedia\[pk\]/);
+  assert.match(layout, /class="wd-prem" id="wdPrem"/);
+  assert.match(layout, /window\.__arwPrem=fetch\(/);
+  const player = fs.readFileSync('assets/post-player.js', 'utf-8');
+  assert.match(player, /window\.__arwPrem/);
+  assert.match(player, /getElementById\('wdPrem'\)/);
+  assert.match(fs.readFileSync('assets/post-layout.css', 'utf-8'), /\.wd-prem\[hidden\]\{ display:none; \}/);
+  // «اني احط فقط اللينك وهو يتحول ل سيرفر امبيد لوحده»
+  const { toEmbedUrl } = (await import('../lib/embed.cjs')).default;
+  const id = '1M18MIZ5Yc0uDL1G3V9eVXfE81Y_zduXA', want = `https://drive.google.com/file/d/${id}/preview`;
+  for (const u of [`https://drive.google.com/file/d/${id}/view?usp=sharing`, `https://drive.google.com/file/d/${id}/view`, want,
+    `https://drive.google.com/open?id=${id}`, `https://drive.google.com/file/u/0/d/${id}/view`, `https://docs.google.com/uc?export=download&id=${id}`]) {
+    assert.equal(toEmbedUrl(u), want, u);
+  }
+  // the same rule in the page's player, which turns a premium member's links into players
+  const rule = player.match(/url = url\.replace\(\/\^https\?:\\\/\\\/\(\?:drive\|docs\)[^\n]*/);
+  assert.ok(rule, 'Drive rule in assets/post-player.js');
+  // the download card: «Google Drive» and its logo, not «drive.google.com»
+  const config = fs.readFileSync('eleventy.config.js', 'utf-8');
+  assert.match(config, /"drive\.google\.com": "Google Drive"/);
+  assert.match(config, /"drive\.google\.com": "\/assets\/hosts\/google-drive\.svg"/);
+  assert.ok(fs.existsSync('assets/hosts/google-drive.svg'));
+  assert.match(player, /'drive\.google\.com': \['Google Drive', '\/assets\/hosts\/google-drive\.svg'\]/);
+});
