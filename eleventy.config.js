@@ -227,6 +227,22 @@ function ytFacade(ytId) {
 
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
+  // Which post-build step eats the build time (INCIDENTS #638): every «eleventy.after» step slower than 3 s says so in the log.
+  {
+    const on = eleventyConfig.on.bind(eleventyConfig);
+    eleventyConfig.on = (event, fn) => {
+      if (event !== "eleventy.after") return on(event, fn);
+      const name = String(fn).replace(/\s+/g, " ").slice(0, 90);
+      return on(event, (...args) => {
+        const t = Date.now();
+        const done = () => { const sec = (Date.now() - t) / 1000; if (sec >= 3) console.log(`[timing] after-build step took ${sec.toFixed(1)}s: ${name}`); };
+        const r = fn(...args);
+        if (r && typeof r.then === "function") return r.then((v) => { done(); return v; });
+        done();
+        return r;
+      });
+    };
+  }
   // One line per written file (5000+) only slows the host's build log down.
   eleventyConfig.setQuietMode(true);
 

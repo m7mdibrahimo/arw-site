@@ -18,6 +18,7 @@ const HEADER = '<header><nav class="nav"><a class="brand" href="/">عرب راس
 const page = (head: string, body: string) => `<!DOCTYPE html>\n<html lang="ar" dir="rtl">\n<head>\n<meta charset="UTF-8">\n<title>${head}</title>\n<meta name="description" content="آخر أخبار المصارعة الحرة بالعربية: انتقالات، إصابات، وقرارات WWE وAEW وTNA أولاً بأول.">\n<img alt="" src="/x.png" />\n</head>\n<body>\n${HEADER}\n${body}\n<footer>© 2026</footer>\n</body>\n</html>\n`;
 const tr = mirror.makeTranslator(dict, {
   'عرض ديناميت 06.10.2026 مترجم': 'AEW Dynamite 06.10.2026',
+  'عرض ديناميت': 'AEW Dynamite',
   'عرض ديناميت مترجم بالكامل مع جميع النزالات والأحداث.': 'The complete AEW Dynamite show, with every match and moment.',
 });
 const english = new Set(['/', '/library/', '/shows/aew-dynamite-06-10-2026/', '/news/']);
@@ -253,4 +254,14 @@ test('INCIDENTS #438: the «عن العرض» section of a show page is translat
   assert.equal(out('ساعتان و22 دقيقة'), '2 hr 22 min');
   const p = out('يقدّم عرب راسلنج عرض ديناميت (AEW Dynamite) الذي أقيم يوم الأربعاء 7 أكتوبر 2026 مترجمًا إلى العربية كاملًا، ومدته ساعة و35 دقيقة. شاهد العرض أونلاين عبر 4 سيرفرات، أو حمّله بجودة ⁨480p⁩ و⁨720p⁩.');
   assert.ok(!AR.test(p), p);
+});
+
+test('an English page keeps no Arabic in hidden metas, and a card tooltip «… الأخير <date>» is translated', () => {
+  const html = page('x', '<a class="sx-card" href="/shows/aew-dynamite-06-10-2026/" title="عرض ديناميت الأخير 06.10.2026">x</a>')
+    .replace('</head>', '<meta property="article:tag" content="مين ايفنت"><meta property="article:tag" content="WWE"><meta name="arw-card-title" content="عرض مين ايفنت 14.10.2026 مترجم"></head>');
+  const out = run(html, '/shows/aew-dynamite-06-10-2026/').html;
+  assert.doesNotMatch(out, /article:tag" content="مين/);
+  assert.match(out, /article:tag" content="WWE"/);
+  assert.doesNotMatch(out, /arw-card-title" content="[^"]*[؀-ۿ]/);
+  assert.match(out, /title="Latest AEW Dynamite 06\.10\.2026"/);
 });
