@@ -1,5 +1,15 @@
 [
   {
+    "id": 2691199916,
+    "link": "https://www.wrestlinginc.com/2288519/wwe-smackdown-viewership-ratings-october-9-2026/",
+    "date": "Fri, 16 Oct 2026 13:30:00 +0000",
+    "date_gmt": "2026-10-16T13:30:00.000Z",
+    "title": {
+      "rendered": "WWE Smackdown Viewership & Ratings Report: 10/9/26"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-10926/l-intro-1792134718.jpg"
+  },
+  {
     "id": 3165078601,
     "link": "https://www.wrestlinginc.com/2288506/wwe-crown-jewel-saudi-arabia-plans-latest-update/",
     "date": "Fri, 16 Oct 2026 13:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Two More Indie Talents Gone From WWE ID Program"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/two-more-indie-talents-gone-from-wwe-id-program/l-intro-1792043376.jpg"
-  },
-  {
-    "id": 4966829954,
-    "link": "https://www.wrestlinginc.com/2287251/wwe-roman-reigns-responds-conrad-thompson-overrated/",
-    "date": "Thu, 15 Oct 2026 13:00:00 +0000",
-    "date_gmt": "2026-10-15T13:00:00.000Z",
-    "title": {
-      "rendered": "WWE's Roman Reigns Responds To Conrad Thompson's Claim That He's Overrated"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-roman-reigns-responds-to-conrad-thompsons-claim-that-hes-overrated/l-intro-1792041982.jpg"
   }
 ]

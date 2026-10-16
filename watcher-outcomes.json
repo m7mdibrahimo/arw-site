@@ -1,13 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T13:32:00.978Z"
+ },
  "https://www.ringsidenews.com/tna-impact-viewership-sees-increase-october-8-2026": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-08)",
   "retry": false,
   "at": "2026-10-16T13:29:37.890Z"
- },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T13:26:14.597Z"
  },
  "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -48,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T13:29:20.900Z"
- },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T13:26:14.597Z"
  },
  "https://www.fightful.com/wrestling/334163-wwe-nxt-live-kendal-grey": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
