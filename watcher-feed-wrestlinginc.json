@@ -1,5 +1,15 @@
 [
   {
+    "id": 1815745714,
+    "link": "https://www.wrestlinginc.com/2288605/wwe-nxt-viewership-ratings-october-13-2026/",
+    "date": "Fri, 16 Oct 2026 16:00:00 +0000",
+    "date_gmt": "2026-10-16T16:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Viewership & Ratings Report: 10/13/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-10132026/l-intro-1792148280.jpg"
+  },
+  {
     "id": 3217990467,
     "link": "https://www.wrestlinginc.com/2288832/wwe-sheamus-debut-never-had-great-story/",
     "date": "Fri, 16 Oct 2026 15:31:31 +0000",
@@ -188,15 +198,5 @@
       "rendered": "TNA & Swole Announce Benefit For IBD Charity"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-swole-announce-benefit-for-ibd-charity/l-intro-1792086753.jpg"
-  },
-  {
-    "id": 3661961207,
-    "link": "https://www.wrestlinginc.com/2287805/wwe-united-front-amidst-crown-jewel-uncertainty/",
-    "date": "Thu, 15 Oct 2026 16:43:34 +0000",
-    "date_gmt": "2026-10-15T16:43:34.000Z",
-    "title": {
-      "rendered": "WWE Wants 'United Front' Amidst Crown Jewel Uncertainty"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-wants-united-front-amidst-crown-jewel-uncertainty/l-intro-1792082453.jpg"
   }
 ]
