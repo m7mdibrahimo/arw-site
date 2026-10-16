@@ -1,5 +1,6 @@
 /* «توقعات العروض الكبرى» (pages/predictions.njk, assets/predictions.js)
    owner 2026-10-16: «منظم اكتر والصور تكون باينة فيه كاملة وتتاقلم علي ابعادةها»: every poster whole, never cropped */
+/* (INCIDENTS #612: a new version name after the deploy that cached the old file under the new one) */
 .pd-page{ --pd-gold:#e09a12; --pd-gold-ink:#9a6400; max-width:1040px; margin:0 auto; padding:28px 16px 80px; }
 html.arw-dark .pd-page{ --pd-gold:#f4b352; --pd-gold-ink:#f4b352; }
 .pd-hero{ text-align:center; padding:22px 0 6px; }

@@ -3,6 +3,7 @@
 // The look (owner 2026-10-16: «منظم اكتر والصور تكون باينة فيه كاملة وتتاقلم علي ابعادةها»، «كفاية الاسم بتاع
 // المصارعيين»): each poster whole, at its own shape (an upright poster beside its match, a wide one above it on a phone),
 // the names alone on the buttons; and the show's prize, a month of the paid membership for the top of its ranking.
+// (INCIDENTS #612: a new version name after the deploy that cached the old file under the new one)
 (function () {
   'use strict';
   var root = document.getElementById('pd');
