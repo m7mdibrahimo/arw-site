@@ -90,6 +90,7 @@ const SHOW_WORDS = "(?:العرض|عرض|عروض|WWE|AEW|TNA|RAW|Raw|SmackDown|
 
 const RULES: Rule[] = [
   { code: "tatweel_before_arabic", severity: "error", re: /\u0640(?=[\u0621-\u064A])|\u0640 +(?!ذا(?![\u0621-\u064A]))(?=[\u0621-\u064A])/g, message: "تطويل «ـ» (أو «ـ » بعدها مسافة) قبل اسم عربي («لـرويس»، «بـتايتشي») — التطويل بيتكتب بس قبل الاسم الإنجليزي (بـWWE)", fields: ["title", "body", "tags"] },
+  { code: "show_feminine_adjective", severity: "error", re: /عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+(?:الأخيرة|الاخيرة|القادمة|الماضية)(?![\u0621-\u064A])/g, message: "«عرض» مذكر: «عرض RAW الأخير/القادم» مش «الأخيرة/القادمة» (INCIDENTS #621)" },
   { code: "persian_letters", severity: "error", re: /[گکیپچژڤ]/g, message: "حروف فارسية بدل العربية" },
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة)" },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
@@ -242,9 +243,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -751,6 +752,8 @@ export function dualPronounsToPlural(text: string): string {
 export function autoFix(text: string): string {
   if (!text) return text;
   text = splitGluedBlocks(text);
+  // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
+  text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
   text = dualPronounsToPlural(text);
   // A match card copied from the source keeps «(c)» for the champion: «كيلاني جوردان (c) ضد رين سنكلير» went live (INCIDENTS #508)
   text = text.replace(/(^[^\n]*\n(?:[^\n]*\n){0,2}?)?([^\n]*?)\s*\(c\)/gim, (m: string, prev: string | undefined, line: string) =>

@@ -4846,6 +4846,7 @@ test('recap and weekly library structured-data names cover recap wording and the
   const recap = showNameForms({ headline: 'ملخص عرض موني ان ذا بانك 10.10.2026', title: 'WWE Money in the Bank Highlights (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: [], isShow: false });
   for (const f of ['ملخص موني ان ذا بانك 2026', 'نتائج موني ان ذا بانك 2026', 'WWE Money in the Bank 2026 highlights', 'WWE Money in the Bank 2026 مترجم']) assert.ok(recap.includes(f), f);
   assert.ok(!recap.includes('تحميل عرض موني ان ذا بانك'));
+  for (const f of ['مشاهدة ملخص موني ان ذا بانك 2026', 'ملخص عرض موني ان ذا بانك 2026 مترجم', 'ملخص موني ان ذا بانك 2026 كامل مترجم']) assert.ok(recap.includes(f), f);
   const lib = libraryNameForms({ arName: 'عرض دايناميت', name: 'AEW Dynamite', aliases: [], year: '2026', count: 30, latest: '2026-10-07' });
   for (const f of ['عرض دايناميت 7/10/2026', 'عرض AEW Dynamite 7 أكتوبر 2026', 'AEW Dynamite October 7 2026']) assert.ok(lib.includes(f), f);
   assert.ok(!libraryNameForms({ arName: 'عرض س', name: 'X Y', count: 2, latest: '2026-10-07' }).some((f) => /7\/10\/2026/.test(f)));
@@ -4947,4 +4948,12 @@ test("the footer stays the site's own short menu: no program list or other links
     assert.doesNotMatch(src, /footer-programs/, f);
     for (const m of src.matchAll(/<nav class="footer-nav"[\s\S]*?<\/nav>/g)) assert.ok((m[0].match(/<a\s/g) || []).length <= 6, `${f}: the footer menu grew past its few links`);
   }
+});
+
+test('«عرض» stays masculine: «عرض SmackDown الأخيرة» is fixed and blocks publishing (INCIDENTS #621)', async () => {
+  const { autoFix, checkArticle, BLOCKING_QA_CODES } = await import('../scripts/news-qa');
+  assert.equal(autoFix('بعد أحداث عرض WWE SmackDown الأخيرة وفي عرض *AEW Collision* القادمة'), 'بعد أحداث عرض WWE SmackDown الأخير وفي عرض *AEW Collision* القادم');
+  assert.equal(autoFix('الحلقة الأخيرة من المسلسل'), 'الحلقة الأخيرة من المسلسل');
+  assert.ok(BLOCKING_QA_CODES.includes('show_feminine_adjective'));
+  assert.ok(checkArticle('حالة من الإحباط تحيط بغونتر في عرض WWE SmackDown', 'تسود حالة من الإحباط بشأن غونتر في عرض WWE SmackDown الأخيرة وبحسب التقارير الصحفية فإن التوجه الحالي للنجم أثار تساؤلات عديدة داخل الفريق الإبداعي.').some(i => i.code === 'show_feminine_adjective'));
 });
