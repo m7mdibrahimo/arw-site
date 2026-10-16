@@ -383,7 +383,7 @@ html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-
    sometimes painted only below the edge (#610), so each section reaches 12px higher with a clear top border: its
    colour still starts at the edge (background-clip), the band above shows through the border, and the whole dot lies
    inside the section's own box. */
-#feds, #full-shows, #recaps, #nostalgia-home, #news{ border-top:12px solid transparent; margin-top:-12px; background-clip:padding-box; }
+#feds, #full-shows, #recaps, #nostalgia-home, #news{ border-top:12px solid transparent !important; margin-top:-12px; background-clip:padding-box; }
 #feds::before, #full-shows::before, #recaps::before, #nostalgia-home::before, #news::before{
   content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
   width:min(760px, 78%); height:1px; pointer-events:none;
@@ -1288,8 +1288,8 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 .fresh-tag{ margin-inline-start:auto; margin-inline-end:0 !important; background:#dcfce7; color:#15803d; box-shadow:inset 0 0 0 1px rgba(21,128,61,.18); }
 html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-shadow:inset 0 0 0 1px rgba(134,239,172,.22); }
 </style>
-<link rel="stylesheet" href="/assets/notif.css?v=20260922v1">
-<link rel="stylesheet" href="/assets/features.css?v=20261015m">
+<link rel="stylesheet" href="/assets/notif.css?v=20261016a">
+<link rel="stylesheet" href="/assets/features.css?v=20261016a">
 <link rel="stylesheet" href="/assets/dark.css?v=20261016b">
 </head>
 <body>
@@ -1667,7 +1667,7 @@ if(a && a.href && a.origin === location.origin) prefetch(a.href);
 })();
 </script>
 <script src="/assets/features.js?v=20261015n" defer></script>
-<script src="/assets/top10.js?v=7" defer></script>
+<script src="/assets/top10.js?v=8" defer></script>
 <script>
 (function(){
 var header = document.querySelector('header');

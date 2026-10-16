@@ -4157,7 +4157,7 @@ test('a server\'s own fullscreen never goes black: no page-to-page view transiti
   const motion = fs.readFileSync('assets/motion.css', 'utf8');
   assert.match(motion, /^@view-transition \{ navigation: none; \}/m);
   assert.doesNotMatch(motion, /navigation: auto|view-transition-name/);
-  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /motion\.css\?v=20261009/);
+  assert.match(fs.readFileSync('_includes/theme-init.njk', 'utf8'), /motion\.css\?v=20261016a/);
   const player = fs.readFileSync('assets/post-player.js', 'utf8');
   assert.match(player, /document\.addEventListener\('fullscreenchange', sync\)/);
   assert.match(player, /root\.classList\.toggle\('arw-fs', !!fs\)/);
