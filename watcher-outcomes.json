@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-16T14:41:26.671Z"
+ },
  "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T14:40:28.090Z"
- },
- "https://www.wrestlinginc.com/2287262/tna-thursday-night-impact-october-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-16T14:22:16.063Z"
  },
  "https://www.ringsidenews.com/john-cena-reveals-why-staying-wwe-longer-would-have-unfair-his-wife": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
