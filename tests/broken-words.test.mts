@@ -344,5 +344,6 @@ test('INCIDENTS #641: prefixed duals and one-letter prefixes glued to Latin are 
   assert.ok(!codes('أقام الاتحاد تسجيلا لحلقات متتالية.').includes('dual_noun'));
   assert.ok(codes('قراري في قمة مسيرتي بWWE كان صعبا.').includes('glued_latin_arabic'));
   assert.ok(!codes('قراري في قمة مسيرتي في WWE كان صعبا.').includes('glued_latin_arabic'));
+  assert.ok(!codes('تنافس بين AEW وWWE وTNA في السوق.').includes('glued_latin_arabic'), '«وWWE» (و العطف) سليمة');
   assert.match(applyCorrections('نزال هذا الجمعة'), /هذه الجمعة/);
 });

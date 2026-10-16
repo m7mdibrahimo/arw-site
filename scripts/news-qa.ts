@@ -92,7 +92,7 @@ const RULES: Rule[] = [
   { code: "tatweel_before_arabic", severity: "error", re: /\u0640(?=[\u0621-\u064A])|\u0640 +(?!ذا(?![\u0621-\u064A]))(?=[\u0621-\u064A])/g, message: "تطويل «ـ» (أو «ـ » بعدها مسافة) قبل اسم عربي («لـرويس»، «بـتايتشي») — التطويل بيتكتب بس قبل الاسم الإنجليزي (بـWWE)", fields: ["title", "body", "tags"] },
   { code: "show_feminine_adjective", severity: "error", re: /عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+(?:الأخيرة|الاخيرة|القادمة|الماضية)(?![\u0621-\u064A])/g, message: "«عرض» مذكر: «عرض RAW الأخير/القادم» مش «الأخيرة/القادمة» (INCIDENTS #621)" },
   { code: "persian_letters", severity: "error", re: /[گکیپچژڤ]/g, message: "حروف فارسية بدل العربية" },
-  { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]|(?<![${AR}])[بلكو](?=[A-Z]{2,})`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)" },
+  { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]|(?<![${AR}])[بلك](?=[A-Z]{2,})`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)" },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },

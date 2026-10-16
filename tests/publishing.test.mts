@@ -5020,3 +5020,13 @@ test('INCIDENTS #641: NXT misspellings «اكس اكس ان» are in the show\'s
   const forms = showNameForms({ headline: 'عرض ان اكس تي مترجم', title: 'WWE NXT 13.10.2026', programName: 'WWE NXT', eventDate: '2026-10-13', aliases: ['عرض ان اكس تي'], isShow: true });
   assert.ok(forms.includes('اكس اكس ان مترجم'));
 });
+
+test('INCIDENTS #642: a weekly program page answers the federation alone («عرض aew الاخير», «تي إن إيه»)', async () => {
+  const { libraryNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const dyn = libraryNameForms({ arName: 'عرض دايناميت', name: 'AEW Dynamite', aliases: [], year: '2026', count: 30 });
+  for (const f of ['عرض AEW الاخير', 'عرض AEW الأخير مترجم']) assert.ok(dyn.includes(f), f);
+  const tna = libraryNameForms({ arName: 'عرض إمباكت', name: 'TNA iMPACT', aliases: [], year: '2026', count: 30 });
+  assert.ok(tna.includes('تي إن إيه') && tna.includes('عرض تي إن إيه مترجم'));
+  // a one-off event (few episodes) is not a weekly program: no federation-only names
+  assert.ok(!libraryNameForms({ arName: 'عرض سلام', name: 'AEW Slam', aliases: [], year: '2026', count: 1 }).includes('عرض AEW مترجم'));
+});
