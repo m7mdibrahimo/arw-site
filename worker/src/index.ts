@@ -2181,7 +2181,7 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   const hasEnglishSurvive = /\bsurvives?.*to retain\b/i.test(title);
 
   // Live in-show angles/attacks/segments from weekly shows
-  const hasArabicLiveShow = ar("(?:في عرض|خلال عرض|عبر عرض|بعرض)\\s+(?:WWE\\s+|AEW\\s+)?(?:RAW|SmackDown|NXT|الرو|سماك\\s*داون|إمباكت|Dynamite|Collision|داينمايت|كوليجن)").test(title);
+  const hasArabicLiveShow = ar("(?:في عرض|خلال عرض|عبر عرض|بعرض)\\s+(?:WWE\\s+|AEW\\s+)?(?:RAW|SmackDown|NXT|الرو|سماك\\s*داون|إمباكت|Dynamite|Collision|داينامايت|داينمايت|ديناميت|كوليجن)").test(title);
   const hasArabicLiveAngle = ar("يهاجم|تهاجم|يعتدي على|تعتدي على|يغدر بـ|تغدر بـ|يصدم|يواجه|تواجه|يصفع|تصفع|يقتحم|تقتحم|يشعل|يشعلان|تظهر في|يظهر في|يفاجئ|تفاجئ|يقاطع|تقاطع").test(title);
   const hasEnglishLiveShow = /\b(?:on\s+(?:\d+[-\/]\d+\s+)?(?:WWE\s+)?(?:RAW|SmackDown|NXT)|on\s+(?:AEW\s+)?(?:Dynamite|Collision))\b/i.test(title);
   const hasEnglishLiveAngle = /\b(?:attacks?|ambushes?|turns on|brawls with|appears on|shows up on|confronts?|cost\b|interferes?)\b/i.test(title);
