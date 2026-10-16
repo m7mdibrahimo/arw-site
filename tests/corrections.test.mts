@@ -60,3 +60,11 @@ test("Trump is never «the former president» in Arabic stories (INCIDENTS #609)
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الرئيس (الأمريكي )?السابق (دونالد )?ترامب/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #568: «فقرة كوميدية غير موفق فيها» — the adjective must agree with its feminine noun.
+test("«غير موفق فيها» is corrected and no story keeps it", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "غير موفق فيها" && c.right === "غير موفقة"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("غير موفق فيها"));
+  assert.deepEqual(bad, []);
+});

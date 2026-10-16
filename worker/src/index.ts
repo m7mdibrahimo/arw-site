@@ -2112,7 +2112,10 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   // A nameless return says nothing: a weekly roundup's lead «…وعودة أسماء بارزة إلى الحلبات» was
   // held as a return spoiler (INCIDENTS #277).
   const namelessReturn = ar("(?:و|ف)?عودة\\s+(?:عدد\\s+من\\s+|بعض\\s+)?(?:ال)?(?:أسماء|اسماء|وجوه|نجوم|مصارعين|مصارعات)(?:\\s+(?:ال)?(?:بارزة|كبيرة|لامعة|معروفة|مألوفة|قديمة))?(?![\\u0600-\\u06FF])");
-  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ").replace(new RegExp(whenReturn.source, "gi"), " ").replace(new RegExp(aboutReturn.source, "gi"), " ").replace(new RegExp(namelessReturn.source, "gi"), " ");
+  // Being cleared to return is not a return: «كيندال غراي تحصل على التصريح الطبي للعودة إلى الحلبة»
+  // was held as a return spoiler (INCIDENTS #513).
+  const clearedReturn = ar("(?:ال)?(?:تصريح|موافقة|إذن|اذن|ضوء\\s+(?:ال)?أخضر)(?:\\s+(?:ال)?طبي(?:ة)?)?\\s+(?:لل|بال|ل|ب)?(?:ال)?عود(?:ة|ته|تها|تهم)");
+  const returnTitle = announced || pendingReturn.test(title) ? "" : title.replace(new RegExp(clearedReturn.source, "gi"), " ").replace(new RegExp(notYetReturn.source, "gi"), " ").replace(new RegExp(formatReturn.source, "gi"), " ").replace(new RegExp(whenReturn.source, "gi"), " ").replace(new RegExp(aboutReturn.source, "gi"), " ").replace(new RegExp(namelessReturn.source, "gi"), " ");
   if (ar("(?:و|ف)?(?:يعود|تعود|يعودان|يعودون|عودة|عودته|عودتها|عودتهم|العودة|العائد|العائدة|يسجل عودته|تسجل عودتها|الظهور الأول|ظهوره الأول|ظهورها الأول|ظهورهم الأول|أول ظهور|ظهور مفاجئ|ظهورا مفاجئا|يظهر لأول مرة|تظهر لأول مرة|ظهوره المفاجئ|ظهورها المفاجئ)").test(returnTitle) ||
       /\b(?:returns?|returned|returning|comeback|debuts?|debuted|debuting|surprise (?:appearance|return|entrant)|makes? (?:\w+ )?appearance|shows? up|reappears?)\b/i.test(title)) {
     return true;

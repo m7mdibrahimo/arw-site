@@ -2237,6 +2237,13 @@ test('a debut months ago told as history («منذ ظهوره الأول في أ
   assert.equal(isSingleMatchSpoiler('ساموا جو يعود في عرض AEW All Out'), true);
 });
 
+test('a medical clearance to return does not hold a story off social (INCIDENTS #513)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('كيندال غراي تحصل على التصريح الطبي للعودة إلى الحلبة'), false);
+  assert.equal(isSingleMatchSpoiler('بيكي لينش تنال الضوء الأخضر للعودة'), false);
+  assert.equal(isSingleMatchSpoiler('كيندال غراي تعود في عرض WWE NXT'), true);
+});
+
 test('a title win someone is aiming for, and a return to training, do not hold a story off social (INCIDENTS #155)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('كاسي لي: الفوز ببطولة AEW العالمية للفرق للسيدات هو هدفي الأبرز في عالم المصارعة'), false);
