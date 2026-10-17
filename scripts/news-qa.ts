@@ -354,6 +354,14 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     }
   }
 
+  // A finished match told in the present tense: «تواجه ار تروث وداميان بريست في نزال فردي» above «الفائز: داميان بريست»
+  // — the writer turned «faced» into «تواجه/يواجه» (INCIDENTS #645). A result block narrates in the past: «واجه».
+  for (const block of (body || "").split(/\n(?=\*\*(?:المواجهة|الحدث))/)) {
+    if (!/^\*\*(?:المواجهة|الحدث)/.test(block) || !/الفائز|النتيجة:/.test(block)) continue;
+    const m = block.match(/(?:^|\n|\.\s|،\s)(?:تواجه|يواجه)\s+(?!ال)[ء-ي]+(?:\s+[ء-ي]+){0,2}\s+و(?:داميان|[ء-ي]{3,})[^\n.]{0,40}\s+في\s+نزال/);
+    if (m) { issues.push({ code: "result_present_tense", severity: "error", field: "body", message: "نزال انتهى مكتوب بالمضارع («تواجه … وداميان بريست») — اكتبه بالماضي: «واجه فلان فلان»", excerpt: m[0].trim().slice(0, 80) }); break; }
+  }
+
   // A weekly show on a date that isn't its day: «AEW Dynamite يوم الثامن والعشرين من سبتمبر»
   // (a Monday) — the tribute Dynamite was the 30th; the writer made the date up (INCIDENTS #151).
   const wrongDay = showOnWrongWeekday(body || "");

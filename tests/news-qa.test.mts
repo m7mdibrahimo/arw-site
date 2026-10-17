@@ -120,3 +120,12 @@ test("«المصارعيم» and «حمل للقلب» are corrected (INCIDENTS 
   const { applyCorrections } = await import("../scripts/news-qa.ts");
   assert.equal(applyCorrections("أكثر المصارعيم على فترتي حمل للقلب"), "أكثر المصارعين على فترتي حمل اللقب");
 });
+
+test("a finished match told in the present tense («تواجه ار تروث وداميان بريست») is blocked in results, not in previews (INCIDENTS #645)", () => {
+  const result = "نتائج عرض.\n\n**المواجهة الثالثة: نزال فردي**\n\nتواجه ار تروث وداميان بريست في نزال فردي، وانتهى النزال بتوقف المواجهة.\n\n🏆 **الفائز:** داميان بريست";
+  assert.ok(checkArticle("نتائج عرض WWE SmackDown", result).some((i) => i.code === "result_present_tense"));
+  const fixed = result.replace("تواجه ار تروث وداميان بريست", "واجه ار تروث داميان بريست");
+  assert.ok(!checkArticle("نتائج عرض WWE SmackDown", fixed).some((i) => i.code === "result_present_tense"));
+  const preview = "يعلن الاتحاد عن العرض القادم.\n\nتواجه ار تروث وداميان بريست في نزال فردي في العرض القادم.";
+  assert.ok(!checkArticle("نزال قادم", preview).some((i) => i.code === "result_present_tense"));
+});
