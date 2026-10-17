@@ -1,5 +1,25 @@
 [
   {
+    "id": 2759805726,
+    "link": "https://www.wrestlinginc.com/2287435/wwe-nxt-jacy-jayne-stephanie-vaquer-out-body-experience-title/",
+    "date": "Sat, 17 Oct 2026 17:00:00 +0000",
+    "date_gmt": "2026-10-17T17:00:00.000Z",
+    "title": {
+      "rendered": "Jacy Jayne Had 'Out Of Body Experience' Beating Stephanie Vaquer For WWE NXT Title"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jacy-jayne-had-out-of-body-experience-beating-stephanie-vaquer-for-wwe-nxt-title/l-intro-1792068158.jpg"
+  },
+  {
+    "id": 4421517768,
+    "link": "https://www.wrestlinginc.com/2287271/darby-allin-steve-borden-say-sting-more-fun-aew-anyone-else/",
+    "date": "Sat, 17 Oct 2026 16:30:00 +0000",
+    "date_gmt": "2026-10-17T16:30:00.000Z",
+    "title": {
+      "rendered": "Darby Allin And Steve Borden Say Sting Had 'More Fun In AEW Than Anyone Else'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/darby-allin-and-steve-borden-say-sting-had-more-fun-in-aew-than-he-had-anywhere-else/l-intro-1792049841.jpg"
+  },
+  {
     "id": 1964716072,
     "link": "https://www.wrestlinginc.com/2286151/wwe-scotty-2-hotty-worm-dance-popular-audience/",
     "date": "Sat, 17 Oct 2026 15:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "AEW Collision Viewership & Ratings Report: 10/10/26"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-viewership-ratings-report-101026/l-intro-1792178679.jpg"
-  },
-  {
-    "id": 2925262872,
-    "link": "https://www.wrestlinginc.com/2289111/aew-wrestledream-2026-ilja-dragunov-kairi-sane-status/",
-    "date": "Fri, 16 Oct 2026 18:40:12 +0000",
-    "date_gmt": "2026-10-16T18:40:12.000Z",
-    "title": {
-      "rendered": "Backstage Update On AEW Status Of Ilja Dragunov & Kairi Sane Ahead Of WrestleDream"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wrestledream-2026-ilja-dragunov-kairi-sane-status/l-intro-1792179950.jpg"
-  },
-  {
-    "id": 3187678815,
-    "link": "https://www.wrestlinginc.com/2289069/aew-jeff-jarrett-max-caster-rap-tna-bound-for-glory-2026-controversy/",
-    "date": "Fri, 16 Oct 2026 18:14:21 +0000",
-    "date_gmt": "2026-10-16T18:14:21.000Z",
-    "title": {
-      "rendered": "AEW's Jeff Jarrett Weighs In On Max Caster's Controversial Rap From TNA BFG 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jeff-jarrett-weighs-in-on-max-casters-controversial-rap-from-tna-bfg-2026/l-intro-1792174327.jpg"
   }
 ]
