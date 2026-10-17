@@ -206,8 +206,15 @@ export function repeatedEnglishWords(text: string): string[] {
   }
   return left;
 }
+/** The platform is «X» now, the Arabic edition says «إكس»; «Twitter» stays only inside a speaker's own quote */
+export function twitterToX(text: string): string {
+  return String(text).split("\n").map((line) => {
+    if (SKIP_LINE.test(line)) return line;
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(/\bTwitter\b/g, "X"))).join("");
+  }).join("\n");
+}
 export function fixEnglishNames(text: string): string {
-  return collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)));
+  return twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

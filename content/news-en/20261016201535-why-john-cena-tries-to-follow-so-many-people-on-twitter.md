@@ -1,5 +1,5 @@
 ---
-title: "Why John Cena Tries to Follow So Many People on Twitter"
+title: "Why John Cena Tries to Follow So Many People on X"
 slug: "why-john-cena-tries-to-follow-so-many-people-on-twitter"
 description: "John Cena recently explained his unique approach to social media, revealing why he tries to follow as many people as possible on X while keeping his…"
 federation: WWE
@@ -9,7 +9,7 @@ source_url: "https://www.ringsidenews.com/why-john-cena-tries-follow-many-people
 en_tags:
   - "John Cena"
   - "WWE"
-  - "Twitter"
+  - "X"
   - "X"
   - "Social Media"
 image: /content/images/wzvdr1wkn10ddos8.jpg

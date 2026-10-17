@@ -114,3 +114,15 @@ test("Nikkito Lyons → Nikkita Lyons in English stories", async () => {
   const { fixEnglishNames } = await import("../scripts/english-edition.ts");
   assert.equal(fixEnglishNames("Nikkito Lyons retained the title"), "Nikkita Lyons retained the title");
 });
+
+test("«Twitter» becomes «X» in English stories, except inside a quote", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("Cage posted a video on Twitter today."), "Cage posted a video on X today.");
+  assert.equal(fixEnglishNames("Hayes Blacks Out Twitter Profile Picture"), "Hayes Blacks Out X Profile Picture");
+  assert.equal(fixEnglishNames('He said "stay off Twitter" today.'), 'He said "stay off Twitter" today.');
+  assert.equal(fixEnglishNames("> \"Don't be on Twitter.\""), "> \"Don't be on Twitter.\"");
+  for (const f of fs.readdirSync("content/news-en").filter((x) => x.endsWith(".md"))) {
+    const head = fs.readFileSync(`content/news-en/${f}`, "utf-8").split("\n").slice(0, 20).filter((l) => /^(title|description):|^  - /.test(l)).join("\n");
+    assert.ok(!/\bTwitter\b/.test(head), `Twitter in the head of ${f}`);
+  }
+});

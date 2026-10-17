@@ -14,6 +14,6 @@ en_tags:
   - "Jason Hotch"
 image: /content/images/19o147bb608ew443.jpg
 ---
-Independent wrestler Sofia Sivan has been identified as one of the mystery women who accompanied Mustafa Ali during his Egyptian-inspired entrance at TNA Bound for Glory. Sivan shared a clip of the presentation on Twitter, confirming she was the woman positioned on Ali's right side. Ali lost the TNA International Championship to Jason Hotch during the event after missing a 450 Splash, allowing Hotch to secure the pinfall and leave Detroit as the new champion. Sivan has previously competed for various independent promotions including CCW, CSW, UFW, ROH, and SHINE.
+Independent wrestler Sofia Sivan has been identified as one of the mystery women who accompanied Mustafa Ali during his Egyptian-inspired entrance at TNA Bound for Glory. Sivan shared a clip of the presentation on X, confirming she was the woman positioned on Ali's right side. Ali lost the TNA International Championship to Jason Hotch during the event after missing a 450 Splash, allowing Hotch to secure the pinfall and leave Detroit as the new champion. Sivan has previously competed for various independent promotions including CCW, CSW, UFW, ROH, and SHINE.
 
 https://x.com/sofiasivan/status/2109489827599253920
