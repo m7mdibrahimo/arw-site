@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-16-10-2026/",
+    "title": "عرض سماك داون 16.10.2026 مترجم",
+    "subtitle": "WWE Smackdown 16.10.2026",
+    "image": "/content/images/dbgqg3wbhdpizx01.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/tna-impact-15-10-2026/",
     "title": "عرض تي ان ايه امباكت 15.10.2026 مترجم",
     "subtitle": "TNA iMPACT 15.10.2026",
@@ -130,17 +141,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-09-10-2026/",
-    "title": "عرض سماك داون 09.10.2026 مترجم",
-    "subtitle": "WWE Smackdown 09.10.2026",
-    "image": "/content/images/dbs32voaupebsrcc.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/mlp-mayhem-30-09-2026/",
