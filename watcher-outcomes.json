@@ -1,48 +1,48 @@
 {
- "https://www.fightful.com/wrestling/divine-dominion-defeat-sisters-of-sin-at-aew-wrestledream": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-17T23:19:50.724Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:34.764Z"
+  "at": "2026-10-17T23:20:58.509Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:34.633Z"
+  "at": "2026-10-17T23:20:58.396Z"
  },
  "https://www.fightful.com/wrestling/rusev-returns-to-the-ring-at-10-16-wwe-live-in-hawaii": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:34.386Z"
+  "at": "2026-10-17T23:20:58.179Z"
  },
  "https://www.fightful.com/wrestling/update-on-kairi-and-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:34.198Z"
+  "at": "2026-10-17T23:20:58.020Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-17T23:19:33.782Z"
+  "at": "2026-10-17T23:20:57.663Z"
  },
  "https://www.fightful.com/wrestling/giulia-promises-more-brutality-less-rules-to-blake-monroe-in-their-street-fight-on-10-23-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:33.597Z"
+  "at": "2026-10-17T23:20:57.506Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-wants-to-beat-roman-reigns-once-he-returns-to-wwe-says-he-may-have-to-bring-the-sword-back-because-romans-got-95-family-members": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:33.232Z"
+  "at": "2026-10-17T23:20:57.195Z"
  },
  "https://www.fightful.com/wrestling/mercedes-martinez-provides-surgery-update-says-gofundme-covered-it-in-full": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T23:19:32.992Z"
+  "at": "2026-10-17T23:20:56.988Z"
+ },
+ "https://www.fightful.com/wrestling/divine-dominion-defeat-sisters-of-sin-at-aew-wrestledream": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-17T23:19:50.724Z"
  },
  "https://www.ringsidenews.com/aew-wrestledream-results-highlights-key-moments-october-17-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
