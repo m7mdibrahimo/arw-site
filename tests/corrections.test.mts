@@ -133,3 +133,11 @@ test("duplicated program+host name and the meaningless «نافيا الواقع
   assert.equal(applyCorrections("في برنامج Close Up with Renee Paquette مع رينيه باكيت، تحدث"), "في برنامج Close Up مع رينيه باكيت، تحدث");
   assert.equal(applyCorrections("كتب سينتس عبر منصة إكس نافيا الواقعة بالقول إنه لم يتعمد"), "كتب سينتس عبر منصة إكس إنه لم يتعمد");
 });
+
+// INCIDENTS #662: «تتراوح بين منتصف الثلاثين مليون دولار» (literal «mid-$30 million range») reached the Street Fighter story.
+test("«تتراوح بين منتصف الثلاثين مليون» is corrected and gone from stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("إيرادات تتراوح بين منتصف الثلاثين مليون دولار"), "إيرادات في حدود 35 مليون دولار");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /منتصف الثلاثين مليون/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
