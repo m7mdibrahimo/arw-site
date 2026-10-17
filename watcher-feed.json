@@ -1,5 +1,15 @@
 [
   {
+    "id": 334350,
+    "link": "https://www.fightful.com/wrestling/john-cena-continues-to-advocate-for-wrestlemania-in-london/",
+    "date": "2026-10-17T12:32:59",
+    "date_gmt": "2026-10-17T16:32:59",
+    "title": {
+      "rendered": "John Cena Continues To Advocate For WrestleMania In London"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17123302/maxresdefault-113.jpg"
+  },
+  {
     "id": 334295,
     "link": "https://www.fightful.com/wrestling/drew-mcintyre-ive-never-had-six-months-off-since-i-started-wrestling-professionally-when-i-come-back-its-going-to-be-a-big-deal/",
     "date": "2026-10-17T12:27:43",
@@ -288,15 +298,5 @@
       "rendered": "UFC Fight Night: Buckley vs. Malott Odds Courtesy Of MyBookie"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16202234/maxresdefault-111.jpg"
-  },
-  {
-    "id": 334268,
-    "link": "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag/",
-    "date": "2026-10-16T20:10:12",
-    "date_gmt": "2026-10-17T00:10:12",
-    "title": {
-      "rendered": "AEW Posts New Teaser For Ilja Dragunov With AEW WrestleDream Tag"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16200935/Screenshot-2026-10-16-at-8.03.24-PM.png"
   }
 ]
