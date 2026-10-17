@@ -600,8 +600,9 @@ test('switching light/dark is one cross-fade of the whole page, on the site and 
   assert.match(fs.readFileSync('studio/studio.css', 'utf8'), /html\.theme-vt::view-transition-new\(root\)/);
 });
 
-test('«متعدد الجودات»: links added once in the panel show first, on their own, at the top of every quality', () => {
-  // owner 2026-10-09: a fifth box instead of pasting a multi-quality link under each quality
+test('«متعدد الجودات»: the panel has no such box any more; links old shows already have still show, at the top of every quality', () => {
+  // owner 2026-10-09: a fifth box instead of pasting a multi-quality link under each quality; owner 2026-10-17: «شيل ده
+  // خالص مش عايزه موجود لان مفيش حاجة كدا» — the box is gone, the 19 shows that have one (a StreamHG link) keep it
   const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
   const a = cfg.indexOf('const KNOWN_HOST_NAMES'), b = cfg.indexOf('function groupDownloadsByQuality');
   const c = cfg.indexOf('  return groups;\n}\n', b) + '  return groups;\n}\n'.length;
@@ -615,8 +616,9 @@ test('«متعدد الجودات»: links added once in the panel show first, o
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
   assert.match(layout, /groupDownloadsByQuality\(downloads_low, downloads_medium, downloads_high, downloads_light, downloads_multi\)/);
   assert.match(layout, /\{% set dlMq = item\.multi or \(item\.url \| isMultiQuality\) %\}/);
-  assert.match(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /data-k="downloads_multi"/);
-  assert.match(fs.readFileSync('studio/js/schema.js', 'utf8'), /'servers', 'downloads_multi', 'downloads_light'/);
+  assert.doesNotMatch(fs.readFileSync('studio/js/views/editor.js', 'utf8'), /downloads_multi|متعدد الجودات/);
+  assert.doesNotMatch(fs.readFileSync('studio/js/schema.js', 'utf8'), /'servers', 'downloads_multi'/);
+  assert.doesNotMatch(fs.readFileSync('studio/studio.css', 'utf8'), /\.dl-multi/);
   assert.match(fs.readFileSync('pages/studio-data.njk', 'utf8'), /"downloads": \[\{\{ \(item\.data\.downloads_multi or ""\)/);
 });
 
