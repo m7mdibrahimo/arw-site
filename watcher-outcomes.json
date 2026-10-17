@@ -1,53 +1,53 @@
 {
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T06:42:31.367Z"
- },
  "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:24.529Z"
+  "at": "2026-10-17T06:53:23.362Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:24.287Z"
+  "at": "2026-10-17T06:53:23.118Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-16-2026-cody-rhodes-randy-orton-face-to-face-rey-fenix-vs-ricky-saints-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:24.127Z"
+  "at": "2026-10-17T06:53:22.955Z"
  },
  "https://www.fightful.com/wrestling/shawn-spears-uses-perfect-10-theme-at-nxt-live": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:23.929Z"
+  "at": "2026-10-17T06:53:22.754Z"
  },
  "https://www.fightful.com/wrestling/william-regal-advises-wrestlers-to-kick-out-like-your-life-and-career-depend-on-it": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:23.766Z"
+  "at": "2026-10-17T06:53:22.589Z"
  },
  "https://www.fightful.com/wrestling/roh-final-battle-officially-announced-for-december-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:23.515Z"
+  "at": "2026-10-17T06:53:22.331Z"
  },
  "https://www.fightful.com/wrestling/334208-wwe-smackdown-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:23.098Z"
+  "at": "2026-10-17T06:53:21.901Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-15-celebrating-the-hardys": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:22.836Z"
+  "at": "2026-10-17T06:53:21.630Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-paid-for-hip-surgery-for-psicosis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T06:42:22.679Z"
+  "at": "2026-10-17T06:53:21.463Z"
+ },
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T06:42:31.367Z"
  },
  "https://www.fightful.com/wrestling/334190-tna": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-08)",
