@@ -126,3 +126,10 @@ test("«Twitter» becomes «X» in English stories, except inside a quote", asyn
     assert.ok(!/\bTwitter\b/.test(head), `Twitter in the head of ${f}`);
   }
 });
+
+// INCIDENTS #652: «Close Up with Renee Paquette مع رينيه باكيت» (name twice) and «نافيا الواقعة بالقول» (meaningless).
+test("duplicated program+host name and the meaningless «نافيا الواقعة» are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("في برنامج Close Up with Renee Paquette مع رينيه باكيت، تحدث"), "في برنامج Close Up مع رينيه باكيت، تحدث");
+  assert.equal(applyCorrections("كتب سينتس عبر منصة إكس نافيا الواقعة بالقول إنه لم يتعمد"), "كتب سينتس عبر منصة إكس إنه لم يتعمد");
+});
