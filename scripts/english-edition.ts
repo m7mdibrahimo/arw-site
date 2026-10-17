@@ -157,6 +157,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // the 2026 film is «Street Fighter»; the source dropped the «er» (INCIDENTS #589)
   [/\bStreet Fight (movie|film)\b/g, "Street Fighter $1"],
   // the faction is «The 946»; the source drops «The» after a preposition (INCIDENTS #598)
+  // «Will Ospreay» came out «Will OSDAY» in a preview (INCIDENTS #651)
+  [/\bWill (?:OSDAY|Osday)\b/g, "Will Ospreay"],
   [/\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/gi, "$1 The 946"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);

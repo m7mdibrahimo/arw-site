@@ -354,3 +354,12 @@ test('INCIDENTS #650: «ما أحببناه / ما كرهناه» agreement is c
   assert.equal(applyCorrections('**ما كرهناها**'), '**ما كرهناه**');
   assert.equal(applyCorrections('ثلاثة أمور أحببناها'), 'ثلاثة أمور أحببناها');
 });
+
+// INCIDENTS #651: «ستانكس», «فرق سداسي وثمانية», «الاتحادات والتعليقات» and «Will OSDAY» reached the site.
+test('INCIDENTS #651: corrections fix Stacks, eight-man tag and الاتهامات; English fixes Ospreay', async () => {
+  assert.equal(applyCorrections('كان ستانكس يشارك'), 'كان ستاكس يشارك');
+  assert.equal(applyCorrections('في نزال فرق سداسي وثمانية إلى جانب'), 'في نزال فرق من ثمانية مصارعين إلى جانب');
+  assert.equal(applyCorrections('على الاتحادات والتعليقات التي'), 'على الاتهامات والتعليقات التي');
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('defends against Will OSDAY'), 'defends against Will Ospreay');
+});
