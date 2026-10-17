@@ -1,5 +1,15 @@
 [
   {
+    "id": 334300,
+    "link": "https://www.fightful.com/wrestling/cody-rhodes-punt-kicks-baron-corbin-on-10-16-wwe-smackdown/",
+    "date": "2026-10-16T22:20:19",
+    "date_gmt": "2026-10-17T02:20:19",
+    "title": {
+      "rendered": "Cody Rhodes Punt Kicks Baron Corbin On 10/16 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16221744/HUzCVVIWsAAwJ1q.jpg"
+  },
+  {
     "id": 334297,
     "link": "https://www.fightful.com/wrestling/womens-tag-titles-bout-giulia-vs-blake-monroe-street-fight-more-set-for-10-23-wwe-smackdown/",
     "date": "2026-10-16T21:50:26",
@@ -288,15 +298,5 @@
       "rendered": "WWE NXT (10/13) Records 732,000 Viewers, Key Demo Rating Up"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16114328/maxresdefault-105.jpg"
-  },
-  {
-    "id": 334180,
-    "link": "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-dips-below-400000-viewers-on-tnt-key-demo-rating-also-down/",
-    "date": "2026-10-16T11:27:40",
-    "date_gmt": "2026-10-16T15:27:40",
-    "title": {
-      "rendered": "AEW Collision Grand Slam France Dips Below 400,000 Viewers On TNT, Key Demo Rating Also Down"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16112743/maxresdefault-104.jpg"
   }
 ]
