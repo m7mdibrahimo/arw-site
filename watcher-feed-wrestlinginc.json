@@ -1,5 +1,15 @@
 [
   {
+    "id": 1315167711,
+    "link": "https://www.wrestlinginc.com/2287036/aew-willow-nightingale-deals-imposter-syndrome/",
+    "date": "Sat, 17 Oct 2026 17:30:00 +0000",
+    "date_gmt": "2026-10-17T17:30:00.000Z",
+    "title": {
+      "rendered": "AEW's Willow Nightingale Explains How She Deals With Imposter Syndrome"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-willow-nightingale-explains-how-she-deals-with-imposter-syndrome/l-intro-1792008023.jpg"
+  },
+  {
     "id": 2759805726,
     "link": "https://www.wrestlinginc.com/2287435/wwe-nxt-jacy-jayne-stephanie-vaquer-out-body-experience-title/",
     "date": "Sat, 17 Oct 2026 17:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Naomi's WWE Return"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-naomis-wwe-return/l-intro-1792180478.jpg"
-  },
-  {
-    "id": 4343320972,
-    "link": "https://www.wrestlinginc.com/2289184/aew-collision-viewership-ratings-october-10-2026/",
-    "date": "Fri, 16 Oct 2026 19:25:54 +0000",
-    "date_gmt": "2026-10-16T19:25:54.000Z",
-    "title": {
-      "rendered": "AEW Collision Viewership & Ratings Report: 10/10/26"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-viewership-ratings-report-101026/l-intro-1792178679.jpg"
   }
 ]

@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T17:33:27.448Z"
+ },
  "https://www.fightful.com/wrestling/drew-mcintyre-wants-to-beat-roman-reigns-once-he-returns-to-wwe-says-he-may-have-to-bring-the-sword-back-because-romans-got-95-family-members": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T17:33:29.242Z"
- },
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T17:21:26.769Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
