@@ -168,3 +168,10 @@ test("«بييج» (ياء زيادة في Page/Paige) بتتصلح لـ«بيج
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
   assert.ok(corrections.some(c => c.wrong === "بييج" && c.right === "بيج"));
 });
+
+test("«وحقيقه» typo is corrected and gone from stories (INCIDENTS #667)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("تفوق ياسودا وحقيقه الفوز"), "تفوق ياسودا وحقق الفوز");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وحقيقه/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

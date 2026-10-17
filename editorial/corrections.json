@@ -6962,6 +6962,11 @@
    "wrong": "بييج",
    "right": "بيج",
    "note": "حرف ياء زيادة في اسم Page/Paige (دايموند دالاس بيج، كيلي بيج، كينزي بيج) — INCIDENTS #666"
+  },
+  {
+   "wrong": "وحقيقه",
+   "right": "وحقق",
+   "note": "خطأ إملائي («وحقيقه» بدل «وحقق») ظهر في نتائج عرض NJPW Taichi School Pro Wrestling 2 (INCIDENTS #667)"
   }
  ]
 }
