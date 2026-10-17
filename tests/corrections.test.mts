@@ -102,3 +102,10 @@ test("«إحدى عروض عرض» is corrected and absent from published storie
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /إحدى\s+عروض|عروض\s+عرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #643: «تريبل إتش عرض الاستمرار في دفع أجري» — «عرض» (offered) reads as the show.
+test("«عرض الاستمرار» (offered to keep) is corrected to «اقترح الاستمرار»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("تريبل إتش عرض الاستمرار في دفع أجري"), "تريبل إتش اقترح الاستمرار في دفع أجري");
+  assert.ok(fs.readFileSync("editorial/style-guide.md", "utf-8").includes("«عرض» فعلا ممنوعة في العنوان"));
+});
