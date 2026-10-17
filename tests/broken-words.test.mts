@@ -347,3 +347,10 @@ test('INCIDENTS #641: prefixed duals and one-letter prefixes glued to Latin are 
   assert.ok(!codes('تنافس بين AEW وWWE وTNA في السوق.').includes('glued_latin_arabic'), '«وWWE» (و العطف) سليمة');
   assert.match(applyCorrections('نزال هذا الجمعة'), /هذه الجمعة/);
 });
+
+// INCIDENTS #650: «ما أحببناها» (الموصولة مذكر) in a "three things we loved" review.
+test('INCIDENTS #650: «ما أحببناه / ما كرهناه» agreement is corrected', () => {
+  assert.equal(applyCorrections('**ما أحببناها**'), '**ما أحببناه**');
+  assert.equal(applyCorrections('**ما كرهناها**'), '**ما كرهناه**');
+  assert.equal(applyCorrections('ثلاثة أمور أحببناها'), 'ثلاثة أمور أحببناها');
+});
