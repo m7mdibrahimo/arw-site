@@ -1902,6 +1902,7 @@ module.exports = function(eleventyConfig) {
         era: item.data.year || null,
         year: item.data.year || null,
         federation: item.data.federation || "WWE",
+        fromFile: !!item.data.federation,
         poster: item.data.image || null,
         description: item.data.description || null,
         createdAt: item.data.added_at ? (new Date(item.data.added_at).getTime() || 0) : 0,
@@ -1941,8 +1942,10 @@ module.exports = function(eleventyConfig) {
         map.set(fallbackSlug, s);
       }
 
-      // تعيين الاتحاد تلقائياً على العرض إذا لم يكن محدداً
-      if (!item.data.federation && s.federation) {
+      // تعيين الاتحاد تلقائياً على العرض إذا لم يكن محدداً. A series that has its own file decides its episodes'
+      // federation whatever the episode says (owner 2026-10-17: an AEW series' episodes showed «WWE», copied from
+      // another series' episode in the panel)
+      if (s.federation && (!item.data.federation || (s.fromFile && item.data.federation !== s.federation))) {
         item.data.federation = s.federation;
       }
       // تعيين اسم البرنامج تلقائياً ليعمل شريط ترقيم الحلقات في صفحة العرض

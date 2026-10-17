@@ -635,3 +635,23 @@ test('a save found live hours later keeps its own time in the bell', () => {
   assert.equal(fresh.at, now, 'live while watching: counts as new');
   assert.match(fs.readFileSync('studio/js/app.js', 'utf8'), /studio:live[\s\S]{0,300}Date\.now\(\) - d\.committedAt < 30 \* 60_000\) toast/);
 });
+
+test('a nostalgia episode is its series\' federation, in the panel and on the site (owner 2026-10-17)', () => {
+  // «المفروض اني ضايف سلسلة عروض ل aew ليه مكتوب … wwe» — episodes copied from a WWE series' episode kept «WWE»
+  const ed = fs.readFileSync('studio/js/views/editor.js', 'utf8');
+  assert.match(ed, /function followSeriesFed\(\)/);
+  assert.match(ed, /if \(k === 'nostalgia_series'\) followSeriesFed\(\);/);
+  assert.match(ed, /async function save\([^)]*\) \{[\s\S]{0,200}followSeriesFed\(\);/);
+  assert.match(ed, /if \(seg\.dataset\.seg === 'federation' && S\.collection === 'nostalgia_series'\) swapFedTag\(b\.dataset\.v\);/);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /fromFile: !!item\.data\.federation,/);
+  assert.match(cfg, /if \(s\.federation && \(!item\.data\.federation \|\| \(s\.fromFile && item\.data\.federation !== s\.federation\)\)\)/);
+  // every episode already on the site agrees with its series
+  const fedOf = (txt: string) => (txt.match(/^federation:\s*(\S+)/m) || [])[1];
+  const series = Object.fromEntries(fs.readdirSync('content/nostalgia-series').filter(f => f.endsWith('.md')).map(f => [f.slice(0, -3), fedOf(fs.readFileSync(`content/nostalgia-series/${f}`, 'utf8'))]));
+  for (const f of fs.readdirSync('content/nostalgia').filter(f => f.endsWith('.md'))) {
+    const t = fs.readFileSync(`content/nostalgia/${f}`, 'utf8');
+    const ref = (t.match(/^nostalgia_series:\s*(.+)$/m) || [])[1]?.trim();
+    if (ref && series[ref] && fedOf(t)) assert.equal(fedOf(t), series[ref], f);
+  }
+});

@@ -330,6 +330,7 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
       }
       if (src) applyTemplate(src, { keepTitle: false });
     }
+    followSeriesFed();
     const draft = loadDraft(collection);
     if (draft && !from) {
       const ok = await dialog({ title: 'في مسودة محفوظة', body: `لقيت ${def.singular} كنت بتكتبه ومحفظتوش (${timeAgo(draft.at)}). تحب تكمل فيه؟`, confirm: 'كمّل المسودة', cancel: 'ابدأ من جديد' });
@@ -382,6 +383,27 @@ export async function renderEditor(page, collection, slug, { from = null } = {})
   refreshSide();
   // Focus the first field on a computer only (on a phone it would pop the keyboard over the page)
   if (isNew && matchMedia('(min-width: 900px)').matches && $('#f-title')) setTimeout(() => ($('#f-program') || $('#f-title')).focus(), 50);
+}
+
+// A nostalgia episode is always its series' federation (owner 2026-10-17: «سلسلة عروض ل aew … مكتوب … wwe»): an
+// episode copied from another series' one («التالي», the last episode) carried «WWE» into an AEW series. A series'
+// own federation tag follows its federation the same way (the defaults said WWE whatever was picked).
+const FED_TAGS = ['WWE', 'AEW', 'NJPW', 'TNA', 'ROH', 'MMA', 'INDIE'];
+function swapFedTag(fed) {
+  const tags = Array.isArray(S.data.tags) ? S.data.tags : [];
+  const others = tags.filter(t => FED_TAGS.includes(t) && t !== fed);
+  if (!fed || !others.length) return;
+  S.data.tags = [...new Set(tags.map(t => (others.includes(t) ? fed : t)))];
+  const sec = (SECTIONS[S.collection] || []).find(x => x.fields.includes('tags'));
+  if (sec && $('#tags')) rerenderSection(sec.id);
+}
+function followSeriesFed() {
+  if (S.collection !== 'nostalgia') return;
+  const s = (S.series || []).find(x => x.slug === S.data.nostalgia_series);
+  if (!s || !s.federation || S.data.federation === s.federation) return;
+  S.data.federation = s.federation;
+  if (!S.slug) swapFedTag(s.federation);
+  refreshSide && refreshSide();
 }
 
 // ── Template («املأ من آخر حلقة» / «التالي») ───────────────────────────────
@@ -459,6 +481,7 @@ function bindAll() {
       if (last) { applyTemplate(last, { keepTitle: false }); rerenderSection('basics'); rerenderSection('info'); rerenderSection('cover'); toast(`كمّلت من «${last.headline || last.title}» — دي الحلقة رقم ${S.data.nostalgia_order}`, 'ok', 4200); markDirty(); return; }
       S.data.nostalgia_order = 1; setVal('#f-order', '1');
     }
+    if (k === 'nostalgia_series') followSeriesFed();
     if (k === 'event_date') { updateFromDate(); setVal('#f-headline', S.data.headline); setVal('#f-title', S.data.title); setVal('#f-desc', S.data.description); }
     // The episode code in both titles follows the season/episode fields (INCIDENTS #166)
     if (k === 'episode_number' || k === 'season_number') {
@@ -484,6 +507,7 @@ function bindAll() {
     if (!b) return;
     S.data[seg.dataset.seg] = b.dataset.v;
     $$('button', seg).forEach(x => x.classList.toggle('on', x === b));
+    if (seg.dataset.seg === 'federation' && S.collection === 'nostalgia_series') swapFedTag(b.dataset.v);
     markDirty();
   }));
 
@@ -557,7 +581,9 @@ function rerenderSection(id) {
   const form = $('#ed-form');
   $$('[data-seg]', el).forEach(seg => seg.addEventListener('click', (e) => {
     const b = e.target.closest('button[data-v]'); if (!b) return;
-    S.data[seg.dataset.seg] = b.dataset.v; $$('button', seg).forEach(x => x.classList.toggle('on', x === b)); markDirty();
+    S.data[seg.dataset.seg] = b.dataset.v; $$('button', seg).forEach(x => x.classList.toggle('on', x === b));
+    if (seg.dataset.seg === 'federation' && S.collection === 'nostalgia_series') swapFedTag(b.dataset.v);
+    markDirty();
   }));
   bindHelpers();
   bindServers(); bindImage(); bindTags(); bindDate(); bindBody(); bindPremium();
@@ -820,6 +846,7 @@ async function save({ thenNew = false, force = false } = {}) {
   if (!S) return;
   const problem = validate();
   if (problem) { toast(problem, 'error', 5000); refreshSide(); return; }
+  followSeriesFed();
   const btn = $('#save');
   btn.disabled = true; btn.classList.add('loading');
   const create = !S.slug;
