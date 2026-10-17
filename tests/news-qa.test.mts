@@ -129,3 +129,10 @@ test("a finished match told in the present tense («تواجه ار تروث و�
   const preview = "يعلن الاتحاد عن العرض القادم.\n\nتواجه ار تروث وداميان بريست في نزال فردي في العرض القادم.";
   assert.ok(!checkArticle("نزال قادم", preview).some((i) => i.code === "result_present_tense"));
 });
+
+test("«الركلة القاضية / الركلة المباشرة» for a Punt Kick is blocked, «ركلة البانت» passes (INCIDENTS #646)", () => {
+  const t = "كودي رودز يوجه ركلة البانت إلى بارون كوربين";
+  assert.ok(checkArticle("كودي رودز يسحق بارون كوربين بالركلة القاضية", "نص طويل بما يكفي للخبر.").some((i) => i.code === "punt_kick_wording"));
+  assert.ok(checkArticle(t, "وجه كودي رودز ضربة قاضية باستخدام الركلة المباشرة إلى بارون كوربين.").some((i) => i.code === "punt_kick_wording"));
+  assert.ok(!checkArticle(t, "أنهى كودي رودز العرض بتوجيه ركلة البانت إلى بارون كوربين.").some((i) => i.code === "punt_kick_wording"));
+});
