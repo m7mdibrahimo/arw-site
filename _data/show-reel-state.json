@@ -3683,9 +3683,13 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض ار او اتش اون اونر كلوب 15.10.2026 مترجم",
-    "lastAttempt": 1792166163727,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792248351688,
+    "errors": {
+      "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "mediaDeleted": true
