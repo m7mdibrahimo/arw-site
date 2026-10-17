@@ -109,3 +109,8 @@ test("«عرض الاستمرار» (offered to keep) is corrected to «اقتر
   assert.equal(applyCorrections("تريبل إتش عرض الاستمرار في دفع أجري"), "تريبل إتش اقترح الاستمرار في دفع أجري");
   assert.ok(fs.readFileSync("editorial/style-guide.md", "utf-8").includes("«عرض» فعلا ممنوعة في العنوان"));
 });
+
+test("Nikkito Lyons → Nikkita Lyons in English stories", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("Nikkito Lyons retained the title"), "Nikkita Lyons retained the title");
+});

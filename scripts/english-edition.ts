@@ -152,6 +152,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // Title Case capitalised the small word of an event name (INCIDENTS #441)
   [/\bBound For Glory\b/g, "Bound for Glory"],
   [/\bsyX\b/g, "Syx"],
+  // the wrestler is «Nikkita Lyons» (the writer wrote «Nikkito»)
+  [/\bNikkito Lyons\b/g, "Nikkita Lyons"],
   // the 2026 film is «Street Fighter»; the source dropped the «er» (INCIDENTS #589)
   [/\bStreet Fight (movie|film)\b/g, "Street Fighter $1"],
   // the faction is «The 946»; the source drops «The» after a preposition (INCIDENTS #598)
