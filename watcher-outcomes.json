@@ -12,42 +12,47 @@
  "https://www.fightful.com/wrestling/channing-stacks-lorenzo-stretchered-out-after-injury-at-nxt-live": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:31.829Z"
+  "at": "2026-10-17T15:36:29.900Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-2026-preview-start-time-how-to-watch-location-10-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:31.373Z"
+  "at": "2026-10-17T15:36:29.435Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-tailgate-brawl-preview-start-time-how-to-watch-10-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:31.184Z"
+  "at": "2026-10-17T15:36:29.243Z"
  },
  "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:30.730Z"
+  "at": "2026-10-17T15:36:28.787Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:30.445Z"
+  "at": "2026-10-17T15:36:28.498Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-16-2026-cody-rhodes-randy-orton-face-to-face-rey-fenix-vs-ricky-saints-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:30.255Z"
+  "at": "2026-10-17T15:36:28.301Z"
  },
  "https://www.fightful.com/wrestling/shawn-spears-uses-perfect-10-theme-at-nxt-live": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:30.023Z"
+  "at": "2026-10-17T15:36:28.064Z"
  },
  "https://www.fightful.com/wrestling/william-regal-advises-wrestlers-to-kick-out-like-your-life-and-career-depend-on-it": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-17T15:33:29.825Z"
+  "at": "2026-10-17T15:36:27.868Z"
+ },
+ "https://www.ringsidenews.com/samoa-joe-calls-fear-based-locker-room-leader-mentality-ridiculous-ideology": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T15:34:57.770Z"
  },
  "https://www.fightful.com/wrestling/roh-final-battle-officially-announced-for-december-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
