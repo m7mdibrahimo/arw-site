@@ -3715,14 +3715,11 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سماك داون 16.10.2026 مترجم",
-    "lastAttempt": 1792251297832,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792252506452,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
