@@ -3708,16 +3708,14 @@
     "publishedAt": 1792243039762,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سماك داون 16.10.2026 مترجم",
-    "lastAttempt": 1792243892526,
+    "lastAttempt": 1792244766535,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
