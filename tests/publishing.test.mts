@@ -211,8 +211,8 @@ test('automatic watcher bounds attempts and defers failed platforms without star
   // the eligibleItems.reverse() in runWatcherPoll), or a steady stream of
   // newer arrivals like 'two' could starve it indefinitely.
   const items = [
-    { url: '/news/two/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date().toISOString() },
-    { url: '/news/one/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', date: new Date(Date.now() - 10 * 60_000).toISOString() },
+    { url: '/news/two/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', social_priority: 'high', date: new Date().toISOString() },
+    { url: '/news/one/', title: 'خبر عام', description: 'تفاصيل الخبر', kind: 'news', social_priority: 'high', date: new Date(Date.now() - 10 * 60_000).toISOString() },
   ];
   const state: any = { telegram: {}, facebook: {}, instagram: {}, x: {}, cooldowns: {} };
   for (const slug of ['one', 'two']) for (const p of ['telegram','facebook']) state[p][`httpssitetestnews${slug}`] = Date.now();
@@ -5049,4 +5049,24 @@ test('library page name forms never repeat the year when the program name alread
   assert.ok(!forms.some((f: string) => /2026 2026/.test(f)));
   const njk = fs.readFileSync('pages/library-program.njk', 'utf8');
   assert.ok(njk.includes('endsWith(lp.prog.latest.eventDate | yearOf | string)'));
+});
+
+test('X is on again for the new translated shows and the big news only, a few a day, nothing from before (owner 2026-10-17)', async () => {
+  // «ارجع شغل النشر علي اكس ولكن احذر عدد الليمت … انشر فيها الحاجات المهمه فقط زي مثلا العروض المترجمة الجديدة والاخبار المهمه فقط»
+  const { xAllowedFor } = await import('../worker/src/index');
+  const src0 = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  const X_DAILY_CAP = Number(src0.match(/const X_DAILY_CAP = (\d+);/)![1]), X_SHOW_RESERVE = Number(src0.match(/const X_SHOW_RESERVE = (\d+);/)![1]);
+  assert.ok(X_DAILY_CAP <= 10 && X_SHOW_RESERVE >= 2);
+  assert.equal(xAllowedFor('show', 'normal', 0), true);
+  assert.equal(xAllowedFor('news', 'high', 0), true);
+  for (const [kind, prio] of [['news', 'normal'], ['news', 'low'], ['recap', 'high'], ['news', undefined]]) assert.equal(xAllowedFor(kind, prio, 0), false, `${kind}/${prio}`);
+  // the last slots of the day wait for shows
+  assert.equal(xAllowedFor('news', 'high', X_DAILY_CAP - X_SHOW_RESERVE), false);
+  assert.equal(xAllowedFor('show', 'normal', X_DAILY_CAP - 1), true);
+  assert.equal(xAllowedFor('show', 'normal', X_DAILY_CAP), false);
+  const toml = fs.readFileSync('worker/wrangler.toml', 'utf-8');
+  assert.match(toml, /X_AUTO_ENABLED = "true"/);
+  assert.ok(Date.parse(toml.match(/X_SINCE = "([^"]+)"/)![1]) > Date.parse('2026-10-17T00:00:00Z'));
+  const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  assert.match(src, /if \(!xDone && \(!xAllowedFor\(item\.kind, item\.social_priority, xUsed\) \|\| !\(freshFrom >= xSince\)\)\) xDone = true;/);
 });

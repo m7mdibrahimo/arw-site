@@ -94,6 +94,8 @@ export interface Env {
   WATCHER_MIN_DATE: string;
   INSTAGRAM_AUTO_ENABLED?: string;
   X_AUTO_ENABLED?: string;
+  /** When X came back on (ISO): only what reached the site since goes there (xAllowedFor) */
+  X_SINCE?: string;
   TIKTOK_AUTO_ENABLED?: string;
   AUTO_IMAGE_STORIES?: string;
   BUFFER_X_CHANNEL_ID: string;
@@ -1877,6 +1879,29 @@ export function instagramAllowedFor(priority: unknown, used: number, cap: number
   if (priority === "low") return used < news / 2;
   return used < news - IG_HIGH_RESERVE;
 }
+// X goes through Buffer, whose plan allows only a few posts a day: X gets the new translated shows and the day's big news
+// only (owner 2026-10-17: «انشر فيها الحاجات المهمه فقط زي مثلا العروض المترجمة الجديدة والاخبار المهمه فقط عشان
+// الليمت»). At most X_DAILY_CAP posts in any 24 hours; the last X_SHOW_RESERVE of them wait for shows. Stories that
+// reached the site before X_SINCE (when X came back on) never go: no backlog of a day of stories.
+// (not exported: the entry file may export functions only)
+const X_DAILY_CAP = 8;
+const X_SHOW_RESERVE = 3;
+export function xAllowedFor(kind: unknown, priority: unknown, used: number, cap = X_DAILY_CAP): boolean {
+  if (kind === "show") return used < cap;
+  if (kind !== "show" && kind !== "recap" && priority === "high") return used < cap - X_SHOW_RESERVE;
+  return false;
+}
+async function xActionsLast24h(env: Env): Promise<number[]> {
+  try {
+    const list = JSON.parse((await env.PUSH_KV?.get("x_actions_24h")) || "[]");
+    return Array.isArray(list) ? list.filter((t: number) => Date.now() - t < 24 * 3600_000) : [];
+  } catch { return []; }
+}
+async function markXAction(env: Env): Promise<void> {
+  const recent = await xActionsLast24h(env);
+  recent.push(Date.now());
+  await env.PUSH_KV?.put("x_actions_24h", JSON.stringify(recent)).catch(() => {});
+}
 async function instagramActionsLast24h(env: Env): Promise<number[]> {
   try {
     const list = JSON.parse((await env.PUSH_KV?.get("ig_actions_24h")) || "[]");
@@ -2376,6 +2401,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const recentReleases = new Set(Object.entries((state as any).released || {}).filter(([, t]) => Date.now() - Number(t) < WINDOW_MS).map(([k]) => k));
   const candidates: { item: any; ts: number; freshFrom: number; key: string; tgDone: boolean; fbDone: boolean; igDone: boolean; xDone: boolean }[] = [];
   const igBudget = await instagramBudget(env).catch(() => ({ used: 0, cap: IG_DAILY_CAP }));
+  let xUsed = (await xActionsLast24h(env).catch(() => [])).length;
+  const xSince = Date.parse(env.X_SINCE || "") || 0;
   const fileBackfill: Record<string, string> = {};
   const keyOwners = urlKeyOwners(state.byFile);
   for (const item of items) {
@@ -2414,6 +2441,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     // Not important enough for today's remaining Instagram posts: Telegram and Facebook only (#162)
     if (!igDone && item.kind !== "show" && item.kind !== "recap" && !instagramAllowedFor(item.social_priority, igBudget.used, igBudget.cap)) igDone = true;
     let xDone = !!state.x[key];
+    // X: shows and big news only, within the day's few Buffer posts, and only what reached the site since X came back
+    if (!xDone && (!xAllowedFor(item.kind, item.social_priority, xUsed) || !(freshFrom >= xSince))) xDone = true;
     // Same file under an earlier URL (its title was edited): it already went out — never again.
     // A record pointing this file at a URL another file owns is a wrong backfill, not a post (#280).
     const recorded = file ? state.byFile?.[file] || "" : "";
@@ -2620,7 +2649,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       }
       if (canDoX && takeSlot()) {
         bufferXAttemptedInTick++;
-        await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+        const r = await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+        if (r.status === "sent") { await markXAction(env); xUsed++; }
       }
     } else {
       // Telegram already sent — only catch up missing platforms if the article
@@ -2653,7 +2683,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       }
       if (canDoX && takeSlot()) {
         bufferXAttemptedInTick++;
-        await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+        const r = await publishToPlatform(env, "x", key, { ...payload, image: item.image }, {}, false);
+        if (r.status === "sent") { await markXAction(env); xUsed++; }
         didWork = true;
       }
     }

@@ -52,7 +52,9 @@ migrations_dir = "migrations"
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
 INSTAGRAM_AUTO_ENABLED = "true"
-X_AUTO_ENABLED = "false"
+# X through Buffer: on again (owner 2026-10-17), new translated shows and big news only, a few a day (xAllowedFor)
+X_AUTO_ENABLED = "true"
+X_SINCE = "2026-10-17T14:45:00Z"
 # Off until TikTok approves the app for the video.publish scope in production
 # (currently testing via a Sandbox app connection) — see worker/src/index.ts's
 # getTikTokAccessToken and scripts/show-reel-monitor.ts's TIKTOK_ENABLED gate.
