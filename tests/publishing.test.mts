@@ -4909,6 +4909,11 @@ test('the episode VideoObject names its program (isPartOf) and has a WatchAction
   assert.match(layout, /"potentialAction": \{ "@type": "WatchAction", "target": "\{\{ pageUrl \}\}" \}/);
 });
 
+test('the episode VideoObject carries its program names as keywords too (INCIDENTS #653)', () => {
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /"keywords": "\{% for a in ldNames %\}/);
+});
+
 test("a one-off program's library page title leads with the year, as visitors search it (INCIDENTS #547)", async () => {
   const { readFileSync } = await import("node:fs");
   const tpl = readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
