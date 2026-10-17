@@ -1,5 +1,15 @@
 [
   {
+    "id": 334405,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16/",
+    "date": "2026-10-17T19:07:28",
+    "date_gmt": "2026-10-17T23:07:28",
+    "title": {
+      "rendered": "WWE NXT Live From Sudbury, Ontario Results (10/16)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 334402,
     "link": "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in/",
     "date": "2026-10-17T18:55:22",
@@ -288,15 +298,5 @@
       "rendered": "Tommaso Ciampa: I&#8217;m A Unicorn In AEW In The Sense That I&#8217;m Like This Chameleon"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/12134340/maxresdefault-22.jpg"
-  },
-  {
-    "id": 334328,
-    "link": "https://www.fightful.com/wrestling/channing-stacks-lorenzo-stretchered-out-after-injury-at-nxt-live/",
-    "date": "2026-10-17T10:32:00",
-    "date_gmt": "2026-10-17T14:32:00",
-    "title": {
-      "rendered": "Channing &#8216;Stacks&#8217; Lorenzo Stretchered Out After Injury At NXT Live"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17103139/aced7ee9df96a24cbbfc405eed11ec21.webp"
   }
 ]
