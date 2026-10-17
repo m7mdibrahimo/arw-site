@@ -26,7 +26,8 @@ const TIKTOK_ENABLED = process.env.TIKTOK_AUTO_ENABLED === 'true';
 // سماك داون ال اتنشر النهارده»). Older shows never go: their reels left R2 already, and a backlog would trip TikTok's limit.
 export const TIKTOK_FROM = Date.parse('2026-10-16T00:00:00Z');
 export function wantsTikTok(data: Record<string, any> | undefined, entry: Entry | undefined, tiktok = TIKTOK_ENABLED): boolean {
-  if (!tiktok) return false;
+  // a reel already removed from R2 can't reach TikTok: it would only take the run's one TikTok turn from a waiting reel
+  if (!tiktok || entry?.mediaDeleted) return false;
   const at = Math.max(data?.date ? new Date(data.date).getTime() || 0 : 0, Number(entry?.publishedAt) || 0);
   return at >= TIKTOK_FROM;
 }

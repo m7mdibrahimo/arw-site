@@ -5078,6 +5078,7 @@ test('every show reel from 2026-10-16 on goes to TikTok as well; older ones neve
   assert.equal(mon.wantsTikTok(undefined, { publishedAt: Date.parse('2026-10-17T16:00:00Z') } as any, true), true);
   assert.equal(mon.wantsTikTok({ date: '2026-10-12T10:00:00Z' }, undefined, true), false);
   assert.equal(mon.wantsTikTok({ date: '2026-10-17T13:02:25Z' }, undefined, false), false);
+  assert.equal(mon.wantsTikTok({ date: '2026-10-17T13:02:25Z' }, { mediaDeleted: true } as any, true), false);
   // a reel waits for TikTok before it leaves R2 — only for those shows
   const all = { facebook_reel: true, facebook_story: true, instagram_reel: true, instagram_story: true, publishedAt: Date.parse('2026-10-17T10:00:00Z'), lastAttempt: Date.parse('2026-10-17T10:00:00Z') } as any;
   assert.equal(mon.reelDone(all, Date.parse('2026-10-17T20:00:00Z'), true), false);
