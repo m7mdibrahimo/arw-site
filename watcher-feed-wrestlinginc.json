@@ -1,5 +1,15 @@
 [
   {
+    "id": 1207235165,
+    "link": "https://www.wrestlinginc.com/2285875/former-wwe-star-kelly-kelly-turning-down-playboy/",
+    "date": "Sat, 17 Oct 2026 12:30:00 +0000",
+    "date_gmt": "2026-10-17T12:30:00.000Z",
+    "title": {
+      "rendered": "Former WWE Star Kelly Kelly Recalls Turning Down Playboy"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-kelly-kelly-recalls-turning-down-playboy/l-intro-1791921283.jpg"
+  },
+  {
     "id": 3311488728,
     "link": "https://www.wrestlinginc.com/2289501/wwe-smackdown-october-16-2026-hated-loved-opinion-review/",
     "date": "Sat, 17 Oct 2026 04:37:53 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tony Khan Provides Injury Update On AEW's Steven Borden"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-tony-khan-steven-borden-injury-update/l-intro-1792178600.jpg"
-  },
-  {
-    "id": 1815745714,
-    "link": "https://www.wrestlinginc.com/2288605/wwe-nxt-viewership-ratings-october-13-2026/",
-    "date": "Fri, 16 Oct 2026 16:00:00 +0000",
-    "date_gmt": "2026-10-16T16:00:00.000Z",
-    "title": {
-      "rendered": "WWE NXT Viewership & Ratings Report: 10/13/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-10132026/l-intro-1792148280.jpg"
   }
 ]
