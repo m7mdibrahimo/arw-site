@@ -373,3 +373,10 @@ test('INCIDENTS #656: corrections fix Wagner, lawsuit phrase, Noel Lucas and cha
   assert.equal(applyCorrections('كوني بطل AEW العالمية مسؤولية'), 'كوني بطل AEW العالمي مسؤولية');
   assert.equal(applyCorrections('بطل AEW العالمية للفرق'), 'بطل AEW العالمية للفرق');
 });
+
+test('INCIDENTS #660: «الدرجتين» is a dual noun and is blocked', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(codes('أصيبت بحروق من الدرجتين الثانية والثالثة.').includes('dual_noun'));
+  assert.ok(!codes('أصيبت بحروق من الدرجة الثانية والثالثة.').includes('dual_noun'));
+});
