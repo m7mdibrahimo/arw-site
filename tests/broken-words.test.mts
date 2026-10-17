@@ -133,6 +133,7 @@ test('INCIDENTS #442: «سايرز» is corrected and dual verbs are blocked', (
   assert.ok(codes('حيث كشفا عن نفسيهما في العرض').includes('dual_form'));
   assert.ok(codes('صعوبة التنفس وفقدان صوته دفعاه للعودة إلى الطوارئ').includes('dual_form'));
   assert.ok(codes('اتحاد WWE ومونتيز فورد يمتلكان موقفا دفاعيا قويا').includes('dual_form'));
+  assert.ok(codes('عرضا AEW Dynamite وCollision يحققان متوسط مشاهدة جيدا').includes('dual_form'));
   assert.ok(codes('قدم الثنائي نزالا قويا واستغل كليكما الوقت').includes('dual_form'));
   assert.ok(!codes('وصل الخبر الساعة الثانية ظهرا بالتوقيت المحلي').includes('dual_form'));
 });
