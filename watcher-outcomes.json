@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T11:38:12.535Z"
+ },
  "https://www.fightful.com/wrestling/aew-wrestledream-tailgate-brawl-preview-start-time-how-to-watch-10-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T11:29:10.189Z"
- },
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T11:18:28.659Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-paid-for-hip-surgery-for-psicosis": {
   "reason": "مكرر مع خبر نزل قبل كده",
