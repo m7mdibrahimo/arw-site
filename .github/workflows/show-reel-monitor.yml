@@ -59,10 +59,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
           SITE_ORIGIN: "https://arab-wrestling.com"
-          # Off: TikTok refuses any post from an app it hasn't audited unless the whole account is private
-          # («unaudited_client_can_only_post_to_private_accounts», 2026-10-17, INCIDENTS #658). Turn on with
-          # worker/wrangler.toml the day TikTok approves the app: every show from 2026-10-16 on is then posted.
-          TIKTOK_AUTO_ENABLED: "false"
+          # On (owner 2026-10-17: «عايز انشر علطول في تيك توك تلقائي»): reels go to TikTok through Buffer the moment the
+          # TikTok account is connected there (the site's own app is refused until TikTok audits it — INCIDENTS #658).
+          # Until then /api/tiktok/ready says no and TikTok isn't offered at all. Keep in sync with worker/wrangler.toml.
+          TIKTOK_AUTO_ENABLED: "true"
         run: |
           echo "🎬 Starting Show Reel Monitor..."
           npx tsx scripts/show-reel-monitor.ts

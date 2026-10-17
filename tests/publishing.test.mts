@@ -5089,3 +5089,34 @@ test('every show reel from 2026-10-16 on goes to TikTok as well; older ones neve
   const wf = fs.readFileSync('.github/workflows/show-reel-monitor.yml', 'utf-8').match(/TIKTOK_AUTO_ENABLED: "(\w+)"/)![1];
   assert.equal(fs.readFileSync('worker/wrangler.toml', 'utf-8').match(/TIKTOK_AUTO_ENABLED = "(\w+)"/)![1], wf);
 });
+
+test('TikTok goes through Buffer: its channel is found by itself, and nothing is offered to TikTok before it is there (owner 2026-10-17)', async t => {
+  // «عايز انشر علطول في تيك توك تلقائي» — TikTok refuses the site's own unaudited app on a public account (INCIDENTS #658)
+  const { bufferTikTokChannel } = await import('../worker/src/index');
+  const store = new Map<string, string>();
+  const kv = { get: async (k: string) => store.get(k) ?? null, put: async (k: string, v: string) => { store.set(k, v); }, delete: async (k: string) => { store.delete(k); } };
+  let channels: any[] = [{ id: 'x1', service: 'twitter' }, { id: 'f1', service: 'facebook' }];
+  let calls = 0;
+  t.mock.method(globalThis, 'fetch', async (_u: any, init: any) => {
+    calls++;
+    const q = JSON.parse(init.body).query;
+    return Response.json(q.includes('organizations') ? { data: { account: { organizations: [{ id: 'org1' }] } } } : { data: { channels } });
+  });
+  const env: any = { BUFFER_API_KEY: 'k', PUSH_KV: kv };
+  assert.equal(await bufferTikTokChannel(env), '');
+  assert.equal(store.get('buffer:tiktok-channel'), 'none');
+  const before = calls;
+  assert.equal(await bufferTikTokChannel(env), '', 'asked again only after 10 minutes');
+  assert.equal(calls, before);
+  store.clear();
+  channels = [...channels, { id: 'tt9', service: 'tiktok' }];
+  assert.equal(await bufferTikTokChannel(env), 'tt9');
+  assert.equal(await bufferTikTokChannel({ ...env, BUFFER_TIKTOK_CHANNEL_ID: 'given' }), 'given');
+  const mon = fs.readFileSync('scripts/show-reel-monitor.ts', 'utf-8');
+  assert.match(mon, /\/api\/tiktok\/ready/);
+  assert.match(mon, /wantsTikTok\(data, previous, tiktokReady\)/);
+  assert.match(mon, /reelDone\(entry, Date\.now\(\), tiktokReady\)/);
+  const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  assert.match(src, /assets: \[\{ video: \{ url: \$videoUrl/);
+  assert.match(src, /if \(channel\) return postVideoToTikTokViaBuffer\(env, channel, data\);/);
+});

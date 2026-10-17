@@ -100,6 +100,8 @@ export interface Env {
   AUTO_IMAGE_STORIES?: string;
   BUFFER_X_CHANNEL_ID: string;
   BUFFER_FACEBOOK_CHANNEL_ID: string;
+  /** Optional: the TikTok channel in Buffer; found by itself when unset (bufferTikTokChannel) */
+  BUFFER_TIKTOK_CHANNEL_ID?: string;
 
   // KV binding
   PUSH_KV: KVNamespace;
@@ -1705,7 +1707,69 @@ async function getTikTokAccessToken(env: Env): Promise<string | null> {
   return refreshed.accessToken;
 }
 
-async function postVideoToTikTok(env: Env, data: { videoUrl: string; title: string; postUrl?: string }) {
+// TikTok through Buffer (owner 2026-10-17: «عايز انشر علطول في تيك توك تلقائي»). TikTok refuses every post from the
+// site's own app, not yet audited, to a public account («unaudited_client_can_only_post_to_private_accounts», INCIDENTS
+// #658); Buffer is an approved TikTok partner and already posts the site's X. Once the owner connects the TikTok account
+// in Buffer, its channel is found here by itself (no id to copy) and every show reel goes through it.
+async function bufferGraphQL(env: Env, query: string, variables: Record<string, unknown> = {}): Promise<any> {
+  const res = await fetch("https://api.buffer.com", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: `Bearer ${env.BUFFER_API_KEY}` },
+    body: JSON.stringify({ query, variables }),
+  });
+  await recordBufferQuota(env, res);
+  return res.json().catch(() => ({}));
+}
+/** Buffer's TikTok channel id, or "" while no TikTok account is connected there (looked up again every 10 minutes) */
+export async function bufferTikTokChannel(env: Env): Promise<string> {
+  if (env.BUFFER_TIKTOK_CHANNEL_ID) return env.BUFFER_TIKTOK_CHANNEL_ID;
+  if (!env.BUFFER_API_KEY) return "";
+  const known = await env.PUSH_KV?.get("buffer:tiktok-channel").catch(() => null);
+  if (known != null) return known === "none" ? "" : known;
+  let id = "";
+  try {
+    const acc = await bufferGraphQL(env, "query { account { organizations { id } } }");
+    for (const org of acc?.data?.account?.organizations || []) {
+      const ch = await bufferGraphQL(env, "query Channels($org: OrganizationId!) { channels(input: { organizationId: $org }) { id service } }", { org: org.id });
+      const t = (ch?.data?.channels || []).find((c: any) => String(c?.service || "").toLowerCase() === "tiktok");
+      if (t?.id) { id = String(t.id); break; }
+    }
+  } catch { return ""; }
+  await env.PUSH_KV?.put("buffer:tiktok-channel", id || "none", { expirationTtl: id ? 86400 : 600 }).catch(() => {});
+  return id;
+}
+async function postVideoToTikTokViaBuffer(env: Env, channelId: string, data: { videoUrl: string; title: string; postUrl?: string }): Promise<any> {
+  // the post Buffer accepted for this video (a retry polls it again instead of posting twice)
+  const kvKey = `buffer-tiktok:${data.videoUrl}`;
+  let postId = "";
+  try { postId = JSON.parse((await env.PUSH_KV.get(kvKey)) || "null")?.id || ""; } catch { /* none */ }
+  if (!postId) {
+    const result = await bufferGraphQL(env, `mutation PostToTikTok($text: String!, $channelId: ChannelId!, $videoUrl: String!) {
+        createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ video: { url: $videoUrl, metadata: { thumbnailOffset: 1500 } } }] }) {
+          ... on PostActionSuccess { post { id } }
+          ... on MutationError { message }
+        }
+      }`, { text: buildReelCaption(data.title, data.postUrl), channelId, videoUrl: data.videoUrl });
+    postId = result?.data?.createPost?.post?.id || "";
+    if (!postId) {
+      if (detectBufferRateLimit(result)) await setVideoCooldown(env, "tiktok");
+      return { ok: false, error: `Buffer: ${result?.data?.createPost?.message || result?.errors?.[0]?.message || "لم يقبل الفيديو"}`, result };
+    }
+    await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 86400 }).catch(() => {});
+  }
+  const outcome = await pollBufferPostUntilResolved(env, postId);
+  // TikTok takes a while with a video: not a failure, the monitor asks again in a few minutes
+  if (!outcome.resolved) return { ok: false, status: "processing", error: "تيك توك لسه بيجهز الفيديو عن طريق Buffer." };
+  await env.PUSH_KV.delete(kvKey).catch(() => {});
+  if (!outcome.ok && detectBufferRateLimit(outcome.raw)) await setVideoCooldown(env, "tiktok");
+  return { ok: !!outcome.ok, ...(outcome.ok ? {} : { error: `Buffer: ${outcome.raw?.error?.message || "TikTok refused the video"}` }), result: outcome.raw };
+}
+
+async function postVideoToTikTok(env: Env, data: { videoUrl: string; title: string; postUrl?: string }): Promise<any> {
+  const channel = await bufferTikTokChannel(env);
+  if (channel) return postVideoToTikTokViaBuffer(env, channel, data);
+  // the site's own TikTok app works only once TikTok has audited it
+  if (env.TIKTOK_APP_AUDITED !== "true") return { ok: false, skipped: true, error: "حساب تيك توك لسه مش متوصل في Buffer؛ أول ما يتوصل الريلز هتتنشر لوحدها." };
   return publishTikTokVideo({ accessToken: await getTikTokAccessToken(env),
     videoUrl: data.videoUrl, caption: buildReelCaption(data.title, data.postUrl), kv: env.PUSH_KV,
     audited: env.TIKTOK_APP_AUDITED === "true" });
@@ -3416,6 +3480,12 @@ export default {
         return json({ success: !data.errors, configured: true, channel: data?.data?.channel || data });
       }
 
+      // whether a reel can reach TikTok now: through Buffer's TikTok channel, or the site's own app once TikTok audited it
+      // (scripts/show-reel-monitor.ts asks before it offers a reel to TikTok)
+      if (path === "/api/tiktok/ready" && request.method === "GET") {
+        const viaBuffer = !!(await bufferTikTokChannel(env));
+        return json({ success: true, ready: env.TIKTOK_AUTO_ENABLED === "true" && (viaBuffer || env.TIKTOK_APP_AUDITED === "true"), via: viaBuffer ? "buffer" : env.TIKTOK_APP_AUDITED === "true" ? "app" : "" });
+      }
       if (path === "/api/tiktok/status" && request.method === "GET") {
         if (!env.TIKTOK_CLIENT_KEY || !env.TIKTOK_CLIENT_SECRET) {
           return json({ success: false, configured: false, connected: false, message: "TIKTOK_CLIENT_KEY / TIKTOK_CLIENT_SECRET not set" });
@@ -3904,6 +3974,10 @@ export default {
             const network: "facebook" | "instagram" | "tiktok" = platform.startsWith("facebook") ? "facebook" : platform === "tiktok" ? "tiktok" : "instagram";
             if (platform === "tiktok" && env.TIKTOK_AUTO_ENABLED !== "true") {
               results[platform] = { ok: false, skipped: true, error: "نشر TikTok غير مفعّل بعد (TIKTOK_AUTO_ENABLED)." };
+              continue;
+            }
+            if (platform === "tiktok" && env.TIKTOK_APP_AUDITED !== "true" && !(await bufferTikTokChannel(env))) {
+              results[platform] = { ok: false, skipped: true, error: "حساب تيك توك لسه مش متوصل في Buffer؛ أول ما يتوصل الريلز هتتنشر لوحدها." };
               continue;
             }
             const { state: currentState } = await githubReadState(env);

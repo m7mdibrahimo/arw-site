@@ -155,6 +155,13 @@ export async function main() {
   const videos = [...new Set([...(fs.existsSync(videoDir) ? fs.readdirSync(videoDir) : []), ...listed])];
   let failures = 0;
   const budget = { tiktok: TIKTOK_PER_RUN, instagram: INSTAGRAM_PER_RUN };
+  // TikTok only once a reel can really reach it (TikTok connected in Buffer, or the site's app audited): before that
+  // it isn't offered at all — no failed run every 15 minutes, no reel kept in R2 waiting for it
+  let tiktokReady = false;
+  if (TIKTOK_ENABLED) {
+    try { tiktokReady = !!(await (await fetch(`${WORKER}/api/tiktok/ready`, { signal: AbortSignal.timeout(20_000) })).json() as any).ready; } catch { tiktokReady = false; }
+    console.log(`TikTok: ${tiktokReady ? 'ready' : 'not connected yet (Buffer)'}`);
+  }
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
     const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
     const slug = filename.replace(/\.md$/, '');
@@ -162,7 +169,7 @@ export async function main() {
     if (!shouldProcessShow(filename, data, previous)) continue;
     if (previous?.needsReview) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
-    let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || wantsTikTok(data, previous)));
+    let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || wantsTikTok(data, previous, tiktokReady)));
     if (!pending.length) continue;
     if (previous?.lastAttempt && Date.now() - previous.lastAttempt < retryDelayMs(previous, pending)) continue;
     const file = findReelVideo(slug, videos);
@@ -216,7 +223,7 @@ export async function main() {
   }
   // posted everywhere: the reel leaves R2
   if (!dryRun) for (const [slug, entry] of Object.entries(state)) {
-    if (!reelDone(entry)) continue;
+    if (!reelDone(entry, Date.now(), tiktokReady)) continue;
     const file = findReelVideo(slug, videos);
     if (file && !(await deleteMedia(`dist/videos/${file}`))) continue;
     entry.mediaDeleted = true;
