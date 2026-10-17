@@ -3715,8 +3715,10 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سماك داون 16.10.2026 مترجم",
-    "lastAttempt": 1792245684958,
-    "errors": {},
+    "lastAttempt": 1792248430628,
+    "errors": {
+      "tiktok": "[unaudited_client_can_only_post_to_private_accounts] Please review our integration guidelines at https://developers.tiktok.com/doc/content-sharing-guidelines/ (log_id: 20261017224709742193A8DC0B33AEF429)"
+    },
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
