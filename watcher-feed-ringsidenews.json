@@ -1,5 +1,15 @@
 [
   {
+    "id": 802256060,
+    "link": "https://www.ringsidenews.com/wwe-smackdown-loads-october-23-show-street-fight-two-tag-team-matches/",
+    "date": "Sat, 17 Oct 2026 01:48:21 +0000",
+    "date_gmt": "2026-10-17T01:48:21.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Loads Up October 23 Show With Street Fight and Two Tag Team Matches"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/match-revealed-for-june-12-wwe-smackdown-in-providence-46.jpg?x40493"
+  },
+  {
     "id": 802256022,
     "link": "https://www.ringsidenews.com/brian-cage-explodes-aew-wrestledream-snub-what-going-here/",
     "date": "Sat, 17 Oct 2026 01:35:47 +0000",
@@ -138,15 +148,5 @@
       "rendered": "WWE SmackDown Spoiler Lineup for October 16, 2026: Full Match Card and Backstage Notes Revealed"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/07/spoiler-unadvertised-match-revealed-for-july-24-wwe-smackdown-50.jpg?x40493"
-  },
-  {
-    "id": 802255820,
-    "link": "https://www.ringsidenews.com/spoiler-closing-segment-october-16-wwe-smackdown-revealed/",
-    "date": "Fri, 16 Oct 2026 20:05:01 +0000",
-    "date_gmt": "2026-10-16T20:05:01.000Z",
-    "title": {
-      "rendered": "Spoiler: Closing Segment for October 16 WWE SmackDown Revealed"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/spoiler-closing-segment-for-may-22-wwe-smackdown-revealed-24.jpg?x40493"
   }
 ]
