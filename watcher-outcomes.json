@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T02:31:23.714Z"
+ },
  "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T02:16:31.141Z"
- },
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T02:11:23.834Z"
  },
  "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-16-2026": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة",
