@@ -1,5 +1,15 @@
 [
   {
+    "id": 334384,
+    "link": "https://www.fightful.com/wrestling/njpw-taichi-school-pro-wrestling-2-results-10-17/",
+    "date": "2026-10-17T17:06:53",
+    "date_gmt": "2026-10-17T21:06:53",
+    "title": {
+      "rendered": "NJPW Taichi School Pro Wrestling 2 Results (10/17)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17170632/unnamed-3.jpg"
+  },
+  {
     "id": 334378,
     "link": "https://www.fightful.com/wrestling/david-otunga-gives-his-verdict-on-montez-ford-lawsuit/",
     "date": "2026-10-17T16:03:48",
@@ -288,15 +298,5 @@
       "rendered": "AEW WrestleDream Tailgate Brawl Preview, Start Time, How To Watch (10/17)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16204055/Screenshot-2026-10-16-at-8.40.44-PM.png"
-  },
-  {
-    "id": 334310,
-    "link": "https://www.fightful.com/wrestling/cmll-viernes-espectacular-results-10-16-2026-olympia-vs-skadi-for-the-universal-title-britt-baker-persephone-more/",
-    "date": "2026-10-17T01:30:00",
-    "date_gmt": "2026-10-17T05:30:00",
-    "title": {
-      "rendered": "CMLL Viernes Espectacular Results (10/16/2026): Olympia vs. Skadi for the Universal Title, Britt Baker, Persephone, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17011530/cmll-viernes.jpg"
   }
 ]
