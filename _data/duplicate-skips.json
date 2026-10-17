@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2276445/wwe-smackdown-october-2-final-money-in-the-bank-triple-threat-qualifiers-more/": {
-    "matchedFile": "20261003023100-نتائج-عرض-wwe-smackdown-2-أكتوبر-2026-أبرز-اللحظات-والنزالات.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-10-03T01:36:07.921Z"
-  },
   "https://www.fightful.com/wrestling/wwe-smackdown-results-10-2-2026-mitb-qualifiers-blake-monroe-vs-giulia-more/": {
     "matchedFile": "20261003023100-نتائج-عرض-wwe-smackdown-2-أكتوبر-2026-أبرز-اللحظات-والنزالات.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261017203918-كودي-رودز-يفضل-قصة-شعر-غايل-لمدة-عام-على-طلاء-وجه-ستارداست-ليوم-واحد.md",
     "reason": "الخبر الجديد يكرر نفس التصريح والواقعة المتعلقة بتفضيل كودي رودز لقصة شعر غايل على طلاء وجه ستارداست والتي تم نشرها بالفعل في الخبر رقم 0.",
     "at": "2026-10-17T17:50:37.683Z"
+  },
+  "https://www.fightful.com/wrestling/giulia-promises-more-brutality-less-rules-to-blake-monroe-in-their-street-fight-on-10-23-wwe-smackdown/": {
+    "matchedFile": "20261017045026-نزال-على-لقب-الفرق-للسيدات-وقتال-شوارع-بين-جوليا-وبليك-مونرو-في-عرض-wwe-smackdown-القادم.md",
+    "reason": "الخبر الجديد عبارة عن تصريح رقمي (Digital Exclusive) لنفس المصارعة جوليا تتحدث فيه عن نفس نزال قتال الشوارع المعلن مسبقاً ضد بليك مونرو في عرض SmackDown بتاريخ 23 أكتوبر، وهو ما تم تغطيته بالفعل في الخبر المنشور.",
+    "at": "2026-10-17T18:35:01.939Z"
   }
 }
