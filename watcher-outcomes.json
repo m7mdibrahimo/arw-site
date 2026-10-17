@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2286138/aew-wwe-njpw-david-finlay-ambitions": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T15:05:39.539Z"
+ },
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T15:05:21.180Z"
+ },
  "https://www.fightful.com/wrestling/drew-mcintyre-praises-elijah-holyfield-for-having-great-presence-and-looking-like-a-hard-man": {
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
   "retry": false,
@@ -48,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T15:02:41.219Z"
- },
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T14:54:20.244Z"
  },
  "https://www.fightful.com/wrestling/334208-wwe-smackdown-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
