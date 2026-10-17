@@ -59,9 +59,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           WORKER_API: "https://arw-site-bot.m7mdibrahimpc.workers.dev"
           SITE_ORIGIN: "https://arab-wrestling.com"
-          # On (owner 2026-10-17) for shows from 2026-10-16 on (scripts/show-reel-monitor.ts wantsTikTok). Until TikTok
-          # approves the app the posts are «only me» (TIKTOK_APP_AUDITED). Keep in sync with worker/wrangler.toml.
-          TIKTOK_AUTO_ENABLED: "true"
+          # Off: TikTok refuses any post from an app it hasn't audited unless the whole account is private
+          # («unaudited_client_can_only_post_to_private_accounts», 2026-10-17, INCIDENTS #658). Turn on with
+          # worker/wrangler.toml the day TikTok approves the app: every show from 2026-10-16 on is then posted.
+          TIKTOK_AUTO_ENABLED: "false"
         run: |
           echo "🎬 Starting Show Reel Monitor..."
           npx tsx scripts/show-reel-monitor.ts

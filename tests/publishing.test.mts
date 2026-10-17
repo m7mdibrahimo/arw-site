@@ -5085,6 +5085,7 @@ test('every show reel from 2026-10-16 on goes to TikTok as well; older ones neve
   assert.equal(mon.reelDone({ ...all, tiktok: true }, Date.parse('2026-10-17T20:00:00Z'), true), true);
   const old = { ...all, publishedAt: Date.parse('2026-10-10T10:00:00Z'), lastAttempt: Date.parse('2026-10-10T10:00:00Z') };
   assert.equal(mon.reelDone(old, Date.parse('2026-10-17T20:00:00Z'), true), true);
-  assert.match(fs.readFileSync('.github/workflows/show-reel-monitor.yml', 'utf-8'), /TIKTOK_AUTO_ENABLED: "true"/);
-  assert.match(fs.readFileSync('worker/wrangler.toml', 'utf-8'), /TIKTOK_AUTO_ENABLED = "true"/);
+  // off again until TikTok audits the app (it refuses public accounts otherwise); both switches move together
+  const wf = fs.readFileSync('.github/workflows/show-reel-monitor.yml', 'utf-8').match(/TIKTOK_AUTO_ENABLED: "(\w+)"/)![1];
+  assert.equal(fs.readFileSync('worker/wrangler.toml', 'utf-8').match(/TIKTOK_AUTO_ENABLED = "(\w+)"/)![1], wf);
 });
