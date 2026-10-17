@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/andrade-wants-become-andrade-two-belts": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T10:09:40.320Z"
+ },
  "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
