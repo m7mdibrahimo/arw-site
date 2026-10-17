@@ -6811,6 +6811,12 @@
    "right": "البانت",
    "regex": true,
    "note": "Punt Kick = «ركلة البانت» مش «البانت القاضية» (الضربة القاضية = KO) (INCIDENTS #647)"
+  },
+  {
+   "wrong": "Lighting\\s+Match",
+   "right": "Lightning Match",
+   "regex": true,
+   "note": "خطأ إملائي في مصدر Fightful (Lighting بدل Lightning) اتنقل لنتايج CMLL (INCIDENTS #648)"
   }
  ]
 }

@@ -137,3 +137,9 @@ test("«الركلة القاضية / الركلة المباشرة» for a Punt
   assert.ok(checkArticle(t, "أطاح كودي رودز بخصمه بركلة البانت القاضية في ختام العرض.").some((i) => i.code === "punt_kick_wording"));
   assert.ok(!checkArticle(t, "أنهى كودي رودز العرض بتوجيه ركلة البانت إلى بارون كوربين.").some((i) => i.code === "punt_kick_wording"));
 });
+
+test("«Lighting Match» (source typo) becomes «Lightning Match» (INCIDENTS #648)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("**المواجهة الثانية: نزال سريع (Lighting Match)**"), "**المواجهة الثانية: نزال سريع (Lightning Match)**");
+  assert.equal(applyCorrections("Lightning Match"), "Lightning Match");
+});
