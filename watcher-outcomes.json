@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-17T15:36:17.111Z"
+ },
  "https://www.ringsidenews.com/samoa-joe-calls-fear-based-locker-room-leader-mentality-ridiculous-ideology": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T15:33:29.825Z"
- },
- "https://www.wrestlinginc.com/2288459/wwe-smackdown-october-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T15:25:06.852Z"
  },
  "https://www.fightful.com/wrestling/roh-final-battle-officially-announced-for-december-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
