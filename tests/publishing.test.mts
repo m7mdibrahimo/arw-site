@@ -5070,3 +5070,20 @@ test('X is on again for the new translated shows and the big news only, a few a 
   const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
   assert.match(src, /if \(!xDone && \(!xAllowedFor\(item\.kind, item\.social_priority, xUsed\) \|\| !\(freshFrom >= xSince\)\)\) xDone = true;/);
 });
+
+test('every show reel from 2026-10-16 on goes to TikTok as well; older ones never (owner 2026-10-17)', async () => {
+  // «تنشر اي فديو ريل من بتوع الفديوهات القصيرة للعروض علي تيك توك زي مثلا عرض سماك داون ال اتنشر النهارده»
+  const mon = await import('../scripts/show-reel-monitor.ts');
+  assert.equal(mon.wantsTikTok({ date: '2026-10-17T13:02:25Z' }, undefined, true), true);
+  assert.equal(mon.wantsTikTok(undefined, { publishedAt: Date.parse('2026-10-17T16:00:00Z') } as any, true), true);
+  assert.equal(mon.wantsTikTok({ date: '2026-10-12T10:00:00Z' }, undefined, true), false);
+  assert.equal(mon.wantsTikTok({ date: '2026-10-17T13:02:25Z' }, undefined, false), false);
+  // a reel waits for TikTok before it leaves R2 — only for those shows
+  const all = { facebook_reel: true, facebook_story: true, instagram_reel: true, instagram_story: true, publishedAt: Date.parse('2026-10-17T10:00:00Z'), lastAttempt: Date.parse('2026-10-17T10:00:00Z') } as any;
+  assert.equal(mon.reelDone(all, Date.parse('2026-10-17T20:00:00Z'), true), false);
+  assert.equal(mon.reelDone({ ...all, tiktok: true }, Date.parse('2026-10-17T20:00:00Z'), true), true);
+  const old = { ...all, publishedAt: Date.parse('2026-10-10T10:00:00Z'), lastAttempt: Date.parse('2026-10-10T10:00:00Z') };
+  assert.equal(mon.reelDone(old, Date.parse('2026-10-17T20:00:00Z'), true), true);
+  assert.match(fs.readFileSync('.github/workflows/show-reel-monitor.yml', 'utf-8'), /TIKTOK_AUTO_ENABLED: "true"/);
+  assert.match(fs.readFileSync('worker/wrangler.toml', 'utf-8'), /TIKTOK_AUTO_ENABLED = "true"/);
+});

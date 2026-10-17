@@ -22,6 +22,14 @@ const WORKER = process.env.WORKER_API || 'https://arw-site-bot.m7mdibrahimpc.wor
 // entirely (rather than attempting and having the Worker return skipped:true) so it
 // costs nothing and shows nothing until the site owner flips this on for real.
 const TIKTOK_ENABLED = process.env.TIKTOK_AUTO_ENABLED === 'true';
+// TikTok is on for every show's reel from 2026-10-16 on (owner 2026-10-17: «تنشر اي فديو ريل … علي تيك توك زي مثلا عرض
+// سماك داون ال اتنشر النهارده»). Older shows never go: their reels left R2 already, and a backlog would trip TikTok's limit.
+export const TIKTOK_FROM = Date.parse('2026-10-16T00:00:00Z');
+export function wantsTikTok(data: Record<string, any> | undefined, entry: Entry | undefined, tiktok = TIKTOK_ENABLED): boolean {
+  if (!tiktok) return false;
+  const at = Math.max(data?.date ? new Date(data.date).getTime() || 0 : 0, Number(entry?.publishedAt) || 0);
+  return at >= TIKTOK_FROM;
+}
 // Firing TikTok for every backlogged show in one run is what tripped its API rate
 // limit (and the Worker's 24h cooldown); drain the backlog one show per run instead.
 const TIKTOK_PER_RUN = 1;
@@ -56,7 +64,7 @@ export function isShowEligible(filename: string, data: Record<string, any>): boo
 export const REEL_KEEP_MS = 2 * 3600_000;
 export function reelDone(entry: Entry | undefined, now = Date.now(), tiktok = TIKTOK_ENABLED): boolean {
   if (!entry || entry.mediaDeleted || entry.needsReview || entry.processing?.length) return false;
-  const needed = PLATFORMS.filter(p => p !== 'tiktok' || tiktok);
+  const needed = PLATFORMS.filter(p => p !== 'tiktok' || wantsTikTok(undefined, entry, tiktok));
   if (!needed.every(p => entry[p])) return false;
   const last = Math.max(entry.publishedAt || 0, entry.lastAttempt || 0);
   return last > 0 && now - last >= REEL_KEEP_MS;
@@ -153,7 +161,7 @@ export async function main() {
     if (!shouldProcessShow(filename, data, previous)) continue;
     if (previous?.needsReview) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
-    let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || TIKTOK_ENABLED));
+    let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || wantsTikTok(data, previous)));
     if (!pending.length) continue;
     if (previous?.lastAttempt && Date.now() - previous.lastAttempt < retryDelayMs(previous, pending)) continue;
     const file = findReelVideo(slug, videos);
