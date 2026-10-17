@@ -1,4 +1,49 @@
 {
+ "https://www.fightful.com/wrestling/channing-stacks-lorenzo-stretchered-out-after-injury-at-nxt-live": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:22.428Z"
+ },
+ "https://www.fightful.com/wrestling/aew-wrestledream-2026-preview-start-time-how-to-watch-location-10-17": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:22.045Z"
+ },
+ "https://www.fightful.com/wrestling/aew-wrestledream-tailgate-brawl-preview-start-time-how-to-watch-10-17": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:21.882Z"
+ },
+ "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:21.499Z"
+ },
+ "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:21.257Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-results-10-16-2026-cody-rhodes-randy-orton-face-to-face-rey-fenix-vs-ricky-saints-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:21.094Z"
+ },
+ "https://www.fightful.com/wrestling/shawn-spears-uses-perfect-10-theme-at-nxt-live": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:20.895Z"
+ },
+ "https://www.fightful.com/wrestling/william-regal-advises-wrestlers-to-kick-out-like-your-life-and-career-depend-on-it": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:20.726Z"
+ },
+ "https://www.fightful.com/wrestling/roh-final-battle-officially-announced-for-december-4": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-17T15:08:20.466Z"
+ },
  "https://www.wrestlinginc.com/2286138/aew-wwe-njpw-david-finlay-ambitions": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -8,56 +53,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-17T15:05:21.180Z"
- },
- "https://www.fightful.com/wrestling/drew-mcintyre-praises-elijah-holyfield-for-having-great-presence-and-looking-like-a-hard-man": {
-  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
-  "retry": false,
-  "at": "2026-10-17T15:02:56.627Z"
- },
- "https://www.fightful.com/wrestling/channing-stacks-lorenzo-stretchered-out-after-injury-at-nxt-live": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:26.747Z"
- },
- "https://www.fightful.com/wrestling/aew-wrestledream-2026-preview-start-time-how-to-watch-location-10-17": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:26.293Z"
- },
- "https://www.fightful.com/wrestling/aew-wrestledream-tailgate-brawl-preview-start-time-how-to-watch-10-17": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:26.090Z"
- },
- "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:25.645Z"
- },
- "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:25.363Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-10-16-2026-cody-rhodes-randy-orton-face-to-face-rey-fenix-vs-ricky-saints-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:25.175Z"
- },
- "https://www.fightful.com/wrestling/shawn-spears-uses-perfect-10-theme-at-nxt-live": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:24.939Z"
- },
- "https://www.fightful.com/wrestling/william-regal-advises-wrestlers-to-kick-out-like-your-life-and-career-depend-on-it": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:24.745Z"
- },
- "https://www.fightful.com/wrestling/roh-final-battle-officially-announced-for-december-4": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T15:05:24.439Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-praises-elijah-holyfield-for-having-great-presence-and-looking-like-a-hard-man": {
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
