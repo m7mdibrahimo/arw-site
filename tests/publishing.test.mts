@@ -5030,3 +5030,12 @@ test('INCIDENTS #642: a weekly program page answers the federation alone («عر
   // a one-off event (few episodes) is not a weekly program: no federation-only names
   assert.ok(!libraryNameForms({ arName: 'عرض سلام', name: 'AEW Slam', aliases: [], year: '2026', count: 1 }).includes('عرض AEW مترجم'));
 });
+
+test('library page name forms never repeat the year when the program name already ends with it', async () => {
+  const { libraryNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = libraryNameForms({ arName: 'عرض ان جيه بي دبليو كينج اوف برو ريسلنج', name: 'NJPW King Of Pro Wrestling 2026', aliases: [], year: '2026' });
+  assert.ok(forms.some((f: string) => f.includes('NJPW King Of Pro Wrestling 2026')));
+  assert.ok(!forms.some((f: string) => /2026 2026/.test(f)));
+  const njk = fs.readFileSync('pages/library-program.njk', 'utf8');
+  assert.ok(njk.includes('endsWith(lp.prog.latest.eventDate | yearOf | string)'));
+});

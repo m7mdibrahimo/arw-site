@@ -134,5 +134,6 @@ test("«الركلة القاضية / الركلة المباشرة» for a Punt
   const t = "كودي رودز يوجه ركلة البانت إلى بارون كوربين";
   assert.ok(checkArticle("كودي رودز يسحق بارون كوربين بالركلة القاضية", "نص طويل بما يكفي للخبر.").some((i) => i.code === "punt_kick_wording"));
   assert.ok(checkArticle(t, "وجه كودي رودز ضربة قاضية باستخدام الركلة المباشرة إلى بارون كوربين.").some((i) => i.code === "punt_kick_wording"));
+  assert.ok(checkArticle(t, "أطاح كودي رودز بخصمه بركلة البانت القاضية في ختام العرض.").some((i) => i.code === "punt_kick_wording"));
   assert.ok(!checkArticle(t, "أنهى كودي رودز العرض بتوجيه ركلة البانت إلى بارون كوربين.").some((i) => i.code === "punt_kick_wording"));
 });
