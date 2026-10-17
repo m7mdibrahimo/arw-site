@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 {#- The newest full translated shows, for the worker that tells their followers (worker/src/follows.ts):
     a program is followed by its library address (/library/<program>/), a promotion by its page (/federation/<fed>/). -#}
 [
-{% for item in collections.followFeed %}
-{ "url": {{ (item.url | cleanUrl) | jsonify | safe }}, "title": {{ item.data.title | jsonify | safe }}, "headline": {{ (item.data.headline or item.data.title) | jsonify | safe }}, "program": {{ ((item.data.program_name or "") | arabicSlug) | jsonify | safe }}, "program_name": {{ (item.data.program_name or "") | jsonify | safe }}, "fed": {{ ((item.data.federation or "") | lower) | jsonify | safe }}, "image": "{% optImg item.data.image, '' %}", "date": {{ item.date | jsonify | safe }} }{% if not loop.last %},{% endif %}
+{% for item in collections.followFeed %}{% set lp = libraryProgramOf(item.url, collections.library) %}
+{ "url": {{ (item.url | cleanUrl) | jsonify | safe }}, "title": {{ item.data.title | jsonify | safe }}, "headline": {{ (item.data.headline or item.data.title) | jsonify | safe }}, "program": {{ ((item.data.program_name or "") | arabicSlug) | jsonify | safe }}, "program_name": {{ (item.data.program_name or "") | jsonify | safe }}, "fed": {{ ((item.data.federation or "") | lower) | jsonify | safe }}, "libfed": {{ (lp.promoKey if lp else "") | jsonify | safe }}, "image": "{% optImg item.data.image, '' %}", "date": {{ item.date | jsonify | safe }} }{% if not loop.last %},{% endif %}
 {% endfor %}
 ]

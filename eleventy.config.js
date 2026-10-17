@@ -1753,6 +1753,9 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addNunjucksGlobal("getEpisodeNav", getEpisodeNav);
   // The show's own program page for the navigation path: الرئيسية › عروض المصارعة › WWE › WWE RAW (INCIDENTS #286)
+  // A federation of the library is followed as the site's own federation when it is one (WWE, AEW, NJPW, TNA, ROH: the
+  // same list as their /federation/<key>/ pages), otherwise as a library federation (CMLL, AAA, UFC…, worker/src/follows.ts)
+  eleventyConfig.addNunjucksGlobal("libFollowKind", function(key) { return ["wwe", "aew", "njpw", "tna", "roh"].includes(String(key || "")) ? "fed" : "libfed"; });
   eleventyConfig.addNunjucksGlobal("libraryProgramOf", function(url, library, programName) {
     let prog = (library || []).find(p => (p.shows || []).some(s => s.url === url));
     // A recap belongs to the program of the same name: it carries the same spellings in its structured data (INCIDENTS #578)
@@ -1760,7 +1763,7 @@ module.exports = function(eleventyConfig) {
       const want = String(programName).trim().toLowerCase();
       prog = (library || []).find(p => String(p.name || "").trim().toLowerCase() === want);
     }
-    return prog ? { slug: prog.slug, name: prog.name, arName: prog.arName || "", aliases: prog.aliases || [] } : null;
+    return prog ? { slug: prog.slug, name: prog.name, arName: prog.arName || "", aliases: prog.aliases || [], promoKey: (prog.promo && prog.promo.key) || "" } : null;
   });
   // Other Arabic spellings of a program for its library page description (سماكداون / سماك داون / الرو / راو):
   // people type them without spaces or with a different transliteration. Head only — nothing visible (INCIDENTS #477)

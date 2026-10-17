@@ -382,6 +382,12 @@ eleventyComputed:
   .promo-mosaic::before{ content:""; position:absolute; z-index:2; inset:auto 0 0 0; height:3px; background:var(--pc); }
   .promo-mark{ position:absolute; z-index:2; top:12px; inset-inline-start:12px; padding:5px 13px; border-radius:10px; background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 48%), hsl(var(--ph) var(--ps) 30%)); color:#fff; font:900 15px 'Cairo',sans-serif; letter-spacing:.4px; box-shadow:0 6px 18px rgba(0,0,0,.35); line-height:1.4; }
   .promo-card .lib-count{ z-index:2; }
+  /* the card is a box with one link over all of it, and its follow button above that link */
+  .promo-card{ position:relative; }
+  .promo-link{ position:absolute; inset:0; z-index:1; border-radius:inherit; }
+  .promo-card .lib-thumb, .promo-card .lib-body{ pointer-events:none; }
+  .promo-follow{ position:relative; z-index:3; margin-top:12px; pointer-events:auto; }
+  .promo-follow .arw-follow-btn{ width:100%; justify-content:center; min-height:38px; font-size:13.5px !important; }
   .promo-name{ color:var(--pc-text); font-size:20px; letter-spacing:.3px; }
   .promo-full{ font-size:12.5px; color:var(--muted); font-weight:700; line-height:1.5; margin-top:-2px; unicode-bidi:plaintext; text-align:right; }
   .promo-card .lib-foot .go{ color:var(--pc-text); }
@@ -430,6 +436,8 @@ eleventyComputed:
     <nav class="lib-crumbs hero-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span><span><bdi>{{ promo.mark }}</bdi></span></nav>
     <h1 class="hero-title">عروض <bdi>{{ promo.mark }}</bdi> مترجمة<span class="u"><bdi>{{ promo.name }}</bdi></span></h1>
     <p>كل أقسام عروض <bdi>{{ promo.mark }}</bdi> في مكان واحد، اختر القسم وتصفّح عروضه من الأحدث للأقدم.</p>
+    {% from "follow-btn.njk" import followBtn %}
+    <div class="arw-follow-row">{{ followBtn(libFollowKind(promo.key), promo.key, promo.mark, true) }}</div>
     {% if promo.hasGuide %}<a class="guide-cta" href="{{ promo.guideHref }}" style="--ph:{{ promo.h }}; --ps:{{ promo.s }}%;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg><span>دليل الاتحاد</span></a>{% endif %}
     {% else %}
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
@@ -476,8 +484,12 @@ eleventyComputed:
     </a>
   {% endfor %}
   {% else %}
+  {#- every federation of the library can be followed from its card (owner 2026-10-18): the card is a box with one link over
+      all of it, so the follow button inside it is its own button (a button inside a link would open the federation) -#}
+  {% from "follow-btn.njk" import followBtn %}
   {% for f in view.promos %}
-    <a class="lib-card promo-card reveal" href="{{ f.href }}" data-name="{{ f.search }}" style="--ph:{{ f.h }}; --ps:{{ f.s }}%;">
+    <div class="lib-card promo-card reveal" data-name="{{ f.search }}" style="--ph:{{ f.h }}; --ps:{{ f.s }}%;">
+      <a class="promo-link" href="{{ f.href }}" aria-label="{{ f.mark }} — {{ f.name }}"></a>
       <div class="lib-thumb promo-mosaic n{{ f.images.length }}">
         {% for img in f.images %}<img src="{% optImg img, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{% if loop.first %}{{ f.mark }}{% endif %}" loading="lazy" width="400" height="225">{% endfor %}
         <span class="promo-mark"><bdi>{{ f.mark }}</bdi></span>
@@ -487,8 +499,9 @@ eleventyComputed:
         <h3 class="lib-name promo-name"><bdi>{{ f.mark }}</bdi></h3>
         <p class="promo-full"><bdi>{{ f.name }}</bdi></p>
         <div class="lib-foot"><span>آخر عرض {{ f.latest.eventDate | date }}</span><span class="go"><span>تصفح الاتحاد</span> ←</span></div>
+        <div class="promo-follow">{{ followBtn(libFollowKind(f.key), f.key, f.mark) }}</div>
       </div>
-    </a>
+    </div>
   {% endfor %}
   {% endif %}
   </div>

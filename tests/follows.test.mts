@@ -110,3 +110,28 @@ test('the devices: a member allows it, a new show wakes their device, the servic
   assert.equal(await runFollowPush(e, NOW + 60_000, (async () => new Response('', { status: 410 })) as any), 0);
   assert.equal((await call(e, '/follow/peek', { pk: reg.body.pk }, '', NOW + 60_000)).body.gone, true);
 });
+
+test('every federation of the library can be followed: a new show of it reaches its followers (owner 2026-10-18)', async () => {
+  // «العضو المسجل في الموقع يقدر انه يعمل متابعة لكل الاتحاد ال في مكتبة العروض»
+  assert.equal(followKeyOk('libfed', 'cmll'), true);
+  assert.equal(followKeyOk('libfed', 'وثائقيات'), true);
+  assert.equal(followKeyOk('libfed', 'bad key!'), false);
+  const e = env();
+  const a = await member(e, 'cmll_fan'), b = await member(e, 'aaa_fan');
+  assert.equal((await call(e, '/follow', { kind: 'libfed', key: 'cmll', label: 'CMLL' }, a.token)).body.ok, true);
+  await call(e, '/follow', { kind: 'libfed', key: 'aaa', label: 'AAA' }, b.token);
+  assert.deepEqual((await call(e, '/follow', undefined, a.token)).body.follows.map((f: any) => `${f.kind}:${f.key}`), ['libfed:cmll']);
+  const old = [{ ...show('/shows/cmll-old/', 'cmll-domingo', 'indie', 60 * 24 * 7), libfed: 'cmll' }];
+  await runFollowNotify(e, NOW, site(old));
+  const feed = [{ ...show('/shows/cmll-viernes-16-10-2026/', 'cmll-viernes', 'indie'), libfed: 'cmll' }, ...old];
+  await runFollowNotify(e, NOW, site(feed));
+  assert.deepEqual((await call(e, '/follow/inbox', undefined, a.token)).body.items.map((i: any) => i.url), ['/shows/cmll-viernes-16-10-2026/']);
+  assert.equal((await call(e, '/follow/inbox', undefined, b.token)).body.items.length, 0);
+  // the pages: a button on every federation card of the library and on each federation's own page
+  const fs = await import('node:fs');
+  const lib = fs.readFileSync('pages/library.njk', 'utf-8');
+  assert.match(lib, /<div class="promo-follow">\{\{ followBtn\(libFollowKind\(f\.key\), f\.key, f\.mark\) \}\}<\/div>/);
+  assert.match(lib, /followBtn\(libFollowKind\(promo\.key\), promo\.key, promo\.mark, true\)/);
+  assert.match(lib, /<a class="promo-link" href="\{\{ f\.href \}\}"/);
+  assert.match(fs.readFileSync('pages/follow-feed.njk', 'utf-8'), /"libfed": \{\{ \(lp\.promoKey if lp else ""\)/);
+});

@@ -7,7 +7,9 @@
 // /follow-feed.json; every minute the worker reads it, and each show not seen before goes to its followers' inboxes.
 //
 //   GET  /follow                 {follows, unread}                      (member)
-//   POST /follow                 {kind: program|fed, key, label, on}    (member) follow or stop
+//   POST /follow                 {kind: program|fed|libfed, key, label, on}  (member) follow or stop
+// «libfed» is a federation of «مكتبة العروض» (/library/federation/<key>/: CMLL, AAA, UFC, Stardom…), owner 2026-10-18:
+// «العضو المسجل في الموقع يقدر انه يعمل متابعة لكل الاتحاد ال في مكتبة العروض».
 //   GET  /follow/inbox?before=   {items, unread}                        (member) newest first, 30 a page
 //   POST /follow/read            {id} or {all: true}                    (member)
 //   GET  /follow/push-key        the site's public key for web push
@@ -25,11 +27,11 @@ const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS } });
 
 export const MAX_FOLLOWS = 100;
-const KINDS = ["program", "fed"] as const;
+const KINDS = ["program", "fed", "libfed"] as const;
 // a program by its library address (/library/<key>/), a promotion by its page (/federation/<key>/)
 const PROGRAM_KEY = /^[\p{L}\p{N}][\p{L}\p{N}-]{0,79}$/u;
 const FED_KEY = /^[a-z0-9][a-z0-9-]{1,19}$/;
-export const followKeyOk = (kind: string, key: string) => kind === "program" ? PROGRAM_KEY.test(key) : kind === "fed" ? FED_KEY.test(key) : false;
+export const followKeyOk = (kind: string, key: string) => kind === "program" || kind === "libfed" ? PROGRAM_KEY.test(key) : kind === "fed" ? FED_KEY.test(key) : false;
 
 export function ensureFollows(db: D1Database): Promise<void> {
   return once(db, "follows", () => db.batch([
@@ -116,7 +118,7 @@ export async function handleFollows(request: Request, env: FollowsEnv, url: URL,
 }
 
 // ── the minute's work: new shows to their followers, then their devices woken ─────────────────────────────────────
-type FeedItem = { url: string; title: string; headline: string; program: string; program_name: string; fed: string; image: string; date: string };
+type FeedItem = { url: string; title: string; headline: string; program: string; program_name: string; fed: string; libfed?: string; image: string; date: string };
 const SEEN_KV = "follow:seen";
 
 /** Shows on the site that no one has been told about yet go to their followers' inboxes */
@@ -140,7 +142,8 @@ export async function runFollowNotify(env: FollowsEnv, now = Date.now(), f: type
   let added = 0;
   for (const it of fresh) {
     const fed = String(it.fed || "").toLowerCase(), program = String(it.program || "").normalize("NFC").toLowerCase();
-    const followers = ((await db.prepare("SELECT DISTINCT member FROM member_follows WHERE (kind = 'program' AND key = ?1) OR (kind = 'fed' AND key = ?2)").bind(program, fed).all<{ member: number }>()).results || []).map(r => r.member);
+    const libfed = String(it.libfed || "").normalize("NFC").toLowerCase();
+    const followers = ((await db.prepare("SELECT DISTINCT member FROM member_follows WHERE (kind = 'program' AND key = ?1) OR (kind = 'fed' AND key = ?2) OR (kind = 'libfed' AND key = ?3 AND ?3 != '')").bind(program, fed, libfed).all<{ member: number }>()).results || []).map(r => r.member);
     const title = String(it.headline || it.title || "").slice(0, 200), titleEn = String(it.title || "").slice(0, 200);
     for (let i = 0; i < followers.length; i += 50) {
       await db.batch(followers.slice(i, i + 50).map(m => db.prepare("INSERT OR IGNORE INTO member_inbox (member, url, title, title_en, image, program, fed, at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)")
