@@ -141,3 +141,20 @@ test("«تتراوح بين منتصف الثلاثين مليون» is correcte
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /منتصف الثلاثين مليون/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #663: «اسماء المصارعين» (title) and a whole paragraph without hamzas («امريكا»، «اثارة»، «ابرزها») reached stories.
+test("dropped hamzas are corrected and counted by the hamza_dropped check", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("اسماء المصارعين في امريكا"), "أسماء المصارعين في أمريكا");
+  const issues = checkArticle("بيلي في جولة ناجحة", "شهدت الجولة اثارة كبرى، ابرزها تتويج فاكير، اضافة إلى مواجهات ضد اسماء بارزة في امريكا الجنوبية.");
+  assert.ok(issues.some((i: any) => i.code === "hamza_dropped"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])(?:اسماء|امريكا|ابرزها|اسقاطها)(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image|slug):.*$/gm, "")));
+  assert.deepEqual(bad, []);
+});
+
+// INCIDENTS #663: the English edition said «WrestleMania 23 is set for Saudi Arabia» (it is 43, in 2027).
+test("English fixes turn WrestleMania 23 in Saudi Arabia into 43", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition");
+  assert.equal(fixEnglishNames("While WrestleMania 23 is set for Saudi Arabia, nothing is planned."), "While WrestleMania 43 is set for Saudi Arabia, nothing is planned.");
+  assert.equal(fixEnglishNames("He won at WrestleMania 23 in Detroit."), "He won at WrestleMania 23 in Detroit.");
+});

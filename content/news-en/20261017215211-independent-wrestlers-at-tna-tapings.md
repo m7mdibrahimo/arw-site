@@ -1,5 +1,5 @@
 ---
-title: "Independent Wrestlers at TNA Tapings"
+title: "Independent Wrestlers Attended TNA Tapings in Dothan, Alabama"
 slug: "independent-wrestlers-at-tna-tapings"
 description: "According to Fightful, several independent wrestlers attended the recent TNA tapings held on October 13 and 14 at the Dothan Civic Center in Dothan, Alabama."
 federation: TNA

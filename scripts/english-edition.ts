@@ -159,6 +159,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // the faction is «The 946»; the source drops «The» after a preposition (INCIDENTS #598)
   // «Will Ospreay» came out «Will OSDAY» in a preview (INCIDENTS #651)
   [/\bWill (?:OSDAY|Osday)\b/g, "Will Ospreay"],
+  // the Saudi WrestleMania is number 43 (2027); the writer wrote «WrestleMania 23» (INCIDENTS #663)
+  [/\bWrestleMania 23\b(?=[^.\n]{0,40}Saudi)/g, "WrestleMania 43"],
   [/\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/gi, "$1 The 946"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
