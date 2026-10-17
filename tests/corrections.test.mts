@@ -158,3 +158,8 @@ test("English fixes turn WrestleMania 23 in Saudi Arabia into 43", async () => {
   assert.equal(fixEnglishNames("While WrestleMania 23 is set for Saudi Arabia, nothing is planned."), "While WrestleMania 43 is set for Saudi Arabia, nothing is planned.");
   assert.equal(fixEnglishNames("He won at WrestleMania 23 in Detroit."), "He won at WrestleMania 23 in Detroit.");
 });
+
+test("corrections keep team names in English", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "فريق بيتر توجيذر" && c.right === "فريق Better Together"));
+});

@@ -23,8 +23,8 @@ async function member(e: any, username: string) {
   const r = await handleMembers(new Request('https://w/members/signup', { method: 'POST', body: JSON.stringify({ username, email: `${username}@example.com`, password: 'raw2026night', captcha: { id: cap.id, answer: e.PUSH_KV.m.get(`members:cap:${cap.id}`) } }), headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': `1.2.3.${username.length}` } }), e, new URL('https://w/members/signup'));
   return (await r.json() as any) as { token: string; member: any };
 }
-const call = async (e: any, path: string, body?: any, token = '') => {
-  const r = await handleFollows(new Request(`https://w${path}`, { method: body ? 'POST' : 'GET', body: body ? JSON.stringify(body) : undefined, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) } }), e, new URL(`https://w${path}`));
+const call = async (e: any, path: string, body?: any, token = '', now?: number) => {
+  const r = await handleFollows(new Request(`https://w${path}`, { method: body ? 'POST' : 'GET', body: body ? JSON.stringify(body) : undefined, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) } }), e, new URL(`https://w${path}`), now);
   return { status: r.status, body: await r.json() as any };
 };
 const NOW = Date.parse('2026-10-15T20:00:00Z');
@@ -101,12 +101,12 @@ test('the devices: a member allows it, a new show wakes their device, the servic
   // once
   assert.equal(await runFollowPush(e, NOW, pushSvc), 0);
   // what the woken service worker reads: the show, with nothing else of the member's
-  const peek = (await call(e, '/follow/peek', { pk: reg.body.pk, since: 0 })).body;
+  const peek = (await call(e, '/follow/peek', { pk: reg.body.pk, since: 0 }, '', NOW)).body;
   assert.equal(peek.items.length, 1);
   assert.equal(peek.items[0].url, '/shows/raw-13-10-2026/');
-  assert.deepEqual((await call(e, '/follow/peek', { pk: 'x'.repeat(32) })).body.items, []);
+  assert.deepEqual((await call(e, '/follow/peek', { pk: 'x'.repeat(32) }, '', NOW)).body.items, []);
   // a device that's gone is forgotten
   await runFollowNotify(e, NOW + 60_000, site([show('/shows/raw-20-10-2026/', 'wwe-raw', 'wwe'), show('/shows/raw-13-10-2026/', 'wwe-raw', 'wwe')]));
   assert.equal(await runFollowPush(e, NOW + 60_000, (async () => new Response('', { status: 410 })) as any), 0);
-  assert.equal((await call(e, '/follow/peek', { pk: reg.body.pk })).body.gone, true);
+  assert.equal((await call(e, '/follow/peek', { pk: reg.body.pk }, '', NOW + 60_000)).body.gone, true);
 });
