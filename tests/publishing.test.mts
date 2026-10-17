@@ -5092,7 +5092,14 @@ test('every show reel from 2026-10-16 on goes to TikTok as well; older ones neve
 
 test('TikTok goes through Buffer: its channel is found by itself, and nothing is offered to TikTok before it is there (owner 2026-10-17)', async t => {
   // «عايز انشر علطول في تيك توك تلقائي» — TikTok refuses the site's own unaudited app on a public account (INCIDENTS #658)
-  const { bufferTikTokChannel } = await import('../worker/src/index');
+  const { bufferTikTokChannel, bufferRoomForTikTok } = await import('../worker/src/index');
+  // TikTok waits while Buffer's allowance runs low, so X always has room
+  const later = Date.now() + 3600_000;
+  assert.equal(bufferRoomForTikTok([{ window: '250-in-1day', remaining: 245, resetAt: later }, { window: '3000-in-30days', remaining: 2995, resetAt: later }]), true);
+  assert.equal(bufferRoomForTikTok([{ window: '250-in-1day', remaining: 50, resetAt: later }]), false);
+  assert.equal(bufferRoomForTikTok([{ window: '3000-in-30days', remaining: 500, resetAt: later }]), false);
+  assert.equal(bufferRoomForTikTok([{ window: '250-in-1day', remaining: 5, resetAt: Date.now() - 1 }]), true, 'a window already reset');
+  assert.equal(bufferRoomForTikTok(undefined), true);
   const store = new Map<string, string>();
   const kv = { get: async (k: string) => store.get(k) ?? null, put: async (k: string, v: string) => { store.set(k, v); }, delete: async (k: string) => { store.delete(k); } };
   let channels: any[] = [{ id: 'x1', service: 'twitter' }, { id: 'f1', service: 'facebook' }];
@@ -5106,7 +5113,7 @@ test('TikTok goes through Buffer: its channel is found by itself, and nothing is
   assert.equal(await bufferTikTokChannel(env), '');
   assert.equal(store.get('buffer:tiktok-channel'), 'none');
   const before = calls;
-  assert.equal(await bufferTikTokChannel(env), '', 'asked again only after 10 minutes');
+  assert.equal(await bufferTikTokChannel(env), '', 'asked again only after 3 hours');
   assert.equal(calls, before);
   store.clear();
   channels = [...channels, { id: 'tt9', service: 'tiktok' }];

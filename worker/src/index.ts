@@ -1720,6 +1720,15 @@ async function bufferGraphQL(env: Env, query: string, variables: Record<string, 
   await recordBufferQuota(env, res);
   return res.json().catch(() => ({}));
 }
+/** Is there room left in Buffer's API allowance for a TikTok reel (~5 requests), keeping a reserve for X? */
+export function bufferRoomForTikTok(quota: { window?: string; remaining?: number; resetAt?: number }[] | undefined, now = Date.now()): boolean {
+  for (const w of quota || []) {
+    if (!(Number(w.resetAt) > now) || typeof w.remaining !== "number") continue;
+    const keep = /in-1day/.test(w.window || "") ? 60 : /in-30days/.test(w.window || "") ? 600 : /in-15min/.test(w.window || "") ? 20 : 0;
+    if (w.remaining < keep) return false;
+  }
+  return true;
+}
 /** Buffer's TikTok channel id, or "" while no TikTok account is connected there (looked up again every 10 minutes) */
 export async function bufferTikTokChannel(env: Env): Promise<string> {
   if (env.BUFFER_TIKTOK_CHANNEL_ID) return env.BUFFER_TIKTOK_CHANNEL_ID;
@@ -1735,7 +1744,9 @@ export async function bufferTikTokChannel(env: Env): Promise<string> {
       if (t?.id) { id = String(t.id); break; }
     }
   } catch { return ""; }
-  await env.PUSH_KV?.put("buffer:tiktok-channel", id || "none", { expirationTtl: id ? 86400 : 600 }).catch(() => {});
+  // Buffer's API allows 250 requests a day and 3000 a month for everything (X included): while TikTok isn't connected,
+  // look again every 3 hours (2 requests), not every run
+  await env.PUSH_KV?.put("buffer:tiktok-channel", id || "none", { expirationTtl: id ? 86400 : 3 * 3600 }).catch(() => {});
   return id;
 }
 async function postVideoToTikTokViaBuffer(env: Env, channelId: string, data: { videoUrl: string; title: string; postUrl?: string }): Promise<any> {
@@ -3981,6 +3992,12 @@ export default {
               continue;
             }
             const { state: currentState } = await githubReadState(env);
+            // TikTok shares Buffer's API allowance with X (250 a day, 3000 a month): it waits while little is left,
+            // so X's few posts a day always get through (owner 2026-10-17: «ده مش هيقلل من الليمت اوي؟»)
+            if (platform === "tiktok" && !bufferRoomForTikTok(currentState.bufferQuota)) {
+              results[platform] = { ok: false, status: "rate_limited", error: "رصيد Buffer قرب يخلص؛ تيك توك هيستنى لحد ما يتجدد عشان إكس." };
+              continue;
+            }
             const retryAt = currentState.videoCooldowns?.[network] || 0;
             if (retryAt > Date.now()) {
               results[platform] = { ok: false, status: "rate_limited", retryAt, error: "المنصة قيّدت نشر الفيديو مؤقتًا؛ ستتم إعادة المحاولة بعد انتهاء فترة الانتظار." };
