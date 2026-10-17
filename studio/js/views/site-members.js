@@ -64,6 +64,7 @@ function row(m) {
     <div class="mb-main">
       <div class="cm-meta"><b>${shownName(m)}</b>${badgeOf(m)}<span class="mb-user" dir="ltr">@${m.username}</span>${m.banned ? html`<em class="mb-flag">موقوف</em>` : ''}${isPrem(m) ? html`<em class="mb-gold-tag pr-tag" title="${`لحد ${dateTime(m.premium_until)}`}">${raw(CROWN)}مميز</em>${kindTag(m.premium_by)}<em class="pg-until">لحد ${date(m.premium_until)}</em>` : ''}${m.official ? '' : m.verified ? html`<em class="mb-ok" title="فعّل حسابه من بريده">${icon('check')}متفعّل</em>` : html`<em class="mb-wait" title="لسه مضغطش رابط التفعيل اللي في بريده">مش متفعّل</em>`}</div>
       <div class="mb-facts">
+        ${realName(m) && realName(m) !== shownName(m) ? html`<span>${realName(m)}</span>` : ''}
         <span dir="ltr">${m.email}</span>
         <span>انضم ${date(m.created)}</span>
         <span>آخر ظهور ${m.last_seen ? timeAgo(m.last_seen) : '—'}</span>
@@ -77,6 +78,8 @@ function row(m) {
   </article>`;
 }
 
+// the member's real name, asked first at sign-up since 2026-10-18 (worker/src/members.ts cleanPersonName)
+const realName = (m) => `${m.first_name || ''} ${m.last_name || ''}`.trim();
 export async function renderSiteMembers(page) {
   mount(page, html`<div class="loading-page"><div class="spinner"></div></div>`);
   const data = await api.siteMembers();
@@ -110,7 +113,7 @@ export async function renderSiteMembers(page) {
       if (state.filter === 'week' && !(m.created > week)) return false;
       if (state.filter === 'active' && !(m.last_seen > week)) return false;
       if (state.filter === 'banned' && !m.banned) return false;
-      return !q || normalizeArabic(`${m.display} ${m.username} ${m.email}`).includes(q);
+      return !q || normalizeArabic(`${m.display} ${m.first_name || ''} ${m.last_name || ''} ${m.username} ${m.email}`).includes(q);
     });
     if ($('#mb-banned-n')) $('#mb-banned-n').textContent = num(items.filter(m => m.banned).length);
     mount($('#mb-list'), shown.length ? html`${shown.map(row)}`
@@ -168,6 +171,7 @@ export async function renderSiteMember(page, id) {
         ${m.official ? '' : html`<div class="mb-card-acts">${isOwner() ? html`<a class="btn pr-btn" href="#mb-prem" id="mb-prem-go">${raw(CROWN)}${isPrem(m) ? 'زوّد الاشتراك' : 'فعّل الاشتراك'}</a>` : ''}${badgeBtn(m, '')}${isOwner() ? html`<button class="btn btn-ghost" id="mb-edit">${icon('edit')}عدّل بياناته</button>` : ''}<button class="btn ${m.banned ? '' : 'btn-danger-soft'}" id="mb-ban">${m.banned ? 'رجّعه' : 'وقّفه'}</button></div>`}
       </section>
       <div class="mb-facts-grid">
+        ${fact('الاسم', realName(m) || html`<span class="muted">اتسجل قبل ما الاسم يتطلب</span>`)}
         ${fact('البريد', html`<span dir="ltr">${m.email}</span>`)}
         ${fact('الحساب متفعّل؟', m.verified ? 'أيوه، من بريده' : html`<span class="mb-wait">لسه</span> <button class="btn btn-sm" id="mb-verify">فعّله بإيدك</button>`)}
         ${fact('اتسجل', dateTime(m.created))}

@@ -132,11 +132,13 @@
     e.preventDefault();
     var f = forms.up;
     $$('input', f).forEach(function (i) { i.classList.remove('is-bad'); });
+    // the first and second names come first (owner 2026-10-18: «تكتب اسم الاول والاسم الثاني اول حاجة»)
+    var fn = val(f, 'first_name'), ln = val(f, 'last_name');
     var u = val(f, 'username'), m = val(f, 'email'), p = f.elements.password.value, c = val(f, 'captcha');
-    var missing = !u ? 'username' : !m ? 'email' : !p ? 'password' : !c ? 'captcha' : '';
+    var missing = !fn ? 'first_name' : !ln ? 'last_name' : !u ? 'username' : !m ? 'email' : !p ? 'password' : !c ? 'captcha' : '';
     if (missing) { f.elements[missing].classList.add('is-bad'); f.elements[missing].focus(); say(f, 'أكمل كل الخانات.', 'bad'); return; }
     busy(f, true); say(f, 'لحظة…');
-    api('/signup', { username: u, email: m, password: p, captcha: { id: capId, answer: c }, website: f.elements.website.value }).then(function (d) {
+    api('/signup', { first_name: fn, last_name: ln, username: u, email: m, password: p, captcha: { id: capId, answer: c }, website: f.elements.website.value }).then(function (d) {
       busy(f, false);
       if (!d.ok) {
         say(f, srv(d.error) || 'تعذر إنشاء الحساب، حاول مرة أخرى.', 'bad');

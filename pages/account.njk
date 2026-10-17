@@ -417,6 +417,9 @@ html[dir="ltr"] .acct-quick-go{ transform:scaleX(-1); }
 .acct-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
 .acct-spin{ width:34px; height:34px; margin:120px auto; border-radius:50%; border:3px solid var(--line); border-top-color:var(--teal); animation:acct-spin 0.8s linear infinite; }
 @keyframes acct-spin{ to{ transform:rotate(360deg); } }
+/* the first and second names, side by side at the top of sign-up (owner 2026-10-18) */
+.acct-names{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:380px){ .acct-names{ grid-template-columns:1fr; } }
 /* «open your mail» and the account's buttons */
 .acct-mail-ic{ background:rgba(29,155,240,.12); color:#1d9bf0; }
 .acct-steps{ margin:0; padding:0 18px 0 0; display:flex; flex-direction:column; gap:6px; color:var(--muted); font-size:14px; line-height:1.8; }
@@ -582,6 +585,10 @@ html.arw-dark .is-official .acct-badge{ color:#f2bd4b; }
         </form>
 
         <form class="acct-form" data-form="up" novalidate hidden>
+          <div class="acct-names">
+            <label class="acct-field"><span>الاسم الأول</span><input name="first_name" autocomplete="given-name" maxlength="20" required dir="auto"></label>
+            <label class="acct-field"><span>الاسم الثاني</span><input name="last_name" autocomplete="family-name" maxlength="20" required dir="auto"></label>
+          </div>
           <label class="acct-field"><span>اسم المستخدم</span>
             <input name="username" autocomplete="username" maxlength="20" required dir="auto">
             <small>من 3 إلى 20 حرفا، يبدأ بحرف. يظهر مع تعليقاتك.</small></label>

@@ -25,7 +25,7 @@ const call = async (e: any, path: string, body?: any, token = '', ip = '41.1.2.3
 };
 /** A captcha, answered right (read back from the store, as the test can) */
 const solved = async (e: any) => { const c = (await call(e, '/captcha')).body; return { id: c.id, answer: e.PUSH_KV.m.get(`members:cap:${c.id}`) }; };
-const signup = async (e: any, over: any = {}, ip?: string) => call(e, '/signup', { username: 'kareem_10', email: 'Kareem@Example.com', password: 'raw2026night', captcha: await solved(e), ...over }, '', ip);
+const signup = async (e: any, over: any = {}, ip?: string) => call(e, '/signup', { first_name: 'كريم', last_name: 'محمد', username: 'kareem_10', email: 'Kareem@Example.com', password: 'raw2026night', captcha: await solved(e), ...over }, '', ip);
 
 test('the captcha: four digits drawn as strokes (no text to read), one try, Arabic digits accepted', async () => {
   const svg = captchaSvg('2795');
@@ -34,13 +34,13 @@ test('the captcha: four digits drawn as strokes (no text to read), one try, Arab
   assert.equal(latinDigits('٢٧٩٥'), '2795');
   const e = env();
   const c = await solved(e);
-  const wrong = await call(e, '/signup', { username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: { id: c.id, answer: '0000' } });
+  const wrong = await call(e, '/signup', { first_name: 'سارة', last_name: 'علي', username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: { id: c.id, answer: '0000' } });
   assert.equal(wrong.body.captcha, true);
   // the same picture can't be tried again, even with the right answer
-  assert.equal((await call(e, '/signup', { username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: c })).body.captcha, true);
+  assert.equal((await call(e, '/signup', { first_name: 'سارة', last_name: 'علي', username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: c })).body.captcha, true);
   const arabic = await solved(e);
   arabic.answer = arabic.answer.replace(/\d/g, (d: string) => String.fromCharCode(0x660 + Number(d)));
-  assert.equal((await call(e, '/signup', { username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: arabic })).status, 200);
+  assert.equal((await call(e, '/signup', { first_name: 'سارة', last_name: 'علي', username: 'sara22', email: 's@x.co', password: 'abc12345', captcha: arabic })).status, 200);
 });
 
 test('usernames and passwords: plain rules, said simply', () => {
@@ -200,7 +200,7 @@ test('activation: a session from before it is not signed in; the link mail at mo
     assert.equal(mails, 3);
     // a typo in the address: the name comes back a day later (not before)
     const t0 = Date.now();
-    const u2 = { username: 'sara22', email: 'sara@exmaple.com', password: 'abc12345' };
+    const u2 = { first_name: 'سارة', last_name: 'علي', username: 'sara22', email: 'sara@exmaple.com', password: 'abc12345' };
     assert.equal((await handleMembers(new Request('https://w.example/members/signup', { method: 'POST', body: JSON.stringify({ ...u2, captcha: await solved(e) }), headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': '8.8.8.1' } }), e, new URL('https://w.example/members/signup'), t0)).status, 200);
     const again = async (at: number, ip: string) => (await handleMembers(new Request('https://w.example/members/signup', { method: 'POST', body: JSON.stringify({ ...u2, email: 'sara@example.com', captcha: await solved(e) }), headers: { 'Content-Type': 'application/json', 'CF-Connecting-IP': ip } }), e, new URL('https://w.example/members/signup'), at)).status;
     assert.equal(await again(t0 + 3600e3, '8.8.8.2'), 409);
@@ -388,4 +388,33 @@ test('the account page asks for no recovery code: sign-up goes straight on, a fo
   assert.ok(!/welcome\(|forms\.code|كود الاسترجاع|\/recover'/.test(js));
   assert.match(js, /if \(d\.pending\) \{ pending\(\{ login: u, password: p \}, d\.email, true\); return; \}\n\s*signedIn\(d\);\n\s*done\(\);/);
   assert.match(page, /data-form="mail"/);
+});
+
+test('sign-up asks the first and second names first; they become the shown name and the panel sees them (owner 2026-10-18)', async () => {
+  // «زود في التسجيل في الموقع لما حد يسجل بتكتب اسم الاول والاسم الثاني اول حاجة»
+  const { cleanPersonName } = await import('../worker/src/members');
+  assert.deepEqual(cleanPersonName('  محمد  ', 'first'), { name: 'محمد', problem: null });
+  assert.equal(cleanPersonName('Abdel Rahman', 'first').problem, null);
+  assert.equal(cleanPersonName("O'Neil-Smith", 'last').problem, null);
+  assert.match(cleanPersonName('', 'first').problem!, /اكتب الاسم الأول/);
+  assert.match(cleanPersonName('م', 'last').problem!, /الاسم الثاني من حرفين/);
+  assert.match(cleanPersonName('محمد2', 'first').problem!, /حروف فقط/);
+  assert.match(cleanPersonName('a'.repeat(21), 'first').problem!, /إلى 20/);
+  const e = env();
+  const none = await signup(e, { first_name: '', last_name: '' });
+  assert.equal(none.status, 400);
+  assert.equal(none.body.field, 'first_name');
+  assert.equal((await signup(e, { last_name: '' })).body.field, 'last_name');
+  const r = await signup(e, { first_name: 'محمد', last_name: 'إبراهيم' });
+  assert.equal(r.status, 200);
+  const row = e.ANALYTICS.raw.prepare("SELECT first_name, last_name, display FROM members WHERE username = 'kareem_10'").get() as any;
+  assert.deepEqual({ ...row }, { first_name: 'محمد', last_name: 'إبراهيم', display: 'محمد إبراهيم' });
+  // the page: both boxes first in the sign-up form, sent with the rest
+  const fs = await import('node:fs');
+  const page = fs.readFileSync('pages/account.njk', 'utf-8');
+  const form = page.slice(page.indexOf('data-form="up"'));
+  assert.ok(form.indexOf('name="first_name"') < form.indexOf('name="username"'));
+  assert.ok(form.indexOf('name="last_name"') < form.indexOf('name="username"'));
+  assert.match(fs.readFileSync('assets/account.js', 'utf-8'), /api\('\/signup', \{ first_name: fn, last_name: ln,/);
+  assert.match(fs.readFileSync('studio/js/views/site-members.js', 'utf-8'), /fact\('الاسم', realName\(m\)/);
 });

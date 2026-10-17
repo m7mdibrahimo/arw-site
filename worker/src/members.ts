@@ -61,6 +61,9 @@ export async function ensureMembers(db: D1Database): Promise<void> {
   // «العضوية المميزة» (worker/src/premium.ts): until when, and since when
   await db.prepare("ALTER TABLE members ADD COLUMN premium_until INTEGER NOT NULL DEFAULT 0").run().catch(() => null);
   await db.prepare("ALTER TABLE members ADD COLUMN premium_since INTEGER NOT NULL DEFAULT 0").run().catch(() => null);
+  // the member's real name, asked first at sign-up (owner 2026-10-18: «لما حد يسجل بتكتب اسم الاول والاسم الثاني اول حاجة»)
+  await db.prepare("ALTER TABLE members ADD COLUMN first_name TEXT NOT NULL DEFAULT ''").run().catch(() => null);
+  await db.prepare("ALTER TABLE members ADD COLUMN last_name TEXT NOT NULL DEFAULT ''").run().catch(() => null);
   ready.add(db);
 }
 
@@ -84,6 +87,15 @@ export function usernameProblem(u: string, official = false): string | null {
   if (isReservedName(u) || /^(admin|administrator|moderator|support|root|arw|arabwrestling|staff|team|official|system)$/i.test(u) || /^(مدير|المدير|الإدارة|الادارة|ادمن|أدمن|الدعم)$/.test(u)) return "هذا الاسم غير متاح، اختر اسما آخر.";
   return null;
 }
+/** A first or second name: 2–20 letters (Arabic or Latin), a space, «-» or «'» inside; the cleaned name, or the problem */
+export function cleanPersonName(raw: unknown, which: "first" | "last"): { name: string; problem: string | null } {
+  const name = String(raw ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
+  const label = which === "first" ? "الاسم الأول" : "الاسم الثاني";
+  if (!name) return { name, problem: `اكتب ${label}.` };
+  if (name.length < 2 || name.length > 20) return { name, problem: `${label} من حرفين إلى 20 حرفا.` };
+  if (!/^[\p{L}\p{M}][\p{L}\p{M} '\-]*$/u.test(name)) return { name, problem: `${label} حروف فقط، من غير أرقام أو رموز.` };
+  return { name, problem: null };
+}
 export function passwordProblem(p: string, username = ""): string | null {
   if (typeof p !== "string" || p.length < 8) return "كلمة المرور 8 حروف على الأقل.";
   if (p.length > 200) return "كلمة المرور طويلة جدا.";
@@ -94,9 +106,9 @@ export function passwordProblem(p: string, username = ""): string | null {
 export const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[A-Za-z]{2,24}$/;
 const ukeyOf = (u: string) => u.normalize("NFKC").toLowerCase();
 
-type Member = { id: number; username: string; email: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number; official?: number; badge?: number; premium_until?: number };
+type Member = { id: number; username: string; email: string; first_name?: string; last_name?: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number; official?: number; badge?: number; premium_until?: number };
 /** What the member's own pages see (never the hashes) */
-const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created, official: !!m.official,
+const mine = (m: Member) => ({ id: m.id, username: m.username, email: m.email, first_name: m.first_name || "", last_name: m.last_name || "", display: m.official ? OFFICIAL_NAME : (m.display || m.username), pic: m.official ? "official" : m.pic, fav_fed: m.fav_fed, fav_star: m.fav_star, bio: m.bio, verified: !!m.verified, created: m.created, official: !!m.official,
   // a premium member has the blue badge while it lasts (owner 2026-10-14: «هياخد علامة التوثيق الزرقاء»)
   // the site's own account has every privilege, premium included, always (owner 2026-10-14: «ليا عضويتي ليها كل الامتيازات»)
   premium: m.official ? 4102444800000 : Number(m.premium_until) > Date.now() ? Number(m.premium_until) : 0, blue: !m.official && (m.badge !== 0 || Number(m.premium_until) > Date.now()),
@@ -294,6 +306,9 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const username = String(body.username || "").normalize("NFC").trim();
     const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
+    const first = cleanPersonName(body.first_name, "first"), last = cleanPersonName(body.last_name, "last");
+    if (first.problem) return reply({ ok: false, error: first.problem, field: "first_name" }, 400);
+    if (last.problem) return reply({ ok: false, error: last.problem, field: "last_name" }, 400);
     const bad = usernameProblem(username) || (!EMAIL.test(email) ? "اكتب بريدا إلكترونيا صحيحا." : null) || passwordProblem(password, username);
     if (bad) return reply({ ok: false, error: bad }, 400);
     if (!(await checkCaptcha(env.PUSH_KV, body.captcha))) return reply({ ok: false, error: "رمز التحقق غير صحيح، جرب الرمز الجديد.", captcha: true }, 400);
@@ -310,8 +325,11 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const code = recoveryCode();
     const country = String((request as any).cf?.country || "").slice(0, 2).toUpperCase();
     // no blue badge to begin with: the owner gives it (owner 2026-10-14: «تشيل موضوع ان اي حد يسجل ياخد العلامة الزرقاء»)
-    const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, recovery, display, created, last_seen, ip, country, badge)
-      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?1, ?8, ?8, ?9, ?10, 0) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country).first<Member>();
+    // the name shown with their comments starts as their real name (they can change it on their page)
+    const fullName = `${first.name} ${last.name}`.slice(0, 30);
+    const display = isReservedName(fullName) ? username : fullName;
+    const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, recovery, display, created, last_seen, ip, country, badge, first_name, last_name)
+      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?11, ?8, ?8, ?9, ?10, 0, ?12, ?13) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country, display, first.name, last.name).first<Member>();
     if (!ins) return reply({ ok: false, error: "تعذر إنشاء الحساب، حاول مرة أخرى." }, 500);
     await count(env.PUSH_KV, `su:${ip}`, 3600);
     const mailed = await sendVerify(env, db, ins, now).catch(() => false);
@@ -557,7 +575,7 @@ export async function studioMembers(env: MembersEnv, now = Date.now()) {
   await premium.endTrials(env as any, now).catch(() => 0);
   const [rows, total, week, active] = await db.batch([
     // each member's comments counted in one pass over the comments (a count per member read them all once for each)
-    db.prepare(`SELECT m.id, m.username, m.display, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge, m.premium_until, m.premium_since,
+    db.prepare(`SELECT m.id, m.username, m.display, m.first_name, m.last_name, m.email, m.pic, m.verified, m.banned, m.created, m.last_seen, m.country, m.ip, m.official, m.badge, m.premium_until, m.premium_since,
       CASE WHEN m.premium_until > ?1 THEN (SELECT p.granted_by FROM premium_payments p WHERE p.member = m.id AND p.status = 'paid' ORDER BY p.paid_at DESC, p.id DESC LIMIT 1) END AS premium_by,
       COALESCE(c.n, 0) AS comments FROM members m
       LEFT JOIN (SELECT member, COUNT(*) AS n FROM comments WHERE member > 0 AND deleted = 0 GROUP BY member) c ON c.member = m.id
@@ -575,7 +593,7 @@ export async function studioMemberDetail(env: MembersEnv, id: unknown, now = Dat
   if (!db) return { success: false, error: "الحسابات مش متاحة دلوقتي." };
   await ensureMembers(db);
   await ensureComments(db);
-  const m = await db.prepare(`SELECT id, username, email, display, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country, official, badge, premium_until, premium_since
+  const m = await db.prepare(`SELECT id, username, email, display, first_name, last_name, pic, fav_fed, fav_star, bio, verified, banned, created, last_seen, ip, country, official, badge, premium_until, premium_since
     FROM members WHERE id = ?1`).bind(Number(id) || 0).first<any>();
   if (!m) return { success: false, error: "العضو ده مش موجود." };
   await (await import("./premium")).ensurePremium(db);
