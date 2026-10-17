@@ -363,3 +363,13 @@ test('INCIDENTS #651: corrections fix Stacks, eight-man tag and الاتهاما
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
   assert.equal(fixEnglishNames('defends against Will OSDAY'), 'defends against Will Ospreay');
 });
+
+// INCIDENTS #656: «واغنر/فاغنر» in one story, «تتوسط دعوى», «نيل لوكاس», «بطل AEW العالمية».
+test('INCIDENTS #656: corrections fix Wagner, lawsuit phrase, Noel Lucas and champion gender', () => {
+  assert.equal(applyCorrections('إل هيخو دي الدكتور واغنر جونيور'), 'إل هيخو دي الدكتور فاغنر جونيور');
+  assert.equal(applyCorrections('فريق واجنر برذرز'), 'فريق فاغنر برذرز');
+  assert.equal(applyCorrections('الواقعة التي تتوسط دعوى قضائية'), 'الواقعة التي تدور حولها دعوى قضائية');
+  assert.equal(applyCorrections('الحارس نيل لوكاس'), 'الحارس نويل لوكاس');
+  assert.equal(applyCorrections('كوني بطل AEW العالمية مسؤولية'), 'كوني بطل AEW العالمي مسؤولية');
+  assert.equal(applyCorrections('بطل AEW العالمية للفرق'), 'بطل AEW العالمية للفرق');
+});
