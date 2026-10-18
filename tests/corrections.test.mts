@@ -270,3 +270,11 @@ test("Hornswoggle has one spelling in the glossary, corrections and stories", as
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /هورن سواغل|هورنسوغل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #692: «برودي كينغ» (with ghain) was in 21 stories; the glossary spelling is «برودي كينج».
+test("Brody King is always spelled with jeem (INCIDENTS #692)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ضد برودي كينغ"), "ضد برودي كينج");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /برودي كينغ/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
