@@ -1,5 +1,15 @@
 [
   {
+    "id": 334028,
+    "link": "https://www.fightful.com/wrestling/334028-mike-bailey-wrestling/",
+    "date": "2026-10-18T12:00:00",
+    "date_gmt": "2026-10-18T16:00:00",
+    "title": {
+      "rendered": "Mike Bailey: I Think My Greatest Accomplishment In Pro Wrestling Is Constant Progress"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/15083147/maxresdefault-100.jpg"
+  },
+  {
     "id": 334531,
     "link": "https://www.fightful.com/wrestling/chris-sabin-would-love-to-win-the-aew-tag-titles-and-then-feud-with-the-new-level-for-six-months/",
     "date": "2026-10-18T11:41:57",
@@ -288,15 +298,5 @@
       "rendered": "AAA on FOX Results (10/17): La Catalina Appears, Tag Title Bout"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17094733/HUsmWzZbMAA6y0z.jpeg"
-  },
-  {
-    "id": 334460,
-    "link": "https://www.fightful.com/wrestling/full-lineup-announced-for-aaa-heroes-inmortales/",
-    "date": "2026-10-17T23:10:56",
-    "date_gmt": "2026-10-18T03:10:56",
-    "title": {
-      "rendered": "Full Lineup Announced For AAA Heroes Inmortales"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02100957/Screenshot-2026-10-02-at-10.03.34-AM.png"
   }
 ]
