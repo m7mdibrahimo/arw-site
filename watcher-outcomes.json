@@ -1,53 +1,53 @@
 {
- "https://www.fightful.com/wrestling/the-young-bucks-score-win-over-kyle-fletcher-kevin-knight-to-retain-aew-world-tag-team-titles-at-wrestledream": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-18T01:44:55.892Z"
- },
  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:35.026Z"
+  "at": "2026-10-18T01:47:32.350Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:34.663Z"
+  "at": "2026-10-18T01:47:31.959Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:34.543Z"
+  "at": "2026-10-18T01:47:31.831Z"
  },
  "https://www.fightful.com/wrestling/rusev-returns-to-the-ring-at-10-16-wwe-live-in-hawaii": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:34.317Z"
+  "at": "2026-10-18T01:47:31.577Z"
  },
  "https://www.fightful.com/wrestling/update-on-kairi-and-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:34.149Z"
+  "at": "2026-10-18T01:47:31.398Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:33.777Z"
+  "at": "2026-10-18T01:47:30.993Z"
  },
  "https://www.fightful.com/wrestling/giulia-promises-more-brutality-less-rules-to-blake-monroe-in-their-street-fight-on-10-23-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:33.608Z"
+  "at": "2026-10-18T01:47:30.813Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-wants-to-beat-roman-reigns-once-he-returns-to-wwe-says-he-may-have-to-bring-the-sword-back-because-romans-got-95-family-members": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:33.279Z"
+  "at": "2026-10-18T01:47:30.456Z"
  },
  "https://www.fightful.com/wrestling/mercedes-martinez-provides-surgery-update-says-gofundme-covered-it-in-full": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:44:33.061Z"
+  "at": "2026-10-18T01:47:30.217Z"
+ },
+ "https://www.fightful.com/wrestling/the-young-bucks-score-win-over-kyle-fletcher-kevin-knight-to-retain-aew-world-tag-team-titles-at-wrestledream": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-18T01:44:55.892Z"
  },
  "https://www.fightful.com/wrestling/nick-wayne-defeats-chris-jericho-at-aew-wrestledream-wins-series-2-1": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
