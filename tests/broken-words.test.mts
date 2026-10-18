@@ -400,3 +400,13 @@ test('glued_arabic_words blocks two Arabic words run together', () => {
   const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'وسط ترقب جماهيري دائم ' + 'كلام '.repeat(80));
   assert.ok(!ok.some(i => i.code === 'glued_arabic_words'));
 });
+
+// INCIDENTS #687: «تبرانس ساوث ورايتسلينغ» — Wrestling spelled in Arabic letters inside a promotion name.
+test('arabic_wrestling_name blocks Wrestling written in Arabic letters', () => {
+  assert.ok(BLOCKING_QA_CODES.includes('arabic_wrestling_name'));
+  const t = 'عنوان تجريبي طويل بما يكفي للفحص هنا';
+  assert.ok(checkArticle(t, 'شارك في اتحادات مثل تبرانس ساوث ورايتسلينغ ' + 'كلام '.repeat(80)).some(i => i.code === 'arabic_wrestling_name'));
+  assert.ok(checkArticle(t, 'في اتحاد برو ريسلينغ إيف ' + 'كلام '.repeat(80)).some(i => i.code === 'arabic_wrestling_name'));
+  assert.ok(!checkArticle(t, 'في اتحاد Pro Wrestling EVE ' + 'كلام '.repeat(80)).some(i => i.code === 'arabic_wrestling_name'));
+  assert.match(applyCorrections('في اتحاد برو ريسلينغ إيف'), /Pro Wrestling EVE/);
+});

@@ -124,6 +124,8 @@ const RULES: Rule[] = [
   { code: "broken_word", severity: "error", re: /(?<=[\u0600-\u06FF]) (?!vs\b)(?:[a-z]{2,14})(?=[\s،,.؛:!؟?)]|$)(?! [A-Za-z])/g, message: "كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي", fields: ["title", "body"] },
   // Two Arabic words run together with no space: «ترقب جماهيريدائم» (INCIDENTS #680). A nisba ending in ي glued to a common adjective/noun.
   { code: "glued_arabic_words", severity: "error", re: /(?<![\u0600-\u06FF])[\u0621-\u064A]{2,}ي(?:دائم|مستمر|كبير|كامل|واسع|ضخم|هائل|مثير|قوي|رسمي|مباشر|مفاجئ)(?![\u0600-\u06FF])/g, message: "كلمتين عربي ملزوقين من غير مسافة (مثل: جماهيريدائم)", fields: ["title", "body"] },
+  // «Wrestling» spelled in Arabic letters inside a promotion/show name («تبرانس ساوث ورايتسلينغ», «برو ريسلينغ إيف»): promotion names stay in English (INCIDENTS #687).
+  { code: "arabic_wrestling_name", severity: "error", re: /(?<![\u0600-\u06FF])[وبلفك]?(?:رايتسلينغ|رايستلينغ|ريستلينغ|ريسلينغ|ريسلنغ|رسلينغ)(?![\u0600-\u06FF])/g, message: "اسم اتحاد أو برنامج فيه Wrestling مكتوبة بحروف عربي (لازم بالإنجليزي)", fields: ["title", "body"] },
   { code: "artifact", severity: "error", re: /\bundefined\b|\bNaN\b|\[object Object\]|\{\{|\}\}|```|\\n|&amp;|&quot;|&#\d+;/g, message: "بقايا كود أو رموز غير مفهومة", fields: ["title", "body"] },
   // Gemini sometimes swaps one letter of a name for a look-alike from another script:
   // «وパاتريك» (Japanese), «ناтан» (Cyrillic), «مصارعة חברה» (Hebrew tag) — INCIDENTS #54.
@@ -247,9 +249,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "glued_arabic_words"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "glued_arabic_words", "arabic_wrestling_name"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "arabic_wrestling_name"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
