@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/will-ospreay-to-defend-aew-world-title-in-clockwork-carnage-at-aew-wrestledream/": {
-    "matchedFile": "20261004033342-اتحاد-aew-يعلن-عن-نزال-كلوك-وورك-كارنيج-الجديد-في-عرض-wrestledream.md",
-    "reason": "كلا الخبرين يغطيان نفس الإعلان من حلقة Collision بتاريخ 3 أكتوبر عن نزال Clockwork Carnage وقواعده دفاعاً عن اللقب في عرض WrestleDream",
-    "at": "2026-10-04T01:02:35.164Z"
-  },
   "https://www.fightful.com/wrestling/jay-white-suffered-injury-at-aew-all-out-will-be-out-for-1-2-months/": {
     "matchedFile": "20261004035838-جاي-وايت-يبتعد-عن-الحلبات-مجددا-بسبب-الإصابة.md",
     "reason": "كلا الخبرين يتناولان نفس الإعلان الصادر في عرض AEW Collision بتاريخ 3 أكتوبر حول تعرض جاي وايت لإصابة ستغيبه لمدة تتراوح بين شهر وشهرين.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261018081845-توني-خان-يكشف-أنه-لم-يتأكد-من-جاهزية-إيليا-دراغونوف-لعرض-aew-wrestledream-إلا-يوم-الأربعاء.md",
     "reason": "الخبر الجديد مكرر للخبر [0] حيث يتناول كلاهما نفس تصريحات توني خان في المؤتمر الصحفي لعرض WrestleDream حول عدم التأكد من مشاركة إيليا دراغونوف حتى ليلة الأربعاء بسبب إجراءات التأشيرة.",
     "at": "2026-10-18T05:46:44.636Z"
+  },
+  "https://www.ringsidenews.com/ilja-dragunovs-aew-ring-debut-date-location-revealed/": {
+    "matchedFile": "20261018083449-إيليا-دراغونوف-يخوض-نزاله-الأول-في-aew-خلال-عرض-aew-dynamite-القادم.md",
+    "reason": "الخبر الجديد يكرر نفس تفاصيل إعلان موعد ومكان النزال الأول لإيليا دراغونوف في AEW Dynamite القادم والتي سبق نشرها بالكامل في الخبر رقم 0.",
+    "at": "2026-10-18T06:06:40.618Z"
   }
 }
