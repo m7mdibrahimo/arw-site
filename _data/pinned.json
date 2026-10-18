@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/aew-wrestledream-tailgate-brawl-2026/",
+    "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
+    "subtitle": "AEW WrestleDream Tailgate Brawl (2026)",
+    "image": "/content/images/1nhohlh291gy95pg.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ريسل دريم تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/lucha-libre-aaa-17-10-2026/",
+    "title": "عرض ايه ايه ايه 17.10.2026 مترجم",
+    "subtitle": "Lucha Libre AAA 17.10.2026",
+    "image": "/content/images/35135sfwgs0vqiup.jpg?w=800",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-16-10-2026/",
     "title": "عرض سماك داون 16.10.2026 مترجم",
     "subtitle": "WWE Smackdown 16.10.2026",
@@ -86,71 +108,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-12-10-2026/",
-    "title": "عرض الرو 12.10.2026 مترجم",
-    "subtitle": "WWE RAW 12.10.2026",
-    "image": "/content/images/faemffd4e1jw2s0p.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/njpw-king-of-pro-wrestling-2026/",
-    "title": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج 12.10.2026 مترجم",
-    "subtitle": "NJPW King Of Pro Wrestling (2026)",
-    "image": "/content/images/egl6fddqyo9ar2g3.jpg?w=800",
-    "federation": "NJPW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ان جيه بي دبليو كينج اوف برو ريسلنج مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/tna-bound-for-glory-2026/",
-    "title": "عرض تي ان ايه باوند فور غلوري 11.10.2026 مترجم",
-    "subtitle": "TNA Bound For Glory (2026)",
-    "image": "/content/images/cd6c5iwbmswelacy.jpg?w=800",
-    "federation": "TNA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض تي ان ايه باوند فور جلوري مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-money-in-the-bank-2026/",
-    "title": "عرض موني ان ذا بانك 10.10.2026 مترجم",
-    "subtitle": "WWE Money in the Bank (2026)",
-    "image": "/content/images/q9ns2lelhx8t3w00.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض موني ان ذا بانك مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/ufc-fight-night-290-allen-vs-duncan/",
-    "title": "عرض يو اف سي فايت نايت 10.10.2026 مترجم",
-    "subtitle": "UFC Fight Night 290: Allen vs. Duncan",
-    "image": "/content/images/lvau1v49glxs7ipj.jpg?w=800",
-    "federation": "MMA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/mlp-mayhem-30-09-2026/",
-    "title": "عرض ام ال بي 30.09.2026 مترجم",
-    "subtitle": "MLP Mayhem 30.09.2026",
-    "image": "/content/images/vx4ecy8ap1bf7f6z.jpg?w=800",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
