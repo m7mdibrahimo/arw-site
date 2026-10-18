@@ -7007,6 +7007,17 @@
    "wrong": "مسرع إيقاع",
    "right": "جهاز ضبط الإيقاع",
    "note": "metronome — INCIDENTS #675"
+  },
+  {
+   "wrong": "نين[يو]{1,2}\\s+هامبورغ(?:سا|ويسا|يزا)",
+   "right": "نينيو هامبورغيسا",
+   "note": "Niño Hamburguesa — خمس كتابات مختلفة في ٣ أخبار — INCIDENTS #676",
+   "regex": true
+  },
+  {
+   "wrong": "تمكن بايج",
+   "right": "تمكن بيدج",
+   "note": "Hangman Page = بيدج في كل الأخبار — INCIDENTS #676"
   }
  ]
 }

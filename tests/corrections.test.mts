@@ -186,3 +186,14 @@ test("Daniel Garcia, Abismo Negro and metronome are corrected (INCIDENTS #675)",
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /داينائل|أبيض نيجرو|مسرع إيقاع/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #676: Niño Hamburguesa was written 5 different ways and «بايج» for Page.
+test("Niño Hamburguesa has one spelling and Page is «بيدج» (INCIDENTS #676)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Niño Hamburguesa"], "نينيو هامبورغيسا");
+  assert.equal(applyCorrections("نينو هامبورغويسا ونينيو هامبورغسا"), "نينيو هامبورغيسا ونينيو هامبورغيسا");
+  assert.equal(applyCorrections("تمكن بايج وكينج"), "تمكن بيدج وكينج");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /نين[يو]{1,2} هامبورغ(?:سا|ويسا|يزا)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
