@@ -5064,16 +5064,16 @@
     "renderedAt": 1792285609610
   },
   {
-    "videoUrl": "/videos/reel-20261018061412-revpro-cmll-fantastica-mania-u.mp4",
-    "filename": "reel-20261018061412-revpro-cmll-fantastica-mania-u.mp4",
-    "title": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) 17.10.2026 مترجم",
-    "secondaryTitle": "RevPro/CMLL Fantastica Mania UK 2026 (Show 1)",
-    "description": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261018061412-revpro-cmll-fantastica-mania-u",
+    "videoUrl": "/videos/reel-20261018061610-revpro-cmll-fantastica-mania-u.mp4",
+    "filename": "reel-20261018061610-revpro-cmll-fantastica-mania-u.mp4",
+    "title": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الثاني) 17.10.2026 مترجم",
+    "secondaryTitle": "RevPro/CMLL Fantastica Mania UK 2026 (Show 2)",
+    "description": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الثاني) مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261018061610-revpro-cmll-fantastica-mania-u",
     "kind": "show",
-    "slug": "20261018061412-revpro-cmll-fantastica-mania-u",
-    "image": "/content/images/t55axhhvsv49bg4k.jpg",
-    "renderedAt": 1792293453141
+    "slug": "20261018061610-revpro-cmll-fantastica-mania-u",
+    "image": "/content/images/h1ynll05k854oych.jpg",
+    "renderedAt": 1792293958525
   },
   {
     "videoUrl": "/videos/reel-20260927104500-aew-all-out-2026.mp4",
@@ -5085,7 +5085,7 @@
     "kind": "show",
     "slug": "20260927104500-aew-all-out-2026",
     "image": "/content/images/4stbd0j9f6nrxzaa.jpg",
-    "renderedAt": 1792293551030
+    "renderedAt": 1792294052946
   },
   {
     "videoUrl": "/videos/reel-20261006015444-cmll-sabados-de-coliseo-03-10-.mp4",
@@ -5097,7 +5097,7 @@
     "kind": "show",
     "slug": "20261006015444-cmll-sabados-de-coliseo-03-10-",
     "image": "/content/images/2fasj33b6uu3lgu6.jpg",
-    "renderedAt": 1792293649716
+    "renderedAt": 1792294148442
   },
   {
     "videoUrl": "/videos/reel-20261006110419-wwe-raw-05-10-2026.mp4",
@@ -5109,6 +5109,18 @@
     "kind": "show",
     "slug": "20261006110419-wwe-raw-05-10-2026",
     "image": "/content/images/b18z5fj659jab63j.jpg",
-    "renderedAt": 1792293745640
+    "renderedAt": 1792294240240
+  },
+  {
+    "videoUrl": "/videos/reel-20261018061412-revpro-cmll-fantastica-mania-u.mp4",
+    "filename": "reel-20261018061412-revpro-cmll-fantastica-mania-u.mp4",
+    "title": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) 17.10.2026 مترجم",
+    "secondaryTitle": "RevPro/CMLL Fantastica Mania UK 2026 (Show 1)",
+    "description": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261018061412-revpro-cmll-fantastica-mania-u",
+    "kind": "show",
+    "slug": "20261018061412-revpro-cmll-fantastica-mania-u",
+    "image": "/content/images/t55axhhvsv49bg4k.jpg",
+    "renderedAt": 1792294331206
   }
 ]
