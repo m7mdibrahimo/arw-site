@@ -86,6 +86,23 @@ try {
   const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")) as Record<string, string>;
   for (const v of Object.values(names)) for (const m of String(v).matchAll(/(?<!\S)(\S+)\s+\1(?!\S)/g)) LEGIT_DOUBLES.add(m[1]);
 } catch { /* the glossary is optional here */ }
+// How many different glossary wrestler names (Arabic spelling) a line holds; longest names are
+// taken first so «تانك ليدجر» isn't also counted as «تانك».
+let GLOSSARY_AR: string[] | null = null;
+function glossaryNamesIn(line: string): number {
+  if (!GLOSSARY_AR) {
+    try {
+      const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")) as Record<string, string>;
+      GLOSSARY_AR = [...new Set(Object.values(names).map(String).filter((v) => /^[\u0621-\u064A ]{5,}$/.test(v)))].sort((a, b) => b.length - a.length);
+    } catch { GLOSSARY_AR = []; }
+  }
+  let rest = ` ${line} `, n = 0;
+  for (const name of GLOSSARY_AR) {
+    const re = new RegExp(`(?<![\\u0621-\\u064A])و?${name}(?![\\u0621-\\u064A])`);
+    if (re.test(rest)) { n++; rest = rest.replace(re, " "); }
+  }
+  return n;
+}
 const SHOW_WORDS = "(?:العرض|عرض|عروض|WWE|AEW|TNA|RAW|Raw|SmackDown|NXT|Dynamite|Collision|Rampage|iMPACT|EVOLVE)";
 
 const RULES: Rule[] = [
@@ -249,9 +266,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "glued_arabic_words", "arabic_wrestling_name"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "arabic_wrestling_name"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -374,6 +391,18 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     const win = block.match(/الفائز(?:ة)?:\*{0,2}\s*([^\n]+)/);
     if (head && win && /نزال فردي/.test(head[1]) && /^فريق\s/.test(win[1].trim())) {
       issues.push({ code: "singles_label_team_winner", severity: "error", field: "body", message: "المواجهة مكتوبة «نزال فردي» والفائز «فريق …» — النزال فرق، صحح طبيعة المواجهة من سطر المصدر", excerpt: head[1].slice(0, 60) });
+      break;
+    }
+  }
+
+  // «نزال فرق سداسي» above a winners line with four names: 4 vs 4 is «نزال فرق ثماني» (INCIDENTS #689).
+  // Four glossary names in the winners line can't be a 3-on-3 match.
+  for (const block of (body || "").split(/\n(?=\*\*(?:المواجهة|الحدث))/)) {
+    const head = block.match(/^\*\*(?:المواجهة|الحدث)[^\n]*?:\s*([^\n]*)\*\*/);
+    const win = block.match(/الفائز(?:ة)?:\*{0,2}\s*([^\n]+)/);
+    if (!head || !win || !/فرق سداسي/.test(head[1]) || /^فريق\s/.test(win[1].trim())) continue;
+    if (!/[()（]/.test(win[1]) && glossaryNamesIn(win[1]) >= 4) {
+      issues.push({ code: "team_size_label", severity: "error", field: "body", message: "المواجهة مكتوبة «نزال فرق سداسي» والفائزين أربعة — ٤ ضد ٤ هو «نزال فرق ثماني»", excerpt: head[1].slice(0, 60) });
       break;
     }
   }

@@ -156,3 +156,10 @@ test('«فريقي X وY» is a blocked dual noun', () => {
   const body = 'وانتهى النزال بفوز فريقي ديث رايدرز وذا دوجز في عرض AEW. '.repeat(8);
   assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', body, []).some(i => i.code === 'dual_noun'));
 });
+
+test("«نزال فرق سداسي» with four winners is blocked (INCIDENTS #689)", () => {
+  const bad = "نتائج عرض.\n\n**الحدث الرئيسي (Main Event): نزال فرق سداسي**\n\nفاز الفريق الأول.\n\n🏆 **الفائز:** كيفن أوينز وتوني دي أنجيلو وشايلو هيل وكيندال غراي";
+  assert.ok(checkArticle("نتائج عرض WWE NXT Live", bad).some((i) => i.code === "team_size_label"));
+  assert.ok(!checkArticle("نتائج عرض WWE NXT Live", bad.replace("سداسي", "ثماني")).some((i) => i.code === "team_size_label"));
+  assert.ok(!checkArticle("نتائج عرض WWE NXT Live", bad.replace("وكيندال غراي", "").replace("وشايلو هيل", "")).some((i) => i.code === "team_size_label"));
+});
