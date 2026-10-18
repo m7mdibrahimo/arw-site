@@ -1,5 +1,15 @@
 [
   {
+    "id": 1297450511,
+    "link": "https://www.wrestlinginc.com/2288622/wwe-nxt-dominik-mysterio-bypassed-full-run/",
+    "date": "Sun, 18 Oct 2026 17:00:00 +0000",
+    "date_gmt": "2026-10-18T17:00:00.000Z",
+    "title": {
+      "rendered": "Dominik Mysterio Explains Why He Bypassed Full WWE NXT Run"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/dominik-mysterio-explains-why-he-bypassed-full-wwe-nxt-run/l-intro-1792151297.jpg"
+  },
+  {
     "id": 4075564185,
     "link": "https://www.wrestlinginc.com/2288405/wwe-liv-morgan-favorite-opponents-dream-matches/",
     "date": "Sun, 18 Oct 2026 16:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Nick Wayne Scores Second Win Over Chris Jericho At AEW WrestleDream 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/nick-wayne-scores-second-win-over-chris-jericho-at-aew-wrestledream-2026/l-intro-1792285843.jpg"
-  },
-  {
-    "id": 2877844422,
-    "link": "https://www.wrestlinginc.com/2289660/aew-wrestledream-2026-mercedes-mone-thekla-womens-world-title/",
-    "date": "Sun, 18 Oct 2026 00:55:02 +0000",
-    "date_gmt": "2026-10-18T00:55:02.000Z",
-    "title": {
-      "rendered": "Mercedes Mone Defeats Thekla, Retains AEW Women's World Title At WrestleDream 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wrestledream-2026-mercedes-mone-thekla-womens-world-title/l-intro-1792285538.jpg"
   }
 ]
