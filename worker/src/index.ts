@@ -379,7 +379,7 @@ type PublishState = {
   tiktokToken?: TikTokToken;
 };
 
-type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return" | "show"; why?: "title" | "lead" | "ai" | "flag" | "old"; lead?: string; note?: string; releasedAt?: number; dismissedAt?: number; by?: string };
+type HeldEntry = { at: number; title: string; url: string; image?: string; reason: "result" | "return" | "show"; why?: "title" | "lead" | "ai" | "flag" | "old" | "debut"; lead?: string; note?: string; releasedAt?: number; dismissedAt?: number; by?: string };
 
 /** The content file behind a feed item («./content/news/2026…-x.md» → «2026…-x»): its lasting identity. */
 export function contentFileId(item: { inputPath?: string } | null | undefined): string {
@@ -1966,6 +1966,32 @@ export function xAllowedFor(kind: unknown, priority: unknown, used: number, cap 
   if (kind !== "show" && kind !== "recap" && priority === "high") return used < cap - X_SHOW_RESERVE;
   return false;
 }
+/** Who debuted or came back at a show in the last `hours` (the stories held or flagged as a return): every later story
+ *  about them gives the debut away too — the press conference, an interview, «his first match on Dynamite» (owner
+ *  2026-10-18: «اخبار اليا دراجنوف كلها حرق لانه لسه ظاهر اول مرة في العرض … ارجوك متتكررش تاني ابدا»). */
+export function returnedNames(items: any[], held: Record<string, { at?: number; title?: string; reason?: string }> | undefined, now = Date.now(), hours = 18): string[] {
+  const AR = "\u0621-\u064A";
+  const titles: string[] = [];
+  for (const it of items || []) {
+    const at = Date.parse(it?.published_at || it?.date || "") || 0;
+    if (it?.social_spoiler === true && it?.social_spoiler_kind === "return" && now - at < hours * 3600_000) titles.push(String(it.title || ""));
+  }
+  for (const h of Object.values(held || {})) if (h && h.reason === "return" && now - (Number(h.at) || 0) < hours * 3600_000) titles.push(String(h.title || ""));
+  const stop = new Set(["عرض", "اتحاد", "فريق", "بطولة", "نجم", "نجمة", "المصارع", "المصارعة", "النجم", "النجمة", "رسميا", "الأول", "الاول", "حلبات"]);
+  const ok = (n: string) => { const w = n.split(/\s+/); return w.length >= 2 && w.length <= 4 && w.every(x => x.length >= 2 && !stop.has(x)); };
+  const out = new Set<string>();
+  for (const t of titles) {
+    const lead = t.match(new RegExp(`^((?:[${AR}]+\\s+){1,3}[${AR}]+)\\s+(?:يعود|تعود|يعودان|يسجل|تسجل|يظهر|تظهر|ينضم|تنضم|يوقع|توقع|يفاجئ|تفاجئ|يقتحم|تقتحم|يكمل|يحضر|تحضر)(?![${AR}])`));
+    if (lead && ok(lead[1])) out.add(lead[1]);
+    for (const m of t.matchAll(new RegExp(`(?:ظهور|عودة|انضمام|وصول|توقيع)\\s+(?:النجم\\s+|النجمة\\s+|المصارع\\s+|المصارعة\\s+)?([${AR}]+\\s+[${AR}]+)`, "g"))) if (ok(m[1])) out.add(m[1]);
+  }
+  return [...out];
+}
+const plainAr = (s: string) => s.replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي");
+export function mentionsReturned(text: unknown, names: string[]): boolean {
+  const t = plainAr(String(text || ""));
+  return names.some(n => t.includes(plainAr(n)));
+}
 /** The distinctive words of the shows whose results report («نتائج عرض …») was still being updated in the last `hours`:
  *  «AEW WrestleDream» → wrestledream. A story naming one of them can't be called «old» (the spoiler shield). */
 export function recentEventWords(items: any[], now = Date.now(), hours = 12): string[] {
@@ -2620,6 +2646,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
     .slice(0, MAX_EXPENSIVE_PER_TICK);
 
   const recentEvents = recentEventWords(items);
+  const recentReturns = returnedNames(items, state.held);
   for (const { item, freshFrom, key, tgDone, fbDone, igDone, xDone } of toProcess) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= MAX_PLATFORM_ACTIONS_PER_TICK) break;
 
@@ -2656,6 +2683,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       // كتير فيها حرق للعروض زي عرض aew رسل دريم عمال يتنشر في منصات التواصل»)
       const statedOld = item.social_spoiler === false && item.social_spoiler_age === "old" && !namesRecentEvent(item.title, recentEvents);
       if (statedOld) why = "";
+      // a wrestler who debuted or came back at a show in the last hours: every story about them is a spoiler, «old» or not
+      if (!why && mentionsReturned(`${item.title || ""} ${item.headline || ""}`, recentReturns)) why = "debut";
       let lead = "";
       // Second opinion written with the story: an AI read of the finished title + opening for
       // what they mean (word lists always miss a phrasing). Either one saying «spoils» holds it.
@@ -2679,7 +2708,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         state.held = state.held || {};
         // Only a story that reached no platform yet is «held»; one already out (a title edited
         // into a spoiler later) is just stopped from going further.
-        if (!reachedAny) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: why === "ai" ? (item.social_spoiler_kind === "return" ? "return" : item.social_spoiler_kind === "show" ? "show" : "result") : spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}), ...(item.social_spoiler_note ? { note: String(item.social_spoiler_note).slice(0, 200) } : {}) };
+        if (!reachedAny) state.held[key] = { at: now, title: String(item.title || "").slice(0, 240), url: String(item.url || ""), image: item.image || "", reason: why === "debut" ? "return" : why === "ai" ? (item.social_spoiler_kind === "return" ? "return" : item.social_spoiler_kind === "show" ? "show" : "result") : spoilerReason(why === "title" ? item.title : lead), why, ...(lead ? { lead: lead.slice(0, 240) } : {}), ...(item.social_spoiler_note ? { note: String(item.social_spoiler_note).slice(0, 200) } : {}) };
         for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;

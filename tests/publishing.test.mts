@@ -5153,3 +5153,24 @@ test('a result from a show that ended hours ago is never «old»: WrestleDream\'
   fs.writeFileSync(path.join(dir, '20261017230000-x.md'), `---\ntitle: "نتائج"\ndate: ${iso(2)}\npublished_at: ${iso(7)}\nsource_title: "AEW WrestleDream Results 10/17/26 W/ Live Updates"\n---\n`);
   assert.ok(recentShowNames(6, dir).some(n => /wrestledream/i.test(n)), recentShowNames(6, dir).join(','));
 });
+
+test('a wrestler who just debuted or came back: every story about them is held — the press conference, an interview, his next match (owner 2026-10-18)', async () => {
+  // «اخبار اليا دراجنوف كلها حرق لانه لسه ظاهر اول مرة في العرض … ارجوك متتكررش تاني ابدا في اي حاجة تانية مستقبلا»
+  const { returnedNames, mentionsReturned } = await import('../worker/src/index');
+  const now = Date.parse('2026-10-18T06:30:00Z');
+  const items = [
+    { title: 'إيليا دراغونوف يسجل ظهوره الأول رسميا في عرض AEW WrestleDream', social_spoiler: true, social_spoiler_kind: 'return', published_at: '2026-10-18T03:07:48Z' },
+    { title: 'توني خان يؤكد انضمام إيليا دراغونوف إلى اتحاد AEW', social_spoiler: true, social_spoiler_kind: 'return', published_at: '2026-10-18T03:17:08Z' },
+    { title: 'مرسيدس موني تهزم ثيكلا', social_spoiler: true, social_spoiler_kind: 'result', published_at: '2026-10-18T00:55:00Z' },
+    { title: 'رومان رينز يعود في عرض', social_spoiler: true, social_spoiler_kind: 'return', published_at: '2026-10-16T00:00:00Z' },
+  ];
+  const names = returnedNames(items, { k: { at: Date.parse('2026-10-17T23:51:00Z'), title: 'جاي وايت يعود في عرض AEW WrestleDream', reason: 'return' } }, now);
+  assert.deepEqual(names.sort(), ['إيليا دراغونوف', 'جاي وايت'].sort());
+  for (const t of ['إيليا دراغونوف يخوض نزاله الأول في AEW خلال عرض AEW Dynamite القادم', 'إيليا دراغونوف يتحدث عن تفاعل الجماهير في عرض AEW WrestleDream', 'ايليا دراغونوف يكشف سبب اختياره لاتحاد AEW'])
+    assert.equal(mentionsReturned(t, names), true, t);
+  for (const t of ['توني خان يتحدث عن إمكانية تعاقد AEW مع كايري ساني', 'رومان رينز يتحدث عن مستقبله'])
+    assert.equal(mentionsReturned(t, names), false, t);
+  const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  assert.match(src, /if \(statedOld\) why = "";\n[^\n]*\n\s*if \(!why && mentionsReturned\(`\$\{item\.title \|\| ""\} \$\{item\.headline \|\| ""\}`, recentReturns\)\) why = "debut";/);
+  assert.match(src, /reason: why === "debut" \? "return"/);
+});

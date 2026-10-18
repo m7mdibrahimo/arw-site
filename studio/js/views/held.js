@@ -10,7 +10,7 @@ const PLATFORMS = [['telegram', 'تيليجرام', '#24a1de'], ['facebook', 'ف
 const FIRST = 7;
 // Why the shield held it: the title, the opening that goes out with it, or (older stories)
 // only the writer's broad flag — those show nothing on social.
-const why = (i) => i.why === 'flag' ? 'مفيهوش حرق ظاهر' : i.why === 'old' ? 'حدث قديم، مفيهوش حرق' : `${REASON[i.reason] || 'حرق'} ${i.why === 'lead' ? 'في أول الخبر' : i.why === 'ai' ? 'في معنى الخبر' : 'في العنوان'}`;
+const why = (i) => i.why === 'flag' ? 'مفيهوش حرق ظاهر' : i.why === 'old' ? 'حدث قديم، مفيهوش حرق' : `${REASON[i.reason] || 'حرق'} ${i.why === 'lead' ? 'في أول الخبر' : i.why === 'ai' ? 'في معنى الخبر' : i.why === 'debut' ? 'عن مصارع لسه ظاهر أو راجع في عرض' : 'في العنوان'}`;
 
 export async function renderHeld(el, { all = false } = {}) {
   if (!el) return;
