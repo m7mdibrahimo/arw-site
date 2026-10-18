@@ -10,7 +10,7 @@ en_tags:
   - "AEW"
   - "AEW WrestleDream"
   - "Jon Moxley"
-  - "Mercedes Mone"
+  - "Mercedes Moné"
   - "Chris Jericho"
 image: /content/images/f5jeydyo8yej960e.jpg
 gallery:

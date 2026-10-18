@@ -7,7 +7,7 @@ date: 2026-10-18T00:48:59.000Z
 source_id: 334435
 source_url: "https://www.fightful.com/wrestling/mercedes-mone-def-thekla-to-retain-aew-womens-world-title-at-wrestledream/"
 en_tags:
-  - "Mercedes Mone"
+  - "Mercedes Moné"
   - "Thekla"
   - "AEW"
   - "WrestleDream"

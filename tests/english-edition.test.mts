@@ -181,3 +181,8 @@ test('English grammar slips are fixed on save: «a experimental», «I’re» (m
   assert.deepEqual(englishGrammarSlips('a experimental'), ['a/an or I\'re typo']);
   assert.deepEqual(englishGrammarSlips('an experimental'), []);
 });
+
+test('Mercedes Mone always gets her accent', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('Mercedes Mone beat Mercedes Moné and Mercedes Mones'), 'Mercedes Moné beat Mercedes Moné and Mercedes Mones');
+});

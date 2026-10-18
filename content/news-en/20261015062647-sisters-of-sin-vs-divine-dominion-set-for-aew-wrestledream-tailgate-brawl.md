@@ -15,7 +15,7 @@ en_tags:
   - "Lena Kross"
 image: /content/images/syxg1ld4joilgx0h.jpg
 ---
-A new women's match has been confirmed for the AEW WrestleDream Tailgate Brawl event. The contest will feature the Sisters of Sin, consisting of Julia Hart and Skye Blue, facing off against the Divine Dominion duo of Megan Bayne and Lena Kross. This matchup was established following the events of this week's episode of AEW Dynamite, where the Triangle of Madness secured a victory over Mercedes Mone and Divine Dominion.
+A new women's match has been confirmed for the AEW WrestleDream Tailgate Brawl event. The contest will feature the Sisters of Sin, consisting of Julia Hart and Skye Blue, facing off against the Divine Dominion duo of Megan Bayne and Lena Kross. This matchup was established following the events of this week's episode of AEW Dynamite, where the Triangle of Madness secured a victory over Mercedes Moné and Divine Dominion.
 
 The current lineup for the Tailgate Brawl, scheduled for Saturday, October 17, is as follows:
 

@@ -60,4 +60,17 @@ jobs:
           git add _data/videoLinks.json
           git diff --cached --quiet && exit 0
           git commit -m "chore(player): playback check"
-          for i in 1 2 3; do git pull --rebase --autostash && git push && break; sleep 10; done
+          # videoLinks.json is rewritten whole by this check, so on a conflict with someone else's
+          # push keep OUR fresh copy on top of the latest main (incident #682) and fail loudly if it still can't push.
+          cp _data/videoLinks.json "$RUNNER_TEMP/videoLinks.json"
+          for i in 1 2 3 4; do
+            git fetch -q origin main
+            git reset -q --hard origin/main
+            cp "$RUNNER_TEMP/videoLinks.json" _data/videoLinks.json
+            git add _data/videoLinks.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "chore(player): playback check"
+            git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          echo "::error::could not push videoLinks.json"; exit 1

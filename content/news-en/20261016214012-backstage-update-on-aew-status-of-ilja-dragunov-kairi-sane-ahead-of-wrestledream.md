@@ -11,7 +11,7 @@ en_tags:
   - "Kairi Sane"
   - "AEW"
   - "WrestleDream"
-  - "Mercedes Mone"
+  - "Mercedes Moné"
 image: /content/images/ohyjwte8hrzxdokf.jpg
 ---
 According to reports, former WWE United States Champion Ilja Dragunov has officially signed with AEW after resolving his visa issues, and a recent mysterious video vignette on AEW Collision belongs to him. Meanwhile, former WWE Women's Tag Team Champion Kairi Sane has held discussions with AEW officials, but no official deal has been reached yet as the promotion prepares for the upcoming WrestleDream event in Orlando, Florida.

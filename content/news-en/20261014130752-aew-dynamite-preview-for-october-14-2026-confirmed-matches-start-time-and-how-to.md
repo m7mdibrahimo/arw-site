@@ -12,7 +12,7 @@ en_tags:
   - "Will Ospreay"
   - "Darby Allin"
   - "Kazuchika Okada"
-  - "Mercedes Mone"
+  - "Mercedes Moné"
 image: /content/images/6rmcms0t0hxdch6q.jpg
 ---
 AEW Dynamite tonight on TBS features a loaded card as the go-home show before the WrestleDream pay-per-view. Will Ospreay and Andrade El Idolo team up to face Samoa Joe and Tommaso Ciampa, while Darby Allin defends his TNT Championship against Hechicero in a Clockwork Carnage qualifier. Kazuchika Okada puts his International Championship on the line against Myron Reed with another qualifying spot at stake. Mercedes Moné teams with Megan Bayne and Lena Kross to face Thekla, Julia Hart and Skye Blue. Additional qualifiers feature Adam Copeland versus Josh Alexander, Ricochet versus Ace Austin, and Konosuke Takeshita against Brian Cage, alongside a six-man tag match with Jon Moxley, Gabe Kidd and Daniel Garcia facing Wardlow, Mark Davis and Jake Doyle, plus Britt Baker and Persephone teaming up against Dani Luna and Hyan.
