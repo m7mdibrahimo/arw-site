@@ -1,48 +1,48 @@
 {
  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-18T01:02:44.664Z"
+  "at": "2026-10-18T01:05:36.184Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:17.879Z"
+  "at": "2026-10-18T01:04:25.766Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:17.783Z"
+  "at": "2026-10-18T01:04:25.636Z"
  },
  "https://www.fightful.com/wrestling/rusev-returns-to-the-ring-at-10-16-wwe-live-in-hawaii": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:17.607Z"
+  "at": "2026-10-18T01:04:25.389Z"
  },
  "https://www.fightful.com/wrestling/update-on-kairi-and-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:17.476Z"
+  "at": "2026-10-18T01:04:25.208Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:17.181Z"
+  "at": "2026-10-18T01:04:24.800Z"
  },
  "https://www.fightful.com/wrestling/giulia-promises-more-brutality-less-rules-to-blake-monroe-in-their-street-fight-on-10-23-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:17.046Z"
+  "at": "2026-10-18T01:04:24.618Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-wants-to-beat-roman-reigns-once-he-returns-to-wwe-says-he-may-have-to-bring-the-sword-back-because-romans-got-95-family-members": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:16.784Z"
+  "at": "2026-10-18T01:04:24.254Z"
  },
  "https://www.fightful.com/wrestling/mercedes-martinez-provides-surgery-update-says-gofundme-covered-it-in-full": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T01:01:16.607Z"
+  "at": "2026-10-18T01:04:24.018Z"
  },
  "https://www.ringsidenews.com/aew-wrestledream-results-highlights-key-moments-october-17-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
