@@ -359,6 +359,8 @@ eleventyComputed:
   .hero-crumbs, .hero-crumbs a{ color:rgba(255,255,255,.75); } .hero-crumbs{ margin-bottom:16px; } .hero-crumbs a:hover{ color:var(--gold); }
   /* «دليل الاتحاد» on a federation page */
   .guide-cta{ display:inline-flex; align-items:center; gap:9px; margin-top:-8px; height:48px; padding:0 24px; border-radius:999px; background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 50%), hsl(var(--ph) var(--ps) 34%)); color:#fff; text-decoration:none; font:900 15.5px 'Cairo',sans-serif; box-shadow:0 10px 26px -8px hsl(var(--ph) var(--ps) 40% / .7); transition:transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease; }
+  .lib-hero-acts{ gap:12px; margin-top:18px; }
+  .lib-hero-acts .guide-cta{ margin-top:0; }
   .guide-cta:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -8px hsl(var(--ph) var(--ps) 40% / .85); }
   .guide-card{ display:flex; align-items:center; gap:16px; max-width:980px; margin:0 auto 26px; padding:16px 20px; border-radius:20px; text-decoration:none; color:var(--ink); background:linear-gradient(135deg, hsl(var(--ph) var(--ps) 45% / .12), transparent 70%), var(--card); border:1.5px solid hsl(var(--ph) var(--ps) 45% / .35); transition:transform .25s cubic-bezier(0.16,1,0.3,1), box-shadow .25s ease; }
   .guide-card:hover{ transform:translateY(-3px); box-shadow:0 16px 34px -14px hsl(var(--ph) var(--ps) 40% / .6); }
@@ -437,8 +439,8 @@ eleventyComputed:
     <h1 class="hero-title">عروض <bdi>{{ promo.mark }}</bdi> مترجمة<span class="u"><bdi>{{ promo.name }}</bdi></span></h1>
     <p>كل أقسام عروض <bdi>{{ promo.mark }}</bdi> في مكان واحد، اختر القسم وتصفّح عروضه من الأحدث للأقدم.</p>
     {% from "follow-btn.njk" import followBtn %}
-    <div class="arw-follow-row">{{ followBtn(libFollowKind(promo.key), promo.key, promo.mark, true) }}</div>
-    {% if promo.hasGuide %}<a class="guide-cta" href="{{ promo.guideHref }}" style="--ph:{{ promo.h }}; --ps:{{ promo.s }}%;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg><span>دليل الاتحاد</span></a>{% endif %}
+    {#- the follow button and the guide's, side by side with room between them (owner 2026-10-18: «الايقونين لازقين في بعض») -#}
+    <div class="arw-follow-row lib-hero-acts">{{ followBtn(libFollowKind(promo.key), promo.key, promo.mark, true) }}{% if promo.hasGuide %}<a class="guide-cta" href="{{ promo.guideHref }}" style="--ph:{{ promo.h }}; --ps:{{ promo.s }}%;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg><span>دليل الاتحاد</span></a>{% endif %}</div>
     {% else %}
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">مكتبة العروض<span class="u">كل اتحاد بعروضه</span></h1>
