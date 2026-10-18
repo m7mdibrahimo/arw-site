@@ -1,53 +1,58 @@
 {
+ "https://www.wrestlinginc.com/2289498/aew-wrestledream-october-17-2026-results": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-18T02:56:02.261Z"
+ },
  "https://www.fightful.com/mma/ufc-fight-night-buckley-vs-malott-results": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-10-18T02:53:01.735Z"
+  "at": "2026-10-18T02:55:04.543Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-17-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:23.603Z"
+  "at": "2026-10-18T02:54:15.941Z"
  },
  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:23.299Z"
+  "at": "2026-10-18T02:54:15.713Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:22.958Z"
+  "at": "2026-10-18T02:54:15.455Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:22.846Z"
+  "at": "2026-10-18T02:54:15.369Z"
  },
  "https://www.fightful.com/wrestling/rusev-returns-to-the-ring-at-10-16-wwe-live-in-hawaii": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:22.629Z"
+  "at": "2026-10-18T02:54:15.205Z"
  },
  "https://www.fightful.com/wrestling/update-on-kairi-and-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:22.470Z"
+  "at": "2026-10-18T02:54:15.086Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:22.113Z"
+  "at": "2026-10-18T02:54:14.814Z"
  },
  "https://www.fightful.com/wrestling/giulia-promises-more-brutality-less-rules-to-blake-monroe-in-their-street-fight-on-10-23-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:21.955Z"
+  "at": "2026-10-18T02:54:14.675Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-wants-to-beat-roman-reigns-once-he-returns-to-wwe-says-he-may-have-to-bring-the-sword-back-because-romans-got-95-family-members": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T02:51:21.637Z"
+  "at": "2026-10-18T02:54:14.390Z"
  },
  "https://www.fightful.com/wrestling/mercedes-martinez-provides-surgery-update-says-gofundme-covered-it-in-full": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -78,11 +83,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T23:07:23.701Z"
- },
- "https://www.wrestlinginc.com/2289498/aew-wrestledream-october-17-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T23:04:23.658Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-2026-preview-start-time-how-to-watch-location-10-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
