@@ -1,5 +1,15 @@
 [
   {
+    "id": 3222502267,
+    "link": "https://www.wrestlinginc.com/2287920/wwe-scotty-2-hotty-stone-cold-steve-austin-doctors-appointment/",
+    "date": "Sun, 18 Oct 2026 12:30:00 +0000",
+    "date_gmt": "2026-10-18T12:30:00.000Z",
+    "title": {
+      "rendered": "Scotty 2 Hotty Recalls Stone Cold Steve Austin Taking Him To Doctor's Appointment"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/scotty-2-hotty-recalls-stone-cold-steve-austin-taking-him-to-doctors-appointment/l-intro-1792086494.jpg"
+  },
+  {
     "id": 4497488823,
     "link": "https://www.wrestlinginc.com/2289682/aew-wrestledream-2026-hated-loved-opinion-review/",
     "date": "Sun, 18 Oct 2026 05:42:01 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Dominik Mysterio Explains Why Seth Rollins Is A Significant Figure In His WWE Career"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/dominik-mysterio-explains-why-seth-rollins-is-a-significant-figure-in-his-wwe-career/l-intro-1792078308.jpg"
-  },
-  {
-    "id": 1315167711,
-    "link": "https://www.wrestlinginc.com/2287036/aew-willow-nightingale-deals-imposter-syndrome/",
-    "date": "Sat, 17 Oct 2026 17:30:00 +0000",
-    "date_gmt": "2026-10-17T17:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Willow Nightingale Explains How She Deals With Imposter Syndrome"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-willow-nightingale-explains-how-she-deals-with-imposter-syndrome/l-intro-1792008023.jpg"
   }
 ]
