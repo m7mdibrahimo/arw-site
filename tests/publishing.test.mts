@@ -1146,6 +1146,13 @@ test("results matches left with only a «---» separator get a numbered heading"
   assert.equal(headUnheadedMatches(plain), plain);
 });
 
+test("a bare result paragraph after a finished match gets its own heading (PRODUCE Volume 5)", () => {
+  const t = "**المواجهة الأولى: نصف نهائي**\n\nفازت هايان على جوردان بليد.\n\n🏆 **الفائز:** هايان\n\nفاز ليو راش على جوناثان غريشام بالاستبعاد.\n\n**المواجهة السادسة: نزال فردي**\n\nفاز دانتي.\n\n🏆 **الفائز:** دانتي";
+  const fixed = headUnheadedMatches(t);
+  assert.match(fixed, /\*\*المواجهة الثانية\*\*\n\nفاز ليو راش/);
+  assert.match(fixed, /\*\*المواجهة الثالثة: نزال فردي\*\*/);
+});
+
 test("sweep leftovers: doubled federation, stray «The» before Arabic, Knockouts TV untouched", () => {
   assert.equal(autoFix("في عرض WWE WWE RAW القادم"), "في عرض WWE RAW القادم");
   assert.equal(autoFix("فريق The نيو ليفل ضد The Bloodline"), "فريق ذا نيو ليفل ضد The Bloodline");

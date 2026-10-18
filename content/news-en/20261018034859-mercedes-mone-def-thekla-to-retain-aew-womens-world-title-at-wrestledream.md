@@ -1,5 +1,5 @@
 ---
-title: "Mercedes Moné Def. Thekla to Retain AEW Women's World Title at WrestleDream"
+title: "Mercedes Moné Defeats Thekla to Retain AEW Women's World Title at WrestleDream"
 slug: "mercedes-mone-def-thekla-to-retain-aew-womens-world-title-at-wrestledream"
 description: "Mercedes Moné successfully defended her AEW Women's World Championship against Thekla at the 2026 AEW WrestleDream pay-per-view. This marked Moné's second…"
 federation: AEW

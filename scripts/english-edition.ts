@@ -152,6 +152,8 @@ const galleryYaml = (g?: string[]) => (g && g.length ? ["gallery:", ...g.map((x)
 /** Wrong→right spellings fixed in every English story before it is saved (INCIDENTS #385) */
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
+  // «Def.» is a results-line abbreviation, not a headline word (INCIDENTS #688)
+  [/\bDef\. (?=[A-Z])/g, "Defeats "],
   // Title Case capitalised the small word of an event name (INCIDENTS #441)
   [/\bBound For Glory\b/g, "Bound for Glory"],
   [/\bsyX\b/g, "Syx"],
@@ -181,7 +183,8 @@ export function normalizeEnglishTitle(title: string): string {
     const bare = w.replace(/^[^A-Za-z]+|[^A-Za-z.]+$/g, "");
     if (!bare) return w;
     const prev = words[i - 1] || "";
-    const edge = i === 0 || i === words.length - 1 || /[:\-–—]$/.test(prev);
+    // a word that opens a quotation is first of its phrase: «for 'The Midnight Dreamer'» (INCIDENTS #688)
+    const edge = i === 0 || i === words.length - 1 || /[:\-–—]$/.test(prev) || /^["'“‘]/.test(w);
     const lower = bare.toLowerCase();
     if (SMALL_WORDS.has(lower) && /^[A-Za-z.]+$/.test(bare) && (bare === lower || bare === lower[0].toUpperCase() + lower.slice(1))) {
       const want = edge ? lower[0].toUpperCase() + lower.slice(1) : lower;

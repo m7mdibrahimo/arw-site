@@ -199,7 +199,7 @@ test('a glossary wrestler named once whose name is nowhere in the source is bloc
 test('dual pronouns «-هما» become plural; agreeing words are left alone; no published story keeps one (INCIDENTS #463)', async () => {
   const { dualPronounsToPlural, loadNews } = await import('../scripts/news-qa.ts');
   assert.equal(dualPronounsToPlural('علاقتهما وبينهما ومنهما وعليهما ولديهما'), 'علاقتهم وبينهم ومنهم وعليهم ولديهم');
-  for (const keep of ['مهما كانت النتيجة', 'وهما يتنافسان', 'لأنهما', 'أنهما مرتبطان', 'كلاهما', 'لقبيهما'])
+  for (const keep of ['مهما كانت النتيجة', 'وهما يتنافسان', 'لأنهما', 'أنهما مرتبطان', 'كلاهما', 'لقبيهما', 'متهما إياه'])
     assert.equal(dualPronounsToPlural(keep), keep);
   const left = loadNews().filter(n => dualPronounsToPlural(n.body) !== n.body).map(n => n.file);
   assert.deepEqual(left, []);

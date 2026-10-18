@@ -186,3 +186,9 @@ test('Mercedes Mone always gets her accent', async () => {
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
   assert.equal(fixEnglishNames('Mercedes Mone beat Mercedes Moné and Mercedes Mones'), 'Mercedes Moné beat Mercedes Moné and Mercedes Mones');
 });
+
+test("a word opening a quotation is capital in a headline; «Def.» becomes «Defeats» (INCIDENTS #688)", async () => {
+  const { normalizeEnglishTitle, fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("Tommy Dreamer Posts Teaser Video for 'the Midnight Dreamer'"), "Tommy Dreamer Posts Teaser Video for 'The Midnight Dreamer'");
+  assert.equal(fixEnglishNames("Mercedes Moné Def. Thekla to Retain Title"), "Mercedes Moné Defeats Thekla to Retain Title");
+});

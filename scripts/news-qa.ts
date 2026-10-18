@@ -459,7 +459,18 @@ export function headUnheadedMatches(text: string): string {
     if (!next || next.startsWith("**") || next.startsWith("🏆")) return false;
     return lines.slice(j + 1, j + 4).some(l => l.trim().startsWith("🏆"));
   };
-  if (!lines.some((_, i) => unheaded(i))) return text;
+  // A match written as a bare result paragraph straight after a finished match («فاز ليو راش على … بالاستبعاد»
+  // between «المواجهة الرابعة» and «السادسة» in the PRODUCE Volume 5 report): same missing heading.
+  const bare = new Set<number>();
+  let prevEnded = false;
+  for (let i = 0; i < lines.length; i++) {
+    const t = lines[i].trim();
+    if (!t) continue;
+    if (t.startsWith("🏆")) { prevEnded = true; continue; }
+    if (prevEnded && /^(?:فاز|فازت|حقق|حققت)\s/.test(t)) { bare.add(i); continue; }
+    prevEnded = false;
+  }
+  if (!lines.some((_, i) => unheaded(i)) && !bare.size) return text;
   const ORDINAL = new RegExp(`^(\\*\\*المواجهة\\s+)(?:${[...AR_ORDINALS].sort((a, b) => b.length - a.length).join("|")}|\\d+)`);
   let n = 0;
   for (let i = 0; i < lines.length && n < AR_ORDINALS.length; i++) {
@@ -470,6 +481,9 @@ export function headUnheadedMatches(text: string): string {
       n++;
     } else if (unheaded(i)) {
       lines[i] = `**المواجهة ${AR_ORDINALS[n]}**\n`;
+      n++;
+    } else if (bare.has(i)) {
+      lines[i] = `**المواجهة ${AR_ORDINALS[n]}**\n\n${lines[i]}`;
       n++;
     }
   }
@@ -782,7 +796,7 @@ export function splitGluedBlocks(text: string): string {
  * About a quarter of the stories carried it (INCIDENTS #463). Words whose verb or predicate must agree with the dual
  * («أنهما ستواجهان», «وهما», «كلاهما») and dual nouns («لقبيهما») are left to the dual_form check and the editor.
  */
-const DUAL_PRONOUN_KEEP = /^(?:[وفبلك]?(?:مهما|هما)|[وفبلك]?(?:أنهما|إنهما|لكنهما|كأنهما)|ولكنهما|كلاهما|كليهما|كلتاهما|كلتيهما|وكلاهما)$/;
+const DUAL_PRONOUN_KEEP = /^(?:[وفبلك]?(?:مهما|هما)|[وفبلك]?(?:أنهما|إنهما|لكنهما|كأنهما)|ولكنهما|[وفبلك]?متهما|كلاهما|كليهما|كلتاهما|كلتيهما|وكلاهما)$/;
 const DUAL_PRONOUN_PREP = /^[وف]?(?:عل|إل|ف|لد)يهما$/;
 export function dualPronounsToPlural(text: string): string {
   if (!text) return text;

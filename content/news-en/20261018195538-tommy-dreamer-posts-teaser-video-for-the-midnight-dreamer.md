@@ -1,5 +1,5 @@
 ---
-title: "Tommy Dreamer Posts Teaser Video for 'the Midnight Dreamer'"
+title: "Tommy Dreamer Posts Teaser Video for 'The Midnight Dreamer'"
 slug: "tommy-dreamer-posts-teaser-video-for-the-midnight-dreamer"
 description: "Tommy Dreamer has shared a teaser video on social media for a new project titled 'The Midnight Dreamer'. Earlier this year in June, it was announced that…"
 federation: TNA

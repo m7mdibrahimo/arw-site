@@ -237,3 +237,9 @@ test("typos «ناججا» «إيوانف» «لتلك الدور» are correcte
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ناجج|إيوانف|لتلك الدور/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image|slug):.*$/gm, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #688: «متهم إياه» (a hal, must be accusative).
+test("«متهم إياه» becomes «متهما إياه»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بالغش، متهم إياه بأنه فاز"), "بالغش، متهما إياه بأنه فاز");
+});
