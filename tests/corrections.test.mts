@@ -218,3 +218,12 @@ test("English: an announced card must not be written as «def.» results (INCIDE
   assert.ok(checkEnglish({ title: "Full Lineup Announced for AAA Heroes Inmortales", body, tags: [] } as any, input).some(x => x.includes("def.")));
   assert.ok(!checkEnglish({ title: "Full Lineup Announced for AAA Heroes Inmortales", body: body.replace(/ def\. /g, " vs. "), tags: [] } as any, input).some(x => x.includes("def.")));
 });
+
+// INCIDENTS #684: «لم يتعافى بعد» (the verb after «لم» must lose its last letter).
+test("defective verbs after «لم» are jussive and no published story keeps the wrong form", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لم يتعافى بعد بالكامل"), "لم يتعاف بعد بالكامل");
+  assert.equal(applyCorrections("لكنه لم يأتي"), "لكنه لم يأت");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم (?:يتعافى|يبقى|يأتي|يلقى|يسعى|ينسى|يرضى|يخشى|يعطي|يمضي|يبدو|يستطيع)(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
