@@ -1966,6 +1966,24 @@ export function xAllowedFor(kind: unknown, priority: unknown, used: number, cap 
   if (kind !== "show" && kind !== "recap" && priority === "high") return used < cap - X_SHOW_RESERVE;
   return false;
 }
+/** The distinctive words of the shows whose results report («نتائج عرض …») was still being updated in the last `hours`:
+ *  «AEW WrestleDream» → wrestledream. A story naming one of them can't be called «old» (the spoiler shield). */
+export function recentEventWords(items: any[], now = Date.now(), hours = 12): string[] {
+  const generic = new Set(["live", "night", "show", "results", "special", "edition", "episode", "updates", "with", "from", "wrestling", "championship"]);
+  const out = new Set<string>();
+  for (const it of items || []) {
+    const title = String(it?.title || "");
+    if (!/^نتائج\s+(?:عرض|حلقة)/.test(title)) continue;
+    const at = Math.max(Date.parse(it?.date || "") || 0, Date.parse(it?.published_at || "") || 0);
+    if (!(now - at < hours * 3600_000)) continue;
+    for (const w of title.toLowerCase().match(/[a-z][a-z'-]{3,}/g) || []) if (!generic.has(w)) out.add(w);
+  }
+  return [...out];
+}
+export function namesRecentEvent(title: unknown, words: string[]): boolean {
+  const low = String(title || "").toLowerCase();
+  return words.some(w => new RegExp(`(?<![a-z])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![a-z])`).test(low));
+}
 async function xActionsLast24h(env: Env): Promise<number[]> {
   try {
     const list = JSON.parse((await env.PUSH_KV?.get("x_actions_24h")) || "[]");
@@ -2601,6 +2619,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   const toProcess = (preferNotStarted ? [...notStarted, ...catchUpOnly] : [...catchUpOnly, ...notStarted])
     .slice(0, MAX_EXPENSIVE_PER_TICK);
 
+  const recentEvents = recentEventWords(items);
   for (const { item, freshFrom, key, tgDone, fbDone, igDone, xDone } of toProcess) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= MAX_PLATFORM_ACTIONS_PER_TICK) break;
 
@@ -2632,7 +2651,10 @@ export async function runWatcherPoll(env: Env): Promise<void> {
       // The title's words say «result» but the meaning check read the finished text and found the
       // event is over a week old («… when he won the AEW title» — last April): not a spoiler.
       // Only this exact, stated reason overrules the words (INCIDENTS #107).
-      const statedOld = item.social_spoiler === false && item.social_spoiler_age === "old";
+      // …never when the title names a show whose results report was still being updated in the last 12 hours: the writer
+      // called the Hangman/Brodido trios win at WrestleDream «old» two hours after the show (owner 2026-10-18: «في حاجات
+      // كتير فيها حرق للعروض زي عرض aew رسل دريم عمال يتنشر في منصات التواصل»)
+      const statedOld = item.social_spoiler === false && item.social_spoiler_age === "old" && !namesRecentEvent(item.title, recentEvents);
       if (statedOld) why = "";
       let lead = "";
       // Second opinion written with the story: an AI read of the finished title + opening for

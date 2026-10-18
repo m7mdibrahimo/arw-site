@@ -5129,3 +5129,27 @@ test('TikTok goes through Buffer: its channel is found by itself, and nothing is
   assert.match(src, /assets: \[\{ video: \{ url: \$videoUrl/);
   assert.match(src, /if \(channel\) return postVideoToTikTokViaBuffer\(env, channel, data\);/);
 });
+
+test('a result from a show that ended hours ago is never «old»: WrestleDream\'s trios result reached Telegram and Facebook (owner 2026-10-18)', async () => {
+  // «في حاجات كتير فيها حرق للعروض زي عرض aew رسل دريم عمال يتنشر في منصات التواصل»
+  const { recentEventWords, namesRecentEvent } = await import('../worker/src/index');
+  const now = Date.parse('2026-10-18T06:30:00Z');
+  const items = [
+    { title: 'نتائج عرض AEW WrestleDream (17 أكتوبر 2026): ويل أوسبراي يحتفظ ببطولة AEW العالمية', date: '2026-10-18T04:17:33Z', published_at: '2026-10-17T23:24:27Z' },
+    { title: 'نتائج عرض WWE NXT (7 أكتوبر 2026)', date: '2026-10-08T03:00:00Z' },
+    { title: 'خبر عادي عن Dynamite', date: '2026-10-18T05:00:00Z' },
+  ];
+  const words = recentEventWords(items, now);
+  assert.deepEqual(words, ['wrestledream']);
+  assert.equal(namesRecentEvent('هانغمان بيدج وبروديدو يفوز بنزال الأفضل من ثلاث جولات في عرض AEW WrestleDream ويحصد بطولة العالم للثلاثي', words), true);
+  assert.equal(namesRecentEvent('توني خان يتحدث عن إمكانية تعاقد AEW مع كايري ساني', words), false);
+  const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
+  assert.match(src, /const statedOld = item\.social_spoiler === false && item\.social_spoiler_age === "old" && !namesRecentEvent\(item\.title, recentEvents\);/);
+  // the writer: a live report counts from its last update, not from when it went up
+  const { recentShowNames } = await import('../scripts/fightful-watcher.ts');
+  const os = await import('node:os'); const path = await import('node:path');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-'));
+  const iso = (h: number) => new Date(Date.now() - h * 3600_000).toISOString();
+  fs.writeFileSync(path.join(dir, '20261017230000-x.md'), `---\ntitle: "نتائج"\ndate: ${iso(2)}\npublished_at: ${iso(7)}\nsource_title: "AEW WrestleDream Results 10/17/26 W/ Live Updates"\n---\n`);
+  assert.ok(recentShowNames(6, dir).some(n => /wrestledream/i.test(n)), recentShowNames(6, dir).join(','));
+});

@@ -2529,7 +2529,11 @@ export function recentShowNames(hours: number = 24, newsDir: string = NEWS_DIR):
     try {
       const content = fs.readFileSync(path.join(newsDir, file), "utf-8");
       const published = content.match(/^published_at:\s*(\S+)/m);
-      const when = published ? Date.parse(published[1]) : getFrontmatterDateMs(content);
+      // a live results report is first published when the show starts and its date moves with every update: the show
+      // ended at its last update. WrestleDream's report went up at 23:24 and was last updated at 04:17; the Hangman
+      // story at 06:25 was 7 hours after the first and «old», so its result reached Telegram and Facebook (owner 2026-10-18)
+      const dated = content.match(/^date:\s*(\S+)/m);
+      const when = published || dated ? Math.max(published ? Date.parse(published[1]) || 0 : 0, dated ? Date.parse(dated[1]) || 0 : 0) : getFrontmatterDateMs(content);
       if (!(when >= cutoff)) continue;
       const src = content.match(/^source_title:\s*(.+)$/m);
       if (!src) continue;
