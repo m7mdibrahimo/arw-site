@@ -1,43 +1,48 @@
 {
- "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (179 حرف) أطول بكثير من المصدر (45 حرف) — حشو",
+ "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream": {
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:40.681Z"
+  "at": "2026-10-18T04:31:39.400Z"
+ },
+ "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-10-18T04:31:39.237Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-signs-with-all-elite-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:30.581Z"
+  "at": "2026-10-18T04:31:29.172Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-17-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:30.190Z"
+  "at": "2026-10-18T04:31:28.824Z"
  },
  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:29.851Z"
+  "at": "2026-10-18T04:31:28.520Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:29.472Z"
+  "at": "2026-10-18T04:31:28.180Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:29.349Z"
+  "at": "2026-10-18T04:31:28.066Z"
  },
  "https://www.fightful.com/wrestling/rusev-returns-to-the-ring-at-10-16-wwe-live-in-hawaii": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:29.104Z"
+  "at": "2026-10-18T04:31:27.850Z"
  },
  "https://www.fightful.com/wrestling/update-on-kairi-and-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T04:28:28.926Z"
+  "at": "2026-10-18T04:31:27.690Z"
  },
  "https://www.wrestlinginc.com/2289671/aew-wrestledream-2026-hangman-page-brodido-trios-titles-swerve-strickland-new-level": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T01:44:55.998Z"
- },
- "https://www.wrestlinginc.com/2271483/wwe-raw-september-28-bloodline-la-knight-stephanie-vaquer-more": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-09-29T01:36:09.534Z"
  }
 }
