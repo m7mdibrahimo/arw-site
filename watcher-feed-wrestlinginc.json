@@ -1,5 +1,25 @@
 [
   {
+    "id": 4783198809,
+    "link": "https://www.wrestlinginc.com/2289673/aew-wrestledream-2026-jon-moxley-mark-davis-continental-title-retain/",
+    "date": "Sun, 18 Oct 2026 03:41:10 +0000",
+    "date_gmt": "2026-10-18T03:41:10.000Z",
+    "title": {
+      "rendered": "Jon Moxley Outlasts Mark Davis, Retains AEW Continental Title At WrestleDream 2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jon-moxley-outlasts-mark-davis-retains-aew-continental-title-at-wrestledream-2026/l-intro-1792294748.jpg"
+  },
+  {
+    "id": 4375156975,
+    "link": "https://www.wrestlinginc.com/2289672/aew-wrestledream-2026-wwe-ilja-dragunov-all-elite-debut/",
+    "date": "Sun, 18 Oct 2026 03:39:36 +0000",
+    "date_gmt": "2026-10-18T03:39:36.000Z",
+    "title": {
+      "rendered": "Former WWE Star Ilja Dragunov Is All Elite, Debuts At AEW WrestleDream 2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-ilja-dragunov-is-all-elite-debuts-at-aew-wrestledream-2026/l-intro-1792294433.jpg"
+  },
+  {
     "id": 1369627169,
     "link": "https://www.wrestlinginc.com/2289671/aew-wrestledream-2026-hangman-page-brodido-trios-titles-swerve-strickland-new-level/",
     "date": "Sun, 18 Oct 2026 03:17:05 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Scotty 2 Hotty Recalls Worm Dance Becoming Popular With The WWE Audience"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/scotty-2-hotty-recalls-worm-dance-becoming-popular-with-the-wwe-audience/l-intro-1791933498.jpg"
-  },
-  {
-    "id": 1659274601,
-    "link": "https://www.wrestlinginc.com/2286138/aew-wwe-njpw-david-finlay-ambitions/",
-    "date": "Sat, 17 Oct 2026 15:00:00 +0000",
-    "date_gmt": "2026-10-17T15:00:00.000Z",
-    "title": {
-      "rendered": "AEW's David Finlay Recalls WWE Ambitions Prior To NJPW Run"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-david-finlay-recalls-wwe-ambitions-prior-to-njpw-run/l-intro-1791931873.jpg"
-  },
-  {
-    "id": 926363757,
-    "link": "https://www.wrestlinginc.com/2286191/wwe-jevon-evans-aspects-game-intent-improving/",
-    "date": "Sat, 17 Oct 2026 14:30:00 +0000",
-    "date_gmt": "2026-10-17T14:30:00.000Z",
-    "title": {
-      "rendered": "WWE Star Je'Von Evans Explains Aspects Of His Game He's Intent On Improving"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-star-jevon-evans-explains-aspects-of-his-game-hes-intent-on-improving/l-intro-1791944829.jpg"
   }
 ]

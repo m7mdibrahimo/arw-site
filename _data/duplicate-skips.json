@@ -1,14 +1,4 @@
 {
-  "https://www.ringsidenews.com/shiloh-hill-reveals-his-stanford-masters-focused-stopping-ai-wiping-out-humanity/": {
-    "matchedFile": "20261003213120-شايلو-هيل-يكشف-عن-عيشه-في-مجمع-مقطورات-أحاول-أن-أكون-ذكيا-في-إدارة-أموالي.md",
-    "reason": "الخبر الجديد مأخوذ من نفس اللقاء الإذاعي (بودكاست بولي راي) الذي نُشر منه تفاصيل دراسة شايلو هيل لدرجة الماجستير من جامعة ستانفورد في الخبر رقم 0، وهو مجرد تفصيلة إضافية من نفس المقابلة وليست خبراً جديداً.",
-    "at": "2026-10-03T20:13:20.936Z"
-  },
-  "https://www.ringsidenews.com/first-match-revealed-chris-jerichos-rock-n-wrestling-rager-sea/": {
-    "matchedFile": "20261003235555-كريس-جيريكو-يتحالف-مع-ذا-هارديز-في-رحلة-rock-n-wrestling-rager-at-sea.md",
-    "reason": "الخبر الجديد يعرض نفس الإعلان تماماً عن تحالف كريس جيريكو وذا هارديز في رحلة Rock N Wrestling Rager At Sea ونزالهم الرئيسي ضد بليك كريستيان وجاي ليثال ونيك واين، ولا يمثل تطوراً جديداً.",
-    "at": "2026-10-03T21:02:31.107Z"
-  },
   "https://www.ringsidenews.com/another-match-added-october-3-aew-collision-just-hours-before-show/": {
     "matchedFile": "20261004000404-فريق-ديث-رايدرز-سينافس-في-عرض-aew-collision.md",
     "reason": "الخبر الجديد يغطي نفس إعلان مواجهة فريق ديث رايدرز ضد بانغ بانغ غانغ في عرض AEW Collision والتي تم الإعلان عنها بالفعل في الخبر رقم 0 بنفس التفاصيل.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261018060446-إيليا-دراغونوف-يسجل-ظهوره-الأول-رسميا-في-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي نفس حدث ظهور إيليا دراغونوف الأول وانضمامه رسميا في عرض AEW WrestleDream والإعلان عنه من قبل توني خان، وهو نفس الحدث المغطى في الخبر رقم 0.",
     "at": "2026-10-18T03:13:01.235Z"
+  },
+  "https://www.wrestlinginc.com/2289672/aew-wrestledream-2026-wwe-ilja-dragunov-all-elite-debut/": {
+    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
+    "reason": "الخبر الجديد يتحدث عن ظهور إيليا دراغونوف في عرض AEW WrestleDream 2026، وهو حدث تم تغطيته بالفعل ضمن تقرير نتائج العرض المنشور مسبقاً.",
+    "at": "2026-10-18T03:45:25.607Z"
+  },
+  "https://www.wrestlinginc.com/2289673/aew-wrestledream-2026-jon-moxley-mark-davis-continental-title-retain/": {
+    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
+    "reason": "الخبر الجديد يتناول نتيجة نزال ضمن عرض AEW WrestleDream، وهو نفس العرض الذي تم تغطية نتائجه في الخبر رقم 0.",
+    "at": "2026-10-18T03:45:39.568Z"
   }
 }
