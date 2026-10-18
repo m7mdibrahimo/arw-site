@@ -1,5 +1,15 @@
 [
   {
+    "id": 3177410639,
+    "link": "https://www.wrestlinginc.com/2289662/aew-wrestledream-2026-nick-wayne-chris-jericho-second-win/",
+    "date": "Sun, 18 Oct 2026 01:12:09 +0000",
+    "date_gmt": "2026-10-18T01:12:09.000Z",
+    "title": {
+      "rendered": "Nick Wayne Scores Second Win Over Chris Jericho At AEW WrestleDream 2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/nick-wayne-scores-second-win-over-chris-jericho-at-aew-wrestledream-2026/l-intro-1792285843.jpg"
+  },
+  {
     "id": 2877844422,
     "link": "https://www.wrestlinginc.com/2289660/aew-wrestledream-2026-mercedes-mone-thekla-womens-world-title/",
     "date": "Sun, 18 Oct 2026 00:55:02 +0000",
@@ -7,7 +17,7 @@
     "title": {
       "rendered": "Mercedes Mone Defeats Thekla, Retains AEW Women's World Title At WrestleDream 2026"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/mercedes-mon-defeats-thekla-retains-aew-womens-world-title-at-wrestledream-2026/l-intro-1792284686.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wrestledream-2026-mercedes-mone-thekla-womens-world-title/l-intro-1792285538.jpg"
   },
   {
     "id": 1861174393,
@@ -188,15 +198,5 @@
       "rendered": "Rey Fenix Retains AAA Cruiserweight Title After DQ Finish On WWE SmackDown"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-rey-fenix-aaa-cruiserweight-title-dq-finish-ricky-saints/l-intro-1792207042.jpg"
-  },
-  {
-    "id": 4421936450,
-    "link": "https://www.wrestlinginc.com/2289470/wwe-smackdown-r-truth-injury-damian-priest-referee-stoppage/",
-    "date": "Sat, 17 Oct 2026 01:20:24 +0000",
-    "date_gmt": "2026-10-17T01:20:24.000Z",
-    "title": {
-      "rendered": "R-Truth Appears To Suffer Injury On WWE SmackDown, Match Ends By Referee Stoppage"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/r-truth-appears-to-suffer-injury-on-wwe-smackdown-match-ends-by-referee-stoppage/l-intro-1792199968.jpg"
   }
 ]

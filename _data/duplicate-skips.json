@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/jody-threat-explains-why-she-asked-for-her-tna-release/": {
-    "matchedFile": "20261003010356-جودي-ثريت-توضح-سبب-طلبها-مغادرة-اتحاد-tna.md",
-    "reason": "الخبر الجديد يغطي نفس التصريحات التي أدلت بها جودي ثريت حول أسباب طلبها مغادرة اتحاد TNA ورغبتها في الذهاب إلى اليابان، وهو نفس موضوع الخبر المنشور مسبقاً من مصدر آخر.",
-    "at": "2026-10-03T15:35:46.036Z"
-  },
   "https://www.fightful.com/wrestling/brock-lesnar-gets-inducted-into-minnesota-m-club-hall-of-fame/": {
     "matchedFile": "20261003103753-إدراج-بروك-ليسنر-في-قاعة-مشاهير-جامعة-مينيسوتا-بعد-اعتزاله-في-wwe.md",
     "reason": "الخبر الجديد يتحدث عن نفس حدث إدراج بروك ليسنر في قاعة مشاهير جامعة مينيسوتا (M Club Hall of Fame) الذي أقيم في 2 أكتوبر وتم تغطيته بالفعل في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يغطي نتيجة نزال ضمن عرض AEW WrestleDream، وهو حدث تم تغطية نتائجه بالفعل في الخبر رقم 0.",
     "at": "2026-10-18T01:01:40.689Z"
+  },
+  "https://www.wrestlinginc.com/2289662/aew-wrestledream-2026-nick-wayne-chris-jericho-second-win/": {
+    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
+    "reason": "الخبر الجديد يتناول تفاصيل نزال محدد جرى ضمن عرض AEW WrestleDream، وهو العرض الذي تم تغطية نتائجه بالكامل في الخبر رقم 0.",
+    "at": "2026-10-18T01:16:33.655Z"
   }
 }
