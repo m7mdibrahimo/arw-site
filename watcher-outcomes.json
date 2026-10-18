@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/exodus-pro-heat-of-the-moment-results-10-16": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-18T20:40:38.914Z"
+ },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:25.347Z"
+  "at": "2026-10-18T20:40:23.849Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:25.226Z"
+  "at": "2026-10-18T20:40:23.736Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:24.994Z"
+  "at": "2026-10-18T20:40:23.518Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:24.275Z"
+  "at": "2026-10-18T20:40:22.854Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:24.047Z"
+  "at": "2026-10-18T20:40:22.637Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-i-cant-say-when-or-where-but-i-know-timeless-toni-storm-will-be-back-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:23.867Z"
+  "at": "2026-10-18T20:40:22.465Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-very-intrigued-by-possibility-of-kairi-appearing-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:23.590Z"
+  "at": "2026-10-18T20:40:22.201Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-we-say-that-aew-is-where-the-best-wrestle-how-couldnt-i-belong-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T20:33:23.409Z"
+  "at": "2026-10-18T20:40:22.025Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-i-feel-the-air-in-a-certain-environment-gets-thinner-i-need-to-breathe": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-30T12:26:04.377Z"
- },
- "https://www.fightful.com/wrestling/keanu-carver-yall-gonna-sound-dumb-as-sht-in-a-month": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-30T05:31:58.382Z"
  }
 }
