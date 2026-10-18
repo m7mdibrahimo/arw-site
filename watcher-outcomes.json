@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kevin-owens-explains-why-he-made-nxt-ring-return-seven-years": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-10-18T15:16:39.189Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T21:18:04.727Z"
- },
- "https://www.fightful.com/wrestling/331089-pac-wwe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T21:07:29.677Z"
  }
 }
