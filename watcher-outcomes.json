@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/andrade-exposes-fake-account-pretending-him": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-18T16:47:52.834Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-30T01:29:55.181Z"
- },
- "https://www.wrestlinginc.com/2271578/wwe-nxt-september-29-nxt-championship-womens-north-american-championship-on-line-more": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-09-30T01:04:50.992Z"
  }
 }
