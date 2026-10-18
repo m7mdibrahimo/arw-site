@@ -1,53 +1,53 @@
 {
  "https://www.fightful.com/wrestling/chris-sabin-recalls-the-motor-city-machine-guns-playing-a-big-part-in-tna-signing-the-young-bucks": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-18T15:27:42.818Z"
+  "at": "2026-10-18T15:30:45.529Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:28.245Z"
+  "at": "2026-10-18T15:30:31.889Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:27.995Z"
+  "at": "2026-10-18T15:30:31.640Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-i-cant-say-when-or-where-but-i-know-timeless-toni-storm-will-be-back-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:27.801Z"
+  "at": "2026-10-18T15:30:31.443Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-very-intrigued-by-possibility-of-kairi-appearing-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:27.500Z"
+  "at": "2026-10-18T15:30:31.137Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-we-say-that-aew-is-where-the-best-wrestle-how-couldnt-i-belong-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:27.305Z"
+  "at": "2026-10-18T15:30:30.940Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-i-feel-the-air-in-a-certain-environment-gets-thinner-i-need-to-breathe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:26.893Z"
+  "at": "2026-10-18T15:30:30.523Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:26.637Z"
+  "at": "2026-10-18T15:30:30.269Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:26.448Z"
+  "at": "2026-10-18T15:30:30.081Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-signs-with-all-elite-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T15:27:26.080Z"
+  "at": "2026-10-18T15:30:29.706Z"
  },
  "https://www.ringsidenews.com/kevin-owens-explains-why-he-made-nxt-ring-return-seven-years": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
