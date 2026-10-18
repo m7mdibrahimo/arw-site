@@ -260,3 +260,13 @@ test("Ciampa TNT title and Dreamer's exit agreement match the sources (INCIDENTS
   assert.ok(!/AEW القارية/.test(read("20261018203000-")) && /بطولة TNT/.test(read("20261018203000-")));
   assert.ok(/كارلوس سيلفا/.test(read("20261018195538-")) && !/اتفاق ودي مع سكوت دي أمور/.test(read("20261018195538-")));
 });
+
+// INCIDENTS #691: Hornswoggle was written three ways («هورن سواغل» / «هورنسوغل» / «هورنسواغل»).
+test("Hornswoggle has one spelling in the glossary, corrections and stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Hornswoggle"], "هورنسواغل");
+  assert.equal(applyCorrections("تقيأ عليه هورن سواغل ثم هورنسوغل"), "تقيأ عليه هورنسواغل ثم هورنسواغل");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /هورن سواغل|هورنسوغل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
