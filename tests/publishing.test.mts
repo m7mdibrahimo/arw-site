@@ -3503,7 +3503,9 @@ test('OK.ru is marked «متعدد الجودات»; StreamHG is an ordinary ser
   assert.match(groups, /it\.site === "StreamHG" \? \{ anyQuality: true \} : \{ multi: true \}/);
   const player = fs.readFileSync('assets/post-player.js', 'utf-8');
   assert.match(player, /function multi\(u\) \{ return \/\(\^\|\\\.\)ok\\\.ru\$\/i/);
-  assert.match(player, /'متعدد الجودات · بدون إعلانات', true\);\n\s*p\.classList\.add\('is-mq'\); p\.dataset\.mq = '1';/);
+  assert.match(player, /'متعدد الجودات', true\);\n\s*p\.classList\.add\('is-mq'\); p\.dataset\.mq = '1';/);
+  // «شيل كلمة بدون اعلانات في السيرفر المميز من المشاهدة والتحميل» (owner 2026-10-18)
+  assert.doesNotMatch(player, /'متعدد الجودات · بدون إعلانات'|'مباشر وسريع بدون إعلانات'|'تحميل مباشر وسريع، بدون إعلانات'/);
   assert.match(fs.readFileSync('pages/premium.njk', 'utf-8'), /<b>سيرفر خاص متعدد الجودات<\/b>/);
 });
 

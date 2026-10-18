@@ -519,8 +519,8 @@
         var code = enc(u);
         if (!code) return;
         if (prem) {
-          // the premium server: Google Drive's player, every quality in its settings, no ads
-          var p = row(code, list.length > 1 ? 'سيرفر مميز ' + (i + 1) : 'سيرفر مميز', '', 'متعدد الجودات · بدون إعلانات', true);
+          // the premium server: Google Drive's player, every quality in its settings («بدون إعلانات» left out — owner 2026-10-18)
+          var p = row(code, list.length > 1 ? 'سيرفر مميز ' + (i + 1) : 'سيرفر مميز', '', 'متعدد الجودات', true);
           p.classList.add('is-mq'); p.dataset.mq = '1';
           frag.appendChild(p);
         }
@@ -554,7 +554,7 @@
       var btn = el('button', 'quality-btn' + (prem ? ' is-prem' : ''), '<span class="quality-icon">' + (prem ? CROWN : DL) + '</span><span class="quality-label"></span><span class="quality-sub"></span>');
       btn.type = 'button'; btn.setAttribute('data-tier', prem ? 'prem' : 'high');
       btn.querySelector('.quality-label').textContent = prem ? 'تحميل مميز' : 'تحميل العرض';
-      btn.querySelector('.quality-sub').textContent = prem ? 'مباشر وسريع بدون إعلانات' : 'كل الجودات';
+      btn.querySelector('.quality-sub').textContent = prem ? 'مباشر وسريع' : 'كل الجودات';
       if (prem) grid.insertBefore(btn, grid.firstChild); else grid.appendChild(btn);
       var modal = el('div', 'dl-modal-backdrop');
       modal.id = id;
@@ -570,7 +570,7 @@
         a.querySelector('img').src = st.logo;
         a.querySelector('img').alt = st.name;
         a.querySelector('.dl-site-name').textContent = st.name || 'رابط التحميل';
-        a.querySelector('.dl-site-quality').textContent = prem ? 'تحميل مباشر وسريع، بدون إعلانات' : 'اضغط هنا للتحميل';
+        a.querySelector('.dl-site-quality').textContent = prem ? 'تحميل مباشر وسريع' : 'اضغط هنا للتحميل';
         listEl.appendChild(a);
       });
       document.body.appendChild(modal);
