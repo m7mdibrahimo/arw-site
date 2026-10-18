@@ -49,11 +49,6 @@
   "retry": false,
   "at": "2026-10-18T15:15:09.613Z"
  },
- "https://www.wrestlinginc.com/2288250/eric-bischoff-admits-wwe-hofer-hulk-hogan-lost-sight-terry-bollea": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-18T15:07:11.565Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-from-gatineau-quebec-canada-10-17": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
