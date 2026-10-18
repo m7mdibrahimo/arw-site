@@ -3785,12 +3785,18 @@
     "publishedAt": 1792303319089,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 17.10.2026 مترجم",
-    "lastAttempt": 1792303329179,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792306733369,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
