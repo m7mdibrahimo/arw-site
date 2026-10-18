@@ -391,3 +391,12 @@ test('Women\'s Intercontinental, Ole Anderson, Doyle and Sisters of Sin spelling
   assert.match(applyCorrections('وسبق لواردلو ودويلي أن تعاونا'), /ودويل /);
   assert.match(applyCorrections('فريق سسترز أوف سين'), /سيسترز أوف سين/);
 });
+
+// INCIDENTS #680: «ترقب جماهيريدائم» (two words run together) was published.
+test('glued_arabic_words blocks two Arabic words run together', () => {
+  assert.ok(BLOCKING_QA_CODES.includes('glued_arabic_words'));
+  const issues = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'وسط ترقب جماهيريدائم ' + 'كلام '.repeat(80));
+  assert.ok(issues.some(i => i.code === 'glued_arabic_words'));
+  const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'وسط ترقب جماهيري دائم ' + 'كلام '.repeat(80));
+  assert.ok(!ok.some(i => i.code === 'glued_arabic_words'));
+});
