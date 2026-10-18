@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288250/eric-bischoff-admits-wwe-hofer-hulk-hogan-lost-sight-terry-bollea": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-18T15:07:11.565Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T21:07:29.677Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-9-28-2026-stephanie-vaquer-appears-bloodline-calls-out-946-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T20:03:01.417Z"
  }
 }
