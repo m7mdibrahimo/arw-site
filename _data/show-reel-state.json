@@ -3780,7 +3780,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261018084113-lucha-libre-aaa-17-10-2026": {
     "publishedAt": 1792303319089,
