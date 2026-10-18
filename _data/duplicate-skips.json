@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2276628/aew-collision-results-october-3-2026-kofi-aew-singles-debut/": {
-    "matchedFile": "20261003060424-كوفي-يواجه-لي-موريارتي-وجوليا-هارت-تعود-للحلبة-ضمن-عرض-aew-collision-الليلة.md",
-    "reason": "الخبر الجديد يغطي نفس تفاصيل وبطاقة نزالات عرض AEW Collision الليلة والتي تم نشرها مسبقاً في الأخبار السابقة، حيث يتطرق لنفس المباريات المعلنة مثل نزال كوفي ولي موريارتي ونزال جوليا هارت وغيرها دون وجود تطور أو حدث جديد كلياً.",
-    "at": "2026-10-03T23:03:48.501Z"
-  },
   "https://www.ringsidenews.com/former-ecw-wrestler-metal-maniac-jeff-miller-passes-away/": {
     "matchedFile": "20261004021602-وفاة-المصارع-السابق-جيف-ميلر-المعروف-بلقب-ميتال-مانياك.md",
     "reason": "الخبر الجديد يعلن عن نفس وفاة المصارع جيف ميلر (Metal Maniac) والتي سبق نشرها في الخبر رقم 0 من نفس المصدر (نادي كوليفلاور ألي) وبنفس التفاصيل الأساسية للحدث.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة AEW العالمية في عرض AEW WrestleDream الذي تم ذكره وتغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-18T04:23:43.733Z"
+  },
+  "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream/": {
+    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
+    "reason": "الخبر الجديد يغطي تفاصيل نزال احتفاظ ويل أوسبراي ببطولة AEW العالمية في عرض AEW WrestleDream، وهو نفس الحدث والنتيجة المغطاة مسبقاً في تقرير نتائج عرض AEW WrestleDream رقم 0.",
+    "at": "2026-10-18T04:28:48.703Z"
   }
 }
