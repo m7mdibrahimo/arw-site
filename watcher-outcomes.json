@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2288405/wwe-liv-morgan-favorite-opponents-dream-matches": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-18T16:32:41.519Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-09-30T01:04:50.992Z"
- },
- "https://www.fightful.com/wrestling/331108-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T23:27:50.747Z"
  }
 }
