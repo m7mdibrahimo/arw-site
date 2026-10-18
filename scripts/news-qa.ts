@@ -245,9 +245,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -361,6 +361,17 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     if (!/^\*\*(?:المواجهة|الحدث)/.test(block) || !/الفائز|النتيجة:/.test(block)) continue;
     const m = block.match(/(?:^|\n|\.\s|،\s)(?:تواجه|يواجه)\s+(?!ال)[ء-ي]+(?:\s+[ء-ي]+){0,2}\s+و(?:داميان|[ء-ي]{3,})[^\n.]{0,40}\s+في\s+نزال/);
     if (m) { issues.push({ code: "result_present_tense", severity: "error", field: "body", message: "نزال انتهى مكتوب بالمضارع («تواجه … وداميان بريست») — اكتبه بالماضي: «واجه فلان فلان»", excerpt: m[0].trim().slice(0, 80) }); break; }
+  }
+
+  // «نزال فردي» above «الفائز: فريق موتور سيتي ماشين غانز» — a tag match labelled as a singles match
+  // (INCIDENTS #672). A singles winner is never «فريق …».
+  for (const block of (body || "").split(/\n(?=\*\*(?:المواجهة|الحدث))/)) {
+    const head = block.match(/^\*\*(?:المواجهة|الحدث)[^\n]*?:\s*([^\n]*)\*\*/);
+    const win = block.match(/الفائز(?:ة)?:\*{0,2}\s*([^\n]+)/);
+    if (head && win && /نزال فردي/.test(head[1]) && /^فريق\s/.test(win[1].trim())) {
+      issues.push({ code: "singles_label_team_winner", severity: "error", field: "body", message: "المواجهة مكتوبة «نزال فردي» والفائز «فريق …» — النزال فرق، صحح طبيعة المواجهة من سطر المصدر", excerpt: head[1].slice(0, 60) });
+      break;
+    }
   }
 
   // A weekly show on a date that isn't its day: «AEW Dynamite يوم الثامن والعشرين من سبتمبر»

@@ -143,3 +143,10 @@ test("«Lighting Match» (source typo) becomes «Lightning Match» (INCIDENTS #6
   assert.equal(applyCorrections("**المواجهة الثانية: نزال سريع (Lighting Match)**"), "**المواجهة الثانية: نزال سريع (Lightning Match)**");
   assert.equal(applyCorrections("Lightning Match"), "Lightning Match");
 });
+
+test("«نزال فردي» above a «الفائز: فريق …» line is blocked (INCIDENTS #672)", () => {
+  const bad = "نتائج عرض.\n\n**المواجهة الرابعة: نزال فردي**\n\nحقق فريق موتور سيتي ماشين غانز الفوز على فريق إف تي آر.\n\n🏆 **الفائز:** فريق موتور سيتي ماشين غانز";
+  assert.ok(checkArticle("نتائج عرض AEW WrestleDream", bad).some((i) => i.code === "singles_label_team_winner"));
+  assert.ok(!checkArticle("نتائج عرض AEW WrestleDream", bad.replace("نزال فردي", "نزال فرق")).some((i) => i.code === "singles_label_team_winner"));
+  assert.ok(!checkArticle("نتائج عرض AEW WrestleDream", bad.replace("فريق موتور", "إدي إدواردز").replace("**الفائز:** فريق", "**الفائز:**")).some((i) => i.code === "singles_label_team_winner"));
+});
