@@ -5196,18 +5196,6 @@
     "renderedAt": 1792302988863
   },
   {
-    "videoUrl": "/videos/reel-20261018134522-ufc-fight-night-291-buckley-vs.mp4",
-    "filename": "reel-20261018134522-ufc-fight-night-291-buckley-vs.mp4",
-    "title": "عرض يو اف سي فايت نايت 17.10.2026 مترجم",
-    "secondaryTitle": "UFC Fight Night 291: Buckley vs. Malott",
-    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261018134522-ufc-fight-night-291-buckley-vs",
-    "kind": "show",
-    "slug": "20261018134522-ufc-fight-night-291-buckley-vs",
-    "image": "/content/images/g725d3dyqtaq92g3.jpg",
-    "renderedAt": 1792320538254
-  },
-  {
     "videoUrl": "/videos/reel-20261002175116-roh-01-10-2026.mp4",
     "filename": "reel-20261002175116-roh-01-10-2026.mp4",
     "title": "عرض ار او اتش اون اونر كلوب 01.10.2026 مترجم",
@@ -5217,7 +5205,7 @@
     "kind": "show",
     "slug": "20261002175116-roh-01-10-2026",
     "image": "/content/images/v46yh9epbolvo9sh.jpg",
-    "renderedAt": 1792320634458
+    "renderedAt": 1792321289245
   },
   {
     "videoUrl": "/videos/reel-20261003125018-cmll-martes-de-glamour-29-09-2.mp4",
@@ -5229,7 +5217,7 @@
     "kind": "show",
     "slug": "20261003125018-cmll-martes-de-glamour-29-09-2",
     "image": "/content/images/p3rg57ishpz8rvuk.jpg",
-    "renderedAt": 1792320732099
+    "renderedAt": 1792321356185
   },
   {
     "videoUrl": "/videos/reel-20261003125445-wwe-smackdown-02-10-2026.mp4",
@@ -5241,7 +5229,7 @@
     "kind": "show",
     "slug": "20261003125445-wwe-smackdown-02-10-2026",
     "image": "/content/images/e97m38jbg7nzzika.jpg",
-    "renderedAt": 1792320829322
+    "renderedAt": 1792321422368
   },
   {
     "videoUrl": "/videos/reel-20261004102041-aew-collision-03-10-2026.mp4",
@@ -5253,7 +5241,7 @@
     "kind": "show",
     "slug": "20261004102041-aew-collision-03-10-2026",
     "image": "/content/images/4ffuvg6zu944iix7.jpg",
-    "renderedAt": 1792320926048
+    "renderedAt": 1792321488432
   },
   {
     "videoUrl": "/videos/reel-20261004114942-lucha-libre-aaa-03-10-2026.mp4",
@@ -5265,7 +5253,7 @@
     "kind": "show",
     "slug": "20261004114942-lucha-libre-aaa-03-10-2026",
     "image": "/content/images/mqkqcjicovtxpc5n.jpg",
-    "renderedAt": 1792321023380
+    "renderedAt": 1792321556268
   },
   {
     "videoUrl": "/videos/reel-20261015063601-cmll-martes-populares-13-10-20.mp4",
@@ -5277,6 +5265,18 @@
     "kind": "show",
     "slug": "20261015063601-cmll-martes-populares-13-10-20",
     "image": "/content/images/h01fd0wmhtvlm46z.jpg",
-    "renderedAt": 1792321120020
+    "renderedAt": 1792321626720
+  },
+  {
+    "videoUrl": "/videos/reel-20261018134522-ufc-fight-night-291-buckley-vs.mp4",
+    "filename": "reel-20261018134522-ufc-fight-night-291-buckley-vs.mp4",
+    "title": "عرض يو اف سي فايت نايت 17.10.2026 مترجم",
+    "secondaryTitle": "UFC Fight Night 291: Buckley vs. Malott",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261018134522-ufc-fight-night-291-buckley-vs",
+    "kind": "show",
+    "slug": "20261018134522-ufc-fight-night-291-buckley-vs",
+    "image": "/content/images/g725d3dyqtaq92g3.jpg",
+    "renderedAt": 1792321697682
   }
 ]
