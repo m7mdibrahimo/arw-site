@@ -5124,16 +5124,16 @@
     "renderedAt": 1792294331206
   },
   {
-    "videoUrl": "/videos/reel-20261018083515-aew-wrestledream-tailgate-braw.mp4",
-    "filename": "reel-20261018083515-aew-wrestledream-tailgate-braw.mp4",
-    "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
-    "secondaryTitle": "AEW WrestleDream Tailgate Brawl (2026)",
-    "description": "عرض ريسل دريم تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261018083515-aew-wrestledream-tailgate-braw",
+    "videoUrl": "/videos/reel-20261018084113-lucha-libre-aaa-17-10-2026.mp4",
+    "filename": "reel-20261018084113-lucha-libre-aaa-17-10-2026.mp4",
+    "title": "عرض ايه ايه ايه 17.10.2026 مترجم",
+    "secondaryTitle": "Lucha Libre AAA 17.10.2026",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261018084113-lucha-libre-aaa-17-10-2026",
     "kind": "show",
-    "slug": "20261018083515-aew-wrestledream-tailgate-braw",
-    "image": "/content/images/1nhohlh291gy95pg.jpg",
-    "renderedAt": 1792301917272
+    "slug": "20261018084113-lucha-libre-aaa-17-10-2026",
+    "image": "/content/images/35135sfwgs0vqiup.jpg",
+    "renderedAt": 1792302510914
   },
   {
     "videoUrl": "/videos/reel-20261004114737-mlw-fusion-03-10-2026.mp4",
@@ -5145,7 +5145,7 @@
     "kind": "show",
     "slug": "20261004114737-mlw-fusion-03-10-2026",
     "image": "/content/images/f7ca6qfbsdt20s5h.jpg",
-    "renderedAt": 1792302013509
+    "renderedAt": 1792302608242
   },
   {
     "videoUrl": "/videos/reel-20261005163350-nwa-powerrr-03-10-2026.mp4",
@@ -5157,7 +5157,7 @@
     "kind": "show",
     "slug": "20261005163350-nwa-powerrr-03-10-2026",
     "image": "/content/images/bc0prh5q0o3ycrug.jpg",
-    "renderedAt": 1792302107378
+    "renderedAt": 1792302704359
   },
   {
     "videoUrl": "/videos/reel-20261012060623-cmll-sabados-de-coliseo-10-10-.mp4",
@@ -5169,7 +5169,7 @@
     "kind": "show",
     "slug": "20261012060623-cmll-sabados-de-coliseo-10-10-",
     "image": "/content/images/mz8zgvqls99u165t.jpg",
-    "renderedAt": 1792302202139
+    "renderedAt": 1792302800198
   },
   {
     "videoUrl": "/videos/reel-20261015063344-tna-xplosion-09-10-2026.mp4",
@@ -5181,6 +5181,18 @@
     "kind": "show",
     "slug": "20261015063344-tna-xplosion-09-10-2026",
     "image": "/content/images/mhxy3r6c080k2ie1.jpg",
-    "renderedAt": 1792302293864
+    "renderedAt": 1792302892818
+  },
+  {
+    "videoUrl": "/videos/reel-20261018083515-aew-wrestledream-tailgate-braw.mp4",
+    "filename": "reel-20261018083515-aew-wrestledream-tailgate-braw.mp4",
+    "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
+    "secondaryTitle": "AEW WrestleDream Tailgate Brawl (2026)",
+    "description": "عرض ريسل دريم تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261018083515-aew-wrestledream-tailgate-braw",
+    "kind": "show",
+    "slug": "20261018083515-aew-wrestledream-tailgate-braw",
+    "image": "/content/images/1nhohlh291gy95pg.jpg",
+    "renderedAt": 1792302988863
   }
 ]
