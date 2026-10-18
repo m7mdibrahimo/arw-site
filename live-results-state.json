@@ -1,4 +1,13 @@
 {
+  "20261019014104-نتائج-عرض-wrestling-open-ri-12-أكتوبر-2026.md": {
+    "lastSeenHash": "f8bb5f5c4be87c91ee65dfa13ad19b714f684801",
+    "lastChangeAt": 1792363449739,
+    "lastRegenAt": 0,
+    "rewrites": 0,
+    "generatedResults": 7,
+    "generatedHash": "f8bb5f5c4be87c91ee65dfa13ad19b714f684801",
+    "generatedLength": 647
+  },
   "20261019010338-نتائج-عرض-mystery-wrestling-30-11-أكتوبر-2026-فوز-كول-ريف-في-الحدث-الرئيسي.md": {
     "lastSeenHash": "72bf6304188d1556c2c1d92df41943118c872d21",
     "lastChangeAt": 1792362275650,
@@ -34,14 +43,5 @@
     "generatedResults": 14,
     "generatedHash": "3c22a99b535a6b80b1418d3fd3c25af8b8bcede9",
     "generatedLength": 1006
-  },
-  "20261018172319-نتائج-عرض-wwe-nxt-live-في-غاتينو-بكندا-17-أكتوبر-2026-كيفن-أوينز-يقود-فريقه-للانتصار-ودفاع-ناجح-عن-الألقاب.md": {
-    "lastSeenHash": "04ef6a13c28a349ddd7c9099d6b08c60d7026dce",
-    "lastChangeAt": 1792334291279,
-    "lastRegenAt": 0,
-    "rewrites": 0,
-    "generatedResults": 9,
-    "generatedHash": "04ef6a13c28a349ddd7c9099d6b08c60d7026dce",
-    "generatedLength": 916
   }
 }
