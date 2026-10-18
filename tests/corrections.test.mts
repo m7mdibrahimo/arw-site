@@ -227,3 +227,13 @@ test("defective verbs after «لم» are jussive and no published story keeps th
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم (?:يتعافى|يبقى|يأتي|يلقى|يسعى|ينسى|يرضى|يخشى|يعطي|يمضي|يبدو|يستطيع)(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #686: «تتويجا ناججا» (typo) in the NXT Live results and «لاسي إيوانف» + «لتلك الدور» in a CJ Perry story.
+test("typos «ناججا» «إيوانف» «لتلك الدور» are corrected and gone from stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("دفاعا ناججا عن اللقب"), "دفاعا ناجحا عن اللقب");
+  assert.equal(applyCorrections("دخلت لاسي إيوانف في قصة"), "دخلت لاسي إيفانز في قصة");
+  assert.equal(applyCorrections("الخيار الأنسب لتلك الدور"), "الخيار الأنسب لذلك الدور");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ناجج|إيوانف|لتلك الدور/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image|slug):.*$/gm, "")));
+  assert.deepEqual(bad, []);
+});
