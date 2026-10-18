@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/kofi-wins-first-aew-singles-match-october-3-collision/": {
-    "matchedFile": "20261004023100-نتائج-عرض-aew-collision-3-أكتوبر-2026-أبرز-اللحظات-والمحطات-الرئيسية.md",
-    "reason": "الخبر الجديد يغطي فوز كوفي على لي موريارتي في عرض AEW Collision بتاريخ 3 أكتوبر 2026، وهو نفس النزال ونتيجته المذكورة بالتفصيل في تقرير نتائج العرض المنشور رقم 0.",
-    "at": "2026-10-04T00:42:39.626Z"
-  },
   "https://www.fightful.com/wrestling/aew-collision-results-10-3-2026-kofi-vs-lee-moriarty-jon-moxley-death-riders-queen-aminata-more/": {
     "matchedFile": "20261004023100-نتائج-عرض-aew-collision-3-أكتوبر-2026-أبرز-اللحظات-والمحطات-الرئيسية.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261017123132-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي مؤتمر عرض AEW WrestleDream بينما الخبر المنشور [0] يغطي نفس العرض، وكلاهما مرتبط بتغطية نفس الحدث الرئيسي (WrestleDream) الذي أقيم في نفس الليلة وتفرعاته.",
     "at": "2026-10-18T04:58:37.685Z"
+  },
+  "https://www.fightful.com/wrestling/ilja-dragunov-if-i-feel-the-air-in-a-certain-environment-gets-thinner-i-need-to-breathe/": {
+    "matchedFile": "20261018084019-إيليا-دراغونوف-يكشف-سبب-اختياره-لاتحاد-aew-بعد-رحيله-عن-wwe.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (ظهور إيليا دراغونوف في AEW WrestleDream وتصريحاته في المؤتمر الصحفي حول سبب انضمامه ونفس الاقتباس) وهو مكرر للخبر المنشور مسبقاً.",
+    "at": "2026-10-18T05:43:20.918Z"
   }
 }
