@@ -3735,22 +3735,19 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261018061412-revpro-cmll-fantastica-mania-uk-2026-show-1": {
     "publishedAt": 1792294524403,
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) 17.10.2026 مترجم",
-    "lastAttempt": 1792295428568,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792296265976,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
