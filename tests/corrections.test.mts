@@ -175,3 +175,14 @@ test("«وحقيقه» typo is corrected and gone from stories (INCIDENTS #667)"
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وحقيقه/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #675: «داينائل غارسيا» / «أبيض نيجرو» / «مسرع إيقاع» reached stories.
+test("Daniel Garcia, Abismo Negro and metronome are corrected (INCIDENTS #675)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("داينائل غارسيا"), "دانيال غارسيا");
+  assert.equal(applyCorrections("خصمه أبيض نيجرو"), "خصمه أبيسمو نيجرو");
+  assert.equal(applyCorrections("أبيسمو نيغرو"), "أبيسمو نيجرو");
+  assert.equal(applyCorrections("ومسرع إيقاع"), "وجهاز ضبط الإيقاع");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /داينائل|أبيض نيجرو|مسرع إيقاع/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

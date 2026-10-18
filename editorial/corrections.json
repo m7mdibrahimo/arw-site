@@ -6987,6 +6987,26 @@
    "wrong": "سسترز أوف سين",
    "right": "سيسترز أوف سين",
    "note": "Sisters of Sin = سيسترز أوف سين — INCIDENTS #671"
+  },
+  {
+   "wrong": "داينائل غارسيا",
+   "right": "دانيال غارسيا",
+   "note": "Daniel Garcia — INCIDENTS #675"
+  },
+  {
+   "wrong": "أبيض نيجرو",
+   "right": "أبيسمو نيجرو",
+   "note": "Abismo Negro = أبيسمو نيجرو (مش «أبيض») — INCIDENTS #675"
+  },
+  {
+   "wrong": "أبيسمو نيغرو",
+   "right": "أبيسمو نيجرو",
+   "note": "Abismo Negro بالجيم زي القاموس — INCIDENTS #675"
+  },
+  {
+   "wrong": "مسرع إيقاع",
+   "right": "جهاز ضبط الإيقاع",
+   "note": "metronome — INCIDENTS #675"
   }
  ]
 }
