@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/wwe-nxt-live-results-from-gatineau-quebec-canada-10-17": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-18T14:28:58.840Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:55.288Z"
+  "at": "2026-10-18T14:28:34.046Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:55.115Z"
+  "at": "2026-10-18T14:28:33.772Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-i-cant-say-when-or-where-but-i-know-timeless-toni-storm-will-be-back-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:54.980Z"
+  "at": "2026-10-18T14:28:33.558Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-very-intrigued-by-possibility-of-kairi-appearing-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:54.770Z"
+  "at": "2026-10-18T14:28:33.227Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-we-say-that-aew-is-where-the-best-wrestle-how-couldnt-i-belong-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:54.632Z"
+  "at": "2026-10-18T14:28:33.012Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-i-feel-the-air-in-a-certain-environment-gets-thinner-i-need-to-breathe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:54.339Z"
+  "at": "2026-10-18T14:28:32.559Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:54.162Z"
+  "at": "2026-10-18T14:28:32.285Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:54.030Z"
+  "at": "2026-10-18T14:28:32.081Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-signs-with-all-elite-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:53.776Z"
+  "at": "2026-10-18T14:28:31.691Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-17-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T14:21:53.475Z"
+  "at": "2026-10-18T14:28:31.232Z"
  },
  "https://www.ringsidenews.com/lola-vice-turns-heads-red-bikini-photos-during-miami-getaway": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T20:03:01.417Z"
- },
- "https://www.fightful.com/wrestling/eddie-kingston-rusev-jeff-jarrett-nia-jax-more-pay-tribute-to-pac-benjamin-satterley": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T19:48:47.517Z"
  }
 }
