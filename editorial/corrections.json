@@ -7193,6 +7193,12 @@
    "wrong": "كارولاينا ورايتسلينغ",
    "right": "Carolina Wrestling",
    "note": "«Wrestling» اتكتبت بحروف عربي («ورايتسلينغ») في اسم اتحاد/برنامج — القاعدة: أسماء الاتحادات بالإنجليزي (خبر تشيس براون، INCIDENTS #687)"
+  },
+  {
+   "wrong": "1 Called Manders\\s+توماس\\s+شاير",
+   "right": "1 Called Manders وتوماس شاير",
+   "regex": true,
+   "note": "أسماء فريق/مصارعين بين فاصلة أو & في المصدر لازم يتربطوا بـ«و» — «برايان كيث 1 Called Manders توماس شاير» ظهرت في نتائج PRODUCE Volume 5 (INCIDENTS #690)"
   }
  ]
 }

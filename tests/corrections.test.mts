@@ -243,3 +243,20 @@ test("«متهم إياه» becomes «متهما إياه»", async () => {
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("بالغش، متهم إياه بأنه فاز"), "بالغش، متهما إياه بأنه فاز");
 });
+
+// INCIDENTS #690: PRODUCE Volume 5 results — «1 Called Manders توماس شاير» (no «و») and a stray «وخالدة» in the headline/body.
+test("names joined with «&» get «و» and the PRODUCE results story is clean (INCIDENTS #690)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("فريق Cowboy Way المكون من 1 Called Manders توماس شاير"), "فريق Cowboy Way المكون من 1 Called Manders وتوماس شاير");
+  const f = fs.readdirSync("content/news").find(n => n.startsWith("20261018191951-"))!;
+  const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "");
+  assert.ok(!/وخالدة|Manders توماس/.test(text));
+});
+
+// INCIDENTS #690: the Arabic Ciampa story said «القارية» (source: AEW TNT Championship) and the Dreamer story named
+// Scott D'Amore as the man he agreed the exit with (source: Carlos Silva).
+test("Ciampa TNT title and Dreamer's exit agreement match the sources (INCIDENTS #690)", () => {
+  const read = (p: string) => fs.readFileSync(`content/news/${fs.readdirSync("content/news").find(n => n.startsWith(p))!}`, "utf-8");
+  assert.ok(!/AEW القارية/.test(read("20261018203000-")) && /بطولة TNT/.test(read("20261018203000-")));
+  assert.ok(/كارلوس سيلفا/.test(read("20261018195538-")) && !/اتفاق ودي مع سكوت دي أمور/.test(read("20261018195538-")));
+});
