@@ -1,48 +1,58 @@
 {
- "https://www.wrestlinginc.com/2289671/aew-wrestledream-2026-hangman-page-brodido-trios-titles-swerve-strickland-new-level": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+ "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-10-18T03:43:02.493Z"
+ },
+ "https://www.fightful.com/wrestling/jon-moxley-defeats-mark-davis-to-retain-aew-continental-title-at-aew-wrestledream": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-18T03:39:01.141Z"
+  "at": "2026-10-18T03:42:38.211Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-signs-with-all-elite-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:34.867Z"
+  "at": "2026-10-18T03:42:12.405Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-oct-17-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:34.457Z"
+  "at": "2026-10-18T03:42:12.051Z"
  },
  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:34.096Z"
+  "at": "2026-10-18T03:42:11.743Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-from-sudbury-ontario-results-10-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:33.697Z"
+  "at": "2026-10-18T03:42:11.399Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-buy-in": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:33.564Z"
+  "at": "2026-10-18T03:42:11.284Z"
  },
  "https://www.fightful.com/wrestling/rusev-returns-to-the-ring-at-10-16-wwe-live-in-hawaii": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:33.307Z"
+  "at": "2026-10-18T03:42:11.066Z"
  },
  "https://www.fightful.com/wrestling/update-on-kairi-and-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:33.120Z"
+  "at": "2026-10-18T03:42:10.906Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T03:38:32.697Z"
+  "at": "2026-10-18T03:42:10.536Z"
+ },
+ "https://www.wrestlinginc.com/2289671/aew-wrestledream-2026-hangman-page-brodido-trios-titles-swerve-strickland-new-level": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-18T03:39:01.141Z"
  },
  "https://www.fightful.com/wrestling/giulia-promises-more-brutality-less-rules-to-blake-monroe-in-their-street-fight-on-10-23-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T00:58:01.612Z"
- },
- "https://www.fightful.com/wrestling/report-no-indications-of-foul-play-or-trauma-in-death-of-pac-benjamin-satterley": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T00:58:01.466Z"
  }
 }
