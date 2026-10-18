@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tony-khan-explains-why-aew-doesnt-run-lots-house-shows": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-18T06:10:51.339Z"
+ },
  "https://www.wrestlinginc.com/2289682/aew-wrestledream-2026-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T11:07:01.184Z"
- },
- "https://www.fightful.com/wrestling/ricochet-defends-spot-that-led-to-steven-borden-injury-no-one-is-at-fault-here": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T05:08:49.563Z"
  }
 }
