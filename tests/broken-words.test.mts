@@ -383,3 +383,11 @@ test('INCIDENTS #660: «الدرجتين» is a dual noun and is blocked', () =>
   assert.ok(codes('أصيبت بحروق من الدرجتين الثانية والثالثة.').includes('dual_noun'));
   assert.ok(!codes('أصيبت بحروق من الدرجة الثانية والثالثة.').includes('dual_noun'));
 });
+
+// INCIDENTS #671: «بطولة WWE للإخفاء والسيطرة للسيدات» (Women's Intercontinental), «أول أندرسون», «ودويلي», «سسترز».
+test('Women\'s Intercontinental, Ole Anderson, Doyle and Sisters of Sin spellings are corrected', () => {
+  assert.match(applyCorrections('دافعت بطلة WWE للإخفاء والسيطرة للسيدات راكيل رودريغيز'), /للقارات للسيدات/);
+  assert.match(applyCorrections('بتولي أول أندرسون مهام الحجز'), /أولي أندرسون/);
+  assert.match(applyCorrections('وسبق لواردلو ودويلي أن تعاونا'), /ودويل /);
+  assert.match(applyCorrections('فريق سسترز أوف سين'), /سيسترز أوف سين/);
+});

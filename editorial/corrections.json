@@ -6967,6 +6967,26 @@
    "wrong": "وحقيقه",
    "right": "وحقق",
    "note": "خطأ إملائي («وحقيقه» بدل «وحقق») ظهر في نتائج عرض NJPW Taichi School Pro Wrestling 2 (INCIDENTS #667)"
+  },
+  {
+   "wrong": "للإخفاء والسيطرة",
+   "right": "للقارات",
+   "note": "Women's Intercontinental Championship = «بطولة WWE للقارات للسيدات»؛ جيميناي كتب «للإخفاء والسيطرة» في نتائج WWE Live هونولولو — INCIDENTS #671"
+  },
+  {
+   "wrong": "أول أندرسون",
+   "right": "أولي أندرسون",
+   "note": "Ole Anderson = أولي أندرسون (مش «أول») — INCIDENTS #671"
+  },
+  {
+   "wrong": "دويلي",
+   "right": "دويل",
+   "note": "Jake Doyle = جيك دويل، ياء زيادة في الآخر — INCIDENTS #671"
+  },
+  {
+   "wrong": "سسترز أوف سين",
+   "right": "سيسترز أوف سين",
+   "note": "Sisters of Sin = سيسترز أوف سين — INCIDENTS #671"
   }
  ]
 }
