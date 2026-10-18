@@ -150,3 +150,9 @@ test("«نزال فردي» above a «الفائز: فريق …» line is block
   assert.ok(!checkArticle("نتائج عرض AEW WrestleDream", bad.replace("نزال فردي", "نزال فرق")).some((i) => i.code === "singles_label_team_winner"));
   assert.ok(!checkArticle("نتائج عرض AEW WrestleDream", bad.replace("فريق موتور", "إدي إدواردز").replace("**الفائز:** فريق", "**الفائز:**")).some((i) => i.code === "singles_label_team_winner"));
 });
+
+// INCIDENTS #673: «بفوز فريقي ديث رايدرز وذا دوجز» (dual construct of «فريق») reached the site.
+test('«فريقي X وY» is a blocked dual noun', () => {
+  const body = 'وانتهى النزال بفوز فريقي ديث رايدرز وذا دوجز في عرض AEW. '.repeat(8);
+  assert.ok(checkArticle('عنوان عربي كامل للخبر هنا', body, []).some(i => i.code === 'dual_noun'));
+});
