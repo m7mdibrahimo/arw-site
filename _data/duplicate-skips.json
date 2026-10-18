@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/brock-lesnar-gets-inducted-into-minnesota-m-club-hall-of-fame/": {
-    "matchedFile": "20261003103753-إدراج-بروك-ليسنر-في-قاعة-مشاهير-جامعة-مينيسوتا-بعد-اعتزاله-في-wwe.md",
-    "reason": "الخبر الجديد يتحدث عن نفس حدث إدراج بروك ليسنر في قاعة مشاهير جامعة مينيسوتا (M Club Hall of Fame) الذي أقيم في 2 أكتوبر وتم تغطيته بالفعل في الخبر المنشور.",
-    "at": "2026-10-03T16:09:10.461Z"
-  },
   "https://www.fightful.com/wrestling/kevin-kay-recalls-vince-mcmahon-pushing-standards-on-tnn-with-no-panties-shot-of-divas/": {
     "matchedFile": "20261003174855-اتهام-فينس-مكمان-بإرسال-نجمات-wwe-بلا-ملابس-داخلية-بعد-قطع-قناة-tnn-لصوت-عرض-wwe-raw.md",
     "reason": "الخبر الجديد يعالج نفس الحدث والتصريحات التي أدلى بها كيفن كاي حول أزمة فينس مكمان ومعايير قناة TNN ونجمات WWE وهي نفس الواقعة المغطاة في الخبر المنشور رقم 0",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يتناول تفاصيل نزال محدد جرى ضمن عرض AEW WrestleDream، وهو العرض الذي تم تغطية نتائجه بالكامل في الخبر رقم 0.",
     "at": "2026-10-18T01:16:33.655Z"
+  },
+  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream/": {
+    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
+    "reason": "الخبر الجديد يغطي نتيجة نزال من عرض AEW WrestleDream، وعرض AEW WrestleDream تم نشر تقرير نتائجه الشامل بالفعل في الخبر المنشور رقم 1 والذي يتضمن تفاصيل النزالات ونتائجها.",
+    "at": "2026-10-18T01:18:10.380Z"
   }
 }
