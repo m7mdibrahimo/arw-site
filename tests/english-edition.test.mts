@@ -169,3 +169,15 @@ test("a small word inside a hyphenated compound stays lowercase (INCIDENTS #622)
   assert.equal(normalizeEnglishTitle("TNA Title 2-Out-Of-3 Falls Match Set for iMPACT"), "TNA Title 2-Out-of-3 Falls Match Set for iMPACT");
   assert.equal(normalizeEnglishTitle("Face-To-Face Showdown"), "Face-to-Face Showdown");
 });
+
+test('English grammar slips are fixed on save: «a experimental», «I’re» (monitor round 2026-10-18)', async () => {
+  const { aToAn, fixIre, fixEnglishNames, englishGrammarSlips } = await import('../scripts/english-edition.ts');
+  assert.equal(aToAn('Placing a experimental match and a emotional message. A injury hit.'), 'Placing an experimental match and an emotional message. An injury hit.');
+  assert.equal(aToAn('a one-time deal, a user, a European tour, a UFO, a hour, a unanimous win, a unique one'), 'a one-time deal, a user, a European tour, a UFO, a hour, a unanimous win, a unique one');
+  assert.equal(aToAn('Plan A and Option A or B stay'), 'Plan A and Option A or B stay');
+  assert.equal(aToAn('> a eager quote'), '> a eager quote');
+  assert.equal(fixIre('I feel like I’re starving. I\'re ready'), 'I feel like I’m starving. I\'m ready');
+  assert.equal(fixEnglishNames('He made a experimental move'), 'He made an experimental move');
+  assert.deepEqual(englishGrammarSlips('a experimental'), ['a/an or I\'re typo']);
+  assert.deepEqual(englishGrammarSlips('an experimental'), []);
+});

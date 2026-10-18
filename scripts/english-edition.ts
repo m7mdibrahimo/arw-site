@@ -68,6 +68,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
 - Do not call something "upcoming" or "set to" if its date has already passed relative to today (a film that is out, a show that aired): use the past tense or "new".
+- Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
 }
@@ -219,8 +220,24 @@ export function twitterToX(text: string): string {
     return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(/\bTwitter\b/g, "X"))).join("");
   }).join("\n");
 }
+/** «a experimental match» → «an experimental match» (a vowel-sound word after «a»; «a one», «a user», «a European», «a unanimous» stay) */
+const A_BEFORE_VOWEL = /(?<![A-Za-z0-9&'’.-])(a|(?<=(?:^|[.!?:] ))A) (?=(?!one\b|once\b|eu)(?:[aeio][a-z]*|un(?!i|animous)[a-z]*|u[pglm][a-z]*)\b)/g;
+export function aToAn(text: string): string {
+  return String(text).split("\n").map((line) => {
+    if (SKIP_LINE.test(line)) return line;
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(A_BEFORE_VOWEL, (_m, a: string) => a + "n "))).join("");
+  }).join("\n");
+}
+/** «I’re starving» (a typo the source's transcript has) → «I’m starving» */
+export function fixIre(text: string): string {
+  return String(text).replace(/\bI([’'])re\b/g, "I$1m");
+}
+/** The English prose mistakes still in a story: «a experimental», «I’re» (empty = fine) */
+export function englishGrammarSlips(text: string): string[] {
+  return aToAn(fixIre(text)) === String(text) ? [] : ["a/an or I're typo"];
+}
 export function fixEnglishNames(text: string): string {
-  return twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))));
+  return aToAn(fixIre(twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

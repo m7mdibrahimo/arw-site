@@ -27,7 +27,7 @@ AEW WrestleDream 2026 presented a packed night of action in Orlando, featuring t
 
 - Flawed finish to Chris Jericho vs. Nick Wayne: While Chris Jericho and Nick Wayne delivered a solid match, the ending descended into confusion. Low blows, the legal use of a protective cup as a weapon, and an awkward roll-up finish ruined the momentum.
 
-- Clockwork Carnage match in the main event: The new Clockwork Carnage concept created by Will Ospreay lacked urgency during its timed pinfall segments. Placing a experimental match in the main event spot over the women's world title bout proved to be a misstep.
+- Clockwork Carnage match in the main event: The new Clockwork Carnage concept created by Will Ospreay lacked urgency during its timed pinfall segments. Placing an experimental match in the main event spot over the women's world title bout proved to be a misstep.
 
 3 Things We Loved:
 

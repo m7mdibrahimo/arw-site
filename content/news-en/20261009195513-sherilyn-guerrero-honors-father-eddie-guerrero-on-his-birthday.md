@@ -14,7 +14,7 @@ image: /content/images/blrxbwrhuctz6bxh.jpg
 ---
 Sherilyn Guerrero, daughter of the late WWE Hall of Famer Eddie Guerrero, shared a heartfelt tribute on Instagram to mark her father's birthday on October 9. The legend passed away suddenly in November 2005 at the age of 38 due to acute heart failure, leaving a lasting legacy in the wrestling industry.
 
-To honor his memory, Sherilyn posted several childhood photos alongside a emotional message expressing her deep love and gratitude for her father. She highlighted the profound impact he left on the world and how much he is still missed by everyone.
+To honor his memory, Sherilyn posted several childhood photos alongside an emotional message expressing her deep love and gratitude for her father. She highlighted the profound impact he left on the world and how much he is still missed by everyone.
 
 > "It’s your heavenly birthday! I love continuously learning about you, remembering you, and honoring you in any way there is. You are so loved, you were so amazing and truly left an incredible impact in this world. I’m blessed to be my fathers daughter, you were an amazing dad to my sisters & I, and overall stand up man that I can say this world still misses ♥️ Hope your eating all the tres leches cakes up there 🎂"
 
