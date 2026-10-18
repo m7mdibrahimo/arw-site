@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/gillberg-claims-goldberg-contract-clause-blocking-his-wwe-merchandise": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-18T22:01:18.244Z"
+ },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-30T14:06:10.893Z"
- },
- "https://www.fightful.com/wrestling/report-unnamed-nxt-talent-files-order-of-protection-against-keanu-carver": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-30T12:57:05.141Z"
  }
 }
