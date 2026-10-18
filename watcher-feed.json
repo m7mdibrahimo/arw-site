@@ -1,5 +1,15 @@
 [
   {
+    "id": 334533,
+    "link": "https://www.fightful.com/wrestling/wwe-live-results-from-honolulu-hawaii-10-17/",
+    "date": "2026-10-18T09:57:39",
+    "date_gmt": "2026-10-18T13:57:39",
+    "title": {
+      "rendered": "WWE Live Results From Honolulu, Hawaii (10/17)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/17142000/CS-065647_HAWAII_LIVE-TOUR_1920x1080.jpg"
+  },
+  {
     "id": 334524,
     "link": "https://www.fightful.com/wrestling/will-ospreay-im-a-cardio-machine-ask-the-wife/",
     "date": "2026-10-18T09:47:26",
@@ -288,15 +298,5 @@
       "rendered": "Nick Wayne Defeats Chris Jericho At AEW WrestleDream, Wins Series 2-1"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17211551/HU4BsfRXAAArfGn.jpg"
-  },
-  {
-    "id": 334435,
-    "link": "https://www.fightful.com/wrestling/mercedes-mone-def-thekla-to-retain-aew-womens-world-title-at-wrestledream/",
-    "date": "2026-10-17T20:48:59",
-    "date_gmt": "2026-10-18T00:48:59",
-    "title": {
-      "rendered": "Mercedes Moné Def. Thekla To Retain AEW Women&#8217;s World Title At WrestleDream"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17204840/HU365J5W8AAsuHx.jpg"
   }
 ]
