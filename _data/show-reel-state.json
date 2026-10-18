@@ -3750,7 +3750,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261018061610-revpro-cmll-fantastica-mania-uk-2026-show-2": {
     "publishedAt": 1792294603667,
@@ -3773,9 +3774,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
-    "lastAttempt": 1792303293251,
+    "lastAttempt": 1792304130358,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
