@@ -1,5 +1,15 @@
 [
   {
+    "id": 1649268291,
+    "link": "https://www.wrestlinginc.com/2289797/backstage-news-on-wwe-commentator-michael-coles-absence-from-smackdown/",
+    "date": "Sun, 18 Oct 2026 18:14:18 +0000",
+    "date_gmt": "2026-10-18T18:14:18.000Z",
+    "title": {
+      "rendered": "Backstage News On WWE Commentator Michael Cole's Absence From SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-commentator-michael-coles-absence-from-smackdown/l-intro-1792347008.jpg"
+  },
+  {
     "id": 3092912552,
     "link": "https://www.wrestlinginc.com/2289793/aew-mercedes-mone-broken-nose-surgery/",
     "date": "Sun, 18 Oct 2026 17:33:45 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Andrade El Idolo Beats Tommaso Ciampa, Retains AEW National Title At WrestleDream 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wrestledream-2026-andrade-el-idolo-tommaso-ciampa-national-title-retains/l-intro-1792292235.jpg"
-  },
-  {
-    "id": 2111665250,
-    "link": "https://www.wrestlinginc.com/2289664/aew-wrestledream-2026-four-way-tbs-title-persephone-retains/",
-    "date": "Sun, 18 Oct 2026 02:08:24 +0000",
-    "date_gmt": "2026-10-18T02:08:24.000Z",
-    "title": {
-      "rendered": "Persephone Wins AEW WrestleDream 2026 Four-Way, Retains TBS Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wrestledream-2026-four-way-tbs-title-persephone-retains/l-intro-1792290325.jpg"
   }
 ]
