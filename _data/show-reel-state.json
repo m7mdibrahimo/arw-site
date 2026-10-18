@@ -3774,9 +3774,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
-    "lastAttempt": 1792304130358,
+    "lastAttempt": 1792304926978,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
