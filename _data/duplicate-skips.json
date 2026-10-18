@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/former-ecw-wrestler-metal-maniac-jeff-miller-passes-away/": {
-    "matchedFile": "20261004021602-وفاة-المصارع-السابق-جيف-ميلر-المعروف-بلقب-ميتال-مانياك.md",
-    "reason": "الخبر الجديد يعلن عن نفس وفاة المصارع جيف ميلر (Metal Maniac) والتي سبق نشرها في الخبر رقم 0 من نفس المصدر (نادي كوليفلاور ألي) وبنفس التفاصيل الأساسية للحدث.",
-    "at": "2026-10-03T23:42:01.715Z"
-  },
   "https://www.fightful.com/wrestling/giulia-apologizes-for-making-fans-worry-after-being-helped-to-the-back-at-wwe-smackdown/": {
     "matchedFile": "20261003111929-لقطات-كواليس-عرض-wwe-smackdown-تبدد-المخاوف-بشأن-إصابة-جوليا.md",
     "reason": "الخبر الجديد يمثل تحديثا ورد فعل من المصارعة جوليا (عبر إنستغرام) على شائعات إصابتها التي تمت مناقشتها وتوضيح كواليسها بالفعل في الخبر رقم [0].",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يغطي تفاصيل نزال احتفاظ ويل أوسبراي ببطولة AEW العالمية في عرض AEW WrestleDream، وهو نفس الحدث والنتيجة المغطاة مسبقاً في تقرير نتائج عرض AEW WrestleDream رقم 0.",
     "at": "2026-10-18T04:28:48.703Z"
+  },
+  "https://www.wrestlinginc.com/2289677/aew-wrestledream-2026-will-ospreay-clockwork-carnage-retains-world-title/": {
+    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
+    "reason": "الخبر الجديد يتحدث عن فوز ويل أوسبراي واحتفاظه ببطولة AEW العالمية في عرض WrestleDream 2026 وتفاصيل النزال، وهو نفس الحدث والنتيجة المغطاة بالكامل في تقرير النتائج المنشور مسبقاً تحت الرقم 0.",
+    "at": "2026-10-18T04:40:49.552Z"
   }
 }

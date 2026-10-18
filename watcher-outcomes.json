@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2289671/aew-wrestledream-2026-hangman-page-brodido-trios-titles-swerve-strickland-new-level": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-18T04:40:48.297Z"
+ },
  "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-18T04:37:26.123Z"
- },
- "https://www.wrestlinginc.com/2289671/aew-wrestledream-2026-hangman-page-brodido-trios-titles-swerve-strickland-new-level": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-18T04:26:36.334Z"
  },
  "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
