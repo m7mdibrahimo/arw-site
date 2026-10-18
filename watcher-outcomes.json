@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/produce-volume-5-skoden-results-10-12": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-18T16:25:50.557Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:18.504Z"
+  "at": "2026-10-18T16:25:29.030Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:18.317Z"
+  "at": "2026-10-18T16:25:28.779Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-i-cant-say-when-or-where-but-i-know-timeless-toni-storm-will-be-back-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:18.167Z"
+  "at": "2026-10-18T16:25:28.583Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-very-intrigued-by-possibility-of-kairi-appearing-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:17.942Z"
+  "at": "2026-10-18T16:25:28.278Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-we-say-that-aew-is-where-the-best-wrestle-how-couldnt-i-belong-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:17.795Z"
+  "at": "2026-10-18T16:25:28.083Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-i-feel-the-air-in-a-certain-environment-gets-thinner-i-need-to-breathe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:17.477Z"
+  "at": "2026-10-18T16:25:27.661Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:17.286Z"
+  "at": "2026-10-18T16:25:27.407Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T16:18:17.141Z"
+  "at": "2026-10-18T16:25:27.220Z"
  },
  "https://www.fightful.com/wrestling/cauliflower-chase-brown-passes-away-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-29T23:27:50.747Z"
- },
- "https://www.fightful.com/wrestling/oba-femi-vs-bronson-reed-set-for-wwe-money-in-the-bank": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-29T21:50:45.567Z"
  }
 }
