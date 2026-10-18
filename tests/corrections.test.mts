@@ -197,3 +197,24 @@ test("Niño Hamburguesa has one spelling and Page is «بيدج» (INCIDENTS #67
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /نين[يو]{1,2} هامبورغ(?:سا|ويسا|يزا)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #679: «بطولة العالم للثلاثي», «برودي كيغ», «بايج وستريكلاند» and an announced AAA card written with «def.».
+test("Trios title wording, Brody King and Hangman Page are corrected (INCIDENTS #679)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ويحصد بطولة العالم للثلاثي"), "ويحصد بطولة العالم للفرق الثلاثية");
+  assert.equal(applyCorrections("حركة من برودي كيغ"), "حركة من برودي كينج");
+  assert.equal(applyCorrections("بين بايج وستريكلاند"), "بين بيدج وستريكلاند");
+  assert.equal(applyCorrections("بعد أن باتت مصارعة في السوق"), "بعد أن أصبحت مصارعة حرة");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.ok(!Object.values(glossary).includes("بطولة العالم للثلاثي"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بطولة العالم للثلاثي|برودي كيغ/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
+
+test("English: an announced card must not be written as «def.» results (INCIDENTS #679)", async () => {
+  const { checkEnglish } = await import("../scripts/english-edition.ts");
+  const body = "Lucha Libre AAA revealed the full match card for the upcoming event during the October 17 episode of AAA on Fox. The show is scheduled for October 24.\n\nPerros Del Mal def. La Parka, Mr. Iguana, & Nino Hamburguesa\nEl Grande Americano def. Dominik Mysterio\n\nMarisela Pena will be inducted into the AAA Hall of Fame as part of the night.";
+  const input = { sourceText: "AAA announced the card: Perros del Mal defends against La Parka. The show is set for Oct 24.", sourceUrl: "https://www.fightful.com/x", arabicTitle: "x", arabicBody: "x" } as any;
+  assert.ok(checkEnglish({ title: "Full Lineup Announced for AAA Heroes Inmortales", body, tags: [] } as any, input).some(x => x.includes("def.")));
+  assert.ok(!checkEnglish({ title: "Full Lineup Announced for AAA Heroes Inmortales", body: body.replace(/ def\. /g, " vs. "), tags: [] } as any, input).some(x => x.includes("def.")));
+});

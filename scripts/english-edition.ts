@@ -64,7 +64,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
 - Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza".
 - Headline: Title Case with the small words (a, an, the, and, but, or, for, at, by, in, of, on, to, as, vs) in lowercase unless first or last (the code enforces this), clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct, never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
-- Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one.
+- Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one. An announced card or lineup (matches not yet wrestled) is written "A vs. B", never "def." (INCIDENTS #679).
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
 - Do not call something "upcoming" or "set to" if its date has already passed relative to today (a film that is out, a show that aired): use the past tense or "new".
@@ -135,6 +135,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const srcDigits = i.sourceText.replace(/(\d),(?=\d{3})/g, "$1");
   const odd = (body.replace(/(\d),(?=\d{3})/g, "$1").match(/(?<![\d.$])\d{3,4}(?![\d.])/g) || []).filter((n) => !/^(19|20)\d\d$/.test(n) && !srcDigits.includes(n));
   if (odd.length) issues.push(`number not in source: ${odd[0]}`);
+  // an announced card written as results (INCIDENTS #679: «Perros Del Mal def. La Parka…» for a lineup announcement)
+  if (/\bdef\./.test(body) && !/def\.|\b(?:defeat\w*|beat|beats|beaten|won|wins?|victor\w*|retain\w*|captur\w*)\b/i.test(i.sourceText)) issues.push("result wording (def.) but the source reports no result");
   return issues;
 }
 

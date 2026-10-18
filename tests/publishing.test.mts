@@ -5174,3 +5174,10 @@ test('a wrestler who just debuted or came back: every story about them is held �
   assert.match(src, /if \(statedOld\) why = "";\n[^\n]*\n\s*if \(!why && mentionsReturned\(`\$\{item\.title \|\| ""\} \$\{item\.headline \|\| ""\}`, recentReturns\)\) why = "debut";/);
   assert.match(src, /reason: why === "debut" \? "return"/);
 });
+
+// INCIDENTS #679: a recap's / nostalgia special's NewsArticle keywords carried only «WWE, ملخص, Highlights» — now the program's names and date forms too (head only).
+test("recap and nostalgia articles carry the program names in their keywords (INCIDENTS #679)", () => {
+  const layout = fs.readFileSync("_includes/post-layout.njk", "utf-8");
+  assert.ok(/set artNames = \[\]/.test(layout) && /"keywords": "\{\{ \(tags or \[\]\)/.test(layout));
+  assert.ok(/page\.url\.startsWith\('\/recaps\/'\) and ldAbout/.test(layout));
+});

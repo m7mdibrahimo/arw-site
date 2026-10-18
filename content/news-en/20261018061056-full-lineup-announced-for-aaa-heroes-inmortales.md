@@ -17,10 +17,10 @@ image: /content/images/2z32c1si583g8tow.jpg
 Lucha Libre AAA revealed the full match card for the upcoming AAA Heroes Inmortales event during the October 17 episode of AAA on Fox. The show is scheduled for October 24 and features several championship bouts alongside a special Hall of Fame induction.
 
 The card includes:
-Perros Del Mal def. La Parka, Mr. Iguana, & Nino Hamburguesa
-El Grande Americano def. Dominik Mysterio
-Rey Fenix def. Mini Vikingo
-El Fiscal def. Abismo Negro
-La Catalina def. Flammer & La Hiedra
+Perros Del Mal vs. La Parka, Mr. Iguana, & Nino Hamburguesa
+El Grande Americano vs. Dominik Mysterio
+Rey Fenix vs. Mini Vikingo
+El Fiscal vs. Abismo Negro
+La Catalina vs. Flammer & La Hiedra
 
 In addition to the title matches, Marisela Peña will be honored with an induction into the AAA Hall of Fame. Fightful will provide full coverage of the event on Saturday, October 24.
