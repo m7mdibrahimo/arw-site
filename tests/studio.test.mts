@@ -655,3 +655,20 @@ test('a nostalgia episode is its series\' federation, in the panel and on the si
     if (ref && series[ref] && fedOf(t)) assert.equal(fedOf(t), series[ref], f);
   }
 });
+
+test('a save waiting to show on the site settles when the bell opens or the panel comes back, and never says «جاري» for good (owner 2026-10-18)', async () => {
+  // «تم تحديث المثبت في الرئيسية … جاري الظهور على الموقع… منذ 3 ساعة» — «حل المشكلة دي من فضلك»
+  const src = fs.readFileSync('studio/js/notify.js', 'utf8');
+  assert.match(src, /if \(open\) \{ renderList\(\); load\(\); settlePending\(\); \}/);
+  assert.match(src, /document\.addEventListener\('visibilitychange', \(\) => \{ if \(!document\.hidden\) settlePending\(\); \}\);/);
+  assert.match(src, /n\.status === 'pending' && Date\.now\(\) - n\.at > STALE_MS\) \{ n\.status = 'done';/);
+  // the live check itself (the same function the panel runs)
+  const body = src.slice(src.indexOf('export function inBuild'), src.indexOf('async function settlePending'));
+  const inBuild = new Function(`${body.replace('export ', '')}; return inBuild;`)();
+  const at = Date.parse('2026-10-18T10:48:27Z');
+  assert.equal(inBuild({ commit: 'zzz', commitTime: Date.parse('2026-10-18T13:09:54Z') / 1000, recent: ['zzz'] }, { commit: 'db946ab', at }), true);
+  assert.equal(inBuild({ commit: 'zzz', recent: ['zzz', 'db946ab'] }, { commit: 'db946ab', at }), true);
+  assert.equal(inBuild({ commit: 'old', commitTime: Date.parse('2026-10-18T09:00:00Z') / 1000, builtAt: '2026-10-18T09:05:00Z' }, { commit: 'db946ab', at }), false);
+  assert.equal(inBuild({ commit: 'old', builtAt: '2026-10-18T11:00:00Z' }, { commit: 'db946ab', at }), true);
+  assert.match(fs.readFileSync('_headers', 'utf8'), /\/build\.json\n  Cache-Control: no-store\n  Access-Control-Allow-Origin: \*/);
+});

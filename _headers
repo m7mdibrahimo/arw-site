@@ -57,6 +57,7 @@
 
 /build.json
   Cache-Control: no-store
+  Access-Control-Allow-Origin: *
   X-Robots-Tag: noindex
 
 /img-cache.json

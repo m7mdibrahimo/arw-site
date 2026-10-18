@@ -283,7 +283,7 @@ export function watchLive(onLive) {
     const list = liveList();
     if (!list.length) { liveTimer = null; return; }
     try {
-      const b = await fetch(`/build.json?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
+      const b = await fetch(`${/(^|\.)arab-wrestling\.com$/.test(location.hostname) ? '' : 'https://arab-wrestling.com'}/build.json?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
       if (b) {
         const has = (x) => (b.recent || []).includes(x.commit) || b.commit === x.commit || (b.commitTime && b.commitTime * 1000 > x.committedAt + 5000);
         const done = list.filter(has);

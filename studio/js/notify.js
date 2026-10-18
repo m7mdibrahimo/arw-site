@@ -173,18 +173,32 @@ async function load() {
 // A notification still «جاري الظهور على الموقع» is settled from /build.json itself, whatever the save tracking
 // remembers: the live build is of a commit made after the save, so the save is in it (INCIDENTS #367). Checked when
 // the panel opens and every 15 seconds while one is waiting.
+// It also runs whenever the bell is opened and whenever the panel comes back to the screen, and it reads the site's
+// address in full: «تم تحديث المثبت في الرئيسية» stayed «جاري الظهور على الموقع…» for three hours (owner 2026-10-18)
+// because nothing asked again once the waiting timer had stopped. A save still unconfirmed after STALE_MS isn't
+// waiting for anything any more: it loses the chip instead of saying «جاري» for good.
+const BUILD_URL = /(^|\.)arab-wrestling\.com$/.test(location.hostname) ? '/build.json' : 'https://arab-wrestling.com/build.json';
+export const STALE_MS = 2 * 3600_000;
 let settleTimer = null;
+/** Has the live build `b` this save `n` in it? (its commit, or a build of a later commit, or built after it) */
+export function inBuild(b, n) {
+  if (!b || !n) return false;
+  return (b.recent || []).includes(n.commit) || b.commit === n.commit || !!(b.commitTime && b.commitTime * 1000 > n.at + 5000)
+    || !!(b.builtAt && Date.parse(b.builtAt) > n.at + 60_000);
+}
 async function settlePending() {
-  settleTimer = null;
+  if (settleTimer) { clearTimeout(settleTimer); settleTimer = null; }
   const waiting = localItems().filter(n => n.status === 'pending' && n.commit);
   if (!waiting.length) return;
   try {
-    const b = await fetch(`/build.json?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
-    if (b) {
-      const live = (n) => (b.recent || []).includes(n.commit) || b.commit === n.commit || (b.commitTime && b.commitTime * 1000 > n.at + 5000);
-      for (const n of waiting.filter(live)) markLive(n.commit);
-    }
+    const b = await fetch(`${BUILD_URL}?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
+    if (b) for (const n of waiting.filter(n => inBuild(b, n))) markLive(n.commit);
   } catch {}
+  // nothing settled it in two hours: no more «جاري…»
+  const list = localItems();
+  let stale = false;
+  for (const n of list) if (n.status === 'pending' && Date.now() - n.at > STALE_MS) { n.status = 'done'; stale = true; }
+  if (stale) { saveLocal(list); refresh(); }
   if (localItems().some(n => n.status === 'pending' && n.commit)) settleTimer = setTimeout(settlePending, 15_000);
 }
 
@@ -199,11 +213,12 @@ export function setupBell() {
     const open = pop.hidden;
     document.querySelectorAll('.menu-pop').forEach(p => { p.hidden = true; });
     pop.hidden = !open;
-    if (open) { renderList(); load(); }
+    if (open) { renderList(); load(); settlePending(); }
   });
   pop.addEventListener('click', (e) => { e.stopPropagation(); if (e.target.closest('a.bell-item')) pop.hidden = true; });
   $('#bell-read').onclick = () => { write(SEEN_KEY, Date.now()); renderBadge(); renderList(); };
   if (timer) clearInterval(timer);
   timer = setInterval(() => { if (!document.hidden) load(); }, POLL_MS);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) settlePending(); });
   load();
 }
