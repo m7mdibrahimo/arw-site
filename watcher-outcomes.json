@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/two-matches-added-october-19-wwe-raw": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-18T21:51:56.280Z"
- },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:34.795Z"
+  "at": "2026-10-18T21:54:28.496Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:34.680Z"
+  "at": "2026-10-18T21:54:28.362Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:34.464Z"
+  "at": "2026-10-18T21:54:28.110Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:33.792Z"
+  "at": "2026-10-18T21:54:27.318Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:33.574Z"
+  "at": "2026-10-18T21:54:27.064Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-i-cant-say-when-or-where-but-i-know-timeless-toni-storm-will-be-back-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:33.403Z"
+  "at": "2026-10-18T21:54:26.866Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-very-intrigued-by-possibility-of-kairi-appearing-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:33.134Z"
+  "at": "2026-10-18T21:54:26.558Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-if-we-say-that-aew-is-where-the-best-wrestle-how-couldnt-i-belong-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-18T21:52:32.959Z"
+  "at": "2026-10-18T21:54:26.348Z"
+ },
+ "https://www.ringsidenews.com/two-matches-added-october-19-wwe-raw": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-18T21:51:56.280Z"
  },
  "https://www.fightful.com/wrestling/exodus-pro-heat-of-the-moment-results-10-16": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
