@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/two-matches-added-october-19-wwe-raw": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-18T21:51:56.280Z"
+ },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-09-30T12:57:05.141Z"
- },
- "https://www.fightful.com/wrestling/alexa-bliss-to-release-song-with-ryan-cabrera-on-october-9": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-30T12:47:03.199Z"
  }
 }
