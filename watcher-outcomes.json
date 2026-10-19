@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-19T21:05:25.912Z"
+ },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-02T11:11:59.874Z"
- },
- "https://www.fightful.com/wrestling/sheamus-expected-to-draw-interest-from-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T10:50:49.182Z"
  }
 }
