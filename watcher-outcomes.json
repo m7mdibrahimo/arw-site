@@ -1,33 +1,33 @@
 {
- "https://www.ringsidenews.com/nikki-bella-says-shes-single-not-sale": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-19T08:47:54.164Z"
- },
  "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T08:41:32.059Z"
+  "at": "2026-10-19T08:52:33.099Z"
  },
  "https://www.fightful.com/wrestling/details-about-tna-talent-meeting-held-by-carlos-silva-regarding-upcoming-contracts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T08:41:31.631Z"
+  "at": "2026-10-19T08:52:32.674Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T08:41:31.181Z"
+  "at": "2026-10-19T08:52:32.252Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T08:41:31.046Z"
+  "at": "2026-10-19T08:52:32.115Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T08:41:30.782Z"
+  "at": "2026-10-19T08:52:31.841Z"
+ },
+ "https://www.ringsidenews.com/nikki-bella-says-shes-single-not-sale": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-19T08:47:54.164Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
