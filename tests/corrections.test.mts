@@ -294,3 +294,11 @@ test("Gallus is spelled جالوس everywhere, never غالوس (INCIDENTS #695)
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غالوس/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+test("General Manager is «المدير العام», never «مدير العرض» (INCIDENTS #696)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أعلن مدير العرض آدم بيرس"), "أعلن المدير العام آدم بيرس");
+  assert.equal(applyCorrections("اضطر مدير العرض العام آدم"), "اضطر المدير العام آدم");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مدير العرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
