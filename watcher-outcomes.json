@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-19": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-19T12:13:22.321Z"
+ },
  "https://www.fightful.com/wrestling/us-state-department-issues-new-security-alert-for-americans-in-the-middle-east": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T12:02:20.666Z"
+  "at": "2026-10-19T12:13:22.048Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T12:02:20.365Z"
+  "at": "2026-10-19T12:13:21.733Z"
  },
  "https://www.fightful.com/wrestling/details-about-tna-talent-meeting-held-by-carlos-silva-regarding-upcoming-contracts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T12:02:20.069Z"
+  "at": "2026-10-19T12:13:21.412Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T12:02:19.769Z"
+  "at": "2026-10-19T12:13:21.095Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T12:02:19.673Z"
+  "at": "2026-10-19T12:13:20.994Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T12:02:19.483Z"
+  "at": "2026-10-19T12:13:20.797Z"
  },
  "https://www.ringsidenews.com/drew-mcintyre-claims-he-would-destroy-cm-punk-real-fight": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-01T14:06:54.165Z"
- },
- "https://www.fightful.com/wrestling/corey-graves-pays-tribute-to-pac-gravity-forgot-him-we-never-will": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-01T12:42:07.814Z"
  }
 }
