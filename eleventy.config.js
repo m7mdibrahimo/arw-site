@@ -235,7 +235,7 @@ module.exports = function(eleventyConfig) {
       const name = String(fn).replace(/\s+/g, " ").slice(0, 90);
       return on(event, (...args) => {
         const t = Date.now();
-        const done = () => { const sec = (Date.now() - t) / 1000; if (sec >= 3) console.log(`[timing] after-build step took ${sec.toFixed(1)}s: ${name}`); };
+        const done = () => { const sec = (Date.now() - t) / 1000; if (process.env.ARW_MEM_LOG) console.log(`[mem] after step: heap ${Math.round(process.memoryUsage().heapUsed / 1048576)} MB rss ${Math.round(process.memoryUsage().rss / 1048576)} MB: ${name.slice(0, 50)}`); if (sec >= 3) console.log(`[timing] after-build step took ${sec.toFixed(1)}s: ${name}`); };
         const r = fn(...args);
         if (r && typeof r.then === "function") return r.then((v) => { done(); return v; });
         done();
@@ -243,6 +243,15 @@ module.exports = function(eleventyConfig) {
       });
     };
   }
+  // The bots' bookkeeping (_data/deliveries/ = ~6,800 files, publish-state, show-reel-state, duplicate-skips) is never read by a
+  // template, but Eleventy loaded it as global data and deep-copied it into the data of every one of the 9,000+ pages:
+  // 4.5 GB of the build's 6 GB heap, until the build died out of memory and the live site stayed on an old version
+  // (INCIDENTS #698). It is left out of the data cascade; the scripts read these files straight from disk.
+  eleventyConfig.on("eleventy.globalDataFiles", (files) => {
+    for (let i = files.length - 1; i >= 0; i--) {
+      if (/(^|\/)_data\/(deliveries\/|publish-state\.json$|duplicate-skips\.json$|show-reel-state\.json$)/.test(String(files[i]).replace(/\\/g, "/"))) files.splice(i, 1);
+    }
+  });
   // One line per written file (5000+) only slows the host's build log down.
   eleventyConfig.setQuietMode(true);
 
