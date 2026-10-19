@@ -345,3 +345,12 @@ test("dual verbs with object pronoun are blocked and «ايريكا» is correct
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ايريكا|سمعاها/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #705: «يذكر أن خاض الثنائي» (verb before subject) and a clipped «قم النصوص» reached stories.
+test("the broken Drew McIntyre phrasings are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("يذكر أن خاض الثنائي صراعا"), "يذكر أن الثنائي خاض صراعا");
+  assert.equal(applyCorrections("لكنه يرفض قم النصوص الحرفية"), "لكنه يرفض التقيد بالنصوص الحرفية");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /يذكر أن خاض الثنائي|يرفض قم النصوص/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
