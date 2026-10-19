@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/nikki-bella-says-shes-single-not-sale": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-19T08:45:07.491Z"
+ },
  "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-01T01:01:41.367Z"
- },
- "https://www.fightful.com/wrestling/mason-rook-reacts-to-not-being-cleared-to-compete-on-9-29-wwe-nxt-sometimes-life-is-cruel": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-01T00:09:13.328Z"
  }
 }
