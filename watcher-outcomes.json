@@ -1,38 +1,38 @@
 {
- "https://www.fightful.com/wrestling/daniel-hardy-does-jeff-hardys-juke-after-chicago-bears-win-over-atlanta-falcons": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-19T02:25:57.006Z"
- },
  "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:25:39.342Z"
+  "at": "2026-10-19T02:27:42.286Z"
  },
  "https://www.fightful.com/wrestling/details-about-tna-talent-meeting-held-by-carlos-silva-regarding-upcoming-contracts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:25:38.982Z"
+  "at": "2026-10-19T02:27:41.866Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:25:38.608Z"
+  "at": "2026-10-19T02:27:41.448Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:25:38.489Z"
+  "at": "2026-10-19T02:27:41.314Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:25:38.265Z"
+  "at": "2026-10-19T02:27:41.054Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:25:37.580Z"
+  "at": "2026-10-19T02:27:40.256Z"
+ },
+ "https://www.fightful.com/wrestling/daniel-hardy-does-jeff-hardys-juke-after-chicago-bears-win-over-atlanta-falcons": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-19T02:25:57.006Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
