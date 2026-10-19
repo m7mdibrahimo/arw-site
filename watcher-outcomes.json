@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-19T01:59:56.930Z"
+ },
  "https://www.fightful.com/wrestling/details-about-tna-talent-meeting-held-by-carlos-silva-regarding-upcoming-contracts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:09.351Z"
+  "at": "2026-10-19T01:59:56.529Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:09.017Z"
+  "at": "2026-10-19T01:59:56.131Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:08.916Z"
+  "at": "2026-10-19T01:59:56.004Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:08.740Z"
+  "at": "2026-10-19T01:59:55.761Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:08.186Z"
+  "at": "2026-10-19T01:59:55.015Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:08.008Z"
+  "at": "2026-10-19T01:59:54.764Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-i-cant-say-when-or-where-but-i-know-timeless-toni-storm-will-be-back-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T01:55:07.868Z"
+  "at": "2026-10-19T01:59:54.563Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-results-10-15-shotzi-defends-title": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-09-30T21:41:29.887Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-9-30": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-09-30T18:39:37.719Z"
  }
 }
