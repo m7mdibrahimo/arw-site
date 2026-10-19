@@ -370,3 +370,11 @@ test("«لم يشتري» and «منطقة الجذر» are corrected and gone f
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم يشتري|منطقة الجذر/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«رفع المصارعات» is corrected and «كانا» is a blocked dual form (INCIDENTS #708)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("صعوبة في رفع المصارعات"), "صعوبة في رفع الخصوم");
+  const { checkArticle } = await import("../scripts/news-qa");
+  const issues = checkArticle("عنوان", "قال إنهم كانا في قمة اللطف مع الجميع.");
+  assert.ok(JSON.stringify(issues).includes("dual_form"));
+});
