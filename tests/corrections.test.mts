@@ -426,3 +426,11 @@ test("fanbase «لا تقدر» (appreciate) isn't left ambiguous in any story",
     assert.ok(!fs.readFileSync(`content/news/${f}`, "utf-8").includes("قاعدة جماهيرية لا تقدر"), f);
   }
 });
+
+// INCIDENTS #716: «دعوى قضائية رفعه حارس أمن» (مونتيز فورد) — «دعوى» مؤنثة.
+test("feminine «دعوى قضائية» takes «رفعها» (INCIDENTS #716)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وسط دعوى قضائية رفعه حارس أمن"), "وسط دعوى قضائية رفعها حارس أمن");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /دعوى قضائية رفعه(?![\u0627-\u064a])/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
