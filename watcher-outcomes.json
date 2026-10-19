@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290690/wwe-money-in-the-bank-2026-stephanie-vaquer-injury-suffered-backstage-report": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-19T18:17:15.278Z"
+ },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
   "retry": true,
   "at": "2026-10-02T01:58:49.729Z"
- },
- "https://www.fightful.com/wrestling/chantel-monroe-returns-to-the-ring": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T01:48:03.906Z"
  }
 }
