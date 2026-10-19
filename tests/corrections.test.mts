@@ -405,3 +405,8 @@ test("«لا تعلى عليها» تتصحح لـ«لا مثيل لها» (INCI
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
   assert.ok(corrections.some(c => c.wrong === "لا تعلى عليها" && c.right === "لا مثيل لها"));
 });
+
+test("«طاقم المخاطرين» تتصحح لـ«طاقم المشاهد الخطرة» (INCIDENTS #712)", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "طاقم المخاطرين" && c.right === "طاقم المشاهد الخطرة"));
+});
