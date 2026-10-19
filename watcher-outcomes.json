@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-19T21:25:33.297Z"
+ },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-19T21:23:31.034Z"
- },
- "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-19T21:05:25.912Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
   "reason": "مكرر مع خبر نزل قبل كده",
