@@ -354,3 +354,11 @@ test("the broken Drew McIntyre phrasings are corrected", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /يذكر أن خاض الثنائي|يرفض قم النصوص/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #706: «Bad Blood العام الماضي» (the event was 2024) and «القفص الحديدي» for Hell in a Cell.
+test("the Bad Blood «last year» phrasing is corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("داخل القفص الحديدي في عرض WWE Bad Blood العام الماضي"), "داخل قفص Hell in a Cell في عرض WWE Bad Blood 2024");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /Bad Blood العام الماضي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
