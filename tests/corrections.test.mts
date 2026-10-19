@@ -278,3 +278,12 @@ test("Brody King is always spelled with jeem (INCIDENTS #692)", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /برودي كينغ/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+test("Gillberg is spelled غيلبيرج in the glossary and every story (INCIDENTS #694)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("قال غيلبيرغ"), "قال غيلبيرج");
+  const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
+  assert.equal(names["Gillberg"], "غيلبيرج");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غيلبيرغ/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
