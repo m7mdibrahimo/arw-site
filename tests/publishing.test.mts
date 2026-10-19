@@ -5194,3 +5194,9 @@ test('weekly episode forms carry «مشاهده … الاخير كامل» and 
   const forms = showNameForms({ headline: 'عرض سماك داون 16.10.2026 مترجم', title: 'WWE Smackdown 16.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-16', aliases: ['عرض سماك داون', 'سماك داون'], isShow: true });
   for (const f of ['مشاهده عرض سماك داون الاخير كامل', 'عرض السماك داون الاخير', 'عرض السماك داون الاخير مترجم']) assert.ok(forms.includes(f), f);
 });
+
+test('a yearly show carries «موعد عرض … <year>» among its alternate names (structured data only)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = showNameForms({ headline: 'عرض موني ان ذا بانك 2026', title: 'WWE Money in the Bank (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: ['عرض موني ان ذا بانك'], isShow: true });
+  assert.ok(forms.includes('موعد عرض موني ان ذا بانك 2026'), forms.join('|'));
+});

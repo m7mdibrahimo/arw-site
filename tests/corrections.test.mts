@@ -417,3 +417,12 @@ test("«مايك بايلي» تتصحح لـ«مايك بيلي» وتتشال 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مايك بايلي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("fanbase «لا تقدر» (appreciate) isn't left ambiguous in any story", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "قاعدة جماهيرية لا تقدر"));
+  for (const f of fs.readdirSync("content/news")) {
+    if (!f.endsWith(".md")) continue;
+    assert.ok(!fs.readFileSync(`content/news/${f}`, "utf-8").includes("قاعدة جماهيرية لا تقدر"), f);
+  }
+});
