@@ -152,6 +152,8 @@ const galleryYaml = (g?: string[]) => (g && g.length ? ["gallery:", ...g.map((x)
 /** Wrong→right spellings fixed in every English story before it is saved (INCIDENTS #385) */
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
+  // «Entrances Themes» is not English: the noun before «theme» is singular (INCIDENTS #700)
+  [/\b(Entrance|entrance)s (Themes?|Music|Songs?)\b/g, "$1 $2"],
   // «Def.» is a results-line abbreviation, not a headline word (INCIDENTS #688)
   [/\bDef\. (?=[A-Z])/g, "Defeats "],
   // Title Case capitalised the small word of an event name (INCIDENTS #441)

@@ -321,3 +321,9 @@ test("Fuerza Poblana is corrected and in the glossary", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("فويرسا دوبلانا"));
   assert.deepEqual(bad, []);
 });
+
+test("English edition: «Entrances Themes» becomes «Entrance Themes» (INCIDENTS #700)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("Joe Hendry Reveals Favorite WWE Entrances Themes From Past & Present"), "Joe Hendry Reveals Favorite WWE Entrance Themes From Past & Present");
+  assert.equal(fixEnglishNames("Entrances Music"), "Entrance Music");
+});
