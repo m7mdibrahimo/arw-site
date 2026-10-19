@@ -7239,6 +7239,11 @@
    "wrong": "طرد بري",
    "right": "طرد بريدي",
    "note": "parcel = «طرد بريدي» مش «بري» (خبر أشرطة توني ستورم)"
+  },
+  {
+   "wrong": "فويرسا دوبلانا",
+   "right": "فويرزا بوبلانا",
+   "note": "Fuerza Poblana (CMLL) كتبها Gemini «فويرسا دوبلانا» (نتائج CMLL Domingo Familiar 18-10)"
   }
  ]
 }

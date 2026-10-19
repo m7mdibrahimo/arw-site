@@ -312,3 +312,12 @@ test("a definite word repeated around «و» is blocked and «طرد بري» is
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([ء-ي]{3,})\s+وال\1(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^---[\s\S]*?\n---/, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #699: Gemini wrote Fuerza Poblana as «فويرسا دوبلانا».
+test("Fuerza Poblana is corrected and in the glossary", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("فاز فريق فويرسا دوبلانا"), "فاز فريق فويرزا بوبلانا");
+  assert.ok(JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"))["Fuerza Poblana"]);
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("فويرسا دوبلانا"));
+  assert.deepEqual(bad, []);
+});
