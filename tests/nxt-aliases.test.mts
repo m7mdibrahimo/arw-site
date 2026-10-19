@@ -21,3 +21,9 @@ test("NWA Powerrr, MLW Fusion and CMLL weekly programs carry the spellings visit
   const cfg = readFileSync(new URL("../eleventy.config.js", import.meta.url), "utf8");
   for (const q of ['"nwa-powerrr": [', '"ان دبليو ايه باور"', '"mlw-fusion": [', '"ام ال دبليو فيوجن"', '"cmll-lunes-clasico": [', '"لونيس كلاسيكو"', '/^cmll-/.test(p.slug)']) assert.ok(cfg.includes(q), q);
 });
+
+test("Lucha Libre AAA carries the Arabic spellings visitors type (INCIDENTS #717)", () => {
+  const src = readFileSync("eleventy.config.js", "utf8");
+  const line = src.split("\n").find((l) => l.includes('"lucha-libre-aaa": ['))!;
+  for (const q of ["لوتشا ليبري ايه ايه ايه", "لوتشا ليبري", "Lucha Libre AAA مترجم"]) assert.ok(line.includes(`"${q}"`), q);
+});

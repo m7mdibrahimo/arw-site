@@ -1518,6 +1518,7 @@ module.exports = function(eleventyConfig) {
           "roh-specials": ["رينغ أوف أونر", "رينج اوف اونر", "ار او اتش", "روه", "ROH TV", "ROH مترجم", "ROH Wrestling", "ROH Specials", "ROH Special", "Ring of Honor مترجم", "عرض ار او اتش مترجم", "عرض ار او اتش الاخير", "عرض ROH الاخير مترجم", "عرض رينغ اوف اونر مترجم"],
           "wwe-evolve": ["إيفولف", "ايفولف", "WWE Evolve", "عرض ايفولف مترجم", "عرض ايفولف الاخير", "WWE Evolve مترجم", "دبليو دبليو اي ايفولف"],
           "nwa-powerrr": ["ان دبليو ايه باور", "ان دبليو ايه", "باور", "ان دبليو ايه باورر", "NWA Powerrr", "NWA Power", "NWA Powerrr مترجم", "NWA مترجم"],
+          "lucha-libre-aaa": ["لوتشا ليبري ايه ايه ايه", "لوتشا ليبري AAA", "لوتشا ليبري", "لوشا ليبري", "ايه ايه ايه", "AAA", "Lucha Libre AAA", "Lucha Libre AAA مترجم", "AAA مترجم"],
           "mlw-fusion": ["ام ال دبليو فيوجن", "ام ال دبليو", "فيوجن", "فيوزن", "MLW Fusion", "MLW Fusion مترجم", "MLW مترجم"],
           "cmll-lunes-clasico": ["سي ام ال ال", "سي إم إل إل", "لونيس كلاسيكو", "لونس كلاسيكو", "لوتشا ليبري", "CMLL", "CMLL Lunes Clasico", "CMLL Lunes Clasico مترجم", "CMLL مترجم"],
           "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],

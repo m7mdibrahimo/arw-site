@@ -434,3 +434,7 @@ test("feminine «دعوى قضائية» takes «رفعها» (INCIDENTS #716)",
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /دعوى قضائية رفعه(?![\u0627-\u064a])/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("style guide: «بعضهم البعض» agrees with the wrestlers' gender, never the dual (INCIDENTS #717)", () => {
+  assert.ok(fs.readFileSync("editorial/style-guide.md", "utf-8").includes("«بعضهم البعض» بتتطابق مع النوع والعدد"));
+});
