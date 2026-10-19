@@ -410,3 +410,10 @@ test("«طاقم المخاطرين» تتصحح لـ«طاقم المشاهد �
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
   assert.ok(corrections.some(c => c.wrong === "طاقم المخاطرين" && c.right === "طاقم المشاهد الخطرة"));
 });
+
+test("«مايك بايلي» تتصحح لـ«مايك بيلي» وتتشال من الأخبار (INCIDENTS #714)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("قال سبيدبول مايك بايلي"), "قال سبيدبول مايك بيلي");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مايك بايلي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
