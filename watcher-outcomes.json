@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-19T23:38:26.485Z"
+ },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-19T23:32:38.813Z"
- },
- "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-19T23:18:12.060Z"
  },
  "https://www.fightful.com/wrestling/us-state-department-issues-new-security-alert-for-americans-in-the-middle-east": {
   "reason": "مكرر مع خبر نزل قبل كده",
