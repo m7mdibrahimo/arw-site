@@ -1525,7 +1525,7 @@ module.exports = function(eleventyConfig) {
         // Every program also answers to «<the federation said in Arabic> <the program>» («دبليو دبليو إي موني إن ذا بانك»,
         // 111 impressions at 10.4 on a show that had no such name), with «إن» and «ان» both (INCIDENTS #564)
         const FED_SAID = { WWE: "دبليو دبليو إي", AEW: "ايه اي دبليو", TNA: "تي ان ايه", NJPW: "نيو جابان", ROH: "ار او اتش", MLW: "ام ال دبليو", NWA: "ان دبليو ايه", CMLL: "سي ام ال ال", AAA: "لوتشا ليبري اي اي اي" };
-        const baseAliases = ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : []);
+        const baseAliases = ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : /^revpro/.test(p.slug) ? ["ريف برو", "ريفبرو", "ريفولوشن برو", "ريفولوشن برو ريسلنج", "RevPro", "Rev Pro", "Revolution Pro Wrestling", "RevPro مترجم", "شاهد برو"] : []);
         const fedSaid = FED_SAID[String(federation || "").toUpperCase()] || "";
         const programSaid = String(arName || "").replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
         const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
