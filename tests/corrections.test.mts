@@ -400,3 +400,8 @@ test("Eva Marie / CMLL slips are corrected and dual forms blocked (INCIDENTS #71
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الانفساخ|ولطرف الآخر/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«لا تعلى عليها» تتصحح لـ«لا مثيل لها» (INCIDENTS #711)", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "لا تعلى عليها" && c.right === "لا مثيل لها"));
+});
