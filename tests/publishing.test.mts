@@ -5188,3 +5188,9 @@ test("recap and nostalgia articles carry the program names in their keywords (IN
   assert.ok(/set artNames = \[\]/.test(layout) && /"keywords": "\{\{ \(tags or \[\]\)/.test(layout));
   assert.ok(/page\.url\.startsWith\('\/recaps\/'\) and ldAbout/.test(layout));
 });
+
+test('weekly episode forms carry «مشاهده … الاخير كامل» and «عرض ال… الاخير» (INCIDENTS #713)', async () => {
+  const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const forms = showNameForms({ headline: 'عرض سماك داون 16.10.2026 مترجم', title: 'WWE Smackdown 16.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-16', aliases: ['عرض سماك داون', 'سماك داون'], isShow: true });
+  for (const f of ['مشاهده عرض سماك داون الاخير كامل', 'عرض السماك داون الاخير', 'عرض السماك داون الاخير مترجم']) assert.ok(forms.includes(f), f);
+});

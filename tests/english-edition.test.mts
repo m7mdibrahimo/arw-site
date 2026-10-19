@@ -192,3 +192,11 @@ test("a word opening a quotation is capital in a headline; «Def.» becomes «De
   assert.equal(normalizeEnglishTitle("Tommy Dreamer Posts Teaser Video for 'the Midnight Dreamer'"), "Tommy Dreamer Posts Teaser Video for 'The Midnight Dreamer'");
   assert.equal(fixEnglishNames("Mercedes Moné Def. Thekla to Retain Title"), "Mercedes Moné Defeats Thekla to Retain Title");
 });
+
+test('Mike Bailey is «he», never the singular «they» (INCIDENTS #713)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('Speedball Mike Bailey Says They Are Seriously Doubting Themselves After AEW WrestleDream'), 'Speedball Mike Bailey Says He Is Seriously Doubting Himself After AEW WrestleDream');
+  assert.equal(fixEnglishNames('Speedball reflected, noting that they are doubting. Speedball competed in their first main event, though they were eliminated.'), 'Speedball reflected, noting that he is doubting. Speedball competed in his first main event, though he was eliminated.');
+  assert.equal(fixEnglishNames('Fans say they are happy.'), 'Fans say they are happy.');
+  assert.match(englishStyleRules('https://www.fightful.com/x'), /never the singular "they/);
+});

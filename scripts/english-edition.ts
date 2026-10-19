@@ -68,6 +68,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
 - Official spellings for wrestlers, promotions, shows, events and championships (WWE, AEW, TNA, ROH, NJPW, SmackDown, RAW, NXT, Dynamite…).
 - Do not call something "upcoming" or "set to" if its date has already passed relative to today (a film that is out, a show that aired): use the past tense or "new".
+- Pronouns: one wrestler is "he" or "she" as the source says, never the singular "they/their/themselves" ("Mike Bailey Says He Is Doubting Himself", not "Says They Are Doubting Themselves"); "they" is only for a team, a group or several people (INCIDENTS #713).
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
@@ -150,6 +151,16 @@ const yaml = (v: unknown) => JSON.stringify(v);
 const galleryYaml = (g?: string[]) => (g && g.length ? ["gallery:", ...g.map((x) => `  - ${x}`)] : []);
 /** The edition's file (an existing one for the same source story is replaced) */
 /** Wrong→right spellings fixed in every English story before it is saved (INCIDENTS #385) */
+/** Mike Bailey (Speedball) is «he»: the writer used the singular «they» for him (INCIDENTS #713). Sentence by sentence, so another
+ *  subject's «they» in a sentence that doesn't name him stays. */
+export function fixSingularThey(text: string): string {
+  return text.replace(/[^.!?\n]*\b(?:Speedball|Mike Bailey)\b[^.!?\n]*/g, (sent) => /\b(?:and|with|against|vs\.?|versus)\b[^.!?\n]*\b(?:Kevin Knight|Roderick Strong|Kyle Fletcher|Mark Davis|Ricochet|Mistico|Mustafa Ali|Michael Oku)\b/.test(sent) && /\bthey\b/i.test(sent) ? sent : sent
+    .replace(/\bThey (Are|Were|Have|Had|Do|Did|Will|Would|Can|Could)\b/g, (_m, v) => `He ${({ Are: "Is", Were: "Was", Have: "Has", Do: "Does" } as Record<string, string>)[v] || v}`)
+    .replace(/\b(They) (are|were|have|had|do|did|will|would|can|could)\b/g, (_m, _t, v) => `He ${({ are: "is", were: "was", have: "has", do: "does" } as Record<string, string>)[v] || v}`)
+    .replace(/\b(they) (are|were|have|had|do|did|will|would|can|could)\b/g, (_m, _t, v) => `he ${({ are: "is", were: "was", have: "has", do: "does" } as Record<string, string>)[v] || v}`)
+    .replace(/\bThemselves\b/g, "Himself").replace(/\bthemselves\b/g, "himself").replace(/\bTheir\b/g, "His").replace(/\btheir\b/g, "his"));
+}
+
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
   // «Entrances Themes» is not English: the noun before «theme» is singular (INCIDENTS #700)
@@ -244,7 +255,7 @@ export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(text)) === String(text) ? [] : ["a/an or I're typo"];
 }
 export function fixEnglishNames(text: string): string {
-  return aToAn(fixIre(twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))));
+  return fixSingularThey(aToAn(fixIre(twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
