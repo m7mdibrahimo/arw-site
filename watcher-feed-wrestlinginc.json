@@ -1,35 +1,5 @@
 [
   {
-    "id": 4064172270,
-    "link": "https://www.wrestlinginc.com/2288041/wwe-joe-hendry-rock-dwayne-johnson-trick-williams-favorite-entrance-themes-past-present/",
-    "date": "Mon, 19 Oct 2026 03:59:00 +0000",
-    "date_gmt": "2026-10-19T03:59:00.000Z",
-    "title": {
-      "rendered": "Joe Hendry Reveals Favorite WWE Entrances Themes From Past & Present"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-reveals-favorite-wwe-entrances-themes-from-past-present/l-intro-1792090427.jpg"
-  },
-  {
-    "id": 3068293107,
-    "link": "https://www.wrestlinginc.com/2287749/jacy-jayne-cried-wwe-mitb-cash-in/",
-    "date": "Sun, 18 Oct 2026 20:30:00 +0000",
-    "date_gmt": "2026-10-18T20:30:00.000Z",
-    "title": {
-      "rendered": "Jacy Jayne Says She Cried Watching This WWE MITB Cash-In"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/jacy-jayne-cried-watching-wwe-mitb-cash-in/l-intro-1792080715.jpg"
-  },
-  {
-    "id": 4554794959,
-    "link": "https://www.wrestlinginc.com/2287809/aew-anthony-bowens-acclaimed-aew-happened-how-supposed/",
-    "date": "Sun, 18 Oct 2026 20:00:00 +0000",
-    "date_gmt": "2026-10-18T20:00:00.000Z",
-    "title": {
-      "rendered": "Anthony Bowens Says Everything After AEW Acclaimed Run Happened How It Was Supposed To"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/anthony-bowens-says-everything-after-aew-acclaimed-run-happened-how-it-was-supposed-to/l-intro-1792082669.jpg"
-  },
-  {
     "id": 1918758758,
     "link": "https://www.wrestlinginc.com/2289802/wwe-william-regal-wrestlers-should-pay-more-attention-pin-attempts-kick-outs/",
     "date": "Sun, 18 Oct 2026 19:49:17 +0000",
@@ -198,5 +168,35 @@
       "rendered": "WWE's Chad Gable Explains How Shoulder Injury Created 'Competitive Fire' Within Him"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-chad-gable-explains-how-shoulder-injury-created-competitive-fire-within-him/l-intro-1792089963.jpg"
+  },
+  {
+    "id": 3222502267,
+    "link": "https://www.wrestlinginc.com/2287920/wwe-scotty-2-hotty-stone-cold-steve-austin-doctors-appointment/",
+    "date": "Sun, 18 Oct 2026 12:30:00 +0000",
+    "date_gmt": "2026-10-18T12:30:00.000Z",
+    "title": {
+      "rendered": "Scotty 2 Hotty Recalls Stone Cold Steve Austin Taking Him To Doctor's Appointment"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/scotty-2-hotty-recalls-stone-cold-steve-austin-taking-him-to-doctors-appointment/l-intro-1792086494.jpg"
+  },
+  {
+    "id": 4497488823,
+    "link": "https://www.wrestlinginc.com/2289682/aew-wrestledream-2026-hated-loved-opinion-review/",
+    "date": "Sun, 18 Oct 2026 05:42:01 +0000",
+    "date_gmt": "2026-10-18T05:42:01.000Z",
+    "title": {
+      "rendered": "AEW WrestleDream 2026: 3 Things We Hated & 3 Things We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wrestledream-2026-hated-loved-opinion-review/l-intro-1792302720.jpg"
+  },
+  {
+    "id": 1995075479,
+    "link": "https://www.wrestlinginc.com/2289677/aew-wrestledream-2026-will-ospreay-clockwork-carnage-retains-world-title/",
+    "date": "Sun, 18 Oct 2026 04:34:27 +0000",
+    "date_gmt": "2026-10-18T04:34:27.000Z",
+    "title": {
+      "rendered": "Will Ospreay Wins Clockwork Carnage, Retains AEW World Title At WrestleDream 2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/will-ospreay-wins-clockwork-carnage-retains-aew-world-title-at-wrestledream-2026/l-intro-1792297874.jpg"
   }
 ]
