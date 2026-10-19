@@ -287,3 +287,10 @@ test("Gillberg is spelled غيلبيرج in the glossary and every story (INCIDE
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غيلبيرغ/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+test("Gallus is spelled جالوس everywhere, never غالوس (INCIDENTS #695)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("فريق غالوس"), "فريق جالوس");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غالوس/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
