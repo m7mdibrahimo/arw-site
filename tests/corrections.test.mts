@@ -362,3 +362,11 @@ test("the Bad Blood «last year» phrasing is corrected", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /Bad Blood العام الماضي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«لم يشتري» and «منطقة الجذر» are corrected and gone from stories (INCIDENTS #707)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لم يشتري اتحاد AEW"), "لم يشتر اتحاد AEW");
+  assert.equal(applyCorrections("تمارين منطقة الجذر"), "تمارين عضلات الجذع");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم يشتري|منطقة الجذر/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});

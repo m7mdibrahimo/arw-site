@@ -416,3 +416,8 @@ test("fightful rewrite prompt keeps the 'recently is not last' fidelity rule", a
   const src = readFileSync(new URL("../scripts/fightful-watcher.ts", import.meta.url), "utf8");
   assert.match(src, /لا تحوّل «مؤخرا\/حديثا» \(recently\) إلى «آخر\/أول»/);
 });
+
+test("rewriteWithGemini rules keep headlines clean and translate «core» as trunk muscles (INCIDENTS #707)", () => {
+  const src = fs.readFileSync("scripts/fightful-watcher.ts", "utf-8");
+  assert.ok(src.includes("العنوان نظيف ومحترم") && src.includes("عضلات الجذع"));
+});
