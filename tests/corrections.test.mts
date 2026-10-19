@@ -388,3 +388,15 @@ test("typos from the 19-10 stories are corrected and gone from the content", asy
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وددون|لهالان|خان سيث رولينز زملائه/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #710: «الانفساخ» / «ولطرف الآخر» / «ممثلتين» / «يطمئنان» / «صديقين» reached Eva Marie and CMLL stories.
+test("Eva Marie / CMLL slips are corrected and dual forms blocked (INCIDENTS #710)", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أدت إلى الانفساخ ولها ولطرف الآخر"), "أدت إلى الانفصال ولها وللطرف الآخر");
+  const body = "كانت شوتزي وماشا ممثلتين لاتحاد MLW، وهم أصدقاء مقربين يطمئنان على بعضهم وبقاء صديقين";
+  const codes = (checkArticle("عنوان واضح عن مصارعة", body) as any[]).map(i => i.code);
+  assert.ok(codes.includes("dual_noun"));
+  assert.ok(codes.includes("dual_form"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الانفساخ|ولطرف الآخر/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

@@ -33,3 +33,10 @@ test("showNameForms does not repeat the aliases it is given", async () => {
   assert.equal(forms.length, new Set(forms).size);
   for (const a of aliases) assert.ok(!forms.includes(a));
 });
+
+// INCIDENTS #710: «عرض aew dynamite الأخير» (position 10) — «عرض» in front of the English program name.
+test("a weekly show with an English name carries «عرض <name> الأخير» forms", () => {
+  const forms = showNameForms({ headline: "عرض ايه اي دبليو دايناميت 14.10.2026 مترجم", title: "AEW Dynamite 14.10.2026", programName: "AEW Dynamite", eventDate: "2026-10-14", aliases: ["عرض ايه اي دبليو دايناميت"], isShow: true, archive: false });
+  for (const f of ["عرض AEW Dynamite الاخير", "عرض AEW Dynamite مترجم"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f.toLowerCase()), f);
+  assert.ok(forms.some((n: string) => /^عرض aew dynamite الأخير$/i.test(n)));
+});
