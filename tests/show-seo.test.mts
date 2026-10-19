@@ -23,3 +23,13 @@ test("«wwe …» search names only for WWE programs", () => {
   const wwe = forms("WWE Money in the Bank", "WWE Money in the Bank (2026)");
   assert.ok(wwe.includes("wwe Money in the Bank 2026 مترجم"));
 });
+
+// INCIDENTS #704: the names the page already carries are not repeated by showNameForms (alternateName had ~25 duplicates).
+test("showNameForms does not repeat the aliases it is given", async () => {
+  const { showNameForms } = await import("../lib/show-seo.cjs");
+  const aliases = ["عرض سماك داون", "سماك داون الأخير"];
+  const forms = showNameForms({ headline: "عرض سماك داون 16.10.2026", title: "WWE Smackdown 16.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-16", aliases, isShow: true });
+  assert.ok(forms.length > 5);
+  assert.equal(forms.length, new Set(forms).size);
+  for (const a of aliases) assert.ok(!forms.includes(a));
+});

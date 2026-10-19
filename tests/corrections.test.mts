@@ -335,3 +335,13 @@ test("bikini is «بيكيني», never «بيسيني» (INCIDENTS #703)", asyn
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بيسيني/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #704: «التي سمعاها» (dual verb) slipped past dual_form; «ايريكا» lost its hamza.
+test("dual verbs with object pronoun are blocked and «ايريكا» is corrected (INCIDENTS #704)", async () => {
+  const { checkArticle, applyCorrections } = await import("../scripts/news-qa");
+  const issues = checkArticle("عنوان واضح للتجربة", "تحدثت نيكي وبري عن أغرب العبارات التي سمعاها طوال مسيرتهن في الفندق.");
+  assert.ok(issues.some(i => i.code === "dual_form"));
+  assert.equal(applyCorrections("مواجهتها ضد ايريكا ديما"), "مواجهتها ضد إيريكا ديما");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ايريكا|سمعاها/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
