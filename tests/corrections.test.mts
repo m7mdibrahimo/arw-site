@@ -327,3 +327,11 @@ test("English edition: «Entrances Themes» becomes «Entrance Themes» (INCIDEN
   assert.equal(fixEnglishNames("Joe Hendry Reveals Favorite WWE Entrances Themes From Past & Present"), "Joe Hendry Reveals Favorite WWE Entrance Themes From Past & Present");
   assert.equal(fixEnglishNames("Entrances Music"), "Entrance Music");
 });
+
+test("bikini is «بيكيني», never «بيسيني» (INCIDENTS #703)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("صور ببيسيني أسود"), "صور ببيكيني أسود");
+  assert.equal(applyCorrections("استغللت رحلتها"), "استغلت رحلتها");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بيسيني/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
