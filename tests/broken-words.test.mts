@@ -410,3 +410,9 @@ test('arabic_wrestling_name blocks Wrestling written in Arabic letters', () => {
   assert.ok(!checkArticle(t, 'في اتحاد Pro Wrestling EVE ' + 'كلام '.repeat(80)).some(i => i.code === 'arabic_wrestling_name'));
   assert.match(applyCorrections('في اتحاد برو ريسلينغ إيف'), /Pro Wrestling EVE/);
 });
+
+test("fightful rewrite prompt keeps the 'recently is not last' fidelity rule", async () => {
+  const { readFileSync } = await import("node:fs");
+  const src = readFileSync(new URL("../scripts/fightful-watcher.ts", import.meta.url), "utf8");
+  assert.match(src, /لا تحوّل «مؤخرا\/حديثا» \(recently\) إلى «آخر\/أول»/);
+});
