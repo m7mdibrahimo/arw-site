@@ -1,5 +1,15 @@
 [
   {
+    "id": 334636,
+    "link": "https://www.fightful.com/wrestling/us-state-department-issues-new-security-alert-for-americans-in-the-middle-east/",
+    "date": "2026-10-19T07:01:18",
+    "date_gmt": "2026-10-19T11:01:18",
+    "title": {
+      "rendered": "US State Department Issues New Security Alert For Americans In The Middle East"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
+  },
+  {
     "id": 334622,
     "link": "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-10-18-2026-persephone-vs-azm-more/",
     "date": "2026-10-18T22:50:00",
@@ -288,15 +298,5 @@
       "rendered": "WWE Live Results From Honolulu, Hawaii (10/17)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/17142000/CS-065647_HAWAII_LIVE-TOUR_1920x1080.jpg"
-  },
-  {
-    "id": 334524,
-    "link": "https://www.fightful.com/wrestling/will-ospreay-im-a-cardio-machine-ask-the-wife/",
-    "date": "2026-10-18T09:47:26",
-    "date_gmt": "2026-10-18T13:47:26",
-    "title": {
-      "rendered": "Will Ospreay: I&#8217;m A Cardio Machine, Ask The Wife"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/15092451/Ospreay-windsor-e1781529913258.jpg"
   }
 ]
