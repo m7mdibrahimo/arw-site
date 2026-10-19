@@ -378,3 +378,13 @@ test("«رفع المصارعات» is corrected and «كانا» is a blocked d
   const issues = checkArticle("عنوان", "قال إنهم كانا في قمة اللطف مع الجميع.");
   assert.ok(JSON.stringify(issues).includes("dual_form"));
 });
+
+// INCIDENTS #709: «وددون» / «لهالان» / «زملائه» after «خان» reached stories.
+test("typos from the 19-10 stories are corrected and gone from the content", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بموافقة وددون إذن"), "بموافقة ودون إذن");
+  assert.equal(applyCorrections("لهالان في نقل"), "لهوجان في نقل");
+  assert.equal(applyCorrections("خان سيث رولينز زملائه في الفريق"), "خان سيث رولينز زملاءه في الفريق");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وددون|لهالان|خان سيث رولينز زملائه/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
