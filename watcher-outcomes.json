@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/oshea-jackson-jr-revealed-mystery-guest-cody-rhodes-charlotte-flair-interview": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-19T18:55:22.622Z"
+ },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-02T02:41:34.594Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-results-10-1-syx-to-speak-leon-slater-competes": {
-  "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
-  "retry": true,
-  "at": "2026-10-02T01:58:49.729Z"
  }
 }
