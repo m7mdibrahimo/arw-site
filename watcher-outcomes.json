@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/daniel-hardy-does-jeff-hardys-juke-after-chicago-bears-win-over-atlanta-falcons": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-19T02:25:57.006Z"
+ },
  "https://www.fightful.com/wrestling/kevin-owens-explains-why-he-said-yes-to-wwe-nxt-live-event-in-gatineau-quebec": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:21:35.840Z"
+  "at": "2026-10-19T02:25:39.342Z"
  },
  "https://www.fightful.com/wrestling/details-about-tna-talent-meeting-held-by-carlos-silva-regarding-upcoming-contracts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:21:35.428Z"
+  "at": "2026-10-19T02:25:38.982Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-reacts-to-losing-aew-world-trios-title-at-aew-wrestledream": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:21:35.016Z"
+  "at": "2026-10-19T02:25:38.608Z"
  },
  "https://www.fightful.com/wrestling/street-fighter-tops-the-box-office-brings-in-51-1-million-worldwide": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:21:34.882Z"
+  "at": "2026-10-19T02:25:38.489Z"
  },
  "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:21:34.623Z"
+  "at": "2026-10-19T02:25:38.265Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-his-visit-to-marvel-studios-was-a-wonderful-meeting-with-wonderful-people": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-19T02:21:33.840Z"
+  "at": "2026-10-19T02:25:37.580Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-9-30-aew-dynamite-was-originally-supposed-to-be-seven-year-anniversary-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-01T00:09:13.328Z"
- },
- "https://www.wrestlinginc.com/2274055/wwe-aaa-worlds-collide-spoilers-september-26-chicago": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-09-30T21:41:29.887Z"
  }
 }
