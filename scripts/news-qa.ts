@@ -112,6 +112,7 @@ const RULES: Rule[] = [
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]|(?<![${AR}])[بلك](?=[A-Z]{2,})`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)" },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
+  { code: "repeated_word_waw", severity: "error", re: new RegExp(`(?<![${AR}])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([${AR}]{3,})\\s+وال\\1(?![${AR}])`, "g"), message: "نفس الكلمة مكررة حوالين «و» («للدعم والدعم المعنوي») — اشطب التكرار" },
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },
   // A sentence that ends right on the verb of speech: «…لم يره الجمهور بالكامل بعد، وقال.» — the quote was lost (INCIDENTS #535)
   // A story must open with its first sentence, not a bold/markdown heading line («**المواجهة الأولى: نزال فرق للسيدات**» opened the Sisters of Sin story — INCIDENTS #558)

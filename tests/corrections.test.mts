@@ -302,3 +302,13 @@ test("General Manager is «المدير العام», never «مدير العر�
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مدير العرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #697: «للدعم والدعم المعنوي» (same word around «و») and «طرد بري» reached stories.
+test("a definite word repeated around «و» is blocked and «طرد بري» is corrected", async () => {
+  const { checkArticle, applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وصل طرد بري إلى المكتب"), "وصل طرد بريدي إلى المكتب");
+  const issues = checkArticle("عنوان واضح للتجربة", "شكرت المصارعة والدتها للدعم والدعم المعنوي طوال مشوارها.");
+  assert.ok(issues.some(i => i.code === "repeated_word_waw"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([ء-ي]{3,})\s+وال\1(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^---[\s\S]*?\n---/, "")));
+  assert.deepEqual(bad, []);
+});
