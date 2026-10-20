@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T22:15:17.890Z"
+ },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T22:13:46.156Z"
- },
- "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-20T22:03:30.519Z"
  },
  "https://www.fightful.com/wrestling/tna-wrestling-re-signs-santino-marella": {
   "reason": "مكرر مع خبر نزل قبل كده",
