@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/aj-francis-says-he-got-some-heat-in-wwe-when-expressions-wanted-to-meet-him-at-money-in-the-bank-2023": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-20T19:27:08.401Z"
+ },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:42.690Z"
+  "at": "2026-10-20T19:27:08.211Z"
  },
  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:42.510Z"
+  "at": "2026-10-20T19:27:08.064Z"
  },
  "https://www.fightful.com/wrestling/lee-moriarty-and-la-cherry-get-engaged": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:42.330Z"
+  "at": "2026-10-20T19:27:07.915Z"
  },
  "https://www.fightful.com/wrestling/kairi-says-various-things-are-already-in-motion-regarding-her-she-may-wrestle-next": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:42.041Z"
+  "at": "2026-10-20T19:27:07.677Z"
  },
  "https://www.fightful.com/wrestling/report-dralistico-aew-contract-to-expire-in-december": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:41.759Z"
+  "at": "2026-10-20T19:27:07.440Z"
  },
  "https://www.fightful.com/wrestling/tiger-jeet-singh-comments-on-cutting-a-fan-with-his-sword-blames-the-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:41.479Z"
+  "at": "2026-10-20T19:27:07.209Z"
  },
  "https://www.fightful.com/wrestling/tna-wrestling-re-signs-santino-marella": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:41.185Z"
+  "at": "2026-10-20T19:27:06.968Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:40.541Z"
+  "at": "2026-10-20T19:27:06.430Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-and-solo-sikoa-embrace-after-wwe-monday-night-raw-goes-off-the-air": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:40.354Z"
+  "at": "2026-10-20T19:27:06.278Z"
  },
  "https://www.fightful.com/wrestling/grayson-waller-had-a-t-shirt-with-stephanie-vaquer-on-it-that-he-couldnt-wear-on-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T19:23:40.169Z"
+  "at": "2026-10-20T19:27:06.116Z"
  },
  "https://www.wrestlinginc.com/2292185/aew-njpw-tommaso-ciampa-shingo-takagi-hopes-face-former-iwgp-champ": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-04T00:29:42.256Z"
- },
- "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-3-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-04T00:21:57.648Z"
  }
 }
