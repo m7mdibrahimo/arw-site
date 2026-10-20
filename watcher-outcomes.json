@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/grayson-waller-had-a-t-shirt-with-stephanie-vaquer-on-it-that-he-couldnt-wear-on-tv": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-20T11:53:28.779Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:32.119Z"
+  "at": "2026-10-20T11:53:28.264Z"
  },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:31.740Z"
+  "at": "2026-10-20T11:53:27.940Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:31.535Z"
+  "at": "2026-10-20T11:53:27.763Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:31.169Z"
+  "at": "2026-10-20T11:53:27.449Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:30.963Z"
+  "at": "2026-10-20T11:53:27.272Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:30.636Z"
+  "at": "2026-10-20T11:53:26.997Z"
  },
  "https://www.fightful.com/wrestling/r-truth-says-he-is-okay-after-injury-scare-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:49:30.184Z"
+  "at": "2026-10-20T11:53:26.622Z"
  },
  "https://www.fightful.com/uncategorized/grayson-waller-had-a-t-shirt-with-stephanie-vaquer-on-it-that-he-couldnt-wear-on-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-03T01:28:34.302Z"
- },
- "https://www.fightful.com/wrestling/watch-wrestling-revolver-tales-from-the-ring-10-2-26": {
-  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
-  "retry": false,
-  "at": "2026-10-03T00:42:12.788Z"
  }
 }
