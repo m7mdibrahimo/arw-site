@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2291292/wwe-raw-roman-reigns-bloodline-run-off-946-main-event": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-20T02:58:45.921Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-20T02:49:39.814Z"
- },
- "https://www.wrestlinginc.com/2291292/wwe-raw-roman-reigns-bloodline-run-off-946-main-event": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-20T02:39:05.899Z"
  },
  "https://www.ringsidenews.com/ethan-page-big-cass-destroy-chad-gable-rey-mysterio-dragon-lee-wwe-raw-title-match": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
