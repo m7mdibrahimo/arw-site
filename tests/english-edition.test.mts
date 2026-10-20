@@ -207,3 +207,10 @@ test("British spellings become American (INCIDENTS #718)", async () => {
   assert.equal(fixEnglishNames("Diss Track Targetting Zilla Fatu"), "Diss Track Targeting Zilla Fatu");
   assert.equal(fixEnglishNames("a fan favourite, defence"), "a fan favorite, defense");
 });
+
+// INCIDENTS #736: Gemini typed a literal «\n» in the Ciampa story; it reached the page as text
+test('a literal backslash-n typed by Gemini is saved as a real line break', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-'));
+  const file = saveEnglishEdition({ ...good, body: good.body.replace('\n\n', ' \\n\\n> "Quote here," he said. \\n\\n') }, input, dir);
+  assert.ok(!fs.readFileSync(file, 'utf8').includes('\\n'));
+});

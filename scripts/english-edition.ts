@@ -265,7 +265,8 @@ export function fixEnglishNames(text: string): string {
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
-  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixEnglishNames(e.body) };
+  // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break
+  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n")) };
   fs.mkdirSync(dir, { recursive: true });
   let slug = englishSlug(e.title) || `story-${i.sourceId}`;
   const existing = findEnglishEdition(i.sourceId, dir);
