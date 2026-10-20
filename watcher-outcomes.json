@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2291356/aew-jeff-jarrett-max-caster-disheartening-tna-bound-for-glory-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T13:35:50.133Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T13:44:48.026Z"
- },
- "https://www.fightful.com/wrestling/moose-responds-to-fans-judging-tna-bound-for-glory-ticket-sales": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T13:33:47.007Z"
  }
 }
