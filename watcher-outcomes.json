@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2292185/aew-njpw-tommaso-ciampa-shingo-takagi-hopes-face-former-iwgp-champ": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-20T19:06:33.605Z"
+ },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
