@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more/": {
-    "matchedFile": "20261007023100-نتائج-عرض-wwe-nxt-6-أكتوبر-2026-زيلا-فاتو-يواجه-ليكسيس-كينغ-وبداية-تصفيات-dusty-rhodes-tag-team-classic.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-10-07T01:08:18.099Z"
-  },
   "https://www.fightful.com/wrestling/big-veteran-names-within-aew-have-pushed-for-sheamus-to-be-signed/": {
     "matchedFile": "20261007032451-موقف-شيماس-الحالي-بعد-انتهاء-عقده-مع-wwe.md",
     "reason": "الخبر الجديد يتناول نفس واقعة اهتمام نجوم AEW بالتعاقد مع شيماس وعدم وجود مفاوضات رسمية، وهي تفاصيل تم ذكرها بالفعل في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261020123500-نجم-aew-لي-موريارتي-يعلن-خطوبته-على-رفيقته-لا-تشيري.md",
     "reason": "الخبر الجديد يتناول نفس واقعة الخطوبة التي تم تغطيتها بالفعل في الخبر رقم 0، والتفاصيل الإضافية مثل مكان الخطوبة لا تعد تطوراً جوهرياً يمنع كونه تكراراً.",
     "at": "2026-10-20T17:58:14.296Z"
+  },
+  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do/": {
+    "matchedFile": "20261020192902-كايري-توضح-موقفها-من-المشاركة-في-النزالات-على-متن-رحلة-كريس-جيريكو-البحرية-وسط-شائعات-انضمامها-إلى-aew.md",
+    "reason": "الخبر الجديد يعيد سرد نفس المقابلة التي أجرتها كايري مع مجلة Weekly Pro Wrestling والحديث عن مشاركتها في رحلة كريس جيريكو البحرية كأول نشاط لها بعد WWE، وهي نفس التفاصيل والحدث الموجود في الخبر المنشور مسبقاً.",
+    "at": "2026-10-20T18:07:19.204Z"
   }
 }
