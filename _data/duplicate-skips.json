@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/aew-collision-spoiler-results-october-10-2026/": {
-    "matchedFile": "20261007020424-نتائج-تسجيلات-عرض-aew-collision-grand-slam-france-6-أكتوبر-2026.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Collision الذي أقيم في 6 أكتوبر 2026 في باريس، وهو نفس الحدث المذكور في الخبر رقم 0.",
-    "at": "2026-10-07T00:11:51.449Z"
-  },
   "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada/": {
     "matchedFile": "20261006212942-نتائج-عرض-aew-dynamite-6-أكتوبر-2026-فوز-ويل-أوسبراي-في-الحدث-الرئيسي.md",
     "reason": "الخبر الجديد يغطي نتائج عرض AEW Dynamite Grand Slam France وهو نفس العرض والنتائج المذكورة في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261019224558-دراليستيكو-يثير-التكهنات-حول-رحيله-عن-aew-بصورة-غامضة-من-السجن.md",
     "reason": "الخبر الجديد يكرر نفس تفاصيل الخبر المنشور حول اقتراب انتهاء عقد دراليستيكو في شهر ديسمبر، وصورة السجن الغامضة، وغيابه عن النزالات منذ شهر يونيو الماضي، حيث يعتمد الخبران على نفس الحدث والمعلومات.",
     "at": "2026-10-20T17:03:53.786Z"
+  },
+  "https://www.fightful.com/wrestling/kairi-says-various-things-are-already-in-motion-regarding-her-she-may-wrestle-next/": {
+    "matchedFile": "20261020192902-كايري-توضح-موقفها-من-المشاركة-في-النزالات-على-متن-رحلة-كريس-جيريكو-البحرية-وسط-شائعات-انضمامها-إلى-aew.md",
+    "reason": "الخبر الجديد ينقل نفس المقابلة مع مجلة Weekly Pro Wrestling وتصريحات كايري حول مستقبلها وتأشيرة العمل برحلتها القادمة، وهو ما تم تغطيته في الخبر المنشور رقم 0.",
+    "at": "2026-10-20T17:42:04.438Z"
   }
 }
