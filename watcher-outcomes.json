@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T21:03:15.564Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-04T02:59:40.880Z"
- },
- "https://www.fightful.com/wrestling/matt-cardona-i-made-more-money-outside-wwe-than-i-ever-made-in-wwe-i-technically-took-a-pay-cut-to-go-back-to-wwe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-04T02:51:50.820Z"
  }
 }
