@@ -1,5 +1,15 @@
 [
   {
+    "id": 334850,
+    "link": "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired/",
+    "date": "2026-10-20T14:30:37",
+    "date_gmt": "2026-10-20T18:30:37",
+    "title": {
+      "rendered": "RUSH Confirms His Visa Has Expired"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/30101639/maxresdefault-242.jpg"
+  },
+  {
     "id": 334835,
     "link": "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do/",
     "date": "2026-10-20T14:01:51",
@@ -288,15 +298,5 @@
       "rendered": "Drew McIntyre Says Triple H Came Up With &#8216;I Prayed For This&#8217; Line, &#8216;My Idea Would&#8217;ve Offended People&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/10/07080105/punk_mcintyre_1.jpg"
-  },
-  {
-    "id": 334772,
-    "link": "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-trophies-renewed/",
-    "date": "2026-10-20T06:27:14",
-    "date_gmt": "2026-10-20T10:27:14",
-    "title": {
-      "rendered": "NJPW Super Junior Tag League Trophies Renewed"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/20062647/%E3%83%88%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E2%98%85.jpg"
   }
 ]
