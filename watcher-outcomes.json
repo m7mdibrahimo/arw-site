@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2292282/wwe-raw-viewership-ratings-report-october-12-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
+  "retry": false,
+  "at": "2026-10-20T20:05:47.200Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-04T01:58:45.504Z"
- },
- "https://www.fightful.com/wrestling/indie-wrestler-chicken-finger-charlie-king-passes-away": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-04T01:58:45.421Z"
  }
 }
