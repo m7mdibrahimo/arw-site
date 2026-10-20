@@ -1,48 +1,58 @@
 {
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-19-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.fightful.com/wrestling/roman-reigns-tells-sami-zayn-that-maybe-the-undisputed-wwe-title-hasnt-meant-sht-since-wrestlemania-40": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-20T00:31:37.752Z"
+  "at": "2026-10-20T00:35:45.711Z"
+ },
+ "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-20T00:35:29.145Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-20T00:31:20.482Z"
+  "at": "2026-10-20T00:35:28.969Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:20.213Z"
+  "at": "2026-10-20T00:35:28.659Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:20.061Z"
+  "at": "2026-10-20T00:35:28.481Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:19.825Z"
+  "at": "2026-10-20T00:35:28.210Z"
  },
  "https://www.fightful.com/wrestling/r-truth-says-he-is-okay-after-injury-scare-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:19.510Z"
+  "at": "2026-10-20T00:35:27.840Z"
  },
  "https://www.fightful.com/wrestling/adriana-rizzo-is-waiting-until-the-end-of-her-30-days-to-decide-if-she-will-continue-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:19.201Z"
+  "at": "2026-10-20T00:35:27.473Z"
  },
  "https://www.fightful.com/wrestling/billy-gunn-weighs-in-on-brawl-out-certain-veterans-arent-going-to-put-up-with-that-shit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:19.052Z"
+  "at": "2026-10-20T00:35:27.293Z"
  },
  "https://www.fightful.com/wrestling/bayley-makes-surprise-appearance-at-big-time-wrestling-30th-anniversary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T00:31:18.780Z"
+  "at": "2026-10-20T00:35:26.963Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-19-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T00:31:37.752Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-02T15:44:19.903Z"
- },
- "https://www.fightful.com/wrestling/watch-extended-tributes-to-pac-aew-stars-remember-and-honor-benjamin-pac-satterley": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T15:42:22.833Z"
- },
- "https://www.fightful.com/wrestling/aaa-wrestlers-to-be-featured-in-upcoming-wwe-merchandise": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T12:35:02.654Z"
  }
 }
