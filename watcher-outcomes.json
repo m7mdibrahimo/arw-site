@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/bayley-vs-lyra-valkyria-in-no-dq-match-set-for-10-26-wwe-raw": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-20T03:31:06.392Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:49.116Z"
+  "at": "2026-10-20T03:30:17.503Z"
  },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:48.721Z"
+  "at": "2026-10-20T03:30:17.213Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:48.507Z"
+  "at": "2026-10-20T03:30:17.052Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:48.134Z"
+  "at": "2026-10-20T03:30:16.770Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:47.929Z"
+  "at": "2026-10-20T03:30:16.609Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:47.611Z"
+  "at": "2026-10-20T03:30:16.364Z"
  },
  "https://www.fightful.com/wrestling/r-truth-says-he-is-okay-after-injury-scare-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:47.178Z"
+  "at": "2026-10-20T03:30:16.031Z"
  },
  "https://www.fightful.com/wrestling/adriana-rizzo-is-waiting-until-the-end-of-her-30-days-to-decide-if-she-will-continue-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:46.741Z"
+  "at": "2026-10-20T03:30:15.694Z"
  },
  "https://www.fightful.com/wrestling/billy-gunn-weighs-in-on-brawl-out-certain-veterans-arent-going-to-put-up-with-that-shit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T03:23:46.529Z"
+  "at": "2026-10-20T03:30:15.529Z"
  },
  "https://www.fightful.com/wrestling/bayley-makes-surprise-appearance-at-big-time-wrestling-30th-anniversary": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T00:21:43.822Z"
- },
- "https://www.wrestlinginc.com/2276245/wwe-tatum-paxley-charlotte-flair-alexa-bliss-mentorship": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-02T20:01:30.742Z"
  }
 }
