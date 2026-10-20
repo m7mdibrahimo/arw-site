@@ -1,58 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T23:50:22.500Z"
+ },
  "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:26.157Z"
+  "at": "2026-10-20T23:50:22.403Z"
  },
  "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:25.977Z"
+  "at": "2026-10-20T23:50:22.257Z"
  },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:25.601Z"
+  "at": "2026-10-20T23:50:21.951Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
-  "at": "2026-10-20T23:47:25.078Z"
+  "at": "2026-10-20T23:50:21.520Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-opens-up-about-decision-to-leave-wwe-nothing-felt-satisfying": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:24.959Z"
+  "at": "2026-10-20T23:50:21.423Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-says-he-got-some-heat-in-wwe-when-expressions-wanted-to-meet-him-at-money-in-the-bank-2023": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:24.838Z"
+  "at": "2026-10-20T23:50:21.324Z"
  },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:24.610Z"
+  "at": "2026-10-20T23:50:21.137Z"
  },
  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:24.430Z"
+  "at": "2026-10-20T23:50:20.992Z"
  },
  "https://www.fightful.com/wrestling/lee-moriarty-and-la-cherry-get-engaged": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:24.247Z"
+  "at": "2026-10-20T23:50:20.843Z"
  },
  "https://www.fightful.com/wrestling/kairi-says-various-things-are-already-in-motion-regarding-her-she-may-wrestle-next": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:23.936Z"
+  "at": "2026-10-20T23:50:20.605Z"
  },
  "https://www.fightful.com/wrestling/report-dralistico-aew-contract-to-expire-in-december": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T23:47:23.600Z"
+  "at": "2026-10-20T23:50:20.369Z"
  },
  "https://www.fightful.com/wrestling/tiger-jeet-singh-comments-on-cutting-a-fan-with-his-sword-blames-the-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-04T14:01:52.210Z"
- },
- "https://www.fightful.com/wrestling/jay-white-suffered-injury-at-aew-all-out-will-be-out-for-1-2-months": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-04T13:51:44.752Z"
  }
 }
