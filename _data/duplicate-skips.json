@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/birthright-hank-tank-advance-in-2026-nxt-dusty-rhodes-tag-team-classic/": {
-    "matchedFile": "20261007034350-هانك-ووكر-وتانك-ليدجر-يتأهلان-في-بطولة-dusty-rhodes-tag-team-classic-خلال-عرض-wwe-nxt.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج نزالات بطولة Dusty Rhodes Tag Team Classic التي وقعت في عرض NXT بتاريخ 6 أكتوبر 2026، وهو ما تم تغطيته بالفعل في الخبر المنشور.",
-    "at": "2026-10-07T01:42:11.531Z"
-  },
   "https://www.wrestlinginc.com/2279615/hank-tank-more-advance-wwe-nxt-dusty-rhodes-tag-team-classic/": {
     "matchedFile": "20261007034350-هانك-ووكر-وتانك-ليدجر-يتأهلان-في-بطولة-dusty-rhodes-tag-team-classic-خلال-عرض-wwe-nxt.md",
     "reason": "الخبر الجديد يغطي نفس نتائج النزال وتأهل فريق هانك وتانك في بطولة Dusty Rhodes Tag Team Classic التي تم تغطيتها بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261020200448-حقيقة-موقف-دراليستيكو-وروش-في-aew-بعد-تغريداتهم-الغامضة-عبر-منصة-إكس.md",
     "reason": "الخبر الجديد يعتبر متابعة ورد مباشر من المصارع على نفس الشائعات التي غطاها الخبر رقم 0، ولا يقدم تطوراً جوهرياً يغير من طبيعة الحدث المنشور مسبقاً.",
     "at": "2026-10-20T18:34:18.499Z"
+  },
+  "https://www.ringsidenews.com/ilja-dragunov-explains-why-his-wwe-contract-negotiations-went-nowhere/": {
+    "matchedFile": "20261020212546-إيليا-دراغونوف-يكشف-محاولة-wwe-الاحتفاظ-به-قبل-الانتقال-إلى-aew.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها إيليا دراغونوف في برنامج The Ariel Helwani Show حول أسباب رحيله عن WWE، وهي نفس الواقعة والتصريحات المغطاة في الخبر رقم 0.",
+    "at": "2026-10-20T18:38:58.191Z"
   }
 }
