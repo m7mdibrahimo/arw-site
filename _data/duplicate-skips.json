@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2279615/hank-tank-more-advance-wwe-nxt-dusty-rhodes-tag-team-classic/": {
-    "matchedFile": "20261007034350-هانك-ووكر-وتانك-ليدجر-يتأهلان-في-بطولة-dusty-rhodes-tag-team-classic-خلال-عرض-wwe-nxt.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج النزال وتأهل فريق هانك وتانك في بطولة Dusty Rhodes Tag Team Classic التي تم تغطيتها بالفعل في الخبر رقم 0.",
-    "at": "2026-10-07T01:52:09.813Z"
-  },
   "https://www.ringsidenews.com/aew-world-trios-title-match-announced-wrestledream/": {
     "matchedFile": "20261007044548-نزال-من-ثلاث-جولات-على-بطولة-aew-للثلاثي-ضمن-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يتناول نفس الإعلان عن نزال بطولة AEW للفرق الثلاثية في عرض WrestleDream، ولا يقدم أي تطور جديد أو معلومة جوهرية تختلف عن الخبر المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261020212546-إيليا-دراغونوف-يكشف-محاولة-wwe-الاحتفاظ-به-قبل-الانتقال-إلى-aew.md",
     "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها إيليا دراغونوف في برنامج The Ariel Helwani Show حول أسباب رحيله عن WWE، وهي نفس الواقعة والتصريحات المغطاة في الخبر رقم 0.",
     "at": "2026-10-20T18:38:58.191Z"
+  },
+  "https://www.ringsidenews.com/why-ilja-dragunov-only-negotiated-aew-his-wwe-exit/": {
+    "matchedFile": "20261020212546-إيليا-دراغونوف-يكشف-محاولة-wwe-الاحتفاظ-به-قبل-الانتقال-إلى-aew.md",
+    "reason": "الخبر الجديد يعيد سرد تفاصيل مفاوضات دراغونوف مع WWE وAEW التي تم تناولها بالفعل في الخبر رقم 1، حيث أن كلاهما يستند إلى نفس المقابلة في برنامج The Ariel Helwani Show.",
+    "at": "2026-10-20T18:49:05.589Z"
   }
 }
