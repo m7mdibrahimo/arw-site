@@ -454,3 +454,11 @@ test("هدات / التورناي / وما هيرام are corrected", async () =
   assert.equal(applyCorrections("ويشهد التورناي مشاركة"), "ويشهد البطولة مشاركة");
   assert.equal(applyCorrections("داني غارسي وما هيرام غارسي"), "داني غارسي وهيرام غارسي");
 });
+
+// INCIDENTS #728: «مكتب الطبي الشرعي» (missing باء) reached three Buck stories.
+test("«الطبيب الشرعي» spelling is corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أكد مكتب الطبي الشرعي في مقاطعة كوك"), "أكد مكتب الطبيب الشرعي في مقاطعة كوك");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الطبي الشرعي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
