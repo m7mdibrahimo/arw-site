@@ -446,3 +446,11 @@ test("Jey Uso is always «جي أوسو» in story bodies and titles", async () 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /جاي\s*[أا]وسو/.test(fs.readFileSync(`content/news/${f}`, "utf-8").split("\n").filter(l => !/^(permalink:|  - |source_)/.test(l)).join("\n")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #726: odd/misspelled words that reached stories must be corrected automatically.
+test("هدات / التورناي / وما هيرام are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("الأمور هدات لاحقا"), "الأمور هدأت لاحقا");
+  assert.equal(applyCorrections("ويشهد التورناي مشاركة"), "ويشهد البطولة مشاركة");
+  assert.equal(applyCorrections("داني غارسي وما هيرام غارسي"), "داني غارسي وهيرام غارسي");
+});

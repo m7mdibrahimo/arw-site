@@ -26,3 +26,11 @@ test('dual verbs carrying a و/ف prefix are caught', () => {
     assert.ok(codes.includes('dual_form'), w);
   }
 });
+
+// INCIDENTS #726: «حيث التقيتا سابقا» (dual verb of التقى) passed because only التقيا was listed.
+test('dual التقى/تواجه forms with تا are caught', () => {
+  for (const w of ['حيث التقيتا سابقا', 'حيث التقتا سابقا', 'وقد تواجهتا في يونيو']) {
+    const codes = checkArticle('عنوان', `تحدث الصحفي عن النزال المنتظر ${w} في الحلبة.`).map(i => i.code);
+    assert.ok(codes.includes('dual_form'), w);
+  }
+});
