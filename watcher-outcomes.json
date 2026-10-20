@@ -1,63 +1,63 @@
 {
- "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-20T21:43:20.910Z"
- },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:34.338Z"
+  "at": "2026-10-20T21:45:21.730Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
-  "at": "2026-10-20T21:42:33.729Z"
+  "at": "2026-10-20T21:45:21.181Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-opens-up-about-decision-to-leave-wwe-nothing-felt-satisfying": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:33.591Z"
+  "at": "2026-10-20T21:45:21.056Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-says-he-got-some-heat-in-wwe-when-expressions-wanted-to-meet-him-at-money-in-the-bank-2023": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:33.452Z"
+  "at": "2026-10-20T21:45:20.931Z"
  },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:33.189Z"
+  "at": "2026-10-20T21:45:20.693Z"
  },
  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:32.982Z"
+  "at": "2026-10-20T21:45:20.505Z"
  },
  "https://www.fightful.com/wrestling/lee-moriarty-and-la-cherry-get-engaged": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:32.773Z"
+  "at": "2026-10-20T21:45:20.315Z"
  },
  "https://www.fightful.com/wrestling/kairi-says-various-things-are-already-in-motion-regarding-her-she-may-wrestle-next": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:32.425Z"
+  "at": "2026-10-20T21:45:20.010Z"
  },
  "https://www.fightful.com/wrestling/report-dralistico-aew-contract-to-expire-in-december": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:32.105Z"
+  "at": "2026-10-20T21:45:19.719Z"
  },
  "https://www.fightful.com/wrestling/tiger-jeet-singh-comments-on-cutting-a-fan-with-his-sword-blames-the-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:31.783Z"
+  "at": "2026-10-20T21:45:19.426Z"
  },
  "https://www.fightful.com/wrestling/tna-wrestling-re-signs-santino-marella": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T21:42:31.438Z"
+  "at": "2026-10-20T21:45:19.106Z"
+ },
+ "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T21:43:20.910Z"
  },
  "https://www.wrestlinginc.com/2292336/bully-ray-concerns-wwe-enzo-amore-big-cass": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
