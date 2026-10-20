@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2292267/wwe-roman-reigns-schedule-quality-over-quantity": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-10-20T19:56:24.499Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-04T01:58:45.421Z"
- },
- "https://www.fightful.com/wrestling/blake-monroe-comments-after-wwe-smackdown-in-ring-debut": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-04T01:06:49.623Z"
  }
 }
