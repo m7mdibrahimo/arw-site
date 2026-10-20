@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-20T01:40:52.850Z"
+ },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T01:38:14.928Z"
- },
- "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-20T01:20:24.109Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-tells-sami-zayn-that-maybe-the-undisputed-wwe-title-hasnt-meant-sht-since-wrestlemania-40": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
