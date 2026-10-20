@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2291292/wwe-raw-roman-reigns-bloodline-run-off-946-main-event": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-20T02:39:05.899Z"
+ },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-02T16:58:54.644Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-wants-to-be-a-grand-slam-champion-on-the-main-roster": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-02T16:49:05.411Z"
  }
 }
