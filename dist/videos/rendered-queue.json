@@ -6154,5 +6154,41 @@
     "slug": "20261014044703-cmll-lunes-clasico-12-10-2026",
     "image": "/content/images/zv1ij6mh1a4fwel3.jpg",
     "renderedAt": 1792491868013
+  },
+  {
+    "videoUrl": "/videos/reel-20260924111500-cmll-martes-populares-22-09-20.mp4",
+    "filename": "reel-20260924111500-cmll-martes-populares-22-09-20.mp4",
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 22.09.2026 مترجم",
+    "secondaryTitle": "CMLL Martes Populares 22.09.2026",
+    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924111500-cmll-martes-populares-22-09-20",
+    "kind": "show",
+    "slug": "20260924111500-cmll-martes-populares-22-09-20",
+    "image": "/content/images/m8d59u7c9heju50p.jpg",
+    "renderedAt": 1792509272783
+  },
+  {
+    "videoUrl": "/videos/reel-20260927053000-hog-windy-city-warfare-2026.mp4",
+    "filename": "reel-20260927053000-hog-windy-city-warfare-2026.mp4",
+    "title": "عرض اتش او جي فول اوت 25.09.2026 مترجم",
+    "secondaryTitle": "HOG Windy City Warfare (2026)",
+    "description": "عرض اتش او جي فول اوت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260927053000-hog-windy-city-warfare-2026",
+    "kind": "show",
+    "slug": "20260927053000-hog-windy-city-warfare-2026",
+    "image": "/content/images/rv1dkjnjn7hlecbk.jpg",
+    "renderedAt": 1792509359919
+  },
+  {
+    "videoUrl": "/videos/reel-20261017160225-wwe-smackdown-16-10-2026.mp4",
+    "filename": "reel-20261017160225-wwe-smackdown-16-10-2026.mp4",
+    "title": "عرض سماك داون 16.10.2026 مترجم",
+    "secondaryTitle": "WWE Smackdown 16.10.2026",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261017160225-wwe-smackdown-16-10-2026",
+    "kind": "show",
+    "slug": "20261017160225-wwe-smackdown-16-10-2026",
+    "image": "/content/images/dbgqg3wbhdpizx01.jpg",
+    "renderedAt": 1792509446345
   }
 ]
