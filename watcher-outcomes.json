@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/ilja-dragunov-addresses-brock-lesnar-no-selling-his-offense-wwe-royal-rumble": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-20T19:04:00.631Z"
+ },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-04T00:19:34.706Z"
- },
- "https://www.fightful.com/wrestling/jody-threat-explains-why-she-asked-for-her-tna-release": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T21:37:39.360Z"
  }
 }
