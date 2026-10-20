@@ -4918,7 +4918,9 @@ test('hamza spellings of a show name are in the structured data (INCIDENTS #535)
 test('the episode VideoObject names its program (isPartOf) and has a WatchAction (INCIDENTS #541)', () => {
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
   assert.match(layout, /"isPartOf": \{ "@type": "TVSeries"/);
-  assert.match(layout, /"potentialAction": \{ "@type": "WatchAction", "target": "\{\{ pageUrl \}\}" \}/);
+  assert.match(layout, /\{ "@type": "WatchAction", "target": "\{\{ pageUrl \}\}" \}/);
+  // INCIDENTS #722: show pages also carry a DownloadAction (they have a download-links section)
+  assert.match(layout, /\{ "@type": "DownloadAction", "name": "تحميل \{\{ pageTitle \| escape \}\}", "target": "\{\{ pageUrl \}\}" \}/);
 });
 
 test('the episode VideoObject carries its program names as keywords too (INCIDENTS #653)', () => {

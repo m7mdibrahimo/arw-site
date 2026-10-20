@@ -438,3 +438,11 @@ test("feminine «دعوى قضائية» takes «رفعها» (INCIDENTS #716)",
 test("style guide: «بعضهم البعض» agrees with the wrestlers' gender, never the dual (INCIDENTS #717)", () => {
   assert.ok(fs.readFileSync("editorial/style-guide.md", "utf-8").includes("«بعضهم البعض» بتتطابق مع النوع والعدد"));
 });
+
+// INCIDENTS #722: «جاي أوسو» vs the glossary's «جي أوسو» (Jey Uso) split across stories.
+test("Jey Uso is always «جي أوسو» in story bodies and titles", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("عودة جاي أوسو و جاي اوسو"), "عودة جي أوسو و جي أوسو");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /جاي\s*[أا]وسو/.test(fs.readFileSync(`content/news/${f}`, "utf-8").split("\n").filter(l => !/^(permalink:|  - |source_)/.test(l)).join("\n")));
+  assert.deepEqual(bad, []);
+});

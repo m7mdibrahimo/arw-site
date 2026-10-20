@@ -133,7 +133,8 @@
       {% if (eventDate or event_date) and (page.url.startsWith('/shows/') or (page.url.startsWith('/nostalgia/') and series_type == 'shows')) %}"publication": { "@type": "BroadcastEvent", "name": "{{ pageTitle | escape }}", "isLiveBroadcast": false, "startDate": {{ (eventDate or event_date) | jsonify | safe }} },{% endif %}
       {#- the episode belongs to its program's library page and is watched on this page: the link between an episode and its program, and the WatchAction Google reads for «مشاهدة …» searches (INCIDENTS #541) -#}
       {% if ldAbout %}"isPartOf": { "@type": "TVSeries", "name": "{{ ldAbout.name | escape }}", "url": "https://arab-wrestling.com/library/{{ ldAbout.slug }}/" },{% endif %}
-      "potentialAction": { "@type": "WatchAction", "target": "{{ pageUrl }}" },
+      {#- shows have a download-links section: «تحميل عرض …» searches read it as a DownloadAction beside the WatchAction (INCIDENTS #722) -#}
+      "potentialAction": {% if page.url.startsWith('/shows/') %}[{ "@type": "WatchAction", "target": "{{ pageUrl }}" }, { "@type": "DownloadAction", "name": "تحميل {{ pageTitle | escape }}", "target": "{{ pageUrl }}" }]{% else %}{ "@type": "WatchAction", "target": "{{ pageUrl }}" }{% endif %},
       "mainEntityOfPage": { "@id": "{{ pageUrl }}" },
       "publisher": { "@type": "Organization", "name": "عرب راسلنج", "url": "https://arab-wrestling.com/" }
     },
