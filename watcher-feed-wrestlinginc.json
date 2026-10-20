@@ -1,5 +1,15 @@
 [
   {
+    "id": 1230092042,
+    "link": "https://www.wrestlinginc.com/2289324/wwe-royce-keys-face-946-faction/",
+    "date": "Tue, 20 Oct 2026 12:30:00 +0000",
+    "date_gmt": "2026-10-20T12:30:00.000Z",
+    "title": {
+      "rendered": "WWE Star Royce Keys Opens Up About Being The 'Face Of' The 946"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-star-royce-keys-opens-up-about-being-the-face-of-the-946/l-intro-1792180294.jpg"
+  },
+  {
     "id": 2376862120,
     "link": "https://www.wrestlinginc.com/2291319/wwe-raw-october-19-2026-hated-loved-opinion-review/",
     "date": "Tue, 20 Oct 2026 04:15:20 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tony Khan On Finalization Of WBD Merger With Paramount: AEW Will Become 'Stronger'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-wbd-paramount-skydance-tony-khan-finalization-merger-stronger/l-intro-1792430359.jpg"
-  },
-  {
-    "id": 2848070580,
-    "link": "https://www.wrestlinginc.com/2290474/ilja-dragunov-decision-join-aew-departure-wwe/",
-    "date": "Mon, 19 Oct 2026 16:32:54 +0000",
-    "date_gmt": "2026-10-19T16:32:54.000Z",
-    "title": {
-      "rendered": "Ilja Dragunov Explains Decision To Join AEW Following Departure From WWE"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ilja-dragunov-explains-decision-to-join-aew-following-departure-from-wwe/l-intro-1792427411.jpg"
   }
 ]
