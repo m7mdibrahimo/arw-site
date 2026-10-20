@@ -1,5 +1,15 @@
 [
   {
+    "id": 334906,
+    "link": "https://www.fightful.com/wrestling/update-on-jordynne-grace/",
+    "date": "2026-10-20T18:03:50",
+    "date_gmt": "2026-10-20T22:03:50",
+    "title": {
+      "rendered": "Update On Jordynne Grace"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/26211843/jordynne-grace-GettyImages-2271240078-copy.png"
+  },
+  {
     "id": 334896,
     "link": "https://www.fightful.com/wrestling/mjf-meet-greet-replaces-billy-gunn-appearance-at-cap-base-brawl-wwe-raw-highlights-more-fight-size/",
     "date": "2026-10-20T18:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Will Ospreay Feels Wrestling As &#8216;Evolved&#8217; Past Needing Full Kayfabe Protection"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/30204351/HQ__GeeWcAAFQxO.jpg"
-  },
-  {
-    "id": 10390,
-    "link": "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more/",
-    "date": "2026-10-20T12:16:00",
-    "date_gmt": "2026-10-20T16:16:00",
-    "title": {
-      "rendered": "WWE, AEW, TNA, NJPW Wrestler Injury Report List: Expected Returns, Inactives | Fightful"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/17140514/Resources.png"
   }
 ]
