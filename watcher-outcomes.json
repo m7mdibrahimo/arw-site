@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/keanu-carvers-protection-order-extended-court-pushes-arianna-grace-hearing-back": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-20T13:46:06.129Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T14:15:31.828Z"
- },
- "https://www.fightful.com/wrestling/the-young-bucks-say-pac-told-them-not-to-sign-with-wwe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T13:44:48.026Z"
  }
 }
