@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/drew-mcintyre-reveals-his-wife-keeps-adopting-cats-while-hes-away-filming": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-20T14:44:50.951Z"
+ },
  "https://www.fightful.com/wrestling/speedball-mike-bailey-there-are-absolutely-no-half-measures-with-will-ospreay-there-is-nothing-that-he-does-that-he-hesitates-on": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T14:38:10.730Z"
- },
- "https://www.ringsidenews.com/drew-mcintyre-reveals-his-wife-keeps-adopting-cats-while-hes-away-filming": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-20T14:25:35.981Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
