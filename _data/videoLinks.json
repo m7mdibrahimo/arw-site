@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-20T14:43:43.874Z",
+ "checkedAt": "2026-10-20T21:50:07.268Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -5614,6 +5614,50 @@
    "strikes": 0,
    "checked": "2026-10-20T14:43:43.874Z",
    "lastOk": "2026-10-20T14:43:43.874Z"
+  },
+  "https://vidtube.one/embed-gfrrmbr8l90x.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-20T21:50:07.268Z"
+  },
+  "https://vidmoly.org/embed-73bogusi1r4b.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-20T21:50:07.268Z",
+   "lastOk": "2026-10-20T21:50:07.268Z"
+  },
+  "https://ok.ru/videoembed/17732737698400": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-20T21:50:07.268Z"
+  },
+  "https://hgcloud.to/e/xqk9oslcnihc": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-20T21:50:07.268Z"
+  },
+  "https://uqload.vc/embed-cr1lkxp21586.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-20T21:50:07.268Z",
+   "lastOk": "2026-10-20T21:50:07.268Z"
+  },
+  "https://fembed.co/embed/asR8-qyL_ClyB": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-20T21:50:07.268Z"
   }
  },
  "broken": [
