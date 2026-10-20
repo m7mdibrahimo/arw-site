@@ -200,3 +200,10 @@ test('Mike Bailey is «he», never the singular «they» (INCIDENTS #713)', asyn
   assert.equal(fixEnglishNames('Fans say they are happy.'), 'Fans say they are happy.');
   assert.match(englishStyleRules('https://www.fightful.com/x'), /never the singular "they/);
 });
+
+// INCIDENTS #718: «Lexis King Drops Diss Track Targetting Zilla Fatu» — British double-t spelling in a headline.
+test("British spellings become American (INCIDENTS #718)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("Diss Track Targetting Zilla Fatu"), "Diss Track Targeting Zilla Fatu");
+  assert.equal(fixEnglishNames("a fan favourite, defence"), "a fan favorite, defense");
+});

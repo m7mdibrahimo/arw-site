@@ -163,6 +163,12 @@ export function fixSingularThey(text: string): string {
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
+  // British spellings the source (Fightful/Ringside) sometimes keeps; the English edition is American English (INCIDENTS #718: «Targetting»)
+  [/\b(T|t)argetting\b/g, "$1argeting"],
+  [/\b(F|f)avour(s|ed|ing|ite|ites)?\b/g, "$1avor$2"],
+  [/\b(R|r)ealis(e|es|ed|ing)\b/g, "$1ealiz$2"],
+  [/\b(D|d)efence\b/g, "$1efense"],
+  [/\b(C|c)ancelled\b/g, "$1anceled"],
   // «Entrances Themes» is not English: the noun before «theme» is singular (INCIDENTS #700)
   [/\b(Entrance|entrance)s (Themes?|Music|Songs?)\b/g, "$1 $2"],
   // «Def.» is a results-line abbreviation, not a headline word (INCIDENTS #688)

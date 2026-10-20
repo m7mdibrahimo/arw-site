@@ -1,5 +1,5 @@
 ---
-title: "Lexis King Drops Diss Track Targetting Zilla Fatu and Umaga"
+title: "Lexis King Drops Diss Track Targeting Zilla Fatu and Umaga"
 slug: "lexis-king-drops-diss-track-targetting-zilla-fatu-and-umaga"
 description: "WWE NXT star Lexis King has elevated his feud with Zilla Fatu by releasing a diss track titled Zilla Vanilla on X. The music video features an ice cream…"
 federation: WWE
