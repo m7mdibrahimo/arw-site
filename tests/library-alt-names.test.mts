@@ -28,3 +28,10 @@ test("a weekly show carries the English program name without the federation", as
   const forms = showNameForms({ headline: "عرض سماك داون 16.10.2026 مترجم", programName: "WWE Smackdown", eventDate: "2026-10-16", aliases: ["عرض سماك داون"], isShow: true });
   for (const q of ["Smackdown مترجم", "Smackdown الاخير مترجم", "مشاهدة Smackdown", "Smackdown 2026 مترجم"]) assert.ok(forms.includes(q), q);
 });
+
+test("Money in the Bank is also written «مونى» with a final alef maqsura (INCIDENTS #734)", async () => {
+  const { showNameForms } = await import("../lib/show-seo.cjs");
+  const forms = showNameForms({ headline: "عرض موني ان ذا بانك 10.10.2026 مترجم", title: "WWE Money in the Bank (2026)", programName: "WWE Money in the Bank", eventDate: "2026-10-10", aliases: ["عرض موني ان ذا بانك"], isShow: true });
+  assert.ok(forms.includes("عرض مونى ان ذا بانك 2026"));
+  assert.ok(forms.includes("تحميل عرض مونى ان ذا بانك"));
+});

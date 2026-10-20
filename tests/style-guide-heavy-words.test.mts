@@ -28,3 +28,9 @@ test("results reports name every team member and the pinned wrestler, not a pron
   assert.ok(guide.includes("اذكر كل أعضاء الفريقين"));
   assert.ok(guide.includes("اسم المثبَّت بدل الضمير"));
 });
+
+test("style guide: «الماضي» only when the source says «last <day>» (INCIDENTS #734)", () => {
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.ok(guide.includes("يوم الثلاثاء الماضي"));
+  assert.ok(guide.includes("last Tuesday"));
+});
