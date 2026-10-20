@@ -491,3 +491,11 @@ test("«وان كل» is corrected and a story about ACW can't name AEW titles",
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && / وان (?:كل|هذا|هذه|ذلك|الجميع)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #732: «قرارا متخذ» (missing alef) in the Dragunov story.
+test("«قرارا متخذ» is corrected and gone from stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لم يكن قرارا متخذ قبل أشهر"), "لم يكن قرارا متخذا قبل أشهر");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /قرارا متخذ(?!ا)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
