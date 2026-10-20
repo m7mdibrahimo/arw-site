@@ -105,6 +105,15 @@ export function indexingCandidates(urls: string[]): string[] {
   return urls.filter(u => /^https:\/\/arab-wrestling\.com\/(?:shows|recaps|nostalgia)\/[^/]+\/$/.test(u)).slice(0, 50);
 }
 
+/** A program's library page Google found in the sitemap but never crawled after 3 days (INCIDENTS #724): it gets the same one-time
+ *  direct notice a show gets, a few per run, oldest first. Head/sitemap are fine for these — Google just hasn't come. */
+export function stuckLibraryPages(pages: Record<string, Page>, now: number, max = 5): string[] {
+  return Object.entries(pages)
+    .filter(([u, p]) => /^https:\/\/arab-wrestling\.com\/library\/[^/]+\/$/.test(u) && !p.indexedAt && !p.directAt && !p.crawledAt && !!p.inspected
+      && now - Date.parse(p.firstSeen) > 72 * H)
+    .sort((a, b) => Date.parse(a[1].firstSeen) - Date.parse(b[1].firstSeen)).slice(0, max).map(([u]) => u);
+}
+
 /** Google's Indexing API: «this URL is new or changed, crawl it». Failure (API not enabled for the service account's
  *  project, or the account isn't an owner of the property) is logged in the report and the sitemap still goes. */
 async function notifyGoogle(token: string, urls: string[]): Promise<{ ok: number; error?: string }> {
@@ -153,7 +162,7 @@ async function main() {
     // New pages, and pages from the last 3 days Google still doesn't have that never got the direct notice
     const waiting = Object.entries(state.pages).filter(([u, p]) => !p.indexedAt && !p.directAt && lastmodOf.has(u)
       && now - Date.parse(p.firstSeen) < 72 * H).map(([u]) => u);
-    const direct = indexingCandidates([...new Set([...ready, ...waiting])]);
+    const direct = [...indexingCandidates([...new Set([...ready, ...waiting])]), ...stuckLibraryPages(state.pages, now).filter(u => lastmodOf.has(u))];
     if (site && direct.length) {
       const res = await accessToken(sa, INDEXING_SCOPE).then(t => notifyGoogle(t, direct)).catch((e: any) => ({ ok: 0, error: String(e?.message || e).slice(0, 300) }));
       state.indexingApi = { at: new Date(now).toISOString(), sent: res.ok, ...(res.error ? { error: res.error } : {}) };

@@ -4466,6 +4466,20 @@ test('a new show, recap or nostalgia page goes straight to Google, not only thro
   ]), ['https://arab-wrestling.com/shows/wwe-money-in-the-bank-2026/', 'https://arab-wrestling.com/recaps/wwe-raw-highlights-05-10-2026/']);
 });
 
+test('a library page Google found but never crawled after 3 days gets one direct notice (INCIDENTS #724)', async () => {
+  const { stuckLibraryPages } = await import('../scripts/seo-new-shows');
+  const now = Date.parse('2026-10-20T08:00:00Z');
+  const u = (s: string) => `https://arab-wrestling.com/library/${s}/`;
+  const pages: any = {
+    [u('stuck')]: { firstSeen: '2026-10-12T17:30:00Z', inspected: '2026-10-20T03:00:00Z', crawledAt: '' },
+    [u('new')]: { firstSeen: '2026-10-20T01:00:00Z', inspected: '2026-10-20T03:00:00Z' },
+    [u('done')]: { firstSeen: '2026-10-12T17:30:00Z', inspected: 'x', indexedAt: '2026-10-13T00:00:00Z' },
+    [u('sent')]: { firstSeen: '2026-10-12T17:30:00Z', inspected: 'x', directAt: '2026-10-19T00:00:00Z' },
+    'https://arab-wrestling.com/shows/a/': { firstSeen: '2026-10-12T17:30:00Z', inspected: 'x' },
+  };
+  assert.deepEqual(stuckLibraryPages(pages, now), [u('stuck')]);
+});
+
 // INCIDENTS #429: the library page of a program had the same stuffing as the show pages had (#428): a long title and
 // a description ending in «ويعرف أيضا: …». The other spellings stay in the structured data only.
 test('library program pages: no spelling list in the description, short title', () => {
