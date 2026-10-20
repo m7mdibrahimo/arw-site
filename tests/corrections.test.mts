@@ -470,3 +470,12 @@ test("«مكفول إيجابي» is corrected", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مكفول إيجابي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #730: «لم يراها» (wrong jussive) and two odd phrases reached stories.
+test("jussive «لم يرها» and odd phrases are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لم يراها الجمهور"), "لم يرها الجمهور");
+  assert.equal(applyCorrections("سأبرحه ضربا"), "سأضربه ضربا مبرحا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم (ي|ت)را(ها|هم|نا)\b/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
