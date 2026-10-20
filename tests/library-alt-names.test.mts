@@ -35,3 +35,11 @@ test("Money in the Bank is also written «مونى» with a final alef maqsura (
   assert.ok(forms.includes("عرض مونى ان ذا بانك 2026"));
   assert.ok(forms.includes("تحميل عرض مونى ان ذا بانك"));
 });
+
+// INCIDENTS #735: «عرض ماين ايفنت الاخير» — Main Event is written with both «مين» and «ماين».
+test("Main Event is also written with the other Arabic spelling", async () => {
+  const { showNameForms } = await import("../lib/show-seo.cjs");
+  const forms = showNameForms({ headline: "عرض مين ايفنت 14.10.2026 مترجم", programName: "WWE Main Event", eventDate: "2026-10-14", aliases: ["عرض مين ايفنت"], isShow: true });
+  assert.ok(forms.includes("عرض ماين ايفنت الاخير"), "ماين الاخير");
+  assert.ok(forms.includes("عرض ماين ايفنت مترجم"), "ماين مترجم");
+});

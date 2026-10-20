@@ -499,3 +499,12 @@ test("«قرارا متخذ» is corrected and gone from stories", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /قرارا متخذ(?!ا)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #735: split word «لت سيهل» and doubled «كواليس ما جرى خلف الكواليس».
+test("split «لتسهيل» and doubled «كواليس» are corrected and gone from stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("قاد الجهود لت سيهل الأمر"), "قاد الجهود لتسهيل الأمر");
+  assert.equal(applyCorrections("مشاهدة كواليس ما جرى خلف الكواليس"), "مشاهدة ما جرى خلف الكواليس");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لت سيهل|كواليس ما جرى خلف الكواليس/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
