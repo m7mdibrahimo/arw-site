@@ -3827,5 +3827,26 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261021003941-wwe-raw-19-10-2026": {
+    "publishedAt": 1792533382120,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض الرو 19.10.2026 مترجم",
+    "lastAttempt": 1792533431816,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
