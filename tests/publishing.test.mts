@@ -5200,3 +5200,9 @@ test('a yearly show carries «موعد عرض … <year>» among its alternate n
   const forms = showNameForms({ headline: 'عرض موني ان ذا بانك 2026', title: 'WWE Money in the Bank (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', aliases: ['عرض موني ان ذا بانك'], isShow: true });
   assert.ok(forms.includes('موعد عرض موني ان ذا بانك 2026'), forms.join('|'));
 });
+
+test('a weekly recap is also named «ملخص … الاخير» in its structured data (INCIDENTS #719)', async () => {
+  const { showNameForms } = await import('../lib/show-seo.cjs');
+  const forms = (showNameForms as any)({ headline: 'ملخص عرض الرو 05.10.2026 مترجم', title: 'WWE RAW Highlights 05.10.2026', programName: 'WWE RAW Highlights', eventDate: '2026-10-05', aliases: [], isShow: false });
+  assert.ok(forms.includes('ملخص الرو الاخير مترجم') || forms.includes('ملخص عرض الرو الاخير'), forms.join('|'));
+});

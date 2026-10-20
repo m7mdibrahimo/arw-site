@@ -22,3 +22,9 @@ test("«الظفر/يظفر» becomes «الفوز/يفوز» in every story, ti
     assert.doesNotMatch(s, /(?<![ء-ي])(?:[وفبلك]|ال|لل|س)?[يت]?ظفر/, f);
   }
 });
+
+test("results reports name every team member and the pinned wrestler, not a pronoun (RAW 19-10-2026 story)", () => {
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.ok(guide.includes("اذكر كل أعضاء الفريقين"));
+  assert.ok(guide.includes("اسم المثبَّت بدل الضمير"));
+});
