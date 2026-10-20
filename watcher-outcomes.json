@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/possible-wwe-survivor-series-wargames-2026-plans-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-20T10:19:55.848Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-03T00:42:00.462Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-2": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T00:21:43.822Z"
  }
 }
