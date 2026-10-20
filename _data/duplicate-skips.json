@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada/": {
-    "matchedFile": "20261006212942-نتائج-عرض-aew-dynamite-6-أكتوبر-2026-فوز-ويل-أوسبراي-في-الحدث-الرئيسي.md",
-    "reason": "الخبر الجديد يغطي نتائج عرض AEW Dynamite Grand Slam France وهو نفس العرض والنتائج المذكورة في الخبر رقم 0.",
-    "at": "2026-10-07T00:25:30.281Z"
-  },
   "https://www.ringsidenews.com/samoa-joe-becomes-first-wrestler-qualify-aew-wrestledream-clockwork-carnage-match/": {
     "matchedFile": "20261007034244-ساموا-جو-يتأهل-لنزال-كلوك-وورك-كارنيج-في-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (تأهل ساموا جو لنزال كلوك وورك كارنيج في عرض AEW WrestleDream) الذي تم تغطيته بالفعل في الخبر رقم 0، ولا يحتوي على أي تطورات جديدة أو معلومات إضافية جوهرية.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261020192902-كايري-توضح-موقفها-من-المشاركة-في-النزالات-على-متن-رحلة-كريس-جيريكو-البحرية-وسط-شائعات-انضمامها-إلى-aew.md",
     "reason": "الخبر الجديد ينقل نفس المقابلة مع مجلة Weekly Pro Wrestling وتصريحات كايري حول مستقبلها وتأشيرة العمل برحلتها القادمة، وهو ما تم تغطيته في الخبر المنشور رقم 0.",
     "at": "2026-10-20T17:42:04.438Z"
+  },
+  "https://www.wrestlinginc.com/2292036/wwe-evolve-anya-rune-step-back-wrestling-airica-demia/": {
+    "matchedFile": "20261020042518-أنيا-رون-تعلن-ابتعادها-عن-عالم-المصارعة.md",
+    "reason": "الخبر الجديد يتناول نفس واقعة إعلان المصارعة أنيا رون عن ابتعادها عن حلبات المصارعة، وهي نفس الواقعة المغطاة في الخبر رقم 0.",
+    "at": "2026-10-20T17:49:32.122Z"
   }
 }
