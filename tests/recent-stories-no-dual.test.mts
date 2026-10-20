@@ -17,3 +17,12 @@ test('the newest Arabic stories contain no dual verbs or dual nouns', () => {
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #723: «واحتفظتا باللقب» (dual verb with a و prefix) slipped through because the pattern for
+// احتفظ/تغلب/هزم…+تا only allowed a ل prefix. A prefixed dual verb must now be caught.
+test('dual verbs carrying a و/ف prefix are caught', () => {
+  for (const w of ['واحتفظتا باللقب', 'فاحتفظا باللقب', 'وتغلبتا على الفريق']) {
+    const codes = checkArticle('عنوان', `نجح الثنائي في الفوز ${w} لمدة طويلة.`).map(i => i.code);
+    assert.ok(codes.includes('dual_form'), w);
+  }
+});
