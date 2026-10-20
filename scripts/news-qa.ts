@@ -111,6 +111,7 @@ const RULES: Rule[] = [
   { code: "persian_letters", severity: "error", re: /[گکیپچژڤ]/g, message: "حروف فارسية بدل العربية" },
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]|(?<![${AR}])[بلك](?=[A-Z]{2,})`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)" },
   { code: "glued_prefix_quote", severity: "error", re: new RegExp(`(?<![${AR}])[بلك]["“«](?=[${AR}])`, "g"), message: "حرف جر ملزوق بعلامة اقتباس (ب\"الصدمة\") — اكتب «بالصدمة» بدون اقتباس أو الاقتباس كله بين علامتين" },
+  { code: "broken_word", severity: "error", re: /(?<![ء-ي])وة(?![ء-ي])/g, message: "كلمة مكسورة: «وة» لوحدها (غالبا «و» + ترجمة مقطوعة لاسم — مثل «هانك وة تانك» بدل «هانك وتانك»)", fields: ["title", "body"] },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
   { code: "repeated_word_waw", severity: "error", re: new RegExp(`(?<![${AR}])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([${AR}]{3,})\\s+وال\\1(?![${AR}])`, "g"), message: "نفس الكلمة مكررة حوالين «و» («للدعم والدعم المعنوي») — اشطب التكرار" },

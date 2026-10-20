@@ -163,3 +163,8 @@ test("«نزال فرق سداسي» with four winners is blocked (INCIDENTS #68
   assert.ok(!checkArticle("نتائج عرض WWE NXT Live", bad.replace("سداسي", "ثماني")).some((i) => i.code === "team_size_label"));
   assert.ok(!checkArticle("نتائج عرض WWE NXT Live", bad.replace("وكيندال غراي", "").replace("وشايلو هيل", "")).some((i) => i.code === "team_size_label"));
 });
+
+test("a stray «وة» fragment («هانك وة تانك») is blocked as a broken word (INCIDENTS #725)", () => {
+  assert.ok(checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وة تانك في ربع النهائي.").some((i) => i.code === "broken_word"));
+  assert.ok(!checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وتانك في ربع النهائي.").some((i) => i.code === "broken_word"));
+});
