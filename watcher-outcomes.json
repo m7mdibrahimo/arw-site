@@ -1,58 +1,58 @@
 {
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-19-2026": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-20T02:49:39.814Z"
- },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:26.331Z"
+  "at": "2026-10-20T02:52:18.321Z"
  },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:26.063Z"
+  "at": "2026-10-20T02:52:18.052Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:25.918Z"
+  "at": "2026-10-20T02:52:17.908Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:25.656Z"
+  "at": "2026-10-20T02:52:17.649Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:25.509Z"
+  "at": "2026-10-20T02:52:17.505Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:25.279Z"
+  "at": "2026-10-20T02:52:17.278Z"
  },
  "https://www.fightful.com/wrestling/r-truth-says-he-is-okay-after-injury-scare-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:24.965Z"
+  "at": "2026-10-20T02:52:16.971Z"
  },
  "https://www.fightful.com/wrestling/adriana-rizzo-is-waiting-until-the-end-of-her-30-days-to-decide-if-she-will-continue-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:24.653Z"
+  "at": "2026-10-20T02:52:16.665Z"
  },
  "https://www.fightful.com/wrestling/billy-gunn-weighs-in-on-brawl-out-certain-veterans-arent-going-to-put-up-with-that-shit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:24.501Z"
+  "at": "2026-10-20T02:52:16.517Z"
  },
  "https://www.fightful.com/wrestling/bayley-makes-surprise-appearance-at-big-time-wrestling-30th-anniversary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:48:24.217Z"
+  "at": "2026-10-20T02:52:16.245Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-19-2026": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-20T02:49:39.814Z"
  },
  "https://www.wrestlinginc.com/2291292/wwe-raw-roman-reigns-bloodline-run-off-946-main-event": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
