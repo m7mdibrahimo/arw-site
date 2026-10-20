@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/tna-wrestling-re-signs-santino-marella": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-20T16:24:35.489Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T16:18:37.553Z"
+  "at": "2026-10-20T16:24:34.827Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-and-solo-sikoa-embrace-after-wwe-monday-night-raw-goes-off-the-air": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T16:18:37.351Z"
+  "at": "2026-10-20T16:24:34.623Z"
  },
  "https://www.fightful.com/wrestling/grayson-waller-had-a-t-shirt-with-stephanie-vaquer-on-it-that-he-couldnt-wear-on-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T16:18:37.147Z"
+  "at": "2026-10-20T16:24:34.417Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T16:18:36.556Z"
+  "at": "2026-10-20T16:24:33.818Z"
  },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T16:18:36.179Z"
+  "at": "2026-10-20T16:24:33.435Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T16:18:35.971Z"
+  "at": "2026-10-20T16:24:33.216Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-03T15:03:25.976Z"
- },
- "https://www.fightful.com/wrestling/tiffany-stratton-qualifies-for-womens-money-in-the-bank-on-10-2-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-03T14:58:36.998Z"
  }
 }
