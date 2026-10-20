@@ -3832,17 +3832,15 @@
     "publishedAt": 1792533382120,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض الرو 19.10.2026 مترجم",
-    "lastAttempt": 1792533431816,
+    "lastAttempt": 1792533507028,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story",
       "tiktok"
     ],
