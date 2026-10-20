@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/ethan-page-big-cass-destroy-chad-gable-rey-mysterio-dragon-lee-wwe-raw-title-match": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-20T02:10:34.493Z"
- },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:34.865Z"
+  "at": "2026-10-20T02:12:26.942Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:34.669Z"
+  "at": "2026-10-20T02:12:26.766Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:34.322Z"
+  "at": "2026-10-20T02:12:26.454Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:34.125Z"
+  "at": "2026-10-20T02:12:26.278Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:33.819Z"
+  "at": "2026-10-20T02:12:26.005Z"
  },
  "https://www.fightful.com/wrestling/r-truth-says-he-is-okay-after-injury-scare-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:33.396Z"
+  "at": "2026-10-20T02:12:25.635Z"
  },
  "https://www.fightful.com/wrestling/adriana-rizzo-is-waiting-until-the-end-of-her-30-days-to-decide-if-she-will-continue-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:32.982Z"
+  "at": "2026-10-20T02:12:25.265Z"
  },
  "https://www.fightful.com/wrestling/billy-gunn-weighs-in-on-brawl-out-certain-veterans-arent-going-to-put-up-with-that-shit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:32.776Z"
+  "at": "2026-10-20T02:12:25.086Z"
  },
  "https://www.fightful.com/wrestling/bayley-makes-surprise-appearance-at-big-time-wrestling-30th-anniversary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T02:07:32.404Z"
+  "at": "2026-10-20T02:12:24.759Z"
+ },
+ "https://www.ringsidenews.com/ethan-page-big-cass-destroy-chad-gable-rey-mysterio-dragon-lee-wwe-raw-title-match": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-20T02:10:34.493Z"
  },
  "https://www.wrestlinginc.com/2290858/wwe-raw-october-19-2026-results": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
