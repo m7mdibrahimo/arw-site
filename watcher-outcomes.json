@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/roman-reigns-and-solo-sikoa-embrace-after-wwe-monday-night-raw-goes-off-the-air": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-20T11:56:32.901Z"
+ },
  "https://www.fightful.com/wrestling/grayson-waller-had-a-t-shirt-with-stephanie-vaquer-on-it-that-he-couldnt-wear-on-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:28.779Z"
+  "at": "2026-10-20T11:56:32.695Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-the-bloodline-fight-off-946-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:28.264Z"
+  "at": "2026-10-20T11:56:32.091Z"
  },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:27.940Z"
+  "at": "2026-10-20T11:56:31.692Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:27.763Z"
+  "at": "2026-10-20T11:56:31.481Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaiser-motion-to-dismiss-battery-case-denied": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:27.449Z"
+  "at": "2026-10-20T11:56:31.110Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:27.272Z"
+  "at": "2026-10-20T11:56:30.902Z"
  },
  "https://www.fightful.com/wrestling/judge-denies-wwe-and-mcmahons-effort-to-throw-out-ring-boy-lawsuit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:26.997Z"
+  "at": "2026-10-20T11:56:30.573Z"
  },
  "https://www.fightful.com/wrestling/r-truth-says-he-is-okay-after-injury-scare-on-10-16-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-20T11:53:26.622Z"
+  "at": "2026-10-20T11:56:30.123Z"
  },
  "https://www.fightful.com/uncategorized/grayson-waller-had-a-t-shirt-with-stephanie-vaquer-on-it-that-he-couldnt-wear-on-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-10-03T01:36:07.913Z"
- },
- "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-2-2026": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-03T01:28:34.302Z"
  }
 }
