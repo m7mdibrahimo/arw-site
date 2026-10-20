@@ -462,3 +462,11 @@ test("«الطبيب الشرعي» spelling is corrected", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الطبي الشرعي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #729: «مكفول إيجابي» (meaningless word) reached a Jarrett story.
+test("«مكفول إيجابي» is corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("دون أي مكفول إيجابي"), "دون أي مكسب إيجابي");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مكفول إيجابي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
