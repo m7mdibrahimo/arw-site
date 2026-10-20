@@ -50,7 +50,7 @@ eleventyComputed:
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
   "inLanguage": "ar",
   {#- watch/download intent for search engines only, nothing on the page (INCIDENTS #692) -#}
-  {% if lp.pageNumber == 1 and lp.prog.arName %}"potentialAction": [{ "@type": "WatchAction", "name": "مشاهدة {{ lp.prog.arName | escape }} مترجم كامل", "target": "https://arab-wrestling.com{{ page.url | cleanUrl }}" }],{% endif %}
+  {% if lp.pageNumber == 1 and lp.prog.arName %}"potentialAction": [{ "@type": "WatchAction", "name": "مشاهدة {{ lp.prog.arName | escape }} مترجم كامل", "target": "https://arab-wrestling.com{{ page.url | cleanUrl }}" }, { "@type": "WatchAction", "name": "مشاهدة {{ lp.prog.arName | escape }} الاخير مترجم عربي", "target": "https://arab-wrestling.com{{ page.url | cleanUrl }}" }, { "@type": "DownloadAction", "name": "تحميل {{ lp.prog.arName | escape }} الاخير مترجم", "target": "https://arab-wrestling.com{{ page.url | cleanUrl }}" }],{% endif %}
   {#- when the newest episode came out and the names it is searched by (first 14), head only (INCIDENTS #655) -#}
   {% if lp.pageNumber == 1 and lp.prog.latest.eventDate %}"dateModified": {{ lp.prog.latest.eventDate | jsonify | safe }},{% set libKw = libraryNameForms(lp.prog, lp.prog.latest.eventDate | yearOf) %}{% if libKw.length %}"keywords": "{% for a in libKw %}{% if loop.index0 < 14 %}{{ a | escape }}{% if not loop.last and loop.index0 < 13 %}, {% endif %}{% endif %}{% endfor %}",{% endif %}{% endif %}
   {#- the program under every name people search it by — for search engines only, nothing on the page (owner) -#}

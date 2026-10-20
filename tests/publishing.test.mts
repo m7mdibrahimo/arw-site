@@ -2137,6 +2137,9 @@ test('a weekly show dated to a day it does not air on is flagged, and one tweet 
   assert.ok(BLOCKING_QA_CODES.includes('weekday_mismatch') && RETRYABLE_QA_CODES.includes('weekday_mismatch'));
   assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي أقيم يوم 15 أكتوبر', 2026), 'AEW Dynamite الذي أقيم يوم 15 أكتوبر');
   assert.equal(showOnWrongWeekday('عرض AEW Dynamite الذي أقيم يوم 14 أكتوبر', 2026), null);
+  // «الذي أقيم مساء 20 أكتوبر 2026» for the Monday 19 RAW went live because only «يوم <date>» was checked.
+  assert.ok(showOnWrongWeekday('خلال عرض WWE RAW الذي أقيم مساء 20 أكتوبر 2026.', 2026));
+  assert.equal(showOnWrongWeekday('خلال عرض WWE RAW الذي أقيم مساء 19 أكتوبر 2026.', 2026), null);
   const src = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(src, /const key = `x:\$\{tweetId\}`/);
 });
@@ -5211,4 +5214,11 @@ test('show description carries the full English name even when the title has a s
   const { showSeoText } = (await import('../lib/show-seo.cjs')).default;
   const r = showSeoText({ headline: 'عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الثاني) 17.10.2026 مترجم', title: 'RevPro/CMLL Fantastica Mania UK 2026 (Show 2)', programName: 'RevPro', eventDate: '2026-10-17', day: '17 أكتوبر 2026', isLatest: false, description: '' });
   assert.match(r.description, /RevPro\/CMLL Fantastica Mania UK 2026 October 17, 2026/);
+});
+
+// Library pages ranked 8–12 for «تحميل/مشاهدة عرض الرو الاخير مترجم»: the CollectionPage carries those phrasings as actions (head only).
+test('library program pages declare Watch/Download actions for the «الاخير مترجم» phrasings (head only)', () => {
+  const tpl = fs.readFileSync('pages/library-program.njk', 'utf8');
+  assert.match(tpl, /"@type": "DownloadAction", "name": "تحميل \{\{ lp\.prog\.arName \| escape \}\} الاخير مترجم"/);
+  assert.match(tpl, /"@type": "WatchAction", "name": "مشاهدة \{\{ lp\.prog\.arName \| escape \}\} الاخير مترجم عربي"/);
 });

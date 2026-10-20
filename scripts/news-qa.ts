@@ -250,7 +250,7 @@ export function weekdayNotOnDate(text: string, year = new Date().getUTCFullYear(
 }
 /** The excerpt when a weekly show is dated to a day it doesn't air on (this year), else null. */
 export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYear()): string | null {
-  const re = new RegExp(`(WWE RAW|WWE NXT|AEW Dynamite|TNA iMPACT|WWE SmackDown|AEW Collision)[^.،\\n]{0,40}?يوم (\\d{1,2}|ال[\\u0600-\\u06FF]+(?: و?[\\u0600-\\u06FF]+)?) (?:من )?(${AR_MONTHS.join("|")})(?: (20\\d\\d))?`, "gi");
+  const re = new RegExp(`(WWE RAW|WWE NXT|AEW Dynamite|TNA iMPACT|WWE SmackDown|AEW Collision)[^.،\\n]{0,40}?(?:يوم|مساء|ليلة|صباح) (\\d{1,2}|ال[\\u0600-\\u06FF]+(?: و?[\\u0600-\\u06FF]+)?) (?:من )?(${AR_MONTHS.join("|")})(?: (20\\d\\d))?`, "gi");
   for (const m of text.matchAll(re)) {
     const day = arabicDay(m[2]);
     const yr = m[4] ? Number(m[4]) : year; // «18 يناير 2027» is judged in 2027, not in the current year
