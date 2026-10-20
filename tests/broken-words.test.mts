@@ -428,3 +428,8 @@ test("preposition glued to an opening quote is blocked (ب\"الصدمة\")", ()
   assert.ok(BLOCKING_QA_CODES.includes('glued_prefix_quote'));
   assert.ok(!checkArticle(t, 'كان سيشعر بالصدمة وقال "الصدمة" ' + 'كلام '.repeat(80)).some(i => i.code === 'glued_prefix_quote'));
 });
+
+test('corrections write the Wagner Brothers team name in Arabic (INCIDENTS #727)', () => {
+  assert.match(applyCorrections('نزالا آخر بين فريق Wagner Brothers وفريق بيرثرايت'), /بين فريق الإخوة فاغنر وفريق/);
+  assert.match(applyCorrections('ضد Wagner Brothers'), /ضد فريق الإخوة فاغنر/);
+});

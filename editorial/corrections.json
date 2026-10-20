@@ -7369,6 +7369,12 @@
    "wrong": "وما هيرام",
    "right": "وهيرام",
    "note": "«ما» زيادة قبل اسم Hiram Garcia — خبر فيلم ريك فلير — INCIDENTS #726"
+  },
+  {
+   "wrong": "(?:فريق\\s+)?Wagner\\s+Brothers",
+   "right": "فريق الإخوة فاغنر",
+   "regex": true,
+   "note": "اسم الفريق بيتكتب بالعربي («الإخوة فاغنر») مش بالإنجليزي — NXT Dusty Rhodes Tag Team Classic (INCIDENTS #727)"
   }
  ]
 }
