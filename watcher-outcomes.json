@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/ethan-page-big-cass-destroy-chad-gable-rey-mysterio-dragon-lee-wwe-raw-title-match": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-20T02:10:34.493Z"
+ },
  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-02T16:49:05.411Z"
- },
- "https://www.wrestlinginc.com/2275779/chris-jericho-remembers-late-pac-aew-dynamite-tribute-show": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-02T15:44:19.903Z"
  }
 }
