@@ -421,3 +421,10 @@ test("rewriteWithGemini rules keep headlines clean and translate «core» as tru
   const src = fs.readFileSync("scripts/fightful-watcher.ts", "utf-8");
   assert.ok(src.includes("العنوان نظيف ومحترم") && src.includes("عضلات الجذع"));
 });
+
+test("preposition glued to an opening quote is blocked (ب\"الصدمة\")", () => {
+  const t = 'عنوان تجريبي طويل بما يكفي للفحص هنا';
+  assert.ok(checkArticle(t, 'كان سيشعر ب"الصدمة" ' + 'كلام '.repeat(80)).some(i => i.code === 'glued_prefix_quote'));
+  assert.ok(BLOCKING_QA_CODES.includes('glued_prefix_quote'));
+  assert.ok(!checkArticle(t, 'كان سيشعر بالصدمة وقال "الصدمة" ' + 'كلام '.repeat(80)).some(i => i.code === 'glued_prefix_quote'));
+});

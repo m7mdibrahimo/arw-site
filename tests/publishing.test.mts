@@ -5206,3 +5206,9 @@ test('a weekly recap is also named «ملخص … الاخير» in its structur
   const forms = (showNameForms as any)({ headline: 'ملخص عرض الرو 05.10.2026 مترجم', title: 'WWE RAW Highlights 05.10.2026', programName: 'WWE RAW Highlights', eventDate: '2026-10-05', aliases: [], isShow: false });
   assert.ok(forms.includes('ملخص الرو الاخير مترجم') || forms.includes('ملخص عرض الرو الاخير'), forms.join('|'));
 });
+
+test('show description carries the full English name even when the title has a slash (RevPro/CMLL …)', async () => {
+  const { showSeoText } = (await import('../lib/show-seo.cjs')).default;
+  const r = showSeoText({ headline: 'عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الثاني) 17.10.2026 مترجم', title: 'RevPro/CMLL Fantastica Mania UK 2026 (Show 2)', programName: 'RevPro', eventDate: '2026-10-17', day: '17 أكتوبر 2026', isLatest: false, description: '' });
+  assert.match(r.description, /RevPro\/CMLL Fantastica Mania UK 2026 October 17, 2026/);
+});
