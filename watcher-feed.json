@@ -1,5 +1,15 @@
 [
   {
+    "id": 334830,
+    "link": "https://www.fightful.com/wrestling/report-dralistico-aew-contract-to-expire-in-december/",
+    "date": "2026-10-20T12:59:36",
+    "date_gmt": "2026-10-20T16:59:36",
+    "title": {
+      "rendered": "Report: Dralistico&#8217;s AEW Contract To Expire In December"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/01/27210948/dralistico_1.jpg"
+  },
+  {
     "id": 334823,
     "link": "https://www.fightful.com/wrestling/nattie-rhea-ripley-is-so-giving-and-very-unselfish/",
     "date": "2026-10-20T12:49:42",
@@ -288,15 +298,5 @@
       "rendered": "Kairi&#8217;s AEW Status Not Held Up By Visa Issues"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/24200444/017_RAW_06242024CM_28156-485a1f21c6e41aa0ee92a2d46e226b7e.jpg"
-  },
-  {
-    "id": 334741,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes/",
-    "date": "2026-10-19T19:36:59",
-    "date_gmt": "2026-10-19T23:36:59",
-    "title": {
-      "rendered": "WWE Raw Results (10/19): Roman Reigns Appears, Penta Competes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/05162857/image-411.png"
   }
 ]
