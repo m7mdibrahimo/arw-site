@@ -479,3 +479,15 @@ test("jussive «لم يرها» and odd phrases are corrected", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم (ي|ت)را(ها|هم|نا)\b/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #731: «وان كل التفاصيل» (dropped hamza after و) and «بطولة AEW الوطنية» inside an ACW results story.
+test("«وان كل» is corrected and a story about ACW can't name AEW titles", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("كان رائعا وان كل التفاصيل جاءت ممتازة"), "كان رائعا وأن كل التفاصيل جاءت ممتازة");
+  assert.equal(applyCorrections("المصارع وان مان غانغ"), "المصارع وان مان غانغ");
+  const body = "أقام الاتحاد العرض. ".repeat(20) + "دافع البطل عن بطولة AEW الوطنية بنجاح.";
+  assert.ok(checkArticle("نتائج عرض ACW Mischief Night 2", body).some((i: any) => i.code === "federation_mismatch"));
+  assert.ok(!checkArticle("نتائج عرض AEW Dynamite", body).some((i: any) => i.code === "federation_mismatch"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && / وان (?:كل|هذا|هذه|ذلك|الجميع)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

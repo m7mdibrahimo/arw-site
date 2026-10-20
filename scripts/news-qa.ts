@@ -269,9 +269,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -420,6 +420,9 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // A wrestler teamed with himself: «فليتشر … سيتعاون مع كايل فليتشر» (the source wrote «Fletcher will team with Fletcher» — INCIDENTS #602)
   const selfPartner = selfPartnered(`${title || ""}\n${body || ""}`);
   if (selfPartner) issues.push({ code: "self_partner", severity: "error", field: "body", message: "المصارع متعاون مع نفسه — اسم الشريك غلط أو مكرر، احذفه أو اكتب «شريكه»", excerpt: selfPartner });
+
+  // A results story of one federation naming another one's titles: «ACW Mischief Night … بطولة AEW الوطنية» (INCIDENTS #731)
+  if (/\bACW\b/.test(title || "") && !/\bAEW\b/.test(title || "") && /(?:بطولة|لقب|حزام)\s+AEW\b/.test(body || "")) issues.push({ code: "federation_mismatch", severity: "error", field: "body", message: "العنوان عن ACW والنص بيقول «بطولة AEW» — اسم الاتحاد غلط", excerpt: ((body || "").match(/(?:بطولة|لقب|حزام)\s+AEW[^\n]{0,20}/) || [""])[0] });
 
   // Dropped hamzas across the text = a broken Gemini draft: retranslate it.
   // No «ف» prefix («روب فان دام»), and «ان» before a number is «N-1 Victory», not «أن».
