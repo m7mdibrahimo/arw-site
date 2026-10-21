@@ -3871,17 +3871,16 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 17.10.2026 مترجم",
-    "lastAttempt": 1792568257854,
+    "lastAttempt": 1792568996234,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261021102053-njpw-taichi-school-pro-wrestling-2-2026": {
     "publishedAt": 1792568281066,
