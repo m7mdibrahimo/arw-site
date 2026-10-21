@@ -548,3 +548,8 @@ test("corrections: dual verb «عملا فيه معا» and «تواجه معه�
   assert.ok(corrections.some(c => c.wrong === "أول يوم عملا فيه معا" && c.right === "أول يوم عملوا فيه معا"));
   assert.ok(corrections.some(c => c.wrong === "الذين تواجه معهم" && c.right === "الذين واجههم"));
 });
+
+test("«الثنائي سيتحالفون» is corrected to a singular verb (INCIDENTS #752)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("يذكر أن الثنائي سيتحالفون معا"), "يذكر أن الثنائي سيتحالف معا");
+});
