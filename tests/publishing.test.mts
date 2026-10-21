@@ -5238,3 +5238,9 @@ test('library program pages declare Watch/Download actions for the «الاخي�
   assert.match(tpl, /"@type": "DownloadAction", "name": "تحميل \{\{ lp\.prog\.arName \| escape \}\} الاخير مترجم"/);
   assert.match(tpl, /"@type": "WatchAction", "name": "مشاهدة \{\{ lp\.prog\.arName \| escape \}\} الاخير مترجم عربي"/);
 });
+
+// INCIDENTS #744: Quinton «Rampage» Jackson's nickname was turned into the show name «AEW Rampage» by the show-name cleanup.
+test('sanitizeWrestlingTerms keeps Quinton «Rampage» Jackson and still fixes the show name', () => {
+  assert.equal(sanitizeWrestlingTerms('نجل كوينتون «رامبيج» جاكسون'), 'نجل كوينتون «رامبيج» جاكسون');
+  assert.equal(sanitizeWrestlingTerms('شاهد رامبيج الليلة'), 'شاهد عرض AEW Rampage الليلة');
+});
