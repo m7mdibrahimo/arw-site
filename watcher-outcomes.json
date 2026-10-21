@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/dogs-reveal-nsfw-name-they-originally-wanted-use-aew": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-21T13:39:54.087Z"
+ },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-21T13:36:29.538Z"
- },
- "https://www.ringsidenews.com/dogs-reveal-nsfw-name-they-originally-wanted-use-aew": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-21T13:20:49.275Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
