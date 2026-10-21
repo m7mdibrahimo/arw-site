@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/liv-morgan-reveals-procedures-she-went-through-to-deal-with-hematoma-from-head-clash-with-roxanne-perez/": {
-    "matchedFile": "20261007113416-ليف-مورغان-تخضع-لجراحة-غرسات-دهنية-لإصلاح-إصابة-جبهتها.md",
-    "reason": "الخبر الجديد يكرر نفس تفاصيل إصابة ليف مورغان في الجبهة والإجراءات الطبية وحقن الكورتيزون وعملية الترقيع الدهني التي تم تغطيتها بالفعل في الخبر رقم 0.",
-    "at": "2026-10-07T13:24:03.271Z"
-  },
   "https://www.ringsidenews.com/real-reason-charlotte-flair-decided-launch-off-pedestal-podcast/": {
     "matchedFile": "20261006225914-شارلوت-فلير-تعلن-إطلاق-بودكاست-off-the-pedestal-with-ashley-fliehr-خلال-أسابيع-قليلة.md",
     "reason": "الخبر الجديد يعالج نفس موضوع إطلاق شارلوت فلير لبودكاست Off the Pedestal وأسباب ظهوره خلال فترة الإصابة كما ورد في الخبر المنشور رقم 0",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "الخبر الجديد يعرض تفاصيل مواجهة من بطولة Dusty Tag Classic في عرض WWE NXT، وهي نفس المواجهة والنتيجة التي تم ذكرها بالفعل ضمن تقرير نتائج عرض WWE NXT المنشور سابقاً.",
     "at": "2026-10-21T01:45:27.330Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more/": {
+    "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-10-21T01:47:24.395Z"
   }
 }
