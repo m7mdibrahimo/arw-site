@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T14:50:23.796Z"
+ },
+ "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T14:50:23.271Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T14:50:23.059Z"
+ },
+ "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T14:50:22.965Z"
+ },
+ "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T14:50:22.825Z"
+ },
+ "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T14:50:22.529Z"
+ },
  "https://www.ringsidenews.com/wwe-accused-dropping-ball-ilja-dragunov-aew-debut": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
@@ -8,36 +38,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-21T14:45:47.761Z"
- },
- "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-21T14:48:38.825Z"
- },
- "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-21T14:48:38.138Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-21T14:48:37.863Z"
- },
- "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-21T14:48:37.741Z"
- },
- "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-21T14:48:37.553Z"
- },
- "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-21T14:48:37.162Z"
  },
  "https://www.ringsidenews.com/dogs-reveal-nsfw-name-they-originally-wanted-use-aew": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
