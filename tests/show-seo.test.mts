@@ -46,3 +46,9 @@ test("a weekly show carries the short category and federation forms", () => {
   const forms = showNameForms({ headline: "عرض الرو 12.10.2026 مترجم", title: "WWE Raw 12.10.2026", programName: "WWE Raw", eventDate: "2026-10-12", aliases: ["عرض الرو"], isShow: true });
   for (const f of ["عروض مصارعة مترجم", "عروض المصارعة مترجم", "عروض WWE مترجم"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f.toLowerCase()), f);
 });
+
+// INCIDENTS #748: «ملخص/نتائج عرض سماك داون الاخير مترجم» (5–8) — a weekly episode is also searched as its recap/results.
+test("a weekly show carries the recap and results forms", () => {
+  const forms = showNameForms({ headline: "عرض سماك داون 16.10.2026", title: "WWE Smackdown 16.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-16", aliases: ["عرض سماك داون"], isShow: true });
+  for (const f of ["ملخص عرض سماك داون الاخير مترجم", "نتائج عرض سماك داون الاخير مترجم"]) assert.ok(forms.includes(f), f);
+});
