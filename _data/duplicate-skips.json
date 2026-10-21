@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/dominik-mysterio-didnt-know-brock-lesnar-was-going-to-beat-his-ass-in-2019-segment/": {
-    "matchedFile": "20261007154250-دومينيك-ميستيريو-يؤكد-تعرضه-للضرب-بجدية-على-يد-بروك-ليسنر-في-هجوم-عرض-wwe-raw.md",
-    "reason": "الخبر الجديد يعالج نفس الحدث والتفاصيل الخاصة بحديث دومينيك ميستيريو في بودكاست سيكس فيت أندر حول تعرضه للضرب على يد بروك ليسنر في عرض راو 2019 والمذكور بالتفصيل في الخبر المنشور [0].",
-    "at": "2026-10-07T20:42:07.294Z"
-  },
   "https://www.fightful.com/wrestling/cody-rhodes-doesnt-know-when-hes-going-to-settle-down-wants-to-be-there-for-everything-that-his-daughters-do-at-a-certain-age/": {
     "matchedFile": "20261007200617-كودي-رودز-يجدد-عقده-مع-wwe.md",
     "reason": "الخبر الجديد مأخوذ من نفس اللقاء في بودكاست Flagrant ويناقش نفس موضوع الاعتزال وتأثره ببوبي رود ومايكل هايز والمذكور في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261021222817-غورف-سيرا-يكشف-تطورات-تعافيه-من-إصابة-انكماش-الرئة.md",
     "reason": "الخبر الجديد يغطي نفس التصريح والتحديث الطبي لغورف سيرا بشأن إصابة انكماش الرئة الموجود بالفعل في الخبر المنشور.",
     "at": "2026-10-21T20:45:41.686Z"
+  },
+  "https://www.fightful.com/wrestling/damian-priest-responds-to-r-truths-social-media-post-after-wwe-smackdown-injury-scare/": {
+    "matchedFile": "20261021222407-داميان-بريست-يرد-على-ار-تروث-بعد-تحميله-المسؤولية-عن-إصابته-في-عرض-wwe-smackdown.md",
+    "reason": "الخبر الجديد يتناول نفس تصريحات داميان بريست حول إصابة ار تروث التي تم تغطيتها بالكامل في الخبر المنشور رقم 0.",
+    "at": "2026-10-21T21:02:55.918Z"
   }
 }
