@@ -1,5 +1,15 @@
 [
   {
+    "id": 335051,
+    "link": "https://www.fightful.com/wrestling/wwe-womens-title-bout-added-to-10-23-wwe-smackdown/",
+    "date": "2026-10-21T19:44:18",
+    "date_gmt": "2026-10-21T23:44:18",
+    "title": {
+      "rendered": "WWE Women&#8217;s Title Bout Added To 10/23 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/21194422/maxresdefault-144.jpg"
+  },
+  {
     "id": 335047,
     "link": "https://www.fightful.com/wrestling/aalyah-mysterio-appears-during-wwe-nxt-segment/",
     "date": "2026-10-21T19:31:59",
@@ -288,15 +298,5 @@
       "rendered": "Ilja Dragunov Says Bandido Is &#8216;Straight Out Of A Video Game&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/28001759/bandido-bat-record-mjf-aew_large.jpg"
-  },
-  {
-    "id": 334964,
-    "link": "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster/",
-    "date": "2026-10-21T08:44:42",
-    "date_gmt": "2026-10-21T12:44:42",
-    "title": {
-      "rendered": "Ilja Dragunov Thinks He Sticks Out From The Rest Of AEW Roster"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/18015514/HU45V2KXMAAFk81-scaled-e1792302935105.jpg"
   }
 ]
