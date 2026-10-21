@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2292521/aew-dynamite-october-21-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-21T22:23:32.471Z"
+ },
  "https://www.fightful.com/wrestling/damian-priest-responds-to-r-truths-social-media-post-after-wwe-smackdown-injury-scare": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-21T22:23:33.380Z"
- },
- "https://www.wrestlinginc.com/2292521/aew-dynamite-october-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-21T22:17:14.869Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
