@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/john-cena-admits-he-may-never-repeat-terrifying-matchbox-helicopter-stunt/": {
-    "matchedFile": "20261006183850-جون-سينا-أعتقد-أن-خوفي-من-المرتفعات-نابع-من-السقوط-طوال-حياتي-فى-wwe.md",
-    "reason": "الخبر الجديد يتناول نفس التصريحات التي أدلى بها جون سينا في برنامج ذا تونايت شو حول فيلم ماتش بوكس ومشهد المروحية، وهي تفاصيل مغطاة بالفعل في الخبر رقم 1.",
-    "at": "2026-10-07T05:32:24.211Z"
-  },
   "https://www.fightful.com/wrestling/andrade-vs-michael-oku-mixed-tag-bout-added-to-aew-collision-grand-slam-france/": {
     "matchedFile": "20261007020424-نتائج-تسجيلات-عرض-aew-collision-grand-slam-france-6-أكتوبر-2026.md",
     "reason": "الخبر الجديد يكرر ذكر نفس مباريات عرض AEW Collision Grand Slam France التي نُشرت مسبقاً في تقرير نتائج العرض.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
     "at": "2026-10-21T00:51:41.900Z"
+  },
+  "https://www.wrestlinginc.com/2292493/izzi-dame-zaria-collide-wwe-nxt-halloween-havoc/": {
+    "matchedFile": "20261021041211-زاريا-تواجه-إيزي-دايم-في-عرض-wwe-nxt-halloween-havoc.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (الإعلان عن مواجهة زاريا وإيزي دايم في عرض Halloween Havoc) مع تفاصيل متطابقة ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
+    "at": "2026-10-21T01:23:05.739Z"
   }
 }
