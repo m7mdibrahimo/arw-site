@@ -163,6 +163,8 @@ export function fixSingularThey(text: string): string {
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
+  // Jey Uso written with Ilja Dragunov's surname (INCIDENTS #758)
+  [/\bJey Dragunov\b/g, "Jey Uso"],
   // a markdown quote marker left inside a quoted caption: «caption, "> Out of office ."» (INCIDENTS #755)
   [/"> ([^"\n]+?) ?([.!?]?)"/g, '"$1$2"'],
   // British spellings the source (Fightful/Ringside) sometimes keeps; the English edition is American English (INCIDENTS #718: «Targetting»)

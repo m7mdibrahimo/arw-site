@@ -14,6 +14,6 @@ en_tags:
   - "AEW"
 image: /content/images/ula0eyyb548cm30b.jpg
 ---
-Tama Tonga has officially addressed the debate surrounding a recent video clip he shared featuring Ilja Dragunov. The WWE star clarified that no hidden agendas or old strategies motivated the upload, noting that he simply found it to be a good clip. The discussion started when Tonga posted footage from SmackDown where he took chops from Jey Dragunov without reacting, shortly after Dragunov debuted in AEW. Dave Meltzer discussed the timing on Wrestling Observer Radio, which caught Tonga's attention on social media. Tonga dismissed Meltzer's comparison to classic promotional methods, insisting he followed no blueprint and only shared a video he liked.
+Tama Tonga has officially addressed the debate surrounding a recent video clip he shared featuring Ilja Dragunov. The WWE star clarified that no hidden agendas or old strategies motivated the upload, noting that he simply found it to be a good clip. The discussion started when Tonga posted footage from SmackDown where he took chops from Jey Uso without reacting, shortly after Dragunov debuted in AEW. Dave Meltzer discussed the timing on Wrestling Observer Radio, which caught Tonga's attention on social media. Tonga dismissed Meltzer's comparison to classic promotional methods, insisting he followed no blueprint and only shared a video he liked.
 
 https://www.instagram.com/p/DesR3stBMsH/

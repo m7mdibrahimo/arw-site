@@ -588,3 +588,10 @@ test("«ص» alone and «أنها لست» are corrected, blocked and gone from 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /فيه ص من|أنها لست/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«وضح» becomes «أوضح» and Jey Uso keeps his name in English (INCIDENTS #758)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وضح المصارع داميان بريست أسباب هجومه"), "أوضح المصارع داميان بريست أسباب هجومه");
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("took chops from Jey Dragunov on SmackDown"), "took chops from Jey Uso on SmackDown");
+});
