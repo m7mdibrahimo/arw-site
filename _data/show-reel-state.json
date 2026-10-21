@@ -3847,22 +3847,19 @@
     "publishedAt": 1792567273011,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 13.10.2026 مترجم",
-    "lastAttempt": 1792567316777,
+    "lastAttempt": 1792582181061,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261021101310-mlw-fusion-17-10-2026": {
     "publishedAt": 1792568170054,
