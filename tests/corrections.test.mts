@@ -525,3 +525,11 @@ test("«دي در. فاغنر» and «روميرو مورينو» are corrected 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /دي در\.? فاغنر|روميرو مورينو/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #743: Dion Lennox was «دينو لينوكس» in the NXT 20 October review.
+test("«دينو لينوكس» is corrected and gone from stories (INCIDENTS #743)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("كروز مونتانا ودينو لينوكس"), "كروز مونتانا وديون لينوكس");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /دينو لينوكس/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
