@@ -533,3 +533,12 @@ test("«دينو لينوكس» is corrected and gone from stories (INCIDENTS #7
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /دينو لينوكس/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #747: El Hijo del Dr. Wagner Jr. was written half English («El Hijo de دكتور فاغنر جونيور.») and with odd spellings.
+test("El Hijo del Dr. Wagner Jr. has one Arabic spelling and is gone from stories (INCIDENTS #747)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ضد El Hijo de دكتور فاغنر جونيور. ضد La Parka"), "ضد إل هيخو دي دكتور فاغنر جونيور ضد La Parka");
+  assert.equal(applyCorrections("ضد إيل خيتو دي الدكتور فاغنر جونيور"), "ضد إل هيخو دي دكتور فاغنر جونيور");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /El Hijo de دكتور|إل خيجو دي دكتور|إيل خيتو دي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

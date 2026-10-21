@@ -7472,6 +7472,22 @@
    "wrong": "دينو لينوكس",
    "right": "ديون لينوكس",
    "note": "Dion Lennox مش «دينو» — زي القاموس (INCIDENTS #743)"
+  },
+  {
+   "wrong": "El Hijo de دكتور فاغنر جونيور\\.?",
+   "right": "إل هيخو دي دكتور فاغنر جونيور",
+   "regex": true,
+   "note": "اسم El Hijo del Dr. Wagner Jr. اتكتب نص إنجليزي ونص عربي بنقطة زيادة — الاسم بالعربي كامل (INCIDENTS #747)"
+  },
+  {
+   "wrong": "إل خيجو دي دكتور فاغنر",
+   "right": "إل هيخو دي دكتور فاغنر",
+   "note": "El Hijo del Dr. Wagner Jr. — «هيخو» زي باقي الأخبار (INCIDENTS #747)"
+  },
+  {
+   "wrong": "إيل خيتو دي الدكتور فاغنر",
+   "right": "إل هيخو دي دكتور فاغنر",
+   "note": "El Hijo del Dr. Wagner Jr. — شكل تاني غلط للاسم (INCIDENTS #747)"
   }
  ]
 }

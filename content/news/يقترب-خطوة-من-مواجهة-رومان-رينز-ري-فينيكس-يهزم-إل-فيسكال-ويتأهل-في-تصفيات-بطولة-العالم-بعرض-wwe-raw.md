@@ -17,6 +17,6 @@ layout: post-layout.njk
 
 ### مواجهة نارية مرتقبة في الدور القادم
 
-بهذا الانتصار، يضرب ري فينيكس موعدا ناريا في الجولة التالية من التصفيات؛ حيث ينتظر الفائز من المواجهة اللاتينية المرتقبة التي تجمع بين النجم دراغون لي والمصارع إل هيخو دي دكتور فاغنر جونيور (El Hijo de دكتور فاغنر جونيور.).
+بهذا الانتصار، يضرب ري فينيكس موعدا ناريا في الجولة التالية من التصفيات؛ حيث ينتظر الفائز من المواجهة اللاتينية المرتقبة التي تجمع بين النجم دراغون لي والمصارع إل هيخو دي دكتور فاغنر جونيور.
 
 <https://x.com/WWE/status/2089515958008242655?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2089515958008242655%7Ctwgr%5Eaeb16aa9fbb07da9491cdf4c88be507ed59cf4ec%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Frey-fenix-pins-el-fiscal-to-advance-in-world-heavyweight-title-contender-tournament-on-wwe-raw%2F>
