@@ -214,3 +214,9 @@ test('a literal backslash-n typed by Gemini is saved as a real line break', () =
   const file = saveEnglishEdition({ ...good, body: good.body.replace('\n\n', ' \\n\\n> "Quote here," he said. \\n\\n') }, input, dir);
   assert.ok(!fs.readFileSync(file, 'utf8').includes('\\n'));
 });
+
+// INCIDENTS #755: a markdown quote marker inside a quoted caption («"> Out of office ."»)
+test('a stray "> " marker inside quotes is removed', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('with the caption, "> Out of office ."'), 'with the caption, "Out of office."');
+});

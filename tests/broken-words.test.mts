@@ -440,3 +440,11 @@ test('glued_arabic_words blocks a dual pronoun glued to the next word', () => {
   assert.ok(issues.some(i => i.code === 'glued_arabic_words'));
   assert.ok(!checkArticle('عنوان', 'في ظل العداوة المستمرة بينهما في عرض WWE NXT.').some(i => i.code === 'glued_arabic_words'));
 });
+
+// INCIDENTS #755: «صعودهما» / «منهما» (dual pronoun) reached a story.
+test('INCIDENTS #755: dual «هما» pronouns on prepositions are blocked', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('وعند صعودهما الطائرة تفاجأ الطاقم').includes('dual_form'));
+  assert.ok(codes('فمر بالقرب منهما وسأله').includes('dual_form'));
+  assert.ok(!codes('وعند صعودهم الطائرة تفاجأ الطاقم').includes('dual_form'));
+});

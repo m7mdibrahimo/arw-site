@@ -163,6 +163,8 @@ export function fixSingularThey(text: string): string {
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bM By Elegance\b/g, "Ash By Elegance"],
+  // a markdown quote marker left inside a quoted caption: «caption, "> Out of office ."» (INCIDENTS #755)
+  [/"> ([^"\n]+?) ?([.!?]?)"/g, '"$1$2"'],
   // British spellings the source (Fightful/Ringside) sometimes keeps; the English edition is American English (INCIDENTS #718: «Targetting»)
   [/\b(T|t)argetting\b/g, "$1argeting"],
   [/\b(F|f)avour(s|ed|ing|ite|ites)?\b/g, "$1avor$2"],
