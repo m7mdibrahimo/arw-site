@@ -3855,7 +3855,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261021101310-mlw-fusion-17-10-2026": {
     "publishedAt": 1792568170054,
