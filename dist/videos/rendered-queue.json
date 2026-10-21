@@ -6513,18 +6513,54 @@
     "kind": "show",
     "slug": "20261018083515-aew-wrestledream-tailgate-braw",
     "image": "/content/images/1nhohlh291gy95pg.jpg",
-    "renderedAt": 1792567345368
+    "renderedAt": 1792566923187
   },
   {
-    "videoUrl": "/videos/reel-20261021100845-cmll-martes-de-glamour-13-10-2.mp4",
-    "filename": "reel-20261021100845-cmll-martes-de-glamour-13-10-2.mp4",
-    "title": "عرض سي ام ال ال مارتيس دي غلامور 13.10.2026 مترجم",
-    "secondaryTitle": "CMLL Martes De Glamour 13.10.2026",
-    "description": "عرض سي ام ال ال مارتيس دي غلامور مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261021100845-cmll-martes-de-glamour-13-10-2",
+    "videoUrl": "/videos/reel-20261021102053-njpw-taichi-school-pro-wrestli.mp4",
+    "filename": "reel-20261021102053-njpw-taichi-school-pro-wrestli.mp4",
+    "title": "عرض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 17.10.2026 مترجم",
+    "secondaryTitle": "NJPW Taichi School Pro Wrestling 2 (2026)",
+    "description": "عرض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261021102053-njpw-taichi-school-pro-wrestli",
     "kind": "show",
-    "slug": "20261021100845-cmll-martes-de-glamour-13-10-2",
-    "image": "/content/images/uixpcfbkqwdv2s7u.jpg",
-    "renderedAt": 1792567437617
+    "slug": "20261021102053-njpw-taichi-school-pro-wrestli",
+    "image": "/content/images/wvisjssdtd0b8nol.jpg",
+    "renderedAt": 1792567666556
+  },
+  {
+    "videoUrl": "/videos/reel-20261005163350-nwa-powerrr-03-10-2026.mp4",
+    "filename": "reel-20261005163350-nwa-powerrr-03-10-2026.mp4",
+    "title": "عرض ان دبليو ايه باور 03.10.2026 مترجم",
+    "secondaryTitle": "NWA Powerrr 03.10.2026",
+    "description": "عرض ان دبليو ايه باور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261005163350-nwa-powerrr-03-10-2026",
+    "kind": "show",
+    "slug": "20261005163350-nwa-powerrr-03-10-2026",
+    "image": "/content/images/bc0prh5q0o3ycrug.jpg",
+    "renderedAt": 1792567767995
+  },
+  {
+    "videoUrl": "/videos/reel-20261012060623-cmll-sabados-de-coliseo-10-10-.mp4",
+    "filename": "reel-20261012060623-cmll-sabados-de-coliseo-10-10-.mp4",
+    "title": "عرض سي ام ال ال سابادوس دي كوليسيو 10.10.2026 مترجم",
+    "secondaryTitle": "CMLL Sabados De Coliseo 10.10.2026",
+    "description": "عرض سي ام ال ال سابادوس دي كوليسيو مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261012060623-cmll-sabados-de-coliseo-10-10-",
+    "kind": "show",
+    "slug": "20261012060623-cmll-sabados-de-coliseo-10-10-",
+    "image": "/content/images/mz8zgvqls99u165t.jpg",
+    "renderedAt": 1792567871188
+  },
+  {
+    "videoUrl": "/videos/reel-20261021101310-mlw-fusion-17-10-2026.mp4",
+    "filename": "reel-20261021101310-mlw-fusion-17-10-2026.mp4",
+    "title": "عرض ام ال دبليو فيوجن 17.10.2026 مترجم",
+    "secondaryTitle": "MLW Fusion 17.10.2026",
+    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261021101310-mlw-fusion-17-10-2026",
+    "kind": "show",
+    "slug": "20261021101310-mlw-fusion-17-10-2026",
+    "image": "/content/images/1dkfjmjijrolv0qd.jpg",
+    "renderedAt": 1792567975556
   }
 ]
