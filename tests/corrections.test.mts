@@ -553,3 +553,11 @@ test("«الثنائي سيتحالفون» is corrected to a singular verb (INC
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("يذكر أن الثنائي سيتحالفون معا"), "يذكر أن الثنائي سيتحالف معا");
 });
+
+test("«هناك فرق كبيرا» and dual «تبادلا قمصان» are corrected (INCIDENTS #753)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أن هناك فرق كبيرا بين"), "أن هناك فرقا كبيرا بين");
+  assert.equal(applyCorrections("كيف تبادلا قمصان الأندية"), "كيف تبادل معه قمصان الأندية");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /هناك فرق كبيرا|تبادلا قمصان/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

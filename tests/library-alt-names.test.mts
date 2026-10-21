@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { createRequire } from "node:module";
+const { libraryNameForms } = createRequire(import.meta.url)("../lib/show-seo.cjs");
 
 test("library program descriptions carry the other Arabic spellings of the program (INCIDENTS #477)", () => {
   const njk = fs.readFileSync("pages/library-program.njk", "utf8");
@@ -42,4 +44,9 @@ test("Main Event is also written with the other Arabic spelling", async () => {
   const forms = showNameForms({ headline: "عرض مين ايفنت 14.10.2026 مترجم", programName: "WWE Main Event", eventDate: "2026-10-14", aliases: ["عرض مين ايفنت"], isShow: true });
   assert.ok(forms.includes("عرض ماين ايفنت الاخير"), "ماين الاخير");
   assert.ok(forms.includes("عرض ماين ايفنت مترجم"), "ماين مترجم");
+});
+
+test("a yearly program's library page also answers «… 2026 تحميل» and «… 2026 اون لاين» (INCIDENTS #753)", () => {
+  const forms = libraryNameForms({ arName: "عرض موني ان ذا بانك", name: "WWE Money in the Bank", aliases: [], year: 2026, count: 3, latest: "2026-07-05" });
+  for (const f of ["Money in the Bank 2026 تحميل", "عرض موني ان ذا بانك 2026 اون لاين", "عرض Money in the Bank 2026 مشاهدة"]) assert.ok(forms.includes(f), f);
 });
