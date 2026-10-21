@@ -1,68 +1,68 @@
 {
- "https://www.fightful.com/wrestling/sean-legacy-announces-dorian-van-dux-will-be-cleared-to-compete-in-two-months": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
-  "retry": false,
-  "at": "2026-10-21T01:47:34.451Z"
- },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:24.611Z"
+  "at": "2026-10-21T01:49:28.460Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:24.393Z"
+  "at": "2026-10-21T01:49:28.195Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:24.249Z"
+  "at": "2026-10-21T01:49:28.076Z"
  },
  "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:24.100Z"
+  "at": "2026-10-21T01:49:27.900Z"
  },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:23.798Z"
+  "at": "2026-10-21T01:49:27.530Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
-  "at": "2026-10-21T01:47:23.380Z"
+  "at": "2026-10-21T01:49:27.015Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-opens-up-about-decision-to-leave-wwe-nothing-felt-satisfying": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:23.283Z"
+  "at": "2026-10-21T01:49:26.898Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-says-he-got-some-heat-in-wwe-when-expressions-wanted-to-meet-him-at-money-in-the-bank-2023": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:23.181Z"
+  "at": "2026-10-21T01:49:26.780Z"
  },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:22.998Z"
+  "at": "2026-10-21T01:49:26.556Z"
  },
  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:22.855Z"
+  "at": "2026-10-21T01:49:26.379Z"
  },
  "https://www.fightful.com/wrestling/lee-moriarty-and-la-cherry-get-engaged": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:22.703Z"
+  "at": "2026-10-21T01:49:26.196Z"
  },
  "https://www.fightful.com/wrestling/kairi-says-various-things-are-already-in-motion-regarding-her-she-may-wrestle-next": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:47:22.468Z"
+  "at": "2026-10-21T01:49:25.902Z"
+ },
+ "https://www.fightful.com/wrestling/sean-legacy-announces-dorian-van-dux-will-be-cleared-to-compete-in-two-months": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-10-21T01:47:34.451Z"
  },
  "https://www.wrestlinginc.com/2292489/el-hijo-de-dr-wagner-galeno-upset-birthright-wwe-nxt-dusty-tag-classic": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
