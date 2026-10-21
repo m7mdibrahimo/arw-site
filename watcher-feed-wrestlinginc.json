@@ -1,5 +1,15 @@
 [
   {
+    "id": 3903589655,
+    "link": "https://www.wrestlinginc.com/2293664/aaa-mini-vikingo-injury-elbow/",
+    "date": "Wed, 21 Oct 2026 21:29:45 +0000",
+    "date_gmt": "2026-10-21T21:29:45.000Z",
+    "title": {
+      "rendered": "Backstage Update On Injury Status Of AAA's Mini Vikingo"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-injury-status-of-aaas-mini-vikingo/l-intro-1792617918.jpg"
+  },
+  {
     "id": 4645967609,
     "link": "https://www.wrestlinginc.com/2292521/aew-dynamite-october-21-2026-results/",
     "date": "Wed, 21 Oct 2026 21:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "TNA Impact Viewership & Ratings Report: 10/8/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-1082026/l-intro-1792535369.jpg"
-  },
-  {
-    "id": 1618258964,
-    "link": "https://www.wrestlinginc.com/2292419/roman-reigns-946-wwe-raw-i-fear-no-man-faction-bloodline/",
-    "date": "Tue, 20 Oct 2026 22:19:34 +0000",
-    "date_gmt": "2026-10-20T22:19:34.000Z",
-    "title": {
-      "rendered": "Roman Reigns After Running Off 946 On WWE Raw: 'I Fear No Man, I Fear No Faction'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/roman-reigns-after-running-off-946-on-wwe-raw-i-fear-no-man-i-fear-no-faction/l-intro-1792534647.jpg"
   }
 ]
