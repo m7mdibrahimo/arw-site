@@ -595,3 +595,8 @@ test("«وضح» becomes «أوضح» and Jey Uso keeps his name in English (INC
   const { fixEnglishNames } = await import("../scripts/english-edition.ts");
   assert.equal(fixEnglishNames("took chops from Jey Dragunov on SmackDown"), "took chops from Jey Uso on SmackDown");
 });
+
+test("«نزالهم» for two wrestlers becomes «النزال» (INCIDENTS #759)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("إلى إيقاف نزالهم في العرض"), "إلى إيقاف النزال في العرض");
+});
