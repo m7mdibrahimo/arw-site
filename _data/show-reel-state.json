@@ -3863,5 +3863,37 @@
     ],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261021101310-mlw-fusion-17-10-2026": {
+    "publishedAt": 1792568170054,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض ام ال دبليو فيوجن 17.10.2026 مترجم",
+    "lastAttempt": 1792568257854,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261021102053-njpw-taichi-school-pro-wrestling-2-2026": {
+    "publishedAt": 1792568281066,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 17.10.2026 مترجم",
+    "lastAttempt": 1792568292476,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
