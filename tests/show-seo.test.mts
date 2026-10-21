@@ -52,3 +52,9 @@ test("a weekly show carries the recap and results forms", () => {
   const forms = showNameForms({ headline: "عرض سماك داون 16.10.2026", title: "WWE Smackdown 16.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-16", aliases: ["عرض سماك داون"], isShow: true });
   for (const f of ["ملخص عرض سماك داون الاخير مترجم", "نتائج عرض سماك داون الاخير مترجم"]) assert.ok(forms.includes(f), f);
 });
+
+// INCIDENTS #754: a weekly show of a non-WWE program is also searched with «مشاهدة/تحميل/اون لاين» and the year in front of its English name.
+test("a weekly episode carries watch/download/year forms of its full English name", () => {
+  const forms = showNameForms({ headline: "عرض ايه اي دبليو دايناميت 14.10.2026 مترجم", title: "AEW Dynamite 14.10.2026", programName: "AEW Dynamite", eventDate: "2026-10-14", aliases: ["عرض ايه اي دبليو دايناميت"], isShow: true, archive: false });
+  for (const f of ["مشاهدة AEW Dynamite", "تحميل AEW Dynamite", "AEW Dynamite 2026 مترجم", "AEW Dynamite اون لاين"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f.toLowerCase()), f);
+});

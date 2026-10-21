@@ -561,3 +561,10 @@ test("«هناك فرق كبيرا» and dual «تبادلا قمصان» are co
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /هناك فرق كبيرا|تبادلا قمصان/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("corrections fix feminine participle with masculine subject, «مشابها الأمر» and «يستخدموني»", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "مشيرة مازحا" && c.right === "مشيرا مازحا"));
+  assert.ok(corrections.some(c => c.wrong === "مشابها الأمر" && c.right === "مشبها الأمر"));
+  assert.ok(corrections.some(c => c.wrong === "كان دائما يستخدموني" && c.right === "كان دائما يستخدمني"));
+});
