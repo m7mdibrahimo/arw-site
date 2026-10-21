@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/jacob-heyman-reveals-he-told-his-dad-paul-heyman-to-cut-the-ponytail": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T19:39:59.679Z"
+ },
  "https://www.fightful.com/wrestling/ric-flair-speaks-about-tony-khan-hes-a-nice-guy-i-work-for-him-i-dont-do-anything": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:36:44.399Z"
+  "at": "2026-10-21T19:39:59.415Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-we-wanted-to-be-the-raw-dogs-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:36:43.949Z"
+  "at": "2026-10-21T19:39:58.973Z"
  },
  "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:36:43.558Z"
+  "at": "2026-10-21T19:39:58.591Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:36:42.986Z"
+  "at": "2026-10-21T19:39:58.032Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:36:42.165Z"
+  "at": "2026-10-21T19:39:57.232Z"
  },
  "https://www.fightful.com/wrestling/gurv-sihra-provides-update-on-recovery-from-collapsed-lung": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-05T18:08:15.256Z"
- },
- "https://www.fightful.com/wrestling/road-dogg-wants-to-see-the-miz-inducted-into-the-wwe-hall-of-fame-next-year-why-put-it-off": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-05T18:07:55.031Z"
  }
 }
