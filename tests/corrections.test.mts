@@ -575,3 +575,16 @@ test("«باتت ملاحظة للفرق» is corrected and gone from the news (
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("باتت ملاحظة للفرق"));
   assert.deepEqual(bad, []);
 });
+
+test("«ص» alone and «أنها لست» are corrected, blocked and gone from the news (INCIDENTS #757)", async () => {
+  const { applyCorrections, checkArticle, BLOCKING_QA_CODES } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("الذي نشر فيه ص من منشأة طبية"), "الذي نشر فيه صورة من منشأة طبية");
+  assert.equal(applyCorrections("مؤكدة أنها لست متأكدة من استمرارها"), "مؤكدة أنها ليست متأكدة من استمرارها");
+  assert.ok(BLOCKING_QA_CODES.includes("broken_word"));
+  const body = "نشر ص من منشأة طبية. ".repeat(12);
+  assert.ok(checkArticle("عنوان", body).some(i => i.code === "broken_word"));
+  assert.ok(checkArticle("عنوان", "قالت إنها لست راضية عن النتيجة. ".repeat(12)).some(i => i.code === "broken_word"));
+  assert.ok(!checkArticle("عنوان", "استثناء آدم بيدج، لست متأكدا من ذلك. ".repeat(12)).some(i => i.code === "broken_word"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /فيه ص من|أنها لست/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

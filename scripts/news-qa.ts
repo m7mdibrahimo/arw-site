@@ -111,6 +111,8 @@ const RULES: Rule[] = [
   { code: "persian_letters", severity: "error", re: /[گکیپچژڤ]/g, message: "حروف فارسية بدل العربية" },
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]|(?<![${AR}])[بلك](?=[A-Z]{2,})`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)" },
   { code: "glued_prefix_quote", severity: "error", re: new RegExp(`(?<![${AR}])[بلك]["“«](?=[${AR}])`, "g"), message: "حرف جر ملزوق بعلامة اقتباس (ب\"الصدمة\") — اكتب «بالصدمة» بدون اقتباس أو الاقتباس كله بين علامتين" },
+  { code: "broken_word", severity: "error", re: /(?<![ء-ي\w])(?:ص|ث|ج|ح|خ|ذ|ز|ش|ض|ط|ظ|غ|ق|ك)(?![ء-ي\w])(?=\s+(?:من|في|على|عن|إلى|الى)\s)/g, message: "كلمة مكسورة: حرف عربي واحد لوحده (غالبا «ص» بدل «صورة»)", fields: ["title", "body"] },
+  { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?:أنها|أنه|إنها|إنه|بأنها|بأنه|وأنها|وأنه)\s+لست(?![ء-ي])/g, message: "نحو: «لست» مع ضمير الغائب — الصح «ليست/ليس»", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])وة(?![ء-ي])/g, message: "كلمة مكسورة: «وة» لوحدها (غالبا «و» + ترجمة مقطوعة لاسم — مثل «هانك وة تانك» بدل «هانك وتانك»)", fields: ["title", "body"] },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
