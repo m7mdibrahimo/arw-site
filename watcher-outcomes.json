@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/possible-plans-cm-punk-wrestlemania-43-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-21T15:22:21.968Z"
+ },
  "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
