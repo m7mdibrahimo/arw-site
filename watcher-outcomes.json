@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/dogs-reveal-nsfw-name-they-originally-wanted-use-aew": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-21T13:20:49.275Z"
- },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T13:20:34.174Z"
+  "at": "2026-10-21T13:23:41.427Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T13:20:33.386Z"
+  "at": "2026-10-21T13:23:40.652Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T13:20:33.070Z"
+  "at": "2026-10-21T13:23:40.345Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T13:20:32.930Z"
+  "at": "2026-10-21T13:23:40.206Z"
  },
  "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T13:20:32.718Z"
+  "at": "2026-10-21T13:23:39.999Z"
  },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T13:20:32.271Z"
+  "at": "2026-10-21T13:23:39.562Z"
+ },
+ "https://www.ringsidenews.com/dogs-reveal-nsfw-name-they-originally-wanted-use-aew": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-21T13:20:49.275Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
