@@ -568,3 +568,10 @@ test("corrections fix feminine participle with masculine subject, «مشابها
   assert.ok(corrections.some(c => c.wrong === "مشابها الأمر" && c.right === "مشبها الأمر"));
   assert.ok(corrections.some(c => c.wrong === "كان دائما يستخدموني" && c.right === "كان دائما يستخدمني"));
 });
+
+test("«باتت ملاحظة للفرق» is corrected and gone from the news (INCIDENTS #756)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("الجماهير باتت ملاحظة للفرق في مظهره"), "الجماهير باتت تلاحظ الفرق في مظهره");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("باتت ملاحظة للفرق"));
+  assert.deepEqual(bad, []);
+});
