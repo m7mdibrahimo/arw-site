@@ -3842,5 +3842,26 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261021100845-cmll-martes-de-glamour-13-10-2026": {
+    "publishedAt": 1792567273011,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 13.10.2026 مترجم",
+    "lastAttempt": 1792567316777,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
