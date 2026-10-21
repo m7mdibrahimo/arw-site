@@ -542,3 +542,9 @@ test("El Hijo del Dr. Wagner Jr. has one Arabic spelling and is gone from storie
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /El Hijo de دكتور|إل خيجو دي دكتور|إيل خيتو دي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("corrections: dual verb «عملا فيه معا» and «تواجه معهم» are fixed (INCIDENTS #749)", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "أول يوم عملا فيه معا" && c.right === "أول يوم عملوا فيه معا"));
+  assert.ok(corrections.some(c => c.wrong === "الذين تواجه معهم" && c.right === "الذين واجههم"));
+});
