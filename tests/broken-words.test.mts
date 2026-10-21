@@ -433,3 +433,10 @@ test('corrections write the Wagner Brothers team name in Arabic (INCIDENTS #727)
   assert.match(applyCorrections('نزالا آخر بين فريق Wagner Brothers وفريق بيرثرايت'), /بين فريق الإخوة فاغنر وفريق/);
   assert.match(applyCorrections('ضد Wagner Brothers'), /ضد فريق الإخوة فاغنر/);
 });
+
+// INCIDENTS #740: «العداوة المستمرة بينهمامستمرة بينهم» (a dual pronoun glued to the next word) went live in the Naraku story
+test('glued_arabic_words blocks a dual pronoun glued to the next word', () => {
+  const issues = checkArticle('عنوان', 'في ظل العداوة المستمرة بينهمامستمرة بينهم في عرض WWE NXT.');
+  assert.ok(issues.some(i => i.code === 'glued_arabic_words'));
+  assert.ok(!checkArticle('عنوان', 'في ظل العداوة المستمرة بينهما في عرض WWE NXT.').some(i => i.code === 'glued_arabic_words'));
+});
