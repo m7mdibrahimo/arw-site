@@ -479,7 +479,8 @@ export function sanitizeWrestlingTerms(text: string): string {
   if (!text) return text;
   // Protect all URLs so handles, paths and links are never corrupted into Arabic
   const safeUrls: string[] = [];
-  const textShielded = text.replace(/https?:\/\/[^\s"'<>]+/gi, (url) => {
+  // Gemini sometimes leaves a paragraph break as «</p><p>» inside the Arabic text (INCIDENTS #751)
+  const textShielded = text.replace(/<\/p>\s*<p>/gi, "\n\n").replace(/https?:\/\/[^\s"'<>]+/gi, (url) => {
     safeUrls.push(url);
     return `__ARW_SAFE_URL_${safeUrls.length - 1}__`;
   });

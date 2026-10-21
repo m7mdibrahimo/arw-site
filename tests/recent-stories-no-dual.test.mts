@@ -34,3 +34,13 @@ test('dual التقى/تواجه forms with تا are caught', () => {
     assert.ok(codes.includes('dual_form'), w);
   }
 });
+
+// INCIDENTS #751: «سيتحالفان»، «تراجعا عنه»، «ليقررا» (dual verbs) and a stray «</p><p>» in a story body passed the checks.
+test('dual verbs سيتحالفان/تراجعا/ليقررا and a stray </p><p> are caught', () => {
+  for (const w of ['الثنائي سيتحالفان معا', 'لكنهما تراجعا عنه', 'ليقررا الاستقرار']) {
+    const codes = checkArticle('عنوان', `تحدث الصحفي عن النزال المنتظر ${w} في الحلبة.`).map(i => i.code);
+    assert.ok(codes.includes('dual_form'), w);
+  }
+  const codes = checkArticle('عنوان', 'تحدث المصارع عن النزال المنتظر في الحلبة.</p><p>خلال مقابلة حديثة قال إنه سعيد جدا بذلك.').map(i => i.code);
+  assert.ok(codes.includes('artifact'));
+});
