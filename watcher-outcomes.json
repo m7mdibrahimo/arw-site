@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/carlie-bravo-lee-moriarty-is-one-of-the-best-wrestlers-on-planet-earth": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T20:11:33.926Z"
+ },
  "https://www.fightful.com/wrestling/jacob-heyman-reveals-he-told-his-dad-paul-heyman-to-cut-the-ponytail": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T20:09:23.886Z"
+  "at": "2026-10-21T20:11:33.680Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-speaks-about-tony-khan-hes-a-nice-guy-i-work-for-him-i-dont-do-anything": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T20:09:23.696Z"
+  "at": "2026-10-21T20:11:33.436Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-we-wanted-to-be-the-raw-dogs-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T20:09:23.345Z"
+  "at": "2026-10-21T20:11:33.035Z"
  },
  "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T20:09:23.069Z"
+  "at": "2026-10-21T20:11:32.682Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T20:09:22.670Z"
+  "at": "2026-10-21T20:11:32.175Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-05T18:49:49.802Z"
- },
- "https://www.fightful.com/wrestling/salvador-lutteroth-speaks-on-el-hijo-del-santo-leaving-cmll-in-2006": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-05T18:08:15.256Z"
  }
 }
