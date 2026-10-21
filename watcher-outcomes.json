@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-october-21-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-21T23:33:39.650Z"
+ },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-21-2026-mike-bailey-vs-ilja-dragunov-cope-will-ospreay-team-up-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-06T12:27:53.291Z"
- },
- "https://www.fightful.com/wrestling/joe-hendrys-beyond-belief-album-now-available": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-06T03:23:24.751Z"
  }
 }
