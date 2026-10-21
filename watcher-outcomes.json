@@ -34,11 +34,6 @@
   "retry": false,
   "at": "2026-10-21T15:06:45.060Z"
  },
- "https://www.ringsidenews.com/possible-plans-cm-punk-wrestlemania-43-revealed": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-21T14:56:23.927Z"
- },
  "https://www.ringsidenews.com/wwe-accused-dropping-ball-ilja-dragunov-aew-debut": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
