@@ -3882,12 +3882,18 @@
     "publishedAt": 1792568281066,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 17.10.2026 مترجم",
-    "lastAttempt": 1792568292476,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792571642727,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
