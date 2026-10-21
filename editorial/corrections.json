@@ -7446,6 +7446,17 @@
    "wrong": "كوينتون عرض AEW Rampage جاكسون",
    "right": "كوينتون «رامبيج» جاكسون",
    "note": "لقب Quinton «Rampage» Jackson اتحوّل لاسم عرض (INCIDENTS #739)"
+  },
+  {
+   "wrong": "دي در\\.? فاغنر",
+   "right": "دي دكتور فاغنر",
+   "regex": true,
+   "note": "El Hijo del Dr. Wagner Jr. اتكتب «دي در.» (اختصار Dr بنقطة بتقطع الجملة) — «دي دكتور فاغنر» (INCIDENTS #741)"
+  },
+  {
+   "wrong": "روميرو مورينو",
+   "right": "روميو مورينو",
+   "note": "Romeo Moreno مش «روميرو» — زي القاموس (INCIDENTS #741)"
   }
  ]
 }

@@ -516,3 +516,12 @@ test("Syko Stu and Quinton «Rampage» Jackson are corrected (INCIDENTS #739)", 
   assert.equal(glossary["Syko Stu"], "سايكو ستو");
   assert.equal(applyCorrections("تحدث سايكو كلو عن كوينتون عرض AEW Rampage جاكسون"), "تحدث سايكو ستو عن كوينتون «رامبيج» جاكسون");
 });
+
+// INCIDENTS #741: «El Hijo del Dr. Wagner Jr.» became «دي در. فاغنر» and Romeo Moreno «روميرو».
+test("«دي در. فاغنر» and «روميرو مورينو» are corrected and gone from stories (INCIDENTS #741)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("غاليون وإل هيخو دي در. فاغنر جونيور"), "غاليون وإل هيخو دي دكتور فاغنر جونيور");
+  assert.equal(applyCorrections("مع روميرو مورينو"), "مع روميو مورينو");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /دي در\.? فاغنر|روميرو مورينو/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
