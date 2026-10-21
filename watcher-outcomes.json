@@ -1993,10 +1993,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-05T14:32:31.483Z"
- },
- "https://www.fightful.com/wrestling/former-wwe-nxt-talent-brinley-reece-gets-married": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-05T14:05:30.166Z"
  }
 }
