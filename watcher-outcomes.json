@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2292489/el-hijo-de-dr-wagner-galeno-upset-birthright-wwe-nxt-dusty-tag-classic": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-21T01:03:32.222Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-21T01:00:34.181Z"
- },
- "https://www.wrestlinginc.com/2292489/el-hijo-de-dr-wagner-galeno-upset-birthright-wwe-nxt-dusty-tag-classic": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-21T00:58:28.165Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-20-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
