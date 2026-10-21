@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/possible-plans-cm-punk-wrestlemania-43-revealed": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-21T14:56:23.927Z"
- },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T14:54:42.789Z"
+  "at": "2026-10-21T14:57:40.497Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T14:54:41.999Z"
+  "at": "2026-10-21T14:57:39.704Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T14:54:41.686Z"
+  "at": "2026-10-21T14:57:39.386Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T14:54:41.544Z"
+  "at": "2026-10-21T14:57:39.244Z"
  },
  "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T14:54:41.328Z"
+  "at": "2026-10-21T14:57:39.033Z"
  },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T14:54:40.882Z"
+  "at": "2026-10-21T14:57:38.563Z"
+ },
+ "https://www.ringsidenews.com/possible-plans-cm-punk-wrestlemania-43-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-21T14:56:23.927Z"
  },
  "https://www.ringsidenews.com/wwe-accused-dropping-ball-ilja-dragunov-aew-debut": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
