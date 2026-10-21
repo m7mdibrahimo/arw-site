@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2279784/aew-njpw-mjf-ryohei-oiwa-challenges-actual-world-title/": {
-    "matchedFile": "20261007140144-ام-جيه-اف-يظهر-عبر-الفيديو-في-عرض-njpw-road-to-king-of-pro-wrestling-ويطلق-تحديا-ضد-ريوهي-أويوا.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث المتعلق بظهور ام جيه اف وتحديه لريوهي أويوا في عرض NJPW ووضع لقبه على المحك، وهي نفس الواقعة المذكورة في الخبر المنشور رقم 0 مع اختلاف طفيف في تفاصيل الصياغة وذكر القاعة.",
-    "at": "2026-10-07T12:51:54.804Z"
-  },
   "https://www.fightful.com/wrestling/liv-morgan-reveals-procedures-she-went-through-to-deal-with-hematoma-from-head-clash-with-roxanne-perez/": {
     "matchedFile": "20261007113416-ليف-مورغان-تخضع-لجراحة-غرسات-دهنية-لإصلاح-إصابة-جبهتها.md",
     "reason": "الخبر الجديد يكرر نفس تفاصيل إصابة ليف مورغان في الجبهة والإجراءات الطبية وحقن الكورتيزون وعملية الترقيع الدهني التي تم تغطيتها بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "الخبر الجديد يغطي تفاصيل ونتائج نزالات بطولة Dusty Rhodes Tag Team Classic في عرض WWE NXT بتاريخ 20 أكتوبر 2026، وهي نفس النتائج والأحداث المغطاة بالفعل في تقرير نتائج العرض المنشور مسبقاً.",
     "at": "2026-10-21T01:43:02.140Z"
+  },
+  "https://www.wrestlinginc.com/2292489/el-hijo-de-dr-wagner-galeno-upset-birthright-wwe-nxt-dusty-tag-classic/": {
+    "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
+    "reason": "الخبر الجديد يعرض تفاصيل مواجهة من بطولة Dusty Tag Classic في عرض WWE NXT، وهي نفس المواجهة والنتيجة التي تم ذكرها بالفعل ضمن تقرير نتائج عرض WWE NXT المنشور سابقاً.",
+    "at": "2026-10-21T01:45:27.330Z"
   }
 }
