@@ -1,23 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/ric-flair-speaks-about-tony-khan-hes-a-nice-guy-i-work-for-him-i-dont-do-anything": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-21T19:03:55.123Z"
+ },
  "https://www.fightful.com/wrestling/clark-connors-we-wanted-to-be-the-raw-dogs-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:00:36.782Z"
+  "at": "2026-10-21T19:03:54.824Z"
  },
  "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:00:36.394Z"
+  "at": "2026-10-21T19:03:54.550Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:00:35.832Z"
+  "at": "2026-10-21T19:03:54.158Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T19:00:35.029Z"
+  "at": "2026-10-21T19:03:53.592Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-recounts-learning-that-his-dad-dusty-rhodes-was-a-flying-colonel": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-05T17:09:40.619Z"
- },
- "https://www.fightful.com/wrestling/chris-jericho-puts-james-ellsworth-on-the-list-again-ten-years-later": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-05T17:09:40.541Z"
  }
 }
