@@ -7,62 +7,67 @@
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-21T01:05:19.010Z"
+  "at": "2026-10-21T01:10:21.951Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:18.914Z"
+  "at": "2026-10-21T01:10:21.851Z"
  },
  "https://www.fightful.com/wrestling/sarah-rowe-and-erik-welcome-third-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:18.769Z"
+  "at": "2026-10-21T01:10:21.701Z"
  },
  "https://www.fightful.com/wrestling/nxt-womens-title-match-contract-signing-added-to-10-20-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:18.463Z"
+  "at": "2026-10-21T01:10:21.381Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-viewership-10-12-scores-2-5-million-global-views-on-netflix": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
-  "at": "2026-10-21T01:05:18.036Z"
+  "at": "2026-10-21T01:10:20.916Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-opens-up-about-decision-to-leave-wwe-nothing-felt-satisfying": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:17.939Z"
+  "at": "2026-10-21T01:10:20.811Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-says-he-got-some-heat-in-wwe-when-expressions-wanted-to-meet-him-at-money-in-the-bank-2023": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:17.841Z"
+  "at": "2026-10-21T01:10:20.705Z"
  },
  "https://www.fightful.com/wrestling/rush-confirms-his-visa-has-expired": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:17.656Z"
+  "at": "2026-10-21T01:10:20.503Z"
  },
  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:17.511Z"
+  "at": "2026-10-21T01:10:20.345Z"
  },
  "https://www.fightful.com/wrestling/lee-moriarty-and-la-cherry-get-engaged": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:17.364Z"
+  "at": "2026-10-21T01:10:20.185Z"
  },
  "https://www.fightful.com/wrestling/kairi-says-various-things-are-already-in-motion-regarding-her-she-may-wrestle-next": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:17.125Z"
+  "at": "2026-10-21T01:10:19.942Z"
  },
  "https://www.fightful.com/wrestling/report-dralistico-aew-contract-to-expire-in-december": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-21T01:05:16.893Z"
+  "at": "2026-10-21T01:10:19.702Z"
+ },
+ "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-21T01:04:51.319Z"
  },
  "https://www.wrestlinginc.com/2291313/wwe-nxt-october-20-2026-results": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
