@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-october-21-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-21T23:52:28.294Z"
+ },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-21-2026-mike-bailey-vs-ilja-dragunov-cope-will-ospreay-team-up-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-21T23:35:37.742Z"
- },
- "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-october-21-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-21T23:33:39.650Z"
  },
  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
