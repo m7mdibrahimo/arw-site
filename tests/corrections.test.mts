@@ -508,3 +508,11 @@ test("split «لتسهيل» and doubled «كواليس» are corrected and gone
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لت سيهل|كواليس ما جرى خلف الكواليس/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #739: Syko Stu was «سايكو كلو» in the body (title «سايكو ستو») and «Rampage» Jackson became «عرض AEW Rampage».
+test("Syko Stu and Quinton «Rampage» Jackson are corrected (INCIDENTS #739)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Syko Stu"], "سايكو ستو");
+  assert.equal(applyCorrections("تحدث سايكو كلو عن كوينتون عرض AEW Rampage جاكسون"), "تحدث سايكو ستو عن كوينتون «رامبيج» جاكسون");
+});
