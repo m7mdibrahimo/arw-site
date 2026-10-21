@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/andrade-vs-michael-oku-mixed-tag-bout-added-to-aew-collision-grand-slam-france/": {
-    "matchedFile": "20261007020424-نتائج-تسجيلات-عرض-aew-collision-grand-slam-france-6-أكتوبر-2026.md",
-    "reason": "الخبر الجديد يكرر ذكر نفس مباريات عرض AEW Collision Grand Slam France التي نُشرت مسبقاً في تقرير نتائج العرض.",
-    "at": "2026-10-07T10:54:17.219Z"
-  },
   "https://www.fightful.com/wrestling/dann-read-everything-about-clockwork-carnage-was-created-by-will-ospreay-himself/": {
     "matchedFile": "20261007024554-توني-خان-يعلق-على-جلب-نزال-كلوك-وورك-كارنيج-الخاص-بـويل-أوسبراي-إلى-aew.md",
     "reason": "الخبر الجديد يكرر تفاصيل ابتکار ويل أوسبراي لنزال Clockwork Carnage وتصريحات حول كواليس تصميمه، وهي معلومات تم تغطيتها مسبقاً في الخبر رقم 3.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261021041211-زاريا-تواجه-إيزي-دايم-في-عرض-wwe-nxt-halloween-havoc.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (الإعلان عن مواجهة زاريا وإيزي دايم في عرض Halloween Havoc) مع تفاصيل متطابقة ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
     "at": "2026-10-21T01:23:05.739Z"
+  },
+  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic/": {
+    "matchedFile": "20261020123552-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-nxt-الليلة-20-أكتوبر.md",
+    "reason": "الخبر الجديد يغطي نتائج مباريات بطولة Dusty Rhodes Tag Team Classic في عرض WWE NXT الذي أقيم يوم 20 أكتوبر، بينما الخبر المنشور بالفعل يغطي تفاصيل ومعاينة نفس العرض ونفس النزالات، حيث تعتبر النتيجة تكراراً لتقرير العرض.",
+    "at": "2026-10-21T01:37:30.538Z"
   }
 }
