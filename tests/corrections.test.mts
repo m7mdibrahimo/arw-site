@@ -601,3 +601,8 @@ test("«نزالهم» for two wrestlers becomes «النزال» (INCIDENTS #75
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("إلى إيقاف نزالهم في العرض"), "إلى إيقاف النزال في العرض");
 });
+
+test("«سلسلة النزالات الخمسة» becomes «سلسلة من خمسة نزالات» (INCIDENTS #765)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("استكمال سلسلة النزالات الخمسة بين"), "استكمال سلسلة من خمسة نزالات بين");
+});
