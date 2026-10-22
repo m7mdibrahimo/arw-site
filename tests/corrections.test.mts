@@ -626,3 +626,10 @@ test("cash-in and quit wording is corrected (INCIDENTS #772)", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ضربة استبدال الحقيبة|هددت بالاعتزال من/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #774: «لا اعتزال» (should be «لاعتزال») and «امر بي» (MVP) reached stories.
+test("لا اعتزال and MVP spelling are corrected (INCIDENTS #774)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("خططا محتملة لا اعتزال المصارع"), "خططا محتملة لاعتزال المصارع");
+  assert.equal(applyCorrections("لاشلي وبنجامين وامر بي"), "لاشلي وبنجامين وام في بي");
+});
