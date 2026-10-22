@@ -606,3 +606,9 @@ test("«سلسلة النزالات الخمسة» becomes «سلسلة من خ�
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("استكمال سلسلة النزالات الخمسة بين"), "استكمال سلسلة من خمسة نزالات بين");
 });
+
+test("«كين ديكسون» becomes «كيل ديكسون» (INCIDENTS #766)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("فاز كين ديكسون على آرون رورك"), "فاز كيل ديكسون على آرون رورك");
+  assert.deepEqual(fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("كين ديكسون")), []);
+});
