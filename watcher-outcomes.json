@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/335081-the-dogs-bang-bang-gang-aew": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-22T01:39:11.347Z"
+ },
  "https://www.fightful.com/wrestling/335065-aew-full-gear-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:22.284Z"
+  "at": "2026-10-22T01:38:28.431Z"
  },
  "https://www.fightful.com/wrestling/mark-davis-jake-doyle-squash-the-young-bucks-in-tag-title-eliminator-match-on-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:22.012Z"
+  "at": "2026-10-22T01:38:28.127Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-21-2026-mike-bailey-vs-ilja-dragunov-cope-will-ospreay-team-up-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:21.820Z"
+  "at": "2026-10-22T01:38:27.909Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-responds-to-r-truths-social-media-post-after-wwe-smackdown-injury-scare": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:21.548Z"
+  "at": "2026-10-22T01:38:27.615Z"
  },
  "https://www.fightful.com/wrestling/carlie-bravo-lee-moriarty-is-one-of-the-best-wrestlers-on-planet-earth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:21.360Z"
+  "at": "2026-10-22T01:38:27.401Z"
  },
  "https://www.fightful.com/wrestling/jacob-heyman-reveals-he-told-his-dad-paul-heyman-to-cut-the-ponytail": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:21.169Z"
+  "at": "2026-10-22T01:38:27.183Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-speaks-about-tony-khan-hes-a-nice-guy-i-work-for-him-i-dont-do-anything": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:20.980Z"
+  "at": "2026-10-22T01:38:26.969Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-we-wanted-to-be-the-raw-dogs-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:20.664Z"
+  "at": "2026-10-22T01:38:26.615Z"
  },
  "https://www.fightful.com/wrestling/report-amazing-red-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T01:34:20.469Z"
+  "at": "2026-10-22T01:38:26.390Z"
  },
  "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-06T18:00:57.474Z"
- },
- "https://www.fightful.com/wrestling/john-cena-i-think-my-fear-of-heights-stems-from-falling-down-most-of-my-life-in-the-wwe": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-06T15:39:53.751Z"
  }
 }
