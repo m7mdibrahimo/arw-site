@@ -275,9 +275,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch"];
+export const BLOCKING_QA_CODES = ["title_not_arabic", "english_quote", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch"];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch"];
+export const RETRYABLE_QA_CODES = ["artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "mixed_script_word", "name_not_in_source", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch"];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -347,6 +347,13 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // A paragraph break left as «</p><p>» inside the Arabic text, which stripNonProse hides (INCIDENTS #751)
   const strayP = /[ء-ي.،»"]\s*<\/p>\s*<p>/.exec(body || "");
   if (strayP) issues.push({ code: "artifact", severity: "error", field: "body", message: "بقايا كود أو رموز غير مفهومة (</p><p>)", excerpt: excerptAround(body, strayP.index, strayP[0].length) });
+  // «تمكن A من الفوز على B» followed by «الفائز: B» — the winner line contradicts the sentence above it (INCIDENTS #761)
+  const winnerSwap = /(?:تمكن(?:ت)?|فاز(?:ت)?|انتصر(?:ت)?)\s+([^\n.«»]{3,80}?)\s+(?:من\s+الفوز\s+)?على\s+(?:فريق\s+)?([^\n.،«»]{3,80}?)(?:\s+(?:بعد|في|خلال|بفضل|عبر)\s[^\n]*)?\.?\s*\n+\s*🏆\s*\*\*الفائز(?:ة|ون|ين|ات)?:\*\*\s*([^\n]+)/.exec(body || "");
+  if (winnerSwap) {
+    const norm = (t: string) => t.replace(/^(?:فريق|ال)\s*/, "").replace(/\s+/g, " ").trim();
+    const a = norm(winnerSwap[1]), b = norm(winnerSwap[2]), w = norm(winnerSwap[3]);
+    if (b && w.includes(b) && !w.includes(a.split(" و")[0].trim())) issues.push({ code: "winner_mismatch", severity: "error", field: "body", message: "سطر «الفائز» بيذكر الخاسر — عكس الجملة اللي فوقه", excerpt: excerptAround(body, winnerSwap.index, Math.min(winnerSwap[0].length, 160)) });
+  }
   const fields: [QaIssue["field"], string][] = [["title", title || ""], ["body", stripNonProse(body || "")], ["tags", tags.join(" | ")]];
   for (const [field, text] of fields) {
     for (const rule of RULES) {

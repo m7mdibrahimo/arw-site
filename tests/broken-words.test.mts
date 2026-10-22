@@ -456,3 +456,19 @@ test('INCIDENTS #760: «انضما» and «اشتهرا» are blocked as dual ve
   assert.ok(codes('حيث اشتهرا سابقا باسم آخر').includes('dual_form'));
   assert.ok(!codes('انضموا إلى AEW في العرض').includes('dual_form'));
 });
+
+// INCIDENTS #761: «تمكن ديفيس ودويل من الفوز على ذا يانغ باكس» then «الفائز: ذا يانغ باكس»
+test('winner line contradicting the sentence above it is blocked, and no published story has it', () => {
+  const bad = 'تمكن مارك ديفيس وجيك دويل من الفوز على فريق ذا يانغ باكس.\n\n🏆 **الفائز:** ذا يانغ باكس\n';
+  assert.ok(checkArticle('عنوان', bad).some((i) => i.code === 'winner_mismatch'));
+  const ok = 'تمكن فريق ذا يانغ باكس من الفوز على مارك ديفيس وجيك دويل.\n\n🏆 **الفائز:** ذا يانغ باكس\n';
+  assert.ok(!checkArticle('عنوان', ok).some((i) => i.code === 'winner_mismatch'));
+  assert.ok(BLOCKING_QA_CODES.includes('winner_mismatch') && RETRYABLE_QA_CODES.includes('winner_mismatch'));
+  const bads: string[] = [];
+  for (const f of fs.readdirSync('content/news')) {
+    const t = fs.readFileSync(`content/news/${f}`, 'utf8');
+    if (!t.includes('🏆')) continue;
+    if (checkArticle('', t.replace(/^---[\s\S]*?\n---\n/, '')).some((i) => i.code === 'winner_mismatch')) bads.push(f);
+  }
+  assert.deepEqual(bads, []);
+});
