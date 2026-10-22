@@ -1,5 +1,15 @@
 [
   {
+    "id": 1084810053,
+    "link": "https://www.wrestlinginc.com/2289380/wwe-roman-reigns-advice-younger-stars-signature-moves/",
+    "date": "Thu, 22 Oct 2026 01:00:00 +0000",
+    "date_gmt": "2026-10-22T01:00:00.000Z",
+    "title": {
+      "rendered": "Roman Reigns Reveals Advice He Shares With Younger WWE Stars"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/roman-reigns-reveals-advice-he-shares-with-younger-wwe-stars/l-intro-1792186914.jpg"
+  },
+  {
     "id": 4750248310,
     "link": "https://www.wrestlinginc.com/2293745/steve-borden-returns-aew-make-blood-guts-challenge/",
     "date": "Thu, 22 Oct 2026 00:46:07 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT - 10/20/2026: 3 Things We Hated & 3 Things We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-10202026-3-things-we-hated-3-things-we-loved/l-intro-1792563525.jpg"
-  },
-  {
-    "id": 3964881282,
-    "link": "https://www.wrestlinginc.com/2292500/hank-tank-headed-wwe-nxt-dusty-rhodes-tag-classic-semifinals/",
-    "date": "Wed, 21 Oct 2026 01:40:09 +0000",
-    "date_gmt": "2026-10-21T01:40:09.000Z",
-    "title": {
-      "rendered": "Hank & Tank Headed For WWE NXT Dusty Rhodes Tag Classic Semifinals"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/hank-tank-headed-for-wwe-nxt-dusty-rhodes-tag-classic-semifinals/l-intro-1792546700.jpg"
   }
 ]
