@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-odds-courtesy-of-mybookkie": {
+  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: AAA Cruiserweight Championship",
+  "retry": true,
+  "at": "2026-10-22T17:45:08.662Z"
+ },
  "https://www.fightful.com/wrestling/335157-wwe-raw-air-early": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-22T17:34:26.451Z"
+  "at": "2026-10-22T17:44:57.157Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:47.111Z"
+  "at": "2026-10-22T17:44:43.908Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-drawing-praise-within-wwe-for-social-media-numbers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:46.916Z"
+  "at": "2026-10-22T17:44:43.716Z"
  },
  "https://www.fightful.com/wrestling/update-on-potential-rey-mysterio-retirement-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:46.721Z"
+  "at": "2026-10-22T17:44:43.525Z"
  },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:46.358Z"
+  "at": "2026-10-22T17:44:43.174Z"
  },
  "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:46.110Z"
+  "at": "2026-10-22T17:44:42.930Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-reflects-on-reduced-schedule-in-2025-i-had-to-check-myself-a-little-bit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:45.794Z"
+  "at": "2026-10-22T17:44:42.618Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-preview-start-time-how-to-watch-location-10-22": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:33:45.434Z"
+  "at": "2026-10-22T17:44:42.262Z"
  },
  "https://www.fightful.com/wrestling/335065-aew-full-gear-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-07T18:08:58.646Z"
- },
- "https://www.wrestlinginc.com/2280219/wwe-raw-viewership-ratings-september-28-2026": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-09-28)",
-  "retry": false,
-  "at": "2026-10-07T17:03:20.907Z"
  }
 }
