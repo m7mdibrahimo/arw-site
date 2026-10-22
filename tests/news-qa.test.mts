@@ -168,3 +168,13 @@ test("a stray «وة» fragment («هانك وة تانك») is blocked as a bro
   assert.ok(checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وة تانك في ربع النهائي.").some((i) => i.code === "broken_word"));
   assert.ok(!checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وتانك في ربع النهائي.").some((i) => i.code === "broken_word"));
 });
+
+// INCIDENTS #777: «2 عرض متتاليين» (a dual in disguise) and a sportsbook advert («odds courtesy of MyBookie») reached the site.
+test('masked duals (2 عرض / متتاليين) and betting-site adverts are blocked', async () => {
+  const { checkArticle, BLOCKING_QA_CODES } = await import('../scripts/news-qa');
+  const a = checkArticle('عنوان', 'سيشهد ذلك اليوم إقامة 2 عرض متتاليين في الصالة.').map(i => i.code);
+  assert.ok(a.includes('dual_noun'));
+  assert.ok(!checkArticle('عنوان', 'يقام العرض يوم 2 نوفمبر القادم في بروكلين.').some(i => i.code === 'dual_noun'));
+  const b = checkArticle('جدول نزالات UFC 333 برعاية MyBookie', 'الاحتمالات من MyBookie.').map(i => i.code);
+  assert.ok(b.includes('betting_promo') && BLOCKING_QA_CODES.includes('betting_promo'));
+});

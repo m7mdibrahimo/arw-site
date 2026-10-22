@@ -1,5 +1,5 @@
 ---
-title: "UFC 333: Volkanovski vs. Evloev Odds Courtesy of MyBookie"
+title: "UFC 333: Volkanovski vs. Evloev Fight Card"
 slug: "ufc-333-volkanovski-vs-evloev-odds-courtesy-of-mybookie"
 description: "UFC 333: Volkanovski vs. Evloev is scheduled for Saturday, October 24, at Etihad Arena on Fight Island in Abu Dhabi, UAE, with a broadcast on Paramount+.…"
 federation: MMA
@@ -15,7 +15,7 @@ en_tags:
   - "Merab Dvalishvili"
 image: /content/images/wiqfrzhbyjrptr8c.jpg
 ---
-UFC 333: Volkanovski vs. Evloev is scheduled for Saturday, October 24, at Etihad Arena on Fight Island in Abu Dhabi, UAE, with a broadcast on Paramount+. Betting odds are provided by MyBookie.
+UFC 333: Volkanovski vs. Evloev is scheduled for Saturday, October 24, at Etihad Arena on Fight Island in Abu Dhabi, UAE, with a broadcast on Paramount+.
 
 The card features UFC Featherweight Champion Alex Volkanovski facing Movsar Evloev and UFC Bantamweight Champion Petr Yan meeting Merab Dvalishvili. Additional matchups include Lone'er Kavanagh against Ramazan Temirov, Alexander Volkov versus Rizvan Kuniev, Aaron Pico meeting Losene Keita, and Dominick Reyes facing Azamat Murzakanov.
 
