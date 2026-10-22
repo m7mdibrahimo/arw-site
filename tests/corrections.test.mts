@@ -594,6 +594,7 @@ test("«وضح» becomes «أوضح» and Jey Uso keeps his name in English (INC
   assert.equal(applyCorrections("وضح المصارع داميان بريست أسباب هجومه"), "أوضح المصارع داميان بريست أسباب هجومه");
   const { fixEnglishNames } = await import("../scripts/english-edition.ts");
   assert.equal(fixEnglishNames("took chops from Jey Dragunov on SmackDown"), "took chops from Jey Uso on SmackDown");
+  assert.equal(fixEnglishNames("Swerve Strickland defeated Tome Filip."), "Swerve Strickland defeated Tom Filip.");
 });
 
 test("«نزالهم» for two wrestlers becomes «النزال» (INCIDENTS #759)", async () => {
