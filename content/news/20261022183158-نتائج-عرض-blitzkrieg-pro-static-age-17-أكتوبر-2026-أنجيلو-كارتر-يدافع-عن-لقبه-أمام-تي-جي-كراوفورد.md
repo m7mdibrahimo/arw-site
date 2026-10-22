@@ -17,7 +17,7 @@ tags:
 image: /content/images/hfbdhc4ijgbku465.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد Blitzkrieg! Pro عرض B!P Static Age يوم 17 أكتوبر في مدينة أنفيلد بولاية كونيتيكت الأمريكية، وبث العرض عبر منصة يوتيوب.
+أقام اتحاد Blitzkrieg! Pro عرض B!P Static Age يوم 17 أكتوبر في مدينة إنفيلد بولاية كونيتيكت الأمريكية، وبث العرض عبر منصة يوتيوب.
 
 **المواجهة الأولى: بطولة Blitzkrieg! Pro Jensen**
 

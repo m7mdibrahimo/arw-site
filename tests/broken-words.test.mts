@@ -485,3 +485,10 @@ test('typos «احترافاريته» «مشوافه» «مستلها» are cor
   assert.equal(applyCorrections('خلال مشوافه'), 'خلال مشواره');
   assert.equal(applyCorrections('مستلها رؤيته'), 'مستمدا رؤيته');
 });
+
+// INCIDENTS #775: the old replacement repeated «مسيرته» twice in one sentence.
+test('«بعد تحويل مسارها بالكامل» is corrected without repeating «مسيرته»', () => {
+  const out = applyCorrections('فترة مميزة في مسيرته بعد تحويل مسارها بالكامل');
+  assert.equal(out, 'فترة مميزة في مسيرته بعد تحول كبير في مسيرته');
+  assert.ok(!out.includes('تغيير مسيرته بالكامل'));
+});
