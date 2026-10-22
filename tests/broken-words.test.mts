@@ -478,3 +478,10 @@ test('winner line contradicting the sentence above it is blocked, and no publish
 test('«مارفيل» is corrected to «مارفل»', () => {
   assert.equal(applyCorrections('شخصيات مارفيل الخارقة'), 'شخصيات مارفل الخارقة');
 });
+
+// INCIDENTS #771: typos Gemini wrote in three stories.
+test('typos «احترافاريته» «مشوافه» «مستلها» are corrected', () => {
+  assert.equal(applyCorrections('احترافاريته العالية'), 'احترافيته العالية');
+  assert.equal(applyCorrections('خلال مشوافه'), 'خلال مشواره');
+  assert.equal(applyCorrections('مستلها رؤيته'), 'مستمدا رؤيته');
+});
