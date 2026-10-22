@@ -1,5 +1,15 @@
 [
   {
+    "id": 335145,
+    "link": "https://www.fightful.com/wrestling/update-on-jim-ross-following-hospitalization/",
+    "date": "2026-10-22T14:14:41",
+    "date_gmt": "2026-10-22T18:14:41",
+    "title": {
+      "rendered": "Update On Jim Ross Following Hospitalization"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/20162608/GrA4AJQXQAEsTyz-e1781987187923.jpg"
+  },
+  {
     "id": 335165,
     "link": "https://www.fightful.com/wrestling/report-sin-cara-revival-being-pitched-in-wwe/",
     "date": "2026-10-22T14:10:33",
@@ -288,15 +298,5 @@
       "rendered": "Ilja Dragunov Wins In-Ring Debut On 10/21 AEW Dynamite"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/21222902/HVM4vUAWoAAmYvj-e1792636151115.jpg"
-  },
-  {
-    "id": 335098,
-    "link": "https://www.fightful.com/wrestling/wwe-smackdown-10-16-viewership-remains-at-1-3-million-viewers/",
-    "date": "2026-10-21T22:27:02",
-    "date_gmt": "2026-10-22T02:27:02",
-    "title": {
-      "rendered": "WWE SmackDown (10/16) Viewership Remains At 1.3 Million Viewers"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25192008/smackdown_6.jpg"
   }
 ]
