@@ -18,6 +18,8 @@ test("a sentence ending on «وقال.» and the duals «الاثنتين» / «
   assert.ok(checkArticle("عنوان", "المواجهة بين الاثنتين مهمة.").some((i) => i.code === "dual_noun"));
   assert.ok(checkArticle("عنوان", "ليلتا العرض كانتا ممتازتين.").some((i) => i.code === "dual_noun"));
   assert.ok(!checkArticle("عنوان", "في يوم الاثنين أقيم العرض.").some((i) => i.code === "dual_noun"));
+  assert.ok(checkArticle("عنوان", "بينما كان طفلان يقفان بجانبها وتواصل والد الطفلين معها.").some((i) => i.code === "dual_noun"));
+  assert.ok(checkArticle("عنوان", "اثنان من الأطفال يقفون بجانبها وتواصل والد الأطفال معها.").every((i) => i.code !== "dual_noun"));
 });
 
 test("dual verbs «يعرفان / الاثنان» and a bold heading line opening the story are blocked (INCIDENTS #558)", () => {
