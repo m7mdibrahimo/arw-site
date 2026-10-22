@@ -44,11 +44,6 @@
   "retry": true,
   "at": "2026-10-22T00:12:08.780Z"
  },
- "https://www.wrestlinginc.com/2292521/aew-dynamite-october-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-21T23:55:31.072Z"
- },
  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
