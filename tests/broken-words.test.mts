@@ -473,3 +473,8 @@ test('winner line contradicting the sentence above it is blocked, and no publish
   }
   assert.deepEqual(bads, []);
 });
+
+// INCIDENTS #770: «مارفيل» next to «مارفل» in the same story.
+test('«مارفيل» is corrected to «مارفل»', () => {
+  assert.equal(applyCorrections('شخصيات مارفيل الخارقة'), 'شخصيات مارفل الخارقة');
+});
