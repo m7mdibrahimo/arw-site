@@ -504,3 +504,8 @@ test('INCIDENTS #776 wording fixes are corrected', () => {
 test('Elly Finch is never written as «إيه جيه لي فينش»', () => {
   assert.equal(applyCorrections('إيه جيه لي فينش'), 'إيلي فينش');
 });
+
+// INCIDENTS #779: «flying arm drag» was translated to a meaningless phrase.
+test('«حركة رمزية هوائية» is corrected to the move name', () => {
+  assert.equal(applyCorrections('لحركة رمزية هوائية أثناء التدريبات'), 'لحركة فلاينج آرم دراج أثناء التدريبات');
+});
