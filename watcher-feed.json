@@ -30,6 +30,16 @@
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/17132826/maxresdefault-110.jpg"
   },
   {
+    "id": 66498,
+    "link": "https://www.fightful.com/wrestling/tna-wrestling-roster/",
+    "date": "2026-10-22T10:11:00",
+    "date_gmt": "2026-10-22T14:11:00",
+    "title": {
+      "rendered": "Full TNA Wrestling Roster"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/11124348/Resources3.png"
+  },
+  {
     "id": 335128,
     "link": "https://www.fightful.com/wrestling/16th-goddesses-of-stardom-tag-league-lineup-announced/",
     "date": "2026-10-22T10:09:13",
@@ -288,15 +298,5 @@
       "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
-  },
-  {
-    "id": 335047,
-    "link": "https://www.fightful.com/wrestling/aalyah-mysterio-appears-during-wwe-nxt-segment/",
-    "date": "2026-10-21T19:31:59",
-    "date_gmt": "2026-10-21T23:31:59",
-    "title": {
-      "rendered": "Aalyah Mysterio Appears During WWE NXT Segment"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/10115506/Untitled-design-2021-05-23T171354.159-e1781106939664.png"
   }
 ]
