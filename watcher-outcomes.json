@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/where-things-stand-wargames-match-wwe-survivor-series-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-22T17:09:31.812Z"
+ },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-07T14:16:02.244Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-spoilers-10-6": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T10:54:14.639Z"
  }
 }
