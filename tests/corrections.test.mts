@@ -617,3 +617,12 @@ test("«ضربة البنط» becomes «ركلة البانت» (INCIDENTS #768)
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("استخدم ضربة البنط في النزال"), "استخدم ركلة البانت في النزال");
 });
+
+// INCIDENTS #772: «ضربة استبدال الحقيبة» (cash in) and «هددت بالاعتزال من» (threatened to quit) reached stories.
+test("cash-in and quit wording is corrected (INCIDENTS #772)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("سينتظر اللحظة لتنفيذ ضربة استبدال الحقيبة واستهداف اللقب"), "سينتظر اللحظة لاستخدام الحقيبة واستهداف اللقب");
+  assert.equal(applyCorrections("روزي هددت بالاعتزال من WWE"), "روزي هددت بترك WWE");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ضربة استبدال الحقيبة|هددت بالاعتزال من/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

@@ -265,3 +265,16 @@ test('an English page keeps no Arabic in hidden metas, and a card tooltip «… 
   assert.doesNotMatch(out, /arw-card-title" content="[^"]*[؀-ۿ]/);
   assert.match(out, /title="Latest AEW Dynamite 06\.10\.2026"/);
 });
+
+// INCIDENTS #772: an English story whose Arabic story was taken down is not built (404 for Google) — it must have a redirect.
+test("every English story without an Arabic pair has a redirect (INCIDENTS #772)", () => {
+  const ar = new Set(fs.readdirSync("content/news").filter(f => f.endsWith(".md")).map(f => fs.readFileSync(`content/news/${f}`, "utf-8").match(/^source_id:\s*"?(\d+)/m)?.[1]).filter(Boolean));
+  const redirects = fs.readFileSync("_redirects", "utf-8");
+  const missing = fs.readdirSync("content/news-en").filter(f => f.endsWith(".md")).filter(f => {
+    const t = fs.readFileSync(`content/news-en/${f}`, "utf-8");
+    const id = t.match(/^source_id:\s*"?(\d+)/m)?.[1];
+    const slug = t.match(/^slug:\s*"?([^"\n]+)"?/m)?.[1];
+    return id && slug && !ar.has(id) && !redirects.includes(`/en/news/${slug}/`);
+  });
+  assert.deepEqual(missing, []);
+});
