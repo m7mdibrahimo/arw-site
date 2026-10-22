@@ -1,5 +1,15 @@
 [
   {
+    "id": 335157,
+    "link": "https://www.fightful.com/wrestling/335157-wwe-raw-air-early/",
+    "date": "2026-10-22T13:27:03",
+    "date_gmt": "2026-10-22T17:27:03",
+    "title": {
+      "rendered": "WWE Raw Scheduled To Air At 6PM ET On November 2"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
+  },
+  {
     "id": 335155,
     "link": "https://www.fightful.com/wrestling/335155-wargames-wwe/",
     "date": "2026-10-22T13:19:17",
@@ -288,15 +298,5 @@
       "rendered": "Queen Aminata To Challenge For TBS Championship At AEW Fright Night Dynamite, FTR vs. Motor City Machine Guns 3 Also Announced"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/21220428/HVMyLVXXkAAlCDZ.jpg"
-  },
-  {
-    "id": 335079,
-    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-10-21-chelsea-green-competes/",
-    "date": "2026-10-21T21:41:20",
-    "date_gmt": "2026-10-22T01:41:20",
-    "title": {
-      "rendered": "WWE Main Event Results (10/21): Chelsea Green Competes"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/21214002/20261019_MainEvent_ChelsLainey_16x9_Wednesday.jpg"
   }
 ]
