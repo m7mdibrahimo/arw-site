@@ -1,5 +1,15 @@
 [
   {
+    "id": 3530342202,
+    "link": "https://www.wrestlinginc.com/2293755/queen-aminata-earns-aew-tbs-title-match/",
+    "date": "Thu, 22 Oct 2026 02:13:08 +0000",
+    "date_gmt": "2026-10-22T02:13:08.000Z",
+    "title": {
+      "rendered": "Queen Aminata Earns AEW TBS Title Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/queen-aminata-earns-aew-tbs-title-match/l-intro-1792635097.jpg"
+  },
+  {
     "id": 1569166434,
     "link": "https://www.wrestlinginc.com/2293746/us-state-dept-orders-diplomats-out-saudi-arabia-ahead-wwe-crown-jewel/",
     "date": "Thu, 22 Oct 2026 01:03:38 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Champ Will Ospreay Comments On Facing Adam Copeland Before His Retirement"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-champ-will-ospreay-comments-on-facing-adam-copeland-before-his-retirement/l-intro-1792594399.jpg"
-  },
-  {
-    "id": 4718216742,
-    "link": "https://www.wrestlinginc.com/2289331/wwe-michael-cole-miz-seth-rollins-succeed-commentary/",
-    "date": "Wed, 21 Oct 2026 12:30:00 +0000",
-    "date_gmt": "2026-10-21T12:30:00.000Z",
-    "title": {
-      "rendered": "Michael Cole Names WWE Stars He Thinks Could Succeed On Commentary"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/michael-cole-names-wwe-stars-he-thinks-could-succeed-on-commentary/l-intro-1792184487.jpg"
   }
 ]
