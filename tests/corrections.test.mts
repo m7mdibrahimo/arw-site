@@ -612,3 +612,8 @@ test("«كين ديكسون» becomes «كيل ديكسون» (INCIDENTS #766)",
   assert.equal(applyCorrections("فاز كين ديكسون على آرون رورك"), "فاز كيل ديكسون على آرون رورك");
   assert.deepEqual(fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("كين ديكسون")), []);
 });
+
+test("«ضربة البنط» becomes «ركلة البانت» (INCIDENTS #768)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("استخدم ضربة البنط في النزال"), "استخدم ركلة البانت في النزال");
+});
