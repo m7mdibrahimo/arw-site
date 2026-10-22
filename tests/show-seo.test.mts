@@ -44,7 +44,7 @@ test("a weekly show with an English name carries «عرض <name> الأخير» 
 // INCIDENTS #733: «عروض مصارعة مترجم» (6.2) and «wwe مترجم» (8.1) — the category and federation spellings of a weekly show.
 test("a weekly show carries the short category and federation forms", () => {
   const forms = showNameForms({ headline: "عرض الرو 12.10.2026 مترجم", title: "WWE Raw 12.10.2026", programName: "WWE Raw", eventDate: "2026-10-12", aliases: ["عرض الرو"], isShow: true });
-  for (const f of ["عروض مصارعة مترجم", "عروض المصارعة مترجم", "عروض WWE مترجم"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f.toLowerCase()), f);
+  for (const f of ["عروض مصارعة مترجم", "عروض المصارعة مترجم", "عروض WWE مترجم", "عروض المصارعة", "مصارعه مترجم", "عروض المصارعه مترجم"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f.toLowerCase()), f);
 });
 
 // INCIDENTS #748: «ملخص/نتائج عرض سماك داون الاخير مترجم» (5–8) — a weekly episode is also searched as its recap/results.
