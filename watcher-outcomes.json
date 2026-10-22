@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-22T14:25:30.911Z"
+ },
  "https://www.fightful.com/wrestling/damian-priest-reflects-on-reduced-schedule-in-2025-i-had-to-check-myself-a-little-bit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T14:15:34.614Z"
+  "at": "2026-10-22T14:25:30.677Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-preview-start-time-how-to-watch-location-10-22": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T14:15:34.268Z"
+  "at": "2026-10-22T14:25:30.336Z"
  },
  "https://www.fightful.com/wrestling/335065-aew-full-gear-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T14:15:33.343Z"
+  "at": "2026-10-22T14:25:29.435Z"
  },
  "https://www.fightful.com/wrestling/mark-davis-jake-doyle-squash-the-young-bucks-in-tag-title-eliminator-match-on-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T14:15:33.055Z"
+  "at": "2026-10-22T14:25:29.145Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-21-2026-mike-bailey-vs-ilja-dragunov-cope-will-ospreay-team-up-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T14:15:32.814Z"
+  "at": "2026-10-22T14:25:28.902Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-responds-to-r-truths-social-media-post-after-wwe-smackdown-injury-scare": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-07T02:02:19.202Z"
- },
- "https://www.wrestlinginc.com/2279500/aew-dynamite-grand-slam-paris-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-07T00:31:40.933Z"
  }
 }
