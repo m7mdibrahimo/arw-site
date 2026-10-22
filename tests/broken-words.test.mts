@@ -448,3 +448,11 @@ test('INCIDENTS #755: dual «هما» pronouns on prepositions are blocked', () 
   assert.ok(codes('فمر بالقرب منهما وسأله').includes('dual_form'));
   assert.ok(!codes('وعند صعودهم الطائرة تفاجأ الطاقم').includes('dual_form'));
 });
+
+// INCIDENTS #760: «انضما» / «اشتهرا» (dual verbs) reached the site in the New Level contracts story.
+test('INCIDENTS #760: «انضما» and «اشتهرا» are blocked as dual verbs', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('وكان كريد وكينغستون قد انضما إلى AEW في العرض').includes('dual_form'));
+  assert.ok(codes('حيث اشتهرا سابقا باسم آخر').includes('dual_form'));
+  assert.ok(!codes('انضموا إلى AEW في العرض').includes('dual_form'));
+});
