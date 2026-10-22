@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-october-21-2026": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-22T00:52:23.981Z"
+ },
  "https://www.fightful.com/wrestling/mark-davis-jake-doyle-squash-the-young-bucks-in-tag-title-eliminator-match-on-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-22T00:50:33.399Z"
- },
- "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-october-21-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-22T00:31:32.775Z"
  },
  "https://www.wrestlinginc.com/2292521/aew-dynamite-october-21-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
