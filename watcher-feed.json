@@ -1,5 +1,15 @@
 [
   {
+    "id": 335137,
+    "link": "https://www.fightful.com/wrestling/tomoaki-honma-undergoes-surgery/",
+    "date": "2026-10-22T11:23:50",
+    "date_gmt": "2026-10-22T15:23:50",
+    "title": {
+      "rendered": "Tomoaki Honma Undergoes Surgery"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2021/05/28011921/njpw-logo_4.jpg"
+  },
+  {
     "id": 335134,
     "link": "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling/",
     "date": "2026-10-22T10:53:10",
@@ -288,15 +298,5 @@
       "rendered": "WWE Women&#8217;s Title Bout Added To 10/23 WWE SmackDown"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/21194422/maxresdefault-144.jpg"
-  },
-  {
-    "id": 14463,
-    "link": "https://www.fightful.com/wrestling/confirmed-wrestling-contract-expirations/",
-    "date": "2026-10-21T19:37:00",
-    "date_gmt": "2026-10-21T23:37:00",
-    "title": {
-      "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
   }
 ]
