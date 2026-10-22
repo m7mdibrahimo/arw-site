@@ -1,5 +1,25 @@
 [
   {
+    "id": 2814703744,
+    "link": "https://www.wrestlinginc.com/2294530/wwe-rey-mysterio-retirement-hall-of-fame/",
+    "date": "Thu, 22 Oct 2026 18:04:49 +0000",
+    "date_gmt": "2026-10-22T18:04:49.000Z",
+    "title": {
+      "rendered": "Backstage News On Potential Upcoming Retirement Of WWE Hall Of Famer Rey Mysterio"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-potential-upcoming-retirement-of-wwe-hall-of-famer-rey-mysterio/l-intro-1792692208.jpg"
+  },
+  {
+    "id": 5085446308,
+    "link": "https://www.wrestlinginc.com/2294529/syko-stu-looks-back-infamous-raja-jackson-incident/",
+    "date": "Thu, 22 Oct 2026 18:04:48 +0000",
+    "date_gmt": "2026-10-22T18:04:48.000Z",
+    "title": {
+      "rendered": "Syko Stu Looks Back On Infamous Raja Jackson Incident"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/syko-stu-looks-back-on-infamous-raja-jackson-incident/l-intro-1792692041.jpg"
+  },
+  {
     "id": 5186369231,
     "link": "https://www.wrestlinginc.com/2294488/wwe-shayna-baszler-tna-contract-knockouts-tag-title-bound-for-glory/",
     "date": "Thu, 22 Oct 2026 17:51:12 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Ilja Dragunov Recalls Visa Process That Allowed Him To Debut At AEW WrestleDream 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/ilja-dragunov-recalls-visa-process-that-allowed-him-to-debut-at-aew-wrestledream-2026/l-intro-1792619369.jpg"
-  },
-  {
-    "id": 3903589655,
-    "link": "https://www.wrestlinginc.com/2293664/aaa-mini-vikingo-injury-elbow/",
-    "date": "Wed, 21 Oct 2026 21:29:45 +0000",
-    "date_gmt": "2026-10-21T21:29:45.000Z",
-    "title": {
-      "rendered": "Backstage Update On Injury Status Of AAA's Mini Vikingo"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-injury-status-of-aaas-mini-vikingo/l-intro-1792617918.jpg"
-  },
-  {
-    "id": 4645967609,
-    "link": "https://www.wrestlinginc.com/2292521/aew-dynamite-october-21-2026-results/",
-    "date": "Wed, 21 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-21T21:00:00.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Results 10/21/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-october-21-2026-results/l-intro-1792636210.jpg"
   }
 ]
