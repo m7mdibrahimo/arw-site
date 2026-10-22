@@ -1,28 +1,33 @@
 {
- "https://www.ringsidenews.com/where-things-stand-wargames-match-wwe-survivor-series-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-22T17:09:31.812Z"
+ "https://www.fightful.com/wrestling/update-on-potential-rey-mysterio-retirement-in-2027": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-22T17:16:39.298Z"
  },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T16:57:10.674Z"
+  "at": "2026-10-22T17:16:38.908Z"
  },
  "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T16:57:10.398Z"
+  "at": "2026-10-22T17:16:38.637Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-reflects-on-reduced-schedule-in-2025-i-had-to-check-myself-a-little-bit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T16:57:10.047Z"
+  "at": "2026-10-22T17:16:38.292Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-preview-start-time-how-to-watch-location-10-22": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T16:57:09.656Z"
+  "at": "2026-10-22T17:16:37.895Z"
+ },
+ "https://www.ringsidenews.com/where-things-stand-wargames-match-wwe-survivor-series-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-22T17:09:31.812Z"
  },
  "https://www.fightful.com/wrestling/335065-aew-full-gear-tag": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-07T16:01:07.033Z"
- },
- "https://www.fightful.com/wrestling/jacy-jayne-says-first-match-with-stephanie-vaquer-got-the-ball-rolling-for-her-in-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T14:16:02.244Z"
  }
 }
