@@ -1,28 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-22T17:21:17.749Z"
+ },
+ "https://www.fightful.com/wrestling/nikki-bella-drawing-praise-within-wwe-for-social-media-numbers": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-22T17:21:17.605Z"
+ },
  "https://www.fightful.com/wrestling/update-on-potential-rey-mysterio-retirement-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:16:39.298Z"
+  "at": "2026-10-22T17:21:17.461Z"
  },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:16:38.908Z"
+  "at": "2026-10-22T17:21:17.194Z"
  },
  "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:16:38.637Z"
+  "at": "2026-10-22T17:21:17.009Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-reflects-on-reduced-schedule-in-2025-i-had-to-check-myself-a-little-bit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:16:38.292Z"
+  "at": "2026-10-22T17:21:16.776Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-preview-start-time-how-to-watch-location-10-22": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T17:16:37.895Z"
+  "at": "2026-10-22T17:21:16.508Z"
  },
  "https://www.ringsidenews.com/where-things-stand-wargames-match-wwe-survivor-series-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1988,15 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-09-28)",
   "retry": false,
   "at": "2026-10-07T17:03:20.907Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-10-6-2026-battle-royal-zilla-fatu-vs-lexis-king-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T16:32:52.138Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-grand-slam-france-results-10-6-will-ospreay-vs-kazuchika-okada": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T16:01:07.033Z"
  }
 }
