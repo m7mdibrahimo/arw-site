@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/new-level-aew-contract-details": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-22T00:59:40.135Z"
+ },
  "https://www.fightful.com/wrestling/mark-davis-jake-doyle-squash-the-young-bucks-in-tag-title-eliminator-match-on-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:32.969Z"
+  "at": "2026-10-22T00:58:49.274Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-10-21-2026-mike-bailey-vs-ilja-dragunov-cope-will-ospreay-team-up-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-22T00:57:32.698Z"
+  "at": "2026-10-22T00:58:48.981Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-responds-to-r-truths-social-media-post-after-wwe-smackdown-injury-scare": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:32.329Z"
+  "at": "2026-10-22T00:58:48.604Z"
  },
  "https://www.fightful.com/wrestling/carlie-bravo-lee-moriarty-is-one-of-the-best-wrestlers-on-planet-earth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:32.061Z"
+  "at": "2026-10-22T00:58:48.332Z"
  },
  "https://www.fightful.com/wrestling/jacob-heyman-reveals-he-told-his-dad-paul-heyman-to-cut-the-ponytail": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:31.795Z"
+  "at": "2026-10-22T00:58:48.060Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-speaks-about-tony-khan-hes-a-nice-guy-i-work-for-him-i-dont-do-anything": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:31.529Z"
+  "at": "2026-10-22T00:58:47.784Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-we-wanted-to-be-the-raw-dogs-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:31.084Z"
+  "at": "2026-10-22T00:58:47.326Z"
  },
  "https://www.fightful.com/wrestling/report-amazing-red-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:30.810Z"
+  "at": "2026-10-22T00:58:47.055Z"
  },
  "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T00:57:30.479Z"
+  "at": "2026-10-22T00:58:46.723Z"
  },
  "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-october-21-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-06T13:32:17.448Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-returns-10-5-2026-roman-reigns-returns-becky-lynch-vs-liv-morgan-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-06T13:20:51.477Z"
  }
 }
