@@ -73,7 +73,6 @@
 - المصارعة — ترتيب 7.5، 147 ظهور، 1 نقرة ← /
 - عرض رو الاخير — ترتيب 3.6 (كان 3.6)، 358 ظهور، 74 نقرة ← /
 
-## مشاكل لازم تتصلح (3)
-- صفحة جوجل لسه بيبعت لها ناس ورابطها واقع (1 ظهور): https://arab-wrestling.com/en/news/paige-collett-shares-photos-to-celebrate-56-days-without-sugar/
+## مشاكل لازم تتصلح (2)
 - صفحة جوجل لسه بيبعت لها ناس ورابطها واقع (52 ظهور): https://arab-wrestling.com/en/news/stephanie-vaquer-stuns-in-black-bikini-photos-during-wwes-hawaii-tour/
 - ظهور كتير ونقرات قليلة (535 ظهور، 0.2٪، ترتيب 9.9): https://arab-wrestling.com/news/اقتراب-عودة-درو-ماكنتاير-لـ-wwe-بعد-انتهاء-تصوير-فيلمه-الجديد
