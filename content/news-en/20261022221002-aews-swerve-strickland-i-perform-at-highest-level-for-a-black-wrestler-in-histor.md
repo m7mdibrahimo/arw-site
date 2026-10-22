@@ -9,7 +9,7 @@ source_url: "https://www.wrestlinginc.com/2294698/aew-swerve-strickland-perform-
 en_tags:
   - "Swerve Strickland"
   - "AEW"
-  - "Billboards"
+  - "Billboard"
   - "Kenny Omega"
   - "Will Ospreay"
 image: /content/images/5k0wbcxafpdexu4i.jpg

@@ -64,3 +64,10 @@ test("a yearly AEW show carries «aew مترجم»", () => {
   const f = showNameForms({ headline: "عرض ريسل دريم 17.10.2026 مترجم", title: "AEW WrestleDream (2026)", programName: "AEW WrestleDream", eventDate: "2026-10-17", aliases: [], isShow: true, archive: false });
   assert.ok(f.includes("aew مترجم") || f.includes("AEW مترجم"));
 });
+
+// INCIDENTS #778: «الرو» / «رو» / «عرض الرو» alone sat at 9 in Search Console.
+test("a weekly episode carries its bare program name", () => {
+  const forms = showNameForms({ headline: "عرض الرو 19.10.2026 مترجم", title: "WWE Raw 19.10.2026", programName: "WWE Raw", eventDate: "2026-10-19", aliases: [], isShow: true, archive: false });
+  for (const f of ["الرو", "رو", "عرض الرو", "الرو 19.10.2026"]) assert.ok(forms.includes(f), f);
+  assert.equal(forms.length, new Set(forms).size);
+});

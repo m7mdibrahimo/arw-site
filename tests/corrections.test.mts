@@ -633,3 +633,8 @@ test("لا اعتزال and MVP spelling are corrected (INCIDENTS #774)", async 
   assert.equal(applyCorrections("خططا محتملة لا اعتزال المصارع"), "خططا محتملة لاعتزال المصارع");
   assert.equal(applyCorrections("لاشلي وبنجامين وامر بي"), "لاشلي وبنجامين وام في بي");
 });
+
+test("style guide tells Gemini how to write dark match", () => {
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.ok(guide.includes("dark match ← «نزال غير مذاع»"));
+});
