@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/michigan-state-athlete-elly-finch-signs-with-wwe": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-22T19:48:27.670Z"
+ },
  "https://www.fightful.com/wrestling/report-sin-cara-revival-being-pitched-in-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:47.474Z"
+  "at": "2026-10-22T19:48:27.389Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:47.084Z"
+  "at": "2026-10-22T19:48:27.005Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-drawing-praise-within-wwe-for-social-media-numbers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:46.893Z"
+  "at": "2026-10-22T19:48:26.824Z"
  },
  "https://www.fightful.com/wrestling/update-on-potential-rey-mysterio-retirement-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:46.709Z"
+  "at": "2026-10-22T19:48:26.642Z"
  },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:46.370Z"
+  "at": "2026-10-22T19:48:26.312Z"
  },
  "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:46.132Z"
+  "at": "2026-10-22T19:48:26.079Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-reflects-on-reduced-schedule-in-2025-i-had-to-check-myself-a-little-bit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:45.833Z"
+  "at": "2026-10-22T19:48:25.783Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-preview-start-time-how-to-watch-location-10-22": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-22T19:46:45.488Z"
+  "at": "2026-10-22T19:48:25.446Z"
  },
  "https://www.fightful.com/wrestling/penta-attends-pachuca-vs-cruz-azul-game-aew-dynamite-highlights-more-fight-size": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-07T19:58:48.738Z"
- },
- "https://www.fightful.com/wrestling/young-bucks-title-bout-more-set-for-aew-collision-grand-slam-france": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T19:48:50.362Z"
  }
 }
