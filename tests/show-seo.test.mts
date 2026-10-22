@@ -58,3 +58,9 @@ test("a weekly episode carries watch/download/year forms of its full English nam
   const forms = showNameForms({ headline: "عرض ايه اي دبليو دايناميت 14.10.2026 مترجم", title: "AEW Dynamite 14.10.2026", programName: "AEW Dynamite", eventDate: "2026-10-14", aliases: ["عرض ايه اي دبليو دايناميت"], isShow: true, archive: false });
   for (const f of ["مشاهدة AEW Dynamite", "تحميل AEW Dynamite", "AEW Dynamite 2026 مترجم", "AEW Dynamite اون لاين"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f.toLowerCase()), f);
 });
+
+// INCIDENTS #776: «aew مترجم» (7.5) — a yearly show also carries its federation's search names.
+test("a yearly AEW show carries «aew مترجم»", () => {
+  const f = showNameForms({ headline: "عرض ريسل دريم 17.10.2026 مترجم", title: "AEW WrestleDream (2026)", programName: "AEW WrestleDream", eventDate: "2026-10-17", aliases: [], isShow: true, archive: false });
+  assert.ok(f.includes("aew مترجم") || f.includes("AEW مترجم"));
+});

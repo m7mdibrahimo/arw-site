@@ -492,3 +492,15 @@ test('«بعد تحويل مسارها بالكامل» is corrected without rep
   assert.equal(out, 'فترة مميزة في مسيرته بعد تحول كبير في مسيرته');
   assert.ok(!out.includes('تغيير مسيرته بالكامل'));
 });
+
+// INCIDENTS #776: hamza missing in «الإمارات», «أدلى بالدور», «لتماثل», «كما ما زال».
+test('INCIDENTS #776 wording fixes are corrected', () => {
+  assert.equal(applyCorrections('في أبوظبي بالامارات'), 'في أبوظبي بالإمارات');
+  assert.equal(applyCorrections('الذي أدلى بالدور سابقا'), 'الذي أدى الدور سابقا');
+  assert.equal(applyCorrections('عاد لتماثل الشفاء'), 'عاد ليتماثل للشفاء');
+  assert.equal(applyCorrections('كما ما زال النجم'), 'كما لا يزال النجم');
+});
+
+test('Elly Finch is never written as «إيه جيه لي فينش»', () => {
+  assert.equal(applyCorrections('إيه جيه لي فينش'), 'إيلي فينش');
+});
