@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/hardy-boyz-allegedly-privately-complained-about-their-treatment-aew": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-23T19:06:16.384Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-hopes-street-fighter-cast-makes-their-way-over-to-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-23T19:05:35.282Z"
- },
- "https://www.ringsidenews.com/hardy-boyz-allegedly-privately-complained-about-their-treatment-aew": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-23T18:52:37.629Z"
  },
  "https://www.fightful.com/wrestling/aew-new-years-smash-announced-for-january-1-and-2": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
