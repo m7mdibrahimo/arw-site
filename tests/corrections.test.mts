@@ -722,3 +722,10 @@ test("«fallen in view of» becomes «fallen in love with» (INCIDENTS #794)", a
   const { fixEnglishNames } = await import("../scripts/english-edition.ts");
   assert.equal(fixEnglishNames("she has fallen in view of watching young athletes grow"), "she has fallen in love with watching young athletes grow");
 });
+
+test("«شاينا باسلر» بتتصلح لـ«شينا باسلر» وكل الأخبار بالاسم الصح (INCIDENTS #795)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أكدت شاينا باسلر أن الأبواب مفتوحة"), "أكدت شينا باسلر أن الأبواب مفتوحة");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("شاينا باسلر"));
+  assert.deepEqual(bad, []);
+});
