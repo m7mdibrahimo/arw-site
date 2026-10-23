@@ -8,7 +8,7 @@ source_url: "https://www.fightful.com/wrestling/monsters-mayhem-match-set-for-ml
 single_match_result: false
 tags:
   - MLP
-  - MLP عرض MLP Northern Rising
+  - MLP Northern Rising
   - كريزي ستيف
   - دان ماف
   - سايكو مايك

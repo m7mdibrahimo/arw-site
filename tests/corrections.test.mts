@@ -667,3 +667,13 @@ test("Avery Styles / Joe Alonzo / Kiera Hogan spellings follow the glossary (INC
     assert.ok(!/أيفري ستايلز|جو ألونزو|لم يكن ألونزو|كيرا هودجان/.test(t), f);
   }
 });
+
+// INCIDENTS #787: a tag like «MLP عرض MLP Northern Rising» (the show named twice with «عرض» between) must not come back.
+test("no story tag repeats a Latin name around «عرض»", async () => {
+  const { readdirSync, readFileSync } = await import("node:fs");
+  const bad: string[] = [];
+  for (const f of readdirSync("content/news").filter((n) => n.endsWith(".md"))) {
+    for (const m of readFileSync(`content/news/${f}`, "utf8").matchAll(/^  - (\S+) عرض \1\b.*$/gm)) bad.push(`${f}: ${m[0]}`);
+  }
+  assert.deepEqual(bad, []);
+});

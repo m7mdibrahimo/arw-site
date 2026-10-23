@@ -77,3 +77,9 @@ test("a yearly show carries the «مباشر» forms", () => {
   const f = showNameForms({ headline: "عرض موني ان ذا بانك 2026 مترجم", title: "WWE Money in the Bank (2026)", programName: "WWE Money in the Bank", eventDate: "2026-06-06", aliases: ["عرض موني ان ذا بانك 2026"], isShow: true, archive: false });
   assert.ok(f.some((n: string) => /^عرض موني ان ذا بانك 2026 مباشر$/.test(n)), JSON.stringify(f.slice(0, 40)));
 });
+
+// INCIDENTS #787: «عروض المصارعة الحرة» (8.9) and «اخر عرض الرو» (7.1) outside the first 3 for the 19.10 episode.
+test("a weekly show carries «عروض المصارعة الحرة» and «اخر عرض …»", () => {
+  const forms = showNameForms({ headline: "عرض الرو 19.10.2026 مترجم", title: "WWE Raw 19.10.2026", programName: "WWE Raw", eventDate: "2026-10-19", aliases: ["عرض الرو"], isShow: true });
+  for (const f of ["عروض المصارعة الحرة", "اخر عرض الرو", "آخر عرض الرو", "اخر عرض الرو مترجم"]) assert.ok(forms.includes(f), f);
+});
