@@ -12,7 +12,7 @@ tags:
 image: /content/images/48h7cne45be3fcal.jpg
 layout: post-layout.njk
 ---
-سطرت النجمة M by Elegance اسمها بحروف من ذهب في سجلات اتحاد TNA Wrestling، بعدما نجحت في التتويج رسميا كأول بطلة في تاريخ لقب بطولة تلفزيون السيدات (TNA Knockouts Television Championship)، وذلك خلال البث المباشر لحلقة برنامج *Thursday Night iMPACT* بتاريخ 27 أغسطس 2026.
+سطرت النجمة M by Elegance اسمها بحروف من ذهب في سجلات اتحاد TNA Wrestling، بعدما نجحت في التتويج رسمي كأول بطلة في تاريخ لقب بطولة تلفزيون السيدات (TNA Knockouts Television Championship)، وذلك خلال البث المباشر لحلقة برنامج *Thursday Night iMPACT* بتاريخ 27 أغسطس 2026.
 
 وشهدت الأمسية إقامة المواجهة النهائية الحاسمة للبطولة التتويجية؛ حيث واجهت M by Elegance نظيرتها الشابة جادا ستون (Jada Stone) في نزال اتسم بالذكاء والتكتيك العالي من جانب الفائزة.
 

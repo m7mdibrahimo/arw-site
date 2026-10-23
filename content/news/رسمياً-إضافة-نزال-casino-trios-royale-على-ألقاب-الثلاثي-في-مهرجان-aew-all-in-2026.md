@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: رسميا.. إضافة نزال Casino Trios Royale على ألقاب الثلاثي في عرض AEW All In 2026
+title: "رسمي.. إضافة نزال Casino Trios Royale على ألقاب الثلاثي في عرض AEW All In 2026"
+permalink: "/news/رسميا-إضافة-نزال-casino-trios-royale-على-ألقاب-الثلاثي-في-عرض-aew-all-in-2026/index.html"
 date: 2026-08-27T18:38:00.000+03:00
 tags:
   - ألقاب الثلاثي

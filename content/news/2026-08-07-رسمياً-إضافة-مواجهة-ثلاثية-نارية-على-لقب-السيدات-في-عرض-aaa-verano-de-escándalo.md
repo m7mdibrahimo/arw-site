@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "رسميا: إضافة مواجهة ثلاثية نارية على لقب السيدات في عرض AAA Verano De Escándalo!"
+title: "رسمي: إضافة مواجهة ثلاثية نارية على لقب السيدات في عرض AAA Verano De Escándalo!"
+permalink: "/news/رسميا-إضافة-مواجهة-ثلاثية-نارية-على-لقب-السيدات-في-عرض-aaa-verano-de-escandalo/index.html"
 date: 2026-08-08T22:53:00.000+03:00
 tags:
   - AAA

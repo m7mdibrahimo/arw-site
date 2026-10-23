@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: رسميا.. اتحاد AEW يعلن إقامة عرض Grand Slam France في باريس يوم 6 أكتوبر
+title: "رسمي.. اتحاد AEW يعلن إقامة عرض Grand Slam France في باريس يوم 6 أكتوبر"
+permalink: "/news/رسميا-اتحاد-aew-يعلن-إقامة-عرض-grand-slam-france-في-باريس-يوم-6-أكتوبر/index.html"
 date: 2026-08-24T21:15:00.000+03:00
 tags:
   - عروض AEW
@@ -11,7 +12,7 @@ tags:
 image: /content/images/6ubtmbknbb2vu9vb.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد AEW رسميا عن خطوته التوسعية الجديدة في القارة الأوروبية، بإقامة عرض AEW Grand Slam France في العاصمة الفرنسية باريس، وذلك يوم الثلاثاء الموافق 6 أكتوبر 2026 داخل صالة Adidas Arena.
+أعلن اتحاد AEW رسمي عن خطوته التوسعية الجديدة في القارة الأوروبية، بإقامة عرض AEW Grand Slam France في العاصمة الفرنسية باريس، وذلك يوم الثلاثاء الموافق 6 أكتوبر 2026 داخل صالة Adidas Arena.
 
 وسيشهد الحدث تصوير وتسجيل عرضي الاتحاد الرئيسيين: AEW Dynamite وAEW Collision في نفس الليلة أمام الجماهير الفرنسية.
 
