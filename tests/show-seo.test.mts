@@ -83,3 +83,11 @@ test("a weekly show carries «عروض المصارعة الحرة» and «اخ�
   const forms = showNameForms({ headline: "عرض الرو 19.10.2026 مترجم", title: "WWE Raw 19.10.2026", programName: "WWE Raw", eventDate: "2026-10-19", aliases: ["عرض الرو"], isShow: true });
   for (const f of ["عروض المصارعة الحرة", "اخر عرض الرو", "آخر عرض الرو", "اخر عرض الرو مترجم"]) assert.ok(forms.includes(f), f);
 });
+
+// INCIDENTS #796: a yearly show's recap is also searched «مشاهدة عرض … 2026» / «تحميل عرض … 2026» — structured data only.
+test("a yearly recap's name forms carry «مشاهدة / تحميل عرض … 2026»", () => {
+  const f = showNameForms({ headline: "ملخص عرض موني ان ذا بانك 10.10.2026", title: "WWE Money in the Bank Highlights (2026)", programName: "WWE Money in the Bank Highlights", eventDate: "2026-10-10", aliases: [], isShow: false, archive: false });
+  assert.ok(f.includes("مشاهدة عرض موني ان ذا بانك 2026"));
+  assert.ok(f.includes("تحميل عرض موني ان ذا بانك 2026"));
+  assert.ok(f.includes("Money in the Bank 2026 كامل مترجم"));
+});

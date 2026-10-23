@@ -527,3 +527,12 @@ test('spelling slips «منطكيا» and «صوره جديدة» are corrected'
   assert.equal(applyCorrections('يبدو الأمر منطكيا جدا'), 'يبدو الأمر منطقيا جدا');
   assert.equal(applyCorrections('نشرت صوره جديدة اليوم'), 'نشرت صورة جديدة اليوم');
 });
+
+// INCIDENTS #796: dual verbs «اشتكيا» / «لم يكونا» and the glued typo «تواجدعما» reached the site (Hardy Boyz story).
+test('INCIDENTS #796: «اشتكيا / يكونا» are blocked as dual verbs and «تواجدعما» is corrected', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('مات وجيف اشتكيا سرا من المعاملة').includes('dual_form'));
+  assert.ok(codes('فريق لم يكونا سعداء بالتعامل').includes('dual_form'));
+  assert.ok(!codes('مات وجيف اشتكوا سرا ولم يكونوا سعداء').includes('dual_form'));
+  assert.match(applyCorrections('خلال فترة تواجدعما في الاتحاد'), /تواجدهم/);
+});

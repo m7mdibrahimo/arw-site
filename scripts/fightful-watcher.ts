@@ -528,7 +528,7 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("(?:عرض\\s+)?(?:ديناميت|داينمايت)"), "عرض AEW Dynamite")
     .replace(arWord("(?:عرض\\s+)?(?:كوليجن|كوليزن|كوليجين)"), "عرض AEW Collision")
     // Quinton «Rampage» Jackson is a nickname, not the show: «كوينتون «AEW Rampage» جاكسون» went live (INCIDENTS #739, #744)
-    .replace(new RegExp("(?<!كوين(?:تون|تن)\\s*«?\\s*)" + arBoundL + "(?:عرض\\s+)?(?:رامبيج|رامباج)" + arBoundR, "g"), "عرض AEW Rampage")
+    .replace(new RegExp("(?<!كوين(?:تون|تن)\\s*[«\"“‘']?\\s*)" + arBoundL + "(?:عرض\\s+)?(?:رامبيج|رامباج)(?!\\s*[»\"”’']?\\s*جاكسون)" + arBoundR, "g"), "عرض AEW Rampage")
     .replace(arWord("(?:عرض\\s+)?(?:[إا]مباكت)"), "عرض TNA iMPACT")
     .replace(/(?:Road\s+to|Road\s+To)\s+ديستركشن/gi, "Road To Destruction")
     .replace(/ديستركشن\s+in\s+Kobe/gi, "Destruction in Kobe")

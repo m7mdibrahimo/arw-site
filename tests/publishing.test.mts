@@ -5244,3 +5244,11 @@ test('sanitizeWrestlingTerms keeps Quinton «Rampage» Jackson and still fixes t
   assert.equal(sanitizeWrestlingTerms('نجل كوينتون «رامبيج» جاكسون'), 'نجل كوينتون «رامبيج» جاكسون');
   assert.equal(sanitizeWrestlingTerms('شاهد رامبيج الليلة'), 'شاهد عرض AEW Rampage الليلة');
 });
+
+// INCIDENTS #796: Gemini wrote Quinton "Rampage" Jackson with straight quotes, so the cleanup (which only knew «) turned it into «AEW Rampage».
+test('sanitizeWrestlingTerms keeps Quinton "Rampage" Jackson with any quote style', () => {
+  assert.equal(sanitizeWrestlingTerms('نجل كوينتون "رامباج" جاكسون'), 'نجل كوينتون "رامباج" جاكسون');
+  assert.equal(sanitizeWrestlingTerms('نجل كوينتون “رامباج” جاكسون'), 'نجل كوينتون "رامباج" جاكسون');
+  assert.equal(sanitizeWrestlingTerms('نجل كوينتون رامباج جاكسون'), 'نجل كوينتون رامباج جاكسون');
+  assert.equal(sanitizeWrestlingTerms('شاهد رامباج الليلة'), 'شاهد عرض AEW Rampage الليلة');
+});
