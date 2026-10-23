@@ -1,53 +1,53 @@
 {
- "https://www.fightful.com/wrestling/shotzi-blackheart-saves-allie-from-fire-n-flava-on-10-22-tna-impact": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-23T02:52:24.546Z"
- },
  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:52:07.447Z"
+  "at": "2026-10-23T02:54:04.391Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-23T02:52:06.894Z"
+  "at": "2026-10-23T02:54:03.757Z"
  },
  "https://www.fightful.com/wrestling/michigan-state-athlete-elly-finch-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:40.684Z"
+  "at": "2026-10-23T02:53:46.921Z"
  },
  "https://www.fightful.com/wrestling/report-sin-cara-revival-being-pitched-in-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:40.366Z"
+  "at": "2026-10-23T02:53:46.554Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:39.938Z"
+  "at": "2026-10-23T02:53:46.059Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-drawing-praise-within-wwe-for-social-media-numbers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:39.734Z"
+  "at": "2026-10-23T02:53:45.824Z"
  },
  "https://www.fightful.com/wrestling/update-on-potential-rey-mysterio-retirement-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:39.526Z"
+  "at": "2026-10-23T02:53:45.585Z"
  },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:39.151Z"
+  "at": "2026-10-23T02:53:45.151Z"
  },
  "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:51:38.881Z"
+  "at": "2026-10-23T02:53:44.842Z"
+ },
+ "https://www.fightful.com/wrestling/shotzi-blackheart-saves-allie-from-fire-n-flava-on-10-22-tna-impact": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-23T02:52:24.546Z"
  },
  "https://www.wrestlinginc.com/2294991/tna-impact-shotzi-blackheart-officially-debuts": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
