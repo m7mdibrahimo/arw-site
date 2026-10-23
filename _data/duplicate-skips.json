@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/spoiler-opening-segment-october-9-2026-smackdown/": {
-    "matchedFile": "20261009110830-دليل-مشاهدة-وموعد-عرض-wwe-smackdown-الليلة.md",
-    "reason": "الخبر الجديد يغطي نفس عرض SmackDown الليلة، ويحتوي على نفس تفاصيل النزالات والضيوف والمكان المذكورة في الخبر رقم 0، ولا يضيف تطوراً جوهرياً جديداً.",
-    "at": "2026-10-09T20:39:46.539Z"
-  },
   "https://www.ringsidenews.com/mickie-james-role-revealed-tna-bound-glory/": {
     "matchedFile": "20261009231304-ميكي-جيمس-حكما-خاصا-لنزال-بطولة-tna-العالمية-للسيدات-في-عرض-bound-for-glory.md",
     "reason": "الخبر الجديد يتناول نفس الإعلان عن دور ميكي جيمس كحكم خاص في نزال بطولة Knockouts في عرض Bound for Glory، وهي نفس المعلومة المذكورة في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261023172316-نيك-خان-وراء-قرار-تعزيز-عرض-wwe-nxt-لمواجهة-aew-blood-guts.md",
     "reason": "الخبر الجديد يتناول نفس الحدث (قرار تعزيز عرض NXT لمواجهة AEW Blood & Guts) ويستند إلى نفس المصدر (بريان آيفاريز) ونفس التفاصيل الجوهرية المذكورة في الخبر المنشور.",
     "at": "2026-10-23T20:20:14.461Z"
+  },
+  "https://www.fightful.com/wrestling/cody-rhodes-says-its-his-plan-to-do-both-acting-and-wrestling-its-not-like-it-used-to-be-where-you-can-only-pick-one-or-the-other/": {
+    "matchedFile": "20261023224009-كودي-رودز-يكشف-خططه-الهوليوودية-بعد-نجاح-فيلم-street-fighter.md",
+    "reason": "الخبر الجديد يعيد سرد تصريحات كودي رودز من نفس المقابلة (The Rich Eisen Show) حول التوفيق بين التمثيل والمصارعة، وهي نفس النقاط التي غطاها الخبر رقم 0.",
+    "at": "2026-10-23T20:26:10.855Z"
   }
 }
