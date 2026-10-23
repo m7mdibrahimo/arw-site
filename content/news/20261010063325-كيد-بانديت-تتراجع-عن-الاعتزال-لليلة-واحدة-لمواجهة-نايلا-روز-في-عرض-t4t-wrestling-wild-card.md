@@ -9,7 +9,7 @@ single_match_result: false
 social_spoiler: false
 social_spoiler_kind: none
 social_spoiler_age: none
-social_spoiler_note: "الخبر عن عودة مستقبلية في شهر ديسمبر وليست في آخر ٦ ساعات، والإعلان رسمي من الاتحاد ولا يعتبر حرقا لعرض تذاع مؤخرا."
+social_spoiler_note: "الخبر عن عودة مستقبلية في شهر ديسمبر وليست في آخر ٦ ساعات، والإعلان رسميا من الاتحاد ولا يعتبر حرقا لعرض تذاع مؤخرا."
 social_priority: low
 tags:
   - INDIE

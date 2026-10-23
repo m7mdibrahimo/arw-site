@@ -509,3 +509,15 @@ test('Elly Finch is never written as «إيه جيه لي فينش»', () => {
 test('«حركة رمزية هوائية» is corrected to the move name', () => {
   assert.equal(applyCorrections('لحركة رمزية هوائية أثناء التدريبات'), 'لحركة فلاينج آرم دراج أثناء التدريبات');
 });
+
+// INCIDENTS #790: «أعلن توني خان رسمي عن» — «رسميا» without its alif (450 stories were damaged by an auto-learned rule).
+test('adverb_without_alef blocks «رسمي» used as an adverb', () => {
+  assert.ok(BLOCKING_QA_CODES.includes('adverb_without_alef'));
+  const pad = ' كلام'.repeat(80);
+  for (const bad of ['أعلن توني خان رسمي عن مواجهة جديدة', 'وقع المصارع عقدا رسمي مع الاتحاد', 'تقدم اتحاد WWE بطلب رسمي']) {
+    const hit = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad + pad).some(i => i.code === 'adverb_without_alef');
+    assert.equal(hit, !bad.includes('بطلب'), bad);
+  }
+  const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'أعلن توني خان رسميا عن مواجهة، وصدر بيان رسمي عن الاتحاد، وإعلان رسمي عن الموعد' + pad);
+  assert.ok(!ok.some(i => i.code === 'adverb_without_alef'));
+});
