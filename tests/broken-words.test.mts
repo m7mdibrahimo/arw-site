@@ -521,3 +521,9 @@ test('adverb_without_alef blocks «رسمي» used as an adverb', () => {
   const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'أعلن توني خان رسميا عن مواجهة، وصدر بيان رسمي عن الاتحاد، وإعلان رسمي عن الموعد' + pad);
   assert.ok(!ok.some(i => i.code === 'adverb_without_alef'));
 });
+
+// INCIDENTS #791: «منطكيا» and «صوره جديدة» slipped into two stories.
+test('spelling slips «منطكيا» and «صوره جديدة» are corrected', () => {
+  assert.equal(applyCorrections('يبدو الأمر منطكيا جدا'), 'يبدو الأمر منطقيا جدا');
+  assert.equal(applyCorrections('نشرت صوره جديدة اليوم'), 'نشرت صورة جديدة اليوم');
+});
