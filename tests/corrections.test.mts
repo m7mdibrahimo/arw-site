@@ -711,3 +711,9 @@ test("OTM stays English and «فوتوغرافيات» becomes «صور» (INCID
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وسيط كرم|فوتوغرافيات/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("corrections: «بايج» لآدم بيدج و«احتفالات عرض مسيرة» بتتصلح (INCIDENTS #793)", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "لكن بايج رفض" && c.right === "لكن بيدج رفض"));
+  assert.ok(corrections.some(c => c.wrong === "احتفالات عرض مسيرة" && c.right === "احتفالات بمسيرة"));
+});
