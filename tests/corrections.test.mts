@@ -729,3 +729,11 @@ test("«شاينا باسلر» بتتصلح لـ«شينا باسلر» وكل 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("شاينا باسلر"));
   assert.deepEqual(bad, []);
 });
+
+test("«شون ليجاسي» بتتصلح و«free agent» لمذيعة مش بتتحول لـ«مصارعة» (INCIDENTS #797)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ثنائي شون ليجاسي ودوريان"), "ثنائي شون ليغاسي ودوريان");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /شون ليجاسي|سامانثا إيرفين تستعد لتصبح مصارعة/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+  assert.match(fs.readFileSync("editorial/style-guide.md", "utf-8"), /free agent.*مش مصارع/);
+});
