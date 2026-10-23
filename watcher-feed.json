@@ -1,5 +1,15 @@
 [
   {
+    "id": 335203,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-10-20-viewership-drops-below-700000-viewers/",
+    "date": "2026-10-22T19:48:47",
+    "date_gmt": "2026-10-22T23:48:47",
+    "title": {
+      "rendered": "WWE NXT (10/20) Viewership Drops Below 700,000 Viewers"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25191506/nxt2024_25.jpg"
+  },
+  {
     "id": 335201,
     "link": "https://www.fightful.com/wrestling/joe-hendry-i-know-in-my-heart-i-can-be-a-top-draw-for-wwe/",
     "date": "2026-10-22T19:32:13",
@@ -288,15 +298,5 @@
       "rendered": "Cody Rhodes Says Orbital Injury At WrestleMania 42 Affected His Work After"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/19223038/Screenshot-2026-04-19-at-10.24.27-PM.png"
-  },
-  {
-    "id": 335108,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-to-air-on-wednesday-11-4-head-to-head-with-aew-blood-and-guts/",
-    "date": "2026-10-22T06:44:29",
-    "date_gmt": "2026-10-22T10:44:29",
-    "title": {
-      "rendered": "WWE NXT To Air On Wednesday 11/4, Head-To-Head With AEW Blood And Guts"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/01/27211224/wwe-aew-logos-645x370.png"
   }
 ]
