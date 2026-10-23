@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-dynamite-viewership-sees-massive-increase-october-14-2026": {
+  "reason": "نزل قبل كده على الموقع",
+  "retry": false,
+  "at": "2026-10-23T20:42:37.651Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-its-his-plan-to-do-both-acting-and-wrestling-its-not-like-it-used-to-be-where-you-can-only-pick-one-or-the-other": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-09T08:41:52.704Z"
- },
- "https://www.wrestlinginc.com/2281914/tna-impact-october-8-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-09T04:22:17.015Z"
  }
 }
