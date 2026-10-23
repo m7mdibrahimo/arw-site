@@ -1,5 +1,15 @@
 [
   {
+    "id": 335323,
+    "link": "https://www.fightful.com/wrestling/an-update-on-the-status-of-samantha-irvin/",
+    "date": "2026-10-23T18:09:21",
+    "date_gmt": "2026-10-23T22:09:21",
+    "title": {
+      "rendered": "An Update On The Status Of Samantha Irvin"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/23180853/Screenshot-2026-10-23-at-6.08.41-PM.png"
+  },
+  {
     "id": 335307,
     "link": "https://www.fightful.com/wrestling/sean-legacy-details-conversation-with-cm-punk-about-improving-his-physique/",
     "date": "2026-10-23T17:20:52",
@@ -288,15 +298,5 @@
       "rendered": "2026 World X-Cup, Men&#8217;s &amp; Women&#8217;s Ultimate X Matches Added To TNA Destination X"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/28181902/HL7u8vfWkAAsAQU.jpg"
-  },
-  {
-    "id": 335216,
-    "link": "https://www.fightful.com/wrestling/roh-tv-results-10-22-roh-pure-title-bout-headlines/",
-    "date": "2026-10-22T22:00:20",
-    "date_gmt": "2026-10-23T02:00:20",
-    "title": {
-      "rendered": "ROH TV Results (10/22): ROH Pure Title Bout Headlines"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/22215928/ROH-On-HonorClub-10-22.26-645x370-1.png"
   }
 ]
