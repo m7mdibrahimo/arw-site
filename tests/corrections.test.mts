@@ -659,11 +659,11 @@ test("verbless results opening is blocked (INCIDENTS #783)", async () => {
 
 test("Avery Styles / Joe Alonzo / Kiera Hogan spellings follow the glossary (INCIDENTS #784)", () => {
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
-  for (const [w, r] of [["أيفري ستايلز", "إيفري ستايلز"], ["جو ألونزو", "جو ألونسو"], ["كيرا هودجان", "كيرا هوجان"]]) {
+  for (const [w, r] of [["أيفري ستايلز", "إيفري ستايلز"], ["لم يكن ألونزو", "لم يكن ألونسو"], ["جو ألونزو", "جو ألونسو"], ["كيرا هودجان", "كيرا هوجان"]]) {
     assert.ok(corrections.some(c => c.wrong === w && c.right === r), w);
   }
   for (const f of fs.readdirSync("content/news")) {
     const t = fs.readFileSync(`content/news/${f}`, "utf-8");
-    assert.ok(!/أيفري ستايلز|جو ألونزو|كيرا هودجان/.test(t), f);
+    assert.ok(!/أيفري ستايلز|جو ألونزو|لم يكن ألونزو|كيرا هودجان/.test(t), f);
   }
 });

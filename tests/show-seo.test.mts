@@ -71,3 +71,9 @@ test("a weekly episode carries its bare program name", () => {
   for (const f of ["الرو", "رو", "عرض الرو", "الرو 19.10.2026"]) assert.ok(forms.includes(f), f);
   assert.equal(forms.length, new Set(forms).size);
 });
+
+// INCIDENTS #785: «عرض موني ان ذا بانك 2026 مباشر» sat outside the first 3 in Search Console.
+test("a yearly show carries the «مباشر» forms", () => {
+  const f = showNameForms({ headline: "عرض موني ان ذا بانك 2026 مترجم", title: "WWE Money in the Bank (2026)", programName: "WWE Money in the Bank", eventDate: "2026-06-06", aliases: ["عرض موني ان ذا بانك 2026"], isShow: true, archive: false });
+  assert.ok(f.some((n: string) => /^عرض موني ان ذا بانك 2026 مباشر$/.test(n)), JSON.stringify(f.slice(0, 40)));
+});
