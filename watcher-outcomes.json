@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/aew-new-years-smash-announced-for-january-1-and-2": {
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "retry": true,
+  "at": "2026-10-23T15:49:13.234Z"
+ },
  "https://www.fightful.com/wrestling/ric-flair-says-hes-dealing-with-a-blood-cot-in-his-leg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:46.937Z"
+  "at": "2026-10-23T15:48:45.883Z"
  },
  "https://www.fightful.com/wrestling/alice-crowley-speaks-about-scott-damore-selecting-her-for-opportunity-to-compete-in-cmll-womens-grand-prix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:46.541Z"
+  "at": "2026-10-23T15:48:45.473Z"
  },
  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:46.150Z"
+  "at": "2026-10-23T15:48:45.071Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:45.937Z"
+  "at": "2026-10-23T15:48:44.852Z"
  },
  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:45.607Z"
+  "at": "2026-10-23T15:48:44.510Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:45.035Z"
+  "at": "2026-10-23T15:48:43.922Z"
  },
  "https://www.fightful.com/wrestling/michigan-state-athlete-elly-finch-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:44.716Z"
+  "at": "2026-10-23T15:48:43.592Z"
  },
  "https://www.fightful.com/wrestling/report-sin-cara-revival-being-pitched-in-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T15:32:44.373Z"
+  "at": "2026-10-23T15:48:43.250Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T16:23:07.001Z"
- },
- "https://www.fightful.com/wrestling/john-cena-talks-his-wife-being-present-on-set-for-helicopter-stunt-in-matchbox-movie": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T15:52:02.813Z"
  }
 }
