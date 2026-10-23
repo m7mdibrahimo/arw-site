@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/uncategorized/seth-rollins-says-becky-lynch-had-a-fractured-vertebrae-that-kept-her-sidelined/": {
-    "matchedFile": "20261009232101-بيكي-لينش-تعود-للمنافسة-بعد-تعافيها-من-كسر-في-فقرات-الظهر.md",
-    "reason": "الخبر الجديد يعيد سرد نفس تصريحات سيث رولينز حول إصابة بيكي لينش بكسر في فقرات الظهر وتفاصيل غيابها التي تم تغطيتها بالكامل في الخبر رقم 0.",
-    "at": "2026-10-09T21:13:19.347Z"
-  },
   "https://www.fightful.com/wrestling/la-knight-says-he-was-miserable-a-lot-of-times-and-came-to-wwe-shows-ready-to-fight-everything-and-everybody/": {
     "matchedFile": "20261009211004-ال-ايه-نايت-يتحدث-عن-علاقته-بكواليس-العمل-مع-تريبل-إتش.md",
     "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها ال ايه نايت حول حواره مع تريبل إتش بعد عرض موني إن ذا بانك 2025، وهي نفس الواقعة المذكورة في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261022070422-إل-ديسبيرادو-ينسحب-من-بطولة-super-jr-tag-league-في-اتحاد-njpw-بسبب-تضيق-العمود-الفقري-والفتق.md",
     "reason": "الخبر الجديد يغطي نفس واقعة انسحاب إل ديسبيرادو من بطولة Super Junior Tag League بسبب الإصابة المذكورة في الخبر رقم 0، ولا يحتوي على تطورات جديدة جوهرية.",
     "at": "2026-10-23T21:34:07.097Z"
+  },
+  "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-october-23-2026-full-match-card-backstage-notes-revealed/": {
+    "matchedFile": "20261024003604-سامي-زين-يفتتح-عرض-wwe-smackdown-الليلة.md",
+    "reason": "الخبر الجديد يغطي نفس قائمة نزالات وتفاصيل عرض WWE SmackDown بتاريخ 23 أكتوبر 2026 التي تم نشرها بالفعل في الخبر رقم 0، ولا يحتوي على أي تطورات جديدة جوهرية.",
+    "at": "2026-10-23T21:55:17.298Z"
   }
 }
