@@ -638,3 +638,12 @@ test("style guide tells Gemini how to write dark match", () => {
   const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
   assert.ok(guide.includes("dark match ← «نزال غير مذاع»"));
 });
+
+// INCIDENTS #782: «أفقرت» (choked out) and a verbless opening sentence in a results story.
+test("choke wording is corrected and guide covers it (INCIDENTS #782)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("نفذت باسلر حركة إخضاع أفقرت بها البطلة"), "نفذت باسلر حركة خنق أسقطت بها البطلة");
+  assert.ok(fs.readFileSync("editorial/style-guide.md", "utf-8").includes("choked out ← «خنق»"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أفقرت بها/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
