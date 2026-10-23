@@ -1,58 +1,63 @@
 {
- "https://www.ringsidenews.com/aew-announces-new-years-smash-2027-dates-location": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-23T17:38:50.209Z"
+ "https://www.fightful.com/wrestling/ludwig-kaisers-defense-given-access-to-evidence-in-battery-case": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-23T17:41:58.602Z"
  },
  "https://www.fightful.com/wrestling/big-e-and-kris-yim-marry": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:53.673Z"
+  "at": "2026-10-23T17:41:58.411Z"
  },
  "https://www.fightful.com/wrestling/aew-new-years-smash-announced-for-january-1-and-2": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-10-23T17:38:53.429Z"
+  "at": "2026-10-23T17:41:58.218Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-says-hes-dealing-with-a-blood-cot-in-his-leg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:40.739Z"
+  "at": "2026-10-23T17:41:29.518Z"
  },
  "https://www.fightful.com/wrestling/alice-crowley-speaks-about-scott-damore-selecting-her-for-opportunity-to-compete-in-cmll-womens-grand-prix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:40.300Z"
+  "at": "2026-10-23T17:41:29.178Z"
  },
  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:39.859Z"
+  "at": "2026-10-23T17:41:28.838Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:39.618Z"
+  "at": "2026-10-23T17:41:28.651Z"
  },
  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:39.237Z"
+  "at": "2026-10-23T17:41:28.361Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:38.597Z"
+  "at": "2026-10-23T17:41:27.866Z"
  },
  "https://www.fightful.com/wrestling/michigan-state-athlete-elly-finch-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:38.237Z"
+  "at": "2026-10-23T17:41:27.587Z"
  },
  "https://www.fightful.com/wrestling/report-sin-cara-revival-being-pitched-in-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T17:38:37.851Z"
+  "at": "2026-10-23T17:41:27.291Z"
+ },
+ "https://www.ringsidenews.com/aew-announces-new-years-smash-2027-dates-location": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-23T17:38:50.209Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T19:20:58.395Z"
- },
- "https://www.fightful.com/wrestling/road-dogg-advertised-to-competed-at-jeff-jarretts-all-star-super-slam": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T17:52:01.030Z"
  }
 }
