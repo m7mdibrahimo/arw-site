@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2293763/tna-thursday-night-impact-october-22-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-23T00:42:23.893Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-23T00:40:12.476Z"
- },
- "https://www.wrestlinginc.com/2293763/tna-thursday-night-impact-october-22-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-23T00:22:32.691Z"
  },
  "https://www.fightful.com/uncategorized/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
