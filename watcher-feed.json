@@ -1,5 +1,15 @@
 [
   {
+    "id": 335328,
+    "link": "https://www.fightful.com/wrestling/an-update-on-sheamus-and-aew/",
+    "date": "2026-10-23T18:37:22",
+    "date_gmt": "2026-10-23T22:37:22",
+    "title": {
+      "rendered": "An Update On Sheamus And AEW"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/15130238/images-4.jpg"
+  },
+  {
     "id": 335318,
     "link": "https://www.fightful.com/wrestling/alice-crowley-reflects-on-her-career-speaks-about-future-goals/",
     "date": "2026-10-23T18:21:38",
@@ -288,15 +298,5 @@
       "rendered": "Shotzi Blackheart Saves Allie From Fire &#8216;N Flava On 10/22 TNA iMPACT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/22224259/HVSCxrjXUAAe-j4-e1792723403802.jpg"
-  },
-  {
-    "id": 335225,
-    "link": "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact/",
-    "date": "2026-10-22T22:36:19",
-    "date_gmt": "2026-10-23T02:36:19",
-    "title": {
-      "rendered": "Kiera Hogan &amp; Tasha Steelz Reunite On 10/22 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/22223505/HVSBXkqXAAA4h4F.jpg"
   }
 ]
