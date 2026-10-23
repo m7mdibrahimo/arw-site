@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2294991/tna-impact-shotzi-blackheart-officially-debuts": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-23T02:34:34.121Z"
+ },
  "https://www.fightful.com/wrestling/2026-world-x-cup-mens-womens-ultimate-x-matches-added-to-tna-destination-x": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-07T22:31:06.832Z"
- },
- "https://www.fightful.com/wrestling/andrade-vs-michael-oku-mixed-tag-bout-added-to-aew-collision-grand-slam-france": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T22:00:57.475Z"
  }
 }
