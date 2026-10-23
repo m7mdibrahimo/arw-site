@@ -7693,6 +7693,26 @@
    "wrong": "أفقرت بها",
    "right": "أسقطت بها",
    "note": "«أفقرت» غلط ترجمة لـ choked/laid out (INCIDENTS #782)"
+  },
+  {
+   "wrong": "أيفري ستايلز",
+   "right": "إيفري ستايلز",
+   "note": "اسم مصارع (Avery Styles) زي القاموس — INCIDENTS #784"
+  },
+  {
+   "wrong": "جو ألونزو",
+   "right": "جو ألونسو",
+   "note": "Joe Alonzo زي القاموس — INCIDENTS #784"
+  },
+  {
+   "wrong": "كيرا هودجان",
+   "right": "كيرا هوجان",
+   "note": "Kiera Hogan زي القاموس — INCIDENTS #784"
+  },
+  {
+   "wrong": "بفريق شين تايلور بروموشنز",
+   "right": "بفريقه شين تايلور بروموشنز",
+   "note": "تكرار اسم شين تايلور في نفس الجملة — INCIDENTS #784"
   }
  ]
 }
