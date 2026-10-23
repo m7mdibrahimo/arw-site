@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/zoey-serrano-shayna-baszler-to-challenge-for-tna-knockouts-world-tag-team-titles-at-bound-for-glory/": {
-    "matchedFile": "20261009042757-بطلات-tna-للفرق-يوجهن-تحديا-لزوي-سيرانو-في-عرض-bound-for-glory.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (تحدي لقب الفرق في Bound for Glory) مع إضافة تفصيلة صغيرة وهي هوية الشريكة (شاينا بازلر)، وهي تفصيلة لا تعتبر تطوراً جوهرياً يمنع كونه تكراراً لنفس الإعلان.",
-    "at": "2026-10-09T02:33:40.918Z"
-  },
   "https://www.wrestlinginc.com/2281901/tna-impact-nic-ryan-nemeth-matt-jeff-hardy-hang-onto-world-tag-title-win/": {
     "matchedFile": "20261009031600-نتائج-عرض-tna-impact-8-أكتوبر-2026-ذا-هارديز-يواجهون-فريق-ذا-نيميثز.md",
     "reason": "الخبر الجديد يتناول نتائج نزال الحدث الرئيسي في عرض TNA Impact الذي تم تغطية نتائجه بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261023003903-نتائج-عرض-tna-impact-22-أكتوبر-2026-إندي-هارتويل-تدافع-عن-لقبها-وسيدريك-ألكسندر-يصبح-المنافس-الأول.md",
     "reason": "الخبر الجديد يغطي نفس نتائج نزال تحديد المتحدي الأول على لقب X Division في عرض TNA iMPACT الذي تم ذكره وتغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-23T02:13:17.827Z"
+  },
+  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact/": {
+    "matchedFile": "20261023003903-نتائج-عرض-tna-impact-22-أكتوبر-2026-إندي-هارتويل-تدافع-عن-لقبها-وسيدريك-ألكسندر-يصبح-المنافس-الأول.md",
+    "reason": "الخبر الجديد يغطي أحداثاً وقعت بالفعل في عرض TNA iMPACT بتاريخ 22 أكتوبر، وهو نفس العرض الذي تم نشر نتائج تفصيلية له في الخبر رقم 1.",
+    "at": "2026-10-23T02:40:08.217Z"
   }
 }
