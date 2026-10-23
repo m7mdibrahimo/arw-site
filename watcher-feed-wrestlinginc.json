@@ -1,5 +1,15 @@
 [
   {
+    "id": 4444426990,
+    "link": "https://www.wrestlinginc.com/2295000/tna-impact-jason-hotch-mustafa-ali-decisive-win-international-title/",
+    "date": "Fri, 23 Oct 2026 03:08:25 +0000",
+    "date_gmt": "2026-10-23T03:08:25.000Z",
+    "title": {
+      "rendered": "Jason Hotch Earns Decisive Win Over Mustafa Ali On TNA Impact"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jason-hotch-earns-decisive-win-over-mustafa-ali-on-tna-impact/l-intro-1792724776.jpg"
+  },
+  {
     "id": 1306253839,
     "link": "https://www.wrestlinginc.com/2294991/tna-impact-shotzi-blackheart-officially-debuts/",
     "date": "Fri, 23 Oct 2026 02:27:05 +0000",
@@ -47,7 +57,7 @@
     "title": {
       "rendered": "TNA Thursday Night Impact Results 10/22/26 W/ Live Updates"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-october-22-2026-results/l-intro-1792648200.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-october-22-2026-results/l-intro-1792724540.jpg"
   },
   {
     "id": 2871053565,
@@ -188,15 +198,5 @@
       "rendered": "AEW Producer Scotty 2 Hotty Praises Kyle Fletcher: 'He's My Guy'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-producer-scotty-2-hotty-praises-kyle-fletcher-hes-my-guy/l-intro-1792661755.jpg"
-  },
-  {
-    "id": 1271792554,
-    "link": "https://www.wrestlinginc.com/2293811/wwe-smackdown-viewership-ratings-report-october-16-2026/",
-    "date": "Thu, 22 Oct 2026 13:00:00 +0000",
-    "date_gmt": "2026-10-22T13:00:00.000Z",
-    "title": {
-      "rendered": "WWE Smackdown Viewership & Ratings Report, 10/16/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-10162026/l-intro-1792659096.jpg"
   }
 ]
