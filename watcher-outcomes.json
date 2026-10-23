@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-announces-new-years-smash-2027-dates-location": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "retry": true,
+  "at": "2026-10-23T17:37:06.272Z"
+ },
  "https://www.fightful.com/wrestling/big-e-and-kris-yim-marry": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-23T17:29:52.517Z"
- },
- "https://www.ringsidenews.com/aew-announces-new-years-smash-2027-dates-location": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
-  "retry": true,
-  "at": "2026-10-23T17:16:40.206Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
