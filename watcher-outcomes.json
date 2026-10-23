@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-october-23-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-23T23:32:17.627Z"
+ },
  "https://www.wrestlinginc.com/2294997/wwe-smackdown-october-23-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-09T14:49:53.642Z"
- },
- "https://www.fightful.com/wrestling/jacy-jayne-i-feel-like-chase-u-helped-me-find-myself": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-09T14:29:16.126Z"
  }
 }
