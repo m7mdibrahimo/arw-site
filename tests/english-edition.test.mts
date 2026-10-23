@@ -220,3 +220,12 @@ test('a stray "> " marker inside quotes is removed', async () => {
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
   assert.equal(fixEnglishNames('with the caption, "> Out of office ."'), 'with the caption, "Out of office."');
 });
+
+// INCIDENTS #781: «the October 13 episode» in a story whose source address says 10-20
+test('an episode date contradicting the source address is flagged', () => {
+  const body = 'WWE NXT viewership saw a decrease for the October 13 episode on CW Network. According to Wrestlenomics, the show drew 655,000 viewers, below the mark of last week. ' + 'More text here to make the body long enough for the length check. '.repeat(3);
+  const input = { sourceText: 'NXT drew 655,000 viewers.', sourceUrl: 'https://www.fightful.com/wrestling/wwe-nxt-10-20-viewership-drops-below-700000-viewers/', arabicTitle: 'x', arabicBody: 'x' } as any;
+  const t = 'WWE NXT Viewership Drops Below 700,000 Viewers';
+  assert.ok(checkEnglish({ title: t, body, tags: [] } as any, input).some((x) => x.includes('episode date')));
+  assert.ok(!checkEnglish({ title: t, body: body.replace('October 13', 'October 20'), tags: [] } as any, input).some((x) => x.includes('episode date')));
+});

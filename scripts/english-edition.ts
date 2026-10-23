@@ -139,6 +139,17 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (odd.length) issues.push(`number not in source: ${odd[0]}`);
   // an announced card written as results (INCIDENTS #679: «Perros Del Mal def. La Parka…» for a lineup announcement)
   if (/\bdef\./.test(body) && !/def\.|\b(?:defeat\w*|beat|beats|beaten|won|wins?|victor\w*|retain\w*|captur\w*)\b/i.test(i.sourceText)) issues.push("result wording (def.) but the source reports no result");
+  // an episode date that contradicts the date in the source's own address (INCIDENTS #781: «the October 13 episode» for a story whose address says 10-20)
+  const dm = i.sourceUrl.match(/[-/](\d{1,2})-(\d{1,2})(?:-\d{2,4})?(?=[-/])/);
+  if (dm) {
+    const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+    const mm = +dm[1], dd = +dm[2];
+    if (mm >= 1 && mm <= 12 && dd >= 1 && dd <= 31) {
+      for (const m of body.matchAll(/\b(January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2})\b(?=\s+(?:episode|edition|broadcast))/g)) {
+        if (months.indexOf(m[1].toLowerCase()) + 1 === mm && +m[2] !== dd && !i.sourceText.includes(`${m[1]} ${m[2]}`)) { issues.push(`episode date ${m[1]} ${m[2]} contradicts the source address (${mm}-${dd})`); break; }
+      }
+    }
+  }
   return issues;
 }
 
