@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tna-changed-original-creative-plans-october-15-impact-show": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-23T13:37:56.244Z"
+ },
  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T14:58:05.739Z"
- },
- "https://www.fightful.com/wrestling/wwe-has-a-hold-on-superdome-in-new-orleans-for-spring-2029": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T14:11:51.722Z"
  }
 }
