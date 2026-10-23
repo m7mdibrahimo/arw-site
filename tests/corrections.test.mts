@@ -689,3 +689,14 @@ test("typos بزواجه رسمي / أدافهم are corrected everywhere (INCID
     assert.ok(!/بزواجه رسمي |أدافهم/.test(t), f);
   }
 });
+
+// INCIDENTS #789: the auto-learned rule «رسميا»→«رسمي» turned every «أعلن رسميا» into «أعلن رسمي».
+test("«رسميا» is never rewritten, and the learner refuses words the site uses everywhere", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const { usesInPublishedNews } = await import("../scripts/learn-corrections");
+  assert.equal(applyCorrections("أعلن الاتحاد رسميا عن النزال واحتفل بزواجه رسميا"), "أعلن الاتحاد رسميا عن النزال واحتفل بزواجه رسميا");
+  assert.ok(usesInPublishedNews("رسميا") >= 10);
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string }[];
+  assert.ok(!corrections.some(c => c.wrong === "رسميا"));
+  assert.ok(!fs.readFileSync("content/news/ويل-أوسبري-يرحب-بالظهور-المشترك-مع-زوجته-أليكس-ويندسور-على-شاشات-المصارعة.md", "utf-8").includes("تمت رسمي في"));
+});

@@ -15,6 +15,17 @@ export function rightIsDual(right: string): boolean {
 }
 
 
+/** How many times a word is written in the published Arabic news. A word used correctly dozens of times («رسميا») is never a spelling mistake (INCIDENTS #789). */
+export function usesInPublishedNews(word: string): number {
+  const dir = path.join(process.cwd(), "content", "news");
+  if (!fs.existsSync(dir)) return 0;
+  const re = new RegExp(`(?<![ء-ي])${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![ء-ي])`, "g");
+  let n = 0;
+  for (const f of fs.readdirSync(dir)) if (f.endsWith(".md")) n += (fs.readFileSync(path.join(dir, f), "utf-8").match(re) || []).length;
+  return n;
+}
+const COMMON_WORD_USES = 10;
+
 const ARABIC_PHRASE = /^[ء-يـ]+(?: [ء-يـ]+){0,3}$/;
 // Grammar words whose "fix" depends on the sentence, never on the word itself.
 const CONTEXTUAL = new Set(["في", "من", "على", "إلى", "عن", "أن", "إن", "التي", "الذي", "هذا", "هذه", "كان", "كانت", "قد", "لقد", "و", "أو"]);
@@ -71,6 +82,7 @@ export function learnCorrections(minArticles = 3, dryRun = false): { wrong: stri
     if (known.has(wrong) || canonical.has(wrong)) continue; // already handled, or would undo an approved spelling
     if (known.has(right)) continue;                 // would create a correction loop
     if (rightIsDual(right)) continue;               // the site never uses dual forms
+    if (!wrong.includes(" ") && usesInPublishedNews(wrong) >= COMMON_WORD_USES) continue; // a word the site writes everywhere is not a mistake: «رسميا»→«رسمي» broke every «أعلن رسميا»
     learned.push({ wrong, right, articles: files.size });
   }
   if (learned.length && !dryRun) {
