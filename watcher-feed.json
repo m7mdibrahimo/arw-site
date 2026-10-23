@@ -1,5 +1,15 @@
 [
   {
+    "id": 335253,
+    "link": "https://www.fightful.com/wrestling/ric-flair-says-hes-dealing-with-a-blood-cot-in-his-leg/",
+    "date": "2026-10-23T11:07:59",
+    "date_gmt": "2026-10-23T15:07:59",
+    "title": {
+      "rendered": "Ric Flair Says He&#8217;s Dealing With A Blood Cot In His Leg"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/11/27213240/ric_flair_aew_1.jpg"
+  },
+  {
     "id": 335254,
     "link": "https://www.fightful.com/wrestling/conrad-thompson-wants-to-do-podcasts-with-paul-heyman-and-michael-hayes/",
     "date": "2026-10-23T11:01:20",
@@ -288,15 +298,5 @@
       "rendered": "WWE Raw Scheduled To Air At 6PM ET On November 2"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
-  },
-  {
-    "id": 335155,
-    "link": "https://www.fightful.com/wrestling/335155-wargames-wwe/",
-    "date": "2026-10-22T13:19:17",
-    "date_gmt": "2026-10-22T17:19:17",
-    "title": {
-      "rendered": "Update On Men&#8217;s WarGames Match Format"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/07121942/CS-064865_SURVIVOR_SERIES_2026_CONCEPTS_1920x1080.jpg"
   }
 ]
