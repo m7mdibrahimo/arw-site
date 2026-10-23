@@ -49,11 +49,6 @@
   "retry": false,
   "at": "2026-10-23T14:09:03.464Z"
  },
- "https://www.ringsidenews.com/tna-changed-original-creative-plans-october-15-impact-show": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-23T14:01:30.596Z"
- },
  "https://www.ringsidenews.com/tna-impact-viewership-sees-increase-october-15-2026": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-15)",
   "retry": false,
