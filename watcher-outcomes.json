@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/tna-impact-viewership-sees-increase-october-15-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-15)",
+  "retry": false,
+  "at": "2026-10-23T13:53:52.958Z"
+ },
+ "https://www.ringsidenews.com/tna-changed-original-creative-plans-october-15-impact-show": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-23T13:52:23.487Z"
+ },
  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-23T13:51:20.455Z"
- },
- "https://www.ringsidenews.com/tna-changed-original-creative-plans-october-15-impact-show": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-23T13:37:56.244Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-confronts-clark-connors-david-finlay-at-produce-volume-6": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T15:40:55.609Z"
- },
- "https://www.fightful.com/wrestling/jim-ross-recovering-after-second-brain-procedure": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T14:58:05.739Z"
  }
 }
