@@ -1,68 +1,73 @@
 {
+ "https://www.fightful.com/wrestling/an-update-on-the-status-of-samantha-irvin": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-23T22:14:41.013Z"
+ },
  "https://www.fightful.com/wrestling/tyrese-haliburton-posts-wwe-inspired-comeback-video": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:12.855Z"
+  "at": "2026-10-23T22:14:40.739Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-its-his-plan-to-do-both-acting-and-wrestling-its-not-like-it-used-to-be-where-you-can-only-pick-one-or-the-other": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:12.754Z"
+  "at": "2026-10-23T22:14:40.598Z"
  },
  "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-23T22:11:12.603Z"
+  "at": "2026-10-23T22:14:40.384Z"
  },
  "https://www.fightful.com/wrestling/report-ric-flair-taken-to-hospital-after-falling-and-injuring-his-face-outside-restaurant-in-florida": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:12.421Z"
+  "at": "2026-10-23T22:14:40.130Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-hopes-street-fighter-cast-makes-their-way-over-to-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:12.234Z"
+  "at": "2026-10-23T22:14:39.860Z"
  },
  "https://www.fightful.com/wrestling/willow-nightingale-admits-her-hand-is-not-100-healed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:12.088Z"
+  "at": "2026-10-23T22:14:39.640Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaisers-defense-given-access-to-evidence-in-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:11.900Z"
+  "at": "2026-10-23T22:14:39.373Z"
  },
  "https://www.fightful.com/wrestling/big-e-and-kris-yim-marry": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:11.753Z"
+  "at": "2026-10-23T22:14:39.162Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-says-hes-dealing-with-a-blood-cot-in-his-leg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:11.526Z"
+  "at": "2026-10-23T22:14:38.838Z"
  },
  "https://www.fightful.com/wrestling/alice-crowley-speaks-about-scott-damore-selecting-her-for-opportunity-to-compete-in-cmll-womens-grand-prix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:11.257Z"
+  "at": "2026-10-23T22:14:38.458Z"
  },
  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:10.989Z"
+  "at": "2026-10-23T22:14:38.073Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:10.842Z"
+  "at": "2026-10-23T22:14:37.848Z"
  },
  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T22:11:10.611Z"
+  "at": "2026-10-23T22:14:37.513Z"
  },
  "https://www.ringsidenews.com/aew-dynamite-viewership-sees-massive-increase-october-14-2026": {
   "reason": "نزل قبل كده على الموقع",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-01)",
   "retry": false,
   "at": "2026-10-09T13:34:48.050Z"
- },
- "https://www.fightful.com/wrestling/chad-gable-speaks-about-his-new-wwe-entrance-music-trust-me-i-feel-that-music": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-09T12:13:49.326Z"
  }
 }
