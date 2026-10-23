@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/cody-rhodes-hopes-street-fighter-cast-makes-their-way-over-to-wwe": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-23T18:59:41.106Z"
+ },
  "https://www.fightful.com/wrestling/willow-nightingale-admits-her-hand-is-not-100-healed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:07.912Z"
+  "at": "2026-10-23T18:59:40.899Z"
  },
  "https://www.fightful.com/wrestling/ludwig-kaisers-defense-given-access-to-evidence-in-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:07.668Z"
+  "at": "2026-10-23T18:59:40.634Z"
  },
  "https://www.fightful.com/wrestling/big-e-and-kris-yim-marry": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:07.478Z"
+  "at": "2026-10-23T18:59:40.426Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-says-hes-dealing-with-a-blood-cot-in-his-leg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:07.236Z"
+  "at": "2026-10-23T18:59:40.162Z"
  },
  "https://www.fightful.com/wrestling/alice-crowley-speaks-about-scott-damore-selecting-her-for-opportunity-to-compete-in-cmll-womens-grand-prix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:06.888Z"
+  "at": "2026-10-23T18:59:39.782Z"
  },
  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:06.540Z"
+  "at": "2026-10-23T18:59:39.403Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:06.350Z"
+  "at": "2026-10-23T18:59:39.196Z"
  },
  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:06.054Z"
+  "at": "2026-10-23T18:59:38.872Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:05.544Z"
+  "at": "2026-10-23T18:59:38.316Z"
  },
  "https://www.fightful.com/wrestling/michigan-state-athlete-elly-finch-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T18:57:05.252Z"
+  "at": "2026-10-23T18:59:38.003Z"
  },
  "https://www.ringsidenews.com/hardy-boyz-allegedly-privately-complained-about-their-treatment-aew": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T21:33:00.687Z"
- },
- "https://www.fightful.com/wrestling/full-lineup-for-njpw-king-of-pro-wrestling": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T19:51:58.033Z"
  }
 }
