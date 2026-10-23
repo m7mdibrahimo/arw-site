@@ -700,3 +700,14 @@ test("«رسميا» is never rewritten, and the learner refuses words the site 
   assert.ok(!corrections.some(c => c.wrong === "رسميا"));
   assert.ok(!fs.readFileSync("content/news/ويل-أوسبري-يرحب-بالظهور-المشترك-مع-زوجته-أليكس-ويندسور-على-شاشات-المصارعة.md", "utf-8").includes("تمت رسمي في"));
 });
+
+// INCIDENTS #792: «OTM» became «أوني كيم ووسيط كرم» and «فوتوغرافيات» (with a wrong number) reached stories.
+test("OTM stays English and «فوتوغرافيات» becomes «صور» (INCIDENTS #792)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["OTM"], "OTM");
+  assert.equal(applyCorrections("رويس كيز وفريق أوني كيم ووسيط كرم"), "رويس كيز وثنائي OTM وكارميلو هايز");
+  assert.equal(applyCorrections("أربعة فوتوغرافيات توثق الإصابات"), "أربع صور توثق الإصابات");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وسيط كرم|فوتوغرافيات/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
