@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/2026-world-x-cup-mens-womens-ultimate-x-matches-added-to-tna-destination-x": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-23T02:31:52.406Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-10-22-mustafa-ali-vs-jason-hotch": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-23T02:27:17.463Z"
+  "at": "2026-10-23T02:30:57.108Z"
  },
  "https://www.fightful.com/wrestling/michigan-state-athlete-elly-finch-signs-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:17.223Z"
+  "at": "2026-10-23T02:30:56.784Z"
  },
  "https://www.fightful.com/wrestling/report-sin-cara-revival-being-pitched-in-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:16.978Z"
+  "at": "2026-10-23T02:30:56.446Z"
  },
  "https://www.fightful.com/wrestling/update-on-possible-dates-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:16.656Z"
+  "at": "2026-10-23T02:30:55.991Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-drawing-praise-within-wwe-for-social-media-numbers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:16.506Z"
+  "at": "2026-10-23T02:30:55.776Z"
  },
  "https://www.fightful.com/wrestling/update-on-potential-rey-mysterio-retirement-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:16.355Z"
+  "at": "2026-10-23T02:30:55.557Z"
  },
  "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:16.079Z"
+  "at": "2026-10-23T02:30:55.159Z"
  },
  "https://www.fightful.com/wrestling/penta-recalls-stressful-day-leading-up-to-roman-reigns-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:15.889Z"
+  "at": "2026-10-23T02:30:54.872Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-reflects-on-reduced-schedule-in-2025-i-had-to-check-myself-a-little-bit": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-23T02:27:15.639Z"
+  "at": "2026-10-23T02:30:54.522Z"
  },
  "https://www.wrestlinginc.com/2293763/tna-thursday-night-impact-october-22-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-07T22:00:57.475Z"
- },
- "https://www.fightful.com/wrestling/mybookie-odds-show-roxanne-perez-bron-breakker-as-new-favorites-for-wwe-money-in-the-bank-matches": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-07T21:12:50.647Z"
  }
 }
