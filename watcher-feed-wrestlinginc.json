@@ -1,5 +1,15 @@
 [
   {
+    "id": 4511140784,
+    "link": "https://www.wrestlinginc.com/2289806/tna-nic-nemeth-final-run-wwe-rock/",
+    "date": "Fri, 23 Oct 2026 01:00:00 +0000",
+    "date_gmt": "2026-10-23T01:00:00.000Z",
+    "title": {
+      "rendered": "TNA's Nic Nemeth Ponders Final Run For Him And Other Wrestlers Of His Generation"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-nic-nemeth-ponders-final-run-for-him-and-other-wrestlers-of-his-generation/l-intro-1792355427.jpg"
+  },
+  {
     "id": 2481817458,
     "link": "https://www.wrestlinginc.com/2293763/tna-thursday-night-impact-october-22-2026-results/",
     "date": "Thu, 22 Oct 2026 21:39:03 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Queen Aminata Earns AEW TBS Title Match"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/queen-aminata-earns-aew-tbs-title-match/l-intro-1792635097.jpg"
-  },
-  {
-    "id": 1569166434,
-    "link": "https://www.wrestlinginc.com/2293746/us-state-dept-orders-diplomats-out-saudi-arabia-ahead-wwe-crown-jewel/",
-    "date": "Thu, 22 Oct 2026 01:03:38 +0000",
-    "date_gmt": "2026-10-22T01:03:38.000Z",
-    "title": {
-      "rendered": "US State Dept. Orders Diplomats Out Of Saudi Arabia Ahead Of WWE Crown Jewel"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/us-state-dept-orders-diplomats-out-of-saudi-arabia-ahead-of-wwe-crown-jewel/l-intro-1792630880.jpg"
   }
 ]
