@@ -717,3 +717,8 @@ test("corrections: «بايج» لآدم بيدج و«احتفالات عرض م
   assert.ok(corrections.some(c => c.wrong === "لكن بايج رفض" && c.right === "لكن بيدج رفض"));
   assert.ok(corrections.some(c => c.wrong === "احتفالات عرض مسيرة" && c.right === "احتفالات بمسيرة"));
 });
+
+test("«fallen in view of» becomes «fallen in love with» (INCIDENTS #794)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("she has fallen in view of watching young athletes grow"), "she has fallen in love with watching young athletes grow");
+});

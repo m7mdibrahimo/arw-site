@@ -7623,3 +7623,9 @@
 - **السبب:** جيميناي اختصر اسم بيدج لـ«بايج» (اللي هي اسم بايج المصارعة التانية) وكسر حرف الجر في الجملة، ومفيش تصحيح حتمي للصيغتين.
 - **الإصلاح:** الخبرين اتصلحوا في مكانهم (نفس الرابط). تصحيحين في `editorial/corrections.json` بيتطبقوا على كل خبر جاي وبيتعرضوا لجيميناي + اختبار في `tests/corrections.test.mts`.
 - **باقي الجولة:** /health فاضي، الموقع الحي سليم (eleventy ١٠١ ث على بناء واحد — بنراقبها، ١٧١٤١ ملف). عروض آخر ٤٨ ساعة (RAW ١٩-١٠، CMLL Martes de Glamour، MLW Fusion، NJPW Taichi School 2، NXT ٢٠-١٠): صفحة ✓ سايت ماب ✓ seo/new-shows ✓ سيرفرات ✓ ريل ✓ تليجرام/فيسبوك/انستجرام ✓ (X متأجل لـTaichi School بقرار قديم). ترتيب RAW/SmackDown/MITB/WrestleDream اتغير بياناتها في #785 و#787 من أقل من ٢٤ ساعة فمالمسناهاش. ملحوظة: اختبارات tests/monitor*.test.mts بتفشل لأن ملفاتها (scripts/monitor، .opencode، hourly-guard.yml) مش في المستودع — دخلت بالغلط في كوميت publish ومحتاجة صاحب الموقع.
+
+## #794 — 2026-10-23: «fallen in view of watching» في خبر شاينا باسلر الإنجليزي (جولة مراقبة ١٨:٠٠ UTC)
+- **اللي حصل:** النسخة الإنجليزية لخبر شاينا باسلر كتبت «has fallen in view of watching young athletes grow» (التعبير المكسور، الصح «fallen in love with watching»).
+- **السبب:** جيميناي كسر التعبير الإنجليزي ومفيش تصحيح حتمي له.
+- **الإصلاح:** الخبر اتصلح في مكانه (نفس الرابط). اتضاف تصحيح في `ENGLISH_FIXES` في `scripts/english-edition.ts` بيتطبق على أي خبر إنجليزي جاي + اختبار في `tests/corrections.test.mts`.
+- **باقي الجولة:** /health فاضي، الموقع الحي سليم (eleventy ٤٦ ث، ١٧١٤٤ ملف). عروض آخر ٤٨ ساعة (RAW ١٩-١٠، CMLL Martes de Glamour، MLW Fusion، NJPW Taichi School 2، NXT ٢٠-١٠): صفحة ✓ سايت ماب ✓ seo/new-shows ✓ سيرفرات ✓ ريل ✓ نشر ✓. الترتيب: `lib/show-seo.cjs` اتعدل من أقل من ٢٤ ساعة (#785/#787) فمالمستش (RAW/SmackDown/MITB/WrestleDream)؛ مفيش عرض جديد في آخر ٢٤ ساعة. صفحتين library (TNA Bound for Glory وNJPW King of Pro) سليمين (canonical وindex وفي السايت ماب) وجوجل لسه ما زارهمش. أخبار عربي سليمة. نفس ١٥ اختبار monitor فاشلين (#737).

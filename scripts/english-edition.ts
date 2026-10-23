@@ -173,6 +173,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «fallen in view of watching» is a broken idiom: it is «fallen in love with watching» (INCIDENTS #794)
+  [/\bfallen in view of\b/g, "fallen in love with"],
   [/\bM By Elegance\b/g, "Ash By Elegance"],
   // Jey Uso written with Ilja Dragunov's surname (INCIDENTS #758)
   [/\bJey Dragunov\b/g, "Jey Uso"],
