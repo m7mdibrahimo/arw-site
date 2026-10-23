@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-announces-new-years-smash-2027-dates-location": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "retry": true,
+  "at": "2026-10-23T16:00:55.294Z"
+ },
  "https://www.fightful.com/wrestling/aew-new-years-smash-announced-for-january-1-and-2": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T16:34:02.827Z"
- },
- "https://www.fightful.com/wrestling/dominik-mysterio-didnt-know-brock-lesnar-was-going-to-beat-his-ass-in-2019-segment": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T16:23:07.001Z"
  }
 }
