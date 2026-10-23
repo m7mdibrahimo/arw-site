@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/triple-hs-plans-bobby-roodes-wwe-backstage-future-revealed": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-23T09:32:19.753Z"
+ },
  "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-08T03:45:34.183Z"
- },
- "https://www.fightful.com/wrestling/liv-morgan-reveals-procedures-she-went-through-to-deal-with-hematoma-from-head-clash-with-roxanne-perez": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-08T01:43:48.349Z"
  }
 }
