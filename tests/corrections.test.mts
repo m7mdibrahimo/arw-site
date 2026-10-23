@@ -647,3 +647,12 @@ test("choke wording is corrected and guide covers it (INCIDENTS #782)", async ()
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أفقرت بها/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #783: the verbless opener «عرض اتحاد X أحدث عرض من…» came back in an ROH TV results story.
+test("verbless results opening is blocked (INCIDENTS #783)", async () => {
+  const { checkArticle, BLOCKING_QA_CODES } = await import("../scripts/news-qa");
+  const body = "عرض اتحاد رينغ أوف هونر أحدث عرض من ROH TV يوم 22 أكتوبر، وبثت الفعاليات عبر منصة أونر كلوب.\n\nهزم بيشوب كاون خصمه أورو.";
+  assert.ok(checkArticle("نتائج عرض ROH TV", body).some(i => i.code === "verbless_opening"));
+  assert.ok(BLOCKING_QA_CODES.includes("verbless_opening"));
+  assert.ok(!checkArticle("نتائج عرض ROH TV", "قدم اتحاد رينغ أوف هونر أحدث حلقة من ROH TV يوم 22 أكتوبر.\n\nهزم بيشوب كاون خصمه أورو.").some(i => i.code === "verbless_opening"));
+});
