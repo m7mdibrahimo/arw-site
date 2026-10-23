@@ -677,3 +677,15 @@ test("no story tag repeats a Latin name around «عرض»", async () => {
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #788: «بزواجه رسمي» and «أدافهم» typos must be corrected and never come back.
+test("typos بزواجه رسمي / أدافهم are corrected everywhere (INCIDENTS #788)", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  for (const [w, r] of [["بزواجه رسمي", "بزواجه رسميا"], ["أدافهم", "أهدافهم"]]) {
+    assert.ok(corrections.some(c => c.wrong === w && c.right === r), w);
+  }
+  for (const f of fs.readdirSync("content/news")) {
+    const t = fs.readFileSync(`content/news/${f}`, "utf-8");
+    assert.ok(!/بزواجه رسمي |أدافهم/.test(t), f);
+  }
+});
