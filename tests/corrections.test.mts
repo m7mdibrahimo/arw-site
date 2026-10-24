@@ -770,3 +770,11 @@ test("«لسماع اسم البطلة» و«صورة متحركة تعبر عن
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لسماع لقب البطلة|صورة متحركة لخجول/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«ليفيسك» و«فعل الاثنين معا» بيتصلحوا (INCIDENTS #805)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بول 'تريبل إتش' ليفيك"), "بول 'تريبل إتش' ليفيسك");
+  assert.equal(applyCorrections("لم أجرب فعلهم معا"), "لم أجرب فعل الاثنين معا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ليفيك|فعلهم معا/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
