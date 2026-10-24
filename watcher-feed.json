@@ -1,5 +1,15 @@
 [
   {
+    "id": 335355,
+    "link": "https://www.fightful.com/wrestling/wrestling-open-results-10-22/",
+    "date": "2026-10-23T23:30:00",
+    "date_gmt": "2026-10-24T03:30:00",
+    "title": {
+      "rendered": "Wrestling Open Results (10/22)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/23210132/HVKhNv3XUAAvSb7.jpeg"
+  },
+  {
     "id": 335399,
     "link": "https://www.fightful.com/wrestling/womens-tag-team-bout-added-to-10-24-aew-collision/",
     "date": "2026-10-23T23:21:58",
@@ -288,15 +298,5 @@
       "rendered": "AEW New Year&#8217;s Smash Announced For January 1 And 2"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/23113809/ph-hp.jpg-2.avif"
-  },
-  {
-    "id": 335253,
-    "link": "https://www.fightful.com/wrestling/ric-flair-says-hes-dealing-with-a-blood-cot-in-his-leg/",
-    "date": "2026-10-23T11:07:59",
-    "date_gmt": "2026-10-23T15:07:59",
-    "title": {
-      "rendered": "Ric Flair Says He&#8217;s Dealing With A Blood Cot In His Leg"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/11/27213240/ric_flair_aew_1.jpg"
   }
 ]
