@@ -811,3 +811,16 @@ test("broken Slater/MVP phrases are corrected (INCIDENTS #811)", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لججون|للقسم X/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #812: glued dual verbs («يقدمانته») and an unclosed " quote block reached stories.
+test("glued dual verbs and unclosed straight quotes are blocked, and no story keeps them", async () => {
+  const { checkArticle } = await import("../scripts/news-qa");
+  const title = "عنوان تجريبي طويل بما يكفي للفحص هنا";
+  const pad = " كلام عادي".repeat(80);
+  assert.ok(checkArticle(title, "أعجب المسؤولون بما يقدمانه" + pad).some(i => i.code === "dual_form"));
+  assert.ok(checkArticle(title, "ثم انتقدا مجريات النزال" + pad).some(i => i.code === "dual_form"));
+  assert.ok(checkArticle(title, '> "بعض الناس يرثون الممتلكات والبعض يتمسك بالذكريات.\n\n' + pad).some(i => i.code === "unclosed_straight_quote"));
+  assert.ok(!checkArticle(title, '> "بعض الناس يرثون الممتلكات."\n\n' + pad).some(i => i.code === "unclosed_straight_quote"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /يقدمانها|يخوضانه|وانتقدا|يخططان لها/.test(fs.readFileSync(`content/news/${f}`, "utf-8").split("\n").filter(l => !l.startsWith("permalink:")).join("\n")));
+  assert.deepEqual(bad, []);
+});
