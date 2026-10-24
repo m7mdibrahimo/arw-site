@@ -637,3 +637,26 @@ test('a membership turned on by hand is told as paid or as a gift, and the membe
   assert.match(panel, /data-kind="paid">دفع<\/button><button type="button" class="chip" data-kind="gift">هدية من الموقع/);
   assert.match(panel, /q\('go'\)\.disabled = !ok \|\| !kind;/);
 });
+
+test('the owner corrects how long a membership was given for: the payment says the new days and the end date moves (owner 2026-10-25)', async () => {
+  // «العضو ده هو اشترك ودفع … انا فعلتله شهر بدل سنة … وعايزك تديني صلاحية بده»
+  const { studioPremiumDays } = await import('../worker/src/premium.ts');
+  const e = env();
+  const s = await member(e);
+  const t0 = Date.now();
+  await studioPremiumGrant(e, s.member.id, 30, 'mohamed', t0, { kind: 'paid', amount: 9, currency: 'USD', method: 'Card' });
+  const pay: any = await e.ANALYTICS.prepare("SELECT id FROM premium_payments WHERE member = ?1").bind(s.member.id).first();
+  const before: any = await e.ANALYTICS.prepare("SELECT premium_until FROM members WHERE id = ?1").bind(s.member.id).first();
+  const r: any = await studioPremiumDays(e, pay.id, 365, t0 + 1000);
+  assert.equal(r.success, true);
+  assert.equal(r.until, before.premium_until + 335 * 86_400_000);
+  assert.equal(((await e.ANALYTICS.prepare("SELECT days FROM premium_payments WHERE id = ?1").bind(pay.id).first()) as any).days, 365);
+  // shorter again, and the limits
+  assert.equal(((await studioPremiumDays(e, pay.id, 30, t0 + 2000)) as any).until, before.premium_until);
+  assert.equal(((await studioPremiumDays(e, pay.id, 0)) as any).success, false);
+  assert.equal(((await studioPremiumDays(e, 999, 30)) as any).success, false);
+  const fs = await import('node:fs');
+  const panel = fs.readFileSync('studio/js/views/premium.js', 'utf-8');
+  assert.match(panel, /class="pg-swap pg-days" data-pay="\$\{p\.id\}" data-days="\$\{p\.days\}">تعديل المدة<\/button>/);
+  assert.match(panel, /api\.premiumDays\(b\.dataset\.pay, days\)/);
+});

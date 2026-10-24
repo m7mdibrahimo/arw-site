@@ -140,6 +140,7 @@ export const api = {
   premiumMediaSave: (key, servers, downloads) => call('/api/studio/premium/media', { method: 'POST', body: { k: key, servers, downloads } }),
   premiumFind: (q) => call('/api/studio/premium/find', { method: 'POST', body: { q } }),
   premiumGrant: (id, days, pay = null) => call('/api/studio/premium/grant', { method: 'POST', body: { id: Number(id), days: Number(days), pay } }),
+  premiumDays: (payId, days) => call('/api/studio/premium/days', { method: 'POST', body: { payId: Number(payId), days: Number(days) } }),
   premiumKind: (payId, pay) => call('/api/studio/premium/kind', { method: 'POST', body: { payId: Number(payId), pay } }),
   premiumRequest: (body) => call('/api/studio/premium/request', { method: 'POST', body }),
   chat: () => call('/api/studio/chat'),

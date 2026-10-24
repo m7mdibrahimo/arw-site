@@ -90,7 +90,7 @@ export function toast(message, kind = 'ok', ms = 3800) {
 }
 
 // ── Dialogs ───────────────────────────────────────────────────────────────
-export function dialog({ title, body = '', confirm = 'تأكيد', cancel = 'إلغاء', danger = false, input = null }) {
+export function dialog({ title, body = '', confirm = 'تأكيد', cancel = 'إلغاء', danger = false, input = null, onOpen = null }) {
   return new Promise(resolve => {
     const wrap = document.createElement('div');
     wrap.className = 'modal-wrap';
@@ -103,6 +103,8 @@ export function dialog({ title, body = '', confirm = 'تأكيد', cancel = 'إ�
         ${cancel ? `<button class="btn btn-ghost" data-cancel>${esc(cancel)}</button>` : ''}
       </div></div>`;
     document.body.appendChild(wrap);
+    // the body's own buttons get their work here (they come in as markup)
+    if (typeof onOpen === 'function') { try { onOpen(wrap); } catch {} }
     requestAnimationFrame(() => wrap.classList.add('in'));
     const inp = wrap.querySelector('#modal-input');
     const okBtn = wrap.querySelector('[data-ok]');

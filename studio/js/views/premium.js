@@ -32,7 +32,9 @@ export function payHistory(list) {
       : handPaid(p.granted_by) ? html`<b>${kindTag(p.granted_by)} ${p.amount ? html`${money(p.amount, p.currency)} · ` : ''}${num(p.days)} يوم</b><small class="muted">دفع مباشر${p.method ? ` · ${p.method}` : ''}${p.reference ? ` · رقم العملية ${p.reference}` : ''} · فعّلها ${handBy(p.granted_by)} <button type="button" class="pg-swap" data-pay="${p.id}" data-to="gift">كانت هدية؟</button></small>`
       : p.granted_by ? html`<b>${kindTag(p.granted_by)} ${num(p.days)} يوم</b><small class="muted">فعّلها ${p.granted_by} <button type="button" class="pg-swap" data-pay="${p.id}" data-to="paid">كان دافع؟</button></small>`
       : html`<b>${kindTag('')} ${money(p.amount, p.currency)} · ${num(p.days)} يوم</b><small class="muted">${p.method ? `${p.method}` : 'فواتيرك'}${p.reference ? ` · رقم العملية ${p.reference}` : ''}${p.invoice_id ? ` · فاتورة ${p.invoice_id}` : ''}</small>`;
-    return html`<div class="pg-hist-row ${p.status !== 'paid' ? 'is-wait' : ''}"><span class="pg-hist-date">${date(when)}<small class="muted">${timeAgo(when)}</small></span><span class="pg-hist-what">${what}</span></div>`;
+    // «تعديل المدة» on any paid or given membership (not a trial): the owner corrects a month that should have been a year
+    const fix = p.status === 'paid' && p.granted_by !== 'trial' ? html`<button type="button" class="pg-swap pg-days" data-pay="${p.id}" data-days="${p.days}">تعديل المدة</button>` : '';
+    return html`<div class="pg-hist-row ${p.status !== 'paid' ? 'is-wait' : ''}"><span class="pg-hist-date">${date(when)}<small class="muted">${timeAgo(when)}</small></span><span class="pg-hist-what">${what}</span>${fix}</div>`;
   })}</div>`;
 }
 
@@ -109,6 +111,20 @@ export function premiumPicker(box, m, onDone) {
 
 /** «كان دافع؟ / كانت هدية؟» on a membership turned on by hand: told again, for the member's page too */
 export function wirePayHistory(root, onDone) {
+  // «تعديل المدة» (owner 2026-10-25): the payment's days, and the member's end date moves by the difference
+  $$('.pg-days', root).forEach(b => b.onclick = async () => {
+    const was = Number(b.dataset.days) || 30;
+    const ok = await dialog({ title: 'تعديل مدة الاشتراك', body: html`<p class="muted small">كانت ${num(was)} يوم. اختار المدة الصح، وآخر يوم في اشتراكه هيتغير بالفرق.</p>
+      <div class="chips pg-chips" id="pgd-chips">${PERIODS.filter(([d]) => d >= 7).map(([d, l]) => html`<button type="button" class="chip ${d === was ? 'active' : ''}" data-d="${d}">${l}</button>`)}</div>
+      <label class="pg-pay"><span>أو عدد الأيام</span><input class="input" type="number" min="1" max="3650" inputmode="numeric" id="pgd-n" value="${was}"></label>`, confirm: 'احفظ',
+      onOpen: () => $$('#pgd-chips .chip').forEach(c => c.onclick = () => { $$('#pgd-chips .chip').forEach(x => x.classList.toggle('active', x === c)); $('#pgd-n').value = c.dataset.d; }) });
+    if (!ok) return;
+    const days = Math.round(Number(($('#pgd-n') || {}).value) || 0);
+    if (!days || days === was) return;
+    b.disabled = true;
+    try { const r = await api.premiumDays(b.dataset.pay, days); toast(r.until ? `اتعدّلت ✓ اشتراكه لحد ${date(r.until)}` : 'اتعدّلت ✓'); onDone && onDone(); }
+    catch (e) { toast(e.message, 'error'); b.disabled = false; }
+  });
   $$('.pg-swap', root).forEach(b => b.onclick = async () => {
     const toPaid = b.dataset.to === 'paid';
     let p = { kind: 'gift' };

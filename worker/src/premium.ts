@@ -436,6 +436,29 @@ export async function studioPremiumGrant(env: PremiumEnv, id: unknown, days: unk
     .bind(member, now, capped, k.by, k.currency, k.amount, k.method, k.reference).run();
   return { success: true, until };
 }
+/** The owner corrects how long one membership was given for (owner 2026-10-25: «فعلتله شهر بدل سنة … وعايزك تديني صلاحية
+ *  بده»): the payment says the new number of days, and the member's end date moves by the difference */
+export async function studioPremiumDays(env: PremiumEnv, payId: unknown, days: unknown, now = Date.now()) {
+  const db = env.ANALYTICS;
+  if (!db) return { success: false, error: "مش متاح دلوقتي." };
+  await ensurePremium(db);
+  const d = Math.round(Number(days) || 0);
+  if (d < 1 || d > 3650) return { success: false, error: "المدة من يوم لـ10 سنين." };
+  const row: any = await db.prepare("SELECT id, member, days, paid_at, granted_by FROM premium_payments WHERE id = ?1 AND status = 'paid'").bind(Number(payId) || 0).first();
+  if (!row) return { success: false, error: "الاشتراك ده مش موجود." };
+  if (row.granted_by === "trial") return { success: false, error: "دي تجربة مجانية، مدتها ثابتة." };
+  const m: any = await db.prepare("SELECT premium_until FROM members WHERE id = ?1").bind(row.member).first();
+  if (!m) return { success: false, error: "العضو ده مش موجود." };
+  const delta = (d - (Number(row.days) || 0)) * DAY;
+  const was = Number(m.premium_until) || 0;
+  // still running: the end moves by the difference; already over: counted again from the day it was given
+  const until = was > now ? was + delta : Math.max(0, (Number(row.paid_at) || now) + d * DAY);
+  await db.batch([
+    db.prepare("UPDATE premium_payments SET days = ?1 WHERE id = ?2").bind(d, row.id),
+    db.prepare("UPDATE members SET premium_until = ?1 WHERE id = ?2").bind(until > now ? until : 0, row.member),
+  ]);
+  return { success: true, until: until > now ? until : 0, member: row.member };
+}
 /** A membership turned on by hand, told again: it was paid after all, or it was a gift (the owner fixes an old one) */
 export async function studioPremiumKind(env: PremiumEnv, payId: unknown, pay: any, who = "") {
   const db = env.ANALYTICS;
