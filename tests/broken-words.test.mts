@@ -559,3 +559,19 @@ test('a stray ta marbuta after «ي» («احترافيتة») is a blocking bro
   assert.ok(checkArticle('عنوان واضح عن الخبر', body).some((i: any) => i.code === 'broken_word'));
   assert.ok(!checkArticle('عنوان واضح عن الخبر', body.replace('احترافيتة', 'احترافيته')).some((i: any) => /يتة/.test(i.message || '')));
 });
+
+// INCIDENTS #815: duals that slipped through — «ابنيه»، «شقيقيه»، «اتحادا WWE وAEW»، «لقبي بطولة»، «مواجهتي بطولة».
+test('INCIDENTS #815: dual nouns with pronouns, before Latin names, and in construct state are blocked', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' ' + 'كلام '.repeat(80)).map((i) => i.code);
+  assert.ok(codes('بدأ غان رحلته بمرافقة ابنيه أوستن وكولتن.').includes('dual_noun'));
+  assert.ok(codes('سوبيرانو جونيور وشقيقيه أنخيل دي أورو.').includes('dual_noun'));
+  assert.ok(codes('يستعد اتحادا WWE وAEW لخوض مواجهة.').includes('dual_noun'));
+  assert.ok(codes('أعلنت UFC عن مواجهتي بطولة ضمن العرض.').includes('dual_noun'));
+  assert.ok(codes('لتوحيد لقبي بطولة NXT وبطولة السرعة.').includes('dual_noun'));
+  assert.ok(!codes('يستعد كل من اتحاد WWE واتحاد AEW لخوض مواجهة، وتحدث عن أبنائه واتحادات أخرى.').includes('dual_noun'));
+});
+
+// INCIDENTS #815: «ذا أكلايمد / ذا أكليمد» → one spelling, «ذا أكليميد».
+test('INCIDENTS #815: The Acclaimed has one Arabic spelling', () => {
+  for (const w of ['ذا أكلايمد', 'ذا أكليمد']) assert.ok(applyCorrections(`فريق ${w} في AEW`).includes('ذا أكليميد'), w);
+});
