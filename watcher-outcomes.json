@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/becky-lynch-tells-stephanie-vaquer-shell-injured-again-within-three-weeks-wwe-return": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-24T22:37:51.903Z"
+ },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T22:31:58.343Z"
- },
- "https://www.ringsidenews.com/becky-lynch-tells-stephanie-vaquer-shell-injured-again-within-three-weeks-wwe-return": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-24T22:18:04.209Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-recalls-meeting-robert-downey-jr-and-sam-jones": {
   "reason": "مكرر مع خبر نزل قبل كده",
