@@ -762,3 +762,11 @@ test("«ميجان باين» و«البطولة» بشكلهم الصح في ك
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ميغان باين|البطوله|سانتس/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«لسماع اسم البطلة» و«صورة متحركة تعبر عن الخجل» بيتصلحوا (INCIDENTS #804)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("للاستعداد لسماع لقب البطلة الجديدة"), "للاستعداد لسماع اسم البطلة الجديدة");
+  assert.equal(applyCorrections("مع صورة متحركة لخجول"), "مع صورة متحركة تعبر عن الخجل");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لسماع لقب البطلة|صورة متحركة لخجول/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
