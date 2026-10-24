@@ -544,3 +544,11 @@ test('INCIDENTS #799: grammar slips are corrected automatically', () => {
   assert.equal(applyCorrections('ضد منافستها اللدود بليك'), 'ضد منافستها اللدودة بليك');
   assert.equal(applyCorrections('لم يكونوا يسمح لهم بالدخول'), 'لم يكن يسمح لهم بالدخول');
 });
+
+// INCIDENTS #803: «ميتشين وبي فاب تعلقان على تتويجهم» — a present-tense dual verb in a title slipped past dual_form.
+test('present-tense dual verbs like «تعلقان / تتحدثان / تعبران» are blocked', () => {
+  const body = 'نص طويل بما يكفي للفحص '.repeat(20);
+  for (const w of ['تعلقان', 'تتحدثان', 'تعبران', 'يعلقان', 'تشكران', 'تحتفلان']) {
+    assert.ok(checkArticle(`ميتشين وبي فاب ${w} على الفوز بلقب الفرق`, body, []).some(i => i.code === 'dual_form'), w);
+  }
+});
