@@ -91,3 +91,9 @@ test("a yearly recap's name forms carry «مشاهدة / تحميل عرض … 2
   assert.ok(f.includes("تحميل عرض موني ان ذا بانك 2026"));
   assert.ok(f.includes("Money in the Bank 2026 كامل مترجم"));
 });
+
+// INCIDENTS #800: «تحميل عروض مصارعة» and «tailgate مترجم» sat outside the first 3 for the AEW WrestleDream pages.
+test("a yearly show carries the wrestling-shows category and its sub-event word", () => {
+  const f = showNameForms({ headline: "عرض ريسل دريم تيلجيت برول 17.10.2026 مترجم", title: "AEW WrestleDream Tailgate Brawl (2026)", programName: "AEW WrestleDream", eventDate: "2026-10-17", aliases: [], isShow: true, archive: false });
+  for (const n of ["تحميل عروض مصارعة", "عروض المصارعة الحرة مترجم", "Tailgate مترجم", "Tailgate Brawl مترجم"]) assert.ok(f.includes(n), n);
+});

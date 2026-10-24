@@ -744,3 +744,14 @@ test("شعار شانتل مونرو بيتصلح ومفيش خبر فيه «ا�
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("اقتراب انعكاس المثالية"));
   assert.deepEqual(bad, []);
 });
+
+test("Gargano is جارجانو, Michin is ميتشين, Ricky Saints is ريكي سينتس everywhere (INCIDENTS #800)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("جوني غارغانو وجوني غارجانو"), "جوني جارجانو وجوني جارجانو");
+  assert.equal(applyCorrections("ضد ميشين وبي فاب"), "ضد ميتشين وبي فاب");
+  assert.equal(applyCorrections("ريكي سانتس"), "ريكي سينتس");
+  const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
+  assert.equal(names["Ricky Saints"], "ريكي سينتس");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غارجانو|غارغانو|(?<![؀-ۿ])ميشين(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
