@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290991/wwe-miz-fired-intense-talking-smack-promo": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-24T14:55:08.638Z"
+ },
  "https://www.fightful.com/wrestling/drew-mcintyre-recalls-meeting-robert-downey-jr-and-sam-jones": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T14:39:08.357Z"
- },
- "https://www.wrestlinginc.com/2290991/wwe-miz-fired-intense-talking-smack-promo": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-24T14:35:02.391Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-its-his-plan-to-do-both-acting-and-wrestling-its-not-like-it-used-to-be-where-you-can-only-pick-one-or-the-other": {
   "reason": "مكرر مع خبر نزل قبل كده",
