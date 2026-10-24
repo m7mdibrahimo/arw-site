@@ -1,5 +1,15 @@
 [
   {
+    "id": 802258987,
+    "link": "https://www.ringsidenews.com/two-championship-matches-announced-october-30-wwe-smackdown/",
+    "date": "Sat, 24 Oct 2026 01:49:05 +0000",
+    "date_gmt": "2026-10-24T01:49:05.000Z",
+    "title": {
+      "rendered": "Two Championship Matches Announced for October 30 WWE SmackDown"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/title-match-revealed-for-june-26-wwe-smackdown-in-london-23.jpg?x50970"
+  },
+  {
     "id": 802258977,
     "link": "https://www.ringsidenews.com/cm-punk-vs-kevin-owens-announced-november-6-wwe-smackdown-brooklyn/",
     "date": "Sat, 24 Oct 2026 01:44:51 +0000",
@@ -138,15 +148,5 @@
       "rendered": "AEW Dynamite Viewership Sees Massive Increase on October 14, 2026"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/AEW-Dynamite-Massive-Increase-1.jpg?x50970"
-  },
-  {
-    "id": 802258774,
-    "link": "https://www.ringsidenews.com/cody-rhodes-reveals-roman-reigns-heavy-stunt-involvement-street-fighter-movie/",
-    "date": "Fri, 23 Oct 2026 20:21:14 +0000",
-    "date_gmt": "2026-10-23T20:21:14.000Z",
-    "title": {
-      "rendered": "Cody Rhodes Reveals Roman Reigns Had Heavy Stunt Involvement in Street Fighter Movie"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/cody-rhodes-reveals-roman-reigns-had-heavy-stunt-involvement-in-street-fighter-movie-41.jpg?x50970"
   }
 ]
