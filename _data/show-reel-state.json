@@ -3910,11 +3910,12 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض داينامايت 21.10.2026 مترجم",
-    "lastAttempt": 1792851660117,
+    "lastAttempt": 1792851756459,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
+      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -3965,9 +3966,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 17.10.2026 مترجم",
-    "lastAttempt": 1792849006924,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792851791344,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -4082,13 +4087,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سماك داون 23.10.2026 مترجم",
-    "lastAttempt": 1792851726429,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792851793857,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
