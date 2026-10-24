@@ -3952,15 +3952,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 17.10.2026 مترجم",
-    "lastAttempt": 1792866525351,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792867432206,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -3990,9 +3986,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال لونيس كلاسيكو 19.10.2026 مترجم",
-    "lastAttempt": 1792863934352,
+    "lastAttempt": 1792867433797,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -4070,15 +4066,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايفولف 21.10.2026 مترجم",
-    "lastAttempt": 1792863964333,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792867443185,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261024163057-wwe-main-event-21-10-2026": {
     "publishedAt": 1792850076047,
