@@ -3910,19 +3910,18 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض داينامايت 21.10.2026 مترجم",
-    "lastAttempt": 1792847281392,
+    "lastAttempt": 1792848962383,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261024155316-roh-on-honorclub-22-10-2026": {
     "publishedAt": 1792847303355,
@@ -3955,6 +3954,71 @@
       "instagram_story",
       "tiktok"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024160725-cmll-sabados-de-coliseo-17-10-2026": {
+    "publishedAt": 1792848992940,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال سابادوس دي كوليسيو 17.10.2026 مترجم",
+    "lastAttempt": 1792849006924,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024160935-cmll-domingo-familiar-18-10-2026": {
+    "publishedAt": 1792849040585,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال دومينغو فاميليار 18.10.2026 مترجم",
+    "lastAttempt": 1792849055154,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024161139-cmll-lunes-clasico-19-10-2026": {
+    "publishedAt": 1792849084285,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال لونيس كلاسيكو 19.10.2026 مترجم",
+    "lastAttempt": 1792849099495,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024161514-cmll-martes-populares-20-10-2026": {
+    "publishedAt": 1792849130693,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 20.10.2026 مترجم",
+    "lastAttempt": 1792849144940,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024161949-cmll-martes-de-glamour-20-10-2026": {
+    "publishedAt": 1792849174860,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 20.10.2026 مترجم",
+    "lastAttempt": 1792849188994,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
