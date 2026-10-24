@@ -1,5 +1,15 @@
 [
   {
+    "id": 1540058041,
+    "link": "https://www.wrestlinginc.com/2296264/aew-collision-october-24-2026-results/",
+    "date": "Sat, 24 Oct 2026 23:05:11 +0000",
+    "date_gmt": "2026-10-24T23:05:11.000Z",
+    "title": {
+      "rendered": "AEW Collision Results 10/24/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-102426-w-live-updates/l-intro-1792882974.jpg"
+  },
+  {
     "id": 4364660057,
     "link": "https://www.wrestlinginc.com/2293264/aew-billy-gunn-wrestled-more-than-expected/",
     "date": "Sat, 24 Oct 2026 21:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE SmackDown 10/23/2026: 3 Things We Hated And 3 Things We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-10232026-3-things-we-hated-and-3-things-we-loved/l-intro-1792814296.jpg"
-  },
-  {
-    "id": 4428060950,
-    "link": "https://www.wrestlinginc.com/2296088/wwe-smackdown-b-fab-michin-womens-tag-titles-upset-win-alexa-bliss-tatum-paxley/",
-    "date": "Sat, 24 Oct 2026 01:41:13 +0000",
-    "date_gmt": "2026-10-24T01:41:13.000Z",
-    "title": {
-      "rendered": "B-Fab & Michin Score Upset Win On WWE SmackDown, Claim Women's Tag Titles"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/b-fab-michin-score-upset-win-on-wwe-smackdown-claim-womens-tag-titles/l-intro-1792806021.jpg"
   }
 ]
