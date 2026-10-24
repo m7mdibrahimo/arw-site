@@ -552,3 +552,10 @@ test('present-tense dual verbs like «تعلقان / تتحدثان / تعبرا
     assert.ok(checkArticle(`ميتشين وبي فاب ${w} على الفوز بلقب الفرق`, body, []).some(i => i.code === 'dual_form'), w);
   }
 });
+
+test('a stray ta marbuta after «ي» («احترافيتة») is a blocking broken_word', async () => {
+  const { checkArticle } = await import('../scripts/news-qa.ts');
+  const body = 'تحدث المصارع عن خلافه، مؤكدا أنه يحافظ على احترافيتة داخل الحلبة لتقديم عروض مميزة للجماهير في كل مرة يدخل فيها الحلبة ويواجه خصومه بشكل مباشر أمام الجميع.';
+  assert.ok(checkArticle('عنوان واضح عن الخبر', body).some((i: any) => i.code === 'broken_word'));
+  assert.ok(!checkArticle('عنوان واضح عن الخبر', body.replace('احترافيتة', 'احترافيته')).some((i: any) => /يتة/.test(i.message || '')));
+});
