@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2290886/wwe-jbl-curt-hennig-jim-ross-gerry-brisco-spiking-drinks-plane-ride-from-hell": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-24T13:02:36.971Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-preview-start-time-how-to-watch-location-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T09:53:51.715Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-to-honor-pharaoh-with-a-new-american-nightmare-logo": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T03:38:22.224Z"
  }
 }
