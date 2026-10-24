@@ -639,7 +639,8 @@
     "httpsarab-wrestlingcomshowscmll-domingo-familiar-18-10-2026": 1792847795568,
     "httpsarab-wrestlingcomshowscmll-lunes-clasico-19-10-2026": 1792847826077,
     "httpsarab-wrestlingcomshowscmll-martes-populares-20-10-2026": 1792847983612,
-    "httpsarab-wrestlingcomshowscmll-martes-de-glamour-20-10-2026": 1792848215737
+    "httpsarab-wrestlingcomshowscmll-martes-de-glamour-20-10-2026": 1792848215737,
+    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsتوني-خان-يقول-إن-بعض-نجوم-aew-لم-يستطيعوا-المصارعة-بعد-وفاة-باك": 1792239594871,
@@ -1279,7 +1280,8 @@
     "httpsarab-wrestlingcomshowscmll-domingo-familiar-18-10-2026": 1792847805254,
     "httpsarab-wrestlingcomshowscmll-lunes-clasico-19-10-2026": 1792847836921,
     "httpsarab-wrestlingcomshowscmll-martes-populares-20-10-2026": 1792847979543,
-    "httpsarab-wrestlingcomshowscmll-martes-de-glamour-20-10-2026": 1792848225658
+    "httpsarab-wrestlingcomshowscmll-martes-de-glamour-20-10-2026": 1792848225658,
+    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsتوني-خان-يقول-إن-بعض-نجوم-aew-لم-يستطيعوا-المصارعة-بعد-وفاة-باك": 1792239646681,
@@ -1730,7 +1732,8 @@
     "httpsarab-wrestlingcomnewsجي-بي-إل-فينس-مكمان-رفض-تحويل-جون-سينا-إلى-شخصية-شريرة-في-wwe-بسبب-درس-ستيف-أوستن": 1792845590853,
     "httpsarab-wrestlingcomshowsaew-dynamite-21-10-2026": 1792846424539,
     "httpsarab-wrestlingcomshowstna-impact-22-10-2026": 1792847088149,
-    "https___arab-wrestling_com_news_____-_______-_____-__-______-_______-___-___-wwe-nxt-_______-______": 1792847881805
+    "https___arab-wrestling_com_news_____-_______-_____-__-______-_______-___-___-wwe-nxt-_______-______": 1792847881805,
+    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121
   },
   "x": {
     "https___arab-wrestling_com_news_____-____-____-______-_____-__-_____-cmll-___-____-_____-______-______-___-___________": 1792249464844,
@@ -1860,7 +1863,8 @@
     "httpsarab-wrestlingcomshowsaew-dynamite-21-10-2026": 1792846443060,
     "httpsarab-wrestlingcomshowsroh-on-honorclub-22-10-2026": 1792846664633,
     "httpsarab-wrestlingcomshowstna-impact-22-10-2026": 1792847047134,
-    "https___arab-wrestling_com_news_____-_______-_____-__-______-_______-___-___-wwe-nxt-_______-______": 1792847881805
+    "https___arab-wrestling_com_news_____-_______-_____-__-______-_______-___-___-wwe-nxt-_______-______": 1792847881805,
+    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -3265,6 +3269,15 @@
       "reason": "result",
       "why": "ai",
       "note": "النص يكشف نتيجة فوز ميتشين وبي فاب ببطولة WWE للفرق للسيدات في عرض WWE SmackDown الذي أقيم في آخر 6 ساعات."
+    },
+    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": {
+      "at": 1792848329121,
+      "title": "إندي هارتويل تتحدث عن عودتها الأخيرة إلى عرض WWE NXT ومواجهة زاريا",
+      "url": "/news/إندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا/",
+      "image": "/content/images/3xmhtihhfh0m2yxw.jpg",
+      "reason": "return",
+      "why": "title",
+      "note": "النص يذكر أن العودة حدثت يوم السادس من أكتوبر وهو ما يعد قديماً وأكثر من 6 ساعات."
     }
   },
   "byFile": {
