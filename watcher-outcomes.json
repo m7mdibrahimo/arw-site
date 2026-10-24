@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2296264/aew-collision-october-24-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-24T23:46:34.307Z"
+ },
  "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -63,11 +68,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-24T23:32:26.067Z"
- },
- "https://www.wrestlinginc.com/2296264/aew-collision-october-24-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-24T23:26:20.130Z"
  },
  "https://www.ringsidenews.com/becky-lynch-tells-stephanie-vaquer-shell-injured-again-within-three-weeks-wwe-return": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
