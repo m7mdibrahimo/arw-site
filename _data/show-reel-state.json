@@ -3924,15 +3924,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ار او اتش اون اونر كلوب 22.10.2026 مترجم",
-    "lastAttempt": 1792859454275,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792860385964,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -3944,7 +3940,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "lastAttempt": 1792859455262,
+    "lastAttempt": 1792860387243,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4004,15 +4000,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 20.10.2026 مترجم",
-    "lastAttempt": 1792857366556,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792860397252,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261024161949-cmll-martes-de-glamour-20-10-2026": {
     "publishedAt": 1792849174860,
