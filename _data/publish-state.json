@@ -1934,20 +1934,20 @@
     {
       "window": "100-in-15min",
       "remaining": 99,
-      "resetAt": 1792866583352,
-      "updatedAt": 1792865683352
+      "resetAt": 1792868339975,
+      "updatedAt": 1792867439975
     },
     {
       "window": "250-in-1day",
-      "remaining": 231,
-      "resetAt": 1792945047352,
-      "updatedAt": 1792865683352
+      "remaining": 230,
+      "resetAt": 1792945047975,
+      "updatedAt": 1792867439975
     },
     {
       "window": "3000-in-30days",
-      "remaining": 2796,
-      "resetAt": 1794840072352,
-      "updatedAt": 1792865683352
+      "remaining": 2795,
+      "resetAt": 1794840072975,
+      "updatedAt": 1792867439975
     }
   ],
   "videoCooldowns": {
