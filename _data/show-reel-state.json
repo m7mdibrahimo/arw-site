@@ -4006,9 +4006,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 20.10.2026 مترجم",
-    "lastAttempt": 1792860397252,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792867542543,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4080,15 +4086,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض مين ايفنت 21.10.2026 مترجم",
-    "lastAttempt": 1792864826783,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792867552032,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261024171120-wwe-smackdown-23-10-2026": {
     "publishedAt": 1792851684057,
