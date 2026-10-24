@@ -3907,16 +3907,14 @@
     "publishedAt": 1792847235886,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض داينامايت 21.10.2026 مترجم",
-    "lastAttempt": 1792850776991,
+    "lastAttempt": 1792851660117,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -4074,6 +4072,23 @@
     "lastAttempt": 1792850088579,
     "errors": {},
     "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024171120-wwe-smackdown-23-10-2026": {
+    "publishedAt": 1792851684057,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سماك داون 23.10.2026 مترجم",
+    "lastAttempt": 1792851726429,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
