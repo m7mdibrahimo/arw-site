@@ -3923,16 +3923,14 @@
     "publishedAt": 1792847303355,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 22.10.2026 مترجم",
-    "lastAttempt": 1792857334287,
+    "lastAttempt": 1792858645338,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -4042,9 +4040,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 17.10.2026 مترجم",
-    "lastAttempt": 1792849958203,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792858673035,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
