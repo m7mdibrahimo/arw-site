@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-discussed-plans-wrestlemania-43-weekend": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-24T09:33:52.428Z"
+ },
  "https://www.fightful.com/wrestling/cmll-grand-prix-results-10-23-2026-team-cmll-vs-team-world-guerreros-laguneros-vs-infernales-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T01:46:46.226Z"
- },
- "https://www.wrestlinginc.com/2277397/aew-wwe-juice-robinson-cj-parker-deciding-leave-developmental-system": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-10T01:02:06.683Z"
  }
 }
