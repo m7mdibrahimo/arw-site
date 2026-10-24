@@ -659,4 +659,7 @@ test('the owner corrects how long a membership was given for: the payment says t
   const panel = fs.readFileSync('studio/js/views/premium.js', 'utf-8');
   assert.match(panel, /class="pg-swap pg-days" data-pay="\$\{p\.id\}" data-days="\$\{p\.days\}">تعديل المدة<\/button>/);
   assert.match(panel, /api\.premiumDays\(b\.dataset\.pay, days\)/);
+  // «تعديل المدة» opened «كانت هدية من الموقع»: the paid-or-gift buttons are only those that say which way (owner 2026-10-25)
+  assert.match(panel, /\$\$\('\.pg-swap\[data-to\]', root\)\.forEach/);
+  assert.doesNotMatch(panel, /\$\$\('\.pg-swap', root\)/);
 });

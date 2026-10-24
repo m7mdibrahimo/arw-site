@@ -125,7 +125,9 @@ export function wirePayHistory(root, onDone) {
     try { const r = await api.premiumDays(b.dataset.pay, days); toast(r.until ? `اتعدّلت ✓ اشتراكه لحد ${date(r.until)}` : 'اتعدّلت ✓'); onDone && onDone(); }
     catch (e) { toast(e.message, 'error'); b.disabled = false; }
   });
-  $$('.pg-swap', root).forEach(b => b.onclick = async () => {
+  // only the «كان دافع؟ / كانت هدية؟» buttons: «تعديل المدة» shares their look (.pg-swap) and opened «كانت هدية من الموقع»
+  // instead of its own window (owner 2026-10-25)
+  $$('.pg-swap[data-to]', root).forEach(b => b.onclick = async () => {
     const toPaid = b.dataset.to === 'paid';
     let p = { kind: 'gift' };
     if (toPaid) {
