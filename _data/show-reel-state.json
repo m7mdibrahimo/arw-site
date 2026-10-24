@@ -3926,12 +3926,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 22.10.2026 مترجم",
-    "lastAttempt": 1792854241354,
+    "lastAttempt": 1792857334287,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
@@ -4004,9 +4006,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 20.10.2026 مترجم",
-    "lastAttempt": 1792849144940,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792857366556,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
