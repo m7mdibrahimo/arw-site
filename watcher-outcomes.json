@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2296073/wwe-smackdown-chelsea-green-roxanne-perez-womens-title-judgment-day": {
+  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Money in the Bank",
+  "retry": true,
+  "at": "2026-10-24T01:27:08.180Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-to-face-randy-orton-in-last-man-standing-match-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
