@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/becky-lynch-tells-stephanie-vaquer-shell-injured-again-within-three-weeks-wwe-return": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-24T22:06:12.653Z"
+ },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T01:29:45.610Z"
- },
- "https://www.wrestlinginc.com/2282966/aew-collision-october-10-2026-results": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
-  "retry": false,
-  "at": "2026-10-11T00:35:52.203Z"
  }
 }
