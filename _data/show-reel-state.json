@@ -3910,7 +3910,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض داينامايت 21.10.2026 مترجم",
-    "lastAttempt": 1792851756459,
+    "lastAttempt": 1792852550619,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -3946,9 +3946,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "lastAttempt": 1792849911996,
+    "lastAttempt": 1792852551827,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -3983,9 +3983,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 18.10.2026 مترجم",
-    "lastAttempt": 1792849055154,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792852582692,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
