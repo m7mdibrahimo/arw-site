@@ -4083,9 +4083,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض مين ايفنت 21.10.2026 مترجم",
-    "lastAttempt": 1792867552032,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792884331347,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
