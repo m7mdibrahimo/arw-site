@@ -3926,7 +3926,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 22.10.2026 مترجم",
-    "lastAttempt": 1792858645338,
+    "lastAttempt": 1792859454275,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -3944,7 +3944,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "lastAttempt": 1792857713708,
+    "lastAttempt": 1792859455262,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4057,9 +4057,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 16.10.2026 مترجم",
-    "lastAttempt": 1792850003376,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792859484389,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
