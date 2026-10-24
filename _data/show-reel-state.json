@@ -3944,7 +3944,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "lastAttempt": 1792855086729,
+    "lastAttempt": 1792855970434,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
@@ -3978,15 +3978,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 18.10.2026 مترجم",
-    "lastAttempt": 1792852582692,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792855978876,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261024161139-cmll-lunes-clasico-19-10-2026": {
     "publishedAt": 1792849084285,
