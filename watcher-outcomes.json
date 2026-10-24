@@ -1,58 +1,58 @@
 {
- "https://www.ringsidenews.com/becky-lynch-tells-stephanie-vaquer-shell-injured-again-within-three-weeks-wwe-return": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-24T22:18:04.209Z"
- },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:50.307Z"
+  "at": "2026-10-24T22:21:38.154Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:50.085Z"
+  "at": "2026-10-24T22:21:37.931Z"
  },
  "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:49.678Z"
+  "at": "2026-10-24T22:21:37.520Z"
  },
  "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:49.148Z"
+  "at": "2026-10-24T22:21:36.984Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:48.923Z"
+  "at": "2026-10-24T22:21:36.758Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:48.703Z"
+  "at": "2026-10-24T22:21:36.535Z"
  },
  "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:48.357Z"
+  "at": "2026-10-24T22:21:36.189Z"
  },
  "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-results": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:48.063Z"
+  "at": "2026-10-24T22:21:35.902Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-24T22:14:47.719Z"
+  "at": "2026-10-24T22:21:35.560Z"
  },
  "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T22:14:47.316Z"
+  "at": "2026-10-24T22:21:35.162Z"
+ },
+ "https://www.ringsidenews.com/becky-lynch-tells-stephanie-vaquer-shell-injured-again-within-three-weeks-wwe-return": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-24T22:18:04.209Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-recalls-meeting-robert-downey-jr-and-sam-jones": {
   "reason": "مكرر مع خبر نزل قبل كده",
