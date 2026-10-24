@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-24T17:29:26.929Z"
+ },
  "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T17:27:56.372Z"
+  "at": "2026-10-24T17:29:26.760Z"
  },
  "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T17:27:56.027Z"
+  "at": "2026-10-24T17:29:26.507Z"
  },
  "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-results": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T17:27:55.743Z"
+  "at": "2026-10-24T17:29:26.297Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-24T17:27:55.408Z"
+  "at": "2026-10-24T17:29:26.048Z"
  },
  "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T17:27:55.012Z"
+  "at": "2026-10-24T17:29:25.757Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-recalls-meeting-robert-downey-jr-and-sam-jones": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T17:27:54.474Z"
+  "at": "2026-10-24T17:29:25.371Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-preview-start-time-how-to-watch-location-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T17:27:53.996Z"
+  "at": "2026-10-24T17:29:25.030Z"
  },
  "https://www.fightful.com/wrestling/cmll-grand-prix-results-10-23-2026-team-cmll-vs-team-world-guerreros-laguneros-vs-infernales-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)",
   "retry": true,
   "at": "2026-10-10T19:05:27.724Z"
- },
- "https://www.fightful.com/wrestling/alexa-bliss-tatum-paxley-become-wwe-womens-tag-team-champions-on-10-9-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T16:38:49.095Z"
  }
 }
