@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/gunther-puts-danhausen-notice-unaired-wwe-smackdown-footage": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-24T11:32:43.238Z"
+ },
  "https://www.fightful.com/wrestling/cmll-grand-prix-results-10-23-2026-team-cmll-vs-team-world-guerreros-laguneros-vs-infernales-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-10-10T02:16:42.489Z"
- },
- "https://www.fightful.com/wrestling/max-caster-to-face-moose-at-tna-bound-for-glory": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T01:57:27.624Z"
  }
 }
