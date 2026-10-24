@@ -3946,7 +3946,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261024160725-cmll-sabados-de-coliseo-17-10-2026": {
     "publishedAt": 1792848992940,
@@ -3969,12 +3970,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 18.10.2026 مترجم",
-    "lastAttempt": 1792866526290,
+    "lastAttempt": 1792870010749,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
