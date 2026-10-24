@@ -71,6 +71,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Pronouns: one wrestler is "he" or "she" as the source says, never the singular "they/their/themselves" ("Mike Bailey Says He Is Doubting Himself", not "Says They Are Doubting Themselves"); "they" is only for a team, a group or several people (INCIDENTS #713).
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
+- Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
 }
 

@@ -793,3 +793,11 @@ test("«خصمتها» is corrected to «منافستها» (INCIDENTS #807)", a
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /خصمتها/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #808: football score wording «بهدف لصفر» for a wrestling series.
+test("«التأخر بهدف لصفر» is corrected (INCIDENTS #808)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("إن التأخر بهدف لصفر ليس بداية"), "إن التأخر بنتيجة 1-0 ليس بداية");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بهدف لصفر/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
