@@ -3999,7 +3999,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 20.10.2026 مترجم",
-    "lastAttempt": 1792876301571,
+    "lastAttempt": 1792877094916,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4037,9 +4037,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 17.10.2026 مترجم",
-    "lastAttempt": 1792862207678,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792877095954,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
