@@ -3910,9 +3910,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض داينامايت 21.10.2026 مترجم",
-    "lastAttempt": 1792848962383,
+    "lastAttempt": 1792849902688,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -3943,19 +3943,18 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "lastAttempt": 1792848230355,
+    "lastAttempt": 1792849911996,
     "errors": {
       "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261024160725-cmll-sabados-de-coliseo-17-10-2026": {
     "publishedAt": 1792848992940,
@@ -4017,6 +4016,58 @@
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 20.10.2026 مترجم",
     "lastAttempt": 1792849188994,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024162310-nwa-powerrr-17-10-2026": {
+    "publishedAt": 1792849946194,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان دبليو ايه باور 17.10.2026 مترجم",
+    "lastAttempt": 1792849958203,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024162549-tna-xplosion-16-10-2026": {
+    "publishedAt": 1792849989259,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه اكسبلوجن 16.10.2026 مترجم",
+    "lastAttempt": 1792850003376,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024162753-wwe-evolve-21-10-2026": {
+    "publishedAt": 1792850031646,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايفولف 21.10.2026 مترجم",
+    "lastAttempt": 1792850043878,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261024163057-wwe-main-event-21-10-2026": {
+    "publishedAt": 1792850076047,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض مين ايفنت 21.10.2026 مترجم",
+    "lastAttempt": 1792850088579,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
