@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-23T21:39:41.552Z",
+ "checkedAt": "2026-10-24T13:00:25.139Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -5847,6 +5847,96 @@
    "strikes": 0,
    "checked": "2026-10-23T21:39:41.552Z",
    "lastOk": "2026-10-23T21:39:41.552Z"
+  },
+  "https://vidtube.one/embed-zhq67r8qn3gm.html": {
+   "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z"
+  },
+  "https://vidmoly.org/embed-o0kxhl8hj347.html": {
+   "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z",
+   "lastOk": "2026-10-24T13:00:25.139Z"
+  },
+  "https://hgcloud.to/e/70spt7t3imam": {
+   "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-24T13:00:25.139Z"
+  },
+  "https://ok.ru/videoembed/17775910259296": {
+   "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z"
+  },
+  "https://fembed.co/embed/BITt-Uk_HB77g": {
+   "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z",
+   "lastOk": "2026-10-24T13:00:25.139Z"
+  },
+  "https://hgcloud.to/e/fwiyg5qnrbzg": {
+   "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-24T13:00:25.139Z"
+  },
+  "https://uqload.vc/embed-jvn9qcprmrx6.html": {
+   "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z",
+   "lastOk": "2026-10-24T13:00:25.139Z"
+  },
+  "https://ok.ru/videoembed/17775910390368": {
+   "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z"
+  },
+  "https://uqload.vc/embed-wqq2qwfww04o.html": {
+   "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z",
+   "lastOk": "2026-10-24T13:00:25.139Z"
+  },
+  "https://vidmoly.org/embed-0z5uunsak9o6.html": {
+   "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z",
+   "lastOk": "2026-10-24T13:00:25.139Z"
+  },
+  "https://vidtube.one/embed-pt39fzj7n65w.html": {
+   "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z"
+  },
+  "https://fembed.co/embed/06TbYF_6-nvAh": {
+   "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-24T13:00:25.139Z",
+   "lastOk": "2026-10-24T13:00:25.139Z"
   }
  },
  "broken": [
