@@ -801,3 +801,13 @@ test("«التأخر بهدف لصفر» is corrected (INCIDENTS #808)", async (
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بهدف لصفر/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #811: «لججون», «للقسم X» and «تصريحات أدلى بها تقارير» in the Slater / MVP stories.
+test("broken Slater/MVP phrases are corrected (INCIDENTS #811)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("الأخير لججون سينا"), "الأخير لجون سينا");
+  assert.equal(applyCorrections("على بطولة TNA للقسم X وكبطل للقسم X"), "على بطولة TNA X Division وكبطل X Division");
+  assert.equal(applyCorrections("بعد تصريحات أدلى بها تقارير صحفية"), "بعد تقارير صحفية");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لججون|للقسم X/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
