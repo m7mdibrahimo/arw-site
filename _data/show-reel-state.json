@@ -3991,7 +3991,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261024161514-cmll-martes-populares-20-10-2026": {
     "publishedAt": 1792849130693,
@@ -4014,7 +4015,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 20.10.2026 مترجم",
-    "lastAttempt": 1792881482531,
+    "lastAttempt": 1792882311562,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4032,7 +4033,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 17.10.2026 مترجم",
-    "lastAttempt": 1792877095954,
+    "lastAttempt": 1792882312554,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
