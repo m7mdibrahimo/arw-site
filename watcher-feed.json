@@ -1,5 +1,15 @@
 [
   {
+    "id": 335404,
+    "link": "https://www.fightful.com/wrestling/skadi-wins-2026-cmll-amazonas-grand-prix/",
+    "date": "2026-10-24T01:22:34",
+    "date_gmt": "2026-10-24T05:22:34",
+    "title": {
+      "rendered": "Skadi Wins 2026 CMLL Amazonas Grand Prix"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/24011519/Screenshot-562.png"
+  },
+  {
     "id": 335355,
     "link": "https://www.fightful.com/wrestling/wrestling-open-results-10-22/",
     "date": "2026-10-23T23:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Michael Hayes Says Triple H Wants To Make Bobby Roode The Next &#8216;Michael Hayes&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/26144642/l-intro-1691853669.jpg"
-  },
-  {
-    "id": 335259,
-    "link": "https://www.fightful.com/wrestling/aew-new-years-smash-announced-for-january-1-and-2/",
-    "date": "2026-10-23T11:38:52",
-    "date_gmt": "2026-10-23T15:38:52",
-    "title": {
-      "rendered": "AEW New Year&#8217;s Smash Announced For January 1 And 2"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/23113809/ph-hp.jpg-2.avif"
   }
 ]
