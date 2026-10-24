@@ -755,3 +755,10 @@ test("Gargano is جارجانو, Michin is ميتشين, Ricky Saints is ريك�
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /غارجانو|غارغانو|(?<![؀-ۿ])ميشين(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«ميجان باين» و«البطولة» بشكلهم الصح في كل الأخبار (INCIDENTS #802)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ميغان باين تفوز بالبطوله"), "ميجان باين تفوز بالبطولة");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ميغان باين|البطوله|سانتس/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|social_\w+):.*$/mg, "")));
+  assert.deepEqual(bad, []);
+});
