@@ -1,5 +1,25 @@
 [
   {
+    "id": 802259168,
+    "link": "https://www.ringsidenews.com/hulk-hogans-beachfront-mansion-sells-nearly-5-million-below-asking-price/",
+    "date": "Sat, 24 Oct 2026 16:59:15 +0000",
+    "date_gmt": "2026-10-24T16:59:15.000Z",
+    "title": {
+      "rendered": "Hulk Hogan’s Beachfront Mansion Sells for Nearly $5 Million Below Asking Price"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/hulk-hogans-beachfront-mansion-sells-for-nearly-5-million-below-asking-price-48.jpg?x97886"
+  },
+  {
+    "id": 802259150,
+    "link": "https://www.ringsidenews.com/wwe-nxt-set-expand-brand-new-show-cw/",
+    "date": "Sat, 24 Oct 2026 16:57:43 +0000",
+    "date_gmt": "2026-10-24T16:57:43.000Z",
+    "title": {
+      "rendered": "WWE NXT Set to Expand With Brand-New Show on The CW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/wwe-nxt-set-to-expand-with-brand-new-show-on-the-cw-08.jpg?x97886"
+  },
+  {
     "id": 802259161,
     "link": "https://www.ringsidenews.com/ric-flair-shows-off-injured-eye-hospitalization-calls-out-reckless-facebook-posts/",
     "date": "Sat, 24 Oct 2026 16:44:14 +0000",
@@ -128,25 +148,5 @@
       "rendered": "AAA Heroes Inmortales 2026 Preview: Confirmed Matches, Start Time and How to Watch"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/aaa-heroes-inmortales-2026-preview-confirmed-matches-start-time-and-how-to-watch-59.jpg?x97886"
-  },
-  {
-    "id": 802259028,
-    "link": "https://www.ringsidenews.com/aew-collision-preview-october-24-2026-confirmed-matches-start-time-how-watch/",
-    "date": "Sat, 24 Oct 2026 09:41:07 +0000",
-    "date_gmt": "2026-10-24T09:41:07.000Z",
-    "title": {
-      "rendered": "AEW Collision Preview for October 24, 2026: Confirmed Matches, Start Time and How to Watch"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/aew-collision-preview-for-october-24-2026-confirmed-matches-start-time-and-how-to-watch-24.jpg?x97886"
-  },
-  {
-    "id": 802259055,
-    "link": "https://www.ringsidenews.com/drew-mcintyre-reveals-awkward-encounter-robert-downey-jr-that-he-still-regrets/",
-    "date": "Sat, 24 Oct 2026 09:37:39 +0000",
-    "date_gmt": "2026-10-24T09:37:39.000Z",
-    "title": {
-      "rendered": "Drew McIntyre Reveals Awkward Encounter With Robert Downey Jr. That He Still Regrets"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/drew-mcintyre-reveals-awkward-encounter-with-robert-downey-jr-that-he-still-regrets-19.jpg?x97886"
   }
 ]
