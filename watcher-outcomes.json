@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aaa-heroes-inmortales-2026-preview-confirmed-matches-start-time-how-watch": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-10-24T09:49:06.771Z"
+ },
  "https://www.fightful.com/wrestling/cmll-grand-prix-results-10-23-2026-team-cmll-vs-team-world-guerreros-laguneros-vs-infernales-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T01:57:27.624Z"
- },
- "https://www.fightful.com/wrestling/notice-of-appearance-filed-in-ludwig-kaiser-case": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T01:46:46.226Z"
  }
 }
