@@ -79,11 +79,6 @@
   "retry": true,
   "at": "2026-10-24T01:20:11.527Z"
  },
- "https://www.wrestlinginc.com/2296073/wwe-smackdown-chelsea-green-roxanne-perez-womens-title-judgment-day": {
-  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Money in the Bank",
-  "retry": true,
-  "at": "2026-10-24T01:02:50.589Z"
- },
  "https://www.wrestlinginc.com/2294997/wwe-smackdown-october-23-2026-results": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
