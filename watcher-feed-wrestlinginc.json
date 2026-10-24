@@ -1,5 +1,15 @@
 [
   {
+    "id": 2519119374,
+    "link": "https://www.wrestlinginc.com/2296073/wwe-smackdown-chelsea-green-roxanne-perez-womens-title-judgment-day/",
+    "date": "Sat, 24 Oct 2026 00:49:35 +0000",
+    "date_gmt": "2026-10-24T00:49:35.000Z",
+    "title": {
+      "rendered": "Chelsea Green Defeats Roxanne Perez, Retains WWE Women's Title On SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/chelsea-green-defeats-roxanne-perez-retains-wwe-womens-title-on-smackdown/l-intro-1792802873.jpg"
+  },
+  {
     "id": 1468710288,
     "link": "https://www.wrestlinginc.com/2296057/aew-willow-nightingale-hand-injury-update/",
     "date": "Fri, 23 Oct 2026 23:49:39 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Jake Hager's Health Following Power Slap Injury"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-jake-hagers-health-following-power-slap-injury/l-intro-1792765804.jpg"
-  },
-  {
-    "id": 1455640339,
-    "link": "https://www.wrestlinginc.com/2295030/deeper-look-austin-creed-kofi-aew-deals/",
-    "date": "Fri, 23 Oct 2026 14:30:00 +0000",
-    "date_gmt": "2026-10-23T14:30:00.000Z",
-    "title": {
-      "rendered": "Deeper Look At Austin Creed & Kofi's AEW Deals"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/deeper-look-at-austin-creed-kofis-aew-deals/l-intro-1792744297.jpg"
   }
 ]
