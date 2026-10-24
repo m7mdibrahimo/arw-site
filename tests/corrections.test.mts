@@ -737,3 +737,10 @@ test("«شون ليجاسي» بتتصلح و«free agent» لمذيعة مش ب
   assert.deepEqual(bad, []);
   assert.match(fs.readFileSync("editorial/style-guide.md", "utf-8"), /free agent.*مش مصارع/);
 });
+
+test("شعار شانتل مونرو بيتصلح ومفيش خبر فيه «اقتراب انعكاس المثالية» (INCIDENTS #798)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.ok(!applyCorrections("ووجهت رسالة تؤكد فيها اقتراب انعكاس المثالية نحوهم").includes("اقتراب انعكاس"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("اقتراب انعكاس المثالية"));
+  assert.deepEqual(bad, []);
+});
