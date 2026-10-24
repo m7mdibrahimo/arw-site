@@ -174,6 +174,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «Says It Belong to Australian Wrestling»: a singular subject with a bare verb (INCIDENTS #813)
+  [/\b((?:it|this|that) belong)( (?:to|in)\b)/gi, "$1s$2"],
   // «fallen in view of watching» is a broken idiom: it is «fallen in love with watching» (INCIDENTS #794)
   [/\bfallen in view of\b/g, "fallen in love with"],
   [/\bM By Elegance\b/g, "Ash By Elegance"],

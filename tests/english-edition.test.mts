@@ -229,3 +229,11 @@ test('an episode date contradicting the source address is flagged', () => {
   assert.ok(checkEnglish({ title: t, body, tags: [] } as any, input).some((x) => x.includes('episode date')));
   assert.ok(!checkEnglish({ title: t, body: body.replace('October 13', 'October 20'), tags: [] } as any, input).some((x) => x.includes('episode date')));
 });
+
+test('a singular subject with «belong» gets its s (INCIDENTS #813)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('Says It Belong to Australian Wrestling'), 'Says It Belongs to Australian Wrestling');
+  assert.equal(fixEnglishNames('The titles belong to them'), 'The titles belong to them');
+  const fs = await import('node:fs');
+  assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\b[Ii]t [Bb]elong (to|in)\b/i.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
+});

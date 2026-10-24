@@ -824,3 +824,9 @@ test("glued dual verbs and unclosed straight quotes are blocked, and no story ke
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /يقدمانها|يخوضانه|وانتقدا|يخططان لها/.test(fs.readFileSync(`content/news/${f}`, "utf-8").split("\n").filter(l => !l.startsWith("permalink:")).join("\n")));
   assert.deepEqual(bad, []);
 });
+
+test("no story says «بعد رحيل استمر … سنوات» (a departure is not a duration, INCIDENTS #813)", () => {
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بعد رحيل استمر/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+  assert.ok(JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections.some((c: any) => c.regex && c.wrong === "بعد رحيل استمر"));
+});
