@@ -50,3 +50,10 @@ test("a yearly program's library page also answers «… 2026 تحميل» and �
   const forms = libraryNameForms({ arName: "عرض موني ان ذا بانك", name: "WWE Money in the Bank", aliases: [], year: 2026, count: 3, latest: "2026-07-05" });
   for (const f of ["Money in the Bank 2026 تحميل", "عرض موني ان ذا بانك 2026 اون لاين", "عرض Money in the Bank 2026 مشاهدة"]) assert.ok(forms.includes(f), f);
 });
+
+// INCIDENTS #810: «عرض ماين ايفنت 2026 مترجم» — a weekly program is also searched with the year after its Arabic name.
+test("a weekly episode also answers «عرض ماين ايفنت 2026 مترجم» and «… الاخير 2026 مترجم»", async () => {
+  const { showNameForms } = await import("../lib/show-seo.cjs");
+  const forms = showNameForms({ headline: "عرض مين ايفنت 14.10.2026 مترجم", programName: "WWE Main Event", eventDate: "2026-10-14", aliases: ["عرض مين ايفنت"], isShow: true });
+  for (const f of ["عرض ماين ايفنت 2026 مترجم", "عرض ماين ايفنت الاخير 2026 مترجم", "عرض مين ايفنت 2026 مترجم"]) assert.ok(forms.includes(f), f);
+});
