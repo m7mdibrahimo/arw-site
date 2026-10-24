@@ -575,3 +575,10 @@ test('INCIDENTS #815: dual nouns with pronouns, before Latin names, and in const
 test('INCIDENTS #815: The Acclaimed has one Arabic spelling', () => {
   for (const w of ['ذا أكلايمد', 'ذا أكليمد']) assert.ok(applyCorrections(`فريق ${w} في AEW`).includes('ذا أكليميد'), w);
 });
+
+test('one_of_two: «أحدهم … والآخر» عن اتنين بيتمنع (INCIDENTS #816)', () => {
+  const t = 'عنوان تجريبي طويل بما يكفي للفحص هنا';
+  const pad = ' كلام'.repeat(80);
+  assert.ok(checkArticle(t, 'كان عنده عقدين مع الاتحاد، أحدهم كمصارع والآخر للعمل خلف الكواليس.' + pad).some((i) => i.code === 'one_of_two'));
+  assert.ok(!checkArticle(t, 'كان عنده عقدين مع الاتحاد، واحد كمصارع وواحد للعمل خلف الكواليس.' + pad).some((i) => i.code === 'one_of_two'));
+});
