@@ -1,5 +1,15 @@
 [
   {
+    "id": 802259244,
+    "link": "https://www.ringsidenews.com/wwe-announces-major-womens-championship-match-october-26-raw/",
+    "date": "Sat, 24 Oct 2026 22:54:43 +0000",
+    "date_gmt": "2026-10-24T22:54:43.000Z",
+    "title": {
+      "rendered": "WWE Announces Major Women’s Championship Match for October 26 RAW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/07/opening-segment-and-matches-revealed-for-july-20-wwe-raw-in-detroit-36.jpg?x97886"
+  },
+  {
     "id": 802259233,
     "link": "https://www.ringsidenews.com/triple-h-told-zoey-serrano-keep-going-she-struggled-breathe-during-wwe-match/",
     "date": "Sat, 24 Oct 2026 22:16:13 +0000",
@@ -138,15 +148,5 @@
       "rendered": "New U.S. Intelligence Warning Raises More Concerns Ahead of WWE Crown Jewel in Saudi Arabia"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/new-u-s-intelligence-warning-raises-more-concerns-ahead-of-wwe-crown-jewel-in-saudi-arabia-09.jpg?x97886"
-  },
-  {
-    "id": 802259138,
-    "link": "https://www.ringsidenews.com/mvp-diagnosed-heart-condition/",
-    "date": "Sat, 24 Oct 2026 15:38:06 +0000",
-    "date_gmt": "2026-10-24T15:38:06.000Z",
-    "title": {
-      "rendered": "MVP Diagnosed With a Heart Condition"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/mvp-diagnosed-with-a-heart-condition-50.jpg?x97886"
   }
 ]
