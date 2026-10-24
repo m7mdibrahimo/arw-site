@@ -778,3 +778,10 @@ test("«ليفيسك» و«فعل الاثنين معا» بيتصلحوا (INCI
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ليفيك|فعلهم معا/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«هامس» بدل «هايز» بتتصلح (INCIDENTS #806)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أوضح هامس أنه شعر بالامتنان"), "أوضح هايز أنه شعر بالامتنان");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[\s«"'،.])هامس([\s»"'،.]|$)/m.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
