@@ -785,3 +785,11 @@ test("«هامس» بدل «هايز» بتتصلح (INCIDENTS #806)", async () 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[\s«"'،.])هامس([\s»"'،.]|$)/m.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #807: the odd form «خصمتها» (her opponent) was in 30 stories; «منافستها» is simpler.
+test("«خصمتها» is corrected to «منافستها» (INCIDENTS #807)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ضد خصمتها وبخصمتها"), "ضد منافستها وبمنافستها");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /خصمتها/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
