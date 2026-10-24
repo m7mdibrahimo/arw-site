@@ -3961,7 +3961,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261024160935-cmll-domingo-familiar-18-10-2026": {
     "publishedAt": 1792849040585,
@@ -3998,7 +3999,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 20.10.2026 مترجم",
-    "lastAttempt": 1792874521028,
+    "lastAttempt": 1792875351253,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
