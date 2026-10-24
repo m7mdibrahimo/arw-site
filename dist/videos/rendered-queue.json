@@ -8037,19 +8037,19 @@
     "kind": "show",
     "slug": "20261024160935-cmll-domingo-familiar-18-10-20",
     "image": "/content/images/mvgxxvxepig6u3ib.jpg",
-    "renderedAt": 1792848578924
+    "renderedAt": 1792848081491
   },
   {
-    "videoUrl": "/videos/reel-20261024161139-cmll-lunes-clasico-19-10-2026.mp4",
-    "filename": "reel-20261024161139-cmll-lunes-clasico-19-10-2026.mp4",
-    "title": "عرض سي ام ال ال لونيس كلاسيكو 19.10.2026 مترجم",
-    "secondaryTitle": "CMLL Lunes Clasico 19.10.2026",
-    "description": "عرض سي ام ال ال لونيس كلاسيكو مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261024161139-cmll-lunes-clasico-19-10-2026",
+    "videoUrl": "/videos/reel-20261024163057-wwe-main-event-21-10-2026.mp4",
+    "filename": "reel-20261024163057-wwe-main-event-21-10-2026.mp4",
+    "title": "عرض مين ايفنت 21.10.2026 مترجم",
+    "secondaryTitle": "WWE Main Event 21.10.2026",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261024163057-wwe-main-event-21-10-2026",
     "kind": "show",
-    "slug": "20261024161139-cmll-lunes-clasico-19-10-2026",
-    "image": "/content/images/hve705c709zuwwhv.jpg",
-    "renderedAt": 1792848673415
+    "slug": "20261024163057-wwe-main-event-21-10-2026",
+    "image": "/content/images/w87shfbtq9hrwzc4.jpg",
+    "renderedAt": 1792848984539
   },
   {
     "videoUrl": "/videos/reel-20261024161514-cmll-martes-populares-20-10-20.mp4",
@@ -8061,6 +8061,54 @@
     "kind": "show",
     "slug": "20261024161514-cmll-martes-populares-20-10-20",
     "image": "/content/images/salnifcedtap3d42.jpg",
-    "renderedAt": 1792848767842
+    "renderedAt": 1792849078574
+  },
+  {
+    "videoUrl": "/videos/reel-20261024161949-cmll-martes-de-glamour-20-10-2.mp4",
+    "filename": "reel-20261024161949-cmll-martes-de-glamour-20-10-2.mp4",
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 20.10.2026 مترجم",
+    "secondaryTitle": "CMLL Martes De Glamour 20.10.2026",
+    "description": "عرض سي ام ال ال مارتيس دي غلامور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261024161949-cmll-martes-de-glamour-20-10-2",
+    "kind": "show",
+    "slug": "20261024161949-cmll-martes-de-glamour-20-10-2",
+    "image": "/content/images/bmyr3xm8f63p30ju.jpg",
+    "renderedAt": 1792849172468
+  },
+  {
+    "videoUrl": "/videos/reel-20261024162310-nwa-powerrr-17-10-2026.mp4",
+    "filename": "reel-20261024162310-nwa-powerrr-17-10-2026.mp4",
+    "title": "عرض ان دبليو ايه باور 17.10.2026 مترجم",
+    "secondaryTitle": "NWA Powerrr 17.10.2026",
+    "description": "عرض ان دبليو ايه باور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261024162310-nwa-powerrr-17-10-2026",
+    "kind": "show",
+    "slug": "20261024162310-nwa-powerrr-17-10-2026",
+    "image": "/content/images/yjs20zmc0v31sv8v.jpg",
+    "renderedAt": 1792849263768
+  },
+  {
+    "videoUrl": "/videos/reel-20261024162549-tna-xplosion-16-10-2026.mp4",
+    "filename": "reel-20261024162549-tna-xplosion-16-10-2026.mp4",
+    "title": "عرض تي ان ايه اكسبلوجن 16.10.2026 مترجم",
+    "secondaryTitle": "TNA Xplosion 16.10.2026",
+    "description": "عرض تي ان ايه اكسبلوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261024162549-tna-xplosion-16-10-2026",
+    "kind": "show",
+    "slug": "20261024162549-tna-xplosion-16-10-2026",
+    "image": "/content/images/xncp1ref1mprdz1h.jpg",
+    "renderedAt": 1792849353398
+  },
+  {
+    "videoUrl": "/videos/reel-20261024162753-wwe-evolve-21-10-2026.mp4",
+    "filename": "reel-20261024162753-wwe-evolve-21-10-2026.mp4",
+    "title": "عرض ايفولف 21.10.2026 مترجم",
+    "secondaryTitle": "WWE Evolve 21.10.2026",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261024162753-wwe-evolve-21-10-2026",
+    "kind": "show",
+    "slug": "20261024162753-wwe-evolve-21-10-2026",
+    "image": "/content/images/cfi6sw37d51nm2t8.jpg",
+    "renderedAt": 1792849444890
   }
 ]
