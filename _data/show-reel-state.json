@@ -3946,7 +3946,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "lastAttempt": 1792856893046,
+    "lastAttempt": 1792857713708,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4023,9 +4023,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 20.10.2026 مترجم",
-    "lastAttempt": 1792849188994,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792857744319,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
