@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/ric-flair-shows-off-injured-eye-hospitalization-calls-out-reckless-facebook-posts": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-24T16:46:05.534Z"
+ },
  "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T15:52:39.423Z"
- },
- "https://www.fightful.com/wrestling/2-cold-scorpio-sentenced": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T15:41:25.177Z"
  }
 }
