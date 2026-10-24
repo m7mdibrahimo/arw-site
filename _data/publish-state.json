@@ -632,7 +632,8 @@
     "httpsarab-wrestlingcomnewsعرض-wwe-smackdown-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1792816349122,
     "https___arab-wrestling_com_news______-____-____-cmll-amazonas-grand-prix-____-2026_": 1792820501871,
     "httpsarab-wrestlingcomnewsسكادي-تفوز-بلقب-cmll-amazonas-grand-prix-لعام-2026": 1792820788931,
-    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252
+    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252,
+    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": 1792828288561
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsشون-سبيرز-يستخدم-موسيقى-دخوله-القديمة-perfect-10-في-عرض-wwe-nxt": 1792225305322,
@@ -1265,7 +1266,8 @@
     "httpsarab-wrestlingcomnewsعرض-wwe-smackdown-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1792816349122,
     "https___arab-wrestling_com_news______-____-____-cmll-amazonas-grand-prix-____-2026_": 1792820501871,
     "httpsarab-wrestlingcomnewsسكادي-تفوز-بلقب-cmll-amazonas-grand-prix-لعام-2026": 1792820788931,
-    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252
+    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252,
+    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": 1792828288561
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsشون-سبيرز-يستخدم-موسيقى-دخوله-القديمة-perfect-10-في-عرض-wwe-nxt": 1792225364601,
@@ -1719,7 +1721,8 @@
     "httpsarab-wrestlingcomnewsعرض-wwe-smackdown-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1792816349122,
     "https___arab-wrestling_com_news______-____-____-cmll-amazonas-grand-prix-____-2026_": 1792820501871,
     "httpsarab-wrestlingcomnewsسكادي-تفوز-بلقب-cmll-amazonas-grand-prix-لعام-2026": 1792820788931,
-    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252
+    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252,
+    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": 1792828288561
   },
   "x": {
     "https___arab-wrestling_com_news____-wwe-nxt-____-_____-_______-___-____-____-_______-_______-_____-_______-_____-___-________": 1792228895941,
@@ -1849,7 +1852,8 @@
     "httpsarab-wrestlingcomnewsعرض-wwe-smackdown-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1792816349122,
     "https___arab-wrestling_com_news______-____-____-cmll-amazonas-grand-prix-____-2026_": 1792820501871,
     "httpsarab-wrestlingcomnewsسكادي-تفوز-بلقب-cmll-amazonas-grand-prix-لعام-2026": 1792820788931,
-    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252
+    "https___arab-wrestling_com_news_______-___-___-______-___-_______-______-wwe-_____-________": 1792828020252,
+    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": 1792828288561
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -3241,6 +3245,15 @@
       "reason": "result",
       "why": "title",
       "note": "الخبر يتحدث عن نتيجة نزال حدث يوم 23 أكتوبر، أي منذ أكثر من 6 ساعات، لذا لا يعتبر حرقاً."
+    },
+    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": {
+      "at": 1792828288561,
+      "title": "ميتشين وبي فاب تعلقان على تتويجهم ببطولة WWE للفرق للسيدات",
+      "url": "/news/ميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات/",
+      "image": "/content/images/aocuy7gij8tjgwnx.jpg",
+      "reason": "result",
+      "why": "ai",
+      "note": "النص يكشف نتيجة فوز ميتشين وبي فاب ببطولة WWE للفرق للسيدات في عرض WWE SmackDown الذي أقيم في آخر 6 ساعات."
     }
   },
   "byFile": {
