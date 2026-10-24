@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2294997/wwe-smackdown-october-23-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-24T00:16:29.582Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-23-2026-chelsea-green-vs-roxanne-perez-bakusai-vs-mft-giulia-vs-blake-monroe-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -78,11 +83,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-24T00:01:36.674Z"
- },
- "https://www.wrestlinginc.com/2294997/wwe-smackdown-october-23-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-23T23:56:30.185Z"
  },
  "https://www.fightful.com/wrestling/an-update-on-sheamus-and-aew": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
