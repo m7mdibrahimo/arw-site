@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-24T19:57:20.503Z"
+ },
  "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:27.812Z"
+  "at": "2026-10-24T19:57:20.096Z"
  },
  "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:27.429Z"
+  "at": "2026-10-24T19:57:19.563Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:27.266Z"
+  "at": "2026-10-24T19:57:19.337Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:27.103Z"
+  "at": "2026-10-24T19:57:19.113Z"
  },
  "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:26.845Z"
+  "at": "2026-10-24T19:57:18.767Z"
  },
  "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-results": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:26.615Z"
+  "at": "2026-10-24T19:57:18.472Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-24T19:49:26.373Z"
+  "at": "2026-10-24T19:57:18.132Z"
  },
  "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-24T19:49:26.083Z"
+  "at": "2026-10-24T19:57:17.734Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-recalls-meeting-robert-downey-jr-and-sam-jones": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-10T23:20:34.838Z"
- },
- "https://www.fightful.com/wrestling/john-cena-wont-pitch-working-on-a-movie-with-the-rock-to-the-rock-but-hes-all-in-if-theres-an-opportunity-to-work-with-him": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-10T21:32:19.851Z"
  }
 }
