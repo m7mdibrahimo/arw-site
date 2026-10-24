@@ -536,3 +536,11 @@ test('INCIDENTS #796: «اشتكيا / يكونا» are blocked as dual verbs an
   assert.ok(!codes('مات وجيف اشتكوا سرا ولم يكونوا سعداء').includes('dual_form'));
   assert.match(applyCorrections('خلال فترة تواجدعما في الاتحاد'), /تواجدهم/);
 });
+
+// INCIDENTS #799: grammar slips reached stories (missing «في», «أخير» for «أخيرا», masculine «اللدود» for a woman, plural verb «لم يكونوا يسمح»).
+test('INCIDENTS #799: grammar slips are corrected automatically', () => {
+  assert.equal(applyCorrections('في عرض أقيم صالة FLEX'), 'في عرض أقيم في صالة FLEX');
+  assert.equal(applyCorrections('لتسوية خلافاتهم أخير في الحلبة'), 'لتسوية خلافاتهم أخيرا في الحلبة');
+  assert.equal(applyCorrections('ضد منافستها اللدود بليك'), 'ضد منافستها اللدودة بليك');
+  assert.equal(applyCorrections('لم يكونوا يسمح لهم بالدخول'), 'لم يكن يسمح لهم بالدخول');
+});
