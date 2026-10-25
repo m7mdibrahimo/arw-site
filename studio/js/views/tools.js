@@ -618,6 +618,7 @@ export async function renderServerTool(page) {
   const stageOf = (s, job) => {
     if (job && job.name === s.name) return { text: `${last && last.status && last.status.paused ? 'متوقف مؤقتًا' : (STEP_NOW[job.step] || 'شغال عليه')}${job.pct != null ? ` — ${num(job.pct)}٪` : ''}`, tone: last && last.status && last.status.paused ? 'wait' : 'run' };
     if (s.stopped) return { text: s.stopped === 'merge' ? 'الدمج اتلغى' : 'التفريغ اتلغى', tone: 'bad' };
+    if (s.merged && !s.drive) return { text: 'بيترفع على درايف', tone: 'run' };
     if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
@@ -637,6 +638,8 @@ export async function renderServerTool(page) {
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
         ${busy ? html`<div class="srv-ctl-row">${controls(st, s.name)}</div>` : ''}
+        ${s.merged && !s.drive ? html`<div class="srv-arinfo">${icon('upload')} بيترفع على جوجل درايف${st && st.driveUp ? html`<b>— ${num(st.driveUp.pct)}٪</b><span class="muted">فاضل ${st.driveUp.eta.replace('h', ' ساعة ').replace('m', ' دقيقة ').replace(/\d+s$/, '').trim() || 'أقل من دقيقة'}</span>` : html`<span class="muted">— زرار درايف هيظهر أول ما يخلص</span>`}</div>
+          ${st && st.driveUp ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.driveUp.pct)}%"></div></div>` : ''}` : ''}
         ${s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
         ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
         ${s.ar && !s.merged ? html`<div class="srv-arinfo">${icon('check')} الترجمة العربي: <b dir="ltr">${s.arFile || 'ملف الترجمة'}</b>${s.arLines ? html`<span class="muted"> — ${num(s.arLines)} جملة</span>` : ''}${!busy && alive && st.job && st.job.step === 'merge' ? html`<span class="muted"> — هيتدمج بعد «${st.job.name.slice(0, 40)}»</span>` : ''}</div>` : ''}
