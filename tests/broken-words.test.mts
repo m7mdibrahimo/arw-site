@@ -635,3 +635,10 @@ test('corrections fix «براندي سافج» and «عقدا قياسيا» (I
   assert.equal(applyCorrections('الحزام الخاص براندي سافج'), 'الحزام الخاص بالمصارع راندي سافج');
   assert.equal(applyCorrections('رفضت عقدا قياسيا من WWE'), 'رفضت عقد تسجيل موسيقي من WWE');
 });
+
+// INCIDENTS #831: «وبضديك» (Bandido) and «للنافس» reached the site.
+test('garbled Bandido / منافسة / Ben are corrected automatically (INCIDENTS #831)', () => {
+  assert.match(applyCorrections('بيدج وبضديك'), /وبانديدو/);
+  assert.match(applyCorrections('في عرض All Out للنافس على اللقب'), /للمنافسة على/);
+  assert.match(applyCorrections('ووداعهم لبن. وأوضح'), /لبنجامين/);
+});
