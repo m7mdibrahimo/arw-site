@@ -785,8 +785,11 @@ export function spelledAgesToDigits(body: string): string {
       (_m, w: string, u: string, t: string) => `${w} الـ${ORD_UNITS[u.replace(/^ال/, "")] + AGE_TENS[t]}`)
     // …and round thousands: «أكثر من ألفي تذكرة» ← «2000 تذكرة» (INCIDENTS #238)
     // Never after a number: «899 ألف مشاهد» became «899 1000 مشاهد» (INCIDENTS #244)
-    .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(ألف|ألفي|ألفين)\s+(تذكرة|مشجع|متفرج|مشاهد|دولار|قدم|متر|ميل)(?![\u0600-\u06FF])/g,
+    .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(ألف|ألفي|ألفين|ألفا)\s+(تذكرة|مشجع|متفرج|مشاهد|دولار|قدم|متر|ميل)(?![\u0600-\u06FF])/g,
       (_m, k: string, w: string) => `${k === "ألف" ? 1000 : 2000} ${w}`)
+    // «بمليوني مشاهدة» (dual) ← «بـ2 مليون مشاهدة»
+    .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])([بل])?(?:مليوني|مليونا)\s+(مشاهدة|مشاهد|دولار|تذكرة|مشترك|متابع)(?![\u0600-\u06FF])/g,
+      (_m, pre: string | undefined, w: string) => `${pre ? pre + "ـ" : ""}2 مليون ${w}`)
     // Round hundreds before a span of time or a count: «لأكثر من مئتي يوم» ← «200 يوم» (INCIDENTS #508)
     .replace(/(?<![\u0600-\u06FF\d])(?<![\d][\s\u00A0])(مئتي|مئتين|مائة|مئة|مائتي|مائتين|ثلاثمائة|أربعمائة|خمسمائة|ستمائة|سبعمائة|ثمانمائة|تسعمائة)\s+(يوم|يوما|أسبوع|أسبوعا|شهر|شهرا|مرة|مباراة|نزال)(?![\u0621-\u064A])/g,
       (_m, h: string, w: string) => `${h.startsWith("مئتي") || h.startsWith("مئتين") ? 200 : HUNDREDS[h] ?? 100} ${w}`)

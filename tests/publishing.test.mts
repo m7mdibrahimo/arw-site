@@ -2965,6 +2965,8 @@ test('round thousands before a unit become digits too (INCIDENTS #238)', async (
   const { spelledAgesToDigits } = await import('../scripts/news-qa');
   assert.equal(spelledAgesToDigits('ليصل إلى أكثر من ألفي تذكرة'), 'ليصل إلى أكثر من 2000 تذكرة');
   assert.equal(spelledAgesToDigits('حضر ألف مشجع'), 'حضر 1000 مشجع');
+  assert.equal(spelledAgesToDigits('بكفالة قدرها ألفا دولار.'), 'بكفالة قدرها 2000 دولار.');
+  assert.equal(spelledAgesToDigits('بمليوني مشاهدة'), 'بـ2 مليون مشاهدة');
 });
 
 test('a nearing return is not a spoiler; an ordinal age becomes digits (INCIDENTS #239)', async () => {
