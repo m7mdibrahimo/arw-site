@@ -1,38 +1,48 @@
 {
+ "https://www.fightful.com/?p=335453": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-25T14:02:57.549Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-night-two-results-10-25": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-25T14:02:57.397Z"
+ },
  "https://www.fightful.com/wrestling/jay-white-we-are-the-last-outfit-capable-of-slicing-the-cancer-out-of-aew-we-are-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:37.075Z"
+  "at": "2026-10-25T14:02:39.414Z"
  },
  "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:36.873Z"
+  "at": "2026-10-25T14:02:39.121Z"
  },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:36.144Z"
+  "at": "2026-10-25T14:02:38.068Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:35.949Z"
+  "at": "2026-10-25T14:02:37.789Z"
  },
  "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:35.797Z"
+  "at": "2026-10-25T14:02:37.573Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-24-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:35.635Z"
+  "at": "2026-10-25T14:02:37.340Z"
  },
  "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:59:35.382Z"
+  "at": "2026-10-25T14:02:36.976Z"
  },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T22:38:38.859Z"
- },
- "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T21:13:38.281Z"
- },
- "https://www.fightful.com/wrestling/triple-h-the-thing-that-stuck-out-at-wwe-money-in-the-bank-was-youth": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T20:55:32.981Z"
  }
 }
