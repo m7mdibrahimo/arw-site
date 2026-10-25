@@ -8673,19 +8673,19 @@
     "kind": "show",
     "slug": "20261025192644-aew-collision-24-10-2026",
     "image": "/content/images/ze3qsghgvpiznp01.jpg",
-    "renderedAt": 1792947142425
+    "renderedAt": 1792946842643
   },
   {
-    "videoUrl": "/videos/reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
-    "filename": "reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
-    "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
-    "secondaryTitle": "UFC 333: Volkanovski vs Evloev (Early Prelims)",
-    "description": "عرض يو اف سي 333 ايرلي بريلمز مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261025193204-ufc-333-volkanovski-vs-evloev-",
+    "videoUrl": "/videos/reel-20261025195300-njpw-super-junior-tag-league-d.mp4",
+    "filename": "reel-20261025195300-njpw-super-junior-tag-league-d.mp4",
+    "title": "عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم",
+    "secondaryTitle": "NJPW Super Junior Tag League Day 1 24.10.2026",
+    "description": "عرض سوبر جونيور تاج ليج (اليوم الاول) مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025195300-njpw-super-junior-tag-league-d",
     "kind": "show",
-    "slug": "20261025193204-ufc-333-volkanovski-vs-evloev-",
-    "image": "/content/images/2y74srnfllu824qu.jpg",
-    "renderedAt": 1792947229922
+    "slug": "20261025195300-njpw-super-junior-tag-league-d",
+    "image": "/content/images/ueaphhz7hbdpvuem.jpg",
+    "renderedAt": 1792947699352
   },
   {
     "videoUrl": "/videos/reel-20261025193534-ufc-333-volkanovski-vs-evloev-.mp4",
@@ -8697,7 +8697,7 @@
     "kind": "show",
     "slug": "20261025193534-ufc-333-volkanovski-vs-evloev-",
     "image": "/content/images/zq4rry3ag0a2mobg.jpg",
-    "renderedAt": 1792947319955
+    "renderedAt": 1792947772969
   },
   {
     "videoUrl": "/videos/reel-20261025193815-ufc-333-volkanovski-vs-evloev-.mp4",
@@ -8709,7 +8709,7 @@
     "kind": "show",
     "slug": "20261025193815-ufc-333-volkanovski-vs-evloev-",
     "image": "/content/images/8tjb2teyty0d9r2m.jpg",
-    "renderedAt": 1792947412410
+    "renderedAt": 1792947845709
   },
   {
     "videoUrl": "/videos/reel-20261025194211-cmll-international-women-s-gra.mp4",
@@ -8721,6 +8721,18 @@
     "kind": "show",
     "slug": "20261025194211-cmll-international-women-s-gra",
     "image": "/content/images/5prblrwgiuyb6yov.jpg",
-    "renderedAt": 1792947508303
+    "renderedAt": 1792947920899
+  },
+  {
+    "videoUrl": "/videos/reel-20261025194555-mlw-fusion-24-10-2026.mp4",
+    "filename": "reel-20261025194555-mlw-fusion-24-10-2026.mp4",
+    "title": "عرض ام ال دبليو فيوجن 24.10.2026 مترجم",
+    "secondaryTitle": "MLW Fusion 24.10.2026",
+    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025194555-mlw-fusion-24-10-2026",
+    "kind": "show",
+    "slug": "20261025194555-mlw-fusion-24-10-2026",
+    "image": "/content/images/l5p0u8bnbxsa1p6q.jpg",
+    "renderedAt": 1792947994508
   }
 ]
