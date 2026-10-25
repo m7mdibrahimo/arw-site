@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/ric-flair-returned-same-bar-night-bloody-fall-that-sent-him-hospital": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-25T12:06:07.157Z"
+ },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T17:14:37.180Z"
- },
- "https://www.ringsidenews.com/jim-cornette-accuses-kane-selling-his-soul-donald-trump-support": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T17:02:11.917Z"
  }
 }
