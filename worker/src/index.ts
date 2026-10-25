@@ -3556,7 +3556,7 @@ export default {
           const lang = ["en", "es", "ja"].includes(b.lang) ? b.lang : "en";
           const name = String(b.name || "").slice(0, 200);
           let data: any;
-          if (b.kind === "link") {
+          if (b.kind === "link" || b.kind === "browse") {
             const u = String(b.url || "").trim();
             if (!/^(https?:\/\/|magnet:\?)/i.test(u) || u.length > 4000) return json({ success: false, error: "الرابط مش صحيح" });
             data = { url: u, lang, qual: b.qual === "720" ? "720" : "all" };

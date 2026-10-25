@@ -438,6 +438,8 @@ const HOSTS = [
   { key: 'dailyuploads', name: 'ديلي أبلودز' }, { key: 'sendnow', name: 'سند ناو' }, { key: 'megaup', name: 'ميجا أب' }, { key: '1cloudfile', name: 'وان كلاود فايل' },
 ];
 const HOST_NAME = Object.fromEntries(HOSTS.map(h => [h.key, h.name]));
+// download pages with a "are you human" box the machine can't tick by itself: they open in the server's browser
+const BROWSER_PAGE = /^https?:\/\/(?:www\.)?(?:vik1ngfile\.site|vikingfile\.com|vik1ngfile\.[a-z]+)\/f\//i;
 const LANGS = [{ key: 'en', name: 'إنجليزي' }, { key: 'es', name: 'مكسيكي (إسباني)' }, { key: 'ja', name: 'ياباني' }];
 const LANG_NAME = Object.fromEntries(LANGS.map(l => [l.key, l.name]));
 const POSITIONS = [{ pos: 1, name: 'فوق شمال', css: 'tl' }, { pos: 2, name: 'فوق يمين', css: 'tr' }, { pos: 3, name: 'تحت يمين', css: 'br' }];
@@ -522,16 +524,28 @@ export async function renderServerTool(page) {
   $('#srv-add').onclick = () => addRow().querySelector('.srv-url').focus();
 
   $('#srv-go').onclick = async () => {
+    // a page link opens in the server's browser: open its window now, inside the click, so it isn't blocked
+    const pages = $$('.srv-row .srv-url').some(i => BROWSER_PAGE.test(i.value.trim()));
+    const browserUrl = last && last.status && last.status.browser;
+    const win = pages && browserUrl ? window.open('about:blank', '_blank') : null;
     const rows = $$('.srv-row').map(r => ({ r, url: r.querySelector('.srv-url').value.trim(), lang: r.querySelector('.srv-lang').value, qual: r.querySelector('.srv-qual').value })).filter(x => x.url);
     if (!rows.length) return toast('الزق رابط العرض الأول', 'error');
     const bad = rows.filter(x => !/^(https?:\/\/|magnet:\?)/i.test(x.url));
     if (bad.length) return toast(`فيه ${num(bad.length)} خانة مش رابط`, 'error');
     let ok = 0;
     for (const x of rows) {
-      try { const r = await tools.serverCmd({ kind: 'link', url: x.url, lang: x.lang, qual: x.qual }); if (r && r.success !== false) { ok++; x.r.remove(); } } catch {}
+      const kind = BROWSER_PAGE.test(x.url) ? 'browse' : 'link';
+      try { const r = await tools.serverCmd({ kind, url: x.url, lang: x.lang, qual: x.qual }); if (r && r.success !== false) { ok++; x.r.remove(); } } catch {}
     }
     if (!$$('.srv-row').length) addRow();
-    if (ok) { toast(ok === 1 ? 'تمام — السيرفر هياخد العرض خلال ثواني' : `تمام — ${num(ok)} عروض، هيتعملوا ورا بعض`); setTimeout(tick, 1500); }
+    if (pages) {
+      if (win) win.location = browserUrl;
+      dialog({ title: 'كمّل من متصفح السيرفر', cancel: '', confirm: 'تمام',
+        body: html`<p>الموقع ده فيه مربع «تحقق إنك إنسان»، فالرابط هيتفتح في متصفح السيرفر${win ? ' (فتحتهولك في صفحة جديدة)' : ''}:</p>
+          <ol class="srv-steps"><li>استنى ثواني لحد ما الصفحة تفتح جوه المتصفح.</li><li>دوس على مربع التحقق، وبعدين زرار التحميل.</li><li>خلاص — العرض هينزل على السيرفر ويتفرّغ لوحده باللغة والجودات اللي اخترتها.</li></ol>
+          ${win ? '' : html`<p><a class="btn btn-primary" href="${browserUrl || '#'}" target="_blank" rel="noopener">${icon('globe')} افتح متصفح السيرفر</a></p>`}` });
+    }
+    if (ok) { if (!pages) toast(ok === 1 ? 'تمام — السيرفر هياخد العرض خلال ثواني' : `تمام — ${num(ok)} عروض، هيتعملوا ورا بعض`); setTimeout(tick, 1500); }
     if (ok < rows.length) toast(`${num(rows.length - ok)} عرض متبعتش — جرّب تاني`, 'error');
   };
 
