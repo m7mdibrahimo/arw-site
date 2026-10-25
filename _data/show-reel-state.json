@@ -4104,15 +4104,12 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
-    "lastAttempt": 1792947235836,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
+    "lastAttempt": 1792949181438,
+    "errors": {},
     "processing": [
-      "instagram_reel",
-      "instagram_story"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
@@ -4155,17 +4152,16 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 بريلمز مترجم",
-    "lastAttempt": 1792948193684,
+    "lastAttempt": 1792949192025,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261025193815-ufc-333-volkanovski-vs-evloev-main-card": {
     "publishedAt": 1792948219610,
@@ -4214,6 +4210,19 @@
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم",
     "lastAttempt": 1792948346201,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261025200715-nwa-powerrr-24-10-2026": {
+    "publishedAt": 1792949223322,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان دبليو ايه باور 24.10.2026 مترجم",
+    "lastAttempt": 1792949234932,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
