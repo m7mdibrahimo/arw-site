@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tony-khan-holds-paramount-skydance-meetings-amid-uncertainty-aews-future": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-25T11:25:54.766Z"
+ },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T15:54:35.042Z"
- },
- "https://www.fightful.com/wrestling/liv-morgan-wins-womens-world-title-at-wwe-money-in-the-bank": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T15:43:43.167Z"
  }
 }
