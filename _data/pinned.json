@@ -1,5 +1,49 @@
 [
   {
+    "url": "/shows/wwe-raw-sami-zayn-vs-cody-rhodes-dark-match-19-10-2026/",
+    "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
+    "subtitle": "WWE RAW Sami Zayn vs Cody Rhodes Dark Match 19.10.2026",
+    "image": "/content/images/7bx4ikautoikvp5d.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "مباراة سامي زين ضد كودي رودز في عرض الرو دارك ماتش بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/ufc-333-volkanovski-vs-evloev-main-card/",
+    "title": "عرض يو اف سي 333 مين كارد مترجم",
+    "subtitle": "UFC 333: Volkanovski vs Evloev (Main Card)",
+    "image": "/content/images/8tjb2teyty0d9r2m.jpg?w=800",
+    "federation": "MMA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض يو اف سي 333 مين كارد مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aew-collision-24-10-2026/",
+    "title": "عرض كوليجن 24.10.2026 مترجم",
+    "subtitle": "AEW Collision 24.10.2026",
+    "image": "/content/images/ze3qsghgvpiznp01.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/aaa-heroes-inmortales-week-24-10-2026/",
+    "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
+    "subtitle": "AAA Héroes Inmortales Week 24.10.2026",
+    "image": "/content/images/73t7dmxfarjg13yl.jpg?w=800",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-23-10-2026/",
     "title": "عرض سماك داون 23.10.2026 مترجم",
     "subtitle": "WWE Smackdown 23.10.2026",
@@ -99,17 +143,6 @@
     "description": "عرض ريسل دريم مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
-    "url": "/shows/ufc-fight-night-291-buckley-vs-malott/",
-    "title": "عرض يو اف سي فايت نايت 17.10.2026 مترجم",
-    "subtitle": "UFC Fight Night 291: Buckley vs. Malott",
-    "image": "/content/images/g725d3dyqtaq92g3.jpg?w=800",
-    "federation": "MMA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
     "url": "/shows/aew-wrestledream-tailgate-brawl-2026/",
     "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
     "subtitle": "AEW WrestleDream Tailgate Brawl (2026)",
@@ -119,27 +152,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ريسل دريم تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/lucha-libre-aaa-17-10-2026/",
-    "title": "عرض ايه ايه ايه 17.10.2026 مترجم",
-    "subtitle": "Lucha Libre AAA 17.10.2026",
-    "image": "/content/images/35135sfwgs0vqiup.jpg?w=800",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-collision-14-10-2026/",
-    "title": "عرض كوليجن 14.10.2026 مترجم",
-    "subtitle": "AEW Collision 14.10.2026",
-    "image": "/content/images/vsd1is5p8q46tzs8.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
