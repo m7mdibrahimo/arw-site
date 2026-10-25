@@ -1213,3 +1213,5 @@ button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800
 [data-theme="dark"] .srv-picked { background: rgba(63,163,77,.18); }
 .srv-arinfo { margin: 6px 0 2px; font-size: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .srv-arinfo b { word-break: break-all; }
+/* the rental key stays hidden as dots without being a password field (so the browser doesn't offer saved logins) */
+.srv-masked { -webkit-text-security: disc; text-security: disc; }

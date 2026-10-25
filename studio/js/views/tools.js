@@ -512,7 +512,7 @@ export async function renderServerTool(page) {
   const addRow = () => {
     const row = document.createElement('div');
     row.className = 'srv-row';
-    mount(row, html`<input class="input srv-url" type="url" dir="ltr" placeholder="الزق رابط العرض هنا">
+    mount(row, html`<input class="input srv-url" type="text" inputmode="url" name="srv-show-link-${Date.now()}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore dir="ltr" placeholder="الزق رابط العرض هنا">
       <select class="input srv-lang">${LANGS.map(l => html`<option value="${l.key}">${l.name}</option>`)}</select>
       <select class="input srv-qual">${QUALS.map(q => html`<option value="${q.key}">${q.name}</option>`)}</select>
       <button class="icon-btn sm" title="شيل" type="button">${icon('x')}</button>`);
@@ -563,7 +563,7 @@ export async function renderServerTool(page) {
   const drawKey = (has) => {
     mount($('#srv-key'), html`<p class="muted">${has ? 'المفتاح متحط ✓ — زرار «شغّل السيرفر» شغال. لو عايز تغيّره حط الجديد هنا.' : 'مرة واحدة بس، عشان «شغّل السيرفر» يشتغل من هنا:'}</p>
       <ol class="srv-steps"><li>افتح <a href="https://cloud.vast.ai/manage-keys/" target="_blank" rel="noopener">صفحة المفاتيح في موقع التأجير</a>.</li><li>اعمل مفتاح جديد وانسخه.</li><li>الزقه هنا ودوس «احفظ». (متبعتهوش لحد.)</li></ol>
-      <div class="srv-keyrow"><input class="input" id="srv-vk" type="password" dir="ltr" autocomplete="off" placeholder="${has ? 'متحط ✓' : 'مفتاح موقع التأجير'}"><button class="btn btn-primary btn-sm" id="srv-vk-save">${icon('check')} احفظ</button></div>`);
+      <div class="srv-keyrow"><input class="input srv-masked" id="srv-vk" type="text" name="srv-rental-key" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore dir="ltr" placeholder="${has ? 'متحط ✓' : 'مفتاح موقع التأجير'}"><button class="btn btn-primary btn-sm" id="srv-vk-save">${icon('check')} احفظ</button></div>`);
     $('#srv-vk-save').onclick = async () => {
       const key = $('#srv-vk').value.trim();
       if (!key) return toast('الزق المفتاح الأول', 'error');
