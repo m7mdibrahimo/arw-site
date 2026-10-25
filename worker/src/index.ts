@@ -45,7 +45,7 @@ import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
-import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
+import { handleMembers, sendMail, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
@@ -3255,13 +3255,29 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
       // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
-      if ((path === "/tools/arw-provision" || path === "/tools/arw-bundle") && request.method === "GET") {
+      if ((path === "/tools/arw-provision" || path === "/tools/arw-bundle" || path === "/tools/arw-notify") && request.method === "GET") {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
         if (k.length < 24 || digest !== TOOLS_KEY_SHA256) return new Response("not found", { status: 404 });
         if (path === "/tools/arw-provision") {
-          const script = `#!/bin/bash\nset -e\nmkdir -p /workspace\ncurl -fsSL "${url.origin}/tools/arw-bundle?k=${k}" -o /tmp/arw.tgz\ntar --no-same-owner -xzf /tmp/arw.tgz -C /workspace\nrm -f /tmp/arw.tgz\nbash /workspace/arw/setup.sh\n`;
+          const script = `#!/bin/bash\nset -e\nmkdir -p /workspace\ncurl -fsSL "${url.origin}/tools/arw-bundle?k=${k}" -o /tmp/arw.tgz\ntar --no-same-owner -xzf /tmp/arw.tgz -C /workspace\nrm -f /tmp/arw.tgz\necho \"${k}\" > /workspace/arw/.tools-key\nchmod 600 /workspace/arw/.tools-key\nbash /workspace/arw/setup.sh\n`;
           return new Response(script, { headers: { "Content-Type": "text/x-shellscript; charset=utf-8", "Cache-Control": "no-store" } });
+        }
+        // the machine tells the owner by email when a show's English subtitles or its 4 qualities are ready
+        // (the address is in KV tools:notify-to, not in this public code; at most 40 mails a day)
+        if (path === "/tools/arw-notify") {
+          const kinds: Record<string, string> = { en: "الترجمة الإنجليزي جاهزة", ready: "الأربع جودات جاهزة", fail: "حصلت مشكلة", idle: "السيرفر خلّص كل الشغل وهيقفل نفسه" };
+          const kind = url.searchParams.get("t") || "", what = kinds[kind];
+          const name = (url.searchParams.get("n") || "").replace(/[<>&"]/g, "").slice(0, 160);
+          const to = await env.PUSH_KV.get("tools:notify-to");
+          if (!what || !to) return json({ success: false });
+          const day = new Date().toISOString().slice(0, 10), countKey = `tools:notify-count:${day}`;
+          const count = Number(await env.PUSH_KV.get(countKey)) || 0;
+          if (count >= 40) return json({ success: false, limited: true });
+          await env.PUSH_KV.put(countKey, String(count + 1), { expirationTtl: 2 * 86400 });
+          const sent = await sendMail(env as any, to, `سيرفر التفريغ: ${what}${name ? " — " + name : ""}`,
+            `<div dir="rtl" style="font-family:Tahoma,Arial,sans-serif;font-size:16px;line-height:1.8"><p><b>${what}</b></p>${name ? `<p>${name}</p>` : ""}<p>افتح السيرفر من صفحة السيرفرات في موقع التأجير (الزرار الأزرق ثم «جوبيتر»)، أو من فولدر «سيرفر عرب راسلنج» على جوجل درايف.</p></div>`);
+          return json({ success: sent });
         }
         const bundle = await env.PUSH_KV.get("tools:arw-bundle", "arrayBuffer");
         return bundle ? new Response(bundle, { headers: { "Content-Type": "application/gzip", "Cache-Control": "no-store" } }) : new Response("not found", { status: 404 });
