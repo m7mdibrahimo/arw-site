@@ -4177,16 +4177,14 @@
     "publishedAt": 1792948257675,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال انترناشونال ويمينز جراند بري 23.10.2026 مترجم",
-    "lastAttempt": 1792961451588,
+    "lastAttempt": 1792962394523,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -4232,15 +4230,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 24.10.2026 مترجم",
-    "lastAttempt": 1792958932609,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792962404013,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261025202328-wwe-raw-sami-zayn-vs-cody-rhodes-dark-match-19-10-2026": {
     "publishedAt": 1792950086740,
