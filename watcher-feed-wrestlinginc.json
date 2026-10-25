@@ -1,5 +1,15 @@
 [
   {
+    "id": 2646451850,
+    "link": "https://www.wrestlinginc.com/2296374/womens-blood-guts-match-set-aew-special/",
+    "date": "Sun, 25 Oct 2026 18:34:00 +0000",
+    "date_gmt": "2026-10-25T18:34:00.000Z",
+    "title": {
+      "rendered": "Women's Blood & Guts Match Set For AEW Special"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/womens-blood-guts-match-set-for-aew-special/l-intro-1792953157.jpg"
+  },
+  {
     "id": 1165172942,
     "link": "https://www.wrestlinginc.com/2295526/wwe-aaa-jbl-believes-first-successful-integration-another-promotion/",
     "date": "Sun, 25 Oct 2026 18:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE's Cody Rhodes Says Retirement Is Coming 'Sooner Than Later'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-cody-rhodes-says-retirement-is-coming-sooner-than-later/l-intro-1792594255.jpg"
-  },
-  {
-    "id": 4518204281,
-    "link": "https://www.wrestlinginc.com/2292862/wwe-miz-upsetting-locker-room-day-first-tag-title-win/",
-    "date": "Sat, 24 Oct 2026 20:00:00 +0000",
-    "date_gmt": "2026-10-24T20:00:00.000Z",
-    "title": {
-      "rendered": "The Miz Recalls Upsetting WWE Locker Room On The Day Of First Tag Title Win"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/the-miz-recalls-upsetting-wwe-locker-room-on-the-day-of-first-tag-title-win/l-intro-1792591584.jpg"
   }
 ]

@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/amazing-red-enters-tna-hall-fame-shocks-fans-bound-glory-match-announcement/": {
-    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (تكريم أميزينج ريد في قاعة المشاهير وإعلانه المشاركة في نزال X Division) الذي تم ذكره بالفعل في تقرير نتائج عرض Bound for Glory المنشور.",
-    "at": "2026-10-11T20:46:00.053Z"
-  },
   "https://www.fightful.com/wrestling/watch-2026-tna-hall-of-fame-live-and-free-at-4pm-et-on-october-11th/": {
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يعلن عن بث حفل قاعة مشاهير TNA الذي تم تغطيته بالفعل ضمن تقرير نتائج عرض Bound for Glory المنشور في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261024223726-نتائج-عرض-greektown-wrestling-23-أكتوبر-2026-فوز-تشانينج-ديكر-وجوي-جانيلا-وسلون-جاكوبس-في-الحدث-الرئيسي.md",
     "reason": "الخبر الجديد يتناول تفاصيل نزال من نفس عرض Greektown Wrestling الذي أقيم في 23 أكتوبر والذي تم نشر تقرير نتائجه الشامل بالفعل في الخبر رقم [0].",
     "at": "2026-10-25T18:05:01.237Z"
+  },
+  "https://www.wrestlinginc.com/2296374/womens-blood-guts-match-set-aew-special/": {
+    "matchedFile": "20261025052748-تحدي-نزال-blood-and-guts-للسيدات-يظهر-في-عرض-aew-collision.md",
+    "reason": "الخبر الجديد يمثل تحديثاً وإعلاناً رسمياً لنفس نزال Blood and Guts للسيدات الذي تم الحديث عن مجرد التحدي بشأنه في الخبر المنشور رقم 0، حيث أصبح الآن حدثاً مؤكداً ورسمياً مع تفاصيل موعد إقامته.",
+    "at": "2026-10-25T18:39:58.841Z"
   }
 }
