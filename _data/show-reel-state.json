@@ -4119,15 +4119,17 @@
     "publishedAt": 1792947262658,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض كوليجن 24.10.2026 مترجم",
-    "lastAttempt": 1792947276706,
+    "lastAttempt": 1792950056344,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story",
+      "tiktok"
     ],
     "reviewPlatforms": [],
     "needsReview": false
@@ -4223,6 +4225,19 @@
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 24.10.2026 مترجم",
     "lastAttempt": 1792949234932,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261025202328-wwe-raw-sami-zayn-vs-cody-rhodes-dark-match-19-10-2026": {
+    "publishedAt": 1792950086740,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
+    "lastAttempt": 1792950096549,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
