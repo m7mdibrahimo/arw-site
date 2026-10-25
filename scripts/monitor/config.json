@@ -1,0 +1,36 @@
+{
+  "$comment": "إعدادات المراقب التقني — عدّل من هنا من غير ما تلمس كود",
+  "site": {
+    "origin": "https://arab-wrestling.com",
+    "pages": ["/", "/news/", "/sitemap.xml", "/robots.txt", "/build.json"],
+    "$pages_note": "الصفحات اللي بتتفحص كل لفة. متحطش /health — الـworker بتاعنا cron بس ومش موصول بالدومين.",
+    "timeoutMs": 15000,
+    "slowMs": 8000,
+    "local": ""
+  },
+  "worker": {
+    "stateUrl": "/watcher-state.json",
+    "maxIdleMin": 20,
+    "apiWarnAt": 0,
+    "$apiWarnAt_note": "سيبه 0 لغاية ما تعرف الحد اليومي بتاع الـAPI، وبعدين حط رقم (مثلاً 400)."
+  },
+  "feed": {
+    "maxAgeHours": 6
+  },
+  "deploy": {
+    "maxLagMin": 40
+  },
+  "ci": {
+    "windowHours": 6
+  },
+  "checks": {
+    "tests": "npm run test:publishing",
+    "build": "npm run build",
+    "timeoutMinutes": 20
+  },
+  "custom": [],
+  "$custom_help": [
+    "حط هنا أي حاجة مخصوصة عايز المراقب يراقبها كل لفة.",
+    "كل عنصر شكله: { \"id\": \"...\", \"وصف\": \"...\", \"ورابط\": \"...\", \"واضح\": true }"
+  ]
+}

@@ -1,0 +1,88 @@
+# المراقب التقني — بيشتغل على سيرفرات GitHub، مش على جهازك.
+# يعني ٢٤/٧ حقيقي: الماك ممكن يكون مقفول أو نايم ومفيش أي تأثير.
+#
+# مهم: الـworkflow ده **مابيكتبش ولا ملف في المستودع** — بيقرا ويفحص بس،
+# وبيرفع التقرير كـartifact، ولو فيه عطل بيفشل التشغيل فيوصلك إيميل من GitHub
+# (ده التنبيه: مجاني، من غير أي مفاتيح ولا بوتات).
+#
+# مقفول بمفتاح لحد ما تفعّله بنفسك:
+#   gh variable set ARW_WATCH_ENABLED -R m7mdibrahimo/arw-site --body true
+# وإيقافه: gh variable delete ARW_WATCH_ENABLED -R m7mdibrahimo/arw-site
+
+name: Site Watch
+
+on:
+  schedule:
+    - cron: '5 * * * *'   # كل ساعة في الدقيقة ٥ (بتوقيت UTC — فرق ساعتين عن القاهرة صيفًا)
+  workflow_dispatch:
+
+# منع تشغيلين في نفس الوقت — الفحص بيتصادم مع نفسه
+concurrency:
+  group: site-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: read   # قراءة بس. مفيش كتابة في المستودع خالص.
+  actions: read
+
+jobs:
+  watch:
+    # متقفّل لحد ما تفتحه بمفتاح ARW_WATCH_ENABLED
+    if: vars.ARW_WATCH_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: تركيب الحزم
+        run: npm ci
+
+      - name: الفحص (بيسجّل الأعطال ويوقف التشغيل لو فيه عطل)
+        id: watch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: npx tsx scripts/monitor/watch.ts --once --with-tests
+        continue-on-error: true
+
+      - name: ملخّص في صفحة التشغيل
+        if: always()
+        run: |
+          {
+            echo "### 🛠️ المراقب التقني"
+            echo
+            npx tsx -e "
+              const r=require('./reports/guard/status.json');
+              console.log('**'+r.summary+'**');
+              console.log('');
+              for (const f of r.findings) console.log('- '+(f.level==='down'?'🔴':'🟡')+' '+f.title+' — '+f.detail);
+              if(!r.findings.length) console.log('- ✅ كل حاجة تمام');
+              if(r.resolved?.length) console.log('');
+              if(r.resolved?.length) console.log('اتصلّح: '+r.resolved.join(', '));
+            " || echo "(مفيش تقرير)"
+            echo
+            echo "_آخر سطور السجل:_"
+            echo '```'
+            tail -20 reports/guard/monitor.log 2>/dev/null || echo "(فاضي)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: رفع التقرير
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: guard-report-${{ github.run_id }}
+          path: reports/guard/
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: فشل التشغيل لو فيه عطل (عشان يوصلك إيميل)
+        if: steps.watch.outcome == 'failure'
+        run: |
+          echo "::error::المراقب لقى عطل حقيقي — شوف الملخّص فوق"
+          exit 1
