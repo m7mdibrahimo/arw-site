@@ -64,11 +64,6 @@
   "retry": true,
   "at": "2026-10-25T01:41:22.341Z"
  },
- "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-25T01:27:25.863Z"
- },
  "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-24-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
