@@ -126,6 +126,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (/[\u{1F300}-\u{1FAFF}]/u.test(title)) issues.push("emoji in title");
   // a curse word or a quoted slang line as the headline (INCIDENTS #425: «These Female Wrestler On Some Other Shit»)
   if (/\b(shit\w*|fuck\w*|bitch\w*|asshole|bullshit|damn|dick|pussy)\b/i.test(title)) issues.push("profanity in title");
+  // an article glued to the next word by a hyphen («on the-ring» for «in the ring», INCIDENTS #829); «state-of-the-art» is fine
+  if (/(?<![\w-])(?:the|an?)-[a-z]+/i.test(body.replace(/<?https?:\/\/\S+/g, " "))) issues.push("article glued to the next word with a hyphen");
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");

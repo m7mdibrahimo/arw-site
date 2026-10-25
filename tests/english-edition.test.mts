@@ -237,3 +237,8 @@ test('a singular subject with «belong» gets its s (INCIDENTS #813)', async () 
   const fs = await import('node:fs');
   assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\b[Ii]t [Bb]elong (to|in)\b/i.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
 });
+
+test('an article glued to the next word by a hyphen is held back («on the-ring», INCIDENTS #829)', () => {
+  assert.ok(checkEnglish({ ...good, body: good.body + ' She hopes to manage stars on the-ring soon.' }, input).includes('article glued to the next word with a hyphen'));
+  assert.deepEqual(checkEnglish({ ...good, body: good.body + ' A state-of-the-art arena.' }, input), []);
+});

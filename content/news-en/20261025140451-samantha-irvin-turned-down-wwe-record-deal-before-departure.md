@@ -18,6 +18,6 @@ Irvin noted that the songs she released last year came from a spontaneous collab
 
 https://x.com/SamanthaTheBomb/status/2114066862820712777
 
-With her non-compete clause ending this month and past discussions within AEW regarding the possibility of utilizing her in television roles, wrestling fans are waiting to see if she will soon achieve her dream of managing stars on the-ring.
+With her non-compete clause ending this month and past discussions within AEW regarding the possibility of utilizing her in television roles, wrestling fans are waiting to see if she will soon achieve her dream of managing stars in the ring.
 
 https://x.com/SamanthaTheBomb/status/2114067759474810909

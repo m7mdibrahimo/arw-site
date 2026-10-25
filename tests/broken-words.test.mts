@@ -629,3 +629,9 @@ test('corrections write Luis Mante as «لويس مانتي», not «إل مان
 test('«باع مزاد علني» is corrected to «بيع في مزاد علني»', () => {
   assert.equal(applyCorrections('باع مزاد علني الحزام'), 'بيع في مزاد علني الحزام');
 });
+
+// INCIDENTS #829: «الخاص براندي سافج» (brandy) and «عقدا قياسيا» for a record deal.
+test('corrections fix «براندي سافج» and «عقدا قياسيا» (INCIDENTS #829)', () => {
+  assert.equal(applyCorrections('الحزام الخاص براندي سافج'), 'الحزام الخاص بالمصارع راندي سافج');
+  assert.equal(applyCorrections('رفضت عقدا قياسيا من WWE'), 'رفضت عقد تسجيل موسيقي من WWE');
+});
