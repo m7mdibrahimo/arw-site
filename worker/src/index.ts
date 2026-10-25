@@ -3608,8 +3608,11 @@ export default {
           const q = { gpu_name: { in: ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
             reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 16 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: 300 }, gpu_ram: { gte: 7900 },
             cuda_max_good: { gte: 12.4 }, cpu_arch: { in: ["amd64"] }, dph_total: { lte: 0.2 }, type: "on-demand", order: [["dph_total", "asc"]], limit: 30 };
+          // cheapest overall: the card is paid only while it works, the 100 GB disk all day — weigh the disk 3x
+          const score = (o: any) => (Number(o.dph_base) || Number(o.dph_total) || 0) + (Number(o.storage_cost) || 0) * 100 / 720 * 3;
           const offers = ((await vast(`/bundles/?q=${encodeURIComponent(JSON.stringify(q))}`)).body.offers || [])
-            .filter((o: any) => !/china|CN$/i.test(String(o.geolocation || ""))); // Google Drive is blocked there
+            .filter((o: any) => !/china|CN$/i.test(String(o.geolocation || ""))) // Google Drive is blocked there
+            .sort((a: any, b: any) => score(a) - score(b));
           for (const o of offers.slice(0, 8)) {
             const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
             if (r.body && r.body.success) {
