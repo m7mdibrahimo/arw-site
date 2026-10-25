@@ -1,23 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/samantha-irvin-shares-that-she-politely-declined-wwe-record-deal": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T15:09:58.584Z"
+ },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-25T15:07:39.367Z"
+  "at": "2026-10-25T15:09:57.832Z"
  },
  "https://www.fightful.com/wrestling/jay-white-we-are-the-last-outfit-capable-of-slicing-the-cancer-out-of-aew-we-are-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T15:07:39.148Z"
+  "at": "2026-10-25T15:09:57.617Z"
  },
  "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T15:07:38.851Z"
+  "at": "2026-10-25T15:09:57.317Z"
  },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T15:07:37.793Z"
+  "at": "2026-10-25T15:09:56.262Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T07:17:34.663Z"
- },
- "https://www.fightful.com/wrestling/penta-says-he-doesnt-want-to-cash-in-money-in-the-bank-too-soon": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T05:58:37.779Z"
  }
 }
