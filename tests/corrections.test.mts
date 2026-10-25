@@ -854,3 +854,12 @@ test("The Cut / Gorilla Monsoon spellings are corrected (INCIDENTS #830)", async
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ذا كوت|غوريلا مونصون/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #833: a stable was called a show — «قبل انطلاقة عرض The Brood».
+test("a stable named after «عرض» becomes «فريق» (INCIDENTS #833)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("قبل انطلاقة عرض The Brood الشهير"), "قبل انطلاقة فريق The Brood الشهير");
+  assert.equal(applyCorrections("عرض WWE RAW القادم"), "عرض WWE RAW القادم");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /عرض The (Brood|Bloodline|Judgment Day|Nexus|Shield)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

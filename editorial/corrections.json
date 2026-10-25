@@ -8019,6 +8019,12 @@
    "wrong": "ووداعهم لبن",
    "right": "ووداعهم لبنجامين",
    "note": "«لبن» بتتقرا milk؛ المقصود Ben/بنجامين ساتيرلي (INCIDENTS #831)"
+  },
+  {
+   "wrong": "عرض(?=\\s+The\\s+(?:Brood|Bloodline|Judgment\\s+Day|Nexus|Shield|Hurt\\s+Business|Undertaker\\s+Ministry)\\b)",
+   "right": "فريق",
+   "regex": true,
+   "note": "الفرق/العصابات مش عروض: «قبل انطلاقة عرض The Brood» في خبر جيري لين (INCIDENTS #833)"
   }
  ]
 }
