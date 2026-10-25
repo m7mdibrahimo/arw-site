@@ -598,3 +598,12 @@ test('INCIDENTS #819: a lowercase Latin fragment inside an Arabic name is blocke
   assert.ok(!codes('يدافع البطل ومرافقته كايلا كاسيدي ضد جيك.').includes('lowercase_latin_fragment'));
   assert.ok(!codes('واجه البطل Kayla Kassidy في النزال.').includes('lowercase_latin_fragment'));
 });
+
+// INCIDENTS #820: «Los بيروس ديل مال» — Spanish article in English glued to an Arabic name.
+test('spanish_article_mixed blocks Los/La/El before an Arabic name', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(BLOCKING_QA_CODES.includes('spanish_article_mixed'));
+  assert.ok(codes('دافع فريق Los بيروس ديل مال عن اللقب.').includes('spanish_article_mixed'));
+  assert.ok(!codes('دافع فريق لوس بيروس ديل مال عن اللقب ضد La Parka.').includes('spanish_article_mixed'));
+});
