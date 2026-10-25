@@ -544,7 +544,8 @@ export async function renderServerTool(page) {
       dialog({ title: 'كمّل من متصفح السيرفر', cancel: '', confirm: 'تمام',
         body: html`<p>الموقع ده فيه مربع «تحقق إنك إنسان»، فالرابط هيتفتح في متصفح السيرفر${win ? ' (فتحتهولك في صفحة جديدة)' : ''}:</p>
           <ol class="srv-steps"><li>استنى ثواني لحد ما الصفحة تفتح جوه المتصفح.</li><li>دوس على مربع التحقق، وبعدين زرار التحميل.</li><li>خلاص — العرض هينزل على السيرفر ويتفرّغ لوحده باللغة والجودات اللي اخترتها.</li></ol>
-          ${win ? '' : html`<p><a class="btn btn-primary" href="${browserUrl || '#'}" target="_blank" rel="noopener">${icon('globe')} افتح متصفح السيرفر</a></p>`}` });
+          ${win ? '' : browserUrl ? html`<p><a class="btn btn-primary" href="${browserUrl}" target="_blank" rel="noopener">${icon('globe')} افتح متصفح السيرفر</a></p>`
+            : html`<p class="srv-err">${icon('alert')} متصفح السيرفر لسه بيجهز. استنى دقيقة، وحدّث الصفحة، ودوس «متصفح السيرفر» فوق.</p>`}` });
     }
     if (ok) { if (!pages) toast(ok === 1 ? 'تمام — السيرفر هياخد العرض خلال ثواني' : `تمام — ${num(ok)} عروض، هيتعملوا ورا بعض`); setTimeout(tick, 1500); }
     if (ok < rows.length) toast(`${num(rows.length - ok)} عرض متبعتش — جرّب تاني`, 'error');
