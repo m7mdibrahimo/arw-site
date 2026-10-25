@@ -1,5 +1,35 @@
 [
   {
+    "id": 335651,
+    "link": "https://www.fightful.com/wrestling/roxanne-perez-responds-to-nikki-bella-you-can-look-but-you-cant-win/",
+    "date": "2026-10-25T11:00:52",
+    "date_gmt": "2026-10-25T15:00:52",
+    "title": {
+      "rendered": "Roxanne Perez Responds To Nikki Bella: You Can Look But You Can&#8217;t Win"
+    },
+    "featured_image": ""
+  },
+  {
+    "id": 335657,
+    "link": "https://www.fightful.com/wrestling/rebel-inducted-into-owasso-high-school-hall-of-fame/",
+    "date": "2026-10-25T11:00:25",
+    "date_gmt": "2026-10-25T15:00:25",
+    "title": {
+      "rendered": "Rebel Inducted Into Owasso High School Hall Of Fame"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12102707/Untitled-Design-10.jpg"
+  },
+  {
+    "id": 335550,
+    "link": "https://www.fightful.com/?p=335550",
+    "date": "2026-10-25T11:00:00",
+    "date_gmt": "2026-10-25T15:00:00",
+    "title": {
+      "rendered": "Rey Pegasus Explains How His In-Ring Style Makes The Difference"
+    },
+    "featured_image": "https://www.fightful.com/social-thumb/youtube/4LN_N3bpviQ.jpg"
+  },
+  {
     "id": 335653,
     "link": "https://www.fightful.com/wrestling/garrett-borden-hits-stinger-splash-in-dark-match-before-10-24-aew-collision/",
     "date": "2026-10-25T10:49:09",
@@ -268,35 +298,5 @@
       "rendered": "AAA Heroes Inmortales Results (10/24)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/24102113/CS-067349_LVE_AAA_Heroes-Immorales_1920x1080.jpg"
-  },
-  {
-    "id": 335566,
-    "link": "https://www.fightful.com/wrestling/report-eric-young-working-for-wwe-as-nxt-producer/",
-    "date": "2026-10-24T21:43:20",
-    "date_gmt": "2026-10-25T01:43:20",
-    "title": {
-      "rendered": "Report: Eric Young Working For WWE As NXT Producer"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/01160539/Screenshot-209.png"
-  },
-  {
-    "id": 335567,
-    "link": "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite/",
-    "date": "2026-10-24T21:40:30",
-    "date_gmt": "2026-10-25T01:40:30",
-    "title": {
-      "rendered": "Darby Allin To Defend TNT Title Against Josh Alexander At AEW Fright Night Dynamite"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/24213430/HVcDwmHXYAAeJLY.jpg"
-  },
-  {
-    "id": 335527,
-    "link": "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-24-2026/",
-    "date": "2026-10-24T21:30:00",
-    "date_gmt": "2026-10-25T01:30:00",
-    "title": {
-      "rendered": "Watch: AAA Héroes Inmortales: October 24, 2026"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/24165945/maxresdefault-159.jpg"
   }
 ]
