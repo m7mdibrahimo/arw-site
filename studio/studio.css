@@ -1119,3 +1119,66 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .pd-who-tr .is-ok { color: #1f8a4c; }
 .pd-who-tr .is-no { color: #c73b2c; text-decoration: line-through; opacity: .8; }
 .pd-who-rank { font-style: normal; font-weight: 900; color: var(--muted); min-width: 18px; }
+
+/* «سيرفر التفريغ» (views/tools.js renderServerTool) */
+.srv-card { margin-bottom: 16px; }
+.srv-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.srv-state { display: flex; align-items: center; gap: 10px; font-size: 24px; }
+.srv-dot { width: 16px; height: 16px; border-radius: 50%; background: #9a9890; display: inline-block; }
+.srv-dot.on { background: #3fa34d; box-shadow: 0 0 0 5px rgba(63, 163, 77, .18); }
+.srv-sub { margin-top: 6px; }
+.srv-steps { margin: 12px 0 0; padding-inline-start: 22px; line-height: 2; }
+.srv-job { margin-top: 16px; border-top: 1px solid var(--line, rgba(0,0,0,.08)); padding-top: 14px; }
+.srv-job > b { font-size: 18px; }
+.srv-bar { background: rgba(0,0,0,.08); border-radius: 8px; height: 20px; overflow: hidden; margin-top: 10px; }
+.srv-bar > div { background: #3fa34d; height: 100%; transition: width .6s; }
+.srv-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 12px; }
+.srv-kpis > div { background: rgba(0,0,0,.04); border-radius: 14px; padding: 10px 12px; }
+.srv-kpis small { display: block; color: var(--muted); font-size: 13px; font-weight: 700; }
+.srv-kpis b { display: block; font-size: 22px; font-weight: 900; }
+.srv-err { margin-top: 12px; color: #c0392b; font-weight: 700; display: flex; gap: 6px; align-items: center; }
+.srv-table { overflow-x: auto; margin-top: 10px; }
+.srv-table table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.srv-table th { text-align: start; color: var(--muted); font-weight: 700; padding: 8px 6px; white-space: nowrap; }
+.srv-table td { padding: 9px 6px; border-top: 1px solid var(--line, rgba(0,0,0,.08)); white-space: nowrap; }
+.srv-table td.srv-name { white-space: normal; word-break: break-all; min-width: 180px; font-weight: 700; }
+.srv-table td.ok { color: #2e8b3e; font-weight: 800; }
+.srv-table td.bad { color: #c0392b; font-weight: 800; }
+.srv-new input[type=url] { width: 100%; margin: 10px 0; }
+.srv-langs { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+.srv-chip { cursor: pointer; }
+.srv-chip input { position: absolute; opacity: 0; pointer-events: none; }
+.srv-chip span { display: inline-block; padding: 8px 14px; border-radius: 999px; background: rgba(0,0,0,.05); font-weight: 800; }
+.srv-chip input:checked + span { background: var(--ink, #141414); color: #fff; }
+.srv-note { font-size: 13px; margin-bottom: 10px; }
+.srv-new, #srv-shows { margin-bottom: 0; }
+section.panel + section.panel { margin-top: 16px; }
+.srv-wait { margin-top: 10px; font-weight: 700; display: flex; gap: 6px; align-items: center; }
+.srv-show { padding: 14px 0; border-top: 1px solid var(--line, rgba(0,0,0,.08)); }
+.srv-show:first-child { border-top: 0; }
+.srv-show-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.srv-show .srv-name { word-break: break-all; }
+.srv-tag { font-size: 13px; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: rgba(0,0,0,.06); white-space: nowrap; }
+.srv-tag.ok { background: #e3f3e6; color: #22702f; }
+.srv-tag.run { background: #e6f0fb; color: #1c5a9e; }
+.srv-tag.wait { background: #fbf1df; color: #8a5a0b; }
+.srv-tag.bad { background: #fbe5e3; color: #a3271b; }
+.srv-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.srv-ar { margin-top: 12px; background: rgba(0,0,0,.03); border-radius: 16px; padding: 12px; }
+.srv-ar-title { font-weight: 800; margin-bottom: 8px; }
+.srv-pos { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.srv-pos-btn { display: flex; flex-direction: column; align-items: center; gap: 6px; border: 2px solid transparent; border-radius: 14px; padding: 8px; background: rgba(0,0,0,.04); font-weight: 800; cursor: pointer; font: inherit; }
+.srv-pos-btn.on { border-color: #3fa34d; background: #e3f3e6; }
+.srv-screen { position: relative; width: 96px; height: 54px; background: #2a2a2a; border-radius: 6px; display: block; }
+.srv-screen i { position: absolute; font-style: normal; font-size: 10px; font-weight: 900; background: #f3c230; color: #141414; padding: 1px 4px; border-radius: 3px; }
+.srv-screen i.tl { top: 5px; left: 5px; }
+.srv-screen i.tr { top: 5px; right: 5px; }
+.srv-screen i.br { bottom: 5px; right: 5px; }
+.srv-file { cursor: pointer; }
+[data-theme="dark"] .srv-tag.ok, [data-theme="dark"] .srv-pos-btn.on { background: rgba(63,163,77,.2); color: #8fd99a; }
+[data-theme="dark"] .srv-tag.run { background: rgba(55,138,221,.2); color: #9cc6f2; }
+[data-theme="dark"] .srv-tag.wait { background: rgba(186,117,23,.22); color: #f2c37a; }
+[data-theme="dark"] .srv-tag.bad { background: rgba(226,75,74,.2); color: #f4a3a2; }
+[data-theme="dark"] .srv-chip span, [data-theme="dark"] .srv-ar, [data-theme="dark"] .srv-pos-btn, [data-theme="dark"] .srv-kpis > div, [data-theme="dark"] .srv-tag { background-color: rgba(255,255,255,.06); }
+[data-theme="dark"] .srv-chip input:checked + span { background: #f3f1ea; color: #141414; }
+[data-theme="dark"] .srv-bar { background: rgba(255,255,255,.1); }

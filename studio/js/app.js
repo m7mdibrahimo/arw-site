@@ -14,7 +14,7 @@ import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js'
 import { setupBell } from './notify.js';
 import { renderSettings } from './views/settings.js';
 import { renderMembers, renderActivity } from './views/members.js';
-import { renderSocialTool, renderSourcesTool, renderPinnedTool, renderReelsTool } from './views/tools.js';
+import { renderSocialTool, renderSourcesTool, renderPinnedTool, renderReelsTool, renderServerTool } from './views/tools.js';
 import { renderForceChange } from './views/auth.js';
 
 const root = document.getElementById('app');
@@ -23,6 +23,7 @@ const TOOLS = [
   { href: '#/tools/sources', icon: 'bolt', title: 'مصادر الأخبار', text: 'الأخبار التلقائية ومصادرها' },
   { href: '#/tools/pinned', icon: 'pin', title: 'المثبت في الرئيسية', text: 'شريط العروض في الرئيسية' },
   { href: '#/tools/reels', icon: 'film', title: 'الريلز', text: 'فيديوهات العروض القصيرة' },
+  { href: '#/tools/server', icon: 'clock', title: 'سيرفر التفريغ', text: 'التفريغ والدمج: شغال ولا لأ ووصل لفين' },
 ];
 export { TOOLS };
 
@@ -205,7 +206,7 @@ async function route() {
     if (parts[0] === 'site-members') return can(user, 'members') ? await (parts[1] ? renderSiteMember(page, parts[1]) : renderSiteMembers(page)) : noAccess();
     if (parts[0] === 'settings') return await renderSettings(page);
     if (parts[0] === 'tools') {
-      const view = { social: renderSocialTool, sources: renderSourcesTool, pinned: renderPinnedTool, reels: renderReelsTool }[parts[1]];
+      const view = { social: renderSocialTool, sources: renderSourcesTool, pinned: renderPinnedTool, reels: renderReelsTool, server: renderServerTool }[parts[1]];
       if (view) return can(user, 'tools') ? await view(page) : noAccess();
     }
     if (parts[0] === 'members') return user && user.role === 'owner' ? await renderMembers(page, parts[1] || null) : noAccess();

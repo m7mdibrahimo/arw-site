@@ -421,3 +421,201 @@ export async function renderReelsTool(page) {
   });
   draw();
 }
+
+// ── «سيرفر التفريغ»: the owner's rented machine that writes the English subtitles and merges the 4 qualities
+// (reports/سيرفر-التفريغ). Everything from here, start to end: paste a show's link with its audio language, take the
+// English subtitles in one tap, upload the Arabic ones with the logo position and the merge starts, then open the
+// finished show on Drive. The machine sends a heartbeat every 30 seconds (and takes the page's requests with it);
+// this page reads it every 10 seconds, so it also says when the machine is off, and «افتح ملفات السيرفر» always has
+// the machine's current link (it changes on every start).
+const STEP_NAME = { subs: 'تفريغ', merge: 'دمج', download: 'تحميل' };
+const STEP_NOW = { subs: 'بيفرّغ دلوقتي', merge: 'بيدمج دلوقتي', download: 'بيحمّل دلوقتي' };
+const LANGS = [{ key: 'en', name: 'إنجليزي' }, { key: 'es', name: 'مكسيكي (إسباني)' }, { key: 'ja', name: 'ياباني' }];
+const LANG_NAME = Object.fromEntries(LANGS.map(l => [l.key, l.name]));
+const POSITIONS = [{ pos: 1, name: 'فوق شمال', css: 'tl' }, { pos: 2, name: 'فوق يمين', css: 'tr' }, { pos: 3, name: 'تحت يمين', css: 'br' }];
+const clock = (ms) => new Date(ms).toLocaleTimeString('ar-EG', { hour: 'numeric', minute: '2-digit', timeZone: 'Africa/Cairo' });
+const dayClock = (ms) => {
+  const d = new Date(ms), today = new Date();
+  const same = d.toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' }) === today.toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' });
+  return same ? clock(ms) : `${d.toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', timeZone: 'Africa/Cairo' })} ${clock(ms)}`;
+};
+const span = (ms) => {
+  const m = Math.max(0, Math.round(ms / 60000));
+  if (m < 1) return 'أقل من دقيقة';
+  if (m < 60) return `${num(m)} دقيقة`;
+  const h = Math.floor(m / 60), r = m % 60;
+  return `${num(h)} ساعة${r ? ` و${num(r)} دقيقة` : ''}`;
+};
+const leftText = (s) => { // "H:MM:SS" or "MM:SS" → words
+  if (!s) return '…';
+  const p = String(s).split(':').map(Number);
+  const sec = p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : p[0] * 60 + (p[1] || 0);
+  return isFinite(sec) ? span(sec * 1000) : '…';
+};
+const saveText = (name, text) => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], { type: 'application/x-subrip;charset=utf-8' }));
+  a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+};
+
+export async function renderServerTool(page) {
+  mount(page, html`<div class="wrap page-in">
+    ${header('سيرفر التفريغ', 'من هنا كل حاجة: تحط رابط العرض، وتاخد الترجمة الإنجليزي، وترفع العربي وتختار مكان اللوجو، وتلاقي العرض جاهز على درايف.')}
+    <div id="srv"><div class="loading-page"><div class="spinner"></div></div></div>
+    <section class="panel srv-new">
+      <header class="panel-head"><h2>${icon('plus')} عرض جديد</h2></header>
+      <p class="muted">الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت، ودوس «ابدأ». السيرفر هينزّله ويفرّغه لوحده.</p>
+      <input id="srv-url" type="url" dir="ltr" placeholder="https://…">
+      <div class="srv-langs">${LANGS.map((l, n) => html`<label class="srv-chip"><input type="radio" name="srv-lang" value="${l.key}" ${n ? '' : 'checked'}><span>${l.name}</span></label>`)}</div>
+      <p class="muted srv-note">المكسيكي والياباني بيطلعوا ترجمة إنجليزي برضه، عشان تترجمها زي ما انت متعود.</p>
+      <button class="btn btn-primary" id="srv-go">${icon('download')} ابدأ</button>
+    </section>
+    <section class="panel"><header class="panel-head"><h2>${icon('film')} العروض</h2></header><div id="srv-shows"></div></section>
+    <section class="panel"><header class="panel-head"><h2>${icon('check')} اللي خلص</h2></header><div id="srv-jobs"></div></section>
+  </div>`);
+  const box = $('#srv');
+  let last = null, chosen = {}; // chosen[name] = logo position picked for the Arabic file about to go up
+
+  const send = async (body, okText) => {
+    try {
+      const r = await tools.serverCmd(body);
+      if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة');
+      toast(okText);
+      setTimeout(tick, 1500);
+      return true;
+    } catch (e) { toast(e.message || 'حصلت مشكلة', 'error'); return false; }
+  };
+
+  $('#srv-go').onclick = async () => {
+    const url = $('#srv-url').value.trim();
+    const lang = ($('input[name="srv-lang"]:checked') || {}).value || 'en';
+    if (!/^(https?:\/\/|magnet:\?)/i.test(url)) return toast('الزق رابط التحميل الأول', 'error');
+    if (await send({ kind: 'link', url, lang }, 'تمام — السيرفر هياخد الرابط خلال ثواني')) $('#srv-url').value = '';
+  };
+
+  const drawStatus = (d) => {
+    const st = d.status, now = d.now || Date.now();
+    const alive = st && st.state === 'on' && now - st.at < 90_000;
+    const job = alive ? st.job : null;
+    const q = (st && st.queue) || {};
+    mount(box, html`<section class="panel srv-card">
+      <div class="srv-top">
+        <div class="srv-state"><i class="srv-dot ${alive ? 'on' : ''}"></i><b>${alive ? 'السيرفر شغال' : 'السيرفر مقفول'}</b></div>
+        ${alive && st.jupyter ? html`<a class="btn" href="${st.jupyter}" target="_blank" rel="noopener">${icon('folder')} افتح ملفات السيرفر</a>`
+          : html`<a class="btn btn-primary" href="https://cloud.vast.ai/instances/" target="_blank" rel="noopener">${icon('bolt')} افتح صفحة التشغيل</a>`}
+      </div>
+      <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
+        : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
+      ${!alive ? html`<ol class="srv-steps">
+          <li>دوس «افتح صفحة التشغيل».</li>
+          <li>دوس زرار التشغيل ▶ اللي على السيرفر.</li>
+          <li>ارجع هنا بعد دقيقة، وهتلاقيه «شغال». اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.</li>
+          <li>لو زرار التشغيل مش راضي (الكارت اتاخد): من نفس الموقع افتح «القوالب»، واختار «عرب راسلنج - التفريغ والدمج»، وأجّر أي جهاز رخيص. هيركّب نفسه في ١٠ دقايق، وملفاتك موجودة على درايف.</li>
+        </ol>` : ''}
+      ${job ? html`<div class="srv-job">
+          <b>${STEP_NOW[job.step] || 'شغال على'}: ${job.name}</b>
+          ${job.pct != null ? html`<div class="srv-bar"><div style="width:${Math.min(100, job.pct)}%"></div></div>` : ''}
+          <div class="srv-kpis">
+            ${job.pct != null ? html`<div><small>خلص</small><b>${num(job.pct)}٪</b></div>` : ''}
+            <div><small>بدأ الساعة</small><b>${clock(job.started)}</b></div>
+            <div><small>عدّى</small><b>${span(now - job.started)}</b></div>
+            ${job.pct != null ? html`<div><small>فاضل</small><b>${leftText(job.left)}</b></div>` : ''}
+          </div>
+        </div>` : alive ? html`<div class="srv-job"><b>مفيش شغل دلوقتي</b><p class="muted">مستني عرض جديد أو ترجمة عربي. هيقفل نفسه لوحده بعد ${num(st.idleLeft || 0)} دقيقة لو مفيش شغل.</p></div>` : ''}
+      ${alive && (q.links || q.subs || q.merge) ? html`<p class="muted">مستني بعده: ${[q.links ? `${num(q.links)} رابط للتحميل` : '', q.subs ? `${num(q.subs)} فيديو للتفريغ` : '', q.merge ? `${num(q.merge)} ترجمة عربي للدمج` : ''].filter(Boolean).join(' — ')}</p>` : ''}
+      ${d.pending && d.pending.length ? html`<p class="srv-wait">${icon('clock')} ${num(d.pending.length)} طلب مستني السيرفر ياخده${alive ? ' (خلال ثواني)' : ' (أول ما يشتغل)'}</p>` : ''}
+      ${st && st.drive === false && alive ? html`<p class="srv-err">${icon('alert')} السيرفر ده مش متوصل بجوجل درايف لسه — قول لكلود «وصّل درايف».</p>` : ''}
+      ${alive && st.errors && st.errors.length ? html`<div class="srv-err">${icon('alert')} ${st.errors[st.errors.length - 1]}</div>` : ''}
+    </section>`);
+  };
+
+  const stageOf = (s, job) => {
+    if (job && job.name === s.name) return { text: STEP_NOW[job.step] || 'شغال عليه', tone: 'run' };
+    if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
+    if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
+    if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
+    if (s.en) return { text: 'الترجمة الإنجليزي جاهزة', tone: 'ok' };
+    if (s.subsFailed) return { text: 'التفريغ فشل', tone: 'bad' };
+    if (s.video) return { text: 'مستني التفريغ', tone: 'wait' };
+    return { text: '', tone: '' };
+  };
+
+  const drawShows = (d) => {
+    const st = d.status, alive = st && st.state === 'on' && (d.now - st.at) < 90_000;
+    const list = (st && st.shows) || [];
+    if (!list.length) return mount($('#srv-shows'), html`<p class="muted">مفيش عروض على السيرفر دلوقتي. حط رابط عرض فوق ودوس «ابدأ».</p>`);
+    mount($('#srv-shows'), html`${list.map((s, n) => {
+      const stg = stageOf(s, alive ? st.job : null);
+      return html`<div class="srv-show">
+        <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
+        <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
+        <div class="srv-actions">
+          ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
+          ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
+          ${s.subsFailed || s.en ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
+          ${s.merged ? html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>` : ''}
+        </div>
+        ${s.en || s.video ? html`<div class="srv-ar">
+          <div class="srv-ar-title">${s.ar || s.merged ? 'غيّر الترجمة العربي أو مكان اللوجو:' : 'ارفع الترجمة العربي واختار مكان اللوجو:'}</div>
+          <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
+          <label class="btn btn-sm btn-primary srv-file">${icon('upload')} ارفع الترجمة العربي وابدأ الدمج<input type="file" accept=".srt" data-ar="${n}" hidden></label>
+        </div>` : ''}
+      </div>`;
+    })}`);
+    $$('[data-en]').forEach(b => b.onclick = async () => {
+      const s = list[+b.dataset.en];
+      try { const r = await tools.serverEn(s.name); saveText(`${s.name}.srt`, r.text); } catch (e) { toast(e.message || 'مقدرتش أجيب الترجمة', 'error'); }
+    });
+    $$('[data-pos]').forEach(b => b.onclick = () => {
+      const [n, pos] = b.dataset.pos.split(':').map(Number);
+      chosen[list[n].name] = pos;
+      drawShows(last);
+    });
+    $$('[data-ar]').forEach(inp => inp.onchange = async () => {
+      const s = list[+inp.dataset.ar], file = inp.files && inp.files[0];
+      if (!file) return;
+      const text = await file.text();
+      if (!/-->/.test(text)) return toast('ده مش ملف ترجمة', 'error');
+      const pos = chosen[s.name] || s.ar || 1;
+      await send({ kind: 'arabic', name: s.name, pos, text }, `اترفعت — الدمج هيبدأ واللوجو ${(POSITIONS.find(p => p.pos === pos) || POSITIONS[0]).name}`);
+    });
+    $$('[data-resub]').forEach(b => b.onclick = async () => {
+      const s = list[+b.dataset.resub];
+      let pick = s.lang || 'en';
+      const ok = await dialog({ title: 'تفريغ تاني', confirm: 'فرّغ تاني',
+        body: html`<p>لغة الصوت في العرض ده:</p><div class="srv-langs">${LANGS.map(l => html`<label class="srv-chip"><input type="radio" name="srv-relang" value="${l.key}" ${l.key === pick ? 'checked' : ''}><span>${l.name}</span></label>`)}</div>`,
+        onOpen: (w) => w.querySelectorAll('input[name=srv-relang]').forEach(x => x.onchange = () => { pick = x.value; }) });
+      if (ok) send({ kind: 'resub', name: s.name, lang: pick }, 'تمام — هيفرّغه تاني');
+    });
+    $$('[data-clean]').forEach(b => b.onclick = async () => {
+      const s = list[+b.dataset.clean];
+      const ok = await dialog({ title: 'تمسحه من السيرفر؟', body: `«${s.name}» هيتمسح من السيرفر عشان المساحة. نسخته على درايف هتفضل موجودة.`, confirm: 'امسح', danger: true });
+      if (ok) send({ kind: 'clean', name: s.name }, 'هيتمسح من السيرفر');
+    });
+  };
+
+  const drawJobs = (d) => mount($('#srv-jobs'), d.jobs && d.jobs.length ? html`<div class="srv-table"><table>
+      <thead><tr><th>العرض</th><th>الخطوة</th><th>بدأ</th><th>خلص</th><th>خد</th></tr></thead>
+      <tbody>${d.jobs.map(j => html`<tr>
+        <td class="srv-name">${j.name}</td>
+        <td class="${j.ok ? 'ok' : 'bad'}">${STEP_NAME[j.step] || j.step} ${j.ok ? '✓' : '✗'}</td>
+        <td>${dayClock(j.started)}</td><td>${dayClock(j.finished)}</td><td>${span(j.finished - j.started)}</td>
+      </tr>`)}</tbody></table></div>` : html`<p class="muted">لسه مفيش حاجة خلصت من ساعة ما الصفحة دي اتعملت.</p>`);
+
+  let stopped = false, timer = 0;
+  const tick = async () => {
+    clearTimeout(timer);
+    if (stopped) return;
+    if (!document.body.contains(box)) { stopped = true; return; }
+    try {
+      last = await tools.server();
+      drawStatus(last);
+      // don't redraw the shows while a file picker is open or a position was just picked mid-upload
+      if (!document.activeElement || !document.activeElement.matches('input[type=file]')) drawShows(last);
+      drawJobs(last);
+    } catch (e) { if (!box.querySelector('.srv-card')) mount(box, html`<div class="empty"><h2>مقدرتش أجيب حالة السيرفر</h2><p class="muted">${e.message}</p></div>`); }
+    timer = setTimeout(tick, 10_000);
+  };
+  tick();
+}

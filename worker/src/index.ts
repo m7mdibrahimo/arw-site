@@ -3255,6 +3255,41 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
       // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
+      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-file") && (request.method === "POST" || (path === "/tools/arw-file" && request.method === "GET"))) {
+        const k = url.searchParams.get("k") || "";
+        const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
+        if (k.length < 24 || digest !== TOOLS_KEY_SHA256 || !env.ANALYTICS) return new Response("not found", { status: 404 });
+        // subtitle files between the panel and the machine: the machine sends each show's English .srt (kind=en) and
+        // fetches the Arabic one the owner uploaded in the panel (kind=ar); kept 30 days in KV
+        if (path === "/tools/arw-file") {
+          const kind = url.searchParams.get("kind") === "ar" ? "ar" : "en", name = (url.searchParams.get("name") || "").slice(0, 200);
+          if (!name) return json({ success: false }, 400);
+          if (request.method === "GET") {
+            const text = await env.PUSH_KV.get(`enc:${kind}:${name}`);
+            return text == null ? new Response("not found", { status: 404 }) : new Response(text, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+          }
+          const text = await request.text();
+          if (text.length > 5_000_000) return json({ success: false, error: "too big" }, 413);
+          await env.PUSH_KV.put(`enc:${kind}:${name}`, text, { expirationTtl: 30 * 86400 });
+          return json({ success: true });
+        }
+        const body: any = await request.json().catch(() => null);
+        if (!body || typeof body !== "object") return json({ success: false }, 400);
+        const now = Date.now();
+        if (path === "/tools/arw-heartbeat") {
+          const data = JSON.stringify(body).slice(0, 30000);
+          await env.ANALYTICS.prepare("INSERT INTO enc_status (id, at, data) VALUES (1, ?, ?) ON CONFLICT(id) DO UPDATE SET at = excluded.at, data = excluded.data").bind(now, data).run();
+          // hand the machine what the panel asked for since its last heartbeat
+          const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
+          if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
+          return json({ success: true, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
+        } else {
+          const t = (v: any) => Math.min(now + 60_000, Math.max(0, Math.round(Number(v) || 0)));
+          await env.ANALYTICS.prepare("INSERT INTO enc_jobs (name, step, started, finished, ok) VALUES (?, ?, ?, ?, ?)")
+            .bind(String(body.name || "").slice(0, 200), body.step === "merge" ? "merge" : body.step === "download" ? "download" : "subs", t(body.started), t(body.finished) || now, body.ok ? 1 : 0).run();
+        }
+        return json({ success: true });
+      }
       if ((path === "/tools/arw-provision" || path === "/tools/arw-bundle" || path === "/tools/arw-notify") && request.method === "GET") {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
@@ -3506,6 +3541,44 @@ export default {
         if (path === "/api/studio/tools/social" && request.method === "POST") return json(await studioSocialStatus(env, await request.json().catch(() => ({}))));
         if (path === "/api/studio/tools/sources" && request.method === "GET") return json(await studioSources(env));
         if (path === "/api/studio/tools/reels" && request.method === "GET") return json(await studioReels(env));
+        // the panel asks the machine for something: a link to fetch (with the audio language), an Arabic subtitle to
+        // merge (with the logo position), or a show to clear off it — it picks these up with its next heartbeat
+        if (path === "/api/studio/tools/server/cmd" && request.method === "POST") {
+          if (!env.ANALYTICS) return json({ success: false, error: "no database" });
+          const b: any = await request.json().catch(() => ({}));
+          const lang = ["en", "es", "ja"].includes(b.lang) ? b.lang : "en";
+          const name = String(b.name || "").slice(0, 200);
+          let data: any;
+          if (b.kind === "link") {
+            const u = String(b.url || "").trim();
+            if (!/^(https?:\/\/|magnet:\?)/i.test(u) || u.length > 4000) return json({ success: false, error: "الرابط مش صحيح" });
+            data = { url: u, lang };
+          } else if (b.kind === "arabic") {
+            const text = String(b.text || "");
+            if (!name || !text.trim() || text.length > 5_000_000) return json({ success: false, error: "ملف الترجمة فاضي أو كبير" });
+            await env.PUSH_KV.put(`enc:ar:${name}`, text, { expirationTtl: 30 * 86400 });
+            data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1 };
+          } else if (b.kind === "clean" || b.kind === "resub") {
+            if (!name) return json({ success: false, error: "مفيش اسم" });
+            data = b.kind === "resub" ? { name, lang } : { name };
+          } else return json({ success: false, error: "طلب مش معروف" });
+          await env.ANALYTICS.prepare("INSERT INTO enc_cmds (kind, data, created) VALUES (?, ?, ?)").bind(b.kind, JSON.stringify(data), Date.now()).run();
+          return json({ success: true });
+        }
+        if (path === "/api/studio/tools/server/en" && request.method === "GET") {
+          const text = await env.PUSH_KV.get(`enc:en:${(url.searchParams.get("name") || "").slice(0, 200)}`);
+          return text == null ? json({ success: false, error: "الترجمة مش موجودة" }, 404) : json({ success: true, text });
+        }
+        // the panel's «سيرفر التفريغ» page: the machine's latest heartbeat and its finished steps
+        if (path === "/api/studio/tools/server" && request.method === "GET") {
+          if (!env.ANALYTICS) return json({ success: false, error: "no database" });
+          const st: any = await env.ANALYTICS.prepare("SELECT at, data FROM enc_status WHERE id = 1").first().catch(() => null);
+          const jobs = await env.ANALYTICS.prepare("SELECT name, step, started, finished, ok FROM enc_jobs ORDER BY finished DESC LIMIT 40").all().catch(() => ({ results: [] as any[] }));
+          let status: any = null;
+          try { status = st ? { ...JSON.parse(st.data), at: st.at } : null; } catch { status = null; }
+          const pending = await env.ANALYTICS.prepare("SELECT kind, data, created FROM enc_cmds WHERE taken = 0 ORDER BY id").all().catch(() => ({ results: [] as any[] }));
+          return json({ success: true, now: Date.now(), status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
+        }
         if (path === "/api/studio/tools/pinned" && request.method === "GET") {
           const f = await readRepoFile(env, "_data/pinned.json");
           return json({ success: true, items: await freshPinnedItems(env, f ? JSON.parse(f.content) : []), sha: f?.sha || null });
