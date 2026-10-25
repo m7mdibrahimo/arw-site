@@ -4106,12 +4106,13 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
-    "lastAttempt": 1792946495331,
+    "lastAttempt": 1792946553971,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
+      "instagram_reel",
       "instagram_story",
       "tiktok"
     ],
