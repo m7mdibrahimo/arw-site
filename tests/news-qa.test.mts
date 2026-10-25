@@ -180,3 +180,9 @@ test('masked duals (2 عرض / متتاليين) and betting-site adverts are bl
   const b = checkArticle('جدول نزالات UFC 333 برعاية MyBookie', 'الاحتمالات من MyBookie.').map(i => i.code);
   assert.ok(b.includes('betting_promo') && BLOCKING_QA_CODES.includes('betting_promo'));
 });
+
+test("a raw «المواجهة …:» result line left at the end of a story is blocked (INCIDENTS #826)", () => {
+  const body = "توج لويس مانتي بلقب بطولة GHC الوطنية بعد فوزه.\n\nالمواجهة الثانية: نزال على بطولة GHC الوطنية\nلويس مانتي يهزم ناوميتشي ماروفوجي";
+  assert.ok(checkArticle("لويس مانتي يتوج ببطولة GHC", body).some((i) => i.code === "stray_result_block"));
+  assert.ok(!checkArticle("لويس مانتي يتوج ببطولة GHC", "**المواجهة الأولى: نزال فرق**\n\nفاز فريق أ.").some((i) => i.code === "stray_result_block"));
+});

@@ -126,6 +126,8 @@ const RULES: Rule[] = [
   // A sentence that ends right on the verb of speech: «…لم يره الجمهور بالكامل بعد، وقال.» — the quote was lost (INCIDENTS #535)
   // A story must open with its first sentence, not a bold/markdown heading line («**المواجهة الأولى: نزال فرق للسيدات**» opened the Sisters of Sin story — INCIDENTS #558)
   { code: "stray_heading", severity: "error", re: /^\s*(?:\*\*[^*\n]{3,90}\*\*|#{1,6}\s[^\n]*)[ \t]*(?:\n|$)/, message: "الخبر بيبدأ بسطر عنوان فرعي (** أو #) بدل أول جملة", fields: ["body"] },
+  // The source's raw result lines leaked unformatted at the end of a story: «المواجهة الثانية: نزال على بطولة GHC الوطنية / لويس مانتي يهزم …» (INCIDENTS #826)
+  { code: "stray_result_block", severity: "error", re: /^المواجهة [^\n*:]{2,40}:[^\n]*$/gm, message: "سطر نتيجة من المصدر ظهر في آخر الخبر من غير تنسيق (المواجهة …:) — شيله أو اكتبه جملة", fields: ["body"] },
   { code: "dangling_speech", severity: "error", re: /(?<![ء-ي])(?:و|ف)?(?:قال|قالت|أضاف|أضافت|تابع|تابعت|أكد|أكدت|أوضح|أوضحت|وصف|وصفت|كتب|كتبت)(?:\s*:(?!\s*[>"«“])|)\s*(?:\.|$)/gm, message: "جملة بتخلص عند «وقال.» بلا كلام — الاقتباس ضاع، شيل الجملة أو كمّلها", fields: ["body"] },
   // A quote opened with no «, or closed with no »: "> لم يكن ينبغي… مناسبا»." — one half of the pair was dropped (INCIDENTS #500)
   { code: "unbalanced_guillemets", severity: "error", re: /^[^«»\n]*[«»][^«»\n]*$/gm, message: "علامة اقتباس « أو » من غير زوجها — افتح وقفّل الاقتباس", fields: ["body"] },

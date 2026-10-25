@@ -17,4 +17,3 @@ Luis Mante captured the GHC National Championship by defeating Naomichi Marufuji
 
 Mante originally entered the scene as the M.P.I. character before revealing his true identity later. He has competed with Dragongate since 2019, and he secured the victory in this match with a pop-up powerbomb to become the 18th holder of the championship.
 
-Luis Mante def. Naomichi Marufuji

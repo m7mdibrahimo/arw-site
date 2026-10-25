@@ -620,3 +620,7 @@ test('orphan_in_favor: «لصالح ضد» blocks, «لصالحه ضد» does no
 test('«رحلة خارجية مع» is corrected to «فترة إعارة مع»', () => {
   assert.equal(applyCorrections('كان في رحلة خارجية مع WWE'), 'كان في فترة إعارة مع WWE');
 });
+
+test('corrections write Luis Mante as «لويس مانتي», not «إل مانتي» (INCIDENTS #826)', () => {
+  assert.match(applyCorrections('توج إل مانتي ببطولة GHC الوطنية'), /توج لويس مانتي ببطولة/);
+});
