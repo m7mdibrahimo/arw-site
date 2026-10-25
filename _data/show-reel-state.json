@@ -4127,7 +4127,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261025193204-ufc-333-volkanovski-vs-evloev-early-prelims": {
     "publishedAt": 1792947308153,
@@ -4164,7 +4165,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 مين كارد مترجم",
-    "lastAttempt": 1792958899838,
+    "lastAttempt": 1792959718067,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4182,7 +4183,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال انترناشونال ويمينز جراند بري 23.10.2026 مترجم",
-    "lastAttempt": 1792957966766,
+    "lastAttempt": 1792959719088,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
@@ -4254,9 +4255,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
-    "lastAttempt": 1792950096549,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792959748499,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
