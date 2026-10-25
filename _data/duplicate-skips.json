@@ -1,14 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/oba-femi-tribal-chief-no-more-running-its-about-that-time/": {
-    "matchedFile": "20261011050634-أوبا-فيمي-يوجه-تحديا-إلى-رومان-رينز-بعد-عرض-wwe-موني-إن-ذا-بانك-2026.md",
-    "reason": "الخبر الجديد يعيد سرد نفس تصريح أوبا فيمي وتحديه لرومان رينز في المؤتمر الصحفي بعد عرض موني إن ذا بانك 2026، وهو نفس الحدث والتفاصيل المذكورة في الخبر [0].",
-    "at": "2026-10-11T02:12:24.915Z"
-  },
-  "https://www.ringsidenews.com/liv-morgan-celebrates-womens-world-championship-win-wwe-money-bank-2026/": {
-    "matchedFile": "20261011031843-ليف-مورغان-تفوز-ببطولة-العالم-للسيدات-في-نزال-ثلاثي-مجنون-بعرض-wwe-موني-إن-ذا-بانك-2026.md",
-    "reason": "الخبر الجديد يتناول احتفال ليف مورغان بفوزها ببطولة العالم للسيدات وتفاصيل النزال الذي جمعها بستيفاني فاكير وبيكي لينش في عرض موني إن ذا بانك 2026، وهو نفس الحدث والنتيجة المغطاة بالكامل في الخبر المنشور رقم 0.",
-    "at": "2026-10-11T02:50:00.757Z"
-  },
   "https://www.fightful.com/wrestling/mini-vikingo-challenging-rey-fenix-for-aaa-world-cruiserweight-title-at-heroes-inmortales/": {
     "matchedFile": "20261010170000-دليل-مشاهدة-وموعد-انطلاق-وتفاصيل-عرض-aaa-on-fox-الليلة.md",
     "reason": "الخبر الجديد يعتمد على نتائج نفس النزال الرباعي والإعلان عن مواجهة ري فينيكس في عرض Heroes Inmortales، وهي تفاصيل تم ذكرها بالفعل في الخبر المنشور المسبق كجزء من تفاصيل عرض AAA on FOX.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261025050251-نتائج-عرض-aaa-heroes-inmortales-24-أكتوبر-2026-الدفاع-عن-الألقاب-وتكريم-في-قاعة-المشاهير.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
     "at": "2026-10-25T02:56:40.662Z"
+  },
+  "https://www.ringsidenews.com/former-tna-world-champion-quietly-returns-wwe-backstage-role/": {
+    "matchedFile": "20261025044320-تقارير-إريك-يانج-يعمل-لصالح-wwe-كمنتج-في-عرض-wwe-nxt.md",
+    "reason": "الخبر الجديد يعالج نفس الحدث تماماً (عودة إريك يانج للعمل كمنتج في WWE NXT منذ شهر يوليو الماضي) وهو مكرر لنفس المعلومة من مصدر آخر.",
+    "at": "2026-10-25T10:48:44.974Z"
+  },
+  "https://www.ringsidenews.com/eddie-guerreros-daughter-sherilyn-guerrero-set-make-wrestling-debut-heated-confrontation/": {
+    "matchedFile": "20261025065732-شيريلين-غيريرو-تسجل-ظهورها-الأول-على-الحلبة-في-عرض-reality-of-wrestling-يوم-14-نوفمبر.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث تماماً (استعداد شيريلين غيريرو لخوض أول نزال في Reality of Wrestling يوم 14 نوفمبر بعد المشادة مع ميستي ماركس) وهو مكرر للخبر المنشور بالرقم 0 من نفس المصدر.",
+    "at": "2026-10-25T10:48:52.428Z"
   }
 }
